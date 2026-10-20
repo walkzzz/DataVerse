@@ -351,45 +351,45 @@ pub fn geo_dist_great_circle_frame_make(size : Int) -> GeodistgreatcircleFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_frame_len(s : GeodistgreatcircleFrame) -> Int { s.size }
+pub fn GeodistgreatcircleFrame::len(self : GeodistgreatcircleFrame) -> Int { self.size }
 
-pub fn geo_dist_great_circle_frame_get(s : GeodistgreatcircleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleFrame::get(self : GeodistgreatcircleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_frame_set(s : GeodistgreatcircleFrame, i : Int, v : Double) -> GeodistgreatcircleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleFrame::set(self : GeodistgreatcircleFrame, i : Int, v : Double) -> GeodistgreatcircleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_frame_sum(s : GeodistgreatcircleFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleFrame::sum(self : GeodistgreatcircleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_frame_mean(s : GeodistgreatcircleFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleFrame::mean(self : GeodistgreatcircleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_frame_scale(s : GeodistgreatcircleFrame, f : Double) -> GeodistgreatcircleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleFrame::scale(self : GeodistgreatcircleFrame, f : Double) -> GeodistgreatcircleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_frame_add(a : GeodistgreatcircleFrame, b : GeodistgreatcircleFrame) -> GeodistgreatcircleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleFrame::add(self : GeodistgreatcircleFrame, other : GeodistgreatcircleFrame) -> GeodistgreatcircleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_frame_copy(s : GeodistgreatcircleFrame) -> GeodistgreatcircleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleFrame::copy(self : GeodistgreatcircleFrame) -> GeodistgreatcircleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_frame_fill(s : GeodistgreatcircleFrame, v : Double) -> GeodistgreatcircleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleFrame::fill(self : GeodistgreatcircleFrame, v : Double) -> GeodistgreatcircleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_frame_min(s : GeodistgreatcircleFrame) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleFrame::min(self : GeodistgreatcircleFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_frame_max(s : GeodistgreatcircleFrame) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleFrame::max(self : GeodistgreatcircleFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_frame_to_string(s : GeodistgreatcircleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleFrame::to_string(self : GeodistgreatcircleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_great_circle_table_make(size : Int) -> GeodistgreatcircleTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_table_len(s : GeodistgreatcircleTable) -> Int { s.size }
+pub fn GeodistgreatcircleTable::len(self : GeodistgreatcircleTable) -> Int { self.size }
 
-pub fn geo_dist_great_circle_table_get(s : GeodistgreatcircleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleTable::get(self : GeodistgreatcircleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_table_set(s : GeodistgreatcircleTable, i : Int, v : Double) -> GeodistgreatcircleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleTable::set(self : GeodistgreatcircleTable, i : Int, v : Double) -> GeodistgreatcircleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_table_sum(s : GeodistgreatcircleTable) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleTable::sum(self : GeodistgreatcircleTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_table_mean(s : GeodistgreatcircleTable) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleTable::mean(self : GeodistgreatcircleTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_table_scale(s : GeodistgreatcircleTable, f : Double) -> GeodistgreatcircleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleTable::scale(self : GeodistgreatcircleTable, f : Double) -> GeodistgreatcircleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_table_add(a : GeodistgreatcircleTable, b : GeodistgreatcircleTable) -> GeodistgreatcircleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleTable::add(self : GeodistgreatcircleTable, other : GeodistgreatcircleTable) -> GeodistgreatcircleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_table_copy(s : GeodistgreatcircleTable) -> GeodistgreatcircleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleTable::copy(self : GeodistgreatcircleTable) -> GeodistgreatcircleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_table_fill(s : GeodistgreatcircleTable, v : Double) -> GeodistgreatcircleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleTable::fill(self : GeodistgreatcircleTable, v : Double) -> GeodistgreatcircleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_table_min(s : GeodistgreatcircleTable) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleTable::min(self : GeodistgreatcircleTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_table_max(s : GeodistgreatcircleTable) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleTable::max(self : GeodistgreatcircleTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_table_to_string(s : GeodistgreatcircleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleTable::to_string(self : GeodistgreatcircleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_great_circle_graphn_make(size : Int) -> GeodistgreatcircleGraphN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_graphn_len(s : GeodistgreatcircleGraphN) -> Int { s.size }
+pub fn GeodistgreatcircleGraphN::len(self : GeodistgreatcircleGraphN) -> Int { self.size }
 
-pub fn geo_dist_great_circle_graphn_get(s : GeodistgreatcircleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleGraphN::get(self : GeodistgreatcircleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_graphn_set(s : GeodistgreatcircleGraphN, i : Int, v : Double) -> GeodistgreatcircleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleGraphN::set(self : GeodistgreatcircleGraphN, i : Int, v : Double) -> GeodistgreatcircleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_graphn_sum(s : GeodistgreatcircleGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleGraphN::sum(self : GeodistgreatcircleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_graphn_mean(s : GeodistgreatcircleGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleGraphN::mean(self : GeodistgreatcircleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_graphn_scale(s : GeodistgreatcircleGraphN, f : Double) -> GeodistgreatcircleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleGraphN::scale(self : GeodistgreatcircleGraphN, f : Double) -> GeodistgreatcircleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_graphn_add(a : GeodistgreatcircleGraphN, b : GeodistgreatcircleGraphN) -> GeodistgreatcircleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleGraphN::add(self : GeodistgreatcircleGraphN, other : GeodistgreatcircleGraphN) -> GeodistgreatcircleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_graphn_copy(s : GeodistgreatcircleGraphN) -> GeodistgreatcircleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleGraphN::copy(self : GeodistgreatcircleGraphN) -> GeodistgreatcircleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_graphn_fill(s : GeodistgreatcircleGraphN, v : Double) -> GeodistgreatcircleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleGraphN::fill(self : GeodistgreatcircleGraphN, v : Double) -> GeodistgreatcircleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_graphn_min(s : GeodistgreatcircleGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleGraphN::min(self : GeodistgreatcircleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_graphn_max(s : GeodistgreatcircleGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleGraphN::max(self : GeodistgreatcircleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_graphn_to_string(s : GeodistgreatcircleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleGraphN::to_string(self : GeodistgreatcircleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_great_circle_node_make(size : Int) -> GeodistgreatcircleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_node_len(s : GeodistgreatcircleNode) -> Int { s.size }
+pub fn GeodistgreatcircleNode::len(self : GeodistgreatcircleNode) -> Int { self.size }
 
-pub fn geo_dist_great_circle_node_get(s : GeodistgreatcircleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleNode::get(self : GeodistgreatcircleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_node_set(s : GeodistgreatcircleNode, i : Int, v : Double) -> GeodistgreatcircleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleNode::set(self : GeodistgreatcircleNode, i : Int, v : Double) -> GeodistgreatcircleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_node_sum(s : GeodistgreatcircleNode) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleNode::sum(self : GeodistgreatcircleNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_node_mean(s : GeodistgreatcircleNode) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleNode::mean(self : GeodistgreatcircleNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_node_scale(s : GeodistgreatcircleNode, f : Double) -> GeodistgreatcircleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleNode::scale(self : GeodistgreatcircleNode, f : Double) -> GeodistgreatcircleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_node_add(a : GeodistgreatcircleNode, b : GeodistgreatcircleNode) -> GeodistgreatcircleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleNode::add(self : GeodistgreatcircleNode, other : GeodistgreatcircleNode) -> GeodistgreatcircleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_node_copy(s : GeodistgreatcircleNode) -> GeodistgreatcircleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleNode::copy(self : GeodistgreatcircleNode) -> GeodistgreatcircleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_node_fill(s : GeodistgreatcircleNode, v : Double) -> GeodistgreatcircleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleNode::fill(self : GeodistgreatcircleNode, v : Double) -> GeodistgreatcircleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_node_min(s : GeodistgreatcircleNode) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleNode::min(self : GeodistgreatcircleNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_node_max(s : GeodistgreatcircleNode) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleNode::max(self : GeodistgreatcircleNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_node_to_string(s : GeodistgreatcircleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleNode::to_string(self : GeodistgreatcircleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_great_circle_edge_make(size : Int) -> GeodistgreatcircleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_edge_len(s : GeodistgreatcircleEdge) -> Int { s.size }
+pub fn GeodistgreatcircleEdge::len(self : GeodistgreatcircleEdge) -> Int { self.size }
 
-pub fn geo_dist_great_circle_edge_get(s : GeodistgreatcircleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleEdge::get(self : GeodistgreatcircleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_edge_set(s : GeodistgreatcircleEdge, i : Int, v : Double) -> GeodistgreatcircleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleEdge::set(self : GeodistgreatcircleEdge, i : Int, v : Double) -> GeodistgreatcircleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_edge_sum(s : GeodistgreatcircleEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleEdge::sum(self : GeodistgreatcircleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_edge_mean(s : GeodistgreatcircleEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleEdge::mean(self : GeodistgreatcircleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_edge_scale(s : GeodistgreatcircleEdge, f : Double) -> GeodistgreatcircleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleEdge::scale(self : GeodistgreatcircleEdge, f : Double) -> GeodistgreatcircleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_edge_add(a : GeodistgreatcircleEdge, b : GeodistgreatcircleEdge) -> GeodistgreatcircleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleEdge::add(self : GeodistgreatcircleEdge, other : GeodistgreatcircleEdge) -> GeodistgreatcircleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_edge_copy(s : GeodistgreatcircleEdge) -> GeodistgreatcircleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleEdge::copy(self : GeodistgreatcircleEdge) -> GeodistgreatcircleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_edge_fill(s : GeodistgreatcircleEdge, v : Double) -> GeodistgreatcircleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleEdge::fill(self : GeodistgreatcircleEdge, v : Double) -> GeodistgreatcircleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_edge_min(s : GeodistgreatcircleEdge) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleEdge::min(self : GeodistgreatcircleEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_edge_max(s : GeodistgreatcircleEdge) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleEdge::max(self : GeodistgreatcircleEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_edge_to_string(s : GeodistgreatcircleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleEdge::to_string(self : GeodistgreatcircleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcirclePath {
@@ -606,45 +606,45 @@ pub fn geo_dist_great_circle_path_make(size : Int) -> GeodistgreatcirclePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_path_len(s : GeodistgreatcirclePath) -> Int { s.size }
+pub fn GeodistgreatcirclePath::len(self : GeodistgreatcirclePath) -> Int { self.size }
 
-pub fn geo_dist_great_circle_path_get(s : GeodistgreatcirclePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcirclePath::get(self : GeodistgreatcirclePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_path_set(s : GeodistgreatcirclePath, i : Int, v : Double) -> GeodistgreatcirclePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcirclePath::set(self : GeodistgreatcirclePath, i : Int, v : Double) -> GeodistgreatcirclePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_path_sum(s : GeodistgreatcirclePath) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcirclePath::sum(self : GeodistgreatcirclePath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_path_mean(s : GeodistgreatcirclePath) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcirclePath::mean(self : GeodistgreatcirclePath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_path_scale(s : GeodistgreatcirclePath, f : Double) -> GeodistgreatcirclePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcirclePath::scale(self : GeodistgreatcirclePath, f : Double) -> GeodistgreatcirclePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_path_add(a : GeodistgreatcirclePath, b : GeodistgreatcirclePath) -> GeodistgreatcirclePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcirclePath::add(self : GeodistgreatcirclePath, other : GeodistgreatcirclePath) -> GeodistgreatcirclePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_path_copy(s : GeodistgreatcirclePath) -> GeodistgreatcirclePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcirclePath::copy(self : GeodistgreatcirclePath) -> GeodistgreatcirclePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_path_fill(s : GeodistgreatcirclePath, v : Double) -> GeodistgreatcirclePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcirclePath::fill(self : GeodistgreatcirclePath, v : Double) -> GeodistgreatcirclePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_path_min(s : GeodistgreatcirclePath) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcirclePath::min(self : GeodistgreatcirclePath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_path_max(s : GeodistgreatcirclePath) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcirclePath::max(self : GeodistgreatcirclePath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_path_to_string(s : GeodistgreatcirclePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcirclePath::to_string(self : GeodistgreatcirclePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_great_circle_cluster_make(size : Int) -> GeodistgreatcircleClust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_cluster_len(s : GeodistgreatcircleCluster) -> Int { s.size }
+pub fn GeodistgreatcircleCluster::len(self : GeodistgreatcircleCluster) -> Int { self.size }
 
-pub fn geo_dist_great_circle_cluster_get(s : GeodistgreatcircleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleCluster::get(self : GeodistgreatcircleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_cluster_set(s : GeodistgreatcircleCluster, i : Int, v : Double) -> GeodistgreatcircleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCluster::set(self : GeodistgreatcircleCluster, i : Int, v : Double) -> GeodistgreatcircleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cluster_sum(s : GeodistgreatcircleCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleCluster::sum(self : GeodistgreatcircleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_cluster_mean(s : GeodistgreatcircleCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleCluster::mean(self : GeodistgreatcircleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_cluster_scale(s : GeodistgreatcircleCluster, f : Double) -> GeodistgreatcircleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCluster::scale(self : GeodistgreatcircleCluster, f : Double) -> GeodistgreatcircleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cluster_add(a : GeodistgreatcircleCluster, b : GeodistgreatcircleCluster) -> GeodistgreatcircleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleCluster::add(self : GeodistgreatcircleCluster, other : GeodistgreatcircleCluster) -> GeodistgreatcircleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cluster_copy(s : GeodistgreatcircleCluster) -> GeodistgreatcircleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCluster::copy(self : GeodistgreatcircleCluster) -> GeodistgreatcircleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cluster_fill(s : GeodistgreatcircleCluster, v : Double) -> GeodistgreatcircleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCluster::fill(self : GeodistgreatcircleCluster, v : Double) -> GeodistgreatcircleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cluster_min(s : GeodistgreatcircleCluster) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleCluster::min(self : GeodistgreatcircleCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_cluster_max(s : GeodistgreatcircleCluster) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleCluster::max(self : GeodistgreatcircleCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_cluster_to_string(s : GeodistgreatcircleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleCluster::to_string(self : GeodistgreatcircleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_great_circle_model_make(size : Int) -> GeodistgreatcircleModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_model_len(s : GeodistgreatcircleModel) -> Int { s.size }
+pub fn GeodistgreatcircleModel::len(self : GeodistgreatcircleModel) -> Int { self.size }
 
-pub fn geo_dist_great_circle_model_get(s : GeodistgreatcircleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleModel::get(self : GeodistgreatcircleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_model_set(s : GeodistgreatcircleModel, i : Int, v : Double) -> GeodistgreatcircleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleModel::set(self : GeodistgreatcircleModel, i : Int, v : Double) -> GeodistgreatcircleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_model_sum(s : GeodistgreatcircleModel) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleModel::sum(self : GeodistgreatcircleModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_model_mean(s : GeodistgreatcircleModel) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleModel::mean(self : GeodistgreatcircleModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_model_scale(s : GeodistgreatcircleModel, f : Double) -> GeodistgreatcircleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleModel::scale(self : GeodistgreatcircleModel, f : Double) -> GeodistgreatcircleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_model_add(a : GeodistgreatcircleModel, b : GeodistgreatcircleModel) -> GeodistgreatcircleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleModel::add(self : GeodistgreatcircleModel, other : GeodistgreatcircleModel) -> GeodistgreatcircleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_model_copy(s : GeodistgreatcircleModel) -> GeodistgreatcircleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleModel::copy(self : GeodistgreatcircleModel) -> GeodistgreatcircleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_model_fill(s : GeodistgreatcircleModel, v : Double) -> GeodistgreatcircleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleModel::fill(self : GeodistgreatcircleModel, v : Double) -> GeodistgreatcircleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_model_min(s : GeodistgreatcircleModel) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleModel::min(self : GeodistgreatcircleModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_model_max(s : GeodistgreatcircleModel) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleModel::max(self : GeodistgreatcircleModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_model_to_string(s : GeodistgreatcircleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleModel::to_string(self : GeodistgreatcircleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_great_circle_layer_make(size : Int) -> GeodistgreatcircleLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_layer_len(s : GeodistgreatcircleLayer) -> Int { s.size }
+pub fn GeodistgreatcircleLayer::len(self : GeodistgreatcircleLayer) -> Int { self.size }
 
-pub fn geo_dist_great_circle_layer_get(s : GeodistgreatcircleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleLayer::get(self : GeodistgreatcircleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_layer_set(s : GeodistgreatcircleLayer, i : Int, v : Double) -> GeodistgreatcircleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleLayer::set(self : GeodistgreatcircleLayer, i : Int, v : Double) -> GeodistgreatcircleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_layer_sum(s : GeodistgreatcircleLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleLayer::sum(self : GeodistgreatcircleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_layer_mean(s : GeodistgreatcircleLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleLayer::mean(self : GeodistgreatcircleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_layer_scale(s : GeodistgreatcircleLayer, f : Double) -> GeodistgreatcircleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleLayer::scale(self : GeodistgreatcircleLayer, f : Double) -> GeodistgreatcircleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_layer_add(a : GeodistgreatcircleLayer, b : GeodistgreatcircleLayer) -> GeodistgreatcircleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleLayer::add(self : GeodistgreatcircleLayer, other : GeodistgreatcircleLayer) -> GeodistgreatcircleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_layer_copy(s : GeodistgreatcircleLayer) -> GeodistgreatcircleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleLayer::copy(self : GeodistgreatcircleLayer) -> GeodistgreatcircleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_layer_fill(s : GeodistgreatcircleLayer, v : Double) -> GeodistgreatcircleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleLayer::fill(self : GeodistgreatcircleLayer, v : Double) -> GeodistgreatcircleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_layer_min(s : GeodistgreatcircleLayer) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleLayer::min(self : GeodistgreatcircleLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_layer_max(s : GeodistgreatcircleLayer) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleLayer::max(self : GeodistgreatcircleLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_layer_to_string(s : GeodistgreatcircleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleLayer::to_string(self : GeodistgreatcircleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_great_circle_buffer_make(size : Int) -> GeodistgreatcircleBuffer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_buffer_len(s : GeodistgreatcircleBuffer) -> Int { s.size }
+pub fn GeodistgreatcircleBuffer::len(self : GeodistgreatcircleBuffer) -> Int { self.size }
 
-pub fn geo_dist_great_circle_buffer_get(s : GeodistgreatcircleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleBuffer::get(self : GeodistgreatcircleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_buffer_set(s : GeodistgreatcircleBuffer, i : Int, v : Double) -> GeodistgreatcircleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleBuffer::set(self : GeodistgreatcircleBuffer, i : Int, v : Double) -> GeodistgreatcircleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_buffer_sum(s : GeodistgreatcircleBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleBuffer::sum(self : GeodistgreatcircleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_buffer_mean(s : GeodistgreatcircleBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleBuffer::mean(self : GeodistgreatcircleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_buffer_scale(s : GeodistgreatcircleBuffer, f : Double) -> GeodistgreatcircleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleBuffer::scale(self : GeodistgreatcircleBuffer, f : Double) -> GeodistgreatcircleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_buffer_add(a : GeodistgreatcircleBuffer, b : GeodistgreatcircleBuffer) -> GeodistgreatcircleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleBuffer::add(self : GeodistgreatcircleBuffer, other : GeodistgreatcircleBuffer) -> GeodistgreatcircleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_buffer_copy(s : GeodistgreatcircleBuffer) -> GeodistgreatcircleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleBuffer::copy(self : GeodistgreatcircleBuffer) -> GeodistgreatcircleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_buffer_fill(s : GeodistgreatcircleBuffer, v : Double) -> GeodistgreatcircleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleBuffer::fill(self : GeodistgreatcircleBuffer, v : Double) -> GeodistgreatcircleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_buffer_min(s : GeodistgreatcircleBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleBuffer::min(self : GeodistgreatcircleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_buffer_max(s : GeodistgreatcircleBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleBuffer::max(self : GeodistgreatcircleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_buffer_to_string(s : GeodistgreatcircleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleBuffer::to_string(self : GeodistgreatcircleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_great_circle_cursor_make(size : Int) -> GeodistgreatcircleCursor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_cursor_len(s : GeodistgreatcircleCursor) -> Int { s.size }
+pub fn GeodistgreatcircleCursor::len(self : GeodistgreatcircleCursor) -> Int { self.size }
 
-pub fn geo_dist_great_circle_cursor_get(s : GeodistgreatcircleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleCursor::get(self : GeodistgreatcircleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_cursor_set(s : GeodistgreatcircleCursor, i : Int, v : Double) -> GeodistgreatcircleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCursor::set(self : GeodistgreatcircleCursor, i : Int, v : Double) -> GeodistgreatcircleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cursor_sum(s : GeodistgreatcircleCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleCursor::sum(self : GeodistgreatcircleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_cursor_mean(s : GeodistgreatcircleCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleCursor::mean(self : GeodistgreatcircleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_cursor_scale(s : GeodistgreatcircleCursor, f : Double) -> GeodistgreatcircleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCursor::scale(self : GeodistgreatcircleCursor, f : Double) -> GeodistgreatcircleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cursor_add(a : GeodistgreatcircleCursor, b : GeodistgreatcircleCursor) -> GeodistgreatcircleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleCursor::add(self : GeodistgreatcircleCursor, other : GeodistgreatcircleCursor) -> GeodistgreatcircleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cursor_copy(s : GeodistgreatcircleCursor) -> GeodistgreatcircleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCursor::copy(self : GeodistgreatcircleCursor) -> GeodistgreatcircleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cursor_fill(s : GeodistgreatcircleCursor, v : Double) -> GeodistgreatcircleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleCursor::fill(self : GeodistgreatcircleCursor, v : Double) -> GeodistgreatcircleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_cursor_min(s : GeodistgreatcircleCursor) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleCursor::min(self : GeodistgreatcircleCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_cursor_max(s : GeodistgreatcircleCursor) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleCursor::max(self : GeodistgreatcircleCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_cursor_to_string(s : GeodistgreatcircleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleCursor::to_string(self : GeodistgreatcircleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleView {
@@ -912,45 +912,45 @@ pub fn geo_dist_great_circle_view_make(size : Int) -> GeodistgreatcircleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_view_len(s : GeodistgreatcircleView) -> Int { s.size }
+pub fn GeodistgreatcircleView::len(self : GeodistgreatcircleView) -> Int { self.size }
 
-pub fn geo_dist_great_circle_view_get(s : GeodistgreatcircleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleView::get(self : GeodistgreatcircleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_view_set(s : GeodistgreatcircleView, i : Int, v : Double) -> GeodistgreatcircleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleView::set(self : GeodistgreatcircleView, i : Int, v : Double) -> GeodistgreatcircleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_view_sum(s : GeodistgreatcircleView) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleView::sum(self : GeodistgreatcircleView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_view_mean(s : GeodistgreatcircleView) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleView::mean(self : GeodistgreatcircleView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_view_scale(s : GeodistgreatcircleView, f : Double) -> GeodistgreatcircleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleView::scale(self : GeodistgreatcircleView, f : Double) -> GeodistgreatcircleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_view_add(a : GeodistgreatcircleView, b : GeodistgreatcircleView) -> GeodistgreatcircleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleView::add(self : GeodistgreatcircleView, other : GeodistgreatcircleView) -> GeodistgreatcircleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_view_copy(s : GeodistgreatcircleView) -> GeodistgreatcircleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleView::copy(self : GeodistgreatcircleView) -> GeodistgreatcircleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_view_fill(s : GeodistgreatcircleView, v : Double) -> GeodistgreatcircleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleView::fill(self : GeodistgreatcircleView, v : Double) -> GeodistgreatcircleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_view_min(s : GeodistgreatcircleView) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleView::min(self : GeodistgreatcircleView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_view_max(s : GeodistgreatcircleView) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleView::max(self : GeodistgreatcircleView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_view_to_string(s : GeodistgreatcircleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleView::to_string(self : GeodistgreatcircleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_great_circle_range_make(size : Int) -> GeodistgreatcircleRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_range_len(s : GeodistgreatcircleRange) -> Int { s.size }
+pub fn GeodistgreatcircleRange::len(self : GeodistgreatcircleRange) -> Int { self.size }
 
-pub fn geo_dist_great_circle_range_get(s : GeodistgreatcircleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleRange::get(self : GeodistgreatcircleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_range_set(s : GeodistgreatcircleRange, i : Int, v : Double) -> GeodistgreatcircleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleRange::set(self : GeodistgreatcircleRange, i : Int, v : Double) -> GeodistgreatcircleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_range_sum(s : GeodistgreatcircleRange) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleRange::sum(self : GeodistgreatcircleRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_range_mean(s : GeodistgreatcircleRange) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleRange::mean(self : GeodistgreatcircleRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_range_scale(s : GeodistgreatcircleRange, f : Double) -> GeodistgreatcircleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleRange::scale(self : GeodistgreatcircleRange, f : Double) -> GeodistgreatcircleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_range_add(a : GeodistgreatcircleRange, b : GeodistgreatcircleRange) -> GeodistgreatcircleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleRange::add(self : GeodistgreatcircleRange, other : GeodistgreatcircleRange) -> GeodistgreatcircleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_range_copy(s : GeodistgreatcircleRange) -> GeodistgreatcircleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleRange::copy(self : GeodistgreatcircleRange) -> GeodistgreatcircleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_range_fill(s : GeodistgreatcircleRange, v : Double) -> GeodistgreatcircleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleRange::fill(self : GeodistgreatcircleRange, v : Double) -> GeodistgreatcircleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_range_min(s : GeodistgreatcircleRange) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleRange::min(self : GeodistgreatcircleRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_range_max(s : GeodistgreatcircleRange) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleRange::max(self : GeodistgreatcircleRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_range_to_string(s : GeodistgreatcircleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleRange::to_string(self : GeodistgreatcircleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistgreatcircleSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_great_circle_slice_make(size : Int) -> GeodistgreatcircleSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_great_circle_slice_len(s : GeodistgreatcircleSlice) -> Int { s.size }
+pub fn GeodistgreatcircleSlice::len(self : GeodistgreatcircleSlice) -> Int { self.size }
 
-pub fn geo_dist_great_circle_slice_get(s : GeodistgreatcircleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistgreatcircleSlice::get(self : GeodistgreatcircleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_great_circle_slice_set(s : GeodistgreatcircleSlice, i : Int, v : Double) -> GeodistgreatcircleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleSlice::set(self : GeodistgreatcircleSlice, i : Int, v : Double) -> GeodistgreatcircleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_slice_sum(s : GeodistgreatcircleSlice) -> Double { @_common.sum(s.data) }
+pub fn GeodistgreatcircleSlice::sum(self : GeodistgreatcircleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_great_circle_slice_mean(s : GeodistgreatcircleSlice) -> Double { @_common.mean(s.data) }
+pub fn GeodistgreatcircleSlice::mean(self : GeodistgreatcircleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_great_circle_slice_scale(s : GeodistgreatcircleSlice, f : Double) -> GeodistgreatcircleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleSlice::scale(self : GeodistgreatcircleSlice, f : Double) -> GeodistgreatcircleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_slice_add(a : GeodistgreatcircleSlice, b : GeodistgreatcircleSlice) -> GeodistgreatcircleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistgreatcircleSlice::add(self : GeodistgreatcircleSlice, other : GeodistgreatcircleSlice) -> GeodistgreatcircleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_slice_copy(s : GeodistgreatcircleSlice) -> GeodistgreatcircleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleSlice::copy(self : GeodistgreatcircleSlice) -> GeodistgreatcircleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_slice_fill(s : GeodistgreatcircleSlice, v : Double) -> GeodistgreatcircleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistgreatcircleSlice::fill(self : GeodistgreatcircleSlice, v : Double) -> GeodistgreatcircleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_great_circle_slice_min(s : GeodistgreatcircleSlice) -> Double { @_common.min(s.data) }
+pub fn GeodistgreatcircleSlice::min(self : GeodistgreatcircleSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_great_circle_slice_max(s : GeodistgreatcircleSlice) -> Double { @_common.max(s.data) }
+pub fn GeodistgreatcircleSlice::max(self : GeodistgreatcircleSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_great_circle_slice_to_string(s : GeodistgreatcircleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistgreatcircleSlice::to_string(self : GeodistgreatcircleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

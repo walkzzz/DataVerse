@@ -351,45 +351,45 @@ pub fn image_filter_prewitt_frame_make(size : Int) -> ImagefilterprewittFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_frame_len(s : ImagefilterprewittFrame) -> Int { s.size }
+pub fn ImagefilterprewittFrame::len(self : ImagefilterprewittFrame) -> Int { self.size }
 
-pub fn image_filter_prewitt_frame_get(s : ImagefilterprewittFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittFrame::get(self : ImagefilterprewittFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_frame_set(s : ImagefilterprewittFrame, i : Int, v : Double) -> ImagefilterprewittFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittFrame::set(self : ImagefilterprewittFrame, i : Int, v : Double) -> ImagefilterprewittFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_frame_sum(s : ImagefilterprewittFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittFrame::sum(self : ImagefilterprewittFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_frame_mean(s : ImagefilterprewittFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittFrame::mean(self : ImagefilterprewittFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_frame_scale(s : ImagefilterprewittFrame, f : Double) -> ImagefilterprewittFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittFrame::scale(self : ImagefilterprewittFrame, f : Double) -> ImagefilterprewittFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_frame_add(a : ImagefilterprewittFrame, b : ImagefilterprewittFrame) -> ImagefilterprewittFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittFrame::add(self : ImagefilterprewittFrame, other : ImagefilterprewittFrame) -> ImagefilterprewittFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_frame_copy(s : ImagefilterprewittFrame) -> ImagefilterprewittFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittFrame::copy(self : ImagefilterprewittFrame) -> ImagefilterprewittFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_frame_fill(s : ImagefilterprewittFrame, v : Double) -> ImagefilterprewittFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittFrame::fill(self : ImagefilterprewittFrame, v : Double) -> ImagefilterprewittFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_frame_min(s : ImagefilterprewittFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittFrame::min(self : ImagefilterprewittFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_frame_max(s : ImagefilterprewittFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittFrame::max(self : ImagefilterprewittFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_frame_to_string(s : ImagefilterprewittFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittFrame::to_string(self : ImagefilterprewittFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittTable {
@@ -402,45 +402,45 @@ pub fn image_filter_prewitt_table_make(size : Int) -> ImagefilterprewittTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_table_len(s : ImagefilterprewittTable) -> Int { s.size }
+pub fn ImagefilterprewittTable::len(self : ImagefilterprewittTable) -> Int { self.size }
 
-pub fn image_filter_prewitt_table_get(s : ImagefilterprewittTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittTable::get(self : ImagefilterprewittTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_table_set(s : ImagefilterprewittTable, i : Int, v : Double) -> ImagefilterprewittTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittTable::set(self : ImagefilterprewittTable, i : Int, v : Double) -> ImagefilterprewittTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_table_sum(s : ImagefilterprewittTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittTable::sum(self : ImagefilterprewittTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_table_mean(s : ImagefilterprewittTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittTable::mean(self : ImagefilterprewittTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_table_scale(s : ImagefilterprewittTable, f : Double) -> ImagefilterprewittTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittTable::scale(self : ImagefilterprewittTable, f : Double) -> ImagefilterprewittTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_table_add(a : ImagefilterprewittTable, b : ImagefilterprewittTable) -> ImagefilterprewittTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittTable::add(self : ImagefilterprewittTable, other : ImagefilterprewittTable) -> ImagefilterprewittTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_table_copy(s : ImagefilterprewittTable) -> ImagefilterprewittTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittTable::copy(self : ImagefilterprewittTable) -> ImagefilterprewittTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_table_fill(s : ImagefilterprewittTable, v : Double) -> ImagefilterprewittTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittTable::fill(self : ImagefilterprewittTable, v : Double) -> ImagefilterprewittTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_table_min(s : ImagefilterprewittTable) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittTable::min(self : ImagefilterprewittTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_table_max(s : ImagefilterprewittTable) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittTable::max(self : ImagefilterprewittTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_table_to_string(s : ImagefilterprewittTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittTable::to_string(self : ImagefilterprewittTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_prewitt_graphn_make(size : Int) -> ImagefilterprewittGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_graphn_len(s : ImagefilterprewittGraphN) -> Int { s.size }
+pub fn ImagefilterprewittGraphN::len(self : ImagefilterprewittGraphN) -> Int { self.size }
 
-pub fn image_filter_prewitt_graphn_get(s : ImagefilterprewittGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittGraphN::get(self : ImagefilterprewittGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_graphn_set(s : ImagefilterprewittGraphN, i : Int, v : Double) -> ImagefilterprewittGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittGraphN::set(self : ImagefilterprewittGraphN, i : Int, v : Double) -> ImagefilterprewittGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_graphn_sum(s : ImagefilterprewittGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittGraphN::sum(self : ImagefilterprewittGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_graphn_mean(s : ImagefilterprewittGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittGraphN::mean(self : ImagefilterprewittGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_graphn_scale(s : ImagefilterprewittGraphN, f : Double) -> ImagefilterprewittGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittGraphN::scale(self : ImagefilterprewittGraphN, f : Double) -> ImagefilterprewittGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_graphn_add(a : ImagefilterprewittGraphN, b : ImagefilterprewittGraphN) -> ImagefilterprewittGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittGraphN::add(self : ImagefilterprewittGraphN, other : ImagefilterprewittGraphN) -> ImagefilterprewittGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_graphn_copy(s : ImagefilterprewittGraphN) -> ImagefilterprewittGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittGraphN::copy(self : ImagefilterprewittGraphN) -> ImagefilterprewittGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_graphn_fill(s : ImagefilterprewittGraphN, v : Double) -> ImagefilterprewittGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittGraphN::fill(self : ImagefilterprewittGraphN, v : Double) -> ImagefilterprewittGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_graphn_min(s : ImagefilterprewittGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittGraphN::min(self : ImagefilterprewittGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_graphn_max(s : ImagefilterprewittGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittGraphN::max(self : ImagefilterprewittGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_graphn_to_string(s : ImagefilterprewittGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittGraphN::to_string(self : ImagefilterprewittGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittNode {
@@ -504,45 +504,45 @@ pub fn image_filter_prewitt_node_make(size : Int) -> ImagefilterprewittNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_node_len(s : ImagefilterprewittNode) -> Int { s.size }
+pub fn ImagefilterprewittNode::len(self : ImagefilterprewittNode) -> Int { self.size }
 
-pub fn image_filter_prewitt_node_get(s : ImagefilterprewittNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittNode::get(self : ImagefilterprewittNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_node_set(s : ImagefilterprewittNode, i : Int, v : Double) -> ImagefilterprewittNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittNode::set(self : ImagefilterprewittNode, i : Int, v : Double) -> ImagefilterprewittNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_node_sum(s : ImagefilterprewittNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittNode::sum(self : ImagefilterprewittNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_node_mean(s : ImagefilterprewittNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittNode::mean(self : ImagefilterprewittNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_node_scale(s : ImagefilterprewittNode, f : Double) -> ImagefilterprewittNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittNode::scale(self : ImagefilterprewittNode, f : Double) -> ImagefilterprewittNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_node_add(a : ImagefilterprewittNode, b : ImagefilterprewittNode) -> ImagefilterprewittNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittNode::add(self : ImagefilterprewittNode, other : ImagefilterprewittNode) -> ImagefilterprewittNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_node_copy(s : ImagefilterprewittNode) -> ImagefilterprewittNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittNode::copy(self : ImagefilterprewittNode) -> ImagefilterprewittNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_node_fill(s : ImagefilterprewittNode, v : Double) -> ImagefilterprewittNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittNode::fill(self : ImagefilterprewittNode, v : Double) -> ImagefilterprewittNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_node_min(s : ImagefilterprewittNode) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittNode::min(self : ImagefilterprewittNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_node_max(s : ImagefilterprewittNode) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittNode::max(self : ImagefilterprewittNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_node_to_string(s : ImagefilterprewittNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittNode::to_string(self : ImagefilterprewittNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_prewitt_edge_make(size : Int) -> ImagefilterprewittEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_edge_len(s : ImagefilterprewittEdge) -> Int { s.size }
+pub fn ImagefilterprewittEdge::len(self : ImagefilterprewittEdge) -> Int { self.size }
 
-pub fn image_filter_prewitt_edge_get(s : ImagefilterprewittEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittEdge::get(self : ImagefilterprewittEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_edge_set(s : ImagefilterprewittEdge, i : Int, v : Double) -> ImagefilterprewittEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittEdge::set(self : ImagefilterprewittEdge, i : Int, v : Double) -> ImagefilterprewittEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_edge_sum(s : ImagefilterprewittEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittEdge::sum(self : ImagefilterprewittEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_edge_mean(s : ImagefilterprewittEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittEdge::mean(self : ImagefilterprewittEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_edge_scale(s : ImagefilterprewittEdge, f : Double) -> ImagefilterprewittEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittEdge::scale(self : ImagefilterprewittEdge, f : Double) -> ImagefilterprewittEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_edge_add(a : ImagefilterprewittEdge, b : ImagefilterprewittEdge) -> ImagefilterprewittEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittEdge::add(self : ImagefilterprewittEdge, other : ImagefilterprewittEdge) -> ImagefilterprewittEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_edge_copy(s : ImagefilterprewittEdge) -> ImagefilterprewittEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittEdge::copy(self : ImagefilterprewittEdge) -> ImagefilterprewittEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_edge_fill(s : ImagefilterprewittEdge, v : Double) -> ImagefilterprewittEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittEdge::fill(self : ImagefilterprewittEdge, v : Double) -> ImagefilterprewittEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_edge_min(s : ImagefilterprewittEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittEdge::min(self : ImagefilterprewittEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_edge_max(s : ImagefilterprewittEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittEdge::max(self : ImagefilterprewittEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_edge_to_string(s : ImagefilterprewittEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittEdge::to_string(self : ImagefilterprewittEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittPath {
@@ -606,45 +606,45 @@ pub fn image_filter_prewitt_path_make(size : Int) -> ImagefilterprewittPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_path_len(s : ImagefilterprewittPath) -> Int { s.size }
+pub fn ImagefilterprewittPath::len(self : ImagefilterprewittPath) -> Int { self.size }
 
-pub fn image_filter_prewitt_path_get(s : ImagefilterprewittPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittPath::get(self : ImagefilterprewittPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_path_set(s : ImagefilterprewittPath, i : Int, v : Double) -> ImagefilterprewittPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittPath::set(self : ImagefilterprewittPath, i : Int, v : Double) -> ImagefilterprewittPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_path_sum(s : ImagefilterprewittPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittPath::sum(self : ImagefilterprewittPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_path_mean(s : ImagefilterprewittPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittPath::mean(self : ImagefilterprewittPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_path_scale(s : ImagefilterprewittPath, f : Double) -> ImagefilterprewittPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittPath::scale(self : ImagefilterprewittPath, f : Double) -> ImagefilterprewittPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_path_add(a : ImagefilterprewittPath, b : ImagefilterprewittPath) -> ImagefilterprewittPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittPath::add(self : ImagefilterprewittPath, other : ImagefilterprewittPath) -> ImagefilterprewittPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_path_copy(s : ImagefilterprewittPath) -> ImagefilterprewittPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittPath::copy(self : ImagefilterprewittPath) -> ImagefilterprewittPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_path_fill(s : ImagefilterprewittPath, v : Double) -> ImagefilterprewittPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittPath::fill(self : ImagefilterprewittPath, v : Double) -> ImagefilterprewittPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_path_min(s : ImagefilterprewittPath) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittPath::min(self : ImagefilterprewittPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_path_max(s : ImagefilterprewittPath) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittPath::max(self : ImagefilterprewittPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_path_to_string(s : ImagefilterprewittPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittPath::to_string(self : ImagefilterprewittPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_prewitt_cluster_make(size : Int) -> ImagefilterprewittCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_cluster_len(s : ImagefilterprewittCluster) -> Int { s.size }
+pub fn ImagefilterprewittCluster::len(self : ImagefilterprewittCluster) -> Int { self.size }
 
-pub fn image_filter_prewitt_cluster_get(s : ImagefilterprewittCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittCluster::get(self : ImagefilterprewittCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_cluster_set(s : ImagefilterprewittCluster, i : Int, v : Double) -> ImagefilterprewittCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCluster::set(self : ImagefilterprewittCluster, i : Int, v : Double) -> ImagefilterprewittCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cluster_sum(s : ImagefilterprewittCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittCluster::sum(self : ImagefilterprewittCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_cluster_mean(s : ImagefilterprewittCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittCluster::mean(self : ImagefilterprewittCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_cluster_scale(s : ImagefilterprewittCluster, f : Double) -> ImagefilterprewittCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCluster::scale(self : ImagefilterprewittCluster, f : Double) -> ImagefilterprewittCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cluster_add(a : ImagefilterprewittCluster, b : ImagefilterprewittCluster) -> ImagefilterprewittCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittCluster::add(self : ImagefilterprewittCluster, other : ImagefilterprewittCluster) -> ImagefilterprewittCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cluster_copy(s : ImagefilterprewittCluster) -> ImagefilterprewittCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCluster::copy(self : ImagefilterprewittCluster) -> ImagefilterprewittCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cluster_fill(s : ImagefilterprewittCluster, v : Double) -> ImagefilterprewittCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCluster::fill(self : ImagefilterprewittCluster, v : Double) -> ImagefilterprewittCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cluster_min(s : ImagefilterprewittCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittCluster::min(self : ImagefilterprewittCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_cluster_max(s : ImagefilterprewittCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittCluster::max(self : ImagefilterprewittCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_cluster_to_string(s : ImagefilterprewittCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittCluster::to_string(self : ImagefilterprewittCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittModel {
@@ -708,45 +708,45 @@ pub fn image_filter_prewitt_model_make(size : Int) -> ImagefilterprewittModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_model_len(s : ImagefilterprewittModel) -> Int { s.size }
+pub fn ImagefilterprewittModel::len(self : ImagefilterprewittModel) -> Int { self.size }
 
-pub fn image_filter_prewitt_model_get(s : ImagefilterprewittModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittModel::get(self : ImagefilterprewittModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_model_set(s : ImagefilterprewittModel, i : Int, v : Double) -> ImagefilterprewittModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittModel::set(self : ImagefilterprewittModel, i : Int, v : Double) -> ImagefilterprewittModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_model_sum(s : ImagefilterprewittModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittModel::sum(self : ImagefilterprewittModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_model_mean(s : ImagefilterprewittModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittModel::mean(self : ImagefilterprewittModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_model_scale(s : ImagefilterprewittModel, f : Double) -> ImagefilterprewittModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittModel::scale(self : ImagefilterprewittModel, f : Double) -> ImagefilterprewittModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_model_add(a : ImagefilterprewittModel, b : ImagefilterprewittModel) -> ImagefilterprewittModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittModel::add(self : ImagefilterprewittModel, other : ImagefilterprewittModel) -> ImagefilterprewittModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_model_copy(s : ImagefilterprewittModel) -> ImagefilterprewittModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittModel::copy(self : ImagefilterprewittModel) -> ImagefilterprewittModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_model_fill(s : ImagefilterprewittModel, v : Double) -> ImagefilterprewittModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittModel::fill(self : ImagefilterprewittModel, v : Double) -> ImagefilterprewittModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_model_min(s : ImagefilterprewittModel) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittModel::min(self : ImagefilterprewittModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_model_max(s : ImagefilterprewittModel) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittModel::max(self : ImagefilterprewittModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_model_to_string(s : ImagefilterprewittModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittModel::to_string(self : ImagefilterprewittModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_prewitt_layer_make(size : Int) -> ImagefilterprewittLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_layer_len(s : ImagefilterprewittLayer) -> Int { s.size }
+pub fn ImagefilterprewittLayer::len(self : ImagefilterprewittLayer) -> Int { self.size }
 
-pub fn image_filter_prewitt_layer_get(s : ImagefilterprewittLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittLayer::get(self : ImagefilterprewittLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_layer_set(s : ImagefilterprewittLayer, i : Int, v : Double) -> ImagefilterprewittLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittLayer::set(self : ImagefilterprewittLayer, i : Int, v : Double) -> ImagefilterprewittLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_layer_sum(s : ImagefilterprewittLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittLayer::sum(self : ImagefilterprewittLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_layer_mean(s : ImagefilterprewittLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittLayer::mean(self : ImagefilterprewittLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_layer_scale(s : ImagefilterprewittLayer, f : Double) -> ImagefilterprewittLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittLayer::scale(self : ImagefilterprewittLayer, f : Double) -> ImagefilterprewittLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_layer_add(a : ImagefilterprewittLayer, b : ImagefilterprewittLayer) -> ImagefilterprewittLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittLayer::add(self : ImagefilterprewittLayer, other : ImagefilterprewittLayer) -> ImagefilterprewittLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_layer_copy(s : ImagefilterprewittLayer) -> ImagefilterprewittLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittLayer::copy(self : ImagefilterprewittLayer) -> ImagefilterprewittLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_layer_fill(s : ImagefilterprewittLayer, v : Double) -> ImagefilterprewittLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittLayer::fill(self : ImagefilterprewittLayer, v : Double) -> ImagefilterprewittLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_layer_min(s : ImagefilterprewittLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittLayer::min(self : ImagefilterprewittLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_layer_max(s : ImagefilterprewittLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittLayer::max(self : ImagefilterprewittLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_layer_to_string(s : ImagefilterprewittLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittLayer::to_string(self : ImagefilterprewittLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_prewitt_buffer_make(size : Int) -> ImagefilterprewittBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_buffer_len(s : ImagefilterprewittBuffer) -> Int { s.size }
+pub fn ImagefilterprewittBuffer::len(self : ImagefilterprewittBuffer) -> Int { self.size }
 
-pub fn image_filter_prewitt_buffer_get(s : ImagefilterprewittBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittBuffer::get(self : ImagefilterprewittBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_buffer_set(s : ImagefilterprewittBuffer, i : Int, v : Double) -> ImagefilterprewittBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittBuffer::set(self : ImagefilterprewittBuffer, i : Int, v : Double) -> ImagefilterprewittBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_buffer_sum(s : ImagefilterprewittBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittBuffer::sum(self : ImagefilterprewittBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_buffer_mean(s : ImagefilterprewittBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittBuffer::mean(self : ImagefilterprewittBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_buffer_scale(s : ImagefilterprewittBuffer, f : Double) -> ImagefilterprewittBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittBuffer::scale(self : ImagefilterprewittBuffer, f : Double) -> ImagefilterprewittBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_buffer_add(a : ImagefilterprewittBuffer, b : ImagefilterprewittBuffer) -> ImagefilterprewittBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittBuffer::add(self : ImagefilterprewittBuffer, other : ImagefilterprewittBuffer) -> ImagefilterprewittBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_buffer_copy(s : ImagefilterprewittBuffer) -> ImagefilterprewittBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittBuffer::copy(self : ImagefilterprewittBuffer) -> ImagefilterprewittBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_buffer_fill(s : ImagefilterprewittBuffer, v : Double) -> ImagefilterprewittBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittBuffer::fill(self : ImagefilterprewittBuffer, v : Double) -> ImagefilterprewittBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_buffer_min(s : ImagefilterprewittBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittBuffer::min(self : ImagefilterprewittBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_buffer_max(s : ImagefilterprewittBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittBuffer::max(self : ImagefilterprewittBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_buffer_to_string(s : ImagefilterprewittBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittBuffer::to_string(self : ImagefilterprewittBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_prewitt_cursor_make(size : Int) -> ImagefilterprewittCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_cursor_len(s : ImagefilterprewittCursor) -> Int { s.size }
+pub fn ImagefilterprewittCursor::len(self : ImagefilterprewittCursor) -> Int { self.size }
 
-pub fn image_filter_prewitt_cursor_get(s : ImagefilterprewittCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittCursor::get(self : ImagefilterprewittCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_cursor_set(s : ImagefilterprewittCursor, i : Int, v : Double) -> ImagefilterprewittCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCursor::set(self : ImagefilterprewittCursor, i : Int, v : Double) -> ImagefilterprewittCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cursor_sum(s : ImagefilterprewittCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittCursor::sum(self : ImagefilterprewittCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_cursor_mean(s : ImagefilterprewittCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittCursor::mean(self : ImagefilterprewittCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_cursor_scale(s : ImagefilterprewittCursor, f : Double) -> ImagefilterprewittCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCursor::scale(self : ImagefilterprewittCursor, f : Double) -> ImagefilterprewittCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cursor_add(a : ImagefilterprewittCursor, b : ImagefilterprewittCursor) -> ImagefilterprewittCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittCursor::add(self : ImagefilterprewittCursor, other : ImagefilterprewittCursor) -> ImagefilterprewittCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cursor_copy(s : ImagefilterprewittCursor) -> ImagefilterprewittCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCursor::copy(self : ImagefilterprewittCursor) -> ImagefilterprewittCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cursor_fill(s : ImagefilterprewittCursor, v : Double) -> ImagefilterprewittCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittCursor::fill(self : ImagefilterprewittCursor, v : Double) -> ImagefilterprewittCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_cursor_min(s : ImagefilterprewittCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittCursor::min(self : ImagefilterprewittCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_cursor_max(s : ImagefilterprewittCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittCursor::max(self : ImagefilterprewittCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_cursor_to_string(s : ImagefilterprewittCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittCursor::to_string(self : ImagefilterprewittCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittView {
@@ -912,45 +912,45 @@ pub fn image_filter_prewitt_view_make(size : Int) -> ImagefilterprewittView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_view_len(s : ImagefilterprewittView) -> Int { s.size }
+pub fn ImagefilterprewittView::len(self : ImagefilterprewittView) -> Int { self.size }
 
-pub fn image_filter_prewitt_view_get(s : ImagefilterprewittView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittView::get(self : ImagefilterprewittView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_view_set(s : ImagefilterprewittView, i : Int, v : Double) -> ImagefilterprewittView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittView::set(self : ImagefilterprewittView, i : Int, v : Double) -> ImagefilterprewittView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_view_sum(s : ImagefilterprewittView) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittView::sum(self : ImagefilterprewittView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_view_mean(s : ImagefilterprewittView) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittView::mean(self : ImagefilterprewittView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_view_scale(s : ImagefilterprewittView, f : Double) -> ImagefilterprewittView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittView::scale(self : ImagefilterprewittView, f : Double) -> ImagefilterprewittView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_view_add(a : ImagefilterprewittView, b : ImagefilterprewittView) -> ImagefilterprewittView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittView::add(self : ImagefilterprewittView, other : ImagefilterprewittView) -> ImagefilterprewittView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_view_copy(s : ImagefilterprewittView) -> ImagefilterprewittView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittView::copy(self : ImagefilterprewittView) -> ImagefilterprewittView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_view_fill(s : ImagefilterprewittView, v : Double) -> ImagefilterprewittView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittView::fill(self : ImagefilterprewittView, v : Double) -> ImagefilterprewittView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_view_min(s : ImagefilterprewittView) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittView::min(self : ImagefilterprewittView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_view_max(s : ImagefilterprewittView) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittView::max(self : ImagefilterprewittView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_view_to_string(s : ImagefilterprewittView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittView::to_string(self : ImagefilterprewittView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittRange {
@@ -963,45 +963,45 @@ pub fn image_filter_prewitt_range_make(size : Int) -> ImagefilterprewittRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_range_len(s : ImagefilterprewittRange) -> Int { s.size }
+pub fn ImagefilterprewittRange::len(self : ImagefilterprewittRange) -> Int { self.size }
 
-pub fn image_filter_prewitt_range_get(s : ImagefilterprewittRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittRange::get(self : ImagefilterprewittRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_range_set(s : ImagefilterprewittRange, i : Int, v : Double) -> ImagefilterprewittRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittRange::set(self : ImagefilterprewittRange, i : Int, v : Double) -> ImagefilterprewittRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_range_sum(s : ImagefilterprewittRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittRange::sum(self : ImagefilterprewittRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_range_mean(s : ImagefilterprewittRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittRange::mean(self : ImagefilterprewittRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_range_scale(s : ImagefilterprewittRange, f : Double) -> ImagefilterprewittRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittRange::scale(self : ImagefilterprewittRange, f : Double) -> ImagefilterprewittRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_range_add(a : ImagefilterprewittRange, b : ImagefilterprewittRange) -> ImagefilterprewittRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittRange::add(self : ImagefilterprewittRange, other : ImagefilterprewittRange) -> ImagefilterprewittRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_range_copy(s : ImagefilterprewittRange) -> ImagefilterprewittRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittRange::copy(self : ImagefilterprewittRange) -> ImagefilterprewittRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_range_fill(s : ImagefilterprewittRange, v : Double) -> ImagefilterprewittRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittRange::fill(self : ImagefilterprewittRange, v : Double) -> ImagefilterprewittRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_range_min(s : ImagefilterprewittRange) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittRange::min(self : ImagefilterprewittRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_range_max(s : ImagefilterprewittRange) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittRange::max(self : ImagefilterprewittRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_range_to_string(s : ImagefilterprewittRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittRange::to_string(self : ImagefilterprewittRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterprewittSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_prewitt_slice_make(size : Int) -> ImagefilterprewittSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_prewitt_slice_len(s : ImagefilterprewittSlice) -> Int { s.size }
+pub fn ImagefilterprewittSlice::len(self : ImagefilterprewittSlice) -> Int { self.size }
 
-pub fn image_filter_prewitt_slice_get(s : ImagefilterprewittSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterprewittSlice::get(self : ImagefilterprewittSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_prewitt_slice_set(s : ImagefilterprewittSlice, i : Int, v : Double) -> ImagefilterprewittSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterprewittSlice::set(self : ImagefilterprewittSlice, i : Int, v : Double) -> ImagefilterprewittSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_slice_sum(s : ImagefilterprewittSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterprewittSlice::sum(self : ImagefilterprewittSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_prewitt_slice_mean(s : ImagefilterprewittSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterprewittSlice::mean(self : ImagefilterprewittSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_prewitt_slice_scale(s : ImagefilterprewittSlice, f : Double) -> ImagefilterprewittSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittSlice::scale(self : ImagefilterprewittSlice, f : Double) -> ImagefilterprewittSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_slice_add(a : ImagefilterprewittSlice, b : ImagefilterprewittSlice) -> ImagefilterprewittSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterprewittSlice::add(self : ImagefilterprewittSlice, other : ImagefilterprewittSlice) -> ImagefilterprewittSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_slice_copy(s : ImagefilterprewittSlice) -> ImagefilterprewittSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittSlice::copy(self : ImagefilterprewittSlice) -> ImagefilterprewittSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_slice_fill(s : ImagefilterprewittSlice, v : Double) -> ImagefilterprewittSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterprewittSlice::fill(self : ImagefilterprewittSlice, v : Double) -> ImagefilterprewittSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_prewitt_slice_min(s : ImagefilterprewittSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefilterprewittSlice::min(self : ImagefilterprewittSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_prewitt_slice_max(s : ImagefilterprewittSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefilterprewittSlice::max(self : ImagefilterprewittSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_prewitt_slice_to_string(s : ImagefilterprewittSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterprewittSlice::to_string(self : ImagefilterprewittSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

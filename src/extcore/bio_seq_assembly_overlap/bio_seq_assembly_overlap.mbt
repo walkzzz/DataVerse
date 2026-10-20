@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_overlap_frame_make(size : Int) -> BioseqassemblyoverlapF
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_frame_len(s : BioseqassemblyoverlapFrame) -> Int { s.size }
+pub fn BioseqassemblyoverlapFrame::len(self : BioseqassemblyoverlapFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_frame_get(s : BioseqassemblyoverlapFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapFrame::get(self : BioseqassemblyoverlapFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_frame_set(s : BioseqassemblyoverlapFrame, i : Int, v : Double) -> BioseqassemblyoverlapFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapFrame::set(self : BioseqassemblyoverlapFrame, i : Int, v : Double) -> BioseqassemblyoverlapFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_frame_sum(s : BioseqassemblyoverlapFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapFrame::sum(self : BioseqassemblyoverlapFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_frame_mean(s : BioseqassemblyoverlapFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapFrame::mean(self : BioseqassemblyoverlapFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_frame_scale(s : BioseqassemblyoverlapFrame, f : Double) -> BioseqassemblyoverlapFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapFrame::scale(self : BioseqassemblyoverlapFrame, f : Double) -> BioseqassemblyoverlapFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_frame_add(a : BioseqassemblyoverlapFrame, b : BioseqassemblyoverlapFrame) -> BioseqassemblyoverlapFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapFrame::add(self : BioseqassemblyoverlapFrame, other : BioseqassemblyoverlapFrame) -> BioseqassemblyoverlapFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_frame_copy(s : BioseqassemblyoverlapFrame) -> BioseqassemblyoverlapFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapFrame::copy(self : BioseqassemblyoverlapFrame) -> BioseqassemblyoverlapFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_frame_fill(s : BioseqassemblyoverlapFrame, v : Double) -> BioseqassemblyoverlapFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapFrame::fill(self : BioseqassemblyoverlapFrame, v : Double) -> BioseqassemblyoverlapFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_frame_min(s : BioseqassemblyoverlapFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapFrame::min(self : BioseqassemblyoverlapFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_frame_max(s : BioseqassemblyoverlapFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapFrame::max(self : BioseqassemblyoverlapFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_frame_to_string(s : BioseqassemblyoverlapFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapFrame::to_string(self : BioseqassemblyoverlapFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_overlap_table_make(size : Int) -> BioseqassemblyoverlapT
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_table_len(s : BioseqassemblyoverlapTable) -> Int { s.size }
+pub fn BioseqassemblyoverlapTable::len(self : BioseqassemblyoverlapTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_table_get(s : BioseqassemblyoverlapTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapTable::get(self : BioseqassemblyoverlapTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_table_set(s : BioseqassemblyoverlapTable, i : Int, v : Double) -> BioseqassemblyoverlapTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapTable::set(self : BioseqassemblyoverlapTable, i : Int, v : Double) -> BioseqassemblyoverlapTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_table_sum(s : BioseqassemblyoverlapTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapTable::sum(self : BioseqassemblyoverlapTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_table_mean(s : BioseqassemblyoverlapTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapTable::mean(self : BioseqassemblyoverlapTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_table_scale(s : BioseqassemblyoverlapTable, f : Double) -> BioseqassemblyoverlapTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapTable::scale(self : BioseqassemblyoverlapTable, f : Double) -> BioseqassemblyoverlapTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_table_add(a : BioseqassemblyoverlapTable, b : BioseqassemblyoverlapTable) -> BioseqassemblyoverlapTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapTable::add(self : BioseqassemblyoverlapTable, other : BioseqassemblyoverlapTable) -> BioseqassemblyoverlapTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_table_copy(s : BioseqassemblyoverlapTable) -> BioseqassemblyoverlapTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapTable::copy(self : BioseqassemblyoverlapTable) -> BioseqassemblyoverlapTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_table_fill(s : BioseqassemblyoverlapTable, v : Double) -> BioseqassemblyoverlapTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapTable::fill(self : BioseqassemblyoverlapTable, v : Double) -> BioseqassemblyoverlapTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_table_min(s : BioseqassemblyoverlapTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapTable::min(self : BioseqassemblyoverlapTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_table_max(s : BioseqassemblyoverlapTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapTable::max(self : BioseqassemblyoverlapTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_table_to_string(s : BioseqassemblyoverlapTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapTable::to_string(self : BioseqassemblyoverlapTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_overlap_graphn_make(size : Int) -> Bioseqassemblyoverlap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_len(s : BioseqassemblyoverlapGraphN) -> Int { s.size }
+pub fn BioseqassemblyoverlapGraphN::len(self : BioseqassemblyoverlapGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_graphn_get(s : BioseqassemblyoverlapGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapGraphN::get(self : BioseqassemblyoverlapGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_set(s : BioseqassemblyoverlapGraphN, i : Int, v : Double) -> BioseqassemblyoverlapGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapGraphN::set(self : BioseqassemblyoverlapGraphN, i : Int, v : Double) -> BioseqassemblyoverlapGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_sum(s : BioseqassemblyoverlapGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapGraphN::sum(self : BioseqassemblyoverlapGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_graphn_mean(s : BioseqassemblyoverlapGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapGraphN::mean(self : BioseqassemblyoverlapGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_graphn_scale(s : BioseqassemblyoverlapGraphN, f : Double) -> BioseqassemblyoverlapGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapGraphN::scale(self : BioseqassemblyoverlapGraphN, f : Double) -> BioseqassemblyoverlapGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_add(a : BioseqassemblyoverlapGraphN, b : BioseqassemblyoverlapGraphN) -> BioseqassemblyoverlapGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapGraphN::add(self : BioseqassemblyoverlapGraphN, other : BioseqassemblyoverlapGraphN) -> BioseqassemblyoverlapGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_copy(s : BioseqassemblyoverlapGraphN) -> BioseqassemblyoverlapGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapGraphN::copy(self : BioseqassemblyoverlapGraphN) -> BioseqassemblyoverlapGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_fill(s : BioseqassemblyoverlapGraphN, v : Double) -> BioseqassemblyoverlapGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapGraphN::fill(self : BioseqassemblyoverlapGraphN, v : Double) -> BioseqassemblyoverlapGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_graphn_min(s : BioseqassemblyoverlapGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapGraphN::min(self : BioseqassemblyoverlapGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_graphn_max(s : BioseqassemblyoverlapGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapGraphN::max(self : BioseqassemblyoverlapGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_graphn_to_string(s : BioseqassemblyoverlapGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapGraphN::to_string(self : BioseqassemblyoverlapGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_overlap_node_make(size : Int) -> BioseqassemblyoverlapNo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_node_len(s : BioseqassemblyoverlapNode) -> Int { s.size }
+pub fn BioseqassemblyoverlapNode::len(self : BioseqassemblyoverlapNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_node_get(s : BioseqassemblyoverlapNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapNode::get(self : BioseqassemblyoverlapNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_node_set(s : BioseqassemblyoverlapNode, i : Int, v : Double) -> BioseqassemblyoverlapNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapNode::set(self : BioseqassemblyoverlapNode, i : Int, v : Double) -> BioseqassemblyoverlapNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_node_sum(s : BioseqassemblyoverlapNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapNode::sum(self : BioseqassemblyoverlapNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_node_mean(s : BioseqassemblyoverlapNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapNode::mean(self : BioseqassemblyoverlapNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_node_scale(s : BioseqassemblyoverlapNode, f : Double) -> BioseqassemblyoverlapNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapNode::scale(self : BioseqassemblyoverlapNode, f : Double) -> BioseqassemblyoverlapNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_node_add(a : BioseqassemblyoverlapNode, b : BioseqassemblyoverlapNode) -> BioseqassemblyoverlapNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapNode::add(self : BioseqassemblyoverlapNode, other : BioseqassemblyoverlapNode) -> BioseqassemblyoverlapNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_node_copy(s : BioseqassemblyoverlapNode) -> BioseqassemblyoverlapNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapNode::copy(self : BioseqassemblyoverlapNode) -> BioseqassemblyoverlapNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_node_fill(s : BioseqassemblyoverlapNode, v : Double) -> BioseqassemblyoverlapNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapNode::fill(self : BioseqassemblyoverlapNode, v : Double) -> BioseqassemblyoverlapNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_node_min(s : BioseqassemblyoverlapNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapNode::min(self : BioseqassemblyoverlapNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_node_max(s : BioseqassemblyoverlapNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapNode::max(self : BioseqassemblyoverlapNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_node_to_string(s : BioseqassemblyoverlapNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapNode::to_string(self : BioseqassemblyoverlapNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_overlap_edge_make(size : Int) -> BioseqassemblyoverlapEd
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_edge_len(s : BioseqassemblyoverlapEdge) -> Int { s.size }
+pub fn BioseqassemblyoverlapEdge::len(self : BioseqassemblyoverlapEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_edge_get(s : BioseqassemblyoverlapEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapEdge::get(self : BioseqassemblyoverlapEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_edge_set(s : BioseqassemblyoverlapEdge, i : Int, v : Double) -> BioseqassemblyoverlapEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapEdge::set(self : BioseqassemblyoverlapEdge, i : Int, v : Double) -> BioseqassemblyoverlapEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_edge_sum(s : BioseqassemblyoverlapEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapEdge::sum(self : BioseqassemblyoverlapEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_edge_mean(s : BioseqassemblyoverlapEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapEdge::mean(self : BioseqassemblyoverlapEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_edge_scale(s : BioseqassemblyoverlapEdge, f : Double) -> BioseqassemblyoverlapEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapEdge::scale(self : BioseqassemblyoverlapEdge, f : Double) -> BioseqassemblyoverlapEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_edge_add(a : BioseqassemblyoverlapEdge, b : BioseqassemblyoverlapEdge) -> BioseqassemblyoverlapEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapEdge::add(self : BioseqassemblyoverlapEdge, other : BioseqassemblyoverlapEdge) -> BioseqassemblyoverlapEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_edge_copy(s : BioseqassemblyoverlapEdge) -> BioseqassemblyoverlapEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapEdge::copy(self : BioseqassemblyoverlapEdge) -> BioseqassemblyoverlapEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_edge_fill(s : BioseqassemblyoverlapEdge, v : Double) -> BioseqassemblyoverlapEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapEdge::fill(self : BioseqassemblyoverlapEdge, v : Double) -> BioseqassemblyoverlapEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_edge_min(s : BioseqassemblyoverlapEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapEdge::min(self : BioseqassemblyoverlapEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_edge_max(s : BioseqassemblyoverlapEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapEdge::max(self : BioseqassemblyoverlapEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_edge_to_string(s : BioseqassemblyoverlapEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapEdge::to_string(self : BioseqassemblyoverlapEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_overlap_path_make(size : Int) -> BioseqassemblyoverlapPa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_path_len(s : BioseqassemblyoverlapPath) -> Int { s.size }
+pub fn BioseqassemblyoverlapPath::len(self : BioseqassemblyoverlapPath) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_path_get(s : BioseqassemblyoverlapPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapPath::get(self : BioseqassemblyoverlapPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_path_set(s : BioseqassemblyoverlapPath, i : Int, v : Double) -> BioseqassemblyoverlapPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapPath::set(self : BioseqassemblyoverlapPath, i : Int, v : Double) -> BioseqassemblyoverlapPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_path_sum(s : BioseqassemblyoverlapPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapPath::sum(self : BioseqassemblyoverlapPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_path_mean(s : BioseqassemblyoverlapPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapPath::mean(self : BioseqassemblyoverlapPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_path_scale(s : BioseqassemblyoverlapPath, f : Double) -> BioseqassemblyoverlapPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapPath::scale(self : BioseqassemblyoverlapPath, f : Double) -> BioseqassemblyoverlapPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_path_add(a : BioseqassemblyoverlapPath, b : BioseqassemblyoverlapPath) -> BioseqassemblyoverlapPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapPath::add(self : BioseqassemblyoverlapPath, other : BioseqassemblyoverlapPath) -> BioseqassemblyoverlapPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_path_copy(s : BioseqassemblyoverlapPath) -> BioseqassemblyoverlapPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapPath::copy(self : BioseqassemblyoverlapPath) -> BioseqassemblyoverlapPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_path_fill(s : BioseqassemblyoverlapPath, v : Double) -> BioseqassemblyoverlapPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapPath::fill(self : BioseqassemblyoverlapPath, v : Double) -> BioseqassemblyoverlapPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_path_min(s : BioseqassemblyoverlapPath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapPath::min(self : BioseqassemblyoverlapPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_path_max(s : BioseqassemblyoverlapPath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapPath::max(self : BioseqassemblyoverlapPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_path_to_string(s : BioseqassemblyoverlapPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapPath::to_string(self : BioseqassemblyoverlapPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_overlap_cluster_make(size : Int) -> Bioseqassemblyoverla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_len(s : BioseqassemblyoverlapCluster) -> Int { s.size }
+pub fn BioseqassemblyoverlapCluster::len(self : BioseqassemblyoverlapCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_cluster_get(s : BioseqassemblyoverlapCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapCluster::get(self : BioseqassemblyoverlapCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_set(s : BioseqassemblyoverlapCluster, i : Int, v : Double) -> BioseqassemblyoverlapCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCluster::set(self : BioseqassemblyoverlapCluster, i : Int, v : Double) -> BioseqassemblyoverlapCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_sum(s : BioseqassemblyoverlapCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapCluster::sum(self : BioseqassemblyoverlapCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_cluster_mean(s : BioseqassemblyoverlapCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapCluster::mean(self : BioseqassemblyoverlapCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_cluster_scale(s : BioseqassemblyoverlapCluster, f : Double) -> BioseqassemblyoverlapCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCluster::scale(self : BioseqassemblyoverlapCluster, f : Double) -> BioseqassemblyoverlapCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_add(a : BioseqassemblyoverlapCluster, b : BioseqassemblyoverlapCluster) -> BioseqassemblyoverlapCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapCluster::add(self : BioseqassemblyoverlapCluster, other : BioseqassemblyoverlapCluster) -> BioseqassemblyoverlapCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_copy(s : BioseqassemblyoverlapCluster) -> BioseqassemblyoverlapCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCluster::copy(self : BioseqassemblyoverlapCluster) -> BioseqassemblyoverlapCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_fill(s : BioseqassemblyoverlapCluster, v : Double) -> BioseqassemblyoverlapCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCluster::fill(self : BioseqassemblyoverlapCluster, v : Double) -> BioseqassemblyoverlapCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cluster_min(s : BioseqassemblyoverlapCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapCluster::min(self : BioseqassemblyoverlapCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_cluster_max(s : BioseqassemblyoverlapCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapCluster::max(self : BioseqassemblyoverlapCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_cluster_to_string(s : BioseqassemblyoverlapCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapCluster::to_string(self : BioseqassemblyoverlapCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_overlap_model_make(size : Int) -> BioseqassemblyoverlapM
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_model_len(s : BioseqassemblyoverlapModel) -> Int { s.size }
+pub fn BioseqassemblyoverlapModel::len(self : BioseqassemblyoverlapModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_model_get(s : BioseqassemblyoverlapModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapModel::get(self : BioseqassemblyoverlapModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_model_set(s : BioseqassemblyoverlapModel, i : Int, v : Double) -> BioseqassemblyoverlapModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapModel::set(self : BioseqassemblyoverlapModel, i : Int, v : Double) -> BioseqassemblyoverlapModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_model_sum(s : BioseqassemblyoverlapModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapModel::sum(self : BioseqassemblyoverlapModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_model_mean(s : BioseqassemblyoverlapModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapModel::mean(self : BioseqassemblyoverlapModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_model_scale(s : BioseqassemblyoverlapModel, f : Double) -> BioseqassemblyoverlapModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapModel::scale(self : BioseqassemblyoverlapModel, f : Double) -> BioseqassemblyoverlapModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_model_add(a : BioseqassemblyoverlapModel, b : BioseqassemblyoverlapModel) -> BioseqassemblyoverlapModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapModel::add(self : BioseqassemblyoverlapModel, other : BioseqassemblyoverlapModel) -> BioseqassemblyoverlapModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_model_copy(s : BioseqassemblyoverlapModel) -> BioseqassemblyoverlapModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapModel::copy(self : BioseqassemblyoverlapModel) -> BioseqassemblyoverlapModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_model_fill(s : BioseqassemblyoverlapModel, v : Double) -> BioseqassemblyoverlapModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapModel::fill(self : BioseqassemblyoverlapModel, v : Double) -> BioseqassemblyoverlapModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_model_min(s : BioseqassemblyoverlapModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapModel::min(self : BioseqassemblyoverlapModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_model_max(s : BioseqassemblyoverlapModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapModel::max(self : BioseqassemblyoverlapModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_model_to_string(s : BioseqassemblyoverlapModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapModel::to_string(self : BioseqassemblyoverlapModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_overlap_layer_make(size : Int) -> BioseqassemblyoverlapL
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_layer_len(s : BioseqassemblyoverlapLayer) -> Int { s.size }
+pub fn BioseqassemblyoverlapLayer::len(self : BioseqassemblyoverlapLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_layer_get(s : BioseqassemblyoverlapLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapLayer::get(self : BioseqassemblyoverlapLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_layer_set(s : BioseqassemblyoverlapLayer, i : Int, v : Double) -> BioseqassemblyoverlapLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapLayer::set(self : BioseqassemblyoverlapLayer, i : Int, v : Double) -> BioseqassemblyoverlapLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_layer_sum(s : BioseqassemblyoverlapLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapLayer::sum(self : BioseqassemblyoverlapLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_layer_mean(s : BioseqassemblyoverlapLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapLayer::mean(self : BioseqassemblyoverlapLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_layer_scale(s : BioseqassemblyoverlapLayer, f : Double) -> BioseqassemblyoverlapLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapLayer::scale(self : BioseqassemblyoverlapLayer, f : Double) -> BioseqassemblyoverlapLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_layer_add(a : BioseqassemblyoverlapLayer, b : BioseqassemblyoverlapLayer) -> BioseqassemblyoverlapLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapLayer::add(self : BioseqassemblyoverlapLayer, other : BioseqassemblyoverlapLayer) -> BioseqassemblyoverlapLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_layer_copy(s : BioseqassemblyoverlapLayer) -> BioseqassemblyoverlapLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapLayer::copy(self : BioseqassemblyoverlapLayer) -> BioseqassemblyoverlapLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_layer_fill(s : BioseqassemblyoverlapLayer, v : Double) -> BioseqassemblyoverlapLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapLayer::fill(self : BioseqassemblyoverlapLayer, v : Double) -> BioseqassemblyoverlapLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_layer_min(s : BioseqassemblyoverlapLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapLayer::min(self : BioseqassemblyoverlapLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_layer_max(s : BioseqassemblyoverlapLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapLayer::max(self : BioseqassemblyoverlapLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_layer_to_string(s : BioseqassemblyoverlapLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapLayer::to_string(self : BioseqassemblyoverlapLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_overlap_buffer_make(size : Int) -> Bioseqassemblyoverlap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_len(s : BioseqassemblyoverlapBuffer) -> Int { s.size }
+pub fn BioseqassemblyoverlapBuffer::len(self : BioseqassemblyoverlapBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_buffer_get(s : BioseqassemblyoverlapBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapBuffer::get(self : BioseqassemblyoverlapBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_set(s : BioseqassemblyoverlapBuffer, i : Int, v : Double) -> BioseqassemblyoverlapBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapBuffer::set(self : BioseqassemblyoverlapBuffer, i : Int, v : Double) -> BioseqassemblyoverlapBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_sum(s : BioseqassemblyoverlapBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapBuffer::sum(self : BioseqassemblyoverlapBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_buffer_mean(s : BioseqassemblyoverlapBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapBuffer::mean(self : BioseqassemblyoverlapBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_buffer_scale(s : BioseqassemblyoverlapBuffer, f : Double) -> BioseqassemblyoverlapBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapBuffer::scale(self : BioseqassemblyoverlapBuffer, f : Double) -> BioseqassemblyoverlapBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_add(a : BioseqassemblyoverlapBuffer, b : BioseqassemblyoverlapBuffer) -> BioseqassemblyoverlapBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapBuffer::add(self : BioseqassemblyoverlapBuffer, other : BioseqassemblyoverlapBuffer) -> BioseqassemblyoverlapBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_copy(s : BioseqassemblyoverlapBuffer) -> BioseqassemblyoverlapBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapBuffer::copy(self : BioseqassemblyoverlapBuffer) -> BioseqassemblyoverlapBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_fill(s : BioseqassemblyoverlapBuffer, v : Double) -> BioseqassemblyoverlapBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapBuffer::fill(self : BioseqassemblyoverlapBuffer, v : Double) -> BioseqassemblyoverlapBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_buffer_min(s : BioseqassemblyoverlapBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapBuffer::min(self : BioseqassemblyoverlapBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_buffer_max(s : BioseqassemblyoverlapBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapBuffer::max(self : BioseqassemblyoverlapBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_buffer_to_string(s : BioseqassemblyoverlapBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapBuffer::to_string(self : BioseqassemblyoverlapBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_overlap_cursor_make(size : Int) -> Bioseqassemblyoverlap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_len(s : BioseqassemblyoverlapCursor) -> Int { s.size }
+pub fn BioseqassemblyoverlapCursor::len(self : BioseqassemblyoverlapCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_cursor_get(s : BioseqassemblyoverlapCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapCursor::get(self : BioseqassemblyoverlapCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_set(s : BioseqassemblyoverlapCursor, i : Int, v : Double) -> BioseqassemblyoverlapCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCursor::set(self : BioseqassemblyoverlapCursor, i : Int, v : Double) -> BioseqassemblyoverlapCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_sum(s : BioseqassemblyoverlapCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapCursor::sum(self : BioseqassemblyoverlapCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_cursor_mean(s : BioseqassemblyoverlapCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapCursor::mean(self : BioseqassemblyoverlapCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_cursor_scale(s : BioseqassemblyoverlapCursor, f : Double) -> BioseqassemblyoverlapCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCursor::scale(self : BioseqassemblyoverlapCursor, f : Double) -> BioseqassemblyoverlapCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_add(a : BioseqassemblyoverlapCursor, b : BioseqassemblyoverlapCursor) -> BioseqassemblyoverlapCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapCursor::add(self : BioseqassemblyoverlapCursor, other : BioseqassemblyoverlapCursor) -> BioseqassemblyoverlapCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_copy(s : BioseqassemblyoverlapCursor) -> BioseqassemblyoverlapCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCursor::copy(self : BioseqassemblyoverlapCursor) -> BioseqassemblyoverlapCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_fill(s : BioseqassemblyoverlapCursor, v : Double) -> BioseqassemblyoverlapCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapCursor::fill(self : BioseqassemblyoverlapCursor, v : Double) -> BioseqassemblyoverlapCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_cursor_min(s : BioseqassemblyoverlapCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapCursor::min(self : BioseqassemblyoverlapCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_cursor_max(s : BioseqassemblyoverlapCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapCursor::max(self : BioseqassemblyoverlapCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_cursor_to_string(s : BioseqassemblyoverlapCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapCursor::to_string(self : BioseqassemblyoverlapCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_overlap_view_make(size : Int) -> BioseqassemblyoverlapVi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_view_len(s : BioseqassemblyoverlapView) -> Int { s.size }
+pub fn BioseqassemblyoverlapView::len(self : BioseqassemblyoverlapView) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_view_get(s : BioseqassemblyoverlapView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapView::get(self : BioseqassemblyoverlapView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_view_set(s : BioseqassemblyoverlapView, i : Int, v : Double) -> BioseqassemblyoverlapView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapView::set(self : BioseqassemblyoverlapView, i : Int, v : Double) -> BioseqassemblyoverlapView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_view_sum(s : BioseqassemblyoverlapView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapView::sum(self : BioseqassemblyoverlapView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_view_mean(s : BioseqassemblyoverlapView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapView::mean(self : BioseqassemblyoverlapView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_view_scale(s : BioseqassemblyoverlapView, f : Double) -> BioseqassemblyoverlapView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapView::scale(self : BioseqassemblyoverlapView, f : Double) -> BioseqassemblyoverlapView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_view_add(a : BioseqassemblyoverlapView, b : BioseqassemblyoverlapView) -> BioseqassemblyoverlapView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapView::add(self : BioseqassemblyoverlapView, other : BioseqassemblyoverlapView) -> BioseqassemblyoverlapView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_view_copy(s : BioseqassemblyoverlapView) -> BioseqassemblyoverlapView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapView::copy(self : BioseqassemblyoverlapView) -> BioseqassemblyoverlapView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_view_fill(s : BioseqassemblyoverlapView, v : Double) -> BioseqassemblyoverlapView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapView::fill(self : BioseqassemblyoverlapView, v : Double) -> BioseqassemblyoverlapView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_view_min(s : BioseqassemblyoverlapView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapView::min(self : BioseqassemblyoverlapView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_view_max(s : BioseqassemblyoverlapView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapView::max(self : BioseqassemblyoverlapView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_view_to_string(s : BioseqassemblyoverlapView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapView::to_string(self : BioseqassemblyoverlapView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_overlap_range_make(size : Int) -> BioseqassemblyoverlapR
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_range_len(s : BioseqassemblyoverlapRange) -> Int { s.size }
+pub fn BioseqassemblyoverlapRange::len(self : BioseqassemblyoverlapRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_range_get(s : BioseqassemblyoverlapRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapRange::get(self : BioseqassemblyoverlapRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_range_set(s : BioseqassemblyoverlapRange, i : Int, v : Double) -> BioseqassemblyoverlapRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapRange::set(self : BioseqassemblyoverlapRange, i : Int, v : Double) -> BioseqassemblyoverlapRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_range_sum(s : BioseqassemblyoverlapRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapRange::sum(self : BioseqassemblyoverlapRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_range_mean(s : BioseqassemblyoverlapRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapRange::mean(self : BioseqassemblyoverlapRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_range_scale(s : BioseqassemblyoverlapRange, f : Double) -> BioseqassemblyoverlapRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapRange::scale(self : BioseqassemblyoverlapRange, f : Double) -> BioseqassemblyoverlapRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_range_add(a : BioseqassemblyoverlapRange, b : BioseqassemblyoverlapRange) -> BioseqassemblyoverlapRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapRange::add(self : BioseqassemblyoverlapRange, other : BioseqassemblyoverlapRange) -> BioseqassemblyoverlapRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_range_copy(s : BioseqassemblyoverlapRange) -> BioseqassemblyoverlapRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapRange::copy(self : BioseqassemblyoverlapRange) -> BioseqassemblyoverlapRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_range_fill(s : BioseqassemblyoverlapRange, v : Double) -> BioseqassemblyoverlapRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapRange::fill(self : BioseqassemblyoverlapRange, v : Double) -> BioseqassemblyoverlapRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_range_min(s : BioseqassemblyoverlapRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapRange::min(self : BioseqassemblyoverlapRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_range_max(s : BioseqassemblyoverlapRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapRange::max(self : BioseqassemblyoverlapRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_range_to_string(s : BioseqassemblyoverlapRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapRange::to_string(self : BioseqassemblyoverlapRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_overlap_slice_make(size : Int) -> BioseqassemblyoverlapS
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_slice_len(s : BioseqassemblyoverlapSlice) -> Int { s.size }
+pub fn BioseqassemblyoverlapSlice::len(self : BioseqassemblyoverlapSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_overlap_slice_get(s : BioseqassemblyoverlapSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyoverlapSlice::get(self : BioseqassemblyoverlapSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_overlap_slice_set(s : BioseqassemblyoverlapSlice, i : Int, v : Double) -> BioseqassemblyoverlapSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapSlice::set(self : BioseqassemblyoverlapSlice, i : Int, v : Double) -> BioseqassemblyoverlapSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_slice_sum(s : BioseqassemblyoverlapSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyoverlapSlice::sum(self : BioseqassemblyoverlapSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_overlap_slice_mean(s : BioseqassemblyoverlapSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyoverlapSlice::mean(self : BioseqassemblyoverlapSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_overlap_slice_scale(s : BioseqassemblyoverlapSlice, f : Double) -> BioseqassemblyoverlapSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapSlice::scale(self : BioseqassemblyoverlapSlice, f : Double) -> BioseqassemblyoverlapSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_slice_add(a : BioseqassemblyoverlapSlice, b : BioseqassemblyoverlapSlice) -> BioseqassemblyoverlapSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyoverlapSlice::add(self : BioseqassemblyoverlapSlice, other : BioseqassemblyoverlapSlice) -> BioseqassemblyoverlapSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_slice_copy(s : BioseqassemblyoverlapSlice) -> BioseqassemblyoverlapSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapSlice::copy(self : BioseqassemblyoverlapSlice) -> BioseqassemblyoverlapSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_slice_fill(s : BioseqassemblyoverlapSlice, v : Double) -> BioseqassemblyoverlapSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyoverlapSlice::fill(self : BioseqassemblyoverlapSlice, v : Double) -> BioseqassemblyoverlapSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_overlap_slice_min(s : BioseqassemblyoverlapSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyoverlapSlice::min(self : BioseqassemblyoverlapSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_overlap_slice_max(s : BioseqassemblyoverlapSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyoverlapSlice::max(self : BioseqassemblyoverlapSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_overlap_slice_to_string(s : BioseqassemblyoverlapSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyoverlapSlice::to_string(self : BioseqassemblyoverlapSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

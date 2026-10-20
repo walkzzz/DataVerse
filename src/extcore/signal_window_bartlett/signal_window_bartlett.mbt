@@ -351,45 +351,45 @@ pub fn signal_window_bartlett_frame_make(size : Int) -> SignalwindowbartlettFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_frame_len(s : SignalwindowbartlettFrame) -> Int { s.size }
+pub fn SignalwindowbartlettFrame::len(self : SignalwindowbartlettFrame) -> Int { self.size }
 
-pub fn signal_window_bartlett_frame_get(s : SignalwindowbartlettFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettFrame::get(self : SignalwindowbartlettFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_frame_set(s : SignalwindowbartlettFrame, i : Int, v : Double) -> SignalwindowbartlettFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettFrame::set(self : SignalwindowbartlettFrame, i : Int, v : Double) -> SignalwindowbartlettFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_frame_sum(s : SignalwindowbartlettFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettFrame::sum(self : SignalwindowbartlettFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_frame_mean(s : SignalwindowbartlettFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettFrame::mean(self : SignalwindowbartlettFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_frame_scale(s : SignalwindowbartlettFrame, f : Double) -> SignalwindowbartlettFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettFrame::scale(self : SignalwindowbartlettFrame, f : Double) -> SignalwindowbartlettFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_frame_add(a : SignalwindowbartlettFrame, b : SignalwindowbartlettFrame) -> SignalwindowbartlettFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettFrame::add(self : SignalwindowbartlettFrame, other : SignalwindowbartlettFrame) -> SignalwindowbartlettFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_frame_copy(s : SignalwindowbartlettFrame) -> SignalwindowbartlettFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettFrame::copy(self : SignalwindowbartlettFrame) -> SignalwindowbartlettFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_frame_fill(s : SignalwindowbartlettFrame, v : Double) -> SignalwindowbartlettFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettFrame::fill(self : SignalwindowbartlettFrame, v : Double) -> SignalwindowbartlettFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_frame_min(s : SignalwindowbartlettFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettFrame::min(self : SignalwindowbartlettFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_frame_max(s : SignalwindowbartlettFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettFrame::max(self : SignalwindowbartlettFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_frame_to_string(s : SignalwindowbartlettFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettFrame::to_string(self : SignalwindowbartlettFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettTable {
@@ -402,45 +402,45 @@ pub fn signal_window_bartlett_table_make(size : Int) -> SignalwindowbartlettTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_table_len(s : SignalwindowbartlettTable) -> Int { s.size }
+pub fn SignalwindowbartlettTable::len(self : SignalwindowbartlettTable) -> Int { self.size }
 
-pub fn signal_window_bartlett_table_get(s : SignalwindowbartlettTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettTable::get(self : SignalwindowbartlettTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_table_set(s : SignalwindowbartlettTable, i : Int, v : Double) -> SignalwindowbartlettTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettTable::set(self : SignalwindowbartlettTable, i : Int, v : Double) -> SignalwindowbartlettTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_table_sum(s : SignalwindowbartlettTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettTable::sum(self : SignalwindowbartlettTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_table_mean(s : SignalwindowbartlettTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettTable::mean(self : SignalwindowbartlettTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_table_scale(s : SignalwindowbartlettTable, f : Double) -> SignalwindowbartlettTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettTable::scale(self : SignalwindowbartlettTable, f : Double) -> SignalwindowbartlettTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_table_add(a : SignalwindowbartlettTable, b : SignalwindowbartlettTable) -> SignalwindowbartlettTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettTable::add(self : SignalwindowbartlettTable, other : SignalwindowbartlettTable) -> SignalwindowbartlettTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_table_copy(s : SignalwindowbartlettTable) -> SignalwindowbartlettTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettTable::copy(self : SignalwindowbartlettTable) -> SignalwindowbartlettTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_table_fill(s : SignalwindowbartlettTable, v : Double) -> SignalwindowbartlettTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettTable::fill(self : SignalwindowbartlettTable, v : Double) -> SignalwindowbartlettTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_table_min(s : SignalwindowbartlettTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettTable::min(self : SignalwindowbartlettTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_table_max(s : SignalwindowbartlettTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettTable::max(self : SignalwindowbartlettTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_table_to_string(s : SignalwindowbartlettTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettTable::to_string(self : SignalwindowbartlettTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_bartlett_graphn_make(size : Int) -> SignalwindowbartlettGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_graphn_len(s : SignalwindowbartlettGraphN) -> Int { s.size }
+pub fn SignalwindowbartlettGraphN::len(self : SignalwindowbartlettGraphN) -> Int { self.size }
 
-pub fn signal_window_bartlett_graphn_get(s : SignalwindowbartlettGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettGraphN::get(self : SignalwindowbartlettGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_graphn_set(s : SignalwindowbartlettGraphN, i : Int, v : Double) -> SignalwindowbartlettGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettGraphN::set(self : SignalwindowbartlettGraphN, i : Int, v : Double) -> SignalwindowbartlettGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_graphn_sum(s : SignalwindowbartlettGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettGraphN::sum(self : SignalwindowbartlettGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_graphn_mean(s : SignalwindowbartlettGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettGraphN::mean(self : SignalwindowbartlettGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_graphn_scale(s : SignalwindowbartlettGraphN, f : Double) -> SignalwindowbartlettGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettGraphN::scale(self : SignalwindowbartlettGraphN, f : Double) -> SignalwindowbartlettGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_graphn_add(a : SignalwindowbartlettGraphN, b : SignalwindowbartlettGraphN) -> SignalwindowbartlettGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettGraphN::add(self : SignalwindowbartlettGraphN, other : SignalwindowbartlettGraphN) -> SignalwindowbartlettGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_graphn_copy(s : SignalwindowbartlettGraphN) -> SignalwindowbartlettGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettGraphN::copy(self : SignalwindowbartlettGraphN) -> SignalwindowbartlettGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_graphn_fill(s : SignalwindowbartlettGraphN, v : Double) -> SignalwindowbartlettGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettGraphN::fill(self : SignalwindowbartlettGraphN, v : Double) -> SignalwindowbartlettGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_graphn_min(s : SignalwindowbartlettGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettGraphN::min(self : SignalwindowbartlettGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_graphn_max(s : SignalwindowbartlettGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettGraphN::max(self : SignalwindowbartlettGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_graphn_to_string(s : SignalwindowbartlettGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettGraphN::to_string(self : SignalwindowbartlettGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettNode {
@@ -504,45 +504,45 @@ pub fn signal_window_bartlett_node_make(size : Int) -> SignalwindowbartlettNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_node_len(s : SignalwindowbartlettNode) -> Int { s.size }
+pub fn SignalwindowbartlettNode::len(self : SignalwindowbartlettNode) -> Int { self.size }
 
-pub fn signal_window_bartlett_node_get(s : SignalwindowbartlettNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettNode::get(self : SignalwindowbartlettNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_node_set(s : SignalwindowbartlettNode, i : Int, v : Double) -> SignalwindowbartlettNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettNode::set(self : SignalwindowbartlettNode, i : Int, v : Double) -> SignalwindowbartlettNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_node_sum(s : SignalwindowbartlettNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettNode::sum(self : SignalwindowbartlettNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_node_mean(s : SignalwindowbartlettNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettNode::mean(self : SignalwindowbartlettNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_node_scale(s : SignalwindowbartlettNode, f : Double) -> SignalwindowbartlettNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettNode::scale(self : SignalwindowbartlettNode, f : Double) -> SignalwindowbartlettNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_node_add(a : SignalwindowbartlettNode, b : SignalwindowbartlettNode) -> SignalwindowbartlettNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettNode::add(self : SignalwindowbartlettNode, other : SignalwindowbartlettNode) -> SignalwindowbartlettNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_node_copy(s : SignalwindowbartlettNode) -> SignalwindowbartlettNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettNode::copy(self : SignalwindowbartlettNode) -> SignalwindowbartlettNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_node_fill(s : SignalwindowbartlettNode, v : Double) -> SignalwindowbartlettNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettNode::fill(self : SignalwindowbartlettNode, v : Double) -> SignalwindowbartlettNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_node_min(s : SignalwindowbartlettNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettNode::min(self : SignalwindowbartlettNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_node_max(s : SignalwindowbartlettNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettNode::max(self : SignalwindowbartlettNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_node_to_string(s : SignalwindowbartlettNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettNode::to_string(self : SignalwindowbartlettNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_bartlett_edge_make(size : Int) -> SignalwindowbartlettEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_edge_len(s : SignalwindowbartlettEdge) -> Int { s.size }
+pub fn SignalwindowbartlettEdge::len(self : SignalwindowbartlettEdge) -> Int { self.size }
 
-pub fn signal_window_bartlett_edge_get(s : SignalwindowbartlettEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettEdge::get(self : SignalwindowbartlettEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_edge_set(s : SignalwindowbartlettEdge, i : Int, v : Double) -> SignalwindowbartlettEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettEdge::set(self : SignalwindowbartlettEdge, i : Int, v : Double) -> SignalwindowbartlettEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_edge_sum(s : SignalwindowbartlettEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettEdge::sum(self : SignalwindowbartlettEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_edge_mean(s : SignalwindowbartlettEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettEdge::mean(self : SignalwindowbartlettEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_edge_scale(s : SignalwindowbartlettEdge, f : Double) -> SignalwindowbartlettEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettEdge::scale(self : SignalwindowbartlettEdge, f : Double) -> SignalwindowbartlettEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_edge_add(a : SignalwindowbartlettEdge, b : SignalwindowbartlettEdge) -> SignalwindowbartlettEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettEdge::add(self : SignalwindowbartlettEdge, other : SignalwindowbartlettEdge) -> SignalwindowbartlettEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_edge_copy(s : SignalwindowbartlettEdge) -> SignalwindowbartlettEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettEdge::copy(self : SignalwindowbartlettEdge) -> SignalwindowbartlettEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_edge_fill(s : SignalwindowbartlettEdge, v : Double) -> SignalwindowbartlettEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettEdge::fill(self : SignalwindowbartlettEdge, v : Double) -> SignalwindowbartlettEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_edge_min(s : SignalwindowbartlettEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettEdge::min(self : SignalwindowbartlettEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_edge_max(s : SignalwindowbartlettEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettEdge::max(self : SignalwindowbartlettEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_edge_to_string(s : SignalwindowbartlettEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettEdge::to_string(self : SignalwindowbartlettEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettPath {
@@ -606,45 +606,45 @@ pub fn signal_window_bartlett_path_make(size : Int) -> SignalwindowbartlettPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_path_len(s : SignalwindowbartlettPath) -> Int { s.size }
+pub fn SignalwindowbartlettPath::len(self : SignalwindowbartlettPath) -> Int { self.size }
 
-pub fn signal_window_bartlett_path_get(s : SignalwindowbartlettPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettPath::get(self : SignalwindowbartlettPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_path_set(s : SignalwindowbartlettPath, i : Int, v : Double) -> SignalwindowbartlettPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettPath::set(self : SignalwindowbartlettPath, i : Int, v : Double) -> SignalwindowbartlettPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_path_sum(s : SignalwindowbartlettPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettPath::sum(self : SignalwindowbartlettPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_path_mean(s : SignalwindowbartlettPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettPath::mean(self : SignalwindowbartlettPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_path_scale(s : SignalwindowbartlettPath, f : Double) -> SignalwindowbartlettPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettPath::scale(self : SignalwindowbartlettPath, f : Double) -> SignalwindowbartlettPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_path_add(a : SignalwindowbartlettPath, b : SignalwindowbartlettPath) -> SignalwindowbartlettPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettPath::add(self : SignalwindowbartlettPath, other : SignalwindowbartlettPath) -> SignalwindowbartlettPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_path_copy(s : SignalwindowbartlettPath) -> SignalwindowbartlettPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettPath::copy(self : SignalwindowbartlettPath) -> SignalwindowbartlettPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_path_fill(s : SignalwindowbartlettPath, v : Double) -> SignalwindowbartlettPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettPath::fill(self : SignalwindowbartlettPath, v : Double) -> SignalwindowbartlettPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_path_min(s : SignalwindowbartlettPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettPath::min(self : SignalwindowbartlettPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_path_max(s : SignalwindowbartlettPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettPath::max(self : SignalwindowbartlettPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_path_to_string(s : SignalwindowbartlettPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettPath::to_string(self : SignalwindowbartlettPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_bartlett_cluster_make(size : Int) -> SignalwindowbartlettCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_cluster_len(s : SignalwindowbartlettCluster) -> Int { s.size }
+pub fn SignalwindowbartlettCluster::len(self : SignalwindowbartlettCluster) -> Int { self.size }
 
-pub fn signal_window_bartlett_cluster_get(s : SignalwindowbartlettCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettCluster::get(self : SignalwindowbartlettCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_cluster_set(s : SignalwindowbartlettCluster, i : Int, v : Double) -> SignalwindowbartlettCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCluster::set(self : SignalwindowbartlettCluster, i : Int, v : Double) -> SignalwindowbartlettCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cluster_sum(s : SignalwindowbartlettCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettCluster::sum(self : SignalwindowbartlettCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_cluster_mean(s : SignalwindowbartlettCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettCluster::mean(self : SignalwindowbartlettCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_cluster_scale(s : SignalwindowbartlettCluster, f : Double) -> SignalwindowbartlettCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCluster::scale(self : SignalwindowbartlettCluster, f : Double) -> SignalwindowbartlettCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cluster_add(a : SignalwindowbartlettCluster, b : SignalwindowbartlettCluster) -> SignalwindowbartlettCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettCluster::add(self : SignalwindowbartlettCluster, other : SignalwindowbartlettCluster) -> SignalwindowbartlettCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cluster_copy(s : SignalwindowbartlettCluster) -> SignalwindowbartlettCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCluster::copy(self : SignalwindowbartlettCluster) -> SignalwindowbartlettCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cluster_fill(s : SignalwindowbartlettCluster, v : Double) -> SignalwindowbartlettCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCluster::fill(self : SignalwindowbartlettCluster, v : Double) -> SignalwindowbartlettCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cluster_min(s : SignalwindowbartlettCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettCluster::min(self : SignalwindowbartlettCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_cluster_max(s : SignalwindowbartlettCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettCluster::max(self : SignalwindowbartlettCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_cluster_to_string(s : SignalwindowbartlettCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettCluster::to_string(self : SignalwindowbartlettCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettModel {
@@ -708,45 +708,45 @@ pub fn signal_window_bartlett_model_make(size : Int) -> SignalwindowbartlettMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_model_len(s : SignalwindowbartlettModel) -> Int { s.size }
+pub fn SignalwindowbartlettModel::len(self : SignalwindowbartlettModel) -> Int { self.size }
 
-pub fn signal_window_bartlett_model_get(s : SignalwindowbartlettModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettModel::get(self : SignalwindowbartlettModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_model_set(s : SignalwindowbartlettModel, i : Int, v : Double) -> SignalwindowbartlettModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettModel::set(self : SignalwindowbartlettModel, i : Int, v : Double) -> SignalwindowbartlettModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_model_sum(s : SignalwindowbartlettModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettModel::sum(self : SignalwindowbartlettModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_model_mean(s : SignalwindowbartlettModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettModel::mean(self : SignalwindowbartlettModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_model_scale(s : SignalwindowbartlettModel, f : Double) -> SignalwindowbartlettModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettModel::scale(self : SignalwindowbartlettModel, f : Double) -> SignalwindowbartlettModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_model_add(a : SignalwindowbartlettModel, b : SignalwindowbartlettModel) -> SignalwindowbartlettModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettModel::add(self : SignalwindowbartlettModel, other : SignalwindowbartlettModel) -> SignalwindowbartlettModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_model_copy(s : SignalwindowbartlettModel) -> SignalwindowbartlettModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettModel::copy(self : SignalwindowbartlettModel) -> SignalwindowbartlettModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_model_fill(s : SignalwindowbartlettModel, v : Double) -> SignalwindowbartlettModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettModel::fill(self : SignalwindowbartlettModel, v : Double) -> SignalwindowbartlettModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_model_min(s : SignalwindowbartlettModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettModel::min(self : SignalwindowbartlettModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_model_max(s : SignalwindowbartlettModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettModel::max(self : SignalwindowbartlettModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_model_to_string(s : SignalwindowbartlettModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettModel::to_string(self : SignalwindowbartlettModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_bartlett_layer_make(size : Int) -> SignalwindowbartlettLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_layer_len(s : SignalwindowbartlettLayer) -> Int { s.size }
+pub fn SignalwindowbartlettLayer::len(self : SignalwindowbartlettLayer) -> Int { self.size }
 
-pub fn signal_window_bartlett_layer_get(s : SignalwindowbartlettLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettLayer::get(self : SignalwindowbartlettLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_layer_set(s : SignalwindowbartlettLayer, i : Int, v : Double) -> SignalwindowbartlettLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettLayer::set(self : SignalwindowbartlettLayer, i : Int, v : Double) -> SignalwindowbartlettLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_layer_sum(s : SignalwindowbartlettLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettLayer::sum(self : SignalwindowbartlettLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_layer_mean(s : SignalwindowbartlettLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettLayer::mean(self : SignalwindowbartlettLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_layer_scale(s : SignalwindowbartlettLayer, f : Double) -> SignalwindowbartlettLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettLayer::scale(self : SignalwindowbartlettLayer, f : Double) -> SignalwindowbartlettLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_layer_add(a : SignalwindowbartlettLayer, b : SignalwindowbartlettLayer) -> SignalwindowbartlettLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettLayer::add(self : SignalwindowbartlettLayer, other : SignalwindowbartlettLayer) -> SignalwindowbartlettLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_layer_copy(s : SignalwindowbartlettLayer) -> SignalwindowbartlettLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettLayer::copy(self : SignalwindowbartlettLayer) -> SignalwindowbartlettLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_layer_fill(s : SignalwindowbartlettLayer, v : Double) -> SignalwindowbartlettLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettLayer::fill(self : SignalwindowbartlettLayer, v : Double) -> SignalwindowbartlettLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_layer_min(s : SignalwindowbartlettLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettLayer::min(self : SignalwindowbartlettLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_layer_max(s : SignalwindowbartlettLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettLayer::max(self : SignalwindowbartlettLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_layer_to_string(s : SignalwindowbartlettLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettLayer::to_string(self : SignalwindowbartlettLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_bartlett_buffer_make(size : Int) -> SignalwindowbartlettBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_buffer_len(s : SignalwindowbartlettBuffer) -> Int { s.size }
+pub fn SignalwindowbartlettBuffer::len(self : SignalwindowbartlettBuffer) -> Int { self.size }
 
-pub fn signal_window_bartlett_buffer_get(s : SignalwindowbartlettBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettBuffer::get(self : SignalwindowbartlettBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_buffer_set(s : SignalwindowbartlettBuffer, i : Int, v : Double) -> SignalwindowbartlettBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettBuffer::set(self : SignalwindowbartlettBuffer, i : Int, v : Double) -> SignalwindowbartlettBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_buffer_sum(s : SignalwindowbartlettBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettBuffer::sum(self : SignalwindowbartlettBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_buffer_mean(s : SignalwindowbartlettBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettBuffer::mean(self : SignalwindowbartlettBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_buffer_scale(s : SignalwindowbartlettBuffer, f : Double) -> SignalwindowbartlettBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettBuffer::scale(self : SignalwindowbartlettBuffer, f : Double) -> SignalwindowbartlettBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_buffer_add(a : SignalwindowbartlettBuffer, b : SignalwindowbartlettBuffer) -> SignalwindowbartlettBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettBuffer::add(self : SignalwindowbartlettBuffer, other : SignalwindowbartlettBuffer) -> SignalwindowbartlettBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_buffer_copy(s : SignalwindowbartlettBuffer) -> SignalwindowbartlettBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettBuffer::copy(self : SignalwindowbartlettBuffer) -> SignalwindowbartlettBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_buffer_fill(s : SignalwindowbartlettBuffer, v : Double) -> SignalwindowbartlettBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettBuffer::fill(self : SignalwindowbartlettBuffer, v : Double) -> SignalwindowbartlettBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_buffer_min(s : SignalwindowbartlettBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettBuffer::min(self : SignalwindowbartlettBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_buffer_max(s : SignalwindowbartlettBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettBuffer::max(self : SignalwindowbartlettBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_buffer_to_string(s : SignalwindowbartlettBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettBuffer::to_string(self : SignalwindowbartlettBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_bartlett_cursor_make(size : Int) -> SignalwindowbartlettCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_cursor_len(s : SignalwindowbartlettCursor) -> Int { s.size }
+pub fn SignalwindowbartlettCursor::len(self : SignalwindowbartlettCursor) -> Int { self.size }
 
-pub fn signal_window_bartlett_cursor_get(s : SignalwindowbartlettCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettCursor::get(self : SignalwindowbartlettCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_cursor_set(s : SignalwindowbartlettCursor, i : Int, v : Double) -> SignalwindowbartlettCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCursor::set(self : SignalwindowbartlettCursor, i : Int, v : Double) -> SignalwindowbartlettCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cursor_sum(s : SignalwindowbartlettCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettCursor::sum(self : SignalwindowbartlettCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_cursor_mean(s : SignalwindowbartlettCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettCursor::mean(self : SignalwindowbartlettCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_cursor_scale(s : SignalwindowbartlettCursor, f : Double) -> SignalwindowbartlettCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCursor::scale(self : SignalwindowbartlettCursor, f : Double) -> SignalwindowbartlettCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cursor_add(a : SignalwindowbartlettCursor, b : SignalwindowbartlettCursor) -> SignalwindowbartlettCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettCursor::add(self : SignalwindowbartlettCursor, other : SignalwindowbartlettCursor) -> SignalwindowbartlettCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cursor_copy(s : SignalwindowbartlettCursor) -> SignalwindowbartlettCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCursor::copy(self : SignalwindowbartlettCursor) -> SignalwindowbartlettCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cursor_fill(s : SignalwindowbartlettCursor, v : Double) -> SignalwindowbartlettCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettCursor::fill(self : SignalwindowbartlettCursor, v : Double) -> SignalwindowbartlettCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_cursor_min(s : SignalwindowbartlettCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettCursor::min(self : SignalwindowbartlettCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_cursor_max(s : SignalwindowbartlettCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettCursor::max(self : SignalwindowbartlettCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_cursor_to_string(s : SignalwindowbartlettCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettCursor::to_string(self : SignalwindowbartlettCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettView {
@@ -912,45 +912,45 @@ pub fn signal_window_bartlett_view_make(size : Int) -> SignalwindowbartlettView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_view_len(s : SignalwindowbartlettView) -> Int { s.size }
+pub fn SignalwindowbartlettView::len(self : SignalwindowbartlettView) -> Int { self.size }
 
-pub fn signal_window_bartlett_view_get(s : SignalwindowbartlettView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettView::get(self : SignalwindowbartlettView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_view_set(s : SignalwindowbartlettView, i : Int, v : Double) -> SignalwindowbartlettView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettView::set(self : SignalwindowbartlettView, i : Int, v : Double) -> SignalwindowbartlettView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_view_sum(s : SignalwindowbartlettView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettView::sum(self : SignalwindowbartlettView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_view_mean(s : SignalwindowbartlettView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettView::mean(self : SignalwindowbartlettView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_view_scale(s : SignalwindowbartlettView, f : Double) -> SignalwindowbartlettView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettView::scale(self : SignalwindowbartlettView, f : Double) -> SignalwindowbartlettView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_view_add(a : SignalwindowbartlettView, b : SignalwindowbartlettView) -> SignalwindowbartlettView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettView::add(self : SignalwindowbartlettView, other : SignalwindowbartlettView) -> SignalwindowbartlettView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_view_copy(s : SignalwindowbartlettView) -> SignalwindowbartlettView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettView::copy(self : SignalwindowbartlettView) -> SignalwindowbartlettView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_view_fill(s : SignalwindowbartlettView, v : Double) -> SignalwindowbartlettView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettView::fill(self : SignalwindowbartlettView, v : Double) -> SignalwindowbartlettView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_view_min(s : SignalwindowbartlettView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettView::min(self : SignalwindowbartlettView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_view_max(s : SignalwindowbartlettView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettView::max(self : SignalwindowbartlettView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_view_to_string(s : SignalwindowbartlettView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettView::to_string(self : SignalwindowbartlettView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettRange {
@@ -963,45 +963,45 @@ pub fn signal_window_bartlett_range_make(size : Int) -> SignalwindowbartlettRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_range_len(s : SignalwindowbartlettRange) -> Int { s.size }
+pub fn SignalwindowbartlettRange::len(self : SignalwindowbartlettRange) -> Int { self.size }
 
-pub fn signal_window_bartlett_range_get(s : SignalwindowbartlettRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettRange::get(self : SignalwindowbartlettRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_range_set(s : SignalwindowbartlettRange, i : Int, v : Double) -> SignalwindowbartlettRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettRange::set(self : SignalwindowbartlettRange, i : Int, v : Double) -> SignalwindowbartlettRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_range_sum(s : SignalwindowbartlettRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettRange::sum(self : SignalwindowbartlettRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_range_mean(s : SignalwindowbartlettRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettRange::mean(self : SignalwindowbartlettRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_range_scale(s : SignalwindowbartlettRange, f : Double) -> SignalwindowbartlettRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettRange::scale(self : SignalwindowbartlettRange, f : Double) -> SignalwindowbartlettRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_range_add(a : SignalwindowbartlettRange, b : SignalwindowbartlettRange) -> SignalwindowbartlettRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettRange::add(self : SignalwindowbartlettRange, other : SignalwindowbartlettRange) -> SignalwindowbartlettRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_range_copy(s : SignalwindowbartlettRange) -> SignalwindowbartlettRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettRange::copy(self : SignalwindowbartlettRange) -> SignalwindowbartlettRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_range_fill(s : SignalwindowbartlettRange, v : Double) -> SignalwindowbartlettRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettRange::fill(self : SignalwindowbartlettRange, v : Double) -> SignalwindowbartlettRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_range_min(s : SignalwindowbartlettRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettRange::min(self : SignalwindowbartlettRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_range_max(s : SignalwindowbartlettRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettRange::max(self : SignalwindowbartlettRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_range_to_string(s : SignalwindowbartlettRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettRange::to_string(self : SignalwindowbartlettRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowbartlettSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_bartlett_slice_make(size : Int) -> SignalwindowbartlettSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_bartlett_slice_len(s : SignalwindowbartlettSlice) -> Int { s.size }
+pub fn SignalwindowbartlettSlice::len(self : SignalwindowbartlettSlice) -> Int { self.size }
 
-pub fn signal_window_bartlett_slice_get(s : SignalwindowbartlettSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowbartlettSlice::get(self : SignalwindowbartlettSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_bartlett_slice_set(s : SignalwindowbartlettSlice, i : Int, v : Double) -> SignalwindowbartlettSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettSlice::set(self : SignalwindowbartlettSlice, i : Int, v : Double) -> SignalwindowbartlettSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_slice_sum(s : SignalwindowbartlettSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowbartlettSlice::sum(self : SignalwindowbartlettSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_bartlett_slice_mean(s : SignalwindowbartlettSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowbartlettSlice::mean(self : SignalwindowbartlettSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_bartlett_slice_scale(s : SignalwindowbartlettSlice, f : Double) -> SignalwindowbartlettSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettSlice::scale(self : SignalwindowbartlettSlice, f : Double) -> SignalwindowbartlettSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_slice_add(a : SignalwindowbartlettSlice, b : SignalwindowbartlettSlice) -> SignalwindowbartlettSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowbartlettSlice::add(self : SignalwindowbartlettSlice, other : SignalwindowbartlettSlice) -> SignalwindowbartlettSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_slice_copy(s : SignalwindowbartlettSlice) -> SignalwindowbartlettSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettSlice::copy(self : SignalwindowbartlettSlice) -> SignalwindowbartlettSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_slice_fill(s : SignalwindowbartlettSlice, v : Double) -> SignalwindowbartlettSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowbartlettSlice::fill(self : SignalwindowbartlettSlice, v : Double) -> SignalwindowbartlettSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_bartlett_slice_min(s : SignalwindowbartlettSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowbartlettSlice::min(self : SignalwindowbartlettSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_bartlett_slice_max(s : SignalwindowbartlettSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowbartlettSlice::max(self : SignalwindowbartlettSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_bartlett_slice_to_string(s : SignalwindowbartlettSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowbartlettSlice::to_string(self : SignalwindowbartlettSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn sort_exchange_pancake_frame_make(size : Int) -> SortexchangepancakeFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_frame_len(s : SortexchangepancakeFrame) -> Int { s.size }
+pub fn SortexchangepancakeFrame::len(self : SortexchangepancakeFrame) -> Int { self.size }
 
-pub fn sort_exchange_pancake_frame_get(s : SortexchangepancakeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeFrame::get(self : SortexchangepancakeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_frame_set(s : SortexchangepancakeFrame, i : Int, v : Double) -> SortexchangepancakeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeFrame::set(self : SortexchangepancakeFrame, i : Int, v : Double) -> SortexchangepancakeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_frame_sum(s : SortexchangepancakeFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeFrame::sum(self : SortexchangepancakeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_frame_mean(s : SortexchangepancakeFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeFrame::mean(self : SortexchangepancakeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_frame_scale(s : SortexchangepancakeFrame, f : Double) -> SortexchangepancakeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeFrame::scale(self : SortexchangepancakeFrame, f : Double) -> SortexchangepancakeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_frame_add(a : SortexchangepancakeFrame, b : SortexchangepancakeFrame) -> SortexchangepancakeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeFrame::add(self : SortexchangepancakeFrame, other : SortexchangepancakeFrame) -> SortexchangepancakeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_frame_copy(s : SortexchangepancakeFrame) -> SortexchangepancakeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeFrame::copy(self : SortexchangepancakeFrame) -> SortexchangepancakeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_frame_fill(s : SortexchangepancakeFrame, v : Double) -> SortexchangepancakeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeFrame::fill(self : SortexchangepancakeFrame, v : Double) -> SortexchangepancakeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_frame_min(s : SortexchangepancakeFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeFrame::min(self : SortexchangepancakeFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_frame_max(s : SortexchangepancakeFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeFrame::max(self : SortexchangepancakeFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_frame_to_string(s : SortexchangepancakeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeFrame::to_string(self : SortexchangepancakeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_pancake_table_make(size : Int) -> SortexchangepancakeTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_table_len(s : SortexchangepancakeTable) -> Int { s.size }
+pub fn SortexchangepancakeTable::len(self : SortexchangepancakeTable) -> Int { self.size }
 
-pub fn sort_exchange_pancake_table_get(s : SortexchangepancakeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeTable::get(self : SortexchangepancakeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_table_set(s : SortexchangepancakeTable, i : Int, v : Double) -> SortexchangepancakeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeTable::set(self : SortexchangepancakeTable, i : Int, v : Double) -> SortexchangepancakeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_table_sum(s : SortexchangepancakeTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeTable::sum(self : SortexchangepancakeTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_table_mean(s : SortexchangepancakeTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeTable::mean(self : SortexchangepancakeTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_table_scale(s : SortexchangepancakeTable, f : Double) -> SortexchangepancakeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeTable::scale(self : SortexchangepancakeTable, f : Double) -> SortexchangepancakeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_table_add(a : SortexchangepancakeTable, b : SortexchangepancakeTable) -> SortexchangepancakeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeTable::add(self : SortexchangepancakeTable, other : SortexchangepancakeTable) -> SortexchangepancakeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_table_copy(s : SortexchangepancakeTable) -> SortexchangepancakeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeTable::copy(self : SortexchangepancakeTable) -> SortexchangepancakeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_table_fill(s : SortexchangepancakeTable, v : Double) -> SortexchangepancakeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeTable::fill(self : SortexchangepancakeTable, v : Double) -> SortexchangepancakeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_table_min(s : SortexchangepancakeTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeTable::min(self : SortexchangepancakeTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_table_max(s : SortexchangepancakeTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeTable::max(self : SortexchangepancakeTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_table_to_string(s : SortexchangepancakeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeTable::to_string(self : SortexchangepancakeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_pancake_graphn_make(size : Int) -> SortexchangepancakeGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_graphn_len(s : SortexchangepancakeGraphN) -> Int { s.size }
+pub fn SortexchangepancakeGraphN::len(self : SortexchangepancakeGraphN) -> Int { self.size }
 
-pub fn sort_exchange_pancake_graphn_get(s : SortexchangepancakeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeGraphN::get(self : SortexchangepancakeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_graphn_set(s : SortexchangepancakeGraphN, i : Int, v : Double) -> SortexchangepancakeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeGraphN::set(self : SortexchangepancakeGraphN, i : Int, v : Double) -> SortexchangepancakeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_graphn_sum(s : SortexchangepancakeGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeGraphN::sum(self : SortexchangepancakeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_graphn_mean(s : SortexchangepancakeGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeGraphN::mean(self : SortexchangepancakeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_graphn_scale(s : SortexchangepancakeGraphN, f : Double) -> SortexchangepancakeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeGraphN::scale(self : SortexchangepancakeGraphN, f : Double) -> SortexchangepancakeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_graphn_add(a : SortexchangepancakeGraphN, b : SortexchangepancakeGraphN) -> SortexchangepancakeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeGraphN::add(self : SortexchangepancakeGraphN, other : SortexchangepancakeGraphN) -> SortexchangepancakeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_graphn_copy(s : SortexchangepancakeGraphN) -> SortexchangepancakeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeGraphN::copy(self : SortexchangepancakeGraphN) -> SortexchangepancakeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_graphn_fill(s : SortexchangepancakeGraphN, v : Double) -> SortexchangepancakeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeGraphN::fill(self : SortexchangepancakeGraphN, v : Double) -> SortexchangepancakeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_graphn_min(s : SortexchangepancakeGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeGraphN::min(self : SortexchangepancakeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_graphn_max(s : SortexchangepancakeGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeGraphN::max(self : SortexchangepancakeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_graphn_to_string(s : SortexchangepancakeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeGraphN::to_string(self : SortexchangepancakeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_pancake_node_make(size : Int) -> SortexchangepancakeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_node_len(s : SortexchangepancakeNode) -> Int { s.size }
+pub fn SortexchangepancakeNode::len(self : SortexchangepancakeNode) -> Int { self.size }
 
-pub fn sort_exchange_pancake_node_get(s : SortexchangepancakeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeNode::get(self : SortexchangepancakeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_node_set(s : SortexchangepancakeNode, i : Int, v : Double) -> SortexchangepancakeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeNode::set(self : SortexchangepancakeNode, i : Int, v : Double) -> SortexchangepancakeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_node_sum(s : SortexchangepancakeNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeNode::sum(self : SortexchangepancakeNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_node_mean(s : SortexchangepancakeNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeNode::mean(self : SortexchangepancakeNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_node_scale(s : SortexchangepancakeNode, f : Double) -> SortexchangepancakeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeNode::scale(self : SortexchangepancakeNode, f : Double) -> SortexchangepancakeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_node_add(a : SortexchangepancakeNode, b : SortexchangepancakeNode) -> SortexchangepancakeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeNode::add(self : SortexchangepancakeNode, other : SortexchangepancakeNode) -> SortexchangepancakeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_node_copy(s : SortexchangepancakeNode) -> SortexchangepancakeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeNode::copy(self : SortexchangepancakeNode) -> SortexchangepancakeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_node_fill(s : SortexchangepancakeNode, v : Double) -> SortexchangepancakeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeNode::fill(self : SortexchangepancakeNode, v : Double) -> SortexchangepancakeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_node_min(s : SortexchangepancakeNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeNode::min(self : SortexchangepancakeNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_node_max(s : SortexchangepancakeNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeNode::max(self : SortexchangepancakeNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_node_to_string(s : SortexchangepancakeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeNode::to_string(self : SortexchangepancakeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_pancake_edge_make(size : Int) -> SortexchangepancakeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_edge_len(s : SortexchangepancakeEdge) -> Int { s.size }
+pub fn SortexchangepancakeEdge::len(self : SortexchangepancakeEdge) -> Int { self.size }
 
-pub fn sort_exchange_pancake_edge_get(s : SortexchangepancakeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeEdge::get(self : SortexchangepancakeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_edge_set(s : SortexchangepancakeEdge, i : Int, v : Double) -> SortexchangepancakeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeEdge::set(self : SortexchangepancakeEdge, i : Int, v : Double) -> SortexchangepancakeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_edge_sum(s : SortexchangepancakeEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeEdge::sum(self : SortexchangepancakeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_edge_mean(s : SortexchangepancakeEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeEdge::mean(self : SortexchangepancakeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_edge_scale(s : SortexchangepancakeEdge, f : Double) -> SortexchangepancakeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeEdge::scale(self : SortexchangepancakeEdge, f : Double) -> SortexchangepancakeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_edge_add(a : SortexchangepancakeEdge, b : SortexchangepancakeEdge) -> SortexchangepancakeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeEdge::add(self : SortexchangepancakeEdge, other : SortexchangepancakeEdge) -> SortexchangepancakeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_edge_copy(s : SortexchangepancakeEdge) -> SortexchangepancakeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeEdge::copy(self : SortexchangepancakeEdge) -> SortexchangepancakeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_edge_fill(s : SortexchangepancakeEdge, v : Double) -> SortexchangepancakeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeEdge::fill(self : SortexchangepancakeEdge, v : Double) -> SortexchangepancakeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_edge_min(s : SortexchangepancakeEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeEdge::min(self : SortexchangepancakeEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_edge_max(s : SortexchangepancakeEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeEdge::max(self : SortexchangepancakeEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_edge_to_string(s : SortexchangepancakeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeEdge::to_string(self : SortexchangepancakeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakePath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_pancake_path_make(size : Int) -> SortexchangepancakePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_path_len(s : SortexchangepancakePath) -> Int { s.size }
+pub fn SortexchangepancakePath::len(self : SortexchangepancakePath) -> Int { self.size }
 
-pub fn sort_exchange_pancake_path_get(s : SortexchangepancakePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakePath::get(self : SortexchangepancakePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_path_set(s : SortexchangepancakePath, i : Int, v : Double) -> SortexchangepancakePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakePath::set(self : SortexchangepancakePath, i : Int, v : Double) -> SortexchangepancakePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_path_sum(s : SortexchangepancakePath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakePath::sum(self : SortexchangepancakePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_path_mean(s : SortexchangepancakePath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakePath::mean(self : SortexchangepancakePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_path_scale(s : SortexchangepancakePath, f : Double) -> SortexchangepancakePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakePath::scale(self : SortexchangepancakePath, f : Double) -> SortexchangepancakePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_path_add(a : SortexchangepancakePath, b : SortexchangepancakePath) -> SortexchangepancakePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakePath::add(self : SortexchangepancakePath, other : SortexchangepancakePath) -> SortexchangepancakePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_path_copy(s : SortexchangepancakePath) -> SortexchangepancakePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakePath::copy(self : SortexchangepancakePath) -> SortexchangepancakePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_path_fill(s : SortexchangepancakePath, v : Double) -> SortexchangepancakePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakePath::fill(self : SortexchangepancakePath, v : Double) -> SortexchangepancakePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_path_min(s : SortexchangepancakePath) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakePath::min(self : SortexchangepancakePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_path_max(s : SortexchangepancakePath) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakePath::max(self : SortexchangepancakePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_path_to_string(s : SortexchangepancakePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakePath::to_string(self : SortexchangepancakePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_pancake_cluster_make(size : Int) -> SortexchangepancakeClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_cluster_len(s : SortexchangepancakeCluster) -> Int { s.size }
+pub fn SortexchangepancakeCluster::len(self : SortexchangepancakeCluster) -> Int { self.size }
 
-pub fn sort_exchange_pancake_cluster_get(s : SortexchangepancakeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeCluster::get(self : SortexchangepancakeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_cluster_set(s : SortexchangepancakeCluster, i : Int, v : Double) -> SortexchangepancakeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCluster::set(self : SortexchangepancakeCluster, i : Int, v : Double) -> SortexchangepancakeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cluster_sum(s : SortexchangepancakeCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeCluster::sum(self : SortexchangepancakeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_cluster_mean(s : SortexchangepancakeCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeCluster::mean(self : SortexchangepancakeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_cluster_scale(s : SortexchangepancakeCluster, f : Double) -> SortexchangepancakeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCluster::scale(self : SortexchangepancakeCluster, f : Double) -> SortexchangepancakeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cluster_add(a : SortexchangepancakeCluster, b : SortexchangepancakeCluster) -> SortexchangepancakeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeCluster::add(self : SortexchangepancakeCluster, other : SortexchangepancakeCluster) -> SortexchangepancakeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cluster_copy(s : SortexchangepancakeCluster) -> SortexchangepancakeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCluster::copy(self : SortexchangepancakeCluster) -> SortexchangepancakeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cluster_fill(s : SortexchangepancakeCluster, v : Double) -> SortexchangepancakeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCluster::fill(self : SortexchangepancakeCluster, v : Double) -> SortexchangepancakeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cluster_min(s : SortexchangepancakeCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeCluster::min(self : SortexchangepancakeCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_cluster_max(s : SortexchangepancakeCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeCluster::max(self : SortexchangepancakeCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_cluster_to_string(s : SortexchangepancakeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeCluster::to_string(self : SortexchangepancakeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_pancake_model_make(size : Int) -> SortexchangepancakeModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_model_len(s : SortexchangepancakeModel) -> Int { s.size }
+pub fn SortexchangepancakeModel::len(self : SortexchangepancakeModel) -> Int { self.size }
 
-pub fn sort_exchange_pancake_model_get(s : SortexchangepancakeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeModel::get(self : SortexchangepancakeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_model_set(s : SortexchangepancakeModel, i : Int, v : Double) -> SortexchangepancakeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeModel::set(self : SortexchangepancakeModel, i : Int, v : Double) -> SortexchangepancakeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_model_sum(s : SortexchangepancakeModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeModel::sum(self : SortexchangepancakeModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_model_mean(s : SortexchangepancakeModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeModel::mean(self : SortexchangepancakeModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_model_scale(s : SortexchangepancakeModel, f : Double) -> SortexchangepancakeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeModel::scale(self : SortexchangepancakeModel, f : Double) -> SortexchangepancakeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_model_add(a : SortexchangepancakeModel, b : SortexchangepancakeModel) -> SortexchangepancakeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeModel::add(self : SortexchangepancakeModel, other : SortexchangepancakeModel) -> SortexchangepancakeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_model_copy(s : SortexchangepancakeModel) -> SortexchangepancakeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeModel::copy(self : SortexchangepancakeModel) -> SortexchangepancakeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_model_fill(s : SortexchangepancakeModel, v : Double) -> SortexchangepancakeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeModel::fill(self : SortexchangepancakeModel, v : Double) -> SortexchangepancakeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_model_min(s : SortexchangepancakeModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeModel::min(self : SortexchangepancakeModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_model_max(s : SortexchangepancakeModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeModel::max(self : SortexchangepancakeModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_model_to_string(s : SortexchangepancakeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeModel::to_string(self : SortexchangepancakeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_pancake_layer_make(size : Int) -> SortexchangepancakeLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_layer_len(s : SortexchangepancakeLayer) -> Int { s.size }
+pub fn SortexchangepancakeLayer::len(self : SortexchangepancakeLayer) -> Int { self.size }
 
-pub fn sort_exchange_pancake_layer_get(s : SortexchangepancakeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeLayer::get(self : SortexchangepancakeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_layer_set(s : SortexchangepancakeLayer, i : Int, v : Double) -> SortexchangepancakeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeLayer::set(self : SortexchangepancakeLayer, i : Int, v : Double) -> SortexchangepancakeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_layer_sum(s : SortexchangepancakeLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeLayer::sum(self : SortexchangepancakeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_layer_mean(s : SortexchangepancakeLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeLayer::mean(self : SortexchangepancakeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_layer_scale(s : SortexchangepancakeLayer, f : Double) -> SortexchangepancakeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeLayer::scale(self : SortexchangepancakeLayer, f : Double) -> SortexchangepancakeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_layer_add(a : SortexchangepancakeLayer, b : SortexchangepancakeLayer) -> SortexchangepancakeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeLayer::add(self : SortexchangepancakeLayer, other : SortexchangepancakeLayer) -> SortexchangepancakeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_layer_copy(s : SortexchangepancakeLayer) -> SortexchangepancakeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeLayer::copy(self : SortexchangepancakeLayer) -> SortexchangepancakeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_layer_fill(s : SortexchangepancakeLayer, v : Double) -> SortexchangepancakeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeLayer::fill(self : SortexchangepancakeLayer, v : Double) -> SortexchangepancakeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_layer_min(s : SortexchangepancakeLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeLayer::min(self : SortexchangepancakeLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_layer_max(s : SortexchangepancakeLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeLayer::max(self : SortexchangepancakeLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_layer_to_string(s : SortexchangepancakeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeLayer::to_string(self : SortexchangepancakeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_pancake_buffer_make(size : Int) -> SortexchangepancakeBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_buffer_len(s : SortexchangepancakeBuffer) -> Int { s.size }
+pub fn SortexchangepancakeBuffer::len(self : SortexchangepancakeBuffer) -> Int { self.size }
 
-pub fn sort_exchange_pancake_buffer_get(s : SortexchangepancakeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeBuffer::get(self : SortexchangepancakeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_buffer_set(s : SortexchangepancakeBuffer, i : Int, v : Double) -> SortexchangepancakeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeBuffer::set(self : SortexchangepancakeBuffer, i : Int, v : Double) -> SortexchangepancakeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_buffer_sum(s : SortexchangepancakeBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeBuffer::sum(self : SortexchangepancakeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_buffer_mean(s : SortexchangepancakeBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeBuffer::mean(self : SortexchangepancakeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_buffer_scale(s : SortexchangepancakeBuffer, f : Double) -> SortexchangepancakeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeBuffer::scale(self : SortexchangepancakeBuffer, f : Double) -> SortexchangepancakeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_buffer_add(a : SortexchangepancakeBuffer, b : SortexchangepancakeBuffer) -> SortexchangepancakeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeBuffer::add(self : SortexchangepancakeBuffer, other : SortexchangepancakeBuffer) -> SortexchangepancakeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_buffer_copy(s : SortexchangepancakeBuffer) -> SortexchangepancakeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeBuffer::copy(self : SortexchangepancakeBuffer) -> SortexchangepancakeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_buffer_fill(s : SortexchangepancakeBuffer, v : Double) -> SortexchangepancakeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeBuffer::fill(self : SortexchangepancakeBuffer, v : Double) -> SortexchangepancakeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_buffer_min(s : SortexchangepancakeBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeBuffer::min(self : SortexchangepancakeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_buffer_max(s : SortexchangepancakeBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeBuffer::max(self : SortexchangepancakeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_buffer_to_string(s : SortexchangepancakeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeBuffer::to_string(self : SortexchangepancakeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_pancake_cursor_make(size : Int) -> SortexchangepancakeCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_cursor_len(s : SortexchangepancakeCursor) -> Int { s.size }
+pub fn SortexchangepancakeCursor::len(self : SortexchangepancakeCursor) -> Int { self.size }
 
-pub fn sort_exchange_pancake_cursor_get(s : SortexchangepancakeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeCursor::get(self : SortexchangepancakeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_cursor_set(s : SortexchangepancakeCursor, i : Int, v : Double) -> SortexchangepancakeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCursor::set(self : SortexchangepancakeCursor, i : Int, v : Double) -> SortexchangepancakeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cursor_sum(s : SortexchangepancakeCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeCursor::sum(self : SortexchangepancakeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_cursor_mean(s : SortexchangepancakeCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeCursor::mean(self : SortexchangepancakeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_cursor_scale(s : SortexchangepancakeCursor, f : Double) -> SortexchangepancakeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCursor::scale(self : SortexchangepancakeCursor, f : Double) -> SortexchangepancakeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cursor_add(a : SortexchangepancakeCursor, b : SortexchangepancakeCursor) -> SortexchangepancakeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeCursor::add(self : SortexchangepancakeCursor, other : SortexchangepancakeCursor) -> SortexchangepancakeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cursor_copy(s : SortexchangepancakeCursor) -> SortexchangepancakeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCursor::copy(self : SortexchangepancakeCursor) -> SortexchangepancakeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cursor_fill(s : SortexchangepancakeCursor, v : Double) -> SortexchangepancakeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeCursor::fill(self : SortexchangepancakeCursor, v : Double) -> SortexchangepancakeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_cursor_min(s : SortexchangepancakeCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeCursor::min(self : SortexchangepancakeCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_cursor_max(s : SortexchangepancakeCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeCursor::max(self : SortexchangepancakeCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_cursor_to_string(s : SortexchangepancakeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeCursor::to_string(self : SortexchangepancakeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_pancake_view_make(size : Int) -> SortexchangepancakeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_view_len(s : SortexchangepancakeView) -> Int { s.size }
+pub fn SortexchangepancakeView::len(self : SortexchangepancakeView) -> Int { self.size }
 
-pub fn sort_exchange_pancake_view_get(s : SortexchangepancakeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeView::get(self : SortexchangepancakeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_view_set(s : SortexchangepancakeView, i : Int, v : Double) -> SortexchangepancakeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeView::set(self : SortexchangepancakeView, i : Int, v : Double) -> SortexchangepancakeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_view_sum(s : SortexchangepancakeView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeView::sum(self : SortexchangepancakeView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_view_mean(s : SortexchangepancakeView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeView::mean(self : SortexchangepancakeView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_view_scale(s : SortexchangepancakeView, f : Double) -> SortexchangepancakeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeView::scale(self : SortexchangepancakeView, f : Double) -> SortexchangepancakeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_view_add(a : SortexchangepancakeView, b : SortexchangepancakeView) -> SortexchangepancakeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeView::add(self : SortexchangepancakeView, other : SortexchangepancakeView) -> SortexchangepancakeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_view_copy(s : SortexchangepancakeView) -> SortexchangepancakeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeView::copy(self : SortexchangepancakeView) -> SortexchangepancakeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_view_fill(s : SortexchangepancakeView, v : Double) -> SortexchangepancakeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeView::fill(self : SortexchangepancakeView, v : Double) -> SortexchangepancakeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_view_min(s : SortexchangepancakeView) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeView::min(self : SortexchangepancakeView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_view_max(s : SortexchangepancakeView) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeView::max(self : SortexchangepancakeView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_view_to_string(s : SortexchangepancakeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeView::to_string(self : SortexchangepancakeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_pancake_range_make(size : Int) -> SortexchangepancakeRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_range_len(s : SortexchangepancakeRange) -> Int { s.size }
+pub fn SortexchangepancakeRange::len(self : SortexchangepancakeRange) -> Int { self.size }
 
-pub fn sort_exchange_pancake_range_get(s : SortexchangepancakeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeRange::get(self : SortexchangepancakeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_range_set(s : SortexchangepancakeRange, i : Int, v : Double) -> SortexchangepancakeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeRange::set(self : SortexchangepancakeRange, i : Int, v : Double) -> SortexchangepancakeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_range_sum(s : SortexchangepancakeRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeRange::sum(self : SortexchangepancakeRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_range_mean(s : SortexchangepancakeRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeRange::mean(self : SortexchangepancakeRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_range_scale(s : SortexchangepancakeRange, f : Double) -> SortexchangepancakeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeRange::scale(self : SortexchangepancakeRange, f : Double) -> SortexchangepancakeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_range_add(a : SortexchangepancakeRange, b : SortexchangepancakeRange) -> SortexchangepancakeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeRange::add(self : SortexchangepancakeRange, other : SortexchangepancakeRange) -> SortexchangepancakeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_range_copy(s : SortexchangepancakeRange) -> SortexchangepancakeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeRange::copy(self : SortexchangepancakeRange) -> SortexchangepancakeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_range_fill(s : SortexchangepancakeRange, v : Double) -> SortexchangepancakeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeRange::fill(self : SortexchangepancakeRange, v : Double) -> SortexchangepancakeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_range_min(s : SortexchangepancakeRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeRange::min(self : SortexchangepancakeRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_range_max(s : SortexchangepancakeRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeRange::max(self : SortexchangepancakeRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_range_to_string(s : SortexchangepancakeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeRange::to_string(self : SortexchangepancakeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangepancakeSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_pancake_slice_make(size : Int) -> SortexchangepancakeSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_pancake_slice_len(s : SortexchangepancakeSlice) -> Int { s.size }
+pub fn SortexchangepancakeSlice::len(self : SortexchangepancakeSlice) -> Int { self.size }
 
-pub fn sort_exchange_pancake_slice_get(s : SortexchangepancakeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangepancakeSlice::get(self : SortexchangepancakeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_pancake_slice_set(s : SortexchangepancakeSlice, i : Int, v : Double) -> SortexchangepancakeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangepancakeSlice::set(self : SortexchangepancakeSlice, i : Int, v : Double) -> SortexchangepancakeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_slice_sum(s : SortexchangepancakeSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangepancakeSlice::sum(self : SortexchangepancakeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_pancake_slice_mean(s : SortexchangepancakeSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangepancakeSlice::mean(self : SortexchangepancakeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_pancake_slice_scale(s : SortexchangepancakeSlice, f : Double) -> SortexchangepancakeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeSlice::scale(self : SortexchangepancakeSlice, f : Double) -> SortexchangepancakeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_slice_add(a : SortexchangepancakeSlice, b : SortexchangepancakeSlice) -> SortexchangepancakeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangepancakeSlice::add(self : SortexchangepancakeSlice, other : SortexchangepancakeSlice) -> SortexchangepancakeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_slice_copy(s : SortexchangepancakeSlice) -> SortexchangepancakeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeSlice::copy(self : SortexchangepancakeSlice) -> SortexchangepancakeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_slice_fill(s : SortexchangepancakeSlice, v : Double) -> SortexchangepancakeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangepancakeSlice::fill(self : SortexchangepancakeSlice, v : Double) -> SortexchangepancakeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_pancake_slice_min(s : SortexchangepancakeSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangepancakeSlice::min(self : SortexchangepancakeSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_pancake_slice_max(s : SortexchangepancakeSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangepancakeSlice::max(self : SortexchangepancakeSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_pancake_slice_to_string(s : SortexchangepancakeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangepancakeSlice::to_string(self : SortexchangepancakeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

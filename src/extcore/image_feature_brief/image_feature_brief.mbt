@@ -351,45 +351,45 @@ pub fn image_feature_brief_frame_make(size : Int) -> ImagefeaturebriefFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_frame_len(s : ImagefeaturebriefFrame) -> Int { s.size }
+pub fn ImagefeaturebriefFrame::len(self : ImagefeaturebriefFrame) -> Int { self.size }
 
-pub fn image_feature_brief_frame_get(s : ImagefeaturebriefFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefFrame::get(self : ImagefeaturebriefFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_frame_set(s : ImagefeaturebriefFrame, i : Int, v : Double) -> ImagefeaturebriefFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefFrame::set(self : ImagefeaturebriefFrame, i : Int, v : Double) -> ImagefeaturebriefFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_frame_sum(s : ImagefeaturebriefFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefFrame::sum(self : ImagefeaturebriefFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_frame_mean(s : ImagefeaturebriefFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefFrame::mean(self : ImagefeaturebriefFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_frame_scale(s : ImagefeaturebriefFrame, f : Double) -> ImagefeaturebriefFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefFrame::scale(self : ImagefeaturebriefFrame, f : Double) -> ImagefeaturebriefFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_frame_add(a : ImagefeaturebriefFrame, b : ImagefeaturebriefFrame) -> ImagefeaturebriefFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefFrame::add(self : ImagefeaturebriefFrame, other : ImagefeaturebriefFrame) -> ImagefeaturebriefFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_frame_copy(s : ImagefeaturebriefFrame) -> ImagefeaturebriefFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefFrame::copy(self : ImagefeaturebriefFrame) -> ImagefeaturebriefFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_frame_fill(s : ImagefeaturebriefFrame, v : Double) -> ImagefeaturebriefFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefFrame::fill(self : ImagefeaturebriefFrame, v : Double) -> ImagefeaturebriefFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_frame_min(s : ImagefeaturebriefFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefFrame::min(self : ImagefeaturebriefFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_frame_max(s : ImagefeaturebriefFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefFrame::max(self : ImagefeaturebriefFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_frame_to_string(s : ImagefeaturebriefFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefFrame::to_string(self : ImagefeaturebriefFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefTable {
@@ -402,45 +402,45 @@ pub fn image_feature_brief_table_make(size : Int) -> ImagefeaturebriefTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_table_len(s : ImagefeaturebriefTable) -> Int { s.size }
+pub fn ImagefeaturebriefTable::len(self : ImagefeaturebriefTable) -> Int { self.size }
 
-pub fn image_feature_brief_table_get(s : ImagefeaturebriefTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefTable::get(self : ImagefeaturebriefTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_table_set(s : ImagefeaturebriefTable, i : Int, v : Double) -> ImagefeaturebriefTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefTable::set(self : ImagefeaturebriefTable, i : Int, v : Double) -> ImagefeaturebriefTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_table_sum(s : ImagefeaturebriefTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefTable::sum(self : ImagefeaturebriefTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_table_mean(s : ImagefeaturebriefTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefTable::mean(self : ImagefeaturebriefTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_table_scale(s : ImagefeaturebriefTable, f : Double) -> ImagefeaturebriefTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefTable::scale(self : ImagefeaturebriefTable, f : Double) -> ImagefeaturebriefTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_table_add(a : ImagefeaturebriefTable, b : ImagefeaturebriefTable) -> ImagefeaturebriefTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefTable::add(self : ImagefeaturebriefTable, other : ImagefeaturebriefTable) -> ImagefeaturebriefTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_table_copy(s : ImagefeaturebriefTable) -> ImagefeaturebriefTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefTable::copy(self : ImagefeaturebriefTable) -> ImagefeaturebriefTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_table_fill(s : ImagefeaturebriefTable, v : Double) -> ImagefeaturebriefTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefTable::fill(self : ImagefeaturebriefTable, v : Double) -> ImagefeaturebriefTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_table_min(s : ImagefeaturebriefTable) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefTable::min(self : ImagefeaturebriefTable) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_table_max(s : ImagefeaturebriefTable) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefTable::max(self : ImagefeaturebriefTable) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_table_to_string(s : ImagefeaturebriefTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefTable::to_string(self : ImagefeaturebriefTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefGraphN {
@@ -453,45 +453,45 @@ pub fn image_feature_brief_graphn_make(size : Int) -> ImagefeaturebriefGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_graphn_len(s : ImagefeaturebriefGraphN) -> Int { s.size }
+pub fn ImagefeaturebriefGraphN::len(self : ImagefeaturebriefGraphN) -> Int { self.size }
 
-pub fn image_feature_brief_graphn_get(s : ImagefeaturebriefGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefGraphN::get(self : ImagefeaturebriefGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_graphn_set(s : ImagefeaturebriefGraphN, i : Int, v : Double) -> ImagefeaturebriefGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefGraphN::set(self : ImagefeaturebriefGraphN, i : Int, v : Double) -> ImagefeaturebriefGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_graphn_sum(s : ImagefeaturebriefGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefGraphN::sum(self : ImagefeaturebriefGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_graphn_mean(s : ImagefeaturebriefGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefGraphN::mean(self : ImagefeaturebriefGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_graphn_scale(s : ImagefeaturebriefGraphN, f : Double) -> ImagefeaturebriefGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefGraphN::scale(self : ImagefeaturebriefGraphN, f : Double) -> ImagefeaturebriefGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_graphn_add(a : ImagefeaturebriefGraphN, b : ImagefeaturebriefGraphN) -> ImagefeaturebriefGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefGraphN::add(self : ImagefeaturebriefGraphN, other : ImagefeaturebriefGraphN) -> ImagefeaturebriefGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_graphn_copy(s : ImagefeaturebriefGraphN) -> ImagefeaturebriefGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefGraphN::copy(self : ImagefeaturebriefGraphN) -> ImagefeaturebriefGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_graphn_fill(s : ImagefeaturebriefGraphN, v : Double) -> ImagefeaturebriefGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefGraphN::fill(self : ImagefeaturebriefGraphN, v : Double) -> ImagefeaturebriefGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_graphn_min(s : ImagefeaturebriefGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefGraphN::min(self : ImagefeaturebriefGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_graphn_max(s : ImagefeaturebriefGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefGraphN::max(self : ImagefeaturebriefGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_graphn_to_string(s : ImagefeaturebriefGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefGraphN::to_string(self : ImagefeaturebriefGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefNode {
@@ -504,45 +504,45 @@ pub fn image_feature_brief_node_make(size : Int) -> ImagefeaturebriefNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_node_len(s : ImagefeaturebriefNode) -> Int { s.size }
+pub fn ImagefeaturebriefNode::len(self : ImagefeaturebriefNode) -> Int { self.size }
 
-pub fn image_feature_brief_node_get(s : ImagefeaturebriefNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefNode::get(self : ImagefeaturebriefNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_node_set(s : ImagefeaturebriefNode, i : Int, v : Double) -> ImagefeaturebriefNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefNode::set(self : ImagefeaturebriefNode, i : Int, v : Double) -> ImagefeaturebriefNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_node_sum(s : ImagefeaturebriefNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefNode::sum(self : ImagefeaturebriefNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_node_mean(s : ImagefeaturebriefNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefNode::mean(self : ImagefeaturebriefNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_node_scale(s : ImagefeaturebriefNode, f : Double) -> ImagefeaturebriefNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefNode::scale(self : ImagefeaturebriefNode, f : Double) -> ImagefeaturebriefNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_node_add(a : ImagefeaturebriefNode, b : ImagefeaturebriefNode) -> ImagefeaturebriefNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefNode::add(self : ImagefeaturebriefNode, other : ImagefeaturebriefNode) -> ImagefeaturebriefNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_node_copy(s : ImagefeaturebriefNode) -> ImagefeaturebriefNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefNode::copy(self : ImagefeaturebriefNode) -> ImagefeaturebriefNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_node_fill(s : ImagefeaturebriefNode, v : Double) -> ImagefeaturebriefNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefNode::fill(self : ImagefeaturebriefNode, v : Double) -> ImagefeaturebriefNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_node_min(s : ImagefeaturebriefNode) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefNode::min(self : ImagefeaturebriefNode) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_node_max(s : ImagefeaturebriefNode) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefNode::max(self : ImagefeaturebriefNode) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_node_to_string(s : ImagefeaturebriefNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefNode::to_string(self : ImagefeaturebriefNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefEdge {
@@ -555,45 +555,45 @@ pub fn image_feature_brief_edge_make(size : Int) -> ImagefeaturebriefEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_edge_len(s : ImagefeaturebriefEdge) -> Int { s.size }
+pub fn ImagefeaturebriefEdge::len(self : ImagefeaturebriefEdge) -> Int { self.size }
 
-pub fn image_feature_brief_edge_get(s : ImagefeaturebriefEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefEdge::get(self : ImagefeaturebriefEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_edge_set(s : ImagefeaturebriefEdge, i : Int, v : Double) -> ImagefeaturebriefEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefEdge::set(self : ImagefeaturebriefEdge, i : Int, v : Double) -> ImagefeaturebriefEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_edge_sum(s : ImagefeaturebriefEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefEdge::sum(self : ImagefeaturebriefEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_edge_mean(s : ImagefeaturebriefEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefEdge::mean(self : ImagefeaturebriefEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_edge_scale(s : ImagefeaturebriefEdge, f : Double) -> ImagefeaturebriefEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefEdge::scale(self : ImagefeaturebriefEdge, f : Double) -> ImagefeaturebriefEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_edge_add(a : ImagefeaturebriefEdge, b : ImagefeaturebriefEdge) -> ImagefeaturebriefEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefEdge::add(self : ImagefeaturebriefEdge, other : ImagefeaturebriefEdge) -> ImagefeaturebriefEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_edge_copy(s : ImagefeaturebriefEdge) -> ImagefeaturebriefEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefEdge::copy(self : ImagefeaturebriefEdge) -> ImagefeaturebriefEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_edge_fill(s : ImagefeaturebriefEdge, v : Double) -> ImagefeaturebriefEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefEdge::fill(self : ImagefeaturebriefEdge, v : Double) -> ImagefeaturebriefEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_edge_min(s : ImagefeaturebriefEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefEdge::min(self : ImagefeaturebriefEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_edge_max(s : ImagefeaturebriefEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefEdge::max(self : ImagefeaturebriefEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_edge_to_string(s : ImagefeaturebriefEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefEdge::to_string(self : ImagefeaturebriefEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefPath {
@@ -606,45 +606,45 @@ pub fn image_feature_brief_path_make(size : Int) -> ImagefeaturebriefPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_path_len(s : ImagefeaturebriefPath) -> Int { s.size }
+pub fn ImagefeaturebriefPath::len(self : ImagefeaturebriefPath) -> Int { self.size }
 
-pub fn image_feature_brief_path_get(s : ImagefeaturebriefPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefPath::get(self : ImagefeaturebriefPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_path_set(s : ImagefeaturebriefPath, i : Int, v : Double) -> ImagefeaturebriefPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefPath::set(self : ImagefeaturebriefPath, i : Int, v : Double) -> ImagefeaturebriefPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_path_sum(s : ImagefeaturebriefPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefPath::sum(self : ImagefeaturebriefPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_path_mean(s : ImagefeaturebriefPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefPath::mean(self : ImagefeaturebriefPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_path_scale(s : ImagefeaturebriefPath, f : Double) -> ImagefeaturebriefPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefPath::scale(self : ImagefeaturebriefPath, f : Double) -> ImagefeaturebriefPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_path_add(a : ImagefeaturebriefPath, b : ImagefeaturebriefPath) -> ImagefeaturebriefPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefPath::add(self : ImagefeaturebriefPath, other : ImagefeaturebriefPath) -> ImagefeaturebriefPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_path_copy(s : ImagefeaturebriefPath) -> ImagefeaturebriefPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefPath::copy(self : ImagefeaturebriefPath) -> ImagefeaturebriefPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_path_fill(s : ImagefeaturebriefPath, v : Double) -> ImagefeaturebriefPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefPath::fill(self : ImagefeaturebriefPath, v : Double) -> ImagefeaturebriefPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_path_min(s : ImagefeaturebriefPath) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefPath::min(self : ImagefeaturebriefPath) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_path_max(s : ImagefeaturebriefPath) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefPath::max(self : ImagefeaturebriefPath) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_path_to_string(s : ImagefeaturebriefPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefPath::to_string(self : ImagefeaturebriefPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefCluster {
@@ -657,45 +657,45 @@ pub fn image_feature_brief_cluster_make(size : Int) -> ImagefeaturebriefCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_cluster_len(s : ImagefeaturebriefCluster) -> Int { s.size }
+pub fn ImagefeaturebriefCluster::len(self : ImagefeaturebriefCluster) -> Int { self.size }
 
-pub fn image_feature_brief_cluster_get(s : ImagefeaturebriefCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefCluster::get(self : ImagefeaturebriefCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_cluster_set(s : ImagefeaturebriefCluster, i : Int, v : Double) -> ImagefeaturebriefCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCluster::set(self : ImagefeaturebriefCluster, i : Int, v : Double) -> ImagefeaturebriefCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cluster_sum(s : ImagefeaturebriefCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefCluster::sum(self : ImagefeaturebriefCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_cluster_mean(s : ImagefeaturebriefCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefCluster::mean(self : ImagefeaturebriefCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_cluster_scale(s : ImagefeaturebriefCluster, f : Double) -> ImagefeaturebriefCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCluster::scale(self : ImagefeaturebriefCluster, f : Double) -> ImagefeaturebriefCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cluster_add(a : ImagefeaturebriefCluster, b : ImagefeaturebriefCluster) -> ImagefeaturebriefCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefCluster::add(self : ImagefeaturebriefCluster, other : ImagefeaturebriefCluster) -> ImagefeaturebriefCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_cluster_copy(s : ImagefeaturebriefCluster) -> ImagefeaturebriefCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCluster::copy(self : ImagefeaturebriefCluster) -> ImagefeaturebriefCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cluster_fill(s : ImagefeaturebriefCluster, v : Double) -> ImagefeaturebriefCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCluster::fill(self : ImagefeaturebriefCluster, v : Double) -> ImagefeaturebriefCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cluster_min(s : ImagefeaturebriefCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefCluster::min(self : ImagefeaturebriefCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_cluster_max(s : ImagefeaturebriefCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefCluster::max(self : ImagefeaturebriefCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_cluster_to_string(s : ImagefeaturebriefCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefCluster::to_string(self : ImagefeaturebriefCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefModel {
@@ -708,45 +708,45 @@ pub fn image_feature_brief_model_make(size : Int) -> ImagefeaturebriefModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_model_len(s : ImagefeaturebriefModel) -> Int { s.size }
+pub fn ImagefeaturebriefModel::len(self : ImagefeaturebriefModel) -> Int { self.size }
 
-pub fn image_feature_brief_model_get(s : ImagefeaturebriefModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefModel::get(self : ImagefeaturebriefModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_model_set(s : ImagefeaturebriefModel, i : Int, v : Double) -> ImagefeaturebriefModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefModel::set(self : ImagefeaturebriefModel, i : Int, v : Double) -> ImagefeaturebriefModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_model_sum(s : ImagefeaturebriefModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefModel::sum(self : ImagefeaturebriefModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_model_mean(s : ImagefeaturebriefModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefModel::mean(self : ImagefeaturebriefModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_model_scale(s : ImagefeaturebriefModel, f : Double) -> ImagefeaturebriefModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefModel::scale(self : ImagefeaturebriefModel, f : Double) -> ImagefeaturebriefModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_model_add(a : ImagefeaturebriefModel, b : ImagefeaturebriefModel) -> ImagefeaturebriefModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefModel::add(self : ImagefeaturebriefModel, other : ImagefeaturebriefModel) -> ImagefeaturebriefModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_model_copy(s : ImagefeaturebriefModel) -> ImagefeaturebriefModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefModel::copy(self : ImagefeaturebriefModel) -> ImagefeaturebriefModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_model_fill(s : ImagefeaturebriefModel, v : Double) -> ImagefeaturebriefModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefModel::fill(self : ImagefeaturebriefModel, v : Double) -> ImagefeaturebriefModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_model_min(s : ImagefeaturebriefModel) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefModel::min(self : ImagefeaturebriefModel) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_model_max(s : ImagefeaturebriefModel) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefModel::max(self : ImagefeaturebriefModel) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_model_to_string(s : ImagefeaturebriefModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefModel::to_string(self : ImagefeaturebriefModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefLayer {
@@ -759,45 +759,45 @@ pub fn image_feature_brief_layer_make(size : Int) -> ImagefeaturebriefLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_layer_len(s : ImagefeaturebriefLayer) -> Int { s.size }
+pub fn ImagefeaturebriefLayer::len(self : ImagefeaturebriefLayer) -> Int { self.size }
 
-pub fn image_feature_brief_layer_get(s : ImagefeaturebriefLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefLayer::get(self : ImagefeaturebriefLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_layer_set(s : ImagefeaturebriefLayer, i : Int, v : Double) -> ImagefeaturebriefLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefLayer::set(self : ImagefeaturebriefLayer, i : Int, v : Double) -> ImagefeaturebriefLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_layer_sum(s : ImagefeaturebriefLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefLayer::sum(self : ImagefeaturebriefLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_layer_mean(s : ImagefeaturebriefLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefLayer::mean(self : ImagefeaturebriefLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_layer_scale(s : ImagefeaturebriefLayer, f : Double) -> ImagefeaturebriefLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefLayer::scale(self : ImagefeaturebriefLayer, f : Double) -> ImagefeaturebriefLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_layer_add(a : ImagefeaturebriefLayer, b : ImagefeaturebriefLayer) -> ImagefeaturebriefLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefLayer::add(self : ImagefeaturebriefLayer, other : ImagefeaturebriefLayer) -> ImagefeaturebriefLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_layer_copy(s : ImagefeaturebriefLayer) -> ImagefeaturebriefLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefLayer::copy(self : ImagefeaturebriefLayer) -> ImagefeaturebriefLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_layer_fill(s : ImagefeaturebriefLayer, v : Double) -> ImagefeaturebriefLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefLayer::fill(self : ImagefeaturebriefLayer, v : Double) -> ImagefeaturebriefLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_layer_min(s : ImagefeaturebriefLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefLayer::min(self : ImagefeaturebriefLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_layer_max(s : ImagefeaturebriefLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefLayer::max(self : ImagefeaturebriefLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_layer_to_string(s : ImagefeaturebriefLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefLayer::to_string(self : ImagefeaturebriefLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefBuffer {
@@ -810,45 +810,45 @@ pub fn image_feature_brief_buffer_make(size : Int) -> ImagefeaturebriefBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_buffer_len(s : ImagefeaturebriefBuffer) -> Int { s.size }
+pub fn ImagefeaturebriefBuffer::len(self : ImagefeaturebriefBuffer) -> Int { self.size }
 
-pub fn image_feature_brief_buffer_get(s : ImagefeaturebriefBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefBuffer::get(self : ImagefeaturebriefBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_buffer_set(s : ImagefeaturebriefBuffer, i : Int, v : Double) -> ImagefeaturebriefBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefBuffer::set(self : ImagefeaturebriefBuffer, i : Int, v : Double) -> ImagefeaturebriefBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_buffer_sum(s : ImagefeaturebriefBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefBuffer::sum(self : ImagefeaturebriefBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_buffer_mean(s : ImagefeaturebriefBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefBuffer::mean(self : ImagefeaturebriefBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_buffer_scale(s : ImagefeaturebriefBuffer, f : Double) -> ImagefeaturebriefBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefBuffer::scale(self : ImagefeaturebriefBuffer, f : Double) -> ImagefeaturebriefBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_buffer_add(a : ImagefeaturebriefBuffer, b : ImagefeaturebriefBuffer) -> ImagefeaturebriefBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefBuffer::add(self : ImagefeaturebriefBuffer, other : ImagefeaturebriefBuffer) -> ImagefeaturebriefBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_buffer_copy(s : ImagefeaturebriefBuffer) -> ImagefeaturebriefBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefBuffer::copy(self : ImagefeaturebriefBuffer) -> ImagefeaturebriefBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_buffer_fill(s : ImagefeaturebriefBuffer, v : Double) -> ImagefeaturebriefBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefBuffer::fill(self : ImagefeaturebriefBuffer, v : Double) -> ImagefeaturebriefBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_buffer_min(s : ImagefeaturebriefBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefBuffer::min(self : ImagefeaturebriefBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_buffer_max(s : ImagefeaturebriefBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefBuffer::max(self : ImagefeaturebriefBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_buffer_to_string(s : ImagefeaturebriefBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefBuffer::to_string(self : ImagefeaturebriefBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefCursor {
@@ -861,45 +861,45 @@ pub fn image_feature_brief_cursor_make(size : Int) -> ImagefeaturebriefCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_cursor_len(s : ImagefeaturebriefCursor) -> Int { s.size }
+pub fn ImagefeaturebriefCursor::len(self : ImagefeaturebriefCursor) -> Int { self.size }
 
-pub fn image_feature_brief_cursor_get(s : ImagefeaturebriefCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefCursor::get(self : ImagefeaturebriefCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_cursor_set(s : ImagefeaturebriefCursor, i : Int, v : Double) -> ImagefeaturebriefCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCursor::set(self : ImagefeaturebriefCursor, i : Int, v : Double) -> ImagefeaturebriefCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cursor_sum(s : ImagefeaturebriefCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefCursor::sum(self : ImagefeaturebriefCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_cursor_mean(s : ImagefeaturebriefCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefCursor::mean(self : ImagefeaturebriefCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_cursor_scale(s : ImagefeaturebriefCursor, f : Double) -> ImagefeaturebriefCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCursor::scale(self : ImagefeaturebriefCursor, f : Double) -> ImagefeaturebriefCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cursor_add(a : ImagefeaturebriefCursor, b : ImagefeaturebriefCursor) -> ImagefeaturebriefCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefCursor::add(self : ImagefeaturebriefCursor, other : ImagefeaturebriefCursor) -> ImagefeaturebriefCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_cursor_copy(s : ImagefeaturebriefCursor) -> ImagefeaturebriefCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCursor::copy(self : ImagefeaturebriefCursor) -> ImagefeaturebriefCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cursor_fill(s : ImagefeaturebriefCursor, v : Double) -> ImagefeaturebriefCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefCursor::fill(self : ImagefeaturebriefCursor, v : Double) -> ImagefeaturebriefCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_cursor_min(s : ImagefeaturebriefCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefCursor::min(self : ImagefeaturebriefCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_cursor_max(s : ImagefeaturebriefCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefCursor::max(self : ImagefeaturebriefCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_cursor_to_string(s : ImagefeaturebriefCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefCursor::to_string(self : ImagefeaturebriefCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefView {
@@ -912,45 +912,45 @@ pub fn image_feature_brief_view_make(size : Int) -> ImagefeaturebriefView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_view_len(s : ImagefeaturebriefView) -> Int { s.size }
+pub fn ImagefeaturebriefView::len(self : ImagefeaturebriefView) -> Int { self.size }
 
-pub fn image_feature_brief_view_get(s : ImagefeaturebriefView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefView::get(self : ImagefeaturebriefView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_view_set(s : ImagefeaturebriefView, i : Int, v : Double) -> ImagefeaturebriefView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefView::set(self : ImagefeaturebriefView, i : Int, v : Double) -> ImagefeaturebriefView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_view_sum(s : ImagefeaturebriefView) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefView::sum(self : ImagefeaturebriefView) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_view_mean(s : ImagefeaturebriefView) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefView::mean(self : ImagefeaturebriefView) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_view_scale(s : ImagefeaturebriefView, f : Double) -> ImagefeaturebriefView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefView::scale(self : ImagefeaturebriefView, f : Double) -> ImagefeaturebriefView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_view_add(a : ImagefeaturebriefView, b : ImagefeaturebriefView) -> ImagefeaturebriefView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefView::add(self : ImagefeaturebriefView, other : ImagefeaturebriefView) -> ImagefeaturebriefView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_view_copy(s : ImagefeaturebriefView) -> ImagefeaturebriefView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefView::copy(self : ImagefeaturebriefView) -> ImagefeaturebriefView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_view_fill(s : ImagefeaturebriefView, v : Double) -> ImagefeaturebriefView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefView::fill(self : ImagefeaturebriefView, v : Double) -> ImagefeaturebriefView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_view_min(s : ImagefeaturebriefView) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefView::min(self : ImagefeaturebriefView) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_view_max(s : ImagefeaturebriefView) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefView::max(self : ImagefeaturebriefView) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_view_to_string(s : ImagefeaturebriefView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefView::to_string(self : ImagefeaturebriefView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefRange {
@@ -963,45 +963,45 @@ pub fn image_feature_brief_range_make(size : Int) -> ImagefeaturebriefRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_range_len(s : ImagefeaturebriefRange) -> Int { s.size }
+pub fn ImagefeaturebriefRange::len(self : ImagefeaturebriefRange) -> Int { self.size }
 
-pub fn image_feature_brief_range_get(s : ImagefeaturebriefRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefRange::get(self : ImagefeaturebriefRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_range_set(s : ImagefeaturebriefRange, i : Int, v : Double) -> ImagefeaturebriefRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefRange::set(self : ImagefeaturebriefRange, i : Int, v : Double) -> ImagefeaturebriefRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_range_sum(s : ImagefeaturebriefRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefRange::sum(self : ImagefeaturebriefRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_range_mean(s : ImagefeaturebriefRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefRange::mean(self : ImagefeaturebriefRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_range_scale(s : ImagefeaturebriefRange, f : Double) -> ImagefeaturebriefRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefRange::scale(self : ImagefeaturebriefRange, f : Double) -> ImagefeaturebriefRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_range_add(a : ImagefeaturebriefRange, b : ImagefeaturebriefRange) -> ImagefeaturebriefRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefRange::add(self : ImagefeaturebriefRange, other : ImagefeaturebriefRange) -> ImagefeaturebriefRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_range_copy(s : ImagefeaturebriefRange) -> ImagefeaturebriefRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefRange::copy(self : ImagefeaturebriefRange) -> ImagefeaturebriefRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_range_fill(s : ImagefeaturebriefRange, v : Double) -> ImagefeaturebriefRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefRange::fill(self : ImagefeaturebriefRange, v : Double) -> ImagefeaturebriefRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_range_min(s : ImagefeaturebriefRange) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefRange::min(self : ImagefeaturebriefRange) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_range_max(s : ImagefeaturebriefRange) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefRange::max(self : ImagefeaturebriefRange) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_range_to_string(s : ImagefeaturebriefRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefRange::to_string(self : ImagefeaturebriefRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturebriefSlice {
@@ -1014,44 +1014,44 @@ pub fn image_feature_brief_slice_make(size : Int) -> ImagefeaturebriefSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_brief_slice_len(s : ImagefeaturebriefSlice) -> Int { s.size }
+pub fn ImagefeaturebriefSlice::len(self : ImagefeaturebriefSlice) -> Int { self.size }
 
-pub fn image_feature_brief_slice_get(s : ImagefeaturebriefSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturebriefSlice::get(self : ImagefeaturebriefSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_brief_slice_set(s : ImagefeaturebriefSlice, i : Int, v : Double) -> ImagefeaturebriefSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefSlice::set(self : ImagefeaturebriefSlice, i : Int, v : Double) -> ImagefeaturebriefSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_slice_sum(s : ImagefeaturebriefSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturebriefSlice::sum(self : ImagefeaturebriefSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_brief_slice_mean(s : ImagefeaturebriefSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturebriefSlice::mean(self : ImagefeaturebriefSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_brief_slice_scale(s : ImagefeaturebriefSlice, f : Double) -> ImagefeaturebriefSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefSlice::scale(self : ImagefeaturebriefSlice, f : Double) -> ImagefeaturebriefSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_slice_add(a : ImagefeaturebriefSlice, b : ImagefeaturebriefSlice) -> ImagefeaturebriefSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturebriefSlice::add(self : ImagefeaturebriefSlice, other : ImagefeaturebriefSlice) -> ImagefeaturebriefSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_brief_slice_copy(s : ImagefeaturebriefSlice) -> ImagefeaturebriefSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefSlice::copy(self : ImagefeaturebriefSlice) -> ImagefeaturebriefSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_slice_fill(s : ImagefeaturebriefSlice, v : Double) -> ImagefeaturebriefSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturebriefSlice::fill(self : ImagefeaturebriefSlice, v : Double) -> ImagefeaturebriefSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_brief_slice_min(s : ImagefeaturebriefSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturebriefSlice::min(self : ImagefeaturebriefSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_brief_slice_max(s : ImagefeaturebriefSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturebriefSlice::max(self : ImagefeaturebriefSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_brief_slice_to_string(s : ImagefeaturebriefSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturebriefSlice::to_string(self : ImagefeaturebriefSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

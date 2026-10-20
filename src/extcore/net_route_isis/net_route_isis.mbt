@@ -351,45 +351,45 @@ pub fn net_route_isis_frame_make(size : Int) -> NetrouteisisFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_frame_len(s : NetrouteisisFrame) -> Int { s.size }
+pub fn NetrouteisisFrame::len(self : NetrouteisisFrame) -> Int { self.size }
 
-pub fn net_route_isis_frame_get(s : NetrouteisisFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisFrame::get(self : NetrouteisisFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_frame_set(s : NetrouteisisFrame, i : Int, v : Double) -> NetrouteisisFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisFrame::set(self : NetrouteisisFrame, i : Int, v : Double) -> NetrouteisisFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_frame_sum(s : NetrouteisisFrame) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisFrame::sum(self : NetrouteisisFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_frame_mean(s : NetrouteisisFrame) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisFrame::mean(self : NetrouteisisFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_frame_scale(s : NetrouteisisFrame, f : Double) -> NetrouteisisFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisFrame::scale(self : NetrouteisisFrame, f : Double) -> NetrouteisisFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_frame_add(a : NetrouteisisFrame, b : NetrouteisisFrame) -> NetrouteisisFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisFrame::add(self : NetrouteisisFrame, other : NetrouteisisFrame) -> NetrouteisisFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_frame_copy(s : NetrouteisisFrame) -> NetrouteisisFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisFrame::copy(self : NetrouteisisFrame) -> NetrouteisisFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_frame_fill(s : NetrouteisisFrame, v : Double) -> NetrouteisisFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisFrame::fill(self : NetrouteisisFrame, v : Double) -> NetrouteisisFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_frame_min(s : NetrouteisisFrame) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisFrame::min(self : NetrouteisisFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_frame_max(s : NetrouteisisFrame) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisFrame::max(self : NetrouteisisFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_frame_to_string(s : NetrouteisisFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisFrame::to_string(self : NetrouteisisFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisTable {
@@ -402,45 +402,45 @@ pub fn net_route_isis_table_make(size : Int) -> NetrouteisisTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_table_len(s : NetrouteisisTable) -> Int { s.size }
+pub fn NetrouteisisTable::len(self : NetrouteisisTable) -> Int { self.size }
 
-pub fn net_route_isis_table_get(s : NetrouteisisTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisTable::get(self : NetrouteisisTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_table_set(s : NetrouteisisTable, i : Int, v : Double) -> NetrouteisisTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisTable::set(self : NetrouteisisTable, i : Int, v : Double) -> NetrouteisisTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_table_sum(s : NetrouteisisTable) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisTable::sum(self : NetrouteisisTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_table_mean(s : NetrouteisisTable) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisTable::mean(self : NetrouteisisTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_table_scale(s : NetrouteisisTable, f : Double) -> NetrouteisisTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisTable::scale(self : NetrouteisisTable, f : Double) -> NetrouteisisTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_table_add(a : NetrouteisisTable, b : NetrouteisisTable) -> NetrouteisisTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisTable::add(self : NetrouteisisTable, other : NetrouteisisTable) -> NetrouteisisTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_table_copy(s : NetrouteisisTable) -> NetrouteisisTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisTable::copy(self : NetrouteisisTable) -> NetrouteisisTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_table_fill(s : NetrouteisisTable, v : Double) -> NetrouteisisTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisTable::fill(self : NetrouteisisTable, v : Double) -> NetrouteisisTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_table_min(s : NetrouteisisTable) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisTable::min(self : NetrouteisisTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_table_max(s : NetrouteisisTable) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisTable::max(self : NetrouteisisTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_table_to_string(s : NetrouteisisTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisTable::to_string(self : NetrouteisisTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_isis_graphn_make(size : Int) -> NetrouteisisGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_graphn_len(s : NetrouteisisGraphN) -> Int { s.size }
+pub fn NetrouteisisGraphN::len(self : NetrouteisisGraphN) -> Int { self.size }
 
-pub fn net_route_isis_graphn_get(s : NetrouteisisGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisGraphN::get(self : NetrouteisisGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_graphn_set(s : NetrouteisisGraphN, i : Int, v : Double) -> NetrouteisisGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisGraphN::set(self : NetrouteisisGraphN, i : Int, v : Double) -> NetrouteisisGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_graphn_sum(s : NetrouteisisGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisGraphN::sum(self : NetrouteisisGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_graphn_mean(s : NetrouteisisGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisGraphN::mean(self : NetrouteisisGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_graphn_scale(s : NetrouteisisGraphN, f : Double) -> NetrouteisisGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisGraphN::scale(self : NetrouteisisGraphN, f : Double) -> NetrouteisisGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_graphn_add(a : NetrouteisisGraphN, b : NetrouteisisGraphN) -> NetrouteisisGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisGraphN::add(self : NetrouteisisGraphN, other : NetrouteisisGraphN) -> NetrouteisisGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_graphn_copy(s : NetrouteisisGraphN) -> NetrouteisisGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisGraphN::copy(self : NetrouteisisGraphN) -> NetrouteisisGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_graphn_fill(s : NetrouteisisGraphN, v : Double) -> NetrouteisisGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisGraphN::fill(self : NetrouteisisGraphN, v : Double) -> NetrouteisisGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_graphn_min(s : NetrouteisisGraphN) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisGraphN::min(self : NetrouteisisGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_graphn_max(s : NetrouteisisGraphN) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisGraphN::max(self : NetrouteisisGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_graphn_to_string(s : NetrouteisisGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisGraphN::to_string(self : NetrouteisisGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisNode {
@@ -504,45 +504,45 @@ pub fn net_route_isis_node_make(size : Int) -> NetrouteisisNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_node_len(s : NetrouteisisNode) -> Int { s.size }
+pub fn NetrouteisisNode::len(self : NetrouteisisNode) -> Int { self.size }
 
-pub fn net_route_isis_node_get(s : NetrouteisisNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisNode::get(self : NetrouteisisNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_node_set(s : NetrouteisisNode, i : Int, v : Double) -> NetrouteisisNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisNode::set(self : NetrouteisisNode, i : Int, v : Double) -> NetrouteisisNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_node_sum(s : NetrouteisisNode) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisNode::sum(self : NetrouteisisNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_node_mean(s : NetrouteisisNode) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisNode::mean(self : NetrouteisisNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_node_scale(s : NetrouteisisNode, f : Double) -> NetrouteisisNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisNode::scale(self : NetrouteisisNode, f : Double) -> NetrouteisisNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_node_add(a : NetrouteisisNode, b : NetrouteisisNode) -> NetrouteisisNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisNode::add(self : NetrouteisisNode, other : NetrouteisisNode) -> NetrouteisisNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_node_copy(s : NetrouteisisNode) -> NetrouteisisNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisNode::copy(self : NetrouteisisNode) -> NetrouteisisNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_node_fill(s : NetrouteisisNode, v : Double) -> NetrouteisisNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisNode::fill(self : NetrouteisisNode, v : Double) -> NetrouteisisNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_node_min(s : NetrouteisisNode) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisNode::min(self : NetrouteisisNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_node_max(s : NetrouteisisNode) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisNode::max(self : NetrouteisisNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_node_to_string(s : NetrouteisisNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisNode::to_string(self : NetrouteisisNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisEdge {
@@ -555,45 +555,45 @@ pub fn net_route_isis_edge_make(size : Int) -> NetrouteisisEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_edge_len(s : NetrouteisisEdge) -> Int { s.size }
+pub fn NetrouteisisEdge::len(self : NetrouteisisEdge) -> Int { self.size }
 
-pub fn net_route_isis_edge_get(s : NetrouteisisEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisEdge::get(self : NetrouteisisEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_edge_set(s : NetrouteisisEdge, i : Int, v : Double) -> NetrouteisisEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisEdge::set(self : NetrouteisisEdge, i : Int, v : Double) -> NetrouteisisEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_edge_sum(s : NetrouteisisEdge) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisEdge::sum(self : NetrouteisisEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_edge_mean(s : NetrouteisisEdge) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisEdge::mean(self : NetrouteisisEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_edge_scale(s : NetrouteisisEdge, f : Double) -> NetrouteisisEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisEdge::scale(self : NetrouteisisEdge, f : Double) -> NetrouteisisEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_edge_add(a : NetrouteisisEdge, b : NetrouteisisEdge) -> NetrouteisisEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisEdge::add(self : NetrouteisisEdge, other : NetrouteisisEdge) -> NetrouteisisEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_edge_copy(s : NetrouteisisEdge) -> NetrouteisisEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisEdge::copy(self : NetrouteisisEdge) -> NetrouteisisEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_edge_fill(s : NetrouteisisEdge, v : Double) -> NetrouteisisEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisEdge::fill(self : NetrouteisisEdge, v : Double) -> NetrouteisisEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_edge_min(s : NetrouteisisEdge) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisEdge::min(self : NetrouteisisEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_edge_max(s : NetrouteisisEdge) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisEdge::max(self : NetrouteisisEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_edge_to_string(s : NetrouteisisEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisEdge::to_string(self : NetrouteisisEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisPath {
@@ -606,45 +606,45 @@ pub fn net_route_isis_path_make(size : Int) -> NetrouteisisPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_path_len(s : NetrouteisisPath) -> Int { s.size }
+pub fn NetrouteisisPath::len(self : NetrouteisisPath) -> Int { self.size }
 
-pub fn net_route_isis_path_get(s : NetrouteisisPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisPath::get(self : NetrouteisisPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_path_set(s : NetrouteisisPath, i : Int, v : Double) -> NetrouteisisPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisPath::set(self : NetrouteisisPath, i : Int, v : Double) -> NetrouteisisPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_path_sum(s : NetrouteisisPath) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisPath::sum(self : NetrouteisisPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_path_mean(s : NetrouteisisPath) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisPath::mean(self : NetrouteisisPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_path_scale(s : NetrouteisisPath, f : Double) -> NetrouteisisPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisPath::scale(self : NetrouteisisPath, f : Double) -> NetrouteisisPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_path_add(a : NetrouteisisPath, b : NetrouteisisPath) -> NetrouteisisPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisPath::add(self : NetrouteisisPath, other : NetrouteisisPath) -> NetrouteisisPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_path_copy(s : NetrouteisisPath) -> NetrouteisisPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisPath::copy(self : NetrouteisisPath) -> NetrouteisisPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_path_fill(s : NetrouteisisPath, v : Double) -> NetrouteisisPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisPath::fill(self : NetrouteisisPath, v : Double) -> NetrouteisisPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_path_min(s : NetrouteisisPath) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisPath::min(self : NetrouteisisPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_path_max(s : NetrouteisisPath) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisPath::max(self : NetrouteisisPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_path_to_string(s : NetrouteisisPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisPath::to_string(self : NetrouteisisPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisCluster {
@@ -657,45 +657,45 @@ pub fn net_route_isis_cluster_make(size : Int) -> NetrouteisisCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_cluster_len(s : NetrouteisisCluster) -> Int { s.size }
+pub fn NetrouteisisCluster::len(self : NetrouteisisCluster) -> Int { self.size }
 
-pub fn net_route_isis_cluster_get(s : NetrouteisisCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisCluster::get(self : NetrouteisisCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_cluster_set(s : NetrouteisisCluster, i : Int, v : Double) -> NetrouteisisCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisCluster::set(self : NetrouteisisCluster, i : Int, v : Double) -> NetrouteisisCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cluster_sum(s : NetrouteisisCluster) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisCluster::sum(self : NetrouteisisCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_cluster_mean(s : NetrouteisisCluster) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisCluster::mean(self : NetrouteisisCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_cluster_scale(s : NetrouteisisCluster, f : Double) -> NetrouteisisCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisCluster::scale(self : NetrouteisisCluster, f : Double) -> NetrouteisisCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cluster_add(a : NetrouteisisCluster, b : NetrouteisisCluster) -> NetrouteisisCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisCluster::add(self : NetrouteisisCluster, other : NetrouteisisCluster) -> NetrouteisisCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_cluster_copy(s : NetrouteisisCluster) -> NetrouteisisCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisCluster::copy(self : NetrouteisisCluster) -> NetrouteisisCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cluster_fill(s : NetrouteisisCluster, v : Double) -> NetrouteisisCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisCluster::fill(self : NetrouteisisCluster, v : Double) -> NetrouteisisCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cluster_min(s : NetrouteisisCluster) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisCluster::min(self : NetrouteisisCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_cluster_max(s : NetrouteisisCluster) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisCluster::max(self : NetrouteisisCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_cluster_to_string(s : NetrouteisisCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisCluster::to_string(self : NetrouteisisCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisModel {
@@ -708,45 +708,45 @@ pub fn net_route_isis_model_make(size : Int) -> NetrouteisisModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_model_len(s : NetrouteisisModel) -> Int { s.size }
+pub fn NetrouteisisModel::len(self : NetrouteisisModel) -> Int { self.size }
 
-pub fn net_route_isis_model_get(s : NetrouteisisModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisModel::get(self : NetrouteisisModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_model_set(s : NetrouteisisModel, i : Int, v : Double) -> NetrouteisisModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisModel::set(self : NetrouteisisModel, i : Int, v : Double) -> NetrouteisisModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_model_sum(s : NetrouteisisModel) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisModel::sum(self : NetrouteisisModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_model_mean(s : NetrouteisisModel) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisModel::mean(self : NetrouteisisModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_model_scale(s : NetrouteisisModel, f : Double) -> NetrouteisisModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisModel::scale(self : NetrouteisisModel, f : Double) -> NetrouteisisModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_model_add(a : NetrouteisisModel, b : NetrouteisisModel) -> NetrouteisisModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisModel::add(self : NetrouteisisModel, other : NetrouteisisModel) -> NetrouteisisModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_model_copy(s : NetrouteisisModel) -> NetrouteisisModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisModel::copy(self : NetrouteisisModel) -> NetrouteisisModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_model_fill(s : NetrouteisisModel, v : Double) -> NetrouteisisModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisModel::fill(self : NetrouteisisModel, v : Double) -> NetrouteisisModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_model_min(s : NetrouteisisModel) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisModel::min(self : NetrouteisisModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_model_max(s : NetrouteisisModel) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisModel::max(self : NetrouteisisModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_model_to_string(s : NetrouteisisModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisModel::to_string(self : NetrouteisisModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisLayer {
@@ -759,45 +759,45 @@ pub fn net_route_isis_layer_make(size : Int) -> NetrouteisisLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_layer_len(s : NetrouteisisLayer) -> Int { s.size }
+pub fn NetrouteisisLayer::len(self : NetrouteisisLayer) -> Int { self.size }
 
-pub fn net_route_isis_layer_get(s : NetrouteisisLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisLayer::get(self : NetrouteisisLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_layer_set(s : NetrouteisisLayer, i : Int, v : Double) -> NetrouteisisLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisLayer::set(self : NetrouteisisLayer, i : Int, v : Double) -> NetrouteisisLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_layer_sum(s : NetrouteisisLayer) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisLayer::sum(self : NetrouteisisLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_layer_mean(s : NetrouteisisLayer) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisLayer::mean(self : NetrouteisisLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_layer_scale(s : NetrouteisisLayer, f : Double) -> NetrouteisisLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisLayer::scale(self : NetrouteisisLayer, f : Double) -> NetrouteisisLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_layer_add(a : NetrouteisisLayer, b : NetrouteisisLayer) -> NetrouteisisLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisLayer::add(self : NetrouteisisLayer, other : NetrouteisisLayer) -> NetrouteisisLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_layer_copy(s : NetrouteisisLayer) -> NetrouteisisLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisLayer::copy(self : NetrouteisisLayer) -> NetrouteisisLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_layer_fill(s : NetrouteisisLayer, v : Double) -> NetrouteisisLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisLayer::fill(self : NetrouteisisLayer, v : Double) -> NetrouteisisLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_layer_min(s : NetrouteisisLayer) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisLayer::min(self : NetrouteisisLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_layer_max(s : NetrouteisisLayer) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisLayer::max(self : NetrouteisisLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_layer_to_string(s : NetrouteisisLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisLayer::to_string(self : NetrouteisisLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_isis_buffer_make(size : Int) -> NetrouteisisBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_buffer_len(s : NetrouteisisBuffer) -> Int { s.size }
+pub fn NetrouteisisBuffer::len(self : NetrouteisisBuffer) -> Int { self.size }
 
-pub fn net_route_isis_buffer_get(s : NetrouteisisBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisBuffer::get(self : NetrouteisisBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_buffer_set(s : NetrouteisisBuffer, i : Int, v : Double) -> NetrouteisisBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisBuffer::set(self : NetrouteisisBuffer, i : Int, v : Double) -> NetrouteisisBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_buffer_sum(s : NetrouteisisBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisBuffer::sum(self : NetrouteisisBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_buffer_mean(s : NetrouteisisBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisBuffer::mean(self : NetrouteisisBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_buffer_scale(s : NetrouteisisBuffer, f : Double) -> NetrouteisisBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisBuffer::scale(self : NetrouteisisBuffer, f : Double) -> NetrouteisisBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_buffer_add(a : NetrouteisisBuffer, b : NetrouteisisBuffer) -> NetrouteisisBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisBuffer::add(self : NetrouteisisBuffer, other : NetrouteisisBuffer) -> NetrouteisisBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_buffer_copy(s : NetrouteisisBuffer) -> NetrouteisisBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisBuffer::copy(self : NetrouteisisBuffer) -> NetrouteisisBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_buffer_fill(s : NetrouteisisBuffer, v : Double) -> NetrouteisisBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisBuffer::fill(self : NetrouteisisBuffer, v : Double) -> NetrouteisisBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_buffer_min(s : NetrouteisisBuffer) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisBuffer::min(self : NetrouteisisBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_buffer_max(s : NetrouteisisBuffer) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisBuffer::max(self : NetrouteisisBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_buffer_to_string(s : NetrouteisisBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisBuffer::to_string(self : NetrouteisisBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisCursor {
@@ -861,45 +861,45 @@ pub fn net_route_isis_cursor_make(size : Int) -> NetrouteisisCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_cursor_len(s : NetrouteisisCursor) -> Int { s.size }
+pub fn NetrouteisisCursor::len(self : NetrouteisisCursor) -> Int { self.size }
 
-pub fn net_route_isis_cursor_get(s : NetrouteisisCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisCursor::get(self : NetrouteisisCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_cursor_set(s : NetrouteisisCursor, i : Int, v : Double) -> NetrouteisisCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisCursor::set(self : NetrouteisisCursor, i : Int, v : Double) -> NetrouteisisCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cursor_sum(s : NetrouteisisCursor) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisCursor::sum(self : NetrouteisisCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_cursor_mean(s : NetrouteisisCursor) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisCursor::mean(self : NetrouteisisCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_cursor_scale(s : NetrouteisisCursor, f : Double) -> NetrouteisisCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisCursor::scale(self : NetrouteisisCursor, f : Double) -> NetrouteisisCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cursor_add(a : NetrouteisisCursor, b : NetrouteisisCursor) -> NetrouteisisCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisCursor::add(self : NetrouteisisCursor, other : NetrouteisisCursor) -> NetrouteisisCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_cursor_copy(s : NetrouteisisCursor) -> NetrouteisisCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisCursor::copy(self : NetrouteisisCursor) -> NetrouteisisCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cursor_fill(s : NetrouteisisCursor, v : Double) -> NetrouteisisCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisCursor::fill(self : NetrouteisisCursor, v : Double) -> NetrouteisisCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_cursor_min(s : NetrouteisisCursor) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisCursor::min(self : NetrouteisisCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_cursor_max(s : NetrouteisisCursor) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisCursor::max(self : NetrouteisisCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_cursor_to_string(s : NetrouteisisCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisCursor::to_string(self : NetrouteisisCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisView {
@@ -912,45 +912,45 @@ pub fn net_route_isis_view_make(size : Int) -> NetrouteisisView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_view_len(s : NetrouteisisView) -> Int { s.size }
+pub fn NetrouteisisView::len(self : NetrouteisisView) -> Int { self.size }
 
-pub fn net_route_isis_view_get(s : NetrouteisisView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisView::get(self : NetrouteisisView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_view_set(s : NetrouteisisView, i : Int, v : Double) -> NetrouteisisView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisView::set(self : NetrouteisisView, i : Int, v : Double) -> NetrouteisisView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_view_sum(s : NetrouteisisView) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisView::sum(self : NetrouteisisView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_view_mean(s : NetrouteisisView) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisView::mean(self : NetrouteisisView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_view_scale(s : NetrouteisisView, f : Double) -> NetrouteisisView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisView::scale(self : NetrouteisisView, f : Double) -> NetrouteisisView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_view_add(a : NetrouteisisView, b : NetrouteisisView) -> NetrouteisisView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisView::add(self : NetrouteisisView, other : NetrouteisisView) -> NetrouteisisView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_view_copy(s : NetrouteisisView) -> NetrouteisisView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisView::copy(self : NetrouteisisView) -> NetrouteisisView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_view_fill(s : NetrouteisisView, v : Double) -> NetrouteisisView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisView::fill(self : NetrouteisisView, v : Double) -> NetrouteisisView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_view_min(s : NetrouteisisView) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisView::min(self : NetrouteisisView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_view_max(s : NetrouteisisView) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisView::max(self : NetrouteisisView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_view_to_string(s : NetrouteisisView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisView::to_string(self : NetrouteisisView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisRange {
@@ -963,45 +963,45 @@ pub fn net_route_isis_range_make(size : Int) -> NetrouteisisRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_range_len(s : NetrouteisisRange) -> Int { s.size }
+pub fn NetrouteisisRange::len(self : NetrouteisisRange) -> Int { self.size }
 
-pub fn net_route_isis_range_get(s : NetrouteisisRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisRange::get(self : NetrouteisisRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_range_set(s : NetrouteisisRange, i : Int, v : Double) -> NetrouteisisRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisRange::set(self : NetrouteisisRange, i : Int, v : Double) -> NetrouteisisRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_range_sum(s : NetrouteisisRange) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisRange::sum(self : NetrouteisisRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_range_mean(s : NetrouteisisRange) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisRange::mean(self : NetrouteisisRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_range_scale(s : NetrouteisisRange, f : Double) -> NetrouteisisRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisRange::scale(self : NetrouteisisRange, f : Double) -> NetrouteisisRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_range_add(a : NetrouteisisRange, b : NetrouteisisRange) -> NetrouteisisRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisRange::add(self : NetrouteisisRange, other : NetrouteisisRange) -> NetrouteisisRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_range_copy(s : NetrouteisisRange) -> NetrouteisisRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisRange::copy(self : NetrouteisisRange) -> NetrouteisisRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_range_fill(s : NetrouteisisRange, v : Double) -> NetrouteisisRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisRange::fill(self : NetrouteisisRange, v : Double) -> NetrouteisisRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_range_min(s : NetrouteisisRange) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisRange::min(self : NetrouteisisRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_range_max(s : NetrouteisisRange) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisRange::max(self : NetrouteisisRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_range_to_string(s : NetrouteisisRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisRange::to_string(self : NetrouteisisRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_isis_slice_make(size : Int) -> NetrouteisisSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_isis_slice_len(s : NetrouteisisSlice) -> Int { s.size }
+pub fn NetrouteisisSlice::len(self : NetrouteisisSlice) -> Int { self.size }
 
-pub fn net_route_isis_slice_get(s : NetrouteisisSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteisisSlice::get(self : NetrouteisisSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_isis_slice_set(s : NetrouteisisSlice, i : Int, v : Double) -> NetrouteisisSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteisisSlice::set(self : NetrouteisisSlice, i : Int, v : Double) -> NetrouteisisSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_slice_sum(s : NetrouteisisSlice) -> Double { @_common.sum(s.data) }
+pub fn NetrouteisisSlice::sum(self : NetrouteisisSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_isis_slice_mean(s : NetrouteisisSlice) -> Double { @_common.mean(s.data) }
+pub fn NetrouteisisSlice::mean(self : NetrouteisisSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_isis_slice_scale(s : NetrouteisisSlice, f : Double) -> NetrouteisisSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteisisSlice::scale(self : NetrouteisisSlice, f : Double) -> NetrouteisisSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_slice_add(a : NetrouteisisSlice, b : NetrouteisisSlice) -> NetrouteisisSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteisisSlice::add(self : NetrouteisisSlice, other : NetrouteisisSlice) -> NetrouteisisSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_isis_slice_copy(s : NetrouteisisSlice) -> NetrouteisisSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteisisSlice::copy(self : NetrouteisisSlice) -> NetrouteisisSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_slice_fill(s : NetrouteisisSlice, v : Double) -> NetrouteisisSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteisisSlice::fill(self : NetrouteisisSlice, v : Double) -> NetrouteisisSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_isis_slice_min(s : NetrouteisisSlice) -> Double { @_common.min(s.data) }
+pub fn NetrouteisisSlice::min(self : NetrouteisisSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_isis_slice_max(s : NetrouteisisSlice) -> Double { @_common.max(s.data) }
+pub fn NetrouteisisSlice::max(self : NetrouteisisSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_isis_slice_to_string(s : NetrouteisisSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteisisSlice::to_string(self : NetrouteisisSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

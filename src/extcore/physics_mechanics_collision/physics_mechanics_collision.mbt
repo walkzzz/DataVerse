@@ -351,45 +351,45 @@ pub fn physics_mechanics_collision_frame_make(size : Int) -> Physicsmechanicscol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_frame_len(s : PhysicsmechanicscollisionFrame) -> Int { s.size }
+pub fn PhysicsmechanicscollisionFrame::len(self : PhysicsmechanicscollisionFrame) -> Int { self.size }
 
-pub fn physics_mechanics_collision_frame_get(s : PhysicsmechanicscollisionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionFrame::get(self : PhysicsmechanicscollisionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_frame_set(s : PhysicsmechanicscollisionFrame, i : Int, v : Double) -> PhysicsmechanicscollisionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionFrame::set(self : PhysicsmechanicscollisionFrame, i : Int, v : Double) -> PhysicsmechanicscollisionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_frame_sum(s : PhysicsmechanicscollisionFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionFrame::sum(self : PhysicsmechanicscollisionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_frame_mean(s : PhysicsmechanicscollisionFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionFrame::mean(self : PhysicsmechanicscollisionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_frame_scale(s : PhysicsmechanicscollisionFrame, f : Double) -> PhysicsmechanicscollisionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionFrame::scale(self : PhysicsmechanicscollisionFrame, f : Double) -> PhysicsmechanicscollisionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_frame_add(a : PhysicsmechanicscollisionFrame, b : PhysicsmechanicscollisionFrame) -> PhysicsmechanicscollisionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionFrame::add(self : PhysicsmechanicscollisionFrame, other : PhysicsmechanicscollisionFrame) -> PhysicsmechanicscollisionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_frame_copy(s : PhysicsmechanicscollisionFrame) -> PhysicsmechanicscollisionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionFrame::copy(self : PhysicsmechanicscollisionFrame) -> PhysicsmechanicscollisionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_frame_fill(s : PhysicsmechanicscollisionFrame, v : Double) -> PhysicsmechanicscollisionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionFrame::fill(self : PhysicsmechanicscollisionFrame, v : Double) -> PhysicsmechanicscollisionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_frame_min(s : PhysicsmechanicscollisionFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionFrame::min(self : PhysicsmechanicscollisionFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_frame_max(s : PhysicsmechanicscollisionFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionFrame::max(self : PhysicsmechanicscollisionFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_frame_to_string(s : PhysicsmechanicscollisionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionFrame::to_string(self : PhysicsmechanicscollisionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionTable {
@@ -402,45 +402,45 @@ pub fn physics_mechanics_collision_table_make(size : Int) -> Physicsmechanicscol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_table_len(s : PhysicsmechanicscollisionTable) -> Int { s.size }
+pub fn PhysicsmechanicscollisionTable::len(self : PhysicsmechanicscollisionTable) -> Int { self.size }
 
-pub fn physics_mechanics_collision_table_get(s : PhysicsmechanicscollisionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionTable::get(self : PhysicsmechanicscollisionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_table_set(s : PhysicsmechanicscollisionTable, i : Int, v : Double) -> PhysicsmechanicscollisionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionTable::set(self : PhysicsmechanicscollisionTable, i : Int, v : Double) -> PhysicsmechanicscollisionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_table_sum(s : PhysicsmechanicscollisionTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionTable::sum(self : PhysicsmechanicscollisionTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_table_mean(s : PhysicsmechanicscollisionTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionTable::mean(self : PhysicsmechanicscollisionTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_table_scale(s : PhysicsmechanicscollisionTable, f : Double) -> PhysicsmechanicscollisionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionTable::scale(self : PhysicsmechanicscollisionTable, f : Double) -> PhysicsmechanicscollisionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_table_add(a : PhysicsmechanicscollisionTable, b : PhysicsmechanicscollisionTable) -> PhysicsmechanicscollisionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionTable::add(self : PhysicsmechanicscollisionTable, other : PhysicsmechanicscollisionTable) -> PhysicsmechanicscollisionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_table_copy(s : PhysicsmechanicscollisionTable) -> PhysicsmechanicscollisionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionTable::copy(self : PhysicsmechanicscollisionTable) -> PhysicsmechanicscollisionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_table_fill(s : PhysicsmechanicscollisionTable, v : Double) -> PhysicsmechanicscollisionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionTable::fill(self : PhysicsmechanicscollisionTable, v : Double) -> PhysicsmechanicscollisionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_table_min(s : PhysicsmechanicscollisionTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionTable::min(self : PhysicsmechanicscollisionTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_table_max(s : PhysicsmechanicscollisionTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionTable::max(self : PhysicsmechanicscollisionTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_table_to_string(s : PhysicsmechanicscollisionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionTable::to_string(self : PhysicsmechanicscollisionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionGraphN {
@@ -453,45 +453,45 @@ pub fn physics_mechanics_collision_graphn_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_graphn_len(s : PhysicsmechanicscollisionGraphN) -> Int { s.size }
+pub fn PhysicsmechanicscollisionGraphN::len(self : PhysicsmechanicscollisionGraphN) -> Int { self.size }
 
-pub fn physics_mechanics_collision_graphn_get(s : PhysicsmechanicscollisionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionGraphN::get(self : PhysicsmechanicscollisionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_graphn_set(s : PhysicsmechanicscollisionGraphN, i : Int, v : Double) -> PhysicsmechanicscollisionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionGraphN::set(self : PhysicsmechanicscollisionGraphN, i : Int, v : Double) -> PhysicsmechanicscollisionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_graphn_sum(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionGraphN::sum(self : PhysicsmechanicscollisionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_graphn_mean(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionGraphN::mean(self : PhysicsmechanicscollisionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_graphn_scale(s : PhysicsmechanicscollisionGraphN, f : Double) -> PhysicsmechanicscollisionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionGraphN::scale(self : PhysicsmechanicscollisionGraphN, f : Double) -> PhysicsmechanicscollisionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_graphn_add(a : PhysicsmechanicscollisionGraphN, b : PhysicsmechanicscollisionGraphN) -> PhysicsmechanicscollisionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionGraphN::add(self : PhysicsmechanicscollisionGraphN, other : PhysicsmechanicscollisionGraphN) -> PhysicsmechanicscollisionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_graphn_copy(s : PhysicsmechanicscollisionGraphN) -> PhysicsmechanicscollisionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionGraphN::copy(self : PhysicsmechanicscollisionGraphN) -> PhysicsmechanicscollisionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_graphn_fill(s : PhysicsmechanicscollisionGraphN, v : Double) -> PhysicsmechanicscollisionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionGraphN::fill(self : PhysicsmechanicscollisionGraphN, v : Double) -> PhysicsmechanicscollisionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_graphn_min(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionGraphN::min(self : PhysicsmechanicscollisionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_graphn_max(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionGraphN::max(self : PhysicsmechanicscollisionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_graphn_to_string(s : PhysicsmechanicscollisionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionGraphN::to_string(self : PhysicsmechanicscollisionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionNode {
@@ -504,45 +504,45 @@ pub fn physics_mechanics_collision_node_make(size : Int) -> Physicsmechanicscoll
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_node_len(s : PhysicsmechanicscollisionNode) -> Int { s.size }
+pub fn PhysicsmechanicscollisionNode::len(self : PhysicsmechanicscollisionNode) -> Int { self.size }
 
-pub fn physics_mechanics_collision_node_get(s : PhysicsmechanicscollisionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionNode::get(self : PhysicsmechanicscollisionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_node_set(s : PhysicsmechanicscollisionNode, i : Int, v : Double) -> PhysicsmechanicscollisionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionNode::set(self : PhysicsmechanicscollisionNode, i : Int, v : Double) -> PhysicsmechanicscollisionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_node_sum(s : PhysicsmechanicscollisionNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionNode::sum(self : PhysicsmechanicscollisionNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_node_mean(s : PhysicsmechanicscollisionNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionNode::mean(self : PhysicsmechanicscollisionNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_node_scale(s : PhysicsmechanicscollisionNode, f : Double) -> PhysicsmechanicscollisionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionNode::scale(self : PhysicsmechanicscollisionNode, f : Double) -> PhysicsmechanicscollisionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_node_add(a : PhysicsmechanicscollisionNode, b : PhysicsmechanicscollisionNode) -> PhysicsmechanicscollisionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionNode::add(self : PhysicsmechanicscollisionNode, other : PhysicsmechanicscollisionNode) -> PhysicsmechanicscollisionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_node_copy(s : PhysicsmechanicscollisionNode) -> PhysicsmechanicscollisionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionNode::copy(self : PhysicsmechanicscollisionNode) -> PhysicsmechanicscollisionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_node_fill(s : PhysicsmechanicscollisionNode, v : Double) -> PhysicsmechanicscollisionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionNode::fill(self : PhysicsmechanicscollisionNode, v : Double) -> PhysicsmechanicscollisionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_node_min(s : PhysicsmechanicscollisionNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionNode::min(self : PhysicsmechanicscollisionNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_node_max(s : PhysicsmechanicscollisionNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionNode::max(self : PhysicsmechanicscollisionNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_node_to_string(s : PhysicsmechanicscollisionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionNode::to_string(self : PhysicsmechanicscollisionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionEdge {
@@ -555,45 +555,45 @@ pub fn physics_mechanics_collision_edge_make(size : Int) -> Physicsmechanicscoll
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_edge_len(s : PhysicsmechanicscollisionEdge) -> Int { s.size }
+pub fn PhysicsmechanicscollisionEdge::len(self : PhysicsmechanicscollisionEdge) -> Int { self.size }
 
-pub fn physics_mechanics_collision_edge_get(s : PhysicsmechanicscollisionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionEdge::get(self : PhysicsmechanicscollisionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_edge_set(s : PhysicsmechanicscollisionEdge, i : Int, v : Double) -> PhysicsmechanicscollisionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionEdge::set(self : PhysicsmechanicscollisionEdge, i : Int, v : Double) -> PhysicsmechanicscollisionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_edge_sum(s : PhysicsmechanicscollisionEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionEdge::sum(self : PhysicsmechanicscollisionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_edge_mean(s : PhysicsmechanicscollisionEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionEdge::mean(self : PhysicsmechanicscollisionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_edge_scale(s : PhysicsmechanicscollisionEdge, f : Double) -> PhysicsmechanicscollisionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionEdge::scale(self : PhysicsmechanicscollisionEdge, f : Double) -> PhysicsmechanicscollisionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_edge_add(a : PhysicsmechanicscollisionEdge, b : PhysicsmechanicscollisionEdge) -> PhysicsmechanicscollisionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionEdge::add(self : PhysicsmechanicscollisionEdge, other : PhysicsmechanicscollisionEdge) -> PhysicsmechanicscollisionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_edge_copy(s : PhysicsmechanicscollisionEdge) -> PhysicsmechanicscollisionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionEdge::copy(self : PhysicsmechanicscollisionEdge) -> PhysicsmechanicscollisionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_edge_fill(s : PhysicsmechanicscollisionEdge, v : Double) -> PhysicsmechanicscollisionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionEdge::fill(self : PhysicsmechanicscollisionEdge, v : Double) -> PhysicsmechanicscollisionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_edge_min(s : PhysicsmechanicscollisionEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionEdge::min(self : PhysicsmechanicscollisionEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_edge_max(s : PhysicsmechanicscollisionEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionEdge::max(self : PhysicsmechanicscollisionEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_edge_to_string(s : PhysicsmechanicscollisionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionEdge::to_string(self : PhysicsmechanicscollisionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionPath {
@@ -606,45 +606,45 @@ pub fn physics_mechanics_collision_path_make(size : Int) -> Physicsmechanicscoll
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_path_len(s : PhysicsmechanicscollisionPath) -> Int { s.size }
+pub fn PhysicsmechanicscollisionPath::len(self : PhysicsmechanicscollisionPath) -> Int { self.size }
 
-pub fn physics_mechanics_collision_path_get(s : PhysicsmechanicscollisionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionPath::get(self : PhysicsmechanicscollisionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_path_set(s : PhysicsmechanicscollisionPath, i : Int, v : Double) -> PhysicsmechanicscollisionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionPath::set(self : PhysicsmechanicscollisionPath, i : Int, v : Double) -> PhysicsmechanicscollisionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_path_sum(s : PhysicsmechanicscollisionPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionPath::sum(self : PhysicsmechanicscollisionPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_path_mean(s : PhysicsmechanicscollisionPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionPath::mean(self : PhysicsmechanicscollisionPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_path_scale(s : PhysicsmechanicscollisionPath, f : Double) -> PhysicsmechanicscollisionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionPath::scale(self : PhysicsmechanicscollisionPath, f : Double) -> PhysicsmechanicscollisionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_path_add(a : PhysicsmechanicscollisionPath, b : PhysicsmechanicscollisionPath) -> PhysicsmechanicscollisionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionPath::add(self : PhysicsmechanicscollisionPath, other : PhysicsmechanicscollisionPath) -> PhysicsmechanicscollisionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_path_copy(s : PhysicsmechanicscollisionPath) -> PhysicsmechanicscollisionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionPath::copy(self : PhysicsmechanicscollisionPath) -> PhysicsmechanicscollisionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_path_fill(s : PhysicsmechanicscollisionPath, v : Double) -> PhysicsmechanicscollisionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionPath::fill(self : PhysicsmechanicscollisionPath, v : Double) -> PhysicsmechanicscollisionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_path_min(s : PhysicsmechanicscollisionPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionPath::min(self : PhysicsmechanicscollisionPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_path_max(s : PhysicsmechanicscollisionPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionPath::max(self : PhysicsmechanicscollisionPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_path_to_string(s : PhysicsmechanicscollisionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionPath::to_string(self : PhysicsmechanicscollisionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionCluster {
@@ -657,45 +657,45 @@ pub fn physics_mechanics_collision_cluster_make(size : Int) -> Physicsmechanicsc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_cluster_len(s : PhysicsmechanicscollisionCluster) -> Int { s.size }
+pub fn PhysicsmechanicscollisionCluster::len(self : PhysicsmechanicscollisionCluster) -> Int { self.size }
 
-pub fn physics_mechanics_collision_cluster_get(s : PhysicsmechanicscollisionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionCluster::get(self : PhysicsmechanicscollisionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_cluster_set(s : PhysicsmechanicscollisionCluster, i : Int, v : Double) -> PhysicsmechanicscollisionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCluster::set(self : PhysicsmechanicscollisionCluster, i : Int, v : Double) -> PhysicsmechanicscollisionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cluster_sum(s : PhysicsmechanicscollisionCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionCluster::sum(self : PhysicsmechanicscollisionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_cluster_mean(s : PhysicsmechanicscollisionCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionCluster::mean(self : PhysicsmechanicscollisionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_cluster_scale(s : PhysicsmechanicscollisionCluster, f : Double) -> PhysicsmechanicscollisionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCluster::scale(self : PhysicsmechanicscollisionCluster, f : Double) -> PhysicsmechanicscollisionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cluster_add(a : PhysicsmechanicscollisionCluster, b : PhysicsmechanicscollisionCluster) -> PhysicsmechanicscollisionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionCluster::add(self : PhysicsmechanicscollisionCluster, other : PhysicsmechanicscollisionCluster) -> PhysicsmechanicscollisionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cluster_copy(s : PhysicsmechanicscollisionCluster) -> PhysicsmechanicscollisionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCluster::copy(self : PhysicsmechanicscollisionCluster) -> PhysicsmechanicscollisionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cluster_fill(s : PhysicsmechanicscollisionCluster, v : Double) -> PhysicsmechanicscollisionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCluster::fill(self : PhysicsmechanicscollisionCluster, v : Double) -> PhysicsmechanicscollisionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cluster_min(s : PhysicsmechanicscollisionCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionCluster::min(self : PhysicsmechanicscollisionCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_cluster_max(s : PhysicsmechanicscollisionCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionCluster::max(self : PhysicsmechanicscollisionCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_cluster_to_string(s : PhysicsmechanicscollisionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionCluster::to_string(self : PhysicsmechanicscollisionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionModel {
@@ -708,45 +708,45 @@ pub fn physics_mechanics_collision_model_make(size : Int) -> Physicsmechanicscol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_model_len(s : PhysicsmechanicscollisionModel) -> Int { s.size }
+pub fn PhysicsmechanicscollisionModel::len(self : PhysicsmechanicscollisionModel) -> Int { self.size }
 
-pub fn physics_mechanics_collision_model_get(s : PhysicsmechanicscollisionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionModel::get(self : PhysicsmechanicscollisionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_model_set(s : PhysicsmechanicscollisionModel, i : Int, v : Double) -> PhysicsmechanicscollisionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionModel::set(self : PhysicsmechanicscollisionModel, i : Int, v : Double) -> PhysicsmechanicscollisionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_model_sum(s : PhysicsmechanicscollisionModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionModel::sum(self : PhysicsmechanicscollisionModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_model_mean(s : PhysicsmechanicscollisionModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionModel::mean(self : PhysicsmechanicscollisionModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_model_scale(s : PhysicsmechanicscollisionModel, f : Double) -> PhysicsmechanicscollisionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionModel::scale(self : PhysicsmechanicscollisionModel, f : Double) -> PhysicsmechanicscollisionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_model_add(a : PhysicsmechanicscollisionModel, b : PhysicsmechanicscollisionModel) -> PhysicsmechanicscollisionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionModel::add(self : PhysicsmechanicscollisionModel, other : PhysicsmechanicscollisionModel) -> PhysicsmechanicscollisionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_model_copy(s : PhysicsmechanicscollisionModel) -> PhysicsmechanicscollisionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionModel::copy(self : PhysicsmechanicscollisionModel) -> PhysicsmechanicscollisionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_model_fill(s : PhysicsmechanicscollisionModel, v : Double) -> PhysicsmechanicscollisionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionModel::fill(self : PhysicsmechanicscollisionModel, v : Double) -> PhysicsmechanicscollisionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_model_min(s : PhysicsmechanicscollisionModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionModel::min(self : PhysicsmechanicscollisionModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_model_max(s : PhysicsmechanicscollisionModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionModel::max(self : PhysicsmechanicscollisionModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_model_to_string(s : PhysicsmechanicscollisionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionModel::to_string(self : PhysicsmechanicscollisionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionLayer {
@@ -759,45 +759,45 @@ pub fn physics_mechanics_collision_layer_make(size : Int) -> Physicsmechanicscol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_layer_len(s : PhysicsmechanicscollisionLayer) -> Int { s.size }
+pub fn PhysicsmechanicscollisionLayer::len(self : PhysicsmechanicscollisionLayer) -> Int { self.size }
 
-pub fn physics_mechanics_collision_layer_get(s : PhysicsmechanicscollisionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionLayer::get(self : PhysicsmechanicscollisionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_layer_set(s : PhysicsmechanicscollisionLayer, i : Int, v : Double) -> PhysicsmechanicscollisionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionLayer::set(self : PhysicsmechanicscollisionLayer, i : Int, v : Double) -> PhysicsmechanicscollisionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_layer_sum(s : PhysicsmechanicscollisionLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionLayer::sum(self : PhysicsmechanicscollisionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_layer_mean(s : PhysicsmechanicscollisionLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionLayer::mean(self : PhysicsmechanicscollisionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_layer_scale(s : PhysicsmechanicscollisionLayer, f : Double) -> PhysicsmechanicscollisionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionLayer::scale(self : PhysicsmechanicscollisionLayer, f : Double) -> PhysicsmechanicscollisionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_layer_add(a : PhysicsmechanicscollisionLayer, b : PhysicsmechanicscollisionLayer) -> PhysicsmechanicscollisionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionLayer::add(self : PhysicsmechanicscollisionLayer, other : PhysicsmechanicscollisionLayer) -> PhysicsmechanicscollisionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_layer_copy(s : PhysicsmechanicscollisionLayer) -> PhysicsmechanicscollisionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionLayer::copy(self : PhysicsmechanicscollisionLayer) -> PhysicsmechanicscollisionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_layer_fill(s : PhysicsmechanicscollisionLayer, v : Double) -> PhysicsmechanicscollisionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionLayer::fill(self : PhysicsmechanicscollisionLayer, v : Double) -> PhysicsmechanicscollisionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_layer_min(s : PhysicsmechanicscollisionLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionLayer::min(self : PhysicsmechanicscollisionLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_layer_max(s : PhysicsmechanicscollisionLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionLayer::max(self : PhysicsmechanicscollisionLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_layer_to_string(s : PhysicsmechanicscollisionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionLayer::to_string(self : PhysicsmechanicscollisionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionBuffer {
@@ -810,45 +810,45 @@ pub fn physics_mechanics_collision_buffer_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_buffer_len(s : PhysicsmechanicscollisionBuffer) -> Int { s.size }
+pub fn PhysicsmechanicscollisionBuffer::len(self : PhysicsmechanicscollisionBuffer) -> Int { self.size }
 
-pub fn physics_mechanics_collision_buffer_get(s : PhysicsmechanicscollisionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionBuffer::get(self : PhysicsmechanicscollisionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_buffer_set(s : PhysicsmechanicscollisionBuffer, i : Int, v : Double) -> PhysicsmechanicscollisionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionBuffer::set(self : PhysicsmechanicscollisionBuffer, i : Int, v : Double) -> PhysicsmechanicscollisionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_buffer_sum(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionBuffer::sum(self : PhysicsmechanicscollisionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_buffer_mean(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionBuffer::mean(self : PhysicsmechanicscollisionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_buffer_scale(s : PhysicsmechanicscollisionBuffer, f : Double) -> PhysicsmechanicscollisionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionBuffer::scale(self : PhysicsmechanicscollisionBuffer, f : Double) -> PhysicsmechanicscollisionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_buffer_add(a : PhysicsmechanicscollisionBuffer, b : PhysicsmechanicscollisionBuffer) -> PhysicsmechanicscollisionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionBuffer::add(self : PhysicsmechanicscollisionBuffer, other : PhysicsmechanicscollisionBuffer) -> PhysicsmechanicscollisionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_buffer_copy(s : PhysicsmechanicscollisionBuffer) -> PhysicsmechanicscollisionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionBuffer::copy(self : PhysicsmechanicscollisionBuffer) -> PhysicsmechanicscollisionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_buffer_fill(s : PhysicsmechanicscollisionBuffer, v : Double) -> PhysicsmechanicscollisionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionBuffer::fill(self : PhysicsmechanicscollisionBuffer, v : Double) -> PhysicsmechanicscollisionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_buffer_min(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionBuffer::min(self : PhysicsmechanicscollisionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_buffer_max(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionBuffer::max(self : PhysicsmechanicscollisionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_buffer_to_string(s : PhysicsmechanicscollisionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionBuffer::to_string(self : PhysicsmechanicscollisionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionCursor {
@@ -861,45 +861,45 @@ pub fn physics_mechanics_collision_cursor_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_cursor_len(s : PhysicsmechanicscollisionCursor) -> Int { s.size }
+pub fn PhysicsmechanicscollisionCursor::len(self : PhysicsmechanicscollisionCursor) -> Int { self.size }
 
-pub fn physics_mechanics_collision_cursor_get(s : PhysicsmechanicscollisionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionCursor::get(self : PhysicsmechanicscollisionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_cursor_set(s : PhysicsmechanicscollisionCursor, i : Int, v : Double) -> PhysicsmechanicscollisionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCursor::set(self : PhysicsmechanicscollisionCursor, i : Int, v : Double) -> PhysicsmechanicscollisionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cursor_sum(s : PhysicsmechanicscollisionCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionCursor::sum(self : PhysicsmechanicscollisionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_cursor_mean(s : PhysicsmechanicscollisionCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionCursor::mean(self : PhysicsmechanicscollisionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_cursor_scale(s : PhysicsmechanicscollisionCursor, f : Double) -> PhysicsmechanicscollisionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCursor::scale(self : PhysicsmechanicscollisionCursor, f : Double) -> PhysicsmechanicscollisionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cursor_add(a : PhysicsmechanicscollisionCursor, b : PhysicsmechanicscollisionCursor) -> PhysicsmechanicscollisionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionCursor::add(self : PhysicsmechanicscollisionCursor, other : PhysicsmechanicscollisionCursor) -> PhysicsmechanicscollisionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cursor_copy(s : PhysicsmechanicscollisionCursor) -> PhysicsmechanicscollisionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCursor::copy(self : PhysicsmechanicscollisionCursor) -> PhysicsmechanicscollisionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cursor_fill(s : PhysicsmechanicscollisionCursor, v : Double) -> PhysicsmechanicscollisionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionCursor::fill(self : PhysicsmechanicscollisionCursor, v : Double) -> PhysicsmechanicscollisionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_cursor_min(s : PhysicsmechanicscollisionCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionCursor::min(self : PhysicsmechanicscollisionCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_cursor_max(s : PhysicsmechanicscollisionCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionCursor::max(self : PhysicsmechanicscollisionCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_cursor_to_string(s : PhysicsmechanicscollisionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionCursor::to_string(self : PhysicsmechanicscollisionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionView {
@@ -912,45 +912,45 @@ pub fn physics_mechanics_collision_view_make(size : Int) -> Physicsmechanicscoll
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_view_len(s : PhysicsmechanicscollisionView) -> Int { s.size }
+pub fn PhysicsmechanicscollisionView::len(self : PhysicsmechanicscollisionView) -> Int { self.size }
 
-pub fn physics_mechanics_collision_view_get(s : PhysicsmechanicscollisionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionView::get(self : PhysicsmechanicscollisionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_view_set(s : PhysicsmechanicscollisionView, i : Int, v : Double) -> PhysicsmechanicscollisionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionView::set(self : PhysicsmechanicscollisionView, i : Int, v : Double) -> PhysicsmechanicscollisionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_view_sum(s : PhysicsmechanicscollisionView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionView::sum(self : PhysicsmechanicscollisionView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_view_mean(s : PhysicsmechanicscollisionView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionView::mean(self : PhysicsmechanicscollisionView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_view_scale(s : PhysicsmechanicscollisionView, f : Double) -> PhysicsmechanicscollisionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionView::scale(self : PhysicsmechanicscollisionView, f : Double) -> PhysicsmechanicscollisionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_view_add(a : PhysicsmechanicscollisionView, b : PhysicsmechanicscollisionView) -> PhysicsmechanicscollisionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionView::add(self : PhysicsmechanicscollisionView, other : PhysicsmechanicscollisionView) -> PhysicsmechanicscollisionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_view_copy(s : PhysicsmechanicscollisionView) -> PhysicsmechanicscollisionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionView::copy(self : PhysicsmechanicscollisionView) -> PhysicsmechanicscollisionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_view_fill(s : PhysicsmechanicscollisionView, v : Double) -> PhysicsmechanicscollisionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionView::fill(self : PhysicsmechanicscollisionView, v : Double) -> PhysicsmechanicscollisionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_view_min(s : PhysicsmechanicscollisionView) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionView::min(self : PhysicsmechanicscollisionView) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_view_max(s : PhysicsmechanicscollisionView) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionView::max(self : PhysicsmechanicscollisionView) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_view_to_string(s : PhysicsmechanicscollisionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionView::to_string(self : PhysicsmechanicscollisionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionRange {
@@ -963,45 +963,45 @@ pub fn physics_mechanics_collision_range_make(size : Int) -> Physicsmechanicscol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_range_len(s : PhysicsmechanicscollisionRange) -> Int { s.size }
+pub fn PhysicsmechanicscollisionRange::len(self : PhysicsmechanicscollisionRange) -> Int { self.size }
 
-pub fn physics_mechanics_collision_range_get(s : PhysicsmechanicscollisionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionRange::get(self : PhysicsmechanicscollisionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_range_set(s : PhysicsmechanicscollisionRange, i : Int, v : Double) -> PhysicsmechanicscollisionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionRange::set(self : PhysicsmechanicscollisionRange, i : Int, v : Double) -> PhysicsmechanicscollisionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_range_sum(s : PhysicsmechanicscollisionRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionRange::sum(self : PhysicsmechanicscollisionRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_range_mean(s : PhysicsmechanicscollisionRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionRange::mean(self : PhysicsmechanicscollisionRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_range_scale(s : PhysicsmechanicscollisionRange, f : Double) -> PhysicsmechanicscollisionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionRange::scale(self : PhysicsmechanicscollisionRange, f : Double) -> PhysicsmechanicscollisionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_range_add(a : PhysicsmechanicscollisionRange, b : PhysicsmechanicscollisionRange) -> PhysicsmechanicscollisionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionRange::add(self : PhysicsmechanicscollisionRange, other : PhysicsmechanicscollisionRange) -> PhysicsmechanicscollisionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_range_copy(s : PhysicsmechanicscollisionRange) -> PhysicsmechanicscollisionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionRange::copy(self : PhysicsmechanicscollisionRange) -> PhysicsmechanicscollisionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_range_fill(s : PhysicsmechanicscollisionRange, v : Double) -> PhysicsmechanicscollisionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionRange::fill(self : PhysicsmechanicscollisionRange, v : Double) -> PhysicsmechanicscollisionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_range_min(s : PhysicsmechanicscollisionRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionRange::min(self : PhysicsmechanicscollisionRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_range_max(s : PhysicsmechanicscollisionRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionRange::max(self : PhysicsmechanicscollisionRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_range_to_string(s : PhysicsmechanicscollisionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionRange::to_string(self : PhysicsmechanicscollisionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicscollisionSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_mechanics_collision_slice_make(size : Int) -> Physicsmechanicscol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_collision_slice_len(s : PhysicsmechanicscollisionSlice) -> Int { s.size }
+pub fn PhysicsmechanicscollisionSlice::len(self : PhysicsmechanicscollisionSlice) -> Int { self.size }
 
-pub fn physics_mechanics_collision_slice_get(s : PhysicsmechanicscollisionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicscollisionSlice::get(self : PhysicsmechanicscollisionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_collision_slice_set(s : PhysicsmechanicscollisionSlice, i : Int, v : Double) -> PhysicsmechanicscollisionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionSlice::set(self : PhysicsmechanicscollisionSlice, i : Int, v : Double) -> PhysicsmechanicscollisionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_slice_sum(s : PhysicsmechanicscollisionSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicscollisionSlice::sum(self : PhysicsmechanicscollisionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_collision_slice_mean(s : PhysicsmechanicscollisionSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicscollisionSlice::mean(self : PhysicsmechanicscollisionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_collision_slice_scale(s : PhysicsmechanicscollisionSlice, f : Double) -> PhysicsmechanicscollisionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionSlice::scale(self : PhysicsmechanicscollisionSlice, f : Double) -> PhysicsmechanicscollisionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_slice_add(a : PhysicsmechanicscollisionSlice, b : PhysicsmechanicscollisionSlice) -> PhysicsmechanicscollisionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicscollisionSlice::add(self : PhysicsmechanicscollisionSlice, other : PhysicsmechanicscollisionSlice) -> PhysicsmechanicscollisionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_slice_copy(s : PhysicsmechanicscollisionSlice) -> PhysicsmechanicscollisionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionSlice::copy(self : PhysicsmechanicscollisionSlice) -> PhysicsmechanicscollisionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_slice_fill(s : PhysicsmechanicscollisionSlice, v : Double) -> PhysicsmechanicscollisionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicscollisionSlice::fill(self : PhysicsmechanicscollisionSlice, v : Double) -> PhysicsmechanicscollisionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_collision_slice_min(s : PhysicsmechanicscollisionSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicscollisionSlice::min(self : PhysicsmechanicscollisionSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_collision_slice_max(s : PhysicsmechanicscollisionSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicscollisionSlice::max(self : PhysicsmechanicscollisionSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_collision_slice_to_string(s : PhysicsmechanicscollisionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicscollisionSlice::to_string(self : PhysicsmechanicscollisionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

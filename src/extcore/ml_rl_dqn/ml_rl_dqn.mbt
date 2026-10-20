@@ -351,45 +351,45 @@ pub fn ml_rl_dqn_frame_make(size : Int) -> MlrldqnFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_frame_len(s : MlrldqnFrame) -> Int { s.size }
+pub fn MlrldqnFrame::len(self : MlrldqnFrame) -> Int { self.size }
 
-pub fn ml_rl_dqn_frame_get(s : MlrldqnFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnFrame::get(self : MlrldqnFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_frame_set(s : MlrldqnFrame, i : Int, v : Double) -> MlrldqnFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnFrame::set(self : MlrldqnFrame, i : Int, v : Double) -> MlrldqnFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_frame_sum(s : MlrldqnFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnFrame::sum(self : MlrldqnFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_frame_mean(s : MlrldqnFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnFrame::mean(self : MlrldqnFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_frame_scale(s : MlrldqnFrame, f : Double) -> MlrldqnFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnFrame::scale(self : MlrldqnFrame, f : Double) -> MlrldqnFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_frame_add(a : MlrldqnFrame, b : MlrldqnFrame) -> MlrldqnFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnFrame::add(self : MlrldqnFrame, other : MlrldqnFrame) -> MlrldqnFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_frame_copy(s : MlrldqnFrame) -> MlrldqnFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnFrame::copy(self : MlrldqnFrame) -> MlrldqnFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_frame_fill(s : MlrldqnFrame, v : Double) -> MlrldqnFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnFrame::fill(self : MlrldqnFrame, v : Double) -> MlrldqnFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_frame_min(s : MlrldqnFrame) -> Double { @_common.min(s.data) }
+pub fn MlrldqnFrame::min(self : MlrldqnFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_frame_max(s : MlrldqnFrame) -> Double { @_common.max(s.data) }
+pub fn MlrldqnFrame::max(self : MlrldqnFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_frame_to_string(s : MlrldqnFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnFrame::to_string(self : MlrldqnFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_dqn_table_make(size : Int) -> MlrldqnTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_table_len(s : MlrldqnTable) -> Int { s.size }
+pub fn MlrldqnTable::len(self : MlrldqnTable) -> Int { self.size }
 
-pub fn ml_rl_dqn_table_get(s : MlrldqnTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnTable::get(self : MlrldqnTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_table_set(s : MlrldqnTable, i : Int, v : Double) -> MlrldqnTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnTable::set(self : MlrldqnTable, i : Int, v : Double) -> MlrldqnTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_table_sum(s : MlrldqnTable) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnTable::sum(self : MlrldqnTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_table_mean(s : MlrldqnTable) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnTable::mean(self : MlrldqnTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_table_scale(s : MlrldqnTable, f : Double) -> MlrldqnTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnTable::scale(self : MlrldqnTable, f : Double) -> MlrldqnTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_table_add(a : MlrldqnTable, b : MlrldqnTable) -> MlrldqnTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnTable::add(self : MlrldqnTable, other : MlrldqnTable) -> MlrldqnTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_table_copy(s : MlrldqnTable) -> MlrldqnTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnTable::copy(self : MlrldqnTable) -> MlrldqnTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_table_fill(s : MlrldqnTable, v : Double) -> MlrldqnTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnTable::fill(self : MlrldqnTable, v : Double) -> MlrldqnTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_table_min(s : MlrldqnTable) -> Double { @_common.min(s.data) }
+pub fn MlrldqnTable::min(self : MlrldqnTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_table_max(s : MlrldqnTable) -> Double { @_common.max(s.data) }
+pub fn MlrldqnTable::max(self : MlrldqnTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_table_to_string(s : MlrldqnTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnTable::to_string(self : MlrldqnTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_dqn_graphn_make(size : Int) -> MlrldqnGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_graphn_len(s : MlrldqnGraphN) -> Int { s.size }
+pub fn MlrldqnGraphN::len(self : MlrldqnGraphN) -> Int { self.size }
 
-pub fn ml_rl_dqn_graphn_get(s : MlrldqnGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnGraphN::get(self : MlrldqnGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_graphn_set(s : MlrldqnGraphN, i : Int, v : Double) -> MlrldqnGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnGraphN::set(self : MlrldqnGraphN, i : Int, v : Double) -> MlrldqnGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_graphn_sum(s : MlrldqnGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnGraphN::sum(self : MlrldqnGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_graphn_mean(s : MlrldqnGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnGraphN::mean(self : MlrldqnGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_graphn_scale(s : MlrldqnGraphN, f : Double) -> MlrldqnGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnGraphN::scale(self : MlrldqnGraphN, f : Double) -> MlrldqnGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_graphn_add(a : MlrldqnGraphN, b : MlrldqnGraphN) -> MlrldqnGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnGraphN::add(self : MlrldqnGraphN, other : MlrldqnGraphN) -> MlrldqnGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_graphn_copy(s : MlrldqnGraphN) -> MlrldqnGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnGraphN::copy(self : MlrldqnGraphN) -> MlrldqnGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_graphn_fill(s : MlrldqnGraphN, v : Double) -> MlrldqnGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnGraphN::fill(self : MlrldqnGraphN, v : Double) -> MlrldqnGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_graphn_min(s : MlrldqnGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrldqnGraphN::min(self : MlrldqnGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_graphn_max(s : MlrldqnGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrldqnGraphN::max(self : MlrldqnGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_graphn_to_string(s : MlrldqnGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnGraphN::to_string(self : MlrldqnGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_dqn_node_make(size : Int) -> MlrldqnNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_node_len(s : MlrldqnNode) -> Int { s.size }
+pub fn MlrldqnNode::len(self : MlrldqnNode) -> Int { self.size }
 
-pub fn ml_rl_dqn_node_get(s : MlrldqnNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnNode::get(self : MlrldqnNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_node_set(s : MlrldqnNode, i : Int, v : Double) -> MlrldqnNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnNode::set(self : MlrldqnNode, i : Int, v : Double) -> MlrldqnNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_node_sum(s : MlrldqnNode) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnNode::sum(self : MlrldqnNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_node_mean(s : MlrldqnNode) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnNode::mean(self : MlrldqnNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_node_scale(s : MlrldqnNode, f : Double) -> MlrldqnNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnNode::scale(self : MlrldqnNode, f : Double) -> MlrldqnNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_node_add(a : MlrldqnNode, b : MlrldqnNode) -> MlrldqnNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnNode::add(self : MlrldqnNode, other : MlrldqnNode) -> MlrldqnNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_node_copy(s : MlrldqnNode) -> MlrldqnNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnNode::copy(self : MlrldqnNode) -> MlrldqnNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_node_fill(s : MlrldqnNode, v : Double) -> MlrldqnNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnNode::fill(self : MlrldqnNode, v : Double) -> MlrldqnNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_node_min(s : MlrldqnNode) -> Double { @_common.min(s.data) }
+pub fn MlrldqnNode::min(self : MlrldqnNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_node_max(s : MlrldqnNode) -> Double { @_common.max(s.data) }
+pub fn MlrldqnNode::max(self : MlrldqnNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_node_to_string(s : MlrldqnNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnNode::to_string(self : MlrldqnNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_dqn_edge_make(size : Int) -> MlrldqnEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_edge_len(s : MlrldqnEdge) -> Int { s.size }
+pub fn MlrldqnEdge::len(self : MlrldqnEdge) -> Int { self.size }
 
-pub fn ml_rl_dqn_edge_get(s : MlrldqnEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnEdge::get(self : MlrldqnEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_edge_set(s : MlrldqnEdge, i : Int, v : Double) -> MlrldqnEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnEdge::set(self : MlrldqnEdge, i : Int, v : Double) -> MlrldqnEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_edge_sum(s : MlrldqnEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnEdge::sum(self : MlrldqnEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_edge_mean(s : MlrldqnEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnEdge::mean(self : MlrldqnEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_edge_scale(s : MlrldqnEdge, f : Double) -> MlrldqnEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnEdge::scale(self : MlrldqnEdge, f : Double) -> MlrldqnEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_edge_add(a : MlrldqnEdge, b : MlrldqnEdge) -> MlrldqnEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnEdge::add(self : MlrldqnEdge, other : MlrldqnEdge) -> MlrldqnEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_edge_copy(s : MlrldqnEdge) -> MlrldqnEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnEdge::copy(self : MlrldqnEdge) -> MlrldqnEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_edge_fill(s : MlrldqnEdge, v : Double) -> MlrldqnEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnEdge::fill(self : MlrldqnEdge, v : Double) -> MlrldqnEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_edge_min(s : MlrldqnEdge) -> Double { @_common.min(s.data) }
+pub fn MlrldqnEdge::min(self : MlrldqnEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_edge_max(s : MlrldqnEdge) -> Double { @_common.max(s.data) }
+pub fn MlrldqnEdge::max(self : MlrldqnEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_edge_to_string(s : MlrldqnEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnEdge::to_string(self : MlrldqnEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_dqn_path_make(size : Int) -> MlrldqnPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_path_len(s : MlrldqnPath) -> Int { s.size }
+pub fn MlrldqnPath::len(self : MlrldqnPath) -> Int { self.size }
 
-pub fn ml_rl_dqn_path_get(s : MlrldqnPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnPath::get(self : MlrldqnPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_path_set(s : MlrldqnPath, i : Int, v : Double) -> MlrldqnPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnPath::set(self : MlrldqnPath, i : Int, v : Double) -> MlrldqnPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_path_sum(s : MlrldqnPath) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnPath::sum(self : MlrldqnPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_path_mean(s : MlrldqnPath) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnPath::mean(self : MlrldqnPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_path_scale(s : MlrldqnPath, f : Double) -> MlrldqnPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnPath::scale(self : MlrldqnPath, f : Double) -> MlrldqnPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_path_add(a : MlrldqnPath, b : MlrldqnPath) -> MlrldqnPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnPath::add(self : MlrldqnPath, other : MlrldqnPath) -> MlrldqnPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_path_copy(s : MlrldqnPath) -> MlrldqnPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnPath::copy(self : MlrldqnPath) -> MlrldqnPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_path_fill(s : MlrldqnPath, v : Double) -> MlrldqnPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnPath::fill(self : MlrldqnPath, v : Double) -> MlrldqnPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_path_min(s : MlrldqnPath) -> Double { @_common.min(s.data) }
+pub fn MlrldqnPath::min(self : MlrldqnPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_path_max(s : MlrldqnPath) -> Double { @_common.max(s.data) }
+pub fn MlrldqnPath::max(self : MlrldqnPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_path_to_string(s : MlrldqnPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnPath::to_string(self : MlrldqnPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_dqn_cluster_make(size : Int) -> MlrldqnCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_cluster_len(s : MlrldqnCluster) -> Int { s.size }
+pub fn MlrldqnCluster::len(self : MlrldqnCluster) -> Int { self.size }
 
-pub fn ml_rl_dqn_cluster_get(s : MlrldqnCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnCluster::get(self : MlrldqnCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_cluster_set(s : MlrldqnCluster, i : Int, v : Double) -> MlrldqnCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnCluster::set(self : MlrldqnCluster, i : Int, v : Double) -> MlrldqnCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cluster_sum(s : MlrldqnCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnCluster::sum(self : MlrldqnCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_cluster_mean(s : MlrldqnCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnCluster::mean(self : MlrldqnCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_cluster_scale(s : MlrldqnCluster, f : Double) -> MlrldqnCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnCluster::scale(self : MlrldqnCluster, f : Double) -> MlrldqnCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cluster_add(a : MlrldqnCluster, b : MlrldqnCluster) -> MlrldqnCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnCluster::add(self : MlrldqnCluster, other : MlrldqnCluster) -> MlrldqnCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cluster_copy(s : MlrldqnCluster) -> MlrldqnCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnCluster::copy(self : MlrldqnCluster) -> MlrldqnCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cluster_fill(s : MlrldqnCluster, v : Double) -> MlrldqnCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnCluster::fill(self : MlrldqnCluster, v : Double) -> MlrldqnCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cluster_min(s : MlrldqnCluster) -> Double { @_common.min(s.data) }
+pub fn MlrldqnCluster::min(self : MlrldqnCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_cluster_max(s : MlrldqnCluster) -> Double { @_common.max(s.data) }
+pub fn MlrldqnCluster::max(self : MlrldqnCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_cluster_to_string(s : MlrldqnCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnCluster::to_string(self : MlrldqnCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_dqn_model_make(size : Int) -> MlrldqnModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_model_len(s : MlrldqnModel) -> Int { s.size }
+pub fn MlrldqnModel::len(self : MlrldqnModel) -> Int { self.size }
 
-pub fn ml_rl_dqn_model_get(s : MlrldqnModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnModel::get(self : MlrldqnModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_model_set(s : MlrldqnModel, i : Int, v : Double) -> MlrldqnModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnModel::set(self : MlrldqnModel, i : Int, v : Double) -> MlrldqnModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_model_sum(s : MlrldqnModel) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnModel::sum(self : MlrldqnModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_model_mean(s : MlrldqnModel) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnModel::mean(self : MlrldqnModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_model_scale(s : MlrldqnModel, f : Double) -> MlrldqnModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnModel::scale(self : MlrldqnModel, f : Double) -> MlrldqnModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_model_add(a : MlrldqnModel, b : MlrldqnModel) -> MlrldqnModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnModel::add(self : MlrldqnModel, other : MlrldqnModel) -> MlrldqnModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_model_copy(s : MlrldqnModel) -> MlrldqnModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnModel::copy(self : MlrldqnModel) -> MlrldqnModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_model_fill(s : MlrldqnModel, v : Double) -> MlrldqnModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnModel::fill(self : MlrldqnModel, v : Double) -> MlrldqnModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_model_min(s : MlrldqnModel) -> Double { @_common.min(s.data) }
+pub fn MlrldqnModel::min(self : MlrldqnModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_model_max(s : MlrldqnModel) -> Double { @_common.max(s.data) }
+pub fn MlrldqnModel::max(self : MlrldqnModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_model_to_string(s : MlrldqnModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnModel::to_string(self : MlrldqnModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_dqn_layer_make(size : Int) -> MlrldqnLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_layer_len(s : MlrldqnLayer) -> Int { s.size }
+pub fn MlrldqnLayer::len(self : MlrldqnLayer) -> Int { self.size }
 
-pub fn ml_rl_dqn_layer_get(s : MlrldqnLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnLayer::get(self : MlrldqnLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_layer_set(s : MlrldqnLayer, i : Int, v : Double) -> MlrldqnLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnLayer::set(self : MlrldqnLayer, i : Int, v : Double) -> MlrldqnLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_layer_sum(s : MlrldqnLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnLayer::sum(self : MlrldqnLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_layer_mean(s : MlrldqnLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnLayer::mean(self : MlrldqnLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_layer_scale(s : MlrldqnLayer, f : Double) -> MlrldqnLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnLayer::scale(self : MlrldqnLayer, f : Double) -> MlrldqnLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_layer_add(a : MlrldqnLayer, b : MlrldqnLayer) -> MlrldqnLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnLayer::add(self : MlrldqnLayer, other : MlrldqnLayer) -> MlrldqnLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_layer_copy(s : MlrldqnLayer) -> MlrldqnLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnLayer::copy(self : MlrldqnLayer) -> MlrldqnLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_layer_fill(s : MlrldqnLayer, v : Double) -> MlrldqnLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnLayer::fill(self : MlrldqnLayer, v : Double) -> MlrldqnLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_layer_min(s : MlrldqnLayer) -> Double { @_common.min(s.data) }
+pub fn MlrldqnLayer::min(self : MlrldqnLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_layer_max(s : MlrldqnLayer) -> Double { @_common.max(s.data) }
+pub fn MlrldqnLayer::max(self : MlrldqnLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_layer_to_string(s : MlrldqnLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnLayer::to_string(self : MlrldqnLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_dqn_buffer_make(size : Int) -> MlrldqnBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_buffer_len(s : MlrldqnBuffer) -> Int { s.size }
+pub fn MlrldqnBuffer::len(self : MlrldqnBuffer) -> Int { self.size }
 
-pub fn ml_rl_dqn_buffer_get(s : MlrldqnBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnBuffer::get(self : MlrldqnBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_buffer_set(s : MlrldqnBuffer, i : Int, v : Double) -> MlrldqnBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnBuffer::set(self : MlrldqnBuffer, i : Int, v : Double) -> MlrldqnBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_buffer_sum(s : MlrldqnBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnBuffer::sum(self : MlrldqnBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_buffer_mean(s : MlrldqnBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnBuffer::mean(self : MlrldqnBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_buffer_scale(s : MlrldqnBuffer, f : Double) -> MlrldqnBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnBuffer::scale(self : MlrldqnBuffer, f : Double) -> MlrldqnBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_buffer_add(a : MlrldqnBuffer, b : MlrldqnBuffer) -> MlrldqnBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnBuffer::add(self : MlrldqnBuffer, other : MlrldqnBuffer) -> MlrldqnBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_buffer_copy(s : MlrldqnBuffer) -> MlrldqnBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnBuffer::copy(self : MlrldqnBuffer) -> MlrldqnBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_buffer_fill(s : MlrldqnBuffer, v : Double) -> MlrldqnBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnBuffer::fill(self : MlrldqnBuffer, v : Double) -> MlrldqnBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_buffer_min(s : MlrldqnBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrldqnBuffer::min(self : MlrldqnBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_buffer_max(s : MlrldqnBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrldqnBuffer::max(self : MlrldqnBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_buffer_to_string(s : MlrldqnBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnBuffer::to_string(self : MlrldqnBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_dqn_cursor_make(size : Int) -> MlrldqnCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_cursor_len(s : MlrldqnCursor) -> Int { s.size }
+pub fn MlrldqnCursor::len(self : MlrldqnCursor) -> Int { self.size }
 
-pub fn ml_rl_dqn_cursor_get(s : MlrldqnCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnCursor::get(self : MlrldqnCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_cursor_set(s : MlrldqnCursor, i : Int, v : Double) -> MlrldqnCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnCursor::set(self : MlrldqnCursor, i : Int, v : Double) -> MlrldqnCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cursor_sum(s : MlrldqnCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnCursor::sum(self : MlrldqnCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_cursor_mean(s : MlrldqnCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnCursor::mean(self : MlrldqnCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_cursor_scale(s : MlrldqnCursor, f : Double) -> MlrldqnCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnCursor::scale(self : MlrldqnCursor, f : Double) -> MlrldqnCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cursor_add(a : MlrldqnCursor, b : MlrldqnCursor) -> MlrldqnCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnCursor::add(self : MlrldqnCursor, other : MlrldqnCursor) -> MlrldqnCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cursor_copy(s : MlrldqnCursor) -> MlrldqnCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnCursor::copy(self : MlrldqnCursor) -> MlrldqnCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cursor_fill(s : MlrldqnCursor, v : Double) -> MlrldqnCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnCursor::fill(self : MlrldqnCursor, v : Double) -> MlrldqnCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_cursor_min(s : MlrldqnCursor) -> Double { @_common.min(s.data) }
+pub fn MlrldqnCursor::min(self : MlrldqnCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_cursor_max(s : MlrldqnCursor) -> Double { @_common.max(s.data) }
+pub fn MlrldqnCursor::max(self : MlrldqnCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_cursor_to_string(s : MlrldqnCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnCursor::to_string(self : MlrldqnCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnView {
@@ -912,45 +912,45 @@ pub fn ml_rl_dqn_view_make(size : Int) -> MlrldqnView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_view_len(s : MlrldqnView) -> Int { s.size }
+pub fn MlrldqnView::len(self : MlrldqnView) -> Int { self.size }
 
-pub fn ml_rl_dqn_view_get(s : MlrldqnView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnView::get(self : MlrldqnView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_view_set(s : MlrldqnView, i : Int, v : Double) -> MlrldqnView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnView::set(self : MlrldqnView, i : Int, v : Double) -> MlrldqnView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_view_sum(s : MlrldqnView) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnView::sum(self : MlrldqnView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_view_mean(s : MlrldqnView) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnView::mean(self : MlrldqnView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_view_scale(s : MlrldqnView, f : Double) -> MlrldqnView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnView::scale(self : MlrldqnView, f : Double) -> MlrldqnView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_view_add(a : MlrldqnView, b : MlrldqnView) -> MlrldqnView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnView::add(self : MlrldqnView, other : MlrldqnView) -> MlrldqnView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_view_copy(s : MlrldqnView) -> MlrldqnView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnView::copy(self : MlrldqnView) -> MlrldqnView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_view_fill(s : MlrldqnView, v : Double) -> MlrldqnView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnView::fill(self : MlrldqnView, v : Double) -> MlrldqnView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_view_min(s : MlrldqnView) -> Double { @_common.min(s.data) }
+pub fn MlrldqnView::min(self : MlrldqnView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_view_max(s : MlrldqnView) -> Double { @_common.max(s.data) }
+pub fn MlrldqnView::max(self : MlrldqnView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_view_to_string(s : MlrldqnView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnView::to_string(self : MlrldqnView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_dqn_range_make(size : Int) -> MlrldqnRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_range_len(s : MlrldqnRange) -> Int { s.size }
+pub fn MlrldqnRange::len(self : MlrldqnRange) -> Int { self.size }
 
-pub fn ml_rl_dqn_range_get(s : MlrldqnRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnRange::get(self : MlrldqnRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_range_set(s : MlrldqnRange, i : Int, v : Double) -> MlrldqnRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnRange::set(self : MlrldqnRange, i : Int, v : Double) -> MlrldqnRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_range_sum(s : MlrldqnRange) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnRange::sum(self : MlrldqnRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_range_mean(s : MlrldqnRange) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnRange::mean(self : MlrldqnRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_range_scale(s : MlrldqnRange, f : Double) -> MlrldqnRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnRange::scale(self : MlrldqnRange, f : Double) -> MlrldqnRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_range_add(a : MlrldqnRange, b : MlrldqnRange) -> MlrldqnRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnRange::add(self : MlrldqnRange, other : MlrldqnRange) -> MlrldqnRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_range_copy(s : MlrldqnRange) -> MlrldqnRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnRange::copy(self : MlrldqnRange) -> MlrldqnRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_range_fill(s : MlrldqnRange, v : Double) -> MlrldqnRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnRange::fill(self : MlrldqnRange, v : Double) -> MlrldqnRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_range_min(s : MlrldqnRange) -> Double { @_common.min(s.data) }
+pub fn MlrldqnRange::min(self : MlrldqnRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_range_max(s : MlrldqnRange) -> Double { @_common.max(s.data) }
+pub fn MlrldqnRange::max(self : MlrldqnRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_range_to_string(s : MlrldqnRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnRange::to_string(self : MlrldqnRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrldqnSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_dqn_slice_make(size : Int) -> MlrldqnSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_dqn_slice_len(s : MlrldqnSlice) -> Int { s.size }
+pub fn MlrldqnSlice::len(self : MlrldqnSlice) -> Int { self.size }
 
-pub fn ml_rl_dqn_slice_get(s : MlrldqnSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrldqnSlice::get(self : MlrldqnSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_dqn_slice_set(s : MlrldqnSlice, i : Int, v : Double) -> MlrldqnSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrldqnSlice::set(self : MlrldqnSlice, i : Int, v : Double) -> MlrldqnSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_slice_sum(s : MlrldqnSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrldqnSlice::sum(self : MlrldqnSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_dqn_slice_mean(s : MlrldqnSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrldqnSlice::mean(self : MlrldqnSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_dqn_slice_scale(s : MlrldqnSlice, f : Double) -> MlrldqnSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrldqnSlice::scale(self : MlrldqnSlice, f : Double) -> MlrldqnSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_slice_add(a : MlrldqnSlice, b : MlrldqnSlice) -> MlrldqnSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrldqnSlice::add(self : MlrldqnSlice, other : MlrldqnSlice) -> MlrldqnSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_slice_copy(s : MlrldqnSlice) -> MlrldqnSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrldqnSlice::copy(self : MlrldqnSlice) -> MlrldqnSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_slice_fill(s : MlrldqnSlice, v : Double) -> MlrldqnSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrldqnSlice::fill(self : MlrldqnSlice, v : Double) -> MlrldqnSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_dqn_slice_min(s : MlrldqnSlice) -> Double { @_common.min(s.data) }
+pub fn MlrldqnSlice::min(self : MlrldqnSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_dqn_slice_max(s : MlrldqnSlice) -> Double { @_common.max(s.data) }
+pub fn MlrldqnSlice::max(self : MlrldqnSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_dqn_slice_to_string(s : MlrldqnSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrldqnSlice::to_string(self : MlrldqnSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

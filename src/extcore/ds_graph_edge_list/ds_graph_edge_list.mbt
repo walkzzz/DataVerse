@@ -351,45 +351,45 @@ pub fn ds_graph_edge_list_frame_make(size : Int) -> DsgraphedgelistFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_frame_len(s : DsgraphedgelistFrame) -> Int { s.size }
+pub fn DsgraphedgelistFrame::len(self : DsgraphedgelistFrame) -> Int { self.size }
 
-pub fn ds_graph_edge_list_frame_get(s : DsgraphedgelistFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistFrame::get(self : DsgraphedgelistFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_frame_set(s : DsgraphedgelistFrame, i : Int, v : Double) -> DsgraphedgelistFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistFrame::set(self : DsgraphedgelistFrame, i : Int, v : Double) -> DsgraphedgelistFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_frame_sum(s : DsgraphedgelistFrame) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistFrame::sum(self : DsgraphedgelistFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_frame_mean(s : DsgraphedgelistFrame) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistFrame::mean(self : DsgraphedgelistFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_frame_scale(s : DsgraphedgelistFrame, f : Double) -> DsgraphedgelistFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistFrame::scale(self : DsgraphedgelistFrame, f : Double) -> DsgraphedgelistFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_frame_add(a : DsgraphedgelistFrame, b : DsgraphedgelistFrame) -> DsgraphedgelistFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistFrame::add(self : DsgraphedgelistFrame, other : DsgraphedgelistFrame) -> DsgraphedgelistFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_frame_copy(s : DsgraphedgelistFrame) -> DsgraphedgelistFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistFrame::copy(self : DsgraphedgelistFrame) -> DsgraphedgelistFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_frame_fill(s : DsgraphedgelistFrame, v : Double) -> DsgraphedgelistFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistFrame::fill(self : DsgraphedgelistFrame, v : Double) -> DsgraphedgelistFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_frame_min(s : DsgraphedgelistFrame) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistFrame::min(self : DsgraphedgelistFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_frame_max(s : DsgraphedgelistFrame) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistFrame::max(self : DsgraphedgelistFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_frame_to_string(s : DsgraphedgelistFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistFrame::to_string(self : DsgraphedgelistFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistTable {
@@ -402,45 +402,45 @@ pub fn ds_graph_edge_list_table_make(size : Int) -> DsgraphedgelistTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_table_len(s : DsgraphedgelistTable) -> Int { s.size }
+pub fn DsgraphedgelistTable::len(self : DsgraphedgelistTable) -> Int { self.size }
 
-pub fn ds_graph_edge_list_table_get(s : DsgraphedgelistTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistTable::get(self : DsgraphedgelistTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_table_set(s : DsgraphedgelistTable, i : Int, v : Double) -> DsgraphedgelistTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistTable::set(self : DsgraphedgelistTable, i : Int, v : Double) -> DsgraphedgelistTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_table_sum(s : DsgraphedgelistTable) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistTable::sum(self : DsgraphedgelistTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_table_mean(s : DsgraphedgelistTable) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistTable::mean(self : DsgraphedgelistTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_table_scale(s : DsgraphedgelistTable, f : Double) -> DsgraphedgelistTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistTable::scale(self : DsgraphedgelistTable, f : Double) -> DsgraphedgelistTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_table_add(a : DsgraphedgelistTable, b : DsgraphedgelistTable) -> DsgraphedgelistTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistTable::add(self : DsgraphedgelistTable, other : DsgraphedgelistTable) -> DsgraphedgelistTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_table_copy(s : DsgraphedgelistTable) -> DsgraphedgelistTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistTable::copy(self : DsgraphedgelistTable) -> DsgraphedgelistTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_table_fill(s : DsgraphedgelistTable, v : Double) -> DsgraphedgelistTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistTable::fill(self : DsgraphedgelistTable, v : Double) -> DsgraphedgelistTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_table_min(s : DsgraphedgelistTable) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistTable::min(self : DsgraphedgelistTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_table_max(s : DsgraphedgelistTable) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistTable::max(self : DsgraphedgelistTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_table_to_string(s : DsgraphedgelistTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistTable::to_string(self : DsgraphedgelistTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistGraphN {
@@ -453,45 +453,45 @@ pub fn ds_graph_edge_list_graphn_make(size : Int) -> DsgraphedgelistGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_graphn_len(s : DsgraphedgelistGraphN) -> Int { s.size }
+pub fn DsgraphedgelistGraphN::len(self : DsgraphedgelistGraphN) -> Int { self.size }
 
-pub fn ds_graph_edge_list_graphn_get(s : DsgraphedgelistGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistGraphN::get(self : DsgraphedgelistGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_graphn_set(s : DsgraphedgelistGraphN, i : Int, v : Double) -> DsgraphedgelistGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistGraphN::set(self : DsgraphedgelistGraphN, i : Int, v : Double) -> DsgraphedgelistGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_graphn_sum(s : DsgraphedgelistGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistGraphN::sum(self : DsgraphedgelistGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_graphn_mean(s : DsgraphedgelistGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistGraphN::mean(self : DsgraphedgelistGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_graphn_scale(s : DsgraphedgelistGraphN, f : Double) -> DsgraphedgelistGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistGraphN::scale(self : DsgraphedgelistGraphN, f : Double) -> DsgraphedgelistGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_graphn_add(a : DsgraphedgelistGraphN, b : DsgraphedgelistGraphN) -> DsgraphedgelistGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistGraphN::add(self : DsgraphedgelistGraphN, other : DsgraphedgelistGraphN) -> DsgraphedgelistGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_graphn_copy(s : DsgraphedgelistGraphN) -> DsgraphedgelistGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistGraphN::copy(self : DsgraphedgelistGraphN) -> DsgraphedgelistGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_graphn_fill(s : DsgraphedgelistGraphN, v : Double) -> DsgraphedgelistGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistGraphN::fill(self : DsgraphedgelistGraphN, v : Double) -> DsgraphedgelistGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_graphn_min(s : DsgraphedgelistGraphN) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistGraphN::min(self : DsgraphedgelistGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_graphn_max(s : DsgraphedgelistGraphN) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistGraphN::max(self : DsgraphedgelistGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_graphn_to_string(s : DsgraphedgelistGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistGraphN::to_string(self : DsgraphedgelistGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistNode {
@@ -504,45 +504,45 @@ pub fn ds_graph_edge_list_node_make(size : Int) -> DsgraphedgelistNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_node_len(s : DsgraphedgelistNode) -> Int { s.size }
+pub fn DsgraphedgelistNode::len(self : DsgraphedgelistNode) -> Int { self.size }
 
-pub fn ds_graph_edge_list_node_get(s : DsgraphedgelistNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistNode::get(self : DsgraphedgelistNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_node_set(s : DsgraphedgelistNode, i : Int, v : Double) -> DsgraphedgelistNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistNode::set(self : DsgraphedgelistNode, i : Int, v : Double) -> DsgraphedgelistNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_node_sum(s : DsgraphedgelistNode) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistNode::sum(self : DsgraphedgelistNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_node_mean(s : DsgraphedgelistNode) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistNode::mean(self : DsgraphedgelistNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_node_scale(s : DsgraphedgelistNode, f : Double) -> DsgraphedgelistNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistNode::scale(self : DsgraphedgelistNode, f : Double) -> DsgraphedgelistNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_node_add(a : DsgraphedgelistNode, b : DsgraphedgelistNode) -> DsgraphedgelistNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistNode::add(self : DsgraphedgelistNode, other : DsgraphedgelistNode) -> DsgraphedgelistNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_node_copy(s : DsgraphedgelistNode) -> DsgraphedgelistNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistNode::copy(self : DsgraphedgelistNode) -> DsgraphedgelistNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_node_fill(s : DsgraphedgelistNode, v : Double) -> DsgraphedgelistNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistNode::fill(self : DsgraphedgelistNode, v : Double) -> DsgraphedgelistNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_node_min(s : DsgraphedgelistNode) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistNode::min(self : DsgraphedgelistNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_node_max(s : DsgraphedgelistNode) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistNode::max(self : DsgraphedgelistNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_node_to_string(s : DsgraphedgelistNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistNode::to_string(self : DsgraphedgelistNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistEdge {
@@ -555,45 +555,45 @@ pub fn ds_graph_edge_list_edge_make(size : Int) -> DsgraphedgelistEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_edge_len(s : DsgraphedgelistEdge) -> Int { s.size }
+pub fn DsgraphedgelistEdge::len(self : DsgraphedgelistEdge) -> Int { self.size }
 
-pub fn ds_graph_edge_list_edge_get(s : DsgraphedgelistEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistEdge::get(self : DsgraphedgelistEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_edge_set(s : DsgraphedgelistEdge, i : Int, v : Double) -> DsgraphedgelistEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistEdge::set(self : DsgraphedgelistEdge, i : Int, v : Double) -> DsgraphedgelistEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_edge_sum(s : DsgraphedgelistEdge) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistEdge::sum(self : DsgraphedgelistEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_edge_mean(s : DsgraphedgelistEdge) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistEdge::mean(self : DsgraphedgelistEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_edge_scale(s : DsgraphedgelistEdge, f : Double) -> DsgraphedgelistEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistEdge::scale(self : DsgraphedgelistEdge, f : Double) -> DsgraphedgelistEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_edge_add(a : DsgraphedgelistEdge, b : DsgraphedgelistEdge) -> DsgraphedgelistEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistEdge::add(self : DsgraphedgelistEdge, other : DsgraphedgelistEdge) -> DsgraphedgelistEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_edge_copy(s : DsgraphedgelistEdge) -> DsgraphedgelistEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistEdge::copy(self : DsgraphedgelistEdge) -> DsgraphedgelistEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_edge_fill(s : DsgraphedgelistEdge, v : Double) -> DsgraphedgelistEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistEdge::fill(self : DsgraphedgelistEdge, v : Double) -> DsgraphedgelistEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_edge_min(s : DsgraphedgelistEdge) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistEdge::min(self : DsgraphedgelistEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_edge_max(s : DsgraphedgelistEdge) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistEdge::max(self : DsgraphedgelistEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_edge_to_string(s : DsgraphedgelistEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistEdge::to_string(self : DsgraphedgelistEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistPath {
@@ -606,45 +606,45 @@ pub fn ds_graph_edge_list_path_make(size : Int) -> DsgraphedgelistPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_path_len(s : DsgraphedgelistPath) -> Int { s.size }
+pub fn DsgraphedgelistPath::len(self : DsgraphedgelistPath) -> Int { self.size }
 
-pub fn ds_graph_edge_list_path_get(s : DsgraphedgelistPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistPath::get(self : DsgraphedgelistPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_path_set(s : DsgraphedgelistPath, i : Int, v : Double) -> DsgraphedgelistPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistPath::set(self : DsgraphedgelistPath, i : Int, v : Double) -> DsgraphedgelistPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_path_sum(s : DsgraphedgelistPath) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistPath::sum(self : DsgraphedgelistPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_path_mean(s : DsgraphedgelistPath) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistPath::mean(self : DsgraphedgelistPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_path_scale(s : DsgraphedgelistPath, f : Double) -> DsgraphedgelistPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistPath::scale(self : DsgraphedgelistPath, f : Double) -> DsgraphedgelistPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_path_add(a : DsgraphedgelistPath, b : DsgraphedgelistPath) -> DsgraphedgelistPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistPath::add(self : DsgraphedgelistPath, other : DsgraphedgelistPath) -> DsgraphedgelistPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_path_copy(s : DsgraphedgelistPath) -> DsgraphedgelistPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistPath::copy(self : DsgraphedgelistPath) -> DsgraphedgelistPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_path_fill(s : DsgraphedgelistPath, v : Double) -> DsgraphedgelistPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistPath::fill(self : DsgraphedgelistPath, v : Double) -> DsgraphedgelistPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_path_min(s : DsgraphedgelistPath) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistPath::min(self : DsgraphedgelistPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_path_max(s : DsgraphedgelistPath) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistPath::max(self : DsgraphedgelistPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_path_to_string(s : DsgraphedgelistPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistPath::to_string(self : DsgraphedgelistPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistCluster {
@@ -657,45 +657,45 @@ pub fn ds_graph_edge_list_cluster_make(size : Int) -> DsgraphedgelistCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_cluster_len(s : DsgraphedgelistCluster) -> Int { s.size }
+pub fn DsgraphedgelistCluster::len(self : DsgraphedgelistCluster) -> Int { self.size }
 
-pub fn ds_graph_edge_list_cluster_get(s : DsgraphedgelistCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistCluster::get(self : DsgraphedgelistCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_cluster_set(s : DsgraphedgelistCluster, i : Int, v : Double) -> DsgraphedgelistCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCluster::set(self : DsgraphedgelistCluster, i : Int, v : Double) -> DsgraphedgelistCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cluster_sum(s : DsgraphedgelistCluster) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistCluster::sum(self : DsgraphedgelistCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_cluster_mean(s : DsgraphedgelistCluster) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistCluster::mean(self : DsgraphedgelistCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_cluster_scale(s : DsgraphedgelistCluster, f : Double) -> DsgraphedgelistCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCluster::scale(self : DsgraphedgelistCluster, f : Double) -> DsgraphedgelistCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cluster_add(a : DsgraphedgelistCluster, b : DsgraphedgelistCluster) -> DsgraphedgelistCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistCluster::add(self : DsgraphedgelistCluster, other : DsgraphedgelistCluster) -> DsgraphedgelistCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cluster_copy(s : DsgraphedgelistCluster) -> DsgraphedgelistCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCluster::copy(self : DsgraphedgelistCluster) -> DsgraphedgelistCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cluster_fill(s : DsgraphedgelistCluster, v : Double) -> DsgraphedgelistCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCluster::fill(self : DsgraphedgelistCluster, v : Double) -> DsgraphedgelistCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cluster_min(s : DsgraphedgelistCluster) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistCluster::min(self : DsgraphedgelistCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_cluster_max(s : DsgraphedgelistCluster) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistCluster::max(self : DsgraphedgelistCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_cluster_to_string(s : DsgraphedgelistCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistCluster::to_string(self : DsgraphedgelistCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistModel {
@@ -708,45 +708,45 @@ pub fn ds_graph_edge_list_model_make(size : Int) -> DsgraphedgelistModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_model_len(s : DsgraphedgelistModel) -> Int { s.size }
+pub fn DsgraphedgelistModel::len(self : DsgraphedgelistModel) -> Int { self.size }
 
-pub fn ds_graph_edge_list_model_get(s : DsgraphedgelistModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistModel::get(self : DsgraphedgelistModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_model_set(s : DsgraphedgelistModel, i : Int, v : Double) -> DsgraphedgelistModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistModel::set(self : DsgraphedgelistModel, i : Int, v : Double) -> DsgraphedgelistModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_model_sum(s : DsgraphedgelistModel) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistModel::sum(self : DsgraphedgelistModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_model_mean(s : DsgraphedgelistModel) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistModel::mean(self : DsgraphedgelistModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_model_scale(s : DsgraphedgelistModel, f : Double) -> DsgraphedgelistModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistModel::scale(self : DsgraphedgelistModel, f : Double) -> DsgraphedgelistModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_model_add(a : DsgraphedgelistModel, b : DsgraphedgelistModel) -> DsgraphedgelistModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistModel::add(self : DsgraphedgelistModel, other : DsgraphedgelistModel) -> DsgraphedgelistModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_model_copy(s : DsgraphedgelistModel) -> DsgraphedgelistModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistModel::copy(self : DsgraphedgelistModel) -> DsgraphedgelistModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_model_fill(s : DsgraphedgelistModel, v : Double) -> DsgraphedgelistModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistModel::fill(self : DsgraphedgelistModel, v : Double) -> DsgraphedgelistModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_model_min(s : DsgraphedgelistModel) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistModel::min(self : DsgraphedgelistModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_model_max(s : DsgraphedgelistModel) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistModel::max(self : DsgraphedgelistModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_model_to_string(s : DsgraphedgelistModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistModel::to_string(self : DsgraphedgelistModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistLayer {
@@ -759,45 +759,45 @@ pub fn ds_graph_edge_list_layer_make(size : Int) -> DsgraphedgelistLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_layer_len(s : DsgraphedgelistLayer) -> Int { s.size }
+pub fn DsgraphedgelistLayer::len(self : DsgraphedgelistLayer) -> Int { self.size }
 
-pub fn ds_graph_edge_list_layer_get(s : DsgraphedgelistLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistLayer::get(self : DsgraphedgelistLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_layer_set(s : DsgraphedgelistLayer, i : Int, v : Double) -> DsgraphedgelistLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistLayer::set(self : DsgraphedgelistLayer, i : Int, v : Double) -> DsgraphedgelistLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_layer_sum(s : DsgraphedgelistLayer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistLayer::sum(self : DsgraphedgelistLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_layer_mean(s : DsgraphedgelistLayer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistLayer::mean(self : DsgraphedgelistLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_layer_scale(s : DsgraphedgelistLayer, f : Double) -> DsgraphedgelistLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistLayer::scale(self : DsgraphedgelistLayer, f : Double) -> DsgraphedgelistLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_layer_add(a : DsgraphedgelistLayer, b : DsgraphedgelistLayer) -> DsgraphedgelistLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistLayer::add(self : DsgraphedgelistLayer, other : DsgraphedgelistLayer) -> DsgraphedgelistLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_layer_copy(s : DsgraphedgelistLayer) -> DsgraphedgelistLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistLayer::copy(self : DsgraphedgelistLayer) -> DsgraphedgelistLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_layer_fill(s : DsgraphedgelistLayer, v : Double) -> DsgraphedgelistLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistLayer::fill(self : DsgraphedgelistLayer, v : Double) -> DsgraphedgelistLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_layer_min(s : DsgraphedgelistLayer) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistLayer::min(self : DsgraphedgelistLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_layer_max(s : DsgraphedgelistLayer) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistLayer::max(self : DsgraphedgelistLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_layer_to_string(s : DsgraphedgelistLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistLayer::to_string(self : DsgraphedgelistLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistBuffer {
@@ -810,45 +810,45 @@ pub fn ds_graph_edge_list_buffer_make(size : Int) -> DsgraphedgelistBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_buffer_len(s : DsgraphedgelistBuffer) -> Int { s.size }
+pub fn DsgraphedgelistBuffer::len(self : DsgraphedgelistBuffer) -> Int { self.size }
 
-pub fn ds_graph_edge_list_buffer_get(s : DsgraphedgelistBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistBuffer::get(self : DsgraphedgelistBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_buffer_set(s : DsgraphedgelistBuffer, i : Int, v : Double) -> DsgraphedgelistBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistBuffer::set(self : DsgraphedgelistBuffer, i : Int, v : Double) -> DsgraphedgelistBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_buffer_sum(s : DsgraphedgelistBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistBuffer::sum(self : DsgraphedgelistBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_buffer_mean(s : DsgraphedgelistBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistBuffer::mean(self : DsgraphedgelistBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_buffer_scale(s : DsgraphedgelistBuffer, f : Double) -> DsgraphedgelistBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistBuffer::scale(self : DsgraphedgelistBuffer, f : Double) -> DsgraphedgelistBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_buffer_add(a : DsgraphedgelistBuffer, b : DsgraphedgelistBuffer) -> DsgraphedgelistBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistBuffer::add(self : DsgraphedgelistBuffer, other : DsgraphedgelistBuffer) -> DsgraphedgelistBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_buffer_copy(s : DsgraphedgelistBuffer) -> DsgraphedgelistBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistBuffer::copy(self : DsgraphedgelistBuffer) -> DsgraphedgelistBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_buffer_fill(s : DsgraphedgelistBuffer, v : Double) -> DsgraphedgelistBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistBuffer::fill(self : DsgraphedgelistBuffer, v : Double) -> DsgraphedgelistBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_buffer_min(s : DsgraphedgelistBuffer) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistBuffer::min(self : DsgraphedgelistBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_buffer_max(s : DsgraphedgelistBuffer) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistBuffer::max(self : DsgraphedgelistBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_buffer_to_string(s : DsgraphedgelistBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistBuffer::to_string(self : DsgraphedgelistBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistCursor {
@@ -861,45 +861,45 @@ pub fn ds_graph_edge_list_cursor_make(size : Int) -> DsgraphedgelistCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_cursor_len(s : DsgraphedgelistCursor) -> Int { s.size }
+pub fn DsgraphedgelistCursor::len(self : DsgraphedgelistCursor) -> Int { self.size }
 
-pub fn ds_graph_edge_list_cursor_get(s : DsgraphedgelistCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistCursor::get(self : DsgraphedgelistCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_cursor_set(s : DsgraphedgelistCursor, i : Int, v : Double) -> DsgraphedgelistCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCursor::set(self : DsgraphedgelistCursor, i : Int, v : Double) -> DsgraphedgelistCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cursor_sum(s : DsgraphedgelistCursor) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistCursor::sum(self : DsgraphedgelistCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_cursor_mean(s : DsgraphedgelistCursor) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistCursor::mean(self : DsgraphedgelistCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_cursor_scale(s : DsgraphedgelistCursor, f : Double) -> DsgraphedgelistCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCursor::scale(self : DsgraphedgelistCursor, f : Double) -> DsgraphedgelistCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cursor_add(a : DsgraphedgelistCursor, b : DsgraphedgelistCursor) -> DsgraphedgelistCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistCursor::add(self : DsgraphedgelistCursor, other : DsgraphedgelistCursor) -> DsgraphedgelistCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cursor_copy(s : DsgraphedgelistCursor) -> DsgraphedgelistCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCursor::copy(self : DsgraphedgelistCursor) -> DsgraphedgelistCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cursor_fill(s : DsgraphedgelistCursor, v : Double) -> DsgraphedgelistCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistCursor::fill(self : DsgraphedgelistCursor, v : Double) -> DsgraphedgelistCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_cursor_min(s : DsgraphedgelistCursor) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistCursor::min(self : DsgraphedgelistCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_cursor_max(s : DsgraphedgelistCursor) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistCursor::max(self : DsgraphedgelistCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_cursor_to_string(s : DsgraphedgelistCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistCursor::to_string(self : DsgraphedgelistCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistView {
@@ -912,45 +912,45 @@ pub fn ds_graph_edge_list_view_make(size : Int) -> DsgraphedgelistView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_view_len(s : DsgraphedgelistView) -> Int { s.size }
+pub fn DsgraphedgelistView::len(self : DsgraphedgelistView) -> Int { self.size }
 
-pub fn ds_graph_edge_list_view_get(s : DsgraphedgelistView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistView::get(self : DsgraphedgelistView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_view_set(s : DsgraphedgelistView, i : Int, v : Double) -> DsgraphedgelistView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistView::set(self : DsgraphedgelistView, i : Int, v : Double) -> DsgraphedgelistView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_view_sum(s : DsgraphedgelistView) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistView::sum(self : DsgraphedgelistView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_view_mean(s : DsgraphedgelistView) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistView::mean(self : DsgraphedgelistView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_view_scale(s : DsgraphedgelistView, f : Double) -> DsgraphedgelistView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistView::scale(self : DsgraphedgelistView, f : Double) -> DsgraphedgelistView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_view_add(a : DsgraphedgelistView, b : DsgraphedgelistView) -> DsgraphedgelistView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistView::add(self : DsgraphedgelistView, other : DsgraphedgelistView) -> DsgraphedgelistView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_view_copy(s : DsgraphedgelistView) -> DsgraphedgelistView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistView::copy(self : DsgraphedgelistView) -> DsgraphedgelistView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_view_fill(s : DsgraphedgelistView, v : Double) -> DsgraphedgelistView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistView::fill(self : DsgraphedgelistView, v : Double) -> DsgraphedgelistView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_view_min(s : DsgraphedgelistView) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistView::min(self : DsgraphedgelistView) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_view_max(s : DsgraphedgelistView) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistView::max(self : DsgraphedgelistView) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_view_to_string(s : DsgraphedgelistView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistView::to_string(self : DsgraphedgelistView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistRange {
@@ -963,45 +963,45 @@ pub fn ds_graph_edge_list_range_make(size : Int) -> DsgraphedgelistRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_range_len(s : DsgraphedgelistRange) -> Int { s.size }
+pub fn DsgraphedgelistRange::len(self : DsgraphedgelistRange) -> Int { self.size }
 
-pub fn ds_graph_edge_list_range_get(s : DsgraphedgelistRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistRange::get(self : DsgraphedgelistRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_range_set(s : DsgraphedgelistRange, i : Int, v : Double) -> DsgraphedgelistRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistRange::set(self : DsgraphedgelistRange, i : Int, v : Double) -> DsgraphedgelistRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_range_sum(s : DsgraphedgelistRange) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistRange::sum(self : DsgraphedgelistRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_range_mean(s : DsgraphedgelistRange) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistRange::mean(self : DsgraphedgelistRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_range_scale(s : DsgraphedgelistRange, f : Double) -> DsgraphedgelistRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistRange::scale(self : DsgraphedgelistRange, f : Double) -> DsgraphedgelistRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_range_add(a : DsgraphedgelistRange, b : DsgraphedgelistRange) -> DsgraphedgelistRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistRange::add(self : DsgraphedgelistRange, other : DsgraphedgelistRange) -> DsgraphedgelistRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_range_copy(s : DsgraphedgelistRange) -> DsgraphedgelistRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistRange::copy(self : DsgraphedgelistRange) -> DsgraphedgelistRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_range_fill(s : DsgraphedgelistRange, v : Double) -> DsgraphedgelistRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistRange::fill(self : DsgraphedgelistRange, v : Double) -> DsgraphedgelistRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_range_min(s : DsgraphedgelistRange) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistRange::min(self : DsgraphedgelistRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_range_max(s : DsgraphedgelistRange) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistRange::max(self : DsgraphedgelistRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_range_to_string(s : DsgraphedgelistRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistRange::to_string(self : DsgraphedgelistRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphedgelistSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_graph_edge_list_slice_make(size : Int) -> DsgraphedgelistSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_edge_list_slice_len(s : DsgraphedgelistSlice) -> Int { s.size }
+pub fn DsgraphedgelistSlice::len(self : DsgraphedgelistSlice) -> Int { self.size }
 
-pub fn ds_graph_edge_list_slice_get(s : DsgraphedgelistSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphedgelistSlice::get(self : DsgraphedgelistSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_edge_list_slice_set(s : DsgraphedgelistSlice, i : Int, v : Double) -> DsgraphedgelistSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphedgelistSlice::set(self : DsgraphedgelistSlice, i : Int, v : Double) -> DsgraphedgelistSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_slice_sum(s : DsgraphedgelistSlice) -> Double { @_common.sum(s.data) }
+pub fn DsgraphedgelistSlice::sum(self : DsgraphedgelistSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_edge_list_slice_mean(s : DsgraphedgelistSlice) -> Double { @_common.mean(s.data) }
+pub fn DsgraphedgelistSlice::mean(self : DsgraphedgelistSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_edge_list_slice_scale(s : DsgraphedgelistSlice, f : Double) -> DsgraphedgelistSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistSlice::scale(self : DsgraphedgelistSlice, f : Double) -> DsgraphedgelistSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_slice_add(a : DsgraphedgelistSlice, b : DsgraphedgelistSlice) -> DsgraphedgelistSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphedgelistSlice::add(self : DsgraphedgelistSlice, other : DsgraphedgelistSlice) -> DsgraphedgelistSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_slice_copy(s : DsgraphedgelistSlice) -> DsgraphedgelistSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistSlice::copy(self : DsgraphedgelistSlice) -> DsgraphedgelistSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_slice_fill(s : DsgraphedgelistSlice, v : Double) -> DsgraphedgelistSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphedgelistSlice::fill(self : DsgraphedgelistSlice, v : Double) -> DsgraphedgelistSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_edge_list_slice_min(s : DsgraphedgelistSlice) -> Double { @_common.min(s.data) }
+pub fn DsgraphedgelistSlice::min(self : DsgraphedgelistSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_edge_list_slice_max(s : DsgraphedgelistSlice) -> Double { @_common.max(s.data) }
+pub fn DsgraphedgelistSlice::max(self : DsgraphedgelistSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_edge_list_slice_to_string(s : DsgraphedgelistSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphedgelistSlice::to_string(self : DsgraphedgelistSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

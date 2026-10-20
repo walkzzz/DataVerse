@@ -351,45 +351,45 @@ pub fn chem_rxn_balance_frame_make(size : Int) -> ChemrxnbalanceFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_frame_len(s : ChemrxnbalanceFrame) -> Int { s.size }
+pub fn ChemrxnbalanceFrame::len(self : ChemrxnbalanceFrame) -> Int { self.size }
 
-pub fn chem_rxn_balance_frame_get(s : ChemrxnbalanceFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceFrame::get(self : ChemrxnbalanceFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_frame_set(s : ChemrxnbalanceFrame, i : Int, v : Double) -> ChemrxnbalanceFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceFrame::set(self : ChemrxnbalanceFrame, i : Int, v : Double) -> ChemrxnbalanceFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_frame_sum(s : ChemrxnbalanceFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceFrame::sum(self : ChemrxnbalanceFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_frame_mean(s : ChemrxnbalanceFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceFrame::mean(self : ChemrxnbalanceFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_frame_scale(s : ChemrxnbalanceFrame, f : Double) -> ChemrxnbalanceFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceFrame::scale(self : ChemrxnbalanceFrame, f : Double) -> ChemrxnbalanceFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_frame_add(a : ChemrxnbalanceFrame, b : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceFrame::add(self : ChemrxnbalanceFrame, other : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_frame_copy(s : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceFrame::copy(self : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_frame_fill(s : ChemrxnbalanceFrame, v : Double) -> ChemrxnbalanceFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceFrame::fill(self : ChemrxnbalanceFrame, v : Double) -> ChemrxnbalanceFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_frame_min(s : ChemrxnbalanceFrame) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceFrame::min(self : ChemrxnbalanceFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_frame_max(s : ChemrxnbalanceFrame) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceFrame::max(self : ChemrxnbalanceFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_frame_to_string(s : ChemrxnbalanceFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceFrame::to_string(self : ChemrxnbalanceFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceTable {
@@ -402,45 +402,45 @@ pub fn chem_rxn_balance_table_make(size : Int) -> ChemrxnbalanceTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_table_len(s : ChemrxnbalanceTable) -> Int { s.size }
+pub fn ChemrxnbalanceTable::len(self : ChemrxnbalanceTable) -> Int { self.size }
 
-pub fn chem_rxn_balance_table_get(s : ChemrxnbalanceTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceTable::get(self : ChemrxnbalanceTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_table_set(s : ChemrxnbalanceTable, i : Int, v : Double) -> ChemrxnbalanceTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceTable::set(self : ChemrxnbalanceTable, i : Int, v : Double) -> ChemrxnbalanceTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_table_sum(s : ChemrxnbalanceTable) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceTable::sum(self : ChemrxnbalanceTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_table_mean(s : ChemrxnbalanceTable) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceTable::mean(self : ChemrxnbalanceTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_table_scale(s : ChemrxnbalanceTable, f : Double) -> ChemrxnbalanceTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceTable::scale(self : ChemrxnbalanceTable, f : Double) -> ChemrxnbalanceTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_table_add(a : ChemrxnbalanceTable, b : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceTable::add(self : ChemrxnbalanceTable, other : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_table_copy(s : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceTable::copy(self : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_table_fill(s : ChemrxnbalanceTable, v : Double) -> ChemrxnbalanceTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceTable::fill(self : ChemrxnbalanceTable, v : Double) -> ChemrxnbalanceTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_table_min(s : ChemrxnbalanceTable) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceTable::min(self : ChemrxnbalanceTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_table_max(s : ChemrxnbalanceTable) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceTable::max(self : ChemrxnbalanceTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_table_to_string(s : ChemrxnbalanceTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceTable::to_string(self : ChemrxnbalanceTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceGraphN {
@@ -453,45 +453,45 @@ pub fn chem_rxn_balance_graphn_make(size : Int) -> ChemrxnbalanceGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_graphn_len(s : ChemrxnbalanceGraphN) -> Int { s.size }
+pub fn ChemrxnbalanceGraphN::len(self : ChemrxnbalanceGraphN) -> Int { self.size }
 
-pub fn chem_rxn_balance_graphn_get(s : ChemrxnbalanceGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceGraphN::get(self : ChemrxnbalanceGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_graphn_set(s : ChemrxnbalanceGraphN, i : Int, v : Double) -> ChemrxnbalanceGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceGraphN::set(self : ChemrxnbalanceGraphN, i : Int, v : Double) -> ChemrxnbalanceGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_graphn_sum(s : ChemrxnbalanceGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceGraphN::sum(self : ChemrxnbalanceGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_graphn_mean(s : ChemrxnbalanceGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceGraphN::mean(self : ChemrxnbalanceGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_graphn_scale(s : ChemrxnbalanceGraphN, f : Double) -> ChemrxnbalanceGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceGraphN::scale(self : ChemrxnbalanceGraphN, f : Double) -> ChemrxnbalanceGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_graphn_add(a : ChemrxnbalanceGraphN, b : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceGraphN::add(self : ChemrxnbalanceGraphN, other : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_graphn_copy(s : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceGraphN::copy(self : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_graphn_fill(s : ChemrxnbalanceGraphN, v : Double) -> ChemrxnbalanceGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceGraphN::fill(self : ChemrxnbalanceGraphN, v : Double) -> ChemrxnbalanceGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_graphn_min(s : ChemrxnbalanceGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceGraphN::min(self : ChemrxnbalanceGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_graphn_max(s : ChemrxnbalanceGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceGraphN::max(self : ChemrxnbalanceGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_graphn_to_string(s : ChemrxnbalanceGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceGraphN::to_string(self : ChemrxnbalanceGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceNode {
@@ -504,45 +504,45 @@ pub fn chem_rxn_balance_node_make(size : Int) -> ChemrxnbalanceNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_node_len(s : ChemrxnbalanceNode) -> Int { s.size }
+pub fn ChemrxnbalanceNode::len(self : ChemrxnbalanceNode) -> Int { self.size }
 
-pub fn chem_rxn_balance_node_get(s : ChemrxnbalanceNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceNode::get(self : ChemrxnbalanceNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_node_set(s : ChemrxnbalanceNode, i : Int, v : Double) -> ChemrxnbalanceNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceNode::set(self : ChemrxnbalanceNode, i : Int, v : Double) -> ChemrxnbalanceNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_node_sum(s : ChemrxnbalanceNode) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceNode::sum(self : ChemrxnbalanceNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_node_mean(s : ChemrxnbalanceNode) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceNode::mean(self : ChemrxnbalanceNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_node_scale(s : ChemrxnbalanceNode, f : Double) -> ChemrxnbalanceNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceNode::scale(self : ChemrxnbalanceNode, f : Double) -> ChemrxnbalanceNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_node_add(a : ChemrxnbalanceNode, b : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceNode::add(self : ChemrxnbalanceNode, other : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_node_copy(s : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceNode::copy(self : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_node_fill(s : ChemrxnbalanceNode, v : Double) -> ChemrxnbalanceNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceNode::fill(self : ChemrxnbalanceNode, v : Double) -> ChemrxnbalanceNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_node_min(s : ChemrxnbalanceNode) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceNode::min(self : ChemrxnbalanceNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_node_max(s : ChemrxnbalanceNode) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceNode::max(self : ChemrxnbalanceNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_node_to_string(s : ChemrxnbalanceNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceNode::to_string(self : ChemrxnbalanceNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceEdge {
@@ -555,45 +555,45 @@ pub fn chem_rxn_balance_edge_make(size : Int) -> ChemrxnbalanceEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_edge_len(s : ChemrxnbalanceEdge) -> Int { s.size }
+pub fn ChemrxnbalanceEdge::len(self : ChemrxnbalanceEdge) -> Int { self.size }
 
-pub fn chem_rxn_balance_edge_get(s : ChemrxnbalanceEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceEdge::get(self : ChemrxnbalanceEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_edge_set(s : ChemrxnbalanceEdge, i : Int, v : Double) -> ChemrxnbalanceEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceEdge::set(self : ChemrxnbalanceEdge, i : Int, v : Double) -> ChemrxnbalanceEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_edge_sum(s : ChemrxnbalanceEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceEdge::sum(self : ChemrxnbalanceEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_edge_mean(s : ChemrxnbalanceEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceEdge::mean(self : ChemrxnbalanceEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_edge_scale(s : ChemrxnbalanceEdge, f : Double) -> ChemrxnbalanceEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceEdge::scale(self : ChemrxnbalanceEdge, f : Double) -> ChemrxnbalanceEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_edge_add(a : ChemrxnbalanceEdge, b : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceEdge::add(self : ChemrxnbalanceEdge, other : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_edge_copy(s : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceEdge::copy(self : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_edge_fill(s : ChemrxnbalanceEdge, v : Double) -> ChemrxnbalanceEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceEdge::fill(self : ChemrxnbalanceEdge, v : Double) -> ChemrxnbalanceEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_edge_min(s : ChemrxnbalanceEdge) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceEdge::min(self : ChemrxnbalanceEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_edge_max(s : ChemrxnbalanceEdge) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceEdge::max(self : ChemrxnbalanceEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_edge_to_string(s : ChemrxnbalanceEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceEdge::to_string(self : ChemrxnbalanceEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalancePath {
@@ -606,45 +606,45 @@ pub fn chem_rxn_balance_path_make(size : Int) -> ChemrxnbalancePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_path_len(s : ChemrxnbalancePath) -> Int { s.size }
+pub fn ChemrxnbalancePath::len(self : ChemrxnbalancePath) -> Int { self.size }
 
-pub fn chem_rxn_balance_path_get(s : ChemrxnbalancePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalancePath::get(self : ChemrxnbalancePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_path_set(s : ChemrxnbalancePath, i : Int, v : Double) -> ChemrxnbalancePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalancePath::set(self : ChemrxnbalancePath, i : Int, v : Double) -> ChemrxnbalancePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_path_sum(s : ChemrxnbalancePath) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalancePath::sum(self : ChemrxnbalancePath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_path_mean(s : ChemrxnbalancePath) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalancePath::mean(self : ChemrxnbalancePath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_path_scale(s : ChemrxnbalancePath, f : Double) -> ChemrxnbalancePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalancePath::scale(self : ChemrxnbalancePath, f : Double) -> ChemrxnbalancePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_path_add(a : ChemrxnbalancePath, b : ChemrxnbalancePath) -> ChemrxnbalancePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalancePath::add(self : ChemrxnbalancePath, other : ChemrxnbalancePath) -> ChemrxnbalancePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_path_copy(s : ChemrxnbalancePath) -> ChemrxnbalancePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalancePath::copy(self : ChemrxnbalancePath) -> ChemrxnbalancePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_path_fill(s : ChemrxnbalancePath, v : Double) -> ChemrxnbalancePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalancePath::fill(self : ChemrxnbalancePath, v : Double) -> ChemrxnbalancePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_path_min(s : ChemrxnbalancePath) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalancePath::min(self : ChemrxnbalancePath) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_path_max(s : ChemrxnbalancePath) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalancePath::max(self : ChemrxnbalancePath) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_path_to_string(s : ChemrxnbalancePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalancePath::to_string(self : ChemrxnbalancePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceCluster {
@@ -657,45 +657,45 @@ pub fn chem_rxn_balance_cluster_make(size : Int) -> ChemrxnbalanceCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_cluster_len(s : ChemrxnbalanceCluster) -> Int { s.size }
+pub fn ChemrxnbalanceCluster::len(self : ChemrxnbalanceCluster) -> Int { self.size }
 
-pub fn chem_rxn_balance_cluster_get(s : ChemrxnbalanceCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceCluster::get(self : ChemrxnbalanceCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_cluster_set(s : ChemrxnbalanceCluster, i : Int, v : Double) -> ChemrxnbalanceCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCluster::set(self : ChemrxnbalanceCluster, i : Int, v : Double) -> ChemrxnbalanceCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cluster_sum(s : ChemrxnbalanceCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceCluster::sum(self : ChemrxnbalanceCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_cluster_mean(s : ChemrxnbalanceCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceCluster::mean(self : ChemrxnbalanceCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_cluster_scale(s : ChemrxnbalanceCluster, f : Double) -> ChemrxnbalanceCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCluster::scale(self : ChemrxnbalanceCluster, f : Double) -> ChemrxnbalanceCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cluster_add(a : ChemrxnbalanceCluster, b : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceCluster::add(self : ChemrxnbalanceCluster, other : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cluster_copy(s : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCluster::copy(self : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cluster_fill(s : ChemrxnbalanceCluster, v : Double) -> ChemrxnbalanceCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCluster::fill(self : ChemrxnbalanceCluster, v : Double) -> ChemrxnbalanceCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cluster_min(s : ChemrxnbalanceCluster) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceCluster::min(self : ChemrxnbalanceCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_cluster_max(s : ChemrxnbalanceCluster) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceCluster::max(self : ChemrxnbalanceCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_cluster_to_string(s : ChemrxnbalanceCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceCluster::to_string(self : ChemrxnbalanceCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceModel {
@@ -708,45 +708,45 @@ pub fn chem_rxn_balance_model_make(size : Int) -> ChemrxnbalanceModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_model_len(s : ChemrxnbalanceModel) -> Int { s.size }
+pub fn ChemrxnbalanceModel::len(self : ChemrxnbalanceModel) -> Int { self.size }
 
-pub fn chem_rxn_balance_model_get(s : ChemrxnbalanceModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceModel::get(self : ChemrxnbalanceModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_model_set(s : ChemrxnbalanceModel, i : Int, v : Double) -> ChemrxnbalanceModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceModel::set(self : ChemrxnbalanceModel, i : Int, v : Double) -> ChemrxnbalanceModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_model_sum(s : ChemrxnbalanceModel) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceModel::sum(self : ChemrxnbalanceModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_model_mean(s : ChemrxnbalanceModel) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceModel::mean(self : ChemrxnbalanceModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_model_scale(s : ChemrxnbalanceModel, f : Double) -> ChemrxnbalanceModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceModel::scale(self : ChemrxnbalanceModel, f : Double) -> ChemrxnbalanceModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_model_add(a : ChemrxnbalanceModel, b : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceModel::add(self : ChemrxnbalanceModel, other : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_model_copy(s : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceModel::copy(self : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_model_fill(s : ChemrxnbalanceModel, v : Double) -> ChemrxnbalanceModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceModel::fill(self : ChemrxnbalanceModel, v : Double) -> ChemrxnbalanceModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_model_min(s : ChemrxnbalanceModel) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceModel::min(self : ChemrxnbalanceModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_model_max(s : ChemrxnbalanceModel) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceModel::max(self : ChemrxnbalanceModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_model_to_string(s : ChemrxnbalanceModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceModel::to_string(self : ChemrxnbalanceModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceLayer {
@@ -759,45 +759,45 @@ pub fn chem_rxn_balance_layer_make(size : Int) -> ChemrxnbalanceLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_layer_len(s : ChemrxnbalanceLayer) -> Int { s.size }
+pub fn ChemrxnbalanceLayer::len(self : ChemrxnbalanceLayer) -> Int { self.size }
 
-pub fn chem_rxn_balance_layer_get(s : ChemrxnbalanceLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceLayer::get(self : ChemrxnbalanceLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_layer_set(s : ChemrxnbalanceLayer, i : Int, v : Double) -> ChemrxnbalanceLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceLayer::set(self : ChemrxnbalanceLayer, i : Int, v : Double) -> ChemrxnbalanceLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_layer_sum(s : ChemrxnbalanceLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceLayer::sum(self : ChemrxnbalanceLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_layer_mean(s : ChemrxnbalanceLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceLayer::mean(self : ChemrxnbalanceLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_layer_scale(s : ChemrxnbalanceLayer, f : Double) -> ChemrxnbalanceLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceLayer::scale(self : ChemrxnbalanceLayer, f : Double) -> ChemrxnbalanceLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_layer_add(a : ChemrxnbalanceLayer, b : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceLayer::add(self : ChemrxnbalanceLayer, other : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_layer_copy(s : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceLayer::copy(self : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_layer_fill(s : ChemrxnbalanceLayer, v : Double) -> ChemrxnbalanceLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceLayer::fill(self : ChemrxnbalanceLayer, v : Double) -> ChemrxnbalanceLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_layer_min(s : ChemrxnbalanceLayer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceLayer::min(self : ChemrxnbalanceLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_layer_max(s : ChemrxnbalanceLayer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceLayer::max(self : ChemrxnbalanceLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_layer_to_string(s : ChemrxnbalanceLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceLayer::to_string(self : ChemrxnbalanceLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceBuffer {
@@ -810,45 +810,45 @@ pub fn chem_rxn_balance_buffer_make(size : Int) -> ChemrxnbalanceBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_buffer_len(s : ChemrxnbalanceBuffer) -> Int { s.size }
+pub fn ChemrxnbalanceBuffer::len(self : ChemrxnbalanceBuffer) -> Int { self.size }
 
-pub fn chem_rxn_balance_buffer_get(s : ChemrxnbalanceBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceBuffer::get(self : ChemrxnbalanceBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_buffer_set(s : ChemrxnbalanceBuffer, i : Int, v : Double) -> ChemrxnbalanceBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceBuffer::set(self : ChemrxnbalanceBuffer, i : Int, v : Double) -> ChemrxnbalanceBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_buffer_sum(s : ChemrxnbalanceBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceBuffer::sum(self : ChemrxnbalanceBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_buffer_mean(s : ChemrxnbalanceBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceBuffer::mean(self : ChemrxnbalanceBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_buffer_scale(s : ChemrxnbalanceBuffer, f : Double) -> ChemrxnbalanceBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceBuffer::scale(self : ChemrxnbalanceBuffer, f : Double) -> ChemrxnbalanceBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_buffer_add(a : ChemrxnbalanceBuffer, b : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceBuffer::add(self : ChemrxnbalanceBuffer, other : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_buffer_copy(s : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceBuffer::copy(self : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_buffer_fill(s : ChemrxnbalanceBuffer, v : Double) -> ChemrxnbalanceBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceBuffer::fill(self : ChemrxnbalanceBuffer, v : Double) -> ChemrxnbalanceBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_buffer_min(s : ChemrxnbalanceBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceBuffer::min(self : ChemrxnbalanceBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_buffer_max(s : ChemrxnbalanceBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceBuffer::max(self : ChemrxnbalanceBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_buffer_to_string(s : ChemrxnbalanceBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceBuffer::to_string(self : ChemrxnbalanceBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceCursor {
@@ -861,45 +861,45 @@ pub fn chem_rxn_balance_cursor_make(size : Int) -> ChemrxnbalanceCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_cursor_len(s : ChemrxnbalanceCursor) -> Int { s.size }
+pub fn ChemrxnbalanceCursor::len(self : ChemrxnbalanceCursor) -> Int { self.size }
 
-pub fn chem_rxn_balance_cursor_get(s : ChemrxnbalanceCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceCursor::get(self : ChemrxnbalanceCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_cursor_set(s : ChemrxnbalanceCursor, i : Int, v : Double) -> ChemrxnbalanceCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCursor::set(self : ChemrxnbalanceCursor, i : Int, v : Double) -> ChemrxnbalanceCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cursor_sum(s : ChemrxnbalanceCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceCursor::sum(self : ChemrxnbalanceCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_cursor_mean(s : ChemrxnbalanceCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceCursor::mean(self : ChemrxnbalanceCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_cursor_scale(s : ChemrxnbalanceCursor, f : Double) -> ChemrxnbalanceCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCursor::scale(self : ChemrxnbalanceCursor, f : Double) -> ChemrxnbalanceCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cursor_add(a : ChemrxnbalanceCursor, b : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceCursor::add(self : ChemrxnbalanceCursor, other : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cursor_copy(s : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCursor::copy(self : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cursor_fill(s : ChemrxnbalanceCursor, v : Double) -> ChemrxnbalanceCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceCursor::fill(self : ChemrxnbalanceCursor, v : Double) -> ChemrxnbalanceCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_cursor_min(s : ChemrxnbalanceCursor) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceCursor::min(self : ChemrxnbalanceCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_cursor_max(s : ChemrxnbalanceCursor) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceCursor::max(self : ChemrxnbalanceCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_cursor_to_string(s : ChemrxnbalanceCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceCursor::to_string(self : ChemrxnbalanceCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceView {
@@ -912,45 +912,45 @@ pub fn chem_rxn_balance_view_make(size : Int) -> ChemrxnbalanceView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_view_len(s : ChemrxnbalanceView) -> Int { s.size }
+pub fn ChemrxnbalanceView::len(self : ChemrxnbalanceView) -> Int { self.size }
 
-pub fn chem_rxn_balance_view_get(s : ChemrxnbalanceView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceView::get(self : ChemrxnbalanceView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_view_set(s : ChemrxnbalanceView, i : Int, v : Double) -> ChemrxnbalanceView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceView::set(self : ChemrxnbalanceView, i : Int, v : Double) -> ChemrxnbalanceView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_view_sum(s : ChemrxnbalanceView) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceView::sum(self : ChemrxnbalanceView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_view_mean(s : ChemrxnbalanceView) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceView::mean(self : ChemrxnbalanceView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_view_scale(s : ChemrxnbalanceView, f : Double) -> ChemrxnbalanceView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceView::scale(self : ChemrxnbalanceView, f : Double) -> ChemrxnbalanceView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_view_add(a : ChemrxnbalanceView, b : ChemrxnbalanceView) -> ChemrxnbalanceView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceView::add(self : ChemrxnbalanceView, other : ChemrxnbalanceView) -> ChemrxnbalanceView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_view_copy(s : ChemrxnbalanceView) -> ChemrxnbalanceView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceView::copy(self : ChemrxnbalanceView) -> ChemrxnbalanceView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_view_fill(s : ChemrxnbalanceView, v : Double) -> ChemrxnbalanceView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceView::fill(self : ChemrxnbalanceView, v : Double) -> ChemrxnbalanceView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_view_min(s : ChemrxnbalanceView) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceView::min(self : ChemrxnbalanceView) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_view_max(s : ChemrxnbalanceView) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceView::max(self : ChemrxnbalanceView) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_view_to_string(s : ChemrxnbalanceView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceView::to_string(self : ChemrxnbalanceView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceRange {
@@ -963,45 +963,45 @@ pub fn chem_rxn_balance_range_make(size : Int) -> ChemrxnbalanceRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_range_len(s : ChemrxnbalanceRange) -> Int { s.size }
+pub fn ChemrxnbalanceRange::len(self : ChemrxnbalanceRange) -> Int { self.size }
 
-pub fn chem_rxn_balance_range_get(s : ChemrxnbalanceRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceRange::get(self : ChemrxnbalanceRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_range_set(s : ChemrxnbalanceRange, i : Int, v : Double) -> ChemrxnbalanceRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceRange::set(self : ChemrxnbalanceRange, i : Int, v : Double) -> ChemrxnbalanceRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_range_sum(s : ChemrxnbalanceRange) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceRange::sum(self : ChemrxnbalanceRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_range_mean(s : ChemrxnbalanceRange) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceRange::mean(self : ChemrxnbalanceRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_range_scale(s : ChemrxnbalanceRange, f : Double) -> ChemrxnbalanceRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceRange::scale(self : ChemrxnbalanceRange, f : Double) -> ChemrxnbalanceRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_range_add(a : ChemrxnbalanceRange, b : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceRange::add(self : ChemrxnbalanceRange, other : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_range_copy(s : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceRange::copy(self : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_range_fill(s : ChemrxnbalanceRange, v : Double) -> ChemrxnbalanceRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceRange::fill(self : ChemrxnbalanceRange, v : Double) -> ChemrxnbalanceRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_range_min(s : ChemrxnbalanceRange) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceRange::min(self : ChemrxnbalanceRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_range_max(s : ChemrxnbalanceRange) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceRange::max(self : ChemrxnbalanceRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_range_to_string(s : ChemrxnbalanceRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceRange::to_string(self : ChemrxnbalanceRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnbalanceSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_rxn_balance_slice_make(size : Int) -> ChemrxnbalanceSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_balance_slice_len(s : ChemrxnbalanceSlice) -> Int { s.size }
+pub fn ChemrxnbalanceSlice::len(self : ChemrxnbalanceSlice) -> Int { self.size }
 
-pub fn chem_rxn_balance_slice_get(s : ChemrxnbalanceSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnbalanceSlice::get(self : ChemrxnbalanceSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_balance_slice_set(s : ChemrxnbalanceSlice, i : Int, v : Double) -> ChemrxnbalanceSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceSlice::set(self : ChemrxnbalanceSlice, i : Int, v : Double) -> ChemrxnbalanceSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_slice_sum(s : ChemrxnbalanceSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnbalanceSlice::sum(self : ChemrxnbalanceSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_balance_slice_mean(s : ChemrxnbalanceSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnbalanceSlice::mean(self : ChemrxnbalanceSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_balance_slice_scale(s : ChemrxnbalanceSlice, f : Double) -> ChemrxnbalanceSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceSlice::scale(self : ChemrxnbalanceSlice, f : Double) -> ChemrxnbalanceSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_slice_add(a : ChemrxnbalanceSlice, b : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnbalanceSlice::add(self : ChemrxnbalanceSlice, other : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_slice_copy(s : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceSlice::copy(self : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_slice_fill(s : ChemrxnbalanceSlice, v : Double) -> ChemrxnbalanceSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnbalanceSlice::fill(self : ChemrxnbalanceSlice, v : Double) -> ChemrxnbalanceSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_balance_slice_min(s : ChemrxnbalanceSlice) -> Double { @_common.min(s.data) }
+pub fn ChemrxnbalanceSlice::min(self : ChemrxnbalanceSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_balance_slice_max(s : ChemrxnbalanceSlice) -> Double { @_common.max(s.data) }
+pub fn ChemrxnbalanceSlice::max(self : ChemrxnbalanceSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_balance_slice_to_string(s : ChemrxnbalanceSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnbalanceSlice::to_string(self : ChemrxnbalanceSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

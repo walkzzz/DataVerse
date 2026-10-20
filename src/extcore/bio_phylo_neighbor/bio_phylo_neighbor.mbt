@@ -351,45 +351,45 @@ pub fn bio_phylo_neighbor_frame_make(size : Int) -> BiophyloneighborFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_frame_len(s : BiophyloneighborFrame) -> Int { s.size }
+pub fn BiophyloneighborFrame::len(self : BiophyloneighborFrame) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_frame_get(s : BiophyloneighborFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborFrame::get(self : BiophyloneighborFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_frame_set(s : BiophyloneighborFrame, i : Int, v : Double) -> BiophyloneighborFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborFrame::set(self : BiophyloneighborFrame, i : Int, v : Double) -> BiophyloneighborFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_frame_sum(s : BiophyloneighborFrame) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborFrame::sum(self : BiophyloneighborFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_frame_mean(s : BiophyloneighborFrame) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborFrame::mean(self : BiophyloneighborFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_frame_scale(s : BiophyloneighborFrame, f : Double) -> BiophyloneighborFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborFrame::scale(self : BiophyloneighborFrame, f : Double) -> BiophyloneighborFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_frame_add(a : BiophyloneighborFrame, b : BiophyloneighborFrame) -> BiophyloneighborFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborFrame::add(self : BiophyloneighborFrame, other : BiophyloneighborFrame) -> BiophyloneighborFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_frame_copy(s : BiophyloneighborFrame) -> BiophyloneighborFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborFrame::copy(self : BiophyloneighborFrame) -> BiophyloneighborFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_frame_fill(s : BiophyloneighborFrame, v : Double) -> BiophyloneighborFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborFrame::fill(self : BiophyloneighborFrame, v : Double) -> BiophyloneighborFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_frame_min(s : BiophyloneighborFrame) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborFrame::min(self : BiophyloneighborFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_frame_max(s : BiophyloneighborFrame) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborFrame::max(self : BiophyloneighborFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_frame_to_string(s : BiophyloneighborFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborFrame::to_string(self : BiophyloneighborFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborTable {
@@ -402,45 +402,45 @@ pub fn bio_phylo_neighbor_table_make(size : Int) -> BiophyloneighborTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_table_len(s : BiophyloneighborTable) -> Int { s.size }
+pub fn BiophyloneighborTable::len(self : BiophyloneighborTable) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_table_get(s : BiophyloneighborTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborTable::get(self : BiophyloneighborTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_table_set(s : BiophyloneighborTable, i : Int, v : Double) -> BiophyloneighborTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborTable::set(self : BiophyloneighborTable, i : Int, v : Double) -> BiophyloneighborTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_table_sum(s : BiophyloneighborTable) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborTable::sum(self : BiophyloneighborTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_table_mean(s : BiophyloneighborTable) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborTable::mean(self : BiophyloneighborTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_table_scale(s : BiophyloneighborTable, f : Double) -> BiophyloneighborTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborTable::scale(self : BiophyloneighborTable, f : Double) -> BiophyloneighborTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_table_add(a : BiophyloneighborTable, b : BiophyloneighborTable) -> BiophyloneighborTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborTable::add(self : BiophyloneighborTable, other : BiophyloneighborTable) -> BiophyloneighborTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_table_copy(s : BiophyloneighborTable) -> BiophyloneighborTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborTable::copy(self : BiophyloneighborTable) -> BiophyloneighborTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_table_fill(s : BiophyloneighborTable, v : Double) -> BiophyloneighborTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborTable::fill(self : BiophyloneighborTable, v : Double) -> BiophyloneighborTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_table_min(s : BiophyloneighborTable) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborTable::min(self : BiophyloneighborTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_table_max(s : BiophyloneighborTable) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborTable::max(self : BiophyloneighborTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_table_to_string(s : BiophyloneighborTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborTable::to_string(self : BiophyloneighborTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborGraphN {
@@ -453,45 +453,45 @@ pub fn bio_phylo_neighbor_graphn_make(size : Int) -> BiophyloneighborGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_graphn_len(s : BiophyloneighborGraphN) -> Int { s.size }
+pub fn BiophyloneighborGraphN::len(self : BiophyloneighborGraphN) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_graphn_get(s : BiophyloneighborGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborGraphN::get(self : BiophyloneighborGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_graphn_set(s : BiophyloneighborGraphN, i : Int, v : Double) -> BiophyloneighborGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborGraphN::set(self : BiophyloneighborGraphN, i : Int, v : Double) -> BiophyloneighborGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_graphn_sum(s : BiophyloneighborGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborGraphN::sum(self : BiophyloneighborGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_graphn_mean(s : BiophyloneighborGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborGraphN::mean(self : BiophyloneighborGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_graphn_scale(s : BiophyloneighborGraphN, f : Double) -> BiophyloneighborGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborGraphN::scale(self : BiophyloneighborGraphN, f : Double) -> BiophyloneighborGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_graphn_add(a : BiophyloneighborGraphN, b : BiophyloneighborGraphN) -> BiophyloneighborGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborGraphN::add(self : BiophyloneighborGraphN, other : BiophyloneighborGraphN) -> BiophyloneighborGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_graphn_copy(s : BiophyloneighborGraphN) -> BiophyloneighborGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborGraphN::copy(self : BiophyloneighborGraphN) -> BiophyloneighborGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_graphn_fill(s : BiophyloneighborGraphN, v : Double) -> BiophyloneighborGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborGraphN::fill(self : BiophyloneighborGraphN, v : Double) -> BiophyloneighborGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_graphn_min(s : BiophyloneighborGraphN) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborGraphN::min(self : BiophyloneighborGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_graphn_max(s : BiophyloneighborGraphN) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborGraphN::max(self : BiophyloneighborGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_graphn_to_string(s : BiophyloneighborGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborGraphN::to_string(self : BiophyloneighborGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborNode {
@@ -504,45 +504,45 @@ pub fn bio_phylo_neighbor_node_make(size : Int) -> BiophyloneighborNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_node_len(s : BiophyloneighborNode) -> Int { s.size }
+pub fn BiophyloneighborNode::len(self : BiophyloneighborNode) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_node_get(s : BiophyloneighborNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborNode::get(self : BiophyloneighborNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_node_set(s : BiophyloneighborNode, i : Int, v : Double) -> BiophyloneighborNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborNode::set(self : BiophyloneighborNode, i : Int, v : Double) -> BiophyloneighborNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_node_sum(s : BiophyloneighborNode) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborNode::sum(self : BiophyloneighborNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_node_mean(s : BiophyloneighborNode) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborNode::mean(self : BiophyloneighborNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_node_scale(s : BiophyloneighborNode, f : Double) -> BiophyloneighborNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborNode::scale(self : BiophyloneighborNode, f : Double) -> BiophyloneighborNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_node_add(a : BiophyloneighborNode, b : BiophyloneighborNode) -> BiophyloneighborNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborNode::add(self : BiophyloneighborNode, other : BiophyloneighborNode) -> BiophyloneighborNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_node_copy(s : BiophyloneighborNode) -> BiophyloneighborNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborNode::copy(self : BiophyloneighborNode) -> BiophyloneighborNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_node_fill(s : BiophyloneighborNode, v : Double) -> BiophyloneighborNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborNode::fill(self : BiophyloneighborNode, v : Double) -> BiophyloneighborNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_node_min(s : BiophyloneighborNode) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborNode::min(self : BiophyloneighborNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_node_max(s : BiophyloneighborNode) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborNode::max(self : BiophyloneighborNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_node_to_string(s : BiophyloneighborNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborNode::to_string(self : BiophyloneighborNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborEdge {
@@ -555,45 +555,45 @@ pub fn bio_phylo_neighbor_edge_make(size : Int) -> BiophyloneighborEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_edge_len(s : BiophyloneighborEdge) -> Int { s.size }
+pub fn BiophyloneighborEdge::len(self : BiophyloneighborEdge) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_edge_get(s : BiophyloneighborEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborEdge::get(self : BiophyloneighborEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_edge_set(s : BiophyloneighborEdge, i : Int, v : Double) -> BiophyloneighborEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborEdge::set(self : BiophyloneighborEdge, i : Int, v : Double) -> BiophyloneighborEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_edge_sum(s : BiophyloneighborEdge) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborEdge::sum(self : BiophyloneighborEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_edge_mean(s : BiophyloneighborEdge) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborEdge::mean(self : BiophyloneighborEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_edge_scale(s : BiophyloneighborEdge, f : Double) -> BiophyloneighborEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborEdge::scale(self : BiophyloneighborEdge, f : Double) -> BiophyloneighborEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_edge_add(a : BiophyloneighborEdge, b : BiophyloneighborEdge) -> BiophyloneighborEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborEdge::add(self : BiophyloneighborEdge, other : BiophyloneighborEdge) -> BiophyloneighborEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_edge_copy(s : BiophyloneighborEdge) -> BiophyloneighborEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborEdge::copy(self : BiophyloneighborEdge) -> BiophyloneighborEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_edge_fill(s : BiophyloneighborEdge, v : Double) -> BiophyloneighborEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborEdge::fill(self : BiophyloneighborEdge, v : Double) -> BiophyloneighborEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_edge_min(s : BiophyloneighborEdge) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborEdge::min(self : BiophyloneighborEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_edge_max(s : BiophyloneighborEdge) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborEdge::max(self : BiophyloneighborEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_edge_to_string(s : BiophyloneighborEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborEdge::to_string(self : BiophyloneighborEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborPath {
@@ -606,45 +606,45 @@ pub fn bio_phylo_neighbor_path_make(size : Int) -> BiophyloneighborPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_path_len(s : BiophyloneighborPath) -> Int { s.size }
+pub fn BiophyloneighborPath::len(self : BiophyloneighborPath) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_path_get(s : BiophyloneighborPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborPath::get(self : BiophyloneighborPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_path_set(s : BiophyloneighborPath, i : Int, v : Double) -> BiophyloneighborPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborPath::set(self : BiophyloneighborPath, i : Int, v : Double) -> BiophyloneighborPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_path_sum(s : BiophyloneighborPath) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborPath::sum(self : BiophyloneighborPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_path_mean(s : BiophyloneighborPath) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborPath::mean(self : BiophyloneighborPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_path_scale(s : BiophyloneighborPath, f : Double) -> BiophyloneighborPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborPath::scale(self : BiophyloneighborPath, f : Double) -> BiophyloneighborPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_path_add(a : BiophyloneighborPath, b : BiophyloneighborPath) -> BiophyloneighborPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborPath::add(self : BiophyloneighborPath, other : BiophyloneighborPath) -> BiophyloneighborPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_path_copy(s : BiophyloneighborPath) -> BiophyloneighborPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborPath::copy(self : BiophyloneighborPath) -> BiophyloneighborPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_path_fill(s : BiophyloneighborPath, v : Double) -> BiophyloneighborPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborPath::fill(self : BiophyloneighborPath, v : Double) -> BiophyloneighborPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_path_min(s : BiophyloneighborPath) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborPath::min(self : BiophyloneighborPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_path_max(s : BiophyloneighborPath) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborPath::max(self : BiophyloneighborPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_path_to_string(s : BiophyloneighborPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborPath::to_string(self : BiophyloneighborPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborCluster {
@@ -657,45 +657,45 @@ pub fn bio_phylo_neighbor_cluster_make(size : Int) -> BiophyloneighborCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_cluster_len(s : BiophyloneighborCluster) -> Int { s.size }
+pub fn BiophyloneighborCluster::len(self : BiophyloneighborCluster) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_cluster_get(s : BiophyloneighborCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborCluster::get(self : BiophyloneighborCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_cluster_set(s : BiophyloneighborCluster, i : Int, v : Double) -> BiophyloneighborCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborCluster::set(self : BiophyloneighborCluster, i : Int, v : Double) -> BiophyloneighborCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cluster_sum(s : BiophyloneighborCluster) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborCluster::sum(self : BiophyloneighborCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_cluster_mean(s : BiophyloneighborCluster) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborCluster::mean(self : BiophyloneighborCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_cluster_scale(s : BiophyloneighborCluster, f : Double) -> BiophyloneighborCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborCluster::scale(self : BiophyloneighborCluster, f : Double) -> BiophyloneighborCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cluster_add(a : BiophyloneighborCluster, b : BiophyloneighborCluster) -> BiophyloneighborCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborCluster::add(self : BiophyloneighborCluster, other : BiophyloneighborCluster) -> BiophyloneighborCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cluster_copy(s : BiophyloneighborCluster) -> BiophyloneighborCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborCluster::copy(self : BiophyloneighborCluster) -> BiophyloneighborCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cluster_fill(s : BiophyloneighborCluster, v : Double) -> BiophyloneighborCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborCluster::fill(self : BiophyloneighborCluster, v : Double) -> BiophyloneighborCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cluster_min(s : BiophyloneighborCluster) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborCluster::min(self : BiophyloneighborCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_cluster_max(s : BiophyloneighborCluster) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborCluster::max(self : BiophyloneighborCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_cluster_to_string(s : BiophyloneighborCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborCluster::to_string(self : BiophyloneighborCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborModel {
@@ -708,45 +708,45 @@ pub fn bio_phylo_neighbor_model_make(size : Int) -> BiophyloneighborModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_model_len(s : BiophyloneighborModel) -> Int { s.size }
+pub fn BiophyloneighborModel::len(self : BiophyloneighborModel) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_model_get(s : BiophyloneighborModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborModel::get(self : BiophyloneighborModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_model_set(s : BiophyloneighborModel, i : Int, v : Double) -> BiophyloneighborModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborModel::set(self : BiophyloneighborModel, i : Int, v : Double) -> BiophyloneighborModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_model_sum(s : BiophyloneighborModel) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborModel::sum(self : BiophyloneighborModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_model_mean(s : BiophyloneighborModel) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborModel::mean(self : BiophyloneighborModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_model_scale(s : BiophyloneighborModel, f : Double) -> BiophyloneighborModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborModel::scale(self : BiophyloneighborModel, f : Double) -> BiophyloneighborModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_model_add(a : BiophyloneighborModel, b : BiophyloneighborModel) -> BiophyloneighborModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborModel::add(self : BiophyloneighborModel, other : BiophyloneighborModel) -> BiophyloneighborModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_model_copy(s : BiophyloneighborModel) -> BiophyloneighborModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborModel::copy(self : BiophyloneighborModel) -> BiophyloneighborModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_model_fill(s : BiophyloneighborModel, v : Double) -> BiophyloneighborModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborModel::fill(self : BiophyloneighborModel, v : Double) -> BiophyloneighborModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_model_min(s : BiophyloneighborModel) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborModel::min(self : BiophyloneighborModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_model_max(s : BiophyloneighborModel) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborModel::max(self : BiophyloneighborModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_model_to_string(s : BiophyloneighborModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborModel::to_string(self : BiophyloneighborModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborLayer {
@@ -759,45 +759,45 @@ pub fn bio_phylo_neighbor_layer_make(size : Int) -> BiophyloneighborLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_layer_len(s : BiophyloneighborLayer) -> Int { s.size }
+pub fn BiophyloneighborLayer::len(self : BiophyloneighborLayer) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_layer_get(s : BiophyloneighborLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborLayer::get(self : BiophyloneighborLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_layer_set(s : BiophyloneighborLayer, i : Int, v : Double) -> BiophyloneighborLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborLayer::set(self : BiophyloneighborLayer, i : Int, v : Double) -> BiophyloneighborLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_layer_sum(s : BiophyloneighborLayer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborLayer::sum(self : BiophyloneighborLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_layer_mean(s : BiophyloneighborLayer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborLayer::mean(self : BiophyloneighborLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_layer_scale(s : BiophyloneighborLayer, f : Double) -> BiophyloneighborLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborLayer::scale(self : BiophyloneighborLayer, f : Double) -> BiophyloneighborLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_layer_add(a : BiophyloneighborLayer, b : BiophyloneighborLayer) -> BiophyloneighborLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborLayer::add(self : BiophyloneighborLayer, other : BiophyloneighborLayer) -> BiophyloneighborLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_layer_copy(s : BiophyloneighborLayer) -> BiophyloneighborLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborLayer::copy(self : BiophyloneighborLayer) -> BiophyloneighborLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_layer_fill(s : BiophyloneighborLayer, v : Double) -> BiophyloneighborLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborLayer::fill(self : BiophyloneighborLayer, v : Double) -> BiophyloneighborLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_layer_min(s : BiophyloneighborLayer) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborLayer::min(self : BiophyloneighborLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_layer_max(s : BiophyloneighborLayer) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborLayer::max(self : BiophyloneighborLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_layer_to_string(s : BiophyloneighborLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborLayer::to_string(self : BiophyloneighborLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborBuffer {
@@ -810,45 +810,45 @@ pub fn bio_phylo_neighbor_buffer_make(size : Int) -> BiophyloneighborBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_buffer_len(s : BiophyloneighborBuffer) -> Int { s.size }
+pub fn BiophyloneighborBuffer::len(self : BiophyloneighborBuffer) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_buffer_get(s : BiophyloneighborBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborBuffer::get(self : BiophyloneighborBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_buffer_set(s : BiophyloneighborBuffer, i : Int, v : Double) -> BiophyloneighborBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborBuffer::set(self : BiophyloneighborBuffer, i : Int, v : Double) -> BiophyloneighborBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_buffer_sum(s : BiophyloneighborBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborBuffer::sum(self : BiophyloneighborBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_buffer_mean(s : BiophyloneighborBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborBuffer::mean(self : BiophyloneighborBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_buffer_scale(s : BiophyloneighborBuffer, f : Double) -> BiophyloneighborBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborBuffer::scale(self : BiophyloneighborBuffer, f : Double) -> BiophyloneighborBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_buffer_add(a : BiophyloneighborBuffer, b : BiophyloneighborBuffer) -> BiophyloneighborBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborBuffer::add(self : BiophyloneighborBuffer, other : BiophyloneighborBuffer) -> BiophyloneighborBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_buffer_copy(s : BiophyloneighborBuffer) -> BiophyloneighborBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborBuffer::copy(self : BiophyloneighborBuffer) -> BiophyloneighborBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_buffer_fill(s : BiophyloneighborBuffer, v : Double) -> BiophyloneighborBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborBuffer::fill(self : BiophyloneighborBuffer, v : Double) -> BiophyloneighborBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_buffer_min(s : BiophyloneighborBuffer) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborBuffer::min(self : BiophyloneighborBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_buffer_max(s : BiophyloneighborBuffer) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborBuffer::max(self : BiophyloneighborBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_buffer_to_string(s : BiophyloneighborBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborBuffer::to_string(self : BiophyloneighborBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborCursor {
@@ -861,45 +861,45 @@ pub fn bio_phylo_neighbor_cursor_make(size : Int) -> BiophyloneighborCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_cursor_len(s : BiophyloneighborCursor) -> Int { s.size }
+pub fn BiophyloneighborCursor::len(self : BiophyloneighborCursor) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_cursor_get(s : BiophyloneighborCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborCursor::get(self : BiophyloneighborCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_cursor_set(s : BiophyloneighborCursor, i : Int, v : Double) -> BiophyloneighborCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborCursor::set(self : BiophyloneighborCursor, i : Int, v : Double) -> BiophyloneighborCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cursor_sum(s : BiophyloneighborCursor) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborCursor::sum(self : BiophyloneighborCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_cursor_mean(s : BiophyloneighborCursor) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborCursor::mean(self : BiophyloneighborCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_cursor_scale(s : BiophyloneighborCursor, f : Double) -> BiophyloneighborCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborCursor::scale(self : BiophyloneighborCursor, f : Double) -> BiophyloneighborCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cursor_add(a : BiophyloneighborCursor, b : BiophyloneighborCursor) -> BiophyloneighborCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborCursor::add(self : BiophyloneighborCursor, other : BiophyloneighborCursor) -> BiophyloneighborCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cursor_copy(s : BiophyloneighborCursor) -> BiophyloneighborCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborCursor::copy(self : BiophyloneighborCursor) -> BiophyloneighborCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cursor_fill(s : BiophyloneighborCursor, v : Double) -> BiophyloneighborCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborCursor::fill(self : BiophyloneighborCursor, v : Double) -> BiophyloneighborCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_cursor_min(s : BiophyloneighborCursor) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborCursor::min(self : BiophyloneighborCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_cursor_max(s : BiophyloneighborCursor) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborCursor::max(self : BiophyloneighborCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_cursor_to_string(s : BiophyloneighborCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborCursor::to_string(self : BiophyloneighborCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborView {
@@ -912,45 +912,45 @@ pub fn bio_phylo_neighbor_view_make(size : Int) -> BiophyloneighborView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_view_len(s : BiophyloneighborView) -> Int { s.size }
+pub fn BiophyloneighborView::len(self : BiophyloneighborView) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_view_get(s : BiophyloneighborView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborView::get(self : BiophyloneighborView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_view_set(s : BiophyloneighborView, i : Int, v : Double) -> BiophyloneighborView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborView::set(self : BiophyloneighborView, i : Int, v : Double) -> BiophyloneighborView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_view_sum(s : BiophyloneighborView) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborView::sum(self : BiophyloneighborView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_view_mean(s : BiophyloneighborView) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborView::mean(self : BiophyloneighborView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_view_scale(s : BiophyloneighborView, f : Double) -> BiophyloneighborView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborView::scale(self : BiophyloneighborView, f : Double) -> BiophyloneighborView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_view_add(a : BiophyloneighborView, b : BiophyloneighborView) -> BiophyloneighborView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborView::add(self : BiophyloneighborView, other : BiophyloneighborView) -> BiophyloneighborView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_view_copy(s : BiophyloneighborView) -> BiophyloneighborView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborView::copy(self : BiophyloneighborView) -> BiophyloneighborView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_view_fill(s : BiophyloneighborView, v : Double) -> BiophyloneighborView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborView::fill(self : BiophyloneighborView, v : Double) -> BiophyloneighborView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_view_min(s : BiophyloneighborView) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborView::min(self : BiophyloneighborView) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_view_max(s : BiophyloneighborView) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborView::max(self : BiophyloneighborView) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_view_to_string(s : BiophyloneighborView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborView::to_string(self : BiophyloneighborView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborRange {
@@ -963,45 +963,45 @@ pub fn bio_phylo_neighbor_range_make(size : Int) -> BiophyloneighborRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_range_len(s : BiophyloneighborRange) -> Int { s.size }
+pub fn BiophyloneighborRange::len(self : BiophyloneighborRange) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_range_get(s : BiophyloneighborRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborRange::get(self : BiophyloneighborRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_range_set(s : BiophyloneighborRange, i : Int, v : Double) -> BiophyloneighborRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborRange::set(self : BiophyloneighborRange, i : Int, v : Double) -> BiophyloneighborRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_range_sum(s : BiophyloneighborRange) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborRange::sum(self : BiophyloneighborRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_range_mean(s : BiophyloneighborRange) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborRange::mean(self : BiophyloneighborRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_range_scale(s : BiophyloneighborRange, f : Double) -> BiophyloneighborRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborRange::scale(self : BiophyloneighborRange, f : Double) -> BiophyloneighborRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_range_add(a : BiophyloneighborRange, b : BiophyloneighborRange) -> BiophyloneighborRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborRange::add(self : BiophyloneighborRange, other : BiophyloneighborRange) -> BiophyloneighborRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_range_copy(s : BiophyloneighborRange) -> BiophyloneighborRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborRange::copy(self : BiophyloneighborRange) -> BiophyloneighborRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_range_fill(s : BiophyloneighborRange, v : Double) -> BiophyloneighborRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborRange::fill(self : BiophyloneighborRange, v : Double) -> BiophyloneighborRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_range_min(s : BiophyloneighborRange) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborRange::min(self : BiophyloneighborRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_range_max(s : BiophyloneighborRange) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborRange::max(self : BiophyloneighborRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_range_to_string(s : BiophyloneighborRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborRange::to_string(self : BiophyloneighborRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloneighborSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_phylo_neighbor_slice_make(size : Int) -> BiophyloneighborSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_neighbor_slice_len(s : BiophyloneighborSlice) -> Int { s.size }
+pub fn BiophyloneighborSlice::len(self : BiophyloneighborSlice) -> Int { self.size }
 
-pub fn bio_phylo_neighbor_slice_get(s : BiophyloneighborSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloneighborSlice::get(self : BiophyloneighborSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_neighbor_slice_set(s : BiophyloneighborSlice, i : Int, v : Double) -> BiophyloneighborSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloneighborSlice::set(self : BiophyloneighborSlice, i : Int, v : Double) -> BiophyloneighborSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_slice_sum(s : BiophyloneighborSlice) -> Double { @_common.sum(s.data) }
+pub fn BiophyloneighborSlice::sum(self : BiophyloneighborSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_neighbor_slice_mean(s : BiophyloneighborSlice) -> Double { @_common.mean(s.data) }
+pub fn BiophyloneighborSlice::mean(self : BiophyloneighborSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_neighbor_slice_scale(s : BiophyloneighborSlice, f : Double) -> BiophyloneighborSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloneighborSlice::scale(self : BiophyloneighborSlice, f : Double) -> BiophyloneighborSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_slice_add(a : BiophyloneighborSlice, b : BiophyloneighborSlice) -> BiophyloneighborSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloneighborSlice::add(self : BiophyloneighborSlice, other : BiophyloneighborSlice) -> BiophyloneighborSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_slice_copy(s : BiophyloneighborSlice) -> BiophyloneighborSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloneighborSlice::copy(self : BiophyloneighborSlice) -> BiophyloneighborSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_slice_fill(s : BiophyloneighborSlice, v : Double) -> BiophyloneighborSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloneighborSlice::fill(self : BiophyloneighborSlice, v : Double) -> BiophyloneighborSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_neighbor_slice_min(s : BiophyloneighborSlice) -> Double { @_common.min(s.data) }
+pub fn BiophyloneighborSlice::min(self : BiophyloneighborSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_neighbor_slice_max(s : BiophyloneighborSlice) -> Double { @_common.max(s.data) }
+pub fn BiophyloneighborSlice::max(self : BiophyloneighborSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_neighbor_slice_to_string(s : BiophyloneighborSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloneighborSlice::to_string(self : BiophyloneighborSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn opt_convex_conjugate_frame_make(size : Int) -> OptconvexconjugateFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_frame_len(s : OptconvexconjugateFrame) -> Int { s.size }
+pub fn OptconvexconjugateFrame::len(self : OptconvexconjugateFrame) -> Int { self.size }
 
-pub fn opt_convex_conjugate_frame_get(s : OptconvexconjugateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateFrame::get(self : OptconvexconjugateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_frame_set(s : OptconvexconjugateFrame, i : Int, v : Double) -> OptconvexconjugateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateFrame::set(self : OptconvexconjugateFrame, i : Int, v : Double) -> OptconvexconjugateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_frame_sum(s : OptconvexconjugateFrame) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateFrame::sum(self : OptconvexconjugateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_frame_mean(s : OptconvexconjugateFrame) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateFrame::mean(self : OptconvexconjugateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_frame_scale(s : OptconvexconjugateFrame, f : Double) -> OptconvexconjugateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateFrame::scale(self : OptconvexconjugateFrame, f : Double) -> OptconvexconjugateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_frame_add(a : OptconvexconjugateFrame, b : OptconvexconjugateFrame) -> OptconvexconjugateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateFrame::add(self : OptconvexconjugateFrame, other : OptconvexconjugateFrame) -> OptconvexconjugateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_frame_copy(s : OptconvexconjugateFrame) -> OptconvexconjugateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateFrame::copy(self : OptconvexconjugateFrame) -> OptconvexconjugateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_frame_fill(s : OptconvexconjugateFrame, v : Double) -> OptconvexconjugateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateFrame::fill(self : OptconvexconjugateFrame, v : Double) -> OptconvexconjugateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_frame_min(s : OptconvexconjugateFrame) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateFrame::min(self : OptconvexconjugateFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_frame_max(s : OptconvexconjugateFrame) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateFrame::max(self : OptconvexconjugateFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_frame_to_string(s : OptconvexconjugateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateFrame::to_string(self : OptconvexconjugateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateTable {
@@ -402,45 +402,45 @@ pub fn opt_convex_conjugate_table_make(size : Int) -> OptconvexconjugateTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_table_len(s : OptconvexconjugateTable) -> Int { s.size }
+pub fn OptconvexconjugateTable::len(self : OptconvexconjugateTable) -> Int { self.size }
 
-pub fn opt_convex_conjugate_table_get(s : OptconvexconjugateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateTable::get(self : OptconvexconjugateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_table_set(s : OptconvexconjugateTable, i : Int, v : Double) -> OptconvexconjugateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateTable::set(self : OptconvexconjugateTable, i : Int, v : Double) -> OptconvexconjugateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_table_sum(s : OptconvexconjugateTable) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateTable::sum(self : OptconvexconjugateTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_table_mean(s : OptconvexconjugateTable) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateTable::mean(self : OptconvexconjugateTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_table_scale(s : OptconvexconjugateTable, f : Double) -> OptconvexconjugateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateTable::scale(self : OptconvexconjugateTable, f : Double) -> OptconvexconjugateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_table_add(a : OptconvexconjugateTable, b : OptconvexconjugateTable) -> OptconvexconjugateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateTable::add(self : OptconvexconjugateTable, other : OptconvexconjugateTable) -> OptconvexconjugateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_table_copy(s : OptconvexconjugateTable) -> OptconvexconjugateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateTable::copy(self : OptconvexconjugateTable) -> OptconvexconjugateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_table_fill(s : OptconvexconjugateTable, v : Double) -> OptconvexconjugateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateTable::fill(self : OptconvexconjugateTable, v : Double) -> OptconvexconjugateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_table_min(s : OptconvexconjugateTable) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateTable::min(self : OptconvexconjugateTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_table_max(s : OptconvexconjugateTable) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateTable::max(self : OptconvexconjugateTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_table_to_string(s : OptconvexconjugateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateTable::to_string(self : OptconvexconjugateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateGraphN {
@@ -453,45 +453,45 @@ pub fn opt_convex_conjugate_graphn_make(size : Int) -> OptconvexconjugateGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_graphn_len(s : OptconvexconjugateGraphN) -> Int { s.size }
+pub fn OptconvexconjugateGraphN::len(self : OptconvexconjugateGraphN) -> Int { self.size }
 
-pub fn opt_convex_conjugate_graphn_get(s : OptconvexconjugateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateGraphN::get(self : OptconvexconjugateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_graphn_set(s : OptconvexconjugateGraphN, i : Int, v : Double) -> OptconvexconjugateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateGraphN::set(self : OptconvexconjugateGraphN, i : Int, v : Double) -> OptconvexconjugateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_graphn_sum(s : OptconvexconjugateGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateGraphN::sum(self : OptconvexconjugateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_graphn_mean(s : OptconvexconjugateGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateGraphN::mean(self : OptconvexconjugateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_graphn_scale(s : OptconvexconjugateGraphN, f : Double) -> OptconvexconjugateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateGraphN::scale(self : OptconvexconjugateGraphN, f : Double) -> OptconvexconjugateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_graphn_add(a : OptconvexconjugateGraphN, b : OptconvexconjugateGraphN) -> OptconvexconjugateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateGraphN::add(self : OptconvexconjugateGraphN, other : OptconvexconjugateGraphN) -> OptconvexconjugateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_graphn_copy(s : OptconvexconjugateGraphN) -> OptconvexconjugateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateGraphN::copy(self : OptconvexconjugateGraphN) -> OptconvexconjugateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_graphn_fill(s : OptconvexconjugateGraphN, v : Double) -> OptconvexconjugateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateGraphN::fill(self : OptconvexconjugateGraphN, v : Double) -> OptconvexconjugateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_graphn_min(s : OptconvexconjugateGraphN) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateGraphN::min(self : OptconvexconjugateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_graphn_max(s : OptconvexconjugateGraphN) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateGraphN::max(self : OptconvexconjugateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_graphn_to_string(s : OptconvexconjugateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateGraphN::to_string(self : OptconvexconjugateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateNode {
@@ -504,45 +504,45 @@ pub fn opt_convex_conjugate_node_make(size : Int) -> OptconvexconjugateNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_node_len(s : OptconvexconjugateNode) -> Int { s.size }
+pub fn OptconvexconjugateNode::len(self : OptconvexconjugateNode) -> Int { self.size }
 
-pub fn opt_convex_conjugate_node_get(s : OptconvexconjugateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateNode::get(self : OptconvexconjugateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_node_set(s : OptconvexconjugateNode, i : Int, v : Double) -> OptconvexconjugateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateNode::set(self : OptconvexconjugateNode, i : Int, v : Double) -> OptconvexconjugateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_node_sum(s : OptconvexconjugateNode) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateNode::sum(self : OptconvexconjugateNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_node_mean(s : OptconvexconjugateNode) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateNode::mean(self : OptconvexconjugateNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_node_scale(s : OptconvexconjugateNode, f : Double) -> OptconvexconjugateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateNode::scale(self : OptconvexconjugateNode, f : Double) -> OptconvexconjugateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_node_add(a : OptconvexconjugateNode, b : OptconvexconjugateNode) -> OptconvexconjugateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateNode::add(self : OptconvexconjugateNode, other : OptconvexconjugateNode) -> OptconvexconjugateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_node_copy(s : OptconvexconjugateNode) -> OptconvexconjugateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateNode::copy(self : OptconvexconjugateNode) -> OptconvexconjugateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_node_fill(s : OptconvexconjugateNode, v : Double) -> OptconvexconjugateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateNode::fill(self : OptconvexconjugateNode, v : Double) -> OptconvexconjugateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_node_min(s : OptconvexconjugateNode) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateNode::min(self : OptconvexconjugateNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_node_max(s : OptconvexconjugateNode) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateNode::max(self : OptconvexconjugateNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_node_to_string(s : OptconvexconjugateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateNode::to_string(self : OptconvexconjugateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateEdge {
@@ -555,45 +555,45 @@ pub fn opt_convex_conjugate_edge_make(size : Int) -> OptconvexconjugateEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_edge_len(s : OptconvexconjugateEdge) -> Int { s.size }
+pub fn OptconvexconjugateEdge::len(self : OptconvexconjugateEdge) -> Int { self.size }
 
-pub fn opt_convex_conjugate_edge_get(s : OptconvexconjugateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateEdge::get(self : OptconvexconjugateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_edge_set(s : OptconvexconjugateEdge, i : Int, v : Double) -> OptconvexconjugateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateEdge::set(self : OptconvexconjugateEdge, i : Int, v : Double) -> OptconvexconjugateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_edge_sum(s : OptconvexconjugateEdge) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateEdge::sum(self : OptconvexconjugateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_edge_mean(s : OptconvexconjugateEdge) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateEdge::mean(self : OptconvexconjugateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_edge_scale(s : OptconvexconjugateEdge, f : Double) -> OptconvexconjugateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateEdge::scale(self : OptconvexconjugateEdge, f : Double) -> OptconvexconjugateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_edge_add(a : OptconvexconjugateEdge, b : OptconvexconjugateEdge) -> OptconvexconjugateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateEdge::add(self : OptconvexconjugateEdge, other : OptconvexconjugateEdge) -> OptconvexconjugateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_edge_copy(s : OptconvexconjugateEdge) -> OptconvexconjugateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateEdge::copy(self : OptconvexconjugateEdge) -> OptconvexconjugateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_edge_fill(s : OptconvexconjugateEdge, v : Double) -> OptconvexconjugateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateEdge::fill(self : OptconvexconjugateEdge, v : Double) -> OptconvexconjugateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_edge_min(s : OptconvexconjugateEdge) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateEdge::min(self : OptconvexconjugateEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_edge_max(s : OptconvexconjugateEdge) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateEdge::max(self : OptconvexconjugateEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_edge_to_string(s : OptconvexconjugateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateEdge::to_string(self : OptconvexconjugateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugatePath {
@@ -606,45 +606,45 @@ pub fn opt_convex_conjugate_path_make(size : Int) -> OptconvexconjugatePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_path_len(s : OptconvexconjugatePath) -> Int { s.size }
+pub fn OptconvexconjugatePath::len(self : OptconvexconjugatePath) -> Int { self.size }
 
-pub fn opt_convex_conjugate_path_get(s : OptconvexconjugatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugatePath::get(self : OptconvexconjugatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_path_set(s : OptconvexconjugatePath, i : Int, v : Double) -> OptconvexconjugatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugatePath::set(self : OptconvexconjugatePath, i : Int, v : Double) -> OptconvexconjugatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_path_sum(s : OptconvexconjugatePath) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugatePath::sum(self : OptconvexconjugatePath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_path_mean(s : OptconvexconjugatePath) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugatePath::mean(self : OptconvexconjugatePath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_path_scale(s : OptconvexconjugatePath, f : Double) -> OptconvexconjugatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugatePath::scale(self : OptconvexconjugatePath, f : Double) -> OptconvexconjugatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_path_add(a : OptconvexconjugatePath, b : OptconvexconjugatePath) -> OptconvexconjugatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugatePath::add(self : OptconvexconjugatePath, other : OptconvexconjugatePath) -> OptconvexconjugatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_path_copy(s : OptconvexconjugatePath) -> OptconvexconjugatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugatePath::copy(self : OptconvexconjugatePath) -> OptconvexconjugatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_path_fill(s : OptconvexconjugatePath, v : Double) -> OptconvexconjugatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugatePath::fill(self : OptconvexconjugatePath, v : Double) -> OptconvexconjugatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_path_min(s : OptconvexconjugatePath) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugatePath::min(self : OptconvexconjugatePath) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_path_max(s : OptconvexconjugatePath) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugatePath::max(self : OptconvexconjugatePath) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_path_to_string(s : OptconvexconjugatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugatePath::to_string(self : OptconvexconjugatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateCluster {
@@ -657,45 +657,45 @@ pub fn opt_convex_conjugate_cluster_make(size : Int) -> OptconvexconjugateCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_cluster_len(s : OptconvexconjugateCluster) -> Int { s.size }
+pub fn OptconvexconjugateCluster::len(self : OptconvexconjugateCluster) -> Int { self.size }
 
-pub fn opt_convex_conjugate_cluster_get(s : OptconvexconjugateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateCluster::get(self : OptconvexconjugateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_cluster_set(s : OptconvexconjugateCluster, i : Int, v : Double) -> OptconvexconjugateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCluster::set(self : OptconvexconjugateCluster, i : Int, v : Double) -> OptconvexconjugateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cluster_sum(s : OptconvexconjugateCluster) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateCluster::sum(self : OptconvexconjugateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_cluster_mean(s : OptconvexconjugateCluster) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateCluster::mean(self : OptconvexconjugateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_cluster_scale(s : OptconvexconjugateCluster, f : Double) -> OptconvexconjugateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCluster::scale(self : OptconvexconjugateCluster, f : Double) -> OptconvexconjugateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cluster_add(a : OptconvexconjugateCluster, b : OptconvexconjugateCluster) -> OptconvexconjugateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateCluster::add(self : OptconvexconjugateCluster, other : OptconvexconjugateCluster) -> OptconvexconjugateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cluster_copy(s : OptconvexconjugateCluster) -> OptconvexconjugateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCluster::copy(self : OptconvexconjugateCluster) -> OptconvexconjugateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cluster_fill(s : OptconvexconjugateCluster, v : Double) -> OptconvexconjugateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCluster::fill(self : OptconvexconjugateCluster, v : Double) -> OptconvexconjugateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cluster_min(s : OptconvexconjugateCluster) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateCluster::min(self : OptconvexconjugateCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_cluster_max(s : OptconvexconjugateCluster) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateCluster::max(self : OptconvexconjugateCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_cluster_to_string(s : OptconvexconjugateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateCluster::to_string(self : OptconvexconjugateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateModel {
@@ -708,45 +708,45 @@ pub fn opt_convex_conjugate_model_make(size : Int) -> OptconvexconjugateModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_model_len(s : OptconvexconjugateModel) -> Int { s.size }
+pub fn OptconvexconjugateModel::len(self : OptconvexconjugateModel) -> Int { self.size }
 
-pub fn opt_convex_conjugate_model_get(s : OptconvexconjugateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateModel::get(self : OptconvexconjugateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_model_set(s : OptconvexconjugateModel, i : Int, v : Double) -> OptconvexconjugateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateModel::set(self : OptconvexconjugateModel, i : Int, v : Double) -> OptconvexconjugateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_model_sum(s : OptconvexconjugateModel) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateModel::sum(self : OptconvexconjugateModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_model_mean(s : OptconvexconjugateModel) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateModel::mean(self : OptconvexconjugateModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_model_scale(s : OptconvexconjugateModel, f : Double) -> OptconvexconjugateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateModel::scale(self : OptconvexconjugateModel, f : Double) -> OptconvexconjugateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_model_add(a : OptconvexconjugateModel, b : OptconvexconjugateModel) -> OptconvexconjugateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateModel::add(self : OptconvexconjugateModel, other : OptconvexconjugateModel) -> OptconvexconjugateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_model_copy(s : OptconvexconjugateModel) -> OptconvexconjugateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateModel::copy(self : OptconvexconjugateModel) -> OptconvexconjugateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_model_fill(s : OptconvexconjugateModel, v : Double) -> OptconvexconjugateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateModel::fill(self : OptconvexconjugateModel, v : Double) -> OptconvexconjugateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_model_min(s : OptconvexconjugateModel) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateModel::min(self : OptconvexconjugateModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_model_max(s : OptconvexconjugateModel) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateModel::max(self : OptconvexconjugateModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_model_to_string(s : OptconvexconjugateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateModel::to_string(self : OptconvexconjugateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateLayer {
@@ -759,45 +759,45 @@ pub fn opt_convex_conjugate_layer_make(size : Int) -> OptconvexconjugateLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_layer_len(s : OptconvexconjugateLayer) -> Int { s.size }
+pub fn OptconvexconjugateLayer::len(self : OptconvexconjugateLayer) -> Int { self.size }
 
-pub fn opt_convex_conjugate_layer_get(s : OptconvexconjugateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateLayer::get(self : OptconvexconjugateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_layer_set(s : OptconvexconjugateLayer, i : Int, v : Double) -> OptconvexconjugateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateLayer::set(self : OptconvexconjugateLayer, i : Int, v : Double) -> OptconvexconjugateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_layer_sum(s : OptconvexconjugateLayer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateLayer::sum(self : OptconvexconjugateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_layer_mean(s : OptconvexconjugateLayer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateLayer::mean(self : OptconvexconjugateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_layer_scale(s : OptconvexconjugateLayer, f : Double) -> OptconvexconjugateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateLayer::scale(self : OptconvexconjugateLayer, f : Double) -> OptconvexconjugateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_layer_add(a : OptconvexconjugateLayer, b : OptconvexconjugateLayer) -> OptconvexconjugateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateLayer::add(self : OptconvexconjugateLayer, other : OptconvexconjugateLayer) -> OptconvexconjugateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_layer_copy(s : OptconvexconjugateLayer) -> OptconvexconjugateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateLayer::copy(self : OptconvexconjugateLayer) -> OptconvexconjugateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_layer_fill(s : OptconvexconjugateLayer, v : Double) -> OptconvexconjugateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateLayer::fill(self : OptconvexconjugateLayer, v : Double) -> OptconvexconjugateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_layer_min(s : OptconvexconjugateLayer) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateLayer::min(self : OptconvexconjugateLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_layer_max(s : OptconvexconjugateLayer) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateLayer::max(self : OptconvexconjugateLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_layer_to_string(s : OptconvexconjugateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateLayer::to_string(self : OptconvexconjugateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateBuffer {
@@ -810,45 +810,45 @@ pub fn opt_convex_conjugate_buffer_make(size : Int) -> OptconvexconjugateBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_buffer_len(s : OptconvexconjugateBuffer) -> Int { s.size }
+pub fn OptconvexconjugateBuffer::len(self : OptconvexconjugateBuffer) -> Int { self.size }
 
-pub fn opt_convex_conjugate_buffer_get(s : OptconvexconjugateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateBuffer::get(self : OptconvexconjugateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_buffer_set(s : OptconvexconjugateBuffer, i : Int, v : Double) -> OptconvexconjugateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateBuffer::set(self : OptconvexconjugateBuffer, i : Int, v : Double) -> OptconvexconjugateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_buffer_sum(s : OptconvexconjugateBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateBuffer::sum(self : OptconvexconjugateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_buffer_mean(s : OptconvexconjugateBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateBuffer::mean(self : OptconvexconjugateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_buffer_scale(s : OptconvexconjugateBuffer, f : Double) -> OptconvexconjugateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateBuffer::scale(self : OptconvexconjugateBuffer, f : Double) -> OptconvexconjugateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_buffer_add(a : OptconvexconjugateBuffer, b : OptconvexconjugateBuffer) -> OptconvexconjugateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateBuffer::add(self : OptconvexconjugateBuffer, other : OptconvexconjugateBuffer) -> OptconvexconjugateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_buffer_copy(s : OptconvexconjugateBuffer) -> OptconvexconjugateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateBuffer::copy(self : OptconvexconjugateBuffer) -> OptconvexconjugateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_buffer_fill(s : OptconvexconjugateBuffer, v : Double) -> OptconvexconjugateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateBuffer::fill(self : OptconvexconjugateBuffer, v : Double) -> OptconvexconjugateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_buffer_min(s : OptconvexconjugateBuffer) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateBuffer::min(self : OptconvexconjugateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_buffer_max(s : OptconvexconjugateBuffer) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateBuffer::max(self : OptconvexconjugateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_buffer_to_string(s : OptconvexconjugateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateBuffer::to_string(self : OptconvexconjugateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateCursor {
@@ -861,45 +861,45 @@ pub fn opt_convex_conjugate_cursor_make(size : Int) -> OptconvexconjugateCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_cursor_len(s : OptconvexconjugateCursor) -> Int { s.size }
+pub fn OptconvexconjugateCursor::len(self : OptconvexconjugateCursor) -> Int { self.size }
 
-pub fn opt_convex_conjugate_cursor_get(s : OptconvexconjugateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateCursor::get(self : OptconvexconjugateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_cursor_set(s : OptconvexconjugateCursor, i : Int, v : Double) -> OptconvexconjugateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCursor::set(self : OptconvexconjugateCursor, i : Int, v : Double) -> OptconvexconjugateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cursor_sum(s : OptconvexconjugateCursor) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateCursor::sum(self : OptconvexconjugateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_cursor_mean(s : OptconvexconjugateCursor) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateCursor::mean(self : OptconvexconjugateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_cursor_scale(s : OptconvexconjugateCursor, f : Double) -> OptconvexconjugateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCursor::scale(self : OptconvexconjugateCursor, f : Double) -> OptconvexconjugateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cursor_add(a : OptconvexconjugateCursor, b : OptconvexconjugateCursor) -> OptconvexconjugateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateCursor::add(self : OptconvexconjugateCursor, other : OptconvexconjugateCursor) -> OptconvexconjugateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cursor_copy(s : OptconvexconjugateCursor) -> OptconvexconjugateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCursor::copy(self : OptconvexconjugateCursor) -> OptconvexconjugateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cursor_fill(s : OptconvexconjugateCursor, v : Double) -> OptconvexconjugateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateCursor::fill(self : OptconvexconjugateCursor, v : Double) -> OptconvexconjugateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_cursor_min(s : OptconvexconjugateCursor) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateCursor::min(self : OptconvexconjugateCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_cursor_max(s : OptconvexconjugateCursor) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateCursor::max(self : OptconvexconjugateCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_cursor_to_string(s : OptconvexconjugateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateCursor::to_string(self : OptconvexconjugateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateView {
@@ -912,45 +912,45 @@ pub fn opt_convex_conjugate_view_make(size : Int) -> OptconvexconjugateView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_view_len(s : OptconvexconjugateView) -> Int { s.size }
+pub fn OptconvexconjugateView::len(self : OptconvexconjugateView) -> Int { self.size }
 
-pub fn opt_convex_conjugate_view_get(s : OptconvexconjugateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateView::get(self : OptconvexconjugateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_view_set(s : OptconvexconjugateView, i : Int, v : Double) -> OptconvexconjugateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateView::set(self : OptconvexconjugateView, i : Int, v : Double) -> OptconvexconjugateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_view_sum(s : OptconvexconjugateView) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateView::sum(self : OptconvexconjugateView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_view_mean(s : OptconvexconjugateView) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateView::mean(self : OptconvexconjugateView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_view_scale(s : OptconvexconjugateView, f : Double) -> OptconvexconjugateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateView::scale(self : OptconvexconjugateView, f : Double) -> OptconvexconjugateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_view_add(a : OptconvexconjugateView, b : OptconvexconjugateView) -> OptconvexconjugateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateView::add(self : OptconvexconjugateView, other : OptconvexconjugateView) -> OptconvexconjugateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_view_copy(s : OptconvexconjugateView) -> OptconvexconjugateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateView::copy(self : OptconvexconjugateView) -> OptconvexconjugateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_view_fill(s : OptconvexconjugateView, v : Double) -> OptconvexconjugateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateView::fill(self : OptconvexconjugateView, v : Double) -> OptconvexconjugateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_view_min(s : OptconvexconjugateView) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateView::min(self : OptconvexconjugateView) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_view_max(s : OptconvexconjugateView) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateView::max(self : OptconvexconjugateView) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_view_to_string(s : OptconvexconjugateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateView::to_string(self : OptconvexconjugateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateRange {
@@ -963,45 +963,45 @@ pub fn opt_convex_conjugate_range_make(size : Int) -> OptconvexconjugateRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_range_len(s : OptconvexconjugateRange) -> Int { s.size }
+pub fn OptconvexconjugateRange::len(self : OptconvexconjugateRange) -> Int { self.size }
 
-pub fn opt_convex_conjugate_range_get(s : OptconvexconjugateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateRange::get(self : OptconvexconjugateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_range_set(s : OptconvexconjugateRange, i : Int, v : Double) -> OptconvexconjugateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateRange::set(self : OptconvexconjugateRange, i : Int, v : Double) -> OptconvexconjugateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_range_sum(s : OptconvexconjugateRange) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateRange::sum(self : OptconvexconjugateRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_range_mean(s : OptconvexconjugateRange) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateRange::mean(self : OptconvexconjugateRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_range_scale(s : OptconvexconjugateRange, f : Double) -> OptconvexconjugateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateRange::scale(self : OptconvexconjugateRange, f : Double) -> OptconvexconjugateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_range_add(a : OptconvexconjugateRange, b : OptconvexconjugateRange) -> OptconvexconjugateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateRange::add(self : OptconvexconjugateRange, other : OptconvexconjugateRange) -> OptconvexconjugateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_range_copy(s : OptconvexconjugateRange) -> OptconvexconjugateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateRange::copy(self : OptconvexconjugateRange) -> OptconvexconjugateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_range_fill(s : OptconvexconjugateRange, v : Double) -> OptconvexconjugateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateRange::fill(self : OptconvexconjugateRange, v : Double) -> OptconvexconjugateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_range_min(s : OptconvexconjugateRange) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateRange::min(self : OptconvexconjugateRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_range_max(s : OptconvexconjugateRange) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateRange::max(self : OptconvexconjugateRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_range_to_string(s : OptconvexconjugateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateRange::to_string(self : OptconvexconjugateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexconjugateSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_convex_conjugate_slice_make(size : Int) -> OptconvexconjugateSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_conjugate_slice_len(s : OptconvexconjugateSlice) -> Int { s.size }
+pub fn OptconvexconjugateSlice::len(self : OptconvexconjugateSlice) -> Int { self.size }
 
-pub fn opt_convex_conjugate_slice_get(s : OptconvexconjugateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexconjugateSlice::get(self : OptconvexconjugateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_conjugate_slice_set(s : OptconvexconjugateSlice, i : Int, v : Double) -> OptconvexconjugateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexconjugateSlice::set(self : OptconvexconjugateSlice, i : Int, v : Double) -> OptconvexconjugateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_slice_sum(s : OptconvexconjugateSlice) -> Double { @_common.sum(s.data) }
+pub fn OptconvexconjugateSlice::sum(self : OptconvexconjugateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_conjugate_slice_mean(s : OptconvexconjugateSlice) -> Double { @_common.mean(s.data) }
+pub fn OptconvexconjugateSlice::mean(self : OptconvexconjugateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_conjugate_slice_scale(s : OptconvexconjugateSlice, f : Double) -> OptconvexconjugateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateSlice::scale(self : OptconvexconjugateSlice, f : Double) -> OptconvexconjugateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_slice_add(a : OptconvexconjugateSlice, b : OptconvexconjugateSlice) -> OptconvexconjugateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexconjugateSlice::add(self : OptconvexconjugateSlice, other : OptconvexconjugateSlice) -> OptconvexconjugateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_slice_copy(s : OptconvexconjugateSlice) -> OptconvexconjugateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateSlice::copy(self : OptconvexconjugateSlice) -> OptconvexconjugateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_slice_fill(s : OptconvexconjugateSlice, v : Double) -> OptconvexconjugateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexconjugateSlice::fill(self : OptconvexconjugateSlice, v : Double) -> OptconvexconjugateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_conjugate_slice_min(s : OptconvexconjugateSlice) -> Double { @_common.min(s.data) }
+pub fn OptconvexconjugateSlice::min(self : OptconvexconjugateSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_conjugate_slice_max(s : OptconvexconjugateSlice) -> Double { @_common.max(s.data) }
+pub fn OptconvexconjugateSlice::max(self : OptconvexconjugateSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_conjugate_slice_to_string(s : OptconvexconjugateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexconjugateSlice::to_string(self : OptconvexconjugateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

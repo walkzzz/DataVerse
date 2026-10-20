@@ -351,45 +351,45 @@ pub fn ds_heap_binomial_frame_make(size : Int) -> DsheapbinomialFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_frame_len(s : DsheapbinomialFrame) -> Int { s.size }
+pub fn DsheapbinomialFrame::len(self : DsheapbinomialFrame) -> Int { self.size }
 
-pub fn ds_heap_binomial_frame_get(s : DsheapbinomialFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialFrame::get(self : DsheapbinomialFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_frame_set(s : DsheapbinomialFrame, i : Int, v : Double) -> DsheapbinomialFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialFrame::set(self : DsheapbinomialFrame, i : Int, v : Double) -> DsheapbinomialFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_frame_sum(s : DsheapbinomialFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialFrame::sum(self : DsheapbinomialFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_frame_mean(s : DsheapbinomialFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialFrame::mean(self : DsheapbinomialFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_frame_scale(s : DsheapbinomialFrame, f : Double) -> DsheapbinomialFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialFrame::scale(self : DsheapbinomialFrame, f : Double) -> DsheapbinomialFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_frame_add(a : DsheapbinomialFrame, b : DsheapbinomialFrame) -> DsheapbinomialFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialFrame::add(self : DsheapbinomialFrame, other : DsheapbinomialFrame) -> DsheapbinomialFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_frame_copy(s : DsheapbinomialFrame) -> DsheapbinomialFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialFrame::copy(self : DsheapbinomialFrame) -> DsheapbinomialFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_frame_fill(s : DsheapbinomialFrame, v : Double) -> DsheapbinomialFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialFrame::fill(self : DsheapbinomialFrame, v : Double) -> DsheapbinomialFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_frame_min(s : DsheapbinomialFrame) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialFrame::min(self : DsheapbinomialFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_frame_max(s : DsheapbinomialFrame) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialFrame::max(self : DsheapbinomialFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_frame_to_string(s : DsheapbinomialFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialFrame::to_string(self : DsheapbinomialFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_binomial_table_make(size : Int) -> DsheapbinomialTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_table_len(s : DsheapbinomialTable) -> Int { s.size }
+pub fn DsheapbinomialTable::len(self : DsheapbinomialTable) -> Int { self.size }
 
-pub fn ds_heap_binomial_table_get(s : DsheapbinomialTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialTable::get(self : DsheapbinomialTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_table_set(s : DsheapbinomialTable, i : Int, v : Double) -> DsheapbinomialTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialTable::set(self : DsheapbinomialTable, i : Int, v : Double) -> DsheapbinomialTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_table_sum(s : DsheapbinomialTable) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialTable::sum(self : DsheapbinomialTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_table_mean(s : DsheapbinomialTable) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialTable::mean(self : DsheapbinomialTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_table_scale(s : DsheapbinomialTable, f : Double) -> DsheapbinomialTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialTable::scale(self : DsheapbinomialTable, f : Double) -> DsheapbinomialTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_table_add(a : DsheapbinomialTable, b : DsheapbinomialTable) -> DsheapbinomialTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialTable::add(self : DsheapbinomialTable, other : DsheapbinomialTable) -> DsheapbinomialTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_table_copy(s : DsheapbinomialTable) -> DsheapbinomialTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialTable::copy(self : DsheapbinomialTable) -> DsheapbinomialTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_table_fill(s : DsheapbinomialTable, v : Double) -> DsheapbinomialTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialTable::fill(self : DsheapbinomialTable, v : Double) -> DsheapbinomialTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_table_min(s : DsheapbinomialTable) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialTable::min(self : DsheapbinomialTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_table_max(s : DsheapbinomialTable) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialTable::max(self : DsheapbinomialTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_table_to_string(s : DsheapbinomialTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialTable::to_string(self : DsheapbinomialTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_binomial_graphn_make(size : Int) -> DsheapbinomialGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_graphn_len(s : DsheapbinomialGraphN) -> Int { s.size }
+pub fn DsheapbinomialGraphN::len(self : DsheapbinomialGraphN) -> Int { self.size }
 
-pub fn ds_heap_binomial_graphn_get(s : DsheapbinomialGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialGraphN::get(self : DsheapbinomialGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_graphn_set(s : DsheapbinomialGraphN, i : Int, v : Double) -> DsheapbinomialGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialGraphN::set(self : DsheapbinomialGraphN, i : Int, v : Double) -> DsheapbinomialGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_graphn_sum(s : DsheapbinomialGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialGraphN::sum(self : DsheapbinomialGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_graphn_mean(s : DsheapbinomialGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialGraphN::mean(self : DsheapbinomialGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_graphn_scale(s : DsheapbinomialGraphN, f : Double) -> DsheapbinomialGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialGraphN::scale(self : DsheapbinomialGraphN, f : Double) -> DsheapbinomialGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_graphn_add(a : DsheapbinomialGraphN, b : DsheapbinomialGraphN) -> DsheapbinomialGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialGraphN::add(self : DsheapbinomialGraphN, other : DsheapbinomialGraphN) -> DsheapbinomialGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_graphn_copy(s : DsheapbinomialGraphN) -> DsheapbinomialGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialGraphN::copy(self : DsheapbinomialGraphN) -> DsheapbinomialGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_graphn_fill(s : DsheapbinomialGraphN, v : Double) -> DsheapbinomialGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialGraphN::fill(self : DsheapbinomialGraphN, v : Double) -> DsheapbinomialGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_graphn_min(s : DsheapbinomialGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialGraphN::min(self : DsheapbinomialGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_graphn_max(s : DsheapbinomialGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialGraphN::max(self : DsheapbinomialGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_graphn_to_string(s : DsheapbinomialGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialGraphN::to_string(self : DsheapbinomialGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_binomial_node_make(size : Int) -> DsheapbinomialNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_node_len(s : DsheapbinomialNode) -> Int { s.size }
+pub fn DsheapbinomialNode::len(self : DsheapbinomialNode) -> Int { self.size }
 
-pub fn ds_heap_binomial_node_get(s : DsheapbinomialNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialNode::get(self : DsheapbinomialNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_node_set(s : DsheapbinomialNode, i : Int, v : Double) -> DsheapbinomialNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialNode::set(self : DsheapbinomialNode, i : Int, v : Double) -> DsheapbinomialNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_node_sum(s : DsheapbinomialNode) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialNode::sum(self : DsheapbinomialNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_node_mean(s : DsheapbinomialNode) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialNode::mean(self : DsheapbinomialNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_node_scale(s : DsheapbinomialNode, f : Double) -> DsheapbinomialNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialNode::scale(self : DsheapbinomialNode, f : Double) -> DsheapbinomialNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_node_add(a : DsheapbinomialNode, b : DsheapbinomialNode) -> DsheapbinomialNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialNode::add(self : DsheapbinomialNode, other : DsheapbinomialNode) -> DsheapbinomialNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_node_copy(s : DsheapbinomialNode) -> DsheapbinomialNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialNode::copy(self : DsheapbinomialNode) -> DsheapbinomialNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_node_fill(s : DsheapbinomialNode, v : Double) -> DsheapbinomialNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialNode::fill(self : DsheapbinomialNode, v : Double) -> DsheapbinomialNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_node_min(s : DsheapbinomialNode) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialNode::min(self : DsheapbinomialNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_node_max(s : DsheapbinomialNode) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialNode::max(self : DsheapbinomialNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_node_to_string(s : DsheapbinomialNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialNode::to_string(self : DsheapbinomialNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_binomial_edge_make(size : Int) -> DsheapbinomialEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_edge_len(s : DsheapbinomialEdge) -> Int { s.size }
+pub fn DsheapbinomialEdge::len(self : DsheapbinomialEdge) -> Int { self.size }
 
-pub fn ds_heap_binomial_edge_get(s : DsheapbinomialEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialEdge::get(self : DsheapbinomialEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_edge_set(s : DsheapbinomialEdge, i : Int, v : Double) -> DsheapbinomialEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialEdge::set(self : DsheapbinomialEdge, i : Int, v : Double) -> DsheapbinomialEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_edge_sum(s : DsheapbinomialEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialEdge::sum(self : DsheapbinomialEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_edge_mean(s : DsheapbinomialEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialEdge::mean(self : DsheapbinomialEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_edge_scale(s : DsheapbinomialEdge, f : Double) -> DsheapbinomialEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialEdge::scale(self : DsheapbinomialEdge, f : Double) -> DsheapbinomialEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_edge_add(a : DsheapbinomialEdge, b : DsheapbinomialEdge) -> DsheapbinomialEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialEdge::add(self : DsheapbinomialEdge, other : DsheapbinomialEdge) -> DsheapbinomialEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_edge_copy(s : DsheapbinomialEdge) -> DsheapbinomialEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialEdge::copy(self : DsheapbinomialEdge) -> DsheapbinomialEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_edge_fill(s : DsheapbinomialEdge, v : Double) -> DsheapbinomialEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialEdge::fill(self : DsheapbinomialEdge, v : Double) -> DsheapbinomialEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_edge_min(s : DsheapbinomialEdge) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialEdge::min(self : DsheapbinomialEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_edge_max(s : DsheapbinomialEdge) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialEdge::max(self : DsheapbinomialEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_edge_to_string(s : DsheapbinomialEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialEdge::to_string(self : DsheapbinomialEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_binomial_path_make(size : Int) -> DsheapbinomialPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_path_len(s : DsheapbinomialPath) -> Int { s.size }
+pub fn DsheapbinomialPath::len(self : DsheapbinomialPath) -> Int { self.size }
 
-pub fn ds_heap_binomial_path_get(s : DsheapbinomialPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialPath::get(self : DsheapbinomialPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_path_set(s : DsheapbinomialPath, i : Int, v : Double) -> DsheapbinomialPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialPath::set(self : DsheapbinomialPath, i : Int, v : Double) -> DsheapbinomialPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_path_sum(s : DsheapbinomialPath) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialPath::sum(self : DsheapbinomialPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_path_mean(s : DsheapbinomialPath) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialPath::mean(self : DsheapbinomialPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_path_scale(s : DsheapbinomialPath, f : Double) -> DsheapbinomialPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialPath::scale(self : DsheapbinomialPath, f : Double) -> DsheapbinomialPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_path_add(a : DsheapbinomialPath, b : DsheapbinomialPath) -> DsheapbinomialPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialPath::add(self : DsheapbinomialPath, other : DsheapbinomialPath) -> DsheapbinomialPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_path_copy(s : DsheapbinomialPath) -> DsheapbinomialPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialPath::copy(self : DsheapbinomialPath) -> DsheapbinomialPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_path_fill(s : DsheapbinomialPath, v : Double) -> DsheapbinomialPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialPath::fill(self : DsheapbinomialPath, v : Double) -> DsheapbinomialPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_path_min(s : DsheapbinomialPath) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialPath::min(self : DsheapbinomialPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_path_max(s : DsheapbinomialPath) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialPath::max(self : DsheapbinomialPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_path_to_string(s : DsheapbinomialPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialPath::to_string(self : DsheapbinomialPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_binomial_cluster_make(size : Int) -> DsheapbinomialCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_cluster_len(s : DsheapbinomialCluster) -> Int { s.size }
+pub fn DsheapbinomialCluster::len(self : DsheapbinomialCluster) -> Int { self.size }
 
-pub fn ds_heap_binomial_cluster_get(s : DsheapbinomialCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialCluster::get(self : DsheapbinomialCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_cluster_set(s : DsheapbinomialCluster, i : Int, v : Double) -> DsheapbinomialCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialCluster::set(self : DsheapbinomialCluster, i : Int, v : Double) -> DsheapbinomialCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cluster_sum(s : DsheapbinomialCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialCluster::sum(self : DsheapbinomialCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_cluster_mean(s : DsheapbinomialCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialCluster::mean(self : DsheapbinomialCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_cluster_scale(s : DsheapbinomialCluster, f : Double) -> DsheapbinomialCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialCluster::scale(self : DsheapbinomialCluster, f : Double) -> DsheapbinomialCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cluster_add(a : DsheapbinomialCluster, b : DsheapbinomialCluster) -> DsheapbinomialCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialCluster::add(self : DsheapbinomialCluster, other : DsheapbinomialCluster) -> DsheapbinomialCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cluster_copy(s : DsheapbinomialCluster) -> DsheapbinomialCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialCluster::copy(self : DsheapbinomialCluster) -> DsheapbinomialCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cluster_fill(s : DsheapbinomialCluster, v : Double) -> DsheapbinomialCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialCluster::fill(self : DsheapbinomialCluster, v : Double) -> DsheapbinomialCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cluster_min(s : DsheapbinomialCluster) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialCluster::min(self : DsheapbinomialCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_cluster_max(s : DsheapbinomialCluster) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialCluster::max(self : DsheapbinomialCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_cluster_to_string(s : DsheapbinomialCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialCluster::to_string(self : DsheapbinomialCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_binomial_model_make(size : Int) -> DsheapbinomialModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_model_len(s : DsheapbinomialModel) -> Int { s.size }
+pub fn DsheapbinomialModel::len(self : DsheapbinomialModel) -> Int { self.size }
 
-pub fn ds_heap_binomial_model_get(s : DsheapbinomialModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialModel::get(self : DsheapbinomialModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_model_set(s : DsheapbinomialModel, i : Int, v : Double) -> DsheapbinomialModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialModel::set(self : DsheapbinomialModel, i : Int, v : Double) -> DsheapbinomialModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_model_sum(s : DsheapbinomialModel) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialModel::sum(self : DsheapbinomialModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_model_mean(s : DsheapbinomialModel) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialModel::mean(self : DsheapbinomialModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_model_scale(s : DsheapbinomialModel, f : Double) -> DsheapbinomialModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialModel::scale(self : DsheapbinomialModel, f : Double) -> DsheapbinomialModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_model_add(a : DsheapbinomialModel, b : DsheapbinomialModel) -> DsheapbinomialModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialModel::add(self : DsheapbinomialModel, other : DsheapbinomialModel) -> DsheapbinomialModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_model_copy(s : DsheapbinomialModel) -> DsheapbinomialModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialModel::copy(self : DsheapbinomialModel) -> DsheapbinomialModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_model_fill(s : DsheapbinomialModel, v : Double) -> DsheapbinomialModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialModel::fill(self : DsheapbinomialModel, v : Double) -> DsheapbinomialModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_model_min(s : DsheapbinomialModel) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialModel::min(self : DsheapbinomialModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_model_max(s : DsheapbinomialModel) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialModel::max(self : DsheapbinomialModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_model_to_string(s : DsheapbinomialModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialModel::to_string(self : DsheapbinomialModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_binomial_layer_make(size : Int) -> DsheapbinomialLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_layer_len(s : DsheapbinomialLayer) -> Int { s.size }
+pub fn DsheapbinomialLayer::len(self : DsheapbinomialLayer) -> Int { self.size }
 
-pub fn ds_heap_binomial_layer_get(s : DsheapbinomialLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialLayer::get(self : DsheapbinomialLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_layer_set(s : DsheapbinomialLayer, i : Int, v : Double) -> DsheapbinomialLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialLayer::set(self : DsheapbinomialLayer, i : Int, v : Double) -> DsheapbinomialLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_layer_sum(s : DsheapbinomialLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialLayer::sum(self : DsheapbinomialLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_layer_mean(s : DsheapbinomialLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialLayer::mean(self : DsheapbinomialLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_layer_scale(s : DsheapbinomialLayer, f : Double) -> DsheapbinomialLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialLayer::scale(self : DsheapbinomialLayer, f : Double) -> DsheapbinomialLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_layer_add(a : DsheapbinomialLayer, b : DsheapbinomialLayer) -> DsheapbinomialLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialLayer::add(self : DsheapbinomialLayer, other : DsheapbinomialLayer) -> DsheapbinomialLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_layer_copy(s : DsheapbinomialLayer) -> DsheapbinomialLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialLayer::copy(self : DsheapbinomialLayer) -> DsheapbinomialLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_layer_fill(s : DsheapbinomialLayer, v : Double) -> DsheapbinomialLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialLayer::fill(self : DsheapbinomialLayer, v : Double) -> DsheapbinomialLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_layer_min(s : DsheapbinomialLayer) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialLayer::min(self : DsheapbinomialLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_layer_max(s : DsheapbinomialLayer) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialLayer::max(self : DsheapbinomialLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_layer_to_string(s : DsheapbinomialLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialLayer::to_string(self : DsheapbinomialLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_binomial_buffer_make(size : Int) -> DsheapbinomialBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_buffer_len(s : DsheapbinomialBuffer) -> Int { s.size }
+pub fn DsheapbinomialBuffer::len(self : DsheapbinomialBuffer) -> Int { self.size }
 
-pub fn ds_heap_binomial_buffer_get(s : DsheapbinomialBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialBuffer::get(self : DsheapbinomialBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_buffer_set(s : DsheapbinomialBuffer, i : Int, v : Double) -> DsheapbinomialBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialBuffer::set(self : DsheapbinomialBuffer, i : Int, v : Double) -> DsheapbinomialBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_buffer_sum(s : DsheapbinomialBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialBuffer::sum(self : DsheapbinomialBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_buffer_mean(s : DsheapbinomialBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialBuffer::mean(self : DsheapbinomialBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_buffer_scale(s : DsheapbinomialBuffer, f : Double) -> DsheapbinomialBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialBuffer::scale(self : DsheapbinomialBuffer, f : Double) -> DsheapbinomialBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_buffer_add(a : DsheapbinomialBuffer, b : DsheapbinomialBuffer) -> DsheapbinomialBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialBuffer::add(self : DsheapbinomialBuffer, other : DsheapbinomialBuffer) -> DsheapbinomialBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_buffer_copy(s : DsheapbinomialBuffer) -> DsheapbinomialBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialBuffer::copy(self : DsheapbinomialBuffer) -> DsheapbinomialBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_buffer_fill(s : DsheapbinomialBuffer, v : Double) -> DsheapbinomialBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialBuffer::fill(self : DsheapbinomialBuffer, v : Double) -> DsheapbinomialBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_buffer_min(s : DsheapbinomialBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialBuffer::min(self : DsheapbinomialBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_buffer_max(s : DsheapbinomialBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialBuffer::max(self : DsheapbinomialBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_buffer_to_string(s : DsheapbinomialBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialBuffer::to_string(self : DsheapbinomialBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_binomial_cursor_make(size : Int) -> DsheapbinomialCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_cursor_len(s : DsheapbinomialCursor) -> Int { s.size }
+pub fn DsheapbinomialCursor::len(self : DsheapbinomialCursor) -> Int { self.size }
 
-pub fn ds_heap_binomial_cursor_get(s : DsheapbinomialCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialCursor::get(self : DsheapbinomialCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_cursor_set(s : DsheapbinomialCursor, i : Int, v : Double) -> DsheapbinomialCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialCursor::set(self : DsheapbinomialCursor, i : Int, v : Double) -> DsheapbinomialCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cursor_sum(s : DsheapbinomialCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialCursor::sum(self : DsheapbinomialCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_cursor_mean(s : DsheapbinomialCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialCursor::mean(self : DsheapbinomialCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_cursor_scale(s : DsheapbinomialCursor, f : Double) -> DsheapbinomialCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialCursor::scale(self : DsheapbinomialCursor, f : Double) -> DsheapbinomialCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cursor_add(a : DsheapbinomialCursor, b : DsheapbinomialCursor) -> DsheapbinomialCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialCursor::add(self : DsheapbinomialCursor, other : DsheapbinomialCursor) -> DsheapbinomialCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cursor_copy(s : DsheapbinomialCursor) -> DsheapbinomialCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialCursor::copy(self : DsheapbinomialCursor) -> DsheapbinomialCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cursor_fill(s : DsheapbinomialCursor, v : Double) -> DsheapbinomialCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialCursor::fill(self : DsheapbinomialCursor, v : Double) -> DsheapbinomialCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_cursor_min(s : DsheapbinomialCursor) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialCursor::min(self : DsheapbinomialCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_cursor_max(s : DsheapbinomialCursor) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialCursor::max(self : DsheapbinomialCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_cursor_to_string(s : DsheapbinomialCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialCursor::to_string(self : DsheapbinomialCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialView {
@@ -912,45 +912,45 @@ pub fn ds_heap_binomial_view_make(size : Int) -> DsheapbinomialView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_view_len(s : DsheapbinomialView) -> Int { s.size }
+pub fn DsheapbinomialView::len(self : DsheapbinomialView) -> Int { self.size }
 
-pub fn ds_heap_binomial_view_get(s : DsheapbinomialView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialView::get(self : DsheapbinomialView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_view_set(s : DsheapbinomialView, i : Int, v : Double) -> DsheapbinomialView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialView::set(self : DsheapbinomialView, i : Int, v : Double) -> DsheapbinomialView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_view_sum(s : DsheapbinomialView) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialView::sum(self : DsheapbinomialView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_view_mean(s : DsheapbinomialView) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialView::mean(self : DsheapbinomialView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_view_scale(s : DsheapbinomialView, f : Double) -> DsheapbinomialView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialView::scale(self : DsheapbinomialView, f : Double) -> DsheapbinomialView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_view_add(a : DsheapbinomialView, b : DsheapbinomialView) -> DsheapbinomialView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialView::add(self : DsheapbinomialView, other : DsheapbinomialView) -> DsheapbinomialView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_view_copy(s : DsheapbinomialView) -> DsheapbinomialView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialView::copy(self : DsheapbinomialView) -> DsheapbinomialView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_view_fill(s : DsheapbinomialView, v : Double) -> DsheapbinomialView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialView::fill(self : DsheapbinomialView, v : Double) -> DsheapbinomialView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_view_min(s : DsheapbinomialView) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialView::min(self : DsheapbinomialView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_view_max(s : DsheapbinomialView) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialView::max(self : DsheapbinomialView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_view_to_string(s : DsheapbinomialView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialView::to_string(self : DsheapbinomialView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_binomial_range_make(size : Int) -> DsheapbinomialRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_range_len(s : DsheapbinomialRange) -> Int { s.size }
+pub fn DsheapbinomialRange::len(self : DsheapbinomialRange) -> Int { self.size }
 
-pub fn ds_heap_binomial_range_get(s : DsheapbinomialRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialRange::get(self : DsheapbinomialRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_range_set(s : DsheapbinomialRange, i : Int, v : Double) -> DsheapbinomialRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialRange::set(self : DsheapbinomialRange, i : Int, v : Double) -> DsheapbinomialRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_range_sum(s : DsheapbinomialRange) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialRange::sum(self : DsheapbinomialRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_range_mean(s : DsheapbinomialRange) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialRange::mean(self : DsheapbinomialRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_range_scale(s : DsheapbinomialRange, f : Double) -> DsheapbinomialRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialRange::scale(self : DsheapbinomialRange, f : Double) -> DsheapbinomialRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_range_add(a : DsheapbinomialRange, b : DsheapbinomialRange) -> DsheapbinomialRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialRange::add(self : DsheapbinomialRange, other : DsheapbinomialRange) -> DsheapbinomialRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_range_copy(s : DsheapbinomialRange) -> DsheapbinomialRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialRange::copy(self : DsheapbinomialRange) -> DsheapbinomialRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_range_fill(s : DsheapbinomialRange, v : Double) -> DsheapbinomialRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialRange::fill(self : DsheapbinomialRange, v : Double) -> DsheapbinomialRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_range_min(s : DsheapbinomialRange) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialRange::min(self : DsheapbinomialRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_range_max(s : DsheapbinomialRange) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialRange::max(self : DsheapbinomialRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_range_to_string(s : DsheapbinomialRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialRange::to_string(self : DsheapbinomialRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinomialSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_binomial_slice_make(size : Int) -> DsheapbinomialSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binomial_slice_len(s : DsheapbinomialSlice) -> Int { s.size }
+pub fn DsheapbinomialSlice::len(self : DsheapbinomialSlice) -> Int { self.size }
 
-pub fn ds_heap_binomial_slice_get(s : DsheapbinomialSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinomialSlice::get(self : DsheapbinomialSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binomial_slice_set(s : DsheapbinomialSlice, i : Int, v : Double) -> DsheapbinomialSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinomialSlice::set(self : DsheapbinomialSlice, i : Int, v : Double) -> DsheapbinomialSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_slice_sum(s : DsheapbinomialSlice) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinomialSlice::sum(self : DsheapbinomialSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binomial_slice_mean(s : DsheapbinomialSlice) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinomialSlice::mean(self : DsheapbinomialSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binomial_slice_scale(s : DsheapbinomialSlice, f : Double) -> DsheapbinomialSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinomialSlice::scale(self : DsheapbinomialSlice, f : Double) -> DsheapbinomialSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_slice_add(a : DsheapbinomialSlice, b : DsheapbinomialSlice) -> DsheapbinomialSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinomialSlice::add(self : DsheapbinomialSlice, other : DsheapbinomialSlice) -> DsheapbinomialSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_slice_copy(s : DsheapbinomialSlice) -> DsheapbinomialSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinomialSlice::copy(self : DsheapbinomialSlice) -> DsheapbinomialSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_slice_fill(s : DsheapbinomialSlice, v : Double) -> DsheapbinomialSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinomialSlice::fill(self : DsheapbinomialSlice, v : Double) -> DsheapbinomialSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binomial_slice_min(s : DsheapbinomialSlice) -> Double { @_common.min(s.data) }
+pub fn DsheapbinomialSlice::min(self : DsheapbinomialSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binomial_slice_max(s : DsheapbinomialSlice) -> Double { @_common.max(s.data) }
+pub fn DsheapbinomialSlice::max(self : DsheapbinomialSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binomial_slice_to_string(s : DsheapbinomialSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinomialSlice::to_string(self : DsheapbinomialSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

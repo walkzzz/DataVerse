@@ -351,45 +351,45 @@ pub fn net_flow_scheduling_frame_make(size : Int) -> NetflowschedulingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_frame_len(s : NetflowschedulingFrame) -> Int { s.size }
+pub fn NetflowschedulingFrame::len(self : NetflowschedulingFrame) -> Int { self.size }
 
-pub fn net_flow_scheduling_frame_get(s : NetflowschedulingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingFrame::get(self : NetflowschedulingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_frame_set(s : NetflowschedulingFrame, i : Int, v : Double) -> NetflowschedulingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingFrame::set(self : NetflowschedulingFrame, i : Int, v : Double) -> NetflowschedulingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_frame_sum(s : NetflowschedulingFrame) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingFrame::sum(self : NetflowschedulingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_frame_mean(s : NetflowschedulingFrame) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingFrame::mean(self : NetflowschedulingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_frame_scale(s : NetflowschedulingFrame, f : Double) -> NetflowschedulingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingFrame::scale(self : NetflowschedulingFrame, f : Double) -> NetflowschedulingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_frame_add(a : NetflowschedulingFrame, b : NetflowschedulingFrame) -> NetflowschedulingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingFrame::add(self : NetflowschedulingFrame, other : NetflowschedulingFrame) -> NetflowschedulingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_frame_copy(s : NetflowschedulingFrame) -> NetflowschedulingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingFrame::copy(self : NetflowschedulingFrame) -> NetflowschedulingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_frame_fill(s : NetflowschedulingFrame, v : Double) -> NetflowschedulingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingFrame::fill(self : NetflowschedulingFrame, v : Double) -> NetflowschedulingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_frame_min(s : NetflowschedulingFrame) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingFrame::min(self : NetflowschedulingFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_frame_max(s : NetflowschedulingFrame) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingFrame::max(self : NetflowschedulingFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_frame_to_string(s : NetflowschedulingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingFrame::to_string(self : NetflowschedulingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingTable {
@@ -402,45 +402,45 @@ pub fn net_flow_scheduling_table_make(size : Int) -> NetflowschedulingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_table_len(s : NetflowschedulingTable) -> Int { s.size }
+pub fn NetflowschedulingTable::len(self : NetflowschedulingTable) -> Int { self.size }
 
-pub fn net_flow_scheduling_table_get(s : NetflowschedulingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingTable::get(self : NetflowschedulingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_table_set(s : NetflowschedulingTable, i : Int, v : Double) -> NetflowschedulingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingTable::set(self : NetflowschedulingTable, i : Int, v : Double) -> NetflowschedulingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_table_sum(s : NetflowschedulingTable) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingTable::sum(self : NetflowschedulingTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_table_mean(s : NetflowschedulingTable) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingTable::mean(self : NetflowschedulingTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_table_scale(s : NetflowschedulingTable, f : Double) -> NetflowschedulingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingTable::scale(self : NetflowschedulingTable, f : Double) -> NetflowschedulingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_table_add(a : NetflowschedulingTable, b : NetflowschedulingTable) -> NetflowschedulingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingTable::add(self : NetflowschedulingTable, other : NetflowschedulingTable) -> NetflowschedulingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_table_copy(s : NetflowschedulingTable) -> NetflowschedulingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingTable::copy(self : NetflowschedulingTable) -> NetflowschedulingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_table_fill(s : NetflowschedulingTable, v : Double) -> NetflowschedulingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingTable::fill(self : NetflowschedulingTable, v : Double) -> NetflowschedulingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_table_min(s : NetflowschedulingTable) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingTable::min(self : NetflowschedulingTable) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_table_max(s : NetflowschedulingTable) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingTable::max(self : NetflowschedulingTable) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_table_to_string(s : NetflowschedulingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingTable::to_string(self : NetflowschedulingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingGraphN {
@@ -453,45 +453,45 @@ pub fn net_flow_scheduling_graphn_make(size : Int) -> NetflowschedulingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_graphn_len(s : NetflowschedulingGraphN) -> Int { s.size }
+pub fn NetflowschedulingGraphN::len(self : NetflowschedulingGraphN) -> Int { self.size }
 
-pub fn net_flow_scheduling_graphn_get(s : NetflowschedulingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingGraphN::get(self : NetflowschedulingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_graphn_set(s : NetflowschedulingGraphN, i : Int, v : Double) -> NetflowschedulingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingGraphN::set(self : NetflowschedulingGraphN, i : Int, v : Double) -> NetflowschedulingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_graphn_sum(s : NetflowschedulingGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingGraphN::sum(self : NetflowschedulingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_graphn_mean(s : NetflowschedulingGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingGraphN::mean(self : NetflowschedulingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_graphn_scale(s : NetflowschedulingGraphN, f : Double) -> NetflowschedulingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingGraphN::scale(self : NetflowschedulingGraphN, f : Double) -> NetflowschedulingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_graphn_add(a : NetflowschedulingGraphN, b : NetflowschedulingGraphN) -> NetflowschedulingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingGraphN::add(self : NetflowschedulingGraphN, other : NetflowschedulingGraphN) -> NetflowschedulingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_graphn_copy(s : NetflowschedulingGraphN) -> NetflowschedulingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingGraphN::copy(self : NetflowschedulingGraphN) -> NetflowschedulingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_graphn_fill(s : NetflowschedulingGraphN, v : Double) -> NetflowschedulingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingGraphN::fill(self : NetflowschedulingGraphN, v : Double) -> NetflowschedulingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_graphn_min(s : NetflowschedulingGraphN) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingGraphN::min(self : NetflowschedulingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_graphn_max(s : NetflowschedulingGraphN) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingGraphN::max(self : NetflowschedulingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_graphn_to_string(s : NetflowschedulingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingGraphN::to_string(self : NetflowschedulingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingNode {
@@ -504,45 +504,45 @@ pub fn net_flow_scheduling_node_make(size : Int) -> NetflowschedulingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_node_len(s : NetflowschedulingNode) -> Int { s.size }
+pub fn NetflowschedulingNode::len(self : NetflowschedulingNode) -> Int { self.size }
 
-pub fn net_flow_scheduling_node_get(s : NetflowschedulingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingNode::get(self : NetflowschedulingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_node_set(s : NetflowschedulingNode, i : Int, v : Double) -> NetflowschedulingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingNode::set(self : NetflowschedulingNode, i : Int, v : Double) -> NetflowschedulingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_node_sum(s : NetflowschedulingNode) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingNode::sum(self : NetflowschedulingNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_node_mean(s : NetflowschedulingNode) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingNode::mean(self : NetflowschedulingNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_node_scale(s : NetflowschedulingNode, f : Double) -> NetflowschedulingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingNode::scale(self : NetflowschedulingNode, f : Double) -> NetflowschedulingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_node_add(a : NetflowschedulingNode, b : NetflowschedulingNode) -> NetflowschedulingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingNode::add(self : NetflowschedulingNode, other : NetflowschedulingNode) -> NetflowschedulingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_node_copy(s : NetflowschedulingNode) -> NetflowschedulingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingNode::copy(self : NetflowschedulingNode) -> NetflowschedulingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_node_fill(s : NetflowschedulingNode, v : Double) -> NetflowschedulingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingNode::fill(self : NetflowschedulingNode, v : Double) -> NetflowschedulingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_node_min(s : NetflowschedulingNode) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingNode::min(self : NetflowschedulingNode) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_node_max(s : NetflowschedulingNode) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingNode::max(self : NetflowschedulingNode) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_node_to_string(s : NetflowschedulingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingNode::to_string(self : NetflowschedulingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingEdge {
@@ -555,45 +555,45 @@ pub fn net_flow_scheduling_edge_make(size : Int) -> NetflowschedulingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_edge_len(s : NetflowschedulingEdge) -> Int { s.size }
+pub fn NetflowschedulingEdge::len(self : NetflowschedulingEdge) -> Int { self.size }
 
-pub fn net_flow_scheduling_edge_get(s : NetflowschedulingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingEdge::get(self : NetflowschedulingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_edge_set(s : NetflowschedulingEdge, i : Int, v : Double) -> NetflowschedulingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingEdge::set(self : NetflowschedulingEdge, i : Int, v : Double) -> NetflowschedulingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_edge_sum(s : NetflowschedulingEdge) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingEdge::sum(self : NetflowschedulingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_edge_mean(s : NetflowschedulingEdge) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingEdge::mean(self : NetflowschedulingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_edge_scale(s : NetflowschedulingEdge, f : Double) -> NetflowschedulingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingEdge::scale(self : NetflowschedulingEdge, f : Double) -> NetflowschedulingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_edge_add(a : NetflowschedulingEdge, b : NetflowschedulingEdge) -> NetflowschedulingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingEdge::add(self : NetflowschedulingEdge, other : NetflowschedulingEdge) -> NetflowschedulingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_edge_copy(s : NetflowschedulingEdge) -> NetflowschedulingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingEdge::copy(self : NetflowschedulingEdge) -> NetflowschedulingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_edge_fill(s : NetflowschedulingEdge, v : Double) -> NetflowschedulingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingEdge::fill(self : NetflowschedulingEdge, v : Double) -> NetflowschedulingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_edge_min(s : NetflowschedulingEdge) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingEdge::min(self : NetflowschedulingEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_edge_max(s : NetflowschedulingEdge) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingEdge::max(self : NetflowschedulingEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_edge_to_string(s : NetflowschedulingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingEdge::to_string(self : NetflowschedulingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingPath {
@@ -606,45 +606,45 @@ pub fn net_flow_scheduling_path_make(size : Int) -> NetflowschedulingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_path_len(s : NetflowschedulingPath) -> Int { s.size }
+pub fn NetflowschedulingPath::len(self : NetflowschedulingPath) -> Int { self.size }
 
-pub fn net_flow_scheduling_path_get(s : NetflowschedulingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingPath::get(self : NetflowschedulingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_path_set(s : NetflowschedulingPath, i : Int, v : Double) -> NetflowschedulingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingPath::set(self : NetflowschedulingPath, i : Int, v : Double) -> NetflowschedulingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_path_sum(s : NetflowschedulingPath) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingPath::sum(self : NetflowschedulingPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_path_mean(s : NetflowschedulingPath) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingPath::mean(self : NetflowschedulingPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_path_scale(s : NetflowschedulingPath, f : Double) -> NetflowschedulingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingPath::scale(self : NetflowschedulingPath, f : Double) -> NetflowschedulingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_path_add(a : NetflowschedulingPath, b : NetflowschedulingPath) -> NetflowschedulingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingPath::add(self : NetflowschedulingPath, other : NetflowschedulingPath) -> NetflowschedulingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_path_copy(s : NetflowschedulingPath) -> NetflowschedulingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingPath::copy(self : NetflowschedulingPath) -> NetflowschedulingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_path_fill(s : NetflowschedulingPath, v : Double) -> NetflowschedulingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingPath::fill(self : NetflowschedulingPath, v : Double) -> NetflowschedulingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_path_min(s : NetflowschedulingPath) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingPath::min(self : NetflowschedulingPath) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_path_max(s : NetflowschedulingPath) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingPath::max(self : NetflowschedulingPath) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_path_to_string(s : NetflowschedulingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingPath::to_string(self : NetflowschedulingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingCluster {
@@ -657,45 +657,45 @@ pub fn net_flow_scheduling_cluster_make(size : Int) -> NetflowschedulingCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_cluster_len(s : NetflowschedulingCluster) -> Int { s.size }
+pub fn NetflowschedulingCluster::len(self : NetflowschedulingCluster) -> Int { self.size }
 
-pub fn net_flow_scheduling_cluster_get(s : NetflowschedulingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingCluster::get(self : NetflowschedulingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_cluster_set(s : NetflowschedulingCluster, i : Int, v : Double) -> NetflowschedulingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingCluster::set(self : NetflowschedulingCluster, i : Int, v : Double) -> NetflowschedulingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cluster_sum(s : NetflowschedulingCluster) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingCluster::sum(self : NetflowschedulingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_cluster_mean(s : NetflowschedulingCluster) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingCluster::mean(self : NetflowschedulingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_cluster_scale(s : NetflowschedulingCluster, f : Double) -> NetflowschedulingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingCluster::scale(self : NetflowschedulingCluster, f : Double) -> NetflowschedulingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cluster_add(a : NetflowschedulingCluster, b : NetflowschedulingCluster) -> NetflowschedulingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingCluster::add(self : NetflowschedulingCluster, other : NetflowschedulingCluster) -> NetflowschedulingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cluster_copy(s : NetflowschedulingCluster) -> NetflowschedulingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingCluster::copy(self : NetflowschedulingCluster) -> NetflowschedulingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cluster_fill(s : NetflowschedulingCluster, v : Double) -> NetflowschedulingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingCluster::fill(self : NetflowschedulingCluster, v : Double) -> NetflowschedulingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cluster_min(s : NetflowschedulingCluster) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingCluster::min(self : NetflowschedulingCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_cluster_max(s : NetflowschedulingCluster) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingCluster::max(self : NetflowschedulingCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_cluster_to_string(s : NetflowschedulingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingCluster::to_string(self : NetflowschedulingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingModel {
@@ -708,45 +708,45 @@ pub fn net_flow_scheduling_model_make(size : Int) -> NetflowschedulingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_model_len(s : NetflowschedulingModel) -> Int { s.size }
+pub fn NetflowschedulingModel::len(self : NetflowschedulingModel) -> Int { self.size }
 
-pub fn net_flow_scheduling_model_get(s : NetflowschedulingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingModel::get(self : NetflowschedulingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_model_set(s : NetflowschedulingModel, i : Int, v : Double) -> NetflowschedulingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingModel::set(self : NetflowschedulingModel, i : Int, v : Double) -> NetflowschedulingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_model_sum(s : NetflowschedulingModel) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingModel::sum(self : NetflowschedulingModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_model_mean(s : NetflowschedulingModel) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingModel::mean(self : NetflowschedulingModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_model_scale(s : NetflowschedulingModel, f : Double) -> NetflowschedulingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingModel::scale(self : NetflowschedulingModel, f : Double) -> NetflowschedulingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_model_add(a : NetflowschedulingModel, b : NetflowschedulingModel) -> NetflowschedulingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingModel::add(self : NetflowschedulingModel, other : NetflowschedulingModel) -> NetflowschedulingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_model_copy(s : NetflowschedulingModel) -> NetflowschedulingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingModel::copy(self : NetflowschedulingModel) -> NetflowschedulingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_model_fill(s : NetflowschedulingModel, v : Double) -> NetflowschedulingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingModel::fill(self : NetflowschedulingModel, v : Double) -> NetflowschedulingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_model_min(s : NetflowschedulingModel) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingModel::min(self : NetflowschedulingModel) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_model_max(s : NetflowschedulingModel) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingModel::max(self : NetflowschedulingModel) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_model_to_string(s : NetflowschedulingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingModel::to_string(self : NetflowschedulingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingLayer {
@@ -759,45 +759,45 @@ pub fn net_flow_scheduling_layer_make(size : Int) -> NetflowschedulingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_layer_len(s : NetflowschedulingLayer) -> Int { s.size }
+pub fn NetflowschedulingLayer::len(self : NetflowschedulingLayer) -> Int { self.size }
 
-pub fn net_flow_scheduling_layer_get(s : NetflowschedulingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingLayer::get(self : NetflowschedulingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_layer_set(s : NetflowschedulingLayer, i : Int, v : Double) -> NetflowschedulingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingLayer::set(self : NetflowschedulingLayer, i : Int, v : Double) -> NetflowschedulingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_layer_sum(s : NetflowschedulingLayer) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingLayer::sum(self : NetflowschedulingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_layer_mean(s : NetflowschedulingLayer) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingLayer::mean(self : NetflowschedulingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_layer_scale(s : NetflowschedulingLayer, f : Double) -> NetflowschedulingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingLayer::scale(self : NetflowschedulingLayer, f : Double) -> NetflowschedulingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_layer_add(a : NetflowschedulingLayer, b : NetflowschedulingLayer) -> NetflowschedulingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingLayer::add(self : NetflowschedulingLayer, other : NetflowschedulingLayer) -> NetflowschedulingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_layer_copy(s : NetflowschedulingLayer) -> NetflowschedulingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingLayer::copy(self : NetflowschedulingLayer) -> NetflowschedulingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_layer_fill(s : NetflowschedulingLayer, v : Double) -> NetflowschedulingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingLayer::fill(self : NetflowschedulingLayer, v : Double) -> NetflowschedulingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_layer_min(s : NetflowschedulingLayer) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingLayer::min(self : NetflowschedulingLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_layer_max(s : NetflowschedulingLayer) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingLayer::max(self : NetflowschedulingLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_layer_to_string(s : NetflowschedulingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingLayer::to_string(self : NetflowschedulingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingBuffer {
@@ -810,45 +810,45 @@ pub fn net_flow_scheduling_buffer_make(size : Int) -> NetflowschedulingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_buffer_len(s : NetflowschedulingBuffer) -> Int { s.size }
+pub fn NetflowschedulingBuffer::len(self : NetflowschedulingBuffer) -> Int { self.size }
 
-pub fn net_flow_scheduling_buffer_get(s : NetflowschedulingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingBuffer::get(self : NetflowschedulingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_buffer_set(s : NetflowschedulingBuffer, i : Int, v : Double) -> NetflowschedulingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingBuffer::set(self : NetflowschedulingBuffer, i : Int, v : Double) -> NetflowschedulingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_buffer_sum(s : NetflowschedulingBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingBuffer::sum(self : NetflowschedulingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_buffer_mean(s : NetflowschedulingBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingBuffer::mean(self : NetflowschedulingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_buffer_scale(s : NetflowschedulingBuffer, f : Double) -> NetflowschedulingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingBuffer::scale(self : NetflowschedulingBuffer, f : Double) -> NetflowschedulingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_buffer_add(a : NetflowschedulingBuffer, b : NetflowschedulingBuffer) -> NetflowschedulingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingBuffer::add(self : NetflowschedulingBuffer, other : NetflowschedulingBuffer) -> NetflowschedulingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_buffer_copy(s : NetflowschedulingBuffer) -> NetflowschedulingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingBuffer::copy(self : NetflowschedulingBuffer) -> NetflowschedulingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_buffer_fill(s : NetflowschedulingBuffer, v : Double) -> NetflowschedulingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingBuffer::fill(self : NetflowschedulingBuffer, v : Double) -> NetflowschedulingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_buffer_min(s : NetflowschedulingBuffer) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingBuffer::min(self : NetflowschedulingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_buffer_max(s : NetflowschedulingBuffer) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingBuffer::max(self : NetflowschedulingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_buffer_to_string(s : NetflowschedulingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingBuffer::to_string(self : NetflowschedulingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingCursor {
@@ -861,45 +861,45 @@ pub fn net_flow_scheduling_cursor_make(size : Int) -> NetflowschedulingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_cursor_len(s : NetflowschedulingCursor) -> Int { s.size }
+pub fn NetflowschedulingCursor::len(self : NetflowschedulingCursor) -> Int { self.size }
 
-pub fn net_flow_scheduling_cursor_get(s : NetflowschedulingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingCursor::get(self : NetflowschedulingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_cursor_set(s : NetflowschedulingCursor, i : Int, v : Double) -> NetflowschedulingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingCursor::set(self : NetflowschedulingCursor, i : Int, v : Double) -> NetflowschedulingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cursor_sum(s : NetflowschedulingCursor) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingCursor::sum(self : NetflowschedulingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_cursor_mean(s : NetflowschedulingCursor) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingCursor::mean(self : NetflowschedulingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_cursor_scale(s : NetflowschedulingCursor, f : Double) -> NetflowschedulingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingCursor::scale(self : NetflowschedulingCursor, f : Double) -> NetflowschedulingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cursor_add(a : NetflowschedulingCursor, b : NetflowschedulingCursor) -> NetflowschedulingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingCursor::add(self : NetflowschedulingCursor, other : NetflowschedulingCursor) -> NetflowschedulingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cursor_copy(s : NetflowschedulingCursor) -> NetflowschedulingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingCursor::copy(self : NetflowschedulingCursor) -> NetflowschedulingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cursor_fill(s : NetflowschedulingCursor, v : Double) -> NetflowschedulingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingCursor::fill(self : NetflowschedulingCursor, v : Double) -> NetflowschedulingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_cursor_min(s : NetflowschedulingCursor) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingCursor::min(self : NetflowschedulingCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_cursor_max(s : NetflowschedulingCursor) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingCursor::max(self : NetflowschedulingCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_cursor_to_string(s : NetflowschedulingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingCursor::to_string(self : NetflowschedulingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingView {
@@ -912,45 +912,45 @@ pub fn net_flow_scheduling_view_make(size : Int) -> NetflowschedulingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_view_len(s : NetflowschedulingView) -> Int { s.size }
+pub fn NetflowschedulingView::len(self : NetflowschedulingView) -> Int { self.size }
 
-pub fn net_flow_scheduling_view_get(s : NetflowschedulingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingView::get(self : NetflowschedulingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_view_set(s : NetflowschedulingView, i : Int, v : Double) -> NetflowschedulingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingView::set(self : NetflowschedulingView, i : Int, v : Double) -> NetflowschedulingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_view_sum(s : NetflowschedulingView) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingView::sum(self : NetflowschedulingView) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_view_mean(s : NetflowschedulingView) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingView::mean(self : NetflowschedulingView) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_view_scale(s : NetflowschedulingView, f : Double) -> NetflowschedulingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingView::scale(self : NetflowschedulingView, f : Double) -> NetflowschedulingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_view_add(a : NetflowschedulingView, b : NetflowschedulingView) -> NetflowschedulingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingView::add(self : NetflowschedulingView, other : NetflowschedulingView) -> NetflowschedulingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_view_copy(s : NetflowschedulingView) -> NetflowschedulingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingView::copy(self : NetflowschedulingView) -> NetflowschedulingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_view_fill(s : NetflowschedulingView, v : Double) -> NetflowschedulingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingView::fill(self : NetflowschedulingView, v : Double) -> NetflowschedulingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_view_min(s : NetflowschedulingView) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingView::min(self : NetflowschedulingView) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_view_max(s : NetflowschedulingView) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingView::max(self : NetflowschedulingView) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_view_to_string(s : NetflowschedulingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingView::to_string(self : NetflowschedulingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingRange {
@@ -963,45 +963,45 @@ pub fn net_flow_scheduling_range_make(size : Int) -> NetflowschedulingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_range_len(s : NetflowschedulingRange) -> Int { s.size }
+pub fn NetflowschedulingRange::len(self : NetflowschedulingRange) -> Int { self.size }
 
-pub fn net_flow_scheduling_range_get(s : NetflowschedulingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingRange::get(self : NetflowschedulingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_range_set(s : NetflowschedulingRange, i : Int, v : Double) -> NetflowschedulingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingRange::set(self : NetflowschedulingRange, i : Int, v : Double) -> NetflowschedulingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_range_sum(s : NetflowschedulingRange) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingRange::sum(self : NetflowschedulingRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_range_mean(s : NetflowschedulingRange) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingRange::mean(self : NetflowschedulingRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_range_scale(s : NetflowschedulingRange, f : Double) -> NetflowschedulingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingRange::scale(self : NetflowschedulingRange, f : Double) -> NetflowschedulingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_range_add(a : NetflowschedulingRange, b : NetflowschedulingRange) -> NetflowschedulingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingRange::add(self : NetflowschedulingRange, other : NetflowschedulingRange) -> NetflowschedulingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_range_copy(s : NetflowschedulingRange) -> NetflowschedulingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingRange::copy(self : NetflowschedulingRange) -> NetflowschedulingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_range_fill(s : NetflowschedulingRange, v : Double) -> NetflowschedulingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingRange::fill(self : NetflowschedulingRange, v : Double) -> NetflowschedulingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_range_min(s : NetflowschedulingRange) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingRange::min(self : NetflowschedulingRange) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_range_max(s : NetflowschedulingRange) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingRange::max(self : NetflowschedulingRange) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_range_to_string(s : NetflowschedulingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingRange::to_string(self : NetflowschedulingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingSlice {
@@ -1014,44 +1014,44 @@ pub fn net_flow_scheduling_slice_make(size : Int) -> NetflowschedulingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_scheduling_slice_len(s : NetflowschedulingSlice) -> Int { s.size }
+pub fn NetflowschedulingSlice::len(self : NetflowschedulingSlice) -> Int { self.size }
 
-pub fn net_flow_scheduling_slice_get(s : NetflowschedulingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowschedulingSlice::get(self : NetflowschedulingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_scheduling_slice_set(s : NetflowschedulingSlice, i : Int, v : Double) -> NetflowschedulingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowschedulingSlice::set(self : NetflowschedulingSlice, i : Int, v : Double) -> NetflowschedulingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_slice_sum(s : NetflowschedulingSlice) -> Double { @_common.sum(s.data) }
+pub fn NetflowschedulingSlice::sum(self : NetflowschedulingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_scheduling_slice_mean(s : NetflowschedulingSlice) -> Double { @_common.mean(s.data) }
+pub fn NetflowschedulingSlice::mean(self : NetflowschedulingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_scheduling_slice_scale(s : NetflowschedulingSlice, f : Double) -> NetflowschedulingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowschedulingSlice::scale(self : NetflowschedulingSlice, f : Double) -> NetflowschedulingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_slice_add(a : NetflowschedulingSlice, b : NetflowschedulingSlice) -> NetflowschedulingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowschedulingSlice::add(self : NetflowschedulingSlice, other : NetflowschedulingSlice) -> NetflowschedulingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_slice_copy(s : NetflowschedulingSlice) -> NetflowschedulingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowschedulingSlice::copy(self : NetflowschedulingSlice) -> NetflowschedulingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_slice_fill(s : NetflowschedulingSlice, v : Double) -> NetflowschedulingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowschedulingSlice::fill(self : NetflowschedulingSlice, v : Double) -> NetflowschedulingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_scheduling_slice_min(s : NetflowschedulingSlice) -> Double { @_common.min(s.data) }
+pub fn NetflowschedulingSlice::min(self : NetflowschedulingSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_scheduling_slice_max(s : NetflowschedulingSlice) -> Double { @_common.max(s.data) }
+pub fn NetflowschedulingSlice::max(self : NetflowschedulingSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_scheduling_slice_to_string(s : NetflowschedulingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowschedulingSlice::to_string(self : NetflowschedulingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

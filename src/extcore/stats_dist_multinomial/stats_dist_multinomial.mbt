@@ -351,45 +351,45 @@ pub fn stats_dist_multinomial_frame_make(size : Int) -> StatsdistmultinomialFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_frame_len(s : StatsdistmultinomialFrame) -> Int { s.size }
+pub fn StatsdistmultinomialFrame::len(self : StatsdistmultinomialFrame) -> Int { self.size }
 
-pub fn stats_dist_multinomial_frame_get(s : StatsdistmultinomialFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialFrame::get(self : StatsdistmultinomialFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_frame_set(s : StatsdistmultinomialFrame, i : Int, v : Double) -> StatsdistmultinomialFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialFrame::set(self : StatsdistmultinomialFrame, i : Int, v : Double) -> StatsdistmultinomialFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_frame_sum(s : StatsdistmultinomialFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialFrame::sum(self : StatsdistmultinomialFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_frame_mean(s : StatsdistmultinomialFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialFrame::mean(self : StatsdistmultinomialFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_frame_scale(s : StatsdistmultinomialFrame, f : Double) -> StatsdistmultinomialFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialFrame::scale(self : StatsdistmultinomialFrame, f : Double) -> StatsdistmultinomialFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_frame_add(a : StatsdistmultinomialFrame, b : StatsdistmultinomialFrame) -> StatsdistmultinomialFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialFrame::add(self : StatsdistmultinomialFrame, other : StatsdistmultinomialFrame) -> StatsdistmultinomialFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_frame_copy(s : StatsdistmultinomialFrame) -> StatsdistmultinomialFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialFrame::copy(self : StatsdistmultinomialFrame) -> StatsdistmultinomialFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_frame_fill(s : StatsdistmultinomialFrame, v : Double) -> StatsdistmultinomialFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialFrame::fill(self : StatsdistmultinomialFrame, v : Double) -> StatsdistmultinomialFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_frame_min(s : StatsdistmultinomialFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialFrame::min(self : StatsdistmultinomialFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_frame_max(s : StatsdistmultinomialFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialFrame::max(self : StatsdistmultinomialFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_frame_to_string(s : StatsdistmultinomialFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialFrame::to_string(self : StatsdistmultinomialFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_multinomial_table_make(size : Int) -> StatsdistmultinomialTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_table_len(s : StatsdistmultinomialTable) -> Int { s.size }
+pub fn StatsdistmultinomialTable::len(self : StatsdistmultinomialTable) -> Int { self.size }
 
-pub fn stats_dist_multinomial_table_get(s : StatsdistmultinomialTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialTable::get(self : StatsdistmultinomialTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_table_set(s : StatsdistmultinomialTable, i : Int, v : Double) -> StatsdistmultinomialTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialTable::set(self : StatsdistmultinomialTable, i : Int, v : Double) -> StatsdistmultinomialTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_table_sum(s : StatsdistmultinomialTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialTable::sum(self : StatsdistmultinomialTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_table_mean(s : StatsdistmultinomialTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialTable::mean(self : StatsdistmultinomialTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_table_scale(s : StatsdistmultinomialTable, f : Double) -> StatsdistmultinomialTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialTable::scale(self : StatsdistmultinomialTable, f : Double) -> StatsdistmultinomialTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_table_add(a : StatsdistmultinomialTable, b : StatsdistmultinomialTable) -> StatsdistmultinomialTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialTable::add(self : StatsdistmultinomialTable, other : StatsdistmultinomialTable) -> StatsdistmultinomialTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_table_copy(s : StatsdistmultinomialTable) -> StatsdistmultinomialTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialTable::copy(self : StatsdistmultinomialTable) -> StatsdistmultinomialTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_table_fill(s : StatsdistmultinomialTable, v : Double) -> StatsdistmultinomialTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialTable::fill(self : StatsdistmultinomialTable, v : Double) -> StatsdistmultinomialTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_table_min(s : StatsdistmultinomialTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialTable::min(self : StatsdistmultinomialTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_table_max(s : StatsdistmultinomialTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialTable::max(self : StatsdistmultinomialTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_table_to_string(s : StatsdistmultinomialTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialTable::to_string(self : StatsdistmultinomialTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_multinomial_graphn_make(size : Int) -> StatsdistmultinomialGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_graphn_len(s : StatsdistmultinomialGraphN) -> Int { s.size }
+pub fn StatsdistmultinomialGraphN::len(self : StatsdistmultinomialGraphN) -> Int { self.size }
 
-pub fn stats_dist_multinomial_graphn_get(s : StatsdistmultinomialGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialGraphN::get(self : StatsdistmultinomialGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_graphn_set(s : StatsdistmultinomialGraphN, i : Int, v : Double) -> StatsdistmultinomialGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialGraphN::set(self : StatsdistmultinomialGraphN, i : Int, v : Double) -> StatsdistmultinomialGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_graphn_sum(s : StatsdistmultinomialGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialGraphN::sum(self : StatsdistmultinomialGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_graphn_mean(s : StatsdistmultinomialGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialGraphN::mean(self : StatsdistmultinomialGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_graphn_scale(s : StatsdistmultinomialGraphN, f : Double) -> StatsdistmultinomialGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialGraphN::scale(self : StatsdistmultinomialGraphN, f : Double) -> StatsdistmultinomialGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_graphn_add(a : StatsdistmultinomialGraphN, b : StatsdistmultinomialGraphN) -> StatsdistmultinomialGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialGraphN::add(self : StatsdistmultinomialGraphN, other : StatsdistmultinomialGraphN) -> StatsdistmultinomialGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_graphn_copy(s : StatsdistmultinomialGraphN) -> StatsdistmultinomialGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialGraphN::copy(self : StatsdistmultinomialGraphN) -> StatsdistmultinomialGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_graphn_fill(s : StatsdistmultinomialGraphN, v : Double) -> StatsdistmultinomialGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialGraphN::fill(self : StatsdistmultinomialGraphN, v : Double) -> StatsdistmultinomialGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_graphn_min(s : StatsdistmultinomialGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialGraphN::min(self : StatsdistmultinomialGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_graphn_max(s : StatsdistmultinomialGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialGraphN::max(self : StatsdistmultinomialGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_graphn_to_string(s : StatsdistmultinomialGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialGraphN::to_string(self : StatsdistmultinomialGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_multinomial_node_make(size : Int) -> StatsdistmultinomialNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_node_len(s : StatsdistmultinomialNode) -> Int { s.size }
+pub fn StatsdistmultinomialNode::len(self : StatsdistmultinomialNode) -> Int { self.size }
 
-pub fn stats_dist_multinomial_node_get(s : StatsdistmultinomialNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialNode::get(self : StatsdistmultinomialNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_node_set(s : StatsdistmultinomialNode, i : Int, v : Double) -> StatsdistmultinomialNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialNode::set(self : StatsdistmultinomialNode, i : Int, v : Double) -> StatsdistmultinomialNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_node_sum(s : StatsdistmultinomialNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialNode::sum(self : StatsdistmultinomialNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_node_mean(s : StatsdistmultinomialNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialNode::mean(self : StatsdistmultinomialNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_node_scale(s : StatsdistmultinomialNode, f : Double) -> StatsdistmultinomialNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialNode::scale(self : StatsdistmultinomialNode, f : Double) -> StatsdistmultinomialNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_node_add(a : StatsdistmultinomialNode, b : StatsdistmultinomialNode) -> StatsdistmultinomialNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialNode::add(self : StatsdistmultinomialNode, other : StatsdistmultinomialNode) -> StatsdistmultinomialNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_node_copy(s : StatsdistmultinomialNode) -> StatsdistmultinomialNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialNode::copy(self : StatsdistmultinomialNode) -> StatsdistmultinomialNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_node_fill(s : StatsdistmultinomialNode, v : Double) -> StatsdistmultinomialNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialNode::fill(self : StatsdistmultinomialNode, v : Double) -> StatsdistmultinomialNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_node_min(s : StatsdistmultinomialNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialNode::min(self : StatsdistmultinomialNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_node_max(s : StatsdistmultinomialNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialNode::max(self : StatsdistmultinomialNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_node_to_string(s : StatsdistmultinomialNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialNode::to_string(self : StatsdistmultinomialNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_multinomial_edge_make(size : Int) -> StatsdistmultinomialEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_edge_len(s : StatsdistmultinomialEdge) -> Int { s.size }
+pub fn StatsdistmultinomialEdge::len(self : StatsdistmultinomialEdge) -> Int { self.size }
 
-pub fn stats_dist_multinomial_edge_get(s : StatsdistmultinomialEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialEdge::get(self : StatsdistmultinomialEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_edge_set(s : StatsdistmultinomialEdge, i : Int, v : Double) -> StatsdistmultinomialEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialEdge::set(self : StatsdistmultinomialEdge, i : Int, v : Double) -> StatsdistmultinomialEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_edge_sum(s : StatsdistmultinomialEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialEdge::sum(self : StatsdistmultinomialEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_edge_mean(s : StatsdistmultinomialEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialEdge::mean(self : StatsdistmultinomialEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_edge_scale(s : StatsdistmultinomialEdge, f : Double) -> StatsdistmultinomialEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialEdge::scale(self : StatsdistmultinomialEdge, f : Double) -> StatsdistmultinomialEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_edge_add(a : StatsdistmultinomialEdge, b : StatsdistmultinomialEdge) -> StatsdistmultinomialEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialEdge::add(self : StatsdistmultinomialEdge, other : StatsdistmultinomialEdge) -> StatsdistmultinomialEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_edge_copy(s : StatsdistmultinomialEdge) -> StatsdistmultinomialEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialEdge::copy(self : StatsdistmultinomialEdge) -> StatsdistmultinomialEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_edge_fill(s : StatsdistmultinomialEdge, v : Double) -> StatsdistmultinomialEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialEdge::fill(self : StatsdistmultinomialEdge, v : Double) -> StatsdistmultinomialEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_edge_min(s : StatsdistmultinomialEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialEdge::min(self : StatsdistmultinomialEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_edge_max(s : StatsdistmultinomialEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialEdge::max(self : StatsdistmultinomialEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_edge_to_string(s : StatsdistmultinomialEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialEdge::to_string(self : StatsdistmultinomialEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_multinomial_path_make(size : Int) -> StatsdistmultinomialPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_path_len(s : StatsdistmultinomialPath) -> Int { s.size }
+pub fn StatsdistmultinomialPath::len(self : StatsdistmultinomialPath) -> Int { self.size }
 
-pub fn stats_dist_multinomial_path_get(s : StatsdistmultinomialPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialPath::get(self : StatsdistmultinomialPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_path_set(s : StatsdistmultinomialPath, i : Int, v : Double) -> StatsdistmultinomialPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialPath::set(self : StatsdistmultinomialPath, i : Int, v : Double) -> StatsdistmultinomialPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_path_sum(s : StatsdistmultinomialPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialPath::sum(self : StatsdistmultinomialPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_path_mean(s : StatsdistmultinomialPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialPath::mean(self : StatsdistmultinomialPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_path_scale(s : StatsdistmultinomialPath, f : Double) -> StatsdistmultinomialPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialPath::scale(self : StatsdistmultinomialPath, f : Double) -> StatsdistmultinomialPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_path_add(a : StatsdistmultinomialPath, b : StatsdistmultinomialPath) -> StatsdistmultinomialPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialPath::add(self : StatsdistmultinomialPath, other : StatsdistmultinomialPath) -> StatsdistmultinomialPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_path_copy(s : StatsdistmultinomialPath) -> StatsdistmultinomialPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialPath::copy(self : StatsdistmultinomialPath) -> StatsdistmultinomialPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_path_fill(s : StatsdistmultinomialPath, v : Double) -> StatsdistmultinomialPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialPath::fill(self : StatsdistmultinomialPath, v : Double) -> StatsdistmultinomialPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_path_min(s : StatsdistmultinomialPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialPath::min(self : StatsdistmultinomialPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_path_max(s : StatsdistmultinomialPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialPath::max(self : StatsdistmultinomialPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_path_to_string(s : StatsdistmultinomialPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialPath::to_string(self : StatsdistmultinomialPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_multinomial_cluster_make(size : Int) -> StatsdistmultinomialCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_cluster_len(s : StatsdistmultinomialCluster) -> Int { s.size }
+pub fn StatsdistmultinomialCluster::len(self : StatsdistmultinomialCluster) -> Int { self.size }
 
-pub fn stats_dist_multinomial_cluster_get(s : StatsdistmultinomialCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialCluster::get(self : StatsdistmultinomialCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_cluster_set(s : StatsdistmultinomialCluster, i : Int, v : Double) -> StatsdistmultinomialCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCluster::set(self : StatsdistmultinomialCluster, i : Int, v : Double) -> StatsdistmultinomialCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cluster_sum(s : StatsdistmultinomialCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialCluster::sum(self : StatsdistmultinomialCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_cluster_mean(s : StatsdistmultinomialCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialCluster::mean(self : StatsdistmultinomialCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_cluster_scale(s : StatsdistmultinomialCluster, f : Double) -> StatsdistmultinomialCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCluster::scale(self : StatsdistmultinomialCluster, f : Double) -> StatsdistmultinomialCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cluster_add(a : StatsdistmultinomialCluster, b : StatsdistmultinomialCluster) -> StatsdistmultinomialCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialCluster::add(self : StatsdistmultinomialCluster, other : StatsdistmultinomialCluster) -> StatsdistmultinomialCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cluster_copy(s : StatsdistmultinomialCluster) -> StatsdistmultinomialCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCluster::copy(self : StatsdistmultinomialCluster) -> StatsdistmultinomialCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cluster_fill(s : StatsdistmultinomialCluster, v : Double) -> StatsdistmultinomialCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCluster::fill(self : StatsdistmultinomialCluster, v : Double) -> StatsdistmultinomialCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cluster_min(s : StatsdistmultinomialCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialCluster::min(self : StatsdistmultinomialCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_cluster_max(s : StatsdistmultinomialCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialCluster::max(self : StatsdistmultinomialCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_cluster_to_string(s : StatsdistmultinomialCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialCluster::to_string(self : StatsdistmultinomialCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_multinomial_model_make(size : Int) -> StatsdistmultinomialMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_model_len(s : StatsdistmultinomialModel) -> Int { s.size }
+pub fn StatsdistmultinomialModel::len(self : StatsdistmultinomialModel) -> Int { self.size }
 
-pub fn stats_dist_multinomial_model_get(s : StatsdistmultinomialModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialModel::get(self : StatsdistmultinomialModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_model_set(s : StatsdistmultinomialModel, i : Int, v : Double) -> StatsdistmultinomialModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialModel::set(self : StatsdistmultinomialModel, i : Int, v : Double) -> StatsdistmultinomialModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_model_sum(s : StatsdistmultinomialModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialModel::sum(self : StatsdistmultinomialModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_model_mean(s : StatsdistmultinomialModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialModel::mean(self : StatsdistmultinomialModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_model_scale(s : StatsdistmultinomialModel, f : Double) -> StatsdistmultinomialModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialModel::scale(self : StatsdistmultinomialModel, f : Double) -> StatsdistmultinomialModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_model_add(a : StatsdistmultinomialModel, b : StatsdistmultinomialModel) -> StatsdistmultinomialModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialModel::add(self : StatsdistmultinomialModel, other : StatsdistmultinomialModel) -> StatsdistmultinomialModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_model_copy(s : StatsdistmultinomialModel) -> StatsdistmultinomialModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialModel::copy(self : StatsdistmultinomialModel) -> StatsdistmultinomialModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_model_fill(s : StatsdistmultinomialModel, v : Double) -> StatsdistmultinomialModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialModel::fill(self : StatsdistmultinomialModel, v : Double) -> StatsdistmultinomialModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_model_min(s : StatsdistmultinomialModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialModel::min(self : StatsdistmultinomialModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_model_max(s : StatsdistmultinomialModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialModel::max(self : StatsdistmultinomialModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_model_to_string(s : StatsdistmultinomialModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialModel::to_string(self : StatsdistmultinomialModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_multinomial_layer_make(size : Int) -> StatsdistmultinomialLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_layer_len(s : StatsdistmultinomialLayer) -> Int { s.size }
+pub fn StatsdistmultinomialLayer::len(self : StatsdistmultinomialLayer) -> Int { self.size }
 
-pub fn stats_dist_multinomial_layer_get(s : StatsdistmultinomialLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialLayer::get(self : StatsdistmultinomialLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_layer_set(s : StatsdistmultinomialLayer, i : Int, v : Double) -> StatsdistmultinomialLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialLayer::set(self : StatsdistmultinomialLayer, i : Int, v : Double) -> StatsdistmultinomialLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_layer_sum(s : StatsdistmultinomialLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialLayer::sum(self : StatsdistmultinomialLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_layer_mean(s : StatsdistmultinomialLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialLayer::mean(self : StatsdistmultinomialLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_layer_scale(s : StatsdistmultinomialLayer, f : Double) -> StatsdistmultinomialLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialLayer::scale(self : StatsdistmultinomialLayer, f : Double) -> StatsdistmultinomialLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_layer_add(a : StatsdistmultinomialLayer, b : StatsdistmultinomialLayer) -> StatsdistmultinomialLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialLayer::add(self : StatsdistmultinomialLayer, other : StatsdistmultinomialLayer) -> StatsdistmultinomialLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_layer_copy(s : StatsdistmultinomialLayer) -> StatsdistmultinomialLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialLayer::copy(self : StatsdistmultinomialLayer) -> StatsdistmultinomialLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_layer_fill(s : StatsdistmultinomialLayer, v : Double) -> StatsdistmultinomialLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialLayer::fill(self : StatsdistmultinomialLayer, v : Double) -> StatsdistmultinomialLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_layer_min(s : StatsdistmultinomialLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialLayer::min(self : StatsdistmultinomialLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_layer_max(s : StatsdistmultinomialLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialLayer::max(self : StatsdistmultinomialLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_layer_to_string(s : StatsdistmultinomialLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialLayer::to_string(self : StatsdistmultinomialLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_multinomial_buffer_make(size : Int) -> StatsdistmultinomialBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_buffer_len(s : StatsdistmultinomialBuffer) -> Int { s.size }
+pub fn StatsdistmultinomialBuffer::len(self : StatsdistmultinomialBuffer) -> Int { self.size }
 
-pub fn stats_dist_multinomial_buffer_get(s : StatsdistmultinomialBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialBuffer::get(self : StatsdistmultinomialBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_buffer_set(s : StatsdistmultinomialBuffer, i : Int, v : Double) -> StatsdistmultinomialBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialBuffer::set(self : StatsdistmultinomialBuffer, i : Int, v : Double) -> StatsdistmultinomialBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_buffer_sum(s : StatsdistmultinomialBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialBuffer::sum(self : StatsdistmultinomialBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_buffer_mean(s : StatsdistmultinomialBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialBuffer::mean(self : StatsdistmultinomialBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_buffer_scale(s : StatsdistmultinomialBuffer, f : Double) -> StatsdistmultinomialBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialBuffer::scale(self : StatsdistmultinomialBuffer, f : Double) -> StatsdistmultinomialBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_buffer_add(a : StatsdistmultinomialBuffer, b : StatsdistmultinomialBuffer) -> StatsdistmultinomialBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialBuffer::add(self : StatsdistmultinomialBuffer, other : StatsdistmultinomialBuffer) -> StatsdistmultinomialBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_buffer_copy(s : StatsdistmultinomialBuffer) -> StatsdistmultinomialBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialBuffer::copy(self : StatsdistmultinomialBuffer) -> StatsdistmultinomialBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_buffer_fill(s : StatsdistmultinomialBuffer, v : Double) -> StatsdistmultinomialBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialBuffer::fill(self : StatsdistmultinomialBuffer, v : Double) -> StatsdistmultinomialBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_buffer_min(s : StatsdistmultinomialBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialBuffer::min(self : StatsdistmultinomialBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_buffer_max(s : StatsdistmultinomialBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialBuffer::max(self : StatsdistmultinomialBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_buffer_to_string(s : StatsdistmultinomialBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialBuffer::to_string(self : StatsdistmultinomialBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_multinomial_cursor_make(size : Int) -> StatsdistmultinomialCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_cursor_len(s : StatsdistmultinomialCursor) -> Int { s.size }
+pub fn StatsdistmultinomialCursor::len(self : StatsdistmultinomialCursor) -> Int { self.size }
 
-pub fn stats_dist_multinomial_cursor_get(s : StatsdistmultinomialCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialCursor::get(self : StatsdistmultinomialCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_cursor_set(s : StatsdistmultinomialCursor, i : Int, v : Double) -> StatsdistmultinomialCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCursor::set(self : StatsdistmultinomialCursor, i : Int, v : Double) -> StatsdistmultinomialCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cursor_sum(s : StatsdistmultinomialCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialCursor::sum(self : StatsdistmultinomialCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_cursor_mean(s : StatsdistmultinomialCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialCursor::mean(self : StatsdistmultinomialCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_cursor_scale(s : StatsdistmultinomialCursor, f : Double) -> StatsdistmultinomialCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCursor::scale(self : StatsdistmultinomialCursor, f : Double) -> StatsdistmultinomialCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cursor_add(a : StatsdistmultinomialCursor, b : StatsdistmultinomialCursor) -> StatsdistmultinomialCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialCursor::add(self : StatsdistmultinomialCursor, other : StatsdistmultinomialCursor) -> StatsdistmultinomialCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cursor_copy(s : StatsdistmultinomialCursor) -> StatsdistmultinomialCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCursor::copy(self : StatsdistmultinomialCursor) -> StatsdistmultinomialCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cursor_fill(s : StatsdistmultinomialCursor, v : Double) -> StatsdistmultinomialCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialCursor::fill(self : StatsdistmultinomialCursor, v : Double) -> StatsdistmultinomialCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_cursor_min(s : StatsdistmultinomialCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialCursor::min(self : StatsdistmultinomialCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_cursor_max(s : StatsdistmultinomialCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialCursor::max(self : StatsdistmultinomialCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_cursor_to_string(s : StatsdistmultinomialCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialCursor::to_string(self : StatsdistmultinomialCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialView {
@@ -912,45 +912,45 @@ pub fn stats_dist_multinomial_view_make(size : Int) -> StatsdistmultinomialView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_view_len(s : StatsdistmultinomialView) -> Int { s.size }
+pub fn StatsdistmultinomialView::len(self : StatsdistmultinomialView) -> Int { self.size }
 
-pub fn stats_dist_multinomial_view_get(s : StatsdistmultinomialView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialView::get(self : StatsdistmultinomialView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_view_set(s : StatsdistmultinomialView, i : Int, v : Double) -> StatsdistmultinomialView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialView::set(self : StatsdistmultinomialView, i : Int, v : Double) -> StatsdistmultinomialView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_view_sum(s : StatsdistmultinomialView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialView::sum(self : StatsdistmultinomialView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_view_mean(s : StatsdistmultinomialView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialView::mean(self : StatsdistmultinomialView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_view_scale(s : StatsdistmultinomialView, f : Double) -> StatsdistmultinomialView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialView::scale(self : StatsdistmultinomialView, f : Double) -> StatsdistmultinomialView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_view_add(a : StatsdistmultinomialView, b : StatsdistmultinomialView) -> StatsdistmultinomialView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialView::add(self : StatsdistmultinomialView, other : StatsdistmultinomialView) -> StatsdistmultinomialView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_view_copy(s : StatsdistmultinomialView) -> StatsdistmultinomialView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialView::copy(self : StatsdistmultinomialView) -> StatsdistmultinomialView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_view_fill(s : StatsdistmultinomialView, v : Double) -> StatsdistmultinomialView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialView::fill(self : StatsdistmultinomialView, v : Double) -> StatsdistmultinomialView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_view_min(s : StatsdistmultinomialView) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialView::min(self : StatsdistmultinomialView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_view_max(s : StatsdistmultinomialView) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialView::max(self : StatsdistmultinomialView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_view_to_string(s : StatsdistmultinomialView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialView::to_string(self : StatsdistmultinomialView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_multinomial_range_make(size : Int) -> StatsdistmultinomialRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_range_len(s : StatsdistmultinomialRange) -> Int { s.size }
+pub fn StatsdistmultinomialRange::len(self : StatsdistmultinomialRange) -> Int { self.size }
 
-pub fn stats_dist_multinomial_range_get(s : StatsdistmultinomialRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialRange::get(self : StatsdistmultinomialRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_range_set(s : StatsdistmultinomialRange, i : Int, v : Double) -> StatsdistmultinomialRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialRange::set(self : StatsdistmultinomialRange, i : Int, v : Double) -> StatsdistmultinomialRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_range_sum(s : StatsdistmultinomialRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialRange::sum(self : StatsdistmultinomialRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_range_mean(s : StatsdistmultinomialRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialRange::mean(self : StatsdistmultinomialRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_range_scale(s : StatsdistmultinomialRange, f : Double) -> StatsdistmultinomialRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialRange::scale(self : StatsdistmultinomialRange, f : Double) -> StatsdistmultinomialRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_range_add(a : StatsdistmultinomialRange, b : StatsdistmultinomialRange) -> StatsdistmultinomialRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialRange::add(self : StatsdistmultinomialRange, other : StatsdistmultinomialRange) -> StatsdistmultinomialRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_range_copy(s : StatsdistmultinomialRange) -> StatsdistmultinomialRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialRange::copy(self : StatsdistmultinomialRange) -> StatsdistmultinomialRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_range_fill(s : StatsdistmultinomialRange, v : Double) -> StatsdistmultinomialRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialRange::fill(self : StatsdistmultinomialRange, v : Double) -> StatsdistmultinomialRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_range_min(s : StatsdistmultinomialRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialRange::min(self : StatsdistmultinomialRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_range_max(s : StatsdistmultinomialRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialRange::max(self : StatsdistmultinomialRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_range_to_string(s : StatsdistmultinomialRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialRange::to_string(self : StatsdistmultinomialRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistmultinomialSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_multinomial_slice_make(size : Int) -> StatsdistmultinomialSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_multinomial_slice_len(s : StatsdistmultinomialSlice) -> Int { s.size }
+pub fn StatsdistmultinomialSlice::len(self : StatsdistmultinomialSlice) -> Int { self.size }
 
-pub fn stats_dist_multinomial_slice_get(s : StatsdistmultinomialSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistmultinomialSlice::get(self : StatsdistmultinomialSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_multinomial_slice_set(s : StatsdistmultinomialSlice, i : Int, v : Double) -> StatsdistmultinomialSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialSlice::set(self : StatsdistmultinomialSlice, i : Int, v : Double) -> StatsdistmultinomialSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_slice_sum(s : StatsdistmultinomialSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistmultinomialSlice::sum(self : StatsdistmultinomialSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_multinomial_slice_mean(s : StatsdistmultinomialSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistmultinomialSlice::mean(self : StatsdistmultinomialSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_multinomial_slice_scale(s : StatsdistmultinomialSlice, f : Double) -> StatsdistmultinomialSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialSlice::scale(self : StatsdistmultinomialSlice, f : Double) -> StatsdistmultinomialSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_slice_add(a : StatsdistmultinomialSlice, b : StatsdistmultinomialSlice) -> StatsdistmultinomialSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistmultinomialSlice::add(self : StatsdistmultinomialSlice, other : StatsdistmultinomialSlice) -> StatsdistmultinomialSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_slice_copy(s : StatsdistmultinomialSlice) -> StatsdistmultinomialSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialSlice::copy(self : StatsdistmultinomialSlice) -> StatsdistmultinomialSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_slice_fill(s : StatsdistmultinomialSlice, v : Double) -> StatsdistmultinomialSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistmultinomialSlice::fill(self : StatsdistmultinomialSlice, v : Double) -> StatsdistmultinomialSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_multinomial_slice_min(s : StatsdistmultinomialSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistmultinomialSlice::min(self : StatsdistmultinomialSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_multinomial_slice_max(s : StatsdistmultinomialSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistmultinomialSlice::max(self : StatsdistmultinomialSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_multinomial_slice_to_string(s : StatsdistmultinomialSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistmultinomialSlice::to_string(self : StatsdistmultinomialSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

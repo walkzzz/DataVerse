@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_de_bruijn_frame_make(size : Int) -> Bioseqassemblydebrui
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_len(s : BioseqassemblydebruijnFrame) -> Int { s.size }
+pub fn BioseqassemblydebruijnFrame::len(self : BioseqassemblydebruijnFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_frame_get(s : BioseqassemblydebruijnFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnFrame::get(self : BioseqassemblydebruijnFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_set(s : BioseqassemblydebruijnFrame, i : Int, v : Double) -> BioseqassemblydebruijnFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnFrame::set(self : BioseqassemblydebruijnFrame, i : Int, v : Double) -> BioseqassemblydebruijnFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_sum(s : BioseqassemblydebruijnFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnFrame::sum(self : BioseqassemblydebruijnFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_frame_mean(s : BioseqassemblydebruijnFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnFrame::mean(self : BioseqassemblydebruijnFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_frame_scale(s : BioseqassemblydebruijnFrame, f : Double) -> BioseqassemblydebruijnFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnFrame::scale(self : BioseqassemblydebruijnFrame, f : Double) -> BioseqassemblydebruijnFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_add(a : BioseqassemblydebruijnFrame, b : BioseqassemblydebruijnFrame) -> BioseqassemblydebruijnFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnFrame::add(self : BioseqassemblydebruijnFrame, other : BioseqassemblydebruijnFrame) -> BioseqassemblydebruijnFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_copy(s : BioseqassemblydebruijnFrame) -> BioseqassemblydebruijnFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnFrame::copy(self : BioseqassemblydebruijnFrame) -> BioseqassemblydebruijnFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_fill(s : BioseqassemblydebruijnFrame, v : Double) -> BioseqassemblydebruijnFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnFrame::fill(self : BioseqassemblydebruijnFrame, v : Double) -> BioseqassemblydebruijnFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_frame_min(s : BioseqassemblydebruijnFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnFrame::min(self : BioseqassemblydebruijnFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_frame_max(s : BioseqassemblydebruijnFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnFrame::max(self : BioseqassemblydebruijnFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_frame_to_string(s : BioseqassemblydebruijnFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnFrame::to_string(self : BioseqassemblydebruijnFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_de_bruijn_table_make(size : Int) -> Bioseqassemblydebrui
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_len(s : BioseqassemblydebruijnTable) -> Int { s.size }
+pub fn BioseqassemblydebruijnTable::len(self : BioseqassemblydebruijnTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_table_get(s : BioseqassemblydebruijnTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnTable::get(self : BioseqassemblydebruijnTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_set(s : BioseqassemblydebruijnTable, i : Int, v : Double) -> BioseqassemblydebruijnTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnTable::set(self : BioseqassemblydebruijnTable, i : Int, v : Double) -> BioseqassemblydebruijnTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_sum(s : BioseqassemblydebruijnTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnTable::sum(self : BioseqassemblydebruijnTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_table_mean(s : BioseqassemblydebruijnTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnTable::mean(self : BioseqassemblydebruijnTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_table_scale(s : BioseqassemblydebruijnTable, f : Double) -> BioseqassemblydebruijnTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnTable::scale(self : BioseqassemblydebruijnTable, f : Double) -> BioseqassemblydebruijnTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_add(a : BioseqassemblydebruijnTable, b : BioseqassemblydebruijnTable) -> BioseqassemblydebruijnTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnTable::add(self : BioseqassemblydebruijnTable, other : BioseqassemblydebruijnTable) -> BioseqassemblydebruijnTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_copy(s : BioseqassemblydebruijnTable) -> BioseqassemblydebruijnTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnTable::copy(self : BioseqassemblydebruijnTable) -> BioseqassemblydebruijnTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_fill(s : BioseqassemblydebruijnTable, v : Double) -> BioseqassemblydebruijnTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnTable::fill(self : BioseqassemblydebruijnTable, v : Double) -> BioseqassemblydebruijnTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_table_min(s : BioseqassemblydebruijnTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnTable::min(self : BioseqassemblydebruijnTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_table_max(s : BioseqassemblydebruijnTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnTable::max(self : BioseqassemblydebruijnTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_table_to_string(s : BioseqassemblydebruijnTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnTable::to_string(self : BioseqassemblydebruijnTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_de_bruijn_graphn_make(size : Int) -> Bioseqassemblydebru
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_len(s : BioseqassemblydebruijnGraphN) -> Int { s.size }
+pub fn BioseqassemblydebruijnGraphN::len(self : BioseqassemblydebruijnGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_get(s : BioseqassemblydebruijnGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnGraphN::get(self : BioseqassemblydebruijnGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_set(s : BioseqassemblydebruijnGraphN, i : Int, v : Double) -> BioseqassemblydebruijnGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnGraphN::set(self : BioseqassemblydebruijnGraphN, i : Int, v : Double) -> BioseqassemblydebruijnGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_sum(s : BioseqassemblydebruijnGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnGraphN::sum(self : BioseqassemblydebruijnGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_mean(s : BioseqassemblydebruijnGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnGraphN::mean(self : BioseqassemblydebruijnGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_scale(s : BioseqassemblydebruijnGraphN, f : Double) -> BioseqassemblydebruijnGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnGraphN::scale(self : BioseqassemblydebruijnGraphN, f : Double) -> BioseqassemblydebruijnGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_add(a : BioseqassemblydebruijnGraphN, b : BioseqassemblydebruijnGraphN) -> BioseqassemblydebruijnGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnGraphN::add(self : BioseqassemblydebruijnGraphN, other : BioseqassemblydebruijnGraphN) -> BioseqassemblydebruijnGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_copy(s : BioseqassemblydebruijnGraphN) -> BioseqassemblydebruijnGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnGraphN::copy(self : BioseqassemblydebruijnGraphN) -> BioseqassemblydebruijnGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_fill(s : BioseqassemblydebruijnGraphN, v : Double) -> BioseqassemblydebruijnGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnGraphN::fill(self : BioseqassemblydebruijnGraphN, v : Double) -> BioseqassemblydebruijnGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_min(s : BioseqassemblydebruijnGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnGraphN::min(self : BioseqassemblydebruijnGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_max(s : BioseqassemblydebruijnGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnGraphN::max(self : BioseqassemblydebruijnGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_graphn_to_string(s : BioseqassemblydebruijnGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnGraphN::to_string(self : BioseqassemblydebruijnGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_de_bruijn_node_make(size : Int) -> Bioseqassemblydebruij
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_len(s : BioseqassemblydebruijnNode) -> Int { s.size }
+pub fn BioseqassemblydebruijnNode::len(self : BioseqassemblydebruijnNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_node_get(s : BioseqassemblydebruijnNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnNode::get(self : BioseqassemblydebruijnNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_set(s : BioseqassemblydebruijnNode, i : Int, v : Double) -> BioseqassemblydebruijnNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnNode::set(self : BioseqassemblydebruijnNode, i : Int, v : Double) -> BioseqassemblydebruijnNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_sum(s : BioseqassemblydebruijnNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnNode::sum(self : BioseqassemblydebruijnNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_node_mean(s : BioseqassemblydebruijnNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnNode::mean(self : BioseqassemblydebruijnNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_node_scale(s : BioseqassemblydebruijnNode, f : Double) -> BioseqassemblydebruijnNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnNode::scale(self : BioseqassemblydebruijnNode, f : Double) -> BioseqassemblydebruijnNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_add(a : BioseqassemblydebruijnNode, b : BioseqassemblydebruijnNode) -> BioseqassemblydebruijnNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnNode::add(self : BioseqassemblydebruijnNode, other : BioseqassemblydebruijnNode) -> BioseqassemblydebruijnNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_copy(s : BioseqassemblydebruijnNode) -> BioseqassemblydebruijnNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnNode::copy(self : BioseqassemblydebruijnNode) -> BioseqassemblydebruijnNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_fill(s : BioseqassemblydebruijnNode, v : Double) -> BioseqassemblydebruijnNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnNode::fill(self : BioseqassemblydebruijnNode, v : Double) -> BioseqassemblydebruijnNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_node_min(s : BioseqassemblydebruijnNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnNode::min(self : BioseqassemblydebruijnNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_node_max(s : BioseqassemblydebruijnNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnNode::max(self : BioseqassemblydebruijnNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_node_to_string(s : BioseqassemblydebruijnNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnNode::to_string(self : BioseqassemblydebruijnNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_de_bruijn_edge_make(size : Int) -> Bioseqassemblydebruij
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_len(s : BioseqassemblydebruijnEdge) -> Int { s.size }
+pub fn BioseqassemblydebruijnEdge::len(self : BioseqassemblydebruijnEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_edge_get(s : BioseqassemblydebruijnEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnEdge::get(self : BioseqassemblydebruijnEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_set(s : BioseqassemblydebruijnEdge, i : Int, v : Double) -> BioseqassemblydebruijnEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnEdge::set(self : BioseqassemblydebruijnEdge, i : Int, v : Double) -> BioseqassemblydebruijnEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_sum(s : BioseqassemblydebruijnEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnEdge::sum(self : BioseqassemblydebruijnEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_edge_mean(s : BioseqassemblydebruijnEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnEdge::mean(self : BioseqassemblydebruijnEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_edge_scale(s : BioseqassemblydebruijnEdge, f : Double) -> BioseqassemblydebruijnEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnEdge::scale(self : BioseqassemblydebruijnEdge, f : Double) -> BioseqassemblydebruijnEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_add(a : BioseqassemblydebruijnEdge, b : BioseqassemblydebruijnEdge) -> BioseqassemblydebruijnEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnEdge::add(self : BioseqassemblydebruijnEdge, other : BioseqassemblydebruijnEdge) -> BioseqassemblydebruijnEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_copy(s : BioseqassemblydebruijnEdge) -> BioseqassemblydebruijnEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnEdge::copy(self : BioseqassemblydebruijnEdge) -> BioseqassemblydebruijnEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_fill(s : BioseqassemblydebruijnEdge, v : Double) -> BioseqassemblydebruijnEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnEdge::fill(self : BioseqassemblydebruijnEdge, v : Double) -> BioseqassemblydebruijnEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_edge_min(s : BioseqassemblydebruijnEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnEdge::min(self : BioseqassemblydebruijnEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_edge_max(s : BioseqassemblydebruijnEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnEdge::max(self : BioseqassemblydebruijnEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_edge_to_string(s : BioseqassemblydebruijnEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnEdge::to_string(self : BioseqassemblydebruijnEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_de_bruijn_path_make(size : Int) -> Bioseqassemblydebruij
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_len(s : BioseqassemblydebruijnPath) -> Int { s.size }
+pub fn BioseqassemblydebruijnPath::len(self : BioseqassemblydebruijnPath) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_path_get(s : BioseqassemblydebruijnPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnPath::get(self : BioseqassemblydebruijnPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_set(s : BioseqassemblydebruijnPath, i : Int, v : Double) -> BioseqassemblydebruijnPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnPath::set(self : BioseqassemblydebruijnPath, i : Int, v : Double) -> BioseqassemblydebruijnPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_sum(s : BioseqassemblydebruijnPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnPath::sum(self : BioseqassemblydebruijnPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_path_mean(s : BioseqassemblydebruijnPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnPath::mean(self : BioseqassemblydebruijnPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_path_scale(s : BioseqassemblydebruijnPath, f : Double) -> BioseqassemblydebruijnPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnPath::scale(self : BioseqassemblydebruijnPath, f : Double) -> BioseqassemblydebruijnPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_add(a : BioseqassemblydebruijnPath, b : BioseqassemblydebruijnPath) -> BioseqassemblydebruijnPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnPath::add(self : BioseqassemblydebruijnPath, other : BioseqassemblydebruijnPath) -> BioseqassemblydebruijnPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_copy(s : BioseqassemblydebruijnPath) -> BioseqassemblydebruijnPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnPath::copy(self : BioseqassemblydebruijnPath) -> BioseqassemblydebruijnPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_fill(s : BioseqassemblydebruijnPath, v : Double) -> BioseqassemblydebruijnPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnPath::fill(self : BioseqassemblydebruijnPath, v : Double) -> BioseqassemblydebruijnPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_path_min(s : BioseqassemblydebruijnPath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnPath::min(self : BioseqassemblydebruijnPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_path_max(s : BioseqassemblydebruijnPath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnPath::max(self : BioseqassemblydebruijnPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_path_to_string(s : BioseqassemblydebruijnPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnPath::to_string(self : BioseqassemblydebruijnPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_de_bruijn_cluster_make(size : Int) -> Bioseqassemblydebr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_len(s : BioseqassemblydebruijnCluster) -> Int { s.size }
+pub fn BioseqassemblydebruijnCluster::len(self : BioseqassemblydebruijnCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_get(s : BioseqassemblydebruijnCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnCluster::get(self : BioseqassemblydebruijnCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_set(s : BioseqassemblydebruijnCluster, i : Int, v : Double) -> BioseqassemblydebruijnCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCluster::set(self : BioseqassemblydebruijnCluster, i : Int, v : Double) -> BioseqassemblydebruijnCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_sum(s : BioseqassemblydebruijnCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnCluster::sum(self : BioseqassemblydebruijnCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_mean(s : BioseqassemblydebruijnCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnCluster::mean(self : BioseqassemblydebruijnCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_scale(s : BioseqassemblydebruijnCluster, f : Double) -> BioseqassemblydebruijnCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCluster::scale(self : BioseqassemblydebruijnCluster, f : Double) -> BioseqassemblydebruijnCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_add(a : BioseqassemblydebruijnCluster, b : BioseqassemblydebruijnCluster) -> BioseqassemblydebruijnCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnCluster::add(self : BioseqassemblydebruijnCluster, other : BioseqassemblydebruijnCluster) -> BioseqassemblydebruijnCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_copy(s : BioseqassemblydebruijnCluster) -> BioseqassemblydebruijnCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCluster::copy(self : BioseqassemblydebruijnCluster) -> BioseqassemblydebruijnCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_fill(s : BioseqassemblydebruijnCluster, v : Double) -> BioseqassemblydebruijnCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCluster::fill(self : BioseqassemblydebruijnCluster, v : Double) -> BioseqassemblydebruijnCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_min(s : BioseqassemblydebruijnCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnCluster::min(self : BioseqassemblydebruijnCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_max(s : BioseqassemblydebruijnCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnCluster::max(self : BioseqassemblydebruijnCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cluster_to_string(s : BioseqassemblydebruijnCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnCluster::to_string(self : BioseqassemblydebruijnCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_de_bruijn_model_make(size : Int) -> Bioseqassemblydebrui
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_len(s : BioseqassemblydebruijnModel) -> Int { s.size }
+pub fn BioseqassemblydebruijnModel::len(self : BioseqassemblydebruijnModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_model_get(s : BioseqassemblydebruijnModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnModel::get(self : BioseqassemblydebruijnModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_set(s : BioseqassemblydebruijnModel, i : Int, v : Double) -> BioseqassemblydebruijnModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnModel::set(self : BioseqassemblydebruijnModel, i : Int, v : Double) -> BioseqassemblydebruijnModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_sum(s : BioseqassemblydebruijnModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnModel::sum(self : BioseqassemblydebruijnModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_model_mean(s : BioseqassemblydebruijnModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnModel::mean(self : BioseqassemblydebruijnModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_model_scale(s : BioseqassemblydebruijnModel, f : Double) -> BioseqassemblydebruijnModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnModel::scale(self : BioseqassemblydebruijnModel, f : Double) -> BioseqassemblydebruijnModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_add(a : BioseqassemblydebruijnModel, b : BioseqassemblydebruijnModel) -> BioseqassemblydebruijnModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnModel::add(self : BioseqassemblydebruijnModel, other : BioseqassemblydebruijnModel) -> BioseqassemblydebruijnModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_copy(s : BioseqassemblydebruijnModel) -> BioseqassemblydebruijnModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnModel::copy(self : BioseqassemblydebruijnModel) -> BioseqassemblydebruijnModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_fill(s : BioseqassemblydebruijnModel, v : Double) -> BioseqassemblydebruijnModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnModel::fill(self : BioseqassemblydebruijnModel, v : Double) -> BioseqassemblydebruijnModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_model_min(s : BioseqassemblydebruijnModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnModel::min(self : BioseqassemblydebruijnModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_model_max(s : BioseqassemblydebruijnModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnModel::max(self : BioseqassemblydebruijnModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_model_to_string(s : BioseqassemblydebruijnModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnModel::to_string(self : BioseqassemblydebruijnModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_de_bruijn_layer_make(size : Int) -> Bioseqassemblydebrui
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_len(s : BioseqassemblydebruijnLayer) -> Int { s.size }
+pub fn BioseqassemblydebruijnLayer::len(self : BioseqassemblydebruijnLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_layer_get(s : BioseqassemblydebruijnLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnLayer::get(self : BioseqassemblydebruijnLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_set(s : BioseqassemblydebruijnLayer, i : Int, v : Double) -> BioseqassemblydebruijnLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnLayer::set(self : BioseqassemblydebruijnLayer, i : Int, v : Double) -> BioseqassemblydebruijnLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_sum(s : BioseqassemblydebruijnLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnLayer::sum(self : BioseqassemblydebruijnLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_layer_mean(s : BioseqassemblydebruijnLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnLayer::mean(self : BioseqassemblydebruijnLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_layer_scale(s : BioseqassemblydebruijnLayer, f : Double) -> BioseqassemblydebruijnLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnLayer::scale(self : BioseqassemblydebruijnLayer, f : Double) -> BioseqassemblydebruijnLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_add(a : BioseqassemblydebruijnLayer, b : BioseqassemblydebruijnLayer) -> BioseqassemblydebruijnLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnLayer::add(self : BioseqassemblydebruijnLayer, other : BioseqassemblydebruijnLayer) -> BioseqassemblydebruijnLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_copy(s : BioseqassemblydebruijnLayer) -> BioseqassemblydebruijnLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnLayer::copy(self : BioseqassemblydebruijnLayer) -> BioseqassemblydebruijnLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_fill(s : BioseqassemblydebruijnLayer, v : Double) -> BioseqassemblydebruijnLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnLayer::fill(self : BioseqassemblydebruijnLayer, v : Double) -> BioseqassemblydebruijnLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_layer_min(s : BioseqassemblydebruijnLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnLayer::min(self : BioseqassemblydebruijnLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_layer_max(s : BioseqassemblydebruijnLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnLayer::max(self : BioseqassemblydebruijnLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_layer_to_string(s : BioseqassemblydebruijnLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnLayer::to_string(self : BioseqassemblydebruijnLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_de_bruijn_buffer_make(size : Int) -> Bioseqassemblydebru
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_len(s : BioseqassemblydebruijnBuffer) -> Int { s.size }
+pub fn BioseqassemblydebruijnBuffer::len(self : BioseqassemblydebruijnBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_get(s : BioseqassemblydebruijnBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnBuffer::get(self : BioseqassemblydebruijnBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_set(s : BioseqassemblydebruijnBuffer, i : Int, v : Double) -> BioseqassemblydebruijnBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnBuffer::set(self : BioseqassemblydebruijnBuffer, i : Int, v : Double) -> BioseqassemblydebruijnBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_sum(s : BioseqassemblydebruijnBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnBuffer::sum(self : BioseqassemblydebruijnBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_mean(s : BioseqassemblydebruijnBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnBuffer::mean(self : BioseqassemblydebruijnBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_scale(s : BioseqassemblydebruijnBuffer, f : Double) -> BioseqassemblydebruijnBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnBuffer::scale(self : BioseqassemblydebruijnBuffer, f : Double) -> BioseqassemblydebruijnBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_add(a : BioseqassemblydebruijnBuffer, b : BioseqassemblydebruijnBuffer) -> BioseqassemblydebruijnBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnBuffer::add(self : BioseqassemblydebruijnBuffer, other : BioseqassemblydebruijnBuffer) -> BioseqassemblydebruijnBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_copy(s : BioseqassemblydebruijnBuffer) -> BioseqassemblydebruijnBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnBuffer::copy(self : BioseqassemblydebruijnBuffer) -> BioseqassemblydebruijnBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_fill(s : BioseqassemblydebruijnBuffer, v : Double) -> BioseqassemblydebruijnBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnBuffer::fill(self : BioseqassemblydebruijnBuffer, v : Double) -> BioseqassemblydebruijnBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_min(s : BioseqassemblydebruijnBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnBuffer::min(self : BioseqassemblydebruijnBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_max(s : BioseqassemblydebruijnBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnBuffer::max(self : BioseqassemblydebruijnBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_buffer_to_string(s : BioseqassemblydebruijnBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnBuffer::to_string(self : BioseqassemblydebruijnBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_de_bruijn_cursor_make(size : Int) -> Bioseqassemblydebru
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_len(s : BioseqassemblydebruijnCursor) -> Int { s.size }
+pub fn BioseqassemblydebruijnCursor::len(self : BioseqassemblydebruijnCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_get(s : BioseqassemblydebruijnCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnCursor::get(self : BioseqassemblydebruijnCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_set(s : BioseqassemblydebruijnCursor, i : Int, v : Double) -> BioseqassemblydebruijnCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCursor::set(self : BioseqassemblydebruijnCursor, i : Int, v : Double) -> BioseqassemblydebruijnCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_sum(s : BioseqassemblydebruijnCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnCursor::sum(self : BioseqassemblydebruijnCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_mean(s : BioseqassemblydebruijnCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnCursor::mean(self : BioseqassemblydebruijnCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_scale(s : BioseqassemblydebruijnCursor, f : Double) -> BioseqassemblydebruijnCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCursor::scale(self : BioseqassemblydebruijnCursor, f : Double) -> BioseqassemblydebruijnCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_add(a : BioseqassemblydebruijnCursor, b : BioseqassemblydebruijnCursor) -> BioseqassemblydebruijnCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnCursor::add(self : BioseqassemblydebruijnCursor, other : BioseqassemblydebruijnCursor) -> BioseqassemblydebruijnCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_copy(s : BioseqassemblydebruijnCursor) -> BioseqassemblydebruijnCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCursor::copy(self : BioseqassemblydebruijnCursor) -> BioseqassemblydebruijnCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_fill(s : BioseqassemblydebruijnCursor, v : Double) -> BioseqassemblydebruijnCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnCursor::fill(self : BioseqassemblydebruijnCursor, v : Double) -> BioseqassemblydebruijnCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_min(s : BioseqassemblydebruijnCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnCursor::min(self : BioseqassemblydebruijnCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_max(s : BioseqassemblydebruijnCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnCursor::max(self : BioseqassemblydebruijnCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_cursor_to_string(s : BioseqassemblydebruijnCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnCursor::to_string(self : BioseqassemblydebruijnCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_de_bruijn_view_make(size : Int) -> Bioseqassemblydebruij
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_len(s : BioseqassemblydebruijnView) -> Int { s.size }
+pub fn BioseqassemblydebruijnView::len(self : BioseqassemblydebruijnView) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_view_get(s : BioseqassemblydebruijnView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnView::get(self : BioseqassemblydebruijnView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_set(s : BioseqassemblydebruijnView, i : Int, v : Double) -> BioseqassemblydebruijnView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnView::set(self : BioseqassemblydebruijnView, i : Int, v : Double) -> BioseqassemblydebruijnView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_sum(s : BioseqassemblydebruijnView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnView::sum(self : BioseqassemblydebruijnView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_view_mean(s : BioseqassemblydebruijnView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnView::mean(self : BioseqassemblydebruijnView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_view_scale(s : BioseqassemblydebruijnView, f : Double) -> BioseqassemblydebruijnView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnView::scale(self : BioseqassemblydebruijnView, f : Double) -> BioseqassemblydebruijnView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_add(a : BioseqassemblydebruijnView, b : BioseqassemblydebruijnView) -> BioseqassemblydebruijnView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnView::add(self : BioseqassemblydebruijnView, other : BioseqassemblydebruijnView) -> BioseqassemblydebruijnView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_copy(s : BioseqassemblydebruijnView) -> BioseqassemblydebruijnView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnView::copy(self : BioseqassemblydebruijnView) -> BioseqassemblydebruijnView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_fill(s : BioseqassemblydebruijnView, v : Double) -> BioseqassemblydebruijnView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnView::fill(self : BioseqassemblydebruijnView, v : Double) -> BioseqassemblydebruijnView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_view_min(s : BioseqassemblydebruijnView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnView::min(self : BioseqassemblydebruijnView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_view_max(s : BioseqassemblydebruijnView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnView::max(self : BioseqassemblydebruijnView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_view_to_string(s : BioseqassemblydebruijnView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnView::to_string(self : BioseqassemblydebruijnView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_de_bruijn_range_make(size : Int) -> Bioseqassemblydebrui
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_len(s : BioseqassemblydebruijnRange) -> Int { s.size }
+pub fn BioseqassemblydebruijnRange::len(self : BioseqassemblydebruijnRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_range_get(s : BioseqassemblydebruijnRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnRange::get(self : BioseqassemblydebruijnRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_set(s : BioseqassemblydebruijnRange, i : Int, v : Double) -> BioseqassemblydebruijnRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnRange::set(self : BioseqassemblydebruijnRange, i : Int, v : Double) -> BioseqassemblydebruijnRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_sum(s : BioseqassemblydebruijnRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnRange::sum(self : BioseqassemblydebruijnRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_range_mean(s : BioseqassemblydebruijnRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnRange::mean(self : BioseqassemblydebruijnRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_range_scale(s : BioseqassemblydebruijnRange, f : Double) -> BioseqassemblydebruijnRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnRange::scale(self : BioseqassemblydebruijnRange, f : Double) -> BioseqassemblydebruijnRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_add(a : BioseqassemblydebruijnRange, b : BioseqassemblydebruijnRange) -> BioseqassemblydebruijnRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnRange::add(self : BioseqassemblydebruijnRange, other : BioseqassemblydebruijnRange) -> BioseqassemblydebruijnRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_copy(s : BioseqassemblydebruijnRange) -> BioseqassemblydebruijnRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnRange::copy(self : BioseqassemblydebruijnRange) -> BioseqassemblydebruijnRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_fill(s : BioseqassemblydebruijnRange, v : Double) -> BioseqassemblydebruijnRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnRange::fill(self : BioseqassemblydebruijnRange, v : Double) -> BioseqassemblydebruijnRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_range_min(s : BioseqassemblydebruijnRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnRange::min(self : BioseqassemblydebruijnRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_range_max(s : BioseqassemblydebruijnRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnRange::max(self : BioseqassemblydebruijnRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_range_to_string(s : BioseqassemblydebruijnRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnRange::to_string(self : BioseqassemblydebruijnRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblydebruijnSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_de_bruijn_slice_make(size : Int) -> Bioseqassemblydebrui
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_len(s : BioseqassemblydebruijnSlice) -> Int { s.size }
+pub fn BioseqassemblydebruijnSlice::len(self : BioseqassemblydebruijnSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_de_bruijn_slice_get(s : BioseqassemblydebruijnSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblydebruijnSlice::get(self : BioseqassemblydebruijnSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_set(s : BioseqassemblydebruijnSlice, i : Int, v : Double) -> BioseqassemblydebruijnSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnSlice::set(self : BioseqassemblydebruijnSlice, i : Int, v : Double) -> BioseqassemblydebruijnSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_sum(s : BioseqassemblydebruijnSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblydebruijnSlice::sum(self : BioseqassemblydebruijnSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_slice_mean(s : BioseqassemblydebruijnSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblydebruijnSlice::mean(self : BioseqassemblydebruijnSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_slice_scale(s : BioseqassemblydebruijnSlice, f : Double) -> BioseqassemblydebruijnSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnSlice::scale(self : BioseqassemblydebruijnSlice, f : Double) -> BioseqassemblydebruijnSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_add(a : BioseqassemblydebruijnSlice, b : BioseqassemblydebruijnSlice) -> BioseqassemblydebruijnSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblydebruijnSlice::add(self : BioseqassemblydebruijnSlice, other : BioseqassemblydebruijnSlice) -> BioseqassemblydebruijnSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_copy(s : BioseqassemblydebruijnSlice) -> BioseqassemblydebruijnSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnSlice::copy(self : BioseqassemblydebruijnSlice) -> BioseqassemblydebruijnSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_fill(s : BioseqassemblydebruijnSlice, v : Double) -> BioseqassemblydebruijnSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblydebruijnSlice::fill(self : BioseqassemblydebruijnSlice, v : Double) -> BioseqassemblydebruijnSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_de_bruijn_slice_min(s : BioseqassemblydebruijnSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblydebruijnSlice::min(self : BioseqassemblydebruijnSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_slice_max(s : BioseqassemblydebruijnSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblydebruijnSlice::max(self : BioseqassemblydebruijnSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_de_bruijn_slice_to_string(s : BioseqassemblydebruijnSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblydebruijnSlice::to_string(self : BioseqassemblydebruijnSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

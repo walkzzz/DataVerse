@@ -351,45 +351,45 @@ pub fn image_filter_gabor_frame_make(size : Int) -> ImagefiltergaborFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_frame_len(s : ImagefiltergaborFrame) -> Int { s.size }
+pub fn ImagefiltergaborFrame::len(self : ImagefiltergaborFrame) -> Int { self.size }
 
-pub fn image_filter_gabor_frame_get(s : ImagefiltergaborFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborFrame::get(self : ImagefiltergaborFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_frame_set(s : ImagefiltergaborFrame, i : Int, v : Double) -> ImagefiltergaborFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborFrame::set(self : ImagefiltergaborFrame, i : Int, v : Double) -> ImagefiltergaborFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_frame_sum(s : ImagefiltergaborFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborFrame::sum(self : ImagefiltergaborFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_frame_mean(s : ImagefiltergaborFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborFrame::mean(self : ImagefiltergaborFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_frame_scale(s : ImagefiltergaborFrame, f : Double) -> ImagefiltergaborFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborFrame::scale(self : ImagefiltergaborFrame, f : Double) -> ImagefiltergaborFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_frame_add(a : ImagefiltergaborFrame, b : ImagefiltergaborFrame) -> ImagefiltergaborFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborFrame::add(self : ImagefiltergaborFrame, other : ImagefiltergaborFrame) -> ImagefiltergaborFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_frame_copy(s : ImagefiltergaborFrame) -> ImagefiltergaborFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborFrame::copy(self : ImagefiltergaborFrame) -> ImagefiltergaborFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_frame_fill(s : ImagefiltergaborFrame, v : Double) -> ImagefiltergaborFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborFrame::fill(self : ImagefiltergaborFrame, v : Double) -> ImagefiltergaborFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_frame_min(s : ImagefiltergaborFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborFrame::min(self : ImagefiltergaborFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_frame_max(s : ImagefiltergaborFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborFrame::max(self : ImagefiltergaborFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_frame_to_string(s : ImagefiltergaborFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborFrame::to_string(self : ImagefiltergaborFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborTable {
@@ -402,45 +402,45 @@ pub fn image_filter_gabor_table_make(size : Int) -> ImagefiltergaborTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_table_len(s : ImagefiltergaborTable) -> Int { s.size }
+pub fn ImagefiltergaborTable::len(self : ImagefiltergaborTable) -> Int { self.size }
 
-pub fn image_filter_gabor_table_get(s : ImagefiltergaborTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborTable::get(self : ImagefiltergaborTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_table_set(s : ImagefiltergaborTable, i : Int, v : Double) -> ImagefiltergaborTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborTable::set(self : ImagefiltergaborTable, i : Int, v : Double) -> ImagefiltergaborTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_table_sum(s : ImagefiltergaborTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborTable::sum(self : ImagefiltergaborTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_table_mean(s : ImagefiltergaborTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborTable::mean(self : ImagefiltergaborTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_table_scale(s : ImagefiltergaborTable, f : Double) -> ImagefiltergaborTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborTable::scale(self : ImagefiltergaborTable, f : Double) -> ImagefiltergaborTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_table_add(a : ImagefiltergaborTable, b : ImagefiltergaborTable) -> ImagefiltergaborTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborTable::add(self : ImagefiltergaborTable, other : ImagefiltergaborTable) -> ImagefiltergaborTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_table_copy(s : ImagefiltergaborTable) -> ImagefiltergaborTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborTable::copy(self : ImagefiltergaborTable) -> ImagefiltergaborTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_table_fill(s : ImagefiltergaborTable, v : Double) -> ImagefiltergaborTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborTable::fill(self : ImagefiltergaborTable, v : Double) -> ImagefiltergaborTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_table_min(s : ImagefiltergaborTable) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborTable::min(self : ImagefiltergaborTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_table_max(s : ImagefiltergaborTable) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborTable::max(self : ImagefiltergaborTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_table_to_string(s : ImagefiltergaborTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborTable::to_string(self : ImagefiltergaborTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_gabor_graphn_make(size : Int) -> ImagefiltergaborGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_graphn_len(s : ImagefiltergaborGraphN) -> Int { s.size }
+pub fn ImagefiltergaborGraphN::len(self : ImagefiltergaborGraphN) -> Int { self.size }
 
-pub fn image_filter_gabor_graphn_get(s : ImagefiltergaborGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborGraphN::get(self : ImagefiltergaborGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_graphn_set(s : ImagefiltergaborGraphN, i : Int, v : Double) -> ImagefiltergaborGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborGraphN::set(self : ImagefiltergaborGraphN, i : Int, v : Double) -> ImagefiltergaborGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_graphn_sum(s : ImagefiltergaborGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborGraphN::sum(self : ImagefiltergaborGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_graphn_mean(s : ImagefiltergaborGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborGraphN::mean(self : ImagefiltergaborGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_graphn_scale(s : ImagefiltergaborGraphN, f : Double) -> ImagefiltergaborGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborGraphN::scale(self : ImagefiltergaborGraphN, f : Double) -> ImagefiltergaborGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_graphn_add(a : ImagefiltergaborGraphN, b : ImagefiltergaborGraphN) -> ImagefiltergaborGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborGraphN::add(self : ImagefiltergaborGraphN, other : ImagefiltergaborGraphN) -> ImagefiltergaborGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_graphn_copy(s : ImagefiltergaborGraphN) -> ImagefiltergaborGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborGraphN::copy(self : ImagefiltergaborGraphN) -> ImagefiltergaborGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_graphn_fill(s : ImagefiltergaborGraphN, v : Double) -> ImagefiltergaborGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborGraphN::fill(self : ImagefiltergaborGraphN, v : Double) -> ImagefiltergaborGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_graphn_min(s : ImagefiltergaborGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborGraphN::min(self : ImagefiltergaborGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_graphn_max(s : ImagefiltergaborGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborGraphN::max(self : ImagefiltergaborGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_graphn_to_string(s : ImagefiltergaborGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborGraphN::to_string(self : ImagefiltergaborGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborNode {
@@ -504,45 +504,45 @@ pub fn image_filter_gabor_node_make(size : Int) -> ImagefiltergaborNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_node_len(s : ImagefiltergaborNode) -> Int { s.size }
+pub fn ImagefiltergaborNode::len(self : ImagefiltergaborNode) -> Int { self.size }
 
-pub fn image_filter_gabor_node_get(s : ImagefiltergaborNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborNode::get(self : ImagefiltergaborNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_node_set(s : ImagefiltergaborNode, i : Int, v : Double) -> ImagefiltergaborNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborNode::set(self : ImagefiltergaborNode, i : Int, v : Double) -> ImagefiltergaborNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_node_sum(s : ImagefiltergaborNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborNode::sum(self : ImagefiltergaborNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_node_mean(s : ImagefiltergaborNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborNode::mean(self : ImagefiltergaborNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_node_scale(s : ImagefiltergaborNode, f : Double) -> ImagefiltergaborNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborNode::scale(self : ImagefiltergaborNode, f : Double) -> ImagefiltergaborNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_node_add(a : ImagefiltergaborNode, b : ImagefiltergaborNode) -> ImagefiltergaborNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborNode::add(self : ImagefiltergaborNode, other : ImagefiltergaborNode) -> ImagefiltergaborNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_node_copy(s : ImagefiltergaborNode) -> ImagefiltergaborNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborNode::copy(self : ImagefiltergaborNode) -> ImagefiltergaborNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_node_fill(s : ImagefiltergaborNode, v : Double) -> ImagefiltergaborNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborNode::fill(self : ImagefiltergaborNode, v : Double) -> ImagefiltergaborNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_node_min(s : ImagefiltergaborNode) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborNode::min(self : ImagefiltergaborNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_node_max(s : ImagefiltergaborNode) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborNode::max(self : ImagefiltergaborNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_node_to_string(s : ImagefiltergaborNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborNode::to_string(self : ImagefiltergaborNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_gabor_edge_make(size : Int) -> ImagefiltergaborEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_edge_len(s : ImagefiltergaborEdge) -> Int { s.size }
+pub fn ImagefiltergaborEdge::len(self : ImagefiltergaborEdge) -> Int { self.size }
 
-pub fn image_filter_gabor_edge_get(s : ImagefiltergaborEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborEdge::get(self : ImagefiltergaborEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_edge_set(s : ImagefiltergaborEdge, i : Int, v : Double) -> ImagefiltergaborEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborEdge::set(self : ImagefiltergaborEdge, i : Int, v : Double) -> ImagefiltergaborEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_edge_sum(s : ImagefiltergaborEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborEdge::sum(self : ImagefiltergaborEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_edge_mean(s : ImagefiltergaborEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborEdge::mean(self : ImagefiltergaborEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_edge_scale(s : ImagefiltergaborEdge, f : Double) -> ImagefiltergaborEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborEdge::scale(self : ImagefiltergaborEdge, f : Double) -> ImagefiltergaborEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_edge_add(a : ImagefiltergaborEdge, b : ImagefiltergaborEdge) -> ImagefiltergaborEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborEdge::add(self : ImagefiltergaborEdge, other : ImagefiltergaborEdge) -> ImagefiltergaborEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_edge_copy(s : ImagefiltergaborEdge) -> ImagefiltergaborEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborEdge::copy(self : ImagefiltergaborEdge) -> ImagefiltergaborEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_edge_fill(s : ImagefiltergaborEdge, v : Double) -> ImagefiltergaborEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborEdge::fill(self : ImagefiltergaborEdge, v : Double) -> ImagefiltergaborEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_edge_min(s : ImagefiltergaborEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborEdge::min(self : ImagefiltergaborEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_edge_max(s : ImagefiltergaborEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborEdge::max(self : ImagefiltergaborEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_edge_to_string(s : ImagefiltergaborEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborEdge::to_string(self : ImagefiltergaborEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborPath {
@@ -606,45 +606,45 @@ pub fn image_filter_gabor_path_make(size : Int) -> ImagefiltergaborPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_path_len(s : ImagefiltergaborPath) -> Int { s.size }
+pub fn ImagefiltergaborPath::len(self : ImagefiltergaborPath) -> Int { self.size }
 
-pub fn image_filter_gabor_path_get(s : ImagefiltergaborPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborPath::get(self : ImagefiltergaborPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_path_set(s : ImagefiltergaborPath, i : Int, v : Double) -> ImagefiltergaborPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborPath::set(self : ImagefiltergaborPath, i : Int, v : Double) -> ImagefiltergaborPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_path_sum(s : ImagefiltergaborPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborPath::sum(self : ImagefiltergaborPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_path_mean(s : ImagefiltergaborPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborPath::mean(self : ImagefiltergaborPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_path_scale(s : ImagefiltergaborPath, f : Double) -> ImagefiltergaborPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborPath::scale(self : ImagefiltergaborPath, f : Double) -> ImagefiltergaborPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_path_add(a : ImagefiltergaborPath, b : ImagefiltergaborPath) -> ImagefiltergaborPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborPath::add(self : ImagefiltergaborPath, other : ImagefiltergaborPath) -> ImagefiltergaborPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_path_copy(s : ImagefiltergaborPath) -> ImagefiltergaborPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborPath::copy(self : ImagefiltergaborPath) -> ImagefiltergaborPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_path_fill(s : ImagefiltergaborPath, v : Double) -> ImagefiltergaborPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborPath::fill(self : ImagefiltergaborPath, v : Double) -> ImagefiltergaborPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_path_min(s : ImagefiltergaborPath) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborPath::min(self : ImagefiltergaborPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_path_max(s : ImagefiltergaborPath) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborPath::max(self : ImagefiltergaborPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_path_to_string(s : ImagefiltergaborPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborPath::to_string(self : ImagefiltergaborPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_gabor_cluster_make(size : Int) -> ImagefiltergaborCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_cluster_len(s : ImagefiltergaborCluster) -> Int { s.size }
+pub fn ImagefiltergaborCluster::len(self : ImagefiltergaborCluster) -> Int { self.size }
 
-pub fn image_filter_gabor_cluster_get(s : ImagefiltergaborCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborCluster::get(self : ImagefiltergaborCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_cluster_set(s : ImagefiltergaborCluster, i : Int, v : Double) -> ImagefiltergaborCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCluster::set(self : ImagefiltergaborCluster, i : Int, v : Double) -> ImagefiltergaborCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cluster_sum(s : ImagefiltergaborCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborCluster::sum(self : ImagefiltergaborCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_cluster_mean(s : ImagefiltergaborCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborCluster::mean(self : ImagefiltergaborCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_cluster_scale(s : ImagefiltergaborCluster, f : Double) -> ImagefiltergaborCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCluster::scale(self : ImagefiltergaborCluster, f : Double) -> ImagefiltergaborCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cluster_add(a : ImagefiltergaborCluster, b : ImagefiltergaborCluster) -> ImagefiltergaborCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborCluster::add(self : ImagefiltergaborCluster, other : ImagefiltergaborCluster) -> ImagefiltergaborCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cluster_copy(s : ImagefiltergaborCluster) -> ImagefiltergaborCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCluster::copy(self : ImagefiltergaborCluster) -> ImagefiltergaborCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cluster_fill(s : ImagefiltergaborCluster, v : Double) -> ImagefiltergaborCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCluster::fill(self : ImagefiltergaborCluster, v : Double) -> ImagefiltergaborCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cluster_min(s : ImagefiltergaborCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborCluster::min(self : ImagefiltergaborCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_cluster_max(s : ImagefiltergaborCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborCluster::max(self : ImagefiltergaborCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_cluster_to_string(s : ImagefiltergaborCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborCluster::to_string(self : ImagefiltergaborCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborModel {
@@ -708,45 +708,45 @@ pub fn image_filter_gabor_model_make(size : Int) -> ImagefiltergaborModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_model_len(s : ImagefiltergaborModel) -> Int { s.size }
+pub fn ImagefiltergaborModel::len(self : ImagefiltergaborModel) -> Int { self.size }
 
-pub fn image_filter_gabor_model_get(s : ImagefiltergaborModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborModel::get(self : ImagefiltergaborModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_model_set(s : ImagefiltergaborModel, i : Int, v : Double) -> ImagefiltergaborModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborModel::set(self : ImagefiltergaborModel, i : Int, v : Double) -> ImagefiltergaborModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_model_sum(s : ImagefiltergaborModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborModel::sum(self : ImagefiltergaborModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_model_mean(s : ImagefiltergaborModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborModel::mean(self : ImagefiltergaborModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_model_scale(s : ImagefiltergaborModel, f : Double) -> ImagefiltergaborModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborModel::scale(self : ImagefiltergaborModel, f : Double) -> ImagefiltergaborModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_model_add(a : ImagefiltergaborModel, b : ImagefiltergaborModel) -> ImagefiltergaborModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborModel::add(self : ImagefiltergaborModel, other : ImagefiltergaborModel) -> ImagefiltergaborModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_model_copy(s : ImagefiltergaborModel) -> ImagefiltergaborModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborModel::copy(self : ImagefiltergaborModel) -> ImagefiltergaborModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_model_fill(s : ImagefiltergaborModel, v : Double) -> ImagefiltergaborModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborModel::fill(self : ImagefiltergaborModel, v : Double) -> ImagefiltergaborModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_model_min(s : ImagefiltergaborModel) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborModel::min(self : ImagefiltergaborModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_model_max(s : ImagefiltergaborModel) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborModel::max(self : ImagefiltergaborModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_model_to_string(s : ImagefiltergaborModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborModel::to_string(self : ImagefiltergaborModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_gabor_layer_make(size : Int) -> ImagefiltergaborLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_layer_len(s : ImagefiltergaborLayer) -> Int { s.size }
+pub fn ImagefiltergaborLayer::len(self : ImagefiltergaborLayer) -> Int { self.size }
 
-pub fn image_filter_gabor_layer_get(s : ImagefiltergaborLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborLayer::get(self : ImagefiltergaborLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_layer_set(s : ImagefiltergaborLayer, i : Int, v : Double) -> ImagefiltergaborLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborLayer::set(self : ImagefiltergaborLayer, i : Int, v : Double) -> ImagefiltergaborLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_layer_sum(s : ImagefiltergaborLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborLayer::sum(self : ImagefiltergaborLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_layer_mean(s : ImagefiltergaborLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborLayer::mean(self : ImagefiltergaborLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_layer_scale(s : ImagefiltergaborLayer, f : Double) -> ImagefiltergaborLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborLayer::scale(self : ImagefiltergaborLayer, f : Double) -> ImagefiltergaborLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_layer_add(a : ImagefiltergaborLayer, b : ImagefiltergaborLayer) -> ImagefiltergaborLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborLayer::add(self : ImagefiltergaborLayer, other : ImagefiltergaborLayer) -> ImagefiltergaborLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_layer_copy(s : ImagefiltergaborLayer) -> ImagefiltergaborLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborLayer::copy(self : ImagefiltergaborLayer) -> ImagefiltergaborLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_layer_fill(s : ImagefiltergaborLayer, v : Double) -> ImagefiltergaborLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborLayer::fill(self : ImagefiltergaborLayer, v : Double) -> ImagefiltergaborLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_layer_min(s : ImagefiltergaborLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborLayer::min(self : ImagefiltergaborLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_layer_max(s : ImagefiltergaborLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborLayer::max(self : ImagefiltergaborLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_layer_to_string(s : ImagefiltergaborLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborLayer::to_string(self : ImagefiltergaborLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_gabor_buffer_make(size : Int) -> ImagefiltergaborBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_buffer_len(s : ImagefiltergaborBuffer) -> Int { s.size }
+pub fn ImagefiltergaborBuffer::len(self : ImagefiltergaborBuffer) -> Int { self.size }
 
-pub fn image_filter_gabor_buffer_get(s : ImagefiltergaborBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborBuffer::get(self : ImagefiltergaborBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_buffer_set(s : ImagefiltergaborBuffer, i : Int, v : Double) -> ImagefiltergaborBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborBuffer::set(self : ImagefiltergaborBuffer, i : Int, v : Double) -> ImagefiltergaborBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_buffer_sum(s : ImagefiltergaborBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborBuffer::sum(self : ImagefiltergaborBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_buffer_mean(s : ImagefiltergaborBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborBuffer::mean(self : ImagefiltergaborBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_buffer_scale(s : ImagefiltergaborBuffer, f : Double) -> ImagefiltergaborBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborBuffer::scale(self : ImagefiltergaborBuffer, f : Double) -> ImagefiltergaborBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_buffer_add(a : ImagefiltergaborBuffer, b : ImagefiltergaborBuffer) -> ImagefiltergaborBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborBuffer::add(self : ImagefiltergaborBuffer, other : ImagefiltergaborBuffer) -> ImagefiltergaborBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_buffer_copy(s : ImagefiltergaborBuffer) -> ImagefiltergaborBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborBuffer::copy(self : ImagefiltergaborBuffer) -> ImagefiltergaborBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_buffer_fill(s : ImagefiltergaborBuffer, v : Double) -> ImagefiltergaborBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborBuffer::fill(self : ImagefiltergaborBuffer, v : Double) -> ImagefiltergaborBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_buffer_min(s : ImagefiltergaborBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborBuffer::min(self : ImagefiltergaborBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_buffer_max(s : ImagefiltergaborBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborBuffer::max(self : ImagefiltergaborBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_buffer_to_string(s : ImagefiltergaborBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborBuffer::to_string(self : ImagefiltergaborBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_gabor_cursor_make(size : Int) -> ImagefiltergaborCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_cursor_len(s : ImagefiltergaborCursor) -> Int { s.size }
+pub fn ImagefiltergaborCursor::len(self : ImagefiltergaborCursor) -> Int { self.size }
 
-pub fn image_filter_gabor_cursor_get(s : ImagefiltergaborCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborCursor::get(self : ImagefiltergaborCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_cursor_set(s : ImagefiltergaborCursor, i : Int, v : Double) -> ImagefiltergaborCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCursor::set(self : ImagefiltergaborCursor, i : Int, v : Double) -> ImagefiltergaborCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cursor_sum(s : ImagefiltergaborCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborCursor::sum(self : ImagefiltergaborCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_cursor_mean(s : ImagefiltergaborCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborCursor::mean(self : ImagefiltergaborCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_cursor_scale(s : ImagefiltergaborCursor, f : Double) -> ImagefiltergaborCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCursor::scale(self : ImagefiltergaborCursor, f : Double) -> ImagefiltergaborCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cursor_add(a : ImagefiltergaborCursor, b : ImagefiltergaborCursor) -> ImagefiltergaborCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborCursor::add(self : ImagefiltergaborCursor, other : ImagefiltergaborCursor) -> ImagefiltergaborCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cursor_copy(s : ImagefiltergaborCursor) -> ImagefiltergaborCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCursor::copy(self : ImagefiltergaborCursor) -> ImagefiltergaborCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cursor_fill(s : ImagefiltergaborCursor, v : Double) -> ImagefiltergaborCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborCursor::fill(self : ImagefiltergaborCursor, v : Double) -> ImagefiltergaborCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_cursor_min(s : ImagefiltergaborCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborCursor::min(self : ImagefiltergaborCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_cursor_max(s : ImagefiltergaborCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborCursor::max(self : ImagefiltergaborCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_cursor_to_string(s : ImagefiltergaborCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborCursor::to_string(self : ImagefiltergaborCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborView {
@@ -912,45 +912,45 @@ pub fn image_filter_gabor_view_make(size : Int) -> ImagefiltergaborView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_view_len(s : ImagefiltergaborView) -> Int { s.size }
+pub fn ImagefiltergaborView::len(self : ImagefiltergaborView) -> Int { self.size }
 
-pub fn image_filter_gabor_view_get(s : ImagefiltergaborView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborView::get(self : ImagefiltergaborView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_view_set(s : ImagefiltergaborView, i : Int, v : Double) -> ImagefiltergaborView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborView::set(self : ImagefiltergaborView, i : Int, v : Double) -> ImagefiltergaborView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_view_sum(s : ImagefiltergaborView) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborView::sum(self : ImagefiltergaborView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_view_mean(s : ImagefiltergaborView) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborView::mean(self : ImagefiltergaborView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_view_scale(s : ImagefiltergaborView, f : Double) -> ImagefiltergaborView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborView::scale(self : ImagefiltergaborView, f : Double) -> ImagefiltergaborView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_view_add(a : ImagefiltergaborView, b : ImagefiltergaborView) -> ImagefiltergaborView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborView::add(self : ImagefiltergaborView, other : ImagefiltergaborView) -> ImagefiltergaborView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_view_copy(s : ImagefiltergaborView) -> ImagefiltergaborView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborView::copy(self : ImagefiltergaborView) -> ImagefiltergaborView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_view_fill(s : ImagefiltergaborView, v : Double) -> ImagefiltergaborView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborView::fill(self : ImagefiltergaborView, v : Double) -> ImagefiltergaborView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_view_min(s : ImagefiltergaborView) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborView::min(self : ImagefiltergaborView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_view_max(s : ImagefiltergaborView) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborView::max(self : ImagefiltergaborView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_view_to_string(s : ImagefiltergaborView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborView::to_string(self : ImagefiltergaborView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborRange {
@@ -963,45 +963,45 @@ pub fn image_filter_gabor_range_make(size : Int) -> ImagefiltergaborRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_range_len(s : ImagefiltergaborRange) -> Int { s.size }
+pub fn ImagefiltergaborRange::len(self : ImagefiltergaborRange) -> Int { self.size }
 
-pub fn image_filter_gabor_range_get(s : ImagefiltergaborRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborRange::get(self : ImagefiltergaborRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_range_set(s : ImagefiltergaborRange, i : Int, v : Double) -> ImagefiltergaborRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborRange::set(self : ImagefiltergaborRange, i : Int, v : Double) -> ImagefiltergaborRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_range_sum(s : ImagefiltergaborRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborRange::sum(self : ImagefiltergaborRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_range_mean(s : ImagefiltergaborRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborRange::mean(self : ImagefiltergaborRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_range_scale(s : ImagefiltergaborRange, f : Double) -> ImagefiltergaborRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborRange::scale(self : ImagefiltergaborRange, f : Double) -> ImagefiltergaborRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_range_add(a : ImagefiltergaborRange, b : ImagefiltergaborRange) -> ImagefiltergaborRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborRange::add(self : ImagefiltergaborRange, other : ImagefiltergaborRange) -> ImagefiltergaborRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_range_copy(s : ImagefiltergaborRange) -> ImagefiltergaborRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborRange::copy(self : ImagefiltergaborRange) -> ImagefiltergaborRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_range_fill(s : ImagefiltergaborRange, v : Double) -> ImagefiltergaborRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborRange::fill(self : ImagefiltergaborRange, v : Double) -> ImagefiltergaborRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_range_min(s : ImagefiltergaborRange) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborRange::min(self : ImagefiltergaborRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_range_max(s : ImagefiltergaborRange) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborRange::max(self : ImagefiltergaborRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_range_to_string(s : ImagefiltergaborRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborRange::to_string(self : ImagefiltergaborRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaborSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_gabor_slice_make(size : Int) -> ImagefiltergaborSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gabor_slice_len(s : ImagefiltergaborSlice) -> Int { s.size }
+pub fn ImagefiltergaborSlice::len(self : ImagefiltergaborSlice) -> Int { self.size }
 
-pub fn image_filter_gabor_slice_get(s : ImagefiltergaborSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaborSlice::get(self : ImagefiltergaborSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gabor_slice_set(s : ImagefiltergaborSlice, i : Int, v : Double) -> ImagefiltergaborSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaborSlice::set(self : ImagefiltergaborSlice, i : Int, v : Double) -> ImagefiltergaborSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_slice_sum(s : ImagefiltergaborSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaborSlice::sum(self : ImagefiltergaborSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gabor_slice_mean(s : ImagefiltergaborSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaborSlice::mean(self : ImagefiltergaborSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gabor_slice_scale(s : ImagefiltergaborSlice, f : Double) -> ImagefiltergaborSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborSlice::scale(self : ImagefiltergaborSlice, f : Double) -> ImagefiltergaborSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_slice_add(a : ImagefiltergaborSlice, b : ImagefiltergaborSlice) -> ImagefiltergaborSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaborSlice::add(self : ImagefiltergaborSlice, other : ImagefiltergaborSlice) -> ImagefiltergaborSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gabor_slice_copy(s : ImagefiltergaborSlice) -> ImagefiltergaborSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborSlice::copy(self : ImagefiltergaborSlice) -> ImagefiltergaborSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_slice_fill(s : ImagefiltergaborSlice, v : Double) -> ImagefiltergaborSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaborSlice::fill(self : ImagefiltergaborSlice, v : Double) -> ImagefiltergaborSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gabor_slice_min(s : ImagefiltergaborSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaborSlice::min(self : ImagefiltergaborSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gabor_slice_max(s : ImagefiltergaborSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaborSlice::max(self : ImagefiltergaborSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gabor_slice_to_string(s : ImagefiltergaborSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaborSlice::to_string(self : ImagefiltergaborSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

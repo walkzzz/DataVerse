@@ -351,45 +351,45 @@ pub fn ds_graph_weighted_frame_make(size : Int) -> DsgraphweightedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_frame_len(s : DsgraphweightedFrame) -> Int { s.size }
+pub fn DsgraphweightedFrame::len(self : DsgraphweightedFrame) -> Int { self.size }
 
-pub fn ds_graph_weighted_frame_get(s : DsgraphweightedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedFrame::get(self : DsgraphweightedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_frame_set(s : DsgraphweightedFrame, i : Int, v : Double) -> DsgraphweightedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedFrame::set(self : DsgraphweightedFrame, i : Int, v : Double) -> DsgraphweightedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_frame_sum(s : DsgraphweightedFrame) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedFrame::sum(self : DsgraphweightedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_frame_mean(s : DsgraphweightedFrame) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedFrame::mean(self : DsgraphweightedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_frame_scale(s : DsgraphweightedFrame, f : Double) -> DsgraphweightedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedFrame::scale(self : DsgraphweightedFrame, f : Double) -> DsgraphweightedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_frame_add(a : DsgraphweightedFrame, b : DsgraphweightedFrame) -> DsgraphweightedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedFrame::add(self : DsgraphweightedFrame, other : DsgraphweightedFrame) -> DsgraphweightedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_frame_copy(s : DsgraphweightedFrame) -> DsgraphweightedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedFrame::copy(self : DsgraphweightedFrame) -> DsgraphweightedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_frame_fill(s : DsgraphweightedFrame, v : Double) -> DsgraphweightedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedFrame::fill(self : DsgraphweightedFrame, v : Double) -> DsgraphweightedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_frame_min(s : DsgraphweightedFrame) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedFrame::min(self : DsgraphweightedFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_frame_max(s : DsgraphweightedFrame) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedFrame::max(self : DsgraphweightedFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_frame_to_string(s : DsgraphweightedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedFrame::to_string(self : DsgraphweightedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedTable {
@@ -402,45 +402,45 @@ pub fn ds_graph_weighted_table_make(size : Int) -> DsgraphweightedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_table_len(s : DsgraphweightedTable) -> Int { s.size }
+pub fn DsgraphweightedTable::len(self : DsgraphweightedTable) -> Int { self.size }
 
-pub fn ds_graph_weighted_table_get(s : DsgraphweightedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedTable::get(self : DsgraphweightedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_table_set(s : DsgraphweightedTable, i : Int, v : Double) -> DsgraphweightedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedTable::set(self : DsgraphweightedTable, i : Int, v : Double) -> DsgraphweightedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_table_sum(s : DsgraphweightedTable) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedTable::sum(self : DsgraphweightedTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_table_mean(s : DsgraphweightedTable) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedTable::mean(self : DsgraphweightedTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_table_scale(s : DsgraphweightedTable, f : Double) -> DsgraphweightedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedTable::scale(self : DsgraphweightedTable, f : Double) -> DsgraphweightedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_table_add(a : DsgraphweightedTable, b : DsgraphweightedTable) -> DsgraphweightedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedTable::add(self : DsgraphweightedTable, other : DsgraphweightedTable) -> DsgraphweightedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_table_copy(s : DsgraphweightedTable) -> DsgraphweightedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedTable::copy(self : DsgraphweightedTable) -> DsgraphweightedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_table_fill(s : DsgraphweightedTable, v : Double) -> DsgraphweightedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedTable::fill(self : DsgraphweightedTable, v : Double) -> DsgraphweightedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_table_min(s : DsgraphweightedTable) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedTable::min(self : DsgraphweightedTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_table_max(s : DsgraphweightedTable) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedTable::max(self : DsgraphweightedTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_table_to_string(s : DsgraphweightedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedTable::to_string(self : DsgraphweightedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedGraphN {
@@ -453,45 +453,45 @@ pub fn ds_graph_weighted_graphn_make(size : Int) -> DsgraphweightedGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_graphn_len(s : DsgraphweightedGraphN) -> Int { s.size }
+pub fn DsgraphweightedGraphN::len(self : DsgraphweightedGraphN) -> Int { self.size }
 
-pub fn ds_graph_weighted_graphn_get(s : DsgraphweightedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedGraphN::get(self : DsgraphweightedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_graphn_set(s : DsgraphweightedGraphN, i : Int, v : Double) -> DsgraphweightedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedGraphN::set(self : DsgraphweightedGraphN, i : Int, v : Double) -> DsgraphweightedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_graphn_sum(s : DsgraphweightedGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedGraphN::sum(self : DsgraphweightedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_graphn_mean(s : DsgraphweightedGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedGraphN::mean(self : DsgraphweightedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_graphn_scale(s : DsgraphweightedGraphN, f : Double) -> DsgraphweightedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedGraphN::scale(self : DsgraphweightedGraphN, f : Double) -> DsgraphweightedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_graphn_add(a : DsgraphweightedGraphN, b : DsgraphweightedGraphN) -> DsgraphweightedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedGraphN::add(self : DsgraphweightedGraphN, other : DsgraphweightedGraphN) -> DsgraphweightedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_graphn_copy(s : DsgraphweightedGraphN) -> DsgraphweightedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedGraphN::copy(self : DsgraphweightedGraphN) -> DsgraphweightedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_graphn_fill(s : DsgraphweightedGraphN, v : Double) -> DsgraphweightedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedGraphN::fill(self : DsgraphweightedGraphN, v : Double) -> DsgraphweightedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_graphn_min(s : DsgraphweightedGraphN) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedGraphN::min(self : DsgraphweightedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_graphn_max(s : DsgraphweightedGraphN) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedGraphN::max(self : DsgraphweightedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_graphn_to_string(s : DsgraphweightedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedGraphN::to_string(self : DsgraphweightedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedNode {
@@ -504,45 +504,45 @@ pub fn ds_graph_weighted_node_make(size : Int) -> DsgraphweightedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_node_len(s : DsgraphweightedNode) -> Int { s.size }
+pub fn DsgraphweightedNode::len(self : DsgraphweightedNode) -> Int { self.size }
 
-pub fn ds_graph_weighted_node_get(s : DsgraphweightedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedNode::get(self : DsgraphweightedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_node_set(s : DsgraphweightedNode, i : Int, v : Double) -> DsgraphweightedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedNode::set(self : DsgraphweightedNode, i : Int, v : Double) -> DsgraphweightedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_node_sum(s : DsgraphweightedNode) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedNode::sum(self : DsgraphweightedNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_node_mean(s : DsgraphweightedNode) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedNode::mean(self : DsgraphweightedNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_node_scale(s : DsgraphweightedNode, f : Double) -> DsgraphweightedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedNode::scale(self : DsgraphweightedNode, f : Double) -> DsgraphweightedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_node_add(a : DsgraphweightedNode, b : DsgraphweightedNode) -> DsgraphweightedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedNode::add(self : DsgraphweightedNode, other : DsgraphweightedNode) -> DsgraphweightedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_node_copy(s : DsgraphweightedNode) -> DsgraphweightedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedNode::copy(self : DsgraphweightedNode) -> DsgraphweightedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_node_fill(s : DsgraphweightedNode, v : Double) -> DsgraphweightedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedNode::fill(self : DsgraphweightedNode, v : Double) -> DsgraphweightedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_node_min(s : DsgraphweightedNode) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedNode::min(self : DsgraphweightedNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_node_max(s : DsgraphweightedNode) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedNode::max(self : DsgraphweightedNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_node_to_string(s : DsgraphweightedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedNode::to_string(self : DsgraphweightedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedEdge {
@@ -555,45 +555,45 @@ pub fn ds_graph_weighted_edge_make(size : Int) -> DsgraphweightedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_edge_len(s : DsgraphweightedEdge) -> Int { s.size }
+pub fn DsgraphweightedEdge::len(self : DsgraphweightedEdge) -> Int { self.size }
 
-pub fn ds_graph_weighted_edge_get(s : DsgraphweightedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedEdge::get(self : DsgraphweightedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_edge_set(s : DsgraphweightedEdge, i : Int, v : Double) -> DsgraphweightedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedEdge::set(self : DsgraphweightedEdge, i : Int, v : Double) -> DsgraphweightedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_edge_sum(s : DsgraphweightedEdge) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedEdge::sum(self : DsgraphweightedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_edge_mean(s : DsgraphweightedEdge) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedEdge::mean(self : DsgraphweightedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_edge_scale(s : DsgraphweightedEdge, f : Double) -> DsgraphweightedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedEdge::scale(self : DsgraphweightedEdge, f : Double) -> DsgraphweightedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_edge_add(a : DsgraphweightedEdge, b : DsgraphweightedEdge) -> DsgraphweightedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedEdge::add(self : DsgraphweightedEdge, other : DsgraphweightedEdge) -> DsgraphweightedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_edge_copy(s : DsgraphweightedEdge) -> DsgraphweightedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedEdge::copy(self : DsgraphweightedEdge) -> DsgraphweightedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_edge_fill(s : DsgraphweightedEdge, v : Double) -> DsgraphweightedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedEdge::fill(self : DsgraphweightedEdge, v : Double) -> DsgraphweightedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_edge_min(s : DsgraphweightedEdge) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedEdge::min(self : DsgraphweightedEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_edge_max(s : DsgraphweightedEdge) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedEdge::max(self : DsgraphweightedEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_edge_to_string(s : DsgraphweightedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedEdge::to_string(self : DsgraphweightedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedPath {
@@ -606,45 +606,45 @@ pub fn ds_graph_weighted_path_make(size : Int) -> DsgraphweightedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_path_len(s : DsgraphweightedPath) -> Int { s.size }
+pub fn DsgraphweightedPath::len(self : DsgraphweightedPath) -> Int { self.size }
 
-pub fn ds_graph_weighted_path_get(s : DsgraphweightedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedPath::get(self : DsgraphweightedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_path_set(s : DsgraphweightedPath, i : Int, v : Double) -> DsgraphweightedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedPath::set(self : DsgraphweightedPath, i : Int, v : Double) -> DsgraphweightedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_path_sum(s : DsgraphweightedPath) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedPath::sum(self : DsgraphweightedPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_path_mean(s : DsgraphweightedPath) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedPath::mean(self : DsgraphweightedPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_path_scale(s : DsgraphweightedPath, f : Double) -> DsgraphweightedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedPath::scale(self : DsgraphweightedPath, f : Double) -> DsgraphweightedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_path_add(a : DsgraphweightedPath, b : DsgraphweightedPath) -> DsgraphweightedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedPath::add(self : DsgraphweightedPath, other : DsgraphweightedPath) -> DsgraphweightedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_path_copy(s : DsgraphweightedPath) -> DsgraphweightedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedPath::copy(self : DsgraphweightedPath) -> DsgraphweightedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_path_fill(s : DsgraphweightedPath, v : Double) -> DsgraphweightedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedPath::fill(self : DsgraphweightedPath, v : Double) -> DsgraphweightedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_path_min(s : DsgraphweightedPath) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedPath::min(self : DsgraphweightedPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_path_max(s : DsgraphweightedPath) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedPath::max(self : DsgraphweightedPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_path_to_string(s : DsgraphweightedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedPath::to_string(self : DsgraphweightedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedCluster {
@@ -657,45 +657,45 @@ pub fn ds_graph_weighted_cluster_make(size : Int) -> DsgraphweightedCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_cluster_len(s : DsgraphweightedCluster) -> Int { s.size }
+pub fn DsgraphweightedCluster::len(self : DsgraphweightedCluster) -> Int { self.size }
 
-pub fn ds_graph_weighted_cluster_get(s : DsgraphweightedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedCluster::get(self : DsgraphweightedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_cluster_set(s : DsgraphweightedCluster, i : Int, v : Double) -> DsgraphweightedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedCluster::set(self : DsgraphweightedCluster, i : Int, v : Double) -> DsgraphweightedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cluster_sum(s : DsgraphweightedCluster) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedCluster::sum(self : DsgraphweightedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_cluster_mean(s : DsgraphweightedCluster) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedCluster::mean(self : DsgraphweightedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_cluster_scale(s : DsgraphweightedCluster, f : Double) -> DsgraphweightedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedCluster::scale(self : DsgraphweightedCluster, f : Double) -> DsgraphweightedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cluster_add(a : DsgraphweightedCluster, b : DsgraphweightedCluster) -> DsgraphweightedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedCluster::add(self : DsgraphweightedCluster, other : DsgraphweightedCluster) -> DsgraphweightedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cluster_copy(s : DsgraphweightedCluster) -> DsgraphweightedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedCluster::copy(self : DsgraphweightedCluster) -> DsgraphweightedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cluster_fill(s : DsgraphweightedCluster, v : Double) -> DsgraphweightedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedCluster::fill(self : DsgraphweightedCluster, v : Double) -> DsgraphweightedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cluster_min(s : DsgraphweightedCluster) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedCluster::min(self : DsgraphweightedCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_cluster_max(s : DsgraphweightedCluster) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedCluster::max(self : DsgraphweightedCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_cluster_to_string(s : DsgraphweightedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedCluster::to_string(self : DsgraphweightedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedModel {
@@ -708,45 +708,45 @@ pub fn ds_graph_weighted_model_make(size : Int) -> DsgraphweightedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_model_len(s : DsgraphweightedModel) -> Int { s.size }
+pub fn DsgraphweightedModel::len(self : DsgraphweightedModel) -> Int { self.size }
 
-pub fn ds_graph_weighted_model_get(s : DsgraphweightedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedModel::get(self : DsgraphweightedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_model_set(s : DsgraphweightedModel, i : Int, v : Double) -> DsgraphweightedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedModel::set(self : DsgraphweightedModel, i : Int, v : Double) -> DsgraphweightedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_model_sum(s : DsgraphweightedModel) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedModel::sum(self : DsgraphweightedModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_model_mean(s : DsgraphweightedModel) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedModel::mean(self : DsgraphweightedModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_model_scale(s : DsgraphweightedModel, f : Double) -> DsgraphweightedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedModel::scale(self : DsgraphweightedModel, f : Double) -> DsgraphweightedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_model_add(a : DsgraphweightedModel, b : DsgraphweightedModel) -> DsgraphweightedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedModel::add(self : DsgraphweightedModel, other : DsgraphweightedModel) -> DsgraphweightedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_model_copy(s : DsgraphweightedModel) -> DsgraphweightedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedModel::copy(self : DsgraphweightedModel) -> DsgraphweightedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_model_fill(s : DsgraphweightedModel, v : Double) -> DsgraphweightedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedModel::fill(self : DsgraphweightedModel, v : Double) -> DsgraphweightedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_model_min(s : DsgraphweightedModel) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedModel::min(self : DsgraphweightedModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_model_max(s : DsgraphweightedModel) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedModel::max(self : DsgraphweightedModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_model_to_string(s : DsgraphweightedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedModel::to_string(self : DsgraphweightedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedLayer {
@@ -759,45 +759,45 @@ pub fn ds_graph_weighted_layer_make(size : Int) -> DsgraphweightedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_layer_len(s : DsgraphweightedLayer) -> Int { s.size }
+pub fn DsgraphweightedLayer::len(self : DsgraphweightedLayer) -> Int { self.size }
 
-pub fn ds_graph_weighted_layer_get(s : DsgraphweightedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedLayer::get(self : DsgraphweightedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_layer_set(s : DsgraphweightedLayer, i : Int, v : Double) -> DsgraphweightedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedLayer::set(self : DsgraphweightedLayer, i : Int, v : Double) -> DsgraphweightedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_layer_sum(s : DsgraphweightedLayer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedLayer::sum(self : DsgraphweightedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_layer_mean(s : DsgraphweightedLayer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedLayer::mean(self : DsgraphweightedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_layer_scale(s : DsgraphweightedLayer, f : Double) -> DsgraphweightedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedLayer::scale(self : DsgraphweightedLayer, f : Double) -> DsgraphweightedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_layer_add(a : DsgraphweightedLayer, b : DsgraphweightedLayer) -> DsgraphweightedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedLayer::add(self : DsgraphweightedLayer, other : DsgraphweightedLayer) -> DsgraphweightedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_layer_copy(s : DsgraphweightedLayer) -> DsgraphweightedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedLayer::copy(self : DsgraphweightedLayer) -> DsgraphweightedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_layer_fill(s : DsgraphweightedLayer, v : Double) -> DsgraphweightedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedLayer::fill(self : DsgraphweightedLayer, v : Double) -> DsgraphweightedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_layer_min(s : DsgraphweightedLayer) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedLayer::min(self : DsgraphweightedLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_layer_max(s : DsgraphweightedLayer) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedLayer::max(self : DsgraphweightedLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_layer_to_string(s : DsgraphweightedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedLayer::to_string(self : DsgraphweightedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedBuffer {
@@ -810,45 +810,45 @@ pub fn ds_graph_weighted_buffer_make(size : Int) -> DsgraphweightedBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_buffer_len(s : DsgraphweightedBuffer) -> Int { s.size }
+pub fn DsgraphweightedBuffer::len(self : DsgraphweightedBuffer) -> Int { self.size }
 
-pub fn ds_graph_weighted_buffer_get(s : DsgraphweightedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedBuffer::get(self : DsgraphweightedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_buffer_set(s : DsgraphweightedBuffer, i : Int, v : Double) -> DsgraphweightedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedBuffer::set(self : DsgraphweightedBuffer, i : Int, v : Double) -> DsgraphweightedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_buffer_sum(s : DsgraphweightedBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedBuffer::sum(self : DsgraphweightedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_buffer_mean(s : DsgraphweightedBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedBuffer::mean(self : DsgraphweightedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_buffer_scale(s : DsgraphweightedBuffer, f : Double) -> DsgraphweightedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedBuffer::scale(self : DsgraphweightedBuffer, f : Double) -> DsgraphweightedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_buffer_add(a : DsgraphweightedBuffer, b : DsgraphweightedBuffer) -> DsgraphweightedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedBuffer::add(self : DsgraphweightedBuffer, other : DsgraphweightedBuffer) -> DsgraphweightedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_buffer_copy(s : DsgraphweightedBuffer) -> DsgraphweightedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedBuffer::copy(self : DsgraphweightedBuffer) -> DsgraphweightedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_buffer_fill(s : DsgraphweightedBuffer, v : Double) -> DsgraphweightedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedBuffer::fill(self : DsgraphweightedBuffer, v : Double) -> DsgraphweightedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_buffer_min(s : DsgraphweightedBuffer) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedBuffer::min(self : DsgraphweightedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_buffer_max(s : DsgraphweightedBuffer) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedBuffer::max(self : DsgraphweightedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_buffer_to_string(s : DsgraphweightedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedBuffer::to_string(self : DsgraphweightedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedCursor {
@@ -861,45 +861,45 @@ pub fn ds_graph_weighted_cursor_make(size : Int) -> DsgraphweightedCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_cursor_len(s : DsgraphweightedCursor) -> Int { s.size }
+pub fn DsgraphweightedCursor::len(self : DsgraphweightedCursor) -> Int { self.size }
 
-pub fn ds_graph_weighted_cursor_get(s : DsgraphweightedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedCursor::get(self : DsgraphweightedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_cursor_set(s : DsgraphweightedCursor, i : Int, v : Double) -> DsgraphweightedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedCursor::set(self : DsgraphweightedCursor, i : Int, v : Double) -> DsgraphweightedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cursor_sum(s : DsgraphweightedCursor) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedCursor::sum(self : DsgraphweightedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_cursor_mean(s : DsgraphweightedCursor) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedCursor::mean(self : DsgraphweightedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_cursor_scale(s : DsgraphweightedCursor, f : Double) -> DsgraphweightedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedCursor::scale(self : DsgraphweightedCursor, f : Double) -> DsgraphweightedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cursor_add(a : DsgraphweightedCursor, b : DsgraphweightedCursor) -> DsgraphweightedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedCursor::add(self : DsgraphweightedCursor, other : DsgraphweightedCursor) -> DsgraphweightedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cursor_copy(s : DsgraphweightedCursor) -> DsgraphweightedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedCursor::copy(self : DsgraphweightedCursor) -> DsgraphweightedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cursor_fill(s : DsgraphweightedCursor, v : Double) -> DsgraphweightedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedCursor::fill(self : DsgraphweightedCursor, v : Double) -> DsgraphweightedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_cursor_min(s : DsgraphweightedCursor) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedCursor::min(self : DsgraphweightedCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_cursor_max(s : DsgraphweightedCursor) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedCursor::max(self : DsgraphweightedCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_cursor_to_string(s : DsgraphweightedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedCursor::to_string(self : DsgraphweightedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedView {
@@ -912,45 +912,45 @@ pub fn ds_graph_weighted_view_make(size : Int) -> DsgraphweightedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_view_len(s : DsgraphweightedView) -> Int { s.size }
+pub fn DsgraphweightedView::len(self : DsgraphweightedView) -> Int { self.size }
 
-pub fn ds_graph_weighted_view_get(s : DsgraphweightedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedView::get(self : DsgraphweightedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_view_set(s : DsgraphweightedView, i : Int, v : Double) -> DsgraphweightedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedView::set(self : DsgraphweightedView, i : Int, v : Double) -> DsgraphweightedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_view_sum(s : DsgraphweightedView) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedView::sum(self : DsgraphweightedView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_view_mean(s : DsgraphweightedView) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedView::mean(self : DsgraphweightedView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_view_scale(s : DsgraphweightedView, f : Double) -> DsgraphweightedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedView::scale(self : DsgraphweightedView, f : Double) -> DsgraphweightedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_view_add(a : DsgraphweightedView, b : DsgraphweightedView) -> DsgraphweightedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedView::add(self : DsgraphweightedView, other : DsgraphweightedView) -> DsgraphweightedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_view_copy(s : DsgraphweightedView) -> DsgraphweightedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedView::copy(self : DsgraphweightedView) -> DsgraphweightedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_view_fill(s : DsgraphweightedView, v : Double) -> DsgraphweightedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedView::fill(self : DsgraphweightedView, v : Double) -> DsgraphweightedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_view_min(s : DsgraphweightedView) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedView::min(self : DsgraphweightedView) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_view_max(s : DsgraphweightedView) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedView::max(self : DsgraphweightedView) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_view_to_string(s : DsgraphweightedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedView::to_string(self : DsgraphweightedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedRange {
@@ -963,45 +963,45 @@ pub fn ds_graph_weighted_range_make(size : Int) -> DsgraphweightedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_range_len(s : DsgraphweightedRange) -> Int { s.size }
+pub fn DsgraphweightedRange::len(self : DsgraphweightedRange) -> Int { self.size }
 
-pub fn ds_graph_weighted_range_get(s : DsgraphweightedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedRange::get(self : DsgraphweightedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_range_set(s : DsgraphweightedRange, i : Int, v : Double) -> DsgraphweightedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedRange::set(self : DsgraphweightedRange, i : Int, v : Double) -> DsgraphweightedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_range_sum(s : DsgraphweightedRange) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedRange::sum(self : DsgraphweightedRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_range_mean(s : DsgraphweightedRange) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedRange::mean(self : DsgraphweightedRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_range_scale(s : DsgraphweightedRange, f : Double) -> DsgraphweightedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedRange::scale(self : DsgraphweightedRange, f : Double) -> DsgraphweightedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_range_add(a : DsgraphweightedRange, b : DsgraphweightedRange) -> DsgraphweightedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedRange::add(self : DsgraphweightedRange, other : DsgraphweightedRange) -> DsgraphweightedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_range_copy(s : DsgraphweightedRange) -> DsgraphweightedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedRange::copy(self : DsgraphweightedRange) -> DsgraphweightedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_range_fill(s : DsgraphweightedRange, v : Double) -> DsgraphweightedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedRange::fill(self : DsgraphweightedRange, v : Double) -> DsgraphweightedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_range_min(s : DsgraphweightedRange) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedRange::min(self : DsgraphweightedRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_range_max(s : DsgraphweightedRange) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedRange::max(self : DsgraphweightedRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_range_to_string(s : DsgraphweightedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedRange::to_string(self : DsgraphweightedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphweightedSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_graph_weighted_slice_make(size : Int) -> DsgraphweightedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_weighted_slice_len(s : DsgraphweightedSlice) -> Int { s.size }
+pub fn DsgraphweightedSlice::len(self : DsgraphweightedSlice) -> Int { self.size }
 
-pub fn ds_graph_weighted_slice_get(s : DsgraphweightedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphweightedSlice::get(self : DsgraphweightedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_weighted_slice_set(s : DsgraphweightedSlice, i : Int, v : Double) -> DsgraphweightedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphweightedSlice::set(self : DsgraphweightedSlice, i : Int, v : Double) -> DsgraphweightedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_slice_sum(s : DsgraphweightedSlice) -> Double { @_common.sum(s.data) }
+pub fn DsgraphweightedSlice::sum(self : DsgraphweightedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_weighted_slice_mean(s : DsgraphweightedSlice) -> Double { @_common.mean(s.data) }
+pub fn DsgraphweightedSlice::mean(self : DsgraphweightedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_weighted_slice_scale(s : DsgraphweightedSlice, f : Double) -> DsgraphweightedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphweightedSlice::scale(self : DsgraphweightedSlice, f : Double) -> DsgraphweightedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_slice_add(a : DsgraphweightedSlice, b : DsgraphweightedSlice) -> DsgraphweightedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphweightedSlice::add(self : DsgraphweightedSlice, other : DsgraphweightedSlice) -> DsgraphweightedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_slice_copy(s : DsgraphweightedSlice) -> DsgraphweightedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphweightedSlice::copy(self : DsgraphweightedSlice) -> DsgraphweightedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_slice_fill(s : DsgraphweightedSlice, v : Double) -> DsgraphweightedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphweightedSlice::fill(self : DsgraphweightedSlice, v : Double) -> DsgraphweightedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_weighted_slice_min(s : DsgraphweightedSlice) -> Double { @_common.min(s.data) }
+pub fn DsgraphweightedSlice::min(self : DsgraphweightedSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_weighted_slice_max(s : DsgraphweightedSlice) -> Double { @_common.max(s.data) }
+pub fn DsgraphweightedSlice::max(self : DsgraphweightedSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_weighted_slice_to_string(s : DsgraphweightedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphweightedSlice::to_string(self : DsgraphweightedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn finance_risk_coherent_frame_make(size : Int) -> FinanceriskcoherentFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_frame_len(s : FinanceriskcoherentFrame) -> Int { s.size }
+pub fn FinanceriskcoherentFrame::len(self : FinanceriskcoherentFrame) -> Int { self.size }
 
-pub fn finance_risk_coherent_frame_get(s : FinanceriskcoherentFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentFrame::get(self : FinanceriskcoherentFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_frame_set(s : FinanceriskcoherentFrame, i : Int, v : Double) -> FinanceriskcoherentFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentFrame::set(self : FinanceriskcoherentFrame, i : Int, v : Double) -> FinanceriskcoherentFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_frame_sum(s : FinanceriskcoherentFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentFrame::sum(self : FinanceriskcoherentFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_frame_mean(s : FinanceriskcoherentFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentFrame::mean(self : FinanceriskcoherentFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_frame_scale(s : FinanceriskcoherentFrame, f : Double) -> FinanceriskcoherentFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentFrame::scale(self : FinanceriskcoherentFrame, f : Double) -> FinanceriskcoherentFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_frame_add(a : FinanceriskcoherentFrame, b : FinanceriskcoherentFrame) -> FinanceriskcoherentFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentFrame::add(self : FinanceriskcoherentFrame, other : FinanceriskcoherentFrame) -> FinanceriskcoherentFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_frame_copy(s : FinanceriskcoherentFrame) -> FinanceriskcoherentFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentFrame::copy(self : FinanceriskcoherentFrame) -> FinanceriskcoherentFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_frame_fill(s : FinanceriskcoherentFrame, v : Double) -> FinanceriskcoherentFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentFrame::fill(self : FinanceriskcoherentFrame, v : Double) -> FinanceriskcoherentFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_frame_min(s : FinanceriskcoherentFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentFrame::min(self : FinanceriskcoherentFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_frame_max(s : FinanceriskcoherentFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentFrame::max(self : FinanceriskcoherentFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_frame_to_string(s : FinanceriskcoherentFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentFrame::to_string(self : FinanceriskcoherentFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentTable {
@@ -402,45 +402,45 @@ pub fn finance_risk_coherent_table_make(size : Int) -> FinanceriskcoherentTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_table_len(s : FinanceriskcoherentTable) -> Int { s.size }
+pub fn FinanceriskcoherentTable::len(self : FinanceriskcoherentTable) -> Int { self.size }
 
-pub fn finance_risk_coherent_table_get(s : FinanceriskcoherentTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentTable::get(self : FinanceriskcoherentTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_table_set(s : FinanceriskcoherentTable, i : Int, v : Double) -> FinanceriskcoherentTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentTable::set(self : FinanceriskcoherentTable, i : Int, v : Double) -> FinanceriskcoherentTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_table_sum(s : FinanceriskcoherentTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentTable::sum(self : FinanceriskcoherentTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_table_mean(s : FinanceriskcoherentTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentTable::mean(self : FinanceriskcoherentTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_table_scale(s : FinanceriskcoherentTable, f : Double) -> FinanceriskcoherentTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentTable::scale(self : FinanceriskcoherentTable, f : Double) -> FinanceriskcoherentTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_table_add(a : FinanceriskcoherentTable, b : FinanceriskcoherentTable) -> FinanceriskcoherentTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentTable::add(self : FinanceriskcoherentTable, other : FinanceriskcoherentTable) -> FinanceriskcoherentTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_table_copy(s : FinanceriskcoherentTable) -> FinanceriskcoherentTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentTable::copy(self : FinanceriskcoherentTable) -> FinanceriskcoherentTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_table_fill(s : FinanceriskcoherentTable, v : Double) -> FinanceriskcoherentTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentTable::fill(self : FinanceriskcoherentTable, v : Double) -> FinanceriskcoherentTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_table_min(s : FinanceriskcoherentTable) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentTable::min(self : FinanceriskcoherentTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_table_max(s : FinanceriskcoherentTable) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentTable::max(self : FinanceriskcoherentTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_table_to_string(s : FinanceriskcoherentTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentTable::to_string(self : FinanceriskcoherentTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentGraphN {
@@ -453,45 +453,45 @@ pub fn finance_risk_coherent_graphn_make(size : Int) -> FinanceriskcoherentGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_graphn_len(s : FinanceriskcoherentGraphN) -> Int { s.size }
+pub fn FinanceriskcoherentGraphN::len(self : FinanceriskcoherentGraphN) -> Int { self.size }
 
-pub fn finance_risk_coherent_graphn_get(s : FinanceriskcoherentGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentGraphN::get(self : FinanceriskcoherentGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_graphn_set(s : FinanceriskcoherentGraphN, i : Int, v : Double) -> FinanceriskcoherentGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentGraphN::set(self : FinanceriskcoherentGraphN, i : Int, v : Double) -> FinanceriskcoherentGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_graphn_sum(s : FinanceriskcoherentGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentGraphN::sum(self : FinanceriskcoherentGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_graphn_mean(s : FinanceriskcoherentGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentGraphN::mean(self : FinanceriskcoherentGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_graphn_scale(s : FinanceriskcoherentGraphN, f : Double) -> FinanceriskcoherentGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentGraphN::scale(self : FinanceriskcoherentGraphN, f : Double) -> FinanceriskcoherentGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_graphn_add(a : FinanceriskcoherentGraphN, b : FinanceriskcoherentGraphN) -> FinanceriskcoherentGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentGraphN::add(self : FinanceriskcoherentGraphN, other : FinanceriskcoherentGraphN) -> FinanceriskcoherentGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_graphn_copy(s : FinanceriskcoherentGraphN) -> FinanceriskcoherentGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentGraphN::copy(self : FinanceriskcoherentGraphN) -> FinanceriskcoherentGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_graphn_fill(s : FinanceriskcoherentGraphN, v : Double) -> FinanceriskcoherentGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentGraphN::fill(self : FinanceriskcoherentGraphN, v : Double) -> FinanceriskcoherentGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_graphn_min(s : FinanceriskcoherentGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentGraphN::min(self : FinanceriskcoherentGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_graphn_max(s : FinanceriskcoherentGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentGraphN::max(self : FinanceriskcoherentGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_graphn_to_string(s : FinanceriskcoherentGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentGraphN::to_string(self : FinanceriskcoherentGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentNode {
@@ -504,45 +504,45 @@ pub fn finance_risk_coherent_node_make(size : Int) -> FinanceriskcoherentNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_node_len(s : FinanceriskcoherentNode) -> Int { s.size }
+pub fn FinanceriskcoherentNode::len(self : FinanceriskcoherentNode) -> Int { self.size }
 
-pub fn finance_risk_coherent_node_get(s : FinanceriskcoherentNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentNode::get(self : FinanceriskcoherentNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_node_set(s : FinanceriskcoherentNode, i : Int, v : Double) -> FinanceriskcoherentNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentNode::set(self : FinanceriskcoherentNode, i : Int, v : Double) -> FinanceriskcoherentNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_node_sum(s : FinanceriskcoherentNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentNode::sum(self : FinanceriskcoherentNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_node_mean(s : FinanceriskcoherentNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentNode::mean(self : FinanceriskcoherentNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_node_scale(s : FinanceriskcoherentNode, f : Double) -> FinanceriskcoherentNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentNode::scale(self : FinanceriskcoherentNode, f : Double) -> FinanceriskcoherentNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_node_add(a : FinanceriskcoherentNode, b : FinanceriskcoherentNode) -> FinanceriskcoherentNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentNode::add(self : FinanceriskcoherentNode, other : FinanceriskcoherentNode) -> FinanceriskcoherentNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_node_copy(s : FinanceriskcoherentNode) -> FinanceriskcoherentNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentNode::copy(self : FinanceriskcoherentNode) -> FinanceriskcoherentNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_node_fill(s : FinanceriskcoherentNode, v : Double) -> FinanceriskcoherentNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentNode::fill(self : FinanceriskcoherentNode, v : Double) -> FinanceriskcoherentNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_node_min(s : FinanceriskcoherentNode) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentNode::min(self : FinanceriskcoherentNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_node_max(s : FinanceriskcoherentNode) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentNode::max(self : FinanceriskcoherentNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_node_to_string(s : FinanceriskcoherentNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentNode::to_string(self : FinanceriskcoherentNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentEdge {
@@ -555,45 +555,45 @@ pub fn finance_risk_coherent_edge_make(size : Int) -> FinanceriskcoherentEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_edge_len(s : FinanceriskcoherentEdge) -> Int { s.size }
+pub fn FinanceriskcoherentEdge::len(self : FinanceriskcoherentEdge) -> Int { self.size }
 
-pub fn finance_risk_coherent_edge_get(s : FinanceriskcoherentEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentEdge::get(self : FinanceriskcoherentEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_edge_set(s : FinanceriskcoherentEdge, i : Int, v : Double) -> FinanceriskcoherentEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentEdge::set(self : FinanceriskcoherentEdge, i : Int, v : Double) -> FinanceriskcoherentEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_edge_sum(s : FinanceriskcoherentEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentEdge::sum(self : FinanceriskcoherentEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_edge_mean(s : FinanceriskcoherentEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentEdge::mean(self : FinanceriskcoherentEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_edge_scale(s : FinanceriskcoherentEdge, f : Double) -> FinanceriskcoherentEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentEdge::scale(self : FinanceriskcoherentEdge, f : Double) -> FinanceriskcoherentEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_edge_add(a : FinanceriskcoherentEdge, b : FinanceriskcoherentEdge) -> FinanceriskcoherentEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentEdge::add(self : FinanceriskcoherentEdge, other : FinanceriskcoherentEdge) -> FinanceriskcoherentEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_edge_copy(s : FinanceriskcoherentEdge) -> FinanceriskcoherentEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentEdge::copy(self : FinanceriskcoherentEdge) -> FinanceriskcoherentEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_edge_fill(s : FinanceriskcoherentEdge, v : Double) -> FinanceriskcoherentEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentEdge::fill(self : FinanceriskcoherentEdge, v : Double) -> FinanceriskcoherentEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_edge_min(s : FinanceriskcoherentEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentEdge::min(self : FinanceriskcoherentEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_edge_max(s : FinanceriskcoherentEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentEdge::max(self : FinanceriskcoherentEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_edge_to_string(s : FinanceriskcoherentEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentEdge::to_string(self : FinanceriskcoherentEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentPath {
@@ -606,45 +606,45 @@ pub fn finance_risk_coherent_path_make(size : Int) -> FinanceriskcoherentPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_path_len(s : FinanceriskcoherentPath) -> Int { s.size }
+pub fn FinanceriskcoherentPath::len(self : FinanceriskcoherentPath) -> Int { self.size }
 
-pub fn finance_risk_coherent_path_get(s : FinanceriskcoherentPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentPath::get(self : FinanceriskcoherentPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_path_set(s : FinanceriskcoherentPath, i : Int, v : Double) -> FinanceriskcoherentPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentPath::set(self : FinanceriskcoherentPath, i : Int, v : Double) -> FinanceriskcoherentPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_path_sum(s : FinanceriskcoherentPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentPath::sum(self : FinanceriskcoherentPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_path_mean(s : FinanceriskcoherentPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentPath::mean(self : FinanceriskcoherentPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_path_scale(s : FinanceriskcoherentPath, f : Double) -> FinanceriskcoherentPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentPath::scale(self : FinanceriskcoherentPath, f : Double) -> FinanceriskcoherentPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_path_add(a : FinanceriskcoherentPath, b : FinanceriskcoherentPath) -> FinanceriskcoherentPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentPath::add(self : FinanceriskcoherentPath, other : FinanceriskcoherentPath) -> FinanceriskcoherentPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_path_copy(s : FinanceriskcoherentPath) -> FinanceriskcoherentPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentPath::copy(self : FinanceriskcoherentPath) -> FinanceriskcoherentPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_path_fill(s : FinanceriskcoherentPath, v : Double) -> FinanceriskcoherentPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentPath::fill(self : FinanceriskcoherentPath, v : Double) -> FinanceriskcoherentPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_path_min(s : FinanceriskcoherentPath) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentPath::min(self : FinanceriskcoherentPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_path_max(s : FinanceriskcoherentPath) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentPath::max(self : FinanceriskcoherentPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_path_to_string(s : FinanceriskcoherentPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentPath::to_string(self : FinanceriskcoherentPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentCluster {
@@ -657,45 +657,45 @@ pub fn finance_risk_coherent_cluster_make(size : Int) -> FinanceriskcoherentClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_cluster_len(s : FinanceriskcoherentCluster) -> Int { s.size }
+pub fn FinanceriskcoherentCluster::len(self : FinanceriskcoherentCluster) -> Int { self.size }
 
-pub fn finance_risk_coherent_cluster_get(s : FinanceriskcoherentCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentCluster::get(self : FinanceriskcoherentCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_cluster_set(s : FinanceriskcoherentCluster, i : Int, v : Double) -> FinanceriskcoherentCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCluster::set(self : FinanceriskcoherentCluster, i : Int, v : Double) -> FinanceriskcoherentCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cluster_sum(s : FinanceriskcoherentCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentCluster::sum(self : FinanceriskcoherentCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_cluster_mean(s : FinanceriskcoherentCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentCluster::mean(self : FinanceriskcoherentCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_cluster_scale(s : FinanceriskcoherentCluster, f : Double) -> FinanceriskcoherentCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCluster::scale(self : FinanceriskcoherentCluster, f : Double) -> FinanceriskcoherentCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cluster_add(a : FinanceriskcoherentCluster, b : FinanceriskcoherentCluster) -> FinanceriskcoherentCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentCluster::add(self : FinanceriskcoherentCluster, other : FinanceriskcoherentCluster) -> FinanceriskcoherentCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cluster_copy(s : FinanceriskcoherentCluster) -> FinanceriskcoherentCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCluster::copy(self : FinanceriskcoherentCluster) -> FinanceriskcoherentCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cluster_fill(s : FinanceriskcoherentCluster, v : Double) -> FinanceriskcoherentCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCluster::fill(self : FinanceriskcoherentCluster, v : Double) -> FinanceriskcoherentCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cluster_min(s : FinanceriskcoherentCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentCluster::min(self : FinanceriskcoherentCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_cluster_max(s : FinanceriskcoherentCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentCluster::max(self : FinanceriskcoherentCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_cluster_to_string(s : FinanceriskcoherentCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentCluster::to_string(self : FinanceriskcoherentCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentModel {
@@ -708,45 +708,45 @@ pub fn finance_risk_coherent_model_make(size : Int) -> FinanceriskcoherentModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_model_len(s : FinanceriskcoherentModel) -> Int { s.size }
+pub fn FinanceriskcoherentModel::len(self : FinanceriskcoherentModel) -> Int { self.size }
 
-pub fn finance_risk_coherent_model_get(s : FinanceriskcoherentModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentModel::get(self : FinanceriskcoherentModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_model_set(s : FinanceriskcoherentModel, i : Int, v : Double) -> FinanceriskcoherentModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentModel::set(self : FinanceriskcoherentModel, i : Int, v : Double) -> FinanceriskcoherentModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_model_sum(s : FinanceriskcoherentModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentModel::sum(self : FinanceriskcoherentModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_model_mean(s : FinanceriskcoherentModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentModel::mean(self : FinanceriskcoherentModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_model_scale(s : FinanceriskcoherentModel, f : Double) -> FinanceriskcoherentModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentModel::scale(self : FinanceriskcoherentModel, f : Double) -> FinanceriskcoherentModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_model_add(a : FinanceriskcoherentModel, b : FinanceriskcoherentModel) -> FinanceriskcoherentModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentModel::add(self : FinanceriskcoherentModel, other : FinanceriskcoherentModel) -> FinanceriskcoherentModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_model_copy(s : FinanceriskcoherentModel) -> FinanceriskcoherentModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentModel::copy(self : FinanceriskcoherentModel) -> FinanceriskcoherentModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_model_fill(s : FinanceriskcoherentModel, v : Double) -> FinanceriskcoherentModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentModel::fill(self : FinanceriskcoherentModel, v : Double) -> FinanceriskcoherentModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_model_min(s : FinanceriskcoherentModel) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentModel::min(self : FinanceriskcoherentModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_model_max(s : FinanceriskcoherentModel) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentModel::max(self : FinanceriskcoherentModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_model_to_string(s : FinanceriskcoherentModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentModel::to_string(self : FinanceriskcoherentModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentLayer {
@@ -759,45 +759,45 @@ pub fn finance_risk_coherent_layer_make(size : Int) -> FinanceriskcoherentLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_layer_len(s : FinanceriskcoherentLayer) -> Int { s.size }
+pub fn FinanceriskcoherentLayer::len(self : FinanceriskcoherentLayer) -> Int { self.size }
 
-pub fn finance_risk_coherent_layer_get(s : FinanceriskcoherentLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentLayer::get(self : FinanceriskcoherentLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_layer_set(s : FinanceriskcoherentLayer, i : Int, v : Double) -> FinanceriskcoherentLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentLayer::set(self : FinanceriskcoherentLayer, i : Int, v : Double) -> FinanceriskcoherentLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_layer_sum(s : FinanceriskcoherentLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentLayer::sum(self : FinanceriskcoherentLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_layer_mean(s : FinanceriskcoherentLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentLayer::mean(self : FinanceriskcoherentLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_layer_scale(s : FinanceriskcoherentLayer, f : Double) -> FinanceriskcoherentLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentLayer::scale(self : FinanceriskcoherentLayer, f : Double) -> FinanceriskcoherentLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_layer_add(a : FinanceriskcoherentLayer, b : FinanceriskcoherentLayer) -> FinanceriskcoherentLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentLayer::add(self : FinanceriskcoherentLayer, other : FinanceriskcoherentLayer) -> FinanceriskcoherentLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_layer_copy(s : FinanceriskcoherentLayer) -> FinanceriskcoherentLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentLayer::copy(self : FinanceriskcoherentLayer) -> FinanceriskcoherentLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_layer_fill(s : FinanceriskcoherentLayer, v : Double) -> FinanceriskcoherentLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentLayer::fill(self : FinanceriskcoherentLayer, v : Double) -> FinanceriskcoherentLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_layer_min(s : FinanceriskcoherentLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentLayer::min(self : FinanceriskcoherentLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_layer_max(s : FinanceriskcoherentLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentLayer::max(self : FinanceriskcoherentLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_layer_to_string(s : FinanceriskcoherentLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentLayer::to_string(self : FinanceriskcoherentLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentBuffer {
@@ -810,45 +810,45 @@ pub fn finance_risk_coherent_buffer_make(size : Int) -> FinanceriskcoherentBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_buffer_len(s : FinanceriskcoherentBuffer) -> Int { s.size }
+pub fn FinanceriskcoherentBuffer::len(self : FinanceriskcoherentBuffer) -> Int { self.size }
 
-pub fn finance_risk_coherent_buffer_get(s : FinanceriskcoherentBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentBuffer::get(self : FinanceriskcoherentBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_buffer_set(s : FinanceriskcoherentBuffer, i : Int, v : Double) -> FinanceriskcoherentBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentBuffer::set(self : FinanceriskcoherentBuffer, i : Int, v : Double) -> FinanceriskcoherentBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_buffer_sum(s : FinanceriskcoherentBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentBuffer::sum(self : FinanceriskcoherentBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_buffer_mean(s : FinanceriskcoherentBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentBuffer::mean(self : FinanceriskcoherentBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_buffer_scale(s : FinanceriskcoherentBuffer, f : Double) -> FinanceriskcoherentBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentBuffer::scale(self : FinanceriskcoherentBuffer, f : Double) -> FinanceriskcoherentBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_buffer_add(a : FinanceriskcoherentBuffer, b : FinanceriskcoherentBuffer) -> FinanceriskcoherentBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentBuffer::add(self : FinanceriskcoherentBuffer, other : FinanceriskcoherentBuffer) -> FinanceriskcoherentBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_buffer_copy(s : FinanceriskcoherentBuffer) -> FinanceriskcoherentBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentBuffer::copy(self : FinanceriskcoherentBuffer) -> FinanceriskcoherentBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_buffer_fill(s : FinanceriskcoherentBuffer, v : Double) -> FinanceriskcoherentBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentBuffer::fill(self : FinanceriskcoherentBuffer, v : Double) -> FinanceriskcoherentBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_buffer_min(s : FinanceriskcoherentBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentBuffer::min(self : FinanceriskcoherentBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_buffer_max(s : FinanceriskcoherentBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentBuffer::max(self : FinanceriskcoherentBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_buffer_to_string(s : FinanceriskcoherentBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentBuffer::to_string(self : FinanceriskcoherentBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentCursor {
@@ -861,45 +861,45 @@ pub fn finance_risk_coherent_cursor_make(size : Int) -> FinanceriskcoherentCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_cursor_len(s : FinanceriskcoherentCursor) -> Int { s.size }
+pub fn FinanceriskcoherentCursor::len(self : FinanceriskcoherentCursor) -> Int { self.size }
 
-pub fn finance_risk_coherent_cursor_get(s : FinanceriskcoherentCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentCursor::get(self : FinanceriskcoherentCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_cursor_set(s : FinanceriskcoherentCursor, i : Int, v : Double) -> FinanceriskcoherentCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCursor::set(self : FinanceriskcoherentCursor, i : Int, v : Double) -> FinanceriskcoherentCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cursor_sum(s : FinanceriskcoherentCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentCursor::sum(self : FinanceriskcoherentCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_cursor_mean(s : FinanceriskcoherentCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentCursor::mean(self : FinanceriskcoherentCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_cursor_scale(s : FinanceriskcoherentCursor, f : Double) -> FinanceriskcoherentCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCursor::scale(self : FinanceriskcoherentCursor, f : Double) -> FinanceriskcoherentCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cursor_add(a : FinanceriskcoherentCursor, b : FinanceriskcoherentCursor) -> FinanceriskcoherentCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentCursor::add(self : FinanceriskcoherentCursor, other : FinanceriskcoherentCursor) -> FinanceriskcoherentCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cursor_copy(s : FinanceriskcoherentCursor) -> FinanceriskcoherentCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCursor::copy(self : FinanceriskcoherentCursor) -> FinanceriskcoherentCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cursor_fill(s : FinanceriskcoherentCursor, v : Double) -> FinanceriskcoherentCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentCursor::fill(self : FinanceriskcoherentCursor, v : Double) -> FinanceriskcoherentCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_cursor_min(s : FinanceriskcoherentCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentCursor::min(self : FinanceriskcoherentCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_cursor_max(s : FinanceriskcoherentCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentCursor::max(self : FinanceriskcoherentCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_cursor_to_string(s : FinanceriskcoherentCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentCursor::to_string(self : FinanceriskcoherentCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentView {
@@ -912,45 +912,45 @@ pub fn finance_risk_coherent_view_make(size : Int) -> FinanceriskcoherentView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_view_len(s : FinanceriskcoherentView) -> Int { s.size }
+pub fn FinanceriskcoherentView::len(self : FinanceriskcoherentView) -> Int { self.size }
 
-pub fn finance_risk_coherent_view_get(s : FinanceriskcoherentView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentView::get(self : FinanceriskcoherentView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_view_set(s : FinanceriskcoherentView, i : Int, v : Double) -> FinanceriskcoherentView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentView::set(self : FinanceriskcoherentView, i : Int, v : Double) -> FinanceriskcoherentView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_view_sum(s : FinanceriskcoherentView) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentView::sum(self : FinanceriskcoherentView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_view_mean(s : FinanceriskcoherentView) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentView::mean(self : FinanceriskcoherentView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_view_scale(s : FinanceriskcoherentView, f : Double) -> FinanceriskcoherentView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentView::scale(self : FinanceriskcoherentView, f : Double) -> FinanceriskcoherentView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_view_add(a : FinanceriskcoherentView, b : FinanceriskcoherentView) -> FinanceriskcoherentView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentView::add(self : FinanceriskcoherentView, other : FinanceriskcoherentView) -> FinanceriskcoherentView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_view_copy(s : FinanceriskcoherentView) -> FinanceriskcoherentView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentView::copy(self : FinanceriskcoherentView) -> FinanceriskcoherentView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_view_fill(s : FinanceriskcoherentView, v : Double) -> FinanceriskcoherentView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentView::fill(self : FinanceriskcoherentView, v : Double) -> FinanceriskcoherentView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_view_min(s : FinanceriskcoherentView) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentView::min(self : FinanceriskcoherentView) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_view_max(s : FinanceriskcoherentView) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentView::max(self : FinanceriskcoherentView) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_view_to_string(s : FinanceriskcoherentView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentView::to_string(self : FinanceriskcoherentView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentRange {
@@ -963,45 +963,45 @@ pub fn finance_risk_coherent_range_make(size : Int) -> FinanceriskcoherentRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_range_len(s : FinanceriskcoherentRange) -> Int { s.size }
+pub fn FinanceriskcoherentRange::len(self : FinanceriskcoherentRange) -> Int { self.size }
 
-pub fn finance_risk_coherent_range_get(s : FinanceriskcoherentRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentRange::get(self : FinanceriskcoherentRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_range_set(s : FinanceriskcoherentRange, i : Int, v : Double) -> FinanceriskcoherentRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentRange::set(self : FinanceriskcoherentRange, i : Int, v : Double) -> FinanceriskcoherentRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_range_sum(s : FinanceriskcoherentRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentRange::sum(self : FinanceriskcoherentRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_range_mean(s : FinanceriskcoherentRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentRange::mean(self : FinanceriskcoherentRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_range_scale(s : FinanceriskcoherentRange, f : Double) -> FinanceriskcoherentRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentRange::scale(self : FinanceriskcoherentRange, f : Double) -> FinanceriskcoherentRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_range_add(a : FinanceriskcoherentRange, b : FinanceriskcoherentRange) -> FinanceriskcoherentRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentRange::add(self : FinanceriskcoherentRange, other : FinanceriskcoherentRange) -> FinanceriskcoherentRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_range_copy(s : FinanceriskcoherentRange) -> FinanceriskcoherentRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentRange::copy(self : FinanceriskcoherentRange) -> FinanceriskcoherentRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_range_fill(s : FinanceriskcoherentRange, v : Double) -> FinanceriskcoherentRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentRange::fill(self : FinanceriskcoherentRange, v : Double) -> FinanceriskcoherentRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_range_min(s : FinanceriskcoherentRange) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentRange::min(self : FinanceriskcoherentRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_range_max(s : FinanceriskcoherentRange) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentRange::max(self : FinanceriskcoherentRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_range_to_string(s : FinanceriskcoherentRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentRange::to_string(self : FinanceriskcoherentRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskcoherentSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_risk_coherent_slice_make(size : Int) -> FinanceriskcoherentSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_coherent_slice_len(s : FinanceriskcoherentSlice) -> Int { s.size }
+pub fn FinanceriskcoherentSlice::len(self : FinanceriskcoherentSlice) -> Int { self.size }
 
-pub fn finance_risk_coherent_slice_get(s : FinanceriskcoherentSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskcoherentSlice::get(self : FinanceriskcoherentSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_coherent_slice_set(s : FinanceriskcoherentSlice, i : Int, v : Double) -> FinanceriskcoherentSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentSlice::set(self : FinanceriskcoherentSlice, i : Int, v : Double) -> FinanceriskcoherentSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_slice_sum(s : FinanceriskcoherentSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskcoherentSlice::sum(self : FinanceriskcoherentSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_coherent_slice_mean(s : FinanceriskcoherentSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskcoherentSlice::mean(self : FinanceriskcoherentSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_coherent_slice_scale(s : FinanceriskcoherentSlice, f : Double) -> FinanceriskcoherentSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentSlice::scale(self : FinanceriskcoherentSlice, f : Double) -> FinanceriskcoherentSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_slice_add(a : FinanceriskcoherentSlice, b : FinanceriskcoherentSlice) -> FinanceriskcoherentSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskcoherentSlice::add(self : FinanceriskcoherentSlice, other : FinanceriskcoherentSlice) -> FinanceriskcoherentSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_slice_copy(s : FinanceriskcoherentSlice) -> FinanceriskcoherentSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentSlice::copy(self : FinanceriskcoherentSlice) -> FinanceriskcoherentSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_slice_fill(s : FinanceriskcoherentSlice, v : Double) -> FinanceriskcoherentSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskcoherentSlice::fill(self : FinanceriskcoherentSlice, v : Double) -> FinanceriskcoherentSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_coherent_slice_min(s : FinanceriskcoherentSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceriskcoherentSlice::min(self : FinanceriskcoherentSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_coherent_slice_max(s : FinanceriskcoherentSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceriskcoherentSlice::max(self : FinanceriskcoherentSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_coherent_slice_to_string(s : FinanceriskcoherentSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskcoherentSlice::to_string(self : FinanceriskcoherentSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

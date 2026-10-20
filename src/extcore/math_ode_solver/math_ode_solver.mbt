@@ -351,45 +351,45 @@ pub fn math_ode_solver_frame_make(size : Int) -> MathodesolverFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_frame_len(s : MathodesolverFrame) -> Int { s.size }
+pub fn MathodesolverFrame::len(self : MathodesolverFrame) -> Int { self.size }
 
-pub fn math_ode_solver_frame_get(s : MathodesolverFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverFrame::get(self : MathodesolverFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_frame_set(s : MathodesolverFrame, i : Int, v : Double) -> MathodesolverFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverFrame::set(self : MathodesolverFrame, i : Int, v : Double) -> MathodesolverFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_frame_sum(s : MathodesolverFrame) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverFrame::sum(self : MathodesolverFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_frame_mean(s : MathodesolverFrame) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverFrame::mean(self : MathodesolverFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_frame_scale(s : MathodesolverFrame, f : Double) -> MathodesolverFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverFrame::scale(self : MathodesolverFrame, f : Double) -> MathodesolverFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_frame_add(a : MathodesolverFrame, b : MathodesolverFrame) -> MathodesolverFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverFrame::add(self : MathodesolverFrame, other : MathodesolverFrame) -> MathodesolverFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_frame_copy(s : MathodesolverFrame) -> MathodesolverFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverFrame::copy(self : MathodesolverFrame) -> MathodesolverFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_frame_fill(s : MathodesolverFrame, v : Double) -> MathodesolverFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverFrame::fill(self : MathodesolverFrame, v : Double) -> MathodesolverFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_frame_min(s : MathodesolverFrame) -> Double { @_common.min(s.data) }
+pub fn MathodesolverFrame::min(self : MathodesolverFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_frame_max(s : MathodesolverFrame) -> Double { @_common.max(s.data) }
+pub fn MathodesolverFrame::max(self : MathodesolverFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_frame_to_string(s : MathodesolverFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverFrame::to_string(self : MathodesolverFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverTable {
@@ -402,45 +402,45 @@ pub fn math_ode_solver_table_make(size : Int) -> MathodesolverTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_table_len(s : MathodesolverTable) -> Int { s.size }
+pub fn MathodesolverTable::len(self : MathodesolverTable) -> Int { self.size }
 
-pub fn math_ode_solver_table_get(s : MathodesolverTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverTable::get(self : MathodesolverTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_table_set(s : MathodesolverTable, i : Int, v : Double) -> MathodesolverTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverTable::set(self : MathodesolverTable, i : Int, v : Double) -> MathodesolverTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_table_sum(s : MathodesolverTable) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverTable::sum(self : MathodesolverTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_table_mean(s : MathodesolverTable) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverTable::mean(self : MathodesolverTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_table_scale(s : MathodesolverTable, f : Double) -> MathodesolverTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverTable::scale(self : MathodesolverTable, f : Double) -> MathodesolverTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_table_add(a : MathodesolverTable, b : MathodesolverTable) -> MathodesolverTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverTable::add(self : MathodesolverTable, other : MathodesolverTable) -> MathodesolverTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_table_copy(s : MathodesolverTable) -> MathodesolverTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverTable::copy(self : MathodesolverTable) -> MathodesolverTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_table_fill(s : MathodesolverTable, v : Double) -> MathodesolverTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverTable::fill(self : MathodesolverTable, v : Double) -> MathodesolverTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_table_min(s : MathodesolverTable) -> Double { @_common.min(s.data) }
+pub fn MathodesolverTable::min(self : MathodesolverTable) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_table_max(s : MathodesolverTable) -> Double { @_common.max(s.data) }
+pub fn MathodesolverTable::max(self : MathodesolverTable) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_table_to_string(s : MathodesolverTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverTable::to_string(self : MathodesolverTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverGraphN {
@@ -453,45 +453,45 @@ pub fn math_ode_solver_graphn_make(size : Int) -> MathodesolverGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_graphn_len(s : MathodesolverGraphN) -> Int { s.size }
+pub fn MathodesolverGraphN::len(self : MathodesolverGraphN) -> Int { self.size }
 
-pub fn math_ode_solver_graphn_get(s : MathodesolverGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverGraphN::get(self : MathodesolverGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_graphn_set(s : MathodesolverGraphN, i : Int, v : Double) -> MathodesolverGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverGraphN::set(self : MathodesolverGraphN, i : Int, v : Double) -> MathodesolverGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_graphn_sum(s : MathodesolverGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverGraphN::sum(self : MathodesolverGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_graphn_mean(s : MathodesolverGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverGraphN::mean(self : MathodesolverGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_graphn_scale(s : MathodesolverGraphN, f : Double) -> MathodesolverGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverGraphN::scale(self : MathodesolverGraphN, f : Double) -> MathodesolverGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_graphn_add(a : MathodesolverGraphN, b : MathodesolverGraphN) -> MathodesolverGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverGraphN::add(self : MathodesolverGraphN, other : MathodesolverGraphN) -> MathodesolverGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_graphn_copy(s : MathodesolverGraphN) -> MathodesolverGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverGraphN::copy(self : MathodesolverGraphN) -> MathodesolverGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_graphn_fill(s : MathodesolverGraphN, v : Double) -> MathodesolverGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverGraphN::fill(self : MathodesolverGraphN, v : Double) -> MathodesolverGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_graphn_min(s : MathodesolverGraphN) -> Double { @_common.min(s.data) }
+pub fn MathodesolverGraphN::min(self : MathodesolverGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_graphn_max(s : MathodesolverGraphN) -> Double { @_common.max(s.data) }
+pub fn MathodesolverGraphN::max(self : MathodesolverGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_graphn_to_string(s : MathodesolverGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverGraphN::to_string(self : MathodesolverGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverNode {
@@ -504,45 +504,45 @@ pub fn math_ode_solver_node_make(size : Int) -> MathodesolverNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_node_len(s : MathodesolverNode) -> Int { s.size }
+pub fn MathodesolverNode::len(self : MathodesolverNode) -> Int { self.size }
 
-pub fn math_ode_solver_node_get(s : MathodesolverNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverNode::get(self : MathodesolverNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_node_set(s : MathodesolverNode, i : Int, v : Double) -> MathodesolverNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverNode::set(self : MathodesolverNode, i : Int, v : Double) -> MathodesolverNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_node_sum(s : MathodesolverNode) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverNode::sum(self : MathodesolverNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_node_mean(s : MathodesolverNode) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverNode::mean(self : MathodesolverNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_node_scale(s : MathodesolverNode, f : Double) -> MathodesolverNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverNode::scale(self : MathodesolverNode, f : Double) -> MathodesolverNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_node_add(a : MathodesolverNode, b : MathodesolverNode) -> MathodesolverNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverNode::add(self : MathodesolverNode, other : MathodesolverNode) -> MathodesolverNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_node_copy(s : MathodesolverNode) -> MathodesolverNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverNode::copy(self : MathodesolverNode) -> MathodesolverNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_node_fill(s : MathodesolverNode, v : Double) -> MathodesolverNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverNode::fill(self : MathodesolverNode, v : Double) -> MathodesolverNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_node_min(s : MathodesolverNode) -> Double { @_common.min(s.data) }
+pub fn MathodesolverNode::min(self : MathodesolverNode) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_node_max(s : MathodesolverNode) -> Double { @_common.max(s.data) }
+pub fn MathodesolverNode::max(self : MathodesolverNode) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_node_to_string(s : MathodesolverNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverNode::to_string(self : MathodesolverNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverEdge {
@@ -555,45 +555,45 @@ pub fn math_ode_solver_edge_make(size : Int) -> MathodesolverEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_edge_len(s : MathodesolverEdge) -> Int { s.size }
+pub fn MathodesolverEdge::len(self : MathodesolverEdge) -> Int { self.size }
 
-pub fn math_ode_solver_edge_get(s : MathodesolverEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverEdge::get(self : MathodesolverEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_edge_set(s : MathodesolverEdge, i : Int, v : Double) -> MathodesolverEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverEdge::set(self : MathodesolverEdge, i : Int, v : Double) -> MathodesolverEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_edge_sum(s : MathodesolverEdge) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverEdge::sum(self : MathodesolverEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_edge_mean(s : MathodesolverEdge) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverEdge::mean(self : MathodesolverEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_edge_scale(s : MathodesolverEdge, f : Double) -> MathodesolverEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverEdge::scale(self : MathodesolverEdge, f : Double) -> MathodesolverEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_edge_add(a : MathodesolverEdge, b : MathodesolverEdge) -> MathodesolverEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverEdge::add(self : MathodesolverEdge, other : MathodesolverEdge) -> MathodesolverEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_edge_copy(s : MathodesolverEdge) -> MathodesolverEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverEdge::copy(self : MathodesolverEdge) -> MathodesolverEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_edge_fill(s : MathodesolverEdge, v : Double) -> MathodesolverEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverEdge::fill(self : MathodesolverEdge, v : Double) -> MathodesolverEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_edge_min(s : MathodesolverEdge) -> Double { @_common.min(s.data) }
+pub fn MathodesolverEdge::min(self : MathodesolverEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_edge_max(s : MathodesolverEdge) -> Double { @_common.max(s.data) }
+pub fn MathodesolverEdge::max(self : MathodesolverEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_edge_to_string(s : MathodesolverEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverEdge::to_string(self : MathodesolverEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverPath {
@@ -606,45 +606,45 @@ pub fn math_ode_solver_path_make(size : Int) -> MathodesolverPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_path_len(s : MathodesolverPath) -> Int { s.size }
+pub fn MathodesolverPath::len(self : MathodesolverPath) -> Int { self.size }
 
-pub fn math_ode_solver_path_get(s : MathodesolverPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverPath::get(self : MathodesolverPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_path_set(s : MathodesolverPath, i : Int, v : Double) -> MathodesolverPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverPath::set(self : MathodesolverPath, i : Int, v : Double) -> MathodesolverPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_path_sum(s : MathodesolverPath) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverPath::sum(self : MathodesolverPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_path_mean(s : MathodesolverPath) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverPath::mean(self : MathodesolverPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_path_scale(s : MathodesolverPath, f : Double) -> MathodesolverPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverPath::scale(self : MathodesolverPath, f : Double) -> MathodesolverPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_path_add(a : MathodesolverPath, b : MathodesolverPath) -> MathodesolverPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverPath::add(self : MathodesolverPath, other : MathodesolverPath) -> MathodesolverPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_path_copy(s : MathodesolverPath) -> MathodesolverPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverPath::copy(self : MathodesolverPath) -> MathodesolverPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_path_fill(s : MathodesolverPath, v : Double) -> MathodesolverPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverPath::fill(self : MathodesolverPath, v : Double) -> MathodesolverPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_path_min(s : MathodesolverPath) -> Double { @_common.min(s.data) }
+pub fn MathodesolverPath::min(self : MathodesolverPath) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_path_max(s : MathodesolverPath) -> Double { @_common.max(s.data) }
+pub fn MathodesolverPath::max(self : MathodesolverPath) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_path_to_string(s : MathodesolverPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverPath::to_string(self : MathodesolverPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverCluster {
@@ -657,45 +657,45 @@ pub fn math_ode_solver_cluster_make(size : Int) -> MathodesolverCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_cluster_len(s : MathodesolverCluster) -> Int { s.size }
+pub fn MathodesolverCluster::len(self : MathodesolverCluster) -> Int { self.size }
 
-pub fn math_ode_solver_cluster_get(s : MathodesolverCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverCluster::get(self : MathodesolverCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_cluster_set(s : MathodesolverCluster, i : Int, v : Double) -> MathodesolverCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverCluster::set(self : MathodesolverCluster, i : Int, v : Double) -> MathodesolverCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cluster_sum(s : MathodesolverCluster) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverCluster::sum(self : MathodesolverCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_cluster_mean(s : MathodesolverCluster) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverCluster::mean(self : MathodesolverCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_cluster_scale(s : MathodesolverCluster, f : Double) -> MathodesolverCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverCluster::scale(self : MathodesolverCluster, f : Double) -> MathodesolverCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cluster_add(a : MathodesolverCluster, b : MathodesolverCluster) -> MathodesolverCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverCluster::add(self : MathodesolverCluster, other : MathodesolverCluster) -> MathodesolverCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_cluster_copy(s : MathodesolverCluster) -> MathodesolverCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverCluster::copy(self : MathodesolverCluster) -> MathodesolverCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cluster_fill(s : MathodesolverCluster, v : Double) -> MathodesolverCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverCluster::fill(self : MathodesolverCluster, v : Double) -> MathodesolverCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cluster_min(s : MathodesolverCluster) -> Double { @_common.min(s.data) }
+pub fn MathodesolverCluster::min(self : MathodesolverCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_cluster_max(s : MathodesolverCluster) -> Double { @_common.max(s.data) }
+pub fn MathodesolverCluster::max(self : MathodesolverCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_cluster_to_string(s : MathodesolverCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverCluster::to_string(self : MathodesolverCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverModel {
@@ -708,45 +708,45 @@ pub fn math_ode_solver_model_make(size : Int) -> MathodesolverModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_model_len(s : MathodesolverModel) -> Int { s.size }
+pub fn MathodesolverModel::len(self : MathodesolverModel) -> Int { self.size }
 
-pub fn math_ode_solver_model_get(s : MathodesolverModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverModel::get(self : MathodesolverModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_model_set(s : MathodesolverModel, i : Int, v : Double) -> MathodesolverModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverModel::set(self : MathodesolverModel, i : Int, v : Double) -> MathodesolverModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_model_sum(s : MathodesolverModel) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverModel::sum(self : MathodesolverModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_model_mean(s : MathodesolverModel) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverModel::mean(self : MathodesolverModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_model_scale(s : MathodesolverModel, f : Double) -> MathodesolverModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverModel::scale(self : MathodesolverModel, f : Double) -> MathodesolverModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_model_add(a : MathodesolverModel, b : MathodesolverModel) -> MathodesolverModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverModel::add(self : MathodesolverModel, other : MathodesolverModel) -> MathodesolverModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_model_copy(s : MathodesolverModel) -> MathodesolverModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverModel::copy(self : MathodesolverModel) -> MathodesolverModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_model_fill(s : MathodesolverModel, v : Double) -> MathodesolverModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverModel::fill(self : MathodesolverModel, v : Double) -> MathodesolverModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_model_min(s : MathodesolverModel) -> Double { @_common.min(s.data) }
+pub fn MathodesolverModel::min(self : MathodesolverModel) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_model_max(s : MathodesolverModel) -> Double { @_common.max(s.data) }
+pub fn MathodesolverModel::max(self : MathodesolverModel) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_model_to_string(s : MathodesolverModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverModel::to_string(self : MathodesolverModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverLayer {
@@ -759,45 +759,45 @@ pub fn math_ode_solver_layer_make(size : Int) -> MathodesolverLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_layer_len(s : MathodesolverLayer) -> Int { s.size }
+pub fn MathodesolverLayer::len(self : MathodesolverLayer) -> Int { self.size }
 
-pub fn math_ode_solver_layer_get(s : MathodesolverLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverLayer::get(self : MathodesolverLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_layer_set(s : MathodesolverLayer, i : Int, v : Double) -> MathodesolverLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverLayer::set(self : MathodesolverLayer, i : Int, v : Double) -> MathodesolverLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_layer_sum(s : MathodesolverLayer) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverLayer::sum(self : MathodesolverLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_layer_mean(s : MathodesolverLayer) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverLayer::mean(self : MathodesolverLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_layer_scale(s : MathodesolverLayer, f : Double) -> MathodesolverLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverLayer::scale(self : MathodesolverLayer, f : Double) -> MathodesolverLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_layer_add(a : MathodesolverLayer, b : MathodesolverLayer) -> MathodesolverLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverLayer::add(self : MathodesolverLayer, other : MathodesolverLayer) -> MathodesolverLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_layer_copy(s : MathodesolverLayer) -> MathodesolverLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverLayer::copy(self : MathodesolverLayer) -> MathodesolverLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_layer_fill(s : MathodesolverLayer, v : Double) -> MathodesolverLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverLayer::fill(self : MathodesolverLayer, v : Double) -> MathodesolverLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_layer_min(s : MathodesolverLayer) -> Double { @_common.min(s.data) }
+pub fn MathodesolverLayer::min(self : MathodesolverLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_layer_max(s : MathodesolverLayer) -> Double { @_common.max(s.data) }
+pub fn MathodesolverLayer::max(self : MathodesolverLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_layer_to_string(s : MathodesolverLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverLayer::to_string(self : MathodesolverLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverBuffer {
@@ -810,45 +810,45 @@ pub fn math_ode_solver_buffer_make(size : Int) -> MathodesolverBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_buffer_len(s : MathodesolverBuffer) -> Int { s.size }
+pub fn MathodesolverBuffer::len(self : MathodesolverBuffer) -> Int { self.size }
 
-pub fn math_ode_solver_buffer_get(s : MathodesolverBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverBuffer::get(self : MathodesolverBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_buffer_set(s : MathodesolverBuffer, i : Int, v : Double) -> MathodesolverBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverBuffer::set(self : MathodesolverBuffer, i : Int, v : Double) -> MathodesolverBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_buffer_sum(s : MathodesolverBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverBuffer::sum(self : MathodesolverBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_buffer_mean(s : MathodesolverBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverBuffer::mean(self : MathodesolverBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_buffer_scale(s : MathodesolverBuffer, f : Double) -> MathodesolverBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverBuffer::scale(self : MathodesolverBuffer, f : Double) -> MathodesolverBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_buffer_add(a : MathodesolverBuffer, b : MathodesolverBuffer) -> MathodesolverBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverBuffer::add(self : MathodesolverBuffer, other : MathodesolverBuffer) -> MathodesolverBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_buffer_copy(s : MathodesolverBuffer) -> MathodesolverBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverBuffer::copy(self : MathodesolverBuffer) -> MathodesolverBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_buffer_fill(s : MathodesolverBuffer, v : Double) -> MathodesolverBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverBuffer::fill(self : MathodesolverBuffer, v : Double) -> MathodesolverBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_buffer_min(s : MathodesolverBuffer) -> Double { @_common.min(s.data) }
+pub fn MathodesolverBuffer::min(self : MathodesolverBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_buffer_max(s : MathodesolverBuffer) -> Double { @_common.max(s.data) }
+pub fn MathodesolverBuffer::max(self : MathodesolverBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_buffer_to_string(s : MathodesolverBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverBuffer::to_string(self : MathodesolverBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverCursor {
@@ -861,45 +861,45 @@ pub fn math_ode_solver_cursor_make(size : Int) -> MathodesolverCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_cursor_len(s : MathodesolverCursor) -> Int { s.size }
+pub fn MathodesolverCursor::len(self : MathodesolverCursor) -> Int { self.size }
 
-pub fn math_ode_solver_cursor_get(s : MathodesolverCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverCursor::get(self : MathodesolverCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_cursor_set(s : MathodesolverCursor, i : Int, v : Double) -> MathodesolverCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverCursor::set(self : MathodesolverCursor, i : Int, v : Double) -> MathodesolverCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cursor_sum(s : MathodesolverCursor) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverCursor::sum(self : MathodesolverCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_cursor_mean(s : MathodesolverCursor) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverCursor::mean(self : MathodesolverCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_cursor_scale(s : MathodesolverCursor, f : Double) -> MathodesolverCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverCursor::scale(self : MathodesolverCursor, f : Double) -> MathodesolverCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cursor_add(a : MathodesolverCursor, b : MathodesolverCursor) -> MathodesolverCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverCursor::add(self : MathodesolverCursor, other : MathodesolverCursor) -> MathodesolverCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_cursor_copy(s : MathodesolverCursor) -> MathodesolverCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverCursor::copy(self : MathodesolverCursor) -> MathodesolverCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cursor_fill(s : MathodesolverCursor, v : Double) -> MathodesolverCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverCursor::fill(self : MathodesolverCursor, v : Double) -> MathodesolverCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_cursor_min(s : MathodesolverCursor) -> Double { @_common.min(s.data) }
+pub fn MathodesolverCursor::min(self : MathodesolverCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_cursor_max(s : MathodesolverCursor) -> Double { @_common.max(s.data) }
+pub fn MathodesolverCursor::max(self : MathodesolverCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_cursor_to_string(s : MathodesolverCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverCursor::to_string(self : MathodesolverCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverView {
@@ -912,45 +912,45 @@ pub fn math_ode_solver_view_make(size : Int) -> MathodesolverView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_view_len(s : MathodesolverView) -> Int { s.size }
+pub fn MathodesolverView::len(self : MathodesolverView) -> Int { self.size }
 
-pub fn math_ode_solver_view_get(s : MathodesolverView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverView::get(self : MathodesolverView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_view_set(s : MathodesolverView, i : Int, v : Double) -> MathodesolverView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverView::set(self : MathodesolverView, i : Int, v : Double) -> MathodesolverView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_view_sum(s : MathodesolverView) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverView::sum(self : MathodesolverView) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_view_mean(s : MathodesolverView) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverView::mean(self : MathodesolverView) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_view_scale(s : MathodesolverView, f : Double) -> MathodesolverView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverView::scale(self : MathodesolverView, f : Double) -> MathodesolverView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_view_add(a : MathodesolverView, b : MathodesolverView) -> MathodesolverView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverView::add(self : MathodesolverView, other : MathodesolverView) -> MathodesolverView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_view_copy(s : MathodesolverView) -> MathodesolverView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverView::copy(self : MathodesolverView) -> MathodesolverView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_view_fill(s : MathodesolverView, v : Double) -> MathodesolverView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverView::fill(self : MathodesolverView, v : Double) -> MathodesolverView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_view_min(s : MathodesolverView) -> Double { @_common.min(s.data) }
+pub fn MathodesolverView::min(self : MathodesolverView) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_view_max(s : MathodesolverView) -> Double { @_common.max(s.data) }
+pub fn MathodesolverView::max(self : MathodesolverView) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_view_to_string(s : MathodesolverView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverView::to_string(self : MathodesolverView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverRange {
@@ -963,45 +963,45 @@ pub fn math_ode_solver_range_make(size : Int) -> MathodesolverRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_range_len(s : MathodesolverRange) -> Int { s.size }
+pub fn MathodesolverRange::len(self : MathodesolverRange) -> Int { self.size }
 
-pub fn math_ode_solver_range_get(s : MathodesolverRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverRange::get(self : MathodesolverRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_range_set(s : MathodesolverRange, i : Int, v : Double) -> MathodesolverRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverRange::set(self : MathodesolverRange, i : Int, v : Double) -> MathodesolverRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_range_sum(s : MathodesolverRange) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverRange::sum(self : MathodesolverRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_range_mean(s : MathodesolverRange) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverRange::mean(self : MathodesolverRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_range_scale(s : MathodesolverRange, f : Double) -> MathodesolverRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverRange::scale(self : MathodesolverRange, f : Double) -> MathodesolverRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_range_add(a : MathodesolverRange, b : MathodesolverRange) -> MathodesolverRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverRange::add(self : MathodesolverRange, other : MathodesolverRange) -> MathodesolverRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_range_copy(s : MathodesolverRange) -> MathodesolverRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverRange::copy(self : MathodesolverRange) -> MathodesolverRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_range_fill(s : MathodesolverRange, v : Double) -> MathodesolverRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverRange::fill(self : MathodesolverRange, v : Double) -> MathodesolverRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_range_min(s : MathodesolverRange) -> Double { @_common.min(s.data) }
+pub fn MathodesolverRange::min(self : MathodesolverRange) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_range_max(s : MathodesolverRange) -> Double { @_common.max(s.data) }
+pub fn MathodesolverRange::max(self : MathodesolverRange) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_range_to_string(s : MathodesolverRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverRange::to_string(self : MathodesolverRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathodesolverSlice {
@@ -1014,44 +1014,44 @@ pub fn math_ode_solver_slice_make(size : Int) -> MathodesolverSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_ode_solver_slice_len(s : MathodesolverSlice) -> Int { s.size }
+pub fn MathodesolverSlice::len(self : MathodesolverSlice) -> Int { self.size }
 
-pub fn math_ode_solver_slice_get(s : MathodesolverSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathodesolverSlice::get(self : MathodesolverSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_ode_solver_slice_set(s : MathodesolverSlice, i : Int, v : Double) -> MathodesolverSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathodesolverSlice::set(self : MathodesolverSlice, i : Int, v : Double) -> MathodesolverSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_slice_sum(s : MathodesolverSlice) -> Double { @_common.sum(s.data) }
+pub fn MathodesolverSlice::sum(self : MathodesolverSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_ode_solver_slice_mean(s : MathodesolverSlice) -> Double { @_common.mean(s.data) }
+pub fn MathodesolverSlice::mean(self : MathodesolverSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_ode_solver_slice_scale(s : MathodesolverSlice, f : Double) -> MathodesolverSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathodesolverSlice::scale(self : MathodesolverSlice, f : Double) -> MathodesolverSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_slice_add(a : MathodesolverSlice, b : MathodesolverSlice) -> MathodesolverSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathodesolverSlice::add(self : MathodesolverSlice, other : MathodesolverSlice) -> MathodesolverSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_ode_solver_slice_copy(s : MathodesolverSlice) -> MathodesolverSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathodesolverSlice::copy(self : MathodesolverSlice) -> MathodesolverSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_slice_fill(s : MathodesolverSlice, v : Double) -> MathodesolverSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathodesolverSlice::fill(self : MathodesolverSlice, v : Double) -> MathodesolverSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_ode_solver_slice_min(s : MathodesolverSlice) -> Double { @_common.min(s.data) }
+pub fn MathodesolverSlice::min(self : MathodesolverSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_ode_solver_slice_max(s : MathodesolverSlice) -> Double { @_common.max(s.data) }
+pub fn MathodesolverSlice::max(self : MathodesolverSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_ode_solver_slice_to_string(s : MathodesolverSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathodesolverSlice::to_string(self : MathodesolverSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

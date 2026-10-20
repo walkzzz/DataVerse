@@ -351,45 +351,45 @@ pub fn sort_hybrid_blitsort_frame_make(size : Int) -> SorthybridblitsortFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_frame_len(s : SorthybridblitsortFrame) -> Int { s.size }
+pub fn SorthybridblitsortFrame::len(self : SorthybridblitsortFrame) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_frame_get(s : SorthybridblitsortFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortFrame::get(self : SorthybridblitsortFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_frame_set(s : SorthybridblitsortFrame, i : Int, v : Double) -> SorthybridblitsortFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortFrame::set(self : SorthybridblitsortFrame, i : Int, v : Double) -> SorthybridblitsortFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_frame_sum(s : SorthybridblitsortFrame) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortFrame::sum(self : SorthybridblitsortFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_frame_mean(s : SorthybridblitsortFrame) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortFrame::mean(self : SorthybridblitsortFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_frame_scale(s : SorthybridblitsortFrame, f : Double) -> SorthybridblitsortFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortFrame::scale(self : SorthybridblitsortFrame, f : Double) -> SorthybridblitsortFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_frame_add(a : SorthybridblitsortFrame, b : SorthybridblitsortFrame) -> SorthybridblitsortFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortFrame::add(self : SorthybridblitsortFrame, other : SorthybridblitsortFrame) -> SorthybridblitsortFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_frame_copy(s : SorthybridblitsortFrame) -> SorthybridblitsortFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortFrame::copy(self : SorthybridblitsortFrame) -> SorthybridblitsortFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_frame_fill(s : SorthybridblitsortFrame, v : Double) -> SorthybridblitsortFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortFrame::fill(self : SorthybridblitsortFrame, v : Double) -> SorthybridblitsortFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_frame_min(s : SorthybridblitsortFrame) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortFrame::min(self : SorthybridblitsortFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_frame_max(s : SorthybridblitsortFrame) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortFrame::max(self : SorthybridblitsortFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_frame_to_string(s : SorthybridblitsortFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortFrame::to_string(self : SorthybridblitsortFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortTable {
@@ -402,45 +402,45 @@ pub fn sort_hybrid_blitsort_table_make(size : Int) -> SorthybridblitsortTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_table_len(s : SorthybridblitsortTable) -> Int { s.size }
+pub fn SorthybridblitsortTable::len(self : SorthybridblitsortTable) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_table_get(s : SorthybridblitsortTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortTable::get(self : SorthybridblitsortTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_table_set(s : SorthybridblitsortTable, i : Int, v : Double) -> SorthybridblitsortTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortTable::set(self : SorthybridblitsortTable, i : Int, v : Double) -> SorthybridblitsortTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_table_sum(s : SorthybridblitsortTable) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortTable::sum(self : SorthybridblitsortTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_table_mean(s : SorthybridblitsortTable) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortTable::mean(self : SorthybridblitsortTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_table_scale(s : SorthybridblitsortTable, f : Double) -> SorthybridblitsortTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortTable::scale(self : SorthybridblitsortTable, f : Double) -> SorthybridblitsortTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_table_add(a : SorthybridblitsortTable, b : SorthybridblitsortTable) -> SorthybridblitsortTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortTable::add(self : SorthybridblitsortTable, other : SorthybridblitsortTable) -> SorthybridblitsortTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_table_copy(s : SorthybridblitsortTable) -> SorthybridblitsortTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortTable::copy(self : SorthybridblitsortTable) -> SorthybridblitsortTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_table_fill(s : SorthybridblitsortTable, v : Double) -> SorthybridblitsortTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortTable::fill(self : SorthybridblitsortTable, v : Double) -> SorthybridblitsortTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_table_min(s : SorthybridblitsortTable) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortTable::min(self : SorthybridblitsortTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_table_max(s : SorthybridblitsortTable) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortTable::max(self : SorthybridblitsortTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_table_to_string(s : SorthybridblitsortTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortTable::to_string(self : SorthybridblitsortTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortGraphN {
@@ -453,45 +453,45 @@ pub fn sort_hybrid_blitsort_graphn_make(size : Int) -> SorthybridblitsortGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_graphn_len(s : SorthybridblitsortGraphN) -> Int { s.size }
+pub fn SorthybridblitsortGraphN::len(self : SorthybridblitsortGraphN) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_graphn_get(s : SorthybridblitsortGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortGraphN::get(self : SorthybridblitsortGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_graphn_set(s : SorthybridblitsortGraphN, i : Int, v : Double) -> SorthybridblitsortGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortGraphN::set(self : SorthybridblitsortGraphN, i : Int, v : Double) -> SorthybridblitsortGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_graphn_sum(s : SorthybridblitsortGraphN) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortGraphN::sum(self : SorthybridblitsortGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_graphn_mean(s : SorthybridblitsortGraphN) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortGraphN::mean(self : SorthybridblitsortGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_graphn_scale(s : SorthybridblitsortGraphN, f : Double) -> SorthybridblitsortGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortGraphN::scale(self : SorthybridblitsortGraphN, f : Double) -> SorthybridblitsortGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_graphn_add(a : SorthybridblitsortGraphN, b : SorthybridblitsortGraphN) -> SorthybridblitsortGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortGraphN::add(self : SorthybridblitsortGraphN, other : SorthybridblitsortGraphN) -> SorthybridblitsortGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_graphn_copy(s : SorthybridblitsortGraphN) -> SorthybridblitsortGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortGraphN::copy(self : SorthybridblitsortGraphN) -> SorthybridblitsortGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_graphn_fill(s : SorthybridblitsortGraphN, v : Double) -> SorthybridblitsortGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortGraphN::fill(self : SorthybridblitsortGraphN, v : Double) -> SorthybridblitsortGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_graphn_min(s : SorthybridblitsortGraphN) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortGraphN::min(self : SorthybridblitsortGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_graphn_max(s : SorthybridblitsortGraphN) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortGraphN::max(self : SorthybridblitsortGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_graphn_to_string(s : SorthybridblitsortGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortGraphN::to_string(self : SorthybridblitsortGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortNode {
@@ -504,45 +504,45 @@ pub fn sort_hybrid_blitsort_node_make(size : Int) -> SorthybridblitsortNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_node_len(s : SorthybridblitsortNode) -> Int { s.size }
+pub fn SorthybridblitsortNode::len(self : SorthybridblitsortNode) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_node_get(s : SorthybridblitsortNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortNode::get(self : SorthybridblitsortNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_node_set(s : SorthybridblitsortNode, i : Int, v : Double) -> SorthybridblitsortNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortNode::set(self : SorthybridblitsortNode, i : Int, v : Double) -> SorthybridblitsortNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_node_sum(s : SorthybridblitsortNode) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortNode::sum(self : SorthybridblitsortNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_node_mean(s : SorthybridblitsortNode) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortNode::mean(self : SorthybridblitsortNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_node_scale(s : SorthybridblitsortNode, f : Double) -> SorthybridblitsortNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortNode::scale(self : SorthybridblitsortNode, f : Double) -> SorthybridblitsortNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_node_add(a : SorthybridblitsortNode, b : SorthybridblitsortNode) -> SorthybridblitsortNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortNode::add(self : SorthybridblitsortNode, other : SorthybridblitsortNode) -> SorthybridblitsortNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_node_copy(s : SorthybridblitsortNode) -> SorthybridblitsortNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortNode::copy(self : SorthybridblitsortNode) -> SorthybridblitsortNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_node_fill(s : SorthybridblitsortNode, v : Double) -> SorthybridblitsortNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortNode::fill(self : SorthybridblitsortNode, v : Double) -> SorthybridblitsortNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_node_min(s : SorthybridblitsortNode) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortNode::min(self : SorthybridblitsortNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_node_max(s : SorthybridblitsortNode) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortNode::max(self : SorthybridblitsortNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_node_to_string(s : SorthybridblitsortNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortNode::to_string(self : SorthybridblitsortNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortEdge {
@@ -555,45 +555,45 @@ pub fn sort_hybrid_blitsort_edge_make(size : Int) -> SorthybridblitsortEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_edge_len(s : SorthybridblitsortEdge) -> Int { s.size }
+pub fn SorthybridblitsortEdge::len(self : SorthybridblitsortEdge) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_edge_get(s : SorthybridblitsortEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortEdge::get(self : SorthybridblitsortEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_edge_set(s : SorthybridblitsortEdge, i : Int, v : Double) -> SorthybridblitsortEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortEdge::set(self : SorthybridblitsortEdge, i : Int, v : Double) -> SorthybridblitsortEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_edge_sum(s : SorthybridblitsortEdge) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortEdge::sum(self : SorthybridblitsortEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_edge_mean(s : SorthybridblitsortEdge) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortEdge::mean(self : SorthybridblitsortEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_edge_scale(s : SorthybridblitsortEdge, f : Double) -> SorthybridblitsortEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortEdge::scale(self : SorthybridblitsortEdge, f : Double) -> SorthybridblitsortEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_edge_add(a : SorthybridblitsortEdge, b : SorthybridblitsortEdge) -> SorthybridblitsortEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortEdge::add(self : SorthybridblitsortEdge, other : SorthybridblitsortEdge) -> SorthybridblitsortEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_edge_copy(s : SorthybridblitsortEdge) -> SorthybridblitsortEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortEdge::copy(self : SorthybridblitsortEdge) -> SorthybridblitsortEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_edge_fill(s : SorthybridblitsortEdge, v : Double) -> SorthybridblitsortEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortEdge::fill(self : SorthybridblitsortEdge, v : Double) -> SorthybridblitsortEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_edge_min(s : SorthybridblitsortEdge) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortEdge::min(self : SorthybridblitsortEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_edge_max(s : SorthybridblitsortEdge) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortEdge::max(self : SorthybridblitsortEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_edge_to_string(s : SorthybridblitsortEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortEdge::to_string(self : SorthybridblitsortEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortPath {
@@ -606,45 +606,45 @@ pub fn sort_hybrid_blitsort_path_make(size : Int) -> SorthybridblitsortPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_path_len(s : SorthybridblitsortPath) -> Int { s.size }
+pub fn SorthybridblitsortPath::len(self : SorthybridblitsortPath) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_path_get(s : SorthybridblitsortPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortPath::get(self : SorthybridblitsortPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_path_set(s : SorthybridblitsortPath, i : Int, v : Double) -> SorthybridblitsortPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortPath::set(self : SorthybridblitsortPath, i : Int, v : Double) -> SorthybridblitsortPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_path_sum(s : SorthybridblitsortPath) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortPath::sum(self : SorthybridblitsortPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_path_mean(s : SorthybridblitsortPath) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortPath::mean(self : SorthybridblitsortPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_path_scale(s : SorthybridblitsortPath, f : Double) -> SorthybridblitsortPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortPath::scale(self : SorthybridblitsortPath, f : Double) -> SorthybridblitsortPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_path_add(a : SorthybridblitsortPath, b : SorthybridblitsortPath) -> SorthybridblitsortPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortPath::add(self : SorthybridblitsortPath, other : SorthybridblitsortPath) -> SorthybridblitsortPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_path_copy(s : SorthybridblitsortPath) -> SorthybridblitsortPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortPath::copy(self : SorthybridblitsortPath) -> SorthybridblitsortPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_path_fill(s : SorthybridblitsortPath, v : Double) -> SorthybridblitsortPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortPath::fill(self : SorthybridblitsortPath, v : Double) -> SorthybridblitsortPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_path_min(s : SorthybridblitsortPath) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortPath::min(self : SorthybridblitsortPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_path_max(s : SorthybridblitsortPath) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortPath::max(self : SorthybridblitsortPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_path_to_string(s : SorthybridblitsortPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortPath::to_string(self : SorthybridblitsortPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortCluster {
@@ -657,45 +657,45 @@ pub fn sort_hybrid_blitsort_cluster_make(size : Int) -> SorthybridblitsortCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_cluster_len(s : SorthybridblitsortCluster) -> Int { s.size }
+pub fn SorthybridblitsortCluster::len(self : SorthybridblitsortCluster) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_cluster_get(s : SorthybridblitsortCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortCluster::get(self : SorthybridblitsortCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_cluster_set(s : SorthybridblitsortCluster, i : Int, v : Double) -> SorthybridblitsortCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCluster::set(self : SorthybridblitsortCluster, i : Int, v : Double) -> SorthybridblitsortCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cluster_sum(s : SorthybridblitsortCluster) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortCluster::sum(self : SorthybridblitsortCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_cluster_mean(s : SorthybridblitsortCluster) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortCluster::mean(self : SorthybridblitsortCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_cluster_scale(s : SorthybridblitsortCluster, f : Double) -> SorthybridblitsortCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCluster::scale(self : SorthybridblitsortCluster, f : Double) -> SorthybridblitsortCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cluster_add(a : SorthybridblitsortCluster, b : SorthybridblitsortCluster) -> SorthybridblitsortCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortCluster::add(self : SorthybridblitsortCluster, other : SorthybridblitsortCluster) -> SorthybridblitsortCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cluster_copy(s : SorthybridblitsortCluster) -> SorthybridblitsortCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCluster::copy(self : SorthybridblitsortCluster) -> SorthybridblitsortCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cluster_fill(s : SorthybridblitsortCluster, v : Double) -> SorthybridblitsortCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCluster::fill(self : SorthybridblitsortCluster, v : Double) -> SorthybridblitsortCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cluster_min(s : SorthybridblitsortCluster) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortCluster::min(self : SorthybridblitsortCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_cluster_max(s : SorthybridblitsortCluster) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortCluster::max(self : SorthybridblitsortCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_cluster_to_string(s : SorthybridblitsortCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortCluster::to_string(self : SorthybridblitsortCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortModel {
@@ -708,45 +708,45 @@ pub fn sort_hybrid_blitsort_model_make(size : Int) -> SorthybridblitsortModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_model_len(s : SorthybridblitsortModel) -> Int { s.size }
+pub fn SorthybridblitsortModel::len(self : SorthybridblitsortModel) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_model_get(s : SorthybridblitsortModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortModel::get(self : SorthybridblitsortModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_model_set(s : SorthybridblitsortModel, i : Int, v : Double) -> SorthybridblitsortModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortModel::set(self : SorthybridblitsortModel, i : Int, v : Double) -> SorthybridblitsortModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_model_sum(s : SorthybridblitsortModel) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortModel::sum(self : SorthybridblitsortModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_model_mean(s : SorthybridblitsortModel) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortModel::mean(self : SorthybridblitsortModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_model_scale(s : SorthybridblitsortModel, f : Double) -> SorthybridblitsortModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortModel::scale(self : SorthybridblitsortModel, f : Double) -> SorthybridblitsortModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_model_add(a : SorthybridblitsortModel, b : SorthybridblitsortModel) -> SorthybridblitsortModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortModel::add(self : SorthybridblitsortModel, other : SorthybridblitsortModel) -> SorthybridblitsortModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_model_copy(s : SorthybridblitsortModel) -> SorthybridblitsortModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortModel::copy(self : SorthybridblitsortModel) -> SorthybridblitsortModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_model_fill(s : SorthybridblitsortModel, v : Double) -> SorthybridblitsortModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortModel::fill(self : SorthybridblitsortModel, v : Double) -> SorthybridblitsortModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_model_min(s : SorthybridblitsortModel) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortModel::min(self : SorthybridblitsortModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_model_max(s : SorthybridblitsortModel) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortModel::max(self : SorthybridblitsortModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_model_to_string(s : SorthybridblitsortModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortModel::to_string(self : SorthybridblitsortModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortLayer {
@@ -759,45 +759,45 @@ pub fn sort_hybrid_blitsort_layer_make(size : Int) -> SorthybridblitsortLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_layer_len(s : SorthybridblitsortLayer) -> Int { s.size }
+pub fn SorthybridblitsortLayer::len(self : SorthybridblitsortLayer) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_layer_get(s : SorthybridblitsortLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortLayer::get(self : SorthybridblitsortLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_layer_set(s : SorthybridblitsortLayer, i : Int, v : Double) -> SorthybridblitsortLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortLayer::set(self : SorthybridblitsortLayer, i : Int, v : Double) -> SorthybridblitsortLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_layer_sum(s : SorthybridblitsortLayer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortLayer::sum(self : SorthybridblitsortLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_layer_mean(s : SorthybridblitsortLayer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortLayer::mean(self : SorthybridblitsortLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_layer_scale(s : SorthybridblitsortLayer, f : Double) -> SorthybridblitsortLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortLayer::scale(self : SorthybridblitsortLayer, f : Double) -> SorthybridblitsortLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_layer_add(a : SorthybridblitsortLayer, b : SorthybridblitsortLayer) -> SorthybridblitsortLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortLayer::add(self : SorthybridblitsortLayer, other : SorthybridblitsortLayer) -> SorthybridblitsortLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_layer_copy(s : SorthybridblitsortLayer) -> SorthybridblitsortLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortLayer::copy(self : SorthybridblitsortLayer) -> SorthybridblitsortLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_layer_fill(s : SorthybridblitsortLayer, v : Double) -> SorthybridblitsortLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortLayer::fill(self : SorthybridblitsortLayer, v : Double) -> SorthybridblitsortLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_layer_min(s : SorthybridblitsortLayer) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortLayer::min(self : SorthybridblitsortLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_layer_max(s : SorthybridblitsortLayer) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortLayer::max(self : SorthybridblitsortLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_layer_to_string(s : SorthybridblitsortLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortLayer::to_string(self : SorthybridblitsortLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortBuffer {
@@ -810,45 +810,45 @@ pub fn sort_hybrid_blitsort_buffer_make(size : Int) -> SorthybridblitsortBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_buffer_len(s : SorthybridblitsortBuffer) -> Int { s.size }
+pub fn SorthybridblitsortBuffer::len(self : SorthybridblitsortBuffer) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_buffer_get(s : SorthybridblitsortBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortBuffer::get(self : SorthybridblitsortBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_buffer_set(s : SorthybridblitsortBuffer, i : Int, v : Double) -> SorthybridblitsortBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortBuffer::set(self : SorthybridblitsortBuffer, i : Int, v : Double) -> SorthybridblitsortBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_buffer_sum(s : SorthybridblitsortBuffer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortBuffer::sum(self : SorthybridblitsortBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_buffer_mean(s : SorthybridblitsortBuffer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortBuffer::mean(self : SorthybridblitsortBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_buffer_scale(s : SorthybridblitsortBuffer, f : Double) -> SorthybridblitsortBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortBuffer::scale(self : SorthybridblitsortBuffer, f : Double) -> SorthybridblitsortBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_buffer_add(a : SorthybridblitsortBuffer, b : SorthybridblitsortBuffer) -> SorthybridblitsortBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortBuffer::add(self : SorthybridblitsortBuffer, other : SorthybridblitsortBuffer) -> SorthybridblitsortBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_buffer_copy(s : SorthybridblitsortBuffer) -> SorthybridblitsortBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortBuffer::copy(self : SorthybridblitsortBuffer) -> SorthybridblitsortBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_buffer_fill(s : SorthybridblitsortBuffer, v : Double) -> SorthybridblitsortBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortBuffer::fill(self : SorthybridblitsortBuffer, v : Double) -> SorthybridblitsortBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_buffer_min(s : SorthybridblitsortBuffer) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortBuffer::min(self : SorthybridblitsortBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_buffer_max(s : SorthybridblitsortBuffer) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortBuffer::max(self : SorthybridblitsortBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_buffer_to_string(s : SorthybridblitsortBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortBuffer::to_string(self : SorthybridblitsortBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortCursor {
@@ -861,45 +861,45 @@ pub fn sort_hybrid_blitsort_cursor_make(size : Int) -> SorthybridblitsortCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_cursor_len(s : SorthybridblitsortCursor) -> Int { s.size }
+pub fn SorthybridblitsortCursor::len(self : SorthybridblitsortCursor) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_cursor_get(s : SorthybridblitsortCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortCursor::get(self : SorthybridblitsortCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_cursor_set(s : SorthybridblitsortCursor, i : Int, v : Double) -> SorthybridblitsortCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCursor::set(self : SorthybridblitsortCursor, i : Int, v : Double) -> SorthybridblitsortCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cursor_sum(s : SorthybridblitsortCursor) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortCursor::sum(self : SorthybridblitsortCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_cursor_mean(s : SorthybridblitsortCursor) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortCursor::mean(self : SorthybridblitsortCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_cursor_scale(s : SorthybridblitsortCursor, f : Double) -> SorthybridblitsortCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCursor::scale(self : SorthybridblitsortCursor, f : Double) -> SorthybridblitsortCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cursor_add(a : SorthybridblitsortCursor, b : SorthybridblitsortCursor) -> SorthybridblitsortCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortCursor::add(self : SorthybridblitsortCursor, other : SorthybridblitsortCursor) -> SorthybridblitsortCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cursor_copy(s : SorthybridblitsortCursor) -> SorthybridblitsortCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCursor::copy(self : SorthybridblitsortCursor) -> SorthybridblitsortCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cursor_fill(s : SorthybridblitsortCursor, v : Double) -> SorthybridblitsortCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortCursor::fill(self : SorthybridblitsortCursor, v : Double) -> SorthybridblitsortCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_cursor_min(s : SorthybridblitsortCursor) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortCursor::min(self : SorthybridblitsortCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_cursor_max(s : SorthybridblitsortCursor) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortCursor::max(self : SorthybridblitsortCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_cursor_to_string(s : SorthybridblitsortCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortCursor::to_string(self : SorthybridblitsortCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortView {
@@ -912,45 +912,45 @@ pub fn sort_hybrid_blitsort_view_make(size : Int) -> SorthybridblitsortView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_view_len(s : SorthybridblitsortView) -> Int { s.size }
+pub fn SorthybridblitsortView::len(self : SorthybridblitsortView) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_view_get(s : SorthybridblitsortView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortView::get(self : SorthybridblitsortView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_view_set(s : SorthybridblitsortView, i : Int, v : Double) -> SorthybridblitsortView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortView::set(self : SorthybridblitsortView, i : Int, v : Double) -> SorthybridblitsortView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_view_sum(s : SorthybridblitsortView) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortView::sum(self : SorthybridblitsortView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_view_mean(s : SorthybridblitsortView) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortView::mean(self : SorthybridblitsortView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_view_scale(s : SorthybridblitsortView, f : Double) -> SorthybridblitsortView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortView::scale(self : SorthybridblitsortView, f : Double) -> SorthybridblitsortView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_view_add(a : SorthybridblitsortView, b : SorthybridblitsortView) -> SorthybridblitsortView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortView::add(self : SorthybridblitsortView, other : SorthybridblitsortView) -> SorthybridblitsortView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_view_copy(s : SorthybridblitsortView) -> SorthybridblitsortView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortView::copy(self : SorthybridblitsortView) -> SorthybridblitsortView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_view_fill(s : SorthybridblitsortView, v : Double) -> SorthybridblitsortView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortView::fill(self : SorthybridblitsortView, v : Double) -> SorthybridblitsortView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_view_min(s : SorthybridblitsortView) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortView::min(self : SorthybridblitsortView) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_view_max(s : SorthybridblitsortView) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortView::max(self : SorthybridblitsortView) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_view_to_string(s : SorthybridblitsortView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortView::to_string(self : SorthybridblitsortView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortRange {
@@ -963,45 +963,45 @@ pub fn sort_hybrid_blitsort_range_make(size : Int) -> SorthybridblitsortRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_range_len(s : SorthybridblitsortRange) -> Int { s.size }
+pub fn SorthybridblitsortRange::len(self : SorthybridblitsortRange) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_range_get(s : SorthybridblitsortRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortRange::get(self : SorthybridblitsortRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_range_set(s : SorthybridblitsortRange, i : Int, v : Double) -> SorthybridblitsortRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortRange::set(self : SorthybridblitsortRange, i : Int, v : Double) -> SorthybridblitsortRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_range_sum(s : SorthybridblitsortRange) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortRange::sum(self : SorthybridblitsortRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_range_mean(s : SorthybridblitsortRange) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortRange::mean(self : SorthybridblitsortRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_range_scale(s : SorthybridblitsortRange, f : Double) -> SorthybridblitsortRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortRange::scale(self : SorthybridblitsortRange, f : Double) -> SorthybridblitsortRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_range_add(a : SorthybridblitsortRange, b : SorthybridblitsortRange) -> SorthybridblitsortRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortRange::add(self : SorthybridblitsortRange, other : SorthybridblitsortRange) -> SorthybridblitsortRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_range_copy(s : SorthybridblitsortRange) -> SorthybridblitsortRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortRange::copy(self : SorthybridblitsortRange) -> SorthybridblitsortRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_range_fill(s : SorthybridblitsortRange, v : Double) -> SorthybridblitsortRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortRange::fill(self : SorthybridblitsortRange, v : Double) -> SorthybridblitsortRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_range_min(s : SorthybridblitsortRange) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortRange::min(self : SorthybridblitsortRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_range_max(s : SorthybridblitsortRange) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortRange::max(self : SorthybridblitsortRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_range_to_string(s : SorthybridblitsortRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortRange::to_string(self : SorthybridblitsortRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridblitsortSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_hybrid_blitsort_slice_make(size : Int) -> SorthybridblitsortSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_blitsort_slice_len(s : SorthybridblitsortSlice) -> Int { s.size }
+pub fn SorthybridblitsortSlice::len(self : SorthybridblitsortSlice) -> Int { self.size }
 
-pub fn sort_hybrid_blitsort_slice_get(s : SorthybridblitsortSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridblitsortSlice::get(self : SorthybridblitsortSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_blitsort_slice_set(s : SorthybridblitsortSlice, i : Int, v : Double) -> SorthybridblitsortSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridblitsortSlice::set(self : SorthybridblitsortSlice, i : Int, v : Double) -> SorthybridblitsortSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_slice_sum(s : SorthybridblitsortSlice) -> Double { @_common.sum(s.data) }
+pub fn SorthybridblitsortSlice::sum(self : SorthybridblitsortSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_blitsort_slice_mean(s : SorthybridblitsortSlice) -> Double { @_common.mean(s.data) }
+pub fn SorthybridblitsortSlice::mean(self : SorthybridblitsortSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_blitsort_slice_scale(s : SorthybridblitsortSlice, f : Double) -> SorthybridblitsortSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortSlice::scale(self : SorthybridblitsortSlice, f : Double) -> SorthybridblitsortSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_slice_add(a : SorthybridblitsortSlice, b : SorthybridblitsortSlice) -> SorthybridblitsortSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridblitsortSlice::add(self : SorthybridblitsortSlice, other : SorthybridblitsortSlice) -> SorthybridblitsortSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_slice_copy(s : SorthybridblitsortSlice) -> SorthybridblitsortSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortSlice::copy(self : SorthybridblitsortSlice) -> SorthybridblitsortSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_slice_fill(s : SorthybridblitsortSlice, v : Double) -> SorthybridblitsortSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridblitsortSlice::fill(self : SorthybridblitsortSlice, v : Double) -> SorthybridblitsortSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_blitsort_slice_min(s : SorthybridblitsortSlice) -> Double { @_common.min(s.data) }
+pub fn SorthybridblitsortSlice::min(self : SorthybridblitsortSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_blitsort_slice_max(s : SorthybridblitsortSlice) -> Double { @_common.max(s.data) }
+pub fn SorthybridblitsortSlice::max(self : SorthybridblitsortSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_blitsort_slice_to_string(s : SorthybridblitsortSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridblitsortSlice::to_string(self : SorthybridblitsortSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

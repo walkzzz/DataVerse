@@ -351,45 +351,45 @@ pub fn net_route_multipath_frame_make(size : Int) -> NetroutemultipathFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_frame_len(s : NetroutemultipathFrame) -> Int { s.size }
+pub fn NetroutemultipathFrame::len(self : NetroutemultipathFrame) -> Int { self.size }
 
-pub fn net_route_multipath_frame_get(s : NetroutemultipathFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathFrame::get(self : NetroutemultipathFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_frame_set(s : NetroutemultipathFrame, i : Int, v : Double) -> NetroutemultipathFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathFrame::set(self : NetroutemultipathFrame, i : Int, v : Double) -> NetroutemultipathFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_frame_sum(s : NetroutemultipathFrame) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathFrame::sum(self : NetroutemultipathFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_frame_mean(s : NetroutemultipathFrame) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathFrame::mean(self : NetroutemultipathFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_frame_scale(s : NetroutemultipathFrame, f : Double) -> NetroutemultipathFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathFrame::scale(self : NetroutemultipathFrame, f : Double) -> NetroutemultipathFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_frame_add(a : NetroutemultipathFrame, b : NetroutemultipathFrame) -> NetroutemultipathFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathFrame::add(self : NetroutemultipathFrame, other : NetroutemultipathFrame) -> NetroutemultipathFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_frame_copy(s : NetroutemultipathFrame) -> NetroutemultipathFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathFrame::copy(self : NetroutemultipathFrame) -> NetroutemultipathFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_frame_fill(s : NetroutemultipathFrame, v : Double) -> NetroutemultipathFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathFrame::fill(self : NetroutemultipathFrame, v : Double) -> NetroutemultipathFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_frame_min(s : NetroutemultipathFrame) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathFrame::min(self : NetroutemultipathFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_frame_max(s : NetroutemultipathFrame) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathFrame::max(self : NetroutemultipathFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_frame_to_string(s : NetroutemultipathFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathFrame::to_string(self : NetroutemultipathFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathTable {
@@ -402,45 +402,45 @@ pub fn net_route_multipath_table_make(size : Int) -> NetroutemultipathTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_table_len(s : NetroutemultipathTable) -> Int { s.size }
+pub fn NetroutemultipathTable::len(self : NetroutemultipathTable) -> Int { self.size }
 
-pub fn net_route_multipath_table_get(s : NetroutemultipathTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathTable::get(self : NetroutemultipathTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_table_set(s : NetroutemultipathTable, i : Int, v : Double) -> NetroutemultipathTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathTable::set(self : NetroutemultipathTable, i : Int, v : Double) -> NetroutemultipathTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_table_sum(s : NetroutemultipathTable) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathTable::sum(self : NetroutemultipathTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_table_mean(s : NetroutemultipathTable) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathTable::mean(self : NetroutemultipathTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_table_scale(s : NetroutemultipathTable, f : Double) -> NetroutemultipathTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathTable::scale(self : NetroutemultipathTable, f : Double) -> NetroutemultipathTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_table_add(a : NetroutemultipathTable, b : NetroutemultipathTable) -> NetroutemultipathTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathTable::add(self : NetroutemultipathTable, other : NetroutemultipathTable) -> NetroutemultipathTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_table_copy(s : NetroutemultipathTable) -> NetroutemultipathTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathTable::copy(self : NetroutemultipathTable) -> NetroutemultipathTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_table_fill(s : NetroutemultipathTable, v : Double) -> NetroutemultipathTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathTable::fill(self : NetroutemultipathTable, v : Double) -> NetroutemultipathTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_table_min(s : NetroutemultipathTable) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathTable::min(self : NetroutemultipathTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_table_max(s : NetroutemultipathTable) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathTable::max(self : NetroutemultipathTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_table_to_string(s : NetroutemultipathTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathTable::to_string(self : NetroutemultipathTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_multipath_graphn_make(size : Int) -> NetroutemultipathGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_graphn_len(s : NetroutemultipathGraphN) -> Int { s.size }
+pub fn NetroutemultipathGraphN::len(self : NetroutemultipathGraphN) -> Int { self.size }
 
-pub fn net_route_multipath_graphn_get(s : NetroutemultipathGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathGraphN::get(self : NetroutemultipathGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_graphn_set(s : NetroutemultipathGraphN, i : Int, v : Double) -> NetroutemultipathGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathGraphN::set(self : NetroutemultipathGraphN, i : Int, v : Double) -> NetroutemultipathGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_graphn_sum(s : NetroutemultipathGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathGraphN::sum(self : NetroutemultipathGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_graphn_mean(s : NetroutemultipathGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathGraphN::mean(self : NetroutemultipathGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_graphn_scale(s : NetroutemultipathGraphN, f : Double) -> NetroutemultipathGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathGraphN::scale(self : NetroutemultipathGraphN, f : Double) -> NetroutemultipathGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_graphn_add(a : NetroutemultipathGraphN, b : NetroutemultipathGraphN) -> NetroutemultipathGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathGraphN::add(self : NetroutemultipathGraphN, other : NetroutemultipathGraphN) -> NetroutemultipathGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_graphn_copy(s : NetroutemultipathGraphN) -> NetroutemultipathGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathGraphN::copy(self : NetroutemultipathGraphN) -> NetroutemultipathGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_graphn_fill(s : NetroutemultipathGraphN, v : Double) -> NetroutemultipathGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathGraphN::fill(self : NetroutemultipathGraphN, v : Double) -> NetroutemultipathGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_graphn_min(s : NetroutemultipathGraphN) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathGraphN::min(self : NetroutemultipathGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_graphn_max(s : NetroutemultipathGraphN) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathGraphN::max(self : NetroutemultipathGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_graphn_to_string(s : NetroutemultipathGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathGraphN::to_string(self : NetroutemultipathGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathNode {
@@ -504,45 +504,45 @@ pub fn net_route_multipath_node_make(size : Int) -> NetroutemultipathNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_node_len(s : NetroutemultipathNode) -> Int { s.size }
+pub fn NetroutemultipathNode::len(self : NetroutemultipathNode) -> Int { self.size }
 
-pub fn net_route_multipath_node_get(s : NetroutemultipathNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathNode::get(self : NetroutemultipathNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_node_set(s : NetroutemultipathNode, i : Int, v : Double) -> NetroutemultipathNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathNode::set(self : NetroutemultipathNode, i : Int, v : Double) -> NetroutemultipathNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_node_sum(s : NetroutemultipathNode) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathNode::sum(self : NetroutemultipathNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_node_mean(s : NetroutemultipathNode) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathNode::mean(self : NetroutemultipathNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_node_scale(s : NetroutemultipathNode, f : Double) -> NetroutemultipathNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathNode::scale(self : NetroutemultipathNode, f : Double) -> NetroutemultipathNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_node_add(a : NetroutemultipathNode, b : NetroutemultipathNode) -> NetroutemultipathNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathNode::add(self : NetroutemultipathNode, other : NetroutemultipathNode) -> NetroutemultipathNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_node_copy(s : NetroutemultipathNode) -> NetroutemultipathNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathNode::copy(self : NetroutemultipathNode) -> NetroutemultipathNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_node_fill(s : NetroutemultipathNode, v : Double) -> NetroutemultipathNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathNode::fill(self : NetroutemultipathNode, v : Double) -> NetroutemultipathNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_node_min(s : NetroutemultipathNode) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathNode::min(self : NetroutemultipathNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_node_max(s : NetroutemultipathNode) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathNode::max(self : NetroutemultipathNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_node_to_string(s : NetroutemultipathNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathNode::to_string(self : NetroutemultipathNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathEdge {
@@ -555,45 +555,45 @@ pub fn net_route_multipath_edge_make(size : Int) -> NetroutemultipathEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_edge_len(s : NetroutemultipathEdge) -> Int { s.size }
+pub fn NetroutemultipathEdge::len(self : NetroutemultipathEdge) -> Int { self.size }
 
-pub fn net_route_multipath_edge_get(s : NetroutemultipathEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathEdge::get(self : NetroutemultipathEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_edge_set(s : NetroutemultipathEdge, i : Int, v : Double) -> NetroutemultipathEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathEdge::set(self : NetroutemultipathEdge, i : Int, v : Double) -> NetroutemultipathEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_edge_sum(s : NetroutemultipathEdge) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathEdge::sum(self : NetroutemultipathEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_edge_mean(s : NetroutemultipathEdge) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathEdge::mean(self : NetroutemultipathEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_edge_scale(s : NetroutemultipathEdge, f : Double) -> NetroutemultipathEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathEdge::scale(self : NetroutemultipathEdge, f : Double) -> NetroutemultipathEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_edge_add(a : NetroutemultipathEdge, b : NetroutemultipathEdge) -> NetroutemultipathEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathEdge::add(self : NetroutemultipathEdge, other : NetroutemultipathEdge) -> NetroutemultipathEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_edge_copy(s : NetroutemultipathEdge) -> NetroutemultipathEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathEdge::copy(self : NetroutemultipathEdge) -> NetroutemultipathEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_edge_fill(s : NetroutemultipathEdge, v : Double) -> NetroutemultipathEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathEdge::fill(self : NetroutemultipathEdge, v : Double) -> NetroutemultipathEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_edge_min(s : NetroutemultipathEdge) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathEdge::min(self : NetroutemultipathEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_edge_max(s : NetroutemultipathEdge) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathEdge::max(self : NetroutemultipathEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_edge_to_string(s : NetroutemultipathEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathEdge::to_string(self : NetroutemultipathEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathPath {
@@ -606,45 +606,45 @@ pub fn net_route_multipath_path_make(size : Int) -> NetroutemultipathPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_path_len(s : NetroutemultipathPath) -> Int { s.size }
+pub fn NetroutemultipathPath::len(self : NetroutemultipathPath) -> Int { self.size }
 
-pub fn net_route_multipath_path_get(s : NetroutemultipathPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathPath::get(self : NetroutemultipathPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_path_set(s : NetroutemultipathPath, i : Int, v : Double) -> NetroutemultipathPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathPath::set(self : NetroutemultipathPath, i : Int, v : Double) -> NetroutemultipathPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_path_sum(s : NetroutemultipathPath) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathPath::sum(self : NetroutemultipathPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_path_mean(s : NetroutemultipathPath) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathPath::mean(self : NetroutemultipathPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_path_scale(s : NetroutemultipathPath, f : Double) -> NetroutemultipathPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathPath::scale(self : NetroutemultipathPath, f : Double) -> NetroutemultipathPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_path_add(a : NetroutemultipathPath, b : NetroutemultipathPath) -> NetroutemultipathPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathPath::add(self : NetroutemultipathPath, other : NetroutemultipathPath) -> NetroutemultipathPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_path_copy(s : NetroutemultipathPath) -> NetroutemultipathPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathPath::copy(self : NetroutemultipathPath) -> NetroutemultipathPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_path_fill(s : NetroutemultipathPath, v : Double) -> NetroutemultipathPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathPath::fill(self : NetroutemultipathPath, v : Double) -> NetroutemultipathPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_path_min(s : NetroutemultipathPath) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathPath::min(self : NetroutemultipathPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_path_max(s : NetroutemultipathPath) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathPath::max(self : NetroutemultipathPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_path_to_string(s : NetroutemultipathPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathPath::to_string(self : NetroutemultipathPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathCluster {
@@ -657,45 +657,45 @@ pub fn net_route_multipath_cluster_make(size : Int) -> NetroutemultipathCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_cluster_len(s : NetroutemultipathCluster) -> Int { s.size }
+pub fn NetroutemultipathCluster::len(self : NetroutemultipathCluster) -> Int { self.size }
 
-pub fn net_route_multipath_cluster_get(s : NetroutemultipathCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathCluster::get(self : NetroutemultipathCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_cluster_set(s : NetroutemultipathCluster, i : Int, v : Double) -> NetroutemultipathCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathCluster::set(self : NetroutemultipathCluster, i : Int, v : Double) -> NetroutemultipathCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cluster_sum(s : NetroutemultipathCluster) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathCluster::sum(self : NetroutemultipathCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_cluster_mean(s : NetroutemultipathCluster) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathCluster::mean(self : NetroutemultipathCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_cluster_scale(s : NetroutemultipathCluster, f : Double) -> NetroutemultipathCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathCluster::scale(self : NetroutemultipathCluster, f : Double) -> NetroutemultipathCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cluster_add(a : NetroutemultipathCluster, b : NetroutemultipathCluster) -> NetroutemultipathCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathCluster::add(self : NetroutemultipathCluster, other : NetroutemultipathCluster) -> NetroutemultipathCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_cluster_copy(s : NetroutemultipathCluster) -> NetroutemultipathCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathCluster::copy(self : NetroutemultipathCluster) -> NetroutemultipathCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cluster_fill(s : NetroutemultipathCluster, v : Double) -> NetroutemultipathCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathCluster::fill(self : NetroutemultipathCluster, v : Double) -> NetroutemultipathCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cluster_min(s : NetroutemultipathCluster) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathCluster::min(self : NetroutemultipathCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_cluster_max(s : NetroutemultipathCluster) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathCluster::max(self : NetroutemultipathCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_cluster_to_string(s : NetroutemultipathCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathCluster::to_string(self : NetroutemultipathCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathModel {
@@ -708,45 +708,45 @@ pub fn net_route_multipath_model_make(size : Int) -> NetroutemultipathModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_model_len(s : NetroutemultipathModel) -> Int { s.size }
+pub fn NetroutemultipathModel::len(self : NetroutemultipathModel) -> Int { self.size }
 
-pub fn net_route_multipath_model_get(s : NetroutemultipathModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathModel::get(self : NetroutemultipathModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_model_set(s : NetroutemultipathModel, i : Int, v : Double) -> NetroutemultipathModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathModel::set(self : NetroutemultipathModel, i : Int, v : Double) -> NetroutemultipathModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_model_sum(s : NetroutemultipathModel) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathModel::sum(self : NetroutemultipathModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_model_mean(s : NetroutemultipathModel) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathModel::mean(self : NetroutemultipathModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_model_scale(s : NetroutemultipathModel, f : Double) -> NetroutemultipathModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathModel::scale(self : NetroutemultipathModel, f : Double) -> NetroutemultipathModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_model_add(a : NetroutemultipathModel, b : NetroutemultipathModel) -> NetroutemultipathModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathModel::add(self : NetroutemultipathModel, other : NetroutemultipathModel) -> NetroutemultipathModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_model_copy(s : NetroutemultipathModel) -> NetroutemultipathModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathModel::copy(self : NetroutemultipathModel) -> NetroutemultipathModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_model_fill(s : NetroutemultipathModel, v : Double) -> NetroutemultipathModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathModel::fill(self : NetroutemultipathModel, v : Double) -> NetroutemultipathModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_model_min(s : NetroutemultipathModel) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathModel::min(self : NetroutemultipathModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_model_max(s : NetroutemultipathModel) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathModel::max(self : NetroutemultipathModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_model_to_string(s : NetroutemultipathModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathModel::to_string(self : NetroutemultipathModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathLayer {
@@ -759,45 +759,45 @@ pub fn net_route_multipath_layer_make(size : Int) -> NetroutemultipathLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_layer_len(s : NetroutemultipathLayer) -> Int { s.size }
+pub fn NetroutemultipathLayer::len(self : NetroutemultipathLayer) -> Int { self.size }
 
-pub fn net_route_multipath_layer_get(s : NetroutemultipathLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathLayer::get(self : NetroutemultipathLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_layer_set(s : NetroutemultipathLayer, i : Int, v : Double) -> NetroutemultipathLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathLayer::set(self : NetroutemultipathLayer, i : Int, v : Double) -> NetroutemultipathLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_layer_sum(s : NetroutemultipathLayer) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathLayer::sum(self : NetroutemultipathLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_layer_mean(s : NetroutemultipathLayer) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathLayer::mean(self : NetroutemultipathLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_layer_scale(s : NetroutemultipathLayer, f : Double) -> NetroutemultipathLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathLayer::scale(self : NetroutemultipathLayer, f : Double) -> NetroutemultipathLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_layer_add(a : NetroutemultipathLayer, b : NetroutemultipathLayer) -> NetroutemultipathLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathLayer::add(self : NetroutemultipathLayer, other : NetroutemultipathLayer) -> NetroutemultipathLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_layer_copy(s : NetroutemultipathLayer) -> NetroutemultipathLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathLayer::copy(self : NetroutemultipathLayer) -> NetroutemultipathLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_layer_fill(s : NetroutemultipathLayer, v : Double) -> NetroutemultipathLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathLayer::fill(self : NetroutemultipathLayer, v : Double) -> NetroutemultipathLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_layer_min(s : NetroutemultipathLayer) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathLayer::min(self : NetroutemultipathLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_layer_max(s : NetroutemultipathLayer) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathLayer::max(self : NetroutemultipathLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_layer_to_string(s : NetroutemultipathLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathLayer::to_string(self : NetroutemultipathLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_multipath_buffer_make(size : Int) -> NetroutemultipathBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_buffer_len(s : NetroutemultipathBuffer) -> Int { s.size }
+pub fn NetroutemultipathBuffer::len(self : NetroutemultipathBuffer) -> Int { self.size }
 
-pub fn net_route_multipath_buffer_get(s : NetroutemultipathBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathBuffer::get(self : NetroutemultipathBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_buffer_set(s : NetroutemultipathBuffer, i : Int, v : Double) -> NetroutemultipathBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathBuffer::set(self : NetroutemultipathBuffer, i : Int, v : Double) -> NetroutemultipathBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_buffer_sum(s : NetroutemultipathBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathBuffer::sum(self : NetroutemultipathBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_buffer_mean(s : NetroutemultipathBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathBuffer::mean(self : NetroutemultipathBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_buffer_scale(s : NetroutemultipathBuffer, f : Double) -> NetroutemultipathBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathBuffer::scale(self : NetroutemultipathBuffer, f : Double) -> NetroutemultipathBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_buffer_add(a : NetroutemultipathBuffer, b : NetroutemultipathBuffer) -> NetroutemultipathBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathBuffer::add(self : NetroutemultipathBuffer, other : NetroutemultipathBuffer) -> NetroutemultipathBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_buffer_copy(s : NetroutemultipathBuffer) -> NetroutemultipathBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathBuffer::copy(self : NetroutemultipathBuffer) -> NetroutemultipathBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_buffer_fill(s : NetroutemultipathBuffer, v : Double) -> NetroutemultipathBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathBuffer::fill(self : NetroutemultipathBuffer, v : Double) -> NetroutemultipathBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_buffer_min(s : NetroutemultipathBuffer) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathBuffer::min(self : NetroutemultipathBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_buffer_max(s : NetroutemultipathBuffer) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathBuffer::max(self : NetroutemultipathBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_buffer_to_string(s : NetroutemultipathBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathBuffer::to_string(self : NetroutemultipathBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathCursor {
@@ -861,45 +861,45 @@ pub fn net_route_multipath_cursor_make(size : Int) -> NetroutemultipathCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_cursor_len(s : NetroutemultipathCursor) -> Int { s.size }
+pub fn NetroutemultipathCursor::len(self : NetroutemultipathCursor) -> Int { self.size }
 
-pub fn net_route_multipath_cursor_get(s : NetroutemultipathCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathCursor::get(self : NetroutemultipathCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_cursor_set(s : NetroutemultipathCursor, i : Int, v : Double) -> NetroutemultipathCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathCursor::set(self : NetroutemultipathCursor, i : Int, v : Double) -> NetroutemultipathCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cursor_sum(s : NetroutemultipathCursor) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathCursor::sum(self : NetroutemultipathCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_cursor_mean(s : NetroutemultipathCursor) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathCursor::mean(self : NetroutemultipathCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_cursor_scale(s : NetroutemultipathCursor, f : Double) -> NetroutemultipathCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathCursor::scale(self : NetroutemultipathCursor, f : Double) -> NetroutemultipathCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cursor_add(a : NetroutemultipathCursor, b : NetroutemultipathCursor) -> NetroutemultipathCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathCursor::add(self : NetroutemultipathCursor, other : NetroutemultipathCursor) -> NetroutemultipathCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_cursor_copy(s : NetroutemultipathCursor) -> NetroutemultipathCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathCursor::copy(self : NetroutemultipathCursor) -> NetroutemultipathCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cursor_fill(s : NetroutemultipathCursor, v : Double) -> NetroutemultipathCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathCursor::fill(self : NetroutemultipathCursor, v : Double) -> NetroutemultipathCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_cursor_min(s : NetroutemultipathCursor) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathCursor::min(self : NetroutemultipathCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_cursor_max(s : NetroutemultipathCursor) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathCursor::max(self : NetroutemultipathCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_cursor_to_string(s : NetroutemultipathCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathCursor::to_string(self : NetroutemultipathCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathView {
@@ -912,45 +912,45 @@ pub fn net_route_multipath_view_make(size : Int) -> NetroutemultipathView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_view_len(s : NetroutemultipathView) -> Int { s.size }
+pub fn NetroutemultipathView::len(self : NetroutemultipathView) -> Int { self.size }
 
-pub fn net_route_multipath_view_get(s : NetroutemultipathView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathView::get(self : NetroutemultipathView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_view_set(s : NetroutemultipathView, i : Int, v : Double) -> NetroutemultipathView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathView::set(self : NetroutemultipathView, i : Int, v : Double) -> NetroutemultipathView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_view_sum(s : NetroutemultipathView) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathView::sum(self : NetroutemultipathView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_view_mean(s : NetroutemultipathView) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathView::mean(self : NetroutemultipathView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_view_scale(s : NetroutemultipathView, f : Double) -> NetroutemultipathView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathView::scale(self : NetroutemultipathView, f : Double) -> NetroutemultipathView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_view_add(a : NetroutemultipathView, b : NetroutemultipathView) -> NetroutemultipathView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathView::add(self : NetroutemultipathView, other : NetroutemultipathView) -> NetroutemultipathView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_view_copy(s : NetroutemultipathView) -> NetroutemultipathView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathView::copy(self : NetroutemultipathView) -> NetroutemultipathView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_view_fill(s : NetroutemultipathView, v : Double) -> NetroutemultipathView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathView::fill(self : NetroutemultipathView, v : Double) -> NetroutemultipathView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_view_min(s : NetroutemultipathView) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathView::min(self : NetroutemultipathView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_view_max(s : NetroutemultipathView) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathView::max(self : NetroutemultipathView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_view_to_string(s : NetroutemultipathView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathView::to_string(self : NetroutemultipathView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathRange {
@@ -963,45 +963,45 @@ pub fn net_route_multipath_range_make(size : Int) -> NetroutemultipathRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_range_len(s : NetroutemultipathRange) -> Int { s.size }
+pub fn NetroutemultipathRange::len(self : NetroutemultipathRange) -> Int { self.size }
 
-pub fn net_route_multipath_range_get(s : NetroutemultipathRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathRange::get(self : NetroutemultipathRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_range_set(s : NetroutemultipathRange, i : Int, v : Double) -> NetroutemultipathRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathRange::set(self : NetroutemultipathRange, i : Int, v : Double) -> NetroutemultipathRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_range_sum(s : NetroutemultipathRange) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathRange::sum(self : NetroutemultipathRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_range_mean(s : NetroutemultipathRange) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathRange::mean(self : NetroutemultipathRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_range_scale(s : NetroutemultipathRange, f : Double) -> NetroutemultipathRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathRange::scale(self : NetroutemultipathRange, f : Double) -> NetroutemultipathRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_range_add(a : NetroutemultipathRange, b : NetroutemultipathRange) -> NetroutemultipathRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathRange::add(self : NetroutemultipathRange, other : NetroutemultipathRange) -> NetroutemultipathRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_range_copy(s : NetroutemultipathRange) -> NetroutemultipathRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathRange::copy(self : NetroutemultipathRange) -> NetroutemultipathRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_range_fill(s : NetroutemultipathRange, v : Double) -> NetroutemultipathRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathRange::fill(self : NetroutemultipathRange, v : Double) -> NetroutemultipathRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_range_min(s : NetroutemultipathRange) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathRange::min(self : NetroutemultipathRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_range_max(s : NetroutemultipathRange) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathRange::max(self : NetroutemultipathRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_range_to_string(s : NetroutemultipathRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathRange::to_string(self : NetroutemultipathRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutemultipathSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_multipath_slice_make(size : Int) -> NetroutemultipathSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_multipath_slice_len(s : NetroutemultipathSlice) -> Int { s.size }
+pub fn NetroutemultipathSlice::len(self : NetroutemultipathSlice) -> Int { self.size }
 
-pub fn net_route_multipath_slice_get(s : NetroutemultipathSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutemultipathSlice::get(self : NetroutemultipathSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_multipath_slice_set(s : NetroutemultipathSlice, i : Int, v : Double) -> NetroutemultipathSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutemultipathSlice::set(self : NetroutemultipathSlice, i : Int, v : Double) -> NetroutemultipathSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_slice_sum(s : NetroutemultipathSlice) -> Double { @_common.sum(s.data) }
+pub fn NetroutemultipathSlice::sum(self : NetroutemultipathSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_multipath_slice_mean(s : NetroutemultipathSlice) -> Double { @_common.mean(s.data) }
+pub fn NetroutemultipathSlice::mean(self : NetroutemultipathSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_multipath_slice_scale(s : NetroutemultipathSlice, f : Double) -> NetroutemultipathSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutemultipathSlice::scale(self : NetroutemultipathSlice, f : Double) -> NetroutemultipathSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_slice_add(a : NetroutemultipathSlice, b : NetroutemultipathSlice) -> NetroutemultipathSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutemultipathSlice::add(self : NetroutemultipathSlice, other : NetroutemultipathSlice) -> NetroutemultipathSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_multipath_slice_copy(s : NetroutemultipathSlice) -> NetroutemultipathSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutemultipathSlice::copy(self : NetroutemultipathSlice) -> NetroutemultipathSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_slice_fill(s : NetroutemultipathSlice, v : Double) -> NetroutemultipathSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutemultipathSlice::fill(self : NetroutemultipathSlice, v : Double) -> NetroutemultipathSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_multipath_slice_min(s : NetroutemultipathSlice) -> Double { @_common.min(s.data) }
+pub fn NetroutemultipathSlice::min(self : NetroutemultipathSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_multipath_slice_max(s : NetroutemultipathSlice) -> Double { @_common.max(s.data) }
+pub fn NetroutemultipathSlice::max(self : NetroutemultipathSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_multipath_slice_to_string(s : NetroutemultipathSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutemultipathSlice::to_string(self : NetroutemultipathSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

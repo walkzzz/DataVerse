@@ -351,45 +351,45 @@ pub fn math_kkt_conditions_frame_make(size : Int) -> MathkktconditionsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_frame_len(s : MathkktconditionsFrame) -> Int { s.size }
+pub fn MathkktconditionsFrame::len(self : MathkktconditionsFrame) -> Int { self.size }
 
-pub fn math_kkt_conditions_frame_get(s : MathkktconditionsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsFrame::get(self : MathkktconditionsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_frame_set(s : MathkktconditionsFrame, i : Int, v : Double) -> MathkktconditionsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsFrame::set(self : MathkktconditionsFrame, i : Int, v : Double) -> MathkktconditionsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_frame_sum(s : MathkktconditionsFrame) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsFrame::sum(self : MathkktconditionsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_frame_mean(s : MathkktconditionsFrame) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsFrame::mean(self : MathkktconditionsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_frame_scale(s : MathkktconditionsFrame, f : Double) -> MathkktconditionsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsFrame::scale(self : MathkktconditionsFrame, f : Double) -> MathkktconditionsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_frame_add(a : MathkktconditionsFrame, b : MathkktconditionsFrame) -> MathkktconditionsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsFrame::add(self : MathkktconditionsFrame, other : MathkktconditionsFrame) -> MathkktconditionsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_frame_copy(s : MathkktconditionsFrame) -> MathkktconditionsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsFrame::copy(self : MathkktconditionsFrame) -> MathkktconditionsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_frame_fill(s : MathkktconditionsFrame, v : Double) -> MathkktconditionsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsFrame::fill(self : MathkktconditionsFrame, v : Double) -> MathkktconditionsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_frame_min(s : MathkktconditionsFrame) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsFrame::min(self : MathkktconditionsFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_frame_max(s : MathkktconditionsFrame) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsFrame::max(self : MathkktconditionsFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_frame_to_string(s : MathkktconditionsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsFrame::to_string(self : MathkktconditionsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsTable {
@@ -402,45 +402,45 @@ pub fn math_kkt_conditions_table_make(size : Int) -> MathkktconditionsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_table_len(s : MathkktconditionsTable) -> Int { s.size }
+pub fn MathkktconditionsTable::len(self : MathkktconditionsTable) -> Int { self.size }
 
-pub fn math_kkt_conditions_table_get(s : MathkktconditionsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsTable::get(self : MathkktconditionsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_table_set(s : MathkktconditionsTable, i : Int, v : Double) -> MathkktconditionsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsTable::set(self : MathkktconditionsTable, i : Int, v : Double) -> MathkktconditionsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_table_sum(s : MathkktconditionsTable) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsTable::sum(self : MathkktconditionsTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_table_mean(s : MathkktconditionsTable) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsTable::mean(self : MathkktconditionsTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_table_scale(s : MathkktconditionsTable, f : Double) -> MathkktconditionsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsTable::scale(self : MathkktconditionsTable, f : Double) -> MathkktconditionsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_table_add(a : MathkktconditionsTable, b : MathkktconditionsTable) -> MathkktconditionsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsTable::add(self : MathkktconditionsTable, other : MathkktconditionsTable) -> MathkktconditionsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_table_copy(s : MathkktconditionsTable) -> MathkktconditionsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsTable::copy(self : MathkktconditionsTable) -> MathkktconditionsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_table_fill(s : MathkktconditionsTable, v : Double) -> MathkktconditionsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsTable::fill(self : MathkktconditionsTable, v : Double) -> MathkktconditionsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_table_min(s : MathkktconditionsTable) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsTable::min(self : MathkktconditionsTable) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_table_max(s : MathkktconditionsTable) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsTable::max(self : MathkktconditionsTable) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_table_to_string(s : MathkktconditionsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsTable::to_string(self : MathkktconditionsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsGraphN {
@@ -453,45 +453,45 @@ pub fn math_kkt_conditions_graphn_make(size : Int) -> MathkktconditionsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_graphn_len(s : MathkktconditionsGraphN) -> Int { s.size }
+pub fn MathkktconditionsGraphN::len(self : MathkktconditionsGraphN) -> Int { self.size }
 
-pub fn math_kkt_conditions_graphn_get(s : MathkktconditionsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsGraphN::get(self : MathkktconditionsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_graphn_set(s : MathkktconditionsGraphN, i : Int, v : Double) -> MathkktconditionsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsGraphN::set(self : MathkktconditionsGraphN, i : Int, v : Double) -> MathkktconditionsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_graphn_sum(s : MathkktconditionsGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsGraphN::sum(self : MathkktconditionsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_graphn_mean(s : MathkktconditionsGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsGraphN::mean(self : MathkktconditionsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_graphn_scale(s : MathkktconditionsGraphN, f : Double) -> MathkktconditionsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsGraphN::scale(self : MathkktconditionsGraphN, f : Double) -> MathkktconditionsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_graphn_add(a : MathkktconditionsGraphN, b : MathkktconditionsGraphN) -> MathkktconditionsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsGraphN::add(self : MathkktconditionsGraphN, other : MathkktconditionsGraphN) -> MathkktconditionsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_graphn_copy(s : MathkktconditionsGraphN) -> MathkktconditionsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsGraphN::copy(self : MathkktconditionsGraphN) -> MathkktconditionsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_graphn_fill(s : MathkktconditionsGraphN, v : Double) -> MathkktconditionsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsGraphN::fill(self : MathkktconditionsGraphN, v : Double) -> MathkktconditionsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_graphn_min(s : MathkktconditionsGraphN) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsGraphN::min(self : MathkktconditionsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_graphn_max(s : MathkktconditionsGraphN) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsGraphN::max(self : MathkktconditionsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_graphn_to_string(s : MathkktconditionsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsGraphN::to_string(self : MathkktconditionsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsNode {
@@ -504,45 +504,45 @@ pub fn math_kkt_conditions_node_make(size : Int) -> MathkktconditionsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_node_len(s : MathkktconditionsNode) -> Int { s.size }
+pub fn MathkktconditionsNode::len(self : MathkktconditionsNode) -> Int { self.size }
 
-pub fn math_kkt_conditions_node_get(s : MathkktconditionsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsNode::get(self : MathkktconditionsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_node_set(s : MathkktconditionsNode, i : Int, v : Double) -> MathkktconditionsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsNode::set(self : MathkktconditionsNode, i : Int, v : Double) -> MathkktconditionsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_node_sum(s : MathkktconditionsNode) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsNode::sum(self : MathkktconditionsNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_node_mean(s : MathkktconditionsNode) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsNode::mean(self : MathkktconditionsNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_node_scale(s : MathkktconditionsNode, f : Double) -> MathkktconditionsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsNode::scale(self : MathkktconditionsNode, f : Double) -> MathkktconditionsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_node_add(a : MathkktconditionsNode, b : MathkktconditionsNode) -> MathkktconditionsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsNode::add(self : MathkktconditionsNode, other : MathkktconditionsNode) -> MathkktconditionsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_node_copy(s : MathkktconditionsNode) -> MathkktconditionsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsNode::copy(self : MathkktconditionsNode) -> MathkktconditionsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_node_fill(s : MathkktconditionsNode, v : Double) -> MathkktconditionsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsNode::fill(self : MathkktconditionsNode, v : Double) -> MathkktconditionsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_node_min(s : MathkktconditionsNode) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsNode::min(self : MathkktconditionsNode) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_node_max(s : MathkktconditionsNode) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsNode::max(self : MathkktconditionsNode) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_node_to_string(s : MathkktconditionsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsNode::to_string(self : MathkktconditionsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsEdge {
@@ -555,45 +555,45 @@ pub fn math_kkt_conditions_edge_make(size : Int) -> MathkktconditionsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_edge_len(s : MathkktconditionsEdge) -> Int { s.size }
+pub fn MathkktconditionsEdge::len(self : MathkktconditionsEdge) -> Int { self.size }
 
-pub fn math_kkt_conditions_edge_get(s : MathkktconditionsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsEdge::get(self : MathkktconditionsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_edge_set(s : MathkktconditionsEdge, i : Int, v : Double) -> MathkktconditionsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsEdge::set(self : MathkktconditionsEdge, i : Int, v : Double) -> MathkktconditionsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_edge_sum(s : MathkktconditionsEdge) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsEdge::sum(self : MathkktconditionsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_edge_mean(s : MathkktconditionsEdge) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsEdge::mean(self : MathkktconditionsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_edge_scale(s : MathkktconditionsEdge, f : Double) -> MathkktconditionsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsEdge::scale(self : MathkktconditionsEdge, f : Double) -> MathkktconditionsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_edge_add(a : MathkktconditionsEdge, b : MathkktconditionsEdge) -> MathkktconditionsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsEdge::add(self : MathkktconditionsEdge, other : MathkktconditionsEdge) -> MathkktconditionsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_edge_copy(s : MathkktconditionsEdge) -> MathkktconditionsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsEdge::copy(self : MathkktconditionsEdge) -> MathkktconditionsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_edge_fill(s : MathkktconditionsEdge, v : Double) -> MathkktconditionsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsEdge::fill(self : MathkktconditionsEdge, v : Double) -> MathkktconditionsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_edge_min(s : MathkktconditionsEdge) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsEdge::min(self : MathkktconditionsEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_edge_max(s : MathkktconditionsEdge) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsEdge::max(self : MathkktconditionsEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_edge_to_string(s : MathkktconditionsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsEdge::to_string(self : MathkktconditionsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsPath {
@@ -606,45 +606,45 @@ pub fn math_kkt_conditions_path_make(size : Int) -> MathkktconditionsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_path_len(s : MathkktconditionsPath) -> Int { s.size }
+pub fn MathkktconditionsPath::len(self : MathkktconditionsPath) -> Int { self.size }
 
-pub fn math_kkt_conditions_path_get(s : MathkktconditionsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsPath::get(self : MathkktconditionsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_path_set(s : MathkktconditionsPath, i : Int, v : Double) -> MathkktconditionsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsPath::set(self : MathkktconditionsPath, i : Int, v : Double) -> MathkktconditionsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_path_sum(s : MathkktconditionsPath) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsPath::sum(self : MathkktconditionsPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_path_mean(s : MathkktconditionsPath) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsPath::mean(self : MathkktconditionsPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_path_scale(s : MathkktconditionsPath, f : Double) -> MathkktconditionsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsPath::scale(self : MathkktconditionsPath, f : Double) -> MathkktconditionsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_path_add(a : MathkktconditionsPath, b : MathkktconditionsPath) -> MathkktconditionsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsPath::add(self : MathkktconditionsPath, other : MathkktconditionsPath) -> MathkktconditionsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_path_copy(s : MathkktconditionsPath) -> MathkktconditionsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsPath::copy(self : MathkktconditionsPath) -> MathkktconditionsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_path_fill(s : MathkktconditionsPath, v : Double) -> MathkktconditionsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsPath::fill(self : MathkktconditionsPath, v : Double) -> MathkktconditionsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_path_min(s : MathkktconditionsPath) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsPath::min(self : MathkktconditionsPath) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_path_max(s : MathkktconditionsPath) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsPath::max(self : MathkktconditionsPath) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_path_to_string(s : MathkktconditionsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsPath::to_string(self : MathkktconditionsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsCluster {
@@ -657,45 +657,45 @@ pub fn math_kkt_conditions_cluster_make(size : Int) -> MathkktconditionsCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_cluster_len(s : MathkktconditionsCluster) -> Int { s.size }
+pub fn MathkktconditionsCluster::len(self : MathkktconditionsCluster) -> Int { self.size }
 
-pub fn math_kkt_conditions_cluster_get(s : MathkktconditionsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsCluster::get(self : MathkktconditionsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_cluster_set(s : MathkktconditionsCluster, i : Int, v : Double) -> MathkktconditionsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsCluster::set(self : MathkktconditionsCluster, i : Int, v : Double) -> MathkktconditionsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cluster_sum(s : MathkktconditionsCluster) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsCluster::sum(self : MathkktconditionsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_cluster_mean(s : MathkktconditionsCluster) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsCluster::mean(self : MathkktconditionsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_cluster_scale(s : MathkktconditionsCluster, f : Double) -> MathkktconditionsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsCluster::scale(self : MathkktconditionsCluster, f : Double) -> MathkktconditionsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cluster_add(a : MathkktconditionsCluster, b : MathkktconditionsCluster) -> MathkktconditionsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsCluster::add(self : MathkktconditionsCluster, other : MathkktconditionsCluster) -> MathkktconditionsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cluster_copy(s : MathkktconditionsCluster) -> MathkktconditionsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsCluster::copy(self : MathkktconditionsCluster) -> MathkktconditionsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cluster_fill(s : MathkktconditionsCluster, v : Double) -> MathkktconditionsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsCluster::fill(self : MathkktconditionsCluster, v : Double) -> MathkktconditionsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cluster_min(s : MathkktconditionsCluster) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsCluster::min(self : MathkktconditionsCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_cluster_max(s : MathkktconditionsCluster) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsCluster::max(self : MathkktconditionsCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_cluster_to_string(s : MathkktconditionsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsCluster::to_string(self : MathkktconditionsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsModel {
@@ -708,45 +708,45 @@ pub fn math_kkt_conditions_model_make(size : Int) -> MathkktconditionsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_model_len(s : MathkktconditionsModel) -> Int { s.size }
+pub fn MathkktconditionsModel::len(self : MathkktconditionsModel) -> Int { self.size }
 
-pub fn math_kkt_conditions_model_get(s : MathkktconditionsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsModel::get(self : MathkktconditionsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_model_set(s : MathkktconditionsModel, i : Int, v : Double) -> MathkktconditionsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsModel::set(self : MathkktconditionsModel, i : Int, v : Double) -> MathkktconditionsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_model_sum(s : MathkktconditionsModel) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsModel::sum(self : MathkktconditionsModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_model_mean(s : MathkktconditionsModel) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsModel::mean(self : MathkktconditionsModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_model_scale(s : MathkktconditionsModel, f : Double) -> MathkktconditionsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsModel::scale(self : MathkktconditionsModel, f : Double) -> MathkktconditionsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_model_add(a : MathkktconditionsModel, b : MathkktconditionsModel) -> MathkktconditionsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsModel::add(self : MathkktconditionsModel, other : MathkktconditionsModel) -> MathkktconditionsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_model_copy(s : MathkktconditionsModel) -> MathkktconditionsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsModel::copy(self : MathkktconditionsModel) -> MathkktconditionsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_model_fill(s : MathkktconditionsModel, v : Double) -> MathkktconditionsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsModel::fill(self : MathkktconditionsModel, v : Double) -> MathkktconditionsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_model_min(s : MathkktconditionsModel) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsModel::min(self : MathkktconditionsModel) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_model_max(s : MathkktconditionsModel) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsModel::max(self : MathkktconditionsModel) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_model_to_string(s : MathkktconditionsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsModel::to_string(self : MathkktconditionsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsLayer {
@@ -759,45 +759,45 @@ pub fn math_kkt_conditions_layer_make(size : Int) -> MathkktconditionsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_layer_len(s : MathkktconditionsLayer) -> Int { s.size }
+pub fn MathkktconditionsLayer::len(self : MathkktconditionsLayer) -> Int { self.size }
 
-pub fn math_kkt_conditions_layer_get(s : MathkktconditionsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsLayer::get(self : MathkktconditionsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_layer_set(s : MathkktconditionsLayer, i : Int, v : Double) -> MathkktconditionsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsLayer::set(self : MathkktconditionsLayer, i : Int, v : Double) -> MathkktconditionsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_layer_sum(s : MathkktconditionsLayer) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsLayer::sum(self : MathkktconditionsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_layer_mean(s : MathkktconditionsLayer) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsLayer::mean(self : MathkktconditionsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_layer_scale(s : MathkktconditionsLayer, f : Double) -> MathkktconditionsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsLayer::scale(self : MathkktconditionsLayer, f : Double) -> MathkktconditionsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_layer_add(a : MathkktconditionsLayer, b : MathkktconditionsLayer) -> MathkktconditionsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsLayer::add(self : MathkktconditionsLayer, other : MathkktconditionsLayer) -> MathkktconditionsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_layer_copy(s : MathkktconditionsLayer) -> MathkktconditionsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsLayer::copy(self : MathkktconditionsLayer) -> MathkktconditionsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_layer_fill(s : MathkktconditionsLayer, v : Double) -> MathkktconditionsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsLayer::fill(self : MathkktconditionsLayer, v : Double) -> MathkktconditionsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_layer_min(s : MathkktconditionsLayer) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsLayer::min(self : MathkktconditionsLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_layer_max(s : MathkktconditionsLayer) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsLayer::max(self : MathkktconditionsLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_layer_to_string(s : MathkktconditionsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsLayer::to_string(self : MathkktconditionsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsBuffer {
@@ -810,45 +810,45 @@ pub fn math_kkt_conditions_buffer_make(size : Int) -> MathkktconditionsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_buffer_len(s : MathkktconditionsBuffer) -> Int { s.size }
+pub fn MathkktconditionsBuffer::len(self : MathkktconditionsBuffer) -> Int { self.size }
 
-pub fn math_kkt_conditions_buffer_get(s : MathkktconditionsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsBuffer::get(self : MathkktconditionsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_buffer_set(s : MathkktconditionsBuffer, i : Int, v : Double) -> MathkktconditionsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsBuffer::set(self : MathkktconditionsBuffer, i : Int, v : Double) -> MathkktconditionsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_buffer_sum(s : MathkktconditionsBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsBuffer::sum(self : MathkktconditionsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_buffer_mean(s : MathkktconditionsBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsBuffer::mean(self : MathkktconditionsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_buffer_scale(s : MathkktconditionsBuffer, f : Double) -> MathkktconditionsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsBuffer::scale(self : MathkktconditionsBuffer, f : Double) -> MathkktconditionsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_buffer_add(a : MathkktconditionsBuffer, b : MathkktconditionsBuffer) -> MathkktconditionsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsBuffer::add(self : MathkktconditionsBuffer, other : MathkktconditionsBuffer) -> MathkktconditionsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_buffer_copy(s : MathkktconditionsBuffer) -> MathkktconditionsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsBuffer::copy(self : MathkktconditionsBuffer) -> MathkktconditionsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_buffer_fill(s : MathkktconditionsBuffer, v : Double) -> MathkktconditionsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsBuffer::fill(self : MathkktconditionsBuffer, v : Double) -> MathkktconditionsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_buffer_min(s : MathkktconditionsBuffer) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsBuffer::min(self : MathkktconditionsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_buffer_max(s : MathkktconditionsBuffer) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsBuffer::max(self : MathkktconditionsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_buffer_to_string(s : MathkktconditionsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsBuffer::to_string(self : MathkktconditionsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsCursor {
@@ -861,45 +861,45 @@ pub fn math_kkt_conditions_cursor_make(size : Int) -> MathkktconditionsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_cursor_len(s : MathkktconditionsCursor) -> Int { s.size }
+pub fn MathkktconditionsCursor::len(self : MathkktconditionsCursor) -> Int { self.size }
 
-pub fn math_kkt_conditions_cursor_get(s : MathkktconditionsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsCursor::get(self : MathkktconditionsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_cursor_set(s : MathkktconditionsCursor, i : Int, v : Double) -> MathkktconditionsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsCursor::set(self : MathkktconditionsCursor, i : Int, v : Double) -> MathkktconditionsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cursor_sum(s : MathkktconditionsCursor) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsCursor::sum(self : MathkktconditionsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_cursor_mean(s : MathkktconditionsCursor) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsCursor::mean(self : MathkktconditionsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_cursor_scale(s : MathkktconditionsCursor, f : Double) -> MathkktconditionsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsCursor::scale(self : MathkktconditionsCursor, f : Double) -> MathkktconditionsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cursor_add(a : MathkktconditionsCursor, b : MathkktconditionsCursor) -> MathkktconditionsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsCursor::add(self : MathkktconditionsCursor, other : MathkktconditionsCursor) -> MathkktconditionsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cursor_copy(s : MathkktconditionsCursor) -> MathkktconditionsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsCursor::copy(self : MathkktconditionsCursor) -> MathkktconditionsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cursor_fill(s : MathkktconditionsCursor, v : Double) -> MathkktconditionsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsCursor::fill(self : MathkktconditionsCursor, v : Double) -> MathkktconditionsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_cursor_min(s : MathkktconditionsCursor) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsCursor::min(self : MathkktconditionsCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_cursor_max(s : MathkktconditionsCursor) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsCursor::max(self : MathkktconditionsCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_cursor_to_string(s : MathkktconditionsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsCursor::to_string(self : MathkktconditionsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsView {
@@ -912,45 +912,45 @@ pub fn math_kkt_conditions_view_make(size : Int) -> MathkktconditionsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_view_len(s : MathkktconditionsView) -> Int { s.size }
+pub fn MathkktconditionsView::len(self : MathkktconditionsView) -> Int { self.size }
 
-pub fn math_kkt_conditions_view_get(s : MathkktconditionsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsView::get(self : MathkktconditionsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_view_set(s : MathkktconditionsView, i : Int, v : Double) -> MathkktconditionsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsView::set(self : MathkktconditionsView, i : Int, v : Double) -> MathkktconditionsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_view_sum(s : MathkktconditionsView) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsView::sum(self : MathkktconditionsView) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_view_mean(s : MathkktconditionsView) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsView::mean(self : MathkktconditionsView) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_view_scale(s : MathkktconditionsView, f : Double) -> MathkktconditionsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsView::scale(self : MathkktconditionsView, f : Double) -> MathkktconditionsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_view_add(a : MathkktconditionsView, b : MathkktconditionsView) -> MathkktconditionsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsView::add(self : MathkktconditionsView, other : MathkktconditionsView) -> MathkktconditionsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_view_copy(s : MathkktconditionsView) -> MathkktconditionsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsView::copy(self : MathkktconditionsView) -> MathkktconditionsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_view_fill(s : MathkktconditionsView, v : Double) -> MathkktconditionsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsView::fill(self : MathkktconditionsView, v : Double) -> MathkktconditionsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_view_min(s : MathkktconditionsView) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsView::min(self : MathkktconditionsView) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_view_max(s : MathkktconditionsView) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsView::max(self : MathkktconditionsView) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_view_to_string(s : MathkktconditionsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsView::to_string(self : MathkktconditionsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsRange {
@@ -963,45 +963,45 @@ pub fn math_kkt_conditions_range_make(size : Int) -> MathkktconditionsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_range_len(s : MathkktconditionsRange) -> Int { s.size }
+pub fn MathkktconditionsRange::len(self : MathkktconditionsRange) -> Int { self.size }
 
-pub fn math_kkt_conditions_range_get(s : MathkktconditionsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsRange::get(self : MathkktconditionsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_range_set(s : MathkktconditionsRange, i : Int, v : Double) -> MathkktconditionsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsRange::set(self : MathkktconditionsRange, i : Int, v : Double) -> MathkktconditionsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_range_sum(s : MathkktconditionsRange) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsRange::sum(self : MathkktconditionsRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_range_mean(s : MathkktconditionsRange) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsRange::mean(self : MathkktconditionsRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_range_scale(s : MathkktconditionsRange, f : Double) -> MathkktconditionsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsRange::scale(self : MathkktconditionsRange, f : Double) -> MathkktconditionsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_range_add(a : MathkktconditionsRange, b : MathkktconditionsRange) -> MathkktconditionsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsRange::add(self : MathkktconditionsRange, other : MathkktconditionsRange) -> MathkktconditionsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_range_copy(s : MathkktconditionsRange) -> MathkktconditionsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsRange::copy(self : MathkktconditionsRange) -> MathkktconditionsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_range_fill(s : MathkktconditionsRange, v : Double) -> MathkktconditionsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsRange::fill(self : MathkktconditionsRange, v : Double) -> MathkktconditionsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_range_min(s : MathkktconditionsRange) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsRange::min(self : MathkktconditionsRange) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_range_max(s : MathkktconditionsRange) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsRange::max(self : MathkktconditionsRange) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_range_to_string(s : MathkktconditionsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsRange::to_string(self : MathkktconditionsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathkktconditionsSlice {
@@ -1014,44 +1014,44 @@ pub fn math_kkt_conditions_slice_make(size : Int) -> MathkktconditionsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_kkt_conditions_slice_len(s : MathkktconditionsSlice) -> Int { s.size }
+pub fn MathkktconditionsSlice::len(self : MathkktconditionsSlice) -> Int { self.size }
 
-pub fn math_kkt_conditions_slice_get(s : MathkktconditionsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathkktconditionsSlice::get(self : MathkktconditionsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_kkt_conditions_slice_set(s : MathkktconditionsSlice, i : Int, v : Double) -> MathkktconditionsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathkktconditionsSlice::set(self : MathkktconditionsSlice, i : Int, v : Double) -> MathkktconditionsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_slice_sum(s : MathkktconditionsSlice) -> Double { @_common.sum(s.data) }
+pub fn MathkktconditionsSlice::sum(self : MathkktconditionsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_kkt_conditions_slice_mean(s : MathkktconditionsSlice) -> Double { @_common.mean(s.data) }
+pub fn MathkktconditionsSlice::mean(self : MathkktconditionsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_kkt_conditions_slice_scale(s : MathkktconditionsSlice, f : Double) -> MathkktconditionsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathkktconditionsSlice::scale(self : MathkktconditionsSlice, f : Double) -> MathkktconditionsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_slice_add(a : MathkktconditionsSlice, b : MathkktconditionsSlice) -> MathkktconditionsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathkktconditionsSlice::add(self : MathkktconditionsSlice, other : MathkktconditionsSlice) -> MathkktconditionsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_slice_copy(s : MathkktconditionsSlice) -> MathkktconditionsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathkktconditionsSlice::copy(self : MathkktconditionsSlice) -> MathkktconditionsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_slice_fill(s : MathkktconditionsSlice, v : Double) -> MathkktconditionsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathkktconditionsSlice::fill(self : MathkktconditionsSlice, v : Double) -> MathkktconditionsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_kkt_conditions_slice_min(s : MathkktconditionsSlice) -> Double { @_common.min(s.data) }
+pub fn MathkktconditionsSlice::min(self : MathkktconditionsSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_kkt_conditions_slice_max(s : MathkktconditionsSlice) -> Double { @_common.max(s.data) }
+pub fn MathkktconditionsSlice::max(self : MathkktconditionsSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_kkt_conditions_slice_to_string(s : MathkktconditionsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathkktconditionsSlice::to_string(self : MathkktconditionsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

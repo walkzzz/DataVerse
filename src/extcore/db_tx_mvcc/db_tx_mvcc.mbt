@@ -351,45 +351,45 @@ pub fn db_tx_mvcc_frame_make(size : Int) -> DbtxmvccFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_frame_len(s : DbtxmvccFrame) -> Int { s.size }
+pub fn DbtxmvccFrame::len(self : DbtxmvccFrame) -> Int { self.size }
 
-pub fn db_tx_mvcc_frame_get(s : DbtxmvccFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccFrame::get(self : DbtxmvccFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_frame_set(s : DbtxmvccFrame, i : Int, v : Double) -> DbtxmvccFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccFrame::set(self : DbtxmvccFrame, i : Int, v : Double) -> DbtxmvccFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_frame_sum(s : DbtxmvccFrame) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccFrame::sum(self : DbtxmvccFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_frame_mean(s : DbtxmvccFrame) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccFrame::mean(self : DbtxmvccFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_frame_scale(s : DbtxmvccFrame, f : Double) -> DbtxmvccFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccFrame::scale(self : DbtxmvccFrame, f : Double) -> DbtxmvccFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_frame_add(a : DbtxmvccFrame, b : DbtxmvccFrame) -> DbtxmvccFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccFrame::add(self : DbtxmvccFrame, other : DbtxmvccFrame) -> DbtxmvccFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_frame_copy(s : DbtxmvccFrame) -> DbtxmvccFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccFrame::copy(self : DbtxmvccFrame) -> DbtxmvccFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_frame_fill(s : DbtxmvccFrame, v : Double) -> DbtxmvccFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccFrame::fill(self : DbtxmvccFrame, v : Double) -> DbtxmvccFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_frame_min(s : DbtxmvccFrame) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccFrame::min(self : DbtxmvccFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_frame_max(s : DbtxmvccFrame) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccFrame::max(self : DbtxmvccFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_frame_to_string(s : DbtxmvccFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccFrame::to_string(self : DbtxmvccFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccTable {
@@ -402,45 +402,45 @@ pub fn db_tx_mvcc_table_make(size : Int) -> DbtxmvccTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_table_len(s : DbtxmvccTable) -> Int { s.size }
+pub fn DbtxmvccTable::len(self : DbtxmvccTable) -> Int { self.size }
 
-pub fn db_tx_mvcc_table_get(s : DbtxmvccTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccTable::get(self : DbtxmvccTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_table_set(s : DbtxmvccTable, i : Int, v : Double) -> DbtxmvccTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccTable::set(self : DbtxmvccTable, i : Int, v : Double) -> DbtxmvccTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_table_sum(s : DbtxmvccTable) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccTable::sum(self : DbtxmvccTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_table_mean(s : DbtxmvccTable) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccTable::mean(self : DbtxmvccTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_table_scale(s : DbtxmvccTable, f : Double) -> DbtxmvccTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccTable::scale(self : DbtxmvccTable, f : Double) -> DbtxmvccTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_table_add(a : DbtxmvccTable, b : DbtxmvccTable) -> DbtxmvccTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccTable::add(self : DbtxmvccTable, other : DbtxmvccTable) -> DbtxmvccTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_table_copy(s : DbtxmvccTable) -> DbtxmvccTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccTable::copy(self : DbtxmvccTable) -> DbtxmvccTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_table_fill(s : DbtxmvccTable, v : Double) -> DbtxmvccTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccTable::fill(self : DbtxmvccTable, v : Double) -> DbtxmvccTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_table_min(s : DbtxmvccTable) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccTable::min(self : DbtxmvccTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_table_max(s : DbtxmvccTable) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccTable::max(self : DbtxmvccTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_table_to_string(s : DbtxmvccTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccTable::to_string(self : DbtxmvccTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_mvcc_graphn_make(size : Int) -> DbtxmvccGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_graphn_len(s : DbtxmvccGraphN) -> Int { s.size }
+pub fn DbtxmvccGraphN::len(self : DbtxmvccGraphN) -> Int { self.size }
 
-pub fn db_tx_mvcc_graphn_get(s : DbtxmvccGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccGraphN::get(self : DbtxmvccGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_graphn_set(s : DbtxmvccGraphN, i : Int, v : Double) -> DbtxmvccGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccGraphN::set(self : DbtxmvccGraphN, i : Int, v : Double) -> DbtxmvccGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_graphn_sum(s : DbtxmvccGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccGraphN::sum(self : DbtxmvccGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_graphn_mean(s : DbtxmvccGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccGraphN::mean(self : DbtxmvccGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_graphn_scale(s : DbtxmvccGraphN, f : Double) -> DbtxmvccGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccGraphN::scale(self : DbtxmvccGraphN, f : Double) -> DbtxmvccGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_graphn_add(a : DbtxmvccGraphN, b : DbtxmvccGraphN) -> DbtxmvccGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccGraphN::add(self : DbtxmvccGraphN, other : DbtxmvccGraphN) -> DbtxmvccGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_graphn_copy(s : DbtxmvccGraphN) -> DbtxmvccGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccGraphN::copy(self : DbtxmvccGraphN) -> DbtxmvccGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_graphn_fill(s : DbtxmvccGraphN, v : Double) -> DbtxmvccGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccGraphN::fill(self : DbtxmvccGraphN, v : Double) -> DbtxmvccGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_graphn_min(s : DbtxmvccGraphN) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccGraphN::min(self : DbtxmvccGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_graphn_max(s : DbtxmvccGraphN) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccGraphN::max(self : DbtxmvccGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_graphn_to_string(s : DbtxmvccGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccGraphN::to_string(self : DbtxmvccGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccNode {
@@ -504,45 +504,45 @@ pub fn db_tx_mvcc_node_make(size : Int) -> DbtxmvccNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_node_len(s : DbtxmvccNode) -> Int { s.size }
+pub fn DbtxmvccNode::len(self : DbtxmvccNode) -> Int { self.size }
 
-pub fn db_tx_mvcc_node_get(s : DbtxmvccNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccNode::get(self : DbtxmvccNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_node_set(s : DbtxmvccNode, i : Int, v : Double) -> DbtxmvccNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccNode::set(self : DbtxmvccNode, i : Int, v : Double) -> DbtxmvccNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_node_sum(s : DbtxmvccNode) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccNode::sum(self : DbtxmvccNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_node_mean(s : DbtxmvccNode) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccNode::mean(self : DbtxmvccNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_node_scale(s : DbtxmvccNode, f : Double) -> DbtxmvccNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccNode::scale(self : DbtxmvccNode, f : Double) -> DbtxmvccNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_node_add(a : DbtxmvccNode, b : DbtxmvccNode) -> DbtxmvccNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccNode::add(self : DbtxmvccNode, other : DbtxmvccNode) -> DbtxmvccNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_node_copy(s : DbtxmvccNode) -> DbtxmvccNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccNode::copy(self : DbtxmvccNode) -> DbtxmvccNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_node_fill(s : DbtxmvccNode, v : Double) -> DbtxmvccNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccNode::fill(self : DbtxmvccNode, v : Double) -> DbtxmvccNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_node_min(s : DbtxmvccNode) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccNode::min(self : DbtxmvccNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_node_max(s : DbtxmvccNode) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccNode::max(self : DbtxmvccNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_node_to_string(s : DbtxmvccNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccNode::to_string(self : DbtxmvccNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_mvcc_edge_make(size : Int) -> DbtxmvccEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_edge_len(s : DbtxmvccEdge) -> Int { s.size }
+pub fn DbtxmvccEdge::len(self : DbtxmvccEdge) -> Int { self.size }
 
-pub fn db_tx_mvcc_edge_get(s : DbtxmvccEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccEdge::get(self : DbtxmvccEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_edge_set(s : DbtxmvccEdge, i : Int, v : Double) -> DbtxmvccEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccEdge::set(self : DbtxmvccEdge, i : Int, v : Double) -> DbtxmvccEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_edge_sum(s : DbtxmvccEdge) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccEdge::sum(self : DbtxmvccEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_edge_mean(s : DbtxmvccEdge) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccEdge::mean(self : DbtxmvccEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_edge_scale(s : DbtxmvccEdge, f : Double) -> DbtxmvccEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccEdge::scale(self : DbtxmvccEdge, f : Double) -> DbtxmvccEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_edge_add(a : DbtxmvccEdge, b : DbtxmvccEdge) -> DbtxmvccEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccEdge::add(self : DbtxmvccEdge, other : DbtxmvccEdge) -> DbtxmvccEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_edge_copy(s : DbtxmvccEdge) -> DbtxmvccEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccEdge::copy(self : DbtxmvccEdge) -> DbtxmvccEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_edge_fill(s : DbtxmvccEdge, v : Double) -> DbtxmvccEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccEdge::fill(self : DbtxmvccEdge, v : Double) -> DbtxmvccEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_edge_min(s : DbtxmvccEdge) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccEdge::min(self : DbtxmvccEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_edge_max(s : DbtxmvccEdge) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccEdge::max(self : DbtxmvccEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_edge_to_string(s : DbtxmvccEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccEdge::to_string(self : DbtxmvccEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccPath {
@@ -606,45 +606,45 @@ pub fn db_tx_mvcc_path_make(size : Int) -> DbtxmvccPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_path_len(s : DbtxmvccPath) -> Int { s.size }
+pub fn DbtxmvccPath::len(self : DbtxmvccPath) -> Int { self.size }
 
-pub fn db_tx_mvcc_path_get(s : DbtxmvccPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccPath::get(self : DbtxmvccPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_path_set(s : DbtxmvccPath, i : Int, v : Double) -> DbtxmvccPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccPath::set(self : DbtxmvccPath, i : Int, v : Double) -> DbtxmvccPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_path_sum(s : DbtxmvccPath) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccPath::sum(self : DbtxmvccPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_path_mean(s : DbtxmvccPath) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccPath::mean(self : DbtxmvccPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_path_scale(s : DbtxmvccPath, f : Double) -> DbtxmvccPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccPath::scale(self : DbtxmvccPath, f : Double) -> DbtxmvccPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_path_add(a : DbtxmvccPath, b : DbtxmvccPath) -> DbtxmvccPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccPath::add(self : DbtxmvccPath, other : DbtxmvccPath) -> DbtxmvccPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_path_copy(s : DbtxmvccPath) -> DbtxmvccPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccPath::copy(self : DbtxmvccPath) -> DbtxmvccPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_path_fill(s : DbtxmvccPath, v : Double) -> DbtxmvccPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccPath::fill(self : DbtxmvccPath, v : Double) -> DbtxmvccPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_path_min(s : DbtxmvccPath) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccPath::min(self : DbtxmvccPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_path_max(s : DbtxmvccPath) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccPath::max(self : DbtxmvccPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_path_to_string(s : DbtxmvccPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccPath::to_string(self : DbtxmvccPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_mvcc_cluster_make(size : Int) -> DbtxmvccCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_cluster_len(s : DbtxmvccCluster) -> Int { s.size }
+pub fn DbtxmvccCluster::len(self : DbtxmvccCluster) -> Int { self.size }
 
-pub fn db_tx_mvcc_cluster_get(s : DbtxmvccCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccCluster::get(self : DbtxmvccCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_cluster_set(s : DbtxmvccCluster, i : Int, v : Double) -> DbtxmvccCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccCluster::set(self : DbtxmvccCluster, i : Int, v : Double) -> DbtxmvccCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cluster_sum(s : DbtxmvccCluster) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccCluster::sum(self : DbtxmvccCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_cluster_mean(s : DbtxmvccCluster) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccCluster::mean(self : DbtxmvccCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_cluster_scale(s : DbtxmvccCluster, f : Double) -> DbtxmvccCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccCluster::scale(self : DbtxmvccCluster, f : Double) -> DbtxmvccCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cluster_add(a : DbtxmvccCluster, b : DbtxmvccCluster) -> DbtxmvccCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccCluster::add(self : DbtxmvccCluster, other : DbtxmvccCluster) -> DbtxmvccCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cluster_copy(s : DbtxmvccCluster) -> DbtxmvccCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccCluster::copy(self : DbtxmvccCluster) -> DbtxmvccCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cluster_fill(s : DbtxmvccCluster, v : Double) -> DbtxmvccCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccCluster::fill(self : DbtxmvccCluster, v : Double) -> DbtxmvccCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cluster_min(s : DbtxmvccCluster) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccCluster::min(self : DbtxmvccCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_cluster_max(s : DbtxmvccCluster) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccCluster::max(self : DbtxmvccCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_cluster_to_string(s : DbtxmvccCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccCluster::to_string(self : DbtxmvccCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccModel {
@@ -708,45 +708,45 @@ pub fn db_tx_mvcc_model_make(size : Int) -> DbtxmvccModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_model_len(s : DbtxmvccModel) -> Int { s.size }
+pub fn DbtxmvccModel::len(self : DbtxmvccModel) -> Int { self.size }
 
-pub fn db_tx_mvcc_model_get(s : DbtxmvccModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccModel::get(self : DbtxmvccModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_model_set(s : DbtxmvccModel, i : Int, v : Double) -> DbtxmvccModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccModel::set(self : DbtxmvccModel, i : Int, v : Double) -> DbtxmvccModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_model_sum(s : DbtxmvccModel) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccModel::sum(self : DbtxmvccModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_model_mean(s : DbtxmvccModel) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccModel::mean(self : DbtxmvccModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_model_scale(s : DbtxmvccModel, f : Double) -> DbtxmvccModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccModel::scale(self : DbtxmvccModel, f : Double) -> DbtxmvccModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_model_add(a : DbtxmvccModel, b : DbtxmvccModel) -> DbtxmvccModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccModel::add(self : DbtxmvccModel, other : DbtxmvccModel) -> DbtxmvccModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_model_copy(s : DbtxmvccModel) -> DbtxmvccModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccModel::copy(self : DbtxmvccModel) -> DbtxmvccModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_model_fill(s : DbtxmvccModel, v : Double) -> DbtxmvccModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccModel::fill(self : DbtxmvccModel, v : Double) -> DbtxmvccModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_model_min(s : DbtxmvccModel) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccModel::min(self : DbtxmvccModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_model_max(s : DbtxmvccModel) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccModel::max(self : DbtxmvccModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_model_to_string(s : DbtxmvccModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccModel::to_string(self : DbtxmvccModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_mvcc_layer_make(size : Int) -> DbtxmvccLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_layer_len(s : DbtxmvccLayer) -> Int { s.size }
+pub fn DbtxmvccLayer::len(self : DbtxmvccLayer) -> Int { self.size }
 
-pub fn db_tx_mvcc_layer_get(s : DbtxmvccLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccLayer::get(self : DbtxmvccLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_layer_set(s : DbtxmvccLayer, i : Int, v : Double) -> DbtxmvccLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccLayer::set(self : DbtxmvccLayer, i : Int, v : Double) -> DbtxmvccLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_layer_sum(s : DbtxmvccLayer) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccLayer::sum(self : DbtxmvccLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_layer_mean(s : DbtxmvccLayer) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccLayer::mean(self : DbtxmvccLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_layer_scale(s : DbtxmvccLayer, f : Double) -> DbtxmvccLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccLayer::scale(self : DbtxmvccLayer, f : Double) -> DbtxmvccLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_layer_add(a : DbtxmvccLayer, b : DbtxmvccLayer) -> DbtxmvccLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccLayer::add(self : DbtxmvccLayer, other : DbtxmvccLayer) -> DbtxmvccLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_layer_copy(s : DbtxmvccLayer) -> DbtxmvccLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccLayer::copy(self : DbtxmvccLayer) -> DbtxmvccLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_layer_fill(s : DbtxmvccLayer, v : Double) -> DbtxmvccLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccLayer::fill(self : DbtxmvccLayer, v : Double) -> DbtxmvccLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_layer_min(s : DbtxmvccLayer) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccLayer::min(self : DbtxmvccLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_layer_max(s : DbtxmvccLayer) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccLayer::max(self : DbtxmvccLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_layer_to_string(s : DbtxmvccLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccLayer::to_string(self : DbtxmvccLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_mvcc_buffer_make(size : Int) -> DbtxmvccBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_buffer_len(s : DbtxmvccBuffer) -> Int { s.size }
+pub fn DbtxmvccBuffer::len(self : DbtxmvccBuffer) -> Int { self.size }
 
-pub fn db_tx_mvcc_buffer_get(s : DbtxmvccBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccBuffer::get(self : DbtxmvccBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_buffer_set(s : DbtxmvccBuffer, i : Int, v : Double) -> DbtxmvccBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccBuffer::set(self : DbtxmvccBuffer, i : Int, v : Double) -> DbtxmvccBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_buffer_sum(s : DbtxmvccBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccBuffer::sum(self : DbtxmvccBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_buffer_mean(s : DbtxmvccBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccBuffer::mean(self : DbtxmvccBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_buffer_scale(s : DbtxmvccBuffer, f : Double) -> DbtxmvccBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccBuffer::scale(self : DbtxmvccBuffer, f : Double) -> DbtxmvccBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_buffer_add(a : DbtxmvccBuffer, b : DbtxmvccBuffer) -> DbtxmvccBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccBuffer::add(self : DbtxmvccBuffer, other : DbtxmvccBuffer) -> DbtxmvccBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_buffer_copy(s : DbtxmvccBuffer) -> DbtxmvccBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccBuffer::copy(self : DbtxmvccBuffer) -> DbtxmvccBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_buffer_fill(s : DbtxmvccBuffer, v : Double) -> DbtxmvccBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccBuffer::fill(self : DbtxmvccBuffer, v : Double) -> DbtxmvccBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_buffer_min(s : DbtxmvccBuffer) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccBuffer::min(self : DbtxmvccBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_buffer_max(s : DbtxmvccBuffer) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccBuffer::max(self : DbtxmvccBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_buffer_to_string(s : DbtxmvccBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccBuffer::to_string(self : DbtxmvccBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_mvcc_cursor_make(size : Int) -> DbtxmvccCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_cursor_len(s : DbtxmvccCursor) -> Int { s.size }
+pub fn DbtxmvccCursor::len(self : DbtxmvccCursor) -> Int { self.size }
 
-pub fn db_tx_mvcc_cursor_get(s : DbtxmvccCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccCursor::get(self : DbtxmvccCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_cursor_set(s : DbtxmvccCursor, i : Int, v : Double) -> DbtxmvccCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccCursor::set(self : DbtxmvccCursor, i : Int, v : Double) -> DbtxmvccCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cursor_sum(s : DbtxmvccCursor) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccCursor::sum(self : DbtxmvccCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_cursor_mean(s : DbtxmvccCursor) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccCursor::mean(self : DbtxmvccCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_cursor_scale(s : DbtxmvccCursor, f : Double) -> DbtxmvccCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccCursor::scale(self : DbtxmvccCursor, f : Double) -> DbtxmvccCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cursor_add(a : DbtxmvccCursor, b : DbtxmvccCursor) -> DbtxmvccCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccCursor::add(self : DbtxmvccCursor, other : DbtxmvccCursor) -> DbtxmvccCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cursor_copy(s : DbtxmvccCursor) -> DbtxmvccCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccCursor::copy(self : DbtxmvccCursor) -> DbtxmvccCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cursor_fill(s : DbtxmvccCursor, v : Double) -> DbtxmvccCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccCursor::fill(self : DbtxmvccCursor, v : Double) -> DbtxmvccCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_cursor_min(s : DbtxmvccCursor) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccCursor::min(self : DbtxmvccCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_cursor_max(s : DbtxmvccCursor) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccCursor::max(self : DbtxmvccCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_cursor_to_string(s : DbtxmvccCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccCursor::to_string(self : DbtxmvccCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccView {
@@ -912,45 +912,45 @@ pub fn db_tx_mvcc_view_make(size : Int) -> DbtxmvccView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_view_len(s : DbtxmvccView) -> Int { s.size }
+pub fn DbtxmvccView::len(self : DbtxmvccView) -> Int { self.size }
 
-pub fn db_tx_mvcc_view_get(s : DbtxmvccView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccView::get(self : DbtxmvccView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_view_set(s : DbtxmvccView, i : Int, v : Double) -> DbtxmvccView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccView::set(self : DbtxmvccView, i : Int, v : Double) -> DbtxmvccView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_view_sum(s : DbtxmvccView) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccView::sum(self : DbtxmvccView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_view_mean(s : DbtxmvccView) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccView::mean(self : DbtxmvccView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_view_scale(s : DbtxmvccView, f : Double) -> DbtxmvccView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccView::scale(self : DbtxmvccView, f : Double) -> DbtxmvccView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_view_add(a : DbtxmvccView, b : DbtxmvccView) -> DbtxmvccView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccView::add(self : DbtxmvccView, other : DbtxmvccView) -> DbtxmvccView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_view_copy(s : DbtxmvccView) -> DbtxmvccView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccView::copy(self : DbtxmvccView) -> DbtxmvccView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_view_fill(s : DbtxmvccView, v : Double) -> DbtxmvccView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccView::fill(self : DbtxmvccView, v : Double) -> DbtxmvccView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_view_min(s : DbtxmvccView) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccView::min(self : DbtxmvccView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_view_max(s : DbtxmvccView) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccView::max(self : DbtxmvccView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_view_to_string(s : DbtxmvccView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccView::to_string(self : DbtxmvccView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccRange {
@@ -963,45 +963,45 @@ pub fn db_tx_mvcc_range_make(size : Int) -> DbtxmvccRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_range_len(s : DbtxmvccRange) -> Int { s.size }
+pub fn DbtxmvccRange::len(self : DbtxmvccRange) -> Int { self.size }
 
-pub fn db_tx_mvcc_range_get(s : DbtxmvccRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccRange::get(self : DbtxmvccRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_range_set(s : DbtxmvccRange, i : Int, v : Double) -> DbtxmvccRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccRange::set(self : DbtxmvccRange, i : Int, v : Double) -> DbtxmvccRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_range_sum(s : DbtxmvccRange) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccRange::sum(self : DbtxmvccRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_range_mean(s : DbtxmvccRange) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccRange::mean(self : DbtxmvccRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_range_scale(s : DbtxmvccRange, f : Double) -> DbtxmvccRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccRange::scale(self : DbtxmvccRange, f : Double) -> DbtxmvccRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_range_add(a : DbtxmvccRange, b : DbtxmvccRange) -> DbtxmvccRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccRange::add(self : DbtxmvccRange, other : DbtxmvccRange) -> DbtxmvccRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_range_copy(s : DbtxmvccRange) -> DbtxmvccRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccRange::copy(self : DbtxmvccRange) -> DbtxmvccRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_range_fill(s : DbtxmvccRange, v : Double) -> DbtxmvccRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccRange::fill(self : DbtxmvccRange, v : Double) -> DbtxmvccRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_range_min(s : DbtxmvccRange) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccRange::min(self : DbtxmvccRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_range_max(s : DbtxmvccRange) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccRange::max(self : DbtxmvccRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_range_to_string(s : DbtxmvccRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccRange::to_string(self : DbtxmvccRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxmvccSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_mvcc_slice_make(size : Int) -> DbtxmvccSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_mvcc_slice_len(s : DbtxmvccSlice) -> Int { s.size }
+pub fn DbtxmvccSlice::len(self : DbtxmvccSlice) -> Int { self.size }
 
-pub fn db_tx_mvcc_slice_get(s : DbtxmvccSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxmvccSlice::get(self : DbtxmvccSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_mvcc_slice_set(s : DbtxmvccSlice, i : Int, v : Double) -> DbtxmvccSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxmvccSlice::set(self : DbtxmvccSlice, i : Int, v : Double) -> DbtxmvccSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_slice_sum(s : DbtxmvccSlice) -> Double { @_common.sum(s.data) }
+pub fn DbtxmvccSlice::sum(self : DbtxmvccSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_mvcc_slice_mean(s : DbtxmvccSlice) -> Double { @_common.mean(s.data) }
+pub fn DbtxmvccSlice::mean(self : DbtxmvccSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_mvcc_slice_scale(s : DbtxmvccSlice, f : Double) -> DbtxmvccSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxmvccSlice::scale(self : DbtxmvccSlice, f : Double) -> DbtxmvccSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_slice_add(a : DbtxmvccSlice, b : DbtxmvccSlice) -> DbtxmvccSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxmvccSlice::add(self : DbtxmvccSlice, other : DbtxmvccSlice) -> DbtxmvccSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_slice_copy(s : DbtxmvccSlice) -> DbtxmvccSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxmvccSlice::copy(self : DbtxmvccSlice) -> DbtxmvccSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_slice_fill(s : DbtxmvccSlice, v : Double) -> DbtxmvccSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxmvccSlice::fill(self : DbtxmvccSlice, v : Double) -> DbtxmvccSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_mvcc_slice_min(s : DbtxmvccSlice) -> Double { @_common.min(s.data) }
+pub fn DbtxmvccSlice::min(self : DbtxmvccSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_mvcc_slice_max(s : DbtxmvccSlice) -> Double { @_common.max(s.data) }
+pub fn DbtxmvccSlice::max(self : DbtxmvccSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_mvcc_slice_to_string(s : DbtxmvccSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxmvccSlice::to_string(self : DbtxmvccSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

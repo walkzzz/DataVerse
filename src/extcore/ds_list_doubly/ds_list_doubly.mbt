@@ -351,45 +351,45 @@ pub fn ds_list_doubly_frame_make(size : Int) -> DslistdoublyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_frame_len(s : DslistdoublyFrame) -> Int { s.size }
+pub fn DslistdoublyFrame::len(self : DslistdoublyFrame) -> Int { self.size }
 
-pub fn ds_list_doubly_frame_get(s : DslistdoublyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyFrame::get(self : DslistdoublyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_frame_set(s : DslistdoublyFrame, i : Int, v : Double) -> DslistdoublyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyFrame::set(self : DslistdoublyFrame, i : Int, v : Double) -> DslistdoublyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_frame_sum(s : DslistdoublyFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyFrame::sum(self : DslistdoublyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_frame_mean(s : DslistdoublyFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyFrame::mean(self : DslistdoublyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_frame_scale(s : DslistdoublyFrame, f : Double) -> DslistdoublyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyFrame::scale(self : DslistdoublyFrame, f : Double) -> DslistdoublyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_frame_add(a : DslistdoublyFrame, b : DslistdoublyFrame) -> DslistdoublyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyFrame::add(self : DslistdoublyFrame, other : DslistdoublyFrame) -> DslistdoublyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_frame_copy(s : DslistdoublyFrame) -> DslistdoublyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyFrame::copy(self : DslistdoublyFrame) -> DslistdoublyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_frame_fill(s : DslistdoublyFrame, v : Double) -> DslistdoublyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyFrame::fill(self : DslistdoublyFrame, v : Double) -> DslistdoublyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_frame_min(s : DslistdoublyFrame) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyFrame::min(self : DslistdoublyFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_frame_max(s : DslistdoublyFrame) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyFrame::max(self : DslistdoublyFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_frame_to_string(s : DslistdoublyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyFrame::to_string(self : DslistdoublyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyTable {
@@ -402,45 +402,45 @@ pub fn ds_list_doubly_table_make(size : Int) -> DslistdoublyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_table_len(s : DslistdoublyTable) -> Int { s.size }
+pub fn DslistdoublyTable::len(self : DslistdoublyTable) -> Int { self.size }
 
-pub fn ds_list_doubly_table_get(s : DslistdoublyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyTable::get(self : DslistdoublyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_table_set(s : DslistdoublyTable, i : Int, v : Double) -> DslistdoublyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyTable::set(self : DslistdoublyTable, i : Int, v : Double) -> DslistdoublyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_table_sum(s : DslistdoublyTable) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyTable::sum(self : DslistdoublyTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_table_mean(s : DslistdoublyTable) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyTable::mean(self : DslistdoublyTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_table_scale(s : DslistdoublyTable, f : Double) -> DslistdoublyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyTable::scale(self : DslistdoublyTable, f : Double) -> DslistdoublyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_table_add(a : DslistdoublyTable, b : DslistdoublyTable) -> DslistdoublyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyTable::add(self : DslistdoublyTable, other : DslistdoublyTable) -> DslistdoublyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_table_copy(s : DslistdoublyTable) -> DslistdoublyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyTable::copy(self : DslistdoublyTable) -> DslistdoublyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_table_fill(s : DslistdoublyTable, v : Double) -> DslistdoublyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyTable::fill(self : DslistdoublyTable, v : Double) -> DslistdoublyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_table_min(s : DslistdoublyTable) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyTable::min(self : DslistdoublyTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_table_max(s : DslistdoublyTable) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyTable::max(self : DslistdoublyTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_table_to_string(s : DslistdoublyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyTable::to_string(self : DslistdoublyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_doubly_graphn_make(size : Int) -> DslistdoublyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_graphn_len(s : DslistdoublyGraphN) -> Int { s.size }
+pub fn DslistdoublyGraphN::len(self : DslistdoublyGraphN) -> Int { self.size }
 
-pub fn ds_list_doubly_graphn_get(s : DslistdoublyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyGraphN::get(self : DslistdoublyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_graphn_set(s : DslistdoublyGraphN, i : Int, v : Double) -> DslistdoublyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyGraphN::set(self : DslistdoublyGraphN, i : Int, v : Double) -> DslistdoublyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_graphn_sum(s : DslistdoublyGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyGraphN::sum(self : DslistdoublyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_graphn_mean(s : DslistdoublyGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyGraphN::mean(self : DslistdoublyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_graphn_scale(s : DslistdoublyGraphN, f : Double) -> DslistdoublyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyGraphN::scale(self : DslistdoublyGraphN, f : Double) -> DslistdoublyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_graphn_add(a : DslistdoublyGraphN, b : DslistdoublyGraphN) -> DslistdoublyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyGraphN::add(self : DslistdoublyGraphN, other : DslistdoublyGraphN) -> DslistdoublyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_graphn_copy(s : DslistdoublyGraphN) -> DslistdoublyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyGraphN::copy(self : DslistdoublyGraphN) -> DslistdoublyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_graphn_fill(s : DslistdoublyGraphN, v : Double) -> DslistdoublyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyGraphN::fill(self : DslistdoublyGraphN, v : Double) -> DslistdoublyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_graphn_min(s : DslistdoublyGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyGraphN::min(self : DslistdoublyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_graphn_max(s : DslistdoublyGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyGraphN::max(self : DslistdoublyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_graphn_to_string(s : DslistdoublyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyGraphN::to_string(self : DslistdoublyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyNode {
@@ -504,45 +504,45 @@ pub fn ds_list_doubly_node_make(size : Int) -> DslistdoublyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_node_len(s : DslistdoublyNode) -> Int { s.size }
+pub fn DslistdoublyNode::len(self : DslistdoublyNode) -> Int { self.size }
 
-pub fn ds_list_doubly_node_get(s : DslistdoublyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyNode::get(self : DslistdoublyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_node_set(s : DslistdoublyNode, i : Int, v : Double) -> DslistdoublyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyNode::set(self : DslistdoublyNode, i : Int, v : Double) -> DslistdoublyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_node_sum(s : DslistdoublyNode) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyNode::sum(self : DslistdoublyNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_node_mean(s : DslistdoublyNode) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyNode::mean(self : DslistdoublyNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_node_scale(s : DslistdoublyNode, f : Double) -> DslistdoublyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyNode::scale(self : DslistdoublyNode, f : Double) -> DslistdoublyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_node_add(a : DslistdoublyNode, b : DslistdoublyNode) -> DslistdoublyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyNode::add(self : DslistdoublyNode, other : DslistdoublyNode) -> DslistdoublyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_node_copy(s : DslistdoublyNode) -> DslistdoublyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyNode::copy(self : DslistdoublyNode) -> DslistdoublyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_node_fill(s : DslistdoublyNode, v : Double) -> DslistdoublyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyNode::fill(self : DslistdoublyNode, v : Double) -> DslistdoublyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_node_min(s : DslistdoublyNode) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyNode::min(self : DslistdoublyNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_node_max(s : DslistdoublyNode) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyNode::max(self : DslistdoublyNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_node_to_string(s : DslistdoublyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyNode::to_string(self : DslistdoublyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_doubly_edge_make(size : Int) -> DslistdoublyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_edge_len(s : DslistdoublyEdge) -> Int { s.size }
+pub fn DslistdoublyEdge::len(self : DslistdoublyEdge) -> Int { self.size }
 
-pub fn ds_list_doubly_edge_get(s : DslistdoublyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyEdge::get(self : DslistdoublyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_edge_set(s : DslistdoublyEdge, i : Int, v : Double) -> DslistdoublyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyEdge::set(self : DslistdoublyEdge, i : Int, v : Double) -> DslistdoublyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_edge_sum(s : DslistdoublyEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyEdge::sum(self : DslistdoublyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_edge_mean(s : DslistdoublyEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyEdge::mean(self : DslistdoublyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_edge_scale(s : DslistdoublyEdge, f : Double) -> DslistdoublyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyEdge::scale(self : DslistdoublyEdge, f : Double) -> DslistdoublyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_edge_add(a : DslistdoublyEdge, b : DslistdoublyEdge) -> DslistdoublyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyEdge::add(self : DslistdoublyEdge, other : DslistdoublyEdge) -> DslistdoublyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_edge_copy(s : DslistdoublyEdge) -> DslistdoublyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyEdge::copy(self : DslistdoublyEdge) -> DslistdoublyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_edge_fill(s : DslistdoublyEdge, v : Double) -> DslistdoublyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyEdge::fill(self : DslistdoublyEdge, v : Double) -> DslistdoublyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_edge_min(s : DslistdoublyEdge) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyEdge::min(self : DslistdoublyEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_edge_max(s : DslistdoublyEdge) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyEdge::max(self : DslistdoublyEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_edge_to_string(s : DslistdoublyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyEdge::to_string(self : DslistdoublyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyPath {
@@ -606,45 +606,45 @@ pub fn ds_list_doubly_path_make(size : Int) -> DslistdoublyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_path_len(s : DslistdoublyPath) -> Int { s.size }
+pub fn DslistdoublyPath::len(self : DslistdoublyPath) -> Int { self.size }
 
-pub fn ds_list_doubly_path_get(s : DslistdoublyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyPath::get(self : DslistdoublyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_path_set(s : DslistdoublyPath, i : Int, v : Double) -> DslistdoublyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyPath::set(self : DslistdoublyPath, i : Int, v : Double) -> DslistdoublyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_path_sum(s : DslistdoublyPath) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyPath::sum(self : DslistdoublyPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_path_mean(s : DslistdoublyPath) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyPath::mean(self : DslistdoublyPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_path_scale(s : DslistdoublyPath, f : Double) -> DslistdoublyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyPath::scale(self : DslistdoublyPath, f : Double) -> DslistdoublyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_path_add(a : DslistdoublyPath, b : DslistdoublyPath) -> DslistdoublyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyPath::add(self : DslistdoublyPath, other : DslistdoublyPath) -> DslistdoublyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_path_copy(s : DslistdoublyPath) -> DslistdoublyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyPath::copy(self : DslistdoublyPath) -> DslistdoublyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_path_fill(s : DslistdoublyPath, v : Double) -> DslistdoublyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyPath::fill(self : DslistdoublyPath, v : Double) -> DslistdoublyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_path_min(s : DslistdoublyPath) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyPath::min(self : DslistdoublyPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_path_max(s : DslistdoublyPath) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyPath::max(self : DslistdoublyPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_path_to_string(s : DslistdoublyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyPath::to_string(self : DslistdoublyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_doubly_cluster_make(size : Int) -> DslistdoublyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_cluster_len(s : DslistdoublyCluster) -> Int { s.size }
+pub fn DslistdoublyCluster::len(self : DslistdoublyCluster) -> Int { self.size }
 
-pub fn ds_list_doubly_cluster_get(s : DslistdoublyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyCluster::get(self : DslistdoublyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_cluster_set(s : DslistdoublyCluster, i : Int, v : Double) -> DslistdoublyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyCluster::set(self : DslistdoublyCluster, i : Int, v : Double) -> DslistdoublyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cluster_sum(s : DslistdoublyCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyCluster::sum(self : DslistdoublyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_cluster_mean(s : DslistdoublyCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyCluster::mean(self : DslistdoublyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_cluster_scale(s : DslistdoublyCluster, f : Double) -> DslistdoublyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyCluster::scale(self : DslistdoublyCluster, f : Double) -> DslistdoublyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cluster_add(a : DslistdoublyCluster, b : DslistdoublyCluster) -> DslistdoublyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyCluster::add(self : DslistdoublyCluster, other : DslistdoublyCluster) -> DslistdoublyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cluster_copy(s : DslistdoublyCluster) -> DslistdoublyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyCluster::copy(self : DslistdoublyCluster) -> DslistdoublyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cluster_fill(s : DslistdoublyCluster, v : Double) -> DslistdoublyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyCluster::fill(self : DslistdoublyCluster, v : Double) -> DslistdoublyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cluster_min(s : DslistdoublyCluster) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyCluster::min(self : DslistdoublyCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_cluster_max(s : DslistdoublyCluster) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyCluster::max(self : DslistdoublyCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_cluster_to_string(s : DslistdoublyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyCluster::to_string(self : DslistdoublyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyModel {
@@ -708,45 +708,45 @@ pub fn ds_list_doubly_model_make(size : Int) -> DslistdoublyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_model_len(s : DslistdoublyModel) -> Int { s.size }
+pub fn DslistdoublyModel::len(self : DslistdoublyModel) -> Int { self.size }
 
-pub fn ds_list_doubly_model_get(s : DslistdoublyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyModel::get(self : DslistdoublyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_model_set(s : DslistdoublyModel, i : Int, v : Double) -> DslistdoublyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyModel::set(self : DslistdoublyModel, i : Int, v : Double) -> DslistdoublyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_model_sum(s : DslistdoublyModel) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyModel::sum(self : DslistdoublyModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_model_mean(s : DslistdoublyModel) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyModel::mean(self : DslistdoublyModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_model_scale(s : DslistdoublyModel, f : Double) -> DslistdoublyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyModel::scale(self : DslistdoublyModel, f : Double) -> DslistdoublyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_model_add(a : DslistdoublyModel, b : DslistdoublyModel) -> DslistdoublyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyModel::add(self : DslistdoublyModel, other : DslistdoublyModel) -> DslistdoublyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_model_copy(s : DslistdoublyModel) -> DslistdoublyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyModel::copy(self : DslistdoublyModel) -> DslistdoublyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_model_fill(s : DslistdoublyModel, v : Double) -> DslistdoublyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyModel::fill(self : DslistdoublyModel, v : Double) -> DslistdoublyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_model_min(s : DslistdoublyModel) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyModel::min(self : DslistdoublyModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_model_max(s : DslistdoublyModel) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyModel::max(self : DslistdoublyModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_model_to_string(s : DslistdoublyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyModel::to_string(self : DslistdoublyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_doubly_layer_make(size : Int) -> DslistdoublyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_layer_len(s : DslistdoublyLayer) -> Int { s.size }
+pub fn DslistdoublyLayer::len(self : DslistdoublyLayer) -> Int { self.size }
 
-pub fn ds_list_doubly_layer_get(s : DslistdoublyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyLayer::get(self : DslistdoublyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_layer_set(s : DslistdoublyLayer, i : Int, v : Double) -> DslistdoublyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyLayer::set(self : DslistdoublyLayer, i : Int, v : Double) -> DslistdoublyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_layer_sum(s : DslistdoublyLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyLayer::sum(self : DslistdoublyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_layer_mean(s : DslistdoublyLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyLayer::mean(self : DslistdoublyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_layer_scale(s : DslistdoublyLayer, f : Double) -> DslistdoublyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyLayer::scale(self : DslistdoublyLayer, f : Double) -> DslistdoublyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_layer_add(a : DslistdoublyLayer, b : DslistdoublyLayer) -> DslistdoublyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyLayer::add(self : DslistdoublyLayer, other : DslistdoublyLayer) -> DslistdoublyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_layer_copy(s : DslistdoublyLayer) -> DslistdoublyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyLayer::copy(self : DslistdoublyLayer) -> DslistdoublyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_layer_fill(s : DslistdoublyLayer, v : Double) -> DslistdoublyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyLayer::fill(self : DslistdoublyLayer, v : Double) -> DslistdoublyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_layer_min(s : DslistdoublyLayer) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyLayer::min(self : DslistdoublyLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_layer_max(s : DslistdoublyLayer) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyLayer::max(self : DslistdoublyLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_layer_to_string(s : DslistdoublyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyLayer::to_string(self : DslistdoublyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_doubly_buffer_make(size : Int) -> DslistdoublyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_buffer_len(s : DslistdoublyBuffer) -> Int { s.size }
+pub fn DslistdoublyBuffer::len(self : DslistdoublyBuffer) -> Int { self.size }
 
-pub fn ds_list_doubly_buffer_get(s : DslistdoublyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyBuffer::get(self : DslistdoublyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_buffer_set(s : DslistdoublyBuffer, i : Int, v : Double) -> DslistdoublyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyBuffer::set(self : DslistdoublyBuffer, i : Int, v : Double) -> DslistdoublyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_buffer_sum(s : DslistdoublyBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyBuffer::sum(self : DslistdoublyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_buffer_mean(s : DslistdoublyBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyBuffer::mean(self : DslistdoublyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_buffer_scale(s : DslistdoublyBuffer, f : Double) -> DslistdoublyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyBuffer::scale(self : DslistdoublyBuffer, f : Double) -> DslistdoublyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_buffer_add(a : DslistdoublyBuffer, b : DslistdoublyBuffer) -> DslistdoublyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyBuffer::add(self : DslistdoublyBuffer, other : DslistdoublyBuffer) -> DslistdoublyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_buffer_copy(s : DslistdoublyBuffer) -> DslistdoublyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyBuffer::copy(self : DslistdoublyBuffer) -> DslistdoublyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_buffer_fill(s : DslistdoublyBuffer, v : Double) -> DslistdoublyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyBuffer::fill(self : DslistdoublyBuffer, v : Double) -> DslistdoublyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_buffer_min(s : DslistdoublyBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyBuffer::min(self : DslistdoublyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_buffer_max(s : DslistdoublyBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyBuffer::max(self : DslistdoublyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_buffer_to_string(s : DslistdoublyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyBuffer::to_string(self : DslistdoublyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_doubly_cursor_make(size : Int) -> DslistdoublyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_cursor_len(s : DslistdoublyCursor) -> Int { s.size }
+pub fn DslistdoublyCursor::len(self : DslistdoublyCursor) -> Int { self.size }
 
-pub fn ds_list_doubly_cursor_get(s : DslistdoublyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyCursor::get(self : DslistdoublyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_cursor_set(s : DslistdoublyCursor, i : Int, v : Double) -> DslistdoublyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyCursor::set(self : DslistdoublyCursor, i : Int, v : Double) -> DslistdoublyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cursor_sum(s : DslistdoublyCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyCursor::sum(self : DslistdoublyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_cursor_mean(s : DslistdoublyCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyCursor::mean(self : DslistdoublyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_cursor_scale(s : DslistdoublyCursor, f : Double) -> DslistdoublyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyCursor::scale(self : DslistdoublyCursor, f : Double) -> DslistdoublyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cursor_add(a : DslistdoublyCursor, b : DslistdoublyCursor) -> DslistdoublyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyCursor::add(self : DslistdoublyCursor, other : DslistdoublyCursor) -> DslistdoublyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cursor_copy(s : DslistdoublyCursor) -> DslistdoublyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyCursor::copy(self : DslistdoublyCursor) -> DslistdoublyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cursor_fill(s : DslistdoublyCursor, v : Double) -> DslistdoublyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyCursor::fill(self : DslistdoublyCursor, v : Double) -> DslistdoublyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_cursor_min(s : DslistdoublyCursor) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyCursor::min(self : DslistdoublyCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_cursor_max(s : DslistdoublyCursor) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyCursor::max(self : DslistdoublyCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_cursor_to_string(s : DslistdoublyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyCursor::to_string(self : DslistdoublyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyView {
@@ -912,45 +912,45 @@ pub fn ds_list_doubly_view_make(size : Int) -> DslistdoublyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_view_len(s : DslistdoublyView) -> Int { s.size }
+pub fn DslistdoublyView::len(self : DslistdoublyView) -> Int { self.size }
 
-pub fn ds_list_doubly_view_get(s : DslistdoublyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyView::get(self : DslistdoublyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_view_set(s : DslistdoublyView, i : Int, v : Double) -> DslistdoublyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyView::set(self : DslistdoublyView, i : Int, v : Double) -> DslistdoublyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_view_sum(s : DslistdoublyView) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyView::sum(self : DslistdoublyView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_view_mean(s : DslistdoublyView) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyView::mean(self : DslistdoublyView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_view_scale(s : DslistdoublyView, f : Double) -> DslistdoublyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyView::scale(self : DslistdoublyView, f : Double) -> DslistdoublyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_view_add(a : DslistdoublyView, b : DslistdoublyView) -> DslistdoublyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyView::add(self : DslistdoublyView, other : DslistdoublyView) -> DslistdoublyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_view_copy(s : DslistdoublyView) -> DslistdoublyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyView::copy(self : DslistdoublyView) -> DslistdoublyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_view_fill(s : DslistdoublyView, v : Double) -> DslistdoublyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyView::fill(self : DslistdoublyView, v : Double) -> DslistdoublyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_view_min(s : DslistdoublyView) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyView::min(self : DslistdoublyView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_view_max(s : DslistdoublyView) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyView::max(self : DslistdoublyView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_view_to_string(s : DslistdoublyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyView::to_string(self : DslistdoublyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublyRange {
@@ -963,45 +963,45 @@ pub fn ds_list_doubly_range_make(size : Int) -> DslistdoublyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_range_len(s : DslistdoublyRange) -> Int { s.size }
+pub fn DslistdoublyRange::len(self : DslistdoublyRange) -> Int { self.size }
 
-pub fn ds_list_doubly_range_get(s : DslistdoublyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublyRange::get(self : DslistdoublyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_range_set(s : DslistdoublyRange, i : Int, v : Double) -> DslistdoublyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublyRange::set(self : DslistdoublyRange, i : Int, v : Double) -> DslistdoublyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_range_sum(s : DslistdoublyRange) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublyRange::sum(self : DslistdoublyRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_range_mean(s : DslistdoublyRange) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublyRange::mean(self : DslistdoublyRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_range_scale(s : DslistdoublyRange, f : Double) -> DslistdoublyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublyRange::scale(self : DslistdoublyRange, f : Double) -> DslistdoublyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_range_add(a : DslistdoublyRange, b : DslistdoublyRange) -> DslistdoublyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublyRange::add(self : DslistdoublyRange, other : DslistdoublyRange) -> DslistdoublyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_range_copy(s : DslistdoublyRange) -> DslistdoublyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublyRange::copy(self : DslistdoublyRange) -> DslistdoublyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_range_fill(s : DslistdoublyRange, v : Double) -> DslistdoublyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublyRange::fill(self : DslistdoublyRange, v : Double) -> DslistdoublyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_range_min(s : DslistdoublyRange) -> Double { @_common.min(s.data) }
+pub fn DslistdoublyRange::min(self : DslistdoublyRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_range_max(s : DslistdoublyRange) -> Double { @_common.max(s.data) }
+pub fn DslistdoublyRange::max(self : DslistdoublyRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_range_to_string(s : DslistdoublyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublyRange::to_string(self : DslistdoublyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistdoublySlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_doubly_slice_make(size : Int) -> DslistdoublySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_doubly_slice_len(s : DslistdoublySlice) -> Int { s.size }
+pub fn DslistdoublySlice::len(self : DslistdoublySlice) -> Int { self.size }
 
-pub fn ds_list_doubly_slice_get(s : DslistdoublySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistdoublySlice::get(self : DslistdoublySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_doubly_slice_set(s : DslistdoublySlice, i : Int, v : Double) -> DslistdoublySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistdoublySlice::set(self : DslistdoublySlice, i : Int, v : Double) -> DslistdoublySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_slice_sum(s : DslistdoublySlice) -> Double { @_common.sum(s.data) }
+pub fn DslistdoublySlice::sum(self : DslistdoublySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_doubly_slice_mean(s : DslistdoublySlice) -> Double { @_common.mean(s.data) }
+pub fn DslistdoublySlice::mean(self : DslistdoublySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_doubly_slice_scale(s : DslistdoublySlice, f : Double) -> DslistdoublySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistdoublySlice::scale(self : DslistdoublySlice, f : Double) -> DslistdoublySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_slice_add(a : DslistdoublySlice, b : DslistdoublySlice) -> DslistdoublySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistdoublySlice::add(self : DslistdoublySlice, other : DslistdoublySlice) -> DslistdoublySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_doubly_slice_copy(s : DslistdoublySlice) -> DslistdoublySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistdoublySlice::copy(self : DslistdoublySlice) -> DslistdoublySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_slice_fill(s : DslistdoublySlice, v : Double) -> DslistdoublySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistdoublySlice::fill(self : DslistdoublySlice, v : Double) -> DslistdoublySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_doubly_slice_min(s : DslistdoublySlice) -> Double { @_common.min(s.data) }
+pub fn DslistdoublySlice::min(self : DslistdoublySlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_doubly_slice_max(s : DslistdoublySlice) -> Double { @_common.max(s.data) }
+pub fn DslistdoublySlice::max(self : DslistdoublySlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_doubly_slice_to_string(s : DslistdoublySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistdoublySlice::to_string(self : DslistdoublySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

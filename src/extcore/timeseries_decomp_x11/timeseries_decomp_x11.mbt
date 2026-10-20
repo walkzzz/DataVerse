@@ -351,45 +351,45 @@ pub fn timeseries_decomp_x11_frame_make(size : Int) -> Timeseriesdecompx11Frame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_frame_len(s : Timeseriesdecompx11Frame) -> Int { s.size }
+pub fn Timeseriesdecompx11Frame::len(self : Timeseriesdecompx11Frame) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_frame_get(s : Timeseriesdecompx11Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Frame::get(self : Timeseriesdecompx11Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_frame_set(s : Timeseriesdecompx11Frame, i : Int, v : Double) -> Timeseriesdecompx11Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Frame::set(self : Timeseriesdecompx11Frame, i : Int, v : Double) -> Timeseriesdecompx11Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_frame_sum(s : Timeseriesdecompx11Frame) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Frame::sum(self : Timeseriesdecompx11Frame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_frame_mean(s : Timeseriesdecompx11Frame) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Frame::mean(self : Timeseriesdecompx11Frame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_frame_scale(s : Timeseriesdecompx11Frame, f : Double) -> Timeseriesdecompx11Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Frame::scale(self : Timeseriesdecompx11Frame, f : Double) -> Timeseriesdecompx11Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_frame_add(a : Timeseriesdecompx11Frame, b : Timeseriesdecompx11Frame) -> Timeseriesdecompx11Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Frame::add(self : Timeseriesdecompx11Frame, other : Timeseriesdecompx11Frame) -> Timeseriesdecompx11Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_frame_copy(s : Timeseriesdecompx11Frame) -> Timeseriesdecompx11Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Frame::copy(self : Timeseriesdecompx11Frame) -> Timeseriesdecompx11Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_frame_fill(s : Timeseriesdecompx11Frame, v : Double) -> Timeseriesdecompx11Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Frame::fill(self : Timeseriesdecompx11Frame, v : Double) -> Timeseriesdecompx11Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_frame_min(s : Timeseriesdecompx11Frame) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Frame::min(self : Timeseriesdecompx11Frame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_frame_max(s : Timeseriesdecompx11Frame) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Frame::max(self : Timeseriesdecompx11Frame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_frame_to_string(s : Timeseriesdecompx11Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Frame::to_string(self : Timeseriesdecompx11Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Table {
@@ -402,45 +402,45 @@ pub fn timeseries_decomp_x11_table_make(size : Int) -> Timeseriesdecompx11Table 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_table_len(s : Timeseriesdecompx11Table) -> Int { s.size }
+pub fn Timeseriesdecompx11Table::len(self : Timeseriesdecompx11Table) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_table_get(s : Timeseriesdecompx11Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Table::get(self : Timeseriesdecompx11Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_table_set(s : Timeseriesdecompx11Table, i : Int, v : Double) -> Timeseriesdecompx11Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Table::set(self : Timeseriesdecompx11Table, i : Int, v : Double) -> Timeseriesdecompx11Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_table_sum(s : Timeseriesdecompx11Table) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Table::sum(self : Timeseriesdecompx11Table) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_table_mean(s : Timeseriesdecompx11Table) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Table::mean(self : Timeseriesdecompx11Table) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_table_scale(s : Timeseriesdecompx11Table, f : Double) -> Timeseriesdecompx11Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Table::scale(self : Timeseriesdecompx11Table, f : Double) -> Timeseriesdecompx11Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_table_add(a : Timeseriesdecompx11Table, b : Timeseriesdecompx11Table) -> Timeseriesdecompx11Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Table::add(self : Timeseriesdecompx11Table, other : Timeseriesdecompx11Table) -> Timeseriesdecompx11Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_table_copy(s : Timeseriesdecompx11Table) -> Timeseriesdecompx11Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Table::copy(self : Timeseriesdecompx11Table) -> Timeseriesdecompx11Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_table_fill(s : Timeseriesdecompx11Table, v : Double) -> Timeseriesdecompx11Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Table::fill(self : Timeseriesdecompx11Table, v : Double) -> Timeseriesdecompx11Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_table_min(s : Timeseriesdecompx11Table) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Table::min(self : Timeseriesdecompx11Table) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_table_max(s : Timeseriesdecompx11Table) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Table::max(self : Timeseriesdecompx11Table) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_table_to_string(s : Timeseriesdecompx11Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Table::to_string(self : Timeseriesdecompx11Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11GraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_decomp_x11_graphn_make(size : Int) -> Timeseriesdecompx11Graph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_graphn_len(s : Timeseriesdecompx11GraphN) -> Int { s.size }
+pub fn Timeseriesdecompx11GraphN::len(self : Timeseriesdecompx11GraphN) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_graphn_get(s : Timeseriesdecompx11GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11GraphN::get(self : Timeseriesdecompx11GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_graphn_set(s : Timeseriesdecompx11GraphN, i : Int, v : Double) -> Timeseriesdecompx11GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11GraphN::set(self : Timeseriesdecompx11GraphN, i : Int, v : Double) -> Timeseriesdecompx11GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_graphn_sum(s : Timeseriesdecompx11GraphN) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11GraphN::sum(self : Timeseriesdecompx11GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_graphn_mean(s : Timeseriesdecompx11GraphN) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11GraphN::mean(self : Timeseriesdecompx11GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_graphn_scale(s : Timeseriesdecompx11GraphN, f : Double) -> Timeseriesdecompx11GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11GraphN::scale(self : Timeseriesdecompx11GraphN, f : Double) -> Timeseriesdecompx11GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_graphn_add(a : Timeseriesdecompx11GraphN, b : Timeseriesdecompx11GraphN) -> Timeseriesdecompx11GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11GraphN::add(self : Timeseriesdecompx11GraphN, other : Timeseriesdecompx11GraphN) -> Timeseriesdecompx11GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_graphn_copy(s : Timeseriesdecompx11GraphN) -> Timeseriesdecompx11GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11GraphN::copy(self : Timeseriesdecompx11GraphN) -> Timeseriesdecompx11GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_graphn_fill(s : Timeseriesdecompx11GraphN, v : Double) -> Timeseriesdecompx11GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11GraphN::fill(self : Timeseriesdecompx11GraphN, v : Double) -> Timeseriesdecompx11GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_graphn_min(s : Timeseriesdecompx11GraphN) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11GraphN::min(self : Timeseriesdecompx11GraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_graphn_max(s : Timeseriesdecompx11GraphN) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11GraphN::max(self : Timeseriesdecompx11GraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_graphn_to_string(s : Timeseriesdecompx11GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11GraphN::to_string(self : Timeseriesdecompx11GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Node {
@@ -504,45 +504,45 @@ pub fn timeseries_decomp_x11_node_make(size : Int) -> Timeseriesdecompx11Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_node_len(s : Timeseriesdecompx11Node) -> Int { s.size }
+pub fn Timeseriesdecompx11Node::len(self : Timeseriesdecompx11Node) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_node_get(s : Timeseriesdecompx11Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Node::get(self : Timeseriesdecompx11Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_node_set(s : Timeseriesdecompx11Node, i : Int, v : Double) -> Timeseriesdecompx11Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Node::set(self : Timeseriesdecompx11Node, i : Int, v : Double) -> Timeseriesdecompx11Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_node_sum(s : Timeseriesdecompx11Node) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Node::sum(self : Timeseriesdecompx11Node) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_node_mean(s : Timeseriesdecompx11Node) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Node::mean(self : Timeseriesdecompx11Node) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_node_scale(s : Timeseriesdecompx11Node, f : Double) -> Timeseriesdecompx11Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Node::scale(self : Timeseriesdecompx11Node, f : Double) -> Timeseriesdecompx11Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_node_add(a : Timeseriesdecompx11Node, b : Timeseriesdecompx11Node) -> Timeseriesdecompx11Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Node::add(self : Timeseriesdecompx11Node, other : Timeseriesdecompx11Node) -> Timeseriesdecompx11Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_node_copy(s : Timeseriesdecompx11Node) -> Timeseriesdecompx11Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Node::copy(self : Timeseriesdecompx11Node) -> Timeseriesdecompx11Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_node_fill(s : Timeseriesdecompx11Node, v : Double) -> Timeseriesdecompx11Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Node::fill(self : Timeseriesdecompx11Node, v : Double) -> Timeseriesdecompx11Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_node_min(s : Timeseriesdecompx11Node) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Node::min(self : Timeseriesdecompx11Node) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_node_max(s : Timeseriesdecompx11Node) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Node::max(self : Timeseriesdecompx11Node) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_node_to_string(s : Timeseriesdecompx11Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Node::to_string(self : Timeseriesdecompx11Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Edge {
@@ -555,45 +555,45 @@ pub fn timeseries_decomp_x11_edge_make(size : Int) -> Timeseriesdecompx11Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_edge_len(s : Timeseriesdecompx11Edge) -> Int { s.size }
+pub fn Timeseriesdecompx11Edge::len(self : Timeseriesdecompx11Edge) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_edge_get(s : Timeseriesdecompx11Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Edge::get(self : Timeseriesdecompx11Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_edge_set(s : Timeseriesdecompx11Edge, i : Int, v : Double) -> Timeseriesdecompx11Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Edge::set(self : Timeseriesdecompx11Edge, i : Int, v : Double) -> Timeseriesdecompx11Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_edge_sum(s : Timeseriesdecompx11Edge) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Edge::sum(self : Timeseriesdecompx11Edge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_edge_mean(s : Timeseriesdecompx11Edge) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Edge::mean(self : Timeseriesdecompx11Edge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_edge_scale(s : Timeseriesdecompx11Edge, f : Double) -> Timeseriesdecompx11Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Edge::scale(self : Timeseriesdecompx11Edge, f : Double) -> Timeseriesdecompx11Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_edge_add(a : Timeseriesdecompx11Edge, b : Timeseriesdecompx11Edge) -> Timeseriesdecompx11Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Edge::add(self : Timeseriesdecompx11Edge, other : Timeseriesdecompx11Edge) -> Timeseriesdecompx11Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_edge_copy(s : Timeseriesdecompx11Edge) -> Timeseriesdecompx11Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Edge::copy(self : Timeseriesdecompx11Edge) -> Timeseriesdecompx11Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_edge_fill(s : Timeseriesdecompx11Edge, v : Double) -> Timeseriesdecompx11Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Edge::fill(self : Timeseriesdecompx11Edge, v : Double) -> Timeseriesdecompx11Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_edge_min(s : Timeseriesdecompx11Edge) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Edge::min(self : Timeseriesdecompx11Edge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_edge_max(s : Timeseriesdecompx11Edge) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Edge::max(self : Timeseriesdecompx11Edge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_edge_to_string(s : Timeseriesdecompx11Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Edge::to_string(self : Timeseriesdecompx11Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Path {
@@ -606,45 +606,45 @@ pub fn timeseries_decomp_x11_path_make(size : Int) -> Timeseriesdecompx11Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_path_len(s : Timeseriesdecompx11Path) -> Int { s.size }
+pub fn Timeseriesdecompx11Path::len(self : Timeseriesdecompx11Path) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_path_get(s : Timeseriesdecompx11Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Path::get(self : Timeseriesdecompx11Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_path_set(s : Timeseriesdecompx11Path, i : Int, v : Double) -> Timeseriesdecompx11Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Path::set(self : Timeseriesdecompx11Path, i : Int, v : Double) -> Timeseriesdecompx11Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_path_sum(s : Timeseriesdecompx11Path) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Path::sum(self : Timeseriesdecompx11Path) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_path_mean(s : Timeseriesdecompx11Path) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Path::mean(self : Timeseriesdecompx11Path) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_path_scale(s : Timeseriesdecompx11Path, f : Double) -> Timeseriesdecompx11Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Path::scale(self : Timeseriesdecompx11Path, f : Double) -> Timeseriesdecompx11Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_path_add(a : Timeseriesdecompx11Path, b : Timeseriesdecompx11Path) -> Timeseriesdecompx11Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Path::add(self : Timeseriesdecompx11Path, other : Timeseriesdecompx11Path) -> Timeseriesdecompx11Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_path_copy(s : Timeseriesdecompx11Path) -> Timeseriesdecompx11Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Path::copy(self : Timeseriesdecompx11Path) -> Timeseriesdecompx11Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_path_fill(s : Timeseriesdecompx11Path, v : Double) -> Timeseriesdecompx11Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Path::fill(self : Timeseriesdecompx11Path, v : Double) -> Timeseriesdecompx11Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_path_min(s : Timeseriesdecompx11Path) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Path::min(self : Timeseriesdecompx11Path) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_path_max(s : Timeseriesdecompx11Path) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Path::max(self : Timeseriesdecompx11Path) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_path_to_string(s : Timeseriesdecompx11Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Path::to_string(self : Timeseriesdecompx11Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Cluster {
@@ -657,45 +657,45 @@ pub fn timeseries_decomp_x11_cluster_make(size : Int) -> Timeseriesdecompx11Clus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_cluster_len(s : Timeseriesdecompx11Cluster) -> Int { s.size }
+pub fn Timeseriesdecompx11Cluster::len(self : Timeseriesdecompx11Cluster) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_cluster_get(s : Timeseriesdecompx11Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Cluster::get(self : Timeseriesdecompx11Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_cluster_set(s : Timeseriesdecompx11Cluster, i : Int, v : Double) -> Timeseriesdecompx11Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cluster::set(self : Timeseriesdecompx11Cluster, i : Int, v : Double) -> Timeseriesdecompx11Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cluster_sum(s : Timeseriesdecompx11Cluster) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Cluster::sum(self : Timeseriesdecompx11Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_cluster_mean(s : Timeseriesdecompx11Cluster) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Cluster::mean(self : Timeseriesdecompx11Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_cluster_scale(s : Timeseriesdecompx11Cluster, f : Double) -> Timeseriesdecompx11Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cluster::scale(self : Timeseriesdecompx11Cluster, f : Double) -> Timeseriesdecompx11Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cluster_add(a : Timeseriesdecompx11Cluster, b : Timeseriesdecompx11Cluster) -> Timeseriesdecompx11Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Cluster::add(self : Timeseriesdecompx11Cluster, other : Timeseriesdecompx11Cluster) -> Timeseriesdecompx11Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cluster_copy(s : Timeseriesdecompx11Cluster) -> Timeseriesdecompx11Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cluster::copy(self : Timeseriesdecompx11Cluster) -> Timeseriesdecompx11Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cluster_fill(s : Timeseriesdecompx11Cluster, v : Double) -> Timeseriesdecompx11Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cluster::fill(self : Timeseriesdecompx11Cluster, v : Double) -> Timeseriesdecompx11Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cluster_min(s : Timeseriesdecompx11Cluster) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Cluster::min(self : Timeseriesdecompx11Cluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_cluster_max(s : Timeseriesdecompx11Cluster) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Cluster::max(self : Timeseriesdecompx11Cluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_cluster_to_string(s : Timeseriesdecompx11Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Cluster::to_string(self : Timeseriesdecompx11Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Model {
@@ -708,45 +708,45 @@ pub fn timeseries_decomp_x11_model_make(size : Int) -> Timeseriesdecompx11Model 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_model_len(s : Timeseriesdecompx11Model) -> Int { s.size }
+pub fn Timeseriesdecompx11Model::len(self : Timeseriesdecompx11Model) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_model_get(s : Timeseriesdecompx11Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Model::get(self : Timeseriesdecompx11Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_model_set(s : Timeseriesdecompx11Model, i : Int, v : Double) -> Timeseriesdecompx11Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Model::set(self : Timeseriesdecompx11Model, i : Int, v : Double) -> Timeseriesdecompx11Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_model_sum(s : Timeseriesdecompx11Model) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Model::sum(self : Timeseriesdecompx11Model) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_model_mean(s : Timeseriesdecompx11Model) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Model::mean(self : Timeseriesdecompx11Model) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_model_scale(s : Timeseriesdecompx11Model, f : Double) -> Timeseriesdecompx11Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Model::scale(self : Timeseriesdecompx11Model, f : Double) -> Timeseriesdecompx11Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_model_add(a : Timeseriesdecompx11Model, b : Timeseriesdecompx11Model) -> Timeseriesdecompx11Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Model::add(self : Timeseriesdecompx11Model, other : Timeseriesdecompx11Model) -> Timeseriesdecompx11Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_model_copy(s : Timeseriesdecompx11Model) -> Timeseriesdecompx11Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Model::copy(self : Timeseriesdecompx11Model) -> Timeseriesdecompx11Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_model_fill(s : Timeseriesdecompx11Model, v : Double) -> Timeseriesdecompx11Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Model::fill(self : Timeseriesdecompx11Model, v : Double) -> Timeseriesdecompx11Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_model_min(s : Timeseriesdecompx11Model) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Model::min(self : Timeseriesdecompx11Model) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_model_max(s : Timeseriesdecompx11Model) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Model::max(self : Timeseriesdecompx11Model) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_model_to_string(s : Timeseriesdecompx11Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Model::to_string(self : Timeseriesdecompx11Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Layer {
@@ -759,45 +759,45 @@ pub fn timeseries_decomp_x11_layer_make(size : Int) -> Timeseriesdecompx11Layer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_layer_len(s : Timeseriesdecompx11Layer) -> Int { s.size }
+pub fn Timeseriesdecompx11Layer::len(self : Timeseriesdecompx11Layer) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_layer_get(s : Timeseriesdecompx11Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Layer::get(self : Timeseriesdecompx11Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_layer_set(s : Timeseriesdecompx11Layer, i : Int, v : Double) -> Timeseriesdecompx11Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Layer::set(self : Timeseriesdecompx11Layer, i : Int, v : Double) -> Timeseriesdecompx11Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_layer_sum(s : Timeseriesdecompx11Layer) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Layer::sum(self : Timeseriesdecompx11Layer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_layer_mean(s : Timeseriesdecompx11Layer) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Layer::mean(self : Timeseriesdecompx11Layer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_layer_scale(s : Timeseriesdecompx11Layer, f : Double) -> Timeseriesdecompx11Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Layer::scale(self : Timeseriesdecompx11Layer, f : Double) -> Timeseriesdecompx11Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_layer_add(a : Timeseriesdecompx11Layer, b : Timeseriesdecompx11Layer) -> Timeseriesdecompx11Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Layer::add(self : Timeseriesdecompx11Layer, other : Timeseriesdecompx11Layer) -> Timeseriesdecompx11Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_layer_copy(s : Timeseriesdecompx11Layer) -> Timeseriesdecompx11Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Layer::copy(self : Timeseriesdecompx11Layer) -> Timeseriesdecompx11Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_layer_fill(s : Timeseriesdecompx11Layer, v : Double) -> Timeseriesdecompx11Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Layer::fill(self : Timeseriesdecompx11Layer, v : Double) -> Timeseriesdecompx11Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_layer_min(s : Timeseriesdecompx11Layer) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Layer::min(self : Timeseriesdecompx11Layer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_layer_max(s : Timeseriesdecompx11Layer) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Layer::max(self : Timeseriesdecompx11Layer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_layer_to_string(s : Timeseriesdecompx11Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Layer::to_string(self : Timeseriesdecompx11Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Buffer {
@@ -810,45 +810,45 @@ pub fn timeseries_decomp_x11_buffer_make(size : Int) -> Timeseriesdecompx11Buffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_buffer_len(s : Timeseriesdecompx11Buffer) -> Int { s.size }
+pub fn Timeseriesdecompx11Buffer::len(self : Timeseriesdecompx11Buffer) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_buffer_get(s : Timeseriesdecompx11Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Buffer::get(self : Timeseriesdecompx11Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_buffer_set(s : Timeseriesdecompx11Buffer, i : Int, v : Double) -> Timeseriesdecompx11Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Buffer::set(self : Timeseriesdecompx11Buffer, i : Int, v : Double) -> Timeseriesdecompx11Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_buffer_sum(s : Timeseriesdecompx11Buffer) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Buffer::sum(self : Timeseriesdecompx11Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_buffer_mean(s : Timeseriesdecompx11Buffer) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Buffer::mean(self : Timeseriesdecompx11Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_buffer_scale(s : Timeseriesdecompx11Buffer, f : Double) -> Timeseriesdecompx11Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Buffer::scale(self : Timeseriesdecompx11Buffer, f : Double) -> Timeseriesdecompx11Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_buffer_add(a : Timeseriesdecompx11Buffer, b : Timeseriesdecompx11Buffer) -> Timeseriesdecompx11Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Buffer::add(self : Timeseriesdecompx11Buffer, other : Timeseriesdecompx11Buffer) -> Timeseriesdecompx11Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_buffer_copy(s : Timeseriesdecompx11Buffer) -> Timeseriesdecompx11Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Buffer::copy(self : Timeseriesdecompx11Buffer) -> Timeseriesdecompx11Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_buffer_fill(s : Timeseriesdecompx11Buffer, v : Double) -> Timeseriesdecompx11Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Buffer::fill(self : Timeseriesdecompx11Buffer, v : Double) -> Timeseriesdecompx11Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_buffer_min(s : Timeseriesdecompx11Buffer) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Buffer::min(self : Timeseriesdecompx11Buffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_buffer_max(s : Timeseriesdecompx11Buffer) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Buffer::max(self : Timeseriesdecompx11Buffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_buffer_to_string(s : Timeseriesdecompx11Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Buffer::to_string(self : Timeseriesdecompx11Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Cursor {
@@ -861,45 +861,45 @@ pub fn timeseries_decomp_x11_cursor_make(size : Int) -> Timeseriesdecompx11Curso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_cursor_len(s : Timeseriesdecompx11Cursor) -> Int { s.size }
+pub fn Timeseriesdecompx11Cursor::len(self : Timeseriesdecompx11Cursor) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_cursor_get(s : Timeseriesdecompx11Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Cursor::get(self : Timeseriesdecompx11Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_cursor_set(s : Timeseriesdecompx11Cursor, i : Int, v : Double) -> Timeseriesdecompx11Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cursor::set(self : Timeseriesdecompx11Cursor, i : Int, v : Double) -> Timeseriesdecompx11Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cursor_sum(s : Timeseriesdecompx11Cursor) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Cursor::sum(self : Timeseriesdecompx11Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_cursor_mean(s : Timeseriesdecompx11Cursor) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Cursor::mean(self : Timeseriesdecompx11Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_cursor_scale(s : Timeseriesdecompx11Cursor, f : Double) -> Timeseriesdecompx11Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cursor::scale(self : Timeseriesdecompx11Cursor, f : Double) -> Timeseriesdecompx11Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cursor_add(a : Timeseriesdecompx11Cursor, b : Timeseriesdecompx11Cursor) -> Timeseriesdecompx11Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Cursor::add(self : Timeseriesdecompx11Cursor, other : Timeseriesdecompx11Cursor) -> Timeseriesdecompx11Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cursor_copy(s : Timeseriesdecompx11Cursor) -> Timeseriesdecompx11Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cursor::copy(self : Timeseriesdecompx11Cursor) -> Timeseriesdecompx11Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cursor_fill(s : Timeseriesdecompx11Cursor, v : Double) -> Timeseriesdecompx11Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Cursor::fill(self : Timeseriesdecompx11Cursor, v : Double) -> Timeseriesdecompx11Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_cursor_min(s : Timeseriesdecompx11Cursor) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Cursor::min(self : Timeseriesdecompx11Cursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_cursor_max(s : Timeseriesdecompx11Cursor) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Cursor::max(self : Timeseriesdecompx11Cursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_cursor_to_string(s : Timeseriesdecompx11Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Cursor::to_string(self : Timeseriesdecompx11Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11View {
@@ -912,45 +912,45 @@ pub fn timeseries_decomp_x11_view_make(size : Int) -> Timeseriesdecompx11View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_view_len(s : Timeseriesdecompx11View) -> Int { s.size }
+pub fn Timeseriesdecompx11View::len(self : Timeseriesdecompx11View) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_view_get(s : Timeseriesdecompx11View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11View::get(self : Timeseriesdecompx11View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_view_set(s : Timeseriesdecompx11View, i : Int, v : Double) -> Timeseriesdecompx11View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11View::set(self : Timeseriesdecompx11View, i : Int, v : Double) -> Timeseriesdecompx11View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_view_sum(s : Timeseriesdecompx11View) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11View::sum(self : Timeseriesdecompx11View) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_view_mean(s : Timeseriesdecompx11View) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11View::mean(self : Timeseriesdecompx11View) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_view_scale(s : Timeseriesdecompx11View, f : Double) -> Timeseriesdecompx11View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11View::scale(self : Timeseriesdecompx11View, f : Double) -> Timeseriesdecompx11View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_view_add(a : Timeseriesdecompx11View, b : Timeseriesdecompx11View) -> Timeseriesdecompx11View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11View::add(self : Timeseriesdecompx11View, other : Timeseriesdecompx11View) -> Timeseriesdecompx11View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_view_copy(s : Timeseriesdecompx11View) -> Timeseriesdecompx11View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11View::copy(self : Timeseriesdecompx11View) -> Timeseriesdecompx11View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_view_fill(s : Timeseriesdecompx11View, v : Double) -> Timeseriesdecompx11View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11View::fill(self : Timeseriesdecompx11View, v : Double) -> Timeseriesdecompx11View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_view_min(s : Timeseriesdecompx11View) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11View::min(self : Timeseriesdecompx11View) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_view_max(s : Timeseriesdecompx11View) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11View::max(self : Timeseriesdecompx11View) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_view_to_string(s : Timeseriesdecompx11View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11View::to_string(self : Timeseriesdecompx11View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Range {
@@ -963,45 +963,45 @@ pub fn timeseries_decomp_x11_range_make(size : Int) -> Timeseriesdecompx11Range 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_range_len(s : Timeseriesdecompx11Range) -> Int { s.size }
+pub fn Timeseriesdecompx11Range::len(self : Timeseriesdecompx11Range) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_range_get(s : Timeseriesdecompx11Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Range::get(self : Timeseriesdecompx11Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_range_set(s : Timeseriesdecompx11Range, i : Int, v : Double) -> Timeseriesdecompx11Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Range::set(self : Timeseriesdecompx11Range, i : Int, v : Double) -> Timeseriesdecompx11Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_range_sum(s : Timeseriesdecompx11Range) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Range::sum(self : Timeseriesdecompx11Range) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_range_mean(s : Timeseriesdecompx11Range) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Range::mean(self : Timeseriesdecompx11Range) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_range_scale(s : Timeseriesdecompx11Range, f : Double) -> Timeseriesdecompx11Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Range::scale(self : Timeseriesdecompx11Range, f : Double) -> Timeseriesdecompx11Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_range_add(a : Timeseriesdecompx11Range, b : Timeseriesdecompx11Range) -> Timeseriesdecompx11Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Range::add(self : Timeseriesdecompx11Range, other : Timeseriesdecompx11Range) -> Timeseriesdecompx11Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_range_copy(s : Timeseriesdecompx11Range) -> Timeseriesdecompx11Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Range::copy(self : Timeseriesdecompx11Range) -> Timeseriesdecompx11Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_range_fill(s : Timeseriesdecompx11Range, v : Double) -> Timeseriesdecompx11Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Range::fill(self : Timeseriesdecompx11Range, v : Double) -> Timeseriesdecompx11Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_range_min(s : Timeseriesdecompx11Range) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Range::min(self : Timeseriesdecompx11Range) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_range_max(s : Timeseriesdecompx11Range) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Range::max(self : Timeseriesdecompx11Range) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_range_to_string(s : Timeseriesdecompx11Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Range::to_string(self : Timeseriesdecompx11Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Timeseriesdecompx11Slice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_decomp_x11_slice_make(size : Int) -> Timeseriesdecompx11Slice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_x11_slice_len(s : Timeseriesdecompx11Slice) -> Int { s.size }
+pub fn Timeseriesdecompx11Slice::len(self : Timeseriesdecompx11Slice) -> Int { self.size }
 
-pub fn timeseries_decomp_x11_slice_get(s : Timeseriesdecompx11Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Timeseriesdecompx11Slice::get(self : Timeseriesdecompx11Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_x11_slice_set(s : Timeseriesdecompx11Slice, i : Int, v : Double) -> Timeseriesdecompx11Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Slice::set(self : Timeseriesdecompx11Slice, i : Int, v : Double) -> Timeseriesdecompx11Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_slice_sum(s : Timeseriesdecompx11Slice) -> Double { @_common.sum(s.data) }
+pub fn Timeseriesdecompx11Slice::sum(self : Timeseriesdecompx11Slice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_x11_slice_mean(s : Timeseriesdecompx11Slice) -> Double { @_common.mean(s.data) }
+pub fn Timeseriesdecompx11Slice::mean(self : Timeseriesdecompx11Slice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_x11_slice_scale(s : Timeseriesdecompx11Slice, f : Double) -> Timeseriesdecompx11Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Slice::scale(self : Timeseriesdecompx11Slice, f : Double) -> Timeseriesdecompx11Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_slice_add(a : Timeseriesdecompx11Slice, b : Timeseriesdecompx11Slice) -> Timeseriesdecompx11Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Timeseriesdecompx11Slice::add(self : Timeseriesdecompx11Slice, other : Timeseriesdecompx11Slice) -> Timeseriesdecompx11Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_slice_copy(s : Timeseriesdecompx11Slice) -> Timeseriesdecompx11Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Slice::copy(self : Timeseriesdecompx11Slice) -> Timeseriesdecompx11Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_slice_fill(s : Timeseriesdecompx11Slice, v : Double) -> Timeseriesdecompx11Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Timeseriesdecompx11Slice::fill(self : Timeseriesdecompx11Slice, v : Double) -> Timeseriesdecompx11Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_x11_slice_min(s : Timeseriesdecompx11Slice) -> Double { @_common.min(s.data) }
+pub fn Timeseriesdecompx11Slice::min(self : Timeseriesdecompx11Slice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_x11_slice_max(s : Timeseriesdecompx11Slice) -> Double { @_common.max(s.data) }
+pub fn Timeseriesdecompx11Slice::max(self : Timeseriesdecompx11Slice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_x11_slice_to_string(s : Timeseriesdecompx11Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Timeseriesdecompx11Slice::to_string(self : Timeseriesdecompx11Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

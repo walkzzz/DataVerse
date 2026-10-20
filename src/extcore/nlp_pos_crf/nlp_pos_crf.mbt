@@ -351,45 +351,45 @@ pub fn nlp_pos_crf_frame_make(size : Int) -> NlpposcrfFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_frame_len(s : NlpposcrfFrame) -> Int { s.size }
+pub fn NlpposcrfFrame::len(self : NlpposcrfFrame) -> Int { self.size }
 
-pub fn nlp_pos_crf_frame_get(s : NlpposcrfFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfFrame::get(self : NlpposcrfFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_frame_set(s : NlpposcrfFrame, i : Int, v : Double) -> NlpposcrfFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfFrame::set(self : NlpposcrfFrame, i : Int, v : Double) -> NlpposcrfFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_frame_sum(s : NlpposcrfFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfFrame::sum(self : NlpposcrfFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_frame_mean(s : NlpposcrfFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfFrame::mean(self : NlpposcrfFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_frame_scale(s : NlpposcrfFrame, f : Double) -> NlpposcrfFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfFrame::scale(self : NlpposcrfFrame, f : Double) -> NlpposcrfFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_frame_add(a : NlpposcrfFrame, b : NlpposcrfFrame) -> NlpposcrfFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfFrame::add(self : NlpposcrfFrame, other : NlpposcrfFrame) -> NlpposcrfFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_frame_copy(s : NlpposcrfFrame) -> NlpposcrfFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfFrame::copy(self : NlpposcrfFrame) -> NlpposcrfFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_frame_fill(s : NlpposcrfFrame, v : Double) -> NlpposcrfFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfFrame::fill(self : NlpposcrfFrame, v : Double) -> NlpposcrfFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_frame_min(s : NlpposcrfFrame) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfFrame::min(self : NlpposcrfFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_frame_max(s : NlpposcrfFrame) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfFrame::max(self : NlpposcrfFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_frame_to_string(s : NlpposcrfFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfFrame::to_string(self : NlpposcrfFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfTable {
@@ -402,45 +402,45 @@ pub fn nlp_pos_crf_table_make(size : Int) -> NlpposcrfTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_table_len(s : NlpposcrfTable) -> Int { s.size }
+pub fn NlpposcrfTable::len(self : NlpposcrfTable) -> Int { self.size }
 
-pub fn nlp_pos_crf_table_get(s : NlpposcrfTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfTable::get(self : NlpposcrfTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_table_set(s : NlpposcrfTable, i : Int, v : Double) -> NlpposcrfTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfTable::set(self : NlpposcrfTable, i : Int, v : Double) -> NlpposcrfTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_table_sum(s : NlpposcrfTable) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfTable::sum(self : NlpposcrfTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_table_mean(s : NlpposcrfTable) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfTable::mean(self : NlpposcrfTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_table_scale(s : NlpposcrfTable, f : Double) -> NlpposcrfTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfTable::scale(self : NlpposcrfTable, f : Double) -> NlpposcrfTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_table_add(a : NlpposcrfTable, b : NlpposcrfTable) -> NlpposcrfTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfTable::add(self : NlpposcrfTable, other : NlpposcrfTable) -> NlpposcrfTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_table_copy(s : NlpposcrfTable) -> NlpposcrfTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfTable::copy(self : NlpposcrfTable) -> NlpposcrfTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_table_fill(s : NlpposcrfTable, v : Double) -> NlpposcrfTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfTable::fill(self : NlpposcrfTable, v : Double) -> NlpposcrfTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_table_min(s : NlpposcrfTable) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfTable::min(self : NlpposcrfTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_table_max(s : NlpposcrfTable) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfTable::max(self : NlpposcrfTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_table_to_string(s : NlpposcrfTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfTable::to_string(self : NlpposcrfTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_pos_crf_graphn_make(size : Int) -> NlpposcrfGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_graphn_len(s : NlpposcrfGraphN) -> Int { s.size }
+pub fn NlpposcrfGraphN::len(self : NlpposcrfGraphN) -> Int { self.size }
 
-pub fn nlp_pos_crf_graphn_get(s : NlpposcrfGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfGraphN::get(self : NlpposcrfGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_graphn_set(s : NlpposcrfGraphN, i : Int, v : Double) -> NlpposcrfGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfGraphN::set(self : NlpposcrfGraphN, i : Int, v : Double) -> NlpposcrfGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_graphn_sum(s : NlpposcrfGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfGraphN::sum(self : NlpposcrfGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_graphn_mean(s : NlpposcrfGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfGraphN::mean(self : NlpposcrfGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_graphn_scale(s : NlpposcrfGraphN, f : Double) -> NlpposcrfGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfGraphN::scale(self : NlpposcrfGraphN, f : Double) -> NlpposcrfGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_graphn_add(a : NlpposcrfGraphN, b : NlpposcrfGraphN) -> NlpposcrfGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfGraphN::add(self : NlpposcrfGraphN, other : NlpposcrfGraphN) -> NlpposcrfGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_graphn_copy(s : NlpposcrfGraphN) -> NlpposcrfGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfGraphN::copy(self : NlpposcrfGraphN) -> NlpposcrfGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_graphn_fill(s : NlpposcrfGraphN, v : Double) -> NlpposcrfGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfGraphN::fill(self : NlpposcrfGraphN, v : Double) -> NlpposcrfGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_graphn_min(s : NlpposcrfGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfGraphN::min(self : NlpposcrfGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_graphn_max(s : NlpposcrfGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfGraphN::max(self : NlpposcrfGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_graphn_to_string(s : NlpposcrfGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfGraphN::to_string(self : NlpposcrfGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfNode {
@@ -504,45 +504,45 @@ pub fn nlp_pos_crf_node_make(size : Int) -> NlpposcrfNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_node_len(s : NlpposcrfNode) -> Int { s.size }
+pub fn NlpposcrfNode::len(self : NlpposcrfNode) -> Int { self.size }
 
-pub fn nlp_pos_crf_node_get(s : NlpposcrfNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfNode::get(self : NlpposcrfNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_node_set(s : NlpposcrfNode, i : Int, v : Double) -> NlpposcrfNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfNode::set(self : NlpposcrfNode, i : Int, v : Double) -> NlpposcrfNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_node_sum(s : NlpposcrfNode) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfNode::sum(self : NlpposcrfNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_node_mean(s : NlpposcrfNode) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfNode::mean(self : NlpposcrfNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_node_scale(s : NlpposcrfNode, f : Double) -> NlpposcrfNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfNode::scale(self : NlpposcrfNode, f : Double) -> NlpposcrfNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_node_add(a : NlpposcrfNode, b : NlpposcrfNode) -> NlpposcrfNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfNode::add(self : NlpposcrfNode, other : NlpposcrfNode) -> NlpposcrfNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_node_copy(s : NlpposcrfNode) -> NlpposcrfNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfNode::copy(self : NlpposcrfNode) -> NlpposcrfNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_node_fill(s : NlpposcrfNode, v : Double) -> NlpposcrfNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfNode::fill(self : NlpposcrfNode, v : Double) -> NlpposcrfNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_node_min(s : NlpposcrfNode) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfNode::min(self : NlpposcrfNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_node_max(s : NlpposcrfNode) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfNode::max(self : NlpposcrfNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_node_to_string(s : NlpposcrfNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfNode::to_string(self : NlpposcrfNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfEdge {
@@ -555,45 +555,45 @@ pub fn nlp_pos_crf_edge_make(size : Int) -> NlpposcrfEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_edge_len(s : NlpposcrfEdge) -> Int { s.size }
+pub fn NlpposcrfEdge::len(self : NlpposcrfEdge) -> Int { self.size }
 
-pub fn nlp_pos_crf_edge_get(s : NlpposcrfEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfEdge::get(self : NlpposcrfEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_edge_set(s : NlpposcrfEdge, i : Int, v : Double) -> NlpposcrfEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfEdge::set(self : NlpposcrfEdge, i : Int, v : Double) -> NlpposcrfEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_edge_sum(s : NlpposcrfEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfEdge::sum(self : NlpposcrfEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_edge_mean(s : NlpposcrfEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfEdge::mean(self : NlpposcrfEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_edge_scale(s : NlpposcrfEdge, f : Double) -> NlpposcrfEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfEdge::scale(self : NlpposcrfEdge, f : Double) -> NlpposcrfEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_edge_add(a : NlpposcrfEdge, b : NlpposcrfEdge) -> NlpposcrfEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfEdge::add(self : NlpposcrfEdge, other : NlpposcrfEdge) -> NlpposcrfEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_edge_copy(s : NlpposcrfEdge) -> NlpposcrfEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfEdge::copy(self : NlpposcrfEdge) -> NlpposcrfEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_edge_fill(s : NlpposcrfEdge, v : Double) -> NlpposcrfEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfEdge::fill(self : NlpposcrfEdge, v : Double) -> NlpposcrfEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_edge_min(s : NlpposcrfEdge) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfEdge::min(self : NlpposcrfEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_edge_max(s : NlpposcrfEdge) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfEdge::max(self : NlpposcrfEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_edge_to_string(s : NlpposcrfEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfEdge::to_string(self : NlpposcrfEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfPath {
@@ -606,45 +606,45 @@ pub fn nlp_pos_crf_path_make(size : Int) -> NlpposcrfPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_path_len(s : NlpposcrfPath) -> Int { s.size }
+pub fn NlpposcrfPath::len(self : NlpposcrfPath) -> Int { self.size }
 
-pub fn nlp_pos_crf_path_get(s : NlpposcrfPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfPath::get(self : NlpposcrfPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_path_set(s : NlpposcrfPath, i : Int, v : Double) -> NlpposcrfPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfPath::set(self : NlpposcrfPath, i : Int, v : Double) -> NlpposcrfPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_path_sum(s : NlpposcrfPath) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfPath::sum(self : NlpposcrfPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_path_mean(s : NlpposcrfPath) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfPath::mean(self : NlpposcrfPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_path_scale(s : NlpposcrfPath, f : Double) -> NlpposcrfPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfPath::scale(self : NlpposcrfPath, f : Double) -> NlpposcrfPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_path_add(a : NlpposcrfPath, b : NlpposcrfPath) -> NlpposcrfPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfPath::add(self : NlpposcrfPath, other : NlpposcrfPath) -> NlpposcrfPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_path_copy(s : NlpposcrfPath) -> NlpposcrfPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfPath::copy(self : NlpposcrfPath) -> NlpposcrfPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_path_fill(s : NlpposcrfPath, v : Double) -> NlpposcrfPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfPath::fill(self : NlpposcrfPath, v : Double) -> NlpposcrfPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_path_min(s : NlpposcrfPath) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfPath::min(self : NlpposcrfPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_path_max(s : NlpposcrfPath) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfPath::max(self : NlpposcrfPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_path_to_string(s : NlpposcrfPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfPath::to_string(self : NlpposcrfPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfCluster {
@@ -657,45 +657,45 @@ pub fn nlp_pos_crf_cluster_make(size : Int) -> NlpposcrfCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_cluster_len(s : NlpposcrfCluster) -> Int { s.size }
+pub fn NlpposcrfCluster::len(self : NlpposcrfCluster) -> Int { self.size }
 
-pub fn nlp_pos_crf_cluster_get(s : NlpposcrfCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfCluster::get(self : NlpposcrfCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_cluster_set(s : NlpposcrfCluster, i : Int, v : Double) -> NlpposcrfCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfCluster::set(self : NlpposcrfCluster, i : Int, v : Double) -> NlpposcrfCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cluster_sum(s : NlpposcrfCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfCluster::sum(self : NlpposcrfCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_cluster_mean(s : NlpposcrfCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfCluster::mean(self : NlpposcrfCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_cluster_scale(s : NlpposcrfCluster, f : Double) -> NlpposcrfCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfCluster::scale(self : NlpposcrfCluster, f : Double) -> NlpposcrfCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cluster_add(a : NlpposcrfCluster, b : NlpposcrfCluster) -> NlpposcrfCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfCluster::add(self : NlpposcrfCluster, other : NlpposcrfCluster) -> NlpposcrfCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cluster_copy(s : NlpposcrfCluster) -> NlpposcrfCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfCluster::copy(self : NlpposcrfCluster) -> NlpposcrfCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cluster_fill(s : NlpposcrfCluster, v : Double) -> NlpposcrfCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfCluster::fill(self : NlpposcrfCluster, v : Double) -> NlpposcrfCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cluster_min(s : NlpposcrfCluster) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfCluster::min(self : NlpposcrfCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_cluster_max(s : NlpposcrfCluster) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfCluster::max(self : NlpposcrfCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_cluster_to_string(s : NlpposcrfCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfCluster::to_string(self : NlpposcrfCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfModel {
@@ -708,45 +708,45 @@ pub fn nlp_pos_crf_model_make(size : Int) -> NlpposcrfModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_model_len(s : NlpposcrfModel) -> Int { s.size }
+pub fn NlpposcrfModel::len(self : NlpposcrfModel) -> Int { self.size }
 
-pub fn nlp_pos_crf_model_get(s : NlpposcrfModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfModel::get(self : NlpposcrfModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_model_set(s : NlpposcrfModel, i : Int, v : Double) -> NlpposcrfModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfModel::set(self : NlpposcrfModel, i : Int, v : Double) -> NlpposcrfModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_model_sum(s : NlpposcrfModel) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfModel::sum(self : NlpposcrfModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_model_mean(s : NlpposcrfModel) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfModel::mean(self : NlpposcrfModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_model_scale(s : NlpposcrfModel, f : Double) -> NlpposcrfModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfModel::scale(self : NlpposcrfModel, f : Double) -> NlpposcrfModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_model_add(a : NlpposcrfModel, b : NlpposcrfModel) -> NlpposcrfModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfModel::add(self : NlpposcrfModel, other : NlpposcrfModel) -> NlpposcrfModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_model_copy(s : NlpposcrfModel) -> NlpposcrfModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfModel::copy(self : NlpposcrfModel) -> NlpposcrfModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_model_fill(s : NlpposcrfModel, v : Double) -> NlpposcrfModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfModel::fill(self : NlpposcrfModel, v : Double) -> NlpposcrfModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_model_min(s : NlpposcrfModel) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfModel::min(self : NlpposcrfModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_model_max(s : NlpposcrfModel) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfModel::max(self : NlpposcrfModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_model_to_string(s : NlpposcrfModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfModel::to_string(self : NlpposcrfModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfLayer {
@@ -759,45 +759,45 @@ pub fn nlp_pos_crf_layer_make(size : Int) -> NlpposcrfLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_layer_len(s : NlpposcrfLayer) -> Int { s.size }
+pub fn NlpposcrfLayer::len(self : NlpposcrfLayer) -> Int { self.size }
 
-pub fn nlp_pos_crf_layer_get(s : NlpposcrfLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfLayer::get(self : NlpposcrfLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_layer_set(s : NlpposcrfLayer, i : Int, v : Double) -> NlpposcrfLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfLayer::set(self : NlpposcrfLayer, i : Int, v : Double) -> NlpposcrfLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_layer_sum(s : NlpposcrfLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfLayer::sum(self : NlpposcrfLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_layer_mean(s : NlpposcrfLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfLayer::mean(self : NlpposcrfLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_layer_scale(s : NlpposcrfLayer, f : Double) -> NlpposcrfLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfLayer::scale(self : NlpposcrfLayer, f : Double) -> NlpposcrfLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_layer_add(a : NlpposcrfLayer, b : NlpposcrfLayer) -> NlpposcrfLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfLayer::add(self : NlpposcrfLayer, other : NlpposcrfLayer) -> NlpposcrfLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_layer_copy(s : NlpposcrfLayer) -> NlpposcrfLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfLayer::copy(self : NlpposcrfLayer) -> NlpposcrfLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_layer_fill(s : NlpposcrfLayer, v : Double) -> NlpposcrfLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfLayer::fill(self : NlpposcrfLayer, v : Double) -> NlpposcrfLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_layer_min(s : NlpposcrfLayer) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfLayer::min(self : NlpposcrfLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_layer_max(s : NlpposcrfLayer) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfLayer::max(self : NlpposcrfLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_layer_to_string(s : NlpposcrfLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfLayer::to_string(self : NlpposcrfLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_pos_crf_buffer_make(size : Int) -> NlpposcrfBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_buffer_len(s : NlpposcrfBuffer) -> Int { s.size }
+pub fn NlpposcrfBuffer::len(self : NlpposcrfBuffer) -> Int { self.size }
 
-pub fn nlp_pos_crf_buffer_get(s : NlpposcrfBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfBuffer::get(self : NlpposcrfBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_buffer_set(s : NlpposcrfBuffer, i : Int, v : Double) -> NlpposcrfBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfBuffer::set(self : NlpposcrfBuffer, i : Int, v : Double) -> NlpposcrfBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_buffer_sum(s : NlpposcrfBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfBuffer::sum(self : NlpposcrfBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_buffer_mean(s : NlpposcrfBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfBuffer::mean(self : NlpposcrfBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_buffer_scale(s : NlpposcrfBuffer, f : Double) -> NlpposcrfBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfBuffer::scale(self : NlpposcrfBuffer, f : Double) -> NlpposcrfBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_buffer_add(a : NlpposcrfBuffer, b : NlpposcrfBuffer) -> NlpposcrfBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfBuffer::add(self : NlpposcrfBuffer, other : NlpposcrfBuffer) -> NlpposcrfBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_buffer_copy(s : NlpposcrfBuffer) -> NlpposcrfBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfBuffer::copy(self : NlpposcrfBuffer) -> NlpposcrfBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_buffer_fill(s : NlpposcrfBuffer, v : Double) -> NlpposcrfBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfBuffer::fill(self : NlpposcrfBuffer, v : Double) -> NlpposcrfBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_buffer_min(s : NlpposcrfBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfBuffer::min(self : NlpposcrfBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_buffer_max(s : NlpposcrfBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfBuffer::max(self : NlpposcrfBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_buffer_to_string(s : NlpposcrfBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfBuffer::to_string(self : NlpposcrfBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfCursor {
@@ -861,45 +861,45 @@ pub fn nlp_pos_crf_cursor_make(size : Int) -> NlpposcrfCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_cursor_len(s : NlpposcrfCursor) -> Int { s.size }
+pub fn NlpposcrfCursor::len(self : NlpposcrfCursor) -> Int { self.size }
 
-pub fn nlp_pos_crf_cursor_get(s : NlpposcrfCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfCursor::get(self : NlpposcrfCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_cursor_set(s : NlpposcrfCursor, i : Int, v : Double) -> NlpposcrfCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfCursor::set(self : NlpposcrfCursor, i : Int, v : Double) -> NlpposcrfCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cursor_sum(s : NlpposcrfCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfCursor::sum(self : NlpposcrfCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_cursor_mean(s : NlpposcrfCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfCursor::mean(self : NlpposcrfCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_cursor_scale(s : NlpposcrfCursor, f : Double) -> NlpposcrfCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfCursor::scale(self : NlpposcrfCursor, f : Double) -> NlpposcrfCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cursor_add(a : NlpposcrfCursor, b : NlpposcrfCursor) -> NlpposcrfCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfCursor::add(self : NlpposcrfCursor, other : NlpposcrfCursor) -> NlpposcrfCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cursor_copy(s : NlpposcrfCursor) -> NlpposcrfCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfCursor::copy(self : NlpposcrfCursor) -> NlpposcrfCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cursor_fill(s : NlpposcrfCursor, v : Double) -> NlpposcrfCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfCursor::fill(self : NlpposcrfCursor, v : Double) -> NlpposcrfCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_cursor_min(s : NlpposcrfCursor) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfCursor::min(self : NlpposcrfCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_cursor_max(s : NlpposcrfCursor) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfCursor::max(self : NlpposcrfCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_cursor_to_string(s : NlpposcrfCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfCursor::to_string(self : NlpposcrfCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfView {
@@ -912,45 +912,45 @@ pub fn nlp_pos_crf_view_make(size : Int) -> NlpposcrfView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_view_len(s : NlpposcrfView) -> Int { s.size }
+pub fn NlpposcrfView::len(self : NlpposcrfView) -> Int { self.size }
 
-pub fn nlp_pos_crf_view_get(s : NlpposcrfView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfView::get(self : NlpposcrfView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_view_set(s : NlpposcrfView, i : Int, v : Double) -> NlpposcrfView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfView::set(self : NlpposcrfView, i : Int, v : Double) -> NlpposcrfView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_view_sum(s : NlpposcrfView) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfView::sum(self : NlpposcrfView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_view_mean(s : NlpposcrfView) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfView::mean(self : NlpposcrfView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_view_scale(s : NlpposcrfView, f : Double) -> NlpposcrfView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfView::scale(self : NlpposcrfView, f : Double) -> NlpposcrfView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_view_add(a : NlpposcrfView, b : NlpposcrfView) -> NlpposcrfView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfView::add(self : NlpposcrfView, other : NlpposcrfView) -> NlpposcrfView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_view_copy(s : NlpposcrfView) -> NlpposcrfView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfView::copy(self : NlpposcrfView) -> NlpposcrfView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_view_fill(s : NlpposcrfView, v : Double) -> NlpposcrfView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfView::fill(self : NlpposcrfView, v : Double) -> NlpposcrfView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_view_min(s : NlpposcrfView) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfView::min(self : NlpposcrfView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_view_max(s : NlpposcrfView) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfView::max(self : NlpposcrfView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_view_to_string(s : NlpposcrfView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfView::to_string(self : NlpposcrfView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfRange {
@@ -963,45 +963,45 @@ pub fn nlp_pos_crf_range_make(size : Int) -> NlpposcrfRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_range_len(s : NlpposcrfRange) -> Int { s.size }
+pub fn NlpposcrfRange::len(self : NlpposcrfRange) -> Int { self.size }
 
-pub fn nlp_pos_crf_range_get(s : NlpposcrfRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfRange::get(self : NlpposcrfRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_range_set(s : NlpposcrfRange, i : Int, v : Double) -> NlpposcrfRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfRange::set(self : NlpposcrfRange, i : Int, v : Double) -> NlpposcrfRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_range_sum(s : NlpposcrfRange) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfRange::sum(self : NlpposcrfRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_range_mean(s : NlpposcrfRange) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfRange::mean(self : NlpposcrfRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_range_scale(s : NlpposcrfRange, f : Double) -> NlpposcrfRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfRange::scale(self : NlpposcrfRange, f : Double) -> NlpposcrfRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_range_add(a : NlpposcrfRange, b : NlpposcrfRange) -> NlpposcrfRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfRange::add(self : NlpposcrfRange, other : NlpposcrfRange) -> NlpposcrfRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_range_copy(s : NlpposcrfRange) -> NlpposcrfRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfRange::copy(self : NlpposcrfRange) -> NlpposcrfRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_range_fill(s : NlpposcrfRange, v : Double) -> NlpposcrfRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfRange::fill(self : NlpposcrfRange, v : Double) -> NlpposcrfRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_range_min(s : NlpposcrfRange) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfRange::min(self : NlpposcrfRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_range_max(s : NlpposcrfRange) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfRange::max(self : NlpposcrfRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_range_to_string(s : NlpposcrfRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfRange::to_string(self : NlpposcrfRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposcrfSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_pos_crf_slice_make(size : Int) -> NlpposcrfSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_crf_slice_len(s : NlpposcrfSlice) -> Int { s.size }
+pub fn NlpposcrfSlice::len(self : NlpposcrfSlice) -> Int { self.size }
 
-pub fn nlp_pos_crf_slice_get(s : NlpposcrfSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposcrfSlice::get(self : NlpposcrfSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_crf_slice_set(s : NlpposcrfSlice, i : Int, v : Double) -> NlpposcrfSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposcrfSlice::set(self : NlpposcrfSlice, i : Int, v : Double) -> NlpposcrfSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_slice_sum(s : NlpposcrfSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpposcrfSlice::sum(self : NlpposcrfSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_crf_slice_mean(s : NlpposcrfSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpposcrfSlice::mean(self : NlpposcrfSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_crf_slice_scale(s : NlpposcrfSlice, f : Double) -> NlpposcrfSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposcrfSlice::scale(self : NlpposcrfSlice, f : Double) -> NlpposcrfSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_slice_add(a : NlpposcrfSlice, b : NlpposcrfSlice) -> NlpposcrfSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposcrfSlice::add(self : NlpposcrfSlice, other : NlpposcrfSlice) -> NlpposcrfSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_slice_copy(s : NlpposcrfSlice) -> NlpposcrfSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposcrfSlice::copy(self : NlpposcrfSlice) -> NlpposcrfSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_slice_fill(s : NlpposcrfSlice, v : Double) -> NlpposcrfSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposcrfSlice::fill(self : NlpposcrfSlice, v : Double) -> NlpposcrfSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_crf_slice_min(s : NlpposcrfSlice) -> Double { @_common.min(s.data) }
+pub fn NlpposcrfSlice::min(self : NlpposcrfSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_crf_slice_max(s : NlpposcrfSlice) -> Double { @_common.max(s.data) }
+pub fn NlpposcrfSlice::max(self : NlpposcrfSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_crf_slice_to_string(s : NlpposcrfSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposcrfSlice::to_string(self : NlpposcrfSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

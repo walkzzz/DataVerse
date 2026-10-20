@@ -351,45 +351,45 @@ pub fn finance_portfolio_hierarchical_frame_make(size : Int) -> Financeportfolio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_frame_len(s : FinanceportfoliohierarchicalFrame) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalFrame::len(self : FinanceportfoliohierarchicalFrame) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_frame_get(s : FinanceportfoliohierarchicalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalFrame::get(self : FinanceportfoliohierarchicalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_frame_set(s : FinanceportfoliohierarchicalFrame, i : Int, v : Double) -> FinanceportfoliohierarchicalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalFrame::set(self : FinanceportfoliohierarchicalFrame, i : Int, v : Double) -> FinanceportfoliohierarchicalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_frame_sum(s : FinanceportfoliohierarchicalFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalFrame::sum(self : FinanceportfoliohierarchicalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_frame_mean(s : FinanceportfoliohierarchicalFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalFrame::mean(self : FinanceportfoliohierarchicalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_frame_scale(s : FinanceportfoliohierarchicalFrame, f : Double) -> FinanceportfoliohierarchicalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalFrame::scale(self : FinanceportfoliohierarchicalFrame, f : Double) -> FinanceportfoliohierarchicalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_frame_add(a : FinanceportfoliohierarchicalFrame, b : FinanceportfoliohierarchicalFrame) -> FinanceportfoliohierarchicalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalFrame::add(self : FinanceportfoliohierarchicalFrame, other : FinanceportfoliohierarchicalFrame) -> FinanceportfoliohierarchicalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_frame_copy(s : FinanceportfoliohierarchicalFrame) -> FinanceportfoliohierarchicalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalFrame::copy(self : FinanceportfoliohierarchicalFrame) -> FinanceportfoliohierarchicalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_frame_fill(s : FinanceportfoliohierarchicalFrame, v : Double) -> FinanceportfoliohierarchicalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalFrame::fill(self : FinanceportfoliohierarchicalFrame, v : Double) -> FinanceportfoliohierarchicalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_frame_min(s : FinanceportfoliohierarchicalFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalFrame::min(self : FinanceportfoliohierarchicalFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_frame_max(s : FinanceportfoliohierarchicalFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalFrame::max(self : FinanceportfoliohierarchicalFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_frame_to_string(s : FinanceportfoliohierarchicalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalFrame::to_string(self : FinanceportfoliohierarchicalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalTable {
@@ -402,45 +402,45 @@ pub fn finance_portfolio_hierarchical_table_make(size : Int) -> Financeportfolio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_table_len(s : FinanceportfoliohierarchicalTable) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalTable::len(self : FinanceportfoliohierarchicalTable) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_table_get(s : FinanceportfoliohierarchicalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalTable::get(self : FinanceportfoliohierarchicalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_table_set(s : FinanceportfoliohierarchicalTable, i : Int, v : Double) -> FinanceportfoliohierarchicalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalTable::set(self : FinanceportfoliohierarchicalTable, i : Int, v : Double) -> FinanceportfoliohierarchicalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_table_sum(s : FinanceportfoliohierarchicalTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalTable::sum(self : FinanceportfoliohierarchicalTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_table_mean(s : FinanceportfoliohierarchicalTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalTable::mean(self : FinanceportfoliohierarchicalTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_table_scale(s : FinanceportfoliohierarchicalTable, f : Double) -> FinanceportfoliohierarchicalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalTable::scale(self : FinanceportfoliohierarchicalTable, f : Double) -> FinanceportfoliohierarchicalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_table_add(a : FinanceportfoliohierarchicalTable, b : FinanceportfoliohierarchicalTable) -> FinanceportfoliohierarchicalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalTable::add(self : FinanceportfoliohierarchicalTable, other : FinanceportfoliohierarchicalTable) -> FinanceportfoliohierarchicalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_table_copy(s : FinanceportfoliohierarchicalTable) -> FinanceportfoliohierarchicalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalTable::copy(self : FinanceportfoliohierarchicalTable) -> FinanceportfoliohierarchicalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_table_fill(s : FinanceportfoliohierarchicalTable, v : Double) -> FinanceportfoliohierarchicalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalTable::fill(self : FinanceportfoliohierarchicalTable, v : Double) -> FinanceportfoliohierarchicalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_table_min(s : FinanceportfoliohierarchicalTable) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalTable::min(self : FinanceportfoliohierarchicalTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_table_max(s : FinanceportfoliohierarchicalTable) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalTable::max(self : FinanceportfoliohierarchicalTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_table_to_string(s : FinanceportfoliohierarchicalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalTable::to_string(self : FinanceportfoliohierarchicalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalGraphN {
@@ -453,45 +453,45 @@ pub fn finance_portfolio_hierarchical_graphn_make(size : Int) -> Financeportfoli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_len(s : FinanceportfoliohierarchicalGraphN) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalGraphN::len(self : FinanceportfoliohierarchicalGraphN) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_graphn_get(s : FinanceportfoliohierarchicalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalGraphN::get(self : FinanceportfoliohierarchicalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_set(s : FinanceportfoliohierarchicalGraphN, i : Int, v : Double) -> FinanceportfoliohierarchicalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalGraphN::set(self : FinanceportfoliohierarchicalGraphN, i : Int, v : Double) -> FinanceportfoliohierarchicalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_sum(s : FinanceportfoliohierarchicalGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalGraphN::sum(self : FinanceportfoliohierarchicalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_graphn_mean(s : FinanceportfoliohierarchicalGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalGraphN::mean(self : FinanceportfoliohierarchicalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_graphn_scale(s : FinanceportfoliohierarchicalGraphN, f : Double) -> FinanceportfoliohierarchicalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalGraphN::scale(self : FinanceportfoliohierarchicalGraphN, f : Double) -> FinanceportfoliohierarchicalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_add(a : FinanceportfoliohierarchicalGraphN, b : FinanceportfoliohierarchicalGraphN) -> FinanceportfoliohierarchicalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalGraphN::add(self : FinanceportfoliohierarchicalGraphN, other : FinanceportfoliohierarchicalGraphN) -> FinanceportfoliohierarchicalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_copy(s : FinanceportfoliohierarchicalGraphN) -> FinanceportfoliohierarchicalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalGraphN::copy(self : FinanceportfoliohierarchicalGraphN) -> FinanceportfoliohierarchicalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_fill(s : FinanceportfoliohierarchicalGraphN, v : Double) -> FinanceportfoliohierarchicalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalGraphN::fill(self : FinanceportfoliohierarchicalGraphN, v : Double) -> FinanceportfoliohierarchicalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_graphn_min(s : FinanceportfoliohierarchicalGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalGraphN::min(self : FinanceportfoliohierarchicalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_graphn_max(s : FinanceportfoliohierarchicalGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalGraphN::max(self : FinanceportfoliohierarchicalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_graphn_to_string(s : FinanceportfoliohierarchicalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalGraphN::to_string(self : FinanceportfoliohierarchicalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalNode {
@@ -504,45 +504,45 @@ pub fn finance_portfolio_hierarchical_node_make(size : Int) -> Financeportfolioh
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_node_len(s : FinanceportfoliohierarchicalNode) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalNode::len(self : FinanceportfoliohierarchicalNode) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_node_get(s : FinanceportfoliohierarchicalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalNode::get(self : FinanceportfoliohierarchicalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_node_set(s : FinanceportfoliohierarchicalNode, i : Int, v : Double) -> FinanceportfoliohierarchicalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalNode::set(self : FinanceportfoliohierarchicalNode, i : Int, v : Double) -> FinanceportfoliohierarchicalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_node_sum(s : FinanceportfoliohierarchicalNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalNode::sum(self : FinanceportfoliohierarchicalNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_node_mean(s : FinanceportfoliohierarchicalNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalNode::mean(self : FinanceportfoliohierarchicalNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_node_scale(s : FinanceportfoliohierarchicalNode, f : Double) -> FinanceportfoliohierarchicalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalNode::scale(self : FinanceportfoliohierarchicalNode, f : Double) -> FinanceportfoliohierarchicalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_node_add(a : FinanceportfoliohierarchicalNode, b : FinanceportfoliohierarchicalNode) -> FinanceportfoliohierarchicalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalNode::add(self : FinanceportfoliohierarchicalNode, other : FinanceportfoliohierarchicalNode) -> FinanceportfoliohierarchicalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_node_copy(s : FinanceportfoliohierarchicalNode) -> FinanceportfoliohierarchicalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalNode::copy(self : FinanceportfoliohierarchicalNode) -> FinanceportfoliohierarchicalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_node_fill(s : FinanceportfoliohierarchicalNode, v : Double) -> FinanceportfoliohierarchicalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalNode::fill(self : FinanceportfoliohierarchicalNode, v : Double) -> FinanceportfoliohierarchicalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_node_min(s : FinanceportfoliohierarchicalNode) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalNode::min(self : FinanceportfoliohierarchicalNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_node_max(s : FinanceportfoliohierarchicalNode) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalNode::max(self : FinanceportfoliohierarchicalNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_node_to_string(s : FinanceportfoliohierarchicalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalNode::to_string(self : FinanceportfoliohierarchicalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalEdge {
@@ -555,45 +555,45 @@ pub fn finance_portfolio_hierarchical_edge_make(size : Int) -> Financeportfolioh
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_edge_len(s : FinanceportfoliohierarchicalEdge) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalEdge::len(self : FinanceportfoliohierarchicalEdge) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_edge_get(s : FinanceportfoliohierarchicalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalEdge::get(self : FinanceportfoliohierarchicalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_edge_set(s : FinanceportfoliohierarchicalEdge, i : Int, v : Double) -> FinanceportfoliohierarchicalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalEdge::set(self : FinanceportfoliohierarchicalEdge, i : Int, v : Double) -> FinanceportfoliohierarchicalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_edge_sum(s : FinanceportfoliohierarchicalEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalEdge::sum(self : FinanceportfoliohierarchicalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_edge_mean(s : FinanceportfoliohierarchicalEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalEdge::mean(self : FinanceportfoliohierarchicalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_edge_scale(s : FinanceportfoliohierarchicalEdge, f : Double) -> FinanceportfoliohierarchicalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalEdge::scale(self : FinanceportfoliohierarchicalEdge, f : Double) -> FinanceportfoliohierarchicalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_edge_add(a : FinanceportfoliohierarchicalEdge, b : FinanceportfoliohierarchicalEdge) -> FinanceportfoliohierarchicalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalEdge::add(self : FinanceportfoliohierarchicalEdge, other : FinanceportfoliohierarchicalEdge) -> FinanceportfoliohierarchicalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_edge_copy(s : FinanceportfoliohierarchicalEdge) -> FinanceportfoliohierarchicalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalEdge::copy(self : FinanceportfoliohierarchicalEdge) -> FinanceportfoliohierarchicalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_edge_fill(s : FinanceportfoliohierarchicalEdge, v : Double) -> FinanceportfoliohierarchicalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalEdge::fill(self : FinanceportfoliohierarchicalEdge, v : Double) -> FinanceportfoliohierarchicalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_edge_min(s : FinanceportfoliohierarchicalEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalEdge::min(self : FinanceportfoliohierarchicalEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_edge_max(s : FinanceportfoliohierarchicalEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalEdge::max(self : FinanceportfoliohierarchicalEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_edge_to_string(s : FinanceportfoliohierarchicalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalEdge::to_string(self : FinanceportfoliohierarchicalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalPath {
@@ -606,45 +606,45 @@ pub fn finance_portfolio_hierarchical_path_make(size : Int) -> Financeportfolioh
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_path_len(s : FinanceportfoliohierarchicalPath) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalPath::len(self : FinanceportfoliohierarchicalPath) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_path_get(s : FinanceportfoliohierarchicalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalPath::get(self : FinanceportfoliohierarchicalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_path_set(s : FinanceportfoliohierarchicalPath, i : Int, v : Double) -> FinanceportfoliohierarchicalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalPath::set(self : FinanceportfoliohierarchicalPath, i : Int, v : Double) -> FinanceportfoliohierarchicalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_path_sum(s : FinanceportfoliohierarchicalPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalPath::sum(self : FinanceportfoliohierarchicalPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_path_mean(s : FinanceportfoliohierarchicalPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalPath::mean(self : FinanceportfoliohierarchicalPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_path_scale(s : FinanceportfoliohierarchicalPath, f : Double) -> FinanceportfoliohierarchicalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalPath::scale(self : FinanceportfoliohierarchicalPath, f : Double) -> FinanceportfoliohierarchicalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_path_add(a : FinanceportfoliohierarchicalPath, b : FinanceportfoliohierarchicalPath) -> FinanceportfoliohierarchicalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalPath::add(self : FinanceportfoliohierarchicalPath, other : FinanceportfoliohierarchicalPath) -> FinanceportfoliohierarchicalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_path_copy(s : FinanceportfoliohierarchicalPath) -> FinanceportfoliohierarchicalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalPath::copy(self : FinanceportfoliohierarchicalPath) -> FinanceportfoliohierarchicalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_path_fill(s : FinanceportfoliohierarchicalPath, v : Double) -> FinanceportfoliohierarchicalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalPath::fill(self : FinanceportfoliohierarchicalPath, v : Double) -> FinanceportfoliohierarchicalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_path_min(s : FinanceportfoliohierarchicalPath) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalPath::min(self : FinanceportfoliohierarchicalPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_path_max(s : FinanceportfoliohierarchicalPath) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalPath::max(self : FinanceportfoliohierarchicalPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_path_to_string(s : FinanceportfoliohierarchicalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalPath::to_string(self : FinanceportfoliohierarchicalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalCluster {
@@ -657,45 +657,45 @@ pub fn finance_portfolio_hierarchical_cluster_make(size : Int) -> Financeportfol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_len(s : FinanceportfoliohierarchicalCluster) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalCluster::len(self : FinanceportfoliohierarchicalCluster) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_cluster_get(s : FinanceportfoliohierarchicalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalCluster::get(self : FinanceportfoliohierarchicalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_set(s : FinanceportfoliohierarchicalCluster, i : Int, v : Double) -> FinanceportfoliohierarchicalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCluster::set(self : FinanceportfoliohierarchicalCluster, i : Int, v : Double) -> FinanceportfoliohierarchicalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_sum(s : FinanceportfoliohierarchicalCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalCluster::sum(self : FinanceportfoliohierarchicalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_cluster_mean(s : FinanceportfoliohierarchicalCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalCluster::mean(self : FinanceportfoliohierarchicalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_cluster_scale(s : FinanceportfoliohierarchicalCluster, f : Double) -> FinanceportfoliohierarchicalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCluster::scale(self : FinanceportfoliohierarchicalCluster, f : Double) -> FinanceportfoliohierarchicalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_add(a : FinanceportfoliohierarchicalCluster, b : FinanceportfoliohierarchicalCluster) -> FinanceportfoliohierarchicalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalCluster::add(self : FinanceportfoliohierarchicalCluster, other : FinanceportfoliohierarchicalCluster) -> FinanceportfoliohierarchicalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_copy(s : FinanceportfoliohierarchicalCluster) -> FinanceportfoliohierarchicalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCluster::copy(self : FinanceportfoliohierarchicalCluster) -> FinanceportfoliohierarchicalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_fill(s : FinanceportfoliohierarchicalCluster, v : Double) -> FinanceportfoliohierarchicalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCluster::fill(self : FinanceportfoliohierarchicalCluster, v : Double) -> FinanceportfoliohierarchicalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cluster_min(s : FinanceportfoliohierarchicalCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalCluster::min(self : FinanceportfoliohierarchicalCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_cluster_max(s : FinanceportfoliohierarchicalCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalCluster::max(self : FinanceportfoliohierarchicalCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_cluster_to_string(s : FinanceportfoliohierarchicalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalCluster::to_string(self : FinanceportfoliohierarchicalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalModel {
@@ -708,45 +708,45 @@ pub fn finance_portfolio_hierarchical_model_make(size : Int) -> Financeportfolio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_model_len(s : FinanceportfoliohierarchicalModel) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalModel::len(self : FinanceportfoliohierarchicalModel) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_model_get(s : FinanceportfoliohierarchicalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalModel::get(self : FinanceportfoliohierarchicalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_model_set(s : FinanceportfoliohierarchicalModel, i : Int, v : Double) -> FinanceportfoliohierarchicalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalModel::set(self : FinanceportfoliohierarchicalModel, i : Int, v : Double) -> FinanceportfoliohierarchicalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_model_sum(s : FinanceportfoliohierarchicalModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalModel::sum(self : FinanceportfoliohierarchicalModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_model_mean(s : FinanceportfoliohierarchicalModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalModel::mean(self : FinanceportfoliohierarchicalModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_model_scale(s : FinanceportfoliohierarchicalModel, f : Double) -> FinanceportfoliohierarchicalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalModel::scale(self : FinanceportfoliohierarchicalModel, f : Double) -> FinanceportfoliohierarchicalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_model_add(a : FinanceportfoliohierarchicalModel, b : FinanceportfoliohierarchicalModel) -> FinanceportfoliohierarchicalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalModel::add(self : FinanceportfoliohierarchicalModel, other : FinanceportfoliohierarchicalModel) -> FinanceportfoliohierarchicalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_model_copy(s : FinanceportfoliohierarchicalModel) -> FinanceportfoliohierarchicalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalModel::copy(self : FinanceportfoliohierarchicalModel) -> FinanceportfoliohierarchicalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_model_fill(s : FinanceportfoliohierarchicalModel, v : Double) -> FinanceportfoliohierarchicalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalModel::fill(self : FinanceportfoliohierarchicalModel, v : Double) -> FinanceportfoliohierarchicalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_model_min(s : FinanceportfoliohierarchicalModel) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalModel::min(self : FinanceportfoliohierarchicalModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_model_max(s : FinanceportfoliohierarchicalModel) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalModel::max(self : FinanceportfoliohierarchicalModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_model_to_string(s : FinanceportfoliohierarchicalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalModel::to_string(self : FinanceportfoliohierarchicalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalLayer {
@@ -759,45 +759,45 @@ pub fn finance_portfolio_hierarchical_layer_make(size : Int) -> Financeportfolio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_layer_len(s : FinanceportfoliohierarchicalLayer) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalLayer::len(self : FinanceportfoliohierarchicalLayer) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_layer_get(s : FinanceportfoliohierarchicalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalLayer::get(self : FinanceportfoliohierarchicalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_layer_set(s : FinanceportfoliohierarchicalLayer, i : Int, v : Double) -> FinanceportfoliohierarchicalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalLayer::set(self : FinanceportfoliohierarchicalLayer, i : Int, v : Double) -> FinanceportfoliohierarchicalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_layer_sum(s : FinanceportfoliohierarchicalLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalLayer::sum(self : FinanceportfoliohierarchicalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_layer_mean(s : FinanceportfoliohierarchicalLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalLayer::mean(self : FinanceportfoliohierarchicalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_layer_scale(s : FinanceportfoliohierarchicalLayer, f : Double) -> FinanceportfoliohierarchicalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalLayer::scale(self : FinanceportfoliohierarchicalLayer, f : Double) -> FinanceportfoliohierarchicalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_layer_add(a : FinanceportfoliohierarchicalLayer, b : FinanceportfoliohierarchicalLayer) -> FinanceportfoliohierarchicalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalLayer::add(self : FinanceportfoliohierarchicalLayer, other : FinanceportfoliohierarchicalLayer) -> FinanceportfoliohierarchicalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_layer_copy(s : FinanceportfoliohierarchicalLayer) -> FinanceportfoliohierarchicalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalLayer::copy(self : FinanceportfoliohierarchicalLayer) -> FinanceportfoliohierarchicalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_layer_fill(s : FinanceportfoliohierarchicalLayer, v : Double) -> FinanceportfoliohierarchicalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalLayer::fill(self : FinanceportfoliohierarchicalLayer, v : Double) -> FinanceportfoliohierarchicalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_layer_min(s : FinanceportfoliohierarchicalLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalLayer::min(self : FinanceportfoliohierarchicalLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_layer_max(s : FinanceportfoliohierarchicalLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalLayer::max(self : FinanceportfoliohierarchicalLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_layer_to_string(s : FinanceportfoliohierarchicalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalLayer::to_string(self : FinanceportfoliohierarchicalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalBuffer {
@@ -810,45 +810,45 @@ pub fn finance_portfolio_hierarchical_buffer_make(size : Int) -> Financeportfoli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_len(s : FinanceportfoliohierarchicalBuffer) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalBuffer::len(self : FinanceportfoliohierarchicalBuffer) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_buffer_get(s : FinanceportfoliohierarchicalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalBuffer::get(self : FinanceportfoliohierarchicalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_set(s : FinanceportfoliohierarchicalBuffer, i : Int, v : Double) -> FinanceportfoliohierarchicalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalBuffer::set(self : FinanceportfoliohierarchicalBuffer, i : Int, v : Double) -> FinanceportfoliohierarchicalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_sum(s : FinanceportfoliohierarchicalBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalBuffer::sum(self : FinanceportfoliohierarchicalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_buffer_mean(s : FinanceportfoliohierarchicalBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalBuffer::mean(self : FinanceportfoliohierarchicalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_buffer_scale(s : FinanceportfoliohierarchicalBuffer, f : Double) -> FinanceportfoliohierarchicalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalBuffer::scale(self : FinanceportfoliohierarchicalBuffer, f : Double) -> FinanceportfoliohierarchicalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_add(a : FinanceportfoliohierarchicalBuffer, b : FinanceportfoliohierarchicalBuffer) -> FinanceportfoliohierarchicalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalBuffer::add(self : FinanceportfoliohierarchicalBuffer, other : FinanceportfoliohierarchicalBuffer) -> FinanceportfoliohierarchicalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_copy(s : FinanceportfoliohierarchicalBuffer) -> FinanceportfoliohierarchicalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalBuffer::copy(self : FinanceportfoliohierarchicalBuffer) -> FinanceportfoliohierarchicalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_fill(s : FinanceportfoliohierarchicalBuffer, v : Double) -> FinanceportfoliohierarchicalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalBuffer::fill(self : FinanceportfoliohierarchicalBuffer, v : Double) -> FinanceportfoliohierarchicalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_buffer_min(s : FinanceportfoliohierarchicalBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalBuffer::min(self : FinanceportfoliohierarchicalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_buffer_max(s : FinanceportfoliohierarchicalBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalBuffer::max(self : FinanceportfoliohierarchicalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_buffer_to_string(s : FinanceportfoliohierarchicalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalBuffer::to_string(self : FinanceportfoliohierarchicalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalCursor {
@@ -861,45 +861,45 @@ pub fn finance_portfolio_hierarchical_cursor_make(size : Int) -> Financeportfoli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_len(s : FinanceportfoliohierarchicalCursor) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalCursor::len(self : FinanceportfoliohierarchicalCursor) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_cursor_get(s : FinanceportfoliohierarchicalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalCursor::get(self : FinanceportfoliohierarchicalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_set(s : FinanceportfoliohierarchicalCursor, i : Int, v : Double) -> FinanceportfoliohierarchicalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCursor::set(self : FinanceportfoliohierarchicalCursor, i : Int, v : Double) -> FinanceportfoliohierarchicalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_sum(s : FinanceportfoliohierarchicalCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalCursor::sum(self : FinanceportfoliohierarchicalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_cursor_mean(s : FinanceportfoliohierarchicalCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalCursor::mean(self : FinanceportfoliohierarchicalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_cursor_scale(s : FinanceportfoliohierarchicalCursor, f : Double) -> FinanceportfoliohierarchicalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCursor::scale(self : FinanceportfoliohierarchicalCursor, f : Double) -> FinanceportfoliohierarchicalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_add(a : FinanceportfoliohierarchicalCursor, b : FinanceportfoliohierarchicalCursor) -> FinanceportfoliohierarchicalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalCursor::add(self : FinanceportfoliohierarchicalCursor, other : FinanceportfoliohierarchicalCursor) -> FinanceportfoliohierarchicalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_copy(s : FinanceportfoliohierarchicalCursor) -> FinanceportfoliohierarchicalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCursor::copy(self : FinanceportfoliohierarchicalCursor) -> FinanceportfoliohierarchicalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_fill(s : FinanceportfoliohierarchicalCursor, v : Double) -> FinanceportfoliohierarchicalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalCursor::fill(self : FinanceportfoliohierarchicalCursor, v : Double) -> FinanceportfoliohierarchicalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_cursor_min(s : FinanceportfoliohierarchicalCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalCursor::min(self : FinanceportfoliohierarchicalCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_cursor_max(s : FinanceportfoliohierarchicalCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalCursor::max(self : FinanceportfoliohierarchicalCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_cursor_to_string(s : FinanceportfoliohierarchicalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalCursor::to_string(self : FinanceportfoliohierarchicalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalView {
@@ -912,45 +912,45 @@ pub fn finance_portfolio_hierarchical_view_make(size : Int) -> Financeportfolioh
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_view_len(s : FinanceportfoliohierarchicalView) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalView::len(self : FinanceportfoliohierarchicalView) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_view_get(s : FinanceportfoliohierarchicalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalView::get(self : FinanceportfoliohierarchicalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_view_set(s : FinanceportfoliohierarchicalView, i : Int, v : Double) -> FinanceportfoliohierarchicalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalView::set(self : FinanceportfoliohierarchicalView, i : Int, v : Double) -> FinanceportfoliohierarchicalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_view_sum(s : FinanceportfoliohierarchicalView) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalView::sum(self : FinanceportfoliohierarchicalView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_view_mean(s : FinanceportfoliohierarchicalView) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalView::mean(self : FinanceportfoliohierarchicalView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_view_scale(s : FinanceportfoliohierarchicalView, f : Double) -> FinanceportfoliohierarchicalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalView::scale(self : FinanceportfoliohierarchicalView, f : Double) -> FinanceportfoliohierarchicalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_view_add(a : FinanceportfoliohierarchicalView, b : FinanceportfoliohierarchicalView) -> FinanceportfoliohierarchicalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalView::add(self : FinanceportfoliohierarchicalView, other : FinanceportfoliohierarchicalView) -> FinanceportfoliohierarchicalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_view_copy(s : FinanceportfoliohierarchicalView) -> FinanceportfoliohierarchicalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalView::copy(self : FinanceportfoliohierarchicalView) -> FinanceportfoliohierarchicalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_view_fill(s : FinanceportfoliohierarchicalView, v : Double) -> FinanceportfoliohierarchicalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalView::fill(self : FinanceportfoliohierarchicalView, v : Double) -> FinanceportfoliohierarchicalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_view_min(s : FinanceportfoliohierarchicalView) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalView::min(self : FinanceportfoliohierarchicalView) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_view_max(s : FinanceportfoliohierarchicalView) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalView::max(self : FinanceportfoliohierarchicalView) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_view_to_string(s : FinanceportfoliohierarchicalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalView::to_string(self : FinanceportfoliohierarchicalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalRange {
@@ -963,45 +963,45 @@ pub fn finance_portfolio_hierarchical_range_make(size : Int) -> Financeportfolio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_range_len(s : FinanceportfoliohierarchicalRange) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalRange::len(self : FinanceportfoliohierarchicalRange) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_range_get(s : FinanceportfoliohierarchicalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalRange::get(self : FinanceportfoliohierarchicalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_range_set(s : FinanceportfoliohierarchicalRange, i : Int, v : Double) -> FinanceportfoliohierarchicalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalRange::set(self : FinanceportfoliohierarchicalRange, i : Int, v : Double) -> FinanceportfoliohierarchicalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_range_sum(s : FinanceportfoliohierarchicalRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalRange::sum(self : FinanceportfoliohierarchicalRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_range_mean(s : FinanceportfoliohierarchicalRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalRange::mean(self : FinanceportfoliohierarchicalRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_range_scale(s : FinanceportfoliohierarchicalRange, f : Double) -> FinanceportfoliohierarchicalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalRange::scale(self : FinanceportfoliohierarchicalRange, f : Double) -> FinanceportfoliohierarchicalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_range_add(a : FinanceportfoliohierarchicalRange, b : FinanceportfoliohierarchicalRange) -> FinanceportfoliohierarchicalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalRange::add(self : FinanceportfoliohierarchicalRange, other : FinanceportfoliohierarchicalRange) -> FinanceportfoliohierarchicalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_range_copy(s : FinanceportfoliohierarchicalRange) -> FinanceportfoliohierarchicalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalRange::copy(self : FinanceportfoliohierarchicalRange) -> FinanceportfoliohierarchicalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_range_fill(s : FinanceportfoliohierarchicalRange, v : Double) -> FinanceportfoliohierarchicalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalRange::fill(self : FinanceportfoliohierarchicalRange, v : Double) -> FinanceportfoliohierarchicalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_range_min(s : FinanceportfoliohierarchicalRange) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalRange::min(self : FinanceportfoliohierarchicalRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_range_max(s : FinanceportfoliohierarchicalRange) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalRange::max(self : FinanceportfoliohierarchicalRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_range_to_string(s : FinanceportfoliohierarchicalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalRange::to_string(self : FinanceportfoliohierarchicalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliohierarchicalSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_portfolio_hierarchical_slice_make(size : Int) -> Financeportfolio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_hierarchical_slice_len(s : FinanceportfoliohierarchicalSlice) -> Int { s.size }
+pub fn FinanceportfoliohierarchicalSlice::len(self : FinanceportfoliohierarchicalSlice) -> Int { self.size }
 
-pub fn finance_portfolio_hierarchical_slice_get(s : FinanceportfoliohierarchicalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliohierarchicalSlice::get(self : FinanceportfoliohierarchicalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_hierarchical_slice_set(s : FinanceportfoliohierarchicalSlice, i : Int, v : Double) -> FinanceportfoliohierarchicalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalSlice::set(self : FinanceportfoliohierarchicalSlice, i : Int, v : Double) -> FinanceportfoliohierarchicalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_slice_sum(s : FinanceportfoliohierarchicalSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliohierarchicalSlice::sum(self : FinanceportfoliohierarchicalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_hierarchical_slice_mean(s : FinanceportfoliohierarchicalSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliohierarchicalSlice::mean(self : FinanceportfoliohierarchicalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_hierarchical_slice_scale(s : FinanceportfoliohierarchicalSlice, f : Double) -> FinanceportfoliohierarchicalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalSlice::scale(self : FinanceportfoliohierarchicalSlice, f : Double) -> FinanceportfoliohierarchicalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_slice_add(a : FinanceportfoliohierarchicalSlice, b : FinanceportfoliohierarchicalSlice) -> FinanceportfoliohierarchicalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliohierarchicalSlice::add(self : FinanceportfoliohierarchicalSlice, other : FinanceportfoliohierarchicalSlice) -> FinanceportfoliohierarchicalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_slice_copy(s : FinanceportfoliohierarchicalSlice) -> FinanceportfoliohierarchicalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalSlice::copy(self : FinanceportfoliohierarchicalSlice) -> FinanceportfoliohierarchicalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_slice_fill(s : FinanceportfoliohierarchicalSlice, v : Double) -> FinanceportfoliohierarchicalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliohierarchicalSlice::fill(self : FinanceportfoliohierarchicalSlice, v : Double) -> FinanceportfoliohierarchicalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_hierarchical_slice_min(s : FinanceportfoliohierarchicalSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliohierarchicalSlice::min(self : FinanceportfoliohierarchicalSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_hierarchical_slice_max(s : FinanceportfoliohierarchicalSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliohierarchicalSlice::max(self : FinanceportfoliohierarchicalSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_hierarchical_slice_to_string(s : FinanceportfoliohierarchicalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliohierarchicalSlice::to_string(self : FinanceportfoliohierarchicalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

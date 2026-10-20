@@ -351,45 +351,45 @@ pub fn sort_compare_cycle_frame_make(size : Int) -> SortcomparecycleFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_frame_len(s : SortcomparecycleFrame) -> Int { s.size }
+pub fn SortcomparecycleFrame::len(self : SortcomparecycleFrame) -> Int { self.size }
 
-pub fn sort_compare_cycle_frame_get(s : SortcomparecycleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleFrame::get(self : SortcomparecycleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_frame_set(s : SortcomparecycleFrame, i : Int, v : Double) -> SortcomparecycleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleFrame::set(self : SortcomparecycleFrame, i : Int, v : Double) -> SortcomparecycleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_frame_sum(s : SortcomparecycleFrame) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleFrame::sum(self : SortcomparecycleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_frame_mean(s : SortcomparecycleFrame) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleFrame::mean(self : SortcomparecycleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_frame_scale(s : SortcomparecycleFrame, f : Double) -> SortcomparecycleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleFrame::scale(self : SortcomparecycleFrame, f : Double) -> SortcomparecycleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_frame_add(a : SortcomparecycleFrame, b : SortcomparecycleFrame) -> SortcomparecycleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleFrame::add(self : SortcomparecycleFrame, other : SortcomparecycleFrame) -> SortcomparecycleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_frame_copy(s : SortcomparecycleFrame) -> SortcomparecycleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleFrame::copy(self : SortcomparecycleFrame) -> SortcomparecycleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_frame_fill(s : SortcomparecycleFrame, v : Double) -> SortcomparecycleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleFrame::fill(self : SortcomparecycleFrame, v : Double) -> SortcomparecycleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_frame_min(s : SortcomparecycleFrame) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleFrame::min(self : SortcomparecycleFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_frame_max(s : SortcomparecycleFrame) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleFrame::max(self : SortcomparecycleFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_frame_to_string(s : SortcomparecycleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleFrame::to_string(self : SortcomparecycleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleTable {
@@ -402,45 +402,45 @@ pub fn sort_compare_cycle_table_make(size : Int) -> SortcomparecycleTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_table_len(s : SortcomparecycleTable) -> Int { s.size }
+pub fn SortcomparecycleTable::len(self : SortcomparecycleTable) -> Int { self.size }
 
-pub fn sort_compare_cycle_table_get(s : SortcomparecycleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleTable::get(self : SortcomparecycleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_table_set(s : SortcomparecycleTable, i : Int, v : Double) -> SortcomparecycleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleTable::set(self : SortcomparecycleTable, i : Int, v : Double) -> SortcomparecycleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_table_sum(s : SortcomparecycleTable) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleTable::sum(self : SortcomparecycleTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_table_mean(s : SortcomparecycleTable) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleTable::mean(self : SortcomparecycleTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_table_scale(s : SortcomparecycleTable, f : Double) -> SortcomparecycleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleTable::scale(self : SortcomparecycleTable, f : Double) -> SortcomparecycleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_table_add(a : SortcomparecycleTable, b : SortcomparecycleTable) -> SortcomparecycleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleTable::add(self : SortcomparecycleTable, other : SortcomparecycleTable) -> SortcomparecycleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_table_copy(s : SortcomparecycleTable) -> SortcomparecycleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleTable::copy(self : SortcomparecycleTable) -> SortcomparecycleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_table_fill(s : SortcomparecycleTable, v : Double) -> SortcomparecycleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleTable::fill(self : SortcomparecycleTable, v : Double) -> SortcomparecycleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_table_min(s : SortcomparecycleTable) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleTable::min(self : SortcomparecycleTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_table_max(s : SortcomparecycleTable) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleTable::max(self : SortcomparecycleTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_table_to_string(s : SortcomparecycleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleTable::to_string(self : SortcomparecycleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleGraphN {
@@ -453,45 +453,45 @@ pub fn sort_compare_cycle_graphn_make(size : Int) -> SortcomparecycleGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_graphn_len(s : SortcomparecycleGraphN) -> Int { s.size }
+pub fn SortcomparecycleGraphN::len(self : SortcomparecycleGraphN) -> Int { self.size }
 
-pub fn sort_compare_cycle_graphn_get(s : SortcomparecycleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleGraphN::get(self : SortcomparecycleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_graphn_set(s : SortcomparecycleGraphN, i : Int, v : Double) -> SortcomparecycleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleGraphN::set(self : SortcomparecycleGraphN, i : Int, v : Double) -> SortcomparecycleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_graphn_sum(s : SortcomparecycleGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleGraphN::sum(self : SortcomparecycleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_graphn_mean(s : SortcomparecycleGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleGraphN::mean(self : SortcomparecycleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_graphn_scale(s : SortcomparecycleGraphN, f : Double) -> SortcomparecycleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleGraphN::scale(self : SortcomparecycleGraphN, f : Double) -> SortcomparecycleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_graphn_add(a : SortcomparecycleGraphN, b : SortcomparecycleGraphN) -> SortcomparecycleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleGraphN::add(self : SortcomparecycleGraphN, other : SortcomparecycleGraphN) -> SortcomparecycleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_graphn_copy(s : SortcomparecycleGraphN) -> SortcomparecycleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleGraphN::copy(self : SortcomparecycleGraphN) -> SortcomparecycleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_graphn_fill(s : SortcomparecycleGraphN, v : Double) -> SortcomparecycleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleGraphN::fill(self : SortcomparecycleGraphN, v : Double) -> SortcomparecycleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_graphn_min(s : SortcomparecycleGraphN) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleGraphN::min(self : SortcomparecycleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_graphn_max(s : SortcomparecycleGraphN) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleGraphN::max(self : SortcomparecycleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_graphn_to_string(s : SortcomparecycleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleGraphN::to_string(self : SortcomparecycleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleNode {
@@ -504,45 +504,45 @@ pub fn sort_compare_cycle_node_make(size : Int) -> SortcomparecycleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_node_len(s : SortcomparecycleNode) -> Int { s.size }
+pub fn SortcomparecycleNode::len(self : SortcomparecycleNode) -> Int { self.size }
 
-pub fn sort_compare_cycle_node_get(s : SortcomparecycleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleNode::get(self : SortcomparecycleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_node_set(s : SortcomparecycleNode, i : Int, v : Double) -> SortcomparecycleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleNode::set(self : SortcomparecycleNode, i : Int, v : Double) -> SortcomparecycleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_node_sum(s : SortcomparecycleNode) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleNode::sum(self : SortcomparecycleNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_node_mean(s : SortcomparecycleNode) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleNode::mean(self : SortcomparecycleNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_node_scale(s : SortcomparecycleNode, f : Double) -> SortcomparecycleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleNode::scale(self : SortcomparecycleNode, f : Double) -> SortcomparecycleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_node_add(a : SortcomparecycleNode, b : SortcomparecycleNode) -> SortcomparecycleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleNode::add(self : SortcomparecycleNode, other : SortcomparecycleNode) -> SortcomparecycleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_node_copy(s : SortcomparecycleNode) -> SortcomparecycleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleNode::copy(self : SortcomparecycleNode) -> SortcomparecycleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_node_fill(s : SortcomparecycleNode, v : Double) -> SortcomparecycleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleNode::fill(self : SortcomparecycleNode, v : Double) -> SortcomparecycleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_node_min(s : SortcomparecycleNode) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleNode::min(self : SortcomparecycleNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_node_max(s : SortcomparecycleNode) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleNode::max(self : SortcomparecycleNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_node_to_string(s : SortcomparecycleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleNode::to_string(self : SortcomparecycleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleEdge {
@@ -555,45 +555,45 @@ pub fn sort_compare_cycle_edge_make(size : Int) -> SortcomparecycleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_edge_len(s : SortcomparecycleEdge) -> Int { s.size }
+pub fn SortcomparecycleEdge::len(self : SortcomparecycleEdge) -> Int { self.size }
 
-pub fn sort_compare_cycle_edge_get(s : SortcomparecycleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleEdge::get(self : SortcomparecycleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_edge_set(s : SortcomparecycleEdge, i : Int, v : Double) -> SortcomparecycleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleEdge::set(self : SortcomparecycleEdge, i : Int, v : Double) -> SortcomparecycleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_edge_sum(s : SortcomparecycleEdge) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleEdge::sum(self : SortcomparecycleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_edge_mean(s : SortcomparecycleEdge) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleEdge::mean(self : SortcomparecycleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_edge_scale(s : SortcomparecycleEdge, f : Double) -> SortcomparecycleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleEdge::scale(self : SortcomparecycleEdge, f : Double) -> SortcomparecycleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_edge_add(a : SortcomparecycleEdge, b : SortcomparecycleEdge) -> SortcomparecycleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleEdge::add(self : SortcomparecycleEdge, other : SortcomparecycleEdge) -> SortcomparecycleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_edge_copy(s : SortcomparecycleEdge) -> SortcomparecycleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleEdge::copy(self : SortcomparecycleEdge) -> SortcomparecycleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_edge_fill(s : SortcomparecycleEdge, v : Double) -> SortcomparecycleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleEdge::fill(self : SortcomparecycleEdge, v : Double) -> SortcomparecycleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_edge_min(s : SortcomparecycleEdge) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleEdge::min(self : SortcomparecycleEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_edge_max(s : SortcomparecycleEdge) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleEdge::max(self : SortcomparecycleEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_edge_to_string(s : SortcomparecycleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleEdge::to_string(self : SortcomparecycleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecyclePath {
@@ -606,45 +606,45 @@ pub fn sort_compare_cycle_path_make(size : Int) -> SortcomparecyclePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_path_len(s : SortcomparecyclePath) -> Int { s.size }
+pub fn SortcomparecyclePath::len(self : SortcomparecyclePath) -> Int { self.size }
 
-pub fn sort_compare_cycle_path_get(s : SortcomparecyclePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecyclePath::get(self : SortcomparecyclePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_path_set(s : SortcomparecyclePath, i : Int, v : Double) -> SortcomparecyclePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecyclePath::set(self : SortcomparecyclePath, i : Int, v : Double) -> SortcomparecyclePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_path_sum(s : SortcomparecyclePath) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecyclePath::sum(self : SortcomparecyclePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_path_mean(s : SortcomparecyclePath) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecyclePath::mean(self : SortcomparecyclePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_path_scale(s : SortcomparecyclePath, f : Double) -> SortcomparecyclePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecyclePath::scale(self : SortcomparecyclePath, f : Double) -> SortcomparecyclePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_path_add(a : SortcomparecyclePath, b : SortcomparecyclePath) -> SortcomparecyclePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecyclePath::add(self : SortcomparecyclePath, other : SortcomparecyclePath) -> SortcomparecyclePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_path_copy(s : SortcomparecyclePath) -> SortcomparecyclePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecyclePath::copy(self : SortcomparecyclePath) -> SortcomparecyclePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_path_fill(s : SortcomparecyclePath, v : Double) -> SortcomparecyclePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecyclePath::fill(self : SortcomparecyclePath, v : Double) -> SortcomparecyclePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_path_min(s : SortcomparecyclePath) -> Double { @_common.min(s.data) }
+pub fn SortcomparecyclePath::min(self : SortcomparecyclePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_path_max(s : SortcomparecyclePath) -> Double { @_common.max(s.data) }
+pub fn SortcomparecyclePath::max(self : SortcomparecyclePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_path_to_string(s : SortcomparecyclePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecyclePath::to_string(self : SortcomparecyclePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleCluster {
@@ -657,45 +657,45 @@ pub fn sort_compare_cycle_cluster_make(size : Int) -> SortcomparecycleCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_cluster_len(s : SortcomparecycleCluster) -> Int { s.size }
+pub fn SortcomparecycleCluster::len(self : SortcomparecycleCluster) -> Int { self.size }
 
-pub fn sort_compare_cycle_cluster_get(s : SortcomparecycleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleCluster::get(self : SortcomparecycleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_cluster_set(s : SortcomparecycleCluster, i : Int, v : Double) -> SortcomparecycleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleCluster::set(self : SortcomparecycleCluster, i : Int, v : Double) -> SortcomparecycleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cluster_sum(s : SortcomparecycleCluster) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleCluster::sum(self : SortcomparecycleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_cluster_mean(s : SortcomparecycleCluster) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleCluster::mean(self : SortcomparecycleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_cluster_scale(s : SortcomparecycleCluster, f : Double) -> SortcomparecycleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleCluster::scale(self : SortcomparecycleCluster, f : Double) -> SortcomparecycleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cluster_add(a : SortcomparecycleCluster, b : SortcomparecycleCluster) -> SortcomparecycleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleCluster::add(self : SortcomparecycleCluster, other : SortcomparecycleCluster) -> SortcomparecycleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cluster_copy(s : SortcomparecycleCluster) -> SortcomparecycleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleCluster::copy(self : SortcomparecycleCluster) -> SortcomparecycleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cluster_fill(s : SortcomparecycleCluster, v : Double) -> SortcomparecycleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleCluster::fill(self : SortcomparecycleCluster, v : Double) -> SortcomparecycleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cluster_min(s : SortcomparecycleCluster) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleCluster::min(self : SortcomparecycleCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_cluster_max(s : SortcomparecycleCluster) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleCluster::max(self : SortcomparecycleCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_cluster_to_string(s : SortcomparecycleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleCluster::to_string(self : SortcomparecycleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleModel {
@@ -708,45 +708,45 @@ pub fn sort_compare_cycle_model_make(size : Int) -> SortcomparecycleModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_model_len(s : SortcomparecycleModel) -> Int { s.size }
+pub fn SortcomparecycleModel::len(self : SortcomparecycleModel) -> Int { self.size }
 
-pub fn sort_compare_cycle_model_get(s : SortcomparecycleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleModel::get(self : SortcomparecycleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_model_set(s : SortcomparecycleModel, i : Int, v : Double) -> SortcomparecycleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleModel::set(self : SortcomparecycleModel, i : Int, v : Double) -> SortcomparecycleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_model_sum(s : SortcomparecycleModel) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleModel::sum(self : SortcomparecycleModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_model_mean(s : SortcomparecycleModel) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleModel::mean(self : SortcomparecycleModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_model_scale(s : SortcomparecycleModel, f : Double) -> SortcomparecycleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleModel::scale(self : SortcomparecycleModel, f : Double) -> SortcomparecycleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_model_add(a : SortcomparecycleModel, b : SortcomparecycleModel) -> SortcomparecycleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleModel::add(self : SortcomparecycleModel, other : SortcomparecycleModel) -> SortcomparecycleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_model_copy(s : SortcomparecycleModel) -> SortcomparecycleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleModel::copy(self : SortcomparecycleModel) -> SortcomparecycleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_model_fill(s : SortcomparecycleModel, v : Double) -> SortcomparecycleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleModel::fill(self : SortcomparecycleModel, v : Double) -> SortcomparecycleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_model_min(s : SortcomparecycleModel) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleModel::min(self : SortcomparecycleModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_model_max(s : SortcomparecycleModel) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleModel::max(self : SortcomparecycleModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_model_to_string(s : SortcomparecycleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleModel::to_string(self : SortcomparecycleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleLayer {
@@ -759,45 +759,45 @@ pub fn sort_compare_cycle_layer_make(size : Int) -> SortcomparecycleLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_layer_len(s : SortcomparecycleLayer) -> Int { s.size }
+pub fn SortcomparecycleLayer::len(self : SortcomparecycleLayer) -> Int { self.size }
 
-pub fn sort_compare_cycle_layer_get(s : SortcomparecycleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleLayer::get(self : SortcomparecycleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_layer_set(s : SortcomparecycleLayer, i : Int, v : Double) -> SortcomparecycleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleLayer::set(self : SortcomparecycleLayer, i : Int, v : Double) -> SortcomparecycleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_layer_sum(s : SortcomparecycleLayer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleLayer::sum(self : SortcomparecycleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_layer_mean(s : SortcomparecycleLayer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleLayer::mean(self : SortcomparecycleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_layer_scale(s : SortcomparecycleLayer, f : Double) -> SortcomparecycleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleLayer::scale(self : SortcomparecycleLayer, f : Double) -> SortcomparecycleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_layer_add(a : SortcomparecycleLayer, b : SortcomparecycleLayer) -> SortcomparecycleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleLayer::add(self : SortcomparecycleLayer, other : SortcomparecycleLayer) -> SortcomparecycleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_layer_copy(s : SortcomparecycleLayer) -> SortcomparecycleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleLayer::copy(self : SortcomparecycleLayer) -> SortcomparecycleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_layer_fill(s : SortcomparecycleLayer, v : Double) -> SortcomparecycleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleLayer::fill(self : SortcomparecycleLayer, v : Double) -> SortcomparecycleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_layer_min(s : SortcomparecycleLayer) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleLayer::min(self : SortcomparecycleLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_layer_max(s : SortcomparecycleLayer) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleLayer::max(self : SortcomparecycleLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_layer_to_string(s : SortcomparecycleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleLayer::to_string(self : SortcomparecycleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleBuffer {
@@ -810,45 +810,45 @@ pub fn sort_compare_cycle_buffer_make(size : Int) -> SortcomparecycleBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_buffer_len(s : SortcomparecycleBuffer) -> Int { s.size }
+pub fn SortcomparecycleBuffer::len(self : SortcomparecycleBuffer) -> Int { self.size }
 
-pub fn sort_compare_cycle_buffer_get(s : SortcomparecycleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleBuffer::get(self : SortcomparecycleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_buffer_set(s : SortcomparecycleBuffer, i : Int, v : Double) -> SortcomparecycleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleBuffer::set(self : SortcomparecycleBuffer, i : Int, v : Double) -> SortcomparecycleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_buffer_sum(s : SortcomparecycleBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleBuffer::sum(self : SortcomparecycleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_buffer_mean(s : SortcomparecycleBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleBuffer::mean(self : SortcomparecycleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_buffer_scale(s : SortcomparecycleBuffer, f : Double) -> SortcomparecycleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleBuffer::scale(self : SortcomparecycleBuffer, f : Double) -> SortcomparecycleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_buffer_add(a : SortcomparecycleBuffer, b : SortcomparecycleBuffer) -> SortcomparecycleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleBuffer::add(self : SortcomparecycleBuffer, other : SortcomparecycleBuffer) -> SortcomparecycleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_buffer_copy(s : SortcomparecycleBuffer) -> SortcomparecycleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleBuffer::copy(self : SortcomparecycleBuffer) -> SortcomparecycleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_buffer_fill(s : SortcomparecycleBuffer, v : Double) -> SortcomparecycleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleBuffer::fill(self : SortcomparecycleBuffer, v : Double) -> SortcomparecycleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_buffer_min(s : SortcomparecycleBuffer) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleBuffer::min(self : SortcomparecycleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_buffer_max(s : SortcomparecycleBuffer) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleBuffer::max(self : SortcomparecycleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_buffer_to_string(s : SortcomparecycleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleBuffer::to_string(self : SortcomparecycleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleCursor {
@@ -861,45 +861,45 @@ pub fn sort_compare_cycle_cursor_make(size : Int) -> SortcomparecycleCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_cursor_len(s : SortcomparecycleCursor) -> Int { s.size }
+pub fn SortcomparecycleCursor::len(self : SortcomparecycleCursor) -> Int { self.size }
 
-pub fn sort_compare_cycle_cursor_get(s : SortcomparecycleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleCursor::get(self : SortcomparecycleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_cursor_set(s : SortcomparecycleCursor, i : Int, v : Double) -> SortcomparecycleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleCursor::set(self : SortcomparecycleCursor, i : Int, v : Double) -> SortcomparecycleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cursor_sum(s : SortcomparecycleCursor) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleCursor::sum(self : SortcomparecycleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_cursor_mean(s : SortcomparecycleCursor) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleCursor::mean(self : SortcomparecycleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_cursor_scale(s : SortcomparecycleCursor, f : Double) -> SortcomparecycleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleCursor::scale(self : SortcomparecycleCursor, f : Double) -> SortcomparecycleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cursor_add(a : SortcomparecycleCursor, b : SortcomparecycleCursor) -> SortcomparecycleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleCursor::add(self : SortcomparecycleCursor, other : SortcomparecycleCursor) -> SortcomparecycleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cursor_copy(s : SortcomparecycleCursor) -> SortcomparecycleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleCursor::copy(self : SortcomparecycleCursor) -> SortcomparecycleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cursor_fill(s : SortcomparecycleCursor, v : Double) -> SortcomparecycleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleCursor::fill(self : SortcomparecycleCursor, v : Double) -> SortcomparecycleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_cursor_min(s : SortcomparecycleCursor) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleCursor::min(self : SortcomparecycleCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_cursor_max(s : SortcomparecycleCursor) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleCursor::max(self : SortcomparecycleCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_cursor_to_string(s : SortcomparecycleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleCursor::to_string(self : SortcomparecycleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleView {
@@ -912,45 +912,45 @@ pub fn sort_compare_cycle_view_make(size : Int) -> SortcomparecycleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_view_len(s : SortcomparecycleView) -> Int { s.size }
+pub fn SortcomparecycleView::len(self : SortcomparecycleView) -> Int { self.size }
 
-pub fn sort_compare_cycle_view_get(s : SortcomparecycleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleView::get(self : SortcomparecycleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_view_set(s : SortcomparecycleView, i : Int, v : Double) -> SortcomparecycleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleView::set(self : SortcomparecycleView, i : Int, v : Double) -> SortcomparecycleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_view_sum(s : SortcomparecycleView) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleView::sum(self : SortcomparecycleView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_view_mean(s : SortcomparecycleView) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleView::mean(self : SortcomparecycleView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_view_scale(s : SortcomparecycleView, f : Double) -> SortcomparecycleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleView::scale(self : SortcomparecycleView, f : Double) -> SortcomparecycleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_view_add(a : SortcomparecycleView, b : SortcomparecycleView) -> SortcomparecycleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleView::add(self : SortcomparecycleView, other : SortcomparecycleView) -> SortcomparecycleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_view_copy(s : SortcomparecycleView) -> SortcomparecycleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleView::copy(self : SortcomparecycleView) -> SortcomparecycleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_view_fill(s : SortcomparecycleView, v : Double) -> SortcomparecycleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleView::fill(self : SortcomparecycleView, v : Double) -> SortcomparecycleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_view_min(s : SortcomparecycleView) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleView::min(self : SortcomparecycleView) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_view_max(s : SortcomparecycleView) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleView::max(self : SortcomparecycleView) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_view_to_string(s : SortcomparecycleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleView::to_string(self : SortcomparecycleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleRange {
@@ -963,45 +963,45 @@ pub fn sort_compare_cycle_range_make(size : Int) -> SortcomparecycleRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_range_len(s : SortcomparecycleRange) -> Int { s.size }
+pub fn SortcomparecycleRange::len(self : SortcomparecycleRange) -> Int { self.size }
 
-pub fn sort_compare_cycle_range_get(s : SortcomparecycleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleRange::get(self : SortcomparecycleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_range_set(s : SortcomparecycleRange, i : Int, v : Double) -> SortcomparecycleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleRange::set(self : SortcomparecycleRange, i : Int, v : Double) -> SortcomparecycleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_range_sum(s : SortcomparecycleRange) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleRange::sum(self : SortcomparecycleRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_range_mean(s : SortcomparecycleRange) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleRange::mean(self : SortcomparecycleRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_range_scale(s : SortcomparecycleRange, f : Double) -> SortcomparecycleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleRange::scale(self : SortcomparecycleRange, f : Double) -> SortcomparecycleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_range_add(a : SortcomparecycleRange, b : SortcomparecycleRange) -> SortcomparecycleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleRange::add(self : SortcomparecycleRange, other : SortcomparecycleRange) -> SortcomparecycleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_range_copy(s : SortcomparecycleRange) -> SortcomparecycleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleRange::copy(self : SortcomparecycleRange) -> SortcomparecycleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_range_fill(s : SortcomparecycleRange, v : Double) -> SortcomparecycleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleRange::fill(self : SortcomparecycleRange, v : Double) -> SortcomparecycleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_range_min(s : SortcomparecycleRange) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleRange::min(self : SortcomparecycleRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_range_max(s : SortcomparecycleRange) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleRange::max(self : SortcomparecycleRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_range_to_string(s : SortcomparecycleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleRange::to_string(self : SortcomparecycleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparecycleSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_compare_cycle_slice_make(size : Int) -> SortcomparecycleSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_cycle_slice_len(s : SortcomparecycleSlice) -> Int { s.size }
+pub fn SortcomparecycleSlice::len(self : SortcomparecycleSlice) -> Int { self.size }
 
-pub fn sort_compare_cycle_slice_get(s : SortcomparecycleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparecycleSlice::get(self : SortcomparecycleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_cycle_slice_set(s : SortcomparecycleSlice, i : Int, v : Double) -> SortcomparecycleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparecycleSlice::set(self : SortcomparecycleSlice, i : Int, v : Double) -> SortcomparecycleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_slice_sum(s : SortcomparecycleSlice) -> Double { @_common.sum(s.data) }
+pub fn SortcomparecycleSlice::sum(self : SortcomparecycleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_cycle_slice_mean(s : SortcomparecycleSlice) -> Double { @_common.mean(s.data) }
+pub fn SortcomparecycleSlice::mean(self : SortcomparecycleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_cycle_slice_scale(s : SortcomparecycleSlice, f : Double) -> SortcomparecycleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparecycleSlice::scale(self : SortcomparecycleSlice, f : Double) -> SortcomparecycleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_slice_add(a : SortcomparecycleSlice, b : SortcomparecycleSlice) -> SortcomparecycleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparecycleSlice::add(self : SortcomparecycleSlice, other : SortcomparecycleSlice) -> SortcomparecycleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_slice_copy(s : SortcomparecycleSlice) -> SortcomparecycleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparecycleSlice::copy(self : SortcomparecycleSlice) -> SortcomparecycleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_slice_fill(s : SortcomparecycleSlice, v : Double) -> SortcomparecycleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparecycleSlice::fill(self : SortcomparecycleSlice, v : Double) -> SortcomparecycleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_cycle_slice_min(s : SortcomparecycleSlice) -> Double { @_common.min(s.data) }
+pub fn SortcomparecycleSlice::min(self : SortcomparecycleSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_cycle_slice_max(s : SortcomparecycleSlice) -> Double { @_common.max(s.data) }
+pub fn SortcomparecycleSlice::max(self : SortcomparecycleSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_cycle_slice_to_string(s : SortcomparecycleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparecycleSlice::to_string(self : SortcomparecycleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn math_approx_pade_frame_make(size : Int) -> MathapproxpadeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_frame_len(s : MathapproxpadeFrame) -> Int { s.size }
+pub fn MathapproxpadeFrame::len(self : MathapproxpadeFrame) -> Int { self.size }
 
-pub fn math_approx_pade_frame_get(s : MathapproxpadeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeFrame::get(self : MathapproxpadeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_frame_set(s : MathapproxpadeFrame, i : Int, v : Double) -> MathapproxpadeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeFrame::set(self : MathapproxpadeFrame, i : Int, v : Double) -> MathapproxpadeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_frame_sum(s : MathapproxpadeFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeFrame::sum(self : MathapproxpadeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_frame_mean(s : MathapproxpadeFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeFrame::mean(self : MathapproxpadeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_frame_scale(s : MathapproxpadeFrame, f : Double) -> MathapproxpadeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeFrame::scale(self : MathapproxpadeFrame, f : Double) -> MathapproxpadeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_frame_add(a : MathapproxpadeFrame, b : MathapproxpadeFrame) -> MathapproxpadeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeFrame::add(self : MathapproxpadeFrame, other : MathapproxpadeFrame) -> MathapproxpadeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_frame_copy(s : MathapproxpadeFrame) -> MathapproxpadeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeFrame::copy(self : MathapproxpadeFrame) -> MathapproxpadeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_frame_fill(s : MathapproxpadeFrame, v : Double) -> MathapproxpadeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeFrame::fill(self : MathapproxpadeFrame, v : Double) -> MathapproxpadeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_frame_min(s : MathapproxpadeFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeFrame::min(self : MathapproxpadeFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_frame_max(s : MathapproxpadeFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeFrame::max(self : MathapproxpadeFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_frame_to_string(s : MathapproxpadeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeFrame::to_string(self : MathapproxpadeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeTable {
@@ -402,45 +402,45 @@ pub fn math_approx_pade_table_make(size : Int) -> MathapproxpadeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_table_len(s : MathapproxpadeTable) -> Int { s.size }
+pub fn MathapproxpadeTable::len(self : MathapproxpadeTable) -> Int { self.size }
 
-pub fn math_approx_pade_table_get(s : MathapproxpadeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeTable::get(self : MathapproxpadeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_table_set(s : MathapproxpadeTable, i : Int, v : Double) -> MathapproxpadeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeTable::set(self : MathapproxpadeTable, i : Int, v : Double) -> MathapproxpadeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_table_sum(s : MathapproxpadeTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeTable::sum(self : MathapproxpadeTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_table_mean(s : MathapproxpadeTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeTable::mean(self : MathapproxpadeTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_table_scale(s : MathapproxpadeTable, f : Double) -> MathapproxpadeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeTable::scale(self : MathapproxpadeTable, f : Double) -> MathapproxpadeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_table_add(a : MathapproxpadeTable, b : MathapproxpadeTable) -> MathapproxpadeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeTable::add(self : MathapproxpadeTable, other : MathapproxpadeTable) -> MathapproxpadeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_table_copy(s : MathapproxpadeTable) -> MathapproxpadeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeTable::copy(self : MathapproxpadeTable) -> MathapproxpadeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_table_fill(s : MathapproxpadeTable, v : Double) -> MathapproxpadeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeTable::fill(self : MathapproxpadeTable, v : Double) -> MathapproxpadeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_table_min(s : MathapproxpadeTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeTable::min(self : MathapproxpadeTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_table_max(s : MathapproxpadeTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeTable::max(self : MathapproxpadeTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_table_to_string(s : MathapproxpadeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeTable::to_string(self : MathapproxpadeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_pade_graphn_make(size : Int) -> MathapproxpadeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_graphn_len(s : MathapproxpadeGraphN) -> Int { s.size }
+pub fn MathapproxpadeGraphN::len(self : MathapproxpadeGraphN) -> Int { self.size }
 
-pub fn math_approx_pade_graphn_get(s : MathapproxpadeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeGraphN::get(self : MathapproxpadeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_graphn_set(s : MathapproxpadeGraphN, i : Int, v : Double) -> MathapproxpadeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeGraphN::set(self : MathapproxpadeGraphN, i : Int, v : Double) -> MathapproxpadeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_graphn_sum(s : MathapproxpadeGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeGraphN::sum(self : MathapproxpadeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_graphn_mean(s : MathapproxpadeGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeGraphN::mean(self : MathapproxpadeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_graphn_scale(s : MathapproxpadeGraphN, f : Double) -> MathapproxpadeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeGraphN::scale(self : MathapproxpadeGraphN, f : Double) -> MathapproxpadeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_graphn_add(a : MathapproxpadeGraphN, b : MathapproxpadeGraphN) -> MathapproxpadeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeGraphN::add(self : MathapproxpadeGraphN, other : MathapproxpadeGraphN) -> MathapproxpadeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_graphn_copy(s : MathapproxpadeGraphN) -> MathapproxpadeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeGraphN::copy(self : MathapproxpadeGraphN) -> MathapproxpadeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_graphn_fill(s : MathapproxpadeGraphN, v : Double) -> MathapproxpadeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeGraphN::fill(self : MathapproxpadeGraphN, v : Double) -> MathapproxpadeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_graphn_min(s : MathapproxpadeGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeGraphN::min(self : MathapproxpadeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_graphn_max(s : MathapproxpadeGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeGraphN::max(self : MathapproxpadeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_graphn_to_string(s : MathapproxpadeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeGraphN::to_string(self : MathapproxpadeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeNode {
@@ -504,45 +504,45 @@ pub fn math_approx_pade_node_make(size : Int) -> MathapproxpadeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_node_len(s : MathapproxpadeNode) -> Int { s.size }
+pub fn MathapproxpadeNode::len(self : MathapproxpadeNode) -> Int { self.size }
 
-pub fn math_approx_pade_node_get(s : MathapproxpadeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeNode::get(self : MathapproxpadeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_node_set(s : MathapproxpadeNode, i : Int, v : Double) -> MathapproxpadeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeNode::set(self : MathapproxpadeNode, i : Int, v : Double) -> MathapproxpadeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_node_sum(s : MathapproxpadeNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeNode::sum(self : MathapproxpadeNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_node_mean(s : MathapproxpadeNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeNode::mean(self : MathapproxpadeNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_node_scale(s : MathapproxpadeNode, f : Double) -> MathapproxpadeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeNode::scale(self : MathapproxpadeNode, f : Double) -> MathapproxpadeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_node_add(a : MathapproxpadeNode, b : MathapproxpadeNode) -> MathapproxpadeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeNode::add(self : MathapproxpadeNode, other : MathapproxpadeNode) -> MathapproxpadeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_node_copy(s : MathapproxpadeNode) -> MathapproxpadeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeNode::copy(self : MathapproxpadeNode) -> MathapproxpadeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_node_fill(s : MathapproxpadeNode, v : Double) -> MathapproxpadeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeNode::fill(self : MathapproxpadeNode, v : Double) -> MathapproxpadeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_node_min(s : MathapproxpadeNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeNode::min(self : MathapproxpadeNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_node_max(s : MathapproxpadeNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeNode::max(self : MathapproxpadeNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_node_to_string(s : MathapproxpadeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeNode::to_string(self : MathapproxpadeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_pade_edge_make(size : Int) -> MathapproxpadeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_edge_len(s : MathapproxpadeEdge) -> Int { s.size }
+pub fn MathapproxpadeEdge::len(self : MathapproxpadeEdge) -> Int { self.size }
 
-pub fn math_approx_pade_edge_get(s : MathapproxpadeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeEdge::get(self : MathapproxpadeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_edge_set(s : MathapproxpadeEdge, i : Int, v : Double) -> MathapproxpadeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeEdge::set(self : MathapproxpadeEdge, i : Int, v : Double) -> MathapproxpadeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_edge_sum(s : MathapproxpadeEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeEdge::sum(self : MathapproxpadeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_edge_mean(s : MathapproxpadeEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeEdge::mean(self : MathapproxpadeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_edge_scale(s : MathapproxpadeEdge, f : Double) -> MathapproxpadeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeEdge::scale(self : MathapproxpadeEdge, f : Double) -> MathapproxpadeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_edge_add(a : MathapproxpadeEdge, b : MathapproxpadeEdge) -> MathapproxpadeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeEdge::add(self : MathapproxpadeEdge, other : MathapproxpadeEdge) -> MathapproxpadeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_edge_copy(s : MathapproxpadeEdge) -> MathapproxpadeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeEdge::copy(self : MathapproxpadeEdge) -> MathapproxpadeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_edge_fill(s : MathapproxpadeEdge, v : Double) -> MathapproxpadeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeEdge::fill(self : MathapproxpadeEdge, v : Double) -> MathapproxpadeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_edge_min(s : MathapproxpadeEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeEdge::min(self : MathapproxpadeEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_edge_max(s : MathapproxpadeEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeEdge::max(self : MathapproxpadeEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_edge_to_string(s : MathapproxpadeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeEdge::to_string(self : MathapproxpadeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadePath {
@@ -606,45 +606,45 @@ pub fn math_approx_pade_path_make(size : Int) -> MathapproxpadePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_path_len(s : MathapproxpadePath) -> Int { s.size }
+pub fn MathapproxpadePath::len(self : MathapproxpadePath) -> Int { self.size }
 
-pub fn math_approx_pade_path_get(s : MathapproxpadePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadePath::get(self : MathapproxpadePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_path_set(s : MathapproxpadePath, i : Int, v : Double) -> MathapproxpadePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadePath::set(self : MathapproxpadePath, i : Int, v : Double) -> MathapproxpadePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_path_sum(s : MathapproxpadePath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadePath::sum(self : MathapproxpadePath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_path_mean(s : MathapproxpadePath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadePath::mean(self : MathapproxpadePath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_path_scale(s : MathapproxpadePath, f : Double) -> MathapproxpadePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadePath::scale(self : MathapproxpadePath, f : Double) -> MathapproxpadePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_path_add(a : MathapproxpadePath, b : MathapproxpadePath) -> MathapproxpadePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadePath::add(self : MathapproxpadePath, other : MathapproxpadePath) -> MathapproxpadePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_path_copy(s : MathapproxpadePath) -> MathapproxpadePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadePath::copy(self : MathapproxpadePath) -> MathapproxpadePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_path_fill(s : MathapproxpadePath, v : Double) -> MathapproxpadePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadePath::fill(self : MathapproxpadePath, v : Double) -> MathapproxpadePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_path_min(s : MathapproxpadePath) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadePath::min(self : MathapproxpadePath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_path_max(s : MathapproxpadePath) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadePath::max(self : MathapproxpadePath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_path_to_string(s : MathapproxpadePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadePath::to_string(self : MathapproxpadePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_pade_cluster_make(size : Int) -> MathapproxpadeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_cluster_len(s : MathapproxpadeCluster) -> Int { s.size }
+pub fn MathapproxpadeCluster::len(self : MathapproxpadeCluster) -> Int { self.size }
 
-pub fn math_approx_pade_cluster_get(s : MathapproxpadeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeCluster::get(self : MathapproxpadeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_cluster_set(s : MathapproxpadeCluster, i : Int, v : Double) -> MathapproxpadeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeCluster::set(self : MathapproxpadeCluster, i : Int, v : Double) -> MathapproxpadeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cluster_sum(s : MathapproxpadeCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeCluster::sum(self : MathapproxpadeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_cluster_mean(s : MathapproxpadeCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeCluster::mean(self : MathapproxpadeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_cluster_scale(s : MathapproxpadeCluster, f : Double) -> MathapproxpadeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeCluster::scale(self : MathapproxpadeCluster, f : Double) -> MathapproxpadeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cluster_add(a : MathapproxpadeCluster, b : MathapproxpadeCluster) -> MathapproxpadeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeCluster::add(self : MathapproxpadeCluster, other : MathapproxpadeCluster) -> MathapproxpadeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_cluster_copy(s : MathapproxpadeCluster) -> MathapproxpadeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeCluster::copy(self : MathapproxpadeCluster) -> MathapproxpadeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cluster_fill(s : MathapproxpadeCluster, v : Double) -> MathapproxpadeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeCluster::fill(self : MathapproxpadeCluster, v : Double) -> MathapproxpadeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cluster_min(s : MathapproxpadeCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeCluster::min(self : MathapproxpadeCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_cluster_max(s : MathapproxpadeCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeCluster::max(self : MathapproxpadeCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_cluster_to_string(s : MathapproxpadeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeCluster::to_string(self : MathapproxpadeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeModel {
@@ -708,45 +708,45 @@ pub fn math_approx_pade_model_make(size : Int) -> MathapproxpadeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_model_len(s : MathapproxpadeModel) -> Int { s.size }
+pub fn MathapproxpadeModel::len(self : MathapproxpadeModel) -> Int { self.size }
 
-pub fn math_approx_pade_model_get(s : MathapproxpadeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeModel::get(self : MathapproxpadeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_model_set(s : MathapproxpadeModel, i : Int, v : Double) -> MathapproxpadeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeModel::set(self : MathapproxpadeModel, i : Int, v : Double) -> MathapproxpadeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_model_sum(s : MathapproxpadeModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeModel::sum(self : MathapproxpadeModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_model_mean(s : MathapproxpadeModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeModel::mean(self : MathapproxpadeModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_model_scale(s : MathapproxpadeModel, f : Double) -> MathapproxpadeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeModel::scale(self : MathapproxpadeModel, f : Double) -> MathapproxpadeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_model_add(a : MathapproxpadeModel, b : MathapproxpadeModel) -> MathapproxpadeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeModel::add(self : MathapproxpadeModel, other : MathapproxpadeModel) -> MathapproxpadeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_model_copy(s : MathapproxpadeModel) -> MathapproxpadeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeModel::copy(self : MathapproxpadeModel) -> MathapproxpadeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_model_fill(s : MathapproxpadeModel, v : Double) -> MathapproxpadeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeModel::fill(self : MathapproxpadeModel, v : Double) -> MathapproxpadeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_model_min(s : MathapproxpadeModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeModel::min(self : MathapproxpadeModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_model_max(s : MathapproxpadeModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeModel::max(self : MathapproxpadeModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_model_to_string(s : MathapproxpadeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeModel::to_string(self : MathapproxpadeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_pade_layer_make(size : Int) -> MathapproxpadeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_layer_len(s : MathapproxpadeLayer) -> Int { s.size }
+pub fn MathapproxpadeLayer::len(self : MathapproxpadeLayer) -> Int { self.size }
 
-pub fn math_approx_pade_layer_get(s : MathapproxpadeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeLayer::get(self : MathapproxpadeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_layer_set(s : MathapproxpadeLayer, i : Int, v : Double) -> MathapproxpadeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeLayer::set(self : MathapproxpadeLayer, i : Int, v : Double) -> MathapproxpadeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_layer_sum(s : MathapproxpadeLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeLayer::sum(self : MathapproxpadeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_layer_mean(s : MathapproxpadeLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeLayer::mean(self : MathapproxpadeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_layer_scale(s : MathapproxpadeLayer, f : Double) -> MathapproxpadeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeLayer::scale(self : MathapproxpadeLayer, f : Double) -> MathapproxpadeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_layer_add(a : MathapproxpadeLayer, b : MathapproxpadeLayer) -> MathapproxpadeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeLayer::add(self : MathapproxpadeLayer, other : MathapproxpadeLayer) -> MathapproxpadeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_layer_copy(s : MathapproxpadeLayer) -> MathapproxpadeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeLayer::copy(self : MathapproxpadeLayer) -> MathapproxpadeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_layer_fill(s : MathapproxpadeLayer, v : Double) -> MathapproxpadeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeLayer::fill(self : MathapproxpadeLayer, v : Double) -> MathapproxpadeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_layer_min(s : MathapproxpadeLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeLayer::min(self : MathapproxpadeLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_layer_max(s : MathapproxpadeLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeLayer::max(self : MathapproxpadeLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_layer_to_string(s : MathapproxpadeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeLayer::to_string(self : MathapproxpadeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_pade_buffer_make(size : Int) -> MathapproxpadeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_buffer_len(s : MathapproxpadeBuffer) -> Int { s.size }
+pub fn MathapproxpadeBuffer::len(self : MathapproxpadeBuffer) -> Int { self.size }
 
-pub fn math_approx_pade_buffer_get(s : MathapproxpadeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeBuffer::get(self : MathapproxpadeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_buffer_set(s : MathapproxpadeBuffer, i : Int, v : Double) -> MathapproxpadeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeBuffer::set(self : MathapproxpadeBuffer, i : Int, v : Double) -> MathapproxpadeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_buffer_sum(s : MathapproxpadeBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeBuffer::sum(self : MathapproxpadeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_buffer_mean(s : MathapproxpadeBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeBuffer::mean(self : MathapproxpadeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_buffer_scale(s : MathapproxpadeBuffer, f : Double) -> MathapproxpadeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeBuffer::scale(self : MathapproxpadeBuffer, f : Double) -> MathapproxpadeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_buffer_add(a : MathapproxpadeBuffer, b : MathapproxpadeBuffer) -> MathapproxpadeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeBuffer::add(self : MathapproxpadeBuffer, other : MathapproxpadeBuffer) -> MathapproxpadeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_buffer_copy(s : MathapproxpadeBuffer) -> MathapproxpadeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeBuffer::copy(self : MathapproxpadeBuffer) -> MathapproxpadeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_buffer_fill(s : MathapproxpadeBuffer, v : Double) -> MathapproxpadeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeBuffer::fill(self : MathapproxpadeBuffer, v : Double) -> MathapproxpadeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_buffer_min(s : MathapproxpadeBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeBuffer::min(self : MathapproxpadeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_buffer_max(s : MathapproxpadeBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeBuffer::max(self : MathapproxpadeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_buffer_to_string(s : MathapproxpadeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeBuffer::to_string(self : MathapproxpadeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_pade_cursor_make(size : Int) -> MathapproxpadeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_cursor_len(s : MathapproxpadeCursor) -> Int { s.size }
+pub fn MathapproxpadeCursor::len(self : MathapproxpadeCursor) -> Int { self.size }
 
-pub fn math_approx_pade_cursor_get(s : MathapproxpadeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeCursor::get(self : MathapproxpadeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_cursor_set(s : MathapproxpadeCursor, i : Int, v : Double) -> MathapproxpadeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeCursor::set(self : MathapproxpadeCursor, i : Int, v : Double) -> MathapproxpadeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cursor_sum(s : MathapproxpadeCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeCursor::sum(self : MathapproxpadeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_cursor_mean(s : MathapproxpadeCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeCursor::mean(self : MathapproxpadeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_cursor_scale(s : MathapproxpadeCursor, f : Double) -> MathapproxpadeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeCursor::scale(self : MathapproxpadeCursor, f : Double) -> MathapproxpadeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cursor_add(a : MathapproxpadeCursor, b : MathapproxpadeCursor) -> MathapproxpadeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeCursor::add(self : MathapproxpadeCursor, other : MathapproxpadeCursor) -> MathapproxpadeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_cursor_copy(s : MathapproxpadeCursor) -> MathapproxpadeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeCursor::copy(self : MathapproxpadeCursor) -> MathapproxpadeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cursor_fill(s : MathapproxpadeCursor, v : Double) -> MathapproxpadeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeCursor::fill(self : MathapproxpadeCursor, v : Double) -> MathapproxpadeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_cursor_min(s : MathapproxpadeCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeCursor::min(self : MathapproxpadeCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_cursor_max(s : MathapproxpadeCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeCursor::max(self : MathapproxpadeCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_cursor_to_string(s : MathapproxpadeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeCursor::to_string(self : MathapproxpadeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeView {
@@ -912,45 +912,45 @@ pub fn math_approx_pade_view_make(size : Int) -> MathapproxpadeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_view_len(s : MathapproxpadeView) -> Int { s.size }
+pub fn MathapproxpadeView::len(self : MathapproxpadeView) -> Int { self.size }
 
-pub fn math_approx_pade_view_get(s : MathapproxpadeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeView::get(self : MathapproxpadeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_view_set(s : MathapproxpadeView, i : Int, v : Double) -> MathapproxpadeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeView::set(self : MathapproxpadeView, i : Int, v : Double) -> MathapproxpadeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_view_sum(s : MathapproxpadeView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeView::sum(self : MathapproxpadeView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_view_mean(s : MathapproxpadeView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeView::mean(self : MathapproxpadeView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_view_scale(s : MathapproxpadeView, f : Double) -> MathapproxpadeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeView::scale(self : MathapproxpadeView, f : Double) -> MathapproxpadeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_view_add(a : MathapproxpadeView, b : MathapproxpadeView) -> MathapproxpadeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeView::add(self : MathapproxpadeView, other : MathapproxpadeView) -> MathapproxpadeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_view_copy(s : MathapproxpadeView) -> MathapproxpadeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeView::copy(self : MathapproxpadeView) -> MathapproxpadeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_view_fill(s : MathapproxpadeView, v : Double) -> MathapproxpadeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeView::fill(self : MathapproxpadeView, v : Double) -> MathapproxpadeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_view_min(s : MathapproxpadeView) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeView::min(self : MathapproxpadeView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_view_max(s : MathapproxpadeView) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeView::max(self : MathapproxpadeView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_view_to_string(s : MathapproxpadeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeView::to_string(self : MathapproxpadeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeRange {
@@ -963,45 +963,45 @@ pub fn math_approx_pade_range_make(size : Int) -> MathapproxpadeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_range_len(s : MathapproxpadeRange) -> Int { s.size }
+pub fn MathapproxpadeRange::len(self : MathapproxpadeRange) -> Int { self.size }
 
-pub fn math_approx_pade_range_get(s : MathapproxpadeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeRange::get(self : MathapproxpadeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_range_set(s : MathapproxpadeRange, i : Int, v : Double) -> MathapproxpadeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeRange::set(self : MathapproxpadeRange, i : Int, v : Double) -> MathapproxpadeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_range_sum(s : MathapproxpadeRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeRange::sum(self : MathapproxpadeRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_range_mean(s : MathapproxpadeRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeRange::mean(self : MathapproxpadeRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_range_scale(s : MathapproxpadeRange, f : Double) -> MathapproxpadeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeRange::scale(self : MathapproxpadeRange, f : Double) -> MathapproxpadeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_range_add(a : MathapproxpadeRange, b : MathapproxpadeRange) -> MathapproxpadeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeRange::add(self : MathapproxpadeRange, other : MathapproxpadeRange) -> MathapproxpadeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_range_copy(s : MathapproxpadeRange) -> MathapproxpadeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeRange::copy(self : MathapproxpadeRange) -> MathapproxpadeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_range_fill(s : MathapproxpadeRange, v : Double) -> MathapproxpadeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeRange::fill(self : MathapproxpadeRange, v : Double) -> MathapproxpadeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_range_min(s : MathapproxpadeRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeRange::min(self : MathapproxpadeRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_range_max(s : MathapproxpadeRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeRange::max(self : MathapproxpadeRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_range_to_string(s : MathapproxpadeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeRange::to_string(self : MathapproxpadeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpadeSlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_pade_slice_make(size : Int) -> MathapproxpadeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_pade_slice_len(s : MathapproxpadeSlice) -> Int { s.size }
+pub fn MathapproxpadeSlice::len(self : MathapproxpadeSlice) -> Int { self.size }
 
-pub fn math_approx_pade_slice_get(s : MathapproxpadeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpadeSlice::get(self : MathapproxpadeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_pade_slice_set(s : MathapproxpadeSlice, i : Int, v : Double) -> MathapproxpadeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpadeSlice::set(self : MathapproxpadeSlice, i : Int, v : Double) -> MathapproxpadeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_slice_sum(s : MathapproxpadeSlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpadeSlice::sum(self : MathapproxpadeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_pade_slice_mean(s : MathapproxpadeSlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpadeSlice::mean(self : MathapproxpadeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_pade_slice_scale(s : MathapproxpadeSlice, f : Double) -> MathapproxpadeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpadeSlice::scale(self : MathapproxpadeSlice, f : Double) -> MathapproxpadeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_slice_add(a : MathapproxpadeSlice, b : MathapproxpadeSlice) -> MathapproxpadeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpadeSlice::add(self : MathapproxpadeSlice, other : MathapproxpadeSlice) -> MathapproxpadeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_pade_slice_copy(s : MathapproxpadeSlice) -> MathapproxpadeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpadeSlice::copy(self : MathapproxpadeSlice) -> MathapproxpadeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_slice_fill(s : MathapproxpadeSlice, v : Double) -> MathapproxpadeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpadeSlice::fill(self : MathapproxpadeSlice, v : Double) -> MathapproxpadeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_pade_slice_min(s : MathapproxpadeSlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxpadeSlice::min(self : MathapproxpadeSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_pade_slice_max(s : MathapproxpadeSlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxpadeSlice::max(self : MathapproxpadeSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_pade_slice_to_string(s : MathapproxpadeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpadeSlice::to_string(self : MathapproxpadeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

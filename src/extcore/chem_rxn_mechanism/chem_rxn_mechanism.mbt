@@ -351,45 +351,45 @@ pub fn chem_rxn_mechanism_frame_make(size : Int) -> ChemrxnmechanismFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_frame_len(s : ChemrxnmechanismFrame) -> Int { s.size }
+pub fn ChemrxnmechanismFrame::len(self : ChemrxnmechanismFrame) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_frame_get(s : ChemrxnmechanismFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismFrame::get(self : ChemrxnmechanismFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_frame_set(s : ChemrxnmechanismFrame, i : Int, v : Double) -> ChemrxnmechanismFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismFrame::set(self : ChemrxnmechanismFrame, i : Int, v : Double) -> ChemrxnmechanismFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_frame_sum(s : ChemrxnmechanismFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismFrame::sum(self : ChemrxnmechanismFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_frame_mean(s : ChemrxnmechanismFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismFrame::mean(self : ChemrxnmechanismFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_frame_scale(s : ChemrxnmechanismFrame, f : Double) -> ChemrxnmechanismFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismFrame::scale(self : ChemrxnmechanismFrame, f : Double) -> ChemrxnmechanismFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_frame_add(a : ChemrxnmechanismFrame, b : ChemrxnmechanismFrame) -> ChemrxnmechanismFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismFrame::add(self : ChemrxnmechanismFrame, other : ChemrxnmechanismFrame) -> ChemrxnmechanismFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_frame_copy(s : ChemrxnmechanismFrame) -> ChemrxnmechanismFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismFrame::copy(self : ChemrxnmechanismFrame) -> ChemrxnmechanismFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_frame_fill(s : ChemrxnmechanismFrame, v : Double) -> ChemrxnmechanismFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismFrame::fill(self : ChemrxnmechanismFrame, v : Double) -> ChemrxnmechanismFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_frame_min(s : ChemrxnmechanismFrame) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismFrame::min(self : ChemrxnmechanismFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_frame_max(s : ChemrxnmechanismFrame) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismFrame::max(self : ChemrxnmechanismFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_frame_to_string(s : ChemrxnmechanismFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismFrame::to_string(self : ChemrxnmechanismFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismTable {
@@ -402,45 +402,45 @@ pub fn chem_rxn_mechanism_table_make(size : Int) -> ChemrxnmechanismTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_table_len(s : ChemrxnmechanismTable) -> Int { s.size }
+pub fn ChemrxnmechanismTable::len(self : ChemrxnmechanismTable) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_table_get(s : ChemrxnmechanismTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismTable::get(self : ChemrxnmechanismTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_table_set(s : ChemrxnmechanismTable, i : Int, v : Double) -> ChemrxnmechanismTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismTable::set(self : ChemrxnmechanismTable, i : Int, v : Double) -> ChemrxnmechanismTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_table_sum(s : ChemrxnmechanismTable) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismTable::sum(self : ChemrxnmechanismTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_table_mean(s : ChemrxnmechanismTable) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismTable::mean(self : ChemrxnmechanismTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_table_scale(s : ChemrxnmechanismTable, f : Double) -> ChemrxnmechanismTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismTable::scale(self : ChemrxnmechanismTable, f : Double) -> ChemrxnmechanismTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_table_add(a : ChemrxnmechanismTable, b : ChemrxnmechanismTable) -> ChemrxnmechanismTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismTable::add(self : ChemrxnmechanismTable, other : ChemrxnmechanismTable) -> ChemrxnmechanismTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_table_copy(s : ChemrxnmechanismTable) -> ChemrxnmechanismTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismTable::copy(self : ChemrxnmechanismTable) -> ChemrxnmechanismTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_table_fill(s : ChemrxnmechanismTable, v : Double) -> ChemrxnmechanismTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismTable::fill(self : ChemrxnmechanismTable, v : Double) -> ChemrxnmechanismTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_table_min(s : ChemrxnmechanismTable) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismTable::min(self : ChemrxnmechanismTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_table_max(s : ChemrxnmechanismTable) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismTable::max(self : ChemrxnmechanismTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_table_to_string(s : ChemrxnmechanismTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismTable::to_string(self : ChemrxnmechanismTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismGraphN {
@@ -453,45 +453,45 @@ pub fn chem_rxn_mechanism_graphn_make(size : Int) -> ChemrxnmechanismGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_graphn_len(s : ChemrxnmechanismGraphN) -> Int { s.size }
+pub fn ChemrxnmechanismGraphN::len(self : ChemrxnmechanismGraphN) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_graphn_get(s : ChemrxnmechanismGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismGraphN::get(self : ChemrxnmechanismGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_graphn_set(s : ChemrxnmechanismGraphN, i : Int, v : Double) -> ChemrxnmechanismGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismGraphN::set(self : ChemrxnmechanismGraphN, i : Int, v : Double) -> ChemrxnmechanismGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_graphn_sum(s : ChemrxnmechanismGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismGraphN::sum(self : ChemrxnmechanismGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_graphn_mean(s : ChemrxnmechanismGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismGraphN::mean(self : ChemrxnmechanismGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_graphn_scale(s : ChemrxnmechanismGraphN, f : Double) -> ChemrxnmechanismGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismGraphN::scale(self : ChemrxnmechanismGraphN, f : Double) -> ChemrxnmechanismGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_graphn_add(a : ChemrxnmechanismGraphN, b : ChemrxnmechanismGraphN) -> ChemrxnmechanismGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismGraphN::add(self : ChemrxnmechanismGraphN, other : ChemrxnmechanismGraphN) -> ChemrxnmechanismGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_graphn_copy(s : ChemrxnmechanismGraphN) -> ChemrxnmechanismGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismGraphN::copy(self : ChemrxnmechanismGraphN) -> ChemrxnmechanismGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_graphn_fill(s : ChemrxnmechanismGraphN, v : Double) -> ChemrxnmechanismGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismGraphN::fill(self : ChemrxnmechanismGraphN, v : Double) -> ChemrxnmechanismGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_graphn_min(s : ChemrxnmechanismGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismGraphN::min(self : ChemrxnmechanismGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_graphn_max(s : ChemrxnmechanismGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismGraphN::max(self : ChemrxnmechanismGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_graphn_to_string(s : ChemrxnmechanismGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismGraphN::to_string(self : ChemrxnmechanismGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismNode {
@@ -504,45 +504,45 @@ pub fn chem_rxn_mechanism_node_make(size : Int) -> ChemrxnmechanismNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_node_len(s : ChemrxnmechanismNode) -> Int { s.size }
+pub fn ChemrxnmechanismNode::len(self : ChemrxnmechanismNode) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_node_get(s : ChemrxnmechanismNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismNode::get(self : ChemrxnmechanismNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_node_set(s : ChemrxnmechanismNode, i : Int, v : Double) -> ChemrxnmechanismNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismNode::set(self : ChemrxnmechanismNode, i : Int, v : Double) -> ChemrxnmechanismNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_node_sum(s : ChemrxnmechanismNode) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismNode::sum(self : ChemrxnmechanismNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_node_mean(s : ChemrxnmechanismNode) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismNode::mean(self : ChemrxnmechanismNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_node_scale(s : ChemrxnmechanismNode, f : Double) -> ChemrxnmechanismNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismNode::scale(self : ChemrxnmechanismNode, f : Double) -> ChemrxnmechanismNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_node_add(a : ChemrxnmechanismNode, b : ChemrxnmechanismNode) -> ChemrxnmechanismNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismNode::add(self : ChemrxnmechanismNode, other : ChemrxnmechanismNode) -> ChemrxnmechanismNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_node_copy(s : ChemrxnmechanismNode) -> ChemrxnmechanismNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismNode::copy(self : ChemrxnmechanismNode) -> ChemrxnmechanismNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_node_fill(s : ChemrxnmechanismNode, v : Double) -> ChemrxnmechanismNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismNode::fill(self : ChemrxnmechanismNode, v : Double) -> ChemrxnmechanismNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_node_min(s : ChemrxnmechanismNode) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismNode::min(self : ChemrxnmechanismNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_node_max(s : ChemrxnmechanismNode) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismNode::max(self : ChemrxnmechanismNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_node_to_string(s : ChemrxnmechanismNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismNode::to_string(self : ChemrxnmechanismNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismEdge {
@@ -555,45 +555,45 @@ pub fn chem_rxn_mechanism_edge_make(size : Int) -> ChemrxnmechanismEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_edge_len(s : ChemrxnmechanismEdge) -> Int { s.size }
+pub fn ChemrxnmechanismEdge::len(self : ChemrxnmechanismEdge) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_edge_get(s : ChemrxnmechanismEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismEdge::get(self : ChemrxnmechanismEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_edge_set(s : ChemrxnmechanismEdge, i : Int, v : Double) -> ChemrxnmechanismEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismEdge::set(self : ChemrxnmechanismEdge, i : Int, v : Double) -> ChemrxnmechanismEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_edge_sum(s : ChemrxnmechanismEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismEdge::sum(self : ChemrxnmechanismEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_edge_mean(s : ChemrxnmechanismEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismEdge::mean(self : ChemrxnmechanismEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_edge_scale(s : ChemrxnmechanismEdge, f : Double) -> ChemrxnmechanismEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismEdge::scale(self : ChemrxnmechanismEdge, f : Double) -> ChemrxnmechanismEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_edge_add(a : ChemrxnmechanismEdge, b : ChemrxnmechanismEdge) -> ChemrxnmechanismEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismEdge::add(self : ChemrxnmechanismEdge, other : ChemrxnmechanismEdge) -> ChemrxnmechanismEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_edge_copy(s : ChemrxnmechanismEdge) -> ChemrxnmechanismEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismEdge::copy(self : ChemrxnmechanismEdge) -> ChemrxnmechanismEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_edge_fill(s : ChemrxnmechanismEdge, v : Double) -> ChemrxnmechanismEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismEdge::fill(self : ChemrxnmechanismEdge, v : Double) -> ChemrxnmechanismEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_edge_min(s : ChemrxnmechanismEdge) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismEdge::min(self : ChemrxnmechanismEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_edge_max(s : ChemrxnmechanismEdge) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismEdge::max(self : ChemrxnmechanismEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_edge_to_string(s : ChemrxnmechanismEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismEdge::to_string(self : ChemrxnmechanismEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismPath {
@@ -606,45 +606,45 @@ pub fn chem_rxn_mechanism_path_make(size : Int) -> ChemrxnmechanismPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_path_len(s : ChemrxnmechanismPath) -> Int { s.size }
+pub fn ChemrxnmechanismPath::len(self : ChemrxnmechanismPath) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_path_get(s : ChemrxnmechanismPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismPath::get(self : ChemrxnmechanismPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_path_set(s : ChemrxnmechanismPath, i : Int, v : Double) -> ChemrxnmechanismPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismPath::set(self : ChemrxnmechanismPath, i : Int, v : Double) -> ChemrxnmechanismPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_path_sum(s : ChemrxnmechanismPath) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismPath::sum(self : ChemrxnmechanismPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_path_mean(s : ChemrxnmechanismPath) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismPath::mean(self : ChemrxnmechanismPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_path_scale(s : ChemrxnmechanismPath, f : Double) -> ChemrxnmechanismPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismPath::scale(self : ChemrxnmechanismPath, f : Double) -> ChemrxnmechanismPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_path_add(a : ChemrxnmechanismPath, b : ChemrxnmechanismPath) -> ChemrxnmechanismPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismPath::add(self : ChemrxnmechanismPath, other : ChemrxnmechanismPath) -> ChemrxnmechanismPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_path_copy(s : ChemrxnmechanismPath) -> ChemrxnmechanismPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismPath::copy(self : ChemrxnmechanismPath) -> ChemrxnmechanismPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_path_fill(s : ChemrxnmechanismPath, v : Double) -> ChemrxnmechanismPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismPath::fill(self : ChemrxnmechanismPath, v : Double) -> ChemrxnmechanismPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_path_min(s : ChemrxnmechanismPath) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismPath::min(self : ChemrxnmechanismPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_path_max(s : ChemrxnmechanismPath) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismPath::max(self : ChemrxnmechanismPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_path_to_string(s : ChemrxnmechanismPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismPath::to_string(self : ChemrxnmechanismPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismCluster {
@@ -657,45 +657,45 @@ pub fn chem_rxn_mechanism_cluster_make(size : Int) -> ChemrxnmechanismCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_cluster_len(s : ChemrxnmechanismCluster) -> Int { s.size }
+pub fn ChemrxnmechanismCluster::len(self : ChemrxnmechanismCluster) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_cluster_get(s : ChemrxnmechanismCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismCluster::get(self : ChemrxnmechanismCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_cluster_set(s : ChemrxnmechanismCluster, i : Int, v : Double) -> ChemrxnmechanismCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCluster::set(self : ChemrxnmechanismCluster, i : Int, v : Double) -> ChemrxnmechanismCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cluster_sum(s : ChemrxnmechanismCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismCluster::sum(self : ChemrxnmechanismCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_cluster_mean(s : ChemrxnmechanismCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismCluster::mean(self : ChemrxnmechanismCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_cluster_scale(s : ChemrxnmechanismCluster, f : Double) -> ChemrxnmechanismCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCluster::scale(self : ChemrxnmechanismCluster, f : Double) -> ChemrxnmechanismCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cluster_add(a : ChemrxnmechanismCluster, b : ChemrxnmechanismCluster) -> ChemrxnmechanismCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismCluster::add(self : ChemrxnmechanismCluster, other : ChemrxnmechanismCluster) -> ChemrxnmechanismCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cluster_copy(s : ChemrxnmechanismCluster) -> ChemrxnmechanismCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCluster::copy(self : ChemrxnmechanismCluster) -> ChemrxnmechanismCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cluster_fill(s : ChemrxnmechanismCluster, v : Double) -> ChemrxnmechanismCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCluster::fill(self : ChemrxnmechanismCluster, v : Double) -> ChemrxnmechanismCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cluster_min(s : ChemrxnmechanismCluster) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismCluster::min(self : ChemrxnmechanismCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_cluster_max(s : ChemrxnmechanismCluster) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismCluster::max(self : ChemrxnmechanismCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_cluster_to_string(s : ChemrxnmechanismCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismCluster::to_string(self : ChemrxnmechanismCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismModel {
@@ -708,45 +708,45 @@ pub fn chem_rxn_mechanism_model_make(size : Int) -> ChemrxnmechanismModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_model_len(s : ChemrxnmechanismModel) -> Int { s.size }
+pub fn ChemrxnmechanismModel::len(self : ChemrxnmechanismModel) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_model_get(s : ChemrxnmechanismModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismModel::get(self : ChemrxnmechanismModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_model_set(s : ChemrxnmechanismModel, i : Int, v : Double) -> ChemrxnmechanismModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismModel::set(self : ChemrxnmechanismModel, i : Int, v : Double) -> ChemrxnmechanismModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_model_sum(s : ChemrxnmechanismModel) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismModel::sum(self : ChemrxnmechanismModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_model_mean(s : ChemrxnmechanismModel) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismModel::mean(self : ChemrxnmechanismModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_model_scale(s : ChemrxnmechanismModel, f : Double) -> ChemrxnmechanismModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismModel::scale(self : ChemrxnmechanismModel, f : Double) -> ChemrxnmechanismModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_model_add(a : ChemrxnmechanismModel, b : ChemrxnmechanismModel) -> ChemrxnmechanismModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismModel::add(self : ChemrxnmechanismModel, other : ChemrxnmechanismModel) -> ChemrxnmechanismModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_model_copy(s : ChemrxnmechanismModel) -> ChemrxnmechanismModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismModel::copy(self : ChemrxnmechanismModel) -> ChemrxnmechanismModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_model_fill(s : ChemrxnmechanismModel, v : Double) -> ChemrxnmechanismModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismModel::fill(self : ChemrxnmechanismModel, v : Double) -> ChemrxnmechanismModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_model_min(s : ChemrxnmechanismModel) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismModel::min(self : ChemrxnmechanismModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_model_max(s : ChemrxnmechanismModel) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismModel::max(self : ChemrxnmechanismModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_model_to_string(s : ChemrxnmechanismModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismModel::to_string(self : ChemrxnmechanismModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismLayer {
@@ -759,45 +759,45 @@ pub fn chem_rxn_mechanism_layer_make(size : Int) -> ChemrxnmechanismLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_layer_len(s : ChemrxnmechanismLayer) -> Int { s.size }
+pub fn ChemrxnmechanismLayer::len(self : ChemrxnmechanismLayer) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_layer_get(s : ChemrxnmechanismLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismLayer::get(self : ChemrxnmechanismLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_layer_set(s : ChemrxnmechanismLayer, i : Int, v : Double) -> ChemrxnmechanismLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismLayer::set(self : ChemrxnmechanismLayer, i : Int, v : Double) -> ChemrxnmechanismLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_layer_sum(s : ChemrxnmechanismLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismLayer::sum(self : ChemrxnmechanismLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_layer_mean(s : ChemrxnmechanismLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismLayer::mean(self : ChemrxnmechanismLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_layer_scale(s : ChemrxnmechanismLayer, f : Double) -> ChemrxnmechanismLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismLayer::scale(self : ChemrxnmechanismLayer, f : Double) -> ChemrxnmechanismLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_layer_add(a : ChemrxnmechanismLayer, b : ChemrxnmechanismLayer) -> ChemrxnmechanismLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismLayer::add(self : ChemrxnmechanismLayer, other : ChemrxnmechanismLayer) -> ChemrxnmechanismLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_layer_copy(s : ChemrxnmechanismLayer) -> ChemrxnmechanismLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismLayer::copy(self : ChemrxnmechanismLayer) -> ChemrxnmechanismLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_layer_fill(s : ChemrxnmechanismLayer, v : Double) -> ChemrxnmechanismLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismLayer::fill(self : ChemrxnmechanismLayer, v : Double) -> ChemrxnmechanismLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_layer_min(s : ChemrxnmechanismLayer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismLayer::min(self : ChemrxnmechanismLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_layer_max(s : ChemrxnmechanismLayer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismLayer::max(self : ChemrxnmechanismLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_layer_to_string(s : ChemrxnmechanismLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismLayer::to_string(self : ChemrxnmechanismLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismBuffer {
@@ -810,45 +810,45 @@ pub fn chem_rxn_mechanism_buffer_make(size : Int) -> ChemrxnmechanismBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_buffer_len(s : ChemrxnmechanismBuffer) -> Int { s.size }
+pub fn ChemrxnmechanismBuffer::len(self : ChemrxnmechanismBuffer) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_buffer_get(s : ChemrxnmechanismBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismBuffer::get(self : ChemrxnmechanismBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_buffer_set(s : ChemrxnmechanismBuffer, i : Int, v : Double) -> ChemrxnmechanismBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismBuffer::set(self : ChemrxnmechanismBuffer, i : Int, v : Double) -> ChemrxnmechanismBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_buffer_sum(s : ChemrxnmechanismBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismBuffer::sum(self : ChemrxnmechanismBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_buffer_mean(s : ChemrxnmechanismBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismBuffer::mean(self : ChemrxnmechanismBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_buffer_scale(s : ChemrxnmechanismBuffer, f : Double) -> ChemrxnmechanismBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismBuffer::scale(self : ChemrxnmechanismBuffer, f : Double) -> ChemrxnmechanismBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_buffer_add(a : ChemrxnmechanismBuffer, b : ChemrxnmechanismBuffer) -> ChemrxnmechanismBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismBuffer::add(self : ChemrxnmechanismBuffer, other : ChemrxnmechanismBuffer) -> ChemrxnmechanismBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_buffer_copy(s : ChemrxnmechanismBuffer) -> ChemrxnmechanismBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismBuffer::copy(self : ChemrxnmechanismBuffer) -> ChemrxnmechanismBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_buffer_fill(s : ChemrxnmechanismBuffer, v : Double) -> ChemrxnmechanismBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismBuffer::fill(self : ChemrxnmechanismBuffer, v : Double) -> ChemrxnmechanismBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_buffer_min(s : ChemrxnmechanismBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismBuffer::min(self : ChemrxnmechanismBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_buffer_max(s : ChemrxnmechanismBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismBuffer::max(self : ChemrxnmechanismBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_buffer_to_string(s : ChemrxnmechanismBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismBuffer::to_string(self : ChemrxnmechanismBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismCursor {
@@ -861,45 +861,45 @@ pub fn chem_rxn_mechanism_cursor_make(size : Int) -> ChemrxnmechanismCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_cursor_len(s : ChemrxnmechanismCursor) -> Int { s.size }
+pub fn ChemrxnmechanismCursor::len(self : ChemrxnmechanismCursor) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_cursor_get(s : ChemrxnmechanismCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismCursor::get(self : ChemrxnmechanismCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_cursor_set(s : ChemrxnmechanismCursor, i : Int, v : Double) -> ChemrxnmechanismCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCursor::set(self : ChemrxnmechanismCursor, i : Int, v : Double) -> ChemrxnmechanismCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cursor_sum(s : ChemrxnmechanismCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismCursor::sum(self : ChemrxnmechanismCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_cursor_mean(s : ChemrxnmechanismCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismCursor::mean(self : ChemrxnmechanismCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_cursor_scale(s : ChemrxnmechanismCursor, f : Double) -> ChemrxnmechanismCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCursor::scale(self : ChemrxnmechanismCursor, f : Double) -> ChemrxnmechanismCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cursor_add(a : ChemrxnmechanismCursor, b : ChemrxnmechanismCursor) -> ChemrxnmechanismCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismCursor::add(self : ChemrxnmechanismCursor, other : ChemrxnmechanismCursor) -> ChemrxnmechanismCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cursor_copy(s : ChemrxnmechanismCursor) -> ChemrxnmechanismCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCursor::copy(self : ChemrxnmechanismCursor) -> ChemrxnmechanismCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cursor_fill(s : ChemrxnmechanismCursor, v : Double) -> ChemrxnmechanismCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismCursor::fill(self : ChemrxnmechanismCursor, v : Double) -> ChemrxnmechanismCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_cursor_min(s : ChemrxnmechanismCursor) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismCursor::min(self : ChemrxnmechanismCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_cursor_max(s : ChemrxnmechanismCursor) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismCursor::max(self : ChemrxnmechanismCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_cursor_to_string(s : ChemrxnmechanismCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismCursor::to_string(self : ChemrxnmechanismCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismView {
@@ -912,45 +912,45 @@ pub fn chem_rxn_mechanism_view_make(size : Int) -> ChemrxnmechanismView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_view_len(s : ChemrxnmechanismView) -> Int { s.size }
+pub fn ChemrxnmechanismView::len(self : ChemrxnmechanismView) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_view_get(s : ChemrxnmechanismView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismView::get(self : ChemrxnmechanismView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_view_set(s : ChemrxnmechanismView, i : Int, v : Double) -> ChemrxnmechanismView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismView::set(self : ChemrxnmechanismView, i : Int, v : Double) -> ChemrxnmechanismView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_view_sum(s : ChemrxnmechanismView) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismView::sum(self : ChemrxnmechanismView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_view_mean(s : ChemrxnmechanismView) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismView::mean(self : ChemrxnmechanismView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_view_scale(s : ChemrxnmechanismView, f : Double) -> ChemrxnmechanismView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismView::scale(self : ChemrxnmechanismView, f : Double) -> ChemrxnmechanismView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_view_add(a : ChemrxnmechanismView, b : ChemrxnmechanismView) -> ChemrxnmechanismView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismView::add(self : ChemrxnmechanismView, other : ChemrxnmechanismView) -> ChemrxnmechanismView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_view_copy(s : ChemrxnmechanismView) -> ChemrxnmechanismView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismView::copy(self : ChemrxnmechanismView) -> ChemrxnmechanismView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_view_fill(s : ChemrxnmechanismView, v : Double) -> ChemrxnmechanismView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismView::fill(self : ChemrxnmechanismView, v : Double) -> ChemrxnmechanismView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_view_min(s : ChemrxnmechanismView) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismView::min(self : ChemrxnmechanismView) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_view_max(s : ChemrxnmechanismView) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismView::max(self : ChemrxnmechanismView) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_view_to_string(s : ChemrxnmechanismView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismView::to_string(self : ChemrxnmechanismView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismRange {
@@ -963,45 +963,45 @@ pub fn chem_rxn_mechanism_range_make(size : Int) -> ChemrxnmechanismRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_range_len(s : ChemrxnmechanismRange) -> Int { s.size }
+pub fn ChemrxnmechanismRange::len(self : ChemrxnmechanismRange) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_range_get(s : ChemrxnmechanismRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismRange::get(self : ChemrxnmechanismRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_range_set(s : ChemrxnmechanismRange, i : Int, v : Double) -> ChemrxnmechanismRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismRange::set(self : ChemrxnmechanismRange, i : Int, v : Double) -> ChemrxnmechanismRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_range_sum(s : ChemrxnmechanismRange) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismRange::sum(self : ChemrxnmechanismRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_range_mean(s : ChemrxnmechanismRange) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismRange::mean(self : ChemrxnmechanismRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_range_scale(s : ChemrxnmechanismRange, f : Double) -> ChemrxnmechanismRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismRange::scale(self : ChemrxnmechanismRange, f : Double) -> ChemrxnmechanismRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_range_add(a : ChemrxnmechanismRange, b : ChemrxnmechanismRange) -> ChemrxnmechanismRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismRange::add(self : ChemrxnmechanismRange, other : ChemrxnmechanismRange) -> ChemrxnmechanismRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_range_copy(s : ChemrxnmechanismRange) -> ChemrxnmechanismRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismRange::copy(self : ChemrxnmechanismRange) -> ChemrxnmechanismRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_range_fill(s : ChemrxnmechanismRange, v : Double) -> ChemrxnmechanismRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismRange::fill(self : ChemrxnmechanismRange, v : Double) -> ChemrxnmechanismRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_range_min(s : ChemrxnmechanismRange) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismRange::min(self : ChemrxnmechanismRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_range_max(s : ChemrxnmechanismRange) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismRange::max(self : ChemrxnmechanismRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_range_to_string(s : ChemrxnmechanismRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismRange::to_string(self : ChemrxnmechanismRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_rxn_mechanism_slice_make(size : Int) -> ChemrxnmechanismSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_mechanism_slice_len(s : ChemrxnmechanismSlice) -> Int { s.size }
+pub fn ChemrxnmechanismSlice::len(self : ChemrxnmechanismSlice) -> Int { self.size }
 
-pub fn chem_rxn_mechanism_slice_get(s : ChemrxnmechanismSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnmechanismSlice::get(self : ChemrxnmechanismSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_mechanism_slice_set(s : ChemrxnmechanismSlice, i : Int, v : Double) -> ChemrxnmechanismSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismSlice::set(self : ChemrxnmechanismSlice, i : Int, v : Double) -> ChemrxnmechanismSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_slice_sum(s : ChemrxnmechanismSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnmechanismSlice::sum(self : ChemrxnmechanismSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_mechanism_slice_mean(s : ChemrxnmechanismSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnmechanismSlice::mean(self : ChemrxnmechanismSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_mechanism_slice_scale(s : ChemrxnmechanismSlice, f : Double) -> ChemrxnmechanismSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismSlice::scale(self : ChemrxnmechanismSlice, f : Double) -> ChemrxnmechanismSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_slice_add(a : ChemrxnmechanismSlice, b : ChemrxnmechanismSlice) -> ChemrxnmechanismSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnmechanismSlice::add(self : ChemrxnmechanismSlice, other : ChemrxnmechanismSlice) -> ChemrxnmechanismSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_slice_copy(s : ChemrxnmechanismSlice) -> ChemrxnmechanismSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismSlice::copy(self : ChemrxnmechanismSlice) -> ChemrxnmechanismSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_slice_fill(s : ChemrxnmechanismSlice, v : Double) -> ChemrxnmechanismSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnmechanismSlice::fill(self : ChemrxnmechanismSlice, v : Double) -> ChemrxnmechanismSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_mechanism_slice_min(s : ChemrxnmechanismSlice) -> Double { @_common.min(s.data) }
+pub fn ChemrxnmechanismSlice::min(self : ChemrxnmechanismSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_mechanism_slice_max(s : ChemrxnmechanismSlice) -> Double { @_common.max(s.data) }
+pub fn ChemrxnmechanismSlice::max(self : ChemrxnmechanismSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_mechanism_slice_to_string(s : ChemrxnmechanismSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnmechanismSlice::to_string(self : ChemrxnmechanismSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

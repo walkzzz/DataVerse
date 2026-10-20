@@ -351,45 +351,45 @@ pub fn crypto_hash_sha3_frame_make(size : Int) -> Cryptohashsha3Frame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_frame_len(s : Cryptohashsha3Frame) -> Int { s.size }
+pub fn Cryptohashsha3Frame::len(self : Cryptohashsha3Frame) -> Int { self.size }
 
-pub fn crypto_hash_sha3_frame_get(s : Cryptohashsha3Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Frame::get(self : Cryptohashsha3Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_frame_set(s : Cryptohashsha3Frame, i : Int, v : Double) -> Cryptohashsha3Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Frame::set(self : Cryptohashsha3Frame, i : Int, v : Double) -> Cryptohashsha3Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_frame_sum(s : Cryptohashsha3Frame) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Frame::sum(self : Cryptohashsha3Frame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_frame_mean(s : Cryptohashsha3Frame) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Frame::mean(self : Cryptohashsha3Frame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_frame_scale(s : Cryptohashsha3Frame, f : Double) -> Cryptohashsha3Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Frame::scale(self : Cryptohashsha3Frame, f : Double) -> Cryptohashsha3Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_frame_add(a : Cryptohashsha3Frame, b : Cryptohashsha3Frame) -> Cryptohashsha3Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Frame::add(self : Cryptohashsha3Frame, other : Cryptohashsha3Frame) -> Cryptohashsha3Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_frame_copy(s : Cryptohashsha3Frame) -> Cryptohashsha3Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Frame::copy(self : Cryptohashsha3Frame) -> Cryptohashsha3Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_frame_fill(s : Cryptohashsha3Frame, v : Double) -> Cryptohashsha3Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Frame::fill(self : Cryptohashsha3Frame, v : Double) -> Cryptohashsha3Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_frame_min(s : Cryptohashsha3Frame) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Frame::min(self : Cryptohashsha3Frame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_frame_max(s : Cryptohashsha3Frame) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Frame::max(self : Cryptohashsha3Frame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_frame_to_string(s : Cryptohashsha3Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Frame::to_string(self : Cryptohashsha3Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Table {
@@ -402,45 +402,45 @@ pub fn crypto_hash_sha3_table_make(size : Int) -> Cryptohashsha3Table {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_table_len(s : Cryptohashsha3Table) -> Int { s.size }
+pub fn Cryptohashsha3Table::len(self : Cryptohashsha3Table) -> Int { self.size }
 
-pub fn crypto_hash_sha3_table_get(s : Cryptohashsha3Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Table::get(self : Cryptohashsha3Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_table_set(s : Cryptohashsha3Table, i : Int, v : Double) -> Cryptohashsha3Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Table::set(self : Cryptohashsha3Table, i : Int, v : Double) -> Cryptohashsha3Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_table_sum(s : Cryptohashsha3Table) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Table::sum(self : Cryptohashsha3Table) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_table_mean(s : Cryptohashsha3Table) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Table::mean(self : Cryptohashsha3Table) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_table_scale(s : Cryptohashsha3Table, f : Double) -> Cryptohashsha3Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Table::scale(self : Cryptohashsha3Table, f : Double) -> Cryptohashsha3Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_table_add(a : Cryptohashsha3Table, b : Cryptohashsha3Table) -> Cryptohashsha3Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Table::add(self : Cryptohashsha3Table, other : Cryptohashsha3Table) -> Cryptohashsha3Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_table_copy(s : Cryptohashsha3Table) -> Cryptohashsha3Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Table::copy(self : Cryptohashsha3Table) -> Cryptohashsha3Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_table_fill(s : Cryptohashsha3Table, v : Double) -> Cryptohashsha3Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Table::fill(self : Cryptohashsha3Table, v : Double) -> Cryptohashsha3Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_table_min(s : Cryptohashsha3Table) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Table::min(self : Cryptohashsha3Table) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_table_max(s : Cryptohashsha3Table) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Table::max(self : Cryptohashsha3Table) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_table_to_string(s : Cryptohashsha3Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Table::to_string(self : Cryptohashsha3Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3GraphN {
@@ -453,45 +453,45 @@ pub fn crypto_hash_sha3_graphn_make(size : Int) -> Cryptohashsha3GraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_graphn_len(s : Cryptohashsha3GraphN) -> Int { s.size }
+pub fn Cryptohashsha3GraphN::len(self : Cryptohashsha3GraphN) -> Int { self.size }
 
-pub fn crypto_hash_sha3_graphn_get(s : Cryptohashsha3GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3GraphN::get(self : Cryptohashsha3GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_graphn_set(s : Cryptohashsha3GraphN, i : Int, v : Double) -> Cryptohashsha3GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3GraphN::set(self : Cryptohashsha3GraphN, i : Int, v : Double) -> Cryptohashsha3GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_graphn_sum(s : Cryptohashsha3GraphN) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3GraphN::sum(self : Cryptohashsha3GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_graphn_mean(s : Cryptohashsha3GraphN) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3GraphN::mean(self : Cryptohashsha3GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_graphn_scale(s : Cryptohashsha3GraphN, f : Double) -> Cryptohashsha3GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3GraphN::scale(self : Cryptohashsha3GraphN, f : Double) -> Cryptohashsha3GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_graphn_add(a : Cryptohashsha3GraphN, b : Cryptohashsha3GraphN) -> Cryptohashsha3GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3GraphN::add(self : Cryptohashsha3GraphN, other : Cryptohashsha3GraphN) -> Cryptohashsha3GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_graphn_copy(s : Cryptohashsha3GraphN) -> Cryptohashsha3GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3GraphN::copy(self : Cryptohashsha3GraphN) -> Cryptohashsha3GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_graphn_fill(s : Cryptohashsha3GraphN, v : Double) -> Cryptohashsha3GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3GraphN::fill(self : Cryptohashsha3GraphN, v : Double) -> Cryptohashsha3GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_graphn_min(s : Cryptohashsha3GraphN) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3GraphN::min(self : Cryptohashsha3GraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_graphn_max(s : Cryptohashsha3GraphN) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3GraphN::max(self : Cryptohashsha3GraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_graphn_to_string(s : Cryptohashsha3GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3GraphN::to_string(self : Cryptohashsha3GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Node {
@@ -504,45 +504,45 @@ pub fn crypto_hash_sha3_node_make(size : Int) -> Cryptohashsha3Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_node_len(s : Cryptohashsha3Node) -> Int { s.size }
+pub fn Cryptohashsha3Node::len(self : Cryptohashsha3Node) -> Int { self.size }
 
-pub fn crypto_hash_sha3_node_get(s : Cryptohashsha3Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Node::get(self : Cryptohashsha3Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_node_set(s : Cryptohashsha3Node, i : Int, v : Double) -> Cryptohashsha3Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Node::set(self : Cryptohashsha3Node, i : Int, v : Double) -> Cryptohashsha3Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_node_sum(s : Cryptohashsha3Node) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Node::sum(self : Cryptohashsha3Node) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_node_mean(s : Cryptohashsha3Node) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Node::mean(self : Cryptohashsha3Node) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_node_scale(s : Cryptohashsha3Node, f : Double) -> Cryptohashsha3Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Node::scale(self : Cryptohashsha3Node, f : Double) -> Cryptohashsha3Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_node_add(a : Cryptohashsha3Node, b : Cryptohashsha3Node) -> Cryptohashsha3Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Node::add(self : Cryptohashsha3Node, other : Cryptohashsha3Node) -> Cryptohashsha3Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_node_copy(s : Cryptohashsha3Node) -> Cryptohashsha3Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Node::copy(self : Cryptohashsha3Node) -> Cryptohashsha3Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_node_fill(s : Cryptohashsha3Node, v : Double) -> Cryptohashsha3Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Node::fill(self : Cryptohashsha3Node, v : Double) -> Cryptohashsha3Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_node_min(s : Cryptohashsha3Node) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Node::min(self : Cryptohashsha3Node) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_node_max(s : Cryptohashsha3Node) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Node::max(self : Cryptohashsha3Node) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_node_to_string(s : Cryptohashsha3Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Node::to_string(self : Cryptohashsha3Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Edge {
@@ -555,45 +555,45 @@ pub fn crypto_hash_sha3_edge_make(size : Int) -> Cryptohashsha3Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_edge_len(s : Cryptohashsha3Edge) -> Int { s.size }
+pub fn Cryptohashsha3Edge::len(self : Cryptohashsha3Edge) -> Int { self.size }
 
-pub fn crypto_hash_sha3_edge_get(s : Cryptohashsha3Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Edge::get(self : Cryptohashsha3Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_edge_set(s : Cryptohashsha3Edge, i : Int, v : Double) -> Cryptohashsha3Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Edge::set(self : Cryptohashsha3Edge, i : Int, v : Double) -> Cryptohashsha3Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_edge_sum(s : Cryptohashsha3Edge) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Edge::sum(self : Cryptohashsha3Edge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_edge_mean(s : Cryptohashsha3Edge) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Edge::mean(self : Cryptohashsha3Edge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_edge_scale(s : Cryptohashsha3Edge, f : Double) -> Cryptohashsha3Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Edge::scale(self : Cryptohashsha3Edge, f : Double) -> Cryptohashsha3Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_edge_add(a : Cryptohashsha3Edge, b : Cryptohashsha3Edge) -> Cryptohashsha3Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Edge::add(self : Cryptohashsha3Edge, other : Cryptohashsha3Edge) -> Cryptohashsha3Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_edge_copy(s : Cryptohashsha3Edge) -> Cryptohashsha3Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Edge::copy(self : Cryptohashsha3Edge) -> Cryptohashsha3Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_edge_fill(s : Cryptohashsha3Edge, v : Double) -> Cryptohashsha3Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Edge::fill(self : Cryptohashsha3Edge, v : Double) -> Cryptohashsha3Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_edge_min(s : Cryptohashsha3Edge) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Edge::min(self : Cryptohashsha3Edge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_edge_max(s : Cryptohashsha3Edge) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Edge::max(self : Cryptohashsha3Edge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_edge_to_string(s : Cryptohashsha3Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Edge::to_string(self : Cryptohashsha3Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Path {
@@ -606,45 +606,45 @@ pub fn crypto_hash_sha3_path_make(size : Int) -> Cryptohashsha3Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_path_len(s : Cryptohashsha3Path) -> Int { s.size }
+pub fn Cryptohashsha3Path::len(self : Cryptohashsha3Path) -> Int { self.size }
 
-pub fn crypto_hash_sha3_path_get(s : Cryptohashsha3Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Path::get(self : Cryptohashsha3Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_path_set(s : Cryptohashsha3Path, i : Int, v : Double) -> Cryptohashsha3Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Path::set(self : Cryptohashsha3Path, i : Int, v : Double) -> Cryptohashsha3Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_path_sum(s : Cryptohashsha3Path) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Path::sum(self : Cryptohashsha3Path) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_path_mean(s : Cryptohashsha3Path) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Path::mean(self : Cryptohashsha3Path) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_path_scale(s : Cryptohashsha3Path, f : Double) -> Cryptohashsha3Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Path::scale(self : Cryptohashsha3Path, f : Double) -> Cryptohashsha3Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_path_add(a : Cryptohashsha3Path, b : Cryptohashsha3Path) -> Cryptohashsha3Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Path::add(self : Cryptohashsha3Path, other : Cryptohashsha3Path) -> Cryptohashsha3Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_path_copy(s : Cryptohashsha3Path) -> Cryptohashsha3Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Path::copy(self : Cryptohashsha3Path) -> Cryptohashsha3Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_path_fill(s : Cryptohashsha3Path, v : Double) -> Cryptohashsha3Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Path::fill(self : Cryptohashsha3Path, v : Double) -> Cryptohashsha3Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_path_min(s : Cryptohashsha3Path) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Path::min(self : Cryptohashsha3Path) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_path_max(s : Cryptohashsha3Path) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Path::max(self : Cryptohashsha3Path) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_path_to_string(s : Cryptohashsha3Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Path::to_string(self : Cryptohashsha3Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Cluster {
@@ -657,45 +657,45 @@ pub fn crypto_hash_sha3_cluster_make(size : Int) -> Cryptohashsha3Cluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_cluster_len(s : Cryptohashsha3Cluster) -> Int { s.size }
+pub fn Cryptohashsha3Cluster::len(self : Cryptohashsha3Cluster) -> Int { self.size }
 
-pub fn crypto_hash_sha3_cluster_get(s : Cryptohashsha3Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Cluster::get(self : Cryptohashsha3Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_cluster_set(s : Cryptohashsha3Cluster, i : Int, v : Double) -> Cryptohashsha3Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cluster::set(self : Cryptohashsha3Cluster, i : Int, v : Double) -> Cryptohashsha3Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cluster_sum(s : Cryptohashsha3Cluster) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Cluster::sum(self : Cryptohashsha3Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_cluster_mean(s : Cryptohashsha3Cluster) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Cluster::mean(self : Cryptohashsha3Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_cluster_scale(s : Cryptohashsha3Cluster, f : Double) -> Cryptohashsha3Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cluster::scale(self : Cryptohashsha3Cluster, f : Double) -> Cryptohashsha3Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cluster_add(a : Cryptohashsha3Cluster, b : Cryptohashsha3Cluster) -> Cryptohashsha3Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Cluster::add(self : Cryptohashsha3Cluster, other : Cryptohashsha3Cluster) -> Cryptohashsha3Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cluster_copy(s : Cryptohashsha3Cluster) -> Cryptohashsha3Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cluster::copy(self : Cryptohashsha3Cluster) -> Cryptohashsha3Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cluster_fill(s : Cryptohashsha3Cluster, v : Double) -> Cryptohashsha3Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cluster::fill(self : Cryptohashsha3Cluster, v : Double) -> Cryptohashsha3Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cluster_min(s : Cryptohashsha3Cluster) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Cluster::min(self : Cryptohashsha3Cluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_cluster_max(s : Cryptohashsha3Cluster) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Cluster::max(self : Cryptohashsha3Cluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_cluster_to_string(s : Cryptohashsha3Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Cluster::to_string(self : Cryptohashsha3Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Model {
@@ -708,45 +708,45 @@ pub fn crypto_hash_sha3_model_make(size : Int) -> Cryptohashsha3Model {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_model_len(s : Cryptohashsha3Model) -> Int { s.size }
+pub fn Cryptohashsha3Model::len(self : Cryptohashsha3Model) -> Int { self.size }
 
-pub fn crypto_hash_sha3_model_get(s : Cryptohashsha3Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Model::get(self : Cryptohashsha3Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_model_set(s : Cryptohashsha3Model, i : Int, v : Double) -> Cryptohashsha3Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Model::set(self : Cryptohashsha3Model, i : Int, v : Double) -> Cryptohashsha3Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_model_sum(s : Cryptohashsha3Model) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Model::sum(self : Cryptohashsha3Model) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_model_mean(s : Cryptohashsha3Model) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Model::mean(self : Cryptohashsha3Model) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_model_scale(s : Cryptohashsha3Model, f : Double) -> Cryptohashsha3Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Model::scale(self : Cryptohashsha3Model, f : Double) -> Cryptohashsha3Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_model_add(a : Cryptohashsha3Model, b : Cryptohashsha3Model) -> Cryptohashsha3Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Model::add(self : Cryptohashsha3Model, other : Cryptohashsha3Model) -> Cryptohashsha3Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_model_copy(s : Cryptohashsha3Model) -> Cryptohashsha3Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Model::copy(self : Cryptohashsha3Model) -> Cryptohashsha3Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_model_fill(s : Cryptohashsha3Model, v : Double) -> Cryptohashsha3Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Model::fill(self : Cryptohashsha3Model, v : Double) -> Cryptohashsha3Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_model_min(s : Cryptohashsha3Model) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Model::min(self : Cryptohashsha3Model) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_model_max(s : Cryptohashsha3Model) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Model::max(self : Cryptohashsha3Model) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_model_to_string(s : Cryptohashsha3Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Model::to_string(self : Cryptohashsha3Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Layer {
@@ -759,45 +759,45 @@ pub fn crypto_hash_sha3_layer_make(size : Int) -> Cryptohashsha3Layer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_layer_len(s : Cryptohashsha3Layer) -> Int { s.size }
+pub fn Cryptohashsha3Layer::len(self : Cryptohashsha3Layer) -> Int { self.size }
 
-pub fn crypto_hash_sha3_layer_get(s : Cryptohashsha3Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Layer::get(self : Cryptohashsha3Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_layer_set(s : Cryptohashsha3Layer, i : Int, v : Double) -> Cryptohashsha3Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Layer::set(self : Cryptohashsha3Layer, i : Int, v : Double) -> Cryptohashsha3Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_layer_sum(s : Cryptohashsha3Layer) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Layer::sum(self : Cryptohashsha3Layer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_layer_mean(s : Cryptohashsha3Layer) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Layer::mean(self : Cryptohashsha3Layer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_layer_scale(s : Cryptohashsha3Layer, f : Double) -> Cryptohashsha3Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Layer::scale(self : Cryptohashsha3Layer, f : Double) -> Cryptohashsha3Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_layer_add(a : Cryptohashsha3Layer, b : Cryptohashsha3Layer) -> Cryptohashsha3Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Layer::add(self : Cryptohashsha3Layer, other : Cryptohashsha3Layer) -> Cryptohashsha3Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_layer_copy(s : Cryptohashsha3Layer) -> Cryptohashsha3Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Layer::copy(self : Cryptohashsha3Layer) -> Cryptohashsha3Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_layer_fill(s : Cryptohashsha3Layer, v : Double) -> Cryptohashsha3Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Layer::fill(self : Cryptohashsha3Layer, v : Double) -> Cryptohashsha3Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_layer_min(s : Cryptohashsha3Layer) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Layer::min(self : Cryptohashsha3Layer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_layer_max(s : Cryptohashsha3Layer) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Layer::max(self : Cryptohashsha3Layer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_layer_to_string(s : Cryptohashsha3Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Layer::to_string(self : Cryptohashsha3Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Buffer {
@@ -810,45 +810,45 @@ pub fn crypto_hash_sha3_buffer_make(size : Int) -> Cryptohashsha3Buffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_buffer_len(s : Cryptohashsha3Buffer) -> Int { s.size }
+pub fn Cryptohashsha3Buffer::len(self : Cryptohashsha3Buffer) -> Int { self.size }
 
-pub fn crypto_hash_sha3_buffer_get(s : Cryptohashsha3Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Buffer::get(self : Cryptohashsha3Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_buffer_set(s : Cryptohashsha3Buffer, i : Int, v : Double) -> Cryptohashsha3Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Buffer::set(self : Cryptohashsha3Buffer, i : Int, v : Double) -> Cryptohashsha3Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_buffer_sum(s : Cryptohashsha3Buffer) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Buffer::sum(self : Cryptohashsha3Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_buffer_mean(s : Cryptohashsha3Buffer) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Buffer::mean(self : Cryptohashsha3Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_buffer_scale(s : Cryptohashsha3Buffer, f : Double) -> Cryptohashsha3Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Buffer::scale(self : Cryptohashsha3Buffer, f : Double) -> Cryptohashsha3Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_buffer_add(a : Cryptohashsha3Buffer, b : Cryptohashsha3Buffer) -> Cryptohashsha3Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Buffer::add(self : Cryptohashsha3Buffer, other : Cryptohashsha3Buffer) -> Cryptohashsha3Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_buffer_copy(s : Cryptohashsha3Buffer) -> Cryptohashsha3Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Buffer::copy(self : Cryptohashsha3Buffer) -> Cryptohashsha3Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_buffer_fill(s : Cryptohashsha3Buffer, v : Double) -> Cryptohashsha3Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Buffer::fill(self : Cryptohashsha3Buffer, v : Double) -> Cryptohashsha3Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_buffer_min(s : Cryptohashsha3Buffer) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Buffer::min(self : Cryptohashsha3Buffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_buffer_max(s : Cryptohashsha3Buffer) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Buffer::max(self : Cryptohashsha3Buffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_buffer_to_string(s : Cryptohashsha3Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Buffer::to_string(self : Cryptohashsha3Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Cursor {
@@ -861,45 +861,45 @@ pub fn crypto_hash_sha3_cursor_make(size : Int) -> Cryptohashsha3Cursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_cursor_len(s : Cryptohashsha3Cursor) -> Int { s.size }
+pub fn Cryptohashsha3Cursor::len(self : Cryptohashsha3Cursor) -> Int { self.size }
 
-pub fn crypto_hash_sha3_cursor_get(s : Cryptohashsha3Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Cursor::get(self : Cryptohashsha3Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_cursor_set(s : Cryptohashsha3Cursor, i : Int, v : Double) -> Cryptohashsha3Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cursor::set(self : Cryptohashsha3Cursor, i : Int, v : Double) -> Cryptohashsha3Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cursor_sum(s : Cryptohashsha3Cursor) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Cursor::sum(self : Cryptohashsha3Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_cursor_mean(s : Cryptohashsha3Cursor) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Cursor::mean(self : Cryptohashsha3Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_cursor_scale(s : Cryptohashsha3Cursor, f : Double) -> Cryptohashsha3Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cursor::scale(self : Cryptohashsha3Cursor, f : Double) -> Cryptohashsha3Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cursor_add(a : Cryptohashsha3Cursor, b : Cryptohashsha3Cursor) -> Cryptohashsha3Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Cursor::add(self : Cryptohashsha3Cursor, other : Cryptohashsha3Cursor) -> Cryptohashsha3Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cursor_copy(s : Cryptohashsha3Cursor) -> Cryptohashsha3Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cursor::copy(self : Cryptohashsha3Cursor) -> Cryptohashsha3Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cursor_fill(s : Cryptohashsha3Cursor, v : Double) -> Cryptohashsha3Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Cursor::fill(self : Cryptohashsha3Cursor, v : Double) -> Cryptohashsha3Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_cursor_min(s : Cryptohashsha3Cursor) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Cursor::min(self : Cryptohashsha3Cursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_cursor_max(s : Cryptohashsha3Cursor) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Cursor::max(self : Cryptohashsha3Cursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_cursor_to_string(s : Cryptohashsha3Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Cursor::to_string(self : Cryptohashsha3Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3View {
@@ -912,45 +912,45 @@ pub fn crypto_hash_sha3_view_make(size : Int) -> Cryptohashsha3View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_view_len(s : Cryptohashsha3View) -> Int { s.size }
+pub fn Cryptohashsha3View::len(self : Cryptohashsha3View) -> Int { self.size }
 
-pub fn crypto_hash_sha3_view_get(s : Cryptohashsha3View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3View::get(self : Cryptohashsha3View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_view_set(s : Cryptohashsha3View, i : Int, v : Double) -> Cryptohashsha3View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3View::set(self : Cryptohashsha3View, i : Int, v : Double) -> Cryptohashsha3View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_view_sum(s : Cryptohashsha3View) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3View::sum(self : Cryptohashsha3View) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_view_mean(s : Cryptohashsha3View) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3View::mean(self : Cryptohashsha3View) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_view_scale(s : Cryptohashsha3View, f : Double) -> Cryptohashsha3View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3View::scale(self : Cryptohashsha3View, f : Double) -> Cryptohashsha3View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_view_add(a : Cryptohashsha3View, b : Cryptohashsha3View) -> Cryptohashsha3View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3View::add(self : Cryptohashsha3View, other : Cryptohashsha3View) -> Cryptohashsha3View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_view_copy(s : Cryptohashsha3View) -> Cryptohashsha3View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3View::copy(self : Cryptohashsha3View) -> Cryptohashsha3View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_view_fill(s : Cryptohashsha3View, v : Double) -> Cryptohashsha3View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3View::fill(self : Cryptohashsha3View, v : Double) -> Cryptohashsha3View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_view_min(s : Cryptohashsha3View) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3View::min(self : Cryptohashsha3View) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_view_max(s : Cryptohashsha3View) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3View::max(self : Cryptohashsha3View) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_view_to_string(s : Cryptohashsha3View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3View::to_string(self : Cryptohashsha3View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Range {
@@ -963,45 +963,45 @@ pub fn crypto_hash_sha3_range_make(size : Int) -> Cryptohashsha3Range {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_range_len(s : Cryptohashsha3Range) -> Int { s.size }
+pub fn Cryptohashsha3Range::len(self : Cryptohashsha3Range) -> Int { self.size }
 
-pub fn crypto_hash_sha3_range_get(s : Cryptohashsha3Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Range::get(self : Cryptohashsha3Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_range_set(s : Cryptohashsha3Range, i : Int, v : Double) -> Cryptohashsha3Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Range::set(self : Cryptohashsha3Range, i : Int, v : Double) -> Cryptohashsha3Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_range_sum(s : Cryptohashsha3Range) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Range::sum(self : Cryptohashsha3Range) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_range_mean(s : Cryptohashsha3Range) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Range::mean(self : Cryptohashsha3Range) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_range_scale(s : Cryptohashsha3Range, f : Double) -> Cryptohashsha3Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Range::scale(self : Cryptohashsha3Range, f : Double) -> Cryptohashsha3Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_range_add(a : Cryptohashsha3Range, b : Cryptohashsha3Range) -> Cryptohashsha3Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Range::add(self : Cryptohashsha3Range, other : Cryptohashsha3Range) -> Cryptohashsha3Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_range_copy(s : Cryptohashsha3Range) -> Cryptohashsha3Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Range::copy(self : Cryptohashsha3Range) -> Cryptohashsha3Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_range_fill(s : Cryptohashsha3Range, v : Double) -> Cryptohashsha3Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Range::fill(self : Cryptohashsha3Range, v : Double) -> Cryptohashsha3Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_range_min(s : Cryptohashsha3Range) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Range::min(self : Cryptohashsha3Range) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_range_max(s : Cryptohashsha3Range) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Range::max(self : Cryptohashsha3Range) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_range_to_string(s : Cryptohashsha3Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Range::to_string(self : Cryptohashsha3Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha3Slice {
@@ -1014,44 +1014,44 @@ pub fn crypto_hash_sha3_slice_make(size : Int) -> Cryptohashsha3Slice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha3_slice_len(s : Cryptohashsha3Slice) -> Int { s.size }
+pub fn Cryptohashsha3Slice::len(self : Cryptohashsha3Slice) -> Int { self.size }
 
-pub fn crypto_hash_sha3_slice_get(s : Cryptohashsha3Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha3Slice::get(self : Cryptohashsha3Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha3_slice_set(s : Cryptohashsha3Slice, i : Int, v : Double) -> Cryptohashsha3Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Slice::set(self : Cryptohashsha3Slice, i : Int, v : Double) -> Cryptohashsha3Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_slice_sum(s : Cryptohashsha3Slice) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha3Slice::sum(self : Cryptohashsha3Slice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha3_slice_mean(s : Cryptohashsha3Slice) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha3Slice::mean(self : Cryptohashsha3Slice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha3_slice_scale(s : Cryptohashsha3Slice, f : Double) -> Cryptohashsha3Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Slice::scale(self : Cryptohashsha3Slice, f : Double) -> Cryptohashsha3Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_slice_add(a : Cryptohashsha3Slice, b : Cryptohashsha3Slice) -> Cryptohashsha3Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha3Slice::add(self : Cryptohashsha3Slice, other : Cryptohashsha3Slice) -> Cryptohashsha3Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_slice_copy(s : Cryptohashsha3Slice) -> Cryptohashsha3Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Slice::copy(self : Cryptohashsha3Slice) -> Cryptohashsha3Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_slice_fill(s : Cryptohashsha3Slice, v : Double) -> Cryptohashsha3Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha3Slice::fill(self : Cryptohashsha3Slice, v : Double) -> Cryptohashsha3Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha3_slice_min(s : Cryptohashsha3Slice) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha3Slice::min(self : Cryptohashsha3Slice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha3_slice_max(s : Cryptohashsha3Slice) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha3Slice::max(self : Cryptohashsha3Slice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha3_slice_to_string(s : Cryptohashsha3Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha3Slice::to_string(self : Cryptohashsha3Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

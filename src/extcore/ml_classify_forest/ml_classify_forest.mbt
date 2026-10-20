@@ -351,45 +351,45 @@ pub fn ml_classify_forest_frame_make(size : Int) -> MlclassifyforestFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_frame_len(s : MlclassifyforestFrame) -> Int { s.size }
+pub fn MlclassifyforestFrame::len(self : MlclassifyforestFrame) -> Int { self.size }
 
-pub fn ml_classify_forest_frame_get(s : MlclassifyforestFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestFrame::get(self : MlclassifyforestFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_frame_set(s : MlclassifyforestFrame, i : Int, v : Double) -> MlclassifyforestFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestFrame::set(self : MlclassifyforestFrame, i : Int, v : Double) -> MlclassifyforestFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_frame_sum(s : MlclassifyforestFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestFrame::sum(self : MlclassifyforestFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_frame_mean(s : MlclassifyforestFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestFrame::mean(self : MlclassifyforestFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_frame_scale(s : MlclassifyforestFrame, f : Double) -> MlclassifyforestFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestFrame::scale(self : MlclassifyforestFrame, f : Double) -> MlclassifyforestFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_frame_add(a : MlclassifyforestFrame, b : MlclassifyforestFrame) -> MlclassifyforestFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestFrame::add(self : MlclassifyforestFrame, other : MlclassifyforestFrame) -> MlclassifyforestFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_frame_copy(s : MlclassifyforestFrame) -> MlclassifyforestFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestFrame::copy(self : MlclassifyforestFrame) -> MlclassifyforestFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_frame_fill(s : MlclassifyforestFrame, v : Double) -> MlclassifyforestFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestFrame::fill(self : MlclassifyforestFrame, v : Double) -> MlclassifyforestFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_frame_min(s : MlclassifyforestFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestFrame::min(self : MlclassifyforestFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_frame_max(s : MlclassifyforestFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestFrame::max(self : MlclassifyforestFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_frame_to_string(s : MlclassifyforestFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestFrame::to_string(self : MlclassifyforestFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_forest_table_make(size : Int) -> MlclassifyforestTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_table_len(s : MlclassifyforestTable) -> Int { s.size }
+pub fn MlclassifyforestTable::len(self : MlclassifyforestTable) -> Int { self.size }
 
-pub fn ml_classify_forest_table_get(s : MlclassifyforestTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestTable::get(self : MlclassifyforestTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_table_set(s : MlclassifyforestTable, i : Int, v : Double) -> MlclassifyforestTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestTable::set(self : MlclassifyforestTable, i : Int, v : Double) -> MlclassifyforestTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_table_sum(s : MlclassifyforestTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestTable::sum(self : MlclassifyforestTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_table_mean(s : MlclassifyforestTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestTable::mean(self : MlclassifyforestTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_table_scale(s : MlclassifyforestTable, f : Double) -> MlclassifyforestTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestTable::scale(self : MlclassifyforestTable, f : Double) -> MlclassifyforestTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_table_add(a : MlclassifyforestTable, b : MlclassifyforestTable) -> MlclassifyforestTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestTable::add(self : MlclassifyforestTable, other : MlclassifyforestTable) -> MlclassifyforestTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_table_copy(s : MlclassifyforestTable) -> MlclassifyforestTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestTable::copy(self : MlclassifyforestTable) -> MlclassifyforestTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_table_fill(s : MlclassifyforestTable, v : Double) -> MlclassifyforestTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestTable::fill(self : MlclassifyforestTable, v : Double) -> MlclassifyforestTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_table_min(s : MlclassifyforestTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestTable::min(self : MlclassifyforestTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_table_max(s : MlclassifyforestTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestTable::max(self : MlclassifyforestTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_table_to_string(s : MlclassifyforestTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestTable::to_string(self : MlclassifyforestTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_forest_graphn_make(size : Int) -> MlclassifyforestGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_graphn_len(s : MlclassifyforestGraphN) -> Int { s.size }
+pub fn MlclassifyforestGraphN::len(self : MlclassifyforestGraphN) -> Int { self.size }
 
-pub fn ml_classify_forest_graphn_get(s : MlclassifyforestGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestGraphN::get(self : MlclassifyforestGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_graphn_set(s : MlclassifyforestGraphN, i : Int, v : Double) -> MlclassifyforestGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestGraphN::set(self : MlclassifyforestGraphN, i : Int, v : Double) -> MlclassifyforestGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_graphn_sum(s : MlclassifyforestGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestGraphN::sum(self : MlclassifyforestGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_graphn_mean(s : MlclassifyforestGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestGraphN::mean(self : MlclassifyforestGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_graphn_scale(s : MlclassifyforestGraphN, f : Double) -> MlclassifyforestGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestGraphN::scale(self : MlclassifyforestGraphN, f : Double) -> MlclassifyforestGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_graphn_add(a : MlclassifyforestGraphN, b : MlclassifyforestGraphN) -> MlclassifyforestGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestGraphN::add(self : MlclassifyforestGraphN, other : MlclassifyforestGraphN) -> MlclassifyforestGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_graphn_copy(s : MlclassifyforestGraphN) -> MlclassifyforestGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestGraphN::copy(self : MlclassifyforestGraphN) -> MlclassifyforestGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_graphn_fill(s : MlclassifyforestGraphN, v : Double) -> MlclassifyforestGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestGraphN::fill(self : MlclassifyforestGraphN, v : Double) -> MlclassifyforestGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_graphn_min(s : MlclassifyforestGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestGraphN::min(self : MlclassifyforestGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_graphn_max(s : MlclassifyforestGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestGraphN::max(self : MlclassifyforestGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_graphn_to_string(s : MlclassifyforestGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestGraphN::to_string(self : MlclassifyforestGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_forest_node_make(size : Int) -> MlclassifyforestNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_node_len(s : MlclassifyforestNode) -> Int { s.size }
+pub fn MlclassifyforestNode::len(self : MlclassifyforestNode) -> Int { self.size }
 
-pub fn ml_classify_forest_node_get(s : MlclassifyforestNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestNode::get(self : MlclassifyforestNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_node_set(s : MlclassifyforestNode, i : Int, v : Double) -> MlclassifyforestNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestNode::set(self : MlclassifyforestNode, i : Int, v : Double) -> MlclassifyforestNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_node_sum(s : MlclassifyforestNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestNode::sum(self : MlclassifyforestNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_node_mean(s : MlclassifyforestNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestNode::mean(self : MlclassifyforestNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_node_scale(s : MlclassifyforestNode, f : Double) -> MlclassifyforestNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestNode::scale(self : MlclassifyforestNode, f : Double) -> MlclassifyforestNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_node_add(a : MlclassifyforestNode, b : MlclassifyforestNode) -> MlclassifyforestNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestNode::add(self : MlclassifyforestNode, other : MlclassifyforestNode) -> MlclassifyforestNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_node_copy(s : MlclassifyforestNode) -> MlclassifyforestNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestNode::copy(self : MlclassifyforestNode) -> MlclassifyforestNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_node_fill(s : MlclassifyforestNode, v : Double) -> MlclassifyforestNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestNode::fill(self : MlclassifyforestNode, v : Double) -> MlclassifyforestNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_node_min(s : MlclassifyforestNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestNode::min(self : MlclassifyforestNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_node_max(s : MlclassifyforestNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestNode::max(self : MlclassifyforestNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_node_to_string(s : MlclassifyforestNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestNode::to_string(self : MlclassifyforestNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_forest_edge_make(size : Int) -> MlclassifyforestEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_edge_len(s : MlclassifyforestEdge) -> Int { s.size }
+pub fn MlclassifyforestEdge::len(self : MlclassifyforestEdge) -> Int { self.size }
 
-pub fn ml_classify_forest_edge_get(s : MlclassifyforestEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestEdge::get(self : MlclassifyforestEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_edge_set(s : MlclassifyforestEdge, i : Int, v : Double) -> MlclassifyforestEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestEdge::set(self : MlclassifyforestEdge, i : Int, v : Double) -> MlclassifyforestEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_edge_sum(s : MlclassifyforestEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestEdge::sum(self : MlclassifyforestEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_edge_mean(s : MlclassifyforestEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestEdge::mean(self : MlclassifyforestEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_edge_scale(s : MlclassifyforestEdge, f : Double) -> MlclassifyforestEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestEdge::scale(self : MlclassifyforestEdge, f : Double) -> MlclassifyforestEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_edge_add(a : MlclassifyforestEdge, b : MlclassifyforestEdge) -> MlclassifyforestEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestEdge::add(self : MlclassifyforestEdge, other : MlclassifyforestEdge) -> MlclassifyforestEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_edge_copy(s : MlclassifyforestEdge) -> MlclassifyforestEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestEdge::copy(self : MlclassifyforestEdge) -> MlclassifyforestEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_edge_fill(s : MlclassifyforestEdge, v : Double) -> MlclassifyforestEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestEdge::fill(self : MlclassifyforestEdge, v : Double) -> MlclassifyforestEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_edge_min(s : MlclassifyforestEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestEdge::min(self : MlclassifyforestEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_edge_max(s : MlclassifyforestEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestEdge::max(self : MlclassifyforestEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_edge_to_string(s : MlclassifyforestEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestEdge::to_string(self : MlclassifyforestEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_forest_path_make(size : Int) -> MlclassifyforestPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_path_len(s : MlclassifyforestPath) -> Int { s.size }
+pub fn MlclassifyforestPath::len(self : MlclassifyforestPath) -> Int { self.size }
 
-pub fn ml_classify_forest_path_get(s : MlclassifyforestPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestPath::get(self : MlclassifyforestPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_path_set(s : MlclassifyforestPath, i : Int, v : Double) -> MlclassifyforestPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestPath::set(self : MlclassifyforestPath, i : Int, v : Double) -> MlclassifyforestPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_path_sum(s : MlclassifyforestPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestPath::sum(self : MlclassifyforestPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_path_mean(s : MlclassifyforestPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestPath::mean(self : MlclassifyforestPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_path_scale(s : MlclassifyforestPath, f : Double) -> MlclassifyforestPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestPath::scale(self : MlclassifyforestPath, f : Double) -> MlclassifyforestPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_path_add(a : MlclassifyforestPath, b : MlclassifyforestPath) -> MlclassifyforestPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestPath::add(self : MlclassifyforestPath, other : MlclassifyforestPath) -> MlclassifyforestPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_path_copy(s : MlclassifyforestPath) -> MlclassifyforestPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestPath::copy(self : MlclassifyforestPath) -> MlclassifyforestPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_path_fill(s : MlclassifyforestPath, v : Double) -> MlclassifyforestPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestPath::fill(self : MlclassifyforestPath, v : Double) -> MlclassifyforestPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_path_min(s : MlclassifyforestPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestPath::min(self : MlclassifyforestPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_path_max(s : MlclassifyforestPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestPath::max(self : MlclassifyforestPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_path_to_string(s : MlclassifyforestPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestPath::to_string(self : MlclassifyforestPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_forest_cluster_make(size : Int) -> MlclassifyforestCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_cluster_len(s : MlclassifyforestCluster) -> Int { s.size }
+pub fn MlclassifyforestCluster::len(self : MlclassifyforestCluster) -> Int { self.size }
 
-pub fn ml_classify_forest_cluster_get(s : MlclassifyforestCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestCluster::get(self : MlclassifyforestCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_cluster_set(s : MlclassifyforestCluster, i : Int, v : Double) -> MlclassifyforestCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestCluster::set(self : MlclassifyforestCluster, i : Int, v : Double) -> MlclassifyforestCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cluster_sum(s : MlclassifyforestCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestCluster::sum(self : MlclassifyforestCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_cluster_mean(s : MlclassifyforestCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestCluster::mean(self : MlclassifyforestCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_cluster_scale(s : MlclassifyforestCluster, f : Double) -> MlclassifyforestCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestCluster::scale(self : MlclassifyforestCluster, f : Double) -> MlclassifyforestCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cluster_add(a : MlclassifyforestCluster, b : MlclassifyforestCluster) -> MlclassifyforestCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestCluster::add(self : MlclassifyforestCluster, other : MlclassifyforestCluster) -> MlclassifyforestCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cluster_copy(s : MlclassifyforestCluster) -> MlclassifyforestCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestCluster::copy(self : MlclassifyforestCluster) -> MlclassifyforestCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cluster_fill(s : MlclassifyforestCluster, v : Double) -> MlclassifyforestCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestCluster::fill(self : MlclassifyforestCluster, v : Double) -> MlclassifyforestCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cluster_min(s : MlclassifyforestCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestCluster::min(self : MlclassifyforestCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_cluster_max(s : MlclassifyforestCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestCluster::max(self : MlclassifyforestCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_cluster_to_string(s : MlclassifyforestCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestCluster::to_string(self : MlclassifyforestCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_forest_model_make(size : Int) -> MlclassifyforestModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_model_len(s : MlclassifyforestModel) -> Int { s.size }
+pub fn MlclassifyforestModel::len(self : MlclassifyforestModel) -> Int { self.size }
 
-pub fn ml_classify_forest_model_get(s : MlclassifyforestModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestModel::get(self : MlclassifyforestModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_model_set(s : MlclassifyforestModel, i : Int, v : Double) -> MlclassifyforestModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestModel::set(self : MlclassifyforestModel, i : Int, v : Double) -> MlclassifyforestModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_model_sum(s : MlclassifyforestModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestModel::sum(self : MlclassifyforestModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_model_mean(s : MlclassifyforestModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestModel::mean(self : MlclassifyforestModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_model_scale(s : MlclassifyforestModel, f : Double) -> MlclassifyforestModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestModel::scale(self : MlclassifyforestModel, f : Double) -> MlclassifyforestModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_model_add(a : MlclassifyforestModel, b : MlclassifyforestModel) -> MlclassifyforestModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestModel::add(self : MlclassifyforestModel, other : MlclassifyforestModel) -> MlclassifyforestModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_model_copy(s : MlclassifyforestModel) -> MlclassifyforestModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestModel::copy(self : MlclassifyforestModel) -> MlclassifyforestModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_model_fill(s : MlclassifyforestModel, v : Double) -> MlclassifyforestModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestModel::fill(self : MlclassifyforestModel, v : Double) -> MlclassifyforestModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_model_min(s : MlclassifyforestModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestModel::min(self : MlclassifyforestModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_model_max(s : MlclassifyforestModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestModel::max(self : MlclassifyforestModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_model_to_string(s : MlclassifyforestModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestModel::to_string(self : MlclassifyforestModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_forest_layer_make(size : Int) -> MlclassifyforestLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_layer_len(s : MlclassifyforestLayer) -> Int { s.size }
+pub fn MlclassifyforestLayer::len(self : MlclassifyforestLayer) -> Int { self.size }
 
-pub fn ml_classify_forest_layer_get(s : MlclassifyforestLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestLayer::get(self : MlclassifyforestLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_layer_set(s : MlclassifyforestLayer, i : Int, v : Double) -> MlclassifyforestLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestLayer::set(self : MlclassifyforestLayer, i : Int, v : Double) -> MlclassifyforestLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_layer_sum(s : MlclassifyforestLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestLayer::sum(self : MlclassifyforestLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_layer_mean(s : MlclassifyforestLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestLayer::mean(self : MlclassifyforestLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_layer_scale(s : MlclassifyforestLayer, f : Double) -> MlclassifyforestLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestLayer::scale(self : MlclassifyforestLayer, f : Double) -> MlclassifyforestLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_layer_add(a : MlclassifyforestLayer, b : MlclassifyforestLayer) -> MlclassifyforestLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestLayer::add(self : MlclassifyforestLayer, other : MlclassifyforestLayer) -> MlclassifyforestLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_layer_copy(s : MlclassifyforestLayer) -> MlclassifyforestLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestLayer::copy(self : MlclassifyforestLayer) -> MlclassifyforestLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_layer_fill(s : MlclassifyforestLayer, v : Double) -> MlclassifyforestLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestLayer::fill(self : MlclassifyforestLayer, v : Double) -> MlclassifyforestLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_layer_min(s : MlclassifyforestLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestLayer::min(self : MlclassifyforestLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_layer_max(s : MlclassifyforestLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestLayer::max(self : MlclassifyforestLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_layer_to_string(s : MlclassifyforestLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestLayer::to_string(self : MlclassifyforestLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_forest_buffer_make(size : Int) -> MlclassifyforestBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_buffer_len(s : MlclassifyforestBuffer) -> Int { s.size }
+pub fn MlclassifyforestBuffer::len(self : MlclassifyforestBuffer) -> Int { self.size }
 
-pub fn ml_classify_forest_buffer_get(s : MlclassifyforestBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestBuffer::get(self : MlclassifyforestBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_buffer_set(s : MlclassifyforestBuffer, i : Int, v : Double) -> MlclassifyforestBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestBuffer::set(self : MlclassifyforestBuffer, i : Int, v : Double) -> MlclassifyforestBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_buffer_sum(s : MlclassifyforestBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestBuffer::sum(self : MlclassifyforestBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_buffer_mean(s : MlclassifyforestBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestBuffer::mean(self : MlclassifyforestBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_buffer_scale(s : MlclassifyforestBuffer, f : Double) -> MlclassifyforestBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestBuffer::scale(self : MlclassifyforestBuffer, f : Double) -> MlclassifyforestBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_buffer_add(a : MlclassifyforestBuffer, b : MlclassifyforestBuffer) -> MlclassifyforestBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestBuffer::add(self : MlclassifyforestBuffer, other : MlclassifyforestBuffer) -> MlclassifyforestBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_buffer_copy(s : MlclassifyforestBuffer) -> MlclassifyforestBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestBuffer::copy(self : MlclassifyforestBuffer) -> MlclassifyforestBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_buffer_fill(s : MlclassifyforestBuffer, v : Double) -> MlclassifyforestBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestBuffer::fill(self : MlclassifyforestBuffer, v : Double) -> MlclassifyforestBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_buffer_min(s : MlclassifyforestBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestBuffer::min(self : MlclassifyforestBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_buffer_max(s : MlclassifyforestBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestBuffer::max(self : MlclassifyforestBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_buffer_to_string(s : MlclassifyforestBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestBuffer::to_string(self : MlclassifyforestBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_forest_cursor_make(size : Int) -> MlclassifyforestCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_cursor_len(s : MlclassifyforestCursor) -> Int { s.size }
+pub fn MlclassifyforestCursor::len(self : MlclassifyforestCursor) -> Int { self.size }
 
-pub fn ml_classify_forest_cursor_get(s : MlclassifyforestCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestCursor::get(self : MlclassifyforestCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_cursor_set(s : MlclassifyforestCursor, i : Int, v : Double) -> MlclassifyforestCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestCursor::set(self : MlclassifyforestCursor, i : Int, v : Double) -> MlclassifyforestCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cursor_sum(s : MlclassifyforestCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestCursor::sum(self : MlclassifyforestCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_cursor_mean(s : MlclassifyforestCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestCursor::mean(self : MlclassifyforestCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_cursor_scale(s : MlclassifyforestCursor, f : Double) -> MlclassifyforestCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestCursor::scale(self : MlclassifyforestCursor, f : Double) -> MlclassifyforestCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cursor_add(a : MlclassifyforestCursor, b : MlclassifyforestCursor) -> MlclassifyforestCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestCursor::add(self : MlclassifyforestCursor, other : MlclassifyforestCursor) -> MlclassifyforestCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cursor_copy(s : MlclassifyforestCursor) -> MlclassifyforestCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestCursor::copy(self : MlclassifyforestCursor) -> MlclassifyforestCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cursor_fill(s : MlclassifyforestCursor, v : Double) -> MlclassifyforestCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestCursor::fill(self : MlclassifyforestCursor, v : Double) -> MlclassifyforestCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_cursor_min(s : MlclassifyforestCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestCursor::min(self : MlclassifyforestCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_cursor_max(s : MlclassifyforestCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestCursor::max(self : MlclassifyforestCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_cursor_to_string(s : MlclassifyforestCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestCursor::to_string(self : MlclassifyforestCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestView {
@@ -912,45 +912,45 @@ pub fn ml_classify_forest_view_make(size : Int) -> MlclassifyforestView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_view_len(s : MlclassifyforestView) -> Int { s.size }
+pub fn MlclassifyforestView::len(self : MlclassifyforestView) -> Int { self.size }
 
-pub fn ml_classify_forest_view_get(s : MlclassifyforestView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestView::get(self : MlclassifyforestView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_view_set(s : MlclassifyforestView, i : Int, v : Double) -> MlclassifyforestView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestView::set(self : MlclassifyforestView, i : Int, v : Double) -> MlclassifyforestView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_view_sum(s : MlclassifyforestView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestView::sum(self : MlclassifyforestView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_view_mean(s : MlclassifyforestView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestView::mean(self : MlclassifyforestView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_view_scale(s : MlclassifyforestView, f : Double) -> MlclassifyforestView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestView::scale(self : MlclassifyforestView, f : Double) -> MlclassifyforestView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_view_add(a : MlclassifyforestView, b : MlclassifyforestView) -> MlclassifyforestView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestView::add(self : MlclassifyforestView, other : MlclassifyforestView) -> MlclassifyforestView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_view_copy(s : MlclassifyforestView) -> MlclassifyforestView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestView::copy(self : MlclassifyforestView) -> MlclassifyforestView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_view_fill(s : MlclassifyforestView, v : Double) -> MlclassifyforestView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestView::fill(self : MlclassifyforestView, v : Double) -> MlclassifyforestView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_view_min(s : MlclassifyforestView) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestView::min(self : MlclassifyforestView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_view_max(s : MlclassifyforestView) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestView::max(self : MlclassifyforestView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_view_to_string(s : MlclassifyforestView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestView::to_string(self : MlclassifyforestView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_forest_range_make(size : Int) -> MlclassifyforestRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_range_len(s : MlclassifyforestRange) -> Int { s.size }
+pub fn MlclassifyforestRange::len(self : MlclassifyforestRange) -> Int { self.size }
 
-pub fn ml_classify_forest_range_get(s : MlclassifyforestRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestRange::get(self : MlclassifyforestRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_range_set(s : MlclassifyforestRange, i : Int, v : Double) -> MlclassifyforestRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestRange::set(self : MlclassifyforestRange, i : Int, v : Double) -> MlclassifyforestRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_range_sum(s : MlclassifyforestRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestRange::sum(self : MlclassifyforestRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_range_mean(s : MlclassifyforestRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestRange::mean(self : MlclassifyforestRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_range_scale(s : MlclassifyforestRange, f : Double) -> MlclassifyforestRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestRange::scale(self : MlclassifyforestRange, f : Double) -> MlclassifyforestRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_range_add(a : MlclassifyforestRange, b : MlclassifyforestRange) -> MlclassifyforestRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestRange::add(self : MlclassifyforestRange, other : MlclassifyforestRange) -> MlclassifyforestRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_range_copy(s : MlclassifyforestRange) -> MlclassifyforestRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestRange::copy(self : MlclassifyforestRange) -> MlclassifyforestRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_range_fill(s : MlclassifyforestRange, v : Double) -> MlclassifyforestRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestRange::fill(self : MlclassifyforestRange, v : Double) -> MlclassifyforestRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_range_min(s : MlclassifyforestRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestRange::min(self : MlclassifyforestRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_range_max(s : MlclassifyforestRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestRange::max(self : MlclassifyforestRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_range_to_string(s : MlclassifyforestRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestRange::to_string(self : MlclassifyforestRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyforestSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_forest_slice_make(size : Int) -> MlclassifyforestSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_forest_slice_len(s : MlclassifyforestSlice) -> Int { s.size }
+pub fn MlclassifyforestSlice::len(self : MlclassifyforestSlice) -> Int { self.size }
 
-pub fn ml_classify_forest_slice_get(s : MlclassifyforestSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyforestSlice::get(self : MlclassifyforestSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_forest_slice_set(s : MlclassifyforestSlice, i : Int, v : Double) -> MlclassifyforestSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyforestSlice::set(self : MlclassifyforestSlice, i : Int, v : Double) -> MlclassifyforestSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_slice_sum(s : MlclassifyforestSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyforestSlice::sum(self : MlclassifyforestSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_forest_slice_mean(s : MlclassifyforestSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyforestSlice::mean(self : MlclassifyforestSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_forest_slice_scale(s : MlclassifyforestSlice, f : Double) -> MlclassifyforestSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyforestSlice::scale(self : MlclassifyforestSlice, f : Double) -> MlclassifyforestSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_slice_add(a : MlclassifyforestSlice, b : MlclassifyforestSlice) -> MlclassifyforestSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyforestSlice::add(self : MlclassifyforestSlice, other : MlclassifyforestSlice) -> MlclassifyforestSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_forest_slice_copy(s : MlclassifyforestSlice) -> MlclassifyforestSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyforestSlice::copy(self : MlclassifyforestSlice) -> MlclassifyforestSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_slice_fill(s : MlclassifyforestSlice, v : Double) -> MlclassifyforestSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyforestSlice::fill(self : MlclassifyforestSlice, v : Double) -> MlclassifyforestSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_forest_slice_min(s : MlclassifyforestSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifyforestSlice::min(self : MlclassifyforestSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_forest_slice_max(s : MlclassifyforestSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifyforestSlice::max(self : MlclassifyforestSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_forest_slice_to_string(s : MlclassifyforestSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyforestSlice::to_string(self : MlclassifyforestSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

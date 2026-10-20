@@ -351,45 +351,45 @@ pub fn signal_window_flattop_frame_make(size : Int) -> SignalwindowflattopFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_frame_len(s : SignalwindowflattopFrame) -> Int { s.size }
+pub fn SignalwindowflattopFrame::len(self : SignalwindowflattopFrame) -> Int { self.size }
 
-pub fn signal_window_flattop_frame_get(s : SignalwindowflattopFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopFrame::get(self : SignalwindowflattopFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_frame_set(s : SignalwindowflattopFrame, i : Int, v : Double) -> SignalwindowflattopFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopFrame::set(self : SignalwindowflattopFrame, i : Int, v : Double) -> SignalwindowflattopFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_frame_sum(s : SignalwindowflattopFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopFrame::sum(self : SignalwindowflattopFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_frame_mean(s : SignalwindowflattopFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopFrame::mean(self : SignalwindowflattopFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_frame_scale(s : SignalwindowflattopFrame, f : Double) -> SignalwindowflattopFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopFrame::scale(self : SignalwindowflattopFrame, f : Double) -> SignalwindowflattopFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_frame_add(a : SignalwindowflattopFrame, b : SignalwindowflattopFrame) -> SignalwindowflattopFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopFrame::add(self : SignalwindowflattopFrame, other : SignalwindowflattopFrame) -> SignalwindowflattopFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_frame_copy(s : SignalwindowflattopFrame) -> SignalwindowflattopFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopFrame::copy(self : SignalwindowflattopFrame) -> SignalwindowflattopFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_frame_fill(s : SignalwindowflattopFrame, v : Double) -> SignalwindowflattopFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopFrame::fill(self : SignalwindowflattopFrame, v : Double) -> SignalwindowflattopFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_frame_min(s : SignalwindowflattopFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopFrame::min(self : SignalwindowflattopFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_frame_max(s : SignalwindowflattopFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopFrame::max(self : SignalwindowflattopFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_frame_to_string(s : SignalwindowflattopFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopFrame::to_string(self : SignalwindowflattopFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopTable {
@@ -402,45 +402,45 @@ pub fn signal_window_flattop_table_make(size : Int) -> SignalwindowflattopTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_table_len(s : SignalwindowflattopTable) -> Int { s.size }
+pub fn SignalwindowflattopTable::len(self : SignalwindowflattopTable) -> Int { self.size }
 
-pub fn signal_window_flattop_table_get(s : SignalwindowflattopTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopTable::get(self : SignalwindowflattopTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_table_set(s : SignalwindowflattopTable, i : Int, v : Double) -> SignalwindowflattopTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopTable::set(self : SignalwindowflattopTable, i : Int, v : Double) -> SignalwindowflattopTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_table_sum(s : SignalwindowflattopTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopTable::sum(self : SignalwindowflattopTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_table_mean(s : SignalwindowflattopTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopTable::mean(self : SignalwindowflattopTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_table_scale(s : SignalwindowflattopTable, f : Double) -> SignalwindowflattopTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopTable::scale(self : SignalwindowflattopTable, f : Double) -> SignalwindowflattopTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_table_add(a : SignalwindowflattopTable, b : SignalwindowflattopTable) -> SignalwindowflattopTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopTable::add(self : SignalwindowflattopTable, other : SignalwindowflattopTable) -> SignalwindowflattopTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_table_copy(s : SignalwindowflattopTable) -> SignalwindowflattopTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopTable::copy(self : SignalwindowflattopTable) -> SignalwindowflattopTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_table_fill(s : SignalwindowflattopTable, v : Double) -> SignalwindowflattopTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopTable::fill(self : SignalwindowflattopTable, v : Double) -> SignalwindowflattopTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_table_min(s : SignalwindowflattopTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopTable::min(self : SignalwindowflattopTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_table_max(s : SignalwindowflattopTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopTable::max(self : SignalwindowflattopTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_table_to_string(s : SignalwindowflattopTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopTable::to_string(self : SignalwindowflattopTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_flattop_graphn_make(size : Int) -> SignalwindowflattopGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_graphn_len(s : SignalwindowflattopGraphN) -> Int { s.size }
+pub fn SignalwindowflattopGraphN::len(self : SignalwindowflattopGraphN) -> Int { self.size }
 
-pub fn signal_window_flattop_graphn_get(s : SignalwindowflattopGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopGraphN::get(self : SignalwindowflattopGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_graphn_set(s : SignalwindowflattopGraphN, i : Int, v : Double) -> SignalwindowflattopGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopGraphN::set(self : SignalwindowflattopGraphN, i : Int, v : Double) -> SignalwindowflattopGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_graphn_sum(s : SignalwindowflattopGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopGraphN::sum(self : SignalwindowflattopGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_graphn_mean(s : SignalwindowflattopGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopGraphN::mean(self : SignalwindowflattopGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_graphn_scale(s : SignalwindowflattopGraphN, f : Double) -> SignalwindowflattopGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopGraphN::scale(self : SignalwindowflattopGraphN, f : Double) -> SignalwindowflattopGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_graphn_add(a : SignalwindowflattopGraphN, b : SignalwindowflattopGraphN) -> SignalwindowflattopGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopGraphN::add(self : SignalwindowflattopGraphN, other : SignalwindowflattopGraphN) -> SignalwindowflattopGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_graphn_copy(s : SignalwindowflattopGraphN) -> SignalwindowflattopGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopGraphN::copy(self : SignalwindowflattopGraphN) -> SignalwindowflattopGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_graphn_fill(s : SignalwindowflattopGraphN, v : Double) -> SignalwindowflattopGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopGraphN::fill(self : SignalwindowflattopGraphN, v : Double) -> SignalwindowflattopGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_graphn_min(s : SignalwindowflattopGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopGraphN::min(self : SignalwindowflattopGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_graphn_max(s : SignalwindowflattopGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopGraphN::max(self : SignalwindowflattopGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_graphn_to_string(s : SignalwindowflattopGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopGraphN::to_string(self : SignalwindowflattopGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopNode {
@@ -504,45 +504,45 @@ pub fn signal_window_flattop_node_make(size : Int) -> SignalwindowflattopNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_node_len(s : SignalwindowflattopNode) -> Int { s.size }
+pub fn SignalwindowflattopNode::len(self : SignalwindowflattopNode) -> Int { self.size }
 
-pub fn signal_window_flattop_node_get(s : SignalwindowflattopNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopNode::get(self : SignalwindowflattopNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_node_set(s : SignalwindowflattopNode, i : Int, v : Double) -> SignalwindowflattopNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopNode::set(self : SignalwindowflattopNode, i : Int, v : Double) -> SignalwindowflattopNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_node_sum(s : SignalwindowflattopNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopNode::sum(self : SignalwindowflattopNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_node_mean(s : SignalwindowflattopNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopNode::mean(self : SignalwindowflattopNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_node_scale(s : SignalwindowflattopNode, f : Double) -> SignalwindowflattopNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopNode::scale(self : SignalwindowflattopNode, f : Double) -> SignalwindowflattopNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_node_add(a : SignalwindowflattopNode, b : SignalwindowflattopNode) -> SignalwindowflattopNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopNode::add(self : SignalwindowflattopNode, other : SignalwindowflattopNode) -> SignalwindowflattopNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_node_copy(s : SignalwindowflattopNode) -> SignalwindowflattopNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopNode::copy(self : SignalwindowflattopNode) -> SignalwindowflattopNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_node_fill(s : SignalwindowflattopNode, v : Double) -> SignalwindowflattopNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopNode::fill(self : SignalwindowflattopNode, v : Double) -> SignalwindowflattopNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_node_min(s : SignalwindowflattopNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopNode::min(self : SignalwindowflattopNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_node_max(s : SignalwindowflattopNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopNode::max(self : SignalwindowflattopNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_node_to_string(s : SignalwindowflattopNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopNode::to_string(self : SignalwindowflattopNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_flattop_edge_make(size : Int) -> SignalwindowflattopEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_edge_len(s : SignalwindowflattopEdge) -> Int { s.size }
+pub fn SignalwindowflattopEdge::len(self : SignalwindowflattopEdge) -> Int { self.size }
 
-pub fn signal_window_flattop_edge_get(s : SignalwindowflattopEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopEdge::get(self : SignalwindowflattopEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_edge_set(s : SignalwindowflattopEdge, i : Int, v : Double) -> SignalwindowflattopEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopEdge::set(self : SignalwindowflattopEdge, i : Int, v : Double) -> SignalwindowflattopEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_edge_sum(s : SignalwindowflattopEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopEdge::sum(self : SignalwindowflattopEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_edge_mean(s : SignalwindowflattopEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopEdge::mean(self : SignalwindowflattopEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_edge_scale(s : SignalwindowflattopEdge, f : Double) -> SignalwindowflattopEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopEdge::scale(self : SignalwindowflattopEdge, f : Double) -> SignalwindowflattopEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_edge_add(a : SignalwindowflattopEdge, b : SignalwindowflattopEdge) -> SignalwindowflattopEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopEdge::add(self : SignalwindowflattopEdge, other : SignalwindowflattopEdge) -> SignalwindowflattopEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_edge_copy(s : SignalwindowflattopEdge) -> SignalwindowflattopEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopEdge::copy(self : SignalwindowflattopEdge) -> SignalwindowflattopEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_edge_fill(s : SignalwindowflattopEdge, v : Double) -> SignalwindowflattopEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopEdge::fill(self : SignalwindowflattopEdge, v : Double) -> SignalwindowflattopEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_edge_min(s : SignalwindowflattopEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopEdge::min(self : SignalwindowflattopEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_edge_max(s : SignalwindowflattopEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopEdge::max(self : SignalwindowflattopEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_edge_to_string(s : SignalwindowflattopEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopEdge::to_string(self : SignalwindowflattopEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopPath {
@@ -606,45 +606,45 @@ pub fn signal_window_flattop_path_make(size : Int) -> SignalwindowflattopPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_path_len(s : SignalwindowflattopPath) -> Int { s.size }
+pub fn SignalwindowflattopPath::len(self : SignalwindowflattopPath) -> Int { self.size }
 
-pub fn signal_window_flattop_path_get(s : SignalwindowflattopPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopPath::get(self : SignalwindowflattopPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_path_set(s : SignalwindowflattopPath, i : Int, v : Double) -> SignalwindowflattopPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopPath::set(self : SignalwindowflattopPath, i : Int, v : Double) -> SignalwindowflattopPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_path_sum(s : SignalwindowflattopPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopPath::sum(self : SignalwindowflattopPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_path_mean(s : SignalwindowflattopPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopPath::mean(self : SignalwindowflattopPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_path_scale(s : SignalwindowflattopPath, f : Double) -> SignalwindowflattopPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopPath::scale(self : SignalwindowflattopPath, f : Double) -> SignalwindowflattopPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_path_add(a : SignalwindowflattopPath, b : SignalwindowflattopPath) -> SignalwindowflattopPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopPath::add(self : SignalwindowflattopPath, other : SignalwindowflattopPath) -> SignalwindowflattopPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_path_copy(s : SignalwindowflattopPath) -> SignalwindowflattopPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopPath::copy(self : SignalwindowflattopPath) -> SignalwindowflattopPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_path_fill(s : SignalwindowflattopPath, v : Double) -> SignalwindowflattopPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopPath::fill(self : SignalwindowflattopPath, v : Double) -> SignalwindowflattopPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_path_min(s : SignalwindowflattopPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopPath::min(self : SignalwindowflattopPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_path_max(s : SignalwindowflattopPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopPath::max(self : SignalwindowflattopPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_path_to_string(s : SignalwindowflattopPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopPath::to_string(self : SignalwindowflattopPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_flattop_cluster_make(size : Int) -> SignalwindowflattopClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_cluster_len(s : SignalwindowflattopCluster) -> Int { s.size }
+pub fn SignalwindowflattopCluster::len(self : SignalwindowflattopCluster) -> Int { self.size }
 
-pub fn signal_window_flattop_cluster_get(s : SignalwindowflattopCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopCluster::get(self : SignalwindowflattopCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_cluster_set(s : SignalwindowflattopCluster, i : Int, v : Double) -> SignalwindowflattopCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCluster::set(self : SignalwindowflattopCluster, i : Int, v : Double) -> SignalwindowflattopCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cluster_sum(s : SignalwindowflattopCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopCluster::sum(self : SignalwindowflattopCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_cluster_mean(s : SignalwindowflattopCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopCluster::mean(self : SignalwindowflattopCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_cluster_scale(s : SignalwindowflattopCluster, f : Double) -> SignalwindowflattopCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCluster::scale(self : SignalwindowflattopCluster, f : Double) -> SignalwindowflattopCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cluster_add(a : SignalwindowflattopCluster, b : SignalwindowflattopCluster) -> SignalwindowflattopCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopCluster::add(self : SignalwindowflattopCluster, other : SignalwindowflattopCluster) -> SignalwindowflattopCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cluster_copy(s : SignalwindowflattopCluster) -> SignalwindowflattopCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCluster::copy(self : SignalwindowflattopCluster) -> SignalwindowflattopCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cluster_fill(s : SignalwindowflattopCluster, v : Double) -> SignalwindowflattopCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCluster::fill(self : SignalwindowflattopCluster, v : Double) -> SignalwindowflattopCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cluster_min(s : SignalwindowflattopCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopCluster::min(self : SignalwindowflattopCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_cluster_max(s : SignalwindowflattopCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopCluster::max(self : SignalwindowflattopCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_cluster_to_string(s : SignalwindowflattopCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopCluster::to_string(self : SignalwindowflattopCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopModel {
@@ -708,45 +708,45 @@ pub fn signal_window_flattop_model_make(size : Int) -> SignalwindowflattopModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_model_len(s : SignalwindowflattopModel) -> Int { s.size }
+pub fn SignalwindowflattopModel::len(self : SignalwindowflattopModel) -> Int { self.size }
 
-pub fn signal_window_flattop_model_get(s : SignalwindowflattopModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopModel::get(self : SignalwindowflattopModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_model_set(s : SignalwindowflattopModel, i : Int, v : Double) -> SignalwindowflattopModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopModel::set(self : SignalwindowflattopModel, i : Int, v : Double) -> SignalwindowflattopModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_model_sum(s : SignalwindowflattopModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopModel::sum(self : SignalwindowflattopModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_model_mean(s : SignalwindowflattopModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopModel::mean(self : SignalwindowflattopModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_model_scale(s : SignalwindowflattopModel, f : Double) -> SignalwindowflattopModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopModel::scale(self : SignalwindowflattopModel, f : Double) -> SignalwindowflattopModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_model_add(a : SignalwindowflattopModel, b : SignalwindowflattopModel) -> SignalwindowflattopModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopModel::add(self : SignalwindowflattopModel, other : SignalwindowflattopModel) -> SignalwindowflattopModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_model_copy(s : SignalwindowflattopModel) -> SignalwindowflattopModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopModel::copy(self : SignalwindowflattopModel) -> SignalwindowflattopModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_model_fill(s : SignalwindowflattopModel, v : Double) -> SignalwindowflattopModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopModel::fill(self : SignalwindowflattopModel, v : Double) -> SignalwindowflattopModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_model_min(s : SignalwindowflattopModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopModel::min(self : SignalwindowflattopModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_model_max(s : SignalwindowflattopModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopModel::max(self : SignalwindowflattopModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_model_to_string(s : SignalwindowflattopModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopModel::to_string(self : SignalwindowflattopModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_flattop_layer_make(size : Int) -> SignalwindowflattopLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_layer_len(s : SignalwindowflattopLayer) -> Int { s.size }
+pub fn SignalwindowflattopLayer::len(self : SignalwindowflattopLayer) -> Int { self.size }
 
-pub fn signal_window_flattop_layer_get(s : SignalwindowflattopLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopLayer::get(self : SignalwindowflattopLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_layer_set(s : SignalwindowflattopLayer, i : Int, v : Double) -> SignalwindowflattopLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopLayer::set(self : SignalwindowflattopLayer, i : Int, v : Double) -> SignalwindowflattopLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_layer_sum(s : SignalwindowflattopLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopLayer::sum(self : SignalwindowflattopLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_layer_mean(s : SignalwindowflattopLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopLayer::mean(self : SignalwindowflattopLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_layer_scale(s : SignalwindowflattopLayer, f : Double) -> SignalwindowflattopLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopLayer::scale(self : SignalwindowflattopLayer, f : Double) -> SignalwindowflattopLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_layer_add(a : SignalwindowflattopLayer, b : SignalwindowflattopLayer) -> SignalwindowflattopLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopLayer::add(self : SignalwindowflattopLayer, other : SignalwindowflattopLayer) -> SignalwindowflattopLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_layer_copy(s : SignalwindowflattopLayer) -> SignalwindowflattopLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopLayer::copy(self : SignalwindowflattopLayer) -> SignalwindowflattopLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_layer_fill(s : SignalwindowflattopLayer, v : Double) -> SignalwindowflattopLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopLayer::fill(self : SignalwindowflattopLayer, v : Double) -> SignalwindowflattopLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_layer_min(s : SignalwindowflattopLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopLayer::min(self : SignalwindowflattopLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_layer_max(s : SignalwindowflattopLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopLayer::max(self : SignalwindowflattopLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_layer_to_string(s : SignalwindowflattopLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopLayer::to_string(self : SignalwindowflattopLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_flattop_buffer_make(size : Int) -> SignalwindowflattopBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_buffer_len(s : SignalwindowflattopBuffer) -> Int { s.size }
+pub fn SignalwindowflattopBuffer::len(self : SignalwindowflattopBuffer) -> Int { self.size }
 
-pub fn signal_window_flattop_buffer_get(s : SignalwindowflattopBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopBuffer::get(self : SignalwindowflattopBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_buffer_set(s : SignalwindowflattopBuffer, i : Int, v : Double) -> SignalwindowflattopBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopBuffer::set(self : SignalwindowflattopBuffer, i : Int, v : Double) -> SignalwindowflattopBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_buffer_sum(s : SignalwindowflattopBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopBuffer::sum(self : SignalwindowflattopBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_buffer_mean(s : SignalwindowflattopBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopBuffer::mean(self : SignalwindowflattopBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_buffer_scale(s : SignalwindowflattopBuffer, f : Double) -> SignalwindowflattopBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopBuffer::scale(self : SignalwindowflattopBuffer, f : Double) -> SignalwindowflattopBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_buffer_add(a : SignalwindowflattopBuffer, b : SignalwindowflattopBuffer) -> SignalwindowflattopBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopBuffer::add(self : SignalwindowflattopBuffer, other : SignalwindowflattopBuffer) -> SignalwindowflattopBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_buffer_copy(s : SignalwindowflattopBuffer) -> SignalwindowflattopBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopBuffer::copy(self : SignalwindowflattopBuffer) -> SignalwindowflattopBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_buffer_fill(s : SignalwindowflattopBuffer, v : Double) -> SignalwindowflattopBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopBuffer::fill(self : SignalwindowflattopBuffer, v : Double) -> SignalwindowflattopBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_buffer_min(s : SignalwindowflattopBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopBuffer::min(self : SignalwindowflattopBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_buffer_max(s : SignalwindowflattopBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopBuffer::max(self : SignalwindowflattopBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_buffer_to_string(s : SignalwindowflattopBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopBuffer::to_string(self : SignalwindowflattopBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_flattop_cursor_make(size : Int) -> SignalwindowflattopCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_cursor_len(s : SignalwindowflattopCursor) -> Int { s.size }
+pub fn SignalwindowflattopCursor::len(self : SignalwindowflattopCursor) -> Int { self.size }
 
-pub fn signal_window_flattop_cursor_get(s : SignalwindowflattopCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopCursor::get(self : SignalwindowflattopCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_cursor_set(s : SignalwindowflattopCursor, i : Int, v : Double) -> SignalwindowflattopCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCursor::set(self : SignalwindowflattopCursor, i : Int, v : Double) -> SignalwindowflattopCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cursor_sum(s : SignalwindowflattopCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopCursor::sum(self : SignalwindowflattopCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_cursor_mean(s : SignalwindowflattopCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopCursor::mean(self : SignalwindowflattopCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_cursor_scale(s : SignalwindowflattopCursor, f : Double) -> SignalwindowflattopCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCursor::scale(self : SignalwindowflattopCursor, f : Double) -> SignalwindowflattopCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cursor_add(a : SignalwindowflattopCursor, b : SignalwindowflattopCursor) -> SignalwindowflattopCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopCursor::add(self : SignalwindowflattopCursor, other : SignalwindowflattopCursor) -> SignalwindowflattopCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cursor_copy(s : SignalwindowflattopCursor) -> SignalwindowflattopCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCursor::copy(self : SignalwindowflattopCursor) -> SignalwindowflattopCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cursor_fill(s : SignalwindowflattopCursor, v : Double) -> SignalwindowflattopCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopCursor::fill(self : SignalwindowflattopCursor, v : Double) -> SignalwindowflattopCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_cursor_min(s : SignalwindowflattopCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopCursor::min(self : SignalwindowflattopCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_cursor_max(s : SignalwindowflattopCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopCursor::max(self : SignalwindowflattopCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_cursor_to_string(s : SignalwindowflattopCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopCursor::to_string(self : SignalwindowflattopCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopView {
@@ -912,45 +912,45 @@ pub fn signal_window_flattop_view_make(size : Int) -> SignalwindowflattopView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_view_len(s : SignalwindowflattopView) -> Int { s.size }
+pub fn SignalwindowflattopView::len(self : SignalwindowflattopView) -> Int { self.size }
 
-pub fn signal_window_flattop_view_get(s : SignalwindowflattopView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopView::get(self : SignalwindowflattopView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_view_set(s : SignalwindowflattopView, i : Int, v : Double) -> SignalwindowflattopView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopView::set(self : SignalwindowflattopView, i : Int, v : Double) -> SignalwindowflattopView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_view_sum(s : SignalwindowflattopView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopView::sum(self : SignalwindowflattopView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_view_mean(s : SignalwindowflattopView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopView::mean(self : SignalwindowflattopView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_view_scale(s : SignalwindowflattopView, f : Double) -> SignalwindowflattopView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopView::scale(self : SignalwindowflattopView, f : Double) -> SignalwindowflattopView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_view_add(a : SignalwindowflattopView, b : SignalwindowflattopView) -> SignalwindowflattopView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopView::add(self : SignalwindowflattopView, other : SignalwindowflattopView) -> SignalwindowflattopView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_view_copy(s : SignalwindowflattopView) -> SignalwindowflattopView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopView::copy(self : SignalwindowflattopView) -> SignalwindowflattopView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_view_fill(s : SignalwindowflattopView, v : Double) -> SignalwindowflattopView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopView::fill(self : SignalwindowflattopView, v : Double) -> SignalwindowflattopView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_view_min(s : SignalwindowflattopView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopView::min(self : SignalwindowflattopView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_view_max(s : SignalwindowflattopView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopView::max(self : SignalwindowflattopView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_view_to_string(s : SignalwindowflattopView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopView::to_string(self : SignalwindowflattopView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopRange {
@@ -963,45 +963,45 @@ pub fn signal_window_flattop_range_make(size : Int) -> SignalwindowflattopRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_range_len(s : SignalwindowflattopRange) -> Int { s.size }
+pub fn SignalwindowflattopRange::len(self : SignalwindowflattopRange) -> Int { self.size }
 
-pub fn signal_window_flattop_range_get(s : SignalwindowflattopRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopRange::get(self : SignalwindowflattopRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_range_set(s : SignalwindowflattopRange, i : Int, v : Double) -> SignalwindowflattopRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopRange::set(self : SignalwindowflattopRange, i : Int, v : Double) -> SignalwindowflattopRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_range_sum(s : SignalwindowflattopRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopRange::sum(self : SignalwindowflattopRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_range_mean(s : SignalwindowflattopRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopRange::mean(self : SignalwindowflattopRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_range_scale(s : SignalwindowflattopRange, f : Double) -> SignalwindowflattopRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopRange::scale(self : SignalwindowflattopRange, f : Double) -> SignalwindowflattopRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_range_add(a : SignalwindowflattopRange, b : SignalwindowflattopRange) -> SignalwindowflattopRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopRange::add(self : SignalwindowflattopRange, other : SignalwindowflattopRange) -> SignalwindowflattopRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_range_copy(s : SignalwindowflattopRange) -> SignalwindowflattopRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopRange::copy(self : SignalwindowflattopRange) -> SignalwindowflattopRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_range_fill(s : SignalwindowflattopRange, v : Double) -> SignalwindowflattopRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopRange::fill(self : SignalwindowflattopRange, v : Double) -> SignalwindowflattopRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_range_min(s : SignalwindowflattopRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopRange::min(self : SignalwindowflattopRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_range_max(s : SignalwindowflattopRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopRange::max(self : SignalwindowflattopRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_range_to_string(s : SignalwindowflattopRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopRange::to_string(self : SignalwindowflattopRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_flattop_slice_make(size : Int) -> SignalwindowflattopSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_flattop_slice_len(s : SignalwindowflattopSlice) -> Int { s.size }
+pub fn SignalwindowflattopSlice::len(self : SignalwindowflattopSlice) -> Int { self.size }
 
-pub fn signal_window_flattop_slice_get(s : SignalwindowflattopSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowflattopSlice::get(self : SignalwindowflattopSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_flattop_slice_set(s : SignalwindowflattopSlice, i : Int, v : Double) -> SignalwindowflattopSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowflattopSlice::set(self : SignalwindowflattopSlice, i : Int, v : Double) -> SignalwindowflattopSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_slice_sum(s : SignalwindowflattopSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowflattopSlice::sum(self : SignalwindowflattopSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_flattop_slice_mean(s : SignalwindowflattopSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowflattopSlice::mean(self : SignalwindowflattopSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_flattop_slice_scale(s : SignalwindowflattopSlice, f : Double) -> SignalwindowflattopSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopSlice::scale(self : SignalwindowflattopSlice, f : Double) -> SignalwindowflattopSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_slice_add(a : SignalwindowflattopSlice, b : SignalwindowflattopSlice) -> SignalwindowflattopSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowflattopSlice::add(self : SignalwindowflattopSlice, other : SignalwindowflattopSlice) -> SignalwindowflattopSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_flattop_slice_copy(s : SignalwindowflattopSlice) -> SignalwindowflattopSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopSlice::copy(self : SignalwindowflattopSlice) -> SignalwindowflattopSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_slice_fill(s : SignalwindowflattopSlice, v : Double) -> SignalwindowflattopSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowflattopSlice::fill(self : SignalwindowflattopSlice, v : Double) -> SignalwindowflattopSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_flattop_slice_min(s : SignalwindowflattopSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowflattopSlice::min(self : SignalwindowflattopSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_flattop_slice_max(s : SignalwindowflattopSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowflattopSlice::max(self : SignalwindowflattopSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_flattop_slice_to_string(s : SignalwindowflattopSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowflattopSlice::to_string(self : SignalwindowflattopSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

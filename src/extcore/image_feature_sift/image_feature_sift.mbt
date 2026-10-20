@@ -351,45 +351,45 @@ pub fn image_feature_sift_frame_make(size : Int) -> ImagefeaturesiftFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_frame_len(s : ImagefeaturesiftFrame) -> Int { s.size }
+pub fn ImagefeaturesiftFrame::len(self : ImagefeaturesiftFrame) -> Int { self.size }
 
-pub fn image_feature_sift_frame_get(s : ImagefeaturesiftFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftFrame::get(self : ImagefeaturesiftFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_frame_set(s : ImagefeaturesiftFrame, i : Int, v : Double) -> ImagefeaturesiftFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftFrame::set(self : ImagefeaturesiftFrame, i : Int, v : Double) -> ImagefeaturesiftFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_frame_sum(s : ImagefeaturesiftFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftFrame::sum(self : ImagefeaturesiftFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_frame_mean(s : ImagefeaturesiftFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftFrame::mean(self : ImagefeaturesiftFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_frame_scale(s : ImagefeaturesiftFrame, f : Double) -> ImagefeaturesiftFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftFrame::scale(self : ImagefeaturesiftFrame, f : Double) -> ImagefeaturesiftFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_frame_add(a : ImagefeaturesiftFrame, b : ImagefeaturesiftFrame) -> ImagefeaturesiftFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftFrame::add(self : ImagefeaturesiftFrame, other : ImagefeaturesiftFrame) -> ImagefeaturesiftFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_frame_copy(s : ImagefeaturesiftFrame) -> ImagefeaturesiftFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftFrame::copy(self : ImagefeaturesiftFrame) -> ImagefeaturesiftFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_frame_fill(s : ImagefeaturesiftFrame, v : Double) -> ImagefeaturesiftFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftFrame::fill(self : ImagefeaturesiftFrame, v : Double) -> ImagefeaturesiftFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_frame_min(s : ImagefeaturesiftFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftFrame::min(self : ImagefeaturesiftFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_frame_max(s : ImagefeaturesiftFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftFrame::max(self : ImagefeaturesiftFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_frame_to_string(s : ImagefeaturesiftFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftFrame::to_string(self : ImagefeaturesiftFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftTable {
@@ -402,45 +402,45 @@ pub fn image_feature_sift_table_make(size : Int) -> ImagefeaturesiftTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_table_len(s : ImagefeaturesiftTable) -> Int { s.size }
+pub fn ImagefeaturesiftTable::len(self : ImagefeaturesiftTable) -> Int { self.size }
 
-pub fn image_feature_sift_table_get(s : ImagefeaturesiftTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftTable::get(self : ImagefeaturesiftTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_table_set(s : ImagefeaturesiftTable, i : Int, v : Double) -> ImagefeaturesiftTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftTable::set(self : ImagefeaturesiftTable, i : Int, v : Double) -> ImagefeaturesiftTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_table_sum(s : ImagefeaturesiftTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftTable::sum(self : ImagefeaturesiftTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_table_mean(s : ImagefeaturesiftTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftTable::mean(self : ImagefeaturesiftTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_table_scale(s : ImagefeaturesiftTable, f : Double) -> ImagefeaturesiftTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftTable::scale(self : ImagefeaturesiftTable, f : Double) -> ImagefeaturesiftTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_table_add(a : ImagefeaturesiftTable, b : ImagefeaturesiftTable) -> ImagefeaturesiftTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftTable::add(self : ImagefeaturesiftTable, other : ImagefeaturesiftTable) -> ImagefeaturesiftTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_table_copy(s : ImagefeaturesiftTable) -> ImagefeaturesiftTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftTable::copy(self : ImagefeaturesiftTable) -> ImagefeaturesiftTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_table_fill(s : ImagefeaturesiftTable, v : Double) -> ImagefeaturesiftTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftTable::fill(self : ImagefeaturesiftTable, v : Double) -> ImagefeaturesiftTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_table_min(s : ImagefeaturesiftTable) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftTable::min(self : ImagefeaturesiftTable) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_table_max(s : ImagefeaturesiftTable) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftTable::max(self : ImagefeaturesiftTable) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_table_to_string(s : ImagefeaturesiftTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftTable::to_string(self : ImagefeaturesiftTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftGraphN {
@@ -453,45 +453,45 @@ pub fn image_feature_sift_graphn_make(size : Int) -> ImagefeaturesiftGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_graphn_len(s : ImagefeaturesiftGraphN) -> Int { s.size }
+pub fn ImagefeaturesiftGraphN::len(self : ImagefeaturesiftGraphN) -> Int { self.size }
 
-pub fn image_feature_sift_graphn_get(s : ImagefeaturesiftGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftGraphN::get(self : ImagefeaturesiftGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_graphn_set(s : ImagefeaturesiftGraphN, i : Int, v : Double) -> ImagefeaturesiftGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftGraphN::set(self : ImagefeaturesiftGraphN, i : Int, v : Double) -> ImagefeaturesiftGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_graphn_sum(s : ImagefeaturesiftGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftGraphN::sum(self : ImagefeaturesiftGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_graphn_mean(s : ImagefeaturesiftGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftGraphN::mean(self : ImagefeaturesiftGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_graphn_scale(s : ImagefeaturesiftGraphN, f : Double) -> ImagefeaturesiftGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftGraphN::scale(self : ImagefeaturesiftGraphN, f : Double) -> ImagefeaturesiftGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_graphn_add(a : ImagefeaturesiftGraphN, b : ImagefeaturesiftGraphN) -> ImagefeaturesiftGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftGraphN::add(self : ImagefeaturesiftGraphN, other : ImagefeaturesiftGraphN) -> ImagefeaturesiftGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_graphn_copy(s : ImagefeaturesiftGraphN) -> ImagefeaturesiftGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftGraphN::copy(self : ImagefeaturesiftGraphN) -> ImagefeaturesiftGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_graphn_fill(s : ImagefeaturesiftGraphN, v : Double) -> ImagefeaturesiftGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftGraphN::fill(self : ImagefeaturesiftGraphN, v : Double) -> ImagefeaturesiftGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_graphn_min(s : ImagefeaturesiftGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftGraphN::min(self : ImagefeaturesiftGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_graphn_max(s : ImagefeaturesiftGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftGraphN::max(self : ImagefeaturesiftGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_graphn_to_string(s : ImagefeaturesiftGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftGraphN::to_string(self : ImagefeaturesiftGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftNode {
@@ -504,45 +504,45 @@ pub fn image_feature_sift_node_make(size : Int) -> ImagefeaturesiftNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_node_len(s : ImagefeaturesiftNode) -> Int { s.size }
+pub fn ImagefeaturesiftNode::len(self : ImagefeaturesiftNode) -> Int { self.size }
 
-pub fn image_feature_sift_node_get(s : ImagefeaturesiftNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftNode::get(self : ImagefeaturesiftNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_node_set(s : ImagefeaturesiftNode, i : Int, v : Double) -> ImagefeaturesiftNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftNode::set(self : ImagefeaturesiftNode, i : Int, v : Double) -> ImagefeaturesiftNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_node_sum(s : ImagefeaturesiftNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftNode::sum(self : ImagefeaturesiftNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_node_mean(s : ImagefeaturesiftNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftNode::mean(self : ImagefeaturesiftNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_node_scale(s : ImagefeaturesiftNode, f : Double) -> ImagefeaturesiftNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftNode::scale(self : ImagefeaturesiftNode, f : Double) -> ImagefeaturesiftNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_node_add(a : ImagefeaturesiftNode, b : ImagefeaturesiftNode) -> ImagefeaturesiftNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftNode::add(self : ImagefeaturesiftNode, other : ImagefeaturesiftNode) -> ImagefeaturesiftNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_node_copy(s : ImagefeaturesiftNode) -> ImagefeaturesiftNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftNode::copy(self : ImagefeaturesiftNode) -> ImagefeaturesiftNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_node_fill(s : ImagefeaturesiftNode, v : Double) -> ImagefeaturesiftNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftNode::fill(self : ImagefeaturesiftNode, v : Double) -> ImagefeaturesiftNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_node_min(s : ImagefeaturesiftNode) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftNode::min(self : ImagefeaturesiftNode) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_node_max(s : ImagefeaturesiftNode) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftNode::max(self : ImagefeaturesiftNode) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_node_to_string(s : ImagefeaturesiftNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftNode::to_string(self : ImagefeaturesiftNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftEdge {
@@ -555,45 +555,45 @@ pub fn image_feature_sift_edge_make(size : Int) -> ImagefeaturesiftEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_edge_len(s : ImagefeaturesiftEdge) -> Int { s.size }
+pub fn ImagefeaturesiftEdge::len(self : ImagefeaturesiftEdge) -> Int { self.size }
 
-pub fn image_feature_sift_edge_get(s : ImagefeaturesiftEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftEdge::get(self : ImagefeaturesiftEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_edge_set(s : ImagefeaturesiftEdge, i : Int, v : Double) -> ImagefeaturesiftEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftEdge::set(self : ImagefeaturesiftEdge, i : Int, v : Double) -> ImagefeaturesiftEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_edge_sum(s : ImagefeaturesiftEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftEdge::sum(self : ImagefeaturesiftEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_edge_mean(s : ImagefeaturesiftEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftEdge::mean(self : ImagefeaturesiftEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_edge_scale(s : ImagefeaturesiftEdge, f : Double) -> ImagefeaturesiftEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftEdge::scale(self : ImagefeaturesiftEdge, f : Double) -> ImagefeaturesiftEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_edge_add(a : ImagefeaturesiftEdge, b : ImagefeaturesiftEdge) -> ImagefeaturesiftEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftEdge::add(self : ImagefeaturesiftEdge, other : ImagefeaturesiftEdge) -> ImagefeaturesiftEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_edge_copy(s : ImagefeaturesiftEdge) -> ImagefeaturesiftEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftEdge::copy(self : ImagefeaturesiftEdge) -> ImagefeaturesiftEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_edge_fill(s : ImagefeaturesiftEdge, v : Double) -> ImagefeaturesiftEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftEdge::fill(self : ImagefeaturesiftEdge, v : Double) -> ImagefeaturesiftEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_edge_min(s : ImagefeaturesiftEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftEdge::min(self : ImagefeaturesiftEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_edge_max(s : ImagefeaturesiftEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftEdge::max(self : ImagefeaturesiftEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_edge_to_string(s : ImagefeaturesiftEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftEdge::to_string(self : ImagefeaturesiftEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftPath {
@@ -606,45 +606,45 @@ pub fn image_feature_sift_path_make(size : Int) -> ImagefeaturesiftPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_path_len(s : ImagefeaturesiftPath) -> Int { s.size }
+pub fn ImagefeaturesiftPath::len(self : ImagefeaturesiftPath) -> Int { self.size }
 
-pub fn image_feature_sift_path_get(s : ImagefeaturesiftPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftPath::get(self : ImagefeaturesiftPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_path_set(s : ImagefeaturesiftPath, i : Int, v : Double) -> ImagefeaturesiftPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftPath::set(self : ImagefeaturesiftPath, i : Int, v : Double) -> ImagefeaturesiftPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_path_sum(s : ImagefeaturesiftPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftPath::sum(self : ImagefeaturesiftPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_path_mean(s : ImagefeaturesiftPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftPath::mean(self : ImagefeaturesiftPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_path_scale(s : ImagefeaturesiftPath, f : Double) -> ImagefeaturesiftPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftPath::scale(self : ImagefeaturesiftPath, f : Double) -> ImagefeaturesiftPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_path_add(a : ImagefeaturesiftPath, b : ImagefeaturesiftPath) -> ImagefeaturesiftPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftPath::add(self : ImagefeaturesiftPath, other : ImagefeaturesiftPath) -> ImagefeaturesiftPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_path_copy(s : ImagefeaturesiftPath) -> ImagefeaturesiftPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftPath::copy(self : ImagefeaturesiftPath) -> ImagefeaturesiftPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_path_fill(s : ImagefeaturesiftPath, v : Double) -> ImagefeaturesiftPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftPath::fill(self : ImagefeaturesiftPath, v : Double) -> ImagefeaturesiftPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_path_min(s : ImagefeaturesiftPath) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftPath::min(self : ImagefeaturesiftPath) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_path_max(s : ImagefeaturesiftPath) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftPath::max(self : ImagefeaturesiftPath) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_path_to_string(s : ImagefeaturesiftPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftPath::to_string(self : ImagefeaturesiftPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftCluster {
@@ -657,45 +657,45 @@ pub fn image_feature_sift_cluster_make(size : Int) -> ImagefeaturesiftCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_cluster_len(s : ImagefeaturesiftCluster) -> Int { s.size }
+pub fn ImagefeaturesiftCluster::len(self : ImagefeaturesiftCluster) -> Int { self.size }
 
-pub fn image_feature_sift_cluster_get(s : ImagefeaturesiftCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftCluster::get(self : ImagefeaturesiftCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_cluster_set(s : ImagefeaturesiftCluster, i : Int, v : Double) -> ImagefeaturesiftCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCluster::set(self : ImagefeaturesiftCluster, i : Int, v : Double) -> ImagefeaturesiftCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cluster_sum(s : ImagefeaturesiftCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftCluster::sum(self : ImagefeaturesiftCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_cluster_mean(s : ImagefeaturesiftCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftCluster::mean(self : ImagefeaturesiftCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_cluster_scale(s : ImagefeaturesiftCluster, f : Double) -> ImagefeaturesiftCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCluster::scale(self : ImagefeaturesiftCluster, f : Double) -> ImagefeaturesiftCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cluster_add(a : ImagefeaturesiftCluster, b : ImagefeaturesiftCluster) -> ImagefeaturesiftCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftCluster::add(self : ImagefeaturesiftCluster, other : ImagefeaturesiftCluster) -> ImagefeaturesiftCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_cluster_copy(s : ImagefeaturesiftCluster) -> ImagefeaturesiftCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCluster::copy(self : ImagefeaturesiftCluster) -> ImagefeaturesiftCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cluster_fill(s : ImagefeaturesiftCluster, v : Double) -> ImagefeaturesiftCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCluster::fill(self : ImagefeaturesiftCluster, v : Double) -> ImagefeaturesiftCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cluster_min(s : ImagefeaturesiftCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftCluster::min(self : ImagefeaturesiftCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_cluster_max(s : ImagefeaturesiftCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftCluster::max(self : ImagefeaturesiftCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_cluster_to_string(s : ImagefeaturesiftCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftCluster::to_string(self : ImagefeaturesiftCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftModel {
@@ -708,45 +708,45 @@ pub fn image_feature_sift_model_make(size : Int) -> ImagefeaturesiftModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_model_len(s : ImagefeaturesiftModel) -> Int { s.size }
+pub fn ImagefeaturesiftModel::len(self : ImagefeaturesiftModel) -> Int { self.size }
 
-pub fn image_feature_sift_model_get(s : ImagefeaturesiftModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftModel::get(self : ImagefeaturesiftModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_model_set(s : ImagefeaturesiftModel, i : Int, v : Double) -> ImagefeaturesiftModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftModel::set(self : ImagefeaturesiftModel, i : Int, v : Double) -> ImagefeaturesiftModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_model_sum(s : ImagefeaturesiftModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftModel::sum(self : ImagefeaturesiftModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_model_mean(s : ImagefeaturesiftModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftModel::mean(self : ImagefeaturesiftModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_model_scale(s : ImagefeaturesiftModel, f : Double) -> ImagefeaturesiftModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftModel::scale(self : ImagefeaturesiftModel, f : Double) -> ImagefeaturesiftModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_model_add(a : ImagefeaturesiftModel, b : ImagefeaturesiftModel) -> ImagefeaturesiftModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftModel::add(self : ImagefeaturesiftModel, other : ImagefeaturesiftModel) -> ImagefeaturesiftModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_model_copy(s : ImagefeaturesiftModel) -> ImagefeaturesiftModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftModel::copy(self : ImagefeaturesiftModel) -> ImagefeaturesiftModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_model_fill(s : ImagefeaturesiftModel, v : Double) -> ImagefeaturesiftModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftModel::fill(self : ImagefeaturesiftModel, v : Double) -> ImagefeaturesiftModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_model_min(s : ImagefeaturesiftModel) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftModel::min(self : ImagefeaturesiftModel) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_model_max(s : ImagefeaturesiftModel) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftModel::max(self : ImagefeaturesiftModel) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_model_to_string(s : ImagefeaturesiftModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftModel::to_string(self : ImagefeaturesiftModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftLayer {
@@ -759,45 +759,45 @@ pub fn image_feature_sift_layer_make(size : Int) -> ImagefeaturesiftLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_layer_len(s : ImagefeaturesiftLayer) -> Int { s.size }
+pub fn ImagefeaturesiftLayer::len(self : ImagefeaturesiftLayer) -> Int { self.size }
 
-pub fn image_feature_sift_layer_get(s : ImagefeaturesiftLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftLayer::get(self : ImagefeaturesiftLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_layer_set(s : ImagefeaturesiftLayer, i : Int, v : Double) -> ImagefeaturesiftLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftLayer::set(self : ImagefeaturesiftLayer, i : Int, v : Double) -> ImagefeaturesiftLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_layer_sum(s : ImagefeaturesiftLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftLayer::sum(self : ImagefeaturesiftLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_layer_mean(s : ImagefeaturesiftLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftLayer::mean(self : ImagefeaturesiftLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_layer_scale(s : ImagefeaturesiftLayer, f : Double) -> ImagefeaturesiftLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftLayer::scale(self : ImagefeaturesiftLayer, f : Double) -> ImagefeaturesiftLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_layer_add(a : ImagefeaturesiftLayer, b : ImagefeaturesiftLayer) -> ImagefeaturesiftLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftLayer::add(self : ImagefeaturesiftLayer, other : ImagefeaturesiftLayer) -> ImagefeaturesiftLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_layer_copy(s : ImagefeaturesiftLayer) -> ImagefeaturesiftLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftLayer::copy(self : ImagefeaturesiftLayer) -> ImagefeaturesiftLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_layer_fill(s : ImagefeaturesiftLayer, v : Double) -> ImagefeaturesiftLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftLayer::fill(self : ImagefeaturesiftLayer, v : Double) -> ImagefeaturesiftLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_layer_min(s : ImagefeaturesiftLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftLayer::min(self : ImagefeaturesiftLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_layer_max(s : ImagefeaturesiftLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftLayer::max(self : ImagefeaturesiftLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_layer_to_string(s : ImagefeaturesiftLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftLayer::to_string(self : ImagefeaturesiftLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftBuffer {
@@ -810,45 +810,45 @@ pub fn image_feature_sift_buffer_make(size : Int) -> ImagefeaturesiftBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_buffer_len(s : ImagefeaturesiftBuffer) -> Int { s.size }
+pub fn ImagefeaturesiftBuffer::len(self : ImagefeaturesiftBuffer) -> Int { self.size }
 
-pub fn image_feature_sift_buffer_get(s : ImagefeaturesiftBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftBuffer::get(self : ImagefeaturesiftBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_buffer_set(s : ImagefeaturesiftBuffer, i : Int, v : Double) -> ImagefeaturesiftBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftBuffer::set(self : ImagefeaturesiftBuffer, i : Int, v : Double) -> ImagefeaturesiftBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_buffer_sum(s : ImagefeaturesiftBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftBuffer::sum(self : ImagefeaturesiftBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_buffer_mean(s : ImagefeaturesiftBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftBuffer::mean(self : ImagefeaturesiftBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_buffer_scale(s : ImagefeaturesiftBuffer, f : Double) -> ImagefeaturesiftBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftBuffer::scale(self : ImagefeaturesiftBuffer, f : Double) -> ImagefeaturesiftBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_buffer_add(a : ImagefeaturesiftBuffer, b : ImagefeaturesiftBuffer) -> ImagefeaturesiftBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftBuffer::add(self : ImagefeaturesiftBuffer, other : ImagefeaturesiftBuffer) -> ImagefeaturesiftBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_buffer_copy(s : ImagefeaturesiftBuffer) -> ImagefeaturesiftBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftBuffer::copy(self : ImagefeaturesiftBuffer) -> ImagefeaturesiftBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_buffer_fill(s : ImagefeaturesiftBuffer, v : Double) -> ImagefeaturesiftBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftBuffer::fill(self : ImagefeaturesiftBuffer, v : Double) -> ImagefeaturesiftBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_buffer_min(s : ImagefeaturesiftBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftBuffer::min(self : ImagefeaturesiftBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_buffer_max(s : ImagefeaturesiftBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftBuffer::max(self : ImagefeaturesiftBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_buffer_to_string(s : ImagefeaturesiftBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftBuffer::to_string(self : ImagefeaturesiftBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftCursor {
@@ -861,45 +861,45 @@ pub fn image_feature_sift_cursor_make(size : Int) -> ImagefeaturesiftCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_cursor_len(s : ImagefeaturesiftCursor) -> Int { s.size }
+pub fn ImagefeaturesiftCursor::len(self : ImagefeaturesiftCursor) -> Int { self.size }
 
-pub fn image_feature_sift_cursor_get(s : ImagefeaturesiftCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftCursor::get(self : ImagefeaturesiftCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_cursor_set(s : ImagefeaturesiftCursor, i : Int, v : Double) -> ImagefeaturesiftCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCursor::set(self : ImagefeaturesiftCursor, i : Int, v : Double) -> ImagefeaturesiftCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cursor_sum(s : ImagefeaturesiftCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftCursor::sum(self : ImagefeaturesiftCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_cursor_mean(s : ImagefeaturesiftCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftCursor::mean(self : ImagefeaturesiftCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_cursor_scale(s : ImagefeaturesiftCursor, f : Double) -> ImagefeaturesiftCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCursor::scale(self : ImagefeaturesiftCursor, f : Double) -> ImagefeaturesiftCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cursor_add(a : ImagefeaturesiftCursor, b : ImagefeaturesiftCursor) -> ImagefeaturesiftCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftCursor::add(self : ImagefeaturesiftCursor, other : ImagefeaturesiftCursor) -> ImagefeaturesiftCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_cursor_copy(s : ImagefeaturesiftCursor) -> ImagefeaturesiftCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCursor::copy(self : ImagefeaturesiftCursor) -> ImagefeaturesiftCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cursor_fill(s : ImagefeaturesiftCursor, v : Double) -> ImagefeaturesiftCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftCursor::fill(self : ImagefeaturesiftCursor, v : Double) -> ImagefeaturesiftCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_cursor_min(s : ImagefeaturesiftCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftCursor::min(self : ImagefeaturesiftCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_cursor_max(s : ImagefeaturesiftCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftCursor::max(self : ImagefeaturesiftCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_cursor_to_string(s : ImagefeaturesiftCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftCursor::to_string(self : ImagefeaturesiftCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftView {
@@ -912,45 +912,45 @@ pub fn image_feature_sift_view_make(size : Int) -> ImagefeaturesiftView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_view_len(s : ImagefeaturesiftView) -> Int { s.size }
+pub fn ImagefeaturesiftView::len(self : ImagefeaturesiftView) -> Int { self.size }
 
-pub fn image_feature_sift_view_get(s : ImagefeaturesiftView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftView::get(self : ImagefeaturesiftView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_view_set(s : ImagefeaturesiftView, i : Int, v : Double) -> ImagefeaturesiftView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftView::set(self : ImagefeaturesiftView, i : Int, v : Double) -> ImagefeaturesiftView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_view_sum(s : ImagefeaturesiftView) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftView::sum(self : ImagefeaturesiftView) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_view_mean(s : ImagefeaturesiftView) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftView::mean(self : ImagefeaturesiftView) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_view_scale(s : ImagefeaturesiftView, f : Double) -> ImagefeaturesiftView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftView::scale(self : ImagefeaturesiftView, f : Double) -> ImagefeaturesiftView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_view_add(a : ImagefeaturesiftView, b : ImagefeaturesiftView) -> ImagefeaturesiftView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftView::add(self : ImagefeaturesiftView, other : ImagefeaturesiftView) -> ImagefeaturesiftView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_view_copy(s : ImagefeaturesiftView) -> ImagefeaturesiftView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftView::copy(self : ImagefeaturesiftView) -> ImagefeaturesiftView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_view_fill(s : ImagefeaturesiftView, v : Double) -> ImagefeaturesiftView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftView::fill(self : ImagefeaturesiftView, v : Double) -> ImagefeaturesiftView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_view_min(s : ImagefeaturesiftView) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftView::min(self : ImagefeaturesiftView) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_view_max(s : ImagefeaturesiftView) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftView::max(self : ImagefeaturesiftView) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_view_to_string(s : ImagefeaturesiftView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftView::to_string(self : ImagefeaturesiftView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftRange {
@@ -963,45 +963,45 @@ pub fn image_feature_sift_range_make(size : Int) -> ImagefeaturesiftRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_range_len(s : ImagefeaturesiftRange) -> Int { s.size }
+pub fn ImagefeaturesiftRange::len(self : ImagefeaturesiftRange) -> Int { self.size }
 
-pub fn image_feature_sift_range_get(s : ImagefeaturesiftRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftRange::get(self : ImagefeaturesiftRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_range_set(s : ImagefeaturesiftRange, i : Int, v : Double) -> ImagefeaturesiftRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftRange::set(self : ImagefeaturesiftRange, i : Int, v : Double) -> ImagefeaturesiftRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_range_sum(s : ImagefeaturesiftRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftRange::sum(self : ImagefeaturesiftRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_range_mean(s : ImagefeaturesiftRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftRange::mean(self : ImagefeaturesiftRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_range_scale(s : ImagefeaturesiftRange, f : Double) -> ImagefeaturesiftRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftRange::scale(self : ImagefeaturesiftRange, f : Double) -> ImagefeaturesiftRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_range_add(a : ImagefeaturesiftRange, b : ImagefeaturesiftRange) -> ImagefeaturesiftRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftRange::add(self : ImagefeaturesiftRange, other : ImagefeaturesiftRange) -> ImagefeaturesiftRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_range_copy(s : ImagefeaturesiftRange) -> ImagefeaturesiftRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftRange::copy(self : ImagefeaturesiftRange) -> ImagefeaturesiftRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_range_fill(s : ImagefeaturesiftRange, v : Double) -> ImagefeaturesiftRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftRange::fill(self : ImagefeaturesiftRange, v : Double) -> ImagefeaturesiftRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_range_min(s : ImagefeaturesiftRange) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftRange::min(self : ImagefeaturesiftRange) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_range_max(s : ImagefeaturesiftRange) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftRange::max(self : ImagefeaturesiftRange) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_range_to_string(s : ImagefeaturesiftRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftRange::to_string(self : ImagefeaturesiftRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftSlice {
@@ -1014,44 +1014,44 @@ pub fn image_feature_sift_slice_make(size : Int) -> ImagefeaturesiftSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_sift_slice_len(s : ImagefeaturesiftSlice) -> Int { s.size }
+pub fn ImagefeaturesiftSlice::len(self : ImagefeaturesiftSlice) -> Int { self.size }
 
-pub fn image_feature_sift_slice_get(s : ImagefeaturesiftSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturesiftSlice::get(self : ImagefeaturesiftSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_sift_slice_set(s : ImagefeaturesiftSlice, i : Int, v : Double) -> ImagefeaturesiftSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftSlice::set(self : ImagefeaturesiftSlice, i : Int, v : Double) -> ImagefeaturesiftSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_slice_sum(s : ImagefeaturesiftSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturesiftSlice::sum(self : ImagefeaturesiftSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_sift_slice_mean(s : ImagefeaturesiftSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturesiftSlice::mean(self : ImagefeaturesiftSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_sift_slice_scale(s : ImagefeaturesiftSlice, f : Double) -> ImagefeaturesiftSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftSlice::scale(self : ImagefeaturesiftSlice, f : Double) -> ImagefeaturesiftSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_slice_add(a : ImagefeaturesiftSlice, b : ImagefeaturesiftSlice) -> ImagefeaturesiftSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturesiftSlice::add(self : ImagefeaturesiftSlice, other : ImagefeaturesiftSlice) -> ImagefeaturesiftSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_sift_slice_copy(s : ImagefeaturesiftSlice) -> ImagefeaturesiftSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftSlice::copy(self : ImagefeaturesiftSlice) -> ImagefeaturesiftSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_slice_fill(s : ImagefeaturesiftSlice, v : Double) -> ImagefeaturesiftSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturesiftSlice::fill(self : ImagefeaturesiftSlice, v : Double) -> ImagefeaturesiftSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_sift_slice_min(s : ImagefeaturesiftSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturesiftSlice::min(self : ImagefeaturesiftSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_sift_slice_max(s : ImagefeaturesiftSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturesiftSlice::max(self : ImagefeaturesiftSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_sift_slice_to_string(s : ImagefeaturesiftSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturesiftSlice::to_string(self : ImagefeaturesiftSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

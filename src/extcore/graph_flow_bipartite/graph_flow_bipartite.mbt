@@ -351,45 +351,45 @@ pub fn graph_flow_bipartite_frame_make(size : Int) -> GraphflowbipartiteFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_frame_len(s : GraphflowbipartiteFrame) -> Int { s.size }
+pub fn GraphflowbipartiteFrame::len(self : GraphflowbipartiteFrame) -> Int { self.size }
 
-pub fn graph_flow_bipartite_frame_get(s : GraphflowbipartiteFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteFrame::get(self : GraphflowbipartiteFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_frame_set(s : GraphflowbipartiteFrame, i : Int, v : Double) -> GraphflowbipartiteFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteFrame::set(self : GraphflowbipartiteFrame, i : Int, v : Double) -> GraphflowbipartiteFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_frame_sum(s : GraphflowbipartiteFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteFrame::sum(self : GraphflowbipartiteFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_frame_mean(s : GraphflowbipartiteFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteFrame::mean(self : GraphflowbipartiteFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_frame_scale(s : GraphflowbipartiteFrame, f : Double) -> GraphflowbipartiteFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteFrame::scale(self : GraphflowbipartiteFrame, f : Double) -> GraphflowbipartiteFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_frame_add(a : GraphflowbipartiteFrame, b : GraphflowbipartiteFrame) -> GraphflowbipartiteFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteFrame::add(self : GraphflowbipartiteFrame, other : GraphflowbipartiteFrame) -> GraphflowbipartiteFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_frame_copy(s : GraphflowbipartiteFrame) -> GraphflowbipartiteFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteFrame::copy(self : GraphflowbipartiteFrame) -> GraphflowbipartiteFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_frame_fill(s : GraphflowbipartiteFrame, v : Double) -> GraphflowbipartiteFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteFrame::fill(self : GraphflowbipartiteFrame, v : Double) -> GraphflowbipartiteFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_frame_min(s : GraphflowbipartiteFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteFrame::min(self : GraphflowbipartiteFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_frame_max(s : GraphflowbipartiteFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteFrame::max(self : GraphflowbipartiteFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_frame_to_string(s : GraphflowbipartiteFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteFrame::to_string(self : GraphflowbipartiteFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_bipartite_table_make(size : Int) -> GraphflowbipartiteTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_table_len(s : GraphflowbipartiteTable) -> Int { s.size }
+pub fn GraphflowbipartiteTable::len(self : GraphflowbipartiteTable) -> Int { self.size }
 
-pub fn graph_flow_bipartite_table_get(s : GraphflowbipartiteTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteTable::get(self : GraphflowbipartiteTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_table_set(s : GraphflowbipartiteTable, i : Int, v : Double) -> GraphflowbipartiteTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteTable::set(self : GraphflowbipartiteTable, i : Int, v : Double) -> GraphflowbipartiteTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_table_sum(s : GraphflowbipartiteTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteTable::sum(self : GraphflowbipartiteTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_table_mean(s : GraphflowbipartiteTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteTable::mean(self : GraphflowbipartiteTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_table_scale(s : GraphflowbipartiteTable, f : Double) -> GraphflowbipartiteTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteTable::scale(self : GraphflowbipartiteTable, f : Double) -> GraphflowbipartiteTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_table_add(a : GraphflowbipartiteTable, b : GraphflowbipartiteTable) -> GraphflowbipartiteTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteTable::add(self : GraphflowbipartiteTable, other : GraphflowbipartiteTable) -> GraphflowbipartiteTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_table_copy(s : GraphflowbipartiteTable) -> GraphflowbipartiteTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteTable::copy(self : GraphflowbipartiteTable) -> GraphflowbipartiteTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_table_fill(s : GraphflowbipartiteTable, v : Double) -> GraphflowbipartiteTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteTable::fill(self : GraphflowbipartiteTable, v : Double) -> GraphflowbipartiteTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_table_min(s : GraphflowbipartiteTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteTable::min(self : GraphflowbipartiteTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_table_max(s : GraphflowbipartiteTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteTable::max(self : GraphflowbipartiteTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_table_to_string(s : GraphflowbipartiteTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteTable::to_string(self : GraphflowbipartiteTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_bipartite_graphn_make(size : Int) -> GraphflowbipartiteGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_graphn_len(s : GraphflowbipartiteGraphN) -> Int { s.size }
+pub fn GraphflowbipartiteGraphN::len(self : GraphflowbipartiteGraphN) -> Int { self.size }
 
-pub fn graph_flow_bipartite_graphn_get(s : GraphflowbipartiteGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteGraphN::get(self : GraphflowbipartiteGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_graphn_set(s : GraphflowbipartiteGraphN, i : Int, v : Double) -> GraphflowbipartiteGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteGraphN::set(self : GraphflowbipartiteGraphN, i : Int, v : Double) -> GraphflowbipartiteGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_graphn_sum(s : GraphflowbipartiteGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteGraphN::sum(self : GraphflowbipartiteGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_graphn_mean(s : GraphflowbipartiteGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteGraphN::mean(self : GraphflowbipartiteGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_graphn_scale(s : GraphflowbipartiteGraphN, f : Double) -> GraphflowbipartiteGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteGraphN::scale(self : GraphflowbipartiteGraphN, f : Double) -> GraphflowbipartiteGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_graphn_add(a : GraphflowbipartiteGraphN, b : GraphflowbipartiteGraphN) -> GraphflowbipartiteGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteGraphN::add(self : GraphflowbipartiteGraphN, other : GraphflowbipartiteGraphN) -> GraphflowbipartiteGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_graphn_copy(s : GraphflowbipartiteGraphN) -> GraphflowbipartiteGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteGraphN::copy(self : GraphflowbipartiteGraphN) -> GraphflowbipartiteGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_graphn_fill(s : GraphflowbipartiteGraphN, v : Double) -> GraphflowbipartiteGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteGraphN::fill(self : GraphflowbipartiteGraphN, v : Double) -> GraphflowbipartiteGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_graphn_min(s : GraphflowbipartiteGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteGraphN::min(self : GraphflowbipartiteGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_graphn_max(s : GraphflowbipartiteGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteGraphN::max(self : GraphflowbipartiteGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_graphn_to_string(s : GraphflowbipartiteGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteGraphN::to_string(self : GraphflowbipartiteGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_bipartite_node_make(size : Int) -> GraphflowbipartiteNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_node_len(s : GraphflowbipartiteNode) -> Int { s.size }
+pub fn GraphflowbipartiteNode::len(self : GraphflowbipartiteNode) -> Int { self.size }
 
-pub fn graph_flow_bipartite_node_get(s : GraphflowbipartiteNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteNode::get(self : GraphflowbipartiteNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_node_set(s : GraphflowbipartiteNode, i : Int, v : Double) -> GraphflowbipartiteNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteNode::set(self : GraphflowbipartiteNode, i : Int, v : Double) -> GraphflowbipartiteNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_node_sum(s : GraphflowbipartiteNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteNode::sum(self : GraphflowbipartiteNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_node_mean(s : GraphflowbipartiteNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteNode::mean(self : GraphflowbipartiteNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_node_scale(s : GraphflowbipartiteNode, f : Double) -> GraphflowbipartiteNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteNode::scale(self : GraphflowbipartiteNode, f : Double) -> GraphflowbipartiteNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_node_add(a : GraphflowbipartiteNode, b : GraphflowbipartiteNode) -> GraphflowbipartiteNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteNode::add(self : GraphflowbipartiteNode, other : GraphflowbipartiteNode) -> GraphflowbipartiteNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_node_copy(s : GraphflowbipartiteNode) -> GraphflowbipartiteNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteNode::copy(self : GraphflowbipartiteNode) -> GraphflowbipartiteNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_node_fill(s : GraphflowbipartiteNode, v : Double) -> GraphflowbipartiteNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteNode::fill(self : GraphflowbipartiteNode, v : Double) -> GraphflowbipartiteNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_node_min(s : GraphflowbipartiteNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteNode::min(self : GraphflowbipartiteNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_node_max(s : GraphflowbipartiteNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteNode::max(self : GraphflowbipartiteNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_node_to_string(s : GraphflowbipartiteNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteNode::to_string(self : GraphflowbipartiteNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_bipartite_edge_make(size : Int) -> GraphflowbipartiteEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_edge_len(s : GraphflowbipartiteEdge) -> Int { s.size }
+pub fn GraphflowbipartiteEdge::len(self : GraphflowbipartiteEdge) -> Int { self.size }
 
-pub fn graph_flow_bipartite_edge_get(s : GraphflowbipartiteEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteEdge::get(self : GraphflowbipartiteEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_edge_set(s : GraphflowbipartiteEdge, i : Int, v : Double) -> GraphflowbipartiteEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteEdge::set(self : GraphflowbipartiteEdge, i : Int, v : Double) -> GraphflowbipartiteEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_edge_sum(s : GraphflowbipartiteEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteEdge::sum(self : GraphflowbipartiteEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_edge_mean(s : GraphflowbipartiteEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteEdge::mean(self : GraphflowbipartiteEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_edge_scale(s : GraphflowbipartiteEdge, f : Double) -> GraphflowbipartiteEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteEdge::scale(self : GraphflowbipartiteEdge, f : Double) -> GraphflowbipartiteEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_edge_add(a : GraphflowbipartiteEdge, b : GraphflowbipartiteEdge) -> GraphflowbipartiteEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteEdge::add(self : GraphflowbipartiteEdge, other : GraphflowbipartiteEdge) -> GraphflowbipartiteEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_edge_copy(s : GraphflowbipartiteEdge) -> GraphflowbipartiteEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteEdge::copy(self : GraphflowbipartiteEdge) -> GraphflowbipartiteEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_edge_fill(s : GraphflowbipartiteEdge, v : Double) -> GraphflowbipartiteEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteEdge::fill(self : GraphflowbipartiteEdge, v : Double) -> GraphflowbipartiteEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_edge_min(s : GraphflowbipartiteEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteEdge::min(self : GraphflowbipartiteEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_edge_max(s : GraphflowbipartiteEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteEdge::max(self : GraphflowbipartiteEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_edge_to_string(s : GraphflowbipartiteEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteEdge::to_string(self : GraphflowbipartiteEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartitePath {
@@ -606,45 +606,45 @@ pub fn graph_flow_bipartite_path_make(size : Int) -> GraphflowbipartitePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_path_len(s : GraphflowbipartitePath) -> Int { s.size }
+pub fn GraphflowbipartitePath::len(self : GraphflowbipartitePath) -> Int { self.size }
 
-pub fn graph_flow_bipartite_path_get(s : GraphflowbipartitePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartitePath::get(self : GraphflowbipartitePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_path_set(s : GraphflowbipartitePath, i : Int, v : Double) -> GraphflowbipartitePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartitePath::set(self : GraphflowbipartitePath, i : Int, v : Double) -> GraphflowbipartitePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_path_sum(s : GraphflowbipartitePath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartitePath::sum(self : GraphflowbipartitePath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_path_mean(s : GraphflowbipartitePath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartitePath::mean(self : GraphflowbipartitePath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_path_scale(s : GraphflowbipartitePath, f : Double) -> GraphflowbipartitePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartitePath::scale(self : GraphflowbipartitePath, f : Double) -> GraphflowbipartitePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_path_add(a : GraphflowbipartitePath, b : GraphflowbipartitePath) -> GraphflowbipartitePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartitePath::add(self : GraphflowbipartitePath, other : GraphflowbipartitePath) -> GraphflowbipartitePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_path_copy(s : GraphflowbipartitePath) -> GraphflowbipartitePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartitePath::copy(self : GraphflowbipartitePath) -> GraphflowbipartitePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_path_fill(s : GraphflowbipartitePath, v : Double) -> GraphflowbipartitePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartitePath::fill(self : GraphflowbipartitePath, v : Double) -> GraphflowbipartitePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_path_min(s : GraphflowbipartitePath) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartitePath::min(self : GraphflowbipartitePath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_path_max(s : GraphflowbipartitePath) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartitePath::max(self : GraphflowbipartitePath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_path_to_string(s : GraphflowbipartitePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartitePath::to_string(self : GraphflowbipartitePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_bipartite_cluster_make(size : Int) -> GraphflowbipartiteCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_cluster_len(s : GraphflowbipartiteCluster) -> Int { s.size }
+pub fn GraphflowbipartiteCluster::len(self : GraphflowbipartiteCluster) -> Int { self.size }
 
-pub fn graph_flow_bipartite_cluster_get(s : GraphflowbipartiteCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteCluster::get(self : GraphflowbipartiteCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_cluster_set(s : GraphflowbipartiteCluster, i : Int, v : Double) -> GraphflowbipartiteCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCluster::set(self : GraphflowbipartiteCluster, i : Int, v : Double) -> GraphflowbipartiteCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cluster_sum(s : GraphflowbipartiteCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteCluster::sum(self : GraphflowbipartiteCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_cluster_mean(s : GraphflowbipartiteCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteCluster::mean(self : GraphflowbipartiteCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_cluster_scale(s : GraphflowbipartiteCluster, f : Double) -> GraphflowbipartiteCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCluster::scale(self : GraphflowbipartiteCluster, f : Double) -> GraphflowbipartiteCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cluster_add(a : GraphflowbipartiteCluster, b : GraphflowbipartiteCluster) -> GraphflowbipartiteCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteCluster::add(self : GraphflowbipartiteCluster, other : GraphflowbipartiteCluster) -> GraphflowbipartiteCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cluster_copy(s : GraphflowbipartiteCluster) -> GraphflowbipartiteCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCluster::copy(self : GraphflowbipartiteCluster) -> GraphflowbipartiteCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cluster_fill(s : GraphflowbipartiteCluster, v : Double) -> GraphflowbipartiteCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCluster::fill(self : GraphflowbipartiteCluster, v : Double) -> GraphflowbipartiteCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cluster_min(s : GraphflowbipartiteCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteCluster::min(self : GraphflowbipartiteCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_cluster_max(s : GraphflowbipartiteCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteCluster::max(self : GraphflowbipartiteCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_cluster_to_string(s : GraphflowbipartiteCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteCluster::to_string(self : GraphflowbipartiteCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_bipartite_model_make(size : Int) -> GraphflowbipartiteModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_model_len(s : GraphflowbipartiteModel) -> Int { s.size }
+pub fn GraphflowbipartiteModel::len(self : GraphflowbipartiteModel) -> Int { self.size }
 
-pub fn graph_flow_bipartite_model_get(s : GraphflowbipartiteModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteModel::get(self : GraphflowbipartiteModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_model_set(s : GraphflowbipartiteModel, i : Int, v : Double) -> GraphflowbipartiteModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteModel::set(self : GraphflowbipartiteModel, i : Int, v : Double) -> GraphflowbipartiteModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_model_sum(s : GraphflowbipartiteModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteModel::sum(self : GraphflowbipartiteModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_model_mean(s : GraphflowbipartiteModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteModel::mean(self : GraphflowbipartiteModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_model_scale(s : GraphflowbipartiteModel, f : Double) -> GraphflowbipartiteModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteModel::scale(self : GraphflowbipartiteModel, f : Double) -> GraphflowbipartiteModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_model_add(a : GraphflowbipartiteModel, b : GraphflowbipartiteModel) -> GraphflowbipartiteModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteModel::add(self : GraphflowbipartiteModel, other : GraphflowbipartiteModel) -> GraphflowbipartiteModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_model_copy(s : GraphflowbipartiteModel) -> GraphflowbipartiteModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteModel::copy(self : GraphflowbipartiteModel) -> GraphflowbipartiteModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_model_fill(s : GraphflowbipartiteModel, v : Double) -> GraphflowbipartiteModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteModel::fill(self : GraphflowbipartiteModel, v : Double) -> GraphflowbipartiteModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_model_min(s : GraphflowbipartiteModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteModel::min(self : GraphflowbipartiteModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_model_max(s : GraphflowbipartiteModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteModel::max(self : GraphflowbipartiteModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_model_to_string(s : GraphflowbipartiteModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteModel::to_string(self : GraphflowbipartiteModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_bipartite_layer_make(size : Int) -> GraphflowbipartiteLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_layer_len(s : GraphflowbipartiteLayer) -> Int { s.size }
+pub fn GraphflowbipartiteLayer::len(self : GraphflowbipartiteLayer) -> Int { self.size }
 
-pub fn graph_flow_bipartite_layer_get(s : GraphflowbipartiteLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteLayer::get(self : GraphflowbipartiteLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_layer_set(s : GraphflowbipartiteLayer, i : Int, v : Double) -> GraphflowbipartiteLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteLayer::set(self : GraphflowbipartiteLayer, i : Int, v : Double) -> GraphflowbipartiteLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_layer_sum(s : GraphflowbipartiteLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteLayer::sum(self : GraphflowbipartiteLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_layer_mean(s : GraphflowbipartiteLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteLayer::mean(self : GraphflowbipartiteLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_layer_scale(s : GraphflowbipartiteLayer, f : Double) -> GraphflowbipartiteLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteLayer::scale(self : GraphflowbipartiteLayer, f : Double) -> GraphflowbipartiteLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_layer_add(a : GraphflowbipartiteLayer, b : GraphflowbipartiteLayer) -> GraphflowbipartiteLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteLayer::add(self : GraphflowbipartiteLayer, other : GraphflowbipartiteLayer) -> GraphflowbipartiteLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_layer_copy(s : GraphflowbipartiteLayer) -> GraphflowbipartiteLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteLayer::copy(self : GraphflowbipartiteLayer) -> GraphflowbipartiteLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_layer_fill(s : GraphflowbipartiteLayer, v : Double) -> GraphflowbipartiteLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteLayer::fill(self : GraphflowbipartiteLayer, v : Double) -> GraphflowbipartiteLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_layer_min(s : GraphflowbipartiteLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteLayer::min(self : GraphflowbipartiteLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_layer_max(s : GraphflowbipartiteLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteLayer::max(self : GraphflowbipartiteLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_layer_to_string(s : GraphflowbipartiteLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteLayer::to_string(self : GraphflowbipartiteLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_bipartite_buffer_make(size : Int) -> GraphflowbipartiteBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_buffer_len(s : GraphflowbipartiteBuffer) -> Int { s.size }
+pub fn GraphflowbipartiteBuffer::len(self : GraphflowbipartiteBuffer) -> Int { self.size }
 
-pub fn graph_flow_bipartite_buffer_get(s : GraphflowbipartiteBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteBuffer::get(self : GraphflowbipartiteBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_buffer_set(s : GraphflowbipartiteBuffer, i : Int, v : Double) -> GraphflowbipartiteBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteBuffer::set(self : GraphflowbipartiteBuffer, i : Int, v : Double) -> GraphflowbipartiteBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_buffer_sum(s : GraphflowbipartiteBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteBuffer::sum(self : GraphflowbipartiteBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_buffer_mean(s : GraphflowbipartiteBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteBuffer::mean(self : GraphflowbipartiteBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_buffer_scale(s : GraphflowbipartiteBuffer, f : Double) -> GraphflowbipartiteBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteBuffer::scale(self : GraphflowbipartiteBuffer, f : Double) -> GraphflowbipartiteBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_buffer_add(a : GraphflowbipartiteBuffer, b : GraphflowbipartiteBuffer) -> GraphflowbipartiteBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteBuffer::add(self : GraphflowbipartiteBuffer, other : GraphflowbipartiteBuffer) -> GraphflowbipartiteBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_buffer_copy(s : GraphflowbipartiteBuffer) -> GraphflowbipartiteBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteBuffer::copy(self : GraphflowbipartiteBuffer) -> GraphflowbipartiteBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_buffer_fill(s : GraphflowbipartiteBuffer, v : Double) -> GraphflowbipartiteBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteBuffer::fill(self : GraphflowbipartiteBuffer, v : Double) -> GraphflowbipartiteBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_buffer_min(s : GraphflowbipartiteBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteBuffer::min(self : GraphflowbipartiteBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_buffer_max(s : GraphflowbipartiteBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteBuffer::max(self : GraphflowbipartiteBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_buffer_to_string(s : GraphflowbipartiteBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteBuffer::to_string(self : GraphflowbipartiteBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_bipartite_cursor_make(size : Int) -> GraphflowbipartiteCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_cursor_len(s : GraphflowbipartiteCursor) -> Int { s.size }
+pub fn GraphflowbipartiteCursor::len(self : GraphflowbipartiteCursor) -> Int { self.size }
 
-pub fn graph_flow_bipartite_cursor_get(s : GraphflowbipartiteCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteCursor::get(self : GraphflowbipartiteCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_cursor_set(s : GraphflowbipartiteCursor, i : Int, v : Double) -> GraphflowbipartiteCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCursor::set(self : GraphflowbipartiteCursor, i : Int, v : Double) -> GraphflowbipartiteCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cursor_sum(s : GraphflowbipartiteCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteCursor::sum(self : GraphflowbipartiteCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_cursor_mean(s : GraphflowbipartiteCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteCursor::mean(self : GraphflowbipartiteCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_cursor_scale(s : GraphflowbipartiteCursor, f : Double) -> GraphflowbipartiteCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCursor::scale(self : GraphflowbipartiteCursor, f : Double) -> GraphflowbipartiteCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cursor_add(a : GraphflowbipartiteCursor, b : GraphflowbipartiteCursor) -> GraphflowbipartiteCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteCursor::add(self : GraphflowbipartiteCursor, other : GraphflowbipartiteCursor) -> GraphflowbipartiteCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cursor_copy(s : GraphflowbipartiteCursor) -> GraphflowbipartiteCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCursor::copy(self : GraphflowbipartiteCursor) -> GraphflowbipartiteCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cursor_fill(s : GraphflowbipartiteCursor, v : Double) -> GraphflowbipartiteCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteCursor::fill(self : GraphflowbipartiteCursor, v : Double) -> GraphflowbipartiteCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_cursor_min(s : GraphflowbipartiteCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteCursor::min(self : GraphflowbipartiteCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_cursor_max(s : GraphflowbipartiteCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteCursor::max(self : GraphflowbipartiteCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_cursor_to_string(s : GraphflowbipartiteCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteCursor::to_string(self : GraphflowbipartiteCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteView {
@@ -912,45 +912,45 @@ pub fn graph_flow_bipartite_view_make(size : Int) -> GraphflowbipartiteView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_view_len(s : GraphflowbipartiteView) -> Int { s.size }
+pub fn GraphflowbipartiteView::len(self : GraphflowbipartiteView) -> Int { self.size }
 
-pub fn graph_flow_bipartite_view_get(s : GraphflowbipartiteView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteView::get(self : GraphflowbipartiteView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_view_set(s : GraphflowbipartiteView, i : Int, v : Double) -> GraphflowbipartiteView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteView::set(self : GraphflowbipartiteView, i : Int, v : Double) -> GraphflowbipartiteView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_view_sum(s : GraphflowbipartiteView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteView::sum(self : GraphflowbipartiteView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_view_mean(s : GraphflowbipartiteView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteView::mean(self : GraphflowbipartiteView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_view_scale(s : GraphflowbipartiteView, f : Double) -> GraphflowbipartiteView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteView::scale(self : GraphflowbipartiteView, f : Double) -> GraphflowbipartiteView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_view_add(a : GraphflowbipartiteView, b : GraphflowbipartiteView) -> GraphflowbipartiteView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteView::add(self : GraphflowbipartiteView, other : GraphflowbipartiteView) -> GraphflowbipartiteView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_view_copy(s : GraphflowbipartiteView) -> GraphflowbipartiteView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteView::copy(self : GraphflowbipartiteView) -> GraphflowbipartiteView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_view_fill(s : GraphflowbipartiteView, v : Double) -> GraphflowbipartiteView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteView::fill(self : GraphflowbipartiteView, v : Double) -> GraphflowbipartiteView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_view_min(s : GraphflowbipartiteView) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteView::min(self : GraphflowbipartiteView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_view_max(s : GraphflowbipartiteView) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteView::max(self : GraphflowbipartiteView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_view_to_string(s : GraphflowbipartiteView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteView::to_string(self : GraphflowbipartiteView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_bipartite_range_make(size : Int) -> GraphflowbipartiteRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_range_len(s : GraphflowbipartiteRange) -> Int { s.size }
+pub fn GraphflowbipartiteRange::len(self : GraphflowbipartiteRange) -> Int { self.size }
 
-pub fn graph_flow_bipartite_range_get(s : GraphflowbipartiteRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteRange::get(self : GraphflowbipartiteRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_range_set(s : GraphflowbipartiteRange, i : Int, v : Double) -> GraphflowbipartiteRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteRange::set(self : GraphflowbipartiteRange, i : Int, v : Double) -> GraphflowbipartiteRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_range_sum(s : GraphflowbipartiteRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteRange::sum(self : GraphflowbipartiteRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_range_mean(s : GraphflowbipartiteRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteRange::mean(self : GraphflowbipartiteRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_range_scale(s : GraphflowbipartiteRange, f : Double) -> GraphflowbipartiteRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteRange::scale(self : GraphflowbipartiteRange, f : Double) -> GraphflowbipartiteRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_range_add(a : GraphflowbipartiteRange, b : GraphflowbipartiteRange) -> GraphflowbipartiteRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteRange::add(self : GraphflowbipartiteRange, other : GraphflowbipartiteRange) -> GraphflowbipartiteRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_range_copy(s : GraphflowbipartiteRange) -> GraphflowbipartiteRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteRange::copy(self : GraphflowbipartiteRange) -> GraphflowbipartiteRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_range_fill(s : GraphflowbipartiteRange, v : Double) -> GraphflowbipartiteRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteRange::fill(self : GraphflowbipartiteRange, v : Double) -> GraphflowbipartiteRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_range_min(s : GraphflowbipartiteRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteRange::min(self : GraphflowbipartiteRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_range_max(s : GraphflowbipartiteRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteRange::max(self : GraphflowbipartiteRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_range_to_string(s : GraphflowbipartiteRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteRange::to_string(self : GraphflowbipartiteRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowbipartiteSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_bipartite_slice_make(size : Int) -> GraphflowbipartiteSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_bipartite_slice_len(s : GraphflowbipartiteSlice) -> Int { s.size }
+pub fn GraphflowbipartiteSlice::len(self : GraphflowbipartiteSlice) -> Int { self.size }
 
-pub fn graph_flow_bipartite_slice_get(s : GraphflowbipartiteSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowbipartiteSlice::get(self : GraphflowbipartiteSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_bipartite_slice_set(s : GraphflowbipartiteSlice, i : Int, v : Double) -> GraphflowbipartiteSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteSlice::set(self : GraphflowbipartiteSlice, i : Int, v : Double) -> GraphflowbipartiteSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_slice_sum(s : GraphflowbipartiteSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowbipartiteSlice::sum(self : GraphflowbipartiteSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_bipartite_slice_mean(s : GraphflowbipartiteSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowbipartiteSlice::mean(self : GraphflowbipartiteSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_bipartite_slice_scale(s : GraphflowbipartiteSlice, f : Double) -> GraphflowbipartiteSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteSlice::scale(self : GraphflowbipartiteSlice, f : Double) -> GraphflowbipartiteSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_slice_add(a : GraphflowbipartiteSlice, b : GraphflowbipartiteSlice) -> GraphflowbipartiteSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowbipartiteSlice::add(self : GraphflowbipartiteSlice, other : GraphflowbipartiteSlice) -> GraphflowbipartiteSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_slice_copy(s : GraphflowbipartiteSlice) -> GraphflowbipartiteSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteSlice::copy(self : GraphflowbipartiteSlice) -> GraphflowbipartiteSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_slice_fill(s : GraphflowbipartiteSlice, v : Double) -> GraphflowbipartiteSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowbipartiteSlice::fill(self : GraphflowbipartiteSlice, v : Double) -> GraphflowbipartiteSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_bipartite_slice_min(s : GraphflowbipartiteSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowbipartiteSlice::min(self : GraphflowbipartiteSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_bipartite_slice_max(s : GraphflowbipartiteSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowbipartiteSlice::max(self : GraphflowbipartiteSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_bipartite_slice_to_string(s : GraphflowbipartiteSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowbipartiteSlice::to_string(self : GraphflowbipartiteSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

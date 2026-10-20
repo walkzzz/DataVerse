@@ -351,45 +351,45 @@ pub fn net_proto_grpc_frame_make(size : Int) -> NetprotogrpcFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_frame_len(s : NetprotogrpcFrame) -> Int { s.size }
+pub fn NetprotogrpcFrame::len(self : NetprotogrpcFrame) -> Int { self.size }
 
-pub fn net_proto_grpc_frame_get(s : NetprotogrpcFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcFrame::get(self : NetprotogrpcFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_frame_set(s : NetprotogrpcFrame, i : Int, v : Double) -> NetprotogrpcFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcFrame::set(self : NetprotogrpcFrame, i : Int, v : Double) -> NetprotogrpcFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_frame_sum(s : NetprotogrpcFrame) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcFrame::sum(self : NetprotogrpcFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_frame_mean(s : NetprotogrpcFrame) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcFrame::mean(self : NetprotogrpcFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_frame_scale(s : NetprotogrpcFrame, f : Double) -> NetprotogrpcFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcFrame::scale(self : NetprotogrpcFrame, f : Double) -> NetprotogrpcFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_frame_add(a : NetprotogrpcFrame, b : NetprotogrpcFrame) -> NetprotogrpcFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcFrame::add(self : NetprotogrpcFrame, other : NetprotogrpcFrame) -> NetprotogrpcFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_frame_copy(s : NetprotogrpcFrame) -> NetprotogrpcFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcFrame::copy(self : NetprotogrpcFrame) -> NetprotogrpcFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_frame_fill(s : NetprotogrpcFrame, v : Double) -> NetprotogrpcFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcFrame::fill(self : NetprotogrpcFrame, v : Double) -> NetprotogrpcFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_frame_min(s : NetprotogrpcFrame) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcFrame::min(self : NetprotogrpcFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_frame_max(s : NetprotogrpcFrame) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcFrame::max(self : NetprotogrpcFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_frame_to_string(s : NetprotogrpcFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcFrame::to_string(self : NetprotogrpcFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcTable {
@@ -402,45 +402,45 @@ pub fn net_proto_grpc_table_make(size : Int) -> NetprotogrpcTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_table_len(s : NetprotogrpcTable) -> Int { s.size }
+pub fn NetprotogrpcTable::len(self : NetprotogrpcTable) -> Int { self.size }
 
-pub fn net_proto_grpc_table_get(s : NetprotogrpcTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcTable::get(self : NetprotogrpcTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_table_set(s : NetprotogrpcTable, i : Int, v : Double) -> NetprotogrpcTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcTable::set(self : NetprotogrpcTable, i : Int, v : Double) -> NetprotogrpcTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_table_sum(s : NetprotogrpcTable) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcTable::sum(self : NetprotogrpcTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_table_mean(s : NetprotogrpcTable) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcTable::mean(self : NetprotogrpcTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_table_scale(s : NetprotogrpcTable, f : Double) -> NetprotogrpcTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcTable::scale(self : NetprotogrpcTable, f : Double) -> NetprotogrpcTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_table_add(a : NetprotogrpcTable, b : NetprotogrpcTable) -> NetprotogrpcTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcTable::add(self : NetprotogrpcTable, other : NetprotogrpcTable) -> NetprotogrpcTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_table_copy(s : NetprotogrpcTable) -> NetprotogrpcTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcTable::copy(self : NetprotogrpcTable) -> NetprotogrpcTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_table_fill(s : NetprotogrpcTable, v : Double) -> NetprotogrpcTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcTable::fill(self : NetprotogrpcTable, v : Double) -> NetprotogrpcTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_table_min(s : NetprotogrpcTable) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcTable::min(self : NetprotogrpcTable) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_table_max(s : NetprotogrpcTable) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcTable::max(self : NetprotogrpcTable) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_table_to_string(s : NetprotogrpcTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcTable::to_string(self : NetprotogrpcTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcGraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_grpc_graphn_make(size : Int) -> NetprotogrpcGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_graphn_len(s : NetprotogrpcGraphN) -> Int { s.size }
+pub fn NetprotogrpcGraphN::len(self : NetprotogrpcGraphN) -> Int { self.size }
 
-pub fn net_proto_grpc_graphn_get(s : NetprotogrpcGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcGraphN::get(self : NetprotogrpcGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_graphn_set(s : NetprotogrpcGraphN, i : Int, v : Double) -> NetprotogrpcGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcGraphN::set(self : NetprotogrpcGraphN, i : Int, v : Double) -> NetprotogrpcGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_graphn_sum(s : NetprotogrpcGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcGraphN::sum(self : NetprotogrpcGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_graphn_mean(s : NetprotogrpcGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcGraphN::mean(self : NetprotogrpcGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_graphn_scale(s : NetprotogrpcGraphN, f : Double) -> NetprotogrpcGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcGraphN::scale(self : NetprotogrpcGraphN, f : Double) -> NetprotogrpcGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_graphn_add(a : NetprotogrpcGraphN, b : NetprotogrpcGraphN) -> NetprotogrpcGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcGraphN::add(self : NetprotogrpcGraphN, other : NetprotogrpcGraphN) -> NetprotogrpcGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_graphn_copy(s : NetprotogrpcGraphN) -> NetprotogrpcGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcGraphN::copy(self : NetprotogrpcGraphN) -> NetprotogrpcGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_graphn_fill(s : NetprotogrpcGraphN, v : Double) -> NetprotogrpcGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcGraphN::fill(self : NetprotogrpcGraphN, v : Double) -> NetprotogrpcGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_graphn_min(s : NetprotogrpcGraphN) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcGraphN::min(self : NetprotogrpcGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_graphn_max(s : NetprotogrpcGraphN) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcGraphN::max(self : NetprotogrpcGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_graphn_to_string(s : NetprotogrpcGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcGraphN::to_string(self : NetprotogrpcGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcNode {
@@ -504,45 +504,45 @@ pub fn net_proto_grpc_node_make(size : Int) -> NetprotogrpcNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_node_len(s : NetprotogrpcNode) -> Int { s.size }
+pub fn NetprotogrpcNode::len(self : NetprotogrpcNode) -> Int { self.size }
 
-pub fn net_proto_grpc_node_get(s : NetprotogrpcNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcNode::get(self : NetprotogrpcNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_node_set(s : NetprotogrpcNode, i : Int, v : Double) -> NetprotogrpcNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcNode::set(self : NetprotogrpcNode, i : Int, v : Double) -> NetprotogrpcNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_node_sum(s : NetprotogrpcNode) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcNode::sum(self : NetprotogrpcNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_node_mean(s : NetprotogrpcNode) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcNode::mean(self : NetprotogrpcNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_node_scale(s : NetprotogrpcNode, f : Double) -> NetprotogrpcNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcNode::scale(self : NetprotogrpcNode, f : Double) -> NetprotogrpcNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_node_add(a : NetprotogrpcNode, b : NetprotogrpcNode) -> NetprotogrpcNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcNode::add(self : NetprotogrpcNode, other : NetprotogrpcNode) -> NetprotogrpcNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_node_copy(s : NetprotogrpcNode) -> NetprotogrpcNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcNode::copy(self : NetprotogrpcNode) -> NetprotogrpcNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_node_fill(s : NetprotogrpcNode, v : Double) -> NetprotogrpcNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcNode::fill(self : NetprotogrpcNode, v : Double) -> NetprotogrpcNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_node_min(s : NetprotogrpcNode) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcNode::min(self : NetprotogrpcNode) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_node_max(s : NetprotogrpcNode) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcNode::max(self : NetprotogrpcNode) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_node_to_string(s : NetprotogrpcNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcNode::to_string(self : NetprotogrpcNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcEdge {
@@ -555,45 +555,45 @@ pub fn net_proto_grpc_edge_make(size : Int) -> NetprotogrpcEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_edge_len(s : NetprotogrpcEdge) -> Int { s.size }
+pub fn NetprotogrpcEdge::len(self : NetprotogrpcEdge) -> Int { self.size }
 
-pub fn net_proto_grpc_edge_get(s : NetprotogrpcEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcEdge::get(self : NetprotogrpcEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_edge_set(s : NetprotogrpcEdge, i : Int, v : Double) -> NetprotogrpcEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcEdge::set(self : NetprotogrpcEdge, i : Int, v : Double) -> NetprotogrpcEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_edge_sum(s : NetprotogrpcEdge) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcEdge::sum(self : NetprotogrpcEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_edge_mean(s : NetprotogrpcEdge) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcEdge::mean(self : NetprotogrpcEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_edge_scale(s : NetprotogrpcEdge, f : Double) -> NetprotogrpcEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcEdge::scale(self : NetprotogrpcEdge, f : Double) -> NetprotogrpcEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_edge_add(a : NetprotogrpcEdge, b : NetprotogrpcEdge) -> NetprotogrpcEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcEdge::add(self : NetprotogrpcEdge, other : NetprotogrpcEdge) -> NetprotogrpcEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_edge_copy(s : NetprotogrpcEdge) -> NetprotogrpcEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcEdge::copy(self : NetprotogrpcEdge) -> NetprotogrpcEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_edge_fill(s : NetprotogrpcEdge, v : Double) -> NetprotogrpcEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcEdge::fill(self : NetprotogrpcEdge, v : Double) -> NetprotogrpcEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_edge_min(s : NetprotogrpcEdge) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcEdge::min(self : NetprotogrpcEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_edge_max(s : NetprotogrpcEdge) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcEdge::max(self : NetprotogrpcEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_edge_to_string(s : NetprotogrpcEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcEdge::to_string(self : NetprotogrpcEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcPath {
@@ -606,45 +606,45 @@ pub fn net_proto_grpc_path_make(size : Int) -> NetprotogrpcPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_path_len(s : NetprotogrpcPath) -> Int { s.size }
+pub fn NetprotogrpcPath::len(self : NetprotogrpcPath) -> Int { self.size }
 
-pub fn net_proto_grpc_path_get(s : NetprotogrpcPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcPath::get(self : NetprotogrpcPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_path_set(s : NetprotogrpcPath, i : Int, v : Double) -> NetprotogrpcPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcPath::set(self : NetprotogrpcPath, i : Int, v : Double) -> NetprotogrpcPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_path_sum(s : NetprotogrpcPath) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcPath::sum(self : NetprotogrpcPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_path_mean(s : NetprotogrpcPath) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcPath::mean(self : NetprotogrpcPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_path_scale(s : NetprotogrpcPath, f : Double) -> NetprotogrpcPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcPath::scale(self : NetprotogrpcPath, f : Double) -> NetprotogrpcPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_path_add(a : NetprotogrpcPath, b : NetprotogrpcPath) -> NetprotogrpcPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcPath::add(self : NetprotogrpcPath, other : NetprotogrpcPath) -> NetprotogrpcPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_path_copy(s : NetprotogrpcPath) -> NetprotogrpcPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcPath::copy(self : NetprotogrpcPath) -> NetprotogrpcPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_path_fill(s : NetprotogrpcPath, v : Double) -> NetprotogrpcPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcPath::fill(self : NetprotogrpcPath, v : Double) -> NetprotogrpcPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_path_min(s : NetprotogrpcPath) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcPath::min(self : NetprotogrpcPath) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_path_max(s : NetprotogrpcPath) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcPath::max(self : NetprotogrpcPath) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_path_to_string(s : NetprotogrpcPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcPath::to_string(self : NetprotogrpcPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcCluster {
@@ -657,45 +657,45 @@ pub fn net_proto_grpc_cluster_make(size : Int) -> NetprotogrpcCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_cluster_len(s : NetprotogrpcCluster) -> Int { s.size }
+pub fn NetprotogrpcCluster::len(self : NetprotogrpcCluster) -> Int { self.size }
 
-pub fn net_proto_grpc_cluster_get(s : NetprotogrpcCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcCluster::get(self : NetprotogrpcCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_cluster_set(s : NetprotogrpcCluster, i : Int, v : Double) -> NetprotogrpcCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcCluster::set(self : NetprotogrpcCluster, i : Int, v : Double) -> NetprotogrpcCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cluster_sum(s : NetprotogrpcCluster) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcCluster::sum(self : NetprotogrpcCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_cluster_mean(s : NetprotogrpcCluster) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcCluster::mean(self : NetprotogrpcCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_cluster_scale(s : NetprotogrpcCluster, f : Double) -> NetprotogrpcCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcCluster::scale(self : NetprotogrpcCluster, f : Double) -> NetprotogrpcCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cluster_add(a : NetprotogrpcCluster, b : NetprotogrpcCluster) -> NetprotogrpcCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcCluster::add(self : NetprotogrpcCluster, other : NetprotogrpcCluster) -> NetprotogrpcCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cluster_copy(s : NetprotogrpcCluster) -> NetprotogrpcCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcCluster::copy(self : NetprotogrpcCluster) -> NetprotogrpcCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cluster_fill(s : NetprotogrpcCluster, v : Double) -> NetprotogrpcCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcCluster::fill(self : NetprotogrpcCluster, v : Double) -> NetprotogrpcCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cluster_min(s : NetprotogrpcCluster) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcCluster::min(self : NetprotogrpcCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_cluster_max(s : NetprotogrpcCluster) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcCluster::max(self : NetprotogrpcCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_cluster_to_string(s : NetprotogrpcCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcCluster::to_string(self : NetprotogrpcCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcModel {
@@ -708,45 +708,45 @@ pub fn net_proto_grpc_model_make(size : Int) -> NetprotogrpcModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_model_len(s : NetprotogrpcModel) -> Int { s.size }
+pub fn NetprotogrpcModel::len(self : NetprotogrpcModel) -> Int { self.size }
 
-pub fn net_proto_grpc_model_get(s : NetprotogrpcModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcModel::get(self : NetprotogrpcModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_model_set(s : NetprotogrpcModel, i : Int, v : Double) -> NetprotogrpcModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcModel::set(self : NetprotogrpcModel, i : Int, v : Double) -> NetprotogrpcModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_model_sum(s : NetprotogrpcModel) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcModel::sum(self : NetprotogrpcModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_model_mean(s : NetprotogrpcModel) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcModel::mean(self : NetprotogrpcModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_model_scale(s : NetprotogrpcModel, f : Double) -> NetprotogrpcModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcModel::scale(self : NetprotogrpcModel, f : Double) -> NetprotogrpcModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_model_add(a : NetprotogrpcModel, b : NetprotogrpcModel) -> NetprotogrpcModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcModel::add(self : NetprotogrpcModel, other : NetprotogrpcModel) -> NetprotogrpcModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_model_copy(s : NetprotogrpcModel) -> NetprotogrpcModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcModel::copy(self : NetprotogrpcModel) -> NetprotogrpcModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_model_fill(s : NetprotogrpcModel, v : Double) -> NetprotogrpcModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcModel::fill(self : NetprotogrpcModel, v : Double) -> NetprotogrpcModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_model_min(s : NetprotogrpcModel) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcModel::min(self : NetprotogrpcModel) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_model_max(s : NetprotogrpcModel) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcModel::max(self : NetprotogrpcModel) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_model_to_string(s : NetprotogrpcModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcModel::to_string(self : NetprotogrpcModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcLayer {
@@ -759,45 +759,45 @@ pub fn net_proto_grpc_layer_make(size : Int) -> NetprotogrpcLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_layer_len(s : NetprotogrpcLayer) -> Int { s.size }
+pub fn NetprotogrpcLayer::len(self : NetprotogrpcLayer) -> Int { self.size }
 
-pub fn net_proto_grpc_layer_get(s : NetprotogrpcLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcLayer::get(self : NetprotogrpcLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_layer_set(s : NetprotogrpcLayer, i : Int, v : Double) -> NetprotogrpcLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcLayer::set(self : NetprotogrpcLayer, i : Int, v : Double) -> NetprotogrpcLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_layer_sum(s : NetprotogrpcLayer) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcLayer::sum(self : NetprotogrpcLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_layer_mean(s : NetprotogrpcLayer) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcLayer::mean(self : NetprotogrpcLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_layer_scale(s : NetprotogrpcLayer, f : Double) -> NetprotogrpcLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcLayer::scale(self : NetprotogrpcLayer, f : Double) -> NetprotogrpcLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_layer_add(a : NetprotogrpcLayer, b : NetprotogrpcLayer) -> NetprotogrpcLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcLayer::add(self : NetprotogrpcLayer, other : NetprotogrpcLayer) -> NetprotogrpcLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_layer_copy(s : NetprotogrpcLayer) -> NetprotogrpcLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcLayer::copy(self : NetprotogrpcLayer) -> NetprotogrpcLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_layer_fill(s : NetprotogrpcLayer, v : Double) -> NetprotogrpcLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcLayer::fill(self : NetprotogrpcLayer, v : Double) -> NetprotogrpcLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_layer_min(s : NetprotogrpcLayer) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcLayer::min(self : NetprotogrpcLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_layer_max(s : NetprotogrpcLayer) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcLayer::max(self : NetprotogrpcLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_layer_to_string(s : NetprotogrpcLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcLayer::to_string(self : NetprotogrpcLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcBuffer {
@@ -810,45 +810,45 @@ pub fn net_proto_grpc_buffer_make(size : Int) -> NetprotogrpcBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_buffer_len(s : NetprotogrpcBuffer) -> Int { s.size }
+pub fn NetprotogrpcBuffer::len(self : NetprotogrpcBuffer) -> Int { self.size }
 
-pub fn net_proto_grpc_buffer_get(s : NetprotogrpcBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcBuffer::get(self : NetprotogrpcBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_buffer_set(s : NetprotogrpcBuffer, i : Int, v : Double) -> NetprotogrpcBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcBuffer::set(self : NetprotogrpcBuffer, i : Int, v : Double) -> NetprotogrpcBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_buffer_sum(s : NetprotogrpcBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcBuffer::sum(self : NetprotogrpcBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_buffer_mean(s : NetprotogrpcBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcBuffer::mean(self : NetprotogrpcBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_buffer_scale(s : NetprotogrpcBuffer, f : Double) -> NetprotogrpcBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcBuffer::scale(self : NetprotogrpcBuffer, f : Double) -> NetprotogrpcBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_buffer_add(a : NetprotogrpcBuffer, b : NetprotogrpcBuffer) -> NetprotogrpcBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcBuffer::add(self : NetprotogrpcBuffer, other : NetprotogrpcBuffer) -> NetprotogrpcBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_buffer_copy(s : NetprotogrpcBuffer) -> NetprotogrpcBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcBuffer::copy(self : NetprotogrpcBuffer) -> NetprotogrpcBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_buffer_fill(s : NetprotogrpcBuffer, v : Double) -> NetprotogrpcBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcBuffer::fill(self : NetprotogrpcBuffer, v : Double) -> NetprotogrpcBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_buffer_min(s : NetprotogrpcBuffer) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcBuffer::min(self : NetprotogrpcBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_buffer_max(s : NetprotogrpcBuffer) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcBuffer::max(self : NetprotogrpcBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_buffer_to_string(s : NetprotogrpcBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcBuffer::to_string(self : NetprotogrpcBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcCursor {
@@ -861,45 +861,45 @@ pub fn net_proto_grpc_cursor_make(size : Int) -> NetprotogrpcCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_cursor_len(s : NetprotogrpcCursor) -> Int { s.size }
+pub fn NetprotogrpcCursor::len(self : NetprotogrpcCursor) -> Int { self.size }
 
-pub fn net_proto_grpc_cursor_get(s : NetprotogrpcCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcCursor::get(self : NetprotogrpcCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_cursor_set(s : NetprotogrpcCursor, i : Int, v : Double) -> NetprotogrpcCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcCursor::set(self : NetprotogrpcCursor, i : Int, v : Double) -> NetprotogrpcCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cursor_sum(s : NetprotogrpcCursor) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcCursor::sum(self : NetprotogrpcCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_cursor_mean(s : NetprotogrpcCursor) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcCursor::mean(self : NetprotogrpcCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_cursor_scale(s : NetprotogrpcCursor, f : Double) -> NetprotogrpcCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcCursor::scale(self : NetprotogrpcCursor, f : Double) -> NetprotogrpcCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cursor_add(a : NetprotogrpcCursor, b : NetprotogrpcCursor) -> NetprotogrpcCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcCursor::add(self : NetprotogrpcCursor, other : NetprotogrpcCursor) -> NetprotogrpcCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cursor_copy(s : NetprotogrpcCursor) -> NetprotogrpcCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcCursor::copy(self : NetprotogrpcCursor) -> NetprotogrpcCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cursor_fill(s : NetprotogrpcCursor, v : Double) -> NetprotogrpcCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcCursor::fill(self : NetprotogrpcCursor, v : Double) -> NetprotogrpcCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_cursor_min(s : NetprotogrpcCursor) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcCursor::min(self : NetprotogrpcCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_cursor_max(s : NetprotogrpcCursor) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcCursor::max(self : NetprotogrpcCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_cursor_to_string(s : NetprotogrpcCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcCursor::to_string(self : NetprotogrpcCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcView {
@@ -912,45 +912,45 @@ pub fn net_proto_grpc_view_make(size : Int) -> NetprotogrpcView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_view_len(s : NetprotogrpcView) -> Int { s.size }
+pub fn NetprotogrpcView::len(self : NetprotogrpcView) -> Int { self.size }
 
-pub fn net_proto_grpc_view_get(s : NetprotogrpcView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcView::get(self : NetprotogrpcView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_view_set(s : NetprotogrpcView, i : Int, v : Double) -> NetprotogrpcView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcView::set(self : NetprotogrpcView, i : Int, v : Double) -> NetprotogrpcView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_view_sum(s : NetprotogrpcView) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcView::sum(self : NetprotogrpcView) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_view_mean(s : NetprotogrpcView) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcView::mean(self : NetprotogrpcView) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_view_scale(s : NetprotogrpcView, f : Double) -> NetprotogrpcView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcView::scale(self : NetprotogrpcView, f : Double) -> NetprotogrpcView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_view_add(a : NetprotogrpcView, b : NetprotogrpcView) -> NetprotogrpcView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcView::add(self : NetprotogrpcView, other : NetprotogrpcView) -> NetprotogrpcView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_view_copy(s : NetprotogrpcView) -> NetprotogrpcView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcView::copy(self : NetprotogrpcView) -> NetprotogrpcView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_view_fill(s : NetprotogrpcView, v : Double) -> NetprotogrpcView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcView::fill(self : NetprotogrpcView, v : Double) -> NetprotogrpcView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_view_min(s : NetprotogrpcView) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcView::min(self : NetprotogrpcView) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_view_max(s : NetprotogrpcView) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcView::max(self : NetprotogrpcView) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_view_to_string(s : NetprotogrpcView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcView::to_string(self : NetprotogrpcView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcRange {
@@ -963,45 +963,45 @@ pub fn net_proto_grpc_range_make(size : Int) -> NetprotogrpcRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_range_len(s : NetprotogrpcRange) -> Int { s.size }
+pub fn NetprotogrpcRange::len(self : NetprotogrpcRange) -> Int { self.size }
 
-pub fn net_proto_grpc_range_get(s : NetprotogrpcRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcRange::get(self : NetprotogrpcRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_range_set(s : NetprotogrpcRange, i : Int, v : Double) -> NetprotogrpcRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcRange::set(self : NetprotogrpcRange, i : Int, v : Double) -> NetprotogrpcRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_range_sum(s : NetprotogrpcRange) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcRange::sum(self : NetprotogrpcRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_range_mean(s : NetprotogrpcRange) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcRange::mean(self : NetprotogrpcRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_range_scale(s : NetprotogrpcRange, f : Double) -> NetprotogrpcRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcRange::scale(self : NetprotogrpcRange, f : Double) -> NetprotogrpcRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_range_add(a : NetprotogrpcRange, b : NetprotogrpcRange) -> NetprotogrpcRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcRange::add(self : NetprotogrpcRange, other : NetprotogrpcRange) -> NetprotogrpcRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_range_copy(s : NetprotogrpcRange) -> NetprotogrpcRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcRange::copy(self : NetprotogrpcRange) -> NetprotogrpcRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_range_fill(s : NetprotogrpcRange, v : Double) -> NetprotogrpcRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcRange::fill(self : NetprotogrpcRange, v : Double) -> NetprotogrpcRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_range_min(s : NetprotogrpcRange) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcRange::min(self : NetprotogrpcRange) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_range_max(s : NetprotogrpcRange) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcRange::max(self : NetprotogrpcRange) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_range_to_string(s : NetprotogrpcRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcRange::to_string(self : NetprotogrpcRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotogrpcSlice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_grpc_slice_make(size : Int) -> NetprotogrpcSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_grpc_slice_len(s : NetprotogrpcSlice) -> Int { s.size }
+pub fn NetprotogrpcSlice::len(self : NetprotogrpcSlice) -> Int { self.size }
 
-pub fn net_proto_grpc_slice_get(s : NetprotogrpcSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotogrpcSlice::get(self : NetprotogrpcSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_grpc_slice_set(s : NetprotogrpcSlice, i : Int, v : Double) -> NetprotogrpcSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotogrpcSlice::set(self : NetprotogrpcSlice, i : Int, v : Double) -> NetprotogrpcSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_slice_sum(s : NetprotogrpcSlice) -> Double { @_common.sum(s.data) }
+pub fn NetprotogrpcSlice::sum(self : NetprotogrpcSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_grpc_slice_mean(s : NetprotogrpcSlice) -> Double { @_common.mean(s.data) }
+pub fn NetprotogrpcSlice::mean(self : NetprotogrpcSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_grpc_slice_scale(s : NetprotogrpcSlice, f : Double) -> NetprotogrpcSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotogrpcSlice::scale(self : NetprotogrpcSlice, f : Double) -> NetprotogrpcSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_slice_add(a : NetprotogrpcSlice, b : NetprotogrpcSlice) -> NetprotogrpcSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotogrpcSlice::add(self : NetprotogrpcSlice, other : NetprotogrpcSlice) -> NetprotogrpcSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_grpc_slice_copy(s : NetprotogrpcSlice) -> NetprotogrpcSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotogrpcSlice::copy(self : NetprotogrpcSlice) -> NetprotogrpcSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_slice_fill(s : NetprotogrpcSlice, v : Double) -> NetprotogrpcSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotogrpcSlice::fill(self : NetprotogrpcSlice, v : Double) -> NetprotogrpcSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_grpc_slice_min(s : NetprotogrpcSlice) -> Double { @_common.min(s.data) }
+pub fn NetprotogrpcSlice::min(self : NetprotogrpcSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_grpc_slice_max(s : NetprotogrpcSlice) -> Double { @_common.max(s.data) }
+pub fn NetprotogrpcSlice::max(self : NetprotogrpcSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_grpc_slice_to_string(s : NetprotogrpcSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotogrpcSlice::to_string(self : NetprotogrpcSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

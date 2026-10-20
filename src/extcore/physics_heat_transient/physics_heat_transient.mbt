@@ -351,45 +351,45 @@ pub fn physics_heat_transient_frame_make(size : Int) -> PhysicsheattransientFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_frame_len(s : PhysicsheattransientFrame) -> Int { s.size }
+pub fn PhysicsheattransientFrame::len(self : PhysicsheattransientFrame) -> Int { self.size }
 
-pub fn physics_heat_transient_frame_get(s : PhysicsheattransientFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientFrame::get(self : PhysicsheattransientFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_frame_set(s : PhysicsheattransientFrame, i : Int, v : Double) -> PhysicsheattransientFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientFrame::set(self : PhysicsheattransientFrame, i : Int, v : Double) -> PhysicsheattransientFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_frame_sum(s : PhysicsheattransientFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientFrame::sum(self : PhysicsheattransientFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_frame_mean(s : PhysicsheattransientFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientFrame::mean(self : PhysicsheattransientFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_frame_scale(s : PhysicsheattransientFrame, f : Double) -> PhysicsheattransientFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientFrame::scale(self : PhysicsheattransientFrame, f : Double) -> PhysicsheattransientFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_frame_add(a : PhysicsheattransientFrame, b : PhysicsheattransientFrame) -> PhysicsheattransientFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientFrame::add(self : PhysicsheattransientFrame, other : PhysicsheattransientFrame) -> PhysicsheattransientFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_frame_copy(s : PhysicsheattransientFrame) -> PhysicsheattransientFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientFrame::copy(self : PhysicsheattransientFrame) -> PhysicsheattransientFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_frame_fill(s : PhysicsheattransientFrame, v : Double) -> PhysicsheattransientFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientFrame::fill(self : PhysicsheattransientFrame, v : Double) -> PhysicsheattransientFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_frame_min(s : PhysicsheattransientFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientFrame::min(self : PhysicsheattransientFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_frame_max(s : PhysicsheattransientFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientFrame::max(self : PhysicsheattransientFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_frame_to_string(s : PhysicsheattransientFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientFrame::to_string(self : PhysicsheattransientFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientTable {
@@ -402,45 +402,45 @@ pub fn physics_heat_transient_table_make(size : Int) -> PhysicsheattransientTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_table_len(s : PhysicsheattransientTable) -> Int { s.size }
+pub fn PhysicsheattransientTable::len(self : PhysicsheattransientTable) -> Int { self.size }
 
-pub fn physics_heat_transient_table_get(s : PhysicsheattransientTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientTable::get(self : PhysicsheattransientTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_table_set(s : PhysicsheattransientTable, i : Int, v : Double) -> PhysicsheattransientTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientTable::set(self : PhysicsheattransientTable, i : Int, v : Double) -> PhysicsheattransientTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_table_sum(s : PhysicsheattransientTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientTable::sum(self : PhysicsheattransientTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_table_mean(s : PhysicsheattransientTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientTable::mean(self : PhysicsheattransientTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_table_scale(s : PhysicsheattransientTable, f : Double) -> PhysicsheattransientTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientTable::scale(self : PhysicsheattransientTable, f : Double) -> PhysicsheattransientTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_table_add(a : PhysicsheattransientTable, b : PhysicsheattransientTable) -> PhysicsheattransientTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientTable::add(self : PhysicsheattransientTable, other : PhysicsheattransientTable) -> PhysicsheattransientTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_table_copy(s : PhysicsheattransientTable) -> PhysicsheattransientTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientTable::copy(self : PhysicsheattransientTable) -> PhysicsheattransientTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_table_fill(s : PhysicsheattransientTable, v : Double) -> PhysicsheattransientTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientTable::fill(self : PhysicsheattransientTable, v : Double) -> PhysicsheattransientTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_table_min(s : PhysicsheattransientTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientTable::min(self : PhysicsheattransientTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_table_max(s : PhysicsheattransientTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientTable::max(self : PhysicsheattransientTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_table_to_string(s : PhysicsheattransientTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientTable::to_string(self : PhysicsheattransientTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientGraphN {
@@ -453,45 +453,45 @@ pub fn physics_heat_transient_graphn_make(size : Int) -> PhysicsheattransientGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_graphn_len(s : PhysicsheattransientGraphN) -> Int { s.size }
+pub fn PhysicsheattransientGraphN::len(self : PhysicsheattransientGraphN) -> Int { self.size }
 
-pub fn physics_heat_transient_graphn_get(s : PhysicsheattransientGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientGraphN::get(self : PhysicsheattransientGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_graphn_set(s : PhysicsheattransientGraphN, i : Int, v : Double) -> PhysicsheattransientGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientGraphN::set(self : PhysicsheattransientGraphN, i : Int, v : Double) -> PhysicsheattransientGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_graphn_sum(s : PhysicsheattransientGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientGraphN::sum(self : PhysicsheattransientGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_graphn_mean(s : PhysicsheattransientGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientGraphN::mean(self : PhysicsheattransientGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_graphn_scale(s : PhysicsheattransientGraphN, f : Double) -> PhysicsheattransientGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientGraphN::scale(self : PhysicsheattransientGraphN, f : Double) -> PhysicsheattransientGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_graphn_add(a : PhysicsheattransientGraphN, b : PhysicsheattransientGraphN) -> PhysicsheattransientGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientGraphN::add(self : PhysicsheattransientGraphN, other : PhysicsheattransientGraphN) -> PhysicsheattransientGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_graphn_copy(s : PhysicsheattransientGraphN) -> PhysicsheattransientGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientGraphN::copy(self : PhysicsheattransientGraphN) -> PhysicsheattransientGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_graphn_fill(s : PhysicsheattransientGraphN, v : Double) -> PhysicsheattransientGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientGraphN::fill(self : PhysicsheattransientGraphN, v : Double) -> PhysicsheattransientGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_graphn_min(s : PhysicsheattransientGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientGraphN::min(self : PhysicsheattransientGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_graphn_max(s : PhysicsheattransientGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientGraphN::max(self : PhysicsheattransientGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_graphn_to_string(s : PhysicsheattransientGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientGraphN::to_string(self : PhysicsheattransientGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientNode {
@@ -504,45 +504,45 @@ pub fn physics_heat_transient_node_make(size : Int) -> PhysicsheattransientNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_node_len(s : PhysicsheattransientNode) -> Int { s.size }
+pub fn PhysicsheattransientNode::len(self : PhysicsheattransientNode) -> Int { self.size }
 
-pub fn physics_heat_transient_node_get(s : PhysicsheattransientNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientNode::get(self : PhysicsheattransientNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_node_set(s : PhysicsheattransientNode, i : Int, v : Double) -> PhysicsheattransientNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientNode::set(self : PhysicsheattransientNode, i : Int, v : Double) -> PhysicsheattransientNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_node_sum(s : PhysicsheattransientNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientNode::sum(self : PhysicsheattransientNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_node_mean(s : PhysicsheattransientNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientNode::mean(self : PhysicsheattransientNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_node_scale(s : PhysicsheattransientNode, f : Double) -> PhysicsheattransientNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientNode::scale(self : PhysicsheattransientNode, f : Double) -> PhysicsheattransientNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_node_add(a : PhysicsheattransientNode, b : PhysicsheattransientNode) -> PhysicsheattransientNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientNode::add(self : PhysicsheattransientNode, other : PhysicsheattransientNode) -> PhysicsheattransientNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_node_copy(s : PhysicsheattransientNode) -> PhysicsheattransientNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientNode::copy(self : PhysicsheattransientNode) -> PhysicsheattransientNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_node_fill(s : PhysicsheattransientNode, v : Double) -> PhysicsheattransientNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientNode::fill(self : PhysicsheattransientNode, v : Double) -> PhysicsheattransientNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_node_min(s : PhysicsheattransientNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientNode::min(self : PhysicsheattransientNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_node_max(s : PhysicsheattransientNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientNode::max(self : PhysicsheattransientNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_node_to_string(s : PhysicsheattransientNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientNode::to_string(self : PhysicsheattransientNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientEdge {
@@ -555,45 +555,45 @@ pub fn physics_heat_transient_edge_make(size : Int) -> PhysicsheattransientEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_edge_len(s : PhysicsheattransientEdge) -> Int { s.size }
+pub fn PhysicsheattransientEdge::len(self : PhysicsheattransientEdge) -> Int { self.size }
 
-pub fn physics_heat_transient_edge_get(s : PhysicsheattransientEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientEdge::get(self : PhysicsheattransientEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_edge_set(s : PhysicsheattransientEdge, i : Int, v : Double) -> PhysicsheattransientEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientEdge::set(self : PhysicsheattransientEdge, i : Int, v : Double) -> PhysicsheattransientEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_edge_sum(s : PhysicsheattransientEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientEdge::sum(self : PhysicsheattransientEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_edge_mean(s : PhysicsheattransientEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientEdge::mean(self : PhysicsheattransientEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_edge_scale(s : PhysicsheattransientEdge, f : Double) -> PhysicsheattransientEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientEdge::scale(self : PhysicsheattransientEdge, f : Double) -> PhysicsheattransientEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_edge_add(a : PhysicsheattransientEdge, b : PhysicsheattransientEdge) -> PhysicsheattransientEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientEdge::add(self : PhysicsheattransientEdge, other : PhysicsheattransientEdge) -> PhysicsheattransientEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_edge_copy(s : PhysicsheattransientEdge) -> PhysicsheattransientEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientEdge::copy(self : PhysicsheattransientEdge) -> PhysicsheattransientEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_edge_fill(s : PhysicsheattransientEdge, v : Double) -> PhysicsheattransientEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientEdge::fill(self : PhysicsheattransientEdge, v : Double) -> PhysicsheattransientEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_edge_min(s : PhysicsheattransientEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientEdge::min(self : PhysicsheattransientEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_edge_max(s : PhysicsheattransientEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientEdge::max(self : PhysicsheattransientEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_edge_to_string(s : PhysicsheattransientEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientEdge::to_string(self : PhysicsheattransientEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientPath {
@@ -606,45 +606,45 @@ pub fn physics_heat_transient_path_make(size : Int) -> PhysicsheattransientPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_path_len(s : PhysicsheattransientPath) -> Int { s.size }
+pub fn PhysicsheattransientPath::len(self : PhysicsheattransientPath) -> Int { self.size }
 
-pub fn physics_heat_transient_path_get(s : PhysicsheattransientPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientPath::get(self : PhysicsheattransientPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_path_set(s : PhysicsheattransientPath, i : Int, v : Double) -> PhysicsheattransientPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientPath::set(self : PhysicsheattransientPath, i : Int, v : Double) -> PhysicsheattransientPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_path_sum(s : PhysicsheattransientPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientPath::sum(self : PhysicsheattransientPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_path_mean(s : PhysicsheattransientPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientPath::mean(self : PhysicsheattransientPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_path_scale(s : PhysicsheattransientPath, f : Double) -> PhysicsheattransientPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientPath::scale(self : PhysicsheattransientPath, f : Double) -> PhysicsheattransientPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_path_add(a : PhysicsheattransientPath, b : PhysicsheattransientPath) -> PhysicsheattransientPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientPath::add(self : PhysicsheattransientPath, other : PhysicsheattransientPath) -> PhysicsheattransientPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_path_copy(s : PhysicsheattransientPath) -> PhysicsheattransientPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientPath::copy(self : PhysicsheattransientPath) -> PhysicsheattransientPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_path_fill(s : PhysicsheattransientPath, v : Double) -> PhysicsheattransientPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientPath::fill(self : PhysicsheattransientPath, v : Double) -> PhysicsheattransientPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_path_min(s : PhysicsheattransientPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientPath::min(self : PhysicsheattransientPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_path_max(s : PhysicsheattransientPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientPath::max(self : PhysicsheattransientPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_path_to_string(s : PhysicsheattransientPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientPath::to_string(self : PhysicsheattransientPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientCluster {
@@ -657,45 +657,45 @@ pub fn physics_heat_transient_cluster_make(size : Int) -> PhysicsheattransientCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_cluster_len(s : PhysicsheattransientCluster) -> Int { s.size }
+pub fn PhysicsheattransientCluster::len(self : PhysicsheattransientCluster) -> Int { self.size }
 
-pub fn physics_heat_transient_cluster_get(s : PhysicsheattransientCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientCluster::get(self : PhysicsheattransientCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_cluster_set(s : PhysicsheattransientCluster, i : Int, v : Double) -> PhysicsheattransientCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCluster::set(self : PhysicsheattransientCluster, i : Int, v : Double) -> PhysicsheattransientCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cluster_sum(s : PhysicsheattransientCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientCluster::sum(self : PhysicsheattransientCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_cluster_mean(s : PhysicsheattransientCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientCluster::mean(self : PhysicsheattransientCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_cluster_scale(s : PhysicsheattransientCluster, f : Double) -> PhysicsheattransientCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCluster::scale(self : PhysicsheattransientCluster, f : Double) -> PhysicsheattransientCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cluster_add(a : PhysicsheattransientCluster, b : PhysicsheattransientCluster) -> PhysicsheattransientCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientCluster::add(self : PhysicsheattransientCluster, other : PhysicsheattransientCluster) -> PhysicsheattransientCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cluster_copy(s : PhysicsheattransientCluster) -> PhysicsheattransientCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCluster::copy(self : PhysicsheattransientCluster) -> PhysicsheattransientCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cluster_fill(s : PhysicsheattransientCluster, v : Double) -> PhysicsheattransientCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCluster::fill(self : PhysicsheattransientCluster, v : Double) -> PhysicsheattransientCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cluster_min(s : PhysicsheattransientCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientCluster::min(self : PhysicsheattransientCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_cluster_max(s : PhysicsheattransientCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientCluster::max(self : PhysicsheattransientCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_cluster_to_string(s : PhysicsheattransientCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientCluster::to_string(self : PhysicsheattransientCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientModel {
@@ -708,45 +708,45 @@ pub fn physics_heat_transient_model_make(size : Int) -> PhysicsheattransientMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_model_len(s : PhysicsheattransientModel) -> Int { s.size }
+pub fn PhysicsheattransientModel::len(self : PhysicsheattransientModel) -> Int { self.size }
 
-pub fn physics_heat_transient_model_get(s : PhysicsheattransientModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientModel::get(self : PhysicsheattransientModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_model_set(s : PhysicsheattransientModel, i : Int, v : Double) -> PhysicsheattransientModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientModel::set(self : PhysicsheattransientModel, i : Int, v : Double) -> PhysicsheattransientModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_model_sum(s : PhysicsheattransientModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientModel::sum(self : PhysicsheattransientModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_model_mean(s : PhysicsheattransientModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientModel::mean(self : PhysicsheattransientModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_model_scale(s : PhysicsheattransientModel, f : Double) -> PhysicsheattransientModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientModel::scale(self : PhysicsheattransientModel, f : Double) -> PhysicsheattransientModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_model_add(a : PhysicsheattransientModel, b : PhysicsheattransientModel) -> PhysicsheattransientModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientModel::add(self : PhysicsheattransientModel, other : PhysicsheattransientModel) -> PhysicsheattransientModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_model_copy(s : PhysicsheattransientModel) -> PhysicsheattransientModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientModel::copy(self : PhysicsheattransientModel) -> PhysicsheattransientModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_model_fill(s : PhysicsheattransientModel, v : Double) -> PhysicsheattransientModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientModel::fill(self : PhysicsheattransientModel, v : Double) -> PhysicsheattransientModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_model_min(s : PhysicsheattransientModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientModel::min(self : PhysicsheattransientModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_model_max(s : PhysicsheattransientModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientModel::max(self : PhysicsheattransientModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_model_to_string(s : PhysicsheattransientModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientModel::to_string(self : PhysicsheattransientModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientLayer {
@@ -759,45 +759,45 @@ pub fn physics_heat_transient_layer_make(size : Int) -> PhysicsheattransientLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_layer_len(s : PhysicsheattransientLayer) -> Int { s.size }
+pub fn PhysicsheattransientLayer::len(self : PhysicsheattransientLayer) -> Int { self.size }
 
-pub fn physics_heat_transient_layer_get(s : PhysicsheattransientLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientLayer::get(self : PhysicsheattransientLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_layer_set(s : PhysicsheattransientLayer, i : Int, v : Double) -> PhysicsheattransientLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientLayer::set(self : PhysicsheattransientLayer, i : Int, v : Double) -> PhysicsheattransientLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_layer_sum(s : PhysicsheattransientLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientLayer::sum(self : PhysicsheattransientLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_layer_mean(s : PhysicsheattransientLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientLayer::mean(self : PhysicsheattransientLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_layer_scale(s : PhysicsheattransientLayer, f : Double) -> PhysicsheattransientLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientLayer::scale(self : PhysicsheattransientLayer, f : Double) -> PhysicsheattransientLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_layer_add(a : PhysicsheattransientLayer, b : PhysicsheattransientLayer) -> PhysicsheattransientLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientLayer::add(self : PhysicsheattransientLayer, other : PhysicsheattransientLayer) -> PhysicsheattransientLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_layer_copy(s : PhysicsheattransientLayer) -> PhysicsheattransientLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientLayer::copy(self : PhysicsheattransientLayer) -> PhysicsheattransientLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_layer_fill(s : PhysicsheattransientLayer, v : Double) -> PhysicsheattransientLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientLayer::fill(self : PhysicsheattransientLayer, v : Double) -> PhysicsheattransientLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_layer_min(s : PhysicsheattransientLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientLayer::min(self : PhysicsheattransientLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_layer_max(s : PhysicsheattransientLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientLayer::max(self : PhysicsheattransientLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_layer_to_string(s : PhysicsheattransientLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientLayer::to_string(self : PhysicsheattransientLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientBuffer {
@@ -810,45 +810,45 @@ pub fn physics_heat_transient_buffer_make(size : Int) -> PhysicsheattransientBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_buffer_len(s : PhysicsheattransientBuffer) -> Int { s.size }
+pub fn PhysicsheattransientBuffer::len(self : PhysicsheattransientBuffer) -> Int { self.size }
 
-pub fn physics_heat_transient_buffer_get(s : PhysicsheattransientBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientBuffer::get(self : PhysicsheattransientBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_buffer_set(s : PhysicsheattransientBuffer, i : Int, v : Double) -> PhysicsheattransientBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientBuffer::set(self : PhysicsheattransientBuffer, i : Int, v : Double) -> PhysicsheattransientBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_buffer_sum(s : PhysicsheattransientBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientBuffer::sum(self : PhysicsheattransientBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_buffer_mean(s : PhysicsheattransientBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientBuffer::mean(self : PhysicsheattransientBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_buffer_scale(s : PhysicsheattransientBuffer, f : Double) -> PhysicsheattransientBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientBuffer::scale(self : PhysicsheattransientBuffer, f : Double) -> PhysicsheattransientBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_buffer_add(a : PhysicsheattransientBuffer, b : PhysicsheattransientBuffer) -> PhysicsheattransientBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientBuffer::add(self : PhysicsheattransientBuffer, other : PhysicsheattransientBuffer) -> PhysicsheattransientBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_buffer_copy(s : PhysicsheattransientBuffer) -> PhysicsheattransientBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientBuffer::copy(self : PhysicsheattransientBuffer) -> PhysicsheattransientBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_buffer_fill(s : PhysicsheattransientBuffer, v : Double) -> PhysicsheattransientBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientBuffer::fill(self : PhysicsheattransientBuffer, v : Double) -> PhysicsheattransientBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_buffer_min(s : PhysicsheattransientBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientBuffer::min(self : PhysicsheattransientBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_buffer_max(s : PhysicsheattransientBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientBuffer::max(self : PhysicsheattransientBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_buffer_to_string(s : PhysicsheattransientBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientBuffer::to_string(self : PhysicsheattransientBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientCursor {
@@ -861,45 +861,45 @@ pub fn physics_heat_transient_cursor_make(size : Int) -> PhysicsheattransientCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_cursor_len(s : PhysicsheattransientCursor) -> Int { s.size }
+pub fn PhysicsheattransientCursor::len(self : PhysicsheattransientCursor) -> Int { self.size }
 
-pub fn physics_heat_transient_cursor_get(s : PhysicsheattransientCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientCursor::get(self : PhysicsheattransientCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_cursor_set(s : PhysicsheattransientCursor, i : Int, v : Double) -> PhysicsheattransientCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCursor::set(self : PhysicsheattransientCursor, i : Int, v : Double) -> PhysicsheattransientCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cursor_sum(s : PhysicsheattransientCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientCursor::sum(self : PhysicsheattransientCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_cursor_mean(s : PhysicsheattransientCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientCursor::mean(self : PhysicsheattransientCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_cursor_scale(s : PhysicsheattransientCursor, f : Double) -> PhysicsheattransientCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCursor::scale(self : PhysicsheattransientCursor, f : Double) -> PhysicsheattransientCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cursor_add(a : PhysicsheattransientCursor, b : PhysicsheattransientCursor) -> PhysicsheattransientCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientCursor::add(self : PhysicsheattransientCursor, other : PhysicsheattransientCursor) -> PhysicsheattransientCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cursor_copy(s : PhysicsheattransientCursor) -> PhysicsheattransientCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCursor::copy(self : PhysicsheattransientCursor) -> PhysicsheattransientCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cursor_fill(s : PhysicsheattransientCursor, v : Double) -> PhysicsheattransientCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientCursor::fill(self : PhysicsheattransientCursor, v : Double) -> PhysicsheattransientCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_cursor_min(s : PhysicsheattransientCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientCursor::min(self : PhysicsheattransientCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_cursor_max(s : PhysicsheattransientCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientCursor::max(self : PhysicsheattransientCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_cursor_to_string(s : PhysicsheattransientCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientCursor::to_string(self : PhysicsheattransientCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientView {
@@ -912,45 +912,45 @@ pub fn physics_heat_transient_view_make(size : Int) -> PhysicsheattransientView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_view_len(s : PhysicsheattransientView) -> Int { s.size }
+pub fn PhysicsheattransientView::len(self : PhysicsheattransientView) -> Int { self.size }
 
-pub fn physics_heat_transient_view_get(s : PhysicsheattransientView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientView::get(self : PhysicsheattransientView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_view_set(s : PhysicsheattransientView, i : Int, v : Double) -> PhysicsheattransientView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientView::set(self : PhysicsheattransientView, i : Int, v : Double) -> PhysicsheattransientView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_view_sum(s : PhysicsheattransientView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientView::sum(self : PhysicsheattransientView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_view_mean(s : PhysicsheattransientView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientView::mean(self : PhysicsheattransientView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_view_scale(s : PhysicsheattransientView, f : Double) -> PhysicsheattransientView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientView::scale(self : PhysicsheattransientView, f : Double) -> PhysicsheattransientView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_view_add(a : PhysicsheattransientView, b : PhysicsheattransientView) -> PhysicsheattransientView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientView::add(self : PhysicsheattransientView, other : PhysicsheattransientView) -> PhysicsheattransientView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_view_copy(s : PhysicsheattransientView) -> PhysicsheattransientView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientView::copy(self : PhysicsheattransientView) -> PhysicsheattransientView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_view_fill(s : PhysicsheattransientView, v : Double) -> PhysicsheattransientView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientView::fill(self : PhysicsheattransientView, v : Double) -> PhysicsheattransientView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_view_min(s : PhysicsheattransientView) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientView::min(self : PhysicsheattransientView) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_view_max(s : PhysicsheattransientView) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientView::max(self : PhysicsheattransientView) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_view_to_string(s : PhysicsheattransientView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientView::to_string(self : PhysicsheattransientView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientRange {
@@ -963,45 +963,45 @@ pub fn physics_heat_transient_range_make(size : Int) -> PhysicsheattransientRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_range_len(s : PhysicsheattransientRange) -> Int { s.size }
+pub fn PhysicsheattransientRange::len(self : PhysicsheattransientRange) -> Int { self.size }
 
-pub fn physics_heat_transient_range_get(s : PhysicsheattransientRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientRange::get(self : PhysicsheattransientRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_range_set(s : PhysicsheattransientRange, i : Int, v : Double) -> PhysicsheattransientRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientRange::set(self : PhysicsheattransientRange, i : Int, v : Double) -> PhysicsheattransientRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_range_sum(s : PhysicsheattransientRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientRange::sum(self : PhysicsheattransientRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_range_mean(s : PhysicsheattransientRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientRange::mean(self : PhysicsheattransientRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_range_scale(s : PhysicsheattransientRange, f : Double) -> PhysicsheattransientRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientRange::scale(self : PhysicsheattransientRange, f : Double) -> PhysicsheattransientRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_range_add(a : PhysicsheattransientRange, b : PhysicsheattransientRange) -> PhysicsheattransientRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientRange::add(self : PhysicsheattransientRange, other : PhysicsheattransientRange) -> PhysicsheattransientRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_range_copy(s : PhysicsheattransientRange) -> PhysicsheattransientRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientRange::copy(self : PhysicsheattransientRange) -> PhysicsheattransientRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_range_fill(s : PhysicsheattransientRange, v : Double) -> PhysicsheattransientRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientRange::fill(self : PhysicsheattransientRange, v : Double) -> PhysicsheattransientRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_range_min(s : PhysicsheattransientRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientRange::min(self : PhysicsheattransientRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_range_max(s : PhysicsheattransientRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientRange::max(self : PhysicsheattransientRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_range_to_string(s : PhysicsheattransientRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientRange::to_string(self : PhysicsheattransientRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheattransientSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_heat_transient_slice_make(size : Int) -> PhysicsheattransientSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_transient_slice_len(s : PhysicsheattransientSlice) -> Int { s.size }
+pub fn PhysicsheattransientSlice::len(self : PhysicsheattransientSlice) -> Int { self.size }
 
-pub fn physics_heat_transient_slice_get(s : PhysicsheattransientSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheattransientSlice::get(self : PhysicsheattransientSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_transient_slice_set(s : PhysicsheattransientSlice, i : Int, v : Double) -> PhysicsheattransientSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheattransientSlice::set(self : PhysicsheattransientSlice, i : Int, v : Double) -> PhysicsheattransientSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_slice_sum(s : PhysicsheattransientSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheattransientSlice::sum(self : PhysicsheattransientSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_transient_slice_mean(s : PhysicsheattransientSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheattransientSlice::mean(self : PhysicsheattransientSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_transient_slice_scale(s : PhysicsheattransientSlice, f : Double) -> PhysicsheattransientSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientSlice::scale(self : PhysicsheattransientSlice, f : Double) -> PhysicsheattransientSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_slice_add(a : PhysicsheattransientSlice, b : PhysicsheattransientSlice) -> PhysicsheattransientSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheattransientSlice::add(self : PhysicsheattransientSlice, other : PhysicsheattransientSlice) -> PhysicsheattransientSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_transient_slice_copy(s : PhysicsheattransientSlice) -> PhysicsheattransientSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientSlice::copy(self : PhysicsheattransientSlice) -> PhysicsheattransientSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_slice_fill(s : PhysicsheattransientSlice, v : Double) -> PhysicsheattransientSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheattransientSlice::fill(self : PhysicsheattransientSlice, v : Double) -> PhysicsheattransientSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_transient_slice_min(s : PhysicsheattransientSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsheattransientSlice::min(self : PhysicsheattransientSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_transient_slice_max(s : PhysicsheattransientSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsheattransientSlice::max(self : PhysicsheattransientSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_transient_slice_to_string(s : PhysicsheattransientSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheattransientSlice::to_string(self : PhysicsheattransientSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

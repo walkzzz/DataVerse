@@ -351,45 +351,45 @@ pub fn math_special_beta_frame_make(size : Int) -> MathspecialbetaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_frame_len(s : MathspecialbetaFrame) -> Int { s.size }
+pub fn MathspecialbetaFrame::len(self : MathspecialbetaFrame) -> Int { self.size }
 
-pub fn math_special_beta_frame_get(s : MathspecialbetaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaFrame::get(self : MathspecialbetaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_frame_set(s : MathspecialbetaFrame, i : Int, v : Double) -> MathspecialbetaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaFrame::set(self : MathspecialbetaFrame, i : Int, v : Double) -> MathspecialbetaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_frame_sum(s : MathspecialbetaFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaFrame::sum(self : MathspecialbetaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_frame_mean(s : MathspecialbetaFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaFrame::mean(self : MathspecialbetaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_frame_scale(s : MathspecialbetaFrame, f : Double) -> MathspecialbetaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaFrame::scale(self : MathspecialbetaFrame, f : Double) -> MathspecialbetaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_frame_add(a : MathspecialbetaFrame, b : MathspecialbetaFrame) -> MathspecialbetaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaFrame::add(self : MathspecialbetaFrame, other : MathspecialbetaFrame) -> MathspecialbetaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_frame_copy(s : MathspecialbetaFrame) -> MathspecialbetaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaFrame::copy(self : MathspecialbetaFrame) -> MathspecialbetaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_frame_fill(s : MathspecialbetaFrame, v : Double) -> MathspecialbetaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaFrame::fill(self : MathspecialbetaFrame, v : Double) -> MathspecialbetaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_frame_min(s : MathspecialbetaFrame) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaFrame::min(self : MathspecialbetaFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_frame_max(s : MathspecialbetaFrame) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaFrame::max(self : MathspecialbetaFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_frame_to_string(s : MathspecialbetaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaFrame::to_string(self : MathspecialbetaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaTable {
@@ -402,45 +402,45 @@ pub fn math_special_beta_table_make(size : Int) -> MathspecialbetaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_table_len(s : MathspecialbetaTable) -> Int { s.size }
+pub fn MathspecialbetaTable::len(self : MathspecialbetaTable) -> Int { self.size }
 
-pub fn math_special_beta_table_get(s : MathspecialbetaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaTable::get(self : MathspecialbetaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_table_set(s : MathspecialbetaTable, i : Int, v : Double) -> MathspecialbetaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaTable::set(self : MathspecialbetaTable, i : Int, v : Double) -> MathspecialbetaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_table_sum(s : MathspecialbetaTable) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaTable::sum(self : MathspecialbetaTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_table_mean(s : MathspecialbetaTable) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaTable::mean(self : MathspecialbetaTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_table_scale(s : MathspecialbetaTable, f : Double) -> MathspecialbetaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaTable::scale(self : MathspecialbetaTable, f : Double) -> MathspecialbetaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_table_add(a : MathspecialbetaTable, b : MathspecialbetaTable) -> MathspecialbetaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaTable::add(self : MathspecialbetaTable, other : MathspecialbetaTable) -> MathspecialbetaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_table_copy(s : MathspecialbetaTable) -> MathspecialbetaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaTable::copy(self : MathspecialbetaTable) -> MathspecialbetaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_table_fill(s : MathspecialbetaTable, v : Double) -> MathspecialbetaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaTable::fill(self : MathspecialbetaTable, v : Double) -> MathspecialbetaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_table_min(s : MathspecialbetaTable) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaTable::min(self : MathspecialbetaTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_table_max(s : MathspecialbetaTable) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaTable::max(self : MathspecialbetaTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_table_to_string(s : MathspecialbetaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaTable::to_string(self : MathspecialbetaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_beta_graphn_make(size : Int) -> MathspecialbetaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_graphn_len(s : MathspecialbetaGraphN) -> Int { s.size }
+pub fn MathspecialbetaGraphN::len(self : MathspecialbetaGraphN) -> Int { self.size }
 
-pub fn math_special_beta_graphn_get(s : MathspecialbetaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaGraphN::get(self : MathspecialbetaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_graphn_set(s : MathspecialbetaGraphN, i : Int, v : Double) -> MathspecialbetaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaGraphN::set(self : MathspecialbetaGraphN, i : Int, v : Double) -> MathspecialbetaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_graphn_sum(s : MathspecialbetaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaGraphN::sum(self : MathspecialbetaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_graphn_mean(s : MathspecialbetaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaGraphN::mean(self : MathspecialbetaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_graphn_scale(s : MathspecialbetaGraphN, f : Double) -> MathspecialbetaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaGraphN::scale(self : MathspecialbetaGraphN, f : Double) -> MathspecialbetaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_graphn_add(a : MathspecialbetaGraphN, b : MathspecialbetaGraphN) -> MathspecialbetaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaGraphN::add(self : MathspecialbetaGraphN, other : MathspecialbetaGraphN) -> MathspecialbetaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_graphn_copy(s : MathspecialbetaGraphN) -> MathspecialbetaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaGraphN::copy(self : MathspecialbetaGraphN) -> MathspecialbetaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_graphn_fill(s : MathspecialbetaGraphN, v : Double) -> MathspecialbetaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaGraphN::fill(self : MathspecialbetaGraphN, v : Double) -> MathspecialbetaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_graphn_min(s : MathspecialbetaGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaGraphN::min(self : MathspecialbetaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_graphn_max(s : MathspecialbetaGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaGraphN::max(self : MathspecialbetaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_graphn_to_string(s : MathspecialbetaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaGraphN::to_string(self : MathspecialbetaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaNode {
@@ -504,45 +504,45 @@ pub fn math_special_beta_node_make(size : Int) -> MathspecialbetaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_node_len(s : MathspecialbetaNode) -> Int { s.size }
+pub fn MathspecialbetaNode::len(self : MathspecialbetaNode) -> Int { self.size }
 
-pub fn math_special_beta_node_get(s : MathspecialbetaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaNode::get(self : MathspecialbetaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_node_set(s : MathspecialbetaNode, i : Int, v : Double) -> MathspecialbetaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaNode::set(self : MathspecialbetaNode, i : Int, v : Double) -> MathspecialbetaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_node_sum(s : MathspecialbetaNode) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaNode::sum(self : MathspecialbetaNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_node_mean(s : MathspecialbetaNode) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaNode::mean(self : MathspecialbetaNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_node_scale(s : MathspecialbetaNode, f : Double) -> MathspecialbetaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaNode::scale(self : MathspecialbetaNode, f : Double) -> MathspecialbetaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_node_add(a : MathspecialbetaNode, b : MathspecialbetaNode) -> MathspecialbetaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaNode::add(self : MathspecialbetaNode, other : MathspecialbetaNode) -> MathspecialbetaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_node_copy(s : MathspecialbetaNode) -> MathspecialbetaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaNode::copy(self : MathspecialbetaNode) -> MathspecialbetaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_node_fill(s : MathspecialbetaNode, v : Double) -> MathspecialbetaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaNode::fill(self : MathspecialbetaNode, v : Double) -> MathspecialbetaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_node_min(s : MathspecialbetaNode) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaNode::min(self : MathspecialbetaNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_node_max(s : MathspecialbetaNode) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaNode::max(self : MathspecialbetaNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_node_to_string(s : MathspecialbetaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaNode::to_string(self : MathspecialbetaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaEdge {
@@ -555,45 +555,45 @@ pub fn math_special_beta_edge_make(size : Int) -> MathspecialbetaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_edge_len(s : MathspecialbetaEdge) -> Int { s.size }
+pub fn MathspecialbetaEdge::len(self : MathspecialbetaEdge) -> Int { self.size }
 
-pub fn math_special_beta_edge_get(s : MathspecialbetaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaEdge::get(self : MathspecialbetaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_edge_set(s : MathspecialbetaEdge, i : Int, v : Double) -> MathspecialbetaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaEdge::set(self : MathspecialbetaEdge, i : Int, v : Double) -> MathspecialbetaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_edge_sum(s : MathspecialbetaEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaEdge::sum(self : MathspecialbetaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_edge_mean(s : MathspecialbetaEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaEdge::mean(self : MathspecialbetaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_edge_scale(s : MathspecialbetaEdge, f : Double) -> MathspecialbetaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaEdge::scale(self : MathspecialbetaEdge, f : Double) -> MathspecialbetaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_edge_add(a : MathspecialbetaEdge, b : MathspecialbetaEdge) -> MathspecialbetaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaEdge::add(self : MathspecialbetaEdge, other : MathspecialbetaEdge) -> MathspecialbetaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_edge_copy(s : MathspecialbetaEdge) -> MathspecialbetaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaEdge::copy(self : MathspecialbetaEdge) -> MathspecialbetaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_edge_fill(s : MathspecialbetaEdge, v : Double) -> MathspecialbetaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaEdge::fill(self : MathspecialbetaEdge, v : Double) -> MathspecialbetaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_edge_min(s : MathspecialbetaEdge) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaEdge::min(self : MathspecialbetaEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_edge_max(s : MathspecialbetaEdge) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaEdge::max(self : MathspecialbetaEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_edge_to_string(s : MathspecialbetaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaEdge::to_string(self : MathspecialbetaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaPath {
@@ -606,45 +606,45 @@ pub fn math_special_beta_path_make(size : Int) -> MathspecialbetaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_path_len(s : MathspecialbetaPath) -> Int { s.size }
+pub fn MathspecialbetaPath::len(self : MathspecialbetaPath) -> Int { self.size }
 
-pub fn math_special_beta_path_get(s : MathspecialbetaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaPath::get(self : MathspecialbetaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_path_set(s : MathspecialbetaPath, i : Int, v : Double) -> MathspecialbetaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaPath::set(self : MathspecialbetaPath, i : Int, v : Double) -> MathspecialbetaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_path_sum(s : MathspecialbetaPath) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaPath::sum(self : MathspecialbetaPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_path_mean(s : MathspecialbetaPath) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaPath::mean(self : MathspecialbetaPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_path_scale(s : MathspecialbetaPath, f : Double) -> MathspecialbetaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaPath::scale(self : MathspecialbetaPath, f : Double) -> MathspecialbetaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_path_add(a : MathspecialbetaPath, b : MathspecialbetaPath) -> MathspecialbetaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaPath::add(self : MathspecialbetaPath, other : MathspecialbetaPath) -> MathspecialbetaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_path_copy(s : MathspecialbetaPath) -> MathspecialbetaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaPath::copy(self : MathspecialbetaPath) -> MathspecialbetaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_path_fill(s : MathspecialbetaPath, v : Double) -> MathspecialbetaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaPath::fill(self : MathspecialbetaPath, v : Double) -> MathspecialbetaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_path_min(s : MathspecialbetaPath) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaPath::min(self : MathspecialbetaPath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_path_max(s : MathspecialbetaPath) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaPath::max(self : MathspecialbetaPath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_path_to_string(s : MathspecialbetaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaPath::to_string(self : MathspecialbetaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaCluster {
@@ -657,45 +657,45 @@ pub fn math_special_beta_cluster_make(size : Int) -> MathspecialbetaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_cluster_len(s : MathspecialbetaCluster) -> Int { s.size }
+pub fn MathspecialbetaCluster::len(self : MathspecialbetaCluster) -> Int { self.size }
 
-pub fn math_special_beta_cluster_get(s : MathspecialbetaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaCluster::get(self : MathspecialbetaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_cluster_set(s : MathspecialbetaCluster, i : Int, v : Double) -> MathspecialbetaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaCluster::set(self : MathspecialbetaCluster, i : Int, v : Double) -> MathspecialbetaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cluster_sum(s : MathspecialbetaCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaCluster::sum(self : MathspecialbetaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_cluster_mean(s : MathspecialbetaCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaCluster::mean(self : MathspecialbetaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_cluster_scale(s : MathspecialbetaCluster, f : Double) -> MathspecialbetaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaCluster::scale(self : MathspecialbetaCluster, f : Double) -> MathspecialbetaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cluster_add(a : MathspecialbetaCluster, b : MathspecialbetaCluster) -> MathspecialbetaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaCluster::add(self : MathspecialbetaCluster, other : MathspecialbetaCluster) -> MathspecialbetaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_cluster_copy(s : MathspecialbetaCluster) -> MathspecialbetaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaCluster::copy(self : MathspecialbetaCluster) -> MathspecialbetaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cluster_fill(s : MathspecialbetaCluster, v : Double) -> MathspecialbetaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaCluster::fill(self : MathspecialbetaCluster, v : Double) -> MathspecialbetaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cluster_min(s : MathspecialbetaCluster) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaCluster::min(self : MathspecialbetaCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_cluster_max(s : MathspecialbetaCluster) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaCluster::max(self : MathspecialbetaCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_cluster_to_string(s : MathspecialbetaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaCluster::to_string(self : MathspecialbetaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaModel {
@@ -708,45 +708,45 @@ pub fn math_special_beta_model_make(size : Int) -> MathspecialbetaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_model_len(s : MathspecialbetaModel) -> Int { s.size }
+pub fn MathspecialbetaModel::len(self : MathspecialbetaModel) -> Int { self.size }
 
-pub fn math_special_beta_model_get(s : MathspecialbetaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaModel::get(self : MathspecialbetaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_model_set(s : MathspecialbetaModel, i : Int, v : Double) -> MathspecialbetaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaModel::set(self : MathspecialbetaModel, i : Int, v : Double) -> MathspecialbetaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_model_sum(s : MathspecialbetaModel) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaModel::sum(self : MathspecialbetaModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_model_mean(s : MathspecialbetaModel) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaModel::mean(self : MathspecialbetaModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_model_scale(s : MathspecialbetaModel, f : Double) -> MathspecialbetaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaModel::scale(self : MathspecialbetaModel, f : Double) -> MathspecialbetaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_model_add(a : MathspecialbetaModel, b : MathspecialbetaModel) -> MathspecialbetaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaModel::add(self : MathspecialbetaModel, other : MathspecialbetaModel) -> MathspecialbetaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_model_copy(s : MathspecialbetaModel) -> MathspecialbetaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaModel::copy(self : MathspecialbetaModel) -> MathspecialbetaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_model_fill(s : MathspecialbetaModel, v : Double) -> MathspecialbetaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaModel::fill(self : MathspecialbetaModel, v : Double) -> MathspecialbetaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_model_min(s : MathspecialbetaModel) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaModel::min(self : MathspecialbetaModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_model_max(s : MathspecialbetaModel) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaModel::max(self : MathspecialbetaModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_model_to_string(s : MathspecialbetaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaModel::to_string(self : MathspecialbetaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaLayer {
@@ -759,45 +759,45 @@ pub fn math_special_beta_layer_make(size : Int) -> MathspecialbetaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_layer_len(s : MathspecialbetaLayer) -> Int { s.size }
+pub fn MathspecialbetaLayer::len(self : MathspecialbetaLayer) -> Int { self.size }
 
-pub fn math_special_beta_layer_get(s : MathspecialbetaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaLayer::get(self : MathspecialbetaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_layer_set(s : MathspecialbetaLayer, i : Int, v : Double) -> MathspecialbetaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaLayer::set(self : MathspecialbetaLayer, i : Int, v : Double) -> MathspecialbetaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_layer_sum(s : MathspecialbetaLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaLayer::sum(self : MathspecialbetaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_layer_mean(s : MathspecialbetaLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaLayer::mean(self : MathspecialbetaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_layer_scale(s : MathspecialbetaLayer, f : Double) -> MathspecialbetaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaLayer::scale(self : MathspecialbetaLayer, f : Double) -> MathspecialbetaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_layer_add(a : MathspecialbetaLayer, b : MathspecialbetaLayer) -> MathspecialbetaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaLayer::add(self : MathspecialbetaLayer, other : MathspecialbetaLayer) -> MathspecialbetaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_layer_copy(s : MathspecialbetaLayer) -> MathspecialbetaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaLayer::copy(self : MathspecialbetaLayer) -> MathspecialbetaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_layer_fill(s : MathspecialbetaLayer, v : Double) -> MathspecialbetaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaLayer::fill(self : MathspecialbetaLayer, v : Double) -> MathspecialbetaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_layer_min(s : MathspecialbetaLayer) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaLayer::min(self : MathspecialbetaLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_layer_max(s : MathspecialbetaLayer) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaLayer::max(self : MathspecialbetaLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_layer_to_string(s : MathspecialbetaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaLayer::to_string(self : MathspecialbetaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_beta_buffer_make(size : Int) -> MathspecialbetaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_buffer_len(s : MathspecialbetaBuffer) -> Int { s.size }
+pub fn MathspecialbetaBuffer::len(self : MathspecialbetaBuffer) -> Int { self.size }
 
-pub fn math_special_beta_buffer_get(s : MathspecialbetaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaBuffer::get(self : MathspecialbetaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_buffer_set(s : MathspecialbetaBuffer, i : Int, v : Double) -> MathspecialbetaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaBuffer::set(self : MathspecialbetaBuffer, i : Int, v : Double) -> MathspecialbetaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_buffer_sum(s : MathspecialbetaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaBuffer::sum(self : MathspecialbetaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_buffer_mean(s : MathspecialbetaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaBuffer::mean(self : MathspecialbetaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_buffer_scale(s : MathspecialbetaBuffer, f : Double) -> MathspecialbetaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaBuffer::scale(self : MathspecialbetaBuffer, f : Double) -> MathspecialbetaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_buffer_add(a : MathspecialbetaBuffer, b : MathspecialbetaBuffer) -> MathspecialbetaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaBuffer::add(self : MathspecialbetaBuffer, other : MathspecialbetaBuffer) -> MathspecialbetaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_buffer_copy(s : MathspecialbetaBuffer) -> MathspecialbetaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaBuffer::copy(self : MathspecialbetaBuffer) -> MathspecialbetaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_buffer_fill(s : MathspecialbetaBuffer, v : Double) -> MathspecialbetaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaBuffer::fill(self : MathspecialbetaBuffer, v : Double) -> MathspecialbetaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_buffer_min(s : MathspecialbetaBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaBuffer::min(self : MathspecialbetaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_buffer_max(s : MathspecialbetaBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaBuffer::max(self : MathspecialbetaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_buffer_to_string(s : MathspecialbetaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaBuffer::to_string(self : MathspecialbetaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaCursor {
@@ -861,45 +861,45 @@ pub fn math_special_beta_cursor_make(size : Int) -> MathspecialbetaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_cursor_len(s : MathspecialbetaCursor) -> Int { s.size }
+pub fn MathspecialbetaCursor::len(self : MathspecialbetaCursor) -> Int { self.size }
 
-pub fn math_special_beta_cursor_get(s : MathspecialbetaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaCursor::get(self : MathspecialbetaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_cursor_set(s : MathspecialbetaCursor, i : Int, v : Double) -> MathspecialbetaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaCursor::set(self : MathspecialbetaCursor, i : Int, v : Double) -> MathspecialbetaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cursor_sum(s : MathspecialbetaCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaCursor::sum(self : MathspecialbetaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_cursor_mean(s : MathspecialbetaCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaCursor::mean(self : MathspecialbetaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_cursor_scale(s : MathspecialbetaCursor, f : Double) -> MathspecialbetaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaCursor::scale(self : MathspecialbetaCursor, f : Double) -> MathspecialbetaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cursor_add(a : MathspecialbetaCursor, b : MathspecialbetaCursor) -> MathspecialbetaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaCursor::add(self : MathspecialbetaCursor, other : MathspecialbetaCursor) -> MathspecialbetaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_cursor_copy(s : MathspecialbetaCursor) -> MathspecialbetaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaCursor::copy(self : MathspecialbetaCursor) -> MathspecialbetaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cursor_fill(s : MathspecialbetaCursor, v : Double) -> MathspecialbetaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaCursor::fill(self : MathspecialbetaCursor, v : Double) -> MathspecialbetaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_cursor_min(s : MathspecialbetaCursor) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaCursor::min(self : MathspecialbetaCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_cursor_max(s : MathspecialbetaCursor) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaCursor::max(self : MathspecialbetaCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_cursor_to_string(s : MathspecialbetaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaCursor::to_string(self : MathspecialbetaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaView {
@@ -912,45 +912,45 @@ pub fn math_special_beta_view_make(size : Int) -> MathspecialbetaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_view_len(s : MathspecialbetaView) -> Int { s.size }
+pub fn MathspecialbetaView::len(self : MathspecialbetaView) -> Int { self.size }
 
-pub fn math_special_beta_view_get(s : MathspecialbetaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaView::get(self : MathspecialbetaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_view_set(s : MathspecialbetaView, i : Int, v : Double) -> MathspecialbetaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaView::set(self : MathspecialbetaView, i : Int, v : Double) -> MathspecialbetaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_view_sum(s : MathspecialbetaView) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaView::sum(self : MathspecialbetaView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_view_mean(s : MathspecialbetaView) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaView::mean(self : MathspecialbetaView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_view_scale(s : MathspecialbetaView, f : Double) -> MathspecialbetaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaView::scale(self : MathspecialbetaView, f : Double) -> MathspecialbetaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_view_add(a : MathspecialbetaView, b : MathspecialbetaView) -> MathspecialbetaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaView::add(self : MathspecialbetaView, other : MathspecialbetaView) -> MathspecialbetaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_view_copy(s : MathspecialbetaView) -> MathspecialbetaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaView::copy(self : MathspecialbetaView) -> MathspecialbetaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_view_fill(s : MathspecialbetaView, v : Double) -> MathspecialbetaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaView::fill(self : MathspecialbetaView, v : Double) -> MathspecialbetaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_view_min(s : MathspecialbetaView) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaView::min(self : MathspecialbetaView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_view_max(s : MathspecialbetaView) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaView::max(self : MathspecialbetaView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_view_to_string(s : MathspecialbetaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaView::to_string(self : MathspecialbetaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaRange {
@@ -963,45 +963,45 @@ pub fn math_special_beta_range_make(size : Int) -> MathspecialbetaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_range_len(s : MathspecialbetaRange) -> Int { s.size }
+pub fn MathspecialbetaRange::len(self : MathspecialbetaRange) -> Int { self.size }
 
-pub fn math_special_beta_range_get(s : MathspecialbetaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaRange::get(self : MathspecialbetaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_range_set(s : MathspecialbetaRange, i : Int, v : Double) -> MathspecialbetaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaRange::set(self : MathspecialbetaRange, i : Int, v : Double) -> MathspecialbetaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_range_sum(s : MathspecialbetaRange) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaRange::sum(self : MathspecialbetaRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_range_mean(s : MathspecialbetaRange) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaRange::mean(self : MathspecialbetaRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_range_scale(s : MathspecialbetaRange, f : Double) -> MathspecialbetaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaRange::scale(self : MathspecialbetaRange, f : Double) -> MathspecialbetaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_range_add(a : MathspecialbetaRange, b : MathspecialbetaRange) -> MathspecialbetaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaRange::add(self : MathspecialbetaRange, other : MathspecialbetaRange) -> MathspecialbetaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_range_copy(s : MathspecialbetaRange) -> MathspecialbetaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaRange::copy(self : MathspecialbetaRange) -> MathspecialbetaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_range_fill(s : MathspecialbetaRange, v : Double) -> MathspecialbetaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaRange::fill(self : MathspecialbetaRange, v : Double) -> MathspecialbetaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_range_min(s : MathspecialbetaRange) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaRange::min(self : MathspecialbetaRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_range_max(s : MathspecialbetaRange) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaRange::max(self : MathspecialbetaRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_range_to_string(s : MathspecialbetaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaRange::to_string(self : MathspecialbetaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_beta_slice_make(size : Int) -> MathspecialbetaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_beta_slice_len(s : MathspecialbetaSlice) -> Int { s.size }
+pub fn MathspecialbetaSlice::len(self : MathspecialbetaSlice) -> Int { self.size }
 
-pub fn math_special_beta_slice_get(s : MathspecialbetaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialbetaSlice::get(self : MathspecialbetaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_beta_slice_set(s : MathspecialbetaSlice, i : Int, v : Double) -> MathspecialbetaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialbetaSlice::set(self : MathspecialbetaSlice, i : Int, v : Double) -> MathspecialbetaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_slice_sum(s : MathspecialbetaSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspecialbetaSlice::sum(self : MathspecialbetaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_beta_slice_mean(s : MathspecialbetaSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspecialbetaSlice::mean(self : MathspecialbetaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_beta_slice_scale(s : MathspecialbetaSlice, f : Double) -> MathspecialbetaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialbetaSlice::scale(self : MathspecialbetaSlice, f : Double) -> MathspecialbetaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_slice_add(a : MathspecialbetaSlice, b : MathspecialbetaSlice) -> MathspecialbetaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialbetaSlice::add(self : MathspecialbetaSlice, other : MathspecialbetaSlice) -> MathspecialbetaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_beta_slice_copy(s : MathspecialbetaSlice) -> MathspecialbetaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialbetaSlice::copy(self : MathspecialbetaSlice) -> MathspecialbetaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_slice_fill(s : MathspecialbetaSlice, v : Double) -> MathspecialbetaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialbetaSlice::fill(self : MathspecialbetaSlice, v : Double) -> MathspecialbetaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_beta_slice_min(s : MathspecialbetaSlice) -> Double { @_common.min(s.data) }
+pub fn MathspecialbetaSlice::min(self : MathspecialbetaSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_beta_slice_max(s : MathspecialbetaSlice) -> Double { @_common.max(s.data) }
+pub fn MathspecialbetaSlice::max(self : MathspecialbetaSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_beta_slice_to_string(s : MathspecialbetaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialbetaSlice::to_string(self : MathspecialbetaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

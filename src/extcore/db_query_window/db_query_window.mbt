@@ -351,45 +351,45 @@ pub fn db_query_window_frame_make(size : Int) -> DbquerywindowFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_frame_len(s : DbquerywindowFrame) -> Int { s.size }
+pub fn DbquerywindowFrame::len(self : DbquerywindowFrame) -> Int { self.size }
 
-pub fn db_query_window_frame_get(s : DbquerywindowFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowFrame::get(self : DbquerywindowFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_frame_set(s : DbquerywindowFrame, i : Int, v : Double) -> DbquerywindowFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowFrame::set(self : DbquerywindowFrame, i : Int, v : Double) -> DbquerywindowFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_frame_sum(s : DbquerywindowFrame) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowFrame::sum(self : DbquerywindowFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_frame_mean(s : DbquerywindowFrame) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowFrame::mean(self : DbquerywindowFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_frame_scale(s : DbquerywindowFrame, f : Double) -> DbquerywindowFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowFrame::scale(self : DbquerywindowFrame, f : Double) -> DbquerywindowFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_frame_add(a : DbquerywindowFrame, b : DbquerywindowFrame) -> DbquerywindowFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowFrame::add(self : DbquerywindowFrame, other : DbquerywindowFrame) -> DbquerywindowFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_frame_copy(s : DbquerywindowFrame) -> DbquerywindowFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowFrame::copy(self : DbquerywindowFrame) -> DbquerywindowFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_frame_fill(s : DbquerywindowFrame, v : Double) -> DbquerywindowFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowFrame::fill(self : DbquerywindowFrame, v : Double) -> DbquerywindowFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_frame_min(s : DbquerywindowFrame) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowFrame::min(self : DbquerywindowFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_frame_max(s : DbquerywindowFrame) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowFrame::max(self : DbquerywindowFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_frame_to_string(s : DbquerywindowFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowFrame::to_string(self : DbquerywindowFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowTable {
@@ -402,45 +402,45 @@ pub fn db_query_window_table_make(size : Int) -> DbquerywindowTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_table_len(s : DbquerywindowTable) -> Int { s.size }
+pub fn DbquerywindowTable::len(self : DbquerywindowTable) -> Int { self.size }
 
-pub fn db_query_window_table_get(s : DbquerywindowTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowTable::get(self : DbquerywindowTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_table_set(s : DbquerywindowTable, i : Int, v : Double) -> DbquerywindowTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowTable::set(self : DbquerywindowTable, i : Int, v : Double) -> DbquerywindowTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_table_sum(s : DbquerywindowTable) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowTable::sum(self : DbquerywindowTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_table_mean(s : DbquerywindowTable) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowTable::mean(self : DbquerywindowTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_table_scale(s : DbquerywindowTable, f : Double) -> DbquerywindowTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowTable::scale(self : DbquerywindowTable, f : Double) -> DbquerywindowTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_table_add(a : DbquerywindowTable, b : DbquerywindowTable) -> DbquerywindowTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowTable::add(self : DbquerywindowTable, other : DbquerywindowTable) -> DbquerywindowTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_table_copy(s : DbquerywindowTable) -> DbquerywindowTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowTable::copy(self : DbquerywindowTable) -> DbquerywindowTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_table_fill(s : DbquerywindowTable, v : Double) -> DbquerywindowTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowTable::fill(self : DbquerywindowTable, v : Double) -> DbquerywindowTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_table_min(s : DbquerywindowTable) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowTable::min(self : DbquerywindowTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_table_max(s : DbquerywindowTable) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowTable::max(self : DbquerywindowTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_table_to_string(s : DbquerywindowTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowTable::to_string(self : DbquerywindowTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_window_graphn_make(size : Int) -> DbquerywindowGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_graphn_len(s : DbquerywindowGraphN) -> Int { s.size }
+pub fn DbquerywindowGraphN::len(self : DbquerywindowGraphN) -> Int { self.size }
 
-pub fn db_query_window_graphn_get(s : DbquerywindowGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowGraphN::get(self : DbquerywindowGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_graphn_set(s : DbquerywindowGraphN, i : Int, v : Double) -> DbquerywindowGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowGraphN::set(self : DbquerywindowGraphN, i : Int, v : Double) -> DbquerywindowGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_graphn_sum(s : DbquerywindowGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowGraphN::sum(self : DbquerywindowGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_graphn_mean(s : DbquerywindowGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowGraphN::mean(self : DbquerywindowGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_graphn_scale(s : DbquerywindowGraphN, f : Double) -> DbquerywindowGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowGraphN::scale(self : DbquerywindowGraphN, f : Double) -> DbquerywindowGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_graphn_add(a : DbquerywindowGraphN, b : DbquerywindowGraphN) -> DbquerywindowGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowGraphN::add(self : DbquerywindowGraphN, other : DbquerywindowGraphN) -> DbquerywindowGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_graphn_copy(s : DbquerywindowGraphN) -> DbquerywindowGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowGraphN::copy(self : DbquerywindowGraphN) -> DbquerywindowGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_graphn_fill(s : DbquerywindowGraphN, v : Double) -> DbquerywindowGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowGraphN::fill(self : DbquerywindowGraphN, v : Double) -> DbquerywindowGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_graphn_min(s : DbquerywindowGraphN) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowGraphN::min(self : DbquerywindowGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_graphn_max(s : DbquerywindowGraphN) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowGraphN::max(self : DbquerywindowGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_graphn_to_string(s : DbquerywindowGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowGraphN::to_string(self : DbquerywindowGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowNode {
@@ -504,45 +504,45 @@ pub fn db_query_window_node_make(size : Int) -> DbquerywindowNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_node_len(s : DbquerywindowNode) -> Int { s.size }
+pub fn DbquerywindowNode::len(self : DbquerywindowNode) -> Int { self.size }
 
-pub fn db_query_window_node_get(s : DbquerywindowNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowNode::get(self : DbquerywindowNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_node_set(s : DbquerywindowNode, i : Int, v : Double) -> DbquerywindowNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowNode::set(self : DbquerywindowNode, i : Int, v : Double) -> DbquerywindowNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_node_sum(s : DbquerywindowNode) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowNode::sum(self : DbquerywindowNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_node_mean(s : DbquerywindowNode) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowNode::mean(self : DbquerywindowNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_node_scale(s : DbquerywindowNode, f : Double) -> DbquerywindowNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowNode::scale(self : DbquerywindowNode, f : Double) -> DbquerywindowNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_node_add(a : DbquerywindowNode, b : DbquerywindowNode) -> DbquerywindowNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowNode::add(self : DbquerywindowNode, other : DbquerywindowNode) -> DbquerywindowNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_node_copy(s : DbquerywindowNode) -> DbquerywindowNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowNode::copy(self : DbquerywindowNode) -> DbquerywindowNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_node_fill(s : DbquerywindowNode, v : Double) -> DbquerywindowNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowNode::fill(self : DbquerywindowNode, v : Double) -> DbquerywindowNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_node_min(s : DbquerywindowNode) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowNode::min(self : DbquerywindowNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_node_max(s : DbquerywindowNode) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowNode::max(self : DbquerywindowNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_node_to_string(s : DbquerywindowNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowNode::to_string(self : DbquerywindowNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowEdge {
@@ -555,45 +555,45 @@ pub fn db_query_window_edge_make(size : Int) -> DbquerywindowEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_edge_len(s : DbquerywindowEdge) -> Int { s.size }
+pub fn DbquerywindowEdge::len(self : DbquerywindowEdge) -> Int { self.size }
 
-pub fn db_query_window_edge_get(s : DbquerywindowEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowEdge::get(self : DbquerywindowEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_edge_set(s : DbquerywindowEdge, i : Int, v : Double) -> DbquerywindowEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowEdge::set(self : DbquerywindowEdge, i : Int, v : Double) -> DbquerywindowEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_edge_sum(s : DbquerywindowEdge) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowEdge::sum(self : DbquerywindowEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_edge_mean(s : DbquerywindowEdge) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowEdge::mean(self : DbquerywindowEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_edge_scale(s : DbquerywindowEdge, f : Double) -> DbquerywindowEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowEdge::scale(self : DbquerywindowEdge, f : Double) -> DbquerywindowEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_edge_add(a : DbquerywindowEdge, b : DbquerywindowEdge) -> DbquerywindowEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowEdge::add(self : DbquerywindowEdge, other : DbquerywindowEdge) -> DbquerywindowEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_edge_copy(s : DbquerywindowEdge) -> DbquerywindowEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowEdge::copy(self : DbquerywindowEdge) -> DbquerywindowEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_edge_fill(s : DbquerywindowEdge, v : Double) -> DbquerywindowEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowEdge::fill(self : DbquerywindowEdge, v : Double) -> DbquerywindowEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_edge_min(s : DbquerywindowEdge) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowEdge::min(self : DbquerywindowEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_edge_max(s : DbquerywindowEdge) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowEdge::max(self : DbquerywindowEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_edge_to_string(s : DbquerywindowEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowEdge::to_string(self : DbquerywindowEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowPath {
@@ -606,45 +606,45 @@ pub fn db_query_window_path_make(size : Int) -> DbquerywindowPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_path_len(s : DbquerywindowPath) -> Int { s.size }
+pub fn DbquerywindowPath::len(self : DbquerywindowPath) -> Int { self.size }
 
-pub fn db_query_window_path_get(s : DbquerywindowPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowPath::get(self : DbquerywindowPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_path_set(s : DbquerywindowPath, i : Int, v : Double) -> DbquerywindowPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowPath::set(self : DbquerywindowPath, i : Int, v : Double) -> DbquerywindowPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_path_sum(s : DbquerywindowPath) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowPath::sum(self : DbquerywindowPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_path_mean(s : DbquerywindowPath) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowPath::mean(self : DbquerywindowPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_path_scale(s : DbquerywindowPath, f : Double) -> DbquerywindowPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowPath::scale(self : DbquerywindowPath, f : Double) -> DbquerywindowPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_path_add(a : DbquerywindowPath, b : DbquerywindowPath) -> DbquerywindowPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowPath::add(self : DbquerywindowPath, other : DbquerywindowPath) -> DbquerywindowPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_path_copy(s : DbquerywindowPath) -> DbquerywindowPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowPath::copy(self : DbquerywindowPath) -> DbquerywindowPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_path_fill(s : DbquerywindowPath, v : Double) -> DbquerywindowPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowPath::fill(self : DbquerywindowPath, v : Double) -> DbquerywindowPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_path_min(s : DbquerywindowPath) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowPath::min(self : DbquerywindowPath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_path_max(s : DbquerywindowPath) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowPath::max(self : DbquerywindowPath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_path_to_string(s : DbquerywindowPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowPath::to_string(self : DbquerywindowPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowCluster {
@@ -657,45 +657,45 @@ pub fn db_query_window_cluster_make(size : Int) -> DbquerywindowCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_cluster_len(s : DbquerywindowCluster) -> Int { s.size }
+pub fn DbquerywindowCluster::len(self : DbquerywindowCluster) -> Int { self.size }
 
-pub fn db_query_window_cluster_get(s : DbquerywindowCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowCluster::get(self : DbquerywindowCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_cluster_set(s : DbquerywindowCluster, i : Int, v : Double) -> DbquerywindowCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowCluster::set(self : DbquerywindowCluster, i : Int, v : Double) -> DbquerywindowCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cluster_sum(s : DbquerywindowCluster) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowCluster::sum(self : DbquerywindowCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_cluster_mean(s : DbquerywindowCluster) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowCluster::mean(self : DbquerywindowCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_cluster_scale(s : DbquerywindowCluster, f : Double) -> DbquerywindowCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowCluster::scale(self : DbquerywindowCluster, f : Double) -> DbquerywindowCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cluster_add(a : DbquerywindowCluster, b : DbquerywindowCluster) -> DbquerywindowCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowCluster::add(self : DbquerywindowCluster, other : DbquerywindowCluster) -> DbquerywindowCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_cluster_copy(s : DbquerywindowCluster) -> DbquerywindowCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowCluster::copy(self : DbquerywindowCluster) -> DbquerywindowCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cluster_fill(s : DbquerywindowCluster, v : Double) -> DbquerywindowCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowCluster::fill(self : DbquerywindowCluster, v : Double) -> DbquerywindowCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cluster_min(s : DbquerywindowCluster) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowCluster::min(self : DbquerywindowCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_cluster_max(s : DbquerywindowCluster) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowCluster::max(self : DbquerywindowCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_cluster_to_string(s : DbquerywindowCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowCluster::to_string(self : DbquerywindowCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowModel {
@@ -708,45 +708,45 @@ pub fn db_query_window_model_make(size : Int) -> DbquerywindowModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_model_len(s : DbquerywindowModel) -> Int { s.size }
+pub fn DbquerywindowModel::len(self : DbquerywindowModel) -> Int { self.size }
 
-pub fn db_query_window_model_get(s : DbquerywindowModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowModel::get(self : DbquerywindowModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_model_set(s : DbquerywindowModel, i : Int, v : Double) -> DbquerywindowModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowModel::set(self : DbquerywindowModel, i : Int, v : Double) -> DbquerywindowModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_model_sum(s : DbquerywindowModel) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowModel::sum(self : DbquerywindowModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_model_mean(s : DbquerywindowModel) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowModel::mean(self : DbquerywindowModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_model_scale(s : DbquerywindowModel, f : Double) -> DbquerywindowModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowModel::scale(self : DbquerywindowModel, f : Double) -> DbquerywindowModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_model_add(a : DbquerywindowModel, b : DbquerywindowModel) -> DbquerywindowModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowModel::add(self : DbquerywindowModel, other : DbquerywindowModel) -> DbquerywindowModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_model_copy(s : DbquerywindowModel) -> DbquerywindowModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowModel::copy(self : DbquerywindowModel) -> DbquerywindowModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_model_fill(s : DbquerywindowModel, v : Double) -> DbquerywindowModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowModel::fill(self : DbquerywindowModel, v : Double) -> DbquerywindowModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_model_min(s : DbquerywindowModel) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowModel::min(self : DbquerywindowModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_model_max(s : DbquerywindowModel) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowModel::max(self : DbquerywindowModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_model_to_string(s : DbquerywindowModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowModel::to_string(self : DbquerywindowModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowLayer {
@@ -759,45 +759,45 @@ pub fn db_query_window_layer_make(size : Int) -> DbquerywindowLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_layer_len(s : DbquerywindowLayer) -> Int { s.size }
+pub fn DbquerywindowLayer::len(self : DbquerywindowLayer) -> Int { self.size }
 
-pub fn db_query_window_layer_get(s : DbquerywindowLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowLayer::get(self : DbquerywindowLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_layer_set(s : DbquerywindowLayer, i : Int, v : Double) -> DbquerywindowLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowLayer::set(self : DbquerywindowLayer, i : Int, v : Double) -> DbquerywindowLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_layer_sum(s : DbquerywindowLayer) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowLayer::sum(self : DbquerywindowLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_layer_mean(s : DbquerywindowLayer) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowLayer::mean(self : DbquerywindowLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_layer_scale(s : DbquerywindowLayer, f : Double) -> DbquerywindowLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowLayer::scale(self : DbquerywindowLayer, f : Double) -> DbquerywindowLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_layer_add(a : DbquerywindowLayer, b : DbquerywindowLayer) -> DbquerywindowLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowLayer::add(self : DbquerywindowLayer, other : DbquerywindowLayer) -> DbquerywindowLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_layer_copy(s : DbquerywindowLayer) -> DbquerywindowLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowLayer::copy(self : DbquerywindowLayer) -> DbquerywindowLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_layer_fill(s : DbquerywindowLayer, v : Double) -> DbquerywindowLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowLayer::fill(self : DbquerywindowLayer, v : Double) -> DbquerywindowLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_layer_min(s : DbquerywindowLayer) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowLayer::min(self : DbquerywindowLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_layer_max(s : DbquerywindowLayer) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowLayer::max(self : DbquerywindowLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_layer_to_string(s : DbquerywindowLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowLayer::to_string(self : DbquerywindowLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_window_buffer_make(size : Int) -> DbquerywindowBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_buffer_len(s : DbquerywindowBuffer) -> Int { s.size }
+pub fn DbquerywindowBuffer::len(self : DbquerywindowBuffer) -> Int { self.size }
 
-pub fn db_query_window_buffer_get(s : DbquerywindowBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowBuffer::get(self : DbquerywindowBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_buffer_set(s : DbquerywindowBuffer, i : Int, v : Double) -> DbquerywindowBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowBuffer::set(self : DbquerywindowBuffer, i : Int, v : Double) -> DbquerywindowBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_buffer_sum(s : DbquerywindowBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowBuffer::sum(self : DbquerywindowBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_buffer_mean(s : DbquerywindowBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowBuffer::mean(self : DbquerywindowBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_buffer_scale(s : DbquerywindowBuffer, f : Double) -> DbquerywindowBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowBuffer::scale(self : DbquerywindowBuffer, f : Double) -> DbquerywindowBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_buffer_add(a : DbquerywindowBuffer, b : DbquerywindowBuffer) -> DbquerywindowBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowBuffer::add(self : DbquerywindowBuffer, other : DbquerywindowBuffer) -> DbquerywindowBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_buffer_copy(s : DbquerywindowBuffer) -> DbquerywindowBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowBuffer::copy(self : DbquerywindowBuffer) -> DbquerywindowBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_buffer_fill(s : DbquerywindowBuffer, v : Double) -> DbquerywindowBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowBuffer::fill(self : DbquerywindowBuffer, v : Double) -> DbquerywindowBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_buffer_min(s : DbquerywindowBuffer) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowBuffer::min(self : DbquerywindowBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_buffer_max(s : DbquerywindowBuffer) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowBuffer::max(self : DbquerywindowBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_buffer_to_string(s : DbquerywindowBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowBuffer::to_string(self : DbquerywindowBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowCursor {
@@ -861,45 +861,45 @@ pub fn db_query_window_cursor_make(size : Int) -> DbquerywindowCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_cursor_len(s : DbquerywindowCursor) -> Int { s.size }
+pub fn DbquerywindowCursor::len(self : DbquerywindowCursor) -> Int { self.size }
 
-pub fn db_query_window_cursor_get(s : DbquerywindowCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowCursor::get(self : DbquerywindowCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_cursor_set(s : DbquerywindowCursor, i : Int, v : Double) -> DbquerywindowCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowCursor::set(self : DbquerywindowCursor, i : Int, v : Double) -> DbquerywindowCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cursor_sum(s : DbquerywindowCursor) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowCursor::sum(self : DbquerywindowCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_cursor_mean(s : DbquerywindowCursor) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowCursor::mean(self : DbquerywindowCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_cursor_scale(s : DbquerywindowCursor, f : Double) -> DbquerywindowCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowCursor::scale(self : DbquerywindowCursor, f : Double) -> DbquerywindowCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cursor_add(a : DbquerywindowCursor, b : DbquerywindowCursor) -> DbquerywindowCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowCursor::add(self : DbquerywindowCursor, other : DbquerywindowCursor) -> DbquerywindowCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_cursor_copy(s : DbquerywindowCursor) -> DbquerywindowCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowCursor::copy(self : DbquerywindowCursor) -> DbquerywindowCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cursor_fill(s : DbquerywindowCursor, v : Double) -> DbquerywindowCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowCursor::fill(self : DbquerywindowCursor, v : Double) -> DbquerywindowCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_cursor_min(s : DbquerywindowCursor) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowCursor::min(self : DbquerywindowCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_cursor_max(s : DbquerywindowCursor) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowCursor::max(self : DbquerywindowCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_cursor_to_string(s : DbquerywindowCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowCursor::to_string(self : DbquerywindowCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowView {
@@ -912,45 +912,45 @@ pub fn db_query_window_view_make(size : Int) -> DbquerywindowView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_view_len(s : DbquerywindowView) -> Int { s.size }
+pub fn DbquerywindowView::len(self : DbquerywindowView) -> Int { self.size }
 
-pub fn db_query_window_view_get(s : DbquerywindowView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowView::get(self : DbquerywindowView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_view_set(s : DbquerywindowView, i : Int, v : Double) -> DbquerywindowView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowView::set(self : DbquerywindowView, i : Int, v : Double) -> DbquerywindowView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_view_sum(s : DbquerywindowView) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowView::sum(self : DbquerywindowView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_view_mean(s : DbquerywindowView) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowView::mean(self : DbquerywindowView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_view_scale(s : DbquerywindowView, f : Double) -> DbquerywindowView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowView::scale(self : DbquerywindowView, f : Double) -> DbquerywindowView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_view_add(a : DbquerywindowView, b : DbquerywindowView) -> DbquerywindowView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowView::add(self : DbquerywindowView, other : DbquerywindowView) -> DbquerywindowView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_view_copy(s : DbquerywindowView) -> DbquerywindowView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowView::copy(self : DbquerywindowView) -> DbquerywindowView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_view_fill(s : DbquerywindowView, v : Double) -> DbquerywindowView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowView::fill(self : DbquerywindowView, v : Double) -> DbquerywindowView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_view_min(s : DbquerywindowView) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowView::min(self : DbquerywindowView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_view_max(s : DbquerywindowView) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowView::max(self : DbquerywindowView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_view_to_string(s : DbquerywindowView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowView::to_string(self : DbquerywindowView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowRange {
@@ -963,45 +963,45 @@ pub fn db_query_window_range_make(size : Int) -> DbquerywindowRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_range_len(s : DbquerywindowRange) -> Int { s.size }
+pub fn DbquerywindowRange::len(self : DbquerywindowRange) -> Int { self.size }
 
-pub fn db_query_window_range_get(s : DbquerywindowRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowRange::get(self : DbquerywindowRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_range_set(s : DbquerywindowRange, i : Int, v : Double) -> DbquerywindowRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowRange::set(self : DbquerywindowRange, i : Int, v : Double) -> DbquerywindowRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_range_sum(s : DbquerywindowRange) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowRange::sum(self : DbquerywindowRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_range_mean(s : DbquerywindowRange) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowRange::mean(self : DbquerywindowRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_range_scale(s : DbquerywindowRange, f : Double) -> DbquerywindowRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowRange::scale(self : DbquerywindowRange, f : Double) -> DbquerywindowRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_range_add(a : DbquerywindowRange, b : DbquerywindowRange) -> DbquerywindowRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowRange::add(self : DbquerywindowRange, other : DbquerywindowRange) -> DbquerywindowRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_range_copy(s : DbquerywindowRange) -> DbquerywindowRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowRange::copy(self : DbquerywindowRange) -> DbquerywindowRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_range_fill(s : DbquerywindowRange, v : Double) -> DbquerywindowRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowRange::fill(self : DbquerywindowRange, v : Double) -> DbquerywindowRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_range_min(s : DbquerywindowRange) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowRange::min(self : DbquerywindowRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_range_max(s : DbquerywindowRange) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowRange::max(self : DbquerywindowRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_range_to_string(s : DbquerywindowRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowRange::to_string(self : DbquerywindowRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerywindowSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_window_slice_make(size : Int) -> DbquerywindowSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_window_slice_len(s : DbquerywindowSlice) -> Int { s.size }
+pub fn DbquerywindowSlice::len(self : DbquerywindowSlice) -> Int { self.size }
 
-pub fn db_query_window_slice_get(s : DbquerywindowSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerywindowSlice::get(self : DbquerywindowSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_window_slice_set(s : DbquerywindowSlice, i : Int, v : Double) -> DbquerywindowSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerywindowSlice::set(self : DbquerywindowSlice, i : Int, v : Double) -> DbquerywindowSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_slice_sum(s : DbquerywindowSlice) -> Double { @_common.sum(s.data) }
+pub fn DbquerywindowSlice::sum(self : DbquerywindowSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_window_slice_mean(s : DbquerywindowSlice) -> Double { @_common.mean(s.data) }
+pub fn DbquerywindowSlice::mean(self : DbquerywindowSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_window_slice_scale(s : DbquerywindowSlice, f : Double) -> DbquerywindowSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerywindowSlice::scale(self : DbquerywindowSlice, f : Double) -> DbquerywindowSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_slice_add(a : DbquerywindowSlice, b : DbquerywindowSlice) -> DbquerywindowSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerywindowSlice::add(self : DbquerywindowSlice, other : DbquerywindowSlice) -> DbquerywindowSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_window_slice_copy(s : DbquerywindowSlice) -> DbquerywindowSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerywindowSlice::copy(self : DbquerywindowSlice) -> DbquerywindowSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_slice_fill(s : DbquerywindowSlice, v : Double) -> DbquerywindowSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerywindowSlice::fill(self : DbquerywindowSlice, v : Double) -> DbquerywindowSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_window_slice_min(s : DbquerywindowSlice) -> Double { @_common.min(s.data) }
+pub fn DbquerywindowSlice::min(self : DbquerywindowSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_window_slice_max(s : DbquerywindowSlice) -> Double { @_common.max(s.data) }
+pub fn DbquerywindowSlice::max(self : DbquerywindowSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_window_slice_to_string(s : DbquerywindowSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerywindowSlice::to_string(self : DbquerywindowSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

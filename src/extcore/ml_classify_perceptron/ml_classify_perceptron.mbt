@@ -351,45 +351,45 @@ pub fn ml_classify_perceptron_frame_make(size : Int) -> MlclassifyperceptronFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_frame_len(s : MlclassifyperceptronFrame) -> Int { s.size }
+pub fn MlclassifyperceptronFrame::len(self : MlclassifyperceptronFrame) -> Int { self.size }
 
-pub fn ml_classify_perceptron_frame_get(s : MlclassifyperceptronFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronFrame::get(self : MlclassifyperceptronFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_frame_set(s : MlclassifyperceptronFrame, i : Int, v : Double) -> MlclassifyperceptronFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronFrame::set(self : MlclassifyperceptronFrame, i : Int, v : Double) -> MlclassifyperceptronFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_frame_sum(s : MlclassifyperceptronFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronFrame::sum(self : MlclassifyperceptronFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_frame_mean(s : MlclassifyperceptronFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronFrame::mean(self : MlclassifyperceptronFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_frame_scale(s : MlclassifyperceptronFrame, f : Double) -> MlclassifyperceptronFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronFrame::scale(self : MlclassifyperceptronFrame, f : Double) -> MlclassifyperceptronFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_frame_add(a : MlclassifyperceptronFrame, b : MlclassifyperceptronFrame) -> MlclassifyperceptronFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronFrame::add(self : MlclassifyperceptronFrame, other : MlclassifyperceptronFrame) -> MlclassifyperceptronFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_frame_copy(s : MlclassifyperceptronFrame) -> MlclassifyperceptronFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronFrame::copy(self : MlclassifyperceptronFrame) -> MlclassifyperceptronFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_frame_fill(s : MlclassifyperceptronFrame, v : Double) -> MlclassifyperceptronFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronFrame::fill(self : MlclassifyperceptronFrame, v : Double) -> MlclassifyperceptronFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_frame_min(s : MlclassifyperceptronFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronFrame::min(self : MlclassifyperceptronFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_frame_max(s : MlclassifyperceptronFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronFrame::max(self : MlclassifyperceptronFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_frame_to_string(s : MlclassifyperceptronFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronFrame::to_string(self : MlclassifyperceptronFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_perceptron_table_make(size : Int) -> MlclassifyperceptronTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_table_len(s : MlclassifyperceptronTable) -> Int { s.size }
+pub fn MlclassifyperceptronTable::len(self : MlclassifyperceptronTable) -> Int { self.size }
 
-pub fn ml_classify_perceptron_table_get(s : MlclassifyperceptronTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronTable::get(self : MlclassifyperceptronTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_table_set(s : MlclassifyperceptronTable, i : Int, v : Double) -> MlclassifyperceptronTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronTable::set(self : MlclassifyperceptronTable, i : Int, v : Double) -> MlclassifyperceptronTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_table_sum(s : MlclassifyperceptronTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronTable::sum(self : MlclassifyperceptronTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_table_mean(s : MlclassifyperceptronTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronTable::mean(self : MlclassifyperceptronTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_table_scale(s : MlclassifyperceptronTable, f : Double) -> MlclassifyperceptronTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronTable::scale(self : MlclassifyperceptronTable, f : Double) -> MlclassifyperceptronTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_table_add(a : MlclassifyperceptronTable, b : MlclassifyperceptronTable) -> MlclassifyperceptronTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronTable::add(self : MlclassifyperceptronTable, other : MlclassifyperceptronTable) -> MlclassifyperceptronTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_table_copy(s : MlclassifyperceptronTable) -> MlclassifyperceptronTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronTable::copy(self : MlclassifyperceptronTable) -> MlclassifyperceptronTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_table_fill(s : MlclassifyperceptronTable, v : Double) -> MlclassifyperceptronTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronTable::fill(self : MlclassifyperceptronTable, v : Double) -> MlclassifyperceptronTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_table_min(s : MlclassifyperceptronTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronTable::min(self : MlclassifyperceptronTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_table_max(s : MlclassifyperceptronTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronTable::max(self : MlclassifyperceptronTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_table_to_string(s : MlclassifyperceptronTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronTable::to_string(self : MlclassifyperceptronTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_perceptron_graphn_make(size : Int) -> MlclassifyperceptronGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_graphn_len(s : MlclassifyperceptronGraphN) -> Int { s.size }
+pub fn MlclassifyperceptronGraphN::len(self : MlclassifyperceptronGraphN) -> Int { self.size }
 
-pub fn ml_classify_perceptron_graphn_get(s : MlclassifyperceptronGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronGraphN::get(self : MlclassifyperceptronGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_graphn_set(s : MlclassifyperceptronGraphN, i : Int, v : Double) -> MlclassifyperceptronGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronGraphN::set(self : MlclassifyperceptronGraphN, i : Int, v : Double) -> MlclassifyperceptronGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_graphn_sum(s : MlclassifyperceptronGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronGraphN::sum(self : MlclassifyperceptronGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_graphn_mean(s : MlclassifyperceptronGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronGraphN::mean(self : MlclassifyperceptronGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_graphn_scale(s : MlclassifyperceptronGraphN, f : Double) -> MlclassifyperceptronGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronGraphN::scale(self : MlclassifyperceptronGraphN, f : Double) -> MlclassifyperceptronGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_graphn_add(a : MlclassifyperceptronGraphN, b : MlclassifyperceptronGraphN) -> MlclassifyperceptronGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronGraphN::add(self : MlclassifyperceptronGraphN, other : MlclassifyperceptronGraphN) -> MlclassifyperceptronGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_graphn_copy(s : MlclassifyperceptronGraphN) -> MlclassifyperceptronGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronGraphN::copy(self : MlclassifyperceptronGraphN) -> MlclassifyperceptronGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_graphn_fill(s : MlclassifyperceptronGraphN, v : Double) -> MlclassifyperceptronGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronGraphN::fill(self : MlclassifyperceptronGraphN, v : Double) -> MlclassifyperceptronGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_graphn_min(s : MlclassifyperceptronGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronGraphN::min(self : MlclassifyperceptronGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_graphn_max(s : MlclassifyperceptronGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronGraphN::max(self : MlclassifyperceptronGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_graphn_to_string(s : MlclassifyperceptronGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronGraphN::to_string(self : MlclassifyperceptronGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_perceptron_node_make(size : Int) -> MlclassifyperceptronNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_node_len(s : MlclassifyperceptronNode) -> Int { s.size }
+pub fn MlclassifyperceptronNode::len(self : MlclassifyperceptronNode) -> Int { self.size }
 
-pub fn ml_classify_perceptron_node_get(s : MlclassifyperceptronNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronNode::get(self : MlclassifyperceptronNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_node_set(s : MlclassifyperceptronNode, i : Int, v : Double) -> MlclassifyperceptronNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronNode::set(self : MlclassifyperceptronNode, i : Int, v : Double) -> MlclassifyperceptronNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_node_sum(s : MlclassifyperceptronNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronNode::sum(self : MlclassifyperceptronNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_node_mean(s : MlclassifyperceptronNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronNode::mean(self : MlclassifyperceptronNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_node_scale(s : MlclassifyperceptronNode, f : Double) -> MlclassifyperceptronNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronNode::scale(self : MlclassifyperceptronNode, f : Double) -> MlclassifyperceptronNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_node_add(a : MlclassifyperceptronNode, b : MlclassifyperceptronNode) -> MlclassifyperceptronNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronNode::add(self : MlclassifyperceptronNode, other : MlclassifyperceptronNode) -> MlclassifyperceptronNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_node_copy(s : MlclassifyperceptronNode) -> MlclassifyperceptronNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronNode::copy(self : MlclassifyperceptronNode) -> MlclassifyperceptronNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_node_fill(s : MlclassifyperceptronNode, v : Double) -> MlclassifyperceptronNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronNode::fill(self : MlclassifyperceptronNode, v : Double) -> MlclassifyperceptronNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_node_min(s : MlclassifyperceptronNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronNode::min(self : MlclassifyperceptronNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_node_max(s : MlclassifyperceptronNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronNode::max(self : MlclassifyperceptronNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_node_to_string(s : MlclassifyperceptronNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronNode::to_string(self : MlclassifyperceptronNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_perceptron_edge_make(size : Int) -> MlclassifyperceptronEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_edge_len(s : MlclassifyperceptronEdge) -> Int { s.size }
+pub fn MlclassifyperceptronEdge::len(self : MlclassifyperceptronEdge) -> Int { self.size }
 
-pub fn ml_classify_perceptron_edge_get(s : MlclassifyperceptronEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronEdge::get(self : MlclassifyperceptronEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_edge_set(s : MlclassifyperceptronEdge, i : Int, v : Double) -> MlclassifyperceptronEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronEdge::set(self : MlclassifyperceptronEdge, i : Int, v : Double) -> MlclassifyperceptronEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_edge_sum(s : MlclassifyperceptronEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronEdge::sum(self : MlclassifyperceptronEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_edge_mean(s : MlclassifyperceptronEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronEdge::mean(self : MlclassifyperceptronEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_edge_scale(s : MlclassifyperceptronEdge, f : Double) -> MlclassifyperceptronEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronEdge::scale(self : MlclassifyperceptronEdge, f : Double) -> MlclassifyperceptronEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_edge_add(a : MlclassifyperceptronEdge, b : MlclassifyperceptronEdge) -> MlclassifyperceptronEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronEdge::add(self : MlclassifyperceptronEdge, other : MlclassifyperceptronEdge) -> MlclassifyperceptronEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_edge_copy(s : MlclassifyperceptronEdge) -> MlclassifyperceptronEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronEdge::copy(self : MlclassifyperceptronEdge) -> MlclassifyperceptronEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_edge_fill(s : MlclassifyperceptronEdge, v : Double) -> MlclassifyperceptronEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronEdge::fill(self : MlclassifyperceptronEdge, v : Double) -> MlclassifyperceptronEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_edge_min(s : MlclassifyperceptronEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronEdge::min(self : MlclassifyperceptronEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_edge_max(s : MlclassifyperceptronEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronEdge::max(self : MlclassifyperceptronEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_edge_to_string(s : MlclassifyperceptronEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronEdge::to_string(self : MlclassifyperceptronEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_perceptron_path_make(size : Int) -> MlclassifyperceptronPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_path_len(s : MlclassifyperceptronPath) -> Int { s.size }
+pub fn MlclassifyperceptronPath::len(self : MlclassifyperceptronPath) -> Int { self.size }
 
-pub fn ml_classify_perceptron_path_get(s : MlclassifyperceptronPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronPath::get(self : MlclassifyperceptronPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_path_set(s : MlclassifyperceptronPath, i : Int, v : Double) -> MlclassifyperceptronPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronPath::set(self : MlclassifyperceptronPath, i : Int, v : Double) -> MlclassifyperceptronPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_path_sum(s : MlclassifyperceptronPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronPath::sum(self : MlclassifyperceptronPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_path_mean(s : MlclassifyperceptronPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronPath::mean(self : MlclassifyperceptronPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_path_scale(s : MlclassifyperceptronPath, f : Double) -> MlclassifyperceptronPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronPath::scale(self : MlclassifyperceptronPath, f : Double) -> MlclassifyperceptronPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_path_add(a : MlclassifyperceptronPath, b : MlclassifyperceptronPath) -> MlclassifyperceptronPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronPath::add(self : MlclassifyperceptronPath, other : MlclassifyperceptronPath) -> MlclassifyperceptronPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_path_copy(s : MlclassifyperceptronPath) -> MlclassifyperceptronPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronPath::copy(self : MlclassifyperceptronPath) -> MlclassifyperceptronPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_path_fill(s : MlclassifyperceptronPath, v : Double) -> MlclassifyperceptronPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronPath::fill(self : MlclassifyperceptronPath, v : Double) -> MlclassifyperceptronPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_path_min(s : MlclassifyperceptronPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronPath::min(self : MlclassifyperceptronPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_path_max(s : MlclassifyperceptronPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronPath::max(self : MlclassifyperceptronPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_path_to_string(s : MlclassifyperceptronPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronPath::to_string(self : MlclassifyperceptronPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_perceptron_cluster_make(size : Int) -> MlclassifyperceptronCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_cluster_len(s : MlclassifyperceptronCluster) -> Int { s.size }
+pub fn MlclassifyperceptronCluster::len(self : MlclassifyperceptronCluster) -> Int { self.size }
 
-pub fn ml_classify_perceptron_cluster_get(s : MlclassifyperceptronCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronCluster::get(self : MlclassifyperceptronCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_cluster_set(s : MlclassifyperceptronCluster, i : Int, v : Double) -> MlclassifyperceptronCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCluster::set(self : MlclassifyperceptronCluster, i : Int, v : Double) -> MlclassifyperceptronCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cluster_sum(s : MlclassifyperceptronCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronCluster::sum(self : MlclassifyperceptronCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_cluster_mean(s : MlclassifyperceptronCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronCluster::mean(self : MlclassifyperceptronCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_cluster_scale(s : MlclassifyperceptronCluster, f : Double) -> MlclassifyperceptronCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCluster::scale(self : MlclassifyperceptronCluster, f : Double) -> MlclassifyperceptronCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cluster_add(a : MlclassifyperceptronCluster, b : MlclassifyperceptronCluster) -> MlclassifyperceptronCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronCluster::add(self : MlclassifyperceptronCluster, other : MlclassifyperceptronCluster) -> MlclassifyperceptronCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cluster_copy(s : MlclassifyperceptronCluster) -> MlclassifyperceptronCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCluster::copy(self : MlclassifyperceptronCluster) -> MlclassifyperceptronCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cluster_fill(s : MlclassifyperceptronCluster, v : Double) -> MlclassifyperceptronCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCluster::fill(self : MlclassifyperceptronCluster, v : Double) -> MlclassifyperceptronCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cluster_min(s : MlclassifyperceptronCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronCluster::min(self : MlclassifyperceptronCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_cluster_max(s : MlclassifyperceptronCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronCluster::max(self : MlclassifyperceptronCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_cluster_to_string(s : MlclassifyperceptronCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronCluster::to_string(self : MlclassifyperceptronCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_perceptron_model_make(size : Int) -> MlclassifyperceptronMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_model_len(s : MlclassifyperceptronModel) -> Int { s.size }
+pub fn MlclassifyperceptronModel::len(self : MlclassifyperceptronModel) -> Int { self.size }
 
-pub fn ml_classify_perceptron_model_get(s : MlclassifyperceptronModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronModel::get(self : MlclassifyperceptronModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_model_set(s : MlclassifyperceptronModel, i : Int, v : Double) -> MlclassifyperceptronModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronModel::set(self : MlclassifyperceptronModel, i : Int, v : Double) -> MlclassifyperceptronModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_model_sum(s : MlclassifyperceptronModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronModel::sum(self : MlclassifyperceptronModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_model_mean(s : MlclassifyperceptronModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronModel::mean(self : MlclassifyperceptronModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_model_scale(s : MlclassifyperceptronModel, f : Double) -> MlclassifyperceptronModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronModel::scale(self : MlclassifyperceptronModel, f : Double) -> MlclassifyperceptronModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_model_add(a : MlclassifyperceptronModel, b : MlclassifyperceptronModel) -> MlclassifyperceptronModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronModel::add(self : MlclassifyperceptronModel, other : MlclassifyperceptronModel) -> MlclassifyperceptronModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_model_copy(s : MlclassifyperceptronModel) -> MlclassifyperceptronModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronModel::copy(self : MlclassifyperceptronModel) -> MlclassifyperceptronModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_model_fill(s : MlclassifyperceptronModel, v : Double) -> MlclassifyperceptronModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronModel::fill(self : MlclassifyperceptronModel, v : Double) -> MlclassifyperceptronModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_model_min(s : MlclassifyperceptronModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronModel::min(self : MlclassifyperceptronModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_model_max(s : MlclassifyperceptronModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronModel::max(self : MlclassifyperceptronModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_model_to_string(s : MlclassifyperceptronModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronModel::to_string(self : MlclassifyperceptronModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_perceptron_layer_make(size : Int) -> MlclassifyperceptronLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_layer_len(s : MlclassifyperceptronLayer) -> Int { s.size }
+pub fn MlclassifyperceptronLayer::len(self : MlclassifyperceptronLayer) -> Int { self.size }
 
-pub fn ml_classify_perceptron_layer_get(s : MlclassifyperceptronLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronLayer::get(self : MlclassifyperceptronLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_layer_set(s : MlclassifyperceptronLayer, i : Int, v : Double) -> MlclassifyperceptronLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronLayer::set(self : MlclassifyperceptronLayer, i : Int, v : Double) -> MlclassifyperceptronLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_layer_sum(s : MlclassifyperceptronLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronLayer::sum(self : MlclassifyperceptronLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_layer_mean(s : MlclassifyperceptronLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronLayer::mean(self : MlclassifyperceptronLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_layer_scale(s : MlclassifyperceptronLayer, f : Double) -> MlclassifyperceptronLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronLayer::scale(self : MlclassifyperceptronLayer, f : Double) -> MlclassifyperceptronLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_layer_add(a : MlclassifyperceptronLayer, b : MlclassifyperceptronLayer) -> MlclassifyperceptronLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronLayer::add(self : MlclassifyperceptronLayer, other : MlclassifyperceptronLayer) -> MlclassifyperceptronLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_layer_copy(s : MlclassifyperceptronLayer) -> MlclassifyperceptronLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronLayer::copy(self : MlclassifyperceptronLayer) -> MlclassifyperceptronLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_layer_fill(s : MlclassifyperceptronLayer, v : Double) -> MlclassifyperceptronLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronLayer::fill(self : MlclassifyperceptronLayer, v : Double) -> MlclassifyperceptronLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_layer_min(s : MlclassifyperceptronLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronLayer::min(self : MlclassifyperceptronLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_layer_max(s : MlclassifyperceptronLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronLayer::max(self : MlclassifyperceptronLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_layer_to_string(s : MlclassifyperceptronLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronLayer::to_string(self : MlclassifyperceptronLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_perceptron_buffer_make(size : Int) -> MlclassifyperceptronBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_buffer_len(s : MlclassifyperceptronBuffer) -> Int { s.size }
+pub fn MlclassifyperceptronBuffer::len(self : MlclassifyperceptronBuffer) -> Int { self.size }
 
-pub fn ml_classify_perceptron_buffer_get(s : MlclassifyperceptronBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronBuffer::get(self : MlclassifyperceptronBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_buffer_set(s : MlclassifyperceptronBuffer, i : Int, v : Double) -> MlclassifyperceptronBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronBuffer::set(self : MlclassifyperceptronBuffer, i : Int, v : Double) -> MlclassifyperceptronBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_buffer_sum(s : MlclassifyperceptronBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronBuffer::sum(self : MlclassifyperceptronBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_buffer_mean(s : MlclassifyperceptronBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronBuffer::mean(self : MlclassifyperceptronBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_buffer_scale(s : MlclassifyperceptronBuffer, f : Double) -> MlclassifyperceptronBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronBuffer::scale(self : MlclassifyperceptronBuffer, f : Double) -> MlclassifyperceptronBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_buffer_add(a : MlclassifyperceptronBuffer, b : MlclassifyperceptronBuffer) -> MlclassifyperceptronBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronBuffer::add(self : MlclassifyperceptronBuffer, other : MlclassifyperceptronBuffer) -> MlclassifyperceptronBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_buffer_copy(s : MlclassifyperceptronBuffer) -> MlclassifyperceptronBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronBuffer::copy(self : MlclassifyperceptronBuffer) -> MlclassifyperceptronBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_buffer_fill(s : MlclassifyperceptronBuffer, v : Double) -> MlclassifyperceptronBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronBuffer::fill(self : MlclassifyperceptronBuffer, v : Double) -> MlclassifyperceptronBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_buffer_min(s : MlclassifyperceptronBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronBuffer::min(self : MlclassifyperceptronBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_buffer_max(s : MlclassifyperceptronBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronBuffer::max(self : MlclassifyperceptronBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_buffer_to_string(s : MlclassifyperceptronBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronBuffer::to_string(self : MlclassifyperceptronBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_perceptron_cursor_make(size : Int) -> MlclassifyperceptronCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_cursor_len(s : MlclassifyperceptronCursor) -> Int { s.size }
+pub fn MlclassifyperceptronCursor::len(self : MlclassifyperceptronCursor) -> Int { self.size }
 
-pub fn ml_classify_perceptron_cursor_get(s : MlclassifyperceptronCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronCursor::get(self : MlclassifyperceptronCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_cursor_set(s : MlclassifyperceptronCursor, i : Int, v : Double) -> MlclassifyperceptronCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCursor::set(self : MlclassifyperceptronCursor, i : Int, v : Double) -> MlclassifyperceptronCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cursor_sum(s : MlclassifyperceptronCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronCursor::sum(self : MlclassifyperceptronCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_cursor_mean(s : MlclassifyperceptronCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronCursor::mean(self : MlclassifyperceptronCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_cursor_scale(s : MlclassifyperceptronCursor, f : Double) -> MlclassifyperceptronCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCursor::scale(self : MlclassifyperceptronCursor, f : Double) -> MlclassifyperceptronCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cursor_add(a : MlclassifyperceptronCursor, b : MlclassifyperceptronCursor) -> MlclassifyperceptronCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronCursor::add(self : MlclassifyperceptronCursor, other : MlclassifyperceptronCursor) -> MlclassifyperceptronCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cursor_copy(s : MlclassifyperceptronCursor) -> MlclassifyperceptronCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCursor::copy(self : MlclassifyperceptronCursor) -> MlclassifyperceptronCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cursor_fill(s : MlclassifyperceptronCursor, v : Double) -> MlclassifyperceptronCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronCursor::fill(self : MlclassifyperceptronCursor, v : Double) -> MlclassifyperceptronCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_cursor_min(s : MlclassifyperceptronCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronCursor::min(self : MlclassifyperceptronCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_cursor_max(s : MlclassifyperceptronCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronCursor::max(self : MlclassifyperceptronCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_cursor_to_string(s : MlclassifyperceptronCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronCursor::to_string(self : MlclassifyperceptronCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronView {
@@ -912,45 +912,45 @@ pub fn ml_classify_perceptron_view_make(size : Int) -> MlclassifyperceptronView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_view_len(s : MlclassifyperceptronView) -> Int { s.size }
+pub fn MlclassifyperceptronView::len(self : MlclassifyperceptronView) -> Int { self.size }
 
-pub fn ml_classify_perceptron_view_get(s : MlclassifyperceptronView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronView::get(self : MlclassifyperceptronView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_view_set(s : MlclassifyperceptronView, i : Int, v : Double) -> MlclassifyperceptronView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronView::set(self : MlclassifyperceptronView, i : Int, v : Double) -> MlclassifyperceptronView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_view_sum(s : MlclassifyperceptronView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronView::sum(self : MlclassifyperceptronView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_view_mean(s : MlclassifyperceptronView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronView::mean(self : MlclassifyperceptronView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_view_scale(s : MlclassifyperceptronView, f : Double) -> MlclassifyperceptronView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronView::scale(self : MlclassifyperceptronView, f : Double) -> MlclassifyperceptronView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_view_add(a : MlclassifyperceptronView, b : MlclassifyperceptronView) -> MlclassifyperceptronView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronView::add(self : MlclassifyperceptronView, other : MlclassifyperceptronView) -> MlclassifyperceptronView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_view_copy(s : MlclassifyperceptronView) -> MlclassifyperceptronView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronView::copy(self : MlclassifyperceptronView) -> MlclassifyperceptronView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_view_fill(s : MlclassifyperceptronView, v : Double) -> MlclassifyperceptronView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronView::fill(self : MlclassifyperceptronView, v : Double) -> MlclassifyperceptronView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_view_min(s : MlclassifyperceptronView) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronView::min(self : MlclassifyperceptronView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_view_max(s : MlclassifyperceptronView) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronView::max(self : MlclassifyperceptronView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_view_to_string(s : MlclassifyperceptronView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronView::to_string(self : MlclassifyperceptronView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_perceptron_range_make(size : Int) -> MlclassifyperceptronRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_range_len(s : MlclassifyperceptronRange) -> Int { s.size }
+pub fn MlclassifyperceptronRange::len(self : MlclassifyperceptronRange) -> Int { self.size }
 
-pub fn ml_classify_perceptron_range_get(s : MlclassifyperceptronRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronRange::get(self : MlclassifyperceptronRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_range_set(s : MlclassifyperceptronRange, i : Int, v : Double) -> MlclassifyperceptronRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronRange::set(self : MlclassifyperceptronRange, i : Int, v : Double) -> MlclassifyperceptronRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_range_sum(s : MlclassifyperceptronRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronRange::sum(self : MlclassifyperceptronRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_range_mean(s : MlclassifyperceptronRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronRange::mean(self : MlclassifyperceptronRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_range_scale(s : MlclassifyperceptronRange, f : Double) -> MlclassifyperceptronRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronRange::scale(self : MlclassifyperceptronRange, f : Double) -> MlclassifyperceptronRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_range_add(a : MlclassifyperceptronRange, b : MlclassifyperceptronRange) -> MlclassifyperceptronRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronRange::add(self : MlclassifyperceptronRange, other : MlclassifyperceptronRange) -> MlclassifyperceptronRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_range_copy(s : MlclassifyperceptronRange) -> MlclassifyperceptronRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronRange::copy(self : MlclassifyperceptronRange) -> MlclassifyperceptronRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_range_fill(s : MlclassifyperceptronRange, v : Double) -> MlclassifyperceptronRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronRange::fill(self : MlclassifyperceptronRange, v : Double) -> MlclassifyperceptronRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_range_min(s : MlclassifyperceptronRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronRange::min(self : MlclassifyperceptronRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_range_max(s : MlclassifyperceptronRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronRange::max(self : MlclassifyperceptronRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_range_to_string(s : MlclassifyperceptronRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronRange::to_string(self : MlclassifyperceptronRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyperceptronSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_perceptron_slice_make(size : Int) -> MlclassifyperceptronSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_perceptron_slice_len(s : MlclassifyperceptronSlice) -> Int { s.size }
+pub fn MlclassifyperceptronSlice::len(self : MlclassifyperceptronSlice) -> Int { self.size }
 
-pub fn ml_classify_perceptron_slice_get(s : MlclassifyperceptronSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyperceptronSlice::get(self : MlclassifyperceptronSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_perceptron_slice_set(s : MlclassifyperceptronSlice, i : Int, v : Double) -> MlclassifyperceptronSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronSlice::set(self : MlclassifyperceptronSlice, i : Int, v : Double) -> MlclassifyperceptronSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_slice_sum(s : MlclassifyperceptronSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyperceptronSlice::sum(self : MlclassifyperceptronSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_perceptron_slice_mean(s : MlclassifyperceptronSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyperceptronSlice::mean(self : MlclassifyperceptronSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_perceptron_slice_scale(s : MlclassifyperceptronSlice, f : Double) -> MlclassifyperceptronSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronSlice::scale(self : MlclassifyperceptronSlice, f : Double) -> MlclassifyperceptronSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_slice_add(a : MlclassifyperceptronSlice, b : MlclassifyperceptronSlice) -> MlclassifyperceptronSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyperceptronSlice::add(self : MlclassifyperceptronSlice, other : MlclassifyperceptronSlice) -> MlclassifyperceptronSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_slice_copy(s : MlclassifyperceptronSlice) -> MlclassifyperceptronSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronSlice::copy(self : MlclassifyperceptronSlice) -> MlclassifyperceptronSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_slice_fill(s : MlclassifyperceptronSlice, v : Double) -> MlclassifyperceptronSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyperceptronSlice::fill(self : MlclassifyperceptronSlice, v : Double) -> MlclassifyperceptronSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_perceptron_slice_min(s : MlclassifyperceptronSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifyperceptronSlice::min(self : MlclassifyperceptronSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_perceptron_slice_max(s : MlclassifyperceptronSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifyperceptronSlice::max(self : MlclassifyperceptronSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_perceptron_slice_to_string(s : MlclassifyperceptronSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyperceptronSlice::to_string(self : MlclassifyperceptronSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

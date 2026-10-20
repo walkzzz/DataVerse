@@ -351,45 +351,45 @@ pub fn net_proto_http2_frame_make(size : Int) -> Netprotohttp2Frame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_frame_len(s : Netprotohttp2Frame) -> Int { s.size }
+pub fn Netprotohttp2Frame::len(self : Netprotohttp2Frame) -> Int { self.size }
 
-pub fn net_proto_http2_frame_get(s : Netprotohttp2Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Frame::get(self : Netprotohttp2Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_frame_set(s : Netprotohttp2Frame, i : Int, v : Double) -> Netprotohttp2Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Frame::set(self : Netprotohttp2Frame, i : Int, v : Double) -> Netprotohttp2Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_frame_sum(s : Netprotohttp2Frame) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Frame::sum(self : Netprotohttp2Frame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_frame_mean(s : Netprotohttp2Frame) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Frame::mean(self : Netprotohttp2Frame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_frame_scale(s : Netprotohttp2Frame, f : Double) -> Netprotohttp2Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Frame::scale(self : Netprotohttp2Frame, f : Double) -> Netprotohttp2Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_frame_add(a : Netprotohttp2Frame, b : Netprotohttp2Frame) -> Netprotohttp2Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Frame::add(self : Netprotohttp2Frame, other : Netprotohttp2Frame) -> Netprotohttp2Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_frame_copy(s : Netprotohttp2Frame) -> Netprotohttp2Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Frame::copy(self : Netprotohttp2Frame) -> Netprotohttp2Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_frame_fill(s : Netprotohttp2Frame, v : Double) -> Netprotohttp2Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Frame::fill(self : Netprotohttp2Frame, v : Double) -> Netprotohttp2Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_frame_min(s : Netprotohttp2Frame) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Frame::min(self : Netprotohttp2Frame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_frame_max(s : Netprotohttp2Frame) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Frame::max(self : Netprotohttp2Frame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_frame_to_string(s : Netprotohttp2Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Frame::to_string(self : Netprotohttp2Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Table {
@@ -402,45 +402,45 @@ pub fn net_proto_http2_table_make(size : Int) -> Netprotohttp2Table {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_table_len(s : Netprotohttp2Table) -> Int { s.size }
+pub fn Netprotohttp2Table::len(self : Netprotohttp2Table) -> Int { self.size }
 
-pub fn net_proto_http2_table_get(s : Netprotohttp2Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Table::get(self : Netprotohttp2Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_table_set(s : Netprotohttp2Table, i : Int, v : Double) -> Netprotohttp2Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Table::set(self : Netprotohttp2Table, i : Int, v : Double) -> Netprotohttp2Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_table_sum(s : Netprotohttp2Table) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Table::sum(self : Netprotohttp2Table) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_table_mean(s : Netprotohttp2Table) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Table::mean(self : Netprotohttp2Table) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_table_scale(s : Netprotohttp2Table, f : Double) -> Netprotohttp2Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Table::scale(self : Netprotohttp2Table, f : Double) -> Netprotohttp2Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_table_add(a : Netprotohttp2Table, b : Netprotohttp2Table) -> Netprotohttp2Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Table::add(self : Netprotohttp2Table, other : Netprotohttp2Table) -> Netprotohttp2Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_table_copy(s : Netprotohttp2Table) -> Netprotohttp2Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Table::copy(self : Netprotohttp2Table) -> Netprotohttp2Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_table_fill(s : Netprotohttp2Table, v : Double) -> Netprotohttp2Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Table::fill(self : Netprotohttp2Table, v : Double) -> Netprotohttp2Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_table_min(s : Netprotohttp2Table) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Table::min(self : Netprotohttp2Table) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_table_max(s : Netprotohttp2Table) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Table::max(self : Netprotohttp2Table) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_table_to_string(s : Netprotohttp2Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Table::to_string(self : Netprotohttp2Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2GraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_http2_graphn_make(size : Int) -> Netprotohttp2GraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_graphn_len(s : Netprotohttp2GraphN) -> Int { s.size }
+pub fn Netprotohttp2GraphN::len(self : Netprotohttp2GraphN) -> Int { self.size }
 
-pub fn net_proto_http2_graphn_get(s : Netprotohttp2GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2GraphN::get(self : Netprotohttp2GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_graphn_set(s : Netprotohttp2GraphN, i : Int, v : Double) -> Netprotohttp2GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2GraphN::set(self : Netprotohttp2GraphN, i : Int, v : Double) -> Netprotohttp2GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_graphn_sum(s : Netprotohttp2GraphN) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2GraphN::sum(self : Netprotohttp2GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_graphn_mean(s : Netprotohttp2GraphN) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2GraphN::mean(self : Netprotohttp2GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_graphn_scale(s : Netprotohttp2GraphN, f : Double) -> Netprotohttp2GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2GraphN::scale(self : Netprotohttp2GraphN, f : Double) -> Netprotohttp2GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_graphn_add(a : Netprotohttp2GraphN, b : Netprotohttp2GraphN) -> Netprotohttp2GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2GraphN::add(self : Netprotohttp2GraphN, other : Netprotohttp2GraphN) -> Netprotohttp2GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_graphn_copy(s : Netprotohttp2GraphN) -> Netprotohttp2GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2GraphN::copy(self : Netprotohttp2GraphN) -> Netprotohttp2GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_graphn_fill(s : Netprotohttp2GraphN, v : Double) -> Netprotohttp2GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2GraphN::fill(self : Netprotohttp2GraphN, v : Double) -> Netprotohttp2GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_graphn_min(s : Netprotohttp2GraphN) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2GraphN::min(self : Netprotohttp2GraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_graphn_max(s : Netprotohttp2GraphN) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2GraphN::max(self : Netprotohttp2GraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_graphn_to_string(s : Netprotohttp2GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2GraphN::to_string(self : Netprotohttp2GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Node {
@@ -504,45 +504,45 @@ pub fn net_proto_http2_node_make(size : Int) -> Netprotohttp2Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_node_len(s : Netprotohttp2Node) -> Int { s.size }
+pub fn Netprotohttp2Node::len(self : Netprotohttp2Node) -> Int { self.size }
 
-pub fn net_proto_http2_node_get(s : Netprotohttp2Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Node::get(self : Netprotohttp2Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_node_set(s : Netprotohttp2Node, i : Int, v : Double) -> Netprotohttp2Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Node::set(self : Netprotohttp2Node, i : Int, v : Double) -> Netprotohttp2Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_node_sum(s : Netprotohttp2Node) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Node::sum(self : Netprotohttp2Node) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_node_mean(s : Netprotohttp2Node) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Node::mean(self : Netprotohttp2Node) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_node_scale(s : Netprotohttp2Node, f : Double) -> Netprotohttp2Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Node::scale(self : Netprotohttp2Node, f : Double) -> Netprotohttp2Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_node_add(a : Netprotohttp2Node, b : Netprotohttp2Node) -> Netprotohttp2Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Node::add(self : Netprotohttp2Node, other : Netprotohttp2Node) -> Netprotohttp2Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_node_copy(s : Netprotohttp2Node) -> Netprotohttp2Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Node::copy(self : Netprotohttp2Node) -> Netprotohttp2Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_node_fill(s : Netprotohttp2Node, v : Double) -> Netprotohttp2Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Node::fill(self : Netprotohttp2Node, v : Double) -> Netprotohttp2Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_node_min(s : Netprotohttp2Node) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Node::min(self : Netprotohttp2Node) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_node_max(s : Netprotohttp2Node) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Node::max(self : Netprotohttp2Node) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_node_to_string(s : Netprotohttp2Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Node::to_string(self : Netprotohttp2Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Edge {
@@ -555,45 +555,45 @@ pub fn net_proto_http2_edge_make(size : Int) -> Netprotohttp2Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_edge_len(s : Netprotohttp2Edge) -> Int { s.size }
+pub fn Netprotohttp2Edge::len(self : Netprotohttp2Edge) -> Int { self.size }
 
-pub fn net_proto_http2_edge_get(s : Netprotohttp2Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Edge::get(self : Netprotohttp2Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_edge_set(s : Netprotohttp2Edge, i : Int, v : Double) -> Netprotohttp2Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Edge::set(self : Netprotohttp2Edge, i : Int, v : Double) -> Netprotohttp2Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_edge_sum(s : Netprotohttp2Edge) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Edge::sum(self : Netprotohttp2Edge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_edge_mean(s : Netprotohttp2Edge) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Edge::mean(self : Netprotohttp2Edge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_edge_scale(s : Netprotohttp2Edge, f : Double) -> Netprotohttp2Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Edge::scale(self : Netprotohttp2Edge, f : Double) -> Netprotohttp2Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_edge_add(a : Netprotohttp2Edge, b : Netprotohttp2Edge) -> Netprotohttp2Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Edge::add(self : Netprotohttp2Edge, other : Netprotohttp2Edge) -> Netprotohttp2Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_edge_copy(s : Netprotohttp2Edge) -> Netprotohttp2Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Edge::copy(self : Netprotohttp2Edge) -> Netprotohttp2Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_edge_fill(s : Netprotohttp2Edge, v : Double) -> Netprotohttp2Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Edge::fill(self : Netprotohttp2Edge, v : Double) -> Netprotohttp2Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_edge_min(s : Netprotohttp2Edge) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Edge::min(self : Netprotohttp2Edge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_edge_max(s : Netprotohttp2Edge) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Edge::max(self : Netprotohttp2Edge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_edge_to_string(s : Netprotohttp2Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Edge::to_string(self : Netprotohttp2Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Path {
@@ -606,45 +606,45 @@ pub fn net_proto_http2_path_make(size : Int) -> Netprotohttp2Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_path_len(s : Netprotohttp2Path) -> Int { s.size }
+pub fn Netprotohttp2Path::len(self : Netprotohttp2Path) -> Int { self.size }
 
-pub fn net_proto_http2_path_get(s : Netprotohttp2Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Path::get(self : Netprotohttp2Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_path_set(s : Netprotohttp2Path, i : Int, v : Double) -> Netprotohttp2Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Path::set(self : Netprotohttp2Path, i : Int, v : Double) -> Netprotohttp2Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_path_sum(s : Netprotohttp2Path) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Path::sum(self : Netprotohttp2Path) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_path_mean(s : Netprotohttp2Path) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Path::mean(self : Netprotohttp2Path) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_path_scale(s : Netprotohttp2Path, f : Double) -> Netprotohttp2Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Path::scale(self : Netprotohttp2Path, f : Double) -> Netprotohttp2Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_path_add(a : Netprotohttp2Path, b : Netprotohttp2Path) -> Netprotohttp2Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Path::add(self : Netprotohttp2Path, other : Netprotohttp2Path) -> Netprotohttp2Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_path_copy(s : Netprotohttp2Path) -> Netprotohttp2Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Path::copy(self : Netprotohttp2Path) -> Netprotohttp2Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_path_fill(s : Netprotohttp2Path, v : Double) -> Netprotohttp2Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Path::fill(self : Netprotohttp2Path, v : Double) -> Netprotohttp2Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_path_min(s : Netprotohttp2Path) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Path::min(self : Netprotohttp2Path) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_path_max(s : Netprotohttp2Path) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Path::max(self : Netprotohttp2Path) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_path_to_string(s : Netprotohttp2Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Path::to_string(self : Netprotohttp2Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Cluster {
@@ -657,45 +657,45 @@ pub fn net_proto_http2_cluster_make(size : Int) -> Netprotohttp2Cluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_cluster_len(s : Netprotohttp2Cluster) -> Int { s.size }
+pub fn Netprotohttp2Cluster::len(self : Netprotohttp2Cluster) -> Int { self.size }
 
-pub fn net_proto_http2_cluster_get(s : Netprotohttp2Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Cluster::get(self : Netprotohttp2Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_cluster_set(s : Netprotohttp2Cluster, i : Int, v : Double) -> Netprotohttp2Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cluster::set(self : Netprotohttp2Cluster, i : Int, v : Double) -> Netprotohttp2Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cluster_sum(s : Netprotohttp2Cluster) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Cluster::sum(self : Netprotohttp2Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_cluster_mean(s : Netprotohttp2Cluster) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Cluster::mean(self : Netprotohttp2Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_cluster_scale(s : Netprotohttp2Cluster, f : Double) -> Netprotohttp2Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cluster::scale(self : Netprotohttp2Cluster, f : Double) -> Netprotohttp2Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cluster_add(a : Netprotohttp2Cluster, b : Netprotohttp2Cluster) -> Netprotohttp2Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Cluster::add(self : Netprotohttp2Cluster, other : Netprotohttp2Cluster) -> Netprotohttp2Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_cluster_copy(s : Netprotohttp2Cluster) -> Netprotohttp2Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cluster::copy(self : Netprotohttp2Cluster) -> Netprotohttp2Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cluster_fill(s : Netprotohttp2Cluster, v : Double) -> Netprotohttp2Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cluster::fill(self : Netprotohttp2Cluster, v : Double) -> Netprotohttp2Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cluster_min(s : Netprotohttp2Cluster) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Cluster::min(self : Netprotohttp2Cluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_cluster_max(s : Netprotohttp2Cluster) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Cluster::max(self : Netprotohttp2Cluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_cluster_to_string(s : Netprotohttp2Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Cluster::to_string(self : Netprotohttp2Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Model {
@@ -708,45 +708,45 @@ pub fn net_proto_http2_model_make(size : Int) -> Netprotohttp2Model {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_model_len(s : Netprotohttp2Model) -> Int { s.size }
+pub fn Netprotohttp2Model::len(self : Netprotohttp2Model) -> Int { self.size }
 
-pub fn net_proto_http2_model_get(s : Netprotohttp2Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Model::get(self : Netprotohttp2Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_model_set(s : Netprotohttp2Model, i : Int, v : Double) -> Netprotohttp2Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Model::set(self : Netprotohttp2Model, i : Int, v : Double) -> Netprotohttp2Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_model_sum(s : Netprotohttp2Model) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Model::sum(self : Netprotohttp2Model) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_model_mean(s : Netprotohttp2Model) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Model::mean(self : Netprotohttp2Model) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_model_scale(s : Netprotohttp2Model, f : Double) -> Netprotohttp2Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Model::scale(self : Netprotohttp2Model, f : Double) -> Netprotohttp2Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_model_add(a : Netprotohttp2Model, b : Netprotohttp2Model) -> Netprotohttp2Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Model::add(self : Netprotohttp2Model, other : Netprotohttp2Model) -> Netprotohttp2Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_model_copy(s : Netprotohttp2Model) -> Netprotohttp2Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Model::copy(self : Netprotohttp2Model) -> Netprotohttp2Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_model_fill(s : Netprotohttp2Model, v : Double) -> Netprotohttp2Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Model::fill(self : Netprotohttp2Model, v : Double) -> Netprotohttp2Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_model_min(s : Netprotohttp2Model) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Model::min(self : Netprotohttp2Model) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_model_max(s : Netprotohttp2Model) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Model::max(self : Netprotohttp2Model) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_model_to_string(s : Netprotohttp2Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Model::to_string(self : Netprotohttp2Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Layer {
@@ -759,45 +759,45 @@ pub fn net_proto_http2_layer_make(size : Int) -> Netprotohttp2Layer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_layer_len(s : Netprotohttp2Layer) -> Int { s.size }
+pub fn Netprotohttp2Layer::len(self : Netprotohttp2Layer) -> Int { self.size }
 
-pub fn net_proto_http2_layer_get(s : Netprotohttp2Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Layer::get(self : Netprotohttp2Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_layer_set(s : Netprotohttp2Layer, i : Int, v : Double) -> Netprotohttp2Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Layer::set(self : Netprotohttp2Layer, i : Int, v : Double) -> Netprotohttp2Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_layer_sum(s : Netprotohttp2Layer) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Layer::sum(self : Netprotohttp2Layer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_layer_mean(s : Netprotohttp2Layer) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Layer::mean(self : Netprotohttp2Layer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_layer_scale(s : Netprotohttp2Layer, f : Double) -> Netprotohttp2Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Layer::scale(self : Netprotohttp2Layer, f : Double) -> Netprotohttp2Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_layer_add(a : Netprotohttp2Layer, b : Netprotohttp2Layer) -> Netprotohttp2Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Layer::add(self : Netprotohttp2Layer, other : Netprotohttp2Layer) -> Netprotohttp2Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_layer_copy(s : Netprotohttp2Layer) -> Netprotohttp2Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Layer::copy(self : Netprotohttp2Layer) -> Netprotohttp2Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_layer_fill(s : Netprotohttp2Layer, v : Double) -> Netprotohttp2Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Layer::fill(self : Netprotohttp2Layer, v : Double) -> Netprotohttp2Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_layer_min(s : Netprotohttp2Layer) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Layer::min(self : Netprotohttp2Layer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_layer_max(s : Netprotohttp2Layer) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Layer::max(self : Netprotohttp2Layer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_layer_to_string(s : Netprotohttp2Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Layer::to_string(self : Netprotohttp2Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Buffer {
@@ -810,45 +810,45 @@ pub fn net_proto_http2_buffer_make(size : Int) -> Netprotohttp2Buffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_buffer_len(s : Netprotohttp2Buffer) -> Int { s.size }
+pub fn Netprotohttp2Buffer::len(self : Netprotohttp2Buffer) -> Int { self.size }
 
-pub fn net_proto_http2_buffer_get(s : Netprotohttp2Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Buffer::get(self : Netprotohttp2Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_buffer_set(s : Netprotohttp2Buffer, i : Int, v : Double) -> Netprotohttp2Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Buffer::set(self : Netprotohttp2Buffer, i : Int, v : Double) -> Netprotohttp2Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_buffer_sum(s : Netprotohttp2Buffer) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Buffer::sum(self : Netprotohttp2Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_buffer_mean(s : Netprotohttp2Buffer) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Buffer::mean(self : Netprotohttp2Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_buffer_scale(s : Netprotohttp2Buffer, f : Double) -> Netprotohttp2Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Buffer::scale(self : Netprotohttp2Buffer, f : Double) -> Netprotohttp2Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_buffer_add(a : Netprotohttp2Buffer, b : Netprotohttp2Buffer) -> Netprotohttp2Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Buffer::add(self : Netprotohttp2Buffer, other : Netprotohttp2Buffer) -> Netprotohttp2Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_buffer_copy(s : Netprotohttp2Buffer) -> Netprotohttp2Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Buffer::copy(self : Netprotohttp2Buffer) -> Netprotohttp2Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_buffer_fill(s : Netprotohttp2Buffer, v : Double) -> Netprotohttp2Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Buffer::fill(self : Netprotohttp2Buffer, v : Double) -> Netprotohttp2Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_buffer_min(s : Netprotohttp2Buffer) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Buffer::min(self : Netprotohttp2Buffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_buffer_max(s : Netprotohttp2Buffer) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Buffer::max(self : Netprotohttp2Buffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_buffer_to_string(s : Netprotohttp2Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Buffer::to_string(self : Netprotohttp2Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Cursor {
@@ -861,45 +861,45 @@ pub fn net_proto_http2_cursor_make(size : Int) -> Netprotohttp2Cursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_cursor_len(s : Netprotohttp2Cursor) -> Int { s.size }
+pub fn Netprotohttp2Cursor::len(self : Netprotohttp2Cursor) -> Int { self.size }
 
-pub fn net_proto_http2_cursor_get(s : Netprotohttp2Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Cursor::get(self : Netprotohttp2Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_cursor_set(s : Netprotohttp2Cursor, i : Int, v : Double) -> Netprotohttp2Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cursor::set(self : Netprotohttp2Cursor, i : Int, v : Double) -> Netprotohttp2Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cursor_sum(s : Netprotohttp2Cursor) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Cursor::sum(self : Netprotohttp2Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_cursor_mean(s : Netprotohttp2Cursor) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Cursor::mean(self : Netprotohttp2Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_cursor_scale(s : Netprotohttp2Cursor, f : Double) -> Netprotohttp2Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cursor::scale(self : Netprotohttp2Cursor, f : Double) -> Netprotohttp2Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cursor_add(a : Netprotohttp2Cursor, b : Netprotohttp2Cursor) -> Netprotohttp2Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Cursor::add(self : Netprotohttp2Cursor, other : Netprotohttp2Cursor) -> Netprotohttp2Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_cursor_copy(s : Netprotohttp2Cursor) -> Netprotohttp2Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cursor::copy(self : Netprotohttp2Cursor) -> Netprotohttp2Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cursor_fill(s : Netprotohttp2Cursor, v : Double) -> Netprotohttp2Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Cursor::fill(self : Netprotohttp2Cursor, v : Double) -> Netprotohttp2Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_cursor_min(s : Netprotohttp2Cursor) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Cursor::min(self : Netprotohttp2Cursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_cursor_max(s : Netprotohttp2Cursor) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Cursor::max(self : Netprotohttp2Cursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_cursor_to_string(s : Netprotohttp2Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Cursor::to_string(self : Netprotohttp2Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2View {
@@ -912,45 +912,45 @@ pub fn net_proto_http2_view_make(size : Int) -> Netprotohttp2View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_view_len(s : Netprotohttp2View) -> Int { s.size }
+pub fn Netprotohttp2View::len(self : Netprotohttp2View) -> Int { self.size }
 
-pub fn net_proto_http2_view_get(s : Netprotohttp2View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2View::get(self : Netprotohttp2View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_view_set(s : Netprotohttp2View, i : Int, v : Double) -> Netprotohttp2View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2View::set(self : Netprotohttp2View, i : Int, v : Double) -> Netprotohttp2View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_view_sum(s : Netprotohttp2View) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2View::sum(self : Netprotohttp2View) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_view_mean(s : Netprotohttp2View) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2View::mean(self : Netprotohttp2View) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_view_scale(s : Netprotohttp2View, f : Double) -> Netprotohttp2View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2View::scale(self : Netprotohttp2View, f : Double) -> Netprotohttp2View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_view_add(a : Netprotohttp2View, b : Netprotohttp2View) -> Netprotohttp2View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2View::add(self : Netprotohttp2View, other : Netprotohttp2View) -> Netprotohttp2View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_view_copy(s : Netprotohttp2View) -> Netprotohttp2View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2View::copy(self : Netprotohttp2View) -> Netprotohttp2View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_view_fill(s : Netprotohttp2View, v : Double) -> Netprotohttp2View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2View::fill(self : Netprotohttp2View, v : Double) -> Netprotohttp2View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_view_min(s : Netprotohttp2View) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2View::min(self : Netprotohttp2View) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_view_max(s : Netprotohttp2View) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2View::max(self : Netprotohttp2View) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_view_to_string(s : Netprotohttp2View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2View::to_string(self : Netprotohttp2View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Range {
@@ -963,45 +963,45 @@ pub fn net_proto_http2_range_make(size : Int) -> Netprotohttp2Range {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_range_len(s : Netprotohttp2Range) -> Int { s.size }
+pub fn Netprotohttp2Range::len(self : Netprotohttp2Range) -> Int { self.size }
 
-pub fn net_proto_http2_range_get(s : Netprotohttp2Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Range::get(self : Netprotohttp2Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_range_set(s : Netprotohttp2Range, i : Int, v : Double) -> Netprotohttp2Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Range::set(self : Netprotohttp2Range, i : Int, v : Double) -> Netprotohttp2Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_range_sum(s : Netprotohttp2Range) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Range::sum(self : Netprotohttp2Range) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_range_mean(s : Netprotohttp2Range) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Range::mean(self : Netprotohttp2Range) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_range_scale(s : Netprotohttp2Range, f : Double) -> Netprotohttp2Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Range::scale(self : Netprotohttp2Range, f : Double) -> Netprotohttp2Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_range_add(a : Netprotohttp2Range, b : Netprotohttp2Range) -> Netprotohttp2Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Range::add(self : Netprotohttp2Range, other : Netprotohttp2Range) -> Netprotohttp2Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_range_copy(s : Netprotohttp2Range) -> Netprotohttp2Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Range::copy(self : Netprotohttp2Range) -> Netprotohttp2Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_range_fill(s : Netprotohttp2Range, v : Double) -> Netprotohttp2Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Range::fill(self : Netprotohttp2Range, v : Double) -> Netprotohttp2Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_range_min(s : Netprotohttp2Range) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Range::min(self : Netprotohttp2Range) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_range_max(s : Netprotohttp2Range) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Range::max(self : Netprotohttp2Range) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_range_to_string(s : Netprotohttp2Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Range::to_string(self : Netprotohttp2Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp2Slice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_http2_slice_make(size : Int) -> Netprotohttp2Slice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http2_slice_len(s : Netprotohttp2Slice) -> Int { s.size }
+pub fn Netprotohttp2Slice::len(self : Netprotohttp2Slice) -> Int { self.size }
 
-pub fn net_proto_http2_slice_get(s : Netprotohttp2Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp2Slice::get(self : Netprotohttp2Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http2_slice_set(s : Netprotohttp2Slice, i : Int, v : Double) -> Netprotohttp2Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp2Slice::set(self : Netprotohttp2Slice, i : Int, v : Double) -> Netprotohttp2Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_slice_sum(s : Netprotohttp2Slice) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp2Slice::sum(self : Netprotohttp2Slice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http2_slice_mean(s : Netprotohttp2Slice) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp2Slice::mean(self : Netprotohttp2Slice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http2_slice_scale(s : Netprotohttp2Slice, f : Double) -> Netprotohttp2Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Slice::scale(self : Netprotohttp2Slice, f : Double) -> Netprotohttp2Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_slice_add(a : Netprotohttp2Slice, b : Netprotohttp2Slice) -> Netprotohttp2Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp2Slice::add(self : Netprotohttp2Slice, other : Netprotohttp2Slice) -> Netprotohttp2Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http2_slice_copy(s : Netprotohttp2Slice) -> Netprotohttp2Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Slice::copy(self : Netprotohttp2Slice) -> Netprotohttp2Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_slice_fill(s : Netprotohttp2Slice, v : Double) -> Netprotohttp2Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp2Slice::fill(self : Netprotohttp2Slice, v : Double) -> Netprotohttp2Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http2_slice_min(s : Netprotohttp2Slice) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp2Slice::min(self : Netprotohttp2Slice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http2_slice_max(s : Netprotohttp2Slice) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp2Slice::max(self : Netprotohttp2Slice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http2_slice_to_string(s : Netprotohttp2Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp2Slice::to_string(self : Netprotohttp2Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

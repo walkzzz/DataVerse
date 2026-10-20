@@ -351,45 +351,45 @@ pub fn stats_model_glm_frame_make(size : Int) -> StatsmodelglmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_frame_len(s : StatsmodelglmFrame) -> Int { s.size }
+pub fn StatsmodelglmFrame::len(self : StatsmodelglmFrame) -> Int { self.size }
 
-pub fn stats_model_glm_frame_get(s : StatsmodelglmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmFrame::get(self : StatsmodelglmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_frame_set(s : StatsmodelglmFrame, i : Int, v : Double) -> StatsmodelglmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmFrame::set(self : StatsmodelglmFrame, i : Int, v : Double) -> StatsmodelglmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_frame_sum(s : StatsmodelglmFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmFrame::sum(self : StatsmodelglmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_frame_mean(s : StatsmodelglmFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmFrame::mean(self : StatsmodelglmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_frame_scale(s : StatsmodelglmFrame, f : Double) -> StatsmodelglmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmFrame::scale(self : StatsmodelglmFrame, f : Double) -> StatsmodelglmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_frame_add(a : StatsmodelglmFrame, b : StatsmodelglmFrame) -> StatsmodelglmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmFrame::add(self : StatsmodelglmFrame, other : StatsmodelglmFrame) -> StatsmodelglmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_frame_copy(s : StatsmodelglmFrame) -> StatsmodelglmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmFrame::copy(self : StatsmodelglmFrame) -> StatsmodelglmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_frame_fill(s : StatsmodelglmFrame, v : Double) -> StatsmodelglmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmFrame::fill(self : StatsmodelglmFrame, v : Double) -> StatsmodelglmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_frame_min(s : StatsmodelglmFrame) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmFrame::min(self : StatsmodelglmFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_frame_max(s : StatsmodelglmFrame) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmFrame::max(self : StatsmodelglmFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_frame_to_string(s : StatsmodelglmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmFrame::to_string(self : StatsmodelglmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmTable {
@@ -402,45 +402,45 @@ pub fn stats_model_glm_table_make(size : Int) -> StatsmodelglmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_table_len(s : StatsmodelglmTable) -> Int { s.size }
+pub fn StatsmodelglmTable::len(self : StatsmodelglmTable) -> Int { self.size }
 
-pub fn stats_model_glm_table_get(s : StatsmodelglmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmTable::get(self : StatsmodelglmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_table_set(s : StatsmodelglmTable, i : Int, v : Double) -> StatsmodelglmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmTable::set(self : StatsmodelglmTable, i : Int, v : Double) -> StatsmodelglmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_table_sum(s : StatsmodelglmTable) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmTable::sum(self : StatsmodelglmTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_table_mean(s : StatsmodelglmTable) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmTable::mean(self : StatsmodelglmTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_table_scale(s : StatsmodelglmTable, f : Double) -> StatsmodelglmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmTable::scale(self : StatsmodelglmTable, f : Double) -> StatsmodelglmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_table_add(a : StatsmodelglmTable, b : StatsmodelglmTable) -> StatsmodelglmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmTable::add(self : StatsmodelglmTable, other : StatsmodelglmTable) -> StatsmodelglmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_table_copy(s : StatsmodelglmTable) -> StatsmodelglmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmTable::copy(self : StatsmodelglmTable) -> StatsmodelglmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_table_fill(s : StatsmodelglmTable, v : Double) -> StatsmodelglmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmTable::fill(self : StatsmodelglmTable, v : Double) -> StatsmodelglmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_table_min(s : StatsmodelglmTable) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmTable::min(self : StatsmodelglmTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_table_max(s : StatsmodelglmTable) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmTable::max(self : StatsmodelglmTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_table_to_string(s : StatsmodelglmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmTable::to_string(self : StatsmodelglmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmGraphN {
@@ -453,45 +453,45 @@ pub fn stats_model_glm_graphn_make(size : Int) -> StatsmodelglmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_graphn_len(s : StatsmodelglmGraphN) -> Int { s.size }
+pub fn StatsmodelglmGraphN::len(self : StatsmodelglmGraphN) -> Int { self.size }
 
-pub fn stats_model_glm_graphn_get(s : StatsmodelglmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmGraphN::get(self : StatsmodelglmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_graphn_set(s : StatsmodelglmGraphN, i : Int, v : Double) -> StatsmodelglmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmGraphN::set(self : StatsmodelglmGraphN, i : Int, v : Double) -> StatsmodelglmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_graphn_sum(s : StatsmodelglmGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmGraphN::sum(self : StatsmodelglmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_graphn_mean(s : StatsmodelglmGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmGraphN::mean(self : StatsmodelglmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_graphn_scale(s : StatsmodelglmGraphN, f : Double) -> StatsmodelglmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmGraphN::scale(self : StatsmodelglmGraphN, f : Double) -> StatsmodelglmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_graphn_add(a : StatsmodelglmGraphN, b : StatsmodelglmGraphN) -> StatsmodelglmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmGraphN::add(self : StatsmodelglmGraphN, other : StatsmodelglmGraphN) -> StatsmodelglmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_graphn_copy(s : StatsmodelglmGraphN) -> StatsmodelglmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmGraphN::copy(self : StatsmodelglmGraphN) -> StatsmodelglmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_graphn_fill(s : StatsmodelglmGraphN, v : Double) -> StatsmodelglmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmGraphN::fill(self : StatsmodelglmGraphN, v : Double) -> StatsmodelglmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_graphn_min(s : StatsmodelglmGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmGraphN::min(self : StatsmodelglmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_graphn_max(s : StatsmodelglmGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmGraphN::max(self : StatsmodelglmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_graphn_to_string(s : StatsmodelglmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmGraphN::to_string(self : StatsmodelglmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmNode {
@@ -504,45 +504,45 @@ pub fn stats_model_glm_node_make(size : Int) -> StatsmodelglmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_node_len(s : StatsmodelglmNode) -> Int { s.size }
+pub fn StatsmodelglmNode::len(self : StatsmodelglmNode) -> Int { self.size }
 
-pub fn stats_model_glm_node_get(s : StatsmodelglmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmNode::get(self : StatsmodelglmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_node_set(s : StatsmodelglmNode, i : Int, v : Double) -> StatsmodelglmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmNode::set(self : StatsmodelglmNode, i : Int, v : Double) -> StatsmodelglmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_node_sum(s : StatsmodelglmNode) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmNode::sum(self : StatsmodelglmNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_node_mean(s : StatsmodelglmNode) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmNode::mean(self : StatsmodelglmNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_node_scale(s : StatsmodelglmNode, f : Double) -> StatsmodelglmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmNode::scale(self : StatsmodelglmNode, f : Double) -> StatsmodelglmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_node_add(a : StatsmodelglmNode, b : StatsmodelglmNode) -> StatsmodelglmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmNode::add(self : StatsmodelglmNode, other : StatsmodelglmNode) -> StatsmodelglmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_node_copy(s : StatsmodelglmNode) -> StatsmodelglmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmNode::copy(self : StatsmodelglmNode) -> StatsmodelglmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_node_fill(s : StatsmodelglmNode, v : Double) -> StatsmodelglmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmNode::fill(self : StatsmodelglmNode, v : Double) -> StatsmodelglmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_node_min(s : StatsmodelglmNode) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmNode::min(self : StatsmodelglmNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_node_max(s : StatsmodelglmNode) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmNode::max(self : StatsmodelglmNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_node_to_string(s : StatsmodelglmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmNode::to_string(self : StatsmodelglmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmEdge {
@@ -555,45 +555,45 @@ pub fn stats_model_glm_edge_make(size : Int) -> StatsmodelglmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_edge_len(s : StatsmodelglmEdge) -> Int { s.size }
+pub fn StatsmodelglmEdge::len(self : StatsmodelglmEdge) -> Int { self.size }
 
-pub fn stats_model_glm_edge_get(s : StatsmodelglmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmEdge::get(self : StatsmodelglmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_edge_set(s : StatsmodelglmEdge, i : Int, v : Double) -> StatsmodelglmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmEdge::set(self : StatsmodelglmEdge, i : Int, v : Double) -> StatsmodelglmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_edge_sum(s : StatsmodelglmEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmEdge::sum(self : StatsmodelglmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_edge_mean(s : StatsmodelglmEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmEdge::mean(self : StatsmodelglmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_edge_scale(s : StatsmodelglmEdge, f : Double) -> StatsmodelglmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmEdge::scale(self : StatsmodelglmEdge, f : Double) -> StatsmodelglmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_edge_add(a : StatsmodelglmEdge, b : StatsmodelglmEdge) -> StatsmodelglmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmEdge::add(self : StatsmodelglmEdge, other : StatsmodelglmEdge) -> StatsmodelglmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_edge_copy(s : StatsmodelglmEdge) -> StatsmodelglmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmEdge::copy(self : StatsmodelglmEdge) -> StatsmodelglmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_edge_fill(s : StatsmodelglmEdge, v : Double) -> StatsmodelglmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmEdge::fill(self : StatsmodelglmEdge, v : Double) -> StatsmodelglmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_edge_min(s : StatsmodelglmEdge) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmEdge::min(self : StatsmodelglmEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_edge_max(s : StatsmodelglmEdge) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmEdge::max(self : StatsmodelglmEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_edge_to_string(s : StatsmodelglmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmEdge::to_string(self : StatsmodelglmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmPath {
@@ -606,45 +606,45 @@ pub fn stats_model_glm_path_make(size : Int) -> StatsmodelglmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_path_len(s : StatsmodelglmPath) -> Int { s.size }
+pub fn StatsmodelglmPath::len(self : StatsmodelglmPath) -> Int { self.size }
 
-pub fn stats_model_glm_path_get(s : StatsmodelglmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmPath::get(self : StatsmodelglmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_path_set(s : StatsmodelglmPath, i : Int, v : Double) -> StatsmodelglmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmPath::set(self : StatsmodelglmPath, i : Int, v : Double) -> StatsmodelglmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_path_sum(s : StatsmodelglmPath) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmPath::sum(self : StatsmodelglmPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_path_mean(s : StatsmodelglmPath) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmPath::mean(self : StatsmodelglmPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_path_scale(s : StatsmodelglmPath, f : Double) -> StatsmodelglmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmPath::scale(self : StatsmodelglmPath, f : Double) -> StatsmodelglmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_path_add(a : StatsmodelglmPath, b : StatsmodelglmPath) -> StatsmodelglmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmPath::add(self : StatsmodelglmPath, other : StatsmodelglmPath) -> StatsmodelglmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_path_copy(s : StatsmodelglmPath) -> StatsmodelglmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmPath::copy(self : StatsmodelglmPath) -> StatsmodelglmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_path_fill(s : StatsmodelglmPath, v : Double) -> StatsmodelglmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmPath::fill(self : StatsmodelglmPath, v : Double) -> StatsmodelglmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_path_min(s : StatsmodelglmPath) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmPath::min(self : StatsmodelglmPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_path_max(s : StatsmodelglmPath) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmPath::max(self : StatsmodelglmPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_path_to_string(s : StatsmodelglmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmPath::to_string(self : StatsmodelglmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmCluster {
@@ -657,45 +657,45 @@ pub fn stats_model_glm_cluster_make(size : Int) -> StatsmodelglmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_cluster_len(s : StatsmodelglmCluster) -> Int { s.size }
+pub fn StatsmodelglmCluster::len(self : StatsmodelglmCluster) -> Int { self.size }
 
-pub fn stats_model_glm_cluster_get(s : StatsmodelglmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmCluster::get(self : StatsmodelglmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_cluster_set(s : StatsmodelglmCluster, i : Int, v : Double) -> StatsmodelglmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmCluster::set(self : StatsmodelglmCluster, i : Int, v : Double) -> StatsmodelglmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cluster_sum(s : StatsmodelglmCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmCluster::sum(self : StatsmodelglmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_cluster_mean(s : StatsmodelglmCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmCluster::mean(self : StatsmodelglmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_cluster_scale(s : StatsmodelglmCluster, f : Double) -> StatsmodelglmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmCluster::scale(self : StatsmodelglmCluster, f : Double) -> StatsmodelglmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cluster_add(a : StatsmodelglmCluster, b : StatsmodelglmCluster) -> StatsmodelglmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmCluster::add(self : StatsmodelglmCluster, other : StatsmodelglmCluster) -> StatsmodelglmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_cluster_copy(s : StatsmodelglmCluster) -> StatsmodelglmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmCluster::copy(self : StatsmodelglmCluster) -> StatsmodelglmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cluster_fill(s : StatsmodelglmCluster, v : Double) -> StatsmodelglmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmCluster::fill(self : StatsmodelglmCluster, v : Double) -> StatsmodelglmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cluster_min(s : StatsmodelglmCluster) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmCluster::min(self : StatsmodelglmCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_cluster_max(s : StatsmodelglmCluster) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmCluster::max(self : StatsmodelglmCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_cluster_to_string(s : StatsmodelglmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmCluster::to_string(self : StatsmodelglmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmModel {
@@ -708,45 +708,45 @@ pub fn stats_model_glm_model_make(size : Int) -> StatsmodelglmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_model_len(s : StatsmodelglmModel) -> Int { s.size }
+pub fn StatsmodelglmModel::len(self : StatsmodelglmModel) -> Int { self.size }
 
-pub fn stats_model_glm_model_get(s : StatsmodelglmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmModel::get(self : StatsmodelglmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_model_set(s : StatsmodelglmModel, i : Int, v : Double) -> StatsmodelglmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmModel::set(self : StatsmodelglmModel, i : Int, v : Double) -> StatsmodelglmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_model_sum(s : StatsmodelglmModel) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmModel::sum(self : StatsmodelglmModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_model_mean(s : StatsmodelglmModel) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmModel::mean(self : StatsmodelglmModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_model_scale(s : StatsmodelglmModel, f : Double) -> StatsmodelglmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmModel::scale(self : StatsmodelglmModel, f : Double) -> StatsmodelglmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_model_add(a : StatsmodelglmModel, b : StatsmodelglmModel) -> StatsmodelglmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmModel::add(self : StatsmodelglmModel, other : StatsmodelglmModel) -> StatsmodelglmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_model_copy(s : StatsmodelglmModel) -> StatsmodelglmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmModel::copy(self : StatsmodelglmModel) -> StatsmodelglmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_model_fill(s : StatsmodelglmModel, v : Double) -> StatsmodelglmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmModel::fill(self : StatsmodelglmModel, v : Double) -> StatsmodelglmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_model_min(s : StatsmodelglmModel) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmModel::min(self : StatsmodelglmModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_model_max(s : StatsmodelglmModel) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmModel::max(self : StatsmodelglmModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_model_to_string(s : StatsmodelglmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmModel::to_string(self : StatsmodelglmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmLayer {
@@ -759,45 +759,45 @@ pub fn stats_model_glm_layer_make(size : Int) -> StatsmodelglmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_layer_len(s : StatsmodelglmLayer) -> Int { s.size }
+pub fn StatsmodelglmLayer::len(self : StatsmodelglmLayer) -> Int { self.size }
 
-pub fn stats_model_glm_layer_get(s : StatsmodelglmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmLayer::get(self : StatsmodelglmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_layer_set(s : StatsmodelglmLayer, i : Int, v : Double) -> StatsmodelglmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmLayer::set(self : StatsmodelglmLayer, i : Int, v : Double) -> StatsmodelglmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_layer_sum(s : StatsmodelglmLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmLayer::sum(self : StatsmodelglmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_layer_mean(s : StatsmodelglmLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmLayer::mean(self : StatsmodelglmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_layer_scale(s : StatsmodelglmLayer, f : Double) -> StatsmodelglmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmLayer::scale(self : StatsmodelglmLayer, f : Double) -> StatsmodelglmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_layer_add(a : StatsmodelglmLayer, b : StatsmodelglmLayer) -> StatsmodelglmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmLayer::add(self : StatsmodelglmLayer, other : StatsmodelglmLayer) -> StatsmodelglmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_layer_copy(s : StatsmodelglmLayer) -> StatsmodelglmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmLayer::copy(self : StatsmodelglmLayer) -> StatsmodelglmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_layer_fill(s : StatsmodelglmLayer, v : Double) -> StatsmodelglmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmLayer::fill(self : StatsmodelglmLayer, v : Double) -> StatsmodelglmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_layer_min(s : StatsmodelglmLayer) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmLayer::min(self : StatsmodelglmLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_layer_max(s : StatsmodelglmLayer) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmLayer::max(self : StatsmodelglmLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_layer_to_string(s : StatsmodelglmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmLayer::to_string(self : StatsmodelglmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmBuffer {
@@ -810,45 +810,45 @@ pub fn stats_model_glm_buffer_make(size : Int) -> StatsmodelglmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_buffer_len(s : StatsmodelglmBuffer) -> Int { s.size }
+pub fn StatsmodelglmBuffer::len(self : StatsmodelglmBuffer) -> Int { self.size }
 
-pub fn stats_model_glm_buffer_get(s : StatsmodelglmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmBuffer::get(self : StatsmodelglmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_buffer_set(s : StatsmodelglmBuffer, i : Int, v : Double) -> StatsmodelglmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmBuffer::set(self : StatsmodelglmBuffer, i : Int, v : Double) -> StatsmodelglmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_buffer_sum(s : StatsmodelglmBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmBuffer::sum(self : StatsmodelglmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_buffer_mean(s : StatsmodelglmBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmBuffer::mean(self : StatsmodelglmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_buffer_scale(s : StatsmodelglmBuffer, f : Double) -> StatsmodelglmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmBuffer::scale(self : StatsmodelglmBuffer, f : Double) -> StatsmodelglmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_buffer_add(a : StatsmodelglmBuffer, b : StatsmodelglmBuffer) -> StatsmodelglmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmBuffer::add(self : StatsmodelglmBuffer, other : StatsmodelglmBuffer) -> StatsmodelglmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_buffer_copy(s : StatsmodelglmBuffer) -> StatsmodelglmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmBuffer::copy(self : StatsmodelglmBuffer) -> StatsmodelglmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_buffer_fill(s : StatsmodelglmBuffer, v : Double) -> StatsmodelglmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmBuffer::fill(self : StatsmodelglmBuffer, v : Double) -> StatsmodelglmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_buffer_min(s : StatsmodelglmBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmBuffer::min(self : StatsmodelglmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_buffer_max(s : StatsmodelglmBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmBuffer::max(self : StatsmodelglmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_buffer_to_string(s : StatsmodelglmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmBuffer::to_string(self : StatsmodelglmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmCursor {
@@ -861,45 +861,45 @@ pub fn stats_model_glm_cursor_make(size : Int) -> StatsmodelglmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_cursor_len(s : StatsmodelglmCursor) -> Int { s.size }
+pub fn StatsmodelglmCursor::len(self : StatsmodelglmCursor) -> Int { self.size }
 
-pub fn stats_model_glm_cursor_get(s : StatsmodelglmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmCursor::get(self : StatsmodelglmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_cursor_set(s : StatsmodelglmCursor, i : Int, v : Double) -> StatsmodelglmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmCursor::set(self : StatsmodelglmCursor, i : Int, v : Double) -> StatsmodelglmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cursor_sum(s : StatsmodelglmCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmCursor::sum(self : StatsmodelglmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_cursor_mean(s : StatsmodelglmCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmCursor::mean(self : StatsmodelglmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_cursor_scale(s : StatsmodelglmCursor, f : Double) -> StatsmodelglmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmCursor::scale(self : StatsmodelglmCursor, f : Double) -> StatsmodelglmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cursor_add(a : StatsmodelglmCursor, b : StatsmodelglmCursor) -> StatsmodelglmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmCursor::add(self : StatsmodelglmCursor, other : StatsmodelglmCursor) -> StatsmodelglmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_cursor_copy(s : StatsmodelglmCursor) -> StatsmodelglmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmCursor::copy(self : StatsmodelglmCursor) -> StatsmodelglmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cursor_fill(s : StatsmodelglmCursor, v : Double) -> StatsmodelglmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmCursor::fill(self : StatsmodelglmCursor, v : Double) -> StatsmodelglmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_cursor_min(s : StatsmodelglmCursor) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmCursor::min(self : StatsmodelglmCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_cursor_max(s : StatsmodelglmCursor) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmCursor::max(self : StatsmodelglmCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_cursor_to_string(s : StatsmodelglmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmCursor::to_string(self : StatsmodelglmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmView {
@@ -912,45 +912,45 @@ pub fn stats_model_glm_view_make(size : Int) -> StatsmodelglmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_view_len(s : StatsmodelglmView) -> Int { s.size }
+pub fn StatsmodelglmView::len(self : StatsmodelglmView) -> Int { self.size }
 
-pub fn stats_model_glm_view_get(s : StatsmodelglmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmView::get(self : StatsmodelglmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_view_set(s : StatsmodelglmView, i : Int, v : Double) -> StatsmodelglmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmView::set(self : StatsmodelglmView, i : Int, v : Double) -> StatsmodelglmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_view_sum(s : StatsmodelglmView) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmView::sum(self : StatsmodelglmView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_view_mean(s : StatsmodelglmView) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmView::mean(self : StatsmodelglmView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_view_scale(s : StatsmodelglmView, f : Double) -> StatsmodelglmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmView::scale(self : StatsmodelglmView, f : Double) -> StatsmodelglmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_view_add(a : StatsmodelglmView, b : StatsmodelglmView) -> StatsmodelglmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmView::add(self : StatsmodelglmView, other : StatsmodelglmView) -> StatsmodelglmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_view_copy(s : StatsmodelglmView) -> StatsmodelglmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmView::copy(self : StatsmodelglmView) -> StatsmodelglmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_view_fill(s : StatsmodelglmView, v : Double) -> StatsmodelglmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmView::fill(self : StatsmodelglmView, v : Double) -> StatsmodelglmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_view_min(s : StatsmodelglmView) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmView::min(self : StatsmodelglmView) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_view_max(s : StatsmodelglmView) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmView::max(self : StatsmodelglmView) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_view_to_string(s : StatsmodelglmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmView::to_string(self : StatsmodelglmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmRange {
@@ -963,45 +963,45 @@ pub fn stats_model_glm_range_make(size : Int) -> StatsmodelglmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_range_len(s : StatsmodelglmRange) -> Int { s.size }
+pub fn StatsmodelglmRange::len(self : StatsmodelglmRange) -> Int { self.size }
 
-pub fn stats_model_glm_range_get(s : StatsmodelglmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmRange::get(self : StatsmodelglmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_range_set(s : StatsmodelglmRange, i : Int, v : Double) -> StatsmodelglmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmRange::set(self : StatsmodelglmRange, i : Int, v : Double) -> StatsmodelglmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_range_sum(s : StatsmodelglmRange) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmRange::sum(self : StatsmodelglmRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_range_mean(s : StatsmodelglmRange) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmRange::mean(self : StatsmodelglmRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_range_scale(s : StatsmodelglmRange, f : Double) -> StatsmodelglmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmRange::scale(self : StatsmodelglmRange, f : Double) -> StatsmodelglmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_range_add(a : StatsmodelglmRange, b : StatsmodelglmRange) -> StatsmodelglmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmRange::add(self : StatsmodelglmRange, other : StatsmodelglmRange) -> StatsmodelglmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_range_copy(s : StatsmodelglmRange) -> StatsmodelglmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmRange::copy(self : StatsmodelglmRange) -> StatsmodelglmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_range_fill(s : StatsmodelglmRange, v : Double) -> StatsmodelglmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmRange::fill(self : StatsmodelglmRange, v : Double) -> StatsmodelglmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_range_min(s : StatsmodelglmRange) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmRange::min(self : StatsmodelglmRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_range_max(s : StatsmodelglmRange) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmRange::max(self : StatsmodelglmRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_range_to_string(s : StatsmodelglmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmRange::to_string(self : StatsmodelglmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelglmSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_model_glm_slice_make(size : Int) -> StatsmodelglmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_glm_slice_len(s : StatsmodelglmSlice) -> Int { s.size }
+pub fn StatsmodelglmSlice::len(self : StatsmodelglmSlice) -> Int { self.size }
 
-pub fn stats_model_glm_slice_get(s : StatsmodelglmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelglmSlice::get(self : StatsmodelglmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_glm_slice_set(s : StatsmodelglmSlice, i : Int, v : Double) -> StatsmodelglmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelglmSlice::set(self : StatsmodelglmSlice, i : Int, v : Double) -> StatsmodelglmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_slice_sum(s : StatsmodelglmSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelglmSlice::sum(self : StatsmodelglmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_glm_slice_mean(s : StatsmodelglmSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelglmSlice::mean(self : StatsmodelglmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_glm_slice_scale(s : StatsmodelglmSlice, f : Double) -> StatsmodelglmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelglmSlice::scale(self : StatsmodelglmSlice, f : Double) -> StatsmodelglmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_slice_add(a : StatsmodelglmSlice, b : StatsmodelglmSlice) -> StatsmodelglmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelglmSlice::add(self : StatsmodelglmSlice, other : StatsmodelglmSlice) -> StatsmodelglmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_glm_slice_copy(s : StatsmodelglmSlice) -> StatsmodelglmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelglmSlice::copy(self : StatsmodelglmSlice) -> StatsmodelglmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_slice_fill(s : StatsmodelglmSlice, v : Double) -> StatsmodelglmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelglmSlice::fill(self : StatsmodelglmSlice, v : Double) -> StatsmodelglmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_glm_slice_min(s : StatsmodelglmSlice) -> Double { @_common.min(s.data) }
+pub fn StatsmodelglmSlice::min(self : StatsmodelglmSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_glm_slice_max(s : StatsmodelglmSlice) -> Double { @_common.max(s.data) }
+pub fn StatsmodelglmSlice::max(self : StatsmodelglmSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_glm_slice_to_string(s : StatsmodelglmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelglmSlice::to_string(self : StatsmodelglmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

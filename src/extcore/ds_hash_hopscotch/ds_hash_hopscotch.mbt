@@ -351,45 +351,45 @@ pub fn ds_hash_hopscotch_frame_make(size : Int) -> DshashhopscotchFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_frame_len(s : DshashhopscotchFrame) -> Int { s.size }
+pub fn DshashhopscotchFrame::len(self : DshashhopscotchFrame) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_frame_get(s : DshashhopscotchFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchFrame::get(self : DshashhopscotchFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_frame_set(s : DshashhopscotchFrame, i : Int, v : Double) -> DshashhopscotchFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchFrame::set(self : DshashhopscotchFrame, i : Int, v : Double) -> DshashhopscotchFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_frame_sum(s : DshashhopscotchFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchFrame::sum(self : DshashhopscotchFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_frame_mean(s : DshashhopscotchFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchFrame::mean(self : DshashhopscotchFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_frame_scale(s : DshashhopscotchFrame, f : Double) -> DshashhopscotchFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchFrame::scale(self : DshashhopscotchFrame, f : Double) -> DshashhopscotchFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_frame_add(a : DshashhopscotchFrame, b : DshashhopscotchFrame) -> DshashhopscotchFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchFrame::add(self : DshashhopscotchFrame, other : DshashhopscotchFrame) -> DshashhopscotchFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_frame_copy(s : DshashhopscotchFrame) -> DshashhopscotchFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchFrame::copy(self : DshashhopscotchFrame) -> DshashhopscotchFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_frame_fill(s : DshashhopscotchFrame, v : Double) -> DshashhopscotchFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchFrame::fill(self : DshashhopscotchFrame, v : Double) -> DshashhopscotchFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_frame_min(s : DshashhopscotchFrame) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchFrame::min(self : DshashhopscotchFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_frame_max(s : DshashhopscotchFrame) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchFrame::max(self : DshashhopscotchFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_frame_to_string(s : DshashhopscotchFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchFrame::to_string(self : DshashhopscotchFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_hopscotch_table_make(size : Int) -> DshashhopscotchTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_table_len(s : DshashhopscotchTable) -> Int { s.size }
+pub fn DshashhopscotchTable::len(self : DshashhopscotchTable) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_table_get(s : DshashhopscotchTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchTable::get(self : DshashhopscotchTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_table_set(s : DshashhopscotchTable, i : Int, v : Double) -> DshashhopscotchTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchTable::set(self : DshashhopscotchTable, i : Int, v : Double) -> DshashhopscotchTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_table_sum(s : DshashhopscotchTable) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchTable::sum(self : DshashhopscotchTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_table_mean(s : DshashhopscotchTable) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchTable::mean(self : DshashhopscotchTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_table_scale(s : DshashhopscotchTable, f : Double) -> DshashhopscotchTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchTable::scale(self : DshashhopscotchTable, f : Double) -> DshashhopscotchTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_table_add(a : DshashhopscotchTable, b : DshashhopscotchTable) -> DshashhopscotchTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchTable::add(self : DshashhopscotchTable, other : DshashhopscotchTable) -> DshashhopscotchTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_table_copy(s : DshashhopscotchTable) -> DshashhopscotchTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchTable::copy(self : DshashhopscotchTable) -> DshashhopscotchTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_table_fill(s : DshashhopscotchTable, v : Double) -> DshashhopscotchTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchTable::fill(self : DshashhopscotchTable, v : Double) -> DshashhopscotchTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_table_min(s : DshashhopscotchTable) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchTable::min(self : DshashhopscotchTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_table_max(s : DshashhopscotchTable) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchTable::max(self : DshashhopscotchTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_table_to_string(s : DshashhopscotchTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchTable::to_string(self : DshashhopscotchTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_hopscotch_graphn_make(size : Int) -> DshashhopscotchGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_graphn_len(s : DshashhopscotchGraphN) -> Int { s.size }
+pub fn DshashhopscotchGraphN::len(self : DshashhopscotchGraphN) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_graphn_get(s : DshashhopscotchGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchGraphN::get(self : DshashhopscotchGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_graphn_set(s : DshashhopscotchGraphN, i : Int, v : Double) -> DshashhopscotchGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchGraphN::set(self : DshashhopscotchGraphN, i : Int, v : Double) -> DshashhopscotchGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_graphn_sum(s : DshashhopscotchGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchGraphN::sum(self : DshashhopscotchGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_graphn_mean(s : DshashhopscotchGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchGraphN::mean(self : DshashhopscotchGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_graphn_scale(s : DshashhopscotchGraphN, f : Double) -> DshashhopscotchGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchGraphN::scale(self : DshashhopscotchGraphN, f : Double) -> DshashhopscotchGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_graphn_add(a : DshashhopscotchGraphN, b : DshashhopscotchGraphN) -> DshashhopscotchGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchGraphN::add(self : DshashhopscotchGraphN, other : DshashhopscotchGraphN) -> DshashhopscotchGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_graphn_copy(s : DshashhopscotchGraphN) -> DshashhopscotchGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchGraphN::copy(self : DshashhopscotchGraphN) -> DshashhopscotchGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_graphn_fill(s : DshashhopscotchGraphN, v : Double) -> DshashhopscotchGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchGraphN::fill(self : DshashhopscotchGraphN, v : Double) -> DshashhopscotchGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_graphn_min(s : DshashhopscotchGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchGraphN::min(self : DshashhopscotchGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_graphn_max(s : DshashhopscotchGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchGraphN::max(self : DshashhopscotchGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_graphn_to_string(s : DshashhopscotchGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchGraphN::to_string(self : DshashhopscotchGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_hopscotch_node_make(size : Int) -> DshashhopscotchNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_node_len(s : DshashhopscotchNode) -> Int { s.size }
+pub fn DshashhopscotchNode::len(self : DshashhopscotchNode) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_node_get(s : DshashhopscotchNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchNode::get(self : DshashhopscotchNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_node_set(s : DshashhopscotchNode, i : Int, v : Double) -> DshashhopscotchNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchNode::set(self : DshashhopscotchNode, i : Int, v : Double) -> DshashhopscotchNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_node_sum(s : DshashhopscotchNode) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchNode::sum(self : DshashhopscotchNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_node_mean(s : DshashhopscotchNode) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchNode::mean(self : DshashhopscotchNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_node_scale(s : DshashhopscotchNode, f : Double) -> DshashhopscotchNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchNode::scale(self : DshashhopscotchNode, f : Double) -> DshashhopscotchNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_node_add(a : DshashhopscotchNode, b : DshashhopscotchNode) -> DshashhopscotchNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchNode::add(self : DshashhopscotchNode, other : DshashhopscotchNode) -> DshashhopscotchNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_node_copy(s : DshashhopscotchNode) -> DshashhopscotchNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchNode::copy(self : DshashhopscotchNode) -> DshashhopscotchNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_node_fill(s : DshashhopscotchNode, v : Double) -> DshashhopscotchNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchNode::fill(self : DshashhopscotchNode, v : Double) -> DshashhopscotchNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_node_min(s : DshashhopscotchNode) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchNode::min(self : DshashhopscotchNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_node_max(s : DshashhopscotchNode) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchNode::max(self : DshashhopscotchNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_node_to_string(s : DshashhopscotchNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchNode::to_string(self : DshashhopscotchNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_hopscotch_edge_make(size : Int) -> DshashhopscotchEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_edge_len(s : DshashhopscotchEdge) -> Int { s.size }
+pub fn DshashhopscotchEdge::len(self : DshashhopscotchEdge) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_edge_get(s : DshashhopscotchEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchEdge::get(self : DshashhopscotchEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_edge_set(s : DshashhopscotchEdge, i : Int, v : Double) -> DshashhopscotchEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchEdge::set(self : DshashhopscotchEdge, i : Int, v : Double) -> DshashhopscotchEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_edge_sum(s : DshashhopscotchEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchEdge::sum(self : DshashhopscotchEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_edge_mean(s : DshashhopscotchEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchEdge::mean(self : DshashhopscotchEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_edge_scale(s : DshashhopscotchEdge, f : Double) -> DshashhopscotchEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchEdge::scale(self : DshashhopscotchEdge, f : Double) -> DshashhopscotchEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_edge_add(a : DshashhopscotchEdge, b : DshashhopscotchEdge) -> DshashhopscotchEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchEdge::add(self : DshashhopscotchEdge, other : DshashhopscotchEdge) -> DshashhopscotchEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_edge_copy(s : DshashhopscotchEdge) -> DshashhopscotchEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchEdge::copy(self : DshashhopscotchEdge) -> DshashhopscotchEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_edge_fill(s : DshashhopscotchEdge, v : Double) -> DshashhopscotchEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchEdge::fill(self : DshashhopscotchEdge, v : Double) -> DshashhopscotchEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_edge_min(s : DshashhopscotchEdge) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchEdge::min(self : DshashhopscotchEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_edge_max(s : DshashhopscotchEdge) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchEdge::max(self : DshashhopscotchEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_edge_to_string(s : DshashhopscotchEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchEdge::to_string(self : DshashhopscotchEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchPath {
@@ -606,45 +606,45 @@ pub fn ds_hash_hopscotch_path_make(size : Int) -> DshashhopscotchPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_path_len(s : DshashhopscotchPath) -> Int { s.size }
+pub fn DshashhopscotchPath::len(self : DshashhopscotchPath) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_path_get(s : DshashhopscotchPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchPath::get(self : DshashhopscotchPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_path_set(s : DshashhopscotchPath, i : Int, v : Double) -> DshashhopscotchPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchPath::set(self : DshashhopscotchPath, i : Int, v : Double) -> DshashhopscotchPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_path_sum(s : DshashhopscotchPath) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchPath::sum(self : DshashhopscotchPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_path_mean(s : DshashhopscotchPath) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchPath::mean(self : DshashhopscotchPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_path_scale(s : DshashhopscotchPath, f : Double) -> DshashhopscotchPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchPath::scale(self : DshashhopscotchPath, f : Double) -> DshashhopscotchPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_path_add(a : DshashhopscotchPath, b : DshashhopscotchPath) -> DshashhopscotchPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchPath::add(self : DshashhopscotchPath, other : DshashhopscotchPath) -> DshashhopscotchPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_path_copy(s : DshashhopscotchPath) -> DshashhopscotchPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchPath::copy(self : DshashhopscotchPath) -> DshashhopscotchPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_path_fill(s : DshashhopscotchPath, v : Double) -> DshashhopscotchPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchPath::fill(self : DshashhopscotchPath, v : Double) -> DshashhopscotchPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_path_min(s : DshashhopscotchPath) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchPath::min(self : DshashhopscotchPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_path_max(s : DshashhopscotchPath) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchPath::max(self : DshashhopscotchPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_path_to_string(s : DshashhopscotchPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchPath::to_string(self : DshashhopscotchPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_hopscotch_cluster_make(size : Int) -> DshashhopscotchCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_cluster_len(s : DshashhopscotchCluster) -> Int { s.size }
+pub fn DshashhopscotchCluster::len(self : DshashhopscotchCluster) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_cluster_get(s : DshashhopscotchCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchCluster::get(self : DshashhopscotchCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_cluster_set(s : DshashhopscotchCluster, i : Int, v : Double) -> DshashhopscotchCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchCluster::set(self : DshashhopscotchCluster, i : Int, v : Double) -> DshashhopscotchCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cluster_sum(s : DshashhopscotchCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchCluster::sum(self : DshashhopscotchCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_cluster_mean(s : DshashhopscotchCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchCluster::mean(self : DshashhopscotchCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_cluster_scale(s : DshashhopscotchCluster, f : Double) -> DshashhopscotchCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchCluster::scale(self : DshashhopscotchCluster, f : Double) -> DshashhopscotchCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cluster_add(a : DshashhopscotchCluster, b : DshashhopscotchCluster) -> DshashhopscotchCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchCluster::add(self : DshashhopscotchCluster, other : DshashhopscotchCluster) -> DshashhopscotchCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cluster_copy(s : DshashhopscotchCluster) -> DshashhopscotchCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchCluster::copy(self : DshashhopscotchCluster) -> DshashhopscotchCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cluster_fill(s : DshashhopscotchCluster, v : Double) -> DshashhopscotchCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchCluster::fill(self : DshashhopscotchCluster, v : Double) -> DshashhopscotchCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cluster_min(s : DshashhopscotchCluster) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchCluster::min(self : DshashhopscotchCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_cluster_max(s : DshashhopscotchCluster) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchCluster::max(self : DshashhopscotchCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_cluster_to_string(s : DshashhopscotchCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchCluster::to_string(self : DshashhopscotchCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_hopscotch_model_make(size : Int) -> DshashhopscotchModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_model_len(s : DshashhopscotchModel) -> Int { s.size }
+pub fn DshashhopscotchModel::len(self : DshashhopscotchModel) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_model_get(s : DshashhopscotchModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchModel::get(self : DshashhopscotchModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_model_set(s : DshashhopscotchModel, i : Int, v : Double) -> DshashhopscotchModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchModel::set(self : DshashhopscotchModel, i : Int, v : Double) -> DshashhopscotchModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_model_sum(s : DshashhopscotchModel) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchModel::sum(self : DshashhopscotchModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_model_mean(s : DshashhopscotchModel) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchModel::mean(self : DshashhopscotchModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_model_scale(s : DshashhopscotchModel, f : Double) -> DshashhopscotchModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchModel::scale(self : DshashhopscotchModel, f : Double) -> DshashhopscotchModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_model_add(a : DshashhopscotchModel, b : DshashhopscotchModel) -> DshashhopscotchModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchModel::add(self : DshashhopscotchModel, other : DshashhopscotchModel) -> DshashhopscotchModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_model_copy(s : DshashhopscotchModel) -> DshashhopscotchModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchModel::copy(self : DshashhopscotchModel) -> DshashhopscotchModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_model_fill(s : DshashhopscotchModel, v : Double) -> DshashhopscotchModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchModel::fill(self : DshashhopscotchModel, v : Double) -> DshashhopscotchModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_model_min(s : DshashhopscotchModel) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchModel::min(self : DshashhopscotchModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_model_max(s : DshashhopscotchModel) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchModel::max(self : DshashhopscotchModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_model_to_string(s : DshashhopscotchModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchModel::to_string(self : DshashhopscotchModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_hopscotch_layer_make(size : Int) -> DshashhopscotchLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_layer_len(s : DshashhopscotchLayer) -> Int { s.size }
+pub fn DshashhopscotchLayer::len(self : DshashhopscotchLayer) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_layer_get(s : DshashhopscotchLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchLayer::get(self : DshashhopscotchLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_layer_set(s : DshashhopscotchLayer, i : Int, v : Double) -> DshashhopscotchLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchLayer::set(self : DshashhopscotchLayer, i : Int, v : Double) -> DshashhopscotchLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_layer_sum(s : DshashhopscotchLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchLayer::sum(self : DshashhopscotchLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_layer_mean(s : DshashhopscotchLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchLayer::mean(self : DshashhopscotchLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_layer_scale(s : DshashhopscotchLayer, f : Double) -> DshashhopscotchLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchLayer::scale(self : DshashhopscotchLayer, f : Double) -> DshashhopscotchLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_layer_add(a : DshashhopscotchLayer, b : DshashhopscotchLayer) -> DshashhopscotchLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchLayer::add(self : DshashhopscotchLayer, other : DshashhopscotchLayer) -> DshashhopscotchLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_layer_copy(s : DshashhopscotchLayer) -> DshashhopscotchLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchLayer::copy(self : DshashhopscotchLayer) -> DshashhopscotchLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_layer_fill(s : DshashhopscotchLayer, v : Double) -> DshashhopscotchLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchLayer::fill(self : DshashhopscotchLayer, v : Double) -> DshashhopscotchLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_layer_min(s : DshashhopscotchLayer) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchLayer::min(self : DshashhopscotchLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_layer_max(s : DshashhopscotchLayer) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchLayer::max(self : DshashhopscotchLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_layer_to_string(s : DshashhopscotchLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchLayer::to_string(self : DshashhopscotchLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_hopscotch_buffer_make(size : Int) -> DshashhopscotchBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_buffer_len(s : DshashhopscotchBuffer) -> Int { s.size }
+pub fn DshashhopscotchBuffer::len(self : DshashhopscotchBuffer) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_buffer_get(s : DshashhopscotchBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchBuffer::get(self : DshashhopscotchBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_buffer_set(s : DshashhopscotchBuffer, i : Int, v : Double) -> DshashhopscotchBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchBuffer::set(self : DshashhopscotchBuffer, i : Int, v : Double) -> DshashhopscotchBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_buffer_sum(s : DshashhopscotchBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchBuffer::sum(self : DshashhopscotchBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_buffer_mean(s : DshashhopscotchBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchBuffer::mean(self : DshashhopscotchBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_buffer_scale(s : DshashhopscotchBuffer, f : Double) -> DshashhopscotchBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchBuffer::scale(self : DshashhopscotchBuffer, f : Double) -> DshashhopscotchBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_buffer_add(a : DshashhopscotchBuffer, b : DshashhopscotchBuffer) -> DshashhopscotchBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchBuffer::add(self : DshashhopscotchBuffer, other : DshashhopscotchBuffer) -> DshashhopscotchBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_buffer_copy(s : DshashhopscotchBuffer) -> DshashhopscotchBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchBuffer::copy(self : DshashhopscotchBuffer) -> DshashhopscotchBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_buffer_fill(s : DshashhopscotchBuffer, v : Double) -> DshashhopscotchBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchBuffer::fill(self : DshashhopscotchBuffer, v : Double) -> DshashhopscotchBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_buffer_min(s : DshashhopscotchBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchBuffer::min(self : DshashhopscotchBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_buffer_max(s : DshashhopscotchBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchBuffer::max(self : DshashhopscotchBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_buffer_to_string(s : DshashhopscotchBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchBuffer::to_string(self : DshashhopscotchBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_hopscotch_cursor_make(size : Int) -> DshashhopscotchCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_cursor_len(s : DshashhopscotchCursor) -> Int { s.size }
+pub fn DshashhopscotchCursor::len(self : DshashhopscotchCursor) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_cursor_get(s : DshashhopscotchCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchCursor::get(self : DshashhopscotchCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_cursor_set(s : DshashhopscotchCursor, i : Int, v : Double) -> DshashhopscotchCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchCursor::set(self : DshashhopscotchCursor, i : Int, v : Double) -> DshashhopscotchCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cursor_sum(s : DshashhopscotchCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchCursor::sum(self : DshashhopscotchCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_cursor_mean(s : DshashhopscotchCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchCursor::mean(self : DshashhopscotchCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_cursor_scale(s : DshashhopscotchCursor, f : Double) -> DshashhopscotchCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchCursor::scale(self : DshashhopscotchCursor, f : Double) -> DshashhopscotchCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cursor_add(a : DshashhopscotchCursor, b : DshashhopscotchCursor) -> DshashhopscotchCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchCursor::add(self : DshashhopscotchCursor, other : DshashhopscotchCursor) -> DshashhopscotchCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cursor_copy(s : DshashhopscotchCursor) -> DshashhopscotchCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchCursor::copy(self : DshashhopscotchCursor) -> DshashhopscotchCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cursor_fill(s : DshashhopscotchCursor, v : Double) -> DshashhopscotchCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchCursor::fill(self : DshashhopscotchCursor, v : Double) -> DshashhopscotchCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_cursor_min(s : DshashhopscotchCursor) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchCursor::min(self : DshashhopscotchCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_cursor_max(s : DshashhopscotchCursor) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchCursor::max(self : DshashhopscotchCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_cursor_to_string(s : DshashhopscotchCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchCursor::to_string(self : DshashhopscotchCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchView {
@@ -912,45 +912,45 @@ pub fn ds_hash_hopscotch_view_make(size : Int) -> DshashhopscotchView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_view_len(s : DshashhopscotchView) -> Int { s.size }
+pub fn DshashhopscotchView::len(self : DshashhopscotchView) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_view_get(s : DshashhopscotchView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchView::get(self : DshashhopscotchView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_view_set(s : DshashhopscotchView, i : Int, v : Double) -> DshashhopscotchView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchView::set(self : DshashhopscotchView, i : Int, v : Double) -> DshashhopscotchView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_view_sum(s : DshashhopscotchView) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchView::sum(self : DshashhopscotchView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_view_mean(s : DshashhopscotchView) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchView::mean(self : DshashhopscotchView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_view_scale(s : DshashhopscotchView, f : Double) -> DshashhopscotchView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchView::scale(self : DshashhopscotchView, f : Double) -> DshashhopscotchView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_view_add(a : DshashhopscotchView, b : DshashhopscotchView) -> DshashhopscotchView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchView::add(self : DshashhopscotchView, other : DshashhopscotchView) -> DshashhopscotchView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_view_copy(s : DshashhopscotchView) -> DshashhopscotchView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchView::copy(self : DshashhopscotchView) -> DshashhopscotchView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_view_fill(s : DshashhopscotchView, v : Double) -> DshashhopscotchView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchView::fill(self : DshashhopscotchView, v : Double) -> DshashhopscotchView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_view_min(s : DshashhopscotchView) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchView::min(self : DshashhopscotchView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_view_max(s : DshashhopscotchView) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchView::max(self : DshashhopscotchView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_view_to_string(s : DshashhopscotchView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchView::to_string(self : DshashhopscotchView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_hopscotch_range_make(size : Int) -> DshashhopscotchRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_range_len(s : DshashhopscotchRange) -> Int { s.size }
+pub fn DshashhopscotchRange::len(self : DshashhopscotchRange) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_range_get(s : DshashhopscotchRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchRange::get(self : DshashhopscotchRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_range_set(s : DshashhopscotchRange, i : Int, v : Double) -> DshashhopscotchRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchRange::set(self : DshashhopscotchRange, i : Int, v : Double) -> DshashhopscotchRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_range_sum(s : DshashhopscotchRange) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchRange::sum(self : DshashhopscotchRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_range_mean(s : DshashhopscotchRange) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchRange::mean(self : DshashhopscotchRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_range_scale(s : DshashhopscotchRange, f : Double) -> DshashhopscotchRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchRange::scale(self : DshashhopscotchRange, f : Double) -> DshashhopscotchRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_range_add(a : DshashhopscotchRange, b : DshashhopscotchRange) -> DshashhopscotchRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchRange::add(self : DshashhopscotchRange, other : DshashhopscotchRange) -> DshashhopscotchRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_range_copy(s : DshashhopscotchRange) -> DshashhopscotchRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchRange::copy(self : DshashhopscotchRange) -> DshashhopscotchRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_range_fill(s : DshashhopscotchRange, v : Double) -> DshashhopscotchRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchRange::fill(self : DshashhopscotchRange, v : Double) -> DshashhopscotchRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_range_min(s : DshashhopscotchRange) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchRange::min(self : DshashhopscotchRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_range_max(s : DshashhopscotchRange) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchRange::max(self : DshashhopscotchRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_range_to_string(s : DshashhopscotchRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchRange::to_string(self : DshashhopscotchRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashhopscotchSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_hopscotch_slice_make(size : Int) -> DshashhopscotchSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_hopscotch_slice_len(s : DshashhopscotchSlice) -> Int { s.size }
+pub fn DshashhopscotchSlice::len(self : DshashhopscotchSlice) -> Int { self.size }
 
-pub fn ds_hash_hopscotch_slice_get(s : DshashhopscotchSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashhopscotchSlice::get(self : DshashhopscotchSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_hopscotch_slice_set(s : DshashhopscotchSlice, i : Int, v : Double) -> DshashhopscotchSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashhopscotchSlice::set(self : DshashhopscotchSlice, i : Int, v : Double) -> DshashhopscotchSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_slice_sum(s : DshashhopscotchSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashhopscotchSlice::sum(self : DshashhopscotchSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_hopscotch_slice_mean(s : DshashhopscotchSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashhopscotchSlice::mean(self : DshashhopscotchSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_hopscotch_slice_scale(s : DshashhopscotchSlice, f : Double) -> DshashhopscotchSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashhopscotchSlice::scale(self : DshashhopscotchSlice, f : Double) -> DshashhopscotchSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_slice_add(a : DshashhopscotchSlice, b : DshashhopscotchSlice) -> DshashhopscotchSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashhopscotchSlice::add(self : DshashhopscotchSlice, other : DshashhopscotchSlice) -> DshashhopscotchSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_slice_copy(s : DshashhopscotchSlice) -> DshashhopscotchSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashhopscotchSlice::copy(self : DshashhopscotchSlice) -> DshashhopscotchSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_slice_fill(s : DshashhopscotchSlice, v : Double) -> DshashhopscotchSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashhopscotchSlice::fill(self : DshashhopscotchSlice, v : Double) -> DshashhopscotchSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_hopscotch_slice_min(s : DshashhopscotchSlice) -> Double { @_common.min(s.data) }
+pub fn DshashhopscotchSlice::min(self : DshashhopscotchSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_hopscotch_slice_max(s : DshashhopscotchSlice) -> Double { @_common.max(s.data) }
+pub fn DshashhopscotchSlice::max(self : DshashhopscotchSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_hopscotch_slice_to_string(s : DshashhopscotchSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashhopscotchSlice::to_string(self : DshashhopscotchSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

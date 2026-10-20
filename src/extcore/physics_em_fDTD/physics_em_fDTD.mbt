@@ -351,45 +351,45 @@ pub fn physics_em_fDTD_frame_make(size : Int) -> PhysicsemfDTDFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_frame_len(s : PhysicsemfDTDFrame) -> Int { s.size }
+pub fn PhysicsemfDTDFrame::len(self : PhysicsemfDTDFrame) -> Int { self.size }
 
-pub fn physics_em_fDTD_frame_get(s : PhysicsemfDTDFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDFrame::get(self : PhysicsemfDTDFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_frame_set(s : PhysicsemfDTDFrame, i : Int, v : Double) -> PhysicsemfDTDFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDFrame::set(self : PhysicsemfDTDFrame, i : Int, v : Double) -> PhysicsemfDTDFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_frame_sum(s : PhysicsemfDTDFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDFrame::sum(self : PhysicsemfDTDFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_frame_mean(s : PhysicsemfDTDFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDFrame::mean(self : PhysicsemfDTDFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_frame_scale(s : PhysicsemfDTDFrame, f : Double) -> PhysicsemfDTDFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDFrame::scale(self : PhysicsemfDTDFrame, f : Double) -> PhysicsemfDTDFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_frame_add(a : PhysicsemfDTDFrame, b : PhysicsemfDTDFrame) -> PhysicsemfDTDFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDFrame::add(self : PhysicsemfDTDFrame, other : PhysicsemfDTDFrame) -> PhysicsemfDTDFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_frame_copy(s : PhysicsemfDTDFrame) -> PhysicsemfDTDFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDFrame::copy(self : PhysicsemfDTDFrame) -> PhysicsemfDTDFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_frame_fill(s : PhysicsemfDTDFrame, v : Double) -> PhysicsemfDTDFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDFrame::fill(self : PhysicsemfDTDFrame, v : Double) -> PhysicsemfDTDFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_frame_min(s : PhysicsemfDTDFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDFrame::min(self : PhysicsemfDTDFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_frame_max(s : PhysicsemfDTDFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDFrame::max(self : PhysicsemfDTDFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_frame_to_string(s : PhysicsemfDTDFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDFrame::to_string(self : PhysicsemfDTDFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDTable {
@@ -402,45 +402,45 @@ pub fn physics_em_fDTD_table_make(size : Int) -> PhysicsemfDTDTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_table_len(s : PhysicsemfDTDTable) -> Int { s.size }
+pub fn PhysicsemfDTDTable::len(self : PhysicsemfDTDTable) -> Int { self.size }
 
-pub fn physics_em_fDTD_table_get(s : PhysicsemfDTDTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDTable::get(self : PhysicsemfDTDTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_table_set(s : PhysicsemfDTDTable, i : Int, v : Double) -> PhysicsemfDTDTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDTable::set(self : PhysicsemfDTDTable, i : Int, v : Double) -> PhysicsemfDTDTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_table_sum(s : PhysicsemfDTDTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDTable::sum(self : PhysicsemfDTDTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_table_mean(s : PhysicsemfDTDTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDTable::mean(self : PhysicsemfDTDTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_table_scale(s : PhysicsemfDTDTable, f : Double) -> PhysicsemfDTDTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDTable::scale(self : PhysicsemfDTDTable, f : Double) -> PhysicsemfDTDTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_table_add(a : PhysicsemfDTDTable, b : PhysicsemfDTDTable) -> PhysicsemfDTDTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDTable::add(self : PhysicsemfDTDTable, other : PhysicsemfDTDTable) -> PhysicsemfDTDTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_table_copy(s : PhysicsemfDTDTable) -> PhysicsemfDTDTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDTable::copy(self : PhysicsemfDTDTable) -> PhysicsemfDTDTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_table_fill(s : PhysicsemfDTDTable, v : Double) -> PhysicsemfDTDTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDTable::fill(self : PhysicsemfDTDTable, v : Double) -> PhysicsemfDTDTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_table_min(s : PhysicsemfDTDTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDTable::min(self : PhysicsemfDTDTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_table_max(s : PhysicsemfDTDTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDTable::max(self : PhysicsemfDTDTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_table_to_string(s : PhysicsemfDTDTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDTable::to_string(self : PhysicsemfDTDTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_fDTD_graphn_make(size : Int) -> PhysicsemfDTDGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_graphn_len(s : PhysicsemfDTDGraphN) -> Int { s.size }
+pub fn PhysicsemfDTDGraphN::len(self : PhysicsemfDTDGraphN) -> Int { self.size }
 
-pub fn physics_em_fDTD_graphn_get(s : PhysicsemfDTDGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDGraphN::get(self : PhysicsemfDTDGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_graphn_set(s : PhysicsemfDTDGraphN, i : Int, v : Double) -> PhysicsemfDTDGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDGraphN::set(self : PhysicsemfDTDGraphN, i : Int, v : Double) -> PhysicsemfDTDGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_graphn_sum(s : PhysicsemfDTDGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDGraphN::sum(self : PhysicsemfDTDGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_graphn_mean(s : PhysicsemfDTDGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDGraphN::mean(self : PhysicsemfDTDGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_graphn_scale(s : PhysicsemfDTDGraphN, f : Double) -> PhysicsemfDTDGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDGraphN::scale(self : PhysicsemfDTDGraphN, f : Double) -> PhysicsemfDTDGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_graphn_add(a : PhysicsemfDTDGraphN, b : PhysicsemfDTDGraphN) -> PhysicsemfDTDGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDGraphN::add(self : PhysicsemfDTDGraphN, other : PhysicsemfDTDGraphN) -> PhysicsemfDTDGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_graphn_copy(s : PhysicsemfDTDGraphN) -> PhysicsemfDTDGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDGraphN::copy(self : PhysicsemfDTDGraphN) -> PhysicsemfDTDGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_graphn_fill(s : PhysicsemfDTDGraphN, v : Double) -> PhysicsemfDTDGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDGraphN::fill(self : PhysicsemfDTDGraphN, v : Double) -> PhysicsemfDTDGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_graphn_min(s : PhysicsemfDTDGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDGraphN::min(self : PhysicsemfDTDGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_graphn_max(s : PhysicsemfDTDGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDGraphN::max(self : PhysicsemfDTDGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_graphn_to_string(s : PhysicsemfDTDGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDGraphN::to_string(self : PhysicsemfDTDGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDNode {
@@ -504,45 +504,45 @@ pub fn physics_em_fDTD_node_make(size : Int) -> PhysicsemfDTDNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_node_len(s : PhysicsemfDTDNode) -> Int { s.size }
+pub fn PhysicsemfDTDNode::len(self : PhysicsemfDTDNode) -> Int { self.size }
 
-pub fn physics_em_fDTD_node_get(s : PhysicsemfDTDNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDNode::get(self : PhysicsemfDTDNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_node_set(s : PhysicsemfDTDNode, i : Int, v : Double) -> PhysicsemfDTDNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDNode::set(self : PhysicsemfDTDNode, i : Int, v : Double) -> PhysicsemfDTDNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_node_sum(s : PhysicsemfDTDNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDNode::sum(self : PhysicsemfDTDNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_node_mean(s : PhysicsemfDTDNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDNode::mean(self : PhysicsemfDTDNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_node_scale(s : PhysicsemfDTDNode, f : Double) -> PhysicsemfDTDNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDNode::scale(self : PhysicsemfDTDNode, f : Double) -> PhysicsemfDTDNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_node_add(a : PhysicsemfDTDNode, b : PhysicsemfDTDNode) -> PhysicsemfDTDNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDNode::add(self : PhysicsemfDTDNode, other : PhysicsemfDTDNode) -> PhysicsemfDTDNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_node_copy(s : PhysicsemfDTDNode) -> PhysicsemfDTDNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDNode::copy(self : PhysicsemfDTDNode) -> PhysicsemfDTDNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_node_fill(s : PhysicsemfDTDNode, v : Double) -> PhysicsemfDTDNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDNode::fill(self : PhysicsemfDTDNode, v : Double) -> PhysicsemfDTDNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_node_min(s : PhysicsemfDTDNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDNode::min(self : PhysicsemfDTDNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_node_max(s : PhysicsemfDTDNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDNode::max(self : PhysicsemfDTDNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_node_to_string(s : PhysicsemfDTDNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDNode::to_string(self : PhysicsemfDTDNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_fDTD_edge_make(size : Int) -> PhysicsemfDTDEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_edge_len(s : PhysicsemfDTDEdge) -> Int { s.size }
+pub fn PhysicsemfDTDEdge::len(self : PhysicsemfDTDEdge) -> Int { self.size }
 
-pub fn physics_em_fDTD_edge_get(s : PhysicsemfDTDEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDEdge::get(self : PhysicsemfDTDEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_edge_set(s : PhysicsemfDTDEdge, i : Int, v : Double) -> PhysicsemfDTDEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDEdge::set(self : PhysicsemfDTDEdge, i : Int, v : Double) -> PhysicsemfDTDEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_edge_sum(s : PhysicsemfDTDEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDEdge::sum(self : PhysicsemfDTDEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_edge_mean(s : PhysicsemfDTDEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDEdge::mean(self : PhysicsemfDTDEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_edge_scale(s : PhysicsemfDTDEdge, f : Double) -> PhysicsemfDTDEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDEdge::scale(self : PhysicsemfDTDEdge, f : Double) -> PhysicsemfDTDEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_edge_add(a : PhysicsemfDTDEdge, b : PhysicsemfDTDEdge) -> PhysicsemfDTDEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDEdge::add(self : PhysicsemfDTDEdge, other : PhysicsemfDTDEdge) -> PhysicsemfDTDEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_edge_copy(s : PhysicsemfDTDEdge) -> PhysicsemfDTDEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDEdge::copy(self : PhysicsemfDTDEdge) -> PhysicsemfDTDEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_edge_fill(s : PhysicsemfDTDEdge, v : Double) -> PhysicsemfDTDEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDEdge::fill(self : PhysicsemfDTDEdge, v : Double) -> PhysicsemfDTDEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_edge_min(s : PhysicsemfDTDEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDEdge::min(self : PhysicsemfDTDEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_edge_max(s : PhysicsemfDTDEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDEdge::max(self : PhysicsemfDTDEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_edge_to_string(s : PhysicsemfDTDEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDEdge::to_string(self : PhysicsemfDTDEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDPath {
@@ -606,45 +606,45 @@ pub fn physics_em_fDTD_path_make(size : Int) -> PhysicsemfDTDPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_path_len(s : PhysicsemfDTDPath) -> Int { s.size }
+pub fn PhysicsemfDTDPath::len(self : PhysicsemfDTDPath) -> Int { self.size }
 
-pub fn physics_em_fDTD_path_get(s : PhysicsemfDTDPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDPath::get(self : PhysicsemfDTDPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_path_set(s : PhysicsemfDTDPath, i : Int, v : Double) -> PhysicsemfDTDPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDPath::set(self : PhysicsemfDTDPath, i : Int, v : Double) -> PhysicsemfDTDPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_path_sum(s : PhysicsemfDTDPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDPath::sum(self : PhysicsemfDTDPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_path_mean(s : PhysicsemfDTDPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDPath::mean(self : PhysicsemfDTDPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_path_scale(s : PhysicsemfDTDPath, f : Double) -> PhysicsemfDTDPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDPath::scale(self : PhysicsemfDTDPath, f : Double) -> PhysicsemfDTDPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_path_add(a : PhysicsemfDTDPath, b : PhysicsemfDTDPath) -> PhysicsemfDTDPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDPath::add(self : PhysicsemfDTDPath, other : PhysicsemfDTDPath) -> PhysicsemfDTDPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_path_copy(s : PhysicsemfDTDPath) -> PhysicsemfDTDPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDPath::copy(self : PhysicsemfDTDPath) -> PhysicsemfDTDPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_path_fill(s : PhysicsemfDTDPath, v : Double) -> PhysicsemfDTDPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDPath::fill(self : PhysicsemfDTDPath, v : Double) -> PhysicsemfDTDPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_path_min(s : PhysicsemfDTDPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDPath::min(self : PhysicsemfDTDPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_path_max(s : PhysicsemfDTDPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDPath::max(self : PhysicsemfDTDPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_path_to_string(s : PhysicsemfDTDPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDPath::to_string(self : PhysicsemfDTDPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_fDTD_cluster_make(size : Int) -> PhysicsemfDTDCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_cluster_len(s : PhysicsemfDTDCluster) -> Int { s.size }
+pub fn PhysicsemfDTDCluster::len(self : PhysicsemfDTDCluster) -> Int { self.size }
 
-pub fn physics_em_fDTD_cluster_get(s : PhysicsemfDTDCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDCluster::get(self : PhysicsemfDTDCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_cluster_set(s : PhysicsemfDTDCluster, i : Int, v : Double) -> PhysicsemfDTDCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCluster::set(self : PhysicsemfDTDCluster, i : Int, v : Double) -> PhysicsemfDTDCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cluster_sum(s : PhysicsemfDTDCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDCluster::sum(self : PhysicsemfDTDCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_cluster_mean(s : PhysicsemfDTDCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDCluster::mean(self : PhysicsemfDTDCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_cluster_scale(s : PhysicsemfDTDCluster, f : Double) -> PhysicsemfDTDCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCluster::scale(self : PhysicsemfDTDCluster, f : Double) -> PhysicsemfDTDCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cluster_add(a : PhysicsemfDTDCluster, b : PhysicsemfDTDCluster) -> PhysicsemfDTDCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDCluster::add(self : PhysicsemfDTDCluster, other : PhysicsemfDTDCluster) -> PhysicsemfDTDCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cluster_copy(s : PhysicsemfDTDCluster) -> PhysicsemfDTDCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCluster::copy(self : PhysicsemfDTDCluster) -> PhysicsemfDTDCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cluster_fill(s : PhysicsemfDTDCluster, v : Double) -> PhysicsemfDTDCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCluster::fill(self : PhysicsemfDTDCluster, v : Double) -> PhysicsemfDTDCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cluster_min(s : PhysicsemfDTDCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDCluster::min(self : PhysicsemfDTDCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_cluster_max(s : PhysicsemfDTDCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDCluster::max(self : PhysicsemfDTDCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_cluster_to_string(s : PhysicsemfDTDCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDCluster::to_string(self : PhysicsemfDTDCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDModel {
@@ -708,45 +708,45 @@ pub fn physics_em_fDTD_model_make(size : Int) -> PhysicsemfDTDModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_model_len(s : PhysicsemfDTDModel) -> Int { s.size }
+pub fn PhysicsemfDTDModel::len(self : PhysicsemfDTDModel) -> Int { self.size }
 
-pub fn physics_em_fDTD_model_get(s : PhysicsemfDTDModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDModel::get(self : PhysicsemfDTDModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_model_set(s : PhysicsemfDTDModel, i : Int, v : Double) -> PhysicsemfDTDModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDModel::set(self : PhysicsemfDTDModel, i : Int, v : Double) -> PhysicsemfDTDModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_model_sum(s : PhysicsemfDTDModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDModel::sum(self : PhysicsemfDTDModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_model_mean(s : PhysicsemfDTDModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDModel::mean(self : PhysicsemfDTDModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_model_scale(s : PhysicsemfDTDModel, f : Double) -> PhysicsemfDTDModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDModel::scale(self : PhysicsemfDTDModel, f : Double) -> PhysicsemfDTDModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_model_add(a : PhysicsemfDTDModel, b : PhysicsemfDTDModel) -> PhysicsemfDTDModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDModel::add(self : PhysicsemfDTDModel, other : PhysicsemfDTDModel) -> PhysicsemfDTDModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_model_copy(s : PhysicsemfDTDModel) -> PhysicsemfDTDModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDModel::copy(self : PhysicsemfDTDModel) -> PhysicsemfDTDModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_model_fill(s : PhysicsemfDTDModel, v : Double) -> PhysicsemfDTDModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDModel::fill(self : PhysicsemfDTDModel, v : Double) -> PhysicsemfDTDModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_model_min(s : PhysicsemfDTDModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDModel::min(self : PhysicsemfDTDModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_model_max(s : PhysicsemfDTDModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDModel::max(self : PhysicsemfDTDModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_model_to_string(s : PhysicsemfDTDModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDModel::to_string(self : PhysicsemfDTDModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_fDTD_layer_make(size : Int) -> PhysicsemfDTDLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_layer_len(s : PhysicsemfDTDLayer) -> Int { s.size }
+pub fn PhysicsemfDTDLayer::len(self : PhysicsemfDTDLayer) -> Int { self.size }
 
-pub fn physics_em_fDTD_layer_get(s : PhysicsemfDTDLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDLayer::get(self : PhysicsemfDTDLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_layer_set(s : PhysicsemfDTDLayer, i : Int, v : Double) -> PhysicsemfDTDLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDLayer::set(self : PhysicsemfDTDLayer, i : Int, v : Double) -> PhysicsemfDTDLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_layer_sum(s : PhysicsemfDTDLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDLayer::sum(self : PhysicsemfDTDLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_layer_mean(s : PhysicsemfDTDLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDLayer::mean(self : PhysicsemfDTDLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_layer_scale(s : PhysicsemfDTDLayer, f : Double) -> PhysicsemfDTDLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDLayer::scale(self : PhysicsemfDTDLayer, f : Double) -> PhysicsemfDTDLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_layer_add(a : PhysicsemfDTDLayer, b : PhysicsemfDTDLayer) -> PhysicsemfDTDLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDLayer::add(self : PhysicsemfDTDLayer, other : PhysicsemfDTDLayer) -> PhysicsemfDTDLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_layer_copy(s : PhysicsemfDTDLayer) -> PhysicsemfDTDLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDLayer::copy(self : PhysicsemfDTDLayer) -> PhysicsemfDTDLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_layer_fill(s : PhysicsemfDTDLayer, v : Double) -> PhysicsemfDTDLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDLayer::fill(self : PhysicsemfDTDLayer, v : Double) -> PhysicsemfDTDLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_layer_min(s : PhysicsemfDTDLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDLayer::min(self : PhysicsemfDTDLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_layer_max(s : PhysicsemfDTDLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDLayer::max(self : PhysicsemfDTDLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_layer_to_string(s : PhysicsemfDTDLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDLayer::to_string(self : PhysicsemfDTDLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_fDTD_buffer_make(size : Int) -> PhysicsemfDTDBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_buffer_len(s : PhysicsemfDTDBuffer) -> Int { s.size }
+pub fn PhysicsemfDTDBuffer::len(self : PhysicsemfDTDBuffer) -> Int { self.size }
 
-pub fn physics_em_fDTD_buffer_get(s : PhysicsemfDTDBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDBuffer::get(self : PhysicsemfDTDBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_buffer_set(s : PhysicsemfDTDBuffer, i : Int, v : Double) -> PhysicsemfDTDBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDBuffer::set(self : PhysicsemfDTDBuffer, i : Int, v : Double) -> PhysicsemfDTDBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_buffer_sum(s : PhysicsemfDTDBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDBuffer::sum(self : PhysicsemfDTDBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_buffer_mean(s : PhysicsemfDTDBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDBuffer::mean(self : PhysicsemfDTDBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_buffer_scale(s : PhysicsemfDTDBuffer, f : Double) -> PhysicsemfDTDBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDBuffer::scale(self : PhysicsemfDTDBuffer, f : Double) -> PhysicsemfDTDBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_buffer_add(a : PhysicsemfDTDBuffer, b : PhysicsemfDTDBuffer) -> PhysicsemfDTDBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDBuffer::add(self : PhysicsemfDTDBuffer, other : PhysicsemfDTDBuffer) -> PhysicsemfDTDBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_buffer_copy(s : PhysicsemfDTDBuffer) -> PhysicsemfDTDBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDBuffer::copy(self : PhysicsemfDTDBuffer) -> PhysicsemfDTDBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_buffer_fill(s : PhysicsemfDTDBuffer, v : Double) -> PhysicsemfDTDBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDBuffer::fill(self : PhysicsemfDTDBuffer, v : Double) -> PhysicsemfDTDBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_buffer_min(s : PhysicsemfDTDBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDBuffer::min(self : PhysicsemfDTDBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_buffer_max(s : PhysicsemfDTDBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDBuffer::max(self : PhysicsemfDTDBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_buffer_to_string(s : PhysicsemfDTDBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDBuffer::to_string(self : PhysicsemfDTDBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_fDTD_cursor_make(size : Int) -> PhysicsemfDTDCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_cursor_len(s : PhysicsemfDTDCursor) -> Int { s.size }
+pub fn PhysicsemfDTDCursor::len(self : PhysicsemfDTDCursor) -> Int { self.size }
 
-pub fn physics_em_fDTD_cursor_get(s : PhysicsemfDTDCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDCursor::get(self : PhysicsemfDTDCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_cursor_set(s : PhysicsemfDTDCursor, i : Int, v : Double) -> PhysicsemfDTDCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCursor::set(self : PhysicsemfDTDCursor, i : Int, v : Double) -> PhysicsemfDTDCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cursor_sum(s : PhysicsemfDTDCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDCursor::sum(self : PhysicsemfDTDCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_cursor_mean(s : PhysicsemfDTDCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDCursor::mean(self : PhysicsemfDTDCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_cursor_scale(s : PhysicsemfDTDCursor, f : Double) -> PhysicsemfDTDCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCursor::scale(self : PhysicsemfDTDCursor, f : Double) -> PhysicsemfDTDCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cursor_add(a : PhysicsemfDTDCursor, b : PhysicsemfDTDCursor) -> PhysicsemfDTDCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDCursor::add(self : PhysicsemfDTDCursor, other : PhysicsemfDTDCursor) -> PhysicsemfDTDCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cursor_copy(s : PhysicsemfDTDCursor) -> PhysicsemfDTDCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCursor::copy(self : PhysicsemfDTDCursor) -> PhysicsemfDTDCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cursor_fill(s : PhysicsemfDTDCursor, v : Double) -> PhysicsemfDTDCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDCursor::fill(self : PhysicsemfDTDCursor, v : Double) -> PhysicsemfDTDCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_cursor_min(s : PhysicsemfDTDCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDCursor::min(self : PhysicsemfDTDCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_cursor_max(s : PhysicsemfDTDCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDCursor::max(self : PhysicsemfDTDCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_cursor_to_string(s : PhysicsemfDTDCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDCursor::to_string(self : PhysicsemfDTDCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDView {
@@ -912,45 +912,45 @@ pub fn physics_em_fDTD_view_make(size : Int) -> PhysicsemfDTDView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_view_len(s : PhysicsemfDTDView) -> Int { s.size }
+pub fn PhysicsemfDTDView::len(self : PhysicsemfDTDView) -> Int { self.size }
 
-pub fn physics_em_fDTD_view_get(s : PhysicsemfDTDView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDView::get(self : PhysicsemfDTDView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_view_set(s : PhysicsemfDTDView, i : Int, v : Double) -> PhysicsemfDTDView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDView::set(self : PhysicsemfDTDView, i : Int, v : Double) -> PhysicsemfDTDView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_view_sum(s : PhysicsemfDTDView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDView::sum(self : PhysicsemfDTDView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_view_mean(s : PhysicsemfDTDView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDView::mean(self : PhysicsemfDTDView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_view_scale(s : PhysicsemfDTDView, f : Double) -> PhysicsemfDTDView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDView::scale(self : PhysicsemfDTDView, f : Double) -> PhysicsemfDTDView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_view_add(a : PhysicsemfDTDView, b : PhysicsemfDTDView) -> PhysicsemfDTDView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDView::add(self : PhysicsemfDTDView, other : PhysicsemfDTDView) -> PhysicsemfDTDView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_view_copy(s : PhysicsemfDTDView) -> PhysicsemfDTDView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDView::copy(self : PhysicsemfDTDView) -> PhysicsemfDTDView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_view_fill(s : PhysicsemfDTDView, v : Double) -> PhysicsemfDTDView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDView::fill(self : PhysicsemfDTDView, v : Double) -> PhysicsemfDTDView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_view_min(s : PhysicsemfDTDView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDView::min(self : PhysicsemfDTDView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_view_max(s : PhysicsemfDTDView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDView::max(self : PhysicsemfDTDView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_view_to_string(s : PhysicsemfDTDView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDView::to_string(self : PhysicsemfDTDView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDRange {
@@ -963,45 +963,45 @@ pub fn physics_em_fDTD_range_make(size : Int) -> PhysicsemfDTDRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_range_len(s : PhysicsemfDTDRange) -> Int { s.size }
+pub fn PhysicsemfDTDRange::len(self : PhysicsemfDTDRange) -> Int { self.size }
 
-pub fn physics_em_fDTD_range_get(s : PhysicsemfDTDRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDRange::get(self : PhysicsemfDTDRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_range_set(s : PhysicsemfDTDRange, i : Int, v : Double) -> PhysicsemfDTDRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDRange::set(self : PhysicsemfDTDRange, i : Int, v : Double) -> PhysicsemfDTDRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_range_sum(s : PhysicsemfDTDRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDRange::sum(self : PhysicsemfDTDRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_range_mean(s : PhysicsemfDTDRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDRange::mean(self : PhysicsemfDTDRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_range_scale(s : PhysicsemfDTDRange, f : Double) -> PhysicsemfDTDRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDRange::scale(self : PhysicsemfDTDRange, f : Double) -> PhysicsemfDTDRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_range_add(a : PhysicsemfDTDRange, b : PhysicsemfDTDRange) -> PhysicsemfDTDRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDRange::add(self : PhysicsemfDTDRange, other : PhysicsemfDTDRange) -> PhysicsemfDTDRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_range_copy(s : PhysicsemfDTDRange) -> PhysicsemfDTDRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDRange::copy(self : PhysicsemfDTDRange) -> PhysicsemfDTDRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_range_fill(s : PhysicsemfDTDRange, v : Double) -> PhysicsemfDTDRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDRange::fill(self : PhysicsemfDTDRange, v : Double) -> PhysicsemfDTDRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_range_min(s : PhysicsemfDTDRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDRange::min(self : PhysicsemfDTDRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_range_max(s : PhysicsemfDTDRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDRange::max(self : PhysicsemfDTDRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_range_to_string(s : PhysicsemfDTDRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDRange::to_string(self : PhysicsemfDTDRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemfDTDSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_fDTD_slice_make(size : Int) -> PhysicsemfDTDSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_fDTD_slice_len(s : PhysicsemfDTDSlice) -> Int { s.size }
+pub fn PhysicsemfDTDSlice::len(self : PhysicsemfDTDSlice) -> Int { self.size }
 
-pub fn physics_em_fDTD_slice_get(s : PhysicsemfDTDSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemfDTDSlice::get(self : PhysicsemfDTDSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_fDTD_slice_set(s : PhysicsemfDTDSlice, i : Int, v : Double) -> PhysicsemfDTDSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDSlice::set(self : PhysicsemfDTDSlice, i : Int, v : Double) -> PhysicsemfDTDSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_slice_sum(s : PhysicsemfDTDSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemfDTDSlice::sum(self : PhysicsemfDTDSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_fDTD_slice_mean(s : PhysicsemfDTDSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemfDTDSlice::mean(self : PhysicsemfDTDSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_fDTD_slice_scale(s : PhysicsemfDTDSlice, f : Double) -> PhysicsemfDTDSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDSlice::scale(self : PhysicsemfDTDSlice, f : Double) -> PhysicsemfDTDSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_slice_add(a : PhysicsemfDTDSlice, b : PhysicsemfDTDSlice) -> PhysicsemfDTDSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemfDTDSlice::add(self : PhysicsemfDTDSlice, other : PhysicsemfDTDSlice) -> PhysicsemfDTDSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_slice_copy(s : PhysicsemfDTDSlice) -> PhysicsemfDTDSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDSlice::copy(self : PhysicsemfDTDSlice) -> PhysicsemfDTDSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_slice_fill(s : PhysicsemfDTDSlice, v : Double) -> PhysicsemfDTDSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemfDTDSlice::fill(self : PhysicsemfDTDSlice, v : Double) -> PhysicsemfDTDSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_fDTD_slice_min(s : PhysicsemfDTDSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemfDTDSlice::min(self : PhysicsemfDTDSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_fDTD_slice_max(s : PhysicsemfDTDSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemfDTDSlice::max(self : PhysicsemfDTDSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_fDTD_slice_to_string(s : PhysicsemfDTDSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemfDTDSlice::to_string(self : PhysicsemfDTDSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

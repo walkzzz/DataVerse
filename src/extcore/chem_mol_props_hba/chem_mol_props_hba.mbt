@@ -351,45 +351,45 @@ pub fn chem_mol_props_hba_frame_make(size : Int) -> ChemmolpropshbaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_frame_len(s : ChemmolpropshbaFrame) -> Int { s.size }
+pub fn ChemmolpropshbaFrame::len(self : ChemmolpropshbaFrame) -> Int { self.size }
 
-pub fn chem_mol_props_hba_frame_get(s : ChemmolpropshbaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaFrame::get(self : ChemmolpropshbaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_frame_set(s : ChemmolpropshbaFrame, i : Int, v : Double) -> ChemmolpropshbaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaFrame::set(self : ChemmolpropshbaFrame, i : Int, v : Double) -> ChemmolpropshbaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_frame_sum(s : ChemmolpropshbaFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaFrame::sum(self : ChemmolpropshbaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_frame_mean(s : ChemmolpropshbaFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaFrame::mean(self : ChemmolpropshbaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_frame_scale(s : ChemmolpropshbaFrame, f : Double) -> ChemmolpropshbaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaFrame::scale(self : ChemmolpropshbaFrame, f : Double) -> ChemmolpropshbaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_frame_add(a : ChemmolpropshbaFrame, b : ChemmolpropshbaFrame) -> ChemmolpropshbaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaFrame::add(self : ChemmolpropshbaFrame, other : ChemmolpropshbaFrame) -> ChemmolpropshbaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_frame_copy(s : ChemmolpropshbaFrame) -> ChemmolpropshbaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaFrame::copy(self : ChemmolpropshbaFrame) -> ChemmolpropshbaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_frame_fill(s : ChemmolpropshbaFrame, v : Double) -> ChemmolpropshbaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaFrame::fill(self : ChemmolpropshbaFrame, v : Double) -> ChemmolpropshbaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_frame_min(s : ChemmolpropshbaFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaFrame::min(self : ChemmolpropshbaFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_frame_max(s : ChemmolpropshbaFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaFrame::max(self : ChemmolpropshbaFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_frame_to_string(s : ChemmolpropshbaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaFrame::to_string(self : ChemmolpropshbaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_props_hba_table_make(size : Int) -> ChemmolpropshbaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_table_len(s : ChemmolpropshbaTable) -> Int { s.size }
+pub fn ChemmolpropshbaTable::len(self : ChemmolpropshbaTable) -> Int { self.size }
 
-pub fn chem_mol_props_hba_table_get(s : ChemmolpropshbaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaTable::get(self : ChemmolpropshbaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_table_set(s : ChemmolpropshbaTable, i : Int, v : Double) -> ChemmolpropshbaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaTable::set(self : ChemmolpropshbaTable, i : Int, v : Double) -> ChemmolpropshbaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_table_sum(s : ChemmolpropshbaTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaTable::sum(self : ChemmolpropshbaTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_table_mean(s : ChemmolpropshbaTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaTable::mean(self : ChemmolpropshbaTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_table_scale(s : ChemmolpropshbaTable, f : Double) -> ChemmolpropshbaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaTable::scale(self : ChemmolpropshbaTable, f : Double) -> ChemmolpropshbaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_table_add(a : ChemmolpropshbaTable, b : ChemmolpropshbaTable) -> ChemmolpropshbaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaTable::add(self : ChemmolpropshbaTable, other : ChemmolpropshbaTable) -> ChemmolpropshbaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_table_copy(s : ChemmolpropshbaTable) -> ChemmolpropshbaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaTable::copy(self : ChemmolpropshbaTable) -> ChemmolpropshbaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_table_fill(s : ChemmolpropshbaTable, v : Double) -> ChemmolpropshbaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaTable::fill(self : ChemmolpropshbaTable, v : Double) -> ChemmolpropshbaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_table_min(s : ChemmolpropshbaTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaTable::min(self : ChemmolpropshbaTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_table_max(s : ChemmolpropshbaTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaTable::max(self : ChemmolpropshbaTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_table_to_string(s : ChemmolpropshbaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaTable::to_string(self : ChemmolpropshbaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_props_hba_graphn_make(size : Int) -> ChemmolpropshbaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_graphn_len(s : ChemmolpropshbaGraphN) -> Int { s.size }
+pub fn ChemmolpropshbaGraphN::len(self : ChemmolpropshbaGraphN) -> Int { self.size }
 
-pub fn chem_mol_props_hba_graphn_get(s : ChemmolpropshbaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaGraphN::get(self : ChemmolpropshbaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_graphn_set(s : ChemmolpropshbaGraphN, i : Int, v : Double) -> ChemmolpropshbaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaGraphN::set(self : ChemmolpropshbaGraphN, i : Int, v : Double) -> ChemmolpropshbaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_graphn_sum(s : ChemmolpropshbaGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaGraphN::sum(self : ChemmolpropshbaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_graphn_mean(s : ChemmolpropshbaGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaGraphN::mean(self : ChemmolpropshbaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_graphn_scale(s : ChemmolpropshbaGraphN, f : Double) -> ChemmolpropshbaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaGraphN::scale(self : ChemmolpropshbaGraphN, f : Double) -> ChemmolpropshbaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_graphn_add(a : ChemmolpropshbaGraphN, b : ChemmolpropshbaGraphN) -> ChemmolpropshbaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaGraphN::add(self : ChemmolpropshbaGraphN, other : ChemmolpropshbaGraphN) -> ChemmolpropshbaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_graphn_copy(s : ChemmolpropshbaGraphN) -> ChemmolpropshbaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaGraphN::copy(self : ChemmolpropshbaGraphN) -> ChemmolpropshbaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_graphn_fill(s : ChemmolpropshbaGraphN, v : Double) -> ChemmolpropshbaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaGraphN::fill(self : ChemmolpropshbaGraphN, v : Double) -> ChemmolpropshbaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_graphn_min(s : ChemmolpropshbaGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaGraphN::min(self : ChemmolpropshbaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_graphn_max(s : ChemmolpropshbaGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaGraphN::max(self : ChemmolpropshbaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_graphn_to_string(s : ChemmolpropshbaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaGraphN::to_string(self : ChemmolpropshbaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_props_hba_node_make(size : Int) -> ChemmolpropshbaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_node_len(s : ChemmolpropshbaNode) -> Int { s.size }
+pub fn ChemmolpropshbaNode::len(self : ChemmolpropshbaNode) -> Int { self.size }
 
-pub fn chem_mol_props_hba_node_get(s : ChemmolpropshbaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaNode::get(self : ChemmolpropshbaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_node_set(s : ChemmolpropshbaNode, i : Int, v : Double) -> ChemmolpropshbaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaNode::set(self : ChemmolpropshbaNode, i : Int, v : Double) -> ChemmolpropshbaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_node_sum(s : ChemmolpropshbaNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaNode::sum(self : ChemmolpropshbaNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_node_mean(s : ChemmolpropshbaNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaNode::mean(self : ChemmolpropshbaNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_node_scale(s : ChemmolpropshbaNode, f : Double) -> ChemmolpropshbaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaNode::scale(self : ChemmolpropshbaNode, f : Double) -> ChemmolpropshbaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_node_add(a : ChemmolpropshbaNode, b : ChemmolpropshbaNode) -> ChemmolpropshbaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaNode::add(self : ChemmolpropshbaNode, other : ChemmolpropshbaNode) -> ChemmolpropshbaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_node_copy(s : ChemmolpropshbaNode) -> ChemmolpropshbaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaNode::copy(self : ChemmolpropshbaNode) -> ChemmolpropshbaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_node_fill(s : ChemmolpropshbaNode, v : Double) -> ChemmolpropshbaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaNode::fill(self : ChemmolpropshbaNode, v : Double) -> ChemmolpropshbaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_node_min(s : ChemmolpropshbaNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaNode::min(self : ChemmolpropshbaNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_node_max(s : ChemmolpropshbaNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaNode::max(self : ChemmolpropshbaNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_node_to_string(s : ChemmolpropshbaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaNode::to_string(self : ChemmolpropshbaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_props_hba_edge_make(size : Int) -> ChemmolpropshbaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_edge_len(s : ChemmolpropshbaEdge) -> Int { s.size }
+pub fn ChemmolpropshbaEdge::len(self : ChemmolpropshbaEdge) -> Int { self.size }
 
-pub fn chem_mol_props_hba_edge_get(s : ChemmolpropshbaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaEdge::get(self : ChemmolpropshbaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_edge_set(s : ChemmolpropshbaEdge, i : Int, v : Double) -> ChemmolpropshbaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaEdge::set(self : ChemmolpropshbaEdge, i : Int, v : Double) -> ChemmolpropshbaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_edge_sum(s : ChemmolpropshbaEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaEdge::sum(self : ChemmolpropshbaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_edge_mean(s : ChemmolpropshbaEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaEdge::mean(self : ChemmolpropshbaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_edge_scale(s : ChemmolpropshbaEdge, f : Double) -> ChemmolpropshbaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaEdge::scale(self : ChemmolpropshbaEdge, f : Double) -> ChemmolpropshbaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_edge_add(a : ChemmolpropshbaEdge, b : ChemmolpropshbaEdge) -> ChemmolpropshbaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaEdge::add(self : ChemmolpropshbaEdge, other : ChemmolpropshbaEdge) -> ChemmolpropshbaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_edge_copy(s : ChemmolpropshbaEdge) -> ChemmolpropshbaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaEdge::copy(self : ChemmolpropshbaEdge) -> ChemmolpropshbaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_edge_fill(s : ChemmolpropshbaEdge, v : Double) -> ChemmolpropshbaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaEdge::fill(self : ChemmolpropshbaEdge, v : Double) -> ChemmolpropshbaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_edge_min(s : ChemmolpropshbaEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaEdge::min(self : ChemmolpropshbaEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_edge_max(s : ChemmolpropshbaEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaEdge::max(self : ChemmolpropshbaEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_edge_to_string(s : ChemmolpropshbaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaEdge::to_string(self : ChemmolpropshbaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_props_hba_path_make(size : Int) -> ChemmolpropshbaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_path_len(s : ChemmolpropshbaPath) -> Int { s.size }
+pub fn ChemmolpropshbaPath::len(self : ChemmolpropshbaPath) -> Int { self.size }
 
-pub fn chem_mol_props_hba_path_get(s : ChemmolpropshbaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaPath::get(self : ChemmolpropshbaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_path_set(s : ChemmolpropshbaPath, i : Int, v : Double) -> ChemmolpropshbaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaPath::set(self : ChemmolpropshbaPath, i : Int, v : Double) -> ChemmolpropshbaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_path_sum(s : ChemmolpropshbaPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaPath::sum(self : ChemmolpropshbaPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_path_mean(s : ChemmolpropshbaPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaPath::mean(self : ChemmolpropshbaPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_path_scale(s : ChemmolpropshbaPath, f : Double) -> ChemmolpropshbaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaPath::scale(self : ChemmolpropshbaPath, f : Double) -> ChemmolpropshbaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_path_add(a : ChemmolpropshbaPath, b : ChemmolpropshbaPath) -> ChemmolpropshbaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaPath::add(self : ChemmolpropshbaPath, other : ChemmolpropshbaPath) -> ChemmolpropshbaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_path_copy(s : ChemmolpropshbaPath) -> ChemmolpropshbaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaPath::copy(self : ChemmolpropshbaPath) -> ChemmolpropshbaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_path_fill(s : ChemmolpropshbaPath, v : Double) -> ChemmolpropshbaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaPath::fill(self : ChemmolpropshbaPath, v : Double) -> ChemmolpropshbaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_path_min(s : ChemmolpropshbaPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaPath::min(self : ChemmolpropshbaPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_path_max(s : ChemmolpropshbaPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaPath::max(self : ChemmolpropshbaPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_path_to_string(s : ChemmolpropshbaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaPath::to_string(self : ChemmolpropshbaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_props_hba_cluster_make(size : Int) -> ChemmolpropshbaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_cluster_len(s : ChemmolpropshbaCluster) -> Int { s.size }
+pub fn ChemmolpropshbaCluster::len(self : ChemmolpropshbaCluster) -> Int { self.size }
 
-pub fn chem_mol_props_hba_cluster_get(s : ChemmolpropshbaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaCluster::get(self : ChemmolpropshbaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_cluster_set(s : ChemmolpropshbaCluster, i : Int, v : Double) -> ChemmolpropshbaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCluster::set(self : ChemmolpropshbaCluster, i : Int, v : Double) -> ChemmolpropshbaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cluster_sum(s : ChemmolpropshbaCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaCluster::sum(self : ChemmolpropshbaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_cluster_mean(s : ChemmolpropshbaCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaCluster::mean(self : ChemmolpropshbaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_cluster_scale(s : ChemmolpropshbaCluster, f : Double) -> ChemmolpropshbaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCluster::scale(self : ChemmolpropshbaCluster, f : Double) -> ChemmolpropshbaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cluster_add(a : ChemmolpropshbaCluster, b : ChemmolpropshbaCluster) -> ChemmolpropshbaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaCluster::add(self : ChemmolpropshbaCluster, other : ChemmolpropshbaCluster) -> ChemmolpropshbaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cluster_copy(s : ChemmolpropshbaCluster) -> ChemmolpropshbaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCluster::copy(self : ChemmolpropshbaCluster) -> ChemmolpropshbaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cluster_fill(s : ChemmolpropshbaCluster, v : Double) -> ChemmolpropshbaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCluster::fill(self : ChemmolpropshbaCluster, v : Double) -> ChemmolpropshbaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cluster_min(s : ChemmolpropshbaCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaCluster::min(self : ChemmolpropshbaCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_cluster_max(s : ChemmolpropshbaCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaCluster::max(self : ChemmolpropshbaCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_cluster_to_string(s : ChemmolpropshbaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaCluster::to_string(self : ChemmolpropshbaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_props_hba_model_make(size : Int) -> ChemmolpropshbaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_model_len(s : ChemmolpropshbaModel) -> Int { s.size }
+pub fn ChemmolpropshbaModel::len(self : ChemmolpropshbaModel) -> Int { self.size }
 
-pub fn chem_mol_props_hba_model_get(s : ChemmolpropshbaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaModel::get(self : ChemmolpropshbaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_model_set(s : ChemmolpropshbaModel, i : Int, v : Double) -> ChemmolpropshbaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaModel::set(self : ChemmolpropshbaModel, i : Int, v : Double) -> ChemmolpropshbaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_model_sum(s : ChemmolpropshbaModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaModel::sum(self : ChemmolpropshbaModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_model_mean(s : ChemmolpropshbaModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaModel::mean(self : ChemmolpropshbaModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_model_scale(s : ChemmolpropshbaModel, f : Double) -> ChemmolpropshbaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaModel::scale(self : ChemmolpropshbaModel, f : Double) -> ChemmolpropshbaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_model_add(a : ChemmolpropshbaModel, b : ChemmolpropshbaModel) -> ChemmolpropshbaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaModel::add(self : ChemmolpropshbaModel, other : ChemmolpropshbaModel) -> ChemmolpropshbaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_model_copy(s : ChemmolpropshbaModel) -> ChemmolpropshbaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaModel::copy(self : ChemmolpropshbaModel) -> ChemmolpropshbaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_model_fill(s : ChemmolpropshbaModel, v : Double) -> ChemmolpropshbaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaModel::fill(self : ChemmolpropshbaModel, v : Double) -> ChemmolpropshbaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_model_min(s : ChemmolpropshbaModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaModel::min(self : ChemmolpropshbaModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_model_max(s : ChemmolpropshbaModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaModel::max(self : ChemmolpropshbaModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_model_to_string(s : ChemmolpropshbaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaModel::to_string(self : ChemmolpropshbaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_props_hba_layer_make(size : Int) -> ChemmolpropshbaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_layer_len(s : ChemmolpropshbaLayer) -> Int { s.size }
+pub fn ChemmolpropshbaLayer::len(self : ChemmolpropshbaLayer) -> Int { self.size }
 
-pub fn chem_mol_props_hba_layer_get(s : ChemmolpropshbaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaLayer::get(self : ChemmolpropshbaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_layer_set(s : ChemmolpropshbaLayer, i : Int, v : Double) -> ChemmolpropshbaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaLayer::set(self : ChemmolpropshbaLayer, i : Int, v : Double) -> ChemmolpropshbaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_layer_sum(s : ChemmolpropshbaLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaLayer::sum(self : ChemmolpropshbaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_layer_mean(s : ChemmolpropshbaLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaLayer::mean(self : ChemmolpropshbaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_layer_scale(s : ChemmolpropshbaLayer, f : Double) -> ChemmolpropshbaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaLayer::scale(self : ChemmolpropshbaLayer, f : Double) -> ChemmolpropshbaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_layer_add(a : ChemmolpropshbaLayer, b : ChemmolpropshbaLayer) -> ChemmolpropshbaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaLayer::add(self : ChemmolpropshbaLayer, other : ChemmolpropshbaLayer) -> ChemmolpropshbaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_layer_copy(s : ChemmolpropshbaLayer) -> ChemmolpropshbaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaLayer::copy(self : ChemmolpropshbaLayer) -> ChemmolpropshbaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_layer_fill(s : ChemmolpropshbaLayer, v : Double) -> ChemmolpropshbaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaLayer::fill(self : ChemmolpropshbaLayer, v : Double) -> ChemmolpropshbaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_layer_min(s : ChemmolpropshbaLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaLayer::min(self : ChemmolpropshbaLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_layer_max(s : ChemmolpropshbaLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaLayer::max(self : ChemmolpropshbaLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_layer_to_string(s : ChemmolpropshbaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaLayer::to_string(self : ChemmolpropshbaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_props_hba_buffer_make(size : Int) -> ChemmolpropshbaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_buffer_len(s : ChemmolpropshbaBuffer) -> Int { s.size }
+pub fn ChemmolpropshbaBuffer::len(self : ChemmolpropshbaBuffer) -> Int { self.size }
 
-pub fn chem_mol_props_hba_buffer_get(s : ChemmolpropshbaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaBuffer::get(self : ChemmolpropshbaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_buffer_set(s : ChemmolpropshbaBuffer, i : Int, v : Double) -> ChemmolpropshbaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaBuffer::set(self : ChemmolpropshbaBuffer, i : Int, v : Double) -> ChemmolpropshbaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_buffer_sum(s : ChemmolpropshbaBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaBuffer::sum(self : ChemmolpropshbaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_buffer_mean(s : ChemmolpropshbaBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaBuffer::mean(self : ChemmolpropshbaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_buffer_scale(s : ChemmolpropshbaBuffer, f : Double) -> ChemmolpropshbaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaBuffer::scale(self : ChemmolpropshbaBuffer, f : Double) -> ChemmolpropshbaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_buffer_add(a : ChemmolpropshbaBuffer, b : ChemmolpropshbaBuffer) -> ChemmolpropshbaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaBuffer::add(self : ChemmolpropshbaBuffer, other : ChemmolpropshbaBuffer) -> ChemmolpropshbaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_buffer_copy(s : ChemmolpropshbaBuffer) -> ChemmolpropshbaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaBuffer::copy(self : ChemmolpropshbaBuffer) -> ChemmolpropshbaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_buffer_fill(s : ChemmolpropshbaBuffer, v : Double) -> ChemmolpropshbaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaBuffer::fill(self : ChemmolpropshbaBuffer, v : Double) -> ChemmolpropshbaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_buffer_min(s : ChemmolpropshbaBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaBuffer::min(self : ChemmolpropshbaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_buffer_max(s : ChemmolpropshbaBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaBuffer::max(self : ChemmolpropshbaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_buffer_to_string(s : ChemmolpropshbaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaBuffer::to_string(self : ChemmolpropshbaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_props_hba_cursor_make(size : Int) -> ChemmolpropshbaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_cursor_len(s : ChemmolpropshbaCursor) -> Int { s.size }
+pub fn ChemmolpropshbaCursor::len(self : ChemmolpropshbaCursor) -> Int { self.size }
 
-pub fn chem_mol_props_hba_cursor_get(s : ChemmolpropshbaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaCursor::get(self : ChemmolpropshbaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_cursor_set(s : ChemmolpropshbaCursor, i : Int, v : Double) -> ChemmolpropshbaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCursor::set(self : ChemmolpropshbaCursor, i : Int, v : Double) -> ChemmolpropshbaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cursor_sum(s : ChemmolpropshbaCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaCursor::sum(self : ChemmolpropshbaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_cursor_mean(s : ChemmolpropshbaCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaCursor::mean(self : ChemmolpropshbaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_cursor_scale(s : ChemmolpropshbaCursor, f : Double) -> ChemmolpropshbaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCursor::scale(self : ChemmolpropshbaCursor, f : Double) -> ChemmolpropshbaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cursor_add(a : ChemmolpropshbaCursor, b : ChemmolpropshbaCursor) -> ChemmolpropshbaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaCursor::add(self : ChemmolpropshbaCursor, other : ChemmolpropshbaCursor) -> ChemmolpropshbaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cursor_copy(s : ChemmolpropshbaCursor) -> ChemmolpropshbaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCursor::copy(self : ChemmolpropshbaCursor) -> ChemmolpropshbaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cursor_fill(s : ChemmolpropshbaCursor, v : Double) -> ChemmolpropshbaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaCursor::fill(self : ChemmolpropshbaCursor, v : Double) -> ChemmolpropshbaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_cursor_min(s : ChemmolpropshbaCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaCursor::min(self : ChemmolpropshbaCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_cursor_max(s : ChemmolpropshbaCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaCursor::max(self : ChemmolpropshbaCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_cursor_to_string(s : ChemmolpropshbaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaCursor::to_string(self : ChemmolpropshbaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaView {
@@ -912,45 +912,45 @@ pub fn chem_mol_props_hba_view_make(size : Int) -> ChemmolpropshbaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_view_len(s : ChemmolpropshbaView) -> Int { s.size }
+pub fn ChemmolpropshbaView::len(self : ChemmolpropshbaView) -> Int { self.size }
 
-pub fn chem_mol_props_hba_view_get(s : ChemmolpropshbaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaView::get(self : ChemmolpropshbaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_view_set(s : ChemmolpropshbaView, i : Int, v : Double) -> ChemmolpropshbaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaView::set(self : ChemmolpropshbaView, i : Int, v : Double) -> ChemmolpropshbaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_view_sum(s : ChemmolpropshbaView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaView::sum(self : ChemmolpropshbaView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_view_mean(s : ChemmolpropshbaView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaView::mean(self : ChemmolpropshbaView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_view_scale(s : ChemmolpropshbaView, f : Double) -> ChemmolpropshbaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaView::scale(self : ChemmolpropshbaView, f : Double) -> ChemmolpropshbaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_view_add(a : ChemmolpropshbaView, b : ChemmolpropshbaView) -> ChemmolpropshbaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaView::add(self : ChemmolpropshbaView, other : ChemmolpropshbaView) -> ChemmolpropshbaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_view_copy(s : ChemmolpropshbaView) -> ChemmolpropshbaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaView::copy(self : ChemmolpropshbaView) -> ChemmolpropshbaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_view_fill(s : ChemmolpropshbaView, v : Double) -> ChemmolpropshbaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaView::fill(self : ChemmolpropshbaView, v : Double) -> ChemmolpropshbaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_view_min(s : ChemmolpropshbaView) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaView::min(self : ChemmolpropshbaView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_view_max(s : ChemmolpropshbaView) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaView::max(self : ChemmolpropshbaView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_view_to_string(s : ChemmolpropshbaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaView::to_string(self : ChemmolpropshbaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_props_hba_range_make(size : Int) -> ChemmolpropshbaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_range_len(s : ChemmolpropshbaRange) -> Int { s.size }
+pub fn ChemmolpropshbaRange::len(self : ChemmolpropshbaRange) -> Int { self.size }
 
-pub fn chem_mol_props_hba_range_get(s : ChemmolpropshbaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaRange::get(self : ChemmolpropshbaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_range_set(s : ChemmolpropshbaRange, i : Int, v : Double) -> ChemmolpropshbaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaRange::set(self : ChemmolpropshbaRange, i : Int, v : Double) -> ChemmolpropshbaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_range_sum(s : ChemmolpropshbaRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaRange::sum(self : ChemmolpropshbaRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_range_mean(s : ChemmolpropshbaRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaRange::mean(self : ChemmolpropshbaRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_range_scale(s : ChemmolpropshbaRange, f : Double) -> ChemmolpropshbaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaRange::scale(self : ChemmolpropshbaRange, f : Double) -> ChemmolpropshbaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_range_add(a : ChemmolpropshbaRange, b : ChemmolpropshbaRange) -> ChemmolpropshbaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaRange::add(self : ChemmolpropshbaRange, other : ChemmolpropshbaRange) -> ChemmolpropshbaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_range_copy(s : ChemmolpropshbaRange) -> ChemmolpropshbaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaRange::copy(self : ChemmolpropshbaRange) -> ChemmolpropshbaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_range_fill(s : ChemmolpropshbaRange, v : Double) -> ChemmolpropshbaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaRange::fill(self : ChemmolpropshbaRange, v : Double) -> ChemmolpropshbaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_range_min(s : ChemmolpropshbaRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaRange::min(self : ChemmolpropshbaRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_range_max(s : ChemmolpropshbaRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaRange::max(self : ChemmolpropshbaRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_range_to_string(s : ChemmolpropshbaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaRange::to_string(self : ChemmolpropshbaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropshbaSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_props_hba_slice_make(size : Int) -> ChemmolpropshbaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_hba_slice_len(s : ChemmolpropshbaSlice) -> Int { s.size }
+pub fn ChemmolpropshbaSlice::len(self : ChemmolpropshbaSlice) -> Int { self.size }
 
-pub fn chem_mol_props_hba_slice_get(s : ChemmolpropshbaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropshbaSlice::get(self : ChemmolpropshbaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_hba_slice_set(s : ChemmolpropshbaSlice, i : Int, v : Double) -> ChemmolpropshbaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaSlice::set(self : ChemmolpropshbaSlice, i : Int, v : Double) -> ChemmolpropshbaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_slice_sum(s : ChemmolpropshbaSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropshbaSlice::sum(self : ChemmolpropshbaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_hba_slice_mean(s : ChemmolpropshbaSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropshbaSlice::mean(self : ChemmolpropshbaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_hba_slice_scale(s : ChemmolpropshbaSlice, f : Double) -> ChemmolpropshbaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaSlice::scale(self : ChemmolpropshbaSlice, f : Double) -> ChemmolpropshbaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_slice_add(a : ChemmolpropshbaSlice, b : ChemmolpropshbaSlice) -> ChemmolpropshbaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropshbaSlice::add(self : ChemmolpropshbaSlice, other : ChemmolpropshbaSlice) -> ChemmolpropshbaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_slice_copy(s : ChemmolpropshbaSlice) -> ChemmolpropshbaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaSlice::copy(self : ChemmolpropshbaSlice) -> ChemmolpropshbaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_slice_fill(s : ChemmolpropshbaSlice, v : Double) -> ChemmolpropshbaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropshbaSlice::fill(self : ChemmolpropshbaSlice, v : Double) -> ChemmolpropshbaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_hba_slice_min(s : ChemmolpropshbaSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropshbaSlice::min(self : ChemmolpropshbaSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_hba_slice_max(s : ChemmolpropshbaSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropshbaSlice::max(self : ChemmolpropshbaSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_hba_slice_to_string(s : ChemmolpropshbaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropshbaSlice::to_string(self : ChemmolpropshbaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

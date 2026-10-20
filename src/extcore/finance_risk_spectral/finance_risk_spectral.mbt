@@ -351,45 +351,45 @@ pub fn finance_risk_spectral_frame_make(size : Int) -> FinanceriskspectralFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_frame_len(s : FinanceriskspectralFrame) -> Int { s.size }
+pub fn FinanceriskspectralFrame::len(self : FinanceriskspectralFrame) -> Int { self.size }
 
-pub fn finance_risk_spectral_frame_get(s : FinanceriskspectralFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralFrame::get(self : FinanceriskspectralFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_frame_set(s : FinanceriskspectralFrame, i : Int, v : Double) -> FinanceriskspectralFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralFrame::set(self : FinanceriskspectralFrame, i : Int, v : Double) -> FinanceriskspectralFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_frame_sum(s : FinanceriskspectralFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralFrame::sum(self : FinanceriskspectralFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_frame_mean(s : FinanceriskspectralFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralFrame::mean(self : FinanceriskspectralFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_frame_scale(s : FinanceriskspectralFrame, f : Double) -> FinanceriskspectralFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralFrame::scale(self : FinanceriskspectralFrame, f : Double) -> FinanceriskspectralFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_frame_add(a : FinanceriskspectralFrame, b : FinanceriskspectralFrame) -> FinanceriskspectralFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralFrame::add(self : FinanceriskspectralFrame, other : FinanceriskspectralFrame) -> FinanceriskspectralFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_frame_copy(s : FinanceriskspectralFrame) -> FinanceriskspectralFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralFrame::copy(self : FinanceriskspectralFrame) -> FinanceriskspectralFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_frame_fill(s : FinanceriskspectralFrame, v : Double) -> FinanceriskspectralFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralFrame::fill(self : FinanceriskspectralFrame, v : Double) -> FinanceriskspectralFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_frame_min(s : FinanceriskspectralFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralFrame::min(self : FinanceriskspectralFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_frame_max(s : FinanceriskspectralFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralFrame::max(self : FinanceriskspectralFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_frame_to_string(s : FinanceriskspectralFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralFrame::to_string(self : FinanceriskspectralFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralTable {
@@ -402,45 +402,45 @@ pub fn finance_risk_spectral_table_make(size : Int) -> FinanceriskspectralTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_table_len(s : FinanceriskspectralTable) -> Int { s.size }
+pub fn FinanceriskspectralTable::len(self : FinanceriskspectralTable) -> Int { self.size }
 
-pub fn finance_risk_spectral_table_get(s : FinanceriskspectralTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralTable::get(self : FinanceriskspectralTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_table_set(s : FinanceriskspectralTable, i : Int, v : Double) -> FinanceriskspectralTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralTable::set(self : FinanceriskspectralTable, i : Int, v : Double) -> FinanceriskspectralTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_table_sum(s : FinanceriskspectralTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralTable::sum(self : FinanceriskspectralTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_table_mean(s : FinanceriskspectralTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralTable::mean(self : FinanceriskspectralTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_table_scale(s : FinanceriskspectralTable, f : Double) -> FinanceriskspectralTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralTable::scale(self : FinanceriskspectralTable, f : Double) -> FinanceriskspectralTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_table_add(a : FinanceriskspectralTable, b : FinanceriskspectralTable) -> FinanceriskspectralTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralTable::add(self : FinanceriskspectralTable, other : FinanceriskspectralTable) -> FinanceriskspectralTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_table_copy(s : FinanceriskspectralTable) -> FinanceriskspectralTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralTable::copy(self : FinanceriskspectralTable) -> FinanceriskspectralTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_table_fill(s : FinanceriskspectralTable, v : Double) -> FinanceriskspectralTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralTable::fill(self : FinanceriskspectralTable, v : Double) -> FinanceriskspectralTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_table_min(s : FinanceriskspectralTable) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralTable::min(self : FinanceriskspectralTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_table_max(s : FinanceriskspectralTable) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralTable::max(self : FinanceriskspectralTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_table_to_string(s : FinanceriskspectralTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralTable::to_string(self : FinanceriskspectralTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralGraphN {
@@ -453,45 +453,45 @@ pub fn finance_risk_spectral_graphn_make(size : Int) -> FinanceriskspectralGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_graphn_len(s : FinanceriskspectralGraphN) -> Int { s.size }
+pub fn FinanceriskspectralGraphN::len(self : FinanceriskspectralGraphN) -> Int { self.size }
 
-pub fn finance_risk_spectral_graphn_get(s : FinanceriskspectralGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralGraphN::get(self : FinanceriskspectralGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_graphn_set(s : FinanceriskspectralGraphN, i : Int, v : Double) -> FinanceriskspectralGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralGraphN::set(self : FinanceriskspectralGraphN, i : Int, v : Double) -> FinanceriskspectralGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_graphn_sum(s : FinanceriskspectralGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralGraphN::sum(self : FinanceriskspectralGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_graphn_mean(s : FinanceriskspectralGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralGraphN::mean(self : FinanceriskspectralGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_graphn_scale(s : FinanceriskspectralGraphN, f : Double) -> FinanceriskspectralGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralGraphN::scale(self : FinanceriskspectralGraphN, f : Double) -> FinanceriskspectralGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_graphn_add(a : FinanceriskspectralGraphN, b : FinanceriskspectralGraphN) -> FinanceriskspectralGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralGraphN::add(self : FinanceriskspectralGraphN, other : FinanceriskspectralGraphN) -> FinanceriskspectralGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_graphn_copy(s : FinanceriskspectralGraphN) -> FinanceriskspectralGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralGraphN::copy(self : FinanceriskspectralGraphN) -> FinanceriskspectralGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_graphn_fill(s : FinanceriskspectralGraphN, v : Double) -> FinanceriskspectralGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralGraphN::fill(self : FinanceriskspectralGraphN, v : Double) -> FinanceriskspectralGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_graphn_min(s : FinanceriskspectralGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralGraphN::min(self : FinanceriskspectralGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_graphn_max(s : FinanceriskspectralGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralGraphN::max(self : FinanceriskspectralGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_graphn_to_string(s : FinanceriskspectralGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralGraphN::to_string(self : FinanceriskspectralGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralNode {
@@ -504,45 +504,45 @@ pub fn finance_risk_spectral_node_make(size : Int) -> FinanceriskspectralNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_node_len(s : FinanceriskspectralNode) -> Int { s.size }
+pub fn FinanceriskspectralNode::len(self : FinanceriskspectralNode) -> Int { self.size }
 
-pub fn finance_risk_spectral_node_get(s : FinanceriskspectralNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralNode::get(self : FinanceriskspectralNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_node_set(s : FinanceriskspectralNode, i : Int, v : Double) -> FinanceriskspectralNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralNode::set(self : FinanceriskspectralNode, i : Int, v : Double) -> FinanceriskspectralNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_node_sum(s : FinanceriskspectralNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralNode::sum(self : FinanceriskspectralNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_node_mean(s : FinanceriskspectralNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralNode::mean(self : FinanceriskspectralNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_node_scale(s : FinanceriskspectralNode, f : Double) -> FinanceriskspectralNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralNode::scale(self : FinanceriskspectralNode, f : Double) -> FinanceriskspectralNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_node_add(a : FinanceriskspectralNode, b : FinanceriskspectralNode) -> FinanceriskspectralNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralNode::add(self : FinanceriskspectralNode, other : FinanceriskspectralNode) -> FinanceriskspectralNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_node_copy(s : FinanceriskspectralNode) -> FinanceriskspectralNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralNode::copy(self : FinanceriskspectralNode) -> FinanceriskspectralNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_node_fill(s : FinanceriskspectralNode, v : Double) -> FinanceriskspectralNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralNode::fill(self : FinanceriskspectralNode, v : Double) -> FinanceriskspectralNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_node_min(s : FinanceriskspectralNode) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralNode::min(self : FinanceriskspectralNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_node_max(s : FinanceriskspectralNode) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralNode::max(self : FinanceriskspectralNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_node_to_string(s : FinanceriskspectralNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralNode::to_string(self : FinanceriskspectralNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralEdge {
@@ -555,45 +555,45 @@ pub fn finance_risk_spectral_edge_make(size : Int) -> FinanceriskspectralEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_edge_len(s : FinanceriskspectralEdge) -> Int { s.size }
+pub fn FinanceriskspectralEdge::len(self : FinanceriskspectralEdge) -> Int { self.size }
 
-pub fn finance_risk_spectral_edge_get(s : FinanceriskspectralEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralEdge::get(self : FinanceriskspectralEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_edge_set(s : FinanceriskspectralEdge, i : Int, v : Double) -> FinanceriskspectralEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralEdge::set(self : FinanceriskspectralEdge, i : Int, v : Double) -> FinanceriskspectralEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_edge_sum(s : FinanceriskspectralEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralEdge::sum(self : FinanceriskspectralEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_edge_mean(s : FinanceriskspectralEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralEdge::mean(self : FinanceriskspectralEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_edge_scale(s : FinanceriskspectralEdge, f : Double) -> FinanceriskspectralEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralEdge::scale(self : FinanceriskspectralEdge, f : Double) -> FinanceriskspectralEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_edge_add(a : FinanceriskspectralEdge, b : FinanceriskspectralEdge) -> FinanceriskspectralEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralEdge::add(self : FinanceriskspectralEdge, other : FinanceriskspectralEdge) -> FinanceriskspectralEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_edge_copy(s : FinanceriskspectralEdge) -> FinanceriskspectralEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralEdge::copy(self : FinanceriskspectralEdge) -> FinanceriskspectralEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_edge_fill(s : FinanceriskspectralEdge, v : Double) -> FinanceriskspectralEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralEdge::fill(self : FinanceriskspectralEdge, v : Double) -> FinanceriskspectralEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_edge_min(s : FinanceriskspectralEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralEdge::min(self : FinanceriskspectralEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_edge_max(s : FinanceriskspectralEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralEdge::max(self : FinanceriskspectralEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_edge_to_string(s : FinanceriskspectralEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralEdge::to_string(self : FinanceriskspectralEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralPath {
@@ -606,45 +606,45 @@ pub fn finance_risk_spectral_path_make(size : Int) -> FinanceriskspectralPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_path_len(s : FinanceriskspectralPath) -> Int { s.size }
+pub fn FinanceriskspectralPath::len(self : FinanceriskspectralPath) -> Int { self.size }
 
-pub fn finance_risk_spectral_path_get(s : FinanceriskspectralPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralPath::get(self : FinanceriskspectralPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_path_set(s : FinanceriskspectralPath, i : Int, v : Double) -> FinanceriskspectralPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralPath::set(self : FinanceriskspectralPath, i : Int, v : Double) -> FinanceriskspectralPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_path_sum(s : FinanceriskspectralPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralPath::sum(self : FinanceriskspectralPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_path_mean(s : FinanceriskspectralPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralPath::mean(self : FinanceriskspectralPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_path_scale(s : FinanceriskspectralPath, f : Double) -> FinanceriskspectralPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralPath::scale(self : FinanceriskspectralPath, f : Double) -> FinanceriskspectralPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_path_add(a : FinanceriskspectralPath, b : FinanceriskspectralPath) -> FinanceriskspectralPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralPath::add(self : FinanceriskspectralPath, other : FinanceriskspectralPath) -> FinanceriskspectralPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_path_copy(s : FinanceriskspectralPath) -> FinanceriskspectralPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralPath::copy(self : FinanceriskspectralPath) -> FinanceriskspectralPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_path_fill(s : FinanceriskspectralPath, v : Double) -> FinanceriskspectralPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralPath::fill(self : FinanceriskspectralPath, v : Double) -> FinanceriskspectralPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_path_min(s : FinanceriskspectralPath) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralPath::min(self : FinanceriskspectralPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_path_max(s : FinanceriskspectralPath) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralPath::max(self : FinanceriskspectralPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_path_to_string(s : FinanceriskspectralPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralPath::to_string(self : FinanceriskspectralPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralCluster {
@@ -657,45 +657,45 @@ pub fn finance_risk_spectral_cluster_make(size : Int) -> FinanceriskspectralClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_cluster_len(s : FinanceriskspectralCluster) -> Int { s.size }
+pub fn FinanceriskspectralCluster::len(self : FinanceriskspectralCluster) -> Int { self.size }
 
-pub fn finance_risk_spectral_cluster_get(s : FinanceriskspectralCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralCluster::get(self : FinanceriskspectralCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_cluster_set(s : FinanceriskspectralCluster, i : Int, v : Double) -> FinanceriskspectralCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCluster::set(self : FinanceriskspectralCluster, i : Int, v : Double) -> FinanceriskspectralCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cluster_sum(s : FinanceriskspectralCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralCluster::sum(self : FinanceriskspectralCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_cluster_mean(s : FinanceriskspectralCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralCluster::mean(self : FinanceriskspectralCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_cluster_scale(s : FinanceriskspectralCluster, f : Double) -> FinanceriskspectralCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCluster::scale(self : FinanceriskspectralCluster, f : Double) -> FinanceriskspectralCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cluster_add(a : FinanceriskspectralCluster, b : FinanceriskspectralCluster) -> FinanceriskspectralCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralCluster::add(self : FinanceriskspectralCluster, other : FinanceriskspectralCluster) -> FinanceriskspectralCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cluster_copy(s : FinanceriskspectralCluster) -> FinanceriskspectralCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCluster::copy(self : FinanceriskspectralCluster) -> FinanceriskspectralCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cluster_fill(s : FinanceriskspectralCluster, v : Double) -> FinanceriskspectralCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCluster::fill(self : FinanceriskspectralCluster, v : Double) -> FinanceriskspectralCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cluster_min(s : FinanceriskspectralCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralCluster::min(self : FinanceriskspectralCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_cluster_max(s : FinanceriskspectralCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralCluster::max(self : FinanceriskspectralCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_cluster_to_string(s : FinanceriskspectralCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralCluster::to_string(self : FinanceriskspectralCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralModel {
@@ -708,45 +708,45 @@ pub fn finance_risk_spectral_model_make(size : Int) -> FinanceriskspectralModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_model_len(s : FinanceriskspectralModel) -> Int { s.size }
+pub fn FinanceriskspectralModel::len(self : FinanceriskspectralModel) -> Int { self.size }
 
-pub fn finance_risk_spectral_model_get(s : FinanceriskspectralModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralModel::get(self : FinanceriskspectralModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_model_set(s : FinanceriskspectralModel, i : Int, v : Double) -> FinanceriskspectralModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralModel::set(self : FinanceriskspectralModel, i : Int, v : Double) -> FinanceriskspectralModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_model_sum(s : FinanceriskspectralModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralModel::sum(self : FinanceriskspectralModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_model_mean(s : FinanceriskspectralModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralModel::mean(self : FinanceriskspectralModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_model_scale(s : FinanceriskspectralModel, f : Double) -> FinanceriskspectralModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralModel::scale(self : FinanceriskspectralModel, f : Double) -> FinanceriskspectralModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_model_add(a : FinanceriskspectralModel, b : FinanceriskspectralModel) -> FinanceriskspectralModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralModel::add(self : FinanceriskspectralModel, other : FinanceriskspectralModel) -> FinanceriskspectralModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_model_copy(s : FinanceriskspectralModel) -> FinanceriskspectralModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralModel::copy(self : FinanceriskspectralModel) -> FinanceriskspectralModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_model_fill(s : FinanceriskspectralModel, v : Double) -> FinanceriskspectralModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralModel::fill(self : FinanceriskspectralModel, v : Double) -> FinanceriskspectralModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_model_min(s : FinanceriskspectralModel) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralModel::min(self : FinanceriskspectralModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_model_max(s : FinanceriskspectralModel) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralModel::max(self : FinanceriskspectralModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_model_to_string(s : FinanceriskspectralModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralModel::to_string(self : FinanceriskspectralModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralLayer {
@@ -759,45 +759,45 @@ pub fn finance_risk_spectral_layer_make(size : Int) -> FinanceriskspectralLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_layer_len(s : FinanceriskspectralLayer) -> Int { s.size }
+pub fn FinanceriskspectralLayer::len(self : FinanceriskspectralLayer) -> Int { self.size }
 
-pub fn finance_risk_spectral_layer_get(s : FinanceriskspectralLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralLayer::get(self : FinanceriskspectralLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_layer_set(s : FinanceriskspectralLayer, i : Int, v : Double) -> FinanceriskspectralLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralLayer::set(self : FinanceriskspectralLayer, i : Int, v : Double) -> FinanceriskspectralLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_layer_sum(s : FinanceriskspectralLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralLayer::sum(self : FinanceriskspectralLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_layer_mean(s : FinanceriskspectralLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralLayer::mean(self : FinanceriskspectralLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_layer_scale(s : FinanceriskspectralLayer, f : Double) -> FinanceriskspectralLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralLayer::scale(self : FinanceriskspectralLayer, f : Double) -> FinanceriskspectralLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_layer_add(a : FinanceriskspectralLayer, b : FinanceriskspectralLayer) -> FinanceriskspectralLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralLayer::add(self : FinanceriskspectralLayer, other : FinanceriskspectralLayer) -> FinanceriskspectralLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_layer_copy(s : FinanceriskspectralLayer) -> FinanceriskspectralLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralLayer::copy(self : FinanceriskspectralLayer) -> FinanceriskspectralLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_layer_fill(s : FinanceriskspectralLayer, v : Double) -> FinanceriskspectralLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralLayer::fill(self : FinanceriskspectralLayer, v : Double) -> FinanceriskspectralLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_layer_min(s : FinanceriskspectralLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralLayer::min(self : FinanceriskspectralLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_layer_max(s : FinanceriskspectralLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralLayer::max(self : FinanceriskspectralLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_layer_to_string(s : FinanceriskspectralLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralLayer::to_string(self : FinanceriskspectralLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralBuffer {
@@ -810,45 +810,45 @@ pub fn finance_risk_spectral_buffer_make(size : Int) -> FinanceriskspectralBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_buffer_len(s : FinanceriskspectralBuffer) -> Int { s.size }
+pub fn FinanceriskspectralBuffer::len(self : FinanceriskspectralBuffer) -> Int { self.size }
 
-pub fn finance_risk_spectral_buffer_get(s : FinanceriskspectralBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralBuffer::get(self : FinanceriskspectralBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_buffer_set(s : FinanceriskspectralBuffer, i : Int, v : Double) -> FinanceriskspectralBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralBuffer::set(self : FinanceriskspectralBuffer, i : Int, v : Double) -> FinanceriskspectralBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_buffer_sum(s : FinanceriskspectralBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralBuffer::sum(self : FinanceriskspectralBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_buffer_mean(s : FinanceriskspectralBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralBuffer::mean(self : FinanceriskspectralBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_buffer_scale(s : FinanceriskspectralBuffer, f : Double) -> FinanceriskspectralBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralBuffer::scale(self : FinanceriskspectralBuffer, f : Double) -> FinanceriskspectralBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_buffer_add(a : FinanceriskspectralBuffer, b : FinanceriskspectralBuffer) -> FinanceriskspectralBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralBuffer::add(self : FinanceriskspectralBuffer, other : FinanceriskspectralBuffer) -> FinanceriskspectralBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_buffer_copy(s : FinanceriskspectralBuffer) -> FinanceriskspectralBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralBuffer::copy(self : FinanceriskspectralBuffer) -> FinanceriskspectralBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_buffer_fill(s : FinanceriskspectralBuffer, v : Double) -> FinanceriskspectralBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralBuffer::fill(self : FinanceriskspectralBuffer, v : Double) -> FinanceriskspectralBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_buffer_min(s : FinanceriskspectralBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralBuffer::min(self : FinanceriskspectralBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_buffer_max(s : FinanceriskspectralBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralBuffer::max(self : FinanceriskspectralBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_buffer_to_string(s : FinanceriskspectralBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralBuffer::to_string(self : FinanceriskspectralBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralCursor {
@@ -861,45 +861,45 @@ pub fn finance_risk_spectral_cursor_make(size : Int) -> FinanceriskspectralCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_cursor_len(s : FinanceriskspectralCursor) -> Int { s.size }
+pub fn FinanceriskspectralCursor::len(self : FinanceriskspectralCursor) -> Int { self.size }
 
-pub fn finance_risk_spectral_cursor_get(s : FinanceriskspectralCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralCursor::get(self : FinanceriskspectralCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_cursor_set(s : FinanceriskspectralCursor, i : Int, v : Double) -> FinanceriskspectralCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCursor::set(self : FinanceriskspectralCursor, i : Int, v : Double) -> FinanceriskspectralCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cursor_sum(s : FinanceriskspectralCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralCursor::sum(self : FinanceriskspectralCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_cursor_mean(s : FinanceriskspectralCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralCursor::mean(self : FinanceriskspectralCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_cursor_scale(s : FinanceriskspectralCursor, f : Double) -> FinanceriskspectralCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCursor::scale(self : FinanceriskspectralCursor, f : Double) -> FinanceriskspectralCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cursor_add(a : FinanceriskspectralCursor, b : FinanceriskspectralCursor) -> FinanceriskspectralCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralCursor::add(self : FinanceriskspectralCursor, other : FinanceriskspectralCursor) -> FinanceriskspectralCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cursor_copy(s : FinanceriskspectralCursor) -> FinanceriskspectralCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCursor::copy(self : FinanceriskspectralCursor) -> FinanceriskspectralCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cursor_fill(s : FinanceriskspectralCursor, v : Double) -> FinanceriskspectralCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralCursor::fill(self : FinanceriskspectralCursor, v : Double) -> FinanceriskspectralCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_cursor_min(s : FinanceriskspectralCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralCursor::min(self : FinanceriskspectralCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_cursor_max(s : FinanceriskspectralCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralCursor::max(self : FinanceriskspectralCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_cursor_to_string(s : FinanceriskspectralCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralCursor::to_string(self : FinanceriskspectralCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralView {
@@ -912,45 +912,45 @@ pub fn finance_risk_spectral_view_make(size : Int) -> FinanceriskspectralView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_view_len(s : FinanceriskspectralView) -> Int { s.size }
+pub fn FinanceriskspectralView::len(self : FinanceriskspectralView) -> Int { self.size }
 
-pub fn finance_risk_spectral_view_get(s : FinanceriskspectralView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralView::get(self : FinanceriskspectralView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_view_set(s : FinanceriskspectralView, i : Int, v : Double) -> FinanceriskspectralView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralView::set(self : FinanceriskspectralView, i : Int, v : Double) -> FinanceriskspectralView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_view_sum(s : FinanceriskspectralView) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralView::sum(self : FinanceriskspectralView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_view_mean(s : FinanceriskspectralView) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralView::mean(self : FinanceriskspectralView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_view_scale(s : FinanceriskspectralView, f : Double) -> FinanceriskspectralView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralView::scale(self : FinanceriskspectralView, f : Double) -> FinanceriskspectralView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_view_add(a : FinanceriskspectralView, b : FinanceriskspectralView) -> FinanceriskspectralView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralView::add(self : FinanceriskspectralView, other : FinanceriskspectralView) -> FinanceriskspectralView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_view_copy(s : FinanceriskspectralView) -> FinanceriskspectralView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralView::copy(self : FinanceriskspectralView) -> FinanceriskspectralView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_view_fill(s : FinanceriskspectralView, v : Double) -> FinanceriskspectralView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralView::fill(self : FinanceriskspectralView, v : Double) -> FinanceriskspectralView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_view_min(s : FinanceriskspectralView) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralView::min(self : FinanceriskspectralView) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_view_max(s : FinanceriskspectralView) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralView::max(self : FinanceriskspectralView) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_view_to_string(s : FinanceriskspectralView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralView::to_string(self : FinanceriskspectralView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralRange {
@@ -963,45 +963,45 @@ pub fn finance_risk_spectral_range_make(size : Int) -> FinanceriskspectralRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_range_len(s : FinanceriskspectralRange) -> Int { s.size }
+pub fn FinanceriskspectralRange::len(self : FinanceriskspectralRange) -> Int { self.size }
 
-pub fn finance_risk_spectral_range_get(s : FinanceriskspectralRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralRange::get(self : FinanceriskspectralRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_range_set(s : FinanceriskspectralRange, i : Int, v : Double) -> FinanceriskspectralRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralRange::set(self : FinanceriskspectralRange, i : Int, v : Double) -> FinanceriskspectralRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_range_sum(s : FinanceriskspectralRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralRange::sum(self : FinanceriskspectralRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_range_mean(s : FinanceriskspectralRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralRange::mean(self : FinanceriskspectralRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_range_scale(s : FinanceriskspectralRange, f : Double) -> FinanceriskspectralRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralRange::scale(self : FinanceriskspectralRange, f : Double) -> FinanceriskspectralRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_range_add(a : FinanceriskspectralRange, b : FinanceriskspectralRange) -> FinanceriskspectralRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralRange::add(self : FinanceriskspectralRange, other : FinanceriskspectralRange) -> FinanceriskspectralRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_range_copy(s : FinanceriskspectralRange) -> FinanceriskspectralRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralRange::copy(self : FinanceriskspectralRange) -> FinanceriskspectralRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_range_fill(s : FinanceriskspectralRange, v : Double) -> FinanceriskspectralRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralRange::fill(self : FinanceriskspectralRange, v : Double) -> FinanceriskspectralRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_range_min(s : FinanceriskspectralRange) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralRange::min(self : FinanceriskspectralRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_range_max(s : FinanceriskspectralRange) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralRange::max(self : FinanceriskspectralRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_range_to_string(s : FinanceriskspectralRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralRange::to_string(self : FinanceriskspectralRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_risk_spectral_slice_make(size : Int) -> FinanceriskspectralSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_spectral_slice_len(s : FinanceriskspectralSlice) -> Int { s.size }
+pub fn FinanceriskspectralSlice::len(self : FinanceriskspectralSlice) -> Int { self.size }
 
-pub fn finance_risk_spectral_slice_get(s : FinanceriskspectralSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskspectralSlice::get(self : FinanceriskspectralSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_spectral_slice_set(s : FinanceriskspectralSlice, i : Int, v : Double) -> FinanceriskspectralSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskspectralSlice::set(self : FinanceriskspectralSlice, i : Int, v : Double) -> FinanceriskspectralSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_slice_sum(s : FinanceriskspectralSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskspectralSlice::sum(self : FinanceriskspectralSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_spectral_slice_mean(s : FinanceriskspectralSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskspectralSlice::mean(self : FinanceriskspectralSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_spectral_slice_scale(s : FinanceriskspectralSlice, f : Double) -> FinanceriskspectralSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralSlice::scale(self : FinanceriskspectralSlice, f : Double) -> FinanceriskspectralSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_slice_add(a : FinanceriskspectralSlice, b : FinanceriskspectralSlice) -> FinanceriskspectralSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskspectralSlice::add(self : FinanceriskspectralSlice, other : FinanceriskspectralSlice) -> FinanceriskspectralSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_slice_copy(s : FinanceriskspectralSlice) -> FinanceriskspectralSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralSlice::copy(self : FinanceriskspectralSlice) -> FinanceriskspectralSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_slice_fill(s : FinanceriskspectralSlice, v : Double) -> FinanceriskspectralSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskspectralSlice::fill(self : FinanceriskspectralSlice, v : Double) -> FinanceriskspectralSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_spectral_slice_min(s : FinanceriskspectralSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceriskspectralSlice::min(self : FinanceriskspectralSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_spectral_slice_max(s : FinanceriskspectralSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceriskspectralSlice::max(self : FinanceriskspectralSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_spectral_slice_to_string(s : FinanceriskspectralSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskspectralSlice::to_string(self : FinanceriskspectralSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_tree_lct_frame_make(size : Int) -> DstreelctFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_frame_len(s : DstreelctFrame) -> Int { s.size }
+pub fn DstreelctFrame::len(self : DstreelctFrame) -> Int { self.size }
 
-pub fn ds_tree_lct_frame_get(s : DstreelctFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctFrame::get(self : DstreelctFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_frame_set(s : DstreelctFrame, i : Int, v : Double) -> DstreelctFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctFrame::set(self : DstreelctFrame, i : Int, v : Double) -> DstreelctFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_frame_sum(s : DstreelctFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreelctFrame::sum(self : DstreelctFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_frame_mean(s : DstreelctFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreelctFrame::mean(self : DstreelctFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_frame_scale(s : DstreelctFrame, f : Double) -> DstreelctFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctFrame::scale(self : DstreelctFrame, f : Double) -> DstreelctFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_frame_add(a : DstreelctFrame, b : DstreelctFrame) -> DstreelctFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctFrame::add(self : DstreelctFrame, other : DstreelctFrame) -> DstreelctFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_frame_copy(s : DstreelctFrame) -> DstreelctFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctFrame::copy(self : DstreelctFrame) -> DstreelctFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_frame_fill(s : DstreelctFrame, v : Double) -> DstreelctFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctFrame::fill(self : DstreelctFrame, v : Double) -> DstreelctFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_frame_min(s : DstreelctFrame) -> Double { @_common.min(s.data) }
+pub fn DstreelctFrame::min(self : DstreelctFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_frame_max(s : DstreelctFrame) -> Double { @_common.max(s.data) }
+pub fn DstreelctFrame::max(self : DstreelctFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_frame_to_string(s : DstreelctFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctFrame::to_string(self : DstreelctFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_lct_table_make(size : Int) -> DstreelctTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_table_len(s : DstreelctTable) -> Int { s.size }
+pub fn DstreelctTable::len(self : DstreelctTable) -> Int { self.size }
 
-pub fn ds_tree_lct_table_get(s : DstreelctTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctTable::get(self : DstreelctTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_table_set(s : DstreelctTable, i : Int, v : Double) -> DstreelctTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctTable::set(self : DstreelctTable, i : Int, v : Double) -> DstreelctTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_table_sum(s : DstreelctTable) -> Double { @_common.sum(s.data) }
+pub fn DstreelctTable::sum(self : DstreelctTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_table_mean(s : DstreelctTable) -> Double { @_common.mean(s.data) }
+pub fn DstreelctTable::mean(self : DstreelctTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_table_scale(s : DstreelctTable, f : Double) -> DstreelctTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctTable::scale(self : DstreelctTable, f : Double) -> DstreelctTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_table_add(a : DstreelctTable, b : DstreelctTable) -> DstreelctTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctTable::add(self : DstreelctTable, other : DstreelctTable) -> DstreelctTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_table_copy(s : DstreelctTable) -> DstreelctTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctTable::copy(self : DstreelctTable) -> DstreelctTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_table_fill(s : DstreelctTable, v : Double) -> DstreelctTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctTable::fill(self : DstreelctTable, v : Double) -> DstreelctTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_table_min(s : DstreelctTable) -> Double { @_common.min(s.data) }
+pub fn DstreelctTable::min(self : DstreelctTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_table_max(s : DstreelctTable) -> Double { @_common.max(s.data) }
+pub fn DstreelctTable::max(self : DstreelctTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_table_to_string(s : DstreelctTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctTable::to_string(self : DstreelctTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_lct_graphn_make(size : Int) -> DstreelctGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_graphn_len(s : DstreelctGraphN) -> Int { s.size }
+pub fn DstreelctGraphN::len(self : DstreelctGraphN) -> Int { self.size }
 
-pub fn ds_tree_lct_graphn_get(s : DstreelctGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctGraphN::get(self : DstreelctGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_graphn_set(s : DstreelctGraphN, i : Int, v : Double) -> DstreelctGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctGraphN::set(self : DstreelctGraphN, i : Int, v : Double) -> DstreelctGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_graphn_sum(s : DstreelctGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreelctGraphN::sum(self : DstreelctGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_graphn_mean(s : DstreelctGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreelctGraphN::mean(self : DstreelctGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_graphn_scale(s : DstreelctGraphN, f : Double) -> DstreelctGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctGraphN::scale(self : DstreelctGraphN, f : Double) -> DstreelctGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_graphn_add(a : DstreelctGraphN, b : DstreelctGraphN) -> DstreelctGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctGraphN::add(self : DstreelctGraphN, other : DstreelctGraphN) -> DstreelctGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_graphn_copy(s : DstreelctGraphN) -> DstreelctGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctGraphN::copy(self : DstreelctGraphN) -> DstreelctGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_graphn_fill(s : DstreelctGraphN, v : Double) -> DstreelctGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctGraphN::fill(self : DstreelctGraphN, v : Double) -> DstreelctGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_graphn_min(s : DstreelctGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreelctGraphN::min(self : DstreelctGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_graphn_max(s : DstreelctGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreelctGraphN::max(self : DstreelctGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_graphn_to_string(s : DstreelctGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctGraphN::to_string(self : DstreelctGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_lct_node_make(size : Int) -> DstreelctNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_node_len(s : DstreelctNode) -> Int { s.size }
+pub fn DstreelctNode::len(self : DstreelctNode) -> Int { self.size }
 
-pub fn ds_tree_lct_node_get(s : DstreelctNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctNode::get(self : DstreelctNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_node_set(s : DstreelctNode, i : Int, v : Double) -> DstreelctNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctNode::set(self : DstreelctNode, i : Int, v : Double) -> DstreelctNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_node_sum(s : DstreelctNode) -> Double { @_common.sum(s.data) }
+pub fn DstreelctNode::sum(self : DstreelctNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_node_mean(s : DstreelctNode) -> Double { @_common.mean(s.data) }
+pub fn DstreelctNode::mean(self : DstreelctNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_node_scale(s : DstreelctNode, f : Double) -> DstreelctNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctNode::scale(self : DstreelctNode, f : Double) -> DstreelctNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_node_add(a : DstreelctNode, b : DstreelctNode) -> DstreelctNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctNode::add(self : DstreelctNode, other : DstreelctNode) -> DstreelctNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_node_copy(s : DstreelctNode) -> DstreelctNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctNode::copy(self : DstreelctNode) -> DstreelctNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_node_fill(s : DstreelctNode, v : Double) -> DstreelctNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctNode::fill(self : DstreelctNode, v : Double) -> DstreelctNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_node_min(s : DstreelctNode) -> Double { @_common.min(s.data) }
+pub fn DstreelctNode::min(self : DstreelctNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_node_max(s : DstreelctNode) -> Double { @_common.max(s.data) }
+pub fn DstreelctNode::max(self : DstreelctNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_node_to_string(s : DstreelctNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctNode::to_string(self : DstreelctNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_lct_edge_make(size : Int) -> DstreelctEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_edge_len(s : DstreelctEdge) -> Int { s.size }
+pub fn DstreelctEdge::len(self : DstreelctEdge) -> Int { self.size }
 
-pub fn ds_tree_lct_edge_get(s : DstreelctEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctEdge::get(self : DstreelctEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_edge_set(s : DstreelctEdge, i : Int, v : Double) -> DstreelctEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctEdge::set(self : DstreelctEdge, i : Int, v : Double) -> DstreelctEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_edge_sum(s : DstreelctEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreelctEdge::sum(self : DstreelctEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_edge_mean(s : DstreelctEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreelctEdge::mean(self : DstreelctEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_edge_scale(s : DstreelctEdge, f : Double) -> DstreelctEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctEdge::scale(self : DstreelctEdge, f : Double) -> DstreelctEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_edge_add(a : DstreelctEdge, b : DstreelctEdge) -> DstreelctEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctEdge::add(self : DstreelctEdge, other : DstreelctEdge) -> DstreelctEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_edge_copy(s : DstreelctEdge) -> DstreelctEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctEdge::copy(self : DstreelctEdge) -> DstreelctEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_edge_fill(s : DstreelctEdge, v : Double) -> DstreelctEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctEdge::fill(self : DstreelctEdge, v : Double) -> DstreelctEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_edge_min(s : DstreelctEdge) -> Double { @_common.min(s.data) }
+pub fn DstreelctEdge::min(self : DstreelctEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_edge_max(s : DstreelctEdge) -> Double { @_common.max(s.data) }
+pub fn DstreelctEdge::max(self : DstreelctEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_edge_to_string(s : DstreelctEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctEdge::to_string(self : DstreelctEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_lct_path_make(size : Int) -> DstreelctPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_path_len(s : DstreelctPath) -> Int { s.size }
+pub fn DstreelctPath::len(self : DstreelctPath) -> Int { self.size }
 
-pub fn ds_tree_lct_path_get(s : DstreelctPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctPath::get(self : DstreelctPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_path_set(s : DstreelctPath, i : Int, v : Double) -> DstreelctPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctPath::set(self : DstreelctPath, i : Int, v : Double) -> DstreelctPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_path_sum(s : DstreelctPath) -> Double { @_common.sum(s.data) }
+pub fn DstreelctPath::sum(self : DstreelctPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_path_mean(s : DstreelctPath) -> Double { @_common.mean(s.data) }
+pub fn DstreelctPath::mean(self : DstreelctPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_path_scale(s : DstreelctPath, f : Double) -> DstreelctPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctPath::scale(self : DstreelctPath, f : Double) -> DstreelctPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_path_add(a : DstreelctPath, b : DstreelctPath) -> DstreelctPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctPath::add(self : DstreelctPath, other : DstreelctPath) -> DstreelctPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_path_copy(s : DstreelctPath) -> DstreelctPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctPath::copy(self : DstreelctPath) -> DstreelctPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_path_fill(s : DstreelctPath, v : Double) -> DstreelctPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctPath::fill(self : DstreelctPath, v : Double) -> DstreelctPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_path_min(s : DstreelctPath) -> Double { @_common.min(s.data) }
+pub fn DstreelctPath::min(self : DstreelctPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_path_max(s : DstreelctPath) -> Double { @_common.max(s.data) }
+pub fn DstreelctPath::max(self : DstreelctPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_path_to_string(s : DstreelctPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctPath::to_string(self : DstreelctPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_lct_cluster_make(size : Int) -> DstreelctCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_cluster_len(s : DstreelctCluster) -> Int { s.size }
+pub fn DstreelctCluster::len(self : DstreelctCluster) -> Int { self.size }
 
-pub fn ds_tree_lct_cluster_get(s : DstreelctCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctCluster::get(self : DstreelctCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_cluster_set(s : DstreelctCluster, i : Int, v : Double) -> DstreelctCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctCluster::set(self : DstreelctCluster, i : Int, v : Double) -> DstreelctCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cluster_sum(s : DstreelctCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreelctCluster::sum(self : DstreelctCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_cluster_mean(s : DstreelctCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreelctCluster::mean(self : DstreelctCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_cluster_scale(s : DstreelctCluster, f : Double) -> DstreelctCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctCluster::scale(self : DstreelctCluster, f : Double) -> DstreelctCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cluster_add(a : DstreelctCluster, b : DstreelctCluster) -> DstreelctCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctCluster::add(self : DstreelctCluster, other : DstreelctCluster) -> DstreelctCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cluster_copy(s : DstreelctCluster) -> DstreelctCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctCluster::copy(self : DstreelctCluster) -> DstreelctCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cluster_fill(s : DstreelctCluster, v : Double) -> DstreelctCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctCluster::fill(self : DstreelctCluster, v : Double) -> DstreelctCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cluster_min(s : DstreelctCluster) -> Double { @_common.min(s.data) }
+pub fn DstreelctCluster::min(self : DstreelctCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_cluster_max(s : DstreelctCluster) -> Double { @_common.max(s.data) }
+pub fn DstreelctCluster::max(self : DstreelctCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_cluster_to_string(s : DstreelctCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctCluster::to_string(self : DstreelctCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_lct_model_make(size : Int) -> DstreelctModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_model_len(s : DstreelctModel) -> Int { s.size }
+pub fn DstreelctModel::len(self : DstreelctModel) -> Int { self.size }
 
-pub fn ds_tree_lct_model_get(s : DstreelctModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctModel::get(self : DstreelctModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_model_set(s : DstreelctModel, i : Int, v : Double) -> DstreelctModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctModel::set(self : DstreelctModel, i : Int, v : Double) -> DstreelctModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_model_sum(s : DstreelctModel) -> Double { @_common.sum(s.data) }
+pub fn DstreelctModel::sum(self : DstreelctModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_model_mean(s : DstreelctModel) -> Double { @_common.mean(s.data) }
+pub fn DstreelctModel::mean(self : DstreelctModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_model_scale(s : DstreelctModel, f : Double) -> DstreelctModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctModel::scale(self : DstreelctModel, f : Double) -> DstreelctModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_model_add(a : DstreelctModel, b : DstreelctModel) -> DstreelctModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctModel::add(self : DstreelctModel, other : DstreelctModel) -> DstreelctModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_model_copy(s : DstreelctModel) -> DstreelctModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctModel::copy(self : DstreelctModel) -> DstreelctModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_model_fill(s : DstreelctModel, v : Double) -> DstreelctModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctModel::fill(self : DstreelctModel, v : Double) -> DstreelctModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_model_min(s : DstreelctModel) -> Double { @_common.min(s.data) }
+pub fn DstreelctModel::min(self : DstreelctModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_model_max(s : DstreelctModel) -> Double { @_common.max(s.data) }
+pub fn DstreelctModel::max(self : DstreelctModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_model_to_string(s : DstreelctModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctModel::to_string(self : DstreelctModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_lct_layer_make(size : Int) -> DstreelctLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_layer_len(s : DstreelctLayer) -> Int { s.size }
+pub fn DstreelctLayer::len(self : DstreelctLayer) -> Int { self.size }
 
-pub fn ds_tree_lct_layer_get(s : DstreelctLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctLayer::get(self : DstreelctLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_layer_set(s : DstreelctLayer, i : Int, v : Double) -> DstreelctLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctLayer::set(self : DstreelctLayer, i : Int, v : Double) -> DstreelctLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_layer_sum(s : DstreelctLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreelctLayer::sum(self : DstreelctLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_layer_mean(s : DstreelctLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreelctLayer::mean(self : DstreelctLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_layer_scale(s : DstreelctLayer, f : Double) -> DstreelctLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctLayer::scale(self : DstreelctLayer, f : Double) -> DstreelctLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_layer_add(a : DstreelctLayer, b : DstreelctLayer) -> DstreelctLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctLayer::add(self : DstreelctLayer, other : DstreelctLayer) -> DstreelctLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_layer_copy(s : DstreelctLayer) -> DstreelctLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctLayer::copy(self : DstreelctLayer) -> DstreelctLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_layer_fill(s : DstreelctLayer, v : Double) -> DstreelctLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctLayer::fill(self : DstreelctLayer, v : Double) -> DstreelctLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_layer_min(s : DstreelctLayer) -> Double { @_common.min(s.data) }
+pub fn DstreelctLayer::min(self : DstreelctLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_layer_max(s : DstreelctLayer) -> Double { @_common.max(s.data) }
+pub fn DstreelctLayer::max(self : DstreelctLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_layer_to_string(s : DstreelctLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctLayer::to_string(self : DstreelctLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_lct_buffer_make(size : Int) -> DstreelctBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_buffer_len(s : DstreelctBuffer) -> Int { s.size }
+pub fn DstreelctBuffer::len(self : DstreelctBuffer) -> Int { self.size }
 
-pub fn ds_tree_lct_buffer_get(s : DstreelctBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctBuffer::get(self : DstreelctBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_buffer_set(s : DstreelctBuffer, i : Int, v : Double) -> DstreelctBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctBuffer::set(self : DstreelctBuffer, i : Int, v : Double) -> DstreelctBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_buffer_sum(s : DstreelctBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreelctBuffer::sum(self : DstreelctBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_buffer_mean(s : DstreelctBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreelctBuffer::mean(self : DstreelctBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_buffer_scale(s : DstreelctBuffer, f : Double) -> DstreelctBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctBuffer::scale(self : DstreelctBuffer, f : Double) -> DstreelctBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_buffer_add(a : DstreelctBuffer, b : DstreelctBuffer) -> DstreelctBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctBuffer::add(self : DstreelctBuffer, other : DstreelctBuffer) -> DstreelctBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_buffer_copy(s : DstreelctBuffer) -> DstreelctBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctBuffer::copy(self : DstreelctBuffer) -> DstreelctBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_buffer_fill(s : DstreelctBuffer, v : Double) -> DstreelctBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctBuffer::fill(self : DstreelctBuffer, v : Double) -> DstreelctBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_buffer_min(s : DstreelctBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreelctBuffer::min(self : DstreelctBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_buffer_max(s : DstreelctBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreelctBuffer::max(self : DstreelctBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_buffer_to_string(s : DstreelctBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctBuffer::to_string(self : DstreelctBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_lct_cursor_make(size : Int) -> DstreelctCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_cursor_len(s : DstreelctCursor) -> Int { s.size }
+pub fn DstreelctCursor::len(self : DstreelctCursor) -> Int { self.size }
 
-pub fn ds_tree_lct_cursor_get(s : DstreelctCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctCursor::get(self : DstreelctCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_cursor_set(s : DstreelctCursor, i : Int, v : Double) -> DstreelctCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctCursor::set(self : DstreelctCursor, i : Int, v : Double) -> DstreelctCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cursor_sum(s : DstreelctCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreelctCursor::sum(self : DstreelctCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_cursor_mean(s : DstreelctCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreelctCursor::mean(self : DstreelctCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_cursor_scale(s : DstreelctCursor, f : Double) -> DstreelctCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctCursor::scale(self : DstreelctCursor, f : Double) -> DstreelctCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cursor_add(a : DstreelctCursor, b : DstreelctCursor) -> DstreelctCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctCursor::add(self : DstreelctCursor, other : DstreelctCursor) -> DstreelctCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cursor_copy(s : DstreelctCursor) -> DstreelctCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctCursor::copy(self : DstreelctCursor) -> DstreelctCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cursor_fill(s : DstreelctCursor, v : Double) -> DstreelctCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctCursor::fill(self : DstreelctCursor, v : Double) -> DstreelctCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_cursor_min(s : DstreelctCursor) -> Double { @_common.min(s.data) }
+pub fn DstreelctCursor::min(self : DstreelctCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_cursor_max(s : DstreelctCursor) -> Double { @_common.max(s.data) }
+pub fn DstreelctCursor::max(self : DstreelctCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_cursor_to_string(s : DstreelctCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctCursor::to_string(self : DstreelctCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctView {
@@ -912,45 +912,45 @@ pub fn ds_tree_lct_view_make(size : Int) -> DstreelctView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_view_len(s : DstreelctView) -> Int { s.size }
+pub fn DstreelctView::len(self : DstreelctView) -> Int { self.size }
 
-pub fn ds_tree_lct_view_get(s : DstreelctView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctView::get(self : DstreelctView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_view_set(s : DstreelctView, i : Int, v : Double) -> DstreelctView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctView::set(self : DstreelctView, i : Int, v : Double) -> DstreelctView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_view_sum(s : DstreelctView) -> Double { @_common.sum(s.data) }
+pub fn DstreelctView::sum(self : DstreelctView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_view_mean(s : DstreelctView) -> Double { @_common.mean(s.data) }
+pub fn DstreelctView::mean(self : DstreelctView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_view_scale(s : DstreelctView, f : Double) -> DstreelctView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctView::scale(self : DstreelctView, f : Double) -> DstreelctView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_view_add(a : DstreelctView, b : DstreelctView) -> DstreelctView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctView::add(self : DstreelctView, other : DstreelctView) -> DstreelctView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_view_copy(s : DstreelctView) -> DstreelctView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctView::copy(self : DstreelctView) -> DstreelctView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_view_fill(s : DstreelctView, v : Double) -> DstreelctView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctView::fill(self : DstreelctView, v : Double) -> DstreelctView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_view_min(s : DstreelctView) -> Double { @_common.min(s.data) }
+pub fn DstreelctView::min(self : DstreelctView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_view_max(s : DstreelctView) -> Double { @_common.max(s.data) }
+pub fn DstreelctView::max(self : DstreelctView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_view_to_string(s : DstreelctView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctView::to_string(self : DstreelctView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_lct_range_make(size : Int) -> DstreelctRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_range_len(s : DstreelctRange) -> Int { s.size }
+pub fn DstreelctRange::len(self : DstreelctRange) -> Int { self.size }
 
-pub fn ds_tree_lct_range_get(s : DstreelctRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctRange::get(self : DstreelctRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_range_set(s : DstreelctRange, i : Int, v : Double) -> DstreelctRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctRange::set(self : DstreelctRange, i : Int, v : Double) -> DstreelctRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_range_sum(s : DstreelctRange) -> Double { @_common.sum(s.data) }
+pub fn DstreelctRange::sum(self : DstreelctRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_range_mean(s : DstreelctRange) -> Double { @_common.mean(s.data) }
+pub fn DstreelctRange::mean(self : DstreelctRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_range_scale(s : DstreelctRange, f : Double) -> DstreelctRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctRange::scale(self : DstreelctRange, f : Double) -> DstreelctRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_range_add(a : DstreelctRange, b : DstreelctRange) -> DstreelctRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctRange::add(self : DstreelctRange, other : DstreelctRange) -> DstreelctRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_range_copy(s : DstreelctRange) -> DstreelctRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctRange::copy(self : DstreelctRange) -> DstreelctRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_range_fill(s : DstreelctRange, v : Double) -> DstreelctRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctRange::fill(self : DstreelctRange, v : Double) -> DstreelctRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_range_min(s : DstreelctRange) -> Double { @_common.min(s.data) }
+pub fn DstreelctRange::min(self : DstreelctRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_range_max(s : DstreelctRange) -> Double { @_common.max(s.data) }
+pub fn DstreelctRange::max(self : DstreelctRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_range_to_string(s : DstreelctRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctRange::to_string(self : DstreelctRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreelctSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_lct_slice_make(size : Int) -> DstreelctSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_lct_slice_len(s : DstreelctSlice) -> Int { s.size }
+pub fn DstreelctSlice::len(self : DstreelctSlice) -> Int { self.size }
 
-pub fn ds_tree_lct_slice_get(s : DstreelctSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreelctSlice::get(self : DstreelctSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_lct_slice_set(s : DstreelctSlice, i : Int, v : Double) -> DstreelctSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreelctSlice::set(self : DstreelctSlice, i : Int, v : Double) -> DstreelctSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_slice_sum(s : DstreelctSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreelctSlice::sum(self : DstreelctSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_lct_slice_mean(s : DstreelctSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreelctSlice::mean(self : DstreelctSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_lct_slice_scale(s : DstreelctSlice, f : Double) -> DstreelctSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreelctSlice::scale(self : DstreelctSlice, f : Double) -> DstreelctSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_slice_add(a : DstreelctSlice, b : DstreelctSlice) -> DstreelctSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreelctSlice::add(self : DstreelctSlice, other : DstreelctSlice) -> DstreelctSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_lct_slice_copy(s : DstreelctSlice) -> DstreelctSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreelctSlice::copy(self : DstreelctSlice) -> DstreelctSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_slice_fill(s : DstreelctSlice, v : Double) -> DstreelctSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreelctSlice::fill(self : DstreelctSlice, v : Double) -> DstreelctSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_lct_slice_min(s : DstreelctSlice) -> Double { @_common.min(s.data) }
+pub fn DstreelctSlice::min(self : DstreelctSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_lct_slice_max(s : DstreelctSlice) -> Double { @_common.max(s.data) }
+pub fn DstreelctSlice::max(self : DstreelctSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_lct_slice_to_string(s : DstreelctSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreelctSlice::to_string(self : DstreelctSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

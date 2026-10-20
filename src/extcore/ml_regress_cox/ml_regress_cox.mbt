@@ -351,45 +351,45 @@ pub fn ml_regress_cox_frame_make(size : Int) -> MlregresscoxFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_frame_len(s : MlregresscoxFrame) -> Int { s.size }
+pub fn MlregresscoxFrame::len(self : MlregresscoxFrame) -> Int { self.size }
 
-pub fn ml_regress_cox_frame_get(s : MlregresscoxFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxFrame::get(self : MlregresscoxFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_frame_set(s : MlregresscoxFrame, i : Int, v : Double) -> MlregresscoxFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxFrame::set(self : MlregresscoxFrame, i : Int, v : Double) -> MlregresscoxFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_frame_sum(s : MlregresscoxFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxFrame::sum(self : MlregresscoxFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_frame_mean(s : MlregresscoxFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxFrame::mean(self : MlregresscoxFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_frame_scale(s : MlregresscoxFrame, f : Double) -> MlregresscoxFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxFrame::scale(self : MlregresscoxFrame, f : Double) -> MlregresscoxFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_frame_add(a : MlregresscoxFrame, b : MlregresscoxFrame) -> MlregresscoxFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxFrame::add(self : MlregresscoxFrame, other : MlregresscoxFrame) -> MlregresscoxFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_frame_copy(s : MlregresscoxFrame) -> MlregresscoxFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxFrame::copy(self : MlregresscoxFrame) -> MlregresscoxFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_frame_fill(s : MlregresscoxFrame, v : Double) -> MlregresscoxFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxFrame::fill(self : MlregresscoxFrame, v : Double) -> MlregresscoxFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_frame_min(s : MlregresscoxFrame) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxFrame::min(self : MlregresscoxFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_frame_max(s : MlregresscoxFrame) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxFrame::max(self : MlregresscoxFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_frame_to_string(s : MlregresscoxFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxFrame::to_string(self : MlregresscoxFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_cox_table_make(size : Int) -> MlregresscoxTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_table_len(s : MlregresscoxTable) -> Int { s.size }
+pub fn MlregresscoxTable::len(self : MlregresscoxTable) -> Int { self.size }
 
-pub fn ml_regress_cox_table_get(s : MlregresscoxTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxTable::get(self : MlregresscoxTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_table_set(s : MlregresscoxTable, i : Int, v : Double) -> MlregresscoxTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxTable::set(self : MlregresscoxTable, i : Int, v : Double) -> MlregresscoxTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_table_sum(s : MlregresscoxTable) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxTable::sum(self : MlregresscoxTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_table_mean(s : MlregresscoxTable) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxTable::mean(self : MlregresscoxTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_table_scale(s : MlregresscoxTable, f : Double) -> MlregresscoxTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxTable::scale(self : MlregresscoxTable, f : Double) -> MlregresscoxTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_table_add(a : MlregresscoxTable, b : MlregresscoxTable) -> MlregresscoxTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxTable::add(self : MlregresscoxTable, other : MlregresscoxTable) -> MlregresscoxTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_table_copy(s : MlregresscoxTable) -> MlregresscoxTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxTable::copy(self : MlregresscoxTable) -> MlregresscoxTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_table_fill(s : MlregresscoxTable, v : Double) -> MlregresscoxTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxTable::fill(self : MlregresscoxTable, v : Double) -> MlregresscoxTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_table_min(s : MlregresscoxTable) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxTable::min(self : MlregresscoxTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_table_max(s : MlregresscoxTable) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxTable::max(self : MlregresscoxTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_table_to_string(s : MlregresscoxTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxTable::to_string(self : MlregresscoxTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_cox_graphn_make(size : Int) -> MlregresscoxGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_graphn_len(s : MlregresscoxGraphN) -> Int { s.size }
+pub fn MlregresscoxGraphN::len(self : MlregresscoxGraphN) -> Int { self.size }
 
-pub fn ml_regress_cox_graphn_get(s : MlregresscoxGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxGraphN::get(self : MlregresscoxGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_graphn_set(s : MlregresscoxGraphN, i : Int, v : Double) -> MlregresscoxGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxGraphN::set(self : MlregresscoxGraphN, i : Int, v : Double) -> MlregresscoxGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_graphn_sum(s : MlregresscoxGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxGraphN::sum(self : MlregresscoxGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_graphn_mean(s : MlregresscoxGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxGraphN::mean(self : MlregresscoxGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_graphn_scale(s : MlregresscoxGraphN, f : Double) -> MlregresscoxGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxGraphN::scale(self : MlregresscoxGraphN, f : Double) -> MlregresscoxGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_graphn_add(a : MlregresscoxGraphN, b : MlregresscoxGraphN) -> MlregresscoxGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxGraphN::add(self : MlregresscoxGraphN, other : MlregresscoxGraphN) -> MlregresscoxGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_graphn_copy(s : MlregresscoxGraphN) -> MlregresscoxGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxGraphN::copy(self : MlregresscoxGraphN) -> MlregresscoxGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_graphn_fill(s : MlregresscoxGraphN, v : Double) -> MlregresscoxGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxGraphN::fill(self : MlregresscoxGraphN, v : Double) -> MlregresscoxGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_graphn_min(s : MlregresscoxGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxGraphN::min(self : MlregresscoxGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_graphn_max(s : MlregresscoxGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxGraphN::max(self : MlregresscoxGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_graphn_to_string(s : MlregresscoxGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxGraphN::to_string(self : MlregresscoxGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_cox_node_make(size : Int) -> MlregresscoxNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_node_len(s : MlregresscoxNode) -> Int { s.size }
+pub fn MlregresscoxNode::len(self : MlregresscoxNode) -> Int { self.size }
 
-pub fn ml_regress_cox_node_get(s : MlregresscoxNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxNode::get(self : MlregresscoxNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_node_set(s : MlregresscoxNode, i : Int, v : Double) -> MlregresscoxNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxNode::set(self : MlregresscoxNode, i : Int, v : Double) -> MlregresscoxNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_node_sum(s : MlregresscoxNode) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxNode::sum(self : MlregresscoxNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_node_mean(s : MlregresscoxNode) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxNode::mean(self : MlregresscoxNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_node_scale(s : MlregresscoxNode, f : Double) -> MlregresscoxNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxNode::scale(self : MlregresscoxNode, f : Double) -> MlregresscoxNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_node_add(a : MlregresscoxNode, b : MlregresscoxNode) -> MlregresscoxNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxNode::add(self : MlregresscoxNode, other : MlregresscoxNode) -> MlregresscoxNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_node_copy(s : MlregresscoxNode) -> MlregresscoxNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxNode::copy(self : MlregresscoxNode) -> MlregresscoxNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_node_fill(s : MlregresscoxNode, v : Double) -> MlregresscoxNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxNode::fill(self : MlregresscoxNode, v : Double) -> MlregresscoxNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_node_min(s : MlregresscoxNode) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxNode::min(self : MlregresscoxNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_node_max(s : MlregresscoxNode) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxNode::max(self : MlregresscoxNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_node_to_string(s : MlregresscoxNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxNode::to_string(self : MlregresscoxNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_cox_edge_make(size : Int) -> MlregresscoxEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_edge_len(s : MlregresscoxEdge) -> Int { s.size }
+pub fn MlregresscoxEdge::len(self : MlregresscoxEdge) -> Int { self.size }
 
-pub fn ml_regress_cox_edge_get(s : MlregresscoxEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxEdge::get(self : MlregresscoxEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_edge_set(s : MlregresscoxEdge, i : Int, v : Double) -> MlregresscoxEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxEdge::set(self : MlregresscoxEdge, i : Int, v : Double) -> MlregresscoxEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_edge_sum(s : MlregresscoxEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxEdge::sum(self : MlregresscoxEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_edge_mean(s : MlregresscoxEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxEdge::mean(self : MlregresscoxEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_edge_scale(s : MlregresscoxEdge, f : Double) -> MlregresscoxEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxEdge::scale(self : MlregresscoxEdge, f : Double) -> MlregresscoxEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_edge_add(a : MlregresscoxEdge, b : MlregresscoxEdge) -> MlregresscoxEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxEdge::add(self : MlregresscoxEdge, other : MlregresscoxEdge) -> MlregresscoxEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_edge_copy(s : MlregresscoxEdge) -> MlregresscoxEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxEdge::copy(self : MlregresscoxEdge) -> MlregresscoxEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_edge_fill(s : MlregresscoxEdge, v : Double) -> MlregresscoxEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxEdge::fill(self : MlregresscoxEdge, v : Double) -> MlregresscoxEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_edge_min(s : MlregresscoxEdge) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxEdge::min(self : MlregresscoxEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_edge_max(s : MlregresscoxEdge) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxEdge::max(self : MlregresscoxEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_edge_to_string(s : MlregresscoxEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxEdge::to_string(self : MlregresscoxEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_cox_path_make(size : Int) -> MlregresscoxPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_path_len(s : MlregresscoxPath) -> Int { s.size }
+pub fn MlregresscoxPath::len(self : MlregresscoxPath) -> Int { self.size }
 
-pub fn ml_regress_cox_path_get(s : MlregresscoxPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxPath::get(self : MlregresscoxPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_path_set(s : MlregresscoxPath, i : Int, v : Double) -> MlregresscoxPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxPath::set(self : MlregresscoxPath, i : Int, v : Double) -> MlregresscoxPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_path_sum(s : MlregresscoxPath) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxPath::sum(self : MlregresscoxPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_path_mean(s : MlregresscoxPath) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxPath::mean(self : MlregresscoxPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_path_scale(s : MlregresscoxPath, f : Double) -> MlregresscoxPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxPath::scale(self : MlregresscoxPath, f : Double) -> MlregresscoxPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_path_add(a : MlregresscoxPath, b : MlregresscoxPath) -> MlregresscoxPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxPath::add(self : MlregresscoxPath, other : MlregresscoxPath) -> MlregresscoxPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_path_copy(s : MlregresscoxPath) -> MlregresscoxPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxPath::copy(self : MlregresscoxPath) -> MlregresscoxPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_path_fill(s : MlregresscoxPath, v : Double) -> MlregresscoxPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxPath::fill(self : MlregresscoxPath, v : Double) -> MlregresscoxPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_path_min(s : MlregresscoxPath) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxPath::min(self : MlregresscoxPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_path_max(s : MlregresscoxPath) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxPath::max(self : MlregresscoxPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_path_to_string(s : MlregresscoxPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxPath::to_string(self : MlregresscoxPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_cox_cluster_make(size : Int) -> MlregresscoxCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_cluster_len(s : MlregresscoxCluster) -> Int { s.size }
+pub fn MlregresscoxCluster::len(self : MlregresscoxCluster) -> Int { self.size }
 
-pub fn ml_regress_cox_cluster_get(s : MlregresscoxCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxCluster::get(self : MlregresscoxCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_cluster_set(s : MlregresscoxCluster, i : Int, v : Double) -> MlregresscoxCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxCluster::set(self : MlregresscoxCluster, i : Int, v : Double) -> MlregresscoxCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cluster_sum(s : MlregresscoxCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxCluster::sum(self : MlregresscoxCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_cluster_mean(s : MlregresscoxCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxCluster::mean(self : MlregresscoxCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_cluster_scale(s : MlregresscoxCluster, f : Double) -> MlregresscoxCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxCluster::scale(self : MlregresscoxCluster, f : Double) -> MlregresscoxCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cluster_add(a : MlregresscoxCluster, b : MlregresscoxCluster) -> MlregresscoxCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxCluster::add(self : MlregresscoxCluster, other : MlregresscoxCluster) -> MlregresscoxCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cluster_copy(s : MlregresscoxCluster) -> MlregresscoxCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxCluster::copy(self : MlregresscoxCluster) -> MlregresscoxCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cluster_fill(s : MlregresscoxCluster, v : Double) -> MlregresscoxCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxCluster::fill(self : MlregresscoxCluster, v : Double) -> MlregresscoxCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cluster_min(s : MlregresscoxCluster) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxCluster::min(self : MlregresscoxCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_cluster_max(s : MlregresscoxCluster) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxCluster::max(self : MlregresscoxCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_cluster_to_string(s : MlregresscoxCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxCluster::to_string(self : MlregresscoxCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_cox_model_make(size : Int) -> MlregresscoxModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_model_len(s : MlregresscoxModel) -> Int { s.size }
+pub fn MlregresscoxModel::len(self : MlregresscoxModel) -> Int { self.size }
 
-pub fn ml_regress_cox_model_get(s : MlregresscoxModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxModel::get(self : MlregresscoxModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_model_set(s : MlregresscoxModel, i : Int, v : Double) -> MlregresscoxModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxModel::set(self : MlregresscoxModel, i : Int, v : Double) -> MlregresscoxModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_model_sum(s : MlregresscoxModel) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxModel::sum(self : MlregresscoxModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_model_mean(s : MlregresscoxModel) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxModel::mean(self : MlregresscoxModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_model_scale(s : MlregresscoxModel, f : Double) -> MlregresscoxModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxModel::scale(self : MlregresscoxModel, f : Double) -> MlregresscoxModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_model_add(a : MlregresscoxModel, b : MlregresscoxModel) -> MlregresscoxModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxModel::add(self : MlregresscoxModel, other : MlregresscoxModel) -> MlregresscoxModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_model_copy(s : MlregresscoxModel) -> MlregresscoxModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxModel::copy(self : MlregresscoxModel) -> MlregresscoxModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_model_fill(s : MlregresscoxModel, v : Double) -> MlregresscoxModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxModel::fill(self : MlregresscoxModel, v : Double) -> MlregresscoxModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_model_min(s : MlregresscoxModel) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxModel::min(self : MlregresscoxModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_model_max(s : MlregresscoxModel) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxModel::max(self : MlregresscoxModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_model_to_string(s : MlregresscoxModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxModel::to_string(self : MlregresscoxModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_cox_layer_make(size : Int) -> MlregresscoxLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_layer_len(s : MlregresscoxLayer) -> Int { s.size }
+pub fn MlregresscoxLayer::len(self : MlregresscoxLayer) -> Int { self.size }
 
-pub fn ml_regress_cox_layer_get(s : MlregresscoxLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxLayer::get(self : MlregresscoxLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_layer_set(s : MlregresscoxLayer, i : Int, v : Double) -> MlregresscoxLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxLayer::set(self : MlregresscoxLayer, i : Int, v : Double) -> MlregresscoxLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_layer_sum(s : MlregresscoxLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxLayer::sum(self : MlregresscoxLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_layer_mean(s : MlregresscoxLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxLayer::mean(self : MlregresscoxLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_layer_scale(s : MlregresscoxLayer, f : Double) -> MlregresscoxLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxLayer::scale(self : MlregresscoxLayer, f : Double) -> MlregresscoxLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_layer_add(a : MlregresscoxLayer, b : MlregresscoxLayer) -> MlregresscoxLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxLayer::add(self : MlregresscoxLayer, other : MlregresscoxLayer) -> MlregresscoxLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_layer_copy(s : MlregresscoxLayer) -> MlregresscoxLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxLayer::copy(self : MlregresscoxLayer) -> MlregresscoxLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_layer_fill(s : MlregresscoxLayer, v : Double) -> MlregresscoxLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxLayer::fill(self : MlregresscoxLayer, v : Double) -> MlregresscoxLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_layer_min(s : MlregresscoxLayer) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxLayer::min(self : MlregresscoxLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_layer_max(s : MlregresscoxLayer) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxLayer::max(self : MlregresscoxLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_layer_to_string(s : MlregresscoxLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxLayer::to_string(self : MlregresscoxLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_cox_buffer_make(size : Int) -> MlregresscoxBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_buffer_len(s : MlregresscoxBuffer) -> Int { s.size }
+pub fn MlregresscoxBuffer::len(self : MlregresscoxBuffer) -> Int { self.size }
 
-pub fn ml_regress_cox_buffer_get(s : MlregresscoxBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxBuffer::get(self : MlregresscoxBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_buffer_set(s : MlregresscoxBuffer, i : Int, v : Double) -> MlregresscoxBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxBuffer::set(self : MlregresscoxBuffer, i : Int, v : Double) -> MlregresscoxBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_buffer_sum(s : MlregresscoxBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxBuffer::sum(self : MlregresscoxBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_buffer_mean(s : MlregresscoxBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxBuffer::mean(self : MlregresscoxBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_buffer_scale(s : MlregresscoxBuffer, f : Double) -> MlregresscoxBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxBuffer::scale(self : MlregresscoxBuffer, f : Double) -> MlregresscoxBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_buffer_add(a : MlregresscoxBuffer, b : MlregresscoxBuffer) -> MlregresscoxBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxBuffer::add(self : MlregresscoxBuffer, other : MlregresscoxBuffer) -> MlregresscoxBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_buffer_copy(s : MlregresscoxBuffer) -> MlregresscoxBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxBuffer::copy(self : MlregresscoxBuffer) -> MlregresscoxBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_buffer_fill(s : MlregresscoxBuffer, v : Double) -> MlregresscoxBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxBuffer::fill(self : MlregresscoxBuffer, v : Double) -> MlregresscoxBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_buffer_min(s : MlregresscoxBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxBuffer::min(self : MlregresscoxBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_buffer_max(s : MlregresscoxBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxBuffer::max(self : MlregresscoxBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_buffer_to_string(s : MlregresscoxBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxBuffer::to_string(self : MlregresscoxBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_cox_cursor_make(size : Int) -> MlregresscoxCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_cursor_len(s : MlregresscoxCursor) -> Int { s.size }
+pub fn MlregresscoxCursor::len(self : MlregresscoxCursor) -> Int { self.size }
 
-pub fn ml_regress_cox_cursor_get(s : MlregresscoxCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxCursor::get(self : MlregresscoxCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_cursor_set(s : MlregresscoxCursor, i : Int, v : Double) -> MlregresscoxCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxCursor::set(self : MlregresscoxCursor, i : Int, v : Double) -> MlregresscoxCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cursor_sum(s : MlregresscoxCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxCursor::sum(self : MlregresscoxCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_cursor_mean(s : MlregresscoxCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxCursor::mean(self : MlregresscoxCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_cursor_scale(s : MlregresscoxCursor, f : Double) -> MlregresscoxCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxCursor::scale(self : MlregresscoxCursor, f : Double) -> MlregresscoxCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cursor_add(a : MlregresscoxCursor, b : MlregresscoxCursor) -> MlregresscoxCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxCursor::add(self : MlregresscoxCursor, other : MlregresscoxCursor) -> MlregresscoxCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cursor_copy(s : MlregresscoxCursor) -> MlregresscoxCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxCursor::copy(self : MlregresscoxCursor) -> MlregresscoxCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cursor_fill(s : MlregresscoxCursor, v : Double) -> MlregresscoxCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxCursor::fill(self : MlregresscoxCursor, v : Double) -> MlregresscoxCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_cursor_min(s : MlregresscoxCursor) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxCursor::min(self : MlregresscoxCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_cursor_max(s : MlregresscoxCursor) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxCursor::max(self : MlregresscoxCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_cursor_to_string(s : MlregresscoxCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxCursor::to_string(self : MlregresscoxCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxView {
@@ -912,45 +912,45 @@ pub fn ml_regress_cox_view_make(size : Int) -> MlregresscoxView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_view_len(s : MlregresscoxView) -> Int { s.size }
+pub fn MlregresscoxView::len(self : MlregresscoxView) -> Int { self.size }
 
-pub fn ml_regress_cox_view_get(s : MlregresscoxView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxView::get(self : MlregresscoxView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_view_set(s : MlregresscoxView, i : Int, v : Double) -> MlregresscoxView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxView::set(self : MlregresscoxView, i : Int, v : Double) -> MlregresscoxView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_view_sum(s : MlregresscoxView) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxView::sum(self : MlregresscoxView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_view_mean(s : MlregresscoxView) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxView::mean(self : MlregresscoxView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_view_scale(s : MlregresscoxView, f : Double) -> MlregresscoxView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxView::scale(self : MlregresscoxView, f : Double) -> MlregresscoxView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_view_add(a : MlregresscoxView, b : MlregresscoxView) -> MlregresscoxView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxView::add(self : MlregresscoxView, other : MlregresscoxView) -> MlregresscoxView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_view_copy(s : MlregresscoxView) -> MlregresscoxView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxView::copy(self : MlregresscoxView) -> MlregresscoxView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_view_fill(s : MlregresscoxView, v : Double) -> MlregresscoxView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxView::fill(self : MlregresscoxView, v : Double) -> MlregresscoxView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_view_min(s : MlregresscoxView) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxView::min(self : MlregresscoxView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_view_max(s : MlregresscoxView) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxView::max(self : MlregresscoxView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_view_to_string(s : MlregresscoxView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxView::to_string(self : MlregresscoxView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_cox_range_make(size : Int) -> MlregresscoxRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_range_len(s : MlregresscoxRange) -> Int { s.size }
+pub fn MlregresscoxRange::len(self : MlregresscoxRange) -> Int { self.size }
 
-pub fn ml_regress_cox_range_get(s : MlregresscoxRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxRange::get(self : MlregresscoxRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_range_set(s : MlregresscoxRange, i : Int, v : Double) -> MlregresscoxRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxRange::set(self : MlregresscoxRange, i : Int, v : Double) -> MlregresscoxRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_range_sum(s : MlregresscoxRange) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxRange::sum(self : MlregresscoxRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_range_mean(s : MlregresscoxRange) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxRange::mean(self : MlregresscoxRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_range_scale(s : MlregresscoxRange, f : Double) -> MlregresscoxRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxRange::scale(self : MlregresscoxRange, f : Double) -> MlregresscoxRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_range_add(a : MlregresscoxRange, b : MlregresscoxRange) -> MlregresscoxRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxRange::add(self : MlregresscoxRange, other : MlregresscoxRange) -> MlregresscoxRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_range_copy(s : MlregresscoxRange) -> MlregresscoxRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxRange::copy(self : MlregresscoxRange) -> MlregresscoxRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_range_fill(s : MlregresscoxRange, v : Double) -> MlregresscoxRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxRange::fill(self : MlregresscoxRange, v : Double) -> MlregresscoxRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_range_min(s : MlregresscoxRange) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxRange::min(self : MlregresscoxRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_range_max(s : MlregresscoxRange) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxRange::max(self : MlregresscoxRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_range_to_string(s : MlregresscoxRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxRange::to_string(self : MlregresscoxRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresscoxSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_cox_slice_make(size : Int) -> MlregresscoxSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_cox_slice_len(s : MlregresscoxSlice) -> Int { s.size }
+pub fn MlregresscoxSlice::len(self : MlregresscoxSlice) -> Int { self.size }
 
-pub fn ml_regress_cox_slice_get(s : MlregresscoxSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresscoxSlice::get(self : MlregresscoxSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_cox_slice_set(s : MlregresscoxSlice, i : Int, v : Double) -> MlregresscoxSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresscoxSlice::set(self : MlregresscoxSlice, i : Int, v : Double) -> MlregresscoxSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_slice_sum(s : MlregresscoxSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregresscoxSlice::sum(self : MlregresscoxSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_cox_slice_mean(s : MlregresscoxSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregresscoxSlice::mean(self : MlregresscoxSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_cox_slice_scale(s : MlregresscoxSlice, f : Double) -> MlregresscoxSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresscoxSlice::scale(self : MlregresscoxSlice, f : Double) -> MlregresscoxSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_slice_add(a : MlregresscoxSlice, b : MlregresscoxSlice) -> MlregresscoxSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresscoxSlice::add(self : MlregresscoxSlice, other : MlregresscoxSlice) -> MlregresscoxSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_cox_slice_copy(s : MlregresscoxSlice) -> MlregresscoxSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresscoxSlice::copy(self : MlregresscoxSlice) -> MlregresscoxSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_slice_fill(s : MlregresscoxSlice, v : Double) -> MlregresscoxSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresscoxSlice::fill(self : MlregresscoxSlice, v : Double) -> MlregresscoxSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_cox_slice_min(s : MlregresscoxSlice) -> Double { @_common.min(s.data) }
+pub fn MlregresscoxSlice::min(self : MlregresscoxSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_cox_slice_max(s : MlregresscoxSlice) -> Double { @_common.max(s.data) }
+pub fn MlregresscoxSlice::max(self : MlregresscoxSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_cox_slice_to_string(s : MlregresscoxSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresscoxSlice::to_string(self : MlregresscoxSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

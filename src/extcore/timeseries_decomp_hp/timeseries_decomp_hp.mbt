@@ -351,45 +351,45 @@ pub fn timeseries_decomp_hp_frame_make(size : Int) -> TimeseriesdecomphpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_frame_len(s : TimeseriesdecomphpFrame) -> Int { s.size }
+pub fn TimeseriesdecomphpFrame::len(self : TimeseriesdecomphpFrame) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_frame_get(s : TimeseriesdecomphpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpFrame::get(self : TimeseriesdecomphpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_frame_set(s : TimeseriesdecomphpFrame, i : Int, v : Double) -> TimeseriesdecomphpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpFrame::set(self : TimeseriesdecomphpFrame, i : Int, v : Double) -> TimeseriesdecomphpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_frame_sum(s : TimeseriesdecomphpFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpFrame::sum(self : TimeseriesdecomphpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_frame_mean(s : TimeseriesdecomphpFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpFrame::mean(self : TimeseriesdecomphpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_frame_scale(s : TimeseriesdecomphpFrame, f : Double) -> TimeseriesdecomphpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpFrame::scale(self : TimeseriesdecomphpFrame, f : Double) -> TimeseriesdecomphpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_frame_add(a : TimeseriesdecomphpFrame, b : TimeseriesdecomphpFrame) -> TimeseriesdecomphpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpFrame::add(self : TimeseriesdecomphpFrame, other : TimeseriesdecomphpFrame) -> TimeseriesdecomphpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_frame_copy(s : TimeseriesdecomphpFrame) -> TimeseriesdecomphpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpFrame::copy(self : TimeseriesdecomphpFrame) -> TimeseriesdecomphpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_frame_fill(s : TimeseriesdecomphpFrame, v : Double) -> TimeseriesdecomphpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpFrame::fill(self : TimeseriesdecomphpFrame, v : Double) -> TimeseriesdecomphpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_frame_min(s : TimeseriesdecomphpFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpFrame::min(self : TimeseriesdecomphpFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_frame_max(s : TimeseriesdecomphpFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpFrame::max(self : TimeseriesdecomphpFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_frame_to_string(s : TimeseriesdecomphpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpFrame::to_string(self : TimeseriesdecomphpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpTable {
@@ -402,45 +402,45 @@ pub fn timeseries_decomp_hp_table_make(size : Int) -> TimeseriesdecomphpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_table_len(s : TimeseriesdecomphpTable) -> Int { s.size }
+pub fn TimeseriesdecomphpTable::len(self : TimeseriesdecomphpTable) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_table_get(s : TimeseriesdecomphpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpTable::get(self : TimeseriesdecomphpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_table_set(s : TimeseriesdecomphpTable, i : Int, v : Double) -> TimeseriesdecomphpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpTable::set(self : TimeseriesdecomphpTable, i : Int, v : Double) -> TimeseriesdecomphpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_table_sum(s : TimeseriesdecomphpTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpTable::sum(self : TimeseriesdecomphpTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_table_mean(s : TimeseriesdecomphpTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpTable::mean(self : TimeseriesdecomphpTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_table_scale(s : TimeseriesdecomphpTable, f : Double) -> TimeseriesdecomphpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpTable::scale(self : TimeseriesdecomphpTable, f : Double) -> TimeseriesdecomphpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_table_add(a : TimeseriesdecomphpTable, b : TimeseriesdecomphpTable) -> TimeseriesdecomphpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpTable::add(self : TimeseriesdecomphpTable, other : TimeseriesdecomphpTable) -> TimeseriesdecomphpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_table_copy(s : TimeseriesdecomphpTable) -> TimeseriesdecomphpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpTable::copy(self : TimeseriesdecomphpTable) -> TimeseriesdecomphpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_table_fill(s : TimeseriesdecomphpTable, v : Double) -> TimeseriesdecomphpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpTable::fill(self : TimeseriesdecomphpTable, v : Double) -> TimeseriesdecomphpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_table_min(s : TimeseriesdecomphpTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpTable::min(self : TimeseriesdecomphpTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_table_max(s : TimeseriesdecomphpTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpTable::max(self : TimeseriesdecomphpTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_table_to_string(s : TimeseriesdecomphpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpTable::to_string(self : TimeseriesdecomphpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_decomp_hp_graphn_make(size : Int) -> TimeseriesdecomphpGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_graphn_len(s : TimeseriesdecomphpGraphN) -> Int { s.size }
+pub fn TimeseriesdecomphpGraphN::len(self : TimeseriesdecomphpGraphN) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_graphn_get(s : TimeseriesdecomphpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpGraphN::get(self : TimeseriesdecomphpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_graphn_set(s : TimeseriesdecomphpGraphN, i : Int, v : Double) -> TimeseriesdecomphpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpGraphN::set(self : TimeseriesdecomphpGraphN, i : Int, v : Double) -> TimeseriesdecomphpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_graphn_sum(s : TimeseriesdecomphpGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpGraphN::sum(self : TimeseriesdecomphpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_graphn_mean(s : TimeseriesdecomphpGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpGraphN::mean(self : TimeseriesdecomphpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_graphn_scale(s : TimeseriesdecomphpGraphN, f : Double) -> TimeseriesdecomphpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpGraphN::scale(self : TimeseriesdecomphpGraphN, f : Double) -> TimeseriesdecomphpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_graphn_add(a : TimeseriesdecomphpGraphN, b : TimeseriesdecomphpGraphN) -> TimeseriesdecomphpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpGraphN::add(self : TimeseriesdecomphpGraphN, other : TimeseriesdecomphpGraphN) -> TimeseriesdecomphpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_graphn_copy(s : TimeseriesdecomphpGraphN) -> TimeseriesdecomphpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpGraphN::copy(self : TimeseriesdecomphpGraphN) -> TimeseriesdecomphpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_graphn_fill(s : TimeseriesdecomphpGraphN, v : Double) -> TimeseriesdecomphpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpGraphN::fill(self : TimeseriesdecomphpGraphN, v : Double) -> TimeseriesdecomphpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_graphn_min(s : TimeseriesdecomphpGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpGraphN::min(self : TimeseriesdecomphpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_graphn_max(s : TimeseriesdecomphpGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpGraphN::max(self : TimeseriesdecomphpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_graphn_to_string(s : TimeseriesdecomphpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpGraphN::to_string(self : TimeseriesdecomphpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpNode {
@@ -504,45 +504,45 @@ pub fn timeseries_decomp_hp_node_make(size : Int) -> TimeseriesdecomphpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_node_len(s : TimeseriesdecomphpNode) -> Int { s.size }
+pub fn TimeseriesdecomphpNode::len(self : TimeseriesdecomphpNode) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_node_get(s : TimeseriesdecomphpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpNode::get(self : TimeseriesdecomphpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_node_set(s : TimeseriesdecomphpNode, i : Int, v : Double) -> TimeseriesdecomphpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpNode::set(self : TimeseriesdecomphpNode, i : Int, v : Double) -> TimeseriesdecomphpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_node_sum(s : TimeseriesdecomphpNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpNode::sum(self : TimeseriesdecomphpNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_node_mean(s : TimeseriesdecomphpNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpNode::mean(self : TimeseriesdecomphpNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_node_scale(s : TimeseriesdecomphpNode, f : Double) -> TimeseriesdecomphpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpNode::scale(self : TimeseriesdecomphpNode, f : Double) -> TimeseriesdecomphpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_node_add(a : TimeseriesdecomphpNode, b : TimeseriesdecomphpNode) -> TimeseriesdecomphpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpNode::add(self : TimeseriesdecomphpNode, other : TimeseriesdecomphpNode) -> TimeseriesdecomphpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_node_copy(s : TimeseriesdecomphpNode) -> TimeseriesdecomphpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpNode::copy(self : TimeseriesdecomphpNode) -> TimeseriesdecomphpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_node_fill(s : TimeseriesdecomphpNode, v : Double) -> TimeseriesdecomphpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpNode::fill(self : TimeseriesdecomphpNode, v : Double) -> TimeseriesdecomphpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_node_min(s : TimeseriesdecomphpNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpNode::min(self : TimeseriesdecomphpNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_node_max(s : TimeseriesdecomphpNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpNode::max(self : TimeseriesdecomphpNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_node_to_string(s : TimeseriesdecomphpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpNode::to_string(self : TimeseriesdecomphpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_decomp_hp_edge_make(size : Int) -> TimeseriesdecomphpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_edge_len(s : TimeseriesdecomphpEdge) -> Int { s.size }
+pub fn TimeseriesdecomphpEdge::len(self : TimeseriesdecomphpEdge) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_edge_get(s : TimeseriesdecomphpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpEdge::get(self : TimeseriesdecomphpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_edge_set(s : TimeseriesdecomphpEdge, i : Int, v : Double) -> TimeseriesdecomphpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpEdge::set(self : TimeseriesdecomphpEdge, i : Int, v : Double) -> TimeseriesdecomphpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_edge_sum(s : TimeseriesdecomphpEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpEdge::sum(self : TimeseriesdecomphpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_edge_mean(s : TimeseriesdecomphpEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpEdge::mean(self : TimeseriesdecomphpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_edge_scale(s : TimeseriesdecomphpEdge, f : Double) -> TimeseriesdecomphpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpEdge::scale(self : TimeseriesdecomphpEdge, f : Double) -> TimeseriesdecomphpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_edge_add(a : TimeseriesdecomphpEdge, b : TimeseriesdecomphpEdge) -> TimeseriesdecomphpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpEdge::add(self : TimeseriesdecomphpEdge, other : TimeseriesdecomphpEdge) -> TimeseriesdecomphpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_edge_copy(s : TimeseriesdecomphpEdge) -> TimeseriesdecomphpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpEdge::copy(self : TimeseriesdecomphpEdge) -> TimeseriesdecomphpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_edge_fill(s : TimeseriesdecomphpEdge, v : Double) -> TimeseriesdecomphpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpEdge::fill(self : TimeseriesdecomphpEdge, v : Double) -> TimeseriesdecomphpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_edge_min(s : TimeseriesdecomphpEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpEdge::min(self : TimeseriesdecomphpEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_edge_max(s : TimeseriesdecomphpEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpEdge::max(self : TimeseriesdecomphpEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_edge_to_string(s : TimeseriesdecomphpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpEdge::to_string(self : TimeseriesdecomphpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpPath {
@@ -606,45 +606,45 @@ pub fn timeseries_decomp_hp_path_make(size : Int) -> TimeseriesdecomphpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_path_len(s : TimeseriesdecomphpPath) -> Int { s.size }
+pub fn TimeseriesdecomphpPath::len(self : TimeseriesdecomphpPath) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_path_get(s : TimeseriesdecomphpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpPath::get(self : TimeseriesdecomphpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_path_set(s : TimeseriesdecomphpPath, i : Int, v : Double) -> TimeseriesdecomphpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpPath::set(self : TimeseriesdecomphpPath, i : Int, v : Double) -> TimeseriesdecomphpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_path_sum(s : TimeseriesdecomphpPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpPath::sum(self : TimeseriesdecomphpPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_path_mean(s : TimeseriesdecomphpPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpPath::mean(self : TimeseriesdecomphpPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_path_scale(s : TimeseriesdecomphpPath, f : Double) -> TimeseriesdecomphpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpPath::scale(self : TimeseriesdecomphpPath, f : Double) -> TimeseriesdecomphpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_path_add(a : TimeseriesdecomphpPath, b : TimeseriesdecomphpPath) -> TimeseriesdecomphpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpPath::add(self : TimeseriesdecomphpPath, other : TimeseriesdecomphpPath) -> TimeseriesdecomphpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_path_copy(s : TimeseriesdecomphpPath) -> TimeseriesdecomphpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpPath::copy(self : TimeseriesdecomphpPath) -> TimeseriesdecomphpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_path_fill(s : TimeseriesdecomphpPath, v : Double) -> TimeseriesdecomphpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpPath::fill(self : TimeseriesdecomphpPath, v : Double) -> TimeseriesdecomphpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_path_min(s : TimeseriesdecomphpPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpPath::min(self : TimeseriesdecomphpPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_path_max(s : TimeseriesdecomphpPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpPath::max(self : TimeseriesdecomphpPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_path_to_string(s : TimeseriesdecomphpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpPath::to_string(self : TimeseriesdecomphpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_decomp_hp_cluster_make(size : Int) -> TimeseriesdecomphpCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_cluster_len(s : TimeseriesdecomphpCluster) -> Int { s.size }
+pub fn TimeseriesdecomphpCluster::len(self : TimeseriesdecomphpCluster) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_cluster_get(s : TimeseriesdecomphpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpCluster::get(self : TimeseriesdecomphpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_cluster_set(s : TimeseriesdecomphpCluster, i : Int, v : Double) -> TimeseriesdecomphpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCluster::set(self : TimeseriesdecomphpCluster, i : Int, v : Double) -> TimeseriesdecomphpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cluster_sum(s : TimeseriesdecomphpCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpCluster::sum(self : TimeseriesdecomphpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_cluster_mean(s : TimeseriesdecomphpCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpCluster::mean(self : TimeseriesdecomphpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_cluster_scale(s : TimeseriesdecomphpCluster, f : Double) -> TimeseriesdecomphpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCluster::scale(self : TimeseriesdecomphpCluster, f : Double) -> TimeseriesdecomphpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cluster_add(a : TimeseriesdecomphpCluster, b : TimeseriesdecomphpCluster) -> TimeseriesdecomphpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpCluster::add(self : TimeseriesdecomphpCluster, other : TimeseriesdecomphpCluster) -> TimeseriesdecomphpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cluster_copy(s : TimeseriesdecomphpCluster) -> TimeseriesdecomphpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCluster::copy(self : TimeseriesdecomphpCluster) -> TimeseriesdecomphpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cluster_fill(s : TimeseriesdecomphpCluster, v : Double) -> TimeseriesdecomphpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCluster::fill(self : TimeseriesdecomphpCluster, v : Double) -> TimeseriesdecomphpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cluster_min(s : TimeseriesdecomphpCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpCluster::min(self : TimeseriesdecomphpCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_cluster_max(s : TimeseriesdecomphpCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpCluster::max(self : TimeseriesdecomphpCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_cluster_to_string(s : TimeseriesdecomphpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpCluster::to_string(self : TimeseriesdecomphpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpModel {
@@ -708,45 +708,45 @@ pub fn timeseries_decomp_hp_model_make(size : Int) -> TimeseriesdecomphpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_model_len(s : TimeseriesdecomphpModel) -> Int { s.size }
+pub fn TimeseriesdecomphpModel::len(self : TimeseriesdecomphpModel) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_model_get(s : TimeseriesdecomphpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpModel::get(self : TimeseriesdecomphpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_model_set(s : TimeseriesdecomphpModel, i : Int, v : Double) -> TimeseriesdecomphpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpModel::set(self : TimeseriesdecomphpModel, i : Int, v : Double) -> TimeseriesdecomphpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_model_sum(s : TimeseriesdecomphpModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpModel::sum(self : TimeseriesdecomphpModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_model_mean(s : TimeseriesdecomphpModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpModel::mean(self : TimeseriesdecomphpModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_model_scale(s : TimeseriesdecomphpModel, f : Double) -> TimeseriesdecomphpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpModel::scale(self : TimeseriesdecomphpModel, f : Double) -> TimeseriesdecomphpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_model_add(a : TimeseriesdecomphpModel, b : TimeseriesdecomphpModel) -> TimeseriesdecomphpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpModel::add(self : TimeseriesdecomphpModel, other : TimeseriesdecomphpModel) -> TimeseriesdecomphpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_model_copy(s : TimeseriesdecomphpModel) -> TimeseriesdecomphpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpModel::copy(self : TimeseriesdecomphpModel) -> TimeseriesdecomphpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_model_fill(s : TimeseriesdecomphpModel, v : Double) -> TimeseriesdecomphpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpModel::fill(self : TimeseriesdecomphpModel, v : Double) -> TimeseriesdecomphpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_model_min(s : TimeseriesdecomphpModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpModel::min(self : TimeseriesdecomphpModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_model_max(s : TimeseriesdecomphpModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpModel::max(self : TimeseriesdecomphpModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_model_to_string(s : TimeseriesdecomphpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpModel::to_string(self : TimeseriesdecomphpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_decomp_hp_layer_make(size : Int) -> TimeseriesdecomphpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_layer_len(s : TimeseriesdecomphpLayer) -> Int { s.size }
+pub fn TimeseriesdecomphpLayer::len(self : TimeseriesdecomphpLayer) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_layer_get(s : TimeseriesdecomphpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpLayer::get(self : TimeseriesdecomphpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_layer_set(s : TimeseriesdecomphpLayer, i : Int, v : Double) -> TimeseriesdecomphpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpLayer::set(self : TimeseriesdecomphpLayer, i : Int, v : Double) -> TimeseriesdecomphpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_layer_sum(s : TimeseriesdecomphpLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpLayer::sum(self : TimeseriesdecomphpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_layer_mean(s : TimeseriesdecomphpLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpLayer::mean(self : TimeseriesdecomphpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_layer_scale(s : TimeseriesdecomphpLayer, f : Double) -> TimeseriesdecomphpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpLayer::scale(self : TimeseriesdecomphpLayer, f : Double) -> TimeseriesdecomphpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_layer_add(a : TimeseriesdecomphpLayer, b : TimeseriesdecomphpLayer) -> TimeseriesdecomphpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpLayer::add(self : TimeseriesdecomphpLayer, other : TimeseriesdecomphpLayer) -> TimeseriesdecomphpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_layer_copy(s : TimeseriesdecomphpLayer) -> TimeseriesdecomphpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpLayer::copy(self : TimeseriesdecomphpLayer) -> TimeseriesdecomphpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_layer_fill(s : TimeseriesdecomphpLayer, v : Double) -> TimeseriesdecomphpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpLayer::fill(self : TimeseriesdecomphpLayer, v : Double) -> TimeseriesdecomphpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_layer_min(s : TimeseriesdecomphpLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpLayer::min(self : TimeseriesdecomphpLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_layer_max(s : TimeseriesdecomphpLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpLayer::max(self : TimeseriesdecomphpLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_layer_to_string(s : TimeseriesdecomphpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpLayer::to_string(self : TimeseriesdecomphpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_decomp_hp_buffer_make(size : Int) -> TimeseriesdecomphpBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_buffer_len(s : TimeseriesdecomphpBuffer) -> Int { s.size }
+pub fn TimeseriesdecomphpBuffer::len(self : TimeseriesdecomphpBuffer) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_buffer_get(s : TimeseriesdecomphpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpBuffer::get(self : TimeseriesdecomphpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_buffer_set(s : TimeseriesdecomphpBuffer, i : Int, v : Double) -> TimeseriesdecomphpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpBuffer::set(self : TimeseriesdecomphpBuffer, i : Int, v : Double) -> TimeseriesdecomphpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_buffer_sum(s : TimeseriesdecomphpBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpBuffer::sum(self : TimeseriesdecomphpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_buffer_mean(s : TimeseriesdecomphpBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpBuffer::mean(self : TimeseriesdecomphpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_buffer_scale(s : TimeseriesdecomphpBuffer, f : Double) -> TimeseriesdecomphpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpBuffer::scale(self : TimeseriesdecomphpBuffer, f : Double) -> TimeseriesdecomphpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_buffer_add(a : TimeseriesdecomphpBuffer, b : TimeseriesdecomphpBuffer) -> TimeseriesdecomphpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpBuffer::add(self : TimeseriesdecomphpBuffer, other : TimeseriesdecomphpBuffer) -> TimeseriesdecomphpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_buffer_copy(s : TimeseriesdecomphpBuffer) -> TimeseriesdecomphpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpBuffer::copy(self : TimeseriesdecomphpBuffer) -> TimeseriesdecomphpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_buffer_fill(s : TimeseriesdecomphpBuffer, v : Double) -> TimeseriesdecomphpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpBuffer::fill(self : TimeseriesdecomphpBuffer, v : Double) -> TimeseriesdecomphpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_buffer_min(s : TimeseriesdecomphpBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpBuffer::min(self : TimeseriesdecomphpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_buffer_max(s : TimeseriesdecomphpBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpBuffer::max(self : TimeseriesdecomphpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_buffer_to_string(s : TimeseriesdecomphpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpBuffer::to_string(self : TimeseriesdecomphpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_decomp_hp_cursor_make(size : Int) -> TimeseriesdecomphpCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_cursor_len(s : TimeseriesdecomphpCursor) -> Int { s.size }
+pub fn TimeseriesdecomphpCursor::len(self : TimeseriesdecomphpCursor) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_cursor_get(s : TimeseriesdecomphpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpCursor::get(self : TimeseriesdecomphpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_cursor_set(s : TimeseriesdecomphpCursor, i : Int, v : Double) -> TimeseriesdecomphpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCursor::set(self : TimeseriesdecomphpCursor, i : Int, v : Double) -> TimeseriesdecomphpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cursor_sum(s : TimeseriesdecomphpCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpCursor::sum(self : TimeseriesdecomphpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_cursor_mean(s : TimeseriesdecomphpCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpCursor::mean(self : TimeseriesdecomphpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_cursor_scale(s : TimeseriesdecomphpCursor, f : Double) -> TimeseriesdecomphpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCursor::scale(self : TimeseriesdecomphpCursor, f : Double) -> TimeseriesdecomphpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cursor_add(a : TimeseriesdecomphpCursor, b : TimeseriesdecomphpCursor) -> TimeseriesdecomphpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpCursor::add(self : TimeseriesdecomphpCursor, other : TimeseriesdecomphpCursor) -> TimeseriesdecomphpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cursor_copy(s : TimeseriesdecomphpCursor) -> TimeseriesdecomphpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCursor::copy(self : TimeseriesdecomphpCursor) -> TimeseriesdecomphpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cursor_fill(s : TimeseriesdecomphpCursor, v : Double) -> TimeseriesdecomphpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpCursor::fill(self : TimeseriesdecomphpCursor, v : Double) -> TimeseriesdecomphpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_cursor_min(s : TimeseriesdecomphpCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpCursor::min(self : TimeseriesdecomphpCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_cursor_max(s : TimeseriesdecomphpCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpCursor::max(self : TimeseriesdecomphpCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_cursor_to_string(s : TimeseriesdecomphpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpCursor::to_string(self : TimeseriesdecomphpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpView {
@@ -912,45 +912,45 @@ pub fn timeseries_decomp_hp_view_make(size : Int) -> TimeseriesdecomphpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_view_len(s : TimeseriesdecomphpView) -> Int { s.size }
+pub fn TimeseriesdecomphpView::len(self : TimeseriesdecomphpView) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_view_get(s : TimeseriesdecomphpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpView::get(self : TimeseriesdecomphpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_view_set(s : TimeseriesdecomphpView, i : Int, v : Double) -> TimeseriesdecomphpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpView::set(self : TimeseriesdecomphpView, i : Int, v : Double) -> TimeseriesdecomphpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_view_sum(s : TimeseriesdecomphpView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpView::sum(self : TimeseriesdecomphpView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_view_mean(s : TimeseriesdecomphpView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpView::mean(self : TimeseriesdecomphpView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_view_scale(s : TimeseriesdecomphpView, f : Double) -> TimeseriesdecomphpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpView::scale(self : TimeseriesdecomphpView, f : Double) -> TimeseriesdecomphpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_view_add(a : TimeseriesdecomphpView, b : TimeseriesdecomphpView) -> TimeseriesdecomphpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpView::add(self : TimeseriesdecomphpView, other : TimeseriesdecomphpView) -> TimeseriesdecomphpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_view_copy(s : TimeseriesdecomphpView) -> TimeseriesdecomphpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpView::copy(self : TimeseriesdecomphpView) -> TimeseriesdecomphpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_view_fill(s : TimeseriesdecomphpView, v : Double) -> TimeseriesdecomphpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpView::fill(self : TimeseriesdecomphpView, v : Double) -> TimeseriesdecomphpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_view_min(s : TimeseriesdecomphpView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpView::min(self : TimeseriesdecomphpView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_view_max(s : TimeseriesdecomphpView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpView::max(self : TimeseriesdecomphpView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_view_to_string(s : TimeseriesdecomphpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpView::to_string(self : TimeseriesdecomphpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpRange {
@@ -963,45 +963,45 @@ pub fn timeseries_decomp_hp_range_make(size : Int) -> TimeseriesdecomphpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_range_len(s : TimeseriesdecomphpRange) -> Int { s.size }
+pub fn TimeseriesdecomphpRange::len(self : TimeseriesdecomphpRange) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_range_get(s : TimeseriesdecomphpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpRange::get(self : TimeseriesdecomphpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_range_set(s : TimeseriesdecomphpRange, i : Int, v : Double) -> TimeseriesdecomphpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpRange::set(self : TimeseriesdecomphpRange, i : Int, v : Double) -> TimeseriesdecomphpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_range_sum(s : TimeseriesdecomphpRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpRange::sum(self : TimeseriesdecomphpRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_range_mean(s : TimeseriesdecomphpRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpRange::mean(self : TimeseriesdecomphpRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_range_scale(s : TimeseriesdecomphpRange, f : Double) -> TimeseriesdecomphpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpRange::scale(self : TimeseriesdecomphpRange, f : Double) -> TimeseriesdecomphpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_range_add(a : TimeseriesdecomphpRange, b : TimeseriesdecomphpRange) -> TimeseriesdecomphpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpRange::add(self : TimeseriesdecomphpRange, other : TimeseriesdecomphpRange) -> TimeseriesdecomphpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_range_copy(s : TimeseriesdecomphpRange) -> TimeseriesdecomphpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpRange::copy(self : TimeseriesdecomphpRange) -> TimeseriesdecomphpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_range_fill(s : TimeseriesdecomphpRange, v : Double) -> TimeseriesdecomphpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpRange::fill(self : TimeseriesdecomphpRange, v : Double) -> TimeseriesdecomphpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_range_min(s : TimeseriesdecomphpRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpRange::min(self : TimeseriesdecomphpRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_range_max(s : TimeseriesdecomphpRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpRange::max(self : TimeseriesdecomphpRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_range_to_string(s : TimeseriesdecomphpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpRange::to_string(self : TimeseriesdecomphpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecomphpSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_decomp_hp_slice_make(size : Int) -> TimeseriesdecomphpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_hp_slice_len(s : TimeseriesdecomphpSlice) -> Int { s.size }
+pub fn TimeseriesdecomphpSlice::len(self : TimeseriesdecomphpSlice) -> Int { self.size }
 
-pub fn timeseries_decomp_hp_slice_get(s : TimeseriesdecomphpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecomphpSlice::get(self : TimeseriesdecomphpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_hp_slice_set(s : TimeseriesdecomphpSlice, i : Int, v : Double) -> TimeseriesdecomphpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpSlice::set(self : TimeseriesdecomphpSlice, i : Int, v : Double) -> TimeseriesdecomphpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_slice_sum(s : TimeseriesdecomphpSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecomphpSlice::sum(self : TimeseriesdecomphpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_hp_slice_mean(s : TimeseriesdecomphpSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecomphpSlice::mean(self : TimeseriesdecomphpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_hp_slice_scale(s : TimeseriesdecomphpSlice, f : Double) -> TimeseriesdecomphpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpSlice::scale(self : TimeseriesdecomphpSlice, f : Double) -> TimeseriesdecomphpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_slice_add(a : TimeseriesdecomphpSlice, b : TimeseriesdecomphpSlice) -> TimeseriesdecomphpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecomphpSlice::add(self : TimeseriesdecomphpSlice, other : TimeseriesdecomphpSlice) -> TimeseriesdecomphpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_slice_copy(s : TimeseriesdecomphpSlice) -> TimeseriesdecomphpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpSlice::copy(self : TimeseriesdecomphpSlice) -> TimeseriesdecomphpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_slice_fill(s : TimeseriesdecomphpSlice, v : Double) -> TimeseriesdecomphpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecomphpSlice::fill(self : TimeseriesdecomphpSlice, v : Double) -> TimeseriesdecomphpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_hp_slice_min(s : TimeseriesdecomphpSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecomphpSlice::min(self : TimeseriesdecomphpSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_hp_slice_max(s : TimeseriesdecomphpSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecomphpSlice::max(self : TimeseriesdecomphpSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_hp_slice_to_string(s : TimeseriesdecomphpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecomphpSlice::to_string(self : TimeseriesdecomphpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

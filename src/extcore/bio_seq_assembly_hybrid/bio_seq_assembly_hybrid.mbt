@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_hybrid_frame_make(size : Int) -> BioseqassemblyhybridFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_len(s : BioseqassemblyhybridFrame) -> Int { s.size }
+pub fn BioseqassemblyhybridFrame::len(self : BioseqassemblyhybridFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_frame_get(s : BioseqassemblyhybridFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridFrame::get(self : BioseqassemblyhybridFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_set(s : BioseqassemblyhybridFrame, i : Int, v : Double) -> BioseqassemblyhybridFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridFrame::set(self : BioseqassemblyhybridFrame, i : Int, v : Double) -> BioseqassemblyhybridFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_sum(s : BioseqassemblyhybridFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridFrame::sum(self : BioseqassemblyhybridFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_frame_mean(s : BioseqassemblyhybridFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridFrame::mean(self : BioseqassemblyhybridFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_frame_scale(s : BioseqassemblyhybridFrame, f : Double) -> BioseqassemblyhybridFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridFrame::scale(self : BioseqassemblyhybridFrame, f : Double) -> BioseqassemblyhybridFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_add(a : BioseqassemblyhybridFrame, b : BioseqassemblyhybridFrame) -> BioseqassemblyhybridFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridFrame::add(self : BioseqassemblyhybridFrame, other : BioseqassemblyhybridFrame) -> BioseqassemblyhybridFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_copy(s : BioseqassemblyhybridFrame) -> BioseqassemblyhybridFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridFrame::copy(self : BioseqassemblyhybridFrame) -> BioseqassemblyhybridFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_fill(s : BioseqassemblyhybridFrame, v : Double) -> BioseqassemblyhybridFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridFrame::fill(self : BioseqassemblyhybridFrame, v : Double) -> BioseqassemblyhybridFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_frame_min(s : BioseqassemblyhybridFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridFrame::min(self : BioseqassemblyhybridFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_frame_max(s : BioseqassemblyhybridFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridFrame::max(self : BioseqassemblyhybridFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_frame_to_string(s : BioseqassemblyhybridFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridFrame::to_string(self : BioseqassemblyhybridFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_hybrid_table_make(size : Int) -> BioseqassemblyhybridTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_table_len(s : BioseqassemblyhybridTable) -> Int { s.size }
+pub fn BioseqassemblyhybridTable::len(self : BioseqassemblyhybridTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_table_get(s : BioseqassemblyhybridTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridTable::get(self : BioseqassemblyhybridTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_table_set(s : BioseqassemblyhybridTable, i : Int, v : Double) -> BioseqassemblyhybridTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridTable::set(self : BioseqassemblyhybridTable, i : Int, v : Double) -> BioseqassemblyhybridTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_table_sum(s : BioseqassemblyhybridTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridTable::sum(self : BioseqassemblyhybridTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_table_mean(s : BioseqassemblyhybridTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridTable::mean(self : BioseqassemblyhybridTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_table_scale(s : BioseqassemblyhybridTable, f : Double) -> BioseqassemblyhybridTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridTable::scale(self : BioseqassemblyhybridTable, f : Double) -> BioseqassemblyhybridTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_table_add(a : BioseqassemblyhybridTable, b : BioseqassemblyhybridTable) -> BioseqassemblyhybridTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridTable::add(self : BioseqassemblyhybridTable, other : BioseqassemblyhybridTable) -> BioseqassemblyhybridTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_table_copy(s : BioseqassemblyhybridTable) -> BioseqassemblyhybridTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridTable::copy(self : BioseqassemblyhybridTable) -> BioseqassemblyhybridTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_table_fill(s : BioseqassemblyhybridTable, v : Double) -> BioseqassemblyhybridTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridTable::fill(self : BioseqassemblyhybridTable, v : Double) -> BioseqassemblyhybridTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_table_min(s : BioseqassemblyhybridTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridTable::min(self : BioseqassemblyhybridTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_table_max(s : BioseqassemblyhybridTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridTable::max(self : BioseqassemblyhybridTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_table_to_string(s : BioseqassemblyhybridTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridTable::to_string(self : BioseqassemblyhybridTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_hybrid_graphn_make(size : Int) -> BioseqassemblyhybridGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_len(s : BioseqassemblyhybridGraphN) -> Int { s.size }
+pub fn BioseqassemblyhybridGraphN::len(self : BioseqassemblyhybridGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_graphn_get(s : BioseqassemblyhybridGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridGraphN::get(self : BioseqassemblyhybridGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_set(s : BioseqassemblyhybridGraphN, i : Int, v : Double) -> BioseqassemblyhybridGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridGraphN::set(self : BioseqassemblyhybridGraphN, i : Int, v : Double) -> BioseqassemblyhybridGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_sum(s : BioseqassemblyhybridGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridGraphN::sum(self : BioseqassemblyhybridGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_graphn_mean(s : BioseqassemblyhybridGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridGraphN::mean(self : BioseqassemblyhybridGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_graphn_scale(s : BioseqassemblyhybridGraphN, f : Double) -> BioseqassemblyhybridGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridGraphN::scale(self : BioseqassemblyhybridGraphN, f : Double) -> BioseqassemblyhybridGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_add(a : BioseqassemblyhybridGraphN, b : BioseqassemblyhybridGraphN) -> BioseqassemblyhybridGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridGraphN::add(self : BioseqassemblyhybridGraphN, other : BioseqassemblyhybridGraphN) -> BioseqassemblyhybridGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_copy(s : BioseqassemblyhybridGraphN) -> BioseqassemblyhybridGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridGraphN::copy(self : BioseqassemblyhybridGraphN) -> BioseqassemblyhybridGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_fill(s : BioseqassemblyhybridGraphN, v : Double) -> BioseqassemblyhybridGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridGraphN::fill(self : BioseqassemblyhybridGraphN, v : Double) -> BioseqassemblyhybridGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_graphn_min(s : BioseqassemblyhybridGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridGraphN::min(self : BioseqassemblyhybridGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_graphn_max(s : BioseqassemblyhybridGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridGraphN::max(self : BioseqassemblyhybridGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_graphn_to_string(s : BioseqassemblyhybridGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridGraphN::to_string(self : BioseqassemblyhybridGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_hybrid_node_make(size : Int) -> BioseqassemblyhybridNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_node_len(s : BioseqassemblyhybridNode) -> Int { s.size }
+pub fn BioseqassemblyhybridNode::len(self : BioseqassemblyhybridNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_node_get(s : BioseqassemblyhybridNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridNode::get(self : BioseqassemblyhybridNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_node_set(s : BioseqassemblyhybridNode, i : Int, v : Double) -> BioseqassemblyhybridNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridNode::set(self : BioseqassemblyhybridNode, i : Int, v : Double) -> BioseqassemblyhybridNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_node_sum(s : BioseqassemblyhybridNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridNode::sum(self : BioseqassemblyhybridNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_node_mean(s : BioseqassemblyhybridNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridNode::mean(self : BioseqassemblyhybridNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_node_scale(s : BioseqassemblyhybridNode, f : Double) -> BioseqassemblyhybridNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridNode::scale(self : BioseqassemblyhybridNode, f : Double) -> BioseqassemblyhybridNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_node_add(a : BioseqassemblyhybridNode, b : BioseqassemblyhybridNode) -> BioseqassemblyhybridNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridNode::add(self : BioseqassemblyhybridNode, other : BioseqassemblyhybridNode) -> BioseqassemblyhybridNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_node_copy(s : BioseqassemblyhybridNode) -> BioseqassemblyhybridNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridNode::copy(self : BioseqassemblyhybridNode) -> BioseqassemblyhybridNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_node_fill(s : BioseqassemblyhybridNode, v : Double) -> BioseqassemblyhybridNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridNode::fill(self : BioseqassemblyhybridNode, v : Double) -> BioseqassemblyhybridNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_node_min(s : BioseqassemblyhybridNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridNode::min(self : BioseqassemblyhybridNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_node_max(s : BioseqassemblyhybridNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridNode::max(self : BioseqassemblyhybridNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_node_to_string(s : BioseqassemblyhybridNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridNode::to_string(self : BioseqassemblyhybridNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_hybrid_edge_make(size : Int) -> BioseqassemblyhybridEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_len(s : BioseqassemblyhybridEdge) -> Int { s.size }
+pub fn BioseqassemblyhybridEdge::len(self : BioseqassemblyhybridEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_edge_get(s : BioseqassemblyhybridEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridEdge::get(self : BioseqassemblyhybridEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_set(s : BioseqassemblyhybridEdge, i : Int, v : Double) -> BioseqassemblyhybridEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridEdge::set(self : BioseqassemblyhybridEdge, i : Int, v : Double) -> BioseqassemblyhybridEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_sum(s : BioseqassemblyhybridEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridEdge::sum(self : BioseqassemblyhybridEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_edge_mean(s : BioseqassemblyhybridEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridEdge::mean(self : BioseqassemblyhybridEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_edge_scale(s : BioseqassemblyhybridEdge, f : Double) -> BioseqassemblyhybridEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridEdge::scale(self : BioseqassemblyhybridEdge, f : Double) -> BioseqassemblyhybridEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_add(a : BioseqassemblyhybridEdge, b : BioseqassemblyhybridEdge) -> BioseqassemblyhybridEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridEdge::add(self : BioseqassemblyhybridEdge, other : BioseqassemblyhybridEdge) -> BioseqassemblyhybridEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_copy(s : BioseqassemblyhybridEdge) -> BioseqassemblyhybridEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridEdge::copy(self : BioseqassemblyhybridEdge) -> BioseqassemblyhybridEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_fill(s : BioseqassemblyhybridEdge, v : Double) -> BioseqassemblyhybridEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridEdge::fill(self : BioseqassemblyhybridEdge, v : Double) -> BioseqassemblyhybridEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_edge_min(s : BioseqassemblyhybridEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridEdge::min(self : BioseqassemblyhybridEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_edge_max(s : BioseqassemblyhybridEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridEdge::max(self : BioseqassemblyhybridEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_edge_to_string(s : BioseqassemblyhybridEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridEdge::to_string(self : BioseqassemblyhybridEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_hybrid_path_make(size : Int) -> BioseqassemblyhybridPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_path_len(s : BioseqassemblyhybridPath) -> Int { s.size }
+pub fn BioseqassemblyhybridPath::len(self : BioseqassemblyhybridPath) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_path_get(s : BioseqassemblyhybridPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridPath::get(self : BioseqassemblyhybridPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_path_set(s : BioseqassemblyhybridPath, i : Int, v : Double) -> BioseqassemblyhybridPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridPath::set(self : BioseqassemblyhybridPath, i : Int, v : Double) -> BioseqassemblyhybridPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_path_sum(s : BioseqassemblyhybridPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridPath::sum(self : BioseqassemblyhybridPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_path_mean(s : BioseqassemblyhybridPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridPath::mean(self : BioseqassemblyhybridPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_path_scale(s : BioseqassemblyhybridPath, f : Double) -> BioseqassemblyhybridPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridPath::scale(self : BioseqassemblyhybridPath, f : Double) -> BioseqassemblyhybridPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_path_add(a : BioseqassemblyhybridPath, b : BioseqassemblyhybridPath) -> BioseqassemblyhybridPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridPath::add(self : BioseqassemblyhybridPath, other : BioseqassemblyhybridPath) -> BioseqassemblyhybridPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_path_copy(s : BioseqassemblyhybridPath) -> BioseqassemblyhybridPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridPath::copy(self : BioseqassemblyhybridPath) -> BioseqassemblyhybridPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_path_fill(s : BioseqassemblyhybridPath, v : Double) -> BioseqassemblyhybridPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridPath::fill(self : BioseqassemblyhybridPath, v : Double) -> BioseqassemblyhybridPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_path_min(s : BioseqassemblyhybridPath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridPath::min(self : BioseqassemblyhybridPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_path_max(s : BioseqassemblyhybridPath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridPath::max(self : BioseqassemblyhybridPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_path_to_string(s : BioseqassemblyhybridPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridPath::to_string(self : BioseqassemblyhybridPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_hybrid_cluster_make(size : Int) -> BioseqassemblyhybridC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_len(s : BioseqassemblyhybridCluster) -> Int { s.size }
+pub fn BioseqassemblyhybridCluster::len(self : BioseqassemblyhybridCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_cluster_get(s : BioseqassemblyhybridCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridCluster::get(self : BioseqassemblyhybridCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_set(s : BioseqassemblyhybridCluster, i : Int, v : Double) -> BioseqassemblyhybridCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCluster::set(self : BioseqassemblyhybridCluster, i : Int, v : Double) -> BioseqassemblyhybridCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_sum(s : BioseqassemblyhybridCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridCluster::sum(self : BioseqassemblyhybridCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cluster_mean(s : BioseqassemblyhybridCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridCluster::mean(self : BioseqassemblyhybridCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cluster_scale(s : BioseqassemblyhybridCluster, f : Double) -> BioseqassemblyhybridCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCluster::scale(self : BioseqassemblyhybridCluster, f : Double) -> BioseqassemblyhybridCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_add(a : BioseqassemblyhybridCluster, b : BioseqassemblyhybridCluster) -> BioseqassemblyhybridCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridCluster::add(self : BioseqassemblyhybridCluster, other : BioseqassemblyhybridCluster) -> BioseqassemblyhybridCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_copy(s : BioseqassemblyhybridCluster) -> BioseqassemblyhybridCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCluster::copy(self : BioseqassemblyhybridCluster) -> BioseqassemblyhybridCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_fill(s : BioseqassemblyhybridCluster, v : Double) -> BioseqassemblyhybridCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCluster::fill(self : BioseqassemblyhybridCluster, v : Double) -> BioseqassemblyhybridCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cluster_min(s : BioseqassemblyhybridCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridCluster::min(self : BioseqassemblyhybridCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cluster_max(s : BioseqassemblyhybridCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridCluster::max(self : BioseqassemblyhybridCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cluster_to_string(s : BioseqassemblyhybridCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridCluster::to_string(self : BioseqassemblyhybridCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_hybrid_model_make(size : Int) -> BioseqassemblyhybridMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_model_len(s : BioseqassemblyhybridModel) -> Int { s.size }
+pub fn BioseqassemblyhybridModel::len(self : BioseqassemblyhybridModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_model_get(s : BioseqassemblyhybridModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridModel::get(self : BioseqassemblyhybridModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_model_set(s : BioseqassemblyhybridModel, i : Int, v : Double) -> BioseqassemblyhybridModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridModel::set(self : BioseqassemblyhybridModel, i : Int, v : Double) -> BioseqassemblyhybridModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_model_sum(s : BioseqassemblyhybridModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridModel::sum(self : BioseqassemblyhybridModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_model_mean(s : BioseqassemblyhybridModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridModel::mean(self : BioseqassemblyhybridModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_model_scale(s : BioseqassemblyhybridModel, f : Double) -> BioseqassemblyhybridModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridModel::scale(self : BioseqassemblyhybridModel, f : Double) -> BioseqassemblyhybridModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_model_add(a : BioseqassemblyhybridModel, b : BioseqassemblyhybridModel) -> BioseqassemblyhybridModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridModel::add(self : BioseqassemblyhybridModel, other : BioseqassemblyhybridModel) -> BioseqassemblyhybridModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_model_copy(s : BioseqassemblyhybridModel) -> BioseqassemblyhybridModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridModel::copy(self : BioseqassemblyhybridModel) -> BioseqassemblyhybridModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_model_fill(s : BioseqassemblyhybridModel, v : Double) -> BioseqassemblyhybridModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridModel::fill(self : BioseqassemblyhybridModel, v : Double) -> BioseqassemblyhybridModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_model_min(s : BioseqassemblyhybridModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridModel::min(self : BioseqassemblyhybridModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_model_max(s : BioseqassemblyhybridModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridModel::max(self : BioseqassemblyhybridModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_model_to_string(s : BioseqassemblyhybridModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridModel::to_string(self : BioseqassemblyhybridModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_hybrid_layer_make(size : Int) -> BioseqassemblyhybridLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_len(s : BioseqassemblyhybridLayer) -> Int { s.size }
+pub fn BioseqassemblyhybridLayer::len(self : BioseqassemblyhybridLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_layer_get(s : BioseqassemblyhybridLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridLayer::get(self : BioseqassemblyhybridLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_set(s : BioseqassemblyhybridLayer, i : Int, v : Double) -> BioseqassemblyhybridLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridLayer::set(self : BioseqassemblyhybridLayer, i : Int, v : Double) -> BioseqassemblyhybridLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_sum(s : BioseqassemblyhybridLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridLayer::sum(self : BioseqassemblyhybridLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_layer_mean(s : BioseqassemblyhybridLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridLayer::mean(self : BioseqassemblyhybridLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_layer_scale(s : BioseqassemblyhybridLayer, f : Double) -> BioseqassemblyhybridLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridLayer::scale(self : BioseqassemblyhybridLayer, f : Double) -> BioseqassemblyhybridLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_add(a : BioseqassemblyhybridLayer, b : BioseqassemblyhybridLayer) -> BioseqassemblyhybridLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridLayer::add(self : BioseqassemblyhybridLayer, other : BioseqassemblyhybridLayer) -> BioseqassemblyhybridLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_copy(s : BioseqassemblyhybridLayer) -> BioseqassemblyhybridLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridLayer::copy(self : BioseqassemblyhybridLayer) -> BioseqassemblyhybridLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_fill(s : BioseqassemblyhybridLayer, v : Double) -> BioseqassemblyhybridLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridLayer::fill(self : BioseqassemblyhybridLayer, v : Double) -> BioseqassemblyhybridLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_layer_min(s : BioseqassemblyhybridLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridLayer::min(self : BioseqassemblyhybridLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_layer_max(s : BioseqassemblyhybridLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridLayer::max(self : BioseqassemblyhybridLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_layer_to_string(s : BioseqassemblyhybridLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridLayer::to_string(self : BioseqassemblyhybridLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_hybrid_buffer_make(size : Int) -> BioseqassemblyhybridBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_len(s : BioseqassemblyhybridBuffer) -> Int { s.size }
+pub fn BioseqassemblyhybridBuffer::len(self : BioseqassemblyhybridBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_buffer_get(s : BioseqassemblyhybridBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridBuffer::get(self : BioseqassemblyhybridBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_set(s : BioseqassemblyhybridBuffer, i : Int, v : Double) -> BioseqassemblyhybridBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridBuffer::set(self : BioseqassemblyhybridBuffer, i : Int, v : Double) -> BioseqassemblyhybridBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_sum(s : BioseqassemblyhybridBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridBuffer::sum(self : BioseqassemblyhybridBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_buffer_mean(s : BioseqassemblyhybridBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridBuffer::mean(self : BioseqassemblyhybridBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_buffer_scale(s : BioseqassemblyhybridBuffer, f : Double) -> BioseqassemblyhybridBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridBuffer::scale(self : BioseqassemblyhybridBuffer, f : Double) -> BioseqassemblyhybridBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_add(a : BioseqassemblyhybridBuffer, b : BioseqassemblyhybridBuffer) -> BioseqassemblyhybridBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridBuffer::add(self : BioseqassemblyhybridBuffer, other : BioseqassemblyhybridBuffer) -> BioseqassemblyhybridBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_copy(s : BioseqassemblyhybridBuffer) -> BioseqassemblyhybridBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridBuffer::copy(self : BioseqassemblyhybridBuffer) -> BioseqassemblyhybridBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_fill(s : BioseqassemblyhybridBuffer, v : Double) -> BioseqassemblyhybridBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridBuffer::fill(self : BioseqassemblyhybridBuffer, v : Double) -> BioseqassemblyhybridBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_buffer_min(s : BioseqassemblyhybridBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridBuffer::min(self : BioseqassemblyhybridBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_buffer_max(s : BioseqassemblyhybridBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridBuffer::max(self : BioseqassemblyhybridBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_buffer_to_string(s : BioseqassemblyhybridBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridBuffer::to_string(self : BioseqassemblyhybridBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_hybrid_cursor_make(size : Int) -> BioseqassemblyhybridCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_len(s : BioseqassemblyhybridCursor) -> Int { s.size }
+pub fn BioseqassemblyhybridCursor::len(self : BioseqassemblyhybridCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_cursor_get(s : BioseqassemblyhybridCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridCursor::get(self : BioseqassemblyhybridCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_set(s : BioseqassemblyhybridCursor, i : Int, v : Double) -> BioseqassemblyhybridCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCursor::set(self : BioseqassemblyhybridCursor, i : Int, v : Double) -> BioseqassemblyhybridCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_sum(s : BioseqassemblyhybridCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridCursor::sum(self : BioseqassemblyhybridCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cursor_mean(s : BioseqassemblyhybridCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridCursor::mean(self : BioseqassemblyhybridCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cursor_scale(s : BioseqassemblyhybridCursor, f : Double) -> BioseqassemblyhybridCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCursor::scale(self : BioseqassemblyhybridCursor, f : Double) -> BioseqassemblyhybridCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_add(a : BioseqassemblyhybridCursor, b : BioseqassemblyhybridCursor) -> BioseqassemblyhybridCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridCursor::add(self : BioseqassemblyhybridCursor, other : BioseqassemblyhybridCursor) -> BioseqassemblyhybridCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_copy(s : BioseqassemblyhybridCursor) -> BioseqassemblyhybridCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCursor::copy(self : BioseqassemblyhybridCursor) -> BioseqassemblyhybridCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_fill(s : BioseqassemblyhybridCursor, v : Double) -> BioseqassemblyhybridCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridCursor::fill(self : BioseqassemblyhybridCursor, v : Double) -> BioseqassemblyhybridCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_cursor_min(s : BioseqassemblyhybridCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridCursor::min(self : BioseqassemblyhybridCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cursor_max(s : BioseqassemblyhybridCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridCursor::max(self : BioseqassemblyhybridCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_cursor_to_string(s : BioseqassemblyhybridCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridCursor::to_string(self : BioseqassemblyhybridCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_hybrid_view_make(size : Int) -> BioseqassemblyhybridView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_view_len(s : BioseqassemblyhybridView) -> Int { s.size }
+pub fn BioseqassemblyhybridView::len(self : BioseqassemblyhybridView) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_view_get(s : BioseqassemblyhybridView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridView::get(self : BioseqassemblyhybridView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_view_set(s : BioseqassemblyhybridView, i : Int, v : Double) -> BioseqassemblyhybridView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridView::set(self : BioseqassemblyhybridView, i : Int, v : Double) -> BioseqassemblyhybridView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_view_sum(s : BioseqassemblyhybridView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridView::sum(self : BioseqassemblyhybridView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_view_mean(s : BioseqassemblyhybridView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridView::mean(self : BioseqassemblyhybridView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_view_scale(s : BioseqassemblyhybridView, f : Double) -> BioseqassemblyhybridView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridView::scale(self : BioseqassemblyhybridView, f : Double) -> BioseqassemblyhybridView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_view_add(a : BioseqassemblyhybridView, b : BioseqassemblyhybridView) -> BioseqassemblyhybridView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridView::add(self : BioseqassemblyhybridView, other : BioseqassemblyhybridView) -> BioseqassemblyhybridView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_view_copy(s : BioseqassemblyhybridView) -> BioseqassemblyhybridView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridView::copy(self : BioseqassemblyhybridView) -> BioseqassemblyhybridView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_view_fill(s : BioseqassemblyhybridView, v : Double) -> BioseqassemblyhybridView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridView::fill(self : BioseqassemblyhybridView, v : Double) -> BioseqassemblyhybridView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_view_min(s : BioseqassemblyhybridView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridView::min(self : BioseqassemblyhybridView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_view_max(s : BioseqassemblyhybridView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridView::max(self : BioseqassemblyhybridView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_view_to_string(s : BioseqassemblyhybridView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridView::to_string(self : BioseqassemblyhybridView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_hybrid_range_make(size : Int) -> BioseqassemblyhybridRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_range_len(s : BioseqassemblyhybridRange) -> Int { s.size }
+pub fn BioseqassemblyhybridRange::len(self : BioseqassemblyhybridRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_range_get(s : BioseqassemblyhybridRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridRange::get(self : BioseqassemblyhybridRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_range_set(s : BioseqassemblyhybridRange, i : Int, v : Double) -> BioseqassemblyhybridRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridRange::set(self : BioseqassemblyhybridRange, i : Int, v : Double) -> BioseqassemblyhybridRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_range_sum(s : BioseqassemblyhybridRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridRange::sum(self : BioseqassemblyhybridRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_range_mean(s : BioseqassemblyhybridRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridRange::mean(self : BioseqassemblyhybridRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_range_scale(s : BioseqassemblyhybridRange, f : Double) -> BioseqassemblyhybridRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridRange::scale(self : BioseqassemblyhybridRange, f : Double) -> BioseqassemblyhybridRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_range_add(a : BioseqassemblyhybridRange, b : BioseqassemblyhybridRange) -> BioseqassemblyhybridRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridRange::add(self : BioseqassemblyhybridRange, other : BioseqassemblyhybridRange) -> BioseqassemblyhybridRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_range_copy(s : BioseqassemblyhybridRange) -> BioseqassemblyhybridRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridRange::copy(self : BioseqassemblyhybridRange) -> BioseqassemblyhybridRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_range_fill(s : BioseqassemblyhybridRange, v : Double) -> BioseqassemblyhybridRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridRange::fill(self : BioseqassemblyhybridRange, v : Double) -> BioseqassemblyhybridRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_range_min(s : BioseqassemblyhybridRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridRange::min(self : BioseqassemblyhybridRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_range_max(s : BioseqassemblyhybridRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridRange::max(self : BioseqassemblyhybridRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_range_to_string(s : BioseqassemblyhybridRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridRange::to_string(self : BioseqassemblyhybridRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyhybridSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_hybrid_slice_make(size : Int) -> BioseqassemblyhybridSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_len(s : BioseqassemblyhybridSlice) -> Int { s.size }
+pub fn BioseqassemblyhybridSlice::len(self : BioseqassemblyhybridSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_hybrid_slice_get(s : BioseqassemblyhybridSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyhybridSlice::get(self : BioseqassemblyhybridSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_set(s : BioseqassemblyhybridSlice, i : Int, v : Double) -> BioseqassemblyhybridSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridSlice::set(self : BioseqassemblyhybridSlice, i : Int, v : Double) -> BioseqassemblyhybridSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_sum(s : BioseqassemblyhybridSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyhybridSlice::sum(self : BioseqassemblyhybridSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_hybrid_slice_mean(s : BioseqassemblyhybridSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyhybridSlice::mean(self : BioseqassemblyhybridSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_hybrid_slice_scale(s : BioseqassemblyhybridSlice, f : Double) -> BioseqassemblyhybridSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridSlice::scale(self : BioseqassemblyhybridSlice, f : Double) -> BioseqassemblyhybridSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_add(a : BioseqassemblyhybridSlice, b : BioseqassemblyhybridSlice) -> BioseqassemblyhybridSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyhybridSlice::add(self : BioseqassemblyhybridSlice, other : BioseqassemblyhybridSlice) -> BioseqassemblyhybridSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_copy(s : BioseqassemblyhybridSlice) -> BioseqassemblyhybridSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridSlice::copy(self : BioseqassemblyhybridSlice) -> BioseqassemblyhybridSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_fill(s : BioseqassemblyhybridSlice, v : Double) -> BioseqassemblyhybridSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyhybridSlice::fill(self : BioseqassemblyhybridSlice, v : Double) -> BioseqassemblyhybridSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_hybrid_slice_min(s : BioseqassemblyhybridSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyhybridSlice::min(self : BioseqassemblyhybridSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_hybrid_slice_max(s : BioseqassemblyhybridSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyhybridSlice::max(self : BioseqassemblyhybridSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_hybrid_slice_to_string(s : BioseqassemblyhybridSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyhybridSlice::to_string(self : BioseqassemblyhybridSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

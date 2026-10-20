@@ -351,45 +351,45 @@ pub fn stats_desc_robust_frame_make(size : Int) -> StatsdescrobustFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_frame_len(s : StatsdescrobustFrame) -> Int { s.size }
+pub fn StatsdescrobustFrame::len(self : StatsdescrobustFrame) -> Int { self.size }
 
-pub fn stats_desc_robust_frame_get(s : StatsdescrobustFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustFrame::get(self : StatsdescrobustFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_frame_set(s : StatsdescrobustFrame, i : Int, v : Double) -> StatsdescrobustFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustFrame::set(self : StatsdescrobustFrame, i : Int, v : Double) -> StatsdescrobustFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_frame_sum(s : StatsdescrobustFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustFrame::sum(self : StatsdescrobustFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_frame_mean(s : StatsdescrobustFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustFrame::mean(self : StatsdescrobustFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_frame_scale(s : StatsdescrobustFrame, f : Double) -> StatsdescrobustFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustFrame::scale(self : StatsdescrobustFrame, f : Double) -> StatsdescrobustFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_frame_add(a : StatsdescrobustFrame, b : StatsdescrobustFrame) -> StatsdescrobustFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustFrame::add(self : StatsdescrobustFrame, other : StatsdescrobustFrame) -> StatsdescrobustFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_frame_copy(s : StatsdescrobustFrame) -> StatsdescrobustFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustFrame::copy(self : StatsdescrobustFrame) -> StatsdescrobustFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_frame_fill(s : StatsdescrobustFrame, v : Double) -> StatsdescrobustFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustFrame::fill(self : StatsdescrobustFrame, v : Double) -> StatsdescrobustFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_frame_min(s : StatsdescrobustFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustFrame::min(self : StatsdescrobustFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_frame_max(s : StatsdescrobustFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustFrame::max(self : StatsdescrobustFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_frame_to_string(s : StatsdescrobustFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustFrame::to_string(self : StatsdescrobustFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustTable {
@@ -402,45 +402,45 @@ pub fn stats_desc_robust_table_make(size : Int) -> StatsdescrobustTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_table_len(s : StatsdescrobustTable) -> Int { s.size }
+pub fn StatsdescrobustTable::len(self : StatsdescrobustTable) -> Int { self.size }
 
-pub fn stats_desc_robust_table_get(s : StatsdescrobustTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustTable::get(self : StatsdescrobustTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_table_set(s : StatsdescrobustTable, i : Int, v : Double) -> StatsdescrobustTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustTable::set(self : StatsdescrobustTable, i : Int, v : Double) -> StatsdescrobustTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_table_sum(s : StatsdescrobustTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustTable::sum(self : StatsdescrobustTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_table_mean(s : StatsdescrobustTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustTable::mean(self : StatsdescrobustTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_table_scale(s : StatsdescrobustTable, f : Double) -> StatsdescrobustTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustTable::scale(self : StatsdescrobustTable, f : Double) -> StatsdescrobustTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_table_add(a : StatsdescrobustTable, b : StatsdescrobustTable) -> StatsdescrobustTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustTable::add(self : StatsdescrobustTable, other : StatsdescrobustTable) -> StatsdescrobustTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_table_copy(s : StatsdescrobustTable) -> StatsdescrobustTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustTable::copy(self : StatsdescrobustTable) -> StatsdescrobustTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_table_fill(s : StatsdescrobustTable, v : Double) -> StatsdescrobustTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustTable::fill(self : StatsdescrobustTable, v : Double) -> StatsdescrobustTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_table_min(s : StatsdescrobustTable) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustTable::min(self : StatsdescrobustTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_table_max(s : StatsdescrobustTable) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustTable::max(self : StatsdescrobustTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_table_to_string(s : StatsdescrobustTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustTable::to_string(self : StatsdescrobustTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustGraphN {
@@ -453,45 +453,45 @@ pub fn stats_desc_robust_graphn_make(size : Int) -> StatsdescrobustGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_graphn_len(s : StatsdescrobustGraphN) -> Int { s.size }
+pub fn StatsdescrobustGraphN::len(self : StatsdescrobustGraphN) -> Int { self.size }
 
-pub fn stats_desc_robust_graphn_get(s : StatsdescrobustGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustGraphN::get(self : StatsdescrobustGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_graphn_set(s : StatsdescrobustGraphN, i : Int, v : Double) -> StatsdescrobustGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustGraphN::set(self : StatsdescrobustGraphN, i : Int, v : Double) -> StatsdescrobustGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_graphn_sum(s : StatsdescrobustGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustGraphN::sum(self : StatsdescrobustGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_graphn_mean(s : StatsdescrobustGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustGraphN::mean(self : StatsdescrobustGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_graphn_scale(s : StatsdescrobustGraphN, f : Double) -> StatsdescrobustGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustGraphN::scale(self : StatsdescrobustGraphN, f : Double) -> StatsdescrobustGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_graphn_add(a : StatsdescrobustGraphN, b : StatsdescrobustGraphN) -> StatsdescrobustGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustGraphN::add(self : StatsdescrobustGraphN, other : StatsdescrobustGraphN) -> StatsdescrobustGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_graphn_copy(s : StatsdescrobustGraphN) -> StatsdescrobustGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustGraphN::copy(self : StatsdescrobustGraphN) -> StatsdescrobustGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_graphn_fill(s : StatsdescrobustGraphN, v : Double) -> StatsdescrobustGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustGraphN::fill(self : StatsdescrobustGraphN, v : Double) -> StatsdescrobustGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_graphn_min(s : StatsdescrobustGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustGraphN::min(self : StatsdescrobustGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_graphn_max(s : StatsdescrobustGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustGraphN::max(self : StatsdescrobustGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_graphn_to_string(s : StatsdescrobustGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustGraphN::to_string(self : StatsdescrobustGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustNode {
@@ -504,45 +504,45 @@ pub fn stats_desc_robust_node_make(size : Int) -> StatsdescrobustNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_node_len(s : StatsdescrobustNode) -> Int { s.size }
+pub fn StatsdescrobustNode::len(self : StatsdescrobustNode) -> Int { self.size }
 
-pub fn stats_desc_robust_node_get(s : StatsdescrobustNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustNode::get(self : StatsdescrobustNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_node_set(s : StatsdescrobustNode, i : Int, v : Double) -> StatsdescrobustNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustNode::set(self : StatsdescrobustNode, i : Int, v : Double) -> StatsdescrobustNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_node_sum(s : StatsdescrobustNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustNode::sum(self : StatsdescrobustNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_node_mean(s : StatsdescrobustNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustNode::mean(self : StatsdescrobustNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_node_scale(s : StatsdescrobustNode, f : Double) -> StatsdescrobustNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustNode::scale(self : StatsdescrobustNode, f : Double) -> StatsdescrobustNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_node_add(a : StatsdescrobustNode, b : StatsdescrobustNode) -> StatsdescrobustNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustNode::add(self : StatsdescrobustNode, other : StatsdescrobustNode) -> StatsdescrobustNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_node_copy(s : StatsdescrobustNode) -> StatsdescrobustNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustNode::copy(self : StatsdescrobustNode) -> StatsdescrobustNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_node_fill(s : StatsdescrobustNode, v : Double) -> StatsdescrobustNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustNode::fill(self : StatsdescrobustNode, v : Double) -> StatsdescrobustNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_node_min(s : StatsdescrobustNode) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustNode::min(self : StatsdescrobustNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_node_max(s : StatsdescrobustNode) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustNode::max(self : StatsdescrobustNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_node_to_string(s : StatsdescrobustNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustNode::to_string(self : StatsdescrobustNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustEdge {
@@ -555,45 +555,45 @@ pub fn stats_desc_robust_edge_make(size : Int) -> StatsdescrobustEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_edge_len(s : StatsdescrobustEdge) -> Int { s.size }
+pub fn StatsdescrobustEdge::len(self : StatsdescrobustEdge) -> Int { self.size }
 
-pub fn stats_desc_robust_edge_get(s : StatsdescrobustEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustEdge::get(self : StatsdescrobustEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_edge_set(s : StatsdescrobustEdge, i : Int, v : Double) -> StatsdescrobustEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustEdge::set(self : StatsdescrobustEdge, i : Int, v : Double) -> StatsdescrobustEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_edge_sum(s : StatsdescrobustEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustEdge::sum(self : StatsdescrobustEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_edge_mean(s : StatsdescrobustEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustEdge::mean(self : StatsdescrobustEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_edge_scale(s : StatsdescrobustEdge, f : Double) -> StatsdescrobustEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustEdge::scale(self : StatsdescrobustEdge, f : Double) -> StatsdescrobustEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_edge_add(a : StatsdescrobustEdge, b : StatsdescrobustEdge) -> StatsdescrobustEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustEdge::add(self : StatsdescrobustEdge, other : StatsdescrobustEdge) -> StatsdescrobustEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_edge_copy(s : StatsdescrobustEdge) -> StatsdescrobustEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustEdge::copy(self : StatsdescrobustEdge) -> StatsdescrobustEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_edge_fill(s : StatsdescrobustEdge, v : Double) -> StatsdescrobustEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustEdge::fill(self : StatsdescrobustEdge, v : Double) -> StatsdescrobustEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_edge_min(s : StatsdescrobustEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustEdge::min(self : StatsdescrobustEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_edge_max(s : StatsdescrobustEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustEdge::max(self : StatsdescrobustEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_edge_to_string(s : StatsdescrobustEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustEdge::to_string(self : StatsdescrobustEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustPath {
@@ -606,45 +606,45 @@ pub fn stats_desc_robust_path_make(size : Int) -> StatsdescrobustPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_path_len(s : StatsdescrobustPath) -> Int { s.size }
+pub fn StatsdescrobustPath::len(self : StatsdescrobustPath) -> Int { self.size }
 
-pub fn stats_desc_robust_path_get(s : StatsdescrobustPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustPath::get(self : StatsdescrobustPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_path_set(s : StatsdescrobustPath, i : Int, v : Double) -> StatsdescrobustPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustPath::set(self : StatsdescrobustPath, i : Int, v : Double) -> StatsdescrobustPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_path_sum(s : StatsdescrobustPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustPath::sum(self : StatsdescrobustPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_path_mean(s : StatsdescrobustPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustPath::mean(self : StatsdescrobustPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_path_scale(s : StatsdescrobustPath, f : Double) -> StatsdescrobustPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustPath::scale(self : StatsdescrobustPath, f : Double) -> StatsdescrobustPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_path_add(a : StatsdescrobustPath, b : StatsdescrobustPath) -> StatsdescrobustPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustPath::add(self : StatsdescrobustPath, other : StatsdescrobustPath) -> StatsdescrobustPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_path_copy(s : StatsdescrobustPath) -> StatsdescrobustPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustPath::copy(self : StatsdescrobustPath) -> StatsdescrobustPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_path_fill(s : StatsdescrobustPath, v : Double) -> StatsdescrobustPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustPath::fill(self : StatsdescrobustPath, v : Double) -> StatsdescrobustPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_path_min(s : StatsdescrobustPath) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustPath::min(self : StatsdescrobustPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_path_max(s : StatsdescrobustPath) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustPath::max(self : StatsdescrobustPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_path_to_string(s : StatsdescrobustPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustPath::to_string(self : StatsdescrobustPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustCluster {
@@ -657,45 +657,45 @@ pub fn stats_desc_robust_cluster_make(size : Int) -> StatsdescrobustCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_cluster_len(s : StatsdescrobustCluster) -> Int { s.size }
+pub fn StatsdescrobustCluster::len(self : StatsdescrobustCluster) -> Int { self.size }
 
-pub fn stats_desc_robust_cluster_get(s : StatsdescrobustCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustCluster::get(self : StatsdescrobustCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_cluster_set(s : StatsdescrobustCluster, i : Int, v : Double) -> StatsdescrobustCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustCluster::set(self : StatsdescrobustCluster, i : Int, v : Double) -> StatsdescrobustCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cluster_sum(s : StatsdescrobustCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustCluster::sum(self : StatsdescrobustCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_cluster_mean(s : StatsdescrobustCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustCluster::mean(self : StatsdescrobustCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_cluster_scale(s : StatsdescrobustCluster, f : Double) -> StatsdescrobustCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustCluster::scale(self : StatsdescrobustCluster, f : Double) -> StatsdescrobustCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cluster_add(a : StatsdescrobustCluster, b : StatsdescrobustCluster) -> StatsdescrobustCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustCluster::add(self : StatsdescrobustCluster, other : StatsdescrobustCluster) -> StatsdescrobustCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cluster_copy(s : StatsdescrobustCluster) -> StatsdescrobustCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustCluster::copy(self : StatsdescrobustCluster) -> StatsdescrobustCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cluster_fill(s : StatsdescrobustCluster, v : Double) -> StatsdescrobustCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustCluster::fill(self : StatsdescrobustCluster, v : Double) -> StatsdescrobustCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cluster_min(s : StatsdescrobustCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustCluster::min(self : StatsdescrobustCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_cluster_max(s : StatsdescrobustCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustCluster::max(self : StatsdescrobustCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_cluster_to_string(s : StatsdescrobustCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustCluster::to_string(self : StatsdescrobustCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustModel {
@@ -708,45 +708,45 @@ pub fn stats_desc_robust_model_make(size : Int) -> StatsdescrobustModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_model_len(s : StatsdescrobustModel) -> Int { s.size }
+pub fn StatsdescrobustModel::len(self : StatsdescrobustModel) -> Int { self.size }
 
-pub fn stats_desc_robust_model_get(s : StatsdescrobustModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustModel::get(self : StatsdescrobustModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_model_set(s : StatsdescrobustModel, i : Int, v : Double) -> StatsdescrobustModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustModel::set(self : StatsdescrobustModel, i : Int, v : Double) -> StatsdescrobustModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_model_sum(s : StatsdescrobustModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustModel::sum(self : StatsdescrobustModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_model_mean(s : StatsdescrobustModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustModel::mean(self : StatsdescrobustModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_model_scale(s : StatsdescrobustModel, f : Double) -> StatsdescrobustModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustModel::scale(self : StatsdescrobustModel, f : Double) -> StatsdescrobustModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_model_add(a : StatsdescrobustModel, b : StatsdescrobustModel) -> StatsdescrobustModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustModel::add(self : StatsdescrobustModel, other : StatsdescrobustModel) -> StatsdescrobustModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_model_copy(s : StatsdescrobustModel) -> StatsdescrobustModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustModel::copy(self : StatsdescrobustModel) -> StatsdescrobustModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_model_fill(s : StatsdescrobustModel, v : Double) -> StatsdescrobustModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustModel::fill(self : StatsdescrobustModel, v : Double) -> StatsdescrobustModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_model_min(s : StatsdescrobustModel) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustModel::min(self : StatsdescrobustModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_model_max(s : StatsdescrobustModel) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustModel::max(self : StatsdescrobustModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_model_to_string(s : StatsdescrobustModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustModel::to_string(self : StatsdescrobustModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustLayer {
@@ -759,45 +759,45 @@ pub fn stats_desc_robust_layer_make(size : Int) -> StatsdescrobustLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_layer_len(s : StatsdescrobustLayer) -> Int { s.size }
+pub fn StatsdescrobustLayer::len(self : StatsdescrobustLayer) -> Int { self.size }
 
-pub fn stats_desc_robust_layer_get(s : StatsdescrobustLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustLayer::get(self : StatsdescrobustLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_layer_set(s : StatsdescrobustLayer, i : Int, v : Double) -> StatsdescrobustLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustLayer::set(self : StatsdescrobustLayer, i : Int, v : Double) -> StatsdescrobustLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_layer_sum(s : StatsdescrobustLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustLayer::sum(self : StatsdescrobustLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_layer_mean(s : StatsdescrobustLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustLayer::mean(self : StatsdescrobustLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_layer_scale(s : StatsdescrobustLayer, f : Double) -> StatsdescrobustLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustLayer::scale(self : StatsdescrobustLayer, f : Double) -> StatsdescrobustLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_layer_add(a : StatsdescrobustLayer, b : StatsdescrobustLayer) -> StatsdescrobustLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustLayer::add(self : StatsdescrobustLayer, other : StatsdescrobustLayer) -> StatsdescrobustLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_layer_copy(s : StatsdescrobustLayer) -> StatsdescrobustLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustLayer::copy(self : StatsdescrobustLayer) -> StatsdescrobustLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_layer_fill(s : StatsdescrobustLayer, v : Double) -> StatsdescrobustLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustLayer::fill(self : StatsdescrobustLayer, v : Double) -> StatsdescrobustLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_layer_min(s : StatsdescrobustLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustLayer::min(self : StatsdescrobustLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_layer_max(s : StatsdescrobustLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustLayer::max(self : StatsdescrobustLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_layer_to_string(s : StatsdescrobustLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustLayer::to_string(self : StatsdescrobustLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustBuffer {
@@ -810,45 +810,45 @@ pub fn stats_desc_robust_buffer_make(size : Int) -> StatsdescrobustBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_buffer_len(s : StatsdescrobustBuffer) -> Int { s.size }
+pub fn StatsdescrobustBuffer::len(self : StatsdescrobustBuffer) -> Int { self.size }
 
-pub fn stats_desc_robust_buffer_get(s : StatsdescrobustBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustBuffer::get(self : StatsdescrobustBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_buffer_set(s : StatsdescrobustBuffer, i : Int, v : Double) -> StatsdescrobustBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustBuffer::set(self : StatsdescrobustBuffer, i : Int, v : Double) -> StatsdescrobustBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_buffer_sum(s : StatsdescrobustBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustBuffer::sum(self : StatsdescrobustBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_buffer_mean(s : StatsdescrobustBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustBuffer::mean(self : StatsdescrobustBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_buffer_scale(s : StatsdescrobustBuffer, f : Double) -> StatsdescrobustBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustBuffer::scale(self : StatsdescrobustBuffer, f : Double) -> StatsdescrobustBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_buffer_add(a : StatsdescrobustBuffer, b : StatsdescrobustBuffer) -> StatsdescrobustBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustBuffer::add(self : StatsdescrobustBuffer, other : StatsdescrobustBuffer) -> StatsdescrobustBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_buffer_copy(s : StatsdescrobustBuffer) -> StatsdescrobustBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustBuffer::copy(self : StatsdescrobustBuffer) -> StatsdescrobustBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_buffer_fill(s : StatsdescrobustBuffer, v : Double) -> StatsdescrobustBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustBuffer::fill(self : StatsdescrobustBuffer, v : Double) -> StatsdescrobustBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_buffer_min(s : StatsdescrobustBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustBuffer::min(self : StatsdescrobustBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_buffer_max(s : StatsdescrobustBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustBuffer::max(self : StatsdescrobustBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_buffer_to_string(s : StatsdescrobustBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustBuffer::to_string(self : StatsdescrobustBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustCursor {
@@ -861,45 +861,45 @@ pub fn stats_desc_robust_cursor_make(size : Int) -> StatsdescrobustCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_cursor_len(s : StatsdescrobustCursor) -> Int { s.size }
+pub fn StatsdescrobustCursor::len(self : StatsdescrobustCursor) -> Int { self.size }
 
-pub fn stats_desc_robust_cursor_get(s : StatsdescrobustCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustCursor::get(self : StatsdescrobustCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_cursor_set(s : StatsdescrobustCursor, i : Int, v : Double) -> StatsdescrobustCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustCursor::set(self : StatsdescrobustCursor, i : Int, v : Double) -> StatsdescrobustCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cursor_sum(s : StatsdescrobustCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustCursor::sum(self : StatsdescrobustCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_cursor_mean(s : StatsdescrobustCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustCursor::mean(self : StatsdescrobustCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_cursor_scale(s : StatsdescrobustCursor, f : Double) -> StatsdescrobustCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustCursor::scale(self : StatsdescrobustCursor, f : Double) -> StatsdescrobustCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cursor_add(a : StatsdescrobustCursor, b : StatsdescrobustCursor) -> StatsdescrobustCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustCursor::add(self : StatsdescrobustCursor, other : StatsdescrobustCursor) -> StatsdescrobustCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cursor_copy(s : StatsdescrobustCursor) -> StatsdescrobustCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustCursor::copy(self : StatsdescrobustCursor) -> StatsdescrobustCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cursor_fill(s : StatsdescrobustCursor, v : Double) -> StatsdescrobustCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustCursor::fill(self : StatsdescrobustCursor, v : Double) -> StatsdescrobustCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_cursor_min(s : StatsdescrobustCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustCursor::min(self : StatsdescrobustCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_cursor_max(s : StatsdescrobustCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustCursor::max(self : StatsdescrobustCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_cursor_to_string(s : StatsdescrobustCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustCursor::to_string(self : StatsdescrobustCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustView {
@@ -912,45 +912,45 @@ pub fn stats_desc_robust_view_make(size : Int) -> StatsdescrobustView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_view_len(s : StatsdescrobustView) -> Int { s.size }
+pub fn StatsdescrobustView::len(self : StatsdescrobustView) -> Int { self.size }
 
-pub fn stats_desc_robust_view_get(s : StatsdescrobustView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustView::get(self : StatsdescrobustView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_view_set(s : StatsdescrobustView, i : Int, v : Double) -> StatsdescrobustView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustView::set(self : StatsdescrobustView, i : Int, v : Double) -> StatsdescrobustView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_view_sum(s : StatsdescrobustView) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustView::sum(self : StatsdescrobustView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_view_mean(s : StatsdescrobustView) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustView::mean(self : StatsdescrobustView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_view_scale(s : StatsdescrobustView, f : Double) -> StatsdescrobustView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustView::scale(self : StatsdescrobustView, f : Double) -> StatsdescrobustView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_view_add(a : StatsdescrobustView, b : StatsdescrobustView) -> StatsdescrobustView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustView::add(self : StatsdescrobustView, other : StatsdescrobustView) -> StatsdescrobustView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_view_copy(s : StatsdescrobustView) -> StatsdescrobustView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustView::copy(self : StatsdescrobustView) -> StatsdescrobustView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_view_fill(s : StatsdescrobustView, v : Double) -> StatsdescrobustView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustView::fill(self : StatsdescrobustView, v : Double) -> StatsdescrobustView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_view_min(s : StatsdescrobustView) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustView::min(self : StatsdescrobustView) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_view_max(s : StatsdescrobustView) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustView::max(self : StatsdescrobustView) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_view_to_string(s : StatsdescrobustView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustView::to_string(self : StatsdescrobustView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustRange {
@@ -963,45 +963,45 @@ pub fn stats_desc_robust_range_make(size : Int) -> StatsdescrobustRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_range_len(s : StatsdescrobustRange) -> Int { s.size }
+pub fn StatsdescrobustRange::len(self : StatsdescrobustRange) -> Int { self.size }
 
-pub fn stats_desc_robust_range_get(s : StatsdescrobustRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustRange::get(self : StatsdescrobustRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_range_set(s : StatsdescrobustRange, i : Int, v : Double) -> StatsdescrobustRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustRange::set(self : StatsdescrobustRange, i : Int, v : Double) -> StatsdescrobustRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_range_sum(s : StatsdescrobustRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustRange::sum(self : StatsdescrobustRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_range_mean(s : StatsdescrobustRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustRange::mean(self : StatsdescrobustRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_range_scale(s : StatsdescrobustRange, f : Double) -> StatsdescrobustRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustRange::scale(self : StatsdescrobustRange, f : Double) -> StatsdescrobustRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_range_add(a : StatsdescrobustRange, b : StatsdescrobustRange) -> StatsdescrobustRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustRange::add(self : StatsdescrobustRange, other : StatsdescrobustRange) -> StatsdescrobustRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_range_copy(s : StatsdescrobustRange) -> StatsdescrobustRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustRange::copy(self : StatsdescrobustRange) -> StatsdescrobustRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_range_fill(s : StatsdescrobustRange, v : Double) -> StatsdescrobustRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustRange::fill(self : StatsdescrobustRange, v : Double) -> StatsdescrobustRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_range_min(s : StatsdescrobustRange) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustRange::min(self : StatsdescrobustRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_range_max(s : StatsdescrobustRange) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustRange::max(self : StatsdescrobustRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_range_to_string(s : StatsdescrobustRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustRange::to_string(self : StatsdescrobustRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescrobustSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_desc_robust_slice_make(size : Int) -> StatsdescrobustSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_robust_slice_len(s : StatsdescrobustSlice) -> Int { s.size }
+pub fn StatsdescrobustSlice::len(self : StatsdescrobustSlice) -> Int { self.size }
 
-pub fn stats_desc_robust_slice_get(s : StatsdescrobustSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescrobustSlice::get(self : StatsdescrobustSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_robust_slice_set(s : StatsdescrobustSlice, i : Int, v : Double) -> StatsdescrobustSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescrobustSlice::set(self : StatsdescrobustSlice, i : Int, v : Double) -> StatsdescrobustSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_slice_sum(s : StatsdescrobustSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdescrobustSlice::sum(self : StatsdescrobustSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_robust_slice_mean(s : StatsdescrobustSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdescrobustSlice::mean(self : StatsdescrobustSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_robust_slice_scale(s : StatsdescrobustSlice, f : Double) -> StatsdescrobustSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescrobustSlice::scale(self : StatsdescrobustSlice, f : Double) -> StatsdescrobustSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_slice_add(a : StatsdescrobustSlice, b : StatsdescrobustSlice) -> StatsdescrobustSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescrobustSlice::add(self : StatsdescrobustSlice, other : StatsdescrobustSlice) -> StatsdescrobustSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_robust_slice_copy(s : StatsdescrobustSlice) -> StatsdescrobustSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescrobustSlice::copy(self : StatsdescrobustSlice) -> StatsdescrobustSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_slice_fill(s : StatsdescrobustSlice, v : Double) -> StatsdescrobustSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescrobustSlice::fill(self : StatsdescrobustSlice, v : Double) -> StatsdescrobustSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_robust_slice_min(s : StatsdescrobustSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdescrobustSlice::min(self : StatsdescrobustSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_robust_slice_max(s : StatsdescrobustSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdescrobustSlice::max(self : StatsdescrobustSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_robust_slice_to_string(s : StatsdescrobustSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescrobustSlice::to_string(self : StatsdescrobustSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

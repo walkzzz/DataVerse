@@ -351,45 +351,45 @@ pub fn ml_cluster_optics_frame_make(size : Int) -> MlclusteropticsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_frame_len(s : MlclusteropticsFrame) -> Int { s.size }
+pub fn MlclusteropticsFrame::len(self : MlclusteropticsFrame) -> Int { self.size }
 
-pub fn ml_cluster_optics_frame_get(s : MlclusteropticsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsFrame::get(self : MlclusteropticsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_frame_set(s : MlclusteropticsFrame, i : Int, v : Double) -> MlclusteropticsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsFrame::set(self : MlclusteropticsFrame, i : Int, v : Double) -> MlclusteropticsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_frame_sum(s : MlclusteropticsFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsFrame::sum(self : MlclusteropticsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_frame_mean(s : MlclusteropticsFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsFrame::mean(self : MlclusteropticsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_frame_scale(s : MlclusteropticsFrame, f : Double) -> MlclusteropticsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsFrame::scale(self : MlclusteropticsFrame, f : Double) -> MlclusteropticsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_frame_add(a : MlclusteropticsFrame, b : MlclusteropticsFrame) -> MlclusteropticsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsFrame::add(self : MlclusteropticsFrame, other : MlclusteropticsFrame) -> MlclusteropticsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_frame_copy(s : MlclusteropticsFrame) -> MlclusteropticsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsFrame::copy(self : MlclusteropticsFrame) -> MlclusteropticsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_frame_fill(s : MlclusteropticsFrame, v : Double) -> MlclusteropticsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsFrame::fill(self : MlclusteropticsFrame, v : Double) -> MlclusteropticsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_frame_min(s : MlclusteropticsFrame) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsFrame::min(self : MlclusteropticsFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_frame_max(s : MlclusteropticsFrame) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsFrame::max(self : MlclusteropticsFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_frame_to_string(s : MlclusteropticsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsFrame::to_string(self : MlclusteropticsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_optics_table_make(size : Int) -> MlclusteropticsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_table_len(s : MlclusteropticsTable) -> Int { s.size }
+pub fn MlclusteropticsTable::len(self : MlclusteropticsTable) -> Int { self.size }
 
-pub fn ml_cluster_optics_table_get(s : MlclusteropticsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsTable::get(self : MlclusteropticsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_table_set(s : MlclusteropticsTable, i : Int, v : Double) -> MlclusteropticsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsTable::set(self : MlclusteropticsTable, i : Int, v : Double) -> MlclusteropticsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_table_sum(s : MlclusteropticsTable) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsTable::sum(self : MlclusteropticsTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_table_mean(s : MlclusteropticsTable) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsTable::mean(self : MlclusteropticsTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_table_scale(s : MlclusteropticsTable, f : Double) -> MlclusteropticsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsTable::scale(self : MlclusteropticsTable, f : Double) -> MlclusteropticsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_table_add(a : MlclusteropticsTable, b : MlclusteropticsTable) -> MlclusteropticsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsTable::add(self : MlclusteropticsTable, other : MlclusteropticsTable) -> MlclusteropticsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_table_copy(s : MlclusteropticsTable) -> MlclusteropticsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsTable::copy(self : MlclusteropticsTable) -> MlclusteropticsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_table_fill(s : MlclusteropticsTable, v : Double) -> MlclusteropticsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsTable::fill(self : MlclusteropticsTable, v : Double) -> MlclusteropticsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_table_min(s : MlclusteropticsTable) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsTable::min(self : MlclusteropticsTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_table_max(s : MlclusteropticsTable) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsTable::max(self : MlclusteropticsTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_table_to_string(s : MlclusteropticsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsTable::to_string(self : MlclusteropticsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_optics_graphn_make(size : Int) -> MlclusteropticsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_graphn_len(s : MlclusteropticsGraphN) -> Int { s.size }
+pub fn MlclusteropticsGraphN::len(self : MlclusteropticsGraphN) -> Int { self.size }
 
-pub fn ml_cluster_optics_graphn_get(s : MlclusteropticsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsGraphN::get(self : MlclusteropticsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_graphn_set(s : MlclusteropticsGraphN, i : Int, v : Double) -> MlclusteropticsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsGraphN::set(self : MlclusteropticsGraphN, i : Int, v : Double) -> MlclusteropticsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_graphn_sum(s : MlclusteropticsGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsGraphN::sum(self : MlclusteropticsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_graphn_mean(s : MlclusteropticsGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsGraphN::mean(self : MlclusteropticsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_graphn_scale(s : MlclusteropticsGraphN, f : Double) -> MlclusteropticsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsGraphN::scale(self : MlclusteropticsGraphN, f : Double) -> MlclusteropticsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_graphn_add(a : MlclusteropticsGraphN, b : MlclusteropticsGraphN) -> MlclusteropticsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsGraphN::add(self : MlclusteropticsGraphN, other : MlclusteropticsGraphN) -> MlclusteropticsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_graphn_copy(s : MlclusteropticsGraphN) -> MlclusteropticsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsGraphN::copy(self : MlclusteropticsGraphN) -> MlclusteropticsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_graphn_fill(s : MlclusteropticsGraphN, v : Double) -> MlclusteropticsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsGraphN::fill(self : MlclusteropticsGraphN, v : Double) -> MlclusteropticsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_graphn_min(s : MlclusteropticsGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsGraphN::min(self : MlclusteropticsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_graphn_max(s : MlclusteropticsGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsGraphN::max(self : MlclusteropticsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_graphn_to_string(s : MlclusteropticsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsGraphN::to_string(self : MlclusteropticsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_optics_node_make(size : Int) -> MlclusteropticsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_node_len(s : MlclusteropticsNode) -> Int { s.size }
+pub fn MlclusteropticsNode::len(self : MlclusteropticsNode) -> Int { self.size }
 
-pub fn ml_cluster_optics_node_get(s : MlclusteropticsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsNode::get(self : MlclusteropticsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_node_set(s : MlclusteropticsNode, i : Int, v : Double) -> MlclusteropticsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsNode::set(self : MlclusteropticsNode, i : Int, v : Double) -> MlclusteropticsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_node_sum(s : MlclusteropticsNode) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsNode::sum(self : MlclusteropticsNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_node_mean(s : MlclusteropticsNode) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsNode::mean(self : MlclusteropticsNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_node_scale(s : MlclusteropticsNode, f : Double) -> MlclusteropticsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsNode::scale(self : MlclusteropticsNode, f : Double) -> MlclusteropticsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_node_add(a : MlclusteropticsNode, b : MlclusteropticsNode) -> MlclusteropticsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsNode::add(self : MlclusteropticsNode, other : MlclusteropticsNode) -> MlclusteropticsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_node_copy(s : MlclusteropticsNode) -> MlclusteropticsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsNode::copy(self : MlclusteropticsNode) -> MlclusteropticsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_node_fill(s : MlclusteropticsNode, v : Double) -> MlclusteropticsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsNode::fill(self : MlclusteropticsNode, v : Double) -> MlclusteropticsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_node_min(s : MlclusteropticsNode) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsNode::min(self : MlclusteropticsNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_node_max(s : MlclusteropticsNode) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsNode::max(self : MlclusteropticsNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_node_to_string(s : MlclusteropticsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsNode::to_string(self : MlclusteropticsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_optics_edge_make(size : Int) -> MlclusteropticsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_edge_len(s : MlclusteropticsEdge) -> Int { s.size }
+pub fn MlclusteropticsEdge::len(self : MlclusteropticsEdge) -> Int { self.size }
 
-pub fn ml_cluster_optics_edge_get(s : MlclusteropticsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsEdge::get(self : MlclusteropticsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_edge_set(s : MlclusteropticsEdge, i : Int, v : Double) -> MlclusteropticsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsEdge::set(self : MlclusteropticsEdge, i : Int, v : Double) -> MlclusteropticsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_edge_sum(s : MlclusteropticsEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsEdge::sum(self : MlclusteropticsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_edge_mean(s : MlclusteropticsEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsEdge::mean(self : MlclusteropticsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_edge_scale(s : MlclusteropticsEdge, f : Double) -> MlclusteropticsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsEdge::scale(self : MlclusteropticsEdge, f : Double) -> MlclusteropticsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_edge_add(a : MlclusteropticsEdge, b : MlclusteropticsEdge) -> MlclusteropticsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsEdge::add(self : MlclusteropticsEdge, other : MlclusteropticsEdge) -> MlclusteropticsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_edge_copy(s : MlclusteropticsEdge) -> MlclusteropticsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsEdge::copy(self : MlclusteropticsEdge) -> MlclusteropticsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_edge_fill(s : MlclusteropticsEdge, v : Double) -> MlclusteropticsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsEdge::fill(self : MlclusteropticsEdge, v : Double) -> MlclusteropticsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_edge_min(s : MlclusteropticsEdge) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsEdge::min(self : MlclusteropticsEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_edge_max(s : MlclusteropticsEdge) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsEdge::max(self : MlclusteropticsEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_edge_to_string(s : MlclusteropticsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsEdge::to_string(self : MlclusteropticsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_optics_path_make(size : Int) -> MlclusteropticsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_path_len(s : MlclusteropticsPath) -> Int { s.size }
+pub fn MlclusteropticsPath::len(self : MlclusteropticsPath) -> Int { self.size }
 
-pub fn ml_cluster_optics_path_get(s : MlclusteropticsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsPath::get(self : MlclusteropticsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_path_set(s : MlclusteropticsPath, i : Int, v : Double) -> MlclusteropticsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsPath::set(self : MlclusteropticsPath, i : Int, v : Double) -> MlclusteropticsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_path_sum(s : MlclusteropticsPath) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsPath::sum(self : MlclusteropticsPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_path_mean(s : MlclusteropticsPath) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsPath::mean(self : MlclusteropticsPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_path_scale(s : MlclusteropticsPath, f : Double) -> MlclusteropticsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsPath::scale(self : MlclusteropticsPath, f : Double) -> MlclusteropticsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_path_add(a : MlclusteropticsPath, b : MlclusteropticsPath) -> MlclusteropticsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsPath::add(self : MlclusteropticsPath, other : MlclusteropticsPath) -> MlclusteropticsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_path_copy(s : MlclusteropticsPath) -> MlclusteropticsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsPath::copy(self : MlclusteropticsPath) -> MlclusteropticsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_path_fill(s : MlclusteropticsPath, v : Double) -> MlclusteropticsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsPath::fill(self : MlclusteropticsPath, v : Double) -> MlclusteropticsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_path_min(s : MlclusteropticsPath) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsPath::min(self : MlclusteropticsPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_path_max(s : MlclusteropticsPath) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsPath::max(self : MlclusteropticsPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_path_to_string(s : MlclusteropticsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsPath::to_string(self : MlclusteropticsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_optics_cluster_make(size : Int) -> MlclusteropticsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_cluster_len(s : MlclusteropticsCluster) -> Int { s.size }
+pub fn MlclusteropticsCluster::len(self : MlclusteropticsCluster) -> Int { self.size }
 
-pub fn ml_cluster_optics_cluster_get(s : MlclusteropticsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsCluster::get(self : MlclusteropticsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_cluster_set(s : MlclusteropticsCluster, i : Int, v : Double) -> MlclusteropticsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsCluster::set(self : MlclusteropticsCluster, i : Int, v : Double) -> MlclusteropticsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cluster_sum(s : MlclusteropticsCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsCluster::sum(self : MlclusteropticsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_cluster_mean(s : MlclusteropticsCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsCluster::mean(self : MlclusteropticsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_cluster_scale(s : MlclusteropticsCluster, f : Double) -> MlclusteropticsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsCluster::scale(self : MlclusteropticsCluster, f : Double) -> MlclusteropticsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cluster_add(a : MlclusteropticsCluster, b : MlclusteropticsCluster) -> MlclusteropticsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsCluster::add(self : MlclusteropticsCluster, other : MlclusteropticsCluster) -> MlclusteropticsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cluster_copy(s : MlclusteropticsCluster) -> MlclusteropticsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsCluster::copy(self : MlclusteropticsCluster) -> MlclusteropticsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cluster_fill(s : MlclusteropticsCluster, v : Double) -> MlclusteropticsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsCluster::fill(self : MlclusteropticsCluster, v : Double) -> MlclusteropticsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cluster_min(s : MlclusteropticsCluster) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsCluster::min(self : MlclusteropticsCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_cluster_max(s : MlclusteropticsCluster) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsCluster::max(self : MlclusteropticsCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_cluster_to_string(s : MlclusteropticsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsCluster::to_string(self : MlclusteropticsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_optics_model_make(size : Int) -> MlclusteropticsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_model_len(s : MlclusteropticsModel) -> Int { s.size }
+pub fn MlclusteropticsModel::len(self : MlclusteropticsModel) -> Int { self.size }
 
-pub fn ml_cluster_optics_model_get(s : MlclusteropticsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsModel::get(self : MlclusteropticsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_model_set(s : MlclusteropticsModel, i : Int, v : Double) -> MlclusteropticsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsModel::set(self : MlclusteropticsModel, i : Int, v : Double) -> MlclusteropticsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_model_sum(s : MlclusteropticsModel) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsModel::sum(self : MlclusteropticsModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_model_mean(s : MlclusteropticsModel) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsModel::mean(self : MlclusteropticsModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_model_scale(s : MlclusteropticsModel, f : Double) -> MlclusteropticsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsModel::scale(self : MlclusteropticsModel, f : Double) -> MlclusteropticsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_model_add(a : MlclusteropticsModel, b : MlclusteropticsModel) -> MlclusteropticsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsModel::add(self : MlclusteropticsModel, other : MlclusteropticsModel) -> MlclusteropticsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_model_copy(s : MlclusteropticsModel) -> MlclusteropticsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsModel::copy(self : MlclusteropticsModel) -> MlclusteropticsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_model_fill(s : MlclusteropticsModel, v : Double) -> MlclusteropticsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsModel::fill(self : MlclusteropticsModel, v : Double) -> MlclusteropticsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_model_min(s : MlclusteropticsModel) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsModel::min(self : MlclusteropticsModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_model_max(s : MlclusteropticsModel) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsModel::max(self : MlclusteropticsModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_model_to_string(s : MlclusteropticsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsModel::to_string(self : MlclusteropticsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_optics_layer_make(size : Int) -> MlclusteropticsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_layer_len(s : MlclusteropticsLayer) -> Int { s.size }
+pub fn MlclusteropticsLayer::len(self : MlclusteropticsLayer) -> Int { self.size }
 
-pub fn ml_cluster_optics_layer_get(s : MlclusteropticsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsLayer::get(self : MlclusteropticsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_layer_set(s : MlclusteropticsLayer, i : Int, v : Double) -> MlclusteropticsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsLayer::set(self : MlclusteropticsLayer, i : Int, v : Double) -> MlclusteropticsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_layer_sum(s : MlclusteropticsLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsLayer::sum(self : MlclusteropticsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_layer_mean(s : MlclusteropticsLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsLayer::mean(self : MlclusteropticsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_layer_scale(s : MlclusteropticsLayer, f : Double) -> MlclusteropticsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsLayer::scale(self : MlclusteropticsLayer, f : Double) -> MlclusteropticsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_layer_add(a : MlclusteropticsLayer, b : MlclusteropticsLayer) -> MlclusteropticsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsLayer::add(self : MlclusteropticsLayer, other : MlclusteropticsLayer) -> MlclusteropticsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_layer_copy(s : MlclusteropticsLayer) -> MlclusteropticsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsLayer::copy(self : MlclusteropticsLayer) -> MlclusteropticsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_layer_fill(s : MlclusteropticsLayer, v : Double) -> MlclusteropticsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsLayer::fill(self : MlclusteropticsLayer, v : Double) -> MlclusteropticsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_layer_min(s : MlclusteropticsLayer) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsLayer::min(self : MlclusteropticsLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_layer_max(s : MlclusteropticsLayer) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsLayer::max(self : MlclusteropticsLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_layer_to_string(s : MlclusteropticsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsLayer::to_string(self : MlclusteropticsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_optics_buffer_make(size : Int) -> MlclusteropticsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_buffer_len(s : MlclusteropticsBuffer) -> Int { s.size }
+pub fn MlclusteropticsBuffer::len(self : MlclusteropticsBuffer) -> Int { self.size }
 
-pub fn ml_cluster_optics_buffer_get(s : MlclusteropticsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsBuffer::get(self : MlclusteropticsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_buffer_set(s : MlclusteropticsBuffer, i : Int, v : Double) -> MlclusteropticsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsBuffer::set(self : MlclusteropticsBuffer, i : Int, v : Double) -> MlclusteropticsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_buffer_sum(s : MlclusteropticsBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsBuffer::sum(self : MlclusteropticsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_buffer_mean(s : MlclusteropticsBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsBuffer::mean(self : MlclusteropticsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_buffer_scale(s : MlclusteropticsBuffer, f : Double) -> MlclusteropticsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsBuffer::scale(self : MlclusteropticsBuffer, f : Double) -> MlclusteropticsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_buffer_add(a : MlclusteropticsBuffer, b : MlclusteropticsBuffer) -> MlclusteropticsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsBuffer::add(self : MlclusteropticsBuffer, other : MlclusteropticsBuffer) -> MlclusteropticsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_buffer_copy(s : MlclusteropticsBuffer) -> MlclusteropticsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsBuffer::copy(self : MlclusteropticsBuffer) -> MlclusteropticsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_buffer_fill(s : MlclusteropticsBuffer, v : Double) -> MlclusteropticsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsBuffer::fill(self : MlclusteropticsBuffer, v : Double) -> MlclusteropticsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_buffer_min(s : MlclusteropticsBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsBuffer::min(self : MlclusteropticsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_buffer_max(s : MlclusteropticsBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsBuffer::max(self : MlclusteropticsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_buffer_to_string(s : MlclusteropticsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsBuffer::to_string(self : MlclusteropticsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_optics_cursor_make(size : Int) -> MlclusteropticsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_cursor_len(s : MlclusteropticsCursor) -> Int { s.size }
+pub fn MlclusteropticsCursor::len(self : MlclusteropticsCursor) -> Int { self.size }
 
-pub fn ml_cluster_optics_cursor_get(s : MlclusteropticsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsCursor::get(self : MlclusteropticsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_cursor_set(s : MlclusteropticsCursor, i : Int, v : Double) -> MlclusteropticsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsCursor::set(self : MlclusteropticsCursor, i : Int, v : Double) -> MlclusteropticsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cursor_sum(s : MlclusteropticsCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsCursor::sum(self : MlclusteropticsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_cursor_mean(s : MlclusteropticsCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsCursor::mean(self : MlclusteropticsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_cursor_scale(s : MlclusteropticsCursor, f : Double) -> MlclusteropticsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsCursor::scale(self : MlclusteropticsCursor, f : Double) -> MlclusteropticsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cursor_add(a : MlclusteropticsCursor, b : MlclusteropticsCursor) -> MlclusteropticsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsCursor::add(self : MlclusteropticsCursor, other : MlclusteropticsCursor) -> MlclusteropticsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cursor_copy(s : MlclusteropticsCursor) -> MlclusteropticsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsCursor::copy(self : MlclusteropticsCursor) -> MlclusteropticsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cursor_fill(s : MlclusteropticsCursor, v : Double) -> MlclusteropticsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsCursor::fill(self : MlclusteropticsCursor, v : Double) -> MlclusteropticsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_cursor_min(s : MlclusteropticsCursor) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsCursor::min(self : MlclusteropticsCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_cursor_max(s : MlclusteropticsCursor) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsCursor::max(self : MlclusteropticsCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_cursor_to_string(s : MlclusteropticsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsCursor::to_string(self : MlclusteropticsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_optics_view_make(size : Int) -> MlclusteropticsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_view_len(s : MlclusteropticsView) -> Int { s.size }
+pub fn MlclusteropticsView::len(self : MlclusteropticsView) -> Int { self.size }
 
-pub fn ml_cluster_optics_view_get(s : MlclusteropticsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsView::get(self : MlclusteropticsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_view_set(s : MlclusteropticsView, i : Int, v : Double) -> MlclusteropticsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsView::set(self : MlclusteropticsView, i : Int, v : Double) -> MlclusteropticsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_view_sum(s : MlclusteropticsView) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsView::sum(self : MlclusteropticsView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_view_mean(s : MlclusteropticsView) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsView::mean(self : MlclusteropticsView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_view_scale(s : MlclusteropticsView, f : Double) -> MlclusteropticsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsView::scale(self : MlclusteropticsView, f : Double) -> MlclusteropticsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_view_add(a : MlclusteropticsView, b : MlclusteropticsView) -> MlclusteropticsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsView::add(self : MlclusteropticsView, other : MlclusteropticsView) -> MlclusteropticsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_view_copy(s : MlclusteropticsView) -> MlclusteropticsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsView::copy(self : MlclusteropticsView) -> MlclusteropticsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_view_fill(s : MlclusteropticsView, v : Double) -> MlclusteropticsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsView::fill(self : MlclusteropticsView, v : Double) -> MlclusteropticsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_view_min(s : MlclusteropticsView) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsView::min(self : MlclusteropticsView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_view_max(s : MlclusteropticsView) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsView::max(self : MlclusteropticsView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_view_to_string(s : MlclusteropticsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsView::to_string(self : MlclusteropticsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_optics_range_make(size : Int) -> MlclusteropticsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_range_len(s : MlclusteropticsRange) -> Int { s.size }
+pub fn MlclusteropticsRange::len(self : MlclusteropticsRange) -> Int { self.size }
 
-pub fn ml_cluster_optics_range_get(s : MlclusteropticsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsRange::get(self : MlclusteropticsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_range_set(s : MlclusteropticsRange, i : Int, v : Double) -> MlclusteropticsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsRange::set(self : MlclusteropticsRange, i : Int, v : Double) -> MlclusteropticsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_range_sum(s : MlclusteropticsRange) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsRange::sum(self : MlclusteropticsRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_range_mean(s : MlclusteropticsRange) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsRange::mean(self : MlclusteropticsRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_range_scale(s : MlclusteropticsRange, f : Double) -> MlclusteropticsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsRange::scale(self : MlclusteropticsRange, f : Double) -> MlclusteropticsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_range_add(a : MlclusteropticsRange, b : MlclusteropticsRange) -> MlclusteropticsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsRange::add(self : MlclusteropticsRange, other : MlclusteropticsRange) -> MlclusteropticsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_range_copy(s : MlclusteropticsRange) -> MlclusteropticsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsRange::copy(self : MlclusteropticsRange) -> MlclusteropticsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_range_fill(s : MlclusteropticsRange, v : Double) -> MlclusteropticsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsRange::fill(self : MlclusteropticsRange, v : Double) -> MlclusteropticsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_range_min(s : MlclusteropticsRange) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsRange::min(self : MlclusteropticsRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_range_max(s : MlclusteropticsRange) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsRange::max(self : MlclusteropticsRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_range_to_string(s : MlclusteropticsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsRange::to_string(self : MlclusteropticsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteropticsSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_optics_slice_make(size : Int) -> MlclusteropticsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_optics_slice_len(s : MlclusteropticsSlice) -> Int { s.size }
+pub fn MlclusteropticsSlice::len(self : MlclusteropticsSlice) -> Int { self.size }
 
-pub fn ml_cluster_optics_slice_get(s : MlclusteropticsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteropticsSlice::get(self : MlclusteropticsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_optics_slice_set(s : MlclusteropticsSlice, i : Int, v : Double) -> MlclusteropticsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteropticsSlice::set(self : MlclusteropticsSlice, i : Int, v : Double) -> MlclusteropticsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_slice_sum(s : MlclusteropticsSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclusteropticsSlice::sum(self : MlclusteropticsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_optics_slice_mean(s : MlclusteropticsSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclusteropticsSlice::mean(self : MlclusteropticsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_optics_slice_scale(s : MlclusteropticsSlice, f : Double) -> MlclusteropticsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteropticsSlice::scale(self : MlclusteropticsSlice, f : Double) -> MlclusteropticsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_slice_add(a : MlclusteropticsSlice, b : MlclusteropticsSlice) -> MlclusteropticsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteropticsSlice::add(self : MlclusteropticsSlice, other : MlclusteropticsSlice) -> MlclusteropticsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_slice_copy(s : MlclusteropticsSlice) -> MlclusteropticsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteropticsSlice::copy(self : MlclusteropticsSlice) -> MlclusteropticsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_slice_fill(s : MlclusteropticsSlice, v : Double) -> MlclusteropticsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteropticsSlice::fill(self : MlclusteropticsSlice, v : Double) -> MlclusteropticsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_optics_slice_min(s : MlclusteropticsSlice) -> Double { @_common.min(s.data) }
+pub fn MlclusteropticsSlice::min(self : MlclusteropticsSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_optics_slice_max(s : MlclusteropticsSlice) -> Double { @_common.max(s.data) }
+pub fn MlclusteropticsSlice::max(self : MlclusteropticsSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_optics_slice_to_string(s : MlclusteropticsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteropticsSlice::to_string(self : MlclusteropticsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn physics_em_electrostatic_frame_make(size : Int) -> Physicsemelectrostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_frame_len(s : PhysicsemelectrostaticFrame) -> Int { s.size }
+pub fn PhysicsemelectrostaticFrame::len(self : PhysicsemelectrostaticFrame) -> Int { self.size }
 
-pub fn physics_em_electrostatic_frame_get(s : PhysicsemelectrostaticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticFrame::get(self : PhysicsemelectrostaticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_frame_set(s : PhysicsemelectrostaticFrame, i : Int, v : Double) -> PhysicsemelectrostaticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticFrame::set(self : PhysicsemelectrostaticFrame, i : Int, v : Double) -> PhysicsemelectrostaticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_frame_sum(s : PhysicsemelectrostaticFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticFrame::sum(self : PhysicsemelectrostaticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_frame_mean(s : PhysicsemelectrostaticFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticFrame::mean(self : PhysicsemelectrostaticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_frame_scale(s : PhysicsemelectrostaticFrame, f : Double) -> PhysicsemelectrostaticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticFrame::scale(self : PhysicsemelectrostaticFrame, f : Double) -> PhysicsemelectrostaticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_frame_add(a : PhysicsemelectrostaticFrame, b : PhysicsemelectrostaticFrame) -> PhysicsemelectrostaticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticFrame::add(self : PhysicsemelectrostaticFrame, other : PhysicsemelectrostaticFrame) -> PhysicsemelectrostaticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_frame_copy(s : PhysicsemelectrostaticFrame) -> PhysicsemelectrostaticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticFrame::copy(self : PhysicsemelectrostaticFrame) -> PhysicsemelectrostaticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_frame_fill(s : PhysicsemelectrostaticFrame, v : Double) -> PhysicsemelectrostaticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticFrame::fill(self : PhysicsemelectrostaticFrame, v : Double) -> PhysicsemelectrostaticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_frame_min(s : PhysicsemelectrostaticFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticFrame::min(self : PhysicsemelectrostaticFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_frame_max(s : PhysicsemelectrostaticFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticFrame::max(self : PhysicsemelectrostaticFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_frame_to_string(s : PhysicsemelectrostaticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticFrame::to_string(self : PhysicsemelectrostaticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticTable {
@@ -402,45 +402,45 @@ pub fn physics_em_electrostatic_table_make(size : Int) -> Physicsemelectrostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_table_len(s : PhysicsemelectrostaticTable) -> Int { s.size }
+pub fn PhysicsemelectrostaticTable::len(self : PhysicsemelectrostaticTable) -> Int { self.size }
 
-pub fn physics_em_electrostatic_table_get(s : PhysicsemelectrostaticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticTable::get(self : PhysicsemelectrostaticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_table_set(s : PhysicsemelectrostaticTable, i : Int, v : Double) -> PhysicsemelectrostaticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticTable::set(self : PhysicsemelectrostaticTable, i : Int, v : Double) -> PhysicsemelectrostaticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_table_sum(s : PhysicsemelectrostaticTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticTable::sum(self : PhysicsemelectrostaticTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_table_mean(s : PhysicsemelectrostaticTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticTable::mean(self : PhysicsemelectrostaticTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_table_scale(s : PhysicsemelectrostaticTable, f : Double) -> PhysicsemelectrostaticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticTable::scale(self : PhysicsemelectrostaticTable, f : Double) -> PhysicsemelectrostaticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_table_add(a : PhysicsemelectrostaticTable, b : PhysicsemelectrostaticTable) -> PhysicsemelectrostaticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticTable::add(self : PhysicsemelectrostaticTable, other : PhysicsemelectrostaticTable) -> PhysicsemelectrostaticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_table_copy(s : PhysicsemelectrostaticTable) -> PhysicsemelectrostaticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticTable::copy(self : PhysicsemelectrostaticTable) -> PhysicsemelectrostaticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_table_fill(s : PhysicsemelectrostaticTable, v : Double) -> PhysicsemelectrostaticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticTable::fill(self : PhysicsemelectrostaticTable, v : Double) -> PhysicsemelectrostaticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_table_min(s : PhysicsemelectrostaticTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticTable::min(self : PhysicsemelectrostaticTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_table_max(s : PhysicsemelectrostaticTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticTable::max(self : PhysicsemelectrostaticTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_table_to_string(s : PhysicsemelectrostaticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticTable::to_string(self : PhysicsemelectrostaticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_electrostatic_graphn_make(size : Int) -> Physicsemelectrostati
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_graphn_len(s : PhysicsemelectrostaticGraphN) -> Int { s.size }
+pub fn PhysicsemelectrostaticGraphN::len(self : PhysicsemelectrostaticGraphN) -> Int { self.size }
 
-pub fn physics_em_electrostatic_graphn_get(s : PhysicsemelectrostaticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticGraphN::get(self : PhysicsemelectrostaticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_graphn_set(s : PhysicsemelectrostaticGraphN, i : Int, v : Double) -> PhysicsemelectrostaticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticGraphN::set(self : PhysicsemelectrostaticGraphN, i : Int, v : Double) -> PhysicsemelectrostaticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_graphn_sum(s : PhysicsemelectrostaticGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticGraphN::sum(self : PhysicsemelectrostaticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_graphn_mean(s : PhysicsemelectrostaticGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticGraphN::mean(self : PhysicsemelectrostaticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_graphn_scale(s : PhysicsemelectrostaticGraphN, f : Double) -> PhysicsemelectrostaticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticGraphN::scale(self : PhysicsemelectrostaticGraphN, f : Double) -> PhysicsemelectrostaticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_graphn_add(a : PhysicsemelectrostaticGraphN, b : PhysicsemelectrostaticGraphN) -> PhysicsemelectrostaticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticGraphN::add(self : PhysicsemelectrostaticGraphN, other : PhysicsemelectrostaticGraphN) -> PhysicsemelectrostaticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_graphn_copy(s : PhysicsemelectrostaticGraphN) -> PhysicsemelectrostaticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticGraphN::copy(self : PhysicsemelectrostaticGraphN) -> PhysicsemelectrostaticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_graphn_fill(s : PhysicsemelectrostaticGraphN, v : Double) -> PhysicsemelectrostaticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticGraphN::fill(self : PhysicsemelectrostaticGraphN, v : Double) -> PhysicsemelectrostaticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_graphn_min(s : PhysicsemelectrostaticGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticGraphN::min(self : PhysicsemelectrostaticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_graphn_max(s : PhysicsemelectrostaticGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticGraphN::max(self : PhysicsemelectrostaticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_graphn_to_string(s : PhysicsemelectrostaticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticGraphN::to_string(self : PhysicsemelectrostaticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticNode {
@@ -504,45 +504,45 @@ pub fn physics_em_electrostatic_node_make(size : Int) -> PhysicsemelectrostaticN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_node_len(s : PhysicsemelectrostaticNode) -> Int { s.size }
+pub fn PhysicsemelectrostaticNode::len(self : PhysicsemelectrostaticNode) -> Int { self.size }
 
-pub fn physics_em_electrostatic_node_get(s : PhysicsemelectrostaticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticNode::get(self : PhysicsemelectrostaticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_node_set(s : PhysicsemelectrostaticNode, i : Int, v : Double) -> PhysicsemelectrostaticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticNode::set(self : PhysicsemelectrostaticNode, i : Int, v : Double) -> PhysicsemelectrostaticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_node_sum(s : PhysicsemelectrostaticNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticNode::sum(self : PhysicsemelectrostaticNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_node_mean(s : PhysicsemelectrostaticNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticNode::mean(self : PhysicsemelectrostaticNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_node_scale(s : PhysicsemelectrostaticNode, f : Double) -> PhysicsemelectrostaticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticNode::scale(self : PhysicsemelectrostaticNode, f : Double) -> PhysicsemelectrostaticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_node_add(a : PhysicsemelectrostaticNode, b : PhysicsemelectrostaticNode) -> PhysicsemelectrostaticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticNode::add(self : PhysicsemelectrostaticNode, other : PhysicsemelectrostaticNode) -> PhysicsemelectrostaticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_node_copy(s : PhysicsemelectrostaticNode) -> PhysicsemelectrostaticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticNode::copy(self : PhysicsemelectrostaticNode) -> PhysicsemelectrostaticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_node_fill(s : PhysicsemelectrostaticNode, v : Double) -> PhysicsemelectrostaticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticNode::fill(self : PhysicsemelectrostaticNode, v : Double) -> PhysicsemelectrostaticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_node_min(s : PhysicsemelectrostaticNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticNode::min(self : PhysicsemelectrostaticNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_node_max(s : PhysicsemelectrostaticNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticNode::max(self : PhysicsemelectrostaticNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_node_to_string(s : PhysicsemelectrostaticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticNode::to_string(self : PhysicsemelectrostaticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_electrostatic_edge_make(size : Int) -> PhysicsemelectrostaticE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_edge_len(s : PhysicsemelectrostaticEdge) -> Int { s.size }
+pub fn PhysicsemelectrostaticEdge::len(self : PhysicsemelectrostaticEdge) -> Int { self.size }
 
-pub fn physics_em_electrostatic_edge_get(s : PhysicsemelectrostaticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticEdge::get(self : PhysicsemelectrostaticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_edge_set(s : PhysicsemelectrostaticEdge, i : Int, v : Double) -> PhysicsemelectrostaticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticEdge::set(self : PhysicsemelectrostaticEdge, i : Int, v : Double) -> PhysicsemelectrostaticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_edge_sum(s : PhysicsemelectrostaticEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticEdge::sum(self : PhysicsemelectrostaticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_edge_mean(s : PhysicsemelectrostaticEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticEdge::mean(self : PhysicsemelectrostaticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_edge_scale(s : PhysicsemelectrostaticEdge, f : Double) -> PhysicsemelectrostaticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticEdge::scale(self : PhysicsemelectrostaticEdge, f : Double) -> PhysicsemelectrostaticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_edge_add(a : PhysicsemelectrostaticEdge, b : PhysicsemelectrostaticEdge) -> PhysicsemelectrostaticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticEdge::add(self : PhysicsemelectrostaticEdge, other : PhysicsemelectrostaticEdge) -> PhysicsemelectrostaticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_edge_copy(s : PhysicsemelectrostaticEdge) -> PhysicsemelectrostaticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticEdge::copy(self : PhysicsemelectrostaticEdge) -> PhysicsemelectrostaticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_edge_fill(s : PhysicsemelectrostaticEdge, v : Double) -> PhysicsemelectrostaticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticEdge::fill(self : PhysicsemelectrostaticEdge, v : Double) -> PhysicsemelectrostaticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_edge_min(s : PhysicsemelectrostaticEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticEdge::min(self : PhysicsemelectrostaticEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_edge_max(s : PhysicsemelectrostaticEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticEdge::max(self : PhysicsemelectrostaticEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_edge_to_string(s : PhysicsemelectrostaticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticEdge::to_string(self : PhysicsemelectrostaticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticPath {
@@ -606,45 +606,45 @@ pub fn physics_em_electrostatic_path_make(size : Int) -> PhysicsemelectrostaticP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_path_len(s : PhysicsemelectrostaticPath) -> Int { s.size }
+pub fn PhysicsemelectrostaticPath::len(self : PhysicsemelectrostaticPath) -> Int { self.size }
 
-pub fn physics_em_electrostatic_path_get(s : PhysicsemelectrostaticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticPath::get(self : PhysicsemelectrostaticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_path_set(s : PhysicsemelectrostaticPath, i : Int, v : Double) -> PhysicsemelectrostaticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticPath::set(self : PhysicsemelectrostaticPath, i : Int, v : Double) -> PhysicsemelectrostaticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_path_sum(s : PhysicsemelectrostaticPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticPath::sum(self : PhysicsemelectrostaticPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_path_mean(s : PhysicsemelectrostaticPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticPath::mean(self : PhysicsemelectrostaticPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_path_scale(s : PhysicsemelectrostaticPath, f : Double) -> PhysicsemelectrostaticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticPath::scale(self : PhysicsemelectrostaticPath, f : Double) -> PhysicsemelectrostaticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_path_add(a : PhysicsemelectrostaticPath, b : PhysicsemelectrostaticPath) -> PhysicsemelectrostaticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticPath::add(self : PhysicsemelectrostaticPath, other : PhysicsemelectrostaticPath) -> PhysicsemelectrostaticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_path_copy(s : PhysicsemelectrostaticPath) -> PhysicsemelectrostaticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticPath::copy(self : PhysicsemelectrostaticPath) -> PhysicsemelectrostaticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_path_fill(s : PhysicsemelectrostaticPath, v : Double) -> PhysicsemelectrostaticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticPath::fill(self : PhysicsemelectrostaticPath, v : Double) -> PhysicsemelectrostaticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_path_min(s : PhysicsemelectrostaticPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticPath::min(self : PhysicsemelectrostaticPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_path_max(s : PhysicsemelectrostaticPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticPath::max(self : PhysicsemelectrostaticPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_path_to_string(s : PhysicsemelectrostaticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticPath::to_string(self : PhysicsemelectrostaticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_electrostatic_cluster_make(size : Int) -> Physicsemelectrostat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_cluster_len(s : PhysicsemelectrostaticCluster) -> Int { s.size }
+pub fn PhysicsemelectrostaticCluster::len(self : PhysicsemelectrostaticCluster) -> Int { self.size }
 
-pub fn physics_em_electrostatic_cluster_get(s : PhysicsemelectrostaticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticCluster::get(self : PhysicsemelectrostaticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_cluster_set(s : PhysicsemelectrostaticCluster, i : Int, v : Double) -> PhysicsemelectrostaticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCluster::set(self : PhysicsemelectrostaticCluster, i : Int, v : Double) -> PhysicsemelectrostaticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cluster_sum(s : PhysicsemelectrostaticCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticCluster::sum(self : PhysicsemelectrostaticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_cluster_mean(s : PhysicsemelectrostaticCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticCluster::mean(self : PhysicsemelectrostaticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_cluster_scale(s : PhysicsemelectrostaticCluster, f : Double) -> PhysicsemelectrostaticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCluster::scale(self : PhysicsemelectrostaticCluster, f : Double) -> PhysicsemelectrostaticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cluster_add(a : PhysicsemelectrostaticCluster, b : PhysicsemelectrostaticCluster) -> PhysicsemelectrostaticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticCluster::add(self : PhysicsemelectrostaticCluster, other : PhysicsemelectrostaticCluster) -> PhysicsemelectrostaticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cluster_copy(s : PhysicsemelectrostaticCluster) -> PhysicsemelectrostaticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCluster::copy(self : PhysicsemelectrostaticCluster) -> PhysicsemelectrostaticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cluster_fill(s : PhysicsemelectrostaticCluster, v : Double) -> PhysicsemelectrostaticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCluster::fill(self : PhysicsemelectrostaticCluster, v : Double) -> PhysicsemelectrostaticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cluster_min(s : PhysicsemelectrostaticCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticCluster::min(self : PhysicsemelectrostaticCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_cluster_max(s : PhysicsemelectrostaticCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticCluster::max(self : PhysicsemelectrostaticCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_cluster_to_string(s : PhysicsemelectrostaticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticCluster::to_string(self : PhysicsemelectrostaticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticModel {
@@ -708,45 +708,45 @@ pub fn physics_em_electrostatic_model_make(size : Int) -> Physicsemelectrostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_model_len(s : PhysicsemelectrostaticModel) -> Int { s.size }
+pub fn PhysicsemelectrostaticModel::len(self : PhysicsemelectrostaticModel) -> Int { self.size }
 
-pub fn physics_em_electrostatic_model_get(s : PhysicsemelectrostaticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticModel::get(self : PhysicsemelectrostaticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_model_set(s : PhysicsemelectrostaticModel, i : Int, v : Double) -> PhysicsemelectrostaticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticModel::set(self : PhysicsemelectrostaticModel, i : Int, v : Double) -> PhysicsemelectrostaticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_model_sum(s : PhysicsemelectrostaticModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticModel::sum(self : PhysicsemelectrostaticModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_model_mean(s : PhysicsemelectrostaticModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticModel::mean(self : PhysicsemelectrostaticModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_model_scale(s : PhysicsemelectrostaticModel, f : Double) -> PhysicsemelectrostaticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticModel::scale(self : PhysicsemelectrostaticModel, f : Double) -> PhysicsemelectrostaticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_model_add(a : PhysicsemelectrostaticModel, b : PhysicsemelectrostaticModel) -> PhysicsemelectrostaticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticModel::add(self : PhysicsemelectrostaticModel, other : PhysicsemelectrostaticModel) -> PhysicsemelectrostaticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_model_copy(s : PhysicsemelectrostaticModel) -> PhysicsemelectrostaticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticModel::copy(self : PhysicsemelectrostaticModel) -> PhysicsemelectrostaticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_model_fill(s : PhysicsemelectrostaticModel, v : Double) -> PhysicsemelectrostaticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticModel::fill(self : PhysicsemelectrostaticModel, v : Double) -> PhysicsemelectrostaticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_model_min(s : PhysicsemelectrostaticModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticModel::min(self : PhysicsemelectrostaticModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_model_max(s : PhysicsemelectrostaticModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticModel::max(self : PhysicsemelectrostaticModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_model_to_string(s : PhysicsemelectrostaticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticModel::to_string(self : PhysicsemelectrostaticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_electrostatic_layer_make(size : Int) -> Physicsemelectrostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_layer_len(s : PhysicsemelectrostaticLayer) -> Int { s.size }
+pub fn PhysicsemelectrostaticLayer::len(self : PhysicsemelectrostaticLayer) -> Int { self.size }
 
-pub fn physics_em_electrostatic_layer_get(s : PhysicsemelectrostaticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticLayer::get(self : PhysicsemelectrostaticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_layer_set(s : PhysicsemelectrostaticLayer, i : Int, v : Double) -> PhysicsemelectrostaticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticLayer::set(self : PhysicsemelectrostaticLayer, i : Int, v : Double) -> PhysicsemelectrostaticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_layer_sum(s : PhysicsemelectrostaticLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticLayer::sum(self : PhysicsemelectrostaticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_layer_mean(s : PhysicsemelectrostaticLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticLayer::mean(self : PhysicsemelectrostaticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_layer_scale(s : PhysicsemelectrostaticLayer, f : Double) -> PhysicsemelectrostaticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticLayer::scale(self : PhysicsemelectrostaticLayer, f : Double) -> PhysicsemelectrostaticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_layer_add(a : PhysicsemelectrostaticLayer, b : PhysicsemelectrostaticLayer) -> PhysicsemelectrostaticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticLayer::add(self : PhysicsemelectrostaticLayer, other : PhysicsemelectrostaticLayer) -> PhysicsemelectrostaticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_layer_copy(s : PhysicsemelectrostaticLayer) -> PhysicsemelectrostaticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticLayer::copy(self : PhysicsemelectrostaticLayer) -> PhysicsemelectrostaticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_layer_fill(s : PhysicsemelectrostaticLayer, v : Double) -> PhysicsemelectrostaticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticLayer::fill(self : PhysicsemelectrostaticLayer, v : Double) -> PhysicsemelectrostaticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_layer_min(s : PhysicsemelectrostaticLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticLayer::min(self : PhysicsemelectrostaticLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_layer_max(s : PhysicsemelectrostaticLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticLayer::max(self : PhysicsemelectrostaticLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_layer_to_string(s : PhysicsemelectrostaticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticLayer::to_string(self : PhysicsemelectrostaticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_electrostatic_buffer_make(size : Int) -> Physicsemelectrostati
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_buffer_len(s : PhysicsemelectrostaticBuffer) -> Int { s.size }
+pub fn PhysicsemelectrostaticBuffer::len(self : PhysicsemelectrostaticBuffer) -> Int { self.size }
 
-pub fn physics_em_electrostatic_buffer_get(s : PhysicsemelectrostaticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticBuffer::get(self : PhysicsemelectrostaticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_buffer_set(s : PhysicsemelectrostaticBuffer, i : Int, v : Double) -> PhysicsemelectrostaticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticBuffer::set(self : PhysicsemelectrostaticBuffer, i : Int, v : Double) -> PhysicsemelectrostaticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_buffer_sum(s : PhysicsemelectrostaticBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticBuffer::sum(self : PhysicsemelectrostaticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_buffer_mean(s : PhysicsemelectrostaticBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticBuffer::mean(self : PhysicsemelectrostaticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_buffer_scale(s : PhysicsemelectrostaticBuffer, f : Double) -> PhysicsemelectrostaticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticBuffer::scale(self : PhysicsemelectrostaticBuffer, f : Double) -> PhysicsemelectrostaticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_buffer_add(a : PhysicsemelectrostaticBuffer, b : PhysicsemelectrostaticBuffer) -> PhysicsemelectrostaticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticBuffer::add(self : PhysicsemelectrostaticBuffer, other : PhysicsemelectrostaticBuffer) -> PhysicsemelectrostaticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_buffer_copy(s : PhysicsemelectrostaticBuffer) -> PhysicsemelectrostaticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticBuffer::copy(self : PhysicsemelectrostaticBuffer) -> PhysicsemelectrostaticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_buffer_fill(s : PhysicsemelectrostaticBuffer, v : Double) -> PhysicsemelectrostaticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticBuffer::fill(self : PhysicsemelectrostaticBuffer, v : Double) -> PhysicsemelectrostaticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_buffer_min(s : PhysicsemelectrostaticBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticBuffer::min(self : PhysicsemelectrostaticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_buffer_max(s : PhysicsemelectrostaticBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticBuffer::max(self : PhysicsemelectrostaticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_buffer_to_string(s : PhysicsemelectrostaticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticBuffer::to_string(self : PhysicsemelectrostaticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_electrostatic_cursor_make(size : Int) -> Physicsemelectrostati
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_cursor_len(s : PhysicsemelectrostaticCursor) -> Int { s.size }
+pub fn PhysicsemelectrostaticCursor::len(self : PhysicsemelectrostaticCursor) -> Int { self.size }
 
-pub fn physics_em_electrostatic_cursor_get(s : PhysicsemelectrostaticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticCursor::get(self : PhysicsemelectrostaticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_cursor_set(s : PhysicsemelectrostaticCursor, i : Int, v : Double) -> PhysicsemelectrostaticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCursor::set(self : PhysicsemelectrostaticCursor, i : Int, v : Double) -> PhysicsemelectrostaticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cursor_sum(s : PhysicsemelectrostaticCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticCursor::sum(self : PhysicsemelectrostaticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_cursor_mean(s : PhysicsemelectrostaticCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticCursor::mean(self : PhysicsemelectrostaticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_cursor_scale(s : PhysicsemelectrostaticCursor, f : Double) -> PhysicsemelectrostaticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCursor::scale(self : PhysicsemelectrostaticCursor, f : Double) -> PhysicsemelectrostaticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cursor_add(a : PhysicsemelectrostaticCursor, b : PhysicsemelectrostaticCursor) -> PhysicsemelectrostaticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticCursor::add(self : PhysicsemelectrostaticCursor, other : PhysicsemelectrostaticCursor) -> PhysicsemelectrostaticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cursor_copy(s : PhysicsemelectrostaticCursor) -> PhysicsemelectrostaticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCursor::copy(self : PhysicsemelectrostaticCursor) -> PhysicsemelectrostaticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cursor_fill(s : PhysicsemelectrostaticCursor, v : Double) -> PhysicsemelectrostaticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticCursor::fill(self : PhysicsemelectrostaticCursor, v : Double) -> PhysicsemelectrostaticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_cursor_min(s : PhysicsemelectrostaticCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticCursor::min(self : PhysicsemelectrostaticCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_cursor_max(s : PhysicsemelectrostaticCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticCursor::max(self : PhysicsemelectrostaticCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_cursor_to_string(s : PhysicsemelectrostaticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticCursor::to_string(self : PhysicsemelectrostaticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticView {
@@ -912,45 +912,45 @@ pub fn physics_em_electrostatic_view_make(size : Int) -> PhysicsemelectrostaticV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_view_len(s : PhysicsemelectrostaticView) -> Int { s.size }
+pub fn PhysicsemelectrostaticView::len(self : PhysicsemelectrostaticView) -> Int { self.size }
 
-pub fn physics_em_electrostatic_view_get(s : PhysicsemelectrostaticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticView::get(self : PhysicsemelectrostaticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_view_set(s : PhysicsemelectrostaticView, i : Int, v : Double) -> PhysicsemelectrostaticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticView::set(self : PhysicsemelectrostaticView, i : Int, v : Double) -> PhysicsemelectrostaticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_view_sum(s : PhysicsemelectrostaticView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticView::sum(self : PhysicsemelectrostaticView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_view_mean(s : PhysicsemelectrostaticView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticView::mean(self : PhysicsemelectrostaticView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_view_scale(s : PhysicsemelectrostaticView, f : Double) -> PhysicsemelectrostaticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticView::scale(self : PhysicsemelectrostaticView, f : Double) -> PhysicsemelectrostaticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_view_add(a : PhysicsemelectrostaticView, b : PhysicsemelectrostaticView) -> PhysicsemelectrostaticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticView::add(self : PhysicsemelectrostaticView, other : PhysicsemelectrostaticView) -> PhysicsemelectrostaticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_view_copy(s : PhysicsemelectrostaticView) -> PhysicsemelectrostaticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticView::copy(self : PhysicsemelectrostaticView) -> PhysicsemelectrostaticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_view_fill(s : PhysicsemelectrostaticView, v : Double) -> PhysicsemelectrostaticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticView::fill(self : PhysicsemelectrostaticView, v : Double) -> PhysicsemelectrostaticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_view_min(s : PhysicsemelectrostaticView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticView::min(self : PhysicsemelectrostaticView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_view_max(s : PhysicsemelectrostaticView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticView::max(self : PhysicsemelectrostaticView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_view_to_string(s : PhysicsemelectrostaticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticView::to_string(self : PhysicsemelectrostaticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticRange {
@@ -963,45 +963,45 @@ pub fn physics_em_electrostatic_range_make(size : Int) -> Physicsemelectrostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_range_len(s : PhysicsemelectrostaticRange) -> Int { s.size }
+pub fn PhysicsemelectrostaticRange::len(self : PhysicsemelectrostaticRange) -> Int { self.size }
 
-pub fn physics_em_electrostatic_range_get(s : PhysicsemelectrostaticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticRange::get(self : PhysicsemelectrostaticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_range_set(s : PhysicsemelectrostaticRange, i : Int, v : Double) -> PhysicsemelectrostaticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticRange::set(self : PhysicsemelectrostaticRange, i : Int, v : Double) -> PhysicsemelectrostaticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_range_sum(s : PhysicsemelectrostaticRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticRange::sum(self : PhysicsemelectrostaticRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_range_mean(s : PhysicsemelectrostaticRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticRange::mean(self : PhysicsemelectrostaticRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_range_scale(s : PhysicsemelectrostaticRange, f : Double) -> PhysicsemelectrostaticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticRange::scale(self : PhysicsemelectrostaticRange, f : Double) -> PhysicsemelectrostaticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_range_add(a : PhysicsemelectrostaticRange, b : PhysicsemelectrostaticRange) -> PhysicsemelectrostaticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticRange::add(self : PhysicsemelectrostaticRange, other : PhysicsemelectrostaticRange) -> PhysicsemelectrostaticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_range_copy(s : PhysicsemelectrostaticRange) -> PhysicsemelectrostaticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticRange::copy(self : PhysicsemelectrostaticRange) -> PhysicsemelectrostaticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_range_fill(s : PhysicsemelectrostaticRange, v : Double) -> PhysicsemelectrostaticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticRange::fill(self : PhysicsemelectrostaticRange, v : Double) -> PhysicsemelectrostaticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_range_min(s : PhysicsemelectrostaticRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticRange::min(self : PhysicsemelectrostaticRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_range_max(s : PhysicsemelectrostaticRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticRange::max(self : PhysicsemelectrostaticRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_range_to_string(s : PhysicsemelectrostaticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticRange::to_string(self : PhysicsemelectrostaticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_electrostatic_slice_make(size : Int) -> Physicsemelectrostatic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_electrostatic_slice_len(s : PhysicsemelectrostaticSlice) -> Int { s.size }
+pub fn PhysicsemelectrostaticSlice::len(self : PhysicsemelectrostaticSlice) -> Int { self.size }
 
-pub fn physics_em_electrostatic_slice_get(s : PhysicsemelectrostaticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemelectrostaticSlice::get(self : PhysicsemelectrostaticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_electrostatic_slice_set(s : PhysicsemelectrostaticSlice, i : Int, v : Double) -> PhysicsemelectrostaticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticSlice::set(self : PhysicsemelectrostaticSlice, i : Int, v : Double) -> PhysicsemelectrostaticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_slice_sum(s : PhysicsemelectrostaticSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemelectrostaticSlice::sum(self : PhysicsemelectrostaticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_electrostatic_slice_mean(s : PhysicsemelectrostaticSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemelectrostaticSlice::mean(self : PhysicsemelectrostaticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_electrostatic_slice_scale(s : PhysicsemelectrostaticSlice, f : Double) -> PhysicsemelectrostaticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticSlice::scale(self : PhysicsemelectrostaticSlice, f : Double) -> PhysicsemelectrostaticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_slice_add(a : PhysicsemelectrostaticSlice, b : PhysicsemelectrostaticSlice) -> PhysicsemelectrostaticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemelectrostaticSlice::add(self : PhysicsemelectrostaticSlice, other : PhysicsemelectrostaticSlice) -> PhysicsemelectrostaticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_slice_copy(s : PhysicsemelectrostaticSlice) -> PhysicsemelectrostaticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticSlice::copy(self : PhysicsemelectrostaticSlice) -> PhysicsemelectrostaticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_slice_fill(s : PhysicsemelectrostaticSlice, v : Double) -> PhysicsemelectrostaticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemelectrostaticSlice::fill(self : PhysicsemelectrostaticSlice, v : Double) -> PhysicsemelectrostaticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_electrostatic_slice_min(s : PhysicsemelectrostaticSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemelectrostaticSlice::min(self : PhysicsemelectrostaticSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_electrostatic_slice_max(s : PhysicsemelectrostaticSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemelectrostaticSlice::max(self : PhysicsemelectrostaticSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_electrostatic_slice_to_string(s : PhysicsemelectrostaticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemelectrostaticSlice::to_string(self : PhysicsemelectrostaticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

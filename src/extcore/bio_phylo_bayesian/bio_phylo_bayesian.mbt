@@ -351,45 +351,45 @@ pub fn bio_phylo_bayesian_frame_make(size : Int) -> BiophylobayesianFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_frame_len(s : BiophylobayesianFrame) -> Int { s.size }
+pub fn BiophylobayesianFrame::len(self : BiophylobayesianFrame) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_frame_get(s : BiophylobayesianFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianFrame::get(self : BiophylobayesianFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_frame_set(s : BiophylobayesianFrame, i : Int, v : Double) -> BiophylobayesianFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianFrame::set(self : BiophylobayesianFrame, i : Int, v : Double) -> BiophylobayesianFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_frame_sum(s : BiophylobayesianFrame) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianFrame::sum(self : BiophylobayesianFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_frame_mean(s : BiophylobayesianFrame) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianFrame::mean(self : BiophylobayesianFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_frame_scale(s : BiophylobayesianFrame, f : Double) -> BiophylobayesianFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianFrame::scale(self : BiophylobayesianFrame, f : Double) -> BiophylobayesianFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_frame_add(a : BiophylobayesianFrame, b : BiophylobayesianFrame) -> BiophylobayesianFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianFrame::add(self : BiophylobayesianFrame, other : BiophylobayesianFrame) -> BiophylobayesianFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_frame_copy(s : BiophylobayesianFrame) -> BiophylobayesianFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianFrame::copy(self : BiophylobayesianFrame) -> BiophylobayesianFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_frame_fill(s : BiophylobayesianFrame, v : Double) -> BiophylobayesianFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianFrame::fill(self : BiophylobayesianFrame, v : Double) -> BiophylobayesianFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_frame_min(s : BiophylobayesianFrame) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianFrame::min(self : BiophylobayesianFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_frame_max(s : BiophylobayesianFrame) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianFrame::max(self : BiophylobayesianFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_frame_to_string(s : BiophylobayesianFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianFrame::to_string(self : BiophylobayesianFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianTable {
@@ -402,45 +402,45 @@ pub fn bio_phylo_bayesian_table_make(size : Int) -> BiophylobayesianTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_table_len(s : BiophylobayesianTable) -> Int { s.size }
+pub fn BiophylobayesianTable::len(self : BiophylobayesianTable) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_table_get(s : BiophylobayesianTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianTable::get(self : BiophylobayesianTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_table_set(s : BiophylobayesianTable, i : Int, v : Double) -> BiophylobayesianTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianTable::set(self : BiophylobayesianTable, i : Int, v : Double) -> BiophylobayesianTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_table_sum(s : BiophylobayesianTable) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianTable::sum(self : BiophylobayesianTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_table_mean(s : BiophylobayesianTable) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianTable::mean(self : BiophylobayesianTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_table_scale(s : BiophylobayesianTable, f : Double) -> BiophylobayesianTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianTable::scale(self : BiophylobayesianTable, f : Double) -> BiophylobayesianTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_table_add(a : BiophylobayesianTable, b : BiophylobayesianTable) -> BiophylobayesianTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianTable::add(self : BiophylobayesianTable, other : BiophylobayesianTable) -> BiophylobayesianTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_table_copy(s : BiophylobayesianTable) -> BiophylobayesianTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianTable::copy(self : BiophylobayesianTable) -> BiophylobayesianTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_table_fill(s : BiophylobayesianTable, v : Double) -> BiophylobayesianTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianTable::fill(self : BiophylobayesianTable, v : Double) -> BiophylobayesianTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_table_min(s : BiophylobayesianTable) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianTable::min(self : BiophylobayesianTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_table_max(s : BiophylobayesianTable) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianTable::max(self : BiophylobayesianTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_table_to_string(s : BiophylobayesianTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianTable::to_string(self : BiophylobayesianTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianGraphN {
@@ -453,45 +453,45 @@ pub fn bio_phylo_bayesian_graphn_make(size : Int) -> BiophylobayesianGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_graphn_len(s : BiophylobayesianGraphN) -> Int { s.size }
+pub fn BiophylobayesianGraphN::len(self : BiophylobayesianGraphN) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_graphn_get(s : BiophylobayesianGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianGraphN::get(self : BiophylobayesianGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_graphn_set(s : BiophylobayesianGraphN, i : Int, v : Double) -> BiophylobayesianGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianGraphN::set(self : BiophylobayesianGraphN, i : Int, v : Double) -> BiophylobayesianGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_graphn_sum(s : BiophylobayesianGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianGraphN::sum(self : BiophylobayesianGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_graphn_mean(s : BiophylobayesianGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianGraphN::mean(self : BiophylobayesianGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_graphn_scale(s : BiophylobayesianGraphN, f : Double) -> BiophylobayesianGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianGraphN::scale(self : BiophylobayesianGraphN, f : Double) -> BiophylobayesianGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_graphn_add(a : BiophylobayesianGraphN, b : BiophylobayesianGraphN) -> BiophylobayesianGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianGraphN::add(self : BiophylobayesianGraphN, other : BiophylobayesianGraphN) -> BiophylobayesianGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_graphn_copy(s : BiophylobayesianGraphN) -> BiophylobayesianGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianGraphN::copy(self : BiophylobayesianGraphN) -> BiophylobayesianGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_graphn_fill(s : BiophylobayesianGraphN, v : Double) -> BiophylobayesianGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianGraphN::fill(self : BiophylobayesianGraphN, v : Double) -> BiophylobayesianGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_graphn_min(s : BiophylobayesianGraphN) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianGraphN::min(self : BiophylobayesianGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_graphn_max(s : BiophylobayesianGraphN) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianGraphN::max(self : BiophylobayesianGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_graphn_to_string(s : BiophylobayesianGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianGraphN::to_string(self : BiophylobayesianGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianNode {
@@ -504,45 +504,45 @@ pub fn bio_phylo_bayesian_node_make(size : Int) -> BiophylobayesianNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_node_len(s : BiophylobayesianNode) -> Int { s.size }
+pub fn BiophylobayesianNode::len(self : BiophylobayesianNode) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_node_get(s : BiophylobayesianNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianNode::get(self : BiophylobayesianNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_node_set(s : BiophylobayesianNode, i : Int, v : Double) -> BiophylobayesianNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianNode::set(self : BiophylobayesianNode, i : Int, v : Double) -> BiophylobayesianNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_node_sum(s : BiophylobayesianNode) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianNode::sum(self : BiophylobayesianNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_node_mean(s : BiophylobayesianNode) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianNode::mean(self : BiophylobayesianNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_node_scale(s : BiophylobayesianNode, f : Double) -> BiophylobayesianNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianNode::scale(self : BiophylobayesianNode, f : Double) -> BiophylobayesianNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_node_add(a : BiophylobayesianNode, b : BiophylobayesianNode) -> BiophylobayesianNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianNode::add(self : BiophylobayesianNode, other : BiophylobayesianNode) -> BiophylobayesianNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_node_copy(s : BiophylobayesianNode) -> BiophylobayesianNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianNode::copy(self : BiophylobayesianNode) -> BiophylobayesianNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_node_fill(s : BiophylobayesianNode, v : Double) -> BiophylobayesianNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianNode::fill(self : BiophylobayesianNode, v : Double) -> BiophylobayesianNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_node_min(s : BiophylobayesianNode) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianNode::min(self : BiophylobayesianNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_node_max(s : BiophylobayesianNode) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianNode::max(self : BiophylobayesianNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_node_to_string(s : BiophylobayesianNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianNode::to_string(self : BiophylobayesianNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianEdge {
@@ -555,45 +555,45 @@ pub fn bio_phylo_bayesian_edge_make(size : Int) -> BiophylobayesianEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_edge_len(s : BiophylobayesianEdge) -> Int { s.size }
+pub fn BiophylobayesianEdge::len(self : BiophylobayesianEdge) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_edge_get(s : BiophylobayesianEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianEdge::get(self : BiophylobayesianEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_edge_set(s : BiophylobayesianEdge, i : Int, v : Double) -> BiophylobayesianEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianEdge::set(self : BiophylobayesianEdge, i : Int, v : Double) -> BiophylobayesianEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_edge_sum(s : BiophylobayesianEdge) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianEdge::sum(self : BiophylobayesianEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_edge_mean(s : BiophylobayesianEdge) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianEdge::mean(self : BiophylobayesianEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_edge_scale(s : BiophylobayesianEdge, f : Double) -> BiophylobayesianEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianEdge::scale(self : BiophylobayesianEdge, f : Double) -> BiophylobayesianEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_edge_add(a : BiophylobayesianEdge, b : BiophylobayesianEdge) -> BiophylobayesianEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianEdge::add(self : BiophylobayesianEdge, other : BiophylobayesianEdge) -> BiophylobayesianEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_edge_copy(s : BiophylobayesianEdge) -> BiophylobayesianEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianEdge::copy(self : BiophylobayesianEdge) -> BiophylobayesianEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_edge_fill(s : BiophylobayesianEdge, v : Double) -> BiophylobayesianEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianEdge::fill(self : BiophylobayesianEdge, v : Double) -> BiophylobayesianEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_edge_min(s : BiophylobayesianEdge) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianEdge::min(self : BiophylobayesianEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_edge_max(s : BiophylobayesianEdge) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianEdge::max(self : BiophylobayesianEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_edge_to_string(s : BiophylobayesianEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianEdge::to_string(self : BiophylobayesianEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianPath {
@@ -606,45 +606,45 @@ pub fn bio_phylo_bayesian_path_make(size : Int) -> BiophylobayesianPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_path_len(s : BiophylobayesianPath) -> Int { s.size }
+pub fn BiophylobayesianPath::len(self : BiophylobayesianPath) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_path_get(s : BiophylobayesianPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianPath::get(self : BiophylobayesianPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_path_set(s : BiophylobayesianPath, i : Int, v : Double) -> BiophylobayesianPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianPath::set(self : BiophylobayesianPath, i : Int, v : Double) -> BiophylobayesianPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_path_sum(s : BiophylobayesianPath) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianPath::sum(self : BiophylobayesianPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_path_mean(s : BiophylobayesianPath) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianPath::mean(self : BiophylobayesianPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_path_scale(s : BiophylobayesianPath, f : Double) -> BiophylobayesianPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianPath::scale(self : BiophylobayesianPath, f : Double) -> BiophylobayesianPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_path_add(a : BiophylobayesianPath, b : BiophylobayesianPath) -> BiophylobayesianPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianPath::add(self : BiophylobayesianPath, other : BiophylobayesianPath) -> BiophylobayesianPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_path_copy(s : BiophylobayesianPath) -> BiophylobayesianPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianPath::copy(self : BiophylobayesianPath) -> BiophylobayesianPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_path_fill(s : BiophylobayesianPath, v : Double) -> BiophylobayesianPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianPath::fill(self : BiophylobayesianPath, v : Double) -> BiophylobayesianPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_path_min(s : BiophylobayesianPath) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianPath::min(self : BiophylobayesianPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_path_max(s : BiophylobayesianPath) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianPath::max(self : BiophylobayesianPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_path_to_string(s : BiophylobayesianPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianPath::to_string(self : BiophylobayesianPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianCluster {
@@ -657,45 +657,45 @@ pub fn bio_phylo_bayesian_cluster_make(size : Int) -> BiophylobayesianCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_cluster_len(s : BiophylobayesianCluster) -> Int { s.size }
+pub fn BiophylobayesianCluster::len(self : BiophylobayesianCluster) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_cluster_get(s : BiophylobayesianCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianCluster::get(self : BiophylobayesianCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_cluster_set(s : BiophylobayesianCluster, i : Int, v : Double) -> BiophylobayesianCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianCluster::set(self : BiophylobayesianCluster, i : Int, v : Double) -> BiophylobayesianCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cluster_sum(s : BiophylobayesianCluster) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianCluster::sum(self : BiophylobayesianCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_cluster_mean(s : BiophylobayesianCluster) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianCluster::mean(self : BiophylobayesianCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_cluster_scale(s : BiophylobayesianCluster, f : Double) -> BiophylobayesianCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianCluster::scale(self : BiophylobayesianCluster, f : Double) -> BiophylobayesianCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cluster_add(a : BiophylobayesianCluster, b : BiophylobayesianCluster) -> BiophylobayesianCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianCluster::add(self : BiophylobayesianCluster, other : BiophylobayesianCluster) -> BiophylobayesianCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cluster_copy(s : BiophylobayesianCluster) -> BiophylobayesianCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianCluster::copy(self : BiophylobayesianCluster) -> BiophylobayesianCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cluster_fill(s : BiophylobayesianCluster, v : Double) -> BiophylobayesianCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianCluster::fill(self : BiophylobayesianCluster, v : Double) -> BiophylobayesianCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cluster_min(s : BiophylobayesianCluster) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianCluster::min(self : BiophylobayesianCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_cluster_max(s : BiophylobayesianCluster) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianCluster::max(self : BiophylobayesianCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_cluster_to_string(s : BiophylobayesianCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianCluster::to_string(self : BiophylobayesianCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianModel {
@@ -708,45 +708,45 @@ pub fn bio_phylo_bayesian_model_make(size : Int) -> BiophylobayesianModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_model_len(s : BiophylobayesianModel) -> Int { s.size }
+pub fn BiophylobayesianModel::len(self : BiophylobayesianModel) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_model_get(s : BiophylobayesianModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianModel::get(self : BiophylobayesianModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_model_set(s : BiophylobayesianModel, i : Int, v : Double) -> BiophylobayesianModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianModel::set(self : BiophylobayesianModel, i : Int, v : Double) -> BiophylobayesianModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_model_sum(s : BiophylobayesianModel) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianModel::sum(self : BiophylobayesianModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_model_mean(s : BiophylobayesianModel) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianModel::mean(self : BiophylobayesianModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_model_scale(s : BiophylobayesianModel, f : Double) -> BiophylobayesianModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianModel::scale(self : BiophylobayesianModel, f : Double) -> BiophylobayesianModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_model_add(a : BiophylobayesianModel, b : BiophylobayesianModel) -> BiophylobayesianModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianModel::add(self : BiophylobayesianModel, other : BiophylobayesianModel) -> BiophylobayesianModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_model_copy(s : BiophylobayesianModel) -> BiophylobayesianModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianModel::copy(self : BiophylobayesianModel) -> BiophylobayesianModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_model_fill(s : BiophylobayesianModel, v : Double) -> BiophylobayesianModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianModel::fill(self : BiophylobayesianModel, v : Double) -> BiophylobayesianModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_model_min(s : BiophylobayesianModel) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianModel::min(self : BiophylobayesianModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_model_max(s : BiophylobayesianModel) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianModel::max(self : BiophylobayesianModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_model_to_string(s : BiophylobayesianModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianModel::to_string(self : BiophylobayesianModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianLayer {
@@ -759,45 +759,45 @@ pub fn bio_phylo_bayesian_layer_make(size : Int) -> BiophylobayesianLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_layer_len(s : BiophylobayesianLayer) -> Int { s.size }
+pub fn BiophylobayesianLayer::len(self : BiophylobayesianLayer) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_layer_get(s : BiophylobayesianLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianLayer::get(self : BiophylobayesianLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_layer_set(s : BiophylobayesianLayer, i : Int, v : Double) -> BiophylobayesianLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianLayer::set(self : BiophylobayesianLayer, i : Int, v : Double) -> BiophylobayesianLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_layer_sum(s : BiophylobayesianLayer) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianLayer::sum(self : BiophylobayesianLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_layer_mean(s : BiophylobayesianLayer) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianLayer::mean(self : BiophylobayesianLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_layer_scale(s : BiophylobayesianLayer, f : Double) -> BiophylobayesianLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianLayer::scale(self : BiophylobayesianLayer, f : Double) -> BiophylobayesianLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_layer_add(a : BiophylobayesianLayer, b : BiophylobayesianLayer) -> BiophylobayesianLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianLayer::add(self : BiophylobayesianLayer, other : BiophylobayesianLayer) -> BiophylobayesianLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_layer_copy(s : BiophylobayesianLayer) -> BiophylobayesianLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianLayer::copy(self : BiophylobayesianLayer) -> BiophylobayesianLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_layer_fill(s : BiophylobayesianLayer, v : Double) -> BiophylobayesianLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianLayer::fill(self : BiophylobayesianLayer, v : Double) -> BiophylobayesianLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_layer_min(s : BiophylobayesianLayer) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianLayer::min(self : BiophylobayesianLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_layer_max(s : BiophylobayesianLayer) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianLayer::max(self : BiophylobayesianLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_layer_to_string(s : BiophylobayesianLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianLayer::to_string(self : BiophylobayesianLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianBuffer {
@@ -810,45 +810,45 @@ pub fn bio_phylo_bayesian_buffer_make(size : Int) -> BiophylobayesianBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_buffer_len(s : BiophylobayesianBuffer) -> Int { s.size }
+pub fn BiophylobayesianBuffer::len(self : BiophylobayesianBuffer) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_buffer_get(s : BiophylobayesianBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianBuffer::get(self : BiophylobayesianBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_buffer_set(s : BiophylobayesianBuffer, i : Int, v : Double) -> BiophylobayesianBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianBuffer::set(self : BiophylobayesianBuffer, i : Int, v : Double) -> BiophylobayesianBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_buffer_sum(s : BiophylobayesianBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianBuffer::sum(self : BiophylobayesianBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_buffer_mean(s : BiophylobayesianBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianBuffer::mean(self : BiophylobayesianBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_buffer_scale(s : BiophylobayesianBuffer, f : Double) -> BiophylobayesianBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianBuffer::scale(self : BiophylobayesianBuffer, f : Double) -> BiophylobayesianBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_buffer_add(a : BiophylobayesianBuffer, b : BiophylobayesianBuffer) -> BiophylobayesianBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianBuffer::add(self : BiophylobayesianBuffer, other : BiophylobayesianBuffer) -> BiophylobayesianBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_buffer_copy(s : BiophylobayesianBuffer) -> BiophylobayesianBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianBuffer::copy(self : BiophylobayesianBuffer) -> BiophylobayesianBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_buffer_fill(s : BiophylobayesianBuffer, v : Double) -> BiophylobayesianBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianBuffer::fill(self : BiophylobayesianBuffer, v : Double) -> BiophylobayesianBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_buffer_min(s : BiophylobayesianBuffer) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianBuffer::min(self : BiophylobayesianBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_buffer_max(s : BiophylobayesianBuffer) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianBuffer::max(self : BiophylobayesianBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_buffer_to_string(s : BiophylobayesianBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianBuffer::to_string(self : BiophylobayesianBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianCursor {
@@ -861,45 +861,45 @@ pub fn bio_phylo_bayesian_cursor_make(size : Int) -> BiophylobayesianCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_cursor_len(s : BiophylobayesianCursor) -> Int { s.size }
+pub fn BiophylobayesianCursor::len(self : BiophylobayesianCursor) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_cursor_get(s : BiophylobayesianCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianCursor::get(self : BiophylobayesianCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_cursor_set(s : BiophylobayesianCursor, i : Int, v : Double) -> BiophylobayesianCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianCursor::set(self : BiophylobayesianCursor, i : Int, v : Double) -> BiophylobayesianCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cursor_sum(s : BiophylobayesianCursor) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianCursor::sum(self : BiophylobayesianCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_cursor_mean(s : BiophylobayesianCursor) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianCursor::mean(self : BiophylobayesianCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_cursor_scale(s : BiophylobayesianCursor, f : Double) -> BiophylobayesianCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianCursor::scale(self : BiophylobayesianCursor, f : Double) -> BiophylobayesianCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cursor_add(a : BiophylobayesianCursor, b : BiophylobayesianCursor) -> BiophylobayesianCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianCursor::add(self : BiophylobayesianCursor, other : BiophylobayesianCursor) -> BiophylobayesianCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cursor_copy(s : BiophylobayesianCursor) -> BiophylobayesianCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianCursor::copy(self : BiophylobayesianCursor) -> BiophylobayesianCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cursor_fill(s : BiophylobayesianCursor, v : Double) -> BiophylobayesianCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianCursor::fill(self : BiophylobayesianCursor, v : Double) -> BiophylobayesianCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_cursor_min(s : BiophylobayesianCursor) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianCursor::min(self : BiophylobayesianCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_cursor_max(s : BiophylobayesianCursor) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianCursor::max(self : BiophylobayesianCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_cursor_to_string(s : BiophylobayesianCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianCursor::to_string(self : BiophylobayesianCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianView {
@@ -912,45 +912,45 @@ pub fn bio_phylo_bayesian_view_make(size : Int) -> BiophylobayesianView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_view_len(s : BiophylobayesianView) -> Int { s.size }
+pub fn BiophylobayesianView::len(self : BiophylobayesianView) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_view_get(s : BiophylobayesianView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianView::get(self : BiophylobayesianView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_view_set(s : BiophylobayesianView, i : Int, v : Double) -> BiophylobayesianView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianView::set(self : BiophylobayesianView, i : Int, v : Double) -> BiophylobayesianView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_view_sum(s : BiophylobayesianView) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianView::sum(self : BiophylobayesianView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_view_mean(s : BiophylobayesianView) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianView::mean(self : BiophylobayesianView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_view_scale(s : BiophylobayesianView, f : Double) -> BiophylobayesianView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianView::scale(self : BiophylobayesianView, f : Double) -> BiophylobayesianView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_view_add(a : BiophylobayesianView, b : BiophylobayesianView) -> BiophylobayesianView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianView::add(self : BiophylobayesianView, other : BiophylobayesianView) -> BiophylobayesianView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_view_copy(s : BiophylobayesianView) -> BiophylobayesianView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianView::copy(self : BiophylobayesianView) -> BiophylobayesianView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_view_fill(s : BiophylobayesianView, v : Double) -> BiophylobayesianView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianView::fill(self : BiophylobayesianView, v : Double) -> BiophylobayesianView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_view_min(s : BiophylobayesianView) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianView::min(self : BiophylobayesianView) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_view_max(s : BiophylobayesianView) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianView::max(self : BiophylobayesianView) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_view_to_string(s : BiophylobayesianView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianView::to_string(self : BiophylobayesianView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianRange {
@@ -963,45 +963,45 @@ pub fn bio_phylo_bayesian_range_make(size : Int) -> BiophylobayesianRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_range_len(s : BiophylobayesianRange) -> Int { s.size }
+pub fn BiophylobayesianRange::len(self : BiophylobayesianRange) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_range_get(s : BiophylobayesianRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianRange::get(self : BiophylobayesianRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_range_set(s : BiophylobayesianRange, i : Int, v : Double) -> BiophylobayesianRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianRange::set(self : BiophylobayesianRange, i : Int, v : Double) -> BiophylobayesianRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_range_sum(s : BiophylobayesianRange) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianRange::sum(self : BiophylobayesianRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_range_mean(s : BiophylobayesianRange) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianRange::mean(self : BiophylobayesianRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_range_scale(s : BiophylobayesianRange, f : Double) -> BiophylobayesianRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianRange::scale(self : BiophylobayesianRange, f : Double) -> BiophylobayesianRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_range_add(a : BiophylobayesianRange, b : BiophylobayesianRange) -> BiophylobayesianRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianRange::add(self : BiophylobayesianRange, other : BiophylobayesianRange) -> BiophylobayesianRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_range_copy(s : BiophylobayesianRange) -> BiophylobayesianRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianRange::copy(self : BiophylobayesianRange) -> BiophylobayesianRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_range_fill(s : BiophylobayesianRange, v : Double) -> BiophylobayesianRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianRange::fill(self : BiophylobayesianRange, v : Double) -> BiophylobayesianRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_range_min(s : BiophylobayesianRange) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianRange::min(self : BiophylobayesianRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_range_max(s : BiophylobayesianRange) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianRange::max(self : BiophylobayesianRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_range_to_string(s : BiophylobayesianRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianRange::to_string(self : BiophylobayesianRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobayesianSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_phylo_bayesian_slice_make(size : Int) -> BiophylobayesianSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bayesian_slice_len(s : BiophylobayesianSlice) -> Int { s.size }
+pub fn BiophylobayesianSlice::len(self : BiophylobayesianSlice) -> Int { self.size }
 
-pub fn bio_phylo_bayesian_slice_get(s : BiophylobayesianSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobayesianSlice::get(self : BiophylobayesianSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bayesian_slice_set(s : BiophylobayesianSlice, i : Int, v : Double) -> BiophylobayesianSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobayesianSlice::set(self : BiophylobayesianSlice, i : Int, v : Double) -> BiophylobayesianSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_slice_sum(s : BiophylobayesianSlice) -> Double { @_common.sum(s.data) }
+pub fn BiophylobayesianSlice::sum(self : BiophylobayesianSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bayesian_slice_mean(s : BiophylobayesianSlice) -> Double { @_common.mean(s.data) }
+pub fn BiophylobayesianSlice::mean(self : BiophylobayesianSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bayesian_slice_scale(s : BiophylobayesianSlice, f : Double) -> BiophylobayesianSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobayesianSlice::scale(self : BiophylobayesianSlice, f : Double) -> BiophylobayesianSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_slice_add(a : BiophylobayesianSlice, b : BiophylobayesianSlice) -> BiophylobayesianSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobayesianSlice::add(self : BiophylobayesianSlice, other : BiophylobayesianSlice) -> BiophylobayesianSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_slice_copy(s : BiophylobayesianSlice) -> BiophylobayesianSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobayesianSlice::copy(self : BiophylobayesianSlice) -> BiophylobayesianSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_slice_fill(s : BiophylobayesianSlice, v : Double) -> BiophylobayesianSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobayesianSlice::fill(self : BiophylobayesianSlice, v : Double) -> BiophylobayesianSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bayesian_slice_min(s : BiophylobayesianSlice) -> Double { @_common.min(s.data) }
+pub fn BiophylobayesianSlice::min(self : BiophylobayesianSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bayesian_slice_max(s : BiophylobayesianSlice) -> Double { @_common.max(s.data) }
+pub fn BiophylobayesianSlice::max(self : BiophylobayesianSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bayesian_slice_to_string(s : BiophylobayesianSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobayesianSlice::to_string(self : BiophylobayesianSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

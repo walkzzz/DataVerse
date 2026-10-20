@@ -351,45 +351,45 @@ pub fn image_transform_flip_frame_make(size : Int) -> ImagetransformflipFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_frame_len(s : ImagetransformflipFrame) -> Int { s.size }
+pub fn ImagetransformflipFrame::len(self : ImagetransformflipFrame) -> Int { self.size }
 
-pub fn image_transform_flip_frame_get(s : ImagetransformflipFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipFrame::get(self : ImagetransformflipFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_frame_set(s : ImagetransformflipFrame, i : Int, v : Double) -> ImagetransformflipFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipFrame::set(self : ImagetransformflipFrame, i : Int, v : Double) -> ImagetransformflipFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_frame_sum(s : ImagetransformflipFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipFrame::sum(self : ImagetransformflipFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_frame_mean(s : ImagetransformflipFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipFrame::mean(self : ImagetransformflipFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_frame_scale(s : ImagetransformflipFrame, f : Double) -> ImagetransformflipFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipFrame::scale(self : ImagetransformflipFrame, f : Double) -> ImagetransformflipFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_frame_add(a : ImagetransformflipFrame, b : ImagetransformflipFrame) -> ImagetransformflipFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipFrame::add(self : ImagetransformflipFrame, other : ImagetransformflipFrame) -> ImagetransformflipFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_frame_copy(s : ImagetransformflipFrame) -> ImagetransformflipFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipFrame::copy(self : ImagetransformflipFrame) -> ImagetransformflipFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_frame_fill(s : ImagetransformflipFrame, v : Double) -> ImagetransformflipFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipFrame::fill(self : ImagetransformflipFrame, v : Double) -> ImagetransformflipFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_frame_min(s : ImagetransformflipFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipFrame::min(self : ImagetransformflipFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_frame_max(s : ImagetransformflipFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipFrame::max(self : ImagetransformflipFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_frame_to_string(s : ImagetransformflipFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipFrame::to_string(self : ImagetransformflipFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipTable {
@@ -402,45 +402,45 @@ pub fn image_transform_flip_table_make(size : Int) -> ImagetransformflipTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_table_len(s : ImagetransformflipTable) -> Int { s.size }
+pub fn ImagetransformflipTable::len(self : ImagetransformflipTable) -> Int { self.size }
 
-pub fn image_transform_flip_table_get(s : ImagetransformflipTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipTable::get(self : ImagetransformflipTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_table_set(s : ImagetransformflipTable, i : Int, v : Double) -> ImagetransformflipTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipTable::set(self : ImagetransformflipTable, i : Int, v : Double) -> ImagetransformflipTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_table_sum(s : ImagetransformflipTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipTable::sum(self : ImagetransformflipTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_table_mean(s : ImagetransformflipTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipTable::mean(self : ImagetransformflipTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_table_scale(s : ImagetransformflipTable, f : Double) -> ImagetransformflipTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipTable::scale(self : ImagetransformflipTable, f : Double) -> ImagetransformflipTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_table_add(a : ImagetransformflipTable, b : ImagetransformflipTable) -> ImagetransformflipTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipTable::add(self : ImagetransformflipTable, other : ImagetransformflipTable) -> ImagetransformflipTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_table_copy(s : ImagetransformflipTable) -> ImagetransformflipTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipTable::copy(self : ImagetransformflipTable) -> ImagetransformflipTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_table_fill(s : ImagetransformflipTable, v : Double) -> ImagetransformflipTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipTable::fill(self : ImagetransformflipTable, v : Double) -> ImagetransformflipTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_table_min(s : ImagetransformflipTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipTable::min(self : ImagetransformflipTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_table_max(s : ImagetransformflipTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipTable::max(self : ImagetransformflipTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_table_to_string(s : ImagetransformflipTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipTable::to_string(self : ImagetransformflipTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_flip_graphn_make(size : Int) -> ImagetransformflipGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_graphn_len(s : ImagetransformflipGraphN) -> Int { s.size }
+pub fn ImagetransformflipGraphN::len(self : ImagetransformflipGraphN) -> Int { self.size }
 
-pub fn image_transform_flip_graphn_get(s : ImagetransformflipGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipGraphN::get(self : ImagetransformflipGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_graphn_set(s : ImagetransformflipGraphN, i : Int, v : Double) -> ImagetransformflipGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipGraphN::set(self : ImagetransformflipGraphN, i : Int, v : Double) -> ImagetransformflipGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_graphn_sum(s : ImagetransformflipGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipGraphN::sum(self : ImagetransformflipGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_graphn_mean(s : ImagetransformflipGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipGraphN::mean(self : ImagetransformflipGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_graphn_scale(s : ImagetransformflipGraphN, f : Double) -> ImagetransformflipGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipGraphN::scale(self : ImagetransformflipGraphN, f : Double) -> ImagetransformflipGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_graphn_add(a : ImagetransformflipGraphN, b : ImagetransformflipGraphN) -> ImagetransformflipGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipGraphN::add(self : ImagetransformflipGraphN, other : ImagetransformflipGraphN) -> ImagetransformflipGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_graphn_copy(s : ImagetransformflipGraphN) -> ImagetransformflipGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipGraphN::copy(self : ImagetransformflipGraphN) -> ImagetransformflipGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_graphn_fill(s : ImagetransformflipGraphN, v : Double) -> ImagetransformflipGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipGraphN::fill(self : ImagetransformflipGraphN, v : Double) -> ImagetransformflipGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_graphn_min(s : ImagetransformflipGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipGraphN::min(self : ImagetransformflipGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_graphn_max(s : ImagetransformflipGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipGraphN::max(self : ImagetransformflipGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_graphn_to_string(s : ImagetransformflipGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipGraphN::to_string(self : ImagetransformflipGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipNode {
@@ -504,45 +504,45 @@ pub fn image_transform_flip_node_make(size : Int) -> ImagetransformflipNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_node_len(s : ImagetransformflipNode) -> Int { s.size }
+pub fn ImagetransformflipNode::len(self : ImagetransformflipNode) -> Int { self.size }
 
-pub fn image_transform_flip_node_get(s : ImagetransformflipNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipNode::get(self : ImagetransformflipNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_node_set(s : ImagetransformflipNode, i : Int, v : Double) -> ImagetransformflipNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipNode::set(self : ImagetransformflipNode, i : Int, v : Double) -> ImagetransformflipNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_node_sum(s : ImagetransformflipNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipNode::sum(self : ImagetransformflipNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_node_mean(s : ImagetransformflipNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipNode::mean(self : ImagetransformflipNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_node_scale(s : ImagetransformflipNode, f : Double) -> ImagetransformflipNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipNode::scale(self : ImagetransformflipNode, f : Double) -> ImagetransformflipNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_node_add(a : ImagetransformflipNode, b : ImagetransformflipNode) -> ImagetransformflipNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipNode::add(self : ImagetransformflipNode, other : ImagetransformflipNode) -> ImagetransformflipNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_node_copy(s : ImagetransformflipNode) -> ImagetransformflipNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipNode::copy(self : ImagetransformflipNode) -> ImagetransformflipNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_node_fill(s : ImagetransformflipNode, v : Double) -> ImagetransformflipNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipNode::fill(self : ImagetransformflipNode, v : Double) -> ImagetransformflipNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_node_min(s : ImagetransformflipNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipNode::min(self : ImagetransformflipNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_node_max(s : ImagetransformflipNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipNode::max(self : ImagetransformflipNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_node_to_string(s : ImagetransformflipNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipNode::to_string(self : ImagetransformflipNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_flip_edge_make(size : Int) -> ImagetransformflipEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_edge_len(s : ImagetransformflipEdge) -> Int { s.size }
+pub fn ImagetransformflipEdge::len(self : ImagetransformflipEdge) -> Int { self.size }
 
-pub fn image_transform_flip_edge_get(s : ImagetransformflipEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipEdge::get(self : ImagetransformflipEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_edge_set(s : ImagetransformflipEdge, i : Int, v : Double) -> ImagetransformflipEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipEdge::set(self : ImagetransformflipEdge, i : Int, v : Double) -> ImagetransformflipEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_edge_sum(s : ImagetransformflipEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipEdge::sum(self : ImagetransformflipEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_edge_mean(s : ImagetransformflipEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipEdge::mean(self : ImagetransformflipEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_edge_scale(s : ImagetransformflipEdge, f : Double) -> ImagetransformflipEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipEdge::scale(self : ImagetransformflipEdge, f : Double) -> ImagetransformflipEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_edge_add(a : ImagetransformflipEdge, b : ImagetransformflipEdge) -> ImagetransformflipEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipEdge::add(self : ImagetransformflipEdge, other : ImagetransformflipEdge) -> ImagetransformflipEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_edge_copy(s : ImagetransformflipEdge) -> ImagetransformflipEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipEdge::copy(self : ImagetransformflipEdge) -> ImagetransformflipEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_edge_fill(s : ImagetransformflipEdge, v : Double) -> ImagetransformflipEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipEdge::fill(self : ImagetransformflipEdge, v : Double) -> ImagetransformflipEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_edge_min(s : ImagetransformflipEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipEdge::min(self : ImagetransformflipEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_edge_max(s : ImagetransformflipEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipEdge::max(self : ImagetransformflipEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_edge_to_string(s : ImagetransformflipEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipEdge::to_string(self : ImagetransformflipEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipPath {
@@ -606,45 +606,45 @@ pub fn image_transform_flip_path_make(size : Int) -> ImagetransformflipPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_path_len(s : ImagetransformflipPath) -> Int { s.size }
+pub fn ImagetransformflipPath::len(self : ImagetransformflipPath) -> Int { self.size }
 
-pub fn image_transform_flip_path_get(s : ImagetransformflipPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipPath::get(self : ImagetransformflipPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_path_set(s : ImagetransformflipPath, i : Int, v : Double) -> ImagetransformflipPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipPath::set(self : ImagetransformflipPath, i : Int, v : Double) -> ImagetransformflipPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_path_sum(s : ImagetransformflipPath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipPath::sum(self : ImagetransformflipPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_path_mean(s : ImagetransformflipPath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipPath::mean(self : ImagetransformflipPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_path_scale(s : ImagetransformflipPath, f : Double) -> ImagetransformflipPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipPath::scale(self : ImagetransformflipPath, f : Double) -> ImagetransformflipPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_path_add(a : ImagetransformflipPath, b : ImagetransformflipPath) -> ImagetransformflipPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipPath::add(self : ImagetransformflipPath, other : ImagetransformflipPath) -> ImagetransformflipPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_path_copy(s : ImagetransformflipPath) -> ImagetransformflipPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipPath::copy(self : ImagetransformflipPath) -> ImagetransformflipPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_path_fill(s : ImagetransformflipPath, v : Double) -> ImagetransformflipPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipPath::fill(self : ImagetransformflipPath, v : Double) -> ImagetransformflipPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_path_min(s : ImagetransformflipPath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipPath::min(self : ImagetransformflipPath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_path_max(s : ImagetransformflipPath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipPath::max(self : ImagetransformflipPath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_path_to_string(s : ImagetransformflipPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipPath::to_string(self : ImagetransformflipPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_flip_cluster_make(size : Int) -> ImagetransformflipCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_cluster_len(s : ImagetransformflipCluster) -> Int { s.size }
+pub fn ImagetransformflipCluster::len(self : ImagetransformflipCluster) -> Int { self.size }
 
-pub fn image_transform_flip_cluster_get(s : ImagetransformflipCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipCluster::get(self : ImagetransformflipCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_cluster_set(s : ImagetransformflipCluster, i : Int, v : Double) -> ImagetransformflipCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipCluster::set(self : ImagetransformflipCluster, i : Int, v : Double) -> ImagetransformflipCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cluster_sum(s : ImagetransformflipCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipCluster::sum(self : ImagetransformflipCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_cluster_mean(s : ImagetransformflipCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipCluster::mean(self : ImagetransformflipCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_cluster_scale(s : ImagetransformflipCluster, f : Double) -> ImagetransformflipCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipCluster::scale(self : ImagetransformflipCluster, f : Double) -> ImagetransformflipCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cluster_add(a : ImagetransformflipCluster, b : ImagetransformflipCluster) -> ImagetransformflipCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipCluster::add(self : ImagetransformflipCluster, other : ImagetransformflipCluster) -> ImagetransformflipCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_cluster_copy(s : ImagetransformflipCluster) -> ImagetransformflipCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipCluster::copy(self : ImagetransformflipCluster) -> ImagetransformflipCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cluster_fill(s : ImagetransformflipCluster, v : Double) -> ImagetransformflipCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipCluster::fill(self : ImagetransformflipCluster, v : Double) -> ImagetransformflipCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cluster_min(s : ImagetransformflipCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipCluster::min(self : ImagetransformflipCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_cluster_max(s : ImagetransformflipCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipCluster::max(self : ImagetransformflipCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_cluster_to_string(s : ImagetransformflipCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipCluster::to_string(self : ImagetransformflipCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipModel {
@@ -708,45 +708,45 @@ pub fn image_transform_flip_model_make(size : Int) -> ImagetransformflipModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_model_len(s : ImagetransformflipModel) -> Int { s.size }
+pub fn ImagetransformflipModel::len(self : ImagetransformflipModel) -> Int { self.size }
 
-pub fn image_transform_flip_model_get(s : ImagetransformflipModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipModel::get(self : ImagetransformflipModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_model_set(s : ImagetransformflipModel, i : Int, v : Double) -> ImagetransformflipModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipModel::set(self : ImagetransformflipModel, i : Int, v : Double) -> ImagetransformflipModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_model_sum(s : ImagetransformflipModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipModel::sum(self : ImagetransformflipModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_model_mean(s : ImagetransformflipModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipModel::mean(self : ImagetransformflipModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_model_scale(s : ImagetransformflipModel, f : Double) -> ImagetransformflipModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipModel::scale(self : ImagetransformflipModel, f : Double) -> ImagetransformflipModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_model_add(a : ImagetransformflipModel, b : ImagetransformflipModel) -> ImagetransformflipModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipModel::add(self : ImagetransformflipModel, other : ImagetransformflipModel) -> ImagetransformflipModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_model_copy(s : ImagetransformflipModel) -> ImagetransformflipModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipModel::copy(self : ImagetransformflipModel) -> ImagetransformflipModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_model_fill(s : ImagetransformflipModel, v : Double) -> ImagetransformflipModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipModel::fill(self : ImagetransformflipModel, v : Double) -> ImagetransformflipModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_model_min(s : ImagetransformflipModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipModel::min(self : ImagetransformflipModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_model_max(s : ImagetransformflipModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipModel::max(self : ImagetransformflipModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_model_to_string(s : ImagetransformflipModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipModel::to_string(self : ImagetransformflipModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_flip_layer_make(size : Int) -> ImagetransformflipLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_layer_len(s : ImagetransformflipLayer) -> Int { s.size }
+pub fn ImagetransformflipLayer::len(self : ImagetransformflipLayer) -> Int { self.size }
 
-pub fn image_transform_flip_layer_get(s : ImagetransformflipLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipLayer::get(self : ImagetransformflipLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_layer_set(s : ImagetransformflipLayer, i : Int, v : Double) -> ImagetransformflipLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipLayer::set(self : ImagetransformflipLayer, i : Int, v : Double) -> ImagetransformflipLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_layer_sum(s : ImagetransformflipLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipLayer::sum(self : ImagetransformflipLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_layer_mean(s : ImagetransformflipLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipLayer::mean(self : ImagetransformflipLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_layer_scale(s : ImagetransformflipLayer, f : Double) -> ImagetransformflipLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipLayer::scale(self : ImagetransformflipLayer, f : Double) -> ImagetransformflipLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_layer_add(a : ImagetransformflipLayer, b : ImagetransformflipLayer) -> ImagetransformflipLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipLayer::add(self : ImagetransformflipLayer, other : ImagetransformflipLayer) -> ImagetransformflipLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_layer_copy(s : ImagetransformflipLayer) -> ImagetransformflipLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipLayer::copy(self : ImagetransformflipLayer) -> ImagetransformflipLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_layer_fill(s : ImagetransformflipLayer, v : Double) -> ImagetransformflipLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipLayer::fill(self : ImagetransformflipLayer, v : Double) -> ImagetransformflipLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_layer_min(s : ImagetransformflipLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipLayer::min(self : ImagetransformflipLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_layer_max(s : ImagetransformflipLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipLayer::max(self : ImagetransformflipLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_layer_to_string(s : ImagetransformflipLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipLayer::to_string(self : ImagetransformflipLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_flip_buffer_make(size : Int) -> ImagetransformflipBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_buffer_len(s : ImagetransformflipBuffer) -> Int { s.size }
+pub fn ImagetransformflipBuffer::len(self : ImagetransformflipBuffer) -> Int { self.size }
 
-pub fn image_transform_flip_buffer_get(s : ImagetransformflipBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipBuffer::get(self : ImagetransformflipBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_buffer_set(s : ImagetransformflipBuffer, i : Int, v : Double) -> ImagetransformflipBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipBuffer::set(self : ImagetransformflipBuffer, i : Int, v : Double) -> ImagetransformflipBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_buffer_sum(s : ImagetransformflipBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipBuffer::sum(self : ImagetransformflipBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_buffer_mean(s : ImagetransformflipBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipBuffer::mean(self : ImagetransformflipBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_buffer_scale(s : ImagetransformflipBuffer, f : Double) -> ImagetransformflipBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipBuffer::scale(self : ImagetransformflipBuffer, f : Double) -> ImagetransformflipBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_buffer_add(a : ImagetransformflipBuffer, b : ImagetransformflipBuffer) -> ImagetransformflipBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipBuffer::add(self : ImagetransformflipBuffer, other : ImagetransformflipBuffer) -> ImagetransformflipBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_buffer_copy(s : ImagetransformflipBuffer) -> ImagetransformflipBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipBuffer::copy(self : ImagetransformflipBuffer) -> ImagetransformflipBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_buffer_fill(s : ImagetransformflipBuffer, v : Double) -> ImagetransformflipBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipBuffer::fill(self : ImagetransformflipBuffer, v : Double) -> ImagetransformflipBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_buffer_min(s : ImagetransformflipBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipBuffer::min(self : ImagetransformflipBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_buffer_max(s : ImagetransformflipBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipBuffer::max(self : ImagetransformflipBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_buffer_to_string(s : ImagetransformflipBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipBuffer::to_string(self : ImagetransformflipBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_flip_cursor_make(size : Int) -> ImagetransformflipCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_cursor_len(s : ImagetransformflipCursor) -> Int { s.size }
+pub fn ImagetransformflipCursor::len(self : ImagetransformflipCursor) -> Int { self.size }
 
-pub fn image_transform_flip_cursor_get(s : ImagetransformflipCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipCursor::get(self : ImagetransformflipCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_cursor_set(s : ImagetransformflipCursor, i : Int, v : Double) -> ImagetransformflipCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipCursor::set(self : ImagetransformflipCursor, i : Int, v : Double) -> ImagetransformflipCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cursor_sum(s : ImagetransformflipCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipCursor::sum(self : ImagetransformflipCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_cursor_mean(s : ImagetransformflipCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipCursor::mean(self : ImagetransformflipCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_cursor_scale(s : ImagetransformflipCursor, f : Double) -> ImagetransformflipCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipCursor::scale(self : ImagetransformflipCursor, f : Double) -> ImagetransformflipCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cursor_add(a : ImagetransformflipCursor, b : ImagetransformflipCursor) -> ImagetransformflipCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipCursor::add(self : ImagetransformflipCursor, other : ImagetransformflipCursor) -> ImagetransformflipCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_cursor_copy(s : ImagetransformflipCursor) -> ImagetransformflipCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipCursor::copy(self : ImagetransformflipCursor) -> ImagetransformflipCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cursor_fill(s : ImagetransformflipCursor, v : Double) -> ImagetransformflipCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipCursor::fill(self : ImagetransformflipCursor, v : Double) -> ImagetransformflipCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_cursor_min(s : ImagetransformflipCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipCursor::min(self : ImagetransformflipCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_cursor_max(s : ImagetransformflipCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipCursor::max(self : ImagetransformflipCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_cursor_to_string(s : ImagetransformflipCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipCursor::to_string(self : ImagetransformflipCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipView {
@@ -912,45 +912,45 @@ pub fn image_transform_flip_view_make(size : Int) -> ImagetransformflipView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_view_len(s : ImagetransformflipView) -> Int { s.size }
+pub fn ImagetransformflipView::len(self : ImagetransformflipView) -> Int { self.size }
 
-pub fn image_transform_flip_view_get(s : ImagetransformflipView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipView::get(self : ImagetransformflipView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_view_set(s : ImagetransformflipView, i : Int, v : Double) -> ImagetransformflipView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipView::set(self : ImagetransformflipView, i : Int, v : Double) -> ImagetransformflipView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_view_sum(s : ImagetransformflipView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipView::sum(self : ImagetransformflipView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_view_mean(s : ImagetransformflipView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipView::mean(self : ImagetransformflipView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_view_scale(s : ImagetransformflipView, f : Double) -> ImagetransformflipView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipView::scale(self : ImagetransformflipView, f : Double) -> ImagetransformflipView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_view_add(a : ImagetransformflipView, b : ImagetransformflipView) -> ImagetransformflipView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipView::add(self : ImagetransformflipView, other : ImagetransformflipView) -> ImagetransformflipView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_view_copy(s : ImagetransformflipView) -> ImagetransformflipView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipView::copy(self : ImagetransformflipView) -> ImagetransformflipView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_view_fill(s : ImagetransformflipView, v : Double) -> ImagetransformflipView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipView::fill(self : ImagetransformflipView, v : Double) -> ImagetransformflipView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_view_min(s : ImagetransformflipView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipView::min(self : ImagetransformflipView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_view_max(s : ImagetransformflipView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipView::max(self : ImagetransformflipView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_view_to_string(s : ImagetransformflipView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipView::to_string(self : ImagetransformflipView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipRange {
@@ -963,45 +963,45 @@ pub fn image_transform_flip_range_make(size : Int) -> ImagetransformflipRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_range_len(s : ImagetransformflipRange) -> Int { s.size }
+pub fn ImagetransformflipRange::len(self : ImagetransformflipRange) -> Int { self.size }
 
-pub fn image_transform_flip_range_get(s : ImagetransformflipRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipRange::get(self : ImagetransformflipRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_range_set(s : ImagetransformflipRange, i : Int, v : Double) -> ImagetransformflipRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipRange::set(self : ImagetransformflipRange, i : Int, v : Double) -> ImagetransformflipRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_range_sum(s : ImagetransformflipRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipRange::sum(self : ImagetransformflipRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_range_mean(s : ImagetransformflipRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipRange::mean(self : ImagetransformflipRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_range_scale(s : ImagetransformflipRange, f : Double) -> ImagetransformflipRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipRange::scale(self : ImagetransformflipRange, f : Double) -> ImagetransformflipRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_range_add(a : ImagetransformflipRange, b : ImagetransformflipRange) -> ImagetransformflipRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipRange::add(self : ImagetransformflipRange, other : ImagetransformflipRange) -> ImagetransformflipRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_range_copy(s : ImagetransformflipRange) -> ImagetransformflipRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipRange::copy(self : ImagetransformflipRange) -> ImagetransformflipRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_range_fill(s : ImagetransformflipRange, v : Double) -> ImagetransformflipRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipRange::fill(self : ImagetransformflipRange, v : Double) -> ImagetransformflipRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_range_min(s : ImagetransformflipRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipRange::min(self : ImagetransformflipRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_range_max(s : ImagetransformflipRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipRange::max(self : ImagetransformflipRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_range_to_string(s : ImagetransformflipRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipRange::to_string(self : ImagetransformflipRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformflipSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_flip_slice_make(size : Int) -> ImagetransformflipSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_flip_slice_len(s : ImagetransformflipSlice) -> Int { s.size }
+pub fn ImagetransformflipSlice::len(self : ImagetransformflipSlice) -> Int { self.size }
 
-pub fn image_transform_flip_slice_get(s : ImagetransformflipSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformflipSlice::get(self : ImagetransformflipSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_flip_slice_set(s : ImagetransformflipSlice, i : Int, v : Double) -> ImagetransformflipSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformflipSlice::set(self : ImagetransformflipSlice, i : Int, v : Double) -> ImagetransformflipSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_slice_sum(s : ImagetransformflipSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformflipSlice::sum(self : ImagetransformflipSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_flip_slice_mean(s : ImagetransformflipSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformflipSlice::mean(self : ImagetransformflipSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_flip_slice_scale(s : ImagetransformflipSlice, f : Double) -> ImagetransformflipSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformflipSlice::scale(self : ImagetransformflipSlice, f : Double) -> ImagetransformflipSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_slice_add(a : ImagetransformflipSlice, b : ImagetransformflipSlice) -> ImagetransformflipSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformflipSlice::add(self : ImagetransformflipSlice, other : ImagetransformflipSlice) -> ImagetransformflipSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_flip_slice_copy(s : ImagetransformflipSlice) -> ImagetransformflipSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformflipSlice::copy(self : ImagetransformflipSlice) -> ImagetransformflipSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_slice_fill(s : ImagetransformflipSlice, v : Double) -> ImagetransformflipSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformflipSlice::fill(self : ImagetransformflipSlice, v : Double) -> ImagetransformflipSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_flip_slice_min(s : ImagetransformflipSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformflipSlice::min(self : ImagetransformflipSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_flip_slice_max(s : ImagetransformflipSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformflipSlice::max(self : ImagetransformflipSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_flip_slice_to_string(s : ImagetransformflipSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformflipSlice::to_string(self : ImagetransformflipSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

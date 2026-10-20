@@ -351,45 +351,45 @@ pub fn timeseries_decomp_wavelet_frame_make(size : Int) -> Timeseriesdecompwavel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_frame_len(s : TimeseriesdecompwaveletFrame) -> Int { s.size }
+pub fn TimeseriesdecompwaveletFrame::len(self : TimeseriesdecompwaveletFrame) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_frame_get(s : TimeseriesdecompwaveletFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletFrame::get(self : TimeseriesdecompwaveletFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_frame_set(s : TimeseriesdecompwaveletFrame, i : Int, v : Double) -> TimeseriesdecompwaveletFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletFrame::set(self : TimeseriesdecompwaveletFrame, i : Int, v : Double) -> TimeseriesdecompwaveletFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_frame_sum(s : TimeseriesdecompwaveletFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletFrame::sum(self : TimeseriesdecompwaveletFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_frame_mean(s : TimeseriesdecompwaveletFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletFrame::mean(self : TimeseriesdecompwaveletFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_frame_scale(s : TimeseriesdecompwaveletFrame, f : Double) -> TimeseriesdecompwaveletFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletFrame::scale(self : TimeseriesdecompwaveletFrame, f : Double) -> TimeseriesdecompwaveletFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_frame_add(a : TimeseriesdecompwaveletFrame, b : TimeseriesdecompwaveletFrame) -> TimeseriesdecompwaveletFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletFrame::add(self : TimeseriesdecompwaveletFrame, other : TimeseriesdecompwaveletFrame) -> TimeseriesdecompwaveletFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_frame_copy(s : TimeseriesdecompwaveletFrame) -> TimeseriesdecompwaveletFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletFrame::copy(self : TimeseriesdecompwaveletFrame) -> TimeseriesdecompwaveletFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_frame_fill(s : TimeseriesdecompwaveletFrame, v : Double) -> TimeseriesdecompwaveletFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletFrame::fill(self : TimeseriesdecompwaveletFrame, v : Double) -> TimeseriesdecompwaveletFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_frame_min(s : TimeseriesdecompwaveletFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletFrame::min(self : TimeseriesdecompwaveletFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_frame_max(s : TimeseriesdecompwaveletFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletFrame::max(self : TimeseriesdecompwaveletFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_frame_to_string(s : TimeseriesdecompwaveletFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletFrame::to_string(self : TimeseriesdecompwaveletFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletTable {
@@ -402,45 +402,45 @@ pub fn timeseries_decomp_wavelet_table_make(size : Int) -> Timeseriesdecompwavel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_table_len(s : TimeseriesdecompwaveletTable) -> Int { s.size }
+pub fn TimeseriesdecompwaveletTable::len(self : TimeseriesdecompwaveletTable) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_table_get(s : TimeseriesdecompwaveletTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletTable::get(self : TimeseriesdecompwaveletTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_table_set(s : TimeseriesdecompwaveletTable, i : Int, v : Double) -> TimeseriesdecompwaveletTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletTable::set(self : TimeseriesdecompwaveletTable, i : Int, v : Double) -> TimeseriesdecompwaveletTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_table_sum(s : TimeseriesdecompwaveletTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletTable::sum(self : TimeseriesdecompwaveletTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_table_mean(s : TimeseriesdecompwaveletTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletTable::mean(self : TimeseriesdecompwaveletTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_table_scale(s : TimeseriesdecompwaveletTable, f : Double) -> TimeseriesdecompwaveletTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletTable::scale(self : TimeseriesdecompwaveletTable, f : Double) -> TimeseriesdecompwaveletTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_table_add(a : TimeseriesdecompwaveletTable, b : TimeseriesdecompwaveletTable) -> TimeseriesdecompwaveletTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletTable::add(self : TimeseriesdecompwaveletTable, other : TimeseriesdecompwaveletTable) -> TimeseriesdecompwaveletTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_table_copy(s : TimeseriesdecompwaveletTable) -> TimeseriesdecompwaveletTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletTable::copy(self : TimeseriesdecompwaveletTable) -> TimeseriesdecompwaveletTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_table_fill(s : TimeseriesdecompwaveletTable, v : Double) -> TimeseriesdecompwaveletTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletTable::fill(self : TimeseriesdecompwaveletTable, v : Double) -> TimeseriesdecompwaveletTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_table_min(s : TimeseriesdecompwaveletTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletTable::min(self : TimeseriesdecompwaveletTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_table_max(s : TimeseriesdecompwaveletTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletTable::max(self : TimeseriesdecompwaveletTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_table_to_string(s : TimeseriesdecompwaveletTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletTable::to_string(self : TimeseriesdecompwaveletTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_decomp_wavelet_graphn_make(size : Int) -> Timeseriesdecompwave
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_len(s : TimeseriesdecompwaveletGraphN) -> Int { s.size }
+pub fn TimeseriesdecompwaveletGraphN::len(self : TimeseriesdecompwaveletGraphN) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_graphn_get(s : TimeseriesdecompwaveletGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletGraphN::get(self : TimeseriesdecompwaveletGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_set(s : TimeseriesdecompwaveletGraphN, i : Int, v : Double) -> TimeseriesdecompwaveletGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletGraphN::set(self : TimeseriesdecompwaveletGraphN, i : Int, v : Double) -> TimeseriesdecompwaveletGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_sum(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletGraphN::sum(self : TimeseriesdecompwaveletGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_graphn_mean(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletGraphN::mean(self : TimeseriesdecompwaveletGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_graphn_scale(s : TimeseriesdecompwaveletGraphN, f : Double) -> TimeseriesdecompwaveletGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletGraphN::scale(self : TimeseriesdecompwaveletGraphN, f : Double) -> TimeseriesdecompwaveletGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_add(a : TimeseriesdecompwaveletGraphN, b : TimeseriesdecompwaveletGraphN) -> TimeseriesdecompwaveletGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletGraphN::add(self : TimeseriesdecompwaveletGraphN, other : TimeseriesdecompwaveletGraphN) -> TimeseriesdecompwaveletGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_copy(s : TimeseriesdecompwaveletGraphN) -> TimeseriesdecompwaveletGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletGraphN::copy(self : TimeseriesdecompwaveletGraphN) -> TimeseriesdecompwaveletGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_fill(s : TimeseriesdecompwaveletGraphN, v : Double) -> TimeseriesdecompwaveletGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletGraphN::fill(self : TimeseriesdecompwaveletGraphN, v : Double) -> TimeseriesdecompwaveletGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_graphn_min(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletGraphN::min(self : TimeseriesdecompwaveletGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_graphn_max(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletGraphN::max(self : TimeseriesdecompwaveletGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_graphn_to_string(s : TimeseriesdecompwaveletGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletGraphN::to_string(self : TimeseriesdecompwaveletGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletNode {
@@ -504,45 +504,45 @@ pub fn timeseries_decomp_wavelet_node_make(size : Int) -> Timeseriesdecompwavele
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_node_len(s : TimeseriesdecompwaveletNode) -> Int { s.size }
+pub fn TimeseriesdecompwaveletNode::len(self : TimeseriesdecompwaveletNode) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_node_get(s : TimeseriesdecompwaveletNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletNode::get(self : TimeseriesdecompwaveletNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_node_set(s : TimeseriesdecompwaveletNode, i : Int, v : Double) -> TimeseriesdecompwaveletNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletNode::set(self : TimeseriesdecompwaveletNode, i : Int, v : Double) -> TimeseriesdecompwaveletNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_node_sum(s : TimeseriesdecompwaveletNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletNode::sum(self : TimeseriesdecompwaveletNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_node_mean(s : TimeseriesdecompwaveletNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletNode::mean(self : TimeseriesdecompwaveletNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_node_scale(s : TimeseriesdecompwaveletNode, f : Double) -> TimeseriesdecompwaveletNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletNode::scale(self : TimeseriesdecompwaveletNode, f : Double) -> TimeseriesdecompwaveletNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_node_add(a : TimeseriesdecompwaveletNode, b : TimeseriesdecompwaveletNode) -> TimeseriesdecompwaveletNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletNode::add(self : TimeseriesdecompwaveletNode, other : TimeseriesdecompwaveletNode) -> TimeseriesdecompwaveletNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_node_copy(s : TimeseriesdecompwaveletNode) -> TimeseriesdecompwaveletNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletNode::copy(self : TimeseriesdecompwaveletNode) -> TimeseriesdecompwaveletNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_node_fill(s : TimeseriesdecompwaveletNode, v : Double) -> TimeseriesdecompwaveletNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletNode::fill(self : TimeseriesdecompwaveletNode, v : Double) -> TimeseriesdecompwaveletNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_node_min(s : TimeseriesdecompwaveletNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletNode::min(self : TimeseriesdecompwaveletNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_node_max(s : TimeseriesdecompwaveletNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletNode::max(self : TimeseriesdecompwaveletNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_node_to_string(s : TimeseriesdecompwaveletNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletNode::to_string(self : TimeseriesdecompwaveletNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_decomp_wavelet_edge_make(size : Int) -> Timeseriesdecompwavele
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_edge_len(s : TimeseriesdecompwaveletEdge) -> Int { s.size }
+pub fn TimeseriesdecompwaveletEdge::len(self : TimeseriesdecompwaveletEdge) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_edge_get(s : TimeseriesdecompwaveletEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletEdge::get(self : TimeseriesdecompwaveletEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_edge_set(s : TimeseriesdecompwaveletEdge, i : Int, v : Double) -> TimeseriesdecompwaveletEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletEdge::set(self : TimeseriesdecompwaveletEdge, i : Int, v : Double) -> TimeseriesdecompwaveletEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_edge_sum(s : TimeseriesdecompwaveletEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletEdge::sum(self : TimeseriesdecompwaveletEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_edge_mean(s : TimeseriesdecompwaveletEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletEdge::mean(self : TimeseriesdecompwaveletEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_edge_scale(s : TimeseriesdecompwaveletEdge, f : Double) -> TimeseriesdecompwaveletEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletEdge::scale(self : TimeseriesdecompwaveletEdge, f : Double) -> TimeseriesdecompwaveletEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_edge_add(a : TimeseriesdecompwaveletEdge, b : TimeseriesdecompwaveletEdge) -> TimeseriesdecompwaveletEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletEdge::add(self : TimeseriesdecompwaveletEdge, other : TimeseriesdecompwaveletEdge) -> TimeseriesdecompwaveletEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_edge_copy(s : TimeseriesdecompwaveletEdge) -> TimeseriesdecompwaveletEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletEdge::copy(self : TimeseriesdecompwaveletEdge) -> TimeseriesdecompwaveletEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_edge_fill(s : TimeseriesdecompwaveletEdge, v : Double) -> TimeseriesdecompwaveletEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletEdge::fill(self : TimeseriesdecompwaveletEdge, v : Double) -> TimeseriesdecompwaveletEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_edge_min(s : TimeseriesdecompwaveletEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletEdge::min(self : TimeseriesdecompwaveletEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_edge_max(s : TimeseriesdecompwaveletEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletEdge::max(self : TimeseriesdecompwaveletEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_edge_to_string(s : TimeseriesdecompwaveletEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletEdge::to_string(self : TimeseriesdecompwaveletEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletPath {
@@ -606,45 +606,45 @@ pub fn timeseries_decomp_wavelet_path_make(size : Int) -> Timeseriesdecompwavele
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_path_len(s : TimeseriesdecompwaveletPath) -> Int { s.size }
+pub fn TimeseriesdecompwaveletPath::len(self : TimeseriesdecompwaveletPath) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_path_get(s : TimeseriesdecompwaveletPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletPath::get(self : TimeseriesdecompwaveletPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_path_set(s : TimeseriesdecompwaveletPath, i : Int, v : Double) -> TimeseriesdecompwaveletPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletPath::set(self : TimeseriesdecompwaveletPath, i : Int, v : Double) -> TimeseriesdecompwaveletPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_path_sum(s : TimeseriesdecompwaveletPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletPath::sum(self : TimeseriesdecompwaveletPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_path_mean(s : TimeseriesdecompwaveletPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletPath::mean(self : TimeseriesdecompwaveletPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_path_scale(s : TimeseriesdecompwaveletPath, f : Double) -> TimeseriesdecompwaveletPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletPath::scale(self : TimeseriesdecompwaveletPath, f : Double) -> TimeseriesdecompwaveletPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_path_add(a : TimeseriesdecompwaveletPath, b : TimeseriesdecompwaveletPath) -> TimeseriesdecompwaveletPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletPath::add(self : TimeseriesdecompwaveletPath, other : TimeseriesdecompwaveletPath) -> TimeseriesdecompwaveletPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_path_copy(s : TimeseriesdecompwaveletPath) -> TimeseriesdecompwaveletPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletPath::copy(self : TimeseriesdecompwaveletPath) -> TimeseriesdecompwaveletPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_path_fill(s : TimeseriesdecompwaveletPath, v : Double) -> TimeseriesdecompwaveletPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletPath::fill(self : TimeseriesdecompwaveletPath, v : Double) -> TimeseriesdecompwaveletPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_path_min(s : TimeseriesdecompwaveletPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletPath::min(self : TimeseriesdecompwaveletPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_path_max(s : TimeseriesdecompwaveletPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletPath::max(self : TimeseriesdecompwaveletPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_path_to_string(s : TimeseriesdecompwaveletPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletPath::to_string(self : TimeseriesdecompwaveletPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_decomp_wavelet_cluster_make(size : Int) -> Timeseriesdecompwav
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_len(s : TimeseriesdecompwaveletCluster) -> Int { s.size }
+pub fn TimeseriesdecompwaveletCluster::len(self : TimeseriesdecompwaveletCluster) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_cluster_get(s : TimeseriesdecompwaveletCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletCluster::get(self : TimeseriesdecompwaveletCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_set(s : TimeseriesdecompwaveletCluster, i : Int, v : Double) -> TimeseriesdecompwaveletCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCluster::set(self : TimeseriesdecompwaveletCluster, i : Int, v : Double) -> TimeseriesdecompwaveletCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_sum(s : TimeseriesdecompwaveletCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletCluster::sum(self : TimeseriesdecompwaveletCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_cluster_mean(s : TimeseriesdecompwaveletCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletCluster::mean(self : TimeseriesdecompwaveletCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_cluster_scale(s : TimeseriesdecompwaveletCluster, f : Double) -> TimeseriesdecompwaveletCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCluster::scale(self : TimeseriesdecompwaveletCluster, f : Double) -> TimeseriesdecompwaveletCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_add(a : TimeseriesdecompwaveletCluster, b : TimeseriesdecompwaveletCluster) -> TimeseriesdecompwaveletCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletCluster::add(self : TimeseriesdecompwaveletCluster, other : TimeseriesdecompwaveletCluster) -> TimeseriesdecompwaveletCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_copy(s : TimeseriesdecompwaveletCluster) -> TimeseriesdecompwaveletCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCluster::copy(self : TimeseriesdecompwaveletCluster) -> TimeseriesdecompwaveletCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_fill(s : TimeseriesdecompwaveletCluster, v : Double) -> TimeseriesdecompwaveletCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCluster::fill(self : TimeseriesdecompwaveletCluster, v : Double) -> TimeseriesdecompwaveletCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cluster_min(s : TimeseriesdecompwaveletCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletCluster::min(self : TimeseriesdecompwaveletCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_cluster_max(s : TimeseriesdecompwaveletCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletCluster::max(self : TimeseriesdecompwaveletCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_cluster_to_string(s : TimeseriesdecompwaveletCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletCluster::to_string(self : TimeseriesdecompwaveletCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletModel {
@@ -708,45 +708,45 @@ pub fn timeseries_decomp_wavelet_model_make(size : Int) -> Timeseriesdecompwavel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_model_len(s : TimeseriesdecompwaveletModel) -> Int { s.size }
+pub fn TimeseriesdecompwaveletModel::len(self : TimeseriesdecompwaveletModel) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_model_get(s : TimeseriesdecompwaveletModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletModel::get(self : TimeseriesdecompwaveletModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_model_set(s : TimeseriesdecompwaveletModel, i : Int, v : Double) -> TimeseriesdecompwaveletModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletModel::set(self : TimeseriesdecompwaveletModel, i : Int, v : Double) -> TimeseriesdecompwaveletModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_model_sum(s : TimeseriesdecompwaveletModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletModel::sum(self : TimeseriesdecompwaveletModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_model_mean(s : TimeseriesdecompwaveletModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletModel::mean(self : TimeseriesdecompwaveletModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_model_scale(s : TimeseriesdecompwaveletModel, f : Double) -> TimeseriesdecompwaveletModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletModel::scale(self : TimeseriesdecompwaveletModel, f : Double) -> TimeseriesdecompwaveletModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_model_add(a : TimeseriesdecompwaveletModel, b : TimeseriesdecompwaveletModel) -> TimeseriesdecompwaveletModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletModel::add(self : TimeseriesdecompwaveletModel, other : TimeseriesdecompwaveletModel) -> TimeseriesdecompwaveletModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_model_copy(s : TimeseriesdecompwaveletModel) -> TimeseriesdecompwaveletModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletModel::copy(self : TimeseriesdecompwaveletModel) -> TimeseriesdecompwaveletModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_model_fill(s : TimeseriesdecompwaveletModel, v : Double) -> TimeseriesdecompwaveletModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletModel::fill(self : TimeseriesdecompwaveletModel, v : Double) -> TimeseriesdecompwaveletModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_model_min(s : TimeseriesdecompwaveletModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletModel::min(self : TimeseriesdecompwaveletModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_model_max(s : TimeseriesdecompwaveletModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletModel::max(self : TimeseriesdecompwaveletModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_model_to_string(s : TimeseriesdecompwaveletModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletModel::to_string(self : TimeseriesdecompwaveletModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_decomp_wavelet_layer_make(size : Int) -> Timeseriesdecompwavel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_layer_len(s : TimeseriesdecompwaveletLayer) -> Int { s.size }
+pub fn TimeseriesdecompwaveletLayer::len(self : TimeseriesdecompwaveletLayer) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_layer_get(s : TimeseriesdecompwaveletLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletLayer::get(self : TimeseriesdecompwaveletLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_layer_set(s : TimeseriesdecompwaveletLayer, i : Int, v : Double) -> TimeseriesdecompwaveletLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletLayer::set(self : TimeseriesdecompwaveletLayer, i : Int, v : Double) -> TimeseriesdecompwaveletLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_layer_sum(s : TimeseriesdecompwaveletLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletLayer::sum(self : TimeseriesdecompwaveletLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_layer_mean(s : TimeseriesdecompwaveletLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletLayer::mean(self : TimeseriesdecompwaveletLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_layer_scale(s : TimeseriesdecompwaveletLayer, f : Double) -> TimeseriesdecompwaveletLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletLayer::scale(self : TimeseriesdecompwaveletLayer, f : Double) -> TimeseriesdecompwaveletLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_layer_add(a : TimeseriesdecompwaveletLayer, b : TimeseriesdecompwaveletLayer) -> TimeseriesdecompwaveletLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletLayer::add(self : TimeseriesdecompwaveletLayer, other : TimeseriesdecompwaveletLayer) -> TimeseriesdecompwaveletLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_layer_copy(s : TimeseriesdecompwaveletLayer) -> TimeseriesdecompwaveletLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletLayer::copy(self : TimeseriesdecompwaveletLayer) -> TimeseriesdecompwaveletLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_layer_fill(s : TimeseriesdecompwaveletLayer, v : Double) -> TimeseriesdecompwaveletLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletLayer::fill(self : TimeseriesdecompwaveletLayer, v : Double) -> TimeseriesdecompwaveletLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_layer_min(s : TimeseriesdecompwaveletLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletLayer::min(self : TimeseriesdecompwaveletLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_layer_max(s : TimeseriesdecompwaveletLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletLayer::max(self : TimeseriesdecompwaveletLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_layer_to_string(s : TimeseriesdecompwaveletLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletLayer::to_string(self : TimeseriesdecompwaveletLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_decomp_wavelet_buffer_make(size : Int) -> Timeseriesdecompwave
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_len(s : TimeseriesdecompwaveletBuffer) -> Int { s.size }
+pub fn TimeseriesdecompwaveletBuffer::len(self : TimeseriesdecompwaveletBuffer) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_buffer_get(s : TimeseriesdecompwaveletBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletBuffer::get(self : TimeseriesdecompwaveletBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_set(s : TimeseriesdecompwaveletBuffer, i : Int, v : Double) -> TimeseriesdecompwaveletBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletBuffer::set(self : TimeseriesdecompwaveletBuffer, i : Int, v : Double) -> TimeseriesdecompwaveletBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_sum(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletBuffer::sum(self : TimeseriesdecompwaveletBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_buffer_mean(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletBuffer::mean(self : TimeseriesdecompwaveletBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_buffer_scale(s : TimeseriesdecompwaveletBuffer, f : Double) -> TimeseriesdecompwaveletBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletBuffer::scale(self : TimeseriesdecompwaveletBuffer, f : Double) -> TimeseriesdecompwaveletBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_add(a : TimeseriesdecompwaveletBuffer, b : TimeseriesdecompwaveletBuffer) -> TimeseriesdecompwaveletBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletBuffer::add(self : TimeseriesdecompwaveletBuffer, other : TimeseriesdecompwaveletBuffer) -> TimeseriesdecompwaveletBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_copy(s : TimeseriesdecompwaveletBuffer) -> TimeseriesdecompwaveletBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletBuffer::copy(self : TimeseriesdecompwaveletBuffer) -> TimeseriesdecompwaveletBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_fill(s : TimeseriesdecompwaveletBuffer, v : Double) -> TimeseriesdecompwaveletBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletBuffer::fill(self : TimeseriesdecompwaveletBuffer, v : Double) -> TimeseriesdecompwaveletBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_buffer_min(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletBuffer::min(self : TimeseriesdecompwaveletBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_buffer_max(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletBuffer::max(self : TimeseriesdecompwaveletBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_buffer_to_string(s : TimeseriesdecompwaveletBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletBuffer::to_string(self : TimeseriesdecompwaveletBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_decomp_wavelet_cursor_make(size : Int) -> Timeseriesdecompwave
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_len(s : TimeseriesdecompwaveletCursor) -> Int { s.size }
+pub fn TimeseriesdecompwaveletCursor::len(self : TimeseriesdecompwaveletCursor) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_cursor_get(s : TimeseriesdecompwaveletCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletCursor::get(self : TimeseriesdecompwaveletCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_set(s : TimeseriesdecompwaveletCursor, i : Int, v : Double) -> TimeseriesdecompwaveletCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCursor::set(self : TimeseriesdecompwaveletCursor, i : Int, v : Double) -> TimeseriesdecompwaveletCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_sum(s : TimeseriesdecompwaveletCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletCursor::sum(self : TimeseriesdecompwaveletCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_cursor_mean(s : TimeseriesdecompwaveletCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletCursor::mean(self : TimeseriesdecompwaveletCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_cursor_scale(s : TimeseriesdecompwaveletCursor, f : Double) -> TimeseriesdecompwaveletCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCursor::scale(self : TimeseriesdecompwaveletCursor, f : Double) -> TimeseriesdecompwaveletCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_add(a : TimeseriesdecompwaveletCursor, b : TimeseriesdecompwaveletCursor) -> TimeseriesdecompwaveletCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletCursor::add(self : TimeseriesdecompwaveletCursor, other : TimeseriesdecompwaveletCursor) -> TimeseriesdecompwaveletCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_copy(s : TimeseriesdecompwaveletCursor) -> TimeseriesdecompwaveletCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCursor::copy(self : TimeseriesdecompwaveletCursor) -> TimeseriesdecompwaveletCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_fill(s : TimeseriesdecompwaveletCursor, v : Double) -> TimeseriesdecompwaveletCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletCursor::fill(self : TimeseriesdecompwaveletCursor, v : Double) -> TimeseriesdecompwaveletCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_cursor_min(s : TimeseriesdecompwaveletCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletCursor::min(self : TimeseriesdecompwaveletCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_cursor_max(s : TimeseriesdecompwaveletCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletCursor::max(self : TimeseriesdecompwaveletCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_cursor_to_string(s : TimeseriesdecompwaveletCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletCursor::to_string(self : TimeseriesdecompwaveletCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletView {
@@ -912,45 +912,45 @@ pub fn timeseries_decomp_wavelet_view_make(size : Int) -> Timeseriesdecompwavele
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_view_len(s : TimeseriesdecompwaveletView) -> Int { s.size }
+pub fn TimeseriesdecompwaveletView::len(self : TimeseriesdecompwaveletView) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_view_get(s : TimeseriesdecompwaveletView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletView::get(self : TimeseriesdecompwaveletView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_view_set(s : TimeseriesdecompwaveletView, i : Int, v : Double) -> TimeseriesdecompwaveletView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletView::set(self : TimeseriesdecompwaveletView, i : Int, v : Double) -> TimeseriesdecompwaveletView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_view_sum(s : TimeseriesdecompwaveletView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletView::sum(self : TimeseriesdecompwaveletView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_view_mean(s : TimeseriesdecompwaveletView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletView::mean(self : TimeseriesdecompwaveletView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_view_scale(s : TimeseriesdecompwaveletView, f : Double) -> TimeseriesdecompwaveletView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletView::scale(self : TimeseriesdecompwaveletView, f : Double) -> TimeseriesdecompwaveletView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_view_add(a : TimeseriesdecompwaveletView, b : TimeseriesdecompwaveletView) -> TimeseriesdecompwaveletView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletView::add(self : TimeseriesdecompwaveletView, other : TimeseriesdecompwaveletView) -> TimeseriesdecompwaveletView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_view_copy(s : TimeseriesdecompwaveletView) -> TimeseriesdecompwaveletView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletView::copy(self : TimeseriesdecompwaveletView) -> TimeseriesdecompwaveletView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_view_fill(s : TimeseriesdecompwaveletView, v : Double) -> TimeseriesdecompwaveletView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletView::fill(self : TimeseriesdecompwaveletView, v : Double) -> TimeseriesdecompwaveletView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_view_min(s : TimeseriesdecompwaveletView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletView::min(self : TimeseriesdecompwaveletView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_view_max(s : TimeseriesdecompwaveletView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletView::max(self : TimeseriesdecompwaveletView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_view_to_string(s : TimeseriesdecompwaveletView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletView::to_string(self : TimeseriesdecompwaveletView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletRange {
@@ -963,45 +963,45 @@ pub fn timeseries_decomp_wavelet_range_make(size : Int) -> Timeseriesdecompwavel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_range_len(s : TimeseriesdecompwaveletRange) -> Int { s.size }
+pub fn TimeseriesdecompwaveletRange::len(self : TimeseriesdecompwaveletRange) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_range_get(s : TimeseriesdecompwaveletRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletRange::get(self : TimeseriesdecompwaveletRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_range_set(s : TimeseriesdecompwaveletRange, i : Int, v : Double) -> TimeseriesdecompwaveletRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletRange::set(self : TimeseriesdecompwaveletRange, i : Int, v : Double) -> TimeseriesdecompwaveletRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_range_sum(s : TimeseriesdecompwaveletRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletRange::sum(self : TimeseriesdecompwaveletRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_range_mean(s : TimeseriesdecompwaveletRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletRange::mean(self : TimeseriesdecompwaveletRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_range_scale(s : TimeseriesdecompwaveletRange, f : Double) -> TimeseriesdecompwaveletRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletRange::scale(self : TimeseriesdecompwaveletRange, f : Double) -> TimeseriesdecompwaveletRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_range_add(a : TimeseriesdecompwaveletRange, b : TimeseriesdecompwaveletRange) -> TimeseriesdecompwaveletRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletRange::add(self : TimeseriesdecompwaveletRange, other : TimeseriesdecompwaveletRange) -> TimeseriesdecompwaveletRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_range_copy(s : TimeseriesdecompwaveletRange) -> TimeseriesdecompwaveletRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletRange::copy(self : TimeseriesdecompwaveletRange) -> TimeseriesdecompwaveletRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_range_fill(s : TimeseriesdecompwaveletRange, v : Double) -> TimeseriesdecompwaveletRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletRange::fill(self : TimeseriesdecompwaveletRange, v : Double) -> TimeseriesdecompwaveletRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_range_min(s : TimeseriesdecompwaveletRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletRange::min(self : TimeseriesdecompwaveletRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_range_max(s : TimeseriesdecompwaveletRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletRange::max(self : TimeseriesdecompwaveletRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_range_to_string(s : TimeseriesdecompwaveletRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletRange::to_string(self : TimeseriesdecompwaveletRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompwaveletSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_decomp_wavelet_slice_make(size : Int) -> Timeseriesdecompwavel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_wavelet_slice_len(s : TimeseriesdecompwaveletSlice) -> Int { s.size }
+pub fn TimeseriesdecompwaveletSlice::len(self : TimeseriesdecompwaveletSlice) -> Int { self.size }
 
-pub fn timeseries_decomp_wavelet_slice_get(s : TimeseriesdecompwaveletSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompwaveletSlice::get(self : TimeseriesdecompwaveletSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_wavelet_slice_set(s : TimeseriesdecompwaveletSlice, i : Int, v : Double) -> TimeseriesdecompwaveletSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletSlice::set(self : TimeseriesdecompwaveletSlice, i : Int, v : Double) -> TimeseriesdecompwaveletSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_slice_sum(s : TimeseriesdecompwaveletSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompwaveletSlice::sum(self : TimeseriesdecompwaveletSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_wavelet_slice_mean(s : TimeseriesdecompwaveletSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompwaveletSlice::mean(self : TimeseriesdecompwaveletSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_wavelet_slice_scale(s : TimeseriesdecompwaveletSlice, f : Double) -> TimeseriesdecompwaveletSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletSlice::scale(self : TimeseriesdecompwaveletSlice, f : Double) -> TimeseriesdecompwaveletSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_slice_add(a : TimeseriesdecompwaveletSlice, b : TimeseriesdecompwaveletSlice) -> TimeseriesdecompwaveletSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompwaveletSlice::add(self : TimeseriesdecompwaveletSlice, other : TimeseriesdecompwaveletSlice) -> TimeseriesdecompwaveletSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_slice_copy(s : TimeseriesdecompwaveletSlice) -> TimeseriesdecompwaveletSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletSlice::copy(self : TimeseriesdecompwaveletSlice) -> TimeseriesdecompwaveletSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_slice_fill(s : TimeseriesdecompwaveletSlice, v : Double) -> TimeseriesdecompwaveletSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompwaveletSlice::fill(self : TimeseriesdecompwaveletSlice, v : Double) -> TimeseriesdecompwaveletSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_wavelet_slice_min(s : TimeseriesdecompwaveletSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompwaveletSlice::min(self : TimeseriesdecompwaveletSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_wavelet_slice_max(s : TimeseriesdecompwaveletSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompwaveletSlice::max(self : TimeseriesdecompwaveletSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_wavelet_slice_to_string(s : TimeseriesdecompwaveletSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompwaveletSlice::to_string(self : TimeseriesdecompwaveletSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

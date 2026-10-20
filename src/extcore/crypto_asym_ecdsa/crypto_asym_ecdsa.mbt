@@ -351,45 +351,45 @@ pub fn crypto_asym_ecdsa_frame_make(size : Int) -> CryptoasymecdsaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_frame_len(s : CryptoasymecdsaFrame) -> Int { s.size }
+pub fn CryptoasymecdsaFrame::len(self : CryptoasymecdsaFrame) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_frame_get(s : CryptoasymecdsaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaFrame::get(self : CryptoasymecdsaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_frame_set(s : CryptoasymecdsaFrame, i : Int, v : Double) -> CryptoasymecdsaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaFrame::set(self : CryptoasymecdsaFrame, i : Int, v : Double) -> CryptoasymecdsaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_frame_sum(s : CryptoasymecdsaFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaFrame::sum(self : CryptoasymecdsaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_frame_mean(s : CryptoasymecdsaFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaFrame::mean(self : CryptoasymecdsaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_frame_scale(s : CryptoasymecdsaFrame, f : Double) -> CryptoasymecdsaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaFrame::scale(self : CryptoasymecdsaFrame, f : Double) -> CryptoasymecdsaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_frame_add(a : CryptoasymecdsaFrame, b : CryptoasymecdsaFrame) -> CryptoasymecdsaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaFrame::add(self : CryptoasymecdsaFrame, other : CryptoasymecdsaFrame) -> CryptoasymecdsaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_frame_copy(s : CryptoasymecdsaFrame) -> CryptoasymecdsaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaFrame::copy(self : CryptoasymecdsaFrame) -> CryptoasymecdsaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_frame_fill(s : CryptoasymecdsaFrame, v : Double) -> CryptoasymecdsaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaFrame::fill(self : CryptoasymecdsaFrame, v : Double) -> CryptoasymecdsaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_frame_min(s : CryptoasymecdsaFrame) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaFrame::min(self : CryptoasymecdsaFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_frame_max(s : CryptoasymecdsaFrame) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaFrame::max(self : CryptoasymecdsaFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_frame_to_string(s : CryptoasymecdsaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaFrame::to_string(self : CryptoasymecdsaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaTable {
@@ -402,45 +402,45 @@ pub fn crypto_asym_ecdsa_table_make(size : Int) -> CryptoasymecdsaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_table_len(s : CryptoasymecdsaTable) -> Int { s.size }
+pub fn CryptoasymecdsaTable::len(self : CryptoasymecdsaTable) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_table_get(s : CryptoasymecdsaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaTable::get(self : CryptoasymecdsaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_table_set(s : CryptoasymecdsaTable, i : Int, v : Double) -> CryptoasymecdsaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaTable::set(self : CryptoasymecdsaTable, i : Int, v : Double) -> CryptoasymecdsaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_table_sum(s : CryptoasymecdsaTable) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaTable::sum(self : CryptoasymecdsaTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_table_mean(s : CryptoasymecdsaTable) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaTable::mean(self : CryptoasymecdsaTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_table_scale(s : CryptoasymecdsaTable, f : Double) -> CryptoasymecdsaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaTable::scale(self : CryptoasymecdsaTable, f : Double) -> CryptoasymecdsaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_table_add(a : CryptoasymecdsaTable, b : CryptoasymecdsaTable) -> CryptoasymecdsaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaTable::add(self : CryptoasymecdsaTable, other : CryptoasymecdsaTable) -> CryptoasymecdsaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_table_copy(s : CryptoasymecdsaTable) -> CryptoasymecdsaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaTable::copy(self : CryptoasymecdsaTable) -> CryptoasymecdsaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_table_fill(s : CryptoasymecdsaTable, v : Double) -> CryptoasymecdsaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaTable::fill(self : CryptoasymecdsaTable, v : Double) -> CryptoasymecdsaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_table_min(s : CryptoasymecdsaTable) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaTable::min(self : CryptoasymecdsaTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_table_max(s : CryptoasymecdsaTable) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaTable::max(self : CryptoasymecdsaTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_table_to_string(s : CryptoasymecdsaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaTable::to_string(self : CryptoasymecdsaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_asym_ecdsa_graphn_make(size : Int) -> CryptoasymecdsaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_graphn_len(s : CryptoasymecdsaGraphN) -> Int { s.size }
+pub fn CryptoasymecdsaGraphN::len(self : CryptoasymecdsaGraphN) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_graphn_get(s : CryptoasymecdsaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaGraphN::get(self : CryptoasymecdsaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_graphn_set(s : CryptoasymecdsaGraphN, i : Int, v : Double) -> CryptoasymecdsaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaGraphN::set(self : CryptoasymecdsaGraphN, i : Int, v : Double) -> CryptoasymecdsaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_graphn_sum(s : CryptoasymecdsaGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaGraphN::sum(self : CryptoasymecdsaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_graphn_mean(s : CryptoasymecdsaGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaGraphN::mean(self : CryptoasymecdsaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_graphn_scale(s : CryptoasymecdsaGraphN, f : Double) -> CryptoasymecdsaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaGraphN::scale(self : CryptoasymecdsaGraphN, f : Double) -> CryptoasymecdsaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_graphn_add(a : CryptoasymecdsaGraphN, b : CryptoasymecdsaGraphN) -> CryptoasymecdsaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaGraphN::add(self : CryptoasymecdsaGraphN, other : CryptoasymecdsaGraphN) -> CryptoasymecdsaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_graphn_copy(s : CryptoasymecdsaGraphN) -> CryptoasymecdsaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaGraphN::copy(self : CryptoasymecdsaGraphN) -> CryptoasymecdsaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_graphn_fill(s : CryptoasymecdsaGraphN, v : Double) -> CryptoasymecdsaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaGraphN::fill(self : CryptoasymecdsaGraphN, v : Double) -> CryptoasymecdsaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_graphn_min(s : CryptoasymecdsaGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaGraphN::min(self : CryptoasymecdsaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_graphn_max(s : CryptoasymecdsaGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaGraphN::max(self : CryptoasymecdsaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_graphn_to_string(s : CryptoasymecdsaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaGraphN::to_string(self : CryptoasymecdsaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaNode {
@@ -504,45 +504,45 @@ pub fn crypto_asym_ecdsa_node_make(size : Int) -> CryptoasymecdsaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_node_len(s : CryptoasymecdsaNode) -> Int { s.size }
+pub fn CryptoasymecdsaNode::len(self : CryptoasymecdsaNode) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_node_get(s : CryptoasymecdsaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaNode::get(self : CryptoasymecdsaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_node_set(s : CryptoasymecdsaNode, i : Int, v : Double) -> CryptoasymecdsaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaNode::set(self : CryptoasymecdsaNode, i : Int, v : Double) -> CryptoasymecdsaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_node_sum(s : CryptoasymecdsaNode) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaNode::sum(self : CryptoasymecdsaNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_node_mean(s : CryptoasymecdsaNode) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaNode::mean(self : CryptoasymecdsaNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_node_scale(s : CryptoasymecdsaNode, f : Double) -> CryptoasymecdsaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaNode::scale(self : CryptoasymecdsaNode, f : Double) -> CryptoasymecdsaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_node_add(a : CryptoasymecdsaNode, b : CryptoasymecdsaNode) -> CryptoasymecdsaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaNode::add(self : CryptoasymecdsaNode, other : CryptoasymecdsaNode) -> CryptoasymecdsaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_node_copy(s : CryptoasymecdsaNode) -> CryptoasymecdsaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaNode::copy(self : CryptoasymecdsaNode) -> CryptoasymecdsaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_node_fill(s : CryptoasymecdsaNode, v : Double) -> CryptoasymecdsaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaNode::fill(self : CryptoasymecdsaNode, v : Double) -> CryptoasymecdsaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_node_min(s : CryptoasymecdsaNode) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaNode::min(self : CryptoasymecdsaNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_node_max(s : CryptoasymecdsaNode) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaNode::max(self : CryptoasymecdsaNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_node_to_string(s : CryptoasymecdsaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaNode::to_string(self : CryptoasymecdsaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaEdge {
@@ -555,45 +555,45 @@ pub fn crypto_asym_ecdsa_edge_make(size : Int) -> CryptoasymecdsaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_edge_len(s : CryptoasymecdsaEdge) -> Int { s.size }
+pub fn CryptoasymecdsaEdge::len(self : CryptoasymecdsaEdge) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_edge_get(s : CryptoasymecdsaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaEdge::get(self : CryptoasymecdsaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_edge_set(s : CryptoasymecdsaEdge, i : Int, v : Double) -> CryptoasymecdsaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaEdge::set(self : CryptoasymecdsaEdge, i : Int, v : Double) -> CryptoasymecdsaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_edge_sum(s : CryptoasymecdsaEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaEdge::sum(self : CryptoasymecdsaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_edge_mean(s : CryptoasymecdsaEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaEdge::mean(self : CryptoasymecdsaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_edge_scale(s : CryptoasymecdsaEdge, f : Double) -> CryptoasymecdsaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaEdge::scale(self : CryptoasymecdsaEdge, f : Double) -> CryptoasymecdsaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_edge_add(a : CryptoasymecdsaEdge, b : CryptoasymecdsaEdge) -> CryptoasymecdsaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaEdge::add(self : CryptoasymecdsaEdge, other : CryptoasymecdsaEdge) -> CryptoasymecdsaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_edge_copy(s : CryptoasymecdsaEdge) -> CryptoasymecdsaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaEdge::copy(self : CryptoasymecdsaEdge) -> CryptoasymecdsaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_edge_fill(s : CryptoasymecdsaEdge, v : Double) -> CryptoasymecdsaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaEdge::fill(self : CryptoasymecdsaEdge, v : Double) -> CryptoasymecdsaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_edge_min(s : CryptoasymecdsaEdge) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaEdge::min(self : CryptoasymecdsaEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_edge_max(s : CryptoasymecdsaEdge) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaEdge::max(self : CryptoasymecdsaEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_edge_to_string(s : CryptoasymecdsaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaEdge::to_string(self : CryptoasymecdsaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaPath {
@@ -606,45 +606,45 @@ pub fn crypto_asym_ecdsa_path_make(size : Int) -> CryptoasymecdsaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_path_len(s : CryptoasymecdsaPath) -> Int { s.size }
+pub fn CryptoasymecdsaPath::len(self : CryptoasymecdsaPath) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_path_get(s : CryptoasymecdsaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaPath::get(self : CryptoasymecdsaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_path_set(s : CryptoasymecdsaPath, i : Int, v : Double) -> CryptoasymecdsaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaPath::set(self : CryptoasymecdsaPath, i : Int, v : Double) -> CryptoasymecdsaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_path_sum(s : CryptoasymecdsaPath) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaPath::sum(self : CryptoasymecdsaPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_path_mean(s : CryptoasymecdsaPath) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaPath::mean(self : CryptoasymecdsaPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_path_scale(s : CryptoasymecdsaPath, f : Double) -> CryptoasymecdsaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaPath::scale(self : CryptoasymecdsaPath, f : Double) -> CryptoasymecdsaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_path_add(a : CryptoasymecdsaPath, b : CryptoasymecdsaPath) -> CryptoasymecdsaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaPath::add(self : CryptoasymecdsaPath, other : CryptoasymecdsaPath) -> CryptoasymecdsaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_path_copy(s : CryptoasymecdsaPath) -> CryptoasymecdsaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaPath::copy(self : CryptoasymecdsaPath) -> CryptoasymecdsaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_path_fill(s : CryptoasymecdsaPath, v : Double) -> CryptoasymecdsaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaPath::fill(self : CryptoasymecdsaPath, v : Double) -> CryptoasymecdsaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_path_min(s : CryptoasymecdsaPath) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaPath::min(self : CryptoasymecdsaPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_path_max(s : CryptoasymecdsaPath) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaPath::max(self : CryptoasymecdsaPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_path_to_string(s : CryptoasymecdsaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaPath::to_string(self : CryptoasymecdsaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaCluster {
@@ -657,45 +657,45 @@ pub fn crypto_asym_ecdsa_cluster_make(size : Int) -> CryptoasymecdsaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_cluster_len(s : CryptoasymecdsaCluster) -> Int { s.size }
+pub fn CryptoasymecdsaCluster::len(self : CryptoasymecdsaCluster) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_cluster_get(s : CryptoasymecdsaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaCluster::get(self : CryptoasymecdsaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_cluster_set(s : CryptoasymecdsaCluster, i : Int, v : Double) -> CryptoasymecdsaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCluster::set(self : CryptoasymecdsaCluster, i : Int, v : Double) -> CryptoasymecdsaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cluster_sum(s : CryptoasymecdsaCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaCluster::sum(self : CryptoasymecdsaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_cluster_mean(s : CryptoasymecdsaCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaCluster::mean(self : CryptoasymecdsaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_cluster_scale(s : CryptoasymecdsaCluster, f : Double) -> CryptoasymecdsaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCluster::scale(self : CryptoasymecdsaCluster, f : Double) -> CryptoasymecdsaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cluster_add(a : CryptoasymecdsaCluster, b : CryptoasymecdsaCluster) -> CryptoasymecdsaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaCluster::add(self : CryptoasymecdsaCluster, other : CryptoasymecdsaCluster) -> CryptoasymecdsaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cluster_copy(s : CryptoasymecdsaCluster) -> CryptoasymecdsaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCluster::copy(self : CryptoasymecdsaCluster) -> CryptoasymecdsaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cluster_fill(s : CryptoasymecdsaCluster, v : Double) -> CryptoasymecdsaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCluster::fill(self : CryptoasymecdsaCluster, v : Double) -> CryptoasymecdsaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cluster_min(s : CryptoasymecdsaCluster) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaCluster::min(self : CryptoasymecdsaCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_cluster_max(s : CryptoasymecdsaCluster) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaCluster::max(self : CryptoasymecdsaCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_cluster_to_string(s : CryptoasymecdsaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaCluster::to_string(self : CryptoasymecdsaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaModel {
@@ -708,45 +708,45 @@ pub fn crypto_asym_ecdsa_model_make(size : Int) -> CryptoasymecdsaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_model_len(s : CryptoasymecdsaModel) -> Int { s.size }
+pub fn CryptoasymecdsaModel::len(self : CryptoasymecdsaModel) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_model_get(s : CryptoasymecdsaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaModel::get(self : CryptoasymecdsaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_model_set(s : CryptoasymecdsaModel, i : Int, v : Double) -> CryptoasymecdsaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaModel::set(self : CryptoasymecdsaModel, i : Int, v : Double) -> CryptoasymecdsaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_model_sum(s : CryptoasymecdsaModel) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaModel::sum(self : CryptoasymecdsaModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_model_mean(s : CryptoasymecdsaModel) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaModel::mean(self : CryptoasymecdsaModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_model_scale(s : CryptoasymecdsaModel, f : Double) -> CryptoasymecdsaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaModel::scale(self : CryptoasymecdsaModel, f : Double) -> CryptoasymecdsaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_model_add(a : CryptoasymecdsaModel, b : CryptoasymecdsaModel) -> CryptoasymecdsaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaModel::add(self : CryptoasymecdsaModel, other : CryptoasymecdsaModel) -> CryptoasymecdsaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_model_copy(s : CryptoasymecdsaModel) -> CryptoasymecdsaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaModel::copy(self : CryptoasymecdsaModel) -> CryptoasymecdsaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_model_fill(s : CryptoasymecdsaModel, v : Double) -> CryptoasymecdsaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaModel::fill(self : CryptoasymecdsaModel, v : Double) -> CryptoasymecdsaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_model_min(s : CryptoasymecdsaModel) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaModel::min(self : CryptoasymecdsaModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_model_max(s : CryptoasymecdsaModel) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaModel::max(self : CryptoasymecdsaModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_model_to_string(s : CryptoasymecdsaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaModel::to_string(self : CryptoasymecdsaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaLayer {
@@ -759,45 +759,45 @@ pub fn crypto_asym_ecdsa_layer_make(size : Int) -> CryptoasymecdsaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_layer_len(s : CryptoasymecdsaLayer) -> Int { s.size }
+pub fn CryptoasymecdsaLayer::len(self : CryptoasymecdsaLayer) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_layer_get(s : CryptoasymecdsaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaLayer::get(self : CryptoasymecdsaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_layer_set(s : CryptoasymecdsaLayer, i : Int, v : Double) -> CryptoasymecdsaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaLayer::set(self : CryptoasymecdsaLayer, i : Int, v : Double) -> CryptoasymecdsaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_layer_sum(s : CryptoasymecdsaLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaLayer::sum(self : CryptoasymecdsaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_layer_mean(s : CryptoasymecdsaLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaLayer::mean(self : CryptoasymecdsaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_layer_scale(s : CryptoasymecdsaLayer, f : Double) -> CryptoasymecdsaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaLayer::scale(self : CryptoasymecdsaLayer, f : Double) -> CryptoasymecdsaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_layer_add(a : CryptoasymecdsaLayer, b : CryptoasymecdsaLayer) -> CryptoasymecdsaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaLayer::add(self : CryptoasymecdsaLayer, other : CryptoasymecdsaLayer) -> CryptoasymecdsaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_layer_copy(s : CryptoasymecdsaLayer) -> CryptoasymecdsaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaLayer::copy(self : CryptoasymecdsaLayer) -> CryptoasymecdsaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_layer_fill(s : CryptoasymecdsaLayer, v : Double) -> CryptoasymecdsaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaLayer::fill(self : CryptoasymecdsaLayer, v : Double) -> CryptoasymecdsaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_layer_min(s : CryptoasymecdsaLayer) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaLayer::min(self : CryptoasymecdsaLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_layer_max(s : CryptoasymecdsaLayer) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaLayer::max(self : CryptoasymecdsaLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_layer_to_string(s : CryptoasymecdsaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaLayer::to_string(self : CryptoasymecdsaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_asym_ecdsa_buffer_make(size : Int) -> CryptoasymecdsaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_buffer_len(s : CryptoasymecdsaBuffer) -> Int { s.size }
+pub fn CryptoasymecdsaBuffer::len(self : CryptoasymecdsaBuffer) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_buffer_get(s : CryptoasymecdsaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaBuffer::get(self : CryptoasymecdsaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_buffer_set(s : CryptoasymecdsaBuffer, i : Int, v : Double) -> CryptoasymecdsaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaBuffer::set(self : CryptoasymecdsaBuffer, i : Int, v : Double) -> CryptoasymecdsaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_buffer_sum(s : CryptoasymecdsaBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaBuffer::sum(self : CryptoasymecdsaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_buffer_mean(s : CryptoasymecdsaBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaBuffer::mean(self : CryptoasymecdsaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_buffer_scale(s : CryptoasymecdsaBuffer, f : Double) -> CryptoasymecdsaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaBuffer::scale(self : CryptoasymecdsaBuffer, f : Double) -> CryptoasymecdsaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_buffer_add(a : CryptoasymecdsaBuffer, b : CryptoasymecdsaBuffer) -> CryptoasymecdsaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaBuffer::add(self : CryptoasymecdsaBuffer, other : CryptoasymecdsaBuffer) -> CryptoasymecdsaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_buffer_copy(s : CryptoasymecdsaBuffer) -> CryptoasymecdsaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaBuffer::copy(self : CryptoasymecdsaBuffer) -> CryptoasymecdsaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_buffer_fill(s : CryptoasymecdsaBuffer, v : Double) -> CryptoasymecdsaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaBuffer::fill(self : CryptoasymecdsaBuffer, v : Double) -> CryptoasymecdsaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_buffer_min(s : CryptoasymecdsaBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaBuffer::min(self : CryptoasymecdsaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_buffer_max(s : CryptoasymecdsaBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaBuffer::max(self : CryptoasymecdsaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_buffer_to_string(s : CryptoasymecdsaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaBuffer::to_string(self : CryptoasymecdsaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaCursor {
@@ -861,45 +861,45 @@ pub fn crypto_asym_ecdsa_cursor_make(size : Int) -> CryptoasymecdsaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_cursor_len(s : CryptoasymecdsaCursor) -> Int { s.size }
+pub fn CryptoasymecdsaCursor::len(self : CryptoasymecdsaCursor) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_cursor_get(s : CryptoasymecdsaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaCursor::get(self : CryptoasymecdsaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_cursor_set(s : CryptoasymecdsaCursor, i : Int, v : Double) -> CryptoasymecdsaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCursor::set(self : CryptoasymecdsaCursor, i : Int, v : Double) -> CryptoasymecdsaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cursor_sum(s : CryptoasymecdsaCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaCursor::sum(self : CryptoasymecdsaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_cursor_mean(s : CryptoasymecdsaCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaCursor::mean(self : CryptoasymecdsaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_cursor_scale(s : CryptoasymecdsaCursor, f : Double) -> CryptoasymecdsaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCursor::scale(self : CryptoasymecdsaCursor, f : Double) -> CryptoasymecdsaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cursor_add(a : CryptoasymecdsaCursor, b : CryptoasymecdsaCursor) -> CryptoasymecdsaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaCursor::add(self : CryptoasymecdsaCursor, other : CryptoasymecdsaCursor) -> CryptoasymecdsaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cursor_copy(s : CryptoasymecdsaCursor) -> CryptoasymecdsaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCursor::copy(self : CryptoasymecdsaCursor) -> CryptoasymecdsaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cursor_fill(s : CryptoasymecdsaCursor, v : Double) -> CryptoasymecdsaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaCursor::fill(self : CryptoasymecdsaCursor, v : Double) -> CryptoasymecdsaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_cursor_min(s : CryptoasymecdsaCursor) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaCursor::min(self : CryptoasymecdsaCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_cursor_max(s : CryptoasymecdsaCursor) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaCursor::max(self : CryptoasymecdsaCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_cursor_to_string(s : CryptoasymecdsaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaCursor::to_string(self : CryptoasymecdsaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaView {
@@ -912,45 +912,45 @@ pub fn crypto_asym_ecdsa_view_make(size : Int) -> CryptoasymecdsaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_view_len(s : CryptoasymecdsaView) -> Int { s.size }
+pub fn CryptoasymecdsaView::len(self : CryptoasymecdsaView) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_view_get(s : CryptoasymecdsaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaView::get(self : CryptoasymecdsaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_view_set(s : CryptoasymecdsaView, i : Int, v : Double) -> CryptoasymecdsaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaView::set(self : CryptoasymecdsaView, i : Int, v : Double) -> CryptoasymecdsaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_view_sum(s : CryptoasymecdsaView) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaView::sum(self : CryptoasymecdsaView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_view_mean(s : CryptoasymecdsaView) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaView::mean(self : CryptoasymecdsaView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_view_scale(s : CryptoasymecdsaView, f : Double) -> CryptoasymecdsaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaView::scale(self : CryptoasymecdsaView, f : Double) -> CryptoasymecdsaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_view_add(a : CryptoasymecdsaView, b : CryptoasymecdsaView) -> CryptoasymecdsaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaView::add(self : CryptoasymecdsaView, other : CryptoasymecdsaView) -> CryptoasymecdsaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_view_copy(s : CryptoasymecdsaView) -> CryptoasymecdsaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaView::copy(self : CryptoasymecdsaView) -> CryptoasymecdsaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_view_fill(s : CryptoasymecdsaView, v : Double) -> CryptoasymecdsaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaView::fill(self : CryptoasymecdsaView, v : Double) -> CryptoasymecdsaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_view_min(s : CryptoasymecdsaView) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaView::min(self : CryptoasymecdsaView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_view_max(s : CryptoasymecdsaView) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaView::max(self : CryptoasymecdsaView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_view_to_string(s : CryptoasymecdsaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaView::to_string(self : CryptoasymecdsaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaRange {
@@ -963,45 +963,45 @@ pub fn crypto_asym_ecdsa_range_make(size : Int) -> CryptoasymecdsaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_range_len(s : CryptoasymecdsaRange) -> Int { s.size }
+pub fn CryptoasymecdsaRange::len(self : CryptoasymecdsaRange) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_range_get(s : CryptoasymecdsaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaRange::get(self : CryptoasymecdsaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_range_set(s : CryptoasymecdsaRange, i : Int, v : Double) -> CryptoasymecdsaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaRange::set(self : CryptoasymecdsaRange, i : Int, v : Double) -> CryptoasymecdsaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_range_sum(s : CryptoasymecdsaRange) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaRange::sum(self : CryptoasymecdsaRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_range_mean(s : CryptoasymecdsaRange) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaRange::mean(self : CryptoasymecdsaRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_range_scale(s : CryptoasymecdsaRange, f : Double) -> CryptoasymecdsaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaRange::scale(self : CryptoasymecdsaRange, f : Double) -> CryptoasymecdsaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_range_add(a : CryptoasymecdsaRange, b : CryptoasymecdsaRange) -> CryptoasymecdsaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaRange::add(self : CryptoasymecdsaRange, other : CryptoasymecdsaRange) -> CryptoasymecdsaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_range_copy(s : CryptoasymecdsaRange) -> CryptoasymecdsaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaRange::copy(self : CryptoasymecdsaRange) -> CryptoasymecdsaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_range_fill(s : CryptoasymecdsaRange, v : Double) -> CryptoasymecdsaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaRange::fill(self : CryptoasymecdsaRange, v : Double) -> CryptoasymecdsaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_range_min(s : CryptoasymecdsaRange) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaRange::min(self : CryptoasymecdsaRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_range_max(s : CryptoasymecdsaRange) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaRange::max(self : CryptoasymecdsaRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_range_to_string(s : CryptoasymecdsaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaRange::to_string(self : CryptoasymecdsaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymecdsaSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_asym_ecdsa_slice_make(size : Int) -> CryptoasymecdsaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_ecdsa_slice_len(s : CryptoasymecdsaSlice) -> Int { s.size }
+pub fn CryptoasymecdsaSlice::len(self : CryptoasymecdsaSlice) -> Int { self.size }
 
-pub fn crypto_asym_ecdsa_slice_get(s : CryptoasymecdsaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymecdsaSlice::get(self : CryptoasymecdsaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_ecdsa_slice_set(s : CryptoasymecdsaSlice, i : Int, v : Double) -> CryptoasymecdsaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaSlice::set(self : CryptoasymecdsaSlice, i : Int, v : Double) -> CryptoasymecdsaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_slice_sum(s : CryptoasymecdsaSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymecdsaSlice::sum(self : CryptoasymecdsaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_ecdsa_slice_mean(s : CryptoasymecdsaSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymecdsaSlice::mean(self : CryptoasymecdsaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_ecdsa_slice_scale(s : CryptoasymecdsaSlice, f : Double) -> CryptoasymecdsaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaSlice::scale(self : CryptoasymecdsaSlice, f : Double) -> CryptoasymecdsaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_slice_add(a : CryptoasymecdsaSlice, b : CryptoasymecdsaSlice) -> CryptoasymecdsaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymecdsaSlice::add(self : CryptoasymecdsaSlice, other : CryptoasymecdsaSlice) -> CryptoasymecdsaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_slice_copy(s : CryptoasymecdsaSlice) -> CryptoasymecdsaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaSlice::copy(self : CryptoasymecdsaSlice) -> CryptoasymecdsaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_slice_fill(s : CryptoasymecdsaSlice, v : Double) -> CryptoasymecdsaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymecdsaSlice::fill(self : CryptoasymecdsaSlice, v : Double) -> CryptoasymecdsaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_ecdsa_slice_min(s : CryptoasymecdsaSlice) -> Double { @_common.min(s.data) }
+pub fn CryptoasymecdsaSlice::min(self : CryptoasymecdsaSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_ecdsa_slice_max(s : CryptoasymecdsaSlice) -> Double { @_common.max(s.data) }
+pub fn CryptoasymecdsaSlice::max(self : CryptoasymecdsaSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_ecdsa_slice_to_string(s : CryptoasymecdsaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymecdsaSlice::to_string(self : CryptoasymecdsaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn net_proto_tcp_frame_make(size : Int) -> NetprototcpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_frame_len(s : NetprototcpFrame) -> Int { s.size }
+pub fn NetprototcpFrame::len(self : NetprototcpFrame) -> Int { self.size }
 
-pub fn net_proto_tcp_frame_get(s : NetprototcpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpFrame::get(self : NetprototcpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_frame_set(s : NetprototcpFrame, i : Int, v : Double) -> NetprototcpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpFrame::set(self : NetprototcpFrame, i : Int, v : Double) -> NetprototcpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_frame_sum(s : NetprototcpFrame) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpFrame::sum(self : NetprototcpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_frame_mean(s : NetprototcpFrame) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpFrame::mean(self : NetprototcpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_frame_scale(s : NetprototcpFrame, f : Double) -> NetprototcpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpFrame::scale(self : NetprototcpFrame, f : Double) -> NetprototcpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_frame_add(a : NetprototcpFrame, b : NetprototcpFrame) -> NetprototcpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpFrame::add(self : NetprototcpFrame, other : NetprototcpFrame) -> NetprototcpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_frame_copy(s : NetprototcpFrame) -> NetprototcpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpFrame::copy(self : NetprototcpFrame) -> NetprototcpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_frame_fill(s : NetprototcpFrame, v : Double) -> NetprototcpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpFrame::fill(self : NetprototcpFrame, v : Double) -> NetprototcpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_frame_min(s : NetprototcpFrame) -> Double { @_common.min(s.data) }
+pub fn NetprototcpFrame::min(self : NetprototcpFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_frame_max(s : NetprototcpFrame) -> Double { @_common.max(s.data) }
+pub fn NetprototcpFrame::max(self : NetprototcpFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_frame_to_string(s : NetprototcpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpFrame::to_string(self : NetprototcpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpTable {
@@ -402,45 +402,45 @@ pub fn net_proto_tcp_table_make(size : Int) -> NetprototcpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_table_len(s : NetprototcpTable) -> Int { s.size }
+pub fn NetprototcpTable::len(self : NetprototcpTable) -> Int { self.size }
 
-pub fn net_proto_tcp_table_get(s : NetprototcpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpTable::get(self : NetprototcpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_table_set(s : NetprototcpTable, i : Int, v : Double) -> NetprototcpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpTable::set(self : NetprototcpTable, i : Int, v : Double) -> NetprototcpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_table_sum(s : NetprototcpTable) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpTable::sum(self : NetprototcpTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_table_mean(s : NetprototcpTable) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpTable::mean(self : NetprototcpTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_table_scale(s : NetprototcpTable, f : Double) -> NetprototcpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpTable::scale(self : NetprototcpTable, f : Double) -> NetprototcpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_table_add(a : NetprototcpTable, b : NetprototcpTable) -> NetprototcpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpTable::add(self : NetprototcpTable, other : NetprototcpTable) -> NetprototcpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_table_copy(s : NetprototcpTable) -> NetprototcpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpTable::copy(self : NetprototcpTable) -> NetprototcpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_table_fill(s : NetprototcpTable, v : Double) -> NetprototcpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpTable::fill(self : NetprototcpTable, v : Double) -> NetprototcpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_table_min(s : NetprototcpTable) -> Double { @_common.min(s.data) }
+pub fn NetprototcpTable::min(self : NetprototcpTable) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_table_max(s : NetprototcpTable) -> Double { @_common.max(s.data) }
+pub fn NetprototcpTable::max(self : NetprototcpTable) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_table_to_string(s : NetprototcpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpTable::to_string(self : NetprototcpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpGraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_tcp_graphn_make(size : Int) -> NetprototcpGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_graphn_len(s : NetprototcpGraphN) -> Int { s.size }
+pub fn NetprototcpGraphN::len(self : NetprototcpGraphN) -> Int { self.size }
 
-pub fn net_proto_tcp_graphn_get(s : NetprototcpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpGraphN::get(self : NetprototcpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_graphn_set(s : NetprototcpGraphN, i : Int, v : Double) -> NetprototcpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpGraphN::set(self : NetprototcpGraphN, i : Int, v : Double) -> NetprototcpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_graphn_sum(s : NetprototcpGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpGraphN::sum(self : NetprototcpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_graphn_mean(s : NetprototcpGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpGraphN::mean(self : NetprototcpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_graphn_scale(s : NetprototcpGraphN, f : Double) -> NetprototcpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpGraphN::scale(self : NetprototcpGraphN, f : Double) -> NetprototcpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_graphn_add(a : NetprototcpGraphN, b : NetprototcpGraphN) -> NetprototcpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpGraphN::add(self : NetprototcpGraphN, other : NetprototcpGraphN) -> NetprototcpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_graphn_copy(s : NetprototcpGraphN) -> NetprototcpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpGraphN::copy(self : NetprototcpGraphN) -> NetprototcpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_graphn_fill(s : NetprototcpGraphN, v : Double) -> NetprototcpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpGraphN::fill(self : NetprototcpGraphN, v : Double) -> NetprototcpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_graphn_min(s : NetprototcpGraphN) -> Double { @_common.min(s.data) }
+pub fn NetprototcpGraphN::min(self : NetprototcpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_graphn_max(s : NetprototcpGraphN) -> Double { @_common.max(s.data) }
+pub fn NetprototcpGraphN::max(self : NetprototcpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_graphn_to_string(s : NetprototcpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpGraphN::to_string(self : NetprototcpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpNode {
@@ -504,45 +504,45 @@ pub fn net_proto_tcp_node_make(size : Int) -> NetprototcpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_node_len(s : NetprototcpNode) -> Int { s.size }
+pub fn NetprototcpNode::len(self : NetprototcpNode) -> Int { self.size }
 
-pub fn net_proto_tcp_node_get(s : NetprototcpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpNode::get(self : NetprototcpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_node_set(s : NetprototcpNode, i : Int, v : Double) -> NetprototcpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpNode::set(self : NetprototcpNode, i : Int, v : Double) -> NetprototcpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_node_sum(s : NetprototcpNode) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpNode::sum(self : NetprototcpNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_node_mean(s : NetprototcpNode) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpNode::mean(self : NetprototcpNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_node_scale(s : NetprototcpNode, f : Double) -> NetprototcpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpNode::scale(self : NetprototcpNode, f : Double) -> NetprototcpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_node_add(a : NetprototcpNode, b : NetprototcpNode) -> NetprototcpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpNode::add(self : NetprototcpNode, other : NetprototcpNode) -> NetprototcpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_node_copy(s : NetprototcpNode) -> NetprototcpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpNode::copy(self : NetprototcpNode) -> NetprototcpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_node_fill(s : NetprototcpNode, v : Double) -> NetprototcpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpNode::fill(self : NetprototcpNode, v : Double) -> NetprototcpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_node_min(s : NetprototcpNode) -> Double { @_common.min(s.data) }
+pub fn NetprototcpNode::min(self : NetprototcpNode) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_node_max(s : NetprototcpNode) -> Double { @_common.max(s.data) }
+pub fn NetprototcpNode::max(self : NetprototcpNode) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_node_to_string(s : NetprototcpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpNode::to_string(self : NetprototcpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpEdge {
@@ -555,45 +555,45 @@ pub fn net_proto_tcp_edge_make(size : Int) -> NetprototcpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_edge_len(s : NetprototcpEdge) -> Int { s.size }
+pub fn NetprototcpEdge::len(self : NetprototcpEdge) -> Int { self.size }
 
-pub fn net_proto_tcp_edge_get(s : NetprototcpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpEdge::get(self : NetprototcpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_edge_set(s : NetprototcpEdge, i : Int, v : Double) -> NetprototcpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpEdge::set(self : NetprototcpEdge, i : Int, v : Double) -> NetprototcpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_edge_sum(s : NetprototcpEdge) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpEdge::sum(self : NetprototcpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_edge_mean(s : NetprototcpEdge) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpEdge::mean(self : NetprototcpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_edge_scale(s : NetprototcpEdge, f : Double) -> NetprototcpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpEdge::scale(self : NetprototcpEdge, f : Double) -> NetprototcpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_edge_add(a : NetprototcpEdge, b : NetprototcpEdge) -> NetprototcpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpEdge::add(self : NetprototcpEdge, other : NetprototcpEdge) -> NetprototcpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_edge_copy(s : NetprototcpEdge) -> NetprototcpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpEdge::copy(self : NetprototcpEdge) -> NetprototcpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_edge_fill(s : NetprototcpEdge, v : Double) -> NetprototcpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpEdge::fill(self : NetprototcpEdge, v : Double) -> NetprototcpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_edge_min(s : NetprototcpEdge) -> Double { @_common.min(s.data) }
+pub fn NetprototcpEdge::min(self : NetprototcpEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_edge_max(s : NetprototcpEdge) -> Double { @_common.max(s.data) }
+pub fn NetprototcpEdge::max(self : NetprototcpEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_edge_to_string(s : NetprototcpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpEdge::to_string(self : NetprototcpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpPath {
@@ -606,45 +606,45 @@ pub fn net_proto_tcp_path_make(size : Int) -> NetprototcpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_path_len(s : NetprototcpPath) -> Int { s.size }
+pub fn NetprototcpPath::len(self : NetprototcpPath) -> Int { self.size }
 
-pub fn net_proto_tcp_path_get(s : NetprototcpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpPath::get(self : NetprototcpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_path_set(s : NetprototcpPath, i : Int, v : Double) -> NetprototcpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpPath::set(self : NetprototcpPath, i : Int, v : Double) -> NetprototcpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_path_sum(s : NetprototcpPath) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpPath::sum(self : NetprototcpPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_path_mean(s : NetprototcpPath) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpPath::mean(self : NetprototcpPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_path_scale(s : NetprototcpPath, f : Double) -> NetprototcpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpPath::scale(self : NetprototcpPath, f : Double) -> NetprototcpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_path_add(a : NetprototcpPath, b : NetprototcpPath) -> NetprototcpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpPath::add(self : NetprototcpPath, other : NetprototcpPath) -> NetprototcpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_path_copy(s : NetprototcpPath) -> NetprototcpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpPath::copy(self : NetprototcpPath) -> NetprototcpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_path_fill(s : NetprototcpPath, v : Double) -> NetprototcpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpPath::fill(self : NetprototcpPath, v : Double) -> NetprototcpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_path_min(s : NetprototcpPath) -> Double { @_common.min(s.data) }
+pub fn NetprototcpPath::min(self : NetprototcpPath) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_path_max(s : NetprototcpPath) -> Double { @_common.max(s.data) }
+pub fn NetprototcpPath::max(self : NetprototcpPath) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_path_to_string(s : NetprototcpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpPath::to_string(self : NetprototcpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpCluster {
@@ -657,45 +657,45 @@ pub fn net_proto_tcp_cluster_make(size : Int) -> NetprototcpCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_cluster_len(s : NetprototcpCluster) -> Int { s.size }
+pub fn NetprototcpCluster::len(self : NetprototcpCluster) -> Int { self.size }
 
-pub fn net_proto_tcp_cluster_get(s : NetprototcpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpCluster::get(self : NetprototcpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_cluster_set(s : NetprototcpCluster, i : Int, v : Double) -> NetprototcpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpCluster::set(self : NetprototcpCluster, i : Int, v : Double) -> NetprototcpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cluster_sum(s : NetprototcpCluster) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpCluster::sum(self : NetprototcpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_cluster_mean(s : NetprototcpCluster) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpCluster::mean(self : NetprototcpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_cluster_scale(s : NetprototcpCluster, f : Double) -> NetprototcpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpCluster::scale(self : NetprototcpCluster, f : Double) -> NetprototcpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cluster_add(a : NetprototcpCluster, b : NetprototcpCluster) -> NetprototcpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpCluster::add(self : NetprototcpCluster, other : NetprototcpCluster) -> NetprototcpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cluster_copy(s : NetprototcpCluster) -> NetprototcpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpCluster::copy(self : NetprototcpCluster) -> NetprototcpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cluster_fill(s : NetprototcpCluster, v : Double) -> NetprototcpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpCluster::fill(self : NetprototcpCluster, v : Double) -> NetprototcpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cluster_min(s : NetprototcpCluster) -> Double { @_common.min(s.data) }
+pub fn NetprototcpCluster::min(self : NetprototcpCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_cluster_max(s : NetprototcpCluster) -> Double { @_common.max(s.data) }
+pub fn NetprototcpCluster::max(self : NetprototcpCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_cluster_to_string(s : NetprototcpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpCluster::to_string(self : NetprototcpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpModel {
@@ -708,45 +708,45 @@ pub fn net_proto_tcp_model_make(size : Int) -> NetprototcpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_model_len(s : NetprototcpModel) -> Int { s.size }
+pub fn NetprototcpModel::len(self : NetprototcpModel) -> Int { self.size }
 
-pub fn net_proto_tcp_model_get(s : NetprototcpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpModel::get(self : NetprototcpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_model_set(s : NetprototcpModel, i : Int, v : Double) -> NetprototcpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpModel::set(self : NetprototcpModel, i : Int, v : Double) -> NetprototcpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_model_sum(s : NetprototcpModel) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpModel::sum(self : NetprototcpModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_model_mean(s : NetprototcpModel) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpModel::mean(self : NetprototcpModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_model_scale(s : NetprototcpModel, f : Double) -> NetprototcpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpModel::scale(self : NetprototcpModel, f : Double) -> NetprototcpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_model_add(a : NetprototcpModel, b : NetprototcpModel) -> NetprototcpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpModel::add(self : NetprototcpModel, other : NetprototcpModel) -> NetprototcpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_model_copy(s : NetprototcpModel) -> NetprototcpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpModel::copy(self : NetprototcpModel) -> NetprototcpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_model_fill(s : NetprototcpModel, v : Double) -> NetprototcpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpModel::fill(self : NetprototcpModel, v : Double) -> NetprototcpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_model_min(s : NetprototcpModel) -> Double { @_common.min(s.data) }
+pub fn NetprototcpModel::min(self : NetprototcpModel) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_model_max(s : NetprototcpModel) -> Double { @_common.max(s.data) }
+pub fn NetprototcpModel::max(self : NetprototcpModel) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_model_to_string(s : NetprototcpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpModel::to_string(self : NetprototcpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpLayer {
@@ -759,45 +759,45 @@ pub fn net_proto_tcp_layer_make(size : Int) -> NetprototcpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_layer_len(s : NetprototcpLayer) -> Int { s.size }
+pub fn NetprototcpLayer::len(self : NetprototcpLayer) -> Int { self.size }
 
-pub fn net_proto_tcp_layer_get(s : NetprototcpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpLayer::get(self : NetprototcpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_layer_set(s : NetprototcpLayer, i : Int, v : Double) -> NetprototcpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpLayer::set(self : NetprototcpLayer, i : Int, v : Double) -> NetprototcpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_layer_sum(s : NetprototcpLayer) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpLayer::sum(self : NetprototcpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_layer_mean(s : NetprototcpLayer) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpLayer::mean(self : NetprototcpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_layer_scale(s : NetprototcpLayer, f : Double) -> NetprototcpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpLayer::scale(self : NetprototcpLayer, f : Double) -> NetprototcpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_layer_add(a : NetprototcpLayer, b : NetprototcpLayer) -> NetprototcpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpLayer::add(self : NetprototcpLayer, other : NetprototcpLayer) -> NetprototcpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_layer_copy(s : NetprototcpLayer) -> NetprototcpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpLayer::copy(self : NetprototcpLayer) -> NetprototcpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_layer_fill(s : NetprototcpLayer, v : Double) -> NetprototcpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpLayer::fill(self : NetprototcpLayer, v : Double) -> NetprototcpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_layer_min(s : NetprototcpLayer) -> Double { @_common.min(s.data) }
+pub fn NetprototcpLayer::min(self : NetprototcpLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_layer_max(s : NetprototcpLayer) -> Double { @_common.max(s.data) }
+pub fn NetprototcpLayer::max(self : NetprototcpLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_layer_to_string(s : NetprototcpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpLayer::to_string(self : NetprototcpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpBuffer {
@@ -810,45 +810,45 @@ pub fn net_proto_tcp_buffer_make(size : Int) -> NetprototcpBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_buffer_len(s : NetprototcpBuffer) -> Int { s.size }
+pub fn NetprototcpBuffer::len(self : NetprototcpBuffer) -> Int { self.size }
 
-pub fn net_proto_tcp_buffer_get(s : NetprototcpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpBuffer::get(self : NetprototcpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_buffer_set(s : NetprototcpBuffer, i : Int, v : Double) -> NetprototcpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpBuffer::set(self : NetprototcpBuffer, i : Int, v : Double) -> NetprototcpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_buffer_sum(s : NetprototcpBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpBuffer::sum(self : NetprototcpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_buffer_mean(s : NetprototcpBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpBuffer::mean(self : NetprototcpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_buffer_scale(s : NetprototcpBuffer, f : Double) -> NetprototcpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpBuffer::scale(self : NetprototcpBuffer, f : Double) -> NetprototcpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_buffer_add(a : NetprototcpBuffer, b : NetprototcpBuffer) -> NetprototcpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpBuffer::add(self : NetprototcpBuffer, other : NetprototcpBuffer) -> NetprototcpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_buffer_copy(s : NetprototcpBuffer) -> NetprototcpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpBuffer::copy(self : NetprototcpBuffer) -> NetprototcpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_buffer_fill(s : NetprototcpBuffer, v : Double) -> NetprototcpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpBuffer::fill(self : NetprototcpBuffer, v : Double) -> NetprototcpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_buffer_min(s : NetprototcpBuffer) -> Double { @_common.min(s.data) }
+pub fn NetprototcpBuffer::min(self : NetprototcpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_buffer_max(s : NetprototcpBuffer) -> Double { @_common.max(s.data) }
+pub fn NetprototcpBuffer::max(self : NetprototcpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_buffer_to_string(s : NetprototcpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpBuffer::to_string(self : NetprototcpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpCursor {
@@ -861,45 +861,45 @@ pub fn net_proto_tcp_cursor_make(size : Int) -> NetprototcpCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_cursor_len(s : NetprototcpCursor) -> Int { s.size }
+pub fn NetprototcpCursor::len(self : NetprototcpCursor) -> Int { self.size }
 
-pub fn net_proto_tcp_cursor_get(s : NetprototcpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpCursor::get(self : NetprototcpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_cursor_set(s : NetprototcpCursor, i : Int, v : Double) -> NetprototcpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpCursor::set(self : NetprototcpCursor, i : Int, v : Double) -> NetprototcpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cursor_sum(s : NetprototcpCursor) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpCursor::sum(self : NetprototcpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_cursor_mean(s : NetprototcpCursor) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpCursor::mean(self : NetprototcpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_cursor_scale(s : NetprototcpCursor, f : Double) -> NetprototcpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpCursor::scale(self : NetprototcpCursor, f : Double) -> NetprototcpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cursor_add(a : NetprototcpCursor, b : NetprototcpCursor) -> NetprototcpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpCursor::add(self : NetprototcpCursor, other : NetprototcpCursor) -> NetprototcpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cursor_copy(s : NetprototcpCursor) -> NetprototcpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpCursor::copy(self : NetprototcpCursor) -> NetprototcpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cursor_fill(s : NetprototcpCursor, v : Double) -> NetprototcpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpCursor::fill(self : NetprototcpCursor, v : Double) -> NetprototcpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_cursor_min(s : NetprototcpCursor) -> Double { @_common.min(s.data) }
+pub fn NetprototcpCursor::min(self : NetprototcpCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_cursor_max(s : NetprototcpCursor) -> Double { @_common.max(s.data) }
+pub fn NetprototcpCursor::max(self : NetprototcpCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_cursor_to_string(s : NetprototcpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpCursor::to_string(self : NetprototcpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpView {
@@ -912,45 +912,45 @@ pub fn net_proto_tcp_view_make(size : Int) -> NetprototcpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_view_len(s : NetprototcpView) -> Int { s.size }
+pub fn NetprototcpView::len(self : NetprototcpView) -> Int { self.size }
 
-pub fn net_proto_tcp_view_get(s : NetprototcpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpView::get(self : NetprototcpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_view_set(s : NetprototcpView, i : Int, v : Double) -> NetprototcpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpView::set(self : NetprototcpView, i : Int, v : Double) -> NetprototcpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_view_sum(s : NetprototcpView) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpView::sum(self : NetprototcpView) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_view_mean(s : NetprototcpView) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpView::mean(self : NetprototcpView) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_view_scale(s : NetprototcpView, f : Double) -> NetprototcpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpView::scale(self : NetprototcpView, f : Double) -> NetprototcpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_view_add(a : NetprototcpView, b : NetprototcpView) -> NetprototcpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpView::add(self : NetprototcpView, other : NetprototcpView) -> NetprototcpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_view_copy(s : NetprototcpView) -> NetprototcpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpView::copy(self : NetprototcpView) -> NetprototcpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_view_fill(s : NetprototcpView, v : Double) -> NetprototcpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpView::fill(self : NetprototcpView, v : Double) -> NetprototcpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_view_min(s : NetprototcpView) -> Double { @_common.min(s.data) }
+pub fn NetprototcpView::min(self : NetprototcpView) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_view_max(s : NetprototcpView) -> Double { @_common.max(s.data) }
+pub fn NetprototcpView::max(self : NetprototcpView) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_view_to_string(s : NetprototcpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpView::to_string(self : NetprototcpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpRange {
@@ -963,45 +963,45 @@ pub fn net_proto_tcp_range_make(size : Int) -> NetprototcpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_range_len(s : NetprototcpRange) -> Int { s.size }
+pub fn NetprototcpRange::len(self : NetprototcpRange) -> Int { self.size }
 
-pub fn net_proto_tcp_range_get(s : NetprototcpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpRange::get(self : NetprototcpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_range_set(s : NetprototcpRange, i : Int, v : Double) -> NetprototcpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpRange::set(self : NetprototcpRange, i : Int, v : Double) -> NetprototcpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_range_sum(s : NetprototcpRange) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpRange::sum(self : NetprototcpRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_range_mean(s : NetprototcpRange) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpRange::mean(self : NetprototcpRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_range_scale(s : NetprototcpRange, f : Double) -> NetprototcpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpRange::scale(self : NetprototcpRange, f : Double) -> NetprototcpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_range_add(a : NetprototcpRange, b : NetprototcpRange) -> NetprototcpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpRange::add(self : NetprototcpRange, other : NetprototcpRange) -> NetprototcpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_range_copy(s : NetprototcpRange) -> NetprototcpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpRange::copy(self : NetprototcpRange) -> NetprototcpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_range_fill(s : NetprototcpRange, v : Double) -> NetprototcpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpRange::fill(self : NetprototcpRange, v : Double) -> NetprototcpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_range_min(s : NetprototcpRange) -> Double { @_common.min(s.data) }
+pub fn NetprototcpRange::min(self : NetprototcpRange) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_range_max(s : NetprototcpRange) -> Double { @_common.max(s.data) }
+pub fn NetprototcpRange::max(self : NetprototcpRange) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_range_to_string(s : NetprototcpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpRange::to_string(self : NetprototcpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprototcpSlice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_tcp_slice_make(size : Int) -> NetprototcpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_tcp_slice_len(s : NetprototcpSlice) -> Int { s.size }
+pub fn NetprototcpSlice::len(self : NetprototcpSlice) -> Int { self.size }
 
-pub fn net_proto_tcp_slice_get(s : NetprototcpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprototcpSlice::get(self : NetprototcpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_tcp_slice_set(s : NetprototcpSlice, i : Int, v : Double) -> NetprototcpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprototcpSlice::set(self : NetprototcpSlice, i : Int, v : Double) -> NetprototcpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_slice_sum(s : NetprototcpSlice) -> Double { @_common.sum(s.data) }
+pub fn NetprototcpSlice::sum(self : NetprototcpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_tcp_slice_mean(s : NetprototcpSlice) -> Double { @_common.mean(s.data) }
+pub fn NetprototcpSlice::mean(self : NetprototcpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_tcp_slice_scale(s : NetprototcpSlice, f : Double) -> NetprototcpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprototcpSlice::scale(self : NetprototcpSlice, f : Double) -> NetprototcpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_slice_add(a : NetprototcpSlice, b : NetprototcpSlice) -> NetprototcpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprototcpSlice::add(self : NetprototcpSlice, other : NetprototcpSlice) -> NetprototcpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_tcp_slice_copy(s : NetprototcpSlice) -> NetprototcpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprototcpSlice::copy(self : NetprototcpSlice) -> NetprototcpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_slice_fill(s : NetprototcpSlice, v : Double) -> NetprototcpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprototcpSlice::fill(self : NetprototcpSlice, v : Double) -> NetprototcpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_tcp_slice_min(s : NetprototcpSlice) -> Double { @_common.min(s.data) }
+pub fn NetprototcpSlice::min(self : NetprototcpSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_tcp_slice_max(s : NetprototcpSlice) -> Double { @_common.max(s.data) }
+pub fn NetprototcpSlice::max(self : NetprototcpSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_tcp_slice_to_string(s : NetprototcpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprototcpSlice::to_string(self : NetprototcpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

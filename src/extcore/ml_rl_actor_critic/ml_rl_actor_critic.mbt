@@ -351,45 +351,45 @@ pub fn ml_rl_actor_critic_frame_make(size : Int) -> MlrlactorcriticFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_frame_len(s : MlrlactorcriticFrame) -> Int { s.size }
+pub fn MlrlactorcriticFrame::len(self : MlrlactorcriticFrame) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_frame_get(s : MlrlactorcriticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticFrame::get(self : MlrlactorcriticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_frame_set(s : MlrlactorcriticFrame, i : Int, v : Double) -> MlrlactorcriticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticFrame::set(self : MlrlactorcriticFrame, i : Int, v : Double) -> MlrlactorcriticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_frame_sum(s : MlrlactorcriticFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticFrame::sum(self : MlrlactorcriticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_frame_mean(s : MlrlactorcriticFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticFrame::mean(self : MlrlactorcriticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_frame_scale(s : MlrlactorcriticFrame, f : Double) -> MlrlactorcriticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticFrame::scale(self : MlrlactorcriticFrame, f : Double) -> MlrlactorcriticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_frame_add(a : MlrlactorcriticFrame, b : MlrlactorcriticFrame) -> MlrlactorcriticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticFrame::add(self : MlrlactorcriticFrame, other : MlrlactorcriticFrame) -> MlrlactorcriticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_frame_copy(s : MlrlactorcriticFrame) -> MlrlactorcriticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticFrame::copy(self : MlrlactorcriticFrame) -> MlrlactorcriticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_frame_fill(s : MlrlactorcriticFrame, v : Double) -> MlrlactorcriticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticFrame::fill(self : MlrlactorcriticFrame, v : Double) -> MlrlactorcriticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_frame_min(s : MlrlactorcriticFrame) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticFrame::min(self : MlrlactorcriticFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_frame_max(s : MlrlactorcriticFrame) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticFrame::max(self : MlrlactorcriticFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_frame_to_string(s : MlrlactorcriticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticFrame::to_string(self : MlrlactorcriticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_actor_critic_table_make(size : Int) -> MlrlactorcriticTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_table_len(s : MlrlactorcriticTable) -> Int { s.size }
+pub fn MlrlactorcriticTable::len(self : MlrlactorcriticTable) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_table_get(s : MlrlactorcriticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticTable::get(self : MlrlactorcriticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_table_set(s : MlrlactorcriticTable, i : Int, v : Double) -> MlrlactorcriticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticTable::set(self : MlrlactorcriticTable, i : Int, v : Double) -> MlrlactorcriticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_table_sum(s : MlrlactorcriticTable) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticTable::sum(self : MlrlactorcriticTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_table_mean(s : MlrlactorcriticTable) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticTable::mean(self : MlrlactorcriticTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_table_scale(s : MlrlactorcriticTable, f : Double) -> MlrlactorcriticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticTable::scale(self : MlrlactorcriticTable, f : Double) -> MlrlactorcriticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_table_add(a : MlrlactorcriticTable, b : MlrlactorcriticTable) -> MlrlactorcriticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticTable::add(self : MlrlactorcriticTable, other : MlrlactorcriticTable) -> MlrlactorcriticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_table_copy(s : MlrlactorcriticTable) -> MlrlactorcriticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticTable::copy(self : MlrlactorcriticTable) -> MlrlactorcriticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_table_fill(s : MlrlactorcriticTable, v : Double) -> MlrlactorcriticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticTable::fill(self : MlrlactorcriticTable, v : Double) -> MlrlactorcriticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_table_min(s : MlrlactorcriticTable) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticTable::min(self : MlrlactorcriticTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_table_max(s : MlrlactorcriticTable) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticTable::max(self : MlrlactorcriticTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_table_to_string(s : MlrlactorcriticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticTable::to_string(self : MlrlactorcriticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_actor_critic_graphn_make(size : Int) -> MlrlactorcriticGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_graphn_len(s : MlrlactorcriticGraphN) -> Int { s.size }
+pub fn MlrlactorcriticGraphN::len(self : MlrlactorcriticGraphN) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_graphn_get(s : MlrlactorcriticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticGraphN::get(self : MlrlactorcriticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_graphn_set(s : MlrlactorcriticGraphN, i : Int, v : Double) -> MlrlactorcriticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticGraphN::set(self : MlrlactorcriticGraphN, i : Int, v : Double) -> MlrlactorcriticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_graphn_sum(s : MlrlactorcriticGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticGraphN::sum(self : MlrlactorcriticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_graphn_mean(s : MlrlactorcriticGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticGraphN::mean(self : MlrlactorcriticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_graphn_scale(s : MlrlactorcriticGraphN, f : Double) -> MlrlactorcriticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticGraphN::scale(self : MlrlactorcriticGraphN, f : Double) -> MlrlactorcriticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_graphn_add(a : MlrlactorcriticGraphN, b : MlrlactorcriticGraphN) -> MlrlactorcriticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticGraphN::add(self : MlrlactorcriticGraphN, other : MlrlactorcriticGraphN) -> MlrlactorcriticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_graphn_copy(s : MlrlactorcriticGraphN) -> MlrlactorcriticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticGraphN::copy(self : MlrlactorcriticGraphN) -> MlrlactorcriticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_graphn_fill(s : MlrlactorcriticGraphN, v : Double) -> MlrlactorcriticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticGraphN::fill(self : MlrlactorcriticGraphN, v : Double) -> MlrlactorcriticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_graphn_min(s : MlrlactorcriticGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticGraphN::min(self : MlrlactorcriticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_graphn_max(s : MlrlactorcriticGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticGraphN::max(self : MlrlactorcriticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_graphn_to_string(s : MlrlactorcriticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticGraphN::to_string(self : MlrlactorcriticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_actor_critic_node_make(size : Int) -> MlrlactorcriticNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_node_len(s : MlrlactorcriticNode) -> Int { s.size }
+pub fn MlrlactorcriticNode::len(self : MlrlactorcriticNode) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_node_get(s : MlrlactorcriticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticNode::get(self : MlrlactorcriticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_node_set(s : MlrlactorcriticNode, i : Int, v : Double) -> MlrlactorcriticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticNode::set(self : MlrlactorcriticNode, i : Int, v : Double) -> MlrlactorcriticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_node_sum(s : MlrlactorcriticNode) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticNode::sum(self : MlrlactorcriticNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_node_mean(s : MlrlactorcriticNode) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticNode::mean(self : MlrlactorcriticNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_node_scale(s : MlrlactorcriticNode, f : Double) -> MlrlactorcriticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticNode::scale(self : MlrlactorcriticNode, f : Double) -> MlrlactorcriticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_node_add(a : MlrlactorcriticNode, b : MlrlactorcriticNode) -> MlrlactorcriticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticNode::add(self : MlrlactorcriticNode, other : MlrlactorcriticNode) -> MlrlactorcriticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_node_copy(s : MlrlactorcriticNode) -> MlrlactorcriticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticNode::copy(self : MlrlactorcriticNode) -> MlrlactorcriticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_node_fill(s : MlrlactorcriticNode, v : Double) -> MlrlactorcriticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticNode::fill(self : MlrlactorcriticNode, v : Double) -> MlrlactorcriticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_node_min(s : MlrlactorcriticNode) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticNode::min(self : MlrlactorcriticNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_node_max(s : MlrlactorcriticNode) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticNode::max(self : MlrlactorcriticNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_node_to_string(s : MlrlactorcriticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticNode::to_string(self : MlrlactorcriticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_actor_critic_edge_make(size : Int) -> MlrlactorcriticEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_edge_len(s : MlrlactorcriticEdge) -> Int { s.size }
+pub fn MlrlactorcriticEdge::len(self : MlrlactorcriticEdge) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_edge_get(s : MlrlactorcriticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticEdge::get(self : MlrlactorcriticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_edge_set(s : MlrlactorcriticEdge, i : Int, v : Double) -> MlrlactorcriticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticEdge::set(self : MlrlactorcriticEdge, i : Int, v : Double) -> MlrlactorcriticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_edge_sum(s : MlrlactorcriticEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticEdge::sum(self : MlrlactorcriticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_edge_mean(s : MlrlactorcriticEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticEdge::mean(self : MlrlactorcriticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_edge_scale(s : MlrlactorcriticEdge, f : Double) -> MlrlactorcriticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticEdge::scale(self : MlrlactorcriticEdge, f : Double) -> MlrlactorcriticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_edge_add(a : MlrlactorcriticEdge, b : MlrlactorcriticEdge) -> MlrlactorcriticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticEdge::add(self : MlrlactorcriticEdge, other : MlrlactorcriticEdge) -> MlrlactorcriticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_edge_copy(s : MlrlactorcriticEdge) -> MlrlactorcriticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticEdge::copy(self : MlrlactorcriticEdge) -> MlrlactorcriticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_edge_fill(s : MlrlactorcriticEdge, v : Double) -> MlrlactorcriticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticEdge::fill(self : MlrlactorcriticEdge, v : Double) -> MlrlactorcriticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_edge_min(s : MlrlactorcriticEdge) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticEdge::min(self : MlrlactorcriticEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_edge_max(s : MlrlactorcriticEdge) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticEdge::max(self : MlrlactorcriticEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_edge_to_string(s : MlrlactorcriticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticEdge::to_string(self : MlrlactorcriticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_actor_critic_path_make(size : Int) -> MlrlactorcriticPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_path_len(s : MlrlactorcriticPath) -> Int { s.size }
+pub fn MlrlactorcriticPath::len(self : MlrlactorcriticPath) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_path_get(s : MlrlactorcriticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticPath::get(self : MlrlactorcriticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_path_set(s : MlrlactorcriticPath, i : Int, v : Double) -> MlrlactorcriticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticPath::set(self : MlrlactorcriticPath, i : Int, v : Double) -> MlrlactorcriticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_path_sum(s : MlrlactorcriticPath) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticPath::sum(self : MlrlactorcriticPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_path_mean(s : MlrlactorcriticPath) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticPath::mean(self : MlrlactorcriticPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_path_scale(s : MlrlactorcriticPath, f : Double) -> MlrlactorcriticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticPath::scale(self : MlrlactorcriticPath, f : Double) -> MlrlactorcriticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_path_add(a : MlrlactorcriticPath, b : MlrlactorcriticPath) -> MlrlactorcriticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticPath::add(self : MlrlactorcriticPath, other : MlrlactorcriticPath) -> MlrlactorcriticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_path_copy(s : MlrlactorcriticPath) -> MlrlactorcriticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticPath::copy(self : MlrlactorcriticPath) -> MlrlactorcriticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_path_fill(s : MlrlactorcriticPath, v : Double) -> MlrlactorcriticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticPath::fill(self : MlrlactorcriticPath, v : Double) -> MlrlactorcriticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_path_min(s : MlrlactorcriticPath) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticPath::min(self : MlrlactorcriticPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_path_max(s : MlrlactorcriticPath) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticPath::max(self : MlrlactorcriticPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_path_to_string(s : MlrlactorcriticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticPath::to_string(self : MlrlactorcriticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_actor_critic_cluster_make(size : Int) -> MlrlactorcriticCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_cluster_len(s : MlrlactorcriticCluster) -> Int { s.size }
+pub fn MlrlactorcriticCluster::len(self : MlrlactorcriticCluster) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_cluster_get(s : MlrlactorcriticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticCluster::get(self : MlrlactorcriticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_cluster_set(s : MlrlactorcriticCluster, i : Int, v : Double) -> MlrlactorcriticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCluster::set(self : MlrlactorcriticCluster, i : Int, v : Double) -> MlrlactorcriticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cluster_sum(s : MlrlactorcriticCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticCluster::sum(self : MlrlactorcriticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_cluster_mean(s : MlrlactorcriticCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticCluster::mean(self : MlrlactorcriticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_cluster_scale(s : MlrlactorcriticCluster, f : Double) -> MlrlactorcriticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCluster::scale(self : MlrlactorcriticCluster, f : Double) -> MlrlactorcriticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cluster_add(a : MlrlactorcriticCluster, b : MlrlactorcriticCluster) -> MlrlactorcriticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticCluster::add(self : MlrlactorcriticCluster, other : MlrlactorcriticCluster) -> MlrlactorcriticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cluster_copy(s : MlrlactorcriticCluster) -> MlrlactorcriticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCluster::copy(self : MlrlactorcriticCluster) -> MlrlactorcriticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cluster_fill(s : MlrlactorcriticCluster, v : Double) -> MlrlactorcriticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCluster::fill(self : MlrlactorcriticCluster, v : Double) -> MlrlactorcriticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cluster_min(s : MlrlactorcriticCluster) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticCluster::min(self : MlrlactorcriticCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_cluster_max(s : MlrlactorcriticCluster) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticCluster::max(self : MlrlactorcriticCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_cluster_to_string(s : MlrlactorcriticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticCluster::to_string(self : MlrlactorcriticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_actor_critic_model_make(size : Int) -> MlrlactorcriticModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_model_len(s : MlrlactorcriticModel) -> Int { s.size }
+pub fn MlrlactorcriticModel::len(self : MlrlactorcriticModel) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_model_get(s : MlrlactorcriticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticModel::get(self : MlrlactorcriticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_model_set(s : MlrlactorcriticModel, i : Int, v : Double) -> MlrlactorcriticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticModel::set(self : MlrlactorcriticModel, i : Int, v : Double) -> MlrlactorcriticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_model_sum(s : MlrlactorcriticModel) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticModel::sum(self : MlrlactorcriticModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_model_mean(s : MlrlactorcriticModel) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticModel::mean(self : MlrlactorcriticModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_model_scale(s : MlrlactorcriticModel, f : Double) -> MlrlactorcriticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticModel::scale(self : MlrlactorcriticModel, f : Double) -> MlrlactorcriticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_model_add(a : MlrlactorcriticModel, b : MlrlactorcriticModel) -> MlrlactorcriticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticModel::add(self : MlrlactorcriticModel, other : MlrlactorcriticModel) -> MlrlactorcriticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_model_copy(s : MlrlactorcriticModel) -> MlrlactorcriticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticModel::copy(self : MlrlactorcriticModel) -> MlrlactorcriticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_model_fill(s : MlrlactorcriticModel, v : Double) -> MlrlactorcriticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticModel::fill(self : MlrlactorcriticModel, v : Double) -> MlrlactorcriticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_model_min(s : MlrlactorcriticModel) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticModel::min(self : MlrlactorcriticModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_model_max(s : MlrlactorcriticModel) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticModel::max(self : MlrlactorcriticModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_model_to_string(s : MlrlactorcriticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticModel::to_string(self : MlrlactorcriticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_actor_critic_layer_make(size : Int) -> MlrlactorcriticLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_layer_len(s : MlrlactorcriticLayer) -> Int { s.size }
+pub fn MlrlactorcriticLayer::len(self : MlrlactorcriticLayer) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_layer_get(s : MlrlactorcriticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticLayer::get(self : MlrlactorcriticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_layer_set(s : MlrlactorcriticLayer, i : Int, v : Double) -> MlrlactorcriticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticLayer::set(self : MlrlactorcriticLayer, i : Int, v : Double) -> MlrlactorcriticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_layer_sum(s : MlrlactorcriticLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticLayer::sum(self : MlrlactorcriticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_layer_mean(s : MlrlactorcriticLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticLayer::mean(self : MlrlactorcriticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_layer_scale(s : MlrlactorcriticLayer, f : Double) -> MlrlactorcriticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticLayer::scale(self : MlrlactorcriticLayer, f : Double) -> MlrlactorcriticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_layer_add(a : MlrlactorcriticLayer, b : MlrlactorcriticLayer) -> MlrlactorcriticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticLayer::add(self : MlrlactorcriticLayer, other : MlrlactorcriticLayer) -> MlrlactorcriticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_layer_copy(s : MlrlactorcriticLayer) -> MlrlactorcriticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticLayer::copy(self : MlrlactorcriticLayer) -> MlrlactorcriticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_layer_fill(s : MlrlactorcriticLayer, v : Double) -> MlrlactorcriticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticLayer::fill(self : MlrlactorcriticLayer, v : Double) -> MlrlactorcriticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_layer_min(s : MlrlactorcriticLayer) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticLayer::min(self : MlrlactorcriticLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_layer_max(s : MlrlactorcriticLayer) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticLayer::max(self : MlrlactorcriticLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_layer_to_string(s : MlrlactorcriticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticLayer::to_string(self : MlrlactorcriticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_actor_critic_buffer_make(size : Int) -> MlrlactorcriticBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_buffer_len(s : MlrlactorcriticBuffer) -> Int { s.size }
+pub fn MlrlactorcriticBuffer::len(self : MlrlactorcriticBuffer) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_buffer_get(s : MlrlactorcriticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticBuffer::get(self : MlrlactorcriticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_buffer_set(s : MlrlactorcriticBuffer, i : Int, v : Double) -> MlrlactorcriticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticBuffer::set(self : MlrlactorcriticBuffer, i : Int, v : Double) -> MlrlactorcriticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_buffer_sum(s : MlrlactorcriticBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticBuffer::sum(self : MlrlactorcriticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_buffer_mean(s : MlrlactorcriticBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticBuffer::mean(self : MlrlactorcriticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_buffer_scale(s : MlrlactorcriticBuffer, f : Double) -> MlrlactorcriticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticBuffer::scale(self : MlrlactorcriticBuffer, f : Double) -> MlrlactorcriticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_buffer_add(a : MlrlactorcriticBuffer, b : MlrlactorcriticBuffer) -> MlrlactorcriticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticBuffer::add(self : MlrlactorcriticBuffer, other : MlrlactorcriticBuffer) -> MlrlactorcriticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_buffer_copy(s : MlrlactorcriticBuffer) -> MlrlactorcriticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticBuffer::copy(self : MlrlactorcriticBuffer) -> MlrlactorcriticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_buffer_fill(s : MlrlactorcriticBuffer, v : Double) -> MlrlactorcriticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticBuffer::fill(self : MlrlactorcriticBuffer, v : Double) -> MlrlactorcriticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_buffer_min(s : MlrlactorcriticBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticBuffer::min(self : MlrlactorcriticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_buffer_max(s : MlrlactorcriticBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticBuffer::max(self : MlrlactorcriticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_buffer_to_string(s : MlrlactorcriticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticBuffer::to_string(self : MlrlactorcriticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_actor_critic_cursor_make(size : Int) -> MlrlactorcriticCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_cursor_len(s : MlrlactorcriticCursor) -> Int { s.size }
+pub fn MlrlactorcriticCursor::len(self : MlrlactorcriticCursor) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_cursor_get(s : MlrlactorcriticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticCursor::get(self : MlrlactorcriticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_cursor_set(s : MlrlactorcriticCursor, i : Int, v : Double) -> MlrlactorcriticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCursor::set(self : MlrlactorcriticCursor, i : Int, v : Double) -> MlrlactorcriticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cursor_sum(s : MlrlactorcriticCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticCursor::sum(self : MlrlactorcriticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_cursor_mean(s : MlrlactorcriticCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticCursor::mean(self : MlrlactorcriticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_cursor_scale(s : MlrlactorcriticCursor, f : Double) -> MlrlactorcriticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCursor::scale(self : MlrlactorcriticCursor, f : Double) -> MlrlactorcriticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cursor_add(a : MlrlactorcriticCursor, b : MlrlactorcriticCursor) -> MlrlactorcriticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticCursor::add(self : MlrlactorcriticCursor, other : MlrlactorcriticCursor) -> MlrlactorcriticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cursor_copy(s : MlrlactorcriticCursor) -> MlrlactorcriticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCursor::copy(self : MlrlactorcriticCursor) -> MlrlactorcriticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cursor_fill(s : MlrlactorcriticCursor, v : Double) -> MlrlactorcriticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticCursor::fill(self : MlrlactorcriticCursor, v : Double) -> MlrlactorcriticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_cursor_min(s : MlrlactorcriticCursor) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticCursor::min(self : MlrlactorcriticCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_cursor_max(s : MlrlactorcriticCursor) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticCursor::max(self : MlrlactorcriticCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_cursor_to_string(s : MlrlactorcriticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticCursor::to_string(self : MlrlactorcriticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticView {
@@ -912,45 +912,45 @@ pub fn ml_rl_actor_critic_view_make(size : Int) -> MlrlactorcriticView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_view_len(s : MlrlactorcriticView) -> Int { s.size }
+pub fn MlrlactorcriticView::len(self : MlrlactorcriticView) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_view_get(s : MlrlactorcriticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticView::get(self : MlrlactorcriticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_view_set(s : MlrlactorcriticView, i : Int, v : Double) -> MlrlactorcriticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticView::set(self : MlrlactorcriticView, i : Int, v : Double) -> MlrlactorcriticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_view_sum(s : MlrlactorcriticView) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticView::sum(self : MlrlactorcriticView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_view_mean(s : MlrlactorcriticView) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticView::mean(self : MlrlactorcriticView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_view_scale(s : MlrlactorcriticView, f : Double) -> MlrlactorcriticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticView::scale(self : MlrlactorcriticView, f : Double) -> MlrlactorcriticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_view_add(a : MlrlactorcriticView, b : MlrlactorcriticView) -> MlrlactorcriticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticView::add(self : MlrlactorcriticView, other : MlrlactorcriticView) -> MlrlactorcriticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_view_copy(s : MlrlactorcriticView) -> MlrlactorcriticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticView::copy(self : MlrlactorcriticView) -> MlrlactorcriticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_view_fill(s : MlrlactorcriticView, v : Double) -> MlrlactorcriticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticView::fill(self : MlrlactorcriticView, v : Double) -> MlrlactorcriticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_view_min(s : MlrlactorcriticView) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticView::min(self : MlrlactorcriticView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_view_max(s : MlrlactorcriticView) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticView::max(self : MlrlactorcriticView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_view_to_string(s : MlrlactorcriticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticView::to_string(self : MlrlactorcriticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_actor_critic_range_make(size : Int) -> MlrlactorcriticRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_range_len(s : MlrlactorcriticRange) -> Int { s.size }
+pub fn MlrlactorcriticRange::len(self : MlrlactorcriticRange) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_range_get(s : MlrlactorcriticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticRange::get(self : MlrlactorcriticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_range_set(s : MlrlactorcriticRange, i : Int, v : Double) -> MlrlactorcriticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticRange::set(self : MlrlactorcriticRange, i : Int, v : Double) -> MlrlactorcriticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_range_sum(s : MlrlactorcriticRange) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticRange::sum(self : MlrlactorcriticRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_range_mean(s : MlrlactorcriticRange) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticRange::mean(self : MlrlactorcriticRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_range_scale(s : MlrlactorcriticRange, f : Double) -> MlrlactorcriticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticRange::scale(self : MlrlactorcriticRange, f : Double) -> MlrlactorcriticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_range_add(a : MlrlactorcriticRange, b : MlrlactorcriticRange) -> MlrlactorcriticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticRange::add(self : MlrlactorcriticRange, other : MlrlactorcriticRange) -> MlrlactorcriticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_range_copy(s : MlrlactorcriticRange) -> MlrlactorcriticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticRange::copy(self : MlrlactorcriticRange) -> MlrlactorcriticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_range_fill(s : MlrlactorcriticRange, v : Double) -> MlrlactorcriticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticRange::fill(self : MlrlactorcriticRange, v : Double) -> MlrlactorcriticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_range_min(s : MlrlactorcriticRange) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticRange::min(self : MlrlactorcriticRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_range_max(s : MlrlactorcriticRange) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticRange::max(self : MlrlactorcriticRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_range_to_string(s : MlrlactorcriticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticRange::to_string(self : MlrlactorcriticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlactorcriticSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_actor_critic_slice_make(size : Int) -> MlrlactorcriticSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_actor_critic_slice_len(s : MlrlactorcriticSlice) -> Int { s.size }
+pub fn MlrlactorcriticSlice::len(self : MlrlactorcriticSlice) -> Int { self.size }
 
-pub fn ml_rl_actor_critic_slice_get(s : MlrlactorcriticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlactorcriticSlice::get(self : MlrlactorcriticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_actor_critic_slice_set(s : MlrlactorcriticSlice, i : Int, v : Double) -> MlrlactorcriticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlactorcriticSlice::set(self : MlrlactorcriticSlice, i : Int, v : Double) -> MlrlactorcriticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_slice_sum(s : MlrlactorcriticSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrlactorcriticSlice::sum(self : MlrlactorcriticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_actor_critic_slice_mean(s : MlrlactorcriticSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrlactorcriticSlice::mean(self : MlrlactorcriticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_actor_critic_slice_scale(s : MlrlactorcriticSlice, f : Double) -> MlrlactorcriticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticSlice::scale(self : MlrlactorcriticSlice, f : Double) -> MlrlactorcriticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_slice_add(a : MlrlactorcriticSlice, b : MlrlactorcriticSlice) -> MlrlactorcriticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlactorcriticSlice::add(self : MlrlactorcriticSlice, other : MlrlactorcriticSlice) -> MlrlactorcriticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_slice_copy(s : MlrlactorcriticSlice) -> MlrlactorcriticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticSlice::copy(self : MlrlactorcriticSlice) -> MlrlactorcriticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_slice_fill(s : MlrlactorcriticSlice, v : Double) -> MlrlactorcriticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlactorcriticSlice::fill(self : MlrlactorcriticSlice, v : Double) -> MlrlactorcriticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_actor_critic_slice_min(s : MlrlactorcriticSlice) -> Double { @_common.min(s.data) }
+pub fn MlrlactorcriticSlice::min(self : MlrlactorcriticSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_actor_critic_slice_max(s : MlrlactorcriticSlice) -> Double { @_common.max(s.data) }
+pub fn MlrlactorcriticSlice::max(self : MlrlactorcriticSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_actor_critic_slice_to_string(s : MlrlactorcriticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlactorcriticSlice::to_string(self : MlrlactorcriticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

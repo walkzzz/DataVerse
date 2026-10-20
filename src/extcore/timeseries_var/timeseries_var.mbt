@@ -351,45 +351,45 @@ pub fn timeseries_var_frame_make(size : Int) -> TimeseriesvarFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_frame_len(s : TimeseriesvarFrame) -> Int { s.size }
+pub fn TimeseriesvarFrame::len(self : TimeseriesvarFrame) -> Int { self.size }
 
-pub fn timeseries_var_frame_get(s : TimeseriesvarFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarFrame::get(self : TimeseriesvarFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_frame_set(s : TimeseriesvarFrame, i : Int, v : Double) -> TimeseriesvarFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarFrame::set(self : TimeseriesvarFrame, i : Int, v : Double) -> TimeseriesvarFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_frame_sum(s : TimeseriesvarFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarFrame::sum(self : TimeseriesvarFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_frame_mean(s : TimeseriesvarFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarFrame::mean(self : TimeseriesvarFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_frame_scale(s : TimeseriesvarFrame, f : Double) -> TimeseriesvarFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarFrame::scale(self : TimeseriesvarFrame, f : Double) -> TimeseriesvarFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_frame_add(a : TimeseriesvarFrame, b : TimeseriesvarFrame) -> TimeseriesvarFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarFrame::add(self : TimeseriesvarFrame, other : TimeseriesvarFrame) -> TimeseriesvarFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_frame_copy(s : TimeseriesvarFrame) -> TimeseriesvarFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarFrame::copy(self : TimeseriesvarFrame) -> TimeseriesvarFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_frame_fill(s : TimeseriesvarFrame, v : Double) -> TimeseriesvarFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarFrame::fill(self : TimeseriesvarFrame, v : Double) -> TimeseriesvarFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_frame_min(s : TimeseriesvarFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarFrame::min(self : TimeseriesvarFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_frame_max(s : TimeseriesvarFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarFrame::max(self : TimeseriesvarFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_frame_to_string(s : TimeseriesvarFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarFrame::to_string(self : TimeseriesvarFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarTable {
@@ -402,45 +402,45 @@ pub fn timeseries_var_table_make(size : Int) -> TimeseriesvarTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_table_len(s : TimeseriesvarTable) -> Int { s.size }
+pub fn TimeseriesvarTable::len(self : TimeseriesvarTable) -> Int { self.size }
 
-pub fn timeseries_var_table_get(s : TimeseriesvarTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarTable::get(self : TimeseriesvarTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_table_set(s : TimeseriesvarTable, i : Int, v : Double) -> TimeseriesvarTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarTable::set(self : TimeseriesvarTable, i : Int, v : Double) -> TimeseriesvarTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_table_sum(s : TimeseriesvarTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarTable::sum(self : TimeseriesvarTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_table_mean(s : TimeseriesvarTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarTable::mean(self : TimeseriesvarTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_table_scale(s : TimeseriesvarTable, f : Double) -> TimeseriesvarTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarTable::scale(self : TimeseriesvarTable, f : Double) -> TimeseriesvarTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_table_add(a : TimeseriesvarTable, b : TimeseriesvarTable) -> TimeseriesvarTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarTable::add(self : TimeseriesvarTable, other : TimeseriesvarTable) -> TimeseriesvarTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_table_copy(s : TimeseriesvarTable) -> TimeseriesvarTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarTable::copy(self : TimeseriesvarTable) -> TimeseriesvarTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_table_fill(s : TimeseriesvarTable, v : Double) -> TimeseriesvarTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarTable::fill(self : TimeseriesvarTable, v : Double) -> TimeseriesvarTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_table_min(s : TimeseriesvarTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarTable::min(self : TimeseriesvarTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_table_max(s : TimeseriesvarTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarTable::max(self : TimeseriesvarTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_table_to_string(s : TimeseriesvarTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarTable::to_string(self : TimeseriesvarTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_var_graphn_make(size : Int) -> TimeseriesvarGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_graphn_len(s : TimeseriesvarGraphN) -> Int { s.size }
+pub fn TimeseriesvarGraphN::len(self : TimeseriesvarGraphN) -> Int { self.size }
 
-pub fn timeseries_var_graphn_get(s : TimeseriesvarGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarGraphN::get(self : TimeseriesvarGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_graphn_set(s : TimeseriesvarGraphN, i : Int, v : Double) -> TimeseriesvarGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarGraphN::set(self : TimeseriesvarGraphN, i : Int, v : Double) -> TimeseriesvarGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_graphn_sum(s : TimeseriesvarGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarGraphN::sum(self : TimeseriesvarGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_graphn_mean(s : TimeseriesvarGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarGraphN::mean(self : TimeseriesvarGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_graphn_scale(s : TimeseriesvarGraphN, f : Double) -> TimeseriesvarGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarGraphN::scale(self : TimeseriesvarGraphN, f : Double) -> TimeseriesvarGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_graphn_add(a : TimeseriesvarGraphN, b : TimeseriesvarGraphN) -> TimeseriesvarGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarGraphN::add(self : TimeseriesvarGraphN, other : TimeseriesvarGraphN) -> TimeseriesvarGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_graphn_copy(s : TimeseriesvarGraphN) -> TimeseriesvarGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarGraphN::copy(self : TimeseriesvarGraphN) -> TimeseriesvarGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_graphn_fill(s : TimeseriesvarGraphN, v : Double) -> TimeseriesvarGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarGraphN::fill(self : TimeseriesvarGraphN, v : Double) -> TimeseriesvarGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_graphn_min(s : TimeseriesvarGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarGraphN::min(self : TimeseriesvarGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_graphn_max(s : TimeseriesvarGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarGraphN::max(self : TimeseriesvarGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_graphn_to_string(s : TimeseriesvarGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarGraphN::to_string(self : TimeseriesvarGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarNode {
@@ -504,45 +504,45 @@ pub fn timeseries_var_node_make(size : Int) -> TimeseriesvarNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_node_len(s : TimeseriesvarNode) -> Int { s.size }
+pub fn TimeseriesvarNode::len(self : TimeseriesvarNode) -> Int { self.size }
 
-pub fn timeseries_var_node_get(s : TimeseriesvarNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarNode::get(self : TimeseriesvarNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_node_set(s : TimeseriesvarNode, i : Int, v : Double) -> TimeseriesvarNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarNode::set(self : TimeseriesvarNode, i : Int, v : Double) -> TimeseriesvarNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_node_sum(s : TimeseriesvarNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarNode::sum(self : TimeseriesvarNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_node_mean(s : TimeseriesvarNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarNode::mean(self : TimeseriesvarNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_node_scale(s : TimeseriesvarNode, f : Double) -> TimeseriesvarNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarNode::scale(self : TimeseriesvarNode, f : Double) -> TimeseriesvarNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_node_add(a : TimeseriesvarNode, b : TimeseriesvarNode) -> TimeseriesvarNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarNode::add(self : TimeseriesvarNode, other : TimeseriesvarNode) -> TimeseriesvarNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_node_copy(s : TimeseriesvarNode) -> TimeseriesvarNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarNode::copy(self : TimeseriesvarNode) -> TimeseriesvarNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_node_fill(s : TimeseriesvarNode, v : Double) -> TimeseriesvarNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarNode::fill(self : TimeseriesvarNode, v : Double) -> TimeseriesvarNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_node_min(s : TimeseriesvarNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarNode::min(self : TimeseriesvarNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_node_max(s : TimeseriesvarNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarNode::max(self : TimeseriesvarNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_node_to_string(s : TimeseriesvarNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarNode::to_string(self : TimeseriesvarNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_var_edge_make(size : Int) -> TimeseriesvarEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_edge_len(s : TimeseriesvarEdge) -> Int { s.size }
+pub fn TimeseriesvarEdge::len(self : TimeseriesvarEdge) -> Int { self.size }
 
-pub fn timeseries_var_edge_get(s : TimeseriesvarEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarEdge::get(self : TimeseriesvarEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_edge_set(s : TimeseriesvarEdge, i : Int, v : Double) -> TimeseriesvarEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarEdge::set(self : TimeseriesvarEdge, i : Int, v : Double) -> TimeseriesvarEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_edge_sum(s : TimeseriesvarEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarEdge::sum(self : TimeseriesvarEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_edge_mean(s : TimeseriesvarEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarEdge::mean(self : TimeseriesvarEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_edge_scale(s : TimeseriesvarEdge, f : Double) -> TimeseriesvarEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarEdge::scale(self : TimeseriesvarEdge, f : Double) -> TimeseriesvarEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_edge_add(a : TimeseriesvarEdge, b : TimeseriesvarEdge) -> TimeseriesvarEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarEdge::add(self : TimeseriesvarEdge, other : TimeseriesvarEdge) -> TimeseriesvarEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_edge_copy(s : TimeseriesvarEdge) -> TimeseriesvarEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarEdge::copy(self : TimeseriesvarEdge) -> TimeseriesvarEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_edge_fill(s : TimeseriesvarEdge, v : Double) -> TimeseriesvarEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarEdge::fill(self : TimeseriesvarEdge, v : Double) -> TimeseriesvarEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_edge_min(s : TimeseriesvarEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarEdge::min(self : TimeseriesvarEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_edge_max(s : TimeseriesvarEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarEdge::max(self : TimeseriesvarEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_edge_to_string(s : TimeseriesvarEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarEdge::to_string(self : TimeseriesvarEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarPath {
@@ -606,45 +606,45 @@ pub fn timeseries_var_path_make(size : Int) -> TimeseriesvarPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_path_len(s : TimeseriesvarPath) -> Int { s.size }
+pub fn TimeseriesvarPath::len(self : TimeseriesvarPath) -> Int { self.size }
 
-pub fn timeseries_var_path_get(s : TimeseriesvarPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarPath::get(self : TimeseriesvarPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_path_set(s : TimeseriesvarPath, i : Int, v : Double) -> TimeseriesvarPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarPath::set(self : TimeseriesvarPath, i : Int, v : Double) -> TimeseriesvarPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_path_sum(s : TimeseriesvarPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarPath::sum(self : TimeseriesvarPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_path_mean(s : TimeseriesvarPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarPath::mean(self : TimeseriesvarPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_path_scale(s : TimeseriesvarPath, f : Double) -> TimeseriesvarPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarPath::scale(self : TimeseriesvarPath, f : Double) -> TimeseriesvarPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_path_add(a : TimeseriesvarPath, b : TimeseriesvarPath) -> TimeseriesvarPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarPath::add(self : TimeseriesvarPath, other : TimeseriesvarPath) -> TimeseriesvarPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_path_copy(s : TimeseriesvarPath) -> TimeseriesvarPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarPath::copy(self : TimeseriesvarPath) -> TimeseriesvarPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_path_fill(s : TimeseriesvarPath, v : Double) -> TimeseriesvarPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarPath::fill(self : TimeseriesvarPath, v : Double) -> TimeseriesvarPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_path_min(s : TimeseriesvarPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarPath::min(self : TimeseriesvarPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_path_max(s : TimeseriesvarPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarPath::max(self : TimeseriesvarPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_path_to_string(s : TimeseriesvarPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarPath::to_string(self : TimeseriesvarPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_var_cluster_make(size : Int) -> TimeseriesvarCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_cluster_len(s : TimeseriesvarCluster) -> Int { s.size }
+pub fn TimeseriesvarCluster::len(self : TimeseriesvarCluster) -> Int { self.size }
 
-pub fn timeseries_var_cluster_get(s : TimeseriesvarCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarCluster::get(self : TimeseriesvarCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_cluster_set(s : TimeseriesvarCluster, i : Int, v : Double) -> TimeseriesvarCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarCluster::set(self : TimeseriesvarCluster, i : Int, v : Double) -> TimeseriesvarCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cluster_sum(s : TimeseriesvarCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarCluster::sum(self : TimeseriesvarCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_cluster_mean(s : TimeseriesvarCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarCluster::mean(self : TimeseriesvarCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_cluster_scale(s : TimeseriesvarCluster, f : Double) -> TimeseriesvarCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarCluster::scale(self : TimeseriesvarCluster, f : Double) -> TimeseriesvarCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cluster_add(a : TimeseriesvarCluster, b : TimeseriesvarCluster) -> TimeseriesvarCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarCluster::add(self : TimeseriesvarCluster, other : TimeseriesvarCluster) -> TimeseriesvarCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_cluster_copy(s : TimeseriesvarCluster) -> TimeseriesvarCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarCluster::copy(self : TimeseriesvarCluster) -> TimeseriesvarCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cluster_fill(s : TimeseriesvarCluster, v : Double) -> TimeseriesvarCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarCluster::fill(self : TimeseriesvarCluster, v : Double) -> TimeseriesvarCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cluster_min(s : TimeseriesvarCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarCluster::min(self : TimeseriesvarCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_cluster_max(s : TimeseriesvarCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarCluster::max(self : TimeseriesvarCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_cluster_to_string(s : TimeseriesvarCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarCluster::to_string(self : TimeseriesvarCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarModel {
@@ -708,45 +708,45 @@ pub fn timeseries_var_model_make(size : Int) -> TimeseriesvarModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_model_len(s : TimeseriesvarModel) -> Int { s.size }
+pub fn TimeseriesvarModel::len(self : TimeseriesvarModel) -> Int { self.size }
 
-pub fn timeseries_var_model_get(s : TimeseriesvarModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarModel::get(self : TimeseriesvarModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_model_set(s : TimeseriesvarModel, i : Int, v : Double) -> TimeseriesvarModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarModel::set(self : TimeseriesvarModel, i : Int, v : Double) -> TimeseriesvarModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_model_sum(s : TimeseriesvarModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarModel::sum(self : TimeseriesvarModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_model_mean(s : TimeseriesvarModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarModel::mean(self : TimeseriesvarModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_model_scale(s : TimeseriesvarModel, f : Double) -> TimeseriesvarModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarModel::scale(self : TimeseriesvarModel, f : Double) -> TimeseriesvarModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_model_add(a : TimeseriesvarModel, b : TimeseriesvarModel) -> TimeseriesvarModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarModel::add(self : TimeseriesvarModel, other : TimeseriesvarModel) -> TimeseriesvarModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_model_copy(s : TimeseriesvarModel) -> TimeseriesvarModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarModel::copy(self : TimeseriesvarModel) -> TimeseriesvarModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_model_fill(s : TimeseriesvarModel, v : Double) -> TimeseriesvarModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarModel::fill(self : TimeseriesvarModel, v : Double) -> TimeseriesvarModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_model_min(s : TimeseriesvarModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarModel::min(self : TimeseriesvarModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_model_max(s : TimeseriesvarModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarModel::max(self : TimeseriesvarModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_model_to_string(s : TimeseriesvarModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarModel::to_string(self : TimeseriesvarModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_var_layer_make(size : Int) -> TimeseriesvarLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_layer_len(s : TimeseriesvarLayer) -> Int { s.size }
+pub fn TimeseriesvarLayer::len(self : TimeseriesvarLayer) -> Int { self.size }
 
-pub fn timeseries_var_layer_get(s : TimeseriesvarLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarLayer::get(self : TimeseriesvarLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_layer_set(s : TimeseriesvarLayer, i : Int, v : Double) -> TimeseriesvarLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarLayer::set(self : TimeseriesvarLayer, i : Int, v : Double) -> TimeseriesvarLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_layer_sum(s : TimeseriesvarLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarLayer::sum(self : TimeseriesvarLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_layer_mean(s : TimeseriesvarLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarLayer::mean(self : TimeseriesvarLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_layer_scale(s : TimeseriesvarLayer, f : Double) -> TimeseriesvarLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarLayer::scale(self : TimeseriesvarLayer, f : Double) -> TimeseriesvarLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_layer_add(a : TimeseriesvarLayer, b : TimeseriesvarLayer) -> TimeseriesvarLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarLayer::add(self : TimeseriesvarLayer, other : TimeseriesvarLayer) -> TimeseriesvarLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_layer_copy(s : TimeseriesvarLayer) -> TimeseriesvarLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarLayer::copy(self : TimeseriesvarLayer) -> TimeseriesvarLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_layer_fill(s : TimeseriesvarLayer, v : Double) -> TimeseriesvarLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarLayer::fill(self : TimeseriesvarLayer, v : Double) -> TimeseriesvarLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_layer_min(s : TimeseriesvarLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarLayer::min(self : TimeseriesvarLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_layer_max(s : TimeseriesvarLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarLayer::max(self : TimeseriesvarLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_layer_to_string(s : TimeseriesvarLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarLayer::to_string(self : TimeseriesvarLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_var_buffer_make(size : Int) -> TimeseriesvarBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_buffer_len(s : TimeseriesvarBuffer) -> Int { s.size }
+pub fn TimeseriesvarBuffer::len(self : TimeseriesvarBuffer) -> Int { self.size }
 
-pub fn timeseries_var_buffer_get(s : TimeseriesvarBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarBuffer::get(self : TimeseriesvarBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_buffer_set(s : TimeseriesvarBuffer, i : Int, v : Double) -> TimeseriesvarBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarBuffer::set(self : TimeseriesvarBuffer, i : Int, v : Double) -> TimeseriesvarBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_buffer_sum(s : TimeseriesvarBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarBuffer::sum(self : TimeseriesvarBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_buffer_mean(s : TimeseriesvarBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarBuffer::mean(self : TimeseriesvarBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_buffer_scale(s : TimeseriesvarBuffer, f : Double) -> TimeseriesvarBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarBuffer::scale(self : TimeseriesvarBuffer, f : Double) -> TimeseriesvarBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_buffer_add(a : TimeseriesvarBuffer, b : TimeseriesvarBuffer) -> TimeseriesvarBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarBuffer::add(self : TimeseriesvarBuffer, other : TimeseriesvarBuffer) -> TimeseriesvarBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_buffer_copy(s : TimeseriesvarBuffer) -> TimeseriesvarBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarBuffer::copy(self : TimeseriesvarBuffer) -> TimeseriesvarBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_buffer_fill(s : TimeseriesvarBuffer, v : Double) -> TimeseriesvarBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarBuffer::fill(self : TimeseriesvarBuffer, v : Double) -> TimeseriesvarBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_buffer_min(s : TimeseriesvarBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarBuffer::min(self : TimeseriesvarBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_buffer_max(s : TimeseriesvarBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarBuffer::max(self : TimeseriesvarBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_buffer_to_string(s : TimeseriesvarBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarBuffer::to_string(self : TimeseriesvarBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_var_cursor_make(size : Int) -> TimeseriesvarCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_cursor_len(s : TimeseriesvarCursor) -> Int { s.size }
+pub fn TimeseriesvarCursor::len(self : TimeseriesvarCursor) -> Int { self.size }
 
-pub fn timeseries_var_cursor_get(s : TimeseriesvarCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarCursor::get(self : TimeseriesvarCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_cursor_set(s : TimeseriesvarCursor, i : Int, v : Double) -> TimeseriesvarCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarCursor::set(self : TimeseriesvarCursor, i : Int, v : Double) -> TimeseriesvarCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cursor_sum(s : TimeseriesvarCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarCursor::sum(self : TimeseriesvarCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_cursor_mean(s : TimeseriesvarCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarCursor::mean(self : TimeseriesvarCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_cursor_scale(s : TimeseriesvarCursor, f : Double) -> TimeseriesvarCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarCursor::scale(self : TimeseriesvarCursor, f : Double) -> TimeseriesvarCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cursor_add(a : TimeseriesvarCursor, b : TimeseriesvarCursor) -> TimeseriesvarCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarCursor::add(self : TimeseriesvarCursor, other : TimeseriesvarCursor) -> TimeseriesvarCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_cursor_copy(s : TimeseriesvarCursor) -> TimeseriesvarCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarCursor::copy(self : TimeseriesvarCursor) -> TimeseriesvarCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cursor_fill(s : TimeseriesvarCursor, v : Double) -> TimeseriesvarCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarCursor::fill(self : TimeseriesvarCursor, v : Double) -> TimeseriesvarCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_cursor_min(s : TimeseriesvarCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarCursor::min(self : TimeseriesvarCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_cursor_max(s : TimeseriesvarCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarCursor::max(self : TimeseriesvarCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_cursor_to_string(s : TimeseriesvarCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarCursor::to_string(self : TimeseriesvarCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarView {
@@ -912,45 +912,45 @@ pub fn timeseries_var_view_make(size : Int) -> TimeseriesvarView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_view_len(s : TimeseriesvarView) -> Int { s.size }
+pub fn TimeseriesvarView::len(self : TimeseriesvarView) -> Int { self.size }
 
-pub fn timeseries_var_view_get(s : TimeseriesvarView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarView::get(self : TimeseriesvarView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_view_set(s : TimeseriesvarView, i : Int, v : Double) -> TimeseriesvarView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarView::set(self : TimeseriesvarView, i : Int, v : Double) -> TimeseriesvarView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_view_sum(s : TimeseriesvarView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarView::sum(self : TimeseriesvarView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_view_mean(s : TimeseriesvarView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarView::mean(self : TimeseriesvarView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_view_scale(s : TimeseriesvarView, f : Double) -> TimeseriesvarView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarView::scale(self : TimeseriesvarView, f : Double) -> TimeseriesvarView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_view_add(a : TimeseriesvarView, b : TimeseriesvarView) -> TimeseriesvarView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarView::add(self : TimeseriesvarView, other : TimeseriesvarView) -> TimeseriesvarView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_view_copy(s : TimeseriesvarView) -> TimeseriesvarView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarView::copy(self : TimeseriesvarView) -> TimeseriesvarView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_view_fill(s : TimeseriesvarView, v : Double) -> TimeseriesvarView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarView::fill(self : TimeseriesvarView, v : Double) -> TimeseriesvarView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_view_min(s : TimeseriesvarView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarView::min(self : TimeseriesvarView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_view_max(s : TimeseriesvarView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarView::max(self : TimeseriesvarView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_view_to_string(s : TimeseriesvarView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarView::to_string(self : TimeseriesvarView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarRange {
@@ -963,45 +963,45 @@ pub fn timeseries_var_range_make(size : Int) -> TimeseriesvarRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_range_len(s : TimeseriesvarRange) -> Int { s.size }
+pub fn TimeseriesvarRange::len(self : TimeseriesvarRange) -> Int { self.size }
 
-pub fn timeseries_var_range_get(s : TimeseriesvarRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarRange::get(self : TimeseriesvarRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_range_set(s : TimeseriesvarRange, i : Int, v : Double) -> TimeseriesvarRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarRange::set(self : TimeseriesvarRange, i : Int, v : Double) -> TimeseriesvarRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_range_sum(s : TimeseriesvarRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarRange::sum(self : TimeseriesvarRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_range_mean(s : TimeseriesvarRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarRange::mean(self : TimeseriesvarRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_range_scale(s : TimeseriesvarRange, f : Double) -> TimeseriesvarRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarRange::scale(self : TimeseriesvarRange, f : Double) -> TimeseriesvarRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_range_add(a : TimeseriesvarRange, b : TimeseriesvarRange) -> TimeseriesvarRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarRange::add(self : TimeseriesvarRange, other : TimeseriesvarRange) -> TimeseriesvarRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_range_copy(s : TimeseriesvarRange) -> TimeseriesvarRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarRange::copy(self : TimeseriesvarRange) -> TimeseriesvarRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_range_fill(s : TimeseriesvarRange, v : Double) -> TimeseriesvarRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarRange::fill(self : TimeseriesvarRange, v : Double) -> TimeseriesvarRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_range_min(s : TimeseriesvarRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarRange::min(self : TimeseriesvarRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_range_max(s : TimeseriesvarRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarRange::max(self : TimeseriesvarRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_range_to_string(s : TimeseriesvarRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarRange::to_string(self : TimeseriesvarRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesvarSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_var_slice_make(size : Int) -> TimeseriesvarSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_var_slice_len(s : TimeseriesvarSlice) -> Int { s.size }
+pub fn TimeseriesvarSlice::len(self : TimeseriesvarSlice) -> Int { self.size }
 
-pub fn timeseries_var_slice_get(s : TimeseriesvarSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesvarSlice::get(self : TimeseriesvarSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_var_slice_set(s : TimeseriesvarSlice, i : Int, v : Double) -> TimeseriesvarSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesvarSlice::set(self : TimeseriesvarSlice, i : Int, v : Double) -> TimeseriesvarSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_slice_sum(s : TimeseriesvarSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesvarSlice::sum(self : TimeseriesvarSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_var_slice_mean(s : TimeseriesvarSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesvarSlice::mean(self : TimeseriesvarSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_var_slice_scale(s : TimeseriesvarSlice, f : Double) -> TimeseriesvarSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesvarSlice::scale(self : TimeseriesvarSlice, f : Double) -> TimeseriesvarSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_slice_add(a : TimeseriesvarSlice, b : TimeseriesvarSlice) -> TimeseriesvarSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesvarSlice::add(self : TimeseriesvarSlice, other : TimeseriesvarSlice) -> TimeseriesvarSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_var_slice_copy(s : TimeseriesvarSlice) -> TimeseriesvarSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesvarSlice::copy(self : TimeseriesvarSlice) -> TimeseriesvarSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_slice_fill(s : TimeseriesvarSlice, v : Double) -> TimeseriesvarSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesvarSlice::fill(self : TimeseriesvarSlice, v : Double) -> TimeseriesvarSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_var_slice_min(s : TimeseriesvarSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesvarSlice::min(self : TimeseriesvarSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_var_slice_max(s : TimeseriesvarSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesvarSlice::max(self : TimeseriesvarSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_var_slice_to_string(s : TimeseriesvarSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesvarSlice::to_string(self : TimeseriesvarSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_tree_trie_frame_make(size : Int) -> DstreetrieFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_frame_len(s : DstreetrieFrame) -> Int { s.size }
+pub fn DstreetrieFrame::len(self : DstreetrieFrame) -> Int { self.size }
 
-pub fn ds_tree_trie_frame_get(s : DstreetrieFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieFrame::get(self : DstreetrieFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_frame_set(s : DstreetrieFrame, i : Int, v : Double) -> DstreetrieFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieFrame::set(self : DstreetrieFrame, i : Int, v : Double) -> DstreetrieFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_frame_sum(s : DstreetrieFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieFrame::sum(self : DstreetrieFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_frame_mean(s : DstreetrieFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieFrame::mean(self : DstreetrieFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_frame_scale(s : DstreetrieFrame, f : Double) -> DstreetrieFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieFrame::scale(self : DstreetrieFrame, f : Double) -> DstreetrieFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_frame_add(a : DstreetrieFrame, b : DstreetrieFrame) -> DstreetrieFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieFrame::add(self : DstreetrieFrame, other : DstreetrieFrame) -> DstreetrieFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_frame_copy(s : DstreetrieFrame) -> DstreetrieFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieFrame::copy(self : DstreetrieFrame) -> DstreetrieFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_frame_fill(s : DstreetrieFrame, v : Double) -> DstreetrieFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieFrame::fill(self : DstreetrieFrame, v : Double) -> DstreetrieFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_frame_min(s : DstreetrieFrame) -> Double { @_common.min(s.data) }
+pub fn DstreetrieFrame::min(self : DstreetrieFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_frame_max(s : DstreetrieFrame) -> Double { @_common.max(s.data) }
+pub fn DstreetrieFrame::max(self : DstreetrieFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_frame_to_string(s : DstreetrieFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieFrame::to_string(self : DstreetrieFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_trie_table_make(size : Int) -> DstreetrieTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_table_len(s : DstreetrieTable) -> Int { s.size }
+pub fn DstreetrieTable::len(self : DstreetrieTable) -> Int { self.size }
 
-pub fn ds_tree_trie_table_get(s : DstreetrieTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieTable::get(self : DstreetrieTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_table_set(s : DstreetrieTable, i : Int, v : Double) -> DstreetrieTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieTable::set(self : DstreetrieTable, i : Int, v : Double) -> DstreetrieTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_table_sum(s : DstreetrieTable) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieTable::sum(self : DstreetrieTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_table_mean(s : DstreetrieTable) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieTable::mean(self : DstreetrieTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_table_scale(s : DstreetrieTable, f : Double) -> DstreetrieTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieTable::scale(self : DstreetrieTable, f : Double) -> DstreetrieTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_table_add(a : DstreetrieTable, b : DstreetrieTable) -> DstreetrieTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieTable::add(self : DstreetrieTable, other : DstreetrieTable) -> DstreetrieTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_table_copy(s : DstreetrieTable) -> DstreetrieTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieTable::copy(self : DstreetrieTable) -> DstreetrieTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_table_fill(s : DstreetrieTable, v : Double) -> DstreetrieTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieTable::fill(self : DstreetrieTable, v : Double) -> DstreetrieTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_table_min(s : DstreetrieTable) -> Double { @_common.min(s.data) }
+pub fn DstreetrieTable::min(self : DstreetrieTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_table_max(s : DstreetrieTable) -> Double { @_common.max(s.data) }
+pub fn DstreetrieTable::max(self : DstreetrieTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_table_to_string(s : DstreetrieTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieTable::to_string(self : DstreetrieTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_trie_graphn_make(size : Int) -> DstreetrieGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_graphn_len(s : DstreetrieGraphN) -> Int { s.size }
+pub fn DstreetrieGraphN::len(self : DstreetrieGraphN) -> Int { self.size }
 
-pub fn ds_tree_trie_graphn_get(s : DstreetrieGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieGraphN::get(self : DstreetrieGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_graphn_set(s : DstreetrieGraphN, i : Int, v : Double) -> DstreetrieGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieGraphN::set(self : DstreetrieGraphN, i : Int, v : Double) -> DstreetrieGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_graphn_sum(s : DstreetrieGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieGraphN::sum(self : DstreetrieGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_graphn_mean(s : DstreetrieGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieGraphN::mean(self : DstreetrieGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_graphn_scale(s : DstreetrieGraphN, f : Double) -> DstreetrieGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieGraphN::scale(self : DstreetrieGraphN, f : Double) -> DstreetrieGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_graphn_add(a : DstreetrieGraphN, b : DstreetrieGraphN) -> DstreetrieGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieGraphN::add(self : DstreetrieGraphN, other : DstreetrieGraphN) -> DstreetrieGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_graphn_copy(s : DstreetrieGraphN) -> DstreetrieGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieGraphN::copy(self : DstreetrieGraphN) -> DstreetrieGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_graphn_fill(s : DstreetrieGraphN, v : Double) -> DstreetrieGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieGraphN::fill(self : DstreetrieGraphN, v : Double) -> DstreetrieGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_graphn_min(s : DstreetrieGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreetrieGraphN::min(self : DstreetrieGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_graphn_max(s : DstreetrieGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreetrieGraphN::max(self : DstreetrieGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_graphn_to_string(s : DstreetrieGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieGraphN::to_string(self : DstreetrieGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_trie_node_make(size : Int) -> DstreetrieNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_node_len(s : DstreetrieNode) -> Int { s.size }
+pub fn DstreetrieNode::len(self : DstreetrieNode) -> Int { self.size }
 
-pub fn ds_tree_trie_node_get(s : DstreetrieNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieNode::get(self : DstreetrieNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_node_set(s : DstreetrieNode, i : Int, v : Double) -> DstreetrieNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieNode::set(self : DstreetrieNode, i : Int, v : Double) -> DstreetrieNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_node_sum(s : DstreetrieNode) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieNode::sum(self : DstreetrieNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_node_mean(s : DstreetrieNode) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieNode::mean(self : DstreetrieNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_node_scale(s : DstreetrieNode, f : Double) -> DstreetrieNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieNode::scale(self : DstreetrieNode, f : Double) -> DstreetrieNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_node_add(a : DstreetrieNode, b : DstreetrieNode) -> DstreetrieNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieNode::add(self : DstreetrieNode, other : DstreetrieNode) -> DstreetrieNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_node_copy(s : DstreetrieNode) -> DstreetrieNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieNode::copy(self : DstreetrieNode) -> DstreetrieNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_node_fill(s : DstreetrieNode, v : Double) -> DstreetrieNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieNode::fill(self : DstreetrieNode, v : Double) -> DstreetrieNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_node_min(s : DstreetrieNode) -> Double { @_common.min(s.data) }
+pub fn DstreetrieNode::min(self : DstreetrieNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_node_max(s : DstreetrieNode) -> Double { @_common.max(s.data) }
+pub fn DstreetrieNode::max(self : DstreetrieNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_node_to_string(s : DstreetrieNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieNode::to_string(self : DstreetrieNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_trie_edge_make(size : Int) -> DstreetrieEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_edge_len(s : DstreetrieEdge) -> Int { s.size }
+pub fn DstreetrieEdge::len(self : DstreetrieEdge) -> Int { self.size }
 
-pub fn ds_tree_trie_edge_get(s : DstreetrieEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieEdge::get(self : DstreetrieEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_edge_set(s : DstreetrieEdge, i : Int, v : Double) -> DstreetrieEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieEdge::set(self : DstreetrieEdge, i : Int, v : Double) -> DstreetrieEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_edge_sum(s : DstreetrieEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieEdge::sum(self : DstreetrieEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_edge_mean(s : DstreetrieEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieEdge::mean(self : DstreetrieEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_edge_scale(s : DstreetrieEdge, f : Double) -> DstreetrieEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieEdge::scale(self : DstreetrieEdge, f : Double) -> DstreetrieEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_edge_add(a : DstreetrieEdge, b : DstreetrieEdge) -> DstreetrieEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieEdge::add(self : DstreetrieEdge, other : DstreetrieEdge) -> DstreetrieEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_edge_copy(s : DstreetrieEdge) -> DstreetrieEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieEdge::copy(self : DstreetrieEdge) -> DstreetrieEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_edge_fill(s : DstreetrieEdge, v : Double) -> DstreetrieEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieEdge::fill(self : DstreetrieEdge, v : Double) -> DstreetrieEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_edge_min(s : DstreetrieEdge) -> Double { @_common.min(s.data) }
+pub fn DstreetrieEdge::min(self : DstreetrieEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_edge_max(s : DstreetrieEdge) -> Double { @_common.max(s.data) }
+pub fn DstreetrieEdge::max(self : DstreetrieEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_edge_to_string(s : DstreetrieEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieEdge::to_string(self : DstreetrieEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetriePath {
@@ -606,45 +606,45 @@ pub fn ds_tree_trie_path_make(size : Int) -> DstreetriePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_path_len(s : DstreetriePath) -> Int { s.size }
+pub fn DstreetriePath::len(self : DstreetriePath) -> Int { self.size }
 
-pub fn ds_tree_trie_path_get(s : DstreetriePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetriePath::get(self : DstreetriePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_path_set(s : DstreetriePath, i : Int, v : Double) -> DstreetriePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetriePath::set(self : DstreetriePath, i : Int, v : Double) -> DstreetriePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_path_sum(s : DstreetriePath) -> Double { @_common.sum(s.data) }
+pub fn DstreetriePath::sum(self : DstreetriePath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_path_mean(s : DstreetriePath) -> Double { @_common.mean(s.data) }
+pub fn DstreetriePath::mean(self : DstreetriePath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_path_scale(s : DstreetriePath, f : Double) -> DstreetriePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetriePath::scale(self : DstreetriePath, f : Double) -> DstreetriePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_path_add(a : DstreetriePath, b : DstreetriePath) -> DstreetriePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetriePath::add(self : DstreetriePath, other : DstreetriePath) -> DstreetriePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_path_copy(s : DstreetriePath) -> DstreetriePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetriePath::copy(self : DstreetriePath) -> DstreetriePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_path_fill(s : DstreetriePath, v : Double) -> DstreetriePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetriePath::fill(self : DstreetriePath, v : Double) -> DstreetriePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_path_min(s : DstreetriePath) -> Double { @_common.min(s.data) }
+pub fn DstreetriePath::min(self : DstreetriePath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_path_max(s : DstreetriePath) -> Double { @_common.max(s.data) }
+pub fn DstreetriePath::max(self : DstreetriePath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_path_to_string(s : DstreetriePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetriePath::to_string(self : DstreetriePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_trie_cluster_make(size : Int) -> DstreetrieCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_cluster_len(s : DstreetrieCluster) -> Int { s.size }
+pub fn DstreetrieCluster::len(self : DstreetrieCluster) -> Int { self.size }
 
-pub fn ds_tree_trie_cluster_get(s : DstreetrieCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieCluster::get(self : DstreetrieCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_cluster_set(s : DstreetrieCluster, i : Int, v : Double) -> DstreetrieCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieCluster::set(self : DstreetrieCluster, i : Int, v : Double) -> DstreetrieCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cluster_sum(s : DstreetrieCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieCluster::sum(self : DstreetrieCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_cluster_mean(s : DstreetrieCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieCluster::mean(self : DstreetrieCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_cluster_scale(s : DstreetrieCluster, f : Double) -> DstreetrieCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieCluster::scale(self : DstreetrieCluster, f : Double) -> DstreetrieCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cluster_add(a : DstreetrieCluster, b : DstreetrieCluster) -> DstreetrieCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieCluster::add(self : DstreetrieCluster, other : DstreetrieCluster) -> DstreetrieCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cluster_copy(s : DstreetrieCluster) -> DstreetrieCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieCluster::copy(self : DstreetrieCluster) -> DstreetrieCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cluster_fill(s : DstreetrieCluster, v : Double) -> DstreetrieCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieCluster::fill(self : DstreetrieCluster, v : Double) -> DstreetrieCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cluster_min(s : DstreetrieCluster) -> Double { @_common.min(s.data) }
+pub fn DstreetrieCluster::min(self : DstreetrieCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_cluster_max(s : DstreetrieCluster) -> Double { @_common.max(s.data) }
+pub fn DstreetrieCluster::max(self : DstreetrieCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_cluster_to_string(s : DstreetrieCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieCluster::to_string(self : DstreetrieCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_trie_model_make(size : Int) -> DstreetrieModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_model_len(s : DstreetrieModel) -> Int { s.size }
+pub fn DstreetrieModel::len(self : DstreetrieModel) -> Int { self.size }
 
-pub fn ds_tree_trie_model_get(s : DstreetrieModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieModel::get(self : DstreetrieModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_model_set(s : DstreetrieModel, i : Int, v : Double) -> DstreetrieModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieModel::set(self : DstreetrieModel, i : Int, v : Double) -> DstreetrieModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_model_sum(s : DstreetrieModel) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieModel::sum(self : DstreetrieModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_model_mean(s : DstreetrieModel) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieModel::mean(self : DstreetrieModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_model_scale(s : DstreetrieModel, f : Double) -> DstreetrieModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieModel::scale(self : DstreetrieModel, f : Double) -> DstreetrieModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_model_add(a : DstreetrieModel, b : DstreetrieModel) -> DstreetrieModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieModel::add(self : DstreetrieModel, other : DstreetrieModel) -> DstreetrieModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_model_copy(s : DstreetrieModel) -> DstreetrieModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieModel::copy(self : DstreetrieModel) -> DstreetrieModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_model_fill(s : DstreetrieModel, v : Double) -> DstreetrieModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieModel::fill(self : DstreetrieModel, v : Double) -> DstreetrieModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_model_min(s : DstreetrieModel) -> Double { @_common.min(s.data) }
+pub fn DstreetrieModel::min(self : DstreetrieModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_model_max(s : DstreetrieModel) -> Double { @_common.max(s.data) }
+pub fn DstreetrieModel::max(self : DstreetrieModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_model_to_string(s : DstreetrieModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieModel::to_string(self : DstreetrieModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_trie_layer_make(size : Int) -> DstreetrieLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_layer_len(s : DstreetrieLayer) -> Int { s.size }
+pub fn DstreetrieLayer::len(self : DstreetrieLayer) -> Int { self.size }
 
-pub fn ds_tree_trie_layer_get(s : DstreetrieLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieLayer::get(self : DstreetrieLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_layer_set(s : DstreetrieLayer, i : Int, v : Double) -> DstreetrieLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieLayer::set(self : DstreetrieLayer, i : Int, v : Double) -> DstreetrieLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_layer_sum(s : DstreetrieLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieLayer::sum(self : DstreetrieLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_layer_mean(s : DstreetrieLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieLayer::mean(self : DstreetrieLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_layer_scale(s : DstreetrieLayer, f : Double) -> DstreetrieLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieLayer::scale(self : DstreetrieLayer, f : Double) -> DstreetrieLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_layer_add(a : DstreetrieLayer, b : DstreetrieLayer) -> DstreetrieLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieLayer::add(self : DstreetrieLayer, other : DstreetrieLayer) -> DstreetrieLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_layer_copy(s : DstreetrieLayer) -> DstreetrieLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieLayer::copy(self : DstreetrieLayer) -> DstreetrieLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_layer_fill(s : DstreetrieLayer, v : Double) -> DstreetrieLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieLayer::fill(self : DstreetrieLayer, v : Double) -> DstreetrieLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_layer_min(s : DstreetrieLayer) -> Double { @_common.min(s.data) }
+pub fn DstreetrieLayer::min(self : DstreetrieLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_layer_max(s : DstreetrieLayer) -> Double { @_common.max(s.data) }
+pub fn DstreetrieLayer::max(self : DstreetrieLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_layer_to_string(s : DstreetrieLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieLayer::to_string(self : DstreetrieLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_trie_buffer_make(size : Int) -> DstreetrieBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_buffer_len(s : DstreetrieBuffer) -> Int { s.size }
+pub fn DstreetrieBuffer::len(self : DstreetrieBuffer) -> Int { self.size }
 
-pub fn ds_tree_trie_buffer_get(s : DstreetrieBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieBuffer::get(self : DstreetrieBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_buffer_set(s : DstreetrieBuffer, i : Int, v : Double) -> DstreetrieBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieBuffer::set(self : DstreetrieBuffer, i : Int, v : Double) -> DstreetrieBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_buffer_sum(s : DstreetrieBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieBuffer::sum(self : DstreetrieBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_buffer_mean(s : DstreetrieBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieBuffer::mean(self : DstreetrieBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_buffer_scale(s : DstreetrieBuffer, f : Double) -> DstreetrieBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieBuffer::scale(self : DstreetrieBuffer, f : Double) -> DstreetrieBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_buffer_add(a : DstreetrieBuffer, b : DstreetrieBuffer) -> DstreetrieBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieBuffer::add(self : DstreetrieBuffer, other : DstreetrieBuffer) -> DstreetrieBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_buffer_copy(s : DstreetrieBuffer) -> DstreetrieBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieBuffer::copy(self : DstreetrieBuffer) -> DstreetrieBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_buffer_fill(s : DstreetrieBuffer, v : Double) -> DstreetrieBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieBuffer::fill(self : DstreetrieBuffer, v : Double) -> DstreetrieBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_buffer_min(s : DstreetrieBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreetrieBuffer::min(self : DstreetrieBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_buffer_max(s : DstreetrieBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreetrieBuffer::max(self : DstreetrieBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_buffer_to_string(s : DstreetrieBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieBuffer::to_string(self : DstreetrieBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_trie_cursor_make(size : Int) -> DstreetrieCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_cursor_len(s : DstreetrieCursor) -> Int { s.size }
+pub fn DstreetrieCursor::len(self : DstreetrieCursor) -> Int { self.size }
 
-pub fn ds_tree_trie_cursor_get(s : DstreetrieCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieCursor::get(self : DstreetrieCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_cursor_set(s : DstreetrieCursor, i : Int, v : Double) -> DstreetrieCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieCursor::set(self : DstreetrieCursor, i : Int, v : Double) -> DstreetrieCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cursor_sum(s : DstreetrieCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieCursor::sum(self : DstreetrieCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_cursor_mean(s : DstreetrieCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieCursor::mean(self : DstreetrieCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_cursor_scale(s : DstreetrieCursor, f : Double) -> DstreetrieCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieCursor::scale(self : DstreetrieCursor, f : Double) -> DstreetrieCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cursor_add(a : DstreetrieCursor, b : DstreetrieCursor) -> DstreetrieCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieCursor::add(self : DstreetrieCursor, other : DstreetrieCursor) -> DstreetrieCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cursor_copy(s : DstreetrieCursor) -> DstreetrieCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieCursor::copy(self : DstreetrieCursor) -> DstreetrieCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cursor_fill(s : DstreetrieCursor, v : Double) -> DstreetrieCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieCursor::fill(self : DstreetrieCursor, v : Double) -> DstreetrieCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_cursor_min(s : DstreetrieCursor) -> Double { @_common.min(s.data) }
+pub fn DstreetrieCursor::min(self : DstreetrieCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_cursor_max(s : DstreetrieCursor) -> Double { @_common.max(s.data) }
+pub fn DstreetrieCursor::max(self : DstreetrieCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_cursor_to_string(s : DstreetrieCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieCursor::to_string(self : DstreetrieCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieView {
@@ -912,45 +912,45 @@ pub fn ds_tree_trie_view_make(size : Int) -> DstreetrieView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_view_len(s : DstreetrieView) -> Int { s.size }
+pub fn DstreetrieView::len(self : DstreetrieView) -> Int { self.size }
 
-pub fn ds_tree_trie_view_get(s : DstreetrieView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieView::get(self : DstreetrieView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_view_set(s : DstreetrieView, i : Int, v : Double) -> DstreetrieView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieView::set(self : DstreetrieView, i : Int, v : Double) -> DstreetrieView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_view_sum(s : DstreetrieView) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieView::sum(self : DstreetrieView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_view_mean(s : DstreetrieView) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieView::mean(self : DstreetrieView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_view_scale(s : DstreetrieView, f : Double) -> DstreetrieView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieView::scale(self : DstreetrieView, f : Double) -> DstreetrieView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_view_add(a : DstreetrieView, b : DstreetrieView) -> DstreetrieView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieView::add(self : DstreetrieView, other : DstreetrieView) -> DstreetrieView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_view_copy(s : DstreetrieView) -> DstreetrieView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieView::copy(self : DstreetrieView) -> DstreetrieView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_view_fill(s : DstreetrieView, v : Double) -> DstreetrieView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieView::fill(self : DstreetrieView, v : Double) -> DstreetrieView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_view_min(s : DstreetrieView) -> Double { @_common.min(s.data) }
+pub fn DstreetrieView::min(self : DstreetrieView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_view_max(s : DstreetrieView) -> Double { @_common.max(s.data) }
+pub fn DstreetrieView::max(self : DstreetrieView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_view_to_string(s : DstreetrieView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieView::to_string(self : DstreetrieView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_trie_range_make(size : Int) -> DstreetrieRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_range_len(s : DstreetrieRange) -> Int { s.size }
+pub fn DstreetrieRange::len(self : DstreetrieRange) -> Int { self.size }
 
-pub fn ds_tree_trie_range_get(s : DstreetrieRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieRange::get(self : DstreetrieRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_range_set(s : DstreetrieRange, i : Int, v : Double) -> DstreetrieRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieRange::set(self : DstreetrieRange, i : Int, v : Double) -> DstreetrieRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_range_sum(s : DstreetrieRange) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieRange::sum(self : DstreetrieRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_range_mean(s : DstreetrieRange) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieRange::mean(self : DstreetrieRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_range_scale(s : DstreetrieRange, f : Double) -> DstreetrieRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieRange::scale(self : DstreetrieRange, f : Double) -> DstreetrieRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_range_add(a : DstreetrieRange, b : DstreetrieRange) -> DstreetrieRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieRange::add(self : DstreetrieRange, other : DstreetrieRange) -> DstreetrieRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_range_copy(s : DstreetrieRange) -> DstreetrieRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieRange::copy(self : DstreetrieRange) -> DstreetrieRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_range_fill(s : DstreetrieRange, v : Double) -> DstreetrieRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieRange::fill(self : DstreetrieRange, v : Double) -> DstreetrieRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_range_min(s : DstreetrieRange) -> Double { @_common.min(s.data) }
+pub fn DstreetrieRange::min(self : DstreetrieRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_range_max(s : DstreetrieRange) -> Double { @_common.max(s.data) }
+pub fn DstreetrieRange::max(self : DstreetrieRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_range_to_string(s : DstreetrieRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieRange::to_string(self : DstreetrieRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreetrieSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_trie_slice_make(size : Int) -> DstreetrieSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_trie_slice_len(s : DstreetrieSlice) -> Int { s.size }
+pub fn DstreetrieSlice::len(self : DstreetrieSlice) -> Int { self.size }
 
-pub fn ds_tree_trie_slice_get(s : DstreetrieSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreetrieSlice::get(self : DstreetrieSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_trie_slice_set(s : DstreetrieSlice, i : Int, v : Double) -> DstreetrieSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreetrieSlice::set(self : DstreetrieSlice, i : Int, v : Double) -> DstreetrieSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_slice_sum(s : DstreetrieSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreetrieSlice::sum(self : DstreetrieSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_trie_slice_mean(s : DstreetrieSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreetrieSlice::mean(self : DstreetrieSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_trie_slice_scale(s : DstreetrieSlice, f : Double) -> DstreetrieSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreetrieSlice::scale(self : DstreetrieSlice, f : Double) -> DstreetrieSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_slice_add(a : DstreetrieSlice, b : DstreetrieSlice) -> DstreetrieSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreetrieSlice::add(self : DstreetrieSlice, other : DstreetrieSlice) -> DstreetrieSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_trie_slice_copy(s : DstreetrieSlice) -> DstreetrieSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreetrieSlice::copy(self : DstreetrieSlice) -> DstreetrieSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_slice_fill(s : DstreetrieSlice, v : Double) -> DstreetrieSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreetrieSlice::fill(self : DstreetrieSlice, v : Double) -> DstreetrieSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_trie_slice_min(s : DstreetrieSlice) -> Double { @_common.min(s.data) }
+pub fn DstreetrieSlice::min(self : DstreetrieSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_trie_slice_max(s : DstreetrieSlice) -> Double { @_common.max(s.data) }
+pub fn DstreetrieSlice::max(self : DstreetrieSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_trie_slice_to_string(s : DstreetrieSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreetrieSlice::to_string(self : DstreetrieSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

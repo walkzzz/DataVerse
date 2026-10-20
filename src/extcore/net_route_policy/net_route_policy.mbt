@@ -351,45 +351,45 @@ pub fn net_route_policy_frame_make(size : Int) -> NetroutepolicyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_frame_len(s : NetroutepolicyFrame) -> Int { s.size }
+pub fn NetroutepolicyFrame::len(self : NetroutepolicyFrame) -> Int { self.size }
 
-pub fn net_route_policy_frame_get(s : NetroutepolicyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyFrame::get(self : NetroutepolicyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_frame_set(s : NetroutepolicyFrame, i : Int, v : Double) -> NetroutepolicyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyFrame::set(self : NetroutepolicyFrame, i : Int, v : Double) -> NetroutepolicyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_frame_sum(s : NetroutepolicyFrame) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyFrame::sum(self : NetroutepolicyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_frame_mean(s : NetroutepolicyFrame) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyFrame::mean(self : NetroutepolicyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_frame_scale(s : NetroutepolicyFrame, f : Double) -> NetroutepolicyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyFrame::scale(self : NetroutepolicyFrame, f : Double) -> NetroutepolicyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_frame_add(a : NetroutepolicyFrame, b : NetroutepolicyFrame) -> NetroutepolicyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyFrame::add(self : NetroutepolicyFrame, other : NetroutepolicyFrame) -> NetroutepolicyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_frame_copy(s : NetroutepolicyFrame) -> NetroutepolicyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyFrame::copy(self : NetroutepolicyFrame) -> NetroutepolicyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_frame_fill(s : NetroutepolicyFrame, v : Double) -> NetroutepolicyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyFrame::fill(self : NetroutepolicyFrame, v : Double) -> NetroutepolicyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_frame_min(s : NetroutepolicyFrame) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyFrame::min(self : NetroutepolicyFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_frame_max(s : NetroutepolicyFrame) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyFrame::max(self : NetroutepolicyFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_frame_to_string(s : NetroutepolicyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyFrame::to_string(self : NetroutepolicyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyTable {
@@ -402,45 +402,45 @@ pub fn net_route_policy_table_make(size : Int) -> NetroutepolicyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_table_len(s : NetroutepolicyTable) -> Int { s.size }
+pub fn NetroutepolicyTable::len(self : NetroutepolicyTable) -> Int { self.size }
 
-pub fn net_route_policy_table_get(s : NetroutepolicyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyTable::get(self : NetroutepolicyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_table_set(s : NetroutepolicyTable, i : Int, v : Double) -> NetroutepolicyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyTable::set(self : NetroutepolicyTable, i : Int, v : Double) -> NetroutepolicyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_table_sum(s : NetroutepolicyTable) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyTable::sum(self : NetroutepolicyTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_table_mean(s : NetroutepolicyTable) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyTable::mean(self : NetroutepolicyTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_table_scale(s : NetroutepolicyTable, f : Double) -> NetroutepolicyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyTable::scale(self : NetroutepolicyTable, f : Double) -> NetroutepolicyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_table_add(a : NetroutepolicyTable, b : NetroutepolicyTable) -> NetroutepolicyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyTable::add(self : NetroutepolicyTable, other : NetroutepolicyTable) -> NetroutepolicyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_table_copy(s : NetroutepolicyTable) -> NetroutepolicyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyTable::copy(self : NetroutepolicyTable) -> NetroutepolicyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_table_fill(s : NetroutepolicyTable, v : Double) -> NetroutepolicyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyTable::fill(self : NetroutepolicyTable, v : Double) -> NetroutepolicyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_table_min(s : NetroutepolicyTable) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyTable::min(self : NetroutepolicyTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_table_max(s : NetroutepolicyTable) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyTable::max(self : NetroutepolicyTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_table_to_string(s : NetroutepolicyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyTable::to_string(self : NetroutepolicyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_policy_graphn_make(size : Int) -> NetroutepolicyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_graphn_len(s : NetroutepolicyGraphN) -> Int { s.size }
+pub fn NetroutepolicyGraphN::len(self : NetroutepolicyGraphN) -> Int { self.size }
 
-pub fn net_route_policy_graphn_get(s : NetroutepolicyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyGraphN::get(self : NetroutepolicyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_graphn_set(s : NetroutepolicyGraphN, i : Int, v : Double) -> NetroutepolicyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyGraphN::set(self : NetroutepolicyGraphN, i : Int, v : Double) -> NetroutepolicyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_graphn_sum(s : NetroutepolicyGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyGraphN::sum(self : NetroutepolicyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_graphn_mean(s : NetroutepolicyGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyGraphN::mean(self : NetroutepolicyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_graphn_scale(s : NetroutepolicyGraphN, f : Double) -> NetroutepolicyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyGraphN::scale(self : NetroutepolicyGraphN, f : Double) -> NetroutepolicyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_graphn_add(a : NetroutepolicyGraphN, b : NetroutepolicyGraphN) -> NetroutepolicyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyGraphN::add(self : NetroutepolicyGraphN, other : NetroutepolicyGraphN) -> NetroutepolicyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_graphn_copy(s : NetroutepolicyGraphN) -> NetroutepolicyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyGraphN::copy(self : NetroutepolicyGraphN) -> NetroutepolicyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_graphn_fill(s : NetroutepolicyGraphN, v : Double) -> NetroutepolicyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyGraphN::fill(self : NetroutepolicyGraphN, v : Double) -> NetroutepolicyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_graphn_min(s : NetroutepolicyGraphN) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyGraphN::min(self : NetroutepolicyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_graphn_max(s : NetroutepolicyGraphN) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyGraphN::max(self : NetroutepolicyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_graphn_to_string(s : NetroutepolicyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyGraphN::to_string(self : NetroutepolicyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyNode {
@@ -504,45 +504,45 @@ pub fn net_route_policy_node_make(size : Int) -> NetroutepolicyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_node_len(s : NetroutepolicyNode) -> Int { s.size }
+pub fn NetroutepolicyNode::len(self : NetroutepolicyNode) -> Int { self.size }
 
-pub fn net_route_policy_node_get(s : NetroutepolicyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyNode::get(self : NetroutepolicyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_node_set(s : NetroutepolicyNode, i : Int, v : Double) -> NetroutepolicyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyNode::set(self : NetroutepolicyNode, i : Int, v : Double) -> NetroutepolicyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_node_sum(s : NetroutepolicyNode) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyNode::sum(self : NetroutepolicyNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_node_mean(s : NetroutepolicyNode) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyNode::mean(self : NetroutepolicyNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_node_scale(s : NetroutepolicyNode, f : Double) -> NetroutepolicyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyNode::scale(self : NetroutepolicyNode, f : Double) -> NetroutepolicyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_node_add(a : NetroutepolicyNode, b : NetroutepolicyNode) -> NetroutepolicyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyNode::add(self : NetroutepolicyNode, other : NetroutepolicyNode) -> NetroutepolicyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_node_copy(s : NetroutepolicyNode) -> NetroutepolicyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyNode::copy(self : NetroutepolicyNode) -> NetroutepolicyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_node_fill(s : NetroutepolicyNode, v : Double) -> NetroutepolicyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyNode::fill(self : NetroutepolicyNode, v : Double) -> NetroutepolicyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_node_min(s : NetroutepolicyNode) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyNode::min(self : NetroutepolicyNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_node_max(s : NetroutepolicyNode) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyNode::max(self : NetroutepolicyNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_node_to_string(s : NetroutepolicyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyNode::to_string(self : NetroutepolicyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyEdge {
@@ -555,45 +555,45 @@ pub fn net_route_policy_edge_make(size : Int) -> NetroutepolicyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_edge_len(s : NetroutepolicyEdge) -> Int { s.size }
+pub fn NetroutepolicyEdge::len(self : NetroutepolicyEdge) -> Int { self.size }
 
-pub fn net_route_policy_edge_get(s : NetroutepolicyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyEdge::get(self : NetroutepolicyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_edge_set(s : NetroutepolicyEdge, i : Int, v : Double) -> NetroutepolicyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyEdge::set(self : NetroutepolicyEdge, i : Int, v : Double) -> NetroutepolicyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_edge_sum(s : NetroutepolicyEdge) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyEdge::sum(self : NetroutepolicyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_edge_mean(s : NetroutepolicyEdge) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyEdge::mean(self : NetroutepolicyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_edge_scale(s : NetroutepolicyEdge, f : Double) -> NetroutepolicyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyEdge::scale(self : NetroutepolicyEdge, f : Double) -> NetroutepolicyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_edge_add(a : NetroutepolicyEdge, b : NetroutepolicyEdge) -> NetroutepolicyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyEdge::add(self : NetroutepolicyEdge, other : NetroutepolicyEdge) -> NetroutepolicyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_edge_copy(s : NetroutepolicyEdge) -> NetroutepolicyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyEdge::copy(self : NetroutepolicyEdge) -> NetroutepolicyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_edge_fill(s : NetroutepolicyEdge, v : Double) -> NetroutepolicyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyEdge::fill(self : NetroutepolicyEdge, v : Double) -> NetroutepolicyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_edge_min(s : NetroutepolicyEdge) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyEdge::min(self : NetroutepolicyEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_edge_max(s : NetroutepolicyEdge) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyEdge::max(self : NetroutepolicyEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_edge_to_string(s : NetroutepolicyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyEdge::to_string(self : NetroutepolicyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyPath {
@@ -606,45 +606,45 @@ pub fn net_route_policy_path_make(size : Int) -> NetroutepolicyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_path_len(s : NetroutepolicyPath) -> Int { s.size }
+pub fn NetroutepolicyPath::len(self : NetroutepolicyPath) -> Int { self.size }
 
-pub fn net_route_policy_path_get(s : NetroutepolicyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyPath::get(self : NetroutepolicyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_path_set(s : NetroutepolicyPath, i : Int, v : Double) -> NetroutepolicyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyPath::set(self : NetroutepolicyPath, i : Int, v : Double) -> NetroutepolicyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_path_sum(s : NetroutepolicyPath) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyPath::sum(self : NetroutepolicyPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_path_mean(s : NetroutepolicyPath) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyPath::mean(self : NetroutepolicyPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_path_scale(s : NetroutepolicyPath, f : Double) -> NetroutepolicyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyPath::scale(self : NetroutepolicyPath, f : Double) -> NetroutepolicyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_path_add(a : NetroutepolicyPath, b : NetroutepolicyPath) -> NetroutepolicyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyPath::add(self : NetroutepolicyPath, other : NetroutepolicyPath) -> NetroutepolicyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_path_copy(s : NetroutepolicyPath) -> NetroutepolicyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyPath::copy(self : NetroutepolicyPath) -> NetroutepolicyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_path_fill(s : NetroutepolicyPath, v : Double) -> NetroutepolicyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyPath::fill(self : NetroutepolicyPath, v : Double) -> NetroutepolicyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_path_min(s : NetroutepolicyPath) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyPath::min(self : NetroutepolicyPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_path_max(s : NetroutepolicyPath) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyPath::max(self : NetroutepolicyPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_path_to_string(s : NetroutepolicyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyPath::to_string(self : NetroutepolicyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyCluster {
@@ -657,45 +657,45 @@ pub fn net_route_policy_cluster_make(size : Int) -> NetroutepolicyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_cluster_len(s : NetroutepolicyCluster) -> Int { s.size }
+pub fn NetroutepolicyCluster::len(self : NetroutepolicyCluster) -> Int { self.size }
 
-pub fn net_route_policy_cluster_get(s : NetroutepolicyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyCluster::get(self : NetroutepolicyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_cluster_set(s : NetroutepolicyCluster, i : Int, v : Double) -> NetroutepolicyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyCluster::set(self : NetroutepolicyCluster, i : Int, v : Double) -> NetroutepolicyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cluster_sum(s : NetroutepolicyCluster) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyCluster::sum(self : NetroutepolicyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_cluster_mean(s : NetroutepolicyCluster) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyCluster::mean(self : NetroutepolicyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_cluster_scale(s : NetroutepolicyCluster, f : Double) -> NetroutepolicyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyCluster::scale(self : NetroutepolicyCluster, f : Double) -> NetroutepolicyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cluster_add(a : NetroutepolicyCluster, b : NetroutepolicyCluster) -> NetroutepolicyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyCluster::add(self : NetroutepolicyCluster, other : NetroutepolicyCluster) -> NetroutepolicyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_cluster_copy(s : NetroutepolicyCluster) -> NetroutepolicyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyCluster::copy(self : NetroutepolicyCluster) -> NetroutepolicyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cluster_fill(s : NetroutepolicyCluster, v : Double) -> NetroutepolicyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyCluster::fill(self : NetroutepolicyCluster, v : Double) -> NetroutepolicyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cluster_min(s : NetroutepolicyCluster) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyCluster::min(self : NetroutepolicyCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_cluster_max(s : NetroutepolicyCluster) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyCluster::max(self : NetroutepolicyCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_cluster_to_string(s : NetroutepolicyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyCluster::to_string(self : NetroutepolicyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyModel {
@@ -708,45 +708,45 @@ pub fn net_route_policy_model_make(size : Int) -> NetroutepolicyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_model_len(s : NetroutepolicyModel) -> Int { s.size }
+pub fn NetroutepolicyModel::len(self : NetroutepolicyModel) -> Int { self.size }
 
-pub fn net_route_policy_model_get(s : NetroutepolicyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyModel::get(self : NetroutepolicyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_model_set(s : NetroutepolicyModel, i : Int, v : Double) -> NetroutepolicyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyModel::set(self : NetroutepolicyModel, i : Int, v : Double) -> NetroutepolicyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_model_sum(s : NetroutepolicyModel) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyModel::sum(self : NetroutepolicyModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_model_mean(s : NetroutepolicyModel) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyModel::mean(self : NetroutepolicyModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_model_scale(s : NetroutepolicyModel, f : Double) -> NetroutepolicyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyModel::scale(self : NetroutepolicyModel, f : Double) -> NetroutepolicyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_model_add(a : NetroutepolicyModel, b : NetroutepolicyModel) -> NetroutepolicyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyModel::add(self : NetroutepolicyModel, other : NetroutepolicyModel) -> NetroutepolicyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_model_copy(s : NetroutepolicyModel) -> NetroutepolicyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyModel::copy(self : NetroutepolicyModel) -> NetroutepolicyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_model_fill(s : NetroutepolicyModel, v : Double) -> NetroutepolicyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyModel::fill(self : NetroutepolicyModel, v : Double) -> NetroutepolicyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_model_min(s : NetroutepolicyModel) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyModel::min(self : NetroutepolicyModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_model_max(s : NetroutepolicyModel) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyModel::max(self : NetroutepolicyModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_model_to_string(s : NetroutepolicyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyModel::to_string(self : NetroutepolicyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyLayer {
@@ -759,45 +759,45 @@ pub fn net_route_policy_layer_make(size : Int) -> NetroutepolicyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_layer_len(s : NetroutepolicyLayer) -> Int { s.size }
+pub fn NetroutepolicyLayer::len(self : NetroutepolicyLayer) -> Int { self.size }
 
-pub fn net_route_policy_layer_get(s : NetroutepolicyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyLayer::get(self : NetroutepolicyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_layer_set(s : NetroutepolicyLayer, i : Int, v : Double) -> NetroutepolicyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyLayer::set(self : NetroutepolicyLayer, i : Int, v : Double) -> NetroutepolicyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_layer_sum(s : NetroutepolicyLayer) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyLayer::sum(self : NetroutepolicyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_layer_mean(s : NetroutepolicyLayer) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyLayer::mean(self : NetroutepolicyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_layer_scale(s : NetroutepolicyLayer, f : Double) -> NetroutepolicyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyLayer::scale(self : NetroutepolicyLayer, f : Double) -> NetroutepolicyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_layer_add(a : NetroutepolicyLayer, b : NetroutepolicyLayer) -> NetroutepolicyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyLayer::add(self : NetroutepolicyLayer, other : NetroutepolicyLayer) -> NetroutepolicyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_layer_copy(s : NetroutepolicyLayer) -> NetroutepolicyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyLayer::copy(self : NetroutepolicyLayer) -> NetroutepolicyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_layer_fill(s : NetroutepolicyLayer, v : Double) -> NetroutepolicyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyLayer::fill(self : NetroutepolicyLayer, v : Double) -> NetroutepolicyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_layer_min(s : NetroutepolicyLayer) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyLayer::min(self : NetroutepolicyLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_layer_max(s : NetroutepolicyLayer) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyLayer::max(self : NetroutepolicyLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_layer_to_string(s : NetroutepolicyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyLayer::to_string(self : NetroutepolicyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_policy_buffer_make(size : Int) -> NetroutepolicyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_buffer_len(s : NetroutepolicyBuffer) -> Int { s.size }
+pub fn NetroutepolicyBuffer::len(self : NetroutepolicyBuffer) -> Int { self.size }
 
-pub fn net_route_policy_buffer_get(s : NetroutepolicyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyBuffer::get(self : NetroutepolicyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_buffer_set(s : NetroutepolicyBuffer, i : Int, v : Double) -> NetroutepolicyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyBuffer::set(self : NetroutepolicyBuffer, i : Int, v : Double) -> NetroutepolicyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_buffer_sum(s : NetroutepolicyBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyBuffer::sum(self : NetroutepolicyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_buffer_mean(s : NetroutepolicyBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyBuffer::mean(self : NetroutepolicyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_buffer_scale(s : NetroutepolicyBuffer, f : Double) -> NetroutepolicyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyBuffer::scale(self : NetroutepolicyBuffer, f : Double) -> NetroutepolicyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_buffer_add(a : NetroutepolicyBuffer, b : NetroutepolicyBuffer) -> NetroutepolicyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyBuffer::add(self : NetroutepolicyBuffer, other : NetroutepolicyBuffer) -> NetroutepolicyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_buffer_copy(s : NetroutepolicyBuffer) -> NetroutepolicyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyBuffer::copy(self : NetroutepolicyBuffer) -> NetroutepolicyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_buffer_fill(s : NetroutepolicyBuffer, v : Double) -> NetroutepolicyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyBuffer::fill(self : NetroutepolicyBuffer, v : Double) -> NetroutepolicyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_buffer_min(s : NetroutepolicyBuffer) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyBuffer::min(self : NetroutepolicyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_buffer_max(s : NetroutepolicyBuffer) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyBuffer::max(self : NetroutepolicyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_buffer_to_string(s : NetroutepolicyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyBuffer::to_string(self : NetroutepolicyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyCursor {
@@ -861,45 +861,45 @@ pub fn net_route_policy_cursor_make(size : Int) -> NetroutepolicyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_cursor_len(s : NetroutepolicyCursor) -> Int { s.size }
+pub fn NetroutepolicyCursor::len(self : NetroutepolicyCursor) -> Int { self.size }
 
-pub fn net_route_policy_cursor_get(s : NetroutepolicyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyCursor::get(self : NetroutepolicyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_cursor_set(s : NetroutepolicyCursor, i : Int, v : Double) -> NetroutepolicyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyCursor::set(self : NetroutepolicyCursor, i : Int, v : Double) -> NetroutepolicyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cursor_sum(s : NetroutepolicyCursor) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyCursor::sum(self : NetroutepolicyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_cursor_mean(s : NetroutepolicyCursor) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyCursor::mean(self : NetroutepolicyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_cursor_scale(s : NetroutepolicyCursor, f : Double) -> NetroutepolicyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyCursor::scale(self : NetroutepolicyCursor, f : Double) -> NetroutepolicyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cursor_add(a : NetroutepolicyCursor, b : NetroutepolicyCursor) -> NetroutepolicyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyCursor::add(self : NetroutepolicyCursor, other : NetroutepolicyCursor) -> NetroutepolicyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_cursor_copy(s : NetroutepolicyCursor) -> NetroutepolicyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyCursor::copy(self : NetroutepolicyCursor) -> NetroutepolicyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cursor_fill(s : NetroutepolicyCursor, v : Double) -> NetroutepolicyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyCursor::fill(self : NetroutepolicyCursor, v : Double) -> NetroutepolicyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_cursor_min(s : NetroutepolicyCursor) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyCursor::min(self : NetroutepolicyCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_cursor_max(s : NetroutepolicyCursor) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyCursor::max(self : NetroutepolicyCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_cursor_to_string(s : NetroutepolicyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyCursor::to_string(self : NetroutepolicyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyView {
@@ -912,45 +912,45 @@ pub fn net_route_policy_view_make(size : Int) -> NetroutepolicyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_view_len(s : NetroutepolicyView) -> Int { s.size }
+pub fn NetroutepolicyView::len(self : NetroutepolicyView) -> Int { self.size }
 
-pub fn net_route_policy_view_get(s : NetroutepolicyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyView::get(self : NetroutepolicyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_view_set(s : NetroutepolicyView, i : Int, v : Double) -> NetroutepolicyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyView::set(self : NetroutepolicyView, i : Int, v : Double) -> NetroutepolicyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_view_sum(s : NetroutepolicyView) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyView::sum(self : NetroutepolicyView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_view_mean(s : NetroutepolicyView) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyView::mean(self : NetroutepolicyView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_view_scale(s : NetroutepolicyView, f : Double) -> NetroutepolicyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyView::scale(self : NetroutepolicyView, f : Double) -> NetroutepolicyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_view_add(a : NetroutepolicyView, b : NetroutepolicyView) -> NetroutepolicyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyView::add(self : NetroutepolicyView, other : NetroutepolicyView) -> NetroutepolicyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_view_copy(s : NetroutepolicyView) -> NetroutepolicyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyView::copy(self : NetroutepolicyView) -> NetroutepolicyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_view_fill(s : NetroutepolicyView, v : Double) -> NetroutepolicyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyView::fill(self : NetroutepolicyView, v : Double) -> NetroutepolicyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_view_min(s : NetroutepolicyView) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyView::min(self : NetroutepolicyView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_view_max(s : NetroutepolicyView) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyView::max(self : NetroutepolicyView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_view_to_string(s : NetroutepolicyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyView::to_string(self : NetroutepolicyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicyRange {
@@ -963,45 +963,45 @@ pub fn net_route_policy_range_make(size : Int) -> NetroutepolicyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_range_len(s : NetroutepolicyRange) -> Int { s.size }
+pub fn NetroutepolicyRange::len(self : NetroutepolicyRange) -> Int { self.size }
 
-pub fn net_route_policy_range_get(s : NetroutepolicyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicyRange::get(self : NetroutepolicyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_range_set(s : NetroutepolicyRange, i : Int, v : Double) -> NetroutepolicyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicyRange::set(self : NetroutepolicyRange, i : Int, v : Double) -> NetroutepolicyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_range_sum(s : NetroutepolicyRange) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicyRange::sum(self : NetroutepolicyRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_range_mean(s : NetroutepolicyRange) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicyRange::mean(self : NetroutepolicyRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_range_scale(s : NetroutepolicyRange, f : Double) -> NetroutepolicyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicyRange::scale(self : NetroutepolicyRange, f : Double) -> NetroutepolicyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_range_add(a : NetroutepolicyRange, b : NetroutepolicyRange) -> NetroutepolicyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicyRange::add(self : NetroutepolicyRange, other : NetroutepolicyRange) -> NetroutepolicyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_range_copy(s : NetroutepolicyRange) -> NetroutepolicyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicyRange::copy(self : NetroutepolicyRange) -> NetroutepolicyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_range_fill(s : NetroutepolicyRange, v : Double) -> NetroutepolicyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicyRange::fill(self : NetroutepolicyRange, v : Double) -> NetroutepolicyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_range_min(s : NetroutepolicyRange) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicyRange::min(self : NetroutepolicyRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_range_max(s : NetroutepolicyRange) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicyRange::max(self : NetroutepolicyRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_range_to_string(s : NetroutepolicyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicyRange::to_string(self : NetroutepolicyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutepolicySlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_policy_slice_make(size : Int) -> NetroutepolicySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_policy_slice_len(s : NetroutepolicySlice) -> Int { s.size }
+pub fn NetroutepolicySlice::len(self : NetroutepolicySlice) -> Int { self.size }
 
-pub fn net_route_policy_slice_get(s : NetroutepolicySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutepolicySlice::get(self : NetroutepolicySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_policy_slice_set(s : NetroutepolicySlice, i : Int, v : Double) -> NetroutepolicySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutepolicySlice::set(self : NetroutepolicySlice, i : Int, v : Double) -> NetroutepolicySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_slice_sum(s : NetroutepolicySlice) -> Double { @_common.sum(s.data) }
+pub fn NetroutepolicySlice::sum(self : NetroutepolicySlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_policy_slice_mean(s : NetroutepolicySlice) -> Double { @_common.mean(s.data) }
+pub fn NetroutepolicySlice::mean(self : NetroutepolicySlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_policy_slice_scale(s : NetroutepolicySlice, f : Double) -> NetroutepolicySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutepolicySlice::scale(self : NetroutepolicySlice, f : Double) -> NetroutepolicySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_slice_add(a : NetroutepolicySlice, b : NetroutepolicySlice) -> NetroutepolicySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutepolicySlice::add(self : NetroutepolicySlice, other : NetroutepolicySlice) -> NetroutepolicySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_policy_slice_copy(s : NetroutepolicySlice) -> NetroutepolicySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutepolicySlice::copy(self : NetroutepolicySlice) -> NetroutepolicySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_slice_fill(s : NetroutepolicySlice, v : Double) -> NetroutepolicySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutepolicySlice::fill(self : NetroutepolicySlice, v : Double) -> NetroutepolicySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_policy_slice_min(s : NetroutepolicySlice) -> Double { @_common.min(s.data) }
+pub fn NetroutepolicySlice::min(self : NetroutepolicySlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_policy_slice_max(s : NetroutepolicySlice) -> Double { @_common.max(s.data) }
+pub fn NetroutepolicySlice::max(self : NetroutepolicySlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_policy_slice_to_string(s : NetroutepolicySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutepolicySlice::to_string(self : NetroutepolicySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn net_proto_udp_frame_make(size : Int) -> NetprotoudpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_frame_len(s : NetprotoudpFrame) -> Int { s.size }
+pub fn NetprotoudpFrame::len(self : NetprotoudpFrame) -> Int { self.size }
 
-pub fn net_proto_udp_frame_get(s : NetprotoudpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpFrame::get(self : NetprotoudpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_frame_set(s : NetprotoudpFrame, i : Int, v : Double) -> NetprotoudpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpFrame::set(self : NetprotoudpFrame, i : Int, v : Double) -> NetprotoudpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_frame_sum(s : NetprotoudpFrame) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpFrame::sum(self : NetprotoudpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_frame_mean(s : NetprotoudpFrame) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpFrame::mean(self : NetprotoudpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_frame_scale(s : NetprotoudpFrame, f : Double) -> NetprotoudpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpFrame::scale(self : NetprotoudpFrame, f : Double) -> NetprotoudpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_frame_add(a : NetprotoudpFrame, b : NetprotoudpFrame) -> NetprotoudpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpFrame::add(self : NetprotoudpFrame, other : NetprotoudpFrame) -> NetprotoudpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_frame_copy(s : NetprotoudpFrame) -> NetprotoudpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpFrame::copy(self : NetprotoudpFrame) -> NetprotoudpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_frame_fill(s : NetprotoudpFrame, v : Double) -> NetprotoudpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpFrame::fill(self : NetprotoudpFrame, v : Double) -> NetprotoudpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_frame_min(s : NetprotoudpFrame) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpFrame::min(self : NetprotoudpFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_frame_max(s : NetprotoudpFrame) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpFrame::max(self : NetprotoudpFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_frame_to_string(s : NetprotoudpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpFrame::to_string(self : NetprotoudpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpTable {
@@ -402,45 +402,45 @@ pub fn net_proto_udp_table_make(size : Int) -> NetprotoudpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_table_len(s : NetprotoudpTable) -> Int { s.size }
+pub fn NetprotoudpTable::len(self : NetprotoudpTable) -> Int { self.size }
 
-pub fn net_proto_udp_table_get(s : NetprotoudpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpTable::get(self : NetprotoudpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_table_set(s : NetprotoudpTable, i : Int, v : Double) -> NetprotoudpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpTable::set(self : NetprotoudpTable, i : Int, v : Double) -> NetprotoudpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_table_sum(s : NetprotoudpTable) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpTable::sum(self : NetprotoudpTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_table_mean(s : NetprotoudpTable) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpTable::mean(self : NetprotoudpTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_table_scale(s : NetprotoudpTable, f : Double) -> NetprotoudpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpTable::scale(self : NetprotoudpTable, f : Double) -> NetprotoudpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_table_add(a : NetprotoudpTable, b : NetprotoudpTable) -> NetprotoudpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpTable::add(self : NetprotoudpTable, other : NetprotoudpTable) -> NetprotoudpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_table_copy(s : NetprotoudpTable) -> NetprotoudpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpTable::copy(self : NetprotoudpTable) -> NetprotoudpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_table_fill(s : NetprotoudpTable, v : Double) -> NetprotoudpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpTable::fill(self : NetprotoudpTable, v : Double) -> NetprotoudpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_table_min(s : NetprotoudpTable) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpTable::min(self : NetprotoudpTable) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_table_max(s : NetprotoudpTable) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpTable::max(self : NetprotoudpTable) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_table_to_string(s : NetprotoudpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpTable::to_string(self : NetprotoudpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpGraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_udp_graphn_make(size : Int) -> NetprotoudpGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_graphn_len(s : NetprotoudpGraphN) -> Int { s.size }
+pub fn NetprotoudpGraphN::len(self : NetprotoudpGraphN) -> Int { self.size }
 
-pub fn net_proto_udp_graphn_get(s : NetprotoudpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpGraphN::get(self : NetprotoudpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_graphn_set(s : NetprotoudpGraphN, i : Int, v : Double) -> NetprotoudpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpGraphN::set(self : NetprotoudpGraphN, i : Int, v : Double) -> NetprotoudpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_graphn_sum(s : NetprotoudpGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpGraphN::sum(self : NetprotoudpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_graphn_mean(s : NetprotoudpGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpGraphN::mean(self : NetprotoudpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_graphn_scale(s : NetprotoudpGraphN, f : Double) -> NetprotoudpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpGraphN::scale(self : NetprotoudpGraphN, f : Double) -> NetprotoudpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_graphn_add(a : NetprotoudpGraphN, b : NetprotoudpGraphN) -> NetprotoudpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpGraphN::add(self : NetprotoudpGraphN, other : NetprotoudpGraphN) -> NetprotoudpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_graphn_copy(s : NetprotoudpGraphN) -> NetprotoudpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpGraphN::copy(self : NetprotoudpGraphN) -> NetprotoudpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_graphn_fill(s : NetprotoudpGraphN, v : Double) -> NetprotoudpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpGraphN::fill(self : NetprotoudpGraphN, v : Double) -> NetprotoudpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_graphn_min(s : NetprotoudpGraphN) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpGraphN::min(self : NetprotoudpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_graphn_max(s : NetprotoudpGraphN) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpGraphN::max(self : NetprotoudpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_graphn_to_string(s : NetprotoudpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpGraphN::to_string(self : NetprotoudpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpNode {
@@ -504,45 +504,45 @@ pub fn net_proto_udp_node_make(size : Int) -> NetprotoudpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_node_len(s : NetprotoudpNode) -> Int { s.size }
+pub fn NetprotoudpNode::len(self : NetprotoudpNode) -> Int { self.size }
 
-pub fn net_proto_udp_node_get(s : NetprotoudpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpNode::get(self : NetprotoudpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_node_set(s : NetprotoudpNode, i : Int, v : Double) -> NetprotoudpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpNode::set(self : NetprotoudpNode, i : Int, v : Double) -> NetprotoudpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_node_sum(s : NetprotoudpNode) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpNode::sum(self : NetprotoudpNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_node_mean(s : NetprotoudpNode) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpNode::mean(self : NetprotoudpNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_node_scale(s : NetprotoudpNode, f : Double) -> NetprotoudpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpNode::scale(self : NetprotoudpNode, f : Double) -> NetprotoudpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_node_add(a : NetprotoudpNode, b : NetprotoudpNode) -> NetprotoudpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpNode::add(self : NetprotoudpNode, other : NetprotoudpNode) -> NetprotoudpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_node_copy(s : NetprotoudpNode) -> NetprotoudpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpNode::copy(self : NetprotoudpNode) -> NetprotoudpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_node_fill(s : NetprotoudpNode, v : Double) -> NetprotoudpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpNode::fill(self : NetprotoudpNode, v : Double) -> NetprotoudpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_node_min(s : NetprotoudpNode) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpNode::min(self : NetprotoudpNode) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_node_max(s : NetprotoudpNode) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpNode::max(self : NetprotoudpNode) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_node_to_string(s : NetprotoudpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpNode::to_string(self : NetprotoudpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpEdge {
@@ -555,45 +555,45 @@ pub fn net_proto_udp_edge_make(size : Int) -> NetprotoudpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_edge_len(s : NetprotoudpEdge) -> Int { s.size }
+pub fn NetprotoudpEdge::len(self : NetprotoudpEdge) -> Int { self.size }
 
-pub fn net_proto_udp_edge_get(s : NetprotoudpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpEdge::get(self : NetprotoudpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_edge_set(s : NetprotoudpEdge, i : Int, v : Double) -> NetprotoudpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpEdge::set(self : NetprotoudpEdge, i : Int, v : Double) -> NetprotoudpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_edge_sum(s : NetprotoudpEdge) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpEdge::sum(self : NetprotoudpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_edge_mean(s : NetprotoudpEdge) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpEdge::mean(self : NetprotoudpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_edge_scale(s : NetprotoudpEdge, f : Double) -> NetprotoudpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpEdge::scale(self : NetprotoudpEdge, f : Double) -> NetprotoudpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_edge_add(a : NetprotoudpEdge, b : NetprotoudpEdge) -> NetprotoudpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpEdge::add(self : NetprotoudpEdge, other : NetprotoudpEdge) -> NetprotoudpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_edge_copy(s : NetprotoudpEdge) -> NetprotoudpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpEdge::copy(self : NetprotoudpEdge) -> NetprotoudpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_edge_fill(s : NetprotoudpEdge, v : Double) -> NetprotoudpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpEdge::fill(self : NetprotoudpEdge, v : Double) -> NetprotoudpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_edge_min(s : NetprotoudpEdge) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpEdge::min(self : NetprotoudpEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_edge_max(s : NetprotoudpEdge) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpEdge::max(self : NetprotoudpEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_edge_to_string(s : NetprotoudpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpEdge::to_string(self : NetprotoudpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpPath {
@@ -606,45 +606,45 @@ pub fn net_proto_udp_path_make(size : Int) -> NetprotoudpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_path_len(s : NetprotoudpPath) -> Int { s.size }
+pub fn NetprotoudpPath::len(self : NetprotoudpPath) -> Int { self.size }
 
-pub fn net_proto_udp_path_get(s : NetprotoudpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpPath::get(self : NetprotoudpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_path_set(s : NetprotoudpPath, i : Int, v : Double) -> NetprotoudpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpPath::set(self : NetprotoudpPath, i : Int, v : Double) -> NetprotoudpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_path_sum(s : NetprotoudpPath) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpPath::sum(self : NetprotoudpPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_path_mean(s : NetprotoudpPath) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpPath::mean(self : NetprotoudpPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_path_scale(s : NetprotoudpPath, f : Double) -> NetprotoudpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpPath::scale(self : NetprotoudpPath, f : Double) -> NetprotoudpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_path_add(a : NetprotoudpPath, b : NetprotoudpPath) -> NetprotoudpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpPath::add(self : NetprotoudpPath, other : NetprotoudpPath) -> NetprotoudpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_path_copy(s : NetprotoudpPath) -> NetprotoudpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpPath::copy(self : NetprotoudpPath) -> NetprotoudpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_path_fill(s : NetprotoudpPath, v : Double) -> NetprotoudpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpPath::fill(self : NetprotoudpPath, v : Double) -> NetprotoudpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_path_min(s : NetprotoudpPath) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpPath::min(self : NetprotoudpPath) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_path_max(s : NetprotoudpPath) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpPath::max(self : NetprotoudpPath) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_path_to_string(s : NetprotoudpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpPath::to_string(self : NetprotoudpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpCluster {
@@ -657,45 +657,45 @@ pub fn net_proto_udp_cluster_make(size : Int) -> NetprotoudpCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_cluster_len(s : NetprotoudpCluster) -> Int { s.size }
+pub fn NetprotoudpCluster::len(self : NetprotoudpCluster) -> Int { self.size }
 
-pub fn net_proto_udp_cluster_get(s : NetprotoudpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpCluster::get(self : NetprotoudpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_cluster_set(s : NetprotoudpCluster, i : Int, v : Double) -> NetprotoudpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpCluster::set(self : NetprotoudpCluster, i : Int, v : Double) -> NetprotoudpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cluster_sum(s : NetprotoudpCluster) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpCluster::sum(self : NetprotoudpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_cluster_mean(s : NetprotoudpCluster) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpCluster::mean(self : NetprotoudpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_cluster_scale(s : NetprotoudpCluster, f : Double) -> NetprotoudpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpCluster::scale(self : NetprotoudpCluster, f : Double) -> NetprotoudpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cluster_add(a : NetprotoudpCluster, b : NetprotoudpCluster) -> NetprotoudpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpCluster::add(self : NetprotoudpCluster, other : NetprotoudpCluster) -> NetprotoudpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_cluster_copy(s : NetprotoudpCluster) -> NetprotoudpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpCluster::copy(self : NetprotoudpCluster) -> NetprotoudpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cluster_fill(s : NetprotoudpCluster, v : Double) -> NetprotoudpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpCluster::fill(self : NetprotoudpCluster, v : Double) -> NetprotoudpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cluster_min(s : NetprotoudpCluster) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpCluster::min(self : NetprotoudpCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_cluster_max(s : NetprotoudpCluster) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpCluster::max(self : NetprotoudpCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_cluster_to_string(s : NetprotoudpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpCluster::to_string(self : NetprotoudpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpModel {
@@ -708,45 +708,45 @@ pub fn net_proto_udp_model_make(size : Int) -> NetprotoudpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_model_len(s : NetprotoudpModel) -> Int { s.size }
+pub fn NetprotoudpModel::len(self : NetprotoudpModel) -> Int { self.size }
 
-pub fn net_proto_udp_model_get(s : NetprotoudpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpModel::get(self : NetprotoudpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_model_set(s : NetprotoudpModel, i : Int, v : Double) -> NetprotoudpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpModel::set(self : NetprotoudpModel, i : Int, v : Double) -> NetprotoudpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_model_sum(s : NetprotoudpModel) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpModel::sum(self : NetprotoudpModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_model_mean(s : NetprotoudpModel) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpModel::mean(self : NetprotoudpModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_model_scale(s : NetprotoudpModel, f : Double) -> NetprotoudpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpModel::scale(self : NetprotoudpModel, f : Double) -> NetprotoudpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_model_add(a : NetprotoudpModel, b : NetprotoudpModel) -> NetprotoudpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpModel::add(self : NetprotoudpModel, other : NetprotoudpModel) -> NetprotoudpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_model_copy(s : NetprotoudpModel) -> NetprotoudpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpModel::copy(self : NetprotoudpModel) -> NetprotoudpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_model_fill(s : NetprotoudpModel, v : Double) -> NetprotoudpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpModel::fill(self : NetprotoudpModel, v : Double) -> NetprotoudpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_model_min(s : NetprotoudpModel) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpModel::min(self : NetprotoudpModel) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_model_max(s : NetprotoudpModel) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpModel::max(self : NetprotoudpModel) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_model_to_string(s : NetprotoudpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpModel::to_string(self : NetprotoudpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpLayer {
@@ -759,45 +759,45 @@ pub fn net_proto_udp_layer_make(size : Int) -> NetprotoudpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_layer_len(s : NetprotoudpLayer) -> Int { s.size }
+pub fn NetprotoudpLayer::len(self : NetprotoudpLayer) -> Int { self.size }
 
-pub fn net_proto_udp_layer_get(s : NetprotoudpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpLayer::get(self : NetprotoudpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_layer_set(s : NetprotoudpLayer, i : Int, v : Double) -> NetprotoudpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpLayer::set(self : NetprotoudpLayer, i : Int, v : Double) -> NetprotoudpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_layer_sum(s : NetprotoudpLayer) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpLayer::sum(self : NetprotoudpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_layer_mean(s : NetprotoudpLayer) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpLayer::mean(self : NetprotoudpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_layer_scale(s : NetprotoudpLayer, f : Double) -> NetprotoudpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpLayer::scale(self : NetprotoudpLayer, f : Double) -> NetprotoudpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_layer_add(a : NetprotoudpLayer, b : NetprotoudpLayer) -> NetprotoudpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpLayer::add(self : NetprotoudpLayer, other : NetprotoudpLayer) -> NetprotoudpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_layer_copy(s : NetprotoudpLayer) -> NetprotoudpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpLayer::copy(self : NetprotoudpLayer) -> NetprotoudpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_layer_fill(s : NetprotoudpLayer, v : Double) -> NetprotoudpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpLayer::fill(self : NetprotoudpLayer, v : Double) -> NetprotoudpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_layer_min(s : NetprotoudpLayer) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpLayer::min(self : NetprotoudpLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_layer_max(s : NetprotoudpLayer) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpLayer::max(self : NetprotoudpLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_layer_to_string(s : NetprotoudpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpLayer::to_string(self : NetprotoudpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpBuffer {
@@ -810,45 +810,45 @@ pub fn net_proto_udp_buffer_make(size : Int) -> NetprotoudpBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_buffer_len(s : NetprotoudpBuffer) -> Int { s.size }
+pub fn NetprotoudpBuffer::len(self : NetprotoudpBuffer) -> Int { self.size }
 
-pub fn net_proto_udp_buffer_get(s : NetprotoudpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpBuffer::get(self : NetprotoudpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_buffer_set(s : NetprotoudpBuffer, i : Int, v : Double) -> NetprotoudpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpBuffer::set(self : NetprotoudpBuffer, i : Int, v : Double) -> NetprotoudpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_buffer_sum(s : NetprotoudpBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpBuffer::sum(self : NetprotoudpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_buffer_mean(s : NetprotoudpBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpBuffer::mean(self : NetprotoudpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_buffer_scale(s : NetprotoudpBuffer, f : Double) -> NetprotoudpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpBuffer::scale(self : NetprotoudpBuffer, f : Double) -> NetprotoudpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_buffer_add(a : NetprotoudpBuffer, b : NetprotoudpBuffer) -> NetprotoudpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpBuffer::add(self : NetprotoudpBuffer, other : NetprotoudpBuffer) -> NetprotoudpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_buffer_copy(s : NetprotoudpBuffer) -> NetprotoudpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpBuffer::copy(self : NetprotoudpBuffer) -> NetprotoudpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_buffer_fill(s : NetprotoudpBuffer, v : Double) -> NetprotoudpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpBuffer::fill(self : NetprotoudpBuffer, v : Double) -> NetprotoudpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_buffer_min(s : NetprotoudpBuffer) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpBuffer::min(self : NetprotoudpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_buffer_max(s : NetprotoudpBuffer) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpBuffer::max(self : NetprotoudpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_buffer_to_string(s : NetprotoudpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpBuffer::to_string(self : NetprotoudpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpCursor {
@@ -861,45 +861,45 @@ pub fn net_proto_udp_cursor_make(size : Int) -> NetprotoudpCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_cursor_len(s : NetprotoudpCursor) -> Int { s.size }
+pub fn NetprotoudpCursor::len(self : NetprotoudpCursor) -> Int { self.size }
 
-pub fn net_proto_udp_cursor_get(s : NetprotoudpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpCursor::get(self : NetprotoudpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_cursor_set(s : NetprotoudpCursor, i : Int, v : Double) -> NetprotoudpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpCursor::set(self : NetprotoudpCursor, i : Int, v : Double) -> NetprotoudpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cursor_sum(s : NetprotoudpCursor) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpCursor::sum(self : NetprotoudpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_cursor_mean(s : NetprotoudpCursor) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpCursor::mean(self : NetprotoudpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_cursor_scale(s : NetprotoudpCursor, f : Double) -> NetprotoudpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpCursor::scale(self : NetprotoudpCursor, f : Double) -> NetprotoudpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cursor_add(a : NetprotoudpCursor, b : NetprotoudpCursor) -> NetprotoudpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpCursor::add(self : NetprotoudpCursor, other : NetprotoudpCursor) -> NetprotoudpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_cursor_copy(s : NetprotoudpCursor) -> NetprotoudpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpCursor::copy(self : NetprotoudpCursor) -> NetprotoudpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cursor_fill(s : NetprotoudpCursor, v : Double) -> NetprotoudpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpCursor::fill(self : NetprotoudpCursor, v : Double) -> NetprotoudpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_cursor_min(s : NetprotoudpCursor) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpCursor::min(self : NetprotoudpCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_cursor_max(s : NetprotoudpCursor) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpCursor::max(self : NetprotoudpCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_cursor_to_string(s : NetprotoudpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpCursor::to_string(self : NetprotoudpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpView {
@@ -912,45 +912,45 @@ pub fn net_proto_udp_view_make(size : Int) -> NetprotoudpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_view_len(s : NetprotoudpView) -> Int { s.size }
+pub fn NetprotoudpView::len(self : NetprotoudpView) -> Int { self.size }
 
-pub fn net_proto_udp_view_get(s : NetprotoudpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpView::get(self : NetprotoudpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_view_set(s : NetprotoudpView, i : Int, v : Double) -> NetprotoudpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpView::set(self : NetprotoudpView, i : Int, v : Double) -> NetprotoudpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_view_sum(s : NetprotoudpView) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpView::sum(self : NetprotoudpView) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_view_mean(s : NetprotoudpView) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpView::mean(self : NetprotoudpView) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_view_scale(s : NetprotoudpView, f : Double) -> NetprotoudpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpView::scale(self : NetprotoudpView, f : Double) -> NetprotoudpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_view_add(a : NetprotoudpView, b : NetprotoudpView) -> NetprotoudpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpView::add(self : NetprotoudpView, other : NetprotoudpView) -> NetprotoudpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_view_copy(s : NetprotoudpView) -> NetprotoudpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpView::copy(self : NetprotoudpView) -> NetprotoudpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_view_fill(s : NetprotoudpView, v : Double) -> NetprotoudpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpView::fill(self : NetprotoudpView, v : Double) -> NetprotoudpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_view_min(s : NetprotoudpView) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpView::min(self : NetprotoudpView) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_view_max(s : NetprotoudpView) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpView::max(self : NetprotoudpView) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_view_to_string(s : NetprotoudpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpView::to_string(self : NetprotoudpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpRange {
@@ -963,45 +963,45 @@ pub fn net_proto_udp_range_make(size : Int) -> NetprotoudpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_range_len(s : NetprotoudpRange) -> Int { s.size }
+pub fn NetprotoudpRange::len(self : NetprotoudpRange) -> Int { self.size }
 
-pub fn net_proto_udp_range_get(s : NetprotoudpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpRange::get(self : NetprotoudpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_range_set(s : NetprotoudpRange, i : Int, v : Double) -> NetprotoudpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpRange::set(self : NetprotoudpRange, i : Int, v : Double) -> NetprotoudpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_range_sum(s : NetprotoudpRange) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpRange::sum(self : NetprotoudpRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_range_mean(s : NetprotoudpRange) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpRange::mean(self : NetprotoudpRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_range_scale(s : NetprotoudpRange, f : Double) -> NetprotoudpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpRange::scale(self : NetprotoudpRange, f : Double) -> NetprotoudpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_range_add(a : NetprotoudpRange, b : NetprotoudpRange) -> NetprotoudpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpRange::add(self : NetprotoudpRange, other : NetprotoudpRange) -> NetprotoudpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_range_copy(s : NetprotoudpRange) -> NetprotoudpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpRange::copy(self : NetprotoudpRange) -> NetprotoudpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_range_fill(s : NetprotoudpRange, v : Double) -> NetprotoudpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpRange::fill(self : NetprotoudpRange, v : Double) -> NetprotoudpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_range_min(s : NetprotoudpRange) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpRange::min(self : NetprotoudpRange) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_range_max(s : NetprotoudpRange) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpRange::max(self : NetprotoudpRange) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_range_to_string(s : NetprotoudpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpRange::to_string(self : NetprotoudpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpSlice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_udp_slice_make(size : Int) -> NetprotoudpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_udp_slice_len(s : NetprotoudpSlice) -> Int { s.size }
+pub fn NetprotoudpSlice::len(self : NetprotoudpSlice) -> Int { self.size }
 
-pub fn net_proto_udp_slice_get(s : NetprotoudpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoudpSlice::get(self : NetprotoudpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_udp_slice_set(s : NetprotoudpSlice, i : Int, v : Double) -> NetprotoudpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoudpSlice::set(self : NetprotoudpSlice, i : Int, v : Double) -> NetprotoudpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_slice_sum(s : NetprotoudpSlice) -> Double { @_common.sum(s.data) }
+pub fn NetprotoudpSlice::sum(self : NetprotoudpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_udp_slice_mean(s : NetprotoudpSlice) -> Double { @_common.mean(s.data) }
+pub fn NetprotoudpSlice::mean(self : NetprotoudpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_udp_slice_scale(s : NetprotoudpSlice, f : Double) -> NetprotoudpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoudpSlice::scale(self : NetprotoudpSlice, f : Double) -> NetprotoudpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_slice_add(a : NetprotoudpSlice, b : NetprotoudpSlice) -> NetprotoudpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoudpSlice::add(self : NetprotoudpSlice, other : NetprotoudpSlice) -> NetprotoudpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_udp_slice_copy(s : NetprotoudpSlice) -> NetprotoudpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoudpSlice::copy(self : NetprotoudpSlice) -> NetprotoudpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_slice_fill(s : NetprotoudpSlice, v : Double) -> NetprotoudpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoudpSlice::fill(self : NetprotoudpSlice, v : Double) -> NetprotoudpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_udp_slice_min(s : NetprotoudpSlice) -> Double { @_common.min(s.data) }
+pub fn NetprotoudpSlice::min(self : NetprotoudpSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_udp_slice_max(s : NetprotoudpSlice) -> Double { @_common.max(s.data) }
+pub fn NetprotoudpSlice::max(self : NetprotoudpSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_udp_slice_to_string(s : NetprotoudpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoudpSlice::to_string(self : NetprotoudpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn sort_dist_radix_frame_make(size : Int) -> SortdistradixFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_frame_len(s : SortdistradixFrame) -> Int { s.size }
+pub fn SortdistradixFrame::len(self : SortdistradixFrame) -> Int { self.size }
 
-pub fn sort_dist_radix_frame_get(s : SortdistradixFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixFrame::get(self : SortdistradixFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_frame_set(s : SortdistradixFrame, i : Int, v : Double) -> SortdistradixFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixFrame::set(self : SortdistradixFrame, i : Int, v : Double) -> SortdistradixFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_frame_sum(s : SortdistradixFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixFrame::sum(self : SortdistradixFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_frame_mean(s : SortdistradixFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixFrame::mean(self : SortdistradixFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_frame_scale(s : SortdistradixFrame, f : Double) -> SortdistradixFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixFrame::scale(self : SortdistradixFrame, f : Double) -> SortdistradixFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_frame_add(a : SortdistradixFrame, b : SortdistradixFrame) -> SortdistradixFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixFrame::add(self : SortdistradixFrame, other : SortdistradixFrame) -> SortdistradixFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_frame_copy(s : SortdistradixFrame) -> SortdistradixFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixFrame::copy(self : SortdistradixFrame) -> SortdistradixFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_frame_fill(s : SortdistradixFrame, v : Double) -> SortdistradixFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixFrame::fill(self : SortdistradixFrame, v : Double) -> SortdistradixFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_frame_min(s : SortdistradixFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistradixFrame::min(self : SortdistradixFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_frame_max(s : SortdistradixFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistradixFrame::max(self : SortdistradixFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_frame_to_string(s : SortdistradixFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixFrame::to_string(self : SortdistradixFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_radix_table_make(size : Int) -> SortdistradixTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_table_len(s : SortdistradixTable) -> Int { s.size }
+pub fn SortdistradixTable::len(self : SortdistradixTable) -> Int { self.size }
 
-pub fn sort_dist_radix_table_get(s : SortdistradixTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixTable::get(self : SortdistradixTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_table_set(s : SortdistradixTable, i : Int, v : Double) -> SortdistradixTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixTable::set(self : SortdistradixTable, i : Int, v : Double) -> SortdistradixTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_table_sum(s : SortdistradixTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixTable::sum(self : SortdistradixTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_table_mean(s : SortdistradixTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixTable::mean(self : SortdistradixTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_table_scale(s : SortdistradixTable, f : Double) -> SortdistradixTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixTable::scale(self : SortdistradixTable, f : Double) -> SortdistradixTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_table_add(a : SortdistradixTable, b : SortdistradixTable) -> SortdistradixTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixTable::add(self : SortdistradixTable, other : SortdistradixTable) -> SortdistradixTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_table_copy(s : SortdistradixTable) -> SortdistradixTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixTable::copy(self : SortdistradixTable) -> SortdistradixTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_table_fill(s : SortdistradixTable, v : Double) -> SortdistradixTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixTable::fill(self : SortdistradixTable, v : Double) -> SortdistradixTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_table_min(s : SortdistradixTable) -> Double { @_common.min(s.data) }
+pub fn SortdistradixTable::min(self : SortdistradixTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_table_max(s : SortdistradixTable) -> Double { @_common.max(s.data) }
+pub fn SortdistradixTable::max(self : SortdistradixTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_table_to_string(s : SortdistradixTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixTable::to_string(self : SortdistradixTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_radix_graphn_make(size : Int) -> SortdistradixGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_graphn_len(s : SortdistradixGraphN) -> Int { s.size }
+pub fn SortdistradixGraphN::len(self : SortdistradixGraphN) -> Int { self.size }
 
-pub fn sort_dist_radix_graphn_get(s : SortdistradixGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixGraphN::get(self : SortdistradixGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_graphn_set(s : SortdistradixGraphN, i : Int, v : Double) -> SortdistradixGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixGraphN::set(self : SortdistradixGraphN, i : Int, v : Double) -> SortdistradixGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_graphn_sum(s : SortdistradixGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixGraphN::sum(self : SortdistradixGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_graphn_mean(s : SortdistradixGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixGraphN::mean(self : SortdistradixGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_graphn_scale(s : SortdistradixGraphN, f : Double) -> SortdistradixGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixGraphN::scale(self : SortdistradixGraphN, f : Double) -> SortdistradixGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_graphn_add(a : SortdistradixGraphN, b : SortdistradixGraphN) -> SortdistradixGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixGraphN::add(self : SortdistradixGraphN, other : SortdistradixGraphN) -> SortdistradixGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_graphn_copy(s : SortdistradixGraphN) -> SortdistradixGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixGraphN::copy(self : SortdistradixGraphN) -> SortdistradixGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_graphn_fill(s : SortdistradixGraphN, v : Double) -> SortdistradixGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixGraphN::fill(self : SortdistradixGraphN, v : Double) -> SortdistradixGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_graphn_min(s : SortdistradixGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistradixGraphN::min(self : SortdistradixGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_graphn_max(s : SortdistradixGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistradixGraphN::max(self : SortdistradixGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_graphn_to_string(s : SortdistradixGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixGraphN::to_string(self : SortdistradixGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_radix_node_make(size : Int) -> SortdistradixNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_node_len(s : SortdistradixNode) -> Int { s.size }
+pub fn SortdistradixNode::len(self : SortdistradixNode) -> Int { self.size }
 
-pub fn sort_dist_radix_node_get(s : SortdistradixNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixNode::get(self : SortdistradixNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_node_set(s : SortdistradixNode, i : Int, v : Double) -> SortdistradixNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixNode::set(self : SortdistradixNode, i : Int, v : Double) -> SortdistradixNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_node_sum(s : SortdistradixNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixNode::sum(self : SortdistradixNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_node_mean(s : SortdistradixNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixNode::mean(self : SortdistradixNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_node_scale(s : SortdistradixNode, f : Double) -> SortdistradixNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixNode::scale(self : SortdistradixNode, f : Double) -> SortdistradixNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_node_add(a : SortdistradixNode, b : SortdistradixNode) -> SortdistradixNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixNode::add(self : SortdistradixNode, other : SortdistradixNode) -> SortdistradixNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_node_copy(s : SortdistradixNode) -> SortdistradixNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixNode::copy(self : SortdistradixNode) -> SortdistradixNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_node_fill(s : SortdistradixNode, v : Double) -> SortdistradixNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixNode::fill(self : SortdistradixNode, v : Double) -> SortdistradixNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_node_min(s : SortdistradixNode) -> Double { @_common.min(s.data) }
+pub fn SortdistradixNode::min(self : SortdistradixNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_node_max(s : SortdistradixNode) -> Double { @_common.max(s.data) }
+pub fn SortdistradixNode::max(self : SortdistradixNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_node_to_string(s : SortdistradixNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixNode::to_string(self : SortdistradixNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_radix_edge_make(size : Int) -> SortdistradixEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_edge_len(s : SortdistradixEdge) -> Int { s.size }
+pub fn SortdistradixEdge::len(self : SortdistradixEdge) -> Int { self.size }
 
-pub fn sort_dist_radix_edge_get(s : SortdistradixEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixEdge::get(self : SortdistradixEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_edge_set(s : SortdistradixEdge, i : Int, v : Double) -> SortdistradixEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixEdge::set(self : SortdistradixEdge, i : Int, v : Double) -> SortdistradixEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_edge_sum(s : SortdistradixEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixEdge::sum(self : SortdistradixEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_edge_mean(s : SortdistradixEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixEdge::mean(self : SortdistradixEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_edge_scale(s : SortdistradixEdge, f : Double) -> SortdistradixEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixEdge::scale(self : SortdistradixEdge, f : Double) -> SortdistradixEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_edge_add(a : SortdistradixEdge, b : SortdistradixEdge) -> SortdistradixEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixEdge::add(self : SortdistradixEdge, other : SortdistradixEdge) -> SortdistradixEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_edge_copy(s : SortdistradixEdge) -> SortdistradixEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixEdge::copy(self : SortdistradixEdge) -> SortdistradixEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_edge_fill(s : SortdistradixEdge, v : Double) -> SortdistradixEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixEdge::fill(self : SortdistradixEdge, v : Double) -> SortdistradixEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_edge_min(s : SortdistradixEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistradixEdge::min(self : SortdistradixEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_edge_max(s : SortdistradixEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistradixEdge::max(self : SortdistradixEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_edge_to_string(s : SortdistradixEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixEdge::to_string(self : SortdistradixEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixPath {
@@ -606,45 +606,45 @@ pub fn sort_dist_radix_path_make(size : Int) -> SortdistradixPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_path_len(s : SortdistradixPath) -> Int { s.size }
+pub fn SortdistradixPath::len(self : SortdistradixPath) -> Int { self.size }
 
-pub fn sort_dist_radix_path_get(s : SortdistradixPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixPath::get(self : SortdistradixPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_path_set(s : SortdistradixPath, i : Int, v : Double) -> SortdistradixPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixPath::set(self : SortdistradixPath, i : Int, v : Double) -> SortdistradixPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_path_sum(s : SortdistradixPath) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixPath::sum(self : SortdistradixPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_path_mean(s : SortdistradixPath) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixPath::mean(self : SortdistradixPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_path_scale(s : SortdistradixPath, f : Double) -> SortdistradixPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixPath::scale(self : SortdistradixPath, f : Double) -> SortdistradixPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_path_add(a : SortdistradixPath, b : SortdistradixPath) -> SortdistradixPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixPath::add(self : SortdistradixPath, other : SortdistradixPath) -> SortdistradixPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_path_copy(s : SortdistradixPath) -> SortdistradixPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixPath::copy(self : SortdistradixPath) -> SortdistradixPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_path_fill(s : SortdistradixPath, v : Double) -> SortdistradixPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixPath::fill(self : SortdistradixPath, v : Double) -> SortdistradixPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_path_min(s : SortdistradixPath) -> Double { @_common.min(s.data) }
+pub fn SortdistradixPath::min(self : SortdistradixPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_path_max(s : SortdistradixPath) -> Double { @_common.max(s.data) }
+pub fn SortdistradixPath::max(self : SortdistradixPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_path_to_string(s : SortdistradixPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixPath::to_string(self : SortdistradixPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_radix_cluster_make(size : Int) -> SortdistradixCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_cluster_len(s : SortdistradixCluster) -> Int { s.size }
+pub fn SortdistradixCluster::len(self : SortdistradixCluster) -> Int { self.size }
 
-pub fn sort_dist_radix_cluster_get(s : SortdistradixCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixCluster::get(self : SortdistradixCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_cluster_set(s : SortdistradixCluster, i : Int, v : Double) -> SortdistradixCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixCluster::set(self : SortdistradixCluster, i : Int, v : Double) -> SortdistradixCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cluster_sum(s : SortdistradixCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixCluster::sum(self : SortdistradixCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_cluster_mean(s : SortdistradixCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixCluster::mean(self : SortdistradixCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_cluster_scale(s : SortdistradixCluster, f : Double) -> SortdistradixCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixCluster::scale(self : SortdistradixCluster, f : Double) -> SortdistradixCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cluster_add(a : SortdistradixCluster, b : SortdistradixCluster) -> SortdistradixCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixCluster::add(self : SortdistradixCluster, other : SortdistradixCluster) -> SortdistradixCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cluster_copy(s : SortdistradixCluster) -> SortdistradixCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixCluster::copy(self : SortdistradixCluster) -> SortdistradixCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cluster_fill(s : SortdistradixCluster, v : Double) -> SortdistradixCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixCluster::fill(self : SortdistradixCluster, v : Double) -> SortdistradixCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cluster_min(s : SortdistradixCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistradixCluster::min(self : SortdistradixCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_cluster_max(s : SortdistradixCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistradixCluster::max(self : SortdistradixCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_cluster_to_string(s : SortdistradixCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixCluster::to_string(self : SortdistradixCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_radix_model_make(size : Int) -> SortdistradixModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_model_len(s : SortdistradixModel) -> Int { s.size }
+pub fn SortdistradixModel::len(self : SortdistradixModel) -> Int { self.size }
 
-pub fn sort_dist_radix_model_get(s : SortdistradixModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixModel::get(self : SortdistradixModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_model_set(s : SortdistradixModel, i : Int, v : Double) -> SortdistradixModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixModel::set(self : SortdistradixModel, i : Int, v : Double) -> SortdistradixModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_model_sum(s : SortdistradixModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixModel::sum(self : SortdistradixModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_model_mean(s : SortdistradixModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixModel::mean(self : SortdistradixModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_model_scale(s : SortdistradixModel, f : Double) -> SortdistradixModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixModel::scale(self : SortdistradixModel, f : Double) -> SortdistradixModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_model_add(a : SortdistradixModel, b : SortdistradixModel) -> SortdistradixModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixModel::add(self : SortdistradixModel, other : SortdistradixModel) -> SortdistradixModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_model_copy(s : SortdistradixModel) -> SortdistradixModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixModel::copy(self : SortdistradixModel) -> SortdistradixModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_model_fill(s : SortdistradixModel, v : Double) -> SortdistradixModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixModel::fill(self : SortdistradixModel, v : Double) -> SortdistradixModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_model_min(s : SortdistradixModel) -> Double { @_common.min(s.data) }
+pub fn SortdistradixModel::min(self : SortdistradixModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_model_max(s : SortdistradixModel) -> Double { @_common.max(s.data) }
+pub fn SortdistradixModel::max(self : SortdistradixModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_model_to_string(s : SortdistradixModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixModel::to_string(self : SortdistradixModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_radix_layer_make(size : Int) -> SortdistradixLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_layer_len(s : SortdistradixLayer) -> Int { s.size }
+pub fn SortdistradixLayer::len(self : SortdistradixLayer) -> Int { self.size }
 
-pub fn sort_dist_radix_layer_get(s : SortdistradixLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixLayer::get(self : SortdistradixLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_layer_set(s : SortdistradixLayer, i : Int, v : Double) -> SortdistradixLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixLayer::set(self : SortdistradixLayer, i : Int, v : Double) -> SortdistradixLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_layer_sum(s : SortdistradixLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixLayer::sum(self : SortdistradixLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_layer_mean(s : SortdistradixLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixLayer::mean(self : SortdistradixLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_layer_scale(s : SortdistradixLayer, f : Double) -> SortdistradixLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixLayer::scale(self : SortdistradixLayer, f : Double) -> SortdistradixLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_layer_add(a : SortdistradixLayer, b : SortdistradixLayer) -> SortdistradixLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixLayer::add(self : SortdistradixLayer, other : SortdistradixLayer) -> SortdistradixLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_layer_copy(s : SortdistradixLayer) -> SortdistradixLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixLayer::copy(self : SortdistradixLayer) -> SortdistradixLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_layer_fill(s : SortdistradixLayer, v : Double) -> SortdistradixLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixLayer::fill(self : SortdistradixLayer, v : Double) -> SortdistradixLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_layer_min(s : SortdistradixLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistradixLayer::min(self : SortdistradixLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_layer_max(s : SortdistradixLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistradixLayer::max(self : SortdistradixLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_layer_to_string(s : SortdistradixLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixLayer::to_string(self : SortdistradixLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_radix_buffer_make(size : Int) -> SortdistradixBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_buffer_len(s : SortdistradixBuffer) -> Int { s.size }
+pub fn SortdistradixBuffer::len(self : SortdistradixBuffer) -> Int { self.size }
 
-pub fn sort_dist_radix_buffer_get(s : SortdistradixBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixBuffer::get(self : SortdistradixBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_buffer_set(s : SortdistradixBuffer, i : Int, v : Double) -> SortdistradixBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixBuffer::set(self : SortdistradixBuffer, i : Int, v : Double) -> SortdistradixBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_buffer_sum(s : SortdistradixBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixBuffer::sum(self : SortdistradixBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_buffer_mean(s : SortdistradixBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixBuffer::mean(self : SortdistradixBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_buffer_scale(s : SortdistradixBuffer, f : Double) -> SortdistradixBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixBuffer::scale(self : SortdistradixBuffer, f : Double) -> SortdistradixBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_buffer_add(a : SortdistradixBuffer, b : SortdistradixBuffer) -> SortdistradixBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixBuffer::add(self : SortdistradixBuffer, other : SortdistradixBuffer) -> SortdistradixBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_buffer_copy(s : SortdistradixBuffer) -> SortdistradixBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixBuffer::copy(self : SortdistradixBuffer) -> SortdistradixBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_buffer_fill(s : SortdistradixBuffer, v : Double) -> SortdistradixBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixBuffer::fill(self : SortdistradixBuffer, v : Double) -> SortdistradixBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_buffer_min(s : SortdistradixBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistradixBuffer::min(self : SortdistradixBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_buffer_max(s : SortdistradixBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistradixBuffer::max(self : SortdistradixBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_buffer_to_string(s : SortdistradixBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixBuffer::to_string(self : SortdistradixBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_radix_cursor_make(size : Int) -> SortdistradixCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_cursor_len(s : SortdistradixCursor) -> Int { s.size }
+pub fn SortdistradixCursor::len(self : SortdistradixCursor) -> Int { self.size }
 
-pub fn sort_dist_radix_cursor_get(s : SortdistradixCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixCursor::get(self : SortdistradixCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_cursor_set(s : SortdistradixCursor, i : Int, v : Double) -> SortdistradixCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixCursor::set(self : SortdistradixCursor, i : Int, v : Double) -> SortdistradixCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cursor_sum(s : SortdistradixCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixCursor::sum(self : SortdistradixCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_cursor_mean(s : SortdistradixCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixCursor::mean(self : SortdistradixCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_cursor_scale(s : SortdistradixCursor, f : Double) -> SortdistradixCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixCursor::scale(self : SortdistradixCursor, f : Double) -> SortdistradixCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cursor_add(a : SortdistradixCursor, b : SortdistradixCursor) -> SortdistradixCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixCursor::add(self : SortdistradixCursor, other : SortdistradixCursor) -> SortdistradixCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cursor_copy(s : SortdistradixCursor) -> SortdistradixCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixCursor::copy(self : SortdistradixCursor) -> SortdistradixCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cursor_fill(s : SortdistradixCursor, v : Double) -> SortdistradixCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixCursor::fill(self : SortdistradixCursor, v : Double) -> SortdistradixCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_cursor_min(s : SortdistradixCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistradixCursor::min(self : SortdistradixCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_cursor_max(s : SortdistradixCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistradixCursor::max(self : SortdistradixCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_cursor_to_string(s : SortdistradixCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixCursor::to_string(self : SortdistradixCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixView {
@@ -912,45 +912,45 @@ pub fn sort_dist_radix_view_make(size : Int) -> SortdistradixView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_view_len(s : SortdistradixView) -> Int { s.size }
+pub fn SortdistradixView::len(self : SortdistradixView) -> Int { self.size }
 
-pub fn sort_dist_radix_view_get(s : SortdistradixView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixView::get(self : SortdistradixView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_view_set(s : SortdistradixView, i : Int, v : Double) -> SortdistradixView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixView::set(self : SortdistradixView, i : Int, v : Double) -> SortdistradixView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_view_sum(s : SortdistradixView) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixView::sum(self : SortdistradixView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_view_mean(s : SortdistradixView) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixView::mean(self : SortdistradixView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_view_scale(s : SortdistradixView, f : Double) -> SortdistradixView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixView::scale(self : SortdistradixView, f : Double) -> SortdistradixView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_view_add(a : SortdistradixView, b : SortdistradixView) -> SortdistradixView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixView::add(self : SortdistradixView, other : SortdistradixView) -> SortdistradixView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_view_copy(s : SortdistradixView) -> SortdistradixView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixView::copy(self : SortdistradixView) -> SortdistradixView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_view_fill(s : SortdistradixView, v : Double) -> SortdistradixView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixView::fill(self : SortdistradixView, v : Double) -> SortdistradixView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_view_min(s : SortdistradixView) -> Double { @_common.min(s.data) }
+pub fn SortdistradixView::min(self : SortdistradixView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_view_max(s : SortdistradixView) -> Double { @_common.max(s.data) }
+pub fn SortdistradixView::max(self : SortdistradixView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_view_to_string(s : SortdistradixView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixView::to_string(self : SortdistradixView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_radix_range_make(size : Int) -> SortdistradixRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_range_len(s : SortdistradixRange) -> Int { s.size }
+pub fn SortdistradixRange::len(self : SortdistradixRange) -> Int { self.size }
 
-pub fn sort_dist_radix_range_get(s : SortdistradixRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixRange::get(self : SortdistradixRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_range_set(s : SortdistradixRange, i : Int, v : Double) -> SortdistradixRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixRange::set(self : SortdistradixRange, i : Int, v : Double) -> SortdistradixRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_range_sum(s : SortdistradixRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixRange::sum(self : SortdistradixRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_range_mean(s : SortdistradixRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixRange::mean(self : SortdistradixRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_range_scale(s : SortdistradixRange, f : Double) -> SortdistradixRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixRange::scale(self : SortdistradixRange, f : Double) -> SortdistradixRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_range_add(a : SortdistradixRange, b : SortdistradixRange) -> SortdistradixRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixRange::add(self : SortdistradixRange, other : SortdistradixRange) -> SortdistradixRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_range_copy(s : SortdistradixRange) -> SortdistradixRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixRange::copy(self : SortdistradixRange) -> SortdistradixRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_range_fill(s : SortdistradixRange, v : Double) -> SortdistradixRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixRange::fill(self : SortdistradixRange, v : Double) -> SortdistradixRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_range_min(s : SortdistradixRange) -> Double { @_common.min(s.data) }
+pub fn SortdistradixRange::min(self : SortdistradixRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_range_max(s : SortdistradixRange) -> Double { @_common.max(s.data) }
+pub fn SortdistradixRange::max(self : SortdistradixRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_range_to_string(s : SortdistradixRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixRange::to_string(self : SortdistradixRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistradixSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_radix_slice_make(size : Int) -> SortdistradixSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_radix_slice_len(s : SortdistradixSlice) -> Int { s.size }
+pub fn SortdistradixSlice::len(self : SortdistradixSlice) -> Int { self.size }
 
-pub fn sort_dist_radix_slice_get(s : SortdistradixSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistradixSlice::get(self : SortdistradixSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_radix_slice_set(s : SortdistradixSlice, i : Int, v : Double) -> SortdistradixSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistradixSlice::set(self : SortdistradixSlice, i : Int, v : Double) -> SortdistradixSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_slice_sum(s : SortdistradixSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistradixSlice::sum(self : SortdistradixSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_radix_slice_mean(s : SortdistradixSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistradixSlice::mean(self : SortdistradixSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_radix_slice_scale(s : SortdistradixSlice, f : Double) -> SortdistradixSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistradixSlice::scale(self : SortdistradixSlice, f : Double) -> SortdistradixSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_slice_add(a : SortdistradixSlice, b : SortdistradixSlice) -> SortdistradixSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistradixSlice::add(self : SortdistradixSlice, other : SortdistradixSlice) -> SortdistradixSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_radix_slice_copy(s : SortdistradixSlice) -> SortdistradixSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistradixSlice::copy(self : SortdistradixSlice) -> SortdistradixSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_slice_fill(s : SortdistradixSlice, v : Double) -> SortdistradixSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistradixSlice::fill(self : SortdistradixSlice, v : Double) -> SortdistradixSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_radix_slice_min(s : SortdistradixSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistradixSlice::min(self : SortdistradixSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_radix_slice_max(s : SortdistradixSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistradixSlice::max(self : SortdistradixSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_radix_slice_to_string(s : SortdistradixSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistradixSlice::to_string(self : SortdistradixSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

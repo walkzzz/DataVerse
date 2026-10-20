@@ -351,45 +351,45 @@ pub fn stats_dist_poisson_frame_make(size : Int) -> StatsdistpoissonFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_frame_len(s : StatsdistpoissonFrame) -> Int { s.size }
+pub fn StatsdistpoissonFrame::len(self : StatsdistpoissonFrame) -> Int { self.size }
 
-pub fn stats_dist_poisson_frame_get(s : StatsdistpoissonFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonFrame::get(self : StatsdistpoissonFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_frame_set(s : StatsdistpoissonFrame, i : Int, v : Double) -> StatsdistpoissonFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonFrame::set(self : StatsdistpoissonFrame, i : Int, v : Double) -> StatsdistpoissonFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_frame_sum(s : StatsdistpoissonFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonFrame::sum(self : StatsdistpoissonFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_frame_mean(s : StatsdistpoissonFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonFrame::mean(self : StatsdistpoissonFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_frame_scale(s : StatsdistpoissonFrame, f : Double) -> StatsdistpoissonFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonFrame::scale(self : StatsdistpoissonFrame, f : Double) -> StatsdistpoissonFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_frame_add(a : StatsdistpoissonFrame, b : StatsdistpoissonFrame) -> StatsdistpoissonFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonFrame::add(self : StatsdistpoissonFrame, other : StatsdistpoissonFrame) -> StatsdistpoissonFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_frame_copy(s : StatsdistpoissonFrame) -> StatsdistpoissonFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonFrame::copy(self : StatsdistpoissonFrame) -> StatsdistpoissonFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_frame_fill(s : StatsdistpoissonFrame, v : Double) -> StatsdistpoissonFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonFrame::fill(self : StatsdistpoissonFrame, v : Double) -> StatsdistpoissonFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_frame_min(s : StatsdistpoissonFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonFrame::min(self : StatsdistpoissonFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_frame_max(s : StatsdistpoissonFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonFrame::max(self : StatsdistpoissonFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_frame_to_string(s : StatsdistpoissonFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonFrame::to_string(self : StatsdistpoissonFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_poisson_table_make(size : Int) -> StatsdistpoissonTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_table_len(s : StatsdistpoissonTable) -> Int { s.size }
+pub fn StatsdistpoissonTable::len(self : StatsdistpoissonTable) -> Int { self.size }
 
-pub fn stats_dist_poisson_table_get(s : StatsdistpoissonTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonTable::get(self : StatsdistpoissonTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_table_set(s : StatsdistpoissonTable, i : Int, v : Double) -> StatsdistpoissonTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonTable::set(self : StatsdistpoissonTable, i : Int, v : Double) -> StatsdistpoissonTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_table_sum(s : StatsdistpoissonTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonTable::sum(self : StatsdistpoissonTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_table_mean(s : StatsdistpoissonTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonTable::mean(self : StatsdistpoissonTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_table_scale(s : StatsdistpoissonTable, f : Double) -> StatsdistpoissonTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonTable::scale(self : StatsdistpoissonTable, f : Double) -> StatsdistpoissonTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_table_add(a : StatsdistpoissonTable, b : StatsdistpoissonTable) -> StatsdistpoissonTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonTable::add(self : StatsdistpoissonTable, other : StatsdistpoissonTable) -> StatsdistpoissonTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_table_copy(s : StatsdistpoissonTable) -> StatsdistpoissonTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonTable::copy(self : StatsdistpoissonTable) -> StatsdistpoissonTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_table_fill(s : StatsdistpoissonTable, v : Double) -> StatsdistpoissonTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonTable::fill(self : StatsdistpoissonTable, v : Double) -> StatsdistpoissonTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_table_min(s : StatsdistpoissonTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonTable::min(self : StatsdistpoissonTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_table_max(s : StatsdistpoissonTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonTable::max(self : StatsdistpoissonTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_table_to_string(s : StatsdistpoissonTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonTable::to_string(self : StatsdistpoissonTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_poisson_graphn_make(size : Int) -> StatsdistpoissonGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_graphn_len(s : StatsdistpoissonGraphN) -> Int { s.size }
+pub fn StatsdistpoissonGraphN::len(self : StatsdistpoissonGraphN) -> Int { self.size }
 
-pub fn stats_dist_poisson_graphn_get(s : StatsdistpoissonGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonGraphN::get(self : StatsdistpoissonGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_graphn_set(s : StatsdistpoissonGraphN, i : Int, v : Double) -> StatsdistpoissonGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonGraphN::set(self : StatsdistpoissonGraphN, i : Int, v : Double) -> StatsdistpoissonGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_graphn_sum(s : StatsdistpoissonGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonGraphN::sum(self : StatsdistpoissonGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_graphn_mean(s : StatsdistpoissonGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonGraphN::mean(self : StatsdistpoissonGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_graphn_scale(s : StatsdistpoissonGraphN, f : Double) -> StatsdistpoissonGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonGraphN::scale(self : StatsdistpoissonGraphN, f : Double) -> StatsdistpoissonGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_graphn_add(a : StatsdistpoissonGraphN, b : StatsdistpoissonGraphN) -> StatsdistpoissonGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonGraphN::add(self : StatsdistpoissonGraphN, other : StatsdistpoissonGraphN) -> StatsdistpoissonGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_graphn_copy(s : StatsdistpoissonGraphN) -> StatsdistpoissonGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonGraphN::copy(self : StatsdistpoissonGraphN) -> StatsdistpoissonGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_graphn_fill(s : StatsdistpoissonGraphN, v : Double) -> StatsdistpoissonGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonGraphN::fill(self : StatsdistpoissonGraphN, v : Double) -> StatsdistpoissonGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_graphn_min(s : StatsdistpoissonGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonGraphN::min(self : StatsdistpoissonGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_graphn_max(s : StatsdistpoissonGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonGraphN::max(self : StatsdistpoissonGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_graphn_to_string(s : StatsdistpoissonGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonGraphN::to_string(self : StatsdistpoissonGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_poisson_node_make(size : Int) -> StatsdistpoissonNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_node_len(s : StatsdistpoissonNode) -> Int { s.size }
+pub fn StatsdistpoissonNode::len(self : StatsdistpoissonNode) -> Int { self.size }
 
-pub fn stats_dist_poisson_node_get(s : StatsdistpoissonNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonNode::get(self : StatsdistpoissonNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_node_set(s : StatsdistpoissonNode, i : Int, v : Double) -> StatsdistpoissonNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonNode::set(self : StatsdistpoissonNode, i : Int, v : Double) -> StatsdistpoissonNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_node_sum(s : StatsdistpoissonNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonNode::sum(self : StatsdistpoissonNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_node_mean(s : StatsdistpoissonNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonNode::mean(self : StatsdistpoissonNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_node_scale(s : StatsdistpoissonNode, f : Double) -> StatsdistpoissonNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonNode::scale(self : StatsdistpoissonNode, f : Double) -> StatsdistpoissonNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_node_add(a : StatsdistpoissonNode, b : StatsdistpoissonNode) -> StatsdistpoissonNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonNode::add(self : StatsdistpoissonNode, other : StatsdistpoissonNode) -> StatsdistpoissonNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_node_copy(s : StatsdistpoissonNode) -> StatsdistpoissonNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonNode::copy(self : StatsdistpoissonNode) -> StatsdistpoissonNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_node_fill(s : StatsdistpoissonNode, v : Double) -> StatsdistpoissonNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonNode::fill(self : StatsdistpoissonNode, v : Double) -> StatsdistpoissonNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_node_min(s : StatsdistpoissonNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonNode::min(self : StatsdistpoissonNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_node_max(s : StatsdistpoissonNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonNode::max(self : StatsdistpoissonNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_node_to_string(s : StatsdistpoissonNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonNode::to_string(self : StatsdistpoissonNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_poisson_edge_make(size : Int) -> StatsdistpoissonEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_edge_len(s : StatsdistpoissonEdge) -> Int { s.size }
+pub fn StatsdistpoissonEdge::len(self : StatsdistpoissonEdge) -> Int { self.size }
 
-pub fn stats_dist_poisson_edge_get(s : StatsdistpoissonEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonEdge::get(self : StatsdistpoissonEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_edge_set(s : StatsdistpoissonEdge, i : Int, v : Double) -> StatsdistpoissonEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonEdge::set(self : StatsdistpoissonEdge, i : Int, v : Double) -> StatsdistpoissonEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_edge_sum(s : StatsdistpoissonEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonEdge::sum(self : StatsdistpoissonEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_edge_mean(s : StatsdistpoissonEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonEdge::mean(self : StatsdistpoissonEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_edge_scale(s : StatsdistpoissonEdge, f : Double) -> StatsdistpoissonEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonEdge::scale(self : StatsdistpoissonEdge, f : Double) -> StatsdistpoissonEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_edge_add(a : StatsdistpoissonEdge, b : StatsdistpoissonEdge) -> StatsdistpoissonEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonEdge::add(self : StatsdistpoissonEdge, other : StatsdistpoissonEdge) -> StatsdistpoissonEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_edge_copy(s : StatsdistpoissonEdge) -> StatsdistpoissonEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonEdge::copy(self : StatsdistpoissonEdge) -> StatsdistpoissonEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_edge_fill(s : StatsdistpoissonEdge, v : Double) -> StatsdistpoissonEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonEdge::fill(self : StatsdistpoissonEdge, v : Double) -> StatsdistpoissonEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_edge_min(s : StatsdistpoissonEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonEdge::min(self : StatsdistpoissonEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_edge_max(s : StatsdistpoissonEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonEdge::max(self : StatsdistpoissonEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_edge_to_string(s : StatsdistpoissonEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonEdge::to_string(self : StatsdistpoissonEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_poisson_path_make(size : Int) -> StatsdistpoissonPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_path_len(s : StatsdistpoissonPath) -> Int { s.size }
+pub fn StatsdistpoissonPath::len(self : StatsdistpoissonPath) -> Int { self.size }
 
-pub fn stats_dist_poisson_path_get(s : StatsdistpoissonPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonPath::get(self : StatsdistpoissonPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_path_set(s : StatsdistpoissonPath, i : Int, v : Double) -> StatsdistpoissonPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonPath::set(self : StatsdistpoissonPath, i : Int, v : Double) -> StatsdistpoissonPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_path_sum(s : StatsdistpoissonPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonPath::sum(self : StatsdistpoissonPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_path_mean(s : StatsdistpoissonPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonPath::mean(self : StatsdistpoissonPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_path_scale(s : StatsdistpoissonPath, f : Double) -> StatsdistpoissonPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonPath::scale(self : StatsdistpoissonPath, f : Double) -> StatsdistpoissonPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_path_add(a : StatsdistpoissonPath, b : StatsdistpoissonPath) -> StatsdistpoissonPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonPath::add(self : StatsdistpoissonPath, other : StatsdistpoissonPath) -> StatsdistpoissonPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_path_copy(s : StatsdistpoissonPath) -> StatsdistpoissonPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonPath::copy(self : StatsdistpoissonPath) -> StatsdistpoissonPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_path_fill(s : StatsdistpoissonPath, v : Double) -> StatsdistpoissonPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonPath::fill(self : StatsdistpoissonPath, v : Double) -> StatsdistpoissonPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_path_min(s : StatsdistpoissonPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonPath::min(self : StatsdistpoissonPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_path_max(s : StatsdistpoissonPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonPath::max(self : StatsdistpoissonPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_path_to_string(s : StatsdistpoissonPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonPath::to_string(self : StatsdistpoissonPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_poisson_cluster_make(size : Int) -> StatsdistpoissonCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_cluster_len(s : StatsdistpoissonCluster) -> Int { s.size }
+pub fn StatsdistpoissonCluster::len(self : StatsdistpoissonCluster) -> Int { self.size }
 
-pub fn stats_dist_poisson_cluster_get(s : StatsdistpoissonCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonCluster::get(self : StatsdistpoissonCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_cluster_set(s : StatsdistpoissonCluster, i : Int, v : Double) -> StatsdistpoissonCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCluster::set(self : StatsdistpoissonCluster, i : Int, v : Double) -> StatsdistpoissonCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cluster_sum(s : StatsdistpoissonCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonCluster::sum(self : StatsdistpoissonCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_cluster_mean(s : StatsdistpoissonCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonCluster::mean(self : StatsdistpoissonCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_cluster_scale(s : StatsdistpoissonCluster, f : Double) -> StatsdistpoissonCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCluster::scale(self : StatsdistpoissonCluster, f : Double) -> StatsdistpoissonCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cluster_add(a : StatsdistpoissonCluster, b : StatsdistpoissonCluster) -> StatsdistpoissonCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonCluster::add(self : StatsdistpoissonCluster, other : StatsdistpoissonCluster) -> StatsdistpoissonCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cluster_copy(s : StatsdistpoissonCluster) -> StatsdistpoissonCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCluster::copy(self : StatsdistpoissonCluster) -> StatsdistpoissonCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cluster_fill(s : StatsdistpoissonCluster, v : Double) -> StatsdistpoissonCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCluster::fill(self : StatsdistpoissonCluster, v : Double) -> StatsdistpoissonCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cluster_min(s : StatsdistpoissonCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonCluster::min(self : StatsdistpoissonCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_cluster_max(s : StatsdistpoissonCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonCluster::max(self : StatsdistpoissonCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_cluster_to_string(s : StatsdistpoissonCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonCluster::to_string(self : StatsdistpoissonCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_poisson_model_make(size : Int) -> StatsdistpoissonModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_model_len(s : StatsdistpoissonModel) -> Int { s.size }
+pub fn StatsdistpoissonModel::len(self : StatsdistpoissonModel) -> Int { self.size }
 
-pub fn stats_dist_poisson_model_get(s : StatsdistpoissonModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonModel::get(self : StatsdistpoissonModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_model_set(s : StatsdistpoissonModel, i : Int, v : Double) -> StatsdistpoissonModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonModel::set(self : StatsdistpoissonModel, i : Int, v : Double) -> StatsdistpoissonModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_model_sum(s : StatsdistpoissonModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonModel::sum(self : StatsdistpoissonModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_model_mean(s : StatsdistpoissonModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonModel::mean(self : StatsdistpoissonModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_model_scale(s : StatsdistpoissonModel, f : Double) -> StatsdistpoissonModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonModel::scale(self : StatsdistpoissonModel, f : Double) -> StatsdistpoissonModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_model_add(a : StatsdistpoissonModel, b : StatsdistpoissonModel) -> StatsdistpoissonModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonModel::add(self : StatsdistpoissonModel, other : StatsdistpoissonModel) -> StatsdistpoissonModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_model_copy(s : StatsdistpoissonModel) -> StatsdistpoissonModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonModel::copy(self : StatsdistpoissonModel) -> StatsdistpoissonModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_model_fill(s : StatsdistpoissonModel, v : Double) -> StatsdistpoissonModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonModel::fill(self : StatsdistpoissonModel, v : Double) -> StatsdistpoissonModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_model_min(s : StatsdistpoissonModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonModel::min(self : StatsdistpoissonModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_model_max(s : StatsdistpoissonModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonModel::max(self : StatsdistpoissonModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_model_to_string(s : StatsdistpoissonModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonModel::to_string(self : StatsdistpoissonModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_poisson_layer_make(size : Int) -> StatsdistpoissonLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_layer_len(s : StatsdistpoissonLayer) -> Int { s.size }
+pub fn StatsdistpoissonLayer::len(self : StatsdistpoissonLayer) -> Int { self.size }
 
-pub fn stats_dist_poisson_layer_get(s : StatsdistpoissonLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonLayer::get(self : StatsdistpoissonLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_layer_set(s : StatsdistpoissonLayer, i : Int, v : Double) -> StatsdistpoissonLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonLayer::set(self : StatsdistpoissonLayer, i : Int, v : Double) -> StatsdistpoissonLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_layer_sum(s : StatsdistpoissonLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonLayer::sum(self : StatsdistpoissonLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_layer_mean(s : StatsdistpoissonLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonLayer::mean(self : StatsdistpoissonLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_layer_scale(s : StatsdistpoissonLayer, f : Double) -> StatsdistpoissonLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonLayer::scale(self : StatsdistpoissonLayer, f : Double) -> StatsdistpoissonLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_layer_add(a : StatsdistpoissonLayer, b : StatsdistpoissonLayer) -> StatsdistpoissonLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonLayer::add(self : StatsdistpoissonLayer, other : StatsdistpoissonLayer) -> StatsdistpoissonLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_layer_copy(s : StatsdistpoissonLayer) -> StatsdistpoissonLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonLayer::copy(self : StatsdistpoissonLayer) -> StatsdistpoissonLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_layer_fill(s : StatsdistpoissonLayer, v : Double) -> StatsdistpoissonLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonLayer::fill(self : StatsdistpoissonLayer, v : Double) -> StatsdistpoissonLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_layer_min(s : StatsdistpoissonLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonLayer::min(self : StatsdistpoissonLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_layer_max(s : StatsdistpoissonLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonLayer::max(self : StatsdistpoissonLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_layer_to_string(s : StatsdistpoissonLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonLayer::to_string(self : StatsdistpoissonLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_poisson_buffer_make(size : Int) -> StatsdistpoissonBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_buffer_len(s : StatsdistpoissonBuffer) -> Int { s.size }
+pub fn StatsdistpoissonBuffer::len(self : StatsdistpoissonBuffer) -> Int { self.size }
 
-pub fn stats_dist_poisson_buffer_get(s : StatsdistpoissonBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonBuffer::get(self : StatsdistpoissonBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_buffer_set(s : StatsdistpoissonBuffer, i : Int, v : Double) -> StatsdistpoissonBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonBuffer::set(self : StatsdistpoissonBuffer, i : Int, v : Double) -> StatsdistpoissonBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_buffer_sum(s : StatsdistpoissonBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonBuffer::sum(self : StatsdistpoissonBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_buffer_mean(s : StatsdistpoissonBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonBuffer::mean(self : StatsdistpoissonBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_buffer_scale(s : StatsdistpoissonBuffer, f : Double) -> StatsdistpoissonBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonBuffer::scale(self : StatsdistpoissonBuffer, f : Double) -> StatsdistpoissonBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_buffer_add(a : StatsdistpoissonBuffer, b : StatsdistpoissonBuffer) -> StatsdistpoissonBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonBuffer::add(self : StatsdistpoissonBuffer, other : StatsdistpoissonBuffer) -> StatsdistpoissonBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_buffer_copy(s : StatsdistpoissonBuffer) -> StatsdistpoissonBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonBuffer::copy(self : StatsdistpoissonBuffer) -> StatsdistpoissonBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_buffer_fill(s : StatsdistpoissonBuffer, v : Double) -> StatsdistpoissonBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonBuffer::fill(self : StatsdistpoissonBuffer, v : Double) -> StatsdistpoissonBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_buffer_min(s : StatsdistpoissonBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonBuffer::min(self : StatsdistpoissonBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_buffer_max(s : StatsdistpoissonBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonBuffer::max(self : StatsdistpoissonBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_buffer_to_string(s : StatsdistpoissonBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonBuffer::to_string(self : StatsdistpoissonBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_poisson_cursor_make(size : Int) -> StatsdistpoissonCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_cursor_len(s : StatsdistpoissonCursor) -> Int { s.size }
+pub fn StatsdistpoissonCursor::len(self : StatsdistpoissonCursor) -> Int { self.size }
 
-pub fn stats_dist_poisson_cursor_get(s : StatsdistpoissonCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonCursor::get(self : StatsdistpoissonCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_cursor_set(s : StatsdistpoissonCursor, i : Int, v : Double) -> StatsdistpoissonCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCursor::set(self : StatsdistpoissonCursor, i : Int, v : Double) -> StatsdistpoissonCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cursor_sum(s : StatsdistpoissonCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonCursor::sum(self : StatsdistpoissonCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_cursor_mean(s : StatsdistpoissonCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonCursor::mean(self : StatsdistpoissonCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_cursor_scale(s : StatsdistpoissonCursor, f : Double) -> StatsdistpoissonCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCursor::scale(self : StatsdistpoissonCursor, f : Double) -> StatsdistpoissonCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cursor_add(a : StatsdistpoissonCursor, b : StatsdistpoissonCursor) -> StatsdistpoissonCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonCursor::add(self : StatsdistpoissonCursor, other : StatsdistpoissonCursor) -> StatsdistpoissonCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cursor_copy(s : StatsdistpoissonCursor) -> StatsdistpoissonCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCursor::copy(self : StatsdistpoissonCursor) -> StatsdistpoissonCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cursor_fill(s : StatsdistpoissonCursor, v : Double) -> StatsdistpoissonCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonCursor::fill(self : StatsdistpoissonCursor, v : Double) -> StatsdistpoissonCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_cursor_min(s : StatsdistpoissonCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonCursor::min(self : StatsdistpoissonCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_cursor_max(s : StatsdistpoissonCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonCursor::max(self : StatsdistpoissonCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_cursor_to_string(s : StatsdistpoissonCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonCursor::to_string(self : StatsdistpoissonCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonView {
@@ -912,45 +912,45 @@ pub fn stats_dist_poisson_view_make(size : Int) -> StatsdistpoissonView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_view_len(s : StatsdistpoissonView) -> Int { s.size }
+pub fn StatsdistpoissonView::len(self : StatsdistpoissonView) -> Int { self.size }
 
-pub fn stats_dist_poisson_view_get(s : StatsdistpoissonView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonView::get(self : StatsdistpoissonView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_view_set(s : StatsdistpoissonView, i : Int, v : Double) -> StatsdistpoissonView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonView::set(self : StatsdistpoissonView, i : Int, v : Double) -> StatsdistpoissonView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_view_sum(s : StatsdistpoissonView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonView::sum(self : StatsdistpoissonView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_view_mean(s : StatsdistpoissonView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonView::mean(self : StatsdistpoissonView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_view_scale(s : StatsdistpoissonView, f : Double) -> StatsdistpoissonView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonView::scale(self : StatsdistpoissonView, f : Double) -> StatsdistpoissonView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_view_add(a : StatsdistpoissonView, b : StatsdistpoissonView) -> StatsdistpoissonView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonView::add(self : StatsdistpoissonView, other : StatsdistpoissonView) -> StatsdistpoissonView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_view_copy(s : StatsdistpoissonView) -> StatsdistpoissonView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonView::copy(self : StatsdistpoissonView) -> StatsdistpoissonView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_view_fill(s : StatsdistpoissonView, v : Double) -> StatsdistpoissonView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonView::fill(self : StatsdistpoissonView, v : Double) -> StatsdistpoissonView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_view_min(s : StatsdistpoissonView) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonView::min(self : StatsdistpoissonView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_view_max(s : StatsdistpoissonView) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonView::max(self : StatsdistpoissonView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_view_to_string(s : StatsdistpoissonView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonView::to_string(self : StatsdistpoissonView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_poisson_range_make(size : Int) -> StatsdistpoissonRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_range_len(s : StatsdistpoissonRange) -> Int { s.size }
+pub fn StatsdistpoissonRange::len(self : StatsdistpoissonRange) -> Int { self.size }
 
-pub fn stats_dist_poisson_range_get(s : StatsdistpoissonRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonRange::get(self : StatsdistpoissonRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_range_set(s : StatsdistpoissonRange, i : Int, v : Double) -> StatsdistpoissonRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonRange::set(self : StatsdistpoissonRange, i : Int, v : Double) -> StatsdistpoissonRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_range_sum(s : StatsdistpoissonRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonRange::sum(self : StatsdistpoissonRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_range_mean(s : StatsdistpoissonRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonRange::mean(self : StatsdistpoissonRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_range_scale(s : StatsdistpoissonRange, f : Double) -> StatsdistpoissonRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonRange::scale(self : StatsdistpoissonRange, f : Double) -> StatsdistpoissonRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_range_add(a : StatsdistpoissonRange, b : StatsdistpoissonRange) -> StatsdistpoissonRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonRange::add(self : StatsdistpoissonRange, other : StatsdistpoissonRange) -> StatsdistpoissonRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_range_copy(s : StatsdistpoissonRange) -> StatsdistpoissonRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonRange::copy(self : StatsdistpoissonRange) -> StatsdistpoissonRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_range_fill(s : StatsdistpoissonRange, v : Double) -> StatsdistpoissonRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonRange::fill(self : StatsdistpoissonRange, v : Double) -> StatsdistpoissonRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_range_min(s : StatsdistpoissonRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonRange::min(self : StatsdistpoissonRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_range_max(s : StatsdistpoissonRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonRange::max(self : StatsdistpoissonRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_range_to_string(s : StatsdistpoissonRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonRange::to_string(self : StatsdistpoissonRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistpoissonSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_poisson_slice_make(size : Int) -> StatsdistpoissonSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_poisson_slice_len(s : StatsdistpoissonSlice) -> Int { s.size }
+pub fn StatsdistpoissonSlice::len(self : StatsdistpoissonSlice) -> Int { self.size }
 
-pub fn stats_dist_poisson_slice_get(s : StatsdistpoissonSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistpoissonSlice::get(self : StatsdistpoissonSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_poisson_slice_set(s : StatsdistpoissonSlice, i : Int, v : Double) -> StatsdistpoissonSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistpoissonSlice::set(self : StatsdistpoissonSlice, i : Int, v : Double) -> StatsdistpoissonSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_slice_sum(s : StatsdistpoissonSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistpoissonSlice::sum(self : StatsdistpoissonSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_poisson_slice_mean(s : StatsdistpoissonSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistpoissonSlice::mean(self : StatsdistpoissonSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_poisson_slice_scale(s : StatsdistpoissonSlice, f : Double) -> StatsdistpoissonSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonSlice::scale(self : StatsdistpoissonSlice, f : Double) -> StatsdistpoissonSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_slice_add(a : StatsdistpoissonSlice, b : StatsdistpoissonSlice) -> StatsdistpoissonSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistpoissonSlice::add(self : StatsdistpoissonSlice, other : StatsdistpoissonSlice) -> StatsdistpoissonSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_slice_copy(s : StatsdistpoissonSlice) -> StatsdistpoissonSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonSlice::copy(self : StatsdistpoissonSlice) -> StatsdistpoissonSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_slice_fill(s : StatsdistpoissonSlice, v : Double) -> StatsdistpoissonSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistpoissonSlice::fill(self : StatsdistpoissonSlice, v : Double) -> StatsdistpoissonSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_poisson_slice_min(s : StatsdistpoissonSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistpoissonSlice::min(self : StatsdistpoissonSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_poisson_slice_max(s : StatsdistpoissonSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistpoissonSlice::max(self : StatsdistpoissonSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_poisson_slice_to_string(s : StatsdistpoissonSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistpoissonSlice::to_string(self : StatsdistpoissonSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn timeseries_sarima_frame_make(size : Int) -> TimeseriessarimaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_frame_len(s : TimeseriessarimaFrame) -> Int { s.size }
+pub fn TimeseriessarimaFrame::len(self : TimeseriessarimaFrame) -> Int { self.size }
 
-pub fn timeseries_sarima_frame_get(s : TimeseriessarimaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaFrame::get(self : TimeseriessarimaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_frame_set(s : TimeseriessarimaFrame, i : Int, v : Double) -> TimeseriessarimaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaFrame::set(self : TimeseriessarimaFrame, i : Int, v : Double) -> TimeseriessarimaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_frame_sum(s : TimeseriessarimaFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaFrame::sum(self : TimeseriessarimaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_frame_mean(s : TimeseriessarimaFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaFrame::mean(self : TimeseriessarimaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_frame_scale(s : TimeseriessarimaFrame, f : Double) -> TimeseriessarimaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaFrame::scale(self : TimeseriessarimaFrame, f : Double) -> TimeseriessarimaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_frame_add(a : TimeseriessarimaFrame, b : TimeseriessarimaFrame) -> TimeseriessarimaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaFrame::add(self : TimeseriessarimaFrame, other : TimeseriessarimaFrame) -> TimeseriessarimaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_frame_copy(s : TimeseriessarimaFrame) -> TimeseriessarimaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaFrame::copy(self : TimeseriessarimaFrame) -> TimeseriessarimaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_frame_fill(s : TimeseriessarimaFrame, v : Double) -> TimeseriessarimaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaFrame::fill(self : TimeseriessarimaFrame, v : Double) -> TimeseriessarimaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_frame_min(s : TimeseriessarimaFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaFrame::min(self : TimeseriessarimaFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_frame_max(s : TimeseriessarimaFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaFrame::max(self : TimeseriessarimaFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_frame_to_string(s : TimeseriessarimaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaFrame::to_string(self : TimeseriessarimaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaTable {
@@ -402,45 +402,45 @@ pub fn timeseries_sarima_table_make(size : Int) -> TimeseriessarimaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_table_len(s : TimeseriessarimaTable) -> Int { s.size }
+pub fn TimeseriessarimaTable::len(self : TimeseriessarimaTable) -> Int { self.size }
 
-pub fn timeseries_sarima_table_get(s : TimeseriessarimaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaTable::get(self : TimeseriessarimaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_table_set(s : TimeseriessarimaTable, i : Int, v : Double) -> TimeseriessarimaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaTable::set(self : TimeseriessarimaTable, i : Int, v : Double) -> TimeseriessarimaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_table_sum(s : TimeseriessarimaTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaTable::sum(self : TimeseriessarimaTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_table_mean(s : TimeseriessarimaTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaTable::mean(self : TimeseriessarimaTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_table_scale(s : TimeseriessarimaTable, f : Double) -> TimeseriessarimaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaTable::scale(self : TimeseriessarimaTable, f : Double) -> TimeseriessarimaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_table_add(a : TimeseriessarimaTable, b : TimeseriessarimaTable) -> TimeseriessarimaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaTable::add(self : TimeseriessarimaTable, other : TimeseriessarimaTable) -> TimeseriessarimaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_table_copy(s : TimeseriessarimaTable) -> TimeseriessarimaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaTable::copy(self : TimeseriessarimaTable) -> TimeseriessarimaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_table_fill(s : TimeseriessarimaTable, v : Double) -> TimeseriessarimaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaTable::fill(self : TimeseriessarimaTable, v : Double) -> TimeseriessarimaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_table_min(s : TimeseriessarimaTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaTable::min(self : TimeseriessarimaTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_table_max(s : TimeseriessarimaTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaTable::max(self : TimeseriessarimaTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_table_to_string(s : TimeseriessarimaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaTable::to_string(self : TimeseriessarimaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_sarima_graphn_make(size : Int) -> TimeseriessarimaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_graphn_len(s : TimeseriessarimaGraphN) -> Int { s.size }
+pub fn TimeseriessarimaGraphN::len(self : TimeseriessarimaGraphN) -> Int { self.size }
 
-pub fn timeseries_sarima_graphn_get(s : TimeseriessarimaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaGraphN::get(self : TimeseriessarimaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_graphn_set(s : TimeseriessarimaGraphN, i : Int, v : Double) -> TimeseriessarimaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaGraphN::set(self : TimeseriessarimaGraphN, i : Int, v : Double) -> TimeseriessarimaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_graphn_sum(s : TimeseriessarimaGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaGraphN::sum(self : TimeseriessarimaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_graphn_mean(s : TimeseriessarimaGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaGraphN::mean(self : TimeseriessarimaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_graphn_scale(s : TimeseriessarimaGraphN, f : Double) -> TimeseriessarimaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaGraphN::scale(self : TimeseriessarimaGraphN, f : Double) -> TimeseriessarimaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_graphn_add(a : TimeseriessarimaGraphN, b : TimeseriessarimaGraphN) -> TimeseriessarimaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaGraphN::add(self : TimeseriessarimaGraphN, other : TimeseriessarimaGraphN) -> TimeseriessarimaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_graphn_copy(s : TimeseriessarimaGraphN) -> TimeseriessarimaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaGraphN::copy(self : TimeseriessarimaGraphN) -> TimeseriessarimaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_graphn_fill(s : TimeseriessarimaGraphN, v : Double) -> TimeseriessarimaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaGraphN::fill(self : TimeseriessarimaGraphN, v : Double) -> TimeseriessarimaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_graphn_min(s : TimeseriessarimaGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaGraphN::min(self : TimeseriessarimaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_graphn_max(s : TimeseriessarimaGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaGraphN::max(self : TimeseriessarimaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_graphn_to_string(s : TimeseriessarimaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaGraphN::to_string(self : TimeseriessarimaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaNode {
@@ -504,45 +504,45 @@ pub fn timeseries_sarima_node_make(size : Int) -> TimeseriessarimaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_node_len(s : TimeseriessarimaNode) -> Int { s.size }
+pub fn TimeseriessarimaNode::len(self : TimeseriessarimaNode) -> Int { self.size }
 
-pub fn timeseries_sarima_node_get(s : TimeseriessarimaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaNode::get(self : TimeseriessarimaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_node_set(s : TimeseriessarimaNode, i : Int, v : Double) -> TimeseriessarimaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaNode::set(self : TimeseriessarimaNode, i : Int, v : Double) -> TimeseriessarimaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_node_sum(s : TimeseriessarimaNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaNode::sum(self : TimeseriessarimaNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_node_mean(s : TimeseriessarimaNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaNode::mean(self : TimeseriessarimaNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_node_scale(s : TimeseriessarimaNode, f : Double) -> TimeseriessarimaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaNode::scale(self : TimeseriessarimaNode, f : Double) -> TimeseriessarimaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_node_add(a : TimeseriessarimaNode, b : TimeseriessarimaNode) -> TimeseriessarimaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaNode::add(self : TimeseriessarimaNode, other : TimeseriessarimaNode) -> TimeseriessarimaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_node_copy(s : TimeseriessarimaNode) -> TimeseriessarimaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaNode::copy(self : TimeseriessarimaNode) -> TimeseriessarimaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_node_fill(s : TimeseriessarimaNode, v : Double) -> TimeseriessarimaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaNode::fill(self : TimeseriessarimaNode, v : Double) -> TimeseriessarimaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_node_min(s : TimeseriessarimaNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaNode::min(self : TimeseriessarimaNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_node_max(s : TimeseriessarimaNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaNode::max(self : TimeseriessarimaNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_node_to_string(s : TimeseriessarimaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaNode::to_string(self : TimeseriessarimaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_sarima_edge_make(size : Int) -> TimeseriessarimaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_edge_len(s : TimeseriessarimaEdge) -> Int { s.size }
+pub fn TimeseriessarimaEdge::len(self : TimeseriessarimaEdge) -> Int { self.size }
 
-pub fn timeseries_sarima_edge_get(s : TimeseriessarimaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaEdge::get(self : TimeseriessarimaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_edge_set(s : TimeseriessarimaEdge, i : Int, v : Double) -> TimeseriessarimaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaEdge::set(self : TimeseriessarimaEdge, i : Int, v : Double) -> TimeseriessarimaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_edge_sum(s : TimeseriessarimaEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaEdge::sum(self : TimeseriessarimaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_edge_mean(s : TimeseriessarimaEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaEdge::mean(self : TimeseriessarimaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_edge_scale(s : TimeseriessarimaEdge, f : Double) -> TimeseriessarimaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaEdge::scale(self : TimeseriessarimaEdge, f : Double) -> TimeseriessarimaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_edge_add(a : TimeseriessarimaEdge, b : TimeseriessarimaEdge) -> TimeseriessarimaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaEdge::add(self : TimeseriessarimaEdge, other : TimeseriessarimaEdge) -> TimeseriessarimaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_edge_copy(s : TimeseriessarimaEdge) -> TimeseriessarimaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaEdge::copy(self : TimeseriessarimaEdge) -> TimeseriessarimaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_edge_fill(s : TimeseriessarimaEdge, v : Double) -> TimeseriessarimaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaEdge::fill(self : TimeseriessarimaEdge, v : Double) -> TimeseriessarimaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_edge_min(s : TimeseriessarimaEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaEdge::min(self : TimeseriessarimaEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_edge_max(s : TimeseriessarimaEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaEdge::max(self : TimeseriessarimaEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_edge_to_string(s : TimeseriessarimaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaEdge::to_string(self : TimeseriessarimaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaPath {
@@ -606,45 +606,45 @@ pub fn timeseries_sarima_path_make(size : Int) -> TimeseriessarimaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_path_len(s : TimeseriessarimaPath) -> Int { s.size }
+pub fn TimeseriessarimaPath::len(self : TimeseriessarimaPath) -> Int { self.size }
 
-pub fn timeseries_sarima_path_get(s : TimeseriessarimaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaPath::get(self : TimeseriessarimaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_path_set(s : TimeseriessarimaPath, i : Int, v : Double) -> TimeseriessarimaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaPath::set(self : TimeseriessarimaPath, i : Int, v : Double) -> TimeseriessarimaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_path_sum(s : TimeseriessarimaPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaPath::sum(self : TimeseriessarimaPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_path_mean(s : TimeseriessarimaPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaPath::mean(self : TimeseriessarimaPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_path_scale(s : TimeseriessarimaPath, f : Double) -> TimeseriessarimaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaPath::scale(self : TimeseriessarimaPath, f : Double) -> TimeseriessarimaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_path_add(a : TimeseriessarimaPath, b : TimeseriessarimaPath) -> TimeseriessarimaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaPath::add(self : TimeseriessarimaPath, other : TimeseriessarimaPath) -> TimeseriessarimaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_path_copy(s : TimeseriessarimaPath) -> TimeseriessarimaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaPath::copy(self : TimeseriessarimaPath) -> TimeseriessarimaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_path_fill(s : TimeseriessarimaPath, v : Double) -> TimeseriessarimaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaPath::fill(self : TimeseriessarimaPath, v : Double) -> TimeseriessarimaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_path_min(s : TimeseriessarimaPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaPath::min(self : TimeseriessarimaPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_path_max(s : TimeseriessarimaPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaPath::max(self : TimeseriessarimaPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_path_to_string(s : TimeseriessarimaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaPath::to_string(self : TimeseriessarimaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_sarima_cluster_make(size : Int) -> TimeseriessarimaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_cluster_len(s : TimeseriessarimaCluster) -> Int { s.size }
+pub fn TimeseriessarimaCluster::len(self : TimeseriessarimaCluster) -> Int { self.size }
 
-pub fn timeseries_sarima_cluster_get(s : TimeseriessarimaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaCluster::get(self : TimeseriessarimaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_cluster_set(s : TimeseriessarimaCluster, i : Int, v : Double) -> TimeseriessarimaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCluster::set(self : TimeseriessarimaCluster, i : Int, v : Double) -> TimeseriessarimaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cluster_sum(s : TimeseriessarimaCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaCluster::sum(self : TimeseriessarimaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_cluster_mean(s : TimeseriessarimaCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaCluster::mean(self : TimeseriessarimaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_cluster_scale(s : TimeseriessarimaCluster, f : Double) -> TimeseriessarimaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCluster::scale(self : TimeseriessarimaCluster, f : Double) -> TimeseriessarimaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cluster_add(a : TimeseriessarimaCluster, b : TimeseriessarimaCluster) -> TimeseriessarimaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaCluster::add(self : TimeseriessarimaCluster, other : TimeseriessarimaCluster) -> TimeseriessarimaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cluster_copy(s : TimeseriessarimaCluster) -> TimeseriessarimaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCluster::copy(self : TimeseriessarimaCluster) -> TimeseriessarimaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cluster_fill(s : TimeseriessarimaCluster, v : Double) -> TimeseriessarimaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCluster::fill(self : TimeseriessarimaCluster, v : Double) -> TimeseriessarimaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cluster_min(s : TimeseriessarimaCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaCluster::min(self : TimeseriessarimaCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_cluster_max(s : TimeseriessarimaCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaCluster::max(self : TimeseriessarimaCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_cluster_to_string(s : TimeseriessarimaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaCluster::to_string(self : TimeseriessarimaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaModel {
@@ -708,45 +708,45 @@ pub fn timeseries_sarima_model_make(size : Int) -> TimeseriessarimaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_model_len(s : TimeseriessarimaModel) -> Int { s.size }
+pub fn TimeseriessarimaModel::len(self : TimeseriessarimaModel) -> Int { self.size }
 
-pub fn timeseries_sarima_model_get(s : TimeseriessarimaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaModel::get(self : TimeseriessarimaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_model_set(s : TimeseriessarimaModel, i : Int, v : Double) -> TimeseriessarimaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaModel::set(self : TimeseriessarimaModel, i : Int, v : Double) -> TimeseriessarimaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_model_sum(s : TimeseriessarimaModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaModel::sum(self : TimeseriessarimaModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_model_mean(s : TimeseriessarimaModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaModel::mean(self : TimeseriessarimaModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_model_scale(s : TimeseriessarimaModel, f : Double) -> TimeseriessarimaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaModel::scale(self : TimeseriessarimaModel, f : Double) -> TimeseriessarimaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_model_add(a : TimeseriessarimaModel, b : TimeseriessarimaModel) -> TimeseriessarimaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaModel::add(self : TimeseriessarimaModel, other : TimeseriessarimaModel) -> TimeseriessarimaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_model_copy(s : TimeseriessarimaModel) -> TimeseriessarimaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaModel::copy(self : TimeseriessarimaModel) -> TimeseriessarimaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_model_fill(s : TimeseriessarimaModel, v : Double) -> TimeseriessarimaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaModel::fill(self : TimeseriessarimaModel, v : Double) -> TimeseriessarimaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_model_min(s : TimeseriessarimaModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaModel::min(self : TimeseriessarimaModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_model_max(s : TimeseriessarimaModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaModel::max(self : TimeseriessarimaModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_model_to_string(s : TimeseriessarimaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaModel::to_string(self : TimeseriessarimaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_sarima_layer_make(size : Int) -> TimeseriessarimaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_layer_len(s : TimeseriessarimaLayer) -> Int { s.size }
+pub fn TimeseriessarimaLayer::len(self : TimeseriessarimaLayer) -> Int { self.size }
 
-pub fn timeseries_sarima_layer_get(s : TimeseriessarimaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaLayer::get(self : TimeseriessarimaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_layer_set(s : TimeseriessarimaLayer, i : Int, v : Double) -> TimeseriessarimaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaLayer::set(self : TimeseriessarimaLayer, i : Int, v : Double) -> TimeseriessarimaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_layer_sum(s : TimeseriessarimaLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaLayer::sum(self : TimeseriessarimaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_layer_mean(s : TimeseriessarimaLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaLayer::mean(self : TimeseriessarimaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_layer_scale(s : TimeseriessarimaLayer, f : Double) -> TimeseriessarimaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaLayer::scale(self : TimeseriessarimaLayer, f : Double) -> TimeseriessarimaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_layer_add(a : TimeseriessarimaLayer, b : TimeseriessarimaLayer) -> TimeseriessarimaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaLayer::add(self : TimeseriessarimaLayer, other : TimeseriessarimaLayer) -> TimeseriessarimaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_layer_copy(s : TimeseriessarimaLayer) -> TimeseriessarimaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaLayer::copy(self : TimeseriessarimaLayer) -> TimeseriessarimaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_layer_fill(s : TimeseriessarimaLayer, v : Double) -> TimeseriessarimaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaLayer::fill(self : TimeseriessarimaLayer, v : Double) -> TimeseriessarimaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_layer_min(s : TimeseriessarimaLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaLayer::min(self : TimeseriessarimaLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_layer_max(s : TimeseriessarimaLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaLayer::max(self : TimeseriessarimaLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_layer_to_string(s : TimeseriessarimaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaLayer::to_string(self : TimeseriessarimaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_sarima_buffer_make(size : Int) -> TimeseriessarimaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_buffer_len(s : TimeseriessarimaBuffer) -> Int { s.size }
+pub fn TimeseriessarimaBuffer::len(self : TimeseriessarimaBuffer) -> Int { self.size }
 
-pub fn timeseries_sarima_buffer_get(s : TimeseriessarimaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaBuffer::get(self : TimeseriessarimaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_buffer_set(s : TimeseriessarimaBuffer, i : Int, v : Double) -> TimeseriessarimaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaBuffer::set(self : TimeseriessarimaBuffer, i : Int, v : Double) -> TimeseriessarimaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_buffer_sum(s : TimeseriessarimaBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaBuffer::sum(self : TimeseriessarimaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_buffer_mean(s : TimeseriessarimaBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaBuffer::mean(self : TimeseriessarimaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_buffer_scale(s : TimeseriessarimaBuffer, f : Double) -> TimeseriessarimaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaBuffer::scale(self : TimeseriessarimaBuffer, f : Double) -> TimeseriessarimaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_buffer_add(a : TimeseriessarimaBuffer, b : TimeseriessarimaBuffer) -> TimeseriessarimaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaBuffer::add(self : TimeseriessarimaBuffer, other : TimeseriessarimaBuffer) -> TimeseriessarimaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_buffer_copy(s : TimeseriessarimaBuffer) -> TimeseriessarimaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaBuffer::copy(self : TimeseriessarimaBuffer) -> TimeseriessarimaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_buffer_fill(s : TimeseriessarimaBuffer, v : Double) -> TimeseriessarimaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaBuffer::fill(self : TimeseriessarimaBuffer, v : Double) -> TimeseriessarimaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_buffer_min(s : TimeseriessarimaBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaBuffer::min(self : TimeseriessarimaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_buffer_max(s : TimeseriessarimaBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaBuffer::max(self : TimeseriessarimaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_buffer_to_string(s : TimeseriessarimaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaBuffer::to_string(self : TimeseriessarimaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_sarima_cursor_make(size : Int) -> TimeseriessarimaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_cursor_len(s : TimeseriessarimaCursor) -> Int { s.size }
+pub fn TimeseriessarimaCursor::len(self : TimeseriessarimaCursor) -> Int { self.size }
 
-pub fn timeseries_sarima_cursor_get(s : TimeseriessarimaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaCursor::get(self : TimeseriessarimaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_cursor_set(s : TimeseriessarimaCursor, i : Int, v : Double) -> TimeseriessarimaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCursor::set(self : TimeseriessarimaCursor, i : Int, v : Double) -> TimeseriessarimaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cursor_sum(s : TimeseriessarimaCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaCursor::sum(self : TimeseriessarimaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_cursor_mean(s : TimeseriessarimaCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaCursor::mean(self : TimeseriessarimaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_cursor_scale(s : TimeseriessarimaCursor, f : Double) -> TimeseriessarimaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCursor::scale(self : TimeseriessarimaCursor, f : Double) -> TimeseriessarimaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cursor_add(a : TimeseriessarimaCursor, b : TimeseriessarimaCursor) -> TimeseriessarimaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaCursor::add(self : TimeseriessarimaCursor, other : TimeseriessarimaCursor) -> TimeseriessarimaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cursor_copy(s : TimeseriessarimaCursor) -> TimeseriessarimaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCursor::copy(self : TimeseriessarimaCursor) -> TimeseriessarimaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cursor_fill(s : TimeseriessarimaCursor, v : Double) -> TimeseriessarimaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaCursor::fill(self : TimeseriessarimaCursor, v : Double) -> TimeseriessarimaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_cursor_min(s : TimeseriessarimaCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaCursor::min(self : TimeseriessarimaCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_cursor_max(s : TimeseriessarimaCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaCursor::max(self : TimeseriessarimaCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_cursor_to_string(s : TimeseriessarimaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaCursor::to_string(self : TimeseriessarimaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaView {
@@ -912,45 +912,45 @@ pub fn timeseries_sarima_view_make(size : Int) -> TimeseriessarimaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_view_len(s : TimeseriessarimaView) -> Int { s.size }
+pub fn TimeseriessarimaView::len(self : TimeseriessarimaView) -> Int { self.size }
 
-pub fn timeseries_sarima_view_get(s : TimeseriessarimaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaView::get(self : TimeseriessarimaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_view_set(s : TimeseriessarimaView, i : Int, v : Double) -> TimeseriessarimaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaView::set(self : TimeseriessarimaView, i : Int, v : Double) -> TimeseriessarimaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_view_sum(s : TimeseriessarimaView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaView::sum(self : TimeseriessarimaView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_view_mean(s : TimeseriessarimaView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaView::mean(self : TimeseriessarimaView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_view_scale(s : TimeseriessarimaView, f : Double) -> TimeseriessarimaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaView::scale(self : TimeseriessarimaView, f : Double) -> TimeseriessarimaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_view_add(a : TimeseriessarimaView, b : TimeseriessarimaView) -> TimeseriessarimaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaView::add(self : TimeseriessarimaView, other : TimeseriessarimaView) -> TimeseriessarimaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_view_copy(s : TimeseriessarimaView) -> TimeseriessarimaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaView::copy(self : TimeseriessarimaView) -> TimeseriessarimaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_view_fill(s : TimeseriessarimaView, v : Double) -> TimeseriessarimaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaView::fill(self : TimeseriessarimaView, v : Double) -> TimeseriessarimaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_view_min(s : TimeseriessarimaView) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaView::min(self : TimeseriessarimaView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_view_max(s : TimeseriessarimaView) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaView::max(self : TimeseriessarimaView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_view_to_string(s : TimeseriessarimaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaView::to_string(self : TimeseriessarimaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaRange {
@@ -963,45 +963,45 @@ pub fn timeseries_sarima_range_make(size : Int) -> TimeseriessarimaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_range_len(s : TimeseriessarimaRange) -> Int { s.size }
+pub fn TimeseriessarimaRange::len(self : TimeseriessarimaRange) -> Int { self.size }
 
-pub fn timeseries_sarima_range_get(s : TimeseriessarimaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaRange::get(self : TimeseriessarimaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_range_set(s : TimeseriessarimaRange, i : Int, v : Double) -> TimeseriessarimaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaRange::set(self : TimeseriessarimaRange, i : Int, v : Double) -> TimeseriessarimaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_range_sum(s : TimeseriessarimaRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaRange::sum(self : TimeseriessarimaRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_range_mean(s : TimeseriessarimaRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaRange::mean(self : TimeseriessarimaRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_range_scale(s : TimeseriessarimaRange, f : Double) -> TimeseriessarimaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaRange::scale(self : TimeseriessarimaRange, f : Double) -> TimeseriessarimaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_range_add(a : TimeseriessarimaRange, b : TimeseriessarimaRange) -> TimeseriessarimaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaRange::add(self : TimeseriessarimaRange, other : TimeseriessarimaRange) -> TimeseriessarimaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_range_copy(s : TimeseriessarimaRange) -> TimeseriessarimaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaRange::copy(self : TimeseriessarimaRange) -> TimeseriessarimaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_range_fill(s : TimeseriessarimaRange, v : Double) -> TimeseriessarimaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaRange::fill(self : TimeseriessarimaRange, v : Double) -> TimeseriessarimaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_range_min(s : TimeseriessarimaRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaRange::min(self : TimeseriessarimaRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_range_max(s : TimeseriessarimaRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaRange::max(self : TimeseriessarimaRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_range_to_string(s : TimeseriessarimaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaRange::to_string(self : TimeseriessarimaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriessarimaSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_sarima_slice_make(size : Int) -> TimeseriessarimaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_sarima_slice_len(s : TimeseriessarimaSlice) -> Int { s.size }
+pub fn TimeseriessarimaSlice::len(self : TimeseriessarimaSlice) -> Int { self.size }
 
-pub fn timeseries_sarima_slice_get(s : TimeseriessarimaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriessarimaSlice::get(self : TimeseriessarimaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_sarima_slice_set(s : TimeseriessarimaSlice, i : Int, v : Double) -> TimeseriessarimaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriessarimaSlice::set(self : TimeseriessarimaSlice, i : Int, v : Double) -> TimeseriessarimaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_slice_sum(s : TimeseriessarimaSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriessarimaSlice::sum(self : TimeseriessarimaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_sarima_slice_mean(s : TimeseriessarimaSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriessarimaSlice::mean(self : TimeseriessarimaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_sarima_slice_scale(s : TimeseriessarimaSlice, f : Double) -> TimeseriessarimaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaSlice::scale(self : TimeseriessarimaSlice, f : Double) -> TimeseriessarimaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_slice_add(a : TimeseriessarimaSlice, b : TimeseriessarimaSlice) -> TimeseriessarimaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriessarimaSlice::add(self : TimeseriessarimaSlice, other : TimeseriessarimaSlice) -> TimeseriessarimaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_sarima_slice_copy(s : TimeseriessarimaSlice) -> TimeseriessarimaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaSlice::copy(self : TimeseriessarimaSlice) -> TimeseriessarimaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_slice_fill(s : TimeseriessarimaSlice, v : Double) -> TimeseriessarimaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriessarimaSlice::fill(self : TimeseriessarimaSlice, v : Double) -> TimeseriessarimaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_sarima_slice_min(s : TimeseriessarimaSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriessarimaSlice::min(self : TimeseriessarimaSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_sarima_slice_max(s : TimeseriessarimaSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriessarimaSlice::max(self : TimeseriessarimaSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_sarima_slice_to_string(s : TimeseriessarimaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriessarimaSlice::to_string(self : TimeseriessarimaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

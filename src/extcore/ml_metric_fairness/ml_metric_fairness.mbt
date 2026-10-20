@@ -351,45 +351,45 @@ pub fn ml_metric_fairness_frame_make(size : Int) -> MlmetricfairnessFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_frame_len(s : MlmetricfairnessFrame) -> Int { s.size }
+pub fn MlmetricfairnessFrame::len(self : MlmetricfairnessFrame) -> Int { self.size }
 
-pub fn ml_metric_fairness_frame_get(s : MlmetricfairnessFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessFrame::get(self : MlmetricfairnessFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_frame_set(s : MlmetricfairnessFrame, i : Int, v : Double) -> MlmetricfairnessFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessFrame::set(self : MlmetricfairnessFrame, i : Int, v : Double) -> MlmetricfairnessFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_frame_sum(s : MlmetricfairnessFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessFrame::sum(self : MlmetricfairnessFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_frame_mean(s : MlmetricfairnessFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessFrame::mean(self : MlmetricfairnessFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_frame_scale(s : MlmetricfairnessFrame, f : Double) -> MlmetricfairnessFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessFrame::scale(self : MlmetricfairnessFrame, f : Double) -> MlmetricfairnessFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_frame_add(a : MlmetricfairnessFrame, b : MlmetricfairnessFrame) -> MlmetricfairnessFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessFrame::add(self : MlmetricfairnessFrame, other : MlmetricfairnessFrame) -> MlmetricfairnessFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_frame_copy(s : MlmetricfairnessFrame) -> MlmetricfairnessFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessFrame::copy(self : MlmetricfairnessFrame) -> MlmetricfairnessFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_frame_fill(s : MlmetricfairnessFrame, v : Double) -> MlmetricfairnessFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessFrame::fill(self : MlmetricfairnessFrame, v : Double) -> MlmetricfairnessFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_frame_min(s : MlmetricfairnessFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessFrame::min(self : MlmetricfairnessFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_frame_max(s : MlmetricfairnessFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessFrame::max(self : MlmetricfairnessFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_frame_to_string(s : MlmetricfairnessFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessFrame::to_string(self : MlmetricfairnessFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_fairness_table_make(size : Int) -> MlmetricfairnessTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_table_len(s : MlmetricfairnessTable) -> Int { s.size }
+pub fn MlmetricfairnessTable::len(self : MlmetricfairnessTable) -> Int { self.size }
 
-pub fn ml_metric_fairness_table_get(s : MlmetricfairnessTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessTable::get(self : MlmetricfairnessTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_table_set(s : MlmetricfairnessTable, i : Int, v : Double) -> MlmetricfairnessTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessTable::set(self : MlmetricfairnessTable, i : Int, v : Double) -> MlmetricfairnessTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_table_sum(s : MlmetricfairnessTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessTable::sum(self : MlmetricfairnessTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_table_mean(s : MlmetricfairnessTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessTable::mean(self : MlmetricfairnessTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_table_scale(s : MlmetricfairnessTable, f : Double) -> MlmetricfairnessTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessTable::scale(self : MlmetricfairnessTable, f : Double) -> MlmetricfairnessTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_table_add(a : MlmetricfairnessTable, b : MlmetricfairnessTable) -> MlmetricfairnessTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessTable::add(self : MlmetricfairnessTable, other : MlmetricfairnessTable) -> MlmetricfairnessTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_table_copy(s : MlmetricfairnessTable) -> MlmetricfairnessTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessTable::copy(self : MlmetricfairnessTable) -> MlmetricfairnessTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_table_fill(s : MlmetricfairnessTable, v : Double) -> MlmetricfairnessTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessTable::fill(self : MlmetricfairnessTable, v : Double) -> MlmetricfairnessTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_table_min(s : MlmetricfairnessTable) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessTable::min(self : MlmetricfairnessTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_table_max(s : MlmetricfairnessTable) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessTable::max(self : MlmetricfairnessTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_table_to_string(s : MlmetricfairnessTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessTable::to_string(self : MlmetricfairnessTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_fairness_graphn_make(size : Int) -> MlmetricfairnessGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_graphn_len(s : MlmetricfairnessGraphN) -> Int { s.size }
+pub fn MlmetricfairnessGraphN::len(self : MlmetricfairnessGraphN) -> Int { self.size }
 
-pub fn ml_metric_fairness_graphn_get(s : MlmetricfairnessGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessGraphN::get(self : MlmetricfairnessGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_graphn_set(s : MlmetricfairnessGraphN, i : Int, v : Double) -> MlmetricfairnessGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessGraphN::set(self : MlmetricfairnessGraphN, i : Int, v : Double) -> MlmetricfairnessGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_graphn_sum(s : MlmetricfairnessGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessGraphN::sum(self : MlmetricfairnessGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_graphn_mean(s : MlmetricfairnessGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessGraphN::mean(self : MlmetricfairnessGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_graphn_scale(s : MlmetricfairnessGraphN, f : Double) -> MlmetricfairnessGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessGraphN::scale(self : MlmetricfairnessGraphN, f : Double) -> MlmetricfairnessGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_graphn_add(a : MlmetricfairnessGraphN, b : MlmetricfairnessGraphN) -> MlmetricfairnessGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessGraphN::add(self : MlmetricfairnessGraphN, other : MlmetricfairnessGraphN) -> MlmetricfairnessGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_graphn_copy(s : MlmetricfairnessGraphN) -> MlmetricfairnessGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessGraphN::copy(self : MlmetricfairnessGraphN) -> MlmetricfairnessGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_graphn_fill(s : MlmetricfairnessGraphN, v : Double) -> MlmetricfairnessGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessGraphN::fill(self : MlmetricfairnessGraphN, v : Double) -> MlmetricfairnessGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_graphn_min(s : MlmetricfairnessGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessGraphN::min(self : MlmetricfairnessGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_graphn_max(s : MlmetricfairnessGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessGraphN::max(self : MlmetricfairnessGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_graphn_to_string(s : MlmetricfairnessGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessGraphN::to_string(self : MlmetricfairnessGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_fairness_node_make(size : Int) -> MlmetricfairnessNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_node_len(s : MlmetricfairnessNode) -> Int { s.size }
+pub fn MlmetricfairnessNode::len(self : MlmetricfairnessNode) -> Int { self.size }
 
-pub fn ml_metric_fairness_node_get(s : MlmetricfairnessNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessNode::get(self : MlmetricfairnessNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_node_set(s : MlmetricfairnessNode, i : Int, v : Double) -> MlmetricfairnessNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessNode::set(self : MlmetricfairnessNode, i : Int, v : Double) -> MlmetricfairnessNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_node_sum(s : MlmetricfairnessNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessNode::sum(self : MlmetricfairnessNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_node_mean(s : MlmetricfairnessNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessNode::mean(self : MlmetricfairnessNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_node_scale(s : MlmetricfairnessNode, f : Double) -> MlmetricfairnessNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessNode::scale(self : MlmetricfairnessNode, f : Double) -> MlmetricfairnessNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_node_add(a : MlmetricfairnessNode, b : MlmetricfairnessNode) -> MlmetricfairnessNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessNode::add(self : MlmetricfairnessNode, other : MlmetricfairnessNode) -> MlmetricfairnessNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_node_copy(s : MlmetricfairnessNode) -> MlmetricfairnessNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessNode::copy(self : MlmetricfairnessNode) -> MlmetricfairnessNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_node_fill(s : MlmetricfairnessNode, v : Double) -> MlmetricfairnessNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessNode::fill(self : MlmetricfairnessNode, v : Double) -> MlmetricfairnessNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_node_min(s : MlmetricfairnessNode) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessNode::min(self : MlmetricfairnessNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_node_max(s : MlmetricfairnessNode) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessNode::max(self : MlmetricfairnessNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_node_to_string(s : MlmetricfairnessNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessNode::to_string(self : MlmetricfairnessNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_fairness_edge_make(size : Int) -> MlmetricfairnessEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_edge_len(s : MlmetricfairnessEdge) -> Int { s.size }
+pub fn MlmetricfairnessEdge::len(self : MlmetricfairnessEdge) -> Int { self.size }
 
-pub fn ml_metric_fairness_edge_get(s : MlmetricfairnessEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessEdge::get(self : MlmetricfairnessEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_edge_set(s : MlmetricfairnessEdge, i : Int, v : Double) -> MlmetricfairnessEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessEdge::set(self : MlmetricfairnessEdge, i : Int, v : Double) -> MlmetricfairnessEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_edge_sum(s : MlmetricfairnessEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessEdge::sum(self : MlmetricfairnessEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_edge_mean(s : MlmetricfairnessEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessEdge::mean(self : MlmetricfairnessEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_edge_scale(s : MlmetricfairnessEdge, f : Double) -> MlmetricfairnessEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessEdge::scale(self : MlmetricfairnessEdge, f : Double) -> MlmetricfairnessEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_edge_add(a : MlmetricfairnessEdge, b : MlmetricfairnessEdge) -> MlmetricfairnessEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessEdge::add(self : MlmetricfairnessEdge, other : MlmetricfairnessEdge) -> MlmetricfairnessEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_edge_copy(s : MlmetricfairnessEdge) -> MlmetricfairnessEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessEdge::copy(self : MlmetricfairnessEdge) -> MlmetricfairnessEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_edge_fill(s : MlmetricfairnessEdge, v : Double) -> MlmetricfairnessEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessEdge::fill(self : MlmetricfairnessEdge, v : Double) -> MlmetricfairnessEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_edge_min(s : MlmetricfairnessEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessEdge::min(self : MlmetricfairnessEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_edge_max(s : MlmetricfairnessEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessEdge::max(self : MlmetricfairnessEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_edge_to_string(s : MlmetricfairnessEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessEdge::to_string(self : MlmetricfairnessEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_fairness_path_make(size : Int) -> MlmetricfairnessPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_path_len(s : MlmetricfairnessPath) -> Int { s.size }
+pub fn MlmetricfairnessPath::len(self : MlmetricfairnessPath) -> Int { self.size }
 
-pub fn ml_metric_fairness_path_get(s : MlmetricfairnessPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessPath::get(self : MlmetricfairnessPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_path_set(s : MlmetricfairnessPath, i : Int, v : Double) -> MlmetricfairnessPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessPath::set(self : MlmetricfairnessPath, i : Int, v : Double) -> MlmetricfairnessPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_path_sum(s : MlmetricfairnessPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessPath::sum(self : MlmetricfairnessPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_path_mean(s : MlmetricfairnessPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessPath::mean(self : MlmetricfairnessPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_path_scale(s : MlmetricfairnessPath, f : Double) -> MlmetricfairnessPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessPath::scale(self : MlmetricfairnessPath, f : Double) -> MlmetricfairnessPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_path_add(a : MlmetricfairnessPath, b : MlmetricfairnessPath) -> MlmetricfairnessPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessPath::add(self : MlmetricfairnessPath, other : MlmetricfairnessPath) -> MlmetricfairnessPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_path_copy(s : MlmetricfairnessPath) -> MlmetricfairnessPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessPath::copy(self : MlmetricfairnessPath) -> MlmetricfairnessPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_path_fill(s : MlmetricfairnessPath, v : Double) -> MlmetricfairnessPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessPath::fill(self : MlmetricfairnessPath, v : Double) -> MlmetricfairnessPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_path_min(s : MlmetricfairnessPath) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessPath::min(self : MlmetricfairnessPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_path_max(s : MlmetricfairnessPath) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessPath::max(self : MlmetricfairnessPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_path_to_string(s : MlmetricfairnessPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessPath::to_string(self : MlmetricfairnessPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_fairness_cluster_make(size : Int) -> MlmetricfairnessCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_cluster_len(s : MlmetricfairnessCluster) -> Int { s.size }
+pub fn MlmetricfairnessCluster::len(self : MlmetricfairnessCluster) -> Int { self.size }
 
-pub fn ml_metric_fairness_cluster_get(s : MlmetricfairnessCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessCluster::get(self : MlmetricfairnessCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_cluster_set(s : MlmetricfairnessCluster, i : Int, v : Double) -> MlmetricfairnessCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCluster::set(self : MlmetricfairnessCluster, i : Int, v : Double) -> MlmetricfairnessCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cluster_sum(s : MlmetricfairnessCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessCluster::sum(self : MlmetricfairnessCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_cluster_mean(s : MlmetricfairnessCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessCluster::mean(self : MlmetricfairnessCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_cluster_scale(s : MlmetricfairnessCluster, f : Double) -> MlmetricfairnessCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCluster::scale(self : MlmetricfairnessCluster, f : Double) -> MlmetricfairnessCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cluster_add(a : MlmetricfairnessCluster, b : MlmetricfairnessCluster) -> MlmetricfairnessCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessCluster::add(self : MlmetricfairnessCluster, other : MlmetricfairnessCluster) -> MlmetricfairnessCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cluster_copy(s : MlmetricfairnessCluster) -> MlmetricfairnessCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCluster::copy(self : MlmetricfairnessCluster) -> MlmetricfairnessCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cluster_fill(s : MlmetricfairnessCluster, v : Double) -> MlmetricfairnessCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCluster::fill(self : MlmetricfairnessCluster, v : Double) -> MlmetricfairnessCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cluster_min(s : MlmetricfairnessCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessCluster::min(self : MlmetricfairnessCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_cluster_max(s : MlmetricfairnessCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessCluster::max(self : MlmetricfairnessCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_cluster_to_string(s : MlmetricfairnessCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessCluster::to_string(self : MlmetricfairnessCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_fairness_model_make(size : Int) -> MlmetricfairnessModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_model_len(s : MlmetricfairnessModel) -> Int { s.size }
+pub fn MlmetricfairnessModel::len(self : MlmetricfairnessModel) -> Int { self.size }
 
-pub fn ml_metric_fairness_model_get(s : MlmetricfairnessModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessModel::get(self : MlmetricfairnessModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_model_set(s : MlmetricfairnessModel, i : Int, v : Double) -> MlmetricfairnessModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessModel::set(self : MlmetricfairnessModel, i : Int, v : Double) -> MlmetricfairnessModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_model_sum(s : MlmetricfairnessModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessModel::sum(self : MlmetricfairnessModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_model_mean(s : MlmetricfairnessModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessModel::mean(self : MlmetricfairnessModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_model_scale(s : MlmetricfairnessModel, f : Double) -> MlmetricfairnessModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessModel::scale(self : MlmetricfairnessModel, f : Double) -> MlmetricfairnessModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_model_add(a : MlmetricfairnessModel, b : MlmetricfairnessModel) -> MlmetricfairnessModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessModel::add(self : MlmetricfairnessModel, other : MlmetricfairnessModel) -> MlmetricfairnessModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_model_copy(s : MlmetricfairnessModel) -> MlmetricfairnessModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessModel::copy(self : MlmetricfairnessModel) -> MlmetricfairnessModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_model_fill(s : MlmetricfairnessModel, v : Double) -> MlmetricfairnessModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessModel::fill(self : MlmetricfairnessModel, v : Double) -> MlmetricfairnessModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_model_min(s : MlmetricfairnessModel) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessModel::min(self : MlmetricfairnessModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_model_max(s : MlmetricfairnessModel) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessModel::max(self : MlmetricfairnessModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_model_to_string(s : MlmetricfairnessModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessModel::to_string(self : MlmetricfairnessModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_fairness_layer_make(size : Int) -> MlmetricfairnessLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_layer_len(s : MlmetricfairnessLayer) -> Int { s.size }
+pub fn MlmetricfairnessLayer::len(self : MlmetricfairnessLayer) -> Int { self.size }
 
-pub fn ml_metric_fairness_layer_get(s : MlmetricfairnessLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessLayer::get(self : MlmetricfairnessLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_layer_set(s : MlmetricfairnessLayer, i : Int, v : Double) -> MlmetricfairnessLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessLayer::set(self : MlmetricfairnessLayer, i : Int, v : Double) -> MlmetricfairnessLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_layer_sum(s : MlmetricfairnessLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessLayer::sum(self : MlmetricfairnessLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_layer_mean(s : MlmetricfairnessLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessLayer::mean(self : MlmetricfairnessLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_layer_scale(s : MlmetricfairnessLayer, f : Double) -> MlmetricfairnessLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessLayer::scale(self : MlmetricfairnessLayer, f : Double) -> MlmetricfairnessLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_layer_add(a : MlmetricfairnessLayer, b : MlmetricfairnessLayer) -> MlmetricfairnessLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessLayer::add(self : MlmetricfairnessLayer, other : MlmetricfairnessLayer) -> MlmetricfairnessLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_layer_copy(s : MlmetricfairnessLayer) -> MlmetricfairnessLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessLayer::copy(self : MlmetricfairnessLayer) -> MlmetricfairnessLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_layer_fill(s : MlmetricfairnessLayer, v : Double) -> MlmetricfairnessLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessLayer::fill(self : MlmetricfairnessLayer, v : Double) -> MlmetricfairnessLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_layer_min(s : MlmetricfairnessLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessLayer::min(self : MlmetricfairnessLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_layer_max(s : MlmetricfairnessLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessLayer::max(self : MlmetricfairnessLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_layer_to_string(s : MlmetricfairnessLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessLayer::to_string(self : MlmetricfairnessLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_fairness_buffer_make(size : Int) -> MlmetricfairnessBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_buffer_len(s : MlmetricfairnessBuffer) -> Int { s.size }
+pub fn MlmetricfairnessBuffer::len(self : MlmetricfairnessBuffer) -> Int { self.size }
 
-pub fn ml_metric_fairness_buffer_get(s : MlmetricfairnessBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessBuffer::get(self : MlmetricfairnessBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_buffer_set(s : MlmetricfairnessBuffer, i : Int, v : Double) -> MlmetricfairnessBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessBuffer::set(self : MlmetricfairnessBuffer, i : Int, v : Double) -> MlmetricfairnessBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_buffer_sum(s : MlmetricfairnessBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessBuffer::sum(self : MlmetricfairnessBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_buffer_mean(s : MlmetricfairnessBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessBuffer::mean(self : MlmetricfairnessBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_buffer_scale(s : MlmetricfairnessBuffer, f : Double) -> MlmetricfairnessBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessBuffer::scale(self : MlmetricfairnessBuffer, f : Double) -> MlmetricfairnessBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_buffer_add(a : MlmetricfairnessBuffer, b : MlmetricfairnessBuffer) -> MlmetricfairnessBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessBuffer::add(self : MlmetricfairnessBuffer, other : MlmetricfairnessBuffer) -> MlmetricfairnessBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_buffer_copy(s : MlmetricfairnessBuffer) -> MlmetricfairnessBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessBuffer::copy(self : MlmetricfairnessBuffer) -> MlmetricfairnessBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_buffer_fill(s : MlmetricfairnessBuffer, v : Double) -> MlmetricfairnessBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessBuffer::fill(self : MlmetricfairnessBuffer, v : Double) -> MlmetricfairnessBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_buffer_min(s : MlmetricfairnessBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessBuffer::min(self : MlmetricfairnessBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_buffer_max(s : MlmetricfairnessBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessBuffer::max(self : MlmetricfairnessBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_buffer_to_string(s : MlmetricfairnessBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessBuffer::to_string(self : MlmetricfairnessBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_fairness_cursor_make(size : Int) -> MlmetricfairnessCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_cursor_len(s : MlmetricfairnessCursor) -> Int { s.size }
+pub fn MlmetricfairnessCursor::len(self : MlmetricfairnessCursor) -> Int { self.size }
 
-pub fn ml_metric_fairness_cursor_get(s : MlmetricfairnessCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessCursor::get(self : MlmetricfairnessCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_cursor_set(s : MlmetricfairnessCursor, i : Int, v : Double) -> MlmetricfairnessCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCursor::set(self : MlmetricfairnessCursor, i : Int, v : Double) -> MlmetricfairnessCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cursor_sum(s : MlmetricfairnessCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessCursor::sum(self : MlmetricfairnessCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_cursor_mean(s : MlmetricfairnessCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessCursor::mean(self : MlmetricfairnessCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_cursor_scale(s : MlmetricfairnessCursor, f : Double) -> MlmetricfairnessCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCursor::scale(self : MlmetricfairnessCursor, f : Double) -> MlmetricfairnessCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cursor_add(a : MlmetricfairnessCursor, b : MlmetricfairnessCursor) -> MlmetricfairnessCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessCursor::add(self : MlmetricfairnessCursor, other : MlmetricfairnessCursor) -> MlmetricfairnessCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cursor_copy(s : MlmetricfairnessCursor) -> MlmetricfairnessCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCursor::copy(self : MlmetricfairnessCursor) -> MlmetricfairnessCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cursor_fill(s : MlmetricfairnessCursor, v : Double) -> MlmetricfairnessCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessCursor::fill(self : MlmetricfairnessCursor, v : Double) -> MlmetricfairnessCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_cursor_min(s : MlmetricfairnessCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessCursor::min(self : MlmetricfairnessCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_cursor_max(s : MlmetricfairnessCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessCursor::max(self : MlmetricfairnessCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_cursor_to_string(s : MlmetricfairnessCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessCursor::to_string(self : MlmetricfairnessCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessView {
@@ -912,45 +912,45 @@ pub fn ml_metric_fairness_view_make(size : Int) -> MlmetricfairnessView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_view_len(s : MlmetricfairnessView) -> Int { s.size }
+pub fn MlmetricfairnessView::len(self : MlmetricfairnessView) -> Int { self.size }
 
-pub fn ml_metric_fairness_view_get(s : MlmetricfairnessView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessView::get(self : MlmetricfairnessView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_view_set(s : MlmetricfairnessView, i : Int, v : Double) -> MlmetricfairnessView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessView::set(self : MlmetricfairnessView, i : Int, v : Double) -> MlmetricfairnessView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_view_sum(s : MlmetricfairnessView) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessView::sum(self : MlmetricfairnessView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_view_mean(s : MlmetricfairnessView) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessView::mean(self : MlmetricfairnessView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_view_scale(s : MlmetricfairnessView, f : Double) -> MlmetricfairnessView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessView::scale(self : MlmetricfairnessView, f : Double) -> MlmetricfairnessView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_view_add(a : MlmetricfairnessView, b : MlmetricfairnessView) -> MlmetricfairnessView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessView::add(self : MlmetricfairnessView, other : MlmetricfairnessView) -> MlmetricfairnessView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_view_copy(s : MlmetricfairnessView) -> MlmetricfairnessView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessView::copy(self : MlmetricfairnessView) -> MlmetricfairnessView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_view_fill(s : MlmetricfairnessView, v : Double) -> MlmetricfairnessView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessView::fill(self : MlmetricfairnessView, v : Double) -> MlmetricfairnessView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_view_min(s : MlmetricfairnessView) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessView::min(self : MlmetricfairnessView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_view_max(s : MlmetricfairnessView) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessView::max(self : MlmetricfairnessView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_view_to_string(s : MlmetricfairnessView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessView::to_string(self : MlmetricfairnessView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_fairness_range_make(size : Int) -> MlmetricfairnessRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_range_len(s : MlmetricfairnessRange) -> Int { s.size }
+pub fn MlmetricfairnessRange::len(self : MlmetricfairnessRange) -> Int { self.size }
 
-pub fn ml_metric_fairness_range_get(s : MlmetricfairnessRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessRange::get(self : MlmetricfairnessRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_range_set(s : MlmetricfairnessRange, i : Int, v : Double) -> MlmetricfairnessRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessRange::set(self : MlmetricfairnessRange, i : Int, v : Double) -> MlmetricfairnessRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_range_sum(s : MlmetricfairnessRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessRange::sum(self : MlmetricfairnessRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_range_mean(s : MlmetricfairnessRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessRange::mean(self : MlmetricfairnessRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_range_scale(s : MlmetricfairnessRange, f : Double) -> MlmetricfairnessRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessRange::scale(self : MlmetricfairnessRange, f : Double) -> MlmetricfairnessRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_range_add(a : MlmetricfairnessRange, b : MlmetricfairnessRange) -> MlmetricfairnessRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessRange::add(self : MlmetricfairnessRange, other : MlmetricfairnessRange) -> MlmetricfairnessRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_range_copy(s : MlmetricfairnessRange) -> MlmetricfairnessRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessRange::copy(self : MlmetricfairnessRange) -> MlmetricfairnessRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_range_fill(s : MlmetricfairnessRange, v : Double) -> MlmetricfairnessRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessRange::fill(self : MlmetricfairnessRange, v : Double) -> MlmetricfairnessRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_range_min(s : MlmetricfairnessRange) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessRange::min(self : MlmetricfairnessRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_range_max(s : MlmetricfairnessRange) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessRange::max(self : MlmetricfairnessRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_range_to_string(s : MlmetricfairnessRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessRange::to_string(self : MlmetricfairnessRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricfairnessSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_fairness_slice_make(size : Int) -> MlmetricfairnessSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_fairness_slice_len(s : MlmetricfairnessSlice) -> Int { s.size }
+pub fn MlmetricfairnessSlice::len(self : MlmetricfairnessSlice) -> Int { self.size }
 
-pub fn ml_metric_fairness_slice_get(s : MlmetricfairnessSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricfairnessSlice::get(self : MlmetricfairnessSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_fairness_slice_set(s : MlmetricfairnessSlice, i : Int, v : Double) -> MlmetricfairnessSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricfairnessSlice::set(self : MlmetricfairnessSlice, i : Int, v : Double) -> MlmetricfairnessSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_slice_sum(s : MlmetricfairnessSlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetricfairnessSlice::sum(self : MlmetricfairnessSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_fairness_slice_mean(s : MlmetricfairnessSlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetricfairnessSlice::mean(self : MlmetricfairnessSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_fairness_slice_scale(s : MlmetricfairnessSlice, f : Double) -> MlmetricfairnessSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessSlice::scale(self : MlmetricfairnessSlice, f : Double) -> MlmetricfairnessSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_slice_add(a : MlmetricfairnessSlice, b : MlmetricfairnessSlice) -> MlmetricfairnessSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricfairnessSlice::add(self : MlmetricfairnessSlice, other : MlmetricfairnessSlice) -> MlmetricfairnessSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_slice_copy(s : MlmetricfairnessSlice) -> MlmetricfairnessSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessSlice::copy(self : MlmetricfairnessSlice) -> MlmetricfairnessSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_slice_fill(s : MlmetricfairnessSlice, v : Double) -> MlmetricfairnessSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricfairnessSlice::fill(self : MlmetricfairnessSlice, v : Double) -> MlmetricfairnessSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_fairness_slice_min(s : MlmetricfairnessSlice) -> Double { @_common.min(s.data) }
+pub fn MlmetricfairnessSlice::min(self : MlmetricfairnessSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_fairness_slice_max(s : MlmetricfairnessSlice) -> Double { @_common.max(s.data) }
+pub fn MlmetricfairnessSlice::max(self : MlmetricfairnessSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_fairness_slice_to_string(s : MlmetricfairnessSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricfairnessSlice::to_string(self : MlmetricfairnessSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

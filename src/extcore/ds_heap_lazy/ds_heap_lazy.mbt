@@ -351,45 +351,45 @@ pub fn ds_heap_lazy_frame_make(size : Int) -> DsheaplazyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_frame_len(s : DsheaplazyFrame) -> Int { s.size }
+pub fn DsheaplazyFrame::len(self : DsheaplazyFrame) -> Int { self.size }
 
-pub fn ds_heap_lazy_frame_get(s : DsheaplazyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyFrame::get(self : DsheaplazyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_frame_set(s : DsheaplazyFrame, i : Int, v : Double) -> DsheaplazyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyFrame::set(self : DsheaplazyFrame, i : Int, v : Double) -> DsheaplazyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_frame_sum(s : DsheaplazyFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyFrame::sum(self : DsheaplazyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_frame_mean(s : DsheaplazyFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyFrame::mean(self : DsheaplazyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_frame_scale(s : DsheaplazyFrame, f : Double) -> DsheaplazyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyFrame::scale(self : DsheaplazyFrame, f : Double) -> DsheaplazyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_frame_add(a : DsheaplazyFrame, b : DsheaplazyFrame) -> DsheaplazyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyFrame::add(self : DsheaplazyFrame, other : DsheaplazyFrame) -> DsheaplazyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_frame_copy(s : DsheaplazyFrame) -> DsheaplazyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyFrame::copy(self : DsheaplazyFrame) -> DsheaplazyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_frame_fill(s : DsheaplazyFrame, v : Double) -> DsheaplazyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyFrame::fill(self : DsheaplazyFrame, v : Double) -> DsheaplazyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_frame_min(s : DsheaplazyFrame) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyFrame::min(self : DsheaplazyFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_frame_max(s : DsheaplazyFrame) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyFrame::max(self : DsheaplazyFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_frame_to_string(s : DsheaplazyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyFrame::to_string(self : DsheaplazyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_lazy_table_make(size : Int) -> DsheaplazyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_table_len(s : DsheaplazyTable) -> Int { s.size }
+pub fn DsheaplazyTable::len(self : DsheaplazyTable) -> Int { self.size }
 
-pub fn ds_heap_lazy_table_get(s : DsheaplazyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyTable::get(self : DsheaplazyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_table_set(s : DsheaplazyTable, i : Int, v : Double) -> DsheaplazyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyTable::set(self : DsheaplazyTable, i : Int, v : Double) -> DsheaplazyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_table_sum(s : DsheaplazyTable) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyTable::sum(self : DsheaplazyTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_table_mean(s : DsheaplazyTable) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyTable::mean(self : DsheaplazyTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_table_scale(s : DsheaplazyTable, f : Double) -> DsheaplazyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyTable::scale(self : DsheaplazyTable, f : Double) -> DsheaplazyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_table_add(a : DsheaplazyTable, b : DsheaplazyTable) -> DsheaplazyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyTable::add(self : DsheaplazyTable, other : DsheaplazyTable) -> DsheaplazyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_table_copy(s : DsheaplazyTable) -> DsheaplazyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyTable::copy(self : DsheaplazyTable) -> DsheaplazyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_table_fill(s : DsheaplazyTable, v : Double) -> DsheaplazyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyTable::fill(self : DsheaplazyTable, v : Double) -> DsheaplazyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_table_min(s : DsheaplazyTable) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyTable::min(self : DsheaplazyTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_table_max(s : DsheaplazyTable) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyTable::max(self : DsheaplazyTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_table_to_string(s : DsheaplazyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyTable::to_string(self : DsheaplazyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_lazy_graphn_make(size : Int) -> DsheaplazyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_graphn_len(s : DsheaplazyGraphN) -> Int { s.size }
+pub fn DsheaplazyGraphN::len(self : DsheaplazyGraphN) -> Int { self.size }
 
-pub fn ds_heap_lazy_graphn_get(s : DsheaplazyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyGraphN::get(self : DsheaplazyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_graphn_set(s : DsheaplazyGraphN, i : Int, v : Double) -> DsheaplazyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyGraphN::set(self : DsheaplazyGraphN, i : Int, v : Double) -> DsheaplazyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_graphn_sum(s : DsheaplazyGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyGraphN::sum(self : DsheaplazyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_graphn_mean(s : DsheaplazyGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyGraphN::mean(self : DsheaplazyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_graphn_scale(s : DsheaplazyGraphN, f : Double) -> DsheaplazyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyGraphN::scale(self : DsheaplazyGraphN, f : Double) -> DsheaplazyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_graphn_add(a : DsheaplazyGraphN, b : DsheaplazyGraphN) -> DsheaplazyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyGraphN::add(self : DsheaplazyGraphN, other : DsheaplazyGraphN) -> DsheaplazyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_graphn_copy(s : DsheaplazyGraphN) -> DsheaplazyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyGraphN::copy(self : DsheaplazyGraphN) -> DsheaplazyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_graphn_fill(s : DsheaplazyGraphN, v : Double) -> DsheaplazyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyGraphN::fill(self : DsheaplazyGraphN, v : Double) -> DsheaplazyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_graphn_min(s : DsheaplazyGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyGraphN::min(self : DsheaplazyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_graphn_max(s : DsheaplazyGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyGraphN::max(self : DsheaplazyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_graphn_to_string(s : DsheaplazyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyGraphN::to_string(self : DsheaplazyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_lazy_node_make(size : Int) -> DsheaplazyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_node_len(s : DsheaplazyNode) -> Int { s.size }
+pub fn DsheaplazyNode::len(self : DsheaplazyNode) -> Int { self.size }
 
-pub fn ds_heap_lazy_node_get(s : DsheaplazyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyNode::get(self : DsheaplazyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_node_set(s : DsheaplazyNode, i : Int, v : Double) -> DsheaplazyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyNode::set(self : DsheaplazyNode, i : Int, v : Double) -> DsheaplazyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_node_sum(s : DsheaplazyNode) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyNode::sum(self : DsheaplazyNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_node_mean(s : DsheaplazyNode) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyNode::mean(self : DsheaplazyNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_node_scale(s : DsheaplazyNode, f : Double) -> DsheaplazyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyNode::scale(self : DsheaplazyNode, f : Double) -> DsheaplazyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_node_add(a : DsheaplazyNode, b : DsheaplazyNode) -> DsheaplazyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyNode::add(self : DsheaplazyNode, other : DsheaplazyNode) -> DsheaplazyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_node_copy(s : DsheaplazyNode) -> DsheaplazyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyNode::copy(self : DsheaplazyNode) -> DsheaplazyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_node_fill(s : DsheaplazyNode, v : Double) -> DsheaplazyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyNode::fill(self : DsheaplazyNode, v : Double) -> DsheaplazyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_node_min(s : DsheaplazyNode) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyNode::min(self : DsheaplazyNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_node_max(s : DsheaplazyNode) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyNode::max(self : DsheaplazyNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_node_to_string(s : DsheaplazyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyNode::to_string(self : DsheaplazyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_lazy_edge_make(size : Int) -> DsheaplazyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_edge_len(s : DsheaplazyEdge) -> Int { s.size }
+pub fn DsheaplazyEdge::len(self : DsheaplazyEdge) -> Int { self.size }
 
-pub fn ds_heap_lazy_edge_get(s : DsheaplazyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyEdge::get(self : DsheaplazyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_edge_set(s : DsheaplazyEdge, i : Int, v : Double) -> DsheaplazyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyEdge::set(self : DsheaplazyEdge, i : Int, v : Double) -> DsheaplazyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_edge_sum(s : DsheaplazyEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyEdge::sum(self : DsheaplazyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_edge_mean(s : DsheaplazyEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyEdge::mean(self : DsheaplazyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_edge_scale(s : DsheaplazyEdge, f : Double) -> DsheaplazyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyEdge::scale(self : DsheaplazyEdge, f : Double) -> DsheaplazyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_edge_add(a : DsheaplazyEdge, b : DsheaplazyEdge) -> DsheaplazyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyEdge::add(self : DsheaplazyEdge, other : DsheaplazyEdge) -> DsheaplazyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_edge_copy(s : DsheaplazyEdge) -> DsheaplazyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyEdge::copy(self : DsheaplazyEdge) -> DsheaplazyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_edge_fill(s : DsheaplazyEdge, v : Double) -> DsheaplazyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyEdge::fill(self : DsheaplazyEdge, v : Double) -> DsheaplazyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_edge_min(s : DsheaplazyEdge) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyEdge::min(self : DsheaplazyEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_edge_max(s : DsheaplazyEdge) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyEdge::max(self : DsheaplazyEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_edge_to_string(s : DsheaplazyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyEdge::to_string(self : DsheaplazyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_lazy_path_make(size : Int) -> DsheaplazyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_path_len(s : DsheaplazyPath) -> Int { s.size }
+pub fn DsheaplazyPath::len(self : DsheaplazyPath) -> Int { self.size }
 
-pub fn ds_heap_lazy_path_get(s : DsheaplazyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyPath::get(self : DsheaplazyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_path_set(s : DsheaplazyPath, i : Int, v : Double) -> DsheaplazyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyPath::set(self : DsheaplazyPath, i : Int, v : Double) -> DsheaplazyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_path_sum(s : DsheaplazyPath) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyPath::sum(self : DsheaplazyPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_path_mean(s : DsheaplazyPath) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyPath::mean(self : DsheaplazyPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_path_scale(s : DsheaplazyPath, f : Double) -> DsheaplazyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyPath::scale(self : DsheaplazyPath, f : Double) -> DsheaplazyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_path_add(a : DsheaplazyPath, b : DsheaplazyPath) -> DsheaplazyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyPath::add(self : DsheaplazyPath, other : DsheaplazyPath) -> DsheaplazyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_path_copy(s : DsheaplazyPath) -> DsheaplazyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyPath::copy(self : DsheaplazyPath) -> DsheaplazyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_path_fill(s : DsheaplazyPath, v : Double) -> DsheaplazyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyPath::fill(self : DsheaplazyPath, v : Double) -> DsheaplazyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_path_min(s : DsheaplazyPath) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyPath::min(self : DsheaplazyPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_path_max(s : DsheaplazyPath) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyPath::max(self : DsheaplazyPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_path_to_string(s : DsheaplazyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyPath::to_string(self : DsheaplazyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_lazy_cluster_make(size : Int) -> DsheaplazyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_cluster_len(s : DsheaplazyCluster) -> Int { s.size }
+pub fn DsheaplazyCluster::len(self : DsheaplazyCluster) -> Int { self.size }
 
-pub fn ds_heap_lazy_cluster_get(s : DsheaplazyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyCluster::get(self : DsheaplazyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_cluster_set(s : DsheaplazyCluster, i : Int, v : Double) -> DsheaplazyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyCluster::set(self : DsheaplazyCluster, i : Int, v : Double) -> DsheaplazyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cluster_sum(s : DsheaplazyCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyCluster::sum(self : DsheaplazyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_cluster_mean(s : DsheaplazyCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyCluster::mean(self : DsheaplazyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_cluster_scale(s : DsheaplazyCluster, f : Double) -> DsheaplazyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyCluster::scale(self : DsheaplazyCluster, f : Double) -> DsheaplazyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cluster_add(a : DsheaplazyCluster, b : DsheaplazyCluster) -> DsheaplazyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyCluster::add(self : DsheaplazyCluster, other : DsheaplazyCluster) -> DsheaplazyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cluster_copy(s : DsheaplazyCluster) -> DsheaplazyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyCluster::copy(self : DsheaplazyCluster) -> DsheaplazyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cluster_fill(s : DsheaplazyCluster, v : Double) -> DsheaplazyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyCluster::fill(self : DsheaplazyCluster, v : Double) -> DsheaplazyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cluster_min(s : DsheaplazyCluster) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyCluster::min(self : DsheaplazyCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_cluster_max(s : DsheaplazyCluster) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyCluster::max(self : DsheaplazyCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_cluster_to_string(s : DsheaplazyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyCluster::to_string(self : DsheaplazyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_lazy_model_make(size : Int) -> DsheaplazyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_model_len(s : DsheaplazyModel) -> Int { s.size }
+pub fn DsheaplazyModel::len(self : DsheaplazyModel) -> Int { self.size }
 
-pub fn ds_heap_lazy_model_get(s : DsheaplazyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyModel::get(self : DsheaplazyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_model_set(s : DsheaplazyModel, i : Int, v : Double) -> DsheaplazyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyModel::set(self : DsheaplazyModel, i : Int, v : Double) -> DsheaplazyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_model_sum(s : DsheaplazyModel) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyModel::sum(self : DsheaplazyModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_model_mean(s : DsheaplazyModel) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyModel::mean(self : DsheaplazyModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_model_scale(s : DsheaplazyModel, f : Double) -> DsheaplazyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyModel::scale(self : DsheaplazyModel, f : Double) -> DsheaplazyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_model_add(a : DsheaplazyModel, b : DsheaplazyModel) -> DsheaplazyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyModel::add(self : DsheaplazyModel, other : DsheaplazyModel) -> DsheaplazyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_model_copy(s : DsheaplazyModel) -> DsheaplazyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyModel::copy(self : DsheaplazyModel) -> DsheaplazyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_model_fill(s : DsheaplazyModel, v : Double) -> DsheaplazyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyModel::fill(self : DsheaplazyModel, v : Double) -> DsheaplazyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_model_min(s : DsheaplazyModel) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyModel::min(self : DsheaplazyModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_model_max(s : DsheaplazyModel) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyModel::max(self : DsheaplazyModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_model_to_string(s : DsheaplazyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyModel::to_string(self : DsheaplazyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_lazy_layer_make(size : Int) -> DsheaplazyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_layer_len(s : DsheaplazyLayer) -> Int { s.size }
+pub fn DsheaplazyLayer::len(self : DsheaplazyLayer) -> Int { self.size }
 
-pub fn ds_heap_lazy_layer_get(s : DsheaplazyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyLayer::get(self : DsheaplazyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_layer_set(s : DsheaplazyLayer, i : Int, v : Double) -> DsheaplazyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyLayer::set(self : DsheaplazyLayer, i : Int, v : Double) -> DsheaplazyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_layer_sum(s : DsheaplazyLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyLayer::sum(self : DsheaplazyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_layer_mean(s : DsheaplazyLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyLayer::mean(self : DsheaplazyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_layer_scale(s : DsheaplazyLayer, f : Double) -> DsheaplazyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyLayer::scale(self : DsheaplazyLayer, f : Double) -> DsheaplazyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_layer_add(a : DsheaplazyLayer, b : DsheaplazyLayer) -> DsheaplazyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyLayer::add(self : DsheaplazyLayer, other : DsheaplazyLayer) -> DsheaplazyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_layer_copy(s : DsheaplazyLayer) -> DsheaplazyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyLayer::copy(self : DsheaplazyLayer) -> DsheaplazyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_layer_fill(s : DsheaplazyLayer, v : Double) -> DsheaplazyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyLayer::fill(self : DsheaplazyLayer, v : Double) -> DsheaplazyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_layer_min(s : DsheaplazyLayer) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyLayer::min(self : DsheaplazyLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_layer_max(s : DsheaplazyLayer) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyLayer::max(self : DsheaplazyLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_layer_to_string(s : DsheaplazyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyLayer::to_string(self : DsheaplazyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_lazy_buffer_make(size : Int) -> DsheaplazyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_buffer_len(s : DsheaplazyBuffer) -> Int { s.size }
+pub fn DsheaplazyBuffer::len(self : DsheaplazyBuffer) -> Int { self.size }
 
-pub fn ds_heap_lazy_buffer_get(s : DsheaplazyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyBuffer::get(self : DsheaplazyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_buffer_set(s : DsheaplazyBuffer, i : Int, v : Double) -> DsheaplazyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyBuffer::set(self : DsheaplazyBuffer, i : Int, v : Double) -> DsheaplazyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_buffer_sum(s : DsheaplazyBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyBuffer::sum(self : DsheaplazyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_buffer_mean(s : DsheaplazyBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyBuffer::mean(self : DsheaplazyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_buffer_scale(s : DsheaplazyBuffer, f : Double) -> DsheaplazyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyBuffer::scale(self : DsheaplazyBuffer, f : Double) -> DsheaplazyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_buffer_add(a : DsheaplazyBuffer, b : DsheaplazyBuffer) -> DsheaplazyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyBuffer::add(self : DsheaplazyBuffer, other : DsheaplazyBuffer) -> DsheaplazyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_buffer_copy(s : DsheaplazyBuffer) -> DsheaplazyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyBuffer::copy(self : DsheaplazyBuffer) -> DsheaplazyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_buffer_fill(s : DsheaplazyBuffer, v : Double) -> DsheaplazyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyBuffer::fill(self : DsheaplazyBuffer, v : Double) -> DsheaplazyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_buffer_min(s : DsheaplazyBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyBuffer::min(self : DsheaplazyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_buffer_max(s : DsheaplazyBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyBuffer::max(self : DsheaplazyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_buffer_to_string(s : DsheaplazyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyBuffer::to_string(self : DsheaplazyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_lazy_cursor_make(size : Int) -> DsheaplazyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_cursor_len(s : DsheaplazyCursor) -> Int { s.size }
+pub fn DsheaplazyCursor::len(self : DsheaplazyCursor) -> Int { self.size }
 
-pub fn ds_heap_lazy_cursor_get(s : DsheaplazyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyCursor::get(self : DsheaplazyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_cursor_set(s : DsheaplazyCursor, i : Int, v : Double) -> DsheaplazyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyCursor::set(self : DsheaplazyCursor, i : Int, v : Double) -> DsheaplazyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cursor_sum(s : DsheaplazyCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyCursor::sum(self : DsheaplazyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_cursor_mean(s : DsheaplazyCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyCursor::mean(self : DsheaplazyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_cursor_scale(s : DsheaplazyCursor, f : Double) -> DsheaplazyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyCursor::scale(self : DsheaplazyCursor, f : Double) -> DsheaplazyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cursor_add(a : DsheaplazyCursor, b : DsheaplazyCursor) -> DsheaplazyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyCursor::add(self : DsheaplazyCursor, other : DsheaplazyCursor) -> DsheaplazyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cursor_copy(s : DsheaplazyCursor) -> DsheaplazyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyCursor::copy(self : DsheaplazyCursor) -> DsheaplazyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cursor_fill(s : DsheaplazyCursor, v : Double) -> DsheaplazyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyCursor::fill(self : DsheaplazyCursor, v : Double) -> DsheaplazyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_cursor_min(s : DsheaplazyCursor) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyCursor::min(self : DsheaplazyCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_cursor_max(s : DsheaplazyCursor) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyCursor::max(self : DsheaplazyCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_cursor_to_string(s : DsheaplazyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyCursor::to_string(self : DsheaplazyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyView {
@@ -912,45 +912,45 @@ pub fn ds_heap_lazy_view_make(size : Int) -> DsheaplazyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_view_len(s : DsheaplazyView) -> Int { s.size }
+pub fn DsheaplazyView::len(self : DsheaplazyView) -> Int { self.size }
 
-pub fn ds_heap_lazy_view_get(s : DsheaplazyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyView::get(self : DsheaplazyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_view_set(s : DsheaplazyView, i : Int, v : Double) -> DsheaplazyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyView::set(self : DsheaplazyView, i : Int, v : Double) -> DsheaplazyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_view_sum(s : DsheaplazyView) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyView::sum(self : DsheaplazyView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_view_mean(s : DsheaplazyView) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyView::mean(self : DsheaplazyView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_view_scale(s : DsheaplazyView, f : Double) -> DsheaplazyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyView::scale(self : DsheaplazyView, f : Double) -> DsheaplazyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_view_add(a : DsheaplazyView, b : DsheaplazyView) -> DsheaplazyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyView::add(self : DsheaplazyView, other : DsheaplazyView) -> DsheaplazyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_view_copy(s : DsheaplazyView) -> DsheaplazyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyView::copy(self : DsheaplazyView) -> DsheaplazyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_view_fill(s : DsheaplazyView, v : Double) -> DsheaplazyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyView::fill(self : DsheaplazyView, v : Double) -> DsheaplazyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_view_min(s : DsheaplazyView) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyView::min(self : DsheaplazyView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_view_max(s : DsheaplazyView) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyView::max(self : DsheaplazyView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_view_to_string(s : DsheaplazyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyView::to_string(self : DsheaplazyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazyRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_lazy_range_make(size : Int) -> DsheaplazyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_range_len(s : DsheaplazyRange) -> Int { s.size }
+pub fn DsheaplazyRange::len(self : DsheaplazyRange) -> Int { self.size }
 
-pub fn ds_heap_lazy_range_get(s : DsheaplazyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazyRange::get(self : DsheaplazyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_range_set(s : DsheaplazyRange, i : Int, v : Double) -> DsheaplazyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazyRange::set(self : DsheaplazyRange, i : Int, v : Double) -> DsheaplazyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_range_sum(s : DsheaplazyRange) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazyRange::sum(self : DsheaplazyRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_range_mean(s : DsheaplazyRange) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazyRange::mean(self : DsheaplazyRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_range_scale(s : DsheaplazyRange, f : Double) -> DsheaplazyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazyRange::scale(self : DsheaplazyRange, f : Double) -> DsheaplazyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_range_add(a : DsheaplazyRange, b : DsheaplazyRange) -> DsheaplazyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazyRange::add(self : DsheaplazyRange, other : DsheaplazyRange) -> DsheaplazyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_range_copy(s : DsheaplazyRange) -> DsheaplazyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazyRange::copy(self : DsheaplazyRange) -> DsheaplazyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_range_fill(s : DsheaplazyRange, v : Double) -> DsheaplazyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazyRange::fill(self : DsheaplazyRange, v : Double) -> DsheaplazyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_range_min(s : DsheaplazyRange) -> Double { @_common.min(s.data) }
+pub fn DsheaplazyRange::min(self : DsheaplazyRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_range_max(s : DsheaplazyRange) -> Double { @_common.max(s.data) }
+pub fn DsheaplazyRange::max(self : DsheaplazyRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_range_to_string(s : DsheaplazyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazyRange::to_string(self : DsheaplazyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheaplazySlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_lazy_slice_make(size : Int) -> DsheaplazySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_lazy_slice_len(s : DsheaplazySlice) -> Int { s.size }
+pub fn DsheaplazySlice::len(self : DsheaplazySlice) -> Int { self.size }
 
-pub fn ds_heap_lazy_slice_get(s : DsheaplazySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheaplazySlice::get(self : DsheaplazySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_lazy_slice_set(s : DsheaplazySlice, i : Int, v : Double) -> DsheaplazySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheaplazySlice::set(self : DsheaplazySlice, i : Int, v : Double) -> DsheaplazySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_slice_sum(s : DsheaplazySlice) -> Double { @_common.sum(s.data) }
+pub fn DsheaplazySlice::sum(self : DsheaplazySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_lazy_slice_mean(s : DsheaplazySlice) -> Double { @_common.mean(s.data) }
+pub fn DsheaplazySlice::mean(self : DsheaplazySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_lazy_slice_scale(s : DsheaplazySlice, f : Double) -> DsheaplazySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheaplazySlice::scale(self : DsheaplazySlice, f : Double) -> DsheaplazySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_slice_add(a : DsheaplazySlice, b : DsheaplazySlice) -> DsheaplazySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheaplazySlice::add(self : DsheaplazySlice, other : DsheaplazySlice) -> DsheaplazySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_slice_copy(s : DsheaplazySlice) -> DsheaplazySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheaplazySlice::copy(self : DsheaplazySlice) -> DsheaplazySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_slice_fill(s : DsheaplazySlice, v : Double) -> DsheaplazySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheaplazySlice::fill(self : DsheaplazySlice, v : Double) -> DsheaplazySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_lazy_slice_min(s : DsheaplazySlice) -> Double { @_common.min(s.data) }
+pub fn DsheaplazySlice::min(self : DsheaplazySlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_lazy_slice_max(s : DsheaplazySlice) -> Double { @_common.max(s.data) }
+pub fn DsheaplazySlice::max(self : DsheaplazySlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_lazy_slice_to_string(s : DsheaplazySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheaplazySlice::to_string(self : DsheaplazySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

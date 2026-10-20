@@ -351,45 +351,45 @@ pub fn ml_cluster_kmeans_frame_make(size : Int) -> MlclusterkmeansFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_frame_len(s : MlclusterkmeansFrame) -> Int { s.size }
+pub fn MlclusterkmeansFrame::len(self : MlclusterkmeansFrame) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_frame_get(s : MlclusterkmeansFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansFrame::get(self : MlclusterkmeansFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_frame_set(s : MlclusterkmeansFrame, i : Int, v : Double) -> MlclusterkmeansFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansFrame::set(self : MlclusterkmeansFrame, i : Int, v : Double) -> MlclusterkmeansFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_frame_sum(s : MlclusterkmeansFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansFrame::sum(self : MlclusterkmeansFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_frame_mean(s : MlclusterkmeansFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansFrame::mean(self : MlclusterkmeansFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_frame_scale(s : MlclusterkmeansFrame, f : Double) -> MlclusterkmeansFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansFrame::scale(self : MlclusterkmeansFrame, f : Double) -> MlclusterkmeansFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_frame_add(a : MlclusterkmeansFrame, b : MlclusterkmeansFrame) -> MlclusterkmeansFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansFrame::add(self : MlclusterkmeansFrame, other : MlclusterkmeansFrame) -> MlclusterkmeansFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_frame_copy(s : MlclusterkmeansFrame) -> MlclusterkmeansFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansFrame::copy(self : MlclusterkmeansFrame) -> MlclusterkmeansFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_frame_fill(s : MlclusterkmeansFrame, v : Double) -> MlclusterkmeansFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansFrame::fill(self : MlclusterkmeansFrame, v : Double) -> MlclusterkmeansFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_frame_min(s : MlclusterkmeansFrame) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansFrame::min(self : MlclusterkmeansFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_frame_max(s : MlclusterkmeansFrame) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansFrame::max(self : MlclusterkmeansFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_frame_to_string(s : MlclusterkmeansFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansFrame::to_string(self : MlclusterkmeansFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_kmeans_table_make(size : Int) -> MlclusterkmeansTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_table_len(s : MlclusterkmeansTable) -> Int { s.size }
+pub fn MlclusterkmeansTable::len(self : MlclusterkmeansTable) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_table_get(s : MlclusterkmeansTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansTable::get(self : MlclusterkmeansTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_table_set(s : MlclusterkmeansTable, i : Int, v : Double) -> MlclusterkmeansTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansTable::set(self : MlclusterkmeansTable, i : Int, v : Double) -> MlclusterkmeansTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_table_sum(s : MlclusterkmeansTable) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansTable::sum(self : MlclusterkmeansTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_table_mean(s : MlclusterkmeansTable) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansTable::mean(self : MlclusterkmeansTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_table_scale(s : MlclusterkmeansTable, f : Double) -> MlclusterkmeansTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansTable::scale(self : MlclusterkmeansTable, f : Double) -> MlclusterkmeansTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_table_add(a : MlclusterkmeansTable, b : MlclusterkmeansTable) -> MlclusterkmeansTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansTable::add(self : MlclusterkmeansTable, other : MlclusterkmeansTable) -> MlclusterkmeansTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_table_copy(s : MlclusterkmeansTable) -> MlclusterkmeansTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansTable::copy(self : MlclusterkmeansTable) -> MlclusterkmeansTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_table_fill(s : MlclusterkmeansTable, v : Double) -> MlclusterkmeansTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansTable::fill(self : MlclusterkmeansTable, v : Double) -> MlclusterkmeansTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_table_min(s : MlclusterkmeansTable) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansTable::min(self : MlclusterkmeansTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_table_max(s : MlclusterkmeansTable) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansTable::max(self : MlclusterkmeansTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_table_to_string(s : MlclusterkmeansTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansTable::to_string(self : MlclusterkmeansTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_kmeans_graphn_make(size : Int) -> MlclusterkmeansGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_graphn_len(s : MlclusterkmeansGraphN) -> Int { s.size }
+pub fn MlclusterkmeansGraphN::len(self : MlclusterkmeansGraphN) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_graphn_get(s : MlclusterkmeansGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansGraphN::get(self : MlclusterkmeansGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_graphn_set(s : MlclusterkmeansGraphN, i : Int, v : Double) -> MlclusterkmeansGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansGraphN::set(self : MlclusterkmeansGraphN, i : Int, v : Double) -> MlclusterkmeansGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_graphn_sum(s : MlclusterkmeansGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansGraphN::sum(self : MlclusterkmeansGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_graphn_mean(s : MlclusterkmeansGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansGraphN::mean(self : MlclusterkmeansGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_graphn_scale(s : MlclusterkmeansGraphN, f : Double) -> MlclusterkmeansGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansGraphN::scale(self : MlclusterkmeansGraphN, f : Double) -> MlclusterkmeansGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_graphn_add(a : MlclusterkmeansGraphN, b : MlclusterkmeansGraphN) -> MlclusterkmeansGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansGraphN::add(self : MlclusterkmeansGraphN, other : MlclusterkmeansGraphN) -> MlclusterkmeansGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_graphn_copy(s : MlclusterkmeansGraphN) -> MlclusterkmeansGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansGraphN::copy(self : MlclusterkmeansGraphN) -> MlclusterkmeansGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_graphn_fill(s : MlclusterkmeansGraphN, v : Double) -> MlclusterkmeansGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansGraphN::fill(self : MlclusterkmeansGraphN, v : Double) -> MlclusterkmeansGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_graphn_min(s : MlclusterkmeansGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansGraphN::min(self : MlclusterkmeansGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_graphn_max(s : MlclusterkmeansGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansGraphN::max(self : MlclusterkmeansGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_graphn_to_string(s : MlclusterkmeansGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansGraphN::to_string(self : MlclusterkmeansGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_kmeans_node_make(size : Int) -> MlclusterkmeansNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_node_len(s : MlclusterkmeansNode) -> Int { s.size }
+pub fn MlclusterkmeansNode::len(self : MlclusterkmeansNode) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_node_get(s : MlclusterkmeansNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansNode::get(self : MlclusterkmeansNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_node_set(s : MlclusterkmeansNode, i : Int, v : Double) -> MlclusterkmeansNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansNode::set(self : MlclusterkmeansNode, i : Int, v : Double) -> MlclusterkmeansNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_node_sum(s : MlclusterkmeansNode) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansNode::sum(self : MlclusterkmeansNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_node_mean(s : MlclusterkmeansNode) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansNode::mean(self : MlclusterkmeansNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_node_scale(s : MlclusterkmeansNode, f : Double) -> MlclusterkmeansNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansNode::scale(self : MlclusterkmeansNode, f : Double) -> MlclusterkmeansNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_node_add(a : MlclusterkmeansNode, b : MlclusterkmeansNode) -> MlclusterkmeansNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansNode::add(self : MlclusterkmeansNode, other : MlclusterkmeansNode) -> MlclusterkmeansNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_node_copy(s : MlclusterkmeansNode) -> MlclusterkmeansNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansNode::copy(self : MlclusterkmeansNode) -> MlclusterkmeansNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_node_fill(s : MlclusterkmeansNode, v : Double) -> MlclusterkmeansNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansNode::fill(self : MlclusterkmeansNode, v : Double) -> MlclusterkmeansNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_node_min(s : MlclusterkmeansNode) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansNode::min(self : MlclusterkmeansNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_node_max(s : MlclusterkmeansNode) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansNode::max(self : MlclusterkmeansNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_node_to_string(s : MlclusterkmeansNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansNode::to_string(self : MlclusterkmeansNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_kmeans_edge_make(size : Int) -> MlclusterkmeansEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_edge_len(s : MlclusterkmeansEdge) -> Int { s.size }
+pub fn MlclusterkmeansEdge::len(self : MlclusterkmeansEdge) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_edge_get(s : MlclusterkmeansEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansEdge::get(self : MlclusterkmeansEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_edge_set(s : MlclusterkmeansEdge, i : Int, v : Double) -> MlclusterkmeansEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansEdge::set(self : MlclusterkmeansEdge, i : Int, v : Double) -> MlclusterkmeansEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_edge_sum(s : MlclusterkmeansEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansEdge::sum(self : MlclusterkmeansEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_edge_mean(s : MlclusterkmeansEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansEdge::mean(self : MlclusterkmeansEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_edge_scale(s : MlclusterkmeansEdge, f : Double) -> MlclusterkmeansEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansEdge::scale(self : MlclusterkmeansEdge, f : Double) -> MlclusterkmeansEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_edge_add(a : MlclusterkmeansEdge, b : MlclusterkmeansEdge) -> MlclusterkmeansEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansEdge::add(self : MlclusterkmeansEdge, other : MlclusterkmeansEdge) -> MlclusterkmeansEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_edge_copy(s : MlclusterkmeansEdge) -> MlclusterkmeansEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansEdge::copy(self : MlclusterkmeansEdge) -> MlclusterkmeansEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_edge_fill(s : MlclusterkmeansEdge, v : Double) -> MlclusterkmeansEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansEdge::fill(self : MlclusterkmeansEdge, v : Double) -> MlclusterkmeansEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_edge_min(s : MlclusterkmeansEdge) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansEdge::min(self : MlclusterkmeansEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_edge_max(s : MlclusterkmeansEdge) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansEdge::max(self : MlclusterkmeansEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_edge_to_string(s : MlclusterkmeansEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansEdge::to_string(self : MlclusterkmeansEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_kmeans_path_make(size : Int) -> MlclusterkmeansPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_path_len(s : MlclusterkmeansPath) -> Int { s.size }
+pub fn MlclusterkmeansPath::len(self : MlclusterkmeansPath) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_path_get(s : MlclusterkmeansPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansPath::get(self : MlclusterkmeansPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_path_set(s : MlclusterkmeansPath, i : Int, v : Double) -> MlclusterkmeansPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansPath::set(self : MlclusterkmeansPath, i : Int, v : Double) -> MlclusterkmeansPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_path_sum(s : MlclusterkmeansPath) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansPath::sum(self : MlclusterkmeansPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_path_mean(s : MlclusterkmeansPath) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansPath::mean(self : MlclusterkmeansPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_path_scale(s : MlclusterkmeansPath, f : Double) -> MlclusterkmeansPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansPath::scale(self : MlclusterkmeansPath, f : Double) -> MlclusterkmeansPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_path_add(a : MlclusterkmeansPath, b : MlclusterkmeansPath) -> MlclusterkmeansPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansPath::add(self : MlclusterkmeansPath, other : MlclusterkmeansPath) -> MlclusterkmeansPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_path_copy(s : MlclusterkmeansPath) -> MlclusterkmeansPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansPath::copy(self : MlclusterkmeansPath) -> MlclusterkmeansPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_path_fill(s : MlclusterkmeansPath, v : Double) -> MlclusterkmeansPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansPath::fill(self : MlclusterkmeansPath, v : Double) -> MlclusterkmeansPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_path_min(s : MlclusterkmeansPath) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansPath::min(self : MlclusterkmeansPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_path_max(s : MlclusterkmeansPath) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansPath::max(self : MlclusterkmeansPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_path_to_string(s : MlclusterkmeansPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansPath::to_string(self : MlclusterkmeansPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_kmeans_cluster_make(size : Int) -> MlclusterkmeansCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_cluster_len(s : MlclusterkmeansCluster) -> Int { s.size }
+pub fn MlclusterkmeansCluster::len(self : MlclusterkmeansCluster) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_cluster_get(s : MlclusterkmeansCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansCluster::get(self : MlclusterkmeansCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_cluster_set(s : MlclusterkmeansCluster, i : Int, v : Double) -> MlclusterkmeansCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCluster::set(self : MlclusterkmeansCluster, i : Int, v : Double) -> MlclusterkmeansCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cluster_sum(s : MlclusterkmeansCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansCluster::sum(self : MlclusterkmeansCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_cluster_mean(s : MlclusterkmeansCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansCluster::mean(self : MlclusterkmeansCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_cluster_scale(s : MlclusterkmeansCluster, f : Double) -> MlclusterkmeansCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCluster::scale(self : MlclusterkmeansCluster, f : Double) -> MlclusterkmeansCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cluster_add(a : MlclusterkmeansCluster, b : MlclusterkmeansCluster) -> MlclusterkmeansCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansCluster::add(self : MlclusterkmeansCluster, other : MlclusterkmeansCluster) -> MlclusterkmeansCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cluster_copy(s : MlclusterkmeansCluster) -> MlclusterkmeansCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCluster::copy(self : MlclusterkmeansCluster) -> MlclusterkmeansCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cluster_fill(s : MlclusterkmeansCluster, v : Double) -> MlclusterkmeansCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCluster::fill(self : MlclusterkmeansCluster, v : Double) -> MlclusterkmeansCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cluster_min(s : MlclusterkmeansCluster) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansCluster::min(self : MlclusterkmeansCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_cluster_max(s : MlclusterkmeansCluster) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansCluster::max(self : MlclusterkmeansCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_cluster_to_string(s : MlclusterkmeansCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansCluster::to_string(self : MlclusterkmeansCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_kmeans_model_make(size : Int) -> MlclusterkmeansModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_model_len(s : MlclusterkmeansModel) -> Int { s.size }
+pub fn MlclusterkmeansModel::len(self : MlclusterkmeansModel) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_model_get(s : MlclusterkmeansModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansModel::get(self : MlclusterkmeansModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_model_set(s : MlclusterkmeansModel, i : Int, v : Double) -> MlclusterkmeansModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansModel::set(self : MlclusterkmeansModel, i : Int, v : Double) -> MlclusterkmeansModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_model_sum(s : MlclusterkmeansModel) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansModel::sum(self : MlclusterkmeansModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_model_mean(s : MlclusterkmeansModel) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansModel::mean(self : MlclusterkmeansModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_model_scale(s : MlclusterkmeansModel, f : Double) -> MlclusterkmeansModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansModel::scale(self : MlclusterkmeansModel, f : Double) -> MlclusterkmeansModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_model_add(a : MlclusterkmeansModel, b : MlclusterkmeansModel) -> MlclusterkmeansModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansModel::add(self : MlclusterkmeansModel, other : MlclusterkmeansModel) -> MlclusterkmeansModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_model_copy(s : MlclusterkmeansModel) -> MlclusterkmeansModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansModel::copy(self : MlclusterkmeansModel) -> MlclusterkmeansModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_model_fill(s : MlclusterkmeansModel, v : Double) -> MlclusterkmeansModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansModel::fill(self : MlclusterkmeansModel, v : Double) -> MlclusterkmeansModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_model_min(s : MlclusterkmeansModel) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansModel::min(self : MlclusterkmeansModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_model_max(s : MlclusterkmeansModel) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansModel::max(self : MlclusterkmeansModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_model_to_string(s : MlclusterkmeansModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansModel::to_string(self : MlclusterkmeansModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_kmeans_layer_make(size : Int) -> MlclusterkmeansLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_layer_len(s : MlclusterkmeansLayer) -> Int { s.size }
+pub fn MlclusterkmeansLayer::len(self : MlclusterkmeansLayer) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_layer_get(s : MlclusterkmeansLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansLayer::get(self : MlclusterkmeansLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_layer_set(s : MlclusterkmeansLayer, i : Int, v : Double) -> MlclusterkmeansLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansLayer::set(self : MlclusterkmeansLayer, i : Int, v : Double) -> MlclusterkmeansLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_layer_sum(s : MlclusterkmeansLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansLayer::sum(self : MlclusterkmeansLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_layer_mean(s : MlclusterkmeansLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansLayer::mean(self : MlclusterkmeansLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_layer_scale(s : MlclusterkmeansLayer, f : Double) -> MlclusterkmeansLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansLayer::scale(self : MlclusterkmeansLayer, f : Double) -> MlclusterkmeansLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_layer_add(a : MlclusterkmeansLayer, b : MlclusterkmeansLayer) -> MlclusterkmeansLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansLayer::add(self : MlclusterkmeansLayer, other : MlclusterkmeansLayer) -> MlclusterkmeansLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_layer_copy(s : MlclusterkmeansLayer) -> MlclusterkmeansLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansLayer::copy(self : MlclusterkmeansLayer) -> MlclusterkmeansLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_layer_fill(s : MlclusterkmeansLayer, v : Double) -> MlclusterkmeansLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansLayer::fill(self : MlclusterkmeansLayer, v : Double) -> MlclusterkmeansLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_layer_min(s : MlclusterkmeansLayer) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansLayer::min(self : MlclusterkmeansLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_layer_max(s : MlclusterkmeansLayer) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansLayer::max(self : MlclusterkmeansLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_layer_to_string(s : MlclusterkmeansLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansLayer::to_string(self : MlclusterkmeansLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_kmeans_buffer_make(size : Int) -> MlclusterkmeansBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_buffer_len(s : MlclusterkmeansBuffer) -> Int { s.size }
+pub fn MlclusterkmeansBuffer::len(self : MlclusterkmeansBuffer) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_buffer_get(s : MlclusterkmeansBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansBuffer::get(self : MlclusterkmeansBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_buffer_set(s : MlclusterkmeansBuffer, i : Int, v : Double) -> MlclusterkmeansBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansBuffer::set(self : MlclusterkmeansBuffer, i : Int, v : Double) -> MlclusterkmeansBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_buffer_sum(s : MlclusterkmeansBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansBuffer::sum(self : MlclusterkmeansBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_buffer_mean(s : MlclusterkmeansBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansBuffer::mean(self : MlclusterkmeansBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_buffer_scale(s : MlclusterkmeansBuffer, f : Double) -> MlclusterkmeansBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansBuffer::scale(self : MlclusterkmeansBuffer, f : Double) -> MlclusterkmeansBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_buffer_add(a : MlclusterkmeansBuffer, b : MlclusterkmeansBuffer) -> MlclusterkmeansBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansBuffer::add(self : MlclusterkmeansBuffer, other : MlclusterkmeansBuffer) -> MlclusterkmeansBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_buffer_copy(s : MlclusterkmeansBuffer) -> MlclusterkmeansBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansBuffer::copy(self : MlclusterkmeansBuffer) -> MlclusterkmeansBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_buffer_fill(s : MlclusterkmeansBuffer, v : Double) -> MlclusterkmeansBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansBuffer::fill(self : MlclusterkmeansBuffer, v : Double) -> MlclusterkmeansBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_buffer_min(s : MlclusterkmeansBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansBuffer::min(self : MlclusterkmeansBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_buffer_max(s : MlclusterkmeansBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansBuffer::max(self : MlclusterkmeansBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_buffer_to_string(s : MlclusterkmeansBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansBuffer::to_string(self : MlclusterkmeansBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_kmeans_cursor_make(size : Int) -> MlclusterkmeansCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_cursor_len(s : MlclusterkmeansCursor) -> Int { s.size }
+pub fn MlclusterkmeansCursor::len(self : MlclusterkmeansCursor) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_cursor_get(s : MlclusterkmeansCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansCursor::get(self : MlclusterkmeansCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_cursor_set(s : MlclusterkmeansCursor, i : Int, v : Double) -> MlclusterkmeansCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCursor::set(self : MlclusterkmeansCursor, i : Int, v : Double) -> MlclusterkmeansCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cursor_sum(s : MlclusterkmeansCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansCursor::sum(self : MlclusterkmeansCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_cursor_mean(s : MlclusterkmeansCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansCursor::mean(self : MlclusterkmeansCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_cursor_scale(s : MlclusterkmeansCursor, f : Double) -> MlclusterkmeansCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCursor::scale(self : MlclusterkmeansCursor, f : Double) -> MlclusterkmeansCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cursor_add(a : MlclusterkmeansCursor, b : MlclusterkmeansCursor) -> MlclusterkmeansCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansCursor::add(self : MlclusterkmeansCursor, other : MlclusterkmeansCursor) -> MlclusterkmeansCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cursor_copy(s : MlclusterkmeansCursor) -> MlclusterkmeansCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCursor::copy(self : MlclusterkmeansCursor) -> MlclusterkmeansCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cursor_fill(s : MlclusterkmeansCursor, v : Double) -> MlclusterkmeansCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansCursor::fill(self : MlclusterkmeansCursor, v : Double) -> MlclusterkmeansCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_cursor_min(s : MlclusterkmeansCursor) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansCursor::min(self : MlclusterkmeansCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_cursor_max(s : MlclusterkmeansCursor) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansCursor::max(self : MlclusterkmeansCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_cursor_to_string(s : MlclusterkmeansCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansCursor::to_string(self : MlclusterkmeansCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_kmeans_view_make(size : Int) -> MlclusterkmeansView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_view_len(s : MlclusterkmeansView) -> Int { s.size }
+pub fn MlclusterkmeansView::len(self : MlclusterkmeansView) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_view_get(s : MlclusterkmeansView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansView::get(self : MlclusterkmeansView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_view_set(s : MlclusterkmeansView, i : Int, v : Double) -> MlclusterkmeansView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansView::set(self : MlclusterkmeansView, i : Int, v : Double) -> MlclusterkmeansView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_view_sum(s : MlclusterkmeansView) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansView::sum(self : MlclusterkmeansView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_view_mean(s : MlclusterkmeansView) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansView::mean(self : MlclusterkmeansView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_view_scale(s : MlclusterkmeansView, f : Double) -> MlclusterkmeansView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansView::scale(self : MlclusterkmeansView, f : Double) -> MlclusterkmeansView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_view_add(a : MlclusterkmeansView, b : MlclusterkmeansView) -> MlclusterkmeansView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansView::add(self : MlclusterkmeansView, other : MlclusterkmeansView) -> MlclusterkmeansView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_view_copy(s : MlclusterkmeansView) -> MlclusterkmeansView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansView::copy(self : MlclusterkmeansView) -> MlclusterkmeansView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_view_fill(s : MlclusterkmeansView, v : Double) -> MlclusterkmeansView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansView::fill(self : MlclusterkmeansView, v : Double) -> MlclusterkmeansView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_view_min(s : MlclusterkmeansView) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansView::min(self : MlclusterkmeansView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_view_max(s : MlclusterkmeansView) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansView::max(self : MlclusterkmeansView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_view_to_string(s : MlclusterkmeansView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansView::to_string(self : MlclusterkmeansView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_kmeans_range_make(size : Int) -> MlclusterkmeansRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_range_len(s : MlclusterkmeansRange) -> Int { s.size }
+pub fn MlclusterkmeansRange::len(self : MlclusterkmeansRange) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_range_get(s : MlclusterkmeansRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansRange::get(self : MlclusterkmeansRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_range_set(s : MlclusterkmeansRange, i : Int, v : Double) -> MlclusterkmeansRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansRange::set(self : MlclusterkmeansRange, i : Int, v : Double) -> MlclusterkmeansRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_range_sum(s : MlclusterkmeansRange) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansRange::sum(self : MlclusterkmeansRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_range_mean(s : MlclusterkmeansRange) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansRange::mean(self : MlclusterkmeansRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_range_scale(s : MlclusterkmeansRange, f : Double) -> MlclusterkmeansRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansRange::scale(self : MlclusterkmeansRange, f : Double) -> MlclusterkmeansRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_range_add(a : MlclusterkmeansRange, b : MlclusterkmeansRange) -> MlclusterkmeansRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansRange::add(self : MlclusterkmeansRange, other : MlclusterkmeansRange) -> MlclusterkmeansRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_range_copy(s : MlclusterkmeansRange) -> MlclusterkmeansRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansRange::copy(self : MlclusterkmeansRange) -> MlclusterkmeansRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_range_fill(s : MlclusterkmeansRange, v : Double) -> MlclusterkmeansRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansRange::fill(self : MlclusterkmeansRange, v : Double) -> MlclusterkmeansRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_range_min(s : MlclusterkmeansRange) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansRange::min(self : MlclusterkmeansRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_range_max(s : MlclusterkmeansRange) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansRange::max(self : MlclusterkmeansRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_range_to_string(s : MlclusterkmeansRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansRange::to_string(self : MlclusterkmeansRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterkmeansSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_kmeans_slice_make(size : Int) -> MlclusterkmeansSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_kmeans_slice_len(s : MlclusterkmeansSlice) -> Int { s.size }
+pub fn MlclusterkmeansSlice::len(self : MlclusterkmeansSlice) -> Int { self.size }
 
-pub fn ml_cluster_kmeans_slice_get(s : MlclusterkmeansSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterkmeansSlice::get(self : MlclusterkmeansSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_kmeans_slice_set(s : MlclusterkmeansSlice, i : Int, v : Double) -> MlclusterkmeansSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterkmeansSlice::set(self : MlclusterkmeansSlice, i : Int, v : Double) -> MlclusterkmeansSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_slice_sum(s : MlclusterkmeansSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclusterkmeansSlice::sum(self : MlclusterkmeansSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_kmeans_slice_mean(s : MlclusterkmeansSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclusterkmeansSlice::mean(self : MlclusterkmeansSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_kmeans_slice_scale(s : MlclusterkmeansSlice, f : Double) -> MlclusterkmeansSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansSlice::scale(self : MlclusterkmeansSlice, f : Double) -> MlclusterkmeansSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_slice_add(a : MlclusterkmeansSlice, b : MlclusterkmeansSlice) -> MlclusterkmeansSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterkmeansSlice::add(self : MlclusterkmeansSlice, other : MlclusterkmeansSlice) -> MlclusterkmeansSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_slice_copy(s : MlclusterkmeansSlice) -> MlclusterkmeansSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansSlice::copy(self : MlclusterkmeansSlice) -> MlclusterkmeansSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_slice_fill(s : MlclusterkmeansSlice, v : Double) -> MlclusterkmeansSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterkmeansSlice::fill(self : MlclusterkmeansSlice, v : Double) -> MlclusterkmeansSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_kmeans_slice_min(s : MlclusterkmeansSlice) -> Double { @_common.min(s.data) }
+pub fn MlclusterkmeansSlice::min(self : MlclusterkmeansSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_kmeans_slice_max(s : MlclusterkmeansSlice) -> Double { @_common.max(s.data) }
+pub fn MlclusterkmeansSlice::max(self : MlclusterkmeansSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_kmeans_slice_to_string(s : MlclusterkmeansSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterkmeansSlice::to_string(self : MlclusterkmeansSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn chem_desc_rdkit_frame_make(size : Int) -> ChemdescrdkitFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_frame_len(s : ChemdescrdkitFrame) -> Int { s.size }
+pub fn ChemdescrdkitFrame::len(self : ChemdescrdkitFrame) -> Int { self.size }
 
-pub fn chem_desc_rdkit_frame_get(s : ChemdescrdkitFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitFrame::get(self : ChemdescrdkitFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_frame_set(s : ChemdescrdkitFrame, i : Int, v : Double) -> ChemdescrdkitFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitFrame::set(self : ChemdescrdkitFrame, i : Int, v : Double) -> ChemdescrdkitFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_frame_sum(s : ChemdescrdkitFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitFrame::sum(self : ChemdescrdkitFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_frame_mean(s : ChemdescrdkitFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitFrame::mean(self : ChemdescrdkitFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_frame_scale(s : ChemdescrdkitFrame, f : Double) -> ChemdescrdkitFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitFrame::scale(self : ChemdescrdkitFrame, f : Double) -> ChemdescrdkitFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_frame_add(a : ChemdescrdkitFrame, b : ChemdescrdkitFrame) -> ChemdescrdkitFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitFrame::add(self : ChemdescrdkitFrame, other : ChemdescrdkitFrame) -> ChemdescrdkitFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_frame_copy(s : ChemdescrdkitFrame) -> ChemdescrdkitFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitFrame::copy(self : ChemdescrdkitFrame) -> ChemdescrdkitFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_frame_fill(s : ChemdescrdkitFrame, v : Double) -> ChemdescrdkitFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitFrame::fill(self : ChemdescrdkitFrame, v : Double) -> ChemdescrdkitFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_frame_min(s : ChemdescrdkitFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitFrame::min(self : ChemdescrdkitFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_frame_max(s : ChemdescrdkitFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitFrame::max(self : ChemdescrdkitFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_frame_to_string(s : ChemdescrdkitFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitFrame::to_string(self : ChemdescrdkitFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_rdkit_table_make(size : Int) -> ChemdescrdkitTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_table_len(s : ChemdescrdkitTable) -> Int { s.size }
+pub fn ChemdescrdkitTable::len(self : ChemdescrdkitTable) -> Int { self.size }
 
-pub fn chem_desc_rdkit_table_get(s : ChemdescrdkitTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitTable::get(self : ChemdescrdkitTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_table_set(s : ChemdescrdkitTable, i : Int, v : Double) -> ChemdescrdkitTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitTable::set(self : ChemdescrdkitTable, i : Int, v : Double) -> ChemdescrdkitTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_table_sum(s : ChemdescrdkitTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitTable::sum(self : ChemdescrdkitTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_table_mean(s : ChemdescrdkitTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitTable::mean(self : ChemdescrdkitTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_table_scale(s : ChemdescrdkitTable, f : Double) -> ChemdescrdkitTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitTable::scale(self : ChemdescrdkitTable, f : Double) -> ChemdescrdkitTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_table_add(a : ChemdescrdkitTable, b : ChemdescrdkitTable) -> ChemdescrdkitTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitTable::add(self : ChemdescrdkitTable, other : ChemdescrdkitTable) -> ChemdescrdkitTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_table_copy(s : ChemdescrdkitTable) -> ChemdescrdkitTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitTable::copy(self : ChemdescrdkitTable) -> ChemdescrdkitTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_table_fill(s : ChemdescrdkitTable, v : Double) -> ChemdescrdkitTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitTable::fill(self : ChemdescrdkitTable, v : Double) -> ChemdescrdkitTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_table_min(s : ChemdescrdkitTable) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitTable::min(self : ChemdescrdkitTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_table_max(s : ChemdescrdkitTable) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitTable::max(self : ChemdescrdkitTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_table_to_string(s : ChemdescrdkitTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitTable::to_string(self : ChemdescrdkitTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_rdkit_graphn_make(size : Int) -> ChemdescrdkitGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_graphn_len(s : ChemdescrdkitGraphN) -> Int { s.size }
+pub fn ChemdescrdkitGraphN::len(self : ChemdescrdkitGraphN) -> Int { self.size }
 
-pub fn chem_desc_rdkit_graphn_get(s : ChemdescrdkitGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitGraphN::get(self : ChemdescrdkitGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_graphn_set(s : ChemdescrdkitGraphN, i : Int, v : Double) -> ChemdescrdkitGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitGraphN::set(self : ChemdescrdkitGraphN, i : Int, v : Double) -> ChemdescrdkitGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_graphn_sum(s : ChemdescrdkitGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitGraphN::sum(self : ChemdescrdkitGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_graphn_mean(s : ChemdescrdkitGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitGraphN::mean(self : ChemdescrdkitGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_graphn_scale(s : ChemdescrdkitGraphN, f : Double) -> ChemdescrdkitGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitGraphN::scale(self : ChemdescrdkitGraphN, f : Double) -> ChemdescrdkitGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_graphn_add(a : ChemdescrdkitGraphN, b : ChemdescrdkitGraphN) -> ChemdescrdkitGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitGraphN::add(self : ChemdescrdkitGraphN, other : ChemdescrdkitGraphN) -> ChemdescrdkitGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_graphn_copy(s : ChemdescrdkitGraphN) -> ChemdescrdkitGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitGraphN::copy(self : ChemdescrdkitGraphN) -> ChemdescrdkitGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_graphn_fill(s : ChemdescrdkitGraphN, v : Double) -> ChemdescrdkitGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitGraphN::fill(self : ChemdescrdkitGraphN, v : Double) -> ChemdescrdkitGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_graphn_min(s : ChemdescrdkitGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitGraphN::min(self : ChemdescrdkitGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_graphn_max(s : ChemdescrdkitGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitGraphN::max(self : ChemdescrdkitGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_graphn_to_string(s : ChemdescrdkitGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitGraphN::to_string(self : ChemdescrdkitGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_rdkit_node_make(size : Int) -> ChemdescrdkitNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_node_len(s : ChemdescrdkitNode) -> Int { s.size }
+pub fn ChemdescrdkitNode::len(self : ChemdescrdkitNode) -> Int { self.size }
 
-pub fn chem_desc_rdkit_node_get(s : ChemdescrdkitNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitNode::get(self : ChemdescrdkitNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_node_set(s : ChemdescrdkitNode, i : Int, v : Double) -> ChemdescrdkitNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitNode::set(self : ChemdescrdkitNode, i : Int, v : Double) -> ChemdescrdkitNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_node_sum(s : ChemdescrdkitNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitNode::sum(self : ChemdescrdkitNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_node_mean(s : ChemdescrdkitNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitNode::mean(self : ChemdescrdkitNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_node_scale(s : ChemdescrdkitNode, f : Double) -> ChemdescrdkitNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitNode::scale(self : ChemdescrdkitNode, f : Double) -> ChemdescrdkitNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_node_add(a : ChemdescrdkitNode, b : ChemdescrdkitNode) -> ChemdescrdkitNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitNode::add(self : ChemdescrdkitNode, other : ChemdescrdkitNode) -> ChemdescrdkitNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_node_copy(s : ChemdescrdkitNode) -> ChemdescrdkitNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitNode::copy(self : ChemdescrdkitNode) -> ChemdescrdkitNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_node_fill(s : ChemdescrdkitNode, v : Double) -> ChemdescrdkitNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitNode::fill(self : ChemdescrdkitNode, v : Double) -> ChemdescrdkitNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_node_min(s : ChemdescrdkitNode) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitNode::min(self : ChemdescrdkitNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_node_max(s : ChemdescrdkitNode) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitNode::max(self : ChemdescrdkitNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_node_to_string(s : ChemdescrdkitNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitNode::to_string(self : ChemdescrdkitNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_rdkit_edge_make(size : Int) -> ChemdescrdkitEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_edge_len(s : ChemdescrdkitEdge) -> Int { s.size }
+pub fn ChemdescrdkitEdge::len(self : ChemdescrdkitEdge) -> Int { self.size }
 
-pub fn chem_desc_rdkit_edge_get(s : ChemdescrdkitEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitEdge::get(self : ChemdescrdkitEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_edge_set(s : ChemdescrdkitEdge, i : Int, v : Double) -> ChemdescrdkitEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitEdge::set(self : ChemdescrdkitEdge, i : Int, v : Double) -> ChemdescrdkitEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_edge_sum(s : ChemdescrdkitEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitEdge::sum(self : ChemdescrdkitEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_edge_mean(s : ChemdescrdkitEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitEdge::mean(self : ChemdescrdkitEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_edge_scale(s : ChemdescrdkitEdge, f : Double) -> ChemdescrdkitEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitEdge::scale(self : ChemdescrdkitEdge, f : Double) -> ChemdescrdkitEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_edge_add(a : ChemdescrdkitEdge, b : ChemdescrdkitEdge) -> ChemdescrdkitEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitEdge::add(self : ChemdescrdkitEdge, other : ChemdescrdkitEdge) -> ChemdescrdkitEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_edge_copy(s : ChemdescrdkitEdge) -> ChemdescrdkitEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitEdge::copy(self : ChemdescrdkitEdge) -> ChemdescrdkitEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_edge_fill(s : ChemdescrdkitEdge, v : Double) -> ChemdescrdkitEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitEdge::fill(self : ChemdescrdkitEdge, v : Double) -> ChemdescrdkitEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_edge_min(s : ChemdescrdkitEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitEdge::min(self : ChemdescrdkitEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_edge_max(s : ChemdescrdkitEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitEdge::max(self : ChemdescrdkitEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_edge_to_string(s : ChemdescrdkitEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitEdge::to_string(self : ChemdescrdkitEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_rdkit_path_make(size : Int) -> ChemdescrdkitPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_path_len(s : ChemdescrdkitPath) -> Int { s.size }
+pub fn ChemdescrdkitPath::len(self : ChemdescrdkitPath) -> Int { self.size }
 
-pub fn chem_desc_rdkit_path_get(s : ChemdescrdkitPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitPath::get(self : ChemdescrdkitPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_path_set(s : ChemdescrdkitPath, i : Int, v : Double) -> ChemdescrdkitPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitPath::set(self : ChemdescrdkitPath, i : Int, v : Double) -> ChemdescrdkitPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_path_sum(s : ChemdescrdkitPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitPath::sum(self : ChemdescrdkitPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_path_mean(s : ChemdescrdkitPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitPath::mean(self : ChemdescrdkitPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_path_scale(s : ChemdescrdkitPath, f : Double) -> ChemdescrdkitPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitPath::scale(self : ChemdescrdkitPath, f : Double) -> ChemdescrdkitPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_path_add(a : ChemdescrdkitPath, b : ChemdescrdkitPath) -> ChemdescrdkitPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitPath::add(self : ChemdescrdkitPath, other : ChemdescrdkitPath) -> ChemdescrdkitPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_path_copy(s : ChemdescrdkitPath) -> ChemdescrdkitPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitPath::copy(self : ChemdescrdkitPath) -> ChemdescrdkitPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_path_fill(s : ChemdescrdkitPath, v : Double) -> ChemdescrdkitPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitPath::fill(self : ChemdescrdkitPath, v : Double) -> ChemdescrdkitPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_path_min(s : ChemdescrdkitPath) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitPath::min(self : ChemdescrdkitPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_path_max(s : ChemdescrdkitPath) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitPath::max(self : ChemdescrdkitPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_path_to_string(s : ChemdescrdkitPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitPath::to_string(self : ChemdescrdkitPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_rdkit_cluster_make(size : Int) -> ChemdescrdkitCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_cluster_len(s : ChemdescrdkitCluster) -> Int { s.size }
+pub fn ChemdescrdkitCluster::len(self : ChemdescrdkitCluster) -> Int { self.size }
 
-pub fn chem_desc_rdkit_cluster_get(s : ChemdescrdkitCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitCluster::get(self : ChemdescrdkitCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_cluster_set(s : ChemdescrdkitCluster, i : Int, v : Double) -> ChemdescrdkitCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCluster::set(self : ChemdescrdkitCluster, i : Int, v : Double) -> ChemdescrdkitCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cluster_sum(s : ChemdescrdkitCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitCluster::sum(self : ChemdescrdkitCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_cluster_mean(s : ChemdescrdkitCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitCluster::mean(self : ChemdescrdkitCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_cluster_scale(s : ChemdescrdkitCluster, f : Double) -> ChemdescrdkitCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCluster::scale(self : ChemdescrdkitCluster, f : Double) -> ChemdescrdkitCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cluster_add(a : ChemdescrdkitCluster, b : ChemdescrdkitCluster) -> ChemdescrdkitCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitCluster::add(self : ChemdescrdkitCluster, other : ChemdescrdkitCluster) -> ChemdescrdkitCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cluster_copy(s : ChemdescrdkitCluster) -> ChemdescrdkitCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCluster::copy(self : ChemdescrdkitCluster) -> ChemdescrdkitCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cluster_fill(s : ChemdescrdkitCluster, v : Double) -> ChemdescrdkitCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCluster::fill(self : ChemdescrdkitCluster, v : Double) -> ChemdescrdkitCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cluster_min(s : ChemdescrdkitCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitCluster::min(self : ChemdescrdkitCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_cluster_max(s : ChemdescrdkitCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitCluster::max(self : ChemdescrdkitCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_cluster_to_string(s : ChemdescrdkitCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitCluster::to_string(self : ChemdescrdkitCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_rdkit_model_make(size : Int) -> ChemdescrdkitModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_model_len(s : ChemdescrdkitModel) -> Int { s.size }
+pub fn ChemdescrdkitModel::len(self : ChemdescrdkitModel) -> Int { self.size }
 
-pub fn chem_desc_rdkit_model_get(s : ChemdescrdkitModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitModel::get(self : ChemdescrdkitModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_model_set(s : ChemdescrdkitModel, i : Int, v : Double) -> ChemdescrdkitModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitModel::set(self : ChemdescrdkitModel, i : Int, v : Double) -> ChemdescrdkitModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_model_sum(s : ChemdescrdkitModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitModel::sum(self : ChemdescrdkitModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_model_mean(s : ChemdescrdkitModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitModel::mean(self : ChemdescrdkitModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_model_scale(s : ChemdescrdkitModel, f : Double) -> ChemdescrdkitModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitModel::scale(self : ChemdescrdkitModel, f : Double) -> ChemdescrdkitModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_model_add(a : ChemdescrdkitModel, b : ChemdescrdkitModel) -> ChemdescrdkitModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitModel::add(self : ChemdescrdkitModel, other : ChemdescrdkitModel) -> ChemdescrdkitModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_model_copy(s : ChemdescrdkitModel) -> ChemdescrdkitModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitModel::copy(self : ChemdescrdkitModel) -> ChemdescrdkitModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_model_fill(s : ChemdescrdkitModel, v : Double) -> ChemdescrdkitModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitModel::fill(self : ChemdescrdkitModel, v : Double) -> ChemdescrdkitModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_model_min(s : ChemdescrdkitModel) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitModel::min(self : ChemdescrdkitModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_model_max(s : ChemdescrdkitModel) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitModel::max(self : ChemdescrdkitModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_model_to_string(s : ChemdescrdkitModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitModel::to_string(self : ChemdescrdkitModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_rdkit_layer_make(size : Int) -> ChemdescrdkitLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_layer_len(s : ChemdescrdkitLayer) -> Int { s.size }
+pub fn ChemdescrdkitLayer::len(self : ChemdescrdkitLayer) -> Int { self.size }
 
-pub fn chem_desc_rdkit_layer_get(s : ChemdescrdkitLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitLayer::get(self : ChemdescrdkitLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_layer_set(s : ChemdescrdkitLayer, i : Int, v : Double) -> ChemdescrdkitLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitLayer::set(self : ChemdescrdkitLayer, i : Int, v : Double) -> ChemdescrdkitLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_layer_sum(s : ChemdescrdkitLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitLayer::sum(self : ChemdescrdkitLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_layer_mean(s : ChemdescrdkitLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitLayer::mean(self : ChemdescrdkitLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_layer_scale(s : ChemdescrdkitLayer, f : Double) -> ChemdescrdkitLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitLayer::scale(self : ChemdescrdkitLayer, f : Double) -> ChemdescrdkitLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_layer_add(a : ChemdescrdkitLayer, b : ChemdescrdkitLayer) -> ChemdescrdkitLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitLayer::add(self : ChemdescrdkitLayer, other : ChemdescrdkitLayer) -> ChemdescrdkitLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_layer_copy(s : ChemdescrdkitLayer) -> ChemdescrdkitLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitLayer::copy(self : ChemdescrdkitLayer) -> ChemdescrdkitLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_layer_fill(s : ChemdescrdkitLayer, v : Double) -> ChemdescrdkitLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitLayer::fill(self : ChemdescrdkitLayer, v : Double) -> ChemdescrdkitLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_layer_min(s : ChemdescrdkitLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitLayer::min(self : ChemdescrdkitLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_layer_max(s : ChemdescrdkitLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitLayer::max(self : ChemdescrdkitLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_layer_to_string(s : ChemdescrdkitLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitLayer::to_string(self : ChemdescrdkitLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_rdkit_buffer_make(size : Int) -> ChemdescrdkitBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_buffer_len(s : ChemdescrdkitBuffer) -> Int { s.size }
+pub fn ChemdescrdkitBuffer::len(self : ChemdescrdkitBuffer) -> Int { self.size }
 
-pub fn chem_desc_rdkit_buffer_get(s : ChemdescrdkitBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitBuffer::get(self : ChemdescrdkitBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_buffer_set(s : ChemdescrdkitBuffer, i : Int, v : Double) -> ChemdescrdkitBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitBuffer::set(self : ChemdescrdkitBuffer, i : Int, v : Double) -> ChemdescrdkitBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_buffer_sum(s : ChemdescrdkitBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitBuffer::sum(self : ChemdescrdkitBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_buffer_mean(s : ChemdescrdkitBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitBuffer::mean(self : ChemdescrdkitBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_buffer_scale(s : ChemdescrdkitBuffer, f : Double) -> ChemdescrdkitBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitBuffer::scale(self : ChemdescrdkitBuffer, f : Double) -> ChemdescrdkitBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_buffer_add(a : ChemdescrdkitBuffer, b : ChemdescrdkitBuffer) -> ChemdescrdkitBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitBuffer::add(self : ChemdescrdkitBuffer, other : ChemdescrdkitBuffer) -> ChemdescrdkitBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_buffer_copy(s : ChemdescrdkitBuffer) -> ChemdescrdkitBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitBuffer::copy(self : ChemdescrdkitBuffer) -> ChemdescrdkitBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_buffer_fill(s : ChemdescrdkitBuffer, v : Double) -> ChemdescrdkitBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitBuffer::fill(self : ChemdescrdkitBuffer, v : Double) -> ChemdescrdkitBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_buffer_min(s : ChemdescrdkitBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitBuffer::min(self : ChemdescrdkitBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_buffer_max(s : ChemdescrdkitBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitBuffer::max(self : ChemdescrdkitBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_buffer_to_string(s : ChemdescrdkitBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitBuffer::to_string(self : ChemdescrdkitBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_rdkit_cursor_make(size : Int) -> ChemdescrdkitCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_cursor_len(s : ChemdescrdkitCursor) -> Int { s.size }
+pub fn ChemdescrdkitCursor::len(self : ChemdescrdkitCursor) -> Int { self.size }
 
-pub fn chem_desc_rdkit_cursor_get(s : ChemdescrdkitCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitCursor::get(self : ChemdescrdkitCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_cursor_set(s : ChemdescrdkitCursor, i : Int, v : Double) -> ChemdescrdkitCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCursor::set(self : ChemdescrdkitCursor, i : Int, v : Double) -> ChemdescrdkitCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cursor_sum(s : ChemdescrdkitCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitCursor::sum(self : ChemdescrdkitCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_cursor_mean(s : ChemdescrdkitCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitCursor::mean(self : ChemdescrdkitCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_cursor_scale(s : ChemdescrdkitCursor, f : Double) -> ChemdescrdkitCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCursor::scale(self : ChemdescrdkitCursor, f : Double) -> ChemdescrdkitCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cursor_add(a : ChemdescrdkitCursor, b : ChemdescrdkitCursor) -> ChemdescrdkitCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitCursor::add(self : ChemdescrdkitCursor, other : ChemdescrdkitCursor) -> ChemdescrdkitCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cursor_copy(s : ChemdescrdkitCursor) -> ChemdescrdkitCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCursor::copy(self : ChemdescrdkitCursor) -> ChemdescrdkitCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cursor_fill(s : ChemdescrdkitCursor, v : Double) -> ChemdescrdkitCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitCursor::fill(self : ChemdescrdkitCursor, v : Double) -> ChemdescrdkitCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_cursor_min(s : ChemdescrdkitCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitCursor::min(self : ChemdescrdkitCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_cursor_max(s : ChemdescrdkitCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitCursor::max(self : ChemdescrdkitCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_cursor_to_string(s : ChemdescrdkitCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitCursor::to_string(self : ChemdescrdkitCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitView {
@@ -912,45 +912,45 @@ pub fn chem_desc_rdkit_view_make(size : Int) -> ChemdescrdkitView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_view_len(s : ChemdescrdkitView) -> Int { s.size }
+pub fn ChemdescrdkitView::len(self : ChemdescrdkitView) -> Int { self.size }
 
-pub fn chem_desc_rdkit_view_get(s : ChemdescrdkitView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitView::get(self : ChemdescrdkitView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_view_set(s : ChemdescrdkitView, i : Int, v : Double) -> ChemdescrdkitView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitView::set(self : ChemdescrdkitView, i : Int, v : Double) -> ChemdescrdkitView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_view_sum(s : ChemdescrdkitView) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitView::sum(self : ChemdescrdkitView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_view_mean(s : ChemdescrdkitView) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitView::mean(self : ChemdescrdkitView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_view_scale(s : ChemdescrdkitView, f : Double) -> ChemdescrdkitView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitView::scale(self : ChemdescrdkitView, f : Double) -> ChemdescrdkitView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_view_add(a : ChemdescrdkitView, b : ChemdescrdkitView) -> ChemdescrdkitView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitView::add(self : ChemdescrdkitView, other : ChemdescrdkitView) -> ChemdescrdkitView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_view_copy(s : ChemdescrdkitView) -> ChemdescrdkitView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitView::copy(self : ChemdescrdkitView) -> ChemdescrdkitView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_view_fill(s : ChemdescrdkitView, v : Double) -> ChemdescrdkitView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitView::fill(self : ChemdescrdkitView, v : Double) -> ChemdescrdkitView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_view_min(s : ChemdescrdkitView) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitView::min(self : ChemdescrdkitView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_view_max(s : ChemdescrdkitView) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitView::max(self : ChemdescrdkitView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_view_to_string(s : ChemdescrdkitView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitView::to_string(self : ChemdescrdkitView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_rdkit_range_make(size : Int) -> ChemdescrdkitRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_range_len(s : ChemdescrdkitRange) -> Int { s.size }
+pub fn ChemdescrdkitRange::len(self : ChemdescrdkitRange) -> Int { self.size }
 
-pub fn chem_desc_rdkit_range_get(s : ChemdescrdkitRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitRange::get(self : ChemdescrdkitRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_range_set(s : ChemdescrdkitRange, i : Int, v : Double) -> ChemdescrdkitRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitRange::set(self : ChemdescrdkitRange, i : Int, v : Double) -> ChemdescrdkitRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_range_sum(s : ChemdescrdkitRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitRange::sum(self : ChemdescrdkitRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_range_mean(s : ChemdescrdkitRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitRange::mean(self : ChemdescrdkitRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_range_scale(s : ChemdescrdkitRange, f : Double) -> ChemdescrdkitRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitRange::scale(self : ChemdescrdkitRange, f : Double) -> ChemdescrdkitRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_range_add(a : ChemdescrdkitRange, b : ChemdescrdkitRange) -> ChemdescrdkitRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitRange::add(self : ChemdescrdkitRange, other : ChemdescrdkitRange) -> ChemdescrdkitRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_range_copy(s : ChemdescrdkitRange) -> ChemdescrdkitRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitRange::copy(self : ChemdescrdkitRange) -> ChemdescrdkitRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_range_fill(s : ChemdescrdkitRange, v : Double) -> ChemdescrdkitRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitRange::fill(self : ChemdescrdkitRange, v : Double) -> ChemdescrdkitRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_range_min(s : ChemdescrdkitRange) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitRange::min(self : ChemdescrdkitRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_range_max(s : ChemdescrdkitRange) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitRange::max(self : ChemdescrdkitRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_range_to_string(s : ChemdescrdkitRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitRange::to_string(self : ChemdescrdkitRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescrdkitSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_rdkit_slice_make(size : Int) -> ChemdescrdkitSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_rdkit_slice_len(s : ChemdescrdkitSlice) -> Int { s.size }
+pub fn ChemdescrdkitSlice::len(self : ChemdescrdkitSlice) -> Int { self.size }
 
-pub fn chem_desc_rdkit_slice_get(s : ChemdescrdkitSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescrdkitSlice::get(self : ChemdescrdkitSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_rdkit_slice_set(s : ChemdescrdkitSlice, i : Int, v : Double) -> ChemdescrdkitSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescrdkitSlice::set(self : ChemdescrdkitSlice, i : Int, v : Double) -> ChemdescrdkitSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_slice_sum(s : ChemdescrdkitSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdescrdkitSlice::sum(self : ChemdescrdkitSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_rdkit_slice_mean(s : ChemdescrdkitSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdescrdkitSlice::mean(self : ChemdescrdkitSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_rdkit_slice_scale(s : ChemdescrdkitSlice, f : Double) -> ChemdescrdkitSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitSlice::scale(self : ChemdescrdkitSlice, f : Double) -> ChemdescrdkitSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_slice_add(a : ChemdescrdkitSlice, b : ChemdescrdkitSlice) -> ChemdescrdkitSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescrdkitSlice::add(self : ChemdescrdkitSlice, other : ChemdescrdkitSlice) -> ChemdescrdkitSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_slice_copy(s : ChemdescrdkitSlice) -> ChemdescrdkitSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitSlice::copy(self : ChemdescrdkitSlice) -> ChemdescrdkitSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_slice_fill(s : ChemdescrdkitSlice, v : Double) -> ChemdescrdkitSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescrdkitSlice::fill(self : ChemdescrdkitSlice, v : Double) -> ChemdescrdkitSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_rdkit_slice_min(s : ChemdescrdkitSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdescrdkitSlice::min(self : ChemdescrdkitSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_rdkit_slice_max(s : ChemdescrdkitSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdescrdkitSlice::max(self : ChemdescrdkitSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_rdkit_slice_to_string(s : ChemdescrdkitSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescrdkitSlice::to_string(self : ChemdescrdkitSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

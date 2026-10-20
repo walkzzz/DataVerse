@@ -351,45 +351,45 @@ pub fn bio_seq_align_pairwise_frame_make(size : Int) -> BioseqalignpairwiseFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_frame_len(s : BioseqalignpairwiseFrame) -> Int { s.size }
+pub fn BioseqalignpairwiseFrame::len(self : BioseqalignpairwiseFrame) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_frame_get(s : BioseqalignpairwiseFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseFrame::get(self : BioseqalignpairwiseFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_frame_set(s : BioseqalignpairwiseFrame, i : Int, v : Double) -> BioseqalignpairwiseFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseFrame::set(self : BioseqalignpairwiseFrame, i : Int, v : Double) -> BioseqalignpairwiseFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_frame_sum(s : BioseqalignpairwiseFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseFrame::sum(self : BioseqalignpairwiseFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_frame_mean(s : BioseqalignpairwiseFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseFrame::mean(self : BioseqalignpairwiseFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_frame_scale(s : BioseqalignpairwiseFrame, f : Double) -> BioseqalignpairwiseFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseFrame::scale(self : BioseqalignpairwiseFrame, f : Double) -> BioseqalignpairwiseFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_frame_add(a : BioseqalignpairwiseFrame, b : BioseqalignpairwiseFrame) -> BioseqalignpairwiseFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseFrame::add(self : BioseqalignpairwiseFrame, other : BioseqalignpairwiseFrame) -> BioseqalignpairwiseFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_frame_copy(s : BioseqalignpairwiseFrame) -> BioseqalignpairwiseFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseFrame::copy(self : BioseqalignpairwiseFrame) -> BioseqalignpairwiseFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_frame_fill(s : BioseqalignpairwiseFrame, v : Double) -> BioseqalignpairwiseFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseFrame::fill(self : BioseqalignpairwiseFrame, v : Double) -> BioseqalignpairwiseFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_frame_min(s : BioseqalignpairwiseFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseFrame::min(self : BioseqalignpairwiseFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_frame_max(s : BioseqalignpairwiseFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseFrame::max(self : BioseqalignpairwiseFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_frame_to_string(s : BioseqalignpairwiseFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseFrame::to_string(self : BioseqalignpairwiseFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_align_pairwise_table_make(size : Int) -> BioseqalignpairwiseTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_table_len(s : BioseqalignpairwiseTable) -> Int { s.size }
+pub fn BioseqalignpairwiseTable::len(self : BioseqalignpairwiseTable) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_table_get(s : BioseqalignpairwiseTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseTable::get(self : BioseqalignpairwiseTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_table_set(s : BioseqalignpairwiseTable, i : Int, v : Double) -> BioseqalignpairwiseTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseTable::set(self : BioseqalignpairwiseTable, i : Int, v : Double) -> BioseqalignpairwiseTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_table_sum(s : BioseqalignpairwiseTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseTable::sum(self : BioseqalignpairwiseTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_table_mean(s : BioseqalignpairwiseTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseTable::mean(self : BioseqalignpairwiseTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_table_scale(s : BioseqalignpairwiseTable, f : Double) -> BioseqalignpairwiseTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseTable::scale(self : BioseqalignpairwiseTable, f : Double) -> BioseqalignpairwiseTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_table_add(a : BioseqalignpairwiseTable, b : BioseqalignpairwiseTable) -> BioseqalignpairwiseTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseTable::add(self : BioseqalignpairwiseTable, other : BioseqalignpairwiseTable) -> BioseqalignpairwiseTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_table_copy(s : BioseqalignpairwiseTable) -> BioseqalignpairwiseTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseTable::copy(self : BioseqalignpairwiseTable) -> BioseqalignpairwiseTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_table_fill(s : BioseqalignpairwiseTable, v : Double) -> BioseqalignpairwiseTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseTable::fill(self : BioseqalignpairwiseTable, v : Double) -> BioseqalignpairwiseTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_table_min(s : BioseqalignpairwiseTable) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseTable::min(self : BioseqalignpairwiseTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_table_max(s : BioseqalignpairwiseTable) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseTable::max(self : BioseqalignpairwiseTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_table_to_string(s : BioseqalignpairwiseTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseTable::to_string(self : BioseqalignpairwiseTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_align_pairwise_graphn_make(size : Int) -> BioseqalignpairwiseGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_graphn_len(s : BioseqalignpairwiseGraphN) -> Int { s.size }
+pub fn BioseqalignpairwiseGraphN::len(self : BioseqalignpairwiseGraphN) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_graphn_get(s : BioseqalignpairwiseGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseGraphN::get(self : BioseqalignpairwiseGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_graphn_set(s : BioseqalignpairwiseGraphN, i : Int, v : Double) -> BioseqalignpairwiseGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseGraphN::set(self : BioseqalignpairwiseGraphN, i : Int, v : Double) -> BioseqalignpairwiseGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_graphn_sum(s : BioseqalignpairwiseGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseGraphN::sum(self : BioseqalignpairwiseGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_graphn_mean(s : BioseqalignpairwiseGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseGraphN::mean(self : BioseqalignpairwiseGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_graphn_scale(s : BioseqalignpairwiseGraphN, f : Double) -> BioseqalignpairwiseGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseGraphN::scale(self : BioseqalignpairwiseGraphN, f : Double) -> BioseqalignpairwiseGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_graphn_add(a : BioseqalignpairwiseGraphN, b : BioseqalignpairwiseGraphN) -> BioseqalignpairwiseGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseGraphN::add(self : BioseqalignpairwiseGraphN, other : BioseqalignpairwiseGraphN) -> BioseqalignpairwiseGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_graphn_copy(s : BioseqalignpairwiseGraphN) -> BioseqalignpairwiseGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseGraphN::copy(self : BioseqalignpairwiseGraphN) -> BioseqalignpairwiseGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_graphn_fill(s : BioseqalignpairwiseGraphN, v : Double) -> BioseqalignpairwiseGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseGraphN::fill(self : BioseqalignpairwiseGraphN, v : Double) -> BioseqalignpairwiseGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_graphn_min(s : BioseqalignpairwiseGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseGraphN::min(self : BioseqalignpairwiseGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_graphn_max(s : BioseqalignpairwiseGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseGraphN::max(self : BioseqalignpairwiseGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_graphn_to_string(s : BioseqalignpairwiseGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseGraphN::to_string(self : BioseqalignpairwiseGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_align_pairwise_node_make(size : Int) -> BioseqalignpairwiseNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_node_len(s : BioseqalignpairwiseNode) -> Int { s.size }
+pub fn BioseqalignpairwiseNode::len(self : BioseqalignpairwiseNode) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_node_get(s : BioseqalignpairwiseNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseNode::get(self : BioseqalignpairwiseNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_node_set(s : BioseqalignpairwiseNode, i : Int, v : Double) -> BioseqalignpairwiseNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseNode::set(self : BioseqalignpairwiseNode, i : Int, v : Double) -> BioseqalignpairwiseNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_node_sum(s : BioseqalignpairwiseNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseNode::sum(self : BioseqalignpairwiseNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_node_mean(s : BioseqalignpairwiseNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseNode::mean(self : BioseqalignpairwiseNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_node_scale(s : BioseqalignpairwiseNode, f : Double) -> BioseqalignpairwiseNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseNode::scale(self : BioseqalignpairwiseNode, f : Double) -> BioseqalignpairwiseNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_node_add(a : BioseqalignpairwiseNode, b : BioseqalignpairwiseNode) -> BioseqalignpairwiseNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseNode::add(self : BioseqalignpairwiseNode, other : BioseqalignpairwiseNode) -> BioseqalignpairwiseNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_node_copy(s : BioseqalignpairwiseNode) -> BioseqalignpairwiseNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseNode::copy(self : BioseqalignpairwiseNode) -> BioseqalignpairwiseNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_node_fill(s : BioseqalignpairwiseNode, v : Double) -> BioseqalignpairwiseNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseNode::fill(self : BioseqalignpairwiseNode, v : Double) -> BioseqalignpairwiseNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_node_min(s : BioseqalignpairwiseNode) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseNode::min(self : BioseqalignpairwiseNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_node_max(s : BioseqalignpairwiseNode) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseNode::max(self : BioseqalignpairwiseNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_node_to_string(s : BioseqalignpairwiseNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseNode::to_string(self : BioseqalignpairwiseNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_align_pairwise_edge_make(size : Int) -> BioseqalignpairwiseEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_edge_len(s : BioseqalignpairwiseEdge) -> Int { s.size }
+pub fn BioseqalignpairwiseEdge::len(self : BioseqalignpairwiseEdge) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_edge_get(s : BioseqalignpairwiseEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseEdge::get(self : BioseqalignpairwiseEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_edge_set(s : BioseqalignpairwiseEdge, i : Int, v : Double) -> BioseqalignpairwiseEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseEdge::set(self : BioseqalignpairwiseEdge, i : Int, v : Double) -> BioseqalignpairwiseEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_edge_sum(s : BioseqalignpairwiseEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseEdge::sum(self : BioseqalignpairwiseEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_edge_mean(s : BioseqalignpairwiseEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseEdge::mean(self : BioseqalignpairwiseEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_edge_scale(s : BioseqalignpairwiseEdge, f : Double) -> BioseqalignpairwiseEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseEdge::scale(self : BioseqalignpairwiseEdge, f : Double) -> BioseqalignpairwiseEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_edge_add(a : BioseqalignpairwiseEdge, b : BioseqalignpairwiseEdge) -> BioseqalignpairwiseEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseEdge::add(self : BioseqalignpairwiseEdge, other : BioseqalignpairwiseEdge) -> BioseqalignpairwiseEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_edge_copy(s : BioseqalignpairwiseEdge) -> BioseqalignpairwiseEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseEdge::copy(self : BioseqalignpairwiseEdge) -> BioseqalignpairwiseEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_edge_fill(s : BioseqalignpairwiseEdge, v : Double) -> BioseqalignpairwiseEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseEdge::fill(self : BioseqalignpairwiseEdge, v : Double) -> BioseqalignpairwiseEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_edge_min(s : BioseqalignpairwiseEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseEdge::min(self : BioseqalignpairwiseEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_edge_max(s : BioseqalignpairwiseEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseEdge::max(self : BioseqalignpairwiseEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_edge_to_string(s : BioseqalignpairwiseEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseEdge::to_string(self : BioseqalignpairwiseEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwisePath {
@@ -606,45 +606,45 @@ pub fn bio_seq_align_pairwise_path_make(size : Int) -> BioseqalignpairwisePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_path_len(s : BioseqalignpairwisePath) -> Int { s.size }
+pub fn BioseqalignpairwisePath::len(self : BioseqalignpairwisePath) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_path_get(s : BioseqalignpairwisePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwisePath::get(self : BioseqalignpairwisePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_path_set(s : BioseqalignpairwisePath, i : Int, v : Double) -> BioseqalignpairwisePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwisePath::set(self : BioseqalignpairwisePath, i : Int, v : Double) -> BioseqalignpairwisePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_path_sum(s : BioseqalignpairwisePath) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwisePath::sum(self : BioseqalignpairwisePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_path_mean(s : BioseqalignpairwisePath) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwisePath::mean(self : BioseqalignpairwisePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_path_scale(s : BioseqalignpairwisePath, f : Double) -> BioseqalignpairwisePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwisePath::scale(self : BioseqalignpairwisePath, f : Double) -> BioseqalignpairwisePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_path_add(a : BioseqalignpairwisePath, b : BioseqalignpairwisePath) -> BioseqalignpairwisePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwisePath::add(self : BioseqalignpairwisePath, other : BioseqalignpairwisePath) -> BioseqalignpairwisePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_path_copy(s : BioseqalignpairwisePath) -> BioseqalignpairwisePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwisePath::copy(self : BioseqalignpairwisePath) -> BioseqalignpairwisePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_path_fill(s : BioseqalignpairwisePath, v : Double) -> BioseqalignpairwisePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwisePath::fill(self : BioseqalignpairwisePath, v : Double) -> BioseqalignpairwisePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_path_min(s : BioseqalignpairwisePath) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwisePath::min(self : BioseqalignpairwisePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_path_max(s : BioseqalignpairwisePath) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwisePath::max(self : BioseqalignpairwisePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_path_to_string(s : BioseqalignpairwisePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwisePath::to_string(self : BioseqalignpairwisePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_align_pairwise_cluster_make(size : Int) -> BioseqalignpairwiseClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_cluster_len(s : BioseqalignpairwiseCluster) -> Int { s.size }
+pub fn BioseqalignpairwiseCluster::len(self : BioseqalignpairwiseCluster) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_cluster_get(s : BioseqalignpairwiseCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseCluster::get(self : BioseqalignpairwiseCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_cluster_set(s : BioseqalignpairwiseCluster, i : Int, v : Double) -> BioseqalignpairwiseCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCluster::set(self : BioseqalignpairwiseCluster, i : Int, v : Double) -> BioseqalignpairwiseCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cluster_sum(s : BioseqalignpairwiseCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseCluster::sum(self : BioseqalignpairwiseCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_cluster_mean(s : BioseqalignpairwiseCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseCluster::mean(self : BioseqalignpairwiseCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_cluster_scale(s : BioseqalignpairwiseCluster, f : Double) -> BioseqalignpairwiseCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCluster::scale(self : BioseqalignpairwiseCluster, f : Double) -> BioseqalignpairwiseCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cluster_add(a : BioseqalignpairwiseCluster, b : BioseqalignpairwiseCluster) -> BioseqalignpairwiseCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseCluster::add(self : BioseqalignpairwiseCluster, other : BioseqalignpairwiseCluster) -> BioseqalignpairwiseCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cluster_copy(s : BioseqalignpairwiseCluster) -> BioseqalignpairwiseCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCluster::copy(self : BioseqalignpairwiseCluster) -> BioseqalignpairwiseCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cluster_fill(s : BioseqalignpairwiseCluster, v : Double) -> BioseqalignpairwiseCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCluster::fill(self : BioseqalignpairwiseCluster, v : Double) -> BioseqalignpairwiseCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cluster_min(s : BioseqalignpairwiseCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseCluster::min(self : BioseqalignpairwiseCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_cluster_max(s : BioseqalignpairwiseCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseCluster::max(self : BioseqalignpairwiseCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_cluster_to_string(s : BioseqalignpairwiseCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseCluster::to_string(self : BioseqalignpairwiseCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_align_pairwise_model_make(size : Int) -> BioseqalignpairwiseModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_model_len(s : BioseqalignpairwiseModel) -> Int { s.size }
+pub fn BioseqalignpairwiseModel::len(self : BioseqalignpairwiseModel) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_model_get(s : BioseqalignpairwiseModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseModel::get(self : BioseqalignpairwiseModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_model_set(s : BioseqalignpairwiseModel, i : Int, v : Double) -> BioseqalignpairwiseModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseModel::set(self : BioseqalignpairwiseModel, i : Int, v : Double) -> BioseqalignpairwiseModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_model_sum(s : BioseqalignpairwiseModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseModel::sum(self : BioseqalignpairwiseModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_model_mean(s : BioseqalignpairwiseModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseModel::mean(self : BioseqalignpairwiseModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_model_scale(s : BioseqalignpairwiseModel, f : Double) -> BioseqalignpairwiseModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseModel::scale(self : BioseqalignpairwiseModel, f : Double) -> BioseqalignpairwiseModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_model_add(a : BioseqalignpairwiseModel, b : BioseqalignpairwiseModel) -> BioseqalignpairwiseModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseModel::add(self : BioseqalignpairwiseModel, other : BioseqalignpairwiseModel) -> BioseqalignpairwiseModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_model_copy(s : BioseqalignpairwiseModel) -> BioseqalignpairwiseModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseModel::copy(self : BioseqalignpairwiseModel) -> BioseqalignpairwiseModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_model_fill(s : BioseqalignpairwiseModel, v : Double) -> BioseqalignpairwiseModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseModel::fill(self : BioseqalignpairwiseModel, v : Double) -> BioseqalignpairwiseModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_model_min(s : BioseqalignpairwiseModel) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseModel::min(self : BioseqalignpairwiseModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_model_max(s : BioseqalignpairwiseModel) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseModel::max(self : BioseqalignpairwiseModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_model_to_string(s : BioseqalignpairwiseModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseModel::to_string(self : BioseqalignpairwiseModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_align_pairwise_layer_make(size : Int) -> BioseqalignpairwiseLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_layer_len(s : BioseqalignpairwiseLayer) -> Int { s.size }
+pub fn BioseqalignpairwiseLayer::len(self : BioseqalignpairwiseLayer) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_layer_get(s : BioseqalignpairwiseLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseLayer::get(self : BioseqalignpairwiseLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_layer_set(s : BioseqalignpairwiseLayer, i : Int, v : Double) -> BioseqalignpairwiseLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseLayer::set(self : BioseqalignpairwiseLayer, i : Int, v : Double) -> BioseqalignpairwiseLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_layer_sum(s : BioseqalignpairwiseLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseLayer::sum(self : BioseqalignpairwiseLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_layer_mean(s : BioseqalignpairwiseLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseLayer::mean(self : BioseqalignpairwiseLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_layer_scale(s : BioseqalignpairwiseLayer, f : Double) -> BioseqalignpairwiseLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseLayer::scale(self : BioseqalignpairwiseLayer, f : Double) -> BioseqalignpairwiseLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_layer_add(a : BioseqalignpairwiseLayer, b : BioseqalignpairwiseLayer) -> BioseqalignpairwiseLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseLayer::add(self : BioseqalignpairwiseLayer, other : BioseqalignpairwiseLayer) -> BioseqalignpairwiseLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_layer_copy(s : BioseqalignpairwiseLayer) -> BioseqalignpairwiseLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseLayer::copy(self : BioseqalignpairwiseLayer) -> BioseqalignpairwiseLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_layer_fill(s : BioseqalignpairwiseLayer, v : Double) -> BioseqalignpairwiseLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseLayer::fill(self : BioseqalignpairwiseLayer, v : Double) -> BioseqalignpairwiseLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_layer_min(s : BioseqalignpairwiseLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseLayer::min(self : BioseqalignpairwiseLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_layer_max(s : BioseqalignpairwiseLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseLayer::max(self : BioseqalignpairwiseLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_layer_to_string(s : BioseqalignpairwiseLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseLayer::to_string(self : BioseqalignpairwiseLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_align_pairwise_buffer_make(size : Int) -> BioseqalignpairwiseBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_buffer_len(s : BioseqalignpairwiseBuffer) -> Int { s.size }
+pub fn BioseqalignpairwiseBuffer::len(self : BioseqalignpairwiseBuffer) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_buffer_get(s : BioseqalignpairwiseBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseBuffer::get(self : BioseqalignpairwiseBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_buffer_set(s : BioseqalignpairwiseBuffer, i : Int, v : Double) -> BioseqalignpairwiseBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseBuffer::set(self : BioseqalignpairwiseBuffer, i : Int, v : Double) -> BioseqalignpairwiseBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_buffer_sum(s : BioseqalignpairwiseBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseBuffer::sum(self : BioseqalignpairwiseBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_buffer_mean(s : BioseqalignpairwiseBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseBuffer::mean(self : BioseqalignpairwiseBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_buffer_scale(s : BioseqalignpairwiseBuffer, f : Double) -> BioseqalignpairwiseBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseBuffer::scale(self : BioseqalignpairwiseBuffer, f : Double) -> BioseqalignpairwiseBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_buffer_add(a : BioseqalignpairwiseBuffer, b : BioseqalignpairwiseBuffer) -> BioseqalignpairwiseBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseBuffer::add(self : BioseqalignpairwiseBuffer, other : BioseqalignpairwiseBuffer) -> BioseqalignpairwiseBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_buffer_copy(s : BioseqalignpairwiseBuffer) -> BioseqalignpairwiseBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseBuffer::copy(self : BioseqalignpairwiseBuffer) -> BioseqalignpairwiseBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_buffer_fill(s : BioseqalignpairwiseBuffer, v : Double) -> BioseqalignpairwiseBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseBuffer::fill(self : BioseqalignpairwiseBuffer, v : Double) -> BioseqalignpairwiseBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_buffer_min(s : BioseqalignpairwiseBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseBuffer::min(self : BioseqalignpairwiseBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_buffer_max(s : BioseqalignpairwiseBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseBuffer::max(self : BioseqalignpairwiseBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_buffer_to_string(s : BioseqalignpairwiseBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseBuffer::to_string(self : BioseqalignpairwiseBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_align_pairwise_cursor_make(size : Int) -> BioseqalignpairwiseCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_cursor_len(s : BioseqalignpairwiseCursor) -> Int { s.size }
+pub fn BioseqalignpairwiseCursor::len(self : BioseqalignpairwiseCursor) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_cursor_get(s : BioseqalignpairwiseCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseCursor::get(self : BioseqalignpairwiseCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_cursor_set(s : BioseqalignpairwiseCursor, i : Int, v : Double) -> BioseqalignpairwiseCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCursor::set(self : BioseqalignpairwiseCursor, i : Int, v : Double) -> BioseqalignpairwiseCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cursor_sum(s : BioseqalignpairwiseCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseCursor::sum(self : BioseqalignpairwiseCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_cursor_mean(s : BioseqalignpairwiseCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseCursor::mean(self : BioseqalignpairwiseCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_cursor_scale(s : BioseqalignpairwiseCursor, f : Double) -> BioseqalignpairwiseCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCursor::scale(self : BioseqalignpairwiseCursor, f : Double) -> BioseqalignpairwiseCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cursor_add(a : BioseqalignpairwiseCursor, b : BioseqalignpairwiseCursor) -> BioseqalignpairwiseCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseCursor::add(self : BioseqalignpairwiseCursor, other : BioseqalignpairwiseCursor) -> BioseqalignpairwiseCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cursor_copy(s : BioseqalignpairwiseCursor) -> BioseqalignpairwiseCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCursor::copy(self : BioseqalignpairwiseCursor) -> BioseqalignpairwiseCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cursor_fill(s : BioseqalignpairwiseCursor, v : Double) -> BioseqalignpairwiseCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseCursor::fill(self : BioseqalignpairwiseCursor, v : Double) -> BioseqalignpairwiseCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_cursor_min(s : BioseqalignpairwiseCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseCursor::min(self : BioseqalignpairwiseCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_cursor_max(s : BioseqalignpairwiseCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseCursor::max(self : BioseqalignpairwiseCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_cursor_to_string(s : BioseqalignpairwiseCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseCursor::to_string(self : BioseqalignpairwiseCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseView {
@@ -912,45 +912,45 @@ pub fn bio_seq_align_pairwise_view_make(size : Int) -> BioseqalignpairwiseView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_view_len(s : BioseqalignpairwiseView) -> Int { s.size }
+pub fn BioseqalignpairwiseView::len(self : BioseqalignpairwiseView) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_view_get(s : BioseqalignpairwiseView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseView::get(self : BioseqalignpairwiseView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_view_set(s : BioseqalignpairwiseView, i : Int, v : Double) -> BioseqalignpairwiseView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseView::set(self : BioseqalignpairwiseView, i : Int, v : Double) -> BioseqalignpairwiseView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_view_sum(s : BioseqalignpairwiseView) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseView::sum(self : BioseqalignpairwiseView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_view_mean(s : BioseqalignpairwiseView) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseView::mean(self : BioseqalignpairwiseView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_view_scale(s : BioseqalignpairwiseView, f : Double) -> BioseqalignpairwiseView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseView::scale(self : BioseqalignpairwiseView, f : Double) -> BioseqalignpairwiseView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_view_add(a : BioseqalignpairwiseView, b : BioseqalignpairwiseView) -> BioseqalignpairwiseView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseView::add(self : BioseqalignpairwiseView, other : BioseqalignpairwiseView) -> BioseqalignpairwiseView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_view_copy(s : BioseqalignpairwiseView) -> BioseqalignpairwiseView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseView::copy(self : BioseqalignpairwiseView) -> BioseqalignpairwiseView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_view_fill(s : BioseqalignpairwiseView, v : Double) -> BioseqalignpairwiseView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseView::fill(self : BioseqalignpairwiseView, v : Double) -> BioseqalignpairwiseView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_view_min(s : BioseqalignpairwiseView) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseView::min(self : BioseqalignpairwiseView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_view_max(s : BioseqalignpairwiseView) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseView::max(self : BioseqalignpairwiseView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_view_to_string(s : BioseqalignpairwiseView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseView::to_string(self : BioseqalignpairwiseView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_align_pairwise_range_make(size : Int) -> BioseqalignpairwiseRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_range_len(s : BioseqalignpairwiseRange) -> Int { s.size }
+pub fn BioseqalignpairwiseRange::len(self : BioseqalignpairwiseRange) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_range_get(s : BioseqalignpairwiseRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseRange::get(self : BioseqalignpairwiseRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_range_set(s : BioseqalignpairwiseRange, i : Int, v : Double) -> BioseqalignpairwiseRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseRange::set(self : BioseqalignpairwiseRange, i : Int, v : Double) -> BioseqalignpairwiseRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_range_sum(s : BioseqalignpairwiseRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseRange::sum(self : BioseqalignpairwiseRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_range_mean(s : BioseqalignpairwiseRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseRange::mean(self : BioseqalignpairwiseRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_range_scale(s : BioseqalignpairwiseRange, f : Double) -> BioseqalignpairwiseRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseRange::scale(self : BioseqalignpairwiseRange, f : Double) -> BioseqalignpairwiseRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_range_add(a : BioseqalignpairwiseRange, b : BioseqalignpairwiseRange) -> BioseqalignpairwiseRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseRange::add(self : BioseqalignpairwiseRange, other : BioseqalignpairwiseRange) -> BioseqalignpairwiseRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_range_copy(s : BioseqalignpairwiseRange) -> BioseqalignpairwiseRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseRange::copy(self : BioseqalignpairwiseRange) -> BioseqalignpairwiseRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_range_fill(s : BioseqalignpairwiseRange, v : Double) -> BioseqalignpairwiseRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseRange::fill(self : BioseqalignpairwiseRange, v : Double) -> BioseqalignpairwiseRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_range_min(s : BioseqalignpairwiseRange) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseRange::min(self : BioseqalignpairwiseRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_range_max(s : BioseqalignpairwiseRange) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseRange::max(self : BioseqalignpairwiseRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_range_to_string(s : BioseqalignpairwiseRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseRange::to_string(self : BioseqalignpairwiseRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignpairwiseSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_align_pairwise_slice_make(size : Int) -> BioseqalignpairwiseSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_pairwise_slice_len(s : BioseqalignpairwiseSlice) -> Int { s.size }
+pub fn BioseqalignpairwiseSlice::len(self : BioseqalignpairwiseSlice) -> Int { self.size }
 
-pub fn bio_seq_align_pairwise_slice_get(s : BioseqalignpairwiseSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignpairwiseSlice::get(self : BioseqalignpairwiseSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_pairwise_slice_set(s : BioseqalignpairwiseSlice, i : Int, v : Double) -> BioseqalignpairwiseSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseSlice::set(self : BioseqalignpairwiseSlice, i : Int, v : Double) -> BioseqalignpairwiseSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_slice_sum(s : BioseqalignpairwiseSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignpairwiseSlice::sum(self : BioseqalignpairwiseSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_pairwise_slice_mean(s : BioseqalignpairwiseSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignpairwiseSlice::mean(self : BioseqalignpairwiseSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_pairwise_slice_scale(s : BioseqalignpairwiseSlice, f : Double) -> BioseqalignpairwiseSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseSlice::scale(self : BioseqalignpairwiseSlice, f : Double) -> BioseqalignpairwiseSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_slice_add(a : BioseqalignpairwiseSlice, b : BioseqalignpairwiseSlice) -> BioseqalignpairwiseSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignpairwiseSlice::add(self : BioseqalignpairwiseSlice, other : BioseqalignpairwiseSlice) -> BioseqalignpairwiseSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_slice_copy(s : BioseqalignpairwiseSlice) -> BioseqalignpairwiseSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseSlice::copy(self : BioseqalignpairwiseSlice) -> BioseqalignpairwiseSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_slice_fill(s : BioseqalignpairwiseSlice, v : Double) -> BioseqalignpairwiseSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignpairwiseSlice::fill(self : BioseqalignpairwiseSlice, v : Double) -> BioseqalignpairwiseSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_pairwise_slice_min(s : BioseqalignpairwiseSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqalignpairwiseSlice::min(self : BioseqalignpairwiseSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_pairwise_slice_max(s : BioseqalignpairwiseSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqalignpairwiseSlice::max(self : BioseqalignpairwiseSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_pairwise_slice_to_string(s : BioseqalignpairwiseSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignpairwiseSlice::to_string(self : BioseqalignpairwiseSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

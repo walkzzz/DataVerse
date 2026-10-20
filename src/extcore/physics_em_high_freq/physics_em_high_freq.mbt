@@ -351,45 +351,45 @@ pub fn physics_em_high_freq_frame_make(size : Int) -> PhysicsemhighfreqFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_frame_len(s : PhysicsemhighfreqFrame) -> Int { s.size }
+pub fn PhysicsemhighfreqFrame::len(self : PhysicsemhighfreqFrame) -> Int { self.size }
 
-pub fn physics_em_high_freq_frame_get(s : PhysicsemhighfreqFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqFrame::get(self : PhysicsemhighfreqFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_frame_set(s : PhysicsemhighfreqFrame, i : Int, v : Double) -> PhysicsemhighfreqFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqFrame::set(self : PhysicsemhighfreqFrame, i : Int, v : Double) -> PhysicsemhighfreqFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_frame_sum(s : PhysicsemhighfreqFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqFrame::sum(self : PhysicsemhighfreqFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_frame_mean(s : PhysicsemhighfreqFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqFrame::mean(self : PhysicsemhighfreqFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_frame_scale(s : PhysicsemhighfreqFrame, f : Double) -> PhysicsemhighfreqFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqFrame::scale(self : PhysicsemhighfreqFrame, f : Double) -> PhysicsemhighfreqFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_frame_add(a : PhysicsemhighfreqFrame, b : PhysicsemhighfreqFrame) -> PhysicsemhighfreqFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqFrame::add(self : PhysicsemhighfreqFrame, other : PhysicsemhighfreqFrame) -> PhysicsemhighfreqFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_frame_copy(s : PhysicsemhighfreqFrame) -> PhysicsemhighfreqFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqFrame::copy(self : PhysicsemhighfreqFrame) -> PhysicsemhighfreqFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_frame_fill(s : PhysicsemhighfreqFrame, v : Double) -> PhysicsemhighfreqFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqFrame::fill(self : PhysicsemhighfreqFrame, v : Double) -> PhysicsemhighfreqFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_frame_min(s : PhysicsemhighfreqFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqFrame::min(self : PhysicsemhighfreqFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_frame_max(s : PhysicsemhighfreqFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqFrame::max(self : PhysicsemhighfreqFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_frame_to_string(s : PhysicsemhighfreqFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqFrame::to_string(self : PhysicsemhighfreqFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqTable {
@@ -402,45 +402,45 @@ pub fn physics_em_high_freq_table_make(size : Int) -> PhysicsemhighfreqTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_table_len(s : PhysicsemhighfreqTable) -> Int { s.size }
+pub fn PhysicsemhighfreqTable::len(self : PhysicsemhighfreqTable) -> Int { self.size }
 
-pub fn physics_em_high_freq_table_get(s : PhysicsemhighfreqTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqTable::get(self : PhysicsemhighfreqTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_table_set(s : PhysicsemhighfreqTable, i : Int, v : Double) -> PhysicsemhighfreqTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqTable::set(self : PhysicsemhighfreqTable, i : Int, v : Double) -> PhysicsemhighfreqTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_table_sum(s : PhysicsemhighfreqTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqTable::sum(self : PhysicsemhighfreqTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_table_mean(s : PhysicsemhighfreqTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqTable::mean(self : PhysicsemhighfreqTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_table_scale(s : PhysicsemhighfreqTable, f : Double) -> PhysicsemhighfreqTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqTable::scale(self : PhysicsemhighfreqTable, f : Double) -> PhysicsemhighfreqTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_table_add(a : PhysicsemhighfreqTable, b : PhysicsemhighfreqTable) -> PhysicsemhighfreqTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqTable::add(self : PhysicsemhighfreqTable, other : PhysicsemhighfreqTable) -> PhysicsemhighfreqTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_table_copy(s : PhysicsemhighfreqTable) -> PhysicsemhighfreqTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqTable::copy(self : PhysicsemhighfreqTable) -> PhysicsemhighfreqTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_table_fill(s : PhysicsemhighfreqTable, v : Double) -> PhysicsemhighfreqTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqTable::fill(self : PhysicsemhighfreqTable, v : Double) -> PhysicsemhighfreqTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_table_min(s : PhysicsemhighfreqTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqTable::min(self : PhysicsemhighfreqTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_table_max(s : PhysicsemhighfreqTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqTable::max(self : PhysicsemhighfreqTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_table_to_string(s : PhysicsemhighfreqTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqTable::to_string(self : PhysicsemhighfreqTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_high_freq_graphn_make(size : Int) -> PhysicsemhighfreqGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_graphn_len(s : PhysicsemhighfreqGraphN) -> Int { s.size }
+pub fn PhysicsemhighfreqGraphN::len(self : PhysicsemhighfreqGraphN) -> Int { self.size }
 
-pub fn physics_em_high_freq_graphn_get(s : PhysicsemhighfreqGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqGraphN::get(self : PhysicsemhighfreqGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_graphn_set(s : PhysicsemhighfreqGraphN, i : Int, v : Double) -> PhysicsemhighfreqGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqGraphN::set(self : PhysicsemhighfreqGraphN, i : Int, v : Double) -> PhysicsemhighfreqGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_graphn_sum(s : PhysicsemhighfreqGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqGraphN::sum(self : PhysicsemhighfreqGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_graphn_mean(s : PhysicsemhighfreqGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqGraphN::mean(self : PhysicsemhighfreqGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_graphn_scale(s : PhysicsemhighfreqGraphN, f : Double) -> PhysicsemhighfreqGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqGraphN::scale(self : PhysicsemhighfreqGraphN, f : Double) -> PhysicsemhighfreqGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_graphn_add(a : PhysicsemhighfreqGraphN, b : PhysicsemhighfreqGraphN) -> PhysicsemhighfreqGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqGraphN::add(self : PhysicsemhighfreqGraphN, other : PhysicsemhighfreqGraphN) -> PhysicsemhighfreqGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_graphn_copy(s : PhysicsemhighfreqGraphN) -> PhysicsemhighfreqGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqGraphN::copy(self : PhysicsemhighfreqGraphN) -> PhysicsemhighfreqGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_graphn_fill(s : PhysicsemhighfreqGraphN, v : Double) -> PhysicsemhighfreqGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqGraphN::fill(self : PhysicsemhighfreqGraphN, v : Double) -> PhysicsemhighfreqGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_graphn_min(s : PhysicsemhighfreqGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqGraphN::min(self : PhysicsemhighfreqGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_graphn_max(s : PhysicsemhighfreqGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqGraphN::max(self : PhysicsemhighfreqGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_graphn_to_string(s : PhysicsemhighfreqGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqGraphN::to_string(self : PhysicsemhighfreqGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqNode {
@@ -504,45 +504,45 @@ pub fn physics_em_high_freq_node_make(size : Int) -> PhysicsemhighfreqNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_node_len(s : PhysicsemhighfreqNode) -> Int { s.size }
+pub fn PhysicsemhighfreqNode::len(self : PhysicsemhighfreqNode) -> Int { self.size }
 
-pub fn physics_em_high_freq_node_get(s : PhysicsemhighfreqNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqNode::get(self : PhysicsemhighfreqNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_node_set(s : PhysicsemhighfreqNode, i : Int, v : Double) -> PhysicsemhighfreqNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqNode::set(self : PhysicsemhighfreqNode, i : Int, v : Double) -> PhysicsemhighfreqNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_node_sum(s : PhysicsemhighfreqNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqNode::sum(self : PhysicsemhighfreqNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_node_mean(s : PhysicsemhighfreqNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqNode::mean(self : PhysicsemhighfreqNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_node_scale(s : PhysicsemhighfreqNode, f : Double) -> PhysicsemhighfreqNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqNode::scale(self : PhysicsemhighfreqNode, f : Double) -> PhysicsemhighfreqNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_node_add(a : PhysicsemhighfreqNode, b : PhysicsemhighfreqNode) -> PhysicsemhighfreqNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqNode::add(self : PhysicsemhighfreqNode, other : PhysicsemhighfreqNode) -> PhysicsemhighfreqNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_node_copy(s : PhysicsemhighfreqNode) -> PhysicsemhighfreqNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqNode::copy(self : PhysicsemhighfreqNode) -> PhysicsemhighfreqNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_node_fill(s : PhysicsemhighfreqNode, v : Double) -> PhysicsemhighfreqNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqNode::fill(self : PhysicsemhighfreqNode, v : Double) -> PhysicsemhighfreqNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_node_min(s : PhysicsemhighfreqNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqNode::min(self : PhysicsemhighfreqNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_node_max(s : PhysicsemhighfreqNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqNode::max(self : PhysicsemhighfreqNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_node_to_string(s : PhysicsemhighfreqNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqNode::to_string(self : PhysicsemhighfreqNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_high_freq_edge_make(size : Int) -> PhysicsemhighfreqEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_edge_len(s : PhysicsemhighfreqEdge) -> Int { s.size }
+pub fn PhysicsemhighfreqEdge::len(self : PhysicsemhighfreqEdge) -> Int { self.size }
 
-pub fn physics_em_high_freq_edge_get(s : PhysicsemhighfreqEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqEdge::get(self : PhysicsemhighfreqEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_edge_set(s : PhysicsemhighfreqEdge, i : Int, v : Double) -> PhysicsemhighfreqEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqEdge::set(self : PhysicsemhighfreqEdge, i : Int, v : Double) -> PhysicsemhighfreqEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_edge_sum(s : PhysicsemhighfreqEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqEdge::sum(self : PhysicsemhighfreqEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_edge_mean(s : PhysicsemhighfreqEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqEdge::mean(self : PhysicsemhighfreqEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_edge_scale(s : PhysicsemhighfreqEdge, f : Double) -> PhysicsemhighfreqEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqEdge::scale(self : PhysicsemhighfreqEdge, f : Double) -> PhysicsemhighfreqEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_edge_add(a : PhysicsemhighfreqEdge, b : PhysicsemhighfreqEdge) -> PhysicsemhighfreqEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqEdge::add(self : PhysicsemhighfreqEdge, other : PhysicsemhighfreqEdge) -> PhysicsemhighfreqEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_edge_copy(s : PhysicsemhighfreqEdge) -> PhysicsemhighfreqEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqEdge::copy(self : PhysicsemhighfreqEdge) -> PhysicsemhighfreqEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_edge_fill(s : PhysicsemhighfreqEdge, v : Double) -> PhysicsemhighfreqEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqEdge::fill(self : PhysicsemhighfreqEdge, v : Double) -> PhysicsemhighfreqEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_edge_min(s : PhysicsemhighfreqEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqEdge::min(self : PhysicsemhighfreqEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_edge_max(s : PhysicsemhighfreqEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqEdge::max(self : PhysicsemhighfreqEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_edge_to_string(s : PhysicsemhighfreqEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqEdge::to_string(self : PhysicsemhighfreqEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqPath {
@@ -606,45 +606,45 @@ pub fn physics_em_high_freq_path_make(size : Int) -> PhysicsemhighfreqPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_path_len(s : PhysicsemhighfreqPath) -> Int { s.size }
+pub fn PhysicsemhighfreqPath::len(self : PhysicsemhighfreqPath) -> Int { self.size }
 
-pub fn physics_em_high_freq_path_get(s : PhysicsemhighfreqPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqPath::get(self : PhysicsemhighfreqPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_path_set(s : PhysicsemhighfreqPath, i : Int, v : Double) -> PhysicsemhighfreqPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqPath::set(self : PhysicsemhighfreqPath, i : Int, v : Double) -> PhysicsemhighfreqPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_path_sum(s : PhysicsemhighfreqPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqPath::sum(self : PhysicsemhighfreqPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_path_mean(s : PhysicsemhighfreqPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqPath::mean(self : PhysicsemhighfreqPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_path_scale(s : PhysicsemhighfreqPath, f : Double) -> PhysicsemhighfreqPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqPath::scale(self : PhysicsemhighfreqPath, f : Double) -> PhysicsemhighfreqPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_path_add(a : PhysicsemhighfreqPath, b : PhysicsemhighfreqPath) -> PhysicsemhighfreqPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqPath::add(self : PhysicsemhighfreqPath, other : PhysicsemhighfreqPath) -> PhysicsemhighfreqPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_path_copy(s : PhysicsemhighfreqPath) -> PhysicsemhighfreqPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqPath::copy(self : PhysicsemhighfreqPath) -> PhysicsemhighfreqPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_path_fill(s : PhysicsemhighfreqPath, v : Double) -> PhysicsemhighfreqPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqPath::fill(self : PhysicsemhighfreqPath, v : Double) -> PhysicsemhighfreqPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_path_min(s : PhysicsemhighfreqPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqPath::min(self : PhysicsemhighfreqPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_path_max(s : PhysicsemhighfreqPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqPath::max(self : PhysicsemhighfreqPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_path_to_string(s : PhysicsemhighfreqPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqPath::to_string(self : PhysicsemhighfreqPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_high_freq_cluster_make(size : Int) -> PhysicsemhighfreqCluster
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_cluster_len(s : PhysicsemhighfreqCluster) -> Int { s.size }
+pub fn PhysicsemhighfreqCluster::len(self : PhysicsemhighfreqCluster) -> Int { self.size }
 
-pub fn physics_em_high_freq_cluster_get(s : PhysicsemhighfreqCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqCluster::get(self : PhysicsemhighfreqCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_cluster_set(s : PhysicsemhighfreqCluster, i : Int, v : Double) -> PhysicsemhighfreqCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCluster::set(self : PhysicsemhighfreqCluster, i : Int, v : Double) -> PhysicsemhighfreqCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cluster_sum(s : PhysicsemhighfreqCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqCluster::sum(self : PhysicsemhighfreqCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_cluster_mean(s : PhysicsemhighfreqCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqCluster::mean(self : PhysicsemhighfreqCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_cluster_scale(s : PhysicsemhighfreqCluster, f : Double) -> PhysicsemhighfreqCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCluster::scale(self : PhysicsemhighfreqCluster, f : Double) -> PhysicsemhighfreqCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cluster_add(a : PhysicsemhighfreqCluster, b : PhysicsemhighfreqCluster) -> PhysicsemhighfreqCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqCluster::add(self : PhysicsemhighfreqCluster, other : PhysicsemhighfreqCluster) -> PhysicsemhighfreqCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cluster_copy(s : PhysicsemhighfreqCluster) -> PhysicsemhighfreqCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCluster::copy(self : PhysicsemhighfreqCluster) -> PhysicsemhighfreqCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cluster_fill(s : PhysicsemhighfreqCluster, v : Double) -> PhysicsemhighfreqCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCluster::fill(self : PhysicsemhighfreqCluster, v : Double) -> PhysicsemhighfreqCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cluster_min(s : PhysicsemhighfreqCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqCluster::min(self : PhysicsemhighfreqCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_cluster_max(s : PhysicsemhighfreqCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqCluster::max(self : PhysicsemhighfreqCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_cluster_to_string(s : PhysicsemhighfreqCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqCluster::to_string(self : PhysicsemhighfreqCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqModel {
@@ -708,45 +708,45 @@ pub fn physics_em_high_freq_model_make(size : Int) -> PhysicsemhighfreqModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_model_len(s : PhysicsemhighfreqModel) -> Int { s.size }
+pub fn PhysicsemhighfreqModel::len(self : PhysicsemhighfreqModel) -> Int { self.size }
 
-pub fn physics_em_high_freq_model_get(s : PhysicsemhighfreqModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqModel::get(self : PhysicsemhighfreqModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_model_set(s : PhysicsemhighfreqModel, i : Int, v : Double) -> PhysicsemhighfreqModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqModel::set(self : PhysicsemhighfreqModel, i : Int, v : Double) -> PhysicsemhighfreqModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_model_sum(s : PhysicsemhighfreqModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqModel::sum(self : PhysicsemhighfreqModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_model_mean(s : PhysicsemhighfreqModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqModel::mean(self : PhysicsemhighfreqModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_model_scale(s : PhysicsemhighfreqModel, f : Double) -> PhysicsemhighfreqModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqModel::scale(self : PhysicsemhighfreqModel, f : Double) -> PhysicsemhighfreqModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_model_add(a : PhysicsemhighfreqModel, b : PhysicsemhighfreqModel) -> PhysicsemhighfreqModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqModel::add(self : PhysicsemhighfreqModel, other : PhysicsemhighfreqModel) -> PhysicsemhighfreqModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_model_copy(s : PhysicsemhighfreqModel) -> PhysicsemhighfreqModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqModel::copy(self : PhysicsemhighfreqModel) -> PhysicsemhighfreqModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_model_fill(s : PhysicsemhighfreqModel, v : Double) -> PhysicsemhighfreqModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqModel::fill(self : PhysicsemhighfreqModel, v : Double) -> PhysicsemhighfreqModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_model_min(s : PhysicsemhighfreqModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqModel::min(self : PhysicsemhighfreqModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_model_max(s : PhysicsemhighfreqModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqModel::max(self : PhysicsemhighfreqModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_model_to_string(s : PhysicsemhighfreqModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqModel::to_string(self : PhysicsemhighfreqModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_high_freq_layer_make(size : Int) -> PhysicsemhighfreqLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_layer_len(s : PhysicsemhighfreqLayer) -> Int { s.size }
+pub fn PhysicsemhighfreqLayer::len(self : PhysicsemhighfreqLayer) -> Int { self.size }
 
-pub fn physics_em_high_freq_layer_get(s : PhysicsemhighfreqLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqLayer::get(self : PhysicsemhighfreqLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_layer_set(s : PhysicsemhighfreqLayer, i : Int, v : Double) -> PhysicsemhighfreqLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqLayer::set(self : PhysicsemhighfreqLayer, i : Int, v : Double) -> PhysicsemhighfreqLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_layer_sum(s : PhysicsemhighfreqLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqLayer::sum(self : PhysicsemhighfreqLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_layer_mean(s : PhysicsemhighfreqLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqLayer::mean(self : PhysicsemhighfreqLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_layer_scale(s : PhysicsemhighfreqLayer, f : Double) -> PhysicsemhighfreqLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqLayer::scale(self : PhysicsemhighfreqLayer, f : Double) -> PhysicsemhighfreqLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_layer_add(a : PhysicsemhighfreqLayer, b : PhysicsemhighfreqLayer) -> PhysicsemhighfreqLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqLayer::add(self : PhysicsemhighfreqLayer, other : PhysicsemhighfreqLayer) -> PhysicsemhighfreqLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_layer_copy(s : PhysicsemhighfreqLayer) -> PhysicsemhighfreqLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqLayer::copy(self : PhysicsemhighfreqLayer) -> PhysicsemhighfreqLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_layer_fill(s : PhysicsemhighfreqLayer, v : Double) -> PhysicsemhighfreqLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqLayer::fill(self : PhysicsemhighfreqLayer, v : Double) -> PhysicsemhighfreqLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_layer_min(s : PhysicsemhighfreqLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqLayer::min(self : PhysicsemhighfreqLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_layer_max(s : PhysicsemhighfreqLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqLayer::max(self : PhysicsemhighfreqLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_layer_to_string(s : PhysicsemhighfreqLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqLayer::to_string(self : PhysicsemhighfreqLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_high_freq_buffer_make(size : Int) -> PhysicsemhighfreqBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_buffer_len(s : PhysicsemhighfreqBuffer) -> Int { s.size }
+pub fn PhysicsemhighfreqBuffer::len(self : PhysicsemhighfreqBuffer) -> Int { self.size }
 
-pub fn physics_em_high_freq_buffer_get(s : PhysicsemhighfreqBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqBuffer::get(self : PhysicsemhighfreqBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_buffer_set(s : PhysicsemhighfreqBuffer, i : Int, v : Double) -> PhysicsemhighfreqBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqBuffer::set(self : PhysicsemhighfreqBuffer, i : Int, v : Double) -> PhysicsemhighfreqBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_buffer_sum(s : PhysicsemhighfreqBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqBuffer::sum(self : PhysicsemhighfreqBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_buffer_mean(s : PhysicsemhighfreqBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqBuffer::mean(self : PhysicsemhighfreqBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_buffer_scale(s : PhysicsemhighfreqBuffer, f : Double) -> PhysicsemhighfreqBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqBuffer::scale(self : PhysicsemhighfreqBuffer, f : Double) -> PhysicsemhighfreqBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_buffer_add(a : PhysicsemhighfreqBuffer, b : PhysicsemhighfreqBuffer) -> PhysicsemhighfreqBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqBuffer::add(self : PhysicsemhighfreqBuffer, other : PhysicsemhighfreqBuffer) -> PhysicsemhighfreqBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_buffer_copy(s : PhysicsemhighfreqBuffer) -> PhysicsemhighfreqBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqBuffer::copy(self : PhysicsemhighfreqBuffer) -> PhysicsemhighfreqBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_buffer_fill(s : PhysicsemhighfreqBuffer, v : Double) -> PhysicsemhighfreqBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqBuffer::fill(self : PhysicsemhighfreqBuffer, v : Double) -> PhysicsemhighfreqBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_buffer_min(s : PhysicsemhighfreqBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqBuffer::min(self : PhysicsemhighfreqBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_buffer_max(s : PhysicsemhighfreqBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqBuffer::max(self : PhysicsemhighfreqBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_buffer_to_string(s : PhysicsemhighfreqBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqBuffer::to_string(self : PhysicsemhighfreqBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_high_freq_cursor_make(size : Int) -> PhysicsemhighfreqCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_cursor_len(s : PhysicsemhighfreqCursor) -> Int { s.size }
+pub fn PhysicsemhighfreqCursor::len(self : PhysicsemhighfreqCursor) -> Int { self.size }
 
-pub fn physics_em_high_freq_cursor_get(s : PhysicsemhighfreqCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqCursor::get(self : PhysicsemhighfreqCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_cursor_set(s : PhysicsemhighfreqCursor, i : Int, v : Double) -> PhysicsemhighfreqCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCursor::set(self : PhysicsemhighfreqCursor, i : Int, v : Double) -> PhysicsemhighfreqCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cursor_sum(s : PhysicsemhighfreqCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqCursor::sum(self : PhysicsemhighfreqCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_cursor_mean(s : PhysicsemhighfreqCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqCursor::mean(self : PhysicsemhighfreqCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_cursor_scale(s : PhysicsemhighfreqCursor, f : Double) -> PhysicsemhighfreqCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCursor::scale(self : PhysicsemhighfreqCursor, f : Double) -> PhysicsemhighfreqCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cursor_add(a : PhysicsemhighfreqCursor, b : PhysicsemhighfreqCursor) -> PhysicsemhighfreqCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqCursor::add(self : PhysicsemhighfreqCursor, other : PhysicsemhighfreqCursor) -> PhysicsemhighfreqCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cursor_copy(s : PhysicsemhighfreqCursor) -> PhysicsemhighfreqCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCursor::copy(self : PhysicsemhighfreqCursor) -> PhysicsemhighfreqCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cursor_fill(s : PhysicsemhighfreqCursor, v : Double) -> PhysicsemhighfreqCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqCursor::fill(self : PhysicsemhighfreqCursor, v : Double) -> PhysicsemhighfreqCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_cursor_min(s : PhysicsemhighfreqCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqCursor::min(self : PhysicsemhighfreqCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_cursor_max(s : PhysicsemhighfreqCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqCursor::max(self : PhysicsemhighfreqCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_cursor_to_string(s : PhysicsemhighfreqCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqCursor::to_string(self : PhysicsemhighfreqCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqView {
@@ -912,45 +912,45 @@ pub fn physics_em_high_freq_view_make(size : Int) -> PhysicsemhighfreqView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_view_len(s : PhysicsemhighfreqView) -> Int { s.size }
+pub fn PhysicsemhighfreqView::len(self : PhysicsemhighfreqView) -> Int { self.size }
 
-pub fn physics_em_high_freq_view_get(s : PhysicsemhighfreqView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqView::get(self : PhysicsemhighfreqView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_view_set(s : PhysicsemhighfreqView, i : Int, v : Double) -> PhysicsemhighfreqView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqView::set(self : PhysicsemhighfreqView, i : Int, v : Double) -> PhysicsemhighfreqView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_view_sum(s : PhysicsemhighfreqView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqView::sum(self : PhysicsemhighfreqView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_view_mean(s : PhysicsemhighfreqView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqView::mean(self : PhysicsemhighfreqView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_view_scale(s : PhysicsemhighfreqView, f : Double) -> PhysicsemhighfreqView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqView::scale(self : PhysicsemhighfreqView, f : Double) -> PhysicsemhighfreqView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_view_add(a : PhysicsemhighfreqView, b : PhysicsemhighfreqView) -> PhysicsemhighfreqView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqView::add(self : PhysicsemhighfreqView, other : PhysicsemhighfreqView) -> PhysicsemhighfreqView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_view_copy(s : PhysicsemhighfreqView) -> PhysicsemhighfreqView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqView::copy(self : PhysicsemhighfreqView) -> PhysicsemhighfreqView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_view_fill(s : PhysicsemhighfreqView, v : Double) -> PhysicsemhighfreqView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqView::fill(self : PhysicsemhighfreqView, v : Double) -> PhysicsemhighfreqView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_view_min(s : PhysicsemhighfreqView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqView::min(self : PhysicsemhighfreqView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_view_max(s : PhysicsemhighfreqView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqView::max(self : PhysicsemhighfreqView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_view_to_string(s : PhysicsemhighfreqView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqView::to_string(self : PhysicsemhighfreqView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqRange {
@@ -963,45 +963,45 @@ pub fn physics_em_high_freq_range_make(size : Int) -> PhysicsemhighfreqRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_range_len(s : PhysicsemhighfreqRange) -> Int { s.size }
+pub fn PhysicsemhighfreqRange::len(self : PhysicsemhighfreqRange) -> Int { self.size }
 
-pub fn physics_em_high_freq_range_get(s : PhysicsemhighfreqRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqRange::get(self : PhysicsemhighfreqRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_range_set(s : PhysicsemhighfreqRange, i : Int, v : Double) -> PhysicsemhighfreqRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqRange::set(self : PhysicsemhighfreqRange, i : Int, v : Double) -> PhysicsemhighfreqRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_range_sum(s : PhysicsemhighfreqRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqRange::sum(self : PhysicsemhighfreqRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_range_mean(s : PhysicsemhighfreqRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqRange::mean(self : PhysicsemhighfreqRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_range_scale(s : PhysicsemhighfreqRange, f : Double) -> PhysicsemhighfreqRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqRange::scale(self : PhysicsemhighfreqRange, f : Double) -> PhysicsemhighfreqRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_range_add(a : PhysicsemhighfreqRange, b : PhysicsemhighfreqRange) -> PhysicsemhighfreqRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqRange::add(self : PhysicsemhighfreqRange, other : PhysicsemhighfreqRange) -> PhysicsemhighfreqRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_range_copy(s : PhysicsemhighfreqRange) -> PhysicsemhighfreqRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqRange::copy(self : PhysicsemhighfreqRange) -> PhysicsemhighfreqRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_range_fill(s : PhysicsemhighfreqRange, v : Double) -> PhysicsemhighfreqRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqRange::fill(self : PhysicsemhighfreqRange, v : Double) -> PhysicsemhighfreqRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_range_min(s : PhysicsemhighfreqRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqRange::min(self : PhysicsemhighfreqRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_range_max(s : PhysicsemhighfreqRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqRange::max(self : PhysicsemhighfreqRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_range_to_string(s : PhysicsemhighfreqRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqRange::to_string(self : PhysicsemhighfreqRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemhighfreqSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_high_freq_slice_make(size : Int) -> PhysicsemhighfreqSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_high_freq_slice_len(s : PhysicsemhighfreqSlice) -> Int { s.size }
+pub fn PhysicsemhighfreqSlice::len(self : PhysicsemhighfreqSlice) -> Int { self.size }
 
-pub fn physics_em_high_freq_slice_get(s : PhysicsemhighfreqSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemhighfreqSlice::get(self : PhysicsemhighfreqSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_high_freq_slice_set(s : PhysicsemhighfreqSlice, i : Int, v : Double) -> PhysicsemhighfreqSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqSlice::set(self : PhysicsemhighfreqSlice, i : Int, v : Double) -> PhysicsemhighfreqSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_slice_sum(s : PhysicsemhighfreqSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemhighfreqSlice::sum(self : PhysicsemhighfreqSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_high_freq_slice_mean(s : PhysicsemhighfreqSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemhighfreqSlice::mean(self : PhysicsemhighfreqSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_high_freq_slice_scale(s : PhysicsemhighfreqSlice, f : Double) -> PhysicsemhighfreqSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqSlice::scale(self : PhysicsemhighfreqSlice, f : Double) -> PhysicsemhighfreqSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_slice_add(a : PhysicsemhighfreqSlice, b : PhysicsemhighfreqSlice) -> PhysicsemhighfreqSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemhighfreqSlice::add(self : PhysicsemhighfreqSlice, other : PhysicsemhighfreqSlice) -> PhysicsemhighfreqSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_slice_copy(s : PhysicsemhighfreqSlice) -> PhysicsemhighfreqSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqSlice::copy(self : PhysicsemhighfreqSlice) -> PhysicsemhighfreqSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_slice_fill(s : PhysicsemhighfreqSlice, v : Double) -> PhysicsemhighfreqSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemhighfreqSlice::fill(self : PhysicsemhighfreqSlice, v : Double) -> PhysicsemhighfreqSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_high_freq_slice_min(s : PhysicsemhighfreqSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemhighfreqSlice::min(self : PhysicsemhighfreqSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_high_freq_slice_max(s : PhysicsemhighfreqSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemhighfreqSlice::max(self : PhysicsemhighfreqSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_high_freq_slice_to_string(s : PhysicsemhighfreqSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemhighfreqSlice::to_string(self : PhysicsemhighfreqSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

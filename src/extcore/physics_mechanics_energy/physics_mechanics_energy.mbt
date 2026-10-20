@@ -351,45 +351,45 @@ pub fn physics_mechanics_energy_frame_make(size : Int) -> Physicsmechanicsenergy
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_frame_len(s : PhysicsmechanicsenergyFrame) -> Int { s.size }
+pub fn PhysicsmechanicsenergyFrame::len(self : PhysicsmechanicsenergyFrame) -> Int { self.size }
 
-pub fn physics_mechanics_energy_frame_get(s : PhysicsmechanicsenergyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyFrame::get(self : PhysicsmechanicsenergyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_frame_set(s : PhysicsmechanicsenergyFrame, i : Int, v : Double) -> PhysicsmechanicsenergyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyFrame::set(self : PhysicsmechanicsenergyFrame, i : Int, v : Double) -> PhysicsmechanicsenergyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_frame_sum(s : PhysicsmechanicsenergyFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyFrame::sum(self : PhysicsmechanicsenergyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_frame_mean(s : PhysicsmechanicsenergyFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyFrame::mean(self : PhysicsmechanicsenergyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_frame_scale(s : PhysicsmechanicsenergyFrame, f : Double) -> PhysicsmechanicsenergyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyFrame::scale(self : PhysicsmechanicsenergyFrame, f : Double) -> PhysicsmechanicsenergyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_frame_add(a : PhysicsmechanicsenergyFrame, b : PhysicsmechanicsenergyFrame) -> PhysicsmechanicsenergyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyFrame::add(self : PhysicsmechanicsenergyFrame, other : PhysicsmechanicsenergyFrame) -> PhysicsmechanicsenergyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_frame_copy(s : PhysicsmechanicsenergyFrame) -> PhysicsmechanicsenergyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyFrame::copy(self : PhysicsmechanicsenergyFrame) -> PhysicsmechanicsenergyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_frame_fill(s : PhysicsmechanicsenergyFrame, v : Double) -> PhysicsmechanicsenergyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyFrame::fill(self : PhysicsmechanicsenergyFrame, v : Double) -> PhysicsmechanicsenergyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_frame_min(s : PhysicsmechanicsenergyFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyFrame::min(self : PhysicsmechanicsenergyFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_frame_max(s : PhysicsmechanicsenergyFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyFrame::max(self : PhysicsmechanicsenergyFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_frame_to_string(s : PhysicsmechanicsenergyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyFrame::to_string(self : PhysicsmechanicsenergyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyTable {
@@ -402,45 +402,45 @@ pub fn physics_mechanics_energy_table_make(size : Int) -> Physicsmechanicsenergy
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_table_len(s : PhysicsmechanicsenergyTable) -> Int { s.size }
+pub fn PhysicsmechanicsenergyTable::len(self : PhysicsmechanicsenergyTable) -> Int { self.size }
 
-pub fn physics_mechanics_energy_table_get(s : PhysicsmechanicsenergyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyTable::get(self : PhysicsmechanicsenergyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_table_set(s : PhysicsmechanicsenergyTable, i : Int, v : Double) -> PhysicsmechanicsenergyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyTable::set(self : PhysicsmechanicsenergyTable, i : Int, v : Double) -> PhysicsmechanicsenergyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_table_sum(s : PhysicsmechanicsenergyTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyTable::sum(self : PhysicsmechanicsenergyTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_table_mean(s : PhysicsmechanicsenergyTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyTable::mean(self : PhysicsmechanicsenergyTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_table_scale(s : PhysicsmechanicsenergyTable, f : Double) -> PhysicsmechanicsenergyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyTable::scale(self : PhysicsmechanicsenergyTable, f : Double) -> PhysicsmechanicsenergyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_table_add(a : PhysicsmechanicsenergyTable, b : PhysicsmechanicsenergyTable) -> PhysicsmechanicsenergyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyTable::add(self : PhysicsmechanicsenergyTable, other : PhysicsmechanicsenergyTable) -> PhysicsmechanicsenergyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_table_copy(s : PhysicsmechanicsenergyTable) -> PhysicsmechanicsenergyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyTable::copy(self : PhysicsmechanicsenergyTable) -> PhysicsmechanicsenergyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_table_fill(s : PhysicsmechanicsenergyTable, v : Double) -> PhysicsmechanicsenergyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyTable::fill(self : PhysicsmechanicsenergyTable, v : Double) -> PhysicsmechanicsenergyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_table_min(s : PhysicsmechanicsenergyTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyTable::min(self : PhysicsmechanicsenergyTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_table_max(s : PhysicsmechanicsenergyTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyTable::max(self : PhysicsmechanicsenergyTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_table_to_string(s : PhysicsmechanicsenergyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyTable::to_string(self : PhysicsmechanicsenergyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyGraphN {
@@ -453,45 +453,45 @@ pub fn physics_mechanics_energy_graphn_make(size : Int) -> Physicsmechanicsenerg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_graphn_len(s : PhysicsmechanicsenergyGraphN) -> Int { s.size }
+pub fn PhysicsmechanicsenergyGraphN::len(self : PhysicsmechanicsenergyGraphN) -> Int { self.size }
 
-pub fn physics_mechanics_energy_graphn_get(s : PhysicsmechanicsenergyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyGraphN::get(self : PhysicsmechanicsenergyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_graphn_set(s : PhysicsmechanicsenergyGraphN, i : Int, v : Double) -> PhysicsmechanicsenergyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyGraphN::set(self : PhysicsmechanicsenergyGraphN, i : Int, v : Double) -> PhysicsmechanicsenergyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_graphn_sum(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyGraphN::sum(self : PhysicsmechanicsenergyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_graphn_mean(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyGraphN::mean(self : PhysicsmechanicsenergyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_graphn_scale(s : PhysicsmechanicsenergyGraphN, f : Double) -> PhysicsmechanicsenergyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyGraphN::scale(self : PhysicsmechanicsenergyGraphN, f : Double) -> PhysicsmechanicsenergyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_graphn_add(a : PhysicsmechanicsenergyGraphN, b : PhysicsmechanicsenergyGraphN) -> PhysicsmechanicsenergyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyGraphN::add(self : PhysicsmechanicsenergyGraphN, other : PhysicsmechanicsenergyGraphN) -> PhysicsmechanicsenergyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_graphn_copy(s : PhysicsmechanicsenergyGraphN) -> PhysicsmechanicsenergyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyGraphN::copy(self : PhysicsmechanicsenergyGraphN) -> PhysicsmechanicsenergyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_graphn_fill(s : PhysicsmechanicsenergyGraphN, v : Double) -> PhysicsmechanicsenergyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyGraphN::fill(self : PhysicsmechanicsenergyGraphN, v : Double) -> PhysicsmechanicsenergyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_graphn_min(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyGraphN::min(self : PhysicsmechanicsenergyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_graphn_max(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyGraphN::max(self : PhysicsmechanicsenergyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_graphn_to_string(s : PhysicsmechanicsenergyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyGraphN::to_string(self : PhysicsmechanicsenergyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyNode {
@@ -504,45 +504,45 @@ pub fn physics_mechanics_energy_node_make(size : Int) -> PhysicsmechanicsenergyN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_node_len(s : PhysicsmechanicsenergyNode) -> Int { s.size }
+pub fn PhysicsmechanicsenergyNode::len(self : PhysicsmechanicsenergyNode) -> Int { self.size }
 
-pub fn physics_mechanics_energy_node_get(s : PhysicsmechanicsenergyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyNode::get(self : PhysicsmechanicsenergyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_node_set(s : PhysicsmechanicsenergyNode, i : Int, v : Double) -> PhysicsmechanicsenergyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyNode::set(self : PhysicsmechanicsenergyNode, i : Int, v : Double) -> PhysicsmechanicsenergyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_node_sum(s : PhysicsmechanicsenergyNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyNode::sum(self : PhysicsmechanicsenergyNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_node_mean(s : PhysicsmechanicsenergyNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyNode::mean(self : PhysicsmechanicsenergyNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_node_scale(s : PhysicsmechanicsenergyNode, f : Double) -> PhysicsmechanicsenergyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyNode::scale(self : PhysicsmechanicsenergyNode, f : Double) -> PhysicsmechanicsenergyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_node_add(a : PhysicsmechanicsenergyNode, b : PhysicsmechanicsenergyNode) -> PhysicsmechanicsenergyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyNode::add(self : PhysicsmechanicsenergyNode, other : PhysicsmechanicsenergyNode) -> PhysicsmechanicsenergyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_node_copy(s : PhysicsmechanicsenergyNode) -> PhysicsmechanicsenergyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyNode::copy(self : PhysicsmechanicsenergyNode) -> PhysicsmechanicsenergyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_node_fill(s : PhysicsmechanicsenergyNode, v : Double) -> PhysicsmechanicsenergyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyNode::fill(self : PhysicsmechanicsenergyNode, v : Double) -> PhysicsmechanicsenergyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_node_min(s : PhysicsmechanicsenergyNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyNode::min(self : PhysicsmechanicsenergyNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_node_max(s : PhysicsmechanicsenergyNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyNode::max(self : PhysicsmechanicsenergyNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_node_to_string(s : PhysicsmechanicsenergyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyNode::to_string(self : PhysicsmechanicsenergyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyEdge {
@@ -555,45 +555,45 @@ pub fn physics_mechanics_energy_edge_make(size : Int) -> PhysicsmechanicsenergyE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_edge_len(s : PhysicsmechanicsenergyEdge) -> Int { s.size }
+pub fn PhysicsmechanicsenergyEdge::len(self : PhysicsmechanicsenergyEdge) -> Int { self.size }
 
-pub fn physics_mechanics_energy_edge_get(s : PhysicsmechanicsenergyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyEdge::get(self : PhysicsmechanicsenergyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_edge_set(s : PhysicsmechanicsenergyEdge, i : Int, v : Double) -> PhysicsmechanicsenergyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyEdge::set(self : PhysicsmechanicsenergyEdge, i : Int, v : Double) -> PhysicsmechanicsenergyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_edge_sum(s : PhysicsmechanicsenergyEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyEdge::sum(self : PhysicsmechanicsenergyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_edge_mean(s : PhysicsmechanicsenergyEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyEdge::mean(self : PhysicsmechanicsenergyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_edge_scale(s : PhysicsmechanicsenergyEdge, f : Double) -> PhysicsmechanicsenergyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyEdge::scale(self : PhysicsmechanicsenergyEdge, f : Double) -> PhysicsmechanicsenergyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_edge_add(a : PhysicsmechanicsenergyEdge, b : PhysicsmechanicsenergyEdge) -> PhysicsmechanicsenergyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyEdge::add(self : PhysicsmechanicsenergyEdge, other : PhysicsmechanicsenergyEdge) -> PhysicsmechanicsenergyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_edge_copy(s : PhysicsmechanicsenergyEdge) -> PhysicsmechanicsenergyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyEdge::copy(self : PhysicsmechanicsenergyEdge) -> PhysicsmechanicsenergyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_edge_fill(s : PhysicsmechanicsenergyEdge, v : Double) -> PhysicsmechanicsenergyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyEdge::fill(self : PhysicsmechanicsenergyEdge, v : Double) -> PhysicsmechanicsenergyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_edge_min(s : PhysicsmechanicsenergyEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyEdge::min(self : PhysicsmechanicsenergyEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_edge_max(s : PhysicsmechanicsenergyEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyEdge::max(self : PhysicsmechanicsenergyEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_edge_to_string(s : PhysicsmechanicsenergyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyEdge::to_string(self : PhysicsmechanicsenergyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyPath {
@@ -606,45 +606,45 @@ pub fn physics_mechanics_energy_path_make(size : Int) -> PhysicsmechanicsenergyP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_path_len(s : PhysicsmechanicsenergyPath) -> Int { s.size }
+pub fn PhysicsmechanicsenergyPath::len(self : PhysicsmechanicsenergyPath) -> Int { self.size }
 
-pub fn physics_mechanics_energy_path_get(s : PhysicsmechanicsenergyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyPath::get(self : PhysicsmechanicsenergyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_path_set(s : PhysicsmechanicsenergyPath, i : Int, v : Double) -> PhysicsmechanicsenergyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyPath::set(self : PhysicsmechanicsenergyPath, i : Int, v : Double) -> PhysicsmechanicsenergyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_path_sum(s : PhysicsmechanicsenergyPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyPath::sum(self : PhysicsmechanicsenergyPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_path_mean(s : PhysicsmechanicsenergyPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyPath::mean(self : PhysicsmechanicsenergyPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_path_scale(s : PhysicsmechanicsenergyPath, f : Double) -> PhysicsmechanicsenergyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyPath::scale(self : PhysicsmechanicsenergyPath, f : Double) -> PhysicsmechanicsenergyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_path_add(a : PhysicsmechanicsenergyPath, b : PhysicsmechanicsenergyPath) -> PhysicsmechanicsenergyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyPath::add(self : PhysicsmechanicsenergyPath, other : PhysicsmechanicsenergyPath) -> PhysicsmechanicsenergyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_path_copy(s : PhysicsmechanicsenergyPath) -> PhysicsmechanicsenergyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyPath::copy(self : PhysicsmechanicsenergyPath) -> PhysicsmechanicsenergyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_path_fill(s : PhysicsmechanicsenergyPath, v : Double) -> PhysicsmechanicsenergyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyPath::fill(self : PhysicsmechanicsenergyPath, v : Double) -> PhysicsmechanicsenergyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_path_min(s : PhysicsmechanicsenergyPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyPath::min(self : PhysicsmechanicsenergyPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_path_max(s : PhysicsmechanicsenergyPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyPath::max(self : PhysicsmechanicsenergyPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_path_to_string(s : PhysicsmechanicsenergyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyPath::to_string(self : PhysicsmechanicsenergyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyCluster {
@@ -657,45 +657,45 @@ pub fn physics_mechanics_energy_cluster_make(size : Int) -> Physicsmechanicsener
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_cluster_len(s : PhysicsmechanicsenergyCluster) -> Int { s.size }
+pub fn PhysicsmechanicsenergyCluster::len(self : PhysicsmechanicsenergyCluster) -> Int { self.size }
 
-pub fn physics_mechanics_energy_cluster_get(s : PhysicsmechanicsenergyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyCluster::get(self : PhysicsmechanicsenergyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_cluster_set(s : PhysicsmechanicsenergyCluster, i : Int, v : Double) -> PhysicsmechanicsenergyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCluster::set(self : PhysicsmechanicsenergyCluster, i : Int, v : Double) -> PhysicsmechanicsenergyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cluster_sum(s : PhysicsmechanicsenergyCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyCluster::sum(self : PhysicsmechanicsenergyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_cluster_mean(s : PhysicsmechanicsenergyCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyCluster::mean(self : PhysicsmechanicsenergyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_cluster_scale(s : PhysicsmechanicsenergyCluster, f : Double) -> PhysicsmechanicsenergyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCluster::scale(self : PhysicsmechanicsenergyCluster, f : Double) -> PhysicsmechanicsenergyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cluster_add(a : PhysicsmechanicsenergyCluster, b : PhysicsmechanicsenergyCluster) -> PhysicsmechanicsenergyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyCluster::add(self : PhysicsmechanicsenergyCluster, other : PhysicsmechanicsenergyCluster) -> PhysicsmechanicsenergyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cluster_copy(s : PhysicsmechanicsenergyCluster) -> PhysicsmechanicsenergyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCluster::copy(self : PhysicsmechanicsenergyCluster) -> PhysicsmechanicsenergyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cluster_fill(s : PhysicsmechanicsenergyCluster, v : Double) -> PhysicsmechanicsenergyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCluster::fill(self : PhysicsmechanicsenergyCluster, v : Double) -> PhysicsmechanicsenergyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cluster_min(s : PhysicsmechanicsenergyCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyCluster::min(self : PhysicsmechanicsenergyCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_cluster_max(s : PhysicsmechanicsenergyCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyCluster::max(self : PhysicsmechanicsenergyCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_cluster_to_string(s : PhysicsmechanicsenergyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyCluster::to_string(self : PhysicsmechanicsenergyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyModel {
@@ -708,45 +708,45 @@ pub fn physics_mechanics_energy_model_make(size : Int) -> Physicsmechanicsenergy
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_model_len(s : PhysicsmechanicsenergyModel) -> Int { s.size }
+pub fn PhysicsmechanicsenergyModel::len(self : PhysicsmechanicsenergyModel) -> Int { self.size }
 
-pub fn physics_mechanics_energy_model_get(s : PhysicsmechanicsenergyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyModel::get(self : PhysicsmechanicsenergyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_model_set(s : PhysicsmechanicsenergyModel, i : Int, v : Double) -> PhysicsmechanicsenergyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyModel::set(self : PhysicsmechanicsenergyModel, i : Int, v : Double) -> PhysicsmechanicsenergyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_model_sum(s : PhysicsmechanicsenergyModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyModel::sum(self : PhysicsmechanicsenergyModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_model_mean(s : PhysicsmechanicsenergyModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyModel::mean(self : PhysicsmechanicsenergyModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_model_scale(s : PhysicsmechanicsenergyModel, f : Double) -> PhysicsmechanicsenergyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyModel::scale(self : PhysicsmechanicsenergyModel, f : Double) -> PhysicsmechanicsenergyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_model_add(a : PhysicsmechanicsenergyModel, b : PhysicsmechanicsenergyModel) -> PhysicsmechanicsenergyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyModel::add(self : PhysicsmechanicsenergyModel, other : PhysicsmechanicsenergyModel) -> PhysicsmechanicsenergyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_model_copy(s : PhysicsmechanicsenergyModel) -> PhysicsmechanicsenergyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyModel::copy(self : PhysicsmechanicsenergyModel) -> PhysicsmechanicsenergyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_model_fill(s : PhysicsmechanicsenergyModel, v : Double) -> PhysicsmechanicsenergyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyModel::fill(self : PhysicsmechanicsenergyModel, v : Double) -> PhysicsmechanicsenergyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_model_min(s : PhysicsmechanicsenergyModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyModel::min(self : PhysicsmechanicsenergyModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_model_max(s : PhysicsmechanicsenergyModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyModel::max(self : PhysicsmechanicsenergyModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_model_to_string(s : PhysicsmechanicsenergyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyModel::to_string(self : PhysicsmechanicsenergyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyLayer {
@@ -759,45 +759,45 @@ pub fn physics_mechanics_energy_layer_make(size : Int) -> Physicsmechanicsenergy
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_layer_len(s : PhysicsmechanicsenergyLayer) -> Int { s.size }
+pub fn PhysicsmechanicsenergyLayer::len(self : PhysicsmechanicsenergyLayer) -> Int { self.size }
 
-pub fn physics_mechanics_energy_layer_get(s : PhysicsmechanicsenergyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyLayer::get(self : PhysicsmechanicsenergyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_layer_set(s : PhysicsmechanicsenergyLayer, i : Int, v : Double) -> PhysicsmechanicsenergyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyLayer::set(self : PhysicsmechanicsenergyLayer, i : Int, v : Double) -> PhysicsmechanicsenergyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_layer_sum(s : PhysicsmechanicsenergyLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyLayer::sum(self : PhysicsmechanicsenergyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_layer_mean(s : PhysicsmechanicsenergyLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyLayer::mean(self : PhysicsmechanicsenergyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_layer_scale(s : PhysicsmechanicsenergyLayer, f : Double) -> PhysicsmechanicsenergyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyLayer::scale(self : PhysicsmechanicsenergyLayer, f : Double) -> PhysicsmechanicsenergyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_layer_add(a : PhysicsmechanicsenergyLayer, b : PhysicsmechanicsenergyLayer) -> PhysicsmechanicsenergyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyLayer::add(self : PhysicsmechanicsenergyLayer, other : PhysicsmechanicsenergyLayer) -> PhysicsmechanicsenergyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_layer_copy(s : PhysicsmechanicsenergyLayer) -> PhysicsmechanicsenergyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyLayer::copy(self : PhysicsmechanicsenergyLayer) -> PhysicsmechanicsenergyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_layer_fill(s : PhysicsmechanicsenergyLayer, v : Double) -> PhysicsmechanicsenergyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyLayer::fill(self : PhysicsmechanicsenergyLayer, v : Double) -> PhysicsmechanicsenergyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_layer_min(s : PhysicsmechanicsenergyLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyLayer::min(self : PhysicsmechanicsenergyLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_layer_max(s : PhysicsmechanicsenergyLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyLayer::max(self : PhysicsmechanicsenergyLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_layer_to_string(s : PhysicsmechanicsenergyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyLayer::to_string(self : PhysicsmechanicsenergyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyBuffer {
@@ -810,45 +810,45 @@ pub fn physics_mechanics_energy_buffer_make(size : Int) -> Physicsmechanicsenerg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_buffer_len(s : PhysicsmechanicsenergyBuffer) -> Int { s.size }
+pub fn PhysicsmechanicsenergyBuffer::len(self : PhysicsmechanicsenergyBuffer) -> Int { self.size }
 
-pub fn physics_mechanics_energy_buffer_get(s : PhysicsmechanicsenergyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyBuffer::get(self : PhysicsmechanicsenergyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_buffer_set(s : PhysicsmechanicsenergyBuffer, i : Int, v : Double) -> PhysicsmechanicsenergyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyBuffer::set(self : PhysicsmechanicsenergyBuffer, i : Int, v : Double) -> PhysicsmechanicsenergyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_buffer_sum(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyBuffer::sum(self : PhysicsmechanicsenergyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_buffer_mean(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyBuffer::mean(self : PhysicsmechanicsenergyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_buffer_scale(s : PhysicsmechanicsenergyBuffer, f : Double) -> PhysicsmechanicsenergyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyBuffer::scale(self : PhysicsmechanicsenergyBuffer, f : Double) -> PhysicsmechanicsenergyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_buffer_add(a : PhysicsmechanicsenergyBuffer, b : PhysicsmechanicsenergyBuffer) -> PhysicsmechanicsenergyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyBuffer::add(self : PhysicsmechanicsenergyBuffer, other : PhysicsmechanicsenergyBuffer) -> PhysicsmechanicsenergyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_buffer_copy(s : PhysicsmechanicsenergyBuffer) -> PhysicsmechanicsenergyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyBuffer::copy(self : PhysicsmechanicsenergyBuffer) -> PhysicsmechanicsenergyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_buffer_fill(s : PhysicsmechanicsenergyBuffer, v : Double) -> PhysicsmechanicsenergyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyBuffer::fill(self : PhysicsmechanicsenergyBuffer, v : Double) -> PhysicsmechanicsenergyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_buffer_min(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyBuffer::min(self : PhysicsmechanicsenergyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_buffer_max(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyBuffer::max(self : PhysicsmechanicsenergyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_buffer_to_string(s : PhysicsmechanicsenergyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyBuffer::to_string(self : PhysicsmechanicsenergyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyCursor {
@@ -861,45 +861,45 @@ pub fn physics_mechanics_energy_cursor_make(size : Int) -> Physicsmechanicsenerg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_cursor_len(s : PhysicsmechanicsenergyCursor) -> Int { s.size }
+pub fn PhysicsmechanicsenergyCursor::len(self : PhysicsmechanicsenergyCursor) -> Int { self.size }
 
-pub fn physics_mechanics_energy_cursor_get(s : PhysicsmechanicsenergyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyCursor::get(self : PhysicsmechanicsenergyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_cursor_set(s : PhysicsmechanicsenergyCursor, i : Int, v : Double) -> PhysicsmechanicsenergyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCursor::set(self : PhysicsmechanicsenergyCursor, i : Int, v : Double) -> PhysicsmechanicsenergyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cursor_sum(s : PhysicsmechanicsenergyCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyCursor::sum(self : PhysicsmechanicsenergyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_cursor_mean(s : PhysicsmechanicsenergyCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyCursor::mean(self : PhysicsmechanicsenergyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_cursor_scale(s : PhysicsmechanicsenergyCursor, f : Double) -> PhysicsmechanicsenergyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCursor::scale(self : PhysicsmechanicsenergyCursor, f : Double) -> PhysicsmechanicsenergyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cursor_add(a : PhysicsmechanicsenergyCursor, b : PhysicsmechanicsenergyCursor) -> PhysicsmechanicsenergyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyCursor::add(self : PhysicsmechanicsenergyCursor, other : PhysicsmechanicsenergyCursor) -> PhysicsmechanicsenergyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cursor_copy(s : PhysicsmechanicsenergyCursor) -> PhysicsmechanicsenergyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCursor::copy(self : PhysicsmechanicsenergyCursor) -> PhysicsmechanicsenergyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cursor_fill(s : PhysicsmechanicsenergyCursor, v : Double) -> PhysicsmechanicsenergyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyCursor::fill(self : PhysicsmechanicsenergyCursor, v : Double) -> PhysicsmechanicsenergyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_cursor_min(s : PhysicsmechanicsenergyCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyCursor::min(self : PhysicsmechanicsenergyCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_cursor_max(s : PhysicsmechanicsenergyCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyCursor::max(self : PhysicsmechanicsenergyCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_cursor_to_string(s : PhysicsmechanicsenergyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyCursor::to_string(self : PhysicsmechanicsenergyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyView {
@@ -912,45 +912,45 @@ pub fn physics_mechanics_energy_view_make(size : Int) -> PhysicsmechanicsenergyV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_view_len(s : PhysicsmechanicsenergyView) -> Int { s.size }
+pub fn PhysicsmechanicsenergyView::len(self : PhysicsmechanicsenergyView) -> Int { self.size }
 
-pub fn physics_mechanics_energy_view_get(s : PhysicsmechanicsenergyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyView::get(self : PhysicsmechanicsenergyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_view_set(s : PhysicsmechanicsenergyView, i : Int, v : Double) -> PhysicsmechanicsenergyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyView::set(self : PhysicsmechanicsenergyView, i : Int, v : Double) -> PhysicsmechanicsenergyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_view_sum(s : PhysicsmechanicsenergyView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyView::sum(self : PhysicsmechanicsenergyView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_view_mean(s : PhysicsmechanicsenergyView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyView::mean(self : PhysicsmechanicsenergyView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_view_scale(s : PhysicsmechanicsenergyView, f : Double) -> PhysicsmechanicsenergyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyView::scale(self : PhysicsmechanicsenergyView, f : Double) -> PhysicsmechanicsenergyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_view_add(a : PhysicsmechanicsenergyView, b : PhysicsmechanicsenergyView) -> PhysicsmechanicsenergyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyView::add(self : PhysicsmechanicsenergyView, other : PhysicsmechanicsenergyView) -> PhysicsmechanicsenergyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_view_copy(s : PhysicsmechanicsenergyView) -> PhysicsmechanicsenergyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyView::copy(self : PhysicsmechanicsenergyView) -> PhysicsmechanicsenergyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_view_fill(s : PhysicsmechanicsenergyView, v : Double) -> PhysicsmechanicsenergyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyView::fill(self : PhysicsmechanicsenergyView, v : Double) -> PhysicsmechanicsenergyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_view_min(s : PhysicsmechanicsenergyView) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyView::min(self : PhysicsmechanicsenergyView) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_view_max(s : PhysicsmechanicsenergyView) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyView::max(self : PhysicsmechanicsenergyView) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_view_to_string(s : PhysicsmechanicsenergyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyView::to_string(self : PhysicsmechanicsenergyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergyRange {
@@ -963,45 +963,45 @@ pub fn physics_mechanics_energy_range_make(size : Int) -> Physicsmechanicsenergy
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_range_len(s : PhysicsmechanicsenergyRange) -> Int { s.size }
+pub fn PhysicsmechanicsenergyRange::len(self : PhysicsmechanicsenergyRange) -> Int { self.size }
 
-pub fn physics_mechanics_energy_range_get(s : PhysicsmechanicsenergyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergyRange::get(self : PhysicsmechanicsenergyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_range_set(s : PhysicsmechanicsenergyRange, i : Int, v : Double) -> PhysicsmechanicsenergyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyRange::set(self : PhysicsmechanicsenergyRange, i : Int, v : Double) -> PhysicsmechanicsenergyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_range_sum(s : PhysicsmechanicsenergyRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergyRange::sum(self : PhysicsmechanicsenergyRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_range_mean(s : PhysicsmechanicsenergyRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergyRange::mean(self : PhysicsmechanicsenergyRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_range_scale(s : PhysicsmechanicsenergyRange, f : Double) -> PhysicsmechanicsenergyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyRange::scale(self : PhysicsmechanicsenergyRange, f : Double) -> PhysicsmechanicsenergyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_range_add(a : PhysicsmechanicsenergyRange, b : PhysicsmechanicsenergyRange) -> PhysicsmechanicsenergyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergyRange::add(self : PhysicsmechanicsenergyRange, other : PhysicsmechanicsenergyRange) -> PhysicsmechanicsenergyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_range_copy(s : PhysicsmechanicsenergyRange) -> PhysicsmechanicsenergyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyRange::copy(self : PhysicsmechanicsenergyRange) -> PhysicsmechanicsenergyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_range_fill(s : PhysicsmechanicsenergyRange, v : Double) -> PhysicsmechanicsenergyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergyRange::fill(self : PhysicsmechanicsenergyRange, v : Double) -> PhysicsmechanicsenergyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_range_min(s : PhysicsmechanicsenergyRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergyRange::min(self : PhysicsmechanicsenergyRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_range_max(s : PhysicsmechanicsenergyRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergyRange::max(self : PhysicsmechanicsenergyRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_range_to_string(s : PhysicsmechanicsenergyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergyRange::to_string(self : PhysicsmechanicsenergyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsenergySlice {
@@ -1014,44 +1014,44 @@ pub fn physics_mechanics_energy_slice_make(size : Int) -> Physicsmechanicsenergy
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_energy_slice_len(s : PhysicsmechanicsenergySlice) -> Int { s.size }
+pub fn PhysicsmechanicsenergySlice::len(self : PhysicsmechanicsenergySlice) -> Int { self.size }
 
-pub fn physics_mechanics_energy_slice_get(s : PhysicsmechanicsenergySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsenergySlice::get(self : PhysicsmechanicsenergySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_energy_slice_set(s : PhysicsmechanicsenergySlice, i : Int, v : Double) -> PhysicsmechanicsenergySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergySlice::set(self : PhysicsmechanicsenergySlice, i : Int, v : Double) -> PhysicsmechanicsenergySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_slice_sum(s : PhysicsmechanicsenergySlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsenergySlice::sum(self : PhysicsmechanicsenergySlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_energy_slice_mean(s : PhysicsmechanicsenergySlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsenergySlice::mean(self : PhysicsmechanicsenergySlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_energy_slice_scale(s : PhysicsmechanicsenergySlice, f : Double) -> PhysicsmechanicsenergySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergySlice::scale(self : PhysicsmechanicsenergySlice, f : Double) -> PhysicsmechanicsenergySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_slice_add(a : PhysicsmechanicsenergySlice, b : PhysicsmechanicsenergySlice) -> PhysicsmechanicsenergySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsenergySlice::add(self : PhysicsmechanicsenergySlice, other : PhysicsmechanicsenergySlice) -> PhysicsmechanicsenergySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_slice_copy(s : PhysicsmechanicsenergySlice) -> PhysicsmechanicsenergySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergySlice::copy(self : PhysicsmechanicsenergySlice) -> PhysicsmechanicsenergySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_slice_fill(s : PhysicsmechanicsenergySlice, v : Double) -> PhysicsmechanicsenergySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsenergySlice::fill(self : PhysicsmechanicsenergySlice, v : Double) -> PhysicsmechanicsenergySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_energy_slice_min(s : PhysicsmechanicsenergySlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsenergySlice::min(self : PhysicsmechanicsenergySlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_energy_slice_max(s : PhysicsmechanicsenergySlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsenergySlice::max(self : PhysicsmechanicsenergySlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_energy_slice_to_string(s : PhysicsmechanicsenergySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsenergySlice::to_string(self : PhysicsmechanicsenergySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

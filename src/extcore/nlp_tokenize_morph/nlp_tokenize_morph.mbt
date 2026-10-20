@@ -351,45 +351,45 @@ pub fn nlp_tokenize_morph_frame_make(size : Int) -> NlptokenizemorphFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_frame_len(s : NlptokenizemorphFrame) -> Int { s.size }
+pub fn NlptokenizemorphFrame::len(self : NlptokenizemorphFrame) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_frame_get(s : NlptokenizemorphFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphFrame::get(self : NlptokenizemorphFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_frame_set(s : NlptokenizemorphFrame, i : Int, v : Double) -> NlptokenizemorphFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphFrame::set(self : NlptokenizemorphFrame, i : Int, v : Double) -> NlptokenizemorphFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_frame_sum(s : NlptokenizemorphFrame) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphFrame::sum(self : NlptokenizemorphFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_frame_mean(s : NlptokenizemorphFrame) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphFrame::mean(self : NlptokenizemorphFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_frame_scale(s : NlptokenizemorphFrame, f : Double) -> NlptokenizemorphFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphFrame::scale(self : NlptokenizemorphFrame, f : Double) -> NlptokenizemorphFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_frame_add(a : NlptokenizemorphFrame, b : NlptokenizemorphFrame) -> NlptokenizemorphFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphFrame::add(self : NlptokenizemorphFrame, other : NlptokenizemorphFrame) -> NlptokenizemorphFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_frame_copy(s : NlptokenizemorphFrame) -> NlptokenizemorphFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphFrame::copy(self : NlptokenizemorphFrame) -> NlptokenizemorphFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_frame_fill(s : NlptokenizemorphFrame, v : Double) -> NlptokenizemorphFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphFrame::fill(self : NlptokenizemorphFrame, v : Double) -> NlptokenizemorphFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_frame_min(s : NlptokenizemorphFrame) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphFrame::min(self : NlptokenizemorphFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_frame_max(s : NlptokenizemorphFrame) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphFrame::max(self : NlptokenizemorphFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_frame_to_string(s : NlptokenizemorphFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphFrame::to_string(self : NlptokenizemorphFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphTable {
@@ -402,45 +402,45 @@ pub fn nlp_tokenize_morph_table_make(size : Int) -> NlptokenizemorphTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_table_len(s : NlptokenizemorphTable) -> Int { s.size }
+pub fn NlptokenizemorphTable::len(self : NlptokenizemorphTable) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_table_get(s : NlptokenizemorphTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphTable::get(self : NlptokenizemorphTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_table_set(s : NlptokenizemorphTable, i : Int, v : Double) -> NlptokenizemorphTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphTable::set(self : NlptokenizemorphTable, i : Int, v : Double) -> NlptokenizemorphTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_table_sum(s : NlptokenizemorphTable) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphTable::sum(self : NlptokenizemorphTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_table_mean(s : NlptokenizemorphTable) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphTable::mean(self : NlptokenizemorphTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_table_scale(s : NlptokenizemorphTable, f : Double) -> NlptokenizemorphTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphTable::scale(self : NlptokenizemorphTable, f : Double) -> NlptokenizemorphTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_table_add(a : NlptokenizemorphTable, b : NlptokenizemorphTable) -> NlptokenizemorphTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphTable::add(self : NlptokenizemorphTable, other : NlptokenizemorphTable) -> NlptokenizemorphTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_table_copy(s : NlptokenizemorphTable) -> NlptokenizemorphTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphTable::copy(self : NlptokenizemorphTable) -> NlptokenizemorphTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_table_fill(s : NlptokenizemorphTable, v : Double) -> NlptokenizemorphTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphTable::fill(self : NlptokenizemorphTable, v : Double) -> NlptokenizemorphTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_table_min(s : NlptokenizemorphTable) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphTable::min(self : NlptokenizemorphTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_table_max(s : NlptokenizemorphTable) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphTable::max(self : NlptokenizemorphTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_table_to_string(s : NlptokenizemorphTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphTable::to_string(self : NlptokenizemorphTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_tokenize_morph_graphn_make(size : Int) -> NlptokenizemorphGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_graphn_len(s : NlptokenizemorphGraphN) -> Int { s.size }
+pub fn NlptokenizemorphGraphN::len(self : NlptokenizemorphGraphN) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_graphn_get(s : NlptokenizemorphGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphGraphN::get(self : NlptokenizemorphGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_graphn_set(s : NlptokenizemorphGraphN, i : Int, v : Double) -> NlptokenizemorphGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphGraphN::set(self : NlptokenizemorphGraphN, i : Int, v : Double) -> NlptokenizemorphGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_graphn_sum(s : NlptokenizemorphGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphGraphN::sum(self : NlptokenizemorphGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_graphn_mean(s : NlptokenizemorphGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphGraphN::mean(self : NlptokenizemorphGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_graphn_scale(s : NlptokenizemorphGraphN, f : Double) -> NlptokenizemorphGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphGraphN::scale(self : NlptokenizemorphGraphN, f : Double) -> NlptokenizemorphGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_graphn_add(a : NlptokenizemorphGraphN, b : NlptokenizemorphGraphN) -> NlptokenizemorphGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphGraphN::add(self : NlptokenizemorphGraphN, other : NlptokenizemorphGraphN) -> NlptokenizemorphGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_graphn_copy(s : NlptokenizemorphGraphN) -> NlptokenizemorphGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphGraphN::copy(self : NlptokenizemorphGraphN) -> NlptokenizemorphGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_graphn_fill(s : NlptokenizemorphGraphN, v : Double) -> NlptokenizemorphGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphGraphN::fill(self : NlptokenizemorphGraphN, v : Double) -> NlptokenizemorphGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_graphn_min(s : NlptokenizemorphGraphN) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphGraphN::min(self : NlptokenizemorphGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_graphn_max(s : NlptokenizemorphGraphN) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphGraphN::max(self : NlptokenizemorphGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_graphn_to_string(s : NlptokenizemorphGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphGraphN::to_string(self : NlptokenizemorphGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphNode {
@@ -504,45 +504,45 @@ pub fn nlp_tokenize_morph_node_make(size : Int) -> NlptokenizemorphNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_node_len(s : NlptokenizemorphNode) -> Int { s.size }
+pub fn NlptokenizemorphNode::len(self : NlptokenizemorphNode) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_node_get(s : NlptokenizemorphNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphNode::get(self : NlptokenizemorphNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_node_set(s : NlptokenizemorphNode, i : Int, v : Double) -> NlptokenizemorphNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphNode::set(self : NlptokenizemorphNode, i : Int, v : Double) -> NlptokenizemorphNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_node_sum(s : NlptokenizemorphNode) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphNode::sum(self : NlptokenizemorphNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_node_mean(s : NlptokenizemorphNode) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphNode::mean(self : NlptokenizemorphNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_node_scale(s : NlptokenizemorphNode, f : Double) -> NlptokenizemorphNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphNode::scale(self : NlptokenizemorphNode, f : Double) -> NlptokenizemorphNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_node_add(a : NlptokenizemorphNode, b : NlptokenizemorphNode) -> NlptokenizemorphNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphNode::add(self : NlptokenizemorphNode, other : NlptokenizemorphNode) -> NlptokenizemorphNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_node_copy(s : NlptokenizemorphNode) -> NlptokenizemorphNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphNode::copy(self : NlptokenizemorphNode) -> NlptokenizemorphNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_node_fill(s : NlptokenizemorphNode, v : Double) -> NlptokenizemorphNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphNode::fill(self : NlptokenizemorphNode, v : Double) -> NlptokenizemorphNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_node_min(s : NlptokenizemorphNode) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphNode::min(self : NlptokenizemorphNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_node_max(s : NlptokenizemorphNode) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphNode::max(self : NlptokenizemorphNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_node_to_string(s : NlptokenizemorphNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphNode::to_string(self : NlptokenizemorphNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphEdge {
@@ -555,45 +555,45 @@ pub fn nlp_tokenize_morph_edge_make(size : Int) -> NlptokenizemorphEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_edge_len(s : NlptokenizemorphEdge) -> Int { s.size }
+pub fn NlptokenizemorphEdge::len(self : NlptokenizemorphEdge) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_edge_get(s : NlptokenizemorphEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphEdge::get(self : NlptokenizemorphEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_edge_set(s : NlptokenizemorphEdge, i : Int, v : Double) -> NlptokenizemorphEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphEdge::set(self : NlptokenizemorphEdge, i : Int, v : Double) -> NlptokenizemorphEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_edge_sum(s : NlptokenizemorphEdge) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphEdge::sum(self : NlptokenizemorphEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_edge_mean(s : NlptokenizemorphEdge) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphEdge::mean(self : NlptokenizemorphEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_edge_scale(s : NlptokenizemorphEdge, f : Double) -> NlptokenizemorphEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphEdge::scale(self : NlptokenizemorphEdge, f : Double) -> NlptokenizemorphEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_edge_add(a : NlptokenizemorphEdge, b : NlptokenizemorphEdge) -> NlptokenizemorphEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphEdge::add(self : NlptokenizemorphEdge, other : NlptokenizemorphEdge) -> NlptokenizemorphEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_edge_copy(s : NlptokenizemorphEdge) -> NlptokenizemorphEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphEdge::copy(self : NlptokenizemorphEdge) -> NlptokenizemorphEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_edge_fill(s : NlptokenizemorphEdge, v : Double) -> NlptokenizemorphEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphEdge::fill(self : NlptokenizemorphEdge, v : Double) -> NlptokenizemorphEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_edge_min(s : NlptokenizemorphEdge) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphEdge::min(self : NlptokenizemorphEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_edge_max(s : NlptokenizemorphEdge) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphEdge::max(self : NlptokenizemorphEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_edge_to_string(s : NlptokenizemorphEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphEdge::to_string(self : NlptokenizemorphEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphPath {
@@ -606,45 +606,45 @@ pub fn nlp_tokenize_morph_path_make(size : Int) -> NlptokenizemorphPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_path_len(s : NlptokenizemorphPath) -> Int { s.size }
+pub fn NlptokenizemorphPath::len(self : NlptokenizemorphPath) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_path_get(s : NlptokenizemorphPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphPath::get(self : NlptokenizemorphPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_path_set(s : NlptokenizemorphPath, i : Int, v : Double) -> NlptokenizemorphPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphPath::set(self : NlptokenizemorphPath, i : Int, v : Double) -> NlptokenizemorphPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_path_sum(s : NlptokenizemorphPath) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphPath::sum(self : NlptokenizemorphPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_path_mean(s : NlptokenizemorphPath) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphPath::mean(self : NlptokenizemorphPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_path_scale(s : NlptokenizemorphPath, f : Double) -> NlptokenizemorphPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphPath::scale(self : NlptokenizemorphPath, f : Double) -> NlptokenizemorphPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_path_add(a : NlptokenizemorphPath, b : NlptokenizemorphPath) -> NlptokenizemorphPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphPath::add(self : NlptokenizemorphPath, other : NlptokenizemorphPath) -> NlptokenizemorphPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_path_copy(s : NlptokenizemorphPath) -> NlptokenizemorphPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphPath::copy(self : NlptokenizemorphPath) -> NlptokenizemorphPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_path_fill(s : NlptokenizemorphPath, v : Double) -> NlptokenizemorphPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphPath::fill(self : NlptokenizemorphPath, v : Double) -> NlptokenizemorphPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_path_min(s : NlptokenizemorphPath) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphPath::min(self : NlptokenizemorphPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_path_max(s : NlptokenizemorphPath) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphPath::max(self : NlptokenizemorphPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_path_to_string(s : NlptokenizemorphPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphPath::to_string(self : NlptokenizemorphPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphCluster {
@@ -657,45 +657,45 @@ pub fn nlp_tokenize_morph_cluster_make(size : Int) -> NlptokenizemorphCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_cluster_len(s : NlptokenizemorphCluster) -> Int { s.size }
+pub fn NlptokenizemorphCluster::len(self : NlptokenizemorphCluster) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_cluster_get(s : NlptokenizemorphCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphCluster::get(self : NlptokenizemorphCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_cluster_set(s : NlptokenizemorphCluster, i : Int, v : Double) -> NlptokenizemorphCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCluster::set(self : NlptokenizemorphCluster, i : Int, v : Double) -> NlptokenizemorphCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cluster_sum(s : NlptokenizemorphCluster) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphCluster::sum(self : NlptokenizemorphCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_cluster_mean(s : NlptokenizemorphCluster) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphCluster::mean(self : NlptokenizemorphCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_cluster_scale(s : NlptokenizemorphCluster, f : Double) -> NlptokenizemorphCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCluster::scale(self : NlptokenizemorphCluster, f : Double) -> NlptokenizemorphCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cluster_add(a : NlptokenizemorphCluster, b : NlptokenizemorphCluster) -> NlptokenizemorphCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphCluster::add(self : NlptokenizemorphCluster, other : NlptokenizemorphCluster) -> NlptokenizemorphCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cluster_copy(s : NlptokenizemorphCluster) -> NlptokenizemorphCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCluster::copy(self : NlptokenizemorphCluster) -> NlptokenizemorphCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cluster_fill(s : NlptokenizemorphCluster, v : Double) -> NlptokenizemorphCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCluster::fill(self : NlptokenizemorphCluster, v : Double) -> NlptokenizemorphCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cluster_min(s : NlptokenizemorphCluster) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphCluster::min(self : NlptokenizemorphCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_cluster_max(s : NlptokenizemorphCluster) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphCluster::max(self : NlptokenizemorphCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_cluster_to_string(s : NlptokenizemorphCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphCluster::to_string(self : NlptokenizemorphCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphModel {
@@ -708,45 +708,45 @@ pub fn nlp_tokenize_morph_model_make(size : Int) -> NlptokenizemorphModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_model_len(s : NlptokenizemorphModel) -> Int { s.size }
+pub fn NlptokenizemorphModel::len(self : NlptokenizemorphModel) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_model_get(s : NlptokenizemorphModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphModel::get(self : NlptokenizemorphModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_model_set(s : NlptokenizemorphModel, i : Int, v : Double) -> NlptokenizemorphModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphModel::set(self : NlptokenizemorphModel, i : Int, v : Double) -> NlptokenizemorphModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_model_sum(s : NlptokenizemorphModel) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphModel::sum(self : NlptokenizemorphModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_model_mean(s : NlptokenizemorphModel) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphModel::mean(self : NlptokenizemorphModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_model_scale(s : NlptokenizemorphModel, f : Double) -> NlptokenizemorphModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphModel::scale(self : NlptokenizemorphModel, f : Double) -> NlptokenizemorphModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_model_add(a : NlptokenizemorphModel, b : NlptokenizemorphModel) -> NlptokenizemorphModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphModel::add(self : NlptokenizemorphModel, other : NlptokenizemorphModel) -> NlptokenizemorphModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_model_copy(s : NlptokenizemorphModel) -> NlptokenizemorphModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphModel::copy(self : NlptokenizemorphModel) -> NlptokenizemorphModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_model_fill(s : NlptokenizemorphModel, v : Double) -> NlptokenizemorphModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphModel::fill(self : NlptokenizemorphModel, v : Double) -> NlptokenizemorphModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_model_min(s : NlptokenizemorphModel) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphModel::min(self : NlptokenizemorphModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_model_max(s : NlptokenizemorphModel) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphModel::max(self : NlptokenizemorphModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_model_to_string(s : NlptokenizemorphModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphModel::to_string(self : NlptokenizemorphModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphLayer {
@@ -759,45 +759,45 @@ pub fn nlp_tokenize_morph_layer_make(size : Int) -> NlptokenizemorphLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_layer_len(s : NlptokenizemorphLayer) -> Int { s.size }
+pub fn NlptokenizemorphLayer::len(self : NlptokenizemorphLayer) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_layer_get(s : NlptokenizemorphLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphLayer::get(self : NlptokenizemorphLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_layer_set(s : NlptokenizemorphLayer, i : Int, v : Double) -> NlptokenizemorphLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphLayer::set(self : NlptokenizemorphLayer, i : Int, v : Double) -> NlptokenizemorphLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_layer_sum(s : NlptokenizemorphLayer) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphLayer::sum(self : NlptokenizemorphLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_layer_mean(s : NlptokenizemorphLayer) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphLayer::mean(self : NlptokenizemorphLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_layer_scale(s : NlptokenizemorphLayer, f : Double) -> NlptokenizemorphLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphLayer::scale(self : NlptokenizemorphLayer, f : Double) -> NlptokenizemorphLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_layer_add(a : NlptokenizemorphLayer, b : NlptokenizemorphLayer) -> NlptokenizemorphLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphLayer::add(self : NlptokenizemorphLayer, other : NlptokenizemorphLayer) -> NlptokenizemorphLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_layer_copy(s : NlptokenizemorphLayer) -> NlptokenizemorphLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphLayer::copy(self : NlptokenizemorphLayer) -> NlptokenizemorphLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_layer_fill(s : NlptokenizemorphLayer, v : Double) -> NlptokenizemorphLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphLayer::fill(self : NlptokenizemorphLayer, v : Double) -> NlptokenizemorphLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_layer_min(s : NlptokenizemorphLayer) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphLayer::min(self : NlptokenizemorphLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_layer_max(s : NlptokenizemorphLayer) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphLayer::max(self : NlptokenizemorphLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_layer_to_string(s : NlptokenizemorphLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphLayer::to_string(self : NlptokenizemorphLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_tokenize_morph_buffer_make(size : Int) -> NlptokenizemorphBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_buffer_len(s : NlptokenizemorphBuffer) -> Int { s.size }
+pub fn NlptokenizemorphBuffer::len(self : NlptokenizemorphBuffer) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_buffer_get(s : NlptokenizemorphBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphBuffer::get(self : NlptokenizemorphBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_buffer_set(s : NlptokenizemorphBuffer, i : Int, v : Double) -> NlptokenizemorphBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphBuffer::set(self : NlptokenizemorphBuffer, i : Int, v : Double) -> NlptokenizemorphBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_buffer_sum(s : NlptokenizemorphBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphBuffer::sum(self : NlptokenizemorphBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_buffer_mean(s : NlptokenizemorphBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphBuffer::mean(self : NlptokenizemorphBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_buffer_scale(s : NlptokenizemorphBuffer, f : Double) -> NlptokenizemorphBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphBuffer::scale(self : NlptokenizemorphBuffer, f : Double) -> NlptokenizemorphBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_buffer_add(a : NlptokenizemorphBuffer, b : NlptokenizemorphBuffer) -> NlptokenizemorphBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphBuffer::add(self : NlptokenizemorphBuffer, other : NlptokenizemorphBuffer) -> NlptokenizemorphBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_buffer_copy(s : NlptokenizemorphBuffer) -> NlptokenizemorphBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphBuffer::copy(self : NlptokenizemorphBuffer) -> NlptokenizemorphBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_buffer_fill(s : NlptokenizemorphBuffer, v : Double) -> NlptokenizemorphBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphBuffer::fill(self : NlptokenizemorphBuffer, v : Double) -> NlptokenizemorphBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_buffer_min(s : NlptokenizemorphBuffer) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphBuffer::min(self : NlptokenizemorphBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_buffer_max(s : NlptokenizemorphBuffer) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphBuffer::max(self : NlptokenizemorphBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_buffer_to_string(s : NlptokenizemorphBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphBuffer::to_string(self : NlptokenizemorphBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphCursor {
@@ -861,45 +861,45 @@ pub fn nlp_tokenize_morph_cursor_make(size : Int) -> NlptokenizemorphCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_cursor_len(s : NlptokenizemorphCursor) -> Int { s.size }
+pub fn NlptokenizemorphCursor::len(self : NlptokenizemorphCursor) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_cursor_get(s : NlptokenizemorphCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphCursor::get(self : NlptokenizemorphCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_cursor_set(s : NlptokenizemorphCursor, i : Int, v : Double) -> NlptokenizemorphCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCursor::set(self : NlptokenizemorphCursor, i : Int, v : Double) -> NlptokenizemorphCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cursor_sum(s : NlptokenizemorphCursor) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphCursor::sum(self : NlptokenizemorphCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_cursor_mean(s : NlptokenizemorphCursor) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphCursor::mean(self : NlptokenizemorphCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_cursor_scale(s : NlptokenizemorphCursor, f : Double) -> NlptokenizemorphCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCursor::scale(self : NlptokenizemorphCursor, f : Double) -> NlptokenizemorphCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cursor_add(a : NlptokenizemorphCursor, b : NlptokenizemorphCursor) -> NlptokenizemorphCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphCursor::add(self : NlptokenizemorphCursor, other : NlptokenizemorphCursor) -> NlptokenizemorphCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cursor_copy(s : NlptokenizemorphCursor) -> NlptokenizemorphCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCursor::copy(self : NlptokenizemorphCursor) -> NlptokenizemorphCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cursor_fill(s : NlptokenizemorphCursor, v : Double) -> NlptokenizemorphCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphCursor::fill(self : NlptokenizemorphCursor, v : Double) -> NlptokenizemorphCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_cursor_min(s : NlptokenizemorphCursor) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphCursor::min(self : NlptokenizemorphCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_cursor_max(s : NlptokenizemorphCursor) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphCursor::max(self : NlptokenizemorphCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_cursor_to_string(s : NlptokenizemorphCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphCursor::to_string(self : NlptokenizemorphCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphView {
@@ -912,45 +912,45 @@ pub fn nlp_tokenize_morph_view_make(size : Int) -> NlptokenizemorphView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_view_len(s : NlptokenizemorphView) -> Int { s.size }
+pub fn NlptokenizemorphView::len(self : NlptokenizemorphView) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_view_get(s : NlptokenizemorphView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphView::get(self : NlptokenizemorphView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_view_set(s : NlptokenizemorphView, i : Int, v : Double) -> NlptokenizemorphView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphView::set(self : NlptokenizemorphView, i : Int, v : Double) -> NlptokenizemorphView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_view_sum(s : NlptokenizemorphView) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphView::sum(self : NlptokenizemorphView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_view_mean(s : NlptokenizemorphView) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphView::mean(self : NlptokenizemorphView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_view_scale(s : NlptokenizemorphView, f : Double) -> NlptokenizemorphView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphView::scale(self : NlptokenizemorphView, f : Double) -> NlptokenizemorphView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_view_add(a : NlptokenizemorphView, b : NlptokenizemorphView) -> NlptokenizemorphView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphView::add(self : NlptokenizemorphView, other : NlptokenizemorphView) -> NlptokenizemorphView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_view_copy(s : NlptokenizemorphView) -> NlptokenizemorphView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphView::copy(self : NlptokenizemorphView) -> NlptokenizemorphView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_view_fill(s : NlptokenizemorphView, v : Double) -> NlptokenizemorphView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphView::fill(self : NlptokenizemorphView, v : Double) -> NlptokenizemorphView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_view_min(s : NlptokenizemorphView) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphView::min(self : NlptokenizemorphView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_view_max(s : NlptokenizemorphView) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphView::max(self : NlptokenizemorphView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_view_to_string(s : NlptokenizemorphView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphView::to_string(self : NlptokenizemorphView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphRange {
@@ -963,45 +963,45 @@ pub fn nlp_tokenize_morph_range_make(size : Int) -> NlptokenizemorphRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_range_len(s : NlptokenizemorphRange) -> Int { s.size }
+pub fn NlptokenizemorphRange::len(self : NlptokenizemorphRange) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_range_get(s : NlptokenizemorphRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphRange::get(self : NlptokenizemorphRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_range_set(s : NlptokenizemorphRange, i : Int, v : Double) -> NlptokenizemorphRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphRange::set(self : NlptokenizemorphRange, i : Int, v : Double) -> NlptokenizemorphRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_range_sum(s : NlptokenizemorphRange) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphRange::sum(self : NlptokenizemorphRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_range_mean(s : NlptokenizemorphRange) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphRange::mean(self : NlptokenizemorphRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_range_scale(s : NlptokenizemorphRange, f : Double) -> NlptokenizemorphRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphRange::scale(self : NlptokenizemorphRange, f : Double) -> NlptokenizemorphRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_range_add(a : NlptokenizemorphRange, b : NlptokenizemorphRange) -> NlptokenizemorphRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphRange::add(self : NlptokenizemorphRange, other : NlptokenizemorphRange) -> NlptokenizemorphRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_range_copy(s : NlptokenizemorphRange) -> NlptokenizemorphRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphRange::copy(self : NlptokenizemorphRange) -> NlptokenizemorphRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_range_fill(s : NlptokenizemorphRange, v : Double) -> NlptokenizemorphRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphRange::fill(self : NlptokenizemorphRange, v : Double) -> NlptokenizemorphRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_range_min(s : NlptokenizemorphRange) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphRange::min(self : NlptokenizemorphRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_range_max(s : NlptokenizemorphRange) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphRange::max(self : NlptokenizemorphRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_range_to_string(s : NlptokenizemorphRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphRange::to_string(self : NlptokenizemorphRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizemorphSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_tokenize_morph_slice_make(size : Int) -> NlptokenizemorphSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_morph_slice_len(s : NlptokenizemorphSlice) -> Int { s.size }
+pub fn NlptokenizemorphSlice::len(self : NlptokenizemorphSlice) -> Int { self.size }
 
-pub fn nlp_tokenize_morph_slice_get(s : NlptokenizemorphSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizemorphSlice::get(self : NlptokenizemorphSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_morph_slice_set(s : NlptokenizemorphSlice, i : Int, v : Double) -> NlptokenizemorphSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizemorphSlice::set(self : NlptokenizemorphSlice, i : Int, v : Double) -> NlptokenizemorphSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_slice_sum(s : NlptokenizemorphSlice) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizemorphSlice::sum(self : NlptokenizemorphSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_morph_slice_mean(s : NlptokenizemorphSlice) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizemorphSlice::mean(self : NlptokenizemorphSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_morph_slice_scale(s : NlptokenizemorphSlice, f : Double) -> NlptokenizemorphSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphSlice::scale(self : NlptokenizemorphSlice, f : Double) -> NlptokenizemorphSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_slice_add(a : NlptokenizemorphSlice, b : NlptokenizemorphSlice) -> NlptokenizemorphSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizemorphSlice::add(self : NlptokenizemorphSlice, other : NlptokenizemorphSlice) -> NlptokenizemorphSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_slice_copy(s : NlptokenizemorphSlice) -> NlptokenizemorphSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphSlice::copy(self : NlptokenizemorphSlice) -> NlptokenizemorphSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_slice_fill(s : NlptokenizemorphSlice, v : Double) -> NlptokenizemorphSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizemorphSlice::fill(self : NlptokenizemorphSlice, v : Double) -> NlptokenizemorphSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_morph_slice_min(s : NlptokenizemorphSlice) -> Double { @_common.min(s.data) }
+pub fn NlptokenizemorphSlice::min(self : NlptokenizemorphSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_morph_slice_max(s : NlptokenizemorphSlice) -> Double { @_common.max(s.data) }
+pub fn NlptokenizemorphSlice::max(self : NlptokenizemorphSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_morph_slice_to_string(s : NlptokenizemorphSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizemorphSlice::to_string(self : NlptokenizemorphSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

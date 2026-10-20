@@ -351,45 +351,45 @@ pub fn ml_feature_umap_frame_make(size : Int) -> MlfeatureumapFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_frame_len(s : MlfeatureumapFrame) -> Int { s.size }
+pub fn MlfeatureumapFrame::len(self : MlfeatureumapFrame) -> Int { self.size }
 
-pub fn ml_feature_umap_frame_get(s : MlfeatureumapFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapFrame::get(self : MlfeatureumapFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_frame_set(s : MlfeatureumapFrame, i : Int, v : Double) -> MlfeatureumapFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapFrame::set(self : MlfeatureumapFrame, i : Int, v : Double) -> MlfeatureumapFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_frame_sum(s : MlfeatureumapFrame) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapFrame::sum(self : MlfeatureumapFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_frame_mean(s : MlfeatureumapFrame) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapFrame::mean(self : MlfeatureumapFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_frame_scale(s : MlfeatureumapFrame, f : Double) -> MlfeatureumapFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapFrame::scale(self : MlfeatureumapFrame, f : Double) -> MlfeatureumapFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_frame_add(a : MlfeatureumapFrame, b : MlfeatureumapFrame) -> MlfeatureumapFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapFrame::add(self : MlfeatureumapFrame, other : MlfeatureumapFrame) -> MlfeatureumapFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_frame_copy(s : MlfeatureumapFrame) -> MlfeatureumapFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapFrame::copy(self : MlfeatureumapFrame) -> MlfeatureumapFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_frame_fill(s : MlfeatureumapFrame, v : Double) -> MlfeatureumapFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapFrame::fill(self : MlfeatureumapFrame, v : Double) -> MlfeatureumapFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_frame_min(s : MlfeatureumapFrame) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapFrame::min(self : MlfeatureumapFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_frame_max(s : MlfeatureumapFrame) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapFrame::max(self : MlfeatureumapFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_frame_to_string(s : MlfeatureumapFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapFrame::to_string(self : MlfeatureumapFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapTable {
@@ -402,45 +402,45 @@ pub fn ml_feature_umap_table_make(size : Int) -> MlfeatureumapTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_table_len(s : MlfeatureumapTable) -> Int { s.size }
+pub fn MlfeatureumapTable::len(self : MlfeatureumapTable) -> Int { self.size }
 
-pub fn ml_feature_umap_table_get(s : MlfeatureumapTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapTable::get(self : MlfeatureumapTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_table_set(s : MlfeatureumapTable, i : Int, v : Double) -> MlfeatureumapTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapTable::set(self : MlfeatureumapTable, i : Int, v : Double) -> MlfeatureumapTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_table_sum(s : MlfeatureumapTable) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapTable::sum(self : MlfeatureumapTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_table_mean(s : MlfeatureumapTable) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapTable::mean(self : MlfeatureumapTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_table_scale(s : MlfeatureumapTable, f : Double) -> MlfeatureumapTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapTable::scale(self : MlfeatureumapTable, f : Double) -> MlfeatureumapTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_table_add(a : MlfeatureumapTable, b : MlfeatureumapTable) -> MlfeatureumapTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapTable::add(self : MlfeatureumapTable, other : MlfeatureumapTable) -> MlfeatureumapTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_table_copy(s : MlfeatureumapTable) -> MlfeatureumapTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapTable::copy(self : MlfeatureumapTable) -> MlfeatureumapTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_table_fill(s : MlfeatureumapTable, v : Double) -> MlfeatureumapTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapTable::fill(self : MlfeatureumapTable, v : Double) -> MlfeatureumapTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_table_min(s : MlfeatureumapTable) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapTable::min(self : MlfeatureumapTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_table_max(s : MlfeatureumapTable) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapTable::max(self : MlfeatureumapTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_table_to_string(s : MlfeatureumapTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapTable::to_string(self : MlfeatureumapTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapGraphN {
@@ -453,45 +453,45 @@ pub fn ml_feature_umap_graphn_make(size : Int) -> MlfeatureumapGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_graphn_len(s : MlfeatureumapGraphN) -> Int { s.size }
+pub fn MlfeatureumapGraphN::len(self : MlfeatureumapGraphN) -> Int { self.size }
 
-pub fn ml_feature_umap_graphn_get(s : MlfeatureumapGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapGraphN::get(self : MlfeatureumapGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_graphn_set(s : MlfeatureumapGraphN, i : Int, v : Double) -> MlfeatureumapGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapGraphN::set(self : MlfeatureumapGraphN, i : Int, v : Double) -> MlfeatureumapGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_graphn_sum(s : MlfeatureumapGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapGraphN::sum(self : MlfeatureumapGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_graphn_mean(s : MlfeatureumapGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapGraphN::mean(self : MlfeatureumapGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_graphn_scale(s : MlfeatureumapGraphN, f : Double) -> MlfeatureumapGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapGraphN::scale(self : MlfeatureumapGraphN, f : Double) -> MlfeatureumapGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_graphn_add(a : MlfeatureumapGraphN, b : MlfeatureumapGraphN) -> MlfeatureumapGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapGraphN::add(self : MlfeatureumapGraphN, other : MlfeatureumapGraphN) -> MlfeatureumapGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_graphn_copy(s : MlfeatureumapGraphN) -> MlfeatureumapGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapGraphN::copy(self : MlfeatureumapGraphN) -> MlfeatureumapGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_graphn_fill(s : MlfeatureumapGraphN, v : Double) -> MlfeatureumapGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapGraphN::fill(self : MlfeatureumapGraphN, v : Double) -> MlfeatureumapGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_graphn_min(s : MlfeatureumapGraphN) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapGraphN::min(self : MlfeatureumapGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_graphn_max(s : MlfeatureumapGraphN) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapGraphN::max(self : MlfeatureumapGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_graphn_to_string(s : MlfeatureumapGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapGraphN::to_string(self : MlfeatureumapGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapNode {
@@ -504,45 +504,45 @@ pub fn ml_feature_umap_node_make(size : Int) -> MlfeatureumapNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_node_len(s : MlfeatureumapNode) -> Int { s.size }
+pub fn MlfeatureumapNode::len(self : MlfeatureumapNode) -> Int { self.size }
 
-pub fn ml_feature_umap_node_get(s : MlfeatureumapNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapNode::get(self : MlfeatureumapNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_node_set(s : MlfeatureumapNode, i : Int, v : Double) -> MlfeatureumapNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapNode::set(self : MlfeatureumapNode, i : Int, v : Double) -> MlfeatureumapNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_node_sum(s : MlfeatureumapNode) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapNode::sum(self : MlfeatureumapNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_node_mean(s : MlfeatureumapNode) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapNode::mean(self : MlfeatureumapNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_node_scale(s : MlfeatureumapNode, f : Double) -> MlfeatureumapNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapNode::scale(self : MlfeatureumapNode, f : Double) -> MlfeatureumapNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_node_add(a : MlfeatureumapNode, b : MlfeatureumapNode) -> MlfeatureumapNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapNode::add(self : MlfeatureumapNode, other : MlfeatureumapNode) -> MlfeatureumapNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_node_copy(s : MlfeatureumapNode) -> MlfeatureumapNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapNode::copy(self : MlfeatureumapNode) -> MlfeatureumapNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_node_fill(s : MlfeatureumapNode, v : Double) -> MlfeatureumapNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapNode::fill(self : MlfeatureumapNode, v : Double) -> MlfeatureumapNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_node_min(s : MlfeatureumapNode) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapNode::min(self : MlfeatureumapNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_node_max(s : MlfeatureumapNode) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapNode::max(self : MlfeatureumapNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_node_to_string(s : MlfeatureumapNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapNode::to_string(self : MlfeatureumapNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapEdge {
@@ -555,45 +555,45 @@ pub fn ml_feature_umap_edge_make(size : Int) -> MlfeatureumapEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_edge_len(s : MlfeatureumapEdge) -> Int { s.size }
+pub fn MlfeatureumapEdge::len(self : MlfeatureumapEdge) -> Int { self.size }
 
-pub fn ml_feature_umap_edge_get(s : MlfeatureumapEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapEdge::get(self : MlfeatureumapEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_edge_set(s : MlfeatureumapEdge, i : Int, v : Double) -> MlfeatureumapEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapEdge::set(self : MlfeatureumapEdge, i : Int, v : Double) -> MlfeatureumapEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_edge_sum(s : MlfeatureumapEdge) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapEdge::sum(self : MlfeatureumapEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_edge_mean(s : MlfeatureumapEdge) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapEdge::mean(self : MlfeatureumapEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_edge_scale(s : MlfeatureumapEdge, f : Double) -> MlfeatureumapEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapEdge::scale(self : MlfeatureumapEdge, f : Double) -> MlfeatureumapEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_edge_add(a : MlfeatureumapEdge, b : MlfeatureumapEdge) -> MlfeatureumapEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapEdge::add(self : MlfeatureumapEdge, other : MlfeatureumapEdge) -> MlfeatureumapEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_edge_copy(s : MlfeatureumapEdge) -> MlfeatureumapEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapEdge::copy(self : MlfeatureumapEdge) -> MlfeatureumapEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_edge_fill(s : MlfeatureumapEdge, v : Double) -> MlfeatureumapEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapEdge::fill(self : MlfeatureumapEdge, v : Double) -> MlfeatureumapEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_edge_min(s : MlfeatureumapEdge) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapEdge::min(self : MlfeatureumapEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_edge_max(s : MlfeatureumapEdge) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapEdge::max(self : MlfeatureumapEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_edge_to_string(s : MlfeatureumapEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapEdge::to_string(self : MlfeatureumapEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapPath {
@@ -606,45 +606,45 @@ pub fn ml_feature_umap_path_make(size : Int) -> MlfeatureumapPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_path_len(s : MlfeatureumapPath) -> Int { s.size }
+pub fn MlfeatureumapPath::len(self : MlfeatureumapPath) -> Int { self.size }
 
-pub fn ml_feature_umap_path_get(s : MlfeatureumapPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapPath::get(self : MlfeatureumapPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_path_set(s : MlfeatureumapPath, i : Int, v : Double) -> MlfeatureumapPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapPath::set(self : MlfeatureumapPath, i : Int, v : Double) -> MlfeatureumapPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_path_sum(s : MlfeatureumapPath) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapPath::sum(self : MlfeatureumapPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_path_mean(s : MlfeatureumapPath) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapPath::mean(self : MlfeatureumapPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_path_scale(s : MlfeatureumapPath, f : Double) -> MlfeatureumapPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapPath::scale(self : MlfeatureumapPath, f : Double) -> MlfeatureumapPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_path_add(a : MlfeatureumapPath, b : MlfeatureumapPath) -> MlfeatureumapPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapPath::add(self : MlfeatureumapPath, other : MlfeatureumapPath) -> MlfeatureumapPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_path_copy(s : MlfeatureumapPath) -> MlfeatureumapPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapPath::copy(self : MlfeatureumapPath) -> MlfeatureumapPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_path_fill(s : MlfeatureumapPath, v : Double) -> MlfeatureumapPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapPath::fill(self : MlfeatureumapPath, v : Double) -> MlfeatureumapPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_path_min(s : MlfeatureumapPath) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapPath::min(self : MlfeatureumapPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_path_max(s : MlfeatureumapPath) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapPath::max(self : MlfeatureumapPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_path_to_string(s : MlfeatureumapPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapPath::to_string(self : MlfeatureumapPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapCluster {
@@ -657,45 +657,45 @@ pub fn ml_feature_umap_cluster_make(size : Int) -> MlfeatureumapCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_cluster_len(s : MlfeatureumapCluster) -> Int { s.size }
+pub fn MlfeatureumapCluster::len(self : MlfeatureumapCluster) -> Int { self.size }
 
-pub fn ml_feature_umap_cluster_get(s : MlfeatureumapCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapCluster::get(self : MlfeatureumapCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_cluster_set(s : MlfeatureumapCluster, i : Int, v : Double) -> MlfeatureumapCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapCluster::set(self : MlfeatureumapCluster, i : Int, v : Double) -> MlfeatureumapCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cluster_sum(s : MlfeatureumapCluster) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapCluster::sum(self : MlfeatureumapCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_cluster_mean(s : MlfeatureumapCluster) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapCluster::mean(self : MlfeatureumapCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_cluster_scale(s : MlfeatureumapCluster, f : Double) -> MlfeatureumapCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapCluster::scale(self : MlfeatureumapCluster, f : Double) -> MlfeatureumapCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cluster_add(a : MlfeatureumapCluster, b : MlfeatureumapCluster) -> MlfeatureumapCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapCluster::add(self : MlfeatureumapCluster, other : MlfeatureumapCluster) -> MlfeatureumapCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cluster_copy(s : MlfeatureumapCluster) -> MlfeatureumapCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapCluster::copy(self : MlfeatureumapCluster) -> MlfeatureumapCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cluster_fill(s : MlfeatureumapCluster, v : Double) -> MlfeatureumapCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapCluster::fill(self : MlfeatureumapCluster, v : Double) -> MlfeatureumapCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cluster_min(s : MlfeatureumapCluster) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapCluster::min(self : MlfeatureumapCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_cluster_max(s : MlfeatureumapCluster) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapCluster::max(self : MlfeatureumapCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_cluster_to_string(s : MlfeatureumapCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapCluster::to_string(self : MlfeatureumapCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapModel {
@@ -708,45 +708,45 @@ pub fn ml_feature_umap_model_make(size : Int) -> MlfeatureumapModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_model_len(s : MlfeatureumapModel) -> Int { s.size }
+pub fn MlfeatureumapModel::len(self : MlfeatureumapModel) -> Int { self.size }
 
-pub fn ml_feature_umap_model_get(s : MlfeatureumapModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapModel::get(self : MlfeatureumapModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_model_set(s : MlfeatureumapModel, i : Int, v : Double) -> MlfeatureumapModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapModel::set(self : MlfeatureumapModel, i : Int, v : Double) -> MlfeatureumapModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_model_sum(s : MlfeatureumapModel) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapModel::sum(self : MlfeatureumapModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_model_mean(s : MlfeatureumapModel) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapModel::mean(self : MlfeatureumapModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_model_scale(s : MlfeatureumapModel, f : Double) -> MlfeatureumapModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapModel::scale(self : MlfeatureumapModel, f : Double) -> MlfeatureumapModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_model_add(a : MlfeatureumapModel, b : MlfeatureumapModel) -> MlfeatureumapModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapModel::add(self : MlfeatureumapModel, other : MlfeatureumapModel) -> MlfeatureumapModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_model_copy(s : MlfeatureumapModel) -> MlfeatureumapModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapModel::copy(self : MlfeatureumapModel) -> MlfeatureumapModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_model_fill(s : MlfeatureumapModel, v : Double) -> MlfeatureumapModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapModel::fill(self : MlfeatureumapModel, v : Double) -> MlfeatureumapModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_model_min(s : MlfeatureumapModel) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapModel::min(self : MlfeatureumapModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_model_max(s : MlfeatureumapModel) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapModel::max(self : MlfeatureumapModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_model_to_string(s : MlfeatureumapModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapModel::to_string(self : MlfeatureumapModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapLayer {
@@ -759,45 +759,45 @@ pub fn ml_feature_umap_layer_make(size : Int) -> MlfeatureumapLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_layer_len(s : MlfeatureumapLayer) -> Int { s.size }
+pub fn MlfeatureumapLayer::len(self : MlfeatureumapLayer) -> Int { self.size }
 
-pub fn ml_feature_umap_layer_get(s : MlfeatureumapLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapLayer::get(self : MlfeatureumapLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_layer_set(s : MlfeatureumapLayer, i : Int, v : Double) -> MlfeatureumapLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapLayer::set(self : MlfeatureumapLayer, i : Int, v : Double) -> MlfeatureumapLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_layer_sum(s : MlfeatureumapLayer) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapLayer::sum(self : MlfeatureumapLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_layer_mean(s : MlfeatureumapLayer) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapLayer::mean(self : MlfeatureumapLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_layer_scale(s : MlfeatureumapLayer, f : Double) -> MlfeatureumapLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapLayer::scale(self : MlfeatureumapLayer, f : Double) -> MlfeatureumapLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_layer_add(a : MlfeatureumapLayer, b : MlfeatureumapLayer) -> MlfeatureumapLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapLayer::add(self : MlfeatureumapLayer, other : MlfeatureumapLayer) -> MlfeatureumapLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_layer_copy(s : MlfeatureumapLayer) -> MlfeatureumapLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapLayer::copy(self : MlfeatureumapLayer) -> MlfeatureumapLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_layer_fill(s : MlfeatureumapLayer, v : Double) -> MlfeatureumapLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapLayer::fill(self : MlfeatureumapLayer, v : Double) -> MlfeatureumapLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_layer_min(s : MlfeatureumapLayer) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapLayer::min(self : MlfeatureumapLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_layer_max(s : MlfeatureumapLayer) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapLayer::max(self : MlfeatureumapLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_layer_to_string(s : MlfeatureumapLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapLayer::to_string(self : MlfeatureumapLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapBuffer {
@@ -810,45 +810,45 @@ pub fn ml_feature_umap_buffer_make(size : Int) -> MlfeatureumapBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_buffer_len(s : MlfeatureumapBuffer) -> Int { s.size }
+pub fn MlfeatureumapBuffer::len(self : MlfeatureumapBuffer) -> Int { self.size }
 
-pub fn ml_feature_umap_buffer_get(s : MlfeatureumapBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapBuffer::get(self : MlfeatureumapBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_buffer_set(s : MlfeatureumapBuffer, i : Int, v : Double) -> MlfeatureumapBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapBuffer::set(self : MlfeatureumapBuffer, i : Int, v : Double) -> MlfeatureumapBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_buffer_sum(s : MlfeatureumapBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapBuffer::sum(self : MlfeatureumapBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_buffer_mean(s : MlfeatureumapBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapBuffer::mean(self : MlfeatureumapBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_buffer_scale(s : MlfeatureumapBuffer, f : Double) -> MlfeatureumapBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapBuffer::scale(self : MlfeatureumapBuffer, f : Double) -> MlfeatureumapBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_buffer_add(a : MlfeatureumapBuffer, b : MlfeatureumapBuffer) -> MlfeatureumapBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapBuffer::add(self : MlfeatureumapBuffer, other : MlfeatureumapBuffer) -> MlfeatureumapBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_buffer_copy(s : MlfeatureumapBuffer) -> MlfeatureumapBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapBuffer::copy(self : MlfeatureumapBuffer) -> MlfeatureumapBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_buffer_fill(s : MlfeatureumapBuffer, v : Double) -> MlfeatureumapBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapBuffer::fill(self : MlfeatureumapBuffer, v : Double) -> MlfeatureumapBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_buffer_min(s : MlfeatureumapBuffer) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapBuffer::min(self : MlfeatureumapBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_buffer_max(s : MlfeatureumapBuffer) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapBuffer::max(self : MlfeatureumapBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_buffer_to_string(s : MlfeatureumapBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapBuffer::to_string(self : MlfeatureumapBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapCursor {
@@ -861,45 +861,45 @@ pub fn ml_feature_umap_cursor_make(size : Int) -> MlfeatureumapCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_cursor_len(s : MlfeatureumapCursor) -> Int { s.size }
+pub fn MlfeatureumapCursor::len(self : MlfeatureumapCursor) -> Int { self.size }
 
-pub fn ml_feature_umap_cursor_get(s : MlfeatureumapCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapCursor::get(self : MlfeatureumapCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_cursor_set(s : MlfeatureumapCursor, i : Int, v : Double) -> MlfeatureumapCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapCursor::set(self : MlfeatureumapCursor, i : Int, v : Double) -> MlfeatureumapCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cursor_sum(s : MlfeatureumapCursor) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapCursor::sum(self : MlfeatureumapCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_cursor_mean(s : MlfeatureumapCursor) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapCursor::mean(self : MlfeatureumapCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_cursor_scale(s : MlfeatureumapCursor, f : Double) -> MlfeatureumapCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapCursor::scale(self : MlfeatureumapCursor, f : Double) -> MlfeatureumapCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cursor_add(a : MlfeatureumapCursor, b : MlfeatureumapCursor) -> MlfeatureumapCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapCursor::add(self : MlfeatureumapCursor, other : MlfeatureumapCursor) -> MlfeatureumapCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cursor_copy(s : MlfeatureumapCursor) -> MlfeatureumapCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapCursor::copy(self : MlfeatureumapCursor) -> MlfeatureumapCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cursor_fill(s : MlfeatureumapCursor, v : Double) -> MlfeatureumapCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapCursor::fill(self : MlfeatureumapCursor, v : Double) -> MlfeatureumapCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_cursor_min(s : MlfeatureumapCursor) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapCursor::min(self : MlfeatureumapCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_cursor_max(s : MlfeatureumapCursor) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapCursor::max(self : MlfeatureumapCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_cursor_to_string(s : MlfeatureumapCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapCursor::to_string(self : MlfeatureumapCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapView {
@@ -912,45 +912,45 @@ pub fn ml_feature_umap_view_make(size : Int) -> MlfeatureumapView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_view_len(s : MlfeatureumapView) -> Int { s.size }
+pub fn MlfeatureumapView::len(self : MlfeatureumapView) -> Int { self.size }
 
-pub fn ml_feature_umap_view_get(s : MlfeatureumapView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapView::get(self : MlfeatureumapView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_view_set(s : MlfeatureumapView, i : Int, v : Double) -> MlfeatureumapView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapView::set(self : MlfeatureumapView, i : Int, v : Double) -> MlfeatureumapView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_view_sum(s : MlfeatureumapView) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapView::sum(self : MlfeatureumapView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_view_mean(s : MlfeatureumapView) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapView::mean(self : MlfeatureumapView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_view_scale(s : MlfeatureumapView, f : Double) -> MlfeatureumapView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapView::scale(self : MlfeatureumapView, f : Double) -> MlfeatureumapView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_view_add(a : MlfeatureumapView, b : MlfeatureumapView) -> MlfeatureumapView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapView::add(self : MlfeatureumapView, other : MlfeatureumapView) -> MlfeatureumapView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_view_copy(s : MlfeatureumapView) -> MlfeatureumapView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapView::copy(self : MlfeatureumapView) -> MlfeatureumapView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_view_fill(s : MlfeatureumapView, v : Double) -> MlfeatureumapView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapView::fill(self : MlfeatureumapView, v : Double) -> MlfeatureumapView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_view_min(s : MlfeatureumapView) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapView::min(self : MlfeatureumapView) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_view_max(s : MlfeatureumapView) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapView::max(self : MlfeatureumapView) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_view_to_string(s : MlfeatureumapView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapView::to_string(self : MlfeatureumapView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapRange {
@@ -963,45 +963,45 @@ pub fn ml_feature_umap_range_make(size : Int) -> MlfeatureumapRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_range_len(s : MlfeatureumapRange) -> Int { s.size }
+pub fn MlfeatureumapRange::len(self : MlfeatureumapRange) -> Int { self.size }
 
-pub fn ml_feature_umap_range_get(s : MlfeatureumapRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapRange::get(self : MlfeatureumapRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_range_set(s : MlfeatureumapRange, i : Int, v : Double) -> MlfeatureumapRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapRange::set(self : MlfeatureumapRange, i : Int, v : Double) -> MlfeatureumapRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_range_sum(s : MlfeatureumapRange) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapRange::sum(self : MlfeatureumapRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_range_mean(s : MlfeatureumapRange) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapRange::mean(self : MlfeatureumapRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_range_scale(s : MlfeatureumapRange, f : Double) -> MlfeatureumapRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapRange::scale(self : MlfeatureumapRange, f : Double) -> MlfeatureumapRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_range_add(a : MlfeatureumapRange, b : MlfeatureumapRange) -> MlfeatureumapRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapRange::add(self : MlfeatureumapRange, other : MlfeatureumapRange) -> MlfeatureumapRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_range_copy(s : MlfeatureumapRange) -> MlfeatureumapRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapRange::copy(self : MlfeatureumapRange) -> MlfeatureumapRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_range_fill(s : MlfeatureumapRange, v : Double) -> MlfeatureumapRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapRange::fill(self : MlfeatureumapRange, v : Double) -> MlfeatureumapRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_range_min(s : MlfeatureumapRange) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapRange::min(self : MlfeatureumapRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_range_max(s : MlfeatureumapRange) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapRange::max(self : MlfeatureumapRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_range_to_string(s : MlfeatureumapRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapRange::to_string(self : MlfeatureumapRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureumapSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_feature_umap_slice_make(size : Int) -> MlfeatureumapSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_umap_slice_len(s : MlfeatureumapSlice) -> Int { s.size }
+pub fn MlfeatureumapSlice::len(self : MlfeatureumapSlice) -> Int { self.size }
 
-pub fn ml_feature_umap_slice_get(s : MlfeatureumapSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureumapSlice::get(self : MlfeatureumapSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_umap_slice_set(s : MlfeatureumapSlice, i : Int, v : Double) -> MlfeatureumapSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureumapSlice::set(self : MlfeatureumapSlice, i : Int, v : Double) -> MlfeatureumapSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_slice_sum(s : MlfeatureumapSlice) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureumapSlice::sum(self : MlfeatureumapSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_umap_slice_mean(s : MlfeatureumapSlice) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureumapSlice::mean(self : MlfeatureumapSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_umap_slice_scale(s : MlfeatureumapSlice, f : Double) -> MlfeatureumapSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureumapSlice::scale(self : MlfeatureumapSlice, f : Double) -> MlfeatureumapSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_slice_add(a : MlfeatureumapSlice, b : MlfeatureumapSlice) -> MlfeatureumapSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureumapSlice::add(self : MlfeatureumapSlice, other : MlfeatureumapSlice) -> MlfeatureumapSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_umap_slice_copy(s : MlfeatureumapSlice) -> MlfeatureumapSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureumapSlice::copy(self : MlfeatureumapSlice) -> MlfeatureumapSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_slice_fill(s : MlfeatureumapSlice, v : Double) -> MlfeatureumapSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureumapSlice::fill(self : MlfeatureumapSlice, v : Double) -> MlfeatureumapSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_umap_slice_min(s : MlfeatureumapSlice) -> Double { @_common.min(s.data) }
+pub fn MlfeatureumapSlice::min(self : MlfeatureumapSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_umap_slice_max(s : MlfeatureumapSlice) -> Double { @_common.max(s.data) }
+pub fn MlfeatureumapSlice::max(self : MlfeatureumapSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_umap_slice_to_string(s : MlfeatureumapSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureumapSlice::to_string(self : MlfeatureumapSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

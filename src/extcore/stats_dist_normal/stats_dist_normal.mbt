@@ -351,45 +351,45 @@ pub fn stats_dist_normal_frame_make(size : Int) -> StatsdistnormalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_frame_len(s : StatsdistnormalFrame) -> Int { s.size }
+pub fn StatsdistnormalFrame::len(self : StatsdistnormalFrame) -> Int { self.size }
 
-pub fn stats_dist_normal_frame_get(s : StatsdistnormalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalFrame::get(self : StatsdistnormalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_frame_set(s : StatsdistnormalFrame, i : Int, v : Double) -> StatsdistnormalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalFrame::set(self : StatsdistnormalFrame, i : Int, v : Double) -> StatsdistnormalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_frame_sum(s : StatsdistnormalFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalFrame::sum(self : StatsdistnormalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_frame_mean(s : StatsdistnormalFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalFrame::mean(self : StatsdistnormalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_frame_scale(s : StatsdistnormalFrame, f : Double) -> StatsdistnormalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalFrame::scale(self : StatsdistnormalFrame, f : Double) -> StatsdistnormalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_frame_add(a : StatsdistnormalFrame, b : StatsdistnormalFrame) -> StatsdistnormalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalFrame::add(self : StatsdistnormalFrame, other : StatsdistnormalFrame) -> StatsdistnormalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_frame_copy(s : StatsdistnormalFrame) -> StatsdistnormalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalFrame::copy(self : StatsdistnormalFrame) -> StatsdistnormalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_frame_fill(s : StatsdistnormalFrame, v : Double) -> StatsdistnormalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalFrame::fill(self : StatsdistnormalFrame, v : Double) -> StatsdistnormalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_frame_min(s : StatsdistnormalFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalFrame::min(self : StatsdistnormalFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_frame_max(s : StatsdistnormalFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalFrame::max(self : StatsdistnormalFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_frame_to_string(s : StatsdistnormalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalFrame::to_string(self : StatsdistnormalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_normal_table_make(size : Int) -> StatsdistnormalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_table_len(s : StatsdistnormalTable) -> Int { s.size }
+pub fn StatsdistnormalTable::len(self : StatsdistnormalTable) -> Int { self.size }
 
-pub fn stats_dist_normal_table_get(s : StatsdistnormalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalTable::get(self : StatsdistnormalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_table_set(s : StatsdistnormalTable, i : Int, v : Double) -> StatsdistnormalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalTable::set(self : StatsdistnormalTable, i : Int, v : Double) -> StatsdistnormalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_table_sum(s : StatsdistnormalTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalTable::sum(self : StatsdistnormalTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_table_mean(s : StatsdistnormalTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalTable::mean(self : StatsdistnormalTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_table_scale(s : StatsdistnormalTable, f : Double) -> StatsdistnormalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalTable::scale(self : StatsdistnormalTable, f : Double) -> StatsdistnormalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_table_add(a : StatsdistnormalTable, b : StatsdistnormalTable) -> StatsdistnormalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalTable::add(self : StatsdistnormalTable, other : StatsdistnormalTable) -> StatsdistnormalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_table_copy(s : StatsdistnormalTable) -> StatsdistnormalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalTable::copy(self : StatsdistnormalTable) -> StatsdistnormalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_table_fill(s : StatsdistnormalTable, v : Double) -> StatsdistnormalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalTable::fill(self : StatsdistnormalTable, v : Double) -> StatsdistnormalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_table_min(s : StatsdistnormalTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalTable::min(self : StatsdistnormalTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_table_max(s : StatsdistnormalTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalTable::max(self : StatsdistnormalTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_table_to_string(s : StatsdistnormalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalTable::to_string(self : StatsdistnormalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_normal_graphn_make(size : Int) -> StatsdistnormalGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_graphn_len(s : StatsdistnormalGraphN) -> Int { s.size }
+pub fn StatsdistnormalGraphN::len(self : StatsdistnormalGraphN) -> Int { self.size }
 
-pub fn stats_dist_normal_graphn_get(s : StatsdistnormalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalGraphN::get(self : StatsdistnormalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_graphn_set(s : StatsdistnormalGraphN, i : Int, v : Double) -> StatsdistnormalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalGraphN::set(self : StatsdistnormalGraphN, i : Int, v : Double) -> StatsdistnormalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_graphn_sum(s : StatsdistnormalGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalGraphN::sum(self : StatsdistnormalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_graphn_mean(s : StatsdistnormalGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalGraphN::mean(self : StatsdistnormalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_graphn_scale(s : StatsdistnormalGraphN, f : Double) -> StatsdistnormalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalGraphN::scale(self : StatsdistnormalGraphN, f : Double) -> StatsdistnormalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_graphn_add(a : StatsdistnormalGraphN, b : StatsdistnormalGraphN) -> StatsdistnormalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalGraphN::add(self : StatsdistnormalGraphN, other : StatsdistnormalGraphN) -> StatsdistnormalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_graphn_copy(s : StatsdistnormalGraphN) -> StatsdistnormalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalGraphN::copy(self : StatsdistnormalGraphN) -> StatsdistnormalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_graphn_fill(s : StatsdistnormalGraphN, v : Double) -> StatsdistnormalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalGraphN::fill(self : StatsdistnormalGraphN, v : Double) -> StatsdistnormalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_graphn_min(s : StatsdistnormalGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalGraphN::min(self : StatsdistnormalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_graphn_max(s : StatsdistnormalGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalGraphN::max(self : StatsdistnormalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_graphn_to_string(s : StatsdistnormalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalGraphN::to_string(self : StatsdistnormalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_normal_node_make(size : Int) -> StatsdistnormalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_node_len(s : StatsdistnormalNode) -> Int { s.size }
+pub fn StatsdistnormalNode::len(self : StatsdistnormalNode) -> Int { self.size }
 
-pub fn stats_dist_normal_node_get(s : StatsdistnormalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalNode::get(self : StatsdistnormalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_node_set(s : StatsdistnormalNode, i : Int, v : Double) -> StatsdistnormalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalNode::set(self : StatsdistnormalNode, i : Int, v : Double) -> StatsdistnormalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_node_sum(s : StatsdistnormalNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalNode::sum(self : StatsdistnormalNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_node_mean(s : StatsdistnormalNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalNode::mean(self : StatsdistnormalNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_node_scale(s : StatsdistnormalNode, f : Double) -> StatsdistnormalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalNode::scale(self : StatsdistnormalNode, f : Double) -> StatsdistnormalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_node_add(a : StatsdistnormalNode, b : StatsdistnormalNode) -> StatsdistnormalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalNode::add(self : StatsdistnormalNode, other : StatsdistnormalNode) -> StatsdistnormalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_node_copy(s : StatsdistnormalNode) -> StatsdistnormalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalNode::copy(self : StatsdistnormalNode) -> StatsdistnormalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_node_fill(s : StatsdistnormalNode, v : Double) -> StatsdistnormalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalNode::fill(self : StatsdistnormalNode, v : Double) -> StatsdistnormalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_node_min(s : StatsdistnormalNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalNode::min(self : StatsdistnormalNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_node_max(s : StatsdistnormalNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalNode::max(self : StatsdistnormalNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_node_to_string(s : StatsdistnormalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalNode::to_string(self : StatsdistnormalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_normal_edge_make(size : Int) -> StatsdistnormalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_edge_len(s : StatsdistnormalEdge) -> Int { s.size }
+pub fn StatsdistnormalEdge::len(self : StatsdistnormalEdge) -> Int { self.size }
 
-pub fn stats_dist_normal_edge_get(s : StatsdistnormalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalEdge::get(self : StatsdistnormalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_edge_set(s : StatsdistnormalEdge, i : Int, v : Double) -> StatsdistnormalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalEdge::set(self : StatsdistnormalEdge, i : Int, v : Double) -> StatsdistnormalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_edge_sum(s : StatsdistnormalEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalEdge::sum(self : StatsdistnormalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_edge_mean(s : StatsdistnormalEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalEdge::mean(self : StatsdistnormalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_edge_scale(s : StatsdistnormalEdge, f : Double) -> StatsdistnormalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalEdge::scale(self : StatsdistnormalEdge, f : Double) -> StatsdistnormalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_edge_add(a : StatsdistnormalEdge, b : StatsdistnormalEdge) -> StatsdistnormalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalEdge::add(self : StatsdistnormalEdge, other : StatsdistnormalEdge) -> StatsdistnormalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_edge_copy(s : StatsdistnormalEdge) -> StatsdistnormalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalEdge::copy(self : StatsdistnormalEdge) -> StatsdistnormalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_edge_fill(s : StatsdistnormalEdge, v : Double) -> StatsdistnormalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalEdge::fill(self : StatsdistnormalEdge, v : Double) -> StatsdistnormalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_edge_min(s : StatsdistnormalEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalEdge::min(self : StatsdistnormalEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_edge_max(s : StatsdistnormalEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalEdge::max(self : StatsdistnormalEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_edge_to_string(s : StatsdistnormalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalEdge::to_string(self : StatsdistnormalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_normal_path_make(size : Int) -> StatsdistnormalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_path_len(s : StatsdistnormalPath) -> Int { s.size }
+pub fn StatsdistnormalPath::len(self : StatsdistnormalPath) -> Int { self.size }
 
-pub fn stats_dist_normal_path_get(s : StatsdistnormalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalPath::get(self : StatsdistnormalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_path_set(s : StatsdistnormalPath, i : Int, v : Double) -> StatsdistnormalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalPath::set(self : StatsdistnormalPath, i : Int, v : Double) -> StatsdistnormalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_path_sum(s : StatsdistnormalPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalPath::sum(self : StatsdistnormalPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_path_mean(s : StatsdistnormalPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalPath::mean(self : StatsdistnormalPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_path_scale(s : StatsdistnormalPath, f : Double) -> StatsdistnormalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalPath::scale(self : StatsdistnormalPath, f : Double) -> StatsdistnormalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_path_add(a : StatsdistnormalPath, b : StatsdistnormalPath) -> StatsdistnormalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalPath::add(self : StatsdistnormalPath, other : StatsdistnormalPath) -> StatsdistnormalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_path_copy(s : StatsdistnormalPath) -> StatsdistnormalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalPath::copy(self : StatsdistnormalPath) -> StatsdistnormalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_path_fill(s : StatsdistnormalPath, v : Double) -> StatsdistnormalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalPath::fill(self : StatsdistnormalPath, v : Double) -> StatsdistnormalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_path_min(s : StatsdistnormalPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalPath::min(self : StatsdistnormalPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_path_max(s : StatsdistnormalPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalPath::max(self : StatsdistnormalPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_path_to_string(s : StatsdistnormalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalPath::to_string(self : StatsdistnormalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_normal_cluster_make(size : Int) -> StatsdistnormalCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_cluster_len(s : StatsdistnormalCluster) -> Int { s.size }
+pub fn StatsdistnormalCluster::len(self : StatsdistnormalCluster) -> Int { self.size }
 
-pub fn stats_dist_normal_cluster_get(s : StatsdistnormalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalCluster::get(self : StatsdistnormalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_cluster_set(s : StatsdistnormalCluster, i : Int, v : Double) -> StatsdistnormalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalCluster::set(self : StatsdistnormalCluster, i : Int, v : Double) -> StatsdistnormalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cluster_sum(s : StatsdistnormalCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalCluster::sum(self : StatsdistnormalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_cluster_mean(s : StatsdistnormalCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalCluster::mean(self : StatsdistnormalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_cluster_scale(s : StatsdistnormalCluster, f : Double) -> StatsdistnormalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalCluster::scale(self : StatsdistnormalCluster, f : Double) -> StatsdistnormalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cluster_add(a : StatsdistnormalCluster, b : StatsdistnormalCluster) -> StatsdistnormalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalCluster::add(self : StatsdistnormalCluster, other : StatsdistnormalCluster) -> StatsdistnormalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cluster_copy(s : StatsdistnormalCluster) -> StatsdistnormalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalCluster::copy(self : StatsdistnormalCluster) -> StatsdistnormalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cluster_fill(s : StatsdistnormalCluster, v : Double) -> StatsdistnormalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalCluster::fill(self : StatsdistnormalCluster, v : Double) -> StatsdistnormalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cluster_min(s : StatsdistnormalCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalCluster::min(self : StatsdistnormalCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_cluster_max(s : StatsdistnormalCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalCluster::max(self : StatsdistnormalCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_cluster_to_string(s : StatsdistnormalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalCluster::to_string(self : StatsdistnormalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_normal_model_make(size : Int) -> StatsdistnormalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_model_len(s : StatsdistnormalModel) -> Int { s.size }
+pub fn StatsdistnormalModel::len(self : StatsdistnormalModel) -> Int { self.size }
 
-pub fn stats_dist_normal_model_get(s : StatsdistnormalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalModel::get(self : StatsdistnormalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_model_set(s : StatsdistnormalModel, i : Int, v : Double) -> StatsdistnormalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalModel::set(self : StatsdistnormalModel, i : Int, v : Double) -> StatsdistnormalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_model_sum(s : StatsdistnormalModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalModel::sum(self : StatsdistnormalModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_model_mean(s : StatsdistnormalModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalModel::mean(self : StatsdistnormalModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_model_scale(s : StatsdistnormalModel, f : Double) -> StatsdistnormalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalModel::scale(self : StatsdistnormalModel, f : Double) -> StatsdistnormalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_model_add(a : StatsdistnormalModel, b : StatsdistnormalModel) -> StatsdistnormalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalModel::add(self : StatsdistnormalModel, other : StatsdistnormalModel) -> StatsdistnormalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_model_copy(s : StatsdistnormalModel) -> StatsdistnormalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalModel::copy(self : StatsdistnormalModel) -> StatsdistnormalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_model_fill(s : StatsdistnormalModel, v : Double) -> StatsdistnormalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalModel::fill(self : StatsdistnormalModel, v : Double) -> StatsdistnormalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_model_min(s : StatsdistnormalModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalModel::min(self : StatsdistnormalModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_model_max(s : StatsdistnormalModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalModel::max(self : StatsdistnormalModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_model_to_string(s : StatsdistnormalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalModel::to_string(self : StatsdistnormalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_normal_layer_make(size : Int) -> StatsdistnormalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_layer_len(s : StatsdistnormalLayer) -> Int { s.size }
+pub fn StatsdistnormalLayer::len(self : StatsdistnormalLayer) -> Int { self.size }
 
-pub fn stats_dist_normal_layer_get(s : StatsdistnormalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalLayer::get(self : StatsdistnormalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_layer_set(s : StatsdistnormalLayer, i : Int, v : Double) -> StatsdistnormalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalLayer::set(self : StatsdistnormalLayer, i : Int, v : Double) -> StatsdistnormalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_layer_sum(s : StatsdistnormalLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalLayer::sum(self : StatsdistnormalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_layer_mean(s : StatsdistnormalLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalLayer::mean(self : StatsdistnormalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_layer_scale(s : StatsdistnormalLayer, f : Double) -> StatsdistnormalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalLayer::scale(self : StatsdistnormalLayer, f : Double) -> StatsdistnormalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_layer_add(a : StatsdistnormalLayer, b : StatsdistnormalLayer) -> StatsdistnormalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalLayer::add(self : StatsdistnormalLayer, other : StatsdistnormalLayer) -> StatsdistnormalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_layer_copy(s : StatsdistnormalLayer) -> StatsdistnormalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalLayer::copy(self : StatsdistnormalLayer) -> StatsdistnormalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_layer_fill(s : StatsdistnormalLayer, v : Double) -> StatsdistnormalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalLayer::fill(self : StatsdistnormalLayer, v : Double) -> StatsdistnormalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_layer_min(s : StatsdistnormalLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalLayer::min(self : StatsdistnormalLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_layer_max(s : StatsdistnormalLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalLayer::max(self : StatsdistnormalLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_layer_to_string(s : StatsdistnormalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalLayer::to_string(self : StatsdistnormalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_normal_buffer_make(size : Int) -> StatsdistnormalBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_buffer_len(s : StatsdistnormalBuffer) -> Int { s.size }
+pub fn StatsdistnormalBuffer::len(self : StatsdistnormalBuffer) -> Int { self.size }
 
-pub fn stats_dist_normal_buffer_get(s : StatsdistnormalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalBuffer::get(self : StatsdistnormalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_buffer_set(s : StatsdistnormalBuffer, i : Int, v : Double) -> StatsdistnormalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalBuffer::set(self : StatsdistnormalBuffer, i : Int, v : Double) -> StatsdistnormalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_buffer_sum(s : StatsdistnormalBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalBuffer::sum(self : StatsdistnormalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_buffer_mean(s : StatsdistnormalBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalBuffer::mean(self : StatsdistnormalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_buffer_scale(s : StatsdistnormalBuffer, f : Double) -> StatsdistnormalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalBuffer::scale(self : StatsdistnormalBuffer, f : Double) -> StatsdistnormalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_buffer_add(a : StatsdistnormalBuffer, b : StatsdistnormalBuffer) -> StatsdistnormalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalBuffer::add(self : StatsdistnormalBuffer, other : StatsdistnormalBuffer) -> StatsdistnormalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_buffer_copy(s : StatsdistnormalBuffer) -> StatsdistnormalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalBuffer::copy(self : StatsdistnormalBuffer) -> StatsdistnormalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_buffer_fill(s : StatsdistnormalBuffer, v : Double) -> StatsdistnormalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalBuffer::fill(self : StatsdistnormalBuffer, v : Double) -> StatsdistnormalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_buffer_min(s : StatsdistnormalBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalBuffer::min(self : StatsdistnormalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_buffer_max(s : StatsdistnormalBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalBuffer::max(self : StatsdistnormalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_buffer_to_string(s : StatsdistnormalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalBuffer::to_string(self : StatsdistnormalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_normal_cursor_make(size : Int) -> StatsdistnormalCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_cursor_len(s : StatsdistnormalCursor) -> Int { s.size }
+pub fn StatsdistnormalCursor::len(self : StatsdistnormalCursor) -> Int { self.size }
 
-pub fn stats_dist_normal_cursor_get(s : StatsdistnormalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalCursor::get(self : StatsdistnormalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_cursor_set(s : StatsdistnormalCursor, i : Int, v : Double) -> StatsdistnormalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalCursor::set(self : StatsdistnormalCursor, i : Int, v : Double) -> StatsdistnormalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cursor_sum(s : StatsdistnormalCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalCursor::sum(self : StatsdistnormalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_cursor_mean(s : StatsdistnormalCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalCursor::mean(self : StatsdistnormalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_cursor_scale(s : StatsdistnormalCursor, f : Double) -> StatsdistnormalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalCursor::scale(self : StatsdistnormalCursor, f : Double) -> StatsdistnormalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cursor_add(a : StatsdistnormalCursor, b : StatsdistnormalCursor) -> StatsdistnormalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalCursor::add(self : StatsdistnormalCursor, other : StatsdistnormalCursor) -> StatsdistnormalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cursor_copy(s : StatsdistnormalCursor) -> StatsdistnormalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalCursor::copy(self : StatsdistnormalCursor) -> StatsdistnormalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cursor_fill(s : StatsdistnormalCursor, v : Double) -> StatsdistnormalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalCursor::fill(self : StatsdistnormalCursor, v : Double) -> StatsdistnormalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_cursor_min(s : StatsdistnormalCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalCursor::min(self : StatsdistnormalCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_cursor_max(s : StatsdistnormalCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalCursor::max(self : StatsdistnormalCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_cursor_to_string(s : StatsdistnormalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalCursor::to_string(self : StatsdistnormalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalView {
@@ -912,45 +912,45 @@ pub fn stats_dist_normal_view_make(size : Int) -> StatsdistnormalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_view_len(s : StatsdistnormalView) -> Int { s.size }
+pub fn StatsdistnormalView::len(self : StatsdistnormalView) -> Int { self.size }
 
-pub fn stats_dist_normal_view_get(s : StatsdistnormalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalView::get(self : StatsdistnormalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_view_set(s : StatsdistnormalView, i : Int, v : Double) -> StatsdistnormalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalView::set(self : StatsdistnormalView, i : Int, v : Double) -> StatsdistnormalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_view_sum(s : StatsdistnormalView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalView::sum(self : StatsdistnormalView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_view_mean(s : StatsdistnormalView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalView::mean(self : StatsdistnormalView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_view_scale(s : StatsdistnormalView, f : Double) -> StatsdistnormalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalView::scale(self : StatsdistnormalView, f : Double) -> StatsdistnormalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_view_add(a : StatsdistnormalView, b : StatsdistnormalView) -> StatsdistnormalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalView::add(self : StatsdistnormalView, other : StatsdistnormalView) -> StatsdistnormalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_view_copy(s : StatsdistnormalView) -> StatsdistnormalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalView::copy(self : StatsdistnormalView) -> StatsdistnormalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_view_fill(s : StatsdistnormalView, v : Double) -> StatsdistnormalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalView::fill(self : StatsdistnormalView, v : Double) -> StatsdistnormalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_view_min(s : StatsdistnormalView) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalView::min(self : StatsdistnormalView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_view_max(s : StatsdistnormalView) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalView::max(self : StatsdistnormalView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_view_to_string(s : StatsdistnormalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalView::to_string(self : StatsdistnormalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_normal_range_make(size : Int) -> StatsdistnormalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_range_len(s : StatsdistnormalRange) -> Int { s.size }
+pub fn StatsdistnormalRange::len(self : StatsdistnormalRange) -> Int { self.size }
 
-pub fn stats_dist_normal_range_get(s : StatsdistnormalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalRange::get(self : StatsdistnormalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_range_set(s : StatsdistnormalRange, i : Int, v : Double) -> StatsdistnormalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalRange::set(self : StatsdistnormalRange, i : Int, v : Double) -> StatsdistnormalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_range_sum(s : StatsdistnormalRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalRange::sum(self : StatsdistnormalRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_range_mean(s : StatsdistnormalRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalRange::mean(self : StatsdistnormalRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_range_scale(s : StatsdistnormalRange, f : Double) -> StatsdistnormalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalRange::scale(self : StatsdistnormalRange, f : Double) -> StatsdistnormalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_range_add(a : StatsdistnormalRange, b : StatsdistnormalRange) -> StatsdistnormalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalRange::add(self : StatsdistnormalRange, other : StatsdistnormalRange) -> StatsdistnormalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_range_copy(s : StatsdistnormalRange) -> StatsdistnormalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalRange::copy(self : StatsdistnormalRange) -> StatsdistnormalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_range_fill(s : StatsdistnormalRange, v : Double) -> StatsdistnormalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalRange::fill(self : StatsdistnormalRange, v : Double) -> StatsdistnormalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_range_min(s : StatsdistnormalRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalRange::min(self : StatsdistnormalRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_range_max(s : StatsdistnormalRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalRange::max(self : StatsdistnormalRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_range_to_string(s : StatsdistnormalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalRange::to_string(self : StatsdistnormalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistnormalSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_normal_slice_make(size : Int) -> StatsdistnormalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_normal_slice_len(s : StatsdistnormalSlice) -> Int { s.size }
+pub fn StatsdistnormalSlice::len(self : StatsdistnormalSlice) -> Int { self.size }
 
-pub fn stats_dist_normal_slice_get(s : StatsdistnormalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistnormalSlice::get(self : StatsdistnormalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_normal_slice_set(s : StatsdistnormalSlice, i : Int, v : Double) -> StatsdistnormalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistnormalSlice::set(self : StatsdistnormalSlice, i : Int, v : Double) -> StatsdistnormalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_slice_sum(s : StatsdistnormalSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistnormalSlice::sum(self : StatsdistnormalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_normal_slice_mean(s : StatsdistnormalSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistnormalSlice::mean(self : StatsdistnormalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_normal_slice_scale(s : StatsdistnormalSlice, f : Double) -> StatsdistnormalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistnormalSlice::scale(self : StatsdistnormalSlice, f : Double) -> StatsdistnormalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_slice_add(a : StatsdistnormalSlice, b : StatsdistnormalSlice) -> StatsdistnormalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistnormalSlice::add(self : StatsdistnormalSlice, other : StatsdistnormalSlice) -> StatsdistnormalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_normal_slice_copy(s : StatsdistnormalSlice) -> StatsdistnormalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistnormalSlice::copy(self : StatsdistnormalSlice) -> StatsdistnormalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_slice_fill(s : StatsdistnormalSlice, v : Double) -> StatsdistnormalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistnormalSlice::fill(self : StatsdistnormalSlice, v : Double) -> StatsdistnormalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_normal_slice_min(s : StatsdistnormalSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistnormalSlice::min(self : StatsdistnormalSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_normal_slice_max(s : StatsdistnormalSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistnormalSlice::max(self : StatsdistnormalSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_normal_slice_to_string(s : StatsdistnormalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistnormalSlice::to_string(self : StatsdistnormalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

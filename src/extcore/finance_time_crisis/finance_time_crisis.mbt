@@ -351,45 +351,45 @@ pub fn finance_time_crisis_frame_make(size : Int) -> FinancetimecrisisFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_frame_len(s : FinancetimecrisisFrame) -> Int { s.size }
+pub fn FinancetimecrisisFrame::len(self : FinancetimecrisisFrame) -> Int { self.size }
 
-pub fn finance_time_crisis_frame_get(s : FinancetimecrisisFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisFrame::get(self : FinancetimecrisisFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_frame_set(s : FinancetimecrisisFrame, i : Int, v : Double) -> FinancetimecrisisFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisFrame::set(self : FinancetimecrisisFrame, i : Int, v : Double) -> FinancetimecrisisFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_frame_sum(s : FinancetimecrisisFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisFrame::sum(self : FinancetimecrisisFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_frame_mean(s : FinancetimecrisisFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisFrame::mean(self : FinancetimecrisisFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_frame_scale(s : FinancetimecrisisFrame, f : Double) -> FinancetimecrisisFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisFrame::scale(self : FinancetimecrisisFrame, f : Double) -> FinancetimecrisisFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_frame_add(a : FinancetimecrisisFrame, b : FinancetimecrisisFrame) -> FinancetimecrisisFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisFrame::add(self : FinancetimecrisisFrame, other : FinancetimecrisisFrame) -> FinancetimecrisisFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_frame_copy(s : FinancetimecrisisFrame) -> FinancetimecrisisFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisFrame::copy(self : FinancetimecrisisFrame) -> FinancetimecrisisFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_frame_fill(s : FinancetimecrisisFrame, v : Double) -> FinancetimecrisisFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisFrame::fill(self : FinancetimecrisisFrame, v : Double) -> FinancetimecrisisFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_frame_min(s : FinancetimecrisisFrame) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisFrame::min(self : FinancetimecrisisFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_frame_max(s : FinancetimecrisisFrame) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisFrame::max(self : FinancetimecrisisFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_frame_to_string(s : FinancetimecrisisFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisFrame::to_string(self : FinancetimecrisisFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisTable {
@@ -402,45 +402,45 @@ pub fn finance_time_crisis_table_make(size : Int) -> FinancetimecrisisTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_table_len(s : FinancetimecrisisTable) -> Int { s.size }
+pub fn FinancetimecrisisTable::len(self : FinancetimecrisisTable) -> Int { self.size }
 
-pub fn finance_time_crisis_table_get(s : FinancetimecrisisTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisTable::get(self : FinancetimecrisisTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_table_set(s : FinancetimecrisisTable, i : Int, v : Double) -> FinancetimecrisisTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisTable::set(self : FinancetimecrisisTable, i : Int, v : Double) -> FinancetimecrisisTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_table_sum(s : FinancetimecrisisTable) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisTable::sum(self : FinancetimecrisisTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_table_mean(s : FinancetimecrisisTable) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisTable::mean(self : FinancetimecrisisTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_table_scale(s : FinancetimecrisisTable, f : Double) -> FinancetimecrisisTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisTable::scale(self : FinancetimecrisisTable, f : Double) -> FinancetimecrisisTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_table_add(a : FinancetimecrisisTable, b : FinancetimecrisisTable) -> FinancetimecrisisTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisTable::add(self : FinancetimecrisisTable, other : FinancetimecrisisTable) -> FinancetimecrisisTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_table_copy(s : FinancetimecrisisTable) -> FinancetimecrisisTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisTable::copy(self : FinancetimecrisisTable) -> FinancetimecrisisTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_table_fill(s : FinancetimecrisisTable, v : Double) -> FinancetimecrisisTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisTable::fill(self : FinancetimecrisisTable, v : Double) -> FinancetimecrisisTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_table_min(s : FinancetimecrisisTable) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisTable::min(self : FinancetimecrisisTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_table_max(s : FinancetimecrisisTable) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisTable::max(self : FinancetimecrisisTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_table_to_string(s : FinancetimecrisisTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisTable::to_string(self : FinancetimecrisisTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisGraphN {
@@ -453,45 +453,45 @@ pub fn finance_time_crisis_graphn_make(size : Int) -> FinancetimecrisisGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_graphn_len(s : FinancetimecrisisGraphN) -> Int { s.size }
+pub fn FinancetimecrisisGraphN::len(self : FinancetimecrisisGraphN) -> Int { self.size }
 
-pub fn finance_time_crisis_graphn_get(s : FinancetimecrisisGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisGraphN::get(self : FinancetimecrisisGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_graphn_set(s : FinancetimecrisisGraphN, i : Int, v : Double) -> FinancetimecrisisGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisGraphN::set(self : FinancetimecrisisGraphN, i : Int, v : Double) -> FinancetimecrisisGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_graphn_sum(s : FinancetimecrisisGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisGraphN::sum(self : FinancetimecrisisGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_graphn_mean(s : FinancetimecrisisGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisGraphN::mean(self : FinancetimecrisisGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_graphn_scale(s : FinancetimecrisisGraphN, f : Double) -> FinancetimecrisisGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisGraphN::scale(self : FinancetimecrisisGraphN, f : Double) -> FinancetimecrisisGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_graphn_add(a : FinancetimecrisisGraphN, b : FinancetimecrisisGraphN) -> FinancetimecrisisGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisGraphN::add(self : FinancetimecrisisGraphN, other : FinancetimecrisisGraphN) -> FinancetimecrisisGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_graphn_copy(s : FinancetimecrisisGraphN) -> FinancetimecrisisGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisGraphN::copy(self : FinancetimecrisisGraphN) -> FinancetimecrisisGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_graphn_fill(s : FinancetimecrisisGraphN, v : Double) -> FinancetimecrisisGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisGraphN::fill(self : FinancetimecrisisGraphN, v : Double) -> FinancetimecrisisGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_graphn_min(s : FinancetimecrisisGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisGraphN::min(self : FinancetimecrisisGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_graphn_max(s : FinancetimecrisisGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisGraphN::max(self : FinancetimecrisisGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_graphn_to_string(s : FinancetimecrisisGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisGraphN::to_string(self : FinancetimecrisisGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisNode {
@@ -504,45 +504,45 @@ pub fn finance_time_crisis_node_make(size : Int) -> FinancetimecrisisNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_node_len(s : FinancetimecrisisNode) -> Int { s.size }
+pub fn FinancetimecrisisNode::len(self : FinancetimecrisisNode) -> Int { self.size }
 
-pub fn finance_time_crisis_node_get(s : FinancetimecrisisNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisNode::get(self : FinancetimecrisisNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_node_set(s : FinancetimecrisisNode, i : Int, v : Double) -> FinancetimecrisisNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisNode::set(self : FinancetimecrisisNode, i : Int, v : Double) -> FinancetimecrisisNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_node_sum(s : FinancetimecrisisNode) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisNode::sum(self : FinancetimecrisisNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_node_mean(s : FinancetimecrisisNode) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisNode::mean(self : FinancetimecrisisNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_node_scale(s : FinancetimecrisisNode, f : Double) -> FinancetimecrisisNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisNode::scale(self : FinancetimecrisisNode, f : Double) -> FinancetimecrisisNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_node_add(a : FinancetimecrisisNode, b : FinancetimecrisisNode) -> FinancetimecrisisNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisNode::add(self : FinancetimecrisisNode, other : FinancetimecrisisNode) -> FinancetimecrisisNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_node_copy(s : FinancetimecrisisNode) -> FinancetimecrisisNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisNode::copy(self : FinancetimecrisisNode) -> FinancetimecrisisNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_node_fill(s : FinancetimecrisisNode, v : Double) -> FinancetimecrisisNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisNode::fill(self : FinancetimecrisisNode, v : Double) -> FinancetimecrisisNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_node_min(s : FinancetimecrisisNode) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisNode::min(self : FinancetimecrisisNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_node_max(s : FinancetimecrisisNode) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisNode::max(self : FinancetimecrisisNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_node_to_string(s : FinancetimecrisisNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisNode::to_string(self : FinancetimecrisisNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisEdge {
@@ -555,45 +555,45 @@ pub fn finance_time_crisis_edge_make(size : Int) -> FinancetimecrisisEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_edge_len(s : FinancetimecrisisEdge) -> Int { s.size }
+pub fn FinancetimecrisisEdge::len(self : FinancetimecrisisEdge) -> Int { self.size }
 
-pub fn finance_time_crisis_edge_get(s : FinancetimecrisisEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisEdge::get(self : FinancetimecrisisEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_edge_set(s : FinancetimecrisisEdge, i : Int, v : Double) -> FinancetimecrisisEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisEdge::set(self : FinancetimecrisisEdge, i : Int, v : Double) -> FinancetimecrisisEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_edge_sum(s : FinancetimecrisisEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisEdge::sum(self : FinancetimecrisisEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_edge_mean(s : FinancetimecrisisEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisEdge::mean(self : FinancetimecrisisEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_edge_scale(s : FinancetimecrisisEdge, f : Double) -> FinancetimecrisisEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisEdge::scale(self : FinancetimecrisisEdge, f : Double) -> FinancetimecrisisEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_edge_add(a : FinancetimecrisisEdge, b : FinancetimecrisisEdge) -> FinancetimecrisisEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisEdge::add(self : FinancetimecrisisEdge, other : FinancetimecrisisEdge) -> FinancetimecrisisEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_edge_copy(s : FinancetimecrisisEdge) -> FinancetimecrisisEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisEdge::copy(self : FinancetimecrisisEdge) -> FinancetimecrisisEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_edge_fill(s : FinancetimecrisisEdge, v : Double) -> FinancetimecrisisEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisEdge::fill(self : FinancetimecrisisEdge, v : Double) -> FinancetimecrisisEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_edge_min(s : FinancetimecrisisEdge) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisEdge::min(self : FinancetimecrisisEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_edge_max(s : FinancetimecrisisEdge) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisEdge::max(self : FinancetimecrisisEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_edge_to_string(s : FinancetimecrisisEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisEdge::to_string(self : FinancetimecrisisEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisPath {
@@ -606,45 +606,45 @@ pub fn finance_time_crisis_path_make(size : Int) -> FinancetimecrisisPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_path_len(s : FinancetimecrisisPath) -> Int { s.size }
+pub fn FinancetimecrisisPath::len(self : FinancetimecrisisPath) -> Int { self.size }
 
-pub fn finance_time_crisis_path_get(s : FinancetimecrisisPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisPath::get(self : FinancetimecrisisPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_path_set(s : FinancetimecrisisPath, i : Int, v : Double) -> FinancetimecrisisPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisPath::set(self : FinancetimecrisisPath, i : Int, v : Double) -> FinancetimecrisisPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_path_sum(s : FinancetimecrisisPath) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisPath::sum(self : FinancetimecrisisPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_path_mean(s : FinancetimecrisisPath) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisPath::mean(self : FinancetimecrisisPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_path_scale(s : FinancetimecrisisPath, f : Double) -> FinancetimecrisisPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisPath::scale(self : FinancetimecrisisPath, f : Double) -> FinancetimecrisisPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_path_add(a : FinancetimecrisisPath, b : FinancetimecrisisPath) -> FinancetimecrisisPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisPath::add(self : FinancetimecrisisPath, other : FinancetimecrisisPath) -> FinancetimecrisisPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_path_copy(s : FinancetimecrisisPath) -> FinancetimecrisisPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisPath::copy(self : FinancetimecrisisPath) -> FinancetimecrisisPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_path_fill(s : FinancetimecrisisPath, v : Double) -> FinancetimecrisisPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisPath::fill(self : FinancetimecrisisPath, v : Double) -> FinancetimecrisisPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_path_min(s : FinancetimecrisisPath) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisPath::min(self : FinancetimecrisisPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_path_max(s : FinancetimecrisisPath) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisPath::max(self : FinancetimecrisisPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_path_to_string(s : FinancetimecrisisPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisPath::to_string(self : FinancetimecrisisPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisCluster {
@@ -657,45 +657,45 @@ pub fn finance_time_crisis_cluster_make(size : Int) -> FinancetimecrisisCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_cluster_len(s : FinancetimecrisisCluster) -> Int { s.size }
+pub fn FinancetimecrisisCluster::len(self : FinancetimecrisisCluster) -> Int { self.size }
 
-pub fn finance_time_crisis_cluster_get(s : FinancetimecrisisCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisCluster::get(self : FinancetimecrisisCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_cluster_set(s : FinancetimecrisisCluster, i : Int, v : Double) -> FinancetimecrisisCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCluster::set(self : FinancetimecrisisCluster, i : Int, v : Double) -> FinancetimecrisisCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cluster_sum(s : FinancetimecrisisCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisCluster::sum(self : FinancetimecrisisCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_cluster_mean(s : FinancetimecrisisCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisCluster::mean(self : FinancetimecrisisCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_cluster_scale(s : FinancetimecrisisCluster, f : Double) -> FinancetimecrisisCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCluster::scale(self : FinancetimecrisisCluster, f : Double) -> FinancetimecrisisCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cluster_add(a : FinancetimecrisisCluster, b : FinancetimecrisisCluster) -> FinancetimecrisisCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisCluster::add(self : FinancetimecrisisCluster, other : FinancetimecrisisCluster) -> FinancetimecrisisCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cluster_copy(s : FinancetimecrisisCluster) -> FinancetimecrisisCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCluster::copy(self : FinancetimecrisisCluster) -> FinancetimecrisisCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cluster_fill(s : FinancetimecrisisCluster, v : Double) -> FinancetimecrisisCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCluster::fill(self : FinancetimecrisisCluster, v : Double) -> FinancetimecrisisCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cluster_min(s : FinancetimecrisisCluster) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisCluster::min(self : FinancetimecrisisCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_cluster_max(s : FinancetimecrisisCluster) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisCluster::max(self : FinancetimecrisisCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_cluster_to_string(s : FinancetimecrisisCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisCluster::to_string(self : FinancetimecrisisCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisModel {
@@ -708,45 +708,45 @@ pub fn finance_time_crisis_model_make(size : Int) -> FinancetimecrisisModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_model_len(s : FinancetimecrisisModel) -> Int { s.size }
+pub fn FinancetimecrisisModel::len(self : FinancetimecrisisModel) -> Int { self.size }
 
-pub fn finance_time_crisis_model_get(s : FinancetimecrisisModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisModel::get(self : FinancetimecrisisModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_model_set(s : FinancetimecrisisModel, i : Int, v : Double) -> FinancetimecrisisModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisModel::set(self : FinancetimecrisisModel, i : Int, v : Double) -> FinancetimecrisisModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_model_sum(s : FinancetimecrisisModel) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisModel::sum(self : FinancetimecrisisModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_model_mean(s : FinancetimecrisisModel) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisModel::mean(self : FinancetimecrisisModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_model_scale(s : FinancetimecrisisModel, f : Double) -> FinancetimecrisisModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisModel::scale(self : FinancetimecrisisModel, f : Double) -> FinancetimecrisisModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_model_add(a : FinancetimecrisisModel, b : FinancetimecrisisModel) -> FinancetimecrisisModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisModel::add(self : FinancetimecrisisModel, other : FinancetimecrisisModel) -> FinancetimecrisisModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_model_copy(s : FinancetimecrisisModel) -> FinancetimecrisisModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisModel::copy(self : FinancetimecrisisModel) -> FinancetimecrisisModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_model_fill(s : FinancetimecrisisModel, v : Double) -> FinancetimecrisisModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisModel::fill(self : FinancetimecrisisModel, v : Double) -> FinancetimecrisisModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_model_min(s : FinancetimecrisisModel) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisModel::min(self : FinancetimecrisisModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_model_max(s : FinancetimecrisisModel) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisModel::max(self : FinancetimecrisisModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_model_to_string(s : FinancetimecrisisModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisModel::to_string(self : FinancetimecrisisModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisLayer {
@@ -759,45 +759,45 @@ pub fn finance_time_crisis_layer_make(size : Int) -> FinancetimecrisisLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_layer_len(s : FinancetimecrisisLayer) -> Int { s.size }
+pub fn FinancetimecrisisLayer::len(self : FinancetimecrisisLayer) -> Int { self.size }
 
-pub fn finance_time_crisis_layer_get(s : FinancetimecrisisLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisLayer::get(self : FinancetimecrisisLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_layer_set(s : FinancetimecrisisLayer, i : Int, v : Double) -> FinancetimecrisisLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisLayer::set(self : FinancetimecrisisLayer, i : Int, v : Double) -> FinancetimecrisisLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_layer_sum(s : FinancetimecrisisLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisLayer::sum(self : FinancetimecrisisLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_layer_mean(s : FinancetimecrisisLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisLayer::mean(self : FinancetimecrisisLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_layer_scale(s : FinancetimecrisisLayer, f : Double) -> FinancetimecrisisLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisLayer::scale(self : FinancetimecrisisLayer, f : Double) -> FinancetimecrisisLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_layer_add(a : FinancetimecrisisLayer, b : FinancetimecrisisLayer) -> FinancetimecrisisLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisLayer::add(self : FinancetimecrisisLayer, other : FinancetimecrisisLayer) -> FinancetimecrisisLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_layer_copy(s : FinancetimecrisisLayer) -> FinancetimecrisisLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisLayer::copy(self : FinancetimecrisisLayer) -> FinancetimecrisisLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_layer_fill(s : FinancetimecrisisLayer, v : Double) -> FinancetimecrisisLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisLayer::fill(self : FinancetimecrisisLayer, v : Double) -> FinancetimecrisisLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_layer_min(s : FinancetimecrisisLayer) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisLayer::min(self : FinancetimecrisisLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_layer_max(s : FinancetimecrisisLayer) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisLayer::max(self : FinancetimecrisisLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_layer_to_string(s : FinancetimecrisisLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisLayer::to_string(self : FinancetimecrisisLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisBuffer {
@@ -810,45 +810,45 @@ pub fn finance_time_crisis_buffer_make(size : Int) -> FinancetimecrisisBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_buffer_len(s : FinancetimecrisisBuffer) -> Int { s.size }
+pub fn FinancetimecrisisBuffer::len(self : FinancetimecrisisBuffer) -> Int { self.size }
 
-pub fn finance_time_crisis_buffer_get(s : FinancetimecrisisBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisBuffer::get(self : FinancetimecrisisBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_buffer_set(s : FinancetimecrisisBuffer, i : Int, v : Double) -> FinancetimecrisisBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisBuffer::set(self : FinancetimecrisisBuffer, i : Int, v : Double) -> FinancetimecrisisBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_buffer_sum(s : FinancetimecrisisBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisBuffer::sum(self : FinancetimecrisisBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_buffer_mean(s : FinancetimecrisisBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisBuffer::mean(self : FinancetimecrisisBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_buffer_scale(s : FinancetimecrisisBuffer, f : Double) -> FinancetimecrisisBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisBuffer::scale(self : FinancetimecrisisBuffer, f : Double) -> FinancetimecrisisBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_buffer_add(a : FinancetimecrisisBuffer, b : FinancetimecrisisBuffer) -> FinancetimecrisisBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisBuffer::add(self : FinancetimecrisisBuffer, other : FinancetimecrisisBuffer) -> FinancetimecrisisBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_buffer_copy(s : FinancetimecrisisBuffer) -> FinancetimecrisisBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisBuffer::copy(self : FinancetimecrisisBuffer) -> FinancetimecrisisBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_buffer_fill(s : FinancetimecrisisBuffer, v : Double) -> FinancetimecrisisBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisBuffer::fill(self : FinancetimecrisisBuffer, v : Double) -> FinancetimecrisisBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_buffer_min(s : FinancetimecrisisBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisBuffer::min(self : FinancetimecrisisBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_buffer_max(s : FinancetimecrisisBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisBuffer::max(self : FinancetimecrisisBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_buffer_to_string(s : FinancetimecrisisBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisBuffer::to_string(self : FinancetimecrisisBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisCursor {
@@ -861,45 +861,45 @@ pub fn finance_time_crisis_cursor_make(size : Int) -> FinancetimecrisisCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_cursor_len(s : FinancetimecrisisCursor) -> Int { s.size }
+pub fn FinancetimecrisisCursor::len(self : FinancetimecrisisCursor) -> Int { self.size }
 
-pub fn finance_time_crisis_cursor_get(s : FinancetimecrisisCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisCursor::get(self : FinancetimecrisisCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_cursor_set(s : FinancetimecrisisCursor, i : Int, v : Double) -> FinancetimecrisisCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCursor::set(self : FinancetimecrisisCursor, i : Int, v : Double) -> FinancetimecrisisCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cursor_sum(s : FinancetimecrisisCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisCursor::sum(self : FinancetimecrisisCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_cursor_mean(s : FinancetimecrisisCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisCursor::mean(self : FinancetimecrisisCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_cursor_scale(s : FinancetimecrisisCursor, f : Double) -> FinancetimecrisisCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCursor::scale(self : FinancetimecrisisCursor, f : Double) -> FinancetimecrisisCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cursor_add(a : FinancetimecrisisCursor, b : FinancetimecrisisCursor) -> FinancetimecrisisCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisCursor::add(self : FinancetimecrisisCursor, other : FinancetimecrisisCursor) -> FinancetimecrisisCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cursor_copy(s : FinancetimecrisisCursor) -> FinancetimecrisisCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCursor::copy(self : FinancetimecrisisCursor) -> FinancetimecrisisCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cursor_fill(s : FinancetimecrisisCursor, v : Double) -> FinancetimecrisisCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisCursor::fill(self : FinancetimecrisisCursor, v : Double) -> FinancetimecrisisCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_cursor_min(s : FinancetimecrisisCursor) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisCursor::min(self : FinancetimecrisisCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_cursor_max(s : FinancetimecrisisCursor) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisCursor::max(self : FinancetimecrisisCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_cursor_to_string(s : FinancetimecrisisCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisCursor::to_string(self : FinancetimecrisisCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisView {
@@ -912,45 +912,45 @@ pub fn finance_time_crisis_view_make(size : Int) -> FinancetimecrisisView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_view_len(s : FinancetimecrisisView) -> Int { s.size }
+pub fn FinancetimecrisisView::len(self : FinancetimecrisisView) -> Int { self.size }
 
-pub fn finance_time_crisis_view_get(s : FinancetimecrisisView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisView::get(self : FinancetimecrisisView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_view_set(s : FinancetimecrisisView, i : Int, v : Double) -> FinancetimecrisisView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisView::set(self : FinancetimecrisisView, i : Int, v : Double) -> FinancetimecrisisView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_view_sum(s : FinancetimecrisisView) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisView::sum(self : FinancetimecrisisView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_view_mean(s : FinancetimecrisisView) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisView::mean(self : FinancetimecrisisView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_view_scale(s : FinancetimecrisisView, f : Double) -> FinancetimecrisisView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisView::scale(self : FinancetimecrisisView, f : Double) -> FinancetimecrisisView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_view_add(a : FinancetimecrisisView, b : FinancetimecrisisView) -> FinancetimecrisisView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisView::add(self : FinancetimecrisisView, other : FinancetimecrisisView) -> FinancetimecrisisView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_view_copy(s : FinancetimecrisisView) -> FinancetimecrisisView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisView::copy(self : FinancetimecrisisView) -> FinancetimecrisisView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_view_fill(s : FinancetimecrisisView, v : Double) -> FinancetimecrisisView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisView::fill(self : FinancetimecrisisView, v : Double) -> FinancetimecrisisView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_view_min(s : FinancetimecrisisView) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisView::min(self : FinancetimecrisisView) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_view_max(s : FinancetimecrisisView) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisView::max(self : FinancetimecrisisView) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_view_to_string(s : FinancetimecrisisView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisView::to_string(self : FinancetimecrisisView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisRange {
@@ -963,45 +963,45 @@ pub fn finance_time_crisis_range_make(size : Int) -> FinancetimecrisisRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_range_len(s : FinancetimecrisisRange) -> Int { s.size }
+pub fn FinancetimecrisisRange::len(self : FinancetimecrisisRange) -> Int { self.size }
 
-pub fn finance_time_crisis_range_get(s : FinancetimecrisisRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisRange::get(self : FinancetimecrisisRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_range_set(s : FinancetimecrisisRange, i : Int, v : Double) -> FinancetimecrisisRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisRange::set(self : FinancetimecrisisRange, i : Int, v : Double) -> FinancetimecrisisRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_range_sum(s : FinancetimecrisisRange) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisRange::sum(self : FinancetimecrisisRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_range_mean(s : FinancetimecrisisRange) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisRange::mean(self : FinancetimecrisisRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_range_scale(s : FinancetimecrisisRange, f : Double) -> FinancetimecrisisRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisRange::scale(self : FinancetimecrisisRange, f : Double) -> FinancetimecrisisRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_range_add(a : FinancetimecrisisRange, b : FinancetimecrisisRange) -> FinancetimecrisisRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisRange::add(self : FinancetimecrisisRange, other : FinancetimecrisisRange) -> FinancetimecrisisRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_range_copy(s : FinancetimecrisisRange) -> FinancetimecrisisRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisRange::copy(self : FinancetimecrisisRange) -> FinancetimecrisisRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_range_fill(s : FinancetimecrisisRange, v : Double) -> FinancetimecrisisRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisRange::fill(self : FinancetimecrisisRange, v : Double) -> FinancetimecrisisRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_range_min(s : FinancetimecrisisRange) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisRange::min(self : FinancetimecrisisRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_range_max(s : FinancetimecrisisRange) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisRange::max(self : FinancetimecrisisRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_range_to_string(s : FinancetimecrisisRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisRange::to_string(self : FinancetimecrisisRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimecrisisSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_time_crisis_slice_make(size : Int) -> FinancetimecrisisSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_crisis_slice_len(s : FinancetimecrisisSlice) -> Int { s.size }
+pub fn FinancetimecrisisSlice::len(self : FinancetimecrisisSlice) -> Int { self.size }
 
-pub fn finance_time_crisis_slice_get(s : FinancetimecrisisSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimecrisisSlice::get(self : FinancetimecrisisSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_crisis_slice_set(s : FinancetimecrisisSlice, i : Int, v : Double) -> FinancetimecrisisSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimecrisisSlice::set(self : FinancetimecrisisSlice, i : Int, v : Double) -> FinancetimecrisisSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_slice_sum(s : FinancetimecrisisSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancetimecrisisSlice::sum(self : FinancetimecrisisSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_crisis_slice_mean(s : FinancetimecrisisSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancetimecrisisSlice::mean(self : FinancetimecrisisSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_crisis_slice_scale(s : FinancetimecrisisSlice, f : Double) -> FinancetimecrisisSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisSlice::scale(self : FinancetimecrisisSlice, f : Double) -> FinancetimecrisisSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_slice_add(a : FinancetimecrisisSlice, b : FinancetimecrisisSlice) -> FinancetimecrisisSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimecrisisSlice::add(self : FinancetimecrisisSlice, other : FinancetimecrisisSlice) -> FinancetimecrisisSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_crisis_slice_copy(s : FinancetimecrisisSlice) -> FinancetimecrisisSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisSlice::copy(self : FinancetimecrisisSlice) -> FinancetimecrisisSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_slice_fill(s : FinancetimecrisisSlice, v : Double) -> FinancetimecrisisSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimecrisisSlice::fill(self : FinancetimecrisisSlice, v : Double) -> FinancetimecrisisSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_crisis_slice_min(s : FinancetimecrisisSlice) -> Double { @_common.min(s.data) }
+pub fn FinancetimecrisisSlice::min(self : FinancetimecrisisSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_crisis_slice_max(s : FinancetimecrisisSlice) -> Double { @_common.max(s.data) }
+pub fn FinancetimecrisisSlice::max(self : FinancetimecrisisSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_crisis_slice_to_string(s : FinancetimecrisisSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimecrisisSlice::to_string(self : FinancetimecrisisSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

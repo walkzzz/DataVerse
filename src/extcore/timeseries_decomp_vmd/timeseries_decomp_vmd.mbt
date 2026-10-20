@@ -351,45 +351,45 @@ pub fn timeseries_decomp_vmd_frame_make(size : Int) -> TimeseriesdecompvmdFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_frame_len(s : TimeseriesdecompvmdFrame) -> Int { s.size }
+pub fn TimeseriesdecompvmdFrame::len(self : TimeseriesdecompvmdFrame) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_frame_get(s : TimeseriesdecompvmdFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdFrame::get(self : TimeseriesdecompvmdFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_frame_set(s : TimeseriesdecompvmdFrame, i : Int, v : Double) -> TimeseriesdecompvmdFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdFrame::set(self : TimeseriesdecompvmdFrame, i : Int, v : Double) -> TimeseriesdecompvmdFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_frame_sum(s : TimeseriesdecompvmdFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdFrame::sum(self : TimeseriesdecompvmdFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_frame_mean(s : TimeseriesdecompvmdFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdFrame::mean(self : TimeseriesdecompvmdFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_frame_scale(s : TimeseriesdecompvmdFrame, f : Double) -> TimeseriesdecompvmdFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdFrame::scale(self : TimeseriesdecompvmdFrame, f : Double) -> TimeseriesdecompvmdFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_frame_add(a : TimeseriesdecompvmdFrame, b : TimeseriesdecompvmdFrame) -> TimeseriesdecompvmdFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdFrame::add(self : TimeseriesdecompvmdFrame, other : TimeseriesdecompvmdFrame) -> TimeseriesdecompvmdFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_frame_copy(s : TimeseriesdecompvmdFrame) -> TimeseriesdecompvmdFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdFrame::copy(self : TimeseriesdecompvmdFrame) -> TimeseriesdecompvmdFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_frame_fill(s : TimeseriesdecompvmdFrame, v : Double) -> TimeseriesdecompvmdFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdFrame::fill(self : TimeseriesdecompvmdFrame, v : Double) -> TimeseriesdecompvmdFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_frame_min(s : TimeseriesdecompvmdFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdFrame::min(self : TimeseriesdecompvmdFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_frame_max(s : TimeseriesdecompvmdFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdFrame::max(self : TimeseriesdecompvmdFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_frame_to_string(s : TimeseriesdecompvmdFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdFrame::to_string(self : TimeseriesdecompvmdFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdTable {
@@ -402,45 +402,45 @@ pub fn timeseries_decomp_vmd_table_make(size : Int) -> TimeseriesdecompvmdTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_table_len(s : TimeseriesdecompvmdTable) -> Int { s.size }
+pub fn TimeseriesdecompvmdTable::len(self : TimeseriesdecompvmdTable) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_table_get(s : TimeseriesdecompvmdTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdTable::get(self : TimeseriesdecompvmdTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_table_set(s : TimeseriesdecompvmdTable, i : Int, v : Double) -> TimeseriesdecompvmdTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdTable::set(self : TimeseriesdecompvmdTable, i : Int, v : Double) -> TimeseriesdecompvmdTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_table_sum(s : TimeseriesdecompvmdTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdTable::sum(self : TimeseriesdecompvmdTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_table_mean(s : TimeseriesdecompvmdTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdTable::mean(self : TimeseriesdecompvmdTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_table_scale(s : TimeseriesdecompvmdTable, f : Double) -> TimeseriesdecompvmdTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdTable::scale(self : TimeseriesdecompvmdTable, f : Double) -> TimeseriesdecompvmdTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_table_add(a : TimeseriesdecompvmdTable, b : TimeseriesdecompvmdTable) -> TimeseriesdecompvmdTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdTable::add(self : TimeseriesdecompvmdTable, other : TimeseriesdecompvmdTable) -> TimeseriesdecompvmdTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_table_copy(s : TimeseriesdecompvmdTable) -> TimeseriesdecompvmdTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdTable::copy(self : TimeseriesdecompvmdTable) -> TimeseriesdecompvmdTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_table_fill(s : TimeseriesdecompvmdTable, v : Double) -> TimeseriesdecompvmdTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdTable::fill(self : TimeseriesdecompvmdTable, v : Double) -> TimeseriesdecompvmdTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_table_min(s : TimeseriesdecompvmdTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdTable::min(self : TimeseriesdecompvmdTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_table_max(s : TimeseriesdecompvmdTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdTable::max(self : TimeseriesdecompvmdTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_table_to_string(s : TimeseriesdecompvmdTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdTable::to_string(self : TimeseriesdecompvmdTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_decomp_vmd_graphn_make(size : Int) -> TimeseriesdecompvmdGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_graphn_len(s : TimeseriesdecompvmdGraphN) -> Int { s.size }
+pub fn TimeseriesdecompvmdGraphN::len(self : TimeseriesdecompvmdGraphN) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_graphn_get(s : TimeseriesdecompvmdGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdGraphN::get(self : TimeseriesdecompvmdGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_graphn_set(s : TimeseriesdecompvmdGraphN, i : Int, v : Double) -> TimeseriesdecompvmdGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdGraphN::set(self : TimeseriesdecompvmdGraphN, i : Int, v : Double) -> TimeseriesdecompvmdGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_graphn_sum(s : TimeseriesdecompvmdGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdGraphN::sum(self : TimeseriesdecompvmdGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_graphn_mean(s : TimeseriesdecompvmdGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdGraphN::mean(self : TimeseriesdecompvmdGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_graphn_scale(s : TimeseriesdecompvmdGraphN, f : Double) -> TimeseriesdecompvmdGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdGraphN::scale(self : TimeseriesdecompvmdGraphN, f : Double) -> TimeseriesdecompvmdGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_graphn_add(a : TimeseriesdecompvmdGraphN, b : TimeseriesdecompvmdGraphN) -> TimeseriesdecompvmdGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdGraphN::add(self : TimeseriesdecompvmdGraphN, other : TimeseriesdecompvmdGraphN) -> TimeseriesdecompvmdGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_graphn_copy(s : TimeseriesdecompvmdGraphN) -> TimeseriesdecompvmdGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdGraphN::copy(self : TimeseriesdecompvmdGraphN) -> TimeseriesdecompvmdGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_graphn_fill(s : TimeseriesdecompvmdGraphN, v : Double) -> TimeseriesdecompvmdGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdGraphN::fill(self : TimeseriesdecompvmdGraphN, v : Double) -> TimeseriesdecompvmdGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_graphn_min(s : TimeseriesdecompvmdGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdGraphN::min(self : TimeseriesdecompvmdGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_graphn_max(s : TimeseriesdecompvmdGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdGraphN::max(self : TimeseriesdecompvmdGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_graphn_to_string(s : TimeseriesdecompvmdGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdGraphN::to_string(self : TimeseriesdecompvmdGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdNode {
@@ -504,45 +504,45 @@ pub fn timeseries_decomp_vmd_node_make(size : Int) -> TimeseriesdecompvmdNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_node_len(s : TimeseriesdecompvmdNode) -> Int { s.size }
+pub fn TimeseriesdecompvmdNode::len(self : TimeseriesdecompvmdNode) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_node_get(s : TimeseriesdecompvmdNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdNode::get(self : TimeseriesdecompvmdNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_node_set(s : TimeseriesdecompvmdNode, i : Int, v : Double) -> TimeseriesdecompvmdNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdNode::set(self : TimeseriesdecompvmdNode, i : Int, v : Double) -> TimeseriesdecompvmdNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_node_sum(s : TimeseriesdecompvmdNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdNode::sum(self : TimeseriesdecompvmdNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_node_mean(s : TimeseriesdecompvmdNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdNode::mean(self : TimeseriesdecompvmdNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_node_scale(s : TimeseriesdecompvmdNode, f : Double) -> TimeseriesdecompvmdNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdNode::scale(self : TimeseriesdecompvmdNode, f : Double) -> TimeseriesdecompvmdNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_node_add(a : TimeseriesdecompvmdNode, b : TimeseriesdecompvmdNode) -> TimeseriesdecompvmdNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdNode::add(self : TimeseriesdecompvmdNode, other : TimeseriesdecompvmdNode) -> TimeseriesdecompvmdNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_node_copy(s : TimeseriesdecompvmdNode) -> TimeseriesdecompvmdNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdNode::copy(self : TimeseriesdecompvmdNode) -> TimeseriesdecompvmdNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_node_fill(s : TimeseriesdecompvmdNode, v : Double) -> TimeseriesdecompvmdNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdNode::fill(self : TimeseriesdecompvmdNode, v : Double) -> TimeseriesdecompvmdNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_node_min(s : TimeseriesdecompvmdNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdNode::min(self : TimeseriesdecompvmdNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_node_max(s : TimeseriesdecompvmdNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdNode::max(self : TimeseriesdecompvmdNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_node_to_string(s : TimeseriesdecompvmdNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdNode::to_string(self : TimeseriesdecompvmdNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_decomp_vmd_edge_make(size : Int) -> TimeseriesdecompvmdEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_edge_len(s : TimeseriesdecompvmdEdge) -> Int { s.size }
+pub fn TimeseriesdecompvmdEdge::len(self : TimeseriesdecompvmdEdge) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_edge_get(s : TimeseriesdecompvmdEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdEdge::get(self : TimeseriesdecompvmdEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_edge_set(s : TimeseriesdecompvmdEdge, i : Int, v : Double) -> TimeseriesdecompvmdEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdEdge::set(self : TimeseriesdecompvmdEdge, i : Int, v : Double) -> TimeseriesdecompvmdEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_edge_sum(s : TimeseriesdecompvmdEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdEdge::sum(self : TimeseriesdecompvmdEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_edge_mean(s : TimeseriesdecompvmdEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdEdge::mean(self : TimeseriesdecompvmdEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_edge_scale(s : TimeseriesdecompvmdEdge, f : Double) -> TimeseriesdecompvmdEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdEdge::scale(self : TimeseriesdecompvmdEdge, f : Double) -> TimeseriesdecompvmdEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_edge_add(a : TimeseriesdecompvmdEdge, b : TimeseriesdecompvmdEdge) -> TimeseriesdecompvmdEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdEdge::add(self : TimeseriesdecompvmdEdge, other : TimeseriesdecompvmdEdge) -> TimeseriesdecompvmdEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_edge_copy(s : TimeseriesdecompvmdEdge) -> TimeseriesdecompvmdEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdEdge::copy(self : TimeseriesdecompvmdEdge) -> TimeseriesdecompvmdEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_edge_fill(s : TimeseriesdecompvmdEdge, v : Double) -> TimeseriesdecompvmdEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdEdge::fill(self : TimeseriesdecompvmdEdge, v : Double) -> TimeseriesdecompvmdEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_edge_min(s : TimeseriesdecompvmdEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdEdge::min(self : TimeseriesdecompvmdEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_edge_max(s : TimeseriesdecompvmdEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdEdge::max(self : TimeseriesdecompvmdEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_edge_to_string(s : TimeseriesdecompvmdEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdEdge::to_string(self : TimeseriesdecompvmdEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdPath {
@@ -606,45 +606,45 @@ pub fn timeseries_decomp_vmd_path_make(size : Int) -> TimeseriesdecompvmdPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_path_len(s : TimeseriesdecompvmdPath) -> Int { s.size }
+pub fn TimeseriesdecompvmdPath::len(self : TimeseriesdecompvmdPath) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_path_get(s : TimeseriesdecompvmdPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdPath::get(self : TimeseriesdecompvmdPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_path_set(s : TimeseriesdecompvmdPath, i : Int, v : Double) -> TimeseriesdecompvmdPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdPath::set(self : TimeseriesdecompvmdPath, i : Int, v : Double) -> TimeseriesdecompvmdPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_path_sum(s : TimeseriesdecompvmdPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdPath::sum(self : TimeseriesdecompvmdPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_path_mean(s : TimeseriesdecompvmdPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdPath::mean(self : TimeseriesdecompvmdPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_path_scale(s : TimeseriesdecompvmdPath, f : Double) -> TimeseriesdecompvmdPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdPath::scale(self : TimeseriesdecompvmdPath, f : Double) -> TimeseriesdecompvmdPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_path_add(a : TimeseriesdecompvmdPath, b : TimeseriesdecompvmdPath) -> TimeseriesdecompvmdPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdPath::add(self : TimeseriesdecompvmdPath, other : TimeseriesdecompvmdPath) -> TimeseriesdecompvmdPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_path_copy(s : TimeseriesdecompvmdPath) -> TimeseriesdecompvmdPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdPath::copy(self : TimeseriesdecompvmdPath) -> TimeseriesdecompvmdPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_path_fill(s : TimeseriesdecompvmdPath, v : Double) -> TimeseriesdecompvmdPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdPath::fill(self : TimeseriesdecompvmdPath, v : Double) -> TimeseriesdecompvmdPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_path_min(s : TimeseriesdecompvmdPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdPath::min(self : TimeseriesdecompvmdPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_path_max(s : TimeseriesdecompvmdPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdPath::max(self : TimeseriesdecompvmdPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_path_to_string(s : TimeseriesdecompvmdPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdPath::to_string(self : TimeseriesdecompvmdPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_decomp_vmd_cluster_make(size : Int) -> TimeseriesdecompvmdClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_cluster_len(s : TimeseriesdecompvmdCluster) -> Int { s.size }
+pub fn TimeseriesdecompvmdCluster::len(self : TimeseriesdecompvmdCluster) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_cluster_get(s : TimeseriesdecompvmdCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdCluster::get(self : TimeseriesdecompvmdCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_cluster_set(s : TimeseriesdecompvmdCluster, i : Int, v : Double) -> TimeseriesdecompvmdCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCluster::set(self : TimeseriesdecompvmdCluster, i : Int, v : Double) -> TimeseriesdecompvmdCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cluster_sum(s : TimeseriesdecompvmdCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdCluster::sum(self : TimeseriesdecompvmdCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_cluster_mean(s : TimeseriesdecompvmdCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdCluster::mean(self : TimeseriesdecompvmdCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_cluster_scale(s : TimeseriesdecompvmdCluster, f : Double) -> TimeseriesdecompvmdCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCluster::scale(self : TimeseriesdecompvmdCluster, f : Double) -> TimeseriesdecompvmdCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cluster_add(a : TimeseriesdecompvmdCluster, b : TimeseriesdecompvmdCluster) -> TimeseriesdecompvmdCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdCluster::add(self : TimeseriesdecompvmdCluster, other : TimeseriesdecompvmdCluster) -> TimeseriesdecompvmdCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cluster_copy(s : TimeseriesdecompvmdCluster) -> TimeseriesdecompvmdCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCluster::copy(self : TimeseriesdecompvmdCluster) -> TimeseriesdecompvmdCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cluster_fill(s : TimeseriesdecompvmdCluster, v : Double) -> TimeseriesdecompvmdCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCluster::fill(self : TimeseriesdecompvmdCluster, v : Double) -> TimeseriesdecompvmdCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cluster_min(s : TimeseriesdecompvmdCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdCluster::min(self : TimeseriesdecompvmdCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_cluster_max(s : TimeseriesdecompvmdCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdCluster::max(self : TimeseriesdecompvmdCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_cluster_to_string(s : TimeseriesdecompvmdCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdCluster::to_string(self : TimeseriesdecompvmdCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdModel {
@@ -708,45 +708,45 @@ pub fn timeseries_decomp_vmd_model_make(size : Int) -> TimeseriesdecompvmdModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_model_len(s : TimeseriesdecompvmdModel) -> Int { s.size }
+pub fn TimeseriesdecompvmdModel::len(self : TimeseriesdecompvmdModel) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_model_get(s : TimeseriesdecompvmdModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdModel::get(self : TimeseriesdecompvmdModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_model_set(s : TimeseriesdecompvmdModel, i : Int, v : Double) -> TimeseriesdecompvmdModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdModel::set(self : TimeseriesdecompvmdModel, i : Int, v : Double) -> TimeseriesdecompvmdModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_model_sum(s : TimeseriesdecompvmdModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdModel::sum(self : TimeseriesdecompvmdModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_model_mean(s : TimeseriesdecompvmdModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdModel::mean(self : TimeseriesdecompvmdModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_model_scale(s : TimeseriesdecompvmdModel, f : Double) -> TimeseriesdecompvmdModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdModel::scale(self : TimeseriesdecompvmdModel, f : Double) -> TimeseriesdecompvmdModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_model_add(a : TimeseriesdecompvmdModel, b : TimeseriesdecompvmdModel) -> TimeseriesdecompvmdModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdModel::add(self : TimeseriesdecompvmdModel, other : TimeseriesdecompvmdModel) -> TimeseriesdecompvmdModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_model_copy(s : TimeseriesdecompvmdModel) -> TimeseriesdecompvmdModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdModel::copy(self : TimeseriesdecompvmdModel) -> TimeseriesdecompvmdModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_model_fill(s : TimeseriesdecompvmdModel, v : Double) -> TimeseriesdecompvmdModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdModel::fill(self : TimeseriesdecompvmdModel, v : Double) -> TimeseriesdecompvmdModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_model_min(s : TimeseriesdecompvmdModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdModel::min(self : TimeseriesdecompvmdModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_model_max(s : TimeseriesdecompvmdModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdModel::max(self : TimeseriesdecompvmdModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_model_to_string(s : TimeseriesdecompvmdModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdModel::to_string(self : TimeseriesdecompvmdModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_decomp_vmd_layer_make(size : Int) -> TimeseriesdecompvmdLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_layer_len(s : TimeseriesdecompvmdLayer) -> Int { s.size }
+pub fn TimeseriesdecompvmdLayer::len(self : TimeseriesdecompvmdLayer) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_layer_get(s : TimeseriesdecompvmdLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdLayer::get(self : TimeseriesdecompvmdLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_layer_set(s : TimeseriesdecompvmdLayer, i : Int, v : Double) -> TimeseriesdecompvmdLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdLayer::set(self : TimeseriesdecompvmdLayer, i : Int, v : Double) -> TimeseriesdecompvmdLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_layer_sum(s : TimeseriesdecompvmdLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdLayer::sum(self : TimeseriesdecompvmdLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_layer_mean(s : TimeseriesdecompvmdLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdLayer::mean(self : TimeseriesdecompvmdLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_layer_scale(s : TimeseriesdecompvmdLayer, f : Double) -> TimeseriesdecompvmdLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdLayer::scale(self : TimeseriesdecompvmdLayer, f : Double) -> TimeseriesdecompvmdLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_layer_add(a : TimeseriesdecompvmdLayer, b : TimeseriesdecompvmdLayer) -> TimeseriesdecompvmdLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdLayer::add(self : TimeseriesdecompvmdLayer, other : TimeseriesdecompvmdLayer) -> TimeseriesdecompvmdLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_layer_copy(s : TimeseriesdecompvmdLayer) -> TimeseriesdecompvmdLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdLayer::copy(self : TimeseriesdecompvmdLayer) -> TimeseriesdecompvmdLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_layer_fill(s : TimeseriesdecompvmdLayer, v : Double) -> TimeseriesdecompvmdLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdLayer::fill(self : TimeseriesdecompvmdLayer, v : Double) -> TimeseriesdecompvmdLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_layer_min(s : TimeseriesdecompvmdLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdLayer::min(self : TimeseriesdecompvmdLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_layer_max(s : TimeseriesdecompvmdLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdLayer::max(self : TimeseriesdecompvmdLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_layer_to_string(s : TimeseriesdecompvmdLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdLayer::to_string(self : TimeseriesdecompvmdLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_decomp_vmd_buffer_make(size : Int) -> TimeseriesdecompvmdBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_buffer_len(s : TimeseriesdecompvmdBuffer) -> Int { s.size }
+pub fn TimeseriesdecompvmdBuffer::len(self : TimeseriesdecompvmdBuffer) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_buffer_get(s : TimeseriesdecompvmdBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdBuffer::get(self : TimeseriesdecompvmdBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_buffer_set(s : TimeseriesdecompvmdBuffer, i : Int, v : Double) -> TimeseriesdecompvmdBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdBuffer::set(self : TimeseriesdecompvmdBuffer, i : Int, v : Double) -> TimeseriesdecompvmdBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_buffer_sum(s : TimeseriesdecompvmdBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdBuffer::sum(self : TimeseriesdecompvmdBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_buffer_mean(s : TimeseriesdecompvmdBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdBuffer::mean(self : TimeseriesdecompvmdBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_buffer_scale(s : TimeseriesdecompvmdBuffer, f : Double) -> TimeseriesdecompvmdBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdBuffer::scale(self : TimeseriesdecompvmdBuffer, f : Double) -> TimeseriesdecompvmdBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_buffer_add(a : TimeseriesdecompvmdBuffer, b : TimeseriesdecompvmdBuffer) -> TimeseriesdecompvmdBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdBuffer::add(self : TimeseriesdecompvmdBuffer, other : TimeseriesdecompvmdBuffer) -> TimeseriesdecompvmdBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_buffer_copy(s : TimeseriesdecompvmdBuffer) -> TimeseriesdecompvmdBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdBuffer::copy(self : TimeseriesdecompvmdBuffer) -> TimeseriesdecompvmdBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_buffer_fill(s : TimeseriesdecompvmdBuffer, v : Double) -> TimeseriesdecompvmdBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdBuffer::fill(self : TimeseriesdecompvmdBuffer, v : Double) -> TimeseriesdecompvmdBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_buffer_min(s : TimeseriesdecompvmdBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdBuffer::min(self : TimeseriesdecompvmdBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_buffer_max(s : TimeseriesdecompvmdBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdBuffer::max(self : TimeseriesdecompvmdBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_buffer_to_string(s : TimeseriesdecompvmdBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdBuffer::to_string(self : TimeseriesdecompvmdBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_decomp_vmd_cursor_make(size : Int) -> TimeseriesdecompvmdCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_cursor_len(s : TimeseriesdecompvmdCursor) -> Int { s.size }
+pub fn TimeseriesdecompvmdCursor::len(self : TimeseriesdecompvmdCursor) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_cursor_get(s : TimeseriesdecompvmdCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdCursor::get(self : TimeseriesdecompvmdCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_cursor_set(s : TimeseriesdecompvmdCursor, i : Int, v : Double) -> TimeseriesdecompvmdCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCursor::set(self : TimeseriesdecompvmdCursor, i : Int, v : Double) -> TimeseriesdecompvmdCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cursor_sum(s : TimeseriesdecompvmdCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdCursor::sum(self : TimeseriesdecompvmdCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_cursor_mean(s : TimeseriesdecompvmdCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdCursor::mean(self : TimeseriesdecompvmdCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_cursor_scale(s : TimeseriesdecompvmdCursor, f : Double) -> TimeseriesdecompvmdCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCursor::scale(self : TimeseriesdecompvmdCursor, f : Double) -> TimeseriesdecompvmdCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cursor_add(a : TimeseriesdecompvmdCursor, b : TimeseriesdecompvmdCursor) -> TimeseriesdecompvmdCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdCursor::add(self : TimeseriesdecompvmdCursor, other : TimeseriesdecompvmdCursor) -> TimeseriesdecompvmdCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cursor_copy(s : TimeseriesdecompvmdCursor) -> TimeseriesdecompvmdCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCursor::copy(self : TimeseriesdecompvmdCursor) -> TimeseriesdecompvmdCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cursor_fill(s : TimeseriesdecompvmdCursor, v : Double) -> TimeseriesdecompvmdCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdCursor::fill(self : TimeseriesdecompvmdCursor, v : Double) -> TimeseriesdecompvmdCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_cursor_min(s : TimeseriesdecompvmdCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdCursor::min(self : TimeseriesdecompvmdCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_cursor_max(s : TimeseriesdecompvmdCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdCursor::max(self : TimeseriesdecompvmdCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_cursor_to_string(s : TimeseriesdecompvmdCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdCursor::to_string(self : TimeseriesdecompvmdCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdView {
@@ -912,45 +912,45 @@ pub fn timeseries_decomp_vmd_view_make(size : Int) -> TimeseriesdecompvmdView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_view_len(s : TimeseriesdecompvmdView) -> Int { s.size }
+pub fn TimeseriesdecompvmdView::len(self : TimeseriesdecompvmdView) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_view_get(s : TimeseriesdecompvmdView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdView::get(self : TimeseriesdecompvmdView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_view_set(s : TimeseriesdecompvmdView, i : Int, v : Double) -> TimeseriesdecompvmdView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdView::set(self : TimeseriesdecompvmdView, i : Int, v : Double) -> TimeseriesdecompvmdView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_view_sum(s : TimeseriesdecompvmdView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdView::sum(self : TimeseriesdecompvmdView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_view_mean(s : TimeseriesdecompvmdView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdView::mean(self : TimeseriesdecompvmdView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_view_scale(s : TimeseriesdecompvmdView, f : Double) -> TimeseriesdecompvmdView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdView::scale(self : TimeseriesdecompvmdView, f : Double) -> TimeseriesdecompvmdView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_view_add(a : TimeseriesdecompvmdView, b : TimeseriesdecompvmdView) -> TimeseriesdecompvmdView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdView::add(self : TimeseriesdecompvmdView, other : TimeseriesdecompvmdView) -> TimeseriesdecompvmdView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_view_copy(s : TimeseriesdecompvmdView) -> TimeseriesdecompvmdView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdView::copy(self : TimeseriesdecompvmdView) -> TimeseriesdecompvmdView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_view_fill(s : TimeseriesdecompvmdView, v : Double) -> TimeseriesdecompvmdView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdView::fill(self : TimeseriesdecompvmdView, v : Double) -> TimeseriesdecompvmdView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_view_min(s : TimeseriesdecompvmdView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdView::min(self : TimeseriesdecompvmdView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_view_max(s : TimeseriesdecompvmdView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdView::max(self : TimeseriesdecompvmdView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_view_to_string(s : TimeseriesdecompvmdView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdView::to_string(self : TimeseriesdecompvmdView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdRange {
@@ -963,45 +963,45 @@ pub fn timeseries_decomp_vmd_range_make(size : Int) -> TimeseriesdecompvmdRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_range_len(s : TimeseriesdecompvmdRange) -> Int { s.size }
+pub fn TimeseriesdecompvmdRange::len(self : TimeseriesdecompvmdRange) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_range_get(s : TimeseriesdecompvmdRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdRange::get(self : TimeseriesdecompvmdRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_range_set(s : TimeseriesdecompvmdRange, i : Int, v : Double) -> TimeseriesdecompvmdRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdRange::set(self : TimeseriesdecompvmdRange, i : Int, v : Double) -> TimeseriesdecompvmdRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_range_sum(s : TimeseriesdecompvmdRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdRange::sum(self : TimeseriesdecompvmdRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_range_mean(s : TimeseriesdecompvmdRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdRange::mean(self : TimeseriesdecompvmdRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_range_scale(s : TimeseriesdecompvmdRange, f : Double) -> TimeseriesdecompvmdRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdRange::scale(self : TimeseriesdecompvmdRange, f : Double) -> TimeseriesdecompvmdRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_range_add(a : TimeseriesdecompvmdRange, b : TimeseriesdecompvmdRange) -> TimeseriesdecompvmdRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdRange::add(self : TimeseriesdecompvmdRange, other : TimeseriesdecompvmdRange) -> TimeseriesdecompvmdRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_range_copy(s : TimeseriesdecompvmdRange) -> TimeseriesdecompvmdRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdRange::copy(self : TimeseriesdecompvmdRange) -> TimeseriesdecompvmdRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_range_fill(s : TimeseriesdecompvmdRange, v : Double) -> TimeseriesdecompvmdRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdRange::fill(self : TimeseriesdecompvmdRange, v : Double) -> TimeseriesdecompvmdRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_range_min(s : TimeseriesdecompvmdRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdRange::min(self : TimeseriesdecompvmdRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_range_max(s : TimeseriesdecompvmdRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdRange::max(self : TimeseriesdecompvmdRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_range_to_string(s : TimeseriesdecompvmdRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdRange::to_string(self : TimeseriesdecompvmdRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompvmdSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_decomp_vmd_slice_make(size : Int) -> TimeseriesdecompvmdSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_decomp_vmd_slice_len(s : TimeseriesdecompvmdSlice) -> Int { s.size }
+pub fn TimeseriesdecompvmdSlice::len(self : TimeseriesdecompvmdSlice) -> Int { self.size }
 
-pub fn timeseries_decomp_vmd_slice_get(s : TimeseriesdecompvmdSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesdecompvmdSlice::get(self : TimeseriesdecompvmdSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_decomp_vmd_slice_set(s : TimeseriesdecompvmdSlice, i : Int, v : Double) -> TimeseriesdecompvmdSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdSlice::set(self : TimeseriesdecompvmdSlice, i : Int, v : Double) -> TimeseriesdecompvmdSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_slice_sum(s : TimeseriesdecompvmdSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesdecompvmdSlice::sum(self : TimeseriesdecompvmdSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_decomp_vmd_slice_mean(s : TimeseriesdecompvmdSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesdecompvmdSlice::mean(self : TimeseriesdecompvmdSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_decomp_vmd_slice_scale(s : TimeseriesdecompvmdSlice, f : Double) -> TimeseriesdecompvmdSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdSlice::scale(self : TimeseriesdecompvmdSlice, f : Double) -> TimeseriesdecompvmdSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_slice_add(a : TimeseriesdecompvmdSlice, b : TimeseriesdecompvmdSlice) -> TimeseriesdecompvmdSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesdecompvmdSlice::add(self : TimeseriesdecompvmdSlice, other : TimeseriesdecompvmdSlice) -> TimeseriesdecompvmdSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_slice_copy(s : TimeseriesdecompvmdSlice) -> TimeseriesdecompvmdSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdSlice::copy(self : TimeseriesdecompvmdSlice) -> TimeseriesdecompvmdSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_slice_fill(s : TimeseriesdecompvmdSlice, v : Double) -> TimeseriesdecompvmdSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesdecompvmdSlice::fill(self : TimeseriesdecompvmdSlice, v : Double) -> TimeseriesdecompvmdSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_decomp_vmd_slice_min(s : TimeseriesdecompvmdSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesdecompvmdSlice::min(self : TimeseriesdecompvmdSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_decomp_vmd_slice_max(s : TimeseriesdecompvmdSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesdecompvmdSlice::max(self : TimeseriesdecompvmdSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_decomp_vmd_slice_to_string(s : TimeseriesdecompvmdSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesdecompvmdSlice::to_string(self : TimeseriesdecompvmdSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

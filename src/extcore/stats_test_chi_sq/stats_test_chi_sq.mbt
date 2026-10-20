@@ -351,45 +351,45 @@ pub fn stats_test_chi_sq_frame_make(size : Int) -> StatstestchisqFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_frame_len(s : StatstestchisqFrame) -> Int { s.size }
+pub fn StatstestchisqFrame::len(self : StatstestchisqFrame) -> Int { self.size }
 
-pub fn stats_test_chi_sq_frame_get(s : StatstestchisqFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqFrame::get(self : StatstestchisqFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_frame_set(s : StatstestchisqFrame, i : Int, v : Double) -> StatstestchisqFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqFrame::set(self : StatstestchisqFrame, i : Int, v : Double) -> StatstestchisqFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_frame_sum(s : StatstestchisqFrame) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqFrame::sum(self : StatstestchisqFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_frame_mean(s : StatstestchisqFrame) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqFrame::mean(self : StatstestchisqFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_frame_scale(s : StatstestchisqFrame, f : Double) -> StatstestchisqFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqFrame::scale(self : StatstestchisqFrame, f : Double) -> StatstestchisqFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_frame_add(a : StatstestchisqFrame, b : StatstestchisqFrame) -> StatstestchisqFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqFrame::add(self : StatstestchisqFrame, other : StatstestchisqFrame) -> StatstestchisqFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_frame_copy(s : StatstestchisqFrame) -> StatstestchisqFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqFrame::copy(self : StatstestchisqFrame) -> StatstestchisqFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_frame_fill(s : StatstestchisqFrame, v : Double) -> StatstestchisqFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqFrame::fill(self : StatstestchisqFrame, v : Double) -> StatstestchisqFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_frame_min(s : StatstestchisqFrame) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqFrame::min(self : StatstestchisqFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_frame_max(s : StatstestchisqFrame) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqFrame::max(self : StatstestchisqFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_frame_to_string(s : StatstestchisqFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqFrame::to_string(self : StatstestchisqFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqTable {
@@ -402,45 +402,45 @@ pub fn stats_test_chi_sq_table_make(size : Int) -> StatstestchisqTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_table_len(s : StatstestchisqTable) -> Int { s.size }
+pub fn StatstestchisqTable::len(self : StatstestchisqTable) -> Int { self.size }
 
-pub fn stats_test_chi_sq_table_get(s : StatstestchisqTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqTable::get(self : StatstestchisqTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_table_set(s : StatstestchisqTable, i : Int, v : Double) -> StatstestchisqTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqTable::set(self : StatstestchisqTable, i : Int, v : Double) -> StatstestchisqTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_table_sum(s : StatstestchisqTable) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqTable::sum(self : StatstestchisqTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_table_mean(s : StatstestchisqTable) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqTable::mean(self : StatstestchisqTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_table_scale(s : StatstestchisqTable, f : Double) -> StatstestchisqTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqTable::scale(self : StatstestchisqTable, f : Double) -> StatstestchisqTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_table_add(a : StatstestchisqTable, b : StatstestchisqTable) -> StatstestchisqTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqTable::add(self : StatstestchisqTable, other : StatstestchisqTable) -> StatstestchisqTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_table_copy(s : StatstestchisqTable) -> StatstestchisqTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqTable::copy(self : StatstestchisqTable) -> StatstestchisqTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_table_fill(s : StatstestchisqTable, v : Double) -> StatstestchisqTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqTable::fill(self : StatstestchisqTable, v : Double) -> StatstestchisqTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_table_min(s : StatstestchisqTable) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqTable::min(self : StatstestchisqTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_table_max(s : StatstestchisqTable) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqTable::max(self : StatstestchisqTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_table_to_string(s : StatstestchisqTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqTable::to_string(self : StatstestchisqTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqGraphN {
@@ -453,45 +453,45 @@ pub fn stats_test_chi_sq_graphn_make(size : Int) -> StatstestchisqGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_graphn_len(s : StatstestchisqGraphN) -> Int { s.size }
+pub fn StatstestchisqGraphN::len(self : StatstestchisqGraphN) -> Int { self.size }
 
-pub fn stats_test_chi_sq_graphn_get(s : StatstestchisqGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqGraphN::get(self : StatstestchisqGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_graphn_set(s : StatstestchisqGraphN, i : Int, v : Double) -> StatstestchisqGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqGraphN::set(self : StatstestchisqGraphN, i : Int, v : Double) -> StatstestchisqGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_graphn_sum(s : StatstestchisqGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqGraphN::sum(self : StatstestchisqGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_graphn_mean(s : StatstestchisqGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqGraphN::mean(self : StatstestchisqGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_graphn_scale(s : StatstestchisqGraphN, f : Double) -> StatstestchisqGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqGraphN::scale(self : StatstestchisqGraphN, f : Double) -> StatstestchisqGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_graphn_add(a : StatstestchisqGraphN, b : StatstestchisqGraphN) -> StatstestchisqGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqGraphN::add(self : StatstestchisqGraphN, other : StatstestchisqGraphN) -> StatstestchisqGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_graphn_copy(s : StatstestchisqGraphN) -> StatstestchisqGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqGraphN::copy(self : StatstestchisqGraphN) -> StatstestchisqGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_graphn_fill(s : StatstestchisqGraphN, v : Double) -> StatstestchisqGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqGraphN::fill(self : StatstestchisqGraphN, v : Double) -> StatstestchisqGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_graphn_min(s : StatstestchisqGraphN) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqGraphN::min(self : StatstestchisqGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_graphn_max(s : StatstestchisqGraphN) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqGraphN::max(self : StatstestchisqGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_graphn_to_string(s : StatstestchisqGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqGraphN::to_string(self : StatstestchisqGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqNode {
@@ -504,45 +504,45 @@ pub fn stats_test_chi_sq_node_make(size : Int) -> StatstestchisqNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_node_len(s : StatstestchisqNode) -> Int { s.size }
+pub fn StatstestchisqNode::len(self : StatstestchisqNode) -> Int { self.size }
 
-pub fn stats_test_chi_sq_node_get(s : StatstestchisqNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqNode::get(self : StatstestchisqNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_node_set(s : StatstestchisqNode, i : Int, v : Double) -> StatstestchisqNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqNode::set(self : StatstestchisqNode, i : Int, v : Double) -> StatstestchisqNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_node_sum(s : StatstestchisqNode) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqNode::sum(self : StatstestchisqNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_node_mean(s : StatstestchisqNode) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqNode::mean(self : StatstestchisqNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_node_scale(s : StatstestchisqNode, f : Double) -> StatstestchisqNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqNode::scale(self : StatstestchisqNode, f : Double) -> StatstestchisqNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_node_add(a : StatstestchisqNode, b : StatstestchisqNode) -> StatstestchisqNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqNode::add(self : StatstestchisqNode, other : StatstestchisqNode) -> StatstestchisqNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_node_copy(s : StatstestchisqNode) -> StatstestchisqNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqNode::copy(self : StatstestchisqNode) -> StatstestchisqNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_node_fill(s : StatstestchisqNode, v : Double) -> StatstestchisqNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqNode::fill(self : StatstestchisqNode, v : Double) -> StatstestchisqNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_node_min(s : StatstestchisqNode) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqNode::min(self : StatstestchisqNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_node_max(s : StatstestchisqNode) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqNode::max(self : StatstestchisqNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_node_to_string(s : StatstestchisqNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqNode::to_string(self : StatstestchisqNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqEdge {
@@ -555,45 +555,45 @@ pub fn stats_test_chi_sq_edge_make(size : Int) -> StatstestchisqEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_edge_len(s : StatstestchisqEdge) -> Int { s.size }
+pub fn StatstestchisqEdge::len(self : StatstestchisqEdge) -> Int { self.size }
 
-pub fn stats_test_chi_sq_edge_get(s : StatstestchisqEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqEdge::get(self : StatstestchisqEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_edge_set(s : StatstestchisqEdge, i : Int, v : Double) -> StatstestchisqEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqEdge::set(self : StatstestchisqEdge, i : Int, v : Double) -> StatstestchisqEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_edge_sum(s : StatstestchisqEdge) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqEdge::sum(self : StatstestchisqEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_edge_mean(s : StatstestchisqEdge) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqEdge::mean(self : StatstestchisqEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_edge_scale(s : StatstestchisqEdge, f : Double) -> StatstestchisqEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqEdge::scale(self : StatstestchisqEdge, f : Double) -> StatstestchisqEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_edge_add(a : StatstestchisqEdge, b : StatstestchisqEdge) -> StatstestchisqEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqEdge::add(self : StatstestchisqEdge, other : StatstestchisqEdge) -> StatstestchisqEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_edge_copy(s : StatstestchisqEdge) -> StatstestchisqEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqEdge::copy(self : StatstestchisqEdge) -> StatstestchisqEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_edge_fill(s : StatstestchisqEdge, v : Double) -> StatstestchisqEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqEdge::fill(self : StatstestchisqEdge, v : Double) -> StatstestchisqEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_edge_min(s : StatstestchisqEdge) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqEdge::min(self : StatstestchisqEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_edge_max(s : StatstestchisqEdge) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqEdge::max(self : StatstestchisqEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_edge_to_string(s : StatstestchisqEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqEdge::to_string(self : StatstestchisqEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqPath {
@@ -606,45 +606,45 @@ pub fn stats_test_chi_sq_path_make(size : Int) -> StatstestchisqPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_path_len(s : StatstestchisqPath) -> Int { s.size }
+pub fn StatstestchisqPath::len(self : StatstestchisqPath) -> Int { self.size }
 
-pub fn stats_test_chi_sq_path_get(s : StatstestchisqPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqPath::get(self : StatstestchisqPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_path_set(s : StatstestchisqPath, i : Int, v : Double) -> StatstestchisqPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqPath::set(self : StatstestchisqPath, i : Int, v : Double) -> StatstestchisqPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_path_sum(s : StatstestchisqPath) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqPath::sum(self : StatstestchisqPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_path_mean(s : StatstestchisqPath) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqPath::mean(self : StatstestchisqPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_path_scale(s : StatstestchisqPath, f : Double) -> StatstestchisqPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqPath::scale(self : StatstestchisqPath, f : Double) -> StatstestchisqPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_path_add(a : StatstestchisqPath, b : StatstestchisqPath) -> StatstestchisqPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqPath::add(self : StatstestchisqPath, other : StatstestchisqPath) -> StatstestchisqPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_path_copy(s : StatstestchisqPath) -> StatstestchisqPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqPath::copy(self : StatstestchisqPath) -> StatstestchisqPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_path_fill(s : StatstestchisqPath, v : Double) -> StatstestchisqPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqPath::fill(self : StatstestchisqPath, v : Double) -> StatstestchisqPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_path_min(s : StatstestchisqPath) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqPath::min(self : StatstestchisqPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_path_max(s : StatstestchisqPath) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqPath::max(self : StatstestchisqPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_path_to_string(s : StatstestchisqPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqPath::to_string(self : StatstestchisqPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqCluster {
@@ -657,45 +657,45 @@ pub fn stats_test_chi_sq_cluster_make(size : Int) -> StatstestchisqCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_cluster_len(s : StatstestchisqCluster) -> Int { s.size }
+pub fn StatstestchisqCluster::len(self : StatstestchisqCluster) -> Int { self.size }
 
-pub fn stats_test_chi_sq_cluster_get(s : StatstestchisqCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqCluster::get(self : StatstestchisqCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_cluster_set(s : StatstestchisqCluster, i : Int, v : Double) -> StatstestchisqCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqCluster::set(self : StatstestchisqCluster, i : Int, v : Double) -> StatstestchisqCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cluster_sum(s : StatstestchisqCluster) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqCluster::sum(self : StatstestchisqCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_cluster_mean(s : StatstestchisqCluster) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqCluster::mean(self : StatstestchisqCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_cluster_scale(s : StatstestchisqCluster, f : Double) -> StatstestchisqCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqCluster::scale(self : StatstestchisqCluster, f : Double) -> StatstestchisqCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cluster_add(a : StatstestchisqCluster, b : StatstestchisqCluster) -> StatstestchisqCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqCluster::add(self : StatstestchisqCluster, other : StatstestchisqCluster) -> StatstestchisqCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cluster_copy(s : StatstestchisqCluster) -> StatstestchisqCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqCluster::copy(self : StatstestchisqCluster) -> StatstestchisqCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cluster_fill(s : StatstestchisqCluster, v : Double) -> StatstestchisqCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqCluster::fill(self : StatstestchisqCluster, v : Double) -> StatstestchisqCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cluster_min(s : StatstestchisqCluster) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqCluster::min(self : StatstestchisqCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_cluster_max(s : StatstestchisqCluster) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqCluster::max(self : StatstestchisqCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_cluster_to_string(s : StatstestchisqCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqCluster::to_string(self : StatstestchisqCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqModel {
@@ -708,45 +708,45 @@ pub fn stats_test_chi_sq_model_make(size : Int) -> StatstestchisqModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_model_len(s : StatstestchisqModel) -> Int { s.size }
+pub fn StatstestchisqModel::len(self : StatstestchisqModel) -> Int { self.size }
 
-pub fn stats_test_chi_sq_model_get(s : StatstestchisqModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqModel::get(self : StatstestchisqModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_model_set(s : StatstestchisqModel, i : Int, v : Double) -> StatstestchisqModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqModel::set(self : StatstestchisqModel, i : Int, v : Double) -> StatstestchisqModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_model_sum(s : StatstestchisqModel) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqModel::sum(self : StatstestchisqModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_model_mean(s : StatstestchisqModel) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqModel::mean(self : StatstestchisqModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_model_scale(s : StatstestchisqModel, f : Double) -> StatstestchisqModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqModel::scale(self : StatstestchisqModel, f : Double) -> StatstestchisqModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_model_add(a : StatstestchisqModel, b : StatstestchisqModel) -> StatstestchisqModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqModel::add(self : StatstestchisqModel, other : StatstestchisqModel) -> StatstestchisqModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_model_copy(s : StatstestchisqModel) -> StatstestchisqModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqModel::copy(self : StatstestchisqModel) -> StatstestchisqModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_model_fill(s : StatstestchisqModel, v : Double) -> StatstestchisqModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqModel::fill(self : StatstestchisqModel, v : Double) -> StatstestchisqModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_model_min(s : StatstestchisqModel) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqModel::min(self : StatstestchisqModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_model_max(s : StatstestchisqModel) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqModel::max(self : StatstestchisqModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_model_to_string(s : StatstestchisqModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqModel::to_string(self : StatstestchisqModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqLayer {
@@ -759,45 +759,45 @@ pub fn stats_test_chi_sq_layer_make(size : Int) -> StatstestchisqLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_layer_len(s : StatstestchisqLayer) -> Int { s.size }
+pub fn StatstestchisqLayer::len(self : StatstestchisqLayer) -> Int { self.size }
 
-pub fn stats_test_chi_sq_layer_get(s : StatstestchisqLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqLayer::get(self : StatstestchisqLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_layer_set(s : StatstestchisqLayer, i : Int, v : Double) -> StatstestchisqLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqLayer::set(self : StatstestchisqLayer, i : Int, v : Double) -> StatstestchisqLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_layer_sum(s : StatstestchisqLayer) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqLayer::sum(self : StatstestchisqLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_layer_mean(s : StatstestchisqLayer) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqLayer::mean(self : StatstestchisqLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_layer_scale(s : StatstestchisqLayer, f : Double) -> StatstestchisqLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqLayer::scale(self : StatstestchisqLayer, f : Double) -> StatstestchisqLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_layer_add(a : StatstestchisqLayer, b : StatstestchisqLayer) -> StatstestchisqLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqLayer::add(self : StatstestchisqLayer, other : StatstestchisqLayer) -> StatstestchisqLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_layer_copy(s : StatstestchisqLayer) -> StatstestchisqLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqLayer::copy(self : StatstestchisqLayer) -> StatstestchisqLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_layer_fill(s : StatstestchisqLayer, v : Double) -> StatstestchisqLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqLayer::fill(self : StatstestchisqLayer, v : Double) -> StatstestchisqLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_layer_min(s : StatstestchisqLayer) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqLayer::min(self : StatstestchisqLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_layer_max(s : StatstestchisqLayer) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqLayer::max(self : StatstestchisqLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_layer_to_string(s : StatstestchisqLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqLayer::to_string(self : StatstestchisqLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqBuffer {
@@ -810,45 +810,45 @@ pub fn stats_test_chi_sq_buffer_make(size : Int) -> StatstestchisqBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_buffer_len(s : StatstestchisqBuffer) -> Int { s.size }
+pub fn StatstestchisqBuffer::len(self : StatstestchisqBuffer) -> Int { self.size }
 
-pub fn stats_test_chi_sq_buffer_get(s : StatstestchisqBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqBuffer::get(self : StatstestchisqBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_buffer_set(s : StatstestchisqBuffer, i : Int, v : Double) -> StatstestchisqBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqBuffer::set(self : StatstestchisqBuffer, i : Int, v : Double) -> StatstestchisqBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_buffer_sum(s : StatstestchisqBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqBuffer::sum(self : StatstestchisqBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_buffer_mean(s : StatstestchisqBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqBuffer::mean(self : StatstestchisqBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_buffer_scale(s : StatstestchisqBuffer, f : Double) -> StatstestchisqBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqBuffer::scale(self : StatstestchisqBuffer, f : Double) -> StatstestchisqBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_buffer_add(a : StatstestchisqBuffer, b : StatstestchisqBuffer) -> StatstestchisqBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqBuffer::add(self : StatstestchisqBuffer, other : StatstestchisqBuffer) -> StatstestchisqBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_buffer_copy(s : StatstestchisqBuffer) -> StatstestchisqBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqBuffer::copy(self : StatstestchisqBuffer) -> StatstestchisqBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_buffer_fill(s : StatstestchisqBuffer, v : Double) -> StatstestchisqBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqBuffer::fill(self : StatstestchisqBuffer, v : Double) -> StatstestchisqBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_buffer_min(s : StatstestchisqBuffer) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqBuffer::min(self : StatstestchisqBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_buffer_max(s : StatstestchisqBuffer) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqBuffer::max(self : StatstestchisqBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_buffer_to_string(s : StatstestchisqBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqBuffer::to_string(self : StatstestchisqBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqCursor {
@@ -861,45 +861,45 @@ pub fn stats_test_chi_sq_cursor_make(size : Int) -> StatstestchisqCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_cursor_len(s : StatstestchisqCursor) -> Int { s.size }
+pub fn StatstestchisqCursor::len(self : StatstestchisqCursor) -> Int { self.size }
 
-pub fn stats_test_chi_sq_cursor_get(s : StatstestchisqCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqCursor::get(self : StatstestchisqCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_cursor_set(s : StatstestchisqCursor, i : Int, v : Double) -> StatstestchisqCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqCursor::set(self : StatstestchisqCursor, i : Int, v : Double) -> StatstestchisqCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cursor_sum(s : StatstestchisqCursor) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqCursor::sum(self : StatstestchisqCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_cursor_mean(s : StatstestchisqCursor) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqCursor::mean(self : StatstestchisqCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_cursor_scale(s : StatstestchisqCursor, f : Double) -> StatstestchisqCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqCursor::scale(self : StatstestchisqCursor, f : Double) -> StatstestchisqCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cursor_add(a : StatstestchisqCursor, b : StatstestchisqCursor) -> StatstestchisqCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqCursor::add(self : StatstestchisqCursor, other : StatstestchisqCursor) -> StatstestchisqCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cursor_copy(s : StatstestchisqCursor) -> StatstestchisqCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqCursor::copy(self : StatstestchisqCursor) -> StatstestchisqCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cursor_fill(s : StatstestchisqCursor, v : Double) -> StatstestchisqCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqCursor::fill(self : StatstestchisqCursor, v : Double) -> StatstestchisqCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_cursor_min(s : StatstestchisqCursor) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqCursor::min(self : StatstestchisqCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_cursor_max(s : StatstestchisqCursor) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqCursor::max(self : StatstestchisqCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_cursor_to_string(s : StatstestchisqCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqCursor::to_string(self : StatstestchisqCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqView {
@@ -912,45 +912,45 @@ pub fn stats_test_chi_sq_view_make(size : Int) -> StatstestchisqView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_view_len(s : StatstestchisqView) -> Int { s.size }
+pub fn StatstestchisqView::len(self : StatstestchisqView) -> Int { self.size }
 
-pub fn stats_test_chi_sq_view_get(s : StatstestchisqView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqView::get(self : StatstestchisqView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_view_set(s : StatstestchisqView, i : Int, v : Double) -> StatstestchisqView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqView::set(self : StatstestchisqView, i : Int, v : Double) -> StatstestchisqView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_view_sum(s : StatstestchisqView) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqView::sum(self : StatstestchisqView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_view_mean(s : StatstestchisqView) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqView::mean(self : StatstestchisqView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_view_scale(s : StatstestchisqView, f : Double) -> StatstestchisqView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqView::scale(self : StatstestchisqView, f : Double) -> StatstestchisqView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_view_add(a : StatstestchisqView, b : StatstestchisqView) -> StatstestchisqView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqView::add(self : StatstestchisqView, other : StatstestchisqView) -> StatstestchisqView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_view_copy(s : StatstestchisqView) -> StatstestchisqView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqView::copy(self : StatstestchisqView) -> StatstestchisqView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_view_fill(s : StatstestchisqView, v : Double) -> StatstestchisqView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqView::fill(self : StatstestchisqView, v : Double) -> StatstestchisqView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_view_min(s : StatstestchisqView) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqView::min(self : StatstestchisqView) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_view_max(s : StatstestchisqView) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqView::max(self : StatstestchisqView) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_view_to_string(s : StatstestchisqView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqView::to_string(self : StatstestchisqView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqRange {
@@ -963,45 +963,45 @@ pub fn stats_test_chi_sq_range_make(size : Int) -> StatstestchisqRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_range_len(s : StatstestchisqRange) -> Int { s.size }
+pub fn StatstestchisqRange::len(self : StatstestchisqRange) -> Int { self.size }
 
-pub fn stats_test_chi_sq_range_get(s : StatstestchisqRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqRange::get(self : StatstestchisqRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_range_set(s : StatstestchisqRange, i : Int, v : Double) -> StatstestchisqRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqRange::set(self : StatstestchisqRange, i : Int, v : Double) -> StatstestchisqRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_range_sum(s : StatstestchisqRange) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqRange::sum(self : StatstestchisqRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_range_mean(s : StatstestchisqRange) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqRange::mean(self : StatstestchisqRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_range_scale(s : StatstestchisqRange, f : Double) -> StatstestchisqRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqRange::scale(self : StatstestchisqRange, f : Double) -> StatstestchisqRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_range_add(a : StatstestchisqRange, b : StatstestchisqRange) -> StatstestchisqRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqRange::add(self : StatstestchisqRange, other : StatstestchisqRange) -> StatstestchisqRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_range_copy(s : StatstestchisqRange) -> StatstestchisqRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqRange::copy(self : StatstestchisqRange) -> StatstestchisqRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_range_fill(s : StatstestchisqRange, v : Double) -> StatstestchisqRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqRange::fill(self : StatstestchisqRange, v : Double) -> StatstestchisqRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_range_min(s : StatstestchisqRange) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqRange::min(self : StatstestchisqRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_range_max(s : StatstestchisqRange) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqRange::max(self : StatstestchisqRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_range_to_string(s : StatstestchisqRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqRange::to_string(self : StatstestchisqRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestchisqSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_test_chi_sq_slice_make(size : Int) -> StatstestchisqSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_chi_sq_slice_len(s : StatstestchisqSlice) -> Int { s.size }
+pub fn StatstestchisqSlice::len(self : StatstestchisqSlice) -> Int { self.size }
 
-pub fn stats_test_chi_sq_slice_get(s : StatstestchisqSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestchisqSlice::get(self : StatstestchisqSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_chi_sq_slice_set(s : StatstestchisqSlice, i : Int, v : Double) -> StatstestchisqSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestchisqSlice::set(self : StatstestchisqSlice, i : Int, v : Double) -> StatstestchisqSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_slice_sum(s : StatstestchisqSlice) -> Double { @_common.sum(s.data) }
+pub fn StatstestchisqSlice::sum(self : StatstestchisqSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_chi_sq_slice_mean(s : StatstestchisqSlice) -> Double { @_common.mean(s.data) }
+pub fn StatstestchisqSlice::mean(self : StatstestchisqSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_chi_sq_slice_scale(s : StatstestchisqSlice, f : Double) -> StatstestchisqSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestchisqSlice::scale(self : StatstestchisqSlice, f : Double) -> StatstestchisqSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_slice_add(a : StatstestchisqSlice, b : StatstestchisqSlice) -> StatstestchisqSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestchisqSlice::add(self : StatstestchisqSlice, other : StatstestchisqSlice) -> StatstestchisqSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_slice_copy(s : StatstestchisqSlice) -> StatstestchisqSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestchisqSlice::copy(self : StatstestchisqSlice) -> StatstestchisqSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_slice_fill(s : StatstestchisqSlice, v : Double) -> StatstestchisqSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestchisqSlice::fill(self : StatstestchisqSlice, v : Double) -> StatstestchisqSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_chi_sq_slice_min(s : StatstestchisqSlice) -> Double { @_common.min(s.data) }
+pub fn StatstestchisqSlice::min(self : StatstestchisqSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_chi_sq_slice_max(s : StatstestchisqSlice) -> Double { @_common.max(s.data) }
+pub fn StatstestchisqSlice::max(self : StatstestchisqSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_chi_sq_slice_to_string(s : StatstestchisqSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestchisqSlice::to_string(self : StatstestchisqSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

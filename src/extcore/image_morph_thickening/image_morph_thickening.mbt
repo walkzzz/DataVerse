@@ -351,45 +351,45 @@ pub fn image_morph_thickening_frame_make(size : Int) -> ImagemorphthickeningFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_frame_len(s : ImagemorphthickeningFrame) -> Int { s.size }
+pub fn ImagemorphthickeningFrame::len(self : ImagemorphthickeningFrame) -> Int { self.size }
 
-pub fn image_morph_thickening_frame_get(s : ImagemorphthickeningFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningFrame::get(self : ImagemorphthickeningFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_frame_set(s : ImagemorphthickeningFrame, i : Int, v : Double) -> ImagemorphthickeningFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningFrame::set(self : ImagemorphthickeningFrame, i : Int, v : Double) -> ImagemorphthickeningFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_frame_sum(s : ImagemorphthickeningFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningFrame::sum(self : ImagemorphthickeningFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_frame_mean(s : ImagemorphthickeningFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningFrame::mean(self : ImagemorphthickeningFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_frame_scale(s : ImagemorphthickeningFrame, f : Double) -> ImagemorphthickeningFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningFrame::scale(self : ImagemorphthickeningFrame, f : Double) -> ImagemorphthickeningFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_frame_add(a : ImagemorphthickeningFrame, b : ImagemorphthickeningFrame) -> ImagemorphthickeningFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningFrame::add(self : ImagemorphthickeningFrame, other : ImagemorphthickeningFrame) -> ImagemorphthickeningFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_frame_copy(s : ImagemorphthickeningFrame) -> ImagemorphthickeningFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningFrame::copy(self : ImagemorphthickeningFrame) -> ImagemorphthickeningFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_frame_fill(s : ImagemorphthickeningFrame, v : Double) -> ImagemorphthickeningFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningFrame::fill(self : ImagemorphthickeningFrame, v : Double) -> ImagemorphthickeningFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_frame_min(s : ImagemorphthickeningFrame) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningFrame::min(self : ImagemorphthickeningFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_frame_max(s : ImagemorphthickeningFrame) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningFrame::max(self : ImagemorphthickeningFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_frame_to_string(s : ImagemorphthickeningFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningFrame::to_string(self : ImagemorphthickeningFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningTable {
@@ -402,45 +402,45 @@ pub fn image_morph_thickening_table_make(size : Int) -> ImagemorphthickeningTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_table_len(s : ImagemorphthickeningTable) -> Int { s.size }
+pub fn ImagemorphthickeningTable::len(self : ImagemorphthickeningTable) -> Int { self.size }
 
-pub fn image_morph_thickening_table_get(s : ImagemorphthickeningTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningTable::get(self : ImagemorphthickeningTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_table_set(s : ImagemorphthickeningTable, i : Int, v : Double) -> ImagemorphthickeningTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningTable::set(self : ImagemorphthickeningTable, i : Int, v : Double) -> ImagemorphthickeningTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_table_sum(s : ImagemorphthickeningTable) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningTable::sum(self : ImagemorphthickeningTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_table_mean(s : ImagemorphthickeningTable) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningTable::mean(self : ImagemorphthickeningTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_table_scale(s : ImagemorphthickeningTable, f : Double) -> ImagemorphthickeningTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningTable::scale(self : ImagemorphthickeningTable, f : Double) -> ImagemorphthickeningTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_table_add(a : ImagemorphthickeningTable, b : ImagemorphthickeningTable) -> ImagemorphthickeningTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningTable::add(self : ImagemorphthickeningTable, other : ImagemorphthickeningTable) -> ImagemorphthickeningTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_table_copy(s : ImagemorphthickeningTable) -> ImagemorphthickeningTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningTable::copy(self : ImagemorphthickeningTable) -> ImagemorphthickeningTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_table_fill(s : ImagemorphthickeningTable, v : Double) -> ImagemorphthickeningTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningTable::fill(self : ImagemorphthickeningTable, v : Double) -> ImagemorphthickeningTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_table_min(s : ImagemorphthickeningTable) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningTable::min(self : ImagemorphthickeningTable) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_table_max(s : ImagemorphthickeningTable) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningTable::max(self : ImagemorphthickeningTable) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_table_to_string(s : ImagemorphthickeningTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningTable::to_string(self : ImagemorphthickeningTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningGraphN {
@@ -453,45 +453,45 @@ pub fn image_morph_thickening_graphn_make(size : Int) -> ImagemorphthickeningGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_graphn_len(s : ImagemorphthickeningGraphN) -> Int { s.size }
+pub fn ImagemorphthickeningGraphN::len(self : ImagemorphthickeningGraphN) -> Int { self.size }
 
-pub fn image_morph_thickening_graphn_get(s : ImagemorphthickeningGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningGraphN::get(self : ImagemorphthickeningGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_graphn_set(s : ImagemorphthickeningGraphN, i : Int, v : Double) -> ImagemorphthickeningGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningGraphN::set(self : ImagemorphthickeningGraphN, i : Int, v : Double) -> ImagemorphthickeningGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_graphn_sum(s : ImagemorphthickeningGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningGraphN::sum(self : ImagemorphthickeningGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_graphn_mean(s : ImagemorphthickeningGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningGraphN::mean(self : ImagemorphthickeningGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_graphn_scale(s : ImagemorphthickeningGraphN, f : Double) -> ImagemorphthickeningGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningGraphN::scale(self : ImagemorphthickeningGraphN, f : Double) -> ImagemorphthickeningGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_graphn_add(a : ImagemorphthickeningGraphN, b : ImagemorphthickeningGraphN) -> ImagemorphthickeningGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningGraphN::add(self : ImagemorphthickeningGraphN, other : ImagemorphthickeningGraphN) -> ImagemorphthickeningGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_graphn_copy(s : ImagemorphthickeningGraphN) -> ImagemorphthickeningGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningGraphN::copy(self : ImagemorphthickeningGraphN) -> ImagemorphthickeningGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_graphn_fill(s : ImagemorphthickeningGraphN, v : Double) -> ImagemorphthickeningGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningGraphN::fill(self : ImagemorphthickeningGraphN, v : Double) -> ImagemorphthickeningGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_graphn_min(s : ImagemorphthickeningGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningGraphN::min(self : ImagemorphthickeningGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_graphn_max(s : ImagemorphthickeningGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningGraphN::max(self : ImagemorphthickeningGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_graphn_to_string(s : ImagemorphthickeningGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningGraphN::to_string(self : ImagemorphthickeningGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningNode {
@@ -504,45 +504,45 @@ pub fn image_morph_thickening_node_make(size : Int) -> ImagemorphthickeningNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_node_len(s : ImagemorphthickeningNode) -> Int { s.size }
+pub fn ImagemorphthickeningNode::len(self : ImagemorphthickeningNode) -> Int { self.size }
 
-pub fn image_morph_thickening_node_get(s : ImagemorphthickeningNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningNode::get(self : ImagemorphthickeningNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_node_set(s : ImagemorphthickeningNode, i : Int, v : Double) -> ImagemorphthickeningNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningNode::set(self : ImagemorphthickeningNode, i : Int, v : Double) -> ImagemorphthickeningNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_node_sum(s : ImagemorphthickeningNode) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningNode::sum(self : ImagemorphthickeningNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_node_mean(s : ImagemorphthickeningNode) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningNode::mean(self : ImagemorphthickeningNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_node_scale(s : ImagemorphthickeningNode, f : Double) -> ImagemorphthickeningNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningNode::scale(self : ImagemorphthickeningNode, f : Double) -> ImagemorphthickeningNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_node_add(a : ImagemorphthickeningNode, b : ImagemorphthickeningNode) -> ImagemorphthickeningNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningNode::add(self : ImagemorphthickeningNode, other : ImagemorphthickeningNode) -> ImagemorphthickeningNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_node_copy(s : ImagemorphthickeningNode) -> ImagemorphthickeningNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningNode::copy(self : ImagemorphthickeningNode) -> ImagemorphthickeningNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_node_fill(s : ImagemorphthickeningNode, v : Double) -> ImagemorphthickeningNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningNode::fill(self : ImagemorphthickeningNode, v : Double) -> ImagemorphthickeningNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_node_min(s : ImagemorphthickeningNode) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningNode::min(self : ImagemorphthickeningNode) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_node_max(s : ImagemorphthickeningNode) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningNode::max(self : ImagemorphthickeningNode) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_node_to_string(s : ImagemorphthickeningNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningNode::to_string(self : ImagemorphthickeningNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningEdge {
@@ -555,45 +555,45 @@ pub fn image_morph_thickening_edge_make(size : Int) -> ImagemorphthickeningEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_edge_len(s : ImagemorphthickeningEdge) -> Int { s.size }
+pub fn ImagemorphthickeningEdge::len(self : ImagemorphthickeningEdge) -> Int { self.size }
 
-pub fn image_morph_thickening_edge_get(s : ImagemorphthickeningEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningEdge::get(self : ImagemorphthickeningEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_edge_set(s : ImagemorphthickeningEdge, i : Int, v : Double) -> ImagemorphthickeningEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningEdge::set(self : ImagemorphthickeningEdge, i : Int, v : Double) -> ImagemorphthickeningEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_edge_sum(s : ImagemorphthickeningEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningEdge::sum(self : ImagemorphthickeningEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_edge_mean(s : ImagemorphthickeningEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningEdge::mean(self : ImagemorphthickeningEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_edge_scale(s : ImagemorphthickeningEdge, f : Double) -> ImagemorphthickeningEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningEdge::scale(self : ImagemorphthickeningEdge, f : Double) -> ImagemorphthickeningEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_edge_add(a : ImagemorphthickeningEdge, b : ImagemorphthickeningEdge) -> ImagemorphthickeningEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningEdge::add(self : ImagemorphthickeningEdge, other : ImagemorphthickeningEdge) -> ImagemorphthickeningEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_edge_copy(s : ImagemorphthickeningEdge) -> ImagemorphthickeningEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningEdge::copy(self : ImagemorphthickeningEdge) -> ImagemorphthickeningEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_edge_fill(s : ImagemorphthickeningEdge, v : Double) -> ImagemorphthickeningEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningEdge::fill(self : ImagemorphthickeningEdge, v : Double) -> ImagemorphthickeningEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_edge_min(s : ImagemorphthickeningEdge) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningEdge::min(self : ImagemorphthickeningEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_edge_max(s : ImagemorphthickeningEdge) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningEdge::max(self : ImagemorphthickeningEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_edge_to_string(s : ImagemorphthickeningEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningEdge::to_string(self : ImagemorphthickeningEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningPath {
@@ -606,45 +606,45 @@ pub fn image_morph_thickening_path_make(size : Int) -> ImagemorphthickeningPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_path_len(s : ImagemorphthickeningPath) -> Int { s.size }
+pub fn ImagemorphthickeningPath::len(self : ImagemorphthickeningPath) -> Int { self.size }
 
-pub fn image_morph_thickening_path_get(s : ImagemorphthickeningPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningPath::get(self : ImagemorphthickeningPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_path_set(s : ImagemorphthickeningPath, i : Int, v : Double) -> ImagemorphthickeningPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningPath::set(self : ImagemorphthickeningPath, i : Int, v : Double) -> ImagemorphthickeningPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_path_sum(s : ImagemorphthickeningPath) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningPath::sum(self : ImagemorphthickeningPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_path_mean(s : ImagemorphthickeningPath) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningPath::mean(self : ImagemorphthickeningPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_path_scale(s : ImagemorphthickeningPath, f : Double) -> ImagemorphthickeningPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningPath::scale(self : ImagemorphthickeningPath, f : Double) -> ImagemorphthickeningPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_path_add(a : ImagemorphthickeningPath, b : ImagemorphthickeningPath) -> ImagemorphthickeningPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningPath::add(self : ImagemorphthickeningPath, other : ImagemorphthickeningPath) -> ImagemorphthickeningPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_path_copy(s : ImagemorphthickeningPath) -> ImagemorphthickeningPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningPath::copy(self : ImagemorphthickeningPath) -> ImagemorphthickeningPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_path_fill(s : ImagemorphthickeningPath, v : Double) -> ImagemorphthickeningPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningPath::fill(self : ImagemorphthickeningPath, v : Double) -> ImagemorphthickeningPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_path_min(s : ImagemorphthickeningPath) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningPath::min(self : ImagemorphthickeningPath) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_path_max(s : ImagemorphthickeningPath) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningPath::max(self : ImagemorphthickeningPath) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_path_to_string(s : ImagemorphthickeningPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningPath::to_string(self : ImagemorphthickeningPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningCluster {
@@ -657,45 +657,45 @@ pub fn image_morph_thickening_cluster_make(size : Int) -> ImagemorphthickeningCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_cluster_len(s : ImagemorphthickeningCluster) -> Int { s.size }
+pub fn ImagemorphthickeningCluster::len(self : ImagemorphthickeningCluster) -> Int { self.size }
 
-pub fn image_morph_thickening_cluster_get(s : ImagemorphthickeningCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningCluster::get(self : ImagemorphthickeningCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_cluster_set(s : ImagemorphthickeningCluster, i : Int, v : Double) -> ImagemorphthickeningCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCluster::set(self : ImagemorphthickeningCluster, i : Int, v : Double) -> ImagemorphthickeningCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cluster_sum(s : ImagemorphthickeningCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningCluster::sum(self : ImagemorphthickeningCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_cluster_mean(s : ImagemorphthickeningCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningCluster::mean(self : ImagemorphthickeningCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_cluster_scale(s : ImagemorphthickeningCluster, f : Double) -> ImagemorphthickeningCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCluster::scale(self : ImagemorphthickeningCluster, f : Double) -> ImagemorphthickeningCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cluster_add(a : ImagemorphthickeningCluster, b : ImagemorphthickeningCluster) -> ImagemorphthickeningCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningCluster::add(self : ImagemorphthickeningCluster, other : ImagemorphthickeningCluster) -> ImagemorphthickeningCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cluster_copy(s : ImagemorphthickeningCluster) -> ImagemorphthickeningCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCluster::copy(self : ImagemorphthickeningCluster) -> ImagemorphthickeningCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cluster_fill(s : ImagemorphthickeningCluster, v : Double) -> ImagemorphthickeningCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCluster::fill(self : ImagemorphthickeningCluster, v : Double) -> ImagemorphthickeningCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cluster_min(s : ImagemorphthickeningCluster) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningCluster::min(self : ImagemorphthickeningCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_cluster_max(s : ImagemorphthickeningCluster) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningCluster::max(self : ImagemorphthickeningCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_cluster_to_string(s : ImagemorphthickeningCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningCluster::to_string(self : ImagemorphthickeningCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningModel {
@@ -708,45 +708,45 @@ pub fn image_morph_thickening_model_make(size : Int) -> ImagemorphthickeningMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_model_len(s : ImagemorphthickeningModel) -> Int { s.size }
+pub fn ImagemorphthickeningModel::len(self : ImagemorphthickeningModel) -> Int { self.size }
 
-pub fn image_morph_thickening_model_get(s : ImagemorphthickeningModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningModel::get(self : ImagemorphthickeningModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_model_set(s : ImagemorphthickeningModel, i : Int, v : Double) -> ImagemorphthickeningModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningModel::set(self : ImagemorphthickeningModel, i : Int, v : Double) -> ImagemorphthickeningModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_model_sum(s : ImagemorphthickeningModel) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningModel::sum(self : ImagemorphthickeningModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_model_mean(s : ImagemorphthickeningModel) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningModel::mean(self : ImagemorphthickeningModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_model_scale(s : ImagemorphthickeningModel, f : Double) -> ImagemorphthickeningModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningModel::scale(self : ImagemorphthickeningModel, f : Double) -> ImagemorphthickeningModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_model_add(a : ImagemorphthickeningModel, b : ImagemorphthickeningModel) -> ImagemorphthickeningModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningModel::add(self : ImagemorphthickeningModel, other : ImagemorphthickeningModel) -> ImagemorphthickeningModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_model_copy(s : ImagemorphthickeningModel) -> ImagemorphthickeningModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningModel::copy(self : ImagemorphthickeningModel) -> ImagemorphthickeningModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_model_fill(s : ImagemorphthickeningModel, v : Double) -> ImagemorphthickeningModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningModel::fill(self : ImagemorphthickeningModel, v : Double) -> ImagemorphthickeningModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_model_min(s : ImagemorphthickeningModel) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningModel::min(self : ImagemorphthickeningModel) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_model_max(s : ImagemorphthickeningModel) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningModel::max(self : ImagemorphthickeningModel) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_model_to_string(s : ImagemorphthickeningModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningModel::to_string(self : ImagemorphthickeningModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningLayer {
@@ -759,45 +759,45 @@ pub fn image_morph_thickening_layer_make(size : Int) -> ImagemorphthickeningLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_layer_len(s : ImagemorphthickeningLayer) -> Int { s.size }
+pub fn ImagemorphthickeningLayer::len(self : ImagemorphthickeningLayer) -> Int { self.size }
 
-pub fn image_morph_thickening_layer_get(s : ImagemorphthickeningLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningLayer::get(self : ImagemorphthickeningLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_layer_set(s : ImagemorphthickeningLayer, i : Int, v : Double) -> ImagemorphthickeningLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningLayer::set(self : ImagemorphthickeningLayer, i : Int, v : Double) -> ImagemorphthickeningLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_layer_sum(s : ImagemorphthickeningLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningLayer::sum(self : ImagemorphthickeningLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_layer_mean(s : ImagemorphthickeningLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningLayer::mean(self : ImagemorphthickeningLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_layer_scale(s : ImagemorphthickeningLayer, f : Double) -> ImagemorphthickeningLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningLayer::scale(self : ImagemorphthickeningLayer, f : Double) -> ImagemorphthickeningLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_layer_add(a : ImagemorphthickeningLayer, b : ImagemorphthickeningLayer) -> ImagemorphthickeningLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningLayer::add(self : ImagemorphthickeningLayer, other : ImagemorphthickeningLayer) -> ImagemorphthickeningLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_layer_copy(s : ImagemorphthickeningLayer) -> ImagemorphthickeningLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningLayer::copy(self : ImagemorphthickeningLayer) -> ImagemorphthickeningLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_layer_fill(s : ImagemorphthickeningLayer, v : Double) -> ImagemorphthickeningLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningLayer::fill(self : ImagemorphthickeningLayer, v : Double) -> ImagemorphthickeningLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_layer_min(s : ImagemorphthickeningLayer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningLayer::min(self : ImagemorphthickeningLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_layer_max(s : ImagemorphthickeningLayer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningLayer::max(self : ImagemorphthickeningLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_layer_to_string(s : ImagemorphthickeningLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningLayer::to_string(self : ImagemorphthickeningLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningBuffer {
@@ -810,45 +810,45 @@ pub fn image_morph_thickening_buffer_make(size : Int) -> ImagemorphthickeningBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_buffer_len(s : ImagemorphthickeningBuffer) -> Int { s.size }
+pub fn ImagemorphthickeningBuffer::len(self : ImagemorphthickeningBuffer) -> Int { self.size }
 
-pub fn image_morph_thickening_buffer_get(s : ImagemorphthickeningBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningBuffer::get(self : ImagemorphthickeningBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_buffer_set(s : ImagemorphthickeningBuffer, i : Int, v : Double) -> ImagemorphthickeningBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningBuffer::set(self : ImagemorphthickeningBuffer, i : Int, v : Double) -> ImagemorphthickeningBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_buffer_sum(s : ImagemorphthickeningBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningBuffer::sum(self : ImagemorphthickeningBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_buffer_mean(s : ImagemorphthickeningBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningBuffer::mean(self : ImagemorphthickeningBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_buffer_scale(s : ImagemorphthickeningBuffer, f : Double) -> ImagemorphthickeningBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningBuffer::scale(self : ImagemorphthickeningBuffer, f : Double) -> ImagemorphthickeningBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_buffer_add(a : ImagemorphthickeningBuffer, b : ImagemorphthickeningBuffer) -> ImagemorphthickeningBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningBuffer::add(self : ImagemorphthickeningBuffer, other : ImagemorphthickeningBuffer) -> ImagemorphthickeningBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_buffer_copy(s : ImagemorphthickeningBuffer) -> ImagemorphthickeningBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningBuffer::copy(self : ImagemorphthickeningBuffer) -> ImagemorphthickeningBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_buffer_fill(s : ImagemorphthickeningBuffer, v : Double) -> ImagemorphthickeningBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningBuffer::fill(self : ImagemorphthickeningBuffer, v : Double) -> ImagemorphthickeningBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_buffer_min(s : ImagemorphthickeningBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningBuffer::min(self : ImagemorphthickeningBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_buffer_max(s : ImagemorphthickeningBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningBuffer::max(self : ImagemorphthickeningBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_buffer_to_string(s : ImagemorphthickeningBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningBuffer::to_string(self : ImagemorphthickeningBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningCursor {
@@ -861,45 +861,45 @@ pub fn image_morph_thickening_cursor_make(size : Int) -> ImagemorphthickeningCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_cursor_len(s : ImagemorphthickeningCursor) -> Int { s.size }
+pub fn ImagemorphthickeningCursor::len(self : ImagemorphthickeningCursor) -> Int { self.size }
 
-pub fn image_morph_thickening_cursor_get(s : ImagemorphthickeningCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningCursor::get(self : ImagemorphthickeningCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_cursor_set(s : ImagemorphthickeningCursor, i : Int, v : Double) -> ImagemorphthickeningCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCursor::set(self : ImagemorphthickeningCursor, i : Int, v : Double) -> ImagemorphthickeningCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cursor_sum(s : ImagemorphthickeningCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningCursor::sum(self : ImagemorphthickeningCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_cursor_mean(s : ImagemorphthickeningCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningCursor::mean(self : ImagemorphthickeningCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_cursor_scale(s : ImagemorphthickeningCursor, f : Double) -> ImagemorphthickeningCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCursor::scale(self : ImagemorphthickeningCursor, f : Double) -> ImagemorphthickeningCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cursor_add(a : ImagemorphthickeningCursor, b : ImagemorphthickeningCursor) -> ImagemorphthickeningCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningCursor::add(self : ImagemorphthickeningCursor, other : ImagemorphthickeningCursor) -> ImagemorphthickeningCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cursor_copy(s : ImagemorphthickeningCursor) -> ImagemorphthickeningCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCursor::copy(self : ImagemorphthickeningCursor) -> ImagemorphthickeningCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cursor_fill(s : ImagemorphthickeningCursor, v : Double) -> ImagemorphthickeningCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningCursor::fill(self : ImagemorphthickeningCursor, v : Double) -> ImagemorphthickeningCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_cursor_min(s : ImagemorphthickeningCursor) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningCursor::min(self : ImagemorphthickeningCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_cursor_max(s : ImagemorphthickeningCursor) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningCursor::max(self : ImagemorphthickeningCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_cursor_to_string(s : ImagemorphthickeningCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningCursor::to_string(self : ImagemorphthickeningCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningView {
@@ -912,45 +912,45 @@ pub fn image_morph_thickening_view_make(size : Int) -> ImagemorphthickeningView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_view_len(s : ImagemorphthickeningView) -> Int { s.size }
+pub fn ImagemorphthickeningView::len(self : ImagemorphthickeningView) -> Int { self.size }
 
-pub fn image_morph_thickening_view_get(s : ImagemorphthickeningView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningView::get(self : ImagemorphthickeningView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_view_set(s : ImagemorphthickeningView, i : Int, v : Double) -> ImagemorphthickeningView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningView::set(self : ImagemorphthickeningView, i : Int, v : Double) -> ImagemorphthickeningView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_view_sum(s : ImagemorphthickeningView) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningView::sum(self : ImagemorphthickeningView) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_view_mean(s : ImagemorphthickeningView) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningView::mean(self : ImagemorphthickeningView) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_view_scale(s : ImagemorphthickeningView, f : Double) -> ImagemorphthickeningView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningView::scale(self : ImagemorphthickeningView, f : Double) -> ImagemorphthickeningView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_view_add(a : ImagemorphthickeningView, b : ImagemorphthickeningView) -> ImagemorphthickeningView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningView::add(self : ImagemorphthickeningView, other : ImagemorphthickeningView) -> ImagemorphthickeningView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_view_copy(s : ImagemorphthickeningView) -> ImagemorphthickeningView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningView::copy(self : ImagemorphthickeningView) -> ImagemorphthickeningView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_view_fill(s : ImagemorphthickeningView, v : Double) -> ImagemorphthickeningView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningView::fill(self : ImagemorphthickeningView, v : Double) -> ImagemorphthickeningView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_view_min(s : ImagemorphthickeningView) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningView::min(self : ImagemorphthickeningView) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_view_max(s : ImagemorphthickeningView) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningView::max(self : ImagemorphthickeningView) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_view_to_string(s : ImagemorphthickeningView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningView::to_string(self : ImagemorphthickeningView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningRange {
@@ -963,45 +963,45 @@ pub fn image_morph_thickening_range_make(size : Int) -> ImagemorphthickeningRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_range_len(s : ImagemorphthickeningRange) -> Int { s.size }
+pub fn ImagemorphthickeningRange::len(self : ImagemorphthickeningRange) -> Int { self.size }
 
-pub fn image_morph_thickening_range_get(s : ImagemorphthickeningRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningRange::get(self : ImagemorphthickeningRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_range_set(s : ImagemorphthickeningRange, i : Int, v : Double) -> ImagemorphthickeningRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningRange::set(self : ImagemorphthickeningRange, i : Int, v : Double) -> ImagemorphthickeningRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_range_sum(s : ImagemorphthickeningRange) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningRange::sum(self : ImagemorphthickeningRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_range_mean(s : ImagemorphthickeningRange) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningRange::mean(self : ImagemorphthickeningRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_range_scale(s : ImagemorphthickeningRange, f : Double) -> ImagemorphthickeningRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningRange::scale(self : ImagemorphthickeningRange, f : Double) -> ImagemorphthickeningRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_range_add(a : ImagemorphthickeningRange, b : ImagemorphthickeningRange) -> ImagemorphthickeningRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningRange::add(self : ImagemorphthickeningRange, other : ImagemorphthickeningRange) -> ImagemorphthickeningRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_range_copy(s : ImagemorphthickeningRange) -> ImagemorphthickeningRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningRange::copy(self : ImagemorphthickeningRange) -> ImagemorphthickeningRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_range_fill(s : ImagemorphthickeningRange, v : Double) -> ImagemorphthickeningRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningRange::fill(self : ImagemorphthickeningRange, v : Double) -> ImagemorphthickeningRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_range_min(s : ImagemorphthickeningRange) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningRange::min(self : ImagemorphthickeningRange) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_range_max(s : ImagemorphthickeningRange) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningRange::max(self : ImagemorphthickeningRange) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_range_to_string(s : ImagemorphthickeningRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningRange::to_string(self : ImagemorphthickeningRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphthickeningSlice {
@@ -1014,44 +1014,44 @@ pub fn image_morph_thickening_slice_make(size : Int) -> ImagemorphthickeningSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_thickening_slice_len(s : ImagemorphthickeningSlice) -> Int { s.size }
+pub fn ImagemorphthickeningSlice::len(self : ImagemorphthickeningSlice) -> Int { self.size }
 
-pub fn image_morph_thickening_slice_get(s : ImagemorphthickeningSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphthickeningSlice::get(self : ImagemorphthickeningSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_thickening_slice_set(s : ImagemorphthickeningSlice, i : Int, v : Double) -> ImagemorphthickeningSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningSlice::set(self : ImagemorphthickeningSlice, i : Int, v : Double) -> ImagemorphthickeningSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_slice_sum(s : ImagemorphthickeningSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphthickeningSlice::sum(self : ImagemorphthickeningSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_thickening_slice_mean(s : ImagemorphthickeningSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphthickeningSlice::mean(self : ImagemorphthickeningSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_thickening_slice_scale(s : ImagemorphthickeningSlice, f : Double) -> ImagemorphthickeningSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningSlice::scale(self : ImagemorphthickeningSlice, f : Double) -> ImagemorphthickeningSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_slice_add(a : ImagemorphthickeningSlice, b : ImagemorphthickeningSlice) -> ImagemorphthickeningSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphthickeningSlice::add(self : ImagemorphthickeningSlice, other : ImagemorphthickeningSlice) -> ImagemorphthickeningSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_thickening_slice_copy(s : ImagemorphthickeningSlice) -> ImagemorphthickeningSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningSlice::copy(self : ImagemorphthickeningSlice) -> ImagemorphthickeningSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_slice_fill(s : ImagemorphthickeningSlice, v : Double) -> ImagemorphthickeningSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphthickeningSlice::fill(self : ImagemorphthickeningSlice, v : Double) -> ImagemorphthickeningSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_thickening_slice_min(s : ImagemorphthickeningSlice) -> Double { @_common.min(s.data) }
+pub fn ImagemorphthickeningSlice::min(self : ImagemorphthickeningSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_thickening_slice_max(s : ImagemorphthickeningSlice) -> Double { @_common.max(s.data) }
+pub fn ImagemorphthickeningSlice::max(self : ImagemorphthickeningSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_thickening_slice_to_string(s : ImagemorphthickeningSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphthickeningSlice::to_string(self : ImagemorphthickeningSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

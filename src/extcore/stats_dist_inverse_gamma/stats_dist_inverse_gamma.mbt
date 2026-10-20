@@ -351,45 +351,45 @@ pub fn stats_dist_inverse_gamma_frame_make(size : Int) -> StatsdistinversegammaF
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_frame_len(s : StatsdistinversegammaFrame) -> Int { s.size }
+pub fn StatsdistinversegammaFrame::len(self : StatsdistinversegammaFrame) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_frame_get(s : StatsdistinversegammaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaFrame::get(self : StatsdistinversegammaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_frame_set(s : StatsdistinversegammaFrame, i : Int, v : Double) -> StatsdistinversegammaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaFrame::set(self : StatsdistinversegammaFrame, i : Int, v : Double) -> StatsdistinversegammaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_frame_sum(s : StatsdistinversegammaFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaFrame::sum(self : StatsdistinversegammaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_frame_mean(s : StatsdistinversegammaFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaFrame::mean(self : StatsdistinversegammaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_frame_scale(s : StatsdistinversegammaFrame, f : Double) -> StatsdistinversegammaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaFrame::scale(self : StatsdistinversegammaFrame, f : Double) -> StatsdistinversegammaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_frame_add(a : StatsdistinversegammaFrame, b : StatsdistinversegammaFrame) -> StatsdistinversegammaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaFrame::add(self : StatsdistinversegammaFrame, other : StatsdistinversegammaFrame) -> StatsdistinversegammaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_frame_copy(s : StatsdistinversegammaFrame) -> StatsdistinversegammaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaFrame::copy(self : StatsdistinversegammaFrame) -> StatsdistinversegammaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_frame_fill(s : StatsdistinversegammaFrame, v : Double) -> StatsdistinversegammaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaFrame::fill(self : StatsdistinversegammaFrame, v : Double) -> StatsdistinversegammaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_frame_min(s : StatsdistinversegammaFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaFrame::min(self : StatsdistinversegammaFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_frame_max(s : StatsdistinversegammaFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaFrame::max(self : StatsdistinversegammaFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_frame_to_string(s : StatsdistinversegammaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaFrame::to_string(self : StatsdistinversegammaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_inverse_gamma_table_make(size : Int) -> StatsdistinversegammaT
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_table_len(s : StatsdistinversegammaTable) -> Int { s.size }
+pub fn StatsdistinversegammaTable::len(self : StatsdistinversegammaTable) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_table_get(s : StatsdistinversegammaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaTable::get(self : StatsdistinversegammaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_table_set(s : StatsdistinversegammaTable, i : Int, v : Double) -> StatsdistinversegammaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaTable::set(self : StatsdistinversegammaTable, i : Int, v : Double) -> StatsdistinversegammaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_table_sum(s : StatsdistinversegammaTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaTable::sum(self : StatsdistinversegammaTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_table_mean(s : StatsdistinversegammaTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaTable::mean(self : StatsdistinversegammaTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_table_scale(s : StatsdistinversegammaTable, f : Double) -> StatsdistinversegammaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaTable::scale(self : StatsdistinversegammaTable, f : Double) -> StatsdistinversegammaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_table_add(a : StatsdistinversegammaTable, b : StatsdistinversegammaTable) -> StatsdistinversegammaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaTable::add(self : StatsdistinversegammaTable, other : StatsdistinversegammaTable) -> StatsdistinversegammaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_table_copy(s : StatsdistinversegammaTable) -> StatsdistinversegammaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaTable::copy(self : StatsdistinversegammaTable) -> StatsdistinversegammaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_table_fill(s : StatsdistinversegammaTable, v : Double) -> StatsdistinversegammaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaTable::fill(self : StatsdistinversegammaTable, v : Double) -> StatsdistinversegammaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_table_min(s : StatsdistinversegammaTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaTable::min(self : StatsdistinversegammaTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_table_max(s : StatsdistinversegammaTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaTable::max(self : StatsdistinversegammaTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_table_to_string(s : StatsdistinversegammaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaTable::to_string(self : StatsdistinversegammaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_inverse_gamma_graphn_make(size : Int) -> Statsdistinversegamma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_len(s : StatsdistinversegammaGraphN) -> Int { s.size }
+pub fn StatsdistinversegammaGraphN::len(self : StatsdistinversegammaGraphN) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_graphn_get(s : StatsdistinversegammaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaGraphN::get(self : StatsdistinversegammaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_set(s : StatsdistinversegammaGraphN, i : Int, v : Double) -> StatsdistinversegammaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaGraphN::set(self : StatsdistinversegammaGraphN, i : Int, v : Double) -> StatsdistinversegammaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_sum(s : StatsdistinversegammaGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaGraphN::sum(self : StatsdistinversegammaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_graphn_mean(s : StatsdistinversegammaGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaGraphN::mean(self : StatsdistinversegammaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_graphn_scale(s : StatsdistinversegammaGraphN, f : Double) -> StatsdistinversegammaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaGraphN::scale(self : StatsdistinversegammaGraphN, f : Double) -> StatsdistinversegammaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_add(a : StatsdistinversegammaGraphN, b : StatsdistinversegammaGraphN) -> StatsdistinversegammaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaGraphN::add(self : StatsdistinversegammaGraphN, other : StatsdistinversegammaGraphN) -> StatsdistinversegammaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_copy(s : StatsdistinversegammaGraphN) -> StatsdistinversegammaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaGraphN::copy(self : StatsdistinversegammaGraphN) -> StatsdistinversegammaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_fill(s : StatsdistinversegammaGraphN, v : Double) -> StatsdistinversegammaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaGraphN::fill(self : StatsdistinversegammaGraphN, v : Double) -> StatsdistinversegammaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_graphn_min(s : StatsdistinversegammaGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaGraphN::min(self : StatsdistinversegammaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_graphn_max(s : StatsdistinversegammaGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaGraphN::max(self : StatsdistinversegammaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_graphn_to_string(s : StatsdistinversegammaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaGraphN::to_string(self : StatsdistinversegammaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_inverse_gamma_node_make(size : Int) -> StatsdistinversegammaNo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_node_len(s : StatsdistinversegammaNode) -> Int { s.size }
+pub fn StatsdistinversegammaNode::len(self : StatsdistinversegammaNode) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_node_get(s : StatsdistinversegammaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaNode::get(self : StatsdistinversegammaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_node_set(s : StatsdistinversegammaNode, i : Int, v : Double) -> StatsdistinversegammaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaNode::set(self : StatsdistinversegammaNode, i : Int, v : Double) -> StatsdistinversegammaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_node_sum(s : StatsdistinversegammaNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaNode::sum(self : StatsdistinversegammaNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_node_mean(s : StatsdistinversegammaNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaNode::mean(self : StatsdistinversegammaNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_node_scale(s : StatsdistinversegammaNode, f : Double) -> StatsdistinversegammaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaNode::scale(self : StatsdistinversegammaNode, f : Double) -> StatsdistinversegammaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_node_add(a : StatsdistinversegammaNode, b : StatsdistinversegammaNode) -> StatsdistinversegammaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaNode::add(self : StatsdistinversegammaNode, other : StatsdistinversegammaNode) -> StatsdistinversegammaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_node_copy(s : StatsdistinversegammaNode) -> StatsdistinversegammaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaNode::copy(self : StatsdistinversegammaNode) -> StatsdistinversegammaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_node_fill(s : StatsdistinversegammaNode, v : Double) -> StatsdistinversegammaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaNode::fill(self : StatsdistinversegammaNode, v : Double) -> StatsdistinversegammaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_node_min(s : StatsdistinversegammaNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaNode::min(self : StatsdistinversegammaNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_node_max(s : StatsdistinversegammaNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaNode::max(self : StatsdistinversegammaNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_node_to_string(s : StatsdistinversegammaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaNode::to_string(self : StatsdistinversegammaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_inverse_gamma_edge_make(size : Int) -> StatsdistinversegammaEd
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_edge_len(s : StatsdistinversegammaEdge) -> Int { s.size }
+pub fn StatsdistinversegammaEdge::len(self : StatsdistinversegammaEdge) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_edge_get(s : StatsdistinversegammaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaEdge::get(self : StatsdistinversegammaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_edge_set(s : StatsdistinversegammaEdge, i : Int, v : Double) -> StatsdistinversegammaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaEdge::set(self : StatsdistinversegammaEdge, i : Int, v : Double) -> StatsdistinversegammaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_edge_sum(s : StatsdistinversegammaEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaEdge::sum(self : StatsdistinversegammaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_edge_mean(s : StatsdistinversegammaEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaEdge::mean(self : StatsdistinversegammaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_edge_scale(s : StatsdistinversegammaEdge, f : Double) -> StatsdistinversegammaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaEdge::scale(self : StatsdistinversegammaEdge, f : Double) -> StatsdistinversegammaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_edge_add(a : StatsdistinversegammaEdge, b : StatsdistinversegammaEdge) -> StatsdistinversegammaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaEdge::add(self : StatsdistinversegammaEdge, other : StatsdistinversegammaEdge) -> StatsdistinversegammaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_edge_copy(s : StatsdistinversegammaEdge) -> StatsdistinversegammaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaEdge::copy(self : StatsdistinversegammaEdge) -> StatsdistinversegammaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_edge_fill(s : StatsdistinversegammaEdge, v : Double) -> StatsdistinversegammaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaEdge::fill(self : StatsdistinversegammaEdge, v : Double) -> StatsdistinversegammaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_edge_min(s : StatsdistinversegammaEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaEdge::min(self : StatsdistinversegammaEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_edge_max(s : StatsdistinversegammaEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaEdge::max(self : StatsdistinversegammaEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_edge_to_string(s : StatsdistinversegammaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaEdge::to_string(self : StatsdistinversegammaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_inverse_gamma_path_make(size : Int) -> StatsdistinversegammaPa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_path_len(s : StatsdistinversegammaPath) -> Int { s.size }
+pub fn StatsdistinversegammaPath::len(self : StatsdistinversegammaPath) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_path_get(s : StatsdistinversegammaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaPath::get(self : StatsdistinversegammaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_path_set(s : StatsdistinversegammaPath, i : Int, v : Double) -> StatsdistinversegammaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaPath::set(self : StatsdistinversegammaPath, i : Int, v : Double) -> StatsdistinversegammaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_path_sum(s : StatsdistinversegammaPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaPath::sum(self : StatsdistinversegammaPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_path_mean(s : StatsdistinversegammaPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaPath::mean(self : StatsdistinversegammaPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_path_scale(s : StatsdistinversegammaPath, f : Double) -> StatsdistinversegammaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaPath::scale(self : StatsdistinversegammaPath, f : Double) -> StatsdistinversegammaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_path_add(a : StatsdistinversegammaPath, b : StatsdistinversegammaPath) -> StatsdistinversegammaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaPath::add(self : StatsdistinversegammaPath, other : StatsdistinversegammaPath) -> StatsdistinversegammaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_path_copy(s : StatsdistinversegammaPath) -> StatsdistinversegammaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaPath::copy(self : StatsdistinversegammaPath) -> StatsdistinversegammaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_path_fill(s : StatsdistinversegammaPath, v : Double) -> StatsdistinversegammaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaPath::fill(self : StatsdistinversegammaPath, v : Double) -> StatsdistinversegammaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_path_min(s : StatsdistinversegammaPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaPath::min(self : StatsdistinversegammaPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_path_max(s : StatsdistinversegammaPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaPath::max(self : StatsdistinversegammaPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_path_to_string(s : StatsdistinversegammaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaPath::to_string(self : StatsdistinversegammaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_inverse_gamma_cluster_make(size : Int) -> Statsdistinversegamm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_len(s : StatsdistinversegammaCluster) -> Int { s.size }
+pub fn StatsdistinversegammaCluster::len(self : StatsdistinversegammaCluster) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_cluster_get(s : StatsdistinversegammaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaCluster::get(self : StatsdistinversegammaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_set(s : StatsdistinversegammaCluster, i : Int, v : Double) -> StatsdistinversegammaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCluster::set(self : StatsdistinversegammaCluster, i : Int, v : Double) -> StatsdistinversegammaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_sum(s : StatsdistinversegammaCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaCluster::sum(self : StatsdistinversegammaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_cluster_mean(s : StatsdistinversegammaCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaCluster::mean(self : StatsdistinversegammaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_cluster_scale(s : StatsdistinversegammaCluster, f : Double) -> StatsdistinversegammaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCluster::scale(self : StatsdistinversegammaCluster, f : Double) -> StatsdistinversegammaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_add(a : StatsdistinversegammaCluster, b : StatsdistinversegammaCluster) -> StatsdistinversegammaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaCluster::add(self : StatsdistinversegammaCluster, other : StatsdistinversegammaCluster) -> StatsdistinversegammaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_copy(s : StatsdistinversegammaCluster) -> StatsdistinversegammaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCluster::copy(self : StatsdistinversegammaCluster) -> StatsdistinversegammaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_fill(s : StatsdistinversegammaCluster, v : Double) -> StatsdistinversegammaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCluster::fill(self : StatsdistinversegammaCluster, v : Double) -> StatsdistinversegammaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cluster_min(s : StatsdistinversegammaCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaCluster::min(self : StatsdistinversegammaCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_cluster_max(s : StatsdistinversegammaCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaCluster::max(self : StatsdistinversegammaCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_cluster_to_string(s : StatsdistinversegammaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaCluster::to_string(self : StatsdistinversegammaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_inverse_gamma_model_make(size : Int) -> StatsdistinversegammaM
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_model_len(s : StatsdistinversegammaModel) -> Int { s.size }
+pub fn StatsdistinversegammaModel::len(self : StatsdistinversegammaModel) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_model_get(s : StatsdistinversegammaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaModel::get(self : StatsdistinversegammaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_model_set(s : StatsdistinversegammaModel, i : Int, v : Double) -> StatsdistinversegammaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaModel::set(self : StatsdistinversegammaModel, i : Int, v : Double) -> StatsdistinversegammaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_model_sum(s : StatsdistinversegammaModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaModel::sum(self : StatsdistinversegammaModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_model_mean(s : StatsdistinversegammaModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaModel::mean(self : StatsdistinversegammaModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_model_scale(s : StatsdistinversegammaModel, f : Double) -> StatsdistinversegammaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaModel::scale(self : StatsdistinversegammaModel, f : Double) -> StatsdistinversegammaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_model_add(a : StatsdistinversegammaModel, b : StatsdistinversegammaModel) -> StatsdistinversegammaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaModel::add(self : StatsdistinversegammaModel, other : StatsdistinversegammaModel) -> StatsdistinversegammaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_model_copy(s : StatsdistinversegammaModel) -> StatsdistinversegammaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaModel::copy(self : StatsdistinversegammaModel) -> StatsdistinversegammaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_model_fill(s : StatsdistinversegammaModel, v : Double) -> StatsdistinversegammaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaModel::fill(self : StatsdistinversegammaModel, v : Double) -> StatsdistinversegammaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_model_min(s : StatsdistinversegammaModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaModel::min(self : StatsdistinversegammaModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_model_max(s : StatsdistinversegammaModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaModel::max(self : StatsdistinversegammaModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_model_to_string(s : StatsdistinversegammaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaModel::to_string(self : StatsdistinversegammaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_inverse_gamma_layer_make(size : Int) -> StatsdistinversegammaL
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_layer_len(s : StatsdistinversegammaLayer) -> Int { s.size }
+pub fn StatsdistinversegammaLayer::len(self : StatsdistinversegammaLayer) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_layer_get(s : StatsdistinversegammaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaLayer::get(self : StatsdistinversegammaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_layer_set(s : StatsdistinversegammaLayer, i : Int, v : Double) -> StatsdistinversegammaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaLayer::set(self : StatsdistinversegammaLayer, i : Int, v : Double) -> StatsdistinversegammaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_layer_sum(s : StatsdistinversegammaLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaLayer::sum(self : StatsdistinversegammaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_layer_mean(s : StatsdistinversegammaLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaLayer::mean(self : StatsdistinversegammaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_layer_scale(s : StatsdistinversegammaLayer, f : Double) -> StatsdistinversegammaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaLayer::scale(self : StatsdistinversegammaLayer, f : Double) -> StatsdistinversegammaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_layer_add(a : StatsdistinversegammaLayer, b : StatsdistinversegammaLayer) -> StatsdistinversegammaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaLayer::add(self : StatsdistinversegammaLayer, other : StatsdistinversegammaLayer) -> StatsdistinversegammaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_layer_copy(s : StatsdistinversegammaLayer) -> StatsdistinversegammaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaLayer::copy(self : StatsdistinversegammaLayer) -> StatsdistinversegammaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_layer_fill(s : StatsdistinversegammaLayer, v : Double) -> StatsdistinversegammaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaLayer::fill(self : StatsdistinversegammaLayer, v : Double) -> StatsdistinversegammaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_layer_min(s : StatsdistinversegammaLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaLayer::min(self : StatsdistinversegammaLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_layer_max(s : StatsdistinversegammaLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaLayer::max(self : StatsdistinversegammaLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_layer_to_string(s : StatsdistinversegammaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaLayer::to_string(self : StatsdistinversegammaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_inverse_gamma_buffer_make(size : Int) -> Statsdistinversegamma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_len(s : StatsdistinversegammaBuffer) -> Int { s.size }
+pub fn StatsdistinversegammaBuffer::len(self : StatsdistinversegammaBuffer) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_buffer_get(s : StatsdistinversegammaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaBuffer::get(self : StatsdistinversegammaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_set(s : StatsdistinversegammaBuffer, i : Int, v : Double) -> StatsdistinversegammaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaBuffer::set(self : StatsdistinversegammaBuffer, i : Int, v : Double) -> StatsdistinversegammaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_sum(s : StatsdistinversegammaBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaBuffer::sum(self : StatsdistinversegammaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_buffer_mean(s : StatsdistinversegammaBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaBuffer::mean(self : StatsdistinversegammaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_buffer_scale(s : StatsdistinversegammaBuffer, f : Double) -> StatsdistinversegammaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaBuffer::scale(self : StatsdistinversegammaBuffer, f : Double) -> StatsdistinversegammaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_add(a : StatsdistinversegammaBuffer, b : StatsdistinversegammaBuffer) -> StatsdistinversegammaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaBuffer::add(self : StatsdistinversegammaBuffer, other : StatsdistinversegammaBuffer) -> StatsdistinversegammaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_copy(s : StatsdistinversegammaBuffer) -> StatsdistinversegammaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaBuffer::copy(self : StatsdistinversegammaBuffer) -> StatsdistinversegammaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_fill(s : StatsdistinversegammaBuffer, v : Double) -> StatsdistinversegammaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaBuffer::fill(self : StatsdistinversegammaBuffer, v : Double) -> StatsdistinversegammaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_buffer_min(s : StatsdistinversegammaBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaBuffer::min(self : StatsdistinversegammaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_buffer_max(s : StatsdistinversegammaBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaBuffer::max(self : StatsdistinversegammaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_buffer_to_string(s : StatsdistinversegammaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaBuffer::to_string(self : StatsdistinversegammaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_inverse_gamma_cursor_make(size : Int) -> Statsdistinversegamma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_len(s : StatsdistinversegammaCursor) -> Int { s.size }
+pub fn StatsdistinversegammaCursor::len(self : StatsdistinversegammaCursor) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_cursor_get(s : StatsdistinversegammaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaCursor::get(self : StatsdistinversegammaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_set(s : StatsdistinversegammaCursor, i : Int, v : Double) -> StatsdistinversegammaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCursor::set(self : StatsdistinversegammaCursor, i : Int, v : Double) -> StatsdistinversegammaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_sum(s : StatsdistinversegammaCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaCursor::sum(self : StatsdistinversegammaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_cursor_mean(s : StatsdistinversegammaCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaCursor::mean(self : StatsdistinversegammaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_cursor_scale(s : StatsdistinversegammaCursor, f : Double) -> StatsdistinversegammaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCursor::scale(self : StatsdistinversegammaCursor, f : Double) -> StatsdistinversegammaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_add(a : StatsdistinversegammaCursor, b : StatsdistinversegammaCursor) -> StatsdistinversegammaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaCursor::add(self : StatsdistinversegammaCursor, other : StatsdistinversegammaCursor) -> StatsdistinversegammaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_copy(s : StatsdistinversegammaCursor) -> StatsdistinversegammaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCursor::copy(self : StatsdistinversegammaCursor) -> StatsdistinversegammaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_fill(s : StatsdistinversegammaCursor, v : Double) -> StatsdistinversegammaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaCursor::fill(self : StatsdistinversegammaCursor, v : Double) -> StatsdistinversegammaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_cursor_min(s : StatsdistinversegammaCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaCursor::min(self : StatsdistinversegammaCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_cursor_max(s : StatsdistinversegammaCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaCursor::max(self : StatsdistinversegammaCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_cursor_to_string(s : StatsdistinversegammaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaCursor::to_string(self : StatsdistinversegammaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaView {
@@ -912,45 +912,45 @@ pub fn stats_dist_inverse_gamma_view_make(size : Int) -> StatsdistinversegammaVi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_view_len(s : StatsdistinversegammaView) -> Int { s.size }
+pub fn StatsdistinversegammaView::len(self : StatsdistinversegammaView) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_view_get(s : StatsdistinversegammaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaView::get(self : StatsdistinversegammaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_view_set(s : StatsdistinversegammaView, i : Int, v : Double) -> StatsdistinversegammaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaView::set(self : StatsdistinversegammaView, i : Int, v : Double) -> StatsdistinversegammaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_view_sum(s : StatsdistinversegammaView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaView::sum(self : StatsdistinversegammaView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_view_mean(s : StatsdistinversegammaView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaView::mean(self : StatsdistinversegammaView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_view_scale(s : StatsdistinversegammaView, f : Double) -> StatsdistinversegammaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaView::scale(self : StatsdistinversegammaView, f : Double) -> StatsdistinversegammaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_view_add(a : StatsdistinversegammaView, b : StatsdistinversegammaView) -> StatsdistinversegammaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaView::add(self : StatsdistinversegammaView, other : StatsdistinversegammaView) -> StatsdistinversegammaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_view_copy(s : StatsdistinversegammaView) -> StatsdistinversegammaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaView::copy(self : StatsdistinversegammaView) -> StatsdistinversegammaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_view_fill(s : StatsdistinversegammaView, v : Double) -> StatsdistinversegammaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaView::fill(self : StatsdistinversegammaView, v : Double) -> StatsdistinversegammaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_view_min(s : StatsdistinversegammaView) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaView::min(self : StatsdistinversegammaView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_view_max(s : StatsdistinversegammaView) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaView::max(self : StatsdistinversegammaView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_view_to_string(s : StatsdistinversegammaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaView::to_string(self : StatsdistinversegammaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_inverse_gamma_range_make(size : Int) -> StatsdistinversegammaR
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_range_len(s : StatsdistinversegammaRange) -> Int { s.size }
+pub fn StatsdistinversegammaRange::len(self : StatsdistinversegammaRange) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_range_get(s : StatsdistinversegammaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaRange::get(self : StatsdistinversegammaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_range_set(s : StatsdistinversegammaRange, i : Int, v : Double) -> StatsdistinversegammaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaRange::set(self : StatsdistinversegammaRange, i : Int, v : Double) -> StatsdistinversegammaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_range_sum(s : StatsdistinversegammaRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaRange::sum(self : StatsdistinversegammaRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_range_mean(s : StatsdistinversegammaRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaRange::mean(self : StatsdistinversegammaRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_range_scale(s : StatsdistinversegammaRange, f : Double) -> StatsdistinversegammaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaRange::scale(self : StatsdistinversegammaRange, f : Double) -> StatsdistinversegammaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_range_add(a : StatsdistinversegammaRange, b : StatsdistinversegammaRange) -> StatsdistinversegammaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaRange::add(self : StatsdistinversegammaRange, other : StatsdistinversegammaRange) -> StatsdistinversegammaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_range_copy(s : StatsdistinversegammaRange) -> StatsdistinversegammaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaRange::copy(self : StatsdistinversegammaRange) -> StatsdistinversegammaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_range_fill(s : StatsdistinversegammaRange, v : Double) -> StatsdistinversegammaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaRange::fill(self : StatsdistinversegammaRange, v : Double) -> StatsdistinversegammaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_range_min(s : StatsdistinversegammaRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaRange::min(self : StatsdistinversegammaRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_range_max(s : StatsdistinversegammaRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaRange::max(self : StatsdistinversegammaRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_range_to_string(s : StatsdistinversegammaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaRange::to_string(self : StatsdistinversegammaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistinversegammaSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_inverse_gamma_slice_make(size : Int) -> StatsdistinversegammaS
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_inverse_gamma_slice_len(s : StatsdistinversegammaSlice) -> Int { s.size }
+pub fn StatsdistinversegammaSlice::len(self : StatsdistinversegammaSlice) -> Int { self.size }
 
-pub fn stats_dist_inverse_gamma_slice_get(s : StatsdistinversegammaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistinversegammaSlice::get(self : StatsdistinversegammaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_inverse_gamma_slice_set(s : StatsdistinversegammaSlice, i : Int, v : Double) -> StatsdistinversegammaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaSlice::set(self : StatsdistinversegammaSlice, i : Int, v : Double) -> StatsdistinversegammaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_slice_sum(s : StatsdistinversegammaSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistinversegammaSlice::sum(self : StatsdistinversegammaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_inverse_gamma_slice_mean(s : StatsdistinversegammaSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistinversegammaSlice::mean(self : StatsdistinversegammaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_inverse_gamma_slice_scale(s : StatsdistinversegammaSlice, f : Double) -> StatsdistinversegammaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaSlice::scale(self : StatsdistinversegammaSlice, f : Double) -> StatsdistinversegammaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_slice_add(a : StatsdistinversegammaSlice, b : StatsdistinversegammaSlice) -> StatsdistinversegammaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistinversegammaSlice::add(self : StatsdistinversegammaSlice, other : StatsdistinversegammaSlice) -> StatsdistinversegammaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_slice_copy(s : StatsdistinversegammaSlice) -> StatsdistinversegammaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaSlice::copy(self : StatsdistinversegammaSlice) -> StatsdistinversegammaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_slice_fill(s : StatsdistinversegammaSlice, v : Double) -> StatsdistinversegammaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistinversegammaSlice::fill(self : StatsdistinversegammaSlice, v : Double) -> StatsdistinversegammaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_inverse_gamma_slice_min(s : StatsdistinversegammaSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistinversegammaSlice::min(self : StatsdistinversegammaSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_inverse_gamma_slice_max(s : StatsdistinversegammaSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistinversegammaSlice::max(self : StatsdistinversegammaSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_inverse_gamma_slice_to_string(s : StatsdistinversegammaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistinversegammaSlice::to_string(self : StatsdistinversegammaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn crypto_sign_schnorr_frame_make(size : Int) -> CryptosignschnorrFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_frame_len(s : CryptosignschnorrFrame) -> Int { s.size }
+pub fn CryptosignschnorrFrame::len(self : CryptosignschnorrFrame) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_frame_get(s : CryptosignschnorrFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrFrame::get(self : CryptosignschnorrFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_frame_set(s : CryptosignschnorrFrame, i : Int, v : Double) -> CryptosignschnorrFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrFrame::set(self : CryptosignschnorrFrame, i : Int, v : Double) -> CryptosignschnorrFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_frame_sum(s : CryptosignschnorrFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrFrame::sum(self : CryptosignschnorrFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_frame_mean(s : CryptosignschnorrFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrFrame::mean(self : CryptosignschnorrFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_frame_scale(s : CryptosignschnorrFrame, f : Double) -> CryptosignschnorrFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrFrame::scale(self : CryptosignschnorrFrame, f : Double) -> CryptosignschnorrFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_frame_add(a : CryptosignschnorrFrame, b : CryptosignschnorrFrame) -> CryptosignschnorrFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrFrame::add(self : CryptosignschnorrFrame, other : CryptosignschnorrFrame) -> CryptosignschnorrFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_frame_copy(s : CryptosignschnorrFrame) -> CryptosignschnorrFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrFrame::copy(self : CryptosignschnorrFrame) -> CryptosignschnorrFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_frame_fill(s : CryptosignschnorrFrame, v : Double) -> CryptosignschnorrFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrFrame::fill(self : CryptosignschnorrFrame, v : Double) -> CryptosignschnorrFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_frame_min(s : CryptosignschnorrFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrFrame::min(self : CryptosignschnorrFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_frame_max(s : CryptosignschnorrFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrFrame::max(self : CryptosignschnorrFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_frame_to_string(s : CryptosignschnorrFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrFrame::to_string(self : CryptosignschnorrFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrTable {
@@ -402,45 +402,45 @@ pub fn crypto_sign_schnorr_table_make(size : Int) -> CryptosignschnorrTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_table_len(s : CryptosignschnorrTable) -> Int { s.size }
+pub fn CryptosignschnorrTable::len(self : CryptosignschnorrTable) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_table_get(s : CryptosignschnorrTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrTable::get(self : CryptosignschnorrTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_table_set(s : CryptosignschnorrTable, i : Int, v : Double) -> CryptosignschnorrTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrTable::set(self : CryptosignschnorrTable, i : Int, v : Double) -> CryptosignschnorrTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_table_sum(s : CryptosignschnorrTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrTable::sum(self : CryptosignschnorrTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_table_mean(s : CryptosignschnorrTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrTable::mean(self : CryptosignschnorrTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_table_scale(s : CryptosignschnorrTable, f : Double) -> CryptosignschnorrTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrTable::scale(self : CryptosignschnorrTable, f : Double) -> CryptosignschnorrTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_table_add(a : CryptosignschnorrTable, b : CryptosignschnorrTable) -> CryptosignschnorrTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrTable::add(self : CryptosignschnorrTable, other : CryptosignschnorrTable) -> CryptosignschnorrTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_table_copy(s : CryptosignschnorrTable) -> CryptosignschnorrTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrTable::copy(self : CryptosignschnorrTable) -> CryptosignschnorrTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_table_fill(s : CryptosignschnorrTable, v : Double) -> CryptosignschnorrTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrTable::fill(self : CryptosignschnorrTable, v : Double) -> CryptosignschnorrTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_table_min(s : CryptosignschnorrTable) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrTable::min(self : CryptosignschnorrTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_table_max(s : CryptosignschnorrTable) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrTable::max(self : CryptosignschnorrTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_table_to_string(s : CryptosignschnorrTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrTable::to_string(self : CryptosignschnorrTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sign_schnorr_graphn_make(size : Int) -> CryptosignschnorrGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_graphn_len(s : CryptosignschnorrGraphN) -> Int { s.size }
+pub fn CryptosignschnorrGraphN::len(self : CryptosignschnorrGraphN) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_graphn_get(s : CryptosignschnorrGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrGraphN::get(self : CryptosignschnorrGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_graphn_set(s : CryptosignschnorrGraphN, i : Int, v : Double) -> CryptosignschnorrGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrGraphN::set(self : CryptosignschnorrGraphN, i : Int, v : Double) -> CryptosignschnorrGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_graphn_sum(s : CryptosignschnorrGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrGraphN::sum(self : CryptosignschnorrGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_graphn_mean(s : CryptosignschnorrGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrGraphN::mean(self : CryptosignschnorrGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_graphn_scale(s : CryptosignschnorrGraphN, f : Double) -> CryptosignschnorrGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrGraphN::scale(self : CryptosignschnorrGraphN, f : Double) -> CryptosignschnorrGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_graphn_add(a : CryptosignschnorrGraphN, b : CryptosignschnorrGraphN) -> CryptosignschnorrGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrGraphN::add(self : CryptosignschnorrGraphN, other : CryptosignschnorrGraphN) -> CryptosignschnorrGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_graphn_copy(s : CryptosignschnorrGraphN) -> CryptosignschnorrGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrGraphN::copy(self : CryptosignschnorrGraphN) -> CryptosignschnorrGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_graphn_fill(s : CryptosignschnorrGraphN, v : Double) -> CryptosignschnorrGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrGraphN::fill(self : CryptosignschnorrGraphN, v : Double) -> CryptosignschnorrGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_graphn_min(s : CryptosignschnorrGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrGraphN::min(self : CryptosignschnorrGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_graphn_max(s : CryptosignschnorrGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrGraphN::max(self : CryptosignschnorrGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_graphn_to_string(s : CryptosignschnorrGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrGraphN::to_string(self : CryptosignschnorrGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrNode {
@@ -504,45 +504,45 @@ pub fn crypto_sign_schnorr_node_make(size : Int) -> CryptosignschnorrNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_node_len(s : CryptosignschnorrNode) -> Int { s.size }
+pub fn CryptosignschnorrNode::len(self : CryptosignschnorrNode) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_node_get(s : CryptosignschnorrNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrNode::get(self : CryptosignschnorrNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_node_set(s : CryptosignschnorrNode, i : Int, v : Double) -> CryptosignschnorrNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrNode::set(self : CryptosignschnorrNode, i : Int, v : Double) -> CryptosignschnorrNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_node_sum(s : CryptosignschnorrNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrNode::sum(self : CryptosignschnorrNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_node_mean(s : CryptosignschnorrNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrNode::mean(self : CryptosignschnorrNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_node_scale(s : CryptosignschnorrNode, f : Double) -> CryptosignschnorrNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrNode::scale(self : CryptosignschnorrNode, f : Double) -> CryptosignschnorrNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_node_add(a : CryptosignschnorrNode, b : CryptosignschnorrNode) -> CryptosignschnorrNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrNode::add(self : CryptosignschnorrNode, other : CryptosignschnorrNode) -> CryptosignschnorrNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_node_copy(s : CryptosignschnorrNode) -> CryptosignschnorrNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrNode::copy(self : CryptosignschnorrNode) -> CryptosignschnorrNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_node_fill(s : CryptosignschnorrNode, v : Double) -> CryptosignschnorrNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrNode::fill(self : CryptosignschnorrNode, v : Double) -> CryptosignschnorrNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_node_min(s : CryptosignschnorrNode) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrNode::min(self : CryptosignschnorrNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_node_max(s : CryptosignschnorrNode) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrNode::max(self : CryptosignschnorrNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_node_to_string(s : CryptosignschnorrNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrNode::to_string(self : CryptosignschnorrNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sign_schnorr_edge_make(size : Int) -> CryptosignschnorrEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_edge_len(s : CryptosignschnorrEdge) -> Int { s.size }
+pub fn CryptosignschnorrEdge::len(self : CryptosignschnorrEdge) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_edge_get(s : CryptosignschnorrEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrEdge::get(self : CryptosignschnorrEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_edge_set(s : CryptosignschnorrEdge, i : Int, v : Double) -> CryptosignschnorrEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrEdge::set(self : CryptosignschnorrEdge, i : Int, v : Double) -> CryptosignschnorrEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_edge_sum(s : CryptosignschnorrEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrEdge::sum(self : CryptosignschnorrEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_edge_mean(s : CryptosignschnorrEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrEdge::mean(self : CryptosignschnorrEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_edge_scale(s : CryptosignschnorrEdge, f : Double) -> CryptosignschnorrEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrEdge::scale(self : CryptosignschnorrEdge, f : Double) -> CryptosignschnorrEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_edge_add(a : CryptosignschnorrEdge, b : CryptosignschnorrEdge) -> CryptosignschnorrEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrEdge::add(self : CryptosignschnorrEdge, other : CryptosignschnorrEdge) -> CryptosignschnorrEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_edge_copy(s : CryptosignschnorrEdge) -> CryptosignschnorrEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrEdge::copy(self : CryptosignschnorrEdge) -> CryptosignschnorrEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_edge_fill(s : CryptosignschnorrEdge, v : Double) -> CryptosignschnorrEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrEdge::fill(self : CryptosignschnorrEdge, v : Double) -> CryptosignschnorrEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_edge_min(s : CryptosignschnorrEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrEdge::min(self : CryptosignschnorrEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_edge_max(s : CryptosignschnorrEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrEdge::max(self : CryptosignschnorrEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_edge_to_string(s : CryptosignschnorrEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrEdge::to_string(self : CryptosignschnorrEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrPath {
@@ -606,45 +606,45 @@ pub fn crypto_sign_schnorr_path_make(size : Int) -> CryptosignschnorrPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_path_len(s : CryptosignschnorrPath) -> Int { s.size }
+pub fn CryptosignschnorrPath::len(self : CryptosignschnorrPath) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_path_get(s : CryptosignschnorrPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrPath::get(self : CryptosignschnorrPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_path_set(s : CryptosignschnorrPath, i : Int, v : Double) -> CryptosignschnorrPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrPath::set(self : CryptosignschnorrPath, i : Int, v : Double) -> CryptosignschnorrPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_path_sum(s : CryptosignschnorrPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrPath::sum(self : CryptosignschnorrPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_path_mean(s : CryptosignschnorrPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrPath::mean(self : CryptosignschnorrPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_path_scale(s : CryptosignschnorrPath, f : Double) -> CryptosignschnorrPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrPath::scale(self : CryptosignschnorrPath, f : Double) -> CryptosignschnorrPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_path_add(a : CryptosignschnorrPath, b : CryptosignschnorrPath) -> CryptosignschnorrPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrPath::add(self : CryptosignschnorrPath, other : CryptosignschnorrPath) -> CryptosignschnorrPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_path_copy(s : CryptosignschnorrPath) -> CryptosignschnorrPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrPath::copy(self : CryptosignschnorrPath) -> CryptosignschnorrPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_path_fill(s : CryptosignschnorrPath, v : Double) -> CryptosignschnorrPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrPath::fill(self : CryptosignschnorrPath, v : Double) -> CryptosignschnorrPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_path_min(s : CryptosignschnorrPath) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrPath::min(self : CryptosignschnorrPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_path_max(s : CryptosignschnorrPath) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrPath::max(self : CryptosignschnorrPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_path_to_string(s : CryptosignschnorrPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrPath::to_string(self : CryptosignschnorrPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sign_schnorr_cluster_make(size : Int) -> CryptosignschnorrCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_cluster_len(s : CryptosignschnorrCluster) -> Int { s.size }
+pub fn CryptosignschnorrCluster::len(self : CryptosignschnorrCluster) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_cluster_get(s : CryptosignschnorrCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrCluster::get(self : CryptosignschnorrCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_cluster_set(s : CryptosignschnorrCluster, i : Int, v : Double) -> CryptosignschnorrCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCluster::set(self : CryptosignschnorrCluster, i : Int, v : Double) -> CryptosignschnorrCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cluster_sum(s : CryptosignschnorrCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrCluster::sum(self : CryptosignschnorrCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_cluster_mean(s : CryptosignschnorrCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrCluster::mean(self : CryptosignschnorrCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_cluster_scale(s : CryptosignschnorrCluster, f : Double) -> CryptosignschnorrCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCluster::scale(self : CryptosignschnorrCluster, f : Double) -> CryptosignschnorrCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cluster_add(a : CryptosignschnorrCluster, b : CryptosignschnorrCluster) -> CryptosignschnorrCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrCluster::add(self : CryptosignschnorrCluster, other : CryptosignschnorrCluster) -> CryptosignschnorrCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cluster_copy(s : CryptosignschnorrCluster) -> CryptosignschnorrCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCluster::copy(self : CryptosignschnorrCluster) -> CryptosignschnorrCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cluster_fill(s : CryptosignschnorrCluster, v : Double) -> CryptosignschnorrCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCluster::fill(self : CryptosignschnorrCluster, v : Double) -> CryptosignschnorrCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cluster_min(s : CryptosignschnorrCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrCluster::min(self : CryptosignschnorrCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_cluster_max(s : CryptosignschnorrCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrCluster::max(self : CryptosignschnorrCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_cluster_to_string(s : CryptosignschnorrCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrCluster::to_string(self : CryptosignschnorrCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrModel {
@@ -708,45 +708,45 @@ pub fn crypto_sign_schnorr_model_make(size : Int) -> CryptosignschnorrModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_model_len(s : CryptosignschnorrModel) -> Int { s.size }
+pub fn CryptosignschnorrModel::len(self : CryptosignschnorrModel) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_model_get(s : CryptosignschnorrModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrModel::get(self : CryptosignschnorrModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_model_set(s : CryptosignschnorrModel, i : Int, v : Double) -> CryptosignschnorrModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrModel::set(self : CryptosignschnorrModel, i : Int, v : Double) -> CryptosignschnorrModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_model_sum(s : CryptosignschnorrModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrModel::sum(self : CryptosignschnorrModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_model_mean(s : CryptosignschnorrModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrModel::mean(self : CryptosignschnorrModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_model_scale(s : CryptosignschnorrModel, f : Double) -> CryptosignschnorrModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrModel::scale(self : CryptosignschnorrModel, f : Double) -> CryptosignschnorrModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_model_add(a : CryptosignschnorrModel, b : CryptosignschnorrModel) -> CryptosignschnorrModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrModel::add(self : CryptosignschnorrModel, other : CryptosignschnorrModel) -> CryptosignschnorrModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_model_copy(s : CryptosignschnorrModel) -> CryptosignschnorrModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrModel::copy(self : CryptosignschnorrModel) -> CryptosignschnorrModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_model_fill(s : CryptosignschnorrModel, v : Double) -> CryptosignschnorrModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrModel::fill(self : CryptosignschnorrModel, v : Double) -> CryptosignschnorrModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_model_min(s : CryptosignschnorrModel) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrModel::min(self : CryptosignschnorrModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_model_max(s : CryptosignschnorrModel) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrModel::max(self : CryptosignschnorrModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_model_to_string(s : CryptosignschnorrModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrModel::to_string(self : CryptosignschnorrModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sign_schnorr_layer_make(size : Int) -> CryptosignschnorrLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_layer_len(s : CryptosignschnorrLayer) -> Int { s.size }
+pub fn CryptosignschnorrLayer::len(self : CryptosignschnorrLayer) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_layer_get(s : CryptosignschnorrLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrLayer::get(self : CryptosignschnorrLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_layer_set(s : CryptosignschnorrLayer, i : Int, v : Double) -> CryptosignschnorrLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrLayer::set(self : CryptosignschnorrLayer, i : Int, v : Double) -> CryptosignschnorrLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_layer_sum(s : CryptosignschnorrLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrLayer::sum(self : CryptosignschnorrLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_layer_mean(s : CryptosignschnorrLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrLayer::mean(self : CryptosignschnorrLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_layer_scale(s : CryptosignschnorrLayer, f : Double) -> CryptosignschnorrLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrLayer::scale(self : CryptosignschnorrLayer, f : Double) -> CryptosignschnorrLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_layer_add(a : CryptosignschnorrLayer, b : CryptosignschnorrLayer) -> CryptosignschnorrLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrLayer::add(self : CryptosignschnorrLayer, other : CryptosignschnorrLayer) -> CryptosignschnorrLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_layer_copy(s : CryptosignschnorrLayer) -> CryptosignschnorrLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrLayer::copy(self : CryptosignschnorrLayer) -> CryptosignschnorrLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_layer_fill(s : CryptosignschnorrLayer, v : Double) -> CryptosignschnorrLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrLayer::fill(self : CryptosignschnorrLayer, v : Double) -> CryptosignschnorrLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_layer_min(s : CryptosignschnorrLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrLayer::min(self : CryptosignschnorrLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_layer_max(s : CryptosignschnorrLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrLayer::max(self : CryptosignschnorrLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_layer_to_string(s : CryptosignschnorrLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrLayer::to_string(self : CryptosignschnorrLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sign_schnorr_buffer_make(size : Int) -> CryptosignschnorrBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_buffer_len(s : CryptosignschnorrBuffer) -> Int { s.size }
+pub fn CryptosignschnorrBuffer::len(self : CryptosignschnorrBuffer) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_buffer_get(s : CryptosignschnorrBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrBuffer::get(self : CryptosignschnorrBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_buffer_set(s : CryptosignschnorrBuffer, i : Int, v : Double) -> CryptosignschnorrBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrBuffer::set(self : CryptosignschnorrBuffer, i : Int, v : Double) -> CryptosignschnorrBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_buffer_sum(s : CryptosignschnorrBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrBuffer::sum(self : CryptosignschnorrBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_buffer_mean(s : CryptosignschnorrBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrBuffer::mean(self : CryptosignschnorrBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_buffer_scale(s : CryptosignschnorrBuffer, f : Double) -> CryptosignschnorrBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrBuffer::scale(self : CryptosignschnorrBuffer, f : Double) -> CryptosignschnorrBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_buffer_add(a : CryptosignschnorrBuffer, b : CryptosignschnorrBuffer) -> CryptosignschnorrBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrBuffer::add(self : CryptosignschnorrBuffer, other : CryptosignschnorrBuffer) -> CryptosignschnorrBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_buffer_copy(s : CryptosignschnorrBuffer) -> CryptosignschnorrBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrBuffer::copy(self : CryptosignschnorrBuffer) -> CryptosignschnorrBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_buffer_fill(s : CryptosignschnorrBuffer, v : Double) -> CryptosignschnorrBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrBuffer::fill(self : CryptosignschnorrBuffer, v : Double) -> CryptosignschnorrBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_buffer_min(s : CryptosignschnorrBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrBuffer::min(self : CryptosignschnorrBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_buffer_max(s : CryptosignschnorrBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrBuffer::max(self : CryptosignschnorrBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_buffer_to_string(s : CryptosignschnorrBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrBuffer::to_string(self : CryptosignschnorrBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sign_schnorr_cursor_make(size : Int) -> CryptosignschnorrCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_cursor_len(s : CryptosignschnorrCursor) -> Int { s.size }
+pub fn CryptosignschnorrCursor::len(self : CryptosignschnorrCursor) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_cursor_get(s : CryptosignschnorrCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrCursor::get(self : CryptosignschnorrCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_cursor_set(s : CryptosignschnorrCursor, i : Int, v : Double) -> CryptosignschnorrCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCursor::set(self : CryptosignschnorrCursor, i : Int, v : Double) -> CryptosignschnorrCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cursor_sum(s : CryptosignschnorrCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrCursor::sum(self : CryptosignschnorrCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_cursor_mean(s : CryptosignschnorrCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrCursor::mean(self : CryptosignschnorrCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_cursor_scale(s : CryptosignschnorrCursor, f : Double) -> CryptosignschnorrCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCursor::scale(self : CryptosignschnorrCursor, f : Double) -> CryptosignschnorrCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cursor_add(a : CryptosignschnorrCursor, b : CryptosignschnorrCursor) -> CryptosignschnorrCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrCursor::add(self : CryptosignschnorrCursor, other : CryptosignschnorrCursor) -> CryptosignschnorrCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cursor_copy(s : CryptosignschnorrCursor) -> CryptosignschnorrCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCursor::copy(self : CryptosignschnorrCursor) -> CryptosignschnorrCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cursor_fill(s : CryptosignschnorrCursor, v : Double) -> CryptosignschnorrCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrCursor::fill(self : CryptosignschnorrCursor, v : Double) -> CryptosignschnorrCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_cursor_min(s : CryptosignschnorrCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrCursor::min(self : CryptosignschnorrCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_cursor_max(s : CryptosignschnorrCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrCursor::max(self : CryptosignschnorrCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_cursor_to_string(s : CryptosignschnorrCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrCursor::to_string(self : CryptosignschnorrCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrView {
@@ -912,45 +912,45 @@ pub fn crypto_sign_schnorr_view_make(size : Int) -> CryptosignschnorrView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_view_len(s : CryptosignschnorrView) -> Int { s.size }
+pub fn CryptosignschnorrView::len(self : CryptosignschnorrView) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_view_get(s : CryptosignschnorrView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrView::get(self : CryptosignschnorrView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_view_set(s : CryptosignschnorrView, i : Int, v : Double) -> CryptosignschnorrView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrView::set(self : CryptosignschnorrView, i : Int, v : Double) -> CryptosignschnorrView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_view_sum(s : CryptosignschnorrView) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrView::sum(self : CryptosignschnorrView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_view_mean(s : CryptosignschnorrView) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrView::mean(self : CryptosignschnorrView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_view_scale(s : CryptosignschnorrView, f : Double) -> CryptosignschnorrView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrView::scale(self : CryptosignschnorrView, f : Double) -> CryptosignschnorrView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_view_add(a : CryptosignschnorrView, b : CryptosignschnorrView) -> CryptosignschnorrView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrView::add(self : CryptosignschnorrView, other : CryptosignschnorrView) -> CryptosignschnorrView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_view_copy(s : CryptosignschnorrView) -> CryptosignschnorrView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrView::copy(self : CryptosignschnorrView) -> CryptosignschnorrView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_view_fill(s : CryptosignschnorrView, v : Double) -> CryptosignschnorrView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrView::fill(self : CryptosignschnorrView, v : Double) -> CryptosignschnorrView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_view_min(s : CryptosignschnorrView) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrView::min(self : CryptosignschnorrView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_view_max(s : CryptosignschnorrView) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrView::max(self : CryptosignschnorrView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_view_to_string(s : CryptosignschnorrView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrView::to_string(self : CryptosignschnorrView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrRange {
@@ -963,45 +963,45 @@ pub fn crypto_sign_schnorr_range_make(size : Int) -> CryptosignschnorrRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_range_len(s : CryptosignschnorrRange) -> Int { s.size }
+pub fn CryptosignschnorrRange::len(self : CryptosignschnorrRange) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_range_get(s : CryptosignschnorrRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrRange::get(self : CryptosignschnorrRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_range_set(s : CryptosignschnorrRange, i : Int, v : Double) -> CryptosignschnorrRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrRange::set(self : CryptosignschnorrRange, i : Int, v : Double) -> CryptosignschnorrRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_range_sum(s : CryptosignschnorrRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrRange::sum(self : CryptosignschnorrRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_range_mean(s : CryptosignschnorrRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrRange::mean(self : CryptosignschnorrRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_range_scale(s : CryptosignschnorrRange, f : Double) -> CryptosignschnorrRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrRange::scale(self : CryptosignschnorrRange, f : Double) -> CryptosignschnorrRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_range_add(a : CryptosignschnorrRange, b : CryptosignschnorrRange) -> CryptosignschnorrRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrRange::add(self : CryptosignschnorrRange, other : CryptosignschnorrRange) -> CryptosignschnorrRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_range_copy(s : CryptosignschnorrRange) -> CryptosignschnorrRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrRange::copy(self : CryptosignschnorrRange) -> CryptosignschnorrRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_range_fill(s : CryptosignschnorrRange, v : Double) -> CryptosignschnorrRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrRange::fill(self : CryptosignschnorrRange, v : Double) -> CryptosignschnorrRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_range_min(s : CryptosignschnorrRange) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrRange::min(self : CryptosignschnorrRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_range_max(s : CryptosignschnorrRange) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrRange::max(self : CryptosignschnorrRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_range_to_string(s : CryptosignschnorrRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrRange::to_string(self : CryptosignschnorrRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignschnorrSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sign_schnorr_slice_make(size : Int) -> CryptosignschnorrSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_schnorr_slice_len(s : CryptosignschnorrSlice) -> Int { s.size }
+pub fn CryptosignschnorrSlice::len(self : CryptosignschnorrSlice) -> Int { self.size }
 
-pub fn crypto_sign_schnorr_slice_get(s : CryptosignschnorrSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignschnorrSlice::get(self : CryptosignschnorrSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_schnorr_slice_set(s : CryptosignschnorrSlice, i : Int, v : Double) -> CryptosignschnorrSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignschnorrSlice::set(self : CryptosignschnorrSlice, i : Int, v : Double) -> CryptosignschnorrSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_slice_sum(s : CryptosignschnorrSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosignschnorrSlice::sum(self : CryptosignschnorrSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_schnorr_slice_mean(s : CryptosignschnorrSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosignschnorrSlice::mean(self : CryptosignschnorrSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_schnorr_slice_scale(s : CryptosignschnorrSlice, f : Double) -> CryptosignschnorrSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrSlice::scale(self : CryptosignschnorrSlice, f : Double) -> CryptosignschnorrSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_slice_add(a : CryptosignschnorrSlice, b : CryptosignschnorrSlice) -> CryptosignschnorrSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignschnorrSlice::add(self : CryptosignschnorrSlice, other : CryptosignschnorrSlice) -> CryptosignschnorrSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_slice_copy(s : CryptosignschnorrSlice) -> CryptosignschnorrSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrSlice::copy(self : CryptosignschnorrSlice) -> CryptosignschnorrSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_slice_fill(s : CryptosignschnorrSlice, v : Double) -> CryptosignschnorrSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignschnorrSlice::fill(self : CryptosignschnorrSlice, v : Double) -> CryptosignschnorrSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_schnorr_slice_min(s : CryptosignschnorrSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosignschnorrSlice::min(self : CryptosignschnorrSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_schnorr_slice_max(s : CryptosignschnorrSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosignschnorrSlice::max(self : CryptosignschnorrSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_schnorr_slice_to_string(s : CryptosignschnorrSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignschnorrSlice::to_string(self : CryptosignschnorrSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

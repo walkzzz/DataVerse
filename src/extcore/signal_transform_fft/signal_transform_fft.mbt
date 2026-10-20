@@ -351,45 +351,45 @@ pub fn signal_transform_fft_frame_make(size : Int) -> SignaltransformfftFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_frame_len(s : SignaltransformfftFrame) -> Int { s.size }
+pub fn SignaltransformfftFrame::len(self : SignaltransformfftFrame) -> Int { self.size }
 
-pub fn signal_transform_fft_frame_get(s : SignaltransformfftFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftFrame::get(self : SignaltransformfftFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_frame_set(s : SignaltransformfftFrame, i : Int, v : Double) -> SignaltransformfftFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftFrame::set(self : SignaltransformfftFrame, i : Int, v : Double) -> SignaltransformfftFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_frame_sum(s : SignaltransformfftFrame) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftFrame::sum(self : SignaltransformfftFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_frame_mean(s : SignaltransformfftFrame) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftFrame::mean(self : SignaltransformfftFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_frame_scale(s : SignaltransformfftFrame, f : Double) -> SignaltransformfftFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftFrame::scale(self : SignaltransformfftFrame, f : Double) -> SignaltransformfftFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_frame_add(a : SignaltransformfftFrame, b : SignaltransformfftFrame) -> SignaltransformfftFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftFrame::add(self : SignaltransformfftFrame, other : SignaltransformfftFrame) -> SignaltransformfftFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_frame_copy(s : SignaltransformfftFrame) -> SignaltransformfftFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftFrame::copy(self : SignaltransformfftFrame) -> SignaltransformfftFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_frame_fill(s : SignaltransformfftFrame, v : Double) -> SignaltransformfftFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftFrame::fill(self : SignaltransformfftFrame, v : Double) -> SignaltransformfftFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_frame_min(s : SignaltransformfftFrame) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftFrame::min(self : SignaltransformfftFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_frame_max(s : SignaltransformfftFrame) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftFrame::max(self : SignaltransformfftFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_frame_to_string(s : SignaltransformfftFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftFrame::to_string(self : SignaltransformfftFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftTable {
@@ -402,45 +402,45 @@ pub fn signal_transform_fft_table_make(size : Int) -> SignaltransformfftTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_table_len(s : SignaltransformfftTable) -> Int { s.size }
+pub fn SignaltransformfftTable::len(self : SignaltransformfftTable) -> Int { self.size }
 
-pub fn signal_transform_fft_table_get(s : SignaltransformfftTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftTable::get(self : SignaltransformfftTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_table_set(s : SignaltransformfftTable, i : Int, v : Double) -> SignaltransformfftTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftTable::set(self : SignaltransformfftTable, i : Int, v : Double) -> SignaltransformfftTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_table_sum(s : SignaltransformfftTable) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftTable::sum(self : SignaltransformfftTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_table_mean(s : SignaltransformfftTable) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftTable::mean(self : SignaltransformfftTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_table_scale(s : SignaltransformfftTable, f : Double) -> SignaltransformfftTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftTable::scale(self : SignaltransformfftTable, f : Double) -> SignaltransformfftTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_table_add(a : SignaltransformfftTable, b : SignaltransformfftTable) -> SignaltransformfftTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftTable::add(self : SignaltransformfftTable, other : SignaltransformfftTable) -> SignaltransformfftTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_table_copy(s : SignaltransformfftTable) -> SignaltransformfftTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftTable::copy(self : SignaltransformfftTable) -> SignaltransformfftTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_table_fill(s : SignaltransformfftTable, v : Double) -> SignaltransformfftTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftTable::fill(self : SignaltransformfftTable, v : Double) -> SignaltransformfftTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_table_min(s : SignaltransformfftTable) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftTable::min(self : SignaltransformfftTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_table_max(s : SignaltransformfftTable) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftTable::max(self : SignaltransformfftTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_table_to_string(s : SignaltransformfftTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftTable::to_string(self : SignaltransformfftTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftGraphN {
@@ -453,45 +453,45 @@ pub fn signal_transform_fft_graphn_make(size : Int) -> SignaltransformfftGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_graphn_len(s : SignaltransformfftGraphN) -> Int { s.size }
+pub fn SignaltransformfftGraphN::len(self : SignaltransformfftGraphN) -> Int { self.size }
 
-pub fn signal_transform_fft_graphn_get(s : SignaltransformfftGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftGraphN::get(self : SignaltransformfftGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_graphn_set(s : SignaltransformfftGraphN, i : Int, v : Double) -> SignaltransformfftGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftGraphN::set(self : SignaltransformfftGraphN, i : Int, v : Double) -> SignaltransformfftGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_graphn_sum(s : SignaltransformfftGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftGraphN::sum(self : SignaltransformfftGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_graphn_mean(s : SignaltransformfftGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftGraphN::mean(self : SignaltransformfftGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_graphn_scale(s : SignaltransformfftGraphN, f : Double) -> SignaltransformfftGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftGraphN::scale(self : SignaltransformfftGraphN, f : Double) -> SignaltransformfftGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_graphn_add(a : SignaltransformfftGraphN, b : SignaltransformfftGraphN) -> SignaltransformfftGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftGraphN::add(self : SignaltransformfftGraphN, other : SignaltransformfftGraphN) -> SignaltransformfftGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_graphn_copy(s : SignaltransformfftGraphN) -> SignaltransformfftGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftGraphN::copy(self : SignaltransformfftGraphN) -> SignaltransformfftGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_graphn_fill(s : SignaltransformfftGraphN, v : Double) -> SignaltransformfftGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftGraphN::fill(self : SignaltransformfftGraphN, v : Double) -> SignaltransformfftGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_graphn_min(s : SignaltransformfftGraphN) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftGraphN::min(self : SignaltransformfftGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_graphn_max(s : SignaltransformfftGraphN) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftGraphN::max(self : SignaltransformfftGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_graphn_to_string(s : SignaltransformfftGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftGraphN::to_string(self : SignaltransformfftGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftNode {
@@ -504,45 +504,45 @@ pub fn signal_transform_fft_node_make(size : Int) -> SignaltransformfftNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_node_len(s : SignaltransformfftNode) -> Int { s.size }
+pub fn SignaltransformfftNode::len(self : SignaltransformfftNode) -> Int { self.size }
 
-pub fn signal_transform_fft_node_get(s : SignaltransformfftNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftNode::get(self : SignaltransformfftNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_node_set(s : SignaltransformfftNode, i : Int, v : Double) -> SignaltransformfftNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftNode::set(self : SignaltransformfftNode, i : Int, v : Double) -> SignaltransformfftNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_node_sum(s : SignaltransformfftNode) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftNode::sum(self : SignaltransformfftNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_node_mean(s : SignaltransformfftNode) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftNode::mean(self : SignaltransformfftNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_node_scale(s : SignaltransformfftNode, f : Double) -> SignaltransformfftNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftNode::scale(self : SignaltransformfftNode, f : Double) -> SignaltransformfftNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_node_add(a : SignaltransformfftNode, b : SignaltransformfftNode) -> SignaltransformfftNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftNode::add(self : SignaltransformfftNode, other : SignaltransformfftNode) -> SignaltransformfftNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_node_copy(s : SignaltransformfftNode) -> SignaltransformfftNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftNode::copy(self : SignaltransformfftNode) -> SignaltransformfftNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_node_fill(s : SignaltransformfftNode, v : Double) -> SignaltransformfftNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftNode::fill(self : SignaltransformfftNode, v : Double) -> SignaltransformfftNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_node_min(s : SignaltransformfftNode) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftNode::min(self : SignaltransformfftNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_node_max(s : SignaltransformfftNode) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftNode::max(self : SignaltransformfftNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_node_to_string(s : SignaltransformfftNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftNode::to_string(self : SignaltransformfftNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftEdge {
@@ -555,45 +555,45 @@ pub fn signal_transform_fft_edge_make(size : Int) -> SignaltransformfftEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_edge_len(s : SignaltransformfftEdge) -> Int { s.size }
+pub fn SignaltransformfftEdge::len(self : SignaltransformfftEdge) -> Int { self.size }
 
-pub fn signal_transform_fft_edge_get(s : SignaltransformfftEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftEdge::get(self : SignaltransformfftEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_edge_set(s : SignaltransformfftEdge, i : Int, v : Double) -> SignaltransformfftEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftEdge::set(self : SignaltransformfftEdge, i : Int, v : Double) -> SignaltransformfftEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_edge_sum(s : SignaltransformfftEdge) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftEdge::sum(self : SignaltransformfftEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_edge_mean(s : SignaltransformfftEdge) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftEdge::mean(self : SignaltransformfftEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_edge_scale(s : SignaltransformfftEdge, f : Double) -> SignaltransformfftEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftEdge::scale(self : SignaltransformfftEdge, f : Double) -> SignaltransformfftEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_edge_add(a : SignaltransformfftEdge, b : SignaltransformfftEdge) -> SignaltransformfftEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftEdge::add(self : SignaltransformfftEdge, other : SignaltransformfftEdge) -> SignaltransformfftEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_edge_copy(s : SignaltransformfftEdge) -> SignaltransformfftEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftEdge::copy(self : SignaltransformfftEdge) -> SignaltransformfftEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_edge_fill(s : SignaltransformfftEdge, v : Double) -> SignaltransformfftEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftEdge::fill(self : SignaltransformfftEdge, v : Double) -> SignaltransformfftEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_edge_min(s : SignaltransformfftEdge) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftEdge::min(self : SignaltransformfftEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_edge_max(s : SignaltransformfftEdge) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftEdge::max(self : SignaltransformfftEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_edge_to_string(s : SignaltransformfftEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftEdge::to_string(self : SignaltransformfftEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftPath {
@@ -606,45 +606,45 @@ pub fn signal_transform_fft_path_make(size : Int) -> SignaltransformfftPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_path_len(s : SignaltransformfftPath) -> Int { s.size }
+pub fn SignaltransformfftPath::len(self : SignaltransformfftPath) -> Int { self.size }
 
-pub fn signal_transform_fft_path_get(s : SignaltransformfftPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftPath::get(self : SignaltransformfftPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_path_set(s : SignaltransformfftPath, i : Int, v : Double) -> SignaltransformfftPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftPath::set(self : SignaltransformfftPath, i : Int, v : Double) -> SignaltransformfftPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_path_sum(s : SignaltransformfftPath) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftPath::sum(self : SignaltransformfftPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_path_mean(s : SignaltransformfftPath) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftPath::mean(self : SignaltransformfftPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_path_scale(s : SignaltransformfftPath, f : Double) -> SignaltransformfftPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftPath::scale(self : SignaltransformfftPath, f : Double) -> SignaltransformfftPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_path_add(a : SignaltransformfftPath, b : SignaltransformfftPath) -> SignaltransformfftPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftPath::add(self : SignaltransformfftPath, other : SignaltransformfftPath) -> SignaltransformfftPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_path_copy(s : SignaltransformfftPath) -> SignaltransformfftPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftPath::copy(self : SignaltransformfftPath) -> SignaltransformfftPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_path_fill(s : SignaltransformfftPath, v : Double) -> SignaltransformfftPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftPath::fill(self : SignaltransformfftPath, v : Double) -> SignaltransformfftPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_path_min(s : SignaltransformfftPath) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftPath::min(self : SignaltransformfftPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_path_max(s : SignaltransformfftPath) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftPath::max(self : SignaltransformfftPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_path_to_string(s : SignaltransformfftPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftPath::to_string(self : SignaltransformfftPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftCluster {
@@ -657,45 +657,45 @@ pub fn signal_transform_fft_cluster_make(size : Int) -> SignaltransformfftCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_cluster_len(s : SignaltransformfftCluster) -> Int { s.size }
+pub fn SignaltransformfftCluster::len(self : SignaltransformfftCluster) -> Int { self.size }
 
-pub fn signal_transform_fft_cluster_get(s : SignaltransformfftCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftCluster::get(self : SignaltransformfftCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_cluster_set(s : SignaltransformfftCluster, i : Int, v : Double) -> SignaltransformfftCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftCluster::set(self : SignaltransformfftCluster, i : Int, v : Double) -> SignaltransformfftCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cluster_sum(s : SignaltransformfftCluster) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftCluster::sum(self : SignaltransformfftCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_cluster_mean(s : SignaltransformfftCluster) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftCluster::mean(self : SignaltransformfftCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_cluster_scale(s : SignaltransformfftCluster, f : Double) -> SignaltransformfftCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftCluster::scale(self : SignaltransformfftCluster, f : Double) -> SignaltransformfftCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cluster_add(a : SignaltransformfftCluster, b : SignaltransformfftCluster) -> SignaltransformfftCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftCluster::add(self : SignaltransformfftCluster, other : SignaltransformfftCluster) -> SignaltransformfftCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cluster_copy(s : SignaltransformfftCluster) -> SignaltransformfftCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftCluster::copy(self : SignaltransformfftCluster) -> SignaltransformfftCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cluster_fill(s : SignaltransformfftCluster, v : Double) -> SignaltransformfftCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftCluster::fill(self : SignaltransformfftCluster, v : Double) -> SignaltransformfftCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cluster_min(s : SignaltransformfftCluster) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftCluster::min(self : SignaltransformfftCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_cluster_max(s : SignaltransformfftCluster) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftCluster::max(self : SignaltransformfftCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_cluster_to_string(s : SignaltransformfftCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftCluster::to_string(self : SignaltransformfftCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftModel {
@@ -708,45 +708,45 @@ pub fn signal_transform_fft_model_make(size : Int) -> SignaltransformfftModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_model_len(s : SignaltransformfftModel) -> Int { s.size }
+pub fn SignaltransformfftModel::len(self : SignaltransformfftModel) -> Int { self.size }
 
-pub fn signal_transform_fft_model_get(s : SignaltransformfftModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftModel::get(self : SignaltransformfftModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_model_set(s : SignaltransformfftModel, i : Int, v : Double) -> SignaltransformfftModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftModel::set(self : SignaltransformfftModel, i : Int, v : Double) -> SignaltransformfftModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_model_sum(s : SignaltransformfftModel) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftModel::sum(self : SignaltransformfftModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_model_mean(s : SignaltransformfftModel) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftModel::mean(self : SignaltransformfftModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_model_scale(s : SignaltransformfftModel, f : Double) -> SignaltransformfftModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftModel::scale(self : SignaltransformfftModel, f : Double) -> SignaltransformfftModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_model_add(a : SignaltransformfftModel, b : SignaltransformfftModel) -> SignaltransformfftModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftModel::add(self : SignaltransformfftModel, other : SignaltransformfftModel) -> SignaltransformfftModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_model_copy(s : SignaltransformfftModel) -> SignaltransformfftModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftModel::copy(self : SignaltransformfftModel) -> SignaltransformfftModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_model_fill(s : SignaltransformfftModel, v : Double) -> SignaltransformfftModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftModel::fill(self : SignaltransformfftModel, v : Double) -> SignaltransformfftModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_model_min(s : SignaltransformfftModel) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftModel::min(self : SignaltransformfftModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_model_max(s : SignaltransformfftModel) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftModel::max(self : SignaltransformfftModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_model_to_string(s : SignaltransformfftModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftModel::to_string(self : SignaltransformfftModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftLayer {
@@ -759,45 +759,45 @@ pub fn signal_transform_fft_layer_make(size : Int) -> SignaltransformfftLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_layer_len(s : SignaltransformfftLayer) -> Int { s.size }
+pub fn SignaltransformfftLayer::len(self : SignaltransformfftLayer) -> Int { self.size }
 
-pub fn signal_transform_fft_layer_get(s : SignaltransformfftLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftLayer::get(self : SignaltransformfftLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_layer_set(s : SignaltransformfftLayer, i : Int, v : Double) -> SignaltransformfftLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftLayer::set(self : SignaltransformfftLayer, i : Int, v : Double) -> SignaltransformfftLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_layer_sum(s : SignaltransformfftLayer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftLayer::sum(self : SignaltransformfftLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_layer_mean(s : SignaltransformfftLayer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftLayer::mean(self : SignaltransformfftLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_layer_scale(s : SignaltransformfftLayer, f : Double) -> SignaltransformfftLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftLayer::scale(self : SignaltransformfftLayer, f : Double) -> SignaltransformfftLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_layer_add(a : SignaltransformfftLayer, b : SignaltransformfftLayer) -> SignaltransformfftLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftLayer::add(self : SignaltransformfftLayer, other : SignaltransformfftLayer) -> SignaltransformfftLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_layer_copy(s : SignaltransformfftLayer) -> SignaltransformfftLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftLayer::copy(self : SignaltransformfftLayer) -> SignaltransformfftLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_layer_fill(s : SignaltransformfftLayer, v : Double) -> SignaltransformfftLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftLayer::fill(self : SignaltransformfftLayer, v : Double) -> SignaltransformfftLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_layer_min(s : SignaltransformfftLayer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftLayer::min(self : SignaltransformfftLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_layer_max(s : SignaltransformfftLayer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftLayer::max(self : SignaltransformfftLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_layer_to_string(s : SignaltransformfftLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftLayer::to_string(self : SignaltransformfftLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftBuffer {
@@ -810,45 +810,45 @@ pub fn signal_transform_fft_buffer_make(size : Int) -> SignaltransformfftBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_buffer_len(s : SignaltransformfftBuffer) -> Int { s.size }
+pub fn SignaltransformfftBuffer::len(self : SignaltransformfftBuffer) -> Int { self.size }
 
-pub fn signal_transform_fft_buffer_get(s : SignaltransformfftBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftBuffer::get(self : SignaltransformfftBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_buffer_set(s : SignaltransformfftBuffer, i : Int, v : Double) -> SignaltransformfftBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftBuffer::set(self : SignaltransformfftBuffer, i : Int, v : Double) -> SignaltransformfftBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_buffer_sum(s : SignaltransformfftBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftBuffer::sum(self : SignaltransformfftBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_buffer_mean(s : SignaltransformfftBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftBuffer::mean(self : SignaltransformfftBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_buffer_scale(s : SignaltransformfftBuffer, f : Double) -> SignaltransformfftBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftBuffer::scale(self : SignaltransformfftBuffer, f : Double) -> SignaltransformfftBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_buffer_add(a : SignaltransformfftBuffer, b : SignaltransformfftBuffer) -> SignaltransformfftBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftBuffer::add(self : SignaltransformfftBuffer, other : SignaltransformfftBuffer) -> SignaltransformfftBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_buffer_copy(s : SignaltransformfftBuffer) -> SignaltransformfftBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftBuffer::copy(self : SignaltransformfftBuffer) -> SignaltransformfftBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_buffer_fill(s : SignaltransformfftBuffer, v : Double) -> SignaltransformfftBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftBuffer::fill(self : SignaltransformfftBuffer, v : Double) -> SignaltransformfftBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_buffer_min(s : SignaltransformfftBuffer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftBuffer::min(self : SignaltransformfftBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_buffer_max(s : SignaltransformfftBuffer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftBuffer::max(self : SignaltransformfftBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_buffer_to_string(s : SignaltransformfftBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftBuffer::to_string(self : SignaltransformfftBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftCursor {
@@ -861,45 +861,45 @@ pub fn signal_transform_fft_cursor_make(size : Int) -> SignaltransformfftCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_cursor_len(s : SignaltransformfftCursor) -> Int { s.size }
+pub fn SignaltransformfftCursor::len(self : SignaltransformfftCursor) -> Int { self.size }
 
-pub fn signal_transform_fft_cursor_get(s : SignaltransformfftCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftCursor::get(self : SignaltransformfftCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_cursor_set(s : SignaltransformfftCursor, i : Int, v : Double) -> SignaltransformfftCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftCursor::set(self : SignaltransformfftCursor, i : Int, v : Double) -> SignaltransformfftCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cursor_sum(s : SignaltransformfftCursor) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftCursor::sum(self : SignaltransformfftCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_cursor_mean(s : SignaltransformfftCursor) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftCursor::mean(self : SignaltransformfftCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_cursor_scale(s : SignaltransformfftCursor, f : Double) -> SignaltransformfftCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftCursor::scale(self : SignaltransformfftCursor, f : Double) -> SignaltransformfftCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cursor_add(a : SignaltransformfftCursor, b : SignaltransformfftCursor) -> SignaltransformfftCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftCursor::add(self : SignaltransformfftCursor, other : SignaltransformfftCursor) -> SignaltransformfftCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cursor_copy(s : SignaltransformfftCursor) -> SignaltransformfftCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftCursor::copy(self : SignaltransformfftCursor) -> SignaltransformfftCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cursor_fill(s : SignaltransformfftCursor, v : Double) -> SignaltransformfftCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftCursor::fill(self : SignaltransformfftCursor, v : Double) -> SignaltransformfftCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_cursor_min(s : SignaltransformfftCursor) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftCursor::min(self : SignaltransformfftCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_cursor_max(s : SignaltransformfftCursor) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftCursor::max(self : SignaltransformfftCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_cursor_to_string(s : SignaltransformfftCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftCursor::to_string(self : SignaltransformfftCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftView {
@@ -912,45 +912,45 @@ pub fn signal_transform_fft_view_make(size : Int) -> SignaltransformfftView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_view_len(s : SignaltransformfftView) -> Int { s.size }
+pub fn SignaltransformfftView::len(self : SignaltransformfftView) -> Int { self.size }
 
-pub fn signal_transform_fft_view_get(s : SignaltransformfftView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftView::get(self : SignaltransformfftView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_view_set(s : SignaltransformfftView, i : Int, v : Double) -> SignaltransformfftView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftView::set(self : SignaltransformfftView, i : Int, v : Double) -> SignaltransformfftView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_view_sum(s : SignaltransformfftView) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftView::sum(self : SignaltransformfftView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_view_mean(s : SignaltransformfftView) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftView::mean(self : SignaltransformfftView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_view_scale(s : SignaltransformfftView, f : Double) -> SignaltransformfftView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftView::scale(self : SignaltransformfftView, f : Double) -> SignaltransformfftView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_view_add(a : SignaltransformfftView, b : SignaltransformfftView) -> SignaltransformfftView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftView::add(self : SignaltransformfftView, other : SignaltransformfftView) -> SignaltransformfftView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_view_copy(s : SignaltransformfftView) -> SignaltransformfftView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftView::copy(self : SignaltransformfftView) -> SignaltransformfftView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_view_fill(s : SignaltransformfftView, v : Double) -> SignaltransformfftView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftView::fill(self : SignaltransformfftView, v : Double) -> SignaltransformfftView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_view_min(s : SignaltransformfftView) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftView::min(self : SignaltransformfftView) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_view_max(s : SignaltransformfftView) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftView::max(self : SignaltransformfftView) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_view_to_string(s : SignaltransformfftView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftView::to_string(self : SignaltransformfftView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftRange {
@@ -963,45 +963,45 @@ pub fn signal_transform_fft_range_make(size : Int) -> SignaltransformfftRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_range_len(s : SignaltransformfftRange) -> Int { s.size }
+pub fn SignaltransformfftRange::len(self : SignaltransformfftRange) -> Int { self.size }
 
-pub fn signal_transform_fft_range_get(s : SignaltransformfftRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftRange::get(self : SignaltransformfftRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_range_set(s : SignaltransformfftRange, i : Int, v : Double) -> SignaltransformfftRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftRange::set(self : SignaltransformfftRange, i : Int, v : Double) -> SignaltransformfftRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_range_sum(s : SignaltransformfftRange) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftRange::sum(self : SignaltransformfftRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_range_mean(s : SignaltransformfftRange) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftRange::mean(self : SignaltransformfftRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_range_scale(s : SignaltransformfftRange, f : Double) -> SignaltransformfftRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftRange::scale(self : SignaltransformfftRange, f : Double) -> SignaltransformfftRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_range_add(a : SignaltransformfftRange, b : SignaltransformfftRange) -> SignaltransformfftRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftRange::add(self : SignaltransformfftRange, other : SignaltransformfftRange) -> SignaltransformfftRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_range_copy(s : SignaltransformfftRange) -> SignaltransformfftRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftRange::copy(self : SignaltransformfftRange) -> SignaltransformfftRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_range_fill(s : SignaltransformfftRange, v : Double) -> SignaltransformfftRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftRange::fill(self : SignaltransformfftRange, v : Double) -> SignaltransformfftRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_range_min(s : SignaltransformfftRange) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftRange::min(self : SignaltransformfftRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_range_max(s : SignaltransformfftRange) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftRange::max(self : SignaltransformfftRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_range_to_string(s : SignaltransformfftRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftRange::to_string(self : SignaltransformfftRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformfftSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_transform_fft_slice_make(size : Int) -> SignaltransformfftSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_fft_slice_len(s : SignaltransformfftSlice) -> Int { s.size }
+pub fn SignaltransformfftSlice::len(self : SignaltransformfftSlice) -> Int { self.size }
 
-pub fn signal_transform_fft_slice_get(s : SignaltransformfftSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformfftSlice::get(self : SignaltransformfftSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_fft_slice_set(s : SignaltransformfftSlice, i : Int, v : Double) -> SignaltransformfftSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformfftSlice::set(self : SignaltransformfftSlice, i : Int, v : Double) -> SignaltransformfftSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_slice_sum(s : SignaltransformfftSlice) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformfftSlice::sum(self : SignaltransformfftSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_fft_slice_mean(s : SignaltransformfftSlice) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformfftSlice::mean(self : SignaltransformfftSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_fft_slice_scale(s : SignaltransformfftSlice, f : Double) -> SignaltransformfftSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformfftSlice::scale(self : SignaltransformfftSlice, f : Double) -> SignaltransformfftSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_slice_add(a : SignaltransformfftSlice, b : SignaltransformfftSlice) -> SignaltransformfftSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformfftSlice::add(self : SignaltransformfftSlice, other : SignaltransformfftSlice) -> SignaltransformfftSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_fft_slice_copy(s : SignaltransformfftSlice) -> SignaltransformfftSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformfftSlice::copy(self : SignaltransformfftSlice) -> SignaltransformfftSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_slice_fill(s : SignaltransformfftSlice, v : Double) -> SignaltransformfftSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformfftSlice::fill(self : SignaltransformfftSlice, v : Double) -> SignaltransformfftSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_fft_slice_min(s : SignaltransformfftSlice) -> Double { @_common.min(s.data) }
+pub fn SignaltransformfftSlice::min(self : SignaltransformfftSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_fft_slice_max(s : SignaltransformfftSlice) -> Double { @_common.max(s.data) }
+pub fn SignaltransformfftSlice::max(self : SignaltransformfftSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_fft_slice_to_string(s : SignaltransformfftSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformfftSlice::to_string(self : SignaltransformfftSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

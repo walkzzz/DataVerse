@@ -351,45 +351,45 @@ pub fn physics_heat_diffusion_frame_make(size : Int) -> PhysicsheatdiffusionFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_frame_len(s : PhysicsheatdiffusionFrame) -> Int { s.size }
+pub fn PhysicsheatdiffusionFrame::len(self : PhysicsheatdiffusionFrame) -> Int { self.size }
 
-pub fn physics_heat_diffusion_frame_get(s : PhysicsheatdiffusionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionFrame::get(self : PhysicsheatdiffusionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_frame_set(s : PhysicsheatdiffusionFrame, i : Int, v : Double) -> PhysicsheatdiffusionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionFrame::set(self : PhysicsheatdiffusionFrame, i : Int, v : Double) -> PhysicsheatdiffusionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_frame_sum(s : PhysicsheatdiffusionFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionFrame::sum(self : PhysicsheatdiffusionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_frame_mean(s : PhysicsheatdiffusionFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionFrame::mean(self : PhysicsheatdiffusionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_frame_scale(s : PhysicsheatdiffusionFrame, f : Double) -> PhysicsheatdiffusionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionFrame::scale(self : PhysicsheatdiffusionFrame, f : Double) -> PhysicsheatdiffusionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_frame_add(a : PhysicsheatdiffusionFrame, b : PhysicsheatdiffusionFrame) -> PhysicsheatdiffusionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionFrame::add(self : PhysicsheatdiffusionFrame, other : PhysicsheatdiffusionFrame) -> PhysicsheatdiffusionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_frame_copy(s : PhysicsheatdiffusionFrame) -> PhysicsheatdiffusionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionFrame::copy(self : PhysicsheatdiffusionFrame) -> PhysicsheatdiffusionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_frame_fill(s : PhysicsheatdiffusionFrame, v : Double) -> PhysicsheatdiffusionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionFrame::fill(self : PhysicsheatdiffusionFrame, v : Double) -> PhysicsheatdiffusionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_frame_min(s : PhysicsheatdiffusionFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionFrame::min(self : PhysicsheatdiffusionFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_frame_max(s : PhysicsheatdiffusionFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionFrame::max(self : PhysicsheatdiffusionFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_frame_to_string(s : PhysicsheatdiffusionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionFrame::to_string(self : PhysicsheatdiffusionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionTable {
@@ -402,45 +402,45 @@ pub fn physics_heat_diffusion_table_make(size : Int) -> PhysicsheatdiffusionTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_table_len(s : PhysicsheatdiffusionTable) -> Int { s.size }
+pub fn PhysicsheatdiffusionTable::len(self : PhysicsheatdiffusionTable) -> Int { self.size }
 
-pub fn physics_heat_diffusion_table_get(s : PhysicsheatdiffusionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionTable::get(self : PhysicsheatdiffusionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_table_set(s : PhysicsheatdiffusionTable, i : Int, v : Double) -> PhysicsheatdiffusionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionTable::set(self : PhysicsheatdiffusionTable, i : Int, v : Double) -> PhysicsheatdiffusionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_table_sum(s : PhysicsheatdiffusionTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionTable::sum(self : PhysicsheatdiffusionTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_table_mean(s : PhysicsheatdiffusionTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionTable::mean(self : PhysicsheatdiffusionTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_table_scale(s : PhysicsheatdiffusionTable, f : Double) -> PhysicsheatdiffusionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionTable::scale(self : PhysicsheatdiffusionTable, f : Double) -> PhysicsheatdiffusionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_table_add(a : PhysicsheatdiffusionTable, b : PhysicsheatdiffusionTable) -> PhysicsheatdiffusionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionTable::add(self : PhysicsheatdiffusionTable, other : PhysicsheatdiffusionTable) -> PhysicsheatdiffusionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_table_copy(s : PhysicsheatdiffusionTable) -> PhysicsheatdiffusionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionTable::copy(self : PhysicsheatdiffusionTable) -> PhysicsheatdiffusionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_table_fill(s : PhysicsheatdiffusionTable, v : Double) -> PhysicsheatdiffusionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionTable::fill(self : PhysicsheatdiffusionTable, v : Double) -> PhysicsheatdiffusionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_table_min(s : PhysicsheatdiffusionTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionTable::min(self : PhysicsheatdiffusionTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_table_max(s : PhysicsheatdiffusionTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionTable::max(self : PhysicsheatdiffusionTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_table_to_string(s : PhysicsheatdiffusionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionTable::to_string(self : PhysicsheatdiffusionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionGraphN {
@@ -453,45 +453,45 @@ pub fn physics_heat_diffusion_graphn_make(size : Int) -> PhysicsheatdiffusionGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_graphn_len(s : PhysicsheatdiffusionGraphN) -> Int { s.size }
+pub fn PhysicsheatdiffusionGraphN::len(self : PhysicsheatdiffusionGraphN) -> Int { self.size }
 
-pub fn physics_heat_diffusion_graphn_get(s : PhysicsheatdiffusionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionGraphN::get(self : PhysicsheatdiffusionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_graphn_set(s : PhysicsheatdiffusionGraphN, i : Int, v : Double) -> PhysicsheatdiffusionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionGraphN::set(self : PhysicsheatdiffusionGraphN, i : Int, v : Double) -> PhysicsheatdiffusionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_graphn_sum(s : PhysicsheatdiffusionGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionGraphN::sum(self : PhysicsheatdiffusionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_graphn_mean(s : PhysicsheatdiffusionGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionGraphN::mean(self : PhysicsheatdiffusionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_graphn_scale(s : PhysicsheatdiffusionGraphN, f : Double) -> PhysicsheatdiffusionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionGraphN::scale(self : PhysicsheatdiffusionGraphN, f : Double) -> PhysicsheatdiffusionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_graphn_add(a : PhysicsheatdiffusionGraphN, b : PhysicsheatdiffusionGraphN) -> PhysicsheatdiffusionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionGraphN::add(self : PhysicsheatdiffusionGraphN, other : PhysicsheatdiffusionGraphN) -> PhysicsheatdiffusionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_graphn_copy(s : PhysicsheatdiffusionGraphN) -> PhysicsheatdiffusionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionGraphN::copy(self : PhysicsheatdiffusionGraphN) -> PhysicsheatdiffusionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_graphn_fill(s : PhysicsheatdiffusionGraphN, v : Double) -> PhysicsheatdiffusionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionGraphN::fill(self : PhysicsheatdiffusionGraphN, v : Double) -> PhysicsheatdiffusionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_graphn_min(s : PhysicsheatdiffusionGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionGraphN::min(self : PhysicsheatdiffusionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_graphn_max(s : PhysicsheatdiffusionGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionGraphN::max(self : PhysicsheatdiffusionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_graphn_to_string(s : PhysicsheatdiffusionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionGraphN::to_string(self : PhysicsheatdiffusionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionNode {
@@ -504,45 +504,45 @@ pub fn physics_heat_diffusion_node_make(size : Int) -> PhysicsheatdiffusionNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_node_len(s : PhysicsheatdiffusionNode) -> Int { s.size }
+pub fn PhysicsheatdiffusionNode::len(self : PhysicsheatdiffusionNode) -> Int { self.size }
 
-pub fn physics_heat_diffusion_node_get(s : PhysicsheatdiffusionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionNode::get(self : PhysicsheatdiffusionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_node_set(s : PhysicsheatdiffusionNode, i : Int, v : Double) -> PhysicsheatdiffusionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionNode::set(self : PhysicsheatdiffusionNode, i : Int, v : Double) -> PhysicsheatdiffusionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_node_sum(s : PhysicsheatdiffusionNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionNode::sum(self : PhysicsheatdiffusionNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_node_mean(s : PhysicsheatdiffusionNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionNode::mean(self : PhysicsheatdiffusionNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_node_scale(s : PhysicsheatdiffusionNode, f : Double) -> PhysicsheatdiffusionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionNode::scale(self : PhysicsheatdiffusionNode, f : Double) -> PhysicsheatdiffusionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_node_add(a : PhysicsheatdiffusionNode, b : PhysicsheatdiffusionNode) -> PhysicsheatdiffusionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionNode::add(self : PhysicsheatdiffusionNode, other : PhysicsheatdiffusionNode) -> PhysicsheatdiffusionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_node_copy(s : PhysicsheatdiffusionNode) -> PhysicsheatdiffusionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionNode::copy(self : PhysicsheatdiffusionNode) -> PhysicsheatdiffusionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_node_fill(s : PhysicsheatdiffusionNode, v : Double) -> PhysicsheatdiffusionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionNode::fill(self : PhysicsheatdiffusionNode, v : Double) -> PhysicsheatdiffusionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_node_min(s : PhysicsheatdiffusionNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionNode::min(self : PhysicsheatdiffusionNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_node_max(s : PhysicsheatdiffusionNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionNode::max(self : PhysicsheatdiffusionNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_node_to_string(s : PhysicsheatdiffusionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionNode::to_string(self : PhysicsheatdiffusionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionEdge {
@@ -555,45 +555,45 @@ pub fn physics_heat_diffusion_edge_make(size : Int) -> PhysicsheatdiffusionEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_edge_len(s : PhysicsheatdiffusionEdge) -> Int { s.size }
+pub fn PhysicsheatdiffusionEdge::len(self : PhysicsheatdiffusionEdge) -> Int { self.size }
 
-pub fn physics_heat_diffusion_edge_get(s : PhysicsheatdiffusionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionEdge::get(self : PhysicsheatdiffusionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_edge_set(s : PhysicsheatdiffusionEdge, i : Int, v : Double) -> PhysicsheatdiffusionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionEdge::set(self : PhysicsheatdiffusionEdge, i : Int, v : Double) -> PhysicsheatdiffusionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_edge_sum(s : PhysicsheatdiffusionEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionEdge::sum(self : PhysicsheatdiffusionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_edge_mean(s : PhysicsheatdiffusionEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionEdge::mean(self : PhysicsheatdiffusionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_edge_scale(s : PhysicsheatdiffusionEdge, f : Double) -> PhysicsheatdiffusionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionEdge::scale(self : PhysicsheatdiffusionEdge, f : Double) -> PhysicsheatdiffusionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_edge_add(a : PhysicsheatdiffusionEdge, b : PhysicsheatdiffusionEdge) -> PhysicsheatdiffusionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionEdge::add(self : PhysicsheatdiffusionEdge, other : PhysicsheatdiffusionEdge) -> PhysicsheatdiffusionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_edge_copy(s : PhysicsheatdiffusionEdge) -> PhysicsheatdiffusionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionEdge::copy(self : PhysicsheatdiffusionEdge) -> PhysicsheatdiffusionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_edge_fill(s : PhysicsheatdiffusionEdge, v : Double) -> PhysicsheatdiffusionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionEdge::fill(self : PhysicsheatdiffusionEdge, v : Double) -> PhysicsheatdiffusionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_edge_min(s : PhysicsheatdiffusionEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionEdge::min(self : PhysicsheatdiffusionEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_edge_max(s : PhysicsheatdiffusionEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionEdge::max(self : PhysicsheatdiffusionEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_edge_to_string(s : PhysicsheatdiffusionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionEdge::to_string(self : PhysicsheatdiffusionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionPath {
@@ -606,45 +606,45 @@ pub fn physics_heat_diffusion_path_make(size : Int) -> PhysicsheatdiffusionPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_path_len(s : PhysicsheatdiffusionPath) -> Int { s.size }
+pub fn PhysicsheatdiffusionPath::len(self : PhysicsheatdiffusionPath) -> Int { self.size }
 
-pub fn physics_heat_diffusion_path_get(s : PhysicsheatdiffusionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionPath::get(self : PhysicsheatdiffusionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_path_set(s : PhysicsheatdiffusionPath, i : Int, v : Double) -> PhysicsheatdiffusionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionPath::set(self : PhysicsheatdiffusionPath, i : Int, v : Double) -> PhysicsheatdiffusionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_path_sum(s : PhysicsheatdiffusionPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionPath::sum(self : PhysicsheatdiffusionPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_path_mean(s : PhysicsheatdiffusionPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionPath::mean(self : PhysicsheatdiffusionPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_path_scale(s : PhysicsheatdiffusionPath, f : Double) -> PhysicsheatdiffusionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionPath::scale(self : PhysicsheatdiffusionPath, f : Double) -> PhysicsheatdiffusionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_path_add(a : PhysicsheatdiffusionPath, b : PhysicsheatdiffusionPath) -> PhysicsheatdiffusionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionPath::add(self : PhysicsheatdiffusionPath, other : PhysicsheatdiffusionPath) -> PhysicsheatdiffusionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_path_copy(s : PhysicsheatdiffusionPath) -> PhysicsheatdiffusionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionPath::copy(self : PhysicsheatdiffusionPath) -> PhysicsheatdiffusionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_path_fill(s : PhysicsheatdiffusionPath, v : Double) -> PhysicsheatdiffusionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionPath::fill(self : PhysicsheatdiffusionPath, v : Double) -> PhysicsheatdiffusionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_path_min(s : PhysicsheatdiffusionPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionPath::min(self : PhysicsheatdiffusionPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_path_max(s : PhysicsheatdiffusionPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionPath::max(self : PhysicsheatdiffusionPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_path_to_string(s : PhysicsheatdiffusionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionPath::to_string(self : PhysicsheatdiffusionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionCluster {
@@ -657,45 +657,45 @@ pub fn physics_heat_diffusion_cluster_make(size : Int) -> PhysicsheatdiffusionCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_cluster_len(s : PhysicsheatdiffusionCluster) -> Int { s.size }
+pub fn PhysicsheatdiffusionCluster::len(self : PhysicsheatdiffusionCluster) -> Int { self.size }
 
-pub fn physics_heat_diffusion_cluster_get(s : PhysicsheatdiffusionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionCluster::get(self : PhysicsheatdiffusionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_cluster_set(s : PhysicsheatdiffusionCluster, i : Int, v : Double) -> PhysicsheatdiffusionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCluster::set(self : PhysicsheatdiffusionCluster, i : Int, v : Double) -> PhysicsheatdiffusionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cluster_sum(s : PhysicsheatdiffusionCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionCluster::sum(self : PhysicsheatdiffusionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_cluster_mean(s : PhysicsheatdiffusionCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionCluster::mean(self : PhysicsheatdiffusionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_cluster_scale(s : PhysicsheatdiffusionCluster, f : Double) -> PhysicsheatdiffusionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCluster::scale(self : PhysicsheatdiffusionCluster, f : Double) -> PhysicsheatdiffusionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cluster_add(a : PhysicsheatdiffusionCluster, b : PhysicsheatdiffusionCluster) -> PhysicsheatdiffusionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionCluster::add(self : PhysicsheatdiffusionCluster, other : PhysicsheatdiffusionCluster) -> PhysicsheatdiffusionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cluster_copy(s : PhysicsheatdiffusionCluster) -> PhysicsheatdiffusionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCluster::copy(self : PhysicsheatdiffusionCluster) -> PhysicsheatdiffusionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cluster_fill(s : PhysicsheatdiffusionCluster, v : Double) -> PhysicsheatdiffusionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCluster::fill(self : PhysicsheatdiffusionCluster, v : Double) -> PhysicsheatdiffusionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cluster_min(s : PhysicsheatdiffusionCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionCluster::min(self : PhysicsheatdiffusionCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_cluster_max(s : PhysicsheatdiffusionCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionCluster::max(self : PhysicsheatdiffusionCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_cluster_to_string(s : PhysicsheatdiffusionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionCluster::to_string(self : PhysicsheatdiffusionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionModel {
@@ -708,45 +708,45 @@ pub fn physics_heat_diffusion_model_make(size : Int) -> PhysicsheatdiffusionMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_model_len(s : PhysicsheatdiffusionModel) -> Int { s.size }
+pub fn PhysicsheatdiffusionModel::len(self : PhysicsheatdiffusionModel) -> Int { self.size }
 
-pub fn physics_heat_diffusion_model_get(s : PhysicsheatdiffusionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionModel::get(self : PhysicsheatdiffusionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_model_set(s : PhysicsheatdiffusionModel, i : Int, v : Double) -> PhysicsheatdiffusionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionModel::set(self : PhysicsheatdiffusionModel, i : Int, v : Double) -> PhysicsheatdiffusionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_model_sum(s : PhysicsheatdiffusionModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionModel::sum(self : PhysicsheatdiffusionModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_model_mean(s : PhysicsheatdiffusionModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionModel::mean(self : PhysicsheatdiffusionModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_model_scale(s : PhysicsheatdiffusionModel, f : Double) -> PhysicsheatdiffusionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionModel::scale(self : PhysicsheatdiffusionModel, f : Double) -> PhysicsheatdiffusionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_model_add(a : PhysicsheatdiffusionModel, b : PhysicsheatdiffusionModel) -> PhysicsheatdiffusionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionModel::add(self : PhysicsheatdiffusionModel, other : PhysicsheatdiffusionModel) -> PhysicsheatdiffusionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_model_copy(s : PhysicsheatdiffusionModel) -> PhysicsheatdiffusionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionModel::copy(self : PhysicsheatdiffusionModel) -> PhysicsheatdiffusionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_model_fill(s : PhysicsheatdiffusionModel, v : Double) -> PhysicsheatdiffusionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionModel::fill(self : PhysicsheatdiffusionModel, v : Double) -> PhysicsheatdiffusionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_model_min(s : PhysicsheatdiffusionModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionModel::min(self : PhysicsheatdiffusionModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_model_max(s : PhysicsheatdiffusionModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionModel::max(self : PhysicsheatdiffusionModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_model_to_string(s : PhysicsheatdiffusionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionModel::to_string(self : PhysicsheatdiffusionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionLayer {
@@ -759,45 +759,45 @@ pub fn physics_heat_diffusion_layer_make(size : Int) -> PhysicsheatdiffusionLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_layer_len(s : PhysicsheatdiffusionLayer) -> Int { s.size }
+pub fn PhysicsheatdiffusionLayer::len(self : PhysicsheatdiffusionLayer) -> Int { self.size }
 
-pub fn physics_heat_diffusion_layer_get(s : PhysicsheatdiffusionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionLayer::get(self : PhysicsheatdiffusionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_layer_set(s : PhysicsheatdiffusionLayer, i : Int, v : Double) -> PhysicsheatdiffusionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionLayer::set(self : PhysicsheatdiffusionLayer, i : Int, v : Double) -> PhysicsheatdiffusionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_layer_sum(s : PhysicsheatdiffusionLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionLayer::sum(self : PhysicsheatdiffusionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_layer_mean(s : PhysicsheatdiffusionLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionLayer::mean(self : PhysicsheatdiffusionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_layer_scale(s : PhysicsheatdiffusionLayer, f : Double) -> PhysicsheatdiffusionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionLayer::scale(self : PhysicsheatdiffusionLayer, f : Double) -> PhysicsheatdiffusionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_layer_add(a : PhysicsheatdiffusionLayer, b : PhysicsheatdiffusionLayer) -> PhysicsheatdiffusionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionLayer::add(self : PhysicsheatdiffusionLayer, other : PhysicsheatdiffusionLayer) -> PhysicsheatdiffusionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_layer_copy(s : PhysicsheatdiffusionLayer) -> PhysicsheatdiffusionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionLayer::copy(self : PhysicsheatdiffusionLayer) -> PhysicsheatdiffusionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_layer_fill(s : PhysicsheatdiffusionLayer, v : Double) -> PhysicsheatdiffusionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionLayer::fill(self : PhysicsheatdiffusionLayer, v : Double) -> PhysicsheatdiffusionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_layer_min(s : PhysicsheatdiffusionLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionLayer::min(self : PhysicsheatdiffusionLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_layer_max(s : PhysicsheatdiffusionLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionLayer::max(self : PhysicsheatdiffusionLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_layer_to_string(s : PhysicsheatdiffusionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionLayer::to_string(self : PhysicsheatdiffusionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionBuffer {
@@ -810,45 +810,45 @@ pub fn physics_heat_diffusion_buffer_make(size : Int) -> PhysicsheatdiffusionBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_buffer_len(s : PhysicsheatdiffusionBuffer) -> Int { s.size }
+pub fn PhysicsheatdiffusionBuffer::len(self : PhysicsheatdiffusionBuffer) -> Int { self.size }
 
-pub fn physics_heat_diffusion_buffer_get(s : PhysicsheatdiffusionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionBuffer::get(self : PhysicsheatdiffusionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_buffer_set(s : PhysicsheatdiffusionBuffer, i : Int, v : Double) -> PhysicsheatdiffusionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionBuffer::set(self : PhysicsheatdiffusionBuffer, i : Int, v : Double) -> PhysicsheatdiffusionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_buffer_sum(s : PhysicsheatdiffusionBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionBuffer::sum(self : PhysicsheatdiffusionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_buffer_mean(s : PhysicsheatdiffusionBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionBuffer::mean(self : PhysicsheatdiffusionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_buffer_scale(s : PhysicsheatdiffusionBuffer, f : Double) -> PhysicsheatdiffusionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionBuffer::scale(self : PhysicsheatdiffusionBuffer, f : Double) -> PhysicsheatdiffusionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_buffer_add(a : PhysicsheatdiffusionBuffer, b : PhysicsheatdiffusionBuffer) -> PhysicsheatdiffusionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionBuffer::add(self : PhysicsheatdiffusionBuffer, other : PhysicsheatdiffusionBuffer) -> PhysicsheatdiffusionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_buffer_copy(s : PhysicsheatdiffusionBuffer) -> PhysicsheatdiffusionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionBuffer::copy(self : PhysicsheatdiffusionBuffer) -> PhysicsheatdiffusionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_buffer_fill(s : PhysicsheatdiffusionBuffer, v : Double) -> PhysicsheatdiffusionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionBuffer::fill(self : PhysicsheatdiffusionBuffer, v : Double) -> PhysicsheatdiffusionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_buffer_min(s : PhysicsheatdiffusionBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionBuffer::min(self : PhysicsheatdiffusionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_buffer_max(s : PhysicsheatdiffusionBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionBuffer::max(self : PhysicsheatdiffusionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_buffer_to_string(s : PhysicsheatdiffusionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionBuffer::to_string(self : PhysicsheatdiffusionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionCursor {
@@ -861,45 +861,45 @@ pub fn physics_heat_diffusion_cursor_make(size : Int) -> PhysicsheatdiffusionCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_cursor_len(s : PhysicsheatdiffusionCursor) -> Int { s.size }
+pub fn PhysicsheatdiffusionCursor::len(self : PhysicsheatdiffusionCursor) -> Int { self.size }
 
-pub fn physics_heat_diffusion_cursor_get(s : PhysicsheatdiffusionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionCursor::get(self : PhysicsheatdiffusionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_cursor_set(s : PhysicsheatdiffusionCursor, i : Int, v : Double) -> PhysicsheatdiffusionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCursor::set(self : PhysicsheatdiffusionCursor, i : Int, v : Double) -> PhysicsheatdiffusionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cursor_sum(s : PhysicsheatdiffusionCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionCursor::sum(self : PhysicsheatdiffusionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_cursor_mean(s : PhysicsheatdiffusionCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionCursor::mean(self : PhysicsheatdiffusionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_cursor_scale(s : PhysicsheatdiffusionCursor, f : Double) -> PhysicsheatdiffusionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCursor::scale(self : PhysicsheatdiffusionCursor, f : Double) -> PhysicsheatdiffusionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cursor_add(a : PhysicsheatdiffusionCursor, b : PhysicsheatdiffusionCursor) -> PhysicsheatdiffusionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionCursor::add(self : PhysicsheatdiffusionCursor, other : PhysicsheatdiffusionCursor) -> PhysicsheatdiffusionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cursor_copy(s : PhysicsheatdiffusionCursor) -> PhysicsheatdiffusionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCursor::copy(self : PhysicsheatdiffusionCursor) -> PhysicsheatdiffusionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cursor_fill(s : PhysicsheatdiffusionCursor, v : Double) -> PhysicsheatdiffusionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionCursor::fill(self : PhysicsheatdiffusionCursor, v : Double) -> PhysicsheatdiffusionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_cursor_min(s : PhysicsheatdiffusionCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionCursor::min(self : PhysicsheatdiffusionCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_cursor_max(s : PhysicsheatdiffusionCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionCursor::max(self : PhysicsheatdiffusionCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_cursor_to_string(s : PhysicsheatdiffusionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionCursor::to_string(self : PhysicsheatdiffusionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionView {
@@ -912,45 +912,45 @@ pub fn physics_heat_diffusion_view_make(size : Int) -> PhysicsheatdiffusionView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_view_len(s : PhysicsheatdiffusionView) -> Int { s.size }
+pub fn PhysicsheatdiffusionView::len(self : PhysicsheatdiffusionView) -> Int { self.size }
 
-pub fn physics_heat_diffusion_view_get(s : PhysicsheatdiffusionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionView::get(self : PhysicsheatdiffusionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_view_set(s : PhysicsheatdiffusionView, i : Int, v : Double) -> PhysicsheatdiffusionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionView::set(self : PhysicsheatdiffusionView, i : Int, v : Double) -> PhysicsheatdiffusionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_view_sum(s : PhysicsheatdiffusionView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionView::sum(self : PhysicsheatdiffusionView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_view_mean(s : PhysicsheatdiffusionView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionView::mean(self : PhysicsheatdiffusionView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_view_scale(s : PhysicsheatdiffusionView, f : Double) -> PhysicsheatdiffusionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionView::scale(self : PhysicsheatdiffusionView, f : Double) -> PhysicsheatdiffusionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_view_add(a : PhysicsheatdiffusionView, b : PhysicsheatdiffusionView) -> PhysicsheatdiffusionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionView::add(self : PhysicsheatdiffusionView, other : PhysicsheatdiffusionView) -> PhysicsheatdiffusionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_view_copy(s : PhysicsheatdiffusionView) -> PhysicsheatdiffusionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionView::copy(self : PhysicsheatdiffusionView) -> PhysicsheatdiffusionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_view_fill(s : PhysicsheatdiffusionView, v : Double) -> PhysicsheatdiffusionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionView::fill(self : PhysicsheatdiffusionView, v : Double) -> PhysicsheatdiffusionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_view_min(s : PhysicsheatdiffusionView) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionView::min(self : PhysicsheatdiffusionView) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_view_max(s : PhysicsheatdiffusionView) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionView::max(self : PhysicsheatdiffusionView) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_view_to_string(s : PhysicsheatdiffusionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionView::to_string(self : PhysicsheatdiffusionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionRange {
@@ -963,45 +963,45 @@ pub fn physics_heat_diffusion_range_make(size : Int) -> PhysicsheatdiffusionRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_range_len(s : PhysicsheatdiffusionRange) -> Int { s.size }
+pub fn PhysicsheatdiffusionRange::len(self : PhysicsheatdiffusionRange) -> Int { self.size }
 
-pub fn physics_heat_diffusion_range_get(s : PhysicsheatdiffusionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionRange::get(self : PhysicsheatdiffusionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_range_set(s : PhysicsheatdiffusionRange, i : Int, v : Double) -> PhysicsheatdiffusionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionRange::set(self : PhysicsheatdiffusionRange, i : Int, v : Double) -> PhysicsheatdiffusionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_range_sum(s : PhysicsheatdiffusionRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionRange::sum(self : PhysicsheatdiffusionRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_range_mean(s : PhysicsheatdiffusionRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionRange::mean(self : PhysicsheatdiffusionRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_range_scale(s : PhysicsheatdiffusionRange, f : Double) -> PhysicsheatdiffusionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionRange::scale(self : PhysicsheatdiffusionRange, f : Double) -> PhysicsheatdiffusionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_range_add(a : PhysicsheatdiffusionRange, b : PhysicsheatdiffusionRange) -> PhysicsheatdiffusionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionRange::add(self : PhysicsheatdiffusionRange, other : PhysicsheatdiffusionRange) -> PhysicsheatdiffusionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_range_copy(s : PhysicsheatdiffusionRange) -> PhysicsheatdiffusionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionRange::copy(self : PhysicsheatdiffusionRange) -> PhysicsheatdiffusionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_range_fill(s : PhysicsheatdiffusionRange, v : Double) -> PhysicsheatdiffusionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionRange::fill(self : PhysicsheatdiffusionRange, v : Double) -> PhysicsheatdiffusionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_range_min(s : PhysicsheatdiffusionRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionRange::min(self : PhysicsheatdiffusionRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_range_max(s : PhysicsheatdiffusionRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionRange::max(self : PhysicsheatdiffusionRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_range_to_string(s : PhysicsheatdiffusionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionRange::to_string(self : PhysicsheatdiffusionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatdiffusionSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_heat_diffusion_slice_make(size : Int) -> PhysicsheatdiffusionSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_diffusion_slice_len(s : PhysicsheatdiffusionSlice) -> Int { s.size }
+pub fn PhysicsheatdiffusionSlice::len(self : PhysicsheatdiffusionSlice) -> Int { self.size }
 
-pub fn physics_heat_diffusion_slice_get(s : PhysicsheatdiffusionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatdiffusionSlice::get(self : PhysicsheatdiffusionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_diffusion_slice_set(s : PhysicsheatdiffusionSlice, i : Int, v : Double) -> PhysicsheatdiffusionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionSlice::set(self : PhysicsheatdiffusionSlice, i : Int, v : Double) -> PhysicsheatdiffusionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_slice_sum(s : PhysicsheatdiffusionSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatdiffusionSlice::sum(self : PhysicsheatdiffusionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_diffusion_slice_mean(s : PhysicsheatdiffusionSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatdiffusionSlice::mean(self : PhysicsheatdiffusionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_diffusion_slice_scale(s : PhysicsheatdiffusionSlice, f : Double) -> PhysicsheatdiffusionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionSlice::scale(self : PhysicsheatdiffusionSlice, f : Double) -> PhysicsheatdiffusionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_slice_add(a : PhysicsheatdiffusionSlice, b : PhysicsheatdiffusionSlice) -> PhysicsheatdiffusionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatdiffusionSlice::add(self : PhysicsheatdiffusionSlice, other : PhysicsheatdiffusionSlice) -> PhysicsheatdiffusionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_slice_copy(s : PhysicsheatdiffusionSlice) -> PhysicsheatdiffusionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionSlice::copy(self : PhysicsheatdiffusionSlice) -> PhysicsheatdiffusionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_slice_fill(s : PhysicsheatdiffusionSlice, v : Double) -> PhysicsheatdiffusionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatdiffusionSlice::fill(self : PhysicsheatdiffusionSlice, v : Double) -> PhysicsheatdiffusionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_diffusion_slice_min(s : PhysicsheatdiffusionSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatdiffusionSlice::min(self : PhysicsheatdiffusionSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_diffusion_slice_max(s : PhysicsheatdiffusionSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatdiffusionSlice::max(self : PhysicsheatdiffusionSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_diffusion_slice_to_string(s : PhysicsheatdiffusionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatdiffusionSlice::to_string(self : PhysicsheatdiffusionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

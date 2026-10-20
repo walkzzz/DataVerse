@@ -351,45 +351,45 @@ pub fn bio_seq_align_multiple_frame_make(size : Int) -> BioseqalignmultipleFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_frame_len(s : BioseqalignmultipleFrame) -> Int { s.size }
+pub fn BioseqalignmultipleFrame::len(self : BioseqalignmultipleFrame) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_frame_get(s : BioseqalignmultipleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleFrame::get(self : BioseqalignmultipleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_frame_set(s : BioseqalignmultipleFrame, i : Int, v : Double) -> BioseqalignmultipleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleFrame::set(self : BioseqalignmultipleFrame, i : Int, v : Double) -> BioseqalignmultipleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_frame_sum(s : BioseqalignmultipleFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleFrame::sum(self : BioseqalignmultipleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_frame_mean(s : BioseqalignmultipleFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleFrame::mean(self : BioseqalignmultipleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_frame_scale(s : BioseqalignmultipleFrame, f : Double) -> BioseqalignmultipleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleFrame::scale(self : BioseqalignmultipleFrame, f : Double) -> BioseqalignmultipleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_frame_add(a : BioseqalignmultipleFrame, b : BioseqalignmultipleFrame) -> BioseqalignmultipleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleFrame::add(self : BioseqalignmultipleFrame, other : BioseqalignmultipleFrame) -> BioseqalignmultipleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_frame_copy(s : BioseqalignmultipleFrame) -> BioseqalignmultipleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleFrame::copy(self : BioseqalignmultipleFrame) -> BioseqalignmultipleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_frame_fill(s : BioseqalignmultipleFrame, v : Double) -> BioseqalignmultipleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleFrame::fill(self : BioseqalignmultipleFrame, v : Double) -> BioseqalignmultipleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_frame_min(s : BioseqalignmultipleFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleFrame::min(self : BioseqalignmultipleFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_frame_max(s : BioseqalignmultipleFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleFrame::max(self : BioseqalignmultipleFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_frame_to_string(s : BioseqalignmultipleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleFrame::to_string(self : BioseqalignmultipleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_align_multiple_table_make(size : Int) -> BioseqalignmultipleTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_table_len(s : BioseqalignmultipleTable) -> Int { s.size }
+pub fn BioseqalignmultipleTable::len(self : BioseqalignmultipleTable) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_table_get(s : BioseqalignmultipleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleTable::get(self : BioseqalignmultipleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_table_set(s : BioseqalignmultipleTable, i : Int, v : Double) -> BioseqalignmultipleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleTable::set(self : BioseqalignmultipleTable, i : Int, v : Double) -> BioseqalignmultipleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_table_sum(s : BioseqalignmultipleTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleTable::sum(self : BioseqalignmultipleTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_table_mean(s : BioseqalignmultipleTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleTable::mean(self : BioseqalignmultipleTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_table_scale(s : BioseqalignmultipleTable, f : Double) -> BioseqalignmultipleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleTable::scale(self : BioseqalignmultipleTable, f : Double) -> BioseqalignmultipleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_table_add(a : BioseqalignmultipleTable, b : BioseqalignmultipleTable) -> BioseqalignmultipleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleTable::add(self : BioseqalignmultipleTable, other : BioseqalignmultipleTable) -> BioseqalignmultipleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_table_copy(s : BioseqalignmultipleTable) -> BioseqalignmultipleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleTable::copy(self : BioseqalignmultipleTable) -> BioseqalignmultipleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_table_fill(s : BioseqalignmultipleTable, v : Double) -> BioseqalignmultipleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleTable::fill(self : BioseqalignmultipleTable, v : Double) -> BioseqalignmultipleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_table_min(s : BioseqalignmultipleTable) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleTable::min(self : BioseqalignmultipleTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_table_max(s : BioseqalignmultipleTable) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleTable::max(self : BioseqalignmultipleTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_table_to_string(s : BioseqalignmultipleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleTable::to_string(self : BioseqalignmultipleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_align_multiple_graphn_make(size : Int) -> BioseqalignmultipleGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_graphn_len(s : BioseqalignmultipleGraphN) -> Int { s.size }
+pub fn BioseqalignmultipleGraphN::len(self : BioseqalignmultipleGraphN) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_graphn_get(s : BioseqalignmultipleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleGraphN::get(self : BioseqalignmultipleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_graphn_set(s : BioseqalignmultipleGraphN, i : Int, v : Double) -> BioseqalignmultipleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleGraphN::set(self : BioseqalignmultipleGraphN, i : Int, v : Double) -> BioseqalignmultipleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_graphn_sum(s : BioseqalignmultipleGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleGraphN::sum(self : BioseqalignmultipleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_graphn_mean(s : BioseqalignmultipleGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleGraphN::mean(self : BioseqalignmultipleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_graphn_scale(s : BioseqalignmultipleGraphN, f : Double) -> BioseqalignmultipleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleGraphN::scale(self : BioseqalignmultipleGraphN, f : Double) -> BioseqalignmultipleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_graphn_add(a : BioseqalignmultipleGraphN, b : BioseqalignmultipleGraphN) -> BioseqalignmultipleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleGraphN::add(self : BioseqalignmultipleGraphN, other : BioseqalignmultipleGraphN) -> BioseqalignmultipleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_graphn_copy(s : BioseqalignmultipleGraphN) -> BioseqalignmultipleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleGraphN::copy(self : BioseqalignmultipleGraphN) -> BioseqalignmultipleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_graphn_fill(s : BioseqalignmultipleGraphN, v : Double) -> BioseqalignmultipleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleGraphN::fill(self : BioseqalignmultipleGraphN, v : Double) -> BioseqalignmultipleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_graphn_min(s : BioseqalignmultipleGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleGraphN::min(self : BioseqalignmultipleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_graphn_max(s : BioseqalignmultipleGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleGraphN::max(self : BioseqalignmultipleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_graphn_to_string(s : BioseqalignmultipleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleGraphN::to_string(self : BioseqalignmultipleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_align_multiple_node_make(size : Int) -> BioseqalignmultipleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_node_len(s : BioseqalignmultipleNode) -> Int { s.size }
+pub fn BioseqalignmultipleNode::len(self : BioseqalignmultipleNode) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_node_get(s : BioseqalignmultipleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleNode::get(self : BioseqalignmultipleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_node_set(s : BioseqalignmultipleNode, i : Int, v : Double) -> BioseqalignmultipleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleNode::set(self : BioseqalignmultipleNode, i : Int, v : Double) -> BioseqalignmultipleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_node_sum(s : BioseqalignmultipleNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleNode::sum(self : BioseqalignmultipleNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_node_mean(s : BioseqalignmultipleNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleNode::mean(self : BioseqalignmultipleNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_node_scale(s : BioseqalignmultipleNode, f : Double) -> BioseqalignmultipleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleNode::scale(self : BioseqalignmultipleNode, f : Double) -> BioseqalignmultipleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_node_add(a : BioseqalignmultipleNode, b : BioseqalignmultipleNode) -> BioseqalignmultipleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleNode::add(self : BioseqalignmultipleNode, other : BioseqalignmultipleNode) -> BioseqalignmultipleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_node_copy(s : BioseqalignmultipleNode) -> BioseqalignmultipleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleNode::copy(self : BioseqalignmultipleNode) -> BioseqalignmultipleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_node_fill(s : BioseqalignmultipleNode, v : Double) -> BioseqalignmultipleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleNode::fill(self : BioseqalignmultipleNode, v : Double) -> BioseqalignmultipleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_node_min(s : BioseqalignmultipleNode) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleNode::min(self : BioseqalignmultipleNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_node_max(s : BioseqalignmultipleNode) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleNode::max(self : BioseqalignmultipleNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_node_to_string(s : BioseqalignmultipleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleNode::to_string(self : BioseqalignmultipleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_align_multiple_edge_make(size : Int) -> BioseqalignmultipleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_edge_len(s : BioseqalignmultipleEdge) -> Int { s.size }
+pub fn BioseqalignmultipleEdge::len(self : BioseqalignmultipleEdge) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_edge_get(s : BioseqalignmultipleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleEdge::get(self : BioseqalignmultipleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_edge_set(s : BioseqalignmultipleEdge, i : Int, v : Double) -> BioseqalignmultipleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleEdge::set(self : BioseqalignmultipleEdge, i : Int, v : Double) -> BioseqalignmultipleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_edge_sum(s : BioseqalignmultipleEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleEdge::sum(self : BioseqalignmultipleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_edge_mean(s : BioseqalignmultipleEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleEdge::mean(self : BioseqalignmultipleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_edge_scale(s : BioseqalignmultipleEdge, f : Double) -> BioseqalignmultipleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleEdge::scale(self : BioseqalignmultipleEdge, f : Double) -> BioseqalignmultipleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_edge_add(a : BioseqalignmultipleEdge, b : BioseqalignmultipleEdge) -> BioseqalignmultipleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleEdge::add(self : BioseqalignmultipleEdge, other : BioseqalignmultipleEdge) -> BioseqalignmultipleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_edge_copy(s : BioseqalignmultipleEdge) -> BioseqalignmultipleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleEdge::copy(self : BioseqalignmultipleEdge) -> BioseqalignmultipleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_edge_fill(s : BioseqalignmultipleEdge, v : Double) -> BioseqalignmultipleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleEdge::fill(self : BioseqalignmultipleEdge, v : Double) -> BioseqalignmultipleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_edge_min(s : BioseqalignmultipleEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleEdge::min(self : BioseqalignmultipleEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_edge_max(s : BioseqalignmultipleEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleEdge::max(self : BioseqalignmultipleEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_edge_to_string(s : BioseqalignmultipleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleEdge::to_string(self : BioseqalignmultipleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultiplePath {
@@ -606,45 +606,45 @@ pub fn bio_seq_align_multiple_path_make(size : Int) -> BioseqalignmultiplePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_path_len(s : BioseqalignmultiplePath) -> Int { s.size }
+pub fn BioseqalignmultiplePath::len(self : BioseqalignmultiplePath) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_path_get(s : BioseqalignmultiplePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultiplePath::get(self : BioseqalignmultiplePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_path_set(s : BioseqalignmultiplePath, i : Int, v : Double) -> BioseqalignmultiplePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultiplePath::set(self : BioseqalignmultiplePath, i : Int, v : Double) -> BioseqalignmultiplePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_path_sum(s : BioseqalignmultiplePath) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultiplePath::sum(self : BioseqalignmultiplePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_path_mean(s : BioseqalignmultiplePath) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultiplePath::mean(self : BioseqalignmultiplePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_path_scale(s : BioseqalignmultiplePath, f : Double) -> BioseqalignmultiplePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultiplePath::scale(self : BioseqalignmultiplePath, f : Double) -> BioseqalignmultiplePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_path_add(a : BioseqalignmultiplePath, b : BioseqalignmultiplePath) -> BioseqalignmultiplePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultiplePath::add(self : BioseqalignmultiplePath, other : BioseqalignmultiplePath) -> BioseqalignmultiplePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_path_copy(s : BioseqalignmultiplePath) -> BioseqalignmultiplePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultiplePath::copy(self : BioseqalignmultiplePath) -> BioseqalignmultiplePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_path_fill(s : BioseqalignmultiplePath, v : Double) -> BioseqalignmultiplePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultiplePath::fill(self : BioseqalignmultiplePath, v : Double) -> BioseqalignmultiplePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_path_min(s : BioseqalignmultiplePath) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultiplePath::min(self : BioseqalignmultiplePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_path_max(s : BioseqalignmultiplePath) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultiplePath::max(self : BioseqalignmultiplePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_path_to_string(s : BioseqalignmultiplePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultiplePath::to_string(self : BioseqalignmultiplePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_align_multiple_cluster_make(size : Int) -> BioseqalignmultipleClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_cluster_len(s : BioseqalignmultipleCluster) -> Int { s.size }
+pub fn BioseqalignmultipleCluster::len(self : BioseqalignmultipleCluster) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_cluster_get(s : BioseqalignmultipleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleCluster::get(self : BioseqalignmultipleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_cluster_set(s : BioseqalignmultipleCluster, i : Int, v : Double) -> BioseqalignmultipleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCluster::set(self : BioseqalignmultipleCluster, i : Int, v : Double) -> BioseqalignmultipleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cluster_sum(s : BioseqalignmultipleCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleCluster::sum(self : BioseqalignmultipleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_cluster_mean(s : BioseqalignmultipleCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleCluster::mean(self : BioseqalignmultipleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_cluster_scale(s : BioseqalignmultipleCluster, f : Double) -> BioseqalignmultipleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCluster::scale(self : BioseqalignmultipleCluster, f : Double) -> BioseqalignmultipleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cluster_add(a : BioseqalignmultipleCluster, b : BioseqalignmultipleCluster) -> BioseqalignmultipleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleCluster::add(self : BioseqalignmultipleCluster, other : BioseqalignmultipleCluster) -> BioseqalignmultipleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cluster_copy(s : BioseqalignmultipleCluster) -> BioseqalignmultipleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCluster::copy(self : BioseqalignmultipleCluster) -> BioseqalignmultipleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cluster_fill(s : BioseqalignmultipleCluster, v : Double) -> BioseqalignmultipleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCluster::fill(self : BioseqalignmultipleCluster, v : Double) -> BioseqalignmultipleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cluster_min(s : BioseqalignmultipleCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleCluster::min(self : BioseqalignmultipleCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_cluster_max(s : BioseqalignmultipleCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleCluster::max(self : BioseqalignmultipleCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_cluster_to_string(s : BioseqalignmultipleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleCluster::to_string(self : BioseqalignmultipleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_align_multiple_model_make(size : Int) -> BioseqalignmultipleModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_model_len(s : BioseqalignmultipleModel) -> Int { s.size }
+pub fn BioseqalignmultipleModel::len(self : BioseqalignmultipleModel) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_model_get(s : BioseqalignmultipleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleModel::get(self : BioseqalignmultipleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_model_set(s : BioseqalignmultipleModel, i : Int, v : Double) -> BioseqalignmultipleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleModel::set(self : BioseqalignmultipleModel, i : Int, v : Double) -> BioseqalignmultipleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_model_sum(s : BioseqalignmultipleModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleModel::sum(self : BioseqalignmultipleModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_model_mean(s : BioseqalignmultipleModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleModel::mean(self : BioseqalignmultipleModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_model_scale(s : BioseqalignmultipleModel, f : Double) -> BioseqalignmultipleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleModel::scale(self : BioseqalignmultipleModel, f : Double) -> BioseqalignmultipleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_model_add(a : BioseqalignmultipleModel, b : BioseqalignmultipleModel) -> BioseqalignmultipleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleModel::add(self : BioseqalignmultipleModel, other : BioseqalignmultipleModel) -> BioseqalignmultipleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_model_copy(s : BioseqalignmultipleModel) -> BioseqalignmultipleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleModel::copy(self : BioseqalignmultipleModel) -> BioseqalignmultipleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_model_fill(s : BioseqalignmultipleModel, v : Double) -> BioseqalignmultipleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleModel::fill(self : BioseqalignmultipleModel, v : Double) -> BioseqalignmultipleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_model_min(s : BioseqalignmultipleModel) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleModel::min(self : BioseqalignmultipleModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_model_max(s : BioseqalignmultipleModel) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleModel::max(self : BioseqalignmultipleModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_model_to_string(s : BioseqalignmultipleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleModel::to_string(self : BioseqalignmultipleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_align_multiple_layer_make(size : Int) -> BioseqalignmultipleLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_layer_len(s : BioseqalignmultipleLayer) -> Int { s.size }
+pub fn BioseqalignmultipleLayer::len(self : BioseqalignmultipleLayer) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_layer_get(s : BioseqalignmultipleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleLayer::get(self : BioseqalignmultipleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_layer_set(s : BioseqalignmultipleLayer, i : Int, v : Double) -> BioseqalignmultipleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleLayer::set(self : BioseqalignmultipleLayer, i : Int, v : Double) -> BioseqalignmultipleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_layer_sum(s : BioseqalignmultipleLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleLayer::sum(self : BioseqalignmultipleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_layer_mean(s : BioseqalignmultipleLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleLayer::mean(self : BioseqalignmultipleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_layer_scale(s : BioseqalignmultipleLayer, f : Double) -> BioseqalignmultipleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleLayer::scale(self : BioseqalignmultipleLayer, f : Double) -> BioseqalignmultipleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_layer_add(a : BioseqalignmultipleLayer, b : BioseqalignmultipleLayer) -> BioseqalignmultipleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleLayer::add(self : BioseqalignmultipleLayer, other : BioseqalignmultipleLayer) -> BioseqalignmultipleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_layer_copy(s : BioseqalignmultipleLayer) -> BioseqalignmultipleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleLayer::copy(self : BioseqalignmultipleLayer) -> BioseqalignmultipleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_layer_fill(s : BioseqalignmultipleLayer, v : Double) -> BioseqalignmultipleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleLayer::fill(self : BioseqalignmultipleLayer, v : Double) -> BioseqalignmultipleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_layer_min(s : BioseqalignmultipleLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleLayer::min(self : BioseqalignmultipleLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_layer_max(s : BioseqalignmultipleLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleLayer::max(self : BioseqalignmultipleLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_layer_to_string(s : BioseqalignmultipleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleLayer::to_string(self : BioseqalignmultipleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_align_multiple_buffer_make(size : Int) -> BioseqalignmultipleBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_buffer_len(s : BioseqalignmultipleBuffer) -> Int { s.size }
+pub fn BioseqalignmultipleBuffer::len(self : BioseqalignmultipleBuffer) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_buffer_get(s : BioseqalignmultipleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleBuffer::get(self : BioseqalignmultipleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_buffer_set(s : BioseqalignmultipleBuffer, i : Int, v : Double) -> BioseqalignmultipleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleBuffer::set(self : BioseqalignmultipleBuffer, i : Int, v : Double) -> BioseqalignmultipleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_buffer_sum(s : BioseqalignmultipleBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleBuffer::sum(self : BioseqalignmultipleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_buffer_mean(s : BioseqalignmultipleBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleBuffer::mean(self : BioseqalignmultipleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_buffer_scale(s : BioseqalignmultipleBuffer, f : Double) -> BioseqalignmultipleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleBuffer::scale(self : BioseqalignmultipleBuffer, f : Double) -> BioseqalignmultipleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_buffer_add(a : BioseqalignmultipleBuffer, b : BioseqalignmultipleBuffer) -> BioseqalignmultipleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleBuffer::add(self : BioseqalignmultipleBuffer, other : BioseqalignmultipleBuffer) -> BioseqalignmultipleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_buffer_copy(s : BioseqalignmultipleBuffer) -> BioseqalignmultipleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleBuffer::copy(self : BioseqalignmultipleBuffer) -> BioseqalignmultipleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_buffer_fill(s : BioseqalignmultipleBuffer, v : Double) -> BioseqalignmultipleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleBuffer::fill(self : BioseqalignmultipleBuffer, v : Double) -> BioseqalignmultipleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_buffer_min(s : BioseqalignmultipleBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleBuffer::min(self : BioseqalignmultipleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_buffer_max(s : BioseqalignmultipleBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleBuffer::max(self : BioseqalignmultipleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_buffer_to_string(s : BioseqalignmultipleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleBuffer::to_string(self : BioseqalignmultipleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_align_multiple_cursor_make(size : Int) -> BioseqalignmultipleCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_cursor_len(s : BioseqalignmultipleCursor) -> Int { s.size }
+pub fn BioseqalignmultipleCursor::len(self : BioseqalignmultipleCursor) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_cursor_get(s : BioseqalignmultipleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleCursor::get(self : BioseqalignmultipleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_cursor_set(s : BioseqalignmultipleCursor, i : Int, v : Double) -> BioseqalignmultipleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCursor::set(self : BioseqalignmultipleCursor, i : Int, v : Double) -> BioseqalignmultipleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cursor_sum(s : BioseqalignmultipleCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleCursor::sum(self : BioseqalignmultipleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_cursor_mean(s : BioseqalignmultipleCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleCursor::mean(self : BioseqalignmultipleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_cursor_scale(s : BioseqalignmultipleCursor, f : Double) -> BioseqalignmultipleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCursor::scale(self : BioseqalignmultipleCursor, f : Double) -> BioseqalignmultipleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cursor_add(a : BioseqalignmultipleCursor, b : BioseqalignmultipleCursor) -> BioseqalignmultipleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleCursor::add(self : BioseqalignmultipleCursor, other : BioseqalignmultipleCursor) -> BioseqalignmultipleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cursor_copy(s : BioseqalignmultipleCursor) -> BioseqalignmultipleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCursor::copy(self : BioseqalignmultipleCursor) -> BioseqalignmultipleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cursor_fill(s : BioseqalignmultipleCursor, v : Double) -> BioseqalignmultipleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleCursor::fill(self : BioseqalignmultipleCursor, v : Double) -> BioseqalignmultipleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_cursor_min(s : BioseqalignmultipleCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleCursor::min(self : BioseqalignmultipleCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_cursor_max(s : BioseqalignmultipleCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleCursor::max(self : BioseqalignmultipleCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_cursor_to_string(s : BioseqalignmultipleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleCursor::to_string(self : BioseqalignmultipleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleView {
@@ -912,45 +912,45 @@ pub fn bio_seq_align_multiple_view_make(size : Int) -> BioseqalignmultipleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_view_len(s : BioseqalignmultipleView) -> Int { s.size }
+pub fn BioseqalignmultipleView::len(self : BioseqalignmultipleView) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_view_get(s : BioseqalignmultipleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleView::get(self : BioseqalignmultipleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_view_set(s : BioseqalignmultipleView, i : Int, v : Double) -> BioseqalignmultipleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleView::set(self : BioseqalignmultipleView, i : Int, v : Double) -> BioseqalignmultipleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_view_sum(s : BioseqalignmultipleView) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleView::sum(self : BioseqalignmultipleView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_view_mean(s : BioseqalignmultipleView) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleView::mean(self : BioseqalignmultipleView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_view_scale(s : BioseqalignmultipleView, f : Double) -> BioseqalignmultipleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleView::scale(self : BioseqalignmultipleView, f : Double) -> BioseqalignmultipleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_view_add(a : BioseqalignmultipleView, b : BioseqalignmultipleView) -> BioseqalignmultipleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleView::add(self : BioseqalignmultipleView, other : BioseqalignmultipleView) -> BioseqalignmultipleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_view_copy(s : BioseqalignmultipleView) -> BioseqalignmultipleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleView::copy(self : BioseqalignmultipleView) -> BioseqalignmultipleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_view_fill(s : BioseqalignmultipleView, v : Double) -> BioseqalignmultipleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleView::fill(self : BioseqalignmultipleView, v : Double) -> BioseqalignmultipleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_view_min(s : BioseqalignmultipleView) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleView::min(self : BioseqalignmultipleView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_view_max(s : BioseqalignmultipleView) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleView::max(self : BioseqalignmultipleView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_view_to_string(s : BioseqalignmultipleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleView::to_string(self : BioseqalignmultipleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_align_multiple_range_make(size : Int) -> BioseqalignmultipleRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_range_len(s : BioseqalignmultipleRange) -> Int { s.size }
+pub fn BioseqalignmultipleRange::len(self : BioseqalignmultipleRange) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_range_get(s : BioseqalignmultipleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleRange::get(self : BioseqalignmultipleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_range_set(s : BioseqalignmultipleRange, i : Int, v : Double) -> BioseqalignmultipleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleRange::set(self : BioseqalignmultipleRange, i : Int, v : Double) -> BioseqalignmultipleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_range_sum(s : BioseqalignmultipleRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleRange::sum(self : BioseqalignmultipleRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_range_mean(s : BioseqalignmultipleRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleRange::mean(self : BioseqalignmultipleRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_range_scale(s : BioseqalignmultipleRange, f : Double) -> BioseqalignmultipleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleRange::scale(self : BioseqalignmultipleRange, f : Double) -> BioseqalignmultipleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_range_add(a : BioseqalignmultipleRange, b : BioseqalignmultipleRange) -> BioseqalignmultipleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleRange::add(self : BioseqalignmultipleRange, other : BioseqalignmultipleRange) -> BioseqalignmultipleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_range_copy(s : BioseqalignmultipleRange) -> BioseqalignmultipleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleRange::copy(self : BioseqalignmultipleRange) -> BioseqalignmultipleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_range_fill(s : BioseqalignmultipleRange, v : Double) -> BioseqalignmultipleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleRange::fill(self : BioseqalignmultipleRange, v : Double) -> BioseqalignmultipleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_range_min(s : BioseqalignmultipleRange) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleRange::min(self : BioseqalignmultipleRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_range_max(s : BioseqalignmultipleRange) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleRange::max(self : BioseqalignmultipleRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_range_to_string(s : BioseqalignmultipleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleRange::to_string(self : BioseqalignmultipleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignmultipleSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_align_multiple_slice_make(size : Int) -> BioseqalignmultipleSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_multiple_slice_len(s : BioseqalignmultipleSlice) -> Int { s.size }
+pub fn BioseqalignmultipleSlice::len(self : BioseqalignmultipleSlice) -> Int { self.size }
 
-pub fn bio_seq_align_multiple_slice_get(s : BioseqalignmultipleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignmultipleSlice::get(self : BioseqalignmultipleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_multiple_slice_set(s : BioseqalignmultipleSlice, i : Int, v : Double) -> BioseqalignmultipleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleSlice::set(self : BioseqalignmultipleSlice, i : Int, v : Double) -> BioseqalignmultipleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_slice_sum(s : BioseqalignmultipleSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignmultipleSlice::sum(self : BioseqalignmultipleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_multiple_slice_mean(s : BioseqalignmultipleSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignmultipleSlice::mean(self : BioseqalignmultipleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_multiple_slice_scale(s : BioseqalignmultipleSlice, f : Double) -> BioseqalignmultipleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleSlice::scale(self : BioseqalignmultipleSlice, f : Double) -> BioseqalignmultipleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_slice_add(a : BioseqalignmultipleSlice, b : BioseqalignmultipleSlice) -> BioseqalignmultipleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignmultipleSlice::add(self : BioseqalignmultipleSlice, other : BioseqalignmultipleSlice) -> BioseqalignmultipleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_slice_copy(s : BioseqalignmultipleSlice) -> BioseqalignmultipleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleSlice::copy(self : BioseqalignmultipleSlice) -> BioseqalignmultipleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_slice_fill(s : BioseqalignmultipleSlice, v : Double) -> BioseqalignmultipleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignmultipleSlice::fill(self : BioseqalignmultipleSlice, v : Double) -> BioseqalignmultipleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_multiple_slice_min(s : BioseqalignmultipleSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqalignmultipleSlice::min(self : BioseqalignmultipleSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_multiple_slice_max(s : BioseqalignmultipleSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqalignmultipleSlice::max(self : BioseqalignmultipleSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_multiple_slice_to_string(s : BioseqalignmultipleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignmultipleSlice::to_string(self : BioseqalignmultipleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

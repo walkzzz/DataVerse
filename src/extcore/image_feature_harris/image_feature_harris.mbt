@@ -351,45 +351,45 @@ pub fn image_feature_harris_frame_make(size : Int) -> ImagefeatureharrisFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_frame_len(s : ImagefeatureharrisFrame) -> Int { s.size }
+pub fn ImagefeatureharrisFrame::len(self : ImagefeatureharrisFrame) -> Int { self.size }
 
-pub fn image_feature_harris_frame_get(s : ImagefeatureharrisFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisFrame::get(self : ImagefeatureharrisFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_frame_set(s : ImagefeatureharrisFrame, i : Int, v : Double) -> ImagefeatureharrisFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisFrame::set(self : ImagefeatureharrisFrame, i : Int, v : Double) -> ImagefeatureharrisFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_frame_sum(s : ImagefeatureharrisFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisFrame::sum(self : ImagefeatureharrisFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_frame_mean(s : ImagefeatureharrisFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisFrame::mean(self : ImagefeatureharrisFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_frame_scale(s : ImagefeatureharrisFrame, f : Double) -> ImagefeatureharrisFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisFrame::scale(self : ImagefeatureharrisFrame, f : Double) -> ImagefeatureharrisFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_frame_add(a : ImagefeatureharrisFrame, b : ImagefeatureharrisFrame) -> ImagefeatureharrisFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisFrame::add(self : ImagefeatureharrisFrame, other : ImagefeatureharrisFrame) -> ImagefeatureharrisFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_frame_copy(s : ImagefeatureharrisFrame) -> ImagefeatureharrisFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisFrame::copy(self : ImagefeatureharrisFrame) -> ImagefeatureharrisFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_frame_fill(s : ImagefeatureharrisFrame, v : Double) -> ImagefeatureharrisFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisFrame::fill(self : ImagefeatureharrisFrame, v : Double) -> ImagefeatureharrisFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_frame_min(s : ImagefeatureharrisFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisFrame::min(self : ImagefeatureharrisFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_frame_max(s : ImagefeatureharrisFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisFrame::max(self : ImagefeatureharrisFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_frame_to_string(s : ImagefeatureharrisFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisFrame::to_string(self : ImagefeatureharrisFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisTable {
@@ -402,45 +402,45 @@ pub fn image_feature_harris_table_make(size : Int) -> ImagefeatureharrisTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_table_len(s : ImagefeatureharrisTable) -> Int { s.size }
+pub fn ImagefeatureharrisTable::len(self : ImagefeatureharrisTable) -> Int { self.size }
 
-pub fn image_feature_harris_table_get(s : ImagefeatureharrisTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisTable::get(self : ImagefeatureharrisTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_table_set(s : ImagefeatureharrisTable, i : Int, v : Double) -> ImagefeatureharrisTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisTable::set(self : ImagefeatureharrisTable, i : Int, v : Double) -> ImagefeatureharrisTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_table_sum(s : ImagefeatureharrisTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisTable::sum(self : ImagefeatureharrisTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_table_mean(s : ImagefeatureharrisTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisTable::mean(self : ImagefeatureharrisTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_table_scale(s : ImagefeatureharrisTable, f : Double) -> ImagefeatureharrisTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisTable::scale(self : ImagefeatureharrisTable, f : Double) -> ImagefeatureharrisTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_table_add(a : ImagefeatureharrisTable, b : ImagefeatureharrisTable) -> ImagefeatureharrisTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisTable::add(self : ImagefeatureharrisTable, other : ImagefeatureharrisTable) -> ImagefeatureharrisTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_table_copy(s : ImagefeatureharrisTable) -> ImagefeatureharrisTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisTable::copy(self : ImagefeatureharrisTable) -> ImagefeatureharrisTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_table_fill(s : ImagefeatureharrisTable, v : Double) -> ImagefeatureharrisTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisTable::fill(self : ImagefeatureharrisTable, v : Double) -> ImagefeatureharrisTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_table_min(s : ImagefeatureharrisTable) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisTable::min(self : ImagefeatureharrisTable) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_table_max(s : ImagefeatureharrisTable) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisTable::max(self : ImagefeatureharrisTable) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_table_to_string(s : ImagefeatureharrisTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisTable::to_string(self : ImagefeatureharrisTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisGraphN {
@@ -453,45 +453,45 @@ pub fn image_feature_harris_graphn_make(size : Int) -> ImagefeatureharrisGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_graphn_len(s : ImagefeatureharrisGraphN) -> Int { s.size }
+pub fn ImagefeatureharrisGraphN::len(self : ImagefeatureharrisGraphN) -> Int { self.size }
 
-pub fn image_feature_harris_graphn_get(s : ImagefeatureharrisGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisGraphN::get(self : ImagefeatureharrisGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_graphn_set(s : ImagefeatureharrisGraphN, i : Int, v : Double) -> ImagefeatureharrisGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisGraphN::set(self : ImagefeatureharrisGraphN, i : Int, v : Double) -> ImagefeatureharrisGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_graphn_sum(s : ImagefeatureharrisGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisGraphN::sum(self : ImagefeatureharrisGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_graphn_mean(s : ImagefeatureharrisGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisGraphN::mean(self : ImagefeatureharrisGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_graphn_scale(s : ImagefeatureharrisGraphN, f : Double) -> ImagefeatureharrisGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisGraphN::scale(self : ImagefeatureharrisGraphN, f : Double) -> ImagefeatureharrisGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_graphn_add(a : ImagefeatureharrisGraphN, b : ImagefeatureharrisGraphN) -> ImagefeatureharrisGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisGraphN::add(self : ImagefeatureharrisGraphN, other : ImagefeatureharrisGraphN) -> ImagefeatureharrisGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_graphn_copy(s : ImagefeatureharrisGraphN) -> ImagefeatureharrisGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisGraphN::copy(self : ImagefeatureharrisGraphN) -> ImagefeatureharrisGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_graphn_fill(s : ImagefeatureharrisGraphN, v : Double) -> ImagefeatureharrisGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisGraphN::fill(self : ImagefeatureharrisGraphN, v : Double) -> ImagefeatureharrisGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_graphn_min(s : ImagefeatureharrisGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisGraphN::min(self : ImagefeatureharrisGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_graphn_max(s : ImagefeatureharrisGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisGraphN::max(self : ImagefeatureharrisGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_graphn_to_string(s : ImagefeatureharrisGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisGraphN::to_string(self : ImagefeatureharrisGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisNode {
@@ -504,45 +504,45 @@ pub fn image_feature_harris_node_make(size : Int) -> ImagefeatureharrisNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_node_len(s : ImagefeatureharrisNode) -> Int { s.size }
+pub fn ImagefeatureharrisNode::len(self : ImagefeatureharrisNode) -> Int { self.size }
 
-pub fn image_feature_harris_node_get(s : ImagefeatureharrisNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisNode::get(self : ImagefeatureharrisNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_node_set(s : ImagefeatureharrisNode, i : Int, v : Double) -> ImagefeatureharrisNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisNode::set(self : ImagefeatureharrisNode, i : Int, v : Double) -> ImagefeatureharrisNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_node_sum(s : ImagefeatureharrisNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisNode::sum(self : ImagefeatureharrisNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_node_mean(s : ImagefeatureharrisNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisNode::mean(self : ImagefeatureharrisNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_node_scale(s : ImagefeatureharrisNode, f : Double) -> ImagefeatureharrisNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisNode::scale(self : ImagefeatureharrisNode, f : Double) -> ImagefeatureharrisNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_node_add(a : ImagefeatureharrisNode, b : ImagefeatureharrisNode) -> ImagefeatureharrisNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisNode::add(self : ImagefeatureharrisNode, other : ImagefeatureharrisNode) -> ImagefeatureharrisNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_node_copy(s : ImagefeatureharrisNode) -> ImagefeatureharrisNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisNode::copy(self : ImagefeatureharrisNode) -> ImagefeatureharrisNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_node_fill(s : ImagefeatureharrisNode, v : Double) -> ImagefeatureharrisNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisNode::fill(self : ImagefeatureharrisNode, v : Double) -> ImagefeatureharrisNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_node_min(s : ImagefeatureharrisNode) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisNode::min(self : ImagefeatureharrisNode) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_node_max(s : ImagefeatureharrisNode) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisNode::max(self : ImagefeatureharrisNode) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_node_to_string(s : ImagefeatureharrisNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisNode::to_string(self : ImagefeatureharrisNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisEdge {
@@ -555,45 +555,45 @@ pub fn image_feature_harris_edge_make(size : Int) -> ImagefeatureharrisEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_edge_len(s : ImagefeatureharrisEdge) -> Int { s.size }
+pub fn ImagefeatureharrisEdge::len(self : ImagefeatureharrisEdge) -> Int { self.size }
 
-pub fn image_feature_harris_edge_get(s : ImagefeatureharrisEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisEdge::get(self : ImagefeatureharrisEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_edge_set(s : ImagefeatureharrisEdge, i : Int, v : Double) -> ImagefeatureharrisEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisEdge::set(self : ImagefeatureharrisEdge, i : Int, v : Double) -> ImagefeatureharrisEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_edge_sum(s : ImagefeatureharrisEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisEdge::sum(self : ImagefeatureharrisEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_edge_mean(s : ImagefeatureharrisEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisEdge::mean(self : ImagefeatureharrisEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_edge_scale(s : ImagefeatureharrisEdge, f : Double) -> ImagefeatureharrisEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisEdge::scale(self : ImagefeatureharrisEdge, f : Double) -> ImagefeatureharrisEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_edge_add(a : ImagefeatureharrisEdge, b : ImagefeatureharrisEdge) -> ImagefeatureharrisEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisEdge::add(self : ImagefeatureharrisEdge, other : ImagefeatureharrisEdge) -> ImagefeatureharrisEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_edge_copy(s : ImagefeatureharrisEdge) -> ImagefeatureharrisEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisEdge::copy(self : ImagefeatureharrisEdge) -> ImagefeatureharrisEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_edge_fill(s : ImagefeatureharrisEdge, v : Double) -> ImagefeatureharrisEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisEdge::fill(self : ImagefeatureharrisEdge, v : Double) -> ImagefeatureharrisEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_edge_min(s : ImagefeatureharrisEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisEdge::min(self : ImagefeatureharrisEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_edge_max(s : ImagefeatureharrisEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisEdge::max(self : ImagefeatureharrisEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_edge_to_string(s : ImagefeatureharrisEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisEdge::to_string(self : ImagefeatureharrisEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisPath {
@@ -606,45 +606,45 @@ pub fn image_feature_harris_path_make(size : Int) -> ImagefeatureharrisPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_path_len(s : ImagefeatureharrisPath) -> Int { s.size }
+pub fn ImagefeatureharrisPath::len(self : ImagefeatureharrisPath) -> Int { self.size }
 
-pub fn image_feature_harris_path_get(s : ImagefeatureharrisPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisPath::get(self : ImagefeatureharrisPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_path_set(s : ImagefeatureharrisPath, i : Int, v : Double) -> ImagefeatureharrisPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisPath::set(self : ImagefeatureharrisPath, i : Int, v : Double) -> ImagefeatureharrisPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_path_sum(s : ImagefeatureharrisPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisPath::sum(self : ImagefeatureharrisPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_path_mean(s : ImagefeatureharrisPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisPath::mean(self : ImagefeatureharrisPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_path_scale(s : ImagefeatureharrisPath, f : Double) -> ImagefeatureharrisPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisPath::scale(self : ImagefeatureharrisPath, f : Double) -> ImagefeatureharrisPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_path_add(a : ImagefeatureharrisPath, b : ImagefeatureharrisPath) -> ImagefeatureharrisPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisPath::add(self : ImagefeatureharrisPath, other : ImagefeatureharrisPath) -> ImagefeatureharrisPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_path_copy(s : ImagefeatureharrisPath) -> ImagefeatureharrisPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisPath::copy(self : ImagefeatureharrisPath) -> ImagefeatureharrisPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_path_fill(s : ImagefeatureharrisPath, v : Double) -> ImagefeatureharrisPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisPath::fill(self : ImagefeatureharrisPath, v : Double) -> ImagefeatureharrisPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_path_min(s : ImagefeatureharrisPath) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisPath::min(self : ImagefeatureharrisPath) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_path_max(s : ImagefeatureharrisPath) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisPath::max(self : ImagefeatureharrisPath) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_path_to_string(s : ImagefeatureharrisPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisPath::to_string(self : ImagefeatureharrisPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisCluster {
@@ -657,45 +657,45 @@ pub fn image_feature_harris_cluster_make(size : Int) -> ImagefeatureharrisCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_cluster_len(s : ImagefeatureharrisCluster) -> Int { s.size }
+pub fn ImagefeatureharrisCluster::len(self : ImagefeatureharrisCluster) -> Int { self.size }
 
-pub fn image_feature_harris_cluster_get(s : ImagefeatureharrisCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisCluster::get(self : ImagefeatureharrisCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_cluster_set(s : ImagefeatureharrisCluster, i : Int, v : Double) -> ImagefeatureharrisCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCluster::set(self : ImagefeatureharrisCluster, i : Int, v : Double) -> ImagefeatureharrisCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cluster_sum(s : ImagefeatureharrisCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisCluster::sum(self : ImagefeatureharrisCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_cluster_mean(s : ImagefeatureharrisCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisCluster::mean(self : ImagefeatureharrisCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_cluster_scale(s : ImagefeatureharrisCluster, f : Double) -> ImagefeatureharrisCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCluster::scale(self : ImagefeatureharrisCluster, f : Double) -> ImagefeatureharrisCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cluster_add(a : ImagefeatureharrisCluster, b : ImagefeatureharrisCluster) -> ImagefeatureharrisCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisCluster::add(self : ImagefeatureharrisCluster, other : ImagefeatureharrisCluster) -> ImagefeatureharrisCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_cluster_copy(s : ImagefeatureharrisCluster) -> ImagefeatureharrisCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCluster::copy(self : ImagefeatureharrisCluster) -> ImagefeatureharrisCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cluster_fill(s : ImagefeatureharrisCluster, v : Double) -> ImagefeatureharrisCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCluster::fill(self : ImagefeatureharrisCluster, v : Double) -> ImagefeatureharrisCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cluster_min(s : ImagefeatureharrisCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisCluster::min(self : ImagefeatureharrisCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_cluster_max(s : ImagefeatureharrisCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisCluster::max(self : ImagefeatureharrisCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_cluster_to_string(s : ImagefeatureharrisCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisCluster::to_string(self : ImagefeatureharrisCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisModel {
@@ -708,45 +708,45 @@ pub fn image_feature_harris_model_make(size : Int) -> ImagefeatureharrisModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_model_len(s : ImagefeatureharrisModel) -> Int { s.size }
+pub fn ImagefeatureharrisModel::len(self : ImagefeatureharrisModel) -> Int { self.size }
 
-pub fn image_feature_harris_model_get(s : ImagefeatureharrisModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisModel::get(self : ImagefeatureharrisModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_model_set(s : ImagefeatureharrisModel, i : Int, v : Double) -> ImagefeatureharrisModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisModel::set(self : ImagefeatureharrisModel, i : Int, v : Double) -> ImagefeatureharrisModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_model_sum(s : ImagefeatureharrisModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisModel::sum(self : ImagefeatureharrisModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_model_mean(s : ImagefeatureharrisModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisModel::mean(self : ImagefeatureharrisModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_model_scale(s : ImagefeatureharrisModel, f : Double) -> ImagefeatureharrisModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisModel::scale(self : ImagefeatureharrisModel, f : Double) -> ImagefeatureharrisModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_model_add(a : ImagefeatureharrisModel, b : ImagefeatureharrisModel) -> ImagefeatureharrisModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisModel::add(self : ImagefeatureharrisModel, other : ImagefeatureharrisModel) -> ImagefeatureharrisModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_model_copy(s : ImagefeatureharrisModel) -> ImagefeatureharrisModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisModel::copy(self : ImagefeatureharrisModel) -> ImagefeatureharrisModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_model_fill(s : ImagefeatureharrisModel, v : Double) -> ImagefeatureharrisModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisModel::fill(self : ImagefeatureharrisModel, v : Double) -> ImagefeatureharrisModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_model_min(s : ImagefeatureharrisModel) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisModel::min(self : ImagefeatureharrisModel) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_model_max(s : ImagefeatureharrisModel) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisModel::max(self : ImagefeatureharrisModel) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_model_to_string(s : ImagefeatureharrisModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisModel::to_string(self : ImagefeatureharrisModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisLayer {
@@ -759,45 +759,45 @@ pub fn image_feature_harris_layer_make(size : Int) -> ImagefeatureharrisLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_layer_len(s : ImagefeatureharrisLayer) -> Int { s.size }
+pub fn ImagefeatureharrisLayer::len(self : ImagefeatureharrisLayer) -> Int { self.size }
 
-pub fn image_feature_harris_layer_get(s : ImagefeatureharrisLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisLayer::get(self : ImagefeatureharrisLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_layer_set(s : ImagefeatureharrisLayer, i : Int, v : Double) -> ImagefeatureharrisLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisLayer::set(self : ImagefeatureharrisLayer, i : Int, v : Double) -> ImagefeatureharrisLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_layer_sum(s : ImagefeatureharrisLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisLayer::sum(self : ImagefeatureharrisLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_layer_mean(s : ImagefeatureharrisLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisLayer::mean(self : ImagefeatureharrisLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_layer_scale(s : ImagefeatureharrisLayer, f : Double) -> ImagefeatureharrisLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisLayer::scale(self : ImagefeatureharrisLayer, f : Double) -> ImagefeatureharrisLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_layer_add(a : ImagefeatureharrisLayer, b : ImagefeatureharrisLayer) -> ImagefeatureharrisLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisLayer::add(self : ImagefeatureharrisLayer, other : ImagefeatureharrisLayer) -> ImagefeatureharrisLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_layer_copy(s : ImagefeatureharrisLayer) -> ImagefeatureharrisLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisLayer::copy(self : ImagefeatureharrisLayer) -> ImagefeatureharrisLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_layer_fill(s : ImagefeatureharrisLayer, v : Double) -> ImagefeatureharrisLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisLayer::fill(self : ImagefeatureharrisLayer, v : Double) -> ImagefeatureharrisLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_layer_min(s : ImagefeatureharrisLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisLayer::min(self : ImagefeatureharrisLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_layer_max(s : ImagefeatureharrisLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisLayer::max(self : ImagefeatureharrisLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_layer_to_string(s : ImagefeatureharrisLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisLayer::to_string(self : ImagefeatureharrisLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisBuffer {
@@ -810,45 +810,45 @@ pub fn image_feature_harris_buffer_make(size : Int) -> ImagefeatureharrisBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_buffer_len(s : ImagefeatureharrisBuffer) -> Int { s.size }
+pub fn ImagefeatureharrisBuffer::len(self : ImagefeatureharrisBuffer) -> Int { self.size }
 
-pub fn image_feature_harris_buffer_get(s : ImagefeatureharrisBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisBuffer::get(self : ImagefeatureharrisBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_buffer_set(s : ImagefeatureharrisBuffer, i : Int, v : Double) -> ImagefeatureharrisBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisBuffer::set(self : ImagefeatureharrisBuffer, i : Int, v : Double) -> ImagefeatureharrisBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_buffer_sum(s : ImagefeatureharrisBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisBuffer::sum(self : ImagefeatureharrisBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_buffer_mean(s : ImagefeatureharrisBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisBuffer::mean(self : ImagefeatureharrisBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_buffer_scale(s : ImagefeatureharrisBuffer, f : Double) -> ImagefeatureharrisBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisBuffer::scale(self : ImagefeatureharrisBuffer, f : Double) -> ImagefeatureharrisBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_buffer_add(a : ImagefeatureharrisBuffer, b : ImagefeatureharrisBuffer) -> ImagefeatureharrisBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisBuffer::add(self : ImagefeatureharrisBuffer, other : ImagefeatureharrisBuffer) -> ImagefeatureharrisBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_buffer_copy(s : ImagefeatureharrisBuffer) -> ImagefeatureharrisBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisBuffer::copy(self : ImagefeatureharrisBuffer) -> ImagefeatureharrisBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_buffer_fill(s : ImagefeatureharrisBuffer, v : Double) -> ImagefeatureharrisBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisBuffer::fill(self : ImagefeatureharrisBuffer, v : Double) -> ImagefeatureharrisBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_buffer_min(s : ImagefeatureharrisBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisBuffer::min(self : ImagefeatureharrisBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_buffer_max(s : ImagefeatureharrisBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisBuffer::max(self : ImagefeatureharrisBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_buffer_to_string(s : ImagefeatureharrisBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisBuffer::to_string(self : ImagefeatureharrisBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisCursor {
@@ -861,45 +861,45 @@ pub fn image_feature_harris_cursor_make(size : Int) -> ImagefeatureharrisCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_cursor_len(s : ImagefeatureharrisCursor) -> Int { s.size }
+pub fn ImagefeatureharrisCursor::len(self : ImagefeatureharrisCursor) -> Int { self.size }
 
-pub fn image_feature_harris_cursor_get(s : ImagefeatureharrisCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisCursor::get(self : ImagefeatureharrisCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_cursor_set(s : ImagefeatureharrisCursor, i : Int, v : Double) -> ImagefeatureharrisCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCursor::set(self : ImagefeatureharrisCursor, i : Int, v : Double) -> ImagefeatureharrisCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cursor_sum(s : ImagefeatureharrisCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisCursor::sum(self : ImagefeatureharrisCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_cursor_mean(s : ImagefeatureharrisCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisCursor::mean(self : ImagefeatureharrisCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_cursor_scale(s : ImagefeatureharrisCursor, f : Double) -> ImagefeatureharrisCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCursor::scale(self : ImagefeatureharrisCursor, f : Double) -> ImagefeatureharrisCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cursor_add(a : ImagefeatureharrisCursor, b : ImagefeatureharrisCursor) -> ImagefeatureharrisCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisCursor::add(self : ImagefeatureharrisCursor, other : ImagefeatureharrisCursor) -> ImagefeatureharrisCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_cursor_copy(s : ImagefeatureharrisCursor) -> ImagefeatureharrisCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCursor::copy(self : ImagefeatureharrisCursor) -> ImagefeatureharrisCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cursor_fill(s : ImagefeatureharrisCursor, v : Double) -> ImagefeatureharrisCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisCursor::fill(self : ImagefeatureharrisCursor, v : Double) -> ImagefeatureharrisCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_cursor_min(s : ImagefeatureharrisCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisCursor::min(self : ImagefeatureharrisCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_cursor_max(s : ImagefeatureharrisCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisCursor::max(self : ImagefeatureharrisCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_cursor_to_string(s : ImagefeatureharrisCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisCursor::to_string(self : ImagefeatureharrisCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisView {
@@ -912,45 +912,45 @@ pub fn image_feature_harris_view_make(size : Int) -> ImagefeatureharrisView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_view_len(s : ImagefeatureharrisView) -> Int { s.size }
+pub fn ImagefeatureharrisView::len(self : ImagefeatureharrisView) -> Int { self.size }
 
-pub fn image_feature_harris_view_get(s : ImagefeatureharrisView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisView::get(self : ImagefeatureharrisView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_view_set(s : ImagefeatureharrisView, i : Int, v : Double) -> ImagefeatureharrisView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisView::set(self : ImagefeatureharrisView, i : Int, v : Double) -> ImagefeatureharrisView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_view_sum(s : ImagefeatureharrisView) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisView::sum(self : ImagefeatureharrisView) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_view_mean(s : ImagefeatureharrisView) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisView::mean(self : ImagefeatureharrisView) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_view_scale(s : ImagefeatureharrisView, f : Double) -> ImagefeatureharrisView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisView::scale(self : ImagefeatureharrisView, f : Double) -> ImagefeatureharrisView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_view_add(a : ImagefeatureharrisView, b : ImagefeatureharrisView) -> ImagefeatureharrisView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisView::add(self : ImagefeatureharrisView, other : ImagefeatureharrisView) -> ImagefeatureharrisView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_view_copy(s : ImagefeatureharrisView) -> ImagefeatureharrisView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisView::copy(self : ImagefeatureharrisView) -> ImagefeatureharrisView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_view_fill(s : ImagefeatureharrisView, v : Double) -> ImagefeatureharrisView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisView::fill(self : ImagefeatureharrisView, v : Double) -> ImagefeatureharrisView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_view_min(s : ImagefeatureharrisView) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisView::min(self : ImagefeatureharrisView) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_view_max(s : ImagefeatureharrisView) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisView::max(self : ImagefeatureharrisView) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_view_to_string(s : ImagefeatureharrisView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisView::to_string(self : ImagefeatureharrisView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisRange {
@@ -963,45 +963,45 @@ pub fn image_feature_harris_range_make(size : Int) -> ImagefeatureharrisRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_range_len(s : ImagefeatureharrisRange) -> Int { s.size }
+pub fn ImagefeatureharrisRange::len(self : ImagefeatureharrisRange) -> Int { self.size }
 
-pub fn image_feature_harris_range_get(s : ImagefeatureharrisRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisRange::get(self : ImagefeatureharrisRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_range_set(s : ImagefeatureharrisRange, i : Int, v : Double) -> ImagefeatureharrisRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisRange::set(self : ImagefeatureharrisRange, i : Int, v : Double) -> ImagefeatureharrisRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_range_sum(s : ImagefeatureharrisRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisRange::sum(self : ImagefeatureharrisRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_range_mean(s : ImagefeatureharrisRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisRange::mean(self : ImagefeatureharrisRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_range_scale(s : ImagefeatureharrisRange, f : Double) -> ImagefeatureharrisRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisRange::scale(self : ImagefeatureharrisRange, f : Double) -> ImagefeatureharrisRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_range_add(a : ImagefeatureharrisRange, b : ImagefeatureharrisRange) -> ImagefeatureharrisRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisRange::add(self : ImagefeatureharrisRange, other : ImagefeatureharrisRange) -> ImagefeatureharrisRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_range_copy(s : ImagefeatureharrisRange) -> ImagefeatureharrisRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisRange::copy(self : ImagefeatureharrisRange) -> ImagefeatureharrisRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_range_fill(s : ImagefeatureharrisRange, v : Double) -> ImagefeatureharrisRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisRange::fill(self : ImagefeatureharrisRange, v : Double) -> ImagefeatureharrisRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_range_min(s : ImagefeatureharrisRange) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisRange::min(self : ImagefeatureharrisRange) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_range_max(s : ImagefeatureharrisRange) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisRange::max(self : ImagefeatureharrisRange) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_range_to_string(s : ImagefeatureharrisRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisRange::to_string(self : ImagefeatureharrisRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureharrisSlice {
@@ -1014,44 +1014,44 @@ pub fn image_feature_harris_slice_make(size : Int) -> ImagefeatureharrisSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_harris_slice_len(s : ImagefeatureharrisSlice) -> Int { s.size }
+pub fn ImagefeatureharrisSlice::len(self : ImagefeatureharrisSlice) -> Int { self.size }
 
-pub fn image_feature_harris_slice_get(s : ImagefeatureharrisSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureharrisSlice::get(self : ImagefeatureharrisSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_harris_slice_set(s : ImagefeatureharrisSlice, i : Int, v : Double) -> ImagefeatureharrisSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisSlice::set(self : ImagefeatureharrisSlice, i : Int, v : Double) -> ImagefeatureharrisSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_slice_sum(s : ImagefeatureharrisSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureharrisSlice::sum(self : ImagefeatureharrisSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_harris_slice_mean(s : ImagefeatureharrisSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureharrisSlice::mean(self : ImagefeatureharrisSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_harris_slice_scale(s : ImagefeatureharrisSlice, f : Double) -> ImagefeatureharrisSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisSlice::scale(self : ImagefeatureharrisSlice, f : Double) -> ImagefeatureharrisSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_slice_add(a : ImagefeatureharrisSlice, b : ImagefeatureharrisSlice) -> ImagefeatureharrisSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureharrisSlice::add(self : ImagefeatureharrisSlice, other : ImagefeatureharrisSlice) -> ImagefeatureharrisSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_harris_slice_copy(s : ImagefeatureharrisSlice) -> ImagefeatureharrisSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisSlice::copy(self : ImagefeatureharrisSlice) -> ImagefeatureharrisSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_slice_fill(s : ImagefeatureharrisSlice, v : Double) -> ImagefeatureharrisSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureharrisSlice::fill(self : ImagefeatureharrisSlice, v : Double) -> ImagefeatureharrisSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_harris_slice_min(s : ImagefeatureharrisSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureharrisSlice::min(self : ImagefeatureharrisSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_harris_slice_max(s : ImagefeatureharrisSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureharrisSlice::max(self : ImagefeatureharrisSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_harris_slice_to_string(s : ImagefeatureharrisSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureharrisSlice::to_string(self : ImagefeatureharrisSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

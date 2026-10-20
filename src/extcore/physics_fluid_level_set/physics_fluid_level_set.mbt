@@ -351,45 +351,45 @@ pub fn physics_fluid_level_set_frame_make(size : Int) -> PhysicsfluidlevelsetFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_frame_len(s : PhysicsfluidlevelsetFrame) -> Int { s.size }
+pub fn PhysicsfluidlevelsetFrame::len(self : PhysicsfluidlevelsetFrame) -> Int { self.size }
 
-pub fn physics_fluid_level_set_frame_get(s : PhysicsfluidlevelsetFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetFrame::get(self : PhysicsfluidlevelsetFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_frame_set(s : PhysicsfluidlevelsetFrame, i : Int, v : Double) -> PhysicsfluidlevelsetFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetFrame::set(self : PhysicsfluidlevelsetFrame, i : Int, v : Double) -> PhysicsfluidlevelsetFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_frame_sum(s : PhysicsfluidlevelsetFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetFrame::sum(self : PhysicsfluidlevelsetFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_frame_mean(s : PhysicsfluidlevelsetFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetFrame::mean(self : PhysicsfluidlevelsetFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_frame_scale(s : PhysicsfluidlevelsetFrame, f : Double) -> PhysicsfluidlevelsetFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetFrame::scale(self : PhysicsfluidlevelsetFrame, f : Double) -> PhysicsfluidlevelsetFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_frame_add(a : PhysicsfluidlevelsetFrame, b : PhysicsfluidlevelsetFrame) -> PhysicsfluidlevelsetFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetFrame::add(self : PhysicsfluidlevelsetFrame, other : PhysicsfluidlevelsetFrame) -> PhysicsfluidlevelsetFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_frame_copy(s : PhysicsfluidlevelsetFrame) -> PhysicsfluidlevelsetFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetFrame::copy(self : PhysicsfluidlevelsetFrame) -> PhysicsfluidlevelsetFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_frame_fill(s : PhysicsfluidlevelsetFrame, v : Double) -> PhysicsfluidlevelsetFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetFrame::fill(self : PhysicsfluidlevelsetFrame, v : Double) -> PhysicsfluidlevelsetFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_frame_min(s : PhysicsfluidlevelsetFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetFrame::min(self : PhysicsfluidlevelsetFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_frame_max(s : PhysicsfluidlevelsetFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetFrame::max(self : PhysicsfluidlevelsetFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_frame_to_string(s : PhysicsfluidlevelsetFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetFrame::to_string(self : PhysicsfluidlevelsetFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetTable {
@@ -402,45 +402,45 @@ pub fn physics_fluid_level_set_table_make(size : Int) -> PhysicsfluidlevelsetTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_table_len(s : PhysicsfluidlevelsetTable) -> Int { s.size }
+pub fn PhysicsfluidlevelsetTable::len(self : PhysicsfluidlevelsetTable) -> Int { self.size }
 
-pub fn physics_fluid_level_set_table_get(s : PhysicsfluidlevelsetTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetTable::get(self : PhysicsfluidlevelsetTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_table_set(s : PhysicsfluidlevelsetTable, i : Int, v : Double) -> PhysicsfluidlevelsetTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetTable::set(self : PhysicsfluidlevelsetTable, i : Int, v : Double) -> PhysicsfluidlevelsetTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_table_sum(s : PhysicsfluidlevelsetTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetTable::sum(self : PhysicsfluidlevelsetTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_table_mean(s : PhysicsfluidlevelsetTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetTable::mean(self : PhysicsfluidlevelsetTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_table_scale(s : PhysicsfluidlevelsetTable, f : Double) -> PhysicsfluidlevelsetTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetTable::scale(self : PhysicsfluidlevelsetTable, f : Double) -> PhysicsfluidlevelsetTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_table_add(a : PhysicsfluidlevelsetTable, b : PhysicsfluidlevelsetTable) -> PhysicsfluidlevelsetTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetTable::add(self : PhysicsfluidlevelsetTable, other : PhysicsfluidlevelsetTable) -> PhysicsfluidlevelsetTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_table_copy(s : PhysicsfluidlevelsetTable) -> PhysicsfluidlevelsetTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetTable::copy(self : PhysicsfluidlevelsetTable) -> PhysicsfluidlevelsetTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_table_fill(s : PhysicsfluidlevelsetTable, v : Double) -> PhysicsfluidlevelsetTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetTable::fill(self : PhysicsfluidlevelsetTable, v : Double) -> PhysicsfluidlevelsetTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_table_min(s : PhysicsfluidlevelsetTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetTable::min(self : PhysicsfluidlevelsetTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_table_max(s : PhysicsfluidlevelsetTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetTable::max(self : PhysicsfluidlevelsetTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_table_to_string(s : PhysicsfluidlevelsetTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetTable::to_string(self : PhysicsfluidlevelsetTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetGraphN {
@@ -453,45 +453,45 @@ pub fn physics_fluid_level_set_graphn_make(size : Int) -> PhysicsfluidlevelsetGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_graphn_len(s : PhysicsfluidlevelsetGraphN) -> Int { s.size }
+pub fn PhysicsfluidlevelsetGraphN::len(self : PhysicsfluidlevelsetGraphN) -> Int { self.size }
 
-pub fn physics_fluid_level_set_graphn_get(s : PhysicsfluidlevelsetGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetGraphN::get(self : PhysicsfluidlevelsetGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_graphn_set(s : PhysicsfluidlevelsetGraphN, i : Int, v : Double) -> PhysicsfluidlevelsetGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetGraphN::set(self : PhysicsfluidlevelsetGraphN, i : Int, v : Double) -> PhysicsfluidlevelsetGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_graphn_sum(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetGraphN::sum(self : PhysicsfluidlevelsetGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_graphn_mean(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetGraphN::mean(self : PhysicsfluidlevelsetGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_graphn_scale(s : PhysicsfluidlevelsetGraphN, f : Double) -> PhysicsfluidlevelsetGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetGraphN::scale(self : PhysicsfluidlevelsetGraphN, f : Double) -> PhysicsfluidlevelsetGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_graphn_add(a : PhysicsfluidlevelsetGraphN, b : PhysicsfluidlevelsetGraphN) -> PhysicsfluidlevelsetGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetGraphN::add(self : PhysicsfluidlevelsetGraphN, other : PhysicsfluidlevelsetGraphN) -> PhysicsfluidlevelsetGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_graphn_copy(s : PhysicsfluidlevelsetGraphN) -> PhysicsfluidlevelsetGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetGraphN::copy(self : PhysicsfluidlevelsetGraphN) -> PhysicsfluidlevelsetGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_graphn_fill(s : PhysicsfluidlevelsetGraphN, v : Double) -> PhysicsfluidlevelsetGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetGraphN::fill(self : PhysicsfluidlevelsetGraphN, v : Double) -> PhysicsfluidlevelsetGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_graphn_min(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetGraphN::min(self : PhysicsfluidlevelsetGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_graphn_max(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetGraphN::max(self : PhysicsfluidlevelsetGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_graphn_to_string(s : PhysicsfluidlevelsetGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetGraphN::to_string(self : PhysicsfluidlevelsetGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetNode {
@@ -504,45 +504,45 @@ pub fn physics_fluid_level_set_node_make(size : Int) -> PhysicsfluidlevelsetNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_node_len(s : PhysicsfluidlevelsetNode) -> Int { s.size }
+pub fn PhysicsfluidlevelsetNode::len(self : PhysicsfluidlevelsetNode) -> Int { self.size }
 
-pub fn physics_fluid_level_set_node_get(s : PhysicsfluidlevelsetNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetNode::get(self : PhysicsfluidlevelsetNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_node_set(s : PhysicsfluidlevelsetNode, i : Int, v : Double) -> PhysicsfluidlevelsetNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetNode::set(self : PhysicsfluidlevelsetNode, i : Int, v : Double) -> PhysicsfluidlevelsetNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_node_sum(s : PhysicsfluidlevelsetNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetNode::sum(self : PhysicsfluidlevelsetNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_node_mean(s : PhysicsfluidlevelsetNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetNode::mean(self : PhysicsfluidlevelsetNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_node_scale(s : PhysicsfluidlevelsetNode, f : Double) -> PhysicsfluidlevelsetNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetNode::scale(self : PhysicsfluidlevelsetNode, f : Double) -> PhysicsfluidlevelsetNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_node_add(a : PhysicsfluidlevelsetNode, b : PhysicsfluidlevelsetNode) -> PhysicsfluidlevelsetNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetNode::add(self : PhysicsfluidlevelsetNode, other : PhysicsfluidlevelsetNode) -> PhysicsfluidlevelsetNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_node_copy(s : PhysicsfluidlevelsetNode) -> PhysicsfluidlevelsetNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetNode::copy(self : PhysicsfluidlevelsetNode) -> PhysicsfluidlevelsetNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_node_fill(s : PhysicsfluidlevelsetNode, v : Double) -> PhysicsfluidlevelsetNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetNode::fill(self : PhysicsfluidlevelsetNode, v : Double) -> PhysicsfluidlevelsetNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_node_min(s : PhysicsfluidlevelsetNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetNode::min(self : PhysicsfluidlevelsetNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_node_max(s : PhysicsfluidlevelsetNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetNode::max(self : PhysicsfluidlevelsetNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_node_to_string(s : PhysicsfluidlevelsetNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetNode::to_string(self : PhysicsfluidlevelsetNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetEdge {
@@ -555,45 +555,45 @@ pub fn physics_fluid_level_set_edge_make(size : Int) -> PhysicsfluidlevelsetEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_edge_len(s : PhysicsfluidlevelsetEdge) -> Int { s.size }
+pub fn PhysicsfluidlevelsetEdge::len(self : PhysicsfluidlevelsetEdge) -> Int { self.size }
 
-pub fn physics_fluid_level_set_edge_get(s : PhysicsfluidlevelsetEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetEdge::get(self : PhysicsfluidlevelsetEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_edge_set(s : PhysicsfluidlevelsetEdge, i : Int, v : Double) -> PhysicsfluidlevelsetEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetEdge::set(self : PhysicsfluidlevelsetEdge, i : Int, v : Double) -> PhysicsfluidlevelsetEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_edge_sum(s : PhysicsfluidlevelsetEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetEdge::sum(self : PhysicsfluidlevelsetEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_edge_mean(s : PhysicsfluidlevelsetEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetEdge::mean(self : PhysicsfluidlevelsetEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_edge_scale(s : PhysicsfluidlevelsetEdge, f : Double) -> PhysicsfluidlevelsetEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetEdge::scale(self : PhysicsfluidlevelsetEdge, f : Double) -> PhysicsfluidlevelsetEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_edge_add(a : PhysicsfluidlevelsetEdge, b : PhysicsfluidlevelsetEdge) -> PhysicsfluidlevelsetEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetEdge::add(self : PhysicsfluidlevelsetEdge, other : PhysicsfluidlevelsetEdge) -> PhysicsfluidlevelsetEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_edge_copy(s : PhysicsfluidlevelsetEdge) -> PhysicsfluidlevelsetEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetEdge::copy(self : PhysicsfluidlevelsetEdge) -> PhysicsfluidlevelsetEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_edge_fill(s : PhysicsfluidlevelsetEdge, v : Double) -> PhysicsfluidlevelsetEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetEdge::fill(self : PhysicsfluidlevelsetEdge, v : Double) -> PhysicsfluidlevelsetEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_edge_min(s : PhysicsfluidlevelsetEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetEdge::min(self : PhysicsfluidlevelsetEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_edge_max(s : PhysicsfluidlevelsetEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetEdge::max(self : PhysicsfluidlevelsetEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_edge_to_string(s : PhysicsfluidlevelsetEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetEdge::to_string(self : PhysicsfluidlevelsetEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetPath {
@@ -606,45 +606,45 @@ pub fn physics_fluid_level_set_path_make(size : Int) -> PhysicsfluidlevelsetPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_path_len(s : PhysicsfluidlevelsetPath) -> Int { s.size }
+pub fn PhysicsfluidlevelsetPath::len(self : PhysicsfluidlevelsetPath) -> Int { self.size }
 
-pub fn physics_fluid_level_set_path_get(s : PhysicsfluidlevelsetPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetPath::get(self : PhysicsfluidlevelsetPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_path_set(s : PhysicsfluidlevelsetPath, i : Int, v : Double) -> PhysicsfluidlevelsetPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetPath::set(self : PhysicsfluidlevelsetPath, i : Int, v : Double) -> PhysicsfluidlevelsetPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_path_sum(s : PhysicsfluidlevelsetPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetPath::sum(self : PhysicsfluidlevelsetPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_path_mean(s : PhysicsfluidlevelsetPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetPath::mean(self : PhysicsfluidlevelsetPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_path_scale(s : PhysicsfluidlevelsetPath, f : Double) -> PhysicsfluidlevelsetPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetPath::scale(self : PhysicsfluidlevelsetPath, f : Double) -> PhysicsfluidlevelsetPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_path_add(a : PhysicsfluidlevelsetPath, b : PhysicsfluidlevelsetPath) -> PhysicsfluidlevelsetPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetPath::add(self : PhysicsfluidlevelsetPath, other : PhysicsfluidlevelsetPath) -> PhysicsfluidlevelsetPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_path_copy(s : PhysicsfluidlevelsetPath) -> PhysicsfluidlevelsetPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetPath::copy(self : PhysicsfluidlevelsetPath) -> PhysicsfluidlevelsetPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_path_fill(s : PhysicsfluidlevelsetPath, v : Double) -> PhysicsfluidlevelsetPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetPath::fill(self : PhysicsfluidlevelsetPath, v : Double) -> PhysicsfluidlevelsetPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_path_min(s : PhysicsfluidlevelsetPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetPath::min(self : PhysicsfluidlevelsetPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_path_max(s : PhysicsfluidlevelsetPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetPath::max(self : PhysicsfluidlevelsetPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_path_to_string(s : PhysicsfluidlevelsetPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetPath::to_string(self : PhysicsfluidlevelsetPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetCluster {
@@ -657,45 +657,45 @@ pub fn physics_fluid_level_set_cluster_make(size : Int) -> PhysicsfluidlevelsetC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_cluster_len(s : PhysicsfluidlevelsetCluster) -> Int { s.size }
+pub fn PhysicsfluidlevelsetCluster::len(self : PhysicsfluidlevelsetCluster) -> Int { self.size }
 
-pub fn physics_fluid_level_set_cluster_get(s : PhysicsfluidlevelsetCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetCluster::get(self : PhysicsfluidlevelsetCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_cluster_set(s : PhysicsfluidlevelsetCluster, i : Int, v : Double) -> PhysicsfluidlevelsetCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCluster::set(self : PhysicsfluidlevelsetCluster, i : Int, v : Double) -> PhysicsfluidlevelsetCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cluster_sum(s : PhysicsfluidlevelsetCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetCluster::sum(self : PhysicsfluidlevelsetCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_cluster_mean(s : PhysicsfluidlevelsetCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetCluster::mean(self : PhysicsfluidlevelsetCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_cluster_scale(s : PhysicsfluidlevelsetCluster, f : Double) -> PhysicsfluidlevelsetCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCluster::scale(self : PhysicsfluidlevelsetCluster, f : Double) -> PhysicsfluidlevelsetCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cluster_add(a : PhysicsfluidlevelsetCluster, b : PhysicsfluidlevelsetCluster) -> PhysicsfluidlevelsetCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetCluster::add(self : PhysicsfluidlevelsetCluster, other : PhysicsfluidlevelsetCluster) -> PhysicsfluidlevelsetCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cluster_copy(s : PhysicsfluidlevelsetCluster) -> PhysicsfluidlevelsetCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCluster::copy(self : PhysicsfluidlevelsetCluster) -> PhysicsfluidlevelsetCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cluster_fill(s : PhysicsfluidlevelsetCluster, v : Double) -> PhysicsfluidlevelsetCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCluster::fill(self : PhysicsfluidlevelsetCluster, v : Double) -> PhysicsfluidlevelsetCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cluster_min(s : PhysicsfluidlevelsetCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetCluster::min(self : PhysicsfluidlevelsetCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_cluster_max(s : PhysicsfluidlevelsetCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetCluster::max(self : PhysicsfluidlevelsetCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_cluster_to_string(s : PhysicsfluidlevelsetCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetCluster::to_string(self : PhysicsfluidlevelsetCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetModel {
@@ -708,45 +708,45 @@ pub fn physics_fluid_level_set_model_make(size : Int) -> PhysicsfluidlevelsetMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_model_len(s : PhysicsfluidlevelsetModel) -> Int { s.size }
+pub fn PhysicsfluidlevelsetModel::len(self : PhysicsfluidlevelsetModel) -> Int { self.size }
 
-pub fn physics_fluid_level_set_model_get(s : PhysicsfluidlevelsetModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetModel::get(self : PhysicsfluidlevelsetModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_model_set(s : PhysicsfluidlevelsetModel, i : Int, v : Double) -> PhysicsfluidlevelsetModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetModel::set(self : PhysicsfluidlevelsetModel, i : Int, v : Double) -> PhysicsfluidlevelsetModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_model_sum(s : PhysicsfluidlevelsetModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetModel::sum(self : PhysicsfluidlevelsetModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_model_mean(s : PhysicsfluidlevelsetModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetModel::mean(self : PhysicsfluidlevelsetModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_model_scale(s : PhysicsfluidlevelsetModel, f : Double) -> PhysicsfluidlevelsetModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetModel::scale(self : PhysicsfluidlevelsetModel, f : Double) -> PhysicsfluidlevelsetModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_model_add(a : PhysicsfluidlevelsetModel, b : PhysicsfluidlevelsetModel) -> PhysicsfluidlevelsetModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetModel::add(self : PhysicsfluidlevelsetModel, other : PhysicsfluidlevelsetModel) -> PhysicsfluidlevelsetModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_model_copy(s : PhysicsfluidlevelsetModel) -> PhysicsfluidlevelsetModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetModel::copy(self : PhysicsfluidlevelsetModel) -> PhysicsfluidlevelsetModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_model_fill(s : PhysicsfluidlevelsetModel, v : Double) -> PhysicsfluidlevelsetModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetModel::fill(self : PhysicsfluidlevelsetModel, v : Double) -> PhysicsfluidlevelsetModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_model_min(s : PhysicsfluidlevelsetModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetModel::min(self : PhysicsfluidlevelsetModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_model_max(s : PhysicsfluidlevelsetModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetModel::max(self : PhysicsfluidlevelsetModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_model_to_string(s : PhysicsfluidlevelsetModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetModel::to_string(self : PhysicsfluidlevelsetModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetLayer {
@@ -759,45 +759,45 @@ pub fn physics_fluid_level_set_layer_make(size : Int) -> PhysicsfluidlevelsetLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_layer_len(s : PhysicsfluidlevelsetLayer) -> Int { s.size }
+pub fn PhysicsfluidlevelsetLayer::len(self : PhysicsfluidlevelsetLayer) -> Int { self.size }
 
-pub fn physics_fluid_level_set_layer_get(s : PhysicsfluidlevelsetLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetLayer::get(self : PhysicsfluidlevelsetLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_layer_set(s : PhysicsfluidlevelsetLayer, i : Int, v : Double) -> PhysicsfluidlevelsetLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetLayer::set(self : PhysicsfluidlevelsetLayer, i : Int, v : Double) -> PhysicsfluidlevelsetLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_layer_sum(s : PhysicsfluidlevelsetLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetLayer::sum(self : PhysicsfluidlevelsetLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_layer_mean(s : PhysicsfluidlevelsetLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetLayer::mean(self : PhysicsfluidlevelsetLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_layer_scale(s : PhysicsfluidlevelsetLayer, f : Double) -> PhysicsfluidlevelsetLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetLayer::scale(self : PhysicsfluidlevelsetLayer, f : Double) -> PhysicsfluidlevelsetLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_layer_add(a : PhysicsfluidlevelsetLayer, b : PhysicsfluidlevelsetLayer) -> PhysicsfluidlevelsetLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetLayer::add(self : PhysicsfluidlevelsetLayer, other : PhysicsfluidlevelsetLayer) -> PhysicsfluidlevelsetLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_layer_copy(s : PhysicsfluidlevelsetLayer) -> PhysicsfluidlevelsetLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetLayer::copy(self : PhysicsfluidlevelsetLayer) -> PhysicsfluidlevelsetLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_layer_fill(s : PhysicsfluidlevelsetLayer, v : Double) -> PhysicsfluidlevelsetLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetLayer::fill(self : PhysicsfluidlevelsetLayer, v : Double) -> PhysicsfluidlevelsetLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_layer_min(s : PhysicsfluidlevelsetLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetLayer::min(self : PhysicsfluidlevelsetLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_layer_max(s : PhysicsfluidlevelsetLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetLayer::max(self : PhysicsfluidlevelsetLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_layer_to_string(s : PhysicsfluidlevelsetLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetLayer::to_string(self : PhysicsfluidlevelsetLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetBuffer {
@@ -810,45 +810,45 @@ pub fn physics_fluid_level_set_buffer_make(size : Int) -> PhysicsfluidlevelsetBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_buffer_len(s : PhysicsfluidlevelsetBuffer) -> Int { s.size }
+pub fn PhysicsfluidlevelsetBuffer::len(self : PhysicsfluidlevelsetBuffer) -> Int { self.size }
 
-pub fn physics_fluid_level_set_buffer_get(s : PhysicsfluidlevelsetBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetBuffer::get(self : PhysicsfluidlevelsetBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_buffer_set(s : PhysicsfluidlevelsetBuffer, i : Int, v : Double) -> PhysicsfluidlevelsetBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetBuffer::set(self : PhysicsfluidlevelsetBuffer, i : Int, v : Double) -> PhysicsfluidlevelsetBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_buffer_sum(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetBuffer::sum(self : PhysicsfluidlevelsetBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_buffer_mean(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetBuffer::mean(self : PhysicsfluidlevelsetBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_buffer_scale(s : PhysicsfluidlevelsetBuffer, f : Double) -> PhysicsfluidlevelsetBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetBuffer::scale(self : PhysicsfluidlevelsetBuffer, f : Double) -> PhysicsfluidlevelsetBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_buffer_add(a : PhysicsfluidlevelsetBuffer, b : PhysicsfluidlevelsetBuffer) -> PhysicsfluidlevelsetBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetBuffer::add(self : PhysicsfluidlevelsetBuffer, other : PhysicsfluidlevelsetBuffer) -> PhysicsfluidlevelsetBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_buffer_copy(s : PhysicsfluidlevelsetBuffer) -> PhysicsfluidlevelsetBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetBuffer::copy(self : PhysicsfluidlevelsetBuffer) -> PhysicsfluidlevelsetBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_buffer_fill(s : PhysicsfluidlevelsetBuffer, v : Double) -> PhysicsfluidlevelsetBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetBuffer::fill(self : PhysicsfluidlevelsetBuffer, v : Double) -> PhysicsfluidlevelsetBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_buffer_min(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetBuffer::min(self : PhysicsfluidlevelsetBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_buffer_max(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetBuffer::max(self : PhysicsfluidlevelsetBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_buffer_to_string(s : PhysicsfluidlevelsetBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetBuffer::to_string(self : PhysicsfluidlevelsetBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetCursor {
@@ -861,45 +861,45 @@ pub fn physics_fluid_level_set_cursor_make(size : Int) -> PhysicsfluidlevelsetCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_cursor_len(s : PhysicsfluidlevelsetCursor) -> Int { s.size }
+pub fn PhysicsfluidlevelsetCursor::len(self : PhysicsfluidlevelsetCursor) -> Int { self.size }
 
-pub fn physics_fluid_level_set_cursor_get(s : PhysicsfluidlevelsetCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetCursor::get(self : PhysicsfluidlevelsetCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_cursor_set(s : PhysicsfluidlevelsetCursor, i : Int, v : Double) -> PhysicsfluidlevelsetCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCursor::set(self : PhysicsfluidlevelsetCursor, i : Int, v : Double) -> PhysicsfluidlevelsetCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cursor_sum(s : PhysicsfluidlevelsetCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetCursor::sum(self : PhysicsfluidlevelsetCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_cursor_mean(s : PhysicsfluidlevelsetCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetCursor::mean(self : PhysicsfluidlevelsetCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_cursor_scale(s : PhysicsfluidlevelsetCursor, f : Double) -> PhysicsfluidlevelsetCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCursor::scale(self : PhysicsfluidlevelsetCursor, f : Double) -> PhysicsfluidlevelsetCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cursor_add(a : PhysicsfluidlevelsetCursor, b : PhysicsfluidlevelsetCursor) -> PhysicsfluidlevelsetCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetCursor::add(self : PhysicsfluidlevelsetCursor, other : PhysicsfluidlevelsetCursor) -> PhysicsfluidlevelsetCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cursor_copy(s : PhysicsfluidlevelsetCursor) -> PhysicsfluidlevelsetCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCursor::copy(self : PhysicsfluidlevelsetCursor) -> PhysicsfluidlevelsetCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cursor_fill(s : PhysicsfluidlevelsetCursor, v : Double) -> PhysicsfluidlevelsetCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetCursor::fill(self : PhysicsfluidlevelsetCursor, v : Double) -> PhysicsfluidlevelsetCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_cursor_min(s : PhysicsfluidlevelsetCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetCursor::min(self : PhysicsfluidlevelsetCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_cursor_max(s : PhysicsfluidlevelsetCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetCursor::max(self : PhysicsfluidlevelsetCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_cursor_to_string(s : PhysicsfluidlevelsetCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetCursor::to_string(self : PhysicsfluidlevelsetCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetView {
@@ -912,45 +912,45 @@ pub fn physics_fluid_level_set_view_make(size : Int) -> PhysicsfluidlevelsetView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_view_len(s : PhysicsfluidlevelsetView) -> Int { s.size }
+pub fn PhysicsfluidlevelsetView::len(self : PhysicsfluidlevelsetView) -> Int { self.size }
 
-pub fn physics_fluid_level_set_view_get(s : PhysicsfluidlevelsetView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetView::get(self : PhysicsfluidlevelsetView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_view_set(s : PhysicsfluidlevelsetView, i : Int, v : Double) -> PhysicsfluidlevelsetView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetView::set(self : PhysicsfluidlevelsetView, i : Int, v : Double) -> PhysicsfluidlevelsetView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_view_sum(s : PhysicsfluidlevelsetView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetView::sum(self : PhysicsfluidlevelsetView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_view_mean(s : PhysicsfluidlevelsetView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetView::mean(self : PhysicsfluidlevelsetView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_view_scale(s : PhysicsfluidlevelsetView, f : Double) -> PhysicsfluidlevelsetView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetView::scale(self : PhysicsfluidlevelsetView, f : Double) -> PhysicsfluidlevelsetView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_view_add(a : PhysicsfluidlevelsetView, b : PhysicsfluidlevelsetView) -> PhysicsfluidlevelsetView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetView::add(self : PhysicsfluidlevelsetView, other : PhysicsfluidlevelsetView) -> PhysicsfluidlevelsetView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_view_copy(s : PhysicsfluidlevelsetView) -> PhysicsfluidlevelsetView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetView::copy(self : PhysicsfluidlevelsetView) -> PhysicsfluidlevelsetView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_view_fill(s : PhysicsfluidlevelsetView, v : Double) -> PhysicsfluidlevelsetView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetView::fill(self : PhysicsfluidlevelsetView, v : Double) -> PhysicsfluidlevelsetView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_view_min(s : PhysicsfluidlevelsetView) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetView::min(self : PhysicsfluidlevelsetView) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_view_max(s : PhysicsfluidlevelsetView) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetView::max(self : PhysicsfluidlevelsetView) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_view_to_string(s : PhysicsfluidlevelsetView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetView::to_string(self : PhysicsfluidlevelsetView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetRange {
@@ -963,45 +963,45 @@ pub fn physics_fluid_level_set_range_make(size : Int) -> PhysicsfluidlevelsetRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_range_len(s : PhysicsfluidlevelsetRange) -> Int { s.size }
+pub fn PhysicsfluidlevelsetRange::len(self : PhysicsfluidlevelsetRange) -> Int { self.size }
 
-pub fn physics_fluid_level_set_range_get(s : PhysicsfluidlevelsetRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetRange::get(self : PhysicsfluidlevelsetRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_range_set(s : PhysicsfluidlevelsetRange, i : Int, v : Double) -> PhysicsfluidlevelsetRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetRange::set(self : PhysicsfluidlevelsetRange, i : Int, v : Double) -> PhysicsfluidlevelsetRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_range_sum(s : PhysicsfluidlevelsetRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetRange::sum(self : PhysicsfluidlevelsetRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_range_mean(s : PhysicsfluidlevelsetRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetRange::mean(self : PhysicsfluidlevelsetRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_range_scale(s : PhysicsfluidlevelsetRange, f : Double) -> PhysicsfluidlevelsetRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetRange::scale(self : PhysicsfluidlevelsetRange, f : Double) -> PhysicsfluidlevelsetRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_range_add(a : PhysicsfluidlevelsetRange, b : PhysicsfluidlevelsetRange) -> PhysicsfluidlevelsetRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetRange::add(self : PhysicsfluidlevelsetRange, other : PhysicsfluidlevelsetRange) -> PhysicsfluidlevelsetRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_range_copy(s : PhysicsfluidlevelsetRange) -> PhysicsfluidlevelsetRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetRange::copy(self : PhysicsfluidlevelsetRange) -> PhysicsfluidlevelsetRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_range_fill(s : PhysicsfluidlevelsetRange, v : Double) -> PhysicsfluidlevelsetRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetRange::fill(self : PhysicsfluidlevelsetRange, v : Double) -> PhysicsfluidlevelsetRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_range_min(s : PhysicsfluidlevelsetRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetRange::min(self : PhysicsfluidlevelsetRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_range_max(s : PhysicsfluidlevelsetRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetRange::max(self : PhysicsfluidlevelsetRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_range_to_string(s : PhysicsfluidlevelsetRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetRange::to_string(self : PhysicsfluidlevelsetRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidlevelsetSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_fluid_level_set_slice_make(size : Int) -> PhysicsfluidlevelsetSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_level_set_slice_len(s : PhysicsfluidlevelsetSlice) -> Int { s.size }
+pub fn PhysicsfluidlevelsetSlice::len(self : PhysicsfluidlevelsetSlice) -> Int { self.size }
 
-pub fn physics_fluid_level_set_slice_get(s : PhysicsfluidlevelsetSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidlevelsetSlice::get(self : PhysicsfluidlevelsetSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_level_set_slice_set(s : PhysicsfluidlevelsetSlice, i : Int, v : Double) -> PhysicsfluidlevelsetSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetSlice::set(self : PhysicsfluidlevelsetSlice, i : Int, v : Double) -> PhysicsfluidlevelsetSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_slice_sum(s : PhysicsfluidlevelsetSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidlevelsetSlice::sum(self : PhysicsfluidlevelsetSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_level_set_slice_mean(s : PhysicsfluidlevelsetSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidlevelsetSlice::mean(self : PhysicsfluidlevelsetSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_level_set_slice_scale(s : PhysicsfluidlevelsetSlice, f : Double) -> PhysicsfluidlevelsetSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetSlice::scale(self : PhysicsfluidlevelsetSlice, f : Double) -> PhysicsfluidlevelsetSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_slice_add(a : PhysicsfluidlevelsetSlice, b : PhysicsfluidlevelsetSlice) -> PhysicsfluidlevelsetSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidlevelsetSlice::add(self : PhysicsfluidlevelsetSlice, other : PhysicsfluidlevelsetSlice) -> PhysicsfluidlevelsetSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_slice_copy(s : PhysicsfluidlevelsetSlice) -> PhysicsfluidlevelsetSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetSlice::copy(self : PhysicsfluidlevelsetSlice) -> PhysicsfluidlevelsetSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_slice_fill(s : PhysicsfluidlevelsetSlice, v : Double) -> PhysicsfluidlevelsetSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidlevelsetSlice::fill(self : PhysicsfluidlevelsetSlice, v : Double) -> PhysicsfluidlevelsetSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_level_set_slice_min(s : PhysicsfluidlevelsetSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidlevelsetSlice::min(self : PhysicsfluidlevelsetSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_level_set_slice_max(s : PhysicsfluidlevelsetSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidlevelsetSlice::max(self : PhysicsfluidlevelsetSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_level_set_slice_to_string(s : PhysicsfluidlevelsetSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidlevelsetSlice::to_string(self : PhysicsfluidlevelsetSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

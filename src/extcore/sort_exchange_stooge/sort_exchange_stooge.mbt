@@ -351,45 +351,45 @@ pub fn sort_exchange_stooge_frame_make(size : Int) -> SortexchangestoogeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_frame_len(s : SortexchangestoogeFrame) -> Int { s.size }
+pub fn SortexchangestoogeFrame::len(self : SortexchangestoogeFrame) -> Int { self.size }
 
-pub fn sort_exchange_stooge_frame_get(s : SortexchangestoogeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeFrame::get(self : SortexchangestoogeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_frame_set(s : SortexchangestoogeFrame, i : Int, v : Double) -> SortexchangestoogeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeFrame::set(self : SortexchangestoogeFrame, i : Int, v : Double) -> SortexchangestoogeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_frame_sum(s : SortexchangestoogeFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeFrame::sum(self : SortexchangestoogeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_frame_mean(s : SortexchangestoogeFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeFrame::mean(self : SortexchangestoogeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_frame_scale(s : SortexchangestoogeFrame, f : Double) -> SortexchangestoogeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeFrame::scale(self : SortexchangestoogeFrame, f : Double) -> SortexchangestoogeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_frame_add(a : SortexchangestoogeFrame, b : SortexchangestoogeFrame) -> SortexchangestoogeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeFrame::add(self : SortexchangestoogeFrame, other : SortexchangestoogeFrame) -> SortexchangestoogeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_frame_copy(s : SortexchangestoogeFrame) -> SortexchangestoogeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeFrame::copy(self : SortexchangestoogeFrame) -> SortexchangestoogeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_frame_fill(s : SortexchangestoogeFrame, v : Double) -> SortexchangestoogeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeFrame::fill(self : SortexchangestoogeFrame, v : Double) -> SortexchangestoogeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_frame_min(s : SortexchangestoogeFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeFrame::min(self : SortexchangestoogeFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_frame_max(s : SortexchangestoogeFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeFrame::max(self : SortexchangestoogeFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_frame_to_string(s : SortexchangestoogeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeFrame::to_string(self : SortexchangestoogeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_stooge_table_make(size : Int) -> SortexchangestoogeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_table_len(s : SortexchangestoogeTable) -> Int { s.size }
+pub fn SortexchangestoogeTable::len(self : SortexchangestoogeTable) -> Int { self.size }
 
-pub fn sort_exchange_stooge_table_get(s : SortexchangestoogeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeTable::get(self : SortexchangestoogeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_table_set(s : SortexchangestoogeTable, i : Int, v : Double) -> SortexchangestoogeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeTable::set(self : SortexchangestoogeTable, i : Int, v : Double) -> SortexchangestoogeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_table_sum(s : SortexchangestoogeTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeTable::sum(self : SortexchangestoogeTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_table_mean(s : SortexchangestoogeTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeTable::mean(self : SortexchangestoogeTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_table_scale(s : SortexchangestoogeTable, f : Double) -> SortexchangestoogeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeTable::scale(self : SortexchangestoogeTable, f : Double) -> SortexchangestoogeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_table_add(a : SortexchangestoogeTable, b : SortexchangestoogeTable) -> SortexchangestoogeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeTable::add(self : SortexchangestoogeTable, other : SortexchangestoogeTable) -> SortexchangestoogeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_table_copy(s : SortexchangestoogeTable) -> SortexchangestoogeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeTable::copy(self : SortexchangestoogeTable) -> SortexchangestoogeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_table_fill(s : SortexchangestoogeTable, v : Double) -> SortexchangestoogeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeTable::fill(self : SortexchangestoogeTable, v : Double) -> SortexchangestoogeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_table_min(s : SortexchangestoogeTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeTable::min(self : SortexchangestoogeTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_table_max(s : SortexchangestoogeTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeTable::max(self : SortexchangestoogeTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_table_to_string(s : SortexchangestoogeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeTable::to_string(self : SortexchangestoogeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_stooge_graphn_make(size : Int) -> SortexchangestoogeGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_graphn_len(s : SortexchangestoogeGraphN) -> Int { s.size }
+pub fn SortexchangestoogeGraphN::len(self : SortexchangestoogeGraphN) -> Int { self.size }
 
-pub fn sort_exchange_stooge_graphn_get(s : SortexchangestoogeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeGraphN::get(self : SortexchangestoogeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_graphn_set(s : SortexchangestoogeGraphN, i : Int, v : Double) -> SortexchangestoogeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeGraphN::set(self : SortexchangestoogeGraphN, i : Int, v : Double) -> SortexchangestoogeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_graphn_sum(s : SortexchangestoogeGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeGraphN::sum(self : SortexchangestoogeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_graphn_mean(s : SortexchangestoogeGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeGraphN::mean(self : SortexchangestoogeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_graphn_scale(s : SortexchangestoogeGraphN, f : Double) -> SortexchangestoogeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeGraphN::scale(self : SortexchangestoogeGraphN, f : Double) -> SortexchangestoogeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_graphn_add(a : SortexchangestoogeGraphN, b : SortexchangestoogeGraphN) -> SortexchangestoogeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeGraphN::add(self : SortexchangestoogeGraphN, other : SortexchangestoogeGraphN) -> SortexchangestoogeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_graphn_copy(s : SortexchangestoogeGraphN) -> SortexchangestoogeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeGraphN::copy(self : SortexchangestoogeGraphN) -> SortexchangestoogeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_graphn_fill(s : SortexchangestoogeGraphN, v : Double) -> SortexchangestoogeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeGraphN::fill(self : SortexchangestoogeGraphN, v : Double) -> SortexchangestoogeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_graphn_min(s : SortexchangestoogeGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeGraphN::min(self : SortexchangestoogeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_graphn_max(s : SortexchangestoogeGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeGraphN::max(self : SortexchangestoogeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_graphn_to_string(s : SortexchangestoogeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeGraphN::to_string(self : SortexchangestoogeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_stooge_node_make(size : Int) -> SortexchangestoogeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_node_len(s : SortexchangestoogeNode) -> Int { s.size }
+pub fn SortexchangestoogeNode::len(self : SortexchangestoogeNode) -> Int { self.size }
 
-pub fn sort_exchange_stooge_node_get(s : SortexchangestoogeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeNode::get(self : SortexchangestoogeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_node_set(s : SortexchangestoogeNode, i : Int, v : Double) -> SortexchangestoogeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeNode::set(self : SortexchangestoogeNode, i : Int, v : Double) -> SortexchangestoogeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_node_sum(s : SortexchangestoogeNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeNode::sum(self : SortexchangestoogeNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_node_mean(s : SortexchangestoogeNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeNode::mean(self : SortexchangestoogeNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_node_scale(s : SortexchangestoogeNode, f : Double) -> SortexchangestoogeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeNode::scale(self : SortexchangestoogeNode, f : Double) -> SortexchangestoogeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_node_add(a : SortexchangestoogeNode, b : SortexchangestoogeNode) -> SortexchangestoogeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeNode::add(self : SortexchangestoogeNode, other : SortexchangestoogeNode) -> SortexchangestoogeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_node_copy(s : SortexchangestoogeNode) -> SortexchangestoogeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeNode::copy(self : SortexchangestoogeNode) -> SortexchangestoogeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_node_fill(s : SortexchangestoogeNode, v : Double) -> SortexchangestoogeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeNode::fill(self : SortexchangestoogeNode, v : Double) -> SortexchangestoogeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_node_min(s : SortexchangestoogeNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeNode::min(self : SortexchangestoogeNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_node_max(s : SortexchangestoogeNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeNode::max(self : SortexchangestoogeNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_node_to_string(s : SortexchangestoogeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeNode::to_string(self : SortexchangestoogeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_stooge_edge_make(size : Int) -> SortexchangestoogeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_edge_len(s : SortexchangestoogeEdge) -> Int { s.size }
+pub fn SortexchangestoogeEdge::len(self : SortexchangestoogeEdge) -> Int { self.size }
 
-pub fn sort_exchange_stooge_edge_get(s : SortexchangestoogeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeEdge::get(self : SortexchangestoogeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_edge_set(s : SortexchangestoogeEdge, i : Int, v : Double) -> SortexchangestoogeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeEdge::set(self : SortexchangestoogeEdge, i : Int, v : Double) -> SortexchangestoogeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_edge_sum(s : SortexchangestoogeEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeEdge::sum(self : SortexchangestoogeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_edge_mean(s : SortexchangestoogeEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeEdge::mean(self : SortexchangestoogeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_edge_scale(s : SortexchangestoogeEdge, f : Double) -> SortexchangestoogeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeEdge::scale(self : SortexchangestoogeEdge, f : Double) -> SortexchangestoogeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_edge_add(a : SortexchangestoogeEdge, b : SortexchangestoogeEdge) -> SortexchangestoogeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeEdge::add(self : SortexchangestoogeEdge, other : SortexchangestoogeEdge) -> SortexchangestoogeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_edge_copy(s : SortexchangestoogeEdge) -> SortexchangestoogeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeEdge::copy(self : SortexchangestoogeEdge) -> SortexchangestoogeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_edge_fill(s : SortexchangestoogeEdge, v : Double) -> SortexchangestoogeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeEdge::fill(self : SortexchangestoogeEdge, v : Double) -> SortexchangestoogeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_edge_min(s : SortexchangestoogeEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeEdge::min(self : SortexchangestoogeEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_edge_max(s : SortexchangestoogeEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeEdge::max(self : SortexchangestoogeEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_edge_to_string(s : SortexchangestoogeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeEdge::to_string(self : SortexchangestoogeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogePath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_stooge_path_make(size : Int) -> SortexchangestoogePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_path_len(s : SortexchangestoogePath) -> Int { s.size }
+pub fn SortexchangestoogePath::len(self : SortexchangestoogePath) -> Int { self.size }
 
-pub fn sort_exchange_stooge_path_get(s : SortexchangestoogePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogePath::get(self : SortexchangestoogePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_path_set(s : SortexchangestoogePath, i : Int, v : Double) -> SortexchangestoogePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogePath::set(self : SortexchangestoogePath, i : Int, v : Double) -> SortexchangestoogePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_path_sum(s : SortexchangestoogePath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogePath::sum(self : SortexchangestoogePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_path_mean(s : SortexchangestoogePath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogePath::mean(self : SortexchangestoogePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_path_scale(s : SortexchangestoogePath, f : Double) -> SortexchangestoogePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogePath::scale(self : SortexchangestoogePath, f : Double) -> SortexchangestoogePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_path_add(a : SortexchangestoogePath, b : SortexchangestoogePath) -> SortexchangestoogePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogePath::add(self : SortexchangestoogePath, other : SortexchangestoogePath) -> SortexchangestoogePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_path_copy(s : SortexchangestoogePath) -> SortexchangestoogePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogePath::copy(self : SortexchangestoogePath) -> SortexchangestoogePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_path_fill(s : SortexchangestoogePath, v : Double) -> SortexchangestoogePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogePath::fill(self : SortexchangestoogePath, v : Double) -> SortexchangestoogePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_path_min(s : SortexchangestoogePath) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogePath::min(self : SortexchangestoogePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_path_max(s : SortexchangestoogePath) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogePath::max(self : SortexchangestoogePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_path_to_string(s : SortexchangestoogePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogePath::to_string(self : SortexchangestoogePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_stooge_cluster_make(size : Int) -> SortexchangestoogeCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_cluster_len(s : SortexchangestoogeCluster) -> Int { s.size }
+pub fn SortexchangestoogeCluster::len(self : SortexchangestoogeCluster) -> Int { self.size }
 
-pub fn sort_exchange_stooge_cluster_get(s : SortexchangestoogeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeCluster::get(self : SortexchangestoogeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_cluster_set(s : SortexchangestoogeCluster, i : Int, v : Double) -> SortexchangestoogeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCluster::set(self : SortexchangestoogeCluster, i : Int, v : Double) -> SortexchangestoogeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cluster_sum(s : SortexchangestoogeCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeCluster::sum(self : SortexchangestoogeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_cluster_mean(s : SortexchangestoogeCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeCluster::mean(self : SortexchangestoogeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_cluster_scale(s : SortexchangestoogeCluster, f : Double) -> SortexchangestoogeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCluster::scale(self : SortexchangestoogeCluster, f : Double) -> SortexchangestoogeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cluster_add(a : SortexchangestoogeCluster, b : SortexchangestoogeCluster) -> SortexchangestoogeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeCluster::add(self : SortexchangestoogeCluster, other : SortexchangestoogeCluster) -> SortexchangestoogeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cluster_copy(s : SortexchangestoogeCluster) -> SortexchangestoogeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCluster::copy(self : SortexchangestoogeCluster) -> SortexchangestoogeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cluster_fill(s : SortexchangestoogeCluster, v : Double) -> SortexchangestoogeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCluster::fill(self : SortexchangestoogeCluster, v : Double) -> SortexchangestoogeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cluster_min(s : SortexchangestoogeCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeCluster::min(self : SortexchangestoogeCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_cluster_max(s : SortexchangestoogeCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeCluster::max(self : SortexchangestoogeCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_cluster_to_string(s : SortexchangestoogeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeCluster::to_string(self : SortexchangestoogeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_stooge_model_make(size : Int) -> SortexchangestoogeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_model_len(s : SortexchangestoogeModel) -> Int { s.size }
+pub fn SortexchangestoogeModel::len(self : SortexchangestoogeModel) -> Int { self.size }
 
-pub fn sort_exchange_stooge_model_get(s : SortexchangestoogeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeModel::get(self : SortexchangestoogeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_model_set(s : SortexchangestoogeModel, i : Int, v : Double) -> SortexchangestoogeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeModel::set(self : SortexchangestoogeModel, i : Int, v : Double) -> SortexchangestoogeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_model_sum(s : SortexchangestoogeModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeModel::sum(self : SortexchangestoogeModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_model_mean(s : SortexchangestoogeModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeModel::mean(self : SortexchangestoogeModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_model_scale(s : SortexchangestoogeModel, f : Double) -> SortexchangestoogeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeModel::scale(self : SortexchangestoogeModel, f : Double) -> SortexchangestoogeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_model_add(a : SortexchangestoogeModel, b : SortexchangestoogeModel) -> SortexchangestoogeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeModel::add(self : SortexchangestoogeModel, other : SortexchangestoogeModel) -> SortexchangestoogeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_model_copy(s : SortexchangestoogeModel) -> SortexchangestoogeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeModel::copy(self : SortexchangestoogeModel) -> SortexchangestoogeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_model_fill(s : SortexchangestoogeModel, v : Double) -> SortexchangestoogeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeModel::fill(self : SortexchangestoogeModel, v : Double) -> SortexchangestoogeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_model_min(s : SortexchangestoogeModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeModel::min(self : SortexchangestoogeModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_model_max(s : SortexchangestoogeModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeModel::max(self : SortexchangestoogeModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_model_to_string(s : SortexchangestoogeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeModel::to_string(self : SortexchangestoogeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_stooge_layer_make(size : Int) -> SortexchangestoogeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_layer_len(s : SortexchangestoogeLayer) -> Int { s.size }
+pub fn SortexchangestoogeLayer::len(self : SortexchangestoogeLayer) -> Int { self.size }
 
-pub fn sort_exchange_stooge_layer_get(s : SortexchangestoogeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeLayer::get(self : SortexchangestoogeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_layer_set(s : SortexchangestoogeLayer, i : Int, v : Double) -> SortexchangestoogeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeLayer::set(self : SortexchangestoogeLayer, i : Int, v : Double) -> SortexchangestoogeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_layer_sum(s : SortexchangestoogeLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeLayer::sum(self : SortexchangestoogeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_layer_mean(s : SortexchangestoogeLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeLayer::mean(self : SortexchangestoogeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_layer_scale(s : SortexchangestoogeLayer, f : Double) -> SortexchangestoogeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeLayer::scale(self : SortexchangestoogeLayer, f : Double) -> SortexchangestoogeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_layer_add(a : SortexchangestoogeLayer, b : SortexchangestoogeLayer) -> SortexchangestoogeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeLayer::add(self : SortexchangestoogeLayer, other : SortexchangestoogeLayer) -> SortexchangestoogeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_layer_copy(s : SortexchangestoogeLayer) -> SortexchangestoogeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeLayer::copy(self : SortexchangestoogeLayer) -> SortexchangestoogeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_layer_fill(s : SortexchangestoogeLayer, v : Double) -> SortexchangestoogeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeLayer::fill(self : SortexchangestoogeLayer, v : Double) -> SortexchangestoogeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_layer_min(s : SortexchangestoogeLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeLayer::min(self : SortexchangestoogeLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_layer_max(s : SortexchangestoogeLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeLayer::max(self : SortexchangestoogeLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_layer_to_string(s : SortexchangestoogeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeLayer::to_string(self : SortexchangestoogeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_stooge_buffer_make(size : Int) -> SortexchangestoogeBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_buffer_len(s : SortexchangestoogeBuffer) -> Int { s.size }
+pub fn SortexchangestoogeBuffer::len(self : SortexchangestoogeBuffer) -> Int { self.size }
 
-pub fn sort_exchange_stooge_buffer_get(s : SortexchangestoogeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeBuffer::get(self : SortexchangestoogeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_buffer_set(s : SortexchangestoogeBuffer, i : Int, v : Double) -> SortexchangestoogeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeBuffer::set(self : SortexchangestoogeBuffer, i : Int, v : Double) -> SortexchangestoogeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_buffer_sum(s : SortexchangestoogeBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeBuffer::sum(self : SortexchangestoogeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_buffer_mean(s : SortexchangestoogeBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeBuffer::mean(self : SortexchangestoogeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_buffer_scale(s : SortexchangestoogeBuffer, f : Double) -> SortexchangestoogeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeBuffer::scale(self : SortexchangestoogeBuffer, f : Double) -> SortexchangestoogeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_buffer_add(a : SortexchangestoogeBuffer, b : SortexchangestoogeBuffer) -> SortexchangestoogeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeBuffer::add(self : SortexchangestoogeBuffer, other : SortexchangestoogeBuffer) -> SortexchangestoogeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_buffer_copy(s : SortexchangestoogeBuffer) -> SortexchangestoogeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeBuffer::copy(self : SortexchangestoogeBuffer) -> SortexchangestoogeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_buffer_fill(s : SortexchangestoogeBuffer, v : Double) -> SortexchangestoogeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeBuffer::fill(self : SortexchangestoogeBuffer, v : Double) -> SortexchangestoogeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_buffer_min(s : SortexchangestoogeBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeBuffer::min(self : SortexchangestoogeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_buffer_max(s : SortexchangestoogeBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeBuffer::max(self : SortexchangestoogeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_buffer_to_string(s : SortexchangestoogeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeBuffer::to_string(self : SortexchangestoogeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_stooge_cursor_make(size : Int) -> SortexchangestoogeCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_cursor_len(s : SortexchangestoogeCursor) -> Int { s.size }
+pub fn SortexchangestoogeCursor::len(self : SortexchangestoogeCursor) -> Int { self.size }
 
-pub fn sort_exchange_stooge_cursor_get(s : SortexchangestoogeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeCursor::get(self : SortexchangestoogeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_cursor_set(s : SortexchangestoogeCursor, i : Int, v : Double) -> SortexchangestoogeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCursor::set(self : SortexchangestoogeCursor, i : Int, v : Double) -> SortexchangestoogeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cursor_sum(s : SortexchangestoogeCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeCursor::sum(self : SortexchangestoogeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_cursor_mean(s : SortexchangestoogeCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeCursor::mean(self : SortexchangestoogeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_cursor_scale(s : SortexchangestoogeCursor, f : Double) -> SortexchangestoogeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCursor::scale(self : SortexchangestoogeCursor, f : Double) -> SortexchangestoogeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cursor_add(a : SortexchangestoogeCursor, b : SortexchangestoogeCursor) -> SortexchangestoogeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeCursor::add(self : SortexchangestoogeCursor, other : SortexchangestoogeCursor) -> SortexchangestoogeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cursor_copy(s : SortexchangestoogeCursor) -> SortexchangestoogeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCursor::copy(self : SortexchangestoogeCursor) -> SortexchangestoogeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cursor_fill(s : SortexchangestoogeCursor, v : Double) -> SortexchangestoogeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeCursor::fill(self : SortexchangestoogeCursor, v : Double) -> SortexchangestoogeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_cursor_min(s : SortexchangestoogeCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeCursor::min(self : SortexchangestoogeCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_cursor_max(s : SortexchangestoogeCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeCursor::max(self : SortexchangestoogeCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_cursor_to_string(s : SortexchangestoogeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeCursor::to_string(self : SortexchangestoogeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_stooge_view_make(size : Int) -> SortexchangestoogeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_view_len(s : SortexchangestoogeView) -> Int { s.size }
+pub fn SortexchangestoogeView::len(self : SortexchangestoogeView) -> Int { self.size }
 
-pub fn sort_exchange_stooge_view_get(s : SortexchangestoogeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeView::get(self : SortexchangestoogeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_view_set(s : SortexchangestoogeView, i : Int, v : Double) -> SortexchangestoogeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeView::set(self : SortexchangestoogeView, i : Int, v : Double) -> SortexchangestoogeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_view_sum(s : SortexchangestoogeView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeView::sum(self : SortexchangestoogeView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_view_mean(s : SortexchangestoogeView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeView::mean(self : SortexchangestoogeView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_view_scale(s : SortexchangestoogeView, f : Double) -> SortexchangestoogeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeView::scale(self : SortexchangestoogeView, f : Double) -> SortexchangestoogeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_view_add(a : SortexchangestoogeView, b : SortexchangestoogeView) -> SortexchangestoogeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeView::add(self : SortexchangestoogeView, other : SortexchangestoogeView) -> SortexchangestoogeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_view_copy(s : SortexchangestoogeView) -> SortexchangestoogeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeView::copy(self : SortexchangestoogeView) -> SortexchangestoogeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_view_fill(s : SortexchangestoogeView, v : Double) -> SortexchangestoogeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeView::fill(self : SortexchangestoogeView, v : Double) -> SortexchangestoogeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_view_min(s : SortexchangestoogeView) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeView::min(self : SortexchangestoogeView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_view_max(s : SortexchangestoogeView) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeView::max(self : SortexchangestoogeView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_view_to_string(s : SortexchangestoogeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeView::to_string(self : SortexchangestoogeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_stooge_range_make(size : Int) -> SortexchangestoogeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_range_len(s : SortexchangestoogeRange) -> Int { s.size }
+pub fn SortexchangestoogeRange::len(self : SortexchangestoogeRange) -> Int { self.size }
 
-pub fn sort_exchange_stooge_range_get(s : SortexchangestoogeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeRange::get(self : SortexchangestoogeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_range_set(s : SortexchangestoogeRange, i : Int, v : Double) -> SortexchangestoogeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeRange::set(self : SortexchangestoogeRange, i : Int, v : Double) -> SortexchangestoogeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_range_sum(s : SortexchangestoogeRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeRange::sum(self : SortexchangestoogeRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_range_mean(s : SortexchangestoogeRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeRange::mean(self : SortexchangestoogeRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_range_scale(s : SortexchangestoogeRange, f : Double) -> SortexchangestoogeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeRange::scale(self : SortexchangestoogeRange, f : Double) -> SortexchangestoogeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_range_add(a : SortexchangestoogeRange, b : SortexchangestoogeRange) -> SortexchangestoogeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeRange::add(self : SortexchangestoogeRange, other : SortexchangestoogeRange) -> SortexchangestoogeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_range_copy(s : SortexchangestoogeRange) -> SortexchangestoogeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeRange::copy(self : SortexchangestoogeRange) -> SortexchangestoogeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_range_fill(s : SortexchangestoogeRange, v : Double) -> SortexchangestoogeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeRange::fill(self : SortexchangestoogeRange, v : Double) -> SortexchangestoogeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_range_min(s : SortexchangestoogeRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeRange::min(self : SortexchangestoogeRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_range_max(s : SortexchangestoogeRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeRange::max(self : SortexchangestoogeRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_range_to_string(s : SortexchangestoogeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeRange::to_string(self : SortexchangestoogeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangestoogeSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_stooge_slice_make(size : Int) -> SortexchangestoogeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_stooge_slice_len(s : SortexchangestoogeSlice) -> Int { s.size }
+pub fn SortexchangestoogeSlice::len(self : SortexchangestoogeSlice) -> Int { self.size }
 
-pub fn sort_exchange_stooge_slice_get(s : SortexchangestoogeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangestoogeSlice::get(self : SortexchangestoogeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_stooge_slice_set(s : SortexchangestoogeSlice, i : Int, v : Double) -> SortexchangestoogeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangestoogeSlice::set(self : SortexchangestoogeSlice, i : Int, v : Double) -> SortexchangestoogeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_slice_sum(s : SortexchangestoogeSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangestoogeSlice::sum(self : SortexchangestoogeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_stooge_slice_mean(s : SortexchangestoogeSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangestoogeSlice::mean(self : SortexchangestoogeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_stooge_slice_scale(s : SortexchangestoogeSlice, f : Double) -> SortexchangestoogeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeSlice::scale(self : SortexchangestoogeSlice, f : Double) -> SortexchangestoogeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_slice_add(a : SortexchangestoogeSlice, b : SortexchangestoogeSlice) -> SortexchangestoogeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangestoogeSlice::add(self : SortexchangestoogeSlice, other : SortexchangestoogeSlice) -> SortexchangestoogeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_slice_copy(s : SortexchangestoogeSlice) -> SortexchangestoogeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeSlice::copy(self : SortexchangestoogeSlice) -> SortexchangestoogeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_slice_fill(s : SortexchangestoogeSlice, v : Double) -> SortexchangestoogeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangestoogeSlice::fill(self : SortexchangestoogeSlice, v : Double) -> SortexchangestoogeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_stooge_slice_min(s : SortexchangestoogeSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangestoogeSlice::min(self : SortexchangestoogeSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_stooge_slice_max(s : SortexchangestoogeSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangestoogeSlice::max(self : SortexchangestoogeSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_stooge_slice_to_string(s : SortexchangestoogeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangestoogeSlice::to_string(self : SortexchangestoogeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

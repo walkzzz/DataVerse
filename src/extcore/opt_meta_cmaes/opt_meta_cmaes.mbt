@@ -351,45 +351,45 @@ pub fn opt_meta_cmaes_frame_make(size : Int) -> OptmetacmaesFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_frame_len(s : OptmetacmaesFrame) -> Int { s.size }
+pub fn OptmetacmaesFrame::len(self : OptmetacmaesFrame) -> Int { self.size }
 
-pub fn opt_meta_cmaes_frame_get(s : OptmetacmaesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesFrame::get(self : OptmetacmaesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_frame_set(s : OptmetacmaesFrame, i : Int, v : Double) -> OptmetacmaesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesFrame::set(self : OptmetacmaesFrame, i : Int, v : Double) -> OptmetacmaesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_frame_sum(s : OptmetacmaesFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesFrame::sum(self : OptmetacmaesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_frame_mean(s : OptmetacmaesFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesFrame::mean(self : OptmetacmaesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_frame_scale(s : OptmetacmaesFrame, f : Double) -> OptmetacmaesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesFrame::scale(self : OptmetacmaesFrame, f : Double) -> OptmetacmaesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_frame_add(a : OptmetacmaesFrame, b : OptmetacmaesFrame) -> OptmetacmaesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesFrame::add(self : OptmetacmaesFrame, other : OptmetacmaesFrame) -> OptmetacmaesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_frame_copy(s : OptmetacmaesFrame) -> OptmetacmaesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesFrame::copy(self : OptmetacmaesFrame) -> OptmetacmaesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_frame_fill(s : OptmetacmaesFrame, v : Double) -> OptmetacmaesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesFrame::fill(self : OptmetacmaesFrame, v : Double) -> OptmetacmaesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_frame_min(s : OptmetacmaesFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesFrame::min(self : OptmetacmaesFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_frame_max(s : OptmetacmaesFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesFrame::max(self : OptmetacmaesFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_frame_to_string(s : OptmetacmaesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesFrame::to_string(self : OptmetacmaesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_cmaes_table_make(size : Int) -> OptmetacmaesTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_table_len(s : OptmetacmaesTable) -> Int { s.size }
+pub fn OptmetacmaesTable::len(self : OptmetacmaesTable) -> Int { self.size }
 
-pub fn opt_meta_cmaes_table_get(s : OptmetacmaesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesTable::get(self : OptmetacmaesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_table_set(s : OptmetacmaesTable, i : Int, v : Double) -> OptmetacmaesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesTable::set(self : OptmetacmaesTable, i : Int, v : Double) -> OptmetacmaesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_table_sum(s : OptmetacmaesTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesTable::sum(self : OptmetacmaesTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_table_mean(s : OptmetacmaesTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesTable::mean(self : OptmetacmaesTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_table_scale(s : OptmetacmaesTable, f : Double) -> OptmetacmaesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesTable::scale(self : OptmetacmaesTable, f : Double) -> OptmetacmaesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_table_add(a : OptmetacmaesTable, b : OptmetacmaesTable) -> OptmetacmaesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesTable::add(self : OptmetacmaesTable, other : OptmetacmaesTable) -> OptmetacmaesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_table_copy(s : OptmetacmaesTable) -> OptmetacmaesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesTable::copy(self : OptmetacmaesTable) -> OptmetacmaesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_table_fill(s : OptmetacmaesTable, v : Double) -> OptmetacmaesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesTable::fill(self : OptmetacmaesTable, v : Double) -> OptmetacmaesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_table_min(s : OptmetacmaesTable) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesTable::min(self : OptmetacmaesTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_table_max(s : OptmetacmaesTable) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesTable::max(self : OptmetacmaesTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_table_to_string(s : OptmetacmaesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesTable::to_string(self : OptmetacmaesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_cmaes_graphn_make(size : Int) -> OptmetacmaesGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_graphn_len(s : OptmetacmaesGraphN) -> Int { s.size }
+pub fn OptmetacmaesGraphN::len(self : OptmetacmaesGraphN) -> Int { self.size }
 
-pub fn opt_meta_cmaes_graphn_get(s : OptmetacmaesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesGraphN::get(self : OptmetacmaesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_graphn_set(s : OptmetacmaesGraphN, i : Int, v : Double) -> OptmetacmaesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesGraphN::set(self : OptmetacmaesGraphN, i : Int, v : Double) -> OptmetacmaesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_graphn_sum(s : OptmetacmaesGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesGraphN::sum(self : OptmetacmaesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_graphn_mean(s : OptmetacmaesGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesGraphN::mean(self : OptmetacmaesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_graphn_scale(s : OptmetacmaesGraphN, f : Double) -> OptmetacmaesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesGraphN::scale(self : OptmetacmaesGraphN, f : Double) -> OptmetacmaesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_graphn_add(a : OptmetacmaesGraphN, b : OptmetacmaesGraphN) -> OptmetacmaesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesGraphN::add(self : OptmetacmaesGraphN, other : OptmetacmaesGraphN) -> OptmetacmaesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_graphn_copy(s : OptmetacmaesGraphN) -> OptmetacmaesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesGraphN::copy(self : OptmetacmaesGraphN) -> OptmetacmaesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_graphn_fill(s : OptmetacmaesGraphN, v : Double) -> OptmetacmaesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesGraphN::fill(self : OptmetacmaesGraphN, v : Double) -> OptmetacmaesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_graphn_min(s : OptmetacmaesGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesGraphN::min(self : OptmetacmaesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_graphn_max(s : OptmetacmaesGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesGraphN::max(self : OptmetacmaesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_graphn_to_string(s : OptmetacmaesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesGraphN::to_string(self : OptmetacmaesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_cmaes_node_make(size : Int) -> OptmetacmaesNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_node_len(s : OptmetacmaesNode) -> Int { s.size }
+pub fn OptmetacmaesNode::len(self : OptmetacmaesNode) -> Int { self.size }
 
-pub fn opt_meta_cmaes_node_get(s : OptmetacmaesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesNode::get(self : OptmetacmaesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_node_set(s : OptmetacmaesNode, i : Int, v : Double) -> OptmetacmaesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesNode::set(self : OptmetacmaesNode, i : Int, v : Double) -> OptmetacmaesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_node_sum(s : OptmetacmaesNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesNode::sum(self : OptmetacmaesNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_node_mean(s : OptmetacmaesNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesNode::mean(self : OptmetacmaesNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_node_scale(s : OptmetacmaesNode, f : Double) -> OptmetacmaesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesNode::scale(self : OptmetacmaesNode, f : Double) -> OptmetacmaesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_node_add(a : OptmetacmaesNode, b : OptmetacmaesNode) -> OptmetacmaesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesNode::add(self : OptmetacmaesNode, other : OptmetacmaesNode) -> OptmetacmaesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_node_copy(s : OptmetacmaesNode) -> OptmetacmaesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesNode::copy(self : OptmetacmaesNode) -> OptmetacmaesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_node_fill(s : OptmetacmaesNode, v : Double) -> OptmetacmaesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesNode::fill(self : OptmetacmaesNode, v : Double) -> OptmetacmaesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_node_min(s : OptmetacmaesNode) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesNode::min(self : OptmetacmaesNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_node_max(s : OptmetacmaesNode) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesNode::max(self : OptmetacmaesNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_node_to_string(s : OptmetacmaesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesNode::to_string(self : OptmetacmaesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_cmaes_edge_make(size : Int) -> OptmetacmaesEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_edge_len(s : OptmetacmaesEdge) -> Int { s.size }
+pub fn OptmetacmaesEdge::len(self : OptmetacmaesEdge) -> Int { self.size }
 
-pub fn opt_meta_cmaes_edge_get(s : OptmetacmaesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesEdge::get(self : OptmetacmaesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_edge_set(s : OptmetacmaesEdge, i : Int, v : Double) -> OptmetacmaesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesEdge::set(self : OptmetacmaesEdge, i : Int, v : Double) -> OptmetacmaesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_edge_sum(s : OptmetacmaesEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesEdge::sum(self : OptmetacmaesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_edge_mean(s : OptmetacmaesEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesEdge::mean(self : OptmetacmaesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_edge_scale(s : OptmetacmaesEdge, f : Double) -> OptmetacmaesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesEdge::scale(self : OptmetacmaesEdge, f : Double) -> OptmetacmaesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_edge_add(a : OptmetacmaesEdge, b : OptmetacmaesEdge) -> OptmetacmaesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesEdge::add(self : OptmetacmaesEdge, other : OptmetacmaesEdge) -> OptmetacmaesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_edge_copy(s : OptmetacmaesEdge) -> OptmetacmaesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesEdge::copy(self : OptmetacmaesEdge) -> OptmetacmaesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_edge_fill(s : OptmetacmaesEdge, v : Double) -> OptmetacmaesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesEdge::fill(self : OptmetacmaesEdge, v : Double) -> OptmetacmaesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_edge_min(s : OptmetacmaesEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesEdge::min(self : OptmetacmaesEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_edge_max(s : OptmetacmaesEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesEdge::max(self : OptmetacmaesEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_edge_to_string(s : OptmetacmaesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesEdge::to_string(self : OptmetacmaesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_cmaes_path_make(size : Int) -> OptmetacmaesPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_path_len(s : OptmetacmaesPath) -> Int { s.size }
+pub fn OptmetacmaesPath::len(self : OptmetacmaesPath) -> Int { self.size }
 
-pub fn opt_meta_cmaes_path_get(s : OptmetacmaesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesPath::get(self : OptmetacmaesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_path_set(s : OptmetacmaesPath, i : Int, v : Double) -> OptmetacmaesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesPath::set(self : OptmetacmaesPath, i : Int, v : Double) -> OptmetacmaesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_path_sum(s : OptmetacmaesPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesPath::sum(self : OptmetacmaesPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_path_mean(s : OptmetacmaesPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesPath::mean(self : OptmetacmaesPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_path_scale(s : OptmetacmaesPath, f : Double) -> OptmetacmaesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesPath::scale(self : OptmetacmaesPath, f : Double) -> OptmetacmaesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_path_add(a : OptmetacmaesPath, b : OptmetacmaesPath) -> OptmetacmaesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesPath::add(self : OptmetacmaesPath, other : OptmetacmaesPath) -> OptmetacmaesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_path_copy(s : OptmetacmaesPath) -> OptmetacmaesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesPath::copy(self : OptmetacmaesPath) -> OptmetacmaesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_path_fill(s : OptmetacmaesPath, v : Double) -> OptmetacmaesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesPath::fill(self : OptmetacmaesPath, v : Double) -> OptmetacmaesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_path_min(s : OptmetacmaesPath) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesPath::min(self : OptmetacmaesPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_path_max(s : OptmetacmaesPath) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesPath::max(self : OptmetacmaesPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_path_to_string(s : OptmetacmaesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesPath::to_string(self : OptmetacmaesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_cmaes_cluster_make(size : Int) -> OptmetacmaesCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_cluster_len(s : OptmetacmaesCluster) -> Int { s.size }
+pub fn OptmetacmaesCluster::len(self : OptmetacmaesCluster) -> Int { self.size }
 
-pub fn opt_meta_cmaes_cluster_get(s : OptmetacmaesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesCluster::get(self : OptmetacmaesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_cluster_set(s : OptmetacmaesCluster, i : Int, v : Double) -> OptmetacmaesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesCluster::set(self : OptmetacmaesCluster, i : Int, v : Double) -> OptmetacmaesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cluster_sum(s : OptmetacmaesCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesCluster::sum(self : OptmetacmaesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_cluster_mean(s : OptmetacmaesCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesCluster::mean(self : OptmetacmaesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_cluster_scale(s : OptmetacmaesCluster, f : Double) -> OptmetacmaesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesCluster::scale(self : OptmetacmaesCluster, f : Double) -> OptmetacmaesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cluster_add(a : OptmetacmaesCluster, b : OptmetacmaesCluster) -> OptmetacmaesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesCluster::add(self : OptmetacmaesCluster, other : OptmetacmaesCluster) -> OptmetacmaesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cluster_copy(s : OptmetacmaesCluster) -> OptmetacmaesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesCluster::copy(self : OptmetacmaesCluster) -> OptmetacmaesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cluster_fill(s : OptmetacmaesCluster, v : Double) -> OptmetacmaesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesCluster::fill(self : OptmetacmaesCluster, v : Double) -> OptmetacmaesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cluster_min(s : OptmetacmaesCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesCluster::min(self : OptmetacmaesCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_cluster_max(s : OptmetacmaesCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesCluster::max(self : OptmetacmaesCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_cluster_to_string(s : OptmetacmaesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesCluster::to_string(self : OptmetacmaesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_cmaes_model_make(size : Int) -> OptmetacmaesModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_model_len(s : OptmetacmaesModel) -> Int { s.size }
+pub fn OptmetacmaesModel::len(self : OptmetacmaesModel) -> Int { self.size }
 
-pub fn opt_meta_cmaes_model_get(s : OptmetacmaesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesModel::get(self : OptmetacmaesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_model_set(s : OptmetacmaesModel, i : Int, v : Double) -> OptmetacmaesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesModel::set(self : OptmetacmaesModel, i : Int, v : Double) -> OptmetacmaesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_model_sum(s : OptmetacmaesModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesModel::sum(self : OptmetacmaesModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_model_mean(s : OptmetacmaesModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesModel::mean(self : OptmetacmaesModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_model_scale(s : OptmetacmaesModel, f : Double) -> OptmetacmaesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesModel::scale(self : OptmetacmaesModel, f : Double) -> OptmetacmaesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_model_add(a : OptmetacmaesModel, b : OptmetacmaesModel) -> OptmetacmaesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesModel::add(self : OptmetacmaesModel, other : OptmetacmaesModel) -> OptmetacmaesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_model_copy(s : OptmetacmaesModel) -> OptmetacmaesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesModel::copy(self : OptmetacmaesModel) -> OptmetacmaesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_model_fill(s : OptmetacmaesModel, v : Double) -> OptmetacmaesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesModel::fill(self : OptmetacmaesModel, v : Double) -> OptmetacmaesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_model_min(s : OptmetacmaesModel) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesModel::min(self : OptmetacmaesModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_model_max(s : OptmetacmaesModel) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesModel::max(self : OptmetacmaesModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_model_to_string(s : OptmetacmaesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesModel::to_string(self : OptmetacmaesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_cmaes_layer_make(size : Int) -> OptmetacmaesLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_layer_len(s : OptmetacmaesLayer) -> Int { s.size }
+pub fn OptmetacmaesLayer::len(self : OptmetacmaesLayer) -> Int { self.size }
 
-pub fn opt_meta_cmaes_layer_get(s : OptmetacmaesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesLayer::get(self : OptmetacmaesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_layer_set(s : OptmetacmaesLayer, i : Int, v : Double) -> OptmetacmaesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesLayer::set(self : OptmetacmaesLayer, i : Int, v : Double) -> OptmetacmaesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_layer_sum(s : OptmetacmaesLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesLayer::sum(self : OptmetacmaesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_layer_mean(s : OptmetacmaesLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesLayer::mean(self : OptmetacmaesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_layer_scale(s : OptmetacmaesLayer, f : Double) -> OptmetacmaesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesLayer::scale(self : OptmetacmaesLayer, f : Double) -> OptmetacmaesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_layer_add(a : OptmetacmaesLayer, b : OptmetacmaesLayer) -> OptmetacmaesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesLayer::add(self : OptmetacmaesLayer, other : OptmetacmaesLayer) -> OptmetacmaesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_layer_copy(s : OptmetacmaesLayer) -> OptmetacmaesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesLayer::copy(self : OptmetacmaesLayer) -> OptmetacmaesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_layer_fill(s : OptmetacmaesLayer, v : Double) -> OptmetacmaesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesLayer::fill(self : OptmetacmaesLayer, v : Double) -> OptmetacmaesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_layer_min(s : OptmetacmaesLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesLayer::min(self : OptmetacmaesLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_layer_max(s : OptmetacmaesLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesLayer::max(self : OptmetacmaesLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_layer_to_string(s : OptmetacmaesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesLayer::to_string(self : OptmetacmaesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_cmaes_buffer_make(size : Int) -> OptmetacmaesBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_buffer_len(s : OptmetacmaesBuffer) -> Int { s.size }
+pub fn OptmetacmaesBuffer::len(self : OptmetacmaesBuffer) -> Int { self.size }
 
-pub fn opt_meta_cmaes_buffer_get(s : OptmetacmaesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesBuffer::get(self : OptmetacmaesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_buffer_set(s : OptmetacmaesBuffer, i : Int, v : Double) -> OptmetacmaesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesBuffer::set(self : OptmetacmaesBuffer, i : Int, v : Double) -> OptmetacmaesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_buffer_sum(s : OptmetacmaesBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesBuffer::sum(self : OptmetacmaesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_buffer_mean(s : OptmetacmaesBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesBuffer::mean(self : OptmetacmaesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_buffer_scale(s : OptmetacmaesBuffer, f : Double) -> OptmetacmaesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesBuffer::scale(self : OptmetacmaesBuffer, f : Double) -> OptmetacmaesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_buffer_add(a : OptmetacmaesBuffer, b : OptmetacmaesBuffer) -> OptmetacmaesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesBuffer::add(self : OptmetacmaesBuffer, other : OptmetacmaesBuffer) -> OptmetacmaesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_buffer_copy(s : OptmetacmaesBuffer) -> OptmetacmaesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesBuffer::copy(self : OptmetacmaesBuffer) -> OptmetacmaesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_buffer_fill(s : OptmetacmaesBuffer, v : Double) -> OptmetacmaesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesBuffer::fill(self : OptmetacmaesBuffer, v : Double) -> OptmetacmaesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_buffer_min(s : OptmetacmaesBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesBuffer::min(self : OptmetacmaesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_buffer_max(s : OptmetacmaesBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesBuffer::max(self : OptmetacmaesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_buffer_to_string(s : OptmetacmaesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesBuffer::to_string(self : OptmetacmaesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_cmaes_cursor_make(size : Int) -> OptmetacmaesCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_cursor_len(s : OptmetacmaesCursor) -> Int { s.size }
+pub fn OptmetacmaesCursor::len(self : OptmetacmaesCursor) -> Int { self.size }
 
-pub fn opt_meta_cmaes_cursor_get(s : OptmetacmaesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesCursor::get(self : OptmetacmaesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_cursor_set(s : OptmetacmaesCursor, i : Int, v : Double) -> OptmetacmaesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesCursor::set(self : OptmetacmaesCursor, i : Int, v : Double) -> OptmetacmaesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cursor_sum(s : OptmetacmaesCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesCursor::sum(self : OptmetacmaesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_cursor_mean(s : OptmetacmaesCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesCursor::mean(self : OptmetacmaesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_cursor_scale(s : OptmetacmaesCursor, f : Double) -> OptmetacmaesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesCursor::scale(self : OptmetacmaesCursor, f : Double) -> OptmetacmaesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cursor_add(a : OptmetacmaesCursor, b : OptmetacmaesCursor) -> OptmetacmaesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesCursor::add(self : OptmetacmaesCursor, other : OptmetacmaesCursor) -> OptmetacmaesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cursor_copy(s : OptmetacmaesCursor) -> OptmetacmaesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesCursor::copy(self : OptmetacmaesCursor) -> OptmetacmaesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cursor_fill(s : OptmetacmaesCursor, v : Double) -> OptmetacmaesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesCursor::fill(self : OptmetacmaesCursor, v : Double) -> OptmetacmaesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_cursor_min(s : OptmetacmaesCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesCursor::min(self : OptmetacmaesCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_cursor_max(s : OptmetacmaesCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesCursor::max(self : OptmetacmaesCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_cursor_to_string(s : OptmetacmaesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesCursor::to_string(self : OptmetacmaesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesView {
@@ -912,45 +912,45 @@ pub fn opt_meta_cmaes_view_make(size : Int) -> OptmetacmaesView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_view_len(s : OptmetacmaesView) -> Int { s.size }
+pub fn OptmetacmaesView::len(self : OptmetacmaesView) -> Int { self.size }
 
-pub fn opt_meta_cmaes_view_get(s : OptmetacmaesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesView::get(self : OptmetacmaesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_view_set(s : OptmetacmaesView, i : Int, v : Double) -> OptmetacmaesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesView::set(self : OptmetacmaesView, i : Int, v : Double) -> OptmetacmaesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_view_sum(s : OptmetacmaesView) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesView::sum(self : OptmetacmaesView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_view_mean(s : OptmetacmaesView) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesView::mean(self : OptmetacmaesView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_view_scale(s : OptmetacmaesView, f : Double) -> OptmetacmaesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesView::scale(self : OptmetacmaesView, f : Double) -> OptmetacmaesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_view_add(a : OptmetacmaesView, b : OptmetacmaesView) -> OptmetacmaesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesView::add(self : OptmetacmaesView, other : OptmetacmaesView) -> OptmetacmaesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_view_copy(s : OptmetacmaesView) -> OptmetacmaesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesView::copy(self : OptmetacmaesView) -> OptmetacmaesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_view_fill(s : OptmetacmaesView, v : Double) -> OptmetacmaesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesView::fill(self : OptmetacmaesView, v : Double) -> OptmetacmaesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_view_min(s : OptmetacmaesView) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesView::min(self : OptmetacmaesView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_view_max(s : OptmetacmaesView) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesView::max(self : OptmetacmaesView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_view_to_string(s : OptmetacmaesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesView::to_string(self : OptmetacmaesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_cmaes_range_make(size : Int) -> OptmetacmaesRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_range_len(s : OptmetacmaesRange) -> Int { s.size }
+pub fn OptmetacmaesRange::len(self : OptmetacmaesRange) -> Int { self.size }
 
-pub fn opt_meta_cmaes_range_get(s : OptmetacmaesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesRange::get(self : OptmetacmaesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_range_set(s : OptmetacmaesRange, i : Int, v : Double) -> OptmetacmaesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesRange::set(self : OptmetacmaesRange, i : Int, v : Double) -> OptmetacmaesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_range_sum(s : OptmetacmaesRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesRange::sum(self : OptmetacmaesRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_range_mean(s : OptmetacmaesRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesRange::mean(self : OptmetacmaesRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_range_scale(s : OptmetacmaesRange, f : Double) -> OptmetacmaesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesRange::scale(self : OptmetacmaesRange, f : Double) -> OptmetacmaesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_range_add(a : OptmetacmaesRange, b : OptmetacmaesRange) -> OptmetacmaesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesRange::add(self : OptmetacmaesRange, other : OptmetacmaesRange) -> OptmetacmaesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_range_copy(s : OptmetacmaesRange) -> OptmetacmaesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesRange::copy(self : OptmetacmaesRange) -> OptmetacmaesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_range_fill(s : OptmetacmaesRange, v : Double) -> OptmetacmaesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesRange::fill(self : OptmetacmaesRange, v : Double) -> OptmetacmaesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_range_min(s : OptmetacmaesRange) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesRange::min(self : OptmetacmaesRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_range_max(s : OptmetacmaesRange) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesRange::max(self : OptmetacmaesRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_range_to_string(s : OptmetacmaesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesRange::to_string(self : OptmetacmaesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetacmaesSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_cmaes_slice_make(size : Int) -> OptmetacmaesSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_cmaes_slice_len(s : OptmetacmaesSlice) -> Int { s.size }
+pub fn OptmetacmaesSlice::len(self : OptmetacmaesSlice) -> Int { self.size }
 
-pub fn opt_meta_cmaes_slice_get(s : OptmetacmaesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetacmaesSlice::get(self : OptmetacmaesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_cmaes_slice_set(s : OptmetacmaesSlice, i : Int, v : Double) -> OptmetacmaesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetacmaesSlice::set(self : OptmetacmaesSlice, i : Int, v : Double) -> OptmetacmaesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_slice_sum(s : OptmetacmaesSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetacmaesSlice::sum(self : OptmetacmaesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_cmaes_slice_mean(s : OptmetacmaesSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetacmaesSlice::mean(self : OptmetacmaesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_cmaes_slice_scale(s : OptmetacmaesSlice, f : Double) -> OptmetacmaesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetacmaesSlice::scale(self : OptmetacmaesSlice, f : Double) -> OptmetacmaesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_slice_add(a : OptmetacmaesSlice, b : OptmetacmaesSlice) -> OptmetacmaesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetacmaesSlice::add(self : OptmetacmaesSlice, other : OptmetacmaesSlice) -> OptmetacmaesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_slice_copy(s : OptmetacmaesSlice) -> OptmetacmaesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetacmaesSlice::copy(self : OptmetacmaesSlice) -> OptmetacmaesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_slice_fill(s : OptmetacmaesSlice, v : Double) -> OptmetacmaesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetacmaesSlice::fill(self : OptmetacmaesSlice, v : Double) -> OptmetacmaesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_cmaes_slice_min(s : OptmetacmaesSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetacmaesSlice::min(self : OptmetacmaesSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_cmaes_slice_max(s : OptmetacmaesSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetacmaesSlice::max(self : OptmetacmaesSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_cmaes_slice_to_string(s : OptmetacmaesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetacmaesSlice::to_string(self : OptmetacmaesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

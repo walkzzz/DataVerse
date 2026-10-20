@@ -351,45 +351,45 @@ pub fn nlp_parse_shift_reduce_frame_make(size : Int) -> NlpparseshiftreduceFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_frame_len(s : NlpparseshiftreduceFrame) -> Int { s.size }
+pub fn NlpparseshiftreduceFrame::len(self : NlpparseshiftreduceFrame) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_frame_get(s : NlpparseshiftreduceFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceFrame::get(self : NlpparseshiftreduceFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_frame_set(s : NlpparseshiftreduceFrame, i : Int, v : Double) -> NlpparseshiftreduceFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceFrame::set(self : NlpparseshiftreduceFrame, i : Int, v : Double) -> NlpparseshiftreduceFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_frame_sum(s : NlpparseshiftreduceFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceFrame::sum(self : NlpparseshiftreduceFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_frame_mean(s : NlpparseshiftreduceFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceFrame::mean(self : NlpparseshiftreduceFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_frame_scale(s : NlpparseshiftreduceFrame, f : Double) -> NlpparseshiftreduceFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceFrame::scale(self : NlpparseshiftreduceFrame, f : Double) -> NlpparseshiftreduceFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_frame_add(a : NlpparseshiftreduceFrame, b : NlpparseshiftreduceFrame) -> NlpparseshiftreduceFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceFrame::add(self : NlpparseshiftreduceFrame, other : NlpparseshiftreduceFrame) -> NlpparseshiftreduceFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_frame_copy(s : NlpparseshiftreduceFrame) -> NlpparseshiftreduceFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceFrame::copy(self : NlpparseshiftreduceFrame) -> NlpparseshiftreduceFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_frame_fill(s : NlpparseshiftreduceFrame, v : Double) -> NlpparseshiftreduceFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceFrame::fill(self : NlpparseshiftreduceFrame, v : Double) -> NlpparseshiftreduceFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_frame_min(s : NlpparseshiftreduceFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceFrame::min(self : NlpparseshiftreduceFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_frame_max(s : NlpparseshiftreduceFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceFrame::max(self : NlpparseshiftreduceFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_frame_to_string(s : NlpparseshiftreduceFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceFrame::to_string(self : NlpparseshiftreduceFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_shift_reduce_table_make(size : Int) -> NlpparseshiftreduceTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_table_len(s : NlpparseshiftreduceTable) -> Int { s.size }
+pub fn NlpparseshiftreduceTable::len(self : NlpparseshiftreduceTable) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_table_get(s : NlpparseshiftreduceTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceTable::get(self : NlpparseshiftreduceTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_table_set(s : NlpparseshiftreduceTable, i : Int, v : Double) -> NlpparseshiftreduceTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceTable::set(self : NlpparseshiftreduceTable, i : Int, v : Double) -> NlpparseshiftreduceTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_table_sum(s : NlpparseshiftreduceTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceTable::sum(self : NlpparseshiftreduceTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_table_mean(s : NlpparseshiftreduceTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceTable::mean(self : NlpparseshiftreduceTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_table_scale(s : NlpparseshiftreduceTable, f : Double) -> NlpparseshiftreduceTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceTable::scale(self : NlpparseshiftreduceTable, f : Double) -> NlpparseshiftreduceTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_table_add(a : NlpparseshiftreduceTable, b : NlpparseshiftreduceTable) -> NlpparseshiftreduceTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceTable::add(self : NlpparseshiftreduceTable, other : NlpparseshiftreduceTable) -> NlpparseshiftreduceTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_table_copy(s : NlpparseshiftreduceTable) -> NlpparseshiftreduceTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceTable::copy(self : NlpparseshiftreduceTable) -> NlpparseshiftreduceTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_table_fill(s : NlpparseshiftreduceTable, v : Double) -> NlpparseshiftreduceTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceTable::fill(self : NlpparseshiftreduceTable, v : Double) -> NlpparseshiftreduceTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_table_min(s : NlpparseshiftreduceTable) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceTable::min(self : NlpparseshiftreduceTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_table_max(s : NlpparseshiftreduceTable) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceTable::max(self : NlpparseshiftreduceTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_table_to_string(s : NlpparseshiftreduceTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceTable::to_string(self : NlpparseshiftreduceTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_shift_reduce_graphn_make(size : Int) -> NlpparseshiftreduceGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_len(s : NlpparseshiftreduceGraphN) -> Int { s.size }
+pub fn NlpparseshiftreduceGraphN::len(self : NlpparseshiftreduceGraphN) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_graphn_get(s : NlpparseshiftreduceGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceGraphN::get(self : NlpparseshiftreduceGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_set(s : NlpparseshiftreduceGraphN, i : Int, v : Double) -> NlpparseshiftreduceGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceGraphN::set(self : NlpparseshiftreduceGraphN, i : Int, v : Double) -> NlpparseshiftreduceGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_sum(s : NlpparseshiftreduceGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceGraphN::sum(self : NlpparseshiftreduceGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_graphn_mean(s : NlpparseshiftreduceGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceGraphN::mean(self : NlpparseshiftreduceGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_graphn_scale(s : NlpparseshiftreduceGraphN, f : Double) -> NlpparseshiftreduceGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceGraphN::scale(self : NlpparseshiftreduceGraphN, f : Double) -> NlpparseshiftreduceGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_add(a : NlpparseshiftreduceGraphN, b : NlpparseshiftreduceGraphN) -> NlpparseshiftreduceGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceGraphN::add(self : NlpparseshiftreduceGraphN, other : NlpparseshiftreduceGraphN) -> NlpparseshiftreduceGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_copy(s : NlpparseshiftreduceGraphN) -> NlpparseshiftreduceGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceGraphN::copy(self : NlpparseshiftreduceGraphN) -> NlpparseshiftreduceGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_fill(s : NlpparseshiftreduceGraphN, v : Double) -> NlpparseshiftreduceGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceGraphN::fill(self : NlpparseshiftreduceGraphN, v : Double) -> NlpparseshiftreduceGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_graphn_min(s : NlpparseshiftreduceGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceGraphN::min(self : NlpparseshiftreduceGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_graphn_max(s : NlpparseshiftreduceGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceGraphN::max(self : NlpparseshiftreduceGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_graphn_to_string(s : NlpparseshiftreduceGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceGraphN::to_string(self : NlpparseshiftreduceGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_shift_reduce_node_make(size : Int) -> NlpparseshiftreduceNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_node_len(s : NlpparseshiftreduceNode) -> Int { s.size }
+pub fn NlpparseshiftreduceNode::len(self : NlpparseshiftreduceNode) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_node_get(s : NlpparseshiftreduceNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceNode::get(self : NlpparseshiftreduceNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_node_set(s : NlpparseshiftreduceNode, i : Int, v : Double) -> NlpparseshiftreduceNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceNode::set(self : NlpparseshiftreduceNode, i : Int, v : Double) -> NlpparseshiftreduceNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_node_sum(s : NlpparseshiftreduceNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceNode::sum(self : NlpparseshiftreduceNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_node_mean(s : NlpparseshiftreduceNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceNode::mean(self : NlpparseshiftreduceNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_node_scale(s : NlpparseshiftreduceNode, f : Double) -> NlpparseshiftreduceNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceNode::scale(self : NlpparseshiftreduceNode, f : Double) -> NlpparseshiftreduceNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_node_add(a : NlpparseshiftreduceNode, b : NlpparseshiftreduceNode) -> NlpparseshiftreduceNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceNode::add(self : NlpparseshiftreduceNode, other : NlpparseshiftreduceNode) -> NlpparseshiftreduceNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_node_copy(s : NlpparseshiftreduceNode) -> NlpparseshiftreduceNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceNode::copy(self : NlpparseshiftreduceNode) -> NlpparseshiftreduceNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_node_fill(s : NlpparseshiftreduceNode, v : Double) -> NlpparseshiftreduceNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceNode::fill(self : NlpparseshiftreduceNode, v : Double) -> NlpparseshiftreduceNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_node_min(s : NlpparseshiftreduceNode) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceNode::min(self : NlpparseshiftreduceNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_node_max(s : NlpparseshiftreduceNode) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceNode::max(self : NlpparseshiftreduceNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_node_to_string(s : NlpparseshiftreduceNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceNode::to_string(self : NlpparseshiftreduceNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_shift_reduce_edge_make(size : Int) -> NlpparseshiftreduceEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_edge_len(s : NlpparseshiftreduceEdge) -> Int { s.size }
+pub fn NlpparseshiftreduceEdge::len(self : NlpparseshiftreduceEdge) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_edge_get(s : NlpparseshiftreduceEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceEdge::get(self : NlpparseshiftreduceEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_edge_set(s : NlpparseshiftreduceEdge, i : Int, v : Double) -> NlpparseshiftreduceEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceEdge::set(self : NlpparseshiftreduceEdge, i : Int, v : Double) -> NlpparseshiftreduceEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_edge_sum(s : NlpparseshiftreduceEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceEdge::sum(self : NlpparseshiftreduceEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_edge_mean(s : NlpparseshiftreduceEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceEdge::mean(self : NlpparseshiftreduceEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_edge_scale(s : NlpparseshiftreduceEdge, f : Double) -> NlpparseshiftreduceEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceEdge::scale(self : NlpparseshiftreduceEdge, f : Double) -> NlpparseshiftreduceEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_edge_add(a : NlpparseshiftreduceEdge, b : NlpparseshiftreduceEdge) -> NlpparseshiftreduceEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceEdge::add(self : NlpparseshiftreduceEdge, other : NlpparseshiftreduceEdge) -> NlpparseshiftreduceEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_edge_copy(s : NlpparseshiftreduceEdge) -> NlpparseshiftreduceEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceEdge::copy(self : NlpparseshiftreduceEdge) -> NlpparseshiftreduceEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_edge_fill(s : NlpparseshiftreduceEdge, v : Double) -> NlpparseshiftreduceEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceEdge::fill(self : NlpparseshiftreduceEdge, v : Double) -> NlpparseshiftreduceEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_edge_min(s : NlpparseshiftreduceEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceEdge::min(self : NlpparseshiftreduceEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_edge_max(s : NlpparseshiftreduceEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceEdge::max(self : NlpparseshiftreduceEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_edge_to_string(s : NlpparseshiftreduceEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceEdge::to_string(self : NlpparseshiftreduceEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreducePath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_shift_reduce_path_make(size : Int) -> NlpparseshiftreducePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_path_len(s : NlpparseshiftreducePath) -> Int { s.size }
+pub fn NlpparseshiftreducePath::len(self : NlpparseshiftreducePath) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_path_get(s : NlpparseshiftreducePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreducePath::get(self : NlpparseshiftreducePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_path_set(s : NlpparseshiftreducePath, i : Int, v : Double) -> NlpparseshiftreducePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreducePath::set(self : NlpparseshiftreducePath, i : Int, v : Double) -> NlpparseshiftreducePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_path_sum(s : NlpparseshiftreducePath) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreducePath::sum(self : NlpparseshiftreducePath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_path_mean(s : NlpparseshiftreducePath) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreducePath::mean(self : NlpparseshiftreducePath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_path_scale(s : NlpparseshiftreducePath, f : Double) -> NlpparseshiftreducePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreducePath::scale(self : NlpparseshiftreducePath, f : Double) -> NlpparseshiftreducePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_path_add(a : NlpparseshiftreducePath, b : NlpparseshiftreducePath) -> NlpparseshiftreducePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreducePath::add(self : NlpparseshiftreducePath, other : NlpparseshiftreducePath) -> NlpparseshiftreducePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_path_copy(s : NlpparseshiftreducePath) -> NlpparseshiftreducePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreducePath::copy(self : NlpparseshiftreducePath) -> NlpparseshiftreducePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_path_fill(s : NlpparseshiftreducePath, v : Double) -> NlpparseshiftreducePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreducePath::fill(self : NlpparseshiftreducePath, v : Double) -> NlpparseshiftreducePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_path_min(s : NlpparseshiftreducePath) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreducePath::min(self : NlpparseshiftreducePath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_path_max(s : NlpparseshiftreducePath) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreducePath::max(self : NlpparseshiftreducePath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_path_to_string(s : NlpparseshiftreducePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreducePath::to_string(self : NlpparseshiftreducePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_shift_reduce_cluster_make(size : Int) -> NlpparseshiftreduceClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_len(s : NlpparseshiftreduceCluster) -> Int { s.size }
+pub fn NlpparseshiftreduceCluster::len(self : NlpparseshiftreduceCluster) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_cluster_get(s : NlpparseshiftreduceCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceCluster::get(self : NlpparseshiftreduceCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_set(s : NlpparseshiftreduceCluster, i : Int, v : Double) -> NlpparseshiftreduceCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCluster::set(self : NlpparseshiftreduceCluster, i : Int, v : Double) -> NlpparseshiftreduceCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_sum(s : NlpparseshiftreduceCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceCluster::sum(self : NlpparseshiftreduceCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_cluster_mean(s : NlpparseshiftreduceCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceCluster::mean(self : NlpparseshiftreduceCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_cluster_scale(s : NlpparseshiftreduceCluster, f : Double) -> NlpparseshiftreduceCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCluster::scale(self : NlpparseshiftreduceCluster, f : Double) -> NlpparseshiftreduceCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_add(a : NlpparseshiftreduceCluster, b : NlpparseshiftreduceCluster) -> NlpparseshiftreduceCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceCluster::add(self : NlpparseshiftreduceCluster, other : NlpparseshiftreduceCluster) -> NlpparseshiftreduceCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_copy(s : NlpparseshiftreduceCluster) -> NlpparseshiftreduceCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCluster::copy(self : NlpparseshiftreduceCluster) -> NlpparseshiftreduceCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_fill(s : NlpparseshiftreduceCluster, v : Double) -> NlpparseshiftreduceCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCluster::fill(self : NlpparseshiftreduceCluster, v : Double) -> NlpparseshiftreduceCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cluster_min(s : NlpparseshiftreduceCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceCluster::min(self : NlpparseshiftreduceCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_cluster_max(s : NlpparseshiftreduceCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceCluster::max(self : NlpparseshiftreduceCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_cluster_to_string(s : NlpparseshiftreduceCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceCluster::to_string(self : NlpparseshiftreduceCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_shift_reduce_model_make(size : Int) -> NlpparseshiftreduceModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_model_len(s : NlpparseshiftreduceModel) -> Int { s.size }
+pub fn NlpparseshiftreduceModel::len(self : NlpparseshiftreduceModel) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_model_get(s : NlpparseshiftreduceModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceModel::get(self : NlpparseshiftreduceModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_model_set(s : NlpparseshiftreduceModel, i : Int, v : Double) -> NlpparseshiftreduceModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceModel::set(self : NlpparseshiftreduceModel, i : Int, v : Double) -> NlpparseshiftreduceModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_model_sum(s : NlpparseshiftreduceModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceModel::sum(self : NlpparseshiftreduceModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_model_mean(s : NlpparseshiftreduceModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceModel::mean(self : NlpparseshiftreduceModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_model_scale(s : NlpparseshiftreduceModel, f : Double) -> NlpparseshiftreduceModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceModel::scale(self : NlpparseshiftreduceModel, f : Double) -> NlpparseshiftreduceModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_model_add(a : NlpparseshiftreduceModel, b : NlpparseshiftreduceModel) -> NlpparseshiftreduceModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceModel::add(self : NlpparseshiftreduceModel, other : NlpparseshiftreduceModel) -> NlpparseshiftreduceModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_model_copy(s : NlpparseshiftreduceModel) -> NlpparseshiftreduceModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceModel::copy(self : NlpparseshiftreduceModel) -> NlpparseshiftreduceModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_model_fill(s : NlpparseshiftreduceModel, v : Double) -> NlpparseshiftreduceModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceModel::fill(self : NlpparseshiftreduceModel, v : Double) -> NlpparseshiftreduceModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_model_min(s : NlpparseshiftreduceModel) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceModel::min(self : NlpparseshiftreduceModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_model_max(s : NlpparseshiftreduceModel) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceModel::max(self : NlpparseshiftreduceModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_model_to_string(s : NlpparseshiftreduceModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceModel::to_string(self : NlpparseshiftreduceModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_shift_reduce_layer_make(size : Int) -> NlpparseshiftreduceLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_layer_len(s : NlpparseshiftreduceLayer) -> Int { s.size }
+pub fn NlpparseshiftreduceLayer::len(self : NlpparseshiftreduceLayer) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_layer_get(s : NlpparseshiftreduceLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceLayer::get(self : NlpparseshiftreduceLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_layer_set(s : NlpparseshiftreduceLayer, i : Int, v : Double) -> NlpparseshiftreduceLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceLayer::set(self : NlpparseshiftreduceLayer, i : Int, v : Double) -> NlpparseshiftreduceLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_layer_sum(s : NlpparseshiftreduceLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceLayer::sum(self : NlpparseshiftreduceLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_layer_mean(s : NlpparseshiftreduceLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceLayer::mean(self : NlpparseshiftreduceLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_layer_scale(s : NlpparseshiftreduceLayer, f : Double) -> NlpparseshiftreduceLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceLayer::scale(self : NlpparseshiftreduceLayer, f : Double) -> NlpparseshiftreduceLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_layer_add(a : NlpparseshiftreduceLayer, b : NlpparseshiftreduceLayer) -> NlpparseshiftreduceLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceLayer::add(self : NlpparseshiftreduceLayer, other : NlpparseshiftreduceLayer) -> NlpparseshiftreduceLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_layer_copy(s : NlpparseshiftreduceLayer) -> NlpparseshiftreduceLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceLayer::copy(self : NlpparseshiftreduceLayer) -> NlpparseshiftreduceLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_layer_fill(s : NlpparseshiftreduceLayer, v : Double) -> NlpparseshiftreduceLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceLayer::fill(self : NlpparseshiftreduceLayer, v : Double) -> NlpparseshiftreduceLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_layer_min(s : NlpparseshiftreduceLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceLayer::min(self : NlpparseshiftreduceLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_layer_max(s : NlpparseshiftreduceLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceLayer::max(self : NlpparseshiftreduceLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_layer_to_string(s : NlpparseshiftreduceLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceLayer::to_string(self : NlpparseshiftreduceLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_shift_reduce_buffer_make(size : Int) -> NlpparseshiftreduceBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_len(s : NlpparseshiftreduceBuffer) -> Int { s.size }
+pub fn NlpparseshiftreduceBuffer::len(self : NlpparseshiftreduceBuffer) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_buffer_get(s : NlpparseshiftreduceBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceBuffer::get(self : NlpparseshiftreduceBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_set(s : NlpparseshiftreduceBuffer, i : Int, v : Double) -> NlpparseshiftreduceBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceBuffer::set(self : NlpparseshiftreduceBuffer, i : Int, v : Double) -> NlpparseshiftreduceBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_sum(s : NlpparseshiftreduceBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceBuffer::sum(self : NlpparseshiftreduceBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_buffer_mean(s : NlpparseshiftreduceBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceBuffer::mean(self : NlpparseshiftreduceBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_buffer_scale(s : NlpparseshiftreduceBuffer, f : Double) -> NlpparseshiftreduceBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceBuffer::scale(self : NlpparseshiftreduceBuffer, f : Double) -> NlpparseshiftreduceBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_add(a : NlpparseshiftreduceBuffer, b : NlpparseshiftreduceBuffer) -> NlpparseshiftreduceBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceBuffer::add(self : NlpparseshiftreduceBuffer, other : NlpparseshiftreduceBuffer) -> NlpparseshiftreduceBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_copy(s : NlpparseshiftreduceBuffer) -> NlpparseshiftreduceBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceBuffer::copy(self : NlpparseshiftreduceBuffer) -> NlpparseshiftreduceBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_fill(s : NlpparseshiftreduceBuffer, v : Double) -> NlpparseshiftreduceBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceBuffer::fill(self : NlpparseshiftreduceBuffer, v : Double) -> NlpparseshiftreduceBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_buffer_min(s : NlpparseshiftreduceBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceBuffer::min(self : NlpparseshiftreduceBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_buffer_max(s : NlpparseshiftreduceBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceBuffer::max(self : NlpparseshiftreduceBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_buffer_to_string(s : NlpparseshiftreduceBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceBuffer::to_string(self : NlpparseshiftreduceBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_shift_reduce_cursor_make(size : Int) -> NlpparseshiftreduceCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_len(s : NlpparseshiftreduceCursor) -> Int { s.size }
+pub fn NlpparseshiftreduceCursor::len(self : NlpparseshiftreduceCursor) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_cursor_get(s : NlpparseshiftreduceCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceCursor::get(self : NlpparseshiftreduceCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_set(s : NlpparseshiftreduceCursor, i : Int, v : Double) -> NlpparseshiftreduceCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCursor::set(self : NlpparseshiftreduceCursor, i : Int, v : Double) -> NlpparseshiftreduceCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_sum(s : NlpparseshiftreduceCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceCursor::sum(self : NlpparseshiftreduceCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_cursor_mean(s : NlpparseshiftreduceCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceCursor::mean(self : NlpparseshiftreduceCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_cursor_scale(s : NlpparseshiftreduceCursor, f : Double) -> NlpparseshiftreduceCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCursor::scale(self : NlpparseshiftreduceCursor, f : Double) -> NlpparseshiftreduceCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_add(a : NlpparseshiftreduceCursor, b : NlpparseshiftreduceCursor) -> NlpparseshiftreduceCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceCursor::add(self : NlpparseshiftreduceCursor, other : NlpparseshiftreduceCursor) -> NlpparseshiftreduceCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_copy(s : NlpparseshiftreduceCursor) -> NlpparseshiftreduceCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCursor::copy(self : NlpparseshiftreduceCursor) -> NlpparseshiftreduceCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_fill(s : NlpparseshiftreduceCursor, v : Double) -> NlpparseshiftreduceCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceCursor::fill(self : NlpparseshiftreduceCursor, v : Double) -> NlpparseshiftreduceCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_cursor_min(s : NlpparseshiftreduceCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceCursor::min(self : NlpparseshiftreduceCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_cursor_max(s : NlpparseshiftreduceCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceCursor::max(self : NlpparseshiftreduceCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_cursor_to_string(s : NlpparseshiftreduceCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceCursor::to_string(self : NlpparseshiftreduceCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_shift_reduce_view_make(size : Int) -> NlpparseshiftreduceView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_view_len(s : NlpparseshiftreduceView) -> Int { s.size }
+pub fn NlpparseshiftreduceView::len(self : NlpparseshiftreduceView) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_view_get(s : NlpparseshiftreduceView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceView::get(self : NlpparseshiftreduceView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_view_set(s : NlpparseshiftreduceView, i : Int, v : Double) -> NlpparseshiftreduceView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceView::set(self : NlpparseshiftreduceView, i : Int, v : Double) -> NlpparseshiftreduceView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_view_sum(s : NlpparseshiftreduceView) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceView::sum(self : NlpparseshiftreduceView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_view_mean(s : NlpparseshiftreduceView) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceView::mean(self : NlpparseshiftreduceView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_view_scale(s : NlpparseshiftreduceView, f : Double) -> NlpparseshiftreduceView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceView::scale(self : NlpparseshiftreduceView, f : Double) -> NlpparseshiftreduceView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_view_add(a : NlpparseshiftreduceView, b : NlpparseshiftreduceView) -> NlpparseshiftreduceView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceView::add(self : NlpparseshiftreduceView, other : NlpparseshiftreduceView) -> NlpparseshiftreduceView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_view_copy(s : NlpparseshiftreduceView) -> NlpparseshiftreduceView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceView::copy(self : NlpparseshiftreduceView) -> NlpparseshiftreduceView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_view_fill(s : NlpparseshiftreduceView, v : Double) -> NlpparseshiftreduceView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceView::fill(self : NlpparseshiftreduceView, v : Double) -> NlpparseshiftreduceView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_view_min(s : NlpparseshiftreduceView) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceView::min(self : NlpparseshiftreduceView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_view_max(s : NlpparseshiftreduceView) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceView::max(self : NlpparseshiftreduceView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_view_to_string(s : NlpparseshiftreduceView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceView::to_string(self : NlpparseshiftreduceView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_shift_reduce_range_make(size : Int) -> NlpparseshiftreduceRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_range_len(s : NlpparseshiftreduceRange) -> Int { s.size }
+pub fn NlpparseshiftreduceRange::len(self : NlpparseshiftreduceRange) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_range_get(s : NlpparseshiftreduceRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceRange::get(self : NlpparseshiftreduceRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_range_set(s : NlpparseshiftreduceRange, i : Int, v : Double) -> NlpparseshiftreduceRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceRange::set(self : NlpparseshiftreduceRange, i : Int, v : Double) -> NlpparseshiftreduceRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_range_sum(s : NlpparseshiftreduceRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceRange::sum(self : NlpparseshiftreduceRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_range_mean(s : NlpparseshiftreduceRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceRange::mean(self : NlpparseshiftreduceRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_range_scale(s : NlpparseshiftreduceRange, f : Double) -> NlpparseshiftreduceRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceRange::scale(self : NlpparseshiftreduceRange, f : Double) -> NlpparseshiftreduceRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_range_add(a : NlpparseshiftreduceRange, b : NlpparseshiftreduceRange) -> NlpparseshiftreduceRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceRange::add(self : NlpparseshiftreduceRange, other : NlpparseshiftreduceRange) -> NlpparseshiftreduceRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_range_copy(s : NlpparseshiftreduceRange) -> NlpparseshiftreduceRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceRange::copy(self : NlpparseshiftreduceRange) -> NlpparseshiftreduceRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_range_fill(s : NlpparseshiftreduceRange, v : Double) -> NlpparseshiftreduceRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceRange::fill(self : NlpparseshiftreduceRange, v : Double) -> NlpparseshiftreduceRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_range_min(s : NlpparseshiftreduceRange) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceRange::min(self : NlpparseshiftreduceRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_range_max(s : NlpparseshiftreduceRange) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceRange::max(self : NlpparseshiftreduceRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_range_to_string(s : NlpparseshiftreduceRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceRange::to_string(self : NlpparseshiftreduceRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseshiftreduceSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_shift_reduce_slice_make(size : Int) -> NlpparseshiftreduceSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_shift_reduce_slice_len(s : NlpparseshiftreduceSlice) -> Int { s.size }
+pub fn NlpparseshiftreduceSlice::len(self : NlpparseshiftreduceSlice) -> Int { self.size }
 
-pub fn nlp_parse_shift_reduce_slice_get(s : NlpparseshiftreduceSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseshiftreduceSlice::get(self : NlpparseshiftreduceSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_shift_reduce_slice_set(s : NlpparseshiftreduceSlice, i : Int, v : Double) -> NlpparseshiftreduceSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceSlice::set(self : NlpparseshiftreduceSlice, i : Int, v : Double) -> NlpparseshiftreduceSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_slice_sum(s : NlpparseshiftreduceSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparseshiftreduceSlice::sum(self : NlpparseshiftreduceSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_shift_reduce_slice_mean(s : NlpparseshiftreduceSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparseshiftreduceSlice::mean(self : NlpparseshiftreduceSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_shift_reduce_slice_scale(s : NlpparseshiftreduceSlice, f : Double) -> NlpparseshiftreduceSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceSlice::scale(self : NlpparseshiftreduceSlice, f : Double) -> NlpparseshiftreduceSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_slice_add(a : NlpparseshiftreduceSlice, b : NlpparseshiftreduceSlice) -> NlpparseshiftreduceSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseshiftreduceSlice::add(self : NlpparseshiftreduceSlice, other : NlpparseshiftreduceSlice) -> NlpparseshiftreduceSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_slice_copy(s : NlpparseshiftreduceSlice) -> NlpparseshiftreduceSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceSlice::copy(self : NlpparseshiftreduceSlice) -> NlpparseshiftreduceSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_slice_fill(s : NlpparseshiftreduceSlice, v : Double) -> NlpparseshiftreduceSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseshiftreduceSlice::fill(self : NlpparseshiftreduceSlice, v : Double) -> NlpparseshiftreduceSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_shift_reduce_slice_min(s : NlpparseshiftreduceSlice) -> Double { @_common.min(s.data) }
+pub fn NlpparseshiftreduceSlice::min(self : NlpparseshiftreduceSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_shift_reduce_slice_max(s : NlpparseshiftreduceSlice) -> Double { @_common.max(s.data) }
+pub fn NlpparseshiftreduceSlice::max(self : NlpparseshiftreduceSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_shift_reduce_slice_to_string(s : NlpparseshiftreduceSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseshiftreduceSlice::to_string(self : NlpparseshiftreduceSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

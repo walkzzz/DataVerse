@@ -351,45 +351,45 @@ pub fn stats_dist_student_frame_make(size : Int) -> StatsdiststudentFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_frame_len(s : StatsdiststudentFrame) -> Int { s.size }
+pub fn StatsdiststudentFrame::len(self : StatsdiststudentFrame) -> Int { self.size }
 
-pub fn stats_dist_student_frame_get(s : StatsdiststudentFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentFrame::get(self : StatsdiststudentFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_frame_set(s : StatsdiststudentFrame, i : Int, v : Double) -> StatsdiststudentFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentFrame::set(self : StatsdiststudentFrame, i : Int, v : Double) -> StatsdiststudentFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_frame_sum(s : StatsdiststudentFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentFrame::sum(self : StatsdiststudentFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_frame_mean(s : StatsdiststudentFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentFrame::mean(self : StatsdiststudentFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_frame_scale(s : StatsdiststudentFrame, f : Double) -> StatsdiststudentFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentFrame::scale(self : StatsdiststudentFrame, f : Double) -> StatsdiststudentFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_frame_add(a : StatsdiststudentFrame, b : StatsdiststudentFrame) -> StatsdiststudentFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentFrame::add(self : StatsdiststudentFrame, other : StatsdiststudentFrame) -> StatsdiststudentFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_frame_copy(s : StatsdiststudentFrame) -> StatsdiststudentFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentFrame::copy(self : StatsdiststudentFrame) -> StatsdiststudentFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_frame_fill(s : StatsdiststudentFrame, v : Double) -> StatsdiststudentFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentFrame::fill(self : StatsdiststudentFrame, v : Double) -> StatsdiststudentFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_frame_min(s : StatsdiststudentFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentFrame::min(self : StatsdiststudentFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_frame_max(s : StatsdiststudentFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentFrame::max(self : StatsdiststudentFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_frame_to_string(s : StatsdiststudentFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentFrame::to_string(self : StatsdiststudentFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_student_table_make(size : Int) -> StatsdiststudentTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_table_len(s : StatsdiststudentTable) -> Int { s.size }
+pub fn StatsdiststudentTable::len(self : StatsdiststudentTable) -> Int { self.size }
 
-pub fn stats_dist_student_table_get(s : StatsdiststudentTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentTable::get(self : StatsdiststudentTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_table_set(s : StatsdiststudentTable, i : Int, v : Double) -> StatsdiststudentTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentTable::set(self : StatsdiststudentTable, i : Int, v : Double) -> StatsdiststudentTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_table_sum(s : StatsdiststudentTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentTable::sum(self : StatsdiststudentTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_table_mean(s : StatsdiststudentTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentTable::mean(self : StatsdiststudentTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_table_scale(s : StatsdiststudentTable, f : Double) -> StatsdiststudentTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentTable::scale(self : StatsdiststudentTable, f : Double) -> StatsdiststudentTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_table_add(a : StatsdiststudentTable, b : StatsdiststudentTable) -> StatsdiststudentTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentTable::add(self : StatsdiststudentTable, other : StatsdiststudentTable) -> StatsdiststudentTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_table_copy(s : StatsdiststudentTable) -> StatsdiststudentTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentTable::copy(self : StatsdiststudentTable) -> StatsdiststudentTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_table_fill(s : StatsdiststudentTable, v : Double) -> StatsdiststudentTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentTable::fill(self : StatsdiststudentTable, v : Double) -> StatsdiststudentTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_table_min(s : StatsdiststudentTable) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentTable::min(self : StatsdiststudentTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_table_max(s : StatsdiststudentTable) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentTable::max(self : StatsdiststudentTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_table_to_string(s : StatsdiststudentTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentTable::to_string(self : StatsdiststudentTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_student_graphn_make(size : Int) -> StatsdiststudentGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_graphn_len(s : StatsdiststudentGraphN) -> Int { s.size }
+pub fn StatsdiststudentGraphN::len(self : StatsdiststudentGraphN) -> Int { self.size }
 
-pub fn stats_dist_student_graphn_get(s : StatsdiststudentGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentGraphN::get(self : StatsdiststudentGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_graphn_set(s : StatsdiststudentGraphN, i : Int, v : Double) -> StatsdiststudentGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentGraphN::set(self : StatsdiststudentGraphN, i : Int, v : Double) -> StatsdiststudentGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_graphn_sum(s : StatsdiststudentGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentGraphN::sum(self : StatsdiststudentGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_graphn_mean(s : StatsdiststudentGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentGraphN::mean(self : StatsdiststudentGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_graphn_scale(s : StatsdiststudentGraphN, f : Double) -> StatsdiststudentGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentGraphN::scale(self : StatsdiststudentGraphN, f : Double) -> StatsdiststudentGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_graphn_add(a : StatsdiststudentGraphN, b : StatsdiststudentGraphN) -> StatsdiststudentGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentGraphN::add(self : StatsdiststudentGraphN, other : StatsdiststudentGraphN) -> StatsdiststudentGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_graphn_copy(s : StatsdiststudentGraphN) -> StatsdiststudentGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentGraphN::copy(self : StatsdiststudentGraphN) -> StatsdiststudentGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_graphn_fill(s : StatsdiststudentGraphN, v : Double) -> StatsdiststudentGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentGraphN::fill(self : StatsdiststudentGraphN, v : Double) -> StatsdiststudentGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_graphn_min(s : StatsdiststudentGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentGraphN::min(self : StatsdiststudentGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_graphn_max(s : StatsdiststudentGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentGraphN::max(self : StatsdiststudentGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_graphn_to_string(s : StatsdiststudentGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentGraphN::to_string(self : StatsdiststudentGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_student_node_make(size : Int) -> StatsdiststudentNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_node_len(s : StatsdiststudentNode) -> Int { s.size }
+pub fn StatsdiststudentNode::len(self : StatsdiststudentNode) -> Int { self.size }
 
-pub fn stats_dist_student_node_get(s : StatsdiststudentNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentNode::get(self : StatsdiststudentNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_node_set(s : StatsdiststudentNode, i : Int, v : Double) -> StatsdiststudentNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentNode::set(self : StatsdiststudentNode, i : Int, v : Double) -> StatsdiststudentNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_node_sum(s : StatsdiststudentNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentNode::sum(self : StatsdiststudentNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_node_mean(s : StatsdiststudentNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentNode::mean(self : StatsdiststudentNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_node_scale(s : StatsdiststudentNode, f : Double) -> StatsdiststudentNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentNode::scale(self : StatsdiststudentNode, f : Double) -> StatsdiststudentNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_node_add(a : StatsdiststudentNode, b : StatsdiststudentNode) -> StatsdiststudentNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentNode::add(self : StatsdiststudentNode, other : StatsdiststudentNode) -> StatsdiststudentNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_node_copy(s : StatsdiststudentNode) -> StatsdiststudentNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentNode::copy(self : StatsdiststudentNode) -> StatsdiststudentNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_node_fill(s : StatsdiststudentNode, v : Double) -> StatsdiststudentNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentNode::fill(self : StatsdiststudentNode, v : Double) -> StatsdiststudentNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_node_min(s : StatsdiststudentNode) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentNode::min(self : StatsdiststudentNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_node_max(s : StatsdiststudentNode) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentNode::max(self : StatsdiststudentNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_node_to_string(s : StatsdiststudentNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentNode::to_string(self : StatsdiststudentNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_student_edge_make(size : Int) -> StatsdiststudentEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_edge_len(s : StatsdiststudentEdge) -> Int { s.size }
+pub fn StatsdiststudentEdge::len(self : StatsdiststudentEdge) -> Int { self.size }
 
-pub fn stats_dist_student_edge_get(s : StatsdiststudentEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentEdge::get(self : StatsdiststudentEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_edge_set(s : StatsdiststudentEdge, i : Int, v : Double) -> StatsdiststudentEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentEdge::set(self : StatsdiststudentEdge, i : Int, v : Double) -> StatsdiststudentEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_edge_sum(s : StatsdiststudentEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentEdge::sum(self : StatsdiststudentEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_edge_mean(s : StatsdiststudentEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentEdge::mean(self : StatsdiststudentEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_edge_scale(s : StatsdiststudentEdge, f : Double) -> StatsdiststudentEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentEdge::scale(self : StatsdiststudentEdge, f : Double) -> StatsdiststudentEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_edge_add(a : StatsdiststudentEdge, b : StatsdiststudentEdge) -> StatsdiststudentEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentEdge::add(self : StatsdiststudentEdge, other : StatsdiststudentEdge) -> StatsdiststudentEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_edge_copy(s : StatsdiststudentEdge) -> StatsdiststudentEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentEdge::copy(self : StatsdiststudentEdge) -> StatsdiststudentEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_edge_fill(s : StatsdiststudentEdge, v : Double) -> StatsdiststudentEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentEdge::fill(self : StatsdiststudentEdge, v : Double) -> StatsdiststudentEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_edge_min(s : StatsdiststudentEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentEdge::min(self : StatsdiststudentEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_edge_max(s : StatsdiststudentEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentEdge::max(self : StatsdiststudentEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_edge_to_string(s : StatsdiststudentEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentEdge::to_string(self : StatsdiststudentEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_student_path_make(size : Int) -> StatsdiststudentPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_path_len(s : StatsdiststudentPath) -> Int { s.size }
+pub fn StatsdiststudentPath::len(self : StatsdiststudentPath) -> Int { self.size }
 
-pub fn stats_dist_student_path_get(s : StatsdiststudentPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentPath::get(self : StatsdiststudentPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_path_set(s : StatsdiststudentPath, i : Int, v : Double) -> StatsdiststudentPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentPath::set(self : StatsdiststudentPath, i : Int, v : Double) -> StatsdiststudentPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_path_sum(s : StatsdiststudentPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentPath::sum(self : StatsdiststudentPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_path_mean(s : StatsdiststudentPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentPath::mean(self : StatsdiststudentPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_path_scale(s : StatsdiststudentPath, f : Double) -> StatsdiststudentPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentPath::scale(self : StatsdiststudentPath, f : Double) -> StatsdiststudentPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_path_add(a : StatsdiststudentPath, b : StatsdiststudentPath) -> StatsdiststudentPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentPath::add(self : StatsdiststudentPath, other : StatsdiststudentPath) -> StatsdiststudentPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_path_copy(s : StatsdiststudentPath) -> StatsdiststudentPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentPath::copy(self : StatsdiststudentPath) -> StatsdiststudentPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_path_fill(s : StatsdiststudentPath, v : Double) -> StatsdiststudentPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentPath::fill(self : StatsdiststudentPath, v : Double) -> StatsdiststudentPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_path_min(s : StatsdiststudentPath) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentPath::min(self : StatsdiststudentPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_path_max(s : StatsdiststudentPath) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentPath::max(self : StatsdiststudentPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_path_to_string(s : StatsdiststudentPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentPath::to_string(self : StatsdiststudentPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_student_cluster_make(size : Int) -> StatsdiststudentCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_cluster_len(s : StatsdiststudentCluster) -> Int { s.size }
+pub fn StatsdiststudentCluster::len(self : StatsdiststudentCluster) -> Int { self.size }
 
-pub fn stats_dist_student_cluster_get(s : StatsdiststudentCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentCluster::get(self : StatsdiststudentCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_cluster_set(s : StatsdiststudentCluster, i : Int, v : Double) -> StatsdiststudentCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentCluster::set(self : StatsdiststudentCluster, i : Int, v : Double) -> StatsdiststudentCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cluster_sum(s : StatsdiststudentCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentCluster::sum(self : StatsdiststudentCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_cluster_mean(s : StatsdiststudentCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentCluster::mean(self : StatsdiststudentCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_cluster_scale(s : StatsdiststudentCluster, f : Double) -> StatsdiststudentCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentCluster::scale(self : StatsdiststudentCluster, f : Double) -> StatsdiststudentCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cluster_add(a : StatsdiststudentCluster, b : StatsdiststudentCluster) -> StatsdiststudentCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentCluster::add(self : StatsdiststudentCluster, other : StatsdiststudentCluster) -> StatsdiststudentCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_cluster_copy(s : StatsdiststudentCluster) -> StatsdiststudentCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentCluster::copy(self : StatsdiststudentCluster) -> StatsdiststudentCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cluster_fill(s : StatsdiststudentCluster, v : Double) -> StatsdiststudentCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentCluster::fill(self : StatsdiststudentCluster, v : Double) -> StatsdiststudentCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cluster_min(s : StatsdiststudentCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentCluster::min(self : StatsdiststudentCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_cluster_max(s : StatsdiststudentCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentCluster::max(self : StatsdiststudentCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_cluster_to_string(s : StatsdiststudentCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentCluster::to_string(self : StatsdiststudentCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_student_model_make(size : Int) -> StatsdiststudentModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_model_len(s : StatsdiststudentModel) -> Int { s.size }
+pub fn StatsdiststudentModel::len(self : StatsdiststudentModel) -> Int { self.size }
 
-pub fn stats_dist_student_model_get(s : StatsdiststudentModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentModel::get(self : StatsdiststudentModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_model_set(s : StatsdiststudentModel, i : Int, v : Double) -> StatsdiststudentModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentModel::set(self : StatsdiststudentModel, i : Int, v : Double) -> StatsdiststudentModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_model_sum(s : StatsdiststudentModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentModel::sum(self : StatsdiststudentModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_model_mean(s : StatsdiststudentModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentModel::mean(self : StatsdiststudentModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_model_scale(s : StatsdiststudentModel, f : Double) -> StatsdiststudentModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentModel::scale(self : StatsdiststudentModel, f : Double) -> StatsdiststudentModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_model_add(a : StatsdiststudentModel, b : StatsdiststudentModel) -> StatsdiststudentModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentModel::add(self : StatsdiststudentModel, other : StatsdiststudentModel) -> StatsdiststudentModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_model_copy(s : StatsdiststudentModel) -> StatsdiststudentModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentModel::copy(self : StatsdiststudentModel) -> StatsdiststudentModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_model_fill(s : StatsdiststudentModel, v : Double) -> StatsdiststudentModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentModel::fill(self : StatsdiststudentModel, v : Double) -> StatsdiststudentModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_model_min(s : StatsdiststudentModel) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentModel::min(self : StatsdiststudentModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_model_max(s : StatsdiststudentModel) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentModel::max(self : StatsdiststudentModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_model_to_string(s : StatsdiststudentModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentModel::to_string(self : StatsdiststudentModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_student_layer_make(size : Int) -> StatsdiststudentLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_layer_len(s : StatsdiststudentLayer) -> Int { s.size }
+pub fn StatsdiststudentLayer::len(self : StatsdiststudentLayer) -> Int { self.size }
 
-pub fn stats_dist_student_layer_get(s : StatsdiststudentLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentLayer::get(self : StatsdiststudentLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_layer_set(s : StatsdiststudentLayer, i : Int, v : Double) -> StatsdiststudentLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentLayer::set(self : StatsdiststudentLayer, i : Int, v : Double) -> StatsdiststudentLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_layer_sum(s : StatsdiststudentLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentLayer::sum(self : StatsdiststudentLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_layer_mean(s : StatsdiststudentLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentLayer::mean(self : StatsdiststudentLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_layer_scale(s : StatsdiststudentLayer, f : Double) -> StatsdiststudentLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentLayer::scale(self : StatsdiststudentLayer, f : Double) -> StatsdiststudentLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_layer_add(a : StatsdiststudentLayer, b : StatsdiststudentLayer) -> StatsdiststudentLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentLayer::add(self : StatsdiststudentLayer, other : StatsdiststudentLayer) -> StatsdiststudentLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_layer_copy(s : StatsdiststudentLayer) -> StatsdiststudentLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentLayer::copy(self : StatsdiststudentLayer) -> StatsdiststudentLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_layer_fill(s : StatsdiststudentLayer, v : Double) -> StatsdiststudentLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentLayer::fill(self : StatsdiststudentLayer, v : Double) -> StatsdiststudentLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_layer_min(s : StatsdiststudentLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentLayer::min(self : StatsdiststudentLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_layer_max(s : StatsdiststudentLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentLayer::max(self : StatsdiststudentLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_layer_to_string(s : StatsdiststudentLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentLayer::to_string(self : StatsdiststudentLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_student_buffer_make(size : Int) -> StatsdiststudentBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_buffer_len(s : StatsdiststudentBuffer) -> Int { s.size }
+pub fn StatsdiststudentBuffer::len(self : StatsdiststudentBuffer) -> Int { self.size }
 
-pub fn stats_dist_student_buffer_get(s : StatsdiststudentBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentBuffer::get(self : StatsdiststudentBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_buffer_set(s : StatsdiststudentBuffer, i : Int, v : Double) -> StatsdiststudentBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentBuffer::set(self : StatsdiststudentBuffer, i : Int, v : Double) -> StatsdiststudentBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_buffer_sum(s : StatsdiststudentBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentBuffer::sum(self : StatsdiststudentBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_buffer_mean(s : StatsdiststudentBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentBuffer::mean(self : StatsdiststudentBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_buffer_scale(s : StatsdiststudentBuffer, f : Double) -> StatsdiststudentBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentBuffer::scale(self : StatsdiststudentBuffer, f : Double) -> StatsdiststudentBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_buffer_add(a : StatsdiststudentBuffer, b : StatsdiststudentBuffer) -> StatsdiststudentBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentBuffer::add(self : StatsdiststudentBuffer, other : StatsdiststudentBuffer) -> StatsdiststudentBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_buffer_copy(s : StatsdiststudentBuffer) -> StatsdiststudentBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentBuffer::copy(self : StatsdiststudentBuffer) -> StatsdiststudentBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_buffer_fill(s : StatsdiststudentBuffer, v : Double) -> StatsdiststudentBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentBuffer::fill(self : StatsdiststudentBuffer, v : Double) -> StatsdiststudentBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_buffer_min(s : StatsdiststudentBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentBuffer::min(self : StatsdiststudentBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_buffer_max(s : StatsdiststudentBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentBuffer::max(self : StatsdiststudentBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_buffer_to_string(s : StatsdiststudentBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentBuffer::to_string(self : StatsdiststudentBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_student_cursor_make(size : Int) -> StatsdiststudentCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_cursor_len(s : StatsdiststudentCursor) -> Int { s.size }
+pub fn StatsdiststudentCursor::len(self : StatsdiststudentCursor) -> Int { self.size }
 
-pub fn stats_dist_student_cursor_get(s : StatsdiststudentCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentCursor::get(self : StatsdiststudentCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_cursor_set(s : StatsdiststudentCursor, i : Int, v : Double) -> StatsdiststudentCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentCursor::set(self : StatsdiststudentCursor, i : Int, v : Double) -> StatsdiststudentCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cursor_sum(s : StatsdiststudentCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentCursor::sum(self : StatsdiststudentCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_cursor_mean(s : StatsdiststudentCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentCursor::mean(self : StatsdiststudentCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_cursor_scale(s : StatsdiststudentCursor, f : Double) -> StatsdiststudentCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentCursor::scale(self : StatsdiststudentCursor, f : Double) -> StatsdiststudentCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cursor_add(a : StatsdiststudentCursor, b : StatsdiststudentCursor) -> StatsdiststudentCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentCursor::add(self : StatsdiststudentCursor, other : StatsdiststudentCursor) -> StatsdiststudentCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_cursor_copy(s : StatsdiststudentCursor) -> StatsdiststudentCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentCursor::copy(self : StatsdiststudentCursor) -> StatsdiststudentCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cursor_fill(s : StatsdiststudentCursor, v : Double) -> StatsdiststudentCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentCursor::fill(self : StatsdiststudentCursor, v : Double) -> StatsdiststudentCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_cursor_min(s : StatsdiststudentCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentCursor::min(self : StatsdiststudentCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_cursor_max(s : StatsdiststudentCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentCursor::max(self : StatsdiststudentCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_cursor_to_string(s : StatsdiststudentCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentCursor::to_string(self : StatsdiststudentCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentView {
@@ -912,45 +912,45 @@ pub fn stats_dist_student_view_make(size : Int) -> StatsdiststudentView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_view_len(s : StatsdiststudentView) -> Int { s.size }
+pub fn StatsdiststudentView::len(self : StatsdiststudentView) -> Int { self.size }
 
-pub fn stats_dist_student_view_get(s : StatsdiststudentView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentView::get(self : StatsdiststudentView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_view_set(s : StatsdiststudentView, i : Int, v : Double) -> StatsdiststudentView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentView::set(self : StatsdiststudentView, i : Int, v : Double) -> StatsdiststudentView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_view_sum(s : StatsdiststudentView) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentView::sum(self : StatsdiststudentView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_view_mean(s : StatsdiststudentView) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentView::mean(self : StatsdiststudentView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_view_scale(s : StatsdiststudentView, f : Double) -> StatsdiststudentView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentView::scale(self : StatsdiststudentView, f : Double) -> StatsdiststudentView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_view_add(a : StatsdiststudentView, b : StatsdiststudentView) -> StatsdiststudentView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentView::add(self : StatsdiststudentView, other : StatsdiststudentView) -> StatsdiststudentView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_view_copy(s : StatsdiststudentView) -> StatsdiststudentView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentView::copy(self : StatsdiststudentView) -> StatsdiststudentView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_view_fill(s : StatsdiststudentView, v : Double) -> StatsdiststudentView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentView::fill(self : StatsdiststudentView, v : Double) -> StatsdiststudentView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_view_min(s : StatsdiststudentView) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentView::min(self : StatsdiststudentView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_view_max(s : StatsdiststudentView) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentView::max(self : StatsdiststudentView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_view_to_string(s : StatsdiststudentView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentView::to_string(self : StatsdiststudentView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_student_range_make(size : Int) -> StatsdiststudentRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_range_len(s : StatsdiststudentRange) -> Int { s.size }
+pub fn StatsdiststudentRange::len(self : StatsdiststudentRange) -> Int { self.size }
 
-pub fn stats_dist_student_range_get(s : StatsdiststudentRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentRange::get(self : StatsdiststudentRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_range_set(s : StatsdiststudentRange, i : Int, v : Double) -> StatsdiststudentRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentRange::set(self : StatsdiststudentRange, i : Int, v : Double) -> StatsdiststudentRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_range_sum(s : StatsdiststudentRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentRange::sum(self : StatsdiststudentRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_range_mean(s : StatsdiststudentRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentRange::mean(self : StatsdiststudentRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_range_scale(s : StatsdiststudentRange, f : Double) -> StatsdiststudentRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentRange::scale(self : StatsdiststudentRange, f : Double) -> StatsdiststudentRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_range_add(a : StatsdiststudentRange, b : StatsdiststudentRange) -> StatsdiststudentRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentRange::add(self : StatsdiststudentRange, other : StatsdiststudentRange) -> StatsdiststudentRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_range_copy(s : StatsdiststudentRange) -> StatsdiststudentRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentRange::copy(self : StatsdiststudentRange) -> StatsdiststudentRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_range_fill(s : StatsdiststudentRange, v : Double) -> StatsdiststudentRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentRange::fill(self : StatsdiststudentRange, v : Double) -> StatsdiststudentRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_range_min(s : StatsdiststudentRange) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentRange::min(self : StatsdiststudentRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_range_max(s : StatsdiststudentRange) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentRange::max(self : StatsdiststudentRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_range_to_string(s : StatsdiststudentRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentRange::to_string(self : StatsdiststudentRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdiststudentSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_student_slice_make(size : Int) -> StatsdiststudentSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_student_slice_len(s : StatsdiststudentSlice) -> Int { s.size }
+pub fn StatsdiststudentSlice::len(self : StatsdiststudentSlice) -> Int { self.size }
 
-pub fn stats_dist_student_slice_get(s : StatsdiststudentSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdiststudentSlice::get(self : StatsdiststudentSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_student_slice_set(s : StatsdiststudentSlice, i : Int, v : Double) -> StatsdiststudentSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdiststudentSlice::set(self : StatsdiststudentSlice, i : Int, v : Double) -> StatsdiststudentSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_slice_sum(s : StatsdiststudentSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdiststudentSlice::sum(self : StatsdiststudentSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_student_slice_mean(s : StatsdiststudentSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdiststudentSlice::mean(self : StatsdiststudentSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_student_slice_scale(s : StatsdiststudentSlice, f : Double) -> StatsdiststudentSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdiststudentSlice::scale(self : StatsdiststudentSlice, f : Double) -> StatsdiststudentSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_slice_add(a : StatsdiststudentSlice, b : StatsdiststudentSlice) -> StatsdiststudentSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdiststudentSlice::add(self : StatsdiststudentSlice, other : StatsdiststudentSlice) -> StatsdiststudentSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_student_slice_copy(s : StatsdiststudentSlice) -> StatsdiststudentSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdiststudentSlice::copy(self : StatsdiststudentSlice) -> StatsdiststudentSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_slice_fill(s : StatsdiststudentSlice, v : Double) -> StatsdiststudentSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdiststudentSlice::fill(self : StatsdiststudentSlice, v : Double) -> StatsdiststudentSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_student_slice_min(s : StatsdiststudentSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdiststudentSlice::min(self : StatsdiststudentSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_student_slice_max(s : StatsdiststudentSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdiststudentSlice::max(self : StatsdiststudentSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_student_slice_to_string(s : StatsdiststudentSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdiststudentSlice::to_string(self : StatsdiststudentSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

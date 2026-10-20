@@ -351,45 +351,45 @@ pub fn ml_neural_autoencoder_frame_make(size : Int) -> MlneuralautoencoderFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_frame_len(s : MlneuralautoencoderFrame) -> Int { s.size }
+pub fn MlneuralautoencoderFrame::len(self : MlneuralautoencoderFrame) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_frame_get(s : MlneuralautoencoderFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderFrame::get(self : MlneuralautoencoderFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_frame_set(s : MlneuralautoencoderFrame, i : Int, v : Double) -> MlneuralautoencoderFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderFrame::set(self : MlneuralautoencoderFrame, i : Int, v : Double) -> MlneuralautoencoderFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_frame_sum(s : MlneuralautoencoderFrame) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderFrame::sum(self : MlneuralautoencoderFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_frame_mean(s : MlneuralautoencoderFrame) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderFrame::mean(self : MlneuralautoencoderFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_frame_scale(s : MlneuralautoencoderFrame, f : Double) -> MlneuralautoencoderFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderFrame::scale(self : MlneuralautoencoderFrame, f : Double) -> MlneuralautoencoderFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_frame_add(a : MlneuralautoencoderFrame, b : MlneuralautoencoderFrame) -> MlneuralautoencoderFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderFrame::add(self : MlneuralautoencoderFrame, other : MlneuralautoencoderFrame) -> MlneuralautoencoderFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_frame_copy(s : MlneuralautoencoderFrame) -> MlneuralautoencoderFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderFrame::copy(self : MlneuralautoencoderFrame) -> MlneuralautoencoderFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_frame_fill(s : MlneuralautoencoderFrame, v : Double) -> MlneuralautoencoderFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderFrame::fill(self : MlneuralautoencoderFrame, v : Double) -> MlneuralautoencoderFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_frame_min(s : MlneuralautoencoderFrame) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderFrame::min(self : MlneuralautoencoderFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_frame_max(s : MlneuralautoencoderFrame) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderFrame::max(self : MlneuralautoencoderFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_frame_to_string(s : MlneuralautoencoderFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderFrame::to_string(self : MlneuralautoencoderFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderTable {
@@ -402,45 +402,45 @@ pub fn ml_neural_autoencoder_table_make(size : Int) -> MlneuralautoencoderTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_table_len(s : MlneuralautoencoderTable) -> Int { s.size }
+pub fn MlneuralautoencoderTable::len(self : MlneuralautoencoderTable) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_table_get(s : MlneuralautoencoderTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderTable::get(self : MlneuralautoencoderTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_table_set(s : MlneuralautoencoderTable, i : Int, v : Double) -> MlneuralautoencoderTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderTable::set(self : MlneuralautoencoderTable, i : Int, v : Double) -> MlneuralautoencoderTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_table_sum(s : MlneuralautoencoderTable) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderTable::sum(self : MlneuralautoencoderTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_table_mean(s : MlneuralautoencoderTable) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderTable::mean(self : MlneuralautoencoderTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_table_scale(s : MlneuralautoencoderTable, f : Double) -> MlneuralautoencoderTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderTable::scale(self : MlneuralautoencoderTable, f : Double) -> MlneuralautoencoderTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_table_add(a : MlneuralautoencoderTable, b : MlneuralautoencoderTable) -> MlneuralautoencoderTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderTable::add(self : MlneuralautoencoderTable, other : MlneuralautoencoderTable) -> MlneuralautoencoderTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_table_copy(s : MlneuralautoencoderTable) -> MlneuralautoencoderTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderTable::copy(self : MlneuralautoencoderTable) -> MlneuralautoencoderTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_table_fill(s : MlneuralautoencoderTable, v : Double) -> MlneuralautoencoderTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderTable::fill(self : MlneuralautoencoderTable, v : Double) -> MlneuralautoencoderTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_table_min(s : MlneuralautoencoderTable) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderTable::min(self : MlneuralautoencoderTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_table_max(s : MlneuralautoencoderTable) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderTable::max(self : MlneuralautoencoderTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_table_to_string(s : MlneuralautoencoderTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderTable::to_string(self : MlneuralautoencoderTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderGraphN {
@@ -453,45 +453,45 @@ pub fn ml_neural_autoencoder_graphn_make(size : Int) -> MlneuralautoencoderGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_graphn_len(s : MlneuralautoencoderGraphN) -> Int { s.size }
+pub fn MlneuralautoencoderGraphN::len(self : MlneuralautoencoderGraphN) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_graphn_get(s : MlneuralautoencoderGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderGraphN::get(self : MlneuralautoencoderGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_graphn_set(s : MlneuralautoencoderGraphN, i : Int, v : Double) -> MlneuralautoencoderGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderGraphN::set(self : MlneuralautoencoderGraphN, i : Int, v : Double) -> MlneuralautoencoderGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_graphn_sum(s : MlneuralautoencoderGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderGraphN::sum(self : MlneuralautoencoderGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_graphn_mean(s : MlneuralautoencoderGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderGraphN::mean(self : MlneuralautoencoderGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_graphn_scale(s : MlneuralautoencoderGraphN, f : Double) -> MlneuralautoencoderGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderGraphN::scale(self : MlneuralautoencoderGraphN, f : Double) -> MlneuralautoencoderGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_graphn_add(a : MlneuralautoencoderGraphN, b : MlneuralautoencoderGraphN) -> MlneuralautoencoderGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderGraphN::add(self : MlneuralautoencoderGraphN, other : MlneuralautoencoderGraphN) -> MlneuralautoencoderGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_graphn_copy(s : MlneuralautoencoderGraphN) -> MlneuralautoencoderGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderGraphN::copy(self : MlneuralautoencoderGraphN) -> MlneuralautoencoderGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_graphn_fill(s : MlneuralautoencoderGraphN, v : Double) -> MlneuralautoencoderGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderGraphN::fill(self : MlneuralautoencoderGraphN, v : Double) -> MlneuralautoencoderGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_graphn_min(s : MlneuralautoencoderGraphN) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderGraphN::min(self : MlneuralautoencoderGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_graphn_max(s : MlneuralautoencoderGraphN) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderGraphN::max(self : MlneuralautoencoderGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_graphn_to_string(s : MlneuralautoencoderGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderGraphN::to_string(self : MlneuralautoencoderGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderNode {
@@ -504,45 +504,45 @@ pub fn ml_neural_autoencoder_node_make(size : Int) -> MlneuralautoencoderNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_node_len(s : MlneuralautoencoderNode) -> Int { s.size }
+pub fn MlneuralautoencoderNode::len(self : MlneuralautoencoderNode) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_node_get(s : MlneuralautoencoderNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderNode::get(self : MlneuralautoencoderNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_node_set(s : MlneuralautoencoderNode, i : Int, v : Double) -> MlneuralautoencoderNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderNode::set(self : MlneuralautoencoderNode, i : Int, v : Double) -> MlneuralautoencoderNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_node_sum(s : MlneuralautoencoderNode) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderNode::sum(self : MlneuralautoencoderNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_node_mean(s : MlneuralautoencoderNode) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderNode::mean(self : MlneuralautoencoderNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_node_scale(s : MlneuralautoencoderNode, f : Double) -> MlneuralautoencoderNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderNode::scale(self : MlneuralautoencoderNode, f : Double) -> MlneuralautoencoderNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_node_add(a : MlneuralautoencoderNode, b : MlneuralautoencoderNode) -> MlneuralautoencoderNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderNode::add(self : MlneuralautoencoderNode, other : MlneuralautoencoderNode) -> MlneuralautoencoderNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_node_copy(s : MlneuralautoencoderNode) -> MlneuralautoencoderNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderNode::copy(self : MlneuralautoencoderNode) -> MlneuralautoencoderNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_node_fill(s : MlneuralautoencoderNode, v : Double) -> MlneuralautoencoderNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderNode::fill(self : MlneuralautoencoderNode, v : Double) -> MlneuralautoencoderNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_node_min(s : MlneuralautoencoderNode) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderNode::min(self : MlneuralautoencoderNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_node_max(s : MlneuralautoencoderNode) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderNode::max(self : MlneuralautoencoderNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_node_to_string(s : MlneuralautoencoderNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderNode::to_string(self : MlneuralautoencoderNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderEdge {
@@ -555,45 +555,45 @@ pub fn ml_neural_autoencoder_edge_make(size : Int) -> MlneuralautoencoderEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_edge_len(s : MlneuralautoencoderEdge) -> Int { s.size }
+pub fn MlneuralautoencoderEdge::len(self : MlneuralautoencoderEdge) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_edge_get(s : MlneuralautoencoderEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderEdge::get(self : MlneuralautoencoderEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_edge_set(s : MlneuralautoencoderEdge, i : Int, v : Double) -> MlneuralautoencoderEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderEdge::set(self : MlneuralautoencoderEdge, i : Int, v : Double) -> MlneuralautoencoderEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_edge_sum(s : MlneuralautoencoderEdge) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderEdge::sum(self : MlneuralautoencoderEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_edge_mean(s : MlneuralautoencoderEdge) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderEdge::mean(self : MlneuralautoencoderEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_edge_scale(s : MlneuralautoencoderEdge, f : Double) -> MlneuralautoencoderEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderEdge::scale(self : MlneuralautoencoderEdge, f : Double) -> MlneuralautoencoderEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_edge_add(a : MlneuralautoencoderEdge, b : MlneuralautoencoderEdge) -> MlneuralautoencoderEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderEdge::add(self : MlneuralautoencoderEdge, other : MlneuralautoencoderEdge) -> MlneuralautoencoderEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_edge_copy(s : MlneuralautoencoderEdge) -> MlneuralautoencoderEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderEdge::copy(self : MlneuralautoencoderEdge) -> MlneuralautoencoderEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_edge_fill(s : MlneuralautoencoderEdge, v : Double) -> MlneuralautoencoderEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderEdge::fill(self : MlneuralautoencoderEdge, v : Double) -> MlneuralautoencoderEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_edge_min(s : MlneuralautoencoderEdge) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderEdge::min(self : MlneuralautoencoderEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_edge_max(s : MlneuralautoencoderEdge) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderEdge::max(self : MlneuralautoencoderEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_edge_to_string(s : MlneuralautoencoderEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderEdge::to_string(self : MlneuralautoencoderEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderPath {
@@ -606,45 +606,45 @@ pub fn ml_neural_autoencoder_path_make(size : Int) -> MlneuralautoencoderPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_path_len(s : MlneuralautoencoderPath) -> Int { s.size }
+pub fn MlneuralautoencoderPath::len(self : MlneuralautoencoderPath) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_path_get(s : MlneuralautoencoderPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderPath::get(self : MlneuralautoencoderPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_path_set(s : MlneuralautoencoderPath, i : Int, v : Double) -> MlneuralautoencoderPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderPath::set(self : MlneuralautoencoderPath, i : Int, v : Double) -> MlneuralautoencoderPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_path_sum(s : MlneuralautoencoderPath) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderPath::sum(self : MlneuralautoencoderPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_path_mean(s : MlneuralautoencoderPath) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderPath::mean(self : MlneuralautoencoderPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_path_scale(s : MlneuralautoencoderPath, f : Double) -> MlneuralautoencoderPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderPath::scale(self : MlneuralautoencoderPath, f : Double) -> MlneuralautoencoderPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_path_add(a : MlneuralautoencoderPath, b : MlneuralautoencoderPath) -> MlneuralautoencoderPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderPath::add(self : MlneuralautoencoderPath, other : MlneuralautoencoderPath) -> MlneuralautoencoderPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_path_copy(s : MlneuralautoencoderPath) -> MlneuralautoencoderPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderPath::copy(self : MlneuralautoencoderPath) -> MlneuralautoencoderPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_path_fill(s : MlneuralautoencoderPath, v : Double) -> MlneuralautoencoderPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderPath::fill(self : MlneuralautoencoderPath, v : Double) -> MlneuralautoencoderPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_path_min(s : MlneuralautoencoderPath) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderPath::min(self : MlneuralautoencoderPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_path_max(s : MlneuralautoencoderPath) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderPath::max(self : MlneuralautoencoderPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_path_to_string(s : MlneuralautoencoderPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderPath::to_string(self : MlneuralautoencoderPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderCluster {
@@ -657,45 +657,45 @@ pub fn ml_neural_autoencoder_cluster_make(size : Int) -> MlneuralautoencoderClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_cluster_len(s : MlneuralautoencoderCluster) -> Int { s.size }
+pub fn MlneuralautoencoderCluster::len(self : MlneuralautoencoderCluster) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_cluster_get(s : MlneuralautoencoderCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderCluster::get(self : MlneuralautoencoderCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_cluster_set(s : MlneuralautoencoderCluster, i : Int, v : Double) -> MlneuralautoencoderCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCluster::set(self : MlneuralautoencoderCluster, i : Int, v : Double) -> MlneuralautoencoderCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cluster_sum(s : MlneuralautoencoderCluster) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderCluster::sum(self : MlneuralautoencoderCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_cluster_mean(s : MlneuralautoencoderCluster) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderCluster::mean(self : MlneuralautoencoderCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_cluster_scale(s : MlneuralautoencoderCluster, f : Double) -> MlneuralautoencoderCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCluster::scale(self : MlneuralautoencoderCluster, f : Double) -> MlneuralautoencoderCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cluster_add(a : MlneuralautoencoderCluster, b : MlneuralautoencoderCluster) -> MlneuralautoencoderCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderCluster::add(self : MlneuralautoencoderCluster, other : MlneuralautoencoderCluster) -> MlneuralautoencoderCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cluster_copy(s : MlneuralautoencoderCluster) -> MlneuralautoencoderCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCluster::copy(self : MlneuralautoencoderCluster) -> MlneuralautoencoderCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cluster_fill(s : MlneuralautoencoderCluster, v : Double) -> MlneuralautoencoderCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCluster::fill(self : MlneuralautoencoderCluster, v : Double) -> MlneuralautoencoderCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cluster_min(s : MlneuralautoencoderCluster) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderCluster::min(self : MlneuralautoencoderCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_cluster_max(s : MlneuralautoencoderCluster) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderCluster::max(self : MlneuralautoencoderCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_cluster_to_string(s : MlneuralautoencoderCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderCluster::to_string(self : MlneuralautoencoderCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderModel {
@@ -708,45 +708,45 @@ pub fn ml_neural_autoencoder_model_make(size : Int) -> MlneuralautoencoderModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_model_len(s : MlneuralautoencoderModel) -> Int { s.size }
+pub fn MlneuralautoencoderModel::len(self : MlneuralautoencoderModel) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_model_get(s : MlneuralautoencoderModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderModel::get(self : MlneuralautoencoderModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_model_set(s : MlneuralautoencoderModel, i : Int, v : Double) -> MlneuralautoencoderModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderModel::set(self : MlneuralautoencoderModel, i : Int, v : Double) -> MlneuralautoencoderModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_model_sum(s : MlneuralautoencoderModel) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderModel::sum(self : MlneuralautoencoderModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_model_mean(s : MlneuralautoencoderModel) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderModel::mean(self : MlneuralautoencoderModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_model_scale(s : MlneuralautoencoderModel, f : Double) -> MlneuralautoencoderModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderModel::scale(self : MlneuralautoencoderModel, f : Double) -> MlneuralautoencoderModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_model_add(a : MlneuralautoencoderModel, b : MlneuralautoencoderModel) -> MlneuralautoencoderModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderModel::add(self : MlneuralautoencoderModel, other : MlneuralautoencoderModel) -> MlneuralautoencoderModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_model_copy(s : MlneuralautoencoderModel) -> MlneuralautoencoderModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderModel::copy(self : MlneuralautoencoderModel) -> MlneuralautoencoderModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_model_fill(s : MlneuralautoencoderModel, v : Double) -> MlneuralautoencoderModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderModel::fill(self : MlneuralautoencoderModel, v : Double) -> MlneuralautoencoderModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_model_min(s : MlneuralautoencoderModel) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderModel::min(self : MlneuralautoencoderModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_model_max(s : MlneuralautoencoderModel) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderModel::max(self : MlneuralautoencoderModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_model_to_string(s : MlneuralautoencoderModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderModel::to_string(self : MlneuralautoencoderModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderLayer {
@@ -759,45 +759,45 @@ pub fn ml_neural_autoencoder_layer_make(size : Int) -> MlneuralautoencoderLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_layer_len(s : MlneuralautoencoderLayer) -> Int { s.size }
+pub fn MlneuralautoencoderLayer::len(self : MlneuralautoencoderLayer) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_layer_get(s : MlneuralautoencoderLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderLayer::get(self : MlneuralautoencoderLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_layer_set(s : MlneuralautoencoderLayer, i : Int, v : Double) -> MlneuralautoencoderLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderLayer::set(self : MlneuralautoencoderLayer, i : Int, v : Double) -> MlneuralautoencoderLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_layer_sum(s : MlneuralautoencoderLayer) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderLayer::sum(self : MlneuralautoencoderLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_layer_mean(s : MlneuralautoencoderLayer) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderLayer::mean(self : MlneuralautoencoderLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_layer_scale(s : MlneuralautoencoderLayer, f : Double) -> MlneuralautoencoderLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderLayer::scale(self : MlneuralautoencoderLayer, f : Double) -> MlneuralautoencoderLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_layer_add(a : MlneuralautoencoderLayer, b : MlneuralautoencoderLayer) -> MlneuralautoencoderLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderLayer::add(self : MlneuralautoencoderLayer, other : MlneuralautoencoderLayer) -> MlneuralautoencoderLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_layer_copy(s : MlneuralautoencoderLayer) -> MlneuralautoencoderLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderLayer::copy(self : MlneuralautoencoderLayer) -> MlneuralautoencoderLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_layer_fill(s : MlneuralautoencoderLayer, v : Double) -> MlneuralautoencoderLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderLayer::fill(self : MlneuralautoencoderLayer, v : Double) -> MlneuralautoencoderLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_layer_min(s : MlneuralautoencoderLayer) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderLayer::min(self : MlneuralautoencoderLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_layer_max(s : MlneuralautoencoderLayer) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderLayer::max(self : MlneuralautoencoderLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_layer_to_string(s : MlneuralautoencoderLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderLayer::to_string(self : MlneuralautoencoderLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderBuffer {
@@ -810,45 +810,45 @@ pub fn ml_neural_autoencoder_buffer_make(size : Int) -> MlneuralautoencoderBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_buffer_len(s : MlneuralautoencoderBuffer) -> Int { s.size }
+pub fn MlneuralautoencoderBuffer::len(self : MlneuralautoencoderBuffer) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_buffer_get(s : MlneuralautoencoderBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderBuffer::get(self : MlneuralautoencoderBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_buffer_set(s : MlneuralautoencoderBuffer, i : Int, v : Double) -> MlneuralautoencoderBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderBuffer::set(self : MlneuralautoencoderBuffer, i : Int, v : Double) -> MlneuralautoencoderBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_buffer_sum(s : MlneuralautoencoderBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderBuffer::sum(self : MlneuralautoencoderBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_buffer_mean(s : MlneuralautoencoderBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderBuffer::mean(self : MlneuralautoencoderBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_buffer_scale(s : MlneuralautoencoderBuffer, f : Double) -> MlneuralautoencoderBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderBuffer::scale(self : MlneuralautoencoderBuffer, f : Double) -> MlneuralautoencoderBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_buffer_add(a : MlneuralautoencoderBuffer, b : MlneuralautoencoderBuffer) -> MlneuralautoencoderBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderBuffer::add(self : MlneuralautoencoderBuffer, other : MlneuralautoencoderBuffer) -> MlneuralautoencoderBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_buffer_copy(s : MlneuralautoencoderBuffer) -> MlneuralautoencoderBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderBuffer::copy(self : MlneuralautoencoderBuffer) -> MlneuralautoencoderBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_buffer_fill(s : MlneuralautoencoderBuffer, v : Double) -> MlneuralautoencoderBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderBuffer::fill(self : MlneuralautoencoderBuffer, v : Double) -> MlneuralautoencoderBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_buffer_min(s : MlneuralautoencoderBuffer) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderBuffer::min(self : MlneuralautoencoderBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_buffer_max(s : MlneuralautoencoderBuffer) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderBuffer::max(self : MlneuralautoencoderBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_buffer_to_string(s : MlneuralautoencoderBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderBuffer::to_string(self : MlneuralautoencoderBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderCursor {
@@ -861,45 +861,45 @@ pub fn ml_neural_autoencoder_cursor_make(size : Int) -> MlneuralautoencoderCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_cursor_len(s : MlneuralautoencoderCursor) -> Int { s.size }
+pub fn MlneuralautoencoderCursor::len(self : MlneuralautoencoderCursor) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_cursor_get(s : MlneuralautoencoderCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderCursor::get(self : MlneuralautoencoderCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_cursor_set(s : MlneuralautoencoderCursor, i : Int, v : Double) -> MlneuralautoencoderCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCursor::set(self : MlneuralautoencoderCursor, i : Int, v : Double) -> MlneuralautoencoderCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cursor_sum(s : MlneuralautoencoderCursor) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderCursor::sum(self : MlneuralautoencoderCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_cursor_mean(s : MlneuralautoencoderCursor) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderCursor::mean(self : MlneuralautoencoderCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_cursor_scale(s : MlneuralautoencoderCursor, f : Double) -> MlneuralautoencoderCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCursor::scale(self : MlneuralautoencoderCursor, f : Double) -> MlneuralautoencoderCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cursor_add(a : MlneuralautoencoderCursor, b : MlneuralautoencoderCursor) -> MlneuralautoencoderCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderCursor::add(self : MlneuralautoencoderCursor, other : MlneuralautoencoderCursor) -> MlneuralautoencoderCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cursor_copy(s : MlneuralautoencoderCursor) -> MlneuralautoencoderCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCursor::copy(self : MlneuralautoencoderCursor) -> MlneuralautoencoderCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cursor_fill(s : MlneuralautoencoderCursor, v : Double) -> MlneuralautoencoderCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderCursor::fill(self : MlneuralautoencoderCursor, v : Double) -> MlneuralautoencoderCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_cursor_min(s : MlneuralautoencoderCursor) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderCursor::min(self : MlneuralautoencoderCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_cursor_max(s : MlneuralautoencoderCursor) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderCursor::max(self : MlneuralautoencoderCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_cursor_to_string(s : MlneuralautoencoderCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderCursor::to_string(self : MlneuralautoencoderCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderView {
@@ -912,45 +912,45 @@ pub fn ml_neural_autoencoder_view_make(size : Int) -> MlneuralautoencoderView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_view_len(s : MlneuralautoencoderView) -> Int { s.size }
+pub fn MlneuralautoencoderView::len(self : MlneuralautoencoderView) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_view_get(s : MlneuralautoencoderView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderView::get(self : MlneuralautoencoderView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_view_set(s : MlneuralautoencoderView, i : Int, v : Double) -> MlneuralautoencoderView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderView::set(self : MlneuralautoencoderView, i : Int, v : Double) -> MlneuralautoencoderView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_view_sum(s : MlneuralautoencoderView) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderView::sum(self : MlneuralautoencoderView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_view_mean(s : MlneuralautoencoderView) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderView::mean(self : MlneuralautoencoderView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_view_scale(s : MlneuralautoencoderView, f : Double) -> MlneuralautoencoderView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderView::scale(self : MlneuralautoencoderView, f : Double) -> MlneuralautoencoderView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_view_add(a : MlneuralautoencoderView, b : MlneuralautoencoderView) -> MlneuralautoencoderView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderView::add(self : MlneuralautoencoderView, other : MlneuralautoencoderView) -> MlneuralautoencoderView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_view_copy(s : MlneuralautoencoderView) -> MlneuralautoencoderView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderView::copy(self : MlneuralautoencoderView) -> MlneuralautoencoderView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_view_fill(s : MlneuralautoencoderView, v : Double) -> MlneuralautoencoderView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderView::fill(self : MlneuralautoencoderView, v : Double) -> MlneuralautoencoderView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_view_min(s : MlneuralautoencoderView) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderView::min(self : MlneuralautoencoderView) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_view_max(s : MlneuralautoencoderView) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderView::max(self : MlneuralautoencoderView) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_view_to_string(s : MlneuralautoencoderView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderView::to_string(self : MlneuralautoencoderView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderRange {
@@ -963,45 +963,45 @@ pub fn ml_neural_autoencoder_range_make(size : Int) -> MlneuralautoencoderRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_range_len(s : MlneuralautoencoderRange) -> Int { s.size }
+pub fn MlneuralautoencoderRange::len(self : MlneuralautoencoderRange) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_range_get(s : MlneuralautoencoderRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderRange::get(self : MlneuralautoencoderRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_range_set(s : MlneuralautoencoderRange, i : Int, v : Double) -> MlneuralautoencoderRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderRange::set(self : MlneuralautoencoderRange, i : Int, v : Double) -> MlneuralautoencoderRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_range_sum(s : MlneuralautoencoderRange) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderRange::sum(self : MlneuralautoencoderRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_range_mean(s : MlneuralautoencoderRange) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderRange::mean(self : MlneuralautoencoderRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_range_scale(s : MlneuralautoencoderRange, f : Double) -> MlneuralautoencoderRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderRange::scale(self : MlneuralautoencoderRange, f : Double) -> MlneuralautoencoderRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_range_add(a : MlneuralautoencoderRange, b : MlneuralautoencoderRange) -> MlneuralautoencoderRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderRange::add(self : MlneuralautoencoderRange, other : MlneuralautoencoderRange) -> MlneuralautoencoderRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_range_copy(s : MlneuralautoencoderRange) -> MlneuralautoencoderRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderRange::copy(self : MlneuralautoencoderRange) -> MlneuralautoencoderRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_range_fill(s : MlneuralautoencoderRange, v : Double) -> MlneuralautoencoderRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderRange::fill(self : MlneuralautoencoderRange, v : Double) -> MlneuralautoencoderRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_range_min(s : MlneuralautoencoderRange) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderRange::min(self : MlneuralautoencoderRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_range_max(s : MlneuralautoencoderRange) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderRange::max(self : MlneuralautoencoderRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_range_to_string(s : MlneuralautoencoderRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderRange::to_string(self : MlneuralautoencoderRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralautoencoderSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_neural_autoencoder_slice_make(size : Int) -> MlneuralautoencoderSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_autoencoder_slice_len(s : MlneuralautoencoderSlice) -> Int { s.size }
+pub fn MlneuralautoencoderSlice::len(self : MlneuralautoencoderSlice) -> Int { self.size }
 
-pub fn ml_neural_autoencoder_slice_get(s : MlneuralautoencoderSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralautoencoderSlice::get(self : MlneuralautoencoderSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_autoencoder_slice_set(s : MlneuralautoencoderSlice, i : Int, v : Double) -> MlneuralautoencoderSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderSlice::set(self : MlneuralautoencoderSlice, i : Int, v : Double) -> MlneuralautoencoderSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_slice_sum(s : MlneuralautoencoderSlice) -> Double { @_common.sum(s.data) }
+pub fn MlneuralautoencoderSlice::sum(self : MlneuralautoencoderSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_autoencoder_slice_mean(s : MlneuralautoencoderSlice) -> Double { @_common.mean(s.data) }
+pub fn MlneuralautoencoderSlice::mean(self : MlneuralautoencoderSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_autoencoder_slice_scale(s : MlneuralautoencoderSlice, f : Double) -> MlneuralautoencoderSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderSlice::scale(self : MlneuralautoencoderSlice, f : Double) -> MlneuralautoencoderSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_slice_add(a : MlneuralautoencoderSlice, b : MlneuralautoencoderSlice) -> MlneuralautoencoderSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralautoencoderSlice::add(self : MlneuralautoencoderSlice, other : MlneuralautoencoderSlice) -> MlneuralautoencoderSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_slice_copy(s : MlneuralautoencoderSlice) -> MlneuralautoencoderSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderSlice::copy(self : MlneuralautoencoderSlice) -> MlneuralautoencoderSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_slice_fill(s : MlneuralautoencoderSlice, v : Double) -> MlneuralautoencoderSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralautoencoderSlice::fill(self : MlneuralautoencoderSlice, v : Double) -> MlneuralautoencoderSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_autoencoder_slice_min(s : MlneuralautoencoderSlice) -> Double { @_common.min(s.data) }
+pub fn MlneuralautoencoderSlice::min(self : MlneuralautoencoderSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_autoencoder_slice_max(s : MlneuralautoencoderSlice) -> Double { @_common.max(s.data) }
+pub fn MlneuralautoencoderSlice::max(self : MlneuralautoencoderSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_autoencoder_slice_to_string(s : MlneuralautoencoderSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralautoencoderSlice::to_string(self : MlneuralautoencoderSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

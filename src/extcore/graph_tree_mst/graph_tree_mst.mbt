@@ -351,45 +351,45 @@ pub fn graph_tree_mst_frame_make(size : Int) -> GraphtreemstFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_frame_len(s : GraphtreemstFrame) -> Int { s.size }
+pub fn GraphtreemstFrame::len(self : GraphtreemstFrame) -> Int { self.size }
 
-pub fn graph_tree_mst_frame_get(s : GraphtreemstFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstFrame::get(self : GraphtreemstFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_frame_set(s : GraphtreemstFrame, i : Int, v : Double) -> GraphtreemstFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstFrame::set(self : GraphtreemstFrame, i : Int, v : Double) -> GraphtreemstFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_frame_sum(s : GraphtreemstFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstFrame::sum(self : GraphtreemstFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_frame_mean(s : GraphtreemstFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstFrame::mean(self : GraphtreemstFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_frame_scale(s : GraphtreemstFrame, f : Double) -> GraphtreemstFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstFrame::scale(self : GraphtreemstFrame, f : Double) -> GraphtreemstFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_frame_add(a : GraphtreemstFrame, b : GraphtreemstFrame) -> GraphtreemstFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstFrame::add(self : GraphtreemstFrame, other : GraphtreemstFrame) -> GraphtreemstFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_frame_copy(s : GraphtreemstFrame) -> GraphtreemstFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstFrame::copy(self : GraphtreemstFrame) -> GraphtreemstFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_frame_fill(s : GraphtreemstFrame, v : Double) -> GraphtreemstFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstFrame::fill(self : GraphtreemstFrame, v : Double) -> GraphtreemstFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_frame_min(s : GraphtreemstFrame) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstFrame::min(self : GraphtreemstFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_frame_max(s : GraphtreemstFrame) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstFrame::max(self : GraphtreemstFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_frame_to_string(s : GraphtreemstFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstFrame::to_string(self : GraphtreemstFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstTable {
@@ -402,45 +402,45 @@ pub fn graph_tree_mst_table_make(size : Int) -> GraphtreemstTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_table_len(s : GraphtreemstTable) -> Int { s.size }
+pub fn GraphtreemstTable::len(self : GraphtreemstTable) -> Int { self.size }
 
-pub fn graph_tree_mst_table_get(s : GraphtreemstTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstTable::get(self : GraphtreemstTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_table_set(s : GraphtreemstTable, i : Int, v : Double) -> GraphtreemstTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstTable::set(self : GraphtreemstTable, i : Int, v : Double) -> GraphtreemstTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_table_sum(s : GraphtreemstTable) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstTable::sum(self : GraphtreemstTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_table_mean(s : GraphtreemstTable) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstTable::mean(self : GraphtreemstTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_table_scale(s : GraphtreemstTable, f : Double) -> GraphtreemstTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstTable::scale(self : GraphtreemstTable, f : Double) -> GraphtreemstTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_table_add(a : GraphtreemstTable, b : GraphtreemstTable) -> GraphtreemstTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstTable::add(self : GraphtreemstTable, other : GraphtreemstTable) -> GraphtreemstTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_table_copy(s : GraphtreemstTable) -> GraphtreemstTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstTable::copy(self : GraphtreemstTable) -> GraphtreemstTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_table_fill(s : GraphtreemstTable, v : Double) -> GraphtreemstTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstTable::fill(self : GraphtreemstTable, v : Double) -> GraphtreemstTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_table_min(s : GraphtreemstTable) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstTable::min(self : GraphtreemstTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_table_max(s : GraphtreemstTable) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstTable::max(self : GraphtreemstTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_table_to_string(s : GraphtreemstTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstTable::to_string(self : GraphtreemstTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstGraphN {
@@ -453,45 +453,45 @@ pub fn graph_tree_mst_graphn_make(size : Int) -> GraphtreemstGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_graphn_len(s : GraphtreemstGraphN) -> Int { s.size }
+pub fn GraphtreemstGraphN::len(self : GraphtreemstGraphN) -> Int { self.size }
 
-pub fn graph_tree_mst_graphn_get(s : GraphtreemstGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstGraphN::get(self : GraphtreemstGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_graphn_set(s : GraphtreemstGraphN, i : Int, v : Double) -> GraphtreemstGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstGraphN::set(self : GraphtreemstGraphN, i : Int, v : Double) -> GraphtreemstGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_graphn_sum(s : GraphtreemstGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstGraphN::sum(self : GraphtreemstGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_graphn_mean(s : GraphtreemstGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstGraphN::mean(self : GraphtreemstGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_graphn_scale(s : GraphtreemstGraphN, f : Double) -> GraphtreemstGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstGraphN::scale(self : GraphtreemstGraphN, f : Double) -> GraphtreemstGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_graphn_add(a : GraphtreemstGraphN, b : GraphtreemstGraphN) -> GraphtreemstGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstGraphN::add(self : GraphtreemstGraphN, other : GraphtreemstGraphN) -> GraphtreemstGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_graphn_copy(s : GraphtreemstGraphN) -> GraphtreemstGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstGraphN::copy(self : GraphtreemstGraphN) -> GraphtreemstGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_graphn_fill(s : GraphtreemstGraphN, v : Double) -> GraphtreemstGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstGraphN::fill(self : GraphtreemstGraphN, v : Double) -> GraphtreemstGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_graphn_min(s : GraphtreemstGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstGraphN::min(self : GraphtreemstGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_graphn_max(s : GraphtreemstGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstGraphN::max(self : GraphtreemstGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_graphn_to_string(s : GraphtreemstGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstGraphN::to_string(self : GraphtreemstGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstNode {
@@ -504,45 +504,45 @@ pub fn graph_tree_mst_node_make(size : Int) -> GraphtreemstNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_node_len(s : GraphtreemstNode) -> Int { s.size }
+pub fn GraphtreemstNode::len(self : GraphtreemstNode) -> Int { self.size }
 
-pub fn graph_tree_mst_node_get(s : GraphtreemstNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstNode::get(self : GraphtreemstNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_node_set(s : GraphtreemstNode, i : Int, v : Double) -> GraphtreemstNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstNode::set(self : GraphtreemstNode, i : Int, v : Double) -> GraphtreemstNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_node_sum(s : GraphtreemstNode) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstNode::sum(self : GraphtreemstNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_node_mean(s : GraphtreemstNode) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstNode::mean(self : GraphtreemstNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_node_scale(s : GraphtreemstNode, f : Double) -> GraphtreemstNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstNode::scale(self : GraphtreemstNode, f : Double) -> GraphtreemstNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_node_add(a : GraphtreemstNode, b : GraphtreemstNode) -> GraphtreemstNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstNode::add(self : GraphtreemstNode, other : GraphtreemstNode) -> GraphtreemstNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_node_copy(s : GraphtreemstNode) -> GraphtreemstNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstNode::copy(self : GraphtreemstNode) -> GraphtreemstNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_node_fill(s : GraphtreemstNode, v : Double) -> GraphtreemstNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstNode::fill(self : GraphtreemstNode, v : Double) -> GraphtreemstNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_node_min(s : GraphtreemstNode) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstNode::min(self : GraphtreemstNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_node_max(s : GraphtreemstNode) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstNode::max(self : GraphtreemstNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_node_to_string(s : GraphtreemstNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstNode::to_string(self : GraphtreemstNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstEdge {
@@ -555,45 +555,45 @@ pub fn graph_tree_mst_edge_make(size : Int) -> GraphtreemstEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_edge_len(s : GraphtreemstEdge) -> Int { s.size }
+pub fn GraphtreemstEdge::len(self : GraphtreemstEdge) -> Int { self.size }
 
-pub fn graph_tree_mst_edge_get(s : GraphtreemstEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstEdge::get(self : GraphtreemstEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_edge_set(s : GraphtreemstEdge, i : Int, v : Double) -> GraphtreemstEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstEdge::set(self : GraphtreemstEdge, i : Int, v : Double) -> GraphtreemstEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_edge_sum(s : GraphtreemstEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstEdge::sum(self : GraphtreemstEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_edge_mean(s : GraphtreemstEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstEdge::mean(self : GraphtreemstEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_edge_scale(s : GraphtreemstEdge, f : Double) -> GraphtreemstEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstEdge::scale(self : GraphtreemstEdge, f : Double) -> GraphtreemstEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_edge_add(a : GraphtreemstEdge, b : GraphtreemstEdge) -> GraphtreemstEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstEdge::add(self : GraphtreemstEdge, other : GraphtreemstEdge) -> GraphtreemstEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_edge_copy(s : GraphtreemstEdge) -> GraphtreemstEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstEdge::copy(self : GraphtreemstEdge) -> GraphtreemstEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_edge_fill(s : GraphtreemstEdge, v : Double) -> GraphtreemstEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstEdge::fill(self : GraphtreemstEdge, v : Double) -> GraphtreemstEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_edge_min(s : GraphtreemstEdge) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstEdge::min(self : GraphtreemstEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_edge_max(s : GraphtreemstEdge) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstEdge::max(self : GraphtreemstEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_edge_to_string(s : GraphtreemstEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstEdge::to_string(self : GraphtreemstEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstPath {
@@ -606,45 +606,45 @@ pub fn graph_tree_mst_path_make(size : Int) -> GraphtreemstPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_path_len(s : GraphtreemstPath) -> Int { s.size }
+pub fn GraphtreemstPath::len(self : GraphtreemstPath) -> Int { self.size }
 
-pub fn graph_tree_mst_path_get(s : GraphtreemstPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstPath::get(self : GraphtreemstPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_path_set(s : GraphtreemstPath, i : Int, v : Double) -> GraphtreemstPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstPath::set(self : GraphtreemstPath, i : Int, v : Double) -> GraphtreemstPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_path_sum(s : GraphtreemstPath) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstPath::sum(self : GraphtreemstPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_path_mean(s : GraphtreemstPath) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstPath::mean(self : GraphtreemstPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_path_scale(s : GraphtreemstPath, f : Double) -> GraphtreemstPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstPath::scale(self : GraphtreemstPath, f : Double) -> GraphtreemstPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_path_add(a : GraphtreemstPath, b : GraphtreemstPath) -> GraphtreemstPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstPath::add(self : GraphtreemstPath, other : GraphtreemstPath) -> GraphtreemstPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_path_copy(s : GraphtreemstPath) -> GraphtreemstPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstPath::copy(self : GraphtreemstPath) -> GraphtreemstPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_path_fill(s : GraphtreemstPath, v : Double) -> GraphtreemstPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstPath::fill(self : GraphtreemstPath, v : Double) -> GraphtreemstPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_path_min(s : GraphtreemstPath) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstPath::min(self : GraphtreemstPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_path_max(s : GraphtreemstPath) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstPath::max(self : GraphtreemstPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_path_to_string(s : GraphtreemstPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstPath::to_string(self : GraphtreemstPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstCluster {
@@ -657,45 +657,45 @@ pub fn graph_tree_mst_cluster_make(size : Int) -> GraphtreemstCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_cluster_len(s : GraphtreemstCluster) -> Int { s.size }
+pub fn GraphtreemstCluster::len(self : GraphtreemstCluster) -> Int { self.size }
 
-pub fn graph_tree_mst_cluster_get(s : GraphtreemstCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstCluster::get(self : GraphtreemstCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_cluster_set(s : GraphtreemstCluster, i : Int, v : Double) -> GraphtreemstCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstCluster::set(self : GraphtreemstCluster, i : Int, v : Double) -> GraphtreemstCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cluster_sum(s : GraphtreemstCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstCluster::sum(self : GraphtreemstCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_cluster_mean(s : GraphtreemstCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstCluster::mean(self : GraphtreemstCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_cluster_scale(s : GraphtreemstCluster, f : Double) -> GraphtreemstCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstCluster::scale(self : GraphtreemstCluster, f : Double) -> GraphtreemstCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cluster_add(a : GraphtreemstCluster, b : GraphtreemstCluster) -> GraphtreemstCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstCluster::add(self : GraphtreemstCluster, other : GraphtreemstCluster) -> GraphtreemstCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cluster_copy(s : GraphtreemstCluster) -> GraphtreemstCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstCluster::copy(self : GraphtreemstCluster) -> GraphtreemstCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cluster_fill(s : GraphtreemstCluster, v : Double) -> GraphtreemstCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstCluster::fill(self : GraphtreemstCluster, v : Double) -> GraphtreemstCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cluster_min(s : GraphtreemstCluster) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstCluster::min(self : GraphtreemstCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_cluster_max(s : GraphtreemstCluster) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstCluster::max(self : GraphtreemstCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_cluster_to_string(s : GraphtreemstCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstCluster::to_string(self : GraphtreemstCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstModel {
@@ -708,45 +708,45 @@ pub fn graph_tree_mst_model_make(size : Int) -> GraphtreemstModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_model_len(s : GraphtreemstModel) -> Int { s.size }
+pub fn GraphtreemstModel::len(self : GraphtreemstModel) -> Int { self.size }
 
-pub fn graph_tree_mst_model_get(s : GraphtreemstModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstModel::get(self : GraphtreemstModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_model_set(s : GraphtreemstModel, i : Int, v : Double) -> GraphtreemstModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstModel::set(self : GraphtreemstModel, i : Int, v : Double) -> GraphtreemstModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_model_sum(s : GraphtreemstModel) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstModel::sum(self : GraphtreemstModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_model_mean(s : GraphtreemstModel) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstModel::mean(self : GraphtreemstModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_model_scale(s : GraphtreemstModel, f : Double) -> GraphtreemstModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstModel::scale(self : GraphtreemstModel, f : Double) -> GraphtreemstModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_model_add(a : GraphtreemstModel, b : GraphtreemstModel) -> GraphtreemstModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstModel::add(self : GraphtreemstModel, other : GraphtreemstModel) -> GraphtreemstModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_model_copy(s : GraphtreemstModel) -> GraphtreemstModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstModel::copy(self : GraphtreemstModel) -> GraphtreemstModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_model_fill(s : GraphtreemstModel, v : Double) -> GraphtreemstModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstModel::fill(self : GraphtreemstModel, v : Double) -> GraphtreemstModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_model_min(s : GraphtreemstModel) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstModel::min(self : GraphtreemstModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_model_max(s : GraphtreemstModel) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstModel::max(self : GraphtreemstModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_model_to_string(s : GraphtreemstModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstModel::to_string(self : GraphtreemstModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstLayer {
@@ -759,45 +759,45 @@ pub fn graph_tree_mst_layer_make(size : Int) -> GraphtreemstLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_layer_len(s : GraphtreemstLayer) -> Int { s.size }
+pub fn GraphtreemstLayer::len(self : GraphtreemstLayer) -> Int { self.size }
 
-pub fn graph_tree_mst_layer_get(s : GraphtreemstLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstLayer::get(self : GraphtreemstLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_layer_set(s : GraphtreemstLayer, i : Int, v : Double) -> GraphtreemstLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstLayer::set(self : GraphtreemstLayer, i : Int, v : Double) -> GraphtreemstLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_layer_sum(s : GraphtreemstLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstLayer::sum(self : GraphtreemstLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_layer_mean(s : GraphtreemstLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstLayer::mean(self : GraphtreemstLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_layer_scale(s : GraphtreemstLayer, f : Double) -> GraphtreemstLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstLayer::scale(self : GraphtreemstLayer, f : Double) -> GraphtreemstLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_layer_add(a : GraphtreemstLayer, b : GraphtreemstLayer) -> GraphtreemstLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstLayer::add(self : GraphtreemstLayer, other : GraphtreemstLayer) -> GraphtreemstLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_layer_copy(s : GraphtreemstLayer) -> GraphtreemstLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstLayer::copy(self : GraphtreemstLayer) -> GraphtreemstLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_layer_fill(s : GraphtreemstLayer, v : Double) -> GraphtreemstLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstLayer::fill(self : GraphtreemstLayer, v : Double) -> GraphtreemstLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_layer_min(s : GraphtreemstLayer) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstLayer::min(self : GraphtreemstLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_layer_max(s : GraphtreemstLayer) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstLayer::max(self : GraphtreemstLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_layer_to_string(s : GraphtreemstLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstLayer::to_string(self : GraphtreemstLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstBuffer {
@@ -810,45 +810,45 @@ pub fn graph_tree_mst_buffer_make(size : Int) -> GraphtreemstBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_buffer_len(s : GraphtreemstBuffer) -> Int { s.size }
+pub fn GraphtreemstBuffer::len(self : GraphtreemstBuffer) -> Int { self.size }
 
-pub fn graph_tree_mst_buffer_get(s : GraphtreemstBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstBuffer::get(self : GraphtreemstBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_buffer_set(s : GraphtreemstBuffer, i : Int, v : Double) -> GraphtreemstBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstBuffer::set(self : GraphtreemstBuffer, i : Int, v : Double) -> GraphtreemstBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_buffer_sum(s : GraphtreemstBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstBuffer::sum(self : GraphtreemstBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_buffer_mean(s : GraphtreemstBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstBuffer::mean(self : GraphtreemstBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_buffer_scale(s : GraphtreemstBuffer, f : Double) -> GraphtreemstBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstBuffer::scale(self : GraphtreemstBuffer, f : Double) -> GraphtreemstBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_buffer_add(a : GraphtreemstBuffer, b : GraphtreemstBuffer) -> GraphtreemstBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstBuffer::add(self : GraphtreemstBuffer, other : GraphtreemstBuffer) -> GraphtreemstBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_buffer_copy(s : GraphtreemstBuffer) -> GraphtreemstBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstBuffer::copy(self : GraphtreemstBuffer) -> GraphtreemstBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_buffer_fill(s : GraphtreemstBuffer, v : Double) -> GraphtreemstBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstBuffer::fill(self : GraphtreemstBuffer, v : Double) -> GraphtreemstBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_buffer_min(s : GraphtreemstBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstBuffer::min(self : GraphtreemstBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_buffer_max(s : GraphtreemstBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstBuffer::max(self : GraphtreemstBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_buffer_to_string(s : GraphtreemstBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstBuffer::to_string(self : GraphtreemstBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstCursor {
@@ -861,45 +861,45 @@ pub fn graph_tree_mst_cursor_make(size : Int) -> GraphtreemstCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_cursor_len(s : GraphtreemstCursor) -> Int { s.size }
+pub fn GraphtreemstCursor::len(self : GraphtreemstCursor) -> Int { self.size }
 
-pub fn graph_tree_mst_cursor_get(s : GraphtreemstCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstCursor::get(self : GraphtreemstCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_cursor_set(s : GraphtreemstCursor, i : Int, v : Double) -> GraphtreemstCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstCursor::set(self : GraphtreemstCursor, i : Int, v : Double) -> GraphtreemstCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cursor_sum(s : GraphtreemstCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstCursor::sum(self : GraphtreemstCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_cursor_mean(s : GraphtreemstCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstCursor::mean(self : GraphtreemstCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_cursor_scale(s : GraphtreemstCursor, f : Double) -> GraphtreemstCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstCursor::scale(self : GraphtreemstCursor, f : Double) -> GraphtreemstCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cursor_add(a : GraphtreemstCursor, b : GraphtreemstCursor) -> GraphtreemstCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstCursor::add(self : GraphtreemstCursor, other : GraphtreemstCursor) -> GraphtreemstCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cursor_copy(s : GraphtreemstCursor) -> GraphtreemstCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstCursor::copy(self : GraphtreemstCursor) -> GraphtreemstCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cursor_fill(s : GraphtreemstCursor, v : Double) -> GraphtreemstCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstCursor::fill(self : GraphtreemstCursor, v : Double) -> GraphtreemstCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_cursor_min(s : GraphtreemstCursor) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstCursor::min(self : GraphtreemstCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_cursor_max(s : GraphtreemstCursor) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstCursor::max(self : GraphtreemstCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_cursor_to_string(s : GraphtreemstCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstCursor::to_string(self : GraphtreemstCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstView {
@@ -912,45 +912,45 @@ pub fn graph_tree_mst_view_make(size : Int) -> GraphtreemstView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_view_len(s : GraphtreemstView) -> Int { s.size }
+pub fn GraphtreemstView::len(self : GraphtreemstView) -> Int { self.size }
 
-pub fn graph_tree_mst_view_get(s : GraphtreemstView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstView::get(self : GraphtreemstView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_view_set(s : GraphtreemstView, i : Int, v : Double) -> GraphtreemstView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstView::set(self : GraphtreemstView, i : Int, v : Double) -> GraphtreemstView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_view_sum(s : GraphtreemstView) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstView::sum(self : GraphtreemstView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_view_mean(s : GraphtreemstView) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstView::mean(self : GraphtreemstView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_view_scale(s : GraphtreemstView, f : Double) -> GraphtreemstView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstView::scale(self : GraphtreemstView, f : Double) -> GraphtreemstView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_view_add(a : GraphtreemstView, b : GraphtreemstView) -> GraphtreemstView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstView::add(self : GraphtreemstView, other : GraphtreemstView) -> GraphtreemstView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_view_copy(s : GraphtreemstView) -> GraphtreemstView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstView::copy(self : GraphtreemstView) -> GraphtreemstView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_view_fill(s : GraphtreemstView, v : Double) -> GraphtreemstView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstView::fill(self : GraphtreemstView, v : Double) -> GraphtreemstView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_view_min(s : GraphtreemstView) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstView::min(self : GraphtreemstView) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_view_max(s : GraphtreemstView) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstView::max(self : GraphtreemstView) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_view_to_string(s : GraphtreemstView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstView::to_string(self : GraphtreemstView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstRange {
@@ -963,45 +963,45 @@ pub fn graph_tree_mst_range_make(size : Int) -> GraphtreemstRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_range_len(s : GraphtreemstRange) -> Int { s.size }
+pub fn GraphtreemstRange::len(self : GraphtreemstRange) -> Int { self.size }
 
-pub fn graph_tree_mst_range_get(s : GraphtreemstRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstRange::get(self : GraphtreemstRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_range_set(s : GraphtreemstRange, i : Int, v : Double) -> GraphtreemstRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstRange::set(self : GraphtreemstRange, i : Int, v : Double) -> GraphtreemstRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_range_sum(s : GraphtreemstRange) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstRange::sum(self : GraphtreemstRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_range_mean(s : GraphtreemstRange) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstRange::mean(self : GraphtreemstRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_range_scale(s : GraphtreemstRange, f : Double) -> GraphtreemstRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstRange::scale(self : GraphtreemstRange, f : Double) -> GraphtreemstRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_range_add(a : GraphtreemstRange, b : GraphtreemstRange) -> GraphtreemstRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstRange::add(self : GraphtreemstRange, other : GraphtreemstRange) -> GraphtreemstRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_range_copy(s : GraphtreemstRange) -> GraphtreemstRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstRange::copy(self : GraphtreemstRange) -> GraphtreemstRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_range_fill(s : GraphtreemstRange, v : Double) -> GraphtreemstRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstRange::fill(self : GraphtreemstRange, v : Double) -> GraphtreemstRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_range_min(s : GraphtreemstRange) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstRange::min(self : GraphtreemstRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_range_max(s : GraphtreemstRange) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstRange::max(self : GraphtreemstRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_range_to_string(s : GraphtreemstRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstRange::to_string(self : GraphtreemstRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_tree_mst_slice_make(size : Int) -> GraphtreemstSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_slice_len(s : GraphtreemstSlice) -> Int { s.size }
+pub fn GraphtreemstSlice::len(self : GraphtreemstSlice) -> Int { self.size }
 
-pub fn graph_tree_mst_slice_get(s : GraphtreemstSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstSlice::get(self : GraphtreemstSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_slice_set(s : GraphtreemstSlice, i : Int, v : Double) -> GraphtreemstSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstSlice::set(self : GraphtreemstSlice, i : Int, v : Double) -> GraphtreemstSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_slice_sum(s : GraphtreemstSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstSlice::sum(self : GraphtreemstSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_slice_mean(s : GraphtreemstSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstSlice::mean(self : GraphtreemstSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_slice_scale(s : GraphtreemstSlice, f : Double) -> GraphtreemstSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstSlice::scale(self : GraphtreemstSlice, f : Double) -> GraphtreemstSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_slice_add(a : GraphtreemstSlice, b : GraphtreemstSlice) -> GraphtreemstSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstSlice::add(self : GraphtreemstSlice, other : GraphtreemstSlice) -> GraphtreemstSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_slice_copy(s : GraphtreemstSlice) -> GraphtreemstSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstSlice::copy(self : GraphtreemstSlice) -> GraphtreemstSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_slice_fill(s : GraphtreemstSlice, v : Double) -> GraphtreemstSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstSlice::fill(self : GraphtreemstSlice, v : Double) -> GraphtreemstSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_slice_min(s : GraphtreemstSlice) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstSlice::min(self : GraphtreemstSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_slice_max(s : GraphtreemstSlice) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstSlice::max(self : GraphtreemstSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_slice_to_string(s : GraphtreemstSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstSlice::to_string(self : GraphtreemstSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

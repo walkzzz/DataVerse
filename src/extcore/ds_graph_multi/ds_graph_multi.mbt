@@ -351,45 +351,45 @@ pub fn ds_graph_multi_frame_make(size : Int) -> DsgraphmultiFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_frame_len(s : DsgraphmultiFrame) -> Int { s.size }
+pub fn DsgraphmultiFrame::len(self : DsgraphmultiFrame) -> Int { self.size }
 
-pub fn ds_graph_multi_frame_get(s : DsgraphmultiFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiFrame::get(self : DsgraphmultiFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_frame_set(s : DsgraphmultiFrame, i : Int, v : Double) -> DsgraphmultiFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiFrame::set(self : DsgraphmultiFrame, i : Int, v : Double) -> DsgraphmultiFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_frame_sum(s : DsgraphmultiFrame) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiFrame::sum(self : DsgraphmultiFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_frame_mean(s : DsgraphmultiFrame) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiFrame::mean(self : DsgraphmultiFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_frame_scale(s : DsgraphmultiFrame, f : Double) -> DsgraphmultiFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiFrame::scale(self : DsgraphmultiFrame, f : Double) -> DsgraphmultiFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_frame_add(a : DsgraphmultiFrame, b : DsgraphmultiFrame) -> DsgraphmultiFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiFrame::add(self : DsgraphmultiFrame, other : DsgraphmultiFrame) -> DsgraphmultiFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_frame_copy(s : DsgraphmultiFrame) -> DsgraphmultiFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiFrame::copy(self : DsgraphmultiFrame) -> DsgraphmultiFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_frame_fill(s : DsgraphmultiFrame, v : Double) -> DsgraphmultiFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiFrame::fill(self : DsgraphmultiFrame, v : Double) -> DsgraphmultiFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_frame_min(s : DsgraphmultiFrame) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiFrame::min(self : DsgraphmultiFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_frame_max(s : DsgraphmultiFrame) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiFrame::max(self : DsgraphmultiFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_frame_to_string(s : DsgraphmultiFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiFrame::to_string(self : DsgraphmultiFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiTable {
@@ -402,45 +402,45 @@ pub fn ds_graph_multi_table_make(size : Int) -> DsgraphmultiTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_table_len(s : DsgraphmultiTable) -> Int { s.size }
+pub fn DsgraphmultiTable::len(self : DsgraphmultiTable) -> Int { self.size }
 
-pub fn ds_graph_multi_table_get(s : DsgraphmultiTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiTable::get(self : DsgraphmultiTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_table_set(s : DsgraphmultiTable, i : Int, v : Double) -> DsgraphmultiTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiTable::set(self : DsgraphmultiTable, i : Int, v : Double) -> DsgraphmultiTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_table_sum(s : DsgraphmultiTable) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiTable::sum(self : DsgraphmultiTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_table_mean(s : DsgraphmultiTable) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiTable::mean(self : DsgraphmultiTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_table_scale(s : DsgraphmultiTable, f : Double) -> DsgraphmultiTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiTable::scale(self : DsgraphmultiTable, f : Double) -> DsgraphmultiTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_table_add(a : DsgraphmultiTable, b : DsgraphmultiTable) -> DsgraphmultiTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiTable::add(self : DsgraphmultiTable, other : DsgraphmultiTable) -> DsgraphmultiTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_table_copy(s : DsgraphmultiTable) -> DsgraphmultiTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiTable::copy(self : DsgraphmultiTable) -> DsgraphmultiTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_table_fill(s : DsgraphmultiTable, v : Double) -> DsgraphmultiTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiTable::fill(self : DsgraphmultiTable, v : Double) -> DsgraphmultiTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_table_min(s : DsgraphmultiTable) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiTable::min(self : DsgraphmultiTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_table_max(s : DsgraphmultiTable) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiTable::max(self : DsgraphmultiTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_table_to_string(s : DsgraphmultiTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiTable::to_string(self : DsgraphmultiTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiGraphN {
@@ -453,45 +453,45 @@ pub fn ds_graph_multi_graphn_make(size : Int) -> DsgraphmultiGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_graphn_len(s : DsgraphmultiGraphN) -> Int { s.size }
+pub fn DsgraphmultiGraphN::len(self : DsgraphmultiGraphN) -> Int { self.size }
 
-pub fn ds_graph_multi_graphn_get(s : DsgraphmultiGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiGraphN::get(self : DsgraphmultiGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_graphn_set(s : DsgraphmultiGraphN, i : Int, v : Double) -> DsgraphmultiGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiGraphN::set(self : DsgraphmultiGraphN, i : Int, v : Double) -> DsgraphmultiGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_graphn_sum(s : DsgraphmultiGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiGraphN::sum(self : DsgraphmultiGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_graphn_mean(s : DsgraphmultiGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiGraphN::mean(self : DsgraphmultiGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_graphn_scale(s : DsgraphmultiGraphN, f : Double) -> DsgraphmultiGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiGraphN::scale(self : DsgraphmultiGraphN, f : Double) -> DsgraphmultiGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_graphn_add(a : DsgraphmultiGraphN, b : DsgraphmultiGraphN) -> DsgraphmultiGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiGraphN::add(self : DsgraphmultiGraphN, other : DsgraphmultiGraphN) -> DsgraphmultiGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_graphn_copy(s : DsgraphmultiGraphN) -> DsgraphmultiGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiGraphN::copy(self : DsgraphmultiGraphN) -> DsgraphmultiGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_graphn_fill(s : DsgraphmultiGraphN, v : Double) -> DsgraphmultiGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiGraphN::fill(self : DsgraphmultiGraphN, v : Double) -> DsgraphmultiGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_graphn_min(s : DsgraphmultiGraphN) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiGraphN::min(self : DsgraphmultiGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_graphn_max(s : DsgraphmultiGraphN) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiGraphN::max(self : DsgraphmultiGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_graphn_to_string(s : DsgraphmultiGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiGraphN::to_string(self : DsgraphmultiGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiNode {
@@ -504,45 +504,45 @@ pub fn ds_graph_multi_node_make(size : Int) -> DsgraphmultiNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_node_len(s : DsgraphmultiNode) -> Int { s.size }
+pub fn DsgraphmultiNode::len(self : DsgraphmultiNode) -> Int { self.size }
 
-pub fn ds_graph_multi_node_get(s : DsgraphmultiNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiNode::get(self : DsgraphmultiNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_node_set(s : DsgraphmultiNode, i : Int, v : Double) -> DsgraphmultiNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiNode::set(self : DsgraphmultiNode, i : Int, v : Double) -> DsgraphmultiNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_node_sum(s : DsgraphmultiNode) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiNode::sum(self : DsgraphmultiNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_node_mean(s : DsgraphmultiNode) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiNode::mean(self : DsgraphmultiNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_node_scale(s : DsgraphmultiNode, f : Double) -> DsgraphmultiNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiNode::scale(self : DsgraphmultiNode, f : Double) -> DsgraphmultiNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_node_add(a : DsgraphmultiNode, b : DsgraphmultiNode) -> DsgraphmultiNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiNode::add(self : DsgraphmultiNode, other : DsgraphmultiNode) -> DsgraphmultiNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_node_copy(s : DsgraphmultiNode) -> DsgraphmultiNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiNode::copy(self : DsgraphmultiNode) -> DsgraphmultiNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_node_fill(s : DsgraphmultiNode, v : Double) -> DsgraphmultiNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiNode::fill(self : DsgraphmultiNode, v : Double) -> DsgraphmultiNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_node_min(s : DsgraphmultiNode) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiNode::min(self : DsgraphmultiNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_node_max(s : DsgraphmultiNode) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiNode::max(self : DsgraphmultiNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_node_to_string(s : DsgraphmultiNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiNode::to_string(self : DsgraphmultiNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiEdge {
@@ -555,45 +555,45 @@ pub fn ds_graph_multi_edge_make(size : Int) -> DsgraphmultiEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_edge_len(s : DsgraphmultiEdge) -> Int { s.size }
+pub fn DsgraphmultiEdge::len(self : DsgraphmultiEdge) -> Int { self.size }
 
-pub fn ds_graph_multi_edge_get(s : DsgraphmultiEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiEdge::get(self : DsgraphmultiEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_edge_set(s : DsgraphmultiEdge, i : Int, v : Double) -> DsgraphmultiEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiEdge::set(self : DsgraphmultiEdge, i : Int, v : Double) -> DsgraphmultiEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_edge_sum(s : DsgraphmultiEdge) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiEdge::sum(self : DsgraphmultiEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_edge_mean(s : DsgraphmultiEdge) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiEdge::mean(self : DsgraphmultiEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_edge_scale(s : DsgraphmultiEdge, f : Double) -> DsgraphmultiEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiEdge::scale(self : DsgraphmultiEdge, f : Double) -> DsgraphmultiEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_edge_add(a : DsgraphmultiEdge, b : DsgraphmultiEdge) -> DsgraphmultiEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiEdge::add(self : DsgraphmultiEdge, other : DsgraphmultiEdge) -> DsgraphmultiEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_edge_copy(s : DsgraphmultiEdge) -> DsgraphmultiEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiEdge::copy(self : DsgraphmultiEdge) -> DsgraphmultiEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_edge_fill(s : DsgraphmultiEdge, v : Double) -> DsgraphmultiEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiEdge::fill(self : DsgraphmultiEdge, v : Double) -> DsgraphmultiEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_edge_min(s : DsgraphmultiEdge) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiEdge::min(self : DsgraphmultiEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_edge_max(s : DsgraphmultiEdge) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiEdge::max(self : DsgraphmultiEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_edge_to_string(s : DsgraphmultiEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiEdge::to_string(self : DsgraphmultiEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiPath {
@@ -606,45 +606,45 @@ pub fn ds_graph_multi_path_make(size : Int) -> DsgraphmultiPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_path_len(s : DsgraphmultiPath) -> Int { s.size }
+pub fn DsgraphmultiPath::len(self : DsgraphmultiPath) -> Int { self.size }
 
-pub fn ds_graph_multi_path_get(s : DsgraphmultiPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiPath::get(self : DsgraphmultiPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_path_set(s : DsgraphmultiPath, i : Int, v : Double) -> DsgraphmultiPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiPath::set(self : DsgraphmultiPath, i : Int, v : Double) -> DsgraphmultiPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_path_sum(s : DsgraphmultiPath) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiPath::sum(self : DsgraphmultiPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_path_mean(s : DsgraphmultiPath) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiPath::mean(self : DsgraphmultiPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_path_scale(s : DsgraphmultiPath, f : Double) -> DsgraphmultiPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiPath::scale(self : DsgraphmultiPath, f : Double) -> DsgraphmultiPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_path_add(a : DsgraphmultiPath, b : DsgraphmultiPath) -> DsgraphmultiPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiPath::add(self : DsgraphmultiPath, other : DsgraphmultiPath) -> DsgraphmultiPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_path_copy(s : DsgraphmultiPath) -> DsgraphmultiPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiPath::copy(self : DsgraphmultiPath) -> DsgraphmultiPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_path_fill(s : DsgraphmultiPath, v : Double) -> DsgraphmultiPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiPath::fill(self : DsgraphmultiPath, v : Double) -> DsgraphmultiPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_path_min(s : DsgraphmultiPath) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiPath::min(self : DsgraphmultiPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_path_max(s : DsgraphmultiPath) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiPath::max(self : DsgraphmultiPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_path_to_string(s : DsgraphmultiPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiPath::to_string(self : DsgraphmultiPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiCluster {
@@ -657,45 +657,45 @@ pub fn ds_graph_multi_cluster_make(size : Int) -> DsgraphmultiCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_cluster_len(s : DsgraphmultiCluster) -> Int { s.size }
+pub fn DsgraphmultiCluster::len(self : DsgraphmultiCluster) -> Int { self.size }
 
-pub fn ds_graph_multi_cluster_get(s : DsgraphmultiCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiCluster::get(self : DsgraphmultiCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_cluster_set(s : DsgraphmultiCluster, i : Int, v : Double) -> DsgraphmultiCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiCluster::set(self : DsgraphmultiCluster, i : Int, v : Double) -> DsgraphmultiCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cluster_sum(s : DsgraphmultiCluster) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiCluster::sum(self : DsgraphmultiCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_cluster_mean(s : DsgraphmultiCluster) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiCluster::mean(self : DsgraphmultiCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_cluster_scale(s : DsgraphmultiCluster, f : Double) -> DsgraphmultiCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiCluster::scale(self : DsgraphmultiCluster, f : Double) -> DsgraphmultiCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cluster_add(a : DsgraphmultiCluster, b : DsgraphmultiCluster) -> DsgraphmultiCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiCluster::add(self : DsgraphmultiCluster, other : DsgraphmultiCluster) -> DsgraphmultiCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cluster_copy(s : DsgraphmultiCluster) -> DsgraphmultiCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiCluster::copy(self : DsgraphmultiCluster) -> DsgraphmultiCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cluster_fill(s : DsgraphmultiCluster, v : Double) -> DsgraphmultiCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiCluster::fill(self : DsgraphmultiCluster, v : Double) -> DsgraphmultiCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cluster_min(s : DsgraphmultiCluster) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiCluster::min(self : DsgraphmultiCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_cluster_max(s : DsgraphmultiCluster) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiCluster::max(self : DsgraphmultiCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_cluster_to_string(s : DsgraphmultiCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiCluster::to_string(self : DsgraphmultiCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiModel {
@@ -708,45 +708,45 @@ pub fn ds_graph_multi_model_make(size : Int) -> DsgraphmultiModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_model_len(s : DsgraphmultiModel) -> Int { s.size }
+pub fn DsgraphmultiModel::len(self : DsgraphmultiModel) -> Int { self.size }
 
-pub fn ds_graph_multi_model_get(s : DsgraphmultiModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiModel::get(self : DsgraphmultiModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_model_set(s : DsgraphmultiModel, i : Int, v : Double) -> DsgraphmultiModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiModel::set(self : DsgraphmultiModel, i : Int, v : Double) -> DsgraphmultiModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_model_sum(s : DsgraphmultiModel) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiModel::sum(self : DsgraphmultiModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_model_mean(s : DsgraphmultiModel) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiModel::mean(self : DsgraphmultiModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_model_scale(s : DsgraphmultiModel, f : Double) -> DsgraphmultiModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiModel::scale(self : DsgraphmultiModel, f : Double) -> DsgraphmultiModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_model_add(a : DsgraphmultiModel, b : DsgraphmultiModel) -> DsgraphmultiModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiModel::add(self : DsgraphmultiModel, other : DsgraphmultiModel) -> DsgraphmultiModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_model_copy(s : DsgraphmultiModel) -> DsgraphmultiModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiModel::copy(self : DsgraphmultiModel) -> DsgraphmultiModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_model_fill(s : DsgraphmultiModel, v : Double) -> DsgraphmultiModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiModel::fill(self : DsgraphmultiModel, v : Double) -> DsgraphmultiModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_model_min(s : DsgraphmultiModel) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiModel::min(self : DsgraphmultiModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_model_max(s : DsgraphmultiModel) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiModel::max(self : DsgraphmultiModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_model_to_string(s : DsgraphmultiModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiModel::to_string(self : DsgraphmultiModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiLayer {
@@ -759,45 +759,45 @@ pub fn ds_graph_multi_layer_make(size : Int) -> DsgraphmultiLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_layer_len(s : DsgraphmultiLayer) -> Int { s.size }
+pub fn DsgraphmultiLayer::len(self : DsgraphmultiLayer) -> Int { self.size }
 
-pub fn ds_graph_multi_layer_get(s : DsgraphmultiLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiLayer::get(self : DsgraphmultiLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_layer_set(s : DsgraphmultiLayer, i : Int, v : Double) -> DsgraphmultiLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiLayer::set(self : DsgraphmultiLayer, i : Int, v : Double) -> DsgraphmultiLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_layer_sum(s : DsgraphmultiLayer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiLayer::sum(self : DsgraphmultiLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_layer_mean(s : DsgraphmultiLayer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiLayer::mean(self : DsgraphmultiLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_layer_scale(s : DsgraphmultiLayer, f : Double) -> DsgraphmultiLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiLayer::scale(self : DsgraphmultiLayer, f : Double) -> DsgraphmultiLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_layer_add(a : DsgraphmultiLayer, b : DsgraphmultiLayer) -> DsgraphmultiLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiLayer::add(self : DsgraphmultiLayer, other : DsgraphmultiLayer) -> DsgraphmultiLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_layer_copy(s : DsgraphmultiLayer) -> DsgraphmultiLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiLayer::copy(self : DsgraphmultiLayer) -> DsgraphmultiLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_layer_fill(s : DsgraphmultiLayer, v : Double) -> DsgraphmultiLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiLayer::fill(self : DsgraphmultiLayer, v : Double) -> DsgraphmultiLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_layer_min(s : DsgraphmultiLayer) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiLayer::min(self : DsgraphmultiLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_layer_max(s : DsgraphmultiLayer) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiLayer::max(self : DsgraphmultiLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_layer_to_string(s : DsgraphmultiLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiLayer::to_string(self : DsgraphmultiLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiBuffer {
@@ -810,45 +810,45 @@ pub fn ds_graph_multi_buffer_make(size : Int) -> DsgraphmultiBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_buffer_len(s : DsgraphmultiBuffer) -> Int { s.size }
+pub fn DsgraphmultiBuffer::len(self : DsgraphmultiBuffer) -> Int { self.size }
 
-pub fn ds_graph_multi_buffer_get(s : DsgraphmultiBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiBuffer::get(self : DsgraphmultiBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_buffer_set(s : DsgraphmultiBuffer, i : Int, v : Double) -> DsgraphmultiBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiBuffer::set(self : DsgraphmultiBuffer, i : Int, v : Double) -> DsgraphmultiBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_buffer_sum(s : DsgraphmultiBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiBuffer::sum(self : DsgraphmultiBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_buffer_mean(s : DsgraphmultiBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiBuffer::mean(self : DsgraphmultiBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_buffer_scale(s : DsgraphmultiBuffer, f : Double) -> DsgraphmultiBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiBuffer::scale(self : DsgraphmultiBuffer, f : Double) -> DsgraphmultiBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_buffer_add(a : DsgraphmultiBuffer, b : DsgraphmultiBuffer) -> DsgraphmultiBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiBuffer::add(self : DsgraphmultiBuffer, other : DsgraphmultiBuffer) -> DsgraphmultiBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_buffer_copy(s : DsgraphmultiBuffer) -> DsgraphmultiBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiBuffer::copy(self : DsgraphmultiBuffer) -> DsgraphmultiBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_buffer_fill(s : DsgraphmultiBuffer, v : Double) -> DsgraphmultiBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiBuffer::fill(self : DsgraphmultiBuffer, v : Double) -> DsgraphmultiBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_buffer_min(s : DsgraphmultiBuffer) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiBuffer::min(self : DsgraphmultiBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_buffer_max(s : DsgraphmultiBuffer) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiBuffer::max(self : DsgraphmultiBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_buffer_to_string(s : DsgraphmultiBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiBuffer::to_string(self : DsgraphmultiBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiCursor {
@@ -861,45 +861,45 @@ pub fn ds_graph_multi_cursor_make(size : Int) -> DsgraphmultiCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_cursor_len(s : DsgraphmultiCursor) -> Int { s.size }
+pub fn DsgraphmultiCursor::len(self : DsgraphmultiCursor) -> Int { self.size }
 
-pub fn ds_graph_multi_cursor_get(s : DsgraphmultiCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiCursor::get(self : DsgraphmultiCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_cursor_set(s : DsgraphmultiCursor, i : Int, v : Double) -> DsgraphmultiCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiCursor::set(self : DsgraphmultiCursor, i : Int, v : Double) -> DsgraphmultiCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cursor_sum(s : DsgraphmultiCursor) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiCursor::sum(self : DsgraphmultiCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_cursor_mean(s : DsgraphmultiCursor) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiCursor::mean(self : DsgraphmultiCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_cursor_scale(s : DsgraphmultiCursor, f : Double) -> DsgraphmultiCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiCursor::scale(self : DsgraphmultiCursor, f : Double) -> DsgraphmultiCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cursor_add(a : DsgraphmultiCursor, b : DsgraphmultiCursor) -> DsgraphmultiCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiCursor::add(self : DsgraphmultiCursor, other : DsgraphmultiCursor) -> DsgraphmultiCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cursor_copy(s : DsgraphmultiCursor) -> DsgraphmultiCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiCursor::copy(self : DsgraphmultiCursor) -> DsgraphmultiCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cursor_fill(s : DsgraphmultiCursor, v : Double) -> DsgraphmultiCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiCursor::fill(self : DsgraphmultiCursor, v : Double) -> DsgraphmultiCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_cursor_min(s : DsgraphmultiCursor) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiCursor::min(self : DsgraphmultiCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_cursor_max(s : DsgraphmultiCursor) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiCursor::max(self : DsgraphmultiCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_cursor_to_string(s : DsgraphmultiCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiCursor::to_string(self : DsgraphmultiCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiView {
@@ -912,45 +912,45 @@ pub fn ds_graph_multi_view_make(size : Int) -> DsgraphmultiView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_view_len(s : DsgraphmultiView) -> Int { s.size }
+pub fn DsgraphmultiView::len(self : DsgraphmultiView) -> Int { self.size }
 
-pub fn ds_graph_multi_view_get(s : DsgraphmultiView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiView::get(self : DsgraphmultiView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_view_set(s : DsgraphmultiView, i : Int, v : Double) -> DsgraphmultiView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiView::set(self : DsgraphmultiView, i : Int, v : Double) -> DsgraphmultiView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_view_sum(s : DsgraphmultiView) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiView::sum(self : DsgraphmultiView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_view_mean(s : DsgraphmultiView) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiView::mean(self : DsgraphmultiView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_view_scale(s : DsgraphmultiView, f : Double) -> DsgraphmultiView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiView::scale(self : DsgraphmultiView, f : Double) -> DsgraphmultiView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_view_add(a : DsgraphmultiView, b : DsgraphmultiView) -> DsgraphmultiView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiView::add(self : DsgraphmultiView, other : DsgraphmultiView) -> DsgraphmultiView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_view_copy(s : DsgraphmultiView) -> DsgraphmultiView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiView::copy(self : DsgraphmultiView) -> DsgraphmultiView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_view_fill(s : DsgraphmultiView, v : Double) -> DsgraphmultiView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiView::fill(self : DsgraphmultiView, v : Double) -> DsgraphmultiView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_view_min(s : DsgraphmultiView) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiView::min(self : DsgraphmultiView) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_view_max(s : DsgraphmultiView) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiView::max(self : DsgraphmultiView) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_view_to_string(s : DsgraphmultiView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiView::to_string(self : DsgraphmultiView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiRange {
@@ -963,45 +963,45 @@ pub fn ds_graph_multi_range_make(size : Int) -> DsgraphmultiRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_range_len(s : DsgraphmultiRange) -> Int { s.size }
+pub fn DsgraphmultiRange::len(self : DsgraphmultiRange) -> Int { self.size }
 
-pub fn ds_graph_multi_range_get(s : DsgraphmultiRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiRange::get(self : DsgraphmultiRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_range_set(s : DsgraphmultiRange, i : Int, v : Double) -> DsgraphmultiRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiRange::set(self : DsgraphmultiRange, i : Int, v : Double) -> DsgraphmultiRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_range_sum(s : DsgraphmultiRange) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiRange::sum(self : DsgraphmultiRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_range_mean(s : DsgraphmultiRange) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiRange::mean(self : DsgraphmultiRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_range_scale(s : DsgraphmultiRange, f : Double) -> DsgraphmultiRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiRange::scale(self : DsgraphmultiRange, f : Double) -> DsgraphmultiRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_range_add(a : DsgraphmultiRange, b : DsgraphmultiRange) -> DsgraphmultiRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiRange::add(self : DsgraphmultiRange, other : DsgraphmultiRange) -> DsgraphmultiRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_range_copy(s : DsgraphmultiRange) -> DsgraphmultiRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiRange::copy(self : DsgraphmultiRange) -> DsgraphmultiRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_range_fill(s : DsgraphmultiRange, v : Double) -> DsgraphmultiRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiRange::fill(self : DsgraphmultiRange, v : Double) -> DsgraphmultiRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_range_min(s : DsgraphmultiRange) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiRange::min(self : DsgraphmultiRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_range_max(s : DsgraphmultiRange) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiRange::max(self : DsgraphmultiRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_range_to_string(s : DsgraphmultiRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiRange::to_string(self : DsgraphmultiRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphmultiSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_graph_multi_slice_make(size : Int) -> DsgraphmultiSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_multi_slice_len(s : DsgraphmultiSlice) -> Int { s.size }
+pub fn DsgraphmultiSlice::len(self : DsgraphmultiSlice) -> Int { self.size }
 
-pub fn ds_graph_multi_slice_get(s : DsgraphmultiSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphmultiSlice::get(self : DsgraphmultiSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_multi_slice_set(s : DsgraphmultiSlice, i : Int, v : Double) -> DsgraphmultiSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphmultiSlice::set(self : DsgraphmultiSlice, i : Int, v : Double) -> DsgraphmultiSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_slice_sum(s : DsgraphmultiSlice) -> Double { @_common.sum(s.data) }
+pub fn DsgraphmultiSlice::sum(self : DsgraphmultiSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_multi_slice_mean(s : DsgraphmultiSlice) -> Double { @_common.mean(s.data) }
+pub fn DsgraphmultiSlice::mean(self : DsgraphmultiSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_multi_slice_scale(s : DsgraphmultiSlice, f : Double) -> DsgraphmultiSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphmultiSlice::scale(self : DsgraphmultiSlice, f : Double) -> DsgraphmultiSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_slice_add(a : DsgraphmultiSlice, b : DsgraphmultiSlice) -> DsgraphmultiSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphmultiSlice::add(self : DsgraphmultiSlice, other : DsgraphmultiSlice) -> DsgraphmultiSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_multi_slice_copy(s : DsgraphmultiSlice) -> DsgraphmultiSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphmultiSlice::copy(self : DsgraphmultiSlice) -> DsgraphmultiSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_slice_fill(s : DsgraphmultiSlice, v : Double) -> DsgraphmultiSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphmultiSlice::fill(self : DsgraphmultiSlice, v : Double) -> DsgraphmultiSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_multi_slice_min(s : DsgraphmultiSlice) -> Double { @_common.min(s.data) }
+pub fn DsgraphmultiSlice::min(self : DsgraphmultiSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_multi_slice_max(s : DsgraphmultiSlice) -> Double { @_common.max(s.data) }
+pub fn DsgraphmultiSlice::max(self : DsgraphmultiSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_multi_slice_to_string(s : DsgraphmultiSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphmultiSlice::to_string(self : DsgraphmultiSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

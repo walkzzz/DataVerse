@@ -351,45 +351,45 @@ pub fn signal_window_rect_frame_make(size : Int) -> SignalwindowrectFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_frame_len(s : SignalwindowrectFrame) -> Int { s.size }
+pub fn SignalwindowrectFrame::len(self : SignalwindowrectFrame) -> Int { self.size }
 
-pub fn signal_window_rect_frame_get(s : SignalwindowrectFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectFrame::get(self : SignalwindowrectFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_frame_set(s : SignalwindowrectFrame, i : Int, v : Double) -> SignalwindowrectFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectFrame::set(self : SignalwindowrectFrame, i : Int, v : Double) -> SignalwindowrectFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_frame_sum(s : SignalwindowrectFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectFrame::sum(self : SignalwindowrectFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_frame_mean(s : SignalwindowrectFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectFrame::mean(self : SignalwindowrectFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_frame_scale(s : SignalwindowrectFrame, f : Double) -> SignalwindowrectFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectFrame::scale(self : SignalwindowrectFrame, f : Double) -> SignalwindowrectFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_frame_add(a : SignalwindowrectFrame, b : SignalwindowrectFrame) -> SignalwindowrectFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectFrame::add(self : SignalwindowrectFrame, other : SignalwindowrectFrame) -> SignalwindowrectFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_frame_copy(s : SignalwindowrectFrame) -> SignalwindowrectFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectFrame::copy(self : SignalwindowrectFrame) -> SignalwindowrectFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_frame_fill(s : SignalwindowrectFrame, v : Double) -> SignalwindowrectFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectFrame::fill(self : SignalwindowrectFrame, v : Double) -> SignalwindowrectFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_frame_min(s : SignalwindowrectFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectFrame::min(self : SignalwindowrectFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_frame_max(s : SignalwindowrectFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectFrame::max(self : SignalwindowrectFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_frame_to_string(s : SignalwindowrectFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectFrame::to_string(self : SignalwindowrectFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectTable {
@@ -402,45 +402,45 @@ pub fn signal_window_rect_table_make(size : Int) -> SignalwindowrectTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_table_len(s : SignalwindowrectTable) -> Int { s.size }
+pub fn SignalwindowrectTable::len(self : SignalwindowrectTable) -> Int { self.size }
 
-pub fn signal_window_rect_table_get(s : SignalwindowrectTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectTable::get(self : SignalwindowrectTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_table_set(s : SignalwindowrectTable, i : Int, v : Double) -> SignalwindowrectTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectTable::set(self : SignalwindowrectTable, i : Int, v : Double) -> SignalwindowrectTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_table_sum(s : SignalwindowrectTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectTable::sum(self : SignalwindowrectTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_table_mean(s : SignalwindowrectTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectTable::mean(self : SignalwindowrectTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_table_scale(s : SignalwindowrectTable, f : Double) -> SignalwindowrectTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectTable::scale(self : SignalwindowrectTable, f : Double) -> SignalwindowrectTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_table_add(a : SignalwindowrectTable, b : SignalwindowrectTable) -> SignalwindowrectTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectTable::add(self : SignalwindowrectTable, other : SignalwindowrectTable) -> SignalwindowrectTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_table_copy(s : SignalwindowrectTable) -> SignalwindowrectTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectTable::copy(self : SignalwindowrectTable) -> SignalwindowrectTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_table_fill(s : SignalwindowrectTable, v : Double) -> SignalwindowrectTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectTable::fill(self : SignalwindowrectTable, v : Double) -> SignalwindowrectTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_table_min(s : SignalwindowrectTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectTable::min(self : SignalwindowrectTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_table_max(s : SignalwindowrectTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectTable::max(self : SignalwindowrectTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_table_to_string(s : SignalwindowrectTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectTable::to_string(self : SignalwindowrectTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_rect_graphn_make(size : Int) -> SignalwindowrectGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_graphn_len(s : SignalwindowrectGraphN) -> Int { s.size }
+pub fn SignalwindowrectGraphN::len(self : SignalwindowrectGraphN) -> Int { self.size }
 
-pub fn signal_window_rect_graphn_get(s : SignalwindowrectGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectGraphN::get(self : SignalwindowrectGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_graphn_set(s : SignalwindowrectGraphN, i : Int, v : Double) -> SignalwindowrectGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectGraphN::set(self : SignalwindowrectGraphN, i : Int, v : Double) -> SignalwindowrectGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_graphn_sum(s : SignalwindowrectGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectGraphN::sum(self : SignalwindowrectGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_graphn_mean(s : SignalwindowrectGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectGraphN::mean(self : SignalwindowrectGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_graphn_scale(s : SignalwindowrectGraphN, f : Double) -> SignalwindowrectGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectGraphN::scale(self : SignalwindowrectGraphN, f : Double) -> SignalwindowrectGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_graphn_add(a : SignalwindowrectGraphN, b : SignalwindowrectGraphN) -> SignalwindowrectGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectGraphN::add(self : SignalwindowrectGraphN, other : SignalwindowrectGraphN) -> SignalwindowrectGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_graphn_copy(s : SignalwindowrectGraphN) -> SignalwindowrectGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectGraphN::copy(self : SignalwindowrectGraphN) -> SignalwindowrectGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_graphn_fill(s : SignalwindowrectGraphN, v : Double) -> SignalwindowrectGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectGraphN::fill(self : SignalwindowrectGraphN, v : Double) -> SignalwindowrectGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_graphn_min(s : SignalwindowrectGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectGraphN::min(self : SignalwindowrectGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_graphn_max(s : SignalwindowrectGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectGraphN::max(self : SignalwindowrectGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_graphn_to_string(s : SignalwindowrectGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectGraphN::to_string(self : SignalwindowrectGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectNode {
@@ -504,45 +504,45 @@ pub fn signal_window_rect_node_make(size : Int) -> SignalwindowrectNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_node_len(s : SignalwindowrectNode) -> Int { s.size }
+pub fn SignalwindowrectNode::len(self : SignalwindowrectNode) -> Int { self.size }
 
-pub fn signal_window_rect_node_get(s : SignalwindowrectNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectNode::get(self : SignalwindowrectNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_node_set(s : SignalwindowrectNode, i : Int, v : Double) -> SignalwindowrectNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectNode::set(self : SignalwindowrectNode, i : Int, v : Double) -> SignalwindowrectNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_node_sum(s : SignalwindowrectNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectNode::sum(self : SignalwindowrectNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_node_mean(s : SignalwindowrectNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectNode::mean(self : SignalwindowrectNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_node_scale(s : SignalwindowrectNode, f : Double) -> SignalwindowrectNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectNode::scale(self : SignalwindowrectNode, f : Double) -> SignalwindowrectNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_node_add(a : SignalwindowrectNode, b : SignalwindowrectNode) -> SignalwindowrectNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectNode::add(self : SignalwindowrectNode, other : SignalwindowrectNode) -> SignalwindowrectNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_node_copy(s : SignalwindowrectNode) -> SignalwindowrectNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectNode::copy(self : SignalwindowrectNode) -> SignalwindowrectNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_node_fill(s : SignalwindowrectNode, v : Double) -> SignalwindowrectNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectNode::fill(self : SignalwindowrectNode, v : Double) -> SignalwindowrectNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_node_min(s : SignalwindowrectNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectNode::min(self : SignalwindowrectNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_node_max(s : SignalwindowrectNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectNode::max(self : SignalwindowrectNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_node_to_string(s : SignalwindowrectNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectNode::to_string(self : SignalwindowrectNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_rect_edge_make(size : Int) -> SignalwindowrectEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_edge_len(s : SignalwindowrectEdge) -> Int { s.size }
+pub fn SignalwindowrectEdge::len(self : SignalwindowrectEdge) -> Int { self.size }
 
-pub fn signal_window_rect_edge_get(s : SignalwindowrectEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectEdge::get(self : SignalwindowrectEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_edge_set(s : SignalwindowrectEdge, i : Int, v : Double) -> SignalwindowrectEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectEdge::set(self : SignalwindowrectEdge, i : Int, v : Double) -> SignalwindowrectEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_edge_sum(s : SignalwindowrectEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectEdge::sum(self : SignalwindowrectEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_edge_mean(s : SignalwindowrectEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectEdge::mean(self : SignalwindowrectEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_edge_scale(s : SignalwindowrectEdge, f : Double) -> SignalwindowrectEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectEdge::scale(self : SignalwindowrectEdge, f : Double) -> SignalwindowrectEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_edge_add(a : SignalwindowrectEdge, b : SignalwindowrectEdge) -> SignalwindowrectEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectEdge::add(self : SignalwindowrectEdge, other : SignalwindowrectEdge) -> SignalwindowrectEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_edge_copy(s : SignalwindowrectEdge) -> SignalwindowrectEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectEdge::copy(self : SignalwindowrectEdge) -> SignalwindowrectEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_edge_fill(s : SignalwindowrectEdge, v : Double) -> SignalwindowrectEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectEdge::fill(self : SignalwindowrectEdge, v : Double) -> SignalwindowrectEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_edge_min(s : SignalwindowrectEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectEdge::min(self : SignalwindowrectEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_edge_max(s : SignalwindowrectEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectEdge::max(self : SignalwindowrectEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_edge_to_string(s : SignalwindowrectEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectEdge::to_string(self : SignalwindowrectEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectPath {
@@ -606,45 +606,45 @@ pub fn signal_window_rect_path_make(size : Int) -> SignalwindowrectPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_path_len(s : SignalwindowrectPath) -> Int { s.size }
+pub fn SignalwindowrectPath::len(self : SignalwindowrectPath) -> Int { self.size }
 
-pub fn signal_window_rect_path_get(s : SignalwindowrectPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectPath::get(self : SignalwindowrectPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_path_set(s : SignalwindowrectPath, i : Int, v : Double) -> SignalwindowrectPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectPath::set(self : SignalwindowrectPath, i : Int, v : Double) -> SignalwindowrectPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_path_sum(s : SignalwindowrectPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectPath::sum(self : SignalwindowrectPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_path_mean(s : SignalwindowrectPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectPath::mean(self : SignalwindowrectPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_path_scale(s : SignalwindowrectPath, f : Double) -> SignalwindowrectPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectPath::scale(self : SignalwindowrectPath, f : Double) -> SignalwindowrectPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_path_add(a : SignalwindowrectPath, b : SignalwindowrectPath) -> SignalwindowrectPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectPath::add(self : SignalwindowrectPath, other : SignalwindowrectPath) -> SignalwindowrectPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_path_copy(s : SignalwindowrectPath) -> SignalwindowrectPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectPath::copy(self : SignalwindowrectPath) -> SignalwindowrectPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_path_fill(s : SignalwindowrectPath, v : Double) -> SignalwindowrectPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectPath::fill(self : SignalwindowrectPath, v : Double) -> SignalwindowrectPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_path_min(s : SignalwindowrectPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectPath::min(self : SignalwindowrectPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_path_max(s : SignalwindowrectPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectPath::max(self : SignalwindowrectPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_path_to_string(s : SignalwindowrectPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectPath::to_string(self : SignalwindowrectPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_rect_cluster_make(size : Int) -> SignalwindowrectCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_cluster_len(s : SignalwindowrectCluster) -> Int { s.size }
+pub fn SignalwindowrectCluster::len(self : SignalwindowrectCluster) -> Int { self.size }
 
-pub fn signal_window_rect_cluster_get(s : SignalwindowrectCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectCluster::get(self : SignalwindowrectCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_cluster_set(s : SignalwindowrectCluster, i : Int, v : Double) -> SignalwindowrectCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectCluster::set(self : SignalwindowrectCluster, i : Int, v : Double) -> SignalwindowrectCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cluster_sum(s : SignalwindowrectCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectCluster::sum(self : SignalwindowrectCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_cluster_mean(s : SignalwindowrectCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectCluster::mean(self : SignalwindowrectCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_cluster_scale(s : SignalwindowrectCluster, f : Double) -> SignalwindowrectCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectCluster::scale(self : SignalwindowrectCluster, f : Double) -> SignalwindowrectCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cluster_add(a : SignalwindowrectCluster, b : SignalwindowrectCluster) -> SignalwindowrectCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectCluster::add(self : SignalwindowrectCluster, other : SignalwindowrectCluster) -> SignalwindowrectCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_cluster_copy(s : SignalwindowrectCluster) -> SignalwindowrectCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectCluster::copy(self : SignalwindowrectCluster) -> SignalwindowrectCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cluster_fill(s : SignalwindowrectCluster, v : Double) -> SignalwindowrectCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectCluster::fill(self : SignalwindowrectCluster, v : Double) -> SignalwindowrectCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cluster_min(s : SignalwindowrectCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectCluster::min(self : SignalwindowrectCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_cluster_max(s : SignalwindowrectCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectCluster::max(self : SignalwindowrectCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_cluster_to_string(s : SignalwindowrectCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectCluster::to_string(self : SignalwindowrectCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectModel {
@@ -708,45 +708,45 @@ pub fn signal_window_rect_model_make(size : Int) -> SignalwindowrectModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_model_len(s : SignalwindowrectModel) -> Int { s.size }
+pub fn SignalwindowrectModel::len(self : SignalwindowrectModel) -> Int { self.size }
 
-pub fn signal_window_rect_model_get(s : SignalwindowrectModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectModel::get(self : SignalwindowrectModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_model_set(s : SignalwindowrectModel, i : Int, v : Double) -> SignalwindowrectModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectModel::set(self : SignalwindowrectModel, i : Int, v : Double) -> SignalwindowrectModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_model_sum(s : SignalwindowrectModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectModel::sum(self : SignalwindowrectModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_model_mean(s : SignalwindowrectModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectModel::mean(self : SignalwindowrectModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_model_scale(s : SignalwindowrectModel, f : Double) -> SignalwindowrectModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectModel::scale(self : SignalwindowrectModel, f : Double) -> SignalwindowrectModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_model_add(a : SignalwindowrectModel, b : SignalwindowrectModel) -> SignalwindowrectModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectModel::add(self : SignalwindowrectModel, other : SignalwindowrectModel) -> SignalwindowrectModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_model_copy(s : SignalwindowrectModel) -> SignalwindowrectModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectModel::copy(self : SignalwindowrectModel) -> SignalwindowrectModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_model_fill(s : SignalwindowrectModel, v : Double) -> SignalwindowrectModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectModel::fill(self : SignalwindowrectModel, v : Double) -> SignalwindowrectModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_model_min(s : SignalwindowrectModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectModel::min(self : SignalwindowrectModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_model_max(s : SignalwindowrectModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectModel::max(self : SignalwindowrectModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_model_to_string(s : SignalwindowrectModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectModel::to_string(self : SignalwindowrectModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_rect_layer_make(size : Int) -> SignalwindowrectLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_layer_len(s : SignalwindowrectLayer) -> Int { s.size }
+pub fn SignalwindowrectLayer::len(self : SignalwindowrectLayer) -> Int { self.size }
 
-pub fn signal_window_rect_layer_get(s : SignalwindowrectLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectLayer::get(self : SignalwindowrectLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_layer_set(s : SignalwindowrectLayer, i : Int, v : Double) -> SignalwindowrectLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectLayer::set(self : SignalwindowrectLayer, i : Int, v : Double) -> SignalwindowrectLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_layer_sum(s : SignalwindowrectLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectLayer::sum(self : SignalwindowrectLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_layer_mean(s : SignalwindowrectLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectLayer::mean(self : SignalwindowrectLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_layer_scale(s : SignalwindowrectLayer, f : Double) -> SignalwindowrectLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectLayer::scale(self : SignalwindowrectLayer, f : Double) -> SignalwindowrectLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_layer_add(a : SignalwindowrectLayer, b : SignalwindowrectLayer) -> SignalwindowrectLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectLayer::add(self : SignalwindowrectLayer, other : SignalwindowrectLayer) -> SignalwindowrectLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_layer_copy(s : SignalwindowrectLayer) -> SignalwindowrectLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectLayer::copy(self : SignalwindowrectLayer) -> SignalwindowrectLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_layer_fill(s : SignalwindowrectLayer, v : Double) -> SignalwindowrectLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectLayer::fill(self : SignalwindowrectLayer, v : Double) -> SignalwindowrectLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_layer_min(s : SignalwindowrectLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectLayer::min(self : SignalwindowrectLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_layer_max(s : SignalwindowrectLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectLayer::max(self : SignalwindowrectLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_layer_to_string(s : SignalwindowrectLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectLayer::to_string(self : SignalwindowrectLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_rect_buffer_make(size : Int) -> SignalwindowrectBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_buffer_len(s : SignalwindowrectBuffer) -> Int { s.size }
+pub fn SignalwindowrectBuffer::len(self : SignalwindowrectBuffer) -> Int { self.size }
 
-pub fn signal_window_rect_buffer_get(s : SignalwindowrectBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectBuffer::get(self : SignalwindowrectBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_buffer_set(s : SignalwindowrectBuffer, i : Int, v : Double) -> SignalwindowrectBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectBuffer::set(self : SignalwindowrectBuffer, i : Int, v : Double) -> SignalwindowrectBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_buffer_sum(s : SignalwindowrectBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectBuffer::sum(self : SignalwindowrectBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_buffer_mean(s : SignalwindowrectBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectBuffer::mean(self : SignalwindowrectBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_buffer_scale(s : SignalwindowrectBuffer, f : Double) -> SignalwindowrectBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectBuffer::scale(self : SignalwindowrectBuffer, f : Double) -> SignalwindowrectBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_buffer_add(a : SignalwindowrectBuffer, b : SignalwindowrectBuffer) -> SignalwindowrectBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectBuffer::add(self : SignalwindowrectBuffer, other : SignalwindowrectBuffer) -> SignalwindowrectBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_buffer_copy(s : SignalwindowrectBuffer) -> SignalwindowrectBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectBuffer::copy(self : SignalwindowrectBuffer) -> SignalwindowrectBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_buffer_fill(s : SignalwindowrectBuffer, v : Double) -> SignalwindowrectBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectBuffer::fill(self : SignalwindowrectBuffer, v : Double) -> SignalwindowrectBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_buffer_min(s : SignalwindowrectBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectBuffer::min(self : SignalwindowrectBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_buffer_max(s : SignalwindowrectBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectBuffer::max(self : SignalwindowrectBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_buffer_to_string(s : SignalwindowrectBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectBuffer::to_string(self : SignalwindowrectBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_rect_cursor_make(size : Int) -> SignalwindowrectCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_cursor_len(s : SignalwindowrectCursor) -> Int { s.size }
+pub fn SignalwindowrectCursor::len(self : SignalwindowrectCursor) -> Int { self.size }
 
-pub fn signal_window_rect_cursor_get(s : SignalwindowrectCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectCursor::get(self : SignalwindowrectCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_cursor_set(s : SignalwindowrectCursor, i : Int, v : Double) -> SignalwindowrectCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectCursor::set(self : SignalwindowrectCursor, i : Int, v : Double) -> SignalwindowrectCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cursor_sum(s : SignalwindowrectCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectCursor::sum(self : SignalwindowrectCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_cursor_mean(s : SignalwindowrectCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectCursor::mean(self : SignalwindowrectCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_cursor_scale(s : SignalwindowrectCursor, f : Double) -> SignalwindowrectCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectCursor::scale(self : SignalwindowrectCursor, f : Double) -> SignalwindowrectCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cursor_add(a : SignalwindowrectCursor, b : SignalwindowrectCursor) -> SignalwindowrectCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectCursor::add(self : SignalwindowrectCursor, other : SignalwindowrectCursor) -> SignalwindowrectCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_cursor_copy(s : SignalwindowrectCursor) -> SignalwindowrectCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectCursor::copy(self : SignalwindowrectCursor) -> SignalwindowrectCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cursor_fill(s : SignalwindowrectCursor, v : Double) -> SignalwindowrectCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectCursor::fill(self : SignalwindowrectCursor, v : Double) -> SignalwindowrectCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_cursor_min(s : SignalwindowrectCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectCursor::min(self : SignalwindowrectCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_cursor_max(s : SignalwindowrectCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectCursor::max(self : SignalwindowrectCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_cursor_to_string(s : SignalwindowrectCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectCursor::to_string(self : SignalwindowrectCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectView {
@@ -912,45 +912,45 @@ pub fn signal_window_rect_view_make(size : Int) -> SignalwindowrectView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_view_len(s : SignalwindowrectView) -> Int { s.size }
+pub fn SignalwindowrectView::len(self : SignalwindowrectView) -> Int { self.size }
 
-pub fn signal_window_rect_view_get(s : SignalwindowrectView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectView::get(self : SignalwindowrectView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_view_set(s : SignalwindowrectView, i : Int, v : Double) -> SignalwindowrectView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectView::set(self : SignalwindowrectView, i : Int, v : Double) -> SignalwindowrectView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_view_sum(s : SignalwindowrectView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectView::sum(self : SignalwindowrectView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_view_mean(s : SignalwindowrectView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectView::mean(self : SignalwindowrectView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_view_scale(s : SignalwindowrectView, f : Double) -> SignalwindowrectView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectView::scale(self : SignalwindowrectView, f : Double) -> SignalwindowrectView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_view_add(a : SignalwindowrectView, b : SignalwindowrectView) -> SignalwindowrectView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectView::add(self : SignalwindowrectView, other : SignalwindowrectView) -> SignalwindowrectView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_view_copy(s : SignalwindowrectView) -> SignalwindowrectView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectView::copy(self : SignalwindowrectView) -> SignalwindowrectView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_view_fill(s : SignalwindowrectView, v : Double) -> SignalwindowrectView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectView::fill(self : SignalwindowrectView, v : Double) -> SignalwindowrectView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_view_min(s : SignalwindowrectView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectView::min(self : SignalwindowrectView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_view_max(s : SignalwindowrectView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectView::max(self : SignalwindowrectView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_view_to_string(s : SignalwindowrectView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectView::to_string(self : SignalwindowrectView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectRange {
@@ -963,45 +963,45 @@ pub fn signal_window_rect_range_make(size : Int) -> SignalwindowrectRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_range_len(s : SignalwindowrectRange) -> Int { s.size }
+pub fn SignalwindowrectRange::len(self : SignalwindowrectRange) -> Int { self.size }
 
-pub fn signal_window_rect_range_get(s : SignalwindowrectRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectRange::get(self : SignalwindowrectRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_range_set(s : SignalwindowrectRange, i : Int, v : Double) -> SignalwindowrectRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectRange::set(self : SignalwindowrectRange, i : Int, v : Double) -> SignalwindowrectRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_range_sum(s : SignalwindowrectRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectRange::sum(self : SignalwindowrectRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_range_mean(s : SignalwindowrectRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectRange::mean(self : SignalwindowrectRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_range_scale(s : SignalwindowrectRange, f : Double) -> SignalwindowrectRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectRange::scale(self : SignalwindowrectRange, f : Double) -> SignalwindowrectRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_range_add(a : SignalwindowrectRange, b : SignalwindowrectRange) -> SignalwindowrectRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectRange::add(self : SignalwindowrectRange, other : SignalwindowrectRange) -> SignalwindowrectRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_range_copy(s : SignalwindowrectRange) -> SignalwindowrectRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectRange::copy(self : SignalwindowrectRange) -> SignalwindowrectRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_range_fill(s : SignalwindowrectRange, v : Double) -> SignalwindowrectRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectRange::fill(self : SignalwindowrectRange, v : Double) -> SignalwindowrectRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_range_min(s : SignalwindowrectRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectRange::min(self : SignalwindowrectRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_range_max(s : SignalwindowrectRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectRange::max(self : SignalwindowrectRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_range_to_string(s : SignalwindowrectRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectRange::to_string(self : SignalwindowrectRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowrectSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_rect_slice_make(size : Int) -> SignalwindowrectSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_rect_slice_len(s : SignalwindowrectSlice) -> Int { s.size }
+pub fn SignalwindowrectSlice::len(self : SignalwindowrectSlice) -> Int { self.size }
 
-pub fn signal_window_rect_slice_get(s : SignalwindowrectSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowrectSlice::get(self : SignalwindowrectSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_rect_slice_set(s : SignalwindowrectSlice, i : Int, v : Double) -> SignalwindowrectSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowrectSlice::set(self : SignalwindowrectSlice, i : Int, v : Double) -> SignalwindowrectSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_slice_sum(s : SignalwindowrectSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowrectSlice::sum(self : SignalwindowrectSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_rect_slice_mean(s : SignalwindowrectSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowrectSlice::mean(self : SignalwindowrectSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_rect_slice_scale(s : SignalwindowrectSlice, f : Double) -> SignalwindowrectSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowrectSlice::scale(self : SignalwindowrectSlice, f : Double) -> SignalwindowrectSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_slice_add(a : SignalwindowrectSlice, b : SignalwindowrectSlice) -> SignalwindowrectSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowrectSlice::add(self : SignalwindowrectSlice, other : SignalwindowrectSlice) -> SignalwindowrectSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_rect_slice_copy(s : SignalwindowrectSlice) -> SignalwindowrectSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowrectSlice::copy(self : SignalwindowrectSlice) -> SignalwindowrectSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_slice_fill(s : SignalwindowrectSlice, v : Double) -> SignalwindowrectSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowrectSlice::fill(self : SignalwindowrectSlice, v : Double) -> SignalwindowrectSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_rect_slice_min(s : SignalwindowrectSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowrectSlice::min(self : SignalwindowrectSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_rect_slice_max(s : SignalwindowrectSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowrectSlice::max(self : SignalwindowrectSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_rect_slice_to_string(s : SignalwindowrectSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowrectSlice::to_string(self : SignalwindowrectSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

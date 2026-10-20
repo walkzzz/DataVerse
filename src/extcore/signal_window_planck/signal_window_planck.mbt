@@ -351,45 +351,45 @@ pub fn signal_window_planck_frame_make(size : Int) -> SignalwindowplanckFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_frame_len(s : SignalwindowplanckFrame) -> Int { s.size }
+pub fn SignalwindowplanckFrame::len(self : SignalwindowplanckFrame) -> Int { self.size }
 
-pub fn signal_window_planck_frame_get(s : SignalwindowplanckFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckFrame::get(self : SignalwindowplanckFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_frame_set(s : SignalwindowplanckFrame, i : Int, v : Double) -> SignalwindowplanckFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckFrame::set(self : SignalwindowplanckFrame, i : Int, v : Double) -> SignalwindowplanckFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_frame_sum(s : SignalwindowplanckFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckFrame::sum(self : SignalwindowplanckFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_frame_mean(s : SignalwindowplanckFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckFrame::mean(self : SignalwindowplanckFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_frame_scale(s : SignalwindowplanckFrame, f : Double) -> SignalwindowplanckFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckFrame::scale(self : SignalwindowplanckFrame, f : Double) -> SignalwindowplanckFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_frame_add(a : SignalwindowplanckFrame, b : SignalwindowplanckFrame) -> SignalwindowplanckFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckFrame::add(self : SignalwindowplanckFrame, other : SignalwindowplanckFrame) -> SignalwindowplanckFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_frame_copy(s : SignalwindowplanckFrame) -> SignalwindowplanckFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckFrame::copy(self : SignalwindowplanckFrame) -> SignalwindowplanckFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_frame_fill(s : SignalwindowplanckFrame, v : Double) -> SignalwindowplanckFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckFrame::fill(self : SignalwindowplanckFrame, v : Double) -> SignalwindowplanckFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_frame_min(s : SignalwindowplanckFrame) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckFrame::min(self : SignalwindowplanckFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_frame_max(s : SignalwindowplanckFrame) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckFrame::max(self : SignalwindowplanckFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_frame_to_string(s : SignalwindowplanckFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckFrame::to_string(self : SignalwindowplanckFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckTable {
@@ -402,45 +402,45 @@ pub fn signal_window_planck_table_make(size : Int) -> SignalwindowplanckTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_table_len(s : SignalwindowplanckTable) -> Int { s.size }
+pub fn SignalwindowplanckTable::len(self : SignalwindowplanckTable) -> Int { self.size }
 
-pub fn signal_window_planck_table_get(s : SignalwindowplanckTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckTable::get(self : SignalwindowplanckTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_table_set(s : SignalwindowplanckTable, i : Int, v : Double) -> SignalwindowplanckTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckTable::set(self : SignalwindowplanckTable, i : Int, v : Double) -> SignalwindowplanckTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_table_sum(s : SignalwindowplanckTable) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckTable::sum(self : SignalwindowplanckTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_table_mean(s : SignalwindowplanckTable) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckTable::mean(self : SignalwindowplanckTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_table_scale(s : SignalwindowplanckTable, f : Double) -> SignalwindowplanckTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckTable::scale(self : SignalwindowplanckTable, f : Double) -> SignalwindowplanckTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_table_add(a : SignalwindowplanckTable, b : SignalwindowplanckTable) -> SignalwindowplanckTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckTable::add(self : SignalwindowplanckTable, other : SignalwindowplanckTable) -> SignalwindowplanckTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_table_copy(s : SignalwindowplanckTable) -> SignalwindowplanckTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckTable::copy(self : SignalwindowplanckTable) -> SignalwindowplanckTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_table_fill(s : SignalwindowplanckTable, v : Double) -> SignalwindowplanckTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckTable::fill(self : SignalwindowplanckTable, v : Double) -> SignalwindowplanckTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_table_min(s : SignalwindowplanckTable) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckTable::min(self : SignalwindowplanckTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_table_max(s : SignalwindowplanckTable) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckTable::max(self : SignalwindowplanckTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_table_to_string(s : SignalwindowplanckTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckTable::to_string(self : SignalwindowplanckTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckGraphN {
@@ -453,45 +453,45 @@ pub fn signal_window_planck_graphn_make(size : Int) -> SignalwindowplanckGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_graphn_len(s : SignalwindowplanckGraphN) -> Int { s.size }
+pub fn SignalwindowplanckGraphN::len(self : SignalwindowplanckGraphN) -> Int { self.size }
 
-pub fn signal_window_planck_graphn_get(s : SignalwindowplanckGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckGraphN::get(self : SignalwindowplanckGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_graphn_set(s : SignalwindowplanckGraphN, i : Int, v : Double) -> SignalwindowplanckGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckGraphN::set(self : SignalwindowplanckGraphN, i : Int, v : Double) -> SignalwindowplanckGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_graphn_sum(s : SignalwindowplanckGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckGraphN::sum(self : SignalwindowplanckGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_graphn_mean(s : SignalwindowplanckGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckGraphN::mean(self : SignalwindowplanckGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_graphn_scale(s : SignalwindowplanckGraphN, f : Double) -> SignalwindowplanckGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckGraphN::scale(self : SignalwindowplanckGraphN, f : Double) -> SignalwindowplanckGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_graphn_add(a : SignalwindowplanckGraphN, b : SignalwindowplanckGraphN) -> SignalwindowplanckGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckGraphN::add(self : SignalwindowplanckGraphN, other : SignalwindowplanckGraphN) -> SignalwindowplanckGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_graphn_copy(s : SignalwindowplanckGraphN) -> SignalwindowplanckGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckGraphN::copy(self : SignalwindowplanckGraphN) -> SignalwindowplanckGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_graphn_fill(s : SignalwindowplanckGraphN, v : Double) -> SignalwindowplanckGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckGraphN::fill(self : SignalwindowplanckGraphN, v : Double) -> SignalwindowplanckGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_graphn_min(s : SignalwindowplanckGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckGraphN::min(self : SignalwindowplanckGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_graphn_max(s : SignalwindowplanckGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckGraphN::max(self : SignalwindowplanckGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_graphn_to_string(s : SignalwindowplanckGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckGraphN::to_string(self : SignalwindowplanckGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckNode {
@@ -504,45 +504,45 @@ pub fn signal_window_planck_node_make(size : Int) -> SignalwindowplanckNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_node_len(s : SignalwindowplanckNode) -> Int { s.size }
+pub fn SignalwindowplanckNode::len(self : SignalwindowplanckNode) -> Int { self.size }
 
-pub fn signal_window_planck_node_get(s : SignalwindowplanckNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckNode::get(self : SignalwindowplanckNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_node_set(s : SignalwindowplanckNode, i : Int, v : Double) -> SignalwindowplanckNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckNode::set(self : SignalwindowplanckNode, i : Int, v : Double) -> SignalwindowplanckNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_node_sum(s : SignalwindowplanckNode) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckNode::sum(self : SignalwindowplanckNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_node_mean(s : SignalwindowplanckNode) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckNode::mean(self : SignalwindowplanckNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_node_scale(s : SignalwindowplanckNode, f : Double) -> SignalwindowplanckNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckNode::scale(self : SignalwindowplanckNode, f : Double) -> SignalwindowplanckNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_node_add(a : SignalwindowplanckNode, b : SignalwindowplanckNode) -> SignalwindowplanckNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckNode::add(self : SignalwindowplanckNode, other : SignalwindowplanckNode) -> SignalwindowplanckNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_node_copy(s : SignalwindowplanckNode) -> SignalwindowplanckNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckNode::copy(self : SignalwindowplanckNode) -> SignalwindowplanckNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_node_fill(s : SignalwindowplanckNode, v : Double) -> SignalwindowplanckNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckNode::fill(self : SignalwindowplanckNode, v : Double) -> SignalwindowplanckNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_node_min(s : SignalwindowplanckNode) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckNode::min(self : SignalwindowplanckNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_node_max(s : SignalwindowplanckNode) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckNode::max(self : SignalwindowplanckNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_node_to_string(s : SignalwindowplanckNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckNode::to_string(self : SignalwindowplanckNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckEdge {
@@ -555,45 +555,45 @@ pub fn signal_window_planck_edge_make(size : Int) -> SignalwindowplanckEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_edge_len(s : SignalwindowplanckEdge) -> Int { s.size }
+pub fn SignalwindowplanckEdge::len(self : SignalwindowplanckEdge) -> Int { self.size }
 
-pub fn signal_window_planck_edge_get(s : SignalwindowplanckEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckEdge::get(self : SignalwindowplanckEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_edge_set(s : SignalwindowplanckEdge, i : Int, v : Double) -> SignalwindowplanckEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckEdge::set(self : SignalwindowplanckEdge, i : Int, v : Double) -> SignalwindowplanckEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_edge_sum(s : SignalwindowplanckEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckEdge::sum(self : SignalwindowplanckEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_edge_mean(s : SignalwindowplanckEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckEdge::mean(self : SignalwindowplanckEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_edge_scale(s : SignalwindowplanckEdge, f : Double) -> SignalwindowplanckEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckEdge::scale(self : SignalwindowplanckEdge, f : Double) -> SignalwindowplanckEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_edge_add(a : SignalwindowplanckEdge, b : SignalwindowplanckEdge) -> SignalwindowplanckEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckEdge::add(self : SignalwindowplanckEdge, other : SignalwindowplanckEdge) -> SignalwindowplanckEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_edge_copy(s : SignalwindowplanckEdge) -> SignalwindowplanckEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckEdge::copy(self : SignalwindowplanckEdge) -> SignalwindowplanckEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_edge_fill(s : SignalwindowplanckEdge, v : Double) -> SignalwindowplanckEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckEdge::fill(self : SignalwindowplanckEdge, v : Double) -> SignalwindowplanckEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_edge_min(s : SignalwindowplanckEdge) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckEdge::min(self : SignalwindowplanckEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_edge_max(s : SignalwindowplanckEdge) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckEdge::max(self : SignalwindowplanckEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_edge_to_string(s : SignalwindowplanckEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckEdge::to_string(self : SignalwindowplanckEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckPath {
@@ -606,45 +606,45 @@ pub fn signal_window_planck_path_make(size : Int) -> SignalwindowplanckPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_path_len(s : SignalwindowplanckPath) -> Int { s.size }
+pub fn SignalwindowplanckPath::len(self : SignalwindowplanckPath) -> Int { self.size }
 
-pub fn signal_window_planck_path_get(s : SignalwindowplanckPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckPath::get(self : SignalwindowplanckPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_path_set(s : SignalwindowplanckPath, i : Int, v : Double) -> SignalwindowplanckPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckPath::set(self : SignalwindowplanckPath, i : Int, v : Double) -> SignalwindowplanckPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_path_sum(s : SignalwindowplanckPath) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckPath::sum(self : SignalwindowplanckPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_path_mean(s : SignalwindowplanckPath) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckPath::mean(self : SignalwindowplanckPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_path_scale(s : SignalwindowplanckPath, f : Double) -> SignalwindowplanckPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckPath::scale(self : SignalwindowplanckPath, f : Double) -> SignalwindowplanckPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_path_add(a : SignalwindowplanckPath, b : SignalwindowplanckPath) -> SignalwindowplanckPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckPath::add(self : SignalwindowplanckPath, other : SignalwindowplanckPath) -> SignalwindowplanckPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_path_copy(s : SignalwindowplanckPath) -> SignalwindowplanckPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckPath::copy(self : SignalwindowplanckPath) -> SignalwindowplanckPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_path_fill(s : SignalwindowplanckPath, v : Double) -> SignalwindowplanckPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckPath::fill(self : SignalwindowplanckPath, v : Double) -> SignalwindowplanckPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_path_min(s : SignalwindowplanckPath) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckPath::min(self : SignalwindowplanckPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_path_max(s : SignalwindowplanckPath) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckPath::max(self : SignalwindowplanckPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_path_to_string(s : SignalwindowplanckPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckPath::to_string(self : SignalwindowplanckPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckCluster {
@@ -657,45 +657,45 @@ pub fn signal_window_planck_cluster_make(size : Int) -> SignalwindowplanckCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_cluster_len(s : SignalwindowplanckCluster) -> Int { s.size }
+pub fn SignalwindowplanckCluster::len(self : SignalwindowplanckCluster) -> Int { self.size }
 
-pub fn signal_window_planck_cluster_get(s : SignalwindowplanckCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckCluster::get(self : SignalwindowplanckCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_cluster_set(s : SignalwindowplanckCluster, i : Int, v : Double) -> SignalwindowplanckCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCluster::set(self : SignalwindowplanckCluster, i : Int, v : Double) -> SignalwindowplanckCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cluster_sum(s : SignalwindowplanckCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckCluster::sum(self : SignalwindowplanckCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_cluster_mean(s : SignalwindowplanckCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckCluster::mean(self : SignalwindowplanckCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_cluster_scale(s : SignalwindowplanckCluster, f : Double) -> SignalwindowplanckCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCluster::scale(self : SignalwindowplanckCluster, f : Double) -> SignalwindowplanckCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cluster_add(a : SignalwindowplanckCluster, b : SignalwindowplanckCluster) -> SignalwindowplanckCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckCluster::add(self : SignalwindowplanckCluster, other : SignalwindowplanckCluster) -> SignalwindowplanckCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_cluster_copy(s : SignalwindowplanckCluster) -> SignalwindowplanckCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCluster::copy(self : SignalwindowplanckCluster) -> SignalwindowplanckCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cluster_fill(s : SignalwindowplanckCluster, v : Double) -> SignalwindowplanckCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCluster::fill(self : SignalwindowplanckCluster, v : Double) -> SignalwindowplanckCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cluster_min(s : SignalwindowplanckCluster) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckCluster::min(self : SignalwindowplanckCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_cluster_max(s : SignalwindowplanckCluster) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckCluster::max(self : SignalwindowplanckCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_cluster_to_string(s : SignalwindowplanckCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckCluster::to_string(self : SignalwindowplanckCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckModel {
@@ -708,45 +708,45 @@ pub fn signal_window_planck_model_make(size : Int) -> SignalwindowplanckModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_model_len(s : SignalwindowplanckModel) -> Int { s.size }
+pub fn SignalwindowplanckModel::len(self : SignalwindowplanckModel) -> Int { self.size }
 
-pub fn signal_window_planck_model_get(s : SignalwindowplanckModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckModel::get(self : SignalwindowplanckModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_model_set(s : SignalwindowplanckModel, i : Int, v : Double) -> SignalwindowplanckModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckModel::set(self : SignalwindowplanckModel, i : Int, v : Double) -> SignalwindowplanckModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_model_sum(s : SignalwindowplanckModel) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckModel::sum(self : SignalwindowplanckModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_model_mean(s : SignalwindowplanckModel) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckModel::mean(self : SignalwindowplanckModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_model_scale(s : SignalwindowplanckModel, f : Double) -> SignalwindowplanckModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckModel::scale(self : SignalwindowplanckModel, f : Double) -> SignalwindowplanckModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_model_add(a : SignalwindowplanckModel, b : SignalwindowplanckModel) -> SignalwindowplanckModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckModel::add(self : SignalwindowplanckModel, other : SignalwindowplanckModel) -> SignalwindowplanckModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_model_copy(s : SignalwindowplanckModel) -> SignalwindowplanckModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckModel::copy(self : SignalwindowplanckModel) -> SignalwindowplanckModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_model_fill(s : SignalwindowplanckModel, v : Double) -> SignalwindowplanckModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckModel::fill(self : SignalwindowplanckModel, v : Double) -> SignalwindowplanckModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_model_min(s : SignalwindowplanckModel) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckModel::min(self : SignalwindowplanckModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_model_max(s : SignalwindowplanckModel) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckModel::max(self : SignalwindowplanckModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_model_to_string(s : SignalwindowplanckModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckModel::to_string(self : SignalwindowplanckModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckLayer {
@@ -759,45 +759,45 @@ pub fn signal_window_planck_layer_make(size : Int) -> SignalwindowplanckLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_layer_len(s : SignalwindowplanckLayer) -> Int { s.size }
+pub fn SignalwindowplanckLayer::len(self : SignalwindowplanckLayer) -> Int { self.size }
 
-pub fn signal_window_planck_layer_get(s : SignalwindowplanckLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckLayer::get(self : SignalwindowplanckLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_layer_set(s : SignalwindowplanckLayer, i : Int, v : Double) -> SignalwindowplanckLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckLayer::set(self : SignalwindowplanckLayer, i : Int, v : Double) -> SignalwindowplanckLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_layer_sum(s : SignalwindowplanckLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckLayer::sum(self : SignalwindowplanckLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_layer_mean(s : SignalwindowplanckLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckLayer::mean(self : SignalwindowplanckLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_layer_scale(s : SignalwindowplanckLayer, f : Double) -> SignalwindowplanckLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckLayer::scale(self : SignalwindowplanckLayer, f : Double) -> SignalwindowplanckLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_layer_add(a : SignalwindowplanckLayer, b : SignalwindowplanckLayer) -> SignalwindowplanckLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckLayer::add(self : SignalwindowplanckLayer, other : SignalwindowplanckLayer) -> SignalwindowplanckLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_layer_copy(s : SignalwindowplanckLayer) -> SignalwindowplanckLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckLayer::copy(self : SignalwindowplanckLayer) -> SignalwindowplanckLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_layer_fill(s : SignalwindowplanckLayer, v : Double) -> SignalwindowplanckLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckLayer::fill(self : SignalwindowplanckLayer, v : Double) -> SignalwindowplanckLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_layer_min(s : SignalwindowplanckLayer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckLayer::min(self : SignalwindowplanckLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_layer_max(s : SignalwindowplanckLayer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckLayer::max(self : SignalwindowplanckLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_layer_to_string(s : SignalwindowplanckLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckLayer::to_string(self : SignalwindowplanckLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckBuffer {
@@ -810,45 +810,45 @@ pub fn signal_window_planck_buffer_make(size : Int) -> SignalwindowplanckBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_buffer_len(s : SignalwindowplanckBuffer) -> Int { s.size }
+pub fn SignalwindowplanckBuffer::len(self : SignalwindowplanckBuffer) -> Int { self.size }
 
-pub fn signal_window_planck_buffer_get(s : SignalwindowplanckBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckBuffer::get(self : SignalwindowplanckBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_buffer_set(s : SignalwindowplanckBuffer, i : Int, v : Double) -> SignalwindowplanckBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckBuffer::set(self : SignalwindowplanckBuffer, i : Int, v : Double) -> SignalwindowplanckBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_buffer_sum(s : SignalwindowplanckBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckBuffer::sum(self : SignalwindowplanckBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_buffer_mean(s : SignalwindowplanckBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckBuffer::mean(self : SignalwindowplanckBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_buffer_scale(s : SignalwindowplanckBuffer, f : Double) -> SignalwindowplanckBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckBuffer::scale(self : SignalwindowplanckBuffer, f : Double) -> SignalwindowplanckBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_buffer_add(a : SignalwindowplanckBuffer, b : SignalwindowplanckBuffer) -> SignalwindowplanckBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckBuffer::add(self : SignalwindowplanckBuffer, other : SignalwindowplanckBuffer) -> SignalwindowplanckBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_buffer_copy(s : SignalwindowplanckBuffer) -> SignalwindowplanckBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckBuffer::copy(self : SignalwindowplanckBuffer) -> SignalwindowplanckBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_buffer_fill(s : SignalwindowplanckBuffer, v : Double) -> SignalwindowplanckBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckBuffer::fill(self : SignalwindowplanckBuffer, v : Double) -> SignalwindowplanckBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_buffer_min(s : SignalwindowplanckBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckBuffer::min(self : SignalwindowplanckBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_buffer_max(s : SignalwindowplanckBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckBuffer::max(self : SignalwindowplanckBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_buffer_to_string(s : SignalwindowplanckBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckBuffer::to_string(self : SignalwindowplanckBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckCursor {
@@ -861,45 +861,45 @@ pub fn signal_window_planck_cursor_make(size : Int) -> SignalwindowplanckCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_cursor_len(s : SignalwindowplanckCursor) -> Int { s.size }
+pub fn SignalwindowplanckCursor::len(self : SignalwindowplanckCursor) -> Int { self.size }
 
-pub fn signal_window_planck_cursor_get(s : SignalwindowplanckCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckCursor::get(self : SignalwindowplanckCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_cursor_set(s : SignalwindowplanckCursor, i : Int, v : Double) -> SignalwindowplanckCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCursor::set(self : SignalwindowplanckCursor, i : Int, v : Double) -> SignalwindowplanckCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cursor_sum(s : SignalwindowplanckCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckCursor::sum(self : SignalwindowplanckCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_cursor_mean(s : SignalwindowplanckCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckCursor::mean(self : SignalwindowplanckCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_cursor_scale(s : SignalwindowplanckCursor, f : Double) -> SignalwindowplanckCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCursor::scale(self : SignalwindowplanckCursor, f : Double) -> SignalwindowplanckCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cursor_add(a : SignalwindowplanckCursor, b : SignalwindowplanckCursor) -> SignalwindowplanckCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckCursor::add(self : SignalwindowplanckCursor, other : SignalwindowplanckCursor) -> SignalwindowplanckCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_cursor_copy(s : SignalwindowplanckCursor) -> SignalwindowplanckCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCursor::copy(self : SignalwindowplanckCursor) -> SignalwindowplanckCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cursor_fill(s : SignalwindowplanckCursor, v : Double) -> SignalwindowplanckCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckCursor::fill(self : SignalwindowplanckCursor, v : Double) -> SignalwindowplanckCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_cursor_min(s : SignalwindowplanckCursor) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckCursor::min(self : SignalwindowplanckCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_cursor_max(s : SignalwindowplanckCursor) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckCursor::max(self : SignalwindowplanckCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_cursor_to_string(s : SignalwindowplanckCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckCursor::to_string(self : SignalwindowplanckCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckView {
@@ -912,45 +912,45 @@ pub fn signal_window_planck_view_make(size : Int) -> SignalwindowplanckView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_view_len(s : SignalwindowplanckView) -> Int { s.size }
+pub fn SignalwindowplanckView::len(self : SignalwindowplanckView) -> Int { self.size }
 
-pub fn signal_window_planck_view_get(s : SignalwindowplanckView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckView::get(self : SignalwindowplanckView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_view_set(s : SignalwindowplanckView, i : Int, v : Double) -> SignalwindowplanckView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckView::set(self : SignalwindowplanckView, i : Int, v : Double) -> SignalwindowplanckView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_view_sum(s : SignalwindowplanckView) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckView::sum(self : SignalwindowplanckView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_view_mean(s : SignalwindowplanckView) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckView::mean(self : SignalwindowplanckView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_view_scale(s : SignalwindowplanckView, f : Double) -> SignalwindowplanckView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckView::scale(self : SignalwindowplanckView, f : Double) -> SignalwindowplanckView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_view_add(a : SignalwindowplanckView, b : SignalwindowplanckView) -> SignalwindowplanckView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckView::add(self : SignalwindowplanckView, other : SignalwindowplanckView) -> SignalwindowplanckView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_view_copy(s : SignalwindowplanckView) -> SignalwindowplanckView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckView::copy(self : SignalwindowplanckView) -> SignalwindowplanckView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_view_fill(s : SignalwindowplanckView, v : Double) -> SignalwindowplanckView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckView::fill(self : SignalwindowplanckView, v : Double) -> SignalwindowplanckView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_view_min(s : SignalwindowplanckView) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckView::min(self : SignalwindowplanckView) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_view_max(s : SignalwindowplanckView) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckView::max(self : SignalwindowplanckView) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_view_to_string(s : SignalwindowplanckView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckView::to_string(self : SignalwindowplanckView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckRange {
@@ -963,45 +963,45 @@ pub fn signal_window_planck_range_make(size : Int) -> SignalwindowplanckRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_range_len(s : SignalwindowplanckRange) -> Int { s.size }
+pub fn SignalwindowplanckRange::len(self : SignalwindowplanckRange) -> Int { self.size }
 
-pub fn signal_window_planck_range_get(s : SignalwindowplanckRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckRange::get(self : SignalwindowplanckRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_range_set(s : SignalwindowplanckRange, i : Int, v : Double) -> SignalwindowplanckRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckRange::set(self : SignalwindowplanckRange, i : Int, v : Double) -> SignalwindowplanckRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_range_sum(s : SignalwindowplanckRange) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckRange::sum(self : SignalwindowplanckRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_range_mean(s : SignalwindowplanckRange) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckRange::mean(self : SignalwindowplanckRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_range_scale(s : SignalwindowplanckRange, f : Double) -> SignalwindowplanckRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckRange::scale(self : SignalwindowplanckRange, f : Double) -> SignalwindowplanckRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_range_add(a : SignalwindowplanckRange, b : SignalwindowplanckRange) -> SignalwindowplanckRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckRange::add(self : SignalwindowplanckRange, other : SignalwindowplanckRange) -> SignalwindowplanckRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_range_copy(s : SignalwindowplanckRange) -> SignalwindowplanckRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckRange::copy(self : SignalwindowplanckRange) -> SignalwindowplanckRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_range_fill(s : SignalwindowplanckRange, v : Double) -> SignalwindowplanckRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckRange::fill(self : SignalwindowplanckRange, v : Double) -> SignalwindowplanckRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_range_min(s : SignalwindowplanckRange) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckRange::min(self : SignalwindowplanckRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_range_max(s : SignalwindowplanckRange) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckRange::max(self : SignalwindowplanckRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_range_to_string(s : SignalwindowplanckRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckRange::to_string(self : SignalwindowplanckRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_window_planck_slice_make(size : Int) -> SignalwindowplanckSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_window_planck_slice_len(s : SignalwindowplanckSlice) -> Int { s.size }
+pub fn SignalwindowplanckSlice::len(self : SignalwindowplanckSlice) -> Int { self.size }
 
-pub fn signal_window_planck_slice_get(s : SignalwindowplanckSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalwindowplanckSlice::get(self : SignalwindowplanckSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_window_planck_slice_set(s : SignalwindowplanckSlice, i : Int, v : Double) -> SignalwindowplanckSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalwindowplanckSlice::set(self : SignalwindowplanckSlice, i : Int, v : Double) -> SignalwindowplanckSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_slice_sum(s : SignalwindowplanckSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalwindowplanckSlice::sum(self : SignalwindowplanckSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_window_planck_slice_mean(s : SignalwindowplanckSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalwindowplanckSlice::mean(self : SignalwindowplanckSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_window_planck_slice_scale(s : SignalwindowplanckSlice, f : Double) -> SignalwindowplanckSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckSlice::scale(self : SignalwindowplanckSlice, f : Double) -> SignalwindowplanckSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_slice_add(a : SignalwindowplanckSlice, b : SignalwindowplanckSlice) -> SignalwindowplanckSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalwindowplanckSlice::add(self : SignalwindowplanckSlice, other : SignalwindowplanckSlice) -> SignalwindowplanckSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_window_planck_slice_copy(s : SignalwindowplanckSlice) -> SignalwindowplanckSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckSlice::copy(self : SignalwindowplanckSlice) -> SignalwindowplanckSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_slice_fill(s : SignalwindowplanckSlice, v : Double) -> SignalwindowplanckSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalwindowplanckSlice::fill(self : SignalwindowplanckSlice, v : Double) -> SignalwindowplanckSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_window_planck_slice_min(s : SignalwindowplanckSlice) -> Double { @_common.min(s.data) }
+pub fn SignalwindowplanckSlice::min(self : SignalwindowplanckSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_window_planck_slice_max(s : SignalwindowplanckSlice) -> Double { @_common.max(s.data) }
+pub fn SignalwindowplanckSlice::max(self : SignalwindowplanckSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_window_planck_slice_to_string(s : SignalwindowplanckSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalwindowplanckSlice::to_string(self : SignalwindowplanckSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

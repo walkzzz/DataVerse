@@ -351,45 +351,45 @@ pub fn sort_compare_intro_frame_make(size : Int) -> SortcompareintroFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_frame_len(s : SortcompareintroFrame) -> Int { s.size }
+pub fn SortcompareintroFrame::len(self : SortcompareintroFrame) -> Int { self.size }
 
-pub fn sort_compare_intro_frame_get(s : SortcompareintroFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroFrame::get(self : SortcompareintroFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_frame_set(s : SortcompareintroFrame, i : Int, v : Double) -> SortcompareintroFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroFrame::set(self : SortcompareintroFrame, i : Int, v : Double) -> SortcompareintroFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_frame_sum(s : SortcompareintroFrame) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroFrame::sum(self : SortcompareintroFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_frame_mean(s : SortcompareintroFrame) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroFrame::mean(self : SortcompareintroFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_frame_scale(s : SortcompareintroFrame, f : Double) -> SortcompareintroFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroFrame::scale(self : SortcompareintroFrame, f : Double) -> SortcompareintroFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_frame_add(a : SortcompareintroFrame, b : SortcompareintroFrame) -> SortcompareintroFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroFrame::add(self : SortcompareintroFrame, other : SortcompareintroFrame) -> SortcompareintroFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_frame_copy(s : SortcompareintroFrame) -> SortcompareintroFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroFrame::copy(self : SortcompareintroFrame) -> SortcompareintroFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_frame_fill(s : SortcompareintroFrame, v : Double) -> SortcompareintroFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroFrame::fill(self : SortcompareintroFrame, v : Double) -> SortcompareintroFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_frame_min(s : SortcompareintroFrame) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroFrame::min(self : SortcompareintroFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_frame_max(s : SortcompareintroFrame) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroFrame::max(self : SortcompareintroFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_frame_to_string(s : SortcompareintroFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroFrame::to_string(self : SortcompareintroFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroTable {
@@ -402,45 +402,45 @@ pub fn sort_compare_intro_table_make(size : Int) -> SortcompareintroTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_table_len(s : SortcompareintroTable) -> Int { s.size }
+pub fn SortcompareintroTable::len(self : SortcompareintroTable) -> Int { self.size }
 
-pub fn sort_compare_intro_table_get(s : SortcompareintroTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroTable::get(self : SortcompareintroTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_table_set(s : SortcompareintroTable, i : Int, v : Double) -> SortcompareintroTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroTable::set(self : SortcompareintroTable, i : Int, v : Double) -> SortcompareintroTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_table_sum(s : SortcompareintroTable) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroTable::sum(self : SortcompareintroTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_table_mean(s : SortcompareintroTable) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroTable::mean(self : SortcompareintroTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_table_scale(s : SortcompareintroTable, f : Double) -> SortcompareintroTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroTable::scale(self : SortcompareintroTable, f : Double) -> SortcompareintroTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_table_add(a : SortcompareintroTable, b : SortcompareintroTable) -> SortcompareintroTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroTable::add(self : SortcompareintroTable, other : SortcompareintroTable) -> SortcompareintroTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_table_copy(s : SortcompareintroTable) -> SortcompareintroTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroTable::copy(self : SortcompareintroTable) -> SortcompareintroTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_table_fill(s : SortcompareintroTable, v : Double) -> SortcompareintroTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroTable::fill(self : SortcompareintroTable, v : Double) -> SortcompareintroTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_table_min(s : SortcompareintroTable) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroTable::min(self : SortcompareintroTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_table_max(s : SortcompareintroTable) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroTable::max(self : SortcompareintroTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_table_to_string(s : SortcompareintroTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroTable::to_string(self : SortcompareintroTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroGraphN {
@@ -453,45 +453,45 @@ pub fn sort_compare_intro_graphn_make(size : Int) -> SortcompareintroGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_graphn_len(s : SortcompareintroGraphN) -> Int { s.size }
+pub fn SortcompareintroGraphN::len(self : SortcompareintroGraphN) -> Int { self.size }
 
-pub fn sort_compare_intro_graphn_get(s : SortcompareintroGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroGraphN::get(self : SortcompareintroGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_graphn_set(s : SortcompareintroGraphN, i : Int, v : Double) -> SortcompareintroGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroGraphN::set(self : SortcompareintroGraphN, i : Int, v : Double) -> SortcompareintroGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_graphn_sum(s : SortcompareintroGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroGraphN::sum(self : SortcompareintroGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_graphn_mean(s : SortcompareintroGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroGraphN::mean(self : SortcompareintroGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_graphn_scale(s : SortcompareintroGraphN, f : Double) -> SortcompareintroGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroGraphN::scale(self : SortcompareintroGraphN, f : Double) -> SortcompareintroGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_graphn_add(a : SortcompareintroGraphN, b : SortcompareintroGraphN) -> SortcompareintroGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroGraphN::add(self : SortcompareintroGraphN, other : SortcompareintroGraphN) -> SortcompareintroGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_graphn_copy(s : SortcompareintroGraphN) -> SortcompareintroGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroGraphN::copy(self : SortcompareintroGraphN) -> SortcompareintroGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_graphn_fill(s : SortcompareintroGraphN, v : Double) -> SortcompareintroGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroGraphN::fill(self : SortcompareintroGraphN, v : Double) -> SortcompareintroGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_graphn_min(s : SortcompareintroGraphN) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroGraphN::min(self : SortcompareintroGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_graphn_max(s : SortcompareintroGraphN) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroGraphN::max(self : SortcompareintroGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_graphn_to_string(s : SortcompareintroGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroGraphN::to_string(self : SortcompareintroGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroNode {
@@ -504,45 +504,45 @@ pub fn sort_compare_intro_node_make(size : Int) -> SortcompareintroNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_node_len(s : SortcompareintroNode) -> Int { s.size }
+pub fn SortcompareintroNode::len(self : SortcompareintroNode) -> Int { self.size }
 
-pub fn sort_compare_intro_node_get(s : SortcompareintroNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroNode::get(self : SortcompareintroNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_node_set(s : SortcompareintroNode, i : Int, v : Double) -> SortcompareintroNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroNode::set(self : SortcompareintroNode, i : Int, v : Double) -> SortcompareintroNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_node_sum(s : SortcompareintroNode) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroNode::sum(self : SortcompareintroNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_node_mean(s : SortcompareintroNode) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroNode::mean(self : SortcompareintroNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_node_scale(s : SortcompareintroNode, f : Double) -> SortcompareintroNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroNode::scale(self : SortcompareintroNode, f : Double) -> SortcompareintroNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_node_add(a : SortcompareintroNode, b : SortcompareintroNode) -> SortcompareintroNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroNode::add(self : SortcompareintroNode, other : SortcompareintroNode) -> SortcompareintroNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_node_copy(s : SortcompareintroNode) -> SortcompareintroNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroNode::copy(self : SortcompareintroNode) -> SortcompareintroNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_node_fill(s : SortcompareintroNode, v : Double) -> SortcompareintroNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroNode::fill(self : SortcompareintroNode, v : Double) -> SortcompareintroNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_node_min(s : SortcompareintroNode) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroNode::min(self : SortcompareintroNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_node_max(s : SortcompareintroNode) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroNode::max(self : SortcompareintroNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_node_to_string(s : SortcompareintroNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroNode::to_string(self : SortcompareintroNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroEdge {
@@ -555,45 +555,45 @@ pub fn sort_compare_intro_edge_make(size : Int) -> SortcompareintroEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_edge_len(s : SortcompareintroEdge) -> Int { s.size }
+pub fn SortcompareintroEdge::len(self : SortcompareintroEdge) -> Int { self.size }
 
-pub fn sort_compare_intro_edge_get(s : SortcompareintroEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroEdge::get(self : SortcompareintroEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_edge_set(s : SortcompareintroEdge, i : Int, v : Double) -> SortcompareintroEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroEdge::set(self : SortcompareintroEdge, i : Int, v : Double) -> SortcompareintroEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_edge_sum(s : SortcompareintroEdge) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroEdge::sum(self : SortcompareintroEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_edge_mean(s : SortcompareintroEdge) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroEdge::mean(self : SortcompareintroEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_edge_scale(s : SortcompareintroEdge, f : Double) -> SortcompareintroEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroEdge::scale(self : SortcompareintroEdge, f : Double) -> SortcompareintroEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_edge_add(a : SortcompareintroEdge, b : SortcompareintroEdge) -> SortcompareintroEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroEdge::add(self : SortcompareintroEdge, other : SortcompareintroEdge) -> SortcompareintroEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_edge_copy(s : SortcompareintroEdge) -> SortcompareintroEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroEdge::copy(self : SortcompareintroEdge) -> SortcompareintroEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_edge_fill(s : SortcompareintroEdge, v : Double) -> SortcompareintroEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroEdge::fill(self : SortcompareintroEdge, v : Double) -> SortcompareintroEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_edge_min(s : SortcompareintroEdge) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroEdge::min(self : SortcompareintroEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_edge_max(s : SortcompareintroEdge) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroEdge::max(self : SortcompareintroEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_edge_to_string(s : SortcompareintroEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroEdge::to_string(self : SortcompareintroEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroPath {
@@ -606,45 +606,45 @@ pub fn sort_compare_intro_path_make(size : Int) -> SortcompareintroPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_path_len(s : SortcompareintroPath) -> Int { s.size }
+pub fn SortcompareintroPath::len(self : SortcompareintroPath) -> Int { self.size }
 
-pub fn sort_compare_intro_path_get(s : SortcompareintroPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroPath::get(self : SortcompareintroPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_path_set(s : SortcompareintroPath, i : Int, v : Double) -> SortcompareintroPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroPath::set(self : SortcompareintroPath, i : Int, v : Double) -> SortcompareintroPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_path_sum(s : SortcompareintroPath) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroPath::sum(self : SortcompareintroPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_path_mean(s : SortcompareintroPath) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroPath::mean(self : SortcompareintroPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_path_scale(s : SortcompareintroPath, f : Double) -> SortcompareintroPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroPath::scale(self : SortcompareintroPath, f : Double) -> SortcompareintroPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_path_add(a : SortcompareintroPath, b : SortcompareintroPath) -> SortcompareintroPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroPath::add(self : SortcompareintroPath, other : SortcompareintroPath) -> SortcompareintroPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_path_copy(s : SortcompareintroPath) -> SortcompareintroPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroPath::copy(self : SortcompareintroPath) -> SortcompareintroPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_path_fill(s : SortcompareintroPath, v : Double) -> SortcompareintroPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroPath::fill(self : SortcompareintroPath, v : Double) -> SortcompareintroPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_path_min(s : SortcompareintroPath) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroPath::min(self : SortcompareintroPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_path_max(s : SortcompareintroPath) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroPath::max(self : SortcompareintroPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_path_to_string(s : SortcompareintroPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroPath::to_string(self : SortcompareintroPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroCluster {
@@ -657,45 +657,45 @@ pub fn sort_compare_intro_cluster_make(size : Int) -> SortcompareintroCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_cluster_len(s : SortcompareintroCluster) -> Int { s.size }
+pub fn SortcompareintroCluster::len(self : SortcompareintroCluster) -> Int { self.size }
 
-pub fn sort_compare_intro_cluster_get(s : SortcompareintroCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroCluster::get(self : SortcompareintroCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_cluster_set(s : SortcompareintroCluster, i : Int, v : Double) -> SortcompareintroCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroCluster::set(self : SortcompareintroCluster, i : Int, v : Double) -> SortcompareintroCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cluster_sum(s : SortcompareintroCluster) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroCluster::sum(self : SortcompareintroCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_cluster_mean(s : SortcompareintroCluster) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroCluster::mean(self : SortcompareintroCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_cluster_scale(s : SortcompareintroCluster, f : Double) -> SortcompareintroCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroCluster::scale(self : SortcompareintroCluster, f : Double) -> SortcompareintroCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cluster_add(a : SortcompareintroCluster, b : SortcompareintroCluster) -> SortcompareintroCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroCluster::add(self : SortcompareintroCluster, other : SortcompareintroCluster) -> SortcompareintroCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cluster_copy(s : SortcompareintroCluster) -> SortcompareintroCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroCluster::copy(self : SortcompareintroCluster) -> SortcompareintroCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cluster_fill(s : SortcompareintroCluster, v : Double) -> SortcompareintroCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroCluster::fill(self : SortcompareintroCluster, v : Double) -> SortcompareintroCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cluster_min(s : SortcompareintroCluster) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroCluster::min(self : SortcompareintroCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_cluster_max(s : SortcompareintroCluster) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroCluster::max(self : SortcompareintroCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_cluster_to_string(s : SortcompareintroCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroCluster::to_string(self : SortcompareintroCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroModel {
@@ -708,45 +708,45 @@ pub fn sort_compare_intro_model_make(size : Int) -> SortcompareintroModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_model_len(s : SortcompareintroModel) -> Int { s.size }
+pub fn SortcompareintroModel::len(self : SortcompareintroModel) -> Int { self.size }
 
-pub fn sort_compare_intro_model_get(s : SortcompareintroModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroModel::get(self : SortcompareintroModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_model_set(s : SortcompareintroModel, i : Int, v : Double) -> SortcompareintroModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroModel::set(self : SortcompareintroModel, i : Int, v : Double) -> SortcompareintroModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_model_sum(s : SortcompareintroModel) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroModel::sum(self : SortcompareintroModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_model_mean(s : SortcompareintroModel) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroModel::mean(self : SortcompareintroModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_model_scale(s : SortcompareintroModel, f : Double) -> SortcompareintroModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroModel::scale(self : SortcompareintroModel, f : Double) -> SortcompareintroModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_model_add(a : SortcompareintroModel, b : SortcompareintroModel) -> SortcompareintroModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroModel::add(self : SortcompareintroModel, other : SortcompareintroModel) -> SortcompareintroModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_model_copy(s : SortcompareintroModel) -> SortcompareintroModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroModel::copy(self : SortcompareintroModel) -> SortcompareintroModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_model_fill(s : SortcompareintroModel, v : Double) -> SortcompareintroModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroModel::fill(self : SortcompareintroModel, v : Double) -> SortcompareintroModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_model_min(s : SortcompareintroModel) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroModel::min(self : SortcompareintroModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_model_max(s : SortcompareintroModel) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroModel::max(self : SortcompareintroModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_model_to_string(s : SortcompareintroModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroModel::to_string(self : SortcompareintroModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroLayer {
@@ -759,45 +759,45 @@ pub fn sort_compare_intro_layer_make(size : Int) -> SortcompareintroLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_layer_len(s : SortcompareintroLayer) -> Int { s.size }
+pub fn SortcompareintroLayer::len(self : SortcompareintroLayer) -> Int { self.size }
 
-pub fn sort_compare_intro_layer_get(s : SortcompareintroLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroLayer::get(self : SortcompareintroLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_layer_set(s : SortcompareintroLayer, i : Int, v : Double) -> SortcompareintroLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroLayer::set(self : SortcompareintroLayer, i : Int, v : Double) -> SortcompareintroLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_layer_sum(s : SortcompareintroLayer) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroLayer::sum(self : SortcompareintroLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_layer_mean(s : SortcompareintroLayer) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroLayer::mean(self : SortcompareintroLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_layer_scale(s : SortcompareintroLayer, f : Double) -> SortcompareintroLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroLayer::scale(self : SortcompareintroLayer, f : Double) -> SortcompareintroLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_layer_add(a : SortcompareintroLayer, b : SortcompareintroLayer) -> SortcompareintroLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroLayer::add(self : SortcompareintroLayer, other : SortcompareintroLayer) -> SortcompareintroLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_layer_copy(s : SortcompareintroLayer) -> SortcompareintroLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroLayer::copy(self : SortcompareintroLayer) -> SortcompareintroLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_layer_fill(s : SortcompareintroLayer, v : Double) -> SortcompareintroLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroLayer::fill(self : SortcompareintroLayer, v : Double) -> SortcompareintroLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_layer_min(s : SortcompareintroLayer) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroLayer::min(self : SortcompareintroLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_layer_max(s : SortcompareintroLayer) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroLayer::max(self : SortcompareintroLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_layer_to_string(s : SortcompareintroLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroLayer::to_string(self : SortcompareintroLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroBuffer {
@@ -810,45 +810,45 @@ pub fn sort_compare_intro_buffer_make(size : Int) -> SortcompareintroBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_buffer_len(s : SortcompareintroBuffer) -> Int { s.size }
+pub fn SortcompareintroBuffer::len(self : SortcompareintroBuffer) -> Int { self.size }
 
-pub fn sort_compare_intro_buffer_get(s : SortcompareintroBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroBuffer::get(self : SortcompareintroBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_buffer_set(s : SortcompareintroBuffer, i : Int, v : Double) -> SortcompareintroBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroBuffer::set(self : SortcompareintroBuffer, i : Int, v : Double) -> SortcompareintroBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_buffer_sum(s : SortcompareintroBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroBuffer::sum(self : SortcompareintroBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_buffer_mean(s : SortcompareintroBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroBuffer::mean(self : SortcompareintroBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_buffer_scale(s : SortcompareintroBuffer, f : Double) -> SortcompareintroBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroBuffer::scale(self : SortcompareintroBuffer, f : Double) -> SortcompareintroBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_buffer_add(a : SortcompareintroBuffer, b : SortcompareintroBuffer) -> SortcompareintroBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroBuffer::add(self : SortcompareintroBuffer, other : SortcompareintroBuffer) -> SortcompareintroBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_buffer_copy(s : SortcompareintroBuffer) -> SortcompareintroBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroBuffer::copy(self : SortcompareintroBuffer) -> SortcompareintroBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_buffer_fill(s : SortcompareintroBuffer, v : Double) -> SortcompareintroBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroBuffer::fill(self : SortcompareintroBuffer, v : Double) -> SortcompareintroBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_buffer_min(s : SortcompareintroBuffer) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroBuffer::min(self : SortcompareintroBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_buffer_max(s : SortcompareintroBuffer) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroBuffer::max(self : SortcompareintroBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_buffer_to_string(s : SortcompareintroBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroBuffer::to_string(self : SortcompareintroBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroCursor {
@@ -861,45 +861,45 @@ pub fn sort_compare_intro_cursor_make(size : Int) -> SortcompareintroCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_cursor_len(s : SortcompareintroCursor) -> Int { s.size }
+pub fn SortcompareintroCursor::len(self : SortcompareintroCursor) -> Int { self.size }
 
-pub fn sort_compare_intro_cursor_get(s : SortcompareintroCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroCursor::get(self : SortcompareintroCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_cursor_set(s : SortcompareintroCursor, i : Int, v : Double) -> SortcompareintroCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroCursor::set(self : SortcompareintroCursor, i : Int, v : Double) -> SortcompareintroCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cursor_sum(s : SortcompareintroCursor) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroCursor::sum(self : SortcompareintroCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_cursor_mean(s : SortcompareintroCursor) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroCursor::mean(self : SortcompareintroCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_cursor_scale(s : SortcompareintroCursor, f : Double) -> SortcompareintroCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroCursor::scale(self : SortcompareintroCursor, f : Double) -> SortcompareintroCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cursor_add(a : SortcompareintroCursor, b : SortcompareintroCursor) -> SortcompareintroCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroCursor::add(self : SortcompareintroCursor, other : SortcompareintroCursor) -> SortcompareintroCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cursor_copy(s : SortcompareintroCursor) -> SortcompareintroCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroCursor::copy(self : SortcompareintroCursor) -> SortcompareintroCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cursor_fill(s : SortcompareintroCursor, v : Double) -> SortcompareintroCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroCursor::fill(self : SortcompareintroCursor, v : Double) -> SortcompareintroCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_cursor_min(s : SortcompareintroCursor) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroCursor::min(self : SortcompareintroCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_cursor_max(s : SortcompareintroCursor) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroCursor::max(self : SortcompareintroCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_cursor_to_string(s : SortcompareintroCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroCursor::to_string(self : SortcompareintroCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroView {
@@ -912,45 +912,45 @@ pub fn sort_compare_intro_view_make(size : Int) -> SortcompareintroView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_view_len(s : SortcompareintroView) -> Int { s.size }
+pub fn SortcompareintroView::len(self : SortcompareintroView) -> Int { self.size }
 
-pub fn sort_compare_intro_view_get(s : SortcompareintroView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroView::get(self : SortcompareintroView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_view_set(s : SortcompareintroView, i : Int, v : Double) -> SortcompareintroView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroView::set(self : SortcompareintroView, i : Int, v : Double) -> SortcompareintroView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_view_sum(s : SortcompareintroView) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroView::sum(self : SortcompareintroView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_view_mean(s : SortcompareintroView) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroView::mean(self : SortcompareintroView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_view_scale(s : SortcompareintroView, f : Double) -> SortcompareintroView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroView::scale(self : SortcompareintroView, f : Double) -> SortcompareintroView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_view_add(a : SortcompareintroView, b : SortcompareintroView) -> SortcompareintroView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroView::add(self : SortcompareintroView, other : SortcompareintroView) -> SortcompareintroView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_view_copy(s : SortcompareintroView) -> SortcompareintroView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroView::copy(self : SortcompareintroView) -> SortcompareintroView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_view_fill(s : SortcompareintroView, v : Double) -> SortcompareintroView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroView::fill(self : SortcompareintroView, v : Double) -> SortcompareintroView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_view_min(s : SortcompareintroView) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroView::min(self : SortcompareintroView) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_view_max(s : SortcompareintroView) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroView::max(self : SortcompareintroView) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_view_to_string(s : SortcompareintroView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroView::to_string(self : SortcompareintroView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroRange {
@@ -963,45 +963,45 @@ pub fn sort_compare_intro_range_make(size : Int) -> SortcompareintroRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_range_len(s : SortcompareintroRange) -> Int { s.size }
+pub fn SortcompareintroRange::len(self : SortcompareintroRange) -> Int { self.size }
 
-pub fn sort_compare_intro_range_get(s : SortcompareintroRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroRange::get(self : SortcompareintroRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_range_set(s : SortcompareintroRange, i : Int, v : Double) -> SortcompareintroRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroRange::set(self : SortcompareintroRange, i : Int, v : Double) -> SortcompareintroRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_range_sum(s : SortcompareintroRange) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroRange::sum(self : SortcompareintroRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_range_mean(s : SortcompareintroRange) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroRange::mean(self : SortcompareintroRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_range_scale(s : SortcompareintroRange, f : Double) -> SortcompareintroRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroRange::scale(self : SortcompareintroRange, f : Double) -> SortcompareintroRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_range_add(a : SortcompareintroRange, b : SortcompareintroRange) -> SortcompareintroRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroRange::add(self : SortcompareintroRange, other : SortcompareintroRange) -> SortcompareintroRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_range_copy(s : SortcompareintroRange) -> SortcompareintroRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroRange::copy(self : SortcompareintroRange) -> SortcompareintroRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_range_fill(s : SortcompareintroRange, v : Double) -> SortcompareintroRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroRange::fill(self : SortcompareintroRange, v : Double) -> SortcompareintroRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_range_min(s : SortcompareintroRange) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroRange::min(self : SortcompareintroRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_range_max(s : SortcompareintroRange) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroRange::max(self : SortcompareintroRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_range_to_string(s : SortcompareintroRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroRange::to_string(self : SortcompareintroRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareintroSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_compare_intro_slice_make(size : Int) -> SortcompareintroSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_intro_slice_len(s : SortcompareintroSlice) -> Int { s.size }
+pub fn SortcompareintroSlice::len(self : SortcompareintroSlice) -> Int { self.size }
 
-pub fn sort_compare_intro_slice_get(s : SortcompareintroSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareintroSlice::get(self : SortcompareintroSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_intro_slice_set(s : SortcompareintroSlice, i : Int, v : Double) -> SortcompareintroSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareintroSlice::set(self : SortcompareintroSlice, i : Int, v : Double) -> SortcompareintroSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_slice_sum(s : SortcompareintroSlice) -> Double { @_common.sum(s.data) }
+pub fn SortcompareintroSlice::sum(self : SortcompareintroSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_intro_slice_mean(s : SortcompareintroSlice) -> Double { @_common.mean(s.data) }
+pub fn SortcompareintroSlice::mean(self : SortcompareintroSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_intro_slice_scale(s : SortcompareintroSlice, f : Double) -> SortcompareintroSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareintroSlice::scale(self : SortcompareintroSlice, f : Double) -> SortcompareintroSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_slice_add(a : SortcompareintroSlice, b : SortcompareintroSlice) -> SortcompareintroSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareintroSlice::add(self : SortcompareintroSlice, other : SortcompareintroSlice) -> SortcompareintroSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_intro_slice_copy(s : SortcompareintroSlice) -> SortcompareintroSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareintroSlice::copy(self : SortcompareintroSlice) -> SortcompareintroSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_slice_fill(s : SortcompareintroSlice, v : Double) -> SortcompareintroSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareintroSlice::fill(self : SortcompareintroSlice, v : Double) -> SortcompareintroSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_intro_slice_min(s : SortcompareintroSlice) -> Double { @_common.min(s.data) }
+pub fn SortcompareintroSlice::min(self : SortcompareintroSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_intro_slice_max(s : SortcompareintroSlice) -> Double { @_common.max(s.data) }
+pub fn SortcompareintroSlice::max(self : SortcompareintroSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_intro_slice_to_string(s : SortcompareintroSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareintroSlice::to_string(self : SortcompareintroSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

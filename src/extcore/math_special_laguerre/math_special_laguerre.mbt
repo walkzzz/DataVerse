@@ -351,45 +351,45 @@ pub fn math_special_laguerre_frame_make(size : Int) -> MathspeciallaguerreFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_frame_len(s : MathspeciallaguerreFrame) -> Int { s.size }
+pub fn MathspeciallaguerreFrame::len(self : MathspeciallaguerreFrame) -> Int { self.size }
 
-pub fn math_special_laguerre_frame_get(s : MathspeciallaguerreFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreFrame::get(self : MathspeciallaguerreFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_frame_set(s : MathspeciallaguerreFrame, i : Int, v : Double) -> MathspeciallaguerreFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreFrame::set(self : MathspeciallaguerreFrame, i : Int, v : Double) -> MathspeciallaguerreFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_frame_sum(s : MathspeciallaguerreFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreFrame::sum(self : MathspeciallaguerreFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_frame_mean(s : MathspeciallaguerreFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreFrame::mean(self : MathspeciallaguerreFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_frame_scale(s : MathspeciallaguerreFrame, f : Double) -> MathspeciallaguerreFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreFrame::scale(self : MathspeciallaguerreFrame, f : Double) -> MathspeciallaguerreFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_frame_add(a : MathspeciallaguerreFrame, b : MathspeciallaguerreFrame) -> MathspeciallaguerreFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreFrame::add(self : MathspeciallaguerreFrame, other : MathspeciallaguerreFrame) -> MathspeciallaguerreFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_frame_copy(s : MathspeciallaguerreFrame) -> MathspeciallaguerreFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreFrame::copy(self : MathspeciallaguerreFrame) -> MathspeciallaguerreFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_frame_fill(s : MathspeciallaguerreFrame, v : Double) -> MathspeciallaguerreFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreFrame::fill(self : MathspeciallaguerreFrame, v : Double) -> MathspeciallaguerreFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_frame_min(s : MathspeciallaguerreFrame) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreFrame::min(self : MathspeciallaguerreFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_frame_max(s : MathspeciallaguerreFrame) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreFrame::max(self : MathspeciallaguerreFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_frame_to_string(s : MathspeciallaguerreFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreFrame::to_string(self : MathspeciallaguerreFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreTable {
@@ -402,45 +402,45 @@ pub fn math_special_laguerre_table_make(size : Int) -> MathspeciallaguerreTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_table_len(s : MathspeciallaguerreTable) -> Int { s.size }
+pub fn MathspeciallaguerreTable::len(self : MathspeciallaguerreTable) -> Int { self.size }
 
-pub fn math_special_laguerre_table_get(s : MathspeciallaguerreTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreTable::get(self : MathspeciallaguerreTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_table_set(s : MathspeciallaguerreTable, i : Int, v : Double) -> MathspeciallaguerreTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreTable::set(self : MathspeciallaguerreTable, i : Int, v : Double) -> MathspeciallaguerreTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_table_sum(s : MathspeciallaguerreTable) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreTable::sum(self : MathspeciallaguerreTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_table_mean(s : MathspeciallaguerreTable) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreTable::mean(self : MathspeciallaguerreTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_table_scale(s : MathspeciallaguerreTable, f : Double) -> MathspeciallaguerreTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreTable::scale(self : MathspeciallaguerreTable, f : Double) -> MathspeciallaguerreTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_table_add(a : MathspeciallaguerreTable, b : MathspeciallaguerreTable) -> MathspeciallaguerreTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreTable::add(self : MathspeciallaguerreTable, other : MathspeciallaguerreTable) -> MathspeciallaguerreTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_table_copy(s : MathspeciallaguerreTable) -> MathspeciallaguerreTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreTable::copy(self : MathspeciallaguerreTable) -> MathspeciallaguerreTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_table_fill(s : MathspeciallaguerreTable, v : Double) -> MathspeciallaguerreTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreTable::fill(self : MathspeciallaguerreTable, v : Double) -> MathspeciallaguerreTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_table_min(s : MathspeciallaguerreTable) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreTable::min(self : MathspeciallaguerreTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_table_max(s : MathspeciallaguerreTable) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreTable::max(self : MathspeciallaguerreTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_table_to_string(s : MathspeciallaguerreTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreTable::to_string(self : MathspeciallaguerreTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_laguerre_graphn_make(size : Int) -> MathspeciallaguerreGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_graphn_len(s : MathspeciallaguerreGraphN) -> Int { s.size }
+pub fn MathspeciallaguerreGraphN::len(self : MathspeciallaguerreGraphN) -> Int { self.size }
 
-pub fn math_special_laguerre_graphn_get(s : MathspeciallaguerreGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreGraphN::get(self : MathspeciallaguerreGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_graphn_set(s : MathspeciallaguerreGraphN, i : Int, v : Double) -> MathspeciallaguerreGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreGraphN::set(self : MathspeciallaguerreGraphN, i : Int, v : Double) -> MathspeciallaguerreGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_graphn_sum(s : MathspeciallaguerreGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreGraphN::sum(self : MathspeciallaguerreGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_graphn_mean(s : MathspeciallaguerreGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreGraphN::mean(self : MathspeciallaguerreGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_graphn_scale(s : MathspeciallaguerreGraphN, f : Double) -> MathspeciallaguerreGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreGraphN::scale(self : MathspeciallaguerreGraphN, f : Double) -> MathspeciallaguerreGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_graphn_add(a : MathspeciallaguerreGraphN, b : MathspeciallaguerreGraphN) -> MathspeciallaguerreGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreGraphN::add(self : MathspeciallaguerreGraphN, other : MathspeciallaguerreGraphN) -> MathspeciallaguerreGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_graphn_copy(s : MathspeciallaguerreGraphN) -> MathspeciallaguerreGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreGraphN::copy(self : MathspeciallaguerreGraphN) -> MathspeciallaguerreGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_graphn_fill(s : MathspeciallaguerreGraphN, v : Double) -> MathspeciallaguerreGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreGraphN::fill(self : MathspeciallaguerreGraphN, v : Double) -> MathspeciallaguerreGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_graphn_min(s : MathspeciallaguerreGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreGraphN::min(self : MathspeciallaguerreGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_graphn_max(s : MathspeciallaguerreGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreGraphN::max(self : MathspeciallaguerreGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_graphn_to_string(s : MathspeciallaguerreGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreGraphN::to_string(self : MathspeciallaguerreGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreNode {
@@ -504,45 +504,45 @@ pub fn math_special_laguerre_node_make(size : Int) -> MathspeciallaguerreNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_node_len(s : MathspeciallaguerreNode) -> Int { s.size }
+pub fn MathspeciallaguerreNode::len(self : MathspeciallaguerreNode) -> Int { self.size }
 
-pub fn math_special_laguerre_node_get(s : MathspeciallaguerreNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreNode::get(self : MathspeciallaguerreNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_node_set(s : MathspeciallaguerreNode, i : Int, v : Double) -> MathspeciallaguerreNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreNode::set(self : MathspeciallaguerreNode, i : Int, v : Double) -> MathspeciallaguerreNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_node_sum(s : MathspeciallaguerreNode) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreNode::sum(self : MathspeciallaguerreNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_node_mean(s : MathspeciallaguerreNode) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreNode::mean(self : MathspeciallaguerreNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_node_scale(s : MathspeciallaguerreNode, f : Double) -> MathspeciallaguerreNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreNode::scale(self : MathspeciallaguerreNode, f : Double) -> MathspeciallaguerreNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_node_add(a : MathspeciallaguerreNode, b : MathspeciallaguerreNode) -> MathspeciallaguerreNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreNode::add(self : MathspeciallaguerreNode, other : MathspeciallaguerreNode) -> MathspeciallaguerreNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_node_copy(s : MathspeciallaguerreNode) -> MathspeciallaguerreNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreNode::copy(self : MathspeciallaguerreNode) -> MathspeciallaguerreNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_node_fill(s : MathspeciallaguerreNode, v : Double) -> MathspeciallaguerreNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreNode::fill(self : MathspeciallaguerreNode, v : Double) -> MathspeciallaguerreNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_node_min(s : MathspeciallaguerreNode) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreNode::min(self : MathspeciallaguerreNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_node_max(s : MathspeciallaguerreNode) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreNode::max(self : MathspeciallaguerreNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_node_to_string(s : MathspeciallaguerreNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreNode::to_string(self : MathspeciallaguerreNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreEdge {
@@ -555,45 +555,45 @@ pub fn math_special_laguerre_edge_make(size : Int) -> MathspeciallaguerreEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_edge_len(s : MathspeciallaguerreEdge) -> Int { s.size }
+pub fn MathspeciallaguerreEdge::len(self : MathspeciallaguerreEdge) -> Int { self.size }
 
-pub fn math_special_laguerre_edge_get(s : MathspeciallaguerreEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreEdge::get(self : MathspeciallaguerreEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_edge_set(s : MathspeciallaguerreEdge, i : Int, v : Double) -> MathspeciallaguerreEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreEdge::set(self : MathspeciallaguerreEdge, i : Int, v : Double) -> MathspeciallaguerreEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_edge_sum(s : MathspeciallaguerreEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreEdge::sum(self : MathspeciallaguerreEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_edge_mean(s : MathspeciallaguerreEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreEdge::mean(self : MathspeciallaguerreEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_edge_scale(s : MathspeciallaguerreEdge, f : Double) -> MathspeciallaguerreEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreEdge::scale(self : MathspeciallaguerreEdge, f : Double) -> MathspeciallaguerreEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_edge_add(a : MathspeciallaguerreEdge, b : MathspeciallaguerreEdge) -> MathspeciallaguerreEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreEdge::add(self : MathspeciallaguerreEdge, other : MathspeciallaguerreEdge) -> MathspeciallaguerreEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_edge_copy(s : MathspeciallaguerreEdge) -> MathspeciallaguerreEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreEdge::copy(self : MathspeciallaguerreEdge) -> MathspeciallaguerreEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_edge_fill(s : MathspeciallaguerreEdge, v : Double) -> MathspeciallaguerreEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreEdge::fill(self : MathspeciallaguerreEdge, v : Double) -> MathspeciallaguerreEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_edge_min(s : MathspeciallaguerreEdge) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreEdge::min(self : MathspeciallaguerreEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_edge_max(s : MathspeciallaguerreEdge) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreEdge::max(self : MathspeciallaguerreEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_edge_to_string(s : MathspeciallaguerreEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreEdge::to_string(self : MathspeciallaguerreEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerrePath {
@@ -606,45 +606,45 @@ pub fn math_special_laguerre_path_make(size : Int) -> MathspeciallaguerrePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_path_len(s : MathspeciallaguerrePath) -> Int { s.size }
+pub fn MathspeciallaguerrePath::len(self : MathspeciallaguerrePath) -> Int { self.size }
 
-pub fn math_special_laguerre_path_get(s : MathspeciallaguerrePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerrePath::get(self : MathspeciallaguerrePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_path_set(s : MathspeciallaguerrePath, i : Int, v : Double) -> MathspeciallaguerrePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerrePath::set(self : MathspeciallaguerrePath, i : Int, v : Double) -> MathspeciallaguerrePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_path_sum(s : MathspeciallaguerrePath) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerrePath::sum(self : MathspeciallaguerrePath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_path_mean(s : MathspeciallaguerrePath) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerrePath::mean(self : MathspeciallaguerrePath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_path_scale(s : MathspeciallaguerrePath, f : Double) -> MathspeciallaguerrePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerrePath::scale(self : MathspeciallaguerrePath, f : Double) -> MathspeciallaguerrePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_path_add(a : MathspeciallaguerrePath, b : MathspeciallaguerrePath) -> MathspeciallaguerrePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerrePath::add(self : MathspeciallaguerrePath, other : MathspeciallaguerrePath) -> MathspeciallaguerrePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_path_copy(s : MathspeciallaguerrePath) -> MathspeciallaguerrePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerrePath::copy(self : MathspeciallaguerrePath) -> MathspeciallaguerrePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_path_fill(s : MathspeciallaguerrePath, v : Double) -> MathspeciallaguerrePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerrePath::fill(self : MathspeciallaguerrePath, v : Double) -> MathspeciallaguerrePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_path_min(s : MathspeciallaguerrePath) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerrePath::min(self : MathspeciallaguerrePath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_path_max(s : MathspeciallaguerrePath) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerrePath::max(self : MathspeciallaguerrePath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_path_to_string(s : MathspeciallaguerrePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerrePath::to_string(self : MathspeciallaguerrePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreCluster {
@@ -657,45 +657,45 @@ pub fn math_special_laguerre_cluster_make(size : Int) -> MathspeciallaguerreClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_cluster_len(s : MathspeciallaguerreCluster) -> Int { s.size }
+pub fn MathspeciallaguerreCluster::len(self : MathspeciallaguerreCluster) -> Int { self.size }
 
-pub fn math_special_laguerre_cluster_get(s : MathspeciallaguerreCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreCluster::get(self : MathspeciallaguerreCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_cluster_set(s : MathspeciallaguerreCluster, i : Int, v : Double) -> MathspeciallaguerreCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCluster::set(self : MathspeciallaguerreCluster, i : Int, v : Double) -> MathspeciallaguerreCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cluster_sum(s : MathspeciallaguerreCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreCluster::sum(self : MathspeciallaguerreCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_cluster_mean(s : MathspeciallaguerreCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreCluster::mean(self : MathspeciallaguerreCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_cluster_scale(s : MathspeciallaguerreCluster, f : Double) -> MathspeciallaguerreCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCluster::scale(self : MathspeciallaguerreCluster, f : Double) -> MathspeciallaguerreCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cluster_add(a : MathspeciallaguerreCluster, b : MathspeciallaguerreCluster) -> MathspeciallaguerreCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreCluster::add(self : MathspeciallaguerreCluster, other : MathspeciallaguerreCluster) -> MathspeciallaguerreCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cluster_copy(s : MathspeciallaguerreCluster) -> MathspeciallaguerreCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCluster::copy(self : MathspeciallaguerreCluster) -> MathspeciallaguerreCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cluster_fill(s : MathspeciallaguerreCluster, v : Double) -> MathspeciallaguerreCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCluster::fill(self : MathspeciallaguerreCluster, v : Double) -> MathspeciallaguerreCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cluster_min(s : MathspeciallaguerreCluster) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreCluster::min(self : MathspeciallaguerreCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_cluster_max(s : MathspeciallaguerreCluster) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreCluster::max(self : MathspeciallaguerreCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_cluster_to_string(s : MathspeciallaguerreCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreCluster::to_string(self : MathspeciallaguerreCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreModel {
@@ -708,45 +708,45 @@ pub fn math_special_laguerre_model_make(size : Int) -> MathspeciallaguerreModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_model_len(s : MathspeciallaguerreModel) -> Int { s.size }
+pub fn MathspeciallaguerreModel::len(self : MathspeciallaguerreModel) -> Int { self.size }
 
-pub fn math_special_laguerre_model_get(s : MathspeciallaguerreModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreModel::get(self : MathspeciallaguerreModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_model_set(s : MathspeciallaguerreModel, i : Int, v : Double) -> MathspeciallaguerreModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreModel::set(self : MathspeciallaguerreModel, i : Int, v : Double) -> MathspeciallaguerreModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_model_sum(s : MathspeciallaguerreModel) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreModel::sum(self : MathspeciallaguerreModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_model_mean(s : MathspeciallaguerreModel) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreModel::mean(self : MathspeciallaguerreModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_model_scale(s : MathspeciallaguerreModel, f : Double) -> MathspeciallaguerreModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreModel::scale(self : MathspeciallaguerreModel, f : Double) -> MathspeciallaguerreModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_model_add(a : MathspeciallaguerreModel, b : MathspeciallaguerreModel) -> MathspeciallaguerreModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreModel::add(self : MathspeciallaguerreModel, other : MathspeciallaguerreModel) -> MathspeciallaguerreModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_model_copy(s : MathspeciallaguerreModel) -> MathspeciallaguerreModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreModel::copy(self : MathspeciallaguerreModel) -> MathspeciallaguerreModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_model_fill(s : MathspeciallaguerreModel, v : Double) -> MathspeciallaguerreModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreModel::fill(self : MathspeciallaguerreModel, v : Double) -> MathspeciallaguerreModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_model_min(s : MathspeciallaguerreModel) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreModel::min(self : MathspeciallaguerreModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_model_max(s : MathspeciallaguerreModel) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreModel::max(self : MathspeciallaguerreModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_model_to_string(s : MathspeciallaguerreModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreModel::to_string(self : MathspeciallaguerreModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreLayer {
@@ -759,45 +759,45 @@ pub fn math_special_laguerre_layer_make(size : Int) -> MathspeciallaguerreLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_layer_len(s : MathspeciallaguerreLayer) -> Int { s.size }
+pub fn MathspeciallaguerreLayer::len(self : MathspeciallaguerreLayer) -> Int { self.size }
 
-pub fn math_special_laguerre_layer_get(s : MathspeciallaguerreLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreLayer::get(self : MathspeciallaguerreLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_layer_set(s : MathspeciallaguerreLayer, i : Int, v : Double) -> MathspeciallaguerreLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreLayer::set(self : MathspeciallaguerreLayer, i : Int, v : Double) -> MathspeciallaguerreLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_layer_sum(s : MathspeciallaguerreLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreLayer::sum(self : MathspeciallaguerreLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_layer_mean(s : MathspeciallaguerreLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreLayer::mean(self : MathspeciallaguerreLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_layer_scale(s : MathspeciallaguerreLayer, f : Double) -> MathspeciallaguerreLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreLayer::scale(self : MathspeciallaguerreLayer, f : Double) -> MathspeciallaguerreLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_layer_add(a : MathspeciallaguerreLayer, b : MathspeciallaguerreLayer) -> MathspeciallaguerreLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreLayer::add(self : MathspeciallaguerreLayer, other : MathspeciallaguerreLayer) -> MathspeciallaguerreLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_layer_copy(s : MathspeciallaguerreLayer) -> MathspeciallaguerreLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreLayer::copy(self : MathspeciallaguerreLayer) -> MathspeciallaguerreLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_layer_fill(s : MathspeciallaguerreLayer, v : Double) -> MathspeciallaguerreLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreLayer::fill(self : MathspeciallaguerreLayer, v : Double) -> MathspeciallaguerreLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_layer_min(s : MathspeciallaguerreLayer) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreLayer::min(self : MathspeciallaguerreLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_layer_max(s : MathspeciallaguerreLayer) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreLayer::max(self : MathspeciallaguerreLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_layer_to_string(s : MathspeciallaguerreLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreLayer::to_string(self : MathspeciallaguerreLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_laguerre_buffer_make(size : Int) -> MathspeciallaguerreBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_buffer_len(s : MathspeciallaguerreBuffer) -> Int { s.size }
+pub fn MathspeciallaguerreBuffer::len(self : MathspeciallaguerreBuffer) -> Int { self.size }
 
-pub fn math_special_laguerre_buffer_get(s : MathspeciallaguerreBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreBuffer::get(self : MathspeciallaguerreBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_buffer_set(s : MathspeciallaguerreBuffer, i : Int, v : Double) -> MathspeciallaguerreBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreBuffer::set(self : MathspeciallaguerreBuffer, i : Int, v : Double) -> MathspeciallaguerreBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_buffer_sum(s : MathspeciallaguerreBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreBuffer::sum(self : MathspeciallaguerreBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_buffer_mean(s : MathspeciallaguerreBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreBuffer::mean(self : MathspeciallaguerreBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_buffer_scale(s : MathspeciallaguerreBuffer, f : Double) -> MathspeciallaguerreBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreBuffer::scale(self : MathspeciallaguerreBuffer, f : Double) -> MathspeciallaguerreBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_buffer_add(a : MathspeciallaguerreBuffer, b : MathspeciallaguerreBuffer) -> MathspeciallaguerreBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreBuffer::add(self : MathspeciallaguerreBuffer, other : MathspeciallaguerreBuffer) -> MathspeciallaguerreBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_buffer_copy(s : MathspeciallaguerreBuffer) -> MathspeciallaguerreBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreBuffer::copy(self : MathspeciallaguerreBuffer) -> MathspeciallaguerreBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_buffer_fill(s : MathspeciallaguerreBuffer, v : Double) -> MathspeciallaguerreBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreBuffer::fill(self : MathspeciallaguerreBuffer, v : Double) -> MathspeciallaguerreBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_buffer_min(s : MathspeciallaguerreBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreBuffer::min(self : MathspeciallaguerreBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_buffer_max(s : MathspeciallaguerreBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreBuffer::max(self : MathspeciallaguerreBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_buffer_to_string(s : MathspeciallaguerreBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreBuffer::to_string(self : MathspeciallaguerreBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreCursor {
@@ -861,45 +861,45 @@ pub fn math_special_laguerre_cursor_make(size : Int) -> MathspeciallaguerreCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_cursor_len(s : MathspeciallaguerreCursor) -> Int { s.size }
+pub fn MathspeciallaguerreCursor::len(self : MathspeciallaguerreCursor) -> Int { self.size }
 
-pub fn math_special_laguerre_cursor_get(s : MathspeciallaguerreCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreCursor::get(self : MathspeciallaguerreCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_cursor_set(s : MathspeciallaguerreCursor, i : Int, v : Double) -> MathspeciallaguerreCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCursor::set(self : MathspeciallaguerreCursor, i : Int, v : Double) -> MathspeciallaguerreCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cursor_sum(s : MathspeciallaguerreCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreCursor::sum(self : MathspeciallaguerreCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_cursor_mean(s : MathspeciallaguerreCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreCursor::mean(self : MathspeciallaguerreCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_cursor_scale(s : MathspeciallaguerreCursor, f : Double) -> MathspeciallaguerreCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCursor::scale(self : MathspeciallaguerreCursor, f : Double) -> MathspeciallaguerreCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cursor_add(a : MathspeciallaguerreCursor, b : MathspeciallaguerreCursor) -> MathspeciallaguerreCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreCursor::add(self : MathspeciallaguerreCursor, other : MathspeciallaguerreCursor) -> MathspeciallaguerreCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cursor_copy(s : MathspeciallaguerreCursor) -> MathspeciallaguerreCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCursor::copy(self : MathspeciallaguerreCursor) -> MathspeciallaguerreCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cursor_fill(s : MathspeciallaguerreCursor, v : Double) -> MathspeciallaguerreCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreCursor::fill(self : MathspeciallaguerreCursor, v : Double) -> MathspeciallaguerreCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_cursor_min(s : MathspeciallaguerreCursor) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreCursor::min(self : MathspeciallaguerreCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_cursor_max(s : MathspeciallaguerreCursor) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreCursor::max(self : MathspeciallaguerreCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_cursor_to_string(s : MathspeciallaguerreCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreCursor::to_string(self : MathspeciallaguerreCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreView {
@@ -912,45 +912,45 @@ pub fn math_special_laguerre_view_make(size : Int) -> MathspeciallaguerreView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_view_len(s : MathspeciallaguerreView) -> Int { s.size }
+pub fn MathspeciallaguerreView::len(self : MathspeciallaguerreView) -> Int { self.size }
 
-pub fn math_special_laguerre_view_get(s : MathspeciallaguerreView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreView::get(self : MathspeciallaguerreView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_view_set(s : MathspeciallaguerreView, i : Int, v : Double) -> MathspeciallaguerreView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreView::set(self : MathspeciallaguerreView, i : Int, v : Double) -> MathspeciallaguerreView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_view_sum(s : MathspeciallaguerreView) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreView::sum(self : MathspeciallaguerreView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_view_mean(s : MathspeciallaguerreView) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreView::mean(self : MathspeciallaguerreView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_view_scale(s : MathspeciallaguerreView, f : Double) -> MathspeciallaguerreView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreView::scale(self : MathspeciallaguerreView, f : Double) -> MathspeciallaguerreView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_view_add(a : MathspeciallaguerreView, b : MathspeciallaguerreView) -> MathspeciallaguerreView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreView::add(self : MathspeciallaguerreView, other : MathspeciallaguerreView) -> MathspeciallaguerreView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_view_copy(s : MathspeciallaguerreView) -> MathspeciallaguerreView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreView::copy(self : MathspeciallaguerreView) -> MathspeciallaguerreView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_view_fill(s : MathspeciallaguerreView, v : Double) -> MathspeciallaguerreView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreView::fill(self : MathspeciallaguerreView, v : Double) -> MathspeciallaguerreView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_view_min(s : MathspeciallaguerreView) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreView::min(self : MathspeciallaguerreView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_view_max(s : MathspeciallaguerreView) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreView::max(self : MathspeciallaguerreView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_view_to_string(s : MathspeciallaguerreView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreView::to_string(self : MathspeciallaguerreView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreRange {
@@ -963,45 +963,45 @@ pub fn math_special_laguerre_range_make(size : Int) -> MathspeciallaguerreRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_range_len(s : MathspeciallaguerreRange) -> Int { s.size }
+pub fn MathspeciallaguerreRange::len(self : MathspeciallaguerreRange) -> Int { self.size }
 
-pub fn math_special_laguerre_range_get(s : MathspeciallaguerreRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreRange::get(self : MathspeciallaguerreRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_range_set(s : MathspeciallaguerreRange, i : Int, v : Double) -> MathspeciallaguerreRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreRange::set(self : MathspeciallaguerreRange, i : Int, v : Double) -> MathspeciallaguerreRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_range_sum(s : MathspeciallaguerreRange) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreRange::sum(self : MathspeciallaguerreRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_range_mean(s : MathspeciallaguerreRange) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreRange::mean(self : MathspeciallaguerreRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_range_scale(s : MathspeciallaguerreRange, f : Double) -> MathspeciallaguerreRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreRange::scale(self : MathspeciallaguerreRange, f : Double) -> MathspeciallaguerreRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_range_add(a : MathspeciallaguerreRange, b : MathspeciallaguerreRange) -> MathspeciallaguerreRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreRange::add(self : MathspeciallaguerreRange, other : MathspeciallaguerreRange) -> MathspeciallaguerreRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_range_copy(s : MathspeciallaguerreRange) -> MathspeciallaguerreRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreRange::copy(self : MathspeciallaguerreRange) -> MathspeciallaguerreRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_range_fill(s : MathspeciallaguerreRange, v : Double) -> MathspeciallaguerreRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreRange::fill(self : MathspeciallaguerreRange, v : Double) -> MathspeciallaguerreRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_range_min(s : MathspeciallaguerreRange) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreRange::min(self : MathspeciallaguerreRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_range_max(s : MathspeciallaguerreRange) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreRange::max(self : MathspeciallaguerreRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_range_to_string(s : MathspeciallaguerreRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreRange::to_string(self : MathspeciallaguerreRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallaguerreSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_laguerre_slice_make(size : Int) -> MathspeciallaguerreSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_laguerre_slice_len(s : MathspeciallaguerreSlice) -> Int { s.size }
+pub fn MathspeciallaguerreSlice::len(self : MathspeciallaguerreSlice) -> Int { self.size }
 
-pub fn math_special_laguerre_slice_get(s : MathspeciallaguerreSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallaguerreSlice::get(self : MathspeciallaguerreSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_laguerre_slice_set(s : MathspeciallaguerreSlice, i : Int, v : Double) -> MathspeciallaguerreSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreSlice::set(self : MathspeciallaguerreSlice, i : Int, v : Double) -> MathspeciallaguerreSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_slice_sum(s : MathspeciallaguerreSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallaguerreSlice::sum(self : MathspeciallaguerreSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_laguerre_slice_mean(s : MathspeciallaguerreSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallaguerreSlice::mean(self : MathspeciallaguerreSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_laguerre_slice_scale(s : MathspeciallaguerreSlice, f : Double) -> MathspeciallaguerreSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreSlice::scale(self : MathspeciallaguerreSlice, f : Double) -> MathspeciallaguerreSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_slice_add(a : MathspeciallaguerreSlice, b : MathspeciallaguerreSlice) -> MathspeciallaguerreSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallaguerreSlice::add(self : MathspeciallaguerreSlice, other : MathspeciallaguerreSlice) -> MathspeciallaguerreSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_laguerre_slice_copy(s : MathspeciallaguerreSlice) -> MathspeciallaguerreSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreSlice::copy(self : MathspeciallaguerreSlice) -> MathspeciallaguerreSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_slice_fill(s : MathspeciallaguerreSlice, v : Double) -> MathspeciallaguerreSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallaguerreSlice::fill(self : MathspeciallaguerreSlice, v : Double) -> MathspeciallaguerreSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_laguerre_slice_min(s : MathspeciallaguerreSlice) -> Double { @_common.min(s.data) }
+pub fn MathspeciallaguerreSlice::min(self : MathspeciallaguerreSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_laguerre_slice_max(s : MathspeciallaguerreSlice) -> Double { @_common.max(s.data) }
+pub fn MathspeciallaguerreSlice::max(self : MathspeciallaguerreSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_laguerre_slice_to_string(s : MathspeciallaguerreSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallaguerreSlice::to_string(self : MathspeciallaguerreSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

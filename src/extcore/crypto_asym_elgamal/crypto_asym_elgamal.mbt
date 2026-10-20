@@ -351,45 +351,45 @@ pub fn crypto_asym_elgamal_frame_make(size : Int) -> CryptoasymelgamalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_frame_len(s : CryptoasymelgamalFrame) -> Int { s.size }
+pub fn CryptoasymelgamalFrame::len(self : CryptoasymelgamalFrame) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_frame_get(s : CryptoasymelgamalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalFrame::get(self : CryptoasymelgamalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_frame_set(s : CryptoasymelgamalFrame, i : Int, v : Double) -> CryptoasymelgamalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalFrame::set(self : CryptoasymelgamalFrame, i : Int, v : Double) -> CryptoasymelgamalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_frame_sum(s : CryptoasymelgamalFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalFrame::sum(self : CryptoasymelgamalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_frame_mean(s : CryptoasymelgamalFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalFrame::mean(self : CryptoasymelgamalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_frame_scale(s : CryptoasymelgamalFrame, f : Double) -> CryptoasymelgamalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalFrame::scale(self : CryptoasymelgamalFrame, f : Double) -> CryptoasymelgamalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_frame_add(a : CryptoasymelgamalFrame, b : CryptoasymelgamalFrame) -> CryptoasymelgamalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalFrame::add(self : CryptoasymelgamalFrame, other : CryptoasymelgamalFrame) -> CryptoasymelgamalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_frame_copy(s : CryptoasymelgamalFrame) -> CryptoasymelgamalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalFrame::copy(self : CryptoasymelgamalFrame) -> CryptoasymelgamalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_frame_fill(s : CryptoasymelgamalFrame, v : Double) -> CryptoasymelgamalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalFrame::fill(self : CryptoasymelgamalFrame, v : Double) -> CryptoasymelgamalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_frame_min(s : CryptoasymelgamalFrame) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalFrame::min(self : CryptoasymelgamalFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_frame_max(s : CryptoasymelgamalFrame) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalFrame::max(self : CryptoasymelgamalFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_frame_to_string(s : CryptoasymelgamalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalFrame::to_string(self : CryptoasymelgamalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalTable {
@@ -402,45 +402,45 @@ pub fn crypto_asym_elgamal_table_make(size : Int) -> CryptoasymelgamalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_table_len(s : CryptoasymelgamalTable) -> Int { s.size }
+pub fn CryptoasymelgamalTable::len(self : CryptoasymelgamalTable) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_table_get(s : CryptoasymelgamalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalTable::get(self : CryptoasymelgamalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_table_set(s : CryptoasymelgamalTable, i : Int, v : Double) -> CryptoasymelgamalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalTable::set(self : CryptoasymelgamalTable, i : Int, v : Double) -> CryptoasymelgamalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_table_sum(s : CryptoasymelgamalTable) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalTable::sum(self : CryptoasymelgamalTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_table_mean(s : CryptoasymelgamalTable) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalTable::mean(self : CryptoasymelgamalTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_table_scale(s : CryptoasymelgamalTable, f : Double) -> CryptoasymelgamalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalTable::scale(self : CryptoasymelgamalTable, f : Double) -> CryptoasymelgamalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_table_add(a : CryptoasymelgamalTable, b : CryptoasymelgamalTable) -> CryptoasymelgamalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalTable::add(self : CryptoasymelgamalTable, other : CryptoasymelgamalTable) -> CryptoasymelgamalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_table_copy(s : CryptoasymelgamalTable) -> CryptoasymelgamalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalTable::copy(self : CryptoasymelgamalTable) -> CryptoasymelgamalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_table_fill(s : CryptoasymelgamalTable, v : Double) -> CryptoasymelgamalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalTable::fill(self : CryptoasymelgamalTable, v : Double) -> CryptoasymelgamalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_table_min(s : CryptoasymelgamalTable) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalTable::min(self : CryptoasymelgamalTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_table_max(s : CryptoasymelgamalTable) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalTable::max(self : CryptoasymelgamalTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_table_to_string(s : CryptoasymelgamalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalTable::to_string(self : CryptoasymelgamalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_asym_elgamal_graphn_make(size : Int) -> CryptoasymelgamalGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_graphn_len(s : CryptoasymelgamalGraphN) -> Int { s.size }
+pub fn CryptoasymelgamalGraphN::len(self : CryptoasymelgamalGraphN) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_graphn_get(s : CryptoasymelgamalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalGraphN::get(self : CryptoasymelgamalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_graphn_set(s : CryptoasymelgamalGraphN, i : Int, v : Double) -> CryptoasymelgamalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalGraphN::set(self : CryptoasymelgamalGraphN, i : Int, v : Double) -> CryptoasymelgamalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_graphn_sum(s : CryptoasymelgamalGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalGraphN::sum(self : CryptoasymelgamalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_graphn_mean(s : CryptoasymelgamalGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalGraphN::mean(self : CryptoasymelgamalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_graphn_scale(s : CryptoasymelgamalGraphN, f : Double) -> CryptoasymelgamalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalGraphN::scale(self : CryptoasymelgamalGraphN, f : Double) -> CryptoasymelgamalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_graphn_add(a : CryptoasymelgamalGraphN, b : CryptoasymelgamalGraphN) -> CryptoasymelgamalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalGraphN::add(self : CryptoasymelgamalGraphN, other : CryptoasymelgamalGraphN) -> CryptoasymelgamalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_graphn_copy(s : CryptoasymelgamalGraphN) -> CryptoasymelgamalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalGraphN::copy(self : CryptoasymelgamalGraphN) -> CryptoasymelgamalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_graphn_fill(s : CryptoasymelgamalGraphN, v : Double) -> CryptoasymelgamalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalGraphN::fill(self : CryptoasymelgamalGraphN, v : Double) -> CryptoasymelgamalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_graphn_min(s : CryptoasymelgamalGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalGraphN::min(self : CryptoasymelgamalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_graphn_max(s : CryptoasymelgamalGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalGraphN::max(self : CryptoasymelgamalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_graphn_to_string(s : CryptoasymelgamalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalGraphN::to_string(self : CryptoasymelgamalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalNode {
@@ -504,45 +504,45 @@ pub fn crypto_asym_elgamal_node_make(size : Int) -> CryptoasymelgamalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_node_len(s : CryptoasymelgamalNode) -> Int { s.size }
+pub fn CryptoasymelgamalNode::len(self : CryptoasymelgamalNode) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_node_get(s : CryptoasymelgamalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalNode::get(self : CryptoasymelgamalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_node_set(s : CryptoasymelgamalNode, i : Int, v : Double) -> CryptoasymelgamalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalNode::set(self : CryptoasymelgamalNode, i : Int, v : Double) -> CryptoasymelgamalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_node_sum(s : CryptoasymelgamalNode) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalNode::sum(self : CryptoasymelgamalNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_node_mean(s : CryptoasymelgamalNode) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalNode::mean(self : CryptoasymelgamalNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_node_scale(s : CryptoasymelgamalNode, f : Double) -> CryptoasymelgamalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalNode::scale(self : CryptoasymelgamalNode, f : Double) -> CryptoasymelgamalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_node_add(a : CryptoasymelgamalNode, b : CryptoasymelgamalNode) -> CryptoasymelgamalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalNode::add(self : CryptoasymelgamalNode, other : CryptoasymelgamalNode) -> CryptoasymelgamalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_node_copy(s : CryptoasymelgamalNode) -> CryptoasymelgamalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalNode::copy(self : CryptoasymelgamalNode) -> CryptoasymelgamalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_node_fill(s : CryptoasymelgamalNode, v : Double) -> CryptoasymelgamalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalNode::fill(self : CryptoasymelgamalNode, v : Double) -> CryptoasymelgamalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_node_min(s : CryptoasymelgamalNode) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalNode::min(self : CryptoasymelgamalNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_node_max(s : CryptoasymelgamalNode) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalNode::max(self : CryptoasymelgamalNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_node_to_string(s : CryptoasymelgamalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalNode::to_string(self : CryptoasymelgamalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalEdge {
@@ -555,45 +555,45 @@ pub fn crypto_asym_elgamal_edge_make(size : Int) -> CryptoasymelgamalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_edge_len(s : CryptoasymelgamalEdge) -> Int { s.size }
+pub fn CryptoasymelgamalEdge::len(self : CryptoasymelgamalEdge) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_edge_get(s : CryptoasymelgamalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalEdge::get(self : CryptoasymelgamalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_edge_set(s : CryptoasymelgamalEdge, i : Int, v : Double) -> CryptoasymelgamalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalEdge::set(self : CryptoasymelgamalEdge, i : Int, v : Double) -> CryptoasymelgamalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_edge_sum(s : CryptoasymelgamalEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalEdge::sum(self : CryptoasymelgamalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_edge_mean(s : CryptoasymelgamalEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalEdge::mean(self : CryptoasymelgamalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_edge_scale(s : CryptoasymelgamalEdge, f : Double) -> CryptoasymelgamalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalEdge::scale(self : CryptoasymelgamalEdge, f : Double) -> CryptoasymelgamalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_edge_add(a : CryptoasymelgamalEdge, b : CryptoasymelgamalEdge) -> CryptoasymelgamalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalEdge::add(self : CryptoasymelgamalEdge, other : CryptoasymelgamalEdge) -> CryptoasymelgamalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_edge_copy(s : CryptoasymelgamalEdge) -> CryptoasymelgamalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalEdge::copy(self : CryptoasymelgamalEdge) -> CryptoasymelgamalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_edge_fill(s : CryptoasymelgamalEdge, v : Double) -> CryptoasymelgamalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalEdge::fill(self : CryptoasymelgamalEdge, v : Double) -> CryptoasymelgamalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_edge_min(s : CryptoasymelgamalEdge) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalEdge::min(self : CryptoasymelgamalEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_edge_max(s : CryptoasymelgamalEdge) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalEdge::max(self : CryptoasymelgamalEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_edge_to_string(s : CryptoasymelgamalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalEdge::to_string(self : CryptoasymelgamalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalPath {
@@ -606,45 +606,45 @@ pub fn crypto_asym_elgamal_path_make(size : Int) -> CryptoasymelgamalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_path_len(s : CryptoasymelgamalPath) -> Int { s.size }
+pub fn CryptoasymelgamalPath::len(self : CryptoasymelgamalPath) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_path_get(s : CryptoasymelgamalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalPath::get(self : CryptoasymelgamalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_path_set(s : CryptoasymelgamalPath, i : Int, v : Double) -> CryptoasymelgamalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalPath::set(self : CryptoasymelgamalPath, i : Int, v : Double) -> CryptoasymelgamalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_path_sum(s : CryptoasymelgamalPath) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalPath::sum(self : CryptoasymelgamalPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_path_mean(s : CryptoasymelgamalPath) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalPath::mean(self : CryptoasymelgamalPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_path_scale(s : CryptoasymelgamalPath, f : Double) -> CryptoasymelgamalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalPath::scale(self : CryptoasymelgamalPath, f : Double) -> CryptoasymelgamalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_path_add(a : CryptoasymelgamalPath, b : CryptoasymelgamalPath) -> CryptoasymelgamalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalPath::add(self : CryptoasymelgamalPath, other : CryptoasymelgamalPath) -> CryptoasymelgamalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_path_copy(s : CryptoasymelgamalPath) -> CryptoasymelgamalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalPath::copy(self : CryptoasymelgamalPath) -> CryptoasymelgamalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_path_fill(s : CryptoasymelgamalPath, v : Double) -> CryptoasymelgamalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalPath::fill(self : CryptoasymelgamalPath, v : Double) -> CryptoasymelgamalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_path_min(s : CryptoasymelgamalPath) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalPath::min(self : CryptoasymelgamalPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_path_max(s : CryptoasymelgamalPath) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalPath::max(self : CryptoasymelgamalPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_path_to_string(s : CryptoasymelgamalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalPath::to_string(self : CryptoasymelgamalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalCluster {
@@ -657,45 +657,45 @@ pub fn crypto_asym_elgamal_cluster_make(size : Int) -> CryptoasymelgamalCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_cluster_len(s : CryptoasymelgamalCluster) -> Int { s.size }
+pub fn CryptoasymelgamalCluster::len(self : CryptoasymelgamalCluster) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_cluster_get(s : CryptoasymelgamalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalCluster::get(self : CryptoasymelgamalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_cluster_set(s : CryptoasymelgamalCluster, i : Int, v : Double) -> CryptoasymelgamalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCluster::set(self : CryptoasymelgamalCluster, i : Int, v : Double) -> CryptoasymelgamalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cluster_sum(s : CryptoasymelgamalCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalCluster::sum(self : CryptoasymelgamalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_cluster_mean(s : CryptoasymelgamalCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalCluster::mean(self : CryptoasymelgamalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_cluster_scale(s : CryptoasymelgamalCluster, f : Double) -> CryptoasymelgamalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCluster::scale(self : CryptoasymelgamalCluster, f : Double) -> CryptoasymelgamalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cluster_add(a : CryptoasymelgamalCluster, b : CryptoasymelgamalCluster) -> CryptoasymelgamalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalCluster::add(self : CryptoasymelgamalCluster, other : CryptoasymelgamalCluster) -> CryptoasymelgamalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cluster_copy(s : CryptoasymelgamalCluster) -> CryptoasymelgamalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCluster::copy(self : CryptoasymelgamalCluster) -> CryptoasymelgamalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cluster_fill(s : CryptoasymelgamalCluster, v : Double) -> CryptoasymelgamalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCluster::fill(self : CryptoasymelgamalCluster, v : Double) -> CryptoasymelgamalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cluster_min(s : CryptoasymelgamalCluster) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalCluster::min(self : CryptoasymelgamalCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_cluster_max(s : CryptoasymelgamalCluster) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalCluster::max(self : CryptoasymelgamalCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_cluster_to_string(s : CryptoasymelgamalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalCluster::to_string(self : CryptoasymelgamalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalModel {
@@ -708,45 +708,45 @@ pub fn crypto_asym_elgamal_model_make(size : Int) -> CryptoasymelgamalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_model_len(s : CryptoasymelgamalModel) -> Int { s.size }
+pub fn CryptoasymelgamalModel::len(self : CryptoasymelgamalModel) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_model_get(s : CryptoasymelgamalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalModel::get(self : CryptoasymelgamalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_model_set(s : CryptoasymelgamalModel, i : Int, v : Double) -> CryptoasymelgamalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalModel::set(self : CryptoasymelgamalModel, i : Int, v : Double) -> CryptoasymelgamalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_model_sum(s : CryptoasymelgamalModel) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalModel::sum(self : CryptoasymelgamalModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_model_mean(s : CryptoasymelgamalModel) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalModel::mean(self : CryptoasymelgamalModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_model_scale(s : CryptoasymelgamalModel, f : Double) -> CryptoasymelgamalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalModel::scale(self : CryptoasymelgamalModel, f : Double) -> CryptoasymelgamalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_model_add(a : CryptoasymelgamalModel, b : CryptoasymelgamalModel) -> CryptoasymelgamalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalModel::add(self : CryptoasymelgamalModel, other : CryptoasymelgamalModel) -> CryptoasymelgamalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_model_copy(s : CryptoasymelgamalModel) -> CryptoasymelgamalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalModel::copy(self : CryptoasymelgamalModel) -> CryptoasymelgamalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_model_fill(s : CryptoasymelgamalModel, v : Double) -> CryptoasymelgamalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalModel::fill(self : CryptoasymelgamalModel, v : Double) -> CryptoasymelgamalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_model_min(s : CryptoasymelgamalModel) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalModel::min(self : CryptoasymelgamalModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_model_max(s : CryptoasymelgamalModel) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalModel::max(self : CryptoasymelgamalModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_model_to_string(s : CryptoasymelgamalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalModel::to_string(self : CryptoasymelgamalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalLayer {
@@ -759,45 +759,45 @@ pub fn crypto_asym_elgamal_layer_make(size : Int) -> CryptoasymelgamalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_layer_len(s : CryptoasymelgamalLayer) -> Int { s.size }
+pub fn CryptoasymelgamalLayer::len(self : CryptoasymelgamalLayer) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_layer_get(s : CryptoasymelgamalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalLayer::get(self : CryptoasymelgamalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_layer_set(s : CryptoasymelgamalLayer, i : Int, v : Double) -> CryptoasymelgamalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalLayer::set(self : CryptoasymelgamalLayer, i : Int, v : Double) -> CryptoasymelgamalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_layer_sum(s : CryptoasymelgamalLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalLayer::sum(self : CryptoasymelgamalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_layer_mean(s : CryptoasymelgamalLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalLayer::mean(self : CryptoasymelgamalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_layer_scale(s : CryptoasymelgamalLayer, f : Double) -> CryptoasymelgamalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalLayer::scale(self : CryptoasymelgamalLayer, f : Double) -> CryptoasymelgamalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_layer_add(a : CryptoasymelgamalLayer, b : CryptoasymelgamalLayer) -> CryptoasymelgamalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalLayer::add(self : CryptoasymelgamalLayer, other : CryptoasymelgamalLayer) -> CryptoasymelgamalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_layer_copy(s : CryptoasymelgamalLayer) -> CryptoasymelgamalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalLayer::copy(self : CryptoasymelgamalLayer) -> CryptoasymelgamalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_layer_fill(s : CryptoasymelgamalLayer, v : Double) -> CryptoasymelgamalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalLayer::fill(self : CryptoasymelgamalLayer, v : Double) -> CryptoasymelgamalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_layer_min(s : CryptoasymelgamalLayer) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalLayer::min(self : CryptoasymelgamalLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_layer_max(s : CryptoasymelgamalLayer) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalLayer::max(self : CryptoasymelgamalLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_layer_to_string(s : CryptoasymelgamalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalLayer::to_string(self : CryptoasymelgamalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_asym_elgamal_buffer_make(size : Int) -> CryptoasymelgamalBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_buffer_len(s : CryptoasymelgamalBuffer) -> Int { s.size }
+pub fn CryptoasymelgamalBuffer::len(self : CryptoasymelgamalBuffer) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_buffer_get(s : CryptoasymelgamalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalBuffer::get(self : CryptoasymelgamalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_buffer_set(s : CryptoasymelgamalBuffer, i : Int, v : Double) -> CryptoasymelgamalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalBuffer::set(self : CryptoasymelgamalBuffer, i : Int, v : Double) -> CryptoasymelgamalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_buffer_sum(s : CryptoasymelgamalBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalBuffer::sum(self : CryptoasymelgamalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_buffer_mean(s : CryptoasymelgamalBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalBuffer::mean(self : CryptoasymelgamalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_buffer_scale(s : CryptoasymelgamalBuffer, f : Double) -> CryptoasymelgamalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalBuffer::scale(self : CryptoasymelgamalBuffer, f : Double) -> CryptoasymelgamalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_buffer_add(a : CryptoasymelgamalBuffer, b : CryptoasymelgamalBuffer) -> CryptoasymelgamalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalBuffer::add(self : CryptoasymelgamalBuffer, other : CryptoasymelgamalBuffer) -> CryptoasymelgamalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_buffer_copy(s : CryptoasymelgamalBuffer) -> CryptoasymelgamalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalBuffer::copy(self : CryptoasymelgamalBuffer) -> CryptoasymelgamalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_buffer_fill(s : CryptoasymelgamalBuffer, v : Double) -> CryptoasymelgamalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalBuffer::fill(self : CryptoasymelgamalBuffer, v : Double) -> CryptoasymelgamalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_buffer_min(s : CryptoasymelgamalBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalBuffer::min(self : CryptoasymelgamalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_buffer_max(s : CryptoasymelgamalBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalBuffer::max(self : CryptoasymelgamalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_buffer_to_string(s : CryptoasymelgamalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalBuffer::to_string(self : CryptoasymelgamalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalCursor {
@@ -861,45 +861,45 @@ pub fn crypto_asym_elgamal_cursor_make(size : Int) -> CryptoasymelgamalCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_cursor_len(s : CryptoasymelgamalCursor) -> Int { s.size }
+pub fn CryptoasymelgamalCursor::len(self : CryptoasymelgamalCursor) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_cursor_get(s : CryptoasymelgamalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalCursor::get(self : CryptoasymelgamalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_cursor_set(s : CryptoasymelgamalCursor, i : Int, v : Double) -> CryptoasymelgamalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCursor::set(self : CryptoasymelgamalCursor, i : Int, v : Double) -> CryptoasymelgamalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cursor_sum(s : CryptoasymelgamalCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalCursor::sum(self : CryptoasymelgamalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_cursor_mean(s : CryptoasymelgamalCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalCursor::mean(self : CryptoasymelgamalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_cursor_scale(s : CryptoasymelgamalCursor, f : Double) -> CryptoasymelgamalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCursor::scale(self : CryptoasymelgamalCursor, f : Double) -> CryptoasymelgamalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cursor_add(a : CryptoasymelgamalCursor, b : CryptoasymelgamalCursor) -> CryptoasymelgamalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalCursor::add(self : CryptoasymelgamalCursor, other : CryptoasymelgamalCursor) -> CryptoasymelgamalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cursor_copy(s : CryptoasymelgamalCursor) -> CryptoasymelgamalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCursor::copy(self : CryptoasymelgamalCursor) -> CryptoasymelgamalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cursor_fill(s : CryptoasymelgamalCursor, v : Double) -> CryptoasymelgamalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalCursor::fill(self : CryptoasymelgamalCursor, v : Double) -> CryptoasymelgamalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_cursor_min(s : CryptoasymelgamalCursor) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalCursor::min(self : CryptoasymelgamalCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_cursor_max(s : CryptoasymelgamalCursor) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalCursor::max(self : CryptoasymelgamalCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_cursor_to_string(s : CryptoasymelgamalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalCursor::to_string(self : CryptoasymelgamalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalView {
@@ -912,45 +912,45 @@ pub fn crypto_asym_elgamal_view_make(size : Int) -> CryptoasymelgamalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_view_len(s : CryptoasymelgamalView) -> Int { s.size }
+pub fn CryptoasymelgamalView::len(self : CryptoasymelgamalView) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_view_get(s : CryptoasymelgamalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalView::get(self : CryptoasymelgamalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_view_set(s : CryptoasymelgamalView, i : Int, v : Double) -> CryptoasymelgamalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalView::set(self : CryptoasymelgamalView, i : Int, v : Double) -> CryptoasymelgamalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_view_sum(s : CryptoasymelgamalView) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalView::sum(self : CryptoasymelgamalView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_view_mean(s : CryptoasymelgamalView) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalView::mean(self : CryptoasymelgamalView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_view_scale(s : CryptoasymelgamalView, f : Double) -> CryptoasymelgamalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalView::scale(self : CryptoasymelgamalView, f : Double) -> CryptoasymelgamalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_view_add(a : CryptoasymelgamalView, b : CryptoasymelgamalView) -> CryptoasymelgamalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalView::add(self : CryptoasymelgamalView, other : CryptoasymelgamalView) -> CryptoasymelgamalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_view_copy(s : CryptoasymelgamalView) -> CryptoasymelgamalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalView::copy(self : CryptoasymelgamalView) -> CryptoasymelgamalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_view_fill(s : CryptoasymelgamalView, v : Double) -> CryptoasymelgamalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalView::fill(self : CryptoasymelgamalView, v : Double) -> CryptoasymelgamalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_view_min(s : CryptoasymelgamalView) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalView::min(self : CryptoasymelgamalView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_view_max(s : CryptoasymelgamalView) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalView::max(self : CryptoasymelgamalView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_view_to_string(s : CryptoasymelgamalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalView::to_string(self : CryptoasymelgamalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalRange {
@@ -963,45 +963,45 @@ pub fn crypto_asym_elgamal_range_make(size : Int) -> CryptoasymelgamalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_range_len(s : CryptoasymelgamalRange) -> Int { s.size }
+pub fn CryptoasymelgamalRange::len(self : CryptoasymelgamalRange) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_range_get(s : CryptoasymelgamalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalRange::get(self : CryptoasymelgamalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_range_set(s : CryptoasymelgamalRange, i : Int, v : Double) -> CryptoasymelgamalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalRange::set(self : CryptoasymelgamalRange, i : Int, v : Double) -> CryptoasymelgamalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_range_sum(s : CryptoasymelgamalRange) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalRange::sum(self : CryptoasymelgamalRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_range_mean(s : CryptoasymelgamalRange) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalRange::mean(self : CryptoasymelgamalRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_range_scale(s : CryptoasymelgamalRange, f : Double) -> CryptoasymelgamalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalRange::scale(self : CryptoasymelgamalRange, f : Double) -> CryptoasymelgamalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_range_add(a : CryptoasymelgamalRange, b : CryptoasymelgamalRange) -> CryptoasymelgamalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalRange::add(self : CryptoasymelgamalRange, other : CryptoasymelgamalRange) -> CryptoasymelgamalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_range_copy(s : CryptoasymelgamalRange) -> CryptoasymelgamalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalRange::copy(self : CryptoasymelgamalRange) -> CryptoasymelgamalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_range_fill(s : CryptoasymelgamalRange, v : Double) -> CryptoasymelgamalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalRange::fill(self : CryptoasymelgamalRange, v : Double) -> CryptoasymelgamalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_range_min(s : CryptoasymelgamalRange) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalRange::min(self : CryptoasymelgamalRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_range_max(s : CryptoasymelgamalRange) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalRange::max(self : CryptoasymelgamalRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_range_to_string(s : CryptoasymelgamalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalRange::to_string(self : CryptoasymelgamalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_asym_elgamal_slice_make(size : Int) -> CryptoasymelgamalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_asym_elgamal_slice_len(s : CryptoasymelgamalSlice) -> Int { s.size }
+pub fn CryptoasymelgamalSlice::len(self : CryptoasymelgamalSlice) -> Int { self.size }
 
-pub fn crypto_asym_elgamal_slice_get(s : CryptoasymelgamalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptoasymelgamalSlice::get(self : CryptoasymelgamalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_asym_elgamal_slice_set(s : CryptoasymelgamalSlice, i : Int, v : Double) -> CryptoasymelgamalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalSlice::set(self : CryptoasymelgamalSlice, i : Int, v : Double) -> CryptoasymelgamalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_slice_sum(s : CryptoasymelgamalSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptoasymelgamalSlice::sum(self : CryptoasymelgamalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_asym_elgamal_slice_mean(s : CryptoasymelgamalSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptoasymelgamalSlice::mean(self : CryptoasymelgamalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_asym_elgamal_slice_scale(s : CryptoasymelgamalSlice, f : Double) -> CryptoasymelgamalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalSlice::scale(self : CryptoasymelgamalSlice, f : Double) -> CryptoasymelgamalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_slice_add(a : CryptoasymelgamalSlice, b : CryptoasymelgamalSlice) -> CryptoasymelgamalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptoasymelgamalSlice::add(self : CryptoasymelgamalSlice, other : CryptoasymelgamalSlice) -> CryptoasymelgamalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_slice_copy(s : CryptoasymelgamalSlice) -> CryptoasymelgamalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalSlice::copy(self : CryptoasymelgamalSlice) -> CryptoasymelgamalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_slice_fill(s : CryptoasymelgamalSlice, v : Double) -> CryptoasymelgamalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptoasymelgamalSlice::fill(self : CryptoasymelgamalSlice, v : Double) -> CryptoasymelgamalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_asym_elgamal_slice_min(s : CryptoasymelgamalSlice) -> Double { @_common.min(s.data) }
+pub fn CryptoasymelgamalSlice::min(self : CryptoasymelgamalSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_asym_elgamal_slice_max(s : CryptoasymelgamalSlice) -> Double { @_common.max(s.data) }
+pub fn CryptoasymelgamalSlice::max(self : CryptoasymelgamalSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_asym_elgamal_slice_to_string(s : CryptoasymelgamalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptoasymelgamalSlice::to_string(self : CryptoasymelgamalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

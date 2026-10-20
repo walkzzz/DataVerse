@@ -351,45 +351,45 @@ pub fn image_morph_bothat_frame_make(size : Int) -> ImagemorphbothatFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_frame_len(s : ImagemorphbothatFrame) -> Int { s.size }
+pub fn ImagemorphbothatFrame::len(self : ImagemorphbothatFrame) -> Int { self.size }
 
-pub fn image_morph_bothat_frame_get(s : ImagemorphbothatFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatFrame::get(self : ImagemorphbothatFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_frame_set(s : ImagemorphbothatFrame, i : Int, v : Double) -> ImagemorphbothatFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatFrame::set(self : ImagemorphbothatFrame, i : Int, v : Double) -> ImagemorphbothatFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_frame_sum(s : ImagemorphbothatFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatFrame::sum(self : ImagemorphbothatFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_frame_mean(s : ImagemorphbothatFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatFrame::mean(self : ImagemorphbothatFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_frame_scale(s : ImagemorphbothatFrame, f : Double) -> ImagemorphbothatFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatFrame::scale(self : ImagemorphbothatFrame, f : Double) -> ImagemorphbothatFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_frame_add(a : ImagemorphbothatFrame, b : ImagemorphbothatFrame) -> ImagemorphbothatFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatFrame::add(self : ImagemorphbothatFrame, other : ImagemorphbothatFrame) -> ImagemorphbothatFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_frame_copy(s : ImagemorphbothatFrame) -> ImagemorphbothatFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatFrame::copy(self : ImagemorphbothatFrame) -> ImagemorphbothatFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_frame_fill(s : ImagemorphbothatFrame, v : Double) -> ImagemorphbothatFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatFrame::fill(self : ImagemorphbothatFrame, v : Double) -> ImagemorphbothatFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_frame_min(s : ImagemorphbothatFrame) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatFrame::min(self : ImagemorphbothatFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_frame_max(s : ImagemorphbothatFrame) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatFrame::max(self : ImagemorphbothatFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_frame_to_string(s : ImagemorphbothatFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatFrame::to_string(self : ImagemorphbothatFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatTable {
@@ -402,45 +402,45 @@ pub fn image_morph_bothat_table_make(size : Int) -> ImagemorphbothatTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_table_len(s : ImagemorphbothatTable) -> Int { s.size }
+pub fn ImagemorphbothatTable::len(self : ImagemorphbothatTable) -> Int { self.size }
 
-pub fn image_morph_bothat_table_get(s : ImagemorphbothatTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatTable::get(self : ImagemorphbothatTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_table_set(s : ImagemorphbothatTable, i : Int, v : Double) -> ImagemorphbothatTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatTable::set(self : ImagemorphbothatTable, i : Int, v : Double) -> ImagemorphbothatTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_table_sum(s : ImagemorphbothatTable) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatTable::sum(self : ImagemorphbothatTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_table_mean(s : ImagemorphbothatTable) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatTable::mean(self : ImagemorphbothatTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_table_scale(s : ImagemorphbothatTable, f : Double) -> ImagemorphbothatTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatTable::scale(self : ImagemorphbothatTable, f : Double) -> ImagemorphbothatTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_table_add(a : ImagemorphbothatTable, b : ImagemorphbothatTable) -> ImagemorphbothatTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatTable::add(self : ImagemorphbothatTable, other : ImagemorphbothatTable) -> ImagemorphbothatTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_table_copy(s : ImagemorphbothatTable) -> ImagemorphbothatTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatTable::copy(self : ImagemorphbothatTable) -> ImagemorphbothatTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_table_fill(s : ImagemorphbothatTable, v : Double) -> ImagemorphbothatTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatTable::fill(self : ImagemorphbothatTable, v : Double) -> ImagemorphbothatTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_table_min(s : ImagemorphbothatTable) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatTable::min(self : ImagemorphbothatTable) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_table_max(s : ImagemorphbothatTable) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatTable::max(self : ImagemorphbothatTable) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_table_to_string(s : ImagemorphbothatTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatTable::to_string(self : ImagemorphbothatTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatGraphN {
@@ -453,45 +453,45 @@ pub fn image_morph_bothat_graphn_make(size : Int) -> ImagemorphbothatGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_graphn_len(s : ImagemorphbothatGraphN) -> Int { s.size }
+pub fn ImagemorphbothatGraphN::len(self : ImagemorphbothatGraphN) -> Int { self.size }
 
-pub fn image_morph_bothat_graphn_get(s : ImagemorphbothatGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatGraphN::get(self : ImagemorphbothatGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_graphn_set(s : ImagemorphbothatGraphN, i : Int, v : Double) -> ImagemorphbothatGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatGraphN::set(self : ImagemorphbothatGraphN, i : Int, v : Double) -> ImagemorphbothatGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_graphn_sum(s : ImagemorphbothatGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatGraphN::sum(self : ImagemorphbothatGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_graphn_mean(s : ImagemorphbothatGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatGraphN::mean(self : ImagemorphbothatGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_graphn_scale(s : ImagemorphbothatGraphN, f : Double) -> ImagemorphbothatGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatGraphN::scale(self : ImagemorphbothatGraphN, f : Double) -> ImagemorphbothatGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_graphn_add(a : ImagemorphbothatGraphN, b : ImagemorphbothatGraphN) -> ImagemorphbothatGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatGraphN::add(self : ImagemorphbothatGraphN, other : ImagemorphbothatGraphN) -> ImagemorphbothatGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_graphn_copy(s : ImagemorphbothatGraphN) -> ImagemorphbothatGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatGraphN::copy(self : ImagemorphbothatGraphN) -> ImagemorphbothatGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_graphn_fill(s : ImagemorphbothatGraphN, v : Double) -> ImagemorphbothatGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatGraphN::fill(self : ImagemorphbothatGraphN, v : Double) -> ImagemorphbothatGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_graphn_min(s : ImagemorphbothatGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatGraphN::min(self : ImagemorphbothatGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_graphn_max(s : ImagemorphbothatGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatGraphN::max(self : ImagemorphbothatGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_graphn_to_string(s : ImagemorphbothatGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatGraphN::to_string(self : ImagemorphbothatGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatNode {
@@ -504,45 +504,45 @@ pub fn image_morph_bothat_node_make(size : Int) -> ImagemorphbothatNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_node_len(s : ImagemorphbothatNode) -> Int { s.size }
+pub fn ImagemorphbothatNode::len(self : ImagemorphbothatNode) -> Int { self.size }
 
-pub fn image_morph_bothat_node_get(s : ImagemorphbothatNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatNode::get(self : ImagemorphbothatNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_node_set(s : ImagemorphbothatNode, i : Int, v : Double) -> ImagemorphbothatNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatNode::set(self : ImagemorphbothatNode, i : Int, v : Double) -> ImagemorphbothatNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_node_sum(s : ImagemorphbothatNode) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatNode::sum(self : ImagemorphbothatNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_node_mean(s : ImagemorphbothatNode) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatNode::mean(self : ImagemorphbothatNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_node_scale(s : ImagemorphbothatNode, f : Double) -> ImagemorphbothatNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatNode::scale(self : ImagemorphbothatNode, f : Double) -> ImagemorphbothatNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_node_add(a : ImagemorphbothatNode, b : ImagemorphbothatNode) -> ImagemorphbothatNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatNode::add(self : ImagemorphbothatNode, other : ImagemorphbothatNode) -> ImagemorphbothatNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_node_copy(s : ImagemorphbothatNode) -> ImagemorphbothatNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatNode::copy(self : ImagemorphbothatNode) -> ImagemorphbothatNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_node_fill(s : ImagemorphbothatNode, v : Double) -> ImagemorphbothatNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatNode::fill(self : ImagemorphbothatNode, v : Double) -> ImagemorphbothatNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_node_min(s : ImagemorphbothatNode) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatNode::min(self : ImagemorphbothatNode) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_node_max(s : ImagemorphbothatNode) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatNode::max(self : ImagemorphbothatNode) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_node_to_string(s : ImagemorphbothatNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatNode::to_string(self : ImagemorphbothatNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatEdge {
@@ -555,45 +555,45 @@ pub fn image_morph_bothat_edge_make(size : Int) -> ImagemorphbothatEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_edge_len(s : ImagemorphbothatEdge) -> Int { s.size }
+pub fn ImagemorphbothatEdge::len(self : ImagemorphbothatEdge) -> Int { self.size }
 
-pub fn image_morph_bothat_edge_get(s : ImagemorphbothatEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatEdge::get(self : ImagemorphbothatEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_edge_set(s : ImagemorphbothatEdge, i : Int, v : Double) -> ImagemorphbothatEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatEdge::set(self : ImagemorphbothatEdge, i : Int, v : Double) -> ImagemorphbothatEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_edge_sum(s : ImagemorphbothatEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatEdge::sum(self : ImagemorphbothatEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_edge_mean(s : ImagemorphbothatEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatEdge::mean(self : ImagemorphbothatEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_edge_scale(s : ImagemorphbothatEdge, f : Double) -> ImagemorphbothatEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatEdge::scale(self : ImagemorphbothatEdge, f : Double) -> ImagemorphbothatEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_edge_add(a : ImagemorphbothatEdge, b : ImagemorphbothatEdge) -> ImagemorphbothatEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatEdge::add(self : ImagemorphbothatEdge, other : ImagemorphbothatEdge) -> ImagemorphbothatEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_edge_copy(s : ImagemorphbothatEdge) -> ImagemorphbothatEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatEdge::copy(self : ImagemorphbothatEdge) -> ImagemorphbothatEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_edge_fill(s : ImagemorphbothatEdge, v : Double) -> ImagemorphbothatEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatEdge::fill(self : ImagemorphbothatEdge, v : Double) -> ImagemorphbothatEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_edge_min(s : ImagemorphbothatEdge) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatEdge::min(self : ImagemorphbothatEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_edge_max(s : ImagemorphbothatEdge) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatEdge::max(self : ImagemorphbothatEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_edge_to_string(s : ImagemorphbothatEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatEdge::to_string(self : ImagemorphbothatEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatPath {
@@ -606,45 +606,45 @@ pub fn image_morph_bothat_path_make(size : Int) -> ImagemorphbothatPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_path_len(s : ImagemorphbothatPath) -> Int { s.size }
+pub fn ImagemorphbothatPath::len(self : ImagemorphbothatPath) -> Int { self.size }
 
-pub fn image_morph_bothat_path_get(s : ImagemorphbothatPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatPath::get(self : ImagemorphbothatPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_path_set(s : ImagemorphbothatPath, i : Int, v : Double) -> ImagemorphbothatPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatPath::set(self : ImagemorphbothatPath, i : Int, v : Double) -> ImagemorphbothatPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_path_sum(s : ImagemorphbothatPath) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatPath::sum(self : ImagemorphbothatPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_path_mean(s : ImagemorphbothatPath) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatPath::mean(self : ImagemorphbothatPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_path_scale(s : ImagemorphbothatPath, f : Double) -> ImagemorphbothatPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatPath::scale(self : ImagemorphbothatPath, f : Double) -> ImagemorphbothatPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_path_add(a : ImagemorphbothatPath, b : ImagemorphbothatPath) -> ImagemorphbothatPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatPath::add(self : ImagemorphbothatPath, other : ImagemorphbothatPath) -> ImagemorphbothatPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_path_copy(s : ImagemorphbothatPath) -> ImagemorphbothatPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatPath::copy(self : ImagemorphbothatPath) -> ImagemorphbothatPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_path_fill(s : ImagemorphbothatPath, v : Double) -> ImagemorphbothatPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatPath::fill(self : ImagemorphbothatPath, v : Double) -> ImagemorphbothatPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_path_min(s : ImagemorphbothatPath) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatPath::min(self : ImagemorphbothatPath) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_path_max(s : ImagemorphbothatPath) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatPath::max(self : ImagemorphbothatPath) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_path_to_string(s : ImagemorphbothatPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatPath::to_string(self : ImagemorphbothatPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatCluster {
@@ -657,45 +657,45 @@ pub fn image_morph_bothat_cluster_make(size : Int) -> ImagemorphbothatCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_cluster_len(s : ImagemorphbothatCluster) -> Int { s.size }
+pub fn ImagemorphbothatCluster::len(self : ImagemorphbothatCluster) -> Int { self.size }
 
-pub fn image_morph_bothat_cluster_get(s : ImagemorphbothatCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatCluster::get(self : ImagemorphbothatCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_cluster_set(s : ImagemorphbothatCluster, i : Int, v : Double) -> ImagemorphbothatCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCluster::set(self : ImagemorphbothatCluster, i : Int, v : Double) -> ImagemorphbothatCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cluster_sum(s : ImagemorphbothatCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatCluster::sum(self : ImagemorphbothatCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_cluster_mean(s : ImagemorphbothatCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatCluster::mean(self : ImagemorphbothatCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_cluster_scale(s : ImagemorphbothatCluster, f : Double) -> ImagemorphbothatCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCluster::scale(self : ImagemorphbothatCluster, f : Double) -> ImagemorphbothatCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cluster_add(a : ImagemorphbothatCluster, b : ImagemorphbothatCluster) -> ImagemorphbothatCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatCluster::add(self : ImagemorphbothatCluster, other : ImagemorphbothatCluster) -> ImagemorphbothatCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cluster_copy(s : ImagemorphbothatCluster) -> ImagemorphbothatCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCluster::copy(self : ImagemorphbothatCluster) -> ImagemorphbothatCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cluster_fill(s : ImagemorphbothatCluster, v : Double) -> ImagemorphbothatCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCluster::fill(self : ImagemorphbothatCluster, v : Double) -> ImagemorphbothatCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cluster_min(s : ImagemorphbothatCluster) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatCluster::min(self : ImagemorphbothatCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_cluster_max(s : ImagemorphbothatCluster) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatCluster::max(self : ImagemorphbothatCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_cluster_to_string(s : ImagemorphbothatCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatCluster::to_string(self : ImagemorphbothatCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatModel {
@@ -708,45 +708,45 @@ pub fn image_morph_bothat_model_make(size : Int) -> ImagemorphbothatModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_model_len(s : ImagemorphbothatModel) -> Int { s.size }
+pub fn ImagemorphbothatModel::len(self : ImagemorphbothatModel) -> Int { self.size }
 
-pub fn image_morph_bothat_model_get(s : ImagemorphbothatModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatModel::get(self : ImagemorphbothatModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_model_set(s : ImagemorphbothatModel, i : Int, v : Double) -> ImagemorphbothatModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatModel::set(self : ImagemorphbothatModel, i : Int, v : Double) -> ImagemorphbothatModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_model_sum(s : ImagemorphbothatModel) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatModel::sum(self : ImagemorphbothatModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_model_mean(s : ImagemorphbothatModel) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatModel::mean(self : ImagemorphbothatModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_model_scale(s : ImagemorphbothatModel, f : Double) -> ImagemorphbothatModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatModel::scale(self : ImagemorphbothatModel, f : Double) -> ImagemorphbothatModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_model_add(a : ImagemorphbothatModel, b : ImagemorphbothatModel) -> ImagemorphbothatModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatModel::add(self : ImagemorphbothatModel, other : ImagemorphbothatModel) -> ImagemorphbothatModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_model_copy(s : ImagemorphbothatModel) -> ImagemorphbothatModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatModel::copy(self : ImagemorphbothatModel) -> ImagemorphbothatModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_model_fill(s : ImagemorphbothatModel, v : Double) -> ImagemorphbothatModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatModel::fill(self : ImagemorphbothatModel, v : Double) -> ImagemorphbothatModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_model_min(s : ImagemorphbothatModel) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatModel::min(self : ImagemorphbothatModel) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_model_max(s : ImagemorphbothatModel) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatModel::max(self : ImagemorphbothatModel) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_model_to_string(s : ImagemorphbothatModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatModel::to_string(self : ImagemorphbothatModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatLayer {
@@ -759,45 +759,45 @@ pub fn image_morph_bothat_layer_make(size : Int) -> ImagemorphbothatLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_layer_len(s : ImagemorphbothatLayer) -> Int { s.size }
+pub fn ImagemorphbothatLayer::len(self : ImagemorphbothatLayer) -> Int { self.size }
 
-pub fn image_morph_bothat_layer_get(s : ImagemorphbothatLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatLayer::get(self : ImagemorphbothatLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_layer_set(s : ImagemorphbothatLayer, i : Int, v : Double) -> ImagemorphbothatLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatLayer::set(self : ImagemorphbothatLayer, i : Int, v : Double) -> ImagemorphbothatLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_layer_sum(s : ImagemorphbothatLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatLayer::sum(self : ImagemorphbothatLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_layer_mean(s : ImagemorphbothatLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatLayer::mean(self : ImagemorphbothatLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_layer_scale(s : ImagemorphbothatLayer, f : Double) -> ImagemorphbothatLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatLayer::scale(self : ImagemorphbothatLayer, f : Double) -> ImagemorphbothatLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_layer_add(a : ImagemorphbothatLayer, b : ImagemorphbothatLayer) -> ImagemorphbothatLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatLayer::add(self : ImagemorphbothatLayer, other : ImagemorphbothatLayer) -> ImagemorphbothatLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_layer_copy(s : ImagemorphbothatLayer) -> ImagemorphbothatLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatLayer::copy(self : ImagemorphbothatLayer) -> ImagemorphbothatLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_layer_fill(s : ImagemorphbothatLayer, v : Double) -> ImagemorphbothatLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatLayer::fill(self : ImagemorphbothatLayer, v : Double) -> ImagemorphbothatLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_layer_min(s : ImagemorphbothatLayer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatLayer::min(self : ImagemorphbothatLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_layer_max(s : ImagemorphbothatLayer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatLayer::max(self : ImagemorphbothatLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_layer_to_string(s : ImagemorphbothatLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatLayer::to_string(self : ImagemorphbothatLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatBuffer {
@@ -810,45 +810,45 @@ pub fn image_morph_bothat_buffer_make(size : Int) -> ImagemorphbothatBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_buffer_len(s : ImagemorphbothatBuffer) -> Int { s.size }
+pub fn ImagemorphbothatBuffer::len(self : ImagemorphbothatBuffer) -> Int { self.size }
 
-pub fn image_morph_bothat_buffer_get(s : ImagemorphbothatBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatBuffer::get(self : ImagemorphbothatBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_buffer_set(s : ImagemorphbothatBuffer, i : Int, v : Double) -> ImagemorphbothatBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatBuffer::set(self : ImagemorphbothatBuffer, i : Int, v : Double) -> ImagemorphbothatBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_buffer_sum(s : ImagemorphbothatBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatBuffer::sum(self : ImagemorphbothatBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_buffer_mean(s : ImagemorphbothatBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatBuffer::mean(self : ImagemorphbothatBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_buffer_scale(s : ImagemorphbothatBuffer, f : Double) -> ImagemorphbothatBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatBuffer::scale(self : ImagemorphbothatBuffer, f : Double) -> ImagemorphbothatBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_buffer_add(a : ImagemorphbothatBuffer, b : ImagemorphbothatBuffer) -> ImagemorphbothatBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatBuffer::add(self : ImagemorphbothatBuffer, other : ImagemorphbothatBuffer) -> ImagemorphbothatBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_buffer_copy(s : ImagemorphbothatBuffer) -> ImagemorphbothatBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatBuffer::copy(self : ImagemorphbothatBuffer) -> ImagemorphbothatBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_buffer_fill(s : ImagemorphbothatBuffer, v : Double) -> ImagemorphbothatBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatBuffer::fill(self : ImagemorphbothatBuffer, v : Double) -> ImagemorphbothatBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_buffer_min(s : ImagemorphbothatBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatBuffer::min(self : ImagemorphbothatBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_buffer_max(s : ImagemorphbothatBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatBuffer::max(self : ImagemorphbothatBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_buffer_to_string(s : ImagemorphbothatBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatBuffer::to_string(self : ImagemorphbothatBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatCursor {
@@ -861,45 +861,45 @@ pub fn image_morph_bothat_cursor_make(size : Int) -> ImagemorphbothatCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_cursor_len(s : ImagemorphbothatCursor) -> Int { s.size }
+pub fn ImagemorphbothatCursor::len(self : ImagemorphbothatCursor) -> Int { self.size }
 
-pub fn image_morph_bothat_cursor_get(s : ImagemorphbothatCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatCursor::get(self : ImagemorphbothatCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_cursor_set(s : ImagemorphbothatCursor, i : Int, v : Double) -> ImagemorphbothatCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCursor::set(self : ImagemorphbothatCursor, i : Int, v : Double) -> ImagemorphbothatCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cursor_sum(s : ImagemorphbothatCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatCursor::sum(self : ImagemorphbothatCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_cursor_mean(s : ImagemorphbothatCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatCursor::mean(self : ImagemorphbothatCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_cursor_scale(s : ImagemorphbothatCursor, f : Double) -> ImagemorphbothatCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCursor::scale(self : ImagemorphbothatCursor, f : Double) -> ImagemorphbothatCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cursor_add(a : ImagemorphbothatCursor, b : ImagemorphbothatCursor) -> ImagemorphbothatCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatCursor::add(self : ImagemorphbothatCursor, other : ImagemorphbothatCursor) -> ImagemorphbothatCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cursor_copy(s : ImagemorphbothatCursor) -> ImagemorphbothatCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCursor::copy(self : ImagemorphbothatCursor) -> ImagemorphbothatCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cursor_fill(s : ImagemorphbothatCursor, v : Double) -> ImagemorphbothatCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatCursor::fill(self : ImagemorphbothatCursor, v : Double) -> ImagemorphbothatCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_cursor_min(s : ImagemorphbothatCursor) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatCursor::min(self : ImagemorphbothatCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_cursor_max(s : ImagemorphbothatCursor) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatCursor::max(self : ImagemorphbothatCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_cursor_to_string(s : ImagemorphbothatCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatCursor::to_string(self : ImagemorphbothatCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatView {
@@ -912,45 +912,45 @@ pub fn image_morph_bothat_view_make(size : Int) -> ImagemorphbothatView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_view_len(s : ImagemorphbothatView) -> Int { s.size }
+pub fn ImagemorphbothatView::len(self : ImagemorphbothatView) -> Int { self.size }
 
-pub fn image_morph_bothat_view_get(s : ImagemorphbothatView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatView::get(self : ImagemorphbothatView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_view_set(s : ImagemorphbothatView, i : Int, v : Double) -> ImagemorphbothatView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatView::set(self : ImagemorphbothatView, i : Int, v : Double) -> ImagemorphbothatView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_view_sum(s : ImagemorphbothatView) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatView::sum(self : ImagemorphbothatView) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_view_mean(s : ImagemorphbothatView) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatView::mean(self : ImagemorphbothatView) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_view_scale(s : ImagemorphbothatView, f : Double) -> ImagemorphbothatView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatView::scale(self : ImagemorphbothatView, f : Double) -> ImagemorphbothatView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_view_add(a : ImagemorphbothatView, b : ImagemorphbothatView) -> ImagemorphbothatView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatView::add(self : ImagemorphbothatView, other : ImagemorphbothatView) -> ImagemorphbothatView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_view_copy(s : ImagemorphbothatView) -> ImagemorphbothatView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatView::copy(self : ImagemorphbothatView) -> ImagemorphbothatView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_view_fill(s : ImagemorphbothatView, v : Double) -> ImagemorphbothatView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatView::fill(self : ImagemorphbothatView, v : Double) -> ImagemorphbothatView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_view_min(s : ImagemorphbothatView) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatView::min(self : ImagemorphbothatView) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_view_max(s : ImagemorphbothatView) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatView::max(self : ImagemorphbothatView) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_view_to_string(s : ImagemorphbothatView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatView::to_string(self : ImagemorphbothatView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatRange {
@@ -963,45 +963,45 @@ pub fn image_morph_bothat_range_make(size : Int) -> ImagemorphbothatRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_range_len(s : ImagemorphbothatRange) -> Int { s.size }
+pub fn ImagemorphbothatRange::len(self : ImagemorphbothatRange) -> Int { self.size }
 
-pub fn image_morph_bothat_range_get(s : ImagemorphbothatRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatRange::get(self : ImagemorphbothatRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_range_set(s : ImagemorphbothatRange, i : Int, v : Double) -> ImagemorphbothatRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatRange::set(self : ImagemorphbothatRange, i : Int, v : Double) -> ImagemorphbothatRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_range_sum(s : ImagemorphbothatRange) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatRange::sum(self : ImagemorphbothatRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_range_mean(s : ImagemorphbothatRange) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatRange::mean(self : ImagemorphbothatRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_range_scale(s : ImagemorphbothatRange, f : Double) -> ImagemorphbothatRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatRange::scale(self : ImagemorphbothatRange, f : Double) -> ImagemorphbothatRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_range_add(a : ImagemorphbothatRange, b : ImagemorphbothatRange) -> ImagemorphbothatRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatRange::add(self : ImagemorphbothatRange, other : ImagemorphbothatRange) -> ImagemorphbothatRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_range_copy(s : ImagemorphbothatRange) -> ImagemorphbothatRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatRange::copy(self : ImagemorphbothatRange) -> ImagemorphbothatRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_range_fill(s : ImagemorphbothatRange, v : Double) -> ImagemorphbothatRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatRange::fill(self : ImagemorphbothatRange, v : Double) -> ImagemorphbothatRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_range_min(s : ImagemorphbothatRange) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatRange::min(self : ImagemorphbothatRange) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_range_max(s : ImagemorphbothatRange) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatRange::max(self : ImagemorphbothatRange) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_range_to_string(s : ImagemorphbothatRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatRange::to_string(self : ImagemorphbothatRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphbothatSlice {
@@ -1014,44 +1014,44 @@ pub fn image_morph_bothat_slice_make(size : Int) -> ImagemorphbothatSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_bothat_slice_len(s : ImagemorphbothatSlice) -> Int { s.size }
+pub fn ImagemorphbothatSlice::len(self : ImagemorphbothatSlice) -> Int { self.size }
 
-pub fn image_morph_bothat_slice_get(s : ImagemorphbothatSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphbothatSlice::get(self : ImagemorphbothatSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_bothat_slice_set(s : ImagemorphbothatSlice, i : Int, v : Double) -> ImagemorphbothatSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphbothatSlice::set(self : ImagemorphbothatSlice, i : Int, v : Double) -> ImagemorphbothatSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_slice_sum(s : ImagemorphbothatSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphbothatSlice::sum(self : ImagemorphbothatSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_bothat_slice_mean(s : ImagemorphbothatSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphbothatSlice::mean(self : ImagemorphbothatSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_bothat_slice_scale(s : ImagemorphbothatSlice, f : Double) -> ImagemorphbothatSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatSlice::scale(self : ImagemorphbothatSlice, f : Double) -> ImagemorphbothatSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_slice_add(a : ImagemorphbothatSlice, b : ImagemorphbothatSlice) -> ImagemorphbothatSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphbothatSlice::add(self : ImagemorphbothatSlice, other : ImagemorphbothatSlice) -> ImagemorphbothatSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_bothat_slice_copy(s : ImagemorphbothatSlice) -> ImagemorphbothatSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatSlice::copy(self : ImagemorphbothatSlice) -> ImagemorphbothatSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_slice_fill(s : ImagemorphbothatSlice, v : Double) -> ImagemorphbothatSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphbothatSlice::fill(self : ImagemorphbothatSlice, v : Double) -> ImagemorphbothatSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_bothat_slice_min(s : ImagemorphbothatSlice) -> Double { @_common.min(s.data) }
+pub fn ImagemorphbothatSlice::min(self : ImagemorphbothatSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_bothat_slice_max(s : ImagemorphbothatSlice) -> Double { @_common.max(s.data) }
+pub fn ImagemorphbothatSlice::max(self : ImagemorphbothatSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_bothat_slice_to_string(s : ImagemorphbothatSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphbothatSlice::to_string(self : ImagemorphbothatSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

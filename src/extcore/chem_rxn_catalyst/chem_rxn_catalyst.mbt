@@ -351,45 +351,45 @@ pub fn chem_rxn_catalyst_frame_make(size : Int) -> ChemrxncatalystFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_frame_len(s : ChemrxncatalystFrame) -> Int { s.size }
+pub fn ChemrxncatalystFrame::len(self : ChemrxncatalystFrame) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_frame_get(s : ChemrxncatalystFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystFrame::get(self : ChemrxncatalystFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_frame_set(s : ChemrxncatalystFrame, i : Int, v : Double) -> ChemrxncatalystFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystFrame::set(self : ChemrxncatalystFrame, i : Int, v : Double) -> ChemrxncatalystFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_frame_sum(s : ChemrxncatalystFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystFrame::sum(self : ChemrxncatalystFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_frame_mean(s : ChemrxncatalystFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystFrame::mean(self : ChemrxncatalystFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_frame_scale(s : ChemrxncatalystFrame, f : Double) -> ChemrxncatalystFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystFrame::scale(self : ChemrxncatalystFrame, f : Double) -> ChemrxncatalystFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_frame_add(a : ChemrxncatalystFrame, b : ChemrxncatalystFrame) -> ChemrxncatalystFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystFrame::add(self : ChemrxncatalystFrame, other : ChemrxncatalystFrame) -> ChemrxncatalystFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_frame_copy(s : ChemrxncatalystFrame) -> ChemrxncatalystFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystFrame::copy(self : ChemrxncatalystFrame) -> ChemrxncatalystFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_frame_fill(s : ChemrxncatalystFrame, v : Double) -> ChemrxncatalystFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystFrame::fill(self : ChemrxncatalystFrame, v : Double) -> ChemrxncatalystFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_frame_min(s : ChemrxncatalystFrame) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystFrame::min(self : ChemrxncatalystFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_frame_max(s : ChemrxncatalystFrame) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystFrame::max(self : ChemrxncatalystFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_frame_to_string(s : ChemrxncatalystFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystFrame::to_string(self : ChemrxncatalystFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystTable {
@@ -402,45 +402,45 @@ pub fn chem_rxn_catalyst_table_make(size : Int) -> ChemrxncatalystTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_table_len(s : ChemrxncatalystTable) -> Int { s.size }
+pub fn ChemrxncatalystTable::len(self : ChemrxncatalystTable) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_table_get(s : ChemrxncatalystTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystTable::get(self : ChemrxncatalystTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_table_set(s : ChemrxncatalystTable, i : Int, v : Double) -> ChemrxncatalystTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystTable::set(self : ChemrxncatalystTable, i : Int, v : Double) -> ChemrxncatalystTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_table_sum(s : ChemrxncatalystTable) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystTable::sum(self : ChemrxncatalystTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_table_mean(s : ChemrxncatalystTable) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystTable::mean(self : ChemrxncatalystTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_table_scale(s : ChemrxncatalystTable, f : Double) -> ChemrxncatalystTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystTable::scale(self : ChemrxncatalystTable, f : Double) -> ChemrxncatalystTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_table_add(a : ChemrxncatalystTable, b : ChemrxncatalystTable) -> ChemrxncatalystTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystTable::add(self : ChemrxncatalystTable, other : ChemrxncatalystTable) -> ChemrxncatalystTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_table_copy(s : ChemrxncatalystTable) -> ChemrxncatalystTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystTable::copy(self : ChemrxncatalystTable) -> ChemrxncatalystTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_table_fill(s : ChemrxncatalystTable, v : Double) -> ChemrxncatalystTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystTable::fill(self : ChemrxncatalystTable, v : Double) -> ChemrxncatalystTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_table_min(s : ChemrxncatalystTable) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystTable::min(self : ChemrxncatalystTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_table_max(s : ChemrxncatalystTable) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystTable::max(self : ChemrxncatalystTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_table_to_string(s : ChemrxncatalystTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystTable::to_string(self : ChemrxncatalystTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystGraphN {
@@ -453,45 +453,45 @@ pub fn chem_rxn_catalyst_graphn_make(size : Int) -> ChemrxncatalystGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_graphn_len(s : ChemrxncatalystGraphN) -> Int { s.size }
+pub fn ChemrxncatalystGraphN::len(self : ChemrxncatalystGraphN) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_graphn_get(s : ChemrxncatalystGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystGraphN::get(self : ChemrxncatalystGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_graphn_set(s : ChemrxncatalystGraphN, i : Int, v : Double) -> ChemrxncatalystGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystGraphN::set(self : ChemrxncatalystGraphN, i : Int, v : Double) -> ChemrxncatalystGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_graphn_sum(s : ChemrxncatalystGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystGraphN::sum(self : ChemrxncatalystGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_graphn_mean(s : ChemrxncatalystGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystGraphN::mean(self : ChemrxncatalystGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_graphn_scale(s : ChemrxncatalystGraphN, f : Double) -> ChemrxncatalystGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystGraphN::scale(self : ChemrxncatalystGraphN, f : Double) -> ChemrxncatalystGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_graphn_add(a : ChemrxncatalystGraphN, b : ChemrxncatalystGraphN) -> ChemrxncatalystGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystGraphN::add(self : ChemrxncatalystGraphN, other : ChemrxncatalystGraphN) -> ChemrxncatalystGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_graphn_copy(s : ChemrxncatalystGraphN) -> ChemrxncatalystGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystGraphN::copy(self : ChemrxncatalystGraphN) -> ChemrxncatalystGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_graphn_fill(s : ChemrxncatalystGraphN, v : Double) -> ChemrxncatalystGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystGraphN::fill(self : ChemrxncatalystGraphN, v : Double) -> ChemrxncatalystGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_graphn_min(s : ChemrxncatalystGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystGraphN::min(self : ChemrxncatalystGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_graphn_max(s : ChemrxncatalystGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystGraphN::max(self : ChemrxncatalystGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_graphn_to_string(s : ChemrxncatalystGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystGraphN::to_string(self : ChemrxncatalystGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystNode {
@@ -504,45 +504,45 @@ pub fn chem_rxn_catalyst_node_make(size : Int) -> ChemrxncatalystNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_node_len(s : ChemrxncatalystNode) -> Int { s.size }
+pub fn ChemrxncatalystNode::len(self : ChemrxncatalystNode) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_node_get(s : ChemrxncatalystNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystNode::get(self : ChemrxncatalystNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_node_set(s : ChemrxncatalystNode, i : Int, v : Double) -> ChemrxncatalystNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystNode::set(self : ChemrxncatalystNode, i : Int, v : Double) -> ChemrxncatalystNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_node_sum(s : ChemrxncatalystNode) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystNode::sum(self : ChemrxncatalystNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_node_mean(s : ChemrxncatalystNode) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystNode::mean(self : ChemrxncatalystNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_node_scale(s : ChemrxncatalystNode, f : Double) -> ChemrxncatalystNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystNode::scale(self : ChemrxncatalystNode, f : Double) -> ChemrxncatalystNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_node_add(a : ChemrxncatalystNode, b : ChemrxncatalystNode) -> ChemrxncatalystNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystNode::add(self : ChemrxncatalystNode, other : ChemrxncatalystNode) -> ChemrxncatalystNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_node_copy(s : ChemrxncatalystNode) -> ChemrxncatalystNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystNode::copy(self : ChemrxncatalystNode) -> ChemrxncatalystNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_node_fill(s : ChemrxncatalystNode, v : Double) -> ChemrxncatalystNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystNode::fill(self : ChemrxncatalystNode, v : Double) -> ChemrxncatalystNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_node_min(s : ChemrxncatalystNode) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystNode::min(self : ChemrxncatalystNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_node_max(s : ChemrxncatalystNode) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystNode::max(self : ChemrxncatalystNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_node_to_string(s : ChemrxncatalystNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystNode::to_string(self : ChemrxncatalystNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystEdge {
@@ -555,45 +555,45 @@ pub fn chem_rxn_catalyst_edge_make(size : Int) -> ChemrxncatalystEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_edge_len(s : ChemrxncatalystEdge) -> Int { s.size }
+pub fn ChemrxncatalystEdge::len(self : ChemrxncatalystEdge) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_edge_get(s : ChemrxncatalystEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystEdge::get(self : ChemrxncatalystEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_edge_set(s : ChemrxncatalystEdge, i : Int, v : Double) -> ChemrxncatalystEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystEdge::set(self : ChemrxncatalystEdge, i : Int, v : Double) -> ChemrxncatalystEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_edge_sum(s : ChemrxncatalystEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystEdge::sum(self : ChemrxncatalystEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_edge_mean(s : ChemrxncatalystEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystEdge::mean(self : ChemrxncatalystEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_edge_scale(s : ChemrxncatalystEdge, f : Double) -> ChemrxncatalystEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystEdge::scale(self : ChemrxncatalystEdge, f : Double) -> ChemrxncatalystEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_edge_add(a : ChemrxncatalystEdge, b : ChemrxncatalystEdge) -> ChemrxncatalystEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystEdge::add(self : ChemrxncatalystEdge, other : ChemrxncatalystEdge) -> ChemrxncatalystEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_edge_copy(s : ChemrxncatalystEdge) -> ChemrxncatalystEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystEdge::copy(self : ChemrxncatalystEdge) -> ChemrxncatalystEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_edge_fill(s : ChemrxncatalystEdge, v : Double) -> ChemrxncatalystEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystEdge::fill(self : ChemrxncatalystEdge, v : Double) -> ChemrxncatalystEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_edge_min(s : ChemrxncatalystEdge) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystEdge::min(self : ChemrxncatalystEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_edge_max(s : ChemrxncatalystEdge) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystEdge::max(self : ChemrxncatalystEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_edge_to_string(s : ChemrxncatalystEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystEdge::to_string(self : ChemrxncatalystEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystPath {
@@ -606,45 +606,45 @@ pub fn chem_rxn_catalyst_path_make(size : Int) -> ChemrxncatalystPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_path_len(s : ChemrxncatalystPath) -> Int { s.size }
+pub fn ChemrxncatalystPath::len(self : ChemrxncatalystPath) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_path_get(s : ChemrxncatalystPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystPath::get(self : ChemrxncatalystPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_path_set(s : ChemrxncatalystPath, i : Int, v : Double) -> ChemrxncatalystPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystPath::set(self : ChemrxncatalystPath, i : Int, v : Double) -> ChemrxncatalystPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_path_sum(s : ChemrxncatalystPath) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystPath::sum(self : ChemrxncatalystPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_path_mean(s : ChemrxncatalystPath) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystPath::mean(self : ChemrxncatalystPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_path_scale(s : ChemrxncatalystPath, f : Double) -> ChemrxncatalystPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystPath::scale(self : ChemrxncatalystPath, f : Double) -> ChemrxncatalystPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_path_add(a : ChemrxncatalystPath, b : ChemrxncatalystPath) -> ChemrxncatalystPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystPath::add(self : ChemrxncatalystPath, other : ChemrxncatalystPath) -> ChemrxncatalystPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_path_copy(s : ChemrxncatalystPath) -> ChemrxncatalystPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystPath::copy(self : ChemrxncatalystPath) -> ChemrxncatalystPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_path_fill(s : ChemrxncatalystPath, v : Double) -> ChemrxncatalystPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystPath::fill(self : ChemrxncatalystPath, v : Double) -> ChemrxncatalystPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_path_min(s : ChemrxncatalystPath) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystPath::min(self : ChemrxncatalystPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_path_max(s : ChemrxncatalystPath) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystPath::max(self : ChemrxncatalystPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_path_to_string(s : ChemrxncatalystPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystPath::to_string(self : ChemrxncatalystPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystCluster {
@@ -657,45 +657,45 @@ pub fn chem_rxn_catalyst_cluster_make(size : Int) -> ChemrxncatalystCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_cluster_len(s : ChemrxncatalystCluster) -> Int { s.size }
+pub fn ChemrxncatalystCluster::len(self : ChemrxncatalystCluster) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_cluster_get(s : ChemrxncatalystCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystCluster::get(self : ChemrxncatalystCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_cluster_set(s : ChemrxncatalystCluster, i : Int, v : Double) -> ChemrxncatalystCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCluster::set(self : ChemrxncatalystCluster, i : Int, v : Double) -> ChemrxncatalystCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cluster_sum(s : ChemrxncatalystCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystCluster::sum(self : ChemrxncatalystCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_cluster_mean(s : ChemrxncatalystCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystCluster::mean(self : ChemrxncatalystCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_cluster_scale(s : ChemrxncatalystCluster, f : Double) -> ChemrxncatalystCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCluster::scale(self : ChemrxncatalystCluster, f : Double) -> ChemrxncatalystCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cluster_add(a : ChemrxncatalystCluster, b : ChemrxncatalystCluster) -> ChemrxncatalystCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystCluster::add(self : ChemrxncatalystCluster, other : ChemrxncatalystCluster) -> ChemrxncatalystCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cluster_copy(s : ChemrxncatalystCluster) -> ChemrxncatalystCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCluster::copy(self : ChemrxncatalystCluster) -> ChemrxncatalystCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cluster_fill(s : ChemrxncatalystCluster, v : Double) -> ChemrxncatalystCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCluster::fill(self : ChemrxncatalystCluster, v : Double) -> ChemrxncatalystCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cluster_min(s : ChemrxncatalystCluster) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystCluster::min(self : ChemrxncatalystCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_cluster_max(s : ChemrxncatalystCluster) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystCluster::max(self : ChemrxncatalystCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_cluster_to_string(s : ChemrxncatalystCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystCluster::to_string(self : ChemrxncatalystCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystModel {
@@ -708,45 +708,45 @@ pub fn chem_rxn_catalyst_model_make(size : Int) -> ChemrxncatalystModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_model_len(s : ChemrxncatalystModel) -> Int { s.size }
+pub fn ChemrxncatalystModel::len(self : ChemrxncatalystModel) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_model_get(s : ChemrxncatalystModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystModel::get(self : ChemrxncatalystModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_model_set(s : ChemrxncatalystModel, i : Int, v : Double) -> ChemrxncatalystModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystModel::set(self : ChemrxncatalystModel, i : Int, v : Double) -> ChemrxncatalystModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_model_sum(s : ChemrxncatalystModel) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystModel::sum(self : ChemrxncatalystModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_model_mean(s : ChemrxncatalystModel) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystModel::mean(self : ChemrxncatalystModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_model_scale(s : ChemrxncatalystModel, f : Double) -> ChemrxncatalystModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystModel::scale(self : ChemrxncatalystModel, f : Double) -> ChemrxncatalystModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_model_add(a : ChemrxncatalystModel, b : ChemrxncatalystModel) -> ChemrxncatalystModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystModel::add(self : ChemrxncatalystModel, other : ChemrxncatalystModel) -> ChemrxncatalystModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_model_copy(s : ChemrxncatalystModel) -> ChemrxncatalystModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystModel::copy(self : ChemrxncatalystModel) -> ChemrxncatalystModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_model_fill(s : ChemrxncatalystModel, v : Double) -> ChemrxncatalystModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystModel::fill(self : ChemrxncatalystModel, v : Double) -> ChemrxncatalystModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_model_min(s : ChemrxncatalystModel) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystModel::min(self : ChemrxncatalystModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_model_max(s : ChemrxncatalystModel) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystModel::max(self : ChemrxncatalystModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_model_to_string(s : ChemrxncatalystModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystModel::to_string(self : ChemrxncatalystModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystLayer {
@@ -759,45 +759,45 @@ pub fn chem_rxn_catalyst_layer_make(size : Int) -> ChemrxncatalystLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_layer_len(s : ChemrxncatalystLayer) -> Int { s.size }
+pub fn ChemrxncatalystLayer::len(self : ChemrxncatalystLayer) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_layer_get(s : ChemrxncatalystLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystLayer::get(self : ChemrxncatalystLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_layer_set(s : ChemrxncatalystLayer, i : Int, v : Double) -> ChemrxncatalystLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystLayer::set(self : ChemrxncatalystLayer, i : Int, v : Double) -> ChemrxncatalystLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_layer_sum(s : ChemrxncatalystLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystLayer::sum(self : ChemrxncatalystLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_layer_mean(s : ChemrxncatalystLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystLayer::mean(self : ChemrxncatalystLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_layer_scale(s : ChemrxncatalystLayer, f : Double) -> ChemrxncatalystLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystLayer::scale(self : ChemrxncatalystLayer, f : Double) -> ChemrxncatalystLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_layer_add(a : ChemrxncatalystLayer, b : ChemrxncatalystLayer) -> ChemrxncatalystLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystLayer::add(self : ChemrxncatalystLayer, other : ChemrxncatalystLayer) -> ChemrxncatalystLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_layer_copy(s : ChemrxncatalystLayer) -> ChemrxncatalystLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystLayer::copy(self : ChemrxncatalystLayer) -> ChemrxncatalystLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_layer_fill(s : ChemrxncatalystLayer, v : Double) -> ChemrxncatalystLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystLayer::fill(self : ChemrxncatalystLayer, v : Double) -> ChemrxncatalystLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_layer_min(s : ChemrxncatalystLayer) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystLayer::min(self : ChemrxncatalystLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_layer_max(s : ChemrxncatalystLayer) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystLayer::max(self : ChemrxncatalystLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_layer_to_string(s : ChemrxncatalystLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystLayer::to_string(self : ChemrxncatalystLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystBuffer {
@@ -810,45 +810,45 @@ pub fn chem_rxn_catalyst_buffer_make(size : Int) -> ChemrxncatalystBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_buffer_len(s : ChemrxncatalystBuffer) -> Int { s.size }
+pub fn ChemrxncatalystBuffer::len(self : ChemrxncatalystBuffer) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_buffer_get(s : ChemrxncatalystBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystBuffer::get(self : ChemrxncatalystBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_buffer_set(s : ChemrxncatalystBuffer, i : Int, v : Double) -> ChemrxncatalystBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystBuffer::set(self : ChemrxncatalystBuffer, i : Int, v : Double) -> ChemrxncatalystBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_buffer_sum(s : ChemrxncatalystBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystBuffer::sum(self : ChemrxncatalystBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_buffer_mean(s : ChemrxncatalystBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystBuffer::mean(self : ChemrxncatalystBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_buffer_scale(s : ChemrxncatalystBuffer, f : Double) -> ChemrxncatalystBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystBuffer::scale(self : ChemrxncatalystBuffer, f : Double) -> ChemrxncatalystBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_buffer_add(a : ChemrxncatalystBuffer, b : ChemrxncatalystBuffer) -> ChemrxncatalystBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystBuffer::add(self : ChemrxncatalystBuffer, other : ChemrxncatalystBuffer) -> ChemrxncatalystBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_buffer_copy(s : ChemrxncatalystBuffer) -> ChemrxncatalystBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystBuffer::copy(self : ChemrxncatalystBuffer) -> ChemrxncatalystBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_buffer_fill(s : ChemrxncatalystBuffer, v : Double) -> ChemrxncatalystBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystBuffer::fill(self : ChemrxncatalystBuffer, v : Double) -> ChemrxncatalystBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_buffer_min(s : ChemrxncatalystBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystBuffer::min(self : ChemrxncatalystBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_buffer_max(s : ChemrxncatalystBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystBuffer::max(self : ChemrxncatalystBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_buffer_to_string(s : ChemrxncatalystBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystBuffer::to_string(self : ChemrxncatalystBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystCursor {
@@ -861,45 +861,45 @@ pub fn chem_rxn_catalyst_cursor_make(size : Int) -> ChemrxncatalystCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_cursor_len(s : ChemrxncatalystCursor) -> Int { s.size }
+pub fn ChemrxncatalystCursor::len(self : ChemrxncatalystCursor) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_cursor_get(s : ChemrxncatalystCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystCursor::get(self : ChemrxncatalystCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_cursor_set(s : ChemrxncatalystCursor, i : Int, v : Double) -> ChemrxncatalystCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCursor::set(self : ChemrxncatalystCursor, i : Int, v : Double) -> ChemrxncatalystCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cursor_sum(s : ChemrxncatalystCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystCursor::sum(self : ChemrxncatalystCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_cursor_mean(s : ChemrxncatalystCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystCursor::mean(self : ChemrxncatalystCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_cursor_scale(s : ChemrxncatalystCursor, f : Double) -> ChemrxncatalystCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCursor::scale(self : ChemrxncatalystCursor, f : Double) -> ChemrxncatalystCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cursor_add(a : ChemrxncatalystCursor, b : ChemrxncatalystCursor) -> ChemrxncatalystCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystCursor::add(self : ChemrxncatalystCursor, other : ChemrxncatalystCursor) -> ChemrxncatalystCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cursor_copy(s : ChemrxncatalystCursor) -> ChemrxncatalystCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCursor::copy(self : ChemrxncatalystCursor) -> ChemrxncatalystCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cursor_fill(s : ChemrxncatalystCursor, v : Double) -> ChemrxncatalystCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystCursor::fill(self : ChemrxncatalystCursor, v : Double) -> ChemrxncatalystCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_cursor_min(s : ChemrxncatalystCursor) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystCursor::min(self : ChemrxncatalystCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_cursor_max(s : ChemrxncatalystCursor) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystCursor::max(self : ChemrxncatalystCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_cursor_to_string(s : ChemrxncatalystCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystCursor::to_string(self : ChemrxncatalystCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystView {
@@ -912,45 +912,45 @@ pub fn chem_rxn_catalyst_view_make(size : Int) -> ChemrxncatalystView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_view_len(s : ChemrxncatalystView) -> Int { s.size }
+pub fn ChemrxncatalystView::len(self : ChemrxncatalystView) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_view_get(s : ChemrxncatalystView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystView::get(self : ChemrxncatalystView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_view_set(s : ChemrxncatalystView, i : Int, v : Double) -> ChemrxncatalystView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystView::set(self : ChemrxncatalystView, i : Int, v : Double) -> ChemrxncatalystView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_view_sum(s : ChemrxncatalystView) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystView::sum(self : ChemrxncatalystView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_view_mean(s : ChemrxncatalystView) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystView::mean(self : ChemrxncatalystView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_view_scale(s : ChemrxncatalystView, f : Double) -> ChemrxncatalystView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystView::scale(self : ChemrxncatalystView, f : Double) -> ChemrxncatalystView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_view_add(a : ChemrxncatalystView, b : ChemrxncatalystView) -> ChemrxncatalystView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystView::add(self : ChemrxncatalystView, other : ChemrxncatalystView) -> ChemrxncatalystView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_view_copy(s : ChemrxncatalystView) -> ChemrxncatalystView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystView::copy(self : ChemrxncatalystView) -> ChemrxncatalystView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_view_fill(s : ChemrxncatalystView, v : Double) -> ChemrxncatalystView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystView::fill(self : ChemrxncatalystView, v : Double) -> ChemrxncatalystView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_view_min(s : ChemrxncatalystView) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystView::min(self : ChemrxncatalystView) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_view_max(s : ChemrxncatalystView) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystView::max(self : ChemrxncatalystView) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_view_to_string(s : ChemrxncatalystView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystView::to_string(self : ChemrxncatalystView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystRange {
@@ -963,45 +963,45 @@ pub fn chem_rxn_catalyst_range_make(size : Int) -> ChemrxncatalystRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_range_len(s : ChemrxncatalystRange) -> Int { s.size }
+pub fn ChemrxncatalystRange::len(self : ChemrxncatalystRange) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_range_get(s : ChemrxncatalystRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystRange::get(self : ChemrxncatalystRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_range_set(s : ChemrxncatalystRange, i : Int, v : Double) -> ChemrxncatalystRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystRange::set(self : ChemrxncatalystRange, i : Int, v : Double) -> ChemrxncatalystRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_range_sum(s : ChemrxncatalystRange) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystRange::sum(self : ChemrxncatalystRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_range_mean(s : ChemrxncatalystRange) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystRange::mean(self : ChemrxncatalystRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_range_scale(s : ChemrxncatalystRange, f : Double) -> ChemrxncatalystRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystRange::scale(self : ChemrxncatalystRange, f : Double) -> ChemrxncatalystRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_range_add(a : ChemrxncatalystRange, b : ChemrxncatalystRange) -> ChemrxncatalystRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystRange::add(self : ChemrxncatalystRange, other : ChemrxncatalystRange) -> ChemrxncatalystRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_range_copy(s : ChemrxncatalystRange) -> ChemrxncatalystRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystRange::copy(self : ChemrxncatalystRange) -> ChemrxncatalystRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_range_fill(s : ChemrxncatalystRange, v : Double) -> ChemrxncatalystRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystRange::fill(self : ChemrxncatalystRange, v : Double) -> ChemrxncatalystRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_range_min(s : ChemrxncatalystRange) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystRange::min(self : ChemrxncatalystRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_range_max(s : ChemrxncatalystRange) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystRange::max(self : ChemrxncatalystRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_range_to_string(s : ChemrxncatalystRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystRange::to_string(self : ChemrxncatalystRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxncatalystSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_rxn_catalyst_slice_make(size : Int) -> ChemrxncatalystSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_catalyst_slice_len(s : ChemrxncatalystSlice) -> Int { s.size }
+pub fn ChemrxncatalystSlice::len(self : ChemrxncatalystSlice) -> Int { self.size }
 
-pub fn chem_rxn_catalyst_slice_get(s : ChemrxncatalystSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxncatalystSlice::get(self : ChemrxncatalystSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_catalyst_slice_set(s : ChemrxncatalystSlice, i : Int, v : Double) -> ChemrxncatalystSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxncatalystSlice::set(self : ChemrxncatalystSlice, i : Int, v : Double) -> ChemrxncatalystSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_slice_sum(s : ChemrxncatalystSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemrxncatalystSlice::sum(self : ChemrxncatalystSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_catalyst_slice_mean(s : ChemrxncatalystSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemrxncatalystSlice::mean(self : ChemrxncatalystSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_catalyst_slice_scale(s : ChemrxncatalystSlice, f : Double) -> ChemrxncatalystSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystSlice::scale(self : ChemrxncatalystSlice, f : Double) -> ChemrxncatalystSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_slice_add(a : ChemrxncatalystSlice, b : ChemrxncatalystSlice) -> ChemrxncatalystSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxncatalystSlice::add(self : ChemrxncatalystSlice, other : ChemrxncatalystSlice) -> ChemrxncatalystSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_slice_copy(s : ChemrxncatalystSlice) -> ChemrxncatalystSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystSlice::copy(self : ChemrxncatalystSlice) -> ChemrxncatalystSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_slice_fill(s : ChemrxncatalystSlice, v : Double) -> ChemrxncatalystSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxncatalystSlice::fill(self : ChemrxncatalystSlice, v : Double) -> ChemrxncatalystSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_catalyst_slice_min(s : ChemrxncatalystSlice) -> Double { @_common.min(s.data) }
+pub fn ChemrxncatalystSlice::min(self : ChemrxncatalystSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_catalyst_slice_max(s : ChemrxncatalystSlice) -> Double { @_common.max(s.data) }
+pub fn ChemrxncatalystSlice::max(self : ChemrxncatalystSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_catalyst_slice_to_string(s : ChemrxncatalystSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxncatalystSlice::to_string(self : ChemrxncatalystSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

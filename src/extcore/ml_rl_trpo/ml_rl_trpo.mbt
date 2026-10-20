@@ -351,45 +351,45 @@ pub fn ml_rl_trpo_frame_make(size : Int) -> MlrltrpoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_frame_len(s : MlrltrpoFrame) -> Int { s.size }
+pub fn MlrltrpoFrame::len(self : MlrltrpoFrame) -> Int { self.size }
 
-pub fn ml_rl_trpo_frame_get(s : MlrltrpoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoFrame::get(self : MlrltrpoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_frame_set(s : MlrltrpoFrame, i : Int, v : Double) -> MlrltrpoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoFrame::set(self : MlrltrpoFrame, i : Int, v : Double) -> MlrltrpoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_frame_sum(s : MlrltrpoFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoFrame::sum(self : MlrltrpoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_frame_mean(s : MlrltrpoFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoFrame::mean(self : MlrltrpoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_frame_scale(s : MlrltrpoFrame, f : Double) -> MlrltrpoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoFrame::scale(self : MlrltrpoFrame, f : Double) -> MlrltrpoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_frame_add(a : MlrltrpoFrame, b : MlrltrpoFrame) -> MlrltrpoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoFrame::add(self : MlrltrpoFrame, other : MlrltrpoFrame) -> MlrltrpoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_frame_copy(s : MlrltrpoFrame) -> MlrltrpoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoFrame::copy(self : MlrltrpoFrame) -> MlrltrpoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_frame_fill(s : MlrltrpoFrame, v : Double) -> MlrltrpoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoFrame::fill(self : MlrltrpoFrame, v : Double) -> MlrltrpoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_frame_min(s : MlrltrpoFrame) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoFrame::min(self : MlrltrpoFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_frame_max(s : MlrltrpoFrame) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoFrame::max(self : MlrltrpoFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_frame_to_string(s : MlrltrpoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoFrame::to_string(self : MlrltrpoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_trpo_table_make(size : Int) -> MlrltrpoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_table_len(s : MlrltrpoTable) -> Int { s.size }
+pub fn MlrltrpoTable::len(self : MlrltrpoTable) -> Int { self.size }
 
-pub fn ml_rl_trpo_table_get(s : MlrltrpoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoTable::get(self : MlrltrpoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_table_set(s : MlrltrpoTable, i : Int, v : Double) -> MlrltrpoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoTable::set(self : MlrltrpoTable, i : Int, v : Double) -> MlrltrpoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_table_sum(s : MlrltrpoTable) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoTable::sum(self : MlrltrpoTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_table_mean(s : MlrltrpoTable) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoTable::mean(self : MlrltrpoTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_table_scale(s : MlrltrpoTable, f : Double) -> MlrltrpoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoTable::scale(self : MlrltrpoTable, f : Double) -> MlrltrpoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_table_add(a : MlrltrpoTable, b : MlrltrpoTable) -> MlrltrpoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoTable::add(self : MlrltrpoTable, other : MlrltrpoTable) -> MlrltrpoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_table_copy(s : MlrltrpoTable) -> MlrltrpoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoTable::copy(self : MlrltrpoTable) -> MlrltrpoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_table_fill(s : MlrltrpoTable, v : Double) -> MlrltrpoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoTable::fill(self : MlrltrpoTable, v : Double) -> MlrltrpoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_table_min(s : MlrltrpoTable) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoTable::min(self : MlrltrpoTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_table_max(s : MlrltrpoTable) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoTable::max(self : MlrltrpoTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_table_to_string(s : MlrltrpoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoTable::to_string(self : MlrltrpoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_trpo_graphn_make(size : Int) -> MlrltrpoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_graphn_len(s : MlrltrpoGraphN) -> Int { s.size }
+pub fn MlrltrpoGraphN::len(self : MlrltrpoGraphN) -> Int { self.size }
 
-pub fn ml_rl_trpo_graphn_get(s : MlrltrpoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoGraphN::get(self : MlrltrpoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_graphn_set(s : MlrltrpoGraphN, i : Int, v : Double) -> MlrltrpoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoGraphN::set(self : MlrltrpoGraphN, i : Int, v : Double) -> MlrltrpoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_graphn_sum(s : MlrltrpoGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoGraphN::sum(self : MlrltrpoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_graphn_mean(s : MlrltrpoGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoGraphN::mean(self : MlrltrpoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_graphn_scale(s : MlrltrpoGraphN, f : Double) -> MlrltrpoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoGraphN::scale(self : MlrltrpoGraphN, f : Double) -> MlrltrpoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_graphn_add(a : MlrltrpoGraphN, b : MlrltrpoGraphN) -> MlrltrpoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoGraphN::add(self : MlrltrpoGraphN, other : MlrltrpoGraphN) -> MlrltrpoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_graphn_copy(s : MlrltrpoGraphN) -> MlrltrpoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoGraphN::copy(self : MlrltrpoGraphN) -> MlrltrpoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_graphn_fill(s : MlrltrpoGraphN, v : Double) -> MlrltrpoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoGraphN::fill(self : MlrltrpoGraphN, v : Double) -> MlrltrpoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_graphn_min(s : MlrltrpoGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoGraphN::min(self : MlrltrpoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_graphn_max(s : MlrltrpoGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoGraphN::max(self : MlrltrpoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_graphn_to_string(s : MlrltrpoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoGraphN::to_string(self : MlrltrpoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_trpo_node_make(size : Int) -> MlrltrpoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_node_len(s : MlrltrpoNode) -> Int { s.size }
+pub fn MlrltrpoNode::len(self : MlrltrpoNode) -> Int { self.size }
 
-pub fn ml_rl_trpo_node_get(s : MlrltrpoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoNode::get(self : MlrltrpoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_node_set(s : MlrltrpoNode, i : Int, v : Double) -> MlrltrpoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoNode::set(self : MlrltrpoNode, i : Int, v : Double) -> MlrltrpoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_node_sum(s : MlrltrpoNode) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoNode::sum(self : MlrltrpoNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_node_mean(s : MlrltrpoNode) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoNode::mean(self : MlrltrpoNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_node_scale(s : MlrltrpoNode, f : Double) -> MlrltrpoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoNode::scale(self : MlrltrpoNode, f : Double) -> MlrltrpoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_node_add(a : MlrltrpoNode, b : MlrltrpoNode) -> MlrltrpoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoNode::add(self : MlrltrpoNode, other : MlrltrpoNode) -> MlrltrpoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_node_copy(s : MlrltrpoNode) -> MlrltrpoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoNode::copy(self : MlrltrpoNode) -> MlrltrpoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_node_fill(s : MlrltrpoNode, v : Double) -> MlrltrpoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoNode::fill(self : MlrltrpoNode, v : Double) -> MlrltrpoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_node_min(s : MlrltrpoNode) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoNode::min(self : MlrltrpoNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_node_max(s : MlrltrpoNode) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoNode::max(self : MlrltrpoNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_node_to_string(s : MlrltrpoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoNode::to_string(self : MlrltrpoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_trpo_edge_make(size : Int) -> MlrltrpoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_edge_len(s : MlrltrpoEdge) -> Int { s.size }
+pub fn MlrltrpoEdge::len(self : MlrltrpoEdge) -> Int { self.size }
 
-pub fn ml_rl_trpo_edge_get(s : MlrltrpoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoEdge::get(self : MlrltrpoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_edge_set(s : MlrltrpoEdge, i : Int, v : Double) -> MlrltrpoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoEdge::set(self : MlrltrpoEdge, i : Int, v : Double) -> MlrltrpoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_edge_sum(s : MlrltrpoEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoEdge::sum(self : MlrltrpoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_edge_mean(s : MlrltrpoEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoEdge::mean(self : MlrltrpoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_edge_scale(s : MlrltrpoEdge, f : Double) -> MlrltrpoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoEdge::scale(self : MlrltrpoEdge, f : Double) -> MlrltrpoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_edge_add(a : MlrltrpoEdge, b : MlrltrpoEdge) -> MlrltrpoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoEdge::add(self : MlrltrpoEdge, other : MlrltrpoEdge) -> MlrltrpoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_edge_copy(s : MlrltrpoEdge) -> MlrltrpoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoEdge::copy(self : MlrltrpoEdge) -> MlrltrpoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_edge_fill(s : MlrltrpoEdge, v : Double) -> MlrltrpoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoEdge::fill(self : MlrltrpoEdge, v : Double) -> MlrltrpoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_edge_min(s : MlrltrpoEdge) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoEdge::min(self : MlrltrpoEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_edge_max(s : MlrltrpoEdge) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoEdge::max(self : MlrltrpoEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_edge_to_string(s : MlrltrpoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoEdge::to_string(self : MlrltrpoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_trpo_path_make(size : Int) -> MlrltrpoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_path_len(s : MlrltrpoPath) -> Int { s.size }
+pub fn MlrltrpoPath::len(self : MlrltrpoPath) -> Int { self.size }
 
-pub fn ml_rl_trpo_path_get(s : MlrltrpoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoPath::get(self : MlrltrpoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_path_set(s : MlrltrpoPath, i : Int, v : Double) -> MlrltrpoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoPath::set(self : MlrltrpoPath, i : Int, v : Double) -> MlrltrpoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_path_sum(s : MlrltrpoPath) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoPath::sum(self : MlrltrpoPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_path_mean(s : MlrltrpoPath) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoPath::mean(self : MlrltrpoPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_path_scale(s : MlrltrpoPath, f : Double) -> MlrltrpoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoPath::scale(self : MlrltrpoPath, f : Double) -> MlrltrpoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_path_add(a : MlrltrpoPath, b : MlrltrpoPath) -> MlrltrpoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoPath::add(self : MlrltrpoPath, other : MlrltrpoPath) -> MlrltrpoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_path_copy(s : MlrltrpoPath) -> MlrltrpoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoPath::copy(self : MlrltrpoPath) -> MlrltrpoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_path_fill(s : MlrltrpoPath, v : Double) -> MlrltrpoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoPath::fill(self : MlrltrpoPath, v : Double) -> MlrltrpoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_path_min(s : MlrltrpoPath) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoPath::min(self : MlrltrpoPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_path_max(s : MlrltrpoPath) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoPath::max(self : MlrltrpoPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_path_to_string(s : MlrltrpoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoPath::to_string(self : MlrltrpoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_trpo_cluster_make(size : Int) -> MlrltrpoCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_cluster_len(s : MlrltrpoCluster) -> Int { s.size }
+pub fn MlrltrpoCluster::len(self : MlrltrpoCluster) -> Int { self.size }
 
-pub fn ml_rl_trpo_cluster_get(s : MlrltrpoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoCluster::get(self : MlrltrpoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_cluster_set(s : MlrltrpoCluster, i : Int, v : Double) -> MlrltrpoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoCluster::set(self : MlrltrpoCluster, i : Int, v : Double) -> MlrltrpoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cluster_sum(s : MlrltrpoCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoCluster::sum(self : MlrltrpoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_cluster_mean(s : MlrltrpoCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoCluster::mean(self : MlrltrpoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_cluster_scale(s : MlrltrpoCluster, f : Double) -> MlrltrpoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoCluster::scale(self : MlrltrpoCluster, f : Double) -> MlrltrpoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cluster_add(a : MlrltrpoCluster, b : MlrltrpoCluster) -> MlrltrpoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoCluster::add(self : MlrltrpoCluster, other : MlrltrpoCluster) -> MlrltrpoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cluster_copy(s : MlrltrpoCluster) -> MlrltrpoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoCluster::copy(self : MlrltrpoCluster) -> MlrltrpoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cluster_fill(s : MlrltrpoCluster, v : Double) -> MlrltrpoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoCluster::fill(self : MlrltrpoCluster, v : Double) -> MlrltrpoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cluster_min(s : MlrltrpoCluster) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoCluster::min(self : MlrltrpoCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_cluster_max(s : MlrltrpoCluster) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoCluster::max(self : MlrltrpoCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_cluster_to_string(s : MlrltrpoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoCluster::to_string(self : MlrltrpoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_trpo_model_make(size : Int) -> MlrltrpoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_model_len(s : MlrltrpoModel) -> Int { s.size }
+pub fn MlrltrpoModel::len(self : MlrltrpoModel) -> Int { self.size }
 
-pub fn ml_rl_trpo_model_get(s : MlrltrpoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoModel::get(self : MlrltrpoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_model_set(s : MlrltrpoModel, i : Int, v : Double) -> MlrltrpoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoModel::set(self : MlrltrpoModel, i : Int, v : Double) -> MlrltrpoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_model_sum(s : MlrltrpoModel) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoModel::sum(self : MlrltrpoModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_model_mean(s : MlrltrpoModel) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoModel::mean(self : MlrltrpoModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_model_scale(s : MlrltrpoModel, f : Double) -> MlrltrpoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoModel::scale(self : MlrltrpoModel, f : Double) -> MlrltrpoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_model_add(a : MlrltrpoModel, b : MlrltrpoModel) -> MlrltrpoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoModel::add(self : MlrltrpoModel, other : MlrltrpoModel) -> MlrltrpoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_model_copy(s : MlrltrpoModel) -> MlrltrpoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoModel::copy(self : MlrltrpoModel) -> MlrltrpoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_model_fill(s : MlrltrpoModel, v : Double) -> MlrltrpoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoModel::fill(self : MlrltrpoModel, v : Double) -> MlrltrpoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_model_min(s : MlrltrpoModel) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoModel::min(self : MlrltrpoModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_model_max(s : MlrltrpoModel) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoModel::max(self : MlrltrpoModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_model_to_string(s : MlrltrpoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoModel::to_string(self : MlrltrpoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_trpo_layer_make(size : Int) -> MlrltrpoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_layer_len(s : MlrltrpoLayer) -> Int { s.size }
+pub fn MlrltrpoLayer::len(self : MlrltrpoLayer) -> Int { self.size }
 
-pub fn ml_rl_trpo_layer_get(s : MlrltrpoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoLayer::get(self : MlrltrpoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_layer_set(s : MlrltrpoLayer, i : Int, v : Double) -> MlrltrpoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoLayer::set(self : MlrltrpoLayer, i : Int, v : Double) -> MlrltrpoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_layer_sum(s : MlrltrpoLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoLayer::sum(self : MlrltrpoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_layer_mean(s : MlrltrpoLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoLayer::mean(self : MlrltrpoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_layer_scale(s : MlrltrpoLayer, f : Double) -> MlrltrpoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoLayer::scale(self : MlrltrpoLayer, f : Double) -> MlrltrpoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_layer_add(a : MlrltrpoLayer, b : MlrltrpoLayer) -> MlrltrpoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoLayer::add(self : MlrltrpoLayer, other : MlrltrpoLayer) -> MlrltrpoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_layer_copy(s : MlrltrpoLayer) -> MlrltrpoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoLayer::copy(self : MlrltrpoLayer) -> MlrltrpoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_layer_fill(s : MlrltrpoLayer, v : Double) -> MlrltrpoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoLayer::fill(self : MlrltrpoLayer, v : Double) -> MlrltrpoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_layer_min(s : MlrltrpoLayer) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoLayer::min(self : MlrltrpoLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_layer_max(s : MlrltrpoLayer) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoLayer::max(self : MlrltrpoLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_layer_to_string(s : MlrltrpoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoLayer::to_string(self : MlrltrpoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_trpo_buffer_make(size : Int) -> MlrltrpoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_buffer_len(s : MlrltrpoBuffer) -> Int { s.size }
+pub fn MlrltrpoBuffer::len(self : MlrltrpoBuffer) -> Int { self.size }
 
-pub fn ml_rl_trpo_buffer_get(s : MlrltrpoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoBuffer::get(self : MlrltrpoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_buffer_set(s : MlrltrpoBuffer, i : Int, v : Double) -> MlrltrpoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoBuffer::set(self : MlrltrpoBuffer, i : Int, v : Double) -> MlrltrpoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_buffer_sum(s : MlrltrpoBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoBuffer::sum(self : MlrltrpoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_buffer_mean(s : MlrltrpoBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoBuffer::mean(self : MlrltrpoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_buffer_scale(s : MlrltrpoBuffer, f : Double) -> MlrltrpoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoBuffer::scale(self : MlrltrpoBuffer, f : Double) -> MlrltrpoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_buffer_add(a : MlrltrpoBuffer, b : MlrltrpoBuffer) -> MlrltrpoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoBuffer::add(self : MlrltrpoBuffer, other : MlrltrpoBuffer) -> MlrltrpoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_buffer_copy(s : MlrltrpoBuffer) -> MlrltrpoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoBuffer::copy(self : MlrltrpoBuffer) -> MlrltrpoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_buffer_fill(s : MlrltrpoBuffer, v : Double) -> MlrltrpoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoBuffer::fill(self : MlrltrpoBuffer, v : Double) -> MlrltrpoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_buffer_min(s : MlrltrpoBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoBuffer::min(self : MlrltrpoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_buffer_max(s : MlrltrpoBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoBuffer::max(self : MlrltrpoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_buffer_to_string(s : MlrltrpoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoBuffer::to_string(self : MlrltrpoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_trpo_cursor_make(size : Int) -> MlrltrpoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_cursor_len(s : MlrltrpoCursor) -> Int { s.size }
+pub fn MlrltrpoCursor::len(self : MlrltrpoCursor) -> Int { self.size }
 
-pub fn ml_rl_trpo_cursor_get(s : MlrltrpoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoCursor::get(self : MlrltrpoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_cursor_set(s : MlrltrpoCursor, i : Int, v : Double) -> MlrltrpoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoCursor::set(self : MlrltrpoCursor, i : Int, v : Double) -> MlrltrpoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cursor_sum(s : MlrltrpoCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoCursor::sum(self : MlrltrpoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_cursor_mean(s : MlrltrpoCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoCursor::mean(self : MlrltrpoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_cursor_scale(s : MlrltrpoCursor, f : Double) -> MlrltrpoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoCursor::scale(self : MlrltrpoCursor, f : Double) -> MlrltrpoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cursor_add(a : MlrltrpoCursor, b : MlrltrpoCursor) -> MlrltrpoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoCursor::add(self : MlrltrpoCursor, other : MlrltrpoCursor) -> MlrltrpoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cursor_copy(s : MlrltrpoCursor) -> MlrltrpoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoCursor::copy(self : MlrltrpoCursor) -> MlrltrpoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cursor_fill(s : MlrltrpoCursor, v : Double) -> MlrltrpoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoCursor::fill(self : MlrltrpoCursor, v : Double) -> MlrltrpoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_cursor_min(s : MlrltrpoCursor) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoCursor::min(self : MlrltrpoCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_cursor_max(s : MlrltrpoCursor) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoCursor::max(self : MlrltrpoCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_cursor_to_string(s : MlrltrpoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoCursor::to_string(self : MlrltrpoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoView {
@@ -912,45 +912,45 @@ pub fn ml_rl_trpo_view_make(size : Int) -> MlrltrpoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_view_len(s : MlrltrpoView) -> Int { s.size }
+pub fn MlrltrpoView::len(self : MlrltrpoView) -> Int { self.size }
 
-pub fn ml_rl_trpo_view_get(s : MlrltrpoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoView::get(self : MlrltrpoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_view_set(s : MlrltrpoView, i : Int, v : Double) -> MlrltrpoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoView::set(self : MlrltrpoView, i : Int, v : Double) -> MlrltrpoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_view_sum(s : MlrltrpoView) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoView::sum(self : MlrltrpoView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_view_mean(s : MlrltrpoView) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoView::mean(self : MlrltrpoView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_view_scale(s : MlrltrpoView, f : Double) -> MlrltrpoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoView::scale(self : MlrltrpoView, f : Double) -> MlrltrpoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_view_add(a : MlrltrpoView, b : MlrltrpoView) -> MlrltrpoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoView::add(self : MlrltrpoView, other : MlrltrpoView) -> MlrltrpoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_view_copy(s : MlrltrpoView) -> MlrltrpoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoView::copy(self : MlrltrpoView) -> MlrltrpoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_view_fill(s : MlrltrpoView, v : Double) -> MlrltrpoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoView::fill(self : MlrltrpoView, v : Double) -> MlrltrpoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_view_min(s : MlrltrpoView) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoView::min(self : MlrltrpoView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_view_max(s : MlrltrpoView) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoView::max(self : MlrltrpoView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_view_to_string(s : MlrltrpoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoView::to_string(self : MlrltrpoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_trpo_range_make(size : Int) -> MlrltrpoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_range_len(s : MlrltrpoRange) -> Int { s.size }
+pub fn MlrltrpoRange::len(self : MlrltrpoRange) -> Int { self.size }
 
-pub fn ml_rl_trpo_range_get(s : MlrltrpoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoRange::get(self : MlrltrpoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_range_set(s : MlrltrpoRange, i : Int, v : Double) -> MlrltrpoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoRange::set(self : MlrltrpoRange, i : Int, v : Double) -> MlrltrpoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_range_sum(s : MlrltrpoRange) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoRange::sum(self : MlrltrpoRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_range_mean(s : MlrltrpoRange) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoRange::mean(self : MlrltrpoRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_range_scale(s : MlrltrpoRange, f : Double) -> MlrltrpoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoRange::scale(self : MlrltrpoRange, f : Double) -> MlrltrpoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_range_add(a : MlrltrpoRange, b : MlrltrpoRange) -> MlrltrpoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoRange::add(self : MlrltrpoRange, other : MlrltrpoRange) -> MlrltrpoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_range_copy(s : MlrltrpoRange) -> MlrltrpoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoRange::copy(self : MlrltrpoRange) -> MlrltrpoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_range_fill(s : MlrltrpoRange, v : Double) -> MlrltrpoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoRange::fill(self : MlrltrpoRange, v : Double) -> MlrltrpoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_range_min(s : MlrltrpoRange) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoRange::min(self : MlrltrpoRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_range_max(s : MlrltrpoRange) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoRange::max(self : MlrltrpoRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_range_to_string(s : MlrltrpoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoRange::to_string(self : MlrltrpoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrltrpoSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_trpo_slice_make(size : Int) -> MlrltrpoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_trpo_slice_len(s : MlrltrpoSlice) -> Int { s.size }
+pub fn MlrltrpoSlice::len(self : MlrltrpoSlice) -> Int { self.size }
 
-pub fn ml_rl_trpo_slice_get(s : MlrltrpoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrltrpoSlice::get(self : MlrltrpoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_trpo_slice_set(s : MlrltrpoSlice, i : Int, v : Double) -> MlrltrpoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrltrpoSlice::set(self : MlrltrpoSlice, i : Int, v : Double) -> MlrltrpoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_slice_sum(s : MlrltrpoSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrltrpoSlice::sum(self : MlrltrpoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_trpo_slice_mean(s : MlrltrpoSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrltrpoSlice::mean(self : MlrltrpoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_trpo_slice_scale(s : MlrltrpoSlice, f : Double) -> MlrltrpoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrltrpoSlice::scale(self : MlrltrpoSlice, f : Double) -> MlrltrpoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_slice_add(a : MlrltrpoSlice, b : MlrltrpoSlice) -> MlrltrpoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrltrpoSlice::add(self : MlrltrpoSlice, other : MlrltrpoSlice) -> MlrltrpoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_slice_copy(s : MlrltrpoSlice) -> MlrltrpoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrltrpoSlice::copy(self : MlrltrpoSlice) -> MlrltrpoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_slice_fill(s : MlrltrpoSlice, v : Double) -> MlrltrpoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrltrpoSlice::fill(self : MlrltrpoSlice, v : Double) -> MlrltrpoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_trpo_slice_min(s : MlrltrpoSlice) -> Double { @_common.min(s.data) }
+pub fn MlrltrpoSlice::min(self : MlrltrpoSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_trpo_slice_max(s : MlrltrpoSlice) -> Double { @_common.max(s.data) }
+pub fn MlrltrpoSlice::max(self : MlrltrpoSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_trpo_slice_to_string(s : MlrltrpoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrltrpoSlice::to_string(self : MlrltrpoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

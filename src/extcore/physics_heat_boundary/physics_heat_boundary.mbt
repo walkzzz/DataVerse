@@ -351,45 +351,45 @@ pub fn physics_heat_boundary_frame_make(size : Int) -> PhysicsheatboundaryFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_frame_len(s : PhysicsheatboundaryFrame) -> Int { s.size }
+pub fn PhysicsheatboundaryFrame::len(self : PhysicsheatboundaryFrame) -> Int { self.size }
 
-pub fn physics_heat_boundary_frame_get(s : PhysicsheatboundaryFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryFrame::get(self : PhysicsheatboundaryFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_frame_set(s : PhysicsheatboundaryFrame, i : Int, v : Double) -> PhysicsheatboundaryFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryFrame::set(self : PhysicsheatboundaryFrame, i : Int, v : Double) -> PhysicsheatboundaryFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_frame_sum(s : PhysicsheatboundaryFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryFrame::sum(self : PhysicsheatboundaryFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_frame_mean(s : PhysicsheatboundaryFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryFrame::mean(self : PhysicsheatboundaryFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_frame_scale(s : PhysicsheatboundaryFrame, f : Double) -> PhysicsheatboundaryFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryFrame::scale(self : PhysicsheatboundaryFrame, f : Double) -> PhysicsheatboundaryFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_frame_add(a : PhysicsheatboundaryFrame, b : PhysicsheatboundaryFrame) -> PhysicsheatboundaryFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryFrame::add(self : PhysicsheatboundaryFrame, other : PhysicsheatboundaryFrame) -> PhysicsheatboundaryFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_frame_copy(s : PhysicsheatboundaryFrame) -> PhysicsheatboundaryFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryFrame::copy(self : PhysicsheatboundaryFrame) -> PhysicsheatboundaryFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_frame_fill(s : PhysicsheatboundaryFrame, v : Double) -> PhysicsheatboundaryFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryFrame::fill(self : PhysicsheatboundaryFrame, v : Double) -> PhysicsheatboundaryFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_frame_min(s : PhysicsheatboundaryFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryFrame::min(self : PhysicsheatboundaryFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_frame_max(s : PhysicsheatboundaryFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryFrame::max(self : PhysicsheatboundaryFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_frame_to_string(s : PhysicsheatboundaryFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryFrame::to_string(self : PhysicsheatboundaryFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryTable {
@@ -402,45 +402,45 @@ pub fn physics_heat_boundary_table_make(size : Int) -> PhysicsheatboundaryTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_table_len(s : PhysicsheatboundaryTable) -> Int { s.size }
+pub fn PhysicsheatboundaryTable::len(self : PhysicsheatboundaryTable) -> Int { self.size }
 
-pub fn physics_heat_boundary_table_get(s : PhysicsheatboundaryTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryTable::get(self : PhysicsheatboundaryTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_table_set(s : PhysicsheatboundaryTable, i : Int, v : Double) -> PhysicsheatboundaryTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryTable::set(self : PhysicsheatboundaryTable, i : Int, v : Double) -> PhysicsheatboundaryTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_table_sum(s : PhysicsheatboundaryTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryTable::sum(self : PhysicsheatboundaryTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_table_mean(s : PhysicsheatboundaryTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryTable::mean(self : PhysicsheatboundaryTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_table_scale(s : PhysicsheatboundaryTable, f : Double) -> PhysicsheatboundaryTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryTable::scale(self : PhysicsheatboundaryTable, f : Double) -> PhysicsheatboundaryTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_table_add(a : PhysicsheatboundaryTable, b : PhysicsheatboundaryTable) -> PhysicsheatboundaryTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryTable::add(self : PhysicsheatboundaryTable, other : PhysicsheatboundaryTable) -> PhysicsheatboundaryTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_table_copy(s : PhysicsheatboundaryTable) -> PhysicsheatboundaryTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryTable::copy(self : PhysicsheatboundaryTable) -> PhysicsheatboundaryTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_table_fill(s : PhysicsheatboundaryTable, v : Double) -> PhysicsheatboundaryTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryTable::fill(self : PhysicsheatboundaryTable, v : Double) -> PhysicsheatboundaryTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_table_min(s : PhysicsheatboundaryTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryTable::min(self : PhysicsheatboundaryTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_table_max(s : PhysicsheatboundaryTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryTable::max(self : PhysicsheatboundaryTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_table_to_string(s : PhysicsheatboundaryTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryTable::to_string(self : PhysicsheatboundaryTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryGraphN {
@@ -453,45 +453,45 @@ pub fn physics_heat_boundary_graphn_make(size : Int) -> PhysicsheatboundaryGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_graphn_len(s : PhysicsheatboundaryGraphN) -> Int { s.size }
+pub fn PhysicsheatboundaryGraphN::len(self : PhysicsheatboundaryGraphN) -> Int { self.size }
 
-pub fn physics_heat_boundary_graphn_get(s : PhysicsheatboundaryGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryGraphN::get(self : PhysicsheatboundaryGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_graphn_set(s : PhysicsheatboundaryGraphN, i : Int, v : Double) -> PhysicsheatboundaryGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryGraphN::set(self : PhysicsheatboundaryGraphN, i : Int, v : Double) -> PhysicsheatboundaryGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_graphn_sum(s : PhysicsheatboundaryGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryGraphN::sum(self : PhysicsheatboundaryGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_graphn_mean(s : PhysicsheatboundaryGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryGraphN::mean(self : PhysicsheatboundaryGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_graphn_scale(s : PhysicsheatboundaryGraphN, f : Double) -> PhysicsheatboundaryGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryGraphN::scale(self : PhysicsheatboundaryGraphN, f : Double) -> PhysicsheatboundaryGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_graphn_add(a : PhysicsheatboundaryGraphN, b : PhysicsheatboundaryGraphN) -> PhysicsheatboundaryGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryGraphN::add(self : PhysicsheatboundaryGraphN, other : PhysicsheatboundaryGraphN) -> PhysicsheatboundaryGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_graphn_copy(s : PhysicsheatboundaryGraphN) -> PhysicsheatboundaryGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryGraphN::copy(self : PhysicsheatboundaryGraphN) -> PhysicsheatboundaryGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_graphn_fill(s : PhysicsheatboundaryGraphN, v : Double) -> PhysicsheatboundaryGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryGraphN::fill(self : PhysicsheatboundaryGraphN, v : Double) -> PhysicsheatboundaryGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_graphn_min(s : PhysicsheatboundaryGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryGraphN::min(self : PhysicsheatboundaryGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_graphn_max(s : PhysicsheatboundaryGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryGraphN::max(self : PhysicsheatboundaryGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_graphn_to_string(s : PhysicsheatboundaryGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryGraphN::to_string(self : PhysicsheatboundaryGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryNode {
@@ -504,45 +504,45 @@ pub fn physics_heat_boundary_node_make(size : Int) -> PhysicsheatboundaryNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_node_len(s : PhysicsheatboundaryNode) -> Int { s.size }
+pub fn PhysicsheatboundaryNode::len(self : PhysicsheatboundaryNode) -> Int { self.size }
 
-pub fn physics_heat_boundary_node_get(s : PhysicsheatboundaryNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryNode::get(self : PhysicsheatboundaryNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_node_set(s : PhysicsheatboundaryNode, i : Int, v : Double) -> PhysicsheatboundaryNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryNode::set(self : PhysicsheatboundaryNode, i : Int, v : Double) -> PhysicsheatboundaryNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_node_sum(s : PhysicsheatboundaryNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryNode::sum(self : PhysicsheatboundaryNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_node_mean(s : PhysicsheatboundaryNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryNode::mean(self : PhysicsheatboundaryNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_node_scale(s : PhysicsheatboundaryNode, f : Double) -> PhysicsheatboundaryNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryNode::scale(self : PhysicsheatboundaryNode, f : Double) -> PhysicsheatboundaryNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_node_add(a : PhysicsheatboundaryNode, b : PhysicsheatboundaryNode) -> PhysicsheatboundaryNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryNode::add(self : PhysicsheatboundaryNode, other : PhysicsheatboundaryNode) -> PhysicsheatboundaryNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_node_copy(s : PhysicsheatboundaryNode) -> PhysicsheatboundaryNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryNode::copy(self : PhysicsheatboundaryNode) -> PhysicsheatboundaryNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_node_fill(s : PhysicsheatboundaryNode, v : Double) -> PhysicsheatboundaryNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryNode::fill(self : PhysicsheatboundaryNode, v : Double) -> PhysicsheatboundaryNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_node_min(s : PhysicsheatboundaryNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryNode::min(self : PhysicsheatboundaryNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_node_max(s : PhysicsheatboundaryNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryNode::max(self : PhysicsheatboundaryNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_node_to_string(s : PhysicsheatboundaryNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryNode::to_string(self : PhysicsheatboundaryNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryEdge {
@@ -555,45 +555,45 @@ pub fn physics_heat_boundary_edge_make(size : Int) -> PhysicsheatboundaryEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_edge_len(s : PhysicsheatboundaryEdge) -> Int { s.size }
+pub fn PhysicsheatboundaryEdge::len(self : PhysicsheatboundaryEdge) -> Int { self.size }
 
-pub fn physics_heat_boundary_edge_get(s : PhysicsheatboundaryEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryEdge::get(self : PhysicsheatboundaryEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_edge_set(s : PhysicsheatboundaryEdge, i : Int, v : Double) -> PhysicsheatboundaryEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryEdge::set(self : PhysicsheatboundaryEdge, i : Int, v : Double) -> PhysicsheatboundaryEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_edge_sum(s : PhysicsheatboundaryEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryEdge::sum(self : PhysicsheatboundaryEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_edge_mean(s : PhysicsheatboundaryEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryEdge::mean(self : PhysicsheatboundaryEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_edge_scale(s : PhysicsheatboundaryEdge, f : Double) -> PhysicsheatboundaryEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryEdge::scale(self : PhysicsheatboundaryEdge, f : Double) -> PhysicsheatboundaryEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_edge_add(a : PhysicsheatboundaryEdge, b : PhysicsheatboundaryEdge) -> PhysicsheatboundaryEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryEdge::add(self : PhysicsheatboundaryEdge, other : PhysicsheatboundaryEdge) -> PhysicsheatboundaryEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_edge_copy(s : PhysicsheatboundaryEdge) -> PhysicsheatboundaryEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryEdge::copy(self : PhysicsheatboundaryEdge) -> PhysicsheatboundaryEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_edge_fill(s : PhysicsheatboundaryEdge, v : Double) -> PhysicsheatboundaryEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryEdge::fill(self : PhysicsheatboundaryEdge, v : Double) -> PhysicsheatboundaryEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_edge_min(s : PhysicsheatboundaryEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryEdge::min(self : PhysicsheatboundaryEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_edge_max(s : PhysicsheatboundaryEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryEdge::max(self : PhysicsheatboundaryEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_edge_to_string(s : PhysicsheatboundaryEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryEdge::to_string(self : PhysicsheatboundaryEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryPath {
@@ -606,45 +606,45 @@ pub fn physics_heat_boundary_path_make(size : Int) -> PhysicsheatboundaryPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_path_len(s : PhysicsheatboundaryPath) -> Int { s.size }
+pub fn PhysicsheatboundaryPath::len(self : PhysicsheatboundaryPath) -> Int { self.size }
 
-pub fn physics_heat_boundary_path_get(s : PhysicsheatboundaryPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryPath::get(self : PhysicsheatboundaryPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_path_set(s : PhysicsheatboundaryPath, i : Int, v : Double) -> PhysicsheatboundaryPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryPath::set(self : PhysicsheatboundaryPath, i : Int, v : Double) -> PhysicsheatboundaryPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_path_sum(s : PhysicsheatboundaryPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryPath::sum(self : PhysicsheatboundaryPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_path_mean(s : PhysicsheatboundaryPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryPath::mean(self : PhysicsheatboundaryPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_path_scale(s : PhysicsheatboundaryPath, f : Double) -> PhysicsheatboundaryPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryPath::scale(self : PhysicsheatboundaryPath, f : Double) -> PhysicsheatboundaryPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_path_add(a : PhysicsheatboundaryPath, b : PhysicsheatboundaryPath) -> PhysicsheatboundaryPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryPath::add(self : PhysicsheatboundaryPath, other : PhysicsheatboundaryPath) -> PhysicsheatboundaryPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_path_copy(s : PhysicsheatboundaryPath) -> PhysicsheatboundaryPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryPath::copy(self : PhysicsheatboundaryPath) -> PhysicsheatboundaryPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_path_fill(s : PhysicsheatboundaryPath, v : Double) -> PhysicsheatboundaryPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryPath::fill(self : PhysicsheatboundaryPath, v : Double) -> PhysicsheatboundaryPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_path_min(s : PhysicsheatboundaryPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryPath::min(self : PhysicsheatboundaryPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_path_max(s : PhysicsheatboundaryPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryPath::max(self : PhysicsheatboundaryPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_path_to_string(s : PhysicsheatboundaryPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryPath::to_string(self : PhysicsheatboundaryPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryCluster {
@@ -657,45 +657,45 @@ pub fn physics_heat_boundary_cluster_make(size : Int) -> PhysicsheatboundaryClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_cluster_len(s : PhysicsheatboundaryCluster) -> Int { s.size }
+pub fn PhysicsheatboundaryCluster::len(self : PhysicsheatboundaryCluster) -> Int { self.size }
 
-pub fn physics_heat_boundary_cluster_get(s : PhysicsheatboundaryCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryCluster::get(self : PhysicsheatboundaryCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_cluster_set(s : PhysicsheatboundaryCluster, i : Int, v : Double) -> PhysicsheatboundaryCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCluster::set(self : PhysicsheatboundaryCluster, i : Int, v : Double) -> PhysicsheatboundaryCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cluster_sum(s : PhysicsheatboundaryCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryCluster::sum(self : PhysicsheatboundaryCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_cluster_mean(s : PhysicsheatboundaryCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryCluster::mean(self : PhysicsheatboundaryCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_cluster_scale(s : PhysicsheatboundaryCluster, f : Double) -> PhysicsheatboundaryCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCluster::scale(self : PhysicsheatboundaryCluster, f : Double) -> PhysicsheatboundaryCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cluster_add(a : PhysicsheatboundaryCluster, b : PhysicsheatboundaryCluster) -> PhysicsheatboundaryCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryCluster::add(self : PhysicsheatboundaryCluster, other : PhysicsheatboundaryCluster) -> PhysicsheatboundaryCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cluster_copy(s : PhysicsheatboundaryCluster) -> PhysicsheatboundaryCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCluster::copy(self : PhysicsheatboundaryCluster) -> PhysicsheatboundaryCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cluster_fill(s : PhysicsheatboundaryCluster, v : Double) -> PhysicsheatboundaryCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCluster::fill(self : PhysicsheatboundaryCluster, v : Double) -> PhysicsheatboundaryCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cluster_min(s : PhysicsheatboundaryCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryCluster::min(self : PhysicsheatboundaryCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_cluster_max(s : PhysicsheatboundaryCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryCluster::max(self : PhysicsheatboundaryCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_cluster_to_string(s : PhysicsheatboundaryCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryCluster::to_string(self : PhysicsheatboundaryCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryModel {
@@ -708,45 +708,45 @@ pub fn physics_heat_boundary_model_make(size : Int) -> PhysicsheatboundaryModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_model_len(s : PhysicsheatboundaryModel) -> Int { s.size }
+pub fn PhysicsheatboundaryModel::len(self : PhysicsheatboundaryModel) -> Int { self.size }
 
-pub fn physics_heat_boundary_model_get(s : PhysicsheatboundaryModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryModel::get(self : PhysicsheatboundaryModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_model_set(s : PhysicsheatboundaryModel, i : Int, v : Double) -> PhysicsheatboundaryModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryModel::set(self : PhysicsheatboundaryModel, i : Int, v : Double) -> PhysicsheatboundaryModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_model_sum(s : PhysicsheatboundaryModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryModel::sum(self : PhysicsheatboundaryModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_model_mean(s : PhysicsheatboundaryModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryModel::mean(self : PhysicsheatboundaryModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_model_scale(s : PhysicsheatboundaryModel, f : Double) -> PhysicsheatboundaryModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryModel::scale(self : PhysicsheatboundaryModel, f : Double) -> PhysicsheatboundaryModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_model_add(a : PhysicsheatboundaryModel, b : PhysicsheatboundaryModel) -> PhysicsheatboundaryModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryModel::add(self : PhysicsheatboundaryModel, other : PhysicsheatboundaryModel) -> PhysicsheatboundaryModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_model_copy(s : PhysicsheatboundaryModel) -> PhysicsheatboundaryModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryModel::copy(self : PhysicsheatboundaryModel) -> PhysicsheatboundaryModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_model_fill(s : PhysicsheatboundaryModel, v : Double) -> PhysicsheatboundaryModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryModel::fill(self : PhysicsheatboundaryModel, v : Double) -> PhysicsheatboundaryModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_model_min(s : PhysicsheatboundaryModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryModel::min(self : PhysicsheatboundaryModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_model_max(s : PhysicsheatboundaryModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryModel::max(self : PhysicsheatboundaryModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_model_to_string(s : PhysicsheatboundaryModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryModel::to_string(self : PhysicsheatboundaryModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryLayer {
@@ -759,45 +759,45 @@ pub fn physics_heat_boundary_layer_make(size : Int) -> PhysicsheatboundaryLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_layer_len(s : PhysicsheatboundaryLayer) -> Int { s.size }
+pub fn PhysicsheatboundaryLayer::len(self : PhysicsheatboundaryLayer) -> Int { self.size }
 
-pub fn physics_heat_boundary_layer_get(s : PhysicsheatboundaryLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryLayer::get(self : PhysicsheatboundaryLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_layer_set(s : PhysicsheatboundaryLayer, i : Int, v : Double) -> PhysicsheatboundaryLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryLayer::set(self : PhysicsheatboundaryLayer, i : Int, v : Double) -> PhysicsheatboundaryLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_layer_sum(s : PhysicsheatboundaryLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryLayer::sum(self : PhysicsheatboundaryLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_layer_mean(s : PhysicsheatboundaryLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryLayer::mean(self : PhysicsheatboundaryLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_layer_scale(s : PhysicsheatboundaryLayer, f : Double) -> PhysicsheatboundaryLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryLayer::scale(self : PhysicsheatboundaryLayer, f : Double) -> PhysicsheatboundaryLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_layer_add(a : PhysicsheatboundaryLayer, b : PhysicsheatboundaryLayer) -> PhysicsheatboundaryLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryLayer::add(self : PhysicsheatboundaryLayer, other : PhysicsheatboundaryLayer) -> PhysicsheatboundaryLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_layer_copy(s : PhysicsheatboundaryLayer) -> PhysicsheatboundaryLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryLayer::copy(self : PhysicsheatboundaryLayer) -> PhysicsheatboundaryLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_layer_fill(s : PhysicsheatboundaryLayer, v : Double) -> PhysicsheatboundaryLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryLayer::fill(self : PhysicsheatboundaryLayer, v : Double) -> PhysicsheatboundaryLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_layer_min(s : PhysicsheatboundaryLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryLayer::min(self : PhysicsheatboundaryLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_layer_max(s : PhysicsheatboundaryLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryLayer::max(self : PhysicsheatboundaryLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_layer_to_string(s : PhysicsheatboundaryLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryLayer::to_string(self : PhysicsheatboundaryLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryBuffer {
@@ -810,45 +810,45 @@ pub fn physics_heat_boundary_buffer_make(size : Int) -> PhysicsheatboundaryBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_buffer_len(s : PhysicsheatboundaryBuffer) -> Int { s.size }
+pub fn PhysicsheatboundaryBuffer::len(self : PhysicsheatboundaryBuffer) -> Int { self.size }
 
-pub fn physics_heat_boundary_buffer_get(s : PhysicsheatboundaryBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryBuffer::get(self : PhysicsheatboundaryBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_buffer_set(s : PhysicsheatboundaryBuffer, i : Int, v : Double) -> PhysicsheatboundaryBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryBuffer::set(self : PhysicsheatboundaryBuffer, i : Int, v : Double) -> PhysicsheatboundaryBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_buffer_sum(s : PhysicsheatboundaryBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryBuffer::sum(self : PhysicsheatboundaryBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_buffer_mean(s : PhysicsheatboundaryBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryBuffer::mean(self : PhysicsheatboundaryBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_buffer_scale(s : PhysicsheatboundaryBuffer, f : Double) -> PhysicsheatboundaryBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryBuffer::scale(self : PhysicsheatboundaryBuffer, f : Double) -> PhysicsheatboundaryBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_buffer_add(a : PhysicsheatboundaryBuffer, b : PhysicsheatboundaryBuffer) -> PhysicsheatboundaryBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryBuffer::add(self : PhysicsheatboundaryBuffer, other : PhysicsheatboundaryBuffer) -> PhysicsheatboundaryBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_buffer_copy(s : PhysicsheatboundaryBuffer) -> PhysicsheatboundaryBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryBuffer::copy(self : PhysicsheatboundaryBuffer) -> PhysicsheatboundaryBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_buffer_fill(s : PhysicsheatboundaryBuffer, v : Double) -> PhysicsheatboundaryBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryBuffer::fill(self : PhysicsheatboundaryBuffer, v : Double) -> PhysicsheatboundaryBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_buffer_min(s : PhysicsheatboundaryBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryBuffer::min(self : PhysicsheatboundaryBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_buffer_max(s : PhysicsheatboundaryBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryBuffer::max(self : PhysicsheatboundaryBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_buffer_to_string(s : PhysicsheatboundaryBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryBuffer::to_string(self : PhysicsheatboundaryBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryCursor {
@@ -861,45 +861,45 @@ pub fn physics_heat_boundary_cursor_make(size : Int) -> PhysicsheatboundaryCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_cursor_len(s : PhysicsheatboundaryCursor) -> Int { s.size }
+pub fn PhysicsheatboundaryCursor::len(self : PhysicsheatboundaryCursor) -> Int { self.size }
 
-pub fn physics_heat_boundary_cursor_get(s : PhysicsheatboundaryCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryCursor::get(self : PhysicsheatboundaryCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_cursor_set(s : PhysicsheatboundaryCursor, i : Int, v : Double) -> PhysicsheatboundaryCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCursor::set(self : PhysicsheatboundaryCursor, i : Int, v : Double) -> PhysicsheatboundaryCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cursor_sum(s : PhysicsheatboundaryCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryCursor::sum(self : PhysicsheatboundaryCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_cursor_mean(s : PhysicsheatboundaryCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryCursor::mean(self : PhysicsheatboundaryCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_cursor_scale(s : PhysicsheatboundaryCursor, f : Double) -> PhysicsheatboundaryCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCursor::scale(self : PhysicsheatboundaryCursor, f : Double) -> PhysicsheatboundaryCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cursor_add(a : PhysicsheatboundaryCursor, b : PhysicsheatboundaryCursor) -> PhysicsheatboundaryCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryCursor::add(self : PhysicsheatboundaryCursor, other : PhysicsheatboundaryCursor) -> PhysicsheatboundaryCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cursor_copy(s : PhysicsheatboundaryCursor) -> PhysicsheatboundaryCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCursor::copy(self : PhysicsheatboundaryCursor) -> PhysicsheatboundaryCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cursor_fill(s : PhysicsheatboundaryCursor, v : Double) -> PhysicsheatboundaryCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryCursor::fill(self : PhysicsheatboundaryCursor, v : Double) -> PhysicsheatboundaryCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_cursor_min(s : PhysicsheatboundaryCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryCursor::min(self : PhysicsheatboundaryCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_cursor_max(s : PhysicsheatboundaryCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryCursor::max(self : PhysicsheatboundaryCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_cursor_to_string(s : PhysicsheatboundaryCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryCursor::to_string(self : PhysicsheatboundaryCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryView {
@@ -912,45 +912,45 @@ pub fn physics_heat_boundary_view_make(size : Int) -> PhysicsheatboundaryView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_view_len(s : PhysicsheatboundaryView) -> Int { s.size }
+pub fn PhysicsheatboundaryView::len(self : PhysicsheatboundaryView) -> Int { self.size }
 
-pub fn physics_heat_boundary_view_get(s : PhysicsheatboundaryView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryView::get(self : PhysicsheatboundaryView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_view_set(s : PhysicsheatboundaryView, i : Int, v : Double) -> PhysicsheatboundaryView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryView::set(self : PhysicsheatboundaryView, i : Int, v : Double) -> PhysicsheatboundaryView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_view_sum(s : PhysicsheatboundaryView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryView::sum(self : PhysicsheatboundaryView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_view_mean(s : PhysicsheatboundaryView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryView::mean(self : PhysicsheatboundaryView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_view_scale(s : PhysicsheatboundaryView, f : Double) -> PhysicsheatboundaryView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryView::scale(self : PhysicsheatboundaryView, f : Double) -> PhysicsheatboundaryView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_view_add(a : PhysicsheatboundaryView, b : PhysicsheatboundaryView) -> PhysicsheatboundaryView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryView::add(self : PhysicsheatboundaryView, other : PhysicsheatboundaryView) -> PhysicsheatboundaryView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_view_copy(s : PhysicsheatboundaryView) -> PhysicsheatboundaryView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryView::copy(self : PhysicsheatboundaryView) -> PhysicsheatboundaryView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_view_fill(s : PhysicsheatboundaryView, v : Double) -> PhysicsheatboundaryView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryView::fill(self : PhysicsheatboundaryView, v : Double) -> PhysicsheatboundaryView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_view_min(s : PhysicsheatboundaryView) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryView::min(self : PhysicsheatboundaryView) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_view_max(s : PhysicsheatboundaryView) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryView::max(self : PhysicsheatboundaryView) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_view_to_string(s : PhysicsheatboundaryView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryView::to_string(self : PhysicsheatboundaryView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundaryRange {
@@ -963,45 +963,45 @@ pub fn physics_heat_boundary_range_make(size : Int) -> PhysicsheatboundaryRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_range_len(s : PhysicsheatboundaryRange) -> Int { s.size }
+pub fn PhysicsheatboundaryRange::len(self : PhysicsheatboundaryRange) -> Int { self.size }
 
-pub fn physics_heat_boundary_range_get(s : PhysicsheatboundaryRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundaryRange::get(self : PhysicsheatboundaryRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_range_set(s : PhysicsheatboundaryRange, i : Int, v : Double) -> PhysicsheatboundaryRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryRange::set(self : PhysicsheatboundaryRange, i : Int, v : Double) -> PhysicsheatboundaryRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_range_sum(s : PhysicsheatboundaryRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundaryRange::sum(self : PhysicsheatboundaryRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_range_mean(s : PhysicsheatboundaryRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundaryRange::mean(self : PhysicsheatboundaryRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_range_scale(s : PhysicsheatboundaryRange, f : Double) -> PhysicsheatboundaryRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryRange::scale(self : PhysicsheatboundaryRange, f : Double) -> PhysicsheatboundaryRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_range_add(a : PhysicsheatboundaryRange, b : PhysicsheatboundaryRange) -> PhysicsheatboundaryRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundaryRange::add(self : PhysicsheatboundaryRange, other : PhysicsheatboundaryRange) -> PhysicsheatboundaryRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_range_copy(s : PhysicsheatboundaryRange) -> PhysicsheatboundaryRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryRange::copy(self : PhysicsheatboundaryRange) -> PhysicsheatboundaryRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_range_fill(s : PhysicsheatboundaryRange, v : Double) -> PhysicsheatboundaryRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundaryRange::fill(self : PhysicsheatboundaryRange, v : Double) -> PhysicsheatboundaryRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_range_min(s : PhysicsheatboundaryRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundaryRange::min(self : PhysicsheatboundaryRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_range_max(s : PhysicsheatboundaryRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundaryRange::max(self : PhysicsheatboundaryRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_range_to_string(s : PhysicsheatboundaryRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundaryRange::to_string(self : PhysicsheatboundaryRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatboundarySlice {
@@ -1014,44 +1014,44 @@ pub fn physics_heat_boundary_slice_make(size : Int) -> PhysicsheatboundarySlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_boundary_slice_len(s : PhysicsheatboundarySlice) -> Int { s.size }
+pub fn PhysicsheatboundarySlice::len(self : PhysicsheatboundarySlice) -> Int { self.size }
 
-pub fn physics_heat_boundary_slice_get(s : PhysicsheatboundarySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatboundarySlice::get(self : PhysicsheatboundarySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_boundary_slice_set(s : PhysicsheatboundarySlice, i : Int, v : Double) -> PhysicsheatboundarySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatboundarySlice::set(self : PhysicsheatboundarySlice, i : Int, v : Double) -> PhysicsheatboundarySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_slice_sum(s : PhysicsheatboundarySlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatboundarySlice::sum(self : PhysicsheatboundarySlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_boundary_slice_mean(s : PhysicsheatboundarySlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatboundarySlice::mean(self : PhysicsheatboundarySlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_boundary_slice_scale(s : PhysicsheatboundarySlice, f : Double) -> PhysicsheatboundarySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundarySlice::scale(self : PhysicsheatboundarySlice, f : Double) -> PhysicsheatboundarySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_slice_add(a : PhysicsheatboundarySlice, b : PhysicsheatboundarySlice) -> PhysicsheatboundarySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatboundarySlice::add(self : PhysicsheatboundarySlice, other : PhysicsheatboundarySlice) -> PhysicsheatboundarySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_slice_copy(s : PhysicsheatboundarySlice) -> PhysicsheatboundarySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundarySlice::copy(self : PhysicsheatboundarySlice) -> PhysicsheatboundarySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_slice_fill(s : PhysicsheatboundarySlice, v : Double) -> PhysicsheatboundarySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatboundarySlice::fill(self : PhysicsheatboundarySlice, v : Double) -> PhysicsheatboundarySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_boundary_slice_min(s : PhysicsheatboundarySlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatboundarySlice::min(self : PhysicsheatboundarySlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_boundary_slice_max(s : PhysicsheatboundarySlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatboundarySlice::max(self : PhysicsheatboundarySlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_boundary_slice_to_string(s : PhysicsheatboundarySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatboundarySlice::to_string(self : PhysicsheatboundarySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

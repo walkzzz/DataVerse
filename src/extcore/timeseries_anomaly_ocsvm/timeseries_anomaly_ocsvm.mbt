@@ -351,45 +351,45 @@ pub fn timeseries_anomaly_ocsvm_frame_make(size : Int) -> Timeseriesanomalyocsvm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_len(s : TimeseriesanomalyocsvmFrame) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmFrame::len(self : TimeseriesanomalyocsvmFrame) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_frame_get(s : TimeseriesanomalyocsvmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmFrame::get(self : TimeseriesanomalyocsvmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_set(s : TimeseriesanomalyocsvmFrame, i : Int, v : Double) -> TimeseriesanomalyocsvmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmFrame::set(self : TimeseriesanomalyocsvmFrame, i : Int, v : Double) -> TimeseriesanomalyocsvmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_sum(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmFrame::sum(self : TimeseriesanomalyocsvmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_frame_mean(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmFrame::mean(self : TimeseriesanomalyocsvmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_frame_scale(s : TimeseriesanomalyocsvmFrame, f : Double) -> TimeseriesanomalyocsvmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmFrame::scale(self : TimeseriesanomalyocsvmFrame, f : Double) -> TimeseriesanomalyocsvmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_add(a : TimeseriesanomalyocsvmFrame, b : TimeseriesanomalyocsvmFrame) -> TimeseriesanomalyocsvmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmFrame::add(self : TimeseriesanomalyocsvmFrame, other : TimeseriesanomalyocsvmFrame) -> TimeseriesanomalyocsvmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_copy(s : TimeseriesanomalyocsvmFrame) -> TimeseriesanomalyocsvmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmFrame::copy(self : TimeseriesanomalyocsvmFrame) -> TimeseriesanomalyocsvmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_fill(s : TimeseriesanomalyocsvmFrame, v : Double) -> TimeseriesanomalyocsvmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmFrame::fill(self : TimeseriesanomalyocsvmFrame, v : Double) -> TimeseriesanomalyocsvmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_min(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmFrame::min(self : TimeseriesanomalyocsvmFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_frame_max(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmFrame::max(self : TimeseriesanomalyocsvmFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_frame_to_string(s : TimeseriesanomalyocsvmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmFrame::to_string(self : TimeseriesanomalyocsvmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmTable {
@@ -402,45 +402,45 @@ pub fn timeseries_anomaly_ocsvm_table_make(size : Int) -> Timeseriesanomalyocsvm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_len(s : TimeseriesanomalyocsvmTable) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmTable::len(self : TimeseriesanomalyocsvmTable) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_table_get(s : TimeseriesanomalyocsvmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmTable::get(self : TimeseriesanomalyocsvmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_set(s : TimeseriesanomalyocsvmTable, i : Int, v : Double) -> TimeseriesanomalyocsvmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmTable::set(self : TimeseriesanomalyocsvmTable, i : Int, v : Double) -> TimeseriesanomalyocsvmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_sum(s : TimeseriesanomalyocsvmTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmTable::sum(self : TimeseriesanomalyocsvmTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_table_mean(s : TimeseriesanomalyocsvmTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmTable::mean(self : TimeseriesanomalyocsvmTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_table_scale(s : TimeseriesanomalyocsvmTable, f : Double) -> TimeseriesanomalyocsvmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmTable::scale(self : TimeseriesanomalyocsvmTable, f : Double) -> TimeseriesanomalyocsvmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_add(a : TimeseriesanomalyocsvmTable, b : TimeseriesanomalyocsvmTable) -> TimeseriesanomalyocsvmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmTable::add(self : TimeseriesanomalyocsvmTable, other : TimeseriesanomalyocsvmTable) -> TimeseriesanomalyocsvmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_copy(s : TimeseriesanomalyocsvmTable) -> TimeseriesanomalyocsvmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmTable::copy(self : TimeseriesanomalyocsvmTable) -> TimeseriesanomalyocsvmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_fill(s : TimeseriesanomalyocsvmTable, v : Double) -> TimeseriesanomalyocsvmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmTable::fill(self : TimeseriesanomalyocsvmTable, v : Double) -> TimeseriesanomalyocsvmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_table_min(s : TimeseriesanomalyocsvmTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmTable::min(self : TimeseriesanomalyocsvmTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_table_max(s : TimeseriesanomalyocsvmTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmTable::max(self : TimeseriesanomalyocsvmTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_table_to_string(s : TimeseriesanomalyocsvmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmTable::to_string(self : TimeseriesanomalyocsvmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_anomaly_ocsvm_graphn_make(size : Int) -> Timeseriesanomalyocsv
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_len(s : TimeseriesanomalyocsvmGraphN) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmGraphN::len(self : TimeseriesanomalyocsvmGraphN) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_graphn_get(s : TimeseriesanomalyocsvmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmGraphN::get(self : TimeseriesanomalyocsvmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_set(s : TimeseriesanomalyocsvmGraphN, i : Int, v : Double) -> TimeseriesanomalyocsvmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmGraphN::set(self : TimeseriesanomalyocsvmGraphN, i : Int, v : Double) -> TimeseriesanomalyocsvmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_sum(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmGraphN::sum(self : TimeseriesanomalyocsvmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_graphn_mean(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmGraphN::mean(self : TimeseriesanomalyocsvmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_graphn_scale(s : TimeseriesanomalyocsvmGraphN, f : Double) -> TimeseriesanomalyocsvmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmGraphN::scale(self : TimeseriesanomalyocsvmGraphN, f : Double) -> TimeseriesanomalyocsvmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_add(a : TimeseriesanomalyocsvmGraphN, b : TimeseriesanomalyocsvmGraphN) -> TimeseriesanomalyocsvmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmGraphN::add(self : TimeseriesanomalyocsvmGraphN, other : TimeseriesanomalyocsvmGraphN) -> TimeseriesanomalyocsvmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_copy(s : TimeseriesanomalyocsvmGraphN) -> TimeseriesanomalyocsvmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmGraphN::copy(self : TimeseriesanomalyocsvmGraphN) -> TimeseriesanomalyocsvmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_fill(s : TimeseriesanomalyocsvmGraphN, v : Double) -> TimeseriesanomalyocsvmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmGraphN::fill(self : TimeseriesanomalyocsvmGraphN, v : Double) -> TimeseriesanomalyocsvmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_min(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmGraphN::min(self : TimeseriesanomalyocsvmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_graphn_max(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmGraphN::max(self : TimeseriesanomalyocsvmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_graphn_to_string(s : TimeseriesanomalyocsvmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmGraphN::to_string(self : TimeseriesanomalyocsvmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmNode {
@@ -504,45 +504,45 @@ pub fn timeseries_anomaly_ocsvm_node_make(size : Int) -> TimeseriesanomalyocsvmN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_len(s : TimeseriesanomalyocsvmNode) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmNode::len(self : TimeseriesanomalyocsvmNode) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_node_get(s : TimeseriesanomalyocsvmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmNode::get(self : TimeseriesanomalyocsvmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_set(s : TimeseriesanomalyocsvmNode, i : Int, v : Double) -> TimeseriesanomalyocsvmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmNode::set(self : TimeseriesanomalyocsvmNode, i : Int, v : Double) -> TimeseriesanomalyocsvmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_sum(s : TimeseriesanomalyocsvmNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmNode::sum(self : TimeseriesanomalyocsvmNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_node_mean(s : TimeseriesanomalyocsvmNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmNode::mean(self : TimeseriesanomalyocsvmNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_node_scale(s : TimeseriesanomalyocsvmNode, f : Double) -> TimeseriesanomalyocsvmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmNode::scale(self : TimeseriesanomalyocsvmNode, f : Double) -> TimeseriesanomalyocsvmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_add(a : TimeseriesanomalyocsvmNode, b : TimeseriesanomalyocsvmNode) -> TimeseriesanomalyocsvmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmNode::add(self : TimeseriesanomalyocsvmNode, other : TimeseriesanomalyocsvmNode) -> TimeseriesanomalyocsvmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_copy(s : TimeseriesanomalyocsvmNode) -> TimeseriesanomalyocsvmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmNode::copy(self : TimeseriesanomalyocsvmNode) -> TimeseriesanomalyocsvmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_fill(s : TimeseriesanomalyocsvmNode, v : Double) -> TimeseriesanomalyocsvmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmNode::fill(self : TimeseriesanomalyocsvmNode, v : Double) -> TimeseriesanomalyocsvmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_node_min(s : TimeseriesanomalyocsvmNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmNode::min(self : TimeseriesanomalyocsvmNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_node_max(s : TimeseriesanomalyocsvmNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmNode::max(self : TimeseriesanomalyocsvmNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_node_to_string(s : TimeseriesanomalyocsvmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmNode::to_string(self : TimeseriesanomalyocsvmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_anomaly_ocsvm_edge_make(size : Int) -> TimeseriesanomalyocsvmE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_len(s : TimeseriesanomalyocsvmEdge) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmEdge::len(self : TimeseriesanomalyocsvmEdge) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_edge_get(s : TimeseriesanomalyocsvmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmEdge::get(self : TimeseriesanomalyocsvmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_set(s : TimeseriesanomalyocsvmEdge, i : Int, v : Double) -> TimeseriesanomalyocsvmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmEdge::set(self : TimeseriesanomalyocsvmEdge, i : Int, v : Double) -> TimeseriesanomalyocsvmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_sum(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmEdge::sum(self : TimeseriesanomalyocsvmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_edge_mean(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmEdge::mean(self : TimeseriesanomalyocsvmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_edge_scale(s : TimeseriesanomalyocsvmEdge, f : Double) -> TimeseriesanomalyocsvmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmEdge::scale(self : TimeseriesanomalyocsvmEdge, f : Double) -> TimeseriesanomalyocsvmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_add(a : TimeseriesanomalyocsvmEdge, b : TimeseriesanomalyocsvmEdge) -> TimeseriesanomalyocsvmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmEdge::add(self : TimeseriesanomalyocsvmEdge, other : TimeseriesanomalyocsvmEdge) -> TimeseriesanomalyocsvmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_copy(s : TimeseriesanomalyocsvmEdge) -> TimeseriesanomalyocsvmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmEdge::copy(self : TimeseriesanomalyocsvmEdge) -> TimeseriesanomalyocsvmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_fill(s : TimeseriesanomalyocsvmEdge, v : Double) -> TimeseriesanomalyocsvmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmEdge::fill(self : TimeseriesanomalyocsvmEdge, v : Double) -> TimeseriesanomalyocsvmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_min(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmEdge::min(self : TimeseriesanomalyocsvmEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_edge_max(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmEdge::max(self : TimeseriesanomalyocsvmEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_edge_to_string(s : TimeseriesanomalyocsvmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmEdge::to_string(self : TimeseriesanomalyocsvmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmPath {
@@ -606,45 +606,45 @@ pub fn timeseries_anomaly_ocsvm_path_make(size : Int) -> TimeseriesanomalyocsvmP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_len(s : TimeseriesanomalyocsvmPath) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmPath::len(self : TimeseriesanomalyocsvmPath) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_path_get(s : TimeseriesanomalyocsvmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmPath::get(self : TimeseriesanomalyocsvmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_set(s : TimeseriesanomalyocsvmPath, i : Int, v : Double) -> TimeseriesanomalyocsvmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmPath::set(self : TimeseriesanomalyocsvmPath, i : Int, v : Double) -> TimeseriesanomalyocsvmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_sum(s : TimeseriesanomalyocsvmPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmPath::sum(self : TimeseriesanomalyocsvmPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_path_mean(s : TimeseriesanomalyocsvmPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmPath::mean(self : TimeseriesanomalyocsvmPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_path_scale(s : TimeseriesanomalyocsvmPath, f : Double) -> TimeseriesanomalyocsvmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmPath::scale(self : TimeseriesanomalyocsvmPath, f : Double) -> TimeseriesanomalyocsvmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_add(a : TimeseriesanomalyocsvmPath, b : TimeseriesanomalyocsvmPath) -> TimeseriesanomalyocsvmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmPath::add(self : TimeseriesanomalyocsvmPath, other : TimeseriesanomalyocsvmPath) -> TimeseriesanomalyocsvmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_copy(s : TimeseriesanomalyocsvmPath) -> TimeseriesanomalyocsvmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmPath::copy(self : TimeseriesanomalyocsvmPath) -> TimeseriesanomalyocsvmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_fill(s : TimeseriesanomalyocsvmPath, v : Double) -> TimeseriesanomalyocsvmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmPath::fill(self : TimeseriesanomalyocsvmPath, v : Double) -> TimeseriesanomalyocsvmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_path_min(s : TimeseriesanomalyocsvmPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmPath::min(self : TimeseriesanomalyocsvmPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_path_max(s : TimeseriesanomalyocsvmPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmPath::max(self : TimeseriesanomalyocsvmPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_path_to_string(s : TimeseriesanomalyocsvmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmPath::to_string(self : TimeseriesanomalyocsvmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_anomaly_ocsvm_cluster_make(size : Int) -> Timeseriesanomalyocs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_len(s : TimeseriesanomalyocsvmCluster) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmCluster::len(self : TimeseriesanomalyocsvmCluster) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_cluster_get(s : TimeseriesanomalyocsvmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmCluster::get(self : TimeseriesanomalyocsvmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_set(s : TimeseriesanomalyocsvmCluster, i : Int, v : Double) -> TimeseriesanomalyocsvmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCluster::set(self : TimeseriesanomalyocsvmCluster, i : Int, v : Double) -> TimeseriesanomalyocsvmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_sum(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmCluster::sum(self : TimeseriesanomalyocsvmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cluster_mean(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmCluster::mean(self : TimeseriesanomalyocsvmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cluster_scale(s : TimeseriesanomalyocsvmCluster, f : Double) -> TimeseriesanomalyocsvmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCluster::scale(self : TimeseriesanomalyocsvmCluster, f : Double) -> TimeseriesanomalyocsvmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_add(a : TimeseriesanomalyocsvmCluster, b : TimeseriesanomalyocsvmCluster) -> TimeseriesanomalyocsvmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmCluster::add(self : TimeseriesanomalyocsvmCluster, other : TimeseriesanomalyocsvmCluster) -> TimeseriesanomalyocsvmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_copy(s : TimeseriesanomalyocsvmCluster) -> TimeseriesanomalyocsvmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCluster::copy(self : TimeseriesanomalyocsvmCluster) -> TimeseriesanomalyocsvmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_fill(s : TimeseriesanomalyocsvmCluster, v : Double) -> TimeseriesanomalyocsvmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCluster::fill(self : TimeseriesanomalyocsvmCluster, v : Double) -> TimeseriesanomalyocsvmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_min(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmCluster::min(self : TimeseriesanomalyocsvmCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cluster_max(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmCluster::max(self : TimeseriesanomalyocsvmCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cluster_to_string(s : TimeseriesanomalyocsvmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmCluster::to_string(self : TimeseriesanomalyocsvmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmModel {
@@ -708,45 +708,45 @@ pub fn timeseries_anomaly_ocsvm_model_make(size : Int) -> Timeseriesanomalyocsvm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_len(s : TimeseriesanomalyocsvmModel) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmModel::len(self : TimeseriesanomalyocsvmModel) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_model_get(s : TimeseriesanomalyocsvmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmModel::get(self : TimeseriesanomalyocsvmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_set(s : TimeseriesanomalyocsvmModel, i : Int, v : Double) -> TimeseriesanomalyocsvmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmModel::set(self : TimeseriesanomalyocsvmModel, i : Int, v : Double) -> TimeseriesanomalyocsvmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_sum(s : TimeseriesanomalyocsvmModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmModel::sum(self : TimeseriesanomalyocsvmModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_model_mean(s : TimeseriesanomalyocsvmModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmModel::mean(self : TimeseriesanomalyocsvmModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_model_scale(s : TimeseriesanomalyocsvmModel, f : Double) -> TimeseriesanomalyocsvmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmModel::scale(self : TimeseriesanomalyocsvmModel, f : Double) -> TimeseriesanomalyocsvmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_add(a : TimeseriesanomalyocsvmModel, b : TimeseriesanomalyocsvmModel) -> TimeseriesanomalyocsvmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmModel::add(self : TimeseriesanomalyocsvmModel, other : TimeseriesanomalyocsvmModel) -> TimeseriesanomalyocsvmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_copy(s : TimeseriesanomalyocsvmModel) -> TimeseriesanomalyocsvmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmModel::copy(self : TimeseriesanomalyocsvmModel) -> TimeseriesanomalyocsvmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_fill(s : TimeseriesanomalyocsvmModel, v : Double) -> TimeseriesanomalyocsvmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmModel::fill(self : TimeseriesanomalyocsvmModel, v : Double) -> TimeseriesanomalyocsvmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_model_min(s : TimeseriesanomalyocsvmModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmModel::min(self : TimeseriesanomalyocsvmModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_model_max(s : TimeseriesanomalyocsvmModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmModel::max(self : TimeseriesanomalyocsvmModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_model_to_string(s : TimeseriesanomalyocsvmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmModel::to_string(self : TimeseriesanomalyocsvmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_anomaly_ocsvm_layer_make(size : Int) -> Timeseriesanomalyocsvm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_len(s : TimeseriesanomalyocsvmLayer) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmLayer::len(self : TimeseriesanomalyocsvmLayer) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_layer_get(s : TimeseriesanomalyocsvmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmLayer::get(self : TimeseriesanomalyocsvmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_set(s : TimeseriesanomalyocsvmLayer, i : Int, v : Double) -> TimeseriesanomalyocsvmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmLayer::set(self : TimeseriesanomalyocsvmLayer, i : Int, v : Double) -> TimeseriesanomalyocsvmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_sum(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmLayer::sum(self : TimeseriesanomalyocsvmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_layer_mean(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmLayer::mean(self : TimeseriesanomalyocsvmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_layer_scale(s : TimeseriesanomalyocsvmLayer, f : Double) -> TimeseriesanomalyocsvmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmLayer::scale(self : TimeseriesanomalyocsvmLayer, f : Double) -> TimeseriesanomalyocsvmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_add(a : TimeseriesanomalyocsvmLayer, b : TimeseriesanomalyocsvmLayer) -> TimeseriesanomalyocsvmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmLayer::add(self : TimeseriesanomalyocsvmLayer, other : TimeseriesanomalyocsvmLayer) -> TimeseriesanomalyocsvmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_copy(s : TimeseriesanomalyocsvmLayer) -> TimeseriesanomalyocsvmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmLayer::copy(self : TimeseriesanomalyocsvmLayer) -> TimeseriesanomalyocsvmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_fill(s : TimeseriesanomalyocsvmLayer, v : Double) -> TimeseriesanomalyocsvmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmLayer::fill(self : TimeseriesanomalyocsvmLayer, v : Double) -> TimeseriesanomalyocsvmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_min(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmLayer::min(self : TimeseriesanomalyocsvmLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_layer_max(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmLayer::max(self : TimeseriesanomalyocsvmLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_layer_to_string(s : TimeseriesanomalyocsvmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmLayer::to_string(self : TimeseriesanomalyocsvmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_anomaly_ocsvm_buffer_make(size : Int) -> Timeseriesanomalyocsv
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_len(s : TimeseriesanomalyocsvmBuffer) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmBuffer::len(self : TimeseriesanomalyocsvmBuffer) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_buffer_get(s : TimeseriesanomalyocsvmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmBuffer::get(self : TimeseriesanomalyocsvmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_set(s : TimeseriesanomalyocsvmBuffer, i : Int, v : Double) -> TimeseriesanomalyocsvmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmBuffer::set(self : TimeseriesanomalyocsvmBuffer, i : Int, v : Double) -> TimeseriesanomalyocsvmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_sum(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmBuffer::sum(self : TimeseriesanomalyocsvmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_buffer_mean(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmBuffer::mean(self : TimeseriesanomalyocsvmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_buffer_scale(s : TimeseriesanomalyocsvmBuffer, f : Double) -> TimeseriesanomalyocsvmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmBuffer::scale(self : TimeseriesanomalyocsvmBuffer, f : Double) -> TimeseriesanomalyocsvmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_add(a : TimeseriesanomalyocsvmBuffer, b : TimeseriesanomalyocsvmBuffer) -> TimeseriesanomalyocsvmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmBuffer::add(self : TimeseriesanomalyocsvmBuffer, other : TimeseriesanomalyocsvmBuffer) -> TimeseriesanomalyocsvmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_copy(s : TimeseriesanomalyocsvmBuffer) -> TimeseriesanomalyocsvmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmBuffer::copy(self : TimeseriesanomalyocsvmBuffer) -> TimeseriesanomalyocsvmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_fill(s : TimeseriesanomalyocsvmBuffer, v : Double) -> TimeseriesanomalyocsvmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmBuffer::fill(self : TimeseriesanomalyocsvmBuffer, v : Double) -> TimeseriesanomalyocsvmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_min(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmBuffer::min(self : TimeseriesanomalyocsvmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_buffer_max(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmBuffer::max(self : TimeseriesanomalyocsvmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_buffer_to_string(s : TimeseriesanomalyocsvmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmBuffer::to_string(self : TimeseriesanomalyocsvmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_anomaly_ocsvm_cursor_make(size : Int) -> Timeseriesanomalyocsv
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_len(s : TimeseriesanomalyocsvmCursor) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmCursor::len(self : TimeseriesanomalyocsvmCursor) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_cursor_get(s : TimeseriesanomalyocsvmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmCursor::get(self : TimeseriesanomalyocsvmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_set(s : TimeseriesanomalyocsvmCursor, i : Int, v : Double) -> TimeseriesanomalyocsvmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCursor::set(self : TimeseriesanomalyocsvmCursor, i : Int, v : Double) -> TimeseriesanomalyocsvmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_sum(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmCursor::sum(self : TimeseriesanomalyocsvmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cursor_mean(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmCursor::mean(self : TimeseriesanomalyocsvmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cursor_scale(s : TimeseriesanomalyocsvmCursor, f : Double) -> TimeseriesanomalyocsvmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCursor::scale(self : TimeseriesanomalyocsvmCursor, f : Double) -> TimeseriesanomalyocsvmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_add(a : TimeseriesanomalyocsvmCursor, b : TimeseriesanomalyocsvmCursor) -> TimeseriesanomalyocsvmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmCursor::add(self : TimeseriesanomalyocsvmCursor, other : TimeseriesanomalyocsvmCursor) -> TimeseriesanomalyocsvmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_copy(s : TimeseriesanomalyocsvmCursor) -> TimeseriesanomalyocsvmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCursor::copy(self : TimeseriesanomalyocsvmCursor) -> TimeseriesanomalyocsvmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_fill(s : TimeseriesanomalyocsvmCursor, v : Double) -> TimeseriesanomalyocsvmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmCursor::fill(self : TimeseriesanomalyocsvmCursor, v : Double) -> TimeseriesanomalyocsvmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_min(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmCursor::min(self : TimeseriesanomalyocsvmCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cursor_max(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmCursor::max(self : TimeseriesanomalyocsvmCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_cursor_to_string(s : TimeseriesanomalyocsvmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmCursor::to_string(self : TimeseriesanomalyocsvmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmView {
@@ -912,45 +912,45 @@ pub fn timeseries_anomaly_ocsvm_view_make(size : Int) -> TimeseriesanomalyocsvmV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_len(s : TimeseriesanomalyocsvmView) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmView::len(self : TimeseriesanomalyocsvmView) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_view_get(s : TimeseriesanomalyocsvmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmView::get(self : TimeseriesanomalyocsvmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_set(s : TimeseriesanomalyocsvmView, i : Int, v : Double) -> TimeseriesanomalyocsvmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmView::set(self : TimeseriesanomalyocsvmView, i : Int, v : Double) -> TimeseriesanomalyocsvmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_sum(s : TimeseriesanomalyocsvmView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmView::sum(self : TimeseriesanomalyocsvmView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_view_mean(s : TimeseriesanomalyocsvmView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmView::mean(self : TimeseriesanomalyocsvmView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_view_scale(s : TimeseriesanomalyocsvmView, f : Double) -> TimeseriesanomalyocsvmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmView::scale(self : TimeseriesanomalyocsvmView, f : Double) -> TimeseriesanomalyocsvmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_add(a : TimeseriesanomalyocsvmView, b : TimeseriesanomalyocsvmView) -> TimeseriesanomalyocsvmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmView::add(self : TimeseriesanomalyocsvmView, other : TimeseriesanomalyocsvmView) -> TimeseriesanomalyocsvmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_copy(s : TimeseriesanomalyocsvmView) -> TimeseriesanomalyocsvmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmView::copy(self : TimeseriesanomalyocsvmView) -> TimeseriesanomalyocsvmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_fill(s : TimeseriesanomalyocsvmView, v : Double) -> TimeseriesanomalyocsvmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmView::fill(self : TimeseriesanomalyocsvmView, v : Double) -> TimeseriesanomalyocsvmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_view_min(s : TimeseriesanomalyocsvmView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmView::min(self : TimeseriesanomalyocsvmView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_view_max(s : TimeseriesanomalyocsvmView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmView::max(self : TimeseriesanomalyocsvmView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_view_to_string(s : TimeseriesanomalyocsvmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmView::to_string(self : TimeseriesanomalyocsvmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmRange {
@@ -963,45 +963,45 @@ pub fn timeseries_anomaly_ocsvm_range_make(size : Int) -> Timeseriesanomalyocsvm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_len(s : TimeseriesanomalyocsvmRange) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmRange::len(self : TimeseriesanomalyocsvmRange) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_range_get(s : TimeseriesanomalyocsvmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmRange::get(self : TimeseriesanomalyocsvmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_set(s : TimeseriesanomalyocsvmRange, i : Int, v : Double) -> TimeseriesanomalyocsvmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmRange::set(self : TimeseriesanomalyocsvmRange, i : Int, v : Double) -> TimeseriesanomalyocsvmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_sum(s : TimeseriesanomalyocsvmRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmRange::sum(self : TimeseriesanomalyocsvmRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_range_mean(s : TimeseriesanomalyocsvmRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmRange::mean(self : TimeseriesanomalyocsvmRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_range_scale(s : TimeseriesanomalyocsvmRange, f : Double) -> TimeseriesanomalyocsvmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmRange::scale(self : TimeseriesanomalyocsvmRange, f : Double) -> TimeseriesanomalyocsvmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_add(a : TimeseriesanomalyocsvmRange, b : TimeseriesanomalyocsvmRange) -> TimeseriesanomalyocsvmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmRange::add(self : TimeseriesanomalyocsvmRange, other : TimeseriesanomalyocsvmRange) -> TimeseriesanomalyocsvmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_copy(s : TimeseriesanomalyocsvmRange) -> TimeseriesanomalyocsvmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmRange::copy(self : TimeseriesanomalyocsvmRange) -> TimeseriesanomalyocsvmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_fill(s : TimeseriesanomalyocsvmRange, v : Double) -> TimeseriesanomalyocsvmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmRange::fill(self : TimeseriesanomalyocsvmRange, v : Double) -> TimeseriesanomalyocsvmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_range_min(s : TimeseriesanomalyocsvmRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmRange::min(self : TimeseriesanomalyocsvmRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_range_max(s : TimeseriesanomalyocsvmRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmRange::max(self : TimeseriesanomalyocsvmRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_range_to_string(s : TimeseriesanomalyocsvmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmRange::to_string(self : TimeseriesanomalyocsvmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyocsvmSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_anomaly_ocsvm_slice_make(size : Int) -> Timeseriesanomalyocsvm
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_len(s : TimeseriesanomalyocsvmSlice) -> Int { s.size }
+pub fn TimeseriesanomalyocsvmSlice::len(self : TimeseriesanomalyocsvmSlice) -> Int { self.size }
 
-pub fn timeseries_anomaly_ocsvm_slice_get(s : TimeseriesanomalyocsvmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyocsvmSlice::get(self : TimeseriesanomalyocsvmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_set(s : TimeseriesanomalyocsvmSlice, i : Int, v : Double) -> TimeseriesanomalyocsvmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmSlice::set(self : TimeseriesanomalyocsvmSlice, i : Int, v : Double) -> TimeseriesanomalyocsvmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_sum(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyocsvmSlice::sum(self : TimeseriesanomalyocsvmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_slice_mean(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyocsvmSlice::mean(self : TimeseriesanomalyocsvmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_slice_scale(s : TimeseriesanomalyocsvmSlice, f : Double) -> TimeseriesanomalyocsvmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmSlice::scale(self : TimeseriesanomalyocsvmSlice, f : Double) -> TimeseriesanomalyocsvmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_add(a : TimeseriesanomalyocsvmSlice, b : TimeseriesanomalyocsvmSlice) -> TimeseriesanomalyocsvmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyocsvmSlice::add(self : TimeseriesanomalyocsvmSlice, other : TimeseriesanomalyocsvmSlice) -> TimeseriesanomalyocsvmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_copy(s : TimeseriesanomalyocsvmSlice) -> TimeseriesanomalyocsvmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmSlice::copy(self : TimeseriesanomalyocsvmSlice) -> TimeseriesanomalyocsvmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_fill(s : TimeseriesanomalyocsvmSlice, v : Double) -> TimeseriesanomalyocsvmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyocsvmSlice::fill(self : TimeseriesanomalyocsvmSlice, v : Double) -> TimeseriesanomalyocsvmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_min(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyocsvmSlice::min(self : TimeseriesanomalyocsvmSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_slice_max(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyocsvmSlice::max(self : TimeseriesanomalyocsvmSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_ocsvm_slice_to_string(s : TimeseriesanomalyocsvmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyocsvmSlice::to_string(self : TimeseriesanomalyocsvmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

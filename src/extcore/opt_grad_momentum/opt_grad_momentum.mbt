@@ -351,45 +351,45 @@ pub fn opt_grad_momentum_frame_make(size : Int) -> OptgradmomentumFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_frame_len(s : OptgradmomentumFrame) -> Int { s.size }
+pub fn OptgradmomentumFrame::len(self : OptgradmomentumFrame) -> Int { self.size }
 
-pub fn opt_grad_momentum_frame_get(s : OptgradmomentumFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumFrame::get(self : OptgradmomentumFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_frame_set(s : OptgradmomentumFrame, i : Int, v : Double) -> OptgradmomentumFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumFrame::set(self : OptgradmomentumFrame, i : Int, v : Double) -> OptgradmomentumFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_frame_sum(s : OptgradmomentumFrame) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumFrame::sum(self : OptgradmomentumFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_frame_mean(s : OptgradmomentumFrame) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumFrame::mean(self : OptgradmomentumFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_frame_scale(s : OptgradmomentumFrame, f : Double) -> OptgradmomentumFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumFrame::scale(self : OptgradmomentumFrame, f : Double) -> OptgradmomentumFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_frame_add(a : OptgradmomentumFrame, b : OptgradmomentumFrame) -> OptgradmomentumFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumFrame::add(self : OptgradmomentumFrame, other : OptgradmomentumFrame) -> OptgradmomentumFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_frame_copy(s : OptgradmomentumFrame) -> OptgradmomentumFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumFrame::copy(self : OptgradmomentumFrame) -> OptgradmomentumFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_frame_fill(s : OptgradmomentumFrame, v : Double) -> OptgradmomentumFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumFrame::fill(self : OptgradmomentumFrame, v : Double) -> OptgradmomentumFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_frame_min(s : OptgradmomentumFrame) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumFrame::min(self : OptgradmomentumFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_frame_max(s : OptgradmomentumFrame) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumFrame::max(self : OptgradmomentumFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_frame_to_string(s : OptgradmomentumFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumFrame::to_string(self : OptgradmomentumFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumTable {
@@ -402,45 +402,45 @@ pub fn opt_grad_momentum_table_make(size : Int) -> OptgradmomentumTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_table_len(s : OptgradmomentumTable) -> Int { s.size }
+pub fn OptgradmomentumTable::len(self : OptgradmomentumTable) -> Int { self.size }
 
-pub fn opt_grad_momentum_table_get(s : OptgradmomentumTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumTable::get(self : OptgradmomentumTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_table_set(s : OptgradmomentumTable, i : Int, v : Double) -> OptgradmomentumTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumTable::set(self : OptgradmomentumTable, i : Int, v : Double) -> OptgradmomentumTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_table_sum(s : OptgradmomentumTable) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumTable::sum(self : OptgradmomentumTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_table_mean(s : OptgradmomentumTable) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumTable::mean(self : OptgradmomentumTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_table_scale(s : OptgradmomentumTable, f : Double) -> OptgradmomentumTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumTable::scale(self : OptgradmomentumTable, f : Double) -> OptgradmomentumTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_table_add(a : OptgradmomentumTable, b : OptgradmomentumTable) -> OptgradmomentumTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumTable::add(self : OptgradmomentumTable, other : OptgradmomentumTable) -> OptgradmomentumTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_table_copy(s : OptgradmomentumTable) -> OptgradmomentumTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumTable::copy(self : OptgradmomentumTable) -> OptgradmomentumTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_table_fill(s : OptgradmomentumTable, v : Double) -> OptgradmomentumTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumTable::fill(self : OptgradmomentumTable, v : Double) -> OptgradmomentumTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_table_min(s : OptgradmomentumTable) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumTable::min(self : OptgradmomentumTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_table_max(s : OptgradmomentumTable) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumTable::max(self : OptgradmomentumTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_table_to_string(s : OptgradmomentumTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumTable::to_string(self : OptgradmomentumTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumGraphN {
@@ -453,45 +453,45 @@ pub fn opt_grad_momentum_graphn_make(size : Int) -> OptgradmomentumGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_graphn_len(s : OptgradmomentumGraphN) -> Int { s.size }
+pub fn OptgradmomentumGraphN::len(self : OptgradmomentumGraphN) -> Int { self.size }
 
-pub fn opt_grad_momentum_graphn_get(s : OptgradmomentumGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumGraphN::get(self : OptgradmomentumGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_graphn_set(s : OptgradmomentumGraphN, i : Int, v : Double) -> OptgradmomentumGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumGraphN::set(self : OptgradmomentumGraphN, i : Int, v : Double) -> OptgradmomentumGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_graphn_sum(s : OptgradmomentumGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumGraphN::sum(self : OptgradmomentumGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_graphn_mean(s : OptgradmomentumGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumGraphN::mean(self : OptgradmomentumGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_graphn_scale(s : OptgradmomentumGraphN, f : Double) -> OptgradmomentumGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumGraphN::scale(self : OptgradmomentumGraphN, f : Double) -> OptgradmomentumGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_graphn_add(a : OptgradmomentumGraphN, b : OptgradmomentumGraphN) -> OptgradmomentumGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumGraphN::add(self : OptgradmomentumGraphN, other : OptgradmomentumGraphN) -> OptgradmomentumGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_graphn_copy(s : OptgradmomentumGraphN) -> OptgradmomentumGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumGraphN::copy(self : OptgradmomentumGraphN) -> OptgradmomentumGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_graphn_fill(s : OptgradmomentumGraphN, v : Double) -> OptgradmomentumGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumGraphN::fill(self : OptgradmomentumGraphN, v : Double) -> OptgradmomentumGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_graphn_min(s : OptgradmomentumGraphN) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumGraphN::min(self : OptgradmomentumGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_graphn_max(s : OptgradmomentumGraphN) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumGraphN::max(self : OptgradmomentumGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_graphn_to_string(s : OptgradmomentumGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumGraphN::to_string(self : OptgradmomentumGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumNode {
@@ -504,45 +504,45 @@ pub fn opt_grad_momentum_node_make(size : Int) -> OptgradmomentumNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_node_len(s : OptgradmomentumNode) -> Int { s.size }
+pub fn OptgradmomentumNode::len(self : OptgradmomentumNode) -> Int { self.size }
 
-pub fn opt_grad_momentum_node_get(s : OptgradmomentumNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumNode::get(self : OptgradmomentumNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_node_set(s : OptgradmomentumNode, i : Int, v : Double) -> OptgradmomentumNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumNode::set(self : OptgradmomentumNode, i : Int, v : Double) -> OptgradmomentumNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_node_sum(s : OptgradmomentumNode) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumNode::sum(self : OptgradmomentumNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_node_mean(s : OptgradmomentumNode) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumNode::mean(self : OptgradmomentumNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_node_scale(s : OptgradmomentumNode, f : Double) -> OptgradmomentumNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumNode::scale(self : OptgradmomentumNode, f : Double) -> OptgradmomentumNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_node_add(a : OptgradmomentumNode, b : OptgradmomentumNode) -> OptgradmomentumNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumNode::add(self : OptgradmomentumNode, other : OptgradmomentumNode) -> OptgradmomentumNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_node_copy(s : OptgradmomentumNode) -> OptgradmomentumNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumNode::copy(self : OptgradmomentumNode) -> OptgradmomentumNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_node_fill(s : OptgradmomentumNode, v : Double) -> OptgradmomentumNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumNode::fill(self : OptgradmomentumNode, v : Double) -> OptgradmomentumNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_node_min(s : OptgradmomentumNode) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumNode::min(self : OptgradmomentumNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_node_max(s : OptgradmomentumNode) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumNode::max(self : OptgradmomentumNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_node_to_string(s : OptgradmomentumNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumNode::to_string(self : OptgradmomentumNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumEdge {
@@ -555,45 +555,45 @@ pub fn opt_grad_momentum_edge_make(size : Int) -> OptgradmomentumEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_edge_len(s : OptgradmomentumEdge) -> Int { s.size }
+pub fn OptgradmomentumEdge::len(self : OptgradmomentumEdge) -> Int { self.size }
 
-pub fn opt_grad_momentum_edge_get(s : OptgradmomentumEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumEdge::get(self : OptgradmomentumEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_edge_set(s : OptgradmomentumEdge, i : Int, v : Double) -> OptgradmomentumEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumEdge::set(self : OptgradmomentumEdge, i : Int, v : Double) -> OptgradmomentumEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_edge_sum(s : OptgradmomentumEdge) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumEdge::sum(self : OptgradmomentumEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_edge_mean(s : OptgradmomentumEdge) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumEdge::mean(self : OptgradmomentumEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_edge_scale(s : OptgradmomentumEdge, f : Double) -> OptgradmomentumEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumEdge::scale(self : OptgradmomentumEdge, f : Double) -> OptgradmomentumEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_edge_add(a : OptgradmomentumEdge, b : OptgradmomentumEdge) -> OptgradmomentumEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumEdge::add(self : OptgradmomentumEdge, other : OptgradmomentumEdge) -> OptgradmomentumEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_edge_copy(s : OptgradmomentumEdge) -> OptgradmomentumEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumEdge::copy(self : OptgradmomentumEdge) -> OptgradmomentumEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_edge_fill(s : OptgradmomentumEdge, v : Double) -> OptgradmomentumEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumEdge::fill(self : OptgradmomentumEdge, v : Double) -> OptgradmomentumEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_edge_min(s : OptgradmomentumEdge) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumEdge::min(self : OptgradmomentumEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_edge_max(s : OptgradmomentumEdge) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumEdge::max(self : OptgradmomentumEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_edge_to_string(s : OptgradmomentumEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumEdge::to_string(self : OptgradmomentumEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumPath {
@@ -606,45 +606,45 @@ pub fn opt_grad_momentum_path_make(size : Int) -> OptgradmomentumPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_path_len(s : OptgradmomentumPath) -> Int { s.size }
+pub fn OptgradmomentumPath::len(self : OptgradmomentumPath) -> Int { self.size }
 
-pub fn opt_grad_momentum_path_get(s : OptgradmomentumPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumPath::get(self : OptgradmomentumPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_path_set(s : OptgradmomentumPath, i : Int, v : Double) -> OptgradmomentumPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumPath::set(self : OptgradmomentumPath, i : Int, v : Double) -> OptgradmomentumPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_path_sum(s : OptgradmomentumPath) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumPath::sum(self : OptgradmomentumPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_path_mean(s : OptgradmomentumPath) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumPath::mean(self : OptgradmomentumPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_path_scale(s : OptgradmomentumPath, f : Double) -> OptgradmomentumPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumPath::scale(self : OptgradmomentumPath, f : Double) -> OptgradmomentumPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_path_add(a : OptgradmomentumPath, b : OptgradmomentumPath) -> OptgradmomentumPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumPath::add(self : OptgradmomentumPath, other : OptgradmomentumPath) -> OptgradmomentumPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_path_copy(s : OptgradmomentumPath) -> OptgradmomentumPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumPath::copy(self : OptgradmomentumPath) -> OptgradmomentumPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_path_fill(s : OptgradmomentumPath, v : Double) -> OptgradmomentumPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumPath::fill(self : OptgradmomentumPath, v : Double) -> OptgradmomentumPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_path_min(s : OptgradmomentumPath) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumPath::min(self : OptgradmomentumPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_path_max(s : OptgradmomentumPath) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumPath::max(self : OptgradmomentumPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_path_to_string(s : OptgradmomentumPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumPath::to_string(self : OptgradmomentumPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumCluster {
@@ -657,45 +657,45 @@ pub fn opt_grad_momentum_cluster_make(size : Int) -> OptgradmomentumCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_cluster_len(s : OptgradmomentumCluster) -> Int { s.size }
+pub fn OptgradmomentumCluster::len(self : OptgradmomentumCluster) -> Int { self.size }
 
-pub fn opt_grad_momentum_cluster_get(s : OptgradmomentumCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumCluster::get(self : OptgradmomentumCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_cluster_set(s : OptgradmomentumCluster, i : Int, v : Double) -> OptgradmomentumCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumCluster::set(self : OptgradmomentumCluster, i : Int, v : Double) -> OptgradmomentumCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cluster_sum(s : OptgradmomentumCluster) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumCluster::sum(self : OptgradmomentumCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_cluster_mean(s : OptgradmomentumCluster) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumCluster::mean(self : OptgradmomentumCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_cluster_scale(s : OptgradmomentumCluster, f : Double) -> OptgradmomentumCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumCluster::scale(self : OptgradmomentumCluster, f : Double) -> OptgradmomentumCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cluster_add(a : OptgradmomentumCluster, b : OptgradmomentumCluster) -> OptgradmomentumCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumCluster::add(self : OptgradmomentumCluster, other : OptgradmomentumCluster) -> OptgradmomentumCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cluster_copy(s : OptgradmomentumCluster) -> OptgradmomentumCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumCluster::copy(self : OptgradmomentumCluster) -> OptgradmomentumCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cluster_fill(s : OptgradmomentumCluster, v : Double) -> OptgradmomentumCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumCluster::fill(self : OptgradmomentumCluster, v : Double) -> OptgradmomentumCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cluster_min(s : OptgradmomentumCluster) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumCluster::min(self : OptgradmomentumCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_cluster_max(s : OptgradmomentumCluster) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumCluster::max(self : OptgradmomentumCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_cluster_to_string(s : OptgradmomentumCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumCluster::to_string(self : OptgradmomentumCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumModel {
@@ -708,45 +708,45 @@ pub fn opt_grad_momentum_model_make(size : Int) -> OptgradmomentumModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_model_len(s : OptgradmomentumModel) -> Int { s.size }
+pub fn OptgradmomentumModel::len(self : OptgradmomentumModel) -> Int { self.size }
 
-pub fn opt_grad_momentum_model_get(s : OptgradmomentumModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumModel::get(self : OptgradmomentumModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_model_set(s : OptgradmomentumModel, i : Int, v : Double) -> OptgradmomentumModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumModel::set(self : OptgradmomentumModel, i : Int, v : Double) -> OptgradmomentumModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_model_sum(s : OptgradmomentumModel) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumModel::sum(self : OptgradmomentumModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_model_mean(s : OptgradmomentumModel) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumModel::mean(self : OptgradmomentumModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_model_scale(s : OptgradmomentumModel, f : Double) -> OptgradmomentumModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumModel::scale(self : OptgradmomentumModel, f : Double) -> OptgradmomentumModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_model_add(a : OptgradmomentumModel, b : OptgradmomentumModel) -> OptgradmomentumModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumModel::add(self : OptgradmomentumModel, other : OptgradmomentumModel) -> OptgradmomentumModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_model_copy(s : OptgradmomentumModel) -> OptgradmomentumModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumModel::copy(self : OptgradmomentumModel) -> OptgradmomentumModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_model_fill(s : OptgradmomentumModel, v : Double) -> OptgradmomentumModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumModel::fill(self : OptgradmomentumModel, v : Double) -> OptgradmomentumModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_model_min(s : OptgradmomentumModel) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumModel::min(self : OptgradmomentumModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_model_max(s : OptgradmomentumModel) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumModel::max(self : OptgradmomentumModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_model_to_string(s : OptgradmomentumModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumModel::to_string(self : OptgradmomentumModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumLayer {
@@ -759,45 +759,45 @@ pub fn opt_grad_momentum_layer_make(size : Int) -> OptgradmomentumLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_layer_len(s : OptgradmomentumLayer) -> Int { s.size }
+pub fn OptgradmomentumLayer::len(self : OptgradmomentumLayer) -> Int { self.size }
 
-pub fn opt_grad_momentum_layer_get(s : OptgradmomentumLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumLayer::get(self : OptgradmomentumLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_layer_set(s : OptgradmomentumLayer, i : Int, v : Double) -> OptgradmomentumLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumLayer::set(self : OptgradmomentumLayer, i : Int, v : Double) -> OptgradmomentumLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_layer_sum(s : OptgradmomentumLayer) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumLayer::sum(self : OptgradmomentumLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_layer_mean(s : OptgradmomentumLayer) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumLayer::mean(self : OptgradmomentumLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_layer_scale(s : OptgradmomentumLayer, f : Double) -> OptgradmomentumLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumLayer::scale(self : OptgradmomentumLayer, f : Double) -> OptgradmomentumLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_layer_add(a : OptgradmomentumLayer, b : OptgradmomentumLayer) -> OptgradmomentumLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumLayer::add(self : OptgradmomentumLayer, other : OptgradmomentumLayer) -> OptgradmomentumLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_layer_copy(s : OptgradmomentumLayer) -> OptgradmomentumLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumLayer::copy(self : OptgradmomentumLayer) -> OptgradmomentumLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_layer_fill(s : OptgradmomentumLayer, v : Double) -> OptgradmomentumLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumLayer::fill(self : OptgradmomentumLayer, v : Double) -> OptgradmomentumLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_layer_min(s : OptgradmomentumLayer) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumLayer::min(self : OptgradmomentumLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_layer_max(s : OptgradmomentumLayer) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumLayer::max(self : OptgradmomentumLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_layer_to_string(s : OptgradmomentumLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumLayer::to_string(self : OptgradmomentumLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumBuffer {
@@ -810,45 +810,45 @@ pub fn opt_grad_momentum_buffer_make(size : Int) -> OptgradmomentumBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_buffer_len(s : OptgradmomentumBuffer) -> Int { s.size }
+pub fn OptgradmomentumBuffer::len(self : OptgradmomentumBuffer) -> Int { self.size }
 
-pub fn opt_grad_momentum_buffer_get(s : OptgradmomentumBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumBuffer::get(self : OptgradmomentumBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_buffer_set(s : OptgradmomentumBuffer, i : Int, v : Double) -> OptgradmomentumBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumBuffer::set(self : OptgradmomentumBuffer, i : Int, v : Double) -> OptgradmomentumBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_buffer_sum(s : OptgradmomentumBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumBuffer::sum(self : OptgradmomentumBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_buffer_mean(s : OptgradmomentumBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumBuffer::mean(self : OptgradmomentumBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_buffer_scale(s : OptgradmomentumBuffer, f : Double) -> OptgradmomentumBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumBuffer::scale(self : OptgradmomentumBuffer, f : Double) -> OptgradmomentumBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_buffer_add(a : OptgradmomentumBuffer, b : OptgradmomentumBuffer) -> OptgradmomentumBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumBuffer::add(self : OptgradmomentumBuffer, other : OptgradmomentumBuffer) -> OptgradmomentumBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_buffer_copy(s : OptgradmomentumBuffer) -> OptgradmomentumBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumBuffer::copy(self : OptgradmomentumBuffer) -> OptgradmomentumBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_buffer_fill(s : OptgradmomentumBuffer, v : Double) -> OptgradmomentumBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumBuffer::fill(self : OptgradmomentumBuffer, v : Double) -> OptgradmomentumBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_buffer_min(s : OptgradmomentumBuffer) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumBuffer::min(self : OptgradmomentumBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_buffer_max(s : OptgradmomentumBuffer) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumBuffer::max(self : OptgradmomentumBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_buffer_to_string(s : OptgradmomentumBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumBuffer::to_string(self : OptgradmomentumBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumCursor {
@@ -861,45 +861,45 @@ pub fn opt_grad_momentum_cursor_make(size : Int) -> OptgradmomentumCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_cursor_len(s : OptgradmomentumCursor) -> Int { s.size }
+pub fn OptgradmomentumCursor::len(self : OptgradmomentumCursor) -> Int { self.size }
 
-pub fn opt_grad_momentum_cursor_get(s : OptgradmomentumCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumCursor::get(self : OptgradmomentumCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_cursor_set(s : OptgradmomentumCursor, i : Int, v : Double) -> OptgradmomentumCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumCursor::set(self : OptgradmomentumCursor, i : Int, v : Double) -> OptgradmomentumCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cursor_sum(s : OptgradmomentumCursor) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumCursor::sum(self : OptgradmomentumCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_cursor_mean(s : OptgradmomentumCursor) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumCursor::mean(self : OptgradmomentumCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_cursor_scale(s : OptgradmomentumCursor, f : Double) -> OptgradmomentumCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumCursor::scale(self : OptgradmomentumCursor, f : Double) -> OptgradmomentumCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cursor_add(a : OptgradmomentumCursor, b : OptgradmomentumCursor) -> OptgradmomentumCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumCursor::add(self : OptgradmomentumCursor, other : OptgradmomentumCursor) -> OptgradmomentumCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cursor_copy(s : OptgradmomentumCursor) -> OptgradmomentumCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumCursor::copy(self : OptgradmomentumCursor) -> OptgradmomentumCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cursor_fill(s : OptgradmomentumCursor, v : Double) -> OptgradmomentumCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumCursor::fill(self : OptgradmomentumCursor, v : Double) -> OptgradmomentumCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_cursor_min(s : OptgradmomentumCursor) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumCursor::min(self : OptgradmomentumCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_cursor_max(s : OptgradmomentumCursor) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumCursor::max(self : OptgradmomentumCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_cursor_to_string(s : OptgradmomentumCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumCursor::to_string(self : OptgradmomentumCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumView {
@@ -912,45 +912,45 @@ pub fn opt_grad_momentum_view_make(size : Int) -> OptgradmomentumView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_view_len(s : OptgradmomentumView) -> Int { s.size }
+pub fn OptgradmomentumView::len(self : OptgradmomentumView) -> Int { self.size }
 
-pub fn opt_grad_momentum_view_get(s : OptgradmomentumView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumView::get(self : OptgradmomentumView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_view_set(s : OptgradmomentumView, i : Int, v : Double) -> OptgradmomentumView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumView::set(self : OptgradmomentumView, i : Int, v : Double) -> OptgradmomentumView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_view_sum(s : OptgradmomentumView) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumView::sum(self : OptgradmomentumView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_view_mean(s : OptgradmomentumView) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumView::mean(self : OptgradmomentumView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_view_scale(s : OptgradmomentumView, f : Double) -> OptgradmomentumView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumView::scale(self : OptgradmomentumView, f : Double) -> OptgradmomentumView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_view_add(a : OptgradmomentumView, b : OptgradmomentumView) -> OptgradmomentumView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumView::add(self : OptgradmomentumView, other : OptgradmomentumView) -> OptgradmomentumView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_view_copy(s : OptgradmomentumView) -> OptgradmomentumView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumView::copy(self : OptgradmomentumView) -> OptgradmomentumView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_view_fill(s : OptgradmomentumView, v : Double) -> OptgradmomentumView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumView::fill(self : OptgradmomentumView, v : Double) -> OptgradmomentumView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_view_min(s : OptgradmomentumView) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumView::min(self : OptgradmomentumView) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_view_max(s : OptgradmomentumView) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumView::max(self : OptgradmomentumView) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_view_to_string(s : OptgradmomentumView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumView::to_string(self : OptgradmomentumView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumRange {
@@ -963,45 +963,45 @@ pub fn opt_grad_momentum_range_make(size : Int) -> OptgradmomentumRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_range_len(s : OptgradmomentumRange) -> Int { s.size }
+pub fn OptgradmomentumRange::len(self : OptgradmomentumRange) -> Int { self.size }
 
-pub fn opt_grad_momentum_range_get(s : OptgradmomentumRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumRange::get(self : OptgradmomentumRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_range_set(s : OptgradmomentumRange, i : Int, v : Double) -> OptgradmomentumRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumRange::set(self : OptgradmomentumRange, i : Int, v : Double) -> OptgradmomentumRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_range_sum(s : OptgradmomentumRange) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumRange::sum(self : OptgradmomentumRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_range_mean(s : OptgradmomentumRange) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumRange::mean(self : OptgradmomentumRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_range_scale(s : OptgradmomentumRange, f : Double) -> OptgradmomentumRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumRange::scale(self : OptgradmomentumRange, f : Double) -> OptgradmomentumRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_range_add(a : OptgradmomentumRange, b : OptgradmomentumRange) -> OptgradmomentumRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumRange::add(self : OptgradmomentumRange, other : OptgradmomentumRange) -> OptgradmomentumRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_range_copy(s : OptgradmomentumRange) -> OptgradmomentumRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumRange::copy(self : OptgradmomentumRange) -> OptgradmomentumRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_range_fill(s : OptgradmomentumRange, v : Double) -> OptgradmomentumRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumRange::fill(self : OptgradmomentumRange, v : Double) -> OptgradmomentumRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_range_min(s : OptgradmomentumRange) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumRange::min(self : OptgradmomentumRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_range_max(s : OptgradmomentumRange) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumRange::max(self : OptgradmomentumRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_range_to_string(s : OptgradmomentumRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumRange::to_string(self : OptgradmomentumRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradmomentumSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_grad_momentum_slice_make(size : Int) -> OptgradmomentumSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_momentum_slice_len(s : OptgradmomentumSlice) -> Int { s.size }
+pub fn OptgradmomentumSlice::len(self : OptgradmomentumSlice) -> Int { self.size }
 
-pub fn opt_grad_momentum_slice_get(s : OptgradmomentumSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradmomentumSlice::get(self : OptgradmomentumSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_momentum_slice_set(s : OptgradmomentumSlice, i : Int, v : Double) -> OptgradmomentumSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradmomentumSlice::set(self : OptgradmomentumSlice, i : Int, v : Double) -> OptgradmomentumSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_slice_sum(s : OptgradmomentumSlice) -> Double { @_common.sum(s.data) }
+pub fn OptgradmomentumSlice::sum(self : OptgradmomentumSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_momentum_slice_mean(s : OptgradmomentumSlice) -> Double { @_common.mean(s.data) }
+pub fn OptgradmomentumSlice::mean(self : OptgradmomentumSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_momentum_slice_scale(s : OptgradmomentumSlice, f : Double) -> OptgradmomentumSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradmomentumSlice::scale(self : OptgradmomentumSlice, f : Double) -> OptgradmomentumSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_slice_add(a : OptgradmomentumSlice, b : OptgradmomentumSlice) -> OptgradmomentumSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradmomentumSlice::add(self : OptgradmomentumSlice, other : OptgradmomentumSlice) -> OptgradmomentumSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_slice_copy(s : OptgradmomentumSlice) -> OptgradmomentumSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradmomentumSlice::copy(self : OptgradmomentumSlice) -> OptgradmomentumSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_slice_fill(s : OptgradmomentumSlice, v : Double) -> OptgradmomentumSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradmomentumSlice::fill(self : OptgradmomentumSlice, v : Double) -> OptgradmomentumSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_momentum_slice_min(s : OptgradmomentumSlice) -> Double { @_common.min(s.data) }
+pub fn OptgradmomentumSlice::min(self : OptgradmomentumSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_momentum_slice_max(s : OptgradmomentumSlice) -> Double { @_common.max(s.data) }
+pub fn OptgradmomentumSlice::max(self : OptgradmomentumSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_momentum_slice_to_string(s : OptgradmomentumSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradmomentumSlice::to_string(self : OptgradmomentumSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

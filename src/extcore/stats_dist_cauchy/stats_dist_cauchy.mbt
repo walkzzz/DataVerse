@@ -351,45 +351,45 @@ pub fn stats_dist_cauchy_frame_make(size : Int) -> StatsdistcauchyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_frame_len(s : StatsdistcauchyFrame) -> Int { s.size }
+pub fn StatsdistcauchyFrame::len(self : StatsdistcauchyFrame) -> Int { self.size }
 
-pub fn stats_dist_cauchy_frame_get(s : StatsdistcauchyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyFrame::get(self : StatsdistcauchyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_frame_set(s : StatsdistcauchyFrame, i : Int, v : Double) -> StatsdistcauchyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyFrame::set(self : StatsdistcauchyFrame, i : Int, v : Double) -> StatsdistcauchyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_frame_sum(s : StatsdistcauchyFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyFrame::sum(self : StatsdistcauchyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_frame_mean(s : StatsdistcauchyFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyFrame::mean(self : StatsdistcauchyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_frame_scale(s : StatsdistcauchyFrame, f : Double) -> StatsdistcauchyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyFrame::scale(self : StatsdistcauchyFrame, f : Double) -> StatsdistcauchyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_frame_add(a : StatsdistcauchyFrame, b : StatsdistcauchyFrame) -> StatsdistcauchyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyFrame::add(self : StatsdistcauchyFrame, other : StatsdistcauchyFrame) -> StatsdistcauchyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_frame_copy(s : StatsdistcauchyFrame) -> StatsdistcauchyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyFrame::copy(self : StatsdistcauchyFrame) -> StatsdistcauchyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_frame_fill(s : StatsdistcauchyFrame, v : Double) -> StatsdistcauchyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyFrame::fill(self : StatsdistcauchyFrame, v : Double) -> StatsdistcauchyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_frame_min(s : StatsdistcauchyFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyFrame::min(self : StatsdistcauchyFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_frame_max(s : StatsdistcauchyFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyFrame::max(self : StatsdistcauchyFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_frame_to_string(s : StatsdistcauchyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyFrame::to_string(self : StatsdistcauchyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_cauchy_table_make(size : Int) -> StatsdistcauchyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_table_len(s : StatsdistcauchyTable) -> Int { s.size }
+pub fn StatsdistcauchyTable::len(self : StatsdistcauchyTable) -> Int { self.size }
 
-pub fn stats_dist_cauchy_table_get(s : StatsdistcauchyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyTable::get(self : StatsdistcauchyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_table_set(s : StatsdistcauchyTable, i : Int, v : Double) -> StatsdistcauchyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyTable::set(self : StatsdistcauchyTable, i : Int, v : Double) -> StatsdistcauchyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_table_sum(s : StatsdistcauchyTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyTable::sum(self : StatsdistcauchyTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_table_mean(s : StatsdistcauchyTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyTable::mean(self : StatsdistcauchyTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_table_scale(s : StatsdistcauchyTable, f : Double) -> StatsdistcauchyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyTable::scale(self : StatsdistcauchyTable, f : Double) -> StatsdistcauchyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_table_add(a : StatsdistcauchyTable, b : StatsdistcauchyTable) -> StatsdistcauchyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyTable::add(self : StatsdistcauchyTable, other : StatsdistcauchyTable) -> StatsdistcauchyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_table_copy(s : StatsdistcauchyTable) -> StatsdistcauchyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyTable::copy(self : StatsdistcauchyTable) -> StatsdistcauchyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_table_fill(s : StatsdistcauchyTable, v : Double) -> StatsdistcauchyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyTable::fill(self : StatsdistcauchyTable, v : Double) -> StatsdistcauchyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_table_min(s : StatsdistcauchyTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyTable::min(self : StatsdistcauchyTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_table_max(s : StatsdistcauchyTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyTable::max(self : StatsdistcauchyTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_table_to_string(s : StatsdistcauchyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyTable::to_string(self : StatsdistcauchyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_cauchy_graphn_make(size : Int) -> StatsdistcauchyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_graphn_len(s : StatsdistcauchyGraphN) -> Int { s.size }
+pub fn StatsdistcauchyGraphN::len(self : StatsdistcauchyGraphN) -> Int { self.size }
 
-pub fn stats_dist_cauchy_graphn_get(s : StatsdistcauchyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyGraphN::get(self : StatsdistcauchyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_graphn_set(s : StatsdistcauchyGraphN, i : Int, v : Double) -> StatsdistcauchyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyGraphN::set(self : StatsdistcauchyGraphN, i : Int, v : Double) -> StatsdistcauchyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_graphn_sum(s : StatsdistcauchyGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyGraphN::sum(self : StatsdistcauchyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_graphn_mean(s : StatsdistcauchyGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyGraphN::mean(self : StatsdistcauchyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_graphn_scale(s : StatsdistcauchyGraphN, f : Double) -> StatsdistcauchyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyGraphN::scale(self : StatsdistcauchyGraphN, f : Double) -> StatsdistcauchyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_graphn_add(a : StatsdistcauchyGraphN, b : StatsdistcauchyGraphN) -> StatsdistcauchyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyGraphN::add(self : StatsdistcauchyGraphN, other : StatsdistcauchyGraphN) -> StatsdistcauchyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_graphn_copy(s : StatsdistcauchyGraphN) -> StatsdistcauchyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyGraphN::copy(self : StatsdistcauchyGraphN) -> StatsdistcauchyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_graphn_fill(s : StatsdistcauchyGraphN, v : Double) -> StatsdistcauchyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyGraphN::fill(self : StatsdistcauchyGraphN, v : Double) -> StatsdistcauchyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_graphn_min(s : StatsdistcauchyGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyGraphN::min(self : StatsdistcauchyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_graphn_max(s : StatsdistcauchyGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyGraphN::max(self : StatsdistcauchyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_graphn_to_string(s : StatsdistcauchyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyGraphN::to_string(self : StatsdistcauchyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_cauchy_node_make(size : Int) -> StatsdistcauchyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_node_len(s : StatsdistcauchyNode) -> Int { s.size }
+pub fn StatsdistcauchyNode::len(self : StatsdistcauchyNode) -> Int { self.size }
 
-pub fn stats_dist_cauchy_node_get(s : StatsdistcauchyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyNode::get(self : StatsdistcauchyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_node_set(s : StatsdistcauchyNode, i : Int, v : Double) -> StatsdistcauchyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyNode::set(self : StatsdistcauchyNode, i : Int, v : Double) -> StatsdistcauchyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_node_sum(s : StatsdistcauchyNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyNode::sum(self : StatsdistcauchyNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_node_mean(s : StatsdistcauchyNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyNode::mean(self : StatsdistcauchyNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_node_scale(s : StatsdistcauchyNode, f : Double) -> StatsdistcauchyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyNode::scale(self : StatsdistcauchyNode, f : Double) -> StatsdistcauchyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_node_add(a : StatsdistcauchyNode, b : StatsdistcauchyNode) -> StatsdistcauchyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyNode::add(self : StatsdistcauchyNode, other : StatsdistcauchyNode) -> StatsdistcauchyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_node_copy(s : StatsdistcauchyNode) -> StatsdistcauchyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyNode::copy(self : StatsdistcauchyNode) -> StatsdistcauchyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_node_fill(s : StatsdistcauchyNode, v : Double) -> StatsdistcauchyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyNode::fill(self : StatsdistcauchyNode, v : Double) -> StatsdistcauchyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_node_min(s : StatsdistcauchyNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyNode::min(self : StatsdistcauchyNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_node_max(s : StatsdistcauchyNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyNode::max(self : StatsdistcauchyNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_node_to_string(s : StatsdistcauchyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyNode::to_string(self : StatsdistcauchyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_cauchy_edge_make(size : Int) -> StatsdistcauchyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_edge_len(s : StatsdistcauchyEdge) -> Int { s.size }
+pub fn StatsdistcauchyEdge::len(self : StatsdistcauchyEdge) -> Int { self.size }
 
-pub fn stats_dist_cauchy_edge_get(s : StatsdistcauchyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyEdge::get(self : StatsdistcauchyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_edge_set(s : StatsdistcauchyEdge, i : Int, v : Double) -> StatsdistcauchyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyEdge::set(self : StatsdistcauchyEdge, i : Int, v : Double) -> StatsdistcauchyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_edge_sum(s : StatsdistcauchyEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyEdge::sum(self : StatsdistcauchyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_edge_mean(s : StatsdistcauchyEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyEdge::mean(self : StatsdistcauchyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_edge_scale(s : StatsdistcauchyEdge, f : Double) -> StatsdistcauchyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyEdge::scale(self : StatsdistcauchyEdge, f : Double) -> StatsdistcauchyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_edge_add(a : StatsdistcauchyEdge, b : StatsdistcauchyEdge) -> StatsdistcauchyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyEdge::add(self : StatsdistcauchyEdge, other : StatsdistcauchyEdge) -> StatsdistcauchyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_edge_copy(s : StatsdistcauchyEdge) -> StatsdistcauchyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyEdge::copy(self : StatsdistcauchyEdge) -> StatsdistcauchyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_edge_fill(s : StatsdistcauchyEdge, v : Double) -> StatsdistcauchyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyEdge::fill(self : StatsdistcauchyEdge, v : Double) -> StatsdistcauchyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_edge_min(s : StatsdistcauchyEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyEdge::min(self : StatsdistcauchyEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_edge_max(s : StatsdistcauchyEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyEdge::max(self : StatsdistcauchyEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_edge_to_string(s : StatsdistcauchyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyEdge::to_string(self : StatsdistcauchyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_cauchy_path_make(size : Int) -> StatsdistcauchyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_path_len(s : StatsdistcauchyPath) -> Int { s.size }
+pub fn StatsdistcauchyPath::len(self : StatsdistcauchyPath) -> Int { self.size }
 
-pub fn stats_dist_cauchy_path_get(s : StatsdistcauchyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyPath::get(self : StatsdistcauchyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_path_set(s : StatsdistcauchyPath, i : Int, v : Double) -> StatsdistcauchyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyPath::set(self : StatsdistcauchyPath, i : Int, v : Double) -> StatsdistcauchyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_path_sum(s : StatsdistcauchyPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyPath::sum(self : StatsdistcauchyPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_path_mean(s : StatsdistcauchyPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyPath::mean(self : StatsdistcauchyPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_path_scale(s : StatsdistcauchyPath, f : Double) -> StatsdistcauchyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyPath::scale(self : StatsdistcauchyPath, f : Double) -> StatsdistcauchyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_path_add(a : StatsdistcauchyPath, b : StatsdistcauchyPath) -> StatsdistcauchyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyPath::add(self : StatsdistcauchyPath, other : StatsdistcauchyPath) -> StatsdistcauchyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_path_copy(s : StatsdistcauchyPath) -> StatsdistcauchyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyPath::copy(self : StatsdistcauchyPath) -> StatsdistcauchyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_path_fill(s : StatsdistcauchyPath, v : Double) -> StatsdistcauchyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyPath::fill(self : StatsdistcauchyPath, v : Double) -> StatsdistcauchyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_path_min(s : StatsdistcauchyPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyPath::min(self : StatsdistcauchyPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_path_max(s : StatsdistcauchyPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyPath::max(self : StatsdistcauchyPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_path_to_string(s : StatsdistcauchyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyPath::to_string(self : StatsdistcauchyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_cauchy_cluster_make(size : Int) -> StatsdistcauchyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_cluster_len(s : StatsdistcauchyCluster) -> Int { s.size }
+pub fn StatsdistcauchyCluster::len(self : StatsdistcauchyCluster) -> Int { self.size }
 
-pub fn stats_dist_cauchy_cluster_get(s : StatsdistcauchyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyCluster::get(self : StatsdistcauchyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_cluster_set(s : StatsdistcauchyCluster, i : Int, v : Double) -> StatsdistcauchyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCluster::set(self : StatsdistcauchyCluster, i : Int, v : Double) -> StatsdistcauchyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cluster_sum(s : StatsdistcauchyCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyCluster::sum(self : StatsdistcauchyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_cluster_mean(s : StatsdistcauchyCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyCluster::mean(self : StatsdistcauchyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_cluster_scale(s : StatsdistcauchyCluster, f : Double) -> StatsdistcauchyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCluster::scale(self : StatsdistcauchyCluster, f : Double) -> StatsdistcauchyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cluster_add(a : StatsdistcauchyCluster, b : StatsdistcauchyCluster) -> StatsdistcauchyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyCluster::add(self : StatsdistcauchyCluster, other : StatsdistcauchyCluster) -> StatsdistcauchyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cluster_copy(s : StatsdistcauchyCluster) -> StatsdistcauchyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCluster::copy(self : StatsdistcauchyCluster) -> StatsdistcauchyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cluster_fill(s : StatsdistcauchyCluster, v : Double) -> StatsdistcauchyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCluster::fill(self : StatsdistcauchyCluster, v : Double) -> StatsdistcauchyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cluster_min(s : StatsdistcauchyCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyCluster::min(self : StatsdistcauchyCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_cluster_max(s : StatsdistcauchyCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyCluster::max(self : StatsdistcauchyCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_cluster_to_string(s : StatsdistcauchyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyCluster::to_string(self : StatsdistcauchyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_cauchy_model_make(size : Int) -> StatsdistcauchyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_model_len(s : StatsdistcauchyModel) -> Int { s.size }
+pub fn StatsdistcauchyModel::len(self : StatsdistcauchyModel) -> Int { self.size }
 
-pub fn stats_dist_cauchy_model_get(s : StatsdistcauchyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyModel::get(self : StatsdistcauchyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_model_set(s : StatsdistcauchyModel, i : Int, v : Double) -> StatsdistcauchyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyModel::set(self : StatsdistcauchyModel, i : Int, v : Double) -> StatsdistcauchyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_model_sum(s : StatsdistcauchyModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyModel::sum(self : StatsdistcauchyModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_model_mean(s : StatsdistcauchyModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyModel::mean(self : StatsdistcauchyModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_model_scale(s : StatsdistcauchyModel, f : Double) -> StatsdistcauchyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyModel::scale(self : StatsdistcauchyModel, f : Double) -> StatsdistcauchyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_model_add(a : StatsdistcauchyModel, b : StatsdistcauchyModel) -> StatsdistcauchyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyModel::add(self : StatsdistcauchyModel, other : StatsdistcauchyModel) -> StatsdistcauchyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_model_copy(s : StatsdistcauchyModel) -> StatsdistcauchyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyModel::copy(self : StatsdistcauchyModel) -> StatsdistcauchyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_model_fill(s : StatsdistcauchyModel, v : Double) -> StatsdistcauchyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyModel::fill(self : StatsdistcauchyModel, v : Double) -> StatsdistcauchyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_model_min(s : StatsdistcauchyModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyModel::min(self : StatsdistcauchyModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_model_max(s : StatsdistcauchyModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyModel::max(self : StatsdistcauchyModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_model_to_string(s : StatsdistcauchyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyModel::to_string(self : StatsdistcauchyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_cauchy_layer_make(size : Int) -> StatsdistcauchyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_layer_len(s : StatsdistcauchyLayer) -> Int { s.size }
+pub fn StatsdistcauchyLayer::len(self : StatsdistcauchyLayer) -> Int { self.size }
 
-pub fn stats_dist_cauchy_layer_get(s : StatsdistcauchyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyLayer::get(self : StatsdistcauchyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_layer_set(s : StatsdistcauchyLayer, i : Int, v : Double) -> StatsdistcauchyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyLayer::set(self : StatsdistcauchyLayer, i : Int, v : Double) -> StatsdistcauchyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_layer_sum(s : StatsdistcauchyLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyLayer::sum(self : StatsdistcauchyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_layer_mean(s : StatsdistcauchyLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyLayer::mean(self : StatsdistcauchyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_layer_scale(s : StatsdistcauchyLayer, f : Double) -> StatsdistcauchyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyLayer::scale(self : StatsdistcauchyLayer, f : Double) -> StatsdistcauchyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_layer_add(a : StatsdistcauchyLayer, b : StatsdistcauchyLayer) -> StatsdistcauchyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyLayer::add(self : StatsdistcauchyLayer, other : StatsdistcauchyLayer) -> StatsdistcauchyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_layer_copy(s : StatsdistcauchyLayer) -> StatsdistcauchyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyLayer::copy(self : StatsdistcauchyLayer) -> StatsdistcauchyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_layer_fill(s : StatsdistcauchyLayer, v : Double) -> StatsdistcauchyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyLayer::fill(self : StatsdistcauchyLayer, v : Double) -> StatsdistcauchyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_layer_min(s : StatsdistcauchyLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyLayer::min(self : StatsdistcauchyLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_layer_max(s : StatsdistcauchyLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyLayer::max(self : StatsdistcauchyLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_layer_to_string(s : StatsdistcauchyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyLayer::to_string(self : StatsdistcauchyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_cauchy_buffer_make(size : Int) -> StatsdistcauchyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_buffer_len(s : StatsdistcauchyBuffer) -> Int { s.size }
+pub fn StatsdistcauchyBuffer::len(self : StatsdistcauchyBuffer) -> Int { self.size }
 
-pub fn stats_dist_cauchy_buffer_get(s : StatsdistcauchyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyBuffer::get(self : StatsdistcauchyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_buffer_set(s : StatsdistcauchyBuffer, i : Int, v : Double) -> StatsdistcauchyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyBuffer::set(self : StatsdistcauchyBuffer, i : Int, v : Double) -> StatsdistcauchyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_buffer_sum(s : StatsdistcauchyBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyBuffer::sum(self : StatsdistcauchyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_buffer_mean(s : StatsdistcauchyBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyBuffer::mean(self : StatsdistcauchyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_buffer_scale(s : StatsdistcauchyBuffer, f : Double) -> StatsdistcauchyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyBuffer::scale(self : StatsdistcauchyBuffer, f : Double) -> StatsdistcauchyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_buffer_add(a : StatsdistcauchyBuffer, b : StatsdistcauchyBuffer) -> StatsdistcauchyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyBuffer::add(self : StatsdistcauchyBuffer, other : StatsdistcauchyBuffer) -> StatsdistcauchyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_buffer_copy(s : StatsdistcauchyBuffer) -> StatsdistcauchyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyBuffer::copy(self : StatsdistcauchyBuffer) -> StatsdistcauchyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_buffer_fill(s : StatsdistcauchyBuffer, v : Double) -> StatsdistcauchyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyBuffer::fill(self : StatsdistcauchyBuffer, v : Double) -> StatsdistcauchyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_buffer_min(s : StatsdistcauchyBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyBuffer::min(self : StatsdistcauchyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_buffer_max(s : StatsdistcauchyBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyBuffer::max(self : StatsdistcauchyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_buffer_to_string(s : StatsdistcauchyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyBuffer::to_string(self : StatsdistcauchyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_cauchy_cursor_make(size : Int) -> StatsdistcauchyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_cursor_len(s : StatsdistcauchyCursor) -> Int { s.size }
+pub fn StatsdistcauchyCursor::len(self : StatsdistcauchyCursor) -> Int { self.size }
 
-pub fn stats_dist_cauchy_cursor_get(s : StatsdistcauchyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyCursor::get(self : StatsdistcauchyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_cursor_set(s : StatsdistcauchyCursor, i : Int, v : Double) -> StatsdistcauchyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCursor::set(self : StatsdistcauchyCursor, i : Int, v : Double) -> StatsdistcauchyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cursor_sum(s : StatsdistcauchyCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyCursor::sum(self : StatsdistcauchyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_cursor_mean(s : StatsdistcauchyCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyCursor::mean(self : StatsdistcauchyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_cursor_scale(s : StatsdistcauchyCursor, f : Double) -> StatsdistcauchyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCursor::scale(self : StatsdistcauchyCursor, f : Double) -> StatsdistcauchyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cursor_add(a : StatsdistcauchyCursor, b : StatsdistcauchyCursor) -> StatsdistcauchyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyCursor::add(self : StatsdistcauchyCursor, other : StatsdistcauchyCursor) -> StatsdistcauchyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cursor_copy(s : StatsdistcauchyCursor) -> StatsdistcauchyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCursor::copy(self : StatsdistcauchyCursor) -> StatsdistcauchyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cursor_fill(s : StatsdistcauchyCursor, v : Double) -> StatsdistcauchyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyCursor::fill(self : StatsdistcauchyCursor, v : Double) -> StatsdistcauchyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_cursor_min(s : StatsdistcauchyCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyCursor::min(self : StatsdistcauchyCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_cursor_max(s : StatsdistcauchyCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyCursor::max(self : StatsdistcauchyCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_cursor_to_string(s : StatsdistcauchyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyCursor::to_string(self : StatsdistcauchyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyView {
@@ -912,45 +912,45 @@ pub fn stats_dist_cauchy_view_make(size : Int) -> StatsdistcauchyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_view_len(s : StatsdistcauchyView) -> Int { s.size }
+pub fn StatsdistcauchyView::len(self : StatsdistcauchyView) -> Int { self.size }
 
-pub fn stats_dist_cauchy_view_get(s : StatsdistcauchyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyView::get(self : StatsdistcauchyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_view_set(s : StatsdistcauchyView, i : Int, v : Double) -> StatsdistcauchyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyView::set(self : StatsdistcauchyView, i : Int, v : Double) -> StatsdistcauchyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_view_sum(s : StatsdistcauchyView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyView::sum(self : StatsdistcauchyView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_view_mean(s : StatsdistcauchyView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyView::mean(self : StatsdistcauchyView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_view_scale(s : StatsdistcauchyView, f : Double) -> StatsdistcauchyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyView::scale(self : StatsdistcauchyView, f : Double) -> StatsdistcauchyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_view_add(a : StatsdistcauchyView, b : StatsdistcauchyView) -> StatsdistcauchyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyView::add(self : StatsdistcauchyView, other : StatsdistcauchyView) -> StatsdistcauchyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_view_copy(s : StatsdistcauchyView) -> StatsdistcauchyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyView::copy(self : StatsdistcauchyView) -> StatsdistcauchyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_view_fill(s : StatsdistcauchyView, v : Double) -> StatsdistcauchyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyView::fill(self : StatsdistcauchyView, v : Double) -> StatsdistcauchyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_view_min(s : StatsdistcauchyView) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyView::min(self : StatsdistcauchyView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_view_max(s : StatsdistcauchyView) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyView::max(self : StatsdistcauchyView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_view_to_string(s : StatsdistcauchyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyView::to_string(self : StatsdistcauchyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchyRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_cauchy_range_make(size : Int) -> StatsdistcauchyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_range_len(s : StatsdistcauchyRange) -> Int { s.size }
+pub fn StatsdistcauchyRange::len(self : StatsdistcauchyRange) -> Int { self.size }
 
-pub fn stats_dist_cauchy_range_get(s : StatsdistcauchyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchyRange::get(self : StatsdistcauchyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_range_set(s : StatsdistcauchyRange, i : Int, v : Double) -> StatsdistcauchyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchyRange::set(self : StatsdistcauchyRange, i : Int, v : Double) -> StatsdistcauchyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_range_sum(s : StatsdistcauchyRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchyRange::sum(self : StatsdistcauchyRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_range_mean(s : StatsdistcauchyRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchyRange::mean(self : StatsdistcauchyRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_range_scale(s : StatsdistcauchyRange, f : Double) -> StatsdistcauchyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyRange::scale(self : StatsdistcauchyRange, f : Double) -> StatsdistcauchyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_range_add(a : StatsdistcauchyRange, b : StatsdistcauchyRange) -> StatsdistcauchyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchyRange::add(self : StatsdistcauchyRange, other : StatsdistcauchyRange) -> StatsdistcauchyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_range_copy(s : StatsdistcauchyRange) -> StatsdistcauchyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyRange::copy(self : StatsdistcauchyRange) -> StatsdistcauchyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_range_fill(s : StatsdistcauchyRange, v : Double) -> StatsdistcauchyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchyRange::fill(self : StatsdistcauchyRange, v : Double) -> StatsdistcauchyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_range_min(s : StatsdistcauchyRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchyRange::min(self : StatsdistcauchyRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_range_max(s : StatsdistcauchyRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchyRange::max(self : StatsdistcauchyRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_range_to_string(s : StatsdistcauchyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchyRange::to_string(self : StatsdistcauchyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistcauchySlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_cauchy_slice_make(size : Int) -> StatsdistcauchySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_cauchy_slice_len(s : StatsdistcauchySlice) -> Int { s.size }
+pub fn StatsdistcauchySlice::len(self : StatsdistcauchySlice) -> Int { self.size }
 
-pub fn stats_dist_cauchy_slice_get(s : StatsdistcauchySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistcauchySlice::get(self : StatsdistcauchySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_cauchy_slice_set(s : StatsdistcauchySlice, i : Int, v : Double) -> StatsdistcauchySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistcauchySlice::set(self : StatsdistcauchySlice, i : Int, v : Double) -> StatsdistcauchySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_slice_sum(s : StatsdistcauchySlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistcauchySlice::sum(self : StatsdistcauchySlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_cauchy_slice_mean(s : StatsdistcauchySlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistcauchySlice::mean(self : StatsdistcauchySlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_cauchy_slice_scale(s : StatsdistcauchySlice, f : Double) -> StatsdistcauchySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistcauchySlice::scale(self : StatsdistcauchySlice, f : Double) -> StatsdistcauchySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_slice_add(a : StatsdistcauchySlice, b : StatsdistcauchySlice) -> StatsdistcauchySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistcauchySlice::add(self : StatsdistcauchySlice, other : StatsdistcauchySlice) -> StatsdistcauchySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_slice_copy(s : StatsdistcauchySlice) -> StatsdistcauchySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistcauchySlice::copy(self : StatsdistcauchySlice) -> StatsdistcauchySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_slice_fill(s : StatsdistcauchySlice, v : Double) -> StatsdistcauchySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistcauchySlice::fill(self : StatsdistcauchySlice, v : Double) -> StatsdistcauchySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_cauchy_slice_min(s : StatsdistcauchySlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistcauchySlice::min(self : StatsdistcauchySlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_cauchy_slice_max(s : StatsdistcauchySlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistcauchySlice::max(self : StatsdistcauchySlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_cauchy_slice_to_string(s : StatsdistcauchySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistcauchySlice::to_string(self : StatsdistcauchySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

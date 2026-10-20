@@ -351,45 +351,45 @@ pub fn chem_desc_fingerprint_frame_make(size : Int) -> ChemdescfingerprintFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_frame_len(s : ChemdescfingerprintFrame) -> Int { s.size }
+pub fn ChemdescfingerprintFrame::len(self : ChemdescfingerprintFrame) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_frame_get(s : ChemdescfingerprintFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintFrame::get(self : ChemdescfingerprintFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_frame_set(s : ChemdescfingerprintFrame, i : Int, v : Double) -> ChemdescfingerprintFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintFrame::set(self : ChemdescfingerprintFrame, i : Int, v : Double) -> ChemdescfingerprintFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_frame_sum(s : ChemdescfingerprintFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintFrame::sum(self : ChemdescfingerprintFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_frame_mean(s : ChemdescfingerprintFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintFrame::mean(self : ChemdescfingerprintFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_frame_scale(s : ChemdescfingerprintFrame, f : Double) -> ChemdescfingerprintFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintFrame::scale(self : ChemdescfingerprintFrame, f : Double) -> ChemdescfingerprintFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_frame_add(a : ChemdescfingerprintFrame, b : ChemdescfingerprintFrame) -> ChemdescfingerprintFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintFrame::add(self : ChemdescfingerprintFrame, other : ChemdescfingerprintFrame) -> ChemdescfingerprintFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_frame_copy(s : ChemdescfingerprintFrame) -> ChemdescfingerprintFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintFrame::copy(self : ChemdescfingerprintFrame) -> ChemdescfingerprintFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_frame_fill(s : ChemdescfingerprintFrame, v : Double) -> ChemdescfingerprintFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintFrame::fill(self : ChemdescfingerprintFrame, v : Double) -> ChemdescfingerprintFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_frame_min(s : ChemdescfingerprintFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintFrame::min(self : ChemdescfingerprintFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_frame_max(s : ChemdescfingerprintFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintFrame::max(self : ChemdescfingerprintFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_frame_to_string(s : ChemdescfingerprintFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintFrame::to_string(self : ChemdescfingerprintFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_fingerprint_table_make(size : Int) -> ChemdescfingerprintTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_table_len(s : ChemdescfingerprintTable) -> Int { s.size }
+pub fn ChemdescfingerprintTable::len(self : ChemdescfingerprintTable) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_table_get(s : ChemdescfingerprintTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintTable::get(self : ChemdescfingerprintTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_table_set(s : ChemdescfingerprintTable, i : Int, v : Double) -> ChemdescfingerprintTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintTable::set(self : ChemdescfingerprintTable, i : Int, v : Double) -> ChemdescfingerprintTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_table_sum(s : ChemdescfingerprintTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintTable::sum(self : ChemdescfingerprintTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_table_mean(s : ChemdescfingerprintTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintTable::mean(self : ChemdescfingerprintTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_table_scale(s : ChemdescfingerprintTable, f : Double) -> ChemdescfingerprintTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintTable::scale(self : ChemdescfingerprintTable, f : Double) -> ChemdescfingerprintTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_table_add(a : ChemdescfingerprintTable, b : ChemdescfingerprintTable) -> ChemdescfingerprintTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintTable::add(self : ChemdescfingerprintTable, other : ChemdescfingerprintTable) -> ChemdescfingerprintTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_table_copy(s : ChemdescfingerprintTable) -> ChemdescfingerprintTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintTable::copy(self : ChemdescfingerprintTable) -> ChemdescfingerprintTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_table_fill(s : ChemdescfingerprintTable, v : Double) -> ChemdescfingerprintTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintTable::fill(self : ChemdescfingerprintTable, v : Double) -> ChemdescfingerprintTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_table_min(s : ChemdescfingerprintTable) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintTable::min(self : ChemdescfingerprintTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_table_max(s : ChemdescfingerprintTable) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintTable::max(self : ChemdescfingerprintTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_table_to_string(s : ChemdescfingerprintTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintTable::to_string(self : ChemdescfingerprintTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_fingerprint_graphn_make(size : Int) -> ChemdescfingerprintGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_graphn_len(s : ChemdescfingerprintGraphN) -> Int { s.size }
+pub fn ChemdescfingerprintGraphN::len(self : ChemdescfingerprintGraphN) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_graphn_get(s : ChemdescfingerprintGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintGraphN::get(self : ChemdescfingerprintGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_graphn_set(s : ChemdescfingerprintGraphN, i : Int, v : Double) -> ChemdescfingerprintGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintGraphN::set(self : ChemdescfingerprintGraphN, i : Int, v : Double) -> ChemdescfingerprintGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_graphn_sum(s : ChemdescfingerprintGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintGraphN::sum(self : ChemdescfingerprintGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_graphn_mean(s : ChemdescfingerprintGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintGraphN::mean(self : ChemdescfingerprintGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_graphn_scale(s : ChemdescfingerprintGraphN, f : Double) -> ChemdescfingerprintGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintGraphN::scale(self : ChemdescfingerprintGraphN, f : Double) -> ChemdescfingerprintGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_graphn_add(a : ChemdescfingerprintGraphN, b : ChemdescfingerprintGraphN) -> ChemdescfingerprintGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintGraphN::add(self : ChemdescfingerprintGraphN, other : ChemdescfingerprintGraphN) -> ChemdescfingerprintGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_graphn_copy(s : ChemdescfingerprintGraphN) -> ChemdescfingerprintGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintGraphN::copy(self : ChemdescfingerprintGraphN) -> ChemdescfingerprintGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_graphn_fill(s : ChemdescfingerprintGraphN, v : Double) -> ChemdescfingerprintGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintGraphN::fill(self : ChemdescfingerprintGraphN, v : Double) -> ChemdescfingerprintGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_graphn_min(s : ChemdescfingerprintGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintGraphN::min(self : ChemdescfingerprintGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_graphn_max(s : ChemdescfingerprintGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintGraphN::max(self : ChemdescfingerprintGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_graphn_to_string(s : ChemdescfingerprintGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintGraphN::to_string(self : ChemdescfingerprintGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_fingerprint_node_make(size : Int) -> ChemdescfingerprintNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_node_len(s : ChemdescfingerprintNode) -> Int { s.size }
+pub fn ChemdescfingerprintNode::len(self : ChemdescfingerprintNode) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_node_get(s : ChemdescfingerprintNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintNode::get(self : ChemdescfingerprintNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_node_set(s : ChemdescfingerprintNode, i : Int, v : Double) -> ChemdescfingerprintNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintNode::set(self : ChemdescfingerprintNode, i : Int, v : Double) -> ChemdescfingerprintNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_node_sum(s : ChemdescfingerprintNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintNode::sum(self : ChemdescfingerprintNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_node_mean(s : ChemdescfingerprintNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintNode::mean(self : ChemdescfingerprintNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_node_scale(s : ChemdescfingerprintNode, f : Double) -> ChemdescfingerprintNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintNode::scale(self : ChemdescfingerprintNode, f : Double) -> ChemdescfingerprintNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_node_add(a : ChemdescfingerprintNode, b : ChemdescfingerprintNode) -> ChemdescfingerprintNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintNode::add(self : ChemdescfingerprintNode, other : ChemdescfingerprintNode) -> ChemdescfingerprintNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_node_copy(s : ChemdescfingerprintNode) -> ChemdescfingerprintNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintNode::copy(self : ChemdescfingerprintNode) -> ChemdescfingerprintNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_node_fill(s : ChemdescfingerprintNode, v : Double) -> ChemdescfingerprintNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintNode::fill(self : ChemdescfingerprintNode, v : Double) -> ChemdescfingerprintNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_node_min(s : ChemdescfingerprintNode) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintNode::min(self : ChemdescfingerprintNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_node_max(s : ChemdescfingerprintNode) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintNode::max(self : ChemdescfingerprintNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_node_to_string(s : ChemdescfingerprintNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintNode::to_string(self : ChemdescfingerprintNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_fingerprint_edge_make(size : Int) -> ChemdescfingerprintEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_edge_len(s : ChemdescfingerprintEdge) -> Int { s.size }
+pub fn ChemdescfingerprintEdge::len(self : ChemdescfingerprintEdge) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_edge_get(s : ChemdescfingerprintEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintEdge::get(self : ChemdescfingerprintEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_edge_set(s : ChemdescfingerprintEdge, i : Int, v : Double) -> ChemdescfingerprintEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintEdge::set(self : ChemdescfingerprintEdge, i : Int, v : Double) -> ChemdescfingerprintEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_edge_sum(s : ChemdescfingerprintEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintEdge::sum(self : ChemdescfingerprintEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_edge_mean(s : ChemdescfingerprintEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintEdge::mean(self : ChemdescfingerprintEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_edge_scale(s : ChemdescfingerprintEdge, f : Double) -> ChemdescfingerprintEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintEdge::scale(self : ChemdescfingerprintEdge, f : Double) -> ChemdescfingerprintEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_edge_add(a : ChemdescfingerprintEdge, b : ChemdescfingerprintEdge) -> ChemdescfingerprintEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintEdge::add(self : ChemdescfingerprintEdge, other : ChemdescfingerprintEdge) -> ChemdescfingerprintEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_edge_copy(s : ChemdescfingerprintEdge) -> ChemdescfingerprintEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintEdge::copy(self : ChemdescfingerprintEdge) -> ChemdescfingerprintEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_edge_fill(s : ChemdescfingerprintEdge, v : Double) -> ChemdescfingerprintEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintEdge::fill(self : ChemdescfingerprintEdge, v : Double) -> ChemdescfingerprintEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_edge_min(s : ChemdescfingerprintEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintEdge::min(self : ChemdescfingerprintEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_edge_max(s : ChemdescfingerprintEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintEdge::max(self : ChemdescfingerprintEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_edge_to_string(s : ChemdescfingerprintEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintEdge::to_string(self : ChemdescfingerprintEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_fingerprint_path_make(size : Int) -> ChemdescfingerprintPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_path_len(s : ChemdescfingerprintPath) -> Int { s.size }
+pub fn ChemdescfingerprintPath::len(self : ChemdescfingerprintPath) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_path_get(s : ChemdescfingerprintPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintPath::get(self : ChemdescfingerprintPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_path_set(s : ChemdescfingerprintPath, i : Int, v : Double) -> ChemdescfingerprintPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintPath::set(self : ChemdescfingerprintPath, i : Int, v : Double) -> ChemdescfingerprintPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_path_sum(s : ChemdescfingerprintPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintPath::sum(self : ChemdescfingerprintPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_path_mean(s : ChemdescfingerprintPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintPath::mean(self : ChemdescfingerprintPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_path_scale(s : ChemdescfingerprintPath, f : Double) -> ChemdescfingerprintPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintPath::scale(self : ChemdescfingerprintPath, f : Double) -> ChemdescfingerprintPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_path_add(a : ChemdescfingerprintPath, b : ChemdescfingerprintPath) -> ChemdescfingerprintPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintPath::add(self : ChemdescfingerprintPath, other : ChemdescfingerprintPath) -> ChemdescfingerprintPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_path_copy(s : ChemdescfingerprintPath) -> ChemdescfingerprintPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintPath::copy(self : ChemdescfingerprintPath) -> ChemdescfingerprintPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_path_fill(s : ChemdescfingerprintPath, v : Double) -> ChemdescfingerprintPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintPath::fill(self : ChemdescfingerprintPath, v : Double) -> ChemdescfingerprintPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_path_min(s : ChemdescfingerprintPath) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintPath::min(self : ChemdescfingerprintPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_path_max(s : ChemdescfingerprintPath) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintPath::max(self : ChemdescfingerprintPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_path_to_string(s : ChemdescfingerprintPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintPath::to_string(self : ChemdescfingerprintPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_fingerprint_cluster_make(size : Int) -> ChemdescfingerprintClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_cluster_len(s : ChemdescfingerprintCluster) -> Int { s.size }
+pub fn ChemdescfingerprintCluster::len(self : ChemdescfingerprintCluster) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_cluster_get(s : ChemdescfingerprintCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintCluster::get(self : ChemdescfingerprintCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_cluster_set(s : ChemdescfingerprintCluster, i : Int, v : Double) -> ChemdescfingerprintCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCluster::set(self : ChemdescfingerprintCluster, i : Int, v : Double) -> ChemdescfingerprintCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cluster_sum(s : ChemdescfingerprintCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintCluster::sum(self : ChemdescfingerprintCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_cluster_mean(s : ChemdescfingerprintCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintCluster::mean(self : ChemdescfingerprintCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_cluster_scale(s : ChemdescfingerprintCluster, f : Double) -> ChemdescfingerprintCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCluster::scale(self : ChemdescfingerprintCluster, f : Double) -> ChemdescfingerprintCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cluster_add(a : ChemdescfingerprintCluster, b : ChemdescfingerprintCluster) -> ChemdescfingerprintCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintCluster::add(self : ChemdescfingerprintCluster, other : ChemdescfingerprintCluster) -> ChemdescfingerprintCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cluster_copy(s : ChemdescfingerprintCluster) -> ChemdescfingerprintCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCluster::copy(self : ChemdescfingerprintCluster) -> ChemdescfingerprintCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cluster_fill(s : ChemdescfingerprintCluster, v : Double) -> ChemdescfingerprintCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCluster::fill(self : ChemdescfingerprintCluster, v : Double) -> ChemdescfingerprintCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cluster_min(s : ChemdescfingerprintCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintCluster::min(self : ChemdescfingerprintCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_cluster_max(s : ChemdescfingerprintCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintCluster::max(self : ChemdescfingerprintCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_cluster_to_string(s : ChemdescfingerprintCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintCluster::to_string(self : ChemdescfingerprintCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_fingerprint_model_make(size : Int) -> ChemdescfingerprintModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_model_len(s : ChemdescfingerprintModel) -> Int { s.size }
+pub fn ChemdescfingerprintModel::len(self : ChemdescfingerprintModel) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_model_get(s : ChemdescfingerprintModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintModel::get(self : ChemdescfingerprintModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_model_set(s : ChemdescfingerprintModel, i : Int, v : Double) -> ChemdescfingerprintModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintModel::set(self : ChemdescfingerprintModel, i : Int, v : Double) -> ChemdescfingerprintModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_model_sum(s : ChemdescfingerprintModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintModel::sum(self : ChemdescfingerprintModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_model_mean(s : ChemdescfingerprintModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintModel::mean(self : ChemdescfingerprintModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_model_scale(s : ChemdescfingerprintModel, f : Double) -> ChemdescfingerprintModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintModel::scale(self : ChemdescfingerprintModel, f : Double) -> ChemdescfingerprintModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_model_add(a : ChemdescfingerprintModel, b : ChemdescfingerprintModel) -> ChemdescfingerprintModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintModel::add(self : ChemdescfingerprintModel, other : ChemdescfingerprintModel) -> ChemdescfingerprintModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_model_copy(s : ChemdescfingerprintModel) -> ChemdescfingerprintModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintModel::copy(self : ChemdescfingerprintModel) -> ChemdescfingerprintModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_model_fill(s : ChemdescfingerprintModel, v : Double) -> ChemdescfingerprintModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintModel::fill(self : ChemdescfingerprintModel, v : Double) -> ChemdescfingerprintModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_model_min(s : ChemdescfingerprintModel) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintModel::min(self : ChemdescfingerprintModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_model_max(s : ChemdescfingerprintModel) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintModel::max(self : ChemdescfingerprintModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_model_to_string(s : ChemdescfingerprintModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintModel::to_string(self : ChemdescfingerprintModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_fingerprint_layer_make(size : Int) -> ChemdescfingerprintLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_layer_len(s : ChemdescfingerprintLayer) -> Int { s.size }
+pub fn ChemdescfingerprintLayer::len(self : ChemdescfingerprintLayer) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_layer_get(s : ChemdescfingerprintLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintLayer::get(self : ChemdescfingerprintLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_layer_set(s : ChemdescfingerprintLayer, i : Int, v : Double) -> ChemdescfingerprintLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintLayer::set(self : ChemdescfingerprintLayer, i : Int, v : Double) -> ChemdescfingerprintLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_layer_sum(s : ChemdescfingerprintLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintLayer::sum(self : ChemdescfingerprintLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_layer_mean(s : ChemdescfingerprintLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintLayer::mean(self : ChemdescfingerprintLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_layer_scale(s : ChemdescfingerprintLayer, f : Double) -> ChemdescfingerprintLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintLayer::scale(self : ChemdescfingerprintLayer, f : Double) -> ChemdescfingerprintLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_layer_add(a : ChemdescfingerprintLayer, b : ChemdescfingerprintLayer) -> ChemdescfingerprintLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintLayer::add(self : ChemdescfingerprintLayer, other : ChemdescfingerprintLayer) -> ChemdescfingerprintLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_layer_copy(s : ChemdescfingerprintLayer) -> ChemdescfingerprintLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintLayer::copy(self : ChemdescfingerprintLayer) -> ChemdescfingerprintLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_layer_fill(s : ChemdescfingerprintLayer, v : Double) -> ChemdescfingerprintLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintLayer::fill(self : ChemdescfingerprintLayer, v : Double) -> ChemdescfingerprintLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_layer_min(s : ChemdescfingerprintLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintLayer::min(self : ChemdescfingerprintLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_layer_max(s : ChemdescfingerprintLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintLayer::max(self : ChemdescfingerprintLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_layer_to_string(s : ChemdescfingerprintLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintLayer::to_string(self : ChemdescfingerprintLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_fingerprint_buffer_make(size : Int) -> ChemdescfingerprintBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_buffer_len(s : ChemdescfingerprintBuffer) -> Int { s.size }
+pub fn ChemdescfingerprintBuffer::len(self : ChemdescfingerprintBuffer) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_buffer_get(s : ChemdescfingerprintBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintBuffer::get(self : ChemdescfingerprintBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_buffer_set(s : ChemdescfingerprintBuffer, i : Int, v : Double) -> ChemdescfingerprintBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintBuffer::set(self : ChemdescfingerprintBuffer, i : Int, v : Double) -> ChemdescfingerprintBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_buffer_sum(s : ChemdescfingerprintBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintBuffer::sum(self : ChemdescfingerprintBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_buffer_mean(s : ChemdescfingerprintBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintBuffer::mean(self : ChemdescfingerprintBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_buffer_scale(s : ChemdescfingerprintBuffer, f : Double) -> ChemdescfingerprintBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintBuffer::scale(self : ChemdescfingerprintBuffer, f : Double) -> ChemdescfingerprintBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_buffer_add(a : ChemdescfingerprintBuffer, b : ChemdescfingerprintBuffer) -> ChemdescfingerprintBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintBuffer::add(self : ChemdescfingerprintBuffer, other : ChemdescfingerprintBuffer) -> ChemdescfingerprintBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_buffer_copy(s : ChemdescfingerprintBuffer) -> ChemdescfingerprintBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintBuffer::copy(self : ChemdescfingerprintBuffer) -> ChemdescfingerprintBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_buffer_fill(s : ChemdescfingerprintBuffer, v : Double) -> ChemdescfingerprintBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintBuffer::fill(self : ChemdescfingerprintBuffer, v : Double) -> ChemdescfingerprintBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_buffer_min(s : ChemdescfingerprintBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintBuffer::min(self : ChemdescfingerprintBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_buffer_max(s : ChemdescfingerprintBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintBuffer::max(self : ChemdescfingerprintBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_buffer_to_string(s : ChemdescfingerprintBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintBuffer::to_string(self : ChemdescfingerprintBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_fingerprint_cursor_make(size : Int) -> ChemdescfingerprintCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_cursor_len(s : ChemdescfingerprintCursor) -> Int { s.size }
+pub fn ChemdescfingerprintCursor::len(self : ChemdescfingerprintCursor) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_cursor_get(s : ChemdescfingerprintCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintCursor::get(self : ChemdescfingerprintCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_cursor_set(s : ChemdescfingerprintCursor, i : Int, v : Double) -> ChemdescfingerprintCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCursor::set(self : ChemdescfingerprintCursor, i : Int, v : Double) -> ChemdescfingerprintCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cursor_sum(s : ChemdescfingerprintCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintCursor::sum(self : ChemdescfingerprintCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_cursor_mean(s : ChemdescfingerprintCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintCursor::mean(self : ChemdescfingerprintCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_cursor_scale(s : ChemdescfingerprintCursor, f : Double) -> ChemdescfingerprintCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCursor::scale(self : ChemdescfingerprintCursor, f : Double) -> ChemdescfingerprintCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cursor_add(a : ChemdescfingerprintCursor, b : ChemdescfingerprintCursor) -> ChemdescfingerprintCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintCursor::add(self : ChemdescfingerprintCursor, other : ChemdescfingerprintCursor) -> ChemdescfingerprintCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cursor_copy(s : ChemdescfingerprintCursor) -> ChemdescfingerprintCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCursor::copy(self : ChemdescfingerprintCursor) -> ChemdescfingerprintCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cursor_fill(s : ChemdescfingerprintCursor, v : Double) -> ChemdescfingerprintCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintCursor::fill(self : ChemdescfingerprintCursor, v : Double) -> ChemdescfingerprintCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_cursor_min(s : ChemdescfingerprintCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintCursor::min(self : ChemdescfingerprintCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_cursor_max(s : ChemdescfingerprintCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintCursor::max(self : ChemdescfingerprintCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_cursor_to_string(s : ChemdescfingerprintCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintCursor::to_string(self : ChemdescfingerprintCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintView {
@@ -912,45 +912,45 @@ pub fn chem_desc_fingerprint_view_make(size : Int) -> ChemdescfingerprintView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_view_len(s : ChemdescfingerprintView) -> Int { s.size }
+pub fn ChemdescfingerprintView::len(self : ChemdescfingerprintView) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_view_get(s : ChemdescfingerprintView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintView::get(self : ChemdescfingerprintView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_view_set(s : ChemdescfingerprintView, i : Int, v : Double) -> ChemdescfingerprintView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintView::set(self : ChemdescfingerprintView, i : Int, v : Double) -> ChemdescfingerprintView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_view_sum(s : ChemdescfingerprintView) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintView::sum(self : ChemdescfingerprintView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_view_mean(s : ChemdescfingerprintView) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintView::mean(self : ChemdescfingerprintView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_view_scale(s : ChemdescfingerprintView, f : Double) -> ChemdescfingerprintView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintView::scale(self : ChemdescfingerprintView, f : Double) -> ChemdescfingerprintView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_view_add(a : ChemdescfingerprintView, b : ChemdescfingerprintView) -> ChemdescfingerprintView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintView::add(self : ChemdescfingerprintView, other : ChemdescfingerprintView) -> ChemdescfingerprintView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_view_copy(s : ChemdescfingerprintView) -> ChemdescfingerprintView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintView::copy(self : ChemdescfingerprintView) -> ChemdescfingerprintView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_view_fill(s : ChemdescfingerprintView, v : Double) -> ChemdescfingerprintView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintView::fill(self : ChemdescfingerprintView, v : Double) -> ChemdescfingerprintView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_view_min(s : ChemdescfingerprintView) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintView::min(self : ChemdescfingerprintView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_view_max(s : ChemdescfingerprintView) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintView::max(self : ChemdescfingerprintView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_view_to_string(s : ChemdescfingerprintView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintView::to_string(self : ChemdescfingerprintView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_fingerprint_range_make(size : Int) -> ChemdescfingerprintRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_range_len(s : ChemdescfingerprintRange) -> Int { s.size }
+pub fn ChemdescfingerprintRange::len(self : ChemdescfingerprintRange) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_range_get(s : ChemdescfingerprintRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintRange::get(self : ChemdescfingerprintRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_range_set(s : ChemdescfingerprintRange, i : Int, v : Double) -> ChemdescfingerprintRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintRange::set(self : ChemdescfingerprintRange, i : Int, v : Double) -> ChemdescfingerprintRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_range_sum(s : ChemdescfingerprintRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintRange::sum(self : ChemdescfingerprintRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_range_mean(s : ChemdescfingerprintRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintRange::mean(self : ChemdescfingerprintRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_range_scale(s : ChemdescfingerprintRange, f : Double) -> ChemdescfingerprintRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintRange::scale(self : ChemdescfingerprintRange, f : Double) -> ChemdescfingerprintRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_range_add(a : ChemdescfingerprintRange, b : ChemdescfingerprintRange) -> ChemdescfingerprintRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintRange::add(self : ChemdescfingerprintRange, other : ChemdescfingerprintRange) -> ChemdescfingerprintRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_range_copy(s : ChemdescfingerprintRange) -> ChemdescfingerprintRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintRange::copy(self : ChemdescfingerprintRange) -> ChemdescfingerprintRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_range_fill(s : ChemdescfingerprintRange, v : Double) -> ChemdescfingerprintRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintRange::fill(self : ChemdescfingerprintRange, v : Double) -> ChemdescfingerprintRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_range_min(s : ChemdescfingerprintRange) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintRange::min(self : ChemdescfingerprintRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_range_max(s : ChemdescfingerprintRange) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintRange::max(self : ChemdescfingerprintRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_range_to_string(s : ChemdescfingerprintRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintRange::to_string(self : ChemdescfingerprintRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfingerprintSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_fingerprint_slice_make(size : Int) -> ChemdescfingerprintSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fingerprint_slice_len(s : ChemdescfingerprintSlice) -> Int { s.size }
+pub fn ChemdescfingerprintSlice::len(self : ChemdescfingerprintSlice) -> Int { self.size }
 
-pub fn chem_desc_fingerprint_slice_get(s : ChemdescfingerprintSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfingerprintSlice::get(self : ChemdescfingerprintSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fingerprint_slice_set(s : ChemdescfingerprintSlice, i : Int, v : Double) -> ChemdescfingerprintSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintSlice::set(self : ChemdescfingerprintSlice, i : Int, v : Double) -> ChemdescfingerprintSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_slice_sum(s : ChemdescfingerprintSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfingerprintSlice::sum(self : ChemdescfingerprintSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fingerprint_slice_mean(s : ChemdescfingerprintSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfingerprintSlice::mean(self : ChemdescfingerprintSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fingerprint_slice_scale(s : ChemdescfingerprintSlice, f : Double) -> ChemdescfingerprintSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintSlice::scale(self : ChemdescfingerprintSlice, f : Double) -> ChemdescfingerprintSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_slice_add(a : ChemdescfingerprintSlice, b : ChemdescfingerprintSlice) -> ChemdescfingerprintSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfingerprintSlice::add(self : ChemdescfingerprintSlice, other : ChemdescfingerprintSlice) -> ChemdescfingerprintSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_slice_copy(s : ChemdescfingerprintSlice) -> ChemdescfingerprintSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintSlice::copy(self : ChemdescfingerprintSlice) -> ChemdescfingerprintSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_slice_fill(s : ChemdescfingerprintSlice, v : Double) -> ChemdescfingerprintSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfingerprintSlice::fill(self : ChemdescfingerprintSlice, v : Double) -> ChemdescfingerprintSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fingerprint_slice_min(s : ChemdescfingerprintSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdescfingerprintSlice::min(self : ChemdescfingerprintSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fingerprint_slice_max(s : ChemdescfingerprintSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdescfingerprintSlice::max(self : ChemdescfingerprintSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fingerprint_slice_to_string(s : ChemdescfingerprintSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfingerprintSlice::to_string(self : ChemdescfingerprintSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

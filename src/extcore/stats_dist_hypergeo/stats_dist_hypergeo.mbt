@@ -351,45 +351,45 @@ pub fn stats_dist_hypergeo_frame_make(size : Int) -> StatsdisthypergeoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_frame_len(s : StatsdisthypergeoFrame) -> Int { s.size }
+pub fn StatsdisthypergeoFrame::len(self : StatsdisthypergeoFrame) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_frame_get(s : StatsdisthypergeoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoFrame::get(self : StatsdisthypergeoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_frame_set(s : StatsdisthypergeoFrame, i : Int, v : Double) -> StatsdisthypergeoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoFrame::set(self : StatsdisthypergeoFrame, i : Int, v : Double) -> StatsdisthypergeoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_frame_sum(s : StatsdisthypergeoFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoFrame::sum(self : StatsdisthypergeoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_frame_mean(s : StatsdisthypergeoFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoFrame::mean(self : StatsdisthypergeoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_frame_scale(s : StatsdisthypergeoFrame, f : Double) -> StatsdisthypergeoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoFrame::scale(self : StatsdisthypergeoFrame, f : Double) -> StatsdisthypergeoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_frame_add(a : StatsdisthypergeoFrame, b : StatsdisthypergeoFrame) -> StatsdisthypergeoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoFrame::add(self : StatsdisthypergeoFrame, other : StatsdisthypergeoFrame) -> StatsdisthypergeoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_frame_copy(s : StatsdisthypergeoFrame) -> StatsdisthypergeoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoFrame::copy(self : StatsdisthypergeoFrame) -> StatsdisthypergeoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_frame_fill(s : StatsdisthypergeoFrame, v : Double) -> StatsdisthypergeoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoFrame::fill(self : StatsdisthypergeoFrame, v : Double) -> StatsdisthypergeoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_frame_min(s : StatsdisthypergeoFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoFrame::min(self : StatsdisthypergeoFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_frame_max(s : StatsdisthypergeoFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoFrame::max(self : StatsdisthypergeoFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_frame_to_string(s : StatsdisthypergeoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoFrame::to_string(self : StatsdisthypergeoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_hypergeo_table_make(size : Int) -> StatsdisthypergeoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_table_len(s : StatsdisthypergeoTable) -> Int { s.size }
+pub fn StatsdisthypergeoTable::len(self : StatsdisthypergeoTable) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_table_get(s : StatsdisthypergeoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoTable::get(self : StatsdisthypergeoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_table_set(s : StatsdisthypergeoTable, i : Int, v : Double) -> StatsdisthypergeoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoTable::set(self : StatsdisthypergeoTable, i : Int, v : Double) -> StatsdisthypergeoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_table_sum(s : StatsdisthypergeoTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoTable::sum(self : StatsdisthypergeoTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_table_mean(s : StatsdisthypergeoTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoTable::mean(self : StatsdisthypergeoTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_table_scale(s : StatsdisthypergeoTable, f : Double) -> StatsdisthypergeoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoTable::scale(self : StatsdisthypergeoTable, f : Double) -> StatsdisthypergeoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_table_add(a : StatsdisthypergeoTable, b : StatsdisthypergeoTable) -> StatsdisthypergeoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoTable::add(self : StatsdisthypergeoTable, other : StatsdisthypergeoTable) -> StatsdisthypergeoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_table_copy(s : StatsdisthypergeoTable) -> StatsdisthypergeoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoTable::copy(self : StatsdisthypergeoTable) -> StatsdisthypergeoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_table_fill(s : StatsdisthypergeoTable, v : Double) -> StatsdisthypergeoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoTable::fill(self : StatsdisthypergeoTable, v : Double) -> StatsdisthypergeoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_table_min(s : StatsdisthypergeoTable) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoTable::min(self : StatsdisthypergeoTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_table_max(s : StatsdisthypergeoTable) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoTable::max(self : StatsdisthypergeoTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_table_to_string(s : StatsdisthypergeoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoTable::to_string(self : StatsdisthypergeoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_hypergeo_graphn_make(size : Int) -> StatsdisthypergeoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_graphn_len(s : StatsdisthypergeoGraphN) -> Int { s.size }
+pub fn StatsdisthypergeoGraphN::len(self : StatsdisthypergeoGraphN) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_graphn_get(s : StatsdisthypergeoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoGraphN::get(self : StatsdisthypergeoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_graphn_set(s : StatsdisthypergeoGraphN, i : Int, v : Double) -> StatsdisthypergeoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoGraphN::set(self : StatsdisthypergeoGraphN, i : Int, v : Double) -> StatsdisthypergeoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_graphn_sum(s : StatsdisthypergeoGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoGraphN::sum(self : StatsdisthypergeoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_graphn_mean(s : StatsdisthypergeoGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoGraphN::mean(self : StatsdisthypergeoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_graphn_scale(s : StatsdisthypergeoGraphN, f : Double) -> StatsdisthypergeoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoGraphN::scale(self : StatsdisthypergeoGraphN, f : Double) -> StatsdisthypergeoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_graphn_add(a : StatsdisthypergeoGraphN, b : StatsdisthypergeoGraphN) -> StatsdisthypergeoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoGraphN::add(self : StatsdisthypergeoGraphN, other : StatsdisthypergeoGraphN) -> StatsdisthypergeoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_graphn_copy(s : StatsdisthypergeoGraphN) -> StatsdisthypergeoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoGraphN::copy(self : StatsdisthypergeoGraphN) -> StatsdisthypergeoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_graphn_fill(s : StatsdisthypergeoGraphN, v : Double) -> StatsdisthypergeoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoGraphN::fill(self : StatsdisthypergeoGraphN, v : Double) -> StatsdisthypergeoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_graphn_min(s : StatsdisthypergeoGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoGraphN::min(self : StatsdisthypergeoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_graphn_max(s : StatsdisthypergeoGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoGraphN::max(self : StatsdisthypergeoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_graphn_to_string(s : StatsdisthypergeoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoGraphN::to_string(self : StatsdisthypergeoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_hypergeo_node_make(size : Int) -> StatsdisthypergeoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_node_len(s : StatsdisthypergeoNode) -> Int { s.size }
+pub fn StatsdisthypergeoNode::len(self : StatsdisthypergeoNode) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_node_get(s : StatsdisthypergeoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoNode::get(self : StatsdisthypergeoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_node_set(s : StatsdisthypergeoNode, i : Int, v : Double) -> StatsdisthypergeoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoNode::set(self : StatsdisthypergeoNode, i : Int, v : Double) -> StatsdisthypergeoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_node_sum(s : StatsdisthypergeoNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoNode::sum(self : StatsdisthypergeoNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_node_mean(s : StatsdisthypergeoNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoNode::mean(self : StatsdisthypergeoNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_node_scale(s : StatsdisthypergeoNode, f : Double) -> StatsdisthypergeoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoNode::scale(self : StatsdisthypergeoNode, f : Double) -> StatsdisthypergeoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_node_add(a : StatsdisthypergeoNode, b : StatsdisthypergeoNode) -> StatsdisthypergeoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoNode::add(self : StatsdisthypergeoNode, other : StatsdisthypergeoNode) -> StatsdisthypergeoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_node_copy(s : StatsdisthypergeoNode) -> StatsdisthypergeoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoNode::copy(self : StatsdisthypergeoNode) -> StatsdisthypergeoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_node_fill(s : StatsdisthypergeoNode, v : Double) -> StatsdisthypergeoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoNode::fill(self : StatsdisthypergeoNode, v : Double) -> StatsdisthypergeoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_node_min(s : StatsdisthypergeoNode) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoNode::min(self : StatsdisthypergeoNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_node_max(s : StatsdisthypergeoNode) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoNode::max(self : StatsdisthypergeoNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_node_to_string(s : StatsdisthypergeoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoNode::to_string(self : StatsdisthypergeoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_hypergeo_edge_make(size : Int) -> StatsdisthypergeoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_edge_len(s : StatsdisthypergeoEdge) -> Int { s.size }
+pub fn StatsdisthypergeoEdge::len(self : StatsdisthypergeoEdge) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_edge_get(s : StatsdisthypergeoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoEdge::get(self : StatsdisthypergeoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_edge_set(s : StatsdisthypergeoEdge, i : Int, v : Double) -> StatsdisthypergeoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoEdge::set(self : StatsdisthypergeoEdge, i : Int, v : Double) -> StatsdisthypergeoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_edge_sum(s : StatsdisthypergeoEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoEdge::sum(self : StatsdisthypergeoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_edge_mean(s : StatsdisthypergeoEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoEdge::mean(self : StatsdisthypergeoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_edge_scale(s : StatsdisthypergeoEdge, f : Double) -> StatsdisthypergeoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoEdge::scale(self : StatsdisthypergeoEdge, f : Double) -> StatsdisthypergeoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_edge_add(a : StatsdisthypergeoEdge, b : StatsdisthypergeoEdge) -> StatsdisthypergeoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoEdge::add(self : StatsdisthypergeoEdge, other : StatsdisthypergeoEdge) -> StatsdisthypergeoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_edge_copy(s : StatsdisthypergeoEdge) -> StatsdisthypergeoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoEdge::copy(self : StatsdisthypergeoEdge) -> StatsdisthypergeoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_edge_fill(s : StatsdisthypergeoEdge, v : Double) -> StatsdisthypergeoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoEdge::fill(self : StatsdisthypergeoEdge, v : Double) -> StatsdisthypergeoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_edge_min(s : StatsdisthypergeoEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoEdge::min(self : StatsdisthypergeoEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_edge_max(s : StatsdisthypergeoEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoEdge::max(self : StatsdisthypergeoEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_edge_to_string(s : StatsdisthypergeoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoEdge::to_string(self : StatsdisthypergeoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_hypergeo_path_make(size : Int) -> StatsdisthypergeoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_path_len(s : StatsdisthypergeoPath) -> Int { s.size }
+pub fn StatsdisthypergeoPath::len(self : StatsdisthypergeoPath) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_path_get(s : StatsdisthypergeoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoPath::get(self : StatsdisthypergeoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_path_set(s : StatsdisthypergeoPath, i : Int, v : Double) -> StatsdisthypergeoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoPath::set(self : StatsdisthypergeoPath, i : Int, v : Double) -> StatsdisthypergeoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_path_sum(s : StatsdisthypergeoPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoPath::sum(self : StatsdisthypergeoPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_path_mean(s : StatsdisthypergeoPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoPath::mean(self : StatsdisthypergeoPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_path_scale(s : StatsdisthypergeoPath, f : Double) -> StatsdisthypergeoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoPath::scale(self : StatsdisthypergeoPath, f : Double) -> StatsdisthypergeoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_path_add(a : StatsdisthypergeoPath, b : StatsdisthypergeoPath) -> StatsdisthypergeoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoPath::add(self : StatsdisthypergeoPath, other : StatsdisthypergeoPath) -> StatsdisthypergeoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_path_copy(s : StatsdisthypergeoPath) -> StatsdisthypergeoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoPath::copy(self : StatsdisthypergeoPath) -> StatsdisthypergeoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_path_fill(s : StatsdisthypergeoPath, v : Double) -> StatsdisthypergeoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoPath::fill(self : StatsdisthypergeoPath, v : Double) -> StatsdisthypergeoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_path_min(s : StatsdisthypergeoPath) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoPath::min(self : StatsdisthypergeoPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_path_max(s : StatsdisthypergeoPath) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoPath::max(self : StatsdisthypergeoPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_path_to_string(s : StatsdisthypergeoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoPath::to_string(self : StatsdisthypergeoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_hypergeo_cluster_make(size : Int) -> StatsdisthypergeoCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_cluster_len(s : StatsdisthypergeoCluster) -> Int { s.size }
+pub fn StatsdisthypergeoCluster::len(self : StatsdisthypergeoCluster) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_cluster_get(s : StatsdisthypergeoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoCluster::get(self : StatsdisthypergeoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_cluster_set(s : StatsdisthypergeoCluster, i : Int, v : Double) -> StatsdisthypergeoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCluster::set(self : StatsdisthypergeoCluster, i : Int, v : Double) -> StatsdisthypergeoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cluster_sum(s : StatsdisthypergeoCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoCluster::sum(self : StatsdisthypergeoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_cluster_mean(s : StatsdisthypergeoCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoCluster::mean(self : StatsdisthypergeoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_cluster_scale(s : StatsdisthypergeoCluster, f : Double) -> StatsdisthypergeoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCluster::scale(self : StatsdisthypergeoCluster, f : Double) -> StatsdisthypergeoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cluster_add(a : StatsdisthypergeoCluster, b : StatsdisthypergeoCluster) -> StatsdisthypergeoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoCluster::add(self : StatsdisthypergeoCluster, other : StatsdisthypergeoCluster) -> StatsdisthypergeoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cluster_copy(s : StatsdisthypergeoCluster) -> StatsdisthypergeoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCluster::copy(self : StatsdisthypergeoCluster) -> StatsdisthypergeoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cluster_fill(s : StatsdisthypergeoCluster, v : Double) -> StatsdisthypergeoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCluster::fill(self : StatsdisthypergeoCluster, v : Double) -> StatsdisthypergeoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cluster_min(s : StatsdisthypergeoCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoCluster::min(self : StatsdisthypergeoCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_cluster_max(s : StatsdisthypergeoCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoCluster::max(self : StatsdisthypergeoCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_cluster_to_string(s : StatsdisthypergeoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoCluster::to_string(self : StatsdisthypergeoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_hypergeo_model_make(size : Int) -> StatsdisthypergeoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_model_len(s : StatsdisthypergeoModel) -> Int { s.size }
+pub fn StatsdisthypergeoModel::len(self : StatsdisthypergeoModel) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_model_get(s : StatsdisthypergeoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoModel::get(self : StatsdisthypergeoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_model_set(s : StatsdisthypergeoModel, i : Int, v : Double) -> StatsdisthypergeoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoModel::set(self : StatsdisthypergeoModel, i : Int, v : Double) -> StatsdisthypergeoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_model_sum(s : StatsdisthypergeoModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoModel::sum(self : StatsdisthypergeoModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_model_mean(s : StatsdisthypergeoModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoModel::mean(self : StatsdisthypergeoModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_model_scale(s : StatsdisthypergeoModel, f : Double) -> StatsdisthypergeoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoModel::scale(self : StatsdisthypergeoModel, f : Double) -> StatsdisthypergeoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_model_add(a : StatsdisthypergeoModel, b : StatsdisthypergeoModel) -> StatsdisthypergeoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoModel::add(self : StatsdisthypergeoModel, other : StatsdisthypergeoModel) -> StatsdisthypergeoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_model_copy(s : StatsdisthypergeoModel) -> StatsdisthypergeoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoModel::copy(self : StatsdisthypergeoModel) -> StatsdisthypergeoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_model_fill(s : StatsdisthypergeoModel, v : Double) -> StatsdisthypergeoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoModel::fill(self : StatsdisthypergeoModel, v : Double) -> StatsdisthypergeoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_model_min(s : StatsdisthypergeoModel) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoModel::min(self : StatsdisthypergeoModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_model_max(s : StatsdisthypergeoModel) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoModel::max(self : StatsdisthypergeoModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_model_to_string(s : StatsdisthypergeoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoModel::to_string(self : StatsdisthypergeoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_hypergeo_layer_make(size : Int) -> StatsdisthypergeoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_layer_len(s : StatsdisthypergeoLayer) -> Int { s.size }
+pub fn StatsdisthypergeoLayer::len(self : StatsdisthypergeoLayer) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_layer_get(s : StatsdisthypergeoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoLayer::get(self : StatsdisthypergeoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_layer_set(s : StatsdisthypergeoLayer, i : Int, v : Double) -> StatsdisthypergeoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoLayer::set(self : StatsdisthypergeoLayer, i : Int, v : Double) -> StatsdisthypergeoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_layer_sum(s : StatsdisthypergeoLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoLayer::sum(self : StatsdisthypergeoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_layer_mean(s : StatsdisthypergeoLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoLayer::mean(self : StatsdisthypergeoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_layer_scale(s : StatsdisthypergeoLayer, f : Double) -> StatsdisthypergeoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoLayer::scale(self : StatsdisthypergeoLayer, f : Double) -> StatsdisthypergeoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_layer_add(a : StatsdisthypergeoLayer, b : StatsdisthypergeoLayer) -> StatsdisthypergeoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoLayer::add(self : StatsdisthypergeoLayer, other : StatsdisthypergeoLayer) -> StatsdisthypergeoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_layer_copy(s : StatsdisthypergeoLayer) -> StatsdisthypergeoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoLayer::copy(self : StatsdisthypergeoLayer) -> StatsdisthypergeoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_layer_fill(s : StatsdisthypergeoLayer, v : Double) -> StatsdisthypergeoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoLayer::fill(self : StatsdisthypergeoLayer, v : Double) -> StatsdisthypergeoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_layer_min(s : StatsdisthypergeoLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoLayer::min(self : StatsdisthypergeoLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_layer_max(s : StatsdisthypergeoLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoLayer::max(self : StatsdisthypergeoLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_layer_to_string(s : StatsdisthypergeoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoLayer::to_string(self : StatsdisthypergeoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_hypergeo_buffer_make(size : Int) -> StatsdisthypergeoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_buffer_len(s : StatsdisthypergeoBuffer) -> Int { s.size }
+pub fn StatsdisthypergeoBuffer::len(self : StatsdisthypergeoBuffer) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_buffer_get(s : StatsdisthypergeoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoBuffer::get(self : StatsdisthypergeoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_buffer_set(s : StatsdisthypergeoBuffer, i : Int, v : Double) -> StatsdisthypergeoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoBuffer::set(self : StatsdisthypergeoBuffer, i : Int, v : Double) -> StatsdisthypergeoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_buffer_sum(s : StatsdisthypergeoBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoBuffer::sum(self : StatsdisthypergeoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_buffer_mean(s : StatsdisthypergeoBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoBuffer::mean(self : StatsdisthypergeoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_buffer_scale(s : StatsdisthypergeoBuffer, f : Double) -> StatsdisthypergeoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoBuffer::scale(self : StatsdisthypergeoBuffer, f : Double) -> StatsdisthypergeoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_buffer_add(a : StatsdisthypergeoBuffer, b : StatsdisthypergeoBuffer) -> StatsdisthypergeoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoBuffer::add(self : StatsdisthypergeoBuffer, other : StatsdisthypergeoBuffer) -> StatsdisthypergeoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_buffer_copy(s : StatsdisthypergeoBuffer) -> StatsdisthypergeoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoBuffer::copy(self : StatsdisthypergeoBuffer) -> StatsdisthypergeoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_buffer_fill(s : StatsdisthypergeoBuffer, v : Double) -> StatsdisthypergeoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoBuffer::fill(self : StatsdisthypergeoBuffer, v : Double) -> StatsdisthypergeoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_buffer_min(s : StatsdisthypergeoBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoBuffer::min(self : StatsdisthypergeoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_buffer_max(s : StatsdisthypergeoBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoBuffer::max(self : StatsdisthypergeoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_buffer_to_string(s : StatsdisthypergeoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoBuffer::to_string(self : StatsdisthypergeoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_hypergeo_cursor_make(size : Int) -> StatsdisthypergeoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_cursor_len(s : StatsdisthypergeoCursor) -> Int { s.size }
+pub fn StatsdisthypergeoCursor::len(self : StatsdisthypergeoCursor) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_cursor_get(s : StatsdisthypergeoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoCursor::get(self : StatsdisthypergeoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_cursor_set(s : StatsdisthypergeoCursor, i : Int, v : Double) -> StatsdisthypergeoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCursor::set(self : StatsdisthypergeoCursor, i : Int, v : Double) -> StatsdisthypergeoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cursor_sum(s : StatsdisthypergeoCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoCursor::sum(self : StatsdisthypergeoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_cursor_mean(s : StatsdisthypergeoCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoCursor::mean(self : StatsdisthypergeoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_cursor_scale(s : StatsdisthypergeoCursor, f : Double) -> StatsdisthypergeoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCursor::scale(self : StatsdisthypergeoCursor, f : Double) -> StatsdisthypergeoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cursor_add(a : StatsdisthypergeoCursor, b : StatsdisthypergeoCursor) -> StatsdisthypergeoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoCursor::add(self : StatsdisthypergeoCursor, other : StatsdisthypergeoCursor) -> StatsdisthypergeoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cursor_copy(s : StatsdisthypergeoCursor) -> StatsdisthypergeoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCursor::copy(self : StatsdisthypergeoCursor) -> StatsdisthypergeoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cursor_fill(s : StatsdisthypergeoCursor, v : Double) -> StatsdisthypergeoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoCursor::fill(self : StatsdisthypergeoCursor, v : Double) -> StatsdisthypergeoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_cursor_min(s : StatsdisthypergeoCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoCursor::min(self : StatsdisthypergeoCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_cursor_max(s : StatsdisthypergeoCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoCursor::max(self : StatsdisthypergeoCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_cursor_to_string(s : StatsdisthypergeoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoCursor::to_string(self : StatsdisthypergeoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoView {
@@ -912,45 +912,45 @@ pub fn stats_dist_hypergeo_view_make(size : Int) -> StatsdisthypergeoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_view_len(s : StatsdisthypergeoView) -> Int { s.size }
+pub fn StatsdisthypergeoView::len(self : StatsdisthypergeoView) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_view_get(s : StatsdisthypergeoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoView::get(self : StatsdisthypergeoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_view_set(s : StatsdisthypergeoView, i : Int, v : Double) -> StatsdisthypergeoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoView::set(self : StatsdisthypergeoView, i : Int, v : Double) -> StatsdisthypergeoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_view_sum(s : StatsdisthypergeoView) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoView::sum(self : StatsdisthypergeoView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_view_mean(s : StatsdisthypergeoView) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoView::mean(self : StatsdisthypergeoView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_view_scale(s : StatsdisthypergeoView, f : Double) -> StatsdisthypergeoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoView::scale(self : StatsdisthypergeoView, f : Double) -> StatsdisthypergeoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_view_add(a : StatsdisthypergeoView, b : StatsdisthypergeoView) -> StatsdisthypergeoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoView::add(self : StatsdisthypergeoView, other : StatsdisthypergeoView) -> StatsdisthypergeoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_view_copy(s : StatsdisthypergeoView) -> StatsdisthypergeoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoView::copy(self : StatsdisthypergeoView) -> StatsdisthypergeoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_view_fill(s : StatsdisthypergeoView, v : Double) -> StatsdisthypergeoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoView::fill(self : StatsdisthypergeoView, v : Double) -> StatsdisthypergeoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_view_min(s : StatsdisthypergeoView) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoView::min(self : StatsdisthypergeoView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_view_max(s : StatsdisthypergeoView) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoView::max(self : StatsdisthypergeoView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_view_to_string(s : StatsdisthypergeoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoView::to_string(self : StatsdisthypergeoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_hypergeo_range_make(size : Int) -> StatsdisthypergeoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_range_len(s : StatsdisthypergeoRange) -> Int { s.size }
+pub fn StatsdisthypergeoRange::len(self : StatsdisthypergeoRange) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_range_get(s : StatsdisthypergeoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoRange::get(self : StatsdisthypergeoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_range_set(s : StatsdisthypergeoRange, i : Int, v : Double) -> StatsdisthypergeoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoRange::set(self : StatsdisthypergeoRange, i : Int, v : Double) -> StatsdisthypergeoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_range_sum(s : StatsdisthypergeoRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoRange::sum(self : StatsdisthypergeoRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_range_mean(s : StatsdisthypergeoRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoRange::mean(self : StatsdisthypergeoRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_range_scale(s : StatsdisthypergeoRange, f : Double) -> StatsdisthypergeoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoRange::scale(self : StatsdisthypergeoRange, f : Double) -> StatsdisthypergeoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_range_add(a : StatsdisthypergeoRange, b : StatsdisthypergeoRange) -> StatsdisthypergeoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoRange::add(self : StatsdisthypergeoRange, other : StatsdisthypergeoRange) -> StatsdisthypergeoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_range_copy(s : StatsdisthypergeoRange) -> StatsdisthypergeoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoRange::copy(self : StatsdisthypergeoRange) -> StatsdisthypergeoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_range_fill(s : StatsdisthypergeoRange, v : Double) -> StatsdisthypergeoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoRange::fill(self : StatsdisthypergeoRange, v : Double) -> StatsdisthypergeoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_range_min(s : StatsdisthypergeoRange) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoRange::min(self : StatsdisthypergeoRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_range_max(s : StatsdisthypergeoRange) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoRange::max(self : StatsdisthypergeoRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_range_to_string(s : StatsdisthypergeoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoRange::to_string(self : StatsdisthypergeoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdisthypergeoSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_hypergeo_slice_make(size : Int) -> StatsdisthypergeoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_hypergeo_slice_len(s : StatsdisthypergeoSlice) -> Int { s.size }
+pub fn StatsdisthypergeoSlice::len(self : StatsdisthypergeoSlice) -> Int { self.size }
 
-pub fn stats_dist_hypergeo_slice_get(s : StatsdisthypergeoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdisthypergeoSlice::get(self : StatsdisthypergeoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_hypergeo_slice_set(s : StatsdisthypergeoSlice, i : Int, v : Double) -> StatsdisthypergeoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoSlice::set(self : StatsdisthypergeoSlice, i : Int, v : Double) -> StatsdisthypergeoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_slice_sum(s : StatsdisthypergeoSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdisthypergeoSlice::sum(self : StatsdisthypergeoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_hypergeo_slice_mean(s : StatsdisthypergeoSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdisthypergeoSlice::mean(self : StatsdisthypergeoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_hypergeo_slice_scale(s : StatsdisthypergeoSlice, f : Double) -> StatsdisthypergeoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoSlice::scale(self : StatsdisthypergeoSlice, f : Double) -> StatsdisthypergeoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_slice_add(a : StatsdisthypergeoSlice, b : StatsdisthypergeoSlice) -> StatsdisthypergeoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdisthypergeoSlice::add(self : StatsdisthypergeoSlice, other : StatsdisthypergeoSlice) -> StatsdisthypergeoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_slice_copy(s : StatsdisthypergeoSlice) -> StatsdisthypergeoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoSlice::copy(self : StatsdisthypergeoSlice) -> StatsdisthypergeoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_slice_fill(s : StatsdisthypergeoSlice, v : Double) -> StatsdisthypergeoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdisthypergeoSlice::fill(self : StatsdisthypergeoSlice, v : Double) -> StatsdisthypergeoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_hypergeo_slice_min(s : StatsdisthypergeoSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdisthypergeoSlice::min(self : StatsdisthypergeoSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_hypergeo_slice_max(s : StatsdisthypergeoSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdisthypergeoSlice::max(self : StatsdisthypergeoSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_hypergeo_slice_to_string(s : StatsdisthypergeoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdisthypergeoSlice::to_string(self : StatsdisthypergeoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

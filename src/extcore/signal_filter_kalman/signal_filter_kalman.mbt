@@ -351,45 +351,45 @@ pub fn signal_filter_kalman_frame_make(size : Int) -> SignalfilterkalmanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_frame_len(s : SignalfilterkalmanFrame) -> Int { s.size }
+pub fn SignalfilterkalmanFrame::len(self : SignalfilterkalmanFrame) -> Int { self.size }
 
-pub fn signal_filter_kalman_frame_get(s : SignalfilterkalmanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanFrame::get(self : SignalfilterkalmanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_frame_set(s : SignalfilterkalmanFrame, i : Int, v : Double) -> SignalfilterkalmanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanFrame::set(self : SignalfilterkalmanFrame, i : Int, v : Double) -> SignalfilterkalmanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_frame_sum(s : SignalfilterkalmanFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanFrame::sum(self : SignalfilterkalmanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_frame_mean(s : SignalfilterkalmanFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanFrame::mean(self : SignalfilterkalmanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_frame_scale(s : SignalfilterkalmanFrame, f : Double) -> SignalfilterkalmanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanFrame::scale(self : SignalfilterkalmanFrame, f : Double) -> SignalfilterkalmanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_frame_add(a : SignalfilterkalmanFrame, b : SignalfilterkalmanFrame) -> SignalfilterkalmanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanFrame::add(self : SignalfilterkalmanFrame, other : SignalfilterkalmanFrame) -> SignalfilterkalmanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_frame_copy(s : SignalfilterkalmanFrame) -> SignalfilterkalmanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanFrame::copy(self : SignalfilterkalmanFrame) -> SignalfilterkalmanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_frame_fill(s : SignalfilterkalmanFrame, v : Double) -> SignalfilterkalmanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanFrame::fill(self : SignalfilterkalmanFrame, v : Double) -> SignalfilterkalmanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_frame_min(s : SignalfilterkalmanFrame) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanFrame::min(self : SignalfilterkalmanFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_frame_max(s : SignalfilterkalmanFrame) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanFrame::max(self : SignalfilterkalmanFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_frame_to_string(s : SignalfilterkalmanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanFrame::to_string(self : SignalfilterkalmanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanTable {
@@ -402,45 +402,45 @@ pub fn signal_filter_kalman_table_make(size : Int) -> SignalfilterkalmanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_table_len(s : SignalfilterkalmanTable) -> Int { s.size }
+pub fn SignalfilterkalmanTable::len(self : SignalfilterkalmanTable) -> Int { self.size }
 
-pub fn signal_filter_kalman_table_get(s : SignalfilterkalmanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanTable::get(self : SignalfilterkalmanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_table_set(s : SignalfilterkalmanTable, i : Int, v : Double) -> SignalfilterkalmanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanTable::set(self : SignalfilterkalmanTable, i : Int, v : Double) -> SignalfilterkalmanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_table_sum(s : SignalfilterkalmanTable) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanTable::sum(self : SignalfilterkalmanTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_table_mean(s : SignalfilterkalmanTable) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanTable::mean(self : SignalfilterkalmanTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_table_scale(s : SignalfilterkalmanTable, f : Double) -> SignalfilterkalmanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanTable::scale(self : SignalfilterkalmanTable, f : Double) -> SignalfilterkalmanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_table_add(a : SignalfilterkalmanTable, b : SignalfilterkalmanTable) -> SignalfilterkalmanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanTable::add(self : SignalfilterkalmanTable, other : SignalfilterkalmanTable) -> SignalfilterkalmanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_table_copy(s : SignalfilterkalmanTable) -> SignalfilterkalmanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanTable::copy(self : SignalfilterkalmanTable) -> SignalfilterkalmanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_table_fill(s : SignalfilterkalmanTable, v : Double) -> SignalfilterkalmanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanTable::fill(self : SignalfilterkalmanTable, v : Double) -> SignalfilterkalmanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_table_min(s : SignalfilterkalmanTable) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanTable::min(self : SignalfilterkalmanTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_table_max(s : SignalfilterkalmanTable) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanTable::max(self : SignalfilterkalmanTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_table_to_string(s : SignalfilterkalmanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanTable::to_string(self : SignalfilterkalmanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanGraphN {
@@ -453,45 +453,45 @@ pub fn signal_filter_kalman_graphn_make(size : Int) -> SignalfilterkalmanGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_graphn_len(s : SignalfilterkalmanGraphN) -> Int { s.size }
+pub fn SignalfilterkalmanGraphN::len(self : SignalfilterkalmanGraphN) -> Int { self.size }
 
-pub fn signal_filter_kalman_graphn_get(s : SignalfilterkalmanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanGraphN::get(self : SignalfilterkalmanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_graphn_set(s : SignalfilterkalmanGraphN, i : Int, v : Double) -> SignalfilterkalmanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanGraphN::set(self : SignalfilterkalmanGraphN, i : Int, v : Double) -> SignalfilterkalmanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_graphn_sum(s : SignalfilterkalmanGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanGraphN::sum(self : SignalfilterkalmanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_graphn_mean(s : SignalfilterkalmanGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanGraphN::mean(self : SignalfilterkalmanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_graphn_scale(s : SignalfilterkalmanGraphN, f : Double) -> SignalfilterkalmanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanGraphN::scale(self : SignalfilterkalmanGraphN, f : Double) -> SignalfilterkalmanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_graphn_add(a : SignalfilterkalmanGraphN, b : SignalfilterkalmanGraphN) -> SignalfilterkalmanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanGraphN::add(self : SignalfilterkalmanGraphN, other : SignalfilterkalmanGraphN) -> SignalfilterkalmanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_graphn_copy(s : SignalfilterkalmanGraphN) -> SignalfilterkalmanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanGraphN::copy(self : SignalfilterkalmanGraphN) -> SignalfilterkalmanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_graphn_fill(s : SignalfilterkalmanGraphN, v : Double) -> SignalfilterkalmanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanGraphN::fill(self : SignalfilterkalmanGraphN, v : Double) -> SignalfilterkalmanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_graphn_min(s : SignalfilterkalmanGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanGraphN::min(self : SignalfilterkalmanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_graphn_max(s : SignalfilterkalmanGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanGraphN::max(self : SignalfilterkalmanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_graphn_to_string(s : SignalfilterkalmanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanGraphN::to_string(self : SignalfilterkalmanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanNode {
@@ -504,45 +504,45 @@ pub fn signal_filter_kalman_node_make(size : Int) -> SignalfilterkalmanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_node_len(s : SignalfilterkalmanNode) -> Int { s.size }
+pub fn SignalfilterkalmanNode::len(self : SignalfilterkalmanNode) -> Int { self.size }
 
-pub fn signal_filter_kalman_node_get(s : SignalfilterkalmanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanNode::get(self : SignalfilterkalmanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_node_set(s : SignalfilterkalmanNode, i : Int, v : Double) -> SignalfilterkalmanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanNode::set(self : SignalfilterkalmanNode, i : Int, v : Double) -> SignalfilterkalmanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_node_sum(s : SignalfilterkalmanNode) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanNode::sum(self : SignalfilterkalmanNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_node_mean(s : SignalfilterkalmanNode) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanNode::mean(self : SignalfilterkalmanNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_node_scale(s : SignalfilterkalmanNode, f : Double) -> SignalfilterkalmanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanNode::scale(self : SignalfilterkalmanNode, f : Double) -> SignalfilterkalmanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_node_add(a : SignalfilterkalmanNode, b : SignalfilterkalmanNode) -> SignalfilterkalmanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanNode::add(self : SignalfilterkalmanNode, other : SignalfilterkalmanNode) -> SignalfilterkalmanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_node_copy(s : SignalfilterkalmanNode) -> SignalfilterkalmanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanNode::copy(self : SignalfilterkalmanNode) -> SignalfilterkalmanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_node_fill(s : SignalfilterkalmanNode, v : Double) -> SignalfilterkalmanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanNode::fill(self : SignalfilterkalmanNode, v : Double) -> SignalfilterkalmanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_node_min(s : SignalfilterkalmanNode) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanNode::min(self : SignalfilterkalmanNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_node_max(s : SignalfilterkalmanNode) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanNode::max(self : SignalfilterkalmanNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_node_to_string(s : SignalfilterkalmanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanNode::to_string(self : SignalfilterkalmanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanEdge {
@@ -555,45 +555,45 @@ pub fn signal_filter_kalman_edge_make(size : Int) -> SignalfilterkalmanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_edge_len(s : SignalfilterkalmanEdge) -> Int { s.size }
+pub fn SignalfilterkalmanEdge::len(self : SignalfilterkalmanEdge) -> Int { self.size }
 
-pub fn signal_filter_kalman_edge_get(s : SignalfilterkalmanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanEdge::get(self : SignalfilterkalmanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_edge_set(s : SignalfilterkalmanEdge, i : Int, v : Double) -> SignalfilterkalmanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanEdge::set(self : SignalfilterkalmanEdge, i : Int, v : Double) -> SignalfilterkalmanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_edge_sum(s : SignalfilterkalmanEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanEdge::sum(self : SignalfilterkalmanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_edge_mean(s : SignalfilterkalmanEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanEdge::mean(self : SignalfilterkalmanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_edge_scale(s : SignalfilterkalmanEdge, f : Double) -> SignalfilterkalmanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanEdge::scale(self : SignalfilterkalmanEdge, f : Double) -> SignalfilterkalmanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_edge_add(a : SignalfilterkalmanEdge, b : SignalfilterkalmanEdge) -> SignalfilterkalmanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanEdge::add(self : SignalfilterkalmanEdge, other : SignalfilterkalmanEdge) -> SignalfilterkalmanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_edge_copy(s : SignalfilterkalmanEdge) -> SignalfilterkalmanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanEdge::copy(self : SignalfilterkalmanEdge) -> SignalfilterkalmanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_edge_fill(s : SignalfilterkalmanEdge, v : Double) -> SignalfilterkalmanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanEdge::fill(self : SignalfilterkalmanEdge, v : Double) -> SignalfilterkalmanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_edge_min(s : SignalfilterkalmanEdge) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanEdge::min(self : SignalfilterkalmanEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_edge_max(s : SignalfilterkalmanEdge) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanEdge::max(self : SignalfilterkalmanEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_edge_to_string(s : SignalfilterkalmanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanEdge::to_string(self : SignalfilterkalmanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanPath {
@@ -606,45 +606,45 @@ pub fn signal_filter_kalman_path_make(size : Int) -> SignalfilterkalmanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_path_len(s : SignalfilterkalmanPath) -> Int { s.size }
+pub fn SignalfilterkalmanPath::len(self : SignalfilterkalmanPath) -> Int { self.size }
 
-pub fn signal_filter_kalman_path_get(s : SignalfilterkalmanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanPath::get(self : SignalfilterkalmanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_path_set(s : SignalfilterkalmanPath, i : Int, v : Double) -> SignalfilterkalmanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanPath::set(self : SignalfilterkalmanPath, i : Int, v : Double) -> SignalfilterkalmanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_path_sum(s : SignalfilterkalmanPath) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanPath::sum(self : SignalfilterkalmanPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_path_mean(s : SignalfilterkalmanPath) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanPath::mean(self : SignalfilterkalmanPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_path_scale(s : SignalfilterkalmanPath, f : Double) -> SignalfilterkalmanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanPath::scale(self : SignalfilterkalmanPath, f : Double) -> SignalfilterkalmanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_path_add(a : SignalfilterkalmanPath, b : SignalfilterkalmanPath) -> SignalfilterkalmanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanPath::add(self : SignalfilterkalmanPath, other : SignalfilterkalmanPath) -> SignalfilterkalmanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_path_copy(s : SignalfilterkalmanPath) -> SignalfilterkalmanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanPath::copy(self : SignalfilterkalmanPath) -> SignalfilterkalmanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_path_fill(s : SignalfilterkalmanPath, v : Double) -> SignalfilterkalmanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanPath::fill(self : SignalfilterkalmanPath, v : Double) -> SignalfilterkalmanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_path_min(s : SignalfilterkalmanPath) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanPath::min(self : SignalfilterkalmanPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_path_max(s : SignalfilterkalmanPath) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanPath::max(self : SignalfilterkalmanPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_path_to_string(s : SignalfilterkalmanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanPath::to_string(self : SignalfilterkalmanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanCluster {
@@ -657,45 +657,45 @@ pub fn signal_filter_kalman_cluster_make(size : Int) -> SignalfilterkalmanCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_cluster_len(s : SignalfilterkalmanCluster) -> Int { s.size }
+pub fn SignalfilterkalmanCluster::len(self : SignalfilterkalmanCluster) -> Int { self.size }
 
-pub fn signal_filter_kalman_cluster_get(s : SignalfilterkalmanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanCluster::get(self : SignalfilterkalmanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_cluster_set(s : SignalfilterkalmanCluster, i : Int, v : Double) -> SignalfilterkalmanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCluster::set(self : SignalfilterkalmanCluster, i : Int, v : Double) -> SignalfilterkalmanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cluster_sum(s : SignalfilterkalmanCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanCluster::sum(self : SignalfilterkalmanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_cluster_mean(s : SignalfilterkalmanCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanCluster::mean(self : SignalfilterkalmanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_cluster_scale(s : SignalfilterkalmanCluster, f : Double) -> SignalfilterkalmanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCluster::scale(self : SignalfilterkalmanCluster, f : Double) -> SignalfilterkalmanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cluster_add(a : SignalfilterkalmanCluster, b : SignalfilterkalmanCluster) -> SignalfilterkalmanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanCluster::add(self : SignalfilterkalmanCluster, other : SignalfilterkalmanCluster) -> SignalfilterkalmanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cluster_copy(s : SignalfilterkalmanCluster) -> SignalfilterkalmanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCluster::copy(self : SignalfilterkalmanCluster) -> SignalfilterkalmanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cluster_fill(s : SignalfilterkalmanCluster, v : Double) -> SignalfilterkalmanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCluster::fill(self : SignalfilterkalmanCluster, v : Double) -> SignalfilterkalmanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cluster_min(s : SignalfilterkalmanCluster) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanCluster::min(self : SignalfilterkalmanCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_cluster_max(s : SignalfilterkalmanCluster) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanCluster::max(self : SignalfilterkalmanCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_cluster_to_string(s : SignalfilterkalmanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanCluster::to_string(self : SignalfilterkalmanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanModel {
@@ -708,45 +708,45 @@ pub fn signal_filter_kalman_model_make(size : Int) -> SignalfilterkalmanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_model_len(s : SignalfilterkalmanModel) -> Int { s.size }
+pub fn SignalfilterkalmanModel::len(self : SignalfilterkalmanModel) -> Int { self.size }
 
-pub fn signal_filter_kalman_model_get(s : SignalfilterkalmanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanModel::get(self : SignalfilterkalmanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_model_set(s : SignalfilterkalmanModel, i : Int, v : Double) -> SignalfilterkalmanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanModel::set(self : SignalfilterkalmanModel, i : Int, v : Double) -> SignalfilterkalmanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_model_sum(s : SignalfilterkalmanModel) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanModel::sum(self : SignalfilterkalmanModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_model_mean(s : SignalfilterkalmanModel) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanModel::mean(self : SignalfilterkalmanModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_model_scale(s : SignalfilterkalmanModel, f : Double) -> SignalfilterkalmanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanModel::scale(self : SignalfilterkalmanModel, f : Double) -> SignalfilterkalmanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_model_add(a : SignalfilterkalmanModel, b : SignalfilterkalmanModel) -> SignalfilterkalmanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanModel::add(self : SignalfilterkalmanModel, other : SignalfilterkalmanModel) -> SignalfilterkalmanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_model_copy(s : SignalfilterkalmanModel) -> SignalfilterkalmanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanModel::copy(self : SignalfilterkalmanModel) -> SignalfilterkalmanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_model_fill(s : SignalfilterkalmanModel, v : Double) -> SignalfilterkalmanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanModel::fill(self : SignalfilterkalmanModel, v : Double) -> SignalfilterkalmanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_model_min(s : SignalfilterkalmanModel) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanModel::min(self : SignalfilterkalmanModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_model_max(s : SignalfilterkalmanModel) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanModel::max(self : SignalfilterkalmanModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_model_to_string(s : SignalfilterkalmanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanModel::to_string(self : SignalfilterkalmanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanLayer {
@@ -759,45 +759,45 @@ pub fn signal_filter_kalman_layer_make(size : Int) -> SignalfilterkalmanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_layer_len(s : SignalfilterkalmanLayer) -> Int { s.size }
+pub fn SignalfilterkalmanLayer::len(self : SignalfilterkalmanLayer) -> Int { self.size }
 
-pub fn signal_filter_kalman_layer_get(s : SignalfilterkalmanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanLayer::get(self : SignalfilterkalmanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_layer_set(s : SignalfilterkalmanLayer, i : Int, v : Double) -> SignalfilterkalmanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanLayer::set(self : SignalfilterkalmanLayer, i : Int, v : Double) -> SignalfilterkalmanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_layer_sum(s : SignalfilterkalmanLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanLayer::sum(self : SignalfilterkalmanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_layer_mean(s : SignalfilterkalmanLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanLayer::mean(self : SignalfilterkalmanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_layer_scale(s : SignalfilterkalmanLayer, f : Double) -> SignalfilterkalmanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanLayer::scale(self : SignalfilterkalmanLayer, f : Double) -> SignalfilterkalmanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_layer_add(a : SignalfilterkalmanLayer, b : SignalfilterkalmanLayer) -> SignalfilterkalmanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanLayer::add(self : SignalfilterkalmanLayer, other : SignalfilterkalmanLayer) -> SignalfilterkalmanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_layer_copy(s : SignalfilterkalmanLayer) -> SignalfilterkalmanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanLayer::copy(self : SignalfilterkalmanLayer) -> SignalfilterkalmanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_layer_fill(s : SignalfilterkalmanLayer, v : Double) -> SignalfilterkalmanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanLayer::fill(self : SignalfilterkalmanLayer, v : Double) -> SignalfilterkalmanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_layer_min(s : SignalfilterkalmanLayer) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanLayer::min(self : SignalfilterkalmanLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_layer_max(s : SignalfilterkalmanLayer) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanLayer::max(self : SignalfilterkalmanLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_layer_to_string(s : SignalfilterkalmanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanLayer::to_string(self : SignalfilterkalmanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanBuffer {
@@ -810,45 +810,45 @@ pub fn signal_filter_kalman_buffer_make(size : Int) -> SignalfilterkalmanBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_buffer_len(s : SignalfilterkalmanBuffer) -> Int { s.size }
+pub fn SignalfilterkalmanBuffer::len(self : SignalfilterkalmanBuffer) -> Int { self.size }
 
-pub fn signal_filter_kalman_buffer_get(s : SignalfilterkalmanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanBuffer::get(self : SignalfilterkalmanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_buffer_set(s : SignalfilterkalmanBuffer, i : Int, v : Double) -> SignalfilterkalmanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanBuffer::set(self : SignalfilterkalmanBuffer, i : Int, v : Double) -> SignalfilterkalmanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_buffer_sum(s : SignalfilterkalmanBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanBuffer::sum(self : SignalfilterkalmanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_buffer_mean(s : SignalfilterkalmanBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanBuffer::mean(self : SignalfilterkalmanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_buffer_scale(s : SignalfilterkalmanBuffer, f : Double) -> SignalfilterkalmanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanBuffer::scale(self : SignalfilterkalmanBuffer, f : Double) -> SignalfilterkalmanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_buffer_add(a : SignalfilterkalmanBuffer, b : SignalfilterkalmanBuffer) -> SignalfilterkalmanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanBuffer::add(self : SignalfilterkalmanBuffer, other : SignalfilterkalmanBuffer) -> SignalfilterkalmanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_buffer_copy(s : SignalfilterkalmanBuffer) -> SignalfilterkalmanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanBuffer::copy(self : SignalfilterkalmanBuffer) -> SignalfilterkalmanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_buffer_fill(s : SignalfilterkalmanBuffer, v : Double) -> SignalfilterkalmanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanBuffer::fill(self : SignalfilterkalmanBuffer, v : Double) -> SignalfilterkalmanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_buffer_min(s : SignalfilterkalmanBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanBuffer::min(self : SignalfilterkalmanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_buffer_max(s : SignalfilterkalmanBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanBuffer::max(self : SignalfilterkalmanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_buffer_to_string(s : SignalfilterkalmanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanBuffer::to_string(self : SignalfilterkalmanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanCursor {
@@ -861,45 +861,45 @@ pub fn signal_filter_kalman_cursor_make(size : Int) -> SignalfilterkalmanCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_cursor_len(s : SignalfilterkalmanCursor) -> Int { s.size }
+pub fn SignalfilterkalmanCursor::len(self : SignalfilterkalmanCursor) -> Int { self.size }
 
-pub fn signal_filter_kalman_cursor_get(s : SignalfilterkalmanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanCursor::get(self : SignalfilterkalmanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_cursor_set(s : SignalfilterkalmanCursor, i : Int, v : Double) -> SignalfilterkalmanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCursor::set(self : SignalfilterkalmanCursor, i : Int, v : Double) -> SignalfilterkalmanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cursor_sum(s : SignalfilterkalmanCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanCursor::sum(self : SignalfilterkalmanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_cursor_mean(s : SignalfilterkalmanCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanCursor::mean(self : SignalfilterkalmanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_cursor_scale(s : SignalfilterkalmanCursor, f : Double) -> SignalfilterkalmanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCursor::scale(self : SignalfilterkalmanCursor, f : Double) -> SignalfilterkalmanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cursor_add(a : SignalfilterkalmanCursor, b : SignalfilterkalmanCursor) -> SignalfilterkalmanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanCursor::add(self : SignalfilterkalmanCursor, other : SignalfilterkalmanCursor) -> SignalfilterkalmanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cursor_copy(s : SignalfilterkalmanCursor) -> SignalfilterkalmanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCursor::copy(self : SignalfilterkalmanCursor) -> SignalfilterkalmanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cursor_fill(s : SignalfilterkalmanCursor, v : Double) -> SignalfilterkalmanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanCursor::fill(self : SignalfilterkalmanCursor, v : Double) -> SignalfilterkalmanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_cursor_min(s : SignalfilterkalmanCursor) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanCursor::min(self : SignalfilterkalmanCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_cursor_max(s : SignalfilterkalmanCursor) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanCursor::max(self : SignalfilterkalmanCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_cursor_to_string(s : SignalfilterkalmanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanCursor::to_string(self : SignalfilterkalmanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanView {
@@ -912,45 +912,45 @@ pub fn signal_filter_kalman_view_make(size : Int) -> SignalfilterkalmanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_view_len(s : SignalfilterkalmanView) -> Int { s.size }
+pub fn SignalfilterkalmanView::len(self : SignalfilterkalmanView) -> Int { self.size }
 
-pub fn signal_filter_kalman_view_get(s : SignalfilterkalmanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanView::get(self : SignalfilterkalmanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_view_set(s : SignalfilterkalmanView, i : Int, v : Double) -> SignalfilterkalmanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanView::set(self : SignalfilterkalmanView, i : Int, v : Double) -> SignalfilterkalmanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_view_sum(s : SignalfilterkalmanView) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanView::sum(self : SignalfilterkalmanView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_view_mean(s : SignalfilterkalmanView) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanView::mean(self : SignalfilterkalmanView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_view_scale(s : SignalfilterkalmanView, f : Double) -> SignalfilterkalmanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanView::scale(self : SignalfilterkalmanView, f : Double) -> SignalfilterkalmanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_view_add(a : SignalfilterkalmanView, b : SignalfilterkalmanView) -> SignalfilterkalmanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanView::add(self : SignalfilterkalmanView, other : SignalfilterkalmanView) -> SignalfilterkalmanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_view_copy(s : SignalfilterkalmanView) -> SignalfilterkalmanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanView::copy(self : SignalfilterkalmanView) -> SignalfilterkalmanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_view_fill(s : SignalfilterkalmanView, v : Double) -> SignalfilterkalmanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanView::fill(self : SignalfilterkalmanView, v : Double) -> SignalfilterkalmanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_view_min(s : SignalfilterkalmanView) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanView::min(self : SignalfilterkalmanView) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_view_max(s : SignalfilterkalmanView) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanView::max(self : SignalfilterkalmanView) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_view_to_string(s : SignalfilterkalmanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanView::to_string(self : SignalfilterkalmanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanRange {
@@ -963,45 +963,45 @@ pub fn signal_filter_kalman_range_make(size : Int) -> SignalfilterkalmanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_range_len(s : SignalfilterkalmanRange) -> Int { s.size }
+pub fn SignalfilterkalmanRange::len(self : SignalfilterkalmanRange) -> Int { self.size }
 
-pub fn signal_filter_kalman_range_get(s : SignalfilterkalmanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanRange::get(self : SignalfilterkalmanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_range_set(s : SignalfilterkalmanRange, i : Int, v : Double) -> SignalfilterkalmanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanRange::set(self : SignalfilterkalmanRange, i : Int, v : Double) -> SignalfilterkalmanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_range_sum(s : SignalfilterkalmanRange) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanRange::sum(self : SignalfilterkalmanRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_range_mean(s : SignalfilterkalmanRange) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanRange::mean(self : SignalfilterkalmanRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_range_scale(s : SignalfilterkalmanRange, f : Double) -> SignalfilterkalmanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanRange::scale(self : SignalfilterkalmanRange, f : Double) -> SignalfilterkalmanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_range_add(a : SignalfilterkalmanRange, b : SignalfilterkalmanRange) -> SignalfilterkalmanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanRange::add(self : SignalfilterkalmanRange, other : SignalfilterkalmanRange) -> SignalfilterkalmanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_range_copy(s : SignalfilterkalmanRange) -> SignalfilterkalmanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanRange::copy(self : SignalfilterkalmanRange) -> SignalfilterkalmanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_range_fill(s : SignalfilterkalmanRange, v : Double) -> SignalfilterkalmanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanRange::fill(self : SignalfilterkalmanRange, v : Double) -> SignalfilterkalmanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_range_min(s : SignalfilterkalmanRange) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanRange::min(self : SignalfilterkalmanRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_range_max(s : SignalfilterkalmanRange) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanRange::max(self : SignalfilterkalmanRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_range_to_string(s : SignalfilterkalmanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanRange::to_string(self : SignalfilterkalmanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterkalmanSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_filter_kalman_slice_make(size : Int) -> SignalfilterkalmanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_kalman_slice_len(s : SignalfilterkalmanSlice) -> Int { s.size }
+pub fn SignalfilterkalmanSlice::len(self : SignalfilterkalmanSlice) -> Int { self.size }
 
-pub fn signal_filter_kalman_slice_get(s : SignalfilterkalmanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterkalmanSlice::get(self : SignalfilterkalmanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_kalman_slice_set(s : SignalfilterkalmanSlice, i : Int, v : Double) -> SignalfilterkalmanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanSlice::set(self : SignalfilterkalmanSlice, i : Int, v : Double) -> SignalfilterkalmanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_slice_sum(s : SignalfilterkalmanSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterkalmanSlice::sum(self : SignalfilterkalmanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_kalman_slice_mean(s : SignalfilterkalmanSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterkalmanSlice::mean(self : SignalfilterkalmanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_kalman_slice_scale(s : SignalfilterkalmanSlice, f : Double) -> SignalfilterkalmanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanSlice::scale(self : SignalfilterkalmanSlice, f : Double) -> SignalfilterkalmanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_slice_add(a : SignalfilterkalmanSlice, b : SignalfilterkalmanSlice) -> SignalfilterkalmanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterkalmanSlice::add(self : SignalfilterkalmanSlice, other : SignalfilterkalmanSlice) -> SignalfilterkalmanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_slice_copy(s : SignalfilterkalmanSlice) -> SignalfilterkalmanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanSlice::copy(self : SignalfilterkalmanSlice) -> SignalfilterkalmanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_slice_fill(s : SignalfilterkalmanSlice, v : Double) -> SignalfilterkalmanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterkalmanSlice::fill(self : SignalfilterkalmanSlice, v : Double) -> SignalfilterkalmanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_kalman_slice_min(s : SignalfilterkalmanSlice) -> Double { @_common.min(s.data) }
+pub fn SignalfilterkalmanSlice::min(self : SignalfilterkalmanSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_kalman_slice_max(s : SignalfilterkalmanSlice) -> Double { @_common.max(s.data) }
+pub fn SignalfilterkalmanSlice::max(self : SignalfilterkalmanSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_kalman_slice_to_string(s : SignalfilterkalmanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterkalmanSlice::to_string(self : SignalfilterkalmanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

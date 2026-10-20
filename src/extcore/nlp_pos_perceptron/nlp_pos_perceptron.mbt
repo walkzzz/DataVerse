@@ -351,45 +351,45 @@ pub fn nlp_pos_perceptron_frame_make(size : Int) -> NlpposperceptronFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_frame_len(s : NlpposperceptronFrame) -> Int { s.size }
+pub fn NlpposperceptronFrame::len(self : NlpposperceptronFrame) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_frame_get(s : NlpposperceptronFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronFrame::get(self : NlpposperceptronFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_frame_set(s : NlpposperceptronFrame, i : Int, v : Double) -> NlpposperceptronFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronFrame::set(self : NlpposperceptronFrame, i : Int, v : Double) -> NlpposperceptronFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_frame_sum(s : NlpposperceptronFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronFrame::sum(self : NlpposperceptronFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_frame_mean(s : NlpposperceptronFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronFrame::mean(self : NlpposperceptronFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_frame_scale(s : NlpposperceptronFrame, f : Double) -> NlpposperceptronFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronFrame::scale(self : NlpposperceptronFrame, f : Double) -> NlpposperceptronFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_frame_add(a : NlpposperceptronFrame, b : NlpposperceptronFrame) -> NlpposperceptronFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronFrame::add(self : NlpposperceptronFrame, other : NlpposperceptronFrame) -> NlpposperceptronFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_frame_copy(s : NlpposperceptronFrame) -> NlpposperceptronFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronFrame::copy(self : NlpposperceptronFrame) -> NlpposperceptronFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_frame_fill(s : NlpposperceptronFrame, v : Double) -> NlpposperceptronFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronFrame::fill(self : NlpposperceptronFrame, v : Double) -> NlpposperceptronFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_frame_min(s : NlpposperceptronFrame) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronFrame::min(self : NlpposperceptronFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_frame_max(s : NlpposperceptronFrame) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronFrame::max(self : NlpposperceptronFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_frame_to_string(s : NlpposperceptronFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronFrame::to_string(self : NlpposperceptronFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronTable {
@@ -402,45 +402,45 @@ pub fn nlp_pos_perceptron_table_make(size : Int) -> NlpposperceptronTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_table_len(s : NlpposperceptronTable) -> Int { s.size }
+pub fn NlpposperceptronTable::len(self : NlpposperceptronTable) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_table_get(s : NlpposperceptronTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronTable::get(self : NlpposperceptronTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_table_set(s : NlpposperceptronTable, i : Int, v : Double) -> NlpposperceptronTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronTable::set(self : NlpposperceptronTable, i : Int, v : Double) -> NlpposperceptronTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_table_sum(s : NlpposperceptronTable) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronTable::sum(self : NlpposperceptronTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_table_mean(s : NlpposperceptronTable) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronTable::mean(self : NlpposperceptronTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_table_scale(s : NlpposperceptronTable, f : Double) -> NlpposperceptronTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronTable::scale(self : NlpposperceptronTable, f : Double) -> NlpposperceptronTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_table_add(a : NlpposperceptronTable, b : NlpposperceptronTable) -> NlpposperceptronTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronTable::add(self : NlpposperceptronTable, other : NlpposperceptronTable) -> NlpposperceptronTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_table_copy(s : NlpposperceptronTable) -> NlpposperceptronTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronTable::copy(self : NlpposperceptronTable) -> NlpposperceptronTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_table_fill(s : NlpposperceptronTable, v : Double) -> NlpposperceptronTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronTable::fill(self : NlpposperceptronTable, v : Double) -> NlpposperceptronTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_table_min(s : NlpposperceptronTable) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronTable::min(self : NlpposperceptronTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_table_max(s : NlpposperceptronTable) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronTable::max(self : NlpposperceptronTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_table_to_string(s : NlpposperceptronTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronTable::to_string(self : NlpposperceptronTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_pos_perceptron_graphn_make(size : Int) -> NlpposperceptronGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_graphn_len(s : NlpposperceptronGraphN) -> Int { s.size }
+pub fn NlpposperceptronGraphN::len(self : NlpposperceptronGraphN) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_graphn_get(s : NlpposperceptronGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronGraphN::get(self : NlpposperceptronGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_graphn_set(s : NlpposperceptronGraphN, i : Int, v : Double) -> NlpposperceptronGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronGraphN::set(self : NlpposperceptronGraphN, i : Int, v : Double) -> NlpposperceptronGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_graphn_sum(s : NlpposperceptronGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronGraphN::sum(self : NlpposperceptronGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_graphn_mean(s : NlpposperceptronGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronGraphN::mean(self : NlpposperceptronGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_graphn_scale(s : NlpposperceptronGraphN, f : Double) -> NlpposperceptronGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronGraphN::scale(self : NlpposperceptronGraphN, f : Double) -> NlpposperceptronGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_graphn_add(a : NlpposperceptronGraphN, b : NlpposperceptronGraphN) -> NlpposperceptronGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronGraphN::add(self : NlpposperceptronGraphN, other : NlpposperceptronGraphN) -> NlpposperceptronGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_graphn_copy(s : NlpposperceptronGraphN) -> NlpposperceptronGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronGraphN::copy(self : NlpposperceptronGraphN) -> NlpposperceptronGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_graphn_fill(s : NlpposperceptronGraphN, v : Double) -> NlpposperceptronGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronGraphN::fill(self : NlpposperceptronGraphN, v : Double) -> NlpposperceptronGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_graphn_min(s : NlpposperceptronGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronGraphN::min(self : NlpposperceptronGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_graphn_max(s : NlpposperceptronGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronGraphN::max(self : NlpposperceptronGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_graphn_to_string(s : NlpposperceptronGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronGraphN::to_string(self : NlpposperceptronGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronNode {
@@ -504,45 +504,45 @@ pub fn nlp_pos_perceptron_node_make(size : Int) -> NlpposperceptronNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_node_len(s : NlpposperceptronNode) -> Int { s.size }
+pub fn NlpposperceptronNode::len(self : NlpposperceptronNode) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_node_get(s : NlpposperceptronNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronNode::get(self : NlpposperceptronNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_node_set(s : NlpposperceptronNode, i : Int, v : Double) -> NlpposperceptronNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronNode::set(self : NlpposperceptronNode, i : Int, v : Double) -> NlpposperceptronNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_node_sum(s : NlpposperceptronNode) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronNode::sum(self : NlpposperceptronNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_node_mean(s : NlpposperceptronNode) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronNode::mean(self : NlpposperceptronNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_node_scale(s : NlpposperceptronNode, f : Double) -> NlpposperceptronNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronNode::scale(self : NlpposperceptronNode, f : Double) -> NlpposperceptronNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_node_add(a : NlpposperceptronNode, b : NlpposperceptronNode) -> NlpposperceptronNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronNode::add(self : NlpposperceptronNode, other : NlpposperceptronNode) -> NlpposperceptronNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_node_copy(s : NlpposperceptronNode) -> NlpposperceptronNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronNode::copy(self : NlpposperceptronNode) -> NlpposperceptronNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_node_fill(s : NlpposperceptronNode, v : Double) -> NlpposperceptronNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronNode::fill(self : NlpposperceptronNode, v : Double) -> NlpposperceptronNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_node_min(s : NlpposperceptronNode) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronNode::min(self : NlpposperceptronNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_node_max(s : NlpposperceptronNode) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronNode::max(self : NlpposperceptronNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_node_to_string(s : NlpposperceptronNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronNode::to_string(self : NlpposperceptronNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronEdge {
@@ -555,45 +555,45 @@ pub fn nlp_pos_perceptron_edge_make(size : Int) -> NlpposperceptronEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_edge_len(s : NlpposperceptronEdge) -> Int { s.size }
+pub fn NlpposperceptronEdge::len(self : NlpposperceptronEdge) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_edge_get(s : NlpposperceptronEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronEdge::get(self : NlpposperceptronEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_edge_set(s : NlpposperceptronEdge, i : Int, v : Double) -> NlpposperceptronEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronEdge::set(self : NlpposperceptronEdge, i : Int, v : Double) -> NlpposperceptronEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_edge_sum(s : NlpposperceptronEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronEdge::sum(self : NlpposperceptronEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_edge_mean(s : NlpposperceptronEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronEdge::mean(self : NlpposperceptronEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_edge_scale(s : NlpposperceptronEdge, f : Double) -> NlpposperceptronEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronEdge::scale(self : NlpposperceptronEdge, f : Double) -> NlpposperceptronEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_edge_add(a : NlpposperceptronEdge, b : NlpposperceptronEdge) -> NlpposperceptronEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronEdge::add(self : NlpposperceptronEdge, other : NlpposperceptronEdge) -> NlpposperceptronEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_edge_copy(s : NlpposperceptronEdge) -> NlpposperceptronEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronEdge::copy(self : NlpposperceptronEdge) -> NlpposperceptronEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_edge_fill(s : NlpposperceptronEdge, v : Double) -> NlpposperceptronEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronEdge::fill(self : NlpposperceptronEdge, v : Double) -> NlpposperceptronEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_edge_min(s : NlpposperceptronEdge) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronEdge::min(self : NlpposperceptronEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_edge_max(s : NlpposperceptronEdge) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronEdge::max(self : NlpposperceptronEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_edge_to_string(s : NlpposperceptronEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronEdge::to_string(self : NlpposperceptronEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronPath {
@@ -606,45 +606,45 @@ pub fn nlp_pos_perceptron_path_make(size : Int) -> NlpposperceptronPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_path_len(s : NlpposperceptronPath) -> Int { s.size }
+pub fn NlpposperceptronPath::len(self : NlpposperceptronPath) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_path_get(s : NlpposperceptronPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronPath::get(self : NlpposperceptronPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_path_set(s : NlpposperceptronPath, i : Int, v : Double) -> NlpposperceptronPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronPath::set(self : NlpposperceptronPath, i : Int, v : Double) -> NlpposperceptronPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_path_sum(s : NlpposperceptronPath) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronPath::sum(self : NlpposperceptronPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_path_mean(s : NlpposperceptronPath) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronPath::mean(self : NlpposperceptronPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_path_scale(s : NlpposperceptronPath, f : Double) -> NlpposperceptronPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronPath::scale(self : NlpposperceptronPath, f : Double) -> NlpposperceptronPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_path_add(a : NlpposperceptronPath, b : NlpposperceptronPath) -> NlpposperceptronPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronPath::add(self : NlpposperceptronPath, other : NlpposperceptronPath) -> NlpposperceptronPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_path_copy(s : NlpposperceptronPath) -> NlpposperceptronPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronPath::copy(self : NlpposperceptronPath) -> NlpposperceptronPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_path_fill(s : NlpposperceptronPath, v : Double) -> NlpposperceptronPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronPath::fill(self : NlpposperceptronPath, v : Double) -> NlpposperceptronPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_path_min(s : NlpposperceptronPath) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronPath::min(self : NlpposperceptronPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_path_max(s : NlpposperceptronPath) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronPath::max(self : NlpposperceptronPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_path_to_string(s : NlpposperceptronPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronPath::to_string(self : NlpposperceptronPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronCluster {
@@ -657,45 +657,45 @@ pub fn nlp_pos_perceptron_cluster_make(size : Int) -> NlpposperceptronCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_cluster_len(s : NlpposperceptronCluster) -> Int { s.size }
+pub fn NlpposperceptronCluster::len(self : NlpposperceptronCluster) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_cluster_get(s : NlpposperceptronCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronCluster::get(self : NlpposperceptronCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_cluster_set(s : NlpposperceptronCluster, i : Int, v : Double) -> NlpposperceptronCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronCluster::set(self : NlpposperceptronCluster, i : Int, v : Double) -> NlpposperceptronCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cluster_sum(s : NlpposperceptronCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronCluster::sum(self : NlpposperceptronCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_cluster_mean(s : NlpposperceptronCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronCluster::mean(self : NlpposperceptronCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_cluster_scale(s : NlpposperceptronCluster, f : Double) -> NlpposperceptronCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronCluster::scale(self : NlpposperceptronCluster, f : Double) -> NlpposperceptronCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cluster_add(a : NlpposperceptronCluster, b : NlpposperceptronCluster) -> NlpposperceptronCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronCluster::add(self : NlpposperceptronCluster, other : NlpposperceptronCluster) -> NlpposperceptronCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cluster_copy(s : NlpposperceptronCluster) -> NlpposperceptronCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronCluster::copy(self : NlpposperceptronCluster) -> NlpposperceptronCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cluster_fill(s : NlpposperceptronCluster, v : Double) -> NlpposperceptronCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronCluster::fill(self : NlpposperceptronCluster, v : Double) -> NlpposperceptronCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cluster_min(s : NlpposperceptronCluster) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronCluster::min(self : NlpposperceptronCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_cluster_max(s : NlpposperceptronCluster) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronCluster::max(self : NlpposperceptronCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_cluster_to_string(s : NlpposperceptronCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronCluster::to_string(self : NlpposperceptronCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronModel {
@@ -708,45 +708,45 @@ pub fn nlp_pos_perceptron_model_make(size : Int) -> NlpposperceptronModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_model_len(s : NlpposperceptronModel) -> Int { s.size }
+pub fn NlpposperceptronModel::len(self : NlpposperceptronModel) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_model_get(s : NlpposperceptronModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronModel::get(self : NlpposperceptronModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_model_set(s : NlpposperceptronModel, i : Int, v : Double) -> NlpposperceptronModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronModel::set(self : NlpposperceptronModel, i : Int, v : Double) -> NlpposperceptronModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_model_sum(s : NlpposperceptronModel) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronModel::sum(self : NlpposperceptronModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_model_mean(s : NlpposperceptronModel) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronModel::mean(self : NlpposperceptronModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_model_scale(s : NlpposperceptronModel, f : Double) -> NlpposperceptronModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronModel::scale(self : NlpposperceptronModel, f : Double) -> NlpposperceptronModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_model_add(a : NlpposperceptronModel, b : NlpposperceptronModel) -> NlpposperceptronModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronModel::add(self : NlpposperceptronModel, other : NlpposperceptronModel) -> NlpposperceptronModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_model_copy(s : NlpposperceptronModel) -> NlpposperceptronModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronModel::copy(self : NlpposperceptronModel) -> NlpposperceptronModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_model_fill(s : NlpposperceptronModel, v : Double) -> NlpposperceptronModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronModel::fill(self : NlpposperceptronModel, v : Double) -> NlpposperceptronModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_model_min(s : NlpposperceptronModel) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronModel::min(self : NlpposperceptronModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_model_max(s : NlpposperceptronModel) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronModel::max(self : NlpposperceptronModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_model_to_string(s : NlpposperceptronModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronModel::to_string(self : NlpposperceptronModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronLayer {
@@ -759,45 +759,45 @@ pub fn nlp_pos_perceptron_layer_make(size : Int) -> NlpposperceptronLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_layer_len(s : NlpposperceptronLayer) -> Int { s.size }
+pub fn NlpposperceptronLayer::len(self : NlpposperceptronLayer) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_layer_get(s : NlpposperceptronLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronLayer::get(self : NlpposperceptronLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_layer_set(s : NlpposperceptronLayer, i : Int, v : Double) -> NlpposperceptronLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronLayer::set(self : NlpposperceptronLayer, i : Int, v : Double) -> NlpposperceptronLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_layer_sum(s : NlpposperceptronLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronLayer::sum(self : NlpposperceptronLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_layer_mean(s : NlpposperceptronLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronLayer::mean(self : NlpposperceptronLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_layer_scale(s : NlpposperceptronLayer, f : Double) -> NlpposperceptronLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronLayer::scale(self : NlpposperceptronLayer, f : Double) -> NlpposperceptronLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_layer_add(a : NlpposperceptronLayer, b : NlpposperceptronLayer) -> NlpposperceptronLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronLayer::add(self : NlpposperceptronLayer, other : NlpposperceptronLayer) -> NlpposperceptronLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_layer_copy(s : NlpposperceptronLayer) -> NlpposperceptronLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronLayer::copy(self : NlpposperceptronLayer) -> NlpposperceptronLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_layer_fill(s : NlpposperceptronLayer, v : Double) -> NlpposperceptronLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronLayer::fill(self : NlpposperceptronLayer, v : Double) -> NlpposperceptronLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_layer_min(s : NlpposperceptronLayer) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronLayer::min(self : NlpposperceptronLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_layer_max(s : NlpposperceptronLayer) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronLayer::max(self : NlpposperceptronLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_layer_to_string(s : NlpposperceptronLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronLayer::to_string(self : NlpposperceptronLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_pos_perceptron_buffer_make(size : Int) -> NlpposperceptronBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_buffer_len(s : NlpposperceptronBuffer) -> Int { s.size }
+pub fn NlpposperceptronBuffer::len(self : NlpposperceptronBuffer) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_buffer_get(s : NlpposperceptronBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronBuffer::get(self : NlpposperceptronBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_buffer_set(s : NlpposperceptronBuffer, i : Int, v : Double) -> NlpposperceptronBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronBuffer::set(self : NlpposperceptronBuffer, i : Int, v : Double) -> NlpposperceptronBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_buffer_sum(s : NlpposperceptronBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronBuffer::sum(self : NlpposperceptronBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_buffer_mean(s : NlpposperceptronBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronBuffer::mean(self : NlpposperceptronBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_buffer_scale(s : NlpposperceptronBuffer, f : Double) -> NlpposperceptronBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronBuffer::scale(self : NlpposperceptronBuffer, f : Double) -> NlpposperceptronBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_buffer_add(a : NlpposperceptronBuffer, b : NlpposperceptronBuffer) -> NlpposperceptronBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronBuffer::add(self : NlpposperceptronBuffer, other : NlpposperceptronBuffer) -> NlpposperceptronBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_buffer_copy(s : NlpposperceptronBuffer) -> NlpposperceptronBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronBuffer::copy(self : NlpposperceptronBuffer) -> NlpposperceptronBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_buffer_fill(s : NlpposperceptronBuffer, v : Double) -> NlpposperceptronBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronBuffer::fill(self : NlpposperceptronBuffer, v : Double) -> NlpposperceptronBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_buffer_min(s : NlpposperceptronBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronBuffer::min(self : NlpposperceptronBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_buffer_max(s : NlpposperceptronBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronBuffer::max(self : NlpposperceptronBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_buffer_to_string(s : NlpposperceptronBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronBuffer::to_string(self : NlpposperceptronBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronCursor {
@@ -861,45 +861,45 @@ pub fn nlp_pos_perceptron_cursor_make(size : Int) -> NlpposperceptronCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_cursor_len(s : NlpposperceptronCursor) -> Int { s.size }
+pub fn NlpposperceptronCursor::len(self : NlpposperceptronCursor) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_cursor_get(s : NlpposperceptronCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronCursor::get(self : NlpposperceptronCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_cursor_set(s : NlpposperceptronCursor, i : Int, v : Double) -> NlpposperceptronCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronCursor::set(self : NlpposperceptronCursor, i : Int, v : Double) -> NlpposperceptronCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cursor_sum(s : NlpposperceptronCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronCursor::sum(self : NlpposperceptronCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_cursor_mean(s : NlpposperceptronCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronCursor::mean(self : NlpposperceptronCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_cursor_scale(s : NlpposperceptronCursor, f : Double) -> NlpposperceptronCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronCursor::scale(self : NlpposperceptronCursor, f : Double) -> NlpposperceptronCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cursor_add(a : NlpposperceptronCursor, b : NlpposperceptronCursor) -> NlpposperceptronCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronCursor::add(self : NlpposperceptronCursor, other : NlpposperceptronCursor) -> NlpposperceptronCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cursor_copy(s : NlpposperceptronCursor) -> NlpposperceptronCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronCursor::copy(self : NlpposperceptronCursor) -> NlpposperceptronCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cursor_fill(s : NlpposperceptronCursor, v : Double) -> NlpposperceptronCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronCursor::fill(self : NlpposperceptronCursor, v : Double) -> NlpposperceptronCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_cursor_min(s : NlpposperceptronCursor) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronCursor::min(self : NlpposperceptronCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_cursor_max(s : NlpposperceptronCursor) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronCursor::max(self : NlpposperceptronCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_cursor_to_string(s : NlpposperceptronCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronCursor::to_string(self : NlpposperceptronCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronView {
@@ -912,45 +912,45 @@ pub fn nlp_pos_perceptron_view_make(size : Int) -> NlpposperceptronView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_view_len(s : NlpposperceptronView) -> Int { s.size }
+pub fn NlpposperceptronView::len(self : NlpposperceptronView) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_view_get(s : NlpposperceptronView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronView::get(self : NlpposperceptronView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_view_set(s : NlpposperceptronView, i : Int, v : Double) -> NlpposperceptronView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronView::set(self : NlpposperceptronView, i : Int, v : Double) -> NlpposperceptronView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_view_sum(s : NlpposperceptronView) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronView::sum(self : NlpposperceptronView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_view_mean(s : NlpposperceptronView) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronView::mean(self : NlpposperceptronView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_view_scale(s : NlpposperceptronView, f : Double) -> NlpposperceptronView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronView::scale(self : NlpposperceptronView, f : Double) -> NlpposperceptronView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_view_add(a : NlpposperceptronView, b : NlpposperceptronView) -> NlpposperceptronView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronView::add(self : NlpposperceptronView, other : NlpposperceptronView) -> NlpposperceptronView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_view_copy(s : NlpposperceptronView) -> NlpposperceptronView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronView::copy(self : NlpposperceptronView) -> NlpposperceptronView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_view_fill(s : NlpposperceptronView, v : Double) -> NlpposperceptronView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronView::fill(self : NlpposperceptronView, v : Double) -> NlpposperceptronView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_view_min(s : NlpposperceptronView) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronView::min(self : NlpposperceptronView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_view_max(s : NlpposperceptronView) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronView::max(self : NlpposperceptronView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_view_to_string(s : NlpposperceptronView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronView::to_string(self : NlpposperceptronView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronRange {
@@ -963,45 +963,45 @@ pub fn nlp_pos_perceptron_range_make(size : Int) -> NlpposperceptronRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_range_len(s : NlpposperceptronRange) -> Int { s.size }
+pub fn NlpposperceptronRange::len(self : NlpposperceptronRange) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_range_get(s : NlpposperceptronRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronRange::get(self : NlpposperceptronRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_range_set(s : NlpposperceptronRange, i : Int, v : Double) -> NlpposperceptronRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronRange::set(self : NlpposperceptronRange, i : Int, v : Double) -> NlpposperceptronRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_range_sum(s : NlpposperceptronRange) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronRange::sum(self : NlpposperceptronRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_range_mean(s : NlpposperceptronRange) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronRange::mean(self : NlpposperceptronRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_range_scale(s : NlpposperceptronRange, f : Double) -> NlpposperceptronRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronRange::scale(self : NlpposperceptronRange, f : Double) -> NlpposperceptronRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_range_add(a : NlpposperceptronRange, b : NlpposperceptronRange) -> NlpposperceptronRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronRange::add(self : NlpposperceptronRange, other : NlpposperceptronRange) -> NlpposperceptronRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_range_copy(s : NlpposperceptronRange) -> NlpposperceptronRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronRange::copy(self : NlpposperceptronRange) -> NlpposperceptronRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_range_fill(s : NlpposperceptronRange, v : Double) -> NlpposperceptronRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronRange::fill(self : NlpposperceptronRange, v : Double) -> NlpposperceptronRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_range_min(s : NlpposperceptronRange) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronRange::min(self : NlpposperceptronRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_range_max(s : NlpposperceptronRange) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronRange::max(self : NlpposperceptronRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_range_to_string(s : NlpposperceptronRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronRange::to_string(self : NlpposperceptronRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpposperceptronSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_pos_perceptron_slice_make(size : Int) -> NlpposperceptronSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_pos_perceptron_slice_len(s : NlpposperceptronSlice) -> Int { s.size }
+pub fn NlpposperceptronSlice::len(self : NlpposperceptronSlice) -> Int { self.size }
 
-pub fn nlp_pos_perceptron_slice_get(s : NlpposperceptronSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpposperceptronSlice::get(self : NlpposperceptronSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_pos_perceptron_slice_set(s : NlpposperceptronSlice, i : Int, v : Double) -> NlpposperceptronSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpposperceptronSlice::set(self : NlpposperceptronSlice, i : Int, v : Double) -> NlpposperceptronSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_slice_sum(s : NlpposperceptronSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpposperceptronSlice::sum(self : NlpposperceptronSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_pos_perceptron_slice_mean(s : NlpposperceptronSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpposperceptronSlice::mean(self : NlpposperceptronSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_pos_perceptron_slice_scale(s : NlpposperceptronSlice, f : Double) -> NlpposperceptronSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpposperceptronSlice::scale(self : NlpposperceptronSlice, f : Double) -> NlpposperceptronSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_slice_add(a : NlpposperceptronSlice, b : NlpposperceptronSlice) -> NlpposperceptronSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpposperceptronSlice::add(self : NlpposperceptronSlice, other : NlpposperceptronSlice) -> NlpposperceptronSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_slice_copy(s : NlpposperceptronSlice) -> NlpposperceptronSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpposperceptronSlice::copy(self : NlpposperceptronSlice) -> NlpposperceptronSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_slice_fill(s : NlpposperceptronSlice, v : Double) -> NlpposperceptronSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpposperceptronSlice::fill(self : NlpposperceptronSlice, v : Double) -> NlpposperceptronSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_pos_perceptron_slice_min(s : NlpposperceptronSlice) -> Double { @_common.min(s.data) }
+pub fn NlpposperceptronSlice::min(self : NlpposperceptronSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_pos_perceptron_slice_max(s : NlpposperceptronSlice) -> Double { @_common.max(s.data) }
+pub fn NlpposperceptronSlice::max(self : NlpposperceptronSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_pos_perceptron_slice_to_string(s : NlpposperceptronSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpposperceptronSlice::to_string(self : NlpposperceptronSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

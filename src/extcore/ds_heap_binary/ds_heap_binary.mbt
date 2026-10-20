@@ -351,45 +351,45 @@ pub fn ds_heap_binary_frame_make(size : Int) -> DsheapbinaryFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_frame_len(s : DsheapbinaryFrame) -> Int { s.size }
+pub fn DsheapbinaryFrame::len(self : DsheapbinaryFrame) -> Int { self.size }
 
-pub fn ds_heap_binary_frame_get(s : DsheapbinaryFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryFrame::get(self : DsheapbinaryFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_frame_set(s : DsheapbinaryFrame, i : Int, v : Double) -> DsheapbinaryFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryFrame::set(self : DsheapbinaryFrame, i : Int, v : Double) -> DsheapbinaryFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_frame_sum(s : DsheapbinaryFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryFrame::sum(self : DsheapbinaryFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_frame_mean(s : DsheapbinaryFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryFrame::mean(self : DsheapbinaryFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_frame_scale(s : DsheapbinaryFrame, f : Double) -> DsheapbinaryFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryFrame::scale(self : DsheapbinaryFrame, f : Double) -> DsheapbinaryFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_frame_add(a : DsheapbinaryFrame, b : DsheapbinaryFrame) -> DsheapbinaryFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryFrame::add(self : DsheapbinaryFrame, other : DsheapbinaryFrame) -> DsheapbinaryFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_frame_copy(s : DsheapbinaryFrame) -> DsheapbinaryFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryFrame::copy(self : DsheapbinaryFrame) -> DsheapbinaryFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_frame_fill(s : DsheapbinaryFrame, v : Double) -> DsheapbinaryFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryFrame::fill(self : DsheapbinaryFrame, v : Double) -> DsheapbinaryFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_frame_min(s : DsheapbinaryFrame) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryFrame::min(self : DsheapbinaryFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_frame_max(s : DsheapbinaryFrame) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryFrame::max(self : DsheapbinaryFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_frame_to_string(s : DsheapbinaryFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryFrame::to_string(self : DsheapbinaryFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_binary_table_make(size : Int) -> DsheapbinaryTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_table_len(s : DsheapbinaryTable) -> Int { s.size }
+pub fn DsheapbinaryTable::len(self : DsheapbinaryTable) -> Int { self.size }
 
-pub fn ds_heap_binary_table_get(s : DsheapbinaryTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryTable::get(self : DsheapbinaryTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_table_set(s : DsheapbinaryTable, i : Int, v : Double) -> DsheapbinaryTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryTable::set(self : DsheapbinaryTable, i : Int, v : Double) -> DsheapbinaryTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_table_sum(s : DsheapbinaryTable) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryTable::sum(self : DsheapbinaryTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_table_mean(s : DsheapbinaryTable) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryTable::mean(self : DsheapbinaryTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_table_scale(s : DsheapbinaryTable, f : Double) -> DsheapbinaryTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryTable::scale(self : DsheapbinaryTable, f : Double) -> DsheapbinaryTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_table_add(a : DsheapbinaryTable, b : DsheapbinaryTable) -> DsheapbinaryTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryTable::add(self : DsheapbinaryTable, other : DsheapbinaryTable) -> DsheapbinaryTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_table_copy(s : DsheapbinaryTable) -> DsheapbinaryTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryTable::copy(self : DsheapbinaryTable) -> DsheapbinaryTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_table_fill(s : DsheapbinaryTable, v : Double) -> DsheapbinaryTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryTable::fill(self : DsheapbinaryTable, v : Double) -> DsheapbinaryTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_table_min(s : DsheapbinaryTable) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryTable::min(self : DsheapbinaryTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_table_max(s : DsheapbinaryTable) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryTable::max(self : DsheapbinaryTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_table_to_string(s : DsheapbinaryTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryTable::to_string(self : DsheapbinaryTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_binary_graphn_make(size : Int) -> DsheapbinaryGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_graphn_len(s : DsheapbinaryGraphN) -> Int { s.size }
+pub fn DsheapbinaryGraphN::len(self : DsheapbinaryGraphN) -> Int { self.size }
 
-pub fn ds_heap_binary_graphn_get(s : DsheapbinaryGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryGraphN::get(self : DsheapbinaryGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_graphn_set(s : DsheapbinaryGraphN, i : Int, v : Double) -> DsheapbinaryGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryGraphN::set(self : DsheapbinaryGraphN, i : Int, v : Double) -> DsheapbinaryGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_graphn_sum(s : DsheapbinaryGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryGraphN::sum(self : DsheapbinaryGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_graphn_mean(s : DsheapbinaryGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryGraphN::mean(self : DsheapbinaryGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_graphn_scale(s : DsheapbinaryGraphN, f : Double) -> DsheapbinaryGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryGraphN::scale(self : DsheapbinaryGraphN, f : Double) -> DsheapbinaryGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_graphn_add(a : DsheapbinaryGraphN, b : DsheapbinaryGraphN) -> DsheapbinaryGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryGraphN::add(self : DsheapbinaryGraphN, other : DsheapbinaryGraphN) -> DsheapbinaryGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_graphn_copy(s : DsheapbinaryGraphN) -> DsheapbinaryGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryGraphN::copy(self : DsheapbinaryGraphN) -> DsheapbinaryGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_graphn_fill(s : DsheapbinaryGraphN, v : Double) -> DsheapbinaryGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryGraphN::fill(self : DsheapbinaryGraphN, v : Double) -> DsheapbinaryGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_graphn_min(s : DsheapbinaryGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryGraphN::min(self : DsheapbinaryGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_graphn_max(s : DsheapbinaryGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryGraphN::max(self : DsheapbinaryGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_graphn_to_string(s : DsheapbinaryGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryGraphN::to_string(self : DsheapbinaryGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_binary_node_make(size : Int) -> DsheapbinaryNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_node_len(s : DsheapbinaryNode) -> Int { s.size }
+pub fn DsheapbinaryNode::len(self : DsheapbinaryNode) -> Int { self.size }
 
-pub fn ds_heap_binary_node_get(s : DsheapbinaryNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryNode::get(self : DsheapbinaryNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_node_set(s : DsheapbinaryNode, i : Int, v : Double) -> DsheapbinaryNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryNode::set(self : DsheapbinaryNode, i : Int, v : Double) -> DsheapbinaryNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_node_sum(s : DsheapbinaryNode) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryNode::sum(self : DsheapbinaryNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_node_mean(s : DsheapbinaryNode) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryNode::mean(self : DsheapbinaryNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_node_scale(s : DsheapbinaryNode, f : Double) -> DsheapbinaryNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryNode::scale(self : DsheapbinaryNode, f : Double) -> DsheapbinaryNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_node_add(a : DsheapbinaryNode, b : DsheapbinaryNode) -> DsheapbinaryNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryNode::add(self : DsheapbinaryNode, other : DsheapbinaryNode) -> DsheapbinaryNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_node_copy(s : DsheapbinaryNode) -> DsheapbinaryNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryNode::copy(self : DsheapbinaryNode) -> DsheapbinaryNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_node_fill(s : DsheapbinaryNode, v : Double) -> DsheapbinaryNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryNode::fill(self : DsheapbinaryNode, v : Double) -> DsheapbinaryNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_node_min(s : DsheapbinaryNode) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryNode::min(self : DsheapbinaryNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_node_max(s : DsheapbinaryNode) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryNode::max(self : DsheapbinaryNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_node_to_string(s : DsheapbinaryNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryNode::to_string(self : DsheapbinaryNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_binary_edge_make(size : Int) -> DsheapbinaryEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_edge_len(s : DsheapbinaryEdge) -> Int { s.size }
+pub fn DsheapbinaryEdge::len(self : DsheapbinaryEdge) -> Int { self.size }
 
-pub fn ds_heap_binary_edge_get(s : DsheapbinaryEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryEdge::get(self : DsheapbinaryEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_edge_set(s : DsheapbinaryEdge, i : Int, v : Double) -> DsheapbinaryEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryEdge::set(self : DsheapbinaryEdge, i : Int, v : Double) -> DsheapbinaryEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_edge_sum(s : DsheapbinaryEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryEdge::sum(self : DsheapbinaryEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_edge_mean(s : DsheapbinaryEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryEdge::mean(self : DsheapbinaryEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_edge_scale(s : DsheapbinaryEdge, f : Double) -> DsheapbinaryEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryEdge::scale(self : DsheapbinaryEdge, f : Double) -> DsheapbinaryEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_edge_add(a : DsheapbinaryEdge, b : DsheapbinaryEdge) -> DsheapbinaryEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryEdge::add(self : DsheapbinaryEdge, other : DsheapbinaryEdge) -> DsheapbinaryEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_edge_copy(s : DsheapbinaryEdge) -> DsheapbinaryEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryEdge::copy(self : DsheapbinaryEdge) -> DsheapbinaryEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_edge_fill(s : DsheapbinaryEdge, v : Double) -> DsheapbinaryEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryEdge::fill(self : DsheapbinaryEdge, v : Double) -> DsheapbinaryEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_edge_min(s : DsheapbinaryEdge) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryEdge::min(self : DsheapbinaryEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_edge_max(s : DsheapbinaryEdge) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryEdge::max(self : DsheapbinaryEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_edge_to_string(s : DsheapbinaryEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryEdge::to_string(self : DsheapbinaryEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_binary_path_make(size : Int) -> DsheapbinaryPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_path_len(s : DsheapbinaryPath) -> Int { s.size }
+pub fn DsheapbinaryPath::len(self : DsheapbinaryPath) -> Int { self.size }
 
-pub fn ds_heap_binary_path_get(s : DsheapbinaryPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryPath::get(self : DsheapbinaryPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_path_set(s : DsheapbinaryPath, i : Int, v : Double) -> DsheapbinaryPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryPath::set(self : DsheapbinaryPath, i : Int, v : Double) -> DsheapbinaryPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_path_sum(s : DsheapbinaryPath) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryPath::sum(self : DsheapbinaryPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_path_mean(s : DsheapbinaryPath) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryPath::mean(self : DsheapbinaryPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_path_scale(s : DsheapbinaryPath, f : Double) -> DsheapbinaryPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryPath::scale(self : DsheapbinaryPath, f : Double) -> DsheapbinaryPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_path_add(a : DsheapbinaryPath, b : DsheapbinaryPath) -> DsheapbinaryPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryPath::add(self : DsheapbinaryPath, other : DsheapbinaryPath) -> DsheapbinaryPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_path_copy(s : DsheapbinaryPath) -> DsheapbinaryPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryPath::copy(self : DsheapbinaryPath) -> DsheapbinaryPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_path_fill(s : DsheapbinaryPath, v : Double) -> DsheapbinaryPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryPath::fill(self : DsheapbinaryPath, v : Double) -> DsheapbinaryPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_path_min(s : DsheapbinaryPath) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryPath::min(self : DsheapbinaryPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_path_max(s : DsheapbinaryPath) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryPath::max(self : DsheapbinaryPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_path_to_string(s : DsheapbinaryPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryPath::to_string(self : DsheapbinaryPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_binary_cluster_make(size : Int) -> DsheapbinaryCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_cluster_len(s : DsheapbinaryCluster) -> Int { s.size }
+pub fn DsheapbinaryCluster::len(self : DsheapbinaryCluster) -> Int { self.size }
 
-pub fn ds_heap_binary_cluster_get(s : DsheapbinaryCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryCluster::get(self : DsheapbinaryCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_cluster_set(s : DsheapbinaryCluster, i : Int, v : Double) -> DsheapbinaryCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryCluster::set(self : DsheapbinaryCluster, i : Int, v : Double) -> DsheapbinaryCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cluster_sum(s : DsheapbinaryCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryCluster::sum(self : DsheapbinaryCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_cluster_mean(s : DsheapbinaryCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryCluster::mean(self : DsheapbinaryCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_cluster_scale(s : DsheapbinaryCluster, f : Double) -> DsheapbinaryCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryCluster::scale(self : DsheapbinaryCluster, f : Double) -> DsheapbinaryCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cluster_add(a : DsheapbinaryCluster, b : DsheapbinaryCluster) -> DsheapbinaryCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryCluster::add(self : DsheapbinaryCluster, other : DsheapbinaryCluster) -> DsheapbinaryCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cluster_copy(s : DsheapbinaryCluster) -> DsheapbinaryCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryCluster::copy(self : DsheapbinaryCluster) -> DsheapbinaryCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cluster_fill(s : DsheapbinaryCluster, v : Double) -> DsheapbinaryCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryCluster::fill(self : DsheapbinaryCluster, v : Double) -> DsheapbinaryCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cluster_min(s : DsheapbinaryCluster) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryCluster::min(self : DsheapbinaryCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_cluster_max(s : DsheapbinaryCluster) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryCluster::max(self : DsheapbinaryCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_cluster_to_string(s : DsheapbinaryCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryCluster::to_string(self : DsheapbinaryCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_binary_model_make(size : Int) -> DsheapbinaryModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_model_len(s : DsheapbinaryModel) -> Int { s.size }
+pub fn DsheapbinaryModel::len(self : DsheapbinaryModel) -> Int { self.size }
 
-pub fn ds_heap_binary_model_get(s : DsheapbinaryModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryModel::get(self : DsheapbinaryModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_model_set(s : DsheapbinaryModel, i : Int, v : Double) -> DsheapbinaryModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryModel::set(self : DsheapbinaryModel, i : Int, v : Double) -> DsheapbinaryModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_model_sum(s : DsheapbinaryModel) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryModel::sum(self : DsheapbinaryModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_model_mean(s : DsheapbinaryModel) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryModel::mean(self : DsheapbinaryModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_model_scale(s : DsheapbinaryModel, f : Double) -> DsheapbinaryModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryModel::scale(self : DsheapbinaryModel, f : Double) -> DsheapbinaryModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_model_add(a : DsheapbinaryModel, b : DsheapbinaryModel) -> DsheapbinaryModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryModel::add(self : DsheapbinaryModel, other : DsheapbinaryModel) -> DsheapbinaryModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_model_copy(s : DsheapbinaryModel) -> DsheapbinaryModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryModel::copy(self : DsheapbinaryModel) -> DsheapbinaryModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_model_fill(s : DsheapbinaryModel, v : Double) -> DsheapbinaryModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryModel::fill(self : DsheapbinaryModel, v : Double) -> DsheapbinaryModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_model_min(s : DsheapbinaryModel) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryModel::min(self : DsheapbinaryModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_model_max(s : DsheapbinaryModel) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryModel::max(self : DsheapbinaryModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_model_to_string(s : DsheapbinaryModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryModel::to_string(self : DsheapbinaryModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_binary_layer_make(size : Int) -> DsheapbinaryLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_layer_len(s : DsheapbinaryLayer) -> Int { s.size }
+pub fn DsheapbinaryLayer::len(self : DsheapbinaryLayer) -> Int { self.size }
 
-pub fn ds_heap_binary_layer_get(s : DsheapbinaryLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryLayer::get(self : DsheapbinaryLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_layer_set(s : DsheapbinaryLayer, i : Int, v : Double) -> DsheapbinaryLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryLayer::set(self : DsheapbinaryLayer, i : Int, v : Double) -> DsheapbinaryLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_layer_sum(s : DsheapbinaryLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryLayer::sum(self : DsheapbinaryLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_layer_mean(s : DsheapbinaryLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryLayer::mean(self : DsheapbinaryLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_layer_scale(s : DsheapbinaryLayer, f : Double) -> DsheapbinaryLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryLayer::scale(self : DsheapbinaryLayer, f : Double) -> DsheapbinaryLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_layer_add(a : DsheapbinaryLayer, b : DsheapbinaryLayer) -> DsheapbinaryLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryLayer::add(self : DsheapbinaryLayer, other : DsheapbinaryLayer) -> DsheapbinaryLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_layer_copy(s : DsheapbinaryLayer) -> DsheapbinaryLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryLayer::copy(self : DsheapbinaryLayer) -> DsheapbinaryLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_layer_fill(s : DsheapbinaryLayer, v : Double) -> DsheapbinaryLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryLayer::fill(self : DsheapbinaryLayer, v : Double) -> DsheapbinaryLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_layer_min(s : DsheapbinaryLayer) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryLayer::min(self : DsheapbinaryLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_layer_max(s : DsheapbinaryLayer) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryLayer::max(self : DsheapbinaryLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_layer_to_string(s : DsheapbinaryLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryLayer::to_string(self : DsheapbinaryLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_binary_buffer_make(size : Int) -> DsheapbinaryBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_buffer_len(s : DsheapbinaryBuffer) -> Int { s.size }
+pub fn DsheapbinaryBuffer::len(self : DsheapbinaryBuffer) -> Int { self.size }
 
-pub fn ds_heap_binary_buffer_get(s : DsheapbinaryBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryBuffer::get(self : DsheapbinaryBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_buffer_set(s : DsheapbinaryBuffer, i : Int, v : Double) -> DsheapbinaryBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryBuffer::set(self : DsheapbinaryBuffer, i : Int, v : Double) -> DsheapbinaryBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_buffer_sum(s : DsheapbinaryBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryBuffer::sum(self : DsheapbinaryBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_buffer_mean(s : DsheapbinaryBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryBuffer::mean(self : DsheapbinaryBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_buffer_scale(s : DsheapbinaryBuffer, f : Double) -> DsheapbinaryBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryBuffer::scale(self : DsheapbinaryBuffer, f : Double) -> DsheapbinaryBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_buffer_add(a : DsheapbinaryBuffer, b : DsheapbinaryBuffer) -> DsheapbinaryBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryBuffer::add(self : DsheapbinaryBuffer, other : DsheapbinaryBuffer) -> DsheapbinaryBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_buffer_copy(s : DsheapbinaryBuffer) -> DsheapbinaryBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryBuffer::copy(self : DsheapbinaryBuffer) -> DsheapbinaryBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_buffer_fill(s : DsheapbinaryBuffer, v : Double) -> DsheapbinaryBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryBuffer::fill(self : DsheapbinaryBuffer, v : Double) -> DsheapbinaryBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_buffer_min(s : DsheapbinaryBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryBuffer::min(self : DsheapbinaryBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_buffer_max(s : DsheapbinaryBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryBuffer::max(self : DsheapbinaryBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_buffer_to_string(s : DsheapbinaryBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryBuffer::to_string(self : DsheapbinaryBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_binary_cursor_make(size : Int) -> DsheapbinaryCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_cursor_len(s : DsheapbinaryCursor) -> Int { s.size }
+pub fn DsheapbinaryCursor::len(self : DsheapbinaryCursor) -> Int { self.size }
 
-pub fn ds_heap_binary_cursor_get(s : DsheapbinaryCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryCursor::get(self : DsheapbinaryCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_cursor_set(s : DsheapbinaryCursor, i : Int, v : Double) -> DsheapbinaryCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryCursor::set(self : DsheapbinaryCursor, i : Int, v : Double) -> DsheapbinaryCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cursor_sum(s : DsheapbinaryCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryCursor::sum(self : DsheapbinaryCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_cursor_mean(s : DsheapbinaryCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryCursor::mean(self : DsheapbinaryCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_cursor_scale(s : DsheapbinaryCursor, f : Double) -> DsheapbinaryCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryCursor::scale(self : DsheapbinaryCursor, f : Double) -> DsheapbinaryCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cursor_add(a : DsheapbinaryCursor, b : DsheapbinaryCursor) -> DsheapbinaryCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryCursor::add(self : DsheapbinaryCursor, other : DsheapbinaryCursor) -> DsheapbinaryCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cursor_copy(s : DsheapbinaryCursor) -> DsheapbinaryCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryCursor::copy(self : DsheapbinaryCursor) -> DsheapbinaryCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cursor_fill(s : DsheapbinaryCursor, v : Double) -> DsheapbinaryCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryCursor::fill(self : DsheapbinaryCursor, v : Double) -> DsheapbinaryCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_cursor_min(s : DsheapbinaryCursor) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryCursor::min(self : DsheapbinaryCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_cursor_max(s : DsheapbinaryCursor) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryCursor::max(self : DsheapbinaryCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_cursor_to_string(s : DsheapbinaryCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryCursor::to_string(self : DsheapbinaryCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryView {
@@ -912,45 +912,45 @@ pub fn ds_heap_binary_view_make(size : Int) -> DsheapbinaryView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_view_len(s : DsheapbinaryView) -> Int { s.size }
+pub fn DsheapbinaryView::len(self : DsheapbinaryView) -> Int { self.size }
 
-pub fn ds_heap_binary_view_get(s : DsheapbinaryView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryView::get(self : DsheapbinaryView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_view_set(s : DsheapbinaryView, i : Int, v : Double) -> DsheapbinaryView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryView::set(self : DsheapbinaryView, i : Int, v : Double) -> DsheapbinaryView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_view_sum(s : DsheapbinaryView) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryView::sum(self : DsheapbinaryView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_view_mean(s : DsheapbinaryView) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryView::mean(self : DsheapbinaryView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_view_scale(s : DsheapbinaryView, f : Double) -> DsheapbinaryView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryView::scale(self : DsheapbinaryView, f : Double) -> DsheapbinaryView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_view_add(a : DsheapbinaryView, b : DsheapbinaryView) -> DsheapbinaryView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryView::add(self : DsheapbinaryView, other : DsheapbinaryView) -> DsheapbinaryView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_view_copy(s : DsheapbinaryView) -> DsheapbinaryView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryView::copy(self : DsheapbinaryView) -> DsheapbinaryView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_view_fill(s : DsheapbinaryView, v : Double) -> DsheapbinaryView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryView::fill(self : DsheapbinaryView, v : Double) -> DsheapbinaryView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_view_min(s : DsheapbinaryView) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryView::min(self : DsheapbinaryView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_view_max(s : DsheapbinaryView) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryView::max(self : DsheapbinaryView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_view_to_string(s : DsheapbinaryView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryView::to_string(self : DsheapbinaryView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinaryRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_binary_range_make(size : Int) -> DsheapbinaryRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_range_len(s : DsheapbinaryRange) -> Int { s.size }
+pub fn DsheapbinaryRange::len(self : DsheapbinaryRange) -> Int { self.size }
 
-pub fn ds_heap_binary_range_get(s : DsheapbinaryRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinaryRange::get(self : DsheapbinaryRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_range_set(s : DsheapbinaryRange, i : Int, v : Double) -> DsheapbinaryRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinaryRange::set(self : DsheapbinaryRange, i : Int, v : Double) -> DsheapbinaryRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_range_sum(s : DsheapbinaryRange) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinaryRange::sum(self : DsheapbinaryRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_range_mean(s : DsheapbinaryRange) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinaryRange::mean(self : DsheapbinaryRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_range_scale(s : DsheapbinaryRange, f : Double) -> DsheapbinaryRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinaryRange::scale(self : DsheapbinaryRange, f : Double) -> DsheapbinaryRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_range_add(a : DsheapbinaryRange, b : DsheapbinaryRange) -> DsheapbinaryRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinaryRange::add(self : DsheapbinaryRange, other : DsheapbinaryRange) -> DsheapbinaryRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_range_copy(s : DsheapbinaryRange) -> DsheapbinaryRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinaryRange::copy(self : DsheapbinaryRange) -> DsheapbinaryRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_range_fill(s : DsheapbinaryRange, v : Double) -> DsheapbinaryRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinaryRange::fill(self : DsheapbinaryRange, v : Double) -> DsheapbinaryRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_range_min(s : DsheapbinaryRange) -> Double { @_common.min(s.data) }
+pub fn DsheapbinaryRange::min(self : DsheapbinaryRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_range_max(s : DsheapbinaryRange) -> Double { @_common.max(s.data) }
+pub fn DsheapbinaryRange::max(self : DsheapbinaryRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_range_to_string(s : DsheapbinaryRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinaryRange::to_string(self : DsheapbinaryRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapbinarySlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_binary_slice_make(size : Int) -> DsheapbinarySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_binary_slice_len(s : DsheapbinarySlice) -> Int { s.size }
+pub fn DsheapbinarySlice::len(self : DsheapbinarySlice) -> Int { self.size }
 
-pub fn ds_heap_binary_slice_get(s : DsheapbinarySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapbinarySlice::get(self : DsheapbinarySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_binary_slice_set(s : DsheapbinarySlice, i : Int, v : Double) -> DsheapbinarySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapbinarySlice::set(self : DsheapbinarySlice, i : Int, v : Double) -> DsheapbinarySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_slice_sum(s : DsheapbinarySlice) -> Double { @_common.sum(s.data) }
+pub fn DsheapbinarySlice::sum(self : DsheapbinarySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_binary_slice_mean(s : DsheapbinarySlice) -> Double { @_common.mean(s.data) }
+pub fn DsheapbinarySlice::mean(self : DsheapbinarySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_binary_slice_scale(s : DsheapbinarySlice, f : Double) -> DsheapbinarySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapbinarySlice::scale(self : DsheapbinarySlice, f : Double) -> DsheapbinarySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_slice_add(a : DsheapbinarySlice, b : DsheapbinarySlice) -> DsheapbinarySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapbinarySlice::add(self : DsheapbinarySlice, other : DsheapbinarySlice) -> DsheapbinarySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_binary_slice_copy(s : DsheapbinarySlice) -> DsheapbinarySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapbinarySlice::copy(self : DsheapbinarySlice) -> DsheapbinarySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_slice_fill(s : DsheapbinarySlice, v : Double) -> DsheapbinarySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapbinarySlice::fill(self : DsheapbinarySlice, v : Double) -> DsheapbinarySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_binary_slice_min(s : DsheapbinarySlice) -> Double { @_common.min(s.data) }
+pub fn DsheapbinarySlice::min(self : DsheapbinarySlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_binary_slice_max(s : DsheapbinarySlice) -> Double { @_common.max(s.data) }
+pub fn DsheapbinarySlice::max(self : DsheapbinarySlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_binary_slice_to_string(s : DsheapbinarySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapbinarySlice::to_string(self : DsheapbinarySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

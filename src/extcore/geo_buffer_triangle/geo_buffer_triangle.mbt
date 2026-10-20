@@ -351,45 +351,45 @@ pub fn geo_buffer_triangle_frame_make(size : Int) -> GeobuffertriangleFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_frame_len(s : GeobuffertriangleFrame) -> Int { s.size }
+pub fn GeobuffertriangleFrame::len(self : GeobuffertriangleFrame) -> Int { self.size }
 
-pub fn geo_buffer_triangle_frame_get(s : GeobuffertriangleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleFrame::get(self : GeobuffertriangleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_frame_set(s : GeobuffertriangleFrame, i : Int, v : Double) -> GeobuffertriangleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleFrame::set(self : GeobuffertriangleFrame, i : Int, v : Double) -> GeobuffertriangleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_frame_sum(s : GeobuffertriangleFrame) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleFrame::sum(self : GeobuffertriangleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_frame_mean(s : GeobuffertriangleFrame) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleFrame::mean(self : GeobuffertriangleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_frame_scale(s : GeobuffertriangleFrame, f : Double) -> GeobuffertriangleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleFrame::scale(self : GeobuffertriangleFrame, f : Double) -> GeobuffertriangleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_frame_add(a : GeobuffertriangleFrame, b : GeobuffertriangleFrame) -> GeobuffertriangleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleFrame::add(self : GeobuffertriangleFrame, other : GeobuffertriangleFrame) -> GeobuffertriangleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_frame_copy(s : GeobuffertriangleFrame) -> GeobuffertriangleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleFrame::copy(self : GeobuffertriangleFrame) -> GeobuffertriangleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_frame_fill(s : GeobuffertriangleFrame, v : Double) -> GeobuffertriangleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleFrame::fill(self : GeobuffertriangleFrame, v : Double) -> GeobuffertriangleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_frame_min(s : GeobuffertriangleFrame) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleFrame::min(self : GeobuffertriangleFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_frame_max(s : GeobuffertriangleFrame) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleFrame::max(self : GeobuffertriangleFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_frame_to_string(s : GeobuffertriangleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleFrame::to_string(self : GeobuffertriangleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleTable {
@@ -402,45 +402,45 @@ pub fn geo_buffer_triangle_table_make(size : Int) -> GeobuffertriangleTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_table_len(s : GeobuffertriangleTable) -> Int { s.size }
+pub fn GeobuffertriangleTable::len(self : GeobuffertriangleTable) -> Int { self.size }
 
-pub fn geo_buffer_triangle_table_get(s : GeobuffertriangleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleTable::get(self : GeobuffertriangleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_table_set(s : GeobuffertriangleTable, i : Int, v : Double) -> GeobuffertriangleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleTable::set(self : GeobuffertriangleTable, i : Int, v : Double) -> GeobuffertriangleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_table_sum(s : GeobuffertriangleTable) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleTable::sum(self : GeobuffertriangleTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_table_mean(s : GeobuffertriangleTable) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleTable::mean(self : GeobuffertriangleTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_table_scale(s : GeobuffertriangleTable, f : Double) -> GeobuffertriangleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleTable::scale(self : GeobuffertriangleTable, f : Double) -> GeobuffertriangleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_table_add(a : GeobuffertriangleTable, b : GeobuffertriangleTable) -> GeobuffertriangleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleTable::add(self : GeobuffertriangleTable, other : GeobuffertriangleTable) -> GeobuffertriangleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_table_copy(s : GeobuffertriangleTable) -> GeobuffertriangleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleTable::copy(self : GeobuffertriangleTable) -> GeobuffertriangleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_table_fill(s : GeobuffertriangleTable, v : Double) -> GeobuffertriangleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleTable::fill(self : GeobuffertriangleTable, v : Double) -> GeobuffertriangleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_table_min(s : GeobuffertriangleTable) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleTable::min(self : GeobuffertriangleTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_table_max(s : GeobuffertriangleTable) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleTable::max(self : GeobuffertriangleTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_table_to_string(s : GeobuffertriangleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleTable::to_string(self : GeobuffertriangleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleGraphN {
@@ -453,45 +453,45 @@ pub fn geo_buffer_triangle_graphn_make(size : Int) -> GeobuffertriangleGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_graphn_len(s : GeobuffertriangleGraphN) -> Int { s.size }
+pub fn GeobuffertriangleGraphN::len(self : GeobuffertriangleGraphN) -> Int { self.size }
 
-pub fn geo_buffer_triangle_graphn_get(s : GeobuffertriangleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleGraphN::get(self : GeobuffertriangleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_graphn_set(s : GeobuffertriangleGraphN, i : Int, v : Double) -> GeobuffertriangleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleGraphN::set(self : GeobuffertriangleGraphN, i : Int, v : Double) -> GeobuffertriangleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_graphn_sum(s : GeobuffertriangleGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleGraphN::sum(self : GeobuffertriangleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_graphn_mean(s : GeobuffertriangleGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleGraphN::mean(self : GeobuffertriangleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_graphn_scale(s : GeobuffertriangleGraphN, f : Double) -> GeobuffertriangleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleGraphN::scale(self : GeobuffertriangleGraphN, f : Double) -> GeobuffertriangleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_graphn_add(a : GeobuffertriangleGraphN, b : GeobuffertriangleGraphN) -> GeobuffertriangleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleGraphN::add(self : GeobuffertriangleGraphN, other : GeobuffertriangleGraphN) -> GeobuffertriangleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_graphn_copy(s : GeobuffertriangleGraphN) -> GeobuffertriangleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleGraphN::copy(self : GeobuffertriangleGraphN) -> GeobuffertriangleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_graphn_fill(s : GeobuffertriangleGraphN, v : Double) -> GeobuffertriangleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleGraphN::fill(self : GeobuffertriangleGraphN, v : Double) -> GeobuffertriangleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_graphn_min(s : GeobuffertriangleGraphN) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleGraphN::min(self : GeobuffertriangleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_graphn_max(s : GeobuffertriangleGraphN) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleGraphN::max(self : GeobuffertriangleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_graphn_to_string(s : GeobuffertriangleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleGraphN::to_string(self : GeobuffertriangleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleNode {
@@ -504,45 +504,45 @@ pub fn geo_buffer_triangle_node_make(size : Int) -> GeobuffertriangleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_node_len(s : GeobuffertriangleNode) -> Int { s.size }
+pub fn GeobuffertriangleNode::len(self : GeobuffertriangleNode) -> Int { self.size }
 
-pub fn geo_buffer_triangle_node_get(s : GeobuffertriangleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleNode::get(self : GeobuffertriangleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_node_set(s : GeobuffertriangleNode, i : Int, v : Double) -> GeobuffertriangleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleNode::set(self : GeobuffertriangleNode, i : Int, v : Double) -> GeobuffertriangleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_node_sum(s : GeobuffertriangleNode) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleNode::sum(self : GeobuffertriangleNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_node_mean(s : GeobuffertriangleNode) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleNode::mean(self : GeobuffertriangleNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_node_scale(s : GeobuffertriangleNode, f : Double) -> GeobuffertriangleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleNode::scale(self : GeobuffertriangleNode, f : Double) -> GeobuffertriangleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_node_add(a : GeobuffertriangleNode, b : GeobuffertriangleNode) -> GeobuffertriangleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleNode::add(self : GeobuffertriangleNode, other : GeobuffertriangleNode) -> GeobuffertriangleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_node_copy(s : GeobuffertriangleNode) -> GeobuffertriangleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleNode::copy(self : GeobuffertriangleNode) -> GeobuffertriangleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_node_fill(s : GeobuffertriangleNode, v : Double) -> GeobuffertriangleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleNode::fill(self : GeobuffertriangleNode, v : Double) -> GeobuffertriangleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_node_min(s : GeobuffertriangleNode) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleNode::min(self : GeobuffertriangleNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_node_max(s : GeobuffertriangleNode) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleNode::max(self : GeobuffertriangleNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_node_to_string(s : GeobuffertriangleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleNode::to_string(self : GeobuffertriangleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleEdge {
@@ -555,45 +555,45 @@ pub fn geo_buffer_triangle_edge_make(size : Int) -> GeobuffertriangleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_edge_len(s : GeobuffertriangleEdge) -> Int { s.size }
+pub fn GeobuffertriangleEdge::len(self : GeobuffertriangleEdge) -> Int { self.size }
 
-pub fn geo_buffer_triangle_edge_get(s : GeobuffertriangleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleEdge::get(self : GeobuffertriangleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_edge_set(s : GeobuffertriangleEdge, i : Int, v : Double) -> GeobuffertriangleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleEdge::set(self : GeobuffertriangleEdge, i : Int, v : Double) -> GeobuffertriangleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_edge_sum(s : GeobuffertriangleEdge) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleEdge::sum(self : GeobuffertriangleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_edge_mean(s : GeobuffertriangleEdge) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleEdge::mean(self : GeobuffertriangleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_edge_scale(s : GeobuffertriangleEdge, f : Double) -> GeobuffertriangleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleEdge::scale(self : GeobuffertriangleEdge, f : Double) -> GeobuffertriangleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_edge_add(a : GeobuffertriangleEdge, b : GeobuffertriangleEdge) -> GeobuffertriangleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleEdge::add(self : GeobuffertriangleEdge, other : GeobuffertriangleEdge) -> GeobuffertriangleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_edge_copy(s : GeobuffertriangleEdge) -> GeobuffertriangleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleEdge::copy(self : GeobuffertriangleEdge) -> GeobuffertriangleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_edge_fill(s : GeobuffertriangleEdge, v : Double) -> GeobuffertriangleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleEdge::fill(self : GeobuffertriangleEdge, v : Double) -> GeobuffertriangleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_edge_min(s : GeobuffertriangleEdge) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleEdge::min(self : GeobuffertriangleEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_edge_max(s : GeobuffertriangleEdge) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleEdge::max(self : GeobuffertriangleEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_edge_to_string(s : GeobuffertriangleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleEdge::to_string(self : GeobuffertriangleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertrianglePath {
@@ -606,45 +606,45 @@ pub fn geo_buffer_triangle_path_make(size : Int) -> GeobuffertrianglePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_path_len(s : GeobuffertrianglePath) -> Int { s.size }
+pub fn GeobuffertrianglePath::len(self : GeobuffertrianglePath) -> Int { self.size }
 
-pub fn geo_buffer_triangle_path_get(s : GeobuffertrianglePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertrianglePath::get(self : GeobuffertrianglePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_path_set(s : GeobuffertrianglePath, i : Int, v : Double) -> GeobuffertrianglePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertrianglePath::set(self : GeobuffertrianglePath, i : Int, v : Double) -> GeobuffertrianglePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_path_sum(s : GeobuffertrianglePath) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertrianglePath::sum(self : GeobuffertrianglePath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_path_mean(s : GeobuffertrianglePath) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertrianglePath::mean(self : GeobuffertrianglePath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_path_scale(s : GeobuffertrianglePath, f : Double) -> GeobuffertrianglePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertrianglePath::scale(self : GeobuffertrianglePath, f : Double) -> GeobuffertrianglePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_path_add(a : GeobuffertrianglePath, b : GeobuffertrianglePath) -> GeobuffertrianglePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertrianglePath::add(self : GeobuffertrianglePath, other : GeobuffertrianglePath) -> GeobuffertrianglePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_path_copy(s : GeobuffertrianglePath) -> GeobuffertrianglePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertrianglePath::copy(self : GeobuffertrianglePath) -> GeobuffertrianglePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_path_fill(s : GeobuffertrianglePath, v : Double) -> GeobuffertrianglePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertrianglePath::fill(self : GeobuffertrianglePath, v : Double) -> GeobuffertrianglePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_path_min(s : GeobuffertrianglePath) -> Double { @_common.min(s.data) }
+pub fn GeobuffertrianglePath::min(self : GeobuffertrianglePath) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_path_max(s : GeobuffertrianglePath) -> Double { @_common.max(s.data) }
+pub fn GeobuffertrianglePath::max(self : GeobuffertrianglePath) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_path_to_string(s : GeobuffertrianglePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertrianglePath::to_string(self : GeobuffertrianglePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleCluster {
@@ -657,45 +657,45 @@ pub fn geo_buffer_triangle_cluster_make(size : Int) -> GeobuffertriangleCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_cluster_len(s : GeobuffertriangleCluster) -> Int { s.size }
+pub fn GeobuffertriangleCluster::len(self : GeobuffertriangleCluster) -> Int { self.size }
 
-pub fn geo_buffer_triangle_cluster_get(s : GeobuffertriangleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleCluster::get(self : GeobuffertriangleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_cluster_set(s : GeobuffertriangleCluster, i : Int, v : Double) -> GeobuffertriangleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCluster::set(self : GeobuffertriangleCluster, i : Int, v : Double) -> GeobuffertriangleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cluster_sum(s : GeobuffertriangleCluster) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleCluster::sum(self : GeobuffertriangleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_cluster_mean(s : GeobuffertriangleCluster) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleCluster::mean(self : GeobuffertriangleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_cluster_scale(s : GeobuffertriangleCluster, f : Double) -> GeobuffertriangleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCluster::scale(self : GeobuffertriangleCluster, f : Double) -> GeobuffertriangleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cluster_add(a : GeobuffertriangleCluster, b : GeobuffertriangleCluster) -> GeobuffertriangleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleCluster::add(self : GeobuffertriangleCluster, other : GeobuffertriangleCluster) -> GeobuffertriangleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cluster_copy(s : GeobuffertriangleCluster) -> GeobuffertriangleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCluster::copy(self : GeobuffertriangleCluster) -> GeobuffertriangleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cluster_fill(s : GeobuffertriangleCluster, v : Double) -> GeobuffertriangleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCluster::fill(self : GeobuffertriangleCluster, v : Double) -> GeobuffertriangleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cluster_min(s : GeobuffertriangleCluster) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleCluster::min(self : GeobuffertriangleCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_cluster_max(s : GeobuffertriangleCluster) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleCluster::max(self : GeobuffertriangleCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_cluster_to_string(s : GeobuffertriangleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleCluster::to_string(self : GeobuffertriangleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleModel {
@@ -708,45 +708,45 @@ pub fn geo_buffer_triangle_model_make(size : Int) -> GeobuffertriangleModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_model_len(s : GeobuffertriangleModel) -> Int { s.size }
+pub fn GeobuffertriangleModel::len(self : GeobuffertriangleModel) -> Int { self.size }
 
-pub fn geo_buffer_triangle_model_get(s : GeobuffertriangleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleModel::get(self : GeobuffertriangleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_model_set(s : GeobuffertriangleModel, i : Int, v : Double) -> GeobuffertriangleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleModel::set(self : GeobuffertriangleModel, i : Int, v : Double) -> GeobuffertriangleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_model_sum(s : GeobuffertriangleModel) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleModel::sum(self : GeobuffertriangleModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_model_mean(s : GeobuffertriangleModel) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleModel::mean(self : GeobuffertriangleModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_model_scale(s : GeobuffertriangleModel, f : Double) -> GeobuffertriangleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleModel::scale(self : GeobuffertriangleModel, f : Double) -> GeobuffertriangleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_model_add(a : GeobuffertriangleModel, b : GeobuffertriangleModel) -> GeobuffertriangleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleModel::add(self : GeobuffertriangleModel, other : GeobuffertriangleModel) -> GeobuffertriangleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_model_copy(s : GeobuffertriangleModel) -> GeobuffertriangleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleModel::copy(self : GeobuffertriangleModel) -> GeobuffertriangleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_model_fill(s : GeobuffertriangleModel, v : Double) -> GeobuffertriangleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleModel::fill(self : GeobuffertriangleModel, v : Double) -> GeobuffertriangleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_model_min(s : GeobuffertriangleModel) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleModel::min(self : GeobuffertriangleModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_model_max(s : GeobuffertriangleModel) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleModel::max(self : GeobuffertriangleModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_model_to_string(s : GeobuffertriangleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleModel::to_string(self : GeobuffertriangleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleLayer {
@@ -759,45 +759,45 @@ pub fn geo_buffer_triangle_layer_make(size : Int) -> GeobuffertriangleLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_layer_len(s : GeobuffertriangleLayer) -> Int { s.size }
+pub fn GeobuffertriangleLayer::len(self : GeobuffertriangleLayer) -> Int { self.size }
 
-pub fn geo_buffer_triangle_layer_get(s : GeobuffertriangleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleLayer::get(self : GeobuffertriangleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_layer_set(s : GeobuffertriangleLayer, i : Int, v : Double) -> GeobuffertriangleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleLayer::set(self : GeobuffertriangleLayer, i : Int, v : Double) -> GeobuffertriangleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_layer_sum(s : GeobuffertriangleLayer) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleLayer::sum(self : GeobuffertriangleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_layer_mean(s : GeobuffertriangleLayer) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleLayer::mean(self : GeobuffertriangleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_layer_scale(s : GeobuffertriangleLayer, f : Double) -> GeobuffertriangleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleLayer::scale(self : GeobuffertriangleLayer, f : Double) -> GeobuffertriangleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_layer_add(a : GeobuffertriangleLayer, b : GeobuffertriangleLayer) -> GeobuffertriangleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleLayer::add(self : GeobuffertriangleLayer, other : GeobuffertriangleLayer) -> GeobuffertriangleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_layer_copy(s : GeobuffertriangleLayer) -> GeobuffertriangleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleLayer::copy(self : GeobuffertriangleLayer) -> GeobuffertriangleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_layer_fill(s : GeobuffertriangleLayer, v : Double) -> GeobuffertriangleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleLayer::fill(self : GeobuffertriangleLayer, v : Double) -> GeobuffertriangleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_layer_min(s : GeobuffertriangleLayer) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleLayer::min(self : GeobuffertriangleLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_layer_max(s : GeobuffertriangleLayer) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleLayer::max(self : GeobuffertriangleLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_layer_to_string(s : GeobuffertriangleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleLayer::to_string(self : GeobuffertriangleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleBuffer {
@@ -810,45 +810,45 @@ pub fn geo_buffer_triangle_buffer_make(size : Int) -> GeobuffertriangleBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_buffer_len(s : GeobuffertriangleBuffer) -> Int { s.size }
+pub fn GeobuffertriangleBuffer::len(self : GeobuffertriangleBuffer) -> Int { self.size }
 
-pub fn geo_buffer_triangle_buffer_get(s : GeobuffertriangleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleBuffer::get(self : GeobuffertriangleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_buffer_set(s : GeobuffertriangleBuffer, i : Int, v : Double) -> GeobuffertriangleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleBuffer::set(self : GeobuffertriangleBuffer, i : Int, v : Double) -> GeobuffertriangleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_buffer_sum(s : GeobuffertriangleBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleBuffer::sum(self : GeobuffertriangleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_buffer_mean(s : GeobuffertriangleBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleBuffer::mean(self : GeobuffertriangleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_buffer_scale(s : GeobuffertriangleBuffer, f : Double) -> GeobuffertriangleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleBuffer::scale(self : GeobuffertriangleBuffer, f : Double) -> GeobuffertriangleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_buffer_add(a : GeobuffertriangleBuffer, b : GeobuffertriangleBuffer) -> GeobuffertriangleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleBuffer::add(self : GeobuffertriangleBuffer, other : GeobuffertriangleBuffer) -> GeobuffertriangleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_buffer_copy(s : GeobuffertriangleBuffer) -> GeobuffertriangleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleBuffer::copy(self : GeobuffertriangleBuffer) -> GeobuffertriangleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_buffer_fill(s : GeobuffertriangleBuffer, v : Double) -> GeobuffertriangleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleBuffer::fill(self : GeobuffertriangleBuffer, v : Double) -> GeobuffertriangleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_buffer_min(s : GeobuffertriangleBuffer) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleBuffer::min(self : GeobuffertriangleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_buffer_max(s : GeobuffertriangleBuffer) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleBuffer::max(self : GeobuffertriangleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_buffer_to_string(s : GeobuffertriangleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleBuffer::to_string(self : GeobuffertriangleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleCursor {
@@ -861,45 +861,45 @@ pub fn geo_buffer_triangle_cursor_make(size : Int) -> GeobuffertriangleCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_cursor_len(s : GeobuffertriangleCursor) -> Int { s.size }
+pub fn GeobuffertriangleCursor::len(self : GeobuffertriangleCursor) -> Int { self.size }
 
-pub fn geo_buffer_triangle_cursor_get(s : GeobuffertriangleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleCursor::get(self : GeobuffertriangleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_cursor_set(s : GeobuffertriangleCursor, i : Int, v : Double) -> GeobuffertriangleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCursor::set(self : GeobuffertriangleCursor, i : Int, v : Double) -> GeobuffertriangleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cursor_sum(s : GeobuffertriangleCursor) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleCursor::sum(self : GeobuffertriangleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_cursor_mean(s : GeobuffertriangleCursor) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleCursor::mean(self : GeobuffertriangleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_cursor_scale(s : GeobuffertriangleCursor, f : Double) -> GeobuffertriangleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCursor::scale(self : GeobuffertriangleCursor, f : Double) -> GeobuffertriangleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cursor_add(a : GeobuffertriangleCursor, b : GeobuffertriangleCursor) -> GeobuffertriangleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleCursor::add(self : GeobuffertriangleCursor, other : GeobuffertriangleCursor) -> GeobuffertriangleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cursor_copy(s : GeobuffertriangleCursor) -> GeobuffertriangleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCursor::copy(self : GeobuffertriangleCursor) -> GeobuffertriangleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cursor_fill(s : GeobuffertriangleCursor, v : Double) -> GeobuffertriangleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleCursor::fill(self : GeobuffertriangleCursor, v : Double) -> GeobuffertriangleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_cursor_min(s : GeobuffertriangleCursor) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleCursor::min(self : GeobuffertriangleCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_cursor_max(s : GeobuffertriangleCursor) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleCursor::max(self : GeobuffertriangleCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_cursor_to_string(s : GeobuffertriangleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleCursor::to_string(self : GeobuffertriangleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleView {
@@ -912,45 +912,45 @@ pub fn geo_buffer_triangle_view_make(size : Int) -> GeobuffertriangleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_view_len(s : GeobuffertriangleView) -> Int { s.size }
+pub fn GeobuffertriangleView::len(self : GeobuffertriangleView) -> Int { self.size }
 
-pub fn geo_buffer_triangle_view_get(s : GeobuffertriangleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleView::get(self : GeobuffertriangleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_view_set(s : GeobuffertriangleView, i : Int, v : Double) -> GeobuffertriangleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleView::set(self : GeobuffertriangleView, i : Int, v : Double) -> GeobuffertriangleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_view_sum(s : GeobuffertriangleView) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleView::sum(self : GeobuffertriangleView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_view_mean(s : GeobuffertriangleView) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleView::mean(self : GeobuffertriangleView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_view_scale(s : GeobuffertriangleView, f : Double) -> GeobuffertriangleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleView::scale(self : GeobuffertriangleView, f : Double) -> GeobuffertriangleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_view_add(a : GeobuffertriangleView, b : GeobuffertriangleView) -> GeobuffertriangleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleView::add(self : GeobuffertriangleView, other : GeobuffertriangleView) -> GeobuffertriangleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_view_copy(s : GeobuffertriangleView) -> GeobuffertriangleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleView::copy(self : GeobuffertriangleView) -> GeobuffertriangleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_view_fill(s : GeobuffertriangleView, v : Double) -> GeobuffertriangleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleView::fill(self : GeobuffertriangleView, v : Double) -> GeobuffertriangleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_view_min(s : GeobuffertriangleView) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleView::min(self : GeobuffertriangleView) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_view_max(s : GeobuffertriangleView) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleView::max(self : GeobuffertriangleView) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_view_to_string(s : GeobuffertriangleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleView::to_string(self : GeobuffertriangleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleRange {
@@ -963,45 +963,45 @@ pub fn geo_buffer_triangle_range_make(size : Int) -> GeobuffertriangleRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_range_len(s : GeobuffertriangleRange) -> Int { s.size }
+pub fn GeobuffertriangleRange::len(self : GeobuffertriangleRange) -> Int { self.size }
 
-pub fn geo_buffer_triangle_range_get(s : GeobuffertriangleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleRange::get(self : GeobuffertriangleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_range_set(s : GeobuffertriangleRange, i : Int, v : Double) -> GeobuffertriangleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleRange::set(self : GeobuffertriangleRange, i : Int, v : Double) -> GeobuffertriangleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_range_sum(s : GeobuffertriangleRange) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleRange::sum(self : GeobuffertriangleRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_range_mean(s : GeobuffertriangleRange) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleRange::mean(self : GeobuffertriangleRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_range_scale(s : GeobuffertriangleRange, f : Double) -> GeobuffertriangleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleRange::scale(self : GeobuffertriangleRange, f : Double) -> GeobuffertriangleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_range_add(a : GeobuffertriangleRange, b : GeobuffertriangleRange) -> GeobuffertriangleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleRange::add(self : GeobuffertriangleRange, other : GeobuffertriangleRange) -> GeobuffertriangleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_range_copy(s : GeobuffertriangleRange) -> GeobuffertriangleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleRange::copy(self : GeobuffertriangleRange) -> GeobuffertriangleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_range_fill(s : GeobuffertriangleRange, v : Double) -> GeobuffertriangleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleRange::fill(self : GeobuffertriangleRange, v : Double) -> GeobuffertriangleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_range_min(s : GeobuffertriangleRange) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleRange::min(self : GeobuffertriangleRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_range_max(s : GeobuffertriangleRange) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleRange::max(self : GeobuffertriangleRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_range_to_string(s : GeobuffertriangleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleRange::to_string(self : GeobuffertriangleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffertriangleSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_buffer_triangle_slice_make(size : Int) -> GeobuffertriangleSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_triangle_slice_len(s : GeobuffertriangleSlice) -> Int { s.size }
+pub fn GeobuffertriangleSlice::len(self : GeobuffertriangleSlice) -> Int { self.size }
 
-pub fn geo_buffer_triangle_slice_get(s : GeobuffertriangleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffertriangleSlice::get(self : GeobuffertriangleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_triangle_slice_set(s : GeobuffertriangleSlice, i : Int, v : Double) -> GeobuffertriangleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffertriangleSlice::set(self : GeobuffertriangleSlice, i : Int, v : Double) -> GeobuffertriangleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_slice_sum(s : GeobuffertriangleSlice) -> Double { @_common.sum(s.data) }
+pub fn GeobuffertriangleSlice::sum(self : GeobuffertriangleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_triangle_slice_mean(s : GeobuffertriangleSlice) -> Double { @_common.mean(s.data) }
+pub fn GeobuffertriangleSlice::mean(self : GeobuffertriangleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_triangle_slice_scale(s : GeobuffertriangleSlice, f : Double) -> GeobuffertriangleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleSlice::scale(self : GeobuffertriangleSlice, f : Double) -> GeobuffertriangleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_slice_add(a : GeobuffertriangleSlice, b : GeobuffertriangleSlice) -> GeobuffertriangleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffertriangleSlice::add(self : GeobuffertriangleSlice, other : GeobuffertriangleSlice) -> GeobuffertriangleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_slice_copy(s : GeobuffertriangleSlice) -> GeobuffertriangleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleSlice::copy(self : GeobuffertriangleSlice) -> GeobuffertriangleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_slice_fill(s : GeobuffertriangleSlice, v : Double) -> GeobuffertriangleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffertriangleSlice::fill(self : GeobuffertriangleSlice, v : Double) -> GeobuffertriangleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_triangle_slice_min(s : GeobuffertriangleSlice) -> Double { @_common.min(s.data) }
+pub fn GeobuffertriangleSlice::min(self : GeobuffertriangleSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_triangle_slice_max(s : GeobuffertriangleSlice) -> Double { @_common.max(s.data) }
+pub fn GeobuffertriangleSlice::max(self : GeobuffertriangleSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_triangle_slice_to_string(s : GeobuffertriangleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffertriangleSlice::to_string(self : GeobuffertriangleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

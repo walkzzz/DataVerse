@@ -351,45 +351,45 @@ pub fn ml_metric_interpret_frame_make(size : Int) -> MlmetricinterpretFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_frame_len(s : MlmetricinterpretFrame) -> Int { s.size }
+pub fn MlmetricinterpretFrame::len(self : MlmetricinterpretFrame) -> Int { self.size }
 
-pub fn ml_metric_interpret_frame_get(s : MlmetricinterpretFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretFrame::get(self : MlmetricinterpretFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_frame_set(s : MlmetricinterpretFrame, i : Int, v : Double) -> MlmetricinterpretFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretFrame::set(self : MlmetricinterpretFrame, i : Int, v : Double) -> MlmetricinterpretFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_frame_sum(s : MlmetricinterpretFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretFrame::sum(self : MlmetricinterpretFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_frame_mean(s : MlmetricinterpretFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretFrame::mean(self : MlmetricinterpretFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_frame_scale(s : MlmetricinterpretFrame, f : Double) -> MlmetricinterpretFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretFrame::scale(self : MlmetricinterpretFrame, f : Double) -> MlmetricinterpretFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_frame_add(a : MlmetricinterpretFrame, b : MlmetricinterpretFrame) -> MlmetricinterpretFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretFrame::add(self : MlmetricinterpretFrame, other : MlmetricinterpretFrame) -> MlmetricinterpretFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_frame_copy(s : MlmetricinterpretFrame) -> MlmetricinterpretFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretFrame::copy(self : MlmetricinterpretFrame) -> MlmetricinterpretFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_frame_fill(s : MlmetricinterpretFrame, v : Double) -> MlmetricinterpretFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretFrame::fill(self : MlmetricinterpretFrame, v : Double) -> MlmetricinterpretFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_frame_min(s : MlmetricinterpretFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretFrame::min(self : MlmetricinterpretFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_frame_max(s : MlmetricinterpretFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretFrame::max(self : MlmetricinterpretFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_frame_to_string(s : MlmetricinterpretFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretFrame::to_string(self : MlmetricinterpretFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_interpret_table_make(size : Int) -> MlmetricinterpretTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_table_len(s : MlmetricinterpretTable) -> Int { s.size }
+pub fn MlmetricinterpretTable::len(self : MlmetricinterpretTable) -> Int { self.size }
 
-pub fn ml_metric_interpret_table_get(s : MlmetricinterpretTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretTable::get(self : MlmetricinterpretTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_table_set(s : MlmetricinterpretTable, i : Int, v : Double) -> MlmetricinterpretTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretTable::set(self : MlmetricinterpretTable, i : Int, v : Double) -> MlmetricinterpretTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_table_sum(s : MlmetricinterpretTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretTable::sum(self : MlmetricinterpretTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_table_mean(s : MlmetricinterpretTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretTable::mean(self : MlmetricinterpretTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_table_scale(s : MlmetricinterpretTable, f : Double) -> MlmetricinterpretTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretTable::scale(self : MlmetricinterpretTable, f : Double) -> MlmetricinterpretTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_table_add(a : MlmetricinterpretTable, b : MlmetricinterpretTable) -> MlmetricinterpretTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretTable::add(self : MlmetricinterpretTable, other : MlmetricinterpretTable) -> MlmetricinterpretTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_table_copy(s : MlmetricinterpretTable) -> MlmetricinterpretTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretTable::copy(self : MlmetricinterpretTable) -> MlmetricinterpretTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_table_fill(s : MlmetricinterpretTable, v : Double) -> MlmetricinterpretTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretTable::fill(self : MlmetricinterpretTable, v : Double) -> MlmetricinterpretTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_table_min(s : MlmetricinterpretTable) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretTable::min(self : MlmetricinterpretTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_table_max(s : MlmetricinterpretTable) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretTable::max(self : MlmetricinterpretTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_table_to_string(s : MlmetricinterpretTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretTable::to_string(self : MlmetricinterpretTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_interpret_graphn_make(size : Int) -> MlmetricinterpretGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_graphn_len(s : MlmetricinterpretGraphN) -> Int { s.size }
+pub fn MlmetricinterpretGraphN::len(self : MlmetricinterpretGraphN) -> Int { self.size }
 
-pub fn ml_metric_interpret_graphn_get(s : MlmetricinterpretGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretGraphN::get(self : MlmetricinterpretGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_graphn_set(s : MlmetricinterpretGraphN, i : Int, v : Double) -> MlmetricinterpretGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretGraphN::set(self : MlmetricinterpretGraphN, i : Int, v : Double) -> MlmetricinterpretGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_graphn_sum(s : MlmetricinterpretGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretGraphN::sum(self : MlmetricinterpretGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_graphn_mean(s : MlmetricinterpretGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretGraphN::mean(self : MlmetricinterpretGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_graphn_scale(s : MlmetricinterpretGraphN, f : Double) -> MlmetricinterpretGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretGraphN::scale(self : MlmetricinterpretGraphN, f : Double) -> MlmetricinterpretGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_graphn_add(a : MlmetricinterpretGraphN, b : MlmetricinterpretGraphN) -> MlmetricinterpretGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretGraphN::add(self : MlmetricinterpretGraphN, other : MlmetricinterpretGraphN) -> MlmetricinterpretGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_graphn_copy(s : MlmetricinterpretGraphN) -> MlmetricinterpretGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretGraphN::copy(self : MlmetricinterpretGraphN) -> MlmetricinterpretGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_graphn_fill(s : MlmetricinterpretGraphN, v : Double) -> MlmetricinterpretGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretGraphN::fill(self : MlmetricinterpretGraphN, v : Double) -> MlmetricinterpretGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_graphn_min(s : MlmetricinterpretGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretGraphN::min(self : MlmetricinterpretGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_graphn_max(s : MlmetricinterpretGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretGraphN::max(self : MlmetricinterpretGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_graphn_to_string(s : MlmetricinterpretGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretGraphN::to_string(self : MlmetricinterpretGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_interpret_node_make(size : Int) -> MlmetricinterpretNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_node_len(s : MlmetricinterpretNode) -> Int { s.size }
+pub fn MlmetricinterpretNode::len(self : MlmetricinterpretNode) -> Int { self.size }
 
-pub fn ml_metric_interpret_node_get(s : MlmetricinterpretNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretNode::get(self : MlmetricinterpretNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_node_set(s : MlmetricinterpretNode, i : Int, v : Double) -> MlmetricinterpretNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretNode::set(self : MlmetricinterpretNode, i : Int, v : Double) -> MlmetricinterpretNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_node_sum(s : MlmetricinterpretNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretNode::sum(self : MlmetricinterpretNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_node_mean(s : MlmetricinterpretNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretNode::mean(self : MlmetricinterpretNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_node_scale(s : MlmetricinterpretNode, f : Double) -> MlmetricinterpretNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretNode::scale(self : MlmetricinterpretNode, f : Double) -> MlmetricinterpretNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_node_add(a : MlmetricinterpretNode, b : MlmetricinterpretNode) -> MlmetricinterpretNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretNode::add(self : MlmetricinterpretNode, other : MlmetricinterpretNode) -> MlmetricinterpretNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_node_copy(s : MlmetricinterpretNode) -> MlmetricinterpretNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretNode::copy(self : MlmetricinterpretNode) -> MlmetricinterpretNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_node_fill(s : MlmetricinterpretNode, v : Double) -> MlmetricinterpretNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretNode::fill(self : MlmetricinterpretNode, v : Double) -> MlmetricinterpretNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_node_min(s : MlmetricinterpretNode) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretNode::min(self : MlmetricinterpretNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_node_max(s : MlmetricinterpretNode) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretNode::max(self : MlmetricinterpretNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_node_to_string(s : MlmetricinterpretNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretNode::to_string(self : MlmetricinterpretNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_interpret_edge_make(size : Int) -> MlmetricinterpretEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_edge_len(s : MlmetricinterpretEdge) -> Int { s.size }
+pub fn MlmetricinterpretEdge::len(self : MlmetricinterpretEdge) -> Int { self.size }
 
-pub fn ml_metric_interpret_edge_get(s : MlmetricinterpretEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretEdge::get(self : MlmetricinterpretEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_edge_set(s : MlmetricinterpretEdge, i : Int, v : Double) -> MlmetricinterpretEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretEdge::set(self : MlmetricinterpretEdge, i : Int, v : Double) -> MlmetricinterpretEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_edge_sum(s : MlmetricinterpretEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretEdge::sum(self : MlmetricinterpretEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_edge_mean(s : MlmetricinterpretEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretEdge::mean(self : MlmetricinterpretEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_edge_scale(s : MlmetricinterpretEdge, f : Double) -> MlmetricinterpretEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretEdge::scale(self : MlmetricinterpretEdge, f : Double) -> MlmetricinterpretEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_edge_add(a : MlmetricinterpretEdge, b : MlmetricinterpretEdge) -> MlmetricinterpretEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretEdge::add(self : MlmetricinterpretEdge, other : MlmetricinterpretEdge) -> MlmetricinterpretEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_edge_copy(s : MlmetricinterpretEdge) -> MlmetricinterpretEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretEdge::copy(self : MlmetricinterpretEdge) -> MlmetricinterpretEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_edge_fill(s : MlmetricinterpretEdge, v : Double) -> MlmetricinterpretEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretEdge::fill(self : MlmetricinterpretEdge, v : Double) -> MlmetricinterpretEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_edge_min(s : MlmetricinterpretEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretEdge::min(self : MlmetricinterpretEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_edge_max(s : MlmetricinterpretEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretEdge::max(self : MlmetricinterpretEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_edge_to_string(s : MlmetricinterpretEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretEdge::to_string(self : MlmetricinterpretEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_interpret_path_make(size : Int) -> MlmetricinterpretPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_path_len(s : MlmetricinterpretPath) -> Int { s.size }
+pub fn MlmetricinterpretPath::len(self : MlmetricinterpretPath) -> Int { self.size }
 
-pub fn ml_metric_interpret_path_get(s : MlmetricinterpretPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretPath::get(self : MlmetricinterpretPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_path_set(s : MlmetricinterpretPath, i : Int, v : Double) -> MlmetricinterpretPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretPath::set(self : MlmetricinterpretPath, i : Int, v : Double) -> MlmetricinterpretPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_path_sum(s : MlmetricinterpretPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretPath::sum(self : MlmetricinterpretPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_path_mean(s : MlmetricinterpretPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretPath::mean(self : MlmetricinterpretPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_path_scale(s : MlmetricinterpretPath, f : Double) -> MlmetricinterpretPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretPath::scale(self : MlmetricinterpretPath, f : Double) -> MlmetricinterpretPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_path_add(a : MlmetricinterpretPath, b : MlmetricinterpretPath) -> MlmetricinterpretPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretPath::add(self : MlmetricinterpretPath, other : MlmetricinterpretPath) -> MlmetricinterpretPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_path_copy(s : MlmetricinterpretPath) -> MlmetricinterpretPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretPath::copy(self : MlmetricinterpretPath) -> MlmetricinterpretPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_path_fill(s : MlmetricinterpretPath, v : Double) -> MlmetricinterpretPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretPath::fill(self : MlmetricinterpretPath, v : Double) -> MlmetricinterpretPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_path_min(s : MlmetricinterpretPath) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretPath::min(self : MlmetricinterpretPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_path_max(s : MlmetricinterpretPath) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretPath::max(self : MlmetricinterpretPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_path_to_string(s : MlmetricinterpretPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretPath::to_string(self : MlmetricinterpretPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_interpret_cluster_make(size : Int) -> MlmetricinterpretCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_cluster_len(s : MlmetricinterpretCluster) -> Int { s.size }
+pub fn MlmetricinterpretCluster::len(self : MlmetricinterpretCluster) -> Int { self.size }
 
-pub fn ml_metric_interpret_cluster_get(s : MlmetricinterpretCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretCluster::get(self : MlmetricinterpretCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_cluster_set(s : MlmetricinterpretCluster, i : Int, v : Double) -> MlmetricinterpretCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCluster::set(self : MlmetricinterpretCluster, i : Int, v : Double) -> MlmetricinterpretCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cluster_sum(s : MlmetricinterpretCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretCluster::sum(self : MlmetricinterpretCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_cluster_mean(s : MlmetricinterpretCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretCluster::mean(self : MlmetricinterpretCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_cluster_scale(s : MlmetricinterpretCluster, f : Double) -> MlmetricinterpretCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCluster::scale(self : MlmetricinterpretCluster, f : Double) -> MlmetricinterpretCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cluster_add(a : MlmetricinterpretCluster, b : MlmetricinterpretCluster) -> MlmetricinterpretCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretCluster::add(self : MlmetricinterpretCluster, other : MlmetricinterpretCluster) -> MlmetricinterpretCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cluster_copy(s : MlmetricinterpretCluster) -> MlmetricinterpretCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCluster::copy(self : MlmetricinterpretCluster) -> MlmetricinterpretCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cluster_fill(s : MlmetricinterpretCluster, v : Double) -> MlmetricinterpretCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCluster::fill(self : MlmetricinterpretCluster, v : Double) -> MlmetricinterpretCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cluster_min(s : MlmetricinterpretCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretCluster::min(self : MlmetricinterpretCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_cluster_max(s : MlmetricinterpretCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretCluster::max(self : MlmetricinterpretCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_cluster_to_string(s : MlmetricinterpretCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretCluster::to_string(self : MlmetricinterpretCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_interpret_model_make(size : Int) -> MlmetricinterpretModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_model_len(s : MlmetricinterpretModel) -> Int { s.size }
+pub fn MlmetricinterpretModel::len(self : MlmetricinterpretModel) -> Int { self.size }
 
-pub fn ml_metric_interpret_model_get(s : MlmetricinterpretModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretModel::get(self : MlmetricinterpretModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_model_set(s : MlmetricinterpretModel, i : Int, v : Double) -> MlmetricinterpretModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretModel::set(self : MlmetricinterpretModel, i : Int, v : Double) -> MlmetricinterpretModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_model_sum(s : MlmetricinterpretModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretModel::sum(self : MlmetricinterpretModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_model_mean(s : MlmetricinterpretModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretModel::mean(self : MlmetricinterpretModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_model_scale(s : MlmetricinterpretModel, f : Double) -> MlmetricinterpretModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretModel::scale(self : MlmetricinterpretModel, f : Double) -> MlmetricinterpretModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_model_add(a : MlmetricinterpretModel, b : MlmetricinterpretModel) -> MlmetricinterpretModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretModel::add(self : MlmetricinterpretModel, other : MlmetricinterpretModel) -> MlmetricinterpretModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_model_copy(s : MlmetricinterpretModel) -> MlmetricinterpretModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretModel::copy(self : MlmetricinterpretModel) -> MlmetricinterpretModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_model_fill(s : MlmetricinterpretModel, v : Double) -> MlmetricinterpretModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretModel::fill(self : MlmetricinterpretModel, v : Double) -> MlmetricinterpretModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_model_min(s : MlmetricinterpretModel) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretModel::min(self : MlmetricinterpretModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_model_max(s : MlmetricinterpretModel) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretModel::max(self : MlmetricinterpretModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_model_to_string(s : MlmetricinterpretModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretModel::to_string(self : MlmetricinterpretModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_interpret_layer_make(size : Int) -> MlmetricinterpretLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_layer_len(s : MlmetricinterpretLayer) -> Int { s.size }
+pub fn MlmetricinterpretLayer::len(self : MlmetricinterpretLayer) -> Int { self.size }
 
-pub fn ml_metric_interpret_layer_get(s : MlmetricinterpretLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretLayer::get(self : MlmetricinterpretLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_layer_set(s : MlmetricinterpretLayer, i : Int, v : Double) -> MlmetricinterpretLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretLayer::set(self : MlmetricinterpretLayer, i : Int, v : Double) -> MlmetricinterpretLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_layer_sum(s : MlmetricinterpretLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretLayer::sum(self : MlmetricinterpretLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_layer_mean(s : MlmetricinterpretLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretLayer::mean(self : MlmetricinterpretLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_layer_scale(s : MlmetricinterpretLayer, f : Double) -> MlmetricinterpretLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretLayer::scale(self : MlmetricinterpretLayer, f : Double) -> MlmetricinterpretLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_layer_add(a : MlmetricinterpretLayer, b : MlmetricinterpretLayer) -> MlmetricinterpretLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretLayer::add(self : MlmetricinterpretLayer, other : MlmetricinterpretLayer) -> MlmetricinterpretLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_layer_copy(s : MlmetricinterpretLayer) -> MlmetricinterpretLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretLayer::copy(self : MlmetricinterpretLayer) -> MlmetricinterpretLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_layer_fill(s : MlmetricinterpretLayer, v : Double) -> MlmetricinterpretLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretLayer::fill(self : MlmetricinterpretLayer, v : Double) -> MlmetricinterpretLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_layer_min(s : MlmetricinterpretLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretLayer::min(self : MlmetricinterpretLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_layer_max(s : MlmetricinterpretLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretLayer::max(self : MlmetricinterpretLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_layer_to_string(s : MlmetricinterpretLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretLayer::to_string(self : MlmetricinterpretLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_interpret_buffer_make(size : Int) -> MlmetricinterpretBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_buffer_len(s : MlmetricinterpretBuffer) -> Int { s.size }
+pub fn MlmetricinterpretBuffer::len(self : MlmetricinterpretBuffer) -> Int { self.size }
 
-pub fn ml_metric_interpret_buffer_get(s : MlmetricinterpretBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretBuffer::get(self : MlmetricinterpretBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_buffer_set(s : MlmetricinterpretBuffer, i : Int, v : Double) -> MlmetricinterpretBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretBuffer::set(self : MlmetricinterpretBuffer, i : Int, v : Double) -> MlmetricinterpretBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_buffer_sum(s : MlmetricinterpretBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretBuffer::sum(self : MlmetricinterpretBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_buffer_mean(s : MlmetricinterpretBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretBuffer::mean(self : MlmetricinterpretBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_buffer_scale(s : MlmetricinterpretBuffer, f : Double) -> MlmetricinterpretBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretBuffer::scale(self : MlmetricinterpretBuffer, f : Double) -> MlmetricinterpretBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_buffer_add(a : MlmetricinterpretBuffer, b : MlmetricinterpretBuffer) -> MlmetricinterpretBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretBuffer::add(self : MlmetricinterpretBuffer, other : MlmetricinterpretBuffer) -> MlmetricinterpretBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_buffer_copy(s : MlmetricinterpretBuffer) -> MlmetricinterpretBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretBuffer::copy(self : MlmetricinterpretBuffer) -> MlmetricinterpretBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_buffer_fill(s : MlmetricinterpretBuffer, v : Double) -> MlmetricinterpretBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretBuffer::fill(self : MlmetricinterpretBuffer, v : Double) -> MlmetricinterpretBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_buffer_min(s : MlmetricinterpretBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretBuffer::min(self : MlmetricinterpretBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_buffer_max(s : MlmetricinterpretBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretBuffer::max(self : MlmetricinterpretBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_buffer_to_string(s : MlmetricinterpretBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretBuffer::to_string(self : MlmetricinterpretBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_interpret_cursor_make(size : Int) -> MlmetricinterpretCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_cursor_len(s : MlmetricinterpretCursor) -> Int { s.size }
+pub fn MlmetricinterpretCursor::len(self : MlmetricinterpretCursor) -> Int { self.size }
 
-pub fn ml_metric_interpret_cursor_get(s : MlmetricinterpretCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretCursor::get(self : MlmetricinterpretCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_cursor_set(s : MlmetricinterpretCursor, i : Int, v : Double) -> MlmetricinterpretCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCursor::set(self : MlmetricinterpretCursor, i : Int, v : Double) -> MlmetricinterpretCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cursor_sum(s : MlmetricinterpretCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretCursor::sum(self : MlmetricinterpretCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_cursor_mean(s : MlmetricinterpretCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretCursor::mean(self : MlmetricinterpretCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_cursor_scale(s : MlmetricinterpretCursor, f : Double) -> MlmetricinterpretCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCursor::scale(self : MlmetricinterpretCursor, f : Double) -> MlmetricinterpretCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cursor_add(a : MlmetricinterpretCursor, b : MlmetricinterpretCursor) -> MlmetricinterpretCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretCursor::add(self : MlmetricinterpretCursor, other : MlmetricinterpretCursor) -> MlmetricinterpretCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cursor_copy(s : MlmetricinterpretCursor) -> MlmetricinterpretCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCursor::copy(self : MlmetricinterpretCursor) -> MlmetricinterpretCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cursor_fill(s : MlmetricinterpretCursor, v : Double) -> MlmetricinterpretCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretCursor::fill(self : MlmetricinterpretCursor, v : Double) -> MlmetricinterpretCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_cursor_min(s : MlmetricinterpretCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretCursor::min(self : MlmetricinterpretCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_cursor_max(s : MlmetricinterpretCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretCursor::max(self : MlmetricinterpretCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_cursor_to_string(s : MlmetricinterpretCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretCursor::to_string(self : MlmetricinterpretCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretView {
@@ -912,45 +912,45 @@ pub fn ml_metric_interpret_view_make(size : Int) -> MlmetricinterpretView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_view_len(s : MlmetricinterpretView) -> Int { s.size }
+pub fn MlmetricinterpretView::len(self : MlmetricinterpretView) -> Int { self.size }
 
-pub fn ml_metric_interpret_view_get(s : MlmetricinterpretView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretView::get(self : MlmetricinterpretView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_view_set(s : MlmetricinterpretView, i : Int, v : Double) -> MlmetricinterpretView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretView::set(self : MlmetricinterpretView, i : Int, v : Double) -> MlmetricinterpretView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_view_sum(s : MlmetricinterpretView) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretView::sum(self : MlmetricinterpretView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_view_mean(s : MlmetricinterpretView) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretView::mean(self : MlmetricinterpretView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_view_scale(s : MlmetricinterpretView, f : Double) -> MlmetricinterpretView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretView::scale(self : MlmetricinterpretView, f : Double) -> MlmetricinterpretView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_view_add(a : MlmetricinterpretView, b : MlmetricinterpretView) -> MlmetricinterpretView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretView::add(self : MlmetricinterpretView, other : MlmetricinterpretView) -> MlmetricinterpretView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_view_copy(s : MlmetricinterpretView) -> MlmetricinterpretView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretView::copy(self : MlmetricinterpretView) -> MlmetricinterpretView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_view_fill(s : MlmetricinterpretView, v : Double) -> MlmetricinterpretView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretView::fill(self : MlmetricinterpretView, v : Double) -> MlmetricinterpretView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_view_min(s : MlmetricinterpretView) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretView::min(self : MlmetricinterpretView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_view_max(s : MlmetricinterpretView) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretView::max(self : MlmetricinterpretView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_view_to_string(s : MlmetricinterpretView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretView::to_string(self : MlmetricinterpretView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_interpret_range_make(size : Int) -> MlmetricinterpretRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_range_len(s : MlmetricinterpretRange) -> Int { s.size }
+pub fn MlmetricinterpretRange::len(self : MlmetricinterpretRange) -> Int { self.size }
 
-pub fn ml_metric_interpret_range_get(s : MlmetricinterpretRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretRange::get(self : MlmetricinterpretRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_range_set(s : MlmetricinterpretRange, i : Int, v : Double) -> MlmetricinterpretRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretRange::set(self : MlmetricinterpretRange, i : Int, v : Double) -> MlmetricinterpretRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_range_sum(s : MlmetricinterpretRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretRange::sum(self : MlmetricinterpretRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_range_mean(s : MlmetricinterpretRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretRange::mean(self : MlmetricinterpretRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_range_scale(s : MlmetricinterpretRange, f : Double) -> MlmetricinterpretRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretRange::scale(self : MlmetricinterpretRange, f : Double) -> MlmetricinterpretRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_range_add(a : MlmetricinterpretRange, b : MlmetricinterpretRange) -> MlmetricinterpretRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretRange::add(self : MlmetricinterpretRange, other : MlmetricinterpretRange) -> MlmetricinterpretRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_range_copy(s : MlmetricinterpretRange) -> MlmetricinterpretRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretRange::copy(self : MlmetricinterpretRange) -> MlmetricinterpretRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_range_fill(s : MlmetricinterpretRange, v : Double) -> MlmetricinterpretRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretRange::fill(self : MlmetricinterpretRange, v : Double) -> MlmetricinterpretRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_range_min(s : MlmetricinterpretRange) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretRange::min(self : MlmetricinterpretRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_range_max(s : MlmetricinterpretRange) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretRange::max(self : MlmetricinterpretRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_range_to_string(s : MlmetricinterpretRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretRange::to_string(self : MlmetricinterpretRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricinterpretSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_interpret_slice_make(size : Int) -> MlmetricinterpretSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_interpret_slice_len(s : MlmetricinterpretSlice) -> Int { s.size }
+pub fn MlmetricinterpretSlice::len(self : MlmetricinterpretSlice) -> Int { self.size }
 
-pub fn ml_metric_interpret_slice_get(s : MlmetricinterpretSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricinterpretSlice::get(self : MlmetricinterpretSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_interpret_slice_set(s : MlmetricinterpretSlice, i : Int, v : Double) -> MlmetricinterpretSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricinterpretSlice::set(self : MlmetricinterpretSlice, i : Int, v : Double) -> MlmetricinterpretSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_slice_sum(s : MlmetricinterpretSlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetricinterpretSlice::sum(self : MlmetricinterpretSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_interpret_slice_mean(s : MlmetricinterpretSlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetricinterpretSlice::mean(self : MlmetricinterpretSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_interpret_slice_scale(s : MlmetricinterpretSlice, f : Double) -> MlmetricinterpretSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretSlice::scale(self : MlmetricinterpretSlice, f : Double) -> MlmetricinterpretSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_slice_add(a : MlmetricinterpretSlice, b : MlmetricinterpretSlice) -> MlmetricinterpretSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricinterpretSlice::add(self : MlmetricinterpretSlice, other : MlmetricinterpretSlice) -> MlmetricinterpretSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_slice_copy(s : MlmetricinterpretSlice) -> MlmetricinterpretSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretSlice::copy(self : MlmetricinterpretSlice) -> MlmetricinterpretSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_slice_fill(s : MlmetricinterpretSlice, v : Double) -> MlmetricinterpretSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricinterpretSlice::fill(self : MlmetricinterpretSlice, v : Double) -> MlmetricinterpretSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_interpret_slice_min(s : MlmetricinterpretSlice) -> Double { @_common.min(s.data) }
+pub fn MlmetricinterpretSlice::min(self : MlmetricinterpretSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_interpret_slice_max(s : MlmetricinterpretSlice) -> Double { @_common.max(s.data) }
+pub fn MlmetricinterpretSlice::max(self : MlmetricinterpretSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_interpret_slice_to_string(s : MlmetricinterpretSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricinterpretSlice::to_string(self : MlmetricinterpretSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

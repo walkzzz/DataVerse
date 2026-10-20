@@ -351,45 +351,45 @@ pub fn chem_desc_geometric_frame_make(size : Int) -> ChemdescgeometricFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_frame_len(s : ChemdescgeometricFrame) -> Int { s.size }
+pub fn ChemdescgeometricFrame::len(self : ChemdescgeometricFrame) -> Int { self.size }
 
-pub fn chem_desc_geometric_frame_get(s : ChemdescgeometricFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricFrame::get(self : ChemdescgeometricFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_frame_set(s : ChemdescgeometricFrame, i : Int, v : Double) -> ChemdescgeometricFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricFrame::set(self : ChemdescgeometricFrame, i : Int, v : Double) -> ChemdescgeometricFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_frame_sum(s : ChemdescgeometricFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricFrame::sum(self : ChemdescgeometricFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_frame_mean(s : ChemdescgeometricFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricFrame::mean(self : ChemdescgeometricFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_frame_scale(s : ChemdescgeometricFrame, f : Double) -> ChemdescgeometricFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricFrame::scale(self : ChemdescgeometricFrame, f : Double) -> ChemdescgeometricFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_frame_add(a : ChemdescgeometricFrame, b : ChemdescgeometricFrame) -> ChemdescgeometricFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricFrame::add(self : ChemdescgeometricFrame, other : ChemdescgeometricFrame) -> ChemdescgeometricFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_frame_copy(s : ChemdescgeometricFrame) -> ChemdescgeometricFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricFrame::copy(self : ChemdescgeometricFrame) -> ChemdescgeometricFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_frame_fill(s : ChemdescgeometricFrame, v : Double) -> ChemdescgeometricFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricFrame::fill(self : ChemdescgeometricFrame, v : Double) -> ChemdescgeometricFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_frame_min(s : ChemdescgeometricFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricFrame::min(self : ChemdescgeometricFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_frame_max(s : ChemdescgeometricFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricFrame::max(self : ChemdescgeometricFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_frame_to_string(s : ChemdescgeometricFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricFrame::to_string(self : ChemdescgeometricFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_geometric_table_make(size : Int) -> ChemdescgeometricTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_table_len(s : ChemdescgeometricTable) -> Int { s.size }
+pub fn ChemdescgeometricTable::len(self : ChemdescgeometricTable) -> Int { self.size }
 
-pub fn chem_desc_geometric_table_get(s : ChemdescgeometricTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricTable::get(self : ChemdescgeometricTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_table_set(s : ChemdescgeometricTable, i : Int, v : Double) -> ChemdescgeometricTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricTable::set(self : ChemdescgeometricTable, i : Int, v : Double) -> ChemdescgeometricTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_table_sum(s : ChemdescgeometricTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricTable::sum(self : ChemdescgeometricTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_table_mean(s : ChemdescgeometricTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricTable::mean(self : ChemdescgeometricTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_table_scale(s : ChemdescgeometricTable, f : Double) -> ChemdescgeometricTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricTable::scale(self : ChemdescgeometricTable, f : Double) -> ChemdescgeometricTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_table_add(a : ChemdescgeometricTable, b : ChemdescgeometricTable) -> ChemdescgeometricTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricTable::add(self : ChemdescgeometricTable, other : ChemdescgeometricTable) -> ChemdescgeometricTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_table_copy(s : ChemdescgeometricTable) -> ChemdescgeometricTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricTable::copy(self : ChemdescgeometricTable) -> ChemdescgeometricTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_table_fill(s : ChemdescgeometricTable, v : Double) -> ChemdescgeometricTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricTable::fill(self : ChemdescgeometricTable, v : Double) -> ChemdescgeometricTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_table_min(s : ChemdescgeometricTable) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricTable::min(self : ChemdescgeometricTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_table_max(s : ChemdescgeometricTable) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricTable::max(self : ChemdescgeometricTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_table_to_string(s : ChemdescgeometricTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricTable::to_string(self : ChemdescgeometricTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_geometric_graphn_make(size : Int) -> ChemdescgeometricGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_graphn_len(s : ChemdescgeometricGraphN) -> Int { s.size }
+pub fn ChemdescgeometricGraphN::len(self : ChemdescgeometricGraphN) -> Int { self.size }
 
-pub fn chem_desc_geometric_graphn_get(s : ChemdescgeometricGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricGraphN::get(self : ChemdescgeometricGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_graphn_set(s : ChemdescgeometricGraphN, i : Int, v : Double) -> ChemdescgeometricGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricGraphN::set(self : ChemdescgeometricGraphN, i : Int, v : Double) -> ChemdescgeometricGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_graphn_sum(s : ChemdescgeometricGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricGraphN::sum(self : ChemdescgeometricGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_graphn_mean(s : ChemdescgeometricGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricGraphN::mean(self : ChemdescgeometricGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_graphn_scale(s : ChemdescgeometricGraphN, f : Double) -> ChemdescgeometricGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricGraphN::scale(self : ChemdescgeometricGraphN, f : Double) -> ChemdescgeometricGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_graphn_add(a : ChemdescgeometricGraphN, b : ChemdescgeometricGraphN) -> ChemdescgeometricGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricGraphN::add(self : ChemdescgeometricGraphN, other : ChemdescgeometricGraphN) -> ChemdescgeometricGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_graphn_copy(s : ChemdescgeometricGraphN) -> ChemdescgeometricGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricGraphN::copy(self : ChemdescgeometricGraphN) -> ChemdescgeometricGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_graphn_fill(s : ChemdescgeometricGraphN, v : Double) -> ChemdescgeometricGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricGraphN::fill(self : ChemdescgeometricGraphN, v : Double) -> ChemdescgeometricGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_graphn_min(s : ChemdescgeometricGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricGraphN::min(self : ChemdescgeometricGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_graphn_max(s : ChemdescgeometricGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricGraphN::max(self : ChemdescgeometricGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_graphn_to_string(s : ChemdescgeometricGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricGraphN::to_string(self : ChemdescgeometricGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_geometric_node_make(size : Int) -> ChemdescgeometricNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_node_len(s : ChemdescgeometricNode) -> Int { s.size }
+pub fn ChemdescgeometricNode::len(self : ChemdescgeometricNode) -> Int { self.size }
 
-pub fn chem_desc_geometric_node_get(s : ChemdescgeometricNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricNode::get(self : ChemdescgeometricNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_node_set(s : ChemdescgeometricNode, i : Int, v : Double) -> ChemdescgeometricNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricNode::set(self : ChemdescgeometricNode, i : Int, v : Double) -> ChemdescgeometricNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_node_sum(s : ChemdescgeometricNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricNode::sum(self : ChemdescgeometricNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_node_mean(s : ChemdescgeometricNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricNode::mean(self : ChemdescgeometricNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_node_scale(s : ChemdescgeometricNode, f : Double) -> ChemdescgeometricNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricNode::scale(self : ChemdescgeometricNode, f : Double) -> ChemdescgeometricNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_node_add(a : ChemdescgeometricNode, b : ChemdescgeometricNode) -> ChemdescgeometricNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricNode::add(self : ChemdescgeometricNode, other : ChemdescgeometricNode) -> ChemdescgeometricNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_node_copy(s : ChemdescgeometricNode) -> ChemdescgeometricNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricNode::copy(self : ChemdescgeometricNode) -> ChemdescgeometricNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_node_fill(s : ChemdescgeometricNode, v : Double) -> ChemdescgeometricNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricNode::fill(self : ChemdescgeometricNode, v : Double) -> ChemdescgeometricNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_node_min(s : ChemdescgeometricNode) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricNode::min(self : ChemdescgeometricNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_node_max(s : ChemdescgeometricNode) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricNode::max(self : ChemdescgeometricNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_node_to_string(s : ChemdescgeometricNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricNode::to_string(self : ChemdescgeometricNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_geometric_edge_make(size : Int) -> ChemdescgeometricEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_edge_len(s : ChemdescgeometricEdge) -> Int { s.size }
+pub fn ChemdescgeometricEdge::len(self : ChemdescgeometricEdge) -> Int { self.size }
 
-pub fn chem_desc_geometric_edge_get(s : ChemdescgeometricEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricEdge::get(self : ChemdescgeometricEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_edge_set(s : ChemdescgeometricEdge, i : Int, v : Double) -> ChemdescgeometricEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricEdge::set(self : ChemdescgeometricEdge, i : Int, v : Double) -> ChemdescgeometricEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_edge_sum(s : ChemdescgeometricEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricEdge::sum(self : ChemdescgeometricEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_edge_mean(s : ChemdescgeometricEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricEdge::mean(self : ChemdescgeometricEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_edge_scale(s : ChemdescgeometricEdge, f : Double) -> ChemdescgeometricEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricEdge::scale(self : ChemdescgeometricEdge, f : Double) -> ChemdescgeometricEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_edge_add(a : ChemdescgeometricEdge, b : ChemdescgeometricEdge) -> ChemdescgeometricEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricEdge::add(self : ChemdescgeometricEdge, other : ChemdescgeometricEdge) -> ChemdescgeometricEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_edge_copy(s : ChemdescgeometricEdge) -> ChemdescgeometricEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricEdge::copy(self : ChemdescgeometricEdge) -> ChemdescgeometricEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_edge_fill(s : ChemdescgeometricEdge, v : Double) -> ChemdescgeometricEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricEdge::fill(self : ChemdescgeometricEdge, v : Double) -> ChemdescgeometricEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_edge_min(s : ChemdescgeometricEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricEdge::min(self : ChemdescgeometricEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_edge_max(s : ChemdescgeometricEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricEdge::max(self : ChemdescgeometricEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_edge_to_string(s : ChemdescgeometricEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricEdge::to_string(self : ChemdescgeometricEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_geometric_path_make(size : Int) -> ChemdescgeometricPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_path_len(s : ChemdescgeometricPath) -> Int { s.size }
+pub fn ChemdescgeometricPath::len(self : ChemdescgeometricPath) -> Int { self.size }
 
-pub fn chem_desc_geometric_path_get(s : ChemdescgeometricPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricPath::get(self : ChemdescgeometricPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_path_set(s : ChemdescgeometricPath, i : Int, v : Double) -> ChemdescgeometricPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricPath::set(self : ChemdescgeometricPath, i : Int, v : Double) -> ChemdescgeometricPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_path_sum(s : ChemdescgeometricPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricPath::sum(self : ChemdescgeometricPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_path_mean(s : ChemdescgeometricPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricPath::mean(self : ChemdescgeometricPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_path_scale(s : ChemdescgeometricPath, f : Double) -> ChemdescgeometricPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricPath::scale(self : ChemdescgeometricPath, f : Double) -> ChemdescgeometricPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_path_add(a : ChemdescgeometricPath, b : ChemdescgeometricPath) -> ChemdescgeometricPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricPath::add(self : ChemdescgeometricPath, other : ChemdescgeometricPath) -> ChemdescgeometricPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_path_copy(s : ChemdescgeometricPath) -> ChemdescgeometricPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricPath::copy(self : ChemdescgeometricPath) -> ChemdescgeometricPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_path_fill(s : ChemdescgeometricPath, v : Double) -> ChemdescgeometricPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricPath::fill(self : ChemdescgeometricPath, v : Double) -> ChemdescgeometricPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_path_min(s : ChemdescgeometricPath) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricPath::min(self : ChemdescgeometricPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_path_max(s : ChemdescgeometricPath) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricPath::max(self : ChemdescgeometricPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_path_to_string(s : ChemdescgeometricPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricPath::to_string(self : ChemdescgeometricPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_geometric_cluster_make(size : Int) -> ChemdescgeometricCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_cluster_len(s : ChemdescgeometricCluster) -> Int { s.size }
+pub fn ChemdescgeometricCluster::len(self : ChemdescgeometricCluster) -> Int { self.size }
 
-pub fn chem_desc_geometric_cluster_get(s : ChemdescgeometricCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricCluster::get(self : ChemdescgeometricCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_cluster_set(s : ChemdescgeometricCluster, i : Int, v : Double) -> ChemdescgeometricCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCluster::set(self : ChemdescgeometricCluster, i : Int, v : Double) -> ChemdescgeometricCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cluster_sum(s : ChemdescgeometricCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricCluster::sum(self : ChemdescgeometricCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_cluster_mean(s : ChemdescgeometricCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricCluster::mean(self : ChemdescgeometricCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_cluster_scale(s : ChemdescgeometricCluster, f : Double) -> ChemdescgeometricCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCluster::scale(self : ChemdescgeometricCluster, f : Double) -> ChemdescgeometricCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cluster_add(a : ChemdescgeometricCluster, b : ChemdescgeometricCluster) -> ChemdescgeometricCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricCluster::add(self : ChemdescgeometricCluster, other : ChemdescgeometricCluster) -> ChemdescgeometricCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cluster_copy(s : ChemdescgeometricCluster) -> ChemdescgeometricCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCluster::copy(self : ChemdescgeometricCluster) -> ChemdescgeometricCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cluster_fill(s : ChemdescgeometricCluster, v : Double) -> ChemdescgeometricCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCluster::fill(self : ChemdescgeometricCluster, v : Double) -> ChemdescgeometricCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cluster_min(s : ChemdescgeometricCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricCluster::min(self : ChemdescgeometricCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_cluster_max(s : ChemdescgeometricCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricCluster::max(self : ChemdescgeometricCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_cluster_to_string(s : ChemdescgeometricCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricCluster::to_string(self : ChemdescgeometricCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_geometric_model_make(size : Int) -> ChemdescgeometricModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_model_len(s : ChemdescgeometricModel) -> Int { s.size }
+pub fn ChemdescgeometricModel::len(self : ChemdescgeometricModel) -> Int { self.size }
 
-pub fn chem_desc_geometric_model_get(s : ChemdescgeometricModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricModel::get(self : ChemdescgeometricModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_model_set(s : ChemdescgeometricModel, i : Int, v : Double) -> ChemdescgeometricModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricModel::set(self : ChemdescgeometricModel, i : Int, v : Double) -> ChemdescgeometricModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_model_sum(s : ChemdescgeometricModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricModel::sum(self : ChemdescgeometricModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_model_mean(s : ChemdescgeometricModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricModel::mean(self : ChemdescgeometricModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_model_scale(s : ChemdescgeometricModel, f : Double) -> ChemdescgeometricModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricModel::scale(self : ChemdescgeometricModel, f : Double) -> ChemdescgeometricModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_model_add(a : ChemdescgeometricModel, b : ChemdescgeometricModel) -> ChemdescgeometricModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricModel::add(self : ChemdescgeometricModel, other : ChemdescgeometricModel) -> ChemdescgeometricModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_model_copy(s : ChemdescgeometricModel) -> ChemdescgeometricModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricModel::copy(self : ChemdescgeometricModel) -> ChemdescgeometricModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_model_fill(s : ChemdescgeometricModel, v : Double) -> ChemdescgeometricModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricModel::fill(self : ChemdescgeometricModel, v : Double) -> ChemdescgeometricModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_model_min(s : ChemdescgeometricModel) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricModel::min(self : ChemdescgeometricModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_model_max(s : ChemdescgeometricModel) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricModel::max(self : ChemdescgeometricModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_model_to_string(s : ChemdescgeometricModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricModel::to_string(self : ChemdescgeometricModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_geometric_layer_make(size : Int) -> ChemdescgeometricLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_layer_len(s : ChemdescgeometricLayer) -> Int { s.size }
+pub fn ChemdescgeometricLayer::len(self : ChemdescgeometricLayer) -> Int { self.size }
 
-pub fn chem_desc_geometric_layer_get(s : ChemdescgeometricLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricLayer::get(self : ChemdescgeometricLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_layer_set(s : ChemdescgeometricLayer, i : Int, v : Double) -> ChemdescgeometricLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricLayer::set(self : ChemdescgeometricLayer, i : Int, v : Double) -> ChemdescgeometricLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_layer_sum(s : ChemdescgeometricLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricLayer::sum(self : ChemdescgeometricLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_layer_mean(s : ChemdescgeometricLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricLayer::mean(self : ChemdescgeometricLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_layer_scale(s : ChemdescgeometricLayer, f : Double) -> ChemdescgeometricLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricLayer::scale(self : ChemdescgeometricLayer, f : Double) -> ChemdescgeometricLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_layer_add(a : ChemdescgeometricLayer, b : ChemdescgeometricLayer) -> ChemdescgeometricLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricLayer::add(self : ChemdescgeometricLayer, other : ChemdescgeometricLayer) -> ChemdescgeometricLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_layer_copy(s : ChemdescgeometricLayer) -> ChemdescgeometricLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricLayer::copy(self : ChemdescgeometricLayer) -> ChemdescgeometricLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_layer_fill(s : ChemdescgeometricLayer, v : Double) -> ChemdescgeometricLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricLayer::fill(self : ChemdescgeometricLayer, v : Double) -> ChemdescgeometricLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_layer_min(s : ChemdescgeometricLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricLayer::min(self : ChemdescgeometricLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_layer_max(s : ChemdescgeometricLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricLayer::max(self : ChemdescgeometricLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_layer_to_string(s : ChemdescgeometricLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricLayer::to_string(self : ChemdescgeometricLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_geometric_buffer_make(size : Int) -> ChemdescgeometricBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_buffer_len(s : ChemdescgeometricBuffer) -> Int { s.size }
+pub fn ChemdescgeometricBuffer::len(self : ChemdescgeometricBuffer) -> Int { self.size }
 
-pub fn chem_desc_geometric_buffer_get(s : ChemdescgeometricBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricBuffer::get(self : ChemdescgeometricBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_buffer_set(s : ChemdescgeometricBuffer, i : Int, v : Double) -> ChemdescgeometricBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricBuffer::set(self : ChemdescgeometricBuffer, i : Int, v : Double) -> ChemdescgeometricBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_buffer_sum(s : ChemdescgeometricBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricBuffer::sum(self : ChemdescgeometricBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_buffer_mean(s : ChemdescgeometricBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricBuffer::mean(self : ChemdescgeometricBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_buffer_scale(s : ChemdescgeometricBuffer, f : Double) -> ChemdescgeometricBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricBuffer::scale(self : ChemdescgeometricBuffer, f : Double) -> ChemdescgeometricBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_buffer_add(a : ChemdescgeometricBuffer, b : ChemdescgeometricBuffer) -> ChemdescgeometricBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricBuffer::add(self : ChemdescgeometricBuffer, other : ChemdescgeometricBuffer) -> ChemdescgeometricBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_buffer_copy(s : ChemdescgeometricBuffer) -> ChemdescgeometricBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricBuffer::copy(self : ChemdescgeometricBuffer) -> ChemdescgeometricBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_buffer_fill(s : ChemdescgeometricBuffer, v : Double) -> ChemdescgeometricBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricBuffer::fill(self : ChemdescgeometricBuffer, v : Double) -> ChemdescgeometricBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_buffer_min(s : ChemdescgeometricBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricBuffer::min(self : ChemdescgeometricBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_buffer_max(s : ChemdescgeometricBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricBuffer::max(self : ChemdescgeometricBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_buffer_to_string(s : ChemdescgeometricBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricBuffer::to_string(self : ChemdescgeometricBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_geometric_cursor_make(size : Int) -> ChemdescgeometricCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_cursor_len(s : ChemdescgeometricCursor) -> Int { s.size }
+pub fn ChemdescgeometricCursor::len(self : ChemdescgeometricCursor) -> Int { self.size }
 
-pub fn chem_desc_geometric_cursor_get(s : ChemdescgeometricCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricCursor::get(self : ChemdescgeometricCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_cursor_set(s : ChemdescgeometricCursor, i : Int, v : Double) -> ChemdescgeometricCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCursor::set(self : ChemdescgeometricCursor, i : Int, v : Double) -> ChemdescgeometricCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cursor_sum(s : ChemdescgeometricCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricCursor::sum(self : ChemdescgeometricCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_cursor_mean(s : ChemdescgeometricCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricCursor::mean(self : ChemdescgeometricCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_cursor_scale(s : ChemdescgeometricCursor, f : Double) -> ChemdescgeometricCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCursor::scale(self : ChemdescgeometricCursor, f : Double) -> ChemdescgeometricCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cursor_add(a : ChemdescgeometricCursor, b : ChemdescgeometricCursor) -> ChemdescgeometricCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricCursor::add(self : ChemdescgeometricCursor, other : ChemdescgeometricCursor) -> ChemdescgeometricCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cursor_copy(s : ChemdescgeometricCursor) -> ChemdescgeometricCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCursor::copy(self : ChemdescgeometricCursor) -> ChemdescgeometricCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cursor_fill(s : ChemdescgeometricCursor, v : Double) -> ChemdescgeometricCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricCursor::fill(self : ChemdescgeometricCursor, v : Double) -> ChemdescgeometricCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_cursor_min(s : ChemdescgeometricCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricCursor::min(self : ChemdescgeometricCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_cursor_max(s : ChemdescgeometricCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricCursor::max(self : ChemdescgeometricCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_cursor_to_string(s : ChemdescgeometricCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricCursor::to_string(self : ChemdescgeometricCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricView {
@@ -912,45 +912,45 @@ pub fn chem_desc_geometric_view_make(size : Int) -> ChemdescgeometricView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_view_len(s : ChemdescgeometricView) -> Int { s.size }
+pub fn ChemdescgeometricView::len(self : ChemdescgeometricView) -> Int { self.size }
 
-pub fn chem_desc_geometric_view_get(s : ChemdescgeometricView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricView::get(self : ChemdescgeometricView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_view_set(s : ChemdescgeometricView, i : Int, v : Double) -> ChemdescgeometricView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricView::set(self : ChemdescgeometricView, i : Int, v : Double) -> ChemdescgeometricView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_view_sum(s : ChemdescgeometricView) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricView::sum(self : ChemdescgeometricView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_view_mean(s : ChemdescgeometricView) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricView::mean(self : ChemdescgeometricView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_view_scale(s : ChemdescgeometricView, f : Double) -> ChemdescgeometricView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricView::scale(self : ChemdescgeometricView, f : Double) -> ChemdescgeometricView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_view_add(a : ChemdescgeometricView, b : ChemdescgeometricView) -> ChemdescgeometricView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricView::add(self : ChemdescgeometricView, other : ChemdescgeometricView) -> ChemdescgeometricView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_view_copy(s : ChemdescgeometricView) -> ChemdescgeometricView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricView::copy(self : ChemdescgeometricView) -> ChemdescgeometricView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_view_fill(s : ChemdescgeometricView, v : Double) -> ChemdescgeometricView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricView::fill(self : ChemdescgeometricView, v : Double) -> ChemdescgeometricView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_view_min(s : ChemdescgeometricView) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricView::min(self : ChemdescgeometricView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_view_max(s : ChemdescgeometricView) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricView::max(self : ChemdescgeometricView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_view_to_string(s : ChemdescgeometricView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricView::to_string(self : ChemdescgeometricView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_geometric_range_make(size : Int) -> ChemdescgeometricRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_range_len(s : ChemdescgeometricRange) -> Int { s.size }
+pub fn ChemdescgeometricRange::len(self : ChemdescgeometricRange) -> Int { self.size }
 
-pub fn chem_desc_geometric_range_get(s : ChemdescgeometricRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricRange::get(self : ChemdescgeometricRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_range_set(s : ChemdescgeometricRange, i : Int, v : Double) -> ChemdescgeometricRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricRange::set(self : ChemdescgeometricRange, i : Int, v : Double) -> ChemdescgeometricRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_range_sum(s : ChemdescgeometricRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricRange::sum(self : ChemdescgeometricRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_range_mean(s : ChemdescgeometricRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricRange::mean(self : ChemdescgeometricRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_range_scale(s : ChemdescgeometricRange, f : Double) -> ChemdescgeometricRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricRange::scale(self : ChemdescgeometricRange, f : Double) -> ChemdescgeometricRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_range_add(a : ChemdescgeometricRange, b : ChemdescgeometricRange) -> ChemdescgeometricRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricRange::add(self : ChemdescgeometricRange, other : ChemdescgeometricRange) -> ChemdescgeometricRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_range_copy(s : ChemdescgeometricRange) -> ChemdescgeometricRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricRange::copy(self : ChemdescgeometricRange) -> ChemdescgeometricRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_range_fill(s : ChemdescgeometricRange, v : Double) -> ChemdescgeometricRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricRange::fill(self : ChemdescgeometricRange, v : Double) -> ChemdescgeometricRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_range_min(s : ChemdescgeometricRange) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricRange::min(self : ChemdescgeometricRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_range_max(s : ChemdescgeometricRange) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricRange::max(self : ChemdescgeometricRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_range_to_string(s : ChemdescgeometricRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricRange::to_string(self : ChemdescgeometricRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_geometric_slice_make(size : Int) -> ChemdescgeometricSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_geometric_slice_len(s : ChemdescgeometricSlice) -> Int { s.size }
+pub fn ChemdescgeometricSlice::len(self : ChemdescgeometricSlice) -> Int { self.size }
 
-pub fn chem_desc_geometric_slice_get(s : ChemdescgeometricSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescgeometricSlice::get(self : ChemdescgeometricSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_geometric_slice_set(s : ChemdescgeometricSlice, i : Int, v : Double) -> ChemdescgeometricSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescgeometricSlice::set(self : ChemdescgeometricSlice, i : Int, v : Double) -> ChemdescgeometricSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_slice_sum(s : ChemdescgeometricSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdescgeometricSlice::sum(self : ChemdescgeometricSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_geometric_slice_mean(s : ChemdescgeometricSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdescgeometricSlice::mean(self : ChemdescgeometricSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_geometric_slice_scale(s : ChemdescgeometricSlice, f : Double) -> ChemdescgeometricSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricSlice::scale(self : ChemdescgeometricSlice, f : Double) -> ChemdescgeometricSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_slice_add(a : ChemdescgeometricSlice, b : ChemdescgeometricSlice) -> ChemdescgeometricSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescgeometricSlice::add(self : ChemdescgeometricSlice, other : ChemdescgeometricSlice) -> ChemdescgeometricSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_slice_copy(s : ChemdescgeometricSlice) -> ChemdescgeometricSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricSlice::copy(self : ChemdescgeometricSlice) -> ChemdescgeometricSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_slice_fill(s : ChemdescgeometricSlice, v : Double) -> ChemdescgeometricSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescgeometricSlice::fill(self : ChemdescgeometricSlice, v : Double) -> ChemdescgeometricSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_geometric_slice_min(s : ChemdescgeometricSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdescgeometricSlice::min(self : ChemdescgeometricSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_geometric_slice_max(s : ChemdescgeometricSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdescgeometricSlice::max(self : ChemdescgeometricSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_geometric_slice_to_string(s : ChemdescgeometricSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescgeometricSlice::to_string(self : ChemdescgeometricSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

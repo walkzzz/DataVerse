@@ -351,45 +351,45 @@ pub fn db_index_lsm_frame_make(size : Int) -> DbindexlsmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_frame_len(s : DbindexlsmFrame) -> Int { s.size }
+pub fn DbindexlsmFrame::len(self : DbindexlsmFrame) -> Int { self.size }
 
-pub fn db_index_lsm_frame_get(s : DbindexlsmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmFrame::get(self : DbindexlsmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_frame_set(s : DbindexlsmFrame, i : Int, v : Double) -> DbindexlsmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmFrame::set(self : DbindexlsmFrame, i : Int, v : Double) -> DbindexlsmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_frame_sum(s : DbindexlsmFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmFrame::sum(self : DbindexlsmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_frame_mean(s : DbindexlsmFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmFrame::mean(self : DbindexlsmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_frame_scale(s : DbindexlsmFrame, f : Double) -> DbindexlsmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmFrame::scale(self : DbindexlsmFrame, f : Double) -> DbindexlsmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_frame_add(a : DbindexlsmFrame, b : DbindexlsmFrame) -> DbindexlsmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmFrame::add(self : DbindexlsmFrame, other : DbindexlsmFrame) -> DbindexlsmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_frame_copy(s : DbindexlsmFrame) -> DbindexlsmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmFrame::copy(self : DbindexlsmFrame) -> DbindexlsmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_frame_fill(s : DbindexlsmFrame, v : Double) -> DbindexlsmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmFrame::fill(self : DbindexlsmFrame, v : Double) -> DbindexlsmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_frame_min(s : DbindexlsmFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmFrame::min(self : DbindexlsmFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_frame_max(s : DbindexlsmFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmFrame::max(self : DbindexlsmFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_frame_to_string(s : DbindexlsmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmFrame::to_string(self : DbindexlsmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmTable {
@@ -402,45 +402,45 @@ pub fn db_index_lsm_table_make(size : Int) -> DbindexlsmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_table_len(s : DbindexlsmTable) -> Int { s.size }
+pub fn DbindexlsmTable::len(self : DbindexlsmTable) -> Int { self.size }
 
-pub fn db_index_lsm_table_get(s : DbindexlsmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmTable::get(self : DbindexlsmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_table_set(s : DbindexlsmTable, i : Int, v : Double) -> DbindexlsmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmTable::set(self : DbindexlsmTable, i : Int, v : Double) -> DbindexlsmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_table_sum(s : DbindexlsmTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmTable::sum(self : DbindexlsmTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_table_mean(s : DbindexlsmTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmTable::mean(self : DbindexlsmTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_table_scale(s : DbindexlsmTable, f : Double) -> DbindexlsmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmTable::scale(self : DbindexlsmTable, f : Double) -> DbindexlsmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_table_add(a : DbindexlsmTable, b : DbindexlsmTable) -> DbindexlsmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmTable::add(self : DbindexlsmTable, other : DbindexlsmTable) -> DbindexlsmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_table_copy(s : DbindexlsmTable) -> DbindexlsmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmTable::copy(self : DbindexlsmTable) -> DbindexlsmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_table_fill(s : DbindexlsmTable, v : Double) -> DbindexlsmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmTable::fill(self : DbindexlsmTable, v : Double) -> DbindexlsmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_table_min(s : DbindexlsmTable) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmTable::min(self : DbindexlsmTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_table_max(s : DbindexlsmTable) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmTable::max(self : DbindexlsmTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_table_to_string(s : DbindexlsmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmTable::to_string(self : DbindexlsmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_lsm_graphn_make(size : Int) -> DbindexlsmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_graphn_len(s : DbindexlsmGraphN) -> Int { s.size }
+pub fn DbindexlsmGraphN::len(self : DbindexlsmGraphN) -> Int { self.size }
 
-pub fn db_index_lsm_graphn_get(s : DbindexlsmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmGraphN::get(self : DbindexlsmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_graphn_set(s : DbindexlsmGraphN, i : Int, v : Double) -> DbindexlsmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmGraphN::set(self : DbindexlsmGraphN, i : Int, v : Double) -> DbindexlsmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_graphn_sum(s : DbindexlsmGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmGraphN::sum(self : DbindexlsmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_graphn_mean(s : DbindexlsmGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmGraphN::mean(self : DbindexlsmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_graphn_scale(s : DbindexlsmGraphN, f : Double) -> DbindexlsmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmGraphN::scale(self : DbindexlsmGraphN, f : Double) -> DbindexlsmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_graphn_add(a : DbindexlsmGraphN, b : DbindexlsmGraphN) -> DbindexlsmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmGraphN::add(self : DbindexlsmGraphN, other : DbindexlsmGraphN) -> DbindexlsmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_graphn_copy(s : DbindexlsmGraphN) -> DbindexlsmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmGraphN::copy(self : DbindexlsmGraphN) -> DbindexlsmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_graphn_fill(s : DbindexlsmGraphN, v : Double) -> DbindexlsmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmGraphN::fill(self : DbindexlsmGraphN, v : Double) -> DbindexlsmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_graphn_min(s : DbindexlsmGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmGraphN::min(self : DbindexlsmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_graphn_max(s : DbindexlsmGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmGraphN::max(self : DbindexlsmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_graphn_to_string(s : DbindexlsmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmGraphN::to_string(self : DbindexlsmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmNode {
@@ -504,45 +504,45 @@ pub fn db_index_lsm_node_make(size : Int) -> DbindexlsmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_node_len(s : DbindexlsmNode) -> Int { s.size }
+pub fn DbindexlsmNode::len(self : DbindexlsmNode) -> Int { self.size }
 
-pub fn db_index_lsm_node_get(s : DbindexlsmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmNode::get(self : DbindexlsmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_node_set(s : DbindexlsmNode, i : Int, v : Double) -> DbindexlsmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmNode::set(self : DbindexlsmNode, i : Int, v : Double) -> DbindexlsmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_node_sum(s : DbindexlsmNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmNode::sum(self : DbindexlsmNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_node_mean(s : DbindexlsmNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmNode::mean(self : DbindexlsmNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_node_scale(s : DbindexlsmNode, f : Double) -> DbindexlsmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmNode::scale(self : DbindexlsmNode, f : Double) -> DbindexlsmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_node_add(a : DbindexlsmNode, b : DbindexlsmNode) -> DbindexlsmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmNode::add(self : DbindexlsmNode, other : DbindexlsmNode) -> DbindexlsmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_node_copy(s : DbindexlsmNode) -> DbindexlsmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmNode::copy(self : DbindexlsmNode) -> DbindexlsmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_node_fill(s : DbindexlsmNode, v : Double) -> DbindexlsmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmNode::fill(self : DbindexlsmNode, v : Double) -> DbindexlsmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_node_min(s : DbindexlsmNode) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmNode::min(self : DbindexlsmNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_node_max(s : DbindexlsmNode) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmNode::max(self : DbindexlsmNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_node_to_string(s : DbindexlsmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmNode::to_string(self : DbindexlsmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmEdge {
@@ -555,45 +555,45 @@ pub fn db_index_lsm_edge_make(size : Int) -> DbindexlsmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_edge_len(s : DbindexlsmEdge) -> Int { s.size }
+pub fn DbindexlsmEdge::len(self : DbindexlsmEdge) -> Int { self.size }
 
-pub fn db_index_lsm_edge_get(s : DbindexlsmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmEdge::get(self : DbindexlsmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_edge_set(s : DbindexlsmEdge, i : Int, v : Double) -> DbindexlsmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmEdge::set(self : DbindexlsmEdge, i : Int, v : Double) -> DbindexlsmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_edge_sum(s : DbindexlsmEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmEdge::sum(self : DbindexlsmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_edge_mean(s : DbindexlsmEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmEdge::mean(self : DbindexlsmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_edge_scale(s : DbindexlsmEdge, f : Double) -> DbindexlsmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmEdge::scale(self : DbindexlsmEdge, f : Double) -> DbindexlsmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_edge_add(a : DbindexlsmEdge, b : DbindexlsmEdge) -> DbindexlsmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmEdge::add(self : DbindexlsmEdge, other : DbindexlsmEdge) -> DbindexlsmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_edge_copy(s : DbindexlsmEdge) -> DbindexlsmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmEdge::copy(self : DbindexlsmEdge) -> DbindexlsmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_edge_fill(s : DbindexlsmEdge, v : Double) -> DbindexlsmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmEdge::fill(self : DbindexlsmEdge, v : Double) -> DbindexlsmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_edge_min(s : DbindexlsmEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmEdge::min(self : DbindexlsmEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_edge_max(s : DbindexlsmEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmEdge::max(self : DbindexlsmEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_edge_to_string(s : DbindexlsmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmEdge::to_string(self : DbindexlsmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmPath {
@@ -606,45 +606,45 @@ pub fn db_index_lsm_path_make(size : Int) -> DbindexlsmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_path_len(s : DbindexlsmPath) -> Int { s.size }
+pub fn DbindexlsmPath::len(self : DbindexlsmPath) -> Int { self.size }
 
-pub fn db_index_lsm_path_get(s : DbindexlsmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmPath::get(self : DbindexlsmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_path_set(s : DbindexlsmPath, i : Int, v : Double) -> DbindexlsmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmPath::set(self : DbindexlsmPath, i : Int, v : Double) -> DbindexlsmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_path_sum(s : DbindexlsmPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmPath::sum(self : DbindexlsmPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_path_mean(s : DbindexlsmPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmPath::mean(self : DbindexlsmPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_path_scale(s : DbindexlsmPath, f : Double) -> DbindexlsmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmPath::scale(self : DbindexlsmPath, f : Double) -> DbindexlsmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_path_add(a : DbindexlsmPath, b : DbindexlsmPath) -> DbindexlsmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmPath::add(self : DbindexlsmPath, other : DbindexlsmPath) -> DbindexlsmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_path_copy(s : DbindexlsmPath) -> DbindexlsmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmPath::copy(self : DbindexlsmPath) -> DbindexlsmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_path_fill(s : DbindexlsmPath, v : Double) -> DbindexlsmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmPath::fill(self : DbindexlsmPath, v : Double) -> DbindexlsmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_path_min(s : DbindexlsmPath) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmPath::min(self : DbindexlsmPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_path_max(s : DbindexlsmPath) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmPath::max(self : DbindexlsmPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_path_to_string(s : DbindexlsmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmPath::to_string(self : DbindexlsmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmCluster {
@@ -657,45 +657,45 @@ pub fn db_index_lsm_cluster_make(size : Int) -> DbindexlsmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_cluster_len(s : DbindexlsmCluster) -> Int { s.size }
+pub fn DbindexlsmCluster::len(self : DbindexlsmCluster) -> Int { self.size }
 
-pub fn db_index_lsm_cluster_get(s : DbindexlsmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmCluster::get(self : DbindexlsmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_cluster_set(s : DbindexlsmCluster, i : Int, v : Double) -> DbindexlsmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmCluster::set(self : DbindexlsmCluster, i : Int, v : Double) -> DbindexlsmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cluster_sum(s : DbindexlsmCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmCluster::sum(self : DbindexlsmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_cluster_mean(s : DbindexlsmCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmCluster::mean(self : DbindexlsmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_cluster_scale(s : DbindexlsmCluster, f : Double) -> DbindexlsmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmCluster::scale(self : DbindexlsmCluster, f : Double) -> DbindexlsmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cluster_add(a : DbindexlsmCluster, b : DbindexlsmCluster) -> DbindexlsmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmCluster::add(self : DbindexlsmCluster, other : DbindexlsmCluster) -> DbindexlsmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_cluster_copy(s : DbindexlsmCluster) -> DbindexlsmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmCluster::copy(self : DbindexlsmCluster) -> DbindexlsmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cluster_fill(s : DbindexlsmCluster, v : Double) -> DbindexlsmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmCluster::fill(self : DbindexlsmCluster, v : Double) -> DbindexlsmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cluster_min(s : DbindexlsmCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmCluster::min(self : DbindexlsmCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_cluster_max(s : DbindexlsmCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmCluster::max(self : DbindexlsmCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_cluster_to_string(s : DbindexlsmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmCluster::to_string(self : DbindexlsmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmModel {
@@ -708,45 +708,45 @@ pub fn db_index_lsm_model_make(size : Int) -> DbindexlsmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_model_len(s : DbindexlsmModel) -> Int { s.size }
+pub fn DbindexlsmModel::len(self : DbindexlsmModel) -> Int { self.size }
 
-pub fn db_index_lsm_model_get(s : DbindexlsmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmModel::get(self : DbindexlsmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_model_set(s : DbindexlsmModel, i : Int, v : Double) -> DbindexlsmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmModel::set(self : DbindexlsmModel, i : Int, v : Double) -> DbindexlsmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_model_sum(s : DbindexlsmModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmModel::sum(self : DbindexlsmModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_model_mean(s : DbindexlsmModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmModel::mean(self : DbindexlsmModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_model_scale(s : DbindexlsmModel, f : Double) -> DbindexlsmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmModel::scale(self : DbindexlsmModel, f : Double) -> DbindexlsmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_model_add(a : DbindexlsmModel, b : DbindexlsmModel) -> DbindexlsmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmModel::add(self : DbindexlsmModel, other : DbindexlsmModel) -> DbindexlsmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_model_copy(s : DbindexlsmModel) -> DbindexlsmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmModel::copy(self : DbindexlsmModel) -> DbindexlsmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_model_fill(s : DbindexlsmModel, v : Double) -> DbindexlsmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmModel::fill(self : DbindexlsmModel, v : Double) -> DbindexlsmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_model_min(s : DbindexlsmModel) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmModel::min(self : DbindexlsmModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_model_max(s : DbindexlsmModel) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmModel::max(self : DbindexlsmModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_model_to_string(s : DbindexlsmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmModel::to_string(self : DbindexlsmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmLayer {
@@ -759,45 +759,45 @@ pub fn db_index_lsm_layer_make(size : Int) -> DbindexlsmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_layer_len(s : DbindexlsmLayer) -> Int { s.size }
+pub fn DbindexlsmLayer::len(self : DbindexlsmLayer) -> Int { self.size }
 
-pub fn db_index_lsm_layer_get(s : DbindexlsmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmLayer::get(self : DbindexlsmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_layer_set(s : DbindexlsmLayer, i : Int, v : Double) -> DbindexlsmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmLayer::set(self : DbindexlsmLayer, i : Int, v : Double) -> DbindexlsmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_layer_sum(s : DbindexlsmLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmLayer::sum(self : DbindexlsmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_layer_mean(s : DbindexlsmLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmLayer::mean(self : DbindexlsmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_layer_scale(s : DbindexlsmLayer, f : Double) -> DbindexlsmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmLayer::scale(self : DbindexlsmLayer, f : Double) -> DbindexlsmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_layer_add(a : DbindexlsmLayer, b : DbindexlsmLayer) -> DbindexlsmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmLayer::add(self : DbindexlsmLayer, other : DbindexlsmLayer) -> DbindexlsmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_layer_copy(s : DbindexlsmLayer) -> DbindexlsmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmLayer::copy(self : DbindexlsmLayer) -> DbindexlsmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_layer_fill(s : DbindexlsmLayer, v : Double) -> DbindexlsmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmLayer::fill(self : DbindexlsmLayer, v : Double) -> DbindexlsmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_layer_min(s : DbindexlsmLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmLayer::min(self : DbindexlsmLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_layer_max(s : DbindexlsmLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmLayer::max(self : DbindexlsmLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_layer_to_string(s : DbindexlsmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmLayer::to_string(self : DbindexlsmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_lsm_buffer_make(size : Int) -> DbindexlsmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_buffer_len(s : DbindexlsmBuffer) -> Int { s.size }
+pub fn DbindexlsmBuffer::len(self : DbindexlsmBuffer) -> Int { self.size }
 
-pub fn db_index_lsm_buffer_get(s : DbindexlsmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmBuffer::get(self : DbindexlsmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_buffer_set(s : DbindexlsmBuffer, i : Int, v : Double) -> DbindexlsmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmBuffer::set(self : DbindexlsmBuffer, i : Int, v : Double) -> DbindexlsmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_buffer_sum(s : DbindexlsmBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmBuffer::sum(self : DbindexlsmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_buffer_mean(s : DbindexlsmBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmBuffer::mean(self : DbindexlsmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_buffer_scale(s : DbindexlsmBuffer, f : Double) -> DbindexlsmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmBuffer::scale(self : DbindexlsmBuffer, f : Double) -> DbindexlsmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_buffer_add(a : DbindexlsmBuffer, b : DbindexlsmBuffer) -> DbindexlsmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmBuffer::add(self : DbindexlsmBuffer, other : DbindexlsmBuffer) -> DbindexlsmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_buffer_copy(s : DbindexlsmBuffer) -> DbindexlsmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmBuffer::copy(self : DbindexlsmBuffer) -> DbindexlsmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_buffer_fill(s : DbindexlsmBuffer, v : Double) -> DbindexlsmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmBuffer::fill(self : DbindexlsmBuffer, v : Double) -> DbindexlsmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_buffer_min(s : DbindexlsmBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmBuffer::min(self : DbindexlsmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_buffer_max(s : DbindexlsmBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmBuffer::max(self : DbindexlsmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_buffer_to_string(s : DbindexlsmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmBuffer::to_string(self : DbindexlsmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmCursor {
@@ -861,45 +861,45 @@ pub fn db_index_lsm_cursor_make(size : Int) -> DbindexlsmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_cursor_len(s : DbindexlsmCursor) -> Int { s.size }
+pub fn DbindexlsmCursor::len(self : DbindexlsmCursor) -> Int { self.size }
 
-pub fn db_index_lsm_cursor_get(s : DbindexlsmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmCursor::get(self : DbindexlsmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_cursor_set(s : DbindexlsmCursor, i : Int, v : Double) -> DbindexlsmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmCursor::set(self : DbindexlsmCursor, i : Int, v : Double) -> DbindexlsmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cursor_sum(s : DbindexlsmCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmCursor::sum(self : DbindexlsmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_cursor_mean(s : DbindexlsmCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmCursor::mean(self : DbindexlsmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_cursor_scale(s : DbindexlsmCursor, f : Double) -> DbindexlsmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmCursor::scale(self : DbindexlsmCursor, f : Double) -> DbindexlsmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cursor_add(a : DbindexlsmCursor, b : DbindexlsmCursor) -> DbindexlsmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmCursor::add(self : DbindexlsmCursor, other : DbindexlsmCursor) -> DbindexlsmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_cursor_copy(s : DbindexlsmCursor) -> DbindexlsmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmCursor::copy(self : DbindexlsmCursor) -> DbindexlsmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cursor_fill(s : DbindexlsmCursor, v : Double) -> DbindexlsmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmCursor::fill(self : DbindexlsmCursor, v : Double) -> DbindexlsmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_cursor_min(s : DbindexlsmCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmCursor::min(self : DbindexlsmCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_cursor_max(s : DbindexlsmCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmCursor::max(self : DbindexlsmCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_cursor_to_string(s : DbindexlsmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmCursor::to_string(self : DbindexlsmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmView {
@@ -912,45 +912,45 @@ pub fn db_index_lsm_view_make(size : Int) -> DbindexlsmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_view_len(s : DbindexlsmView) -> Int { s.size }
+pub fn DbindexlsmView::len(self : DbindexlsmView) -> Int { self.size }
 
-pub fn db_index_lsm_view_get(s : DbindexlsmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmView::get(self : DbindexlsmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_view_set(s : DbindexlsmView, i : Int, v : Double) -> DbindexlsmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmView::set(self : DbindexlsmView, i : Int, v : Double) -> DbindexlsmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_view_sum(s : DbindexlsmView) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmView::sum(self : DbindexlsmView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_view_mean(s : DbindexlsmView) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmView::mean(self : DbindexlsmView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_view_scale(s : DbindexlsmView, f : Double) -> DbindexlsmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmView::scale(self : DbindexlsmView, f : Double) -> DbindexlsmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_view_add(a : DbindexlsmView, b : DbindexlsmView) -> DbindexlsmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmView::add(self : DbindexlsmView, other : DbindexlsmView) -> DbindexlsmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_view_copy(s : DbindexlsmView) -> DbindexlsmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmView::copy(self : DbindexlsmView) -> DbindexlsmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_view_fill(s : DbindexlsmView, v : Double) -> DbindexlsmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmView::fill(self : DbindexlsmView, v : Double) -> DbindexlsmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_view_min(s : DbindexlsmView) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmView::min(self : DbindexlsmView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_view_max(s : DbindexlsmView) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmView::max(self : DbindexlsmView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_view_to_string(s : DbindexlsmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmView::to_string(self : DbindexlsmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmRange {
@@ -963,45 +963,45 @@ pub fn db_index_lsm_range_make(size : Int) -> DbindexlsmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_range_len(s : DbindexlsmRange) -> Int { s.size }
+pub fn DbindexlsmRange::len(self : DbindexlsmRange) -> Int { self.size }
 
-pub fn db_index_lsm_range_get(s : DbindexlsmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmRange::get(self : DbindexlsmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_range_set(s : DbindexlsmRange, i : Int, v : Double) -> DbindexlsmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmRange::set(self : DbindexlsmRange, i : Int, v : Double) -> DbindexlsmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_range_sum(s : DbindexlsmRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmRange::sum(self : DbindexlsmRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_range_mean(s : DbindexlsmRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmRange::mean(self : DbindexlsmRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_range_scale(s : DbindexlsmRange, f : Double) -> DbindexlsmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmRange::scale(self : DbindexlsmRange, f : Double) -> DbindexlsmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_range_add(a : DbindexlsmRange, b : DbindexlsmRange) -> DbindexlsmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmRange::add(self : DbindexlsmRange, other : DbindexlsmRange) -> DbindexlsmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_range_copy(s : DbindexlsmRange) -> DbindexlsmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmRange::copy(self : DbindexlsmRange) -> DbindexlsmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_range_fill(s : DbindexlsmRange, v : Double) -> DbindexlsmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmRange::fill(self : DbindexlsmRange, v : Double) -> DbindexlsmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_range_min(s : DbindexlsmRange) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmRange::min(self : DbindexlsmRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_range_max(s : DbindexlsmRange) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmRange::max(self : DbindexlsmRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_range_to_string(s : DbindexlsmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmRange::to_string(self : DbindexlsmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_lsm_slice_make(size : Int) -> DbindexlsmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_lsm_slice_len(s : DbindexlsmSlice) -> Int { s.size }
+pub fn DbindexlsmSlice::len(self : DbindexlsmSlice) -> Int { self.size }
 
-pub fn db_index_lsm_slice_get(s : DbindexlsmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexlsmSlice::get(self : DbindexlsmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_lsm_slice_set(s : DbindexlsmSlice, i : Int, v : Double) -> DbindexlsmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexlsmSlice::set(self : DbindexlsmSlice, i : Int, v : Double) -> DbindexlsmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_slice_sum(s : DbindexlsmSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexlsmSlice::sum(self : DbindexlsmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_lsm_slice_mean(s : DbindexlsmSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexlsmSlice::mean(self : DbindexlsmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_lsm_slice_scale(s : DbindexlsmSlice, f : Double) -> DbindexlsmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexlsmSlice::scale(self : DbindexlsmSlice, f : Double) -> DbindexlsmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_slice_add(a : DbindexlsmSlice, b : DbindexlsmSlice) -> DbindexlsmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexlsmSlice::add(self : DbindexlsmSlice, other : DbindexlsmSlice) -> DbindexlsmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_lsm_slice_copy(s : DbindexlsmSlice) -> DbindexlsmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexlsmSlice::copy(self : DbindexlsmSlice) -> DbindexlsmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_slice_fill(s : DbindexlsmSlice, v : Double) -> DbindexlsmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexlsmSlice::fill(self : DbindexlsmSlice, v : Double) -> DbindexlsmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_lsm_slice_min(s : DbindexlsmSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexlsmSlice::min(self : DbindexlsmSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_lsm_slice_max(s : DbindexlsmSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexlsmSlice::max(self : DbindexlsmSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_lsm_slice_to_string(s : DbindexlsmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexlsmSlice::to_string(self : DbindexlsmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

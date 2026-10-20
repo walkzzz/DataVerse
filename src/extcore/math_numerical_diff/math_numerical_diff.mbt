@@ -351,45 +351,45 @@ pub fn math_numerical_diff_frame_make(size : Int) -> MathnumericaldiffFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_frame_len(s : MathnumericaldiffFrame) -> Int { s.size }
+pub fn MathnumericaldiffFrame::len(self : MathnumericaldiffFrame) -> Int { self.size }
 
-pub fn math_numerical_diff_frame_get(s : MathnumericaldiffFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffFrame::get(self : MathnumericaldiffFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_frame_set(s : MathnumericaldiffFrame, i : Int, v : Double) -> MathnumericaldiffFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffFrame::set(self : MathnumericaldiffFrame, i : Int, v : Double) -> MathnumericaldiffFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_frame_sum(s : MathnumericaldiffFrame) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffFrame::sum(self : MathnumericaldiffFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_frame_mean(s : MathnumericaldiffFrame) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffFrame::mean(self : MathnumericaldiffFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_frame_scale(s : MathnumericaldiffFrame, f : Double) -> MathnumericaldiffFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffFrame::scale(self : MathnumericaldiffFrame, f : Double) -> MathnumericaldiffFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_frame_add(a : MathnumericaldiffFrame, b : MathnumericaldiffFrame) -> MathnumericaldiffFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffFrame::add(self : MathnumericaldiffFrame, other : MathnumericaldiffFrame) -> MathnumericaldiffFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_frame_copy(s : MathnumericaldiffFrame) -> MathnumericaldiffFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffFrame::copy(self : MathnumericaldiffFrame) -> MathnumericaldiffFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_frame_fill(s : MathnumericaldiffFrame, v : Double) -> MathnumericaldiffFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffFrame::fill(self : MathnumericaldiffFrame, v : Double) -> MathnumericaldiffFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_frame_min(s : MathnumericaldiffFrame) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffFrame::min(self : MathnumericaldiffFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_frame_max(s : MathnumericaldiffFrame) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffFrame::max(self : MathnumericaldiffFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_frame_to_string(s : MathnumericaldiffFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffFrame::to_string(self : MathnumericaldiffFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffTable {
@@ -402,45 +402,45 @@ pub fn math_numerical_diff_table_make(size : Int) -> MathnumericaldiffTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_table_len(s : MathnumericaldiffTable) -> Int { s.size }
+pub fn MathnumericaldiffTable::len(self : MathnumericaldiffTable) -> Int { self.size }
 
-pub fn math_numerical_diff_table_get(s : MathnumericaldiffTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffTable::get(self : MathnumericaldiffTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_table_set(s : MathnumericaldiffTable, i : Int, v : Double) -> MathnumericaldiffTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffTable::set(self : MathnumericaldiffTable, i : Int, v : Double) -> MathnumericaldiffTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_table_sum(s : MathnumericaldiffTable) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffTable::sum(self : MathnumericaldiffTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_table_mean(s : MathnumericaldiffTable) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffTable::mean(self : MathnumericaldiffTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_table_scale(s : MathnumericaldiffTable, f : Double) -> MathnumericaldiffTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffTable::scale(self : MathnumericaldiffTable, f : Double) -> MathnumericaldiffTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_table_add(a : MathnumericaldiffTable, b : MathnumericaldiffTable) -> MathnumericaldiffTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffTable::add(self : MathnumericaldiffTable, other : MathnumericaldiffTable) -> MathnumericaldiffTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_table_copy(s : MathnumericaldiffTable) -> MathnumericaldiffTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffTable::copy(self : MathnumericaldiffTable) -> MathnumericaldiffTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_table_fill(s : MathnumericaldiffTable, v : Double) -> MathnumericaldiffTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffTable::fill(self : MathnumericaldiffTable, v : Double) -> MathnumericaldiffTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_table_min(s : MathnumericaldiffTable) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffTable::min(self : MathnumericaldiffTable) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_table_max(s : MathnumericaldiffTable) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffTable::max(self : MathnumericaldiffTable) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_table_to_string(s : MathnumericaldiffTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffTable::to_string(self : MathnumericaldiffTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffGraphN {
@@ -453,45 +453,45 @@ pub fn math_numerical_diff_graphn_make(size : Int) -> MathnumericaldiffGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_graphn_len(s : MathnumericaldiffGraphN) -> Int { s.size }
+pub fn MathnumericaldiffGraphN::len(self : MathnumericaldiffGraphN) -> Int { self.size }
 
-pub fn math_numerical_diff_graphn_get(s : MathnumericaldiffGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffGraphN::get(self : MathnumericaldiffGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_graphn_set(s : MathnumericaldiffGraphN, i : Int, v : Double) -> MathnumericaldiffGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffGraphN::set(self : MathnumericaldiffGraphN, i : Int, v : Double) -> MathnumericaldiffGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_graphn_sum(s : MathnumericaldiffGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffGraphN::sum(self : MathnumericaldiffGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_graphn_mean(s : MathnumericaldiffGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffGraphN::mean(self : MathnumericaldiffGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_graphn_scale(s : MathnumericaldiffGraphN, f : Double) -> MathnumericaldiffGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffGraphN::scale(self : MathnumericaldiffGraphN, f : Double) -> MathnumericaldiffGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_graphn_add(a : MathnumericaldiffGraphN, b : MathnumericaldiffGraphN) -> MathnumericaldiffGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffGraphN::add(self : MathnumericaldiffGraphN, other : MathnumericaldiffGraphN) -> MathnumericaldiffGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_graphn_copy(s : MathnumericaldiffGraphN) -> MathnumericaldiffGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffGraphN::copy(self : MathnumericaldiffGraphN) -> MathnumericaldiffGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_graphn_fill(s : MathnumericaldiffGraphN, v : Double) -> MathnumericaldiffGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffGraphN::fill(self : MathnumericaldiffGraphN, v : Double) -> MathnumericaldiffGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_graphn_min(s : MathnumericaldiffGraphN) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffGraphN::min(self : MathnumericaldiffGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_graphn_max(s : MathnumericaldiffGraphN) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffGraphN::max(self : MathnumericaldiffGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_graphn_to_string(s : MathnumericaldiffGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffGraphN::to_string(self : MathnumericaldiffGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffNode {
@@ -504,45 +504,45 @@ pub fn math_numerical_diff_node_make(size : Int) -> MathnumericaldiffNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_node_len(s : MathnumericaldiffNode) -> Int { s.size }
+pub fn MathnumericaldiffNode::len(self : MathnumericaldiffNode) -> Int { self.size }
 
-pub fn math_numerical_diff_node_get(s : MathnumericaldiffNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffNode::get(self : MathnumericaldiffNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_node_set(s : MathnumericaldiffNode, i : Int, v : Double) -> MathnumericaldiffNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffNode::set(self : MathnumericaldiffNode, i : Int, v : Double) -> MathnumericaldiffNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_node_sum(s : MathnumericaldiffNode) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffNode::sum(self : MathnumericaldiffNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_node_mean(s : MathnumericaldiffNode) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffNode::mean(self : MathnumericaldiffNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_node_scale(s : MathnumericaldiffNode, f : Double) -> MathnumericaldiffNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffNode::scale(self : MathnumericaldiffNode, f : Double) -> MathnumericaldiffNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_node_add(a : MathnumericaldiffNode, b : MathnumericaldiffNode) -> MathnumericaldiffNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffNode::add(self : MathnumericaldiffNode, other : MathnumericaldiffNode) -> MathnumericaldiffNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_node_copy(s : MathnumericaldiffNode) -> MathnumericaldiffNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffNode::copy(self : MathnumericaldiffNode) -> MathnumericaldiffNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_node_fill(s : MathnumericaldiffNode, v : Double) -> MathnumericaldiffNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffNode::fill(self : MathnumericaldiffNode, v : Double) -> MathnumericaldiffNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_node_min(s : MathnumericaldiffNode) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffNode::min(self : MathnumericaldiffNode) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_node_max(s : MathnumericaldiffNode) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffNode::max(self : MathnumericaldiffNode) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_node_to_string(s : MathnumericaldiffNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffNode::to_string(self : MathnumericaldiffNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffEdge {
@@ -555,45 +555,45 @@ pub fn math_numerical_diff_edge_make(size : Int) -> MathnumericaldiffEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_edge_len(s : MathnumericaldiffEdge) -> Int { s.size }
+pub fn MathnumericaldiffEdge::len(self : MathnumericaldiffEdge) -> Int { self.size }
 
-pub fn math_numerical_diff_edge_get(s : MathnumericaldiffEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffEdge::get(self : MathnumericaldiffEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_edge_set(s : MathnumericaldiffEdge, i : Int, v : Double) -> MathnumericaldiffEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffEdge::set(self : MathnumericaldiffEdge, i : Int, v : Double) -> MathnumericaldiffEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_edge_sum(s : MathnumericaldiffEdge) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffEdge::sum(self : MathnumericaldiffEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_edge_mean(s : MathnumericaldiffEdge) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffEdge::mean(self : MathnumericaldiffEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_edge_scale(s : MathnumericaldiffEdge, f : Double) -> MathnumericaldiffEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffEdge::scale(self : MathnumericaldiffEdge, f : Double) -> MathnumericaldiffEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_edge_add(a : MathnumericaldiffEdge, b : MathnumericaldiffEdge) -> MathnumericaldiffEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffEdge::add(self : MathnumericaldiffEdge, other : MathnumericaldiffEdge) -> MathnumericaldiffEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_edge_copy(s : MathnumericaldiffEdge) -> MathnumericaldiffEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffEdge::copy(self : MathnumericaldiffEdge) -> MathnumericaldiffEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_edge_fill(s : MathnumericaldiffEdge, v : Double) -> MathnumericaldiffEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffEdge::fill(self : MathnumericaldiffEdge, v : Double) -> MathnumericaldiffEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_edge_min(s : MathnumericaldiffEdge) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffEdge::min(self : MathnumericaldiffEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_edge_max(s : MathnumericaldiffEdge) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffEdge::max(self : MathnumericaldiffEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_edge_to_string(s : MathnumericaldiffEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffEdge::to_string(self : MathnumericaldiffEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffPath {
@@ -606,45 +606,45 @@ pub fn math_numerical_diff_path_make(size : Int) -> MathnumericaldiffPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_path_len(s : MathnumericaldiffPath) -> Int { s.size }
+pub fn MathnumericaldiffPath::len(self : MathnumericaldiffPath) -> Int { self.size }
 
-pub fn math_numerical_diff_path_get(s : MathnumericaldiffPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffPath::get(self : MathnumericaldiffPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_path_set(s : MathnumericaldiffPath, i : Int, v : Double) -> MathnumericaldiffPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffPath::set(self : MathnumericaldiffPath, i : Int, v : Double) -> MathnumericaldiffPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_path_sum(s : MathnumericaldiffPath) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffPath::sum(self : MathnumericaldiffPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_path_mean(s : MathnumericaldiffPath) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffPath::mean(self : MathnumericaldiffPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_path_scale(s : MathnumericaldiffPath, f : Double) -> MathnumericaldiffPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffPath::scale(self : MathnumericaldiffPath, f : Double) -> MathnumericaldiffPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_path_add(a : MathnumericaldiffPath, b : MathnumericaldiffPath) -> MathnumericaldiffPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffPath::add(self : MathnumericaldiffPath, other : MathnumericaldiffPath) -> MathnumericaldiffPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_path_copy(s : MathnumericaldiffPath) -> MathnumericaldiffPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffPath::copy(self : MathnumericaldiffPath) -> MathnumericaldiffPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_path_fill(s : MathnumericaldiffPath, v : Double) -> MathnumericaldiffPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffPath::fill(self : MathnumericaldiffPath, v : Double) -> MathnumericaldiffPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_path_min(s : MathnumericaldiffPath) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffPath::min(self : MathnumericaldiffPath) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_path_max(s : MathnumericaldiffPath) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffPath::max(self : MathnumericaldiffPath) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_path_to_string(s : MathnumericaldiffPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffPath::to_string(self : MathnumericaldiffPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffCluster {
@@ -657,45 +657,45 @@ pub fn math_numerical_diff_cluster_make(size : Int) -> MathnumericaldiffCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_cluster_len(s : MathnumericaldiffCluster) -> Int { s.size }
+pub fn MathnumericaldiffCluster::len(self : MathnumericaldiffCluster) -> Int { self.size }
 
-pub fn math_numerical_diff_cluster_get(s : MathnumericaldiffCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffCluster::get(self : MathnumericaldiffCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_cluster_set(s : MathnumericaldiffCluster, i : Int, v : Double) -> MathnumericaldiffCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCluster::set(self : MathnumericaldiffCluster, i : Int, v : Double) -> MathnumericaldiffCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cluster_sum(s : MathnumericaldiffCluster) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffCluster::sum(self : MathnumericaldiffCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_cluster_mean(s : MathnumericaldiffCluster) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffCluster::mean(self : MathnumericaldiffCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_cluster_scale(s : MathnumericaldiffCluster, f : Double) -> MathnumericaldiffCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCluster::scale(self : MathnumericaldiffCluster, f : Double) -> MathnumericaldiffCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cluster_add(a : MathnumericaldiffCluster, b : MathnumericaldiffCluster) -> MathnumericaldiffCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffCluster::add(self : MathnumericaldiffCluster, other : MathnumericaldiffCluster) -> MathnumericaldiffCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cluster_copy(s : MathnumericaldiffCluster) -> MathnumericaldiffCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCluster::copy(self : MathnumericaldiffCluster) -> MathnumericaldiffCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cluster_fill(s : MathnumericaldiffCluster, v : Double) -> MathnumericaldiffCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCluster::fill(self : MathnumericaldiffCluster, v : Double) -> MathnumericaldiffCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cluster_min(s : MathnumericaldiffCluster) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffCluster::min(self : MathnumericaldiffCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_cluster_max(s : MathnumericaldiffCluster) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffCluster::max(self : MathnumericaldiffCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_cluster_to_string(s : MathnumericaldiffCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffCluster::to_string(self : MathnumericaldiffCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffModel {
@@ -708,45 +708,45 @@ pub fn math_numerical_diff_model_make(size : Int) -> MathnumericaldiffModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_model_len(s : MathnumericaldiffModel) -> Int { s.size }
+pub fn MathnumericaldiffModel::len(self : MathnumericaldiffModel) -> Int { self.size }
 
-pub fn math_numerical_diff_model_get(s : MathnumericaldiffModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffModel::get(self : MathnumericaldiffModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_model_set(s : MathnumericaldiffModel, i : Int, v : Double) -> MathnumericaldiffModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffModel::set(self : MathnumericaldiffModel, i : Int, v : Double) -> MathnumericaldiffModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_model_sum(s : MathnumericaldiffModel) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffModel::sum(self : MathnumericaldiffModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_model_mean(s : MathnumericaldiffModel) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffModel::mean(self : MathnumericaldiffModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_model_scale(s : MathnumericaldiffModel, f : Double) -> MathnumericaldiffModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffModel::scale(self : MathnumericaldiffModel, f : Double) -> MathnumericaldiffModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_model_add(a : MathnumericaldiffModel, b : MathnumericaldiffModel) -> MathnumericaldiffModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffModel::add(self : MathnumericaldiffModel, other : MathnumericaldiffModel) -> MathnumericaldiffModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_model_copy(s : MathnumericaldiffModel) -> MathnumericaldiffModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffModel::copy(self : MathnumericaldiffModel) -> MathnumericaldiffModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_model_fill(s : MathnumericaldiffModel, v : Double) -> MathnumericaldiffModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffModel::fill(self : MathnumericaldiffModel, v : Double) -> MathnumericaldiffModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_model_min(s : MathnumericaldiffModel) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffModel::min(self : MathnumericaldiffModel) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_model_max(s : MathnumericaldiffModel) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffModel::max(self : MathnumericaldiffModel) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_model_to_string(s : MathnumericaldiffModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffModel::to_string(self : MathnumericaldiffModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffLayer {
@@ -759,45 +759,45 @@ pub fn math_numerical_diff_layer_make(size : Int) -> MathnumericaldiffLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_layer_len(s : MathnumericaldiffLayer) -> Int { s.size }
+pub fn MathnumericaldiffLayer::len(self : MathnumericaldiffLayer) -> Int { self.size }
 
-pub fn math_numerical_diff_layer_get(s : MathnumericaldiffLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffLayer::get(self : MathnumericaldiffLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_layer_set(s : MathnumericaldiffLayer, i : Int, v : Double) -> MathnumericaldiffLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffLayer::set(self : MathnumericaldiffLayer, i : Int, v : Double) -> MathnumericaldiffLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_layer_sum(s : MathnumericaldiffLayer) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffLayer::sum(self : MathnumericaldiffLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_layer_mean(s : MathnumericaldiffLayer) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffLayer::mean(self : MathnumericaldiffLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_layer_scale(s : MathnumericaldiffLayer, f : Double) -> MathnumericaldiffLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffLayer::scale(self : MathnumericaldiffLayer, f : Double) -> MathnumericaldiffLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_layer_add(a : MathnumericaldiffLayer, b : MathnumericaldiffLayer) -> MathnumericaldiffLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffLayer::add(self : MathnumericaldiffLayer, other : MathnumericaldiffLayer) -> MathnumericaldiffLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_layer_copy(s : MathnumericaldiffLayer) -> MathnumericaldiffLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffLayer::copy(self : MathnumericaldiffLayer) -> MathnumericaldiffLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_layer_fill(s : MathnumericaldiffLayer, v : Double) -> MathnumericaldiffLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffLayer::fill(self : MathnumericaldiffLayer, v : Double) -> MathnumericaldiffLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_layer_min(s : MathnumericaldiffLayer) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffLayer::min(self : MathnumericaldiffLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_layer_max(s : MathnumericaldiffLayer) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffLayer::max(self : MathnumericaldiffLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_layer_to_string(s : MathnumericaldiffLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffLayer::to_string(self : MathnumericaldiffLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffBuffer {
@@ -810,45 +810,45 @@ pub fn math_numerical_diff_buffer_make(size : Int) -> MathnumericaldiffBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_buffer_len(s : MathnumericaldiffBuffer) -> Int { s.size }
+pub fn MathnumericaldiffBuffer::len(self : MathnumericaldiffBuffer) -> Int { self.size }
 
-pub fn math_numerical_diff_buffer_get(s : MathnumericaldiffBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffBuffer::get(self : MathnumericaldiffBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_buffer_set(s : MathnumericaldiffBuffer, i : Int, v : Double) -> MathnumericaldiffBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffBuffer::set(self : MathnumericaldiffBuffer, i : Int, v : Double) -> MathnumericaldiffBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_buffer_sum(s : MathnumericaldiffBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffBuffer::sum(self : MathnumericaldiffBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_buffer_mean(s : MathnumericaldiffBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffBuffer::mean(self : MathnumericaldiffBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_buffer_scale(s : MathnumericaldiffBuffer, f : Double) -> MathnumericaldiffBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffBuffer::scale(self : MathnumericaldiffBuffer, f : Double) -> MathnumericaldiffBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_buffer_add(a : MathnumericaldiffBuffer, b : MathnumericaldiffBuffer) -> MathnumericaldiffBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffBuffer::add(self : MathnumericaldiffBuffer, other : MathnumericaldiffBuffer) -> MathnumericaldiffBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_buffer_copy(s : MathnumericaldiffBuffer) -> MathnumericaldiffBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffBuffer::copy(self : MathnumericaldiffBuffer) -> MathnumericaldiffBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_buffer_fill(s : MathnumericaldiffBuffer, v : Double) -> MathnumericaldiffBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffBuffer::fill(self : MathnumericaldiffBuffer, v : Double) -> MathnumericaldiffBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_buffer_min(s : MathnumericaldiffBuffer) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffBuffer::min(self : MathnumericaldiffBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_buffer_max(s : MathnumericaldiffBuffer) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffBuffer::max(self : MathnumericaldiffBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_buffer_to_string(s : MathnumericaldiffBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffBuffer::to_string(self : MathnumericaldiffBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffCursor {
@@ -861,45 +861,45 @@ pub fn math_numerical_diff_cursor_make(size : Int) -> MathnumericaldiffCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_cursor_len(s : MathnumericaldiffCursor) -> Int { s.size }
+pub fn MathnumericaldiffCursor::len(self : MathnumericaldiffCursor) -> Int { self.size }
 
-pub fn math_numerical_diff_cursor_get(s : MathnumericaldiffCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffCursor::get(self : MathnumericaldiffCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_cursor_set(s : MathnumericaldiffCursor, i : Int, v : Double) -> MathnumericaldiffCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCursor::set(self : MathnumericaldiffCursor, i : Int, v : Double) -> MathnumericaldiffCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cursor_sum(s : MathnumericaldiffCursor) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffCursor::sum(self : MathnumericaldiffCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_cursor_mean(s : MathnumericaldiffCursor) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffCursor::mean(self : MathnumericaldiffCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_cursor_scale(s : MathnumericaldiffCursor, f : Double) -> MathnumericaldiffCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCursor::scale(self : MathnumericaldiffCursor, f : Double) -> MathnumericaldiffCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cursor_add(a : MathnumericaldiffCursor, b : MathnumericaldiffCursor) -> MathnumericaldiffCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffCursor::add(self : MathnumericaldiffCursor, other : MathnumericaldiffCursor) -> MathnumericaldiffCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cursor_copy(s : MathnumericaldiffCursor) -> MathnumericaldiffCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCursor::copy(self : MathnumericaldiffCursor) -> MathnumericaldiffCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cursor_fill(s : MathnumericaldiffCursor, v : Double) -> MathnumericaldiffCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffCursor::fill(self : MathnumericaldiffCursor, v : Double) -> MathnumericaldiffCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_cursor_min(s : MathnumericaldiffCursor) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffCursor::min(self : MathnumericaldiffCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_cursor_max(s : MathnumericaldiffCursor) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffCursor::max(self : MathnumericaldiffCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_cursor_to_string(s : MathnumericaldiffCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffCursor::to_string(self : MathnumericaldiffCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffView {
@@ -912,45 +912,45 @@ pub fn math_numerical_diff_view_make(size : Int) -> MathnumericaldiffView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_view_len(s : MathnumericaldiffView) -> Int { s.size }
+pub fn MathnumericaldiffView::len(self : MathnumericaldiffView) -> Int { self.size }
 
-pub fn math_numerical_diff_view_get(s : MathnumericaldiffView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffView::get(self : MathnumericaldiffView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_view_set(s : MathnumericaldiffView, i : Int, v : Double) -> MathnumericaldiffView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffView::set(self : MathnumericaldiffView, i : Int, v : Double) -> MathnumericaldiffView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_view_sum(s : MathnumericaldiffView) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffView::sum(self : MathnumericaldiffView) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_view_mean(s : MathnumericaldiffView) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffView::mean(self : MathnumericaldiffView) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_view_scale(s : MathnumericaldiffView, f : Double) -> MathnumericaldiffView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffView::scale(self : MathnumericaldiffView, f : Double) -> MathnumericaldiffView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_view_add(a : MathnumericaldiffView, b : MathnumericaldiffView) -> MathnumericaldiffView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffView::add(self : MathnumericaldiffView, other : MathnumericaldiffView) -> MathnumericaldiffView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_view_copy(s : MathnumericaldiffView) -> MathnumericaldiffView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffView::copy(self : MathnumericaldiffView) -> MathnumericaldiffView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_view_fill(s : MathnumericaldiffView, v : Double) -> MathnumericaldiffView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffView::fill(self : MathnumericaldiffView, v : Double) -> MathnumericaldiffView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_view_min(s : MathnumericaldiffView) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffView::min(self : MathnumericaldiffView) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_view_max(s : MathnumericaldiffView) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffView::max(self : MathnumericaldiffView) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_view_to_string(s : MathnumericaldiffView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffView::to_string(self : MathnumericaldiffView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffRange {
@@ -963,45 +963,45 @@ pub fn math_numerical_diff_range_make(size : Int) -> MathnumericaldiffRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_range_len(s : MathnumericaldiffRange) -> Int { s.size }
+pub fn MathnumericaldiffRange::len(self : MathnumericaldiffRange) -> Int { self.size }
 
-pub fn math_numerical_diff_range_get(s : MathnumericaldiffRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffRange::get(self : MathnumericaldiffRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_range_set(s : MathnumericaldiffRange, i : Int, v : Double) -> MathnumericaldiffRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffRange::set(self : MathnumericaldiffRange, i : Int, v : Double) -> MathnumericaldiffRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_range_sum(s : MathnumericaldiffRange) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffRange::sum(self : MathnumericaldiffRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_range_mean(s : MathnumericaldiffRange) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffRange::mean(self : MathnumericaldiffRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_range_scale(s : MathnumericaldiffRange, f : Double) -> MathnumericaldiffRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffRange::scale(self : MathnumericaldiffRange, f : Double) -> MathnumericaldiffRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_range_add(a : MathnumericaldiffRange, b : MathnumericaldiffRange) -> MathnumericaldiffRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffRange::add(self : MathnumericaldiffRange, other : MathnumericaldiffRange) -> MathnumericaldiffRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_range_copy(s : MathnumericaldiffRange) -> MathnumericaldiffRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffRange::copy(self : MathnumericaldiffRange) -> MathnumericaldiffRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_range_fill(s : MathnumericaldiffRange, v : Double) -> MathnumericaldiffRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffRange::fill(self : MathnumericaldiffRange, v : Double) -> MathnumericaldiffRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_range_min(s : MathnumericaldiffRange) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffRange::min(self : MathnumericaldiffRange) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_range_max(s : MathnumericaldiffRange) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffRange::max(self : MathnumericaldiffRange) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_range_to_string(s : MathnumericaldiffRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffRange::to_string(self : MathnumericaldiffRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnumericaldiffSlice {
@@ -1014,44 +1014,44 @@ pub fn math_numerical_diff_slice_make(size : Int) -> MathnumericaldiffSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_numerical_diff_slice_len(s : MathnumericaldiffSlice) -> Int { s.size }
+pub fn MathnumericaldiffSlice::len(self : MathnumericaldiffSlice) -> Int { self.size }
 
-pub fn math_numerical_diff_slice_get(s : MathnumericaldiffSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnumericaldiffSlice::get(self : MathnumericaldiffSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_numerical_diff_slice_set(s : MathnumericaldiffSlice, i : Int, v : Double) -> MathnumericaldiffSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnumericaldiffSlice::set(self : MathnumericaldiffSlice, i : Int, v : Double) -> MathnumericaldiffSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_slice_sum(s : MathnumericaldiffSlice) -> Double { @_common.sum(s.data) }
+pub fn MathnumericaldiffSlice::sum(self : MathnumericaldiffSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_numerical_diff_slice_mean(s : MathnumericaldiffSlice) -> Double { @_common.mean(s.data) }
+pub fn MathnumericaldiffSlice::mean(self : MathnumericaldiffSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_numerical_diff_slice_scale(s : MathnumericaldiffSlice, f : Double) -> MathnumericaldiffSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffSlice::scale(self : MathnumericaldiffSlice, f : Double) -> MathnumericaldiffSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_slice_add(a : MathnumericaldiffSlice, b : MathnumericaldiffSlice) -> MathnumericaldiffSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnumericaldiffSlice::add(self : MathnumericaldiffSlice, other : MathnumericaldiffSlice) -> MathnumericaldiffSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_numerical_diff_slice_copy(s : MathnumericaldiffSlice) -> MathnumericaldiffSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffSlice::copy(self : MathnumericaldiffSlice) -> MathnumericaldiffSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_slice_fill(s : MathnumericaldiffSlice, v : Double) -> MathnumericaldiffSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnumericaldiffSlice::fill(self : MathnumericaldiffSlice, v : Double) -> MathnumericaldiffSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_numerical_diff_slice_min(s : MathnumericaldiffSlice) -> Double { @_common.min(s.data) }
+pub fn MathnumericaldiffSlice::min(self : MathnumericaldiffSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_numerical_diff_slice_max(s : MathnumericaldiffSlice) -> Double { @_common.max(s.data) }
+pub fn MathnumericaldiffSlice::max(self : MathnumericaldiffSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_numerical_diff_slice_to_string(s : MathnumericaldiffSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnumericaldiffSlice::to_string(self : MathnumericaldiffSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

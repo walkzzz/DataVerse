@@ -351,45 +351,45 @@ pub fn ml_rl_ppo_frame_make(size : Int) -> MlrlppoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_frame_len(s : MlrlppoFrame) -> Int { s.size }
+pub fn MlrlppoFrame::len(self : MlrlppoFrame) -> Int { self.size }
 
-pub fn ml_rl_ppo_frame_get(s : MlrlppoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoFrame::get(self : MlrlppoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_frame_set(s : MlrlppoFrame, i : Int, v : Double) -> MlrlppoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoFrame::set(self : MlrlppoFrame, i : Int, v : Double) -> MlrlppoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_frame_sum(s : MlrlppoFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoFrame::sum(self : MlrlppoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_frame_mean(s : MlrlppoFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoFrame::mean(self : MlrlppoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_frame_scale(s : MlrlppoFrame, f : Double) -> MlrlppoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoFrame::scale(self : MlrlppoFrame, f : Double) -> MlrlppoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_frame_add(a : MlrlppoFrame, b : MlrlppoFrame) -> MlrlppoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoFrame::add(self : MlrlppoFrame, other : MlrlppoFrame) -> MlrlppoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_frame_copy(s : MlrlppoFrame) -> MlrlppoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoFrame::copy(self : MlrlppoFrame) -> MlrlppoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_frame_fill(s : MlrlppoFrame, v : Double) -> MlrlppoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoFrame::fill(self : MlrlppoFrame, v : Double) -> MlrlppoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_frame_min(s : MlrlppoFrame) -> Double { @_common.min(s.data) }
+pub fn MlrlppoFrame::min(self : MlrlppoFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_frame_max(s : MlrlppoFrame) -> Double { @_common.max(s.data) }
+pub fn MlrlppoFrame::max(self : MlrlppoFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_frame_to_string(s : MlrlppoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoFrame::to_string(self : MlrlppoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_ppo_table_make(size : Int) -> MlrlppoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_table_len(s : MlrlppoTable) -> Int { s.size }
+pub fn MlrlppoTable::len(self : MlrlppoTable) -> Int { self.size }
 
-pub fn ml_rl_ppo_table_get(s : MlrlppoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoTable::get(self : MlrlppoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_table_set(s : MlrlppoTable, i : Int, v : Double) -> MlrlppoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoTable::set(self : MlrlppoTable, i : Int, v : Double) -> MlrlppoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_table_sum(s : MlrlppoTable) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoTable::sum(self : MlrlppoTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_table_mean(s : MlrlppoTable) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoTable::mean(self : MlrlppoTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_table_scale(s : MlrlppoTable, f : Double) -> MlrlppoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoTable::scale(self : MlrlppoTable, f : Double) -> MlrlppoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_table_add(a : MlrlppoTable, b : MlrlppoTable) -> MlrlppoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoTable::add(self : MlrlppoTable, other : MlrlppoTable) -> MlrlppoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_table_copy(s : MlrlppoTable) -> MlrlppoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoTable::copy(self : MlrlppoTable) -> MlrlppoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_table_fill(s : MlrlppoTable, v : Double) -> MlrlppoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoTable::fill(self : MlrlppoTable, v : Double) -> MlrlppoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_table_min(s : MlrlppoTable) -> Double { @_common.min(s.data) }
+pub fn MlrlppoTable::min(self : MlrlppoTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_table_max(s : MlrlppoTable) -> Double { @_common.max(s.data) }
+pub fn MlrlppoTable::max(self : MlrlppoTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_table_to_string(s : MlrlppoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoTable::to_string(self : MlrlppoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_ppo_graphn_make(size : Int) -> MlrlppoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_graphn_len(s : MlrlppoGraphN) -> Int { s.size }
+pub fn MlrlppoGraphN::len(self : MlrlppoGraphN) -> Int { self.size }
 
-pub fn ml_rl_ppo_graphn_get(s : MlrlppoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoGraphN::get(self : MlrlppoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_graphn_set(s : MlrlppoGraphN, i : Int, v : Double) -> MlrlppoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoGraphN::set(self : MlrlppoGraphN, i : Int, v : Double) -> MlrlppoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_graphn_sum(s : MlrlppoGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoGraphN::sum(self : MlrlppoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_graphn_mean(s : MlrlppoGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoGraphN::mean(self : MlrlppoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_graphn_scale(s : MlrlppoGraphN, f : Double) -> MlrlppoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoGraphN::scale(self : MlrlppoGraphN, f : Double) -> MlrlppoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_graphn_add(a : MlrlppoGraphN, b : MlrlppoGraphN) -> MlrlppoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoGraphN::add(self : MlrlppoGraphN, other : MlrlppoGraphN) -> MlrlppoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_graphn_copy(s : MlrlppoGraphN) -> MlrlppoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoGraphN::copy(self : MlrlppoGraphN) -> MlrlppoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_graphn_fill(s : MlrlppoGraphN, v : Double) -> MlrlppoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoGraphN::fill(self : MlrlppoGraphN, v : Double) -> MlrlppoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_graphn_min(s : MlrlppoGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrlppoGraphN::min(self : MlrlppoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_graphn_max(s : MlrlppoGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrlppoGraphN::max(self : MlrlppoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_graphn_to_string(s : MlrlppoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoGraphN::to_string(self : MlrlppoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_ppo_node_make(size : Int) -> MlrlppoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_node_len(s : MlrlppoNode) -> Int { s.size }
+pub fn MlrlppoNode::len(self : MlrlppoNode) -> Int { self.size }
 
-pub fn ml_rl_ppo_node_get(s : MlrlppoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoNode::get(self : MlrlppoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_node_set(s : MlrlppoNode, i : Int, v : Double) -> MlrlppoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoNode::set(self : MlrlppoNode, i : Int, v : Double) -> MlrlppoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_node_sum(s : MlrlppoNode) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoNode::sum(self : MlrlppoNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_node_mean(s : MlrlppoNode) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoNode::mean(self : MlrlppoNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_node_scale(s : MlrlppoNode, f : Double) -> MlrlppoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoNode::scale(self : MlrlppoNode, f : Double) -> MlrlppoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_node_add(a : MlrlppoNode, b : MlrlppoNode) -> MlrlppoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoNode::add(self : MlrlppoNode, other : MlrlppoNode) -> MlrlppoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_node_copy(s : MlrlppoNode) -> MlrlppoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoNode::copy(self : MlrlppoNode) -> MlrlppoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_node_fill(s : MlrlppoNode, v : Double) -> MlrlppoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoNode::fill(self : MlrlppoNode, v : Double) -> MlrlppoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_node_min(s : MlrlppoNode) -> Double { @_common.min(s.data) }
+pub fn MlrlppoNode::min(self : MlrlppoNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_node_max(s : MlrlppoNode) -> Double { @_common.max(s.data) }
+pub fn MlrlppoNode::max(self : MlrlppoNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_node_to_string(s : MlrlppoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoNode::to_string(self : MlrlppoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_ppo_edge_make(size : Int) -> MlrlppoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_edge_len(s : MlrlppoEdge) -> Int { s.size }
+pub fn MlrlppoEdge::len(self : MlrlppoEdge) -> Int { self.size }
 
-pub fn ml_rl_ppo_edge_get(s : MlrlppoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoEdge::get(self : MlrlppoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_edge_set(s : MlrlppoEdge, i : Int, v : Double) -> MlrlppoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoEdge::set(self : MlrlppoEdge, i : Int, v : Double) -> MlrlppoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_edge_sum(s : MlrlppoEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoEdge::sum(self : MlrlppoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_edge_mean(s : MlrlppoEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoEdge::mean(self : MlrlppoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_edge_scale(s : MlrlppoEdge, f : Double) -> MlrlppoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoEdge::scale(self : MlrlppoEdge, f : Double) -> MlrlppoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_edge_add(a : MlrlppoEdge, b : MlrlppoEdge) -> MlrlppoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoEdge::add(self : MlrlppoEdge, other : MlrlppoEdge) -> MlrlppoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_edge_copy(s : MlrlppoEdge) -> MlrlppoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoEdge::copy(self : MlrlppoEdge) -> MlrlppoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_edge_fill(s : MlrlppoEdge, v : Double) -> MlrlppoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoEdge::fill(self : MlrlppoEdge, v : Double) -> MlrlppoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_edge_min(s : MlrlppoEdge) -> Double { @_common.min(s.data) }
+pub fn MlrlppoEdge::min(self : MlrlppoEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_edge_max(s : MlrlppoEdge) -> Double { @_common.max(s.data) }
+pub fn MlrlppoEdge::max(self : MlrlppoEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_edge_to_string(s : MlrlppoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoEdge::to_string(self : MlrlppoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_ppo_path_make(size : Int) -> MlrlppoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_path_len(s : MlrlppoPath) -> Int { s.size }
+pub fn MlrlppoPath::len(self : MlrlppoPath) -> Int { self.size }
 
-pub fn ml_rl_ppo_path_get(s : MlrlppoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoPath::get(self : MlrlppoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_path_set(s : MlrlppoPath, i : Int, v : Double) -> MlrlppoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoPath::set(self : MlrlppoPath, i : Int, v : Double) -> MlrlppoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_path_sum(s : MlrlppoPath) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoPath::sum(self : MlrlppoPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_path_mean(s : MlrlppoPath) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoPath::mean(self : MlrlppoPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_path_scale(s : MlrlppoPath, f : Double) -> MlrlppoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoPath::scale(self : MlrlppoPath, f : Double) -> MlrlppoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_path_add(a : MlrlppoPath, b : MlrlppoPath) -> MlrlppoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoPath::add(self : MlrlppoPath, other : MlrlppoPath) -> MlrlppoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_path_copy(s : MlrlppoPath) -> MlrlppoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoPath::copy(self : MlrlppoPath) -> MlrlppoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_path_fill(s : MlrlppoPath, v : Double) -> MlrlppoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoPath::fill(self : MlrlppoPath, v : Double) -> MlrlppoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_path_min(s : MlrlppoPath) -> Double { @_common.min(s.data) }
+pub fn MlrlppoPath::min(self : MlrlppoPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_path_max(s : MlrlppoPath) -> Double { @_common.max(s.data) }
+pub fn MlrlppoPath::max(self : MlrlppoPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_path_to_string(s : MlrlppoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoPath::to_string(self : MlrlppoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_ppo_cluster_make(size : Int) -> MlrlppoCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_cluster_len(s : MlrlppoCluster) -> Int { s.size }
+pub fn MlrlppoCluster::len(self : MlrlppoCluster) -> Int { self.size }
 
-pub fn ml_rl_ppo_cluster_get(s : MlrlppoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoCluster::get(self : MlrlppoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_cluster_set(s : MlrlppoCluster, i : Int, v : Double) -> MlrlppoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoCluster::set(self : MlrlppoCluster, i : Int, v : Double) -> MlrlppoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cluster_sum(s : MlrlppoCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoCluster::sum(self : MlrlppoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_cluster_mean(s : MlrlppoCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoCluster::mean(self : MlrlppoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_cluster_scale(s : MlrlppoCluster, f : Double) -> MlrlppoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoCluster::scale(self : MlrlppoCluster, f : Double) -> MlrlppoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cluster_add(a : MlrlppoCluster, b : MlrlppoCluster) -> MlrlppoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoCluster::add(self : MlrlppoCluster, other : MlrlppoCluster) -> MlrlppoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cluster_copy(s : MlrlppoCluster) -> MlrlppoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoCluster::copy(self : MlrlppoCluster) -> MlrlppoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cluster_fill(s : MlrlppoCluster, v : Double) -> MlrlppoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoCluster::fill(self : MlrlppoCluster, v : Double) -> MlrlppoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cluster_min(s : MlrlppoCluster) -> Double { @_common.min(s.data) }
+pub fn MlrlppoCluster::min(self : MlrlppoCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_cluster_max(s : MlrlppoCluster) -> Double { @_common.max(s.data) }
+pub fn MlrlppoCluster::max(self : MlrlppoCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_cluster_to_string(s : MlrlppoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoCluster::to_string(self : MlrlppoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_ppo_model_make(size : Int) -> MlrlppoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_model_len(s : MlrlppoModel) -> Int { s.size }
+pub fn MlrlppoModel::len(self : MlrlppoModel) -> Int { self.size }
 
-pub fn ml_rl_ppo_model_get(s : MlrlppoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoModel::get(self : MlrlppoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_model_set(s : MlrlppoModel, i : Int, v : Double) -> MlrlppoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoModel::set(self : MlrlppoModel, i : Int, v : Double) -> MlrlppoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_model_sum(s : MlrlppoModel) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoModel::sum(self : MlrlppoModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_model_mean(s : MlrlppoModel) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoModel::mean(self : MlrlppoModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_model_scale(s : MlrlppoModel, f : Double) -> MlrlppoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoModel::scale(self : MlrlppoModel, f : Double) -> MlrlppoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_model_add(a : MlrlppoModel, b : MlrlppoModel) -> MlrlppoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoModel::add(self : MlrlppoModel, other : MlrlppoModel) -> MlrlppoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_model_copy(s : MlrlppoModel) -> MlrlppoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoModel::copy(self : MlrlppoModel) -> MlrlppoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_model_fill(s : MlrlppoModel, v : Double) -> MlrlppoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoModel::fill(self : MlrlppoModel, v : Double) -> MlrlppoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_model_min(s : MlrlppoModel) -> Double { @_common.min(s.data) }
+pub fn MlrlppoModel::min(self : MlrlppoModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_model_max(s : MlrlppoModel) -> Double { @_common.max(s.data) }
+pub fn MlrlppoModel::max(self : MlrlppoModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_model_to_string(s : MlrlppoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoModel::to_string(self : MlrlppoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_ppo_layer_make(size : Int) -> MlrlppoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_layer_len(s : MlrlppoLayer) -> Int { s.size }
+pub fn MlrlppoLayer::len(self : MlrlppoLayer) -> Int { self.size }
 
-pub fn ml_rl_ppo_layer_get(s : MlrlppoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoLayer::get(self : MlrlppoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_layer_set(s : MlrlppoLayer, i : Int, v : Double) -> MlrlppoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoLayer::set(self : MlrlppoLayer, i : Int, v : Double) -> MlrlppoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_layer_sum(s : MlrlppoLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoLayer::sum(self : MlrlppoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_layer_mean(s : MlrlppoLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoLayer::mean(self : MlrlppoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_layer_scale(s : MlrlppoLayer, f : Double) -> MlrlppoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoLayer::scale(self : MlrlppoLayer, f : Double) -> MlrlppoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_layer_add(a : MlrlppoLayer, b : MlrlppoLayer) -> MlrlppoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoLayer::add(self : MlrlppoLayer, other : MlrlppoLayer) -> MlrlppoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_layer_copy(s : MlrlppoLayer) -> MlrlppoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoLayer::copy(self : MlrlppoLayer) -> MlrlppoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_layer_fill(s : MlrlppoLayer, v : Double) -> MlrlppoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoLayer::fill(self : MlrlppoLayer, v : Double) -> MlrlppoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_layer_min(s : MlrlppoLayer) -> Double { @_common.min(s.data) }
+pub fn MlrlppoLayer::min(self : MlrlppoLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_layer_max(s : MlrlppoLayer) -> Double { @_common.max(s.data) }
+pub fn MlrlppoLayer::max(self : MlrlppoLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_layer_to_string(s : MlrlppoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoLayer::to_string(self : MlrlppoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_ppo_buffer_make(size : Int) -> MlrlppoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_buffer_len(s : MlrlppoBuffer) -> Int { s.size }
+pub fn MlrlppoBuffer::len(self : MlrlppoBuffer) -> Int { self.size }
 
-pub fn ml_rl_ppo_buffer_get(s : MlrlppoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoBuffer::get(self : MlrlppoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_buffer_set(s : MlrlppoBuffer, i : Int, v : Double) -> MlrlppoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoBuffer::set(self : MlrlppoBuffer, i : Int, v : Double) -> MlrlppoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_buffer_sum(s : MlrlppoBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoBuffer::sum(self : MlrlppoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_buffer_mean(s : MlrlppoBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoBuffer::mean(self : MlrlppoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_buffer_scale(s : MlrlppoBuffer, f : Double) -> MlrlppoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoBuffer::scale(self : MlrlppoBuffer, f : Double) -> MlrlppoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_buffer_add(a : MlrlppoBuffer, b : MlrlppoBuffer) -> MlrlppoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoBuffer::add(self : MlrlppoBuffer, other : MlrlppoBuffer) -> MlrlppoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_buffer_copy(s : MlrlppoBuffer) -> MlrlppoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoBuffer::copy(self : MlrlppoBuffer) -> MlrlppoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_buffer_fill(s : MlrlppoBuffer, v : Double) -> MlrlppoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoBuffer::fill(self : MlrlppoBuffer, v : Double) -> MlrlppoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_buffer_min(s : MlrlppoBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrlppoBuffer::min(self : MlrlppoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_buffer_max(s : MlrlppoBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrlppoBuffer::max(self : MlrlppoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_buffer_to_string(s : MlrlppoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoBuffer::to_string(self : MlrlppoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_ppo_cursor_make(size : Int) -> MlrlppoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_cursor_len(s : MlrlppoCursor) -> Int { s.size }
+pub fn MlrlppoCursor::len(self : MlrlppoCursor) -> Int { self.size }
 
-pub fn ml_rl_ppo_cursor_get(s : MlrlppoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoCursor::get(self : MlrlppoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_cursor_set(s : MlrlppoCursor, i : Int, v : Double) -> MlrlppoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoCursor::set(self : MlrlppoCursor, i : Int, v : Double) -> MlrlppoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cursor_sum(s : MlrlppoCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoCursor::sum(self : MlrlppoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_cursor_mean(s : MlrlppoCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoCursor::mean(self : MlrlppoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_cursor_scale(s : MlrlppoCursor, f : Double) -> MlrlppoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoCursor::scale(self : MlrlppoCursor, f : Double) -> MlrlppoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cursor_add(a : MlrlppoCursor, b : MlrlppoCursor) -> MlrlppoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoCursor::add(self : MlrlppoCursor, other : MlrlppoCursor) -> MlrlppoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cursor_copy(s : MlrlppoCursor) -> MlrlppoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoCursor::copy(self : MlrlppoCursor) -> MlrlppoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cursor_fill(s : MlrlppoCursor, v : Double) -> MlrlppoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoCursor::fill(self : MlrlppoCursor, v : Double) -> MlrlppoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_cursor_min(s : MlrlppoCursor) -> Double { @_common.min(s.data) }
+pub fn MlrlppoCursor::min(self : MlrlppoCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_cursor_max(s : MlrlppoCursor) -> Double { @_common.max(s.data) }
+pub fn MlrlppoCursor::max(self : MlrlppoCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_cursor_to_string(s : MlrlppoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoCursor::to_string(self : MlrlppoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoView {
@@ -912,45 +912,45 @@ pub fn ml_rl_ppo_view_make(size : Int) -> MlrlppoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_view_len(s : MlrlppoView) -> Int { s.size }
+pub fn MlrlppoView::len(self : MlrlppoView) -> Int { self.size }
 
-pub fn ml_rl_ppo_view_get(s : MlrlppoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoView::get(self : MlrlppoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_view_set(s : MlrlppoView, i : Int, v : Double) -> MlrlppoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoView::set(self : MlrlppoView, i : Int, v : Double) -> MlrlppoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_view_sum(s : MlrlppoView) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoView::sum(self : MlrlppoView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_view_mean(s : MlrlppoView) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoView::mean(self : MlrlppoView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_view_scale(s : MlrlppoView, f : Double) -> MlrlppoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoView::scale(self : MlrlppoView, f : Double) -> MlrlppoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_view_add(a : MlrlppoView, b : MlrlppoView) -> MlrlppoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoView::add(self : MlrlppoView, other : MlrlppoView) -> MlrlppoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_view_copy(s : MlrlppoView) -> MlrlppoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoView::copy(self : MlrlppoView) -> MlrlppoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_view_fill(s : MlrlppoView, v : Double) -> MlrlppoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoView::fill(self : MlrlppoView, v : Double) -> MlrlppoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_view_min(s : MlrlppoView) -> Double { @_common.min(s.data) }
+pub fn MlrlppoView::min(self : MlrlppoView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_view_max(s : MlrlppoView) -> Double { @_common.max(s.data) }
+pub fn MlrlppoView::max(self : MlrlppoView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_view_to_string(s : MlrlppoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoView::to_string(self : MlrlppoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_ppo_range_make(size : Int) -> MlrlppoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_range_len(s : MlrlppoRange) -> Int { s.size }
+pub fn MlrlppoRange::len(self : MlrlppoRange) -> Int { self.size }
 
-pub fn ml_rl_ppo_range_get(s : MlrlppoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoRange::get(self : MlrlppoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_range_set(s : MlrlppoRange, i : Int, v : Double) -> MlrlppoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoRange::set(self : MlrlppoRange, i : Int, v : Double) -> MlrlppoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_range_sum(s : MlrlppoRange) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoRange::sum(self : MlrlppoRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_range_mean(s : MlrlppoRange) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoRange::mean(self : MlrlppoRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_range_scale(s : MlrlppoRange, f : Double) -> MlrlppoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoRange::scale(self : MlrlppoRange, f : Double) -> MlrlppoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_range_add(a : MlrlppoRange, b : MlrlppoRange) -> MlrlppoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoRange::add(self : MlrlppoRange, other : MlrlppoRange) -> MlrlppoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_range_copy(s : MlrlppoRange) -> MlrlppoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoRange::copy(self : MlrlppoRange) -> MlrlppoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_range_fill(s : MlrlppoRange, v : Double) -> MlrlppoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoRange::fill(self : MlrlppoRange, v : Double) -> MlrlppoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_range_min(s : MlrlppoRange) -> Double { @_common.min(s.data) }
+pub fn MlrlppoRange::min(self : MlrlppoRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_range_max(s : MlrlppoRange) -> Double { @_common.max(s.data) }
+pub fn MlrlppoRange::max(self : MlrlppoRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_range_to_string(s : MlrlppoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoRange::to_string(self : MlrlppoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlppoSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_ppo_slice_make(size : Int) -> MlrlppoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ppo_slice_len(s : MlrlppoSlice) -> Int { s.size }
+pub fn MlrlppoSlice::len(self : MlrlppoSlice) -> Int { self.size }
 
-pub fn ml_rl_ppo_slice_get(s : MlrlppoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlppoSlice::get(self : MlrlppoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ppo_slice_set(s : MlrlppoSlice, i : Int, v : Double) -> MlrlppoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlppoSlice::set(self : MlrlppoSlice, i : Int, v : Double) -> MlrlppoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_slice_sum(s : MlrlppoSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrlppoSlice::sum(self : MlrlppoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ppo_slice_mean(s : MlrlppoSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrlppoSlice::mean(self : MlrlppoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ppo_slice_scale(s : MlrlppoSlice, f : Double) -> MlrlppoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlppoSlice::scale(self : MlrlppoSlice, f : Double) -> MlrlppoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_slice_add(a : MlrlppoSlice, b : MlrlppoSlice) -> MlrlppoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlppoSlice::add(self : MlrlppoSlice, other : MlrlppoSlice) -> MlrlppoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_slice_copy(s : MlrlppoSlice) -> MlrlppoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlppoSlice::copy(self : MlrlppoSlice) -> MlrlppoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_slice_fill(s : MlrlppoSlice, v : Double) -> MlrlppoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlppoSlice::fill(self : MlrlppoSlice, v : Double) -> MlrlppoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ppo_slice_min(s : MlrlppoSlice) -> Double { @_common.min(s.data) }
+pub fn MlrlppoSlice::min(self : MlrlppoSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ppo_slice_max(s : MlrlppoSlice) -> Double { @_common.max(s.data) }
+pub fn MlrlppoSlice::max(self : MlrlppoSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ppo_slice_to_string(s : MlrlppoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlppoSlice::to_string(self : MlrlppoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

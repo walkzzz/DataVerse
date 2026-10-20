@@ -351,45 +351,45 @@ pub fn sort_compare_quick_frame_make(size : Int) -> SortcomparequickFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_frame_len(s : SortcomparequickFrame) -> Int { s.size }
+pub fn SortcomparequickFrame::len(self : SortcomparequickFrame) -> Int { self.size }
 
-pub fn sort_compare_quick_frame_get(s : SortcomparequickFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickFrame::get(self : SortcomparequickFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_frame_set(s : SortcomparequickFrame, i : Int, v : Double) -> SortcomparequickFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickFrame::set(self : SortcomparequickFrame, i : Int, v : Double) -> SortcomparequickFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_frame_sum(s : SortcomparequickFrame) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickFrame::sum(self : SortcomparequickFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_frame_mean(s : SortcomparequickFrame) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickFrame::mean(self : SortcomparequickFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_frame_scale(s : SortcomparequickFrame, f : Double) -> SortcomparequickFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickFrame::scale(self : SortcomparequickFrame, f : Double) -> SortcomparequickFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_frame_add(a : SortcomparequickFrame, b : SortcomparequickFrame) -> SortcomparequickFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickFrame::add(self : SortcomparequickFrame, other : SortcomparequickFrame) -> SortcomparequickFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_frame_copy(s : SortcomparequickFrame) -> SortcomparequickFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickFrame::copy(self : SortcomparequickFrame) -> SortcomparequickFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_frame_fill(s : SortcomparequickFrame, v : Double) -> SortcomparequickFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickFrame::fill(self : SortcomparequickFrame, v : Double) -> SortcomparequickFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_frame_min(s : SortcomparequickFrame) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickFrame::min(self : SortcomparequickFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_frame_max(s : SortcomparequickFrame) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickFrame::max(self : SortcomparequickFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_frame_to_string(s : SortcomparequickFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickFrame::to_string(self : SortcomparequickFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickTable {
@@ -402,45 +402,45 @@ pub fn sort_compare_quick_table_make(size : Int) -> SortcomparequickTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_table_len(s : SortcomparequickTable) -> Int { s.size }
+pub fn SortcomparequickTable::len(self : SortcomparequickTable) -> Int { self.size }
 
-pub fn sort_compare_quick_table_get(s : SortcomparequickTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickTable::get(self : SortcomparequickTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_table_set(s : SortcomparequickTable, i : Int, v : Double) -> SortcomparequickTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickTable::set(self : SortcomparequickTable, i : Int, v : Double) -> SortcomparequickTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_table_sum(s : SortcomparequickTable) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickTable::sum(self : SortcomparequickTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_table_mean(s : SortcomparequickTable) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickTable::mean(self : SortcomparequickTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_table_scale(s : SortcomparequickTable, f : Double) -> SortcomparequickTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickTable::scale(self : SortcomparequickTable, f : Double) -> SortcomparequickTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_table_add(a : SortcomparequickTable, b : SortcomparequickTable) -> SortcomparequickTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickTable::add(self : SortcomparequickTable, other : SortcomparequickTable) -> SortcomparequickTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_table_copy(s : SortcomparequickTable) -> SortcomparequickTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickTable::copy(self : SortcomparequickTable) -> SortcomparequickTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_table_fill(s : SortcomparequickTable, v : Double) -> SortcomparequickTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickTable::fill(self : SortcomparequickTable, v : Double) -> SortcomparequickTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_table_min(s : SortcomparequickTable) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickTable::min(self : SortcomparequickTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_table_max(s : SortcomparequickTable) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickTable::max(self : SortcomparequickTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_table_to_string(s : SortcomparequickTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickTable::to_string(self : SortcomparequickTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickGraphN {
@@ -453,45 +453,45 @@ pub fn sort_compare_quick_graphn_make(size : Int) -> SortcomparequickGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_graphn_len(s : SortcomparequickGraphN) -> Int { s.size }
+pub fn SortcomparequickGraphN::len(self : SortcomparequickGraphN) -> Int { self.size }
 
-pub fn sort_compare_quick_graphn_get(s : SortcomparequickGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickGraphN::get(self : SortcomparequickGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_graphn_set(s : SortcomparequickGraphN, i : Int, v : Double) -> SortcomparequickGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickGraphN::set(self : SortcomparequickGraphN, i : Int, v : Double) -> SortcomparequickGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_graphn_sum(s : SortcomparequickGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickGraphN::sum(self : SortcomparequickGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_graphn_mean(s : SortcomparequickGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickGraphN::mean(self : SortcomparequickGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_graphn_scale(s : SortcomparequickGraphN, f : Double) -> SortcomparequickGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickGraphN::scale(self : SortcomparequickGraphN, f : Double) -> SortcomparequickGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_graphn_add(a : SortcomparequickGraphN, b : SortcomparequickGraphN) -> SortcomparequickGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickGraphN::add(self : SortcomparequickGraphN, other : SortcomparequickGraphN) -> SortcomparequickGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_graphn_copy(s : SortcomparequickGraphN) -> SortcomparequickGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickGraphN::copy(self : SortcomparequickGraphN) -> SortcomparequickGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_graphn_fill(s : SortcomparequickGraphN, v : Double) -> SortcomparequickGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickGraphN::fill(self : SortcomparequickGraphN, v : Double) -> SortcomparequickGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_graphn_min(s : SortcomparequickGraphN) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickGraphN::min(self : SortcomparequickGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_graphn_max(s : SortcomparequickGraphN) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickGraphN::max(self : SortcomparequickGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_graphn_to_string(s : SortcomparequickGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickGraphN::to_string(self : SortcomparequickGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickNode {
@@ -504,45 +504,45 @@ pub fn sort_compare_quick_node_make(size : Int) -> SortcomparequickNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_node_len(s : SortcomparequickNode) -> Int { s.size }
+pub fn SortcomparequickNode::len(self : SortcomparequickNode) -> Int { self.size }
 
-pub fn sort_compare_quick_node_get(s : SortcomparequickNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickNode::get(self : SortcomparequickNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_node_set(s : SortcomparequickNode, i : Int, v : Double) -> SortcomparequickNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickNode::set(self : SortcomparequickNode, i : Int, v : Double) -> SortcomparequickNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_node_sum(s : SortcomparequickNode) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickNode::sum(self : SortcomparequickNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_node_mean(s : SortcomparequickNode) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickNode::mean(self : SortcomparequickNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_node_scale(s : SortcomparequickNode, f : Double) -> SortcomparequickNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickNode::scale(self : SortcomparequickNode, f : Double) -> SortcomparequickNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_node_add(a : SortcomparequickNode, b : SortcomparequickNode) -> SortcomparequickNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickNode::add(self : SortcomparequickNode, other : SortcomparequickNode) -> SortcomparequickNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_node_copy(s : SortcomparequickNode) -> SortcomparequickNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickNode::copy(self : SortcomparequickNode) -> SortcomparequickNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_node_fill(s : SortcomparequickNode, v : Double) -> SortcomparequickNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickNode::fill(self : SortcomparequickNode, v : Double) -> SortcomparequickNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_node_min(s : SortcomparequickNode) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickNode::min(self : SortcomparequickNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_node_max(s : SortcomparequickNode) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickNode::max(self : SortcomparequickNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_node_to_string(s : SortcomparequickNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickNode::to_string(self : SortcomparequickNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickEdge {
@@ -555,45 +555,45 @@ pub fn sort_compare_quick_edge_make(size : Int) -> SortcomparequickEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_edge_len(s : SortcomparequickEdge) -> Int { s.size }
+pub fn SortcomparequickEdge::len(self : SortcomparequickEdge) -> Int { self.size }
 
-pub fn sort_compare_quick_edge_get(s : SortcomparequickEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickEdge::get(self : SortcomparequickEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_edge_set(s : SortcomparequickEdge, i : Int, v : Double) -> SortcomparequickEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickEdge::set(self : SortcomparequickEdge, i : Int, v : Double) -> SortcomparequickEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_edge_sum(s : SortcomparequickEdge) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickEdge::sum(self : SortcomparequickEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_edge_mean(s : SortcomparequickEdge) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickEdge::mean(self : SortcomparequickEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_edge_scale(s : SortcomparequickEdge, f : Double) -> SortcomparequickEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickEdge::scale(self : SortcomparequickEdge, f : Double) -> SortcomparequickEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_edge_add(a : SortcomparequickEdge, b : SortcomparequickEdge) -> SortcomparequickEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickEdge::add(self : SortcomparequickEdge, other : SortcomparequickEdge) -> SortcomparequickEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_edge_copy(s : SortcomparequickEdge) -> SortcomparequickEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickEdge::copy(self : SortcomparequickEdge) -> SortcomparequickEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_edge_fill(s : SortcomparequickEdge, v : Double) -> SortcomparequickEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickEdge::fill(self : SortcomparequickEdge, v : Double) -> SortcomparequickEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_edge_min(s : SortcomparequickEdge) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickEdge::min(self : SortcomparequickEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_edge_max(s : SortcomparequickEdge) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickEdge::max(self : SortcomparequickEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_edge_to_string(s : SortcomparequickEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickEdge::to_string(self : SortcomparequickEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickPath {
@@ -606,45 +606,45 @@ pub fn sort_compare_quick_path_make(size : Int) -> SortcomparequickPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_path_len(s : SortcomparequickPath) -> Int { s.size }
+pub fn SortcomparequickPath::len(self : SortcomparequickPath) -> Int { self.size }
 
-pub fn sort_compare_quick_path_get(s : SortcomparequickPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickPath::get(self : SortcomparequickPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_path_set(s : SortcomparequickPath, i : Int, v : Double) -> SortcomparequickPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickPath::set(self : SortcomparequickPath, i : Int, v : Double) -> SortcomparequickPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_path_sum(s : SortcomparequickPath) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickPath::sum(self : SortcomparequickPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_path_mean(s : SortcomparequickPath) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickPath::mean(self : SortcomparequickPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_path_scale(s : SortcomparequickPath, f : Double) -> SortcomparequickPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickPath::scale(self : SortcomparequickPath, f : Double) -> SortcomparequickPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_path_add(a : SortcomparequickPath, b : SortcomparequickPath) -> SortcomparequickPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickPath::add(self : SortcomparequickPath, other : SortcomparequickPath) -> SortcomparequickPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_path_copy(s : SortcomparequickPath) -> SortcomparequickPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickPath::copy(self : SortcomparequickPath) -> SortcomparequickPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_path_fill(s : SortcomparequickPath, v : Double) -> SortcomparequickPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickPath::fill(self : SortcomparequickPath, v : Double) -> SortcomparequickPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_path_min(s : SortcomparequickPath) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickPath::min(self : SortcomparequickPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_path_max(s : SortcomparequickPath) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickPath::max(self : SortcomparequickPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_path_to_string(s : SortcomparequickPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickPath::to_string(self : SortcomparequickPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickCluster {
@@ -657,45 +657,45 @@ pub fn sort_compare_quick_cluster_make(size : Int) -> SortcomparequickCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_cluster_len(s : SortcomparequickCluster) -> Int { s.size }
+pub fn SortcomparequickCluster::len(self : SortcomparequickCluster) -> Int { self.size }
 
-pub fn sort_compare_quick_cluster_get(s : SortcomparequickCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickCluster::get(self : SortcomparequickCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_cluster_set(s : SortcomparequickCluster, i : Int, v : Double) -> SortcomparequickCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickCluster::set(self : SortcomparequickCluster, i : Int, v : Double) -> SortcomparequickCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cluster_sum(s : SortcomparequickCluster) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickCluster::sum(self : SortcomparequickCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_cluster_mean(s : SortcomparequickCluster) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickCluster::mean(self : SortcomparequickCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_cluster_scale(s : SortcomparequickCluster, f : Double) -> SortcomparequickCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickCluster::scale(self : SortcomparequickCluster, f : Double) -> SortcomparequickCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cluster_add(a : SortcomparequickCluster, b : SortcomparequickCluster) -> SortcomparequickCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickCluster::add(self : SortcomparequickCluster, other : SortcomparequickCluster) -> SortcomparequickCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cluster_copy(s : SortcomparequickCluster) -> SortcomparequickCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickCluster::copy(self : SortcomparequickCluster) -> SortcomparequickCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cluster_fill(s : SortcomparequickCluster, v : Double) -> SortcomparequickCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickCluster::fill(self : SortcomparequickCluster, v : Double) -> SortcomparequickCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cluster_min(s : SortcomparequickCluster) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickCluster::min(self : SortcomparequickCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_cluster_max(s : SortcomparequickCluster) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickCluster::max(self : SortcomparequickCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_cluster_to_string(s : SortcomparequickCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickCluster::to_string(self : SortcomparequickCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickModel {
@@ -708,45 +708,45 @@ pub fn sort_compare_quick_model_make(size : Int) -> SortcomparequickModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_model_len(s : SortcomparequickModel) -> Int { s.size }
+pub fn SortcomparequickModel::len(self : SortcomparequickModel) -> Int { self.size }
 
-pub fn sort_compare_quick_model_get(s : SortcomparequickModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickModel::get(self : SortcomparequickModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_model_set(s : SortcomparequickModel, i : Int, v : Double) -> SortcomparequickModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickModel::set(self : SortcomparequickModel, i : Int, v : Double) -> SortcomparequickModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_model_sum(s : SortcomparequickModel) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickModel::sum(self : SortcomparequickModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_model_mean(s : SortcomparequickModel) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickModel::mean(self : SortcomparequickModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_model_scale(s : SortcomparequickModel, f : Double) -> SortcomparequickModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickModel::scale(self : SortcomparequickModel, f : Double) -> SortcomparequickModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_model_add(a : SortcomparequickModel, b : SortcomparequickModel) -> SortcomparequickModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickModel::add(self : SortcomparequickModel, other : SortcomparequickModel) -> SortcomparequickModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_model_copy(s : SortcomparequickModel) -> SortcomparequickModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickModel::copy(self : SortcomparequickModel) -> SortcomparequickModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_model_fill(s : SortcomparequickModel, v : Double) -> SortcomparequickModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickModel::fill(self : SortcomparequickModel, v : Double) -> SortcomparequickModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_model_min(s : SortcomparequickModel) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickModel::min(self : SortcomparequickModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_model_max(s : SortcomparequickModel) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickModel::max(self : SortcomparequickModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_model_to_string(s : SortcomparequickModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickModel::to_string(self : SortcomparequickModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickLayer {
@@ -759,45 +759,45 @@ pub fn sort_compare_quick_layer_make(size : Int) -> SortcomparequickLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_layer_len(s : SortcomparequickLayer) -> Int { s.size }
+pub fn SortcomparequickLayer::len(self : SortcomparequickLayer) -> Int { self.size }
 
-pub fn sort_compare_quick_layer_get(s : SortcomparequickLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickLayer::get(self : SortcomparequickLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_layer_set(s : SortcomparequickLayer, i : Int, v : Double) -> SortcomparequickLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickLayer::set(self : SortcomparequickLayer, i : Int, v : Double) -> SortcomparequickLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_layer_sum(s : SortcomparequickLayer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickLayer::sum(self : SortcomparequickLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_layer_mean(s : SortcomparequickLayer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickLayer::mean(self : SortcomparequickLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_layer_scale(s : SortcomparequickLayer, f : Double) -> SortcomparequickLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickLayer::scale(self : SortcomparequickLayer, f : Double) -> SortcomparequickLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_layer_add(a : SortcomparequickLayer, b : SortcomparequickLayer) -> SortcomparequickLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickLayer::add(self : SortcomparequickLayer, other : SortcomparequickLayer) -> SortcomparequickLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_layer_copy(s : SortcomparequickLayer) -> SortcomparequickLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickLayer::copy(self : SortcomparequickLayer) -> SortcomparequickLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_layer_fill(s : SortcomparequickLayer, v : Double) -> SortcomparequickLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickLayer::fill(self : SortcomparequickLayer, v : Double) -> SortcomparequickLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_layer_min(s : SortcomparequickLayer) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickLayer::min(self : SortcomparequickLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_layer_max(s : SortcomparequickLayer) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickLayer::max(self : SortcomparequickLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_layer_to_string(s : SortcomparequickLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickLayer::to_string(self : SortcomparequickLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickBuffer {
@@ -810,45 +810,45 @@ pub fn sort_compare_quick_buffer_make(size : Int) -> SortcomparequickBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_buffer_len(s : SortcomparequickBuffer) -> Int { s.size }
+pub fn SortcomparequickBuffer::len(self : SortcomparequickBuffer) -> Int { self.size }
 
-pub fn sort_compare_quick_buffer_get(s : SortcomparequickBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickBuffer::get(self : SortcomparequickBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_buffer_set(s : SortcomparequickBuffer, i : Int, v : Double) -> SortcomparequickBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickBuffer::set(self : SortcomparequickBuffer, i : Int, v : Double) -> SortcomparequickBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_buffer_sum(s : SortcomparequickBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickBuffer::sum(self : SortcomparequickBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_buffer_mean(s : SortcomparequickBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickBuffer::mean(self : SortcomparequickBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_buffer_scale(s : SortcomparequickBuffer, f : Double) -> SortcomparequickBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickBuffer::scale(self : SortcomparequickBuffer, f : Double) -> SortcomparequickBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_buffer_add(a : SortcomparequickBuffer, b : SortcomparequickBuffer) -> SortcomparequickBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickBuffer::add(self : SortcomparequickBuffer, other : SortcomparequickBuffer) -> SortcomparequickBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_buffer_copy(s : SortcomparequickBuffer) -> SortcomparequickBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickBuffer::copy(self : SortcomparequickBuffer) -> SortcomparequickBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_buffer_fill(s : SortcomparequickBuffer, v : Double) -> SortcomparequickBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickBuffer::fill(self : SortcomparequickBuffer, v : Double) -> SortcomparequickBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_buffer_min(s : SortcomparequickBuffer) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickBuffer::min(self : SortcomparequickBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_buffer_max(s : SortcomparequickBuffer) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickBuffer::max(self : SortcomparequickBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_buffer_to_string(s : SortcomparequickBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickBuffer::to_string(self : SortcomparequickBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickCursor {
@@ -861,45 +861,45 @@ pub fn sort_compare_quick_cursor_make(size : Int) -> SortcomparequickCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_cursor_len(s : SortcomparequickCursor) -> Int { s.size }
+pub fn SortcomparequickCursor::len(self : SortcomparequickCursor) -> Int { self.size }
 
-pub fn sort_compare_quick_cursor_get(s : SortcomparequickCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickCursor::get(self : SortcomparequickCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_cursor_set(s : SortcomparequickCursor, i : Int, v : Double) -> SortcomparequickCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickCursor::set(self : SortcomparequickCursor, i : Int, v : Double) -> SortcomparequickCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cursor_sum(s : SortcomparequickCursor) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickCursor::sum(self : SortcomparequickCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_cursor_mean(s : SortcomparequickCursor) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickCursor::mean(self : SortcomparequickCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_cursor_scale(s : SortcomparequickCursor, f : Double) -> SortcomparequickCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickCursor::scale(self : SortcomparequickCursor, f : Double) -> SortcomparequickCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cursor_add(a : SortcomparequickCursor, b : SortcomparequickCursor) -> SortcomparequickCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickCursor::add(self : SortcomparequickCursor, other : SortcomparequickCursor) -> SortcomparequickCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cursor_copy(s : SortcomparequickCursor) -> SortcomparequickCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickCursor::copy(self : SortcomparequickCursor) -> SortcomparequickCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cursor_fill(s : SortcomparequickCursor, v : Double) -> SortcomparequickCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickCursor::fill(self : SortcomparequickCursor, v : Double) -> SortcomparequickCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_cursor_min(s : SortcomparequickCursor) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickCursor::min(self : SortcomparequickCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_cursor_max(s : SortcomparequickCursor) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickCursor::max(self : SortcomparequickCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_cursor_to_string(s : SortcomparequickCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickCursor::to_string(self : SortcomparequickCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickView {
@@ -912,45 +912,45 @@ pub fn sort_compare_quick_view_make(size : Int) -> SortcomparequickView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_view_len(s : SortcomparequickView) -> Int { s.size }
+pub fn SortcomparequickView::len(self : SortcomparequickView) -> Int { self.size }
 
-pub fn sort_compare_quick_view_get(s : SortcomparequickView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickView::get(self : SortcomparequickView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_view_set(s : SortcomparequickView, i : Int, v : Double) -> SortcomparequickView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickView::set(self : SortcomparequickView, i : Int, v : Double) -> SortcomparequickView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_view_sum(s : SortcomparequickView) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickView::sum(self : SortcomparequickView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_view_mean(s : SortcomparequickView) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickView::mean(self : SortcomparequickView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_view_scale(s : SortcomparequickView, f : Double) -> SortcomparequickView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickView::scale(self : SortcomparequickView, f : Double) -> SortcomparequickView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_view_add(a : SortcomparequickView, b : SortcomparequickView) -> SortcomparequickView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickView::add(self : SortcomparequickView, other : SortcomparequickView) -> SortcomparequickView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_view_copy(s : SortcomparequickView) -> SortcomparequickView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickView::copy(self : SortcomparequickView) -> SortcomparequickView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_view_fill(s : SortcomparequickView, v : Double) -> SortcomparequickView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickView::fill(self : SortcomparequickView, v : Double) -> SortcomparequickView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_view_min(s : SortcomparequickView) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickView::min(self : SortcomparequickView) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_view_max(s : SortcomparequickView) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickView::max(self : SortcomparequickView) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_view_to_string(s : SortcomparequickView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickView::to_string(self : SortcomparequickView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickRange {
@@ -963,45 +963,45 @@ pub fn sort_compare_quick_range_make(size : Int) -> SortcomparequickRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_range_len(s : SortcomparequickRange) -> Int { s.size }
+pub fn SortcomparequickRange::len(self : SortcomparequickRange) -> Int { self.size }
 
-pub fn sort_compare_quick_range_get(s : SortcomparequickRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickRange::get(self : SortcomparequickRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_range_set(s : SortcomparequickRange, i : Int, v : Double) -> SortcomparequickRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickRange::set(self : SortcomparequickRange, i : Int, v : Double) -> SortcomparequickRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_range_sum(s : SortcomparequickRange) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickRange::sum(self : SortcomparequickRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_range_mean(s : SortcomparequickRange) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickRange::mean(self : SortcomparequickRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_range_scale(s : SortcomparequickRange, f : Double) -> SortcomparequickRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickRange::scale(self : SortcomparequickRange, f : Double) -> SortcomparequickRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_range_add(a : SortcomparequickRange, b : SortcomparequickRange) -> SortcomparequickRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickRange::add(self : SortcomparequickRange, other : SortcomparequickRange) -> SortcomparequickRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_range_copy(s : SortcomparequickRange) -> SortcomparequickRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickRange::copy(self : SortcomparequickRange) -> SortcomparequickRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_range_fill(s : SortcomparequickRange, v : Double) -> SortcomparequickRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickRange::fill(self : SortcomparequickRange, v : Double) -> SortcomparequickRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_range_min(s : SortcomparequickRange) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickRange::min(self : SortcomparequickRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_range_max(s : SortcomparequickRange) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickRange::max(self : SortcomparequickRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_range_to_string(s : SortcomparequickRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickRange::to_string(self : SortcomparequickRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparequickSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_compare_quick_slice_make(size : Int) -> SortcomparequickSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_quick_slice_len(s : SortcomparequickSlice) -> Int { s.size }
+pub fn SortcomparequickSlice::len(self : SortcomparequickSlice) -> Int { self.size }
 
-pub fn sort_compare_quick_slice_get(s : SortcomparequickSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparequickSlice::get(self : SortcomparequickSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_quick_slice_set(s : SortcomparequickSlice, i : Int, v : Double) -> SortcomparequickSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparequickSlice::set(self : SortcomparequickSlice, i : Int, v : Double) -> SortcomparequickSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_slice_sum(s : SortcomparequickSlice) -> Double { @_common.sum(s.data) }
+pub fn SortcomparequickSlice::sum(self : SortcomparequickSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_quick_slice_mean(s : SortcomparequickSlice) -> Double { @_common.mean(s.data) }
+pub fn SortcomparequickSlice::mean(self : SortcomparequickSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_quick_slice_scale(s : SortcomparequickSlice, f : Double) -> SortcomparequickSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparequickSlice::scale(self : SortcomparequickSlice, f : Double) -> SortcomparequickSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_slice_add(a : SortcomparequickSlice, b : SortcomparequickSlice) -> SortcomparequickSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparequickSlice::add(self : SortcomparequickSlice, other : SortcomparequickSlice) -> SortcomparequickSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_quick_slice_copy(s : SortcomparequickSlice) -> SortcomparequickSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparequickSlice::copy(self : SortcomparequickSlice) -> SortcomparequickSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_slice_fill(s : SortcomparequickSlice, v : Double) -> SortcomparequickSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparequickSlice::fill(self : SortcomparequickSlice, v : Double) -> SortcomparequickSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_quick_slice_min(s : SortcomparequickSlice) -> Double { @_common.min(s.data) }
+pub fn SortcomparequickSlice::min(self : SortcomparequickSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_quick_slice_max(s : SortcomparequickSlice) -> Double { @_common.max(s.data) }
+pub fn SortcomparequickSlice::max(self : SortcomparequickSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_quick_slice_to_string(s : SortcomparequickSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparequickSlice::to_string(self : SortcomparequickSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

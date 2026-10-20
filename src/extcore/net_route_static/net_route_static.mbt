@@ -351,45 +351,45 @@ pub fn net_route_static_frame_make(size : Int) -> NetroutestaticFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_frame_len(s : NetroutestaticFrame) -> Int { s.size }
+pub fn NetroutestaticFrame::len(self : NetroutestaticFrame) -> Int { self.size }
 
-pub fn net_route_static_frame_get(s : NetroutestaticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticFrame::get(self : NetroutestaticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_frame_set(s : NetroutestaticFrame, i : Int, v : Double) -> NetroutestaticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticFrame::set(self : NetroutestaticFrame, i : Int, v : Double) -> NetroutestaticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_frame_sum(s : NetroutestaticFrame) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticFrame::sum(self : NetroutestaticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_frame_mean(s : NetroutestaticFrame) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticFrame::mean(self : NetroutestaticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_frame_scale(s : NetroutestaticFrame, f : Double) -> NetroutestaticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticFrame::scale(self : NetroutestaticFrame, f : Double) -> NetroutestaticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_frame_add(a : NetroutestaticFrame, b : NetroutestaticFrame) -> NetroutestaticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticFrame::add(self : NetroutestaticFrame, other : NetroutestaticFrame) -> NetroutestaticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_frame_copy(s : NetroutestaticFrame) -> NetroutestaticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticFrame::copy(self : NetroutestaticFrame) -> NetroutestaticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_frame_fill(s : NetroutestaticFrame, v : Double) -> NetroutestaticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticFrame::fill(self : NetroutestaticFrame, v : Double) -> NetroutestaticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_frame_min(s : NetroutestaticFrame) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticFrame::min(self : NetroutestaticFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_frame_max(s : NetroutestaticFrame) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticFrame::max(self : NetroutestaticFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_frame_to_string(s : NetroutestaticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticFrame::to_string(self : NetroutestaticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticTable {
@@ -402,45 +402,45 @@ pub fn net_route_static_table_make(size : Int) -> NetroutestaticTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_table_len(s : NetroutestaticTable) -> Int { s.size }
+pub fn NetroutestaticTable::len(self : NetroutestaticTable) -> Int { self.size }
 
-pub fn net_route_static_table_get(s : NetroutestaticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticTable::get(self : NetroutestaticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_table_set(s : NetroutestaticTable, i : Int, v : Double) -> NetroutestaticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticTable::set(self : NetroutestaticTable, i : Int, v : Double) -> NetroutestaticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_table_sum(s : NetroutestaticTable) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticTable::sum(self : NetroutestaticTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_table_mean(s : NetroutestaticTable) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticTable::mean(self : NetroutestaticTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_table_scale(s : NetroutestaticTable, f : Double) -> NetroutestaticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticTable::scale(self : NetroutestaticTable, f : Double) -> NetroutestaticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_table_add(a : NetroutestaticTable, b : NetroutestaticTable) -> NetroutestaticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticTable::add(self : NetroutestaticTable, other : NetroutestaticTable) -> NetroutestaticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_table_copy(s : NetroutestaticTable) -> NetroutestaticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticTable::copy(self : NetroutestaticTable) -> NetroutestaticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_table_fill(s : NetroutestaticTable, v : Double) -> NetroutestaticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticTable::fill(self : NetroutestaticTable, v : Double) -> NetroutestaticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_table_min(s : NetroutestaticTable) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticTable::min(self : NetroutestaticTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_table_max(s : NetroutestaticTable) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticTable::max(self : NetroutestaticTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_table_to_string(s : NetroutestaticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticTable::to_string(self : NetroutestaticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_static_graphn_make(size : Int) -> NetroutestaticGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_graphn_len(s : NetroutestaticGraphN) -> Int { s.size }
+pub fn NetroutestaticGraphN::len(self : NetroutestaticGraphN) -> Int { self.size }
 
-pub fn net_route_static_graphn_get(s : NetroutestaticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticGraphN::get(self : NetroutestaticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_graphn_set(s : NetroutestaticGraphN, i : Int, v : Double) -> NetroutestaticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticGraphN::set(self : NetroutestaticGraphN, i : Int, v : Double) -> NetroutestaticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_graphn_sum(s : NetroutestaticGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticGraphN::sum(self : NetroutestaticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_graphn_mean(s : NetroutestaticGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticGraphN::mean(self : NetroutestaticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_graphn_scale(s : NetroutestaticGraphN, f : Double) -> NetroutestaticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticGraphN::scale(self : NetroutestaticGraphN, f : Double) -> NetroutestaticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_graphn_add(a : NetroutestaticGraphN, b : NetroutestaticGraphN) -> NetroutestaticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticGraphN::add(self : NetroutestaticGraphN, other : NetroutestaticGraphN) -> NetroutestaticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_graphn_copy(s : NetroutestaticGraphN) -> NetroutestaticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticGraphN::copy(self : NetroutestaticGraphN) -> NetroutestaticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_graphn_fill(s : NetroutestaticGraphN, v : Double) -> NetroutestaticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticGraphN::fill(self : NetroutestaticGraphN, v : Double) -> NetroutestaticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_graphn_min(s : NetroutestaticGraphN) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticGraphN::min(self : NetroutestaticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_graphn_max(s : NetroutestaticGraphN) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticGraphN::max(self : NetroutestaticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_graphn_to_string(s : NetroutestaticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticGraphN::to_string(self : NetroutestaticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticNode {
@@ -504,45 +504,45 @@ pub fn net_route_static_node_make(size : Int) -> NetroutestaticNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_node_len(s : NetroutestaticNode) -> Int { s.size }
+pub fn NetroutestaticNode::len(self : NetroutestaticNode) -> Int { self.size }
 
-pub fn net_route_static_node_get(s : NetroutestaticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticNode::get(self : NetroutestaticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_node_set(s : NetroutestaticNode, i : Int, v : Double) -> NetroutestaticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticNode::set(self : NetroutestaticNode, i : Int, v : Double) -> NetroutestaticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_node_sum(s : NetroutestaticNode) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticNode::sum(self : NetroutestaticNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_node_mean(s : NetroutestaticNode) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticNode::mean(self : NetroutestaticNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_node_scale(s : NetroutestaticNode, f : Double) -> NetroutestaticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticNode::scale(self : NetroutestaticNode, f : Double) -> NetroutestaticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_node_add(a : NetroutestaticNode, b : NetroutestaticNode) -> NetroutestaticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticNode::add(self : NetroutestaticNode, other : NetroutestaticNode) -> NetroutestaticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_node_copy(s : NetroutestaticNode) -> NetroutestaticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticNode::copy(self : NetroutestaticNode) -> NetroutestaticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_node_fill(s : NetroutestaticNode, v : Double) -> NetroutestaticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticNode::fill(self : NetroutestaticNode, v : Double) -> NetroutestaticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_node_min(s : NetroutestaticNode) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticNode::min(self : NetroutestaticNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_node_max(s : NetroutestaticNode) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticNode::max(self : NetroutestaticNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_node_to_string(s : NetroutestaticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticNode::to_string(self : NetroutestaticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticEdge {
@@ -555,45 +555,45 @@ pub fn net_route_static_edge_make(size : Int) -> NetroutestaticEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_edge_len(s : NetroutestaticEdge) -> Int { s.size }
+pub fn NetroutestaticEdge::len(self : NetroutestaticEdge) -> Int { self.size }
 
-pub fn net_route_static_edge_get(s : NetroutestaticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticEdge::get(self : NetroutestaticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_edge_set(s : NetroutestaticEdge, i : Int, v : Double) -> NetroutestaticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticEdge::set(self : NetroutestaticEdge, i : Int, v : Double) -> NetroutestaticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_edge_sum(s : NetroutestaticEdge) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticEdge::sum(self : NetroutestaticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_edge_mean(s : NetroutestaticEdge) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticEdge::mean(self : NetroutestaticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_edge_scale(s : NetroutestaticEdge, f : Double) -> NetroutestaticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticEdge::scale(self : NetroutestaticEdge, f : Double) -> NetroutestaticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_edge_add(a : NetroutestaticEdge, b : NetroutestaticEdge) -> NetroutestaticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticEdge::add(self : NetroutestaticEdge, other : NetroutestaticEdge) -> NetroutestaticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_edge_copy(s : NetroutestaticEdge) -> NetroutestaticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticEdge::copy(self : NetroutestaticEdge) -> NetroutestaticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_edge_fill(s : NetroutestaticEdge, v : Double) -> NetroutestaticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticEdge::fill(self : NetroutestaticEdge, v : Double) -> NetroutestaticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_edge_min(s : NetroutestaticEdge) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticEdge::min(self : NetroutestaticEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_edge_max(s : NetroutestaticEdge) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticEdge::max(self : NetroutestaticEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_edge_to_string(s : NetroutestaticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticEdge::to_string(self : NetroutestaticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticPath {
@@ -606,45 +606,45 @@ pub fn net_route_static_path_make(size : Int) -> NetroutestaticPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_path_len(s : NetroutestaticPath) -> Int { s.size }
+pub fn NetroutestaticPath::len(self : NetroutestaticPath) -> Int { self.size }
 
-pub fn net_route_static_path_get(s : NetroutestaticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticPath::get(self : NetroutestaticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_path_set(s : NetroutestaticPath, i : Int, v : Double) -> NetroutestaticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticPath::set(self : NetroutestaticPath, i : Int, v : Double) -> NetroutestaticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_path_sum(s : NetroutestaticPath) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticPath::sum(self : NetroutestaticPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_path_mean(s : NetroutestaticPath) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticPath::mean(self : NetroutestaticPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_path_scale(s : NetroutestaticPath, f : Double) -> NetroutestaticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticPath::scale(self : NetroutestaticPath, f : Double) -> NetroutestaticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_path_add(a : NetroutestaticPath, b : NetroutestaticPath) -> NetroutestaticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticPath::add(self : NetroutestaticPath, other : NetroutestaticPath) -> NetroutestaticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_path_copy(s : NetroutestaticPath) -> NetroutestaticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticPath::copy(self : NetroutestaticPath) -> NetroutestaticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_path_fill(s : NetroutestaticPath, v : Double) -> NetroutestaticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticPath::fill(self : NetroutestaticPath, v : Double) -> NetroutestaticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_path_min(s : NetroutestaticPath) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticPath::min(self : NetroutestaticPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_path_max(s : NetroutestaticPath) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticPath::max(self : NetroutestaticPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_path_to_string(s : NetroutestaticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticPath::to_string(self : NetroutestaticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticCluster {
@@ -657,45 +657,45 @@ pub fn net_route_static_cluster_make(size : Int) -> NetroutestaticCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_cluster_len(s : NetroutestaticCluster) -> Int { s.size }
+pub fn NetroutestaticCluster::len(self : NetroutestaticCluster) -> Int { self.size }
 
-pub fn net_route_static_cluster_get(s : NetroutestaticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticCluster::get(self : NetroutestaticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_cluster_set(s : NetroutestaticCluster, i : Int, v : Double) -> NetroutestaticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticCluster::set(self : NetroutestaticCluster, i : Int, v : Double) -> NetroutestaticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cluster_sum(s : NetroutestaticCluster) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticCluster::sum(self : NetroutestaticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_cluster_mean(s : NetroutestaticCluster) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticCluster::mean(self : NetroutestaticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_cluster_scale(s : NetroutestaticCluster, f : Double) -> NetroutestaticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticCluster::scale(self : NetroutestaticCluster, f : Double) -> NetroutestaticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cluster_add(a : NetroutestaticCluster, b : NetroutestaticCluster) -> NetroutestaticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticCluster::add(self : NetroutestaticCluster, other : NetroutestaticCluster) -> NetroutestaticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_cluster_copy(s : NetroutestaticCluster) -> NetroutestaticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticCluster::copy(self : NetroutestaticCluster) -> NetroutestaticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cluster_fill(s : NetroutestaticCluster, v : Double) -> NetroutestaticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticCluster::fill(self : NetroutestaticCluster, v : Double) -> NetroutestaticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cluster_min(s : NetroutestaticCluster) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticCluster::min(self : NetroutestaticCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_cluster_max(s : NetroutestaticCluster) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticCluster::max(self : NetroutestaticCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_cluster_to_string(s : NetroutestaticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticCluster::to_string(self : NetroutestaticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticModel {
@@ -708,45 +708,45 @@ pub fn net_route_static_model_make(size : Int) -> NetroutestaticModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_model_len(s : NetroutestaticModel) -> Int { s.size }
+pub fn NetroutestaticModel::len(self : NetroutestaticModel) -> Int { self.size }
 
-pub fn net_route_static_model_get(s : NetroutestaticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticModel::get(self : NetroutestaticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_model_set(s : NetroutestaticModel, i : Int, v : Double) -> NetroutestaticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticModel::set(self : NetroutestaticModel, i : Int, v : Double) -> NetroutestaticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_model_sum(s : NetroutestaticModel) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticModel::sum(self : NetroutestaticModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_model_mean(s : NetroutestaticModel) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticModel::mean(self : NetroutestaticModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_model_scale(s : NetroutestaticModel, f : Double) -> NetroutestaticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticModel::scale(self : NetroutestaticModel, f : Double) -> NetroutestaticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_model_add(a : NetroutestaticModel, b : NetroutestaticModel) -> NetroutestaticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticModel::add(self : NetroutestaticModel, other : NetroutestaticModel) -> NetroutestaticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_model_copy(s : NetroutestaticModel) -> NetroutestaticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticModel::copy(self : NetroutestaticModel) -> NetroutestaticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_model_fill(s : NetroutestaticModel, v : Double) -> NetroutestaticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticModel::fill(self : NetroutestaticModel, v : Double) -> NetroutestaticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_model_min(s : NetroutestaticModel) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticModel::min(self : NetroutestaticModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_model_max(s : NetroutestaticModel) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticModel::max(self : NetroutestaticModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_model_to_string(s : NetroutestaticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticModel::to_string(self : NetroutestaticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticLayer {
@@ -759,45 +759,45 @@ pub fn net_route_static_layer_make(size : Int) -> NetroutestaticLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_layer_len(s : NetroutestaticLayer) -> Int { s.size }
+pub fn NetroutestaticLayer::len(self : NetroutestaticLayer) -> Int { self.size }
 
-pub fn net_route_static_layer_get(s : NetroutestaticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticLayer::get(self : NetroutestaticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_layer_set(s : NetroutestaticLayer, i : Int, v : Double) -> NetroutestaticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticLayer::set(self : NetroutestaticLayer, i : Int, v : Double) -> NetroutestaticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_layer_sum(s : NetroutestaticLayer) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticLayer::sum(self : NetroutestaticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_layer_mean(s : NetroutestaticLayer) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticLayer::mean(self : NetroutestaticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_layer_scale(s : NetroutestaticLayer, f : Double) -> NetroutestaticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticLayer::scale(self : NetroutestaticLayer, f : Double) -> NetroutestaticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_layer_add(a : NetroutestaticLayer, b : NetroutestaticLayer) -> NetroutestaticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticLayer::add(self : NetroutestaticLayer, other : NetroutestaticLayer) -> NetroutestaticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_layer_copy(s : NetroutestaticLayer) -> NetroutestaticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticLayer::copy(self : NetroutestaticLayer) -> NetroutestaticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_layer_fill(s : NetroutestaticLayer, v : Double) -> NetroutestaticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticLayer::fill(self : NetroutestaticLayer, v : Double) -> NetroutestaticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_layer_min(s : NetroutestaticLayer) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticLayer::min(self : NetroutestaticLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_layer_max(s : NetroutestaticLayer) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticLayer::max(self : NetroutestaticLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_layer_to_string(s : NetroutestaticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticLayer::to_string(self : NetroutestaticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_static_buffer_make(size : Int) -> NetroutestaticBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_buffer_len(s : NetroutestaticBuffer) -> Int { s.size }
+pub fn NetroutestaticBuffer::len(self : NetroutestaticBuffer) -> Int { self.size }
 
-pub fn net_route_static_buffer_get(s : NetroutestaticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticBuffer::get(self : NetroutestaticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_buffer_set(s : NetroutestaticBuffer, i : Int, v : Double) -> NetroutestaticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticBuffer::set(self : NetroutestaticBuffer, i : Int, v : Double) -> NetroutestaticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_buffer_sum(s : NetroutestaticBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticBuffer::sum(self : NetroutestaticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_buffer_mean(s : NetroutestaticBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticBuffer::mean(self : NetroutestaticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_buffer_scale(s : NetroutestaticBuffer, f : Double) -> NetroutestaticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticBuffer::scale(self : NetroutestaticBuffer, f : Double) -> NetroutestaticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_buffer_add(a : NetroutestaticBuffer, b : NetroutestaticBuffer) -> NetroutestaticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticBuffer::add(self : NetroutestaticBuffer, other : NetroutestaticBuffer) -> NetroutestaticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_buffer_copy(s : NetroutestaticBuffer) -> NetroutestaticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticBuffer::copy(self : NetroutestaticBuffer) -> NetroutestaticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_buffer_fill(s : NetroutestaticBuffer, v : Double) -> NetroutestaticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticBuffer::fill(self : NetroutestaticBuffer, v : Double) -> NetroutestaticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_buffer_min(s : NetroutestaticBuffer) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticBuffer::min(self : NetroutestaticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_buffer_max(s : NetroutestaticBuffer) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticBuffer::max(self : NetroutestaticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_buffer_to_string(s : NetroutestaticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticBuffer::to_string(self : NetroutestaticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticCursor {
@@ -861,45 +861,45 @@ pub fn net_route_static_cursor_make(size : Int) -> NetroutestaticCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_cursor_len(s : NetroutestaticCursor) -> Int { s.size }
+pub fn NetroutestaticCursor::len(self : NetroutestaticCursor) -> Int { self.size }
 
-pub fn net_route_static_cursor_get(s : NetroutestaticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticCursor::get(self : NetroutestaticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_cursor_set(s : NetroutestaticCursor, i : Int, v : Double) -> NetroutestaticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticCursor::set(self : NetroutestaticCursor, i : Int, v : Double) -> NetroutestaticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cursor_sum(s : NetroutestaticCursor) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticCursor::sum(self : NetroutestaticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_cursor_mean(s : NetroutestaticCursor) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticCursor::mean(self : NetroutestaticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_cursor_scale(s : NetroutestaticCursor, f : Double) -> NetroutestaticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticCursor::scale(self : NetroutestaticCursor, f : Double) -> NetroutestaticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cursor_add(a : NetroutestaticCursor, b : NetroutestaticCursor) -> NetroutestaticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticCursor::add(self : NetroutestaticCursor, other : NetroutestaticCursor) -> NetroutestaticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_cursor_copy(s : NetroutestaticCursor) -> NetroutestaticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticCursor::copy(self : NetroutestaticCursor) -> NetroutestaticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cursor_fill(s : NetroutestaticCursor, v : Double) -> NetroutestaticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticCursor::fill(self : NetroutestaticCursor, v : Double) -> NetroutestaticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_cursor_min(s : NetroutestaticCursor) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticCursor::min(self : NetroutestaticCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_cursor_max(s : NetroutestaticCursor) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticCursor::max(self : NetroutestaticCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_cursor_to_string(s : NetroutestaticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticCursor::to_string(self : NetroutestaticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticView {
@@ -912,45 +912,45 @@ pub fn net_route_static_view_make(size : Int) -> NetroutestaticView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_view_len(s : NetroutestaticView) -> Int { s.size }
+pub fn NetroutestaticView::len(self : NetroutestaticView) -> Int { self.size }
 
-pub fn net_route_static_view_get(s : NetroutestaticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticView::get(self : NetroutestaticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_view_set(s : NetroutestaticView, i : Int, v : Double) -> NetroutestaticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticView::set(self : NetroutestaticView, i : Int, v : Double) -> NetroutestaticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_view_sum(s : NetroutestaticView) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticView::sum(self : NetroutestaticView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_view_mean(s : NetroutestaticView) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticView::mean(self : NetroutestaticView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_view_scale(s : NetroutestaticView, f : Double) -> NetroutestaticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticView::scale(self : NetroutestaticView, f : Double) -> NetroutestaticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_view_add(a : NetroutestaticView, b : NetroutestaticView) -> NetroutestaticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticView::add(self : NetroutestaticView, other : NetroutestaticView) -> NetroutestaticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_view_copy(s : NetroutestaticView) -> NetroutestaticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticView::copy(self : NetroutestaticView) -> NetroutestaticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_view_fill(s : NetroutestaticView, v : Double) -> NetroutestaticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticView::fill(self : NetroutestaticView, v : Double) -> NetroutestaticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_view_min(s : NetroutestaticView) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticView::min(self : NetroutestaticView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_view_max(s : NetroutestaticView) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticView::max(self : NetroutestaticView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_view_to_string(s : NetroutestaticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticView::to_string(self : NetroutestaticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticRange {
@@ -963,45 +963,45 @@ pub fn net_route_static_range_make(size : Int) -> NetroutestaticRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_range_len(s : NetroutestaticRange) -> Int { s.size }
+pub fn NetroutestaticRange::len(self : NetroutestaticRange) -> Int { self.size }
 
-pub fn net_route_static_range_get(s : NetroutestaticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticRange::get(self : NetroutestaticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_range_set(s : NetroutestaticRange, i : Int, v : Double) -> NetroutestaticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticRange::set(self : NetroutestaticRange, i : Int, v : Double) -> NetroutestaticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_range_sum(s : NetroutestaticRange) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticRange::sum(self : NetroutestaticRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_range_mean(s : NetroutestaticRange) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticRange::mean(self : NetroutestaticRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_range_scale(s : NetroutestaticRange, f : Double) -> NetroutestaticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticRange::scale(self : NetroutestaticRange, f : Double) -> NetroutestaticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_range_add(a : NetroutestaticRange, b : NetroutestaticRange) -> NetroutestaticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticRange::add(self : NetroutestaticRange, other : NetroutestaticRange) -> NetroutestaticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_range_copy(s : NetroutestaticRange) -> NetroutestaticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticRange::copy(self : NetroutestaticRange) -> NetroutestaticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_range_fill(s : NetroutestaticRange, v : Double) -> NetroutestaticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticRange::fill(self : NetroutestaticRange, v : Double) -> NetroutestaticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_range_min(s : NetroutestaticRange) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticRange::min(self : NetroutestaticRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_range_max(s : NetroutestaticRange) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticRange::max(self : NetroutestaticRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_range_to_string(s : NetroutestaticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticRange::to_string(self : NetroutestaticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutestaticSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_static_slice_make(size : Int) -> NetroutestaticSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_static_slice_len(s : NetroutestaticSlice) -> Int { s.size }
+pub fn NetroutestaticSlice::len(self : NetroutestaticSlice) -> Int { self.size }
 
-pub fn net_route_static_slice_get(s : NetroutestaticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutestaticSlice::get(self : NetroutestaticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_static_slice_set(s : NetroutestaticSlice, i : Int, v : Double) -> NetroutestaticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutestaticSlice::set(self : NetroutestaticSlice, i : Int, v : Double) -> NetroutestaticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_slice_sum(s : NetroutestaticSlice) -> Double { @_common.sum(s.data) }
+pub fn NetroutestaticSlice::sum(self : NetroutestaticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_static_slice_mean(s : NetroutestaticSlice) -> Double { @_common.mean(s.data) }
+pub fn NetroutestaticSlice::mean(self : NetroutestaticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_static_slice_scale(s : NetroutestaticSlice, f : Double) -> NetroutestaticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutestaticSlice::scale(self : NetroutestaticSlice, f : Double) -> NetroutestaticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_slice_add(a : NetroutestaticSlice, b : NetroutestaticSlice) -> NetroutestaticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutestaticSlice::add(self : NetroutestaticSlice, other : NetroutestaticSlice) -> NetroutestaticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_static_slice_copy(s : NetroutestaticSlice) -> NetroutestaticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutestaticSlice::copy(self : NetroutestaticSlice) -> NetroutestaticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_slice_fill(s : NetroutestaticSlice, v : Double) -> NetroutestaticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutestaticSlice::fill(self : NetroutestaticSlice, v : Double) -> NetroutestaticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_static_slice_min(s : NetroutestaticSlice) -> Double { @_common.min(s.data) }
+pub fn NetroutestaticSlice::min(self : NetroutestaticSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_static_slice_max(s : NetroutestaticSlice) -> Double { @_common.max(s.data) }
+pub fn NetroutestaticSlice::max(self : NetroutestaticSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_static_slice_to_string(s : NetroutestaticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutestaticSlice::to_string(self : NetroutestaticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn math_nonlinear_prog_frame_make(size : Int) -> MathnonlinearprogFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_frame_len(s : MathnonlinearprogFrame) -> Int { s.size }
+pub fn MathnonlinearprogFrame::len(self : MathnonlinearprogFrame) -> Int { self.size }
 
-pub fn math_nonlinear_prog_frame_get(s : MathnonlinearprogFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogFrame::get(self : MathnonlinearprogFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_frame_set(s : MathnonlinearprogFrame, i : Int, v : Double) -> MathnonlinearprogFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogFrame::set(self : MathnonlinearprogFrame, i : Int, v : Double) -> MathnonlinearprogFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_frame_sum(s : MathnonlinearprogFrame) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogFrame::sum(self : MathnonlinearprogFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_frame_mean(s : MathnonlinearprogFrame) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogFrame::mean(self : MathnonlinearprogFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_frame_scale(s : MathnonlinearprogFrame, f : Double) -> MathnonlinearprogFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogFrame::scale(self : MathnonlinearprogFrame, f : Double) -> MathnonlinearprogFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_frame_add(a : MathnonlinearprogFrame, b : MathnonlinearprogFrame) -> MathnonlinearprogFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogFrame::add(self : MathnonlinearprogFrame, other : MathnonlinearprogFrame) -> MathnonlinearprogFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_frame_copy(s : MathnonlinearprogFrame) -> MathnonlinearprogFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogFrame::copy(self : MathnonlinearprogFrame) -> MathnonlinearprogFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_frame_fill(s : MathnonlinearprogFrame, v : Double) -> MathnonlinearprogFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogFrame::fill(self : MathnonlinearprogFrame, v : Double) -> MathnonlinearprogFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_frame_min(s : MathnonlinearprogFrame) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogFrame::min(self : MathnonlinearprogFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_frame_max(s : MathnonlinearprogFrame) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogFrame::max(self : MathnonlinearprogFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_frame_to_string(s : MathnonlinearprogFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogFrame::to_string(self : MathnonlinearprogFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogTable {
@@ -402,45 +402,45 @@ pub fn math_nonlinear_prog_table_make(size : Int) -> MathnonlinearprogTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_table_len(s : MathnonlinearprogTable) -> Int { s.size }
+pub fn MathnonlinearprogTable::len(self : MathnonlinearprogTable) -> Int { self.size }
 
-pub fn math_nonlinear_prog_table_get(s : MathnonlinearprogTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogTable::get(self : MathnonlinearprogTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_table_set(s : MathnonlinearprogTable, i : Int, v : Double) -> MathnonlinearprogTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogTable::set(self : MathnonlinearprogTable, i : Int, v : Double) -> MathnonlinearprogTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_table_sum(s : MathnonlinearprogTable) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogTable::sum(self : MathnonlinearprogTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_table_mean(s : MathnonlinearprogTable) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogTable::mean(self : MathnonlinearprogTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_table_scale(s : MathnonlinearprogTable, f : Double) -> MathnonlinearprogTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogTable::scale(self : MathnonlinearprogTable, f : Double) -> MathnonlinearprogTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_table_add(a : MathnonlinearprogTable, b : MathnonlinearprogTable) -> MathnonlinearprogTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogTable::add(self : MathnonlinearprogTable, other : MathnonlinearprogTable) -> MathnonlinearprogTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_table_copy(s : MathnonlinearprogTable) -> MathnonlinearprogTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogTable::copy(self : MathnonlinearprogTable) -> MathnonlinearprogTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_table_fill(s : MathnonlinearprogTable, v : Double) -> MathnonlinearprogTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogTable::fill(self : MathnonlinearprogTable, v : Double) -> MathnonlinearprogTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_table_min(s : MathnonlinearprogTable) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogTable::min(self : MathnonlinearprogTable) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_table_max(s : MathnonlinearprogTable) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogTable::max(self : MathnonlinearprogTable) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_table_to_string(s : MathnonlinearprogTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogTable::to_string(self : MathnonlinearprogTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogGraphN {
@@ -453,45 +453,45 @@ pub fn math_nonlinear_prog_graphn_make(size : Int) -> MathnonlinearprogGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_graphn_len(s : MathnonlinearprogGraphN) -> Int { s.size }
+pub fn MathnonlinearprogGraphN::len(self : MathnonlinearprogGraphN) -> Int { self.size }
 
-pub fn math_nonlinear_prog_graphn_get(s : MathnonlinearprogGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogGraphN::get(self : MathnonlinearprogGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_graphn_set(s : MathnonlinearprogGraphN, i : Int, v : Double) -> MathnonlinearprogGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogGraphN::set(self : MathnonlinearprogGraphN, i : Int, v : Double) -> MathnonlinearprogGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_graphn_sum(s : MathnonlinearprogGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogGraphN::sum(self : MathnonlinearprogGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_graphn_mean(s : MathnonlinearprogGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogGraphN::mean(self : MathnonlinearprogGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_graphn_scale(s : MathnonlinearprogGraphN, f : Double) -> MathnonlinearprogGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogGraphN::scale(self : MathnonlinearprogGraphN, f : Double) -> MathnonlinearprogGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_graphn_add(a : MathnonlinearprogGraphN, b : MathnonlinearprogGraphN) -> MathnonlinearprogGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogGraphN::add(self : MathnonlinearprogGraphN, other : MathnonlinearprogGraphN) -> MathnonlinearprogGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_graphn_copy(s : MathnonlinearprogGraphN) -> MathnonlinearprogGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogGraphN::copy(self : MathnonlinearprogGraphN) -> MathnonlinearprogGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_graphn_fill(s : MathnonlinearprogGraphN, v : Double) -> MathnonlinearprogGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogGraphN::fill(self : MathnonlinearprogGraphN, v : Double) -> MathnonlinearprogGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_graphn_min(s : MathnonlinearprogGraphN) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogGraphN::min(self : MathnonlinearprogGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_graphn_max(s : MathnonlinearprogGraphN) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogGraphN::max(self : MathnonlinearprogGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_graphn_to_string(s : MathnonlinearprogGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogGraphN::to_string(self : MathnonlinearprogGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogNode {
@@ -504,45 +504,45 @@ pub fn math_nonlinear_prog_node_make(size : Int) -> MathnonlinearprogNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_node_len(s : MathnonlinearprogNode) -> Int { s.size }
+pub fn MathnonlinearprogNode::len(self : MathnonlinearprogNode) -> Int { self.size }
 
-pub fn math_nonlinear_prog_node_get(s : MathnonlinearprogNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogNode::get(self : MathnonlinearprogNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_node_set(s : MathnonlinearprogNode, i : Int, v : Double) -> MathnonlinearprogNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogNode::set(self : MathnonlinearprogNode, i : Int, v : Double) -> MathnonlinearprogNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_node_sum(s : MathnonlinearprogNode) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogNode::sum(self : MathnonlinearprogNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_node_mean(s : MathnonlinearprogNode) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogNode::mean(self : MathnonlinearprogNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_node_scale(s : MathnonlinearprogNode, f : Double) -> MathnonlinearprogNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogNode::scale(self : MathnonlinearprogNode, f : Double) -> MathnonlinearprogNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_node_add(a : MathnonlinearprogNode, b : MathnonlinearprogNode) -> MathnonlinearprogNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogNode::add(self : MathnonlinearprogNode, other : MathnonlinearprogNode) -> MathnonlinearprogNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_node_copy(s : MathnonlinearprogNode) -> MathnonlinearprogNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogNode::copy(self : MathnonlinearprogNode) -> MathnonlinearprogNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_node_fill(s : MathnonlinearprogNode, v : Double) -> MathnonlinearprogNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogNode::fill(self : MathnonlinearprogNode, v : Double) -> MathnonlinearprogNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_node_min(s : MathnonlinearprogNode) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogNode::min(self : MathnonlinearprogNode) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_node_max(s : MathnonlinearprogNode) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogNode::max(self : MathnonlinearprogNode) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_node_to_string(s : MathnonlinearprogNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogNode::to_string(self : MathnonlinearprogNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogEdge {
@@ -555,45 +555,45 @@ pub fn math_nonlinear_prog_edge_make(size : Int) -> MathnonlinearprogEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_edge_len(s : MathnonlinearprogEdge) -> Int { s.size }
+pub fn MathnonlinearprogEdge::len(self : MathnonlinearprogEdge) -> Int { self.size }
 
-pub fn math_nonlinear_prog_edge_get(s : MathnonlinearprogEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogEdge::get(self : MathnonlinearprogEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_edge_set(s : MathnonlinearprogEdge, i : Int, v : Double) -> MathnonlinearprogEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogEdge::set(self : MathnonlinearprogEdge, i : Int, v : Double) -> MathnonlinearprogEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_edge_sum(s : MathnonlinearprogEdge) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogEdge::sum(self : MathnonlinearprogEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_edge_mean(s : MathnonlinearprogEdge) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogEdge::mean(self : MathnonlinearprogEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_edge_scale(s : MathnonlinearprogEdge, f : Double) -> MathnonlinearprogEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogEdge::scale(self : MathnonlinearprogEdge, f : Double) -> MathnonlinearprogEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_edge_add(a : MathnonlinearprogEdge, b : MathnonlinearprogEdge) -> MathnonlinearprogEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogEdge::add(self : MathnonlinearprogEdge, other : MathnonlinearprogEdge) -> MathnonlinearprogEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_edge_copy(s : MathnonlinearprogEdge) -> MathnonlinearprogEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogEdge::copy(self : MathnonlinearprogEdge) -> MathnonlinearprogEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_edge_fill(s : MathnonlinearprogEdge, v : Double) -> MathnonlinearprogEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogEdge::fill(self : MathnonlinearprogEdge, v : Double) -> MathnonlinearprogEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_edge_min(s : MathnonlinearprogEdge) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogEdge::min(self : MathnonlinearprogEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_edge_max(s : MathnonlinearprogEdge) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogEdge::max(self : MathnonlinearprogEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_edge_to_string(s : MathnonlinearprogEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogEdge::to_string(self : MathnonlinearprogEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogPath {
@@ -606,45 +606,45 @@ pub fn math_nonlinear_prog_path_make(size : Int) -> MathnonlinearprogPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_path_len(s : MathnonlinearprogPath) -> Int { s.size }
+pub fn MathnonlinearprogPath::len(self : MathnonlinearprogPath) -> Int { self.size }
 
-pub fn math_nonlinear_prog_path_get(s : MathnonlinearprogPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogPath::get(self : MathnonlinearprogPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_path_set(s : MathnonlinearprogPath, i : Int, v : Double) -> MathnonlinearprogPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogPath::set(self : MathnonlinearprogPath, i : Int, v : Double) -> MathnonlinearprogPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_path_sum(s : MathnonlinearprogPath) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogPath::sum(self : MathnonlinearprogPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_path_mean(s : MathnonlinearprogPath) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogPath::mean(self : MathnonlinearprogPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_path_scale(s : MathnonlinearprogPath, f : Double) -> MathnonlinearprogPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogPath::scale(self : MathnonlinearprogPath, f : Double) -> MathnonlinearprogPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_path_add(a : MathnonlinearprogPath, b : MathnonlinearprogPath) -> MathnonlinearprogPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogPath::add(self : MathnonlinearprogPath, other : MathnonlinearprogPath) -> MathnonlinearprogPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_path_copy(s : MathnonlinearprogPath) -> MathnonlinearprogPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogPath::copy(self : MathnonlinearprogPath) -> MathnonlinearprogPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_path_fill(s : MathnonlinearprogPath, v : Double) -> MathnonlinearprogPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogPath::fill(self : MathnonlinearprogPath, v : Double) -> MathnonlinearprogPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_path_min(s : MathnonlinearprogPath) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogPath::min(self : MathnonlinearprogPath) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_path_max(s : MathnonlinearprogPath) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogPath::max(self : MathnonlinearprogPath) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_path_to_string(s : MathnonlinearprogPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogPath::to_string(self : MathnonlinearprogPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogCluster {
@@ -657,45 +657,45 @@ pub fn math_nonlinear_prog_cluster_make(size : Int) -> MathnonlinearprogCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_cluster_len(s : MathnonlinearprogCluster) -> Int { s.size }
+pub fn MathnonlinearprogCluster::len(self : MathnonlinearprogCluster) -> Int { self.size }
 
-pub fn math_nonlinear_prog_cluster_get(s : MathnonlinearprogCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogCluster::get(self : MathnonlinearprogCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_cluster_set(s : MathnonlinearprogCluster, i : Int, v : Double) -> MathnonlinearprogCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCluster::set(self : MathnonlinearprogCluster, i : Int, v : Double) -> MathnonlinearprogCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cluster_sum(s : MathnonlinearprogCluster) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogCluster::sum(self : MathnonlinearprogCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_cluster_mean(s : MathnonlinearprogCluster) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogCluster::mean(self : MathnonlinearprogCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_cluster_scale(s : MathnonlinearprogCluster, f : Double) -> MathnonlinearprogCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCluster::scale(self : MathnonlinearprogCluster, f : Double) -> MathnonlinearprogCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cluster_add(a : MathnonlinearprogCluster, b : MathnonlinearprogCluster) -> MathnonlinearprogCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogCluster::add(self : MathnonlinearprogCluster, other : MathnonlinearprogCluster) -> MathnonlinearprogCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cluster_copy(s : MathnonlinearprogCluster) -> MathnonlinearprogCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCluster::copy(self : MathnonlinearprogCluster) -> MathnonlinearprogCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cluster_fill(s : MathnonlinearprogCluster, v : Double) -> MathnonlinearprogCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCluster::fill(self : MathnonlinearprogCluster, v : Double) -> MathnonlinearprogCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cluster_min(s : MathnonlinearprogCluster) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogCluster::min(self : MathnonlinearprogCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_cluster_max(s : MathnonlinearprogCluster) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogCluster::max(self : MathnonlinearprogCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_cluster_to_string(s : MathnonlinearprogCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogCluster::to_string(self : MathnonlinearprogCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogModel {
@@ -708,45 +708,45 @@ pub fn math_nonlinear_prog_model_make(size : Int) -> MathnonlinearprogModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_model_len(s : MathnonlinearprogModel) -> Int { s.size }
+pub fn MathnonlinearprogModel::len(self : MathnonlinearprogModel) -> Int { self.size }
 
-pub fn math_nonlinear_prog_model_get(s : MathnonlinearprogModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogModel::get(self : MathnonlinearprogModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_model_set(s : MathnonlinearprogModel, i : Int, v : Double) -> MathnonlinearprogModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogModel::set(self : MathnonlinearprogModel, i : Int, v : Double) -> MathnonlinearprogModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_model_sum(s : MathnonlinearprogModel) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogModel::sum(self : MathnonlinearprogModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_model_mean(s : MathnonlinearprogModel) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogModel::mean(self : MathnonlinearprogModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_model_scale(s : MathnonlinearprogModel, f : Double) -> MathnonlinearprogModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogModel::scale(self : MathnonlinearprogModel, f : Double) -> MathnonlinearprogModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_model_add(a : MathnonlinearprogModel, b : MathnonlinearprogModel) -> MathnonlinearprogModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogModel::add(self : MathnonlinearprogModel, other : MathnonlinearprogModel) -> MathnonlinearprogModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_model_copy(s : MathnonlinearprogModel) -> MathnonlinearprogModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogModel::copy(self : MathnonlinearprogModel) -> MathnonlinearprogModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_model_fill(s : MathnonlinearprogModel, v : Double) -> MathnonlinearprogModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogModel::fill(self : MathnonlinearprogModel, v : Double) -> MathnonlinearprogModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_model_min(s : MathnonlinearprogModel) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogModel::min(self : MathnonlinearprogModel) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_model_max(s : MathnonlinearprogModel) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogModel::max(self : MathnonlinearprogModel) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_model_to_string(s : MathnonlinearprogModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogModel::to_string(self : MathnonlinearprogModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogLayer {
@@ -759,45 +759,45 @@ pub fn math_nonlinear_prog_layer_make(size : Int) -> MathnonlinearprogLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_layer_len(s : MathnonlinearprogLayer) -> Int { s.size }
+pub fn MathnonlinearprogLayer::len(self : MathnonlinearprogLayer) -> Int { self.size }
 
-pub fn math_nonlinear_prog_layer_get(s : MathnonlinearprogLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogLayer::get(self : MathnonlinearprogLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_layer_set(s : MathnonlinearprogLayer, i : Int, v : Double) -> MathnonlinearprogLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogLayer::set(self : MathnonlinearprogLayer, i : Int, v : Double) -> MathnonlinearprogLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_layer_sum(s : MathnonlinearprogLayer) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogLayer::sum(self : MathnonlinearprogLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_layer_mean(s : MathnonlinearprogLayer) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogLayer::mean(self : MathnonlinearprogLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_layer_scale(s : MathnonlinearprogLayer, f : Double) -> MathnonlinearprogLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogLayer::scale(self : MathnonlinearprogLayer, f : Double) -> MathnonlinearprogLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_layer_add(a : MathnonlinearprogLayer, b : MathnonlinearprogLayer) -> MathnonlinearprogLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogLayer::add(self : MathnonlinearprogLayer, other : MathnonlinearprogLayer) -> MathnonlinearprogLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_layer_copy(s : MathnonlinearprogLayer) -> MathnonlinearprogLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogLayer::copy(self : MathnonlinearprogLayer) -> MathnonlinearprogLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_layer_fill(s : MathnonlinearprogLayer, v : Double) -> MathnonlinearprogLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogLayer::fill(self : MathnonlinearprogLayer, v : Double) -> MathnonlinearprogLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_layer_min(s : MathnonlinearprogLayer) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogLayer::min(self : MathnonlinearprogLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_layer_max(s : MathnonlinearprogLayer) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogLayer::max(self : MathnonlinearprogLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_layer_to_string(s : MathnonlinearprogLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogLayer::to_string(self : MathnonlinearprogLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogBuffer {
@@ -810,45 +810,45 @@ pub fn math_nonlinear_prog_buffer_make(size : Int) -> MathnonlinearprogBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_buffer_len(s : MathnonlinearprogBuffer) -> Int { s.size }
+pub fn MathnonlinearprogBuffer::len(self : MathnonlinearprogBuffer) -> Int { self.size }
 
-pub fn math_nonlinear_prog_buffer_get(s : MathnonlinearprogBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogBuffer::get(self : MathnonlinearprogBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_buffer_set(s : MathnonlinearprogBuffer, i : Int, v : Double) -> MathnonlinearprogBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogBuffer::set(self : MathnonlinearprogBuffer, i : Int, v : Double) -> MathnonlinearprogBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_buffer_sum(s : MathnonlinearprogBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogBuffer::sum(self : MathnonlinearprogBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_buffer_mean(s : MathnonlinearprogBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogBuffer::mean(self : MathnonlinearprogBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_buffer_scale(s : MathnonlinearprogBuffer, f : Double) -> MathnonlinearprogBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogBuffer::scale(self : MathnonlinearprogBuffer, f : Double) -> MathnonlinearprogBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_buffer_add(a : MathnonlinearprogBuffer, b : MathnonlinearprogBuffer) -> MathnonlinearprogBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogBuffer::add(self : MathnonlinearprogBuffer, other : MathnonlinearprogBuffer) -> MathnonlinearprogBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_buffer_copy(s : MathnonlinearprogBuffer) -> MathnonlinearprogBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogBuffer::copy(self : MathnonlinearprogBuffer) -> MathnonlinearprogBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_buffer_fill(s : MathnonlinearprogBuffer, v : Double) -> MathnonlinearprogBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogBuffer::fill(self : MathnonlinearprogBuffer, v : Double) -> MathnonlinearprogBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_buffer_min(s : MathnonlinearprogBuffer) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogBuffer::min(self : MathnonlinearprogBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_buffer_max(s : MathnonlinearprogBuffer) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogBuffer::max(self : MathnonlinearprogBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_buffer_to_string(s : MathnonlinearprogBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogBuffer::to_string(self : MathnonlinearprogBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogCursor {
@@ -861,45 +861,45 @@ pub fn math_nonlinear_prog_cursor_make(size : Int) -> MathnonlinearprogCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_cursor_len(s : MathnonlinearprogCursor) -> Int { s.size }
+pub fn MathnonlinearprogCursor::len(self : MathnonlinearprogCursor) -> Int { self.size }
 
-pub fn math_nonlinear_prog_cursor_get(s : MathnonlinearprogCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogCursor::get(self : MathnonlinearprogCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_cursor_set(s : MathnonlinearprogCursor, i : Int, v : Double) -> MathnonlinearprogCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCursor::set(self : MathnonlinearprogCursor, i : Int, v : Double) -> MathnonlinearprogCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cursor_sum(s : MathnonlinearprogCursor) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogCursor::sum(self : MathnonlinearprogCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_cursor_mean(s : MathnonlinearprogCursor) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogCursor::mean(self : MathnonlinearprogCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_cursor_scale(s : MathnonlinearprogCursor, f : Double) -> MathnonlinearprogCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCursor::scale(self : MathnonlinearprogCursor, f : Double) -> MathnonlinearprogCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cursor_add(a : MathnonlinearprogCursor, b : MathnonlinearprogCursor) -> MathnonlinearprogCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogCursor::add(self : MathnonlinearprogCursor, other : MathnonlinearprogCursor) -> MathnonlinearprogCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cursor_copy(s : MathnonlinearprogCursor) -> MathnonlinearprogCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCursor::copy(self : MathnonlinearprogCursor) -> MathnonlinearprogCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cursor_fill(s : MathnonlinearprogCursor, v : Double) -> MathnonlinearprogCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogCursor::fill(self : MathnonlinearprogCursor, v : Double) -> MathnonlinearprogCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_cursor_min(s : MathnonlinearprogCursor) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogCursor::min(self : MathnonlinearprogCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_cursor_max(s : MathnonlinearprogCursor) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogCursor::max(self : MathnonlinearprogCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_cursor_to_string(s : MathnonlinearprogCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogCursor::to_string(self : MathnonlinearprogCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogView {
@@ -912,45 +912,45 @@ pub fn math_nonlinear_prog_view_make(size : Int) -> MathnonlinearprogView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_view_len(s : MathnonlinearprogView) -> Int { s.size }
+pub fn MathnonlinearprogView::len(self : MathnonlinearprogView) -> Int { self.size }
 
-pub fn math_nonlinear_prog_view_get(s : MathnonlinearprogView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogView::get(self : MathnonlinearprogView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_view_set(s : MathnonlinearprogView, i : Int, v : Double) -> MathnonlinearprogView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogView::set(self : MathnonlinearprogView, i : Int, v : Double) -> MathnonlinearprogView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_view_sum(s : MathnonlinearprogView) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogView::sum(self : MathnonlinearprogView) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_view_mean(s : MathnonlinearprogView) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogView::mean(self : MathnonlinearprogView) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_view_scale(s : MathnonlinearprogView, f : Double) -> MathnonlinearprogView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogView::scale(self : MathnonlinearprogView, f : Double) -> MathnonlinearprogView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_view_add(a : MathnonlinearprogView, b : MathnonlinearprogView) -> MathnonlinearprogView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogView::add(self : MathnonlinearprogView, other : MathnonlinearprogView) -> MathnonlinearprogView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_view_copy(s : MathnonlinearprogView) -> MathnonlinearprogView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogView::copy(self : MathnonlinearprogView) -> MathnonlinearprogView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_view_fill(s : MathnonlinearprogView, v : Double) -> MathnonlinearprogView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogView::fill(self : MathnonlinearprogView, v : Double) -> MathnonlinearprogView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_view_min(s : MathnonlinearprogView) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogView::min(self : MathnonlinearprogView) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_view_max(s : MathnonlinearprogView) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogView::max(self : MathnonlinearprogView) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_view_to_string(s : MathnonlinearprogView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogView::to_string(self : MathnonlinearprogView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogRange {
@@ -963,45 +963,45 @@ pub fn math_nonlinear_prog_range_make(size : Int) -> MathnonlinearprogRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_range_len(s : MathnonlinearprogRange) -> Int { s.size }
+pub fn MathnonlinearprogRange::len(self : MathnonlinearprogRange) -> Int { self.size }
 
-pub fn math_nonlinear_prog_range_get(s : MathnonlinearprogRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogRange::get(self : MathnonlinearprogRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_range_set(s : MathnonlinearprogRange, i : Int, v : Double) -> MathnonlinearprogRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogRange::set(self : MathnonlinearprogRange, i : Int, v : Double) -> MathnonlinearprogRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_range_sum(s : MathnonlinearprogRange) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogRange::sum(self : MathnonlinearprogRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_range_mean(s : MathnonlinearprogRange) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogRange::mean(self : MathnonlinearprogRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_range_scale(s : MathnonlinearprogRange, f : Double) -> MathnonlinearprogRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogRange::scale(self : MathnonlinearprogRange, f : Double) -> MathnonlinearprogRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_range_add(a : MathnonlinearprogRange, b : MathnonlinearprogRange) -> MathnonlinearprogRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogRange::add(self : MathnonlinearprogRange, other : MathnonlinearprogRange) -> MathnonlinearprogRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_range_copy(s : MathnonlinearprogRange) -> MathnonlinearprogRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogRange::copy(self : MathnonlinearprogRange) -> MathnonlinearprogRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_range_fill(s : MathnonlinearprogRange, v : Double) -> MathnonlinearprogRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogRange::fill(self : MathnonlinearprogRange, v : Double) -> MathnonlinearprogRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_range_min(s : MathnonlinearprogRange) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogRange::min(self : MathnonlinearprogRange) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_range_max(s : MathnonlinearprogRange) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogRange::max(self : MathnonlinearprogRange) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_range_to_string(s : MathnonlinearprogRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogRange::to_string(self : MathnonlinearprogRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathnonlinearprogSlice {
@@ -1014,44 +1014,44 @@ pub fn math_nonlinear_prog_slice_make(size : Int) -> MathnonlinearprogSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_nonlinear_prog_slice_len(s : MathnonlinearprogSlice) -> Int { s.size }
+pub fn MathnonlinearprogSlice::len(self : MathnonlinearprogSlice) -> Int { self.size }
 
-pub fn math_nonlinear_prog_slice_get(s : MathnonlinearprogSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathnonlinearprogSlice::get(self : MathnonlinearprogSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_nonlinear_prog_slice_set(s : MathnonlinearprogSlice, i : Int, v : Double) -> MathnonlinearprogSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathnonlinearprogSlice::set(self : MathnonlinearprogSlice, i : Int, v : Double) -> MathnonlinearprogSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_slice_sum(s : MathnonlinearprogSlice) -> Double { @_common.sum(s.data) }
+pub fn MathnonlinearprogSlice::sum(self : MathnonlinearprogSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_nonlinear_prog_slice_mean(s : MathnonlinearprogSlice) -> Double { @_common.mean(s.data) }
+pub fn MathnonlinearprogSlice::mean(self : MathnonlinearprogSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_nonlinear_prog_slice_scale(s : MathnonlinearprogSlice, f : Double) -> MathnonlinearprogSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogSlice::scale(self : MathnonlinearprogSlice, f : Double) -> MathnonlinearprogSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_slice_add(a : MathnonlinearprogSlice, b : MathnonlinearprogSlice) -> MathnonlinearprogSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathnonlinearprogSlice::add(self : MathnonlinearprogSlice, other : MathnonlinearprogSlice) -> MathnonlinearprogSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_slice_copy(s : MathnonlinearprogSlice) -> MathnonlinearprogSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogSlice::copy(self : MathnonlinearprogSlice) -> MathnonlinearprogSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_slice_fill(s : MathnonlinearprogSlice, v : Double) -> MathnonlinearprogSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathnonlinearprogSlice::fill(self : MathnonlinearprogSlice, v : Double) -> MathnonlinearprogSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_nonlinear_prog_slice_min(s : MathnonlinearprogSlice) -> Double { @_common.min(s.data) }
+pub fn MathnonlinearprogSlice::min(self : MathnonlinearprogSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_nonlinear_prog_slice_max(s : MathnonlinearprogSlice) -> Double { @_common.max(s.data) }
+pub fn MathnonlinearprogSlice::max(self : MathnonlinearprogSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_nonlinear_prog_slice_to_string(s : MathnonlinearprogSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathnonlinearprogSlice::to_string(self : MathnonlinearprogSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

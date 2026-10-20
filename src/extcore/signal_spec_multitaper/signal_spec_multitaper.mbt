@@ -351,45 +351,45 @@ pub fn signal_spec_multitaper_frame_make(size : Int) -> SignalspecmultitaperFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_frame_len(s : SignalspecmultitaperFrame) -> Int { s.size }
+pub fn SignalspecmultitaperFrame::len(self : SignalspecmultitaperFrame) -> Int { self.size }
 
-pub fn signal_spec_multitaper_frame_get(s : SignalspecmultitaperFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperFrame::get(self : SignalspecmultitaperFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_frame_set(s : SignalspecmultitaperFrame, i : Int, v : Double) -> SignalspecmultitaperFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperFrame::set(self : SignalspecmultitaperFrame, i : Int, v : Double) -> SignalspecmultitaperFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_frame_sum(s : SignalspecmultitaperFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperFrame::sum(self : SignalspecmultitaperFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_frame_mean(s : SignalspecmultitaperFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperFrame::mean(self : SignalspecmultitaperFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_frame_scale(s : SignalspecmultitaperFrame, f : Double) -> SignalspecmultitaperFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperFrame::scale(self : SignalspecmultitaperFrame, f : Double) -> SignalspecmultitaperFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_frame_add(a : SignalspecmultitaperFrame, b : SignalspecmultitaperFrame) -> SignalspecmultitaperFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperFrame::add(self : SignalspecmultitaperFrame, other : SignalspecmultitaperFrame) -> SignalspecmultitaperFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_frame_copy(s : SignalspecmultitaperFrame) -> SignalspecmultitaperFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperFrame::copy(self : SignalspecmultitaperFrame) -> SignalspecmultitaperFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_frame_fill(s : SignalspecmultitaperFrame, v : Double) -> SignalspecmultitaperFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperFrame::fill(self : SignalspecmultitaperFrame, v : Double) -> SignalspecmultitaperFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_frame_min(s : SignalspecmultitaperFrame) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperFrame::min(self : SignalspecmultitaperFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_frame_max(s : SignalspecmultitaperFrame) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperFrame::max(self : SignalspecmultitaperFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_frame_to_string(s : SignalspecmultitaperFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperFrame::to_string(self : SignalspecmultitaperFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperTable {
@@ -402,45 +402,45 @@ pub fn signal_spec_multitaper_table_make(size : Int) -> SignalspecmultitaperTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_table_len(s : SignalspecmultitaperTable) -> Int { s.size }
+pub fn SignalspecmultitaperTable::len(self : SignalspecmultitaperTable) -> Int { self.size }
 
-pub fn signal_spec_multitaper_table_get(s : SignalspecmultitaperTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperTable::get(self : SignalspecmultitaperTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_table_set(s : SignalspecmultitaperTable, i : Int, v : Double) -> SignalspecmultitaperTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperTable::set(self : SignalspecmultitaperTable, i : Int, v : Double) -> SignalspecmultitaperTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_table_sum(s : SignalspecmultitaperTable) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperTable::sum(self : SignalspecmultitaperTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_table_mean(s : SignalspecmultitaperTable) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperTable::mean(self : SignalspecmultitaperTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_table_scale(s : SignalspecmultitaperTable, f : Double) -> SignalspecmultitaperTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperTable::scale(self : SignalspecmultitaperTable, f : Double) -> SignalspecmultitaperTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_table_add(a : SignalspecmultitaperTable, b : SignalspecmultitaperTable) -> SignalspecmultitaperTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperTable::add(self : SignalspecmultitaperTable, other : SignalspecmultitaperTable) -> SignalspecmultitaperTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_table_copy(s : SignalspecmultitaperTable) -> SignalspecmultitaperTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperTable::copy(self : SignalspecmultitaperTable) -> SignalspecmultitaperTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_table_fill(s : SignalspecmultitaperTable, v : Double) -> SignalspecmultitaperTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperTable::fill(self : SignalspecmultitaperTable, v : Double) -> SignalspecmultitaperTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_table_min(s : SignalspecmultitaperTable) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperTable::min(self : SignalspecmultitaperTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_table_max(s : SignalspecmultitaperTable) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperTable::max(self : SignalspecmultitaperTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_table_to_string(s : SignalspecmultitaperTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperTable::to_string(self : SignalspecmultitaperTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperGraphN {
@@ -453,45 +453,45 @@ pub fn signal_spec_multitaper_graphn_make(size : Int) -> SignalspecmultitaperGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_graphn_len(s : SignalspecmultitaperGraphN) -> Int { s.size }
+pub fn SignalspecmultitaperGraphN::len(self : SignalspecmultitaperGraphN) -> Int { self.size }
 
-pub fn signal_spec_multitaper_graphn_get(s : SignalspecmultitaperGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperGraphN::get(self : SignalspecmultitaperGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_graphn_set(s : SignalspecmultitaperGraphN, i : Int, v : Double) -> SignalspecmultitaperGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperGraphN::set(self : SignalspecmultitaperGraphN, i : Int, v : Double) -> SignalspecmultitaperGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_graphn_sum(s : SignalspecmultitaperGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperGraphN::sum(self : SignalspecmultitaperGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_graphn_mean(s : SignalspecmultitaperGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperGraphN::mean(self : SignalspecmultitaperGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_graphn_scale(s : SignalspecmultitaperGraphN, f : Double) -> SignalspecmultitaperGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperGraphN::scale(self : SignalspecmultitaperGraphN, f : Double) -> SignalspecmultitaperGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_graphn_add(a : SignalspecmultitaperGraphN, b : SignalspecmultitaperGraphN) -> SignalspecmultitaperGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperGraphN::add(self : SignalspecmultitaperGraphN, other : SignalspecmultitaperGraphN) -> SignalspecmultitaperGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_graphn_copy(s : SignalspecmultitaperGraphN) -> SignalspecmultitaperGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperGraphN::copy(self : SignalspecmultitaperGraphN) -> SignalspecmultitaperGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_graphn_fill(s : SignalspecmultitaperGraphN, v : Double) -> SignalspecmultitaperGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperGraphN::fill(self : SignalspecmultitaperGraphN, v : Double) -> SignalspecmultitaperGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_graphn_min(s : SignalspecmultitaperGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperGraphN::min(self : SignalspecmultitaperGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_graphn_max(s : SignalspecmultitaperGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperGraphN::max(self : SignalspecmultitaperGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_graphn_to_string(s : SignalspecmultitaperGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperGraphN::to_string(self : SignalspecmultitaperGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperNode {
@@ -504,45 +504,45 @@ pub fn signal_spec_multitaper_node_make(size : Int) -> SignalspecmultitaperNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_node_len(s : SignalspecmultitaperNode) -> Int { s.size }
+pub fn SignalspecmultitaperNode::len(self : SignalspecmultitaperNode) -> Int { self.size }
 
-pub fn signal_spec_multitaper_node_get(s : SignalspecmultitaperNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperNode::get(self : SignalspecmultitaperNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_node_set(s : SignalspecmultitaperNode, i : Int, v : Double) -> SignalspecmultitaperNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperNode::set(self : SignalspecmultitaperNode, i : Int, v : Double) -> SignalspecmultitaperNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_node_sum(s : SignalspecmultitaperNode) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperNode::sum(self : SignalspecmultitaperNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_node_mean(s : SignalspecmultitaperNode) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperNode::mean(self : SignalspecmultitaperNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_node_scale(s : SignalspecmultitaperNode, f : Double) -> SignalspecmultitaperNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperNode::scale(self : SignalspecmultitaperNode, f : Double) -> SignalspecmultitaperNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_node_add(a : SignalspecmultitaperNode, b : SignalspecmultitaperNode) -> SignalspecmultitaperNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperNode::add(self : SignalspecmultitaperNode, other : SignalspecmultitaperNode) -> SignalspecmultitaperNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_node_copy(s : SignalspecmultitaperNode) -> SignalspecmultitaperNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperNode::copy(self : SignalspecmultitaperNode) -> SignalspecmultitaperNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_node_fill(s : SignalspecmultitaperNode, v : Double) -> SignalspecmultitaperNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperNode::fill(self : SignalspecmultitaperNode, v : Double) -> SignalspecmultitaperNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_node_min(s : SignalspecmultitaperNode) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperNode::min(self : SignalspecmultitaperNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_node_max(s : SignalspecmultitaperNode) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperNode::max(self : SignalspecmultitaperNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_node_to_string(s : SignalspecmultitaperNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperNode::to_string(self : SignalspecmultitaperNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperEdge {
@@ -555,45 +555,45 @@ pub fn signal_spec_multitaper_edge_make(size : Int) -> SignalspecmultitaperEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_edge_len(s : SignalspecmultitaperEdge) -> Int { s.size }
+pub fn SignalspecmultitaperEdge::len(self : SignalspecmultitaperEdge) -> Int { self.size }
 
-pub fn signal_spec_multitaper_edge_get(s : SignalspecmultitaperEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperEdge::get(self : SignalspecmultitaperEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_edge_set(s : SignalspecmultitaperEdge, i : Int, v : Double) -> SignalspecmultitaperEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperEdge::set(self : SignalspecmultitaperEdge, i : Int, v : Double) -> SignalspecmultitaperEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_edge_sum(s : SignalspecmultitaperEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperEdge::sum(self : SignalspecmultitaperEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_edge_mean(s : SignalspecmultitaperEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperEdge::mean(self : SignalspecmultitaperEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_edge_scale(s : SignalspecmultitaperEdge, f : Double) -> SignalspecmultitaperEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperEdge::scale(self : SignalspecmultitaperEdge, f : Double) -> SignalspecmultitaperEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_edge_add(a : SignalspecmultitaperEdge, b : SignalspecmultitaperEdge) -> SignalspecmultitaperEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperEdge::add(self : SignalspecmultitaperEdge, other : SignalspecmultitaperEdge) -> SignalspecmultitaperEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_edge_copy(s : SignalspecmultitaperEdge) -> SignalspecmultitaperEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperEdge::copy(self : SignalspecmultitaperEdge) -> SignalspecmultitaperEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_edge_fill(s : SignalspecmultitaperEdge, v : Double) -> SignalspecmultitaperEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperEdge::fill(self : SignalspecmultitaperEdge, v : Double) -> SignalspecmultitaperEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_edge_min(s : SignalspecmultitaperEdge) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperEdge::min(self : SignalspecmultitaperEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_edge_max(s : SignalspecmultitaperEdge) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperEdge::max(self : SignalspecmultitaperEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_edge_to_string(s : SignalspecmultitaperEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperEdge::to_string(self : SignalspecmultitaperEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperPath {
@@ -606,45 +606,45 @@ pub fn signal_spec_multitaper_path_make(size : Int) -> SignalspecmultitaperPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_path_len(s : SignalspecmultitaperPath) -> Int { s.size }
+pub fn SignalspecmultitaperPath::len(self : SignalspecmultitaperPath) -> Int { self.size }
 
-pub fn signal_spec_multitaper_path_get(s : SignalspecmultitaperPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperPath::get(self : SignalspecmultitaperPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_path_set(s : SignalspecmultitaperPath, i : Int, v : Double) -> SignalspecmultitaperPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperPath::set(self : SignalspecmultitaperPath, i : Int, v : Double) -> SignalspecmultitaperPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_path_sum(s : SignalspecmultitaperPath) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperPath::sum(self : SignalspecmultitaperPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_path_mean(s : SignalspecmultitaperPath) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperPath::mean(self : SignalspecmultitaperPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_path_scale(s : SignalspecmultitaperPath, f : Double) -> SignalspecmultitaperPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperPath::scale(self : SignalspecmultitaperPath, f : Double) -> SignalspecmultitaperPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_path_add(a : SignalspecmultitaperPath, b : SignalspecmultitaperPath) -> SignalspecmultitaperPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperPath::add(self : SignalspecmultitaperPath, other : SignalspecmultitaperPath) -> SignalspecmultitaperPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_path_copy(s : SignalspecmultitaperPath) -> SignalspecmultitaperPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperPath::copy(self : SignalspecmultitaperPath) -> SignalspecmultitaperPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_path_fill(s : SignalspecmultitaperPath, v : Double) -> SignalspecmultitaperPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperPath::fill(self : SignalspecmultitaperPath, v : Double) -> SignalspecmultitaperPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_path_min(s : SignalspecmultitaperPath) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperPath::min(self : SignalspecmultitaperPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_path_max(s : SignalspecmultitaperPath) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperPath::max(self : SignalspecmultitaperPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_path_to_string(s : SignalspecmultitaperPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperPath::to_string(self : SignalspecmultitaperPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperCluster {
@@ -657,45 +657,45 @@ pub fn signal_spec_multitaper_cluster_make(size : Int) -> SignalspecmultitaperCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_cluster_len(s : SignalspecmultitaperCluster) -> Int { s.size }
+pub fn SignalspecmultitaperCluster::len(self : SignalspecmultitaperCluster) -> Int { self.size }
 
-pub fn signal_spec_multitaper_cluster_get(s : SignalspecmultitaperCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperCluster::get(self : SignalspecmultitaperCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_cluster_set(s : SignalspecmultitaperCluster, i : Int, v : Double) -> SignalspecmultitaperCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCluster::set(self : SignalspecmultitaperCluster, i : Int, v : Double) -> SignalspecmultitaperCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cluster_sum(s : SignalspecmultitaperCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperCluster::sum(self : SignalspecmultitaperCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_cluster_mean(s : SignalspecmultitaperCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperCluster::mean(self : SignalspecmultitaperCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_cluster_scale(s : SignalspecmultitaperCluster, f : Double) -> SignalspecmultitaperCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCluster::scale(self : SignalspecmultitaperCluster, f : Double) -> SignalspecmultitaperCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cluster_add(a : SignalspecmultitaperCluster, b : SignalspecmultitaperCluster) -> SignalspecmultitaperCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperCluster::add(self : SignalspecmultitaperCluster, other : SignalspecmultitaperCluster) -> SignalspecmultitaperCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cluster_copy(s : SignalspecmultitaperCluster) -> SignalspecmultitaperCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCluster::copy(self : SignalspecmultitaperCluster) -> SignalspecmultitaperCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cluster_fill(s : SignalspecmultitaperCluster, v : Double) -> SignalspecmultitaperCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCluster::fill(self : SignalspecmultitaperCluster, v : Double) -> SignalspecmultitaperCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cluster_min(s : SignalspecmultitaperCluster) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperCluster::min(self : SignalspecmultitaperCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_cluster_max(s : SignalspecmultitaperCluster) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperCluster::max(self : SignalspecmultitaperCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_cluster_to_string(s : SignalspecmultitaperCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperCluster::to_string(self : SignalspecmultitaperCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperModel {
@@ -708,45 +708,45 @@ pub fn signal_spec_multitaper_model_make(size : Int) -> SignalspecmultitaperMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_model_len(s : SignalspecmultitaperModel) -> Int { s.size }
+pub fn SignalspecmultitaperModel::len(self : SignalspecmultitaperModel) -> Int { self.size }
 
-pub fn signal_spec_multitaper_model_get(s : SignalspecmultitaperModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperModel::get(self : SignalspecmultitaperModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_model_set(s : SignalspecmultitaperModel, i : Int, v : Double) -> SignalspecmultitaperModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperModel::set(self : SignalspecmultitaperModel, i : Int, v : Double) -> SignalspecmultitaperModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_model_sum(s : SignalspecmultitaperModel) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperModel::sum(self : SignalspecmultitaperModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_model_mean(s : SignalspecmultitaperModel) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperModel::mean(self : SignalspecmultitaperModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_model_scale(s : SignalspecmultitaperModel, f : Double) -> SignalspecmultitaperModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperModel::scale(self : SignalspecmultitaperModel, f : Double) -> SignalspecmultitaperModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_model_add(a : SignalspecmultitaperModel, b : SignalspecmultitaperModel) -> SignalspecmultitaperModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperModel::add(self : SignalspecmultitaperModel, other : SignalspecmultitaperModel) -> SignalspecmultitaperModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_model_copy(s : SignalspecmultitaperModel) -> SignalspecmultitaperModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperModel::copy(self : SignalspecmultitaperModel) -> SignalspecmultitaperModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_model_fill(s : SignalspecmultitaperModel, v : Double) -> SignalspecmultitaperModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperModel::fill(self : SignalspecmultitaperModel, v : Double) -> SignalspecmultitaperModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_model_min(s : SignalspecmultitaperModel) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperModel::min(self : SignalspecmultitaperModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_model_max(s : SignalspecmultitaperModel) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperModel::max(self : SignalspecmultitaperModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_model_to_string(s : SignalspecmultitaperModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperModel::to_string(self : SignalspecmultitaperModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperLayer {
@@ -759,45 +759,45 @@ pub fn signal_spec_multitaper_layer_make(size : Int) -> SignalspecmultitaperLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_layer_len(s : SignalspecmultitaperLayer) -> Int { s.size }
+pub fn SignalspecmultitaperLayer::len(self : SignalspecmultitaperLayer) -> Int { self.size }
 
-pub fn signal_spec_multitaper_layer_get(s : SignalspecmultitaperLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperLayer::get(self : SignalspecmultitaperLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_layer_set(s : SignalspecmultitaperLayer, i : Int, v : Double) -> SignalspecmultitaperLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperLayer::set(self : SignalspecmultitaperLayer, i : Int, v : Double) -> SignalspecmultitaperLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_layer_sum(s : SignalspecmultitaperLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperLayer::sum(self : SignalspecmultitaperLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_layer_mean(s : SignalspecmultitaperLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperLayer::mean(self : SignalspecmultitaperLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_layer_scale(s : SignalspecmultitaperLayer, f : Double) -> SignalspecmultitaperLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperLayer::scale(self : SignalspecmultitaperLayer, f : Double) -> SignalspecmultitaperLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_layer_add(a : SignalspecmultitaperLayer, b : SignalspecmultitaperLayer) -> SignalspecmultitaperLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperLayer::add(self : SignalspecmultitaperLayer, other : SignalspecmultitaperLayer) -> SignalspecmultitaperLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_layer_copy(s : SignalspecmultitaperLayer) -> SignalspecmultitaperLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperLayer::copy(self : SignalspecmultitaperLayer) -> SignalspecmultitaperLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_layer_fill(s : SignalspecmultitaperLayer, v : Double) -> SignalspecmultitaperLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperLayer::fill(self : SignalspecmultitaperLayer, v : Double) -> SignalspecmultitaperLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_layer_min(s : SignalspecmultitaperLayer) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperLayer::min(self : SignalspecmultitaperLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_layer_max(s : SignalspecmultitaperLayer) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperLayer::max(self : SignalspecmultitaperLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_layer_to_string(s : SignalspecmultitaperLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperLayer::to_string(self : SignalspecmultitaperLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperBuffer {
@@ -810,45 +810,45 @@ pub fn signal_spec_multitaper_buffer_make(size : Int) -> SignalspecmultitaperBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_buffer_len(s : SignalspecmultitaperBuffer) -> Int { s.size }
+pub fn SignalspecmultitaperBuffer::len(self : SignalspecmultitaperBuffer) -> Int { self.size }
 
-pub fn signal_spec_multitaper_buffer_get(s : SignalspecmultitaperBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperBuffer::get(self : SignalspecmultitaperBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_buffer_set(s : SignalspecmultitaperBuffer, i : Int, v : Double) -> SignalspecmultitaperBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperBuffer::set(self : SignalspecmultitaperBuffer, i : Int, v : Double) -> SignalspecmultitaperBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_buffer_sum(s : SignalspecmultitaperBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperBuffer::sum(self : SignalspecmultitaperBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_buffer_mean(s : SignalspecmultitaperBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperBuffer::mean(self : SignalspecmultitaperBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_buffer_scale(s : SignalspecmultitaperBuffer, f : Double) -> SignalspecmultitaperBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperBuffer::scale(self : SignalspecmultitaperBuffer, f : Double) -> SignalspecmultitaperBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_buffer_add(a : SignalspecmultitaperBuffer, b : SignalspecmultitaperBuffer) -> SignalspecmultitaperBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperBuffer::add(self : SignalspecmultitaperBuffer, other : SignalspecmultitaperBuffer) -> SignalspecmultitaperBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_buffer_copy(s : SignalspecmultitaperBuffer) -> SignalspecmultitaperBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperBuffer::copy(self : SignalspecmultitaperBuffer) -> SignalspecmultitaperBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_buffer_fill(s : SignalspecmultitaperBuffer, v : Double) -> SignalspecmultitaperBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperBuffer::fill(self : SignalspecmultitaperBuffer, v : Double) -> SignalspecmultitaperBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_buffer_min(s : SignalspecmultitaperBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperBuffer::min(self : SignalspecmultitaperBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_buffer_max(s : SignalspecmultitaperBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperBuffer::max(self : SignalspecmultitaperBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_buffer_to_string(s : SignalspecmultitaperBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperBuffer::to_string(self : SignalspecmultitaperBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperCursor {
@@ -861,45 +861,45 @@ pub fn signal_spec_multitaper_cursor_make(size : Int) -> SignalspecmultitaperCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_cursor_len(s : SignalspecmultitaperCursor) -> Int { s.size }
+pub fn SignalspecmultitaperCursor::len(self : SignalspecmultitaperCursor) -> Int { self.size }
 
-pub fn signal_spec_multitaper_cursor_get(s : SignalspecmultitaperCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperCursor::get(self : SignalspecmultitaperCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_cursor_set(s : SignalspecmultitaperCursor, i : Int, v : Double) -> SignalspecmultitaperCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCursor::set(self : SignalspecmultitaperCursor, i : Int, v : Double) -> SignalspecmultitaperCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cursor_sum(s : SignalspecmultitaperCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperCursor::sum(self : SignalspecmultitaperCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_cursor_mean(s : SignalspecmultitaperCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperCursor::mean(self : SignalspecmultitaperCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_cursor_scale(s : SignalspecmultitaperCursor, f : Double) -> SignalspecmultitaperCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCursor::scale(self : SignalspecmultitaperCursor, f : Double) -> SignalspecmultitaperCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cursor_add(a : SignalspecmultitaperCursor, b : SignalspecmultitaperCursor) -> SignalspecmultitaperCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperCursor::add(self : SignalspecmultitaperCursor, other : SignalspecmultitaperCursor) -> SignalspecmultitaperCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cursor_copy(s : SignalspecmultitaperCursor) -> SignalspecmultitaperCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCursor::copy(self : SignalspecmultitaperCursor) -> SignalspecmultitaperCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cursor_fill(s : SignalspecmultitaperCursor, v : Double) -> SignalspecmultitaperCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperCursor::fill(self : SignalspecmultitaperCursor, v : Double) -> SignalspecmultitaperCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_cursor_min(s : SignalspecmultitaperCursor) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperCursor::min(self : SignalspecmultitaperCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_cursor_max(s : SignalspecmultitaperCursor) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperCursor::max(self : SignalspecmultitaperCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_cursor_to_string(s : SignalspecmultitaperCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperCursor::to_string(self : SignalspecmultitaperCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperView {
@@ -912,45 +912,45 @@ pub fn signal_spec_multitaper_view_make(size : Int) -> SignalspecmultitaperView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_view_len(s : SignalspecmultitaperView) -> Int { s.size }
+pub fn SignalspecmultitaperView::len(self : SignalspecmultitaperView) -> Int { self.size }
 
-pub fn signal_spec_multitaper_view_get(s : SignalspecmultitaperView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperView::get(self : SignalspecmultitaperView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_view_set(s : SignalspecmultitaperView, i : Int, v : Double) -> SignalspecmultitaperView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperView::set(self : SignalspecmultitaperView, i : Int, v : Double) -> SignalspecmultitaperView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_view_sum(s : SignalspecmultitaperView) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperView::sum(self : SignalspecmultitaperView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_view_mean(s : SignalspecmultitaperView) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperView::mean(self : SignalspecmultitaperView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_view_scale(s : SignalspecmultitaperView, f : Double) -> SignalspecmultitaperView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperView::scale(self : SignalspecmultitaperView, f : Double) -> SignalspecmultitaperView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_view_add(a : SignalspecmultitaperView, b : SignalspecmultitaperView) -> SignalspecmultitaperView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperView::add(self : SignalspecmultitaperView, other : SignalspecmultitaperView) -> SignalspecmultitaperView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_view_copy(s : SignalspecmultitaperView) -> SignalspecmultitaperView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperView::copy(self : SignalspecmultitaperView) -> SignalspecmultitaperView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_view_fill(s : SignalspecmultitaperView, v : Double) -> SignalspecmultitaperView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperView::fill(self : SignalspecmultitaperView, v : Double) -> SignalspecmultitaperView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_view_min(s : SignalspecmultitaperView) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperView::min(self : SignalspecmultitaperView) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_view_max(s : SignalspecmultitaperView) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperView::max(self : SignalspecmultitaperView) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_view_to_string(s : SignalspecmultitaperView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperView::to_string(self : SignalspecmultitaperView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperRange {
@@ -963,45 +963,45 @@ pub fn signal_spec_multitaper_range_make(size : Int) -> SignalspecmultitaperRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_range_len(s : SignalspecmultitaperRange) -> Int { s.size }
+pub fn SignalspecmultitaperRange::len(self : SignalspecmultitaperRange) -> Int { self.size }
 
-pub fn signal_spec_multitaper_range_get(s : SignalspecmultitaperRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperRange::get(self : SignalspecmultitaperRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_range_set(s : SignalspecmultitaperRange, i : Int, v : Double) -> SignalspecmultitaperRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperRange::set(self : SignalspecmultitaperRange, i : Int, v : Double) -> SignalspecmultitaperRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_range_sum(s : SignalspecmultitaperRange) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperRange::sum(self : SignalspecmultitaperRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_range_mean(s : SignalspecmultitaperRange) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperRange::mean(self : SignalspecmultitaperRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_range_scale(s : SignalspecmultitaperRange, f : Double) -> SignalspecmultitaperRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperRange::scale(self : SignalspecmultitaperRange, f : Double) -> SignalspecmultitaperRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_range_add(a : SignalspecmultitaperRange, b : SignalspecmultitaperRange) -> SignalspecmultitaperRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperRange::add(self : SignalspecmultitaperRange, other : SignalspecmultitaperRange) -> SignalspecmultitaperRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_range_copy(s : SignalspecmultitaperRange) -> SignalspecmultitaperRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperRange::copy(self : SignalspecmultitaperRange) -> SignalspecmultitaperRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_range_fill(s : SignalspecmultitaperRange, v : Double) -> SignalspecmultitaperRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperRange::fill(self : SignalspecmultitaperRange, v : Double) -> SignalspecmultitaperRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_range_min(s : SignalspecmultitaperRange) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperRange::min(self : SignalspecmultitaperRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_range_max(s : SignalspecmultitaperRange) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperRange::max(self : SignalspecmultitaperRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_range_to_string(s : SignalspecmultitaperRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperRange::to_string(self : SignalspecmultitaperRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmultitaperSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_spec_multitaper_slice_make(size : Int) -> SignalspecmultitaperSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_multitaper_slice_len(s : SignalspecmultitaperSlice) -> Int { s.size }
+pub fn SignalspecmultitaperSlice::len(self : SignalspecmultitaperSlice) -> Int { self.size }
 
-pub fn signal_spec_multitaper_slice_get(s : SignalspecmultitaperSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmultitaperSlice::get(self : SignalspecmultitaperSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_multitaper_slice_set(s : SignalspecmultitaperSlice, i : Int, v : Double) -> SignalspecmultitaperSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperSlice::set(self : SignalspecmultitaperSlice, i : Int, v : Double) -> SignalspecmultitaperSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_slice_sum(s : SignalspecmultitaperSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmultitaperSlice::sum(self : SignalspecmultitaperSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_multitaper_slice_mean(s : SignalspecmultitaperSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmultitaperSlice::mean(self : SignalspecmultitaperSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_multitaper_slice_scale(s : SignalspecmultitaperSlice, f : Double) -> SignalspecmultitaperSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperSlice::scale(self : SignalspecmultitaperSlice, f : Double) -> SignalspecmultitaperSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_slice_add(a : SignalspecmultitaperSlice, b : SignalspecmultitaperSlice) -> SignalspecmultitaperSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmultitaperSlice::add(self : SignalspecmultitaperSlice, other : SignalspecmultitaperSlice) -> SignalspecmultitaperSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_slice_copy(s : SignalspecmultitaperSlice) -> SignalspecmultitaperSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperSlice::copy(self : SignalspecmultitaperSlice) -> SignalspecmultitaperSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_slice_fill(s : SignalspecmultitaperSlice, v : Double) -> SignalspecmultitaperSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmultitaperSlice::fill(self : SignalspecmultitaperSlice, v : Double) -> SignalspecmultitaperSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_multitaper_slice_min(s : SignalspecmultitaperSlice) -> Double { @_common.min(s.data) }
+pub fn SignalspecmultitaperSlice::min(self : SignalspecmultitaperSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_multitaper_slice_max(s : SignalspecmultitaperSlice) -> Double { @_common.max(s.data) }
+pub fn SignalspecmultitaperSlice::max(self : SignalspecmultitaperSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_multitaper_slice_to_string(s : SignalspecmultitaperSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmultitaperSlice::to_string(self : SignalspecmultitaperSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

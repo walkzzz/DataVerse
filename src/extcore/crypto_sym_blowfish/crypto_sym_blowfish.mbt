@@ -351,45 +351,45 @@ pub fn crypto_sym_blowfish_frame_make(size : Int) -> CryptosymblowfishFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_frame_len(s : CryptosymblowfishFrame) -> Int { s.size }
+pub fn CryptosymblowfishFrame::len(self : CryptosymblowfishFrame) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_frame_get(s : CryptosymblowfishFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishFrame::get(self : CryptosymblowfishFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_frame_set(s : CryptosymblowfishFrame, i : Int, v : Double) -> CryptosymblowfishFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishFrame::set(self : CryptosymblowfishFrame, i : Int, v : Double) -> CryptosymblowfishFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_frame_sum(s : CryptosymblowfishFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishFrame::sum(self : CryptosymblowfishFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_frame_mean(s : CryptosymblowfishFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishFrame::mean(self : CryptosymblowfishFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_frame_scale(s : CryptosymblowfishFrame, f : Double) -> CryptosymblowfishFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishFrame::scale(self : CryptosymblowfishFrame, f : Double) -> CryptosymblowfishFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_frame_add(a : CryptosymblowfishFrame, b : CryptosymblowfishFrame) -> CryptosymblowfishFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishFrame::add(self : CryptosymblowfishFrame, other : CryptosymblowfishFrame) -> CryptosymblowfishFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_frame_copy(s : CryptosymblowfishFrame) -> CryptosymblowfishFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishFrame::copy(self : CryptosymblowfishFrame) -> CryptosymblowfishFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_frame_fill(s : CryptosymblowfishFrame, v : Double) -> CryptosymblowfishFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishFrame::fill(self : CryptosymblowfishFrame, v : Double) -> CryptosymblowfishFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_frame_min(s : CryptosymblowfishFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishFrame::min(self : CryptosymblowfishFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_frame_max(s : CryptosymblowfishFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishFrame::max(self : CryptosymblowfishFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_frame_to_string(s : CryptosymblowfishFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishFrame::to_string(self : CryptosymblowfishFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishTable {
@@ -402,45 +402,45 @@ pub fn crypto_sym_blowfish_table_make(size : Int) -> CryptosymblowfishTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_table_len(s : CryptosymblowfishTable) -> Int { s.size }
+pub fn CryptosymblowfishTable::len(self : CryptosymblowfishTable) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_table_get(s : CryptosymblowfishTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishTable::get(self : CryptosymblowfishTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_table_set(s : CryptosymblowfishTable, i : Int, v : Double) -> CryptosymblowfishTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishTable::set(self : CryptosymblowfishTable, i : Int, v : Double) -> CryptosymblowfishTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_table_sum(s : CryptosymblowfishTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishTable::sum(self : CryptosymblowfishTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_table_mean(s : CryptosymblowfishTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishTable::mean(self : CryptosymblowfishTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_table_scale(s : CryptosymblowfishTable, f : Double) -> CryptosymblowfishTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishTable::scale(self : CryptosymblowfishTable, f : Double) -> CryptosymblowfishTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_table_add(a : CryptosymblowfishTable, b : CryptosymblowfishTable) -> CryptosymblowfishTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishTable::add(self : CryptosymblowfishTable, other : CryptosymblowfishTable) -> CryptosymblowfishTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_table_copy(s : CryptosymblowfishTable) -> CryptosymblowfishTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishTable::copy(self : CryptosymblowfishTable) -> CryptosymblowfishTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_table_fill(s : CryptosymblowfishTable, v : Double) -> CryptosymblowfishTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishTable::fill(self : CryptosymblowfishTable, v : Double) -> CryptosymblowfishTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_table_min(s : CryptosymblowfishTable) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishTable::min(self : CryptosymblowfishTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_table_max(s : CryptosymblowfishTable) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishTable::max(self : CryptosymblowfishTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_table_to_string(s : CryptosymblowfishTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishTable::to_string(self : CryptosymblowfishTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sym_blowfish_graphn_make(size : Int) -> CryptosymblowfishGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_graphn_len(s : CryptosymblowfishGraphN) -> Int { s.size }
+pub fn CryptosymblowfishGraphN::len(self : CryptosymblowfishGraphN) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_graphn_get(s : CryptosymblowfishGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishGraphN::get(self : CryptosymblowfishGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_graphn_set(s : CryptosymblowfishGraphN, i : Int, v : Double) -> CryptosymblowfishGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishGraphN::set(self : CryptosymblowfishGraphN, i : Int, v : Double) -> CryptosymblowfishGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_graphn_sum(s : CryptosymblowfishGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishGraphN::sum(self : CryptosymblowfishGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_graphn_mean(s : CryptosymblowfishGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishGraphN::mean(self : CryptosymblowfishGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_graphn_scale(s : CryptosymblowfishGraphN, f : Double) -> CryptosymblowfishGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishGraphN::scale(self : CryptosymblowfishGraphN, f : Double) -> CryptosymblowfishGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_graphn_add(a : CryptosymblowfishGraphN, b : CryptosymblowfishGraphN) -> CryptosymblowfishGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishGraphN::add(self : CryptosymblowfishGraphN, other : CryptosymblowfishGraphN) -> CryptosymblowfishGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_graphn_copy(s : CryptosymblowfishGraphN) -> CryptosymblowfishGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishGraphN::copy(self : CryptosymblowfishGraphN) -> CryptosymblowfishGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_graphn_fill(s : CryptosymblowfishGraphN, v : Double) -> CryptosymblowfishGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishGraphN::fill(self : CryptosymblowfishGraphN, v : Double) -> CryptosymblowfishGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_graphn_min(s : CryptosymblowfishGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishGraphN::min(self : CryptosymblowfishGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_graphn_max(s : CryptosymblowfishGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishGraphN::max(self : CryptosymblowfishGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_graphn_to_string(s : CryptosymblowfishGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishGraphN::to_string(self : CryptosymblowfishGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishNode {
@@ -504,45 +504,45 @@ pub fn crypto_sym_blowfish_node_make(size : Int) -> CryptosymblowfishNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_node_len(s : CryptosymblowfishNode) -> Int { s.size }
+pub fn CryptosymblowfishNode::len(self : CryptosymblowfishNode) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_node_get(s : CryptosymblowfishNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishNode::get(self : CryptosymblowfishNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_node_set(s : CryptosymblowfishNode, i : Int, v : Double) -> CryptosymblowfishNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishNode::set(self : CryptosymblowfishNode, i : Int, v : Double) -> CryptosymblowfishNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_node_sum(s : CryptosymblowfishNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishNode::sum(self : CryptosymblowfishNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_node_mean(s : CryptosymblowfishNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishNode::mean(self : CryptosymblowfishNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_node_scale(s : CryptosymblowfishNode, f : Double) -> CryptosymblowfishNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishNode::scale(self : CryptosymblowfishNode, f : Double) -> CryptosymblowfishNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_node_add(a : CryptosymblowfishNode, b : CryptosymblowfishNode) -> CryptosymblowfishNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishNode::add(self : CryptosymblowfishNode, other : CryptosymblowfishNode) -> CryptosymblowfishNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_node_copy(s : CryptosymblowfishNode) -> CryptosymblowfishNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishNode::copy(self : CryptosymblowfishNode) -> CryptosymblowfishNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_node_fill(s : CryptosymblowfishNode, v : Double) -> CryptosymblowfishNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishNode::fill(self : CryptosymblowfishNode, v : Double) -> CryptosymblowfishNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_node_min(s : CryptosymblowfishNode) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishNode::min(self : CryptosymblowfishNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_node_max(s : CryptosymblowfishNode) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishNode::max(self : CryptosymblowfishNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_node_to_string(s : CryptosymblowfishNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishNode::to_string(self : CryptosymblowfishNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sym_blowfish_edge_make(size : Int) -> CryptosymblowfishEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_edge_len(s : CryptosymblowfishEdge) -> Int { s.size }
+pub fn CryptosymblowfishEdge::len(self : CryptosymblowfishEdge) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_edge_get(s : CryptosymblowfishEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishEdge::get(self : CryptosymblowfishEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_edge_set(s : CryptosymblowfishEdge, i : Int, v : Double) -> CryptosymblowfishEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishEdge::set(self : CryptosymblowfishEdge, i : Int, v : Double) -> CryptosymblowfishEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_edge_sum(s : CryptosymblowfishEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishEdge::sum(self : CryptosymblowfishEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_edge_mean(s : CryptosymblowfishEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishEdge::mean(self : CryptosymblowfishEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_edge_scale(s : CryptosymblowfishEdge, f : Double) -> CryptosymblowfishEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishEdge::scale(self : CryptosymblowfishEdge, f : Double) -> CryptosymblowfishEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_edge_add(a : CryptosymblowfishEdge, b : CryptosymblowfishEdge) -> CryptosymblowfishEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishEdge::add(self : CryptosymblowfishEdge, other : CryptosymblowfishEdge) -> CryptosymblowfishEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_edge_copy(s : CryptosymblowfishEdge) -> CryptosymblowfishEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishEdge::copy(self : CryptosymblowfishEdge) -> CryptosymblowfishEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_edge_fill(s : CryptosymblowfishEdge, v : Double) -> CryptosymblowfishEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishEdge::fill(self : CryptosymblowfishEdge, v : Double) -> CryptosymblowfishEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_edge_min(s : CryptosymblowfishEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishEdge::min(self : CryptosymblowfishEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_edge_max(s : CryptosymblowfishEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishEdge::max(self : CryptosymblowfishEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_edge_to_string(s : CryptosymblowfishEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishEdge::to_string(self : CryptosymblowfishEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishPath {
@@ -606,45 +606,45 @@ pub fn crypto_sym_blowfish_path_make(size : Int) -> CryptosymblowfishPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_path_len(s : CryptosymblowfishPath) -> Int { s.size }
+pub fn CryptosymblowfishPath::len(self : CryptosymblowfishPath) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_path_get(s : CryptosymblowfishPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishPath::get(self : CryptosymblowfishPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_path_set(s : CryptosymblowfishPath, i : Int, v : Double) -> CryptosymblowfishPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishPath::set(self : CryptosymblowfishPath, i : Int, v : Double) -> CryptosymblowfishPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_path_sum(s : CryptosymblowfishPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishPath::sum(self : CryptosymblowfishPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_path_mean(s : CryptosymblowfishPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishPath::mean(self : CryptosymblowfishPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_path_scale(s : CryptosymblowfishPath, f : Double) -> CryptosymblowfishPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishPath::scale(self : CryptosymblowfishPath, f : Double) -> CryptosymblowfishPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_path_add(a : CryptosymblowfishPath, b : CryptosymblowfishPath) -> CryptosymblowfishPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishPath::add(self : CryptosymblowfishPath, other : CryptosymblowfishPath) -> CryptosymblowfishPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_path_copy(s : CryptosymblowfishPath) -> CryptosymblowfishPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishPath::copy(self : CryptosymblowfishPath) -> CryptosymblowfishPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_path_fill(s : CryptosymblowfishPath, v : Double) -> CryptosymblowfishPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishPath::fill(self : CryptosymblowfishPath, v : Double) -> CryptosymblowfishPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_path_min(s : CryptosymblowfishPath) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishPath::min(self : CryptosymblowfishPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_path_max(s : CryptosymblowfishPath) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishPath::max(self : CryptosymblowfishPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_path_to_string(s : CryptosymblowfishPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishPath::to_string(self : CryptosymblowfishPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sym_blowfish_cluster_make(size : Int) -> CryptosymblowfishCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_cluster_len(s : CryptosymblowfishCluster) -> Int { s.size }
+pub fn CryptosymblowfishCluster::len(self : CryptosymblowfishCluster) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_cluster_get(s : CryptosymblowfishCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishCluster::get(self : CryptosymblowfishCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_cluster_set(s : CryptosymblowfishCluster, i : Int, v : Double) -> CryptosymblowfishCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCluster::set(self : CryptosymblowfishCluster, i : Int, v : Double) -> CryptosymblowfishCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cluster_sum(s : CryptosymblowfishCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishCluster::sum(self : CryptosymblowfishCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_cluster_mean(s : CryptosymblowfishCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishCluster::mean(self : CryptosymblowfishCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_cluster_scale(s : CryptosymblowfishCluster, f : Double) -> CryptosymblowfishCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCluster::scale(self : CryptosymblowfishCluster, f : Double) -> CryptosymblowfishCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cluster_add(a : CryptosymblowfishCluster, b : CryptosymblowfishCluster) -> CryptosymblowfishCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishCluster::add(self : CryptosymblowfishCluster, other : CryptosymblowfishCluster) -> CryptosymblowfishCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cluster_copy(s : CryptosymblowfishCluster) -> CryptosymblowfishCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCluster::copy(self : CryptosymblowfishCluster) -> CryptosymblowfishCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cluster_fill(s : CryptosymblowfishCluster, v : Double) -> CryptosymblowfishCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCluster::fill(self : CryptosymblowfishCluster, v : Double) -> CryptosymblowfishCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cluster_min(s : CryptosymblowfishCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishCluster::min(self : CryptosymblowfishCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_cluster_max(s : CryptosymblowfishCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishCluster::max(self : CryptosymblowfishCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_cluster_to_string(s : CryptosymblowfishCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishCluster::to_string(self : CryptosymblowfishCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishModel {
@@ -708,45 +708,45 @@ pub fn crypto_sym_blowfish_model_make(size : Int) -> CryptosymblowfishModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_model_len(s : CryptosymblowfishModel) -> Int { s.size }
+pub fn CryptosymblowfishModel::len(self : CryptosymblowfishModel) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_model_get(s : CryptosymblowfishModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishModel::get(self : CryptosymblowfishModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_model_set(s : CryptosymblowfishModel, i : Int, v : Double) -> CryptosymblowfishModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishModel::set(self : CryptosymblowfishModel, i : Int, v : Double) -> CryptosymblowfishModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_model_sum(s : CryptosymblowfishModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishModel::sum(self : CryptosymblowfishModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_model_mean(s : CryptosymblowfishModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishModel::mean(self : CryptosymblowfishModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_model_scale(s : CryptosymblowfishModel, f : Double) -> CryptosymblowfishModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishModel::scale(self : CryptosymblowfishModel, f : Double) -> CryptosymblowfishModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_model_add(a : CryptosymblowfishModel, b : CryptosymblowfishModel) -> CryptosymblowfishModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishModel::add(self : CryptosymblowfishModel, other : CryptosymblowfishModel) -> CryptosymblowfishModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_model_copy(s : CryptosymblowfishModel) -> CryptosymblowfishModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishModel::copy(self : CryptosymblowfishModel) -> CryptosymblowfishModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_model_fill(s : CryptosymblowfishModel, v : Double) -> CryptosymblowfishModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishModel::fill(self : CryptosymblowfishModel, v : Double) -> CryptosymblowfishModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_model_min(s : CryptosymblowfishModel) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishModel::min(self : CryptosymblowfishModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_model_max(s : CryptosymblowfishModel) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishModel::max(self : CryptosymblowfishModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_model_to_string(s : CryptosymblowfishModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishModel::to_string(self : CryptosymblowfishModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sym_blowfish_layer_make(size : Int) -> CryptosymblowfishLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_layer_len(s : CryptosymblowfishLayer) -> Int { s.size }
+pub fn CryptosymblowfishLayer::len(self : CryptosymblowfishLayer) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_layer_get(s : CryptosymblowfishLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishLayer::get(self : CryptosymblowfishLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_layer_set(s : CryptosymblowfishLayer, i : Int, v : Double) -> CryptosymblowfishLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishLayer::set(self : CryptosymblowfishLayer, i : Int, v : Double) -> CryptosymblowfishLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_layer_sum(s : CryptosymblowfishLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishLayer::sum(self : CryptosymblowfishLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_layer_mean(s : CryptosymblowfishLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishLayer::mean(self : CryptosymblowfishLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_layer_scale(s : CryptosymblowfishLayer, f : Double) -> CryptosymblowfishLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishLayer::scale(self : CryptosymblowfishLayer, f : Double) -> CryptosymblowfishLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_layer_add(a : CryptosymblowfishLayer, b : CryptosymblowfishLayer) -> CryptosymblowfishLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishLayer::add(self : CryptosymblowfishLayer, other : CryptosymblowfishLayer) -> CryptosymblowfishLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_layer_copy(s : CryptosymblowfishLayer) -> CryptosymblowfishLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishLayer::copy(self : CryptosymblowfishLayer) -> CryptosymblowfishLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_layer_fill(s : CryptosymblowfishLayer, v : Double) -> CryptosymblowfishLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishLayer::fill(self : CryptosymblowfishLayer, v : Double) -> CryptosymblowfishLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_layer_min(s : CryptosymblowfishLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishLayer::min(self : CryptosymblowfishLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_layer_max(s : CryptosymblowfishLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishLayer::max(self : CryptosymblowfishLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_layer_to_string(s : CryptosymblowfishLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishLayer::to_string(self : CryptosymblowfishLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sym_blowfish_buffer_make(size : Int) -> CryptosymblowfishBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_buffer_len(s : CryptosymblowfishBuffer) -> Int { s.size }
+pub fn CryptosymblowfishBuffer::len(self : CryptosymblowfishBuffer) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_buffer_get(s : CryptosymblowfishBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishBuffer::get(self : CryptosymblowfishBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_buffer_set(s : CryptosymblowfishBuffer, i : Int, v : Double) -> CryptosymblowfishBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishBuffer::set(self : CryptosymblowfishBuffer, i : Int, v : Double) -> CryptosymblowfishBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_buffer_sum(s : CryptosymblowfishBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishBuffer::sum(self : CryptosymblowfishBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_buffer_mean(s : CryptosymblowfishBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishBuffer::mean(self : CryptosymblowfishBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_buffer_scale(s : CryptosymblowfishBuffer, f : Double) -> CryptosymblowfishBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishBuffer::scale(self : CryptosymblowfishBuffer, f : Double) -> CryptosymblowfishBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_buffer_add(a : CryptosymblowfishBuffer, b : CryptosymblowfishBuffer) -> CryptosymblowfishBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishBuffer::add(self : CryptosymblowfishBuffer, other : CryptosymblowfishBuffer) -> CryptosymblowfishBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_buffer_copy(s : CryptosymblowfishBuffer) -> CryptosymblowfishBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishBuffer::copy(self : CryptosymblowfishBuffer) -> CryptosymblowfishBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_buffer_fill(s : CryptosymblowfishBuffer, v : Double) -> CryptosymblowfishBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishBuffer::fill(self : CryptosymblowfishBuffer, v : Double) -> CryptosymblowfishBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_buffer_min(s : CryptosymblowfishBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishBuffer::min(self : CryptosymblowfishBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_buffer_max(s : CryptosymblowfishBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishBuffer::max(self : CryptosymblowfishBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_buffer_to_string(s : CryptosymblowfishBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishBuffer::to_string(self : CryptosymblowfishBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sym_blowfish_cursor_make(size : Int) -> CryptosymblowfishCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_cursor_len(s : CryptosymblowfishCursor) -> Int { s.size }
+pub fn CryptosymblowfishCursor::len(self : CryptosymblowfishCursor) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_cursor_get(s : CryptosymblowfishCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishCursor::get(self : CryptosymblowfishCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_cursor_set(s : CryptosymblowfishCursor, i : Int, v : Double) -> CryptosymblowfishCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCursor::set(self : CryptosymblowfishCursor, i : Int, v : Double) -> CryptosymblowfishCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cursor_sum(s : CryptosymblowfishCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishCursor::sum(self : CryptosymblowfishCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_cursor_mean(s : CryptosymblowfishCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishCursor::mean(self : CryptosymblowfishCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_cursor_scale(s : CryptosymblowfishCursor, f : Double) -> CryptosymblowfishCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCursor::scale(self : CryptosymblowfishCursor, f : Double) -> CryptosymblowfishCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cursor_add(a : CryptosymblowfishCursor, b : CryptosymblowfishCursor) -> CryptosymblowfishCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishCursor::add(self : CryptosymblowfishCursor, other : CryptosymblowfishCursor) -> CryptosymblowfishCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cursor_copy(s : CryptosymblowfishCursor) -> CryptosymblowfishCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCursor::copy(self : CryptosymblowfishCursor) -> CryptosymblowfishCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cursor_fill(s : CryptosymblowfishCursor, v : Double) -> CryptosymblowfishCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishCursor::fill(self : CryptosymblowfishCursor, v : Double) -> CryptosymblowfishCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_cursor_min(s : CryptosymblowfishCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishCursor::min(self : CryptosymblowfishCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_cursor_max(s : CryptosymblowfishCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishCursor::max(self : CryptosymblowfishCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_cursor_to_string(s : CryptosymblowfishCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishCursor::to_string(self : CryptosymblowfishCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishView {
@@ -912,45 +912,45 @@ pub fn crypto_sym_blowfish_view_make(size : Int) -> CryptosymblowfishView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_view_len(s : CryptosymblowfishView) -> Int { s.size }
+pub fn CryptosymblowfishView::len(self : CryptosymblowfishView) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_view_get(s : CryptosymblowfishView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishView::get(self : CryptosymblowfishView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_view_set(s : CryptosymblowfishView, i : Int, v : Double) -> CryptosymblowfishView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishView::set(self : CryptosymblowfishView, i : Int, v : Double) -> CryptosymblowfishView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_view_sum(s : CryptosymblowfishView) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishView::sum(self : CryptosymblowfishView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_view_mean(s : CryptosymblowfishView) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishView::mean(self : CryptosymblowfishView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_view_scale(s : CryptosymblowfishView, f : Double) -> CryptosymblowfishView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishView::scale(self : CryptosymblowfishView, f : Double) -> CryptosymblowfishView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_view_add(a : CryptosymblowfishView, b : CryptosymblowfishView) -> CryptosymblowfishView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishView::add(self : CryptosymblowfishView, other : CryptosymblowfishView) -> CryptosymblowfishView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_view_copy(s : CryptosymblowfishView) -> CryptosymblowfishView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishView::copy(self : CryptosymblowfishView) -> CryptosymblowfishView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_view_fill(s : CryptosymblowfishView, v : Double) -> CryptosymblowfishView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishView::fill(self : CryptosymblowfishView, v : Double) -> CryptosymblowfishView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_view_min(s : CryptosymblowfishView) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishView::min(self : CryptosymblowfishView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_view_max(s : CryptosymblowfishView) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishView::max(self : CryptosymblowfishView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_view_to_string(s : CryptosymblowfishView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishView::to_string(self : CryptosymblowfishView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishRange {
@@ -963,45 +963,45 @@ pub fn crypto_sym_blowfish_range_make(size : Int) -> CryptosymblowfishRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_range_len(s : CryptosymblowfishRange) -> Int { s.size }
+pub fn CryptosymblowfishRange::len(self : CryptosymblowfishRange) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_range_get(s : CryptosymblowfishRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishRange::get(self : CryptosymblowfishRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_range_set(s : CryptosymblowfishRange, i : Int, v : Double) -> CryptosymblowfishRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishRange::set(self : CryptosymblowfishRange, i : Int, v : Double) -> CryptosymblowfishRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_range_sum(s : CryptosymblowfishRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishRange::sum(self : CryptosymblowfishRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_range_mean(s : CryptosymblowfishRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishRange::mean(self : CryptosymblowfishRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_range_scale(s : CryptosymblowfishRange, f : Double) -> CryptosymblowfishRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishRange::scale(self : CryptosymblowfishRange, f : Double) -> CryptosymblowfishRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_range_add(a : CryptosymblowfishRange, b : CryptosymblowfishRange) -> CryptosymblowfishRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishRange::add(self : CryptosymblowfishRange, other : CryptosymblowfishRange) -> CryptosymblowfishRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_range_copy(s : CryptosymblowfishRange) -> CryptosymblowfishRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishRange::copy(self : CryptosymblowfishRange) -> CryptosymblowfishRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_range_fill(s : CryptosymblowfishRange, v : Double) -> CryptosymblowfishRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishRange::fill(self : CryptosymblowfishRange, v : Double) -> CryptosymblowfishRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_range_min(s : CryptosymblowfishRange) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishRange::min(self : CryptosymblowfishRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_range_max(s : CryptosymblowfishRange) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishRange::max(self : CryptosymblowfishRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_range_to_string(s : CryptosymblowfishRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishRange::to_string(self : CryptosymblowfishRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymblowfishSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sym_blowfish_slice_make(size : Int) -> CryptosymblowfishSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_blowfish_slice_len(s : CryptosymblowfishSlice) -> Int { s.size }
+pub fn CryptosymblowfishSlice::len(self : CryptosymblowfishSlice) -> Int { self.size }
 
-pub fn crypto_sym_blowfish_slice_get(s : CryptosymblowfishSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymblowfishSlice::get(self : CryptosymblowfishSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_blowfish_slice_set(s : CryptosymblowfishSlice, i : Int, v : Double) -> CryptosymblowfishSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymblowfishSlice::set(self : CryptosymblowfishSlice, i : Int, v : Double) -> CryptosymblowfishSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_slice_sum(s : CryptosymblowfishSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosymblowfishSlice::sum(self : CryptosymblowfishSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_blowfish_slice_mean(s : CryptosymblowfishSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosymblowfishSlice::mean(self : CryptosymblowfishSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_blowfish_slice_scale(s : CryptosymblowfishSlice, f : Double) -> CryptosymblowfishSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishSlice::scale(self : CryptosymblowfishSlice, f : Double) -> CryptosymblowfishSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_slice_add(a : CryptosymblowfishSlice, b : CryptosymblowfishSlice) -> CryptosymblowfishSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymblowfishSlice::add(self : CryptosymblowfishSlice, other : CryptosymblowfishSlice) -> CryptosymblowfishSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_slice_copy(s : CryptosymblowfishSlice) -> CryptosymblowfishSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishSlice::copy(self : CryptosymblowfishSlice) -> CryptosymblowfishSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_slice_fill(s : CryptosymblowfishSlice, v : Double) -> CryptosymblowfishSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymblowfishSlice::fill(self : CryptosymblowfishSlice, v : Double) -> CryptosymblowfishSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_blowfish_slice_min(s : CryptosymblowfishSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosymblowfishSlice::min(self : CryptosymblowfishSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_blowfish_slice_max(s : CryptosymblowfishSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosymblowfishSlice::max(self : CryptosymblowfishSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_blowfish_slice_to_string(s : CryptosymblowfishSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymblowfishSlice::to_string(self : CryptosymblowfishSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

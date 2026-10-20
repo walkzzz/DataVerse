@@ -351,45 +351,45 @@ pub fn geo_buffer_line_frame_make(size : Int) -> GeobufferlineFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_frame_len(s : GeobufferlineFrame) -> Int { s.size }
+pub fn GeobufferlineFrame::len(self : GeobufferlineFrame) -> Int { self.size }
 
-pub fn geo_buffer_line_frame_get(s : GeobufferlineFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineFrame::get(self : GeobufferlineFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_frame_set(s : GeobufferlineFrame, i : Int, v : Double) -> GeobufferlineFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineFrame::set(self : GeobufferlineFrame, i : Int, v : Double) -> GeobufferlineFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_frame_sum(s : GeobufferlineFrame) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineFrame::sum(self : GeobufferlineFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_frame_mean(s : GeobufferlineFrame) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineFrame::mean(self : GeobufferlineFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_frame_scale(s : GeobufferlineFrame, f : Double) -> GeobufferlineFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineFrame::scale(self : GeobufferlineFrame, f : Double) -> GeobufferlineFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_frame_add(a : GeobufferlineFrame, b : GeobufferlineFrame) -> GeobufferlineFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineFrame::add(self : GeobufferlineFrame, other : GeobufferlineFrame) -> GeobufferlineFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_frame_copy(s : GeobufferlineFrame) -> GeobufferlineFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineFrame::copy(self : GeobufferlineFrame) -> GeobufferlineFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_frame_fill(s : GeobufferlineFrame, v : Double) -> GeobufferlineFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineFrame::fill(self : GeobufferlineFrame, v : Double) -> GeobufferlineFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_frame_min(s : GeobufferlineFrame) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineFrame::min(self : GeobufferlineFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_frame_max(s : GeobufferlineFrame) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineFrame::max(self : GeobufferlineFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_frame_to_string(s : GeobufferlineFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineFrame::to_string(self : GeobufferlineFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineTable {
@@ -402,45 +402,45 @@ pub fn geo_buffer_line_table_make(size : Int) -> GeobufferlineTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_table_len(s : GeobufferlineTable) -> Int { s.size }
+pub fn GeobufferlineTable::len(self : GeobufferlineTable) -> Int { self.size }
 
-pub fn geo_buffer_line_table_get(s : GeobufferlineTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineTable::get(self : GeobufferlineTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_table_set(s : GeobufferlineTable, i : Int, v : Double) -> GeobufferlineTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineTable::set(self : GeobufferlineTable, i : Int, v : Double) -> GeobufferlineTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_table_sum(s : GeobufferlineTable) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineTable::sum(self : GeobufferlineTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_table_mean(s : GeobufferlineTable) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineTable::mean(self : GeobufferlineTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_table_scale(s : GeobufferlineTable, f : Double) -> GeobufferlineTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineTable::scale(self : GeobufferlineTable, f : Double) -> GeobufferlineTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_table_add(a : GeobufferlineTable, b : GeobufferlineTable) -> GeobufferlineTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineTable::add(self : GeobufferlineTable, other : GeobufferlineTable) -> GeobufferlineTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_table_copy(s : GeobufferlineTable) -> GeobufferlineTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineTable::copy(self : GeobufferlineTable) -> GeobufferlineTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_table_fill(s : GeobufferlineTable, v : Double) -> GeobufferlineTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineTable::fill(self : GeobufferlineTable, v : Double) -> GeobufferlineTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_table_min(s : GeobufferlineTable) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineTable::min(self : GeobufferlineTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_table_max(s : GeobufferlineTable) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineTable::max(self : GeobufferlineTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_table_to_string(s : GeobufferlineTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineTable::to_string(self : GeobufferlineTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineGraphN {
@@ -453,45 +453,45 @@ pub fn geo_buffer_line_graphn_make(size : Int) -> GeobufferlineGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_graphn_len(s : GeobufferlineGraphN) -> Int { s.size }
+pub fn GeobufferlineGraphN::len(self : GeobufferlineGraphN) -> Int { self.size }
 
-pub fn geo_buffer_line_graphn_get(s : GeobufferlineGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineGraphN::get(self : GeobufferlineGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_graphn_set(s : GeobufferlineGraphN, i : Int, v : Double) -> GeobufferlineGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineGraphN::set(self : GeobufferlineGraphN, i : Int, v : Double) -> GeobufferlineGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_graphn_sum(s : GeobufferlineGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineGraphN::sum(self : GeobufferlineGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_graphn_mean(s : GeobufferlineGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineGraphN::mean(self : GeobufferlineGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_graphn_scale(s : GeobufferlineGraphN, f : Double) -> GeobufferlineGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineGraphN::scale(self : GeobufferlineGraphN, f : Double) -> GeobufferlineGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_graphn_add(a : GeobufferlineGraphN, b : GeobufferlineGraphN) -> GeobufferlineGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineGraphN::add(self : GeobufferlineGraphN, other : GeobufferlineGraphN) -> GeobufferlineGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_graphn_copy(s : GeobufferlineGraphN) -> GeobufferlineGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineGraphN::copy(self : GeobufferlineGraphN) -> GeobufferlineGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_graphn_fill(s : GeobufferlineGraphN, v : Double) -> GeobufferlineGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineGraphN::fill(self : GeobufferlineGraphN, v : Double) -> GeobufferlineGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_graphn_min(s : GeobufferlineGraphN) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineGraphN::min(self : GeobufferlineGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_graphn_max(s : GeobufferlineGraphN) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineGraphN::max(self : GeobufferlineGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_graphn_to_string(s : GeobufferlineGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineGraphN::to_string(self : GeobufferlineGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineNode {
@@ -504,45 +504,45 @@ pub fn geo_buffer_line_node_make(size : Int) -> GeobufferlineNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_node_len(s : GeobufferlineNode) -> Int { s.size }
+pub fn GeobufferlineNode::len(self : GeobufferlineNode) -> Int { self.size }
 
-pub fn geo_buffer_line_node_get(s : GeobufferlineNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineNode::get(self : GeobufferlineNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_node_set(s : GeobufferlineNode, i : Int, v : Double) -> GeobufferlineNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineNode::set(self : GeobufferlineNode, i : Int, v : Double) -> GeobufferlineNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_node_sum(s : GeobufferlineNode) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineNode::sum(self : GeobufferlineNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_node_mean(s : GeobufferlineNode) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineNode::mean(self : GeobufferlineNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_node_scale(s : GeobufferlineNode, f : Double) -> GeobufferlineNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineNode::scale(self : GeobufferlineNode, f : Double) -> GeobufferlineNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_node_add(a : GeobufferlineNode, b : GeobufferlineNode) -> GeobufferlineNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineNode::add(self : GeobufferlineNode, other : GeobufferlineNode) -> GeobufferlineNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_node_copy(s : GeobufferlineNode) -> GeobufferlineNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineNode::copy(self : GeobufferlineNode) -> GeobufferlineNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_node_fill(s : GeobufferlineNode, v : Double) -> GeobufferlineNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineNode::fill(self : GeobufferlineNode, v : Double) -> GeobufferlineNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_node_min(s : GeobufferlineNode) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineNode::min(self : GeobufferlineNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_node_max(s : GeobufferlineNode) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineNode::max(self : GeobufferlineNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_node_to_string(s : GeobufferlineNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineNode::to_string(self : GeobufferlineNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineEdge {
@@ -555,45 +555,45 @@ pub fn geo_buffer_line_edge_make(size : Int) -> GeobufferlineEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_edge_len(s : GeobufferlineEdge) -> Int { s.size }
+pub fn GeobufferlineEdge::len(self : GeobufferlineEdge) -> Int { self.size }
 
-pub fn geo_buffer_line_edge_get(s : GeobufferlineEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineEdge::get(self : GeobufferlineEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_edge_set(s : GeobufferlineEdge, i : Int, v : Double) -> GeobufferlineEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineEdge::set(self : GeobufferlineEdge, i : Int, v : Double) -> GeobufferlineEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_edge_sum(s : GeobufferlineEdge) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineEdge::sum(self : GeobufferlineEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_edge_mean(s : GeobufferlineEdge) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineEdge::mean(self : GeobufferlineEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_edge_scale(s : GeobufferlineEdge, f : Double) -> GeobufferlineEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineEdge::scale(self : GeobufferlineEdge, f : Double) -> GeobufferlineEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_edge_add(a : GeobufferlineEdge, b : GeobufferlineEdge) -> GeobufferlineEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineEdge::add(self : GeobufferlineEdge, other : GeobufferlineEdge) -> GeobufferlineEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_edge_copy(s : GeobufferlineEdge) -> GeobufferlineEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineEdge::copy(self : GeobufferlineEdge) -> GeobufferlineEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_edge_fill(s : GeobufferlineEdge, v : Double) -> GeobufferlineEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineEdge::fill(self : GeobufferlineEdge, v : Double) -> GeobufferlineEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_edge_min(s : GeobufferlineEdge) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineEdge::min(self : GeobufferlineEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_edge_max(s : GeobufferlineEdge) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineEdge::max(self : GeobufferlineEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_edge_to_string(s : GeobufferlineEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineEdge::to_string(self : GeobufferlineEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlinePath {
@@ -606,45 +606,45 @@ pub fn geo_buffer_line_path_make(size : Int) -> GeobufferlinePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_path_len(s : GeobufferlinePath) -> Int { s.size }
+pub fn GeobufferlinePath::len(self : GeobufferlinePath) -> Int { self.size }
 
-pub fn geo_buffer_line_path_get(s : GeobufferlinePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlinePath::get(self : GeobufferlinePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_path_set(s : GeobufferlinePath, i : Int, v : Double) -> GeobufferlinePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlinePath::set(self : GeobufferlinePath, i : Int, v : Double) -> GeobufferlinePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_path_sum(s : GeobufferlinePath) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlinePath::sum(self : GeobufferlinePath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_path_mean(s : GeobufferlinePath) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlinePath::mean(self : GeobufferlinePath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_path_scale(s : GeobufferlinePath, f : Double) -> GeobufferlinePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlinePath::scale(self : GeobufferlinePath, f : Double) -> GeobufferlinePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_path_add(a : GeobufferlinePath, b : GeobufferlinePath) -> GeobufferlinePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlinePath::add(self : GeobufferlinePath, other : GeobufferlinePath) -> GeobufferlinePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_path_copy(s : GeobufferlinePath) -> GeobufferlinePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlinePath::copy(self : GeobufferlinePath) -> GeobufferlinePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_path_fill(s : GeobufferlinePath, v : Double) -> GeobufferlinePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlinePath::fill(self : GeobufferlinePath, v : Double) -> GeobufferlinePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_path_min(s : GeobufferlinePath) -> Double { @_common.min(s.data) }
+pub fn GeobufferlinePath::min(self : GeobufferlinePath) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_path_max(s : GeobufferlinePath) -> Double { @_common.max(s.data) }
+pub fn GeobufferlinePath::max(self : GeobufferlinePath) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_path_to_string(s : GeobufferlinePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlinePath::to_string(self : GeobufferlinePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineCluster {
@@ -657,45 +657,45 @@ pub fn geo_buffer_line_cluster_make(size : Int) -> GeobufferlineCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_cluster_len(s : GeobufferlineCluster) -> Int { s.size }
+pub fn GeobufferlineCluster::len(self : GeobufferlineCluster) -> Int { self.size }
 
-pub fn geo_buffer_line_cluster_get(s : GeobufferlineCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineCluster::get(self : GeobufferlineCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_cluster_set(s : GeobufferlineCluster, i : Int, v : Double) -> GeobufferlineCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineCluster::set(self : GeobufferlineCluster, i : Int, v : Double) -> GeobufferlineCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cluster_sum(s : GeobufferlineCluster) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineCluster::sum(self : GeobufferlineCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_cluster_mean(s : GeobufferlineCluster) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineCluster::mean(self : GeobufferlineCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_cluster_scale(s : GeobufferlineCluster, f : Double) -> GeobufferlineCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineCluster::scale(self : GeobufferlineCluster, f : Double) -> GeobufferlineCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cluster_add(a : GeobufferlineCluster, b : GeobufferlineCluster) -> GeobufferlineCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineCluster::add(self : GeobufferlineCluster, other : GeobufferlineCluster) -> GeobufferlineCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cluster_copy(s : GeobufferlineCluster) -> GeobufferlineCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineCluster::copy(self : GeobufferlineCluster) -> GeobufferlineCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cluster_fill(s : GeobufferlineCluster, v : Double) -> GeobufferlineCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineCluster::fill(self : GeobufferlineCluster, v : Double) -> GeobufferlineCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cluster_min(s : GeobufferlineCluster) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineCluster::min(self : GeobufferlineCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_cluster_max(s : GeobufferlineCluster) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineCluster::max(self : GeobufferlineCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_cluster_to_string(s : GeobufferlineCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineCluster::to_string(self : GeobufferlineCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineModel {
@@ -708,45 +708,45 @@ pub fn geo_buffer_line_model_make(size : Int) -> GeobufferlineModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_model_len(s : GeobufferlineModel) -> Int { s.size }
+pub fn GeobufferlineModel::len(self : GeobufferlineModel) -> Int { self.size }
 
-pub fn geo_buffer_line_model_get(s : GeobufferlineModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineModel::get(self : GeobufferlineModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_model_set(s : GeobufferlineModel, i : Int, v : Double) -> GeobufferlineModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineModel::set(self : GeobufferlineModel, i : Int, v : Double) -> GeobufferlineModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_model_sum(s : GeobufferlineModel) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineModel::sum(self : GeobufferlineModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_model_mean(s : GeobufferlineModel) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineModel::mean(self : GeobufferlineModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_model_scale(s : GeobufferlineModel, f : Double) -> GeobufferlineModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineModel::scale(self : GeobufferlineModel, f : Double) -> GeobufferlineModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_model_add(a : GeobufferlineModel, b : GeobufferlineModel) -> GeobufferlineModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineModel::add(self : GeobufferlineModel, other : GeobufferlineModel) -> GeobufferlineModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_model_copy(s : GeobufferlineModel) -> GeobufferlineModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineModel::copy(self : GeobufferlineModel) -> GeobufferlineModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_model_fill(s : GeobufferlineModel, v : Double) -> GeobufferlineModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineModel::fill(self : GeobufferlineModel, v : Double) -> GeobufferlineModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_model_min(s : GeobufferlineModel) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineModel::min(self : GeobufferlineModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_model_max(s : GeobufferlineModel) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineModel::max(self : GeobufferlineModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_model_to_string(s : GeobufferlineModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineModel::to_string(self : GeobufferlineModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineLayer {
@@ -759,45 +759,45 @@ pub fn geo_buffer_line_layer_make(size : Int) -> GeobufferlineLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_layer_len(s : GeobufferlineLayer) -> Int { s.size }
+pub fn GeobufferlineLayer::len(self : GeobufferlineLayer) -> Int { self.size }
 
-pub fn geo_buffer_line_layer_get(s : GeobufferlineLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineLayer::get(self : GeobufferlineLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_layer_set(s : GeobufferlineLayer, i : Int, v : Double) -> GeobufferlineLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineLayer::set(self : GeobufferlineLayer, i : Int, v : Double) -> GeobufferlineLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_layer_sum(s : GeobufferlineLayer) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineLayer::sum(self : GeobufferlineLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_layer_mean(s : GeobufferlineLayer) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineLayer::mean(self : GeobufferlineLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_layer_scale(s : GeobufferlineLayer, f : Double) -> GeobufferlineLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineLayer::scale(self : GeobufferlineLayer, f : Double) -> GeobufferlineLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_layer_add(a : GeobufferlineLayer, b : GeobufferlineLayer) -> GeobufferlineLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineLayer::add(self : GeobufferlineLayer, other : GeobufferlineLayer) -> GeobufferlineLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_layer_copy(s : GeobufferlineLayer) -> GeobufferlineLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineLayer::copy(self : GeobufferlineLayer) -> GeobufferlineLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_layer_fill(s : GeobufferlineLayer, v : Double) -> GeobufferlineLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineLayer::fill(self : GeobufferlineLayer, v : Double) -> GeobufferlineLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_layer_min(s : GeobufferlineLayer) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineLayer::min(self : GeobufferlineLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_layer_max(s : GeobufferlineLayer) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineLayer::max(self : GeobufferlineLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_layer_to_string(s : GeobufferlineLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineLayer::to_string(self : GeobufferlineLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineBuffer {
@@ -810,45 +810,45 @@ pub fn geo_buffer_line_buffer_make(size : Int) -> GeobufferlineBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_buffer_len(s : GeobufferlineBuffer) -> Int { s.size }
+pub fn GeobufferlineBuffer::len(self : GeobufferlineBuffer) -> Int { self.size }
 
-pub fn geo_buffer_line_buffer_get(s : GeobufferlineBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineBuffer::get(self : GeobufferlineBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_buffer_set(s : GeobufferlineBuffer, i : Int, v : Double) -> GeobufferlineBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineBuffer::set(self : GeobufferlineBuffer, i : Int, v : Double) -> GeobufferlineBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_buffer_sum(s : GeobufferlineBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineBuffer::sum(self : GeobufferlineBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_buffer_mean(s : GeobufferlineBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineBuffer::mean(self : GeobufferlineBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_buffer_scale(s : GeobufferlineBuffer, f : Double) -> GeobufferlineBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineBuffer::scale(self : GeobufferlineBuffer, f : Double) -> GeobufferlineBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_buffer_add(a : GeobufferlineBuffer, b : GeobufferlineBuffer) -> GeobufferlineBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineBuffer::add(self : GeobufferlineBuffer, other : GeobufferlineBuffer) -> GeobufferlineBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_buffer_copy(s : GeobufferlineBuffer) -> GeobufferlineBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineBuffer::copy(self : GeobufferlineBuffer) -> GeobufferlineBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_buffer_fill(s : GeobufferlineBuffer, v : Double) -> GeobufferlineBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineBuffer::fill(self : GeobufferlineBuffer, v : Double) -> GeobufferlineBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_buffer_min(s : GeobufferlineBuffer) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineBuffer::min(self : GeobufferlineBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_buffer_max(s : GeobufferlineBuffer) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineBuffer::max(self : GeobufferlineBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_buffer_to_string(s : GeobufferlineBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineBuffer::to_string(self : GeobufferlineBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineCursor {
@@ -861,45 +861,45 @@ pub fn geo_buffer_line_cursor_make(size : Int) -> GeobufferlineCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_cursor_len(s : GeobufferlineCursor) -> Int { s.size }
+pub fn GeobufferlineCursor::len(self : GeobufferlineCursor) -> Int { self.size }
 
-pub fn geo_buffer_line_cursor_get(s : GeobufferlineCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineCursor::get(self : GeobufferlineCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_cursor_set(s : GeobufferlineCursor, i : Int, v : Double) -> GeobufferlineCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineCursor::set(self : GeobufferlineCursor, i : Int, v : Double) -> GeobufferlineCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cursor_sum(s : GeobufferlineCursor) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineCursor::sum(self : GeobufferlineCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_cursor_mean(s : GeobufferlineCursor) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineCursor::mean(self : GeobufferlineCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_cursor_scale(s : GeobufferlineCursor, f : Double) -> GeobufferlineCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineCursor::scale(self : GeobufferlineCursor, f : Double) -> GeobufferlineCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cursor_add(a : GeobufferlineCursor, b : GeobufferlineCursor) -> GeobufferlineCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineCursor::add(self : GeobufferlineCursor, other : GeobufferlineCursor) -> GeobufferlineCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cursor_copy(s : GeobufferlineCursor) -> GeobufferlineCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineCursor::copy(self : GeobufferlineCursor) -> GeobufferlineCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cursor_fill(s : GeobufferlineCursor, v : Double) -> GeobufferlineCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineCursor::fill(self : GeobufferlineCursor, v : Double) -> GeobufferlineCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_cursor_min(s : GeobufferlineCursor) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineCursor::min(self : GeobufferlineCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_cursor_max(s : GeobufferlineCursor) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineCursor::max(self : GeobufferlineCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_cursor_to_string(s : GeobufferlineCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineCursor::to_string(self : GeobufferlineCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineView {
@@ -912,45 +912,45 @@ pub fn geo_buffer_line_view_make(size : Int) -> GeobufferlineView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_view_len(s : GeobufferlineView) -> Int { s.size }
+pub fn GeobufferlineView::len(self : GeobufferlineView) -> Int { self.size }
 
-pub fn geo_buffer_line_view_get(s : GeobufferlineView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineView::get(self : GeobufferlineView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_view_set(s : GeobufferlineView, i : Int, v : Double) -> GeobufferlineView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineView::set(self : GeobufferlineView, i : Int, v : Double) -> GeobufferlineView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_view_sum(s : GeobufferlineView) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineView::sum(self : GeobufferlineView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_view_mean(s : GeobufferlineView) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineView::mean(self : GeobufferlineView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_view_scale(s : GeobufferlineView, f : Double) -> GeobufferlineView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineView::scale(self : GeobufferlineView, f : Double) -> GeobufferlineView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_view_add(a : GeobufferlineView, b : GeobufferlineView) -> GeobufferlineView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineView::add(self : GeobufferlineView, other : GeobufferlineView) -> GeobufferlineView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_view_copy(s : GeobufferlineView) -> GeobufferlineView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineView::copy(self : GeobufferlineView) -> GeobufferlineView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_view_fill(s : GeobufferlineView, v : Double) -> GeobufferlineView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineView::fill(self : GeobufferlineView, v : Double) -> GeobufferlineView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_view_min(s : GeobufferlineView) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineView::min(self : GeobufferlineView) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_view_max(s : GeobufferlineView) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineView::max(self : GeobufferlineView) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_view_to_string(s : GeobufferlineView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineView::to_string(self : GeobufferlineView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineRange {
@@ -963,45 +963,45 @@ pub fn geo_buffer_line_range_make(size : Int) -> GeobufferlineRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_range_len(s : GeobufferlineRange) -> Int { s.size }
+pub fn GeobufferlineRange::len(self : GeobufferlineRange) -> Int { self.size }
 
-pub fn geo_buffer_line_range_get(s : GeobufferlineRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineRange::get(self : GeobufferlineRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_range_set(s : GeobufferlineRange, i : Int, v : Double) -> GeobufferlineRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineRange::set(self : GeobufferlineRange, i : Int, v : Double) -> GeobufferlineRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_range_sum(s : GeobufferlineRange) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineRange::sum(self : GeobufferlineRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_range_mean(s : GeobufferlineRange) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineRange::mean(self : GeobufferlineRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_range_scale(s : GeobufferlineRange, f : Double) -> GeobufferlineRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineRange::scale(self : GeobufferlineRange, f : Double) -> GeobufferlineRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_range_add(a : GeobufferlineRange, b : GeobufferlineRange) -> GeobufferlineRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineRange::add(self : GeobufferlineRange, other : GeobufferlineRange) -> GeobufferlineRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_range_copy(s : GeobufferlineRange) -> GeobufferlineRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineRange::copy(self : GeobufferlineRange) -> GeobufferlineRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_range_fill(s : GeobufferlineRange, v : Double) -> GeobufferlineRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineRange::fill(self : GeobufferlineRange, v : Double) -> GeobufferlineRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_range_min(s : GeobufferlineRange) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineRange::min(self : GeobufferlineRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_range_max(s : GeobufferlineRange) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineRange::max(self : GeobufferlineRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_range_to_string(s : GeobufferlineRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineRange::to_string(self : GeobufferlineRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferlineSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_buffer_line_slice_make(size : Int) -> GeobufferlineSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_line_slice_len(s : GeobufferlineSlice) -> Int { s.size }
+pub fn GeobufferlineSlice::len(self : GeobufferlineSlice) -> Int { self.size }
 
-pub fn geo_buffer_line_slice_get(s : GeobufferlineSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferlineSlice::get(self : GeobufferlineSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_line_slice_set(s : GeobufferlineSlice, i : Int, v : Double) -> GeobufferlineSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferlineSlice::set(self : GeobufferlineSlice, i : Int, v : Double) -> GeobufferlineSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_slice_sum(s : GeobufferlineSlice) -> Double { @_common.sum(s.data) }
+pub fn GeobufferlineSlice::sum(self : GeobufferlineSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_line_slice_mean(s : GeobufferlineSlice) -> Double { @_common.mean(s.data) }
+pub fn GeobufferlineSlice::mean(self : GeobufferlineSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_line_slice_scale(s : GeobufferlineSlice, f : Double) -> GeobufferlineSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferlineSlice::scale(self : GeobufferlineSlice, f : Double) -> GeobufferlineSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_slice_add(a : GeobufferlineSlice, b : GeobufferlineSlice) -> GeobufferlineSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferlineSlice::add(self : GeobufferlineSlice, other : GeobufferlineSlice) -> GeobufferlineSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_line_slice_copy(s : GeobufferlineSlice) -> GeobufferlineSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferlineSlice::copy(self : GeobufferlineSlice) -> GeobufferlineSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_slice_fill(s : GeobufferlineSlice, v : Double) -> GeobufferlineSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferlineSlice::fill(self : GeobufferlineSlice, v : Double) -> GeobufferlineSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_line_slice_min(s : GeobufferlineSlice) -> Double { @_common.min(s.data) }
+pub fn GeobufferlineSlice::min(self : GeobufferlineSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_line_slice_max(s : GeobufferlineSlice) -> Double { @_common.max(s.data) }
+pub fn GeobufferlineSlice::max(self : GeobufferlineSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_line_slice_to_string(s : GeobufferlineSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferlineSlice::to_string(self : GeobufferlineSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

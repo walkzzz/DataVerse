@@ -351,45 +351,45 @@ pub fn geo_proj_cylindrical_frame_make(size : Int) -> GeoprojcylindricalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_frame_len(s : GeoprojcylindricalFrame) -> Int { s.size }
+pub fn GeoprojcylindricalFrame::len(self : GeoprojcylindricalFrame) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_frame_get(s : GeoprojcylindricalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalFrame::get(self : GeoprojcylindricalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_frame_set(s : GeoprojcylindricalFrame, i : Int, v : Double) -> GeoprojcylindricalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalFrame::set(self : GeoprojcylindricalFrame, i : Int, v : Double) -> GeoprojcylindricalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_frame_sum(s : GeoprojcylindricalFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalFrame::sum(self : GeoprojcylindricalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_frame_mean(s : GeoprojcylindricalFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalFrame::mean(self : GeoprojcylindricalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_frame_scale(s : GeoprojcylindricalFrame, f : Double) -> GeoprojcylindricalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalFrame::scale(self : GeoprojcylindricalFrame, f : Double) -> GeoprojcylindricalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_frame_add(a : GeoprojcylindricalFrame, b : GeoprojcylindricalFrame) -> GeoprojcylindricalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalFrame::add(self : GeoprojcylindricalFrame, other : GeoprojcylindricalFrame) -> GeoprojcylindricalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_frame_copy(s : GeoprojcylindricalFrame) -> GeoprojcylindricalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalFrame::copy(self : GeoprojcylindricalFrame) -> GeoprojcylindricalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_frame_fill(s : GeoprojcylindricalFrame, v : Double) -> GeoprojcylindricalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalFrame::fill(self : GeoprojcylindricalFrame, v : Double) -> GeoprojcylindricalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_frame_min(s : GeoprojcylindricalFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalFrame::min(self : GeoprojcylindricalFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_frame_max(s : GeoprojcylindricalFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalFrame::max(self : GeoprojcylindricalFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_frame_to_string(s : GeoprojcylindricalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalFrame::to_string(self : GeoprojcylindricalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_cylindrical_table_make(size : Int) -> GeoprojcylindricalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_table_len(s : GeoprojcylindricalTable) -> Int { s.size }
+pub fn GeoprojcylindricalTable::len(self : GeoprojcylindricalTable) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_table_get(s : GeoprojcylindricalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalTable::get(self : GeoprojcylindricalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_table_set(s : GeoprojcylindricalTable, i : Int, v : Double) -> GeoprojcylindricalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalTable::set(self : GeoprojcylindricalTable, i : Int, v : Double) -> GeoprojcylindricalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_table_sum(s : GeoprojcylindricalTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalTable::sum(self : GeoprojcylindricalTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_table_mean(s : GeoprojcylindricalTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalTable::mean(self : GeoprojcylindricalTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_table_scale(s : GeoprojcylindricalTable, f : Double) -> GeoprojcylindricalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalTable::scale(self : GeoprojcylindricalTable, f : Double) -> GeoprojcylindricalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_table_add(a : GeoprojcylindricalTable, b : GeoprojcylindricalTable) -> GeoprojcylindricalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalTable::add(self : GeoprojcylindricalTable, other : GeoprojcylindricalTable) -> GeoprojcylindricalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_table_copy(s : GeoprojcylindricalTable) -> GeoprojcylindricalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalTable::copy(self : GeoprojcylindricalTable) -> GeoprojcylindricalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_table_fill(s : GeoprojcylindricalTable, v : Double) -> GeoprojcylindricalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalTable::fill(self : GeoprojcylindricalTable, v : Double) -> GeoprojcylindricalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_table_min(s : GeoprojcylindricalTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalTable::min(self : GeoprojcylindricalTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_table_max(s : GeoprojcylindricalTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalTable::max(self : GeoprojcylindricalTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_table_to_string(s : GeoprojcylindricalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalTable::to_string(self : GeoprojcylindricalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_cylindrical_graphn_make(size : Int) -> GeoprojcylindricalGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_graphn_len(s : GeoprojcylindricalGraphN) -> Int { s.size }
+pub fn GeoprojcylindricalGraphN::len(self : GeoprojcylindricalGraphN) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_graphn_get(s : GeoprojcylindricalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalGraphN::get(self : GeoprojcylindricalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_graphn_set(s : GeoprojcylindricalGraphN, i : Int, v : Double) -> GeoprojcylindricalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalGraphN::set(self : GeoprojcylindricalGraphN, i : Int, v : Double) -> GeoprojcylindricalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_graphn_sum(s : GeoprojcylindricalGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalGraphN::sum(self : GeoprojcylindricalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_graphn_mean(s : GeoprojcylindricalGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalGraphN::mean(self : GeoprojcylindricalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_graphn_scale(s : GeoprojcylindricalGraphN, f : Double) -> GeoprojcylindricalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalGraphN::scale(self : GeoprojcylindricalGraphN, f : Double) -> GeoprojcylindricalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_graphn_add(a : GeoprojcylindricalGraphN, b : GeoprojcylindricalGraphN) -> GeoprojcylindricalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalGraphN::add(self : GeoprojcylindricalGraphN, other : GeoprojcylindricalGraphN) -> GeoprojcylindricalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_graphn_copy(s : GeoprojcylindricalGraphN) -> GeoprojcylindricalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalGraphN::copy(self : GeoprojcylindricalGraphN) -> GeoprojcylindricalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_graphn_fill(s : GeoprojcylindricalGraphN, v : Double) -> GeoprojcylindricalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalGraphN::fill(self : GeoprojcylindricalGraphN, v : Double) -> GeoprojcylindricalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_graphn_min(s : GeoprojcylindricalGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalGraphN::min(self : GeoprojcylindricalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_graphn_max(s : GeoprojcylindricalGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalGraphN::max(self : GeoprojcylindricalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_graphn_to_string(s : GeoprojcylindricalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalGraphN::to_string(self : GeoprojcylindricalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_cylindrical_node_make(size : Int) -> GeoprojcylindricalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_node_len(s : GeoprojcylindricalNode) -> Int { s.size }
+pub fn GeoprojcylindricalNode::len(self : GeoprojcylindricalNode) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_node_get(s : GeoprojcylindricalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalNode::get(self : GeoprojcylindricalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_node_set(s : GeoprojcylindricalNode, i : Int, v : Double) -> GeoprojcylindricalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalNode::set(self : GeoprojcylindricalNode, i : Int, v : Double) -> GeoprojcylindricalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_node_sum(s : GeoprojcylindricalNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalNode::sum(self : GeoprojcylindricalNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_node_mean(s : GeoprojcylindricalNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalNode::mean(self : GeoprojcylindricalNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_node_scale(s : GeoprojcylindricalNode, f : Double) -> GeoprojcylindricalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalNode::scale(self : GeoprojcylindricalNode, f : Double) -> GeoprojcylindricalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_node_add(a : GeoprojcylindricalNode, b : GeoprojcylindricalNode) -> GeoprojcylindricalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalNode::add(self : GeoprojcylindricalNode, other : GeoprojcylindricalNode) -> GeoprojcylindricalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_node_copy(s : GeoprojcylindricalNode) -> GeoprojcylindricalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalNode::copy(self : GeoprojcylindricalNode) -> GeoprojcylindricalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_node_fill(s : GeoprojcylindricalNode, v : Double) -> GeoprojcylindricalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalNode::fill(self : GeoprojcylindricalNode, v : Double) -> GeoprojcylindricalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_node_min(s : GeoprojcylindricalNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalNode::min(self : GeoprojcylindricalNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_node_max(s : GeoprojcylindricalNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalNode::max(self : GeoprojcylindricalNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_node_to_string(s : GeoprojcylindricalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalNode::to_string(self : GeoprojcylindricalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_cylindrical_edge_make(size : Int) -> GeoprojcylindricalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_edge_len(s : GeoprojcylindricalEdge) -> Int { s.size }
+pub fn GeoprojcylindricalEdge::len(self : GeoprojcylindricalEdge) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_edge_get(s : GeoprojcylindricalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalEdge::get(self : GeoprojcylindricalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_edge_set(s : GeoprojcylindricalEdge, i : Int, v : Double) -> GeoprojcylindricalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalEdge::set(self : GeoprojcylindricalEdge, i : Int, v : Double) -> GeoprojcylindricalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_edge_sum(s : GeoprojcylindricalEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalEdge::sum(self : GeoprojcylindricalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_edge_mean(s : GeoprojcylindricalEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalEdge::mean(self : GeoprojcylindricalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_edge_scale(s : GeoprojcylindricalEdge, f : Double) -> GeoprojcylindricalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalEdge::scale(self : GeoprojcylindricalEdge, f : Double) -> GeoprojcylindricalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_edge_add(a : GeoprojcylindricalEdge, b : GeoprojcylindricalEdge) -> GeoprojcylindricalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalEdge::add(self : GeoprojcylindricalEdge, other : GeoprojcylindricalEdge) -> GeoprojcylindricalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_edge_copy(s : GeoprojcylindricalEdge) -> GeoprojcylindricalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalEdge::copy(self : GeoprojcylindricalEdge) -> GeoprojcylindricalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_edge_fill(s : GeoprojcylindricalEdge, v : Double) -> GeoprojcylindricalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalEdge::fill(self : GeoprojcylindricalEdge, v : Double) -> GeoprojcylindricalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_edge_min(s : GeoprojcylindricalEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalEdge::min(self : GeoprojcylindricalEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_edge_max(s : GeoprojcylindricalEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalEdge::max(self : GeoprojcylindricalEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_edge_to_string(s : GeoprojcylindricalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalEdge::to_string(self : GeoprojcylindricalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_cylindrical_path_make(size : Int) -> GeoprojcylindricalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_path_len(s : GeoprojcylindricalPath) -> Int { s.size }
+pub fn GeoprojcylindricalPath::len(self : GeoprojcylindricalPath) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_path_get(s : GeoprojcylindricalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalPath::get(self : GeoprojcylindricalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_path_set(s : GeoprojcylindricalPath, i : Int, v : Double) -> GeoprojcylindricalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalPath::set(self : GeoprojcylindricalPath, i : Int, v : Double) -> GeoprojcylindricalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_path_sum(s : GeoprojcylindricalPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalPath::sum(self : GeoprojcylindricalPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_path_mean(s : GeoprojcylindricalPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalPath::mean(self : GeoprojcylindricalPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_path_scale(s : GeoprojcylindricalPath, f : Double) -> GeoprojcylindricalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalPath::scale(self : GeoprojcylindricalPath, f : Double) -> GeoprojcylindricalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_path_add(a : GeoprojcylindricalPath, b : GeoprojcylindricalPath) -> GeoprojcylindricalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalPath::add(self : GeoprojcylindricalPath, other : GeoprojcylindricalPath) -> GeoprojcylindricalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_path_copy(s : GeoprojcylindricalPath) -> GeoprojcylindricalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalPath::copy(self : GeoprojcylindricalPath) -> GeoprojcylindricalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_path_fill(s : GeoprojcylindricalPath, v : Double) -> GeoprojcylindricalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalPath::fill(self : GeoprojcylindricalPath, v : Double) -> GeoprojcylindricalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_path_min(s : GeoprojcylindricalPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalPath::min(self : GeoprojcylindricalPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_path_max(s : GeoprojcylindricalPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalPath::max(self : GeoprojcylindricalPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_path_to_string(s : GeoprojcylindricalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalPath::to_string(self : GeoprojcylindricalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_cylindrical_cluster_make(size : Int) -> GeoprojcylindricalCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_cluster_len(s : GeoprojcylindricalCluster) -> Int { s.size }
+pub fn GeoprojcylindricalCluster::len(self : GeoprojcylindricalCluster) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_cluster_get(s : GeoprojcylindricalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalCluster::get(self : GeoprojcylindricalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_cluster_set(s : GeoprojcylindricalCluster, i : Int, v : Double) -> GeoprojcylindricalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCluster::set(self : GeoprojcylindricalCluster, i : Int, v : Double) -> GeoprojcylindricalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cluster_sum(s : GeoprojcylindricalCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalCluster::sum(self : GeoprojcylindricalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_cluster_mean(s : GeoprojcylindricalCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalCluster::mean(self : GeoprojcylindricalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_cluster_scale(s : GeoprojcylindricalCluster, f : Double) -> GeoprojcylindricalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCluster::scale(self : GeoprojcylindricalCluster, f : Double) -> GeoprojcylindricalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cluster_add(a : GeoprojcylindricalCluster, b : GeoprojcylindricalCluster) -> GeoprojcylindricalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalCluster::add(self : GeoprojcylindricalCluster, other : GeoprojcylindricalCluster) -> GeoprojcylindricalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cluster_copy(s : GeoprojcylindricalCluster) -> GeoprojcylindricalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCluster::copy(self : GeoprojcylindricalCluster) -> GeoprojcylindricalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cluster_fill(s : GeoprojcylindricalCluster, v : Double) -> GeoprojcylindricalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCluster::fill(self : GeoprojcylindricalCluster, v : Double) -> GeoprojcylindricalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cluster_min(s : GeoprojcylindricalCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalCluster::min(self : GeoprojcylindricalCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_cluster_max(s : GeoprojcylindricalCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalCluster::max(self : GeoprojcylindricalCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_cluster_to_string(s : GeoprojcylindricalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalCluster::to_string(self : GeoprojcylindricalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_cylindrical_model_make(size : Int) -> GeoprojcylindricalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_model_len(s : GeoprojcylindricalModel) -> Int { s.size }
+pub fn GeoprojcylindricalModel::len(self : GeoprojcylindricalModel) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_model_get(s : GeoprojcylindricalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalModel::get(self : GeoprojcylindricalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_model_set(s : GeoprojcylindricalModel, i : Int, v : Double) -> GeoprojcylindricalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalModel::set(self : GeoprojcylindricalModel, i : Int, v : Double) -> GeoprojcylindricalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_model_sum(s : GeoprojcylindricalModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalModel::sum(self : GeoprojcylindricalModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_model_mean(s : GeoprojcylindricalModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalModel::mean(self : GeoprojcylindricalModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_model_scale(s : GeoprojcylindricalModel, f : Double) -> GeoprojcylindricalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalModel::scale(self : GeoprojcylindricalModel, f : Double) -> GeoprojcylindricalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_model_add(a : GeoprojcylindricalModel, b : GeoprojcylindricalModel) -> GeoprojcylindricalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalModel::add(self : GeoprojcylindricalModel, other : GeoprojcylindricalModel) -> GeoprojcylindricalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_model_copy(s : GeoprojcylindricalModel) -> GeoprojcylindricalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalModel::copy(self : GeoprojcylindricalModel) -> GeoprojcylindricalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_model_fill(s : GeoprojcylindricalModel, v : Double) -> GeoprojcylindricalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalModel::fill(self : GeoprojcylindricalModel, v : Double) -> GeoprojcylindricalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_model_min(s : GeoprojcylindricalModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalModel::min(self : GeoprojcylindricalModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_model_max(s : GeoprojcylindricalModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalModel::max(self : GeoprojcylindricalModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_model_to_string(s : GeoprojcylindricalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalModel::to_string(self : GeoprojcylindricalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_cylindrical_layer_make(size : Int) -> GeoprojcylindricalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_layer_len(s : GeoprojcylindricalLayer) -> Int { s.size }
+pub fn GeoprojcylindricalLayer::len(self : GeoprojcylindricalLayer) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_layer_get(s : GeoprojcylindricalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalLayer::get(self : GeoprojcylindricalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_layer_set(s : GeoprojcylindricalLayer, i : Int, v : Double) -> GeoprojcylindricalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalLayer::set(self : GeoprojcylindricalLayer, i : Int, v : Double) -> GeoprojcylindricalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_layer_sum(s : GeoprojcylindricalLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalLayer::sum(self : GeoprojcylindricalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_layer_mean(s : GeoprojcylindricalLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalLayer::mean(self : GeoprojcylindricalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_layer_scale(s : GeoprojcylindricalLayer, f : Double) -> GeoprojcylindricalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalLayer::scale(self : GeoprojcylindricalLayer, f : Double) -> GeoprojcylindricalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_layer_add(a : GeoprojcylindricalLayer, b : GeoprojcylindricalLayer) -> GeoprojcylindricalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalLayer::add(self : GeoprojcylindricalLayer, other : GeoprojcylindricalLayer) -> GeoprojcylindricalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_layer_copy(s : GeoprojcylindricalLayer) -> GeoprojcylindricalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalLayer::copy(self : GeoprojcylindricalLayer) -> GeoprojcylindricalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_layer_fill(s : GeoprojcylindricalLayer, v : Double) -> GeoprojcylindricalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalLayer::fill(self : GeoprojcylindricalLayer, v : Double) -> GeoprojcylindricalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_layer_min(s : GeoprojcylindricalLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalLayer::min(self : GeoprojcylindricalLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_layer_max(s : GeoprojcylindricalLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalLayer::max(self : GeoprojcylindricalLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_layer_to_string(s : GeoprojcylindricalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalLayer::to_string(self : GeoprojcylindricalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_cylindrical_buffer_make(size : Int) -> GeoprojcylindricalBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_buffer_len(s : GeoprojcylindricalBuffer) -> Int { s.size }
+pub fn GeoprojcylindricalBuffer::len(self : GeoprojcylindricalBuffer) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_buffer_get(s : GeoprojcylindricalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalBuffer::get(self : GeoprojcylindricalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_buffer_set(s : GeoprojcylindricalBuffer, i : Int, v : Double) -> GeoprojcylindricalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalBuffer::set(self : GeoprojcylindricalBuffer, i : Int, v : Double) -> GeoprojcylindricalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_buffer_sum(s : GeoprojcylindricalBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalBuffer::sum(self : GeoprojcylindricalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_buffer_mean(s : GeoprojcylindricalBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalBuffer::mean(self : GeoprojcylindricalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_buffer_scale(s : GeoprojcylindricalBuffer, f : Double) -> GeoprojcylindricalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalBuffer::scale(self : GeoprojcylindricalBuffer, f : Double) -> GeoprojcylindricalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_buffer_add(a : GeoprojcylindricalBuffer, b : GeoprojcylindricalBuffer) -> GeoprojcylindricalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalBuffer::add(self : GeoprojcylindricalBuffer, other : GeoprojcylindricalBuffer) -> GeoprojcylindricalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_buffer_copy(s : GeoprojcylindricalBuffer) -> GeoprojcylindricalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalBuffer::copy(self : GeoprojcylindricalBuffer) -> GeoprojcylindricalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_buffer_fill(s : GeoprojcylindricalBuffer, v : Double) -> GeoprojcylindricalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalBuffer::fill(self : GeoprojcylindricalBuffer, v : Double) -> GeoprojcylindricalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_buffer_min(s : GeoprojcylindricalBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalBuffer::min(self : GeoprojcylindricalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_buffer_max(s : GeoprojcylindricalBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalBuffer::max(self : GeoprojcylindricalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_buffer_to_string(s : GeoprojcylindricalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalBuffer::to_string(self : GeoprojcylindricalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_cylindrical_cursor_make(size : Int) -> GeoprojcylindricalCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_cursor_len(s : GeoprojcylindricalCursor) -> Int { s.size }
+pub fn GeoprojcylindricalCursor::len(self : GeoprojcylindricalCursor) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_cursor_get(s : GeoprojcylindricalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalCursor::get(self : GeoprojcylindricalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_cursor_set(s : GeoprojcylindricalCursor, i : Int, v : Double) -> GeoprojcylindricalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCursor::set(self : GeoprojcylindricalCursor, i : Int, v : Double) -> GeoprojcylindricalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cursor_sum(s : GeoprojcylindricalCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalCursor::sum(self : GeoprojcylindricalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_cursor_mean(s : GeoprojcylindricalCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalCursor::mean(self : GeoprojcylindricalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_cursor_scale(s : GeoprojcylindricalCursor, f : Double) -> GeoprojcylindricalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCursor::scale(self : GeoprojcylindricalCursor, f : Double) -> GeoprojcylindricalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cursor_add(a : GeoprojcylindricalCursor, b : GeoprojcylindricalCursor) -> GeoprojcylindricalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalCursor::add(self : GeoprojcylindricalCursor, other : GeoprojcylindricalCursor) -> GeoprojcylindricalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cursor_copy(s : GeoprojcylindricalCursor) -> GeoprojcylindricalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCursor::copy(self : GeoprojcylindricalCursor) -> GeoprojcylindricalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cursor_fill(s : GeoprojcylindricalCursor, v : Double) -> GeoprojcylindricalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalCursor::fill(self : GeoprojcylindricalCursor, v : Double) -> GeoprojcylindricalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_cursor_min(s : GeoprojcylindricalCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalCursor::min(self : GeoprojcylindricalCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_cursor_max(s : GeoprojcylindricalCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalCursor::max(self : GeoprojcylindricalCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_cursor_to_string(s : GeoprojcylindricalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalCursor::to_string(self : GeoprojcylindricalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalView {
@@ -912,45 +912,45 @@ pub fn geo_proj_cylindrical_view_make(size : Int) -> GeoprojcylindricalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_view_len(s : GeoprojcylindricalView) -> Int { s.size }
+pub fn GeoprojcylindricalView::len(self : GeoprojcylindricalView) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_view_get(s : GeoprojcylindricalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalView::get(self : GeoprojcylindricalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_view_set(s : GeoprojcylindricalView, i : Int, v : Double) -> GeoprojcylindricalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalView::set(self : GeoprojcylindricalView, i : Int, v : Double) -> GeoprojcylindricalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_view_sum(s : GeoprojcylindricalView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalView::sum(self : GeoprojcylindricalView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_view_mean(s : GeoprojcylindricalView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalView::mean(self : GeoprojcylindricalView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_view_scale(s : GeoprojcylindricalView, f : Double) -> GeoprojcylindricalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalView::scale(self : GeoprojcylindricalView, f : Double) -> GeoprojcylindricalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_view_add(a : GeoprojcylindricalView, b : GeoprojcylindricalView) -> GeoprojcylindricalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalView::add(self : GeoprojcylindricalView, other : GeoprojcylindricalView) -> GeoprojcylindricalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_view_copy(s : GeoprojcylindricalView) -> GeoprojcylindricalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalView::copy(self : GeoprojcylindricalView) -> GeoprojcylindricalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_view_fill(s : GeoprojcylindricalView, v : Double) -> GeoprojcylindricalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalView::fill(self : GeoprojcylindricalView, v : Double) -> GeoprojcylindricalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_view_min(s : GeoprojcylindricalView) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalView::min(self : GeoprojcylindricalView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_view_max(s : GeoprojcylindricalView) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalView::max(self : GeoprojcylindricalView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_view_to_string(s : GeoprojcylindricalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalView::to_string(self : GeoprojcylindricalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_cylindrical_range_make(size : Int) -> GeoprojcylindricalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_range_len(s : GeoprojcylindricalRange) -> Int { s.size }
+pub fn GeoprojcylindricalRange::len(self : GeoprojcylindricalRange) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_range_get(s : GeoprojcylindricalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalRange::get(self : GeoprojcylindricalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_range_set(s : GeoprojcylindricalRange, i : Int, v : Double) -> GeoprojcylindricalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalRange::set(self : GeoprojcylindricalRange, i : Int, v : Double) -> GeoprojcylindricalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_range_sum(s : GeoprojcylindricalRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalRange::sum(self : GeoprojcylindricalRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_range_mean(s : GeoprojcylindricalRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalRange::mean(self : GeoprojcylindricalRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_range_scale(s : GeoprojcylindricalRange, f : Double) -> GeoprojcylindricalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalRange::scale(self : GeoprojcylindricalRange, f : Double) -> GeoprojcylindricalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_range_add(a : GeoprojcylindricalRange, b : GeoprojcylindricalRange) -> GeoprojcylindricalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalRange::add(self : GeoprojcylindricalRange, other : GeoprojcylindricalRange) -> GeoprojcylindricalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_range_copy(s : GeoprojcylindricalRange) -> GeoprojcylindricalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalRange::copy(self : GeoprojcylindricalRange) -> GeoprojcylindricalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_range_fill(s : GeoprojcylindricalRange, v : Double) -> GeoprojcylindricalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalRange::fill(self : GeoprojcylindricalRange, v : Double) -> GeoprojcylindricalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_range_min(s : GeoprojcylindricalRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalRange::min(self : GeoprojcylindricalRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_range_max(s : GeoprojcylindricalRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalRange::max(self : GeoprojcylindricalRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_range_to_string(s : GeoprojcylindricalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalRange::to_string(self : GeoprojcylindricalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojcylindricalSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_cylindrical_slice_make(size : Int) -> GeoprojcylindricalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_cylindrical_slice_len(s : GeoprojcylindricalSlice) -> Int { s.size }
+pub fn GeoprojcylindricalSlice::len(self : GeoprojcylindricalSlice) -> Int { self.size }
 
-pub fn geo_proj_cylindrical_slice_get(s : GeoprojcylindricalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojcylindricalSlice::get(self : GeoprojcylindricalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_cylindrical_slice_set(s : GeoprojcylindricalSlice, i : Int, v : Double) -> GeoprojcylindricalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalSlice::set(self : GeoprojcylindricalSlice, i : Int, v : Double) -> GeoprojcylindricalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_slice_sum(s : GeoprojcylindricalSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojcylindricalSlice::sum(self : GeoprojcylindricalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_cylindrical_slice_mean(s : GeoprojcylindricalSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojcylindricalSlice::mean(self : GeoprojcylindricalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_cylindrical_slice_scale(s : GeoprojcylindricalSlice, f : Double) -> GeoprojcylindricalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalSlice::scale(self : GeoprojcylindricalSlice, f : Double) -> GeoprojcylindricalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_slice_add(a : GeoprojcylindricalSlice, b : GeoprojcylindricalSlice) -> GeoprojcylindricalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojcylindricalSlice::add(self : GeoprojcylindricalSlice, other : GeoprojcylindricalSlice) -> GeoprojcylindricalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_slice_copy(s : GeoprojcylindricalSlice) -> GeoprojcylindricalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalSlice::copy(self : GeoprojcylindricalSlice) -> GeoprojcylindricalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_slice_fill(s : GeoprojcylindricalSlice, v : Double) -> GeoprojcylindricalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojcylindricalSlice::fill(self : GeoprojcylindricalSlice, v : Double) -> GeoprojcylindricalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_cylindrical_slice_min(s : GeoprojcylindricalSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojcylindricalSlice::min(self : GeoprojcylindricalSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_cylindrical_slice_max(s : GeoprojcylindricalSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojcylindricalSlice::max(self : GeoprojcylindricalSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_cylindrical_slice_to_string(s : GeoprojcylindricalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojcylindricalSlice::to_string(self : GeoprojcylindricalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

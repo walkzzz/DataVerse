@@ -351,45 +351,45 @@ pub fn physics_mechanics_kinematic_frame_make(size : Int) -> Physicsmechanicskin
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_frame_len(s : PhysicsmechanicskinematicFrame) -> Int { s.size }
+pub fn PhysicsmechanicskinematicFrame::len(self : PhysicsmechanicskinematicFrame) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_frame_get(s : PhysicsmechanicskinematicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicFrame::get(self : PhysicsmechanicskinematicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_frame_set(s : PhysicsmechanicskinematicFrame, i : Int, v : Double) -> PhysicsmechanicskinematicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicFrame::set(self : PhysicsmechanicskinematicFrame, i : Int, v : Double) -> PhysicsmechanicskinematicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_frame_sum(s : PhysicsmechanicskinematicFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicFrame::sum(self : PhysicsmechanicskinematicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_frame_mean(s : PhysicsmechanicskinematicFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicFrame::mean(self : PhysicsmechanicskinematicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_frame_scale(s : PhysicsmechanicskinematicFrame, f : Double) -> PhysicsmechanicskinematicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicFrame::scale(self : PhysicsmechanicskinematicFrame, f : Double) -> PhysicsmechanicskinematicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_frame_add(a : PhysicsmechanicskinematicFrame, b : PhysicsmechanicskinematicFrame) -> PhysicsmechanicskinematicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicFrame::add(self : PhysicsmechanicskinematicFrame, other : PhysicsmechanicskinematicFrame) -> PhysicsmechanicskinematicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_frame_copy(s : PhysicsmechanicskinematicFrame) -> PhysicsmechanicskinematicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicFrame::copy(self : PhysicsmechanicskinematicFrame) -> PhysicsmechanicskinematicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_frame_fill(s : PhysicsmechanicskinematicFrame, v : Double) -> PhysicsmechanicskinematicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicFrame::fill(self : PhysicsmechanicskinematicFrame, v : Double) -> PhysicsmechanicskinematicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_frame_min(s : PhysicsmechanicskinematicFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicFrame::min(self : PhysicsmechanicskinematicFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_frame_max(s : PhysicsmechanicskinematicFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicFrame::max(self : PhysicsmechanicskinematicFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_frame_to_string(s : PhysicsmechanicskinematicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicFrame::to_string(self : PhysicsmechanicskinematicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicTable {
@@ -402,45 +402,45 @@ pub fn physics_mechanics_kinematic_table_make(size : Int) -> Physicsmechanicskin
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_table_len(s : PhysicsmechanicskinematicTable) -> Int { s.size }
+pub fn PhysicsmechanicskinematicTable::len(self : PhysicsmechanicskinematicTable) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_table_get(s : PhysicsmechanicskinematicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicTable::get(self : PhysicsmechanicskinematicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_table_set(s : PhysicsmechanicskinematicTable, i : Int, v : Double) -> PhysicsmechanicskinematicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicTable::set(self : PhysicsmechanicskinematicTable, i : Int, v : Double) -> PhysicsmechanicskinematicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_table_sum(s : PhysicsmechanicskinematicTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicTable::sum(self : PhysicsmechanicskinematicTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_table_mean(s : PhysicsmechanicskinematicTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicTable::mean(self : PhysicsmechanicskinematicTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_table_scale(s : PhysicsmechanicskinematicTable, f : Double) -> PhysicsmechanicskinematicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicTable::scale(self : PhysicsmechanicskinematicTable, f : Double) -> PhysicsmechanicskinematicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_table_add(a : PhysicsmechanicskinematicTable, b : PhysicsmechanicskinematicTable) -> PhysicsmechanicskinematicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicTable::add(self : PhysicsmechanicskinematicTable, other : PhysicsmechanicskinematicTable) -> PhysicsmechanicskinematicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_table_copy(s : PhysicsmechanicskinematicTable) -> PhysicsmechanicskinematicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicTable::copy(self : PhysicsmechanicskinematicTable) -> PhysicsmechanicskinematicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_table_fill(s : PhysicsmechanicskinematicTable, v : Double) -> PhysicsmechanicskinematicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicTable::fill(self : PhysicsmechanicskinematicTable, v : Double) -> PhysicsmechanicskinematicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_table_min(s : PhysicsmechanicskinematicTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicTable::min(self : PhysicsmechanicskinematicTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_table_max(s : PhysicsmechanicskinematicTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicTable::max(self : PhysicsmechanicskinematicTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_table_to_string(s : PhysicsmechanicskinematicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicTable::to_string(self : PhysicsmechanicskinematicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicGraphN {
@@ -453,45 +453,45 @@ pub fn physics_mechanics_kinematic_graphn_make(size : Int) -> Physicsmechanicski
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_graphn_len(s : PhysicsmechanicskinematicGraphN) -> Int { s.size }
+pub fn PhysicsmechanicskinematicGraphN::len(self : PhysicsmechanicskinematicGraphN) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_graphn_get(s : PhysicsmechanicskinematicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicGraphN::get(self : PhysicsmechanicskinematicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_graphn_set(s : PhysicsmechanicskinematicGraphN, i : Int, v : Double) -> PhysicsmechanicskinematicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicGraphN::set(self : PhysicsmechanicskinematicGraphN, i : Int, v : Double) -> PhysicsmechanicskinematicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_graphn_sum(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicGraphN::sum(self : PhysicsmechanicskinematicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_graphn_mean(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicGraphN::mean(self : PhysicsmechanicskinematicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_graphn_scale(s : PhysicsmechanicskinematicGraphN, f : Double) -> PhysicsmechanicskinematicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicGraphN::scale(self : PhysicsmechanicskinematicGraphN, f : Double) -> PhysicsmechanicskinematicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_graphn_add(a : PhysicsmechanicskinematicGraphN, b : PhysicsmechanicskinematicGraphN) -> PhysicsmechanicskinematicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicGraphN::add(self : PhysicsmechanicskinematicGraphN, other : PhysicsmechanicskinematicGraphN) -> PhysicsmechanicskinematicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_graphn_copy(s : PhysicsmechanicskinematicGraphN) -> PhysicsmechanicskinematicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicGraphN::copy(self : PhysicsmechanicskinematicGraphN) -> PhysicsmechanicskinematicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_graphn_fill(s : PhysicsmechanicskinematicGraphN, v : Double) -> PhysicsmechanicskinematicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicGraphN::fill(self : PhysicsmechanicskinematicGraphN, v : Double) -> PhysicsmechanicskinematicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_graphn_min(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicGraphN::min(self : PhysicsmechanicskinematicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_graphn_max(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicGraphN::max(self : PhysicsmechanicskinematicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_graphn_to_string(s : PhysicsmechanicskinematicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicGraphN::to_string(self : PhysicsmechanicskinematicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicNode {
@@ -504,45 +504,45 @@ pub fn physics_mechanics_kinematic_node_make(size : Int) -> Physicsmechanicskine
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_node_len(s : PhysicsmechanicskinematicNode) -> Int { s.size }
+pub fn PhysicsmechanicskinematicNode::len(self : PhysicsmechanicskinematicNode) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_node_get(s : PhysicsmechanicskinematicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicNode::get(self : PhysicsmechanicskinematicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_node_set(s : PhysicsmechanicskinematicNode, i : Int, v : Double) -> PhysicsmechanicskinematicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicNode::set(self : PhysicsmechanicskinematicNode, i : Int, v : Double) -> PhysicsmechanicskinematicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_node_sum(s : PhysicsmechanicskinematicNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicNode::sum(self : PhysicsmechanicskinematicNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_node_mean(s : PhysicsmechanicskinematicNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicNode::mean(self : PhysicsmechanicskinematicNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_node_scale(s : PhysicsmechanicskinematicNode, f : Double) -> PhysicsmechanicskinematicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicNode::scale(self : PhysicsmechanicskinematicNode, f : Double) -> PhysicsmechanicskinematicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_node_add(a : PhysicsmechanicskinematicNode, b : PhysicsmechanicskinematicNode) -> PhysicsmechanicskinematicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicNode::add(self : PhysicsmechanicskinematicNode, other : PhysicsmechanicskinematicNode) -> PhysicsmechanicskinematicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_node_copy(s : PhysicsmechanicskinematicNode) -> PhysicsmechanicskinematicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicNode::copy(self : PhysicsmechanicskinematicNode) -> PhysicsmechanicskinematicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_node_fill(s : PhysicsmechanicskinematicNode, v : Double) -> PhysicsmechanicskinematicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicNode::fill(self : PhysicsmechanicskinematicNode, v : Double) -> PhysicsmechanicskinematicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_node_min(s : PhysicsmechanicskinematicNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicNode::min(self : PhysicsmechanicskinematicNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_node_max(s : PhysicsmechanicskinematicNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicNode::max(self : PhysicsmechanicskinematicNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_node_to_string(s : PhysicsmechanicskinematicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicNode::to_string(self : PhysicsmechanicskinematicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicEdge {
@@ -555,45 +555,45 @@ pub fn physics_mechanics_kinematic_edge_make(size : Int) -> Physicsmechanicskine
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_edge_len(s : PhysicsmechanicskinematicEdge) -> Int { s.size }
+pub fn PhysicsmechanicskinematicEdge::len(self : PhysicsmechanicskinematicEdge) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_edge_get(s : PhysicsmechanicskinematicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicEdge::get(self : PhysicsmechanicskinematicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_edge_set(s : PhysicsmechanicskinematicEdge, i : Int, v : Double) -> PhysicsmechanicskinematicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicEdge::set(self : PhysicsmechanicskinematicEdge, i : Int, v : Double) -> PhysicsmechanicskinematicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_edge_sum(s : PhysicsmechanicskinematicEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicEdge::sum(self : PhysicsmechanicskinematicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_edge_mean(s : PhysicsmechanicskinematicEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicEdge::mean(self : PhysicsmechanicskinematicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_edge_scale(s : PhysicsmechanicskinematicEdge, f : Double) -> PhysicsmechanicskinematicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicEdge::scale(self : PhysicsmechanicskinematicEdge, f : Double) -> PhysicsmechanicskinematicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_edge_add(a : PhysicsmechanicskinematicEdge, b : PhysicsmechanicskinematicEdge) -> PhysicsmechanicskinematicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicEdge::add(self : PhysicsmechanicskinematicEdge, other : PhysicsmechanicskinematicEdge) -> PhysicsmechanicskinematicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_edge_copy(s : PhysicsmechanicskinematicEdge) -> PhysicsmechanicskinematicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicEdge::copy(self : PhysicsmechanicskinematicEdge) -> PhysicsmechanicskinematicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_edge_fill(s : PhysicsmechanicskinematicEdge, v : Double) -> PhysicsmechanicskinematicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicEdge::fill(self : PhysicsmechanicskinematicEdge, v : Double) -> PhysicsmechanicskinematicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_edge_min(s : PhysicsmechanicskinematicEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicEdge::min(self : PhysicsmechanicskinematicEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_edge_max(s : PhysicsmechanicskinematicEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicEdge::max(self : PhysicsmechanicskinematicEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_edge_to_string(s : PhysicsmechanicskinematicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicEdge::to_string(self : PhysicsmechanicskinematicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicPath {
@@ -606,45 +606,45 @@ pub fn physics_mechanics_kinematic_path_make(size : Int) -> Physicsmechanicskine
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_path_len(s : PhysicsmechanicskinematicPath) -> Int { s.size }
+pub fn PhysicsmechanicskinematicPath::len(self : PhysicsmechanicskinematicPath) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_path_get(s : PhysicsmechanicskinematicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicPath::get(self : PhysicsmechanicskinematicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_path_set(s : PhysicsmechanicskinematicPath, i : Int, v : Double) -> PhysicsmechanicskinematicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicPath::set(self : PhysicsmechanicskinematicPath, i : Int, v : Double) -> PhysicsmechanicskinematicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_path_sum(s : PhysicsmechanicskinematicPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicPath::sum(self : PhysicsmechanicskinematicPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_path_mean(s : PhysicsmechanicskinematicPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicPath::mean(self : PhysicsmechanicskinematicPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_path_scale(s : PhysicsmechanicskinematicPath, f : Double) -> PhysicsmechanicskinematicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicPath::scale(self : PhysicsmechanicskinematicPath, f : Double) -> PhysicsmechanicskinematicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_path_add(a : PhysicsmechanicskinematicPath, b : PhysicsmechanicskinematicPath) -> PhysicsmechanicskinematicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicPath::add(self : PhysicsmechanicskinematicPath, other : PhysicsmechanicskinematicPath) -> PhysicsmechanicskinematicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_path_copy(s : PhysicsmechanicskinematicPath) -> PhysicsmechanicskinematicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicPath::copy(self : PhysicsmechanicskinematicPath) -> PhysicsmechanicskinematicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_path_fill(s : PhysicsmechanicskinematicPath, v : Double) -> PhysicsmechanicskinematicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicPath::fill(self : PhysicsmechanicskinematicPath, v : Double) -> PhysicsmechanicskinematicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_path_min(s : PhysicsmechanicskinematicPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicPath::min(self : PhysicsmechanicskinematicPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_path_max(s : PhysicsmechanicskinematicPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicPath::max(self : PhysicsmechanicskinematicPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_path_to_string(s : PhysicsmechanicskinematicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicPath::to_string(self : PhysicsmechanicskinematicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicCluster {
@@ -657,45 +657,45 @@ pub fn physics_mechanics_kinematic_cluster_make(size : Int) -> Physicsmechanicsk
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_cluster_len(s : PhysicsmechanicskinematicCluster) -> Int { s.size }
+pub fn PhysicsmechanicskinematicCluster::len(self : PhysicsmechanicskinematicCluster) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_cluster_get(s : PhysicsmechanicskinematicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicCluster::get(self : PhysicsmechanicskinematicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_cluster_set(s : PhysicsmechanicskinematicCluster, i : Int, v : Double) -> PhysicsmechanicskinematicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCluster::set(self : PhysicsmechanicskinematicCluster, i : Int, v : Double) -> PhysicsmechanicskinematicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cluster_sum(s : PhysicsmechanicskinematicCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicCluster::sum(self : PhysicsmechanicskinematicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_cluster_mean(s : PhysicsmechanicskinematicCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicCluster::mean(self : PhysicsmechanicskinematicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_cluster_scale(s : PhysicsmechanicskinematicCluster, f : Double) -> PhysicsmechanicskinematicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCluster::scale(self : PhysicsmechanicskinematicCluster, f : Double) -> PhysicsmechanicskinematicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cluster_add(a : PhysicsmechanicskinematicCluster, b : PhysicsmechanicskinematicCluster) -> PhysicsmechanicskinematicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicCluster::add(self : PhysicsmechanicskinematicCluster, other : PhysicsmechanicskinematicCluster) -> PhysicsmechanicskinematicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cluster_copy(s : PhysicsmechanicskinematicCluster) -> PhysicsmechanicskinematicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCluster::copy(self : PhysicsmechanicskinematicCluster) -> PhysicsmechanicskinematicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cluster_fill(s : PhysicsmechanicskinematicCluster, v : Double) -> PhysicsmechanicskinematicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCluster::fill(self : PhysicsmechanicskinematicCluster, v : Double) -> PhysicsmechanicskinematicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cluster_min(s : PhysicsmechanicskinematicCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicCluster::min(self : PhysicsmechanicskinematicCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_cluster_max(s : PhysicsmechanicskinematicCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicCluster::max(self : PhysicsmechanicskinematicCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_cluster_to_string(s : PhysicsmechanicskinematicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicCluster::to_string(self : PhysicsmechanicskinematicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicModel {
@@ -708,45 +708,45 @@ pub fn physics_mechanics_kinematic_model_make(size : Int) -> Physicsmechanicskin
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_model_len(s : PhysicsmechanicskinematicModel) -> Int { s.size }
+pub fn PhysicsmechanicskinematicModel::len(self : PhysicsmechanicskinematicModel) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_model_get(s : PhysicsmechanicskinematicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicModel::get(self : PhysicsmechanicskinematicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_model_set(s : PhysicsmechanicskinematicModel, i : Int, v : Double) -> PhysicsmechanicskinematicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicModel::set(self : PhysicsmechanicskinematicModel, i : Int, v : Double) -> PhysicsmechanicskinematicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_model_sum(s : PhysicsmechanicskinematicModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicModel::sum(self : PhysicsmechanicskinematicModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_model_mean(s : PhysicsmechanicskinematicModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicModel::mean(self : PhysicsmechanicskinematicModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_model_scale(s : PhysicsmechanicskinematicModel, f : Double) -> PhysicsmechanicskinematicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicModel::scale(self : PhysicsmechanicskinematicModel, f : Double) -> PhysicsmechanicskinematicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_model_add(a : PhysicsmechanicskinematicModel, b : PhysicsmechanicskinematicModel) -> PhysicsmechanicskinematicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicModel::add(self : PhysicsmechanicskinematicModel, other : PhysicsmechanicskinematicModel) -> PhysicsmechanicskinematicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_model_copy(s : PhysicsmechanicskinematicModel) -> PhysicsmechanicskinematicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicModel::copy(self : PhysicsmechanicskinematicModel) -> PhysicsmechanicskinematicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_model_fill(s : PhysicsmechanicskinematicModel, v : Double) -> PhysicsmechanicskinematicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicModel::fill(self : PhysicsmechanicskinematicModel, v : Double) -> PhysicsmechanicskinematicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_model_min(s : PhysicsmechanicskinematicModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicModel::min(self : PhysicsmechanicskinematicModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_model_max(s : PhysicsmechanicskinematicModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicModel::max(self : PhysicsmechanicskinematicModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_model_to_string(s : PhysicsmechanicskinematicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicModel::to_string(self : PhysicsmechanicskinematicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicLayer {
@@ -759,45 +759,45 @@ pub fn physics_mechanics_kinematic_layer_make(size : Int) -> Physicsmechanicskin
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_layer_len(s : PhysicsmechanicskinematicLayer) -> Int { s.size }
+pub fn PhysicsmechanicskinematicLayer::len(self : PhysicsmechanicskinematicLayer) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_layer_get(s : PhysicsmechanicskinematicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicLayer::get(self : PhysicsmechanicskinematicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_layer_set(s : PhysicsmechanicskinematicLayer, i : Int, v : Double) -> PhysicsmechanicskinematicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicLayer::set(self : PhysicsmechanicskinematicLayer, i : Int, v : Double) -> PhysicsmechanicskinematicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_layer_sum(s : PhysicsmechanicskinematicLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicLayer::sum(self : PhysicsmechanicskinematicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_layer_mean(s : PhysicsmechanicskinematicLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicLayer::mean(self : PhysicsmechanicskinematicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_layer_scale(s : PhysicsmechanicskinematicLayer, f : Double) -> PhysicsmechanicskinematicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicLayer::scale(self : PhysicsmechanicskinematicLayer, f : Double) -> PhysicsmechanicskinematicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_layer_add(a : PhysicsmechanicskinematicLayer, b : PhysicsmechanicskinematicLayer) -> PhysicsmechanicskinematicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicLayer::add(self : PhysicsmechanicskinematicLayer, other : PhysicsmechanicskinematicLayer) -> PhysicsmechanicskinematicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_layer_copy(s : PhysicsmechanicskinematicLayer) -> PhysicsmechanicskinematicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicLayer::copy(self : PhysicsmechanicskinematicLayer) -> PhysicsmechanicskinematicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_layer_fill(s : PhysicsmechanicskinematicLayer, v : Double) -> PhysicsmechanicskinematicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicLayer::fill(self : PhysicsmechanicskinematicLayer, v : Double) -> PhysicsmechanicskinematicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_layer_min(s : PhysicsmechanicskinematicLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicLayer::min(self : PhysicsmechanicskinematicLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_layer_max(s : PhysicsmechanicskinematicLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicLayer::max(self : PhysicsmechanicskinematicLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_layer_to_string(s : PhysicsmechanicskinematicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicLayer::to_string(self : PhysicsmechanicskinematicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicBuffer {
@@ -810,45 +810,45 @@ pub fn physics_mechanics_kinematic_buffer_make(size : Int) -> Physicsmechanicski
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_buffer_len(s : PhysicsmechanicskinematicBuffer) -> Int { s.size }
+pub fn PhysicsmechanicskinematicBuffer::len(self : PhysicsmechanicskinematicBuffer) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_buffer_get(s : PhysicsmechanicskinematicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicBuffer::get(self : PhysicsmechanicskinematicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_buffer_set(s : PhysicsmechanicskinematicBuffer, i : Int, v : Double) -> PhysicsmechanicskinematicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicBuffer::set(self : PhysicsmechanicskinematicBuffer, i : Int, v : Double) -> PhysicsmechanicskinematicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_buffer_sum(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicBuffer::sum(self : PhysicsmechanicskinematicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_buffer_mean(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicBuffer::mean(self : PhysicsmechanicskinematicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_buffer_scale(s : PhysicsmechanicskinematicBuffer, f : Double) -> PhysicsmechanicskinematicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicBuffer::scale(self : PhysicsmechanicskinematicBuffer, f : Double) -> PhysicsmechanicskinematicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_buffer_add(a : PhysicsmechanicskinematicBuffer, b : PhysicsmechanicskinematicBuffer) -> PhysicsmechanicskinematicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicBuffer::add(self : PhysicsmechanicskinematicBuffer, other : PhysicsmechanicskinematicBuffer) -> PhysicsmechanicskinematicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_buffer_copy(s : PhysicsmechanicskinematicBuffer) -> PhysicsmechanicskinematicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicBuffer::copy(self : PhysicsmechanicskinematicBuffer) -> PhysicsmechanicskinematicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_buffer_fill(s : PhysicsmechanicskinematicBuffer, v : Double) -> PhysicsmechanicskinematicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicBuffer::fill(self : PhysicsmechanicskinematicBuffer, v : Double) -> PhysicsmechanicskinematicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_buffer_min(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicBuffer::min(self : PhysicsmechanicskinematicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_buffer_max(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicBuffer::max(self : PhysicsmechanicskinematicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_buffer_to_string(s : PhysicsmechanicskinematicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicBuffer::to_string(self : PhysicsmechanicskinematicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicCursor {
@@ -861,45 +861,45 @@ pub fn physics_mechanics_kinematic_cursor_make(size : Int) -> Physicsmechanicski
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_cursor_len(s : PhysicsmechanicskinematicCursor) -> Int { s.size }
+pub fn PhysicsmechanicskinematicCursor::len(self : PhysicsmechanicskinematicCursor) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_cursor_get(s : PhysicsmechanicskinematicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicCursor::get(self : PhysicsmechanicskinematicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_cursor_set(s : PhysicsmechanicskinematicCursor, i : Int, v : Double) -> PhysicsmechanicskinematicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCursor::set(self : PhysicsmechanicskinematicCursor, i : Int, v : Double) -> PhysicsmechanicskinematicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cursor_sum(s : PhysicsmechanicskinematicCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicCursor::sum(self : PhysicsmechanicskinematicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_cursor_mean(s : PhysicsmechanicskinematicCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicCursor::mean(self : PhysicsmechanicskinematicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_cursor_scale(s : PhysicsmechanicskinematicCursor, f : Double) -> PhysicsmechanicskinematicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCursor::scale(self : PhysicsmechanicskinematicCursor, f : Double) -> PhysicsmechanicskinematicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cursor_add(a : PhysicsmechanicskinematicCursor, b : PhysicsmechanicskinematicCursor) -> PhysicsmechanicskinematicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicCursor::add(self : PhysicsmechanicskinematicCursor, other : PhysicsmechanicskinematicCursor) -> PhysicsmechanicskinematicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cursor_copy(s : PhysicsmechanicskinematicCursor) -> PhysicsmechanicskinematicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCursor::copy(self : PhysicsmechanicskinematicCursor) -> PhysicsmechanicskinematicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cursor_fill(s : PhysicsmechanicskinematicCursor, v : Double) -> PhysicsmechanicskinematicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicCursor::fill(self : PhysicsmechanicskinematicCursor, v : Double) -> PhysicsmechanicskinematicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_cursor_min(s : PhysicsmechanicskinematicCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicCursor::min(self : PhysicsmechanicskinematicCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_cursor_max(s : PhysicsmechanicskinematicCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicCursor::max(self : PhysicsmechanicskinematicCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_cursor_to_string(s : PhysicsmechanicskinematicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicCursor::to_string(self : PhysicsmechanicskinematicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicView {
@@ -912,45 +912,45 @@ pub fn physics_mechanics_kinematic_view_make(size : Int) -> Physicsmechanicskine
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_view_len(s : PhysicsmechanicskinematicView) -> Int { s.size }
+pub fn PhysicsmechanicskinematicView::len(self : PhysicsmechanicskinematicView) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_view_get(s : PhysicsmechanicskinematicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicView::get(self : PhysicsmechanicskinematicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_view_set(s : PhysicsmechanicskinematicView, i : Int, v : Double) -> PhysicsmechanicskinematicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicView::set(self : PhysicsmechanicskinematicView, i : Int, v : Double) -> PhysicsmechanicskinematicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_view_sum(s : PhysicsmechanicskinematicView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicView::sum(self : PhysicsmechanicskinematicView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_view_mean(s : PhysicsmechanicskinematicView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicView::mean(self : PhysicsmechanicskinematicView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_view_scale(s : PhysicsmechanicskinematicView, f : Double) -> PhysicsmechanicskinematicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicView::scale(self : PhysicsmechanicskinematicView, f : Double) -> PhysicsmechanicskinematicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_view_add(a : PhysicsmechanicskinematicView, b : PhysicsmechanicskinematicView) -> PhysicsmechanicskinematicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicView::add(self : PhysicsmechanicskinematicView, other : PhysicsmechanicskinematicView) -> PhysicsmechanicskinematicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_view_copy(s : PhysicsmechanicskinematicView) -> PhysicsmechanicskinematicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicView::copy(self : PhysicsmechanicskinematicView) -> PhysicsmechanicskinematicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_view_fill(s : PhysicsmechanicskinematicView, v : Double) -> PhysicsmechanicskinematicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicView::fill(self : PhysicsmechanicskinematicView, v : Double) -> PhysicsmechanicskinematicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_view_min(s : PhysicsmechanicskinematicView) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicView::min(self : PhysicsmechanicskinematicView) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_view_max(s : PhysicsmechanicskinematicView) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicView::max(self : PhysicsmechanicskinematicView) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_view_to_string(s : PhysicsmechanicskinematicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicView::to_string(self : PhysicsmechanicskinematicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicRange {
@@ -963,45 +963,45 @@ pub fn physics_mechanics_kinematic_range_make(size : Int) -> Physicsmechanicskin
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_range_len(s : PhysicsmechanicskinematicRange) -> Int { s.size }
+pub fn PhysicsmechanicskinematicRange::len(self : PhysicsmechanicskinematicRange) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_range_get(s : PhysicsmechanicskinematicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicRange::get(self : PhysicsmechanicskinematicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_range_set(s : PhysicsmechanicskinematicRange, i : Int, v : Double) -> PhysicsmechanicskinematicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicRange::set(self : PhysicsmechanicskinematicRange, i : Int, v : Double) -> PhysicsmechanicskinematicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_range_sum(s : PhysicsmechanicskinematicRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicRange::sum(self : PhysicsmechanicskinematicRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_range_mean(s : PhysicsmechanicskinematicRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicRange::mean(self : PhysicsmechanicskinematicRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_range_scale(s : PhysicsmechanicskinematicRange, f : Double) -> PhysicsmechanicskinematicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicRange::scale(self : PhysicsmechanicskinematicRange, f : Double) -> PhysicsmechanicskinematicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_range_add(a : PhysicsmechanicskinematicRange, b : PhysicsmechanicskinematicRange) -> PhysicsmechanicskinematicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicRange::add(self : PhysicsmechanicskinematicRange, other : PhysicsmechanicskinematicRange) -> PhysicsmechanicskinematicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_range_copy(s : PhysicsmechanicskinematicRange) -> PhysicsmechanicskinematicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicRange::copy(self : PhysicsmechanicskinematicRange) -> PhysicsmechanicskinematicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_range_fill(s : PhysicsmechanicskinematicRange, v : Double) -> PhysicsmechanicskinematicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicRange::fill(self : PhysicsmechanicskinematicRange, v : Double) -> PhysicsmechanicskinematicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_range_min(s : PhysicsmechanicskinematicRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicRange::min(self : PhysicsmechanicskinematicRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_range_max(s : PhysicsmechanicskinematicRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicRange::max(self : PhysicsmechanicskinematicRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_range_to_string(s : PhysicsmechanicskinematicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicRange::to_string(self : PhysicsmechanicskinematicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicskinematicSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_mechanics_kinematic_slice_make(size : Int) -> Physicsmechanicskin
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_kinematic_slice_len(s : PhysicsmechanicskinematicSlice) -> Int { s.size }
+pub fn PhysicsmechanicskinematicSlice::len(self : PhysicsmechanicskinematicSlice) -> Int { self.size }
 
-pub fn physics_mechanics_kinematic_slice_get(s : PhysicsmechanicskinematicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicskinematicSlice::get(self : PhysicsmechanicskinematicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_kinematic_slice_set(s : PhysicsmechanicskinematicSlice, i : Int, v : Double) -> PhysicsmechanicskinematicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicSlice::set(self : PhysicsmechanicskinematicSlice, i : Int, v : Double) -> PhysicsmechanicskinematicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_slice_sum(s : PhysicsmechanicskinematicSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicskinematicSlice::sum(self : PhysicsmechanicskinematicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_kinematic_slice_mean(s : PhysicsmechanicskinematicSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicskinematicSlice::mean(self : PhysicsmechanicskinematicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_kinematic_slice_scale(s : PhysicsmechanicskinematicSlice, f : Double) -> PhysicsmechanicskinematicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicSlice::scale(self : PhysicsmechanicskinematicSlice, f : Double) -> PhysicsmechanicskinematicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_slice_add(a : PhysicsmechanicskinematicSlice, b : PhysicsmechanicskinematicSlice) -> PhysicsmechanicskinematicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicskinematicSlice::add(self : PhysicsmechanicskinematicSlice, other : PhysicsmechanicskinematicSlice) -> PhysicsmechanicskinematicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_slice_copy(s : PhysicsmechanicskinematicSlice) -> PhysicsmechanicskinematicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicSlice::copy(self : PhysicsmechanicskinematicSlice) -> PhysicsmechanicskinematicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_slice_fill(s : PhysicsmechanicskinematicSlice, v : Double) -> PhysicsmechanicskinematicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicskinematicSlice::fill(self : PhysicsmechanicskinematicSlice, v : Double) -> PhysicsmechanicskinematicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_kinematic_slice_min(s : PhysicsmechanicskinematicSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicskinematicSlice::min(self : PhysicsmechanicskinematicSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_kinematic_slice_max(s : PhysicsmechanicskinematicSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicskinematicSlice::max(self : PhysicsmechanicskinematicSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_kinematic_slice_to_string(s : PhysicsmechanicskinematicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicskinematicSlice::to_string(self : PhysicsmechanicskinematicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

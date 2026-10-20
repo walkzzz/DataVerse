@@ -351,45 +351,45 @@ pub fn physics_em_eddy_frame_make(size : Int) -> PhysicsemeddyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_frame_len(s : PhysicsemeddyFrame) -> Int { s.size }
+pub fn PhysicsemeddyFrame::len(self : PhysicsemeddyFrame) -> Int { self.size }
 
-pub fn physics_em_eddy_frame_get(s : PhysicsemeddyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyFrame::get(self : PhysicsemeddyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_frame_set(s : PhysicsemeddyFrame, i : Int, v : Double) -> PhysicsemeddyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyFrame::set(self : PhysicsemeddyFrame, i : Int, v : Double) -> PhysicsemeddyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_frame_sum(s : PhysicsemeddyFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyFrame::sum(self : PhysicsemeddyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_frame_mean(s : PhysicsemeddyFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyFrame::mean(self : PhysicsemeddyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_frame_scale(s : PhysicsemeddyFrame, f : Double) -> PhysicsemeddyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyFrame::scale(self : PhysicsemeddyFrame, f : Double) -> PhysicsemeddyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_frame_add(a : PhysicsemeddyFrame, b : PhysicsemeddyFrame) -> PhysicsemeddyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyFrame::add(self : PhysicsemeddyFrame, other : PhysicsemeddyFrame) -> PhysicsemeddyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_frame_copy(s : PhysicsemeddyFrame) -> PhysicsemeddyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyFrame::copy(self : PhysicsemeddyFrame) -> PhysicsemeddyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_frame_fill(s : PhysicsemeddyFrame, v : Double) -> PhysicsemeddyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyFrame::fill(self : PhysicsemeddyFrame, v : Double) -> PhysicsemeddyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_frame_min(s : PhysicsemeddyFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyFrame::min(self : PhysicsemeddyFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_frame_max(s : PhysicsemeddyFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyFrame::max(self : PhysicsemeddyFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_frame_to_string(s : PhysicsemeddyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyFrame::to_string(self : PhysicsemeddyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyTable {
@@ -402,45 +402,45 @@ pub fn physics_em_eddy_table_make(size : Int) -> PhysicsemeddyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_table_len(s : PhysicsemeddyTable) -> Int { s.size }
+pub fn PhysicsemeddyTable::len(self : PhysicsemeddyTable) -> Int { self.size }
 
-pub fn physics_em_eddy_table_get(s : PhysicsemeddyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyTable::get(self : PhysicsemeddyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_table_set(s : PhysicsemeddyTable, i : Int, v : Double) -> PhysicsemeddyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyTable::set(self : PhysicsemeddyTable, i : Int, v : Double) -> PhysicsemeddyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_table_sum(s : PhysicsemeddyTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyTable::sum(self : PhysicsemeddyTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_table_mean(s : PhysicsemeddyTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyTable::mean(self : PhysicsemeddyTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_table_scale(s : PhysicsemeddyTable, f : Double) -> PhysicsemeddyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyTable::scale(self : PhysicsemeddyTable, f : Double) -> PhysicsemeddyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_table_add(a : PhysicsemeddyTable, b : PhysicsemeddyTable) -> PhysicsemeddyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyTable::add(self : PhysicsemeddyTable, other : PhysicsemeddyTable) -> PhysicsemeddyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_table_copy(s : PhysicsemeddyTable) -> PhysicsemeddyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyTable::copy(self : PhysicsemeddyTable) -> PhysicsemeddyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_table_fill(s : PhysicsemeddyTable, v : Double) -> PhysicsemeddyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyTable::fill(self : PhysicsemeddyTable, v : Double) -> PhysicsemeddyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_table_min(s : PhysicsemeddyTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyTable::min(self : PhysicsemeddyTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_table_max(s : PhysicsemeddyTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyTable::max(self : PhysicsemeddyTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_table_to_string(s : PhysicsemeddyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyTable::to_string(self : PhysicsemeddyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_eddy_graphn_make(size : Int) -> PhysicsemeddyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_graphn_len(s : PhysicsemeddyGraphN) -> Int { s.size }
+pub fn PhysicsemeddyGraphN::len(self : PhysicsemeddyGraphN) -> Int { self.size }
 
-pub fn physics_em_eddy_graphn_get(s : PhysicsemeddyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyGraphN::get(self : PhysicsemeddyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_graphn_set(s : PhysicsemeddyGraphN, i : Int, v : Double) -> PhysicsemeddyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyGraphN::set(self : PhysicsemeddyGraphN, i : Int, v : Double) -> PhysicsemeddyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_graphn_sum(s : PhysicsemeddyGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyGraphN::sum(self : PhysicsemeddyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_graphn_mean(s : PhysicsemeddyGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyGraphN::mean(self : PhysicsemeddyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_graphn_scale(s : PhysicsemeddyGraphN, f : Double) -> PhysicsemeddyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyGraphN::scale(self : PhysicsemeddyGraphN, f : Double) -> PhysicsemeddyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_graphn_add(a : PhysicsemeddyGraphN, b : PhysicsemeddyGraphN) -> PhysicsemeddyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyGraphN::add(self : PhysicsemeddyGraphN, other : PhysicsemeddyGraphN) -> PhysicsemeddyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_graphn_copy(s : PhysicsemeddyGraphN) -> PhysicsemeddyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyGraphN::copy(self : PhysicsemeddyGraphN) -> PhysicsemeddyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_graphn_fill(s : PhysicsemeddyGraphN, v : Double) -> PhysicsemeddyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyGraphN::fill(self : PhysicsemeddyGraphN, v : Double) -> PhysicsemeddyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_graphn_min(s : PhysicsemeddyGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyGraphN::min(self : PhysicsemeddyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_graphn_max(s : PhysicsemeddyGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyGraphN::max(self : PhysicsemeddyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_graphn_to_string(s : PhysicsemeddyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyGraphN::to_string(self : PhysicsemeddyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyNode {
@@ -504,45 +504,45 @@ pub fn physics_em_eddy_node_make(size : Int) -> PhysicsemeddyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_node_len(s : PhysicsemeddyNode) -> Int { s.size }
+pub fn PhysicsemeddyNode::len(self : PhysicsemeddyNode) -> Int { self.size }
 
-pub fn physics_em_eddy_node_get(s : PhysicsemeddyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyNode::get(self : PhysicsemeddyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_node_set(s : PhysicsemeddyNode, i : Int, v : Double) -> PhysicsemeddyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyNode::set(self : PhysicsemeddyNode, i : Int, v : Double) -> PhysicsemeddyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_node_sum(s : PhysicsemeddyNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyNode::sum(self : PhysicsemeddyNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_node_mean(s : PhysicsemeddyNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyNode::mean(self : PhysicsemeddyNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_node_scale(s : PhysicsemeddyNode, f : Double) -> PhysicsemeddyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyNode::scale(self : PhysicsemeddyNode, f : Double) -> PhysicsemeddyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_node_add(a : PhysicsemeddyNode, b : PhysicsemeddyNode) -> PhysicsemeddyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyNode::add(self : PhysicsemeddyNode, other : PhysicsemeddyNode) -> PhysicsemeddyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_node_copy(s : PhysicsemeddyNode) -> PhysicsemeddyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyNode::copy(self : PhysicsemeddyNode) -> PhysicsemeddyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_node_fill(s : PhysicsemeddyNode, v : Double) -> PhysicsemeddyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyNode::fill(self : PhysicsemeddyNode, v : Double) -> PhysicsemeddyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_node_min(s : PhysicsemeddyNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyNode::min(self : PhysicsemeddyNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_node_max(s : PhysicsemeddyNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyNode::max(self : PhysicsemeddyNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_node_to_string(s : PhysicsemeddyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyNode::to_string(self : PhysicsemeddyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_eddy_edge_make(size : Int) -> PhysicsemeddyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_edge_len(s : PhysicsemeddyEdge) -> Int { s.size }
+pub fn PhysicsemeddyEdge::len(self : PhysicsemeddyEdge) -> Int { self.size }
 
-pub fn physics_em_eddy_edge_get(s : PhysicsemeddyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyEdge::get(self : PhysicsemeddyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_edge_set(s : PhysicsemeddyEdge, i : Int, v : Double) -> PhysicsemeddyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyEdge::set(self : PhysicsemeddyEdge, i : Int, v : Double) -> PhysicsemeddyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_edge_sum(s : PhysicsemeddyEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyEdge::sum(self : PhysicsemeddyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_edge_mean(s : PhysicsemeddyEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyEdge::mean(self : PhysicsemeddyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_edge_scale(s : PhysicsemeddyEdge, f : Double) -> PhysicsemeddyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyEdge::scale(self : PhysicsemeddyEdge, f : Double) -> PhysicsemeddyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_edge_add(a : PhysicsemeddyEdge, b : PhysicsemeddyEdge) -> PhysicsemeddyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyEdge::add(self : PhysicsemeddyEdge, other : PhysicsemeddyEdge) -> PhysicsemeddyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_edge_copy(s : PhysicsemeddyEdge) -> PhysicsemeddyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyEdge::copy(self : PhysicsemeddyEdge) -> PhysicsemeddyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_edge_fill(s : PhysicsemeddyEdge, v : Double) -> PhysicsemeddyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyEdge::fill(self : PhysicsemeddyEdge, v : Double) -> PhysicsemeddyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_edge_min(s : PhysicsemeddyEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyEdge::min(self : PhysicsemeddyEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_edge_max(s : PhysicsemeddyEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyEdge::max(self : PhysicsemeddyEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_edge_to_string(s : PhysicsemeddyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyEdge::to_string(self : PhysicsemeddyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyPath {
@@ -606,45 +606,45 @@ pub fn physics_em_eddy_path_make(size : Int) -> PhysicsemeddyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_path_len(s : PhysicsemeddyPath) -> Int { s.size }
+pub fn PhysicsemeddyPath::len(self : PhysicsemeddyPath) -> Int { self.size }
 
-pub fn physics_em_eddy_path_get(s : PhysicsemeddyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyPath::get(self : PhysicsemeddyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_path_set(s : PhysicsemeddyPath, i : Int, v : Double) -> PhysicsemeddyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyPath::set(self : PhysicsemeddyPath, i : Int, v : Double) -> PhysicsemeddyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_path_sum(s : PhysicsemeddyPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyPath::sum(self : PhysicsemeddyPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_path_mean(s : PhysicsemeddyPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyPath::mean(self : PhysicsemeddyPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_path_scale(s : PhysicsemeddyPath, f : Double) -> PhysicsemeddyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyPath::scale(self : PhysicsemeddyPath, f : Double) -> PhysicsemeddyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_path_add(a : PhysicsemeddyPath, b : PhysicsemeddyPath) -> PhysicsemeddyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyPath::add(self : PhysicsemeddyPath, other : PhysicsemeddyPath) -> PhysicsemeddyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_path_copy(s : PhysicsemeddyPath) -> PhysicsemeddyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyPath::copy(self : PhysicsemeddyPath) -> PhysicsemeddyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_path_fill(s : PhysicsemeddyPath, v : Double) -> PhysicsemeddyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyPath::fill(self : PhysicsemeddyPath, v : Double) -> PhysicsemeddyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_path_min(s : PhysicsemeddyPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyPath::min(self : PhysicsemeddyPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_path_max(s : PhysicsemeddyPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyPath::max(self : PhysicsemeddyPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_path_to_string(s : PhysicsemeddyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyPath::to_string(self : PhysicsemeddyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_eddy_cluster_make(size : Int) -> PhysicsemeddyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_cluster_len(s : PhysicsemeddyCluster) -> Int { s.size }
+pub fn PhysicsemeddyCluster::len(self : PhysicsemeddyCluster) -> Int { self.size }
 
-pub fn physics_em_eddy_cluster_get(s : PhysicsemeddyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyCluster::get(self : PhysicsemeddyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_cluster_set(s : PhysicsemeddyCluster, i : Int, v : Double) -> PhysicsemeddyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCluster::set(self : PhysicsemeddyCluster, i : Int, v : Double) -> PhysicsemeddyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cluster_sum(s : PhysicsemeddyCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyCluster::sum(self : PhysicsemeddyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_cluster_mean(s : PhysicsemeddyCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyCluster::mean(self : PhysicsemeddyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_cluster_scale(s : PhysicsemeddyCluster, f : Double) -> PhysicsemeddyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCluster::scale(self : PhysicsemeddyCluster, f : Double) -> PhysicsemeddyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cluster_add(a : PhysicsemeddyCluster, b : PhysicsemeddyCluster) -> PhysicsemeddyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyCluster::add(self : PhysicsemeddyCluster, other : PhysicsemeddyCluster) -> PhysicsemeddyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cluster_copy(s : PhysicsemeddyCluster) -> PhysicsemeddyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCluster::copy(self : PhysicsemeddyCluster) -> PhysicsemeddyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cluster_fill(s : PhysicsemeddyCluster, v : Double) -> PhysicsemeddyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCluster::fill(self : PhysicsemeddyCluster, v : Double) -> PhysicsemeddyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cluster_min(s : PhysicsemeddyCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyCluster::min(self : PhysicsemeddyCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_cluster_max(s : PhysicsemeddyCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyCluster::max(self : PhysicsemeddyCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_cluster_to_string(s : PhysicsemeddyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyCluster::to_string(self : PhysicsemeddyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyModel {
@@ -708,45 +708,45 @@ pub fn physics_em_eddy_model_make(size : Int) -> PhysicsemeddyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_model_len(s : PhysicsemeddyModel) -> Int { s.size }
+pub fn PhysicsemeddyModel::len(self : PhysicsemeddyModel) -> Int { self.size }
 
-pub fn physics_em_eddy_model_get(s : PhysicsemeddyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyModel::get(self : PhysicsemeddyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_model_set(s : PhysicsemeddyModel, i : Int, v : Double) -> PhysicsemeddyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyModel::set(self : PhysicsemeddyModel, i : Int, v : Double) -> PhysicsemeddyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_model_sum(s : PhysicsemeddyModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyModel::sum(self : PhysicsemeddyModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_model_mean(s : PhysicsemeddyModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyModel::mean(self : PhysicsemeddyModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_model_scale(s : PhysicsemeddyModel, f : Double) -> PhysicsemeddyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyModel::scale(self : PhysicsemeddyModel, f : Double) -> PhysicsemeddyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_model_add(a : PhysicsemeddyModel, b : PhysicsemeddyModel) -> PhysicsemeddyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyModel::add(self : PhysicsemeddyModel, other : PhysicsemeddyModel) -> PhysicsemeddyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_model_copy(s : PhysicsemeddyModel) -> PhysicsemeddyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyModel::copy(self : PhysicsemeddyModel) -> PhysicsemeddyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_model_fill(s : PhysicsemeddyModel, v : Double) -> PhysicsemeddyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyModel::fill(self : PhysicsemeddyModel, v : Double) -> PhysicsemeddyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_model_min(s : PhysicsemeddyModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyModel::min(self : PhysicsemeddyModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_model_max(s : PhysicsemeddyModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyModel::max(self : PhysicsemeddyModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_model_to_string(s : PhysicsemeddyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyModel::to_string(self : PhysicsemeddyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_eddy_layer_make(size : Int) -> PhysicsemeddyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_layer_len(s : PhysicsemeddyLayer) -> Int { s.size }
+pub fn PhysicsemeddyLayer::len(self : PhysicsemeddyLayer) -> Int { self.size }
 
-pub fn physics_em_eddy_layer_get(s : PhysicsemeddyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyLayer::get(self : PhysicsemeddyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_layer_set(s : PhysicsemeddyLayer, i : Int, v : Double) -> PhysicsemeddyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyLayer::set(self : PhysicsemeddyLayer, i : Int, v : Double) -> PhysicsemeddyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_layer_sum(s : PhysicsemeddyLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyLayer::sum(self : PhysicsemeddyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_layer_mean(s : PhysicsemeddyLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyLayer::mean(self : PhysicsemeddyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_layer_scale(s : PhysicsemeddyLayer, f : Double) -> PhysicsemeddyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyLayer::scale(self : PhysicsemeddyLayer, f : Double) -> PhysicsemeddyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_layer_add(a : PhysicsemeddyLayer, b : PhysicsemeddyLayer) -> PhysicsemeddyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyLayer::add(self : PhysicsemeddyLayer, other : PhysicsemeddyLayer) -> PhysicsemeddyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_layer_copy(s : PhysicsemeddyLayer) -> PhysicsemeddyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyLayer::copy(self : PhysicsemeddyLayer) -> PhysicsemeddyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_layer_fill(s : PhysicsemeddyLayer, v : Double) -> PhysicsemeddyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyLayer::fill(self : PhysicsemeddyLayer, v : Double) -> PhysicsemeddyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_layer_min(s : PhysicsemeddyLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyLayer::min(self : PhysicsemeddyLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_layer_max(s : PhysicsemeddyLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyLayer::max(self : PhysicsemeddyLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_layer_to_string(s : PhysicsemeddyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyLayer::to_string(self : PhysicsemeddyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_eddy_buffer_make(size : Int) -> PhysicsemeddyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_buffer_len(s : PhysicsemeddyBuffer) -> Int { s.size }
+pub fn PhysicsemeddyBuffer::len(self : PhysicsemeddyBuffer) -> Int { self.size }
 
-pub fn physics_em_eddy_buffer_get(s : PhysicsemeddyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyBuffer::get(self : PhysicsemeddyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_buffer_set(s : PhysicsemeddyBuffer, i : Int, v : Double) -> PhysicsemeddyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyBuffer::set(self : PhysicsemeddyBuffer, i : Int, v : Double) -> PhysicsemeddyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_buffer_sum(s : PhysicsemeddyBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyBuffer::sum(self : PhysicsemeddyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_buffer_mean(s : PhysicsemeddyBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyBuffer::mean(self : PhysicsemeddyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_buffer_scale(s : PhysicsemeddyBuffer, f : Double) -> PhysicsemeddyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyBuffer::scale(self : PhysicsemeddyBuffer, f : Double) -> PhysicsemeddyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_buffer_add(a : PhysicsemeddyBuffer, b : PhysicsemeddyBuffer) -> PhysicsemeddyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyBuffer::add(self : PhysicsemeddyBuffer, other : PhysicsemeddyBuffer) -> PhysicsemeddyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_buffer_copy(s : PhysicsemeddyBuffer) -> PhysicsemeddyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyBuffer::copy(self : PhysicsemeddyBuffer) -> PhysicsemeddyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_buffer_fill(s : PhysicsemeddyBuffer, v : Double) -> PhysicsemeddyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyBuffer::fill(self : PhysicsemeddyBuffer, v : Double) -> PhysicsemeddyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_buffer_min(s : PhysicsemeddyBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyBuffer::min(self : PhysicsemeddyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_buffer_max(s : PhysicsemeddyBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyBuffer::max(self : PhysicsemeddyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_buffer_to_string(s : PhysicsemeddyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyBuffer::to_string(self : PhysicsemeddyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_eddy_cursor_make(size : Int) -> PhysicsemeddyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_cursor_len(s : PhysicsemeddyCursor) -> Int { s.size }
+pub fn PhysicsemeddyCursor::len(self : PhysicsemeddyCursor) -> Int { self.size }
 
-pub fn physics_em_eddy_cursor_get(s : PhysicsemeddyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyCursor::get(self : PhysicsemeddyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_cursor_set(s : PhysicsemeddyCursor, i : Int, v : Double) -> PhysicsemeddyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCursor::set(self : PhysicsemeddyCursor, i : Int, v : Double) -> PhysicsemeddyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cursor_sum(s : PhysicsemeddyCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyCursor::sum(self : PhysicsemeddyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_cursor_mean(s : PhysicsemeddyCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyCursor::mean(self : PhysicsemeddyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_cursor_scale(s : PhysicsemeddyCursor, f : Double) -> PhysicsemeddyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCursor::scale(self : PhysicsemeddyCursor, f : Double) -> PhysicsemeddyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cursor_add(a : PhysicsemeddyCursor, b : PhysicsemeddyCursor) -> PhysicsemeddyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyCursor::add(self : PhysicsemeddyCursor, other : PhysicsemeddyCursor) -> PhysicsemeddyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cursor_copy(s : PhysicsemeddyCursor) -> PhysicsemeddyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCursor::copy(self : PhysicsemeddyCursor) -> PhysicsemeddyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cursor_fill(s : PhysicsemeddyCursor, v : Double) -> PhysicsemeddyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyCursor::fill(self : PhysicsemeddyCursor, v : Double) -> PhysicsemeddyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_cursor_min(s : PhysicsemeddyCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyCursor::min(self : PhysicsemeddyCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_cursor_max(s : PhysicsemeddyCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyCursor::max(self : PhysicsemeddyCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_cursor_to_string(s : PhysicsemeddyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyCursor::to_string(self : PhysicsemeddyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyView {
@@ -912,45 +912,45 @@ pub fn physics_em_eddy_view_make(size : Int) -> PhysicsemeddyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_view_len(s : PhysicsemeddyView) -> Int { s.size }
+pub fn PhysicsemeddyView::len(self : PhysicsemeddyView) -> Int { self.size }
 
-pub fn physics_em_eddy_view_get(s : PhysicsemeddyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyView::get(self : PhysicsemeddyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_view_set(s : PhysicsemeddyView, i : Int, v : Double) -> PhysicsemeddyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyView::set(self : PhysicsemeddyView, i : Int, v : Double) -> PhysicsemeddyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_view_sum(s : PhysicsemeddyView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyView::sum(self : PhysicsemeddyView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_view_mean(s : PhysicsemeddyView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyView::mean(self : PhysicsemeddyView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_view_scale(s : PhysicsemeddyView, f : Double) -> PhysicsemeddyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyView::scale(self : PhysicsemeddyView, f : Double) -> PhysicsemeddyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_view_add(a : PhysicsemeddyView, b : PhysicsemeddyView) -> PhysicsemeddyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyView::add(self : PhysicsemeddyView, other : PhysicsemeddyView) -> PhysicsemeddyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_view_copy(s : PhysicsemeddyView) -> PhysicsemeddyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyView::copy(self : PhysicsemeddyView) -> PhysicsemeddyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_view_fill(s : PhysicsemeddyView, v : Double) -> PhysicsemeddyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyView::fill(self : PhysicsemeddyView, v : Double) -> PhysicsemeddyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_view_min(s : PhysicsemeddyView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyView::min(self : PhysicsemeddyView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_view_max(s : PhysicsemeddyView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyView::max(self : PhysicsemeddyView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_view_to_string(s : PhysicsemeddyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyView::to_string(self : PhysicsemeddyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddyRange {
@@ -963,45 +963,45 @@ pub fn physics_em_eddy_range_make(size : Int) -> PhysicsemeddyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_range_len(s : PhysicsemeddyRange) -> Int { s.size }
+pub fn PhysicsemeddyRange::len(self : PhysicsemeddyRange) -> Int { self.size }
 
-pub fn physics_em_eddy_range_get(s : PhysicsemeddyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddyRange::get(self : PhysicsemeddyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_range_set(s : PhysicsemeddyRange, i : Int, v : Double) -> PhysicsemeddyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddyRange::set(self : PhysicsemeddyRange, i : Int, v : Double) -> PhysicsemeddyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_range_sum(s : PhysicsemeddyRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddyRange::sum(self : PhysicsemeddyRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_range_mean(s : PhysicsemeddyRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddyRange::mean(self : PhysicsemeddyRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_range_scale(s : PhysicsemeddyRange, f : Double) -> PhysicsemeddyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyRange::scale(self : PhysicsemeddyRange, f : Double) -> PhysicsemeddyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_range_add(a : PhysicsemeddyRange, b : PhysicsemeddyRange) -> PhysicsemeddyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddyRange::add(self : PhysicsemeddyRange, other : PhysicsemeddyRange) -> PhysicsemeddyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_range_copy(s : PhysicsemeddyRange) -> PhysicsemeddyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyRange::copy(self : PhysicsemeddyRange) -> PhysicsemeddyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_range_fill(s : PhysicsemeddyRange, v : Double) -> PhysicsemeddyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddyRange::fill(self : PhysicsemeddyRange, v : Double) -> PhysicsemeddyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_range_min(s : PhysicsemeddyRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddyRange::min(self : PhysicsemeddyRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_range_max(s : PhysicsemeddyRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddyRange::max(self : PhysicsemeddyRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_range_to_string(s : PhysicsemeddyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddyRange::to_string(self : PhysicsemeddyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddySlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_eddy_slice_make(size : Int) -> PhysicsemeddySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_eddy_slice_len(s : PhysicsemeddySlice) -> Int { s.size }
+pub fn PhysicsemeddySlice::len(self : PhysicsemeddySlice) -> Int { self.size }
 
-pub fn physics_em_eddy_slice_get(s : PhysicsemeddySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemeddySlice::get(self : PhysicsemeddySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_eddy_slice_set(s : PhysicsemeddySlice, i : Int, v : Double) -> PhysicsemeddySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemeddySlice::set(self : PhysicsemeddySlice, i : Int, v : Double) -> PhysicsemeddySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_slice_sum(s : PhysicsemeddySlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemeddySlice::sum(self : PhysicsemeddySlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_eddy_slice_mean(s : PhysicsemeddySlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemeddySlice::mean(self : PhysicsemeddySlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_eddy_slice_scale(s : PhysicsemeddySlice, f : Double) -> PhysicsemeddySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemeddySlice::scale(self : PhysicsemeddySlice, f : Double) -> PhysicsemeddySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_slice_add(a : PhysicsemeddySlice, b : PhysicsemeddySlice) -> PhysicsemeddySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemeddySlice::add(self : PhysicsemeddySlice, other : PhysicsemeddySlice) -> PhysicsemeddySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_eddy_slice_copy(s : PhysicsemeddySlice) -> PhysicsemeddySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemeddySlice::copy(self : PhysicsemeddySlice) -> PhysicsemeddySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_slice_fill(s : PhysicsemeddySlice, v : Double) -> PhysicsemeddySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemeddySlice::fill(self : PhysicsemeddySlice, v : Double) -> PhysicsemeddySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_eddy_slice_min(s : PhysicsemeddySlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemeddySlice::min(self : PhysicsemeddySlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_eddy_slice_max(s : PhysicsemeddySlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemeddySlice::max(self : PhysicsemeddySlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_eddy_slice_to_string(s : PhysicsemeddySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemeddySlice::to_string(self : PhysicsemeddySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

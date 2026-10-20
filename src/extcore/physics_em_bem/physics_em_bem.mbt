@@ -351,45 +351,45 @@ pub fn physics_em_bem_frame_make(size : Int) -> PhysicsembemFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_frame_len(s : PhysicsembemFrame) -> Int { s.size }
+pub fn PhysicsembemFrame::len(self : PhysicsembemFrame) -> Int { self.size }
 
-pub fn physics_em_bem_frame_get(s : PhysicsembemFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemFrame::get(self : PhysicsembemFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_frame_set(s : PhysicsembemFrame, i : Int, v : Double) -> PhysicsembemFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemFrame::set(self : PhysicsembemFrame, i : Int, v : Double) -> PhysicsembemFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_frame_sum(s : PhysicsembemFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemFrame::sum(self : PhysicsembemFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_frame_mean(s : PhysicsembemFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemFrame::mean(self : PhysicsembemFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_frame_scale(s : PhysicsembemFrame, f : Double) -> PhysicsembemFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemFrame::scale(self : PhysicsembemFrame, f : Double) -> PhysicsembemFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_frame_add(a : PhysicsembemFrame, b : PhysicsembemFrame) -> PhysicsembemFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemFrame::add(self : PhysicsembemFrame, other : PhysicsembemFrame) -> PhysicsembemFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_frame_copy(s : PhysicsembemFrame) -> PhysicsembemFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemFrame::copy(self : PhysicsembemFrame) -> PhysicsembemFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_frame_fill(s : PhysicsembemFrame, v : Double) -> PhysicsembemFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemFrame::fill(self : PhysicsembemFrame, v : Double) -> PhysicsembemFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_frame_min(s : PhysicsembemFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemFrame::min(self : PhysicsembemFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_frame_max(s : PhysicsembemFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemFrame::max(self : PhysicsembemFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_frame_to_string(s : PhysicsembemFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemFrame::to_string(self : PhysicsembemFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemTable {
@@ -402,45 +402,45 @@ pub fn physics_em_bem_table_make(size : Int) -> PhysicsembemTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_table_len(s : PhysicsembemTable) -> Int { s.size }
+pub fn PhysicsembemTable::len(self : PhysicsembemTable) -> Int { self.size }
 
-pub fn physics_em_bem_table_get(s : PhysicsembemTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemTable::get(self : PhysicsembemTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_table_set(s : PhysicsembemTable, i : Int, v : Double) -> PhysicsembemTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemTable::set(self : PhysicsembemTable, i : Int, v : Double) -> PhysicsembemTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_table_sum(s : PhysicsembemTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemTable::sum(self : PhysicsembemTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_table_mean(s : PhysicsembemTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemTable::mean(self : PhysicsembemTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_table_scale(s : PhysicsembemTable, f : Double) -> PhysicsembemTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemTable::scale(self : PhysicsembemTable, f : Double) -> PhysicsembemTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_table_add(a : PhysicsembemTable, b : PhysicsembemTable) -> PhysicsembemTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemTable::add(self : PhysicsembemTable, other : PhysicsembemTable) -> PhysicsembemTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_table_copy(s : PhysicsembemTable) -> PhysicsembemTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemTable::copy(self : PhysicsembemTable) -> PhysicsembemTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_table_fill(s : PhysicsembemTable, v : Double) -> PhysicsembemTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemTable::fill(self : PhysicsembemTable, v : Double) -> PhysicsembemTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_table_min(s : PhysicsembemTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemTable::min(self : PhysicsembemTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_table_max(s : PhysicsembemTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemTable::max(self : PhysicsembemTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_table_to_string(s : PhysicsembemTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemTable::to_string(self : PhysicsembemTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_bem_graphn_make(size : Int) -> PhysicsembemGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_graphn_len(s : PhysicsembemGraphN) -> Int { s.size }
+pub fn PhysicsembemGraphN::len(self : PhysicsembemGraphN) -> Int { self.size }
 
-pub fn physics_em_bem_graphn_get(s : PhysicsembemGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemGraphN::get(self : PhysicsembemGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_graphn_set(s : PhysicsembemGraphN, i : Int, v : Double) -> PhysicsembemGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemGraphN::set(self : PhysicsembemGraphN, i : Int, v : Double) -> PhysicsembemGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_graphn_sum(s : PhysicsembemGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemGraphN::sum(self : PhysicsembemGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_graphn_mean(s : PhysicsembemGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemGraphN::mean(self : PhysicsembemGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_graphn_scale(s : PhysicsembemGraphN, f : Double) -> PhysicsembemGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemGraphN::scale(self : PhysicsembemGraphN, f : Double) -> PhysicsembemGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_graphn_add(a : PhysicsembemGraphN, b : PhysicsembemGraphN) -> PhysicsembemGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemGraphN::add(self : PhysicsembemGraphN, other : PhysicsembemGraphN) -> PhysicsembemGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_graphn_copy(s : PhysicsembemGraphN) -> PhysicsembemGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemGraphN::copy(self : PhysicsembemGraphN) -> PhysicsembemGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_graphn_fill(s : PhysicsembemGraphN, v : Double) -> PhysicsembemGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemGraphN::fill(self : PhysicsembemGraphN, v : Double) -> PhysicsembemGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_graphn_min(s : PhysicsembemGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemGraphN::min(self : PhysicsembemGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_graphn_max(s : PhysicsembemGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemGraphN::max(self : PhysicsembemGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_graphn_to_string(s : PhysicsembemGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemGraphN::to_string(self : PhysicsembemGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemNode {
@@ -504,45 +504,45 @@ pub fn physics_em_bem_node_make(size : Int) -> PhysicsembemNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_node_len(s : PhysicsembemNode) -> Int { s.size }
+pub fn PhysicsembemNode::len(self : PhysicsembemNode) -> Int { self.size }
 
-pub fn physics_em_bem_node_get(s : PhysicsembemNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemNode::get(self : PhysicsembemNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_node_set(s : PhysicsembemNode, i : Int, v : Double) -> PhysicsembemNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemNode::set(self : PhysicsembemNode, i : Int, v : Double) -> PhysicsembemNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_node_sum(s : PhysicsembemNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemNode::sum(self : PhysicsembemNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_node_mean(s : PhysicsembemNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemNode::mean(self : PhysicsembemNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_node_scale(s : PhysicsembemNode, f : Double) -> PhysicsembemNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemNode::scale(self : PhysicsembemNode, f : Double) -> PhysicsembemNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_node_add(a : PhysicsembemNode, b : PhysicsembemNode) -> PhysicsembemNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemNode::add(self : PhysicsembemNode, other : PhysicsembemNode) -> PhysicsembemNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_node_copy(s : PhysicsembemNode) -> PhysicsembemNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemNode::copy(self : PhysicsembemNode) -> PhysicsembemNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_node_fill(s : PhysicsembemNode, v : Double) -> PhysicsembemNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemNode::fill(self : PhysicsembemNode, v : Double) -> PhysicsembemNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_node_min(s : PhysicsembemNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemNode::min(self : PhysicsembemNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_node_max(s : PhysicsembemNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemNode::max(self : PhysicsembemNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_node_to_string(s : PhysicsembemNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemNode::to_string(self : PhysicsembemNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_bem_edge_make(size : Int) -> PhysicsembemEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_edge_len(s : PhysicsembemEdge) -> Int { s.size }
+pub fn PhysicsembemEdge::len(self : PhysicsembemEdge) -> Int { self.size }
 
-pub fn physics_em_bem_edge_get(s : PhysicsembemEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemEdge::get(self : PhysicsembemEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_edge_set(s : PhysicsembemEdge, i : Int, v : Double) -> PhysicsembemEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemEdge::set(self : PhysicsembemEdge, i : Int, v : Double) -> PhysicsembemEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_edge_sum(s : PhysicsembemEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemEdge::sum(self : PhysicsembemEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_edge_mean(s : PhysicsembemEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemEdge::mean(self : PhysicsembemEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_edge_scale(s : PhysicsembemEdge, f : Double) -> PhysicsembemEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemEdge::scale(self : PhysicsembemEdge, f : Double) -> PhysicsembemEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_edge_add(a : PhysicsembemEdge, b : PhysicsembemEdge) -> PhysicsembemEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemEdge::add(self : PhysicsembemEdge, other : PhysicsembemEdge) -> PhysicsembemEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_edge_copy(s : PhysicsembemEdge) -> PhysicsembemEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemEdge::copy(self : PhysicsembemEdge) -> PhysicsembemEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_edge_fill(s : PhysicsembemEdge, v : Double) -> PhysicsembemEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemEdge::fill(self : PhysicsembemEdge, v : Double) -> PhysicsembemEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_edge_min(s : PhysicsembemEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemEdge::min(self : PhysicsembemEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_edge_max(s : PhysicsembemEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemEdge::max(self : PhysicsembemEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_edge_to_string(s : PhysicsembemEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemEdge::to_string(self : PhysicsembemEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemPath {
@@ -606,45 +606,45 @@ pub fn physics_em_bem_path_make(size : Int) -> PhysicsembemPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_path_len(s : PhysicsembemPath) -> Int { s.size }
+pub fn PhysicsembemPath::len(self : PhysicsembemPath) -> Int { self.size }
 
-pub fn physics_em_bem_path_get(s : PhysicsembemPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemPath::get(self : PhysicsembemPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_path_set(s : PhysicsembemPath, i : Int, v : Double) -> PhysicsembemPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemPath::set(self : PhysicsembemPath, i : Int, v : Double) -> PhysicsembemPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_path_sum(s : PhysicsembemPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemPath::sum(self : PhysicsembemPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_path_mean(s : PhysicsembemPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemPath::mean(self : PhysicsembemPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_path_scale(s : PhysicsembemPath, f : Double) -> PhysicsembemPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemPath::scale(self : PhysicsembemPath, f : Double) -> PhysicsembemPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_path_add(a : PhysicsembemPath, b : PhysicsembemPath) -> PhysicsembemPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemPath::add(self : PhysicsembemPath, other : PhysicsembemPath) -> PhysicsembemPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_path_copy(s : PhysicsembemPath) -> PhysicsembemPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemPath::copy(self : PhysicsembemPath) -> PhysicsembemPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_path_fill(s : PhysicsembemPath, v : Double) -> PhysicsembemPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemPath::fill(self : PhysicsembemPath, v : Double) -> PhysicsembemPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_path_min(s : PhysicsembemPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemPath::min(self : PhysicsembemPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_path_max(s : PhysicsembemPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemPath::max(self : PhysicsembemPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_path_to_string(s : PhysicsembemPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemPath::to_string(self : PhysicsembemPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_bem_cluster_make(size : Int) -> PhysicsembemCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_cluster_len(s : PhysicsembemCluster) -> Int { s.size }
+pub fn PhysicsembemCluster::len(self : PhysicsembemCluster) -> Int { self.size }
 
-pub fn physics_em_bem_cluster_get(s : PhysicsembemCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemCluster::get(self : PhysicsembemCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_cluster_set(s : PhysicsembemCluster, i : Int, v : Double) -> PhysicsembemCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemCluster::set(self : PhysicsembemCluster, i : Int, v : Double) -> PhysicsembemCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cluster_sum(s : PhysicsembemCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemCluster::sum(self : PhysicsembemCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_cluster_mean(s : PhysicsembemCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemCluster::mean(self : PhysicsembemCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_cluster_scale(s : PhysicsembemCluster, f : Double) -> PhysicsembemCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemCluster::scale(self : PhysicsembemCluster, f : Double) -> PhysicsembemCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cluster_add(a : PhysicsembemCluster, b : PhysicsembemCluster) -> PhysicsembemCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemCluster::add(self : PhysicsembemCluster, other : PhysicsembemCluster) -> PhysicsembemCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_cluster_copy(s : PhysicsembemCluster) -> PhysicsembemCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemCluster::copy(self : PhysicsembemCluster) -> PhysicsembemCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cluster_fill(s : PhysicsembemCluster, v : Double) -> PhysicsembemCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemCluster::fill(self : PhysicsembemCluster, v : Double) -> PhysicsembemCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cluster_min(s : PhysicsembemCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemCluster::min(self : PhysicsembemCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_cluster_max(s : PhysicsembemCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemCluster::max(self : PhysicsembemCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_cluster_to_string(s : PhysicsembemCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemCluster::to_string(self : PhysicsembemCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemModel {
@@ -708,45 +708,45 @@ pub fn physics_em_bem_model_make(size : Int) -> PhysicsembemModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_model_len(s : PhysicsembemModel) -> Int { s.size }
+pub fn PhysicsembemModel::len(self : PhysicsembemModel) -> Int { self.size }
 
-pub fn physics_em_bem_model_get(s : PhysicsembemModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemModel::get(self : PhysicsembemModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_model_set(s : PhysicsembemModel, i : Int, v : Double) -> PhysicsembemModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemModel::set(self : PhysicsembemModel, i : Int, v : Double) -> PhysicsembemModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_model_sum(s : PhysicsembemModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemModel::sum(self : PhysicsembemModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_model_mean(s : PhysicsembemModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemModel::mean(self : PhysicsembemModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_model_scale(s : PhysicsembemModel, f : Double) -> PhysicsembemModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemModel::scale(self : PhysicsembemModel, f : Double) -> PhysicsembemModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_model_add(a : PhysicsembemModel, b : PhysicsembemModel) -> PhysicsembemModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemModel::add(self : PhysicsembemModel, other : PhysicsembemModel) -> PhysicsembemModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_model_copy(s : PhysicsembemModel) -> PhysicsembemModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemModel::copy(self : PhysicsembemModel) -> PhysicsembemModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_model_fill(s : PhysicsembemModel, v : Double) -> PhysicsembemModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemModel::fill(self : PhysicsembemModel, v : Double) -> PhysicsembemModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_model_min(s : PhysicsembemModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemModel::min(self : PhysicsembemModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_model_max(s : PhysicsembemModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemModel::max(self : PhysicsembemModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_model_to_string(s : PhysicsembemModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemModel::to_string(self : PhysicsembemModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_bem_layer_make(size : Int) -> PhysicsembemLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_layer_len(s : PhysicsembemLayer) -> Int { s.size }
+pub fn PhysicsembemLayer::len(self : PhysicsembemLayer) -> Int { self.size }
 
-pub fn physics_em_bem_layer_get(s : PhysicsembemLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemLayer::get(self : PhysicsembemLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_layer_set(s : PhysicsembemLayer, i : Int, v : Double) -> PhysicsembemLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemLayer::set(self : PhysicsembemLayer, i : Int, v : Double) -> PhysicsembemLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_layer_sum(s : PhysicsembemLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemLayer::sum(self : PhysicsembemLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_layer_mean(s : PhysicsembemLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemLayer::mean(self : PhysicsembemLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_layer_scale(s : PhysicsembemLayer, f : Double) -> PhysicsembemLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemLayer::scale(self : PhysicsembemLayer, f : Double) -> PhysicsembemLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_layer_add(a : PhysicsembemLayer, b : PhysicsembemLayer) -> PhysicsembemLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemLayer::add(self : PhysicsembemLayer, other : PhysicsembemLayer) -> PhysicsembemLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_layer_copy(s : PhysicsembemLayer) -> PhysicsembemLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemLayer::copy(self : PhysicsembemLayer) -> PhysicsembemLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_layer_fill(s : PhysicsembemLayer, v : Double) -> PhysicsembemLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemLayer::fill(self : PhysicsembemLayer, v : Double) -> PhysicsembemLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_layer_min(s : PhysicsembemLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemLayer::min(self : PhysicsembemLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_layer_max(s : PhysicsembemLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemLayer::max(self : PhysicsembemLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_layer_to_string(s : PhysicsembemLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemLayer::to_string(self : PhysicsembemLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_bem_buffer_make(size : Int) -> PhysicsembemBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_buffer_len(s : PhysicsembemBuffer) -> Int { s.size }
+pub fn PhysicsembemBuffer::len(self : PhysicsembemBuffer) -> Int { self.size }
 
-pub fn physics_em_bem_buffer_get(s : PhysicsembemBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemBuffer::get(self : PhysicsembemBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_buffer_set(s : PhysicsembemBuffer, i : Int, v : Double) -> PhysicsembemBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemBuffer::set(self : PhysicsembemBuffer, i : Int, v : Double) -> PhysicsembemBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_buffer_sum(s : PhysicsembemBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemBuffer::sum(self : PhysicsembemBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_buffer_mean(s : PhysicsembemBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemBuffer::mean(self : PhysicsembemBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_buffer_scale(s : PhysicsembemBuffer, f : Double) -> PhysicsembemBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemBuffer::scale(self : PhysicsembemBuffer, f : Double) -> PhysicsembemBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_buffer_add(a : PhysicsembemBuffer, b : PhysicsembemBuffer) -> PhysicsembemBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemBuffer::add(self : PhysicsembemBuffer, other : PhysicsembemBuffer) -> PhysicsembemBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_buffer_copy(s : PhysicsembemBuffer) -> PhysicsembemBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemBuffer::copy(self : PhysicsembemBuffer) -> PhysicsembemBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_buffer_fill(s : PhysicsembemBuffer, v : Double) -> PhysicsembemBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemBuffer::fill(self : PhysicsembemBuffer, v : Double) -> PhysicsembemBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_buffer_min(s : PhysicsembemBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemBuffer::min(self : PhysicsembemBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_buffer_max(s : PhysicsembemBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemBuffer::max(self : PhysicsembemBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_buffer_to_string(s : PhysicsembemBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemBuffer::to_string(self : PhysicsembemBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_bem_cursor_make(size : Int) -> PhysicsembemCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_cursor_len(s : PhysicsembemCursor) -> Int { s.size }
+pub fn PhysicsembemCursor::len(self : PhysicsembemCursor) -> Int { self.size }
 
-pub fn physics_em_bem_cursor_get(s : PhysicsembemCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemCursor::get(self : PhysicsembemCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_cursor_set(s : PhysicsembemCursor, i : Int, v : Double) -> PhysicsembemCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemCursor::set(self : PhysicsembemCursor, i : Int, v : Double) -> PhysicsembemCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cursor_sum(s : PhysicsembemCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemCursor::sum(self : PhysicsembemCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_cursor_mean(s : PhysicsembemCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemCursor::mean(self : PhysicsembemCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_cursor_scale(s : PhysicsembemCursor, f : Double) -> PhysicsembemCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemCursor::scale(self : PhysicsembemCursor, f : Double) -> PhysicsembemCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cursor_add(a : PhysicsembemCursor, b : PhysicsembemCursor) -> PhysicsembemCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemCursor::add(self : PhysicsembemCursor, other : PhysicsembemCursor) -> PhysicsembemCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_cursor_copy(s : PhysicsembemCursor) -> PhysicsembemCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemCursor::copy(self : PhysicsembemCursor) -> PhysicsembemCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cursor_fill(s : PhysicsembemCursor, v : Double) -> PhysicsembemCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemCursor::fill(self : PhysicsembemCursor, v : Double) -> PhysicsembemCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_cursor_min(s : PhysicsembemCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemCursor::min(self : PhysicsembemCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_cursor_max(s : PhysicsembemCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemCursor::max(self : PhysicsembemCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_cursor_to_string(s : PhysicsembemCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemCursor::to_string(self : PhysicsembemCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemView {
@@ -912,45 +912,45 @@ pub fn physics_em_bem_view_make(size : Int) -> PhysicsembemView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_view_len(s : PhysicsembemView) -> Int { s.size }
+pub fn PhysicsembemView::len(self : PhysicsembemView) -> Int { self.size }
 
-pub fn physics_em_bem_view_get(s : PhysicsembemView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemView::get(self : PhysicsembemView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_view_set(s : PhysicsembemView, i : Int, v : Double) -> PhysicsembemView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemView::set(self : PhysicsembemView, i : Int, v : Double) -> PhysicsembemView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_view_sum(s : PhysicsembemView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemView::sum(self : PhysicsembemView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_view_mean(s : PhysicsembemView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemView::mean(self : PhysicsembemView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_view_scale(s : PhysicsembemView, f : Double) -> PhysicsembemView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemView::scale(self : PhysicsembemView, f : Double) -> PhysicsembemView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_view_add(a : PhysicsembemView, b : PhysicsembemView) -> PhysicsembemView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemView::add(self : PhysicsembemView, other : PhysicsembemView) -> PhysicsembemView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_view_copy(s : PhysicsembemView) -> PhysicsembemView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemView::copy(self : PhysicsembemView) -> PhysicsembemView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_view_fill(s : PhysicsembemView, v : Double) -> PhysicsembemView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemView::fill(self : PhysicsembemView, v : Double) -> PhysicsembemView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_view_min(s : PhysicsembemView) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemView::min(self : PhysicsembemView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_view_max(s : PhysicsembemView) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemView::max(self : PhysicsembemView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_view_to_string(s : PhysicsembemView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemView::to_string(self : PhysicsembemView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemRange {
@@ -963,45 +963,45 @@ pub fn physics_em_bem_range_make(size : Int) -> PhysicsembemRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_range_len(s : PhysicsembemRange) -> Int { s.size }
+pub fn PhysicsembemRange::len(self : PhysicsembemRange) -> Int { self.size }
 
-pub fn physics_em_bem_range_get(s : PhysicsembemRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemRange::get(self : PhysicsembemRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_range_set(s : PhysicsembemRange, i : Int, v : Double) -> PhysicsembemRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemRange::set(self : PhysicsembemRange, i : Int, v : Double) -> PhysicsembemRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_range_sum(s : PhysicsembemRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemRange::sum(self : PhysicsembemRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_range_mean(s : PhysicsembemRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemRange::mean(self : PhysicsembemRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_range_scale(s : PhysicsembemRange, f : Double) -> PhysicsembemRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemRange::scale(self : PhysicsembemRange, f : Double) -> PhysicsembemRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_range_add(a : PhysicsembemRange, b : PhysicsembemRange) -> PhysicsembemRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemRange::add(self : PhysicsembemRange, other : PhysicsembemRange) -> PhysicsembemRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_range_copy(s : PhysicsembemRange) -> PhysicsembemRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemRange::copy(self : PhysicsembemRange) -> PhysicsembemRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_range_fill(s : PhysicsembemRange, v : Double) -> PhysicsembemRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemRange::fill(self : PhysicsembemRange, v : Double) -> PhysicsembemRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_range_min(s : PhysicsembemRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemRange::min(self : PhysicsembemRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_range_max(s : PhysicsembemRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemRange::max(self : PhysicsembemRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_range_to_string(s : PhysicsembemRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemRange::to_string(self : PhysicsembemRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsembemSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_bem_slice_make(size : Int) -> PhysicsembemSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_bem_slice_len(s : PhysicsembemSlice) -> Int { s.size }
+pub fn PhysicsembemSlice::len(self : PhysicsembemSlice) -> Int { self.size }
 
-pub fn physics_em_bem_slice_get(s : PhysicsembemSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsembemSlice::get(self : PhysicsembemSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_bem_slice_set(s : PhysicsembemSlice, i : Int, v : Double) -> PhysicsembemSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsembemSlice::set(self : PhysicsembemSlice, i : Int, v : Double) -> PhysicsembemSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_slice_sum(s : PhysicsembemSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsembemSlice::sum(self : PhysicsembemSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_bem_slice_mean(s : PhysicsembemSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsembemSlice::mean(self : PhysicsembemSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_bem_slice_scale(s : PhysicsembemSlice, f : Double) -> PhysicsembemSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsembemSlice::scale(self : PhysicsembemSlice, f : Double) -> PhysicsembemSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_slice_add(a : PhysicsembemSlice, b : PhysicsembemSlice) -> PhysicsembemSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsembemSlice::add(self : PhysicsembemSlice, other : PhysicsembemSlice) -> PhysicsembemSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_bem_slice_copy(s : PhysicsembemSlice) -> PhysicsembemSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsembemSlice::copy(self : PhysicsembemSlice) -> PhysicsembemSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_slice_fill(s : PhysicsembemSlice, v : Double) -> PhysicsembemSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsembemSlice::fill(self : PhysicsembemSlice, v : Double) -> PhysicsembemSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_bem_slice_min(s : PhysicsembemSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsembemSlice::min(self : PhysicsembemSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_bem_slice_max(s : PhysicsembemSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsembemSlice::max(self : PhysicsembemSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_bem_slice_to_string(s : PhysicsembemSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsembemSlice::to_string(self : PhysicsembemSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

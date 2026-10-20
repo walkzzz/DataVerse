@@ -351,45 +351,45 @@ pub fn signal_filter_bessel_frame_make(size : Int) -> SignalfilterbesselFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_frame_len(s : SignalfilterbesselFrame) -> Int { s.size }
+pub fn SignalfilterbesselFrame::len(self : SignalfilterbesselFrame) -> Int { self.size }
 
-pub fn signal_filter_bessel_frame_get(s : SignalfilterbesselFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselFrame::get(self : SignalfilterbesselFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_frame_set(s : SignalfilterbesselFrame, i : Int, v : Double) -> SignalfilterbesselFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselFrame::set(self : SignalfilterbesselFrame, i : Int, v : Double) -> SignalfilterbesselFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_frame_sum(s : SignalfilterbesselFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselFrame::sum(self : SignalfilterbesselFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_frame_mean(s : SignalfilterbesselFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselFrame::mean(self : SignalfilterbesselFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_frame_scale(s : SignalfilterbesselFrame, f : Double) -> SignalfilterbesselFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselFrame::scale(self : SignalfilterbesselFrame, f : Double) -> SignalfilterbesselFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_frame_add(a : SignalfilterbesselFrame, b : SignalfilterbesselFrame) -> SignalfilterbesselFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselFrame::add(self : SignalfilterbesselFrame, other : SignalfilterbesselFrame) -> SignalfilterbesselFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_frame_copy(s : SignalfilterbesselFrame) -> SignalfilterbesselFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselFrame::copy(self : SignalfilterbesselFrame) -> SignalfilterbesselFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_frame_fill(s : SignalfilterbesselFrame, v : Double) -> SignalfilterbesselFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselFrame::fill(self : SignalfilterbesselFrame, v : Double) -> SignalfilterbesselFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_frame_min(s : SignalfilterbesselFrame) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselFrame::min(self : SignalfilterbesselFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_frame_max(s : SignalfilterbesselFrame) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselFrame::max(self : SignalfilterbesselFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_frame_to_string(s : SignalfilterbesselFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselFrame::to_string(self : SignalfilterbesselFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselTable {
@@ -402,45 +402,45 @@ pub fn signal_filter_bessel_table_make(size : Int) -> SignalfilterbesselTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_table_len(s : SignalfilterbesselTable) -> Int { s.size }
+pub fn SignalfilterbesselTable::len(self : SignalfilterbesselTable) -> Int { self.size }
 
-pub fn signal_filter_bessel_table_get(s : SignalfilterbesselTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselTable::get(self : SignalfilterbesselTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_table_set(s : SignalfilterbesselTable, i : Int, v : Double) -> SignalfilterbesselTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselTable::set(self : SignalfilterbesselTable, i : Int, v : Double) -> SignalfilterbesselTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_table_sum(s : SignalfilterbesselTable) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselTable::sum(self : SignalfilterbesselTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_table_mean(s : SignalfilterbesselTable) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselTable::mean(self : SignalfilterbesselTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_table_scale(s : SignalfilterbesselTable, f : Double) -> SignalfilterbesselTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselTable::scale(self : SignalfilterbesselTable, f : Double) -> SignalfilterbesselTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_table_add(a : SignalfilterbesselTable, b : SignalfilterbesselTable) -> SignalfilterbesselTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselTable::add(self : SignalfilterbesselTable, other : SignalfilterbesselTable) -> SignalfilterbesselTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_table_copy(s : SignalfilterbesselTable) -> SignalfilterbesselTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselTable::copy(self : SignalfilterbesselTable) -> SignalfilterbesselTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_table_fill(s : SignalfilterbesselTable, v : Double) -> SignalfilterbesselTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselTable::fill(self : SignalfilterbesselTable, v : Double) -> SignalfilterbesselTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_table_min(s : SignalfilterbesselTable) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselTable::min(self : SignalfilterbesselTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_table_max(s : SignalfilterbesselTable) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselTable::max(self : SignalfilterbesselTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_table_to_string(s : SignalfilterbesselTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselTable::to_string(self : SignalfilterbesselTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselGraphN {
@@ -453,45 +453,45 @@ pub fn signal_filter_bessel_graphn_make(size : Int) -> SignalfilterbesselGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_graphn_len(s : SignalfilterbesselGraphN) -> Int { s.size }
+pub fn SignalfilterbesselGraphN::len(self : SignalfilterbesselGraphN) -> Int { self.size }
 
-pub fn signal_filter_bessel_graphn_get(s : SignalfilterbesselGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselGraphN::get(self : SignalfilterbesselGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_graphn_set(s : SignalfilterbesselGraphN, i : Int, v : Double) -> SignalfilterbesselGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselGraphN::set(self : SignalfilterbesselGraphN, i : Int, v : Double) -> SignalfilterbesselGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_graphn_sum(s : SignalfilterbesselGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselGraphN::sum(self : SignalfilterbesselGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_graphn_mean(s : SignalfilterbesselGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselGraphN::mean(self : SignalfilterbesselGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_graphn_scale(s : SignalfilterbesselGraphN, f : Double) -> SignalfilterbesselGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselGraphN::scale(self : SignalfilterbesselGraphN, f : Double) -> SignalfilterbesselGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_graphn_add(a : SignalfilterbesselGraphN, b : SignalfilterbesselGraphN) -> SignalfilterbesselGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselGraphN::add(self : SignalfilterbesselGraphN, other : SignalfilterbesselGraphN) -> SignalfilterbesselGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_graphn_copy(s : SignalfilterbesselGraphN) -> SignalfilterbesselGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselGraphN::copy(self : SignalfilterbesselGraphN) -> SignalfilterbesselGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_graphn_fill(s : SignalfilterbesselGraphN, v : Double) -> SignalfilterbesselGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselGraphN::fill(self : SignalfilterbesselGraphN, v : Double) -> SignalfilterbesselGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_graphn_min(s : SignalfilterbesselGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselGraphN::min(self : SignalfilterbesselGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_graphn_max(s : SignalfilterbesselGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselGraphN::max(self : SignalfilterbesselGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_graphn_to_string(s : SignalfilterbesselGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselGraphN::to_string(self : SignalfilterbesselGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselNode {
@@ -504,45 +504,45 @@ pub fn signal_filter_bessel_node_make(size : Int) -> SignalfilterbesselNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_node_len(s : SignalfilterbesselNode) -> Int { s.size }
+pub fn SignalfilterbesselNode::len(self : SignalfilterbesselNode) -> Int { self.size }
 
-pub fn signal_filter_bessel_node_get(s : SignalfilterbesselNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselNode::get(self : SignalfilterbesselNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_node_set(s : SignalfilterbesselNode, i : Int, v : Double) -> SignalfilterbesselNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselNode::set(self : SignalfilterbesselNode, i : Int, v : Double) -> SignalfilterbesselNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_node_sum(s : SignalfilterbesselNode) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselNode::sum(self : SignalfilterbesselNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_node_mean(s : SignalfilterbesselNode) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselNode::mean(self : SignalfilterbesselNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_node_scale(s : SignalfilterbesselNode, f : Double) -> SignalfilterbesselNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselNode::scale(self : SignalfilterbesselNode, f : Double) -> SignalfilterbesselNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_node_add(a : SignalfilterbesselNode, b : SignalfilterbesselNode) -> SignalfilterbesselNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselNode::add(self : SignalfilterbesselNode, other : SignalfilterbesselNode) -> SignalfilterbesselNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_node_copy(s : SignalfilterbesselNode) -> SignalfilterbesselNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselNode::copy(self : SignalfilterbesselNode) -> SignalfilterbesselNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_node_fill(s : SignalfilterbesselNode, v : Double) -> SignalfilterbesselNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselNode::fill(self : SignalfilterbesselNode, v : Double) -> SignalfilterbesselNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_node_min(s : SignalfilterbesselNode) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselNode::min(self : SignalfilterbesselNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_node_max(s : SignalfilterbesselNode) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselNode::max(self : SignalfilterbesselNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_node_to_string(s : SignalfilterbesselNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselNode::to_string(self : SignalfilterbesselNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselEdge {
@@ -555,45 +555,45 @@ pub fn signal_filter_bessel_edge_make(size : Int) -> SignalfilterbesselEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_edge_len(s : SignalfilterbesselEdge) -> Int { s.size }
+pub fn SignalfilterbesselEdge::len(self : SignalfilterbesselEdge) -> Int { self.size }
 
-pub fn signal_filter_bessel_edge_get(s : SignalfilterbesselEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselEdge::get(self : SignalfilterbesselEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_edge_set(s : SignalfilterbesselEdge, i : Int, v : Double) -> SignalfilterbesselEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselEdge::set(self : SignalfilterbesselEdge, i : Int, v : Double) -> SignalfilterbesselEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_edge_sum(s : SignalfilterbesselEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselEdge::sum(self : SignalfilterbesselEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_edge_mean(s : SignalfilterbesselEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselEdge::mean(self : SignalfilterbesselEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_edge_scale(s : SignalfilterbesselEdge, f : Double) -> SignalfilterbesselEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselEdge::scale(self : SignalfilterbesselEdge, f : Double) -> SignalfilterbesselEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_edge_add(a : SignalfilterbesselEdge, b : SignalfilterbesselEdge) -> SignalfilterbesselEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselEdge::add(self : SignalfilterbesselEdge, other : SignalfilterbesselEdge) -> SignalfilterbesselEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_edge_copy(s : SignalfilterbesselEdge) -> SignalfilterbesselEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselEdge::copy(self : SignalfilterbesselEdge) -> SignalfilterbesselEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_edge_fill(s : SignalfilterbesselEdge, v : Double) -> SignalfilterbesselEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselEdge::fill(self : SignalfilterbesselEdge, v : Double) -> SignalfilterbesselEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_edge_min(s : SignalfilterbesselEdge) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselEdge::min(self : SignalfilterbesselEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_edge_max(s : SignalfilterbesselEdge) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselEdge::max(self : SignalfilterbesselEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_edge_to_string(s : SignalfilterbesselEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselEdge::to_string(self : SignalfilterbesselEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselPath {
@@ -606,45 +606,45 @@ pub fn signal_filter_bessel_path_make(size : Int) -> SignalfilterbesselPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_path_len(s : SignalfilterbesselPath) -> Int { s.size }
+pub fn SignalfilterbesselPath::len(self : SignalfilterbesselPath) -> Int { self.size }
 
-pub fn signal_filter_bessel_path_get(s : SignalfilterbesselPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselPath::get(self : SignalfilterbesselPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_path_set(s : SignalfilterbesselPath, i : Int, v : Double) -> SignalfilterbesselPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselPath::set(self : SignalfilterbesselPath, i : Int, v : Double) -> SignalfilterbesselPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_path_sum(s : SignalfilterbesselPath) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselPath::sum(self : SignalfilterbesselPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_path_mean(s : SignalfilterbesselPath) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselPath::mean(self : SignalfilterbesselPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_path_scale(s : SignalfilterbesselPath, f : Double) -> SignalfilterbesselPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselPath::scale(self : SignalfilterbesselPath, f : Double) -> SignalfilterbesselPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_path_add(a : SignalfilterbesselPath, b : SignalfilterbesselPath) -> SignalfilterbesselPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselPath::add(self : SignalfilterbesselPath, other : SignalfilterbesselPath) -> SignalfilterbesselPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_path_copy(s : SignalfilterbesselPath) -> SignalfilterbesselPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselPath::copy(self : SignalfilterbesselPath) -> SignalfilterbesselPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_path_fill(s : SignalfilterbesselPath, v : Double) -> SignalfilterbesselPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselPath::fill(self : SignalfilterbesselPath, v : Double) -> SignalfilterbesselPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_path_min(s : SignalfilterbesselPath) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselPath::min(self : SignalfilterbesselPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_path_max(s : SignalfilterbesselPath) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselPath::max(self : SignalfilterbesselPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_path_to_string(s : SignalfilterbesselPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselPath::to_string(self : SignalfilterbesselPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselCluster {
@@ -657,45 +657,45 @@ pub fn signal_filter_bessel_cluster_make(size : Int) -> SignalfilterbesselCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_cluster_len(s : SignalfilterbesselCluster) -> Int { s.size }
+pub fn SignalfilterbesselCluster::len(self : SignalfilterbesselCluster) -> Int { self.size }
 
-pub fn signal_filter_bessel_cluster_get(s : SignalfilterbesselCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselCluster::get(self : SignalfilterbesselCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_cluster_set(s : SignalfilterbesselCluster, i : Int, v : Double) -> SignalfilterbesselCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCluster::set(self : SignalfilterbesselCluster, i : Int, v : Double) -> SignalfilterbesselCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cluster_sum(s : SignalfilterbesselCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselCluster::sum(self : SignalfilterbesselCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_cluster_mean(s : SignalfilterbesselCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselCluster::mean(self : SignalfilterbesselCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_cluster_scale(s : SignalfilterbesselCluster, f : Double) -> SignalfilterbesselCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCluster::scale(self : SignalfilterbesselCluster, f : Double) -> SignalfilterbesselCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cluster_add(a : SignalfilterbesselCluster, b : SignalfilterbesselCluster) -> SignalfilterbesselCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselCluster::add(self : SignalfilterbesselCluster, other : SignalfilterbesselCluster) -> SignalfilterbesselCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cluster_copy(s : SignalfilterbesselCluster) -> SignalfilterbesselCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCluster::copy(self : SignalfilterbesselCluster) -> SignalfilterbesselCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cluster_fill(s : SignalfilterbesselCluster, v : Double) -> SignalfilterbesselCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCluster::fill(self : SignalfilterbesselCluster, v : Double) -> SignalfilterbesselCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cluster_min(s : SignalfilterbesselCluster) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselCluster::min(self : SignalfilterbesselCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_cluster_max(s : SignalfilterbesselCluster) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselCluster::max(self : SignalfilterbesselCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_cluster_to_string(s : SignalfilterbesselCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselCluster::to_string(self : SignalfilterbesselCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselModel {
@@ -708,45 +708,45 @@ pub fn signal_filter_bessel_model_make(size : Int) -> SignalfilterbesselModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_model_len(s : SignalfilterbesselModel) -> Int { s.size }
+pub fn SignalfilterbesselModel::len(self : SignalfilterbesselModel) -> Int { self.size }
 
-pub fn signal_filter_bessel_model_get(s : SignalfilterbesselModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselModel::get(self : SignalfilterbesselModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_model_set(s : SignalfilterbesselModel, i : Int, v : Double) -> SignalfilterbesselModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselModel::set(self : SignalfilterbesselModel, i : Int, v : Double) -> SignalfilterbesselModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_model_sum(s : SignalfilterbesselModel) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselModel::sum(self : SignalfilterbesselModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_model_mean(s : SignalfilterbesselModel) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselModel::mean(self : SignalfilterbesselModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_model_scale(s : SignalfilterbesselModel, f : Double) -> SignalfilterbesselModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselModel::scale(self : SignalfilterbesselModel, f : Double) -> SignalfilterbesselModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_model_add(a : SignalfilterbesselModel, b : SignalfilterbesselModel) -> SignalfilterbesselModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselModel::add(self : SignalfilterbesselModel, other : SignalfilterbesselModel) -> SignalfilterbesselModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_model_copy(s : SignalfilterbesselModel) -> SignalfilterbesselModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselModel::copy(self : SignalfilterbesselModel) -> SignalfilterbesselModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_model_fill(s : SignalfilterbesselModel, v : Double) -> SignalfilterbesselModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselModel::fill(self : SignalfilterbesselModel, v : Double) -> SignalfilterbesselModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_model_min(s : SignalfilterbesselModel) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselModel::min(self : SignalfilterbesselModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_model_max(s : SignalfilterbesselModel) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselModel::max(self : SignalfilterbesselModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_model_to_string(s : SignalfilterbesselModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselModel::to_string(self : SignalfilterbesselModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselLayer {
@@ -759,45 +759,45 @@ pub fn signal_filter_bessel_layer_make(size : Int) -> SignalfilterbesselLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_layer_len(s : SignalfilterbesselLayer) -> Int { s.size }
+pub fn SignalfilterbesselLayer::len(self : SignalfilterbesselLayer) -> Int { self.size }
 
-pub fn signal_filter_bessel_layer_get(s : SignalfilterbesselLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselLayer::get(self : SignalfilterbesselLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_layer_set(s : SignalfilterbesselLayer, i : Int, v : Double) -> SignalfilterbesselLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselLayer::set(self : SignalfilterbesselLayer, i : Int, v : Double) -> SignalfilterbesselLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_layer_sum(s : SignalfilterbesselLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselLayer::sum(self : SignalfilterbesselLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_layer_mean(s : SignalfilterbesselLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselLayer::mean(self : SignalfilterbesselLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_layer_scale(s : SignalfilterbesselLayer, f : Double) -> SignalfilterbesselLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselLayer::scale(self : SignalfilterbesselLayer, f : Double) -> SignalfilterbesselLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_layer_add(a : SignalfilterbesselLayer, b : SignalfilterbesselLayer) -> SignalfilterbesselLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselLayer::add(self : SignalfilterbesselLayer, other : SignalfilterbesselLayer) -> SignalfilterbesselLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_layer_copy(s : SignalfilterbesselLayer) -> SignalfilterbesselLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselLayer::copy(self : SignalfilterbesselLayer) -> SignalfilterbesselLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_layer_fill(s : SignalfilterbesselLayer, v : Double) -> SignalfilterbesselLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselLayer::fill(self : SignalfilterbesselLayer, v : Double) -> SignalfilterbesselLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_layer_min(s : SignalfilterbesselLayer) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselLayer::min(self : SignalfilterbesselLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_layer_max(s : SignalfilterbesselLayer) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselLayer::max(self : SignalfilterbesselLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_layer_to_string(s : SignalfilterbesselLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselLayer::to_string(self : SignalfilterbesselLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselBuffer {
@@ -810,45 +810,45 @@ pub fn signal_filter_bessel_buffer_make(size : Int) -> SignalfilterbesselBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_buffer_len(s : SignalfilterbesselBuffer) -> Int { s.size }
+pub fn SignalfilterbesselBuffer::len(self : SignalfilterbesselBuffer) -> Int { self.size }
 
-pub fn signal_filter_bessel_buffer_get(s : SignalfilterbesselBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselBuffer::get(self : SignalfilterbesselBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_buffer_set(s : SignalfilterbesselBuffer, i : Int, v : Double) -> SignalfilterbesselBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselBuffer::set(self : SignalfilterbesselBuffer, i : Int, v : Double) -> SignalfilterbesselBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_buffer_sum(s : SignalfilterbesselBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselBuffer::sum(self : SignalfilterbesselBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_buffer_mean(s : SignalfilterbesselBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselBuffer::mean(self : SignalfilterbesselBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_buffer_scale(s : SignalfilterbesselBuffer, f : Double) -> SignalfilterbesselBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselBuffer::scale(self : SignalfilterbesselBuffer, f : Double) -> SignalfilterbesselBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_buffer_add(a : SignalfilterbesselBuffer, b : SignalfilterbesselBuffer) -> SignalfilterbesselBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselBuffer::add(self : SignalfilterbesselBuffer, other : SignalfilterbesselBuffer) -> SignalfilterbesselBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_buffer_copy(s : SignalfilterbesselBuffer) -> SignalfilterbesselBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselBuffer::copy(self : SignalfilterbesselBuffer) -> SignalfilterbesselBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_buffer_fill(s : SignalfilterbesselBuffer, v : Double) -> SignalfilterbesselBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselBuffer::fill(self : SignalfilterbesselBuffer, v : Double) -> SignalfilterbesselBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_buffer_min(s : SignalfilterbesselBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselBuffer::min(self : SignalfilterbesselBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_buffer_max(s : SignalfilterbesselBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselBuffer::max(self : SignalfilterbesselBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_buffer_to_string(s : SignalfilterbesselBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselBuffer::to_string(self : SignalfilterbesselBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselCursor {
@@ -861,45 +861,45 @@ pub fn signal_filter_bessel_cursor_make(size : Int) -> SignalfilterbesselCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_cursor_len(s : SignalfilterbesselCursor) -> Int { s.size }
+pub fn SignalfilterbesselCursor::len(self : SignalfilterbesselCursor) -> Int { self.size }
 
-pub fn signal_filter_bessel_cursor_get(s : SignalfilterbesselCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselCursor::get(self : SignalfilterbesselCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_cursor_set(s : SignalfilterbesselCursor, i : Int, v : Double) -> SignalfilterbesselCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCursor::set(self : SignalfilterbesselCursor, i : Int, v : Double) -> SignalfilterbesselCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cursor_sum(s : SignalfilterbesselCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselCursor::sum(self : SignalfilterbesselCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_cursor_mean(s : SignalfilterbesselCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselCursor::mean(self : SignalfilterbesselCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_cursor_scale(s : SignalfilterbesselCursor, f : Double) -> SignalfilterbesselCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCursor::scale(self : SignalfilterbesselCursor, f : Double) -> SignalfilterbesselCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cursor_add(a : SignalfilterbesselCursor, b : SignalfilterbesselCursor) -> SignalfilterbesselCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselCursor::add(self : SignalfilterbesselCursor, other : SignalfilterbesselCursor) -> SignalfilterbesselCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cursor_copy(s : SignalfilterbesselCursor) -> SignalfilterbesselCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCursor::copy(self : SignalfilterbesselCursor) -> SignalfilterbesselCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cursor_fill(s : SignalfilterbesselCursor, v : Double) -> SignalfilterbesselCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselCursor::fill(self : SignalfilterbesselCursor, v : Double) -> SignalfilterbesselCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_cursor_min(s : SignalfilterbesselCursor) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselCursor::min(self : SignalfilterbesselCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_cursor_max(s : SignalfilterbesselCursor) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselCursor::max(self : SignalfilterbesselCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_cursor_to_string(s : SignalfilterbesselCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselCursor::to_string(self : SignalfilterbesselCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselView {
@@ -912,45 +912,45 @@ pub fn signal_filter_bessel_view_make(size : Int) -> SignalfilterbesselView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_view_len(s : SignalfilterbesselView) -> Int { s.size }
+pub fn SignalfilterbesselView::len(self : SignalfilterbesselView) -> Int { self.size }
 
-pub fn signal_filter_bessel_view_get(s : SignalfilterbesselView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselView::get(self : SignalfilterbesselView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_view_set(s : SignalfilterbesselView, i : Int, v : Double) -> SignalfilterbesselView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselView::set(self : SignalfilterbesselView, i : Int, v : Double) -> SignalfilterbesselView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_view_sum(s : SignalfilterbesselView) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselView::sum(self : SignalfilterbesselView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_view_mean(s : SignalfilterbesselView) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselView::mean(self : SignalfilterbesselView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_view_scale(s : SignalfilterbesselView, f : Double) -> SignalfilterbesselView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselView::scale(self : SignalfilterbesselView, f : Double) -> SignalfilterbesselView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_view_add(a : SignalfilterbesselView, b : SignalfilterbesselView) -> SignalfilterbesselView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselView::add(self : SignalfilterbesselView, other : SignalfilterbesselView) -> SignalfilterbesselView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_view_copy(s : SignalfilterbesselView) -> SignalfilterbesselView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselView::copy(self : SignalfilterbesselView) -> SignalfilterbesselView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_view_fill(s : SignalfilterbesselView, v : Double) -> SignalfilterbesselView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselView::fill(self : SignalfilterbesselView, v : Double) -> SignalfilterbesselView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_view_min(s : SignalfilterbesselView) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselView::min(self : SignalfilterbesselView) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_view_max(s : SignalfilterbesselView) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselView::max(self : SignalfilterbesselView) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_view_to_string(s : SignalfilterbesselView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselView::to_string(self : SignalfilterbesselView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselRange {
@@ -963,45 +963,45 @@ pub fn signal_filter_bessel_range_make(size : Int) -> SignalfilterbesselRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_range_len(s : SignalfilterbesselRange) -> Int { s.size }
+pub fn SignalfilterbesselRange::len(self : SignalfilterbesselRange) -> Int { self.size }
 
-pub fn signal_filter_bessel_range_get(s : SignalfilterbesselRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselRange::get(self : SignalfilterbesselRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_range_set(s : SignalfilterbesselRange, i : Int, v : Double) -> SignalfilterbesselRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselRange::set(self : SignalfilterbesselRange, i : Int, v : Double) -> SignalfilterbesselRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_range_sum(s : SignalfilterbesselRange) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselRange::sum(self : SignalfilterbesselRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_range_mean(s : SignalfilterbesselRange) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselRange::mean(self : SignalfilterbesselRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_range_scale(s : SignalfilterbesselRange, f : Double) -> SignalfilterbesselRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselRange::scale(self : SignalfilterbesselRange, f : Double) -> SignalfilterbesselRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_range_add(a : SignalfilterbesselRange, b : SignalfilterbesselRange) -> SignalfilterbesselRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselRange::add(self : SignalfilterbesselRange, other : SignalfilterbesselRange) -> SignalfilterbesselRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_range_copy(s : SignalfilterbesselRange) -> SignalfilterbesselRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselRange::copy(self : SignalfilterbesselRange) -> SignalfilterbesselRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_range_fill(s : SignalfilterbesselRange, v : Double) -> SignalfilterbesselRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselRange::fill(self : SignalfilterbesselRange, v : Double) -> SignalfilterbesselRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_range_min(s : SignalfilterbesselRange) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselRange::min(self : SignalfilterbesselRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_range_max(s : SignalfilterbesselRange) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselRange::max(self : SignalfilterbesselRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_range_to_string(s : SignalfilterbesselRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselRange::to_string(self : SignalfilterbesselRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilterbesselSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_filter_bessel_slice_make(size : Int) -> SignalfilterbesselSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_bessel_slice_len(s : SignalfilterbesselSlice) -> Int { s.size }
+pub fn SignalfilterbesselSlice::len(self : SignalfilterbesselSlice) -> Int { self.size }
 
-pub fn signal_filter_bessel_slice_get(s : SignalfilterbesselSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilterbesselSlice::get(self : SignalfilterbesselSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_bessel_slice_set(s : SignalfilterbesselSlice, i : Int, v : Double) -> SignalfilterbesselSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilterbesselSlice::set(self : SignalfilterbesselSlice, i : Int, v : Double) -> SignalfilterbesselSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_slice_sum(s : SignalfilterbesselSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalfilterbesselSlice::sum(self : SignalfilterbesselSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_bessel_slice_mean(s : SignalfilterbesselSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalfilterbesselSlice::mean(self : SignalfilterbesselSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_bessel_slice_scale(s : SignalfilterbesselSlice, f : Double) -> SignalfilterbesselSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselSlice::scale(self : SignalfilterbesselSlice, f : Double) -> SignalfilterbesselSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_slice_add(a : SignalfilterbesselSlice, b : SignalfilterbesselSlice) -> SignalfilterbesselSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilterbesselSlice::add(self : SignalfilterbesselSlice, other : SignalfilterbesselSlice) -> SignalfilterbesselSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_slice_copy(s : SignalfilterbesselSlice) -> SignalfilterbesselSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselSlice::copy(self : SignalfilterbesselSlice) -> SignalfilterbesselSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_slice_fill(s : SignalfilterbesselSlice, v : Double) -> SignalfilterbesselSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilterbesselSlice::fill(self : SignalfilterbesselSlice, v : Double) -> SignalfilterbesselSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_bessel_slice_min(s : SignalfilterbesselSlice) -> Double { @_common.min(s.data) }
+pub fn SignalfilterbesselSlice::min(self : SignalfilterbesselSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_bessel_slice_max(s : SignalfilterbesselSlice) -> Double { @_common.max(s.data) }
+pub fn SignalfilterbesselSlice::max(self : SignalfilterbesselSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_bessel_slice_to_string(s : SignalfilterbesselSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilterbesselSlice::to_string(self : SignalfilterbesselSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

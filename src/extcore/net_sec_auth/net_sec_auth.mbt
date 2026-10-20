@@ -351,45 +351,45 @@ pub fn net_sec_auth_frame_make(size : Int) -> NetsecauthFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_frame_len(s : NetsecauthFrame) -> Int { s.size }
+pub fn NetsecauthFrame::len(self : NetsecauthFrame) -> Int { self.size }
 
-pub fn net_sec_auth_frame_get(s : NetsecauthFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthFrame::get(self : NetsecauthFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_frame_set(s : NetsecauthFrame, i : Int, v : Double) -> NetsecauthFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthFrame::set(self : NetsecauthFrame, i : Int, v : Double) -> NetsecauthFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_frame_sum(s : NetsecauthFrame) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthFrame::sum(self : NetsecauthFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_frame_mean(s : NetsecauthFrame) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthFrame::mean(self : NetsecauthFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_frame_scale(s : NetsecauthFrame, f : Double) -> NetsecauthFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthFrame::scale(self : NetsecauthFrame, f : Double) -> NetsecauthFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_frame_add(a : NetsecauthFrame, b : NetsecauthFrame) -> NetsecauthFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthFrame::add(self : NetsecauthFrame, other : NetsecauthFrame) -> NetsecauthFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_frame_copy(s : NetsecauthFrame) -> NetsecauthFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthFrame::copy(self : NetsecauthFrame) -> NetsecauthFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_frame_fill(s : NetsecauthFrame, v : Double) -> NetsecauthFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthFrame::fill(self : NetsecauthFrame, v : Double) -> NetsecauthFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_frame_min(s : NetsecauthFrame) -> Double { @_common.min(s.data) }
+pub fn NetsecauthFrame::min(self : NetsecauthFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_frame_max(s : NetsecauthFrame) -> Double { @_common.max(s.data) }
+pub fn NetsecauthFrame::max(self : NetsecauthFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_frame_to_string(s : NetsecauthFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthFrame::to_string(self : NetsecauthFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthTable {
@@ -402,45 +402,45 @@ pub fn net_sec_auth_table_make(size : Int) -> NetsecauthTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_table_len(s : NetsecauthTable) -> Int { s.size }
+pub fn NetsecauthTable::len(self : NetsecauthTable) -> Int { self.size }
 
-pub fn net_sec_auth_table_get(s : NetsecauthTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthTable::get(self : NetsecauthTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_table_set(s : NetsecauthTable, i : Int, v : Double) -> NetsecauthTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthTable::set(self : NetsecauthTable, i : Int, v : Double) -> NetsecauthTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_table_sum(s : NetsecauthTable) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthTable::sum(self : NetsecauthTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_table_mean(s : NetsecauthTable) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthTable::mean(self : NetsecauthTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_table_scale(s : NetsecauthTable, f : Double) -> NetsecauthTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthTable::scale(self : NetsecauthTable, f : Double) -> NetsecauthTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_table_add(a : NetsecauthTable, b : NetsecauthTable) -> NetsecauthTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthTable::add(self : NetsecauthTable, other : NetsecauthTable) -> NetsecauthTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_table_copy(s : NetsecauthTable) -> NetsecauthTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthTable::copy(self : NetsecauthTable) -> NetsecauthTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_table_fill(s : NetsecauthTable, v : Double) -> NetsecauthTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthTable::fill(self : NetsecauthTable, v : Double) -> NetsecauthTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_table_min(s : NetsecauthTable) -> Double { @_common.min(s.data) }
+pub fn NetsecauthTable::min(self : NetsecauthTable) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_table_max(s : NetsecauthTable) -> Double { @_common.max(s.data) }
+pub fn NetsecauthTable::max(self : NetsecauthTable) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_table_to_string(s : NetsecauthTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthTable::to_string(self : NetsecauthTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthGraphN {
@@ -453,45 +453,45 @@ pub fn net_sec_auth_graphn_make(size : Int) -> NetsecauthGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_graphn_len(s : NetsecauthGraphN) -> Int { s.size }
+pub fn NetsecauthGraphN::len(self : NetsecauthGraphN) -> Int { self.size }
 
-pub fn net_sec_auth_graphn_get(s : NetsecauthGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthGraphN::get(self : NetsecauthGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_graphn_set(s : NetsecauthGraphN, i : Int, v : Double) -> NetsecauthGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthGraphN::set(self : NetsecauthGraphN, i : Int, v : Double) -> NetsecauthGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_graphn_sum(s : NetsecauthGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthGraphN::sum(self : NetsecauthGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_graphn_mean(s : NetsecauthGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthGraphN::mean(self : NetsecauthGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_graphn_scale(s : NetsecauthGraphN, f : Double) -> NetsecauthGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthGraphN::scale(self : NetsecauthGraphN, f : Double) -> NetsecauthGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_graphn_add(a : NetsecauthGraphN, b : NetsecauthGraphN) -> NetsecauthGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthGraphN::add(self : NetsecauthGraphN, other : NetsecauthGraphN) -> NetsecauthGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_graphn_copy(s : NetsecauthGraphN) -> NetsecauthGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthGraphN::copy(self : NetsecauthGraphN) -> NetsecauthGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_graphn_fill(s : NetsecauthGraphN, v : Double) -> NetsecauthGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthGraphN::fill(self : NetsecauthGraphN, v : Double) -> NetsecauthGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_graphn_min(s : NetsecauthGraphN) -> Double { @_common.min(s.data) }
+pub fn NetsecauthGraphN::min(self : NetsecauthGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_graphn_max(s : NetsecauthGraphN) -> Double { @_common.max(s.data) }
+pub fn NetsecauthGraphN::max(self : NetsecauthGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_graphn_to_string(s : NetsecauthGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthGraphN::to_string(self : NetsecauthGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthNode {
@@ -504,45 +504,45 @@ pub fn net_sec_auth_node_make(size : Int) -> NetsecauthNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_node_len(s : NetsecauthNode) -> Int { s.size }
+pub fn NetsecauthNode::len(self : NetsecauthNode) -> Int { self.size }
 
-pub fn net_sec_auth_node_get(s : NetsecauthNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthNode::get(self : NetsecauthNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_node_set(s : NetsecauthNode, i : Int, v : Double) -> NetsecauthNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthNode::set(self : NetsecauthNode, i : Int, v : Double) -> NetsecauthNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_node_sum(s : NetsecauthNode) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthNode::sum(self : NetsecauthNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_node_mean(s : NetsecauthNode) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthNode::mean(self : NetsecauthNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_node_scale(s : NetsecauthNode, f : Double) -> NetsecauthNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthNode::scale(self : NetsecauthNode, f : Double) -> NetsecauthNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_node_add(a : NetsecauthNode, b : NetsecauthNode) -> NetsecauthNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthNode::add(self : NetsecauthNode, other : NetsecauthNode) -> NetsecauthNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_node_copy(s : NetsecauthNode) -> NetsecauthNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthNode::copy(self : NetsecauthNode) -> NetsecauthNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_node_fill(s : NetsecauthNode, v : Double) -> NetsecauthNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthNode::fill(self : NetsecauthNode, v : Double) -> NetsecauthNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_node_min(s : NetsecauthNode) -> Double { @_common.min(s.data) }
+pub fn NetsecauthNode::min(self : NetsecauthNode) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_node_max(s : NetsecauthNode) -> Double { @_common.max(s.data) }
+pub fn NetsecauthNode::max(self : NetsecauthNode) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_node_to_string(s : NetsecauthNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthNode::to_string(self : NetsecauthNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthEdge {
@@ -555,45 +555,45 @@ pub fn net_sec_auth_edge_make(size : Int) -> NetsecauthEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_edge_len(s : NetsecauthEdge) -> Int { s.size }
+pub fn NetsecauthEdge::len(self : NetsecauthEdge) -> Int { self.size }
 
-pub fn net_sec_auth_edge_get(s : NetsecauthEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthEdge::get(self : NetsecauthEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_edge_set(s : NetsecauthEdge, i : Int, v : Double) -> NetsecauthEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthEdge::set(self : NetsecauthEdge, i : Int, v : Double) -> NetsecauthEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_edge_sum(s : NetsecauthEdge) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthEdge::sum(self : NetsecauthEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_edge_mean(s : NetsecauthEdge) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthEdge::mean(self : NetsecauthEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_edge_scale(s : NetsecauthEdge, f : Double) -> NetsecauthEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthEdge::scale(self : NetsecauthEdge, f : Double) -> NetsecauthEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_edge_add(a : NetsecauthEdge, b : NetsecauthEdge) -> NetsecauthEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthEdge::add(self : NetsecauthEdge, other : NetsecauthEdge) -> NetsecauthEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_edge_copy(s : NetsecauthEdge) -> NetsecauthEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthEdge::copy(self : NetsecauthEdge) -> NetsecauthEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_edge_fill(s : NetsecauthEdge, v : Double) -> NetsecauthEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthEdge::fill(self : NetsecauthEdge, v : Double) -> NetsecauthEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_edge_min(s : NetsecauthEdge) -> Double { @_common.min(s.data) }
+pub fn NetsecauthEdge::min(self : NetsecauthEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_edge_max(s : NetsecauthEdge) -> Double { @_common.max(s.data) }
+pub fn NetsecauthEdge::max(self : NetsecauthEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_edge_to_string(s : NetsecauthEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthEdge::to_string(self : NetsecauthEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthPath {
@@ -606,45 +606,45 @@ pub fn net_sec_auth_path_make(size : Int) -> NetsecauthPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_path_len(s : NetsecauthPath) -> Int { s.size }
+pub fn NetsecauthPath::len(self : NetsecauthPath) -> Int { self.size }
 
-pub fn net_sec_auth_path_get(s : NetsecauthPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthPath::get(self : NetsecauthPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_path_set(s : NetsecauthPath, i : Int, v : Double) -> NetsecauthPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthPath::set(self : NetsecauthPath, i : Int, v : Double) -> NetsecauthPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_path_sum(s : NetsecauthPath) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthPath::sum(self : NetsecauthPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_path_mean(s : NetsecauthPath) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthPath::mean(self : NetsecauthPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_path_scale(s : NetsecauthPath, f : Double) -> NetsecauthPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthPath::scale(self : NetsecauthPath, f : Double) -> NetsecauthPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_path_add(a : NetsecauthPath, b : NetsecauthPath) -> NetsecauthPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthPath::add(self : NetsecauthPath, other : NetsecauthPath) -> NetsecauthPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_path_copy(s : NetsecauthPath) -> NetsecauthPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthPath::copy(self : NetsecauthPath) -> NetsecauthPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_path_fill(s : NetsecauthPath, v : Double) -> NetsecauthPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthPath::fill(self : NetsecauthPath, v : Double) -> NetsecauthPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_path_min(s : NetsecauthPath) -> Double { @_common.min(s.data) }
+pub fn NetsecauthPath::min(self : NetsecauthPath) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_path_max(s : NetsecauthPath) -> Double { @_common.max(s.data) }
+pub fn NetsecauthPath::max(self : NetsecauthPath) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_path_to_string(s : NetsecauthPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthPath::to_string(self : NetsecauthPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthCluster {
@@ -657,45 +657,45 @@ pub fn net_sec_auth_cluster_make(size : Int) -> NetsecauthCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_cluster_len(s : NetsecauthCluster) -> Int { s.size }
+pub fn NetsecauthCluster::len(self : NetsecauthCluster) -> Int { self.size }
 
-pub fn net_sec_auth_cluster_get(s : NetsecauthCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthCluster::get(self : NetsecauthCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_cluster_set(s : NetsecauthCluster, i : Int, v : Double) -> NetsecauthCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthCluster::set(self : NetsecauthCluster, i : Int, v : Double) -> NetsecauthCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cluster_sum(s : NetsecauthCluster) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthCluster::sum(self : NetsecauthCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_cluster_mean(s : NetsecauthCluster) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthCluster::mean(self : NetsecauthCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_cluster_scale(s : NetsecauthCluster, f : Double) -> NetsecauthCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthCluster::scale(self : NetsecauthCluster, f : Double) -> NetsecauthCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cluster_add(a : NetsecauthCluster, b : NetsecauthCluster) -> NetsecauthCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthCluster::add(self : NetsecauthCluster, other : NetsecauthCluster) -> NetsecauthCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_cluster_copy(s : NetsecauthCluster) -> NetsecauthCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthCluster::copy(self : NetsecauthCluster) -> NetsecauthCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cluster_fill(s : NetsecauthCluster, v : Double) -> NetsecauthCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthCluster::fill(self : NetsecauthCluster, v : Double) -> NetsecauthCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cluster_min(s : NetsecauthCluster) -> Double { @_common.min(s.data) }
+pub fn NetsecauthCluster::min(self : NetsecauthCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_cluster_max(s : NetsecauthCluster) -> Double { @_common.max(s.data) }
+pub fn NetsecauthCluster::max(self : NetsecauthCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_cluster_to_string(s : NetsecauthCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthCluster::to_string(self : NetsecauthCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthModel {
@@ -708,45 +708,45 @@ pub fn net_sec_auth_model_make(size : Int) -> NetsecauthModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_model_len(s : NetsecauthModel) -> Int { s.size }
+pub fn NetsecauthModel::len(self : NetsecauthModel) -> Int { self.size }
 
-pub fn net_sec_auth_model_get(s : NetsecauthModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthModel::get(self : NetsecauthModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_model_set(s : NetsecauthModel, i : Int, v : Double) -> NetsecauthModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthModel::set(self : NetsecauthModel, i : Int, v : Double) -> NetsecauthModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_model_sum(s : NetsecauthModel) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthModel::sum(self : NetsecauthModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_model_mean(s : NetsecauthModel) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthModel::mean(self : NetsecauthModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_model_scale(s : NetsecauthModel, f : Double) -> NetsecauthModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthModel::scale(self : NetsecauthModel, f : Double) -> NetsecauthModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_model_add(a : NetsecauthModel, b : NetsecauthModel) -> NetsecauthModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthModel::add(self : NetsecauthModel, other : NetsecauthModel) -> NetsecauthModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_model_copy(s : NetsecauthModel) -> NetsecauthModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthModel::copy(self : NetsecauthModel) -> NetsecauthModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_model_fill(s : NetsecauthModel, v : Double) -> NetsecauthModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthModel::fill(self : NetsecauthModel, v : Double) -> NetsecauthModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_model_min(s : NetsecauthModel) -> Double { @_common.min(s.data) }
+pub fn NetsecauthModel::min(self : NetsecauthModel) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_model_max(s : NetsecauthModel) -> Double { @_common.max(s.data) }
+pub fn NetsecauthModel::max(self : NetsecauthModel) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_model_to_string(s : NetsecauthModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthModel::to_string(self : NetsecauthModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthLayer {
@@ -759,45 +759,45 @@ pub fn net_sec_auth_layer_make(size : Int) -> NetsecauthLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_layer_len(s : NetsecauthLayer) -> Int { s.size }
+pub fn NetsecauthLayer::len(self : NetsecauthLayer) -> Int { self.size }
 
-pub fn net_sec_auth_layer_get(s : NetsecauthLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthLayer::get(self : NetsecauthLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_layer_set(s : NetsecauthLayer, i : Int, v : Double) -> NetsecauthLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthLayer::set(self : NetsecauthLayer, i : Int, v : Double) -> NetsecauthLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_layer_sum(s : NetsecauthLayer) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthLayer::sum(self : NetsecauthLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_layer_mean(s : NetsecauthLayer) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthLayer::mean(self : NetsecauthLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_layer_scale(s : NetsecauthLayer, f : Double) -> NetsecauthLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthLayer::scale(self : NetsecauthLayer, f : Double) -> NetsecauthLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_layer_add(a : NetsecauthLayer, b : NetsecauthLayer) -> NetsecauthLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthLayer::add(self : NetsecauthLayer, other : NetsecauthLayer) -> NetsecauthLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_layer_copy(s : NetsecauthLayer) -> NetsecauthLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthLayer::copy(self : NetsecauthLayer) -> NetsecauthLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_layer_fill(s : NetsecauthLayer, v : Double) -> NetsecauthLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthLayer::fill(self : NetsecauthLayer, v : Double) -> NetsecauthLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_layer_min(s : NetsecauthLayer) -> Double { @_common.min(s.data) }
+pub fn NetsecauthLayer::min(self : NetsecauthLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_layer_max(s : NetsecauthLayer) -> Double { @_common.max(s.data) }
+pub fn NetsecauthLayer::max(self : NetsecauthLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_layer_to_string(s : NetsecauthLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthLayer::to_string(self : NetsecauthLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthBuffer {
@@ -810,45 +810,45 @@ pub fn net_sec_auth_buffer_make(size : Int) -> NetsecauthBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_buffer_len(s : NetsecauthBuffer) -> Int { s.size }
+pub fn NetsecauthBuffer::len(self : NetsecauthBuffer) -> Int { self.size }
 
-pub fn net_sec_auth_buffer_get(s : NetsecauthBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthBuffer::get(self : NetsecauthBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_buffer_set(s : NetsecauthBuffer, i : Int, v : Double) -> NetsecauthBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthBuffer::set(self : NetsecauthBuffer, i : Int, v : Double) -> NetsecauthBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_buffer_sum(s : NetsecauthBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthBuffer::sum(self : NetsecauthBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_buffer_mean(s : NetsecauthBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthBuffer::mean(self : NetsecauthBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_buffer_scale(s : NetsecauthBuffer, f : Double) -> NetsecauthBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthBuffer::scale(self : NetsecauthBuffer, f : Double) -> NetsecauthBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_buffer_add(a : NetsecauthBuffer, b : NetsecauthBuffer) -> NetsecauthBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthBuffer::add(self : NetsecauthBuffer, other : NetsecauthBuffer) -> NetsecauthBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_buffer_copy(s : NetsecauthBuffer) -> NetsecauthBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthBuffer::copy(self : NetsecauthBuffer) -> NetsecauthBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_buffer_fill(s : NetsecauthBuffer, v : Double) -> NetsecauthBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthBuffer::fill(self : NetsecauthBuffer, v : Double) -> NetsecauthBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_buffer_min(s : NetsecauthBuffer) -> Double { @_common.min(s.data) }
+pub fn NetsecauthBuffer::min(self : NetsecauthBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_buffer_max(s : NetsecauthBuffer) -> Double { @_common.max(s.data) }
+pub fn NetsecauthBuffer::max(self : NetsecauthBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_buffer_to_string(s : NetsecauthBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthBuffer::to_string(self : NetsecauthBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthCursor {
@@ -861,45 +861,45 @@ pub fn net_sec_auth_cursor_make(size : Int) -> NetsecauthCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_cursor_len(s : NetsecauthCursor) -> Int { s.size }
+pub fn NetsecauthCursor::len(self : NetsecauthCursor) -> Int { self.size }
 
-pub fn net_sec_auth_cursor_get(s : NetsecauthCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthCursor::get(self : NetsecauthCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_cursor_set(s : NetsecauthCursor, i : Int, v : Double) -> NetsecauthCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthCursor::set(self : NetsecauthCursor, i : Int, v : Double) -> NetsecauthCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cursor_sum(s : NetsecauthCursor) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthCursor::sum(self : NetsecauthCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_cursor_mean(s : NetsecauthCursor) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthCursor::mean(self : NetsecauthCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_cursor_scale(s : NetsecauthCursor, f : Double) -> NetsecauthCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthCursor::scale(self : NetsecauthCursor, f : Double) -> NetsecauthCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cursor_add(a : NetsecauthCursor, b : NetsecauthCursor) -> NetsecauthCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthCursor::add(self : NetsecauthCursor, other : NetsecauthCursor) -> NetsecauthCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_cursor_copy(s : NetsecauthCursor) -> NetsecauthCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthCursor::copy(self : NetsecauthCursor) -> NetsecauthCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cursor_fill(s : NetsecauthCursor, v : Double) -> NetsecauthCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthCursor::fill(self : NetsecauthCursor, v : Double) -> NetsecauthCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_cursor_min(s : NetsecauthCursor) -> Double { @_common.min(s.data) }
+pub fn NetsecauthCursor::min(self : NetsecauthCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_cursor_max(s : NetsecauthCursor) -> Double { @_common.max(s.data) }
+pub fn NetsecauthCursor::max(self : NetsecauthCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_cursor_to_string(s : NetsecauthCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthCursor::to_string(self : NetsecauthCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthView {
@@ -912,45 +912,45 @@ pub fn net_sec_auth_view_make(size : Int) -> NetsecauthView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_view_len(s : NetsecauthView) -> Int { s.size }
+pub fn NetsecauthView::len(self : NetsecauthView) -> Int { self.size }
 
-pub fn net_sec_auth_view_get(s : NetsecauthView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthView::get(self : NetsecauthView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_view_set(s : NetsecauthView, i : Int, v : Double) -> NetsecauthView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthView::set(self : NetsecauthView, i : Int, v : Double) -> NetsecauthView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_view_sum(s : NetsecauthView) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthView::sum(self : NetsecauthView) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_view_mean(s : NetsecauthView) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthView::mean(self : NetsecauthView) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_view_scale(s : NetsecauthView, f : Double) -> NetsecauthView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthView::scale(self : NetsecauthView, f : Double) -> NetsecauthView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_view_add(a : NetsecauthView, b : NetsecauthView) -> NetsecauthView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthView::add(self : NetsecauthView, other : NetsecauthView) -> NetsecauthView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_view_copy(s : NetsecauthView) -> NetsecauthView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthView::copy(self : NetsecauthView) -> NetsecauthView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_view_fill(s : NetsecauthView, v : Double) -> NetsecauthView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthView::fill(self : NetsecauthView, v : Double) -> NetsecauthView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_view_min(s : NetsecauthView) -> Double { @_common.min(s.data) }
+pub fn NetsecauthView::min(self : NetsecauthView) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_view_max(s : NetsecauthView) -> Double { @_common.max(s.data) }
+pub fn NetsecauthView::max(self : NetsecauthView) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_view_to_string(s : NetsecauthView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthView::to_string(self : NetsecauthView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthRange {
@@ -963,45 +963,45 @@ pub fn net_sec_auth_range_make(size : Int) -> NetsecauthRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_range_len(s : NetsecauthRange) -> Int { s.size }
+pub fn NetsecauthRange::len(self : NetsecauthRange) -> Int { self.size }
 
-pub fn net_sec_auth_range_get(s : NetsecauthRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthRange::get(self : NetsecauthRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_range_set(s : NetsecauthRange, i : Int, v : Double) -> NetsecauthRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthRange::set(self : NetsecauthRange, i : Int, v : Double) -> NetsecauthRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_range_sum(s : NetsecauthRange) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthRange::sum(self : NetsecauthRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_range_mean(s : NetsecauthRange) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthRange::mean(self : NetsecauthRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_range_scale(s : NetsecauthRange, f : Double) -> NetsecauthRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthRange::scale(self : NetsecauthRange, f : Double) -> NetsecauthRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_range_add(a : NetsecauthRange, b : NetsecauthRange) -> NetsecauthRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthRange::add(self : NetsecauthRange, other : NetsecauthRange) -> NetsecauthRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_range_copy(s : NetsecauthRange) -> NetsecauthRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthRange::copy(self : NetsecauthRange) -> NetsecauthRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_range_fill(s : NetsecauthRange, v : Double) -> NetsecauthRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthRange::fill(self : NetsecauthRange, v : Double) -> NetsecauthRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_range_min(s : NetsecauthRange) -> Double { @_common.min(s.data) }
+pub fn NetsecauthRange::min(self : NetsecauthRange) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_range_max(s : NetsecauthRange) -> Double { @_common.max(s.data) }
+pub fn NetsecauthRange::max(self : NetsecauthRange) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_range_to_string(s : NetsecauthRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthRange::to_string(self : NetsecauthRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecauthSlice {
@@ -1014,44 +1014,44 @@ pub fn net_sec_auth_slice_make(size : Int) -> NetsecauthSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_auth_slice_len(s : NetsecauthSlice) -> Int { s.size }
+pub fn NetsecauthSlice::len(self : NetsecauthSlice) -> Int { self.size }
 
-pub fn net_sec_auth_slice_get(s : NetsecauthSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecauthSlice::get(self : NetsecauthSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_auth_slice_set(s : NetsecauthSlice, i : Int, v : Double) -> NetsecauthSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecauthSlice::set(self : NetsecauthSlice, i : Int, v : Double) -> NetsecauthSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_slice_sum(s : NetsecauthSlice) -> Double { @_common.sum(s.data) }
+pub fn NetsecauthSlice::sum(self : NetsecauthSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_auth_slice_mean(s : NetsecauthSlice) -> Double { @_common.mean(s.data) }
+pub fn NetsecauthSlice::mean(self : NetsecauthSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_auth_slice_scale(s : NetsecauthSlice, f : Double) -> NetsecauthSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecauthSlice::scale(self : NetsecauthSlice, f : Double) -> NetsecauthSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_slice_add(a : NetsecauthSlice, b : NetsecauthSlice) -> NetsecauthSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecauthSlice::add(self : NetsecauthSlice, other : NetsecauthSlice) -> NetsecauthSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_auth_slice_copy(s : NetsecauthSlice) -> NetsecauthSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecauthSlice::copy(self : NetsecauthSlice) -> NetsecauthSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_slice_fill(s : NetsecauthSlice, v : Double) -> NetsecauthSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecauthSlice::fill(self : NetsecauthSlice, v : Double) -> NetsecauthSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_auth_slice_min(s : NetsecauthSlice) -> Double { @_common.min(s.data) }
+pub fn NetsecauthSlice::min(self : NetsecauthSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_auth_slice_max(s : NetsecauthSlice) -> Double { @_common.max(s.data) }
+pub fn NetsecauthSlice::max(self : NetsecauthSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_auth_slice_to_string(s : NetsecauthSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecauthSlice::to_string(self : NetsecauthSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

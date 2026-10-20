@@ -351,45 +351,45 @@ pub fn sort_dist_bucket_frame_make(size : Int) -> SortdistbucketFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_frame_len(s : SortdistbucketFrame) -> Int { s.size }
+pub fn SortdistbucketFrame::len(self : SortdistbucketFrame) -> Int { self.size }
 
-pub fn sort_dist_bucket_frame_get(s : SortdistbucketFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketFrame::get(self : SortdistbucketFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_frame_set(s : SortdistbucketFrame, i : Int, v : Double) -> SortdistbucketFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketFrame::set(self : SortdistbucketFrame, i : Int, v : Double) -> SortdistbucketFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_frame_sum(s : SortdistbucketFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketFrame::sum(self : SortdistbucketFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_frame_mean(s : SortdistbucketFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketFrame::mean(self : SortdistbucketFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_frame_scale(s : SortdistbucketFrame, f : Double) -> SortdistbucketFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketFrame::scale(self : SortdistbucketFrame, f : Double) -> SortdistbucketFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_frame_add(a : SortdistbucketFrame, b : SortdistbucketFrame) -> SortdistbucketFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketFrame::add(self : SortdistbucketFrame, other : SortdistbucketFrame) -> SortdistbucketFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_frame_copy(s : SortdistbucketFrame) -> SortdistbucketFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketFrame::copy(self : SortdistbucketFrame) -> SortdistbucketFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_frame_fill(s : SortdistbucketFrame, v : Double) -> SortdistbucketFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketFrame::fill(self : SortdistbucketFrame, v : Double) -> SortdistbucketFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_frame_min(s : SortdistbucketFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketFrame::min(self : SortdistbucketFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_frame_max(s : SortdistbucketFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketFrame::max(self : SortdistbucketFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_frame_to_string(s : SortdistbucketFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketFrame::to_string(self : SortdistbucketFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_bucket_table_make(size : Int) -> SortdistbucketTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_table_len(s : SortdistbucketTable) -> Int { s.size }
+pub fn SortdistbucketTable::len(self : SortdistbucketTable) -> Int { self.size }
 
-pub fn sort_dist_bucket_table_get(s : SortdistbucketTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketTable::get(self : SortdistbucketTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_table_set(s : SortdistbucketTable, i : Int, v : Double) -> SortdistbucketTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketTable::set(self : SortdistbucketTable, i : Int, v : Double) -> SortdistbucketTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_table_sum(s : SortdistbucketTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketTable::sum(self : SortdistbucketTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_table_mean(s : SortdistbucketTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketTable::mean(self : SortdistbucketTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_table_scale(s : SortdistbucketTable, f : Double) -> SortdistbucketTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketTable::scale(self : SortdistbucketTable, f : Double) -> SortdistbucketTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_table_add(a : SortdistbucketTable, b : SortdistbucketTable) -> SortdistbucketTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketTable::add(self : SortdistbucketTable, other : SortdistbucketTable) -> SortdistbucketTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_table_copy(s : SortdistbucketTable) -> SortdistbucketTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketTable::copy(self : SortdistbucketTable) -> SortdistbucketTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_table_fill(s : SortdistbucketTable, v : Double) -> SortdistbucketTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketTable::fill(self : SortdistbucketTable, v : Double) -> SortdistbucketTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_table_min(s : SortdistbucketTable) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketTable::min(self : SortdistbucketTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_table_max(s : SortdistbucketTable) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketTable::max(self : SortdistbucketTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_table_to_string(s : SortdistbucketTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketTable::to_string(self : SortdistbucketTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_bucket_graphn_make(size : Int) -> SortdistbucketGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_graphn_len(s : SortdistbucketGraphN) -> Int { s.size }
+pub fn SortdistbucketGraphN::len(self : SortdistbucketGraphN) -> Int { self.size }
 
-pub fn sort_dist_bucket_graphn_get(s : SortdistbucketGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketGraphN::get(self : SortdistbucketGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_graphn_set(s : SortdistbucketGraphN, i : Int, v : Double) -> SortdistbucketGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketGraphN::set(self : SortdistbucketGraphN, i : Int, v : Double) -> SortdistbucketGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_graphn_sum(s : SortdistbucketGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketGraphN::sum(self : SortdistbucketGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_graphn_mean(s : SortdistbucketGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketGraphN::mean(self : SortdistbucketGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_graphn_scale(s : SortdistbucketGraphN, f : Double) -> SortdistbucketGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketGraphN::scale(self : SortdistbucketGraphN, f : Double) -> SortdistbucketGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_graphn_add(a : SortdistbucketGraphN, b : SortdistbucketGraphN) -> SortdistbucketGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketGraphN::add(self : SortdistbucketGraphN, other : SortdistbucketGraphN) -> SortdistbucketGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_graphn_copy(s : SortdistbucketGraphN) -> SortdistbucketGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketGraphN::copy(self : SortdistbucketGraphN) -> SortdistbucketGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_graphn_fill(s : SortdistbucketGraphN, v : Double) -> SortdistbucketGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketGraphN::fill(self : SortdistbucketGraphN, v : Double) -> SortdistbucketGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_graphn_min(s : SortdistbucketGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketGraphN::min(self : SortdistbucketGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_graphn_max(s : SortdistbucketGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketGraphN::max(self : SortdistbucketGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_graphn_to_string(s : SortdistbucketGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketGraphN::to_string(self : SortdistbucketGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_bucket_node_make(size : Int) -> SortdistbucketNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_node_len(s : SortdistbucketNode) -> Int { s.size }
+pub fn SortdistbucketNode::len(self : SortdistbucketNode) -> Int { self.size }
 
-pub fn sort_dist_bucket_node_get(s : SortdistbucketNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketNode::get(self : SortdistbucketNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_node_set(s : SortdistbucketNode, i : Int, v : Double) -> SortdistbucketNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketNode::set(self : SortdistbucketNode, i : Int, v : Double) -> SortdistbucketNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_node_sum(s : SortdistbucketNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketNode::sum(self : SortdistbucketNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_node_mean(s : SortdistbucketNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketNode::mean(self : SortdistbucketNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_node_scale(s : SortdistbucketNode, f : Double) -> SortdistbucketNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketNode::scale(self : SortdistbucketNode, f : Double) -> SortdistbucketNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_node_add(a : SortdistbucketNode, b : SortdistbucketNode) -> SortdistbucketNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketNode::add(self : SortdistbucketNode, other : SortdistbucketNode) -> SortdistbucketNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_node_copy(s : SortdistbucketNode) -> SortdistbucketNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketNode::copy(self : SortdistbucketNode) -> SortdistbucketNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_node_fill(s : SortdistbucketNode, v : Double) -> SortdistbucketNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketNode::fill(self : SortdistbucketNode, v : Double) -> SortdistbucketNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_node_min(s : SortdistbucketNode) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketNode::min(self : SortdistbucketNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_node_max(s : SortdistbucketNode) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketNode::max(self : SortdistbucketNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_node_to_string(s : SortdistbucketNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketNode::to_string(self : SortdistbucketNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_bucket_edge_make(size : Int) -> SortdistbucketEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_edge_len(s : SortdistbucketEdge) -> Int { s.size }
+pub fn SortdistbucketEdge::len(self : SortdistbucketEdge) -> Int { self.size }
 
-pub fn sort_dist_bucket_edge_get(s : SortdistbucketEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketEdge::get(self : SortdistbucketEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_edge_set(s : SortdistbucketEdge, i : Int, v : Double) -> SortdistbucketEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketEdge::set(self : SortdistbucketEdge, i : Int, v : Double) -> SortdistbucketEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_edge_sum(s : SortdistbucketEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketEdge::sum(self : SortdistbucketEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_edge_mean(s : SortdistbucketEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketEdge::mean(self : SortdistbucketEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_edge_scale(s : SortdistbucketEdge, f : Double) -> SortdistbucketEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketEdge::scale(self : SortdistbucketEdge, f : Double) -> SortdistbucketEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_edge_add(a : SortdistbucketEdge, b : SortdistbucketEdge) -> SortdistbucketEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketEdge::add(self : SortdistbucketEdge, other : SortdistbucketEdge) -> SortdistbucketEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_edge_copy(s : SortdistbucketEdge) -> SortdistbucketEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketEdge::copy(self : SortdistbucketEdge) -> SortdistbucketEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_edge_fill(s : SortdistbucketEdge, v : Double) -> SortdistbucketEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketEdge::fill(self : SortdistbucketEdge, v : Double) -> SortdistbucketEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_edge_min(s : SortdistbucketEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketEdge::min(self : SortdistbucketEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_edge_max(s : SortdistbucketEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketEdge::max(self : SortdistbucketEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_edge_to_string(s : SortdistbucketEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketEdge::to_string(self : SortdistbucketEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketPath {
@@ -606,45 +606,45 @@ pub fn sort_dist_bucket_path_make(size : Int) -> SortdistbucketPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_path_len(s : SortdistbucketPath) -> Int { s.size }
+pub fn SortdistbucketPath::len(self : SortdistbucketPath) -> Int { self.size }
 
-pub fn sort_dist_bucket_path_get(s : SortdistbucketPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketPath::get(self : SortdistbucketPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_path_set(s : SortdistbucketPath, i : Int, v : Double) -> SortdistbucketPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketPath::set(self : SortdistbucketPath, i : Int, v : Double) -> SortdistbucketPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_path_sum(s : SortdistbucketPath) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketPath::sum(self : SortdistbucketPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_path_mean(s : SortdistbucketPath) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketPath::mean(self : SortdistbucketPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_path_scale(s : SortdistbucketPath, f : Double) -> SortdistbucketPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketPath::scale(self : SortdistbucketPath, f : Double) -> SortdistbucketPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_path_add(a : SortdistbucketPath, b : SortdistbucketPath) -> SortdistbucketPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketPath::add(self : SortdistbucketPath, other : SortdistbucketPath) -> SortdistbucketPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_path_copy(s : SortdistbucketPath) -> SortdistbucketPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketPath::copy(self : SortdistbucketPath) -> SortdistbucketPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_path_fill(s : SortdistbucketPath, v : Double) -> SortdistbucketPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketPath::fill(self : SortdistbucketPath, v : Double) -> SortdistbucketPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_path_min(s : SortdistbucketPath) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketPath::min(self : SortdistbucketPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_path_max(s : SortdistbucketPath) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketPath::max(self : SortdistbucketPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_path_to_string(s : SortdistbucketPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketPath::to_string(self : SortdistbucketPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_bucket_cluster_make(size : Int) -> SortdistbucketCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_cluster_len(s : SortdistbucketCluster) -> Int { s.size }
+pub fn SortdistbucketCluster::len(self : SortdistbucketCluster) -> Int { self.size }
 
-pub fn sort_dist_bucket_cluster_get(s : SortdistbucketCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketCluster::get(self : SortdistbucketCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_cluster_set(s : SortdistbucketCluster, i : Int, v : Double) -> SortdistbucketCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketCluster::set(self : SortdistbucketCluster, i : Int, v : Double) -> SortdistbucketCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cluster_sum(s : SortdistbucketCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketCluster::sum(self : SortdistbucketCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_cluster_mean(s : SortdistbucketCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketCluster::mean(self : SortdistbucketCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_cluster_scale(s : SortdistbucketCluster, f : Double) -> SortdistbucketCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketCluster::scale(self : SortdistbucketCluster, f : Double) -> SortdistbucketCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cluster_add(a : SortdistbucketCluster, b : SortdistbucketCluster) -> SortdistbucketCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketCluster::add(self : SortdistbucketCluster, other : SortdistbucketCluster) -> SortdistbucketCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cluster_copy(s : SortdistbucketCluster) -> SortdistbucketCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketCluster::copy(self : SortdistbucketCluster) -> SortdistbucketCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cluster_fill(s : SortdistbucketCluster, v : Double) -> SortdistbucketCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketCluster::fill(self : SortdistbucketCluster, v : Double) -> SortdistbucketCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cluster_min(s : SortdistbucketCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketCluster::min(self : SortdistbucketCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_cluster_max(s : SortdistbucketCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketCluster::max(self : SortdistbucketCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_cluster_to_string(s : SortdistbucketCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketCluster::to_string(self : SortdistbucketCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_bucket_model_make(size : Int) -> SortdistbucketModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_model_len(s : SortdistbucketModel) -> Int { s.size }
+pub fn SortdistbucketModel::len(self : SortdistbucketModel) -> Int { self.size }
 
-pub fn sort_dist_bucket_model_get(s : SortdistbucketModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketModel::get(self : SortdistbucketModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_model_set(s : SortdistbucketModel, i : Int, v : Double) -> SortdistbucketModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketModel::set(self : SortdistbucketModel, i : Int, v : Double) -> SortdistbucketModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_model_sum(s : SortdistbucketModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketModel::sum(self : SortdistbucketModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_model_mean(s : SortdistbucketModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketModel::mean(self : SortdistbucketModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_model_scale(s : SortdistbucketModel, f : Double) -> SortdistbucketModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketModel::scale(self : SortdistbucketModel, f : Double) -> SortdistbucketModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_model_add(a : SortdistbucketModel, b : SortdistbucketModel) -> SortdistbucketModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketModel::add(self : SortdistbucketModel, other : SortdistbucketModel) -> SortdistbucketModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_model_copy(s : SortdistbucketModel) -> SortdistbucketModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketModel::copy(self : SortdistbucketModel) -> SortdistbucketModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_model_fill(s : SortdistbucketModel, v : Double) -> SortdistbucketModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketModel::fill(self : SortdistbucketModel, v : Double) -> SortdistbucketModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_model_min(s : SortdistbucketModel) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketModel::min(self : SortdistbucketModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_model_max(s : SortdistbucketModel) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketModel::max(self : SortdistbucketModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_model_to_string(s : SortdistbucketModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketModel::to_string(self : SortdistbucketModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_bucket_layer_make(size : Int) -> SortdistbucketLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_layer_len(s : SortdistbucketLayer) -> Int { s.size }
+pub fn SortdistbucketLayer::len(self : SortdistbucketLayer) -> Int { self.size }
 
-pub fn sort_dist_bucket_layer_get(s : SortdistbucketLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketLayer::get(self : SortdistbucketLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_layer_set(s : SortdistbucketLayer, i : Int, v : Double) -> SortdistbucketLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketLayer::set(self : SortdistbucketLayer, i : Int, v : Double) -> SortdistbucketLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_layer_sum(s : SortdistbucketLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketLayer::sum(self : SortdistbucketLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_layer_mean(s : SortdistbucketLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketLayer::mean(self : SortdistbucketLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_layer_scale(s : SortdistbucketLayer, f : Double) -> SortdistbucketLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketLayer::scale(self : SortdistbucketLayer, f : Double) -> SortdistbucketLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_layer_add(a : SortdistbucketLayer, b : SortdistbucketLayer) -> SortdistbucketLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketLayer::add(self : SortdistbucketLayer, other : SortdistbucketLayer) -> SortdistbucketLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_layer_copy(s : SortdistbucketLayer) -> SortdistbucketLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketLayer::copy(self : SortdistbucketLayer) -> SortdistbucketLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_layer_fill(s : SortdistbucketLayer, v : Double) -> SortdistbucketLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketLayer::fill(self : SortdistbucketLayer, v : Double) -> SortdistbucketLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_layer_min(s : SortdistbucketLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketLayer::min(self : SortdistbucketLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_layer_max(s : SortdistbucketLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketLayer::max(self : SortdistbucketLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_layer_to_string(s : SortdistbucketLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketLayer::to_string(self : SortdistbucketLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_bucket_buffer_make(size : Int) -> SortdistbucketBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_buffer_len(s : SortdistbucketBuffer) -> Int { s.size }
+pub fn SortdistbucketBuffer::len(self : SortdistbucketBuffer) -> Int { self.size }
 
-pub fn sort_dist_bucket_buffer_get(s : SortdistbucketBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketBuffer::get(self : SortdistbucketBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_buffer_set(s : SortdistbucketBuffer, i : Int, v : Double) -> SortdistbucketBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketBuffer::set(self : SortdistbucketBuffer, i : Int, v : Double) -> SortdistbucketBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_buffer_sum(s : SortdistbucketBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketBuffer::sum(self : SortdistbucketBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_buffer_mean(s : SortdistbucketBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketBuffer::mean(self : SortdistbucketBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_buffer_scale(s : SortdistbucketBuffer, f : Double) -> SortdistbucketBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketBuffer::scale(self : SortdistbucketBuffer, f : Double) -> SortdistbucketBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_buffer_add(a : SortdistbucketBuffer, b : SortdistbucketBuffer) -> SortdistbucketBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketBuffer::add(self : SortdistbucketBuffer, other : SortdistbucketBuffer) -> SortdistbucketBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_buffer_copy(s : SortdistbucketBuffer) -> SortdistbucketBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketBuffer::copy(self : SortdistbucketBuffer) -> SortdistbucketBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_buffer_fill(s : SortdistbucketBuffer, v : Double) -> SortdistbucketBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketBuffer::fill(self : SortdistbucketBuffer, v : Double) -> SortdistbucketBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_buffer_min(s : SortdistbucketBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketBuffer::min(self : SortdistbucketBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_buffer_max(s : SortdistbucketBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketBuffer::max(self : SortdistbucketBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_buffer_to_string(s : SortdistbucketBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketBuffer::to_string(self : SortdistbucketBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_bucket_cursor_make(size : Int) -> SortdistbucketCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_cursor_len(s : SortdistbucketCursor) -> Int { s.size }
+pub fn SortdistbucketCursor::len(self : SortdistbucketCursor) -> Int { self.size }
 
-pub fn sort_dist_bucket_cursor_get(s : SortdistbucketCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketCursor::get(self : SortdistbucketCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_cursor_set(s : SortdistbucketCursor, i : Int, v : Double) -> SortdistbucketCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketCursor::set(self : SortdistbucketCursor, i : Int, v : Double) -> SortdistbucketCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cursor_sum(s : SortdistbucketCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketCursor::sum(self : SortdistbucketCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_cursor_mean(s : SortdistbucketCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketCursor::mean(self : SortdistbucketCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_cursor_scale(s : SortdistbucketCursor, f : Double) -> SortdistbucketCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketCursor::scale(self : SortdistbucketCursor, f : Double) -> SortdistbucketCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cursor_add(a : SortdistbucketCursor, b : SortdistbucketCursor) -> SortdistbucketCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketCursor::add(self : SortdistbucketCursor, other : SortdistbucketCursor) -> SortdistbucketCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cursor_copy(s : SortdistbucketCursor) -> SortdistbucketCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketCursor::copy(self : SortdistbucketCursor) -> SortdistbucketCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cursor_fill(s : SortdistbucketCursor, v : Double) -> SortdistbucketCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketCursor::fill(self : SortdistbucketCursor, v : Double) -> SortdistbucketCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_cursor_min(s : SortdistbucketCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketCursor::min(self : SortdistbucketCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_cursor_max(s : SortdistbucketCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketCursor::max(self : SortdistbucketCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_cursor_to_string(s : SortdistbucketCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketCursor::to_string(self : SortdistbucketCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketView {
@@ -912,45 +912,45 @@ pub fn sort_dist_bucket_view_make(size : Int) -> SortdistbucketView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_view_len(s : SortdistbucketView) -> Int { s.size }
+pub fn SortdistbucketView::len(self : SortdistbucketView) -> Int { self.size }
 
-pub fn sort_dist_bucket_view_get(s : SortdistbucketView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketView::get(self : SortdistbucketView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_view_set(s : SortdistbucketView, i : Int, v : Double) -> SortdistbucketView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketView::set(self : SortdistbucketView, i : Int, v : Double) -> SortdistbucketView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_view_sum(s : SortdistbucketView) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketView::sum(self : SortdistbucketView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_view_mean(s : SortdistbucketView) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketView::mean(self : SortdistbucketView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_view_scale(s : SortdistbucketView, f : Double) -> SortdistbucketView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketView::scale(self : SortdistbucketView, f : Double) -> SortdistbucketView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_view_add(a : SortdistbucketView, b : SortdistbucketView) -> SortdistbucketView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketView::add(self : SortdistbucketView, other : SortdistbucketView) -> SortdistbucketView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_view_copy(s : SortdistbucketView) -> SortdistbucketView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketView::copy(self : SortdistbucketView) -> SortdistbucketView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_view_fill(s : SortdistbucketView, v : Double) -> SortdistbucketView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketView::fill(self : SortdistbucketView, v : Double) -> SortdistbucketView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_view_min(s : SortdistbucketView) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketView::min(self : SortdistbucketView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_view_max(s : SortdistbucketView) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketView::max(self : SortdistbucketView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_view_to_string(s : SortdistbucketView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketView::to_string(self : SortdistbucketView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_bucket_range_make(size : Int) -> SortdistbucketRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_range_len(s : SortdistbucketRange) -> Int { s.size }
+pub fn SortdistbucketRange::len(self : SortdistbucketRange) -> Int { self.size }
 
-pub fn sort_dist_bucket_range_get(s : SortdistbucketRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketRange::get(self : SortdistbucketRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_range_set(s : SortdistbucketRange, i : Int, v : Double) -> SortdistbucketRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketRange::set(self : SortdistbucketRange, i : Int, v : Double) -> SortdistbucketRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_range_sum(s : SortdistbucketRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketRange::sum(self : SortdistbucketRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_range_mean(s : SortdistbucketRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketRange::mean(self : SortdistbucketRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_range_scale(s : SortdistbucketRange, f : Double) -> SortdistbucketRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketRange::scale(self : SortdistbucketRange, f : Double) -> SortdistbucketRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_range_add(a : SortdistbucketRange, b : SortdistbucketRange) -> SortdistbucketRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketRange::add(self : SortdistbucketRange, other : SortdistbucketRange) -> SortdistbucketRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_range_copy(s : SortdistbucketRange) -> SortdistbucketRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketRange::copy(self : SortdistbucketRange) -> SortdistbucketRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_range_fill(s : SortdistbucketRange, v : Double) -> SortdistbucketRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketRange::fill(self : SortdistbucketRange, v : Double) -> SortdistbucketRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_range_min(s : SortdistbucketRange) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketRange::min(self : SortdistbucketRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_range_max(s : SortdistbucketRange) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketRange::max(self : SortdistbucketRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_range_to_string(s : SortdistbucketRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketRange::to_string(self : SortdistbucketRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistbucketSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_bucket_slice_make(size : Int) -> SortdistbucketSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_bucket_slice_len(s : SortdistbucketSlice) -> Int { s.size }
+pub fn SortdistbucketSlice::len(self : SortdistbucketSlice) -> Int { self.size }
 
-pub fn sort_dist_bucket_slice_get(s : SortdistbucketSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistbucketSlice::get(self : SortdistbucketSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_bucket_slice_set(s : SortdistbucketSlice, i : Int, v : Double) -> SortdistbucketSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistbucketSlice::set(self : SortdistbucketSlice, i : Int, v : Double) -> SortdistbucketSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_slice_sum(s : SortdistbucketSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistbucketSlice::sum(self : SortdistbucketSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_bucket_slice_mean(s : SortdistbucketSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistbucketSlice::mean(self : SortdistbucketSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_bucket_slice_scale(s : SortdistbucketSlice, f : Double) -> SortdistbucketSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistbucketSlice::scale(self : SortdistbucketSlice, f : Double) -> SortdistbucketSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_slice_add(a : SortdistbucketSlice, b : SortdistbucketSlice) -> SortdistbucketSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistbucketSlice::add(self : SortdistbucketSlice, other : SortdistbucketSlice) -> SortdistbucketSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_slice_copy(s : SortdistbucketSlice) -> SortdistbucketSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistbucketSlice::copy(self : SortdistbucketSlice) -> SortdistbucketSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_slice_fill(s : SortdistbucketSlice, v : Double) -> SortdistbucketSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistbucketSlice::fill(self : SortdistbucketSlice, v : Double) -> SortdistbucketSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_bucket_slice_min(s : SortdistbucketSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistbucketSlice::min(self : SortdistbucketSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_bucket_slice_max(s : SortdistbucketSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistbucketSlice::max(self : SortdistbucketSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_bucket_slice_to_string(s : SortdistbucketSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistbucketSlice::to_string(self : SortdistbucketSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

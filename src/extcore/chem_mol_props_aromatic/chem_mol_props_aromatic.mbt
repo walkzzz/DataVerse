@@ -351,45 +351,45 @@ pub fn chem_mol_props_aromatic_frame_make(size : Int) -> ChemmolpropsaromaticFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_frame_len(s : ChemmolpropsaromaticFrame) -> Int { s.size }
+pub fn ChemmolpropsaromaticFrame::len(self : ChemmolpropsaromaticFrame) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_frame_get(s : ChemmolpropsaromaticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticFrame::get(self : ChemmolpropsaromaticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_frame_set(s : ChemmolpropsaromaticFrame, i : Int, v : Double) -> ChemmolpropsaromaticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticFrame::set(self : ChemmolpropsaromaticFrame, i : Int, v : Double) -> ChemmolpropsaromaticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_frame_sum(s : ChemmolpropsaromaticFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticFrame::sum(self : ChemmolpropsaromaticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_frame_mean(s : ChemmolpropsaromaticFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticFrame::mean(self : ChemmolpropsaromaticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_frame_scale(s : ChemmolpropsaromaticFrame, f : Double) -> ChemmolpropsaromaticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticFrame::scale(self : ChemmolpropsaromaticFrame, f : Double) -> ChemmolpropsaromaticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_frame_add(a : ChemmolpropsaromaticFrame, b : ChemmolpropsaromaticFrame) -> ChemmolpropsaromaticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticFrame::add(self : ChemmolpropsaromaticFrame, other : ChemmolpropsaromaticFrame) -> ChemmolpropsaromaticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_frame_copy(s : ChemmolpropsaromaticFrame) -> ChemmolpropsaromaticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticFrame::copy(self : ChemmolpropsaromaticFrame) -> ChemmolpropsaromaticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_frame_fill(s : ChemmolpropsaromaticFrame, v : Double) -> ChemmolpropsaromaticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticFrame::fill(self : ChemmolpropsaromaticFrame, v : Double) -> ChemmolpropsaromaticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_frame_min(s : ChemmolpropsaromaticFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticFrame::min(self : ChemmolpropsaromaticFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_frame_max(s : ChemmolpropsaromaticFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticFrame::max(self : ChemmolpropsaromaticFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_frame_to_string(s : ChemmolpropsaromaticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticFrame::to_string(self : ChemmolpropsaromaticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_props_aromatic_table_make(size : Int) -> ChemmolpropsaromaticTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_table_len(s : ChemmolpropsaromaticTable) -> Int { s.size }
+pub fn ChemmolpropsaromaticTable::len(self : ChemmolpropsaromaticTable) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_table_get(s : ChemmolpropsaromaticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticTable::get(self : ChemmolpropsaromaticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_table_set(s : ChemmolpropsaromaticTable, i : Int, v : Double) -> ChemmolpropsaromaticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticTable::set(self : ChemmolpropsaromaticTable, i : Int, v : Double) -> ChemmolpropsaromaticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_table_sum(s : ChemmolpropsaromaticTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticTable::sum(self : ChemmolpropsaromaticTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_table_mean(s : ChemmolpropsaromaticTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticTable::mean(self : ChemmolpropsaromaticTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_table_scale(s : ChemmolpropsaromaticTable, f : Double) -> ChemmolpropsaromaticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticTable::scale(self : ChemmolpropsaromaticTable, f : Double) -> ChemmolpropsaromaticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_table_add(a : ChemmolpropsaromaticTable, b : ChemmolpropsaromaticTable) -> ChemmolpropsaromaticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticTable::add(self : ChemmolpropsaromaticTable, other : ChemmolpropsaromaticTable) -> ChemmolpropsaromaticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_table_copy(s : ChemmolpropsaromaticTable) -> ChemmolpropsaromaticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticTable::copy(self : ChemmolpropsaromaticTable) -> ChemmolpropsaromaticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_table_fill(s : ChemmolpropsaromaticTable, v : Double) -> ChemmolpropsaromaticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticTable::fill(self : ChemmolpropsaromaticTable, v : Double) -> ChemmolpropsaromaticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_table_min(s : ChemmolpropsaromaticTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticTable::min(self : ChemmolpropsaromaticTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_table_max(s : ChemmolpropsaromaticTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticTable::max(self : ChemmolpropsaromaticTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_table_to_string(s : ChemmolpropsaromaticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticTable::to_string(self : ChemmolpropsaromaticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_props_aromatic_graphn_make(size : Int) -> ChemmolpropsaromaticGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_graphn_len(s : ChemmolpropsaromaticGraphN) -> Int { s.size }
+pub fn ChemmolpropsaromaticGraphN::len(self : ChemmolpropsaromaticGraphN) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_graphn_get(s : ChemmolpropsaromaticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticGraphN::get(self : ChemmolpropsaromaticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_graphn_set(s : ChemmolpropsaromaticGraphN, i : Int, v : Double) -> ChemmolpropsaromaticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticGraphN::set(self : ChemmolpropsaromaticGraphN, i : Int, v : Double) -> ChemmolpropsaromaticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_graphn_sum(s : ChemmolpropsaromaticGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticGraphN::sum(self : ChemmolpropsaromaticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_graphn_mean(s : ChemmolpropsaromaticGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticGraphN::mean(self : ChemmolpropsaromaticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_graphn_scale(s : ChemmolpropsaromaticGraphN, f : Double) -> ChemmolpropsaromaticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticGraphN::scale(self : ChemmolpropsaromaticGraphN, f : Double) -> ChemmolpropsaromaticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_graphn_add(a : ChemmolpropsaromaticGraphN, b : ChemmolpropsaromaticGraphN) -> ChemmolpropsaromaticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticGraphN::add(self : ChemmolpropsaromaticGraphN, other : ChemmolpropsaromaticGraphN) -> ChemmolpropsaromaticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_graphn_copy(s : ChemmolpropsaromaticGraphN) -> ChemmolpropsaromaticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticGraphN::copy(self : ChemmolpropsaromaticGraphN) -> ChemmolpropsaromaticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_graphn_fill(s : ChemmolpropsaromaticGraphN, v : Double) -> ChemmolpropsaromaticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticGraphN::fill(self : ChemmolpropsaromaticGraphN, v : Double) -> ChemmolpropsaromaticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_graphn_min(s : ChemmolpropsaromaticGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticGraphN::min(self : ChemmolpropsaromaticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_graphn_max(s : ChemmolpropsaromaticGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticGraphN::max(self : ChemmolpropsaromaticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_graphn_to_string(s : ChemmolpropsaromaticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticGraphN::to_string(self : ChemmolpropsaromaticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_props_aromatic_node_make(size : Int) -> ChemmolpropsaromaticNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_node_len(s : ChemmolpropsaromaticNode) -> Int { s.size }
+pub fn ChemmolpropsaromaticNode::len(self : ChemmolpropsaromaticNode) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_node_get(s : ChemmolpropsaromaticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticNode::get(self : ChemmolpropsaromaticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_node_set(s : ChemmolpropsaromaticNode, i : Int, v : Double) -> ChemmolpropsaromaticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticNode::set(self : ChemmolpropsaromaticNode, i : Int, v : Double) -> ChemmolpropsaromaticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_node_sum(s : ChemmolpropsaromaticNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticNode::sum(self : ChemmolpropsaromaticNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_node_mean(s : ChemmolpropsaromaticNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticNode::mean(self : ChemmolpropsaromaticNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_node_scale(s : ChemmolpropsaromaticNode, f : Double) -> ChemmolpropsaromaticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticNode::scale(self : ChemmolpropsaromaticNode, f : Double) -> ChemmolpropsaromaticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_node_add(a : ChemmolpropsaromaticNode, b : ChemmolpropsaromaticNode) -> ChemmolpropsaromaticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticNode::add(self : ChemmolpropsaromaticNode, other : ChemmolpropsaromaticNode) -> ChemmolpropsaromaticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_node_copy(s : ChemmolpropsaromaticNode) -> ChemmolpropsaromaticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticNode::copy(self : ChemmolpropsaromaticNode) -> ChemmolpropsaromaticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_node_fill(s : ChemmolpropsaromaticNode, v : Double) -> ChemmolpropsaromaticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticNode::fill(self : ChemmolpropsaromaticNode, v : Double) -> ChemmolpropsaromaticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_node_min(s : ChemmolpropsaromaticNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticNode::min(self : ChemmolpropsaromaticNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_node_max(s : ChemmolpropsaromaticNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticNode::max(self : ChemmolpropsaromaticNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_node_to_string(s : ChemmolpropsaromaticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticNode::to_string(self : ChemmolpropsaromaticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_props_aromatic_edge_make(size : Int) -> ChemmolpropsaromaticEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_edge_len(s : ChemmolpropsaromaticEdge) -> Int { s.size }
+pub fn ChemmolpropsaromaticEdge::len(self : ChemmolpropsaromaticEdge) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_edge_get(s : ChemmolpropsaromaticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticEdge::get(self : ChemmolpropsaromaticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_edge_set(s : ChemmolpropsaromaticEdge, i : Int, v : Double) -> ChemmolpropsaromaticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticEdge::set(self : ChemmolpropsaromaticEdge, i : Int, v : Double) -> ChemmolpropsaromaticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_edge_sum(s : ChemmolpropsaromaticEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticEdge::sum(self : ChemmolpropsaromaticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_edge_mean(s : ChemmolpropsaromaticEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticEdge::mean(self : ChemmolpropsaromaticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_edge_scale(s : ChemmolpropsaromaticEdge, f : Double) -> ChemmolpropsaromaticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticEdge::scale(self : ChemmolpropsaromaticEdge, f : Double) -> ChemmolpropsaromaticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_edge_add(a : ChemmolpropsaromaticEdge, b : ChemmolpropsaromaticEdge) -> ChemmolpropsaromaticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticEdge::add(self : ChemmolpropsaromaticEdge, other : ChemmolpropsaromaticEdge) -> ChemmolpropsaromaticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_edge_copy(s : ChemmolpropsaromaticEdge) -> ChemmolpropsaromaticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticEdge::copy(self : ChemmolpropsaromaticEdge) -> ChemmolpropsaromaticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_edge_fill(s : ChemmolpropsaromaticEdge, v : Double) -> ChemmolpropsaromaticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticEdge::fill(self : ChemmolpropsaromaticEdge, v : Double) -> ChemmolpropsaromaticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_edge_min(s : ChemmolpropsaromaticEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticEdge::min(self : ChemmolpropsaromaticEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_edge_max(s : ChemmolpropsaromaticEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticEdge::max(self : ChemmolpropsaromaticEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_edge_to_string(s : ChemmolpropsaromaticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticEdge::to_string(self : ChemmolpropsaromaticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_props_aromatic_path_make(size : Int) -> ChemmolpropsaromaticPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_path_len(s : ChemmolpropsaromaticPath) -> Int { s.size }
+pub fn ChemmolpropsaromaticPath::len(self : ChemmolpropsaromaticPath) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_path_get(s : ChemmolpropsaromaticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticPath::get(self : ChemmolpropsaromaticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_path_set(s : ChemmolpropsaromaticPath, i : Int, v : Double) -> ChemmolpropsaromaticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticPath::set(self : ChemmolpropsaromaticPath, i : Int, v : Double) -> ChemmolpropsaromaticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_path_sum(s : ChemmolpropsaromaticPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticPath::sum(self : ChemmolpropsaromaticPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_path_mean(s : ChemmolpropsaromaticPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticPath::mean(self : ChemmolpropsaromaticPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_path_scale(s : ChemmolpropsaromaticPath, f : Double) -> ChemmolpropsaromaticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticPath::scale(self : ChemmolpropsaromaticPath, f : Double) -> ChemmolpropsaromaticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_path_add(a : ChemmolpropsaromaticPath, b : ChemmolpropsaromaticPath) -> ChemmolpropsaromaticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticPath::add(self : ChemmolpropsaromaticPath, other : ChemmolpropsaromaticPath) -> ChemmolpropsaromaticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_path_copy(s : ChemmolpropsaromaticPath) -> ChemmolpropsaromaticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticPath::copy(self : ChemmolpropsaromaticPath) -> ChemmolpropsaromaticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_path_fill(s : ChemmolpropsaromaticPath, v : Double) -> ChemmolpropsaromaticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticPath::fill(self : ChemmolpropsaromaticPath, v : Double) -> ChemmolpropsaromaticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_path_min(s : ChemmolpropsaromaticPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticPath::min(self : ChemmolpropsaromaticPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_path_max(s : ChemmolpropsaromaticPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticPath::max(self : ChemmolpropsaromaticPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_path_to_string(s : ChemmolpropsaromaticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticPath::to_string(self : ChemmolpropsaromaticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_props_aromatic_cluster_make(size : Int) -> ChemmolpropsaromaticC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_cluster_len(s : ChemmolpropsaromaticCluster) -> Int { s.size }
+pub fn ChemmolpropsaromaticCluster::len(self : ChemmolpropsaromaticCluster) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_cluster_get(s : ChemmolpropsaromaticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticCluster::get(self : ChemmolpropsaromaticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_cluster_set(s : ChemmolpropsaromaticCluster, i : Int, v : Double) -> ChemmolpropsaromaticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCluster::set(self : ChemmolpropsaromaticCluster, i : Int, v : Double) -> ChemmolpropsaromaticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cluster_sum(s : ChemmolpropsaromaticCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticCluster::sum(self : ChemmolpropsaromaticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_cluster_mean(s : ChemmolpropsaromaticCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticCluster::mean(self : ChemmolpropsaromaticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_cluster_scale(s : ChemmolpropsaromaticCluster, f : Double) -> ChemmolpropsaromaticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCluster::scale(self : ChemmolpropsaromaticCluster, f : Double) -> ChemmolpropsaromaticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cluster_add(a : ChemmolpropsaromaticCluster, b : ChemmolpropsaromaticCluster) -> ChemmolpropsaromaticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticCluster::add(self : ChemmolpropsaromaticCluster, other : ChemmolpropsaromaticCluster) -> ChemmolpropsaromaticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cluster_copy(s : ChemmolpropsaromaticCluster) -> ChemmolpropsaromaticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCluster::copy(self : ChemmolpropsaromaticCluster) -> ChemmolpropsaromaticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cluster_fill(s : ChemmolpropsaromaticCluster, v : Double) -> ChemmolpropsaromaticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCluster::fill(self : ChemmolpropsaromaticCluster, v : Double) -> ChemmolpropsaromaticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cluster_min(s : ChemmolpropsaromaticCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticCluster::min(self : ChemmolpropsaromaticCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_cluster_max(s : ChemmolpropsaromaticCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticCluster::max(self : ChemmolpropsaromaticCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_cluster_to_string(s : ChemmolpropsaromaticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticCluster::to_string(self : ChemmolpropsaromaticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_props_aromatic_model_make(size : Int) -> ChemmolpropsaromaticMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_model_len(s : ChemmolpropsaromaticModel) -> Int { s.size }
+pub fn ChemmolpropsaromaticModel::len(self : ChemmolpropsaromaticModel) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_model_get(s : ChemmolpropsaromaticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticModel::get(self : ChemmolpropsaromaticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_model_set(s : ChemmolpropsaromaticModel, i : Int, v : Double) -> ChemmolpropsaromaticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticModel::set(self : ChemmolpropsaromaticModel, i : Int, v : Double) -> ChemmolpropsaromaticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_model_sum(s : ChemmolpropsaromaticModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticModel::sum(self : ChemmolpropsaromaticModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_model_mean(s : ChemmolpropsaromaticModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticModel::mean(self : ChemmolpropsaromaticModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_model_scale(s : ChemmolpropsaromaticModel, f : Double) -> ChemmolpropsaromaticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticModel::scale(self : ChemmolpropsaromaticModel, f : Double) -> ChemmolpropsaromaticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_model_add(a : ChemmolpropsaromaticModel, b : ChemmolpropsaromaticModel) -> ChemmolpropsaromaticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticModel::add(self : ChemmolpropsaromaticModel, other : ChemmolpropsaromaticModel) -> ChemmolpropsaromaticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_model_copy(s : ChemmolpropsaromaticModel) -> ChemmolpropsaromaticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticModel::copy(self : ChemmolpropsaromaticModel) -> ChemmolpropsaromaticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_model_fill(s : ChemmolpropsaromaticModel, v : Double) -> ChemmolpropsaromaticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticModel::fill(self : ChemmolpropsaromaticModel, v : Double) -> ChemmolpropsaromaticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_model_min(s : ChemmolpropsaromaticModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticModel::min(self : ChemmolpropsaromaticModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_model_max(s : ChemmolpropsaromaticModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticModel::max(self : ChemmolpropsaromaticModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_model_to_string(s : ChemmolpropsaromaticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticModel::to_string(self : ChemmolpropsaromaticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_props_aromatic_layer_make(size : Int) -> ChemmolpropsaromaticLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_layer_len(s : ChemmolpropsaromaticLayer) -> Int { s.size }
+pub fn ChemmolpropsaromaticLayer::len(self : ChemmolpropsaromaticLayer) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_layer_get(s : ChemmolpropsaromaticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticLayer::get(self : ChemmolpropsaromaticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_layer_set(s : ChemmolpropsaromaticLayer, i : Int, v : Double) -> ChemmolpropsaromaticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticLayer::set(self : ChemmolpropsaromaticLayer, i : Int, v : Double) -> ChemmolpropsaromaticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_layer_sum(s : ChemmolpropsaromaticLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticLayer::sum(self : ChemmolpropsaromaticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_layer_mean(s : ChemmolpropsaromaticLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticLayer::mean(self : ChemmolpropsaromaticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_layer_scale(s : ChemmolpropsaromaticLayer, f : Double) -> ChemmolpropsaromaticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticLayer::scale(self : ChemmolpropsaromaticLayer, f : Double) -> ChemmolpropsaromaticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_layer_add(a : ChemmolpropsaromaticLayer, b : ChemmolpropsaromaticLayer) -> ChemmolpropsaromaticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticLayer::add(self : ChemmolpropsaromaticLayer, other : ChemmolpropsaromaticLayer) -> ChemmolpropsaromaticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_layer_copy(s : ChemmolpropsaromaticLayer) -> ChemmolpropsaromaticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticLayer::copy(self : ChemmolpropsaromaticLayer) -> ChemmolpropsaromaticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_layer_fill(s : ChemmolpropsaromaticLayer, v : Double) -> ChemmolpropsaromaticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticLayer::fill(self : ChemmolpropsaromaticLayer, v : Double) -> ChemmolpropsaromaticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_layer_min(s : ChemmolpropsaromaticLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticLayer::min(self : ChemmolpropsaromaticLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_layer_max(s : ChemmolpropsaromaticLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticLayer::max(self : ChemmolpropsaromaticLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_layer_to_string(s : ChemmolpropsaromaticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticLayer::to_string(self : ChemmolpropsaromaticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_props_aromatic_buffer_make(size : Int) -> ChemmolpropsaromaticBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_buffer_len(s : ChemmolpropsaromaticBuffer) -> Int { s.size }
+pub fn ChemmolpropsaromaticBuffer::len(self : ChemmolpropsaromaticBuffer) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_buffer_get(s : ChemmolpropsaromaticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticBuffer::get(self : ChemmolpropsaromaticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_buffer_set(s : ChemmolpropsaromaticBuffer, i : Int, v : Double) -> ChemmolpropsaromaticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticBuffer::set(self : ChemmolpropsaromaticBuffer, i : Int, v : Double) -> ChemmolpropsaromaticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_buffer_sum(s : ChemmolpropsaromaticBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticBuffer::sum(self : ChemmolpropsaromaticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_buffer_mean(s : ChemmolpropsaromaticBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticBuffer::mean(self : ChemmolpropsaromaticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_buffer_scale(s : ChemmolpropsaromaticBuffer, f : Double) -> ChemmolpropsaromaticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticBuffer::scale(self : ChemmolpropsaromaticBuffer, f : Double) -> ChemmolpropsaromaticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_buffer_add(a : ChemmolpropsaromaticBuffer, b : ChemmolpropsaromaticBuffer) -> ChemmolpropsaromaticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticBuffer::add(self : ChemmolpropsaromaticBuffer, other : ChemmolpropsaromaticBuffer) -> ChemmolpropsaromaticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_buffer_copy(s : ChemmolpropsaromaticBuffer) -> ChemmolpropsaromaticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticBuffer::copy(self : ChemmolpropsaromaticBuffer) -> ChemmolpropsaromaticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_buffer_fill(s : ChemmolpropsaromaticBuffer, v : Double) -> ChemmolpropsaromaticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticBuffer::fill(self : ChemmolpropsaromaticBuffer, v : Double) -> ChemmolpropsaromaticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_buffer_min(s : ChemmolpropsaromaticBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticBuffer::min(self : ChemmolpropsaromaticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_buffer_max(s : ChemmolpropsaromaticBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticBuffer::max(self : ChemmolpropsaromaticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_buffer_to_string(s : ChemmolpropsaromaticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticBuffer::to_string(self : ChemmolpropsaromaticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_props_aromatic_cursor_make(size : Int) -> ChemmolpropsaromaticCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_cursor_len(s : ChemmolpropsaromaticCursor) -> Int { s.size }
+pub fn ChemmolpropsaromaticCursor::len(self : ChemmolpropsaromaticCursor) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_cursor_get(s : ChemmolpropsaromaticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticCursor::get(self : ChemmolpropsaromaticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_cursor_set(s : ChemmolpropsaromaticCursor, i : Int, v : Double) -> ChemmolpropsaromaticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCursor::set(self : ChemmolpropsaromaticCursor, i : Int, v : Double) -> ChemmolpropsaromaticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cursor_sum(s : ChemmolpropsaromaticCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticCursor::sum(self : ChemmolpropsaromaticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_cursor_mean(s : ChemmolpropsaromaticCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticCursor::mean(self : ChemmolpropsaromaticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_cursor_scale(s : ChemmolpropsaromaticCursor, f : Double) -> ChemmolpropsaromaticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCursor::scale(self : ChemmolpropsaromaticCursor, f : Double) -> ChemmolpropsaromaticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cursor_add(a : ChemmolpropsaromaticCursor, b : ChemmolpropsaromaticCursor) -> ChemmolpropsaromaticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticCursor::add(self : ChemmolpropsaromaticCursor, other : ChemmolpropsaromaticCursor) -> ChemmolpropsaromaticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cursor_copy(s : ChemmolpropsaromaticCursor) -> ChemmolpropsaromaticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCursor::copy(self : ChemmolpropsaromaticCursor) -> ChemmolpropsaromaticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cursor_fill(s : ChemmolpropsaromaticCursor, v : Double) -> ChemmolpropsaromaticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticCursor::fill(self : ChemmolpropsaromaticCursor, v : Double) -> ChemmolpropsaromaticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_cursor_min(s : ChemmolpropsaromaticCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticCursor::min(self : ChemmolpropsaromaticCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_cursor_max(s : ChemmolpropsaromaticCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticCursor::max(self : ChemmolpropsaromaticCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_cursor_to_string(s : ChemmolpropsaromaticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticCursor::to_string(self : ChemmolpropsaromaticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticView {
@@ -912,45 +912,45 @@ pub fn chem_mol_props_aromatic_view_make(size : Int) -> ChemmolpropsaromaticView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_view_len(s : ChemmolpropsaromaticView) -> Int { s.size }
+pub fn ChemmolpropsaromaticView::len(self : ChemmolpropsaromaticView) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_view_get(s : ChemmolpropsaromaticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticView::get(self : ChemmolpropsaromaticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_view_set(s : ChemmolpropsaromaticView, i : Int, v : Double) -> ChemmolpropsaromaticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticView::set(self : ChemmolpropsaromaticView, i : Int, v : Double) -> ChemmolpropsaromaticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_view_sum(s : ChemmolpropsaromaticView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticView::sum(self : ChemmolpropsaromaticView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_view_mean(s : ChemmolpropsaromaticView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticView::mean(self : ChemmolpropsaromaticView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_view_scale(s : ChemmolpropsaromaticView, f : Double) -> ChemmolpropsaromaticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticView::scale(self : ChemmolpropsaromaticView, f : Double) -> ChemmolpropsaromaticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_view_add(a : ChemmolpropsaromaticView, b : ChemmolpropsaromaticView) -> ChemmolpropsaromaticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticView::add(self : ChemmolpropsaromaticView, other : ChemmolpropsaromaticView) -> ChemmolpropsaromaticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_view_copy(s : ChemmolpropsaromaticView) -> ChemmolpropsaromaticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticView::copy(self : ChemmolpropsaromaticView) -> ChemmolpropsaromaticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_view_fill(s : ChemmolpropsaromaticView, v : Double) -> ChemmolpropsaromaticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticView::fill(self : ChemmolpropsaromaticView, v : Double) -> ChemmolpropsaromaticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_view_min(s : ChemmolpropsaromaticView) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticView::min(self : ChemmolpropsaromaticView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_view_max(s : ChemmolpropsaromaticView) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticView::max(self : ChemmolpropsaromaticView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_view_to_string(s : ChemmolpropsaromaticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticView::to_string(self : ChemmolpropsaromaticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_props_aromatic_range_make(size : Int) -> ChemmolpropsaromaticRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_range_len(s : ChemmolpropsaromaticRange) -> Int { s.size }
+pub fn ChemmolpropsaromaticRange::len(self : ChemmolpropsaromaticRange) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_range_get(s : ChemmolpropsaromaticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticRange::get(self : ChemmolpropsaromaticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_range_set(s : ChemmolpropsaromaticRange, i : Int, v : Double) -> ChemmolpropsaromaticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticRange::set(self : ChemmolpropsaromaticRange, i : Int, v : Double) -> ChemmolpropsaromaticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_range_sum(s : ChemmolpropsaromaticRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticRange::sum(self : ChemmolpropsaromaticRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_range_mean(s : ChemmolpropsaromaticRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticRange::mean(self : ChemmolpropsaromaticRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_range_scale(s : ChemmolpropsaromaticRange, f : Double) -> ChemmolpropsaromaticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticRange::scale(self : ChemmolpropsaromaticRange, f : Double) -> ChemmolpropsaromaticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_range_add(a : ChemmolpropsaromaticRange, b : ChemmolpropsaromaticRange) -> ChemmolpropsaromaticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticRange::add(self : ChemmolpropsaromaticRange, other : ChemmolpropsaromaticRange) -> ChemmolpropsaromaticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_range_copy(s : ChemmolpropsaromaticRange) -> ChemmolpropsaromaticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticRange::copy(self : ChemmolpropsaromaticRange) -> ChemmolpropsaromaticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_range_fill(s : ChemmolpropsaromaticRange, v : Double) -> ChemmolpropsaromaticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticRange::fill(self : ChemmolpropsaromaticRange, v : Double) -> ChemmolpropsaromaticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_range_min(s : ChemmolpropsaromaticRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticRange::min(self : ChemmolpropsaromaticRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_range_max(s : ChemmolpropsaromaticRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticRange::max(self : ChemmolpropsaromaticRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_range_to_string(s : ChemmolpropsaromaticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticRange::to_string(self : ChemmolpropsaromaticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsaromaticSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_props_aromatic_slice_make(size : Int) -> ChemmolpropsaromaticSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_aromatic_slice_len(s : ChemmolpropsaromaticSlice) -> Int { s.size }
+pub fn ChemmolpropsaromaticSlice::len(self : ChemmolpropsaromaticSlice) -> Int { self.size }
 
-pub fn chem_mol_props_aromatic_slice_get(s : ChemmolpropsaromaticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsaromaticSlice::get(self : ChemmolpropsaromaticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_aromatic_slice_set(s : ChemmolpropsaromaticSlice, i : Int, v : Double) -> ChemmolpropsaromaticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticSlice::set(self : ChemmolpropsaromaticSlice, i : Int, v : Double) -> ChemmolpropsaromaticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_slice_sum(s : ChemmolpropsaromaticSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsaromaticSlice::sum(self : ChemmolpropsaromaticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_aromatic_slice_mean(s : ChemmolpropsaromaticSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsaromaticSlice::mean(self : ChemmolpropsaromaticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_aromatic_slice_scale(s : ChemmolpropsaromaticSlice, f : Double) -> ChemmolpropsaromaticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticSlice::scale(self : ChemmolpropsaromaticSlice, f : Double) -> ChemmolpropsaromaticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_slice_add(a : ChemmolpropsaromaticSlice, b : ChemmolpropsaromaticSlice) -> ChemmolpropsaromaticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsaromaticSlice::add(self : ChemmolpropsaromaticSlice, other : ChemmolpropsaromaticSlice) -> ChemmolpropsaromaticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_slice_copy(s : ChemmolpropsaromaticSlice) -> ChemmolpropsaromaticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticSlice::copy(self : ChemmolpropsaromaticSlice) -> ChemmolpropsaromaticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_slice_fill(s : ChemmolpropsaromaticSlice, v : Double) -> ChemmolpropsaromaticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsaromaticSlice::fill(self : ChemmolpropsaromaticSlice, v : Double) -> ChemmolpropsaromaticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_aromatic_slice_min(s : ChemmolpropsaromaticSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsaromaticSlice::min(self : ChemmolpropsaromaticSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_aromatic_slice_max(s : ChemmolpropsaromaticSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsaromaticSlice::max(self : ChemmolpropsaromaticSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_aromatic_slice_to_string(s : ChemmolpropsaromaticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsaromaticSlice::to_string(self : ChemmolpropsaromaticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

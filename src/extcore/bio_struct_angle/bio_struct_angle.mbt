@@ -351,45 +351,45 @@ pub fn bio_struct_angle_frame_make(size : Int) -> BiostructangleFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_frame_len(s : BiostructangleFrame) -> Int { s.size }
+pub fn BiostructangleFrame::len(self : BiostructangleFrame) -> Int { self.size }
 
-pub fn bio_struct_angle_frame_get(s : BiostructangleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleFrame::get(self : BiostructangleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_frame_set(s : BiostructangleFrame, i : Int, v : Double) -> BiostructangleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleFrame::set(self : BiostructangleFrame, i : Int, v : Double) -> BiostructangleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_frame_sum(s : BiostructangleFrame) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleFrame::sum(self : BiostructangleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_frame_mean(s : BiostructangleFrame) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleFrame::mean(self : BiostructangleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_frame_scale(s : BiostructangleFrame, f : Double) -> BiostructangleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleFrame::scale(self : BiostructangleFrame, f : Double) -> BiostructangleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_frame_add(a : BiostructangleFrame, b : BiostructangleFrame) -> BiostructangleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleFrame::add(self : BiostructangleFrame, other : BiostructangleFrame) -> BiostructangleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_frame_copy(s : BiostructangleFrame) -> BiostructangleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleFrame::copy(self : BiostructangleFrame) -> BiostructangleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_frame_fill(s : BiostructangleFrame, v : Double) -> BiostructangleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleFrame::fill(self : BiostructangleFrame, v : Double) -> BiostructangleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_frame_min(s : BiostructangleFrame) -> Double { @_common.min(s.data) }
+pub fn BiostructangleFrame::min(self : BiostructangleFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_frame_max(s : BiostructangleFrame) -> Double { @_common.max(s.data) }
+pub fn BiostructangleFrame::max(self : BiostructangleFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_frame_to_string(s : BiostructangleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleFrame::to_string(self : BiostructangleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleTable {
@@ -402,45 +402,45 @@ pub fn bio_struct_angle_table_make(size : Int) -> BiostructangleTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_table_len(s : BiostructangleTable) -> Int { s.size }
+pub fn BiostructangleTable::len(self : BiostructangleTable) -> Int { self.size }
 
-pub fn bio_struct_angle_table_get(s : BiostructangleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleTable::get(self : BiostructangleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_table_set(s : BiostructangleTable, i : Int, v : Double) -> BiostructangleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleTable::set(self : BiostructangleTable, i : Int, v : Double) -> BiostructangleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_table_sum(s : BiostructangleTable) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleTable::sum(self : BiostructangleTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_table_mean(s : BiostructangleTable) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleTable::mean(self : BiostructangleTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_table_scale(s : BiostructangleTable, f : Double) -> BiostructangleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleTable::scale(self : BiostructangleTable, f : Double) -> BiostructangleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_table_add(a : BiostructangleTable, b : BiostructangleTable) -> BiostructangleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleTable::add(self : BiostructangleTable, other : BiostructangleTable) -> BiostructangleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_table_copy(s : BiostructangleTable) -> BiostructangleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleTable::copy(self : BiostructangleTable) -> BiostructangleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_table_fill(s : BiostructangleTable, v : Double) -> BiostructangleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleTable::fill(self : BiostructangleTable, v : Double) -> BiostructangleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_table_min(s : BiostructangleTable) -> Double { @_common.min(s.data) }
+pub fn BiostructangleTable::min(self : BiostructangleTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_table_max(s : BiostructangleTable) -> Double { @_common.max(s.data) }
+pub fn BiostructangleTable::max(self : BiostructangleTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_table_to_string(s : BiostructangleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleTable::to_string(self : BiostructangleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleGraphN {
@@ -453,45 +453,45 @@ pub fn bio_struct_angle_graphn_make(size : Int) -> BiostructangleGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_graphn_len(s : BiostructangleGraphN) -> Int { s.size }
+pub fn BiostructangleGraphN::len(self : BiostructangleGraphN) -> Int { self.size }
 
-pub fn bio_struct_angle_graphn_get(s : BiostructangleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleGraphN::get(self : BiostructangleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_graphn_set(s : BiostructangleGraphN, i : Int, v : Double) -> BiostructangleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleGraphN::set(self : BiostructangleGraphN, i : Int, v : Double) -> BiostructangleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_graphn_sum(s : BiostructangleGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleGraphN::sum(self : BiostructangleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_graphn_mean(s : BiostructangleGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleGraphN::mean(self : BiostructangleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_graphn_scale(s : BiostructangleGraphN, f : Double) -> BiostructangleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleGraphN::scale(self : BiostructangleGraphN, f : Double) -> BiostructangleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_graphn_add(a : BiostructangleGraphN, b : BiostructangleGraphN) -> BiostructangleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleGraphN::add(self : BiostructangleGraphN, other : BiostructangleGraphN) -> BiostructangleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_graphn_copy(s : BiostructangleGraphN) -> BiostructangleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleGraphN::copy(self : BiostructangleGraphN) -> BiostructangleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_graphn_fill(s : BiostructangleGraphN, v : Double) -> BiostructangleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleGraphN::fill(self : BiostructangleGraphN, v : Double) -> BiostructangleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_graphn_min(s : BiostructangleGraphN) -> Double { @_common.min(s.data) }
+pub fn BiostructangleGraphN::min(self : BiostructangleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_graphn_max(s : BiostructangleGraphN) -> Double { @_common.max(s.data) }
+pub fn BiostructangleGraphN::max(self : BiostructangleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_graphn_to_string(s : BiostructangleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleGraphN::to_string(self : BiostructangleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleNode {
@@ -504,45 +504,45 @@ pub fn bio_struct_angle_node_make(size : Int) -> BiostructangleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_node_len(s : BiostructangleNode) -> Int { s.size }
+pub fn BiostructangleNode::len(self : BiostructangleNode) -> Int { self.size }
 
-pub fn bio_struct_angle_node_get(s : BiostructangleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleNode::get(self : BiostructangleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_node_set(s : BiostructangleNode, i : Int, v : Double) -> BiostructangleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleNode::set(self : BiostructangleNode, i : Int, v : Double) -> BiostructangleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_node_sum(s : BiostructangleNode) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleNode::sum(self : BiostructangleNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_node_mean(s : BiostructangleNode) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleNode::mean(self : BiostructangleNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_node_scale(s : BiostructangleNode, f : Double) -> BiostructangleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleNode::scale(self : BiostructangleNode, f : Double) -> BiostructangleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_node_add(a : BiostructangleNode, b : BiostructangleNode) -> BiostructangleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleNode::add(self : BiostructangleNode, other : BiostructangleNode) -> BiostructangleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_node_copy(s : BiostructangleNode) -> BiostructangleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleNode::copy(self : BiostructangleNode) -> BiostructangleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_node_fill(s : BiostructangleNode, v : Double) -> BiostructangleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleNode::fill(self : BiostructangleNode, v : Double) -> BiostructangleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_node_min(s : BiostructangleNode) -> Double { @_common.min(s.data) }
+pub fn BiostructangleNode::min(self : BiostructangleNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_node_max(s : BiostructangleNode) -> Double { @_common.max(s.data) }
+pub fn BiostructangleNode::max(self : BiostructangleNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_node_to_string(s : BiostructangleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleNode::to_string(self : BiostructangleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleEdge {
@@ -555,45 +555,45 @@ pub fn bio_struct_angle_edge_make(size : Int) -> BiostructangleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_edge_len(s : BiostructangleEdge) -> Int { s.size }
+pub fn BiostructangleEdge::len(self : BiostructangleEdge) -> Int { self.size }
 
-pub fn bio_struct_angle_edge_get(s : BiostructangleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleEdge::get(self : BiostructangleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_edge_set(s : BiostructangleEdge, i : Int, v : Double) -> BiostructangleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleEdge::set(self : BiostructangleEdge, i : Int, v : Double) -> BiostructangleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_edge_sum(s : BiostructangleEdge) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleEdge::sum(self : BiostructangleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_edge_mean(s : BiostructangleEdge) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleEdge::mean(self : BiostructangleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_edge_scale(s : BiostructangleEdge, f : Double) -> BiostructangleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleEdge::scale(self : BiostructangleEdge, f : Double) -> BiostructangleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_edge_add(a : BiostructangleEdge, b : BiostructangleEdge) -> BiostructangleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleEdge::add(self : BiostructangleEdge, other : BiostructangleEdge) -> BiostructangleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_edge_copy(s : BiostructangleEdge) -> BiostructangleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleEdge::copy(self : BiostructangleEdge) -> BiostructangleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_edge_fill(s : BiostructangleEdge, v : Double) -> BiostructangleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleEdge::fill(self : BiostructangleEdge, v : Double) -> BiostructangleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_edge_min(s : BiostructangleEdge) -> Double { @_common.min(s.data) }
+pub fn BiostructangleEdge::min(self : BiostructangleEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_edge_max(s : BiostructangleEdge) -> Double { @_common.max(s.data) }
+pub fn BiostructangleEdge::max(self : BiostructangleEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_edge_to_string(s : BiostructangleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleEdge::to_string(self : BiostructangleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructanglePath {
@@ -606,45 +606,45 @@ pub fn bio_struct_angle_path_make(size : Int) -> BiostructanglePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_path_len(s : BiostructanglePath) -> Int { s.size }
+pub fn BiostructanglePath::len(self : BiostructanglePath) -> Int { self.size }
 
-pub fn bio_struct_angle_path_get(s : BiostructanglePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructanglePath::get(self : BiostructanglePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_path_set(s : BiostructanglePath, i : Int, v : Double) -> BiostructanglePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructanglePath::set(self : BiostructanglePath, i : Int, v : Double) -> BiostructanglePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_path_sum(s : BiostructanglePath) -> Double { @_common.sum(s.data) }
+pub fn BiostructanglePath::sum(self : BiostructanglePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_path_mean(s : BiostructanglePath) -> Double { @_common.mean(s.data) }
+pub fn BiostructanglePath::mean(self : BiostructanglePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_path_scale(s : BiostructanglePath, f : Double) -> BiostructanglePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructanglePath::scale(self : BiostructanglePath, f : Double) -> BiostructanglePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_path_add(a : BiostructanglePath, b : BiostructanglePath) -> BiostructanglePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructanglePath::add(self : BiostructanglePath, other : BiostructanglePath) -> BiostructanglePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_path_copy(s : BiostructanglePath) -> BiostructanglePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructanglePath::copy(self : BiostructanglePath) -> BiostructanglePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_path_fill(s : BiostructanglePath, v : Double) -> BiostructanglePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructanglePath::fill(self : BiostructanglePath, v : Double) -> BiostructanglePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_path_min(s : BiostructanglePath) -> Double { @_common.min(s.data) }
+pub fn BiostructanglePath::min(self : BiostructanglePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_path_max(s : BiostructanglePath) -> Double { @_common.max(s.data) }
+pub fn BiostructanglePath::max(self : BiostructanglePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_path_to_string(s : BiostructanglePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructanglePath::to_string(self : BiostructanglePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleCluster {
@@ -657,45 +657,45 @@ pub fn bio_struct_angle_cluster_make(size : Int) -> BiostructangleCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_cluster_len(s : BiostructangleCluster) -> Int { s.size }
+pub fn BiostructangleCluster::len(self : BiostructangleCluster) -> Int { self.size }
 
-pub fn bio_struct_angle_cluster_get(s : BiostructangleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleCluster::get(self : BiostructangleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_cluster_set(s : BiostructangleCluster, i : Int, v : Double) -> BiostructangleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleCluster::set(self : BiostructangleCluster, i : Int, v : Double) -> BiostructangleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cluster_sum(s : BiostructangleCluster) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleCluster::sum(self : BiostructangleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_cluster_mean(s : BiostructangleCluster) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleCluster::mean(self : BiostructangleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_cluster_scale(s : BiostructangleCluster, f : Double) -> BiostructangleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleCluster::scale(self : BiostructangleCluster, f : Double) -> BiostructangleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cluster_add(a : BiostructangleCluster, b : BiostructangleCluster) -> BiostructangleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleCluster::add(self : BiostructangleCluster, other : BiostructangleCluster) -> BiostructangleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cluster_copy(s : BiostructangleCluster) -> BiostructangleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleCluster::copy(self : BiostructangleCluster) -> BiostructangleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cluster_fill(s : BiostructangleCluster, v : Double) -> BiostructangleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleCluster::fill(self : BiostructangleCluster, v : Double) -> BiostructangleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cluster_min(s : BiostructangleCluster) -> Double { @_common.min(s.data) }
+pub fn BiostructangleCluster::min(self : BiostructangleCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_cluster_max(s : BiostructangleCluster) -> Double { @_common.max(s.data) }
+pub fn BiostructangleCluster::max(self : BiostructangleCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_cluster_to_string(s : BiostructangleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleCluster::to_string(self : BiostructangleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleModel {
@@ -708,45 +708,45 @@ pub fn bio_struct_angle_model_make(size : Int) -> BiostructangleModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_model_len(s : BiostructangleModel) -> Int { s.size }
+pub fn BiostructangleModel::len(self : BiostructangleModel) -> Int { self.size }
 
-pub fn bio_struct_angle_model_get(s : BiostructangleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleModel::get(self : BiostructangleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_model_set(s : BiostructangleModel, i : Int, v : Double) -> BiostructangleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleModel::set(self : BiostructangleModel, i : Int, v : Double) -> BiostructangleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_model_sum(s : BiostructangleModel) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleModel::sum(self : BiostructangleModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_model_mean(s : BiostructangleModel) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleModel::mean(self : BiostructangleModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_model_scale(s : BiostructangleModel, f : Double) -> BiostructangleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleModel::scale(self : BiostructangleModel, f : Double) -> BiostructangleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_model_add(a : BiostructangleModel, b : BiostructangleModel) -> BiostructangleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleModel::add(self : BiostructangleModel, other : BiostructangleModel) -> BiostructangleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_model_copy(s : BiostructangleModel) -> BiostructangleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleModel::copy(self : BiostructangleModel) -> BiostructangleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_model_fill(s : BiostructangleModel, v : Double) -> BiostructangleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleModel::fill(self : BiostructangleModel, v : Double) -> BiostructangleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_model_min(s : BiostructangleModel) -> Double { @_common.min(s.data) }
+pub fn BiostructangleModel::min(self : BiostructangleModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_model_max(s : BiostructangleModel) -> Double { @_common.max(s.data) }
+pub fn BiostructangleModel::max(self : BiostructangleModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_model_to_string(s : BiostructangleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleModel::to_string(self : BiostructangleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleLayer {
@@ -759,45 +759,45 @@ pub fn bio_struct_angle_layer_make(size : Int) -> BiostructangleLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_layer_len(s : BiostructangleLayer) -> Int { s.size }
+pub fn BiostructangleLayer::len(self : BiostructangleLayer) -> Int { self.size }
 
-pub fn bio_struct_angle_layer_get(s : BiostructangleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleLayer::get(self : BiostructangleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_layer_set(s : BiostructangleLayer, i : Int, v : Double) -> BiostructangleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleLayer::set(self : BiostructangleLayer, i : Int, v : Double) -> BiostructangleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_layer_sum(s : BiostructangleLayer) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleLayer::sum(self : BiostructangleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_layer_mean(s : BiostructangleLayer) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleLayer::mean(self : BiostructangleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_layer_scale(s : BiostructangleLayer, f : Double) -> BiostructangleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleLayer::scale(self : BiostructangleLayer, f : Double) -> BiostructangleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_layer_add(a : BiostructangleLayer, b : BiostructangleLayer) -> BiostructangleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleLayer::add(self : BiostructangleLayer, other : BiostructangleLayer) -> BiostructangleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_layer_copy(s : BiostructangleLayer) -> BiostructangleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleLayer::copy(self : BiostructangleLayer) -> BiostructangleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_layer_fill(s : BiostructangleLayer, v : Double) -> BiostructangleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleLayer::fill(self : BiostructangleLayer, v : Double) -> BiostructangleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_layer_min(s : BiostructangleLayer) -> Double { @_common.min(s.data) }
+pub fn BiostructangleLayer::min(self : BiostructangleLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_layer_max(s : BiostructangleLayer) -> Double { @_common.max(s.data) }
+pub fn BiostructangleLayer::max(self : BiostructangleLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_layer_to_string(s : BiostructangleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleLayer::to_string(self : BiostructangleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleBuffer {
@@ -810,45 +810,45 @@ pub fn bio_struct_angle_buffer_make(size : Int) -> BiostructangleBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_buffer_len(s : BiostructangleBuffer) -> Int { s.size }
+pub fn BiostructangleBuffer::len(self : BiostructangleBuffer) -> Int { self.size }
 
-pub fn bio_struct_angle_buffer_get(s : BiostructangleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleBuffer::get(self : BiostructangleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_buffer_set(s : BiostructangleBuffer, i : Int, v : Double) -> BiostructangleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleBuffer::set(self : BiostructangleBuffer, i : Int, v : Double) -> BiostructangleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_buffer_sum(s : BiostructangleBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleBuffer::sum(self : BiostructangleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_buffer_mean(s : BiostructangleBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleBuffer::mean(self : BiostructangleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_buffer_scale(s : BiostructangleBuffer, f : Double) -> BiostructangleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleBuffer::scale(self : BiostructangleBuffer, f : Double) -> BiostructangleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_buffer_add(a : BiostructangleBuffer, b : BiostructangleBuffer) -> BiostructangleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleBuffer::add(self : BiostructangleBuffer, other : BiostructangleBuffer) -> BiostructangleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_buffer_copy(s : BiostructangleBuffer) -> BiostructangleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleBuffer::copy(self : BiostructangleBuffer) -> BiostructangleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_buffer_fill(s : BiostructangleBuffer, v : Double) -> BiostructangleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleBuffer::fill(self : BiostructangleBuffer, v : Double) -> BiostructangleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_buffer_min(s : BiostructangleBuffer) -> Double { @_common.min(s.data) }
+pub fn BiostructangleBuffer::min(self : BiostructangleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_buffer_max(s : BiostructangleBuffer) -> Double { @_common.max(s.data) }
+pub fn BiostructangleBuffer::max(self : BiostructangleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_buffer_to_string(s : BiostructangleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleBuffer::to_string(self : BiostructangleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleCursor {
@@ -861,45 +861,45 @@ pub fn bio_struct_angle_cursor_make(size : Int) -> BiostructangleCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_cursor_len(s : BiostructangleCursor) -> Int { s.size }
+pub fn BiostructangleCursor::len(self : BiostructangleCursor) -> Int { self.size }
 
-pub fn bio_struct_angle_cursor_get(s : BiostructangleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleCursor::get(self : BiostructangleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_cursor_set(s : BiostructangleCursor, i : Int, v : Double) -> BiostructangleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleCursor::set(self : BiostructangleCursor, i : Int, v : Double) -> BiostructangleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cursor_sum(s : BiostructangleCursor) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleCursor::sum(self : BiostructangleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_cursor_mean(s : BiostructangleCursor) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleCursor::mean(self : BiostructangleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_cursor_scale(s : BiostructangleCursor, f : Double) -> BiostructangleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleCursor::scale(self : BiostructangleCursor, f : Double) -> BiostructangleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cursor_add(a : BiostructangleCursor, b : BiostructangleCursor) -> BiostructangleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleCursor::add(self : BiostructangleCursor, other : BiostructangleCursor) -> BiostructangleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cursor_copy(s : BiostructangleCursor) -> BiostructangleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleCursor::copy(self : BiostructangleCursor) -> BiostructangleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cursor_fill(s : BiostructangleCursor, v : Double) -> BiostructangleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleCursor::fill(self : BiostructangleCursor, v : Double) -> BiostructangleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_cursor_min(s : BiostructangleCursor) -> Double { @_common.min(s.data) }
+pub fn BiostructangleCursor::min(self : BiostructangleCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_cursor_max(s : BiostructangleCursor) -> Double { @_common.max(s.data) }
+pub fn BiostructangleCursor::max(self : BiostructangleCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_cursor_to_string(s : BiostructangleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleCursor::to_string(self : BiostructangleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleView {
@@ -912,45 +912,45 @@ pub fn bio_struct_angle_view_make(size : Int) -> BiostructangleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_view_len(s : BiostructangleView) -> Int { s.size }
+pub fn BiostructangleView::len(self : BiostructangleView) -> Int { self.size }
 
-pub fn bio_struct_angle_view_get(s : BiostructangleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleView::get(self : BiostructangleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_view_set(s : BiostructangleView, i : Int, v : Double) -> BiostructangleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleView::set(self : BiostructangleView, i : Int, v : Double) -> BiostructangleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_view_sum(s : BiostructangleView) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleView::sum(self : BiostructangleView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_view_mean(s : BiostructangleView) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleView::mean(self : BiostructangleView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_view_scale(s : BiostructangleView, f : Double) -> BiostructangleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleView::scale(self : BiostructangleView, f : Double) -> BiostructangleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_view_add(a : BiostructangleView, b : BiostructangleView) -> BiostructangleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleView::add(self : BiostructangleView, other : BiostructangleView) -> BiostructangleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_view_copy(s : BiostructangleView) -> BiostructangleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleView::copy(self : BiostructangleView) -> BiostructangleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_view_fill(s : BiostructangleView, v : Double) -> BiostructangleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleView::fill(self : BiostructangleView, v : Double) -> BiostructangleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_view_min(s : BiostructangleView) -> Double { @_common.min(s.data) }
+pub fn BiostructangleView::min(self : BiostructangleView) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_view_max(s : BiostructangleView) -> Double { @_common.max(s.data) }
+pub fn BiostructangleView::max(self : BiostructangleView) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_view_to_string(s : BiostructangleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleView::to_string(self : BiostructangleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleRange {
@@ -963,45 +963,45 @@ pub fn bio_struct_angle_range_make(size : Int) -> BiostructangleRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_range_len(s : BiostructangleRange) -> Int { s.size }
+pub fn BiostructangleRange::len(self : BiostructangleRange) -> Int { self.size }
 
-pub fn bio_struct_angle_range_get(s : BiostructangleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleRange::get(self : BiostructangleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_range_set(s : BiostructangleRange, i : Int, v : Double) -> BiostructangleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleRange::set(self : BiostructangleRange, i : Int, v : Double) -> BiostructangleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_range_sum(s : BiostructangleRange) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleRange::sum(self : BiostructangleRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_range_mean(s : BiostructangleRange) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleRange::mean(self : BiostructangleRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_range_scale(s : BiostructangleRange, f : Double) -> BiostructangleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleRange::scale(self : BiostructangleRange, f : Double) -> BiostructangleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_range_add(a : BiostructangleRange, b : BiostructangleRange) -> BiostructangleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleRange::add(self : BiostructangleRange, other : BiostructangleRange) -> BiostructangleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_range_copy(s : BiostructangleRange) -> BiostructangleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleRange::copy(self : BiostructangleRange) -> BiostructangleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_range_fill(s : BiostructangleRange, v : Double) -> BiostructangleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleRange::fill(self : BiostructangleRange, v : Double) -> BiostructangleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_range_min(s : BiostructangleRange) -> Double { @_common.min(s.data) }
+pub fn BiostructangleRange::min(self : BiostructangleRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_range_max(s : BiostructangleRange) -> Double { @_common.max(s.data) }
+pub fn BiostructangleRange::max(self : BiostructangleRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_range_to_string(s : BiostructangleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleRange::to_string(self : BiostructangleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiostructangleSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_struct_angle_slice_make(size : Int) -> BiostructangleSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_struct_angle_slice_len(s : BiostructangleSlice) -> Int { s.size }
+pub fn BiostructangleSlice::len(self : BiostructangleSlice) -> Int { self.size }
 
-pub fn bio_struct_angle_slice_get(s : BiostructangleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiostructangleSlice::get(self : BiostructangleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_struct_angle_slice_set(s : BiostructangleSlice, i : Int, v : Double) -> BiostructangleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiostructangleSlice::set(self : BiostructangleSlice, i : Int, v : Double) -> BiostructangleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_slice_sum(s : BiostructangleSlice) -> Double { @_common.sum(s.data) }
+pub fn BiostructangleSlice::sum(self : BiostructangleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_struct_angle_slice_mean(s : BiostructangleSlice) -> Double { @_common.mean(s.data) }
+pub fn BiostructangleSlice::mean(self : BiostructangleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_struct_angle_slice_scale(s : BiostructangleSlice, f : Double) -> BiostructangleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiostructangleSlice::scale(self : BiostructangleSlice, f : Double) -> BiostructangleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_slice_add(a : BiostructangleSlice, b : BiostructangleSlice) -> BiostructangleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiostructangleSlice::add(self : BiostructangleSlice, other : BiostructangleSlice) -> BiostructangleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_struct_angle_slice_copy(s : BiostructangleSlice) -> BiostructangleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiostructangleSlice::copy(self : BiostructangleSlice) -> BiostructangleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_slice_fill(s : BiostructangleSlice, v : Double) -> BiostructangleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiostructangleSlice::fill(self : BiostructangleSlice, v : Double) -> BiostructangleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_struct_angle_slice_min(s : BiostructangleSlice) -> Double { @_common.min(s.data) }
+pub fn BiostructangleSlice::min(self : BiostructangleSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_struct_angle_slice_max(s : BiostructangleSlice) -> Double { @_common.max(s.data) }
+pub fn BiostructangleSlice::max(self : BiostructangleSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_struct_angle_slice_to_string(s : BiostructangleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiostructangleSlice::to_string(self : BiostructangleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

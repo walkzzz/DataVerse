@@ -351,45 +351,45 @@ pub fn sort_hybrid_grailsort_frame_make(size : Int) -> SorthybridgrailsortFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_frame_len(s : SorthybridgrailsortFrame) -> Int { s.size }
+pub fn SorthybridgrailsortFrame::len(self : SorthybridgrailsortFrame) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_frame_get(s : SorthybridgrailsortFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortFrame::get(self : SorthybridgrailsortFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_frame_set(s : SorthybridgrailsortFrame, i : Int, v : Double) -> SorthybridgrailsortFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortFrame::set(self : SorthybridgrailsortFrame, i : Int, v : Double) -> SorthybridgrailsortFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_frame_sum(s : SorthybridgrailsortFrame) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortFrame::sum(self : SorthybridgrailsortFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_frame_mean(s : SorthybridgrailsortFrame) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortFrame::mean(self : SorthybridgrailsortFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_frame_scale(s : SorthybridgrailsortFrame, f : Double) -> SorthybridgrailsortFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortFrame::scale(self : SorthybridgrailsortFrame, f : Double) -> SorthybridgrailsortFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_frame_add(a : SorthybridgrailsortFrame, b : SorthybridgrailsortFrame) -> SorthybridgrailsortFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortFrame::add(self : SorthybridgrailsortFrame, other : SorthybridgrailsortFrame) -> SorthybridgrailsortFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_frame_copy(s : SorthybridgrailsortFrame) -> SorthybridgrailsortFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortFrame::copy(self : SorthybridgrailsortFrame) -> SorthybridgrailsortFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_frame_fill(s : SorthybridgrailsortFrame, v : Double) -> SorthybridgrailsortFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortFrame::fill(self : SorthybridgrailsortFrame, v : Double) -> SorthybridgrailsortFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_frame_min(s : SorthybridgrailsortFrame) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortFrame::min(self : SorthybridgrailsortFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_frame_max(s : SorthybridgrailsortFrame) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortFrame::max(self : SorthybridgrailsortFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_frame_to_string(s : SorthybridgrailsortFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortFrame::to_string(self : SorthybridgrailsortFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortTable {
@@ -402,45 +402,45 @@ pub fn sort_hybrid_grailsort_table_make(size : Int) -> SorthybridgrailsortTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_table_len(s : SorthybridgrailsortTable) -> Int { s.size }
+pub fn SorthybridgrailsortTable::len(self : SorthybridgrailsortTable) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_table_get(s : SorthybridgrailsortTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortTable::get(self : SorthybridgrailsortTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_table_set(s : SorthybridgrailsortTable, i : Int, v : Double) -> SorthybridgrailsortTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortTable::set(self : SorthybridgrailsortTable, i : Int, v : Double) -> SorthybridgrailsortTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_table_sum(s : SorthybridgrailsortTable) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortTable::sum(self : SorthybridgrailsortTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_table_mean(s : SorthybridgrailsortTable) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortTable::mean(self : SorthybridgrailsortTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_table_scale(s : SorthybridgrailsortTable, f : Double) -> SorthybridgrailsortTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortTable::scale(self : SorthybridgrailsortTable, f : Double) -> SorthybridgrailsortTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_table_add(a : SorthybridgrailsortTable, b : SorthybridgrailsortTable) -> SorthybridgrailsortTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortTable::add(self : SorthybridgrailsortTable, other : SorthybridgrailsortTable) -> SorthybridgrailsortTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_table_copy(s : SorthybridgrailsortTable) -> SorthybridgrailsortTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortTable::copy(self : SorthybridgrailsortTable) -> SorthybridgrailsortTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_table_fill(s : SorthybridgrailsortTable, v : Double) -> SorthybridgrailsortTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortTable::fill(self : SorthybridgrailsortTable, v : Double) -> SorthybridgrailsortTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_table_min(s : SorthybridgrailsortTable) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortTable::min(self : SorthybridgrailsortTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_table_max(s : SorthybridgrailsortTable) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortTable::max(self : SorthybridgrailsortTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_table_to_string(s : SorthybridgrailsortTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortTable::to_string(self : SorthybridgrailsortTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortGraphN {
@@ -453,45 +453,45 @@ pub fn sort_hybrid_grailsort_graphn_make(size : Int) -> SorthybridgrailsortGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_graphn_len(s : SorthybridgrailsortGraphN) -> Int { s.size }
+pub fn SorthybridgrailsortGraphN::len(self : SorthybridgrailsortGraphN) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_graphn_get(s : SorthybridgrailsortGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortGraphN::get(self : SorthybridgrailsortGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_graphn_set(s : SorthybridgrailsortGraphN, i : Int, v : Double) -> SorthybridgrailsortGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortGraphN::set(self : SorthybridgrailsortGraphN, i : Int, v : Double) -> SorthybridgrailsortGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_graphn_sum(s : SorthybridgrailsortGraphN) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortGraphN::sum(self : SorthybridgrailsortGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_graphn_mean(s : SorthybridgrailsortGraphN) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortGraphN::mean(self : SorthybridgrailsortGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_graphn_scale(s : SorthybridgrailsortGraphN, f : Double) -> SorthybridgrailsortGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortGraphN::scale(self : SorthybridgrailsortGraphN, f : Double) -> SorthybridgrailsortGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_graphn_add(a : SorthybridgrailsortGraphN, b : SorthybridgrailsortGraphN) -> SorthybridgrailsortGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortGraphN::add(self : SorthybridgrailsortGraphN, other : SorthybridgrailsortGraphN) -> SorthybridgrailsortGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_graphn_copy(s : SorthybridgrailsortGraphN) -> SorthybridgrailsortGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortGraphN::copy(self : SorthybridgrailsortGraphN) -> SorthybridgrailsortGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_graphn_fill(s : SorthybridgrailsortGraphN, v : Double) -> SorthybridgrailsortGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortGraphN::fill(self : SorthybridgrailsortGraphN, v : Double) -> SorthybridgrailsortGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_graphn_min(s : SorthybridgrailsortGraphN) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortGraphN::min(self : SorthybridgrailsortGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_graphn_max(s : SorthybridgrailsortGraphN) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortGraphN::max(self : SorthybridgrailsortGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_graphn_to_string(s : SorthybridgrailsortGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortGraphN::to_string(self : SorthybridgrailsortGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortNode {
@@ -504,45 +504,45 @@ pub fn sort_hybrid_grailsort_node_make(size : Int) -> SorthybridgrailsortNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_node_len(s : SorthybridgrailsortNode) -> Int { s.size }
+pub fn SorthybridgrailsortNode::len(self : SorthybridgrailsortNode) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_node_get(s : SorthybridgrailsortNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortNode::get(self : SorthybridgrailsortNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_node_set(s : SorthybridgrailsortNode, i : Int, v : Double) -> SorthybridgrailsortNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortNode::set(self : SorthybridgrailsortNode, i : Int, v : Double) -> SorthybridgrailsortNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_node_sum(s : SorthybridgrailsortNode) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortNode::sum(self : SorthybridgrailsortNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_node_mean(s : SorthybridgrailsortNode) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortNode::mean(self : SorthybridgrailsortNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_node_scale(s : SorthybridgrailsortNode, f : Double) -> SorthybridgrailsortNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortNode::scale(self : SorthybridgrailsortNode, f : Double) -> SorthybridgrailsortNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_node_add(a : SorthybridgrailsortNode, b : SorthybridgrailsortNode) -> SorthybridgrailsortNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortNode::add(self : SorthybridgrailsortNode, other : SorthybridgrailsortNode) -> SorthybridgrailsortNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_node_copy(s : SorthybridgrailsortNode) -> SorthybridgrailsortNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortNode::copy(self : SorthybridgrailsortNode) -> SorthybridgrailsortNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_node_fill(s : SorthybridgrailsortNode, v : Double) -> SorthybridgrailsortNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortNode::fill(self : SorthybridgrailsortNode, v : Double) -> SorthybridgrailsortNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_node_min(s : SorthybridgrailsortNode) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortNode::min(self : SorthybridgrailsortNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_node_max(s : SorthybridgrailsortNode) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortNode::max(self : SorthybridgrailsortNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_node_to_string(s : SorthybridgrailsortNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortNode::to_string(self : SorthybridgrailsortNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortEdge {
@@ -555,45 +555,45 @@ pub fn sort_hybrid_grailsort_edge_make(size : Int) -> SorthybridgrailsortEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_edge_len(s : SorthybridgrailsortEdge) -> Int { s.size }
+pub fn SorthybridgrailsortEdge::len(self : SorthybridgrailsortEdge) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_edge_get(s : SorthybridgrailsortEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortEdge::get(self : SorthybridgrailsortEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_edge_set(s : SorthybridgrailsortEdge, i : Int, v : Double) -> SorthybridgrailsortEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortEdge::set(self : SorthybridgrailsortEdge, i : Int, v : Double) -> SorthybridgrailsortEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_edge_sum(s : SorthybridgrailsortEdge) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortEdge::sum(self : SorthybridgrailsortEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_edge_mean(s : SorthybridgrailsortEdge) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortEdge::mean(self : SorthybridgrailsortEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_edge_scale(s : SorthybridgrailsortEdge, f : Double) -> SorthybridgrailsortEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortEdge::scale(self : SorthybridgrailsortEdge, f : Double) -> SorthybridgrailsortEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_edge_add(a : SorthybridgrailsortEdge, b : SorthybridgrailsortEdge) -> SorthybridgrailsortEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortEdge::add(self : SorthybridgrailsortEdge, other : SorthybridgrailsortEdge) -> SorthybridgrailsortEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_edge_copy(s : SorthybridgrailsortEdge) -> SorthybridgrailsortEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortEdge::copy(self : SorthybridgrailsortEdge) -> SorthybridgrailsortEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_edge_fill(s : SorthybridgrailsortEdge, v : Double) -> SorthybridgrailsortEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortEdge::fill(self : SorthybridgrailsortEdge, v : Double) -> SorthybridgrailsortEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_edge_min(s : SorthybridgrailsortEdge) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortEdge::min(self : SorthybridgrailsortEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_edge_max(s : SorthybridgrailsortEdge) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortEdge::max(self : SorthybridgrailsortEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_edge_to_string(s : SorthybridgrailsortEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortEdge::to_string(self : SorthybridgrailsortEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortPath {
@@ -606,45 +606,45 @@ pub fn sort_hybrid_grailsort_path_make(size : Int) -> SorthybridgrailsortPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_path_len(s : SorthybridgrailsortPath) -> Int { s.size }
+pub fn SorthybridgrailsortPath::len(self : SorthybridgrailsortPath) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_path_get(s : SorthybridgrailsortPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortPath::get(self : SorthybridgrailsortPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_path_set(s : SorthybridgrailsortPath, i : Int, v : Double) -> SorthybridgrailsortPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortPath::set(self : SorthybridgrailsortPath, i : Int, v : Double) -> SorthybridgrailsortPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_path_sum(s : SorthybridgrailsortPath) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortPath::sum(self : SorthybridgrailsortPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_path_mean(s : SorthybridgrailsortPath) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortPath::mean(self : SorthybridgrailsortPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_path_scale(s : SorthybridgrailsortPath, f : Double) -> SorthybridgrailsortPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortPath::scale(self : SorthybridgrailsortPath, f : Double) -> SorthybridgrailsortPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_path_add(a : SorthybridgrailsortPath, b : SorthybridgrailsortPath) -> SorthybridgrailsortPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortPath::add(self : SorthybridgrailsortPath, other : SorthybridgrailsortPath) -> SorthybridgrailsortPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_path_copy(s : SorthybridgrailsortPath) -> SorthybridgrailsortPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortPath::copy(self : SorthybridgrailsortPath) -> SorthybridgrailsortPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_path_fill(s : SorthybridgrailsortPath, v : Double) -> SorthybridgrailsortPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortPath::fill(self : SorthybridgrailsortPath, v : Double) -> SorthybridgrailsortPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_path_min(s : SorthybridgrailsortPath) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortPath::min(self : SorthybridgrailsortPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_path_max(s : SorthybridgrailsortPath) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortPath::max(self : SorthybridgrailsortPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_path_to_string(s : SorthybridgrailsortPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortPath::to_string(self : SorthybridgrailsortPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortCluster {
@@ -657,45 +657,45 @@ pub fn sort_hybrid_grailsort_cluster_make(size : Int) -> SorthybridgrailsortClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_cluster_len(s : SorthybridgrailsortCluster) -> Int { s.size }
+pub fn SorthybridgrailsortCluster::len(self : SorthybridgrailsortCluster) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_cluster_get(s : SorthybridgrailsortCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortCluster::get(self : SorthybridgrailsortCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_cluster_set(s : SorthybridgrailsortCluster, i : Int, v : Double) -> SorthybridgrailsortCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCluster::set(self : SorthybridgrailsortCluster, i : Int, v : Double) -> SorthybridgrailsortCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cluster_sum(s : SorthybridgrailsortCluster) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortCluster::sum(self : SorthybridgrailsortCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_cluster_mean(s : SorthybridgrailsortCluster) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortCluster::mean(self : SorthybridgrailsortCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_cluster_scale(s : SorthybridgrailsortCluster, f : Double) -> SorthybridgrailsortCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCluster::scale(self : SorthybridgrailsortCluster, f : Double) -> SorthybridgrailsortCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cluster_add(a : SorthybridgrailsortCluster, b : SorthybridgrailsortCluster) -> SorthybridgrailsortCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortCluster::add(self : SorthybridgrailsortCluster, other : SorthybridgrailsortCluster) -> SorthybridgrailsortCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cluster_copy(s : SorthybridgrailsortCluster) -> SorthybridgrailsortCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCluster::copy(self : SorthybridgrailsortCluster) -> SorthybridgrailsortCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cluster_fill(s : SorthybridgrailsortCluster, v : Double) -> SorthybridgrailsortCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCluster::fill(self : SorthybridgrailsortCluster, v : Double) -> SorthybridgrailsortCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cluster_min(s : SorthybridgrailsortCluster) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortCluster::min(self : SorthybridgrailsortCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_cluster_max(s : SorthybridgrailsortCluster) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortCluster::max(self : SorthybridgrailsortCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_cluster_to_string(s : SorthybridgrailsortCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortCluster::to_string(self : SorthybridgrailsortCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortModel {
@@ -708,45 +708,45 @@ pub fn sort_hybrid_grailsort_model_make(size : Int) -> SorthybridgrailsortModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_model_len(s : SorthybridgrailsortModel) -> Int { s.size }
+pub fn SorthybridgrailsortModel::len(self : SorthybridgrailsortModel) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_model_get(s : SorthybridgrailsortModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortModel::get(self : SorthybridgrailsortModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_model_set(s : SorthybridgrailsortModel, i : Int, v : Double) -> SorthybridgrailsortModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortModel::set(self : SorthybridgrailsortModel, i : Int, v : Double) -> SorthybridgrailsortModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_model_sum(s : SorthybridgrailsortModel) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortModel::sum(self : SorthybridgrailsortModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_model_mean(s : SorthybridgrailsortModel) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortModel::mean(self : SorthybridgrailsortModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_model_scale(s : SorthybridgrailsortModel, f : Double) -> SorthybridgrailsortModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortModel::scale(self : SorthybridgrailsortModel, f : Double) -> SorthybridgrailsortModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_model_add(a : SorthybridgrailsortModel, b : SorthybridgrailsortModel) -> SorthybridgrailsortModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortModel::add(self : SorthybridgrailsortModel, other : SorthybridgrailsortModel) -> SorthybridgrailsortModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_model_copy(s : SorthybridgrailsortModel) -> SorthybridgrailsortModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortModel::copy(self : SorthybridgrailsortModel) -> SorthybridgrailsortModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_model_fill(s : SorthybridgrailsortModel, v : Double) -> SorthybridgrailsortModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortModel::fill(self : SorthybridgrailsortModel, v : Double) -> SorthybridgrailsortModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_model_min(s : SorthybridgrailsortModel) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortModel::min(self : SorthybridgrailsortModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_model_max(s : SorthybridgrailsortModel) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortModel::max(self : SorthybridgrailsortModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_model_to_string(s : SorthybridgrailsortModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortModel::to_string(self : SorthybridgrailsortModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortLayer {
@@ -759,45 +759,45 @@ pub fn sort_hybrid_grailsort_layer_make(size : Int) -> SorthybridgrailsortLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_layer_len(s : SorthybridgrailsortLayer) -> Int { s.size }
+pub fn SorthybridgrailsortLayer::len(self : SorthybridgrailsortLayer) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_layer_get(s : SorthybridgrailsortLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortLayer::get(self : SorthybridgrailsortLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_layer_set(s : SorthybridgrailsortLayer, i : Int, v : Double) -> SorthybridgrailsortLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortLayer::set(self : SorthybridgrailsortLayer, i : Int, v : Double) -> SorthybridgrailsortLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_layer_sum(s : SorthybridgrailsortLayer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortLayer::sum(self : SorthybridgrailsortLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_layer_mean(s : SorthybridgrailsortLayer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortLayer::mean(self : SorthybridgrailsortLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_layer_scale(s : SorthybridgrailsortLayer, f : Double) -> SorthybridgrailsortLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortLayer::scale(self : SorthybridgrailsortLayer, f : Double) -> SorthybridgrailsortLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_layer_add(a : SorthybridgrailsortLayer, b : SorthybridgrailsortLayer) -> SorthybridgrailsortLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortLayer::add(self : SorthybridgrailsortLayer, other : SorthybridgrailsortLayer) -> SorthybridgrailsortLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_layer_copy(s : SorthybridgrailsortLayer) -> SorthybridgrailsortLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortLayer::copy(self : SorthybridgrailsortLayer) -> SorthybridgrailsortLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_layer_fill(s : SorthybridgrailsortLayer, v : Double) -> SorthybridgrailsortLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortLayer::fill(self : SorthybridgrailsortLayer, v : Double) -> SorthybridgrailsortLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_layer_min(s : SorthybridgrailsortLayer) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortLayer::min(self : SorthybridgrailsortLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_layer_max(s : SorthybridgrailsortLayer) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortLayer::max(self : SorthybridgrailsortLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_layer_to_string(s : SorthybridgrailsortLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortLayer::to_string(self : SorthybridgrailsortLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortBuffer {
@@ -810,45 +810,45 @@ pub fn sort_hybrid_grailsort_buffer_make(size : Int) -> SorthybridgrailsortBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_buffer_len(s : SorthybridgrailsortBuffer) -> Int { s.size }
+pub fn SorthybridgrailsortBuffer::len(self : SorthybridgrailsortBuffer) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_buffer_get(s : SorthybridgrailsortBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortBuffer::get(self : SorthybridgrailsortBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_buffer_set(s : SorthybridgrailsortBuffer, i : Int, v : Double) -> SorthybridgrailsortBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortBuffer::set(self : SorthybridgrailsortBuffer, i : Int, v : Double) -> SorthybridgrailsortBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_buffer_sum(s : SorthybridgrailsortBuffer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortBuffer::sum(self : SorthybridgrailsortBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_buffer_mean(s : SorthybridgrailsortBuffer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortBuffer::mean(self : SorthybridgrailsortBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_buffer_scale(s : SorthybridgrailsortBuffer, f : Double) -> SorthybridgrailsortBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortBuffer::scale(self : SorthybridgrailsortBuffer, f : Double) -> SorthybridgrailsortBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_buffer_add(a : SorthybridgrailsortBuffer, b : SorthybridgrailsortBuffer) -> SorthybridgrailsortBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortBuffer::add(self : SorthybridgrailsortBuffer, other : SorthybridgrailsortBuffer) -> SorthybridgrailsortBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_buffer_copy(s : SorthybridgrailsortBuffer) -> SorthybridgrailsortBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortBuffer::copy(self : SorthybridgrailsortBuffer) -> SorthybridgrailsortBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_buffer_fill(s : SorthybridgrailsortBuffer, v : Double) -> SorthybridgrailsortBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortBuffer::fill(self : SorthybridgrailsortBuffer, v : Double) -> SorthybridgrailsortBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_buffer_min(s : SorthybridgrailsortBuffer) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortBuffer::min(self : SorthybridgrailsortBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_buffer_max(s : SorthybridgrailsortBuffer) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortBuffer::max(self : SorthybridgrailsortBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_buffer_to_string(s : SorthybridgrailsortBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortBuffer::to_string(self : SorthybridgrailsortBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortCursor {
@@ -861,45 +861,45 @@ pub fn sort_hybrid_grailsort_cursor_make(size : Int) -> SorthybridgrailsortCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_cursor_len(s : SorthybridgrailsortCursor) -> Int { s.size }
+pub fn SorthybridgrailsortCursor::len(self : SorthybridgrailsortCursor) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_cursor_get(s : SorthybridgrailsortCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortCursor::get(self : SorthybridgrailsortCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_cursor_set(s : SorthybridgrailsortCursor, i : Int, v : Double) -> SorthybridgrailsortCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCursor::set(self : SorthybridgrailsortCursor, i : Int, v : Double) -> SorthybridgrailsortCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cursor_sum(s : SorthybridgrailsortCursor) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortCursor::sum(self : SorthybridgrailsortCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_cursor_mean(s : SorthybridgrailsortCursor) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortCursor::mean(self : SorthybridgrailsortCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_cursor_scale(s : SorthybridgrailsortCursor, f : Double) -> SorthybridgrailsortCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCursor::scale(self : SorthybridgrailsortCursor, f : Double) -> SorthybridgrailsortCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cursor_add(a : SorthybridgrailsortCursor, b : SorthybridgrailsortCursor) -> SorthybridgrailsortCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortCursor::add(self : SorthybridgrailsortCursor, other : SorthybridgrailsortCursor) -> SorthybridgrailsortCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cursor_copy(s : SorthybridgrailsortCursor) -> SorthybridgrailsortCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCursor::copy(self : SorthybridgrailsortCursor) -> SorthybridgrailsortCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cursor_fill(s : SorthybridgrailsortCursor, v : Double) -> SorthybridgrailsortCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortCursor::fill(self : SorthybridgrailsortCursor, v : Double) -> SorthybridgrailsortCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_cursor_min(s : SorthybridgrailsortCursor) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortCursor::min(self : SorthybridgrailsortCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_cursor_max(s : SorthybridgrailsortCursor) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortCursor::max(self : SorthybridgrailsortCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_cursor_to_string(s : SorthybridgrailsortCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortCursor::to_string(self : SorthybridgrailsortCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortView {
@@ -912,45 +912,45 @@ pub fn sort_hybrid_grailsort_view_make(size : Int) -> SorthybridgrailsortView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_view_len(s : SorthybridgrailsortView) -> Int { s.size }
+pub fn SorthybridgrailsortView::len(self : SorthybridgrailsortView) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_view_get(s : SorthybridgrailsortView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortView::get(self : SorthybridgrailsortView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_view_set(s : SorthybridgrailsortView, i : Int, v : Double) -> SorthybridgrailsortView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortView::set(self : SorthybridgrailsortView, i : Int, v : Double) -> SorthybridgrailsortView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_view_sum(s : SorthybridgrailsortView) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortView::sum(self : SorthybridgrailsortView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_view_mean(s : SorthybridgrailsortView) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortView::mean(self : SorthybridgrailsortView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_view_scale(s : SorthybridgrailsortView, f : Double) -> SorthybridgrailsortView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortView::scale(self : SorthybridgrailsortView, f : Double) -> SorthybridgrailsortView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_view_add(a : SorthybridgrailsortView, b : SorthybridgrailsortView) -> SorthybridgrailsortView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortView::add(self : SorthybridgrailsortView, other : SorthybridgrailsortView) -> SorthybridgrailsortView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_view_copy(s : SorthybridgrailsortView) -> SorthybridgrailsortView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortView::copy(self : SorthybridgrailsortView) -> SorthybridgrailsortView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_view_fill(s : SorthybridgrailsortView, v : Double) -> SorthybridgrailsortView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortView::fill(self : SorthybridgrailsortView, v : Double) -> SorthybridgrailsortView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_view_min(s : SorthybridgrailsortView) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortView::min(self : SorthybridgrailsortView) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_view_max(s : SorthybridgrailsortView) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortView::max(self : SorthybridgrailsortView) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_view_to_string(s : SorthybridgrailsortView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortView::to_string(self : SorthybridgrailsortView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortRange {
@@ -963,45 +963,45 @@ pub fn sort_hybrid_grailsort_range_make(size : Int) -> SorthybridgrailsortRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_range_len(s : SorthybridgrailsortRange) -> Int { s.size }
+pub fn SorthybridgrailsortRange::len(self : SorthybridgrailsortRange) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_range_get(s : SorthybridgrailsortRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortRange::get(self : SorthybridgrailsortRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_range_set(s : SorthybridgrailsortRange, i : Int, v : Double) -> SorthybridgrailsortRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortRange::set(self : SorthybridgrailsortRange, i : Int, v : Double) -> SorthybridgrailsortRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_range_sum(s : SorthybridgrailsortRange) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortRange::sum(self : SorthybridgrailsortRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_range_mean(s : SorthybridgrailsortRange) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortRange::mean(self : SorthybridgrailsortRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_range_scale(s : SorthybridgrailsortRange, f : Double) -> SorthybridgrailsortRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortRange::scale(self : SorthybridgrailsortRange, f : Double) -> SorthybridgrailsortRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_range_add(a : SorthybridgrailsortRange, b : SorthybridgrailsortRange) -> SorthybridgrailsortRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortRange::add(self : SorthybridgrailsortRange, other : SorthybridgrailsortRange) -> SorthybridgrailsortRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_range_copy(s : SorthybridgrailsortRange) -> SorthybridgrailsortRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortRange::copy(self : SorthybridgrailsortRange) -> SorthybridgrailsortRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_range_fill(s : SorthybridgrailsortRange, v : Double) -> SorthybridgrailsortRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortRange::fill(self : SorthybridgrailsortRange, v : Double) -> SorthybridgrailsortRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_range_min(s : SorthybridgrailsortRange) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortRange::min(self : SorthybridgrailsortRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_range_max(s : SorthybridgrailsortRange) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortRange::max(self : SorthybridgrailsortRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_range_to_string(s : SorthybridgrailsortRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortRange::to_string(self : SorthybridgrailsortRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridgrailsortSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_hybrid_grailsort_slice_make(size : Int) -> SorthybridgrailsortSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_grailsort_slice_len(s : SorthybridgrailsortSlice) -> Int { s.size }
+pub fn SorthybridgrailsortSlice::len(self : SorthybridgrailsortSlice) -> Int { self.size }
 
-pub fn sort_hybrid_grailsort_slice_get(s : SorthybridgrailsortSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridgrailsortSlice::get(self : SorthybridgrailsortSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_grailsort_slice_set(s : SorthybridgrailsortSlice, i : Int, v : Double) -> SorthybridgrailsortSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortSlice::set(self : SorthybridgrailsortSlice, i : Int, v : Double) -> SorthybridgrailsortSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_slice_sum(s : SorthybridgrailsortSlice) -> Double { @_common.sum(s.data) }
+pub fn SorthybridgrailsortSlice::sum(self : SorthybridgrailsortSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_grailsort_slice_mean(s : SorthybridgrailsortSlice) -> Double { @_common.mean(s.data) }
+pub fn SorthybridgrailsortSlice::mean(self : SorthybridgrailsortSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_grailsort_slice_scale(s : SorthybridgrailsortSlice, f : Double) -> SorthybridgrailsortSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortSlice::scale(self : SorthybridgrailsortSlice, f : Double) -> SorthybridgrailsortSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_slice_add(a : SorthybridgrailsortSlice, b : SorthybridgrailsortSlice) -> SorthybridgrailsortSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridgrailsortSlice::add(self : SorthybridgrailsortSlice, other : SorthybridgrailsortSlice) -> SorthybridgrailsortSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_slice_copy(s : SorthybridgrailsortSlice) -> SorthybridgrailsortSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortSlice::copy(self : SorthybridgrailsortSlice) -> SorthybridgrailsortSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_slice_fill(s : SorthybridgrailsortSlice, v : Double) -> SorthybridgrailsortSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridgrailsortSlice::fill(self : SorthybridgrailsortSlice, v : Double) -> SorthybridgrailsortSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_grailsort_slice_min(s : SorthybridgrailsortSlice) -> Double { @_common.min(s.data) }
+pub fn SorthybridgrailsortSlice::min(self : SorthybridgrailsortSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_grailsort_slice_max(s : SorthybridgrailsortSlice) -> Double { @_common.max(s.data) }
+pub fn SorthybridgrailsortSlice::max(self : SorthybridgrailsortSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_grailsort_slice_to_string(s : SorthybridgrailsortSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridgrailsortSlice::to_string(self : SorthybridgrailsortSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn image_transform_scale_frame_make(size : Int) -> ImagetransformscaleFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_frame_len(s : ImagetransformscaleFrame) -> Int { s.size }
+pub fn ImagetransformscaleFrame::len(self : ImagetransformscaleFrame) -> Int { self.size }
 
-pub fn image_transform_scale_frame_get(s : ImagetransformscaleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleFrame::get(self : ImagetransformscaleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_frame_set(s : ImagetransformscaleFrame, i : Int, v : Double) -> ImagetransformscaleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleFrame::set(self : ImagetransformscaleFrame, i : Int, v : Double) -> ImagetransformscaleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_frame_sum(s : ImagetransformscaleFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleFrame::sum(self : ImagetransformscaleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_frame_mean(s : ImagetransformscaleFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleFrame::mean(self : ImagetransformscaleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_frame_scale(s : ImagetransformscaleFrame, f : Double) -> ImagetransformscaleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleFrame::scale(self : ImagetransformscaleFrame, f : Double) -> ImagetransformscaleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_frame_add(a : ImagetransformscaleFrame, b : ImagetransformscaleFrame) -> ImagetransformscaleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleFrame::add(self : ImagetransformscaleFrame, other : ImagetransformscaleFrame) -> ImagetransformscaleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_frame_copy(s : ImagetransformscaleFrame) -> ImagetransformscaleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleFrame::copy(self : ImagetransformscaleFrame) -> ImagetransformscaleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_frame_fill(s : ImagetransformscaleFrame, v : Double) -> ImagetransformscaleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleFrame::fill(self : ImagetransformscaleFrame, v : Double) -> ImagetransformscaleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_frame_min(s : ImagetransformscaleFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleFrame::min(self : ImagetransformscaleFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_frame_max(s : ImagetransformscaleFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleFrame::max(self : ImagetransformscaleFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_frame_to_string(s : ImagetransformscaleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleFrame::to_string(self : ImagetransformscaleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleTable {
@@ -402,45 +402,45 @@ pub fn image_transform_scale_table_make(size : Int) -> ImagetransformscaleTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_table_len(s : ImagetransformscaleTable) -> Int { s.size }
+pub fn ImagetransformscaleTable::len(self : ImagetransformscaleTable) -> Int { self.size }
 
-pub fn image_transform_scale_table_get(s : ImagetransformscaleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleTable::get(self : ImagetransformscaleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_table_set(s : ImagetransformscaleTable, i : Int, v : Double) -> ImagetransformscaleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleTable::set(self : ImagetransformscaleTable, i : Int, v : Double) -> ImagetransformscaleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_table_sum(s : ImagetransformscaleTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleTable::sum(self : ImagetransformscaleTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_table_mean(s : ImagetransformscaleTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleTable::mean(self : ImagetransformscaleTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_table_scale(s : ImagetransformscaleTable, f : Double) -> ImagetransformscaleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleTable::scale(self : ImagetransformscaleTable, f : Double) -> ImagetransformscaleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_table_add(a : ImagetransformscaleTable, b : ImagetransformscaleTable) -> ImagetransformscaleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleTable::add(self : ImagetransformscaleTable, other : ImagetransformscaleTable) -> ImagetransformscaleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_table_copy(s : ImagetransformscaleTable) -> ImagetransformscaleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleTable::copy(self : ImagetransformscaleTable) -> ImagetransformscaleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_table_fill(s : ImagetransformscaleTable, v : Double) -> ImagetransformscaleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleTable::fill(self : ImagetransformscaleTable, v : Double) -> ImagetransformscaleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_table_min(s : ImagetransformscaleTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleTable::min(self : ImagetransformscaleTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_table_max(s : ImagetransformscaleTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleTable::max(self : ImagetransformscaleTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_table_to_string(s : ImagetransformscaleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleTable::to_string(self : ImagetransformscaleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_scale_graphn_make(size : Int) -> ImagetransformscaleGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_graphn_len(s : ImagetransformscaleGraphN) -> Int { s.size }
+pub fn ImagetransformscaleGraphN::len(self : ImagetransformscaleGraphN) -> Int { self.size }
 
-pub fn image_transform_scale_graphn_get(s : ImagetransformscaleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleGraphN::get(self : ImagetransformscaleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_graphn_set(s : ImagetransformscaleGraphN, i : Int, v : Double) -> ImagetransformscaleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleGraphN::set(self : ImagetransformscaleGraphN, i : Int, v : Double) -> ImagetransformscaleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_graphn_sum(s : ImagetransformscaleGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleGraphN::sum(self : ImagetransformscaleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_graphn_mean(s : ImagetransformscaleGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleGraphN::mean(self : ImagetransformscaleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_graphn_scale(s : ImagetransformscaleGraphN, f : Double) -> ImagetransformscaleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleGraphN::scale(self : ImagetransformscaleGraphN, f : Double) -> ImagetransformscaleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_graphn_add(a : ImagetransformscaleGraphN, b : ImagetransformscaleGraphN) -> ImagetransformscaleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleGraphN::add(self : ImagetransformscaleGraphN, other : ImagetransformscaleGraphN) -> ImagetransformscaleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_graphn_copy(s : ImagetransformscaleGraphN) -> ImagetransformscaleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleGraphN::copy(self : ImagetransformscaleGraphN) -> ImagetransformscaleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_graphn_fill(s : ImagetransformscaleGraphN, v : Double) -> ImagetransformscaleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleGraphN::fill(self : ImagetransformscaleGraphN, v : Double) -> ImagetransformscaleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_graphn_min(s : ImagetransformscaleGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleGraphN::min(self : ImagetransformscaleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_graphn_max(s : ImagetransformscaleGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleGraphN::max(self : ImagetransformscaleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_graphn_to_string(s : ImagetransformscaleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleGraphN::to_string(self : ImagetransformscaleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleNode {
@@ -504,45 +504,45 @@ pub fn image_transform_scale_node_make(size : Int) -> ImagetransformscaleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_node_len(s : ImagetransformscaleNode) -> Int { s.size }
+pub fn ImagetransformscaleNode::len(self : ImagetransformscaleNode) -> Int { self.size }
 
-pub fn image_transform_scale_node_get(s : ImagetransformscaleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleNode::get(self : ImagetransformscaleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_node_set(s : ImagetransformscaleNode, i : Int, v : Double) -> ImagetransformscaleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleNode::set(self : ImagetransformscaleNode, i : Int, v : Double) -> ImagetransformscaleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_node_sum(s : ImagetransformscaleNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleNode::sum(self : ImagetransformscaleNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_node_mean(s : ImagetransformscaleNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleNode::mean(self : ImagetransformscaleNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_node_scale(s : ImagetransformscaleNode, f : Double) -> ImagetransformscaleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleNode::scale(self : ImagetransformscaleNode, f : Double) -> ImagetransformscaleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_node_add(a : ImagetransformscaleNode, b : ImagetransformscaleNode) -> ImagetransformscaleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleNode::add(self : ImagetransformscaleNode, other : ImagetransformscaleNode) -> ImagetransformscaleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_node_copy(s : ImagetransformscaleNode) -> ImagetransformscaleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleNode::copy(self : ImagetransformscaleNode) -> ImagetransformscaleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_node_fill(s : ImagetransformscaleNode, v : Double) -> ImagetransformscaleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleNode::fill(self : ImagetransformscaleNode, v : Double) -> ImagetransformscaleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_node_min(s : ImagetransformscaleNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleNode::min(self : ImagetransformscaleNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_node_max(s : ImagetransformscaleNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleNode::max(self : ImagetransformscaleNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_node_to_string(s : ImagetransformscaleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleNode::to_string(self : ImagetransformscaleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_scale_edge_make(size : Int) -> ImagetransformscaleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_edge_len(s : ImagetransformscaleEdge) -> Int { s.size }
+pub fn ImagetransformscaleEdge::len(self : ImagetransformscaleEdge) -> Int { self.size }
 
-pub fn image_transform_scale_edge_get(s : ImagetransformscaleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleEdge::get(self : ImagetransformscaleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_edge_set(s : ImagetransformscaleEdge, i : Int, v : Double) -> ImagetransformscaleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleEdge::set(self : ImagetransformscaleEdge, i : Int, v : Double) -> ImagetransformscaleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_edge_sum(s : ImagetransformscaleEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleEdge::sum(self : ImagetransformscaleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_edge_mean(s : ImagetransformscaleEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleEdge::mean(self : ImagetransformscaleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_edge_scale(s : ImagetransformscaleEdge, f : Double) -> ImagetransformscaleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleEdge::scale(self : ImagetransformscaleEdge, f : Double) -> ImagetransformscaleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_edge_add(a : ImagetransformscaleEdge, b : ImagetransformscaleEdge) -> ImagetransformscaleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleEdge::add(self : ImagetransformscaleEdge, other : ImagetransformscaleEdge) -> ImagetransformscaleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_edge_copy(s : ImagetransformscaleEdge) -> ImagetransformscaleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleEdge::copy(self : ImagetransformscaleEdge) -> ImagetransformscaleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_edge_fill(s : ImagetransformscaleEdge, v : Double) -> ImagetransformscaleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleEdge::fill(self : ImagetransformscaleEdge, v : Double) -> ImagetransformscaleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_edge_min(s : ImagetransformscaleEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleEdge::min(self : ImagetransformscaleEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_edge_max(s : ImagetransformscaleEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleEdge::max(self : ImagetransformscaleEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_edge_to_string(s : ImagetransformscaleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleEdge::to_string(self : ImagetransformscaleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscalePath {
@@ -606,45 +606,45 @@ pub fn image_transform_scale_path_make(size : Int) -> ImagetransformscalePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_path_len(s : ImagetransformscalePath) -> Int { s.size }
+pub fn ImagetransformscalePath::len(self : ImagetransformscalePath) -> Int { self.size }
 
-pub fn image_transform_scale_path_get(s : ImagetransformscalePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscalePath::get(self : ImagetransformscalePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_path_set(s : ImagetransformscalePath, i : Int, v : Double) -> ImagetransformscalePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscalePath::set(self : ImagetransformscalePath, i : Int, v : Double) -> ImagetransformscalePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_path_sum(s : ImagetransformscalePath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscalePath::sum(self : ImagetransformscalePath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_path_mean(s : ImagetransformscalePath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscalePath::mean(self : ImagetransformscalePath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_path_scale(s : ImagetransformscalePath, f : Double) -> ImagetransformscalePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscalePath::scale(self : ImagetransformscalePath, f : Double) -> ImagetransformscalePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_path_add(a : ImagetransformscalePath, b : ImagetransformscalePath) -> ImagetransformscalePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscalePath::add(self : ImagetransformscalePath, other : ImagetransformscalePath) -> ImagetransformscalePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_path_copy(s : ImagetransformscalePath) -> ImagetransformscalePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscalePath::copy(self : ImagetransformscalePath) -> ImagetransformscalePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_path_fill(s : ImagetransformscalePath, v : Double) -> ImagetransformscalePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscalePath::fill(self : ImagetransformscalePath, v : Double) -> ImagetransformscalePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_path_min(s : ImagetransformscalePath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscalePath::min(self : ImagetransformscalePath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_path_max(s : ImagetransformscalePath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscalePath::max(self : ImagetransformscalePath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_path_to_string(s : ImagetransformscalePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscalePath::to_string(self : ImagetransformscalePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_scale_cluster_make(size : Int) -> ImagetransformscaleClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_cluster_len(s : ImagetransformscaleCluster) -> Int { s.size }
+pub fn ImagetransformscaleCluster::len(self : ImagetransformscaleCluster) -> Int { self.size }
 
-pub fn image_transform_scale_cluster_get(s : ImagetransformscaleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleCluster::get(self : ImagetransformscaleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_cluster_set(s : ImagetransformscaleCluster, i : Int, v : Double) -> ImagetransformscaleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCluster::set(self : ImagetransformscaleCluster, i : Int, v : Double) -> ImagetransformscaleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cluster_sum(s : ImagetransformscaleCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleCluster::sum(self : ImagetransformscaleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_cluster_mean(s : ImagetransformscaleCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleCluster::mean(self : ImagetransformscaleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_cluster_scale(s : ImagetransformscaleCluster, f : Double) -> ImagetransformscaleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCluster::scale(self : ImagetransformscaleCluster, f : Double) -> ImagetransformscaleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cluster_add(a : ImagetransformscaleCluster, b : ImagetransformscaleCluster) -> ImagetransformscaleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleCluster::add(self : ImagetransformscaleCluster, other : ImagetransformscaleCluster) -> ImagetransformscaleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_cluster_copy(s : ImagetransformscaleCluster) -> ImagetransformscaleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCluster::copy(self : ImagetransformscaleCluster) -> ImagetransformscaleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cluster_fill(s : ImagetransformscaleCluster, v : Double) -> ImagetransformscaleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCluster::fill(self : ImagetransformscaleCluster, v : Double) -> ImagetransformscaleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cluster_min(s : ImagetransformscaleCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleCluster::min(self : ImagetransformscaleCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_cluster_max(s : ImagetransformscaleCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleCluster::max(self : ImagetransformscaleCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_cluster_to_string(s : ImagetransformscaleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleCluster::to_string(self : ImagetransformscaleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleModel {
@@ -708,45 +708,45 @@ pub fn image_transform_scale_model_make(size : Int) -> ImagetransformscaleModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_model_len(s : ImagetransformscaleModel) -> Int { s.size }
+pub fn ImagetransformscaleModel::len(self : ImagetransformscaleModel) -> Int { self.size }
 
-pub fn image_transform_scale_model_get(s : ImagetransformscaleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleModel::get(self : ImagetransformscaleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_model_set(s : ImagetransformscaleModel, i : Int, v : Double) -> ImagetransformscaleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleModel::set(self : ImagetransformscaleModel, i : Int, v : Double) -> ImagetransformscaleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_model_sum(s : ImagetransformscaleModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleModel::sum(self : ImagetransformscaleModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_model_mean(s : ImagetransformscaleModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleModel::mean(self : ImagetransformscaleModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_model_scale(s : ImagetransformscaleModel, f : Double) -> ImagetransformscaleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleModel::scale(self : ImagetransformscaleModel, f : Double) -> ImagetransformscaleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_model_add(a : ImagetransformscaleModel, b : ImagetransformscaleModel) -> ImagetransformscaleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleModel::add(self : ImagetransformscaleModel, other : ImagetransformscaleModel) -> ImagetransformscaleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_model_copy(s : ImagetransformscaleModel) -> ImagetransformscaleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleModel::copy(self : ImagetransformscaleModel) -> ImagetransformscaleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_model_fill(s : ImagetransformscaleModel, v : Double) -> ImagetransformscaleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleModel::fill(self : ImagetransformscaleModel, v : Double) -> ImagetransformscaleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_model_min(s : ImagetransformscaleModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleModel::min(self : ImagetransformscaleModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_model_max(s : ImagetransformscaleModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleModel::max(self : ImagetransformscaleModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_model_to_string(s : ImagetransformscaleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleModel::to_string(self : ImagetransformscaleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_scale_layer_make(size : Int) -> ImagetransformscaleLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_layer_len(s : ImagetransformscaleLayer) -> Int { s.size }
+pub fn ImagetransformscaleLayer::len(self : ImagetransformscaleLayer) -> Int { self.size }
 
-pub fn image_transform_scale_layer_get(s : ImagetransformscaleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleLayer::get(self : ImagetransformscaleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_layer_set(s : ImagetransformscaleLayer, i : Int, v : Double) -> ImagetransformscaleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleLayer::set(self : ImagetransformscaleLayer, i : Int, v : Double) -> ImagetransformscaleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_layer_sum(s : ImagetransformscaleLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleLayer::sum(self : ImagetransformscaleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_layer_mean(s : ImagetransformscaleLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleLayer::mean(self : ImagetransformscaleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_layer_scale(s : ImagetransformscaleLayer, f : Double) -> ImagetransformscaleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleLayer::scale(self : ImagetransformscaleLayer, f : Double) -> ImagetransformscaleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_layer_add(a : ImagetransformscaleLayer, b : ImagetransformscaleLayer) -> ImagetransformscaleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleLayer::add(self : ImagetransformscaleLayer, other : ImagetransformscaleLayer) -> ImagetransformscaleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_layer_copy(s : ImagetransformscaleLayer) -> ImagetransformscaleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleLayer::copy(self : ImagetransformscaleLayer) -> ImagetransformscaleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_layer_fill(s : ImagetransformscaleLayer, v : Double) -> ImagetransformscaleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleLayer::fill(self : ImagetransformscaleLayer, v : Double) -> ImagetransformscaleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_layer_min(s : ImagetransformscaleLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleLayer::min(self : ImagetransformscaleLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_layer_max(s : ImagetransformscaleLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleLayer::max(self : ImagetransformscaleLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_layer_to_string(s : ImagetransformscaleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleLayer::to_string(self : ImagetransformscaleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_scale_buffer_make(size : Int) -> ImagetransformscaleBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_buffer_len(s : ImagetransformscaleBuffer) -> Int { s.size }
+pub fn ImagetransformscaleBuffer::len(self : ImagetransformscaleBuffer) -> Int { self.size }
 
-pub fn image_transform_scale_buffer_get(s : ImagetransformscaleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleBuffer::get(self : ImagetransformscaleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_buffer_set(s : ImagetransformscaleBuffer, i : Int, v : Double) -> ImagetransformscaleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleBuffer::set(self : ImagetransformscaleBuffer, i : Int, v : Double) -> ImagetransformscaleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_buffer_sum(s : ImagetransformscaleBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleBuffer::sum(self : ImagetransformscaleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_buffer_mean(s : ImagetransformscaleBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleBuffer::mean(self : ImagetransformscaleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_buffer_scale(s : ImagetransformscaleBuffer, f : Double) -> ImagetransformscaleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleBuffer::scale(self : ImagetransformscaleBuffer, f : Double) -> ImagetransformscaleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_buffer_add(a : ImagetransformscaleBuffer, b : ImagetransformscaleBuffer) -> ImagetransformscaleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleBuffer::add(self : ImagetransformscaleBuffer, other : ImagetransformscaleBuffer) -> ImagetransformscaleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_buffer_copy(s : ImagetransformscaleBuffer) -> ImagetransformscaleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleBuffer::copy(self : ImagetransformscaleBuffer) -> ImagetransformscaleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_buffer_fill(s : ImagetransformscaleBuffer, v : Double) -> ImagetransformscaleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleBuffer::fill(self : ImagetransformscaleBuffer, v : Double) -> ImagetransformscaleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_buffer_min(s : ImagetransformscaleBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleBuffer::min(self : ImagetransformscaleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_buffer_max(s : ImagetransformscaleBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleBuffer::max(self : ImagetransformscaleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_buffer_to_string(s : ImagetransformscaleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleBuffer::to_string(self : ImagetransformscaleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_scale_cursor_make(size : Int) -> ImagetransformscaleCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_cursor_len(s : ImagetransformscaleCursor) -> Int { s.size }
+pub fn ImagetransformscaleCursor::len(self : ImagetransformscaleCursor) -> Int { self.size }
 
-pub fn image_transform_scale_cursor_get(s : ImagetransformscaleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleCursor::get(self : ImagetransformscaleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_cursor_set(s : ImagetransformscaleCursor, i : Int, v : Double) -> ImagetransformscaleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCursor::set(self : ImagetransformscaleCursor, i : Int, v : Double) -> ImagetransformscaleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cursor_sum(s : ImagetransformscaleCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleCursor::sum(self : ImagetransformscaleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_cursor_mean(s : ImagetransformscaleCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleCursor::mean(self : ImagetransformscaleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_cursor_scale(s : ImagetransformscaleCursor, f : Double) -> ImagetransformscaleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCursor::scale(self : ImagetransformscaleCursor, f : Double) -> ImagetransformscaleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cursor_add(a : ImagetransformscaleCursor, b : ImagetransformscaleCursor) -> ImagetransformscaleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleCursor::add(self : ImagetransformscaleCursor, other : ImagetransformscaleCursor) -> ImagetransformscaleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_cursor_copy(s : ImagetransformscaleCursor) -> ImagetransformscaleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCursor::copy(self : ImagetransformscaleCursor) -> ImagetransformscaleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cursor_fill(s : ImagetransformscaleCursor, v : Double) -> ImagetransformscaleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleCursor::fill(self : ImagetransformscaleCursor, v : Double) -> ImagetransformscaleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_cursor_min(s : ImagetransformscaleCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleCursor::min(self : ImagetransformscaleCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_cursor_max(s : ImagetransformscaleCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleCursor::max(self : ImagetransformscaleCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_cursor_to_string(s : ImagetransformscaleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleCursor::to_string(self : ImagetransformscaleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleView {
@@ -912,45 +912,45 @@ pub fn image_transform_scale_view_make(size : Int) -> ImagetransformscaleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_view_len(s : ImagetransformscaleView) -> Int { s.size }
+pub fn ImagetransformscaleView::len(self : ImagetransformscaleView) -> Int { self.size }
 
-pub fn image_transform_scale_view_get(s : ImagetransformscaleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleView::get(self : ImagetransformscaleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_view_set(s : ImagetransformscaleView, i : Int, v : Double) -> ImagetransformscaleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleView::set(self : ImagetransformscaleView, i : Int, v : Double) -> ImagetransformscaleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_view_sum(s : ImagetransformscaleView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleView::sum(self : ImagetransformscaleView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_view_mean(s : ImagetransformscaleView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleView::mean(self : ImagetransformscaleView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_view_scale(s : ImagetransformscaleView, f : Double) -> ImagetransformscaleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleView::scale(self : ImagetransformscaleView, f : Double) -> ImagetransformscaleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_view_add(a : ImagetransformscaleView, b : ImagetransformscaleView) -> ImagetransformscaleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleView::add(self : ImagetransformscaleView, other : ImagetransformscaleView) -> ImagetransformscaleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_view_copy(s : ImagetransformscaleView) -> ImagetransformscaleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleView::copy(self : ImagetransformscaleView) -> ImagetransformscaleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_view_fill(s : ImagetransformscaleView, v : Double) -> ImagetransformscaleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleView::fill(self : ImagetransformscaleView, v : Double) -> ImagetransformscaleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_view_min(s : ImagetransformscaleView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleView::min(self : ImagetransformscaleView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_view_max(s : ImagetransformscaleView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleView::max(self : ImagetransformscaleView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_view_to_string(s : ImagetransformscaleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleView::to_string(self : ImagetransformscaleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleRange {
@@ -963,45 +963,45 @@ pub fn image_transform_scale_range_make(size : Int) -> ImagetransformscaleRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_range_len(s : ImagetransformscaleRange) -> Int { s.size }
+pub fn ImagetransformscaleRange::len(self : ImagetransformscaleRange) -> Int { self.size }
 
-pub fn image_transform_scale_range_get(s : ImagetransformscaleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleRange::get(self : ImagetransformscaleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_range_set(s : ImagetransformscaleRange, i : Int, v : Double) -> ImagetransformscaleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleRange::set(self : ImagetransformscaleRange, i : Int, v : Double) -> ImagetransformscaleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_range_sum(s : ImagetransformscaleRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleRange::sum(self : ImagetransformscaleRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_range_mean(s : ImagetransformscaleRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleRange::mean(self : ImagetransformscaleRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_range_scale(s : ImagetransformscaleRange, f : Double) -> ImagetransformscaleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleRange::scale(self : ImagetransformscaleRange, f : Double) -> ImagetransformscaleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_range_add(a : ImagetransformscaleRange, b : ImagetransformscaleRange) -> ImagetransformscaleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleRange::add(self : ImagetransformscaleRange, other : ImagetransformscaleRange) -> ImagetransformscaleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_range_copy(s : ImagetransformscaleRange) -> ImagetransformscaleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleRange::copy(self : ImagetransformscaleRange) -> ImagetransformscaleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_range_fill(s : ImagetransformscaleRange, v : Double) -> ImagetransformscaleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleRange::fill(self : ImagetransformscaleRange, v : Double) -> ImagetransformscaleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_range_min(s : ImagetransformscaleRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleRange::min(self : ImagetransformscaleRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_range_max(s : ImagetransformscaleRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleRange::max(self : ImagetransformscaleRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_range_to_string(s : ImagetransformscaleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleRange::to_string(self : ImagetransformscaleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_scale_slice_make(size : Int) -> ImagetransformscaleSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_scale_slice_len(s : ImagetransformscaleSlice) -> Int { s.size }
+pub fn ImagetransformscaleSlice::len(self : ImagetransformscaleSlice) -> Int { self.size }
 
-pub fn image_transform_scale_slice_get(s : ImagetransformscaleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformscaleSlice::get(self : ImagetransformscaleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_scale_slice_set(s : ImagetransformscaleSlice, i : Int, v : Double) -> ImagetransformscaleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformscaleSlice::set(self : ImagetransformscaleSlice, i : Int, v : Double) -> ImagetransformscaleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_slice_sum(s : ImagetransformscaleSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformscaleSlice::sum(self : ImagetransformscaleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_scale_slice_mean(s : ImagetransformscaleSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformscaleSlice::mean(self : ImagetransformscaleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_scale_slice_scale(s : ImagetransformscaleSlice, f : Double) -> ImagetransformscaleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleSlice::scale(self : ImagetransformscaleSlice, f : Double) -> ImagetransformscaleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_slice_add(a : ImagetransformscaleSlice, b : ImagetransformscaleSlice) -> ImagetransformscaleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformscaleSlice::add(self : ImagetransformscaleSlice, other : ImagetransformscaleSlice) -> ImagetransformscaleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_scale_slice_copy(s : ImagetransformscaleSlice) -> ImagetransformscaleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleSlice::copy(self : ImagetransformscaleSlice) -> ImagetransformscaleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_slice_fill(s : ImagetransformscaleSlice, v : Double) -> ImagetransformscaleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformscaleSlice::fill(self : ImagetransformscaleSlice, v : Double) -> ImagetransformscaleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_scale_slice_min(s : ImagetransformscaleSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformscaleSlice::min(self : ImagetransformscaleSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_scale_slice_max(s : ImagetransformscaleSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformscaleSlice::max(self : ImagetransformscaleSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_scale_slice_to_string(s : ImagetransformscaleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformscaleSlice::to_string(self : ImagetransformscaleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

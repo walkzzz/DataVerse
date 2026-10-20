@@ -351,45 +351,45 @@ pub fn db_tx_pessimistic_frame_make(size : Int) -> DbtxpessimisticFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_frame_len(s : DbtxpessimisticFrame) -> Int { s.size }
+pub fn DbtxpessimisticFrame::len(self : DbtxpessimisticFrame) -> Int { self.size }
 
-pub fn db_tx_pessimistic_frame_get(s : DbtxpessimisticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticFrame::get(self : DbtxpessimisticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_frame_set(s : DbtxpessimisticFrame, i : Int, v : Double) -> DbtxpessimisticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticFrame::set(self : DbtxpessimisticFrame, i : Int, v : Double) -> DbtxpessimisticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_frame_sum(s : DbtxpessimisticFrame) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticFrame::sum(self : DbtxpessimisticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_frame_mean(s : DbtxpessimisticFrame) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticFrame::mean(self : DbtxpessimisticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_frame_scale(s : DbtxpessimisticFrame, f : Double) -> DbtxpessimisticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticFrame::scale(self : DbtxpessimisticFrame, f : Double) -> DbtxpessimisticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_frame_add(a : DbtxpessimisticFrame, b : DbtxpessimisticFrame) -> DbtxpessimisticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticFrame::add(self : DbtxpessimisticFrame, other : DbtxpessimisticFrame) -> DbtxpessimisticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_frame_copy(s : DbtxpessimisticFrame) -> DbtxpessimisticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticFrame::copy(self : DbtxpessimisticFrame) -> DbtxpessimisticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_frame_fill(s : DbtxpessimisticFrame, v : Double) -> DbtxpessimisticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticFrame::fill(self : DbtxpessimisticFrame, v : Double) -> DbtxpessimisticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_frame_min(s : DbtxpessimisticFrame) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticFrame::min(self : DbtxpessimisticFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_frame_max(s : DbtxpessimisticFrame) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticFrame::max(self : DbtxpessimisticFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_frame_to_string(s : DbtxpessimisticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticFrame::to_string(self : DbtxpessimisticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticTable {
@@ -402,45 +402,45 @@ pub fn db_tx_pessimistic_table_make(size : Int) -> DbtxpessimisticTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_table_len(s : DbtxpessimisticTable) -> Int { s.size }
+pub fn DbtxpessimisticTable::len(self : DbtxpessimisticTable) -> Int { self.size }
 
-pub fn db_tx_pessimistic_table_get(s : DbtxpessimisticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticTable::get(self : DbtxpessimisticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_table_set(s : DbtxpessimisticTable, i : Int, v : Double) -> DbtxpessimisticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticTable::set(self : DbtxpessimisticTable, i : Int, v : Double) -> DbtxpessimisticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_table_sum(s : DbtxpessimisticTable) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticTable::sum(self : DbtxpessimisticTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_table_mean(s : DbtxpessimisticTable) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticTable::mean(self : DbtxpessimisticTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_table_scale(s : DbtxpessimisticTable, f : Double) -> DbtxpessimisticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticTable::scale(self : DbtxpessimisticTable, f : Double) -> DbtxpessimisticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_table_add(a : DbtxpessimisticTable, b : DbtxpessimisticTable) -> DbtxpessimisticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticTable::add(self : DbtxpessimisticTable, other : DbtxpessimisticTable) -> DbtxpessimisticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_table_copy(s : DbtxpessimisticTable) -> DbtxpessimisticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticTable::copy(self : DbtxpessimisticTable) -> DbtxpessimisticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_table_fill(s : DbtxpessimisticTable, v : Double) -> DbtxpessimisticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticTable::fill(self : DbtxpessimisticTable, v : Double) -> DbtxpessimisticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_table_min(s : DbtxpessimisticTable) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticTable::min(self : DbtxpessimisticTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_table_max(s : DbtxpessimisticTable) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticTable::max(self : DbtxpessimisticTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_table_to_string(s : DbtxpessimisticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticTable::to_string(self : DbtxpessimisticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_pessimistic_graphn_make(size : Int) -> DbtxpessimisticGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_graphn_len(s : DbtxpessimisticGraphN) -> Int { s.size }
+pub fn DbtxpessimisticGraphN::len(self : DbtxpessimisticGraphN) -> Int { self.size }
 
-pub fn db_tx_pessimistic_graphn_get(s : DbtxpessimisticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticGraphN::get(self : DbtxpessimisticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_graphn_set(s : DbtxpessimisticGraphN, i : Int, v : Double) -> DbtxpessimisticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticGraphN::set(self : DbtxpessimisticGraphN, i : Int, v : Double) -> DbtxpessimisticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_graphn_sum(s : DbtxpessimisticGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticGraphN::sum(self : DbtxpessimisticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_graphn_mean(s : DbtxpessimisticGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticGraphN::mean(self : DbtxpessimisticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_graphn_scale(s : DbtxpessimisticGraphN, f : Double) -> DbtxpessimisticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticGraphN::scale(self : DbtxpessimisticGraphN, f : Double) -> DbtxpessimisticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_graphn_add(a : DbtxpessimisticGraphN, b : DbtxpessimisticGraphN) -> DbtxpessimisticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticGraphN::add(self : DbtxpessimisticGraphN, other : DbtxpessimisticGraphN) -> DbtxpessimisticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_graphn_copy(s : DbtxpessimisticGraphN) -> DbtxpessimisticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticGraphN::copy(self : DbtxpessimisticGraphN) -> DbtxpessimisticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_graphn_fill(s : DbtxpessimisticGraphN, v : Double) -> DbtxpessimisticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticGraphN::fill(self : DbtxpessimisticGraphN, v : Double) -> DbtxpessimisticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_graphn_min(s : DbtxpessimisticGraphN) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticGraphN::min(self : DbtxpessimisticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_graphn_max(s : DbtxpessimisticGraphN) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticGraphN::max(self : DbtxpessimisticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_graphn_to_string(s : DbtxpessimisticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticGraphN::to_string(self : DbtxpessimisticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticNode {
@@ -504,45 +504,45 @@ pub fn db_tx_pessimistic_node_make(size : Int) -> DbtxpessimisticNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_node_len(s : DbtxpessimisticNode) -> Int { s.size }
+pub fn DbtxpessimisticNode::len(self : DbtxpessimisticNode) -> Int { self.size }
 
-pub fn db_tx_pessimistic_node_get(s : DbtxpessimisticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticNode::get(self : DbtxpessimisticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_node_set(s : DbtxpessimisticNode, i : Int, v : Double) -> DbtxpessimisticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticNode::set(self : DbtxpessimisticNode, i : Int, v : Double) -> DbtxpessimisticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_node_sum(s : DbtxpessimisticNode) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticNode::sum(self : DbtxpessimisticNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_node_mean(s : DbtxpessimisticNode) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticNode::mean(self : DbtxpessimisticNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_node_scale(s : DbtxpessimisticNode, f : Double) -> DbtxpessimisticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticNode::scale(self : DbtxpessimisticNode, f : Double) -> DbtxpessimisticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_node_add(a : DbtxpessimisticNode, b : DbtxpessimisticNode) -> DbtxpessimisticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticNode::add(self : DbtxpessimisticNode, other : DbtxpessimisticNode) -> DbtxpessimisticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_node_copy(s : DbtxpessimisticNode) -> DbtxpessimisticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticNode::copy(self : DbtxpessimisticNode) -> DbtxpessimisticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_node_fill(s : DbtxpessimisticNode, v : Double) -> DbtxpessimisticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticNode::fill(self : DbtxpessimisticNode, v : Double) -> DbtxpessimisticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_node_min(s : DbtxpessimisticNode) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticNode::min(self : DbtxpessimisticNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_node_max(s : DbtxpessimisticNode) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticNode::max(self : DbtxpessimisticNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_node_to_string(s : DbtxpessimisticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticNode::to_string(self : DbtxpessimisticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_pessimistic_edge_make(size : Int) -> DbtxpessimisticEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_edge_len(s : DbtxpessimisticEdge) -> Int { s.size }
+pub fn DbtxpessimisticEdge::len(self : DbtxpessimisticEdge) -> Int { self.size }
 
-pub fn db_tx_pessimistic_edge_get(s : DbtxpessimisticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticEdge::get(self : DbtxpessimisticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_edge_set(s : DbtxpessimisticEdge, i : Int, v : Double) -> DbtxpessimisticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticEdge::set(self : DbtxpessimisticEdge, i : Int, v : Double) -> DbtxpessimisticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_edge_sum(s : DbtxpessimisticEdge) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticEdge::sum(self : DbtxpessimisticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_edge_mean(s : DbtxpessimisticEdge) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticEdge::mean(self : DbtxpessimisticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_edge_scale(s : DbtxpessimisticEdge, f : Double) -> DbtxpessimisticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticEdge::scale(self : DbtxpessimisticEdge, f : Double) -> DbtxpessimisticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_edge_add(a : DbtxpessimisticEdge, b : DbtxpessimisticEdge) -> DbtxpessimisticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticEdge::add(self : DbtxpessimisticEdge, other : DbtxpessimisticEdge) -> DbtxpessimisticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_edge_copy(s : DbtxpessimisticEdge) -> DbtxpessimisticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticEdge::copy(self : DbtxpessimisticEdge) -> DbtxpessimisticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_edge_fill(s : DbtxpessimisticEdge, v : Double) -> DbtxpessimisticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticEdge::fill(self : DbtxpessimisticEdge, v : Double) -> DbtxpessimisticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_edge_min(s : DbtxpessimisticEdge) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticEdge::min(self : DbtxpessimisticEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_edge_max(s : DbtxpessimisticEdge) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticEdge::max(self : DbtxpessimisticEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_edge_to_string(s : DbtxpessimisticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticEdge::to_string(self : DbtxpessimisticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticPath {
@@ -606,45 +606,45 @@ pub fn db_tx_pessimistic_path_make(size : Int) -> DbtxpessimisticPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_path_len(s : DbtxpessimisticPath) -> Int { s.size }
+pub fn DbtxpessimisticPath::len(self : DbtxpessimisticPath) -> Int { self.size }
 
-pub fn db_tx_pessimistic_path_get(s : DbtxpessimisticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticPath::get(self : DbtxpessimisticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_path_set(s : DbtxpessimisticPath, i : Int, v : Double) -> DbtxpessimisticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticPath::set(self : DbtxpessimisticPath, i : Int, v : Double) -> DbtxpessimisticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_path_sum(s : DbtxpessimisticPath) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticPath::sum(self : DbtxpessimisticPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_path_mean(s : DbtxpessimisticPath) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticPath::mean(self : DbtxpessimisticPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_path_scale(s : DbtxpessimisticPath, f : Double) -> DbtxpessimisticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticPath::scale(self : DbtxpessimisticPath, f : Double) -> DbtxpessimisticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_path_add(a : DbtxpessimisticPath, b : DbtxpessimisticPath) -> DbtxpessimisticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticPath::add(self : DbtxpessimisticPath, other : DbtxpessimisticPath) -> DbtxpessimisticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_path_copy(s : DbtxpessimisticPath) -> DbtxpessimisticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticPath::copy(self : DbtxpessimisticPath) -> DbtxpessimisticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_path_fill(s : DbtxpessimisticPath, v : Double) -> DbtxpessimisticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticPath::fill(self : DbtxpessimisticPath, v : Double) -> DbtxpessimisticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_path_min(s : DbtxpessimisticPath) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticPath::min(self : DbtxpessimisticPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_path_max(s : DbtxpessimisticPath) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticPath::max(self : DbtxpessimisticPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_path_to_string(s : DbtxpessimisticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticPath::to_string(self : DbtxpessimisticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_pessimistic_cluster_make(size : Int) -> DbtxpessimisticCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_cluster_len(s : DbtxpessimisticCluster) -> Int { s.size }
+pub fn DbtxpessimisticCluster::len(self : DbtxpessimisticCluster) -> Int { self.size }
 
-pub fn db_tx_pessimistic_cluster_get(s : DbtxpessimisticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticCluster::get(self : DbtxpessimisticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_cluster_set(s : DbtxpessimisticCluster, i : Int, v : Double) -> DbtxpessimisticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCluster::set(self : DbtxpessimisticCluster, i : Int, v : Double) -> DbtxpessimisticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cluster_sum(s : DbtxpessimisticCluster) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticCluster::sum(self : DbtxpessimisticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_cluster_mean(s : DbtxpessimisticCluster) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticCluster::mean(self : DbtxpessimisticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_cluster_scale(s : DbtxpessimisticCluster, f : Double) -> DbtxpessimisticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCluster::scale(self : DbtxpessimisticCluster, f : Double) -> DbtxpessimisticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cluster_add(a : DbtxpessimisticCluster, b : DbtxpessimisticCluster) -> DbtxpessimisticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticCluster::add(self : DbtxpessimisticCluster, other : DbtxpessimisticCluster) -> DbtxpessimisticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cluster_copy(s : DbtxpessimisticCluster) -> DbtxpessimisticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCluster::copy(self : DbtxpessimisticCluster) -> DbtxpessimisticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cluster_fill(s : DbtxpessimisticCluster, v : Double) -> DbtxpessimisticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCluster::fill(self : DbtxpessimisticCluster, v : Double) -> DbtxpessimisticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cluster_min(s : DbtxpessimisticCluster) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticCluster::min(self : DbtxpessimisticCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_cluster_max(s : DbtxpessimisticCluster) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticCluster::max(self : DbtxpessimisticCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_cluster_to_string(s : DbtxpessimisticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticCluster::to_string(self : DbtxpessimisticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticModel {
@@ -708,45 +708,45 @@ pub fn db_tx_pessimistic_model_make(size : Int) -> DbtxpessimisticModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_model_len(s : DbtxpessimisticModel) -> Int { s.size }
+pub fn DbtxpessimisticModel::len(self : DbtxpessimisticModel) -> Int { self.size }
 
-pub fn db_tx_pessimistic_model_get(s : DbtxpessimisticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticModel::get(self : DbtxpessimisticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_model_set(s : DbtxpessimisticModel, i : Int, v : Double) -> DbtxpessimisticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticModel::set(self : DbtxpessimisticModel, i : Int, v : Double) -> DbtxpessimisticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_model_sum(s : DbtxpessimisticModel) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticModel::sum(self : DbtxpessimisticModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_model_mean(s : DbtxpessimisticModel) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticModel::mean(self : DbtxpessimisticModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_model_scale(s : DbtxpessimisticModel, f : Double) -> DbtxpessimisticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticModel::scale(self : DbtxpessimisticModel, f : Double) -> DbtxpessimisticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_model_add(a : DbtxpessimisticModel, b : DbtxpessimisticModel) -> DbtxpessimisticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticModel::add(self : DbtxpessimisticModel, other : DbtxpessimisticModel) -> DbtxpessimisticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_model_copy(s : DbtxpessimisticModel) -> DbtxpessimisticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticModel::copy(self : DbtxpessimisticModel) -> DbtxpessimisticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_model_fill(s : DbtxpessimisticModel, v : Double) -> DbtxpessimisticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticModel::fill(self : DbtxpessimisticModel, v : Double) -> DbtxpessimisticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_model_min(s : DbtxpessimisticModel) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticModel::min(self : DbtxpessimisticModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_model_max(s : DbtxpessimisticModel) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticModel::max(self : DbtxpessimisticModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_model_to_string(s : DbtxpessimisticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticModel::to_string(self : DbtxpessimisticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_pessimistic_layer_make(size : Int) -> DbtxpessimisticLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_layer_len(s : DbtxpessimisticLayer) -> Int { s.size }
+pub fn DbtxpessimisticLayer::len(self : DbtxpessimisticLayer) -> Int { self.size }
 
-pub fn db_tx_pessimistic_layer_get(s : DbtxpessimisticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticLayer::get(self : DbtxpessimisticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_layer_set(s : DbtxpessimisticLayer, i : Int, v : Double) -> DbtxpessimisticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticLayer::set(self : DbtxpessimisticLayer, i : Int, v : Double) -> DbtxpessimisticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_layer_sum(s : DbtxpessimisticLayer) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticLayer::sum(self : DbtxpessimisticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_layer_mean(s : DbtxpessimisticLayer) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticLayer::mean(self : DbtxpessimisticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_layer_scale(s : DbtxpessimisticLayer, f : Double) -> DbtxpessimisticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticLayer::scale(self : DbtxpessimisticLayer, f : Double) -> DbtxpessimisticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_layer_add(a : DbtxpessimisticLayer, b : DbtxpessimisticLayer) -> DbtxpessimisticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticLayer::add(self : DbtxpessimisticLayer, other : DbtxpessimisticLayer) -> DbtxpessimisticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_layer_copy(s : DbtxpessimisticLayer) -> DbtxpessimisticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticLayer::copy(self : DbtxpessimisticLayer) -> DbtxpessimisticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_layer_fill(s : DbtxpessimisticLayer, v : Double) -> DbtxpessimisticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticLayer::fill(self : DbtxpessimisticLayer, v : Double) -> DbtxpessimisticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_layer_min(s : DbtxpessimisticLayer) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticLayer::min(self : DbtxpessimisticLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_layer_max(s : DbtxpessimisticLayer) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticLayer::max(self : DbtxpessimisticLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_layer_to_string(s : DbtxpessimisticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticLayer::to_string(self : DbtxpessimisticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_pessimistic_buffer_make(size : Int) -> DbtxpessimisticBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_buffer_len(s : DbtxpessimisticBuffer) -> Int { s.size }
+pub fn DbtxpessimisticBuffer::len(self : DbtxpessimisticBuffer) -> Int { self.size }
 
-pub fn db_tx_pessimistic_buffer_get(s : DbtxpessimisticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticBuffer::get(self : DbtxpessimisticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_buffer_set(s : DbtxpessimisticBuffer, i : Int, v : Double) -> DbtxpessimisticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticBuffer::set(self : DbtxpessimisticBuffer, i : Int, v : Double) -> DbtxpessimisticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_buffer_sum(s : DbtxpessimisticBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticBuffer::sum(self : DbtxpessimisticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_buffer_mean(s : DbtxpessimisticBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticBuffer::mean(self : DbtxpessimisticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_buffer_scale(s : DbtxpessimisticBuffer, f : Double) -> DbtxpessimisticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticBuffer::scale(self : DbtxpessimisticBuffer, f : Double) -> DbtxpessimisticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_buffer_add(a : DbtxpessimisticBuffer, b : DbtxpessimisticBuffer) -> DbtxpessimisticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticBuffer::add(self : DbtxpessimisticBuffer, other : DbtxpessimisticBuffer) -> DbtxpessimisticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_buffer_copy(s : DbtxpessimisticBuffer) -> DbtxpessimisticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticBuffer::copy(self : DbtxpessimisticBuffer) -> DbtxpessimisticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_buffer_fill(s : DbtxpessimisticBuffer, v : Double) -> DbtxpessimisticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticBuffer::fill(self : DbtxpessimisticBuffer, v : Double) -> DbtxpessimisticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_buffer_min(s : DbtxpessimisticBuffer) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticBuffer::min(self : DbtxpessimisticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_buffer_max(s : DbtxpessimisticBuffer) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticBuffer::max(self : DbtxpessimisticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_buffer_to_string(s : DbtxpessimisticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticBuffer::to_string(self : DbtxpessimisticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_pessimistic_cursor_make(size : Int) -> DbtxpessimisticCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_cursor_len(s : DbtxpessimisticCursor) -> Int { s.size }
+pub fn DbtxpessimisticCursor::len(self : DbtxpessimisticCursor) -> Int { self.size }
 
-pub fn db_tx_pessimistic_cursor_get(s : DbtxpessimisticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticCursor::get(self : DbtxpessimisticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_cursor_set(s : DbtxpessimisticCursor, i : Int, v : Double) -> DbtxpessimisticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCursor::set(self : DbtxpessimisticCursor, i : Int, v : Double) -> DbtxpessimisticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cursor_sum(s : DbtxpessimisticCursor) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticCursor::sum(self : DbtxpessimisticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_cursor_mean(s : DbtxpessimisticCursor) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticCursor::mean(self : DbtxpessimisticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_cursor_scale(s : DbtxpessimisticCursor, f : Double) -> DbtxpessimisticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCursor::scale(self : DbtxpessimisticCursor, f : Double) -> DbtxpessimisticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cursor_add(a : DbtxpessimisticCursor, b : DbtxpessimisticCursor) -> DbtxpessimisticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticCursor::add(self : DbtxpessimisticCursor, other : DbtxpessimisticCursor) -> DbtxpessimisticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cursor_copy(s : DbtxpessimisticCursor) -> DbtxpessimisticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCursor::copy(self : DbtxpessimisticCursor) -> DbtxpessimisticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cursor_fill(s : DbtxpessimisticCursor, v : Double) -> DbtxpessimisticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticCursor::fill(self : DbtxpessimisticCursor, v : Double) -> DbtxpessimisticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_cursor_min(s : DbtxpessimisticCursor) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticCursor::min(self : DbtxpessimisticCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_cursor_max(s : DbtxpessimisticCursor) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticCursor::max(self : DbtxpessimisticCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_cursor_to_string(s : DbtxpessimisticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticCursor::to_string(self : DbtxpessimisticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticView {
@@ -912,45 +912,45 @@ pub fn db_tx_pessimistic_view_make(size : Int) -> DbtxpessimisticView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_view_len(s : DbtxpessimisticView) -> Int { s.size }
+pub fn DbtxpessimisticView::len(self : DbtxpessimisticView) -> Int { self.size }
 
-pub fn db_tx_pessimistic_view_get(s : DbtxpessimisticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticView::get(self : DbtxpessimisticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_view_set(s : DbtxpessimisticView, i : Int, v : Double) -> DbtxpessimisticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticView::set(self : DbtxpessimisticView, i : Int, v : Double) -> DbtxpessimisticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_view_sum(s : DbtxpessimisticView) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticView::sum(self : DbtxpessimisticView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_view_mean(s : DbtxpessimisticView) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticView::mean(self : DbtxpessimisticView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_view_scale(s : DbtxpessimisticView, f : Double) -> DbtxpessimisticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticView::scale(self : DbtxpessimisticView, f : Double) -> DbtxpessimisticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_view_add(a : DbtxpessimisticView, b : DbtxpessimisticView) -> DbtxpessimisticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticView::add(self : DbtxpessimisticView, other : DbtxpessimisticView) -> DbtxpessimisticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_view_copy(s : DbtxpessimisticView) -> DbtxpessimisticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticView::copy(self : DbtxpessimisticView) -> DbtxpessimisticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_view_fill(s : DbtxpessimisticView, v : Double) -> DbtxpessimisticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticView::fill(self : DbtxpessimisticView, v : Double) -> DbtxpessimisticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_view_min(s : DbtxpessimisticView) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticView::min(self : DbtxpessimisticView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_view_max(s : DbtxpessimisticView) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticView::max(self : DbtxpessimisticView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_view_to_string(s : DbtxpessimisticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticView::to_string(self : DbtxpessimisticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticRange {
@@ -963,45 +963,45 @@ pub fn db_tx_pessimistic_range_make(size : Int) -> DbtxpessimisticRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_range_len(s : DbtxpessimisticRange) -> Int { s.size }
+pub fn DbtxpessimisticRange::len(self : DbtxpessimisticRange) -> Int { self.size }
 
-pub fn db_tx_pessimistic_range_get(s : DbtxpessimisticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticRange::get(self : DbtxpessimisticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_range_set(s : DbtxpessimisticRange, i : Int, v : Double) -> DbtxpessimisticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticRange::set(self : DbtxpessimisticRange, i : Int, v : Double) -> DbtxpessimisticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_range_sum(s : DbtxpessimisticRange) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticRange::sum(self : DbtxpessimisticRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_range_mean(s : DbtxpessimisticRange) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticRange::mean(self : DbtxpessimisticRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_range_scale(s : DbtxpessimisticRange, f : Double) -> DbtxpessimisticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticRange::scale(self : DbtxpessimisticRange, f : Double) -> DbtxpessimisticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_range_add(a : DbtxpessimisticRange, b : DbtxpessimisticRange) -> DbtxpessimisticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticRange::add(self : DbtxpessimisticRange, other : DbtxpessimisticRange) -> DbtxpessimisticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_range_copy(s : DbtxpessimisticRange) -> DbtxpessimisticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticRange::copy(self : DbtxpessimisticRange) -> DbtxpessimisticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_range_fill(s : DbtxpessimisticRange, v : Double) -> DbtxpessimisticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticRange::fill(self : DbtxpessimisticRange, v : Double) -> DbtxpessimisticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_range_min(s : DbtxpessimisticRange) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticRange::min(self : DbtxpessimisticRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_range_max(s : DbtxpessimisticRange) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticRange::max(self : DbtxpessimisticRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_range_to_string(s : DbtxpessimisticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticRange::to_string(self : DbtxpessimisticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxpessimisticSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_pessimistic_slice_make(size : Int) -> DbtxpessimisticSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_pessimistic_slice_len(s : DbtxpessimisticSlice) -> Int { s.size }
+pub fn DbtxpessimisticSlice::len(self : DbtxpessimisticSlice) -> Int { self.size }
 
-pub fn db_tx_pessimistic_slice_get(s : DbtxpessimisticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxpessimisticSlice::get(self : DbtxpessimisticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_pessimistic_slice_set(s : DbtxpessimisticSlice, i : Int, v : Double) -> DbtxpessimisticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxpessimisticSlice::set(self : DbtxpessimisticSlice, i : Int, v : Double) -> DbtxpessimisticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_slice_sum(s : DbtxpessimisticSlice) -> Double { @_common.sum(s.data) }
+pub fn DbtxpessimisticSlice::sum(self : DbtxpessimisticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_pessimistic_slice_mean(s : DbtxpessimisticSlice) -> Double { @_common.mean(s.data) }
+pub fn DbtxpessimisticSlice::mean(self : DbtxpessimisticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_pessimistic_slice_scale(s : DbtxpessimisticSlice, f : Double) -> DbtxpessimisticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticSlice::scale(self : DbtxpessimisticSlice, f : Double) -> DbtxpessimisticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_slice_add(a : DbtxpessimisticSlice, b : DbtxpessimisticSlice) -> DbtxpessimisticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxpessimisticSlice::add(self : DbtxpessimisticSlice, other : DbtxpessimisticSlice) -> DbtxpessimisticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_slice_copy(s : DbtxpessimisticSlice) -> DbtxpessimisticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticSlice::copy(self : DbtxpessimisticSlice) -> DbtxpessimisticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_slice_fill(s : DbtxpessimisticSlice, v : Double) -> DbtxpessimisticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxpessimisticSlice::fill(self : DbtxpessimisticSlice, v : Double) -> DbtxpessimisticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_pessimistic_slice_min(s : DbtxpessimisticSlice) -> Double { @_common.min(s.data) }
+pub fn DbtxpessimisticSlice::min(self : DbtxpessimisticSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_pessimistic_slice_max(s : DbtxpessimisticSlice) -> Double { @_common.max(s.data) }
+pub fn DbtxpessimisticSlice::max(self : DbtxpessimisticSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_pessimistic_slice_to_string(s : DbtxpessimisticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxpessimisticSlice::to_string(self : DbtxpessimisticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_tree_binary_frame_make(size : Int) -> DstreebinaryFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_frame_len(s : DstreebinaryFrame) -> Int { s.size }
+pub fn DstreebinaryFrame::len(self : DstreebinaryFrame) -> Int { self.size }
 
-pub fn ds_tree_binary_frame_get(s : DstreebinaryFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryFrame::get(self : DstreebinaryFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_frame_set(s : DstreebinaryFrame, i : Int, v : Double) -> DstreebinaryFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryFrame::set(self : DstreebinaryFrame, i : Int, v : Double) -> DstreebinaryFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_frame_sum(s : DstreebinaryFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryFrame::sum(self : DstreebinaryFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_frame_mean(s : DstreebinaryFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryFrame::mean(self : DstreebinaryFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_frame_scale(s : DstreebinaryFrame, f : Double) -> DstreebinaryFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryFrame::scale(self : DstreebinaryFrame, f : Double) -> DstreebinaryFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_frame_add(a : DstreebinaryFrame, b : DstreebinaryFrame) -> DstreebinaryFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryFrame::add(self : DstreebinaryFrame, other : DstreebinaryFrame) -> DstreebinaryFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_frame_copy(s : DstreebinaryFrame) -> DstreebinaryFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryFrame::copy(self : DstreebinaryFrame) -> DstreebinaryFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_frame_fill(s : DstreebinaryFrame, v : Double) -> DstreebinaryFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryFrame::fill(self : DstreebinaryFrame, v : Double) -> DstreebinaryFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_frame_min(s : DstreebinaryFrame) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryFrame::min(self : DstreebinaryFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_frame_max(s : DstreebinaryFrame) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryFrame::max(self : DstreebinaryFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_frame_to_string(s : DstreebinaryFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryFrame::to_string(self : DstreebinaryFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_binary_table_make(size : Int) -> DstreebinaryTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_table_len(s : DstreebinaryTable) -> Int { s.size }
+pub fn DstreebinaryTable::len(self : DstreebinaryTable) -> Int { self.size }
 
-pub fn ds_tree_binary_table_get(s : DstreebinaryTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryTable::get(self : DstreebinaryTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_table_set(s : DstreebinaryTable, i : Int, v : Double) -> DstreebinaryTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryTable::set(self : DstreebinaryTable, i : Int, v : Double) -> DstreebinaryTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_table_sum(s : DstreebinaryTable) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryTable::sum(self : DstreebinaryTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_table_mean(s : DstreebinaryTable) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryTable::mean(self : DstreebinaryTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_table_scale(s : DstreebinaryTable, f : Double) -> DstreebinaryTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryTable::scale(self : DstreebinaryTable, f : Double) -> DstreebinaryTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_table_add(a : DstreebinaryTable, b : DstreebinaryTable) -> DstreebinaryTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryTable::add(self : DstreebinaryTable, other : DstreebinaryTable) -> DstreebinaryTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_table_copy(s : DstreebinaryTable) -> DstreebinaryTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryTable::copy(self : DstreebinaryTable) -> DstreebinaryTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_table_fill(s : DstreebinaryTable, v : Double) -> DstreebinaryTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryTable::fill(self : DstreebinaryTable, v : Double) -> DstreebinaryTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_table_min(s : DstreebinaryTable) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryTable::min(self : DstreebinaryTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_table_max(s : DstreebinaryTable) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryTable::max(self : DstreebinaryTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_table_to_string(s : DstreebinaryTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryTable::to_string(self : DstreebinaryTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_binary_graphn_make(size : Int) -> DstreebinaryGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_graphn_len(s : DstreebinaryGraphN) -> Int { s.size }
+pub fn DstreebinaryGraphN::len(self : DstreebinaryGraphN) -> Int { self.size }
 
-pub fn ds_tree_binary_graphn_get(s : DstreebinaryGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryGraphN::get(self : DstreebinaryGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_graphn_set(s : DstreebinaryGraphN, i : Int, v : Double) -> DstreebinaryGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryGraphN::set(self : DstreebinaryGraphN, i : Int, v : Double) -> DstreebinaryGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_graphn_sum(s : DstreebinaryGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryGraphN::sum(self : DstreebinaryGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_graphn_mean(s : DstreebinaryGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryGraphN::mean(self : DstreebinaryGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_graphn_scale(s : DstreebinaryGraphN, f : Double) -> DstreebinaryGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryGraphN::scale(self : DstreebinaryGraphN, f : Double) -> DstreebinaryGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_graphn_add(a : DstreebinaryGraphN, b : DstreebinaryGraphN) -> DstreebinaryGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryGraphN::add(self : DstreebinaryGraphN, other : DstreebinaryGraphN) -> DstreebinaryGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_graphn_copy(s : DstreebinaryGraphN) -> DstreebinaryGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryGraphN::copy(self : DstreebinaryGraphN) -> DstreebinaryGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_graphn_fill(s : DstreebinaryGraphN, v : Double) -> DstreebinaryGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryGraphN::fill(self : DstreebinaryGraphN, v : Double) -> DstreebinaryGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_graphn_min(s : DstreebinaryGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryGraphN::min(self : DstreebinaryGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_graphn_max(s : DstreebinaryGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryGraphN::max(self : DstreebinaryGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_graphn_to_string(s : DstreebinaryGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryGraphN::to_string(self : DstreebinaryGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_binary_node_make(size : Int) -> DstreebinaryNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_node_len(s : DstreebinaryNode) -> Int { s.size }
+pub fn DstreebinaryNode::len(self : DstreebinaryNode) -> Int { self.size }
 
-pub fn ds_tree_binary_node_get(s : DstreebinaryNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryNode::get(self : DstreebinaryNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_node_set(s : DstreebinaryNode, i : Int, v : Double) -> DstreebinaryNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryNode::set(self : DstreebinaryNode, i : Int, v : Double) -> DstreebinaryNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_node_sum(s : DstreebinaryNode) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryNode::sum(self : DstreebinaryNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_node_mean(s : DstreebinaryNode) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryNode::mean(self : DstreebinaryNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_node_scale(s : DstreebinaryNode, f : Double) -> DstreebinaryNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryNode::scale(self : DstreebinaryNode, f : Double) -> DstreebinaryNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_node_add(a : DstreebinaryNode, b : DstreebinaryNode) -> DstreebinaryNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryNode::add(self : DstreebinaryNode, other : DstreebinaryNode) -> DstreebinaryNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_node_copy(s : DstreebinaryNode) -> DstreebinaryNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryNode::copy(self : DstreebinaryNode) -> DstreebinaryNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_node_fill(s : DstreebinaryNode, v : Double) -> DstreebinaryNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryNode::fill(self : DstreebinaryNode, v : Double) -> DstreebinaryNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_node_min(s : DstreebinaryNode) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryNode::min(self : DstreebinaryNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_node_max(s : DstreebinaryNode) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryNode::max(self : DstreebinaryNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_node_to_string(s : DstreebinaryNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryNode::to_string(self : DstreebinaryNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_binary_edge_make(size : Int) -> DstreebinaryEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_edge_len(s : DstreebinaryEdge) -> Int { s.size }
+pub fn DstreebinaryEdge::len(self : DstreebinaryEdge) -> Int { self.size }
 
-pub fn ds_tree_binary_edge_get(s : DstreebinaryEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryEdge::get(self : DstreebinaryEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_edge_set(s : DstreebinaryEdge, i : Int, v : Double) -> DstreebinaryEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryEdge::set(self : DstreebinaryEdge, i : Int, v : Double) -> DstreebinaryEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_edge_sum(s : DstreebinaryEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryEdge::sum(self : DstreebinaryEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_edge_mean(s : DstreebinaryEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryEdge::mean(self : DstreebinaryEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_edge_scale(s : DstreebinaryEdge, f : Double) -> DstreebinaryEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryEdge::scale(self : DstreebinaryEdge, f : Double) -> DstreebinaryEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_edge_add(a : DstreebinaryEdge, b : DstreebinaryEdge) -> DstreebinaryEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryEdge::add(self : DstreebinaryEdge, other : DstreebinaryEdge) -> DstreebinaryEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_edge_copy(s : DstreebinaryEdge) -> DstreebinaryEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryEdge::copy(self : DstreebinaryEdge) -> DstreebinaryEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_edge_fill(s : DstreebinaryEdge, v : Double) -> DstreebinaryEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryEdge::fill(self : DstreebinaryEdge, v : Double) -> DstreebinaryEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_edge_min(s : DstreebinaryEdge) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryEdge::min(self : DstreebinaryEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_edge_max(s : DstreebinaryEdge) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryEdge::max(self : DstreebinaryEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_edge_to_string(s : DstreebinaryEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryEdge::to_string(self : DstreebinaryEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_binary_path_make(size : Int) -> DstreebinaryPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_path_len(s : DstreebinaryPath) -> Int { s.size }
+pub fn DstreebinaryPath::len(self : DstreebinaryPath) -> Int { self.size }
 
-pub fn ds_tree_binary_path_get(s : DstreebinaryPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryPath::get(self : DstreebinaryPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_path_set(s : DstreebinaryPath, i : Int, v : Double) -> DstreebinaryPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryPath::set(self : DstreebinaryPath, i : Int, v : Double) -> DstreebinaryPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_path_sum(s : DstreebinaryPath) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryPath::sum(self : DstreebinaryPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_path_mean(s : DstreebinaryPath) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryPath::mean(self : DstreebinaryPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_path_scale(s : DstreebinaryPath, f : Double) -> DstreebinaryPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryPath::scale(self : DstreebinaryPath, f : Double) -> DstreebinaryPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_path_add(a : DstreebinaryPath, b : DstreebinaryPath) -> DstreebinaryPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryPath::add(self : DstreebinaryPath, other : DstreebinaryPath) -> DstreebinaryPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_path_copy(s : DstreebinaryPath) -> DstreebinaryPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryPath::copy(self : DstreebinaryPath) -> DstreebinaryPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_path_fill(s : DstreebinaryPath, v : Double) -> DstreebinaryPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryPath::fill(self : DstreebinaryPath, v : Double) -> DstreebinaryPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_path_min(s : DstreebinaryPath) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryPath::min(self : DstreebinaryPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_path_max(s : DstreebinaryPath) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryPath::max(self : DstreebinaryPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_path_to_string(s : DstreebinaryPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryPath::to_string(self : DstreebinaryPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_binary_cluster_make(size : Int) -> DstreebinaryCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_cluster_len(s : DstreebinaryCluster) -> Int { s.size }
+pub fn DstreebinaryCluster::len(self : DstreebinaryCluster) -> Int { self.size }
 
-pub fn ds_tree_binary_cluster_get(s : DstreebinaryCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryCluster::get(self : DstreebinaryCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_cluster_set(s : DstreebinaryCluster, i : Int, v : Double) -> DstreebinaryCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryCluster::set(self : DstreebinaryCluster, i : Int, v : Double) -> DstreebinaryCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cluster_sum(s : DstreebinaryCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryCluster::sum(self : DstreebinaryCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_cluster_mean(s : DstreebinaryCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryCluster::mean(self : DstreebinaryCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_cluster_scale(s : DstreebinaryCluster, f : Double) -> DstreebinaryCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryCluster::scale(self : DstreebinaryCluster, f : Double) -> DstreebinaryCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cluster_add(a : DstreebinaryCluster, b : DstreebinaryCluster) -> DstreebinaryCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryCluster::add(self : DstreebinaryCluster, other : DstreebinaryCluster) -> DstreebinaryCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cluster_copy(s : DstreebinaryCluster) -> DstreebinaryCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryCluster::copy(self : DstreebinaryCluster) -> DstreebinaryCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cluster_fill(s : DstreebinaryCluster, v : Double) -> DstreebinaryCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryCluster::fill(self : DstreebinaryCluster, v : Double) -> DstreebinaryCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cluster_min(s : DstreebinaryCluster) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryCluster::min(self : DstreebinaryCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_cluster_max(s : DstreebinaryCluster) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryCluster::max(self : DstreebinaryCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_cluster_to_string(s : DstreebinaryCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryCluster::to_string(self : DstreebinaryCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_binary_model_make(size : Int) -> DstreebinaryModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_model_len(s : DstreebinaryModel) -> Int { s.size }
+pub fn DstreebinaryModel::len(self : DstreebinaryModel) -> Int { self.size }
 
-pub fn ds_tree_binary_model_get(s : DstreebinaryModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryModel::get(self : DstreebinaryModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_model_set(s : DstreebinaryModel, i : Int, v : Double) -> DstreebinaryModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryModel::set(self : DstreebinaryModel, i : Int, v : Double) -> DstreebinaryModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_model_sum(s : DstreebinaryModel) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryModel::sum(self : DstreebinaryModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_model_mean(s : DstreebinaryModel) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryModel::mean(self : DstreebinaryModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_model_scale(s : DstreebinaryModel, f : Double) -> DstreebinaryModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryModel::scale(self : DstreebinaryModel, f : Double) -> DstreebinaryModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_model_add(a : DstreebinaryModel, b : DstreebinaryModel) -> DstreebinaryModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryModel::add(self : DstreebinaryModel, other : DstreebinaryModel) -> DstreebinaryModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_model_copy(s : DstreebinaryModel) -> DstreebinaryModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryModel::copy(self : DstreebinaryModel) -> DstreebinaryModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_model_fill(s : DstreebinaryModel, v : Double) -> DstreebinaryModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryModel::fill(self : DstreebinaryModel, v : Double) -> DstreebinaryModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_model_min(s : DstreebinaryModel) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryModel::min(self : DstreebinaryModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_model_max(s : DstreebinaryModel) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryModel::max(self : DstreebinaryModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_model_to_string(s : DstreebinaryModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryModel::to_string(self : DstreebinaryModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_binary_layer_make(size : Int) -> DstreebinaryLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_layer_len(s : DstreebinaryLayer) -> Int { s.size }
+pub fn DstreebinaryLayer::len(self : DstreebinaryLayer) -> Int { self.size }
 
-pub fn ds_tree_binary_layer_get(s : DstreebinaryLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryLayer::get(self : DstreebinaryLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_layer_set(s : DstreebinaryLayer, i : Int, v : Double) -> DstreebinaryLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryLayer::set(self : DstreebinaryLayer, i : Int, v : Double) -> DstreebinaryLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_layer_sum(s : DstreebinaryLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryLayer::sum(self : DstreebinaryLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_layer_mean(s : DstreebinaryLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryLayer::mean(self : DstreebinaryLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_layer_scale(s : DstreebinaryLayer, f : Double) -> DstreebinaryLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryLayer::scale(self : DstreebinaryLayer, f : Double) -> DstreebinaryLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_layer_add(a : DstreebinaryLayer, b : DstreebinaryLayer) -> DstreebinaryLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryLayer::add(self : DstreebinaryLayer, other : DstreebinaryLayer) -> DstreebinaryLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_layer_copy(s : DstreebinaryLayer) -> DstreebinaryLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryLayer::copy(self : DstreebinaryLayer) -> DstreebinaryLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_layer_fill(s : DstreebinaryLayer, v : Double) -> DstreebinaryLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryLayer::fill(self : DstreebinaryLayer, v : Double) -> DstreebinaryLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_layer_min(s : DstreebinaryLayer) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryLayer::min(self : DstreebinaryLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_layer_max(s : DstreebinaryLayer) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryLayer::max(self : DstreebinaryLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_layer_to_string(s : DstreebinaryLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryLayer::to_string(self : DstreebinaryLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_binary_buffer_make(size : Int) -> DstreebinaryBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_buffer_len(s : DstreebinaryBuffer) -> Int { s.size }
+pub fn DstreebinaryBuffer::len(self : DstreebinaryBuffer) -> Int { self.size }
 
-pub fn ds_tree_binary_buffer_get(s : DstreebinaryBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryBuffer::get(self : DstreebinaryBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_buffer_set(s : DstreebinaryBuffer, i : Int, v : Double) -> DstreebinaryBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryBuffer::set(self : DstreebinaryBuffer, i : Int, v : Double) -> DstreebinaryBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_buffer_sum(s : DstreebinaryBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryBuffer::sum(self : DstreebinaryBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_buffer_mean(s : DstreebinaryBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryBuffer::mean(self : DstreebinaryBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_buffer_scale(s : DstreebinaryBuffer, f : Double) -> DstreebinaryBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryBuffer::scale(self : DstreebinaryBuffer, f : Double) -> DstreebinaryBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_buffer_add(a : DstreebinaryBuffer, b : DstreebinaryBuffer) -> DstreebinaryBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryBuffer::add(self : DstreebinaryBuffer, other : DstreebinaryBuffer) -> DstreebinaryBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_buffer_copy(s : DstreebinaryBuffer) -> DstreebinaryBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryBuffer::copy(self : DstreebinaryBuffer) -> DstreebinaryBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_buffer_fill(s : DstreebinaryBuffer, v : Double) -> DstreebinaryBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryBuffer::fill(self : DstreebinaryBuffer, v : Double) -> DstreebinaryBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_buffer_min(s : DstreebinaryBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryBuffer::min(self : DstreebinaryBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_buffer_max(s : DstreebinaryBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryBuffer::max(self : DstreebinaryBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_buffer_to_string(s : DstreebinaryBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryBuffer::to_string(self : DstreebinaryBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_binary_cursor_make(size : Int) -> DstreebinaryCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_cursor_len(s : DstreebinaryCursor) -> Int { s.size }
+pub fn DstreebinaryCursor::len(self : DstreebinaryCursor) -> Int { self.size }
 
-pub fn ds_tree_binary_cursor_get(s : DstreebinaryCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryCursor::get(self : DstreebinaryCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_cursor_set(s : DstreebinaryCursor, i : Int, v : Double) -> DstreebinaryCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryCursor::set(self : DstreebinaryCursor, i : Int, v : Double) -> DstreebinaryCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cursor_sum(s : DstreebinaryCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryCursor::sum(self : DstreebinaryCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_cursor_mean(s : DstreebinaryCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryCursor::mean(self : DstreebinaryCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_cursor_scale(s : DstreebinaryCursor, f : Double) -> DstreebinaryCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryCursor::scale(self : DstreebinaryCursor, f : Double) -> DstreebinaryCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cursor_add(a : DstreebinaryCursor, b : DstreebinaryCursor) -> DstreebinaryCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryCursor::add(self : DstreebinaryCursor, other : DstreebinaryCursor) -> DstreebinaryCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cursor_copy(s : DstreebinaryCursor) -> DstreebinaryCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryCursor::copy(self : DstreebinaryCursor) -> DstreebinaryCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cursor_fill(s : DstreebinaryCursor, v : Double) -> DstreebinaryCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryCursor::fill(self : DstreebinaryCursor, v : Double) -> DstreebinaryCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_cursor_min(s : DstreebinaryCursor) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryCursor::min(self : DstreebinaryCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_cursor_max(s : DstreebinaryCursor) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryCursor::max(self : DstreebinaryCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_cursor_to_string(s : DstreebinaryCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryCursor::to_string(self : DstreebinaryCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryView {
@@ -912,45 +912,45 @@ pub fn ds_tree_binary_view_make(size : Int) -> DstreebinaryView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_view_len(s : DstreebinaryView) -> Int { s.size }
+pub fn DstreebinaryView::len(self : DstreebinaryView) -> Int { self.size }
 
-pub fn ds_tree_binary_view_get(s : DstreebinaryView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryView::get(self : DstreebinaryView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_view_set(s : DstreebinaryView, i : Int, v : Double) -> DstreebinaryView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryView::set(self : DstreebinaryView, i : Int, v : Double) -> DstreebinaryView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_view_sum(s : DstreebinaryView) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryView::sum(self : DstreebinaryView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_view_mean(s : DstreebinaryView) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryView::mean(self : DstreebinaryView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_view_scale(s : DstreebinaryView, f : Double) -> DstreebinaryView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryView::scale(self : DstreebinaryView, f : Double) -> DstreebinaryView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_view_add(a : DstreebinaryView, b : DstreebinaryView) -> DstreebinaryView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryView::add(self : DstreebinaryView, other : DstreebinaryView) -> DstreebinaryView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_view_copy(s : DstreebinaryView) -> DstreebinaryView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryView::copy(self : DstreebinaryView) -> DstreebinaryView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_view_fill(s : DstreebinaryView, v : Double) -> DstreebinaryView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryView::fill(self : DstreebinaryView, v : Double) -> DstreebinaryView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_view_min(s : DstreebinaryView) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryView::min(self : DstreebinaryView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_view_max(s : DstreebinaryView) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryView::max(self : DstreebinaryView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_view_to_string(s : DstreebinaryView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryView::to_string(self : DstreebinaryView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinaryRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_binary_range_make(size : Int) -> DstreebinaryRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_range_len(s : DstreebinaryRange) -> Int { s.size }
+pub fn DstreebinaryRange::len(self : DstreebinaryRange) -> Int { self.size }
 
-pub fn ds_tree_binary_range_get(s : DstreebinaryRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinaryRange::get(self : DstreebinaryRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_range_set(s : DstreebinaryRange, i : Int, v : Double) -> DstreebinaryRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinaryRange::set(self : DstreebinaryRange, i : Int, v : Double) -> DstreebinaryRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_range_sum(s : DstreebinaryRange) -> Double { @_common.sum(s.data) }
+pub fn DstreebinaryRange::sum(self : DstreebinaryRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_range_mean(s : DstreebinaryRange) -> Double { @_common.mean(s.data) }
+pub fn DstreebinaryRange::mean(self : DstreebinaryRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_range_scale(s : DstreebinaryRange, f : Double) -> DstreebinaryRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinaryRange::scale(self : DstreebinaryRange, f : Double) -> DstreebinaryRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_range_add(a : DstreebinaryRange, b : DstreebinaryRange) -> DstreebinaryRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinaryRange::add(self : DstreebinaryRange, other : DstreebinaryRange) -> DstreebinaryRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_range_copy(s : DstreebinaryRange) -> DstreebinaryRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinaryRange::copy(self : DstreebinaryRange) -> DstreebinaryRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_range_fill(s : DstreebinaryRange, v : Double) -> DstreebinaryRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinaryRange::fill(self : DstreebinaryRange, v : Double) -> DstreebinaryRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_range_min(s : DstreebinaryRange) -> Double { @_common.min(s.data) }
+pub fn DstreebinaryRange::min(self : DstreebinaryRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_range_max(s : DstreebinaryRange) -> Double { @_common.max(s.data) }
+pub fn DstreebinaryRange::max(self : DstreebinaryRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_range_to_string(s : DstreebinaryRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinaryRange::to_string(self : DstreebinaryRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreebinarySlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_binary_slice_make(size : Int) -> DstreebinarySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_binary_slice_len(s : DstreebinarySlice) -> Int { s.size }
+pub fn DstreebinarySlice::len(self : DstreebinarySlice) -> Int { self.size }
 
-pub fn ds_tree_binary_slice_get(s : DstreebinarySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreebinarySlice::get(self : DstreebinarySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_binary_slice_set(s : DstreebinarySlice, i : Int, v : Double) -> DstreebinarySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreebinarySlice::set(self : DstreebinarySlice, i : Int, v : Double) -> DstreebinarySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_slice_sum(s : DstreebinarySlice) -> Double { @_common.sum(s.data) }
+pub fn DstreebinarySlice::sum(self : DstreebinarySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_binary_slice_mean(s : DstreebinarySlice) -> Double { @_common.mean(s.data) }
+pub fn DstreebinarySlice::mean(self : DstreebinarySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_binary_slice_scale(s : DstreebinarySlice, f : Double) -> DstreebinarySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreebinarySlice::scale(self : DstreebinarySlice, f : Double) -> DstreebinarySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_slice_add(a : DstreebinarySlice, b : DstreebinarySlice) -> DstreebinarySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreebinarySlice::add(self : DstreebinarySlice, other : DstreebinarySlice) -> DstreebinarySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_binary_slice_copy(s : DstreebinarySlice) -> DstreebinarySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreebinarySlice::copy(self : DstreebinarySlice) -> DstreebinarySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_slice_fill(s : DstreebinarySlice, v : Double) -> DstreebinarySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreebinarySlice::fill(self : DstreebinarySlice, v : Double) -> DstreebinarySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_binary_slice_min(s : DstreebinarySlice) -> Double { @_common.min(s.data) }
+pub fn DstreebinarySlice::min(self : DstreebinarySlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_binary_slice_max(s : DstreebinarySlice) -> Double { @_common.max(s.data) }
+pub fn DstreebinarySlice::max(self : DstreebinarySlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_binary_slice_to_string(s : DstreebinarySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreebinarySlice::to_string(self : DstreebinarySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

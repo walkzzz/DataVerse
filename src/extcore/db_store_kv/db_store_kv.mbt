@@ -351,45 +351,45 @@ pub fn db_store_kv_frame_make(size : Int) -> DbstorekvFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_frame_len(s : DbstorekvFrame) -> Int { s.size }
+pub fn DbstorekvFrame::len(self : DbstorekvFrame) -> Int { self.size }
 
-pub fn db_store_kv_frame_get(s : DbstorekvFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvFrame::get(self : DbstorekvFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_frame_set(s : DbstorekvFrame, i : Int, v : Double) -> DbstorekvFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvFrame::set(self : DbstorekvFrame, i : Int, v : Double) -> DbstorekvFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_frame_sum(s : DbstorekvFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvFrame::sum(self : DbstorekvFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_frame_mean(s : DbstorekvFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvFrame::mean(self : DbstorekvFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_frame_scale(s : DbstorekvFrame, f : Double) -> DbstorekvFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvFrame::scale(self : DbstorekvFrame, f : Double) -> DbstorekvFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_frame_add(a : DbstorekvFrame, b : DbstorekvFrame) -> DbstorekvFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvFrame::add(self : DbstorekvFrame, other : DbstorekvFrame) -> DbstorekvFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_frame_copy(s : DbstorekvFrame) -> DbstorekvFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvFrame::copy(self : DbstorekvFrame) -> DbstorekvFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_frame_fill(s : DbstorekvFrame, v : Double) -> DbstorekvFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvFrame::fill(self : DbstorekvFrame, v : Double) -> DbstorekvFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_frame_min(s : DbstorekvFrame) -> Double { @_common.min(s.data) }
+pub fn DbstorekvFrame::min(self : DbstorekvFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_frame_max(s : DbstorekvFrame) -> Double { @_common.max(s.data) }
+pub fn DbstorekvFrame::max(self : DbstorekvFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_frame_to_string(s : DbstorekvFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvFrame::to_string(self : DbstorekvFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvTable {
@@ -402,45 +402,45 @@ pub fn db_store_kv_table_make(size : Int) -> DbstorekvTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_table_len(s : DbstorekvTable) -> Int { s.size }
+pub fn DbstorekvTable::len(self : DbstorekvTable) -> Int { self.size }
 
-pub fn db_store_kv_table_get(s : DbstorekvTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvTable::get(self : DbstorekvTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_table_set(s : DbstorekvTable, i : Int, v : Double) -> DbstorekvTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvTable::set(self : DbstorekvTable, i : Int, v : Double) -> DbstorekvTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_table_sum(s : DbstorekvTable) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvTable::sum(self : DbstorekvTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_table_mean(s : DbstorekvTable) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvTable::mean(self : DbstorekvTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_table_scale(s : DbstorekvTable, f : Double) -> DbstorekvTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvTable::scale(self : DbstorekvTable, f : Double) -> DbstorekvTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_table_add(a : DbstorekvTable, b : DbstorekvTable) -> DbstorekvTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvTable::add(self : DbstorekvTable, other : DbstorekvTable) -> DbstorekvTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_table_copy(s : DbstorekvTable) -> DbstorekvTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvTable::copy(self : DbstorekvTable) -> DbstorekvTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_table_fill(s : DbstorekvTable, v : Double) -> DbstorekvTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvTable::fill(self : DbstorekvTable, v : Double) -> DbstorekvTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_table_min(s : DbstorekvTable) -> Double { @_common.min(s.data) }
+pub fn DbstorekvTable::min(self : DbstorekvTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_table_max(s : DbstorekvTable) -> Double { @_common.max(s.data) }
+pub fn DbstorekvTable::max(self : DbstorekvTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_table_to_string(s : DbstorekvTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvTable::to_string(self : DbstorekvTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_kv_graphn_make(size : Int) -> DbstorekvGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_graphn_len(s : DbstorekvGraphN) -> Int { s.size }
+pub fn DbstorekvGraphN::len(self : DbstorekvGraphN) -> Int { self.size }
 
-pub fn db_store_kv_graphn_get(s : DbstorekvGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvGraphN::get(self : DbstorekvGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_graphn_set(s : DbstorekvGraphN, i : Int, v : Double) -> DbstorekvGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvGraphN::set(self : DbstorekvGraphN, i : Int, v : Double) -> DbstorekvGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_graphn_sum(s : DbstorekvGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvGraphN::sum(self : DbstorekvGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_graphn_mean(s : DbstorekvGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvGraphN::mean(self : DbstorekvGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_graphn_scale(s : DbstorekvGraphN, f : Double) -> DbstorekvGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvGraphN::scale(self : DbstorekvGraphN, f : Double) -> DbstorekvGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_graphn_add(a : DbstorekvGraphN, b : DbstorekvGraphN) -> DbstorekvGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvGraphN::add(self : DbstorekvGraphN, other : DbstorekvGraphN) -> DbstorekvGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_graphn_copy(s : DbstorekvGraphN) -> DbstorekvGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvGraphN::copy(self : DbstorekvGraphN) -> DbstorekvGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_graphn_fill(s : DbstorekvGraphN, v : Double) -> DbstorekvGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvGraphN::fill(self : DbstorekvGraphN, v : Double) -> DbstorekvGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_graphn_min(s : DbstorekvGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstorekvGraphN::min(self : DbstorekvGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_graphn_max(s : DbstorekvGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstorekvGraphN::max(self : DbstorekvGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_graphn_to_string(s : DbstorekvGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvGraphN::to_string(self : DbstorekvGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvNode {
@@ -504,45 +504,45 @@ pub fn db_store_kv_node_make(size : Int) -> DbstorekvNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_node_len(s : DbstorekvNode) -> Int { s.size }
+pub fn DbstorekvNode::len(self : DbstorekvNode) -> Int { self.size }
 
-pub fn db_store_kv_node_get(s : DbstorekvNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvNode::get(self : DbstorekvNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_node_set(s : DbstorekvNode, i : Int, v : Double) -> DbstorekvNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvNode::set(self : DbstorekvNode, i : Int, v : Double) -> DbstorekvNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_node_sum(s : DbstorekvNode) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvNode::sum(self : DbstorekvNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_node_mean(s : DbstorekvNode) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvNode::mean(self : DbstorekvNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_node_scale(s : DbstorekvNode, f : Double) -> DbstorekvNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvNode::scale(self : DbstorekvNode, f : Double) -> DbstorekvNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_node_add(a : DbstorekvNode, b : DbstorekvNode) -> DbstorekvNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvNode::add(self : DbstorekvNode, other : DbstorekvNode) -> DbstorekvNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_node_copy(s : DbstorekvNode) -> DbstorekvNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvNode::copy(self : DbstorekvNode) -> DbstorekvNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_node_fill(s : DbstorekvNode, v : Double) -> DbstorekvNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvNode::fill(self : DbstorekvNode, v : Double) -> DbstorekvNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_node_min(s : DbstorekvNode) -> Double { @_common.min(s.data) }
+pub fn DbstorekvNode::min(self : DbstorekvNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_node_max(s : DbstorekvNode) -> Double { @_common.max(s.data) }
+pub fn DbstorekvNode::max(self : DbstorekvNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_node_to_string(s : DbstorekvNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvNode::to_string(self : DbstorekvNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvEdge {
@@ -555,45 +555,45 @@ pub fn db_store_kv_edge_make(size : Int) -> DbstorekvEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_edge_len(s : DbstorekvEdge) -> Int { s.size }
+pub fn DbstorekvEdge::len(self : DbstorekvEdge) -> Int { self.size }
 
-pub fn db_store_kv_edge_get(s : DbstorekvEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvEdge::get(self : DbstorekvEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_edge_set(s : DbstorekvEdge, i : Int, v : Double) -> DbstorekvEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvEdge::set(self : DbstorekvEdge, i : Int, v : Double) -> DbstorekvEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_edge_sum(s : DbstorekvEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvEdge::sum(self : DbstorekvEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_edge_mean(s : DbstorekvEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvEdge::mean(self : DbstorekvEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_edge_scale(s : DbstorekvEdge, f : Double) -> DbstorekvEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvEdge::scale(self : DbstorekvEdge, f : Double) -> DbstorekvEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_edge_add(a : DbstorekvEdge, b : DbstorekvEdge) -> DbstorekvEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvEdge::add(self : DbstorekvEdge, other : DbstorekvEdge) -> DbstorekvEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_edge_copy(s : DbstorekvEdge) -> DbstorekvEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvEdge::copy(self : DbstorekvEdge) -> DbstorekvEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_edge_fill(s : DbstorekvEdge, v : Double) -> DbstorekvEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvEdge::fill(self : DbstorekvEdge, v : Double) -> DbstorekvEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_edge_min(s : DbstorekvEdge) -> Double { @_common.min(s.data) }
+pub fn DbstorekvEdge::min(self : DbstorekvEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_edge_max(s : DbstorekvEdge) -> Double { @_common.max(s.data) }
+pub fn DbstorekvEdge::max(self : DbstorekvEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_edge_to_string(s : DbstorekvEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvEdge::to_string(self : DbstorekvEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvPath {
@@ -606,45 +606,45 @@ pub fn db_store_kv_path_make(size : Int) -> DbstorekvPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_path_len(s : DbstorekvPath) -> Int { s.size }
+pub fn DbstorekvPath::len(self : DbstorekvPath) -> Int { self.size }
 
-pub fn db_store_kv_path_get(s : DbstorekvPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvPath::get(self : DbstorekvPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_path_set(s : DbstorekvPath, i : Int, v : Double) -> DbstorekvPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvPath::set(self : DbstorekvPath, i : Int, v : Double) -> DbstorekvPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_path_sum(s : DbstorekvPath) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvPath::sum(self : DbstorekvPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_path_mean(s : DbstorekvPath) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvPath::mean(self : DbstorekvPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_path_scale(s : DbstorekvPath, f : Double) -> DbstorekvPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvPath::scale(self : DbstorekvPath, f : Double) -> DbstorekvPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_path_add(a : DbstorekvPath, b : DbstorekvPath) -> DbstorekvPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvPath::add(self : DbstorekvPath, other : DbstorekvPath) -> DbstorekvPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_path_copy(s : DbstorekvPath) -> DbstorekvPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvPath::copy(self : DbstorekvPath) -> DbstorekvPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_path_fill(s : DbstorekvPath, v : Double) -> DbstorekvPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvPath::fill(self : DbstorekvPath, v : Double) -> DbstorekvPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_path_min(s : DbstorekvPath) -> Double { @_common.min(s.data) }
+pub fn DbstorekvPath::min(self : DbstorekvPath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_path_max(s : DbstorekvPath) -> Double { @_common.max(s.data) }
+pub fn DbstorekvPath::max(self : DbstorekvPath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_path_to_string(s : DbstorekvPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvPath::to_string(self : DbstorekvPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvCluster {
@@ -657,45 +657,45 @@ pub fn db_store_kv_cluster_make(size : Int) -> DbstorekvCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_cluster_len(s : DbstorekvCluster) -> Int { s.size }
+pub fn DbstorekvCluster::len(self : DbstorekvCluster) -> Int { self.size }
 
-pub fn db_store_kv_cluster_get(s : DbstorekvCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvCluster::get(self : DbstorekvCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_cluster_set(s : DbstorekvCluster, i : Int, v : Double) -> DbstorekvCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvCluster::set(self : DbstorekvCluster, i : Int, v : Double) -> DbstorekvCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cluster_sum(s : DbstorekvCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvCluster::sum(self : DbstorekvCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_cluster_mean(s : DbstorekvCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvCluster::mean(self : DbstorekvCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_cluster_scale(s : DbstorekvCluster, f : Double) -> DbstorekvCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvCluster::scale(self : DbstorekvCluster, f : Double) -> DbstorekvCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cluster_add(a : DbstorekvCluster, b : DbstorekvCluster) -> DbstorekvCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvCluster::add(self : DbstorekvCluster, other : DbstorekvCluster) -> DbstorekvCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_cluster_copy(s : DbstorekvCluster) -> DbstorekvCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvCluster::copy(self : DbstorekvCluster) -> DbstorekvCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cluster_fill(s : DbstorekvCluster, v : Double) -> DbstorekvCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvCluster::fill(self : DbstorekvCluster, v : Double) -> DbstorekvCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cluster_min(s : DbstorekvCluster) -> Double { @_common.min(s.data) }
+pub fn DbstorekvCluster::min(self : DbstorekvCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_cluster_max(s : DbstorekvCluster) -> Double { @_common.max(s.data) }
+pub fn DbstorekvCluster::max(self : DbstorekvCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_cluster_to_string(s : DbstorekvCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvCluster::to_string(self : DbstorekvCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvModel {
@@ -708,45 +708,45 @@ pub fn db_store_kv_model_make(size : Int) -> DbstorekvModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_model_len(s : DbstorekvModel) -> Int { s.size }
+pub fn DbstorekvModel::len(self : DbstorekvModel) -> Int { self.size }
 
-pub fn db_store_kv_model_get(s : DbstorekvModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvModel::get(self : DbstorekvModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_model_set(s : DbstorekvModel, i : Int, v : Double) -> DbstorekvModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvModel::set(self : DbstorekvModel, i : Int, v : Double) -> DbstorekvModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_model_sum(s : DbstorekvModel) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvModel::sum(self : DbstorekvModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_model_mean(s : DbstorekvModel) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvModel::mean(self : DbstorekvModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_model_scale(s : DbstorekvModel, f : Double) -> DbstorekvModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvModel::scale(self : DbstorekvModel, f : Double) -> DbstorekvModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_model_add(a : DbstorekvModel, b : DbstorekvModel) -> DbstorekvModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvModel::add(self : DbstorekvModel, other : DbstorekvModel) -> DbstorekvModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_model_copy(s : DbstorekvModel) -> DbstorekvModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvModel::copy(self : DbstorekvModel) -> DbstorekvModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_model_fill(s : DbstorekvModel, v : Double) -> DbstorekvModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvModel::fill(self : DbstorekvModel, v : Double) -> DbstorekvModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_model_min(s : DbstorekvModel) -> Double { @_common.min(s.data) }
+pub fn DbstorekvModel::min(self : DbstorekvModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_model_max(s : DbstorekvModel) -> Double { @_common.max(s.data) }
+pub fn DbstorekvModel::max(self : DbstorekvModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_model_to_string(s : DbstorekvModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvModel::to_string(self : DbstorekvModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvLayer {
@@ -759,45 +759,45 @@ pub fn db_store_kv_layer_make(size : Int) -> DbstorekvLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_layer_len(s : DbstorekvLayer) -> Int { s.size }
+pub fn DbstorekvLayer::len(self : DbstorekvLayer) -> Int { self.size }
 
-pub fn db_store_kv_layer_get(s : DbstorekvLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvLayer::get(self : DbstorekvLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_layer_set(s : DbstorekvLayer, i : Int, v : Double) -> DbstorekvLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvLayer::set(self : DbstorekvLayer, i : Int, v : Double) -> DbstorekvLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_layer_sum(s : DbstorekvLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvLayer::sum(self : DbstorekvLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_layer_mean(s : DbstorekvLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvLayer::mean(self : DbstorekvLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_layer_scale(s : DbstorekvLayer, f : Double) -> DbstorekvLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvLayer::scale(self : DbstorekvLayer, f : Double) -> DbstorekvLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_layer_add(a : DbstorekvLayer, b : DbstorekvLayer) -> DbstorekvLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvLayer::add(self : DbstorekvLayer, other : DbstorekvLayer) -> DbstorekvLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_layer_copy(s : DbstorekvLayer) -> DbstorekvLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvLayer::copy(self : DbstorekvLayer) -> DbstorekvLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_layer_fill(s : DbstorekvLayer, v : Double) -> DbstorekvLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvLayer::fill(self : DbstorekvLayer, v : Double) -> DbstorekvLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_layer_min(s : DbstorekvLayer) -> Double { @_common.min(s.data) }
+pub fn DbstorekvLayer::min(self : DbstorekvLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_layer_max(s : DbstorekvLayer) -> Double { @_common.max(s.data) }
+pub fn DbstorekvLayer::max(self : DbstorekvLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_layer_to_string(s : DbstorekvLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvLayer::to_string(self : DbstorekvLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_kv_buffer_make(size : Int) -> DbstorekvBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_buffer_len(s : DbstorekvBuffer) -> Int { s.size }
+pub fn DbstorekvBuffer::len(self : DbstorekvBuffer) -> Int { self.size }
 
-pub fn db_store_kv_buffer_get(s : DbstorekvBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvBuffer::get(self : DbstorekvBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_buffer_set(s : DbstorekvBuffer, i : Int, v : Double) -> DbstorekvBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvBuffer::set(self : DbstorekvBuffer, i : Int, v : Double) -> DbstorekvBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_buffer_sum(s : DbstorekvBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvBuffer::sum(self : DbstorekvBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_buffer_mean(s : DbstorekvBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvBuffer::mean(self : DbstorekvBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_buffer_scale(s : DbstorekvBuffer, f : Double) -> DbstorekvBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvBuffer::scale(self : DbstorekvBuffer, f : Double) -> DbstorekvBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_buffer_add(a : DbstorekvBuffer, b : DbstorekvBuffer) -> DbstorekvBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvBuffer::add(self : DbstorekvBuffer, other : DbstorekvBuffer) -> DbstorekvBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_buffer_copy(s : DbstorekvBuffer) -> DbstorekvBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvBuffer::copy(self : DbstorekvBuffer) -> DbstorekvBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_buffer_fill(s : DbstorekvBuffer, v : Double) -> DbstorekvBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvBuffer::fill(self : DbstorekvBuffer, v : Double) -> DbstorekvBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_buffer_min(s : DbstorekvBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstorekvBuffer::min(self : DbstorekvBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_buffer_max(s : DbstorekvBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstorekvBuffer::max(self : DbstorekvBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_buffer_to_string(s : DbstorekvBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvBuffer::to_string(self : DbstorekvBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvCursor {
@@ -861,45 +861,45 @@ pub fn db_store_kv_cursor_make(size : Int) -> DbstorekvCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_cursor_len(s : DbstorekvCursor) -> Int { s.size }
+pub fn DbstorekvCursor::len(self : DbstorekvCursor) -> Int { self.size }
 
-pub fn db_store_kv_cursor_get(s : DbstorekvCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvCursor::get(self : DbstorekvCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_cursor_set(s : DbstorekvCursor, i : Int, v : Double) -> DbstorekvCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvCursor::set(self : DbstorekvCursor, i : Int, v : Double) -> DbstorekvCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cursor_sum(s : DbstorekvCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvCursor::sum(self : DbstorekvCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_cursor_mean(s : DbstorekvCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvCursor::mean(self : DbstorekvCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_cursor_scale(s : DbstorekvCursor, f : Double) -> DbstorekvCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvCursor::scale(self : DbstorekvCursor, f : Double) -> DbstorekvCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cursor_add(a : DbstorekvCursor, b : DbstorekvCursor) -> DbstorekvCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvCursor::add(self : DbstorekvCursor, other : DbstorekvCursor) -> DbstorekvCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_cursor_copy(s : DbstorekvCursor) -> DbstorekvCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvCursor::copy(self : DbstorekvCursor) -> DbstorekvCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cursor_fill(s : DbstorekvCursor, v : Double) -> DbstorekvCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvCursor::fill(self : DbstorekvCursor, v : Double) -> DbstorekvCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_cursor_min(s : DbstorekvCursor) -> Double { @_common.min(s.data) }
+pub fn DbstorekvCursor::min(self : DbstorekvCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_cursor_max(s : DbstorekvCursor) -> Double { @_common.max(s.data) }
+pub fn DbstorekvCursor::max(self : DbstorekvCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_cursor_to_string(s : DbstorekvCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvCursor::to_string(self : DbstorekvCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvView {
@@ -912,45 +912,45 @@ pub fn db_store_kv_view_make(size : Int) -> DbstorekvView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_view_len(s : DbstorekvView) -> Int { s.size }
+pub fn DbstorekvView::len(self : DbstorekvView) -> Int { self.size }
 
-pub fn db_store_kv_view_get(s : DbstorekvView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvView::get(self : DbstorekvView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_view_set(s : DbstorekvView, i : Int, v : Double) -> DbstorekvView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvView::set(self : DbstorekvView, i : Int, v : Double) -> DbstorekvView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_view_sum(s : DbstorekvView) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvView::sum(self : DbstorekvView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_view_mean(s : DbstorekvView) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvView::mean(self : DbstorekvView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_view_scale(s : DbstorekvView, f : Double) -> DbstorekvView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvView::scale(self : DbstorekvView, f : Double) -> DbstorekvView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_view_add(a : DbstorekvView, b : DbstorekvView) -> DbstorekvView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvView::add(self : DbstorekvView, other : DbstorekvView) -> DbstorekvView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_view_copy(s : DbstorekvView) -> DbstorekvView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvView::copy(self : DbstorekvView) -> DbstorekvView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_view_fill(s : DbstorekvView, v : Double) -> DbstorekvView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvView::fill(self : DbstorekvView, v : Double) -> DbstorekvView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_view_min(s : DbstorekvView) -> Double { @_common.min(s.data) }
+pub fn DbstorekvView::min(self : DbstorekvView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_view_max(s : DbstorekvView) -> Double { @_common.max(s.data) }
+pub fn DbstorekvView::max(self : DbstorekvView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_view_to_string(s : DbstorekvView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvView::to_string(self : DbstorekvView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvRange {
@@ -963,45 +963,45 @@ pub fn db_store_kv_range_make(size : Int) -> DbstorekvRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_range_len(s : DbstorekvRange) -> Int { s.size }
+pub fn DbstorekvRange::len(self : DbstorekvRange) -> Int { self.size }
 
-pub fn db_store_kv_range_get(s : DbstorekvRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvRange::get(self : DbstorekvRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_range_set(s : DbstorekvRange, i : Int, v : Double) -> DbstorekvRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvRange::set(self : DbstorekvRange, i : Int, v : Double) -> DbstorekvRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_range_sum(s : DbstorekvRange) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvRange::sum(self : DbstorekvRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_range_mean(s : DbstorekvRange) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvRange::mean(self : DbstorekvRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_range_scale(s : DbstorekvRange, f : Double) -> DbstorekvRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvRange::scale(self : DbstorekvRange, f : Double) -> DbstorekvRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_range_add(a : DbstorekvRange, b : DbstorekvRange) -> DbstorekvRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvRange::add(self : DbstorekvRange, other : DbstorekvRange) -> DbstorekvRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_range_copy(s : DbstorekvRange) -> DbstorekvRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvRange::copy(self : DbstorekvRange) -> DbstorekvRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_range_fill(s : DbstorekvRange, v : Double) -> DbstorekvRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvRange::fill(self : DbstorekvRange, v : Double) -> DbstorekvRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_range_min(s : DbstorekvRange) -> Double { @_common.min(s.data) }
+pub fn DbstorekvRange::min(self : DbstorekvRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_range_max(s : DbstorekvRange) -> Double { @_common.max(s.data) }
+pub fn DbstorekvRange::max(self : DbstorekvRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_range_to_string(s : DbstorekvRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvRange::to_string(self : DbstorekvRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorekvSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_kv_slice_make(size : Int) -> DbstorekvSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_kv_slice_len(s : DbstorekvSlice) -> Int { s.size }
+pub fn DbstorekvSlice::len(self : DbstorekvSlice) -> Int { self.size }
 
-pub fn db_store_kv_slice_get(s : DbstorekvSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorekvSlice::get(self : DbstorekvSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_kv_slice_set(s : DbstorekvSlice, i : Int, v : Double) -> DbstorekvSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorekvSlice::set(self : DbstorekvSlice, i : Int, v : Double) -> DbstorekvSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_slice_sum(s : DbstorekvSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstorekvSlice::sum(self : DbstorekvSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_kv_slice_mean(s : DbstorekvSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstorekvSlice::mean(self : DbstorekvSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_kv_slice_scale(s : DbstorekvSlice, f : Double) -> DbstorekvSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorekvSlice::scale(self : DbstorekvSlice, f : Double) -> DbstorekvSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_slice_add(a : DbstorekvSlice, b : DbstorekvSlice) -> DbstorekvSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorekvSlice::add(self : DbstorekvSlice, other : DbstorekvSlice) -> DbstorekvSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_kv_slice_copy(s : DbstorekvSlice) -> DbstorekvSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorekvSlice::copy(self : DbstorekvSlice) -> DbstorekvSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_slice_fill(s : DbstorekvSlice, v : Double) -> DbstorekvSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorekvSlice::fill(self : DbstorekvSlice, v : Double) -> DbstorekvSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_kv_slice_min(s : DbstorekvSlice) -> Double { @_common.min(s.data) }
+pub fn DbstorekvSlice::min(self : DbstorekvSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_kv_slice_max(s : DbstorekvSlice) -> Double { @_common.max(s.data) }
+pub fn DbstorekvSlice::max(self : DbstorekvSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_kv_slice_to_string(s : DbstorekvSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorekvSlice::to_string(self : DbstorekvSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

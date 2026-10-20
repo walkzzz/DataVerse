@@ -351,45 +351,45 @@ pub fn net_flow_window_frame_make(size : Int) -> NetflowwindowFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_frame_len(s : NetflowwindowFrame) -> Int { s.size }
+pub fn NetflowwindowFrame::len(self : NetflowwindowFrame) -> Int { self.size }
 
-pub fn net_flow_window_frame_get(s : NetflowwindowFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowFrame::get(self : NetflowwindowFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_frame_set(s : NetflowwindowFrame, i : Int, v : Double) -> NetflowwindowFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowFrame::set(self : NetflowwindowFrame, i : Int, v : Double) -> NetflowwindowFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_frame_sum(s : NetflowwindowFrame) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowFrame::sum(self : NetflowwindowFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_frame_mean(s : NetflowwindowFrame) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowFrame::mean(self : NetflowwindowFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_frame_scale(s : NetflowwindowFrame, f : Double) -> NetflowwindowFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowFrame::scale(self : NetflowwindowFrame, f : Double) -> NetflowwindowFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_frame_add(a : NetflowwindowFrame, b : NetflowwindowFrame) -> NetflowwindowFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowFrame::add(self : NetflowwindowFrame, other : NetflowwindowFrame) -> NetflowwindowFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_frame_copy(s : NetflowwindowFrame) -> NetflowwindowFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowFrame::copy(self : NetflowwindowFrame) -> NetflowwindowFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_frame_fill(s : NetflowwindowFrame, v : Double) -> NetflowwindowFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowFrame::fill(self : NetflowwindowFrame, v : Double) -> NetflowwindowFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_frame_min(s : NetflowwindowFrame) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowFrame::min(self : NetflowwindowFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_frame_max(s : NetflowwindowFrame) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowFrame::max(self : NetflowwindowFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_frame_to_string(s : NetflowwindowFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowFrame::to_string(self : NetflowwindowFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowTable {
@@ -402,45 +402,45 @@ pub fn net_flow_window_table_make(size : Int) -> NetflowwindowTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_table_len(s : NetflowwindowTable) -> Int { s.size }
+pub fn NetflowwindowTable::len(self : NetflowwindowTable) -> Int { self.size }
 
-pub fn net_flow_window_table_get(s : NetflowwindowTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowTable::get(self : NetflowwindowTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_table_set(s : NetflowwindowTable, i : Int, v : Double) -> NetflowwindowTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowTable::set(self : NetflowwindowTable, i : Int, v : Double) -> NetflowwindowTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_table_sum(s : NetflowwindowTable) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowTable::sum(self : NetflowwindowTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_table_mean(s : NetflowwindowTable) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowTable::mean(self : NetflowwindowTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_table_scale(s : NetflowwindowTable, f : Double) -> NetflowwindowTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowTable::scale(self : NetflowwindowTable, f : Double) -> NetflowwindowTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_table_add(a : NetflowwindowTable, b : NetflowwindowTable) -> NetflowwindowTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowTable::add(self : NetflowwindowTable, other : NetflowwindowTable) -> NetflowwindowTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_table_copy(s : NetflowwindowTable) -> NetflowwindowTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowTable::copy(self : NetflowwindowTable) -> NetflowwindowTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_table_fill(s : NetflowwindowTable, v : Double) -> NetflowwindowTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowTable::fill(self : NetflowwindowTable, v : Double) -> NetflowwindowTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_table_min(s : NetflowwindowTable) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowTable::min(self : NetflowwindowTable) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_table_max(s : NetflowwindowTable) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowTable::max(self : NetflowwindowTable) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_table_to_string(s : NetflowwindowTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowTable::to_string(self : NetflowwindowTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowGraphN {
@@ -453,45 +453,45 @@ pub fn net_flow_window_graphn_make(size : Int) -> NetflowwindowGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_graphn_len(s : NetflowwindowGraphN) -> Int { s.size }
+pub fn NetflowwindowGraphN::len(self : NetflowwindowGraphN) -> Int { self.size }
 
-pub fn net_flow_window_graphn_get(s : NetflowwindowGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowGraphN::get(self : NetflowwindowGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_graphn_set(s : NetflowwindowGraphN, i : Int, v : Double) -> NetflowwindowGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowGraphN::set(self : NetflowwindowGraphN, i : Int, v : Double) -> NetflowwindowGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_graphn_sum(s : NetflowwindowGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowGraphN::sum(self : NetflowwindowGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_graphn_mean(s : NetflowwindowGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowGraphN::mean(self : NetflowwindowGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_graphn_scale(s : NetflowwindowGraphN, f : Double) -> NetflowwindowGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowGraphN::scale(self : NetflowwindowGraphN, f : Double) -> NetflowwindowGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_graphn_add(a : NetflowwindowGraphN, b : NetflowwindowGraphN) -> NetflowwindowGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowGraphN::add(self : NetflowwindowGraphN, other : NetflowwindowGraphN) -> NetflowwindowGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_graphn_copy(s : NetflowwindowGraphN) -> NetflowwindowGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowGraphN::copy(self : NetflowwindowGraphN) -> NetflowwindowGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_graphn_fill(s : NetflowwindowGraphN, v : Double) -> NetflowwindowGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowGraphN::fill(self : NetflowwindowGraphN, v : Double) -> NetflowwindowGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_graphn_min(s : NetflowwindowGraphN) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowGraphN::min(self : NetflowwindowGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_graphn_max(s : NetflowwindowGraphN) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowGraphN::max(self : NetflowwindowGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_graphn_to_string(s : NetflowwindowGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowGraphN::to_string(self : NetflowwindowGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowNode {
@@ -504,45 +504,45 @@ pub fn net_flow_window_node_make(size : Int) -> NetflowwindowNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_node_len(s : NetflowwindowNode) -> Int { s.size }
+pub fn NetflowwindowNode::len(self : NetflowwindowNode) -> Int { self.size }
 
-pub fn net_flow_window_node_get(s : NetflowwindowNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowNode::get(self : NetflowwindowNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_node_set(s : NetflowwindowNode, i : Int, v : Double) -> NetflowwindowNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowNode::set(self : NetflowwindowNode, i : Int, v : Double) -> NetflowwindowNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_node_sum(s : NetflowwindowNode) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowNode::sum(self : NetflowwindowNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_node_mean(s : NetflowwindowNode) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowNode::mean(self : NetflowwindowNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_node_scale(s : NetflowwindowNode, f : Double) -> NetflowwindowNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowNode::scale(self : NetflowwindowNode, f : Double) -> NetflowwindowNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_node_add(a : NetflowwindowNode, b : NetflowwindowNode) -> NetflowwindowNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowNode::add(self : NetflowwindowNode, other : NetflowwindowNode) -> NetflowwindowNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_node_copy(s : NetflowwindowNode) -> NetflowwindowNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowNode::copy(self : NetflowwindowNode) -> NetflowwindowNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_node_fill(s : NetflowwindowNode, v : Double) -> NetflowwindowNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowNode::fill(self : NetflowwindowNode, v : Double) -> NetflowwindowNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_node_min(s : NetflowwindowNode) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowNode::min(self : NetflowwindowNode) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_node_max(s : NetflowwindowNode) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowNode::max(self : NetflowwindowNode) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_node_to_string(s : NetflowwindowNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowNode::to_string(self : NetflowwindowNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowEdge {
@@ -555,45 +555,45 @@ pub fn net_flow_window_edge_make(size : Int) -> NetflowwindowEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_edge_len(s : NetflowwindowEdge) -> Int { s.size }
+pub fn NetflowwindowEdge::len(self : NetflowwindowEdge) -> Int { self.size }
 
-pub fn net_flow_window_edge_get(s : NetflowwindowEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowEdge::get(self : NetflowwindowEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_edge_set(s : NetflowwindowEdge, i : Int, v : Double) -> NetflowwindowEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowEdge::set(self : NetflowwindowEdge, i : Int, v : Double) -> NetflowwindowEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_edge_sum(s : NetflowwindowEdge) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowEdge::sum(self : NetflowwindowEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_edge_mean(s : NetflowwindowEdge) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowEdge::mean(self : NetflowwindowEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_edge_scale(s : NetflowwindowEdge, f : Double) -> NetflowwindowEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowEdge::scale(self : NetflowwindowEdge, f : Double) -> NetflowwindowEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_edge_add(a : NetflowwindowEdge, b : NetflowwindowEdge) -> NetflowwindowEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowEdge::add(self : NetflowwindowEdge, other : NetflowwindowEdge) -> NetflowwindowEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_edge_copy(s : NetflowwindowEdge) -> NetflowwindowEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowEdge::copy(self : NetflowwindowEdge) -> NetflowwindowEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_edge_fill(s : NetflowwindowEdge, v : Double) -> NetflowwindowEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowEdge::fill(self : NetflowwindowEdge, v : Double) -> NetflowwindowEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_edge_min(s : NetflowwindowEdge) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowEdge::min(self : NetflowwindowEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_edge_max(s : NetflowwindowEdge) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowEdge::max(self : NetflowwindowEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_edge_to_string(s : NetflowwindowEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowEdge::to_string(self : NetflowwindowEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowPath {
@@ -606,45 +606,45 @@ pub fn net_flow_window_path_make(size : Int) -> NetflowwindowPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_path_len(s : NetflowwindowPath) -> Int { s.size }
+pub fn NetflowwindowPath::len(self : NetflowwindowPath) -> Int { self.size }
 
-pub fn net_flow_window_path_get(s : NetflowwindowPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowPath::get(self : NetflowwindowPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_path_set(s : NetflowwindowPath, i : Int, v : Double) -> NetflowwindowPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowPath::set(self : NetflowwindowPath, i : Int, v : Double) -> NetflowwindowPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_path_sum(s : NetflowwindowPath) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowPath::sum(self : NetflowwindowPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_path_mean(s : NetflowwindowPath) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowPath::mean(self : NetflowwindowPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_path_scale(s : NetflowwindowPath, f : Double) -> NetflowwindowPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowPath::scale(self : NetflowwindowPath, f : Double) -> NetflowwindowPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_path_add(a : NetflowwindowPath, b : NetflowwindowPath) -> NetflowwindowPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowPath::add(self : NetflowwindowPath, other : NetflowwindowPath) -> NetflowwindowPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_path_copy(s : NetflowwindowPath) -> NetflowwindowPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowPath::copy(self : NetflowwindowPath) -> NetflowwindowPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_path_fill(s : NetflowwindowPath, v : Double) -> NetflowwindowPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowPath::fill(self : NetflowwindowPath, v : Double) -> NetflowwindowPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_path_min(s : NetflowwindowPath) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowPath::min(self : NetflowwindowPath) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_path_max(s : NetflowwindowPath) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowPath::max(self : NetflowwindowPath) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_path_to_string(s : NetflowwindowPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowPath::to_string(self : NetflowwindowPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowCluster {
@@ -657,45 +657,45 @@ pub fn net_flow_window_cluster_make(size : Int) -> NetflowwindowCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_cluster_len(s : NetflowwindowCluster) -> Int { s.size }
+pub fn NetflowwindowCluster::len(self : NetflowwindowCluster) -> Int { self.size }
 
-pub fn net_flow_window_cluster_get(s : NetflowwindowCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowCluster::get(self : NetflowwindowCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_cluster_set(s : NetflowwindowCluster, i : Int, v : Double) -> NetflowwindowCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowCluster::set(self : NetflowwindowCluster, i : Int, v : Double) -> NetflowwindowCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cluster_sum(s : NetflowwindowCluster) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowCluster::sum(self : NetflowwindowCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_cluster_mean(s : NetflowwindowCluster) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowCluster::mean(self : NetflowwindowCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_cluster_scale(s : NetflowwindowCluster, f : Double) -> NetflowwindowCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowCluster::scale(self : NetflowwindowCluster, f : Double) -> NetflowwindowCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cluster_add(a : NetflowwindowCluster, b : NetflowwindowCluster) -> NetflowwindowCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowCluster::add(self : NetflowwindowCluster, other : NetflowwindowCluster) -> NetflowwindowCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_cluster_copy(s : NetflowwindowCluster) -> NetflowwindowCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowCluster::copy(self : NetflowwindowCluster) -> NetflowwindowCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cluster_fill(s : NetflowwindowCluster, v : Double) -> NetflowwindowCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowCluster::fill(self : NetflowwindowCluster, v : Double) -> NetflowwindowCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cluster_min(s : NetflowwindowCluster) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowCluster::min(self : NetflowwindowCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_cluster_max(s : NetflowwindowCluster) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowCluster::max(self : NetflowwindowCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_cluster_to_string(s : NetflowwindowCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowCluster::to_string(self : NetflowwindowCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowModel {
@@ -708,45 +708,45 @@ pub fn net_flow_window_model_make(size : Int) -> NetflowwindowModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_model_len(s : NetflowwindowModel) -> Int { s.size }
+pub fn NetflowwindowModel::len(self : NetflowwindowModel) -> Int { self.size }
 
-pub fn net_flow_window_model_get(s : NetflowwindowModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowModel::get(self : NetflowwindowModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_model_set(s : NetflowwindowModel, i : Int, v : Double) -> NetflowwindowModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowModel::set(self : NetflowwindowModel, i : Int, v : Double) -> NetflowwindowModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_model_sum(s : NetflowwindowModel) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowModel::sum(self : NetflowwindowModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_model_mean(s : NetflowwindowModel) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowModel::mean(self : NetflowwindowModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_model_scale(s : NetflowwindowModel, f : Double) -> NetflowwindowModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowModel::scale(self : NetflowwindowModel, f : Double) -> NetflowwindowModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_model_add(a : NetflowwindowModel, b : NetflowwindowModel) -> NetflowwindowModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowModel::add(self : NetflowwindowModel, other : NetflowwindowModel) -> NetflowwindowModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_model_copy(s : NetflowwindowModel) -> NetflowwindowModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowModel::copy(self : NetflowwindowModel) -> NetflowwindowModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_model_fill(s : NetflowwindowModel, v : Double) -> NetflowwindowModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowModel::fill(self : NetflowwindowModel, v : Double) -> NetflowwindowModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_model_min(s : NetflowwindowModel) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowModel::min(self : NetflowwindowModel) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_model_max(s : NetflowwindowModel) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowModel::max(self : NetflowwindowModel) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_model_to_string(s : NetflowwindowModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowModel::to_string(self : NetflowwindowModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowLayer {
@@ -759,45 +759,45 @@ pub fn net_flow_window_layer_make(size : Int) -> NetflowwindowLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_layer_len(s : NetflowwindowLayer) -> Int { s.size }
+pub fn NetflowwindowLayer::len(self : NetflowwindowLayer) -> Int { self.size }
 
-pub fn net_flow_window_layer_get(s : NetflowwindowLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowLayer::get(self : NetflowwindowLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_layer_set(s : NetflowwindowLayer, i : Int, v : Double) -> NetflowwindowLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowLayer::set(self : NetflowwindowLayer, i : Int, v : Double) -> NetflowwindowLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_layer_sum(s : NetflowwindowLayer) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowLayer::sum(self : NetflowwindowLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_layer_mean(s : NetflowwindowLayer) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowLayer::mean(self : NetflowwindowLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_layer_scale(s : NetflowwindowLayer, f : Double) -> NetflowwindowLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowLayer::scale(self : NetflowwindowLayer, f : Double) -> NetflowwindowLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_layer_add(a : NetflowwindowLayer, b : NetflowwindowLayer) -> NetflowwindowLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowLayer::add(self : NetflowwindowLayer, other : NetflowwindowLayer) -> NetflowwindowLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_layer_copy(s : NetflowwindowLayer) -> NetflowwindowLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowLayer::copy(self : NetflowwindowLayer) -> NetflowwindowLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_layer_fill(s : NetflowwindowLayer, v : Double) -> NetflowwindowLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowLayer::fill(self : NetflowwindowLayer, v : Double) -> NetflowwindowLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_layer_min(s : NetflowwindowLayer) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowLayer::min(self : NetflowwindowLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_layer_max(s : NetflowwindowLayer) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowLayer::max(self : NetflowwindowLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_layer_to_string(s : NetflowwindowLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowLayer::to_string(self : NetflowwindowLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowBuffer {
@@ -810,45 +810,45 @@ pub fn net_flow_window_buffer_make(size : Int) -> NetflowwindowBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_buffer_len(s : NetflowwindowBuffer) -> Int { s.size }
+pub fn NetflowwindowBuffer::len(self : NetflowwindowBuffer) -> Int { self.size }
 
-pub fn net_flow_window_buffer_get(s : NetflowwindowBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowBuffer::get(self : NetflowwindowBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_buffer_set(s : NetflowwindowBuffer, i : Int, v : Double) -> NetflowwindowBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowBuffer::set(self : NetflowwindowBuffer, i : Int, v : Double) -> NetflowwindowBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_buffer_sum(s : NetflowwindowBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowBuffer::sum(self : NetflowwindowBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_buffer_mean(s : NetflowwindowBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowBuffer::mean(self : NetflowwindowBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_buffer_scale(s : NetflowwindowBuffer, f : Double) -> NetflowwindowBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowBuffer::scale(self : NetflowwindowBuffer, f : Double) -> NetflowwindowBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_buffer_add(a : NetflowwindowBuffer, b : NetflowwindowBuffer) -> NetflowwindowBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowBuffer::add(self : NetflowwindowBuffer, other : NetflowwindowBuffer) -> NetflowwindowBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_buffer_copy(s : NetflowwindowBuffer) -> NetflowwindowBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowBuffer::copy(self : NetflowwindowBuffer) -> NetflowwindowBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_buffer_fill(s : NetflowwindowBuffer, v : Double) -> NetflowwindowBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowBuffer::fill(self : NetflowwindowBuffer, v : Double) -> NetflowwindowBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_buffer_min(s : NetflowwindowBuffer) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowBuffer::min(self : NetflowwindowBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_buffer_max(s : NetflowwindowBuffer) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowBuffer::max(self : NetflowwindowBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_buffer_to_string(s : NetflowwindowBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowBuffer::to_string(self : NetflowwindowBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowCursor {
@@ -861,45 +861,45 @@ pub fn net_flow_window_cursor_make(size : Int) -> NetflowwindowCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_cursor_len(s : NetflowwindowCursor) -> Int { s.size }
+pub fn NetflowwindowCursor::len(self : NetflowwindowCursor) -> Int { self.size }
 
-pub fn net_flow_window_cursor_get(s : NetflowwindowCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowCursor::get(self : NetflowwindowCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_cursor_set(s : NetflowwindowCursor, i : Int, v : Double) -> NetflowwindowCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowCursor::set(self : NetflowwindowCursor, i : Int, v : Double) -> NetflowwindowCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cursor_sum(s : NetflowwindowCursor) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowCursor::sum(self : NetflowwindowCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_cursor_mean(s : NetflowwindowCursor) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowCursor::mean(self : NetflowwindowCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_cursor_scale(s : NetflowwindowCursor, f : Double) -> NetflowwindowCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowCursor::scale(self : NetflowwindowCursor, f : Double) -> NetflowwindowCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cursor_add(a : NetflowwindowCursor, b : NetflowwindowCursor) -> NetflowwindowCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowCursor::add(self : NetflowwindowCursor, other : NetflowwindowCursor) -> NetflowwindowCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_cursor_copy(s : NetflowwindowCursor) -> NetflowwindowCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowCursor::copy(self : NetflowwindowCursor) -> NetflowwindowCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cursor_fill(s : NetflowwindowCursor, v : Double) -> NetflowwindowCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowCursor::fill(self : NetflowwindowCursor, v : Double) -> NetflowwindowCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_cursor_min(s : NetflowwindowCursor) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowCursor::min(self : NetflowwindowCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_cursor_max(s : NetflowwindowCursor) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowCursor::max(self : NetflowwindowCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_cursor_to_string(s : NetflowwindowCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowCursor::to_string(self : NetflowwindowCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowView {
@@ -912,45 +912,45 @@ pub fn net_flow_window_view_make(size : Int) -> NetflowwindowView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_view_len(s : NetflowwindowView) -> Int { s.size }
+pub fn NetflowwindowView::len(self : NetflowwindowView) -> Int { self.size }
 
-pub fn net_flow_window_view_get(s : NetflowwindowView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowView::get(self : NetflowwindowView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_view_set(s : NetflowwindowView, i : Int, v : Double) -> NetflowwindowView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowView::set(self : NetflowwindowView, i : Int, v : Double) -> NetflowwindowView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_view_sum(s : NetflowwindowView) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowView::sum(self : NetflowwindowView) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_view_mean(s : NetflowwindowView) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowView::mean(self : NetflowwindowView) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_view_scale(s : NetflowwindowView, f : Double) -> NetflowwindowView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowView::scale(self : NetflowwindowView, f : Double) -> NetflowwindowView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_view_add(a : NetflowwindowView, b : NetflowwindowView) -> NetflowwindowView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowView::add(self : NetflowwindowView, other : NetflowwindowView) -> NetflowwindowView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_view_copy(s : NetflowwindowView) -> NetflowwindowView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowView::copy(self : NetflowwindowView) -> NetflowwindowView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_view_fill(s : NetflowwindowView, v : Double) -> NetflowwindowView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowView::fill(self : NetflowwindowView, v : Double) -> NetflowwindowView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_view_min(s : NetflowwindowView) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowView::min(self : NetflowwindowView) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_view_max(s : NetflowwindowView) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowView::max(self : NetflowwindowView) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_view_to_string(s : NetflowwindowView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowView::to_string(self : NetflowwindowView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowRange {
@@ -963,45 +963,45 @@ pub fn net_flow_window_range_make(size : Int) -> NetflowwindowRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_range_len(s : NetflowwindowRange) -> Int { s.size }
+pub fn NetflowwindowRange::len(self : NetflowwindowRange) -> Int { self.size }
 
-pub fn net_flow_window_range_get(s : NetflowwindowRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowRange::get(self : NetflowwindowRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_range_set(s : NetflowwindowRange, i : Int, v : Double) -> NetflowwindowRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowRange::set(self : NetflowwindowRange, i : Int, v : Double) -> NetflowwindowRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_range_sum(s : NetflowwindowRange) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowRange::sum(self : NetflowwindowRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_range_mean(s : NetflowwindowRange) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowRange::mean(self : NetflowwindowRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_range_scale(s : NetflowwindowRange, f : Double) -> NetflowwindowRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowRange::scale(self : NetflowwindowRange, f : Double) -> NetflowwindowRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_range_add(a : NetflowwindowRange, b : NetflowwindowRange) -> NetflowwindowRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowRange::add(self : NetflowwindowRange, other : NetflowwindowRange) -> NetflowwindowRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_range_copy(s : NetflowwindowRange) -> NetflowwindowRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowRange::copy(self : NetflowwindowRange) -> NetflowwindowRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_range_fill(s : NetflowwindowRange, v : Double) -> NetflowwindowRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowRange::fill(self : NetflowwindowRange, v : Double) -> NetflowwindowRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_range_min(s : NetflowwindowRange) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowRange::min(self : NetflowwindowRange) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_range_max(s : NetflowwindowRange) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowRange::max(self : NetflowwindowRange) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_range_to_string(s : NetflowwindowRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowRange::to_string(self : NetflowwindowRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowwindowSlice {
@@ -1014,44 +1014,44 @@ pub fn net_flow_window_slice_make(size : Int) -> NetflowwindowSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_window_slice_len(s : NetflowwindowSlice) -> Int { s.size }
+pub fn NetflowwindowSlice::len(self : NetflowwindowSlice) -> Int { self.size }
 
-pub fn net_flow_window_slice_get(s : NetflowwindowSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowwindowSlice::get(self : NetflowwindowSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_window_slice_set(s : NetflowwindowSlice, i : Int, v : Double) -> NetflowwindowSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowwindowSlice::set(self : NetflowwindowSlice, i : Int, v : Double) -> NetflowwindowSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_slice_sum(s : NetflowwindowSlice) -> Double { @_common.sum(s.data) }
+pub fn NetflowwindowSlice::sum(self : NetflowwindowSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_window_slice_mean(s : NetflowwindowSlice) -> Double { @_common.mean(s.data) }
+pub fn NetflowwindowSlice::mean(self : NetflowwindowSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_window_slice_scale(s : NetflowwindowSlice, f : Double) -> NetflowwindowSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowwindowSlice::scale(self : NetflowwindowSlice, f : Double) -> NetflowwindowSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_slice_add(a : NetflowwindowSlice, b : NetflowwindowSlice) -> NetflowwindowSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowwindowSlice::add(self : NetflowwindowSlice, other : NetflowwindowSlice) -> NetflowwindowSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_window_slice_copy(s : NetflowwindowSlice) -> NetflowwindowSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowwindowSlice::copy(self : NetflowwindowSlice) -> NetflowwindowSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_slice_fill(s : NetflowwindowSlice, v : Double) -> NetflowwindowSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowwindowSlice::fill(self : NetflowwindowSlice, v : Double) -> NetflowwindowSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_window_slice_min(s : NetflowwindowSlice) -> Double { @_common.min(s.data) }
+pub fn NetflowwindowSlice::min(self : NetflowwindowSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_window_slice_max(s : NetflowwindowSlice) -> Double { @_common.max(s.data) }
+pub fn NetflowwindowSlice::max(self : NetflowwindowSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_window_slice_to_string(s : NetflowwindowSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowwindowSlice::to_string(self : NetflowwindowSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

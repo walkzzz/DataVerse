@@ -351,45 +351,45 @@ pub fn geo_dist_ellipsoidal_frame_make(size : Int) -> GeodistellipsoidalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_frame_len(s : GeodistellipsoidalFrame) -> Int { s.size }
+pub fn GeodistellipsoidalFrame::len(self : GeodistellipsoidalFrame) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_frame_get(s : GeodistellipsoidalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalFrame::get(self : GeodistellipsoidalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_frame_set(s : GeodistellipsoidalFrame, i : Int, v : Double) -> GeodistellipsoidalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalFrame::set(self : GeodistellipsoidalFrame, i : Int, v : Double) -> GeodistellipsoidalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_frame_sum(s : GeodistellipsoidalFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalFrame::sum(self : GeodistellipsoidalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_frame_mean(s : GeodistellipsoidalFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalFrame::mean(self : GeodistellipsoidalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_frame_scale(s : GeodistellipsoidalFrame, f : Double) -> GeodistellipsoidalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalFrame::scale(self : GeodistellipsoidalFrame, f : Double) -> GeodistellipsoidalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_frame_add(a : GeodistellipsoidalFrame, b : GeodistellipsoidalFrame) -> GeodistellipsoidalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalFrame::add(self : GeodistellipsoidalFrame, other : GeodistellipsoidalFrame) -> GeodistellipsoidalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_frame_copy(s : GeodistellipsoidalFrame) -> GeodistellipsoidalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalFrame::copy(self : GeodistellipsoidalFrame) -> GeodistellipsoidalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_frame_fill(s : GeodistellipsoidalFrame, v : Double) -> GeodistellipsoidalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalFrame::fill(self : GeodistellipsoidalFrame, v : Double) -> GeodistellipsoidalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_frame_min(s : GeodistellipsoidalFrame) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalFrame::min(self : GeodistellipsoidalFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_frame_max(s : GeodistellipsoidalFrame) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalFrame::max(self : GeodistellipsoidalFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_frame_to_string(s : GeodistellipsoidalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalFrame::to_string(self : GeodistellipsoidalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_ellipsoidal_table_make(size : Int) -> GeodistellipsoidalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_table_len(s : GeodistellipsoidalTable) -> Int { s.size }
+pub fn GeodistellipsoidalTable::len(self : GeodistellipsoidalTable) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_table_get(s : GeodistellipsoidalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalTable::get(self : GeodistellipsoidalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_table_set(s : GeodistellipsoidalTable, i : Int, v : Double) -> GeodistellipsoidalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalTable::set(self : GeodistellipsoidalTable, i : Int, v : Double) -> GeodistellipsoidalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_table_sum(s : GeodistellipsoidalTable) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalTable::sum(self : GeodistellipsoidalTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_table_mean(s : GeodistellipsoidalTable) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalTable::mean(self : GeodistellipsoidalTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_table_scale(s : GeodistellipsoidalTable, f : Double) -> GeodistellipsoidalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalTable::scale(self : GeodistellipsoidalTable, f : Double) -> GeodistellipsoidalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_table_add(a : GeodistellipsoidalTable, b : GeodistellipsoidalTable) -> GeodistellipsoidalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalTable::add(self : GeodistellipsoidalTable, other : GeodistellipsoidalTable) -> GeodistellipsoidalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_table_copy(s : GeodistellipsoidalTable) -> GeodistellipsoidalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalTable::copy(self : GeodistellipsoidalTable) -> GeodistellipsoidalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_table_fill(s : GeodistellipsoidalTable, v : Double) -> GeodistellipsoidalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalTable::fill(self : GeodistellipsoidalTable, v : Double) -> GeodistellipsoidalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_table_min(s : GeodistellipsoidalTable) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalTable::min(self : GeodistellipsoidalTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_table_max(s : GeodistellipsoidalTable) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalTable::max(self : GeodistellipsoidalTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_table_to_string(s : GeodistellipsoidalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalTable::to_string(self : GeodistellipsoidalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_ellipsoidal_graphn_make(size : Int) -> GeodistellipsoidalGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_len(s : GeodistellipsoidalGraphN) -> Int { s.size }
+pub fn GeodistellipsoidalGraphN::len(self : GeodistellipsoidalGraphN) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_graphn_get(s : GeodistellipsoidalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalGraphN::get(self : GeodistellipsoidalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_set(s : GeodistellipsoidalGraphN, i : Int, v : Double) -> GeodistellipsoidalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalGraphN::set(self : GeodistellipsoidalGraphN, i : Int, v : Double) -> GeodistellipsoidalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_sum(s : GeodistellipsoidalGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalGraphN::sum(self : GeodistellipsoidalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_graphn_mean(s : GeodistellipsoidalGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalGraphN::mean(self : GeodistellipsoidalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_graphn_scale(s : GeodistellipsoidalGraphN, f : Double) -> GeodistellipsoidalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalGraphN::scale(self : GeodistellipsoidalGraphN, f : Double) -> GeodistellipsoidalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_add(a : GeodistellipsoidalGraphN, b : GeodistellipsoidalGraphN) -> GeodistellipsoidalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalGraphN::add(self : GeodistellipsoidalGraphN, other : GeodistellipsoidalGraphN) -> GeodistellipsoidalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_copy(s : GeodistellipsoidalGraphN) -> GeodistellipsoidalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalGraphN::copy(self : GeodistellipsoidalGraphN) -> GeodistellipsoidalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_fill(s : GeodistellipsoidalGraphN, v : Double) -> GeodistellipsoidalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalGraphN::fill(self : GeodistellipsoidalGraphN, v : Double) -> GeodistellipsoidalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_graphn_min(s : GeodistellipsoidalGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalGraphN::min(self : GeodistellipsoidalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_graphn_max(s : GeodistellipsoidalGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalGraphN::max(self : GeodistellipsoidalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_graphn_to_string(s : GeodistellipsoidalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalGraphN::to_string(self : GeodistellipsoidalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_ellipsoidal_node_make(size : Int) -> GeodistellipsoidalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_node_len(s : GeodistellipsoidalNode) -> Int { s.size }
+pub fn GeodistellipsoidalNode::len(self : GeodistellipsoidalNode) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_node_get(s : GeodistellipsoidalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalNode::get(self : GeodistellipsoidalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_node_set(s : GeodistellipsoidalNode, i : Int, v : Double) -> GeodistellipsoidalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalNode::set(self : GeodistellipsoidalNode, i : Int, v : Double) -> GeodistellipsoidalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_node_sum(s : GeodistellipsoidalNode) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalNode::sum(self : GeodistellipsoidalNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_node_mean(s : GeodistellipsoidalNode) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalNode::mean(self : GeodistellipsoidalNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_node_scale(s : GeodistellipsoidalNode, f : Double) -> GeodistellipsoidalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalNode::scale(self : GeodistellipsoidalNode, f : Double) -> GeodistellipsoidalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_node_add(a : GeodistellipsoidalNode, b : GeodistellipsoidalNode) -> GeodistellipsoidalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalNode::add(self : GeodistellipsoidalNode, other : GeodistellipsoidalNode) -> GeodistellipsoidalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_node_copy(s : GeodistellipsoidalNode) -> GeodistellipsoidalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalNode::copy(self : GeodistellipsoidalNode) -> GeodistellipsoidalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_node_fill(s : GeodistellipsoidalNode, v : Double) -> GeodistellipsoidalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalNode::fill(self : GeodistellipsoidalNode, v : Double) -> GeodistellipsoidalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_node_min(s : GeodistellipsoidalNode) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalNode::min(self : GeodistellipsoidalNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_node_max(s : GeodistellipsoidalNode) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalNode::max(self : GeodistellipsoidalNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_node_to_string(s : GeodistellipsoidalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalNode::to_string(self : GeodistellipsoidalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_ellipsoidal_edge_make(size : Int) -> GeodistellipsoidalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_edge_len(s : GeodistellipsoidalEdge) -> Int { s.size }
+pub fn GeodistellipsoidalEdge::len(self : GeodistellipsoidalEdge) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_edge_get(s : GeodistellipsoidalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalEdge::get(self : GeodistellipsoidalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_edge_set(s : GeodistellipsoidalEdge, i : Int, v : Double) -> GeodistellipsoidalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalEdge::set(self : GeodistellipsoidalEdge, i : Int, v : Double) -> GeodistellipsoidalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_edge_sum(s : GeodistellipsoidalEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalEdge::sum(self : GeodistellipsoidalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_edge_mean(s : GeodistellipsoidalEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalEdge::mean(self : GeodistellipsoidalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_edge_scale(s : GeodistellipsoidalEdge, f : Double) -> GeodistellipsoidalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalEdge::scale(self : GeodistellipsoidalEdge, f : Double) -> GeodistellipsoidalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_edge_add(a : GeodistellipsoidalEdge, b : GeodistellipsoidalEdge) -> GeodistellipsoidalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalEdge::add(self : GeodistellipsoidalEdge, other : GeodistellipsoidalEdge) -> GeodistellipsoidalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_edge_copy(s : GeodistellipsoidalEdge) -> GeodistellipsoidalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalEdge::copy(self : GeodistellipsoidalEdge) -> GeodistellipsoidalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_edge_fill(s : GeodistellipsoidalEdge, v : Double) -> GeodistellipsoidalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalEdge::fill(self : GeodistellipsoidalEdge, v : Double) -> GeodistellipsoidalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_edge_min(s : GeodistellipsoidalEdge) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalEdge::min(self : GeodistellipsoidalEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_edge_max(s : GeodistellipsoidalEdge) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalEdge::max(self : GeodistellipsoidalEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_edge_to_string(s : GeodistellipsoidalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalEdge::to_string(self : GeodistellipsoidalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalPath {
@@ -606,45 +606,45 @@ pub fn geo_dist_ellipsoidal_path_make(size : Int) -> GeodistellipsoidalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_path_len(s : GeodistellipsoidalPath) -> Int { s.size }
+pub fn GeodistellipsoidalPath::len(self : GeodistellipsoidalPath) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_path_get(s : GeodistellipsoidalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalPath::get(self : GeodistellipsoidalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_path_set(s : GeodistellipsoidalPath, i : Int, v : Double) -> GeodistellipsoidalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalPath::set(self : GeodistellipsoidalPath, i : Int, v : Double) -> GeodistellipsoidalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_path_sum(s : GeodistellipsoidalPath) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalPath::sum(self : GeodistellipsoidalPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_path_mean(s : GeodistellipsoidalPath) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalPath::mean(self : GeodistellipsoidalPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_path_scale(s : GeodistellipsoidalPath, f : Double) -> GeodistellipsoidalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalPath::scale(self : GeodistellipsoidalPath, f : Double) -> GeodistellipsoidalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_path_add(a : GeodistellipsoidalPath, b : GeodistellipsoidalPath) -> GeodistellipsoidalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalPath::add(self : GeodistellipsoidalPath, other : GeodistellipsoidalPath) -> GeodistellipsoidalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_path_copy(s : GeodistellipsoidalPath) -> GeodistellipsoidalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalPath::copy(self : GeodistellipsoidalPath) -> GeodistellipsoidalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_path_fill(s : GeodistellipsoidalPath, v : Double) -> GeodistellipsoidalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalPath::fill(self : GeodistellipsoidalPath, v : Double) -> GeodistellipsoidalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_path_min(s : GeodistellipsoidalPath) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalPath::min(self : GeodistellipsoidalPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_path_max(s : GeodistellipsoidalPath) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalPath::max(self : GeodistellipsoidalPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_path_to_string(s : GeodistellipsoidalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalPath::to_string(self : GeodistellipsoidalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_ellipsoidal_cluster_make(size : Int) -> GeodistellipsoidalCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_len(s : GeodistellipsoidalCluster) -> Int { s.size }
+pub fn GeodistellipsoidalCluster::len(self : GeodistellipsoidalCluster) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_cluster_get(s : GeodistellipsoidalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalCluster::get(self : GeodistellipsoidalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_set(s : GeodistellipsoidalCluster, i : Int, v : Double) -> GeodistellipsoidalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCluster::set(self : GeodistellipsoidalCluster, i : Int, v : Double) -> GeodistellipsoidalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_sum(s : GeodistellipsoidalCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalCluster::sum(self : GeodistellipsoidalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_cluster_mean(s : GeodistellipsoidalCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalCluster::mean(self : GeodistellipsoidalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_cluster_scale(s : GeodistellipsoidalCluster, f : Double) -> GeodistellipsoidalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCluster::scale(self : GeodistellipsoidalCluster, f : Double) -> GeodistellipsoidalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_add(a : GeodistellipsoidalCluster, b : GeodistellipsoidalCluster) -> GeodistellipsoidalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalCluster::add(self : GeodistellipsoidalCluster, other : GeodistellipsoidalCluster) -> GeodistellipsoidalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_copy(s : GeodistellipsoidalCluster) -> GeodistellipsoidalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCluster::copy(self : GeodistellipsoidalCluster) -> GeodistellipsoidalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_fill(s : GeodistellipsoidalCluster, v : Double) -> GeodistellipsoidalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCluster::fill(self : GeodistellipsoidalCluster, v : Double) -> GeodistellipsoidalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cluster_min(s : GeodistellipsoidalCluster) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalCluster::min(self : GeodistellipsoidalCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_cluster_max(s : GeodistellipsoidalCluster) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalCluster::max(self : GeodistellipsoidalCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_cluster_to_string(s : GeodistellipsoidalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalCluster::to_string(self : GeodistellipsoidalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_ellipsoidal_model_make(size : Int) -> GeodistellipsoidalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_model_len(s : GeodistellipsoidalModel) -> Int { s.size }
+pub fn GeodistellipsoidalModel::len(self : GeodistellipsoidalModel) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_model_get(s : GeodistellipsoidalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalModel::get(self : GeodistellipsoidalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_model_set(s : GeodistellipsoidalModel, i : Int, v : Double) -> GeodistellipsoidalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalModel::set(self : GeodistellipsoidalModel, i : Int, v : Double) -> GeodistellipsoidalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_model_sum(s : GeodistellipsoidalModel) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalModel::sum(self : GeodistellipsoidalModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_model_mean(s : GeodistellipsoidalModel) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalModel::mean(self : GeodistellipsoidalModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_model_scale(s : GeodistellipsoidalModel, f : Double) -> GeodistellipsoidalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalModel::scale(self : GeodistellipsoidalModel, f : Double) -> GeodistellipsoidalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_model_add(a : GeodistellipsoidalModel, b : GeodistellipsoidalModel) -> GeodistellipsoidalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalModel::add(self : GeodistellipsoidalModel, other : GeodistellipsoidalModel) -> GeodistellipsoidalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_model_copy(s : GeodistellipsoidalModel) -> GeodistellipsoidalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalModel::copy(self : GeodistellipsoidalModel) -> GeodistellipsoidalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_model_fill(s : GeodistellipsoidalModel, v : Double) -> GeodistellipsoidalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalModel::fill(self : GeodistellipsoidalModel, v : Double) -> GeodistellipsoidalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_model_min(s : GeodistellipsoidalModel) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalModel::min(self : GeodistellipsoidalModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_model_max(s : GeodistellipsoidalModel) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalModel::max(self : GeodistellipsoidalModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_model_to_string(s : GeodistellipsoidalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalModel::to_string(self : GeodistellipsoidalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_ellipsoidal_layer_make(size : Int) -> GeodistellipsoidalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_layer_len(s : GeodistellipsoidalLayer) -> Int { s.size }
+pub fn GeodistellipsoidalLayer::len(self : GeodistellipsoidalLayer) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_layer_get(s : GeodistellipsoidalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalLayer::get(self : GeodistellipsoidalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_layer_set(s : GeodistellipsoidalLayer, i : Int, v : Double) -> GeodistellipsoidalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalLayer::set(self : GeodistellipsoidalLayer, i : Int, v : Double) -> GeodistellipsoidalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_layer_sum(s : GeodistellipsoidalLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalLayer::sum(self : GeodistellipsoidalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_layer_mean(s : GeodistellipsoidalLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalLayer::mean(self : GeodistellipsoidalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_layer_scale(s : GeodistellipsoidalLayer, f : Double) -> GeodistellipsoidalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalLayer::scale(self : GeodistellipsoidalLayer, f : Double) -> GeodistellipsoidalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_layer_add(a : GeodistellipsoidalLayer, b : GeodistellipsoidalLayer) -> GeodistellipsoidalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalLayer::add(self : GeodistellipsoidalLayer, other : GeodistellipsoidalLayer) -> GeodistellipsoidalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_layer_copy(s : GeodistellipsoidalLayer) -> GeodistellipsoidalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalLayer::copy(self : GeodistellipsoidalLayer) -> GeodistellipsoidalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_layer_fill(s : GeodistellipsoidalLayer, v : Double) -> GeodistellipsoidalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalLayer::fill(self : GeodistellipsoidalLayer, v : Double) -> GeodistellipsoidalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_layer_min(s : GeodistellipsoidalLayer) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalLayer::min(self : GeodistellipsoidalLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_layer_max(s : GeodistellipsoidalLayer) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalLayer::max(self : GeodistellipsoidalLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_layer_to_string(s : GeodistellipsoidalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalLayer::to_string(self : GeodistellipsoidalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_ellipsoidal_buffer_make(size : Int) -> GeodistellipsoidalBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_len(s : GeodistellipsoidalBuffer) -> Int { s.size }
+pub fn GeodistellipsoidalBuffer::len(self : GeodistellipsoidalBuffer) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_buffer_get(s : GeodistellipsoidalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalBuffer::get(self : GeodistellipsoidalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_set(s : GeodistellipsoidalBuffer, i : Int, v : Double) -> GeodistellipsoidalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalBuffer::set(self : GeodistellipsoidalBuffer, i : Int, v : Double) -> GeodistellipsoidalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_sum(s : GeodistellipsoidalBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalBuffer::sum(self : GeodistellipsoidalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_buffer_mean(s : GeodistellipsoidalBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalBuffer::mean(self : GeodistellipsoidalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_buffer_scale(s : GeodistellipsoidalBuffer, f : Double) -> GeodistellipsoidalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalBuffer::scale(self : GeodistellipsoidalBuffer, f : Double) -> GeodistellipsoidalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_add(a : GeodistellipsoidalBuffer, b : GeodistellipsoidalBuffer) -> GeodistellipsoidalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalBuffer::add(self : GeodistellipsoidalBuffer, other : GeodistellipsoidalBuffer) -> GeodistellipsoidalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_copy(s : GeodistellipsoidalBuffer) -> GeodistellipsoidalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalBuffer::copy(self : GeodistellipsoidalBuffer) -> GeodistellipsoidalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_fill(s : GeodistellipsoidalBuffer, v : Double) -> GeodistellipsoidalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalBuffer::fill(self : GeodistellipsoidalBuffer, v : Double) -> GeodistellipsoidalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_buffer_min(s : GeodistellipsoidalBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalBuffer::min(self : GeodistellipsoidalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_buffer_max(s : GeodistellipsoidalBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalBuffer::max(self : GeodistellipsoidalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_buffer_to_string(s : GeodistellipsoidalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalBuffer::to_string(self : GeodistellipsoidalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_ellipsoidal_cursor_make(size : Int) -> GeodistellipsoidalCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_len(s : GeodistellipsoidalCursor) -> Int { s.size }
+pub fn GeodistellipsoidalCursor::len(self : GeodistellipsoidalCursor) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_cursor_get(s : GeodistellipsoidalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalCursor::get(self : GeodistellipsoidalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_set(s : GeodistellipsoidalCursor, i : Int, v : Double) -> GeodistellipsoidalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCursor::set(self : GeodistellipsoidalCursor, i : Int, v : Double) -> GeodistellipsoidalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_sum(s : GeodistellipsoidalCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalCursor::sum(self : GeodistellipsoidalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_cursor_mean(s : GeodistellipsoidalCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalCursor::mean(self : GeodistellipsoidalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_cursor_scale(s : GeodistellipsoidalCursor, f : Double) -> GeodistellipsoidalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCursor::scale(self : GeodistellipsoidalCursor, f : Double) -> GeodistellipsoidalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_add(a : GeodistellipsoidalCursor, b : GeodistellipsoidalCursor) -> GeodistellipsoidalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalCursor::add(self : GeodistellipsoidalCursor, other : GeodistellipsoidalCursor) -> GeodistellipsoidalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_copy(s : GeodistellipsoidalCursor) -> GeodistellipsoidalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCursor::copy(self : GeodistellipsoidalCursor) -> GeodistellipsoidalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_fill(s : GeodistellipsoidalCursor, v : Double) -> GeodistellipsoidalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalCursor::fill(self : GeodistellipsoidalCursor, v : Double) -> GeodistellipsoidalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_cursor_min(s : GeodistellipsoidalCursor) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalCursor::min(self : GeodistellipsoidalCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_cursor_max(s : GeodistellipsoidalCursor) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalCursor::max(self : GeodistellipsoidalCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_cursor_to_string(s : GeodistellipsoidalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalCursor::to_string(self : GeodistellipsoidalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalView {
@@ -912,45 +912,45 @@ pub fn geo_dist_ellipsoidal_view_make(size : Int) -> GeodistellipsoidalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_view_len(s : GeodistellipsoidalView) -> Int { s.size }
+pub fn GeodistellipsoidalView::len(self : GeodistellipsoidalView) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_view_get(s : GeodistellipsoidalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalView::get(self : GeodistellipsoidalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_view_set(s : GeodistellipsoidalView, i : Int, v : Double) -> GeodistellipsoidalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalView::set(self : GeodistellipsoidalView, i : Int, v : Double) -> GeodistellipsoidalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_view_sum(s : GeodistellipsoidalView) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalView::sum(self : GeodistellipsoidalView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_view_mean(s : GeodistellipsoidalView) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalView::mean(self : GeodistellipsoidalView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_view_scale(s : GeodistellipsoidalView, f : Double) -> GeodistellipsoidalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalView::scale(self : GeodistellipsoidalView, f : Double) -> GeodistellipsoidalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_view_add(a : GeodistellipsoidalView, b : GeodistellipsoidalView) -> GeodistellipsoidalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalView::add(self : GeodistellipsoidalView, other : GeodistellipsoidalView) -> GeodistellipsoidalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_view_copy(s : GeodistellipsoidalView) -> GeodistellipsoidalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalView::copy(self : GeodistellipsoidalView) -> GeodistellipsoidalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_view_fill(s : GeodistellipsoidalView, v : Double) -> GeodistellipsoidalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalView::fill(self : GeodistellipsoidalView, v : Double) -> GeodistellipsoidalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_view_min(s : GeodistellipsoidalView) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalView::min(self : GeodistellipsoidalView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_view_max(s : GeodistellipsoidalView) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalView::max(self : GeodistellipsoidalView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_view_to_string(s : GeodistellipsoidalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalView::to_string(self : GeodistellipsoidalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_ellipsoidal_range_make(size : Int) -> GeodistellipsoidalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_range_len(s : GeodistellipsoidalRange) -> Int { s.size }
+pub fn GeodistellipsoidalRange::len(self : GeodistellipsoidalRange) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_range_get(s : GeodistellipsoidalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalRange::get(self : GeodistellipsoidalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_range_set(s : GeodistellipsoidalRange, i : Int, v : Double) -> GeodistellipsoidalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalRange::set(self : GeodistellipsoidalRange, i : Int, v : Double) -> GeodistellipsoidalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_range_sum(s : GeodistellipsoidalRange) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalRange::sum(self : GeodistellipsoidalRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_range_mean(s : GeodistellipsoidalRange) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalRange::mean(self : GeodistellipsoidalRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_range_scale(s : GeodistellipsoidalRange, f : Double) -> GeodistellipsoidalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalRange::scale(self : GeodistellipsoidalRange, f : Double) -> GeodistellipsoidalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_range_add(a : GeodistellipsoidalRange, b : GeodistellipsoidalRange) -> GeodistellipsoidalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalRange::add(self : GeodistellipsoidalRange, other : GeodistellipsoidalRange) -> GeodistellipsoidalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_range_copy(s : GeodistellipsoidalRange) -> GeodistellipsoidalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalRange::copy(self : GeodistellipsoidalRange) -> GeodistellipsoidalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_range_fill(s : GeodistellipsoidalRange, v : Double) -> GeodistellipsoidalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalRange::fill(self : GeodistellipsoidalRange, v : Double) -> GeodistellipsoidalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_range_min(s : GeodistellipsoidalRange) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalRange::min(self : GeodistellipsoidalRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_range_max(s : GeodistellipsoidalRange) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalRange::max(self : GeodistellipsoidalRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_range_to_string(s : GeodistellipsoidalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalRange::to_string(self : GeodistellipsoidalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistellipsoidalSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_ellipsoidal_slice_make(size : Int) -> GeodistellipsoidalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_ellipsoidal_slice_len(s : GeodistellipsoidalSlice) -> Int { s.size }
+pub fn GeodistellipsoidalSlice::len(self : GeodistellipsoidalSlice) -> Int { self.size }
 
-pub fn geo_dist_ellipsoidal_slice_get(s : GeodistellipsoidalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistellipsoidalSlice::get(self : GeodistellipsoidalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_ellipsoidal_slice_set(s : GeodistellipsoidalSlice, i : Int, v : Double) -> GeodistellipsoidalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalSlice::set(self : GeodistellipsoidalSlice, i : Int, v : Double) -> GeodistellipsoidalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_slice_sum(s : GeodistellipsoidalSlice) -> Double { @_common.sum(s.data) }
+pub fn GeodistellipsoidalSlice::sum(self : GeodistellipsoidalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_ellipsoidal_slice_mean(s : GeodistellipsoidalSlice) -> Double { @_common.mean(s.data) }
+pub fn GeodistellipsoidalSlice::mean(self : GeodistellipsoidalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_ellipsoidal_slice_scale(s : GeodistellipsoidalSlice, f : Double) -> GeodistellipsoidalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalSlice::scale(self : GeodistellipsoidalSlice, f : Double) -> GeodistellipsoidalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_slice_add(a : GeodistellipsoidalSlice, b : GeodistellipsoidalSlice) -> GeodistellipsoidalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistellipsoidalSlice::add(self : GeodistellipsoidalSlice, other : GeodistellipsoidalSlice) -> GeodistellipsoidalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_slice_copy(s : GeodistellipsoidalSlice) -> GeodistellipsoidalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalSlice::copy(self : GeodistellipsoidalSlice) -> GeodistellipsoidalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_slice_fill(s : GeodistellipsoidalSlice, v : Double) -> GeodistellipsoidalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistellipsoidalSlice::fill(self : GeodistellipsoidalSlice, v : Double) -> GeodistellipsoidalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_ellipsoidal_slice_min(s : GeodistellipsoidalSlice) -> Double { @_common.min(s.data) }
+pub fn GeodistellipsoidalSlice::min(self : GeodistellipsoidalSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_ellipsoidal_slice_max(s : GeodistellipsoidalSlice) -> Double { @_common.max(s.data) }
+pub fn GeodistellipsoidalSlice::max(self : GeodistellipsoidalSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_ellipsoidal_slice_to_string(s : GeodistellipsoidalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistellipsoidalSlice::to_string(self : GeodistellipsoidalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn image_filter_laplacian_frame_make(size : Int) -> ImagefilterlaplacianFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_frame_len(s : ImagefilterlaplacianFrame) -> Int { s.size }
+pub fn ImagefilterlaplacianFrame::len(self : ImagefilterlaplacianFrame) -> Int { self.size }
 
-pub fn image_filter_laplacian_frame_get(s : ImagefilterlaplacianFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianFrame::get(self : ImagefilterlaplacianFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_frame_set(s : ImagefilterlaplacianFrame, i : Int, v : Double) -> ImagefilterlaplacianFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianFrame::set(self : ImagefilterlaplacianFrame, i : Int, v : Double) -> ImagefilterlaplacianFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_frame_sum(s : ImagefilterlaplacianFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianFrame::sum(self : ImagefilterlaplacianFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_frame_mean(s : ImagefilterlaplacianFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianFrame::mean(self : ImagefilterlaplacianFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_frame_scale(s : ImagefilterlaplacianFrame, f : Double) -> ImagefilterlaplacianFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianFrame::scale(self : ImagefilterlaplacianFrame, f : Double) -> ImagefilterlaplacianFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_frame_add(a : ImagefilterlaplacianFrame, b : ImagefilterlaplacianFrame) -> ImagefilterlaplacianFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianFrame::add(self : ImagefilterlaplacianFrame, other : ImagefilterlaplacianFrame) -> ImagefilterlaplacianFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_frame_copy(s : ImagefilterlaplacianFrame) -> ImagefilterlaplacianFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianFrame::copy(self : ImagefilterlaplacianFrame) -> ImagefilterlaplacianFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_frame_fill(s : ImagefilterlaplacianFrame, v : Double) -> ImagefilterlaplacianFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianFrame::fill(self : ImagefilterlaplacianFrame, v : Double) -> ImagefilterlaplacianFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_frame_min(s : ImagefilterlaplacianFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianFrame::min(self : ImagefilterlaplacianFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_frame_max(s : ImagefilterlaplacianFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianFrame::max(self : ImagefilterlaplacianFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_frame_to_string(s : ImagefilterlaplacianFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianFrame::to_string(self : ImagefilterlaplacianFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianTable {
@@ -402,45 +402,45 @@ pub fn image_filter_laplacian_table_make(size : Int) -> ImagefilterlaplacianTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_table_len(s : ImagefilterlaplacianTable) -> Int { s.size }
+pub fn ImagefilterlaplacianTable::len(self : ImagefilterlaplacianTable) -> Int { self.size }
 
-pub fn image_filter_laplacian_table_get(s : ImagefilterlaplacianTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianTable::get(self : ImagefilterlaplacianTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_table_set(s : ImagefilterlaplacianTable, i : Int, v : Double) -> ImagefilterlaplacianTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianTable::set(self : ImagefilterlaplacianTable, i : Int, v : Double) -> ImagefilterlaplacianTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_table_sum(s : ImagefilterlaplacianTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianTable::sum(self : ImagefilterlaplacianTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_table_mean(s : ImagefilterlaplacianTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianTable::mean(self : ImagefilterlaplacianTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_table_scale(s : ImagefilterlaplacianTable, f : Double) -> ImagefilterlaplacianTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianTable::scale(self : ImagefilterlaplacianTable, f : Double) -> ImagefilterlaplacianTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_table_add(a : ImagefilterlaplacianTable, b : ImagefilterlaplacianTable) -> ImagefilterlaplacianTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianTable::add(self : ImagefilterlaplacianTable, other : ImagefilterlaplacianTable) -> ImagefilterlaplacianTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_table_copy(s : ImagefilterlaplacianTable) -> ImagefilterlaplacianTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianTable::copy(self : ImagefilterlaplacianTable) -> ImagefilterlaplacianTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_table_fill(s : ImagefilterlaplacianTable, v : Double) -> ImagefilterlaplacianTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianTable::fill(self : ImagefilterlaplacianTable, v : Double) -> ImagefilterlaplacianTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_table_min(s : ImagefilterlaplacianTable) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianTable::min(self : ImagefilterlaplacianTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_table_max(s : ImagefilterlaplacianTable) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianTable::max(self : ImagefilterlaplacianTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_table_to_string(s : ImagefilterlaplacianTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianTable::to_string(self : ImagefilterlaplacianTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_laplacian_graphn_make(size : Int) -> ImagefilterlaplacianGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_graphn_len(s : ImagefilterlaplacianGraphN) -> Int { s.size }
+pub fn ImagefilterlaplacianGraphN::len(self : ImagefilterlaplacianGraphN) -> Int { self.size }
 
-pub fn image_filter_laplacian_graphn_get(s : ImagefilterlaplacianGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianGraphN::get(self : ImagefilterlaplacianGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_graphn_set(s : ImagefilterlaplacianGraphN, i : Int, v : Double) -> ImagefilterlaplacianGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianGraphN::set(self : ImagefilterlaplacianGraphN, i : Int, v : Double) -> ImagefilterlaplacianGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_graphn_sum(s : ImagefilterlaplacianGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianGraphN::sum(self : ImagefilterlaplacianGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_graphn_mean(s : ImagefilterlaplacianGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianGraphN::mean(self : ImagefilterlaplacianGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_graphn_scale(s : ImagefilterlaplacianGraphN, f : Double) -> ImagefilterlaplacianGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianGraphN::scale(self : ImagefilterlaplacianGraphN, f : Double) -> ImagefilterlaplacianGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_graphn_add(a : ImagefilterlaplacianGraphN, b : ImagefilterlaplacianGraphN) -> ImagefilterlaplacianGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianGraphN::add(self : ImagefilterlaplacianGraphN, other : ImagefilterlaplacianGraphN) -> ImagefilterlaplacianGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_graphn_copy(s : ImagefilterlaplacianGraphN) -> ImagefilterlaplacianGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianGraphN::copy(self : ImagefilterlaplacianGraphN) -> ImagefilterlaplacianGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_graphn_fill(s : ImagefilterlaplacianGraphN, v : Double) -> ImagefilterlaplacianGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianGraphN::fill(self : ImagefilterlaplacianGraphN, v : Double) -> ImagefilterlaplacianGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_graphn_min(s : ImagefilterlaplacianGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianGraphN::min(self : ImagefilterlaplacianGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_graphn_max(s : ImagefilterlaplacianGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianGraphN::max(self : ImagefilterlaplacianGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_graphn_to_string(s : ImagefilterlaplacianGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianGraphN::to_string(self : ImagefilterlaplacianGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianNode {
@@ -504,45 +504,45 @@ pub fn image_filter_laplacian_node_make(size : Int) -> ImagefilterlaplacianNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_node_len(s : ImagefilterlaplacianNode) -> Int { s.size }
+pub fn ImagefilterlaplacianNode::len(self : ImagefilterlaplacianNode) -> Int { self.size }
 
-pub fn image_filter_laplacian_node_get(s : ImagefilterlaplacianNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianNode::get(self : ImagefilterlaplacianNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_node_set(s : ImagefilterlaplacianNode, i : Int, v : Double) -> ImagefilterlaplacianNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianNode::set(self : ImagefilterlaplacianNode, i : Int, v : Double) -> ImagefilterlaplacianNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_node_sum(s : ImagefilterlaplacianNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianNode::sum(self : ImagefilterlaplacianNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_node_mean(s : ImagefilterlaplacianNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianNode::mean(self : ImagefilterlaplacianNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_node_scale(s : ImagefilterlaplacianNode, f : Double) -> ImagefilterlaplacianNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianNode::scale(self : ImagefilterlaplacianNode, f : Double) -> ImagefilterlaplacianNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_node_add(a : ImagefilterlaplacianNode, b : ImagefilterlaplacianNode) -> ImagefilterlaplacianNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianNode::add(self : ImagefilterlaplacianNode, other : ImagefilterlaplacianNode) -> ImagefilterlaplacianNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_node_copy(s : ImagefilterlaplacianNode) -> ImagefilterlaplacianNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianNode::copy(self : ImagefilterlaplacianNode) -> ImagefilterlaplacianNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_node_fill(s : ImagefilterlaplacianNode, v : Double) -> ImagefilterlaplacianNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianNode::fill(self : ImagefilterlaplacianNode, v : Double) -> ImagefilterlaplacianNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_node_min(s : ImagefilterlaplacianNode) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianNode::min(self : ImagefilterlaplacianNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_node_max(s : ImagefilterlaplacianNode) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianNode::max(self : ImagefilterlaplacianNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_node_to_string(s : ImagefilterlaplacianNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianNode::to_string(self : ImagefilterlaplacianNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_laplacian_edge_make(size : Int) -> ImagefilterlaplacianEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_edge_len(s : ImagefilterlaplacianEdge) -> Int { s.size }
+pub fn ImagefilterlaplacianEdge::len(self : ImagefilterlaplacianEdge) -> Int { self.size }
 
-pub fn image_filter_laplacian_edge_get(s : ImagefilterlaplacianEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianEdge::get(self : ImagefilterlaplacianEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_edge_set(s : ImagefilterlaplacianEdge, i : Int, v : Double) -> ImagefilterlaplacianEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianEdge::set(self : ImagefilterlaplacianEdge, i : Int, v : Double) -> ImagefilterlaplacianEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_edge_sum(s : ImagefilterlaplacianEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianEdge::sum(self : ImagefilterlaplacianEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_edge_mean(s : ImagefilterlaplacianEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianEdge::mean(self : ImagefilterlaplacianEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_edge_scale(s : ImagefilterlaplacianEdge, f : Double) -> ImagefilterlaplacianEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianEdge::scale(self : ImagefilterlaplacianEdge, f : Double) -> ImagefilterlaplacianEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_edge_add(a : ImagefilterlaplacianEdge, b : ImagefilterlaplacianEdge) -> ImagefilterlaplacianEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianEdge::add(self : ImagefilterlaplacianEdge, other : ImagefilterlaplacianEdge) -> ImagefilterlaplacianEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_edge_copy(s : ImagefilterlaplacianEdge) -> ImagefilterlaplacianEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianEdge::copy(self : ImagefilterlaplacianEdge) -> ImagefilterlaplacianEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_edge_fill(s : ImagefilterlaplacianEdge, v : Double) -> ImagefilterlaplacianEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianEdge::fill(self : ImagefilterlaplacianEdge, v : Double) -> ImagefilterlaplacianEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_edge_min(s : ImagefilterlaplacianEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianEdge::min(self : ImagefilterlaplacianEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_edge_max(s : ImagefilterlaplacianEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianEdge::max(self : ImagefilterlaplacianEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_edge_to_string(s : ImagefilterlaplacianEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianEdge::to_string(self : ImagefilterlaplacianEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianPath {
@@ -606,45 +606,45 @@ pub fn image_filter_laplacian_path_make(size : Int) -> ImagefilterlaplacianPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_path_len(s : ImagefilterlaplacianPath) -> Int { s.size }
+pub fn ImagefilterlaplacianPath::len(self : ImagefilterlaplacianPath) -> Int { self.size }
 
-pub fn image_filter_laplacian_path_get(s : ImagefilterlaplacianPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianPath::get(self : ImagefilterlaplacianPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_path_set(s : ImagefilterlaplacianPath, i : Int, v : Double) -> ImagefilterlaplacianPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianPath::set(self : ImagefilterlaplacianPath, i : Int, v : Double) -> ImagefilterlaplacianPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_path_sum(s : ImagefilterlaplacianPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianPath::sum(self : ImagefilterlaplacianPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_path_mean(s : ImagefilterlaplacianPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianPath::mean(self : ImagefilterlaplacianPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_path_scale(s : ImagefilterlaplacianPath, f : Double) -> ImagefilterlaplacianPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianPath::scale(self : ImagefilterlaplacianPath, f : Double) -> ImagefilterlaplacianPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_path_add(a : ImagefilterlaplacianPath, b : ImagefilterlaplacianPath) -> ImagefilterlaplacianPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianPath::add(self : ImagefilterlaplacianPath, other : ImagefilterlaplacianPath) -> ImagefilterlaplacianPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_path_copy(s : ImagefilterlaplacianPath) -> ImagefilterlaplacianPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianPath::copy(self : ImagefilterlaplacianPath) -> ImagefilterlaplacianPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_path_fill(s : ImagefilterlaplacianPath, v : Double) -> ImagefilterlaplacianPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianPath::fill(self : ImagefilterlaplacianPath, v : Double) -> ImagefilterlaplacianPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_path_min(s : ImagefilterlaplacianPath) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianPath::min(self : ImagefilterlaplacianPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_path_max(s : ImagefilterlaplacianPath) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianPath::max(self : ImagefilterlaplacianPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_path_to_string(s : ImagefilterlaplacianPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianPath::to_string(self : ImagefilterlaplacianPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_laplacian_cluster_make(size : Int) -> ImagefilterlaplacianCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_cluster_len(s : ImagefilterlaplacianCluster) -> Int { s.size }
+pub fn ImagefilterlaplacianCluster::len(self : ImagefilterlaplacianCluster) -> Int { self.size }
 
-pub fn image_filter_laplacian_cluster_get(s : ImagefilterlaplacianCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianCluster::get(self : ImagefilterlaplacianCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_cluster_set(s : ImagefilterlaplacianCluster, i : Int, v : Double) -> ImagefilterlaplacianCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCluster::set(self : ImagefilterlaplacianCluster, i : Int, v : Double) -> ImagefilterlaplacianCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cluster_sum(s : ImagefilterlaplacianCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianCluster::sum(self : ImagefilterlaplacianCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_cluster_mean(s : ImagefilterlaplacianCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianCluster::mean(self : ImagefilterlaplacianCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_cluster_scale(s : ImagefilterlaplacianCluster, f : Double) -> ImagefilterlaplacianCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCluster::scale(self : ImagefilterlaplacianCluster, f : Double) -> ImagefilterlaplacianCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cluster_add(a : ImagefilterlaplacianCluster, b : ImagefilterlaplacianCluster) -> ImagefilterlaplacianCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianCluster::add(self : ImagefilterlaplacianCluster, other : ImagefilterlaplacianCluster) -> ImagefilterlaplacianCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cluster_copy(s : ImagefilterlaplacianCluster) -> ImagefilterlaplacianCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCluster::copy(self : ImagefilterlaplacianCluster) -> ImagefilterlaplacianCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cluster_fill(s : ImagefilterlaplacianCluster, v : Double) -> ImagefilterlaplacianCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCluster::fill(self : ImagefilterlaplacianCluster, v : Double) -> ImagefilterlaplacianCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cluster_min(s : ImagefilterlaplacianCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianCluster::min(self : ImagefilterlaplacianCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_cluster_max(s : ImagefilterlaplacianCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianCluster::max(self : ImagefilterlaplacianCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_cluster_to_string(s : ImagefilterlaplacianCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianCluster::to_string(self : ImagefilterlaplacianCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianModel {
@@ -708,45 +708,45 @@ pub fn image_filter_laplacian_model_make(size : Int) -> ImagefilterlaplacianMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_model_len(s : ImagefilterlaplacianModel) -> Int { s.size }
+pub fn ImagefilterlaplacianModel::len(self : ImagefilterlaplacianModel) -> Int { self.size }
 
-pub fn image_filter_laplacian_model_get(s : ImagefilterlaplacianModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianModel::get(self : ImagefilterlaplacianModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_model_set(s : ImagefilterlaplacianModel, i : Int, v : Double) -> ImagefilterlaplacianModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianModel::set(self : ImagefilterlaplacianModel, i : Int, v : Double) -> ImagefilterlaplacianModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_model_sum(s : ImagefilterlaplacianModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianModel::sum(self : ImagefilterlaplacianModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_model_mean(s : ImagefilterlaplacianModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianModel::mean(self : ImagefilterlaplacianModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_model_scale(s : ImagefilterlaplacianModel, f : Double) -> ImagefilterlaplacianModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianModel::scale(self : ImagefilterlaplacianModel, f : Double) -> ImagefilterlaplacianModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_model_add(a : ImagefilterlaplacianModel, b : ImagefilterlaplacianModel) -> ImagefilterlaplacianModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianModel::add(self : ImagefilterlaplacianModel, other : ImagefilterlaplacianModel) -> ImagefilterlaplacianModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_model_copy(s : ImagefilterlaplacianModel) -> ImagefilterlaplacianModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianModel::copy(self : ImagefilterlaplacianModel) -> ImagefilterlaplacianModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_model_fill(s : ImagefilterlaplacianModel, v : Double) -> ImagefilterlaplacianModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianModel::fill(self : ImagefilterlaplacianModel, v : Double) -> ImagefilterlaplacianModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_model_min(s : ImagefilterlaplacianModel) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianModel::min(self : ImagefilterlaplacianModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_model_max(s : ImagefilterlaplacianModel) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianModel::max(self : ImagefilterlaplacianModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_model_to_string(s : ImagefilterlaplacianModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianModel::to_string(self : ImagefilterlaplacianModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_laplacian_layer_make(size : Int) -> ImagefilterlaplacianLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_layer_len(s : ImagefilterlaplacianLayer) -> Int { s.size }
+pub fn ImagefilterlaplacianLayer::len(self : ImagefilterlaplacianLayer) -> Int { self.size }
 
-pub fn image_filter_laplacian_layer_get(s : ImagefilterlaplacianLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianLayer::get(self : ImagefilterlaplacianLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_layer_set(s : ImagefilterlaplacianLayer, i : Int, v : Double) -> ImagefilterlaplacianLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianLayer::set(self : ImagefilterlaplacianLayer, i : Int, v : Double) -> ImagefilterlaplacianLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_layer_sum(s : ImagefilterlaplacianLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianLayer::sum(self : ImagefilterlaplacianLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_layer_mean(s : ImagefilterlaplacianLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianLayer::mean(self : ImagefilterlaplacianLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_layer_scale(s : ImagefilterlaplacianLayer, f : Double) -> ImagefilterlaplacianLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianLayer::scale(self : ImagefilterlaplacianLayer, f : Double) -> ImagefilterlaplacianLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_layer_add(a : ImagefilterlaplacianLayer, b : ImagefilterlaplacianLayer) -> ImagefilterlaplacianLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianLayer::add(self : ImagefilterlaplacianLayer, other : ImagefilterlaplacianLayer) -> ImagefilterlaplacianLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_layer_copy(s : ImagefilterlaplacianLayer) -> ImagefilterlaplacianLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianLayer::copy(self : ImagefilterlaplacianLayer) -> ImagefilterlaplacianLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_layer_fill(s : ImagefilterlaplacianLayer, v : Double) -> ImagefilterlaplacianLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianLayer::fill(self : ImagefilterlaplacianLayer, v : Double) -> ImagefilterlaplacianLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_layer_min(s : ImagefilterlaplacianLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianLayer::min(self : ImagefilterlaplacianLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_layer_max(s : ImagefilterlaplacianLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianLayer::max(self : ImagefilterlaplacianLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_layer_to_string(s : ImagefilterlaplacianLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianLayer::to_string(self : ImagefilterlaplacianLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_laplacian_buffer_make(size : Int) -> ImagefilterlaplacianBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_buffer_len(s : ImagefilterlaplacianBuffer) -> Int { s.size }
+pub fn ImagefilterlaplacianBuffer::len(self : ImagefilterlaplacianBuffer) -> Int { self.size }
 
-pub fn image_filter_laplacian_buffer_get(s : ImagefilterlaplacianBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianBuffer::get(self : ImagefilterlaplacianBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_buffer_set(s : ImagefilterlaplacianBuffer, i : Int, v : Double) -> ImagefilterlaplacianBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianBuffer::set(self : ImagefilterlaplacianBuffer, i : Int, v : Double) -> ImagefilterlaplacianBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_buffer_sum(s : ImagefilterlaplacianBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianBuffer::sum(self : ImagefilterlaplacianBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_buffer_mean(s : ImagefilterlaplacianBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianBuffer::mean(self : ImagefilterlaplacianBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_buffer_scale(s : ImagefilterlaplacianBuffer, f : Double) -> ImagefilterlaplacianBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianBuffer::scale(self : ImagefilterlaplacianBuffer, f : Double) -> ImagefilterlaplacianBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_buffer_add(a : ImagefilterlaplacianBuffer, b : ImagefilterlaplacianBuffer) -> ImagefilterlaplacianBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianBuffer::add(self : ImagefilterlaplacianBuffer, other : ImagefilterlaplacianBuffer) -> ImagefilterlaplacianBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_buffer_copy(s : ImagefilterlaplacianBuffer) -> ImagefilterlaplacianBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianBuffer::copy(self : ImagefilterlaplacianBuffer) -> ImagefilterlaplacianBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_buffer_fill(s : ImagefilterlaplacianBuffer, v : Double) -> ImagefilterlaplacianBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianBuffer::fill(self : ImagefilterlaplacianBuffer, v : Double) -> ImagefilterlaplacianBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_buffer_min(s : ImagefilterlaplacianBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianBuffer::min(self : ImagefilterlaplacianBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_buffer_max(s : ImagefilterlaplacianBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianBuffer::max(self : ImagefilterlaplacianBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_buffer_to_string(s : ImagefilterlaplacianBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianBuffer::to_string(self : ImagefilterlaplacianBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_laplacian_cursor_make(size : Int) -> ImagefilterlaplacianCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_cursor_len(s : ImagefilterlaplacianCursor) -> Int { s.size }
+pub fn ImagefilterlaplacianCursor::len(self : ImagefilterlaplacianCursor) -> Int { self.size }
 
-pub fn image_filter_laplacian_cursor_get(s : ImagefilterlaplacianCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianCursor::get(self : ImagefilterlaplacianCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_cursor_set(s : ImagefilterlaplacianCursor, i : Int, v : Double) -> ImagefilterlaplacianCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCursor::set(self : ImagefilterlaplacianCursor, i : Int, v : Double) -> ImagefilterlaplacianCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cursor_sum(s : ImagefilterlaplacianCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianCursor::sum(self : ImagefilterlaplacianCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_cursor_mean(s : ImagefilterlaplacianCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianCursor::mean(self : ImagefilterlaplacianCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_cursor_scale(s : ImagefilterlaplacianCursor, f : Double) -> ImagefilterlaplacianCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCursor::scale(self : ImagefilterlaplacianCursor, f : Double) -> ImagefilterlaplacianCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cursor_add(a : ImagefilterlaplacianCursor, b : ImagefilterlaplacianCursor) -> ImagefilterlaplacianCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianCursor::add(self : ImagefilterlaplacianCursor, other : ImagefilterlaplacianCursor) -> ImagefilterlaplacianCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cursor_copy(s : ImagefilterlaplacianCursor) -> ImagefilterlaplacianCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCursor::copy(self : ImagefilterlaplacianCursor) -> ImagefilterlaplacianCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cursor_fill(s : ImagefilterlaplacianCursor, v : Double) -> ImagefilterlaplacianCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianCursor::fill(self : ImagefilterlaplacianCursor, v : Double) -> ImagefilterlaplacianCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_cursor_min(s : ImagefilterlaplacianCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianCursor::min(self : ImagefilterlaplacianCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_cursor_max(s : ImagefilterlaplacianCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianCursor::max(self : ImagefilterlaplacianCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_cursor_to_string(s : ImagefilterlaplacianCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianCursor::to_string(self : ImagefilterlaplacianCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianView {
@@ -912,45 +912,45 @@ pub fn image_filter_laplacian_view_make(size : Int) -> ImagefilterlaplacianView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_view_len(s : ImagefilterlaplacianView) -> Int { s.size }
+pub fn ImagefilterlaplacianView::len(self : ImagefilterlaplacianView) -> Int { self.size }
 
-pub fn image_filter_laplacian_view_get(s : ImagefilterlaplacianView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianView::get(self : ImagefilterlaplacianView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_view_set(s : ImagefilterlaplacianView, i : Int, v : Double) -> ImagefilterlaplacianView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianView::set(self : ImagefilterlaplacianView, i : Int, v : Double) -> ImagefilterlaplacianView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_view_sum(s : ImagefilterlaplacianView) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianView::sum(self : ImagefilterlaplacianView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_view_mean(s : ImagefilterlaplacianView) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianView::mean(self : ImagefilterlaplacianView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_view_scale(s : ImagefilterlaplacianView, f : Double) -> ImagefilterlaplacianView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianView::scale(self : ImagefilterlaplacianView, f : Double) -> ImagefilterlaplacianView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_view_add(a : ImagefilterlaplacianView, b : ImagefilterlaplacianView) -> ImagefilterlaplacianView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianView::add(self : ImagefilterlaplacianView, other : ImagefilterlaplacianView) -> ImagefilterlaplacianView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_view_copy(s : ImagefilterlaplacianView) -> ImagefilterlaplacianView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianView::copy(self : ImagefilterlaplacianView) -> ImagefilterlaplacianView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_view_fill(s : ImagefilterlaplacianView, v : Double) -> ImagefilterlaplacianView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianView::fill(self : ImagefilterlaplacianView, v : Double) -> ImagefilterlaplacianView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_view_min(s : ImagefilterlaplacianView) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianView::min(self : ImagefilterlaplacianView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_view_max(s : ImagefilterlaplacianView) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianView::max(self : ImagefilterlaplacianView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_view_to_string(s : ImagefilterlaplacianView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianView::to_string(self : ImagefilterlaplacianView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianRange {
@@ -963,45 +963,45 @@ pub fn image_filter_laplacian_range_make(size : Int) -> ImagefilterlaplacianRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_range_len(s : ImagefilterlaplacianRange) -> Int { s.size }
+pub fn ImagefilterlaplacianRange::len(self : ImagefilterlaplacianRange) -> Int { self.size }
 
-pub fn image_filter_laplacian_range_get(s : ImagefilterlaplacianRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianRange::get(self : ImagefilterlaplacianRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_range_set(s : ImagefilterlaplacianRange, i : Int, v : Double) -> ImagefilterlaplacianRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianRange::set(self : ImagefilterlaplacianRange, i : Int, v : Double) -> ImagefilterlaplacianRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_range_sum(s : ImagefilterlaplacianRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianRange::sum(self : ImagefilterlaplacianRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_range_mean(s : ImagefilterlaplacianRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianRange::mean(self : ImagefilterlaplacianRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_range_scale(s : ImagefilterlaplacianRange, f : Double) -> ImagefilterlaplacianRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianRange::scale(self : ImagefilterlaplacianRange, f : Double) -> ImagefilterlaplacianRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_range_add(a : ImagefilterlaplacianRange, b : ImagefilterlaplacianRange) -> ImagefilterlaplacianRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianRange::add(self : ImagefilterlaplacianRange, other : ImagefilterlaplacianRange) -> ImagefilterlaplacianRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_range_copy(s : ImagefilterlaplacianRange) -> ImagefilterlaplacianRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianRange::copy(self : ImagefilterlaplacianRange) -> ImagefilterlaplacianRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_range_fill(s : ImagefilterlaplacianRange, v : Double) -> ImagefilterlaplacianRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianRange::fill(self : ImagefilterlaplacianRange, v : Double) -> ImagefilterlaplacianRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_range_min(s : ImagefilterlaplacianRange) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianRange::min(self : ImagefilterlaplacianRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_range_max(s : ImagefilterlaplacianRange) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianRange::max(self : ImagefilterlaplacianRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_range_to_string(s : ImagefilterlaplacianRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianRange::to_string(self : ImagefilterlaplacianRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterlaplacianSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_laplacian_slice_make(size : Int) -> ImagefilterlaplacianSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_laplacian_slice_len(s : ImagefilterlaplacianSlice) -> Int { s.size }
+pub fn ImagefilterlaplacianSlice::len(self : ImagefilterlaplacianSlice) -> Int { self.size }
 
-pub fn image_filter_laplacian_slice_get(s : ImagefilterlaplacianSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterlaplacianSlice::get(self : ImagefilterlaplacianSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_laplacian_slice_set(s : ImagefilterlaplacianSlice, i : Int, v : Double) -> ImagefilterlaplacianSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianSlice::set(self : ImagefilterlaplacianSlice, i : Int, v : Double) -> ImagefilterlaplacianSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_slice_sum(s : ImagefilterlaplacianSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterlaplacianSlice::sum(self : ImagefilterlaplacianSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_laplacian_slice_mean(s : ImagefilterlaplacianSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterlaplacianSlice::mean(self : ImagefilterlaplacianSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_laplacian_slice_scale(s : ImagefilterlaplacianSlice, f : Double) -> ImagefilterlaplacianSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianSlice::scale(self : ImagefilterlaplacianSlice, f : Double) -> ImagefilterlaplacianSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_slice_add(a : ImagefilterlaplacianSlice, b : ImagefilterlaplacianSlice) -> ImagefilterlaplacianSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterlaplacianSlice::add(self : ImagefilterlaplacianSlice, other : ImagefilterlaplacianSlice) -> ImagefilterlaplacianSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_slice_copy(s : ImagefilterlaplacianSlice) -> ImagefilterlaplacianSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianSlice::copy(self : ImagefilterlaplacianSlice) -> ImagefilterlaplacianSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_slice_fill(s : ImagefilterlaplacianSlice, v : Double) -> ImagefilterlaplacianSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterlaplacianSlice::fill(self : ImagefilterlaplacianSlice, v : Double) -> ImagefilterlaplacianSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_laplacian_slice_min(s : ImagefilterlaplacianSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefilterlaplacianSlice::min(self : ImagefilterlaplacianSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_laplacian_slice_max(s : ImagefilterlaplacianSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefilterlaplacianSlice::max(self : ImagefilterlaplacianSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_laplacian_slice_to_string(s : ImagefilterlaplacianSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterlaplacianSlice::to_string(self : ImagefilterlaplacianSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

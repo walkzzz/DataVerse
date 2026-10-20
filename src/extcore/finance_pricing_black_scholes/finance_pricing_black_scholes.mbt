@@ -351,45 +351,45 @@ pub fn finance_pricing_black_scholes_frame_make(size : Int) -> Financepricingbla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_frame_len(s : FinancepricingblackscholesFrame) -> Int { s.size }
+pub fn FinancepricingblackscholesFrame::len(self : FinancepricingblackscholesFrame) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_frame_get(s : FinancepricingblackscholesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesFrame::get(self : FinancepricingblackscholesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_frame_set(s : FinancepricingblackscholesFrame, i : Int, v : Double) -> FinancepricingblackscholesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesFrame::set(self : FinancepricingblackscholesFrame, i : Int, v : Double) -> FinancepricingblackscholesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_frame_sum(s : FinancepricingblackscholesFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesFrame::sum(self : FinancepricingblackscholesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_frame_mean(s : FinancepricingblackscholesFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesFrame::mean(self : FinancepricingblackscholesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_frame_scale(s : FinancepricingblackscholesFrame, f : Double) -> FinancepricingblackscholesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesFrame::scale(self : FinancepricingblackscholesFrame, f : Double) -> FinancepricingblackscholesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_frame_add(a : FinancepricingblackscholesFrame, b : FinancepricingblackscholesFrame) -> FinancepricingblackscholesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesFrame::add(self : FinancepricingblackscholesFrame, other : FinancepricingblackscholesFrame) -> FinancepricingblackscholesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_frame_copy(s : FinancepricingblackscholesFrame) -> FinancepricingblackscholesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesFrame::copy(self : FinancepricingblackscholesFrame) -> FinancepricingblackscholesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_frame_fill(s : FinancepricingblackscholesFrame, v : Double) -> FinancepricingblackscholesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesFrame::fill(self : FinancepricingblackscholesFrame, v : Double) -> FinancepricingblackscholesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_frame_min(s : FinancepricingblackscholesFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesFrame::min(self : FinancepricingblackscholesFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_frame_max(s : FinancepricingblackscholesFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesFrame::max(self : FinancepricingblackscholesFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_frame_to_string(s : FinancepricingblackscholesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesFrame::to_string(self : FinancepricingblackscholesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_black_scholes_table_make(size : Int) -> Financepricingbla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_table_len(s : FinancepricingblackscholesTable) -> Int { s.size }
+pub fn FinancepricingblackscholesTable::len(self : FinancepricingblackscholesTable) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_table_get(s : FinancepricingblackscholesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesTable::get(self : FinancepricingblackscholesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_table_set(s : FinancepricingblackscholesTable, i : Int, v : Double) -> FinancepricingblackscholesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesTable::set(self : FinancepricingblackscholesTable, i : Int, v : Double) -> FinancepricingblackscholesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_table_sum(s : FinancepricingblackscholesTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesTable::sum(self : FinancepricingblackscholesTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_table_mean(s : FinancepricingblackscholesTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesTable::mean(self : FinancepricingblackscholesTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_table_scale(s : FinancepricingblackscholesTable, f : Double) -> FinancepricingblackscholesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesTable::scale(self : FinancepricingblackscholesTable, f : Double) -> FinancepricingblackscholesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_table_add(a : FinancepricingblackscholesTable, b : FinancepricingblackscholesTable) -> FinancepricingblackscholesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesTable::add(self : FinancepricingblackscholesTable, other : FinancepricingblackscholesTable) -> FinancepricingblackscholesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_table_copy(s : FinancepricingblackscholesTable) -> FinancepricingblackscholesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesTable::copy(self : FinancepricingblackscholesTable) -> FinancepricingblackscholesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_table_fill(s : FinancepricingblackscholesTable, v : Double) -> FinancepricingblackscholesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesTable::fill(self : FinancepricingblackscholesTable, v : Double) -> FinancepricingblackscholesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_table_min(s : FinancepricingblackscholesTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesTable::min(self : FinancepricingblackscholesTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_table_max(s : FinancepricingblackscholesTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesTable::max(self : FinancepricingblackscholesTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_table_to_string(s : FinancepricingblackscholesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesTable::to_string(self : FinancepricingblackscholesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_black_scholes_graphn_make(size : Int) -> Financepricingbl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_graphn_len(s : FinancepricingblackscholesGraphN) -> Int { s.size }
+pub fn FinancepricingblackscholesGraphN::len(self : FinancepricingblackscholesGraphN) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_graphn_get(s : FinancepricingblackscholesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesGraphN::get(self : FinancepricingblackscholesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_graphn_set(s : FinancepricingblackscholesGraphN, i : Int, v : Double) -> FinancepricingblackscholesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesGraphN::set(self : FinancepricingblackscholesGraphN, i : Int, v : Double) -> FinancepricingblackscholesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_graphn_sum(s : FinancepricingblackscholesGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesGraphN::sum(self : FinancepricingblackscholesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_graphn_mean(s : FinancepricingblackscholesGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesGraphN::mean(self : FinancepricingblackscholesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_graphn_scale(s : FinancepricingblackscholesGraphN, f : Double) -> FinancepricingblackscholesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesGraphN::scale(self : FinancepricingblackscholesGraphN, f : Double) -> FinancepricingblackscholesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_graphn_add(a : FinancepricingblackscholesGraphN, b : FinancepricingblackscholesGraphN) -> FinancepricingblackscholesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesGraphN::add(self : FinancepricingblackscholesGraphN, other : FinancepricingblackscholesGraphN) -> FinancepricingblackscholesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_graphn_copy(s : FinancepricingblackscholesGraphN) -> FinancepricingblackscholesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesGraphN::copy(self : FinancepricingblackscholesGraphN) -> FinancepricingblackscholesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_graphn_fill(s : FinancepricingblackscholesGraphN, v : Double) -> FinancepricingblackscholesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesGraphN::fill(self : FinancepricingblackscholesGraphN, v : Double) -> FinancepricingblackscholesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_graphn_min(s : FinancepricingblackscholesGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesGraphN::min(self : FinancepricingblackscholesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_graphn_max(s : FinancepricingblackscholesGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesGraphN::max(self : FinancepricingblackscholesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_graphn_to_string(s : FinancepricingblackscholesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesGraphN::to_string(self : FinancepricingblackscholesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_black_scholes_node_make(size : Int) -> Financepricingblac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_node_len(s : FinancepricingblackscholesNode) -> Int { s.size }
+pub fn FinancepricingblackscholesNode::len(self : FinancepricingblackscholesNode) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_node_get(s : FinancepricingblackscholesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesNode::get(self : FinancepricingblackscholesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_node_set(s : FinancepricingblackscholesNode, i : Int, v : Double) -> FinancepricingblackscholesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesNode::set(self : FinancepricingblackscholesNode, i : Int, v : Double) -> FinancepricingblackscholesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_node_sum(s : FinancepricingblackscholesNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesNode::sum(self : FinancepricingblackscholesNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_node_mean(s : FinancepricingblackscholesNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesNode::mean(self : FinancepricingblackscholesNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_node_scale(s : FinancepricingblackscholesNode, f : Double) -> FinancepricingblackscholesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesNode::scale(self : FinancepricingblackscholesNode, f : Double) -> FinancepricingblackscholesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_node_add(a : FinancepricingblackscholesNode, b : FinancepricingblackscholesNode) -> FinancepricingblackscholesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesNode::add(self : FinancepricingblackscholesNode, other : FinancepricingblackscholesNode) -> FinancepricingblackscholesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_node_copy(s : FinancepricingblackscholesNode) -> FinancepricingblackscholesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesNode::copy(self : FinancepricingblackscholesNode) -> FinancepricingblackscholesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_node_fill(s : FinancepricingblackscholesNode, v : Double) -> FinancepricingblackscholesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesNode::fill(self : FinancepricingblackscholesNode, v : Double) -> FinancepricingblackscholesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_node_min(s : FinancepricingblackscholesNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesNode::min(self : FinancepricingblackscholesNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_node_max(s : FinancepricingblackscholesNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesNode::max(self : FinancepricingblackscholesNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_node_to_string(s : FinancepricingblackscholesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesNode::to_string(self : FinancepricingblackscholesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_black_scholes_edge_make(size : Int) -> Financepricingblac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_edge_len(s : FinancepricingblackscholesEdge) -> Int { s.size }
+pub fn FinancepricingblackscholesEdge::len(self : FinancepricingblackscholesEdge) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_edge_get(s : FinancepricingblackscholesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesEdge::get(self : FinancepricingblackscholesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_edge_set(s : FinancepricingblackscholesEdge, i : Int, v : Double) -> FinancepricingblackscholesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesEdge::set(self : FinancepricingblackscholesEdge, i : Int, v : Double) -> FinancepricingblackscholesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_edge_sum(s : FinancepricingblackscholesEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesEdge::sum(self : FinancepricingblackscholesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_edge_mean(s : FinancepricingblackscholesEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesEdge::mean(self : FinancepricingblackscholesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_edge_scale(s : FinancepricingblackscholesEdge, f : Double) -> FinancepricingblackscholesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesEdge::scale(self : FinancepricingblackscholesEdge, f : Double) -> FinancepricingblackscholesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_edge_add(a : FinancepricingblackscholesEdge, b : FinancepricingblackscholesEdge) -> FinancepricingblackscholesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesEdge::add(self : FinancepricingblackscholesEdge, other : FinancepricingblackscholesEdge) -> FinancepricingblackscholesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_edge_copy(s : FinancepricingblackscholesEdge) -> FinancepricingblackscholesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesEdge::copy(self : FinancepricingblackscholesEdge) -> FinancepricingblackscholesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_edge_fill(s : FinancepricingblackscholesEdge, v : Double) -> FinancepricingblackscholesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesEdge::fill(self : FinancepricingblackscholesEdge, v : Double) -> FinancepricingblackscholesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_edge_min(s : FinancepricingblackscholesEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesEdge::min(self : FinancepricingblackscholesEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_edge_max(s : FinancepricingblackscholesEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesEdge::max(self : FinancepricingblackscholesEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_edge_to_string(s : FinancepricingblackscholesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesEdge::to_string(self : FinancepricingblackscholesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_black_scholes_path_make(size : Int) -> Financepricingblac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_path_len(s : FinancepricingblackscholesPath) -> Int { s.size }
+pub fn FinancepricingblackscholesPath::len(self : FinancepricingblackscholesPath) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_path_get(s : FinancepricingblackscholesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesPath::get(self : FinancepricingblackscholesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_path_set(s : FinancepricingblackscholesPath, i : Int, v : Double) -> FinancepricingblackscholesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesPath::set(self : FinancepricingblackscholesPath, i : Int, v : Double) -> FinancepricingblackscholesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_path_sum(s : FinancepricingblackscholesPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesPath::sum(self : FinancepricingblackscholesPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_path_mean(s : FinancepricingblackscholesPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesPath::mean(self : FinancepricingblackscholesPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_path_scale(s : FinancepricingblackscholesPath, f : Double) -> FinancepricingblackscholesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesPath::scale(self : FinancepricingblackscholesPath, f : Double) -> FinancepricingblackscholesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_path_add(a : FinancepricingblackscholesPath, b : FinancepricingblackscholesPath) -> FinancepricingblackscholesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesPath::add(self : FinancepricingblackscholesPath, other : FinancepricingblackscholesPath) -> FinancepricingblackscholesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_path_copy(s : FinancepricingblackscholesPath) -> FinancepricingblackscholesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesPath::copy(self : FinancepricingblackscholesPath) -> FinancepricingblackscholesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_path_fill(s : FinancepricingblackscholesPath, v : Double) -> FinancepricingblackscholesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesPath::fill(self : FinancepricingblackscholesPath, v : Double) -> FinancepricingblackscholesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_path_min(s : FinancepricingblackscholesPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesPath::min(self : FinancepricingblackscholesPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_path_max(s : FinancepricingblackscholesPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesPath::max(self : FinancepricingblackscholesPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_path_to_string(s : FinancepricingblackscholesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesPath::to_string(self : FinancepricingblackscholesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_black_scholes_cluster_make(size : Int) -> Financepricingb
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_cluster_len(s : FinancepricingblackscholesCluster) -> Int { s.size }
+pub fn FinancepricingblackscholesCluster::len(self : FinancepricingblackscholesCluster) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_cluster_get(s : FinancepricingblackscholesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesCluster::get(self : FinancepricingblackscholesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_cluster_set(s : FinancepricingblackscholesCluster, i : Int, v : Double) -> FinancepricingblackscholesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCluster::set(self : FinancepricingblackscholesCluster, i : Int, v : Double) -> FinancepricingblackscholesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cluster_sum(s : FinancepricingblackscholesCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesCluster::sum(self : FinancepricingblackscholesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_cluster_mean(s : FinancepricingblackscholesCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesCluster::mean(self : FinancepricingblackscholesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_cluster_scale(s : FinancepricingblackscholesCluster, f : Double) -> FinancepricingblackscholesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCluster::scale(self : FinancepricingblackscholesCluster, f : Double) -> FinancepricingblackscholesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cluster_add(a : FinancepricingblackscholesCluster, b : FinancepricingblackscholesCluster) -> FinancepricingblackscholesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesCluster::add(self : FinancepricingblackscholesCluster, other : FinancepricingblackscholesCluster) -> FinancepricingblackscholesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cluster_copy(s : FinancepricingblackscholesCluster) -> FinancepricingblackscholesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCluster::copy(self : FinancepricingblackscholesCluster) -> FinancepricingblackscholesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cluster_fill(s : FinancepricingblackscholesCluster, v : Double) -> FinancepricingblackscholesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCluster::fill(self : FinancepricingblackscholesCluster, v : Double) -> FinancepricingblackscholesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cluster_min(s : FinancepricingblackscholesCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesCluster::min(self : FinancepricingblackscholesCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_cluster_max(s : FinancepricingblackscholesCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesCluster::max(self : FinancepricingblackscholesCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_cluster_to_string(s : FinancepricingblackscholesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesCluster::to_string(self : FinancepricingblackscholesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_black_scholes_model_make(size : Int) -> Financepricingbla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_model_len(s : FinancepricingblackscholesModel) -> Int { s.size }
+pub fn FinancepricingblackscholesModel::len(self : FinancepricingblackscholesModel) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_model_get(s : FinancepricingblackscholesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesModel::get(self : FinancepricingblackscholesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_model_set(s : FinancepricingblackscholesModel, i : Int, v : Double) -> FinancepricingblackscholesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesModel::set(self : FinancepricingblackscholesModel, i : Int, v : Double) -> FinancepricingblackscholesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_model_sum(s : FinancepricingblackscholesModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesModel::sum(self : FinancepricingblackscholesModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_model_mean(s : FinancepricingblackscholesModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesModel::mean(self : FinancepricingblackscholesModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_model_scale(s : FinancepricingblackscholesModel, f : Double) -> FinancepricingblackscholesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesModel::scale(self : FinancepricingblackscholesModel, f : Double) -> FinancepricingblackscholesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_model_add(a : FinancepricingblackscholesModel, b : FinancepricingblackscholesModel) -> FinancepricingblackscholesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesModel::add(self : FinancepricingblackscholesModel, other : FinancepricingblackscholesModel) -> FinancepricingblackscholesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_model_copy(s : FinancepricingblackscholesModel) -> FinancepricingblackscholesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesModel::copy(self : FinancepricingblackscholesModel) -> FinancepricingblackscholesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_model_fill(s : FinancepricingblackscholesModel, v : Double) -> FinancepricingblackscholesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesModel::fill(self : FinancepricingblackscholesModel, v : Double) -> FinancepricingblackscholesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_model_min(s : FinancepricingblackscholesModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesModel::min(self : FinancepricingblackscholesModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_model_max(s : FinancepricingblackscholesModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesModel::max(self : FinancepricingblackscholesModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_model_to_string(s : FinancepricingblackscholesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesModel::to_string(self : FinancepricingblackscholesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_black_scholes_layer_make(size : Int) -> Financepricingbla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_layer_len(s : FinancepricingblackscholesLayer) -> Int { s.size }
+pub fn FinancepricingblackscholesLayer::len(self : FinancepricingblackscholesLayer) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_layer_get(s : FinancepricingblackscholesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesLayer::get(self : FinancepricingblackscholesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_layer_set(s : FinancepricingblackscholesLayer, i : Int, v : Double) -> FinancepricingblackscholesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesLayer::set(self : FinancepricingblackscholesLayer, i : Int, v : Double) -> FinancepricingblackscholesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_layer_sum(s : FinancepricingblackscholesLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesLayer::sum(self : FinancepricingblackscholesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_layer_mean(s : FinancepricingblackscholesLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesLayer::mean(self : FinancepricingblackscholesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_layer_scale(s : FinancepricingblackscholesLayer, f : Double) -> FinancepricingblackscholesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesLayer::scale(self : FinancepricingblackscholesLayer, f : Double) -> FinancepricingblackscholesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_layer_add(a : FinancepricingblackscholesLayer, b : FinancepricingblackscholesLayer) -> FinancepricingblackscholesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesLayer::add(self : FinancepricingblackscholesLayer, other : FinancepricingblackscholesLayer) -> FinancepricingblackscholesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_layer_copy(s : FinancepricingblackscholesLayer) -> FinancepricingblackscholesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesLayer::copy(self : FinancepricingblackscholesLayer) -> FinancepricingblackscholesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_layer_fill(s : FinancepricingblackscholesLayer, v : Double) -> FinancepricingblackscholesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesLayer::fill(self : FinancepricingblackscholesLayer, v : Double) -> FinancepricingblackscholesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_layer_min(s : FinancepricingblackscholesLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesLayer::min(self : FinancepricingblackscholesLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_layer_max(s : FinancepricingblackscholesLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesLayer::max(self : FinancepricingblackscholesLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_layer_to_string(s : FinancepricingblackscholesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesLayer::to_string(self : FinancepricingblackscholesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_black_scholes_buffer_make(size : Int) -> Financepricingbl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_buffer_len(s : FinancepricingblackscholesBuffer) -> Int { s.size }
+pub fn FinancepricingblackscholesBuffer::len(self : FinancepricingblackscholesBuffer) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_buffer_get(s : FinancepricingblackscholesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesBuffer::get(self : FinancepricingblackscholesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_buffer_set(s : FinancepricingblackscholesBuffer, i : Int, v : Double) -> FinancepricingblackscholesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesBuffer::set(self : FinancepricingblackscholesBuffer, i : Int, v : Double) -> FinancepricingblackscholesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_buffer_sum(s : FinancepricingblackscholesBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesBuffer::sum(self : FinancepricingblackscholesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_buffer_mean(s : FinancepricingblackscholesBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesBuffer::mean(self : FinancepricingblackscholesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_buffer_scale(s : FinancepricingblackscholesBuffer, f : Double) -> FinancepricingblackscholesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesBuffer::scale(self : FinancepricingblackscholesBuffer, f : Double) -> FinancepricingblackscholesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_buffer_add(a : FinancepricingblackscholesBuffer, b : FinancepricingblackscholesBuffer) -> FinancepricingblackscholesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesBuffer::add(self : FinancepricingblackscholesBuffer, other : FinancepricingblackscholesBuffer) -> FinancepricingblackscholesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_buffer_copy(s : FinancepricingblackscholesBuffer) -> FinancepricingblackscholesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesBuffer::copy(self : FinancepricingblackscholesBuffer) -> FinancepricingblackscholesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_buffer_fill(s : FinancepricingblackscholesBuffer, v : Double) -> FinancepricingblackscholesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesBuffer::fill(self : FinancepricingblackscholesBuffer, v : Double) -> FinancepricingblackscholesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_buffer_min(s : FinancepricingblackscholesBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesBuffer::min(self : FinancepricingblackscholesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_buffer_max(s : FinancepricingblackscholesBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesBuffer::max(self : FinancepricingblackscholesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_buffer_to_string(s : FinancepricingblackscholesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesBuffer::to_string(self : FinancepricingblackscholesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_black_scholes_cursor_make(size : Int) -> Financepricingbl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_cursor_len(s : FinancepricingblackscholesCursor) -> Int { s.size }
+pub fn FinancepricingblackscholesCursor::len(self : FinancepricingblackscholesCursor) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_cursor_get(s : FinancepricingblackscholesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesCursor::get(self : FinancepricingblackscholesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_cursor_set(s : FinancepricingblackscholesCursor, i : Int, v : Double) -> FinancepricingblackscholesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCursor::set(self : FinancepricingblackscholesCursor, i : Int, v : Double) -> FinancepricingblackscholesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cursor_sum(s : FinancepricingblackscholesCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesCursor::sum(self : FinancepricingblackscholesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_cursor_mean(s : FinancepricingblackscholesCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesCursor::mean(self : FinancepricingblackscholesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_cursor_scale(s : FinancepricingblackscholesCursor, f : Double) -> FinancepricingblackscholesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCursor::scale(self : FinancepricingblackscholesCursor, f : Double) -> FinancepricingblackscholesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cursor_add(a : FinancepricingblackscholesCursor, b : FinancepricingblackscholesCursor) -> FinancepricingblackscholesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesCursor::add(self : FinancepricingblackscholesCursor, other : FinancepricingblackscholesCursor) -> FinancepricingblackscholesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cursor_copy(s : FinancepricingblackscholesCursor) -> FinancepricingblackscholesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCursor::copy(self : FinancepricingblackscholesCursor) -> FinancepricingblackscholesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cursor_fill(s : FinancepricingblackscholesCursor, v : Double) -> FinancepricingblackscholesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesCursor::fill(self : FinancepricingblackscholesCursor, v : Double) -> FinancepricingblackscholesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_cursor_min(s : FinancepricingblackscholesCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesCursor::min(self : FinancepricingblackscholesCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_cursor_max(s : FinancepricingblackscholesCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesCursor::max(self : FinancepricingblackscholesCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_cursor_to_string(s : FinancepricingblackscholesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesCursor::to_string(self : FinancepricingblackscholesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_black_scholes_view_make(size : Int) -> Financepricingblac
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_view_len(s : FinancepricingblackscholesView) -> Int { s.size }
+pub fn FinancepricingblackscholesView::len(self : FinancepricingblackscholesView) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_view_get(s : FinancepricingblackscholesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesView::get(self : FinancepricingblackscholesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_view_set(s : FinancepricingblackscholesView, i : Int, v : Double) -> FinancepricingblackscholesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesView::set(self : FinancepricingblackscholesView, i : Int, v : Double) -> FinancepricingblackscholesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_view_sum(s : FinancepricingblackscholesView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesView::sum(self : FinancepricingblackscholesView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_view_mean(s : FinancepricingblackscholesView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesView::mean(self : FinancepricingblackscholesView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_view_scale(s : FinancepricingblackscholesView, f : Double) -> FinancepricingblackscholesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesView::scale(self : FinancepricingblackscholesView, f : Double) -> FinancepricingblackscholesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_view_add(a : FinancepricingblackscholesView, b : FinancepricingblackscholesView) -> FinancepricingblackscholesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesView::add(self : FinancepricingblackscholesView, other : FinancepricingblackscholesView) -> FinancepricingblackscholesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_view_copy(s : FinancepricingblackscholesView) -> FinancepricingblackscholesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesView::copy(self : FinancepricingblackscholesView) -> FinancepricingblackscholesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_view_fill(s : FinancepricingblackscholesView, v : Double) -> FinancepricingblackscholesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesView::fill(self : FinancepricingblackscholesView, v : Double) -> FinancepricingblackscholesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_view_min(s : FinancepricingblackscholesView) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesView::min(self : FinancepricingblackscholesView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_view_max(s : FinancepricingblackscholesView) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesView::max(self : FinancepricingblackscholesView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_view_to_string(s : FinancepricingblackscholesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesView::to_string(self : FinancepricingblackscholesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_black_scholes_range_make(size : Int) -> Financepricingbla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_range_len(s : FinancepricingblackscholesRange) -> Int { s.size }
+pub fn FinancepricingblackscholesRange::len(self : FinancepricingblackscholesRange) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_range_get(s : FinancepricingblackscholesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesRange::get(self : FinancepricingblackscholesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_range_set(s : FinancepricingblackscholesRange, i : Int, v : Double) -> FinancepricingblackscholesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesRange::set(self : FinancepricingblackscholesRange, i : Int, v : Double) -> FinancepricingblackscholesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_range_sum(s : FinancepricingblackscholesRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesRange::sum(self : FinancepricingblackscholesRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_range_mean(s : FinancepricingblackscholesRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesRange::mean(self : FinancepricingblackscholesRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_range_scale(s : FinancepricingblackscholesRange, f : Double) -> FinancepricingblackscholesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesRange::scale(self : FinancepricingblackscholesRange, f : Double) -> FinancepricingblackscholesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_range_add(a : FinancepricingblackscholesRange, b : FinancepricingblackscholesRange) -> FinancepricingblackscholesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesRange::add(self : FinancepricingblackscholesRange, other : FinancepricingblackscholesRange) -> FinancepricingblackscholesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_range_copy(s : FinancepricingblackscholesRange) -> FinancepricingblackscholesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesRange::copy(self : FinancepricingblackscholesRange) -> FinancepricingblackscholesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_range_fill(s : FinancepricingblackscholesRange, v : Double) -> FinancepricingblackscholesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesRange::fill(self : FinancepricingblackscholesRange, v : Double) -> FinancepricingblackscholesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_range_min(s : FinancepricingblackscholesRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesRange::min(self : FinancepricingblackscholesRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_range_max(s : FinancepricingblackscholesRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesRange::max(self : FinancepricingblackscholesRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_range_to_string(s : FinancepricingblackscholesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesRange::to_string(self : FinancepricingblackscholesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingblackscholesSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_black_scholes_slice_make(size : Int) -> Financepricingbla
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_black_scholes_slice_len(s : FinancepricingblackscholesSlice) -> Int { s.size }
+pub fn FinancepricingblackscholesSlice::len(self : FinancepricingblackscholesSlice) -> Int { self.size }
 
-pub fn finance_pricing_black_scholes_slice_get(s : FinancepricingblackscholesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingblackscholesSlice::get(self : FinancepricingblackscholesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_black_scholes_slice_set(s : FinancepricingblackscholesSlice, i : Int, v : Double) -> FinancepricingblackscholesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesSlice::set(self : FinancepricingblackscholesSlice, i : Int, v : Double) -> FinancepricingblackscholesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_slice_sum(s : FinancepricingblackscholesSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingblackscholesSlice::sum(self : FinancepricingblackscholesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_black_scholes_slice_mean(s : FinancepricingblackscholesSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingblackscholesSlice::mean(self : FinancepricingblackscholesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_black_scholes_slice_scale(s : FinancepricingblackscholesSlice, f : Double) -> FinancepricingblackscholesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesSlice::scale(self : FinancepricingblackscholesSlice, f : Double) -> FinancepricingblackscholesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_slice_add(a : FinancepricingblackscholesSlice, b : FinancepricingblackscholesSlice) -> FinancepricingblackscholesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingblackscholesSlice::add(self : FinancepricingblackscholesSlice, other : FinancepricingblackscholesSlice) -> FinancepricingblackscholesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_slice_copy(s : FinancepricingblackscholesSlice) -> FinancepricingblackscholesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesSlice::copy(self : FinancepricingblackscholesSlice) -> FinancepricingblackscholesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_slice_fill(s : FinancepricingblackscholesSlice, v : Double) -> FinancepricingblackscholesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingblackscholesSlice::fill(self : FinancepricingblackscholesSlice, v : Double) -> FinancepricingblackscholesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_black_scholes_slice_min(s : FinancepricingblackscholesSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricingblackscholesSlice::min(self : FinancepricingblackscholesSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_black_scholes_slice_max(s : FinancepricingblackscholesSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricingblackscholesSlice::max(self : FinancepricingblackscholesSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_black_scholes_slice_to_string(s : FinancepricingblackscholesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingblackscholesSlice::to_string(self : FinancepricingblackscholesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn net_proto_http3_frame_make(size : Int) -> Netprotohttp3Frame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_frame_len(s : Netprotohttp3Frame) -> Int { s.size }
+pub fn Netprotohttp3Frame::len(self : Netprotohttp3Frame) -> Int { self.size }
 
-pub fn net_proto_http3_frame_get(s : Netprotohttp3Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Frame::get(self : Netprotohttp3Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_frame_set(s : Netprotohttp3Frame, i : Int, v : Double) -> Netprotohttp3Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Frame::set(self : Netprotohttp3Frame, i : Int, v : Double) -> Netprotohttp3Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_frame_sum(s : Netprotohttp3Frame) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Frame::sum(self : Netprotohttp3Frame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_frame_mean(s : Netprotohttp3Frame) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Frame::mean(self : Netprotohttp3Frame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_frame_scale(s : Netprotohttp3Frame, f : Double) -> Netprotohttp3Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Frame::scale(self : Netprotohttp3Frame, f : Double) -> Netprotohttp3Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_frame_add(a : Netprotohttp3Frame, b : Netprotohttp3Frame) -> Netprotohttp3Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Frame::add(self : Netprotohttp3Frame, other : Netprotohttp3Frame) -> Netprotohttp3Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_frame_copy(s : Netprotohttp3Frame) -> Netprotohttp3Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Frame::copy(self : Netprotohttp3Frame) -> Netprotohttp3Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_frame_fill(s : Netprotohttp3Frame, v : Double) -> Netprotohttp3Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Frame::fill(self : Netprotohttp3Frame, v : Double) -> Netprotohttp3Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_frame_min(s : Netprotohttp3Frame) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Frame::min(self : Netprotohttp3Frame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_frame_max(s : Netprotohttp3Frame) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Frame::max(self : Netprotohttp3Frame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_frame_to_string(s : Netprotohttp3Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Frame::to_string(self : Netprotohttp3Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Table {
@@ -402,45 +402,45 @@ pub fn net_proto_http3_table_make(size : Int) -> Netprotohttp3Table {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_table_len(s : Netprotohttp3Table) -> Int { s.size }
+pub fn Netprotohttp3Table::len(self : Netprotohttp3Table) -> Int { self.size }
 
-pub fn net_proto_http3_table_get(s : Netprotohttp3Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Table::get(self : Netprotohttp3Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_table_set(s : Netprotohttp3Table, i : Int, v : Double) -> Netprotohttp3Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Table::set(self : Netprotohttp3Table, i : Int, v : Double) -> Netprotohttp3Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_table_sum(s : Netprotohttp3Table) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Table::sum(self : Netprotohttp3Table) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_table_mean(s : Netprotohttp3Table) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Table::mean(self : Netprotohttp3Table) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_table_scale(s : Netprotohttp3Table, f : Double) -> Netprotohttp3Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Table::scale(self : Netprotohttp3Table, f : Double) -> Netprotohttp3Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_table_add(a : Netprotohttp3Table, b : Netprotohttp3Table) -> Netprotohttp3Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Table::add(self : Netprotohttp3Table, other : Netprotohttp3Table) -> Netprotohttp3Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_table_copy(s : Netprotohttp3Table) -> Netprotohttp3Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Table::copy(self : Netprotohttp3Table) -> Netprotohttp3Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_table_fill(s : Netprotohttp3Table, v : Double) -> Netprotohttp3Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Table::fill(self : Netprotohttp3Table, v : Double) -> Netprotohttp3Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_table_min(s : Netprotohttp3Table) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Table::min(self : Netprotohttp3Table) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_table_max(s : Netprotohttp3Table) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Table::max(self : Netprotohttp3Table) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_table_to_string(s : Netprotohttp3Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Table::to_string(self : Netprotohttp3Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3GraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_http3_graphn_make(size : Int) -> Netprotohttp3GraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_graphn_len(s : Netprotohttp3GraphN) -> Int { s.size }
+pub fn Netprotohttp3GraphN::len(self : Netprotohttp3GraphN) -> Int { self.size }
 
-pub fn net_proto_http3_graphn_get(s : Netprotohttp3GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3GraphN::get(self : Netprotohttp3GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_graphn_set(s : Netprotohttp3GraphN, i : Int, v : Double) -> Netprotohttp3GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3GraphN::set(self : Netprotohttp3GraphN, i : Int, v : Double) -> Netprotohttp3GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_graphn_sum(s : Netprotohttp3GraphN) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3GraphN::sum(self : Netprotohttp3GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_graphn_mean(s : Netprotohttp3GraphN) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3GraphN::mean(self : Netprotohttp3GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_graphn_scale(s : Netprotohttp3GraphN, f : Double) -> Netprotohttp3GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3GraphN::scale(self : Netprotohttp3GraphN, f : Double) -> Netprotohttp3GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_graphn_add(a : Netprotohttp3GraphN, b : Netprotohttp3GraphN) -> Netprotohttp3GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3GraphN::add(self : Netprotohttp3GraphN, other : Netprotohttp3GraphN) -> Netprotohttp3GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_graphn_copy(s : Netprotohttp3GraphN) -> Netprotohttp3GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3GraphN::copy(self : Netprotohttp3GraphN) -> Netprotohttp3GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_graphn_fill(s : Netprotohttp3GraphN, v : Double) -> Netprotohttp3GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3GraphN::fill(self : Netprotohttp3GraphN, v : Double) -> Netprotohttp3GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_graphn_min(s : Netprotohttp3GraphN) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3GraphN::min(self : Netprotohttp3GraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_graphn_max(s : Netprotohttp3GraphN) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3GraphN::max(self : Netprotohttp3GraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_graphn_to_string(s : Netprotohttp3GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3GraphN::to_string(self : Netprotohttp3GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Node {
@@ -504,45 +504,45 @@ pub fn net_proto_http3_node_make(size : Int) -> Netprotohttp3Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_node_len(s : Netprotohttp3Node) -> Int { s.size }
+pub fn Netprotohttp3Node::len(self : Netprotohttp3Node) -> Int { self.size }
 
-pub fn net_proto_http3_node_get(s : Netprotohttp3Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Node::get(self : Netprotohttp3Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_node_set(s : Netprotohttp3Node, i : Int, v : Double) -> Netprotohttp3Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Node::set(self : Netprotohttp3Node, i : Int, v : Double) -> Netprotohttp3Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_node_sum(s : Netprotohttp3Node) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Node::sum(self : Netprotohttp3Node) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_node_mean(s : Netprotohttp3Node) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Node::mean(self : Netprotohttp3Node) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_node_scale(s : Netprotohttp3Node, f : Double) -> Netprotohttp3Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Node::scale(self : Netprotohttp3Node, f : Double) -> Netprotohttp3Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_node_add(a : Netprotohttp3Node, b : Netprotohttp3Node) -> Netprotohttp3Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Node::add(self : Netprotohttp3Node, other : Netprotohttp3Node) -> Netprotohttp3Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_node_copy(s : Netprotohttp3Node) -> Netprotohttp3Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Node::copy(self : Netprotohttp3Node) -> Netprotohttp3Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_node_fill(s : Netprotohttp3Node, v : Double) -> Netprotohttp3Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Node::fill(self : Netprotohttp3Node, v : Double) -> Netprotohttp3Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_node_min(s : Netprotohttp3Node) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Node::min(self : Netprotohttp3Node) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_node_max(s : Netprotohttp3Node) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Node::max(self : Netprotohttp3Node) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_node_to_string(s : Netprotohttp3Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Node::to_string(self : Netprotohttp3Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Edge {
@@ -555,45 +555,45 @@ pub fn net_proto_http3_edge_make(size : Int) -> Netprotohttp3Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_edge_len(s : Netprotohttp3Edge) -> Int { s.size }
+pub fn Netprotohttp3Edge::len(self : Netprotohttp3Edge) -> Int { self.size }
 
-pub fn net_proto_http3_edge_get(s : Netprotohttp3Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Edge::get(self : Netprotohttp3Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_edge_set(s : Netprotohttp3Edge, i : Int, v : Double) -> Netprotohttp3Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Edge::set(self : Netprotohttp3Edge, i : Int, v : Double) -> Netprotohttp3Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_edge_sum(s : Netprotohttp3Edge) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Edge::sum(self : Netprotohttp3Edge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_edge_mean(s : Netprotohttp3Edge) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Edge::mean(self : Netprotohttp3Edge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_edge_scale(s : Netprotohttp3Edge, f : Double) -> Netprotohttp3Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Edge::scale(self : Netprotohttp3Edge, f : Double) -> Netprotohttp3Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_edge_add(a : Netprotohttp3Edge, b : Netprotohttp3Edge) -> Netprotohttp3Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Edge::add(self : Netprotohttp3Edge, other : Netprotohttp3Edge) -> Netprotohttp3Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_edge_copy(s : Netprotohttp3Edge) -> Netprotohttp3Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Edge::copy(self : Netprotohttp3Edge) -> Netprotohttp3Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_edge_fill(s : Netprotohttp3Edge, v : Double) -> Netprotohttp3Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Edge::fill(self : Netprotohttp3Edge, v : Double) -> Netprotohttp3Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_edge_min(s : Netprotohttp3Edge) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Edge::min(self : Netprotohttp3Edge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_edge_max(s : Netprotohttp3Edge) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Edge::max(self : Netprotohttp3Edge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_edge_to_string(s : Netprotohttp3Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Edge::to_string(self : Netprotohttp3Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Path {
@@ -606,45 +606,45 @@ pub fn net_proto_http3_path_make(size : Int) -> Netprotohttp3Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_path_len(s : Netprotohttp3Path) -> Int { s.size }
+pub fn Netprotohttp3Path::len(self : Netprotohttp3Path) -> Int { self.size }
 
-pub fn net_proto_http3_path_get(s : Netprotohttp3Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Path::get(self : Netprotohttp3Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_path_set(s : Netprotohttp3Path, i : Int, v : Double) -> Netprotohttp3Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Path::set(self : Netprotohttp3Path, i : Int, v : Double) -> Netprotohttp3Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_path_sum(s : Netprotohttp3Path) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Path::sum(self : Netprotohttp3Path) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_path_mean(s : Netprotohttp3Path) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Path::mean(self : Netprotohttp3Path) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_path_scale(s : Netprotohttp3Path, f : Double) -> Netprotohttp3Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Path::scale(self : Netprotohttp3Path, f : Double) -> Netprotohttp3Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_path_add(a : Netprotohttp3Path, b : Netprotohttp3Path) -> Netprotohttp3Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Path::add(self : Netprotohttp3Path, other : Netprotohttp3Path) -> Netprotohttp3Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_path_copy(s : Netprotohttp3Path) -> Netprotohttp3Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Path::copy(self : Netprotohttp3Path) -> Netprotohttp3Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_path_fill(s : Netprotohttp3Path, v : Double) -> Netprotohttp3Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Path::fill(self : Netprotohttp3Path, v : Double) -> Netprotohttp3Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_path_min(s : Netprotohttp3Path) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Path::min(self : Netprotohttp3Path) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_path_max(s : Netprotohttp3Path) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Path::max(self : Netprotohttp3Path) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_path_to_string(s : Netprotohttp3Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Path::to_string(self : Netprotohttp3Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Cluster {
@@ -657,45 +657,45 @@ pub fn net_proto_http3_cluster_make(size : Int) -> Netprotohttp3Cluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_cluster_len(s : Netprotohttp3Cluster) -> Int { s.size }
+pub fn Netprotohttp3Cluster::len(self : Netprotohttp3Cluster) -> Int { self.size }
 
-pub fn net_proto_http3_cluster_get(s : Netprotohttp3Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Cluster::get(self : Netprotohttp3Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_cluster_set(s : Netprotohttp3Cluster, i : Int, v : Double) -> Netprotohttp3Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cluster::set(self : Netprotohttp3Cluster, i : Int, v : Double) -> Netprotohttp3Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cluster_sum(s : Netprotohttp3Cluster) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Cluster::sum(self : Netprotohttp3Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_cluster_mean(s : Netprotohttp3Cluster) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Cluster::mean(self : Netprotohttp3Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_cluster_scale(s : Netprotohttp3Cluster, f : Double) -> Netprotohttp3Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cluster::scale(self : Netprotohttp3Cluster, f : Double) -> Netprotohttp3Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cluster_add(a : Netprotohttp3Cluster, b : Netprotohttp3Cluster) -> Netprotohttp3Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Cluster::add(self : Netprotohttp3Cluster, other : Netprotohttp3Cluster) -> Netprotohttp3Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_cluster_copy(s : Netprotohttp3Cluster) -> Netprotohttp3Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cluster::copy(self : Netprotohttp3Cluster) -> Netprotohttp3Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cluster_fill(s : Netprotohttp3Cluster, v : Double) -> Netprotohttp3Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cluster::fill(self : Netprotohttp3Cluster, v : Double) -> Netprotohttp3Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cluster_min(s : Netprotohttp3Cluster) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Cluster::min(self : Netprotohttp3Cluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_cluster_max(s : Netprotohttp3Cluster) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Cluster::max(self : Netprotohttp3Cluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_cluster_to_string(s : Netprotohttp3Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Cluster::to_string(self : Netprotohttp3Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Model {
@@ -708,45 +708,45 @@ pub fn net_proto_http3_model_make(size : Int) -> Netprotohttp3Model {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_model_len(s : Netprotohttp3Model) -> Int { s.size }
+pub fn Netprotohttp3Model::len(self : Netprotohttp3Model) -> Int { self.size }
 
-pub fn net_proto_http3_model_get(s : Netprotohttp3Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Model::get(self : Netprotohttp3Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_model_set(s : Netprotohttp3Model, i : Int, v : Double) -> Netprotohttp3Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Model::set(self : Netprotohttp3Model, i : Int, v : Double) -> Netprotohttp3Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_model_sum(s : Netprotohttp3Model) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Model::sum(self : Netprotohttp3Model) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_model_mean(s : Netprotohttp3Model) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Model::mean(self : Netprotohttp3Model) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_model_scale(s : Netprotohttp3Model, f : Double) -> Netprotohttp3Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Model::scale(self : Netprotohttp3Model, f : Double) -> Netprotohttp3Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_model_add(a : Netprotohttp3Model, b : Netprotohttp3Model) -> Netprotohttp3Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Model::add(self : Netprotohttp3Model, other : Netprotohttp3Model) -> Netprotohttp3Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_model_copy(s : Netprotohttp3Model) -> Netprotohttp3Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Model::copy(self : Netprotohttp3Model) -> Netprotohttp3Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_model_fill(s : Netprotohttp3Model, v : Double) -> Netprotohttp3Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Model::fill(self : Netprotohttp3Model, v : Double) -> Netprotohttp3Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_model_min(s : Netprotohttp3Model) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Model::min(self : Netprotohttp3Model) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_model_max(s : Netprotohttp3Model) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Model::max(self : Netprotohttp3Model) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_model_to_string(s : Netprotohttp3Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Model::to_string(self : Netprotohttp3Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Layer {
@@ -759,45 +759,45 @@ pub fn net_proto_http3_layer_make(size : Int) -> Netprotohttp3Layer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_layer_len(s : Netprotohttp3Layer) -> Int { s.size }
+pub fn Netprotohttp3Layer::len(self : Netprotohttp3Layer) -> Int { self.size }
 
-pub fn net_proto_http3_layer_get(s : Netprotohttp3Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Layer::get(self : Netprotohttp3Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_layer_set(s : Netprotohttp3Layer, i : Int, v : Double) -> Netprotohttp3Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Layer::set(self : Netprotohttp3Layer, i : Int, v : Double) -> Netprotohttp3Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_layer_sum(s : Netprotohttp3Layer) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Layer::sum(self : Netprotohttp3Layer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_layer_mean(s : Netprotohttp3Layer) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Layer::mean(self : Netprotohttp3Layer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_layer_scale(s : Netprotohttp3Layer, f : Double) -> Netprotohttp3Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Layer::scale(self : Netprotohttp3Layer, f : Double) -> Netprotohttp3Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_layer_add(a : Netprotohttp3Layer, b : Netprotohttp3Layer) -> Netprotohttp3Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Layer::add(self : Netprotohttp3Layer, other : Netprotohttp3Layer) -> Netprotohttp3Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_layer_copy(s : Netprotohttp3Layer) -> Netprotohttp3Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Layer::copy(self : Netprotohttp3Layer) -> Netprotohttp3Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_layer_fill(s : Netprotohttp3Layer, v : Double) -> Netprotohttp3Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Layer::fill(self : Netprotohttp3Layer, v : Double) -> Netprotohttp3Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_layer_min(s : Netprotohttp3Layer) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Layer::min(self : Netprotohttp3Layer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_layer_max(s : Netprotohttp3Layer) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Layer::max(self : Netprotohttp3Layer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_layer_to_string(s : Netprotohttp3Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Layer::to_string(self : Netprotohttp3Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Buffer {
@@ -810,45 +810,45 @@ pub fn net_proto_http3_buffer_make(size : Int) -> Netprotohttp3Buffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_buffer_len(s : Netprotohttp3Buffer) -> Int { s.size }
+pub fn Netprotohttp3Buffer::len(self : Netprotohttp3Buffer) -> Int { self.size }
 
-pub fn net_proto_http3_buffer_get(s : Netprotohttp3Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Buffer::get(self : Netprotohttp3Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_buffer_set(s : Netprotohttp3Buffer, i : Int, v : Double) -> Netprotohttp3Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Buffer::set(self : Netprotohttp3Buffer, i : Int, v : Double) -> Netprotohttp3Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_buffer_sum(s : Netprotohttp3Buffer) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Buffer::sum(self : Netprotohttp3Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_buffer_mean(s : Netprotohttp3Buffer) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Buffer::mean(self : Netprotohttp3Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_buffer_scale(s : Netprotohttp3Buffer, f : Double) -> Netprotohttp3Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Buffer::scale(self : Netprotohttp3Buffer, f : Double) -> Netprotohttp3Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_buffer_add(a : Netprotohttp3Buffer, b : Netprotohttp3Buffer) -> Netprotohttp3Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Buffer::add(self : Netprotohttp3Buffer, other : Netprotohttp3Buffer) -> Netprotohttp3Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_buffer_copy(s : Netprotohttp3Buffer) -> Netprotohttp3Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Buffer::copy(self : Netprotohttp3Buffer) -> Netprotohttp3Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_buffer_fill(s : Netprotohttp3Buffer, v : Double) -> Netprotohttp3Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Buffer::fill(self : Netprotohttp3Buffer, v : Double) -> Netprotohttp3Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_buffer_min(s : Netprotohttp3Buffer) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Buffer::min(self : Netprotohttp3Buffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_buffer_max(s : Netprotohttp3Buffer) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Buffer::max(self : Netprotohttp3Buffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_buffer_to_string(s : Netprotohttp3Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Buffer::to_string(self : Netprotohttp3Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Cursor {
@@ -861,45 +861,45 @@ pub fn net_proto_http3_cursor_make(size : Int) -> Netprotohttp3Cursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_cursor_len(s : Netprotohttp3Cursor) -> Int { s.size }
+pub fn Netprotohttp3Cursor::len(self : Netprotohttp3Cursor) -> Int { self.size }
 
-pub fn net_proto_http3_cursor_get(s : Netprotohttp3Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Cursor::get(self : Netprotohttp3Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_cursor_set(s : Netprotohttp3Cursor, i : Int, v : Double) -> Netprotohttp3Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cursor::set(self : Netprotohttp3Cursor, i : Int, v : Double) -> Netprotohttp3Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cursor_sum(s : Netprotohttp3Cursor) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Cursor::sum(self : Netprotohttp3Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_cursor_mean(s : Netprotohttp3Cursor) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Cursor::mean(self : Netprotohttp3Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_cursor_scale(s : Netprotohttp3Cursor, f : Double) -> Netprotohttp3Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cursor::scale(self : Netprotohttp3Cursor, f : Double) -> Netprotohttp3Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cursor_add(a : Netprotohttp3Cursor, b : Netprotohttp3Cursor) -> Netprotohttp3Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Cursor::add(self : Netprotohttp3Cursor, other : Netprotohttp3Cursor) -> Netprotohttp3Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_cursor_copy(s : Netprotohttp3Cursor) -> Netprotohttp3Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cursor::copy(self : Netprotohttp3Cursor) -> Netprotohttp3Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cursor_fill(s : Netprotohttp3Cursor, v : Double) -> Netprotohttp3Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Cursor::fill(self : Netprotohttp3Cursor, v : Double) -> Netprotohttp3Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_cursor_min(s : Netprotohttp3Cursor) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Cursor::min(self : Netprotohttp3Cursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_cursor_max(s : Netprotohttp3Cursor) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Cursor::max(self : Netprotohttp3Cursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_cursor_to_string(s : Netprotohttp3Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Cursor::to_string(self : Netprotohttp3Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3View {
@@ -912,45 +912,45 @@ pub fn net_proto_http3_view_make(size : Int) -> Netprotohttp3View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_view_len(s : Netprotohttp3View) -> Int { s.size }
+pub fn Netprotohttp3View::len(self : Netprotohttp3View) -> Int { self.size }
 
-pub fn net_proto_http3_view_get(s : Netprotohttp3View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3View::get(self : Netprotohttp3View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_view_set(s : Netprotohttp3View, i : Int, v : Double) -> Netprotohttp3View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3View::set(self : Netprotohttp3View, i : Int, v : Double) -> Netprotohttp3View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_view_sum(s : Netprotohttp3View) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3View::sum(self : Netprotohttp3View) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_view_mean(s : Netprotohttp3View) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3View::mean(self : Netprotohttp3View) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_view_scale(s : Netprotohttp3View, f : Double) -> Netprotohttp3View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3View::scale(self : Netprotohttp3View, f : Double) -> Netprotohttp3View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_view_add(a : Netprotohttp3View, b : Netprotohttp3View) -> Netprotohttp3View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3View::add(self : Netprotohttp3View, other : Netprotohttp3View) -> Netprotohttp3View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_view_copy(s : Netprotohttp3View) -> Netprotohttp3View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3View::copy(self : Netprotohttp3View) -> Netprotohttp3View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_view_fill(s : Netprotohttp3View, v : Double) -> Netprotohttp3View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3View::fill(self : Netprotohttp3View, v : Double) -> Netprotohttp3View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_view_min(s : Netprotohttp3View) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3View::min(self : Netprotohttp3View) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_view_max(s : Netprotohttp3View) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3View::max(self : Netprotohttp3View) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_view_to_string(s : Netprotohttp3View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3View::to_string(self : Netprotohttp3View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Range {
@@ -963,45 +963,45 @@ pub fn net_proto_http3_range_make(size : Int) -> Netprotohttp3Range {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_range_len(s : Netprotohttp3Range) -> Int { s.size }
+pub fn Netprotohttp3Range::len(self : Netprotohttp3Range) -> Int { self.size }
 
-pub fn net_proto_http3_range_get(s : Netprotohttp3Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Range::get(self : Netprotohttp3Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_range_set(s : Netprotohttp3Range, i : Int, v : Double) -> Netprotohttp3Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Range::set(self : Netprotohttp3Range, i : Int, v : Double) -> Netprotohttp3Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_range_sum(s : Netprotohttp3Range) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Range::sum(self : Netprotohttp3Range) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_range_mean(s : Netprotohttp3Range) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Range::mean(self : Netprotohttp3Range) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_range_scale(s : Netprotohttp3Range, f : Double) -> Netprotohttp3Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Range::scale(self : Netprotohttp3Range, f : Double) -> Netprotohttp3Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_range_add(a : Netprotohttp3Range, b : Netprotohttp3Range) -> Netprotohttp3Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Range::add(self : Netprotohttp3Range, other : Netprotohttp3Range) -> Netprotohttp3Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_range_copy(s : Netprotohttp3Range) -> Netprotohttp3Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Range::copy(self : Netprotohttp3Range) -> Netprotohttp3Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_range_fill(s : Netprotohttp3Range, v : Double) -> Netprotohttp3Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Range::fill(self : Netprotohttp3Range, v : Double) -> Netprotohttp3Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_range_min(s : Netprotohttp3Range) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Range::min(self : Netprotohttp3Range) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_range_max(s : Netprotohttp3Range) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Range::max(self : Netprotohttp3Range) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_range_to_string(s : Netprotohttp3Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Range::to_string(self : Netprotohttp3Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Netprotohttp3Slice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_http3_slice_make(size : Int) -> Netprotohttp3Slice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_http3_slice_len(s : Netprotohttp3Slice) -> Int { s.size }
+pub fn Netprotohttp3Slice::len(self : Netprotohttp3Slice) -> Int { self.size }
 
-pub fn net_proto_http3_slice_get(s : Netprotohttp3Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Netprotohttp3Slice::get(self : Netprotohttp3Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_http3_slice_set(s : Netprotohttp3Slice, i : Int, v : Double) -> Netprotohttp3Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Netprotohttp3Slice::set(self : Netprotohttp3Slice, i : Int, v : Double) -> Netprotohttp3Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_slice_sum(s : Netprotohttp3Slice) -> Double { @_common.sum(s.data) }
+pub fn Netprotohttp3Slice::sum(self : Netprotohttp3Slice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_http3_slice_mean(s : Netprotohttp3Slice) -> Double { @_common.mean(s.data) }
+pub fn Netprotohttp3Slice::mean(self : Netprotohttp3Slice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_http3_slice_scale(s : Netprotohttp3Slice, f : Double) -> Netprotohttp3Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Slice::scale(self : Netprotohttp3Slice, f : Double) -> Netprotohttp3Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_slice_add(a : Netprotohttp3Slice, b : Netprotohttp3Slice) -> Netprotohttp3Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Netprotohttp3Slice::add(self : Netprotohttp3Slice, other : Netprotohttp3Slice) -> Netprotohttp3Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_http3_slice_copy(s : Netprotohttp3Slice) -> Netprotohttp3Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Slice::copy(self : Netprotohttp3Slice) -> Netprotohttp3Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_slice_fill(s : Netprotohttp3Slice, v : Double) -> Netprotohttp3Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Netprotohttp3Slice::fill(self : Netprotohttp3Slice, v : Double) -> Netprotohttp3Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_http3_slice_min(s : Netprotohttp3Slice) -> Double { @_common.min(s.data) }
+pub fn Netprotohttp3Slice::min(self : Netprotohttp3Slice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_http3_slice_max(s : Netprotohttp3Slice) -> Double { @_common.max(s.data) }
+pub fn Netprotohttp3Slice::max(self : Netprotohttp3Slice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_http3_slice_to_string(s : Netprotohttp3Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Netprotohttp3Slice::to_string(self : Netprotohttp3Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn opt_meta_pso_frame_make(size : Int) -> OptmetapsoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_frame_len(s : OptmetapsoFrame) -> Int { s.size }
+pub fn OptmetapsoFrame::len(self : OptmetapsoFrame) -> Int { self.size }
 
-pub fn opt_meta_pso_frame_get(s : OptmetapsoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoFrame::get(self : OptmetapsoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_frame_set(s : OptmetapsoFrame, i : Int, v : Double) -> OptmetapsoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoFrame::set(self : OptmetapsoFrame, i : Int, v : Double) -> OptmetapsoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_frame_sum(s : OptmetapsoFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoFrame::sum(self : OptmetapsoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_frame_mean(s : OptmetapsoFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoFrame::mean(self : OptmetapsoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_frame_scale(s : OptmetapsoFrame, f : Double) -> OptmetapsoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoFrame::scale(self : OptmetapsoFrame, f : Double) -> OptmetapsoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_frame_add(a : OptmetapsoFrame, b : OptmetapsoFrame) -> OptmetapsoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoFrame::add(self : OptmetapsoFrame, other : OptmetapsoFrame) -> OptmetapsoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_frame_copy(s : OptmetapsoFrame) -> OptmetapsoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoFrame::copy(self : OptmetapsoFrame) -> OptmetapsoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_frame_fill(s : OptmetapsoFrame, v : Double) -> OptmetapsoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoFrame::fill(self : OptmetapsoFrame, v : Double) -> OptmetapsoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_frame_min(s : OptmetapsoFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoFrame::min(self : OptmetapsoFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_frame_max(s : OptmetapsoFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoFrame::max(self : OptmetapsoFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_frame_to_string(s : OptmetapsoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoFrame::to_string(self : OptmetapsoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_pso_table_make(size : Int) -> OptmetapsoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_table_len(s : OptmetapsoTable) -> Int { s.size }
+pub fn OptmetapsoTable::len(self : OptmetapsoTable) -> Int { self.size }
 
-pub fn opt_meta_pso_table_get(s : OptmetapsoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoTable::get(self : OptmetapsoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_table_set(s : OptmetapsoTable, i : Int, v : Double) -> OptmetapsoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoTable::set(self : OptmetapsoTable, i : Int, v : Double) -> OptmetapsoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_table_sum(s : OptmetapsoTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoTable::sum(self : OptmetapsoTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_table_mean(s : OptmetapsoTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoTable::mean(self : OptmetapsoTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_table_scale(s : OptmetapsoTable, f : Double) -> OptmetapsoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoTable::scale(self : OptmetapsoTable, f : Double) -> OptmetapsoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_table_add(a : OptmetapsoTable, b : OptmetapsoTable) -> OptmetapsoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoTable::add(self : OptmetapsoTable, other : OptmetapsoTable) -> OptmetapsoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_table_copy(s : OptmetapsoTable) -> OptmetapsoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoTable::copy(self : OptmetapsoTable) -> OptmetapsoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_table_fill(s : OptmetapsoTable, v : Double) -> OptmetapsoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoTable::fill(self : OptmetapsoTable, v : Double) -> OptmetapsoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_table_min(s : OptmetapsoTable) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoTable::min(self : OptmetapsoTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_table_max(s : OptmetapsoTable) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoTable::max(self : OptmetapsoTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_table_to_string(s : OptmetapsoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoTable::to_string(self : OptmetapsoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_pso_graphn_make(size : Int) -> OptmetapsoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_graphn_len(s : OptmetapsoGraphN) -> Int { s.size }
+pub fn OptmetapsoGraphN::len(self : OptmetapsoGraphN) -> Int { self.size }
 
-pub fn opt_meta_pso_graphn_get(s : OptmetapsoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoGraphN::get(self : OptmetapsoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_graphn_set(s : OptmetapsoGraphN, i : Int, v : Double) -> OptmetapsoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoGraphN::set(self : OptmetapsoGraphN, i : Int, v : Double) -> OptmetapsoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_graphn_sum(s : OptmetapsoGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoGraphN::sum(self : OptmetapsoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_graphn_mean(s : OptmetapsoGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoGraphN::mean(self : OptmetapsoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_graphn_scale(s : OptmetapsoGraphN, f : Double) -> OptmetapsoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoGraphN::scale(self : OptmetapsoGraphN, f : Double) -> OptmetapsoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_graphn_add(a : OptmetapsoGraphN, b : OptmetapsoGraphN) -> OptmetapsoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoGraphN::add(self : OptmetapsoGraphN, other : OptmetapsoGraphN) -> OptmetapsoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_graphn_copy(s : OptmetapsoGraphN) -> OptmetapsoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoGraphN::copy(self : OptmetapsoGraphN) -> OptmetapsoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_graphn_fill(s : OptmetapsoGraphN, v : Double) -> OptmetapsoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoGraphN::fill(self : OptmetapsoGraphN, v : Double) -> OptmetapsoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_graphn_min(s : OptmetapsoGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoGraphN::min(self : OptmetapsoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_graphn_max(s : OptmetapsoGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoGraphN::max(self : OptmetapsoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_graphn_to_string(s : OptmetapsoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoGraphN::to_string(self : OptmetapsoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_pso_node_make(size : Int) -> OptmetapsoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_node_len(s : OptmetapsoNode) -> Int { s.size }
+pub fn OptmetapsoNode::len(self : OptmetapsoNode) -> Int { self.size }
 
-pub fn opt_meta_pso_node_get(s : OptmetapsoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoNode::get(self : OptmetapsoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_node_set(s : OptmetapsoNode, i : Int, v : Double) -> OptmetapsoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoNode::set(self : OptmetapsoNode, i : Int, v : Double) -> OptmetapsoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_node_sum(s : OptmetapsoNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoNode::sum(self : OptmetapsoNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_node_mean(s : OptmetapsoNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoNode::mean(self : OptmetapsoNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_node_scale(s : OptmetapsoNode, f : Double) -> OptmetapsoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoNode::scale(self : OptmetapsoNode, f : Double) -> OptmetapsoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_node_add(a : OptmetapsoNode, b : OptmetapsoNode) -> OptmetapsoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoNode::add(self : OptmetapsoNode, other : OptmetapsoNode) -> OptmetapsoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_node_copy(s : OptmetapsoNode) -> OptmetapsoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoNode::copy(self : OptmetapsoNode) -> OptmetapsoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_node_fill(s : OptmetapsoNode, v : Double) -> OptmetapsoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoNode::fill(self : OptmetapsoNode, v : Double) -> OptmetapsoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_node_min(s : OptmetapsoNode) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoNode::min(self : OptmetapsoNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_node_max(s : OptmetapsoNode) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoNode::max(self : OptmetapsoNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_node_to_string(s : OptmetapsoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoNode::to_string(self : OptmetapsoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_pso_edge_make(size : Int) -> OptmetapsoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_edge_len(s : OptmetapsoEdge) -> Int { s.size }
+pub fn OptmetapsoEdge::len(self : OptmetapsoEdge) -> Int { self.size }
 
-pub fn opt_meta_pso_edge_get(s : OptmetapsoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoEdge::get(self : OptmetapsoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_edge_set(s : OptmetapsoEdge, i : Int, v : Double) -> OptmetapsoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoEdge::set(self : OptmetapsoEdge, i : Int, v : Double) -> OptmetapsoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_edge_sum(s : OptmetapsoEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoEdge::sum(self : OptmetapsoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_edge_mean(s : OptmetapsoEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoEdge::mean(self : OptmetapsoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_edge_scale(s : OptmetapsoEdge, f : Double) -> OptmetapsoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoEdge::scale(self : OptmetapsoEdge, f : Double) -> OptmetapsoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_edge_add(a : OptmetapsoEdge, b : OptmetapsoEdge) -> OptmetapsoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoEdge::add(self : OptmetapsoEdge, other : OptmetapsoEdge) -> OptmetapsoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_edge_copy(s : OptmetapsoEdge) -> OptmetapsoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoEdge::copy(self : OptmetapsoEdge) -> OptmetapsoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_edge_fill(s : OptmetapsoEdge, v : Double) -> OptmetapsoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoEdge::fill(self : OptmetapsoEdge, v : Double) -> OptmetapsoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_edge_min(s : OptmetapsoEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoEdge::min(self : OptmetapsoEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_edge_max(s : OptmetapsoEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoEdge::max(self : OptmetapsoEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_edge_to_string(s : OptmetapsoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoEdge::to_string(self : OptmetapsoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_pso_path_make(size : Int) -> OptmetapsoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_path_len(s : OptmetapsoPath) -> Int { s.size }
+pub fn OptmetapsoPath::len(self : OptmetapsoPath) -> Int { self.size }
 
-pub fn opt_meta_pso_path_get(s : OptmetapsoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoPath::get(self : OptmetapsoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_path_set(s : OptmetapsoPath, i : Int, v : Double) -> OptmetapsoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoPath::set(self : OptmetapsoPath, i : Int, v : Double) -> OptmetapsoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_path_sum(s : OptmetapsoPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoPath::sum(self : OptmetapsoPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_path_mean(s : OptmetapsoPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoPath::mean(self : OptmetapsoPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_path_scale(s : OptmetapsoPath, f : Double) -> OptmetapsoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoPath::scale(self : OptmetapsoPath, f : Double) -> OptmetapsoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_path_add(a : OptmetapsoPath, b : OptmetapsoPath) -> OptmetapsoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoPath::add(self : OptmetapsoPath, other : OptmetapsoPath) -> OptmetapsoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_path_copy(s : OptmetapsoPath) -> OptmetapsoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoPath::copy(self : OptmetapsoPath) -> OptmetapsoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_path_fill(s : OptmetapsoPath, v : Double) -> OptmetapsoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoPath::fill(self : OptmetapsoPath, v : Double) -> OptmetapsoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_path_min(s : OptmetapsoPath) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoPath::min(self : OptmetapsoPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_path_max(s : OptmetapsoPath) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoPath::max(self : OptmetapsoPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_path_to_string(s : OptmetapsoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoPath::to_string(self : OptmetapsoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_pso_cluster_make(size : Int) -> OptmetapsoCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_cluster_len(s : OptmetapsoCluster) -> Int { s.size }
+pub fn OptmetapsoCluster::len(self : OptmetapsoCluster) -> Int { self.size }
 
-pub fn opt_meta_pso_cluster_get(s : OptmetapsoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoCluster::get(self : OptmetapsoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_cluster_set(s : OptmetapsoCluster, i : Int, v : Double) -> OptmetapsoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoCluster::set(self : OptmetapsoCluster, i : Int, v : Double) -> OptmetapsoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cluster_sum(s : OptmetapsoCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoCluster::sum(self : OptmetapsoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_cluster_mean(s : OptmetapsoCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoCluster::mean(self : OptmetapsoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_cluster_scale(s : OptmetapsoCluster, f : Double) -> OptmetapsoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoCluster::scale(self : OptmetapsoCluster, f : Double) -> OptmetapsoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cluster_add(a : OptmetapsoCluster, b : OptmetapsoCluster) -> OptmetapsoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoCluster::add(self : OptmetapsoCluster, other : OptmetapsoCluster) -> OptmetapsoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cluster_copy(s : OptmetapsoCluster) -> OptmetapsoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoCluster::copy(self : OptmetapsoCluster) -> OptmetapsoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cluster_fill(s : OptmetapsoCluster, v : Double) -> OptmetapsoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoCluster::fill(self : OptmetapsoCluster, v : Double) -> OptmetapsoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cluster_min(s : OptmetapsoCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoCluster::min(self : OptmetapsoCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_cluster_max(s : OptmetapsoCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoCluster::max(self : OptmetapsoCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_cluster_to_string(s : OptmetapsoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoCluster::to_string(self : OptmetapsoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_pso_model_make(size : Int) -> OptmetapsoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_model_len(s : OptmetapsoModel) -> Int { s.size }
+pub fn OptmetapsoModel::len(self : OptmetapsoModel) -> Int { self.size }
 
-pub fn opt_meta_pso_model_get(s : OptmetapsoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoModel::get(self : OptmetapsoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_model_set(s : OptmetapsoModel, i : Int, v : Double) -> OptmetapsoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoModel::set(self : OptmetapsoModel, i : Int, v : Double) -> OptmetapsoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_model_sum(s : OptmetapsoModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoModel::sum(self : OptmetapsoModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_model_mean(s : OptmetapsoModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoModel::mean(self : OptmetapsoModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_model_scale(s : OptmetapsoModel, f : Double) -> OptmetapsoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoModel::scale(self : OptmetapsoModel, f : Double) -> OptmetapsoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_model_add(a : OptmetapsoModel, b : OptmetapsoModel) -> OptmetapsoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoModel::add(self : OptmetapsoModel, other : OptmetapsoModel) -> OptmetapsoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_model_copy(s : OptmetapsoModel) -> OptmetapsoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoModel::copy(self : OptmetapsoModel) -> OptmetapsoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_model_fill(s : OptmetapsoModel, v : Double) -> OptmetapsoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoModel::fill(self : OptmetapsoModel, v : Double) -> OptmetapsoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_model_min(s : OptmetapsoModel) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoModel::min(self : OptmetapsoModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_model_max(s : OptmetapsoModel) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoModel::max(self : OptmetapsoModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_model_to_string(s : OptmetapsoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoModel::to_string(self : OptmetapsoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_pso_layer_make(size : Int) -> OptmetapsoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_layer_len(s : OptmetapsoLayer) -> Int { s.size }
+pub fn OptmetapsoLayer::len(self : OptmetapsoLayer) -> Int { self.size }
 
-pub fn opt_meta_pso_layer_get(s : OptmetapsoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoLayer::get(self : OptmetapsoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_layer_set(s : OptmetapsoLayer, i : Int, v : Double) -> OptmetapsoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoLayer::set(self : OptmetapsoLayer, i : Int, v : Double) -> OptmetapsoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_layer_sum(s : OptmetapsoLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoLayer::sum(self : OptmetapsoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_layer_mean(s : OptmetapsoLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoLayer::mean(self : OptmetapsoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_layer_scale(s : OptmetapsoLayer, f : Double) -> OptmetapsoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoLayer::scale(self : OptmetapsoLayer, f : Double) -> OptmetapsoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_layer_add(a : OptmetapsoLayer, b : OptmetapsoLayer) -> OptmetapsoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoLayer::add(self : OptmetapsoLayer, other : OptmetapsoLayer) -> OptmetapsoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_layer_copy(s : OptmetapsoLayer) -> OptmetapsoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoLayer::copy(self : OptmetapsoLayer) -> OptmetapsoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_layer_fill(s : OptmetapsoLayer, v : Double) -> OptmetapsoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoLayer::fill(self : OptmetapsoLayer, v : Double) -> OptmetapsoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_layer_min(s : OptmetapsoLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoLayer::min(self : OptmetapsoLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_layer_max(s : OptmetapsoLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoLayer::max(self : OptmetapsoLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_layer_to_string(s : OptmetapsoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoLayer::to_string(self : OptmetapsoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_pso_buffer_make(size : Int) -> OptmetapsoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_buffer_len(s : OptmetapsoBuffer) -> Int { s.size }
+pub fn OptmetapsoBuffer::len(self : OptmetapsoBuffer) -> Int { self.size }
 
-pub fn opt_meta_pso_buffer_get(s : OptmetapsoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoBuffer::get(self : OptmetapsoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_buffer_set(s : OptmetapsoBuffer, i : Int, v : Double) -> OptmetapsoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoBuffer::set(self : OptmetapsoBuffer, i : Int, v : Double) -> OptmetapsoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_buffer_sum(s : OptmetapsoBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoBuffer::sum(self : OptmetapsoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_buffer_mean(s : OptmetapsoBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoBuffer::mean(self : OptmetapsoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_buffer_scale(s : OptmetapsoBuffer, f : Double) -> OptmetapsoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoBuffer::scale(self : OptmetapsoBuffer, f : Double) -> OptmetapsoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_buffer_add(a : OptmetapsoBuffer, b : OptmetapsoBuffer) -> OptmetapsoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoBuffer::add(self : OptmetapsoBuffer, other : OptmetapsoBuffer) -> OptmetapsoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_buffer_copy(s : OptmetapsoBuffer) -> OptmetapsoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoBuffer::copy(self : OptmetapsoBuffer) -> OptmetapsoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_buffer_fill(s : OptmetapsoBuffer, v : Double) -> OptmetapsoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoBuffer::fill(self : OptmetapsoBuffer, v : Double) -> OptmetapsoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_buffer_min(s : OptmetapsoBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoBuffer::min(self : OptmetapsoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_buffer_max(s : OptmetapsoBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoBuffer::max(self : OptmetapsoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_buffer_to_string(s : OptmetapsoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoBuffer::to_string(self : OptmetapsoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_pso_cursor_make(size : Int) -> OptmetapsoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_cursor_len(s : OptmetapsoCursor) -> Int { s.size }
+pub fn OptmetapsoCursor::len(self : OptmetapsoCursor) -> Int { self.size }
 
-pub fn opt_meta_pso_cursor_get(s : OptmetapsoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoCursor::get(self : OptmetapsoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_cursor_set(s : OptmetapsoCursor, i : Int, v : Double) -> OptmetapsoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoCursor::set(self : OptmetapsoCursor, i : Int, v : Double) -> OptmetapsoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cursor_sum(s : OptmetapsoCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoCursor::sum(self : OptmetapsoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_cursor_mean(s : OptmetapsoCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoCursor::mean(self : OptmetapsoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_cursor_scale(s : OptmetapsoCursor, f : Double) -> OptmetapsoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoCursor::scale(self : OptmetapsoCursor, f : Double) -> OptmetapsoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cursor_add(a : OptmetapsoCursor, b : OptmetapsoCursor) -> OptmetapsoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoCursor::add(self : OptmetapsoCursor, other : OptmetapsoCursor) -> OptmetapsoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cursor_copy(s : OptmetapsoCursor) -> OptmetapsoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoCursor::copy(self : OptmetapsoCursor) -> OptmetapsoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cursor_fill(s : OptmetapsoCursor, v : Double) -> OptmetapsoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoCursor::fill(self : OptmetapsoCursor, v : Double) -> OptmetapsoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_cursor_min(s : OptmetapsoCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoCursor::min(self : OptmetapsoCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_cursor_max(s : OptmetapsoCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoCursor::max(self : OptmetapsoCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_cursor_to_string(s : OptmetapsoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoCursor::to_string(self : OptmetapsoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoView {
@@ -912,45 +912,45 @@ pub fn opt_meta_pso_view_make(size : Int) -> OptmetapsoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_view_len(s : OptmetapsoView) -> Int { s.size }
+pub fn OptmetapsoView::len(self : OptmetapsoView) -> Int { self.size }
 
-pub fn opt_meta_pso_view_get(s : OptmetapsoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoView::get(self : OptmetapsoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_view_set(s : OptmetapsoView, i : Int, v : Double) -> OptmetapsoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoView::set(self : OptmetapsoView, i : Int, v : Double) -> OptmetapsoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_view_sum(s : OptmetapsoView) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoView::sum(self : OptmetapsoView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_view_mean(s : OptmetapsoView) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoView::mean(self : OptmetapsoView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_view_scale(s : OptmetapsoView, f : Double) -> OptmetapsoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoView::scale(self : OptmetapsoView, f : Double) -> OptmetapsoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_view_add(a : OptmetapsoView, b : OptmetapsoView) -> OptmetapsoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoView::add(self : OptmetapsoView, other : OptmetapsoView) -> OptmetapsoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_view_copy(s : OptmetapsoView) -> OptmetapsoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoView::copy(self : OptmetapsoView) -> OptmetapsoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_view_fill(s : OptmetapsoView, v : Double) -> OptmetapsoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoView::fill(self : OptmetapsoView, v : Double) -> OptmetapsoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_view_min(s : OptmetapsoView) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoView::min(self : OptmetapsoView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_view_max(s : OptmetapsoView) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoView::max(self : OptmetapsoView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_view_to_string(s : OptmetapsoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoView::to_string(self : OptmetapsoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_pso_range_make(size : Int) -> OptmetapsoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_range_len(s : OptmetapsoRange) -> Int { s.size }
+pub fn OptmetapsoRange::len(self : OptmetapsoRange) -> Int { self.size }
 
-pub fn opt_meta_pso_range_get(s : OptmetapsoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoRange::get(self : OptmetapsoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_range_set(s : OptmetapsoRange, i : Int, v : Double) -> OptmetapsoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoRange::set(self : OptmetapsoRange, i : Int, v : Double) -> OptmetapsoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_range_sum(s : OptmetapsoRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoRange::sum(self : OptmetapsoRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_range_mean(s : OptmetapsoRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoRange::mean(self : OptmetapsoRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_range_scale(s : OptmetapsoRange, f : Double) -> OptmetapsoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoRange::scale(self : OptmetapsoRange, f : Double) -> OptmetapsoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_range_add(a : OptmetapsoRange, b : OptmetapsoRange) -> OptmetapsoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoRange::add(self : OptmetapsoRange, other : OptmetapsoRange) -> OptmetapsoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_range_copy(s : OptmetapsoRange) -> OptmetapsoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoRange::copy(self : OptmetapsoRange) -> OptmetapsoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_range_fill(s : OptmetapsoRange, v : Double) -> OptmetapsoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoRange::fill(self : OptmetapsoRange, v : Double) -> OptmetapsoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_range_min(s : OptmetapsoRange) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoRange::min(self : OptmetapsoRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_range_max(s : OptmetapsoRange) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoRange::max(self : OptmetapsoRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_range_to_string(s : OptmetapsoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoRange::to_string(self : OptmetapsoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetapsoSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_pso_slice_make(size : Int) -> OptmetapsoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_pso_slice_len(s : OptmetapsoSlice) -> Int { s.size }
+pub fn OptmetapsoSlice::len(self : OptmetapsoSlice) -> Int { self.size }
 
-pub fn opt_meta_pso_slice_get(s : OptmetapsoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetapsoSlice::get(self : OptmetapsoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_pso_slice_set(s : OptmetapsoSlice, i : Int, v : Double) -> OptmetapsoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetapsoSlice::set(self : OptmetapsoSlice, i : Int, v : Double) -> OptmetapsoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_slice_sum(s : OptmetapsoSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetapsoSlice::sum(self : OptmetapsoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_pso_slice_mean(s : OptmetapsoSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetapsoSlice::mean(self : OptmetapsoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_pso_slice_scale(s : OptmetapsoSlice, f : Double) -> OptmetapsoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetapsoSlice::scale(self : OptmetapsoSlice, f : Double) -> OptmetapsoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_slice_add(a : OptmetapsoSlice, b : OptmetapsoSlice) -> OptmetapsoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetapsoSlice::add(self : OptmetapsoSlice, other : OptmetapsoSlice) -> OptmetapsoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_pso_slice_copy(s : OptmetapsoSlice) -> OptmetapsoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetapsoSlice::copy(self : OptmetapsoSlice) -> OptmetapsoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_slice_fill(s : OptmetapsoSlice, v : Double) -> OptmetapsoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetapsoSlice::fill(self : OptmetapsoSlice, v : Double) -> OptmetapsoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_pso_slice_min(s : OptmetapsoSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetapsoSlice::min(self : OptmetapsoSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_pso_slice_max(s : OptmetapsoSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetapsoSlice::max(self : OptmetapsoSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_pso_slice_to_string(s : OptmetapsoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetapsoSlice::to_string(self : OptmetapsoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_cluster_affinity_frame_make(size : Int) -> MlclusteraffinityFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_frame_len(s : MlclusteraffinityFrame) -> Int { s.size }
+pub fn MlclusteraffinityFrame::len(self : MlclusteraffinityFrame) -> Int { self.size }
 
-pub fn ml_cluster_affinity_frame_get(s : MlclusteraffinityFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityFrame::get(self : MlclusteraffinityFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_frame_set(s : MlclusteraffinityFrame, i : Int, v : Double) -> MlclusteraffinityFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityFrame::set(self : MlclusteraffinityFrame, i : Int, v : Double) -> MlclusteraffinityFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_frame_sum(s : MlclusteraffinityFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityFrame::sum(self : MlclusteraffinityFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_frame_mean(s : MlclusteraffinityFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityFrame::mean(self : MlclusteraffinityFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_frame_scale(s : MlclusteraffinityFrame, f : Double) -> MlclusteraffinityFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityFrame::scale(self : MlclusteraffinityFrame, f : Double) -> MlclusteraffinityFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_frame_add(a : MlclusteraffinityFrame, b : MlclusteraffinityFrame) -> MlclusteraffinityFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityFrame::add(self : MlclusteraffinityFrame, other : MlclusteraffinityFrame) -> MlclusteraffinityFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_frame_copy(s : MlclusteraffinityFrame) -> MlclusteraffinityFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityFrame::copy(self : MlclusteraffinityFrame) -> MlclusteraffinityFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_frame_fill(s : MlclusteraffinityFrame, v : Double) -> MlclusteraffinityFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityFrame::fill(self : MlclusteraffinityFrame, v : Double) -> MlclusteraffinityFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_frame_min(s : MlclusteraffinityFrame) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityFrame::min(self : MlclusteraffinityFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_frame_max(s : MlclusteraffinityFrame) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityFrame::max(self : MlclusteraffinityFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_frame_to_string(s : MlclusteraffinityFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityFrame::to_string(self : MlclusteraffinityFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_affinity_table_make(size : Int) -> MlclusteraffinityTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_table_len(s : MlclusteraffinityTable) -> Int { s.size }
+pub fn MlclusteraffinityTable::len(self : MlclusteraffinityTable) -> Int { self.size }
 
-pub fn ml_cluster_affinity_table_get(s : MlclusteraffinityTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityTable::get(self : MlclusteraffinityTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_table_set(s : MlclusteraffinityTable, i : Int, v : Double) -> MlclusteraffinityTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityTable::set(self : MlclusteraffinityTable, i : Int, v : Double) -> MlclusteraffinityTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_table_sum(s : MlclusteraffinityTable) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityTable::sum(self : MlclusteraffinityTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_table_mean(s : MlclusteraffinityTable) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityTable::mean(self : MlclusteraffinityTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_table_scale(s : MlclusteraffinityTable, f : Double) -> MlclusteraffinityTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityTable::scale(self : MlclusteraffinityTable, f : Double) -> MlclusteraffinityTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_table_add(a : MlclusteraffinityTable, b : MlclusteraffinityTable) -> MlclusteraffinityTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityTable::add(self : MlclusteraffinityTable, other : MlclusteraffinityTable) -> MlclusteraffinityTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_table_copy(s : MlclusteraffinityTable) -> MlclusteraffinityTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityTable::copy(self : MlclusteraffinityTable) -> MlclusteraffinityTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_table_fill(s : MlclusteraffinityTable, v : Double) -> MlclusteraffinityTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityTable::fill(self : MlclusteraffinityTable, v : Double) -> MlclusteraffinityTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_table_min(s : MlclusteraffinityTable) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityTable::min(self : MlclusteraffinityTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_table_max(s : MlclusteraffinityTable) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityTable::max(self : MlclusteraffinityTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_table_to_string(s : MlclusteraffinityTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityTable::to_string(self : MlclusteraffinityTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_affinity_graphn_make(size : Int) -> MlclusteraffinityGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_graphn_len(s : MlclusteraffinityGraphN) -> Int { s.size }
+pub fn MlclusteraffinityGraphN::len(self : MlclusteraffinityGraphN) -> Int { self.size }
 
-pub fn ml_cluster_affinity_graphn_get(s : MlclusteraffinityGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityGraphN::get(self : MlclusteraffinityGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_graphn_set(s : MlclusteraffinityGraphN, i : Int, v : Double) -> MlclusteraffinityGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityGraphN::set(self : MlclusteraffinityGraphN, i : Int, v : Double) -> MlclusteraffinityGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_graphn_sum(s : MlclusteraffinityGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityGraphN::sum(self : MlclusteraffinityGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_graphn_mean(s : MlclusteraffinityGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityGraphN::mean(self : MlclusteraffinityGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_graphn_scale(s : MlclusteraffinityGraphN, f : Double) -> MlclusteraffinityGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityGraphN::scale(self : MlclusteraffinityGraphN, f : Double) -> MlclusteraffinityGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_graphn_add(a : MlclusteraffinityGraphN, b : MlclusteraffinityGraphN) -> MlclusteraffinityGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityGraphN::add(self : MlclusteraffinityGraphN, other : MlclusteraffinityGraphN) -> MlclusteraffinityGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_graphn_copy(s : MlclusteraffinityGraphN) -> MlclusteraffinityGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityGraphN::copy(self : MlclusteraffinityGraphN) -> MlclusteraffinityGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_graphn_fill(s : MlclusteraffinityGraphN, v : Double) -> MlclusteraffinityGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityGraphN::fill(self : MlclusteraffinityGraphN, v : Double) -> MlclusteraffinityGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_graphn_min(s : MlclusteraffinityGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityGraphN::min(self : MlclusteraffinityGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_graphn_max(s : MlclusteraffinityGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityGraphN::max(self : MlclusteraffinityGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_graphn_to_string(s : MlclusteraffinityGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityGraphN::to_string(self : MlclusteraffinityGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_affinity_node_make(size : Int) -> MlclusteraffinityNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_node_len(s : MlclusteraffinityNode) -> Int { s.size }
+pub fn MlclusteraffinityNode::len(self : MlclusteraffinityNode) -> Int { self.size }
 
-pub fn ml_cluster_affinity_node_get(s : MlclusteraffinityNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityNode::get(self : MlclusteraffinityNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_node_set(s : MlclusteraffinityNode, i : Int, v : Double) -> MlclusteraffinityNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityNode::set(self : MlclusteraffinityNode, i : Int, v : Double) -> MlclusteraffinityNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_node_sum(s : MlclusteraffinityNode) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityNode::sum(self : MlclusteraffinityNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_node_mean(s : MlclusteraffinityNode) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityNode::mean(self : MlclusteraffinityNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_node_scale(s : MlclusteraffinityNode, f : Double) -> MlclusteraffinityNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityNode::scale(self : MlclusteraffinityNode, f : Double) -> MlclusteraffinityNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_node_add(a : MlclusteraffinityNode, b : MlclusteraffinityNode) -> MlclusteraffinityNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityNode::add(self : MlclusteraffinityNode, other : MlclusteraffinityNode) -> MlclusteraffinityNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_node_copy(s : MlclusteraffinityNode) -> MlclusteraffinityNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityNode::copy(self : MlclusteraffinityNode) -> MlclusteraffinityNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_node_fill(s : MlclusteraffinityNode, v : Double) -> MlclusteraffinityNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityNode::fill(self : MlclusteraffinityNode, v : Double) -> MlclusteraffinityNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_node_min(s : MlclusteraffinityNode) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityNode::min(self : MlclusteraffinityNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_node_max(s : MlclusteraffinityNode) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityNode::max(self : MlclusteraffinityNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_node_to_string(s : MlclusteraffinityNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityNode::to_string(self : MlclusteraffinityNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_affinity_edge_make(size : Int) -> MlclusteraffinityEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_edge_len(s : MlclusteraffinityEdge) -> Int { s.size }
+pub fn MlclusteraffinityEdge::len(self : MlclusteraffinityEdge) -> Int { self.size }
 
-pub fn ml_cluster_affinity_edge_get(s : MlclusteraffinityEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityEdge::get(self : MlclusteraffinityEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_edge_set(s : MlclusteraffinityEdge, i : Int, v : Double) -> MlclusteraffinityEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityEdge::set(self : MlclusteraffinityEdge, i : Int, v : Double) -> MlclusteraffinityEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_edge_sum(s : MlclusteraffinityEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityEdge::sum(self : MlclusteraffinityEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_edge_mean(s : MlclusteraffinityEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityEdge::mean(self : MlclusteraffinityEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_edge_scale(s : MlclusteraffinityEdge, f : Double) -> MlclusteraffinityEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityEdge::scale(self : MlclusteraffinityEdge, f : Double) -> MlclusteraffinityEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_edge_add(a : MlclusteraffinityEdge, b : MlclusteraffinityEdge) -> MlclusteraffinityEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityEdge::add(self : MlclusteraffinityEdge, other : MlclusteraffinityEdge) -> MlclusteraffinityEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_edge_copy(s : MlclusteraffinityEdge) -> MlclusteraffinityEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityEdge::copy(self : MlclusteraffinityEdge) -> MlclusteraffinityEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_edge_fill(s : MlclusteraffinityEdge, v : Double) -> MlclusteraffinityEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityEdge::fill(self : MlclusteraffinityEdge, v : Double) -> MlclusteraffinityEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_edge_min(s : MlclusteraffinityEdge) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityEdge::min(self : MlclusteraffinityEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_edge_max(s : MlclusteraffinityEdge) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityEdge::max(self : MlclusteraffinityEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_edge_to_string(s : MlclusteraffinityEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityEdge::to_string(self : MlclusteraffinityEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_affinity_path_make(size : Int) -> MlclusteraffinityPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_path_len(s : MlclusteraffinityPath) -> Int { s.size }
+pub fn MlclusteraffinityPath::len(self : MlclusteraffinityPath) -> Int { self.size }
 
-pub fn ml_cluster_affinity_path_get(s : MlclusteraffinityPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityPath::get(self : MlclusteraffinityPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_path_set(s : MlclusteraffinityPath, i : Int, v : Double) -> MlclusteraffinityPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityPath::set(self : MlclusteraffinityPath, i : Int, v : Double) -> MlclusteraffinityPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_path_sum(s : MlclusteraffinityPath) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityPath::sum(self : MlclusteraffinityPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_path_mean(s : MlclusteraffinityPath) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityPath::mean(self : MlclusteraffinityPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_path_scale(s : MlclusteraffinityPath, f : Double) -> MlclusteraffinityPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityPath::scale(self : MlclusteraffinityPath, f : Double) -> MlclusteraffinityPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_path_add(a : MlclusteraffinityPath, b : MlclusteraffinityPath) -> MlclusteraffinityPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityPath::add(self : MlclusteraffinityPath, other : MlclusteraffinityPath) -> MlclusteraffinityPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_path_copy(s : MlclusteraffinityPath) -> MlclusteraffinityPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityPath::copy(self : MlclusteraffinityPath) -> MlclusteraffinityPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_path_fill(s : MlclusteraffinityPath, v : Double) -> MlclusteraffinityPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityPath::fill(self : MlclusteraffinityPath, v : Double) -> MlclusteraffinityPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_path_min(s : MlclusteraffinityPath) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityPath::min(self : MlclusteraffinityPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_path_max(s : MlclusteraffinityPath) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityPath::max(self : MlclusteraffinityPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_path_to_string(s : MlclusteraffinityPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityPath::to_string(self : MlclusteraffinityPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_affinity_cluster_make(size : Int) -> MlclusteraffinityCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_cluster_len(s : MlclusteraffinityCluster) -> Int { s.size }
+pub fn MlclusteraffinityCluster::len(self : MlclusteraffinityCluster) -> Int { self.size }
 
-pub fn ml_cluster_affinity_cluster_get(s : MlclusteraffinityCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityCluster::get(self : MlclusteraffinityCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_cluster_set(s : MlclusteraffinityCluster, i : Int, v : Double) -> MlclusteraffinityCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCluster::set(self : MlclusteraffinityCluster, i : Int, v : Double) -> MlclusteraffinityCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cluster_sum(s : MlclusteraffinityCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityCluster::sum(self : MlclusteraffinityCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_cluster_mean(s : MlclusteraffinityCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityCluster::mean(self : MlclusteraffinityCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_cluster_scale(s : MlclusteraffinityCluster, f : Double) -> MlclusteraffinityCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCluster::scale(self : MlclusteraffinityCluster, f : Double) -> MlclusteraffinityCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cluster_add(a : MlclusteraffinityCluster, b : MlclusteraffinityCluster) -> MlclusteraffinityCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityCluster::add(self : MlclusteraffinityCluster, other : MlclusteraffinityCluster) -> MlclusteraffinityCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cluster_copy(s : MlclusteraffinityCluster) -> MlclusteraffinityCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCluster::copy(self : MlclusteraffinityCluster) -> MlclusteraffinityCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cluster_fill(s : MlclusteraffinityCluster, v : Double) -> MlclusteraffinityCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCluster::fill(self : MlclusteraffinityCluster, v : Double) -> MlclusteraffinityCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cluster_min(s : MlclusteraffinityCluster) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityCluster::min(self : MlclusteraffinityCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_cluster_max(s : MlclusteraffinityCluster) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityCluster::max(self : MlclusteraffinityCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_cluster_to_string(s : MlclusteraffinityCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityCluster::to_string(self : MlclusteraffinityCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_affinity_model_make(size : Int) -> MlclusteraffinityModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_model_len(s : MlclusteraffinityModel) -> Int { s.size }
+pub fn MlclusteraffinityModel::len(self : MlclusteraffinityModel) -> Int { self.size }
 
-pub fn ml_cluster_affinity_model_get(s : MlclusteraffinityModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityModel::get(self : MlclusteraffinityModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_model_set(s : MlclusteraffinityModel, i : Int, v : Double) -> MlclusteraffinityModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityModel::set(self : MlclusteraffinityModel, i : Int, v : Double) -> MlclusteraffinityModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_model_sum(s : MlclusteraffinityModel) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityModel::sum(self : MlclusteraffinityModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_model_mean(s : MlclusteraffinityModel) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityModel::mean(self : MlclusteraffinityModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_model_scale(s : MlclusteraffinityModel, f : Double) -> MlclusteraffinityModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityModel::scale(self : MlclusteraffinityModel, f : Double) -> MlclusteraffinityModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_model_add(a : MlclusteraffinityModel, b : MlclusteraffinityModel) -> MlclusteraffinityModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityModel::add(self : MlclusteraffinityModel, other : MlclusteraffinityModel) -> MlclusteraffinityModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_model_copy(s : MlclusteraffinityModel) -> MlclusteraffinityModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityModel::copy(self : MlclusteraffinityModel) -> MlclusteraffinityModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_model_fill(s : MlclusteraffinityModel, v : Double) -> MlclusteraffinityModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityModel::fill(self : MlclusteraffinityModel, v : Double) -> MlclusteraffinityModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_model_min(s : MlclusteraffinityModel) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityModel::min(self : MlclusteraffinityModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_model_max(s : MlclusteraffinityModel) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityModel::max(self : MlclusteraffinityModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_model_to_string(s : MlclusteraffinityModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityModel::to_string(self : MlclusteraffinityModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_affinity_layer_make(size : Int) -> MlclusteraffinityLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_layer_len(s : MlclusteraffinityLayer) -> Int { s.size }
+pub fn MlclusteraffinityLayer::len(self : MlclusteraffinityLayer) -> Int { self.size }
 
-pub fn ml_cluster_affinity_layer_get(s : MlclusteraffinityLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityLayer::get(self : MlclusteraffinityLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_layer_set(s : MlclusteraffinityLayer, i : Int, v : Double) -> MlclusteraffinityLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityLayer::set(self : MlclusteraffinityLayer, i : Int, v : Double) -> MlclusteraffinityLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_layer_sum(s : MlclusteraffinityLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityLayer::sum(self : MlclusteraffinityLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_layer_mean(s : MlclusteraffinityLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityLayer::mean(self : MlclusteraffinityLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_layer_scale(s : MlclusteraffinityLayer, f : Double) -> MlclusteraffinityLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityLayer::scale(self : MlclusteraffinityLayer, f : Double) -> MlclusteraffinityLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_layer_add(a : MlclusteraffinityLayer, b : MlclusteraffinityLayer) -> MlclusteraffinityLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityLayer::add(self : MlclusteraffinityLayer, other : MlclusteraffinityLayer) -> MlclusteraffinityLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_layer_copy(s : MlclusteraffinityLayer) -> MlclusteraffinityLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityLayer::copy(self : MlclusteraffinityLayer) -> MlclusteraffinityLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_layer_fill(s : MlclusteraffinityLayer, v : Double) -> MlclusteraffinityLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityLayer::fill(self : MlclusteraffinityLayer, v : Double) -> MlclusteraffinityLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_layer_min(s : MlclusteraffinityLayer) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityLayer::min(self : MlclusteraffinityLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_layer_max(s : MlclusteraffinityLayer) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityLayer::max(self : MlclusteraffinityLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_layer_to_string(s : MlclusteraffinityLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityLayer::to_string(self : MlclusteraffinityLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_affinity_buffer_make(size : Int) -> MlclusteraffinityBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_buffer_len(s : MlclusteraffinityBuffer) -> Int { s.size }
+pub fn MlclusteraffinityBuffer::len(self : MlclusteraffinityBuffer) -> Int { self.size }
 
-pub fn ml_cluster_affinity_buffer_get(s : MlclusteraffinityBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityBuffer::get(self : MlclusteraffinityBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_buffer_set(s : MlclusteraffinityBuffer, i : Int, v : Double) -> MlclusteraffinityBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityBuffer::set(self : MlclusteraffinityBuffer, i : Int, v : Double) -> MlclusteraffinityBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_buffer_sum(s : MlclusteraffinityBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityBuffer::sum(self : MlclusteraffinityBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_buffer_mean(s : MlclusteraffinityBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityBuffer::mean(self : MlclusteraffinityBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_buffer_scale(s : MlclusteraffinityBuffer, f : Double) -> MlclusteraffinityBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityBuffer::scale(self : MlclusteraffinityBuffer, f : Double) -> MlclusteraffinityBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_buffer_add(a : MlclusteraffinityBuffer, b : MlclusteraffinityBuffer) -> MlclusteraffinityBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityBuffer::add(self : MlclusteraffinityBuffer, other : MlclusteraffinityBuffer) -> MlclusteraffinityBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_buffer_copy(s : MlclusteraffinityBuffer) -> MlclusteraffinityBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityBuffer::copy(self : MlclusteraffinityBuffer) -> MlclusteraffinityBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_buffer_fill(s : MlclusteraffinityBuffer, v : Double) -> MlclusteraffinityBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityBuffer::fill(self : MlclusteraffinityBuffer, v : Double) -> MlclusteraffinityBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_buffer_min(s : MlclusteraffinityBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityBuffer::min(self : MlclusteraffinityBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_buffer_max(s : MlclusteraffinityBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityBuffer::max(self : MlclusteraffinityBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_buffer_to_string(s : MlclusteraffinityBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityBuffer::to_string(self : MlclusteraffinityBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_affinity_cursor_make(size : Int) -> MlclusteraffinityCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_cursor_len(s : MlclusteraffinityCursor) -> Int { s.size }
+pub fn MlclusteraffinityCursor::len(self : MlclusteraffinityCursor) -> Int { self.size }
 
-pub fn ml_cluster_affinity_cursor_get(s : MlclusteraffinityCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityCursor::get(self : MlclusteraffinityCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_cursor_set(s : MlclusteraffinityCursor, i : Int, v : Double) -> MlclusteraffinityCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCursor::set(self : MlclusteraffinityCursor, i : Int, v : Double) -> MlclusteraffinityCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cursor_sum(s : MlclusteraffinityCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityCursor::sum(self : MlclusteraffinityCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_cursor_mean(s : MlclusteraffinityCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityCursor::mean(self : MlclusteraffinityCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_cursor_scale(s : MlclusteraffinityCursor, f : Double) -> MlclusteraffinityCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCursor::scale(self : MlclusteraffinityCursor, f : Double) -> MlclusteraffinityCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cursor_add(a : MlclusteraffinityCursor, b : MlclusteraffinityCursor) -> MlclusteraffinityCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityCursor::add(self : MlclusteraffinityCursor, other : MlclusteraffinityCursor) -> MlclusteraffinityCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cursor_copy(s : MlclusteraffinityCursor) -> MlclusteraffinityCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCursor::copy(self : MlclusteraffinityCursor) -> MlclusteraffinityCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cursor_fill(s : MlclusteraffinityCursor, v : Double) -> MlclusteraffinityCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityCursor::fill(self : MlclusteraffinityCursor, v : Double) -> MlclusteraffinityCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_cursor_min(s : MlclusteraffinityCursor) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityCursor::min(self : MlclusteraffinityCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_cursor_max(s : MlclusteraffinityCursor) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityCursor::max(self : MlclusteraffinityCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_cursor_to_string(s : MlclusteraffinityCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityCursor::to_string(self : MlclusteraffinityCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_affinity_view_make(size : Int) -> MlclusteraffinityView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_view_len(s : MlclusteraffinityView) -> Int { s.size }
+pub fn MlclusteraffinityView::len(self : MlclusteraffinityView) -> Int { self.size }
 
-pub fn ml_cluster_affinity_view_get(s : MlclusteraffinityView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityView::get(self : MlclusteraffinityView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_view_set(s : MlclusteraffinityView, i : Int, v : Double) -> MlclusteraffinityView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityView::set(self : MlclusteraffinityView, i : Int, v : Double) -> MlclusteraffinityView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_view_sum(s : MlclusteraffinityView) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityView::sum(self : MlclusteraffinityView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_view_mean(s : MlclusteraffinityView) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityView::mean(self : MlclusteraffinityView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_view_scale(s : MlclusteraffinityView, f : Double) -> MlclusteraffinityView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityView::scale(self : MlclusteraffinityView, f : Double) -> MlclusteraffinityView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_view_add(a : MlclusteraffinityView, b : MlclusteraffinityView) -> MlclusteraffinityView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityView::add(self : MlclusteraffinityView, other : MlclusteraffinityView) -> MlclusteraffinityView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_view_copy(s : MlclusteraffinityView) -> MlclusteraffinityView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityView::copy(self : MlclusteraffinityView) -> MlclusteraffinityView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_view_fill(s : MlclusteraffinityView, v : Double) -> MlclusteraffinityView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityView::fill(self : MlclusteraffinityView, v : Double) -> MlclusteraffinityView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_view_min(s : MlclusteraffinityView) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityView::min(self : MlclusteraffinityView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_view_max(s : MlclusteraffinityView) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityView::max(self : MlclusteraffinityView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_view_to_string(s : MlclusteraffinityView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityView::to_string(self : MlclusteraffinityView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinityRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_affinity_range_make(size : Int) -> MlclusteraffinityRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_range_len(s : MlclusteraffinityRange) -> Int { s.size }
+pub fn MlclusteraffinityRange::len(self : MlclusteraffinityRange) -> Int { self.size }
 
-pub fn ml_cluster_affinity_range_get(s : MlclusteraffinityRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinityRange::get(self : MlclusteraffinityRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_range_set(s : MlclusteraffinityRange, i : Int, v : Double) -> MlclusteraffinityRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinityRange::set(self : MlclusteraffinityRange, i : Int, v : Double) -> MlclusteraffinityRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_range_sum(s : MlclusteraffinityRange) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinityRange::sum(self : MlclusteraffinityRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_range_mean(s : MlclusteraffinityRange) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinityRange::mean(self : MlclusteraffinityRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_range_scale(s : MlclusteraffinityRange, f : Double) -> MlclusteraffinityRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityRange::scale(self : MlclusteraffinityRange, f : Double) -> MlclusteraffinityRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_range_add(a : MlclusteraffinityRange, b : MlclusteraffinityRange) -> MlclusteraffinityRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinityRange::add(self : MlclusteraffinityRange, other : MlclusteraffinityRange) -> MlclusteraffinityRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_range_copy(s : MlclusteraffinityRange) -> MlclusteraffinityRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityRange::copy(self : MlclusteraffinityRange) -> MlclusteraffinityRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_range_fill(s : MlclusteraffinityRange, v : Double) -> MlclusteraffinityRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinityRange::fill(self : MlclusteraffinityRange, v : Double) -> MlclusteraffinityRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_range_min(s : MlclusteraffinityRange) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinityRange::min(self : MlclusteraffinityRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_range_max(s : MlclusteraffinityRange) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinityRange::max(self : MlclusteraffinityRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_range_to_string(s : MlclusteraffinityRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinityRange::to_string(self : MlclusteraffinityRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusteraffinitySlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_affinity_slice_make(size : Int) -> MlclusteraffinitySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_affinity_slice_len(s : MlclusteraffinitySlice) -> Int { s.size }
+pub fn MlclusteraffinitySlice::len(self : MlclusteraffinitySlice) -> Int { self.size }
 
-pub fn ml_cluster_affinity_slice_get(s : MlclusteraffinitySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusteraffinitySlice::get(self : MlclusteraffinitySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_affinity_slice_set(s : MlclusteraffinitySlice, i : Int, v : Double) -> MlclusteraffinitySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusteraffinitySlice::set(self : MlclusteraffinitySlice, i : Int, v : Double) -> MlclusteraffinitySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_slice_sum(s : MlclusteraffinitySlice) -> Double { @_common.sum(s.data) }
+pub fn MlclusteraffinitySlice::sum(self : MlclusteraffinitySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_affinity_slice_mean(s : MlclusteraffinitySlice) -> Double { @_common.mean(s.data) }
+pub fn MlclusteraffinitySlice::mean(self : MlclusteraffinitySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_affinity_slice_scale(s : MlclusteraffinitySlice, f : Double) -> MlclusteraffinitySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusteraffinitySlice::scale(self : MlclusteraffinitySlice, f : Double) -> MlclusteraffinitySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_slice_add(a : MlclusteraffinitySlice, b : MlclusteraffinitySlice) -> MlclusteraffinitySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusteraffinitySlice::add(self : MlclusteraffinitySlice, other : MlclusteraffinitySlice) -> MlclusteraffinitySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_slice_copy(s : MlclusteraffinitySlice) -> MlclusteraffinitySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusteraffinitySlice::copy(self : MlclusteraffinitySlice) -> MlclusteraffinitySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_slice_fill(s : MlclusteraffinitySlice, v : Double) -> MlclusteraffinitySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusteraffinitySlice::fill(self : MlclusteraffinitySlice, v : Double) -> MlclusteraffinitySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_affinity_slice_min(s : MlclusteraffinitySlice) -> Double { @_common.min(s.data) }
+pub fn MlclusteraffinitySlice::min(self : MlclusteraffinitySlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_affinity_slice_max(s : MlclusteraffinitySlice) -> Double { @_common.max(s.data) }
+pub fn MlclusteraffinitySlice::max(self : MlclusteraffinitySlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_affinity_slice_to_string(s : MlclusteraffinitySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusteraffinitySlice::to_string(self : MlclusteraffinitySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

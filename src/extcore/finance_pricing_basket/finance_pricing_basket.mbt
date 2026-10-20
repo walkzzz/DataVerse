@@ -351,45 +351,45 @@ pub fn finance_pricing_basket_frame_make(size : Int) -> FinancepricingbasketFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_frame_len(s : FinancepricingbasketFrame) -> Int { s.size }
+pub fn FinancepricingbasketFrame::len(self : FinancepricingbasketFrame) -> Int { self.size }
 
-pub fn finance_pricing_basket_frame_get(s : FinancepricingbasketFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketFrame::get(self : FinancepricingbasketFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_frame_set(s : FinancepricingbasketFrame, i : Int, v : Double) -> FinancepricingbasketFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketFrame::set(self : FinancepricingbasketFrame, i : Int, v : Double) -> FinancepricingbasketFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_frame_sum(s : FinancepricingbasketFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketFrame::sum(self : FinancepricingbasketFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_frame_mean(s : FinancepricingbasketFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketFrame::mean(self : FinancepricingbasketFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_frame_scale(s : FinancepricingbasketFrame, f : Double) -> FinancepricingbasketFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketFrame::scale(self : FinancepricingbasketFrame, f : Double) -> FinancepricingbasketFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_frame_add(a : FinancepricingbasketFrame, b : FinancepricingbasketFrame) -> FinancepricingbasketFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketFrame::add(self : FinancepricingbasketFrame, other : FinancepricingbasketFrame) -> FinancepricingbasketFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_frame_copy(s : FinancepricingbasketFrame) -> FinancepricingbasketFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketFrame::copy(self : FinancepricingbasketFrame) -> FinancepricingbasketFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_frame_fill(s : FinancepricingbasketFrame, v : Double) -> FinancepricingbasketFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketFrame::fill(self : FinancepricingbasketFrame, v : Double) -> FinancepricingbasketFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_frame_min(s : FinancepricingbasketFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketFrame::min(self : FinancepricingbasketFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_frame_max(s : FinancepricingbasketFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketFrame::max(self : FinancepricingbasketFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_frame_to_string(s : FinancepricingbasketFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketFrame::to_string(self : FinancepricingbasketFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_basket_table_make(size : Int) -> FinancepricingbasketTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_table_len(s : FinancepricingbasketTable) -> Int { s.size }
+pub fn FinancepricingbasketTable::len(self : FinancepricingbasketTable) -> Int { self.size }
 
-pub fn finance_pricing_basket_table_get(s : FinancepricingbasketTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketTable::get(self : FinancepricingbasketTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_table_set(s : FinancepricingbasketTable, i : Int, v : Double) -> FinancepricingbasketTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketTable::set(self : FinancepricingbasketTable, i : Int, v : Double) -> FinancepricingbasketTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_table_sum(s : FinancepricingbasketTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketTable::sum(self : FinancepricingbasketTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_table_mean(s : FinancepricingbasketTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketTable::mean(self : FinancepricingbasketTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_table_scale(s : FinancepricingbasketTable, f : Double) -> FinancepricingbasketTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketTable::scale(self : FinancepricingbasketTable, f : Double) -> FinancepricingbasketTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_table_add(a : FinancepricingbasketTable, b : FinancepricingbasketTable) -> FinancepricingbasketTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketTable::add(self : FinancepricingbasketTable, other : FinancepricingbasketTable) -> FinancepricingbasketTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_table_copy(s : FinancepricingbasketTable) -> FinancepricingbasketTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketTable::copy(self : FinancepricingbasketTable) -> FinancepricingbasketTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_table_fill(s : FinancepricingbasketTable, v : Double) -> FinancepricingbasketTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketTable::fill(self : FinancepricingbasketTable, v : Double) -> FinancepricingbasketTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_table_min(s : FinancepricingbasketTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketTable::min(self : FinancepricingbasketTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_table_max(s : FinancepricingbasketTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketTable::max(self : FinancepricingbasketTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_table_to_string(s : FinancepricingbasketTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketTable::to_string(self : FinancepricingbasketTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_basket_graphn_make(size : Int) -> FinancepricingbasketGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_graphn_len(s : FinancepricingbasketGraphN) -> Int { s.size }
+pub fn FinancepricingbasketGraphN::len(self : FinancepricingbasketGraphN) -> Int { self.size }
 
-pub fn finance_pricing_basket_graphn_get(s : FinancepricingbasketGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketGraphN::get(self : FinancepricingbasketGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_graphn_set(s : FinancepricingbasketGraphN, i : Int, v : Double) -> FinancepricingbasketGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketGraphN::set(self : FinancepricingbasketGraphN, i : Int, v : Double) -> FinancepricingbasketGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_graphn_sum(s : FinancepricingbasketGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketGraphN::sum(self : FinancepricingbasketGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_graphn_mean(s : FinancepricingbasketGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketGraphN::mean(self : FinancepricingbasketGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_graphn_scale(s : FinancepricingbasketGraphN, f : Double) -> FinancepricingbasketGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketGraphN::scale(self : FinancepricingbasketGraphN, f : Double) -> FinancepricingbasketGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_graphn_add(a : FinancepricingbasketGraphN, b : FinancepricingbasketGraphN) -> FinancepricingbasketGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketGraphN::add(self : FinancepricingbasketGraphN, other : FinancepricingbasketGraphN) -> FinancepricingbasketGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_graphn_copy(s : FinancepricingbasketGraphN) -> FinancepricingbasketGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketGraphN::copy(self : FinancepricingbasketGraphN) -> FinancepricingbasketGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_graphn_fill(s : FinancepricingbasketGraphN, v : Double) -> FinancepricingbasketGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketGraphN::fill(self : FinancepricingbasketGraphN, v : Double) -> FinancepricingbasketGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_graphn_min(s : FinancepricingbasketGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketGraphN::min(self : FinancepricingbasketGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_graphn_max(s : FinancepricingbasketGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketGraphN::max(self : FinancepricingbasketGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_graphn_to_string(s : FinancepricingbasketGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketGraphN::to_string(self : FinancepricingbasketGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_basket_node_make(size : Int) -> FinancepricingbasketNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_node_len(s : FinancepricingbasketNode) -> Int { s.size }
+pub fn FinancepricingbasketNode::len(self : FinancepricingbasketNode) -> Int { self.size }
 
-pub fn finance_pricing_basket_node_get(s : FinancepricingbasketNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketNode::get(self : FinancepricingbasketNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_node_set(s : FinancepricingbasketNode, i : Int, v : Double) -> FinancepricingbasketNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketNode::set(self : FinancepricingbasketNode, i : Int, v : Double) -> FinancepricingbasketNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_node_sum(s : FinancepricingbasketNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketNode::sum(self : FinancepricingbasketNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_node_mean(s : FinancepricingbasketNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketNode::mean(self : FinancepricingbasketNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_node_scale(s : FinancepricingbasketNode, f : Double) -> FinancepricingbasketNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketNode::scale(self : FinancepricingbasketNode, f : Double) -> FinancepricingbasketNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_node_add(a : FinancepricingbasketNode, b : FinancepricingbasketNode) -> FinancepricingbasketNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketNode::add(self : FinancepricingbasketNode, other : FinancepricingbasketNode) -> FinancepricingbasketNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_node_copy(s : FinancepricingbasketNode) -> FinancepricingbasketNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketNode::copy(self : FinancepricingbasketNode) -> FinancepricingbasketNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_node_fill(s : FinancepricingbasketNode, v : Double) -> FinancepricingbasketNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketNode::fill(self : FinancepricingbasketNode, v : Double) -> FinancepricingbasketNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_node_min(s : FinancepricingbasketNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketNode::min(self : FinancepricingbasketNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_node_max(s : FinancepricingbasketNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketNode::max(self : FinancepricingbasketNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_node_to_string(s : FinancepricingbasketNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketNode::to_string(self : FinancepricingbasketNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_basket_edge_make(size : Int) -> FinancepricingbasketEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_edge_len(s : FinancepricingbasketEdge) -> Int { s.size }
+pub fn FinancepricingbasketEdge::len(self : FinancepricingbasketEdge) -> Int { self.size }
 
-pub fn finance_pricing_basket_edge_get(s : FinancepricingbasketEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketEdge::get(self : FinancepricingbasketEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_edge_set(s : FinancepricingbasketEdge, i : Int, v : Double) -> FinancepricingbasketEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketEdge::set(self : FinancepricingbasketEdge, i : Int, v : Double) -> FinancepricingbasketEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_edge_sum(s : FinancepricingbasketEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketEdge::sum(self : FinancepricingbasketEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_edge_mean(s : FinancepricingbasketEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketEdge::mean(self : FinancepricingbasketEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_edge_scale(s : FinancepricingbasketEdge, f : Double) -> FinancepricingbasketEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketEdge::scale(self : FinancepricingbasketEdge, f : Double) -> FinancepricingbasketEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_edge_add(a : FinancepricingbasketEdge, b : FinancepricingbasketEdge) -> FinancepricingbasketEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketEdge::add(self : FinancepricingbasketEdge, other : FinancepricingbasketEdge) -> FinancepricingbasketEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_edge_copy(s : FinancepricingbasketEdge) -> FinancepricingbasketEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketEdge::copy(self : FinancepricingbasketEdge) -> FinancepricingbasketEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_edge_fill(s : FinancepricingbasketEdge, v : Double) -> FinancepricingbasketEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketEdge::fill(self : FinancepricingbasketEdge, v : Double) -> FinancepricingbasketEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_edge_min(s : FinancepricingbasketEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketEdge::min(self : FinancepricingbasketEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_edge_max(s : FinancepricingbasketEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketEdge::max(self : FinancepricingbasketEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_edge_to_string(s : FinancepricingbasketEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketEdge::to_string(self : FinancepricingbasketEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_basket_path_make(size : Int) -> FinancepricingbasketPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_path_len(s : FinancepricingbasketPath) -> Int { s.size }
+pub fn FinancepricingbasketPath::len(self : FinancepricingbasketPath) -> Int { self.size }
 
-pub fn finance_pricing_basket_path_get(s : FinancepricingbasketPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketPath::get(self : FinancepricingbasketPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_path_set(s : FinancepricingbasketPath, i : Int, v : Double) -> FinancepricingbasketPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketPath::set(self : FinancepricingbasketPath, i : Int, v : Double) -> FinancepricingbasketPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_path_sum(s : FinancepricingbasketPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketPath::sum(self : FinancepricingbasketPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_path_mean(s : FinancepricingbasketPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketPath::mean(self : FinancepricingbasketPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_path_scale(s : FinancepricingbasketPath, f : Double) -> FinancepricingbasketPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketPath::scale(self : FinancepricingbasketPath, f : Double) -> FinancepricingbasketPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_path_add(a : FinancepricingbasketPath, b : FinancepricingbasketPath) -> FinancepricingbasketPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketPath::add(self : FinancepricingbasketPath, other : FinancepricingbasketPath) -> FinancepricingbasketPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_path_copy(s : FinancepricingbasketPath) -> FinancepricingbasketPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketPath::copy(self : FinancepricingbasketPath) -> FinancepricingbasketPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_path_fill(s : FinancepricingbasketPath, v : Double) -> FinancepricingbasketPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketPath::fill(self : FinancepricingbasketPath, v : Double) -> FinancepricingbasketPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_path_min(s : FinancepricingbasketPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketPath::min(self : FinancepricingbasketPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_path_max(s : FinancepricingbasketPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketPath::max(self : FinancepricingbasketPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_path_to_string(s : FinancepricingbasketPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketPath::to_string(self : FinancepricingbasketPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_basket_cluster_make(size : Int) -> FinancepricingbasketCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_cluster_len(s : FinancepricingbasketCluster) -> Int { s.size }
+pub fn FinancepricingbasketCluster::len(self : FinancepricingbasketCluster) -> Int { self.size }
 
-pub fn finance_pricing_basket_cluster_get(s : FinancepricingbasketCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketCluster::get(self : FinancepricingbasketCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_cluster_set(s : FinancepricingbasketCluster, i : Int, v : Double) -> FinancepricingbasketCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCluster::set(self : FinancepricingbasketCluster, i : Int, v : Double) -> FinancepricingbasketCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cluster_sum(s : FinancepricingbasketCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketCluster::sum(self : FinancepricingbasketCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_cluster_mean(s : FinancepricingbasketCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketCluster::mean(self : FinancepricingbasketCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_cluster_scale(s : FinancepricingbasketCluster, f : Double) -> FinancepricingbasketCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCluster::scale(self : FinancepricingbasketCluster, f : Double) -> FinancepricingbasketCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cluster_add(a : FinancepricingbasketCluster, b : FinancepricingbasketCluster) -> FinancepricingbasketCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketCluster::add(self : FinancepricingbasketCluster, other : FinancepricingbasketCluster) -> FinancepricingbasketCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cluster_copy(s : FinancepricingbasketCluster) -> FinancepricingbasketCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCluster::copy(self : FinancepricingbasketCluster) -> FinancepricingbasketCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cluster_fill(s : FinancepricingbasketCluster, v : Double) -> FinancepricingbasketCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCluster::fill(self : FinancepricingbasketCluster, v : Double) -> FinancepricingbasketCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cluster_min(s : FinancepricingbasketCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketCluster::min(self : FinancepricingbasketCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_cluster_max(s : FinancepricingbasketCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketCluster::max(self : FinancepricingbasketCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_cluster_to_string(s : FinancepricingbasketCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketCluster::to_string(self : FinancepricingbasketCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_basket_model_make(size : Int) -> FinancepricingbasketMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_model_len(s : FinancepricingbasketModel) -> Int { s.size }
+pub fn FinancepricingbasketModel::len(self : FinancepricingbasketModel) -> Int { self.size }
 
-pub fn finance_pricing_basket_model_get(s : FinancepricingbasketModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketModel::get(self : FinancepricingbasketModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_model_set(s : FinancepricingbasketModel, i : Int, v : Double) -> FinancepricingbasketModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketModel::set(self : FinancepricingbasketModel, i : Int, v : Double) -> FinancepricingbasketModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_model_sum(s : FinancepricingbasketModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketModel::sum(self : FinancepricingbasketModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_model_mean(s : FinancepricingbasketModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketModel::mean(self : FinancepricingbasketModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_model_scale(s : FinancepricingbasketModel, f : Double) -> FinancepricingbasketModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketModel::scale(self : FinancepricingbasketModel, f : Double) -> FinancepricingbasketModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_model_add(a : FinancepricingbasketModel, b : FinancepricingbasketModel) -> FinancepricingbasketModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketModel::add(self : FinancepricingbasketModel, other : FinancepricingbasketModel) -> FinancepricingbasketModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_model_copy(s : FinancepricingbasketModel) -> FinancepricingbasketModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketModel::copy(self : FinancepricingbasketModel) -> FinancepricingbasketModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_model_fill(s : FinancepricingbasketModel, v : Double) -> FinancepricingbasketModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketModel::fill(self : FinancepricingbasketModel, v : Double) -> FinancepricingbasketModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_model_min(s : FinancepricingbasketModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketModel::min(self : FinancepricingbasketModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_model_max(s : FinancepricingbasketModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketModel::max(self : FinancepricingbasketModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_model_to_string(s : FinancepricingbasketModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketModel::to_string(self : FinancepricingbasketModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_basket_layer_make(size : Int) -> FinancepricingbasketLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_layer_len(s : FinancepricingbasketLayer) -> Int { s.size }
+pub fn FinancepricingbasketLayer::len(self : FinancepricingbasketLayer) -> Int { self.size }
 
-pub fn finance_pricing_basket_layer_get(s : FinancepricingbasketLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketLayer::get(self : FinancepricingbasketLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_layer_set(s : FinancepricingbasketLayer, i : Int, v : Double) -> FinancepricingbasketLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketLayer::set(self : FinancepricingbasketLayer, i : Int, v : Double) -> FinancepricingbasketLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_layer_sum(s : FinancepricingbasketLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketLayer::sum(self : FinancepricingbasketLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_layer_mean(s : FinancepricingbasketLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketLayer::mean(self : FinancepricingbasketLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_layer_scale(s : FinancepricingbasketLayer, f : Double) -> FinancepricingbasketLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketLayer::scale(self : FinancepricingbasketLayer, f : Double) -> FinancepricingbasketLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_layer_add(a : FinancepricingbasketLayer, b : FinancepricingbasketLayer) -> FinancepricingbasketLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketLayer::add(self : FinancepricingbasketLayer, other : FinancepricingbasketLayer) -> FinancepricingbasketLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_layer_copy(s : FinancepricingbasketLayer) -> FinancepricingbasketLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketLayer::copy(self : FinancepricingbasketLayer) -> FinancepricingbasketLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_layer_fill(s : FinancepricingbasketLayer, v : Double) -> FinancepricingbasketLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketLayer::fill(self : FinancepricingbasketLayer, v : Double) -> FinancepricingbasketLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_layer_min(s : FinancepricingbasketLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketLayer::min(self : FinancepricingbasketLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_layer_max(s : FinancepricingbasketLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketLayer::max(self : FinancepricingbasketLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_layer_to_string(s : FinancepricingbasketLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketLayer::to_string(self : FinancepricingbasketLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_basket_buffer_make(size : Int) -> FinancepricingbasketBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_buffer_len(s : FinancepricingbasketBuffer) -> Int { s.size }
+pub fn FinancepricingbasketBuffer::len(self : FinancepricingbasketBuffer) -> Int { self.size }
 
-pub fn finance_pricing_basket_buffer_get(s : FinancepricingbasketBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketBuffer::get(self : FinancepricingbasketBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_buffer_set(s : FinancepricingbasketBuffer, i : Int, v : Double) -> FinancepricingbasketBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketBuffer::set(self : FinancepricingbasketBuffer, i : Int, v : Double) -> FinancepricingbasketBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_buffer_sum(s : FinancepricingbasketBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketBuffer::sum(self : FinancepricingbasketBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_buffer_mean(s : FinancepricingbasketBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketBuffer::mean(self : FinancepricingbasketBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_buffer_scale(s : FinancepricingbasketBuffer, f : Double) -> FinancepricingbasketBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketBuffer::scale(self : FinancepricingbasketBuffer, f : Double) -> FinancepricingbasketBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_buffer_add(a : FinancepricingbasketBuffer, b : FinancepricingbasketBuffer) -> FinancepricingbasketBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketBuffer::add(self : FinancepricingbasketBuffer, other : FinancepricingbasketBuffer) -> FinancepricingbasketBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_buffer_copy(s : FinancepricingbasketBuffer) -> FinancepricingbasketBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketBuffer::copy(self : FinancepricingbasketBuffer) -> FinancepricingbasketBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_buffer_fill(s : FinancepricingbasketBuffer, v : Double) -> FinancepricingbasketBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketBuffer::fill(self : FinancepricingbasketBuffer, v : Double) -> FinancepricingbasketBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_buffer_min(s : FinancepricingbasketBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketBuffer::min(self : FinancepricingbasketBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_buffer_max(s : FinancepricingbasketBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketBuffer::max(self : FinancepricingbasketBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_buffer_to_string(s : FinancepricingbasketBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketBuffer::to_string(self : FinancepricingbasketBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_basket_cursor_make(size : Int) -> FinancepricingbasketCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_cursor_len(s : FinancepricingbasketCursor) -> Int { s.size }
+pub fn FinancepricingbasketCursor::len(self : FinancepricingbasketCursor) -> Int { self.size }
 
-pub fn finance_pricing_basket_cursor_get(s : FinancepricingbasketCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketCursor::get(self : FinancepricingbasketCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_cursor_set(s : FinancepricingbasketCursor, i : Int, v : Double) -> FinancepricingbasketCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCursor::set(self : FinancepricingbasketCursor, i : Int, v : Double) -> FinancepricingbasketCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cursor_sum(s : FinancepricingbasketCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketCursor::sum(self : FinancepricingbasketCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_cursor_mean(s : FinancepricingbasketCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketCursor::mean(self : FinancepricingbasketCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_cursor_scale(s : FinancepricingbasketCursor, f : Double) -> FinancepricingbasketCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCursor::scale(self : FinancepricingbasketCursor, f : Double) -> FinancepricingbasketCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cursor_add(a : FinancepricingbasketCursor, b : FinancepricingbasketCursor) -> FinancepricingbasketCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketCursor::add(self : FinancepricingbasketCursor, other : FinancepricingbasketCursor) -> FinancepricingbasketCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cursor_copy(s : FinancepricingbasketCursor) -> FinancepricingbasketCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCursor::copy(self : FinancepricingbasketCursor) -> FinancepricingbasketCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cursor_fill(s : FinancepricingbasketCursor, v : Double) -> FinancepricingbasketCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketCursor::fill(self : FinancepricingbasketCursor, v : Double) -> FinancepricingbasketCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_cursor_min(s : FinancepricingbasketCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketCursor::min(self : FinancepricingbasketCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_cursor_max(s : FinancepricingbasketCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketCursor::max(self : FinancepricingbasketCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_cursor_to_string(s : FinancepricingbasketCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketCursor::to_string(self : FinancepricingbasketCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_basket_view_make(size : Int) -> FinancepricingbasketView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_view_len(s : FinancepricingbasketView) -> Int { s.size }
+pub fn FinancepricingbasketView::len(self : FinancepricingbasketView) -> Int { self.size }
 
-pub fn finance_pricing_basket_view_get(s : FinancepricingbasketView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketView::get(self : FinancepricingbasketView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_view_set(s : FinancepricingbasketView, i : Int, v : Double) -> FinancepricingbasketView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketView::set(self : FinancepricingbasketView, i : Int, v : Double) -> FinancepricingbasketView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_view_sum(s : FinancepricingbasketView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketView::sum(self : FinancepricingbasketView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_view_mean(s : FinancepricingbasketView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketView::mean(self : FinancepricingbasketView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_view_scale(s : FinancepricingbasketView, f : Double) -> FinancepricingbasketView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketView::scale(self : FinancepricingbasketView, f : Double) -> FinancepricingbasketView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_view_add(a : FinancepricingbasketView, b : FinancepricingbasketView) -> FinancepricingbasketView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketView::add(self : FinancepricingbasketView, other : FinancepricingbasketView) -> FinancepricingbasketView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_view_copy(s : FinancepricingbasketView) -> FinancepricingbasketView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketView::copy(self : FinancepricingbasketView) -> FinancepricingbasketView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_view_fill(s : FinancepricingbasketView, v : Double) -> FinancepricingbasketView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketView::fill(self : FinancepricingbasketView, v : Double) -> FinancepricingbasketView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_view_min(s : FinancepricingbasketView) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketView::min(self : FinancepricingbasketView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_view_max(s : FinancepricingbasketView) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketView::max(self : FinancepricingbasketView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_view_to_string(s : FinancepricingbasketView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketView::to_string(self : FinancepricingbasketView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_basket_range_make(size : Int) -> FinancepricingbasketRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_range_len(s : FinancepricingbasketRange) -> Int { s.size }
+pub fn FinancepricingbasketRange::len(self : FinancepricingbasketRange) -> Int { self.size }
 
-pub fn finance_pricing_basket_range_get(s : FinancepricingbasketRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketRange::get(self : FinancepricingbasketRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_range_set(s : FinancepricingbasketRange, i : Int, v : Double) -> FinancepricingbasketRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketRange::set(self : FinancepricingbasketRange, i : Int, v : Double) -> FinancepricingbasketRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_range_sum(s : FinancepricingbasketRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketRange::sum(self : FinancepricingbasketRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_range_mean(s : FinancepricingbasketRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketRange::mean(self : FinancepricingbasketRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_range_scale(s : FinancepricingbasketRange, f : Double) -> FinancepricingbasketRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketRange::scale(self : FinancepricingbasketRange, f : Double) -> FinancepricingbasketRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_range_add(a : FinancepricingbasketRange, b : FinancepricingbasketRange) -> FinancepricingbasketRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketRange::add(self : FinancepricingbasketRange, other : FinancepricingbasketRange) -> FinancepricingbasketRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_range_copy(s : FinancepricingbasketRange) -> FinancepricingbasketRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketRange::copy(self : FinancepricingbasketRange) -> FinancepricingbasketRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_range_fill(s : FinancepricingbasketRange, v : Double) -> FinancepricingbasketRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketRange::fill(self : FinancepricingbasketRange, v : Double) -> FinancepricingbasketRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_range_min(s : FinancepricingbasketRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketRange::min(self : FinancepricingbasketRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_range_max(s : FinancepricingbasketRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketRange::max(self : FinancepricingbasketRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_range_to_string(s : FinancepricingbasketRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketRange::to_string(self : FinancepricingbasketRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbasketSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_basket_slice_make(size : Int) -> FinancepricingbasketSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_basket_slice_len(s : FinancepricingbasketSlice) -> Int { s.size }
+pub fn FinancepricingbasketSlice::len(self : FinancepricingbasketSlice) -> Int { self.size }
 
-pub fn finance_pricing_basket_slice_get(s : FinancepricingbasketSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbasketSlice::get(self : FinancepricingbasketSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_basket_slice_set(s : FinancepricingbasketSlice, i : Int, v : Double) -> FinancepricingbasketSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbasketSlice::set(self : FinancepricingbasketSlice, i : Int, v : Double) -> FinancepricingbasketSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_slice_sum(s : FinancepricingbasketSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbasketSlice::sum(self : FinancepricingbasketSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_basket_slice_mean(s : FinancepricingbasketSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbasketSlice::mean(self : FinancepricingbasketSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_basket_slice_scale(s : FinancepricingbasketSlice, f : Double) -> FinancepricingbasketSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketSlice::scale(self : FinancepricingbasketSlice, f : Double) -> FinancepricingbasketSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_slice_add(a : FinancepricingbasketSlice, b : FinancepricingbasketSlice) -> FinancepricingbasketSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbasketSlice::add(self : FinancepricingbasketSlice, other : FinancepricingbasketSlice) -> FinancepricingbasketSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_slice_copy(s : FinancepricingbasketSlice) -> FinancepricingbasketSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketSlice::copy(self : FinancepricingbasketSlice) -> FinancepricingbasketSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_slice_fill(s : FinancepricingbasketSlice, v : Double) -> FinancepricingbasketSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbasketSlice::fill(self : FinancepricingbasketSlice, v : Double) -> FinancepricingbasketSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_basket_slice_min(s : FinancepricingbasketSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbasketSlice::min(self : FinancepricingbasketSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_basket_slice_max(s : FinancepricingbasketSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbasketSlice::max(self : FinancepricingbasketSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_basket_slice_to_string(s : FinancepricingbasketSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbasketSlice::to_string(self : FinancepricingbasketSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

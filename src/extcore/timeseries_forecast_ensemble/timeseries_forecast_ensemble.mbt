@@ -351,45 +351,45 @@ pub fn timeseries_forecast_ensemble_frame_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_frame_len(s : TimeseriesforecastensembleFrame) -> Int { s.size }
+pub fn TimeseriesforecastensembleFrame::len(self : TimeseriesforecastensembleFrame) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_frame_get(s : TimeseriesforecastensembleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleFrame::get(self : TimeseriesforecastensembleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_frame_set(s : TimeseriesforecastensembleFrame, i : Int, v : Double) -> TimeseriesforecastensembleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleFrame::set(self : TimeseriesforecastensembleFrame, i : Int, v : Double) -> TimeseriesforecastensembleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_frame_sum(s : TimeseriesforecastensembleFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleFrame::sum(self : TimeseriesforecastensembleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_frame_mean(s : TimeseriesforecastensembleFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleFrame::mean(self : TimeseriesforecastensembleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_frame_scale(s : TimeseriesforecastensembleFrame, f : Double) -> TimeseriesforecastensembleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleFrame::scale(self : TimeseriesforecastensembleFrame, f : Double) -> TimeseriesforecastensembleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_frame_add(a : TimeseriesforecastensembleFrame, b : TimeseriesforecastensembleFrame) -> TimeseriesforecastensembleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleFrame::add(self : TimeseriesforecastensembleFrame, other : TimeseriesforecastensembleFrame) -> TimeseriesforecastensembleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_frame_copy(s : TimeseriesforecastensembleFrame) -> TimeseriesforecastensembleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleFrame::copy(self : TimeseriesforecastensembleFrame) -> TimeseriesforecastensembleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_frame_fill(s : TimeseriesforecastensembleFrame, v : Double) -> TimeseriesforecastensembleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleFrame::fill(self : TimeseriesforecastensembleFrame, v : Double) -> TimeseriesforecastensembleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_frame_min(s : TimeseriesforecastensembleFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleFrame::min(self : TimeseriesforecastensembleFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_frame_max(s : TimeseriesforecastensembleFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleFrame::max(self : TimeseriesforecastensembleFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_frame_to_string(s : TimeseriesforecastensembleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleFrame::to_string(self : TimeseriesforecastensembleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleTable {
@@ -402,45 +402,45 @@ pub fn timeseries_forecast_ensemble_table_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_table_len(s : TimeseriesforecastensembleTable) -> Int { s.size }
+pub fn TimeseriesforecastensembleTable::len(self : TimeseriesforecastensembleTable) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_table_get(s : TimeseriesforecastensembleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleTable::get(self : TimeseriesforecastensembleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_table_set(s : TimeseriesforecastensembleTable, i : Int, v : Double) -> TimeseriesforecastensembleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleTable::set(self : TimeseriesforecastensembleTable, i : Int, v : Double) -> TimeseriesforecastensembleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_table_sum(s : TimeseriesforecastensembleTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleTable::sum(self : TimeseriesforecastensembleTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_table_mean(s : TimeseriesforecastensembleTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleTable::mean(self : TimeseriesforecastensembleTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_table_scale(s : TimeseriesforecastensembleTable, f : Double) -> TimeseriesforecastensembleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleTable::scale(self : TimeseriesforecastensembleTable, f : Double) -> TimeseriesforecastensembleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_table_add(a : TimeseriesforecastensembleTable, b : TimeseriesforecastensembleTable) -> TimeseriesforecastensembleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleTable::add(self : TimeseriesforecastensembleTable, other : TimeseriesforecastensembleTable) -> TimeseriesforecastensembleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_table_copy(s : TimeseriesforecastensembleTable) -> TimeseriesforecastensembleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleTable::copy(self : TimeseriesforecastensembleTable) -> TimeseriesforecastensembleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_table_fill(s : TimeseriesforecastensembleTable, v : Double) -> TimeseriesforecastensembleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleTable::fill(self : TimeseriesforecastensembleTable, v : Double) -> TimeseriesforecastensembleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_table_min(s : TimeseriesforecastensembleTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleTable::min(self : TimeseriesforecastensembleTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_table_max(s : TimeseriesforecastensembleTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleTable::max(self : TimeseriesforecastensembleTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_table_to_string(s : TimeseriesforecastensembleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleTable::to_string(self : TimeseriesforecastensembleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_forecast_ensemble_graphn_make(size : Int) -> Timeseriesforecas
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_len(s : TimeseriesforecastensembleGraphN) -> Int { s.size }
+pub fn TimeseriesforecastensembleGraphN::len(self : TimeseriesforecastensembleGraphN) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_graphn_get(s : TimeseriesforecastensembleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleGraphN::get(self : TimeseriesforecastensembleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_set(s : TimeseriesforecastensembleGraphN, i : Int, v : Double) -> TimeseriesforecastensembleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleGraphN::set(self : TimeseriesforecastensembleGraphN, i : Int, v : Double) -> TimeseriesforecastensembleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_sum(s : TimeseriesforecastensembleGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleGraphN::sum(self : TimeseriesforecastensembleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_graphn_mean(s : TimeseriesforecastensembleGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleGraphN::mean(self : TimeseriesforecastensembleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_graphn_scale(s : TimeseriesforecastensembleGraphN, f : Double) -> TimeseriesforecastensembleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleGraphN::scale(self : TimeseriesforecastensembleGraphN, f : Double) -> TimeseriesforecastensembleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_add(a : TimeseriesforecastensembleGraphN, b : TimeseriesforecastensembleGraphN) -> TimeseriesforecastensembleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleGraphN::add(self : TimeseriesforecastensembleGraphN, other : TimeseriesforecastensembleGraphN) -> TimeseriesforecastensembleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_copy(s : TimeseriesforecastensembleGraphN) -> TimeseriesforecastensembleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleGraphN::copy(self : TimeseriesforecastensembleGraphN) -> TimeseriesforecastensembleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_fill(s : TimeseriesforecastensembleGraphN, v : Double) -> TimeseriesforecastensembleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleGraphN::fill(self : TimeseriesforecastensembleGraphN, v : Double) -> TimeseriesforecastensembleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_graphn_min(s : TimeseriesforecastensembleGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleGraphN::min(self : TimeseriesforecastensembleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_graphn_max(s : TimeseriesforecastensembleGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleGraphN::max(self : TimeseriesforecastensembleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_graphn_to_string(s : TimeseriesforecastensembleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleGraphN::to_string(self : TimeseriesforecastensembleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleNode {
@@ -504,45 +504,45 @@ pub fn timeseries_forecast_ensemble_node_make(size : Int) -> Timeseriesforecaste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_node_len(s : TimeseriesforecastensembleNode) -> Int { s.size }
+pub fn TimeseriesforecastensembleNode::len(self : TimeseriesforecastensembleNode) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_node_get(s : TimeseriesforecastensembleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleNode::get(self : TimeseriesforecastensembleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_node_set(s : TimeseriesforecastensembleNode, i : Int, v : Double) -> TimeseriesforecastensembleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleNode::set(self : TimeseriesforecastensembleNode, i : Int, v : Double) -> TimeseriesforecastensembleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_node_sum(s : TimeseriesforecastensembleNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleNode::sum(self : TimeseriesforecastensembleNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_node_mean(s : TimeseriesforecastensembleNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleNode::mean(self : TimeseriesforecastensembleNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_node_scale(s : TimeseriesforecastensembleNode, f : Double) -> TimeseriesforecastensembleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleNode::scale(self : TimeseriesforecastensembleNode, f : Double) -> TimeseriesforecastensembleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_node_add(a : TimeseriesforecastensembleNode, b : TimeseriesforecastensembleNode) -> TimeseriesforecastensembleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleNode::add(self : TimeseriesforecastensembleNode, other : TimeseriesforecastensembleNode) -> TimeseriesforecastensembleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_node_copy(s : TimeseriesforecastensembleNode) -> TimeseriesforecastensembleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleNode::copy(self : TimeseriesforecastensembleNode) -> TimeseriesforecastensembleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_node_fill(s : TimeseriesforecastensembleNode, v : Double) -> TimeseriesforecastensembleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleNode::fill(self : TimeseriesforecastensembleNode, v : Double) -> TimeseriesforecastensembleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_node_min(s : TimeseriesforecastensembleNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleNode::min(self : TimeseriesforecastensembleNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_node_max(s : TimeseriesforecastensembleNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleNode::max(self : TimeseriesforecastensembleNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_node_to_string(s : TimeseriesforecastensembleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleNode::to_string(self : TimeseriesforecastensembleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_forecast_ensemble_edge_make(size : Int) -> Timeseriesforecaste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_edge_len(s : TimeseriesforecastensembleEdge) -> Int { s.size }
+pub fn TimeseriesforecastensembleEdge::len(self : TimeseriesforecastensembleEdge) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_edge_get(s : TimeseriesforecastensembleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleEdge::get(self : TimeseriesforecastensembleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_edge_set(s : TimeseriesforecastensembleEdge, i : Int, v : Double) -> TimeseriesforecastensembleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleEdge::set(self : TimeseriesforecastensembleEdge, i : Int, v : Double) -> TimeseriesforecastensembleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_edge_sum(s : TimeseriesforecastensembleEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleEdge::sum(self : TimeseriesforecastensembleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_edge_mean(s : TimeseriesforecastensembleEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleEdge::mean(self : TimeseriesforecastensembleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_edge_scale(s : TimeseriesforecastensembleEdge, f : Double) -> TimeseriesforecastensembleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleEdge::scale(self : TimeseriesforecastensembleEdge, f : Double) -> TimeseriesforecastensembleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_edge_add(a : TimeseriesforecastensembleEdge, b : TimeseriesforecastensembleEdge) -> TimeseriesforecastensembleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleEdge::add(self : TimeseriesforecastensembleEdge, other : TimeseriesforecastensembleEdge) -> TimeseriesforecastensembleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_edge_copy(s : TimeseriesforecastensembleEdge) -> TimeseriesforecastensembleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleEdge::copy(self : TimeseriesforecastensembleEdge) -> TimeseriesforecastensembleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_edge_fill(s : TimeseriesforecastensembleEdge, v : Double) -> TimeseriesforecastensembleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleEdge::fill(self : TimeseriesforecastensembleEdge, v : Double) -> TimeseriesforecastensembleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_edge_min(s : TimeseriesforecastensembleEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleEdge::min(self : TimeseriesforecastensembleEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_edge_max(s : TimeseriesforecastensembleEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleEdge::max(self : TimeseriesforecastensembleEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_edge_to_string(s : TimeseriesforecastensembleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleEdge::to_string(self : TimeseriesforecastensembleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensemblePath {
@@ -606,45 +606,45 @@ pub fn timeseries_forecast_ensemble_path_make(size : Int) -> Timeseriesforecaste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_path_len(s : TimeseriesforecastensemblePath) -> Int { s.size }
+pub fn TimeseriesforecastensemblePath::len(self : TimeseriesforecastensemblePath) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_path_get(s : TimeseriesforecastensemblePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensemblePath::get(self : TimeseriesforecastensemblePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_path_set(s : TimeseriesforecastensemblePath, i : Int, v : Double) -> TimeseriesforecastensemblePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensemblePath::set(self : TimeseriesforecastensemblePath, i : Int, v : Double) -> TimeseriesforecastensemblePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_path_sum(s : TimeseriesforecastensemblePath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensemblePath::sum(self : TimeseriesforecastensemblePath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_path_mean(s : TimeseriesforecastensemblePath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensemblePath::mean(self : TimeseriesforecastensemblePath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_path_scale(s : TimeseriesforecastensemblePath, f : Double) -> TimeseriesforecastensemblePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensemblePath::scale(self : TimeseriesforecastensemblePath, f : Double) -> TimeseriesforecastensemblePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_path_add(a : TimeseriesforecastensemblePath, b : TimeseriesforecastensemblePath) -> TimeseriesforecastensemblePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensemblePath::add(self : TimeseriesforecastensemblePath, other : TimeseriesforecastensemblePath) -> TimeseriesforecastensemblePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_path_copy(s : TimeseriesforecastensemblePath) -> TimeseriesforecastensemblePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensemblePath::copy(self : TimeseriesforecastensemblePath) -> TimeseriesforecastensemblePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_path_fill(s : TimeseriesforecastensemblePath, v : Double) -> TimeseriesforecastensemblePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensemblePath::fill(self : TimeseriesforecastensemblePath, v : Double) -> TimeseriesforecastensemblePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_path_min(s : TimeseriesforecastensemblePath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensemblePath::min(self : TimeseriesforecastensemblePath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_path_max(s : TimeseriesforecastensemblePath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensemblePath::max(self : TimeseriesforecastensemblePath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_path_to_string(s : TimeseriesforecastensemblePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensemblePath::to_string(self : TimeseriesforecastensemblePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_forecast_ensemble_cluster_make(size : Int) -> Timeseriesforeca
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_len(s : TimeseriesforecastensembleCluster) -> Int { s.size }
+pub fn TimeseriesforecastensembleCluster::len(self : TimeseriesforecastensembleCluster) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_cluster_get(s : TimeseriesforecastensembleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleCluster::get(self : TimeseriesforecastensembleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_set(s : TimeseriesforecastensembleCluster, i : Int, v : Double) -> TimeseriesforecastensembleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCluster::set(self : TimeseriesforecastensembleCluster, i : Int, v : Double) -> TimeseriesforecastensembleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_sum(s : TimeseriesforecastensembleCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleCluster::sum(self : TimeseriesforecastensembleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_cluster_mean(s : TimeseriesforecastensembleCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleCluster::mean(self : TimeseriesforecastensembleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_cluster_scale(s : TimeseriesforecastensembleCluster, f : Double) -> TimeseriesforecastensembleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCluster::scale(self : TimeseriesforecastensembleCluster, f : Double) -> TimeseriesforecastensembleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_add(a : TimeseriesforecastensembleCluster, b : TimeseriesforecastensembleCluster) -> TimeseriesforecastensembleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleCluster::add(self : TimeseriesforecastensembleCluster, other : TimeseriesforecastensembleCluster) -> TimeseriesforecastensembleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_copy(s : TimeseriesforecastensembleCluster) -> TimeseriesforecastensembleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCluster::copy(self : TimeseriesforecastensembleCluster) -> TimeseriesforecastensembleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_fill(s : TimeseriesforecastensembleCluster, v : Double) -> TimeseriesforecastensembleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCluster::fill(self : TimeseriesforecastensembleCluster, v : Double) -> TimeseriesforecastensembleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cluster_min(s : TimeseriesforecastensembleCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleCluster::min(self : TimeseriesforecastensembleCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_cluster_max(s : TimeseriesforecastensembleCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleCluster::max(self : TimeseriesforecastensembleCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_cluster_to_string(s : TimeseriesforecastensembleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleCluster::to_string(self : TimeseriesforecastensembleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleModel {
@@ -708,45 +708,45 @@ pub fn timeseries_forecast_ensemble_model_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_model_len(s : TimeseriesforecastensembleModel) -> Int { s.size }
+pub fn TimeseriesforecastensembleModel::len(self : TimeseriesforecastensembleModel) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_model_get(s : TimeseriesforecastensembleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleModel::get(self : TimeseriesforecastensembleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_model_set(s : TimeseriesforecastensembleModel, i : Int, v : Double) -> TimeseriesforecastensembleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleModel::set(self : TimeseriesforecastensembleModel, i : Int, v : Double) -> TimeseriesforecastensembleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_model_sum(s : TimeseriesforecastensembleModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleModel::sum(self : TimeseriesforecastensembleModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_model_mean(s : TimeseriesforecastensembleModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleModel::mean(self : TimeseriesforecastensembleModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_model_scale(s : TimeseriesforecastensembleModel, f : Double) -> TimeseriesforecastensembleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleModel::scale(self : TimeseriesforecastensembleModel, f : Double) -> TimeseriesforecastensembleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_model_add(a : TimeseriesforecastensembleModel, b : TimeseriesforecastensembleModel) -> TimeseriesforecastensembleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleModel::add(self : TimeseriesforecastensembleModel, other : TimeseriesforecastensembleModel) -> TimeseriesforecastensembleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_model_copy(s : TimeseriesforecastensembleModel) -> TimeseriesforecastensembleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleModel::copy(self : TimeseriesforecastensembleModel) -> TimeseriesforecastensembleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_model_fill(s : TimeseriesforecastensembleModel, v : Double) -> TimeseriesforecastensembleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleModel::fill(self : TimeseriesforecastensembleModel, v : Double) -> TimeseriesforecastensembleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_model_min(s : TimeseriesforecastensembleModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleModel::min(self : TimeseriesforecastensembleModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_model_max(s : TimeseriesforecastensembleModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleModel::max(self : TimeseriesforecastensembleModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_model_to_string(s : TimeseriesforecastensembleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleModel::to_string(self : TimeseriesforecastensembleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_forecast_ensemble_layer_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_layer_len(s : TimeseriesforecastensembleLayer) -> Int { s.size }
+pub fn TimeseriesforecastensembleLayer::len(self : TimeseriesforecastensembleLayer) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_layer_get(s : TimeseriesforecastensembleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleLayer::get(self : TimeseriesforecastensembleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_layer_set(s : TimeseriesforecastensembleLayer, i : Int, v : Double) -> TimeseriesforecastensembleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleLayer::set(self : TimeseriesforecastensembleLayer, i : Int, v : Double) -> TimeseriesforecastensembleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_layer_sum(s : TimeseriesforecastensembleLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleLayer::sum(self : TimeseriesforecastensembleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_layer_mean(s : TimeseriesforecastensembleLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleLayer::mean(self : TimeseriesforecastensembleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_layer_scale(s : TimeseriesforecastensembleLayer, f : Double) -> TimeseriesforecastensembleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleLayer::scale(self : TimeseriesforecastensembleLayer, f : Double) -> TimeseriesforecastensembleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_layer_add(a : TimeseriesforecastensembleLayer, b : TimeseriesforecastensembleLayer) -> TimeseriesforecastensembleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleLayer::add(self : TimeseriesforecastensembleLayer, other : TimeseriesforecastensembleLayer) -> TimeseriesforecastensembleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_layer_copy(s : TimeseriesforecastensembleLayer) -> TimeseriesforecastensembleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleLayer::copy(self : TimeseriesforecastensembleLayer) -> TimeseriesforecastensembleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_layer_fill(s : TimeseriesforecastensembleLayer, v : Double) -> TimeseriesforecastensembleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleLayer::fill(self : TimeseriesforecastensembleLayer, v : Double) -> TimeseriesforecastensembleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_layer_min(s : TimeseriesforecastensembleLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleLayer::min(self : TimeseriesforecastensembleLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_layer_max(s : TimeseriesforecastensembleLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleLayer::max(self : TimeseriesforecastensembleLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_layer_to_string(s : TimeseriesforecastensembleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleLayer::to_string(self : TimeseriesforecastensembleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_forecast_ensemble_buffer_make(size : Int) -> Timeseriesforecas
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_len(s : TimeseriesforecastensembleBuffer) -> Int { s.size }
+pub fn TimeseriesforecastensembleBuffer::len(self : TimeseriesforecastensembleBuffer) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_buffer_get(s : TimeseriesforecastensembleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleBuffer::get(self : TimeseriesforecastensembleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_set(s : TimeseriesforecastensembleBuffer, i : Int, v : Double) -> TimeseriesforecastensembleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleBuffer::set(self : TimeseriesforecastensembleBuffer, i : Int, v : Double) -> TimeseriesforecastensembleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_sum(s : TimeseriesforecastensembleBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleBuffer::sum(self : TimeseriesforecastensembleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_buffer_mean(s : TimeseriesforecastensembleBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleBuffer::mean(self : TimeseriesforecastensembleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_buffer_scale(s : TimeseriesforecastensembleBuffer, f : Double) -> TimeseriesforecastensembleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleBuffer::scale(self : TimeseriesforecastensembleBuffer, f : Double) -> TimeseriesforecastensembleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_add(a : TimeseriesforecastensembleBuffer, b : TimeseriesforecastensembleBuffer) -> TimeseriesforecastensembleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleBuffer::add(self : TimeseriesforecastensembleBuffer, other : TimeseriesforecastensembleBuffer) -> TimeseriesforecastensembleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_copy(s : TimeseriesforecastensembleBuffer) -> TimeseriesforecastensembleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleBuffer::copy(self : TimeseriesforecastensembleBuffer) -> TimeseriesforecastensembleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_fill(s : TimeseriesforecastensembleBuffer, v : Double) -> TimeseriesforecastensembleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleBuffer::fill(self : TimeseriesforecastensembleBuffer, v : Double) -> TimeseriesforecastensembleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_buffer_min(s : TimeseriesforecastensembleBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleBuffer::min(self : TimeseriesforecastensembleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_buffer_max(s : TimeseriesforecastensembleBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleBuffer::max(self : TimeseriesforecastensembleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_buffer_to_string(s : TimeseriesforecastensembleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleBuffer::to_string(self : TimeseriesforecastensembleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_forecast_ensemble_cursor_make(size : Int) -> Timeseriesforecas
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_len(s : TimeseriesforecastensembleCursor) -> Int { s.size }
+pub fn TimeseriesforecastensembleCursor::len(self : TimeseriesforecastensembleCursor) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_cursor_get(s : TimeseriesforecastensembleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleCursor::get(self : TimeseriesforecastensembleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_set(s : TimeseriesforecastensembleCursor, i : Int, v : Double) -> TimeseriesforecastensembleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCursor::set(self : TimeseriesforecastensembleCursor, i : Int, v : Double) -> TimeseriesforecastensembleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_sum(s : TimeseriesforecastensembleCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleCursor::sum(self : TimeseriesforecastensembleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_cursor_mean(s : TimeseriesforecastensembleCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleCursor::mean(self : TimeseriesforecastensembleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_cursor_scale(s : TimeseriesforecastensembleCursor, f : Double) -> TimeseriesforecastensembleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCursor::scale(self : TimeseriesforecastensembleCursor, f : Double) -> TimeseriesforecastensembleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_add(a : TimeseriesforecastensembleCursor, b : TimeseriesforecastensembleCursor) -> TimeseriesforecastensembleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleCursor::add(self : TimeseriesforecastensembleCursor, other : TimeseriesforecastensembleCursor) -> TimeseriesforecastensembleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_copy(s : TimeseriesforecastensembleCursor) -> TimeseriesforecastensembleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCursor::copy(self : TimeseriesforecastensembleCursor) -> TimeseriesforecastensembleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_fill(s : TimeseriesforecastensembleCursor, v : Double) -> TimeseriesforecastensembleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleCursor::fill(self : TimeseriesforecastensembleCursor, v : Double) -> TimeseriesforecastensembleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_cursor_min(s : TimeseriesforecastensembleCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleCursor::min(self : TimeseriesforecastensembleCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_cursor_max(s : TimeseriesforecastensembleCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleCursor::max(self : TimeseriesforecastensembleCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_cursor_to_string(s : TimeseriesforecastensembleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleCursor::to_string(self : TimeseriesforecastensembleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleView {
@@ -912,45 +912,45 @@ pub fn timeseries_forecast_ensemble_view_make(size : Int) -> Timeseriesforecaste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_view_len(s : TimeseriesforecastensembleView) -> Int { s.size }
+pub fn TimeseriesforecastensembleView::len(self : TimeseriesforecastensembleView) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_view_get(s : TimeseriesforecastensembleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleView::get(self : TimeseriesforecastensembleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_view_set(s : TimeseriesforecastensembleView, i : Int, v : Double) -> TimeseriesforecastensembleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleView::set(self : TimeseriesforecastensembleView, i : Int, v : Double) -> TimeseriesforecastensembleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_view_sum(s : TimeseriesforecastensembleView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleView::sum(self : TimeseriesforecastensembleView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_view_mean(s : TimeseriesforecastensembleView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleView::mean(self : TimeseriesforecastensembleView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_view_scale(s : TimeseriesforecastensembleView, f : Double) -> TimeseriesforecastensembleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleView::scale(self : TimeseriesforecastensembleView, f : Double) -> TimeseriesforecastensembleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_view_add(a : TimeseriesforecastensembleView, b : TimeseriesforecastensembleView) -> TimeseriesforecastensembleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleView::add(self : TimeseriesforecastensembleView, other : TimeseriesforecastensembleView) -> TimeseriesforecastensembleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_view_copy(s : TimeseriesforecastensembleView) -> TimeseriesforecastensembleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleView::copy(self : TimeseriesforecastensembleView) -> TimeseriesforecastensembleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_view_fill(s : TimeseriesforecastensembleView, v : Double) -> TimeseriesforecastensembleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleView::fill(self : TimeseriesforecastensembleView, v : Double) -> TimeseriesforecastensembleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_view_min(s : TimeseriesforecastensembleView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleView::min(self : TimeseriesforecastensembleView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_view_max(s : TimeseriesforecastensembleView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleView::max(self : TimeseriesforecastensembleView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_view_to_string(s : TimeseriesforecastensembleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleView::to_string(self : TimeseriesforecastensembleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleRange {
@@ -963,45 +963,45 @@ pub fn timeseries_forecast_ensemble_range_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_range_len(s : TimeseriesforecastensembleRange) -> Int { s.size }
+pub fn TimeseriesforecastensembleRange::len(self : TimeseriesforecastensembleRange) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_range_get(s : TimeseriesforecastensembleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleRange::get(self : TimeseriesforecastensembleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_range_set(s : TimeseriesforecastensembleRange, i : Int, v : Double) -> TimeseriesforecastensembleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleRange::set(self : TimeseriesforecastensembleRange, i : Int, v : Double) -> TimeseriesforecastensembleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_range_sum(s : TimeseriesforecastensembleRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleRange::sum(self : TimeseriesforecastensembleRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_range_mean(s : TimeseriesforecastensembleRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleRange::mean(self : TimeseriesforecastensembleRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_range_scale(s : TimeseriesforecastensembleRange, f : Double) -> TimeseriesforecastensembleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleRange::scale(self : TimeseriesforecastensembleRange, f : Double) -> TimeseriesforecastensembleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_range_add(a : TimeseriesforecastensembleRange, b : TimeseriesforecastensembleRange) -> TimeseriesforecastensembleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleRange::add(self : TimeseriesforecastensembleRange, other : TimeseriesforecastensembleRange) -> TimeseriesforecastensembleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_range_copy(s : TimeseriesforecastensembleRange) -> TimeseriesforecastensembleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleRange::copy(self : TimeseriesforecastensembleRange) -> TimeseriesforecastensembleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_range_fill(s : TimeseriesforecastensembleRange, v : Double) -> TimeseriesforecastensembleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleRange::fill(self : TimeseriesforecastensembleRange, v : Double) -> TimeseriesforecastensembleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_range_min(s : TimeseriesforecastensembleRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleRange::min(self : TimeseriesforecastensembleRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_range_max(s : TimeseriesforecastensembleRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleRange::max(self : TimeseriesforecastensembleRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_range_to_string(s : TimeseriesforecastensembleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleRange::to_string(self : TimeseriesforecastensembleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastensembleSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_forecast_ensemble_slice_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_ensemble_slice_len(s : TimeseriesforecastensembleSlice) -> Int { s.size }
+pub fn TimeseriesforecastensembleSlice::len(self : TimeseriesforecastensembleSlice) -> Int { self.size }
 
-pub fn timeseries_forecast_ensemble_slice_get(s : TimeseriesforecastensembleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastensembleSlice::get(self : TimeseriesforecastensembleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_ensemble_slice_set(s : TimeseriesforecastensembleSlice, i : Int, v : Double) -> TimeseriesforecastensembleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleSlice::set(self : TimeseriesforecastensembleSlice, i : Int, v : Double) -> TimeseriesforecastensembleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_slice_sum(s : TimeseriesforecastensembleSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastensembleSlice::sum(self : TimeseriesforecastensembleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_ensemble_slice_mean(s : TimeseriesforecastensembleSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastensembleSlice::mean(self : TimeseriesforecastensembleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_ensemble_slice_scale(s : TimeseriesforecastensembleSlice, f : Double) -> TimeseriesforecastensembleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleSlice::scale(self : TimeseriesforecastensembleSlice, f : Double) -> TimeseriesforecastensembleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_slice_add(a : TimeseriesforecastensembleSlice, b : TimeseriesforecastensembleSlice) -> TimeseriesforecastensembleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastensembleSlice::add(self : TimeseriesforecastensembleSlice, other : TimeseriesforecastensembleSlice) -> TimeseriesforecastensembleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_slice_copy(s : TimeseriesforecastensembleSlice) -> TimeseriesforecastensembleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleSlice::copy(self : TimeseriesforecastensembleSlice) -> TimeseriesforecastensembleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_slice_fill(s : TimeseriesforecastensembleSlice, v : Double) -> TimeseriesforecastensembleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastensembleSlice::fill(self : TimeseriesforecastensembleSlice, v : Double) -> TimeseriesforecastensembleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_ensemble_slice_min(s : TimeseriesforecastensembleSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastensembleSlice::min(self : TimeseriesforecastensembleSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_ensemble_slice_max(s : TimeseriesforecastensembleSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastensembleSlice::max(self : TimeseriesforecastensembleSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_ensemble_slice_to_string(s : TimeseriesforecastensembleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastensembleSlice::to_string(self : TimeseriesforecastensembleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

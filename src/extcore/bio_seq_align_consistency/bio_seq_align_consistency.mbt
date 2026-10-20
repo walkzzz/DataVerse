@@ -351,45 +351,45 @@ pub fn bio_seq_align_consistency_frame_make(size : Int) -> Bioseqalignconsistenc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_frame_len(s : BioseqalignconsistencyFrame) -> Int { s.size }
+pub fn BioseqalignconsistencyFrame::len(self : BioseqalignconsistencyFrame) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_frame_get(s : BioseqalignconsistencyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyFrame::get(self : BioseqalignconsistencyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_frame_set(s : BioseqalignconsistencyFrame, i : Int, v : Double) -> BioseqalignconsistencyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyFrame::set(self : BioseqalignconsistencyFrame, i : Int, v : Double) -> BioseqalignconsistencyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_frame_sum(s : BioseqalignconsistencyFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyFrame::sum(self : BioseqalignconsistencyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_frame_mean(s : BioseqalignconsistencyFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyFrame::mean(self : BioseqalignconsistencyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_frame_scale(s : BioseqalignconsistencyFrame, f : Double) -> BioseqalignconsistencyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyFrame::scale(self : BioseqalignconsistencyFrame, f : Double) -> BioseqalignconsistencyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_frame_add(a : BioseqalignconsistencyFrame, b : BioseqalignconsistencyFrame) -> BioseqalignconsistencyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyFrame::add(self : BioseqalignconsistencyFrame, other : BioseqalignconsistencyFrame) -> BioseqalignconsistencyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_frame_copy(s : BioseqalignconsistencyFrame) -> BioseqalignconsistencyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyFrame::copy(self : BioseqalignconsistencyFrame) -> BioseqalignconsistencyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_frame_fill(s : BioseqalignconsistencyFrame, v : Double) -> BioseqalignconsistencyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyFrame::fill(self : BioseqalignconsistencyFrame, v : Double) -> BioseqalignconsistencyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_frame_min(s : BioseqalignconsistencyFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyFrame::min(self : BioseqalignconsistencyFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_frame_max(s : BioseqalignconsistencyFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyFrame::max(self : BioseqalignconsistencyFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_frame_to_string(s : BioseqalignconsistencyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyFrame::to_string(self : BioseqalignconsistencyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_align_consistency_table_make(size : Int) -> Bioseqalignconsistenc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_table_len(s : BioseqalignconsistencyTable) -> Int { s.size }
+pub fn BioseqalignconsistencyTable::len(self : BioseqalignconsistencyTable) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_table_get(s : BioseqalignconsistencyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyTable::get(self : BioseqalignconsistencyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_table_set(s : BioseqalignconsistencyTable, i : Int, v : Double) -> BioseqalignconsistencyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyTable::set(self : BioseqalignconsistencyTable, i : Int, v : Double) -> BioseqalignconsistencyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_table_sum(s : BioseqalignconsistencyTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyTable::sum(self : BioseqalignconsistencyTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_table_mean(s : BioseqalignconsistencyTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyTable::mean(self : BioseqalignconsistencyTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_table_scale(s : BioseqalignconsistencyTable, f : Double) -> BioseqalignconsistencyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyTable::scale(self : BioseqalignconsistencyTable, f : Double) -> BioseqalignconsistencyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_table_add(a : BioseqalignconsistencyTable, b : BioseqalignconsistencyTable) -> BioseqalignconsistencyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyTable::add(self : BioseqalignconsistencyTable, other : BioseqalignconsistencyTable) -> BioseqalignconsistencyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_table_copy(s : BioseqalignconsistencyTable) -> BioseqalignconsistencyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyTable::copy(self : BioseqalignconsistencyTable) -> BioseqalignconsistencyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_table_fill(s : BioseqalignconsistencyTable, v : Double) -> BioseqalignconsistencyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyTable::fill(self : BioseqalignconsistencyTable, v : Double) -> BioseqalignconsistencyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_table_min(s : BioseqalignconsistencyTable) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyTable::min(self : BioseqalignconsistencyTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_table_max(s : BioseqalignconsistencyTable) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyTable::max(self : BioseqalignconsistencyTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_table_to_string(s : BioseqalignconsistencyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyTable::to_string(self : BioseqalignconsistencyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_align_consistency_graphn_make(size : Int) -> Bioseqalignconsisten
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_graphn_len(s : BioseqalignconsistencyGraphN) -> Int { s.size }
+pub fn BioseqalignconsistencyGraphN::len(self : BioseqalignconsistencyGraphN) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_graphn_get(s : BioseqalignconsistencyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyGraphN::get(self : BioseqalignconsistencyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_graphn_set(s : BioseqalignconsistencyGraphN, i : Int, v : Double) -> BioseqalignconsistencyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyGraphN::set(self : BioseqalignconsistencyGraphN, i : Int, v : Double) -> BioseqalignconsistencyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_graphn_sum(s : BioseqalignconsistencyGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyGraphN::sum(self : BioseqalignconsistencyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_graphn_mean(s : BioseqalignconsistencyGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyGraphN::mean(self : BioseqalignconsistencyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_graphn_scale(s : BioseqalignconsistencyGraphN, f : Double) -> BioseqalignconsistencyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyGraphN::scale(self : BioseqalignconsistencyGraphN, f : Double) -> BioseqalignconsistencyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_graphn_add(a : BioseqalignconsistencyGraphN, b : BioseqalignconsistencyGraphN) -> BioseqalignconsistencyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyGraphN::add(self : BioseqalignconsistencyGraphN, other : BioseqalignconsistencyGraphN) -> BioseqalignconsistencyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_graphn_copy(s : BioseqalignconsistencyGraphN) -> BioseqalignconsistencyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyGraphN::copy(self : BioseqalignconsistencyGraphN) -> BioseqalignconsistencyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_graphn_fill(s : BioseqalignconsistencyGraphN, v : Double) -> BioseqalignconsistencyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyGraphN::fill(self : BioseqalignconsistencyGraphN, v : Double) -> BioseqalignconsistencyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_graphn_min(s : BioseqalignconsistencyGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyGraphN::min(self : BioseqalignconsistencyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_graphn_max(s : BioseqalignconsistencyGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyGraphN::max(self : BioseqalignconsistencyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_graphn_to_string(s : BioseqalignconsistencyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyGraphN::to_string(self : BioseqalignconsistencyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_align_consistency_node_make(size : Int) -> Bioseqalignconsistency
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_node_len(s : BioseqalignconsistencyNode) -> Int { s.size }
+pub fn BioseqalignconsistencyNode::len(self : BioseqalignconsistencyNode) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_node_get(s : BioseqalignconsistencyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyNode::get(self : BioseqalignconsistencyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_node_set(s : BioseqalignconsistencyNode, i : Int, v : Double) -> BioseqalignconsistencyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyNode::set(self : BioseqalignconsistencyNode, i : Int, v : Double) -> BioseqalignconsistencyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_node_sum(s : BioseqalignconsistencyNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyNode::sum(self : BioseqalignconsistencyNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_node_mean(s : BioseqalignconsistencyNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyNode::mean(self : BioseqalignconsistencyNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_node_scale(s : BioseqalignconsistencyNode, f : Double) -> BioseqalignconsistencyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyNode::scale(self : BioseqalignconsistencyNode, f : Double) -> BioseqalignconsistencyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_node_add(a : BioseqalignconsistencyNode, b : BioseqalignconsistencyNode) -> BioseqalignconsistencyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyNode::add(self : BioseqalignconsistencyNode, other : BioseqalignconsistencyNode) -> BioseqalignconsistencyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_node_copy(s : BioseqalignconsistencyNode) -> BioseqalignconsistencyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyNode::copy(self : BioseqalignconsistencyNode) -> BioseqalignconsistencyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_node_fill(s : BioseqalignconsistencyNode, v : Double) -> BioseqalignconsistencyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyNode::fill(self : BioseqalignconsistencyNode, v : Double) -> BioseqalignconsistencyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_node_min(s : BioseqalignconsistencyNode) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyNode::min(self : BioseqalignconsistencyNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_node_max(s : BioseqalignconsistencyNode) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyNode::max(self : BioseqalignconsistencyNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_node_to_string(s : BioseqalignconsistencyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyNode::to_string(self : BioseqalignconsistencyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_align_consistency_edge_make(size : Int) -> Bioseqalignconsistency
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_edge_len(s : BioseqalignconsistencyEdge) -> Int { s.size }
+pub fn BioseqalignconsistencyEdge::len(self : BioseqalignconsistencyEdge) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_edge_get(s : BioseqalignconsistencyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyEdge::get(self : BioseqalignconsistencyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_edge_set(s : BioseqalignconsistencyEdge, i : Int, v : Double) -> BioseqalignconsistencyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyEdge::set(self : BioseqalignconsistencyEdge, i : Int, v : Double) -> BioseqalignconsistencyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_edge_sum(s : BioseqalignconsistencyEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyEdge::sum(self : BioseqalignconsistencyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_edge_mean(s : BioseqalignconsistencyEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyEdge::mean(self : BioseqalignconsistencyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_edge_scale(s : BioseqalignconsistencyEdge, f : Double) -> BioseqalignconsistencyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyEdge::scale(self : BioseqalignconsistencyEdge, f : Double) -> BioseqalignconsistencyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_edge_add(a : BioseqalignconsistencyEdge, b : BioseqalignconsistencyEdge) -> BioseqalignconsistencyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyEdge::add(self : BioseqalignconsistencyEdge, other : BioseqalignconsistencyEdge) -> BioseqalignconsistencyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_edge_copy(s : BioseqalignconsistencyEdge) -> BioseqalignconsistencyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyEdge::copy(self : BioseqalignconsistencyEdge) -> BioseqalignconsistencyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_edge_fill(s : BioseqalignconsistencyEdge, v : Double) -> BioseqalignconsistencyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyEdge::fill(self : BioseqalignconsistencyEdge, v : Double) -> BioseqalignconsistencyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_edge_min(s : BioseqalignconsistencyEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyEdge::min(self : BioseqalignconsistencyEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_edge_max(s : BioseqalignconsistencyEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyEdge::max(self : BioseqalignconsistencyEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_edge_to_string(s : BioseqalignconsistencyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyEdge::to_string(self : BioseqalignconsistencyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_align_consistency_path_make(size : Int) -> Bioseqalignconsistency
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_path_len(s : BioseqalignconsistencyPath) -> Int { s.size }
+pub fn BioseqalignconsistencyPath::len(self : BioseqalignconsistencyPath) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_path_get(s : BioseqalignconsistencyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyPath::get(self : BioseqalignconsistencyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_path_set(s : BioseqalignconsistencyPath, i : Int, v : Double) -> BioseqalignconsistencyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyPath::set(self : BioseqalignconsistencyPath, i : Int, v : Double) -> BioseqalignconsistencyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_path_sum(s : BioseqalignconsistencyPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyPath::sum(self : BioseqalignconsistencyPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_path_mean(s : BioseqalignconsistencyPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyPath::mean(self : BioseqalignconsistencyPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_path_scale(s : BioseqalignconsistencyPath, f : Double) -> BioseqalignconsistencyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyPath::scale(self : BioseqalignconsistencyPath, f : Double) -> BioseqalignconsistencyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_path_add(a : BioseqalignconsistencyPath, b : BioseqalignconsistencyPath) -> BioseqalignconsistencyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyPath::add(self : BioseqalignconsistencyPath, other : BioseqalignconsistencyPath) -> BioseqalignconsistencyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_path_copy(s : BioseqalignconsistencyPath) -> BioseqalignconsistencyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyPath::copy(self : BioseqalignconsistencyPath) -> BioseqalignconsistencyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_path_fill(s : BioseqalignconsistencyPath, v : Double) -> BioseqalignconsistencyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyPath::fill(self : BioseqalignconsistencyPath, v : Double) -> BioseqalignconsistencyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_path_min(s : BioseqalignconsistencyPath) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyPath::min(self : BioseqalignconsistencyPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_path_max(s : BioseqalignconsistencyPath) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyPath::max(self : BioseqalignconsistencyPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_path_to_string(s : BioseqalignconsistencyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyPath::to_string(self : BioseqalignconsistencyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_align_consistency_cluster_make(size : Int) -> Bioseqalignconsiste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_cluster_len(s : BioseqalignconsistencyCluster) -> Int { s.size }
+pub fn BioseqalignconsistencyCluster::len(self : BioseqalignconsistencyCluster) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_cluster_get(s : BioseqalignconsistencyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyCluster::get(self : BioseqalignconsistencyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_cluster_set(s : BioseqalignconsistencyCluster, i : Int, v : Double) -> BioseqalignconsistencyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCluster::set(self : BioseqalignconsistencyCluster, i : Int, v : Double) -> BioseqalignconsistencyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cluster_sum(s : BioseqalignconsistencyCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyCluster::sum(self : BioseqalignconsistencyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_cluster_mean(s : BioseqalignconsistencyCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyCluster::mean(self : BioseqalignconsistencyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_cluster_scale(s : BioseqalignconsistencyCluster, f : Double) -> BioseqalignconsistencyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCluster::scale(self : BioseqalignconsistencyCluster, f : Double) -> BioseqalignconsistencyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cluster_add(a : BioseqalignconsistencyCluster, b : BioseqalignconsistencyCluster) -> BioseqalignconsistencyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyCluster::add(self : BioseqalignconsistencyCluster, other : BioseqalignconsistencyCluster) -> BioseqalignconsistencyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cluster_copy(s : BioseqalignconsistencyCluster) -> BioseqalignconsistencyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCluster::copy(self : BioseqalignconsistencyCluster) -> BioseqalignconsistencyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cluster_fill(s : BioseqalignconsistencyCluster, v : Double) -> BioseqalignconsistencyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCluster::fill(self : BioseqalignconsistencyCluster, v : Double) -> BioseqalignconsistencyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cluster_min(s : BioseqalignconsistencyCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyCluster::min(self : BioseqalignconsistencyCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_cluster_max(s : BioseqalignconsistencyCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyCluster::max(self : BioseqalignconsistencyCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_cluster_to_string(s : BioseqalignconsistencyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyCluster::to_string(self : BioseqalignconsistencyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_align_consistency_model_make(size : Int) -> Bioseqalignconsistenc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_model_len(s : BioseqalignconsistencyModel) -> Int { s.size }
+pub fn BioseqalignconsistencyModel::len(self : BioseqalignconsistencyModel) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_model_get(s : BioseqalignconsistencyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyModel::get(self : BioseqalignconsistencyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_model_set(s : BioseqalignconsistencyModel, i : Int, v : Double) -> BioseqalignconsistencyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyModel::set(self : BioseqalignconsistencyModel, i : Int, v : Double) -> BioseqalignconsistencyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_model_sum(s : BioseqalignconsistencyModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyModel::sum(self : BioseqalignconsistencyModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_model_mean(s : BioseqalignconsistencyModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyModel::mean(self : BioseqalignconsistencyModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_model_scale(s : BioseqalignconsistencyModel, f : Double) -> BioseqalignconsistencyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyModel::scale(self : BioseqalignconsistencyModel, f : Double) -> BioseqalignconsistencyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_model_add(a : BioseqalignconsistencyModel, b : BioseqalignconsistencyModel) -> BioseqalignconsistencyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyModel::add(self : BioseqalignconsistencyModel, other : BioseqalignconsistencyModel) -> BioseqalignconsistencyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_model_copy(s : BioseqalignconsistencyModel) -> BioseqalignconsistencyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyModel::copy(self : BioseqalignconsistencyModel) -> BioseqalignconsistencyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_model_fill(s : BioseqalignconsistencyModel, v : Double) -> BioseqalignconsistencyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyModel::fill(self : BioseqalignconsistencyModel, v : Double) -> BioseqalignconsistencyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_model_min(s : BioseqalignconsistencyModel) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyModel::min(self : BioseqalignconsistencyModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_model_max(s : BioseqalignconsistencyModel) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyModel::max(self : BioseqalignconsistencyModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_model_to_string(s : BioseqalignconsistencyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyModel::to_string(self : BioseqalignconsistencyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_align_consistency_layer_make(size : Int) -> Bioseqalignconsistenc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_layer_len(s : BioseqalignconsistencyLayer) -> Int { s.size }
+pub fn BioseqalignconsistencyLayer::len(self : BioseqalignconsistencyLayer) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_layer_get(s : BioseqalignconsistencyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyLayer::get(self : BioseqalignconsistencyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_layer_set(s : BioseqalignconsistencyLayer, i : Int, v : Double) -> BioseqalignconsistencyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyLayer::set(self : BioseqalignconsistencyLayer, i : Int, v : Double) -> BioseqalignconsistencyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_layer_sum(s : BioseqalignconsistencyLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyLayer::sum(self : BioseqalignconsistencyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_layer_mean(s : BioseqalignconsistencyLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyLayer::mean(self : BioseqalignconsistencyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_layer_scale(s : BioseqalignconsistencyLayer, f : Double) -> BioseqalignconsistencyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyLayer::scale(self : BioseqalignconsistencyLayer, f : Double) -> BioseqalignconsistencyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_layer_add(a : BioseqalignconsistencyLayer, b : BioseqalignconsistencyLayer) -> BioseqalignconsistencyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyLayer::add(self : BioseqalignconsistencyLayer, other : BioseqalignconsistencyLayer) -> BioseqalignconsistencyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_layer_copy(s : BioseqalignconsistencyLayer) -> BioseqalignconsistencyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyLayer::copy(self : BioseqalignconsistencyLayer) -> BioseqalignconsistencyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_layer_fill(s : BioseqalignconsistencyLayer, v : Double) -> BioseqalignconsistencyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyLayer::fill(self : BioseqalignconsistencyLayer, v : Double) -> BioseqalignconsistencyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_layer_min(s : BioseqalignconsistencyLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyLayer::min(self : BioseqalignconsistencyLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_layer_max(s : BioseqalignconsistencyLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyLayer::max(self : BioseqalignconsistencyLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_layer_to_string(s : BioseqalignconsistencyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyLayer::to_string(self : BioseqalignconsistencyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_align_consistency_buffer_make(size : Int) -> Bioseqalignconsisten
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_buffer_len(s : BioseqalignconsistencyBuffer) -> Int { s.size }
+pub fn BioseqalignconsistencyBuffer::len(self : BioseqalignconsistencyBuffer) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_buffer_get(s : BioseqalignconsistencyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyBuffer::get(self : BioseqalignconsistencyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_buffer_set(s : BioseqalignconsistencyBuffer, i : Int, v : Double) -> BioseqalignconsistencyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyBuffer::set(self : BioseqalignconsistencyBuffer, i : Int, v : Double) -> BioseqalignconsistencyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_buffer_sum(s : BioseqalignconsistencyBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyBuffer::sum(self : BioseqalignconsistencyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_buffer_mean(s : BioseqalignconsistencyBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyBuffer::mean(self : BioseqalignconsistencyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_buffer_scale(s : BioseqalignconsistencyBuffer, f : Double) -> BioseqalignconsistencyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyBuffer::scale(self : BioseqalignconsistencyBuffer, f : Double) -> BioseqalignconsistencyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_buffer_add(a : BioseqalignconsistencyBuffer, b : BioseqalignconsistencyBuffer) -> BioseqalignconsistencyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyBuffer::add(self : BioseqalignconsistencyBuffer, other : BioseqalignconsistencyBuffer) -> BioseqalignconsistencyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_buffer_copy(s : BioseqalignconsistencyBuffer) -> BioseqalignconsistencyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyBuffer::copy(self : BioseqalignconsistencyBuffer) -> BioseqalignconsistencyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_buffer_fill(s : BioseqalignconsistencyBuffer, v : Double) -> BioseqalignconsistencyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyBuffer::fill(self : BioseqalignconsistencyBuffer, v : Double) -> BioseqalignconsistencyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_buffer_min(s : BioseqalignconsistencyBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyBuffer::min(self : BioseqalignconsistencyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_buffer_max(s : BioseqalignconsistencyBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyBuffer::max(self : BioseqalignconsistencyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_buffer_to_string(s : BioseqalignconsistencyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyBuffer::to_string(self : BioseqalignconsistencyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_align_consistency_cursor_make(size : Int) -> Bioseqalignconsisten
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_cursor_len(s : BioseqalignconsistencyCursor) -> Int { s.size }
+pub fn BioseqalignconsistencyCursor::len(self : BioseqalignconsistencyCursor) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_cursor_get(s : BioseqalignconsistencyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyCursor::get(self : BioseqalignconsistencyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_cursor_set(s : BioseqalignconsistencyCursor, i : Int, v : Double) -> BioseqalignconsistencyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCursor::set(self : BioseqalignconsistencyCursor, i : Int, v : Double) -> BioseqalignconsistencyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cursor_sum(s : BioseqalignconsistencyCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyCursor::sum(self : BioseqalignconsistencyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_cursor_mean(s : BioseqalignconsistencyCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyCursor::mean(self : BioseqalignconsistencyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_cursor_scale(s : BioseqalignconsistencyCursor, f : Double) -> BioseqalignconsistencyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCursor::scale(self : BioseqalignconsistencyCursor, f : Double) -> BioseqalignconsistencyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cursor_add(a : BioseqalignconsistencyCursor, b : BioseqalignconsistencyCursor) -> BioseqalignconsistencyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyCursor::add(self : BioseqalignconsistencyCursor, other : BioseqalignconsistencyCursor) -> BioseqalignconsistencyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cursor_copy(s : BioseqalignconsistencyCursor) -> BioseqalignconsistencyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCursor::copy(self : BioseqalignconsistencyCursor) -> BioseqalignconsistencyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cursor_fill(s : BioseqalignconsistencyCursor, v : Double) -> BioseqalignconsistencyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyCursor::fill(self : BioseqalignconsistencyCursor, v : Double) -> BioseqalignconsistencyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_cursor_min(s : BioseqalignconsistencyCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyCursor::min(self : BioseqalignconsistencyCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_cursor_max(s : BioseqalignconsistencyCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyCursor::max(self : BioseqalignconsistencyCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_cursor_to_string(s : BioseqalignconsistencyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyCursor::to_string(self : BioseqalignconsistencyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyView {
@@ -912,45 +912,45 @@ pub fn bio_seq_align_consistency_view_make(size : Int) -> Bioseqalignconsistency
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_view_len(s : BioseqalignconsistencyView) -> Int { s.size }
+pub fn BioseqalignconsistencyView::len(self : BioseqalignconsistencyView) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_view_get(s : BioseqalignconsistencyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyView::get(self : BioseqalignconsistencyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_view_set(s : BioseqalignconsistencyView, i : Int, v : Double) -> BioseqalignconsistencyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyView::set(self : BioseqalignconsistencyView, i : Int, v : Double) -> BioseqalignconsistencyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_view_sum(s : BioseqalignconsistencyView) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyView::sum(self : BioseqalignconsistencyView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_view_mean(s : BioseqalignconsistencyView) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyView::mean(self : BioseqalignconsistencyView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_view_scale(s : BioseqalignconsistencyView, f : Double) -> BioseqalignconsistencyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyView::scale(self : BioseqalignconsistencyView, f : Double) -> BioseqalignconsistencyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_view_add(a : BioseqalignconsistencyView, b : BioseqalignconsistencyView) -> BioseqalignconsistencyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyView::add(self : BioseqalignconsistencyView, other : BioseqalignconsistencyView) -> BioseqalignconsistencyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_view_copy(s : BioseqalignconsistencyView) -> BioseqalignconsistencyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyView::copy(self : BioseqalignconsistencyView) -> BioseqalignconsistencyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_view_fill(s : BioseqalignconsistencyView, v : Double) -> BioseqalignconsistencyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyView::fill(self : BioseqalignconsistencyView, v : Double) -> BioseqalignconsistencyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_view_min(s : BioseqalignconsistencyView) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyView::min(self : BioseqalignconsistencyView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_view_max(s : BioseqalignconsistencyView) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyView::max(self : BioseqalignconsistencyView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_view_to_string(s : BioseqalignconsistencyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyView::to_string(self : BioseqalignconsistencyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencyRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_align_consistency_range_make(size : Int) -> Bioseqalignconsistenc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_range_len(s : BioseqalignconsistencyRange) -> Int { s.size }
+pub fn BioseqalignconsistencyRange::len(self : BioseqalignconsistencyRange) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_range_get(s : BioseqalignconsistencyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencyRange::get(self : BioseqalignconsistencyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_range_set(s : BioseqalignconsistencyRange, i : Int, v : Double) -> BioseqalignconsistencyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyRange::set(self : BioseqalignconsistencyRange, i : Int, v : Double) -> BioseqalignconsistencyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_range_sum(s : BioseqalignconsistencyRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencyRange::sum(self : BioseqalignconsistencyRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_range_mean(s : BioseqalignconsistencyRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencyRange::mean(self : BioseqalignconsistencyRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_range_scale(s : BioseqalignconsistencyRange, f : Double) -> BioseqalignconsistencyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyRange::scale(self : BioseqalignconsistencyRange, f : Double) -> BioseqalignconsistencyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_range_add(a : BioseqalignconsistencyRange, b : BioseqalignconsistencyRange) -> BioseqalignconsistencyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencyRange::add(self : BioseqalignconsistencyRange, other : BioseqalignconsistencyRange) -> BioseqalignconsistencyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_range_copy(s : BioseqalignconsistencyRange) -> BioseqalignconsistencyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyRange::copy(self : BioseqalignconsistencyRange) -> BioseqalignconsistencyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_range_fill(s : BioseqalignconsistencyRange, v : Double) -> BioseqalignconsistencyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencyRange::fill(self : BioseqalignconsistencyRange, v : Double) -> BioseqalignconsistencyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_range_min(s : BioseqalignconsistencyRange) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencyRange::min(self : BioseqalignconsistencyRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_range_max(s : BioseqalignconsistencyRange) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencyRange::max(self : BioseqalignconsistencyRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_range_to_string(s : BioseqalignconsistencyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencyRange::to_string(self : BioseqalignconsistencyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqalignconsistencySlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_align_consistency_slice_make(size : Int) -> Bioseqalignconsistenc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_consistency_slice_len(s : BioseqalignconsistencySlice) -> Int { s.size }
+pub fn BioseqalignconsistencySlice::len(self : BioseqalignconsistencySlice) -> Int { self.size }
 
-pub fn bio_seq_align_consistency_slice_get(s : BioseqalignconsistencySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqalignconsistencySlice::get(self : BioseqalignconsistencySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_consistency_slice_set(s : BioseqalignconsistencySlice, i : Int, v : Double) -> BioseqalignconsistencySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencySlice::set(self : BioseqalignconsistencySlice, i : Int, v : Double) -> BioseqalignconsistencySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_slice_sum(s : BioseqalignconsistencySlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqalignconsistencySlice::sum(self : BioseqalignconsistencySlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_consistency_slice_mean(s : BioseqalignconsistencySlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqalignconsistencySlice::mean(self : BioseqalignconsistencySlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_consistency_slice_scale(s : BioseqalignconsistencySlice, f : Double) -> BioseqalignconsistencySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencySlice::scale(self : BioseqalignconsistencySlice, f : Double) -> BioseqalignconsistencySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_slice_add(a : BioseqalignconsistencySlice, b : BioseqalignconsistencySlice) -> BioseqalignconsistencySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqalignconsistencySlice::add(self : BioseqalignconsistencySlice, other : BioseqalignconsistencySlice) -> BioseqalignconsistencySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_slice_copy(s : BioseqalignconsistencySlice) -> BioseqalignconsistencySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencySlice::copy(self : BioseqalignconsistencySlice) -> BioseqalignconsistencySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_slice_fill(s : BioseqalignconsistencySlice, v : Double) -> BioseqalignconsistencySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqalignconsistencySlice::fill(self : BioseqalignconsistencySlice, v : Double) -> BioseqalignconsistencySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_consistency_slice_min(s : BioseqalignconsistencySlice) -> Double { @_common.min(s.data) }
+pub fn BioseqalignconsistencySlice::min(self : BioseqalignconsistencySlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_consistency_slice_max(s : BioseqalignconsistencySlice) -> Double { @_common.max(s.data) }
+pub fn BioseqalignconsistencySlice::max(self : BioseqalignconsistencySlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_consistency_slice_to_string(s : BioseqalignconsistencySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqalignconsistencySlice::to_string(self : BioseqalignconsistencySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

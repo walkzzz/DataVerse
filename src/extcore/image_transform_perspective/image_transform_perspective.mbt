@@ -351,45 +351,45 @@ pub fn image_transform_perspective_frame_make(size : Int) -> Imagetransformpersp
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_frame_len(s : ImagetransformperspectiveFrame) -> Int { s.size }
+pub fn ImagetransformperspectiveFrame::len(self : ImagetransformperspectiveFrame) -> Int { self.size }
 
-pub fn image_transform_perspective_frame_get(s : ImagetransformperspectiveFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveFrame::get(self : ImagetransformperspectiveFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_frame_set(s : ImagetransformperspectiveFrame, i : Int, v : Double) -> ImagetransformperspectiveFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveFrame::set(self : ImagetransformperspectiveFrame, i : Int, v : Double) -> ImagetransformperspectiveFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_frame_sum(s : ImagetransformperspectiveFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveFrame::sum(self : ImagetransformperspectiveFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_frame_mean(s : ImagetransformperspectiveFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveFrame::mean(self : ImagetransformperspectiveFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_frame_scale(s : ImagetransformperspectiveFrame, f : Double) -> ImagetransformperspectiveFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveFrame::scale(self : ImagetransformperspectiveFrame, f : Double) -> ImagetransformperspectiveFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_frame_add(a : ImagetransformperspectiveFrame, b : ImagetransformperspectiveFrame) -> ImagetransformperspectiveFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveFrame::add(self : ImagetransformperspectiveFrame, other : ImagetransformperspectiveFrame) -> ImagetransformperspectiveFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_frame_copy(s : ImagetransformperspectiveFrame) -> ImagetransformperspectiveFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveFrame::copy(self : ImagetransformperspectiveFrame) -> ImagetransformperspectiveFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_frame_fill(s : ImagetransformperspectiveFrame, v : Double) -> ImagetransformperspectiveFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveFrame::fill(self : ImagetransformperspectiveFrame, v : Double) -> ImagetransformperspectiveFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_frame_min(s : ImagetransformperspectiveFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveFrame::min(self : ImagetransformperspectiveFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_frame_max(s : ImagetransformperspectiveFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveFrame::max(self : ImagetransformperspectiveFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_frame_to_string(s : ImagetransformperspectiveFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveFrame::to_string(self : ImagetransformperspectiveFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveTable {
@@ -402,45 +402,45 @@ pub fn image_transform_perspective_table_make(size : Int) -> Imagetransformpersp
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_table_len(s : ImagetransformperspectiveTable) -> Int { s.size }
+pub fn ImagetransformperspectiveTable::len(self : ImagetransformperspectiveTable) -> Int { self.size }
 
-pub fn image_transform_perspective_table_get(s : ImagetransformperspectiveTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveTable::get(self : ImagetransformperspectiveTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_table_set(s : ImagetransformperspectiveTable, i : Int, v : Double) -> ImagetransformperspectiveTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveTable::set(self : ImagetransformperspectiveTable, i : Int, v : Double) -> ImagetransformperspectiveTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_table_sum(s : ImagetransformperspectiveTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveTable::sum(self : ImagetransformperspectiveTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_table_mean(s : ImagetransformperspectiveTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveTable::mean(self : ImagetransformperspectiveTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_table_scale(s : ImagetransformperspectiveTable, f : Double) -> ImagetransformperspectiveTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveTable::scale(self : ImagetransformperspectiveTable, f : Double) -> ImagetransformperspectiveTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_table_add(a : ImagetransformperspectiveTable, b : ImagetransformperspectiveTable) -> ImagetransformperspectiveTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveTable::add(self : ImagetransformperspectiveTable, other : ImagetransformperspectiveTable) -> ImagetransformperspectiveTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_table_copy(s : ImagetransformperspectiveTable) -> ImagetransformperspectiveTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveTable::copy(self : ImagetransformperspectiveTable) -> ImagetransformperspectiveTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_table_fill(s : ImagetransformperspectiveTable, v : Double) -> ImagetransformperspectiveTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveTable::fill(self : ImagetransformperspectiveTable, v : Double) -> ImagetransformperspectiveTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_table_min(s : ImagetransformperspectiveTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveTable::min(self : ImagetransformperspectiveTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_table_max(s : ImagetransformperspectiveTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveTable::max(self : ImagetransformperspectiveTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_table_to_string(s : ImagetransformperspectiveTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveTable::to_string(self : ImagetransformperspectiveTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_perspective_graphn_make(size : Int) -> Imagetransformpers
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_graphn_len(s : ImagetransformperspectiveGraphN) -> Int { s.size }
+pub fn ImagetransformperspectiveGraphN::len(self : ImagetransformperspectiveGraphN) -> Int { self.size }
 
-pub fn image_transform_perspective_graphn_get(s : ImagetransformperspectiveGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveGraphN::get(self : ImagetransformperspectiveGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_graphn_set(s : ImagetransformperspectiveGraphN, i : Int, v : Double) -> ImagetransformperspectiveGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveGraphN::set(self : ImagetransformperspectiveGraphN, i : Int, v : Double) -> ImagetransformperspectiveGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_graphn_sum(s : ImagetransformperspectiveGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveGraphN::sum(self : ImagetransformperspectiveGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_graphn_mean(s : ImagetransformperspectiveGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveGraphN::mean(self : ImagetransformperspectiveGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_graphn_scale(s : ImagetransformperspectiveGraphN, f : Double) -> ImagetransformperspectiveGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveGraphN::scale(self : ImagetransformperspectiveGraphN, f : Double) -> ImagetransformperspectiveGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_graphn_add(a : ImagetransformperspectiveGraphN, b : ImagetransformperspectiveGraphN) -> ImagetransformperspectiveGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveGraphN::add(self : ImagetransformperspectiveGraphN, other : ImagetransformperspectiveGraphN) -> ImagetransformperspectiveGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_graphn_copy(s : ImagetransformperspectiveGraphN) -> ImagetransformperspectiveGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveGraphN::copy(self : ImagetransformperspectiveGraphN) -> ImagetransformperspectiveGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_graphn_fill(s : ImagetransformperspectiveGraphN, v : Double) -> ImagetransformperspectiveGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveGraphN::fill(self : ImagetransformperspectiveGraphN, v : Double) -> ImagetransformperspectiveGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_graphn_min(s : ImagetransformperspectiveGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveGraphN::min(self : ImagetransformperspectiveGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_graphn_max(s : ImagetransformperspectiveGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveGraphN::max(self : ImagetransformperspectiveGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_graphn_to_string(s : ImagetransformperspectiveGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveGraphN::to_string(self : ImagetransformperspectiveGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveNode {
@@ -504,45 +504,45 @@ pub fn image_transform_perspective_node_make(size : Int) -> Imagetransformperspe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_node_len(s : ImagetransformperspectiveNode) -> Int { s.size }
+pub fn ImagetransformperspectiveNode::len(self : ImagetransformperspectiveNode) -> Int { self.size }
 
-pub fn image_transform_perspective_node_get(s : ImagetransformperspectiveNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveNode::get(self : ImagetransformperspectiveNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_node_set(s : ImagetransformperspectiveNode, i : Int, v : Double) -> ImagetransformperspectiveNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveNode::set(self : ImagetransformperspectiveNode, i : Int, v : Double) -> ImagetransformperspectiveNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_node_sum(s : ImagetransformperspectiveNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveNode::sum(self : ImagetransformperspectiveNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_node_mean(s : ImagetransformperspectiveNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveNode::mean(self : ImagetransformperspectiveNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_node_scale(s : ImagetransformperspectiveNode, f : Double) -> ImagetransformperspectiveNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveNode::scale(self : ImagetransformperspectiveNode, f : Double) -> ImagetransformperspectiveNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_node_add(a : ImagetransformperspectiveNode, b : ImagetransformperspectiveNode) -> ImagetransformperspectiveNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveNode::add(self : ImagetransformperspectiveNode, other : ImagetransformperspectiveNode) -> ImagetransformperspectiveNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_node_copy(s : ImagetransformperspectiveNode) -> ImagetransformperspectiveNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveNode::copy(self : ImagetransformperspectiveNode) -> ImagetransformperspectiveNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_node_fill(s : ImagetransformperspectiveNode, v : Double) -> ImagetransformperspectiveNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveNode::fill(self : ImagetransformperspectiveNode, v : Double) -> ImagetransformperspectiveNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_node_min(s : ImagetransformperspectiveNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveNode::min(self : ImagetransformperspectiveNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_node_max(s : ImagetransformperspectiveNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveNode::max(self : ImagetransformperspectiveNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_node_to_string(s : ImagetransformperspectiveNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveNode::to_string(self : ImagetransformperspectiveNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_perspective_edge_make(size : Int) -> Imagetransformperspe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_edge_len(s : ImagetransformperspectiveEdge) -> Int { s.size }
+pub fn ImagetransformperspectiveEdge::len(self : ImagetransformperspectiveEdge) -> Int { self.size }
 
-pub fn image_transform_perspective_edge_get(s : ImagetransformperspectiveEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveEdge::get(self : ImagetransformperspectiveEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_edge_set(s : ImagetransformperspectiveEdge, i : Int, v : Double) -> ImagetransformperspectiveEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveEdge::set(self : ImagetransformperspectiveEdge, i : Int, v : Double) -> ImagetransformperspectiveEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_edge_sum(s : ImagetransformperspectiveEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveEdge::sum(self : ImagetransformperspectiveEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_edge_mean(s : ImagetransformperspectiveEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveEdge::mean(self : ImagetransformperspectiveEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_edge_scale(s : ImagetransformperspectiveEdge, f : Double) -> ImagetransformperspectiveEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveEdge::scale(self : ImagetransformperspectiveEdge, f : Double) -> ImagetransformperspectiveEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_edge_add(a : ImagetransformperspectiveEdge, b : ImagetransformperspectiveEdge) -> ImagetransformperspectiveEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveEdge::add(self : ImagetransformperspectiveEdge, other : ImagetransformperspectiveEdge) -> ImagetransformperspectiveEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_edge_copy(s : ImagetransformperspectiveEdge) -> ImagetransformperspectiveEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveEdge::copy(self : ImagetransformperspectiveEdge) -> ImagetransformperspectiveEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_edge_fill(s : ImagetransformperspectiveEdge, v : Double) -> ImagetransformperspectiveEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveEdge::fill(self : ImagetransformperspectiveEdge, v : Double) -> ImagetransformperspectiveEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_edge_min(s : ImagetransformperspectiveEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveEdge::min(self : ImagetransformperspectiveEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_edge_max(s : ImagetransformperspectiveEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveEdge::max(self : ImagetransformperspectiveEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_edge_to_string(s : ImagetransformperspectiveEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveEdge::to_string(self : ImagetransformperspectiveEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectivePath {
@@ -606,45 +606,45 @@ pub fn image_transform_perspective_path_make(size : Int) -> Imagetransformperspe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_path_len(s : ImagetransformperspectivePath) -> Int { s.size }
+pub fn ImagetransformperspectivePath::len(self : ImagetransformperspectivePath) -> Int { self.size }
 
-pub fn image_transform_perspective_path_get(s : ImagetransformperspectivePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectivePath::get(self : ImagetransformperspectivePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_path_set(s : ImagetransformperspectivePath, i : Int, v : Double) -> ImagetransformperspectivePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectivePath::set(self : ImagetransformperspectivePath, i : Int, v : Double) -> ImagetransformperspectivePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_path_sum(s : ImagetransformperspectivePath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectivePath::sum(self : ImagetransformperspectivePath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_path_mean(s : ImagetransformperspectivePath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectivePath::mean(self : ImagetransformperspectivePath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_path_scale(s : ImagetransformperspectivePath, f : Double) -> ImagetransformperspectivePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectivePath::scale(self : ImagetransformperspectivePath, f : Double) -> ImagetransformperspectivePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_path_add(a : ImagetransformperspectivePath, b : ImagetransformperspectivePath) -> ImagetransformperspectivePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectivePath::add(self : ImagetransformperspectivePath, other : ImagetransformperspectivePath) -> ImagetransformperspectivePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_path_copy(s : ImagetransformperspectivePath) -> ImagetransformperspectivePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectivePath::copy(self : ImagetransformperspectivePath) -> ImagetransformperspectivePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_path_fill(s : ImagetransformperspectivePath, v : Double) -> ImagetransformperspectivePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectivePath::fill(self : ImagetransformperspectivePath, v : Double) -> ImagetransformperspectivePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_path_min(s : ImagetransformperspectivePath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectivePath::min(self : ImagetransformperspectivePath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_path_max(s : ImagetransformperspectivePath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectivePath::max(self : ImagetransformperspectivePath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_path_to_string(s : ImagetransformperspectivePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectivePath::to_string(self : ImagetransformperspectivePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_perspective_cluster_make(size : Int) -> Imagetransformper
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_cluster_len(s : ImagetransformperspectiveCluster) -> Int { s.size }
+pub fn ImagetransformperspectiveCluster::len(self : ImagetransformperspectiveCluster) -> Int { self.size }
 
-pub fn image_transform_perspective_cluster_get(s : ImagetransformperspectiveCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveCluster::get(self : ImagetransformperspectiveCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_cluster_set(s : ImagetransformperspectiveCluster, i : Int, v : Double) -> ImagetransformperspectiveCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCluster::set(self : ImagetransformperspectiveCluster, i : Int, v : Double) -> ImagetransformperspectiveCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cluster_sum(s : ImagetransformperspectiveCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveCluster::sum(self : ImagetransformperspectiveCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_cluster_mean(s : ImagetransformperspectiveCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveCluster::mean(self : ImagetransformperspectiveCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_cluster_scale(s : ImagetransformperspectiveCluster, f : Double) -> ImagetransformperspectiveCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCluster::scale(self : ImagetransformperspectiveCluster, f : Double) -> ImagetransformperspectiveCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cluster_add(a : ImagetransformperspectiveCluster, b : ImagetransformperspectiveCluster) -> ImagetransformperspectiveCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveCluster::add(self : ImagetransformperspectiveCluster, other : ImagetransformperspectiveCluster) -> ImagetransformperspectiveCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cluster_copy(s : ImagetransformperspectiveCluster) -> ImagetransformperspectiveCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCluster::copy(self : ImagetransformperspectiveCluster) -> ImagetransformperspectiveCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cluster_fill(s : ImagetransformperspectiveCluster, v : Double) -> ImagetransformperspectiveCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCluster::fill(self : ImagetransformperspectiveCluster, v : Double) -> ImagetransformperspectiveCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cluster_min(s : ImagetransformperspectiveCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveCluster::min(self : ImagetransformperspectiveCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_cluster_max(s : ImagetransformperspectiveCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveCluster::max(self : ImagetransformperspectiveCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_cluster_to_string(s : ImagetransformperspectiveCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveCluster::to_string(self : ImagetransformperspectiveCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveModel {
@@ -708,45 +708,45 @@ pub fn image_transform_perspective_model_make(size : Int) -> Imagetransformpersp
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_model_len(s : ImagetransformperspectiveModel) -> Int { s.size }
+pub fn ImagetransformperspectiveModel::len(self : ImagetransformperspectiveModel) -> Int { self.size }
 
-pub fn image_transform_perspective_model_get(s : ImagetransformperspectiveModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveModel::get(self : ImagetransformperspectiveModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_model_set(s : ImagetransformperspectiveModel, i : Int, v : Double) -> ImagetransformperspectiveModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveModel::set(self : ImagetransformperspectiveModel, i : Int, v : Double) -> ImagetransformperspectiveModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_model_sum(s : ImagetransformperspectiveModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveModel::sum(self : ImagetransformperspectiveModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_model_mean(s : ImagetransformperspectiveModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveModel::mean(self : ImagetransformperspectiveModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_model_scale(s : ImagetransformperspectiveModel, f : Double) -> ImagetransformperspectiveModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveModel::scale(self : ImagetransformperspectiveModel, f : Double) -> ImagetransformperspectiveModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_model_add(a : ImagetransformperspectiveModel, b : ImagetransformperspectiveModel) -> ImagetransformperspectiveModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveModel::add(self : ImagetransformperspectiveModel, other : ImagetransformperspectiveModel) -> ImagetransformperspectiveModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_model_copy(s : ImagetransformperspectiveModel) -> ImagetransformperspectiveModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveModel::copy(self : ImagetransformperspectiveModel) -> ImagetransformperspectiveModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_model_fill(s : ImagetransformperspectiveModel, v : Double) -> ImagetransformperspectiveModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveModel::fill(self : ImagetransformperspectiveModel, v : Double) -> ImagetransformperspectiveModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_model_min(s : ImagetransformperspectiveModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveModel::min(self : ImagetransformperspectiveModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_model_max(s : ImagetransformperspectiveModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveModel::max(self : ImagetransformperspectiveModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_model_to_string(s : ImagetransformperspectiveModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveModel::to_string(self : ImagetransformperspectiveModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_perspective_layer_make(size : Int) -> Imagetransformpersp
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_layer_len(s : ImagetransformperspectiveLayer) -> Int { s.size }
+pub fn ImagetransformperspectiveLayer::len(self : ImagetransformperspectiveLayer) -> Int { self.size }
 
-pub fn image_transform_perspective_layer_get(s : ImagetransformperspectiveLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveLayer::get(self : ImagetransformperspectiveLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_layer_set(s : ImagetransformperspectiveLayer, i : Int, v : Double) -> ImagetransformperspectiveLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveLayer::set(self : ImagetransformperspectiveLayer, i : Int, v : Double) -> ImagetransformperspectiveLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_layer_sum(s : ImagetransformperspectiveLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveLayer::sum(self : ImagetransformperspectiveLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_layer_mean(s : ImagetransformperspectiveLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveLayer::mean(self : ImagetransformperspectiveLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_layer_scale(s : ImagetransformperspectiveLayer, f : Double) -> ImagetransformperspectiveLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveLayer::scale(self : ImagetransformperspectiveLayer, f : Double) -> ImagetransformperspectiveLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_layer_add(a : ImagetransformperspectiveLayer, b : ImagetransformperspectiveLayer) -> ImagetransformperspectiveLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveLayer::add(self : ImagetransformperspectiveLayer, other : ImagetransformperspectiveLayer) -> ImagetransformperspectiveLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_layer_copy(s : ImagetransformperspectiveLayer) -> ImagetransformperspectiveLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveLayer::copy(self : ImagetransformperspectiveLayer) -> ImagetransformperspectiveLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_layer_fill(s : ImagetransformperspectiveLayer, v : Double) -> ImagetransformperspectiveLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveLayer::fill(self : ImagetransformperspectiveLayer, v : Double) -> ImagetransformperspectiveLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_layer_min(s : ImagetransformperspectiveLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveLayer::min(self : ImagetransformperspectiveLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_layer_max(s : ImagetransformperspectiveLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveLayer::max(self : ImagetransformperspectiveLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_layer_to_string(s : ImagetransformperspectiveLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveLayer::to_string(self : ImagetransformperspectiveLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_perspective_buffer_make(size : Int) -> Imagetransformpers
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_buffer_len(s : ImagetransformperspectiveBuffer) -> Int { s.size }
+pub fn ImagetransformperspectiveBuffer::len(self : ImagetransformperspectiveBuffer) -> Int { self.size }
 
-pub fn image_transform_perspective_buffer_get(s : ImagetransformperspectiveBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveBuffer::get(self : ImagetransformperspectiveBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_buffer_set(s : ImagetransformperspectiveBuffer, i : Int, v : Double) -> ImagetransformperspectiveBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveBuffer::set(self : ImagetransformperspectiveBuffer, i : Int, v : Double) -> ImagetransformperspectiveBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_buffer_sum(s : ImagetransformperspectiveBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveBuffer::sum(self : ImagetransformperspectiveBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_buffer_mean(s : ImagetransformperspectiveBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveBuffer::mean(self : ImagetransformperspectiveBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_buffer_scale(s : ImagetransformperspectiveBuffer, f : Double) -> ImagetransformperspectiveBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveBuffer::scale(self : ImagetransformperspectiveBuffer, f : Double) -> ImagetransformperspectiveBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_buffer_add(a : ImagetransformperspectiveBuffer, b : ImagetransformperspectiveBuffer) -> ImagetransformperspectiveBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveBuffer::add(self : ImagetransformperspectiveBuffer, other : ImagetransformperspectiveBuffer) -> ImagetransformperspectiveBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_buffer_copy(s : ImagetransformperspectiveBuffer) -> ImagetransformperspectiveBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveBuffer::copy(self : ImagetransformperspectiveBuffer) -> ImagetransformperspectiveBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_buffer_fill(s : ImagetransformperspectiveBuffer, v : Double) -> ImagetransformperspectiveBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveBuffer::fill(self : ImagetransformperspectiveBuffer, v : Double) -> ImagetransformperspectiveBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_buffer_min(s : ImagetransformperspectiveBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveBuffer::min(self : ImagetransformperspectiveBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_buffer_max(s : ImagetransformperspectiveBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveBuffer::max(self : ImagetransformperspectiveBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_buffer_to_string(s : ImagetransformperspectiveBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveBuffer::to_string(self : ImagetransformperspectiveBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_perspective_cursor_make(size : Int) -> Imagetransformpers
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_cursor_len(s : ImagetransformperspectiveCursor) -> Int { s.size }
+pub fn ImagetransformperspectiveCursor::len(self : ImagetransformperspectiveCursor) -> Int { self.size }
 
-pub fn image_transform_perspective_cursor_get(s : ImagetransformperspectiveCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveCursor::get(self : ImagetransformperspectiveCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_cursor_set(s : ImagetransformperspectiveCursor, i : Int, v : Double) -> ImagetransformperspectiveCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCursor::set(self : ImagetransformperspectiveCursor, i : Int, v : Double) -> ImagetransformperspectiveCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cursor_sum(s : ImagetransformperspectiveCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveCursor::sum(self : ImagetransformperspectiveCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_cursor_mean(s : ImagetransformperspectiveCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveCursor::mean(self : ImagetransformperspectiveCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_cursor_scale(s : ImagetransformperspectiveCursor, f : Double) -> ImagetransformperspectiveCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCursor::scale(self : ImagetransformperspectiveCursor, f : Double) -> ImagetransformperspectiveCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cursor_add(a : ImagetransformperspectiveCursor, b : ImagetransformperspectiveCursor) -> ImagetransformperspectiveCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveCursor::add(self : ImagetransformperspectiveCursor, other : ImagetransformperspectiveCursor) -> ImagetransformperspectiveCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cursor_copy(s : ImagetransformperspectiveCursor) -> ImagetransformperspectiveCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCursor::copy(self : ImagetransformperspectiveCursor) -> ImagetransformperspectiveCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cursor_fill(s : ImagetransformperspectiveCursor, v : Double) -> ImagetransformperspectiveCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveCursor::fill(self : ImagetransformperspectiveCursor, v : Double) -> ImagetransformperspectiveCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_cursor_min(s : ImagetransformperspectiveCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveCursor::min(self : ImagetransformperspectiveCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_cursor_max(s : ImagetransformperspectiveCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveCursor::max(self : ImagetransformperspectiveCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_cursor_to_string(s : ImagetransformperspectiveCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveCursor::to_string(self : ImagetransformperspectiveCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveView {
@@ -912,45 +912,45 @@ pub fn image_transform_perspective_view_make(size : Int) -> Imagetransformperspe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_view_len(s : ImagetransformperspectiveView) -> Int { s.size }
+pub fn ImagetransformperspectiveView::len(self : ImagetransformperspectiveView) -> Int { self.size }
 
-pub fn image_transform_perspective_view_get(s : ImagetransformperspectiveView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveView::get(self : ImagetransformperspectiveView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_view_set(s : ImagetransformperspectiveView, i : Int, v : Double) -> ImagetransformperspectiveView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveView::set(self : ImagetransformperspectiveView, i : Int, v : Double) -> ImagetransformperspectiveView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_view_sum(s : ImagetransformperspectiveView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveView::sum(self : ImagetransformperspectiveView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_view_mean(s : ImagetransformperspectiveView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveView::mean(self : ImagetransformperspectiveView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_view_scale(s : ImagetransformperspectiveView, f : Double) -> ImagetransformperspectiveView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveView::scale(self : ImagetransformperspectiveView, f : Double) -> ImagetransformperspectiveView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_view_add(a : ImagetransformperspectiveView, b : ImagetransformperspectiveView) -> ImagetransformperspectiveView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveView::add(self : ImagetransformperspectiveView, other : ImagetransformperspectiveView) -> ImagetransformperspectiveView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_view_copy(s : ImagetransformperspectiveView) -> ImagetransformperspectiveView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveView::copy(self : ImagetransformperspectiveView) -> ImagetransformperspectiveView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_view_fill(s : ImagetransformperspectiveView, v : Double) -> ImagetransformperspectiveView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveView::fill(self : ImagetransformperspectiveView, v : Double) -> ImagetransformperspectiveView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_view_min(s : ImagetransformperspectiveView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveView::min(self : ImagetransformperspectiveView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_view_max(s : ImagetransformperspectiveView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveView::max(self : ImagetransformperspectiveView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_view_to_string(s : ImagetransformperspectiveView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveView::to_string(self : ImagetransformperspectiveView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveRange {
@@ -963,45 +963,45 @@ pub fn image_transform_perspective_range_make(size : Int) -> Imagetransformpersp
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_range_len(s : ImagetransformperspectiveRange) -> Int { s.size }
+pub fn ImagetransformperspectiveRange::len(self : ImagetransformperspectiveRange) -> Int { self.size }
 
-pub fn image_transform_perspective_range_get(s : ImagetransformperspectiveRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveRange::get(self : ImagetransformperspectiveRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_range_set(s : ImagetransformperspectiveRange, i : Int, v : Double) -> ImagetransformperspectiveRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveRange::set(self : ImagetransformperspectiveRange, i : Int, v : Double) -> ImagetransformperspectiveRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_range_sum(s : ImagetransformperspectiveRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveRange::sum(self : ImagetransformperspectiveRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_range_mean(s : ImagetransformperspectiveRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveRange::mean(self : ImagetransformperspectiveRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_range_scale(s : ImagetransformperspectiveRange, f : Double) -> ImagetransformperspectiveRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveRange::scale(self : ImagetransformperspectiveRange, f : Double) -> ImagetransformperspectiveRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_range_add(a : ImagetransformperspectiveRange, b : ImagetransformperspectiveRange) -> ImagetransformperspectiveRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveRange::add(self : ImagetransformperspectiveRange, other : ImagetransformperspectiveRange) -> ImagetransformperspectiveRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_range_copy(s : ImagetransformperspectiveRange) -> ImagetransformperspectiveRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveRange::copy(self : ImagetransformperspectiveRange) -> ImagetransformperspectiveRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_range_fill(s : ImagetransformperspectiveRange, v : Double) -> ImagetransformperspectiveRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveRange::fill(self : ImagetransformperspectiveRange, v : Double) -> ImagetransformperspectiveRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_range_min(s : ImagetransformperspectiveRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveRange::min(self : ImagetransformperspectiveRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_range_max(s : ImagetransformperspectiveRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveRange::max(self : ImagetransformperspectiveRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_range_to_string(s : ImagetransformperspectiveRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveRange::to_string(self : ImagetransformperspectiveRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformperspectiveSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_perspective_slice_make(size : Int) -> Imagetransformpersp
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_perspective_slice_len(s : ImagetransformperspectiveSlice) -> Int { s.size }
+pub fn ImagetransformperspectiveSlice::len(self : ImagetransformperspectiveSlice) -> Int { self.size }
 
-pub fn image_transform_perspective_slice_get(s : ImagetransformperspectiveSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformperspectiveSlice::get(self : ImagetransformperspectiveSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_perspective_slice_set(s : ImagetransformperspectiveSlice, i : Int, v : Double) -> ImagetransformperspectiveSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveSlice::set(self : ImagetransformperspectiveSlice, i : Int, v : Double) -> ImagetransformperspectiveSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_slice_sum(s : ImagetransformperspectiveSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformperspectiveSlice::sum(self : ImagetransformperspectiveSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_perspective_slice_mean(s : ImagetransformperspectiveSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformperspectiveSlice::mean(self : ImagetransformperspectiveSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_perspective_slice_scale(s : ImagetransformperspectiveSlice, f : Double) -> ImagetransformperspectiveSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveSlice::scale(self : ImagetransformperspectiveSlice, f : Double) -> ImagetransformperspectiveSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_slice_add(a : ImagetransformperspectiveSlice, b : ImagetransformperspectiveSlice) -> ImagetransformperspectiveSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformperspectiveSlice::add(self : ImagetransformperspectiveSlice, other : ImagetransformperspectiveSlice) -> ImagetransformperspectiveSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_perspective_slice_copy(s : ImagetransformperspectiveSlice) -> ImagetransformperspectiveSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveSlice::copy(self : ImagetransformperspectiveSlice) -> ImagetransformperspectiveSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_slice_fill(s : ImagetransformperspectiveSlice, v : Double) -> ImagetransformperspectiveSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformperspectiveSlice::fill(self : ImagetransformperspectiveSlice, v : Double) -> ImagetransformperspectiveSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_perspective_slice_min(s : ImagetransformperspectiveSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformperspectiveSlice::min(self : ImagetransformperspectiveSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_perspective_slice_max(s : ImagetransformperspectiveSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformperspectiveSlice::max(self : ImagetransformperspectiveSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_perspective_slice_to_string(s : ImagetransformperspectiveSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformperspectiveSlice::to_string(self : ImagetransformperspectiveSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

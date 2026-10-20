@@ -351,45 +351,45 @@ pub fn finance_pricing_monte_carlo_frame_make(size : Int) -> Financepricingmonte
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_frame_len(s : FinancepricingmontecarloFrame) -> Int { s.size }
+pub fn FinancepricingmontecarloFrame::len(self : FinancepricingmontecarloFrame) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_frame_get(s : FinancepricingmontecarloFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloFrame::get(self : FinancepricingmontecarloFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_frame_set(s : FinancepricingmontecarloFrame, i : Int, v : Double) -> FinancepricingmontecarloFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloFrame::set(self : FinancepricingmontecarloFrame, i : Int, v : Double) -> FinancepricingmontecarloFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_frame_sum(s : FinancepricingmontecarloFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloFrame::sum(self : FinancepricingmontecarloFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_frame_mean(s : FinancepricingmontecarloFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloFrame::mean(self : FinancepricingmontecarloFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_frame_scale(s : FinancepricingmontecarloFrame, f : Double) -> FinancepricingmontecarloFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloFrame::scale(self : FinancepricingmontecarloFrame, f : Double) -> FinancepricingmontecarloFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_frame_add(a : FinancepricingmontecarloFrame, b : FinancepricingmontecarloFrame) -> FinancepricingmontecarloFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloFrame::add(self : FinancepricingmontecarloFrame, other : FinancepricingmontecarloFrame) -> FinancepricingmontecarloFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_frame_copy(s : FinancepricingmontecarloFrame) -> FinancepricingmontecarloFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloFrame::copy(self : FinancepricingmontecarloFrame) -> FinancepricingmontecarloFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_frame_fill(s : FinancepricingmontecarloFrame, v : Double) -> FinancepricingmontecarloFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloFrame::fill(self : FinancepricingmontecarloFrame, v : Double) -> FinancepricingmontecarloFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_frame_min(s : FinancepricingmontecarloFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloFrame::min(self : FinancepricingmontecarloFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_frame_max(s : FinancepricingmontecarloFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloFrame::max(self : FinancepricingmontecarloFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_frame_to_string(s : FinancepricingmontecarloFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloFrame::to_string(self : FinancepricingmontecarloFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_monte_carlo_table_make(size : Int) -> Financepricingmonte
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_table_len(s : FinancepricingmontecarloTable) -> Int { s.size }
+pub fn FinancepricingmontecarloTable::len(self : FinancepricingmontecarloTable) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_table_get(s : FinancepricingmontecarloTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloTable::get(self : FinancepricingmontecarloTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_table_set(s : FinancepricingmontecarloTable, i : Int, v : Double) -> FinancepricingmontecarloTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloTable::set(self : FinancepricingmontecarloTable, i : Int, v : Double) -> FinancepricingmontecarloTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_table_sum(s : FinancepricingmontecarloTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloTable::sum(self : FinancepricingmontecarloTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_table_mean(s : FinancepricingmontecarloTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloTable::mean(self : FinancepricingmontecarloTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_table_scale(s : FinancepricingmontecarloTable, f : Double) -> FinancepricingmontecarloTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloTable::scale(self : FinancepricingmontecarloTable, f : Double) -> FinancepricingmontecarloTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_table_add(a : FinancepricingmontecarloTable, b : FinancepricingmontecarloTable) -> FinancepricingmontecarloTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloTable::add(self : FinancepricingmontecarloTable, other : FinancepricingmontecarloTable) -> FinancepricingmontecarloTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_table_copy(s : FinancepricingmontecarloTable) -> FinancepricingmontecarloTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloTable::copy(self : FinancepricingmontecarloTable) -> FinancepricingmontecarloTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_table_fill(s : FinancepricingmontecarloTable, v : Double) -> FinancepricingmontecarloTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloTable::fill(self : FinancepricingmontecarloTable, v : Double) -> FinancepricingmontecarloTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_table_min(s : FinancepricingmontecarloTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloTable::min(self : FinancepricingmontecarloTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_table_max(s : FinancepricingmontecarloTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloTable::max(self : FinancepricingmontecarloTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_table_to_string(s : FinancepricingmontecarloTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloTable::to_string(self : FinancepricingmontecarloTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_monte_carlo_graphn_make(size : Int) -> Financepricingmont
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_len(s : FinancepricingmontecarloGraphN) -> Int { s.size }
+pub fn FinancepricingmontecarloGraphN::len(self : FinancepricingmontecarloGraphN) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_graphn_get(s : FinancepricingmontecarloGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloGraphN::get(self : FinancepricingmontecarloGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_set(s : FinancepricingmontecarloGraphN, i : Int, v : Double) -> FinancepricingmontecarloGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloGraphN::set(self : FinancepricingmontecarloGraphN, i : Int, v : Double) -> FinancepricingmontecarloGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_sum(s : FinancepricingmontecarloGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloGraphN::sum(self : FinancepricingmontecarloGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_graphn_mean(s : FinancepricingmontecarloGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloGraphN::mean(self : FinancepricingmontecarloGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_graphn_scale(s : FinancepricingmontecarloGraphN, f : Double) -> FinancepricingmontecarloGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloGraphN::scale(self : FinancepricingmontecarloGraphN, f : Double) -> FinancepricingmontecarloGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_add(a : FinancepricingmontecarloGraphN, b : FinancepricingmontecarloGraphN) -> FinancepricingmontecarloGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloGraphN::add(self : FinancepricingmontecarloGraphN, other : FinancepricingmontecarloGraphN) -> FinancepricingmontecarloGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_copy(s : FinancepricingmontecarloGraphN) -> FinancepricingmontecarloGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloGraphN::copy(self : FinancepricingmontecarloGraphN) -> FinancepricingmontecarloGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_fill(s : FinancepricingmontecarloGraphN, v : Double) -> FinancepricingmontecarloGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloGraphN::fill(self : FinancepricingmontecarloGraphN, v : Double) -> FinancepricingmontecarloGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_graphn_min(s : FinancepricingmontecarloGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloGraphN::min(self : FinancepricingmontecarloGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_graphn_max(s : FinancepricingmontecarloGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloGraphN::max(self : FinancepricingmontecarloGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_graphn_to_string(s : FinancepricingmontecarloGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloGraphN::to_string(self : FinancepricingmontecarloGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_monte_carlo_node_make(size : Int) -> Financepricingmontec
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_node_len(s : FinancepricingmontecarloNode) -> Int { s.size }
+pub fn FinancepricingmontecarloNode::len(self : FinancepricingmontecarloNode) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_node_get(s : FinancepricingmontecarloNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloNode::get(self : FinancepricingmontecarloNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_node_set(s : FinancepricingmontecarloNode, i : Int, v : Double) -> FinancepricingmontecarloNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloNode::set(self : FinancepricingmontecarloNode, i : Int, v : Double) -> FinancepricingmontecarloNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_node_sum(s : FinancepricingmontecarloNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloNode::sum(self : FinancepricingmontecarloNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_node_mean(s : FinancepricingmontecarloNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloNode::mean(self : FinancepricingmontecarloNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_node_scale(s : FinancepricingmontecarloNode, f : Double) -> FinancepricingmontecarloNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloNode::scale(self : FinancepricingmontecarloNode, f : Double) -> FinancepricingmontecarloNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_node_add(a : FinancepricingmontecarloNode, b : FinancepricingmontecarloNode) -> FinancepricingmontecarloNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloNode::add(self : FinancepricingmontecarloNode, other : FinancepricingmontecarloNode) -> FinancepricingmontecarloNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_node_copy(s : FinancepricingmontecarloNode) -> FinancepricingmontecarloNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloNode::copy(self : FinancepricingmontecarloNode) -> FinancepricingmontecarloNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_node_fill(s : FinancepricingmontecarloNode, v : Double) -> FinancepricingmontecarloNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloNode::fill(self : FinancepricingmontecarloNode, v : Double) -> FinancepricingmontecarloNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_node_min(s : FinancepricingmontecarloNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloNode::min(self : FinancepricingmontecarloNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_node_max(s : FinancepricingmontecarloNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloNode::max(self : FinancepricingmontecarloNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_node_to_string(s : FinancepricingmontecarloNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloNode::to_string(self : FinancepricingmontecarloNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_monte_carlo_edge_make(size : Int) -> Financepricingmontec
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_edge_len(s : FinancepricingmontecarloEdge) -> Int { s.size }
+pub fn FinancepricingmontecarloEdge::len(self : FinancepricingmontecarloEdge) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_edge_get(s : FinancepricingmontecarloEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloEdge::get(self : FinancepricingmontecarloEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_edge_set(s : FinancepricingmontecarloEdge, i : Int, v : Double) -> FinancepricingmontecarloEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloEdge::set(self : FinancepricingmontecarloEdge, i : Int, v : Double) -> FinancepricingmontecarloEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_edge_sum(s : FinancepricingmontecarloEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloEdge::sum(self : FinancepricingmontecarloEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_edge_mean(s : FinancepricingmontecarloEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloEdge::mean(self : FinancepricingmontecarloEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_edge_scale(s : FinancepricingmontecarloEdge, f : Double) -> FinancepricingmontecarloEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloEdge::scale(self : FinancepricingmontecarloEdge, f : Double) -> FinancepricingmontecarloEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_edge_add(a : FinancepricingmontecarloEdge, b : FinancepricingmontecarloEdge) -> FinancepricingmontecarloEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloEdge::add(self : FinancepricingmontecarloEdge, other : FinancepricingmontecarloEdge) -> FinancepricingmontecarloEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_edge_copy(s : FinancepricingmontecarloEdge) -> FinancepricingmontecarloEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloEdge::copy(self : FinancepricingmontecarloEdge) -> FinancepricingmontecarloEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_edge_fill(s : FinancepricingmontecarloEdge, v : Double) -> FinancepricingmontecarloEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloEdge::fill(self : FinancepricingmontecarloEdge, v : Double) -> FinancepricingmontecarloEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_edge_min(s : FinancepricingmontecarloEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloEdge::min(self : FinancepricingmontecarloEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_edge_max(s : FinancepricingmontecarloEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloEdge::max(self : FinancepricingmontecarloEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_edge_to_string(s : FinancepricingmontecarloEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloEdge::to_string(self : FinancepricingmontecarloEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_monte_carlo_path_make(size : Int) -> Financepricingmontec
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_path_len(s : FinancepricingmontecarloPath) -> Int { s.size }
+pub fn FinancepricingmontecarloPath::len(self : FinancepricingmontecarloPath) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_path_get(s : FinancepricingmontecarloPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloPath::get(self : FinancepricingmontecarloPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_path_set(s : FinancepricingmontecarloPath, i : Int, v : Double) -> FinancepricingmontecarloPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloPath::set(self : FinancepricingmontecarloPath, i : Int, v : Double) -> FinancepricingmontecarloPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_path_sum(s : FinancepricingmontecarloPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloPath::sum(self : FinancepricingmontecarloPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_path_mean(s : FinancepricingmontecarloPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloPath::mean(self : FinancepricingmontecarloPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_path_scale(s : FinancepricingmontecarloPath, f : Double) -> FinancepricingmontecarloPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloPath::scale(self : FinancepricingmontecarloPath, f : Double) -> FinancepricingmontecarloPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_path_add(a : FinancepricingmontecarloPath, b : FinancepricingmontecarloPath) -> FinancepricingmontecarloPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloPath::add(self : FinancepricingmontecarloPath, other : FinancepricingmontecarloPath) -> FinancepricingmontecarloPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_path_copy(s : FinancepricingmontecarloPath) -> FinancepricingmontecarloPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloPath::copy(self : FinancepricingmontecarloPath) -> FinancepricingmontecarloPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_path_fill(s : FinancepricingmontecarloPath, v : Double) -> FinancepricingmontecarloPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloPath::fill(self : FinancepricingmontecarloPath, v : Double) -> FinancepricingmontecarloPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_path_min(s : FinancepricingmontecarloPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloPath::min(self : FinancepricingmontecarloPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_path_max(s : FinancepricingmontecarloPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloPath::max(self : FinancepricingmontecarloPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_path_to_string(s : FinancepricingmontecarloPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloPath::to_string(self : FinancepricingmontecarloPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_monte_carlo_cluster_make(size : Int) -> Financepricingmon
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_len(s : FinancepricingmontecarloCluster) -> Int { s.size }
+pub fn FinancepricingmontecarloCluster::len(self : FinancepricingmontecarloCluster) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_cluster_get(s : FinancepricingmontecarloCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloCluster::get(self : FinancepricingmontecarloCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_set(s : FinancepricingmontecarloCluster, i : Int, v : Double) -> FinancepricingmontecarloCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCluster::set(self : FinancepricingmontecarloCluster, i : Int, v : Double) -> FinancepricingmontecarloCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_sum(s : FinancepricingmontecarloCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloCluster::sum(self : FinancepricingmontecarloCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_cluster_mean(s : FinancepricingmontecarloCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloCluster::mean(self : FinancepricingmontecarloCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_cluster_scale(s : FinancepricingmontecarloCluster, f : Double) -> FinancepricingmontecarloCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCluster::scale(self : FinancepricingmontecarloCluster, f : Double) -> FinancepricingmontecarloCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_add(a : FinancepricingmontecarloCluster, b : FinancepricingmontecarloCluster) -> FinancepricingmontecarloCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloCluster::add(self : FinancepricingmontecarloCluster, other : FinancepricingmontecarloCluster) -> FinancepricingmontecarloCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_copy(s : FinancepricingmontecarloCluster) -> FinancepricingmontecarloCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCluster::copy(self : FinancepricingmontecarloCluster) -> FinancepricingmontecarloCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_fill(s : FinancepricingmontecarloCluster, v : Double) -> FinancepricingmontecarloCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCluster::fill(self : FinancepricingmontecarloCluster, v : Double) -> FinancepricingmontecarloCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cluster_min(s : FinancepricingmontecarloCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloCluster::min(self : FinancepricingmontecarloCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_cluster_max(s : FinancepricingmontecarloCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloCluster::max(self : FinancepricingmontecarloCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_cluster_to_string(s : FinancepricingmontecarloCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloCluster::to_string(self : FinancepricingmontecarloCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_monte_carlo_model_make(size : Int) -> Financepricingmonte
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_model_len(s : FinancepricingmontecarloModel) -> Int { s.size }
+pub fn FinancepricingmontecarloModel::len(self : FinancepricingmontecarloModel) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_model_get(s : FinancepricingmontecarloModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloModel::get(self : FinancepricingmontecarloModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_model_set(s : FinancepricingmontecarloModel, i : Int, v : Double) -> FinancepricingmontecarloModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloModel::set(self : FinancepricingmontecarloModel, i : Int, v : Double) -> FinancepricingmontecarloModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_model_sum(s : FinancepricingmontecarloModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloModel::sum(self : FinancepricingmontecarloModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_model_mean(s : FinancepricingmontecarloModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloModel::mean(self : FinancepricingmontecarloModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_model_scale(s : FinancepricingmontecarloModel, f : Double) -> FinancepricingmontecarloModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloModel::scale(self : FinancepricingmontecarloModel, f : Double) -> FinancepricingmontecarloModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_model_add(a : FinancepricingmontecarloModel, b : FinancepricingmontecarloModel) -> FinancepricingmontecarloModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloModel::add(self : FinancepricingmontecarloModel, other : FinancepricingmontecarloModel) -> FinancepricingmontecarloModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_model_copy(s : FinancepricingmontecarloModel) -> FinancepricingmontecarloModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloModel::copy(self : FinancepricingmontecarloModel) -> FinancepricingmontecarloModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_model_fill(s : FinancepricingmontecarloModel, v : Double) -> FinancepricingmontecarloModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloModel::fill(self : FinancepricingmontecarloModel, v : Double) -> FinancepricingmontecarloModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_model_min(s : FinancepricingmontecarloModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloModel::min(self : FinancepricingmontecarloModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_model_max(s : FinancepricingmontecarloModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloModel::max(self : FinancepricingmontecarloModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_model_to_string(s : FinancepricingmontecarloModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloModel::to_string(self : FinancepricingmontecarloModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_monte_carlo_layer_make(size : Int) -> Financepricingmonte
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_layer_len(s : FinancepricingmontecarloLayer) -> Int { s.size }
+pub fn FinancepricingmontecarloLayer::len(self : FinancepricingmontecarloLayer) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_layer_get(s : FinancepricingmontecarloLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloLayer::get(self : FinancepricingmontecarloLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_layer_set(s : FinancepricingmontecarloLayer, i : Int, v : Double) -> FinancepricingmontecarloLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloLayer::set(self : FinancepricingmontecarloLayer, i : Int, v : Double) -> FinancepricingmontecarloLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_layer_sum(s : FinancepricingmontecarloLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloLayer::sum(self : FinancepricingmontecarloLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_layer_mean(s : FinancepricingmontecarloLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloLayer::mean(self : FinancepricingmontecarloLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_layer_scale(s : FinancepricingmontecarloLayer, f : Double) -> FinancepricingmontecarloLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloLayer::scale(self : FinancepricingmontecarloLayer, f : Double) -> FinancepricingmontecarloLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_layer_add(a : FinancepricingmontecarloLayer, b : FinancepricingmontecarloLayer) -> FinancepricingmontecarloLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloLayer::add(self : FinancepricingmontecarloLayer, other : FinancepricingmontecarloLayer) -> FinancepricingmontecarloLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_layer_copy(s : FinancepricingmontecarloLayer) -> FinancepricingmontecarloLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloLayer::copy(self : FinancepricingmontecarloLayer) -> FinancepricingmontecarloLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_layer_fill(s : FinancepricingmontecarloLayer, v : Double) -> FinancepricingmontecarloLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloLayer::fill(self : FinancepricingmontecarloLayer, v : Double) -> FinancepricingmontecarloLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_layer_min(s : FinancepricingmontecarloLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloLayer::min(self : FinancepricingmontecarloLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_layer_max(s : FinancepricingmontecarloLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloLayer::max(self : FinancepricingmontecarloLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_layer_to_string(s : FinancepricingmontecarloLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloLayer::to_string(self : FinancepricingmontecarloLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_monte_carlo_buffer_make(size : Int) -> Financepricingmont
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_len(s : FinancepricingmontecarloBuffer) -> Int { s.size }
+pub fn FinancepricingmontecarloBuffer::len(self : FinancepricingmontecarloBuffer) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_buffer_get(s : FinancepricingmontecarloBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloBuffer::get(self : FinancepricingmontecarloBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_set(s : FinancepricingmontecarloBuffer, i : Int, v : Double) -> FinancepricingmontecarloBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloBuffer::set(self : FinancepricingmontecarloBuffer, i : Int, v : Double) -> FinancepricingmontecarloBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_sum(s : FinancepricingmontecarloBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloBuffer::sum(self : FinancepricingmontecarloBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_buffer_mean(s : FinancepricingmontecarloBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloBuffer::mean(self : FinancepricingmontecarloBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_buffer_scale(s : FinancepricingmontecarloBuffer, f : Double) -> FinancepricingmontecarloBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloBuffer::scale(self : FinancepricingmontecarloBuffer, f : Double) -> FinancepricingmontecarloBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_add(a : FinancepricingmontecarloBuffer, b : FinancepricingmontecarloBuffer) -> FinancepricingmontecarloBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloBuffer::add(self : FinancepricingmontecarloBuffer, other : FinancepricingmontecarloBuffer) -> FinancepricingmontecarloBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_copy(s : FinancepricingmontecarloBuffer) -> FinancepricingmontecarloBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloBuffer::copy(self : FinancepricingmontecarloBuffer) -> FinancepricingmontecarloBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_fill(s : FinancepricingmontecarloBuffer, v : Double) -> FinancepricingmontecarloBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloBuffer::fill(self : FinancepricingmontecarloBuffer, v : Double) -> FinancepricingmontecarloBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_buffer_min(s : FinancepricingmontecarloBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloBuffer::min(self : FinancepricingmontecarloBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_buffer_max(s : FinancepricingmontecarloBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloBuffer::max(self : FinancepricingmontecarloBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_buffer_to_string(s : FinancepricingmontecarloBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloBuffer::to_string(self : FinancepricingmontecarloBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_monte_carlo_cursor_make(size : Int) -> Financepricingmont
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_len(s : FinancepricingmontecarloCursor) -> Int { s.size }
+pub fn FinancepricingmontecarloCursor::len(self : FinancepricingmontecarloCursor) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_cursor_get(s : FinancepricingmontecarloCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloCursor::get(self : FinancepricingmontecarloCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_set(s : FinancepricingmontecarloCursor, i : Int, v : Double) -> FinancepricingmontecarloCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCursor::set(self : FinancepricingmontecarloCursor, i : Int, v : Double) -> FinancepricingmontecarloCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_sum(s : FinancepricingmontecarloCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloCursor::sum(self : FinancepricingmontecarloCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_cursor_mean(s : FinancepricingmontecarloCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloCursor::mean(self : FinancepricingmontecarloCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_cursor_scale(s : FinancepricingmontecarloCursor, f : Double) -> FinancepricingmontecarloCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCursor::scale(self : FinancepricingmontecarloCursor, f : Double) -> FinancepricingmontecarloCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_add(a : FinancepricingmontecarloCursor, b : FinancepricingmontecarloCursor) -> FinancepricingmontecarloCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloCursor::add(self : FinancepricingmontecarloCursor, other : FinancepricingmontecarloCursor) -> FinancepricingmontecarloCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_copy(s : FinancepricingmontecarloCursor) -> FinancepricingmontecarloCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCursor::copy(self : FinancepricingmontecarloCursor) -> FinancepricingmontecarloCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_fill(s : FinancepricingmontecarloCursor, v : Double) -> FinancepricingmontecarloCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloCursor::fill(self : FinancepricingmontecarloCursor, v : Double) -> FinancepricingmontecarloCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_cursor_min(s : FinancepricingmontecarloCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloCursor::min(self : FinancepricingmontecarloCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_cursor_max(s : FinancepricingmontecarloCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloCursor::max(self : FinancepricingmontecarloCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_cursor_to_string(s : FinancepricingmontecarloCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloCursor::to_string(self : FinancepricingmontecarloCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_monte_carlo_view_make(size : Int) -> Financepricingmontec
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_view_len(s : FinancepricingmontecarloView) -> Int { s.size }
+pub fn FinancepricingmontecarloView::len(self : FinancepricingmontecarloView) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_view_get(s : FinancepricingmontecarloView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloView::get(self : FinancepricingmontecarloView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_view_set(s : FinancepricingmontecarloView, i : Int, v : Double) -> FinancepricingmontecarloView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloView::set(self : FinancepricingmontecarloView, i : Int, v : Double) -> FinancepricingmontecarloView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_view_sum(s : FinancepricingmontecarloView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloView::sum(self : FinancepricingmontecarloView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_view_mean(s : FinancepricingmontecarloView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloView::mean(self : FinancepricingmontecarloView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_view_scale(s : FinancepricingmontecarloView, f : Double) -> FinancepricingmontecarloView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloView::scale(self : FinancepricingmontecarloView, f : Double) -> FinancepricingmontecarloView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_view_add(a : FinancepricingmontecarloView, b : FinancepricingmontecarloView) -> FinancepricingmontecarloView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloView::add(self : FinancepricingmontecarloView, other : FinancepricingmontecarloView) -> FinancepricingmontecarloView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_view_copy(s : FinancepricingmontecarloView) -> FinancepricingmontecarloView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloView::copy(self : FinancepricingmontecarloView) -> FinancepricingmontecarloView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_view_fill(s : FinancepricingmontecarloView, v : Double) -> FinancepricingmontecarloView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloView::fill(self : FinancepricingmontecarloView, v : Double) -> FinancepricingmontecarloView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_view_min(s : FinancepricingmontecarloView) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloView::min(self : FinancepricingmontecarloView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_view_max(s : FinancepricingmontecarloView) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloView::max(self : FinancepricingmontecarloView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_view_to_string(s : FinancepricingmontecarloView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloView::to_string(self : FinancepricingmontecarloView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_monte_carlo_range_make(size : Int) -> Financepricingmonte
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_range_len(s : FinancepricingmontecarloRange) -> Int { s.size }
+pub fn FinancepricingmontecarloRange::len(self : FinancepricingmontecarloRange) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_range_get(s : FinancepricingmontecarloRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloRange::get(self : FinancepricingmontecarloRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_range_set(s : FinancepricingmontecarloRange, i : Int, v : Double) -> FinancepricingmontecarloRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloRange::set(self : FinancepricingmontecarloRange, i : Int, v : Double) -> FinancepricingmontecarloRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_range_sum(s : FinancepricingmontecarloRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloRange::sum(self : FinancepricingmontecarloRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_range_mean(s : FinancepricingmontecarloRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloRange::mean(self : FinancepricingmontecarloRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_range_scale(s : FinancepricingmontecarloRange, f : Double) -> FinancepricingmontecarloRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloRange::scale(self : FinancepricingmontecarloRange, f : Double) -> FinancepricingmontecarloRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_range_add(a : FinancepricingmontecarloRange, b : FinancepricingmontecarloRange) -> FinancepricingmontecarloRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloRange::add(self : FinancepricingmontecarloRange, other : FinancepricingmontecarloRange) -> FinancepricingmontecarloRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_range_copy(s : FinancepricingmontecarloRange) -> FinancepricingmontecarloRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloRange::copy(self : FinancepricingmontecarloRange) -> FinancepricingmontecarloRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_range_fill(s : FinancepricingmontecarloRange, v : Double) -> FinancepricingmontecarloRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloRange::fill(self : FinancepricingmontecarloRange, v : Double) -> FinancepricingmontecarloRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_range_min(s : FinancepricingmontecarloRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloRange::min(self : FinancepricingmontecarloRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_range_max(s : FinancepricingmontecarloRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloRange::max(self : FinancepricingmontecarloRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_range_to_string(s : FinancepricingmontecarloRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloRange::to_string(self : FinancepricingmontecarloRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingmontecarloSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_monte_carlo_slice_make(size : Int) -> Financepricingmonte
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_monte_carlo_slice_len(s : FinancepricingmontecarloSlice) -> Int { s.size }
+pub fn FinancepricingmontecarloSlice::len(self : FinancepricingmontecarloSlice) -> Int { self.size }
 
-pub fn finance_pricing_monte_carlo_slice_get(s : FinancepricingmontecarloSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingmontecarloSlice::get(self : FinancepricingmontecarloSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_monte_carlo_slice_set(s : FinancepricingmontecarloSlice, i : Int, v : Double) -> FinancepricingmontecarloSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloSlice::set(self : FinancepricingmontecarloSlice, i : Int, v : Double) -> FinancepricingmontecarloSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_slice_sum(s : FinancepricingmontecarloSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingmontecarloSlice::sum(self : FinancepricingmontecarloSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_monte_carlo_slice_mean(s : FinancepricingmontecarloSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingmontecarloSlice::mean(self : FinancepricingmontecarloSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_monte_carlo_slice_scale(s : FinancepricingmontecarloSlice, f : Double) -> FinancepricingmontecarloSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloSlice::scale(self : FinancepricingmontecarloSlice, f : Double) -> FinancepricingmontecarloSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_slice_add(a : FinancepricingmontecarloSlice, b : FinancepricingmontecarloSlice) -> FinancepricingmontecarloSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingmontecarloSlice::add(self : FinancepricingmontecarloSlice, other : FinancepricingmontecarloSlice) -> FinancepricingmontecarloSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_slice_copy(s : FinancepricingmontecarloSlice) -> FinancepricingmontecarloSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloSlice::copy(self : FinancepricingmontecarloSlice) -> FinancepricingmontecarloSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_slice_fill(s : FinancepricingmontecarloSlice, v : Double) -> FinancepricingmontecarloSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingmontecarloSlice::fill(self : FinancepricingmontecarloSlice, v : Double) -> FinancepricingmontecarloSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_monte_carlo_slice_min(s : FinancepricingmontecarloSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricingmontecarloSlice::min(self : FinancepricingmontecarloSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_monte_carlo_slice_max(s : FinancepricingmontecarloSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricingmontecarloSlice::max(self : FinancepricingmontecarloSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_monte_carlo_slice_to_string(s : FinancepricingmontecarloSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingmontecarloSlice::to_string(self : FinancepricingmontecarloSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

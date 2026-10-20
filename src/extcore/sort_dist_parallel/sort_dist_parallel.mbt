@@ -351,45 +351,45 @@ pub fn sort_dist_parallel_frame_make(size : Int) -> SortdistparallelFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_frame_len(s : SortdistparallelFrame) -> Int { s.size }
+pub fn SortdistparallelFrame::len(self : SortdistparallelFrame) -> Int { self.size }
 
-pub fn sort_dist_parallel_frame_get(s : SortdistparallelFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelFrame::get(self : SortdistparallelFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_frame_set(s : SortdistparallelFrame, i : Int, v : Double) -> SortdistparallelFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelFrame::set(self : SortdistparallelFrame, i : Int, v : Double) -> SortdistparallelFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_frame_sum(s : SortdistparallelFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelFrame::sum(self : SortdistparallelFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_frame_mean(s : SortdistparallelFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelFrame::mean(self : SortdistparallelFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_frame_scale(s : SortdistparallelFrame, f : Double) -> SortdistparallelFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelFrame::scale(self : SortdistparallelFrame, f : Double) -> SortdistparallelFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_frame_add(a : SortdistparallelFrame, b : SortdistparallelFrame) -> SortdistparallelFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelFrame::add(self : SortdistparallelFrame, other : SortdistparallelFrame) -> SortdistparallelFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_frame_copy(s : SortdistparallelFrame) -> SortdistparallelFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelFrame::copy(self : SortdistparallelFrame) -> SortdistparallelFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_frame_fill(s : SortdistparallelFrame, v : Double) -> SortdistparallelFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelFrame::fill(self : SortdistparallelFrame, v : Double) -> SortdistparallelFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_frame_min(s : SortdistparallelFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelFrame::min(self : SortdistparallelFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_frame_max(s : SortdistparallelFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelFrame::max(self : SortdistparallelFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_frame_to_string(s : SortdistparallelFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelFrame::to_string(self : SortdistparallelFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_parallel_table_make(size : Int) -> SortdistparallelTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_table_len(s : SortdistparallelTable) -> Int { s.size }
+pub fn SortdistparallelTable::len(self : SortdistparallelTable) -> Int { self.size }
 
-pub fn sort_dist_parallel_table_get(s : SortdistparallelTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelTable::get(self : SortdistparallelTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_table_set(s : SortdistparallelTable, i : Int, v : Double) -> SortdistparallelTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelTable::set(self : SortdistparallelTable, i : Int, v : Double) -> SortdistparallelTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_table_sum(s : SortdistparallelTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelTable::sum(self : SortdistparallelTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_table_mean(s : SortdistparallelTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelTable::mean(self : SortdistparallelTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_table_scale(s : SortdistparallelTable, f : Double) -> SortdistparallelTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelTable::scale(self : SortdistparallelTable, f : Double) -> SortdistparallelTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_table_add(a : SortdistparallelTable, b : SortdistparallelTable) -> SortdistparallelTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelTable::add(self : SortdistparallelTable, other : SortdistparallelTable) -> SortdistparallelTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_table_copy(s : SortdistparallelTable) -> SortdistparallelTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelTable::copy(self : SortdistparallelTable) -> SortdistparallelTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_table_fill(s : SortdistparallelTable, v : Double) -> SortdistparallelTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelTable::fill(self : SortdistparallelTable, v : Double) -> SortdistparallelTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_table_min(s : SortdistparallelTable) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelTable::min(self : SortdistparallelTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_table_max(s : SortdistparallelTable) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelTable::max(self : SortdistparallelTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_table_to_string(s : SortdistparallelTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelTable::to_string(self : SortdistparallelTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_parallel_graphn_make(size : Int) -> SortdistparallelGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_graphn_len(s : SortdistparallelGraphN) -> Int { s.size }
+pub fn SortdistparallelGraphN::len(self : SortdistparallelGraphN) -> Int { self.size }
 
-pub fn sort_dist_parallel_graphn_get(s : SortdistparallelGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelGraphN::get(self : SortdistparallelGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_graphn_set(s : SortdistparallelGraphN, i : Int, v : Double) -> SortdistparallelGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelGraphN::set(self : SortdistparallelGraphN, i : Int, v : Double) -> SortdistparallelGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_graphn_sum(s : SortdistparallelGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelGraphN::sum(self : SortdistparallelGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_graphn_mean(s : SortdistparallelGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelGraphN::mean(self : SortdistparallelGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_graphn_scale(s : SortdistparallelGraphN, f : Double) -> SortdistparallelGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelGraphN::scale(self : SortdistparallelGraphN, f : Double) -> SortdistparallelGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_graphn_add(a : SortdistparallelGraphN, b : SortdistparallelGraphN) -> SortdistparallelGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelGraphN::add(self : SortdistparallelGraphN, other : SortdistparallelGraphN) -> SortdistparallelGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_graphn_copy(s : SortdistparallelGraphN) -> SortdistparallelGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelGraphN::copy(self : SortdistparallelGraphN) -> SortdistparallelGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_graphn_fill(s : SortdistparallelGraphN, v : Double) -> SortdistparallelGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelGraphN::fill(self : SortdistparallelGraphN, v : Double) -> SortdistparallelGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_graphn_min(s : SortdistparallelGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelGraphN::min(self : SortdistparallelGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_graphn_max(s : SortdistparallelGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelGraphN::max(self : SortdistparallelGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_graphn_to_string(s : SortdistparallelGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelGraphN::to_string(self : SortdistparallelGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_parallel_node_make(size : Int) -> SortdistparallelNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_node_len(s : SortdistparallelNode) -> Int { s.size }
+pub fn SortdistparallelNode::len(self : SortdistparallelNode) -> Int { self.size }
 
-pub fn sort_dist_parallel_node_get(s : SortdistparallelNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelNode::get(self : SortdistparallelNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_node_set(s : SortdistparallelNode, i : Int, v : Double) -> SortdistparallelNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelNode::set(self : SortdistparallelNode, i : Int, v : Double) -> SortdistparallelNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_node_sum(s : SortdistparallelNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelNode::sum(self : SortdistparallelNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_node_mean(s : SortdistparallelNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelNode::mean(self : SortdistparallelNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_node_scale(s : SortdistparallelNode, f : Double) -> SortdistparallelNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelNode::scale(self : SortdistparallelNode, f : Double) -> SortdistparallelNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_node_add(a : SortdistparallelNode, b : SortdistparallelNode) -> SortdistparallelNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelNode::add(self : SortdistparallelNode, other : SortdistparallelNode) -> SortdistparallelNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_node_copy(s : SortdistparallelNode) -> SortdistparallelNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelNode::copy(self : SortdistparallelNode) -> SortdistparallelNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_node_fill(s : SortdistparallelNode, v : Double) -> SortdistparallelNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelNode::fill(self : SortdistparallelNode, v : Double) -> SortdistparallelNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_node_min(s : SortdistparallelNode) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelNode::min(self : SortdistparallelNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_node_max(s : SortdistparallelNode) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelNode::max(self : SortdistparallelNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_node_to_string(s : SortdistparallelNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelNode::to_string(self : SortdistparallelNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_parallel_edge_make(size : Int) -> SortdistparallelEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_edge_len(s : SortdistparallelEdge) -> Int { s.size }
+pub fn SortdistparallelEdge::len(self : SortdistparallelEdge) -> Int { self.size }
 
-pub fn sort_dist_parallel_edge_get(s : SortdistparallelEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelEdge::get(self : SortdistparallelEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_edge_set(s : SortdistparallelEdge, i : Int, v : Double) -> SortdistparallelEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelEdge::set(self : SortdistparallelEdge, i : Int, v : Double) -> SortdistparallelEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_edge_sum(s : SortdistparallelEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelEdge::sum(self : SortdistparallelEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_edge_mean(s : SortdistparallelEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelEdge::mean(self : SortdistparallelEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_edge_scale(s : SortdistparallelEdge, f : Double) -> SortdistparallelEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelEdge::scale(self : SortdistparallelEdge, f : Double) -> SortdistparallelEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_edge_add(a : SortdistparallelEdge, b : SortdistparallelEdge) -> SortdistparallelEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelEdge::add(self : SortdistparallelEdge, other : SortdistparallelEdge) -> SortdistparallelEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_edge_copy(s : SortdistparallelEdge) -> SortdistparallelEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelEdge::copy(self : SortdistparallelEdge) -> SortdistparallelEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_edge_fill(s : SortdistparallelEdge, v : Double) -> SortdistparallelEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelEdge::fill(self : SortdistparallelEdge, v : Double) -> SortdistparallelEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_edge_min(s : SortdistparallelEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelEdge::min(self : SortdistparallelEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_edge_max(s : SortdistparallelEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelEdge::max(self : SortdistparallelEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_edge_to_string(s : SortdistparallelEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelEdge::to_string(self : SortdistparallelEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelPath {
@@ -606,45 +606,45 @@ pub fn sort_dist_parallel_path_make(size : Int) -> SortdistparallelPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_path_len(s : SortdistparallelPath) -> Int { s.size }
+pub fn SortdistparallelPath::len(self : SortdistparallelPath) -> Int { self.size }
 
-pub fn sort_dist_parallel_path_get(s : SortdistparallelPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelPath::get(self : SortdistparallelPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_path_set(s : SortdistparallelPath, i : Int, v : Double) -> SortdistparallelPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelPath::set(self : SortdistparallelPath, i : Int, v : Double) -> SortdistparallelPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_path_sum(s : SortdistparallelPath) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelPath::sum(self : SortdistparallelPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_path_mean(s : SortdistparallelPath) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelPath::mean(self : SortdistparallelPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_path_scale(s : SortdistparallelPath, f : Double) -> SortdistparallelPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelPath::scale(self : SortdistparallelPath, f : Double) -> SortdistparallelPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_path_add(a : SortdistparallelPath, b : SortdistparallelPath) -> SortdistparallelPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelPath::add(self : SortdistparallelPath, other : SortdistparallelPath) -> SortdistparallelPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_path_copy(s : SortdistparallelPath) -> SortdistparallelPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelPath::copy(self : SortdistparallelPath) -> SortdistparallelPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_path_fill(s : SortdistparallelPath, v : Double) -> SortdistparallelPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelPath::fill(self : SortdistparallelPath, v : Double) -> SortdistparallelPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_path_min(s : SortdistparallelPath) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelPath::min(self : SortdistparallelPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_path_max(s : SortdistparallelPath) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelPath::max(self : SortdistparallelPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_path_to_string(s : SortdistparallelPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelPath::to_string(self : SortdistparallelPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_parallel_cluster_make(size : Int) -> SortdistparallelCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_cluster_len(s : SortdistparallelCluster) -> Int { s.size }
+pub fn SortdistparallelCluster::len(self : SortdistparallelCluster) -> Int { self.size }
 
-pub fn sort_dist_parallel_cluster_get(s : SortdistparallelCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelCluster::get(self : SortdistparallelCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_cluster_set(s : SortdistparallelCluster, i : Int, v : Double) -> SortdistparallelCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelCluster::set(self : SortdistparallelCluster, i : Int, v : Double) -> SortdistparallelCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cluster_sum(s : SortdistparallelCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelCluster::sum(self : SortdistparallelCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_cluster_mean(s : SortdistparallelCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelCluster::mean(self : SortdistparallelCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_cluster_scale(s : SortdistparallelCluster, f : Double) -> SortdistparallelCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelCluster::scale(self : SortdistparallelCluster, f : Double) -> SortdistparallelCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cluster_add(a : SortdistparallelCluster, b : SortdistparallelCluster) -> SortdistparallelCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelCluster::add(self : SortdistparallelCluster, other : SortdistparallelCluster) -> SortdistparallelCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cluster_copy(s : SortdistparallelCluster) -> SortdistparallelCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelCluster::copy(self : SortdistparallelCluster) -> SortdistparallelCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cluster_fill(s : SortdistparallelCluster, v : Double) -> SortdistparallelCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelCluster::fill(self : SortdistparallelCluster, v : Double) -> SortdistparallelCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cluster_min(s : SortdistparallelCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelCluster::min(self : SortdistparallelCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_cluster_max(s : SortdistparallelCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelCluster::max(self : SortdistparallelCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_cluster_to_string(s : SortdistparallelCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelCluster::to_string(self : SortdistparallelCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_parallel_model_make(size : Int) -> SortdistparallelModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_model_len(s : SortdistparallelModel) -> Int { s.size }
+pub fn SortdistparallelModel::len(self : SortdistparallelModel) -> Int { self.size }
 
-pub fn sort_dist_parallel_model_get(s : SortdistparallelModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelModel::get(self : SortdistparallelModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_model_set(s : SortdistparallelModel, i : Int, v : Double) -> SortdistparallelModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelModel::set(self : SortdistparallelModel, i : Int, v : Double) -> SortdistparallelModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_model_sum(s : SortdistparallelModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelModel::sum(self : SortdistparallelModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_model_mean(s : SortdistparallelModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelModel::mean(self : SortdistparallelModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_model_scale(s : SortdistparallelModel, f : Double) -> SortdistparallelModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelModel::scale(self : SortdistparallelModel, f : Double) -> SortdistparallelModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_model_add(a : SortdistparallelModel, b : SortdistparallelModel) -> SortdistparallelModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelModel::add(self : SortdistparallelModel, other : SortdistparallelModel) -> SortdistparallelModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_model_copy(s : SortdistparallelModel) -> SortdistparallelModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelModel::copy(self : SortdistparallelModel) -> SortdistparallelModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_model_fill(s : SortdistparallelModel, v : Double) -> SortdistparallelModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelModel::fill(self : SortdistparallelModel, v : Double) -> SortdistparallelModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_model_min(s : SortdistparallelModel) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelModel::min(self : SortdistparallelModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_model_max(s : SortdistparallelModel) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelModel::max(self : SortdistparallelModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_model_to_string(s : SortdistparallelModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelModel::to_string(self : SortdistparallelModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_parallel_layer_make(size : Int) -> SortdistparallelLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_layer_len(s : SortdistparallelLayer) -> Int { s.size }
+pub fn SortdistparallelLayer::len(self : SortdistparallelLayer) -> Int { self.size }
 
-pub fn sort_dist_parallel_layer_get(s : SortdistparallelLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelLayer::get(self : SortdistparallelLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_layer_set(s : SortdistparallelLayer, i : Int, v : Double) -> SortdistparallelLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelLayer::set(self : SortdistparallelLayer, i : Int, v : Double) -> SortdistparallelLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_layer_sum(s : SortdistparallelLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelLayer::sum(self : SortdistparallelLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_layer_mean(s : SortdistparallelLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelLayer::mean(self : SortdistparallelLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_layer_scale(s : SortdistparallelLayer, f : Double) -> SortdistparallelLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelLayer::scale(self : SortdistparallelLayer, f : Double) -> SortdistparallelLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_layer_add(a : SortdistparallelLayer, b : SortdistparallelLayer) -> SortdistparallelLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelLayer::add(self : SortdistparallelLayer, other : SortdistparallelLayer) -> SortdistparallelLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_layer_copy(s : SortdistparallelLayer) -> SortdistparallelLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelLayer::copy(self : SortdistparallelLayer) -> SortdistparallelLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_layer_fill(s : SortdistparallelLayer, v : Double) -> SortdistparallelLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelLayer::fill(self : SortdistparallelLayer, v : Double) -> SortdistparallelLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_layer_min(s : SortdistparallelLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelLayer::min(self : SortdistparallelLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_layer_max(s : SortdistparallelLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelLayer::max(self : SortdistparallelLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_layer_to_string(s : SortdistparallelLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelLayer::to_string(self : SortdistparallelLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_parallel_buffer_make(size : Int) -> SortdistparallelBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_buffer_len(s : SortdistparallelBuffer) -> Int { s.size }
+pub fn SortdistparallelBuffer::len(self : SortdistparallelBuffer) -> Int { self.size }
 
-pub fn sort_dist_parallel_buffer_get(s : SortdistparallelBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelBuffer::get(self : SortdistparallelBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_buffer_set(s : SortdistparallelBuffer, i : Int, v : Double) -> SortdistparallelBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelBuffer::set(self : SortdistparallelBuffer, i : Int, v : Double) -> SortdistparallelBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_buffer_sum(s : SortdistparallelBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelBuffer::sum(self : SortdistparallelBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_buffer_mean(s : SortdistparallelBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelBuffer::mean(self : SortdistparallelBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_buffer_scale(s : SortdistparallelBuffer, f : Double) -> SortdistparallelBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelBuffer::scale(self : SortdistparallelBuffer, f : Double) -> SortdistparallelBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_buffer_add(a : SortdistparallelBuffer, b : SortdistparallelBuffer) -> SortdistparallelBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelBuffer::add(self : SortdistparallelBuffer, other : SortdistparallelBuffer) -> SortdistparallelBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_buffer_copy(s : SortdistparallelBuffer) -> SortdistparallelBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelBuffer::copy(self : SortdistparallelBuffer) -> SortdistparallelBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_buffer_fill(s : SortdistparallelBuffer, v : Double) -> SortdistparallelBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelBuffer::fill(self : SortdistparallelBuffer, v : Double) -> SortdistparallelBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_buffer_min(s : SortdistparallelBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelBuffer::min(self : SortdistparallelBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_buffer_max(s : SortdistparallelBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelBuffer::max(self : SortdistparallelBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_buffer_to_string(s : SortdistparallelBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelBuffer::to_string(self : SortdistparallelBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_parallel_cursor_make(size : Int) -> SortdistparallelCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_cursor_len(s : SortdistparallelCursor) -> Int { s.size }
+pub fn SortdistparallelCursor::len(self : SortdistparallelCursor) -> Int { self.size }
 
-pub fn sort_dist_parallel_cursor_get(s : SortdistparallelCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelCursor::get(self : SortdistparallelCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_cursor_set(s : SortdistparallelCursor, i : Int, v : Double) -> SortdistparallelCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelCursor::set(self : SortdistparallelCursor, i : Int, v : Double) -> SortdistparallelCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cursor_sum(s : SortdistparallelCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelCursor::sum(self : SortdistparallelCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_cursor_mean(s : SortdistparallelCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelCursor::mean(self : SortdistparallelCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_cursor_scale(s : SortdistparallelCursor, f : Double) -> SortdistparallelCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelCursor::scale(self : SortdistparallelCursor, f : Double) -> SortdistparallelCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cursor_add(a : SortdistparallelCursor, b : SortdistparallelCursor) -> SortdistparallelCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelCursor::add(self : SortdistparallelCursor, other : SortdistparallelCursor) -> SortdistparallelCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cursor_copy(s : SortdistparallelCursor) -> SortdistparallelCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelCursor::copy(self : SortdistparallelCursor) -> SortdistparallelCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cursor_fill(s : SortdistparallelCursor, v : Double) -> SortdistparallelCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelCursor::fill(self : SortdistparallelCursor, v : Double) -> SortdistparallelCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_cursor_min(s : SortdistparallelCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelCursor::min(self : SortdistparallelCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_cursor_max(s : SortdistparallelCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelCursor::max(self : SortdistparallelCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_cursor_to_string(s : SortdistparallelCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelCursor::to_string(self : SortdistparallelCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelView {
@@ -912,45 +912,45 @@ pub fn sort_dist_parallel_view_make(size : Int) -> SortdistparallelView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_view_len(s : SortdistparallelView) -> Int { s.size }
+pub fn SortdistparallelView::len(self : SortdistparallelView) -> Int { self.size }
 
-pub fn sort_dist_parallel_view_get(s : SortdistparallelView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelView::get(self : SortdistparallelView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_view_set(s : SortdistparallelView, i : Int, v : Double) -> SortdistparallelView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelView::set(self : SortdistparallelView, i : Int, v : Double) -> SortdistparallelView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_view_sum(s : SortdistparallelView) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelView::sum(self : SortdistparallelView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_view_mean(s : SortdistparallelView) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelView::mean(self : SortdistparallelView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_view_scale(s : SortdistparallelView, f : Double) -> SortdistparallelView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelView::scale(self : SortdistparallelView, f : Double) -> SortdistparallelView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_view_add(a : SortdistparallelView, b : SortdistparallelView) -> SortdistparallelView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelView::add(self : SortdistparallelView, other : SortdistparallelView) -> SortdistparallelView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_view_copy(s : SortdistparallelView) -> SortdistparallelView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelView::copy(self : SortdistparallelView) -> SortdistparallelView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_view_fill(s : SortdistparallelView, v : Double) -> SortdistparallelView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelView::fill(self : SortdistparallelView, v : Double) -> SortdistparallelView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_view_min(s : SortdistparallelView) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelView::min(self : SortdistparallelView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_view_max(s : SortdistparallelView) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelView::max(self : SortdistparallelView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_view_to_string(s : SortdistparallelView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelView::to_string(self : SortdistparallelView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_parallel_range_make(size : Int) -> SortdistparallelRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_range_len(s : SortdistparallelRange) -> Int { s.size }
+pub fn SortdistparallelRange::len(self : SortdistparallelRange) -> Int { self.size }
 
-pub fn sort_dist_parallel_range_get(s : SortdistparallelRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelRange::get(self : SortdistparallelRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_range_set(s : SortdistparallelRange, i : Int, v : Double) -> SortdistparallelRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelRange::set(self : SortdistparallelRange, i : Int, v : Double) -> SortdistparallelRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_range_sum(s : SortdistparallelRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelRange::sum(self : SortdistparallelRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_range_mean(s : SortdistparallelRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelRange::mean(self : SortdistparallelRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_range_scale(s : SortdistparallelRange, f : Double) -> SortdistparallelRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelRange::scale(self : SortdistparallelRange, f : Double) -> SortdistparallelRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_range_add(a : SortdistparallelRange, b : SortdistparallelRange) -> SortdistparallelRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelRange::add(self : SortdistparallelRange, other : SortdistparallelRange) -> SortdistparallelRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_range_copy(s : SortdistparallelRange) -> SortdistparallelRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelRange::copy(self : SortdistparallelRange) -> SortdistparallelRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_range_fill(s : SortdistparallelRange, v : Double) -> SortdistparallelRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelRange::fill(self : SortdistparallelRange, v : Double) -> SortdistparallelRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_range_min(s : SortdistparallelRange) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelRange::min(self : SortdistparallelRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_range_max(s : SortdistparallelRange) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelRange::max(self : SortdistparallelRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_range_to_string(s : SortdistparallelRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelRange::to_string(self : SortdistparallelRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistparallelSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_parallel_slice_make(size : Int) -> SortdistparallelSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_parallel_slice_len(s : SortdistparallelSlice) -> Int { s.size }
+pub fn SortdistparallelSlice::len(self : SortdistparallelSlice) -> Int { self.size }
 
-pub fn sort_dist_parallel_slice_get(s : SortdistparallelSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistparallelSlice::get(self : SortdistparallelSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_parallel_slice_set(s : SortdistparallelSlice, i : Int, v : Double) -> SortdistparallelSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistparallelSlice::set(self : SortdistparallelSlice, i : Int, v : Double) -> SortdistparallelSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_slice_sum(s : SortdistparallelSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistparallelSlice::sum(self : SortdistparallelSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_parallel_slice_mean(s : SortdistparallelSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistparallelSlice::mean(self : SortdistparallelSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_parallel_slice_scale(s : SortdistparallelSlice, f : Double) -> SortdistparallelSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistparallelSlice::scale(self : SortdistparallelSlice, f : Double) -> SortdistparallelSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_slice_add(a : SortdistparallelSlice, b : SortdistparallelSlice) -> SortdistparallelSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistparallelSlice::add(self : SortdistparallelSlice, other : SortdistparallelSlice) -> SortdistparallelSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_slice_copy(s : SortdistparallelSlice) -> SortdistparallelSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistparallelSlice::copy(self : SortdistparallelSlice) -> SortdistparallelSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_slice_fill(s : SortdistparallelSlice, v : Double) -> SortdistparallelSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistparallelSlice::fill(self : SortdistparallelSlice, v : Double) -> SortdistparallelSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_parallel_slice_min(s : SortdistparallelSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistparallelSlice::min(self : SortdistparallelSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_parallel_slice_max(s : SortdistparallelSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistparallelSlice::max(self : SortdistparallelSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_parallel_slice_to_string(s : SortdistparallelSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistparallelSlice::to_string(self : SortdistparallelSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

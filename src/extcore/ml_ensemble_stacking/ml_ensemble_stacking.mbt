@@ -351,45 +351,45 @@ pub fn ml_ensemble_stacking_frame_make(size : Int) -> MlensemblestackingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_frame_len(s : MlensemblestackingFrame) -> Int { s.size }
+pub fn MlensemblestackingFrame::len(self : MlensemblestackingFrame) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_frame_get(s : MlensemblestackingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingFrame::get(self : MlensemblestackingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_frame_set(s : MlensemblestackingFrame, i : Int, v : Double) -> MlensemblestackingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingFrame::set(self : MlensemblestackingFrame, i : Int, v : Double) -> MlensemblestackingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_frame_sum(s : MlensemblestackingFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingFrame::sum(self : MlensemblestackingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_frame_mean(s : MlensemblestackingFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingFrame::mean(self : MlensemblestackingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_frame_scale(s : MlensemblestackingFrame, f : Double) -> MlensemblestackingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingFrame::scale(self : MlensemblestackingFrame, f : Double) -> MlensemblestackingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_frame_add(a : MlensemblestackingFrame, b : MlensemblestackingFrame) -> MlensemblestackingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingFrame::add(self : MlensemblestackingFrame, other : MlensemblestackingFrame) -> MlensemblestackingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_frame_copy(s : MlensemblestackingFrame) -> MlensemblestackingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingFrame::copy(self : MlensemblestackingFrame) -> MlensemblestackingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_frame_fill(s : MlensemblestackingFrame, v : Double) -> MlensemblestackingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingFrame::fill(self : MlensemblestackingFrame, v : Double) -> MlensemblestackingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_frame_min(s : MlensemblestackingFrame) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingFrame::min(self : MlensemblestackingFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_frame_max(s : MlensemblestackingFrame) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingFrame::max(self : MlensemblestackingFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_frame_to_string(s : MlensemblestackingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingFrame::to_string(self : MlensemblestackingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_stacking_table_make(size : Int) -> MlensemblestackingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_table_len(s : MlensemblestackingTable) -> Int { s.size }
+pub fn MlensemblestackingTable::len(self : MlensemblestackingTable) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_table_get(s : MlensemblestackingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingTable::get(self : MlensemblestackingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_table_set(s : MlensemblestackingTable, i : Int, v : Double) -> MlensemblestackingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingTable::set(self : MlensemblestackingTable, i : Int, v : Double) -> MlensemblestackingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_table_sum(s : MlensemblestackingTable) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingTable::sum(self : MlensemblestackingTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_table_mean(s : MlensemblestackingTable) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingTable::mean(self : MlensemblestackingTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_table_scale(s : MlensemblestackingTable, f : Double) -> MlensemblestackingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingTable::scale(self : MlensemblestackingTable, f : Double) -> MlensemblestackingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_table_add(a : MlensemblestackingTable, b : MlensemblestackingTable) -> MlensemblestackingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingTable::add(self : MlensemblestackingTable, other : MlensemblestackingTable) -> MlensemblestackingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_table_copy(s : MlensemblestackingTable) -> MlensemblestackingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingTable::copy(self : MlensemblestackingTable) -> MlensemblestackingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_table_fill(s : MlensemblestackingTable, v : Double) -> MlensemblestackingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingTable::fill(self : MlensemblestackingTable, v : Double) -> MlensemblestackingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_table_min(s : MlensemblestackingTable) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingTable::min(self : MlensemblestackingTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_table_max(s : MlensemblestackingTable) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingTable::max(self : MlensemblestackingTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_table_to_string(s : MlensemblestackingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingTable::to_string(self : MlensemblestackingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_stacking_graphn_make(size : Int) -> MlensemblestackingGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_graphn_len(s : MlensemblestackingGraphN) -> Int { s.size }
+pub fn MlensemblestackingGraphN::len(self : MlensemblestackingGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_graphn_get(s : MlensemblestackingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingGraphN::get(self : MlensemblestackingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_graphn_set(s : MlensemblestackingGraphN, i : Int, v : Double) -> MlensemblestackingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingGraphN::set(self : MlensemblestackingGraphN, i : Int, v : Double) -> MlensemblestackingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_graphn_sum(s : MlensemblestackingGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingGraphN::sum(self : MlensemblestackingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_graphn_mean(s : MlensemblestackingGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingGraphN::mean(self : MlensemblestackingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_graphn_scale(s : MlensemblestackingGraphN, f : Double) -> MlensemblestackingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingGraphN::scale(self : MlensemblestackingGraphN, f : Double) -> MlensemblestackingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_graphn_add(a : MlensemblestackingGraphN, b : MlensemblestackingGraphN) -> MlensemblestackingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingGraphN::add(self : MlensemblestackingGraphN, other : MlensemblestackingGraphN) -> MlensemblestackingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_graphn_copy(s : MlensemblestackingGraphN) -> MlensemblestackingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingGraphN::copy(self : MlensemblestackingGraphN) -> MlensemblestackingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_graphn_fill(s : MlensemblestackingGraphN, v : Double) -> MlensemblestackingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingGraphN::fill(self : MlensemblestackingGraphN, v : Double) -> MlensemblestackingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_graphn_min(s : MlensemblestackingGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingGraphN::min(self : MlensemblestackingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_graphn_max(s : MlensemblestackingGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingGraphN::max(self : MlensemblestackingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_graphn_to_string(s : MlensemblestackingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingGraphN::to_string(self : MlensemblestackingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_stacking_node_make(size : Int) -> MlensemblestackingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_node_len(s : MlensemblestackingNode) -> Int { s.size }
+pub fn MlensemblestackingNode::len(self : MlensemblestackingNode) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_node_get(s : MlensemblestackingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingNode::get(self : MlensemblestackingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_node_set(s : MlensemblestackingNode, i : Int, v : Double) -> MlensemblestackingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingNode::set(self : MlensemblestackingNode, i : Int, v : Double) -> MlensemblestackingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_node_sum(s : MlensemblestackingNode) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingNode::sum(self : MlensemblestackingNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_node_mean(s : MlensemblestackingNode) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingNode::mean(self : MlensemblestackingNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_node_scale(s : MlensemblestackingNode, f : Double) -> MlensemblestackingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingNode::scale(self : MlensemblestackingNode, f : Double) -> MlensemblestackingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_node_add(a : MlensemblestackingNode, b : MlensemblestackingNode) -> MlensemblestackingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingNode::add(self : MlensemblestackingNode, other : MlensemblestackingNode) -> MlensemblestackingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_node_copy(s : MlensemblestackingNode) -> MlensemblestackingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingNode::copy(self : MlensemblestackingNode) -> MlensemblestackingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_node_fill(s : MlensemblestackingNode, v : Double) -> MlensemblestackingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingNode::fill(self : MlensemblestackingNode, v : Double) -> MlensemblestackingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_node_min(s : MlensemblestackingNode) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingNode::min(self : MlensemblestackingNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_node_max(s : MlensemblestackingNode) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingNode::max(self : MlensemblestackingNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_node_to_string(s : MlensemblestackingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingNode::to_string(self : MlensemblestackingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_stacking_edge_make(size : Int) -> MlensemblestackingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_edge_len(s : MlensemblestackingEdge) -> Int { s.size }
+pub fn MlensemblestackingEdge::len(self : MlensemblestackingEdge) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_edge_get(s : MlensemblestackingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingEdge::get(self : MlensemblestackingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_edge_set(s : MlensemblestackingEdge, i : Int, v : Double) -> MlensemblestackingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingEdge::set(self : MlensemblestackingEdge, i : Int, v : Double) -> MlensemblestackingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_edge_sum(s : MlensemblestackingEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingEdge::sum(self : MlensemblestackingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_edge_mean(s : MlensemblestackingEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingEdge::mean(self : MlensemblestackingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_edge_scale(s : MlensemblestackingEdge, f : Double) -> MlensemblestackingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingEdge::scale(self : MlensemblestackingEdge, f : Double) -> MlensemblestackingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_edge_add(a : MlensemblestackingEdge, b : MlensemblestackingEdge) -> MlensemblestackingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingEdge::add(self : MlensemblestackingEdge, other : MlensemblestackingEdge) -> MlensemblestackingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_edge_copy(s : MlensemblestackingEdge) -> MlensemblestackingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingEdge::copy(self : MlensemblestackingEdge) -> MlensemblestackingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_edge_fill(s : MlensemblestackingEdge, v : Double) -> MlensemblestackingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingEdge::fill(self : MlensemblestackingEdge, v : Double) -> MlensemblestackingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_edge_min(s : MlensemblestackingEdge) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingEdge::min(self : MlensemblestackingEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_edge_max(s : MlensemblestackingEdge) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingEdge::max(self : MlensemblestackingEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_edge_to_string(s : MlensemblestackingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingEdge::to_string(self : MlensemblestackingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_stacking_path_make(size : Int) -> MlensemblestackingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_path_len(s : MlensemblestackingPath) -> Int { s.size }
+pub fn MlensemblestackingPath::len(self : MlensemblestackingPath) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_path_get(s : MlensemblestackingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingPath::get(self : MlensemblestackingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_path_set(s : MlensemblestackingPath, i : Int, v : Double) -> MlensemblestackingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingPath::set(self : MlensemblestackingPath, i : Int, v : Double) -> MlensemblestackingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_path_sum(s : MlensemblestackingPath) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingPath::sum(self : MlensemblestackingPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_path_mean(s : MlensemblestackingPath) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingPath::mean(self : MlensemblestackingPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_path_scale(s : MlensemblestackingPath, f : Double) -> MlensemblestackingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingPath::scale(self : MlensemblestackingPath, f : Double) -> MlensemblestackingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_path_add(a : MlensemblestackingPath, b : MlensemblestackingPath) -> MlensemblestackingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingPath::add(self : MlensemblestackingPath, other : MlensemblestackingPath) -> MlensemblestackingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_path_copy(s : MlensemblestackingPath) -> MlensemblestackingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingPath::copy(self : MlensemblestackingPath) -> MlensemblestackingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_path_fill(s : MlensemblestackingPath, v : Double) -> MlensemblestackingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingPath::fill(self : MlensemblestackingPath, v : Double) -> MlensemblestackingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_path_min(s : MlensemblestackingPath) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingPath::min(self : MlensemblestackingPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_path_max(s : MlensemblestackingPath) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingPath::max(self : MlensemblestackingPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_path_to_string(s : MlensemblestackingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingPath::to_string(self : MlensemblestackingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_stacking_cluster_make(size : Int) -> MlensemblestackingCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_cluster_len(s : MlensemblestackingCluster) -> Int { s.size }
+pub fn MlensemblestackingCluster::len(self : MlensemblestackingCluster) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_cluster_get(s : MlensemblestackingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingCluster::get(self : MlensemblestackingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_cluster_set(s : MlensemblestackingCluster, i : Int, v : Double) -> MlensemblestackingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingCluster::set(self : MlensemblestackingCluster, i : Int, v : Double) -> MlensemblestackingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cluster_sum(s : MlensemblestackingCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingCluster::sum(self : MlensemblestackingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_cluster_mean(s : MlensemblestackingCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingCluster::mean(self : MlensemblestackingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_cluster_scale(s : MlensemblestackingCluster, f : Double) -> MlensemblestackingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingCluster::scale(self : MlensemblestackingCluster, f : Double) -> MlensemblestackingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cluster_add(a : MlensemblestackingCluster, b : MlensemblestackingCluster) -> MlensemblestackingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingCluster::add(self : MlensemblestackingCluster, other : MlensemblestackingCluster) -> MlensemblestackingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cluster_copy(s : MlensemblestackingCluster) -> MlensemblestackingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingCluster::copy(self : MlensemblestackingCluster) -> MlensemblestackingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cluster_fill(s : MlensemblestackingCluster, v : Double) -> MlensemblestackingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingCluster::fill(self : MlensemblestackingCluster, v : Double) -> MlensemblestackingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cluster_min(s : MlensemblestackingCluster) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingCluster::min(self : MlensemblestackingCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_cluster_max(s : MlensemblestackingCluster) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingCluster::max(self : MlensemblestackingCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_cluster_to_string(s : MlensemblestackingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingCluster::to_string(self : MlensemblestackingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_stacking_model_make(size : Int) -> MlensemblestackingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_model_len(s : MlensemblestackingModel) -> Int { s.size }
+pub fn MlensemblestackingModel::len(self : MlensemblestackingModel) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_model_get(s : MlensemblestackingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingModel::get(self : MlensemblestackingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_model_set(s : MlensemblestackingModel, i : Int, v : Double) -> MlensemblestackingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingModel::set(self : MlensemblestackingModel, i : Int, v : Double) -> MlensemblestackingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_model_sum(s : MlensemblestackingModel) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingModel::sum(self : MlensemblestackingModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_model_mean(s : MlensemblestackingModel) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingModel::mean(self : MlensemblestackingModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_model_scale(s : MlensemblestackingModel, f : Double) -> MlensemblestackingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingModel::scale(self : MlensemblestackingModel, f : Double) -> MlensemblestackingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_model_add(a : MlensemblestackingModel, b : MlensemblestackingModel) -> MlensemblestackingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingModel::add(self : MlensemblestackingModel, other : MlensemblestackingModel) -> MlensemblestackingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_model_copy(s : MlensemblestackingModel) -> MlensemblestackingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingModel::copy(self : MlensemblestackingModel) -> MlensemblestackingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_model_fill(s : MlensemblestackingModel, v : Double) -> MlensemblestackingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingModel::fill(self : MlensemblestackingModel, v : Double) -> MlensemblestackingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_model_min(s : MlensemblestackingModel) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingModel::min(self : MlensemblestackingModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_model_max(s : MlensemblestackingModel) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingModel::max(self : MlensemblestackingModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_model_to_string(s : MlensemblestackingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingModel::to_string(self : MlensemblestackingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_stacking_layer_make(size : Int) -> MlensemblestackingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_layer_len(s : MlensemblestackingLayer) -> Int { s.size }
+pub fn MlensemblestackingLayer::len(self : MlensemblestackingLayer) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_layer_get(s : MlensemblestackingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingLayer::get(self : MlensemblestackingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_layer_set(s : MlensemblestackingLayer, i : Int, v : Double) -> MlensemblestackingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingLayer::set(self : MlensemblestackingLayer, i : Int, v : Double) -> MlensemblestackingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_layer_sum(s : MlensemblestackingLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingLayer::sum(self : MlensemblestackingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_layer_mean(s : MlensemblestackingLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingLayer::mean(self : MlensemblestackingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_layer_scale(s : MlensemblestackingLayer, f : Double) -> MlensemblestackingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingLayer::scale(self : MlensemblestackingLayer, f : Double) -> MlensemblestackingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_layer_add(a : MlensemblestackingLayer, b : MlensemblestackingLayer) -> MlensemblestackingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingLayer::add(self : MlensemblestackingLayer, other : MlensemblestackingLayer) -> MlensemblestackingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_layer_copy(s : MlensemblestackingLayer) -> MlensemblestackingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingLayer::copy(self : MlensemblestackingLayer) -> MlensemblestackingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_layer_fill(s : MlensemblestackingLayer, v : Double) -> MlensemblestackingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingLayer::fill(self : MlensemblestackingLayer, v : Double) -> MlensemblestackingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_layer_min(s : MlensemblestackingLayer) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingLayer::min(self : MlensemblestackingLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_layer_max(s : MlensemblestackingLayer) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingLayer::max(self : MlensemblestackingLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_layer_to_string(s : MlensemblestackingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingLayer::to_string(self : MlensemblestackingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_stacking_buffer_make(size : Int) -> MlensemblestackingBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_buffer_len(s : MlensemblestackingBuffer) -> Int { s.size }
+pub fn MlensemblestackingBuffer::len(self : MlensemblestackingBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_buffer_get(s : MlensemblestackingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingBuffer::get(self : MlensemblestackingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_buffer_set(s : MlensemblestackingBuffer, i : Int, v : Double) -> MlensemblestackingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingBuffer::set(self : MlensemblestackingBuffer, i : Int, v : Double) -> MlensemblestackingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_buffer_sum(s : MlensemblestackingBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingBuffer::sum(self : MlensemblestackingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_buffer_mean(s : MlensemblestackingBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingBuffer::mean(self : MlensemblestackingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_buffer_scale(s : MlensemblestackingBuffer, f : Double) -> MlensemblestackingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingBuffer::scale(self : MlensemblestackingBuffer, f : Double) -> MlensemblestackingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_buffer_add(a : MlensemblestackingBuffer, b : MlensemblestackingBuffer) -> MlensemblestackingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingBuffer::add(self : MlensemblestackingBuffer, other : MlensemblestackingBuffer) -> MlensemblestackingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_buffer_copy(s : MlensemblestackingBuffer) -> MlensemblestackingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingBuffer::copy(self : MlensemblestackingBuffer) -> MlensemblestackingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_buffer_fill(s : MlensemblestackingBuffer, v : Double) -> MlensemblestackingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingBuffer::fill(self : MlensemblestackingBuffer, v : Double) -> MlensemblestackingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_buffer_min(s : MlensemblestackingBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingBuffer::min(self : MlensemblestackingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_buffer_max(s : MlensemblestackingBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingBuffer::max(self : MlensemblestackingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_buffer_to_string(s : MlensemblestackingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingBuffer::to_string(self : MlensemblestackingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_stacking_cursor_make(size : Int) -> MlensemblestackingCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_cursor_len(s : MlensemblestackingCursor) -> Int { s.size }
+pub fn MlensemblestackingCursor::len(self : MlensemblestackingCursor) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_cursor_get(s : MlensemblestackingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingCursor::get(self : MlensemblestackingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_cursor_set(s : MlensemblestackingCursor, i : Int, v : Double) -> MlensemblestackingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingCursor::set(self : MlensemblestackingCursor, i : Int, v : Double) -> MlensemblestackingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cursor_sum(s : MlensemblestackingCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingCursor::sum(self : MlensemblestackingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_cursor_mean(s : MlensemblestackingCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingCursor::mean(self : MlensemblestackingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_cursor_scale(s : MlensemblestackingCursor, f : Double) -> MlensemblestackingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingCursor::scale(self : MlensemblestackingCursor, f : Double) -> MlensemblestackingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cursor_add(a : MlensemblestackingCursor, b : MlensemblestackingCursor) -> MlensemblestackingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingCursor::add(self : MlensemblestackingCursor, other : MlensemblestackingCursor) -> MlensemblestackingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cursor_copy(s : MlensemblestackingCursor) -> MlensemblestackingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingCursor::copy(self : MlensemblestackingCursor) -> MlensemblestackingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cursor_fill(s : MlensemblestackingCursor, v : Double) -> MlensemblestackingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingCursor::fill(self : MlensemblestackingCursor, v : Double) -> MlensemblestackingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_cursor_min(s : MlensemblestackingCursor) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingCursor::min(self : MlensemblestackingCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_cursor_max(s : MlensemblestackingCursor) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingCursor::max(self : MlensemblestackingCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_cursor_to_string(s : MlensemblestackingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingCursor::to_string(self : MlensemblestackingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_stacking_view_make(size : Int) -> MlensemblestackingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_view_len(s : MlensemblestackingView) -> Int { s.size }
+pub fn MlensemblestackingView::len(self : MlensemblestackingView) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_view_get(s : MlensemblestackingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingView::get(self : MlensemblestackingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_view_set(s : MlensemblestackingView, i : Int, v : Double) -> MlensemblestackingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingView::set(self : MlensemblestackingView, i : Int, v : Double) -> MlensemblestackingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_view_sum(s : MlensemblestackingView) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingView::sum(self : MlensemblestackingView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_view_mean(s : MlensemblestackingView) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingView::mean(self : MlensemblestackingView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_view_scale(s : MlensemblestackingView, f : Double) -> MlensemblestackingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingView::scale(self : MlensemblestackingView, f : Double) -> MlensemblestackingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_view_add(a : MlensemblestackingView, b : MlensemblestackingView) -> MlensemblestackingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingView::add(self : MlensemblestackingView, other : MlensemblestackingView) -> MlensemblestackingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_view_copy(s : MlensemblestackingView) -> MlensemblestackingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingView::copy(self : MlensemblestackingView) -> MlensemblestackingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_view_fill(s : MlensemblestackingView, v : Double) -> MlensemblestackingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingView::fill(self : MlensemblestackingView, v : Double) -> MlensemblestackingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_view_min(s : MlensemblestackingView) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingView::min(self : MlensemblestackingView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_view_max(s : MlensemblestackingView) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingView::max(self : MlensemblestackingView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_view_to_string(s : MlensemblestackingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingView::to_string(self : MlensemblestackingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_stacking_range_make(size : Int) -> MlensemblestackingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_range_len(s : MlensemblestackingRange) -> Int { s.size }
+pub fn MlensemblestackingRange::len(self : MlensemblestackingRange) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_range_get(s : MlensemblestackingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingRange::get(self : MlensemblestackingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_range_set(s : MlensemblestackingRange, i : Int, v : Double) -> MlensemblestackingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingRange::set(self : MlensemblestackingRange, i : Int, v : Double) -> MlensemblestackingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_range_sum(s : MlensemblestackingRange) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingRange::sum(self : MlensemblestackingRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_range_mean(s : MlensemblestackingRange) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingRange::mean(self : MlensemblestackingRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_range_scale(s : MlensemblestackingRange, f : Double) -> MlensemblestackingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingRange::scale(self : MlensemblestackingRange, f : Double) -> MlensemblestackingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_range_add(a : MlensemblestackingRange, b : MlensemblestackingRange) -> MlensemblestackingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingRange::add(self : MlensemblestackingRange, other : MlensemblestackingRange) -> MlensemblestackingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_range_copy(s : MlensemblestackingRange) -> MlensemblestackingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingRange::copy(self : MlensemblestackingRange) -> MlensemblestackingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_range_fill(s : MlensemblestackingRange, v : Double) -> MlensemblestackingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingRange::fill(self : MlensemblestackingRange, v : Double) -> MlensemblestackingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_range_min(s : MlensemblestackingRange) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingRange::min(self : MlensemblestackingRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_range_max(s : MlensemblestackingRange) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingRange::max(self : MlensemblestackingRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_range_to_string(s : MlensemblestackingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingRange::to_string(self : MlensemblestackingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblestackingSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_stacking_slice_make(size : Int) -> MlensemblestackingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_stacking_slice_len(s : MlensemblestackingSlice) -> Int { s.size }
+pub fn MlensemblestackingSlice::len(self : MlensemblestackingSlice) -> Int { self.size }
 
-pub fn ml_ensemble_stacking_slice_get(s : MlensemblestackingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblestackingSlice::get(self : MlensemblestackingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_stacking_slice_set(s : MlensemblestackingSlice, i : Int, v : Double) -> MlensemblestackingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblestackingSlice::set(self : MlensemblestackingSlice, i : Int, v : Double) -> MlensemblestackingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_slice_sum(s : MlensemblestackingSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensemblestackingSlice::sum(self : MlensemblestackingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_stacking_slice_mean(s : MlensemblestackingSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensemblestackingSlice::mean(self : MlensemblestackingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_stacking_slice_scale(s : MlensemblestackingSlice, f : Double) -> MlensemblestackingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblestackingSlice::scale(self : MlensemblestackingSlice, f : Double) -> MlensemblestackingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_slice_add(a : MlensemblestackingSlice, b : MlensemblestackingSlice) -> MlensemblestackingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblestackingSlice::add(self : MlensemblestackingSlice, other : MlensemblestackingSlice) -> MlensemblestackingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_slice_copy(s : MlensemblestackingSlice) -> MlensemblestackingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblestackingSlice::copy(self : MlensemblestackingSlice) -> MlensemblestackingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_slice_fill(s : MlensemblestackingSlice, v : Double) -> MlensemblestackingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblestackingSlice::fill(self : MlensemblestackingSlice, v : Double) -> MlensemblestackingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_stacking_slice_min(s : MlensemblestackingSlice) -> Double { @_common.min(s.data) }
+pub fn MlensemblestackingSlice::min(self : MlensemblestackingSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_stacking_slice_max(s : MlensemblestackingSlice) -> Double { @_common.max(s.data) }
+pub fn MlensemblestackingSlice::max(self : MlensemblestackingSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_stacking_slice_to_string(s : MlensemblestackingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblestackingSlice::to_string(self : MlensemblestackingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

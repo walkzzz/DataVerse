@@ -351,45 +351,45 @@ pub fn timeseries_winters_frame_make(size : Int) -> TimeserieswintersFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_frame_len(s : TimeserieswintersFrame) -> Int { s.size }
+pub fn TimeserieswintersFrame::len(self : TimeserieswintersFrame) -> Int { self.size }
 
-pub fn timeseries_winters_frame_get(s : TimeserieswintersFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersFrame::get(self : TimeserieswintersFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_frame_set(s : TimeserieswintersFrame, i : Int, v : Double) -> TimeserieswintersFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersFrame::set(self : TimeserieswintersFrame, i : Int, v : Double) -> TimeserieswintersFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_frame_sum(s : TimeserieswintersFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersFrame::sum(self : TimeserieswintersFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_frame_mean(s : TimeserieswintersFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersFrame::mean(self : TimeserieswintersFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_frame_scale(s : TimeserieswintersFrame, f : Double) -> TimeserieswintersFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersFrame::scale(self : TimeserieswintersFrame, f : Double) -> TimeserieswintersFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_frame_add(a : TimeserieswintersFrame, b : TimeserieswintersFrame) -> TimeserieswintersFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersFrame::add(self : TimeserieswintersFrame, other : TimeserieswintersFrame) -> TimeserieswintersFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_frame_copy(s : TimeserieswintersFrame) -> TimeserieswintersFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersFrame::copy(self : TimeserieswintersFrame) -> TimeserieswintersFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_frame_fill(s : TimeserieswintersFrame, v : Double) -> TimeserieswintersFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersFrame::fill(self : TimeserieswintersFrame, v : Double) -> TimeserieswintersFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_frame_min(s : TimeserieswintersFrame) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersFrame::min(self : TimeserieswintersFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_frame_max(s : TimeserieswintersFrame) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersFrame::max(self : TimeserieswintersFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_frame_to_string(s : TimeserieswintersFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersFrame::to_string(self : TimeserieswintersFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersTable {
@@ -402,45 +402,45 @@ pub fn timeseries_winters_table_make(size : Int) -> TimeserieswintersTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_table_len(s : TimeserieswintersTable) -> Int { s.size }
+pub fn TimeserieswintersTable::len(self : TimeserieswintersTable) -> Int { self.size }
 
-pub fn timeseries_winters_table_get(s : TimeserieswintersTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersTable::get(self : TimeserieswintersTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_table_set(s : TimeserieswintersTable, i : Int, v : Double) -> TimeserieswintersTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersTable::set(self : TimeserieswintersTable, i : Int, v : Double) -> TimeserieswintersTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_table_sum(s : TimeserieswintersTable) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersTable::sum(self : TimeserieswintersTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_table_mean(s : TimeserieswintersTable) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersTable::mean(self : TimeserieswintersTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_table_scale(s : TimeserieswintersTable, f : Double) -> TimeserieswintersTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersTable::scale(self : TimeserieswintersTable, f : Double) -> TimeserieswintersTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_table_add(a : TimeserieswintersTable, b : TimeserieswintersTable) -> TimeserieswintersTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersTable::add(self : TimeserieswintersTable, other : TimeserieswintersTable) -> TimeserieswintersTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_table_copy(s : TimeserieswintersTable) -> TimeserieswintersTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersTable::copy(self : TimeserieswintersTable) -> TimeserieswintersTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_table_fill(s : TimeserieswintersTable, v : Double) -> TimeserieswintersTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersTable::fill(self : TimeserieswintersTable, v : Double) -> TimeserieswintersTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_table_min(s : TimeserieswintersTable) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersTable::min(self : TimeserieswintersTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_table_max(s : TimeserieswintersTable) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersTable::max(self : TimeserieswintersTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_table_to_string(s : TimeserieswintersTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersTable::to_string(self : TimeserieswintersTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_winters_graphn_make(size : Int) -> TimeserieswintersGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_graphn_len(s : TimeserieswintersGraphN) -> Int { s.size }
+pub fn TimeserieswintersGraphN::len(self : TimeserieswintersGraphN) -> Int { self.size }
 
-pub fn timeseries_winters_graphn_get(s : TimeserieswintersGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersGraphN::get(self : TimeserieswintersGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_graphn_set(s : TimeserieswintersGraphN, i : Int, v : Double) -> TimeserieswintersGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersGraphN::set(self : TimeserieswintersGraphN, i : Int, v : Double) -> TimeserieswintersGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_graphn_sum(s : TimeserieswintersGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersGraphN::sum(self : TimeserieswintersGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_graphn_mean(s : TimeserieswintersGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersGraphN::mean(self : TimeserieswintersGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_graphn_scale(s : TimeserieswintersGraphN, f : Double) -> TimeserieswintersGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersGraphN::scale(self : TimeserieswintersGraphN, f : Double) -> TimeserieswintersGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_graphn_add(a : TimeserieswintersGraphN, b : TimeserieswintersGraphN) -> TimeserieswintersGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersGraphN::add(self : TimeserieswintersGraphN, other : TimeserieswintersGraphN) -> TimeserieswintersGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_graphn_copy(s : TimeserieswintersGraphN) -> TimeserieswintersGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersGraphN::copy(self : TimeserieswintersGraphN) -> TimeserieswintersGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_graphn_fill(s : TimeserieswintersGraphN, v : Double) -> TimeserieswintersGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersGraphN::fill(self : TimeserieswintersGraphN, v : Double) -> TimeserieswintersGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_graphn_min(s : TimeserieswintersGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersGraphN::min(self : TimeserieswintersGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_graphn_max(s : TimeserieswintersGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersGraphN::max(self : TimeserieswintersGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_graphn_to_string(s : TimeserieswintersGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersGraphN::to_string(self : TimeserieswintersGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersNode {
@@ -504,45 +504,45 @@ pub fn timeseries_winters_node_make(size : Int) -> TimeserieswintersNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_node_len(s : TimeserieswintersNode) -> Int { s.size }
+pub fn TimeserieswintersNode::len(self : TimeserieswintersNode) -> Int { self.size }
 
-pub fn timeseries_winters_node_get(s : TimeserieswintersNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersNode::get(self : TimeserieswintersNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_node_set(s : TimeserieswintersNode, i : Int, v : Double) -> TimeserieswintersNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersNode::set(self : TimeserieswintersNode, i : Int, v : Double) -> TimeserieswintersNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_node_sum(s : TimeserieswintersNode) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersNode::sum(self : TimeserieswintersNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_node_mean(s : TimeserieswintersNode) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersNode::mean(self : TimeserieswintersNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_node_scale(s : TimeserieswintersNode, f : Double) -> TimeserieswintersNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersNode::scale(self : TimeserieswintersNode, f : Double) -> TimeserieswintersNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_node_add(a : TimeserieswintersNode, b : TimeserieswintersNode) -> TimeserieswintersNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersNode::add(self : TimeserieswintersNode, other : TimeserieswintersNode) -> TimeserieswintersNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_node_copy(s : TimeserieswintersNode) -> TimeserieswintersNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersNode::copy(self : TimeserieswintersNode) -> TimeserieswintersNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_node_fill(s : TimeserieswintersNode, v : Double) -> TimeserieswintersNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersNode::fill(self : TimeserieswintersNode, v : Double) -> TimeserieswintersNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_node_min(s : TimeserieswintersNode) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersNode::min(self : TimeserieswintersNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_node_max(s : TimeserieswintersNode) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersNode::max(self : TimeserieswintersNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_node_to_string(s : TimeserieswintersNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersNode::to_string(self : TimeserieswintersNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_winters_edge_make(size : Int) -> TimeserieswintersEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_edge_len(s : TimeserieswintersEdge) -> Int { s.size }
+pub fn TimeserieswintersEdge::len(self : TimeserieswintersEdge) -> Int { self.size }
 
-pub fn timeseries_winters_edge_get(s : TimeserieswintersEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersEdge::get(self : TimeserieswintersEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_edge_set(s : TimeserieswintersEdge, i : Int, v : Double) -> TimeserieswintersEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersEdge::set(self : TimeserieswintersEdge, i : Int, v : Double) -> TimeserieswintersEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_edge_sum(s : TimeserieswintersEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersEdge::sum(self : TimeserieswintersEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_edge_mean(s : TimeserieswintersEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersEdge::mean(self : TimeserieswintersEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_edge_scale(s : TimeserieswintersEdge, f : Double) -> TimeserieswintersEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersEdge::scale(self : TimeserieswintersEdge, f : Double) -> TimeserieswintersEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_edge_add(a : TimeserieswintersEdge, b : TimeserieswintersEdge) -> TimeserieswintersEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersEdge::add(self : TimeserieswintersEdge, other : TimeserieswintersEdge) -> TimeserieswintersEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_edge_copy(s : TimeserieswintersEdge) -> TimeserieswintersEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersEdge::copy(self : TimeserieswintersEdge) -> TimeserieswintersEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_edge_fill(s : TimeserieswintersEdge, v : Double) -> TimeserieswintersEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersEdge::fill(self : TimeserieswintersEdge, v : Double) -> TimeserieswintersEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_edge_min(s : TimeserieswintersEdge) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersEdge::min(self : TimeserieswintersEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_edge_max(s : TimeserieswintersEdge) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersEdge::max(self : TimeserieswintersEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_edge_to_string(s : TimeserieswintersEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersEdge::to_string(self : TimeserieswintersEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersPath {
@@ -606,45 +606,45 @@ pub fn timeseries_winters_path_make(size : Int) -> TimeserieswintersPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_path_len(s : TimeserieswintersPath) -> Int { s.size }
+pub fn TimeserieswintersPath::len(self : TimeserieswintersPath) -> Int { self.size }
 
-pub fn timeseries_winters_path_get(s : TimeserieswintersPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersPath::get(self : TimeserieswintersPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_path_set(s : TimeserieswintersPath, i : Int, v : Double) -> TimeserieswintersPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersPath::set(self : TimeserieswintersPath, i : Int, v : Double) -> TimeserieswintersPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_path_sum(s : TimeserieswintersPath) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersPath::sum(self : TimeserieswintersPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_path_mean(s : TimeserieswintersPath) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersPath::mean(self : TimeserieswintersPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_path_scale(s : TimeserieswintersPath, f : Double) -> TimeserieswintersPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersPath::scale(self : TimeserieswintersPath, f : Double) -> TimeserieswintersPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_path_add(a : TimeserieswintersPath, b : TimeserieswintersPath) -> TimeserieswintersPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersPath::add(self : TimeserieswintersPath, other : TimeserieswintersPath) -> TimeserieswintersPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_path_copy(s : TimeserieswintersPath) -> TimeserieswintersPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersPath::copy(self : TimeserieswintersPath) -> TimeserieswintersPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_path_fill(s : TimeserieswintersPath, v : Double) -> TimeserieswintersPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersPath::fill(self : TimeserieswintersPath, v : Double) -> TimeserieswintersPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_path_min(s : TimeserieswintersPath) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersPath::min(self : TimeserieswintersPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_path_max(s : TimeserieswintersPath) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersPath::max(self : TimeserieswintersPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_path_to_string(s : TimeserieswintersPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersPath::to_string(self : TimeserieswintersPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_winters_cluster_make(size : Int) -> TimeserieswintersCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_cluster_len(s : TimeserieswintersCluster) -> Int { s.size }
+pub fn TimeserieswintersCluster::len(self : TimeserieswintersCluster) -> Int { self.size }
 
-pub fn timeseries_winters_cluster_get(s : TimeserieswintersCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersCluster::get(self : TimeserieswintersCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_cluster_set(s : TimeserieswintersCluster, i : Int, v : Double) -> TimeserieswintersCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersCluster::set(self : TimeserieswintersCluster, i : Int, v : Double) -> TimeserieswintersCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cluster_sum(s : TimeserieswintersCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersCluster::sum(self : TimeserieswintersCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_cluster_mean(s : TimeserieswintersCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersCluster::mean(self : TimeserieswintersCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_cluster_scale(s : TimeserieswintersCluster, f : Double) -> TimeserieswintersCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersCluster::scale(self : TimeserieswintersCluster, f : Double) -> TimeserieswintersCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cluster_add(a : TimeserieswintersCluster, b : TimeserieswintersCluster) -> TimeserieswintersCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersCluster::add(self : TimeserieswintersCluster, other : TimeserieswintersCluster) -> TimeserieswintersCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_cluster_copy(s : TimeserieswintersCluster) -> TimeserieswintersCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersCluster::copy(self : TimeserieswintersCluster) -> TimeserieswintersCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cluster_fill(s : TimeserieswintersCluster, v : Double) -> TimeserieswintersCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersCluster::fill(self : TimeserieswintersCluster, v : Double) -> TimeserieswintersCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cluster_min(s : TimeserieswintersCluster) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersCluster::min(self : TimeserieswintersCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_cluster_max(s : TimeserieswintersCluster) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersCluster::max(self : TimeserieswintersCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_cluster_to_string(s : TimeserieswintersCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersCluster::to_string(self : TimeserieswintersCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersModel {
@@ -708,45 +708,45 @@ pub fn timeseries_winters_model_make(size : Int) -> TimeserieswintersModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_model_len(s : TimeserieswintersModel) -> Int { s.size }
+pub fn TimeserieswintersModel::len(self : TimeserieswintersModel) -> Int { self.size }
 
-pub fn timeseries_winters_model_get(s : TimeserieswintersModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersModel::get(self : TimeserieswintersModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_model_set(s : TimeserieswintersModel, i : Int, v : Double) -> TimeserieswintersModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersModel::set(self : TimeserieswintersModel, i : Int, v : Double) -> TimeserieswintersModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_model_sum(s : TimeserieswintersModel) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersModel::sum(self : TimeserieswintersModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_model_mean(s : TimeserieswintersModel) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersModel::mean(self : TimeserieswintersModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_model_scale(s : TimeserieswintersModel, f : Double) -> TimeserieswintersModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersModel::scale(self : TimeserieswintersModel, f : Double) -> TimeserieswintersModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_model_add(a : TimeserieswintersModel, b : TimeserieswintersModel) -> TimeserieswintersModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersModel::add(self : TimeserieswintersModel, other : TimeserieswintersModel) -> TimeserieswintersModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_model_copy(s : TimeserieswintersModel) -> TimeserieswintersModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersModel::copy(self : TimeserieswintersModel) -> TimeserieswintersModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_model_fill(s : TimeserieswintersModel, v : Double) -> TimeserieswintersModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersModel::fill(self : TimeserieswintersModel, v : Double) -> TimeserieswintersModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_model_min(s : TimeserieswintersModel) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersModel::min(self : TimeserieswintersModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_model_max(s : TimeserieswintersModel) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersModel::max(self : TimeserieswintersModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_model_to_string(s : TimeserieswintersModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersModel::to_string(self : TimeserieswintersModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_winters_layer_make(size : Int) -> TimeserieswintersLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_layer_len(s : TimeserieswintersLayer) -> Int { s.size }
+pub fn TimeserieswintersLayer::len(self : TimeserieswintersLayer) -> Int { self.size }
 
-pub fn timeseries_winters_layer_get(s : TimeserieswintersLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersLayer::get(self : TimeserieswintersLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_layer_set(s : TimeserieswintersLayer, i : Int, v : Double) -> TimeserieswintersLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersLayer::set(self : TimeserieswintersLayer, i : Int, v : Double) -> TimeserieswintersLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_layer_sum(s : TimeserieswintersLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersLayer::sum(self : TimeserieswintersLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_layer_mean(s : TimeserieswintersLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersLayer::mean(self : TimeserieswintersLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_layer_scale(s : TimeserieswintersLayer, f : Double) -> TimeserieswintersLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersLayer::scale(self : TimeserieswintersLayer, f : Double) -> TimeserieswintersLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_layer_add(a : TimeserieswintersLayer, b : TimeserieswintersLayer) -> TimeserieswintersLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersLayer::add(self : TimeserieswintersLayer, other : TimeserieswintersLayer) -> TimeserieswintersLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_layer_copy(s : TimeserieswintersLayer) -> TimeserieswintersLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersLayer::copy(self : TimeserieswintersLayer) -> TimeserieswintersLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_layer_fill(s : TimeserieswintersLayer, v : Double) -> TimeserieswintersLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersLayer::fill(self : TimeserieswintersLayer, v : Double) -> TimeserieswintersLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_layer_min(s : TimeserieswintersLayer) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersLayer::min(self : TimeserieswintersLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_layer_max(s : TimeserieswintersLayer) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersLayer::max(self : TimeserieswintersLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_layer_to_string(s : TimeserieswintersLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersLayer::to_string(self : TimeserieswintersLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_winters_buffer_make(size : Int) -> TimeserieswintersBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_buffer_len(s : TimeserieswintersBuffer) -> Int { s.size }
+pub fn TimeserieswintersBuffer::len(self : TimeserieswintersBuffer) -> Int { self.size }
 
-pub fn timeseries_winters_buffer_get(s : TimeserieswintersBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersBuffer::get(self : TimeserieswintersBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_buffer_set(s : TimeserieswintersBuffer, i : Int, v : Double) -> TimeserieswintersBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersBuffer::set(self : TimeserieswintersBuffer, i : Int, v : Double) -> TimeserieswintersBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_buffer_sum(s : TimeserieswintersBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersBuffer::sum(self : TimeserieswintersBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_buffer_mean(s : TimeserieswintersBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersBuffer::mean(self : TimeserieswintersBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_buffer_scale(s : TimeserieswintersBuffer, f : Double) -> TimeserieswintersBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersBuffer::scale(self : TimeserieswintersBuffer, f : Double) -> TimeserieswintersBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_buffer_add(a : TimeserieswintersBuffer, b : TimeserieswintersBuffer) -> TimeserieswintersBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersBuffer::add(self : TimeserieswintersBuffer, other : TimeserieswintersBuffer) -> TimeserieswintersBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_buffer_copy(s : TimeserieswintersBuffer) -> TimeserieswintersBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersBuffer::copy(self : TimeserieswintersBuffer) -> TimeserieswintersBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_buffer_fill(s : TimeserieswintersBuffer, v : Double) -> TimeserieswintersBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersBuffer::fill(self : TimeserieswintersBuffer, v : Double) -> TimeserieswintersBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_buffer_min(s : TimeserieswintersBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersBuffer::min(self : TimeserieswintersBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_buffer_max(s : TimeserieswintersBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersBuffer::max(self : TimeserieswintersBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_buffer_to_string(s : TimeserieswintersBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersBuffer::to_string(self : TimeserieswintersBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_winters_cursor_make(size : Int) -> TimeserieswintersCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_cursor_len(s : TimeserieswintersCursor) -> Int { s.size }
+pub fn TimeserieswintersCursor::len(self : TimeserieswintersCursor) -> Int { self.size }
 
-pub fn timeseries_winters_cursor_get(s : TimeserieswintersCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersCursor::get(self : TimeserieswintersCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_cursor_set(s : TimeserieswintersCursor, i : Int, v : Double) -> TimeserieswintersCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersCursor::set(self : TimeserieswintersCursor, i : Int, v : Double) -> TimeserieswintersCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cursor_sum(s : TimeserieswintersCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersCursor::sum(self : TimeserieswintersCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_cursor_mean(s : TimeserieswintersCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersCursor::mean(self : TimeserieswintersCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_cursor_scale(s : TimeserieswintersCursor, f : Double) -> TimeserieswintersCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersCursor::scale(self : TimeserieswintersCursor, f : Double) -> TimeserieswintersCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cursor_add(a : TimeserieswintersCursor, b : TimeserieswintersCursor) -> TimeserieswintersCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersCursor::add(self : TimeserieswintersCursor, other : TimeserieswintersCursor) -> TimeserieswintersCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_cursor_copy(s : TimeserieswintersCursor) -> TimeserieswintersCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersCursor::copy(self : TimeserieswintersCursor) -> TimeserieswintersCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cursor_fill(s : TimeserieswintersCursor, v : Double) -> TimeserieswintersCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersCursor::fill(self : TimeserieswintersCursor, v : Double) -> TimeserieswintersCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_cursor_min(s : TimeserieswintersCursor) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersCursor::min(self : TimeserieswintersCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_cursor_max(s : TimeserieswintersCursor) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersCursor::max(self : TimeserieswintersCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_cursor_to_string(s : TimeserieswintersCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersCursor::to_string(self : TimeserieswintersCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersView {
@@ -912,45 +912,45 @@ pub fn timeseries_winters_view_make(size : Int) -> TimeserieswintersView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_view_len(s : TimeserieswintersView) -> Int { s.size }
+pub fn TimeserieswintersView::len(self : TimeserieswintersView) -> Int { self.size }
 
-pub fn timeseries_winters_view_get(s : TimeserieswintersView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersView::get(self : TimeserieswintersView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_view_set(s : TimeserieswintersView, i : Int, v : Double) -> TimeserieswintersView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersView::set(self : TimeserieswintersView, i : Int, v : Double) -> TimeserieswintersView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_view_sum(s : TimeserieswintersView) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersView::sum(self : TimeserieswintersView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_view_mean(s : TimeserieswintersView) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersView::mean(self : TimeserieswintersView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_view_scale(s : TimeserieswintersView, f : Double) -> TimeserieswintersView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersView::scale(self : TimeserieswintersView, f : Double) -> TimeserieswintersView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_view_add(a : TimeserieswintersView, b : TimeserieswintersView) -> TimeserieswintersView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersView::add(self : TimeserieswintersView, other : TimeserieswintersView) -> TimeserieswintersView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_view_copy(s : TimeserieswintersView) -> TimeserieswintersView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersView::copy(self : TimeserieswintersView) -> TimeserieswintersView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_view_fill(s : TimeserieswintersView, v : Double) -> TimeserieswintersView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersView::fill(self : TimeserieswintersView, v : Double) -> TimeserieswintersView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_view_min(s : TimeserieswintersView) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersView::min(self : TimeserieswintersView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_view_max(s : TimeserieswintersView) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersView::max(self : TimeserieswintersView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_view_to_string(s : TimeserieswintersView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersView::to_string(self : TimeserieswintersView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersRange {
@@ -963,45 +963,45 @@ pub fn timeseries_winters_range_make(size : Int) -> TimeserieswintersRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_range_len(s : TimeserieswintersRange) -> Int { s.size }
+pub fn TimeserieswintersRange::len(self : TimeserieswintersRange) -> Int { self.size }
 
-pub fn timeseries_winters_range_get(s : TimeserieswintersRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersRange::get(self : TimeserieswintersRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_range_set(s : TimeserieswintersRange, i : Int, v : Double) -> TimeserieswintersRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersRange::set(self : TimeserieswintersRange, i : Int, v : Double) -> TimeserieswintersRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_range_sum(s : TimeserieswintersRange) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersRange::sum(self : TimeserieswintersRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_range_mean(s : TimeserieswintersRange) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersRange::mean(self : TimeserieswintersRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_range_scale(s : TimeserieswintersRange, f : Double) -> TimeserieswintersRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersRange::scale(self : TimeserieswintersRange, f : Double) -> TimeserieswintersRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_range_add(a : TimeserieswintersRange, b : TimeserieswintersRange) -> TimeserieswintersRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersRange::add(self : TimeserieswintersRange, other : TimeserieswintersRange) -> TimeserieswintersRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_range_copy(s : TimeserieswintersRange) -> TimeserieswintersRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersRange::copy(self : TimeserieswintersRange) -> TimeserieswintersRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_range_fill(s : TimeserieswintersRange, v : Double) -> TimeserieswintersRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersRange::fill(self : TimeserieswintersRange, v : Double) -> TimeserieswintersRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_range_min(s : TimeserieswintersRange) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersRange::min(self : TimeserieswintersRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_range_max(s : TimeserieswintersRange) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersRange::max(self : TimeserieswintersRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_range_to_string(s : TimeserieswintersRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersRange::to_string(self : TimeserieswintersRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeserieswintersSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_winters_slice_make(size : Int) -> TimeserieswintersSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_winters_slice_len(s : TimeserieswintersSlice) -> Int { s.size }
+pub fn TimeserieswintersSlice::len(self : TimeserieswintersSlice) -> Int { self.size }
 
-pub fn timeseries_winters_slice_get(s : TimeserieswintersSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeserieswintersSlice::get(self : TimeserieswintersSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_winters_slice_set(s : TimeserieswintersSlice, i : Int, v : Double) -> TimeserieswintersSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeserieswintersSlice::set(self : TimeserieswintersSlice, i : Int, v : Double) -> TimeserieswintersSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_slice_sum(s : TimeserieswintersSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeserieswintersSlice::sum(self : TimeserieswintersSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_winters_slice_mean(s : TimeserieswintersSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeserieswintersSlice::mean(self : TimeserieswintersSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_winters_slice_scale(s : TimeserieswintersSlice, f : Double) -> TimeserieswintersSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeserieswintersSlice::scale(self : TimeserieswintersSlice, f : Double) -> TimeserieswintersSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_slice_add(a : TimeserieswintersSlice, b : TimeserieswintersSlice) -> TimeserieswintersSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeserieswintersSlice::add(self : TimeserieswintersSlice, other : TimeserieswintersSlice) -> TimeserieswintersSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_winters_slice_copy(s : TimeserieswintersSlice) -> TimeserieswintersSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeserieswintersSlice::copy(self : TimeserieswintersSlice) -> TimeserieswintersSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_slice_fill(s : TimeserieswintersSlice, v : Double) -> TimeserieswintersSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeserieswintersSlice::fill(self : TimeserieswintersSlice, v : Double) -> TimeserieswintersSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_winters_slice_min(s : TimeserieswintersSlice) -> Double { @_common.min(s.data) }
+pub fn TimeserieswintersSlice::min(self : TimeserieswintersSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_winters_slice_max(s : TimeserieswintersSlice) -> Double { @_common.max(s.data) }
+pub fn TimeserieswintersSlice::max(self : TimeserieswintersSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_winters_slice_to_string(s : TimeserieswintersSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeserieswintersSlice::to_string(self : TimeserieswintersSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

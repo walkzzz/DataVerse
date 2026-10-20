@@ -351,45 +351,45 @@ pub fn ml_regress_linear_frame_make(size : Int) -> MlregresslinearFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_frame_len(s : MlregresslinearFrame) -> Int { s.size }
+pub fn MlregresslinearFrame::len(self : MlregresslinearFrame) -> Int { self.size }
 
-pub fn ml_regress_linear_frame_get(s : MlregresslinearFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearFrame::get(self : MlregresslinearFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_frame_set(s : MlregresslinearFrame, i : Int, v : Double) -> MlregresslinearFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearFrame::set(self : MlregresslinearFrame, i : Int, v : Double) -> MlregresslinearFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_frame_sum(s : MlregresslinearFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearFrame::sum(self : MlregresslinearFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_frame_mean(s : MlregresslinearFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearFrame::mean(self : MlregresslinearFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_frame_scale(s : MlregresslinearFrame, f : Double) -> MlregresslinearFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearFrame::scale(self : MlregresslinearFrame, f : Double) -> MlregresslinearFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_frame_add(a : MlregresslinearFrame, b : MlregresslinearFrame) -> MlregresslinearFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearFrame::add(self : MlregresslinearFrame, other : MlregresslinearFrame) -> MlregresslinearFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_frame_copy(s : MlregresslinearFrame) -> MlregresslinearFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearFrame::copy(self : MlregresslinearFrame) -> MlregresslinearFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_frame_fill(s : MlregresslinearFrame, v : Double) -> MlregresslinearFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearFrame::fill(self : MlregresslinearFrame, v : Double) -> MlregresslinearFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_frame_min(s : MlregresslinearFrame) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearFrame::min(self : MlregresslinearFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_frame_max(s : MlregresslinearFrame) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearFrame::max(self : MlregresslinearFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_frame_to_string(s : MlregresslinearFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearFrame::to_string(self : MlregresslinearFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_linear_table_make(size : Int) -> MlregresslinearTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_table_len(s : MlregresslinearTable) -> Int { s.size }
+pub fn MlregresslinearTable::len(self : MlregresslinearTable) -> Int { self.size }
 
-pub fn ml_regress_linear_table_get(s : MlregresslinearTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearTable::get(self : MlregresslinearTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_table_set(s : MlregresslinearTable, i : Int, v : Double) -> MlregresslinearTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearTable::set(self : MlregresslinearTable, i : Int, v : Double) -> MlregresslinearTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_table_sum(s : MlregresslinearTable) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearTable::sum(self : MlregresslinearTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_table_mean(s : MlregresslinearTable) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearTable::mean(self : MlregresslinearTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_table_scale(s : MlregresslinearTable, f : Double) -> MlregresslinearTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearTable::scale(self : MlregresslinearTable, f : Double) -> MlregresslinearTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_table_add(a : MlregresslinearTable, b : MlregresslinearTable) -> MlregresslinearTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearTable::add(self : MlregresslinearTable, other : MlregresslinearTable) -> MlregresslinearTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_table_copy(s : MlregresslinearTable) -> MlregresslinearTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearTable::copy(self : MlregresslinearTable) -> MlregresslinearTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_table_fill(s : MlregresslinearTable, v : Double) -> MlregresslinearTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearTable::fill(self : MlregresslinearTable, v : Double) -> MlregresslinearTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_table_min(s : MlregresslinearTable) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearTable::min(self : MlregresslinearTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_table_max(s : MlregresslinearTable) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearTable::max(self : MlregresslinearTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_table_to_string(s : MlregresslinearTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearTable::to_string(self : MlregresslinearTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_linear_graphn_make(size : Int) -> MlregresslinearGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_graphn_len(s : MlregresslinearGraphN) -> Int { s.size }
+pub fn MlregresslinearGraphN::len(self : MlregresslinearGraphN) -> Int { self.size }
 
-pub fn ml_regress_linear_graphn_get(s : MlregresslinearGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearGraphN::get(self : MlregresslinearGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_graphn_set(s : MlregresslinearGraphN, i : Int, v : Double) -> MlregresslinearGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearGraphN::set(self : MlregresslinearGraphN, i : Int, v : Double) -> MlregresslinearGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_graphn_sum(s : MlregresslinearGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearGraphN::sum(self : MlregresslinearGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_graphn_mean(s : MlregresslinearGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearGraphN::mean(self : MlregresslinearGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_graphn_scale(s : MlregresslinearGraphN, f : Double) -> MlregresslinearGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearGraphN::scale(self : MlregresslinearGraphN, f : Double) -> MlregresslinearGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_graphn_add(a : MlregresslinearGraphN, b : MlregresslinearGraphN) -> MlregresslinearGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearGraphN::add(self : MlregresslinearGraphN, other : MlregresslinearGraphN) -> MlregresslinearGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_graphn_copy(s : MlregresslinearGraphN) -> MlregresslinearGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearGraphN::copy(self : MlregresslinearGraphN) -> MlregresslinearGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_graphn_fill(s : MlregresslinearGraphN, v : Double) -> MlregresslinearGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearGraphN::fill(self : MlregresslinearGraphN, v : Double) -> MlregresslinearGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_graphn_min(s : MlregresslinearGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearGraphN::min(self : MlregresslinearGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_graphn_max(s : MlregresslinearGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearGraphN::max(self : MlregresslinearGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_graphn_to_string(s : MlregresslinearGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearGraphN::to_string(self : MlregresslinearGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_linear_node_make(size : Int) -> MlregresslinearNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_node_len(s : MlregresslinearNode) -> Int { s.size }
+pub fn MlregresslinearNode::len(self : MlregresslinearNode) -> Int { self.size }
 
-pub fn ml_regress_linear_node_get(s : MlregresslinearNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearNode::get(self : MlregresslinearNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_node_set(s : MlregresslinearNode, i : Int, v : Double) -> MlregresslinearNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearNode::set(self : MlregresslinearNode, i : Int, v : Double) -> MlregresslinearNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_node_sum(s : MlregresslinearNode) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearNode::sum(self : MlregresslinearNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_node_mean(s : MlregresslinearNode) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearNode::mean(self : MlregresslinearNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_node_scale(s : MlregresslinearNode, f : Double) -> MlregresslinearNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearNode::scale(self : MlregresslinearNode, f : Double) -> MlregresslinearNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_node_add(a : MlregresslinearNode, b : MlregresslinearNode) -> MlregresslinearNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearNode::add(self : MlregresslinearNode, other : MlregresslinearNode) -> MlregresslinearNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_node_copy(s : MlregresslinearNode) -> MlregresslinearNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearNode::copy(self : MlregresslinearNode) -> MlregresslinearNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_node_fill(s : MlregresslinearNode, v : Double) -> MlregresslinearNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearNode::fill(self : MlregresslinearNode, v : Double) -> MlregresslinearNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_node_min(s : MlregresslinearNode) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearNode::min(self : MlregresslinearNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_node_max(s : MlregresslinearNode) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearNode::max(self : MlregresslinearNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_node_to_string(s : MlregresslinearNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearNode::to_string(self : MlregresslinearNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_linear_edge_make(size : Int) -> MlregresslinearEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_edge_len(s : MlregresslinearEdge) -> Int { s.size }
+pub fn MlregresslinearEdge::len(self : MlregresslinearEdge) -> Int { self.size }
 
-pub fn ml_regress_linear_edge_get(s : MlregresslinearEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearEdge::get(self : MlregresslinearEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_edge_set(s : MlregresslinearEdge, i : Int, v : Double) -> MlregresslinearEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearEdge::set(self : MlregresslinearEdge, i : Int, v : Double) -> MlregresslinearEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_edge_sum(s : MlregresslinearEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearEdge::sum(self : MlregresslinearEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_edge_mean(s : MlregresslinearEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearEdge::mean(self : MlregresslinearEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_edge_scale(s : MlregresslinearEdge, f : Double) -> MlregresslinearEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearEdge::scale(self : MlregresslinearEdge, f : Double) -> MlregresslinearEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_edge_add(a : MlregresslinearEdge, b : MlregresslinearEdge) -> MlregresslinearEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearEdge::add(self : MlregresslinearEdge, other : MlregresslinearEdge) -> MlregresslinearEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_edge_copy(s : MlregresslinearEdge) -> MlregresslinearEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearEdge::copy(self : MlregresslinearEdge) -> MlregresslinearEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_edge_fill(s : MlregresslinearEdge, v : Double) -> MlregresslinearEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearEdge::fill(self : MlregresslinearEdge, v : Double) -> MlregresslinearEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_edge_min(s : MlregresslinearEdge) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearEdge::min(self : MlregresslinearEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_edge_max(s : MlregresslinearEdge) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearEdge::max(self : MlregresslinearEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_edge_to_string(s : MlregresslinearEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearEdge::to_string(self : MlregresslinearEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_linear_path_make(size : Int) -> MlregresslinearPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_path_len(s : MlregresslinearPath) -> Int { s.size }
+pub fn MlregresslinearPath::len(self : MlregresslinearPath) -> Int { self.size }
 
-pub fn ml_regress_linear_path_get(s : MlregresslinearPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearPath::get(self : MlregresslinearPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_path_set(s : MlregresslinearPath, i : Int, v : Double) -> MlregresslinearPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearPath::set(self : MlregresslinearPath, i : Int, v : Double) -> MlregresslinearPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_path_sum(s : MlregresslinearPath) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearPath::sum(self : MlregresslinearPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_path_mean(s : MlregresslinearPath) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearPath::mean(self : MlregresslinearPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_path_scale(s : MlregresslinearPath, f : Double) -> MlregresslinearPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearPath::scale(self : MlregresslinearPath, f : Double) -> MlregresslinearPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_path_add(a : MlregresslinearPath, b : MlregresslinearPath) -> MlregresslinearPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearPath::add(self : MlregresslinearPath, other : MlregresslinearPath) -> MlregresslinearPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_path_copy(s : MlregresslinearPath) -> MlregresslinearPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearPath::copy(self : MlregresslinearPath) -> MlregresslinearPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_path_fill(s : MlregresslinearPath, v : Double) -> MlregresslinearPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearPath::fill(self : MlregresslinearPath, v : Double) -> MlregresslinearPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_path_min(s : MlregresslinearPath) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearPath::min(self : MlregresslinearPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_path_max(s : MlregresslinearPath) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearPath::max(self : MlregresslinearPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_path_to_string(s : MlregresslinearPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearPath::to_string(self : MlregresslinearPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_linear_cluster_make(size : Int) -> MlregresslinearCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_cluster_len(s : MlregresslinearCluster) -> Int { s.size }
+pub fn MlregresslinearCluster::len(self : MlregresslinearCluster) -> Int { self.size }
 
-pub fn ml_regress_linear_cluster_get(s : MlregresslinearCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearCluster::get(self : MlregresslinearCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_cluster_set(s : MlregresslinearCluster, i : Int, v : Double) -> MlregresslinearCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearCluster::set(self : MlregresslinearCluster, i : Int, v : Double) -> MlregresslinearCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cluster_sum(s : MlregresslinearCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearCluster::sum(self : MlregresslinearCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_cluster_mean(s : MlregresslinearCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearCluster::mean(self : MlregresslinearCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_cluster_scale(s : MlregresslinearCluster, f : Double) -> MlregresslinearCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearCluster::scale(self : MlregresslinearCluster, f : Double) -> MlregresslinearCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cluster_add(a : MlregresslinearCluster, b : MlregresslinearCluster) -> MlregresslinearCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearCluster::add(self : MlregresslinearCluster, other : MlregresslinearCluster) -> MlregresslinearCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cluster_copy(s : MlregresslinearCluster) -> MlregresslinearCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearCluster::copy(self : MlregresslinearCluster) -> MlregresslinearCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cluster_fill(s : MlregresslinearCluster, v : Double) -> MlregresslinearCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearCluster::fill(self : MlregresslinearCluster, v : Double) -> MlregresslinearCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cluster_min(s : MlregresslinearCluster) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearCluster::min(self : MlregresslinearCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_cluster_max(s : MlregresslinearCluster) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearCluster::max(self : MlregresslinearCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_cluster_to_string(s : MlregresslinearCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearCluster::to_string(self : MlregresslinearCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_linear_model_make(size : Int) -> MlregresslinearModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_model_len(s : MlregresslinearModel) -> Int { s.size }
+pub fn MlregresslinearModel::len(self : MlregresslinearModel) -> Int { self.size }
 
-pub fn ml_regress_linear_model_get(s : MlregresslinearModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearModel::get(self : MlregresslinearModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_model_set(s : MlregresslinearModel, i : Int, v : Double) -> MlregresslinearModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearModel::set(self : MlregresslinearModel, i : Int, v : Double) -> MlregresslinearModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_model_sum(s : MlregresslinearModel) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearModel::sum(self : MlregresslinearModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_model_mean(s : MlregresslinearModel) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearModel::mean(self : MlregresslinearModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_model_scale(s : MlregresslinearModel, f : Double) -> MlregresslinearModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearModel::scale(self : MlregresslinearModel, f : Double) -> MlregresslinearModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_model_add(a : MlregresslinearModel, b : MlregresslinearModel) -> MlregresslinearModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearModel::add(self : MlregresslinearModel, other : MlregresslinearModel) -> MlregresslinearModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_model_copy(s : MlregresslinearModel) -> MlregresslinearModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearModel::copy(self : MlregresslinearModel) -> MlregresslinearModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_model_fill(s : MlregresslinearModel, v : Double) -> MlregresslinearModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearModel::fill(self : MlregresslinearModel, v : Double) -> MlregresslinearModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_model_min(s : MlregresslinearModel) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearModel::min(self : MlregresslinearModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_model_max(s : MlregresslinearModel) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearModel::max(self : MlregresslinearModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_model_to_string(s : MlregresslinearModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearModel::to_string(self : MlregresslinearModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_linear_layer_make(size : Int) -> MlregresslinearLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_layer_len(s : MlregresslinearLayer) -> Int { s.size }
+pub fn MlregresslinearLayer::len(self : MlregresslinearLayer) -> Int { self.size }
 
-pub fn ml_regress_linear_layer_get(s : MlregresslinearLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearLayer::get(self : MlregresslinearLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_layer_set(s : MlregresslinearLayer, i : Int, v : Double) -> MlregresslinearLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearLayer::set(self : MlregresslinearLayer, i : Int, v : Double) -> MlregresslinearLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_layer_sum(s : MlregresslinearLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearLayer::sum(self : MlregresslinearLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_layer_mean(s : MlregresslinearLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearLayer::mean(self : MlregresslinearLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_layer_scale(s : MlregresslinearLayer, f : Double) -> MlregresslinearLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearLayer::scale(self : MlregresslinearLayer, f : Double) -> MlregresslinearLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_layer_add(a : MlregresslinearLayer, b : MlregresslinearLayer) -> MlregresslinearLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearLayer::add(self : MlregresslinearLayer, other : MlregresslinearLayer) -> MlregresslinearLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_layer_copy(s : MlregresslinearLayer) -> MlregresslinearLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearLayer::copy(self : MlregresslinearLayer) -> MlregresslinearLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_layer_fill(s : MlregresslinearLayer, v : Double) -> MlregresslinearLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearLayer::fill(self : MlregresslinearLayer, v : Double) -> MlregresslinearLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_layer_min(s : MlregresslinearLayer) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearLayer::min(self : MlregresslinearLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_layer_max(s : MlregresslinearLayer) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearLayer::max(self : MlregresslinearLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_layer_to_string(s : MlregresslinearLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearLayer::to_string(self : MlregresslinearLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_linear_buffer_make(size : Int) -> MlregresslinearBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_buffer_len(s : MlregresslinearBuffer) -> Int { s.size }
+pub fn MlregresslinearBuffer::len(self : MlregresslinearBuffer) -> Int { self.size }
 
-pub fn ml_regress_linear_buffer_get(s : MlregresslinearBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearBuffer::get(self : MlregresslinearBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_buffer_set(s : MlregresslinearBuffer, i : Int, v : Double) -> MlregresslinearBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearBuffer::set(self : MlregresslinearBuffer, i : Int, v : Double) -> MlregresslinearBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_buffer_sum(s : MlregresslinearBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearBuffer::sum(self : MlregresslinearBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_buffer_mean(s : MlregresslinearBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearBuffer::mean(self : MlregresslinearBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_buffer_scale(s : MlregresslinearBuffer, f : Double) -> MlregresslinearBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearBuffer::scale(self : MlregresslinearBuffer, f : Double) -> MlregresslinearBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_buffer_add(a : MlregresslinearBuffer, b : MlregresslinearBuffer) -> MlregresslinearBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearBuffer::add(self : MlregresslinearBuffer, other : MlregresslinearBuffer) -> MlregresslinearBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_buffer_copy(s : MlregresslinearBuffer) -> MlregresslinearBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearBuffer::copy(self : MlregresslinearBuffer) -> MlregresslinearBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_buffer_fill(s : MlregresslinearBuffer, v : Double) -> MlregresslinearBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearBuffer::fill(self : MlregresslinearBuffer, v : Double) -> MlregresslinearBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_buffer_min(s : MlregresslinearBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearBuffer::min(self : MlregresslinearBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_buffer_max(s : MlregresslinearBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearBuffer::max(self : MlregresslinearBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_buffer_to_string(s : MlregresslinearBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearBuffer::to_string(self : MlregresslinearBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_linear_cursor_make(size : Int) -> MlregresslinearCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_cursor_len(s : MlregresslinearCursor) -> Int { s.size }
+pub fn MlregresslinearCursor::len(self : MlregresslinearCursor) -> Int { self.size }
 
-pub fn ml_regress_linear_cursor_get(s : MlregresslinearCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearCursor::get(self : MlregresslinearCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_cursor_set(s : MlregresslinearCursor, i : Int, v : Double) -> MlregresslinearCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearCursor::set(self : MlregresslinearCursor, i : Int, v : Double) -> MlregresslinearCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cursor_sum(s : MlregresslinearCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearCursor::sum(self : MlregresslinearCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_cursor_mean(s : MlregresslinearCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearCursor::mean(self : MlregresslinearCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_cursor_scale(s : MlregresslinearCursor, f : Double) -> MlregresslinearCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearCursor::scale(self : MlregresslinearCursor, f : Double) -> MlregresslinearCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cursor_add(a : MlregresslinearCursor, b : MlregresslinearCursor) -> MlregresslinearCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearCursor::add(self : MlregresslinearCursor, other : MlregresslinearCursor) -> MlregresslinearCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cursor_copy(s : MlregresslinearCursor) -> MlregresslinearCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearCursor::copy(self : MlregresslinearCursor) -> MlregresslinearCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cursor_fill(s : MlregresslinearCursor, v : Double) -> MlregresslinearCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearCursor::fill(self : MlregresslinearCursor, v : Double) -> MlregresslinearCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_cursor_min(s : MlregresslinearCursor) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearCursor::min(self : MlregresslinearCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_cursor_max(s : MlregresslinearCursor) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearCursor::max(self : MlregresslinearCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_cursor_to_string(s : MlregresslinearCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearCursor::to_string(self : MlregresslinearCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearView {
@@ -912,45 +912,45 @@ pub fn ml_regress_linear_view_make(size : Int) -> MlregresslinearView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_view_len(s : MlregresslinearView) -> Int { s.size }
+pub fn MlregresslinearView::len(self : MlregresslinearView) -> Int { self.size }
 
-pub fn ml_regress_linear_view_get(s : MlregresslinearView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearView::get(self : MlregresslinearView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_view_set(s : MlregresslinearView, i : Int, v : Double) -> MlregresslinearView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearView::set(self : MlregresslinearView, i : Int, v : Double) -> MlregresslinearView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_view_sum(s : MlregresslinearView) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearView::sum(self : MlregresslinearView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_view_mean(s : MlregresslinearView) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearView::mean(self : MlregresslinearView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_view_scale(s : MlregresslinearView, f : Double) -> MlregresslinearView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearView::scale(self : MlregresslinearView, f : Double) -> MlregresslinearView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_view_add(a : MlregresslinearView, b : MlregresslinearView) -> MlregresslinearView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearView::add(self : MlregresslinearView, other : MlregresslinearView) -> MlregresslinearView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_view_copy(s : MlregresslinearView) -> MlregresslinearView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearView::copy(self : MlregresslinearView) -> MlregresslinearView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_view_fill(s : MlregresslinearView, v : Double) -> MlregresslinearView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearView::fill(self : MlregresslinearView, v : Double) -> MlregresslinearView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_view_min(s : MlregresslinearView) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearView::min(self : MlregresslinearView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_view_max(s : MlregresslinearView) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearView::max(self : MlregresslinearView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_view_to_string(s : MlregresslinearView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearView::to_string(self : MlregresslinearView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_linear_range_make(size : Int) -> MlregresslinearRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_range_len(s : MlregresslinearRange) -> Int { s.size }
+pub fn MlregresslinearRange::len(self : MlregresslinearRange) -> Int { self.size }
 
-pub fn ml_regress_linear_range_get(s : MlregresslinearRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearRange::get(self : MlregresslinearRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_range_set(s : MlregresslinearRange, i : Int, v : Double) -> MlregresslinearRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearRange::set(self : MlregresslinearRange, i : Int, v : Double) -> MlregresslinearRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_range_sum(s : MlregresslinearRange) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearRange::sum(self : MlregresslinearRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_range_mean(s : MlregresslinearRange) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearRange::mean(self : MlregresslinearRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_range_scale(s : MlregresslinearRange, f : Double) -> MlregresslinearRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearRange::scale(self : MlregresslinearRange, f : Double) -> MlregresslinearRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_range_add(a : MlregresslinearRange, b : MlregresslinearRange) -> MlregresslinearRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearRange::add(self : MlregresslinearRange, other : MlregresslinearRange) -> MlregresslinearRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_range_copy(s : MlregresslinearRange) -> MlregresslinearRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearRange::copy(self : MlregresslinearRange) -> MlregresslinearRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_range_fill(s : MlregresslinearRange, v : Double) -> MlregresslinearRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearRange::fill(self : MlregresslinearRange, v : Double) -> MlregresslinearRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_range_min(s : MlregresslinearRange) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearRange::min(self : MlregresslinearRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_range_max(s : MlregresslinearRange) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearRange::max(self : MlregresslinearRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_range_to_string(s : MlregresslinearRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearRange::to_string(self : MlregresslinearRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslinearSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_linear_slice_make(size : Int) -> MlregresslinearSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_linear_slice_len(s : MlregresslinearSlice) -> Int { s.size }
+pub fn MlregresslinearSlice::len(self : MlregresslinearSlice) -> Int { self.size }
 
-pub fn ml_regress_linear_slice_get(s : MlregresslinearSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslinearSlice::get(self : MlregresslinearSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_linear_slice_set(s : MlregresslinearSlice, i : Int, v : Double) -> MlregresslinearSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslinearSlice::set(self : MlregresslinearSlice, i : Int, v : Double) -> MlregresslinearSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_slice_sum(s : MlregresslinearSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregresslinearSlice::sum(self : MlregresslinearSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_linear_slice_mean(s : MlregresslinearSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregresslinearSlice::mean(self : MlregresslinearSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_linear_slice_scale(s : MlregresslinearSlice, f : Double) -> MlregresslinearSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslinearSlice::scale(self : MlregresslinearSlice, f : Double) -> MlregresslinearSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_slice_add(a : MlregresslinearSlice, b : MlregresslinearSlice) -> MlregresslinearSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslinearSlice::add(self : MlregresslinearSlice, other : MlregresslinearSlice) -> MlregresslinearSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_linear_slice_copy(s : MlregresslinearSlice) -> MlregresslinearSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslinearSlice::copy(self : MlregresslinearSlice) -> MlregresslinearSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_slice_fill(s : MlregresslinearSlice, v : Double) -> MlregresslinearSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslinearSlice::fill(self : MlregresslinearSlice, v : Double) -> MlregresslinearSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_linear_slice_min(s : MlregresslinearSlice) -> Double { @_common.min(s.data) }
+pub fn MlregresslinearSlice::min(self : MlregresslinearSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_linear_slice_max(s : MlregresslinearSlice) -> Double { @_common.max(s.data) }
+pub fn MlregresslinearSlice::max(self : MlregresslinearSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_linear_slice_to_string(s : MlregresslinearSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslinearSlice::to_string(self : MlregresslinearSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

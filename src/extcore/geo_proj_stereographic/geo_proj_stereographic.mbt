@@ -351,45 +351,45 @@ pub fn geo_proj_stereographic_frame_make(size : Int) -> GeoprojstereographicFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_frame_len(s : GeoprojstereographicFrame) -> Int { s.size }
+pub fn GeoprojstereographicFrame::len(self : GeoprojstereographicFrame) -> Int { self.size }
 
-pub fn geo_proj_stereographic_frame_get(s : GeoprojstereographicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicFrame::get(self : GeoprojstereographicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_frame_set(s : GeoprojstereographicFrame, i : Int, v : Double) -> GeoprojstereographicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicFrame::set(self : GeoprojstereographicFrame, i : Int, v : Double) -> GeoprojstereographicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_frame_sum(s : GeoprojstereographicFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicFrame::sum(self : GeoprojstereographicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_frame_mean(s : GeoprojstereographicFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicFrame::mean(self : GeoprojstereographicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_frame_scale(s : GeoprojstereographicFrame, f : Double) -> GeoprojstereographicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicFrame::scale(self : GeoprojstereographicFrame, f : Double) -> GeoprojstereographicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_frame_add(a : GeoprojstereographicFrame, b : GeoprojstereographicFrame) -> GeoprojstereographicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicFrame::add(self : GeoprojstereographicFrame, other : GeoprojstereographicFrame) -> GeoprojstereographicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_frame_copy(s : GeoprojstereographicFrame) -> GeoprojstereographicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicFrame::copy(self : GeoprojstereographicFrame) -> GeoprojstereographicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_frame_fill(s : GeoprojstereographicFrame, v : Double) -> GeoprojstereographicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicFrame::fill(self : GeoprojstereographicFrame, v : Double) -> GeoprojstereographicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_frame_min(s : GeoprojstereographicFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicFrame::min(self : GeoprojstereographicFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_frame_max(s : GeoprojstereographicFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicFrame::max(self : GeoprojstereographicFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_frame_to_string(s : GeoprojstereographicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicFrame::to_string(self : GeoprojstereographicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_stereographic_table_make(size : Int) -> GeoprojstereographicTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_table_len(s : GeoprojstereographicTable) -> Int { s.size }
+pub fn GeoprojstereographicTable::len(self : GeoprojstereographicTable) -> Int { self.size }
 
-pub fn geo_proj_stereographic_table_get(s : GeoprojstereographicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicTable::get(self : GeoprojstereographicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_table_set(s : GeoprojstereographicTable, i : Int, v : Double) -> GeoprojstereographicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicTable::set(self : GeoprojstereographicTable, i : Int, v : Double) -> GeoprojstereographicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_table_sum(s : GeoprojstereographicTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicTable::sum(self : GeoprojstereographicTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_table_mean(s : GeoprojstereographicTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicTable::mean(self : GeoprojstereographicTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_table_scale(s : GeoprojstereographicTable, f : Double) -> GeoprojstereographicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicTable::scale(self : GeoprojstereographicTable, f : Double) -> GeoprojstereographicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_table_add(a : GeoprojstereographicTable, b : GeoprojstereographicTable) -> GeoprojstereographicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicTable::add(self : GeoprojstereographicTable, other : GeoprojstereographicTable) -> GeoprojstereographicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_table_copy(s : GeoprojstereographicTable) -> GeoprojstereographicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicTable::copy(self : GeoprojstereographicTable) -> GeoprojstereographicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_table_fill(s : GeoprojstereographicTable, v : Double) -> GeoprojstereographicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicTable::fill(self : GeoprojstereographicTable, v : Double) -> GeoprojstereographicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_table_min(s : GeoprojstereographicTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicTable::min(self : GeoprojstereographicTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_table_max(s : GeoprojstereographicTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicTable::max(self : GeoprojstereographicTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_table_to_string(s : GeoprojstereographicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicTable::to_string(self : GeoprojstereographicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_stereographic_graphn_make(size : Int) -> GeoprojstereographicGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_graphn_len(s : GeoprojstereographicGraphN) -> Int { s.size }
+pub fn GeoprojstereographicGraphN::len(self : GeoprojstereographicGraphN) -> Int { self.size }
 
-pub fn geo_proj_stereographic_graphn_get(s : GeoprojstereographicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicGraphN::get(self : GeoprojstereographicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_graphn_set(s : GeoprojstereographicGraphN, i : Int, v : Double) -> GeoprojstereographicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicGraphN::set(self : GeoprojstereographicGraphN, i : Int, v : Double) -> GeoprojstereographicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_graphn_sum(s : GeoprojstereographicGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicGraphN::sum(self : GeoprojstereographicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_graphn_mean(s : GeoprojstereographicGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicGraphN::mean(self : GeoprojstereographicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_graphn_scale(s : GeoprojstereographicGraphN, f : Double) -> GeoprojstereographicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicGraphN::scale(self : GeoprojstereographicGraphN, f : Double) -> GeoprojstereographicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_graphn_add(a : GeoprojstereographicGraphN, b : GeoprojstereographicGraphN) -> GeoprojstereographicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicGraphN::add(self : GeoprojstereographicGraphN, other : GeoprojstereographicGraphN) -> GeoprojstereographicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_graphn_copy(s : GeoprojstereographicGraphN) -> GeoprojstereographicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicGraphN::copy(self : GeoprojstereographicGraphN) -> GeoprojstereographicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_graphn_fill(s : GeoprojstereographicGraphN, v : Double) -> GeoprojstereographicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicGraphN::fill(self : GeoprojstereographicGraphN, v : Double) -> GeoprojstereographicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_graphn_min(s : GeoprojstereographicGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicGraphN::min(self : GeoprojstereographicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_graphn_max(s : GeoprojstereographicGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicGraphN::max(self : GeoprojstereographicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_graphn_to_string(s : GeoprojstereographicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicGraphN::to_string(self : GeoprojstereographicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_stereographic_node_make(size : Int) -> GeoprojstereographicNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_node_len(s : GeoprojstereographicNode) -> Int { s.size }
+pub fn GeoprojstereographicNode::len(self : GeoprojstereographicNode) -> Int { self.size }
 
-pub fn geo_proj_stereographic_node_get(s : GeoprojstereographicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicNode::get(self : GeoprojstereographicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_node_set(s : GeoprojstereographicNode, i : Int, v : Double) -> GeoprojstereographicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicNode::set(self : GeoprojstereographicNode, i : Int, v : Double) -> GeoprojstereographicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_node_sum(s : GeoprojstereographicNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicNode::sum(self : GeoprojstereographicNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_node_mean(s : GeoprojstereographicNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicNode::mean(self : GeoprojstereographicNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_node_scale(s : GeoprojstereographicNode, f : Double) -> GeoprojstereographicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicNode::scale(self : GeoprojstereographicNode, f : Double) -> GeoprojstereographicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_node_add(a : GeoprojstereographicNode, b : GeoprojstereographicNode) -> GeoprojstereographicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicNode::add(self : GeoprojstereographicNode, other : GeoprojstereographicNode) -> GeoprojstereographicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_node_copy(s : GeoprojstereographicNode) -> GeoprojstereographicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicNode::copy(self : GeoprojstereographicNode) -> GeoprojstereographicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_node_fill(s : GeoprojstereographicNode, v : Double) -> GeoprojstereographicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicNode::fill(self : GeoprojstereographicNode, v : Double) -> GeoprojstereographicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_node_min(s : GeoprojstereographicNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicNode::min(self : GeoprojstereographicNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_node_max(s : GeoprojstereographicNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicNode::max(self : GeoprojstereographicNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_node_to_string(s : GeoprojstereographicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicNode::to_string(self : GeoprojstereographicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_stereographic_edge_make(size : Int) -> GeoprojstereographicEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_edge_len(s : GeoprojstereographicEdge) -> Int { s.size }
+pub fn GeoprojstereographicEdge::len(self : GeoprojstereographicEdge) -> Int { self.size }
 
-pub fn geo_proj_stereographic_edge_get(s : GeoprojstereographicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicEdge::get(self : GeoprojstereographicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_edge_set(s : GeoprojstereographicEdge, i : Int, v : Double) -> GeoprojstereographicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicEdge::set(self : GeoprojstereographicEdge, i : Int, v : Double) -> GeoprojstereographicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_edge_sum(s : GeoprojstereographicEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicEdge::sum(self : GeoprojstereographicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_edge_mean(s : GeoprojstereographicEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicEdge::mean(self : GeoprojstereographicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_edge_scale(s : GeoprojstereographicEdge, f : Double) -> GeoprojstereographicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicEdge::scale(self : GeoprojstereographicEdge, f : Double) -> GeoprojstereographicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_edge_add(a : GeoprojstereographicEdge, b : GeoprojstereographicEdge) -> GeoprojstereographicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicEdge::add(self : GeoprojstereographicEdge, other : GeoprojstereographicEdge) -> GeoprojstereographicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_edge_copy(s : GeoprojstereographicEdge) -> GeoprojstereographicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicEdge::copy(self : GeoprojstereographicEdge) -> GeoprojstereographicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_edge_fill(s : GeoprojstereographicEdge, v : Double) -> GeoprojstereographicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicEdge::fill(self : GeoprojstereographicEdge, v : Double) -> GeoprojstereographicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_edge_min(s : GeoprojstereographicEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicEdge::min(self : GeoprojstereographicEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_edge_max(s : GeoprojstereographicEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicEdge::max(self : GeoprojstereographicEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_edge_to_string(s : GeoprojstereographicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicEdge::to_string(self : GeoprojstereographicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_stereographic_path_make(size : Int) -> GeoprojstereographicPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_path_len(s : GeoprojstereographicPath) -> Int { s.size }
+pub fn GeoprojstereographicPath::len(self : GeoprojstereographicPath) -> Int { self.size }
 
-pub fn geo_proj_stereographic_path_get(s : GeoprojstereographicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicPath::get(self : GeoprojstereographicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_path_set(s : GeoprojstereographicPath, i : Int, v : Double) -> GeoprojstereographicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicPath::set(self : GeoprojstereographicPath, i : Int, v : Double) -> GeoprojstereographicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_path_sum(s : GeoprojstereographicPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicPath::sum(self : GeoprojstereographicPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_path_mean(s : GeoprojstereographicPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicPath::mean(self : GeoprojstereographicPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_path_scale(s : GeoprojstereographicPath, f : Double) -> GeoprojstereographicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicPath::scale(self : GeoprojstereographicPath, f : Double) -> GeoprojstereographicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_path_add(a : GeoprojstereographicPath, b : GeoprojstereographicPath) -> GeoprojstereographicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicPath::add(self : GeoprojstereographicPath, other : GeoprojstereographicPath) -> GeoprojstereographicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_path_copy(s : GeoprojstereographicPath) -> GeoprojstereographicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicPath::copy(self : GeoprojstereographicPath) -> GeoprojstereographicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_path_fill(s : GeoprojstereographicPath, v : Double) -> GeoprojstereographicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicPath::fill(self : GeoprojstereographicPath, v : Double) -> GeoprojstereographicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_path_min(s : GeoprojstereographicPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicPath::min(self : GeoprojstereographicPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_path_max(s : GeoprojstereographicPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicPath::max(self : GeoprojstereographicPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_path_to_string(s : GeoprojstereographicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicPath::to_string(self : GeoprojstereographicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_stereographic_cluster_make(size : Int) -> GeoprojstereographicCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_cluster_len(s : GeoprojstereographicCluster) -> Int { s.size }
+pub fn GeoprojstereographicCluster::len(self : GeoprojstereographicCluster) -> Int { self.size }
 
-pub fn geo_proj_stereographic_cluster_get(s : GeoprojstereographicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicCluster::get(self : GeoprojstereographicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_cluster_set(s : GeoprojstereographicCluster, i : Int, v : Double) -> GeoprojstereographicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCluster::set(self : GeoprojstereographicCluster, i : Int, v : Double) -> GeoprojstereographicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cluster_sum(s : GeoprojstereographicCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicCluster::sum(self : GeoprojstereographicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_cluster_mean(s : GeoprojstereographicCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicCluster::mean(self : GeoprojstereographicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_cluster_scale(s : GeoprojstereographicCluster, f : Double) -> GeoprojstereographicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCluster::scale(self : GeoprojstereographicCluster, f : Double) -> GeoprojstereographicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cluster_add(a : GeoprojstereographicCluster, b : GeoprojstereographicCluster) -> GeoprojstereographicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicCluster::add(self : GeoprojstereographicCluster, other : GeoprojstereographicCluster) -> GeoprojstereographicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cluster_copy(s : GeoprojstereographicCluster) -> GeoprojstereographicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCluster::copy(self : GeoprojstereographicCluster) -> GeoprojstereographicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cluster_fill(s : GeoprojstereographicCluster, v : Double) -> GeoprojstereographicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCluster::fill(self : GeoprojstereographicCluster, v : Double) -> GeoprojstereographicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cluster_min(s : GeoprojstereographicCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicCluster::min(self : GeoprojstereographicCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_cluster_max(s : GeoprojstereographicCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicCluster::max(self : GeoprojstereographicCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_cluster_to_string(s : GeoprojstereographicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicCluster::to_string(self : GeoprojstereographicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_stereographic_model_make(size : Int) -> GeoprojstereographicMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_model_len(s : GeoprojstereographicModel) -> Int { s.size }
+pub fn GeoprojstereographicModel::len(self : GeoprojstereographicModel) -> Int { self.size }
 
-pub fn geo_proj_stereographic_model_get(s : GeoprojstereographicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicModel::get(self : GeoprojstereographicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_model_set(s : GeoprojstereographicModel, i : Int, v : Double) -> GeoprojstereographicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicModel::set(self : GeoprojstereographicModel, i : Int, v : Double) -> GeoprojstereographicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_model_sum(s : GeoprojstereographicModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicModel::sum(self : GeoprojstereographicModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_model_mean(s : GeoprojstereographicModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicModel::mean(self : GeoprojstereographicModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_model_scale(s : GeoprojstereographicModel, f : Double) -> GeoprojstereographicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicModel::scale(self : GeoprojstereographicModel, f : Double) -> GeoprojstereographicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_model_add(a : GeoprojstereographicModel, b : GeoprojstereographicModel) -> GeoprojstereographicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicModel::add(self : GeoprojstereographicModel, other : GeoprojstereographicModel) -> GeoprojstereographicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_model_copy(s : GeoprojstereographicModel) -> GeoprojstereographicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicModel::copy(self : GeoprojstereographicModel) -> GeoprojstereographicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_model_fill(s : GeoprojstereographicModel, v : Double) -> GeoprojstereographicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicModel::fill(self : GeoprojstereographicModel, v : Double) -> GeoprojstereographicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_model_min(s : GeoprojstereographicModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicModel::min(self : GeoprojstereographicModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_model_max(s : GeoprojstereographicModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicModel::max(self : GeoprojstereographicModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_model_to_string(s : GeoprojstereographicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicModel::to_string(self : GeoprojstereographicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_stereographic_layer_make(size : Int) -> GeoprojstereographicLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_layer_len(s : GeoprojstereographicLayer) -> Int { s.size }
+pub fn GeoprojstereographicLayer::len(self : GeoprojstereographicLayer) -> Int { self.size }
 
-pub fn geo_proj_stereographic_layer_get(s : GeoprojstereographicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicLayer::get(self : GeoprojstereographicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_layer_set(s : GeoprojstereographicLayer, i : Int, v : Double) -> GeoprojstereographicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicLayer::set(self : GeoprojstereographicLayer, i : Int, v : Double) -> GeoprojstereographicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_layer_sum(s : GeoprojstereographicLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicLayer::sum(self : GeoprojstereographicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_layer_mean(s : GeoprojstereographicLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicLayer::mean(self : GeoprojstereographicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_layer_scale(s : GeoprojstereographicLayer, f : Double) -> GeoprojstereographicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicLayer::scale(self : GeoprojstereographicLayer, f : Double) -> GeoprojstereographicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_layer_add(a : GeoprojstereographicLayer, b : GeoprojstereographicLayer) -> GeoprojstereographicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicLayer::add(self : GeoprojstereographicLayer, other : GeoprojstereographicLayer) -> GeoprojstereographicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_layer_copy(s : GeoprojstereographicLayer) -> GeoprojstereographicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicLayer::copy(self : GeoprojstereographicLayer) -> GeoprojstereographicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_layer_fill(s : GeoprojstereographicLayer, v : Double) -> GeoprojstereographicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicLayer::fill(self : GeoprojstereographicLayer, v : Double) -> GeoprojstereographicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_layer_min(s : GeoprojstereographicLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicLayer::min(self : GeoprojstereographicLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_layer_max(s : GeoprojstereographicLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicLayer::max(self : GeoprojstereographicLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_layer_to_string(s : GeoprojstereographicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicLayer::to_string(self : GeoprojstereographicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_stereographic_buffer_make(size : Int) -> GeoprojstereographicBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_buffer_len(s : GeoprojstereographicBuffer) -> Int { s.size }
+pub fn GeoprojstereographicBuffer::len(self : GeoprojstereographicBuffer) -> Int { self.size }
 
-pub fn geo_proj_stereographic_buffer_get(s : GeoprojstereographicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicBuffer::get(self : GeoprojstereographicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_buffer_set(s : GeoprojstereographicBuffer, i : Int, v : Double) -> GeoprojstereographicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicBuffer::set(self : GeoprojstereographicBuffer, i : Int, v : Double) -> GeoprojstereographicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_buffer_sum(s : GeoprojstereographicBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicBuffer::sum(self : GeoprojstereographicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_buffer_mean(s : GeoprojstereographicBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicBuffer::mean(self : GeoprojstereographicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_buffer_scale(s : GeoprojstereographicBuffer, f : Double) -> GeoprojstereographicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicBuffer::scale(self : GeoprojstereographicBuffer, f : Double) -> GeoprojstereographicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_buffer_add(a : GeoprojstereographicBuffer, b : GeoprojstereographicBuffer) -> GeoprojstereographicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicBuffer::add(self : GeoprojstereographicBuffer, other : GeoprojstereographicBuffer) -> GeoprojstereographicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_buffer_copy(s : GeoprojstereographicBuffer) -> GeoprojstereographicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicBuffer::copy(self : GeoprojstereographicBuffer) -> GeoprojstereographicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_buffer_fill(s : GeoprojstereographicBuffer, v : Double) -> GeoprojstereographicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicBuffer::fill(self : GeoprojstereographicBuffer, v : Double) -> GeoprojstereographicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_buffer_min(s : GeoprojstereographicBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicBuffer::min(self : GeoprojstereographicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_buffer_max(s : GeoprojstereographicBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicBuffer::max(self : GeoprojstereographicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_buffer_to_string(s : GeoprojstereographicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicBuffer::to_string(self : GeoprojstereographicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_stereographic_cursor_make(size : Int) -> GeoprojstereographicCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_cursor_len(s : GeoprojstereographicCursor) -> Int { s.size }
+pub fn GeoprojstereographicCursor::len(self : GeoprojstereographicCursor) -> Int { self.size }
 
-pub fn geo_proj_stereographic_cursor_get(s : GeoprojstereographicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicCursor::get(self : GeoprojstereographicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_cursor_set(s : GeoprojstereographicCursor, i : Int, v : Double) -> GeoprojstereographicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCursor::set(self : GeoprojstereographicCursor, i : Int, v : Double) -> GeoprojstereographicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cursor_sum(s : GeoprojstereographicCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicCursor::sum(self : GeoprojstereographicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_cursor_mean(s : GeoprojstereographicCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicCursor::mean(self : GeoprojstereographicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_cursor_scale(s : GeoprojstereographicCursor, f : Double) -> GeoprojstereographicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCursor::scale(self : GeoprojstereographicCursor, f : Double) -> GeoprojstereographicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cursor_add(a : GeoprojstereographicCursor, b : GeoprojstereographicCursor) -> GeoprojstereographicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicCursor::add(self : GeoprojstereographicCursor, other : GeoprojstereographicCursor) -> GeoprojstereographicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cursor_copy(s : GeoprojstereographicCursor) -> GeoprojstereographicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCursor::copy(self : GeoprojstereographicCursor) -> GeoprojstereographicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cursor_fill(s : GeoprojstereographicCursor, v : Double) -> GeoprojstereographicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicCursor::fill(self : GeoprojstereographicCursor, v : Double) -> GeoprojstereographicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_cursor_min(s : GeoprojstereographicCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicCursor::min(self : GeoprojstereographicCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_cursor_max(s : GeoprojstereographicCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicCursor::max(self : GeoprojstereographicCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_cursor_to_string(s : GeoprojstereographicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicCursor::to_string(self : GeoprojstereographicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicView {
@@ -912,45 +912,45 @@ pub fn geo_proj_stereographic_view_make(size : Int) -> GeoprojstereographicView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_view_len(s : GeoprojstereographicView) -> Int { s.size }
+pub fn GeoprojstereographicView::len(self : GeoprojstereographicView) -> Int { self.size }
 
-pub fn geo_proj_stereographic_view_get(s : GeoprojstereographicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicView::get(self : GeoprojstereographicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_view_set(s : GeoprojstereographicView, i : Int, v : Double) -> GeoprojstereographicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicView::set(self : GeoprojstereographicView, i : Int, v : Double) -> GeoprojstereographicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_view_sum(s : GeoprojstereographicView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicView::sum(self : GeoprojstereographicView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_view_mean(s : GeoprojstereographicView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicView::mean(self : GeoprojstereographicView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_view_scale(s : GeoprojstereographicView, f : Double) -> GeoprojstereographicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicView::scale(self : GeoprojstereographicView, f : Double) -> GeoprojstereographicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_view_add(a : GeoprojstereographicView, b : GeoprojstereographicView) -> GeoprojstereographicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicView::add(self : GeoprojstereographicView, other : GeoprojstereographicView) -> GeoprojstereographicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_view_copy(s : GeoprojstereographicView) -> GeoprojstereographicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicView::copy(self : GeoprojstereographicView) -> GeoprojstereographicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_view_fill(s : GeoprojstereographicView, v : Double) -> GeoprojstereographicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicView::fill(self : GeoprojstereographicView, v : Double) -> GeoprojstereographicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_view_min(s : GeoprojstereographicView) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicView::min(self : GeoprojstereographicView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_view_max(s : GeoprojstereographicView) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicView::max(self : GeoprojstereographicView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_view_to_string(s : GeoprojstereographicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicView::to_string(self : GeoprojstereographicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_stereographic_range_make(size : Int) -> GeoprojstereographicRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_range_len(s : GeoprojstereographicRange) -> Int { s.size }
+pub fn GeoprojstereographicRange::len(self : GeoprojstereographicRange) -> Int { self.size }
 
-pub fn geo_proj_stereographic_range_get(s : GeoprojstereographicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicRange::get(self : GeoprojstereographicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_range_set(s : GeoprojstereographicRange, i : Int, v : Double) -> GeoprojstereographicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicRange::set(self : GeoprojstereographicRange, i : Int, v : Double) -> GeoprojstereographicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_range_sum(s : GeoprojstereographicRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicRange::sum(self : GeoprojstereographicRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_range_mean(s : GeoprojstereographicRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicRange::mean(self : GeoprojstereographicRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_range_scale(s : GeoprojstereographicRange, f : Double) -> GeoprojstereographicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicRange::scale(self : GeoprojstereographicRange, f : Double) -> GeoprojstereographicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_range_add(a : GeoprojstereographicRange, b : GeoprojstereographicRange) -> GeoprojstereographicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicRange::add(self : GeoprojstereographicRange, other : GeoprojstereographicRange) -> GeoprojstereographicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_range_copy(s : GeoprojstereographicRange) -> GeoprojstereographicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicRange::copy(self : GeoprojstereographicRange) -> GeoprojstereographicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_range_fill(s : GeoprojstereographicRange, v : Double) -> GeoprojstereographicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicRange::fill(self : GeoprojstereographicRange, v : Double) -> GeoprojstereographicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_range_min(s : GeoprojstereographicRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicRange::min(self : GeoprojstereographicRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_range_max(s : GeoprojstereographicRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicRange::max(self : GeoprojstereographicRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_range_to_string(s : GeoprojstereographicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicRange::to_string(self : GeoprojstereographicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojstereographicSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_stereographic_slice_make(size : Int) -> GeoprojstereographicSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_stereographic_slice_len(s : GeoprojstereographicSlice) -> Int { s.size }
+pub fn GeoprojstereographicSlice::len(self : GeoprojstereographicSlice) -> Int { self.size }
 
-pub fn geo_proj_stereographic_slice_get(s : GeoprojstereographicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojstereographicSlice::get(self : GeoprojstereographicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_stereographic_slice_set(s : GeoprojstereographicSlice, i : Int, v : Double) -> GeoprojstereographicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojstereographicSlice::set(self : GeoprojstereographicSlice, i : Int, v : Double) -> GeoprojstereographicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_slice_sum(s : GeoprojstereographicSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojstereographicSlice::sum(self : GeoprojstereographicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_stereographic_slice_mean(s : GeoprojstereographicSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojstereographicSlice::mean(self : GeoprojstereographicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_stereographic_slice_scale(s : GeoprojstereographicSlice, f : Double) -> GeoprojstereographicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicSlice::scale(self : GeoprojstereographicSlice, f : Double) -> GeoprojstereographicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_slice_add(a : GeoprojstereographicSlice, b : GeoprojstereographicSlice) -> GeoprojstereographicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojstereographicSlice::add(self : GeoprojstereographicSlice, other : GeoprojstereographicSlice) -> GeoprojstereographicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_slice_copy(s : GeoprojstereographicSlice) -> GeoprojstereographicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicSlice::copy(self : GeoprojstereographicSlice) -> GeoprojstereographicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_slice_fill(s : GeoprojstereographicSlice, v : Double) -> GeoprojstereographicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojstereographicSlice::fill(self : GeoprojstereographicSlice, v : Double) -> GeoprojstereographicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_stereographic_slice_min(s : GeoprojstereographicSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojstereographicSlice::min(self : GeoprojstereographicSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_stereographic_slice_max(s : GeoprojstereographicSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojstereographicSlice::max(self : GeoprojstereographicSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_stereographic_slice_to_string(s : GeoprojstereographicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojstereographicSlice::to_string(self : GeoprojstereographicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

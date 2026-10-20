@@ -351,45 +351,45 @@ pub fn stats_dist_beta_frame_make(size : Int) -> StatsdistbetaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_frame_len(s : StatsdistbetaFrame) -> Int { s.size }
+pub fn StatsdistbetaFrame::len(self : StatsdistbetaFrame) -> Int { self.size }
 
-pub fn stats_dist_beta_frame_get(s : StatsdistbetaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaFrame::get(self : StatsdistbetaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_frame_set(s : StatsdistbetaFrame, i : Int, v : Double) -> StatsdistbetaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaFrame::set(self : StatsdistbetaFrame, i : Int, v : Double) -> StatsdistbetaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_frame_sum(s : StatsdistbetaFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaFrame::sum(self : StatsdistbetaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_frame_mean(s : StatsdistbetaFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaFrame::mean(self : StatsdistbetaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_frame_scale(s : StatsdistbetaFrame, f : Double) -> StatsdistbetaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaFrame::scale(self : StatsdistbetaFrame, f : Double) -> StatsdistbetaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_frame_add(a : StatsdistbetaFrame, b : StatsdistbetaFrame) -> StatsdistbetaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaFrame::add(self : StatsdistbetaFrame, other : StatsdistbetaFrame) -> StatsdistbetaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_frame_copy(s : StatsdistbetaFrame) -> StatsdistbetaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaFrame::copy(self : StatsdistbetaFrame) -> StatsdistbetaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_frame_fill(s : StatsdistbetaFrame, v : Double) -> StatsdistbetaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaFrame::fill(self : StatsdistbetaFrame, v : Double) -> StatsdistbetaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_frame_min(s : StatsdistbetaFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaFrame::min(self : StatsdistbetaFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_frame_max(s : StatsdistbetaFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaFrame::max(self : StatsdistbetaFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_frame_to_string(s : StatsdistbetaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaFrame::to_string(self : StatsdistbetaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_beta_table_make(size : Int) -> StatsdistbetaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_table_len(s : StatsdistbetaTable) -> Int { s.size }
+pub fn StatsdistbetaTable::len(self : StatsdistbetaTable) -> Int { self.size }
 
-pub fn stats_dist_beta_table_get(s : StatsdistbetaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaTable::get(self : StatsdistbetaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_table_set(s : StatsdistbetaTable, i : Int, v : Double) -> StatsdistbetaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaTable::set(self : StatsdistbetaTable, i : Int, v : Double) -> StatsdistbetaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_table_sum(s : StatsdistbetaTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaTable::sum(self : StatsdistbetaTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_table_mean(s : StatsdistbetaTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaTable::mean(self : StatsdistbetaTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_table_scale(s : StatsdistbetaTable, f : Double) -> StatsdistbetaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaTable::scale(self : StatsdistbetaTable, f : Double) -> StatsdistbetaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_table_add(a : StatsdistbetaTable, b : StatsdistbetaTable) -> StatsdistbetaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaTable::add(self : StatsdistbetaTable, other : StatsdistbetaTable) -> StatsdistbetaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_table_copy(s : StatsdistbetaTable) -> StatsdistbetaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaTable::copy(self : StatsdistbetaTable) -> StatsdistbetaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_table_fill(s : StatsdistbetaTable, v : Double) -> StatsdistbetaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaTable::fill(self : StatsdistbetaTable, v : Double) -> StatsdistbetaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_table_min(s : StatsdistbetaTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaTable::min(self : StatsdistbetaTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_table_max(s : StatsdistbetaTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaTable::max(self : StatsdistbetaTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_table_to_string(s : StatsdistbetaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaTable::to_string(self : StatsdistbetaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_beta_graphn_make(size : Int) -> StatsdistbetaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_graphn_len(s : StatsdistbetaGraphN) -> Int { s.size }
+pub fn StatsdistbetaGraphN::len(self : StatsdistbetaGraphN) -> Int { self.size }
 
-pub fn stats_dist_beta_graphn_get(s : StatsdistbetaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaGraphN::get(self : StatsdistbetaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_graphn_set(s : StatsdistbetaGraphN, i : Int, v : Double) -> StatsdistbetaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaGraphN::set(self : StatsdistbetaGraphN, i : Int, v : Double) -> StatsdistbetaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_graphn_sum(s : StatsdistbetaGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaGraphN::sum(self : StatsdistbetaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_graphn_mean(s : StatsdistbetaGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaGraphN::mean(self : StatsdistbetaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_graphn_scale(s : StatsdistbetaGraphN, f : Double) -> StatsdistbetaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaGraphN::scale(self : StatsdistbetaGraphN, f : Double) -> StatsdistbetaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_graphn_add(a : StatsdistbetaGraphN, b : StatsdistbetaGraphN) -> StatsdistbetaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaGraphN::add(self : StatsdistbetaGraphN, other : StatsdistbetaGraphN) -> StatsdistbetaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_graphn_copy(s : StatsdistbetaGraphN) -> StatsdistbetaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaGraphN::copy(self : StatsdistbetaGraphN) -> StatsdistbetaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_graphn_fill(s : StatsdistbetaGraphN, v : Double) -> StatsdistbetaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaGraphN::fill(self : StatsdistbetaGraphN, v : Double) -> StatsdistbetaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_graphn_min(s : StatsdistbetaGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaGraphN::min(self : StatsdistbetaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_graphn_max(s : StatsdistbetaGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaGraphN::max(self : StatsdistbetaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_graphn_to_string(s : StatsdistbetaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaGraphN::to_string(self : StatsdistbetaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_beta_node_make(size : Int) -> StatsdistbetaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_node_len(s : StatsdistbetaNode) -> Int { s.size }
+pub fn StatsdistbetaNode::len(self : StatsdistbetaNode) -> Int { self.size }
 
-pub fn stats_dist_beta_node_get(s : StatsdistbetaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaNode::get(self : StatsdistbetaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_node_set(s : StatsdistbetaNode, i : Int, v : Double) -> StatsdistbetaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaNode::set(self : StatsdistbetaNode, i : Int, v : Double) -> StatsdistbetaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_node_sum(s : StatsdistbetaNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaNode::sum(self : StatsdistbetaNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_node_mean(s : StatsdistbetaNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaNode::mean(self : StatsdistbetaNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_node_scale(s : StatsdistbetaNode, f : Double) -> StatsdistbetaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaNode::scale(self : StatsdistbetaNode, f : Double) -> StatsdistbetaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_node_add(a : StatsdistbetaNode, b : StatsdistbetaNode) -> StatsdistbetaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaNode::add(self : StatsdistbetaNode, other : StatsdistbetaNode) -> StatsdistbetaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_node_copy(s : StatsdistbetaNode) -> StatsdistbetaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaNode::copy(self : StatsdistbetaNode) -> StatsdistbetaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_node_fill(s : StatsdistbetaNode, v : Double) -> StatsdistbetaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaNode::fill(self : StatsdistbetaNode, v : Double) -> StatsdistbetaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_node_min(s : StatsdistbetaNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaNode::min(self : StatsdistbetaNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_node_max(s : StatsdistbetaNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaNode::max(self : StatsdistbetaNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_node_to_string(s : StatsdistbetaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaNode::to_string(self : StatsdistbetaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_beta_edge_make(size : Int) -> StatsdistbetaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_edge_len(s : StatsdistbetaEdge) -> Int { s.size }
+pub fn StatsdistbetaEdge::len(self : StatsdistbetaEdge) -> Int { self.size }
 
-pub fn stats_dist_beta_edge_get(s : StatsdistbetaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaEdge::get(self : StatsdistbetaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_edge_set(s : StatsdistbetaEdge, i : Int, v : Double) -> StatsdistbetaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaEdge::set(self : StatsdistbetaEdge, i : Int, v : Double) -> StatsdistbetaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_edge_sum(s : StatsdistbetaEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaEdge::sum(self : StatsdistbetaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_edge_mean(s : StatsdistbetaEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaEdge::mean(self : StatsdistbetaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_edge_scale(s : StatsdistbetaEdge, f : Double) -> StatsdistbetaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaEdge::scale(self : StatsdistbetaEdge, f : Double) -> StatsdistbetaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_edge_add(a : StatsdistbetaEdge, b : StatsdistbetaEdge) -> StatsdistbetaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaEdge::add(self : StatsdistbetaEdge, other : StatsdistbetaEdge) -> StatsdistbetaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_edge_copy(s : StatsdistbetaEdge) -> StatsdistbetaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaEdge::copy(self : StatsdistbetaEdge) -> StatsdistbetaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_edge_fill(s : StatsdistbetaEdge, v : Double) -> StatsdistbetaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaEdge::fill(self : StatsdistbetaEdge, v : Double) -> StatsdistbetaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_edge_min(s : StatsdistbetaEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaEdge::min(self : StatsdistbetaEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_edge_max(s : StatsdistbetaEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaEdge::max(self : StatsdistbetaEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_edge_to_string(s : StatsdistbetaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaEdge::to_string(self : StatsdistbetaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_beta_path_make(size : Int) -> StatsdistbetaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_path_len(s : StatsdistbetaPath) -> Int { s.size }
+pub fn StatsdistbetaPath::len(self : StatsdistbetaPath) -> Int { self.size }
 
-pub fn stats_dist_beta_path_get(s : StatsdistbetaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaPath::get(self : StatsdistbetaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_path_set(s : StatsdistbetaPath, i : Int, v : Double) -> StatsdistbetaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaPath::set(self : StatsdistbetaPath, i : Int, v : Double) -> StatsdistbetaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_path_sum(s : StatsdistbetaPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaPath::sum(self : StatsdistbetaPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_path_mean(s : StatsdistbetaPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaPath::mean(self : StatsdistbetaPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_path_scale(s : StatsdistbetaPath, f : Double) -> StatsdistbetaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaPath::scale(self : StatsdistbetaPath, f : Double) -> StatsdistbetaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_path_add(a : StatsdistbetaPath, b : StatsdistbetaPath) -> StatsdistbetaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaPath::add(self : StatsdistbetaPath, other : StatsdistbetaPath) -> StatsdistbetaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_path_copy(s : StatsdistbetaPath) -> StatsdistbetaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaPath::copy(self : StatsdistbetaPath) -> StatsdistbetaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_path_fill(s : StatsdistbetaPath, v : Double) -> StatsdistbetaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaPath::fill(self : StatsdistbetaPath, v : Double) -> StatsdistbetaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_path_min(s : StatsdistbetaPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaPath::min(self : StatsdistbetaPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_path_max(s : StatsdistbetaPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaPath::max(self : StatsdistbetaPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_path_to_string(s : StatsdistbetaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaPath::to_string(self : StatsdistbetaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_beta_cluster_make(size : Int) -> StatsdistbetaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_cluster_len(s : StatsdistbetaCluster) -> Int { s.size }
+pub fn StatsdistbetaCluster::len(self : StatsdistbetaCluster) -> Int { self.size }
 
-pub fn stats_dist_beta_cluster_get(s : StatsdistbetaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaCluster::get(self : StatsdistbetaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_cluster_set(s : StatsdistbetaCluster, i : Int, v : Double) -> StatsdistbetaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaCluster::set(self : StatsdistbetaCluster, i : Int, v : Double) -> StatsdistbetaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cluster_sum(s : StatsdistbetaCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaCluster::sum(self : StatsdistbetaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_cluster_mean(s : StatsdistbetaCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaCluster::mean(self : StatsdistbetaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_cluster_scale(s : StatsdistbetaCluster, f : Double) -> StatsdistbetaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaCluster::scale(self : StatsdistbetaCluster, f : Double) -> StatsdistbetaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cluster_add(a : StatsdistbetaCluster, b : StatsdistbetaCluster) -> StatsdistbetaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaCluster::add(self : StatsdistbetaCluster, other : StatsdistbetaCluster) -> StatsdistbetaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cluster_copy(s : StatsdistbetaCluster) -> StatsdistbetaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaCluster::copy(self : StatsdistbetaCluster) -> StatsdistbetaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cluster_fill(s : StatsdistbetaCluster, v : Double) -> StatsdistbetaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaCluster::fill(self : StatsdistbetaCluster, v : Double) -> StatsdistbetaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cluster_min(s : StatsdistbetaCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaCluster::min(self : StatsdistbetaCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_cluster_max(s : StatsdistbetaCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaCluster::max(self : StatsdistbetaCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_cluster_to_string(s : StatsdistbetaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaCluster::to_string(self : StatsdistbetaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_beta_model_make(size : Int) -> StatsdistbetaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_model_len(s : StatsdistbetaModel) -> Int { s.size }
+pub fn StatsdistbetaModel::len(self : StatsdistbetaModel) -> Int { self.size }
 
-pub fn stats_dist_beta_model_get(s : StatsdistbetaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaModel::get(self : StatsdistbetaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_model_set(s : StatsdistbetaModel, i : Int, v : Double) -> StatsdistbetaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaModel::set(self : StatsdistbetaModel, i : Int, v : Double) -> StatsdistbetaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_model_sum(s : StatsdistbetaModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaModel::sum(self : StatsdistbetaModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_model_mean(s : StatsdistbetaModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaModel::mean(self : StatsdistbetaModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_model_scale(s : StatsdistbetaModel, f : Double) -> StatsdistbetaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaModel::scale(self : StatsdistbetaModel, f : Double) -> StatsdistbetaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_model_add(a : StatsdistbetaModel, b : StatsdistbetaModel) -> StatsdistbetaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaModel::add(self : StatsdistbetaModel, other : StatsdistbetaModel) -> StatsdistbetaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_model_copy(s : StatsdistbetaModel) -> StatsdistbetaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaModel::copy(self : StatsdistbetaModel) -> StatsdistbetaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_model_fill(s : StatsdistbetaModel, v : Double) -> StatsdistbetaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaModel::fill(self : StatsdistbetaModel, v : Double) -> StatsdistbetaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_model_min(s : StatsdistbetaModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaModel::min(self : StatsdistbetaModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_model_max(s : StatsdistbetaModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaModel::max(self : StatsdistbetaModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_model_to_string(s : StatsdistbetaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaModel::to_string(self : StatsdistbetaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_beta_layer_make(size : Int) -> StatsdistbetaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_layer_len(s : StatsdistbetaLayer) -> Int { s.size }
+pub fn StatsdistbetaLayer::len(self : StatsdistbetaLayer) -> Int { self.size }
 
-pub fn stats_dist_beta_layer_get(s : StatsdistbetaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaLayer::get(self : StatsdistbetaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_layer_set(s : StatsdistbetaLayer, i : Int, v : Double) -> StatsdistbetaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaLayer::set(self : StatsdistbetaLayer, i : Int, v : Double) -> StatsdistbetaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_layer_sum(s : StatsdistbetaLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaLayer::sum(self : StatsdistbetaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_layer_mean(s : StatsdistbetaLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaLayer::mean(self : StatsdistbetaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_layer_scale(s : StatsdistbetaLayer, f : Double) -> StatsdistbetaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaLayer::scale(self : StatsdistbetaLayer, f : Double) -> StatsdistbetaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_layer_add(a : StatsdistbetaLayer, b : StatsdistbetaLayer) -> StatsdistbetaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaLayer::add(self : StatsdistbetaLayer, other : StatsdistbetaLayer) -> StatsdistbetaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_layer_copy(s : StatsdistbetaLayer) -> StatsdistbetaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaLayer::copy(self : StatsdistbetaLayer) -> StatsdistbetaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_layer_fill(s : StatsdistbetaLayer, v : Double) -> StatsdistbetaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaLayer::fill(self : StatsdistbetaLayer, v : Double) -> StatsdistbetaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_layer_min(s : StatsdistbetaLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaLayer::min(self : StatsdistbetaLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_layer_max(s : StatsdistbetaLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaLayer::max(self : StatsdistbetaLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_layer_to_string(s : StatsdistbetaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaLayer::to_string(self : StatsdistbetaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_beta_buffer_make(size : Int) -> StatsdistbetaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_buffer_len(s : StatsdistbetaBuffer) -> Int { s.size }
+pub fn StatsdistbetaBuffer::len(self : StatsdistbetaBuffer) -> Int { self.size }
 
-pub fn stats_dist_beta_buffer_get(s : StatsdistbetaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaBuffer::get(self : StatsdistbetaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_buffer_set(s : StatsdistbetaBuffer, i : Int, v : Double) -> StatsdistbetaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaBuffer::set(self : StatsdistbetaBuffer, i : Int, v : Double) -> StatsdistbetaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_buffer_sum(s : StatsdistbetaBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaBuffer::sum(self : StatsdistbetaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_buffer_mean(s : StatsdistbetaBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaBuffer::mean(self : StatsdistbetaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_buffer_scale(s : StatsdistbetaBuffer, f : Double) -> StatsdistbetaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaBuffer::scale(self : StatsdistbetaBuffer, f : Double) -> StatsdistbetaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_buffer_add(a : StatsdistbetaBuffer, b : StatsdistbetaBuffer) -> StatsdistbetaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaBuffer::add(self : StatsdistbetaBuffer, other : StatsdistbetaBuffer) -> StatsdistbetaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_buffer_copy(s : StatsdistbetaBuffer) -> StatsdistbetaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaBuffer::copy(self : StatsdistbetaBuffer) -> StatsdistbetaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_buffer_fill(s : StatsdistbetaBuffer, v : Double) -> StatsdistbetaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaBuffer::fill(self : StatsdistbetaBuffer, v : Double) -> StatsdistbetaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_buffer_min(s : StatsdistbetaBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaBuffer::min(self : StatsdistbetaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_buffer_max(s : StatsdistbetaBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaBuffer::max(self : StatsdistbetaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_buffer_to_string(s : StatsdistbetaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaBuffer::to_string(self : StatsdistbetaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_beta_cursor_make(size : Int) -> StatsdistbetaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_cursor_len(s : StatsdistbetaCursor) -> Int { s.size }
+pub fn StatsdistbetaCursor::len(self : StatsdistbetaCursor) -> Int { self.size }
 
-pub fn stats_dist_beta_cursor_get(s : StatsdistbetaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaCursor::get(self : StatsdistbetaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_cursor_set(s : StatsdistbetaCursor, i : Int, v : Double) -> StatsdistbetaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaCursor::set(self : StatsdistbetaCursor, i : Int, v : Double) -> StatsdistbetaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cursor_sum(s : StatsdistbetaCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaCursor::sum(self : StatsdistbetaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_cursor_mean(s : StatsdistbetaCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaCursor::mean(self : StatsdistbetaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_cursor_scale(s : StatsdistbetaCursor, f : Double) -> StatsdistbetaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaCursor::scale(self : StatsdistbetaCursor, f : Double) -> StatsdistbetaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cursor_add(a : StatsdistbetaCursor, b : StatsdistbetaCursor) -> StatsdistbetaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaCursor::add(self : StatsdistbetaCursor, other : StatsdistbetaCursor) -> StatsdistbetaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cursor_copy(s : StatsdistbetaCursor) -> StatsdistbetaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaCursor::copy(self : StatsdistbetaCursor) -> StatsdistbetaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cursor_fill(s : StatsdistbetaCursor, v : Double) -> StatsdistbetaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaCursor::fill(self : StatsdistbetaCursor, v : Double) -> StatsdistbetaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_cursor_min(s : StatsdistbetaCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaCursor::min(self : StatsdistbetaCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_cursor_max(s : StatsdistbetaCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaCursor::max(self : StatsdistbetaCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_cursor_to_string(s : StatsdistbetaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaCursor::to_string(self : StatsdistbetaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaView {
@@ -912,45 +912,45 @@ pub fn stats_dist_beta_view_make(size : Int) -> StatsdistbetaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_view_len(s : StatsdistbetaView) -> Int { s.size }
+pub fn StatsdistbetaView::len(self : StatsdistbetaView) -> Int { self.size }
 
-pub fn stats_dist_beta_view_get(s : StatsdistbetaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaView::get(self : StatsdistbetaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_view_set(s : StatsdistbetaView, i : Int, v : Double) -> StatsdistbetaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaView::set(self : StatsdistbetaView, i : Int, v : Double) -> StatsdistbetaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_view_sum(s : StatsdistbetaView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaView::sum(self : StatsdistbetaView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_view_mean(s : StatsdistbetaView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaView::mean(self : StatsdistbetaView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_view_scale(s : StatsdistbetaView, f : Double) -> StatsdistbetaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaView::scale(self : StatsdistbetaView, f : Double) -> StatsdistbetaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_view_add(a : StatsdistbetaView, b : StatsdistbetaView) -> StatsdistbetaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaView::add(self : StatsdistbetaView, other : StatsdistbetaView) -> StatsdistbetaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_view_copy(s : StatsdistbetaView) -> StatsdistbetaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaView::copy(self : StatsdistbetaView) -> StatsdistbetaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_view_fill(s : StatsdistbetaView, v : Double) -> StatsdistbetaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaView::fill(self : StatsdistbetaView, v : Double) -> StatsdistbetaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_view_min(s : StatsdistbetaView) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaView::min(self : StatsdistbetaView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_view_max(s : StatsdistbetaView) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaView::max(self : StatsdistbetaView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_view_to_string(s : StatsdistbetaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaView::to_string(self : StatsdistbetaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_beta_range_make(size : Int) -> StatsdistbetaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_range_len(s : StatsdistbetaRange) -> Int { s.size }
+pub fn StatsdistbetaRange::len(self : StatsdistbetaRange) -> Int { self.size }
 
-pub fn stats_dist_beta_range_get(s : StatsdistbetaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaRange::get(self : StatsdistbetaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_range_set(s : StatsdistbetaRange, i : Int, v : Double) -> StatsdistbetaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaRange::set(self : StatsdistbetaRange, i : Int, v : Double) -> StatsdistbetaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_range_sum(s : StatsdistbetaRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaRange::sum(self : StatsdistbetaRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_range_mean(s : StatsdistbetaRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaRange::mean(self : StatsdistbetaRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_range_scale(s : StatsdistbetaRange, f : Double) -> StatsdistbetaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaRange::scale(self : StatsdistbetaRange, f : Double) -> StatsdistbetaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_range_add(a : StatsdistbetaRange, b : StatsdistbetaRange) -> StatsdistbetaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaRange::add(self : StatsdistbetaRange, other : StatsdistbetaRange) -> StatsdistbetaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_range_copy(s : StatsdistbetaRange) -> StatsdistbetaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaRange::copy(self : StatsdistbetaRange) -> StatsdistbetaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_range_fill(s : StatsdistbetaRange, v : Double) -> StatsdistbetaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaRange::fill(self : StatsdistbetaRange, v : Double) -> StatsdistbetaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_range_min(s : StatsdistbetaRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaRange::min(self : StatsdistbetaRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_range_max(s : StatsdistbetaRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaRange::max(self : StatsdistbetaRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_range_to_string(s : StatsdistbetaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaRange::to_string(self : StatsdistbetaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistbetaSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_beta_slice_make(size : Int) -> StatsdistbetaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_beta_slice_len(s : StatsdistbetaSlice) -> Int { s.size }
+pub fn StatsdistbetaSlice::len(self : StatsdistbetaSlice) -> Int { self.size }
 
-pub fn stats_dist_beta_slice_get(s : StatsdistbetaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistbetaSlice::get(self : StatsdistbetaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_beta_slice_set(s : StatsdistbetaSlice, i : Int, v : Double) -> StatsdistbetaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistbetaSlice::set(self : StatsdistbetaSlice, i : Int, v : Double) -> StatsdistbetaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_slice_sum(s : StatsdistbetaSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistbetaSlice::sum(self : StatsdistbetaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_beta_slice_mean(s : StatsdistbetaSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistbetaSlice::mean(self : StatsdistbetaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_beta_slice_scale(s : StatsdistbetaSlice, f : Double) -> StatsdistbetaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistbetaSlice::scale(self : StatsdistbetaSlice, f : Double) -> StatsdistbetaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_slice_add(a : StatsdistbetaSlice, b : StatsdistbetaSlice) -> StatsdistbetaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistbetaSlice::add(self : StatsdistbetaSlice, other : StatsdistbetaSlice) -> StatsdistbetaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_beta_slice_copy(s : StatsdistbetaSlice) -> StatsdistbetaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistbetaSlice::copy(self : StatsdistbetaSlice) -> StatsdistbetaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_slice_fill(s : StatsdistbetaSlice, v : Double) -> StatsdistbetaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistbetaSlice::fill(self : StatsdistbetaSlice, v : Double) -> StatsdistbetaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_beta_slice_min(s : StatsdistbetaSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistbetaSlice::min(self : StatsdistbetaSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_beta_slice_max(s : StatsdistbetaSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistbetaSlice::max(self : StatsdistbetaSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_beta_slice_to_string(s : StatsdistbetaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistbetaSlice::to_string(self : StatsdistbetaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

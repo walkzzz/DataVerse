@@ -351,45 +351,45 @@ pub fn graph_flow_stable_marriage_frame_make(size : Int) -> Graphflowstablemarri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_frame_len(s : GraphflowstablemarriageFrame) -> Int { s.size }
+pub fn GraphflowstablemarriageFrame::len(self : GraphflowstablemarriageFrame) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_frame_get(s : GraphflowstablemarriageFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageFrame::get(self : GraphflowstablemarriageFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_frame_set(s : GraphflowstablemarriageFrame, i : Int, v : Double) -> GraphflowstablemarriageFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageFrame::set(self : GraphflowstablemarriageFrame, i : Int, v : Double) -> GraphflowstablemarriageFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_frame_sum(s : GraphflowstablemarriageFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageFrame::sum(self : GraphflowstablemarriageFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_frame_mean(s : GraphflowstablemarriageFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageFrame::mean(self : GraphflowstablemarriageFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_frame_scale(s : GraphflowstablemarriageFrame, f : Double) -> GraphflowstablemarriageFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageFrame::scale(self : GraphflowstablemarriageFrame, f : Double) -> GraphflowstablemarriageFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_frame_add(a : GraphflowstablemarriageFrame, b : GraphflowstablemarriageFrame) -> GraphflowstablemarriageFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageFrame::add(self : GraphflowstablemarriageFrame, other : GraphflowstablemarriageFrame) -> GraphflowstablemarriageFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_frame_copy(s : GraphflowstablemarriageFrame) -> GraphflowstablemarriageFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageFrame::copy(self : GraphflowstablemarriageFrame) -> GraphflowstablemarriageFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_frame_fill(s : GraphflowstablemarriageFrame, v : Double) -> GraphflowstablemarriageFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageFrame::fill(self : GraphflowstablemarriageFrame, v : Double) -> GraphflowstablemarriageFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_frame_min(s : GraphflowstablemarriageFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageFrame::min(self : GraphflowstablemarriageFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_frame_max(s : GraphflowstablemarriageFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageFrame::max(self : GraphflowstablemarriageFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_frame_to_string(s : GraphflowstablemarriageFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageFrame::to_string(self : GraphflowstablemarriageFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_stable_marriage_table_make(size : Int) -> Graphflowstablemarri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_table_len(s : GraphflowstablemarriageTable) -> Int { s.size }
+pub fn GraphflowstablemarriageTable::len(self : GraphflowstablemarriageTable) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_table_get(s : GraphflowstablemarriageTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageTable::get(self : GraphflowstablemarriageTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_table_set(s : GraphflowstablemarriageTable, i : Int, v : Double) -> GraphflowstablemarriageTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageTable::set(self : GraphflowstablemarriageTable, i : Int, v : Double) -> GraphflowstablemarriageTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_table_sum(s : GraphflowstablemarriageTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageTable::sum(self : GraphflowstablemarriageTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_table_mean(s : GraphflowstablemarriageTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageTable::mean(self : GraphflowstablemarriageTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_table_scale(s : GraphflowstablemarriageTable, f : Double) -> GraphflowstablemarriageTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageTable::scale(self : GraphflowstablemarriageTable, f : Double) -> GraphflowstablemarriageTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_table_add(a : GraphflowstablemarriageTable, b : GraphflowstablemarriageTable) -> GraphflowstablemarriageTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageTable::add(self : GraphflowstablemarriageTable, other : GraphflowstablemarriageTable) -> GraphflowstablemarriageTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_table_copy(s : GraphflowstablemarriageTable) -> GraphflowstablemarriageTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageTable::copy(self : GraphflowstablemarriageTable) -> GraphflowstablemarriageTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_table_fill(s : GraphflowstablemarriageTable, v : Double) -> GraphflowstablemarriageTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageTable::fill(self : GraphflowstablemarriageTable, v : Double) -> GraphflowstablemarriageTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_table_min(s : GraphflowstablemarriageTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageTable::min(self : GraphflowstablemarriageTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_table_max(s : GraphflowstablemarriageTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageTable::max(self : GraphflowstablemarriageTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_table_to_string(s : GraphflowstablemarriageTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageTable::to_string(self : GraphflowstablemarriageTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_stable_marriage_graphn_make(size : Int) -> Graphflowstablemarr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_graphn_len(s : GraphflowstablemarriageGraphN) -> Int { s.size }
+pub fn GraphflowstablemarriageGraphN::len(self : GraphflowstablemarriageGraphN) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_graphn_get(s : GraphflowstablemarriageGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageGraphN::get(self : GraphflowstablemarriageGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_graphn_set(s : GraphflowstablemarriageGraphN, i : Int, v : Double) -> GraphflowstablemarriageGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageGraphN::set(self : GraphflowstablemarriageGraphN, i : Int, v : Double) -> GraphflowstablemarriageGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_graphn_sum(s : GraphflowstablemarriageGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageGraphN::sum(self : GraphflowstablemarriageGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_graphn_mean(s : GraphflowstablemarriageGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageGraphN::mean(self : GraphflowstablemarriageGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_graphn_scale(s : GraphflowstablemarriageGraphN, f : Double) -> GraphflowstablemarriageGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageGraphN::scale(self : GraphflowstablemarriageGraphN, f : Double) -> GraphflowstablemarriageGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_graphn_add(a : GraphflowstablemarriageGraphN, b : GraphflowstablemarriageGraphN) -> GraphflowstablemarriageGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageGraphN::add(self : GraphflowstablemarriageGraphN, other : GraphflowstablemarriageGraphN) -> GraphflowstablemarriageGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_graphn_copy(s : GraphflowstablemarriageGraphN) -> GraphflowstablemarriageGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageGraphN::copy(self : GraphflowstablemarriageGraphN) -> GraphflowstablemarriageGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_graphn_fill(s : GraphflowstablemarriageGraphN, v : Double) -> GraphflowstablemarriageGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageGraphN::fill(self : GraphflowstablemarriageGraphN, v : Double) -> GraphflowstablemarriageGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_graphn_min(s : GraphflowstablemarriageGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageGraphN::min(self : GraphflowstablemarriageGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_graphn_max(s : GraphflowstablemarriageGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageGraphN::max(self : GraphflowstablemarriageGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_graphn_to_string(s : GraphflowstablemarriageGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageGraphN::to_string(self : GraphflowstablemarriageGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_stable_marriage_node_make(size : Int) -> Graphflowstablemarria
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_node_len(s : GraphflowstablemarriageNode) -> Int { s.size }
+pub fn GraphflowstablemarriageNode::len(self : GraphflowstablemarriageNode) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_node_get(s : GraphflowstablemarriageNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageNode::get(self : GraphflowstablemarriageNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_node_set(s : GraphflowstablemarriageNode, i : Int, v : Double) -> GraphflowstablemarriageNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageNode::set(self : GraphflowstablemarriageNode, i : Int, v : Double) -> GraphflowstablemarriageNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_node_sum(s : GraphflowstablemarriageNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageNode::sum(self : GraphflowstablemarriageNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_node_mean(s : GraphflowstablemarriageNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageNode::mean(self : GraphflowstablemarriageNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_node_scale(s : GraphflowstablemarriageNode, f : Double) -> GraphflowstablemarriageNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageNode::scale(self : GraphflowstablemarriageNode, f : Double) -> GraphflowstablemarriageNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_node_add(a : GraphflowstablemarriageNode, b : GraphflowstablemarriageNode) -> GraphflowstablemarriageNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageNode::add(self : GraphflowstablemarriageNode, other : GraphflowstablemarriageNode) -> GraphflowstablemarriageNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_node_copy(s : GraphflowstablemarriageNode) -> GraphflowstablemarriageNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageNode::copy(self : GraphflowstablemarriageNode) -> GraphflowstablemarriageNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_node_fill(s : GraphflowstablemarriageNode, v : Double) -> GraphflowstablemarriageNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageNode::fill(self : GraphflowstablemarriageNode, v : Double) -> GraphflowstablemarriageNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_node_min(s : GraphflowstablemarriageNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageNode::min(self : GraphflowstablemarriageNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_node_max(s : GraphflowstablemarriageNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageNode::max(self : GraphflowstablemarriageNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_node_to_string(s : GraphflowstablemarriageNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageNode::to_string(self : GraphflowstablemarriageNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_stable_marriage_edge_make(size : Int) -> Graphflowstablemarria
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_edge_len(s : GraphflowstablemarriageEdge) -> Int { s.size }
+pub fn GraphflowstablemarriageEdge::len(self : GraphflowstablemarriageEdge) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_edge_get(s : GraphflowstablemarriageEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageEdge::get(self : GraphflowstablemarriageEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_edge_set(s : GraphflowstablemarriageEdge, i : Int, v : Double) -> GraphflowstablemarriageEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageEdge::set(self : GraphflowstablemarriageEdge, i : Int, v : Double) -> GraphflowstablemarriageEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_edge_sum(s : GraphflowstablemarriageEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageEdge::sum(self : GraphflowstablemarriageEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_edge_mean(s : GraphflowstablemarriageEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageEdge::mean(self : GraphflowstablemarriageEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_edge_scale(s : GraphflowstablemarriageEdge, f : Double) -> GraphflowstablemarriageEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageEdge::scale(self : GraphflowstablemarriageEdge, f : Double) -> GraphflowstablemarriageEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_edge_add(a : GraphflowstablemarriageEdge, b : GraphflowstablemarriageEdge) -> GraphflowstablemarriageEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageEdge::add(self : GraphflowstablemarriageEdge, other : GraphflowstablemarriageEdge) -> GraphflowstablemarriageEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_edge_copy(s : GraphflowstablemarriageEdge) -> GraphflowstablemarriageEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageEdge::copy(self : GraphflowstablemarriageEdge) -> GraphflowstablemarriageEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_edge_fill(s : GraphflowstablemarriageEdge, v : Double) -> GraphflowstablemarriageEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageEdge::fill(self : GraphflowstablemarriageEdge, v : Double) -> GraphflowstablemarriageEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_edge_min(s : GraphflowstablemarriageEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageEdge::min(self : GraphflowstablemarriageEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_edge_max(s : GraphflowstablemarriageEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageEdge::max(self : GraphflowstablemarriageEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_edge_to_string(s : GraphflowstablemarriageEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageEdge::to_string(self : GraphflowstablemarriageEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriagePath {
@@ -606,45 +606,45 @@ pub fn graph_flow_stable_marriage_path_make(size : Int) -> Graphflowstablemarria
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_path_len(s : GraphflowstablemarriagePath) -> Int { s.size }
+pub fn GraphflowstablemarriagePath::len(self : GraphflowstablemarriagePath) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_path_get(s : GraphflowstablemarriagePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriagePath::get(self : GraphflowstablemarriagePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_path_set(s : GraphflowstablemarriagePath, i : Int, v : Double) -> GraphflowstablemarriagePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriagePath::set(self : GraphflowstablemarriagePath, i : Int, v : Double) -> GraphflowstablemarriagePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_path_sum(s : GraphflowstablemarriagePath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriagePath::sum(self : GraphflowstablemarriagePath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_path_mean(s : GraphflowstablemarriagePath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriagePath::mean(self : GraphflowstablemarriagePath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_path_scale(s : GraphflowstablemarriagePath, f : Double) -> GraphflowstablemarriagePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriagePath::scale(self : GraphflowstablemarriagePath, f : Double) -> GraphflowstablemarriagePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_path_add(a : GraphflowstablemarriagePath, b : GraphflowstablemarriagePath) -> GraphflowstablemarriagePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriagePath::add(self : GraphflowstablemarriagePath, other : GraphflowstablemarriagePath) -> GraphflowstablemarriagePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_path_copy(s : GraphflowstablemarriagePath) -> GraphflowstablemarriagePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriagePath::copy(self : GraphflowstablemarriagePath) -> GraphflowstablemarriagePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_path_fill(s : GraphflowstablemarriagePath, v : Double) -> GraphflowstablemarriagePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriagePath::fill(self : GraphflowstablemarriagePath, v : Double) -> GraphflowstablemarriagePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_path_min(s : GraphflowstablemarriagePath) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriagePath::min(self : GraphflowstablemarriagePath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_path_max(s : GraphflowstablemarriagePath) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriagePath::max(self : GraphflowstablemarriagePath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_path_to_string(s : GraphflowstablemarriagePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriagePath::to_string(self : GraphflowstablemarriagePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_stable_marriage_cluster_make(size : Int) -> Graphflowstablemar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_cluster_len(s : GraphflowstablemarriageCluster) -> Int { s.size }
+pub fn GraphflowstablemarriageCluster::len(self : GraphflowstablemarriageCluster) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_cluster_get(s : GraphflowstablemarriageCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageCluster::get(self : GraphflowstablemarriageCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_cluster_set(s : GraphflowstablemarriageCluster, i : Int, v : Double) -> GraphflowstablemarriageCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCluster::set(self : GraphflowstablemarriageCluster, i : Int, v : Double) -> GraphflowstablemarriageCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cluster_sum(s : GraphflowstablemarriageCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageCluster::sum(self : GraphflowstablemarriageCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_cluster_mean(s : GraphflowstablemarriageCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageCluster::mean(self : GraphflowstablemarriageCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_cluster_scale(s : GraphflowstablemarriageCluster, f : Double) -> GraphflowstablemarriageCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCluster::scale(self : GraphflowstablemarriageCluster, f : Double) -> GraphflowstablemarriageCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cluster_add(a : GraphflowstablemarriageCluster, b : GraphflowstablemarriageCluster) -> GraphflowstablemarriageCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageCluster::add(self : GraphflowstablemarriageCluster, other : GraphflowstablemarriageCluster) -> GraphflowstablemarriageCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cluster_copy(s : GraphflowstablemarriageCluster) -> GraphflowstablemarriageCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCluster::copy(self : GraphflowstablemarriageCluster) -> GraphflowstablemarriageCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cluster_fill(s : GraphflowstablemarriageCluster, v : Double) -> GraphflowstablemarriageCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCluster::fill(self : GraphflowstablemarriageCluster, v : Double) -> GraphflowstablemarriageCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cluster_min(s : GraphflowstablemarriageCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageCluster::min(self : GraphflowstablemarriageCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_cluster_max(s : GraphflowstablemarriageCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageCluster::max(self : GraphflowstablemarriageCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_cluster_to_string(s : GraphflowstablemarriageCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageCluster::to_string(self : GraphflowstablemarriageCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_stable_marriage_model_make(size : Int) -> Graphflowstablemarri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_model_len(s : GraphflowstablemarriageModel) -> Int { s.size }
+pub fn GraphflowstablemarriageModel::len(self : GraphflowstablemarriageModel) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_model_get(s : GraphflowstablemarriageModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageModel::get(self : GraphflowstablemarriageModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_model_set(s : GraphflowstablemarriageModel, i : Int, v : Double) -> GraphflowstablemarriageModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageModel::set(self : GraphflowstablemarriageModel, i : Int, v : Double) -> GraphflowstablemarriageModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_model_sum(s : GraphflowstablemarriageModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageModel::sum(self : GraphflowstablemarriageModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_model_mean(s : GraphflowstablemarriageModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageModel::mean(self : GraphflowstablemarriageModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_model_scale(s : GraphflowstablemarriageModel, f : Double) -> GraphflowstablemarriageModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageModel::scale(self : GraphflowstablemarriageModel, f : Double) -> GraphflowstablemarriageModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_model_add(a : GraphflowstablemarriageModel, b : GraphflowstablemarriageModel) -> GraphflowstablemarriageModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageModel::add(self : GraphflowstablemarriageModel, other : GraphflowstablemarriageModel) -> GraphflowstablemarriageModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_model_copy(s : GraphflowstablemarriageModel) -> GraphflowstablemarriageModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageModel::copy(self : GraphflowstablemarriageModel) -> GraphflowstablemarriageModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_model_fill(s : GraphflowstablemarriageModel, v : Double) -> GraphflowstablemarriageModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageModel::fill(self : GraphflowstablemarriageModel, v : Double) -> GraphflowstablemarriageModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_model_min(s : GraphflowstablemarriageModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageModel::min(self : GraphflowstablemarriageModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_model_max(s : GraphflowstablemarriageModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageModel::max(self : GraphflowstablemarriageModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_model_to_string(s : GraphflowstablemarriageModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageModel::to_string(self : GraphflowstablemarriageModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_stable_marriage_layer_make(size : Int) -> Graphflowstablemarri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_layer_len(s : GraphflowstablemarriageLayer) -> Int { s.size }
+pub fn GraphflowstablemarriageLayer::len(self : GraphflowstablemarriageLayer) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_layer_get(s : GraphflowstablemarriageLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageLayer::get(self : GraphflowstablemarriageLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_layer_set(s : GraphflowstablemarriageLayer, i : Int, v : Double) -> GraphflowstablemarriageLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageLayer::set(self : GraphflowstablemarriageLayer, i : Int, v : Double) -> GraphflowstablemarriageLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_layer_sum(s : GraphflowstablemarriageLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageLayer::sum(self : GraphflowstablemarriageLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_layer_mean(s : GraphflowstablemarriageLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageLayer::mean(self : GraphflowstablemarriageLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_layer_scale(s : GraphflowstablemarriageLayer, f : Double) -> GraphflowstablemarriageLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageLayer::scale(self : GraphflowstablemarriageLayer, f : Double) -> GraphflowstablemarriageLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_layer_add(a : GraphflowstablemarriageLayer, b : GraphflowstablemarriageLayer) -> GraphflowstablemarriageLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageLayer::add(self : GraphflowstablemarriageLayer, other : GraphflowstablemarriageLayer) -> GraphflowstablemarriageLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_layer_copy(s : GraphflowstablemarriageLayer) -> GraphflowstablemarriageLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageLayer::copy(self : GraphflowstablemarriageLayer) -> GraphflowstablemarriageLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_layer_fill(s : GraphflowstablemarriageLayer, v : Double) -> GraphflowstablemarriageLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageLayer::fill(self : GraphflowstablemarriageLayer, v : Double) -> GraphflowstablemarriageLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_layer_min(s : GraphflowstablemarriageLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageLayer::min(self : GraphflowstablemarriageLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_layer_max(s : GraphflowstablemarriageLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageLayer::max(self : GraphflowstablemarriageLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_layer_to_string(s : GraphflowstablemarriageLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageLayer::to_string(self : GraphflowstablemarriageLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_stable_marriage_buffer_make(size : Int) -> Graphflowstablemarr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_buffer_len(s : GraphflowstablemarriageBuffer) -> Int { s.size }
+pub fn GraphflowstablemarriageBuffer::len(self : GraphflowstablemarriageBuffer) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_buffer_get(s : GraphflowstablemarriageBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageBuffer::get(self : GraphflowstablemarriageBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_buffer_set(s : GraphflowstablemarriageBuffer, i : Int, v : Double) -> GraphflowstablemarriageBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageBuffer::set(self : GraphflowstablemarriageBuffer, i : Int, v : Double) -> GraphflowstablemarriageBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_buffer_sum(s : GraphflowstablemarriageBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageBuffer::sum(self : GraphflowstablemarriageBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_buffer_mean(s : GraphflowstablemarriageBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageBuffer::mean(self : GraphflowstablemarriageBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_buffer_scale(s : GraphflowstablemarriageBuffer, f : Double) -> GraphflowstablemarriageBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageBuffer::scale(self : GraphflowstablemarriageBuffer, f : Double) -> GraphflowstablemarriageBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_buffer_add(a : GraphflowstablemarriageBuffer, b : GraphflowstablemarriageBuffer) -> GraphflowstablemarriageBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageBuffer::add(self : GraphflowstablemarriageBuffer, other : GraphflowstablemarriageBuffer) -> GraphflowstablemarriageBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_buffer_copy(s : GraphflowstablemarriageBuffer) -> GraphflowstablemarriageBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageBuffer::copy(self : GraphflowstablemarriageBuffer) -> GraphflowstablemarriageBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_buffer_fill(s : GraphflowstablemarriageBuffer, v : Double) -> GraphflowstablemarriageBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageBuffer::fill(self : GraphflowstablemarriageBuffer, v : Double) -> GraphflowstablemarriageBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_buffer_min(s : GraphflowstablemarriageBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageBuffer::min(self : GraphflowstablemarriageBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_buffer_max(s : GraphflowstablemarriageBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageBuffer::max(self : GraphflowstablemarriageBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_buffer_to_string(s : GraphflowstablemarriageBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageBuffer::to_string(self : GraphflowstablemarriageBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_stable_marriage_cursor_make(size : Int) -> Graphflowstablemarr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_cursor_len(s : GraphflowstablemarriageCursor) -> Int { s.size }
+pub fn GraphflowstablemarriageCursor::len(self : GraphflowstablemarriageCursor) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_cursor_get(s : GraphflowstablemarriageCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageCursor::get(self : GraphflowstablemarriageCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_cursor_set(s : GraphflowstablemarriageCursor, i : Int, v : Double) -> GraphflowstablemarriageCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCursor::set(self : GraphflowstablemarriageCursor, i : Int, v : Double) -> GraphflowstablemarriageCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cursor_sum(s : GraphflowstablemarriageCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageCursor::sum(self : GraphflowstablemarriageCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_cursor_mean(s : GraphflowstablemarriageCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageCursor::mean(self : GraphflowstablemarriageCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_cursor_scale(s : GraphflowstablemarriageCursor, f : Double) -> GraphflowstablemarriageCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCursor::scale(self : GraphflowstablemarriageCursor, f : Double) -> GraphflowstablemarriageCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cursor_add(a : GraphflowstablemarriageCursor, b : GraphflowstablemarriageCursor) -> GraphflowstablemarriageCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageCursor::add(self : GraphflowstablemarriageCursor, other : GraphflowstablemarriageCursor) -> GraphflowstablemarriageCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cursor_copy(s : GraphflowstablemarriageCursor) -> GraphflowstablemarriageCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCursor::copy(self : GraphflowstablemarriageCursor) -> GraphflowstablemarriageCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cursor_fill(s : GraphflowstablemarriageCursor, v : Double) -> GraphflowstablemarriageCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageCursor::fill(self : GraphflowstablemarriageCursor, v : Double) -> GraphflowstablemarriageCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_cursor_min(s : GraphflowstablemarriageCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageCursor::min(self : GraphflowstablemarriageCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_cursor_max(s : GraphflowstablemarriageCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageCursor::max(self : GraphflowstablemarriageCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_cursor_to_string(s : GraphflowstablemarriageCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageCursor::to_string(self : GraphflowstablemarriageCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageView {
@@ -912,45 +912,45 @@ pub fn graph_flow_stable_marriage_view_make(size : Int) -> Graphflowstablemarria
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_view_len(s : GraphflowstablemarriageView) -> Int { s.size }
+pub fn GraphflowstablemarriageView::len(self : GraphflowstablemarriageView) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_view_get(s : GraphflowstablemarriageView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageView::get(self : GraphflowstablemarriageView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_view_set(s : GraphflowstablemarriageView, i : Int, v : Double) -> GraphflowstablemarriageView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageView::set(self : GraphflowstablemarriageView, i : Int, v : Double) -> GraphflowstablemarriageView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_view_sum(s : GraphflowstablemarriageView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageView::sum(self : GraphflowstablemarriageView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_view_mean(s : GraphflowstablemarriageView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageView::mean(self : GraphflowstablemarriageView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_view_scale(s : GraphflowstablemarriageView, f : Double) -> GraphflowstablemarriageView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageView::scale(self : GraphflowstablemarriageView, f : Double) -> GraphflowstablemarriageView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_view_add(a : GraphflowstablemarriageView, b : GraphflowstablemarriageView) -> GraphflowstablemarriageView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageView::add(self : GraphflowstablemarriageView, other : GraphflowstablemarriageView) -> GraphflowstablemarriageView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_view_copy(s : GraphflowstablemarriageView) -> GraphflowstablemarriageView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageView::copy(self : GraphflowstablemarriageView) -> GraphflowstablemarriageView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_view_fill(s : GraphflowstablemarriageView, v : Double) -> GraphflowstablemarriageView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageView::fill(self : GraphflowstablemarriageView, v : Double) -> GraphflowstablemarriageView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_view_min(s : GraphflowstablemarriageView) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageView::min(self : GraphflowstablemarriageView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_view_max(s : GraphflowstablemarriageView) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageView::max(self : GraphflowstablemarriageView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_view_to_string(s : GraphflowstablemarriageView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageView::to_string(self : GraphflowstablemarriageView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_stable_marriage_range_make(size : Int) -> Graphflowstablemarri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_range_len(s : GraphflowstablemarriageRange) -> Int { s.size }
+pub fn GraphflowstablemarriageRange::len(self : GraphflowstablemarriageRange) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_range_get(s : GraphflowstablemarriageRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageRange::get(self : GraphflowstablemarriageRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_range_set(s : GraphflowstablemarriageRange, i : Int, v : Double) -> GraphflowstablemarriageRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageRange::set(self : GraphflowstablemarriageRange, i : Int, v : Double) -> GraphflowstablemarriageRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_range_sum(s : GraphflowstablemarriageRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageRange::sum(self : GraphflowstablemarriageRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_range_mean(s : GraphflowstablemarriageRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageRange::mean(self : GraphflowstablemarriageRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_range_scale(s : GraphflowstablemarriageRange, f : Double) -> GraphflowstablemarriageRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageRange::scale(self : GraphflowstablemarriageRange, f : Double) -> GraphflowstablemarriageRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_range_add(a : GraphflowstablemarriageRange, b : GraphflowstablemarriageRange) -> GraphflowstablemarriageRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageRange::add(self : GraphflowstablemarriageRange, other : GraphflowstablemarriageRange) -> GraphflowstablemarriageRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_range_copy(s : GraphflowstablemarriageRange) -> GraphflowstablemarriageRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageRange::copy(self : GraphflowstablemarriageRange) -> GraphflowstablemarriageRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_range_fill(s : GraphflowstablemarriageRange, v : Double) -> GraphflowstablemarriageRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageRange::fill(self : GraphflowstablemarriageRange, v : Double) -> GraphflowstablemarriageRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_range_min(s : GraphflowstablemarriageRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageRange::min(self : GraphflowstablemarriageRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_range_max(s : GraphflowstablemarriageRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageRange::max(self : GraphflowstablemarriageRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_range_to_string(s : GraphflowstablemarriageRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageRange::to_string(self : GraphflowstablemarriageRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowstablemarriageSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_stable_marriage_slice_make(size : Int) -> Graphflowstablemarri
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_stable_marriage_slice_len(s : GraphflowstablemarriageSlice) -> Int { s.size }
+pub fn GraphflowstablemarriageSlice::len(self : GraphflowstablemarriageSlice) -> Int { self.size }
 
-pub fn graph_flow_stable_marriage_slice_get(s : GraphflowstablemarriageSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowstablemarriageSlice::get(self : GraphflowstablemarriageSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_stable_marriage_slice_set(s : GraphflowstablemarriageSlice, i : Int, v : Double) -> GraphflowstablemarriageSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageSlice::set(self : GraphflowstablemarriageSlice, i : Int, v : Double) -> GraphflowstablemarriageSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_slice_sum(s : GraphflowstablemarriageSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowstablemarriageSlice::sum(self : GraphflowstablemarriageSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_stable_marriage_slice_mean(s : GraphflowstablemarriageSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowstablemarriageSlice::mean(self : GraphflowstablemarriageSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_stable_marriage_slice_scale(s : GraphflowstablemarriageSlice, f : Double) -> GraphflowstablemarriageSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageSlice::scale(self : GraphflowstablemarriageSlice, f : Double) -> GraphflowstablemarriageSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_slice_add(a : GraphflowstablemarriageSlice, b : GraphflowstablemarriageSlice) -> GraphflowstablemarriageSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowstablemarriageSlice::add(self : GraphflowstablemarriageSlice, other : GraphflowstablemarriageSlice) -> GraphflowstablemarriageSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_slice_copy(s : GraphflowstablemarriageSlice) -> GraphflowstablemarriageSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageSlice::copy(self : GraphflowstablemarriageSlice) -> GraphflowstablemarriageSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_slice_fill(s : GraphflowstablemarriageSlice, v : Double) -> GraphflowstablemarriageSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowstablemarriageSlice::fill(self : GraphflowstablemarriageSlice, v : Double) -> GraphflowstablemarriageSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_stable_marriage_slice_min(s : GraphflowstablemarriageSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowstablemarriageSlice::min(self : GraphflowstablemarriageSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_stable_marriage_slice_max(s : GraphflowstablemarriageSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowstablemarriageSlice::max(self : GraphflowstablemarriageSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_stable_marriage_slice_to_string(s : GraphflowstablemarriageSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowstablemarriageSlice::to_string(self : GraphflowstablemarriageSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

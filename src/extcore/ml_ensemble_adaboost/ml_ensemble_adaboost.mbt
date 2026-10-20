@@ -351,45 +351,45 @@ pub fn ml_ensemble_adaboost_frame_make(size : Int) -> MlensembleadaboostFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_frame_len(s : MlensembleadaboostFrame) -> Int { s.size }
+pub fn MlensembleadaboostFrame::len(self : MlensembleadaboostFrame) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_frame_get(s : MlensembleadaboostFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostFrame::get(self : MlensembleadaboostFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_frame_set(s : MlensembleadaboostFrame, i : Int, v : Double) -> MlensembleadaboostFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostFrame::set(self : MlensembleadaboostFrame, i : Int, v : Double) -> MlensembleadaboostFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_frame_sum(s : MlensembleadaboostFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostFrame::sum(self : MlensembleadaboostFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_frame_mean(s : MlensembleadaboostFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostFrame::mean(self : MlensembleadaboostFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_frame_scale(s : MlensembleadaboostFrame, f : Double) -> MlensembleadaboostFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostFrame::scale(self : MlensembleadaboostFrame, f : Double) -> MlensembleadaboostFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_frame_add(a : MlensembleadaboostFrame, b : MlensembleadaboostFrame) -> MlensembleadaboostFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostFrame::add(self : MlensembleadaboostFrame, other : MlensembleadaboostFrame) -> MlensembleadaboostFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_frame_copy(s : MlensembleadaboostFrame) -> MlensembleadaboostFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostFrame::copy(self : MlensembleadaboostFrame) -> MlensembleadaboostFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_frame_fill(s : MlensembleadaboostFrame, v : Double) -> MlensembleadaboostFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostFrame::fill(self : MlensembleadaboostFrame, v : Double) -> MlensembleadaboostFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_frame_min(s : MlensembleadaboostFrame) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostFrame::min(self : MlensembleadaboostFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_frame_max(s : MlensembleadaboostFrame) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostFrame::max(self : MlensembleadaboostFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_frame_to_string(s : MlensembleadaboostFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostFrame::to_string(self : MlensembleadaboostFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_adaboost_table_make(size : Int) -> MlensembleadaboostTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_table_len(s : MlensembleadaboostTable) -> Int { s.size }
+pub fn MlensembleadaboostTable::len(self : MlensembleadaboostTable) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_table_get(s : MlensembleadaboostTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostTable::get(self : MlensembleadaboostTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_table_set(s : MlensembleadaboostTable, i : Int, v : Double) -> MlensembleadaboostTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostTable::set(self : MlensembleadaboostTable, i : Int, v : Double) -> MlensembleadaboostTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_table_sum(s : MlensembleadaboostTable) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostTable::sum(self : MlensembleadaboostTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_table_mean(s : MlensembleadaboostTable) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostTable::mean(self : MlensembleadaboostTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_table_scale(s : MlensembleadaboostTable, f : Double) -> MlensembleadaboostTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostTable::scale(self : MlensembleadaboostTable, f : Double) -> MlensembleadaboostTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_table_add(a : MlensembleadaboostTable, b : MlensembleadaboostTable) -> MlensembleadaboostTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostTable::add(self : MlensembleadaboostTable, other : MlensembleadaboostTable) -> MlensembleadaboostTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_table_copy(s : MlensembleadaboostTable) -> MlensembleadaboostTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostTable::copy(self : MlensembleadaboostTable) -> MlensembleadaboostTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_table_fill(s : MlensembleadaboostTable, v : Double) -> MlensembleadaboostTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostTable::fill(self : MlensembleadaboostTable, v : Double) -> MlensembleadaboostTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_table_min(s : MlensembleadaboostTable) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostTable::min(self : MlensembleadaboostTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_table_max(s : MlensembleadaboostTable) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostTable::max(self : MlensembleadaboostTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_table_to_string(s : MlensembleadaboostTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostTable::to_string(self : MlensembleadaboostTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_adaboost_graphn_make(size : Int) -> MlensembleadaboostGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_graphn_len(s : MlensembleadaboostGraphN) -> Int { s.size }
+pub fn MlensembleadaboostGraphN::len(self : MlensembleadaboostGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_graphn_get(s : MlensembleadaboostGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostGraphN::get(self : MlensembleadaboostGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_graphn_set(s : MlensembleadaboostGraphN, i : Int, v : Double) -> MlensembleadaboostGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostGraphN::set(self : MlensembleadaboostGraphN, i : Int, v : Double) -> MlensembleadaboostGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_graphn_sum(s : MlensembleadaboostGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostGraphN::sum(self : MlensembleadaboostGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_graphn_mean(s : MlensembleadaboostGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostGraphN::mean(self : MlensembleadaboostGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_graphn_scale(s : MlensembleadaboostGraphN, f : Double) -> MlensembleadaboostGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostGraphN::scale(self : MlensembleadaboostGraphN, f : Double) -> MlensembleadaboostGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_graphn_add(a : MlensembleadaboostGraphN, b : MlensembleadaboostGraphN) -> MlensembleadaboostGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostGraphN::add(self : MlensembleadaboostGraphN, other : MlensembleadaboostGraphN) -> MlensembleadaboostGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_graphn_copy(s : MlensembleadaboostGraphN) -> MlensembleadaboostGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostGraphN::copy(self : MlensembleadaboostGraphN) -> MlensembleadaboostGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_graphn_fill(s : MlensembleadaboostGraphN, v : Double) -> MlensembleadaboostGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostGraphN::fill(self : MlensembleadaboostGraphN, v : Double) -> MlensembleadaboostGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_graphn_min(s : MlensembleadaboostGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostGraphN::min(self : MlensembleadaboostGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_graphn_max(s : MlensembleadaboostGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostGraphN::max(self : MlensembleadaboostGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_graphn_to_string(s : MlensembleadaboostGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostGraphN::to_string(self : MlensembleadaboostGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_adaboost_node_make(size : Int) -> MlensembleadaboostNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_node_len(s : MlensembleadaboostNode) -> Int { s.size }
+pub fn MlensembleadaboostNode::len(self : MlensembleadaboostNode) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_node_get(s : MlensembleadaboostNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostNode::get(self : MlensembleadaboostNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_node_set(s : MlensembleadaboostNode, i : Int, v : Double) -> MlensembleadaboostNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostNode::set(self : MlensembleadaboostNode, i : Int, v : Double) -> MlensembleadaboostNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_node_sum(s : MlensembleadaboostNode) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostNode::sum(self : MlensembleadaboostNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_node_mean(s : MlensembleadaboostNode) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostNode::mean(self : MlensembleadaboostNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_node_scale(s : MlensembleadaboostNode, f : Double) -> MlensembleadaboostNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostNode::scale(self : MlensembleadaboostNode, f : Double) -> MlensembleadaboostNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_node_add(a : MlensembleadaboostNode, b : MlensembleadaboostNode) -> MlensembleadaboostNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostNode::add(self : MlensembleadaboostNode, other : MlensembleadaboostNode) -> MlensembleadaboostNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_node_copy(s : MlensembleadaboostNode) -> MlensembleadaboostNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostNode::copy(self : MlensembleadaboostNode) -> MlensembleadaboostNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_node_fill(s : MlensembleadaboostNode, v : Double) -> MlensembleadaboostNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostNode::fill(self : MlensembleadaboostNode, v : Double) -> MlensembleadaboostNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_node_min(s : MlensembleadaboostNode) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostNode::min(self : MlensembleadaboostNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_node_max(s : MlensembleadaboostNode) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostNode::max(self : MlensembleadaboostNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_node_to_string(s : MlensembleadaboostNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostNode::to_string(self : MlensembleadaboostNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_adaboost_edge_make(size : Int) -> MlensembleadaboostEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_edge_len(s : MlensembleadaboostEdge) -> Int { s.size }
+pub fn MlensembleadaboostEdge::len(self : MlensembleadaboostEdge) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_edge_get(s : MlensembleadaboostEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostEdge::get(self : MlensembleadaboostEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_edge_set(s : MlensembleadaboostEdge, i : Int, v : Double) -> MlensembleadaboostEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostEdge::set(self : MlensembleadaboostEdge, i : Int, v : Double) -> MlensembleadaboostEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_edge_sum(s : MlensembleadaboostEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostEdge::sum(self : MlensembleadaboostEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_edge_mean(s : MlensembleadaboostEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostEdge::mean(self : MlensembleadaboostEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_edge_scale(s : MlensembleadaboostEdge, f : Double) -> MlensembleadaboostEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostEdge::scale(self : MlensembleadaboostEdge, f : Double) -> MlensembleadaboostEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_edge_add(a : MlensembleadaboostEdge, b : MlensembleadaboostEdge) -> MlensembleadaboostEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostEdge::add(self : MlensembleadaboostEdge, other : MlensembleadaboostEdge) -> MlensembleadaboostEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_edge_copy(s : MlensembleadaboostEdge) -> MlensembleadaboostEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostEdge::copy(self : MlensembleadaboostEdge) -> MlensembleadaboostEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_edge_fill(s : MlensembleadaboostEdge, v : Double) -> MlensembleadaboostEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostEdge::fill(self : MlensembleadaboostEdge, v : Double) -> MlensembleadaboostEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_edge_min(s : MlensembleadaboostEdge) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostEdge::min(self : MlensembleadaboostEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_edge_max(s : MlensembleadaboostEdge) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostEdge::max(self : MlensembleadaboostEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_edge_to_string(s : MlensembleadaboostEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostEdge::to_string(self : MlensembleadaboostEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_adaboost_path_make(size : Int) -> MlensembleadaboostPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_path_len(s : MlensembleadaboostPath) -> Int { s.size }
+pub fn MlensembleadaboostPath::len(self : MlensembleadaboostPath) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_path_get(s : MlensembleadaboostPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostPath::get(self : MlensembleadaboostPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_path_set(s : MlensembleadaboostPath, i : Int, v : Double) -> MlensembleadaboostPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostPath::set(self : MlensembleadaboostPath, i : Int, v : Double) -> MlensembleadaboostPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_path_sum(s : MlensembleadaboostPath) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostPath::sum(self : MlensembleadaboostPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_path_mean(s : MlensembleadaboostPath) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostPath::mean(self : MlensembleadaboostPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_path_scale(s : MlensembleadaboostPath, f : Double) -> MlensembleadaboostPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostPath::scale(self : MlensembleadaboostPath, f : Double) -> MlensembleadaboostPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_path_add(a : MlensembleadaboostPath, b : MlensembleadaboostPath) -> MlensembleadaboostPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostPath::add(self : MlensembleadaboostPath, other : MlensembleadaboostPath) -> MlensembleadaboostPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_path_copy(s : MlensembleadaboostPath) -> MlensembleadaboostPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostPath::copy(self : MlensembleadaboostPath) -> MlensembleadaboostPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_path_fill(s : MlensembleadaboostPath, v : Double) -> MlensembleadaboostPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostPath::fill(self : MlensembleadaboostPath, v : Double) -> MlensembleadaboostPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_path_min(s : MlensembleadaboostPath) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostPath::min(self : MlensembleadaboostPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_path_max(s : MlensembleadaboostPath) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostPath::max(self : MlensembleadaboostPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_path_to_string(s : MlensembleadaboostPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostPath::to_string(self : MlensembleadaboostPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_adaboost_cluster_make(size : Int) -> MlensembleadaboostCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_cluster_len(s : MlensembleadaboostCluster) -> Int { s.size }
+pub fn MlensembleadaboostCluster::len(self : MlensembleadaboostCluster) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_cluster_get(s : MlensembleadaboostCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostCluster::get(self : MlensembleadaboostCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_cluster_set(s : MlensembleadaboostCluster, i : Int, v : Double) -> MlensembleadaboostCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCluster::set(self : MlensembleadaboostCluster, i : Int, v : Double) -> MlensembleadaboostCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cluster_sum(s : MlensembleadaboostCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostCluster::sum(self : MlensembleadaboostCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_cluster_mean(s : MlensembleadaboostCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostCluster::mean(self : MlensembleadaboostCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_cluster_scale(s : MlensembleadaboostCluster, f : Double) -> MlensembleadaboostCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCluster::scale(self : MlensembleadaboostCluster, f : Double) -> MlensembleadaboostCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cluster_add(a : MlensembleadaboostCluster, b : MlensembleadaboostCluster) -> MlensembleadaboostCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostCluster::add(self : MlensembleadaboostCluster, other : MlensembleadaboostCluster) -> MlensembleadaboostCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cluster_copy(s : MlensembleadaboostCluster) -> MlensembleadaboostCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCluster::copy(self : MlensembleadaboostCluster) -> MlensembleadaboostCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cluster_fill(s : MlensembleadaboostCluster, v : Double) -> MlensembleadaboostCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCluster::fill(self : MlensembleadaboostCluster, v : Double) -> MlensembleadaboostCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cluster_min(s : MlensembleadaboostCluster) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostCluster::min(self : MlensembleadaboostCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_cluster_max(s : MlensembleadaboostCluster) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostCluster::max(self : MlensembleadaboostCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_cluster_to_string(s : MlensembleadaboostCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostCluster::to_string(self : MlensembleadaboostCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_adaboost_model_make(size : Int) -> MlensembleadaboostModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_model_len(s : MlensembleadaboostModel) -> Int { s.size }
+pub fn MlensembleadaboostModel::len(self : MlensembleadaboostModel) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_model_get(s : MlensembleadaboostModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostModel::get(self : MlensembleadaboostModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_model_set(s : MlensembleadaboostModel, i : Int, v : Double) -> MlensembleadaboostModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostModel::set(self : MlensembleadaboostModel, i : Int, v : Double) -> MlensembleadaboostModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_model_sum(s : MlensembleadaboostModel) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostModel::sum(self : MlensembleadaboostModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_model_mean(s : MlensembleadaboostModel) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostModel::mean(self : MlensembleadaboostModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_model_scale(s : MlensembleadaboostModel, f : Double) -> MlensembleadaboostModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostModel::scale(self : MlensembleadaboostModel, f : Double) -> MlensembleadaboostModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_model_add(a : MlensembleadaboostModel, b : MlensembleadaboostModel) -> MlensembleadaboostModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostModel::add(self : MlensembleadaboostModel, other : MlensembleadaboostModel) -> MlensembleadaboostModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_model_copy(s : MlensembleadaboostModel) -> MlensembleadaboostModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostModel::copy(self : MlensembleadaboostModel) -> MlensembleadaboostModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_model_fill(s : MlensembleadaboostModel, v : Double) -> MlensembleadaboostModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostModel::fill(self : MlensembleadaboostModel, v : Double) -> MlensembleadaboostModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_model_min(s : MlensembleadaboostModel) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostModel::min(self : MlensembleadaboostModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_model_max(s : MlensembleadaboostModel) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostModel::max(self : MlensembleadaboostModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_model_to_string(s : MlensembleadaboostModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostModel::to_string(self : MlensembleadaboostModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_adaboost_layer_make(size : Int) -> MlensembleadaboostLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_layer_len(s : MlensembleadaboostLayer) -> Int { s.size }
+pub fn MlensembleadaboostLayer::len(self : MlensembleadaboostLayer) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_layer_get(s : MlensembleadaboostLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostLayer::get(self : MlensembleadaboostLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_layer_set(s : MlensembleadaboostLayer, i : Int, v : Double) -> MlensembleadaboostLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostLayer::set(self : MlensembleadaboostLayer, i : Int, v : Double) -> MlensembleadaboostLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_layer_sum(s : MlensembleadaboostLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostLayer::sum(self : MlensembleadaboostLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_layer_mean(s : MlensembleadaboostLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostLayer::mean(self : MlensembleadaboostLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_layer_scale(s : MlensembleadaboostLayer, f : Double) -> MlensembleadaboostLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostLayer::scale(self : MlensembleadaboostLayer, f : Double) -> MlensembleadaboostLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_layer_add(a : MlensembleadaboostLayer, b : MlensembleadaboostLayer) -> MlensembleadaboostLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostLayer::add(self : MlensembleadaboostLayer, other : MlensembleadaboostLayer) -> MlensembleadaboostLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_layer_copy(s : MlensembleadaboostLayer) -> MlensembleadaboostLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostLayer::copy(self : MlensembleadaboostLayer) -> MlensembleadaboostLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_layer_fill(s : MlensembleadaboostLayer, v : Double) -> MlensembleadaboostLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostLayer::fill(self : MlensembleadaboostLayer, v : Double) -> MlensembleadaboostLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_layer_min(s : MlensembleadaboostLayer) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostLayer::min(self : MlensembleadaboostLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_layer_max(s : MlensembleadaboostLayer) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostLayer::max(self : MlensembleadaboostLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_layer_to_string(s : MlensembleadaboostLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostLayer::to_string(self : MlensembleadaboostLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_adaboost_buffer_make(size : Int) -> MlensembleadaboostBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_buffer_len(s : MlensembleadaboostBuffer) -> Int { s.size }
+pub fn MlensembleadaboostBuffer::len(self : MlensembleadaboostBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_buffer_get(s : MlensembleadaboostBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostBuffer::get(self : MlensembleadaboostBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_buffer_set(s : MlensembleadaboostBuffer, i : Int, v : Double) -> MlensembleadaboostBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostBuffer::set(self : MlensembleadaboostBuffer, i : Int, v : Double) -> MlensembleadaboostBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_buffer_sum(s : MlensembleadaboostBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostBuffer::sum(self : MlensembleadaboostBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_buffer_mean(s : MlensembleadaboostBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostBuffer::mean(self : MlensembleadaboostBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_buffer_scale(s : MlensembleadaboostBuffer, f : Double) -> MlensembleadaboostBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostBuffer::scale(self : MlensembleadaboostBuffer, f : Double) -> MlensembleadaboostBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_buffer_add(a : MlensembleadaboostBuffer, b : MlensembleadaboostBuffer) -> MlensembleadaboostBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostBuffer::add(self : MlensembleadaboostBuffer, other : MlensembleadaboostBuffer) -> MlensembleadaboostBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_buffer_copy(s : MlensembleadaboostBuffer) -> MlensembleadaboostBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostBuffer::copy(self : MlensembleadaboostBuffer) -> MlensembleadaboostBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_buffer_fill(s : MlensembleadaboostBuffer, v : Double) -> MlensembleadaboostBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostBuffer::fill(self : MlensembleadaboostBuffer, v : Double) -> MlensembleadaboostBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_buffer_min(s : MlensembleadaboostBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostBuffer::min(self : MlensembleadaboostBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_buffer_max(s : MlensembleadaboostBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostBuffer::max(self : MlensembleadaboostBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_buffer_to_string(s : MlensembleadaboostBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostBuffer::to_string(self : MlensembleadaboostBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_adaboost_cursor_make(size : Int) -> MlensembleadaboostCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_cursor_len(s : MlensembleadaboostCursor) -> Int { s.size }
+pub fn MlensembleadaboostCursor::len(self : MlensembleadaboostCursor) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_cursor_get(s : MlensembleadaboostCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostCursor::get(self : MlensembleadaboostCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_cursor_set(s : MlensembleadaboostCursor, i : Int, v : Double) -> MlensembleadaboostCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCursor::set(self : MlensembleadaboostCursor, i : Int, v : Double) -> MlensembleadaboostCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cursor_sum(s : MlensembleadaboostCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostCursor::sum(self : MlensembleadaboostCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_cursor_mean(s : MlensembleadaboostCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostCursor::mean(self : MlensembleadaboostCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_cursor_scale(s : MlensembleadaboostCursor, f : Double) -> MlensembleadaboostCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCursor::scale(self : MlensembleadaboostCursor, f : Double) -> MlensembleadaboostCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cursor_add(a : MlensembleadaboostCursor, b : MlensembleadaboostCursor) -> MlensembleadaboostCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostCursor::add(self : MlensembleadaboostCursor, other : MlensembleadaboostCursor) -> MlensembleadaboostCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cursor_copy(s : MlensembleadaboostCursor) -> MlensembleadaboostCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCursor::copy(self : MlensembleadaboostCursor) -> MlensembleadaboostCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cursor_fill(s : MlensembleadaboostCursor, v : Double) -> MlensembleadaboostCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostCursor::fill(self : MlensembleadaboostCursor, v : Double) -> MlensembleadaboostCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_cursor_min(s : MlensembleadaboostCursor) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostCursor::min(self : MlensembleadaboostCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_cursor_max(s : MlensembleadaboostCursor) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostCursor::max(self : MlensembleadaboostCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_cursor_to_string(s : MlensembleadaboostCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostCursor::to_string(self : MlensembleadaboostCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_adaboost_view_make(size : Int) -> MlensembleadaboostView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_view_len(s : MlensembleadaboostView) -> Int { s.size }
+pub fn MlensembleadaboostView::len(self : MlensembleadaboostView) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_view_get(s : MlensembleadaboostView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostView::get(self : MlensembleadaboostView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_view_set(s : MlensembleadaboostView, i : Int, v : Double) -> MlensembleadaboostView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostView::set(self : MlensembleadaboostView, i : Int, v : Double) -> MlensembleadaboostView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_view_sum(s : MlensembleadaboostView) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostView::sum(self : MlensembleadaboostView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_view_mean(s : MlensembleadaboostView) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostView::mean(self : MlensembleadaboostView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_view_scale(s : MlensembleadaboostView, f : Double) -> MlensembleadaboostView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostView::scale(self : MlensembleadaboostView, f : Double) -> MlensembleadaboostView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_view_add(a : MlensembleadaboostView, b : MlensembleadaboostView) -> MlensembleadaboostView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostView::add(self : MlensembleadaboostView, other : MlensembleadaboostView) -> MlensembleadaboostView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_view_copy(s : MlensembleadaboostView) -> MlensembleadaboostView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostView::copy(self : MlensembleadaboostView) -> MlensembleadaboostView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_view_fill(s : MlensembleadaboostView, v : Double) -> MlensembleadaboostView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostView::fill(self : MlensembleadaboostView, v : Double) -> MlensembleadaboostView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_view_min(s : MlensembleadaboostView) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostView::min(self : MlensembleadaboostView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_view_max(s : MlensembleadaboostView) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostView::max(self : MlensembleadaboostView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_view_to_string(s : MlensembleadaboostView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostView::to_string(self : MlensembleadaboostView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_adaboost_range_make(size : Int) -> MlensembleadaboostRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_range_len(s : MlensembleadaboostRange) -> Int { s.size }
+pub fn MlensembleadaboostRange::len(self : MlensembleadaboostRange) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_range_get(s : MlensembleadaboostRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostRange::get(self : MlensembleadaboostRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_range_set(s : MlensembleadaboostRange, i : Int, v : Double) -> MlensembleadaboostRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostRange::set(self : MlensembleadaboostRange, i : Int, v : Double) -> MlensembleadaboostRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_range_sum(s : MlensembleadaboostRange) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostRange::sum(self : MlensembleadaboostRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_range_mean(s : MlensembleadaboostRange) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostRange::mean(self : MlensembleadaboostRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_range_scale(s : MlensembleadaboostRange, f : Double) -> MlensembleadaboostRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostRange::scale(self : MlensembleadaboostRange, f : Double) -> MlensembleadaboostRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_range_add(a : MlensembleadaboostRange, b : MlensembleadaboostRange) -> MlensembleadaboostRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostRange::add(self : MlensembleadaboostRange, other : MlensembleadaboostRange) -> MlensembleadaboostRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_range_copy(s : MlensembleadaboostRange) -> MlensembleadaboostRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostRange::copy(self : MlensembleadaboostRange) -> MlensembleadaboostRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_range_fill(s : MlensembleadaboostRange, v : Double) -> MlensembleadaboostRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostRange::fill(self : MlensembleadaboostRange, v : Double) -> MlensembleadaboostRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_range_min(s : MlensembleadaboostRange) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostRange::min(self : MlensembleadaboostRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_range_max(s : MlensembleadaboostRange) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostRange::max(self : MlensembleadaboostRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_range_to_string(s : MlensembleadaboostRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostRange::to_string(self : MlensembleadaboostRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensembleadaboostSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_adaboost_slice_make(size : Int) -> MlensembleadaboostSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_adaboost_slice_len(s : MlensembleadaboostSlice) -> Int { s.size }
+pub fn MlensembleadaboostSlice::len(self : MlensembleadaboostSlice) -> Int { self.size }
 
-pub fn ml_ensemble_adaboost_slice_get(s : MlensembleadaboostSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensembleadaboostSlice::get(self : MlensembleadaboostSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_adaboost_slice_set(s : MlensembleadaboostSlice, i : Int, v : Double) -> MlensembleadaboostSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensembleadaboostSlice::set(self : MlensembleadaboostSlice, i : Int, v : Double) -> MlensembleadaboostSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_slice_sum(s : MlensembleadaboostSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensembleadaboostSlice::sum(self : MlensembleadaboostSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_adaboost_slice_mean(s : MlensembleadaboostSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensembleadaboostSlice::mean(self : MlensembleadaboostSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_adaboost_slice_scale(s : MlensembleadaboostSlice, f : Double) -> MlensembleadaboostSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostSlice::scale(self : MlensembleadaboostSlice, f : Double) -> MlensembleadaboostSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_slice_add(a : MlensembleadaboostSlice, b : MlensembleadaboostSlice) -> MlensembleadaboostSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensembleadaboostSlice::add(self : MlensembleadaboostSlice, other : MlensembleadaboostSlice) -> MlensembleadaboostSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_slice_copy(s : MlensembleadaboostSlice) -> MlensembleadaboostSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostSlice::copy(self : MlensembleadaboostSlice) -> MlensembleadaboostSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_slice_fill(s : MlensembleadaboostSlice, v : Double) -> MlensembleadaboostSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensembleadaboostSlice::fill(self : MlensembleadaboostSlice, v : Double) -> MlensembleadaboostSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_adaboost_slice_min(s : MlensembleadaboostSlice) -> Double { @_common.min(s.data) }
+pub fn MlensembleadaboostSlice::min(self : MlensembleadaboostSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_adaboost_slice_max(s : MlensembleadaboostSlice) -> Double { @_common.max(s.data) }
+pub fn MlensembleadaboostSlice::max(self : MlensembleadaboostSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_adaboost_slice_to_string(s : MlensembleadaboostSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensembleadaboostSlice::to_string(self : MlensembleadaboostSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

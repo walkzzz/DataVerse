@@ -351,45 +351,45 @@ pub fn ml_cluster_mean_shift_frame_make(size : Int) -> MlclustermeanshiftFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_frame_len(s : MlclustermeanshiftFrame) -> Int { s.size }
+pub fn MlclustermeanshiftFrame::len(self : MlclustermeanshiftFrame) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_frame_get(s : MlclustermeanshiftFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftFrame::get(self : MlclustermeanshiftFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_frame_set(s : MlclustermeanshiftFrame, i : Int, v : Double) -> MlclustermeanshiftFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftFrame::set(self : MlclustermeanshiftFrame, i : Int, v : Double) -> MlclustermeanshiftFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_frame_sum(s : MlclustermeanshiftFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftFrame::sum(self : MlclustermeanshiftFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_frame_mean(s : MlclustermeanshiftFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftFrame::mean(self : MlclustermeanshiftFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_frame_scale(s : MlclustermeanshiftFrame, f : Double) -> MlclustermeanshiftFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftFrame::scale(self : MlclustermeanshiftFrame, f : Double) -> MlclustermeanshiftFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_frame_add(a : MlclustermeanshiftFrame, b : MlclustermeanshiftFrame) -> MlclustermeanshiftFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftFrame::add(self : MlclustermeanshiftFrame, other : MlclustermeanshiftFrame) -> MlclustermeanshiftFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_frame_copy(s : MlclustermeanshiftFrame) -> MlclustermeanshiftFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftFrame::copy(self : MlclustermeanshiftFrame) -> MlclustermeanshiftFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_frame_fill(s : MlclustermeanshiftFrame, v : Double) -> MlclustermeanshiftFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftFrame::fill(self : MlclustermeanshiftFrame, v : Double) -> MlclustermeanshiftFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_frame_min(s : MlclustermeanshiftFrame) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftFrame::min(self : MlclustermeanshiftFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_frame_max(s : MlclustermeanshiftFrame) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftFrame::max(self : MlclustermeanshiftFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_frame_to_string(s : MlclustermeanshiftFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftFrame::to_string(self : MlclustermeanshiftFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_mean_shift_table_make(size : Int) -> MlclustermeanshiftTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_table_len(s : MlclustermeanshiftTable) -> Int { s.size }
+pub fn MlclustermeanshiftTable::len(self : MlclustermeanshiftTable) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_table_get(s : MlclustermeanshiftTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftTable::get(self : MlclustermeanshiftTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_table_set(s : MlclustermeanshiftTable, i : Int, v : Double) -> MlclustermeanshiftTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftTable::set(self : MlclustermeanshiftTable, i : Int, v : Double) -> MlclustermeanshiftTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_table_sum(s : MlclustermeanshiftTable) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftTable::sum(self : MlclustermeanshiftTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_table_mean(s : MlclustermeanshiftTable) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftTable::mean(self : MlclustermeanshiftTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_table_scale(s : MlclustermeanshiftTable, f : Double) -> MlclustermeanshiftTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftTable::scale(self : MlclustermeanshiftTable, f : Double) -> MlclustermeanshiftTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_table_add(a : MlclustermeanshiftTable, b : MlclustermeanshiftTable) -> MlclustermeanshiftTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftTable::add(self : MlclustermeanshiftTable, other : MlclustermeanshiftTable) -> MlclustermeanshiftTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_table_copy(s : MlclustermeanshiftTable) -> MlclustermeanshiftTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftTable::copy(self : MlclustermeanshiftTable) -> MlclustermeanshiftTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_table_fill(s : MlclustermeanshiftTable, v : Double) -> MlclustermeanshiftTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftTable::fill(self : MlclustermeanshiftTable, v : Double) -> MlclustermeanshiftTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_table_min(s : MlclustermeanshiftTable) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftTable::min(self : MlclustermeanshiftTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_table_max(s : MlclustermeanshiftTable) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftTable::max(self : MlclustermeanshiftTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_table_to_string(s : MlclustermeanshiftTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftTable::to_string(self : MlclustermeanshiftTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_mean_shift_graphn_make(size : Int) -> MlclustermeanshiftGraphN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_graphn_len(s : MlclustermeanshiftGraphN) -> Int { s.size }
+pub fn MlclustermeanshiftGraphN::len(self : MlclustermeanshiftGraphN) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_graphn_get(s : MlclustermeanshiftGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftGraphN::get(self : MlclustermeanshiftGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_graphn_set(s : MlclustermeanshiftGraphN, i : Int, v : Double) -> MlclustermeanshiftGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftGraphN::set(self : MlclustermeanshiftGraphN, i : Int, v : Double) -> MlclustermeanshiftGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_graphn_sum(s : MlclustermeanshiftGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftGraphN::sum(self : MlclustermeanshiftGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_graphn_mean(s : MlclustermeanshiftGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftGraphN::mean(self : MlclustermeanshiftGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_graphn_scale(s : MlclustermeanshiftGraphN, f : Double) -> MlclustermeanshiftGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftGraphN::scale(self : MlclustermeanshiftGraphN, f : Double) -> MlclustermeanshiftGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_graphn_add(a : MlclustermeanshiftGraphN, b : MlclustermeanshiftGraphN) -> MlclustermeanshiftGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftGraphN::add(self : MlclustermeanshiftGraphN, other : MlclustermeanshiftGraphN) -> MlclustermeanshiftGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_graphn_copy(s : MlclustermeanshiftGraphN) -> MlclustermeanshiftGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftGraphN::copy(self : MlclustermeanshiftGraphN) -> MlclustermeanshiftGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_graphn_fill(s : MlclustermeanshiftGraphN, v : Double) -> MlclustermeanshiftGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftGraphN::fill(self : MlclustermeanshiftGraphN, v : Double) -> MlclustermeanshiftGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_graphn_min(s : MlclustermeanshiftGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftGraphN::min(self : MlclustermeanshiftGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_graphn_max(s : MlclustermeanshiftGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftGraphN::max(self : MlclustermeanshiftGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_graphn_to_string(s : MlclustermeanshiftGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftGraphN::to_string(self : MlclustermeanshiftGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_mean_shift_node_make(size : Int) -> MlclustermeanshiftNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_node_len(s : MlclustermeanshiftNode) -> Int { s.size }
+pub fn MlclustermeanshiftNode::len(self : MlclustermeanshiftNode) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_node_get(s : MlclustermeanshiftNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftNode::get(self : MlclustermeanshiftNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_node_set(s : MlclustermeanshiftNode, i : Int, v : Double) -> MlclustermeanshiftNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftNode::set(self : MlclustermeanshiftNode, i : Int, v : Double) -> MlclustermeanshiftNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_node_sum(s : MlclustermeanshiftNode) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftNode::sum(self : MlclustermeanshiftNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_node_mean(s : MlclustermeanshiftNode) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftNode::mean(self : MlclustermeanshiftNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_node_scale(s : MlclustermeanshiftNode, f : Double) -> MlclustermeanshiftNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftNode::scale(self : MlclustermeanshiftNode, f : Double) -> MlclustermeanshiftNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_node_add(a : MlclustermeanshiftNode, b : MlclustermeanshiftNode) -> MlclustermeanshiftNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftNode::add(self : MlclustermeanshiftNode, other : MlclustermeanshiftNode) -> MlclustermeanshiftNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_node_copy(s : MlclustermeanshiftNode) -> MlclustermeanshiftNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftNode::copy(self : MlclustermeanshiftNode) -> MlclustermeanshiftNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_node_fill(s : MlclustermeanshiftNode, v : Double) -> MlclustermeanshiftNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftNode::fill(self : MlclustermeanshiftNode, v : Double) -> MlclustermeanshiftNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_node_min(s : MlclustermeanshiftNode) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftNode::min(self : MlclustermeanshiftNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_node_max(s : MlclustermeanshiftNode) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftNode::max(self : MlclustermeanshiftNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_node_to_string(s : MlclustermeanshiftNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftNode::to_string(self : MlclustermeanshiftNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_mean_shift_edge_make(size : Int) -> MlclustermeanshiftEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_edge_len(s : MlclustermeanshiftEdge) -> Int { s.size }
+pub fn MlclustermeanshiftEdge::len(self : MlclustermeanshiftEdge) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_edge_get(s : MlclustermeanshiftEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftEdge::get(self : MlclustermeanshiftEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_edge_set(s : MlclustermeanshiftEdge, i : Int, v : Double) -> MlclustermeanshiftEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftEdge::set(self : MlclustermeanshiftEdge, i : Int, v : Double) -> MlclustermeanshiftEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_edge_sum(s : MlclustermeanshiftEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftEdge::sum(self : MlclustermeanshiftEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_edge_mean(s : MlclustermeanshiftEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftEdge::mean(self : MlclustermeanshiftEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_edge_scale(s : MlclustermeanshiftEdge, f : Double) -> MlclustermeanshiftEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftEdge::scale(self : MlclustermeanshiftEdge, f : Double) -> MlclustermeanshiftEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_edge_add(a : MlclustermeanshiftEdge, b : MlclustermeanshiftEdge) -> MlclustermeanshiftEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftEdge::add(self : MlclustermeanshiftEdge, other : MlclustermeanshiftEdge) -> MlclustermeanshiftEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_edge_copy(s : MlclustermeanshiftEdge) -> MlclustermeanshiftEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftEdge::copy(self : MlclustermeanshiftEdge) -> MlclustermeanshiftEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_edge_fill(s : MlclustermeanshiftEdge, v : Double) -> MlclustermeanshiftEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftEdge::fill(self : MlclustermeanshiftEdge, v : Double) -> MlclustermeanshiftEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_edge_min(s : MlclustermeanshiftEdge) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftEdge::min(self : MlclustermeanshiftEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_edge_max(s : MlclustermeanshiftEdge) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftEdge::max(self : MlclustermeanshiftEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_edge_to_string(s : MlclustermeanshiftEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftEdge::to_string(self : MlclustermeanshiftEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_mean_shift_path_make(size : Int) -> MlclustermeanshiftPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_path_len(s : MlclustermeanshiftPath) -> Int { s.size }
+pub fn MlclustermeanshiftPath::len(self : MlclustermeanshiftPath) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_path_get(s : MlclustermeanshiftPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftPath::get(self : MlclustermeanshiftPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_path_set(s : MlclustermeanshiftPath, i : Int, v : Double) -> MlclustermeanshiftPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftPath::set(self : MlclustermeanshiftPath, i : Int, v : Double) -> MlclustermeanshiftPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_path_sum(s : MlclustermeanshiftPath) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftPath::sum(self : MlclustermeanshiftPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_path_mean(s : MlclustermeanshiftPath) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftPath::mean(self : MlclustermeanshiftPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_path_scale(s : MlclustermeanshiftPath, f : Double) -> MlclustermeanshiftPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftPath::scale(self : MlclustermeanshiftPath, f : Double) -> MlclustermeanshiftPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_path_add(a : MlclustermeanshiftPath, b : MlclustermeanshiftPath) -> MlclustermeanshiftPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftPath::add(self : MlclustermeanshiftPath, other : MlclustermeanshiftPath) -> MlclustermeanshiftPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_path_copy(s : MlclustermeanshiftPath) -> MlclustermeanshiftPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftPath::copy(self : MlclustermeanshiftPath) -> MlclustermeanshiftPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_path_fill(s : MlclustermeanshiftPath, v : Double) -> MlclustermeanshiftPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftPath::fill(self : MlclustermeanshiftPath, v : Double) -> MlclustermeanshiftPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_path_min(s : MlclustermeanshiftPath) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftPath::min(self : MlclustermeanshiftPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_path_max(s : MlclustermeanshiftPath) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftPath::max(self : MlclustermeanshiftPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_path_to_string(s : MlclustermeanshiftPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftPath::to_string(self : MlclustermeanshiftPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_mean_shift_cluster_make(size : Int) -> MlclustermeanshiftClust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_cluster_len(s : MlclustermeanshiftCluster) -> Int { s.size }
+pub fn MlclustermeanshiftCluster::len(self : MlclustermeanshiftCluster) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_cluster_get(s : MlclustermeanshiftCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftCluster::get(self : MlclustermeanshiftCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_cluster_set(s : MlclustermeanshiftCluster, i : Int, v : Double) -> MlclustermeanshiftCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCluster::set(self : MlclustermeanshiftCluster, i : Int, v : Double) -> MlclustermeanshiftCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cluster_sum(s : MlclustermeanshiftCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftCluster::sum(self : MlclustermeanshiftCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_cluster_mean(s : MlclustermeanshiftCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftCluster::mean(self : MlclustermeanshiftCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_cluster_scale(s : MlclustermeanshiftCluster, f : Double) -> MlclustermeanshiftCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCluster::scale(self : MlclustermeanshiftCluster, f : Double) -> MlclustermeanshiftCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cluster_add(a : MlclustermeanshiftCluster, b : MlclustermeanshiftCluster) -> MlclustermeanshiftCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftCluster::add(self : MlclustermeanshiftCluster, other : MlclustermeanshiftCluster) -> MlclustermeanshiftCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cluster_copy(s : MlclustermeanshiftCluster) -> MlclustermeanshiftCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCluster::copy(self : MlclustermeanshiftCluster) -> MlclustermeanshiftCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cluster_fill(s : MlclustermeanshiftCluster, v : Double) -> MlclustermeanshiftCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCluster::fill(self : MlclustermeanshiftCluster, v : Double) -> MlclustermeanshiftCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cluster_min(s : MlclustermeanshiftCluster) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftCluster::min(self : MlclustermeanshiftCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_cluster_max(s : MlclustermeanshiftCluster) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftCluster::max(self : MlclustermeanshiftCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_cluster_to_string(s : MlclustermeanshiftCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftCluster::to_string(self : MlclustermeanshiftCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_mean_shift_model_make(size : Int) -> MlclustermeanshiftModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_model_len(s : MlclustermeanshiftModel) -> Int { s.size }
+pub fn MlclustermeanshiftModel::len(self : MlclustermeanshiftModel) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_model_get(s : MlclustermeanshiftModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftModel::get(self : MlclustermeanshiftModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_model_set(s : MlclustermeanshiftModel, i : Int, v : Double) -> MlclustermeanshiftModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftModel::set(self : MlclustermeanshiftModel, i : Int, v : Double) -> MlclustermeanshiftModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_model_sum(s : MlclustermeanshiftModel) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftModel::sum(self : MlclustermeanshiftModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_model_mean(s : MlclustermeanshiftModel) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftModel::mean(self : MlclustermeanshiftModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_model_scale(s : MlclustermeanshiftModel, f : Double) -> MlclustermeanshiftModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftModel::scale(self : MlclustermeanshiftModel, f : Double) -> MlclustermeanshiftModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_model_add(a : MlclustermeanshiftModel, b : MlclustermeanshiftModel) -> MlclustermeanshiftModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftModel::add(self : MlclustermeanshiftModel, other : MlclustermeanshiftModel) -> MlclustermeanshiftModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_model_copy(s : MlclustermeanshiftModel) -> MlclustermeanshiftModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftModel::copy(self : MlclustermeanshiftModel) -> MlclustermeanshiftModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_model_fill(s : MlclustermeanshiftModel, v : Double) -> MlclustermeanshiftModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftModel::fill(self : MlclustermeanshiftModel, v : Double) -> MlclustermeanshiftModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_model_min(s : MlclustermeanshiftModel) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftModel::min(self : MlclustermeanshiftModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_model_max(s : MlclustermeanshiftModel) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftModel::max(self : MlclustermeanshiftModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_model_to_string(s : MlclustermeanshiftModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftModel::to_string(self : MlclustermeanshiftModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_mean_shift_layer_make(size : Int) -> MlclustermeanshiftLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_layer_len(s : MlclustermeanshiftLayer) -> Int { s.size }
+pub fn MlclustermeanshiftLayer::len(self : MlclustermeanshiftLayer) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_layer_get(s : MlclustermeanshiftLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftLayer::get(self : MlclustermeanshiftLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_layer_set(s : MlclustermeanshiftLayer, i : Int, v : Double) -> MlclustermeanshiftLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftLayer::set(self : MlclustermeanshiftLayer, i : Int, v : Double) -> MlclustermeanshiftLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_layer_sum(s : MlclustermeanshiftLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftLayer::sum(self : MlclustermeanshiftLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_layer_mean(s : MlclustermeanshiftLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftLayer::mean(self : MlclustermeanshiftLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_layer_scale(s : MlclustermeanshiftLayer, f : Double) -> MlclustermeanshiftLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftLayer::scale(self : MlclustermeanshiftLayer, f : Double) -> MlclustermeanshiftLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_layer_add(a : MlclustermeanshiftLayer, b : MlclustermeanshiftLayer) -> MlclustermeanshiftLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftLayer::add(self : MlclustermeanshiftLayer, other : MlclustermeanshiftLayer) -> MlclustermeanshiftLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_layer_copy(s : MlclustermeanshiftLayer) -> MlclustermeanshiftLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftLayer::copy(self : MlclustermeanshiftLayer) -> MlclustermeanshiftLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_layer_fill(s : MlclustermeanshiftLayer, v : Double) -> MlclustermeanshiftLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftLayer::fill(self : MlclustermeanshiftLayer, v : Double) -> MlclustermeanshiftLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_layer_min(s : MlclustermeanshiftLayer) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftLayer::min(self : MlclustermeanshiftLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_layer_max(s : MlclustermeanshiftLayer) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftLayer::max(self : MlclustermeanshiftLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_layer_to_string(s : MlclustermeanshiftLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftLayer::to_string(self : MlclustermeanshiftLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_mean_shift_buffer_make(size : Int) -> MlclustermeanshiftBuffer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_buffer_len(s : MlclustermeanshiftBuffer) -> Int { s.size }
+pub fn MlclustermeanshiftBuffer::len(self : MlclustermeanshiftBuffer) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_buffer_get(s : MlclustermeanshiftBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftBuffer::get(self : MlclustermeanshiftBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_buffer_set(s : MlclustermeanshiftBuffer, i : Int, v : Double) -> MlclustermeanshiftBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftBuffer::set(self : MlclustermeanshiftBuffer, i : Int, v : Double) -> MlclustermeanshiftBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_buffer_sum(s : MlclustermeanshiftBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftBuffer::sum(self : MlclustermeanshiftBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_buffer_mean(s : MlclustermeanshiftBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftBuffer::mean(self : MlclustermeanshiftBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_buffer_scale(s : MlclustermeanshiftBuffer, f : Double) -> MlclustermeanshiftBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftBuffer::scale(self : MlclustermeanshiftBuffer, f : Double) -> MlclustermeanshiftBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_buffer_add(a : MlclustermeanshiftBuffer, b : MlclustermeanshiftBuffer) -> MlclustermeanshiftBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftBuffer::add(self : MlclustermeanshiftBuffer, other : MlclustermeanshiftBuffer) -> MlclustermeanshiftBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_buffer_copy(s : MlclustermeanshiftBuffer) -> MlclustermeanshiftBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftBuffer::copy(self : MlclustermeanshiftBuffer) -> MlclustermeanshiftBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_buffer_fill(s : MlclustermeanshiftBuffer, v : Double) -> MlclustermeanshiftBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftBuffer::fill(self : MlclustermeanshiftBuffer, v : Double) -> MlclustermeanshiftBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_buffer_min(s : MlclustermeanshiftBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftBuffer::min(self : MlclustermeanshiftBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_buffer_max(s : MlclustermeanshiftBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftBuffer::max(self : MlclustermeanshiftBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_buffer_to_string(s : MlclustermeanshiftBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftBuffer::to_string(self : MlclustermeanshiftBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_mean_shift_cursor_make(size : Int) -> MlclustermeanshiftCursor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_cursor_len(s : MlclustermeanshiftCursor) -> Int { s.size }
+pub fn MlclustermeanshiftCursor::len(self : MlclustermeanshiftCursor) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_cursor_get(s : MlclustermeanshiftCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftCursor::get(self : MlclustermeanshiftCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_cursor_set(s : MlclustermeanshiftCursor, i : Int, v : Double) -> MlclustermeanshiftCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCursor::set(self : MlclustermeanshiftCursor, i : Int, v : Double) -> MlclustermeanshiftCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cursor_sum(s : MlclustermeanshiftCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftCursor::sum(self : MlclustermeanshiftCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_cursor_mean(s : MlclustermeanshiftCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftCursor::mean(self : MlclustermeanshiftCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_cursor_scale(s : MlclustermeanshiftCursor, f : Double) -> MlclustermeanshiftCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCursor::scale(self : MlclustermeanshiftCursor, f : Double) -> MlclustermeanshiftCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cursor_add(a : MlclustermeanshiftCursor, b : MlclustermeanshiftCursor) -> MlclustermeanshiftCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftCursor::add(self : MlclustermeanshiftCursor, other : MlclustermeanshiftCursor) -> MlclustermeanshiftCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cursor_copy(s : MlclustermeanshiftCursor) -> MlclustermeanshiftCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCursor::copy(self : MlclustermeanshiftCursor) -> MlclustermeanshiftCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cursor_fill(s : MlclustermeanshiftCursor, v : Double) -> MlclustermeanshiftCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftCursor::fill(self : MlclustermeanshiftCursor, v : Double) -> MlclustermeanshiftCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_cursor_min(s : MlclustermeanshiftCursor) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftCursor::min(self : MlclustermeanshiftCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_cursor_max(s : MlclustermeanshiftCursor) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftCursor::max(self : MlclustermeanshiftCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_cursor_to_string(s : MlclustermeanshiftCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftCursor::to_string(self : MlclustermeanshiftCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_mean_shift_view_make(size : Int) -> MlclustermeanshiftView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_view_len(s : MlclustermeanshiftView) -> Int { s.size }
+pub fn MlclustermeanshiftView::len(self : MlclustermeanshiftView) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_view_get(s : MlclustermeanshiftView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftView::get(self : MlclustermeanshiftView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_view_set(s : MlclustermeanshiftView, i : Int, v : Double) -> MlclustermeanshiftView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftView::set(self : MlclustermeanshiftView, i : Int, v : Double) -> MlclustermeanshiftView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_view_sum(s : MlclustermeanshiftView) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftView::sum(self : MlclustermeanshiftView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_view_mean(s : MlclustermeanshiftView) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftView::mean(self : MlclustermeanshiftView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_view_scale(s : MlclustermeanshiftView, f : Double) -> MlclustermeanshiftView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftView::scale(self : MlclustermeanshiftView, f : Double) -> MlclustermeanshiftView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_view_add(a : MlclustermeanshiftView, b : MlclustermeanshiftView) -> MlclustermeanshiftView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftView::add(self : MlclustermeanshiftView, other : MlclustermeanshiftView) -> MlclustermeanshiftView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_view_copy(s : MlclustermeanshiftView) -> MlclustermeanshiftView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftView::copy(self : MlclustermeanshiftView) -> MlclustermeanshiftView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_view_fill(s : MlclustermeanshiftView, v : Double) -> MlclustermeanshiftView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftView::fill(self : MlclustermeanshiftView, v : Double) -> MlclustermeanshiftView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_view_min(s : MlclustermeanshiftView) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftView::min(self : MlclustermeanshiftView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_view_max(s : MlclustermeanshiftView) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftView::max(self : MlclustermeanshiftView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_view_to_string(s : MlclustermeanshiftView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftView::to_string(self : MlclustermeanshiftView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_mean_shift_range_make(size : Int) -> MlclustermeanshiftRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_range_len(s : MlclustermeanshiftRange) -> Int { s.size }
+pub fn MlclustermeanshiftRange::len(self : MlclustermeanshiftRange) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_range_get(s : MlclustermeanshiftRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftRange::get(self : MlclustermeanshiftRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_range_set(s : MlclustermeanshiftRange, i : Int, v : Double) -> MlclustermeanshiftRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftRange::set(self : MlclustermeanshiftRange, i : Int, v : Double) -> MlclustermeanshiftRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_range_sum(s : MlclustermeanshiftRange) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftRange::sum(self : MlclustermeanshiftRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_range_mean(s : MlclustermeanshiftRange) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftRange::mean(self : MlclustermeanshiftRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_range_scale(s : MlclustermeanshiftRange, f : Double) -> MlclustermeanshiftRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftRange::scale(self : MlclustermeanshiftRange, f : Double) -> MlclustermeanshiftRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_range_add(a : MlclustermeanshiftRange, b : MlclustermeanshiftRange) -> MlclustermeanshiftRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftRange::add(self : MlclustermeanshiftRange, other : MlclustermeanshiftRange) -> MlclustermeanshiftRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_range_copy(s : MlclustermeanshiftRange) -> MlclustermeanshiftRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftRange::copy(self : MlclustermeanshiftRange) -> MlclustermeanshiftRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_range_fill(s : MlclustermeanshiftRange, v : Double) -> MlclustermeanshiftRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftRange::fill(self : MlclustermeanshiftRange, v : Double) -> MlclustermeanshiftRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_range_min(s : MlclustermeanshiftRange) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftRange::min(self : MlclustermeanshiftRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_range_max(s : MlclustermeanshiftRange) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftRange::max(self : MlclustermeanshiftRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_range_to_string(s : MlclustermeanshiftRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftRange::to_string(self : MlclustermeanshiftRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclustermeanshiftSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_mean_shift_slice_make(size : Int) -> MlclustermeanshiftSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_mean_shift_slice_len(s : MlclustermeanshiftSlice) -> Int { s.size }
+pub fn MlclustermeanshiftSlice::len(self : MlclustermeanshiftSlice) -> Int { self.size }
 
-pub fn ml_cluster_mean_shift_slice_get(s : MlclustermeanshiftSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclustermeanshiftSlice::get(self : MlclustermeanshiftSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_mean_shift_slice_set(s : MlclustermeanshiftSlice, i : Int, v : Double) -> MlclustermeanshiftSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftSlice::set(self : MlclustermeanshiftSlice, i : Int, v : Double) -> MlclustermeanshiftSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_slice_sum(s : MlclustermeanshiftSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclustermeanshiftSlice::sum(self : MlclustermeanshiftSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_mean_shift_slice_mean(s : MlclustermeanshiftSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclustermeanshiftSlice::mean(self : MlclustermeanshiftSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_mean_shift_slice_scale(s : MlclustermeanshiftSlice, f : Double) -> MlclustermeanshiftSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftSlice::scale(self : MlclustermeanshiftSlice, f : Double) -> MlclustermeanshiftSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_slice_add(a : MlclustermeanshiftSlice, b : MlclustermeanshiftSlice) -> MlclustermeanshiftSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclustermeanshiftSlice::add(self : MlclustermeanshiftSlice, other : MlclustermeanshiftSlice) -> MlclustermeanshiftSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_slice_copy(s : MlclustermeanshiftSlice) -> MlclustermeanshiftSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftSlice::copy(self : MlclustermeanshiftSlice) -> MlclustermeanshiftSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_slice_fill(s : MlclustermeanshiftSlice, v : Double) -> MlclustermeanshiftSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclustermeanshiftSlice::fill(self : MlclustermeanshiftSlice, v : Double) -> MlclustermeanshiftSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_mean_shift_slice_min(s : MlclustermeanshiftSlice) -> Double { @_common.min(s.data) }
+pub fn MlclustermeanshiftSlice::min(self : MlclustermeanshiftSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_mean_shift_slice_max(s : MlclustermeanshiftSlice) -> Double { @_common.max(s.data) }
+pub fn MlclustermeanshiftSlice::max(self : MlclustermeanshiftSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_mean_shift_slice_to_string(s : MlclustermeanshiftSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclustermeanshiftSlice::to_string(self : MlclustermeanshiftSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

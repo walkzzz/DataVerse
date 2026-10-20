@@ -351,45 +351,45 @@ pub fn db_index_gpu_frame_make(size : Int) -> DbindexgpuFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_frame_len(s : DbindexgpuFrame) -> Int { s.size }
+pub fn DbindexgpuFrame::len(self : DbindexgpuFrame) -> Int { self.size }
 
-pub fn db_index_gpu_frame_get(s : DbindexgpuFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuFrame::get(self : DbindexgpuFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_frame_set(s : DbindexgpuFrame, i : Int, v : Double) -> DbindexgpuFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuFrame::set(self : DbindexgpuFrame, i : Int, v : Double) -> DbindexgpuFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_frame_sum(s : DbindexgpuFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuFrame::sum(self : DbindexgpuFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_frame_mean(s : DbindexgpuFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuFrame::mean(self : DbindexgpuFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_frame_scale(s : DbindexgpuFrame, f : Double) -> DbindexgpuFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuFrame::scale(self : DbindexgpuFrame, f : Double) -> DbindexgpuFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_frame_add(a : DbindexgpuFrame, b : DbindexgpuFrame) -> DbindexgpuFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuFrame::add(self : DbindexgpuFrame, other : DbindexgpuFrame) -> DbindexgpuFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_frame_copy(s : DbindexgpuFrame) -> DbindexgpuFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuFrame::copy(self : DbindexgpuFrame) -> DbindexgpuFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_frame_fill(s : DbindexgpuFrame, v : Double) -> DbindexgpuFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuFrame::fill(self : DbindexgpuFrame, v : Double) -> DbindexgpuFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_frame_min(s : DbindexgpuFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuFrame::min(self : DbindexgpuFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_frame_max(s : DbindexgpuFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuFrame::max(self : DbindexgpuFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_frame_to_string(s : DbindexgpuFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuFrame::to_string(self : DbindexgpuFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuTable {
@@ -402,45 +402,45 @@ pub fn db_index_gpu_table_make(size : Int) -> DbindexgpuTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_table_len(s : DbindexgpuTable) -> Int { s.size }
+pub fn DbindexgpuTable::len(self : DbindexgpuTable) -> Int { self.size }
 
-pub fn db_index_gpu_table_get(s : DbindexgpuTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuTable::get(self : DbindexgpuTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_table_set(s : DbindexgpuTable, i : Int, v : Double) -> DbindexgpuTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuTable::set(self : DbindexgpuTable, i : Int, v : Double) -> DbindexgpuTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_table_sum(s : DbindexgpuTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuTable::sum(self : DbindexgpuTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_table_mean(s : DbindexgpuTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuTable::mean(self : DbindexgpuTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_table_scale(s : DbindexgpuTable, f : Double) -> DbindexgpuTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuTable::scale(self : DbindexgpuTable, f : Double) -> DbindexgpuTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_table_add(a : DbindexgpuTable, b : DbindexgpuTable) -> DbindexgpuTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuTable::add(self : DbindexgpuTable, other : DbindexgpuTable) -> DbindexgpuTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_table_copy(s : DbindexgpuTable) -> DbindexgpuTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuTable::copy(self : DbindexgpuTable) -> DbindexgpuTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_table_fill(s : DbindexgpuTable, v : Double) -> DbindexgpuTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuTable::fill(self : DbindexgpuTable, v : Double) -> DbindexgpuTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_table_min(s : DbindexgpuTable) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuTable::min(self : DbindexgpuTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_table_max(s : DbindexgpuTable) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuTable::max(self : DbindexgpuTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_table_to_string(s : DbindexgpuTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuTable::to_string(self : DbindexgpuTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_gpu_graphn_make(size : Int) -> DbindexgpuGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_graphn_len(s : DbindexgpuGraphN) -> Int { s.size }
+pub fn DbindexgpuGraphN::len(self : DbindexgpuGraphN) -> Int { self.size }
 
-pub fn db_index_gpu_graphn_get(s : DbindexgpuGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuGraphN::get(self : DbindexgpuGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_graphn_set(s : DbindexgpuGraphN, i : Int, v : Double) -> DbindexgpuGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuGraphN::set(self : DbindexgpuGraphN, i : Int, v : Double) -> DbindexgpuGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_graphn_sum(s : DbindexgpuGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuGraphN::sum(self : DbindexgpuGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_graphn_mean(s : DbindexgpuGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuGraphN::mean(self : DbindexgpuGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_graphn_scale(s : DbindexgpuGraphN, f : Double) -> DbindexgpuGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuGraphN::scale(self : DbindexgpuGraphN, f : Double) -> DbindexgpuGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_graphn_add(a : DbindexgpuGraphN, b : DbindexgpuGraphN) -> DbindexgpuGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuGraphN::add(self : DbindexgpuGraphN, other : DbindexgpuGraphN) -> DbindexgpuGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_graphn_copy(s : DbindexgpuGraphN) -> DbindexgpuGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuGraphN::copy(self : DbindexgpuGraphN) -> DbindexgpuGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_graphn_fill(s : DbindexgpuGraphN, v : Double) -> DbindexgpuGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuGraphN::fill(self : DbindexgpuGraphN, v : Double) -> DbindexgpuGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_graphn_min(s : DbindexgpuGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuGraphN::min(self : DbindexgpuGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_graphn_max(s : DbindexgpuGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuGraphN::max(self : DbindexgpuGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_graphn_to_string(s : DbindexgpuGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuGraphN::to_string(self : DbindexgpuGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuNode {
@@ -504,45 +504,45 @@ pub fn db_index_gpu_node_make(size : Int) -> DbindexgpuNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_node_len(s : DbindexgpuNode) -> Int { s.size }
+pub fn DbindexgpuNode::len(self : DbindexgpuNode) -> Int { self.size }
 
-pub fn db_index_gpu_node_get(s : DbindexgpuNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuNode::get(self : DbindexgpuNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_node_set(s : DbindexgpuNode, i : Int, v : Double) -> DbindexgpuNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuNode::set(self : DbindexgpuNode, i : Int, v : Double) -> DbindexgpuNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_node_sum(s : DbindexgpuNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuNode::sum(self : DbindexgpuNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_node_mean(s : DbindexgpuNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuNode::mean(self : DbindexgpuNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_node_scale(s : DbindexgpuNode, f : Double) -> DbindexgpuNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuNode::scale(self : DbindexgpuNode, f : Double) -> DbindexgpuNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_node_add(a : DbindexgpuNode, b : DbindexgpuNode) -> DbindexgpuNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuNode::add(self : DbindexgpuNode, other : DbindexgpuNode) -> DbindexgpuNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_node_copy(s : DbindexgpuNode) -> DbindexgpuNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuNode::copy(self : DbindexgpuNode) -> DbindexgpuNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_node_fill(s : DbindexgpuNode, v : Double) -> DbindexgpuNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuNode::fill(self : DbindexgpuNode, v : Double) -> DbindexgpuNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_node_min(s : DbindexgpuNode) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuNode::min(self : DbindexgpuNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_node_max(s : DbindexgpuNode) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuNode::max(self : DbindexgpuNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_node_to_string(s : DbindexgpuNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuNode::to_string(self : DbindexgpuNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuEdge {
@@ -555,45 +555,45 @@ pub fn db_index_gpu_edge_make(size : Int) -> DbindexgpuEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_edge_len(s : DbindexgpuEdge) -> Int { s.size }
+pub fn DbindexgpuEdge::len(self : DbindexgpuEdge) -> Int { self.size }
 
-pub fn db_index_gpu_edge_get(s : DbindexgpuEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuEdge::get(self : DbindexgpuEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_edge_set(s : DbindexgpuEdge, i : Int, v : Double) -> DbindexgpuEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuEdge::set(self : DbindexgpuEdge, i : Int, v : Double) -> DbindexgpuEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_edge_sum(s : DbindexgpuEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuEdge::sum(self : DbindexgpuEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_edge_mean(s : DbindexgpuEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuEdge::mean(self : DbindexgpuEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_edge_scale(s : DbindexgpuEdge, f : Double) -> DbindexgpuEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuEdge::scale(self : DbindexgpuEdge, f : Double) -> DbindexgpuEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_edge_add(a : DbindexgpuEdge, b : DbindexgpuEdge) -> DbindexgpuEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuEdge::add(self : DbindexgpuEdge, other : DbindexgpuEdge) -> DbindexgpuEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_edge_copy(s : DbindexgpuEdge) -> DbindexgpuEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuEdge::copy(self : DbindexgpuEdge) -> DbindexgpuEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_edge_fill(s : DbindexgpuEdge, v : Double) -> DbindexgpuEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuEdge::fill(self : DbindexgpuEdge, v : Double) -> DbindexgpuEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_edge_min(s : DbindexgpuEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuEdge::min(self : DbindexgpuEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_edge_max(s : DbindexgpuEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuEdge::max(self : DbindexgpuEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_edge_to_string(s : DbindexgpuEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuEdge::to_string(self : DbindexgpuEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuPath {
@@ -606,45 +606,45 @@ pub fn db_index_gpu_path_make(size : Int) -> DbindexgpuPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_path_len(s : DbindexgpuPath) -> Int { s.size }
+pub fn DbindexgpuPath::len(self : DbindexgpuPath) -> Int { self.size }
 
-pub fn db_index_gpu_path_get(s : DbindexgpuPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuPath::get(self : DbindexgpuPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_path_set(s : DbindexgpuPath, i : Int, v : Double) -> DbindexgpuPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuPath::set(self : DbindexgpuPath, i : Int, v : Double) -> DbindexgpuPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_path_sum(s : DbindexgpuPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuPath::sum(self : DbindexgpuPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_path_mean(s : DbindexgpuPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuPath::mean(self : DbindexgpuPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_path_scale(s : DbindexgpuPath, f : Double) -> DbindexgpuPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuPath::scale(self : DbindexgpuPath, f : Double) -> DbindexgpuPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_path_add(a : DbindexgpuPath, b : DbindexgpuPath) -> DbindexgpuPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuPath::add(self : DbindexgpuPath, other : DbindexgpuPath) -> DbindexgpuPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_path_copy(s : DbindexgpuPath) -> DbindexgpuPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuPath::copy(self : DbindexgpuPath) -> DbindexgpuPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_path_fill(s : DbindexgpuPath, v : Double) -> DbindexgpuPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuPath::fill(self : DbindexgpuPath, v : Double) -> DbindexgpuPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_path_min(s : DbindexgpuPath) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuPath::min(self : DbindexgpuPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_path_max(s : DbindexgpuPath) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuPath::max(self : DbindexgpuPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_path_to_string(s : DbindexgpuPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuPath::to_string(self : DbindexgpuPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuCluster {
@@ -657,45 +657,45 @@ pub fn db_index_gpu_cluster_make(size : Int) -> DbindexgpuCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_cluster_len(s : DbindexgpuCluster) -> Int { s.size }
+pub fn DbindexgpuCluster::len(self : DbindexgpuCluster) -> Int { self.size }
 
-pub fn db_index_gpu_cluster_get(s : DbindexgpuCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuCluster::get(self : DbindexgpuCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_cluster_set(s : DbindexgpuCluster, i : Int, v : Double) -> DbindexgpuCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuCluster::set(self : DbindexgpuCluster, i : Int, v : Double) -> DbindexgpuCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cluster_sum(s : DbindexgpuCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuCluster::sum(self : DbindexgpuCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_cluster_mean(s : DbindexgpuCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuCluster::mean(self : DbindexgpuCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_cluster_scale(s : DbindexgpuCluster, f : Double) -> DbindexgpuCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuCluster::scale(self : DbindexgpuCluster, f : Double) -> DbindexgpuCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cluster_add(a : DbindexgpuCluster, b : DbindexgpuCluster) -> DbindexgpuCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuCluster::add(self : DbindexgpuCluster, other : DbindexgpuCluster) -> DbindexgpuCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_cluster_copy(s : DbindexgpuCluster) -> DbindexgpuCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuCluster::copy(self : DbindexgpuCluster) -> DbindexgpuCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cluster_fill(s : DbindexgpuCluster, v : Double) -> DbindexgpuCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuCluster::fill(self : DbindexgpuCluster, v : Double) -> DbindexgpuCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cluster_min(s : DbindexgpuCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuCluster::min(self : DbindexgpuCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_cluster_max(s : DbindexgpuCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuCluster::max(self : DbindexgpuCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_cluster_to_string(s : DbindexgpuCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuCluster::to_string(self : DbindexgpuCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuModel {
@@ -708,45 +708,45 @@ pub fn db_index_gpu_model_make(size : Int) -> DbindexgpuModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_model_len(s : DbindexgpuModel) -> Int { s.size }
+pub fn DbindexgpuModel::len(self : DbindexgpuModel) -> Int { self.size }
 
-pub fn db_index_gpu_model_get(s : DbindexgpuModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuModel::get(self : DbindexgpuModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_model_set(s : DbindexgpuModel, i : Int, v : Double) -> DbindexgpuModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuModel::set(self : DbindexgpuModel, i : Int, v : Double) -> DbindexgpuModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_model_sum(s : DbindexgpuModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuModel::sum(self : DbindexgpuModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_model_mean(s : DbindexgpuModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuModel::mean(self : DbindexgpuModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_model_scale(s : DbindexgpuModel, f : Double) -> DbindexgpuModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuModel::scale(self : DbindexgpuModel, f : Double) -> DbindexgpuModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_model_add(a : DbindexgpuModel, b : DbindexgpuModel) -> DbindexgpuModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuModel::add(self : DbindexgpuModel, other : DbindexgpuModel) -> DbindexgpuModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_model_copy(s : DbindexgpuModel) -> DbindexgpuModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuModel::copy(self : DbindexgpuModel) -> DbindexgpuModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_model_fill(s : DbindexgpuModel, v : Double) -> DbindexgpuModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuModel::fill(self : DbindexgpuModel, v : Double) -> DbindexgpuModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_model_min(s : DbindexgpuModel) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuModel::min(self : DbindexgpuModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_model_max(s : DbindexgpuModel) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuModel::max(self : DbindexgpuModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_model_to_string(s : DbindexgpuModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuModel::to_string(self : DbindexgpuModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuLayer {
@@ -759,45 +759,45 @@ pub fn db_index_gpu_layer_make(size : Int) -> DbindexgpuLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_layer_len(s : DbindexgpuLayer) -> Int { s.size }
+pub fn DbindexgpuLayer::len(self : DbindexgpuLayer) -> Int { self.size }
 
-pub fn db_index_gpu_layer_get(s : DbindexgpuLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuLayer::get(self : DbindexgpuLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_layer_set(s : DbindexgpuLayer, i : Int, v : Double) -> DbindexgpuLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuLayer::set(self : DbindexgpuLayer, i : Int, v : Double) -> DbindexgpuLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_layer_sum(s : DbindexgpuLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuLayer::sum(self : DbindexgpuLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_layer_mean(s : DbindexgpuLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuLayer::mean(self : DbindexgpuLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_layer_scale(s : DbindexgpuLayer, f : Double) -> DbindexgpuLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuLayer::scale(self : DbindexgpuLayer, f : Double) -> DbindexgpuLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_layer_add(a : DbindexgpuLayer, b : DbindexgpuLayer) -> DbindexgpuLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuLayer::add(self : DbindexgpuLayer, other : DbindexgpuLayer) -> DbindexgpuLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_layer_copy(s : DbindexgpuLayer) -> DbindexgpuLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuLayer::copy(self : DbindexgpuLayer) -> DbindexgpuLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_layer_fill(s : DbindexgpuLayer, v : Double) -> DbindexgpuLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuLayer::fill(self : DbindexgpuLayer, v : Double) -> DbindexgpuLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_layer_min(s : DbindexgpuLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuLayer::min(self : DbindexgpuLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_layer_max(s : DbindexgpuLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuLayer::max(self : DbindexgpuLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_layer_to_string(s : DbindexgpuLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuLayer::to_string(self : DbindexgpuLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_gpu_buffer_make(size : Int) -> DbindexgpuBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_buffer_len(s : DbindexgpuBuffer) -> Int { s.size }
+pub fn DbindexgpuBuffer::len(self : DbindexgpuBuffer) -> Int { self.size }
 
-pub fn db_index_gpu_buffer_get(s : DbindexgpuBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuBuffer::get(self : DbindexgpuBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_buffer_set(s : DbindexgpuBuffer, i : Int, v : Double) -> DbindexgpuBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuBuffer::set(self : DbindexgpuBuffer, i : Int, v : Double) -> DbindexgpuBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_buffer_sum(s : DbindexgpuBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuBuffer::sum(self : DbindexgpuBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_buffer_mean(s : DbindexgpuBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuBuffer::mean(self : DbindexgpuBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_buffer_scale(s : DbindexgpuBuffer, f : Double) -> DbindexgpuBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuBuffer::scale(self : DbindexgpuBuffer, f : Double) -> DbindexgpuBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_buffer_add(a : DbindexgpuBuffer, b : DbindexgpuBuffer) -> DbindexgpuBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuBuffer::add(self : DbindexgpuBuffer, other : DbindexgpuBuffer) -> DbindexgpuBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_buffer_copy(s : DbindexgpuBuffer) -> DbindexgpuBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuBuffer::copy(self : DbindexgpuBuffer) -> DbindexgpuBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_buffer_fill(s : DbindexgpuBuffer, v : Double) -> DbindexgpuBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuBuffer::fill(self : DbindexgpuBuffer, v : Double) -> DbindexgpuBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_buffer_min(s : DbindexgpuBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuBuffer::min(self : DbindexgpuBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_buffer_max(s : DbindexgpuBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuBuffer::max(self : DbindexgpuBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_buffer_to_string(s : DbindexgpuBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuBuffer::to_string(self : DbindexgpuBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuCursor {
@@ -861,45 +861,45 @@ pub fn db_index_gpu_cursor_make(size : Int) -> DbindexgpuCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_cursor_len(s : DbindexgpuCursor) -> Int { s.size }
+pub fn DbindexgpuCursor::len(self : DbindexgpuCursor) -> Int { self.size }
 
-pub fn db_index_gpu_cursor_get(s : DbindexgpuCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuCursor::get(self : DbindexgpuCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_cursor_set(s : DbindexgpuCursor, i : Int, v : Double) -> DbindexgpuCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuCursor::set(self : DbindexgpuCursor, i : Int, v : Double) -> DbindexgpuCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cursor_sum(s : DbindexgpuCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuCursor::sum(self : DbindexgpuCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_cursor_mean(s : DbindexgpuCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuCursor::mean(self : DbindexgpuCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_cursor_scale(s : DbindexgpuCursor, f : Double) -> DbindexgpuCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuCursor::scale(self : DbindexgpuCursor, f : Double) -> DbindexgpuCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cursor_add(a : DbindexgpuCursor, b : DbindexgpuCursor) -> DbindexgpuCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuCursor::add(self : DbindexgpuCursor, other : DbindexgpuCursor) -> DbindexgpuCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_cursor_copy(s : DbindexgpuCursor) -> DbindexgpuCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuCursor::copy(self : DbindexgpuCursor) -> DbindexgpuCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cursor_fill(s : DbindexgpuCursor, v : Double) -> DbindexgpuCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuCursor::fill(self : DbindexgpuCursor, v : Double) -> DbindexgpuCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_cursor_min(s : DbindexgpuCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuCursor::min(self : DbindexgpuCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_cursor_max(s : DbindexgpuCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuCursor::max(self : DbindexgpuCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_cursor_to_string(s : DbindexgpuCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuCursor::to_string(self : DbindexgpuCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuView {
@@ -912,45 +912,45 @@ pub fn db_index_gpu_view_make(size : Int) -> DbindexgpuView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_view_len(s : DbindexgpuView) -> Int { s.size }
+pub fn DbindexgpuView::len(self : DbindexgpuView) -> Int { self.size }
 
-pub fn db_index_gpu_view_get(s : DbindexgpuView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuView::get(self : DbindexgpuView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_view_set(s : DbindexgpuView, i : Int, v : Double) -> DbindexgpuView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuView::set(self : DbindexgpuView, i : Int, v : Double) -> DbindexgpuView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_view_sum(s : DbindexgpuView) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuView::sum(self : DbindexgpuView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_view_mean(s : DbindexgpuView) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuView::mean(self : DbindexgpuView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_view_scale(s : DbindexgpuView, f : Double) -> DbindexgpuView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuView::scale(self : DbindexgpuView, f : Double) -> DbindexgpuView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_view_add(a : DbindexgpuView, b : DbindexgpuView) -> DbindexgpuView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuView::add(self : DbindexgpuView, other : DbindexgpuView) -> DbindexgpuView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_view_copy(s : DbindexgpuView) -> DbindexgpuView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuView::copy(self : DbindexgpuView) -> DbindexgpuView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_view_fill(s : DbindexgpuView, v : Double) -> DbindexgpuView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuView::fill(self : DbindexgpuView, v : Double) -> DbindexgpuView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_view_min(s : DbindexgpuView) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuView::min(self : DbindexgpuView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_view_max(s : DbindexgpuView) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuView::max(self : DbindexgpuView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_view_to_string(s : DbindexgpuView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuView::to_string(self : DbindexgpuView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuRange {
@@ -963,45 +963,45 @@ pub fn db_index_gpu_range_make(size : Int) -> DbindexgpuRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_range_len(s : DbindexgpuRange) -> Int { s.size }
+pub fn DbindexgpuRange::len(self : DbindexgpuRange) -> Int { self.size }
 
-pub fn db_index_gpu_range_get(s : DbindexgpuRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuRange::get(self : DbindexgpuRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_range_set(s : DbindexgpuRange, i : Int, v : Double) -> DbindexgpuRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuRange::set(self : DbindexgpuRange, i : Int, v : Double) -> DbindexgpuRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_range_sum(s : DbindexgpuRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuRange::sum(self : DbindexgpuRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_range_mean(s : DbindexgpuRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuRange::mean(self : DbindexgpuRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_range_scale(s : DbindexgpuRange, f : Double) -> DbindexgpuRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuRange::scale(self : DbindexgpuRange, f : Double) -> DbindexgpuRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_range_add(a : DbindexgpuRange, b : DbindexgpuRange) -> DbindexgpuRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuRange::add(self : DbindexgpuRange, other : DbindexgpuRange) -> DbindexgpuRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_range_copy(s : DbindexgpuRange) -> DbindexgpuRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuRange::copy(self : DbindexgpuRange) -> DbindexgpuRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_range_fill(s : DbindexgpuRange, v : Double) -> DbindexgpuRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuRange::fill(self : DbindexgpuRange, v : Double) -> DbindexgpuRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_range_min(s : DbindexgpuRange) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuRange::min(self : DbindexgpuRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_range_max(s : DbindexgpuRange) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuRange::max(self : DbindexgpuRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_range_to_string(s : DbindexgpuRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuRange::to_string(self : DbindexgpuRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgpuSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_gpu_slice_make(size : Int) -> DbindexgpuSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gpu_slice_len(s : DbindexgpuSlice) -> Int { s.size }
+pub fn DbindexgpuSlice::len(self : DbindexgpuSlice) -> Int { self.size }
 
-pub fn db_index_gpu_slice_get(s : DbindexgpuSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgpuSlice::get(self : DbindexgpuSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gpu_slice_set(s : DbindexgpuSlice, i : Int, v : Double) -> DbindexgpuSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgpuSlice::set(self : DbindexgpuSlice, i : Int, v : Double) -> DbindexgpuSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_slice_sum(s : DbindexgpuSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexgpuSlice::sum(self : DbindexgpuSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gpu_slice_mean(s : DbindexgpuSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexgpuSlice::mean(self : DbindexgpuSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gpu_slice_scale(s : DbindexgpuSlice, f : Double) -> DbindexgpuSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgpuSlice::scale(self : DbindexgpuSlice, f : Double) -> DbindexgpuSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_slice_add(a : DbindexgpuSlice, b : DbindexgpuSlice) -> DbindexgpuSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgpuSlice::add(self : DbindexgpuSlice, other : DbindexgpuSlice) -> DbindexgpuSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gpu_slice_copy(s : DbindexgpuSlice) -> DbindexgpuSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgpuSlice::copy(self : DbindexgpuSlice) -> DbindexgpuSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_slice_fill(s : DbindexgpuSlice, v : Double) -> DbindexgpuSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgpuSlice::fill(self : DbindexgpuSlice, v : Double) -> DbindexgpuSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gpu_slice_min(s : DbindexgpuSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexgpuSlice::min(self : DbindexgpuSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gpu_slice_max(s : DbindexgpuSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexgpuSlice::max(self : DbindexgpuSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gpu_slice_to_string(s : DbindexgpuSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgpuSlice::to_string(self : DbindexgpuSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

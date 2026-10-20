@@ -351,45 +351,45 @@ pub fn db_tx_compensating_frame_make(size : Int) -> DbtxcompensatingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_frame_len(s : DbtxcompensatingFrame) -> Int { s.size }
+pub fn DbtxcompensatingFrame::len(self : DbtxcompensatingFrame) -> Int { self.size }
 
-pub fn db_tx_compensating_frame_get(s : DbtxcompensatingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingFrame::get(self : DbtxcompensatingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_frame_set(s : DbtxcompensatingFrame, i : Int, v : Double) -> DbtxcompensatingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingFrame::set(self : DbtxcompensatingFrame, i : Int, v : Double) -> DbtxcompensatingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_frame_sum(s : DbtxcompensatingFrame) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingFrame::sum(self : DbtxcompensatingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_frame_mean(s : DbtxcompensatingFrame) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingFrame::mean(self : DbtxcompensatingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_frame_scale(s : DbtxcompensatingFrame, f : Double) -> DbtxcompensatingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingFrame::scale(self : DbtxcompensatingFrame, f : Double) -> DbtxcompensatingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_frame_add(a : DbtxcompensatingFrame, b : DbtxcompensatingFrame) -> DbtxcompensatingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingFrame::add(self : DbtxcompensatingFrame, other : DbtxcompensatingFrame) -> DbtxcompensatingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_frame_copy(s : DbtxcompensatingFrame) -> DbtxcompensatingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingFrame::copy(self : DbtxcompensatingFrame) -> DbtxcompensatingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_frame_fill(s : DbtxcompensatingFrame, v : Double) -> DbtxcompensatingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingFrame::fill(self : DbtxcompensatingFrame, v : Double) -> DbtxcompensatingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_frame_min(s : DbtxcompensatingFrame) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingFrame::min(self : DbtxcompensatingFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_frame_max(s : DbtxcompensatingFrame) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingFrame::max(self : DbtxcompensatingFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_frame_to_string(s : DbtxcompensatingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingFrame::to_string(self : DbtxcompensatingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingTable {
@@ -402,45 +402,45 @@ pub fn db_tx_compensating_table_make(size : Int) -> DbtxcompensatingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_table_len(s : DbtxcompensatingTable) -> Int { s.size }
+pub fn DbtxcompensatingTable::len(self : DbtxcompensatingTable) -> Int { self.size }
 
-pub fn db_tx_compensating_table_get(s : DbtxcompensatingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingTable::get(self : DbtxcompensatingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_table_set(s : DbtxcompensatingTable, i : Int, v : Double) -> DbtxcompensatingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingTable::set(self : DbtxcompensatingTable, i : Int, v : Double) -> DbtxcompensatingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_table_sum(s : DbtxcompensatingTable) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingTable::sum(self : DbtxcompensatingTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_table_mean(s : DbtxcompensatingTable) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingTable::mean(self : DbtxcompensatingTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_table_scale(s : DbtxcompensatingTable, f : Double) -> DbtxcompensatingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingTable::scale(self : DbtxcompensatingTable, f : Double) -> DbtxcompensatingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_table_add(a : DbtxcompensatingTable, b : DbtxcompensatingTable) -> DbtxcompensatingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingTable::add(self : DbtxcompensatingTable, other : DbtxcompensatingTable) -> DbtxcompensatingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_table_copy(s : DbtxcompensatingTable) -> DbtxcompensatingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingTable::copy(self : DbtxcompensatingTable) -> DbtxcompensatingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_table_fill(s : DbtxcompensatingTable, v : Double) -> DbtxcompensatingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingTable::fill(self : DbtxcompensatingTable, v : Double) -> DbtxcompensatingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_table_min(s : DbtxcompensatingTable) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingTable::min(self : DbtxcompensatingTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_table_max(s : DbtxcompensatingTable) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingTable::max(self : DbtxcompensatingTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_table_to_string(s : DbtxcompensatingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingTable::to_string(self : DbtxcompensatingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_compensating_graphn_make(size : Int) -> DbtxcompensatingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_graphn_len(s : DbtxcompensatingGraphN) -> Int { s.size }
+pub fn DbtxcompensatingGraphN::len(self : DbtxcompensatingGraphN) -> Int { self.size }
 
-pub fn db_tx_compensating_graphn_get(s : DbtxcompensatingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingGraphN::get(self : DbtxcompensatingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_graphn_set(s : DbtxcompensatingGraphN, i : Int, v : Double) -> DbtxcompensatingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingGraphN::set(self : DbtxcompensatingGraphN, i : Int, v : Double) -> DbtxcompensatingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_graphn_sum(s : DbtxcompensatingGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingGraphN::sum(self : DbtxcompensatingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_graphn_mean(s : DbtxcompensatingGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingGraphN::mean(self : DbtxcompensatingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_graphn_scale(s : DbtxcompensatingGraphN, f : Double) -> DbtxcompensatingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingGraphN::scale(self : DbtxcompensatingGraphN, f : Double) -> DbtxcompensatingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_graphn_add(a : DbtxcompensatingGraphN, b : DbtxcompensatingGraphN) -> DbtxcompensatingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingGraphN::add(self : DbtxcompensatingGraphN, other : DbtxcompensatingGraphN) -> DbtxcompensatingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_graphn_copy(s : DbtxcompensatingGraphN) -> DbtxcompensatingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingGraphN::copy(self : DbtxcompensatingGraphN) -> DbtxcompensatingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_graphn_fill(s : DbtxcompensatingGraphN, v : Double) -> DbtxcompensatingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingGraphN::fill(self : DbtxcompensatingGraphN, v : Double) -> DbtxcompensatingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_graphn_min(s : DbtxcompensatingGraphN) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingGraphN::min(self : DbtxcompensatingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_graphn_max(s : DbtxcompensatingGraphN) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingGraphN::max(self : DbtxcompensatingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_graphn_to_string(s : DbtxcompensatingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingGraphN::to_string(self : DbtxcompensatingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingNode {
@@ -504,45 +504,45 @@ pub fn db_tx_compensating_node_make(size : Int) -> DbtxcompensatingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_node_len(s : DbtxcompensatingNode) -> Int { s.size }
+pub fn DbtxcompensatingNode::len(self : DbtxcompensatingNode) -> Int { self.size }
 
-pub fn db_tx_compensating_node_get(s : DbtxcompensatingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingNode::get(self : DbtxcompensatingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_node_set(s : DbtxcompensatingNode, i : Int, v : Double) -> DbtxcompensatingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingNode::set(self : DbtxcompensatingNode, i : Int, v : Double) -> DbtxcompensatingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_node_sum(s : DbtxcompensatingNode) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingNode::sum(self : DbtxcompensatingNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_node_mean(s : DbtxcompensatingNode) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingNode::mean(self : DbtxcompensatingNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_node_scale(s : DbtxcompensatingNode, f : Double) -> DbtxcompensatingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingNode::scale(self : DbtxcompensatingNode, f : Double) -> DbtxcompensatingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_node_add(a : DbtxcompensatingNode, b : DbtxcompensatingNode) -> DbtxcompensatingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingNode::add(self : DbtxcompensatingNode, other : DbtxcompensatingNode) -> DbtxcompensatingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_node_copy(s : DbtxcompensatingNode) -> DbtxcompensatingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingNode::copy(self : DbtxcompensatingNode) -> DbtxcompensatingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_node_fill(s : DbtxcompensatingNode, v : Double) -> DbtxcompensatingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingNode::fill(self : DbtxcompensatingNode, v : Double) -> DbtxcompensatingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_node_min(s : DbtxcompensatingNode) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingNode::min(self : DbtxcompensatingNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_node_max(s : DbtxcompensatingNode) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingNode::max(self : DbtxcompensatingNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_node_to_string(s : DbtxcompensatingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingNode::to_string(self : DbtxcompensatingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_compensating_edge_make(size : Int) -> DbtxcompensatingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_edge_len(s : DbtxcompensatingEdge) -> Int { s.size }
+pub fn DbtxcompensatingEdge::len(self : DbtxcompensatingEdge) -> Int { self.size }
 
-pub fn db_tx_compensating_edge_get(s : DbtxcompensatingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingEdge::get(self : DbtxcompensatingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_edge_set(s : DbtxcompensatingEdge, i : Int, v : Double) -> DbtxcompensatingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingEdge::set(self : DbtxcompensatingEdge, i : Int, v : Double) -> DbtxcompensatingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_edge_sum(s : DbtxcompensatingEdge) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingEdge::sum(self : DbtxcompensatingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_edge_mean(s : DbtxcompensatingEdge) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingEdge::mean(self : DbtxcompensatingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_edge_scale(s : DbtxcompensatingEdge, f : Double) -> DbtxcompensatingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingEdge::scale(self : DbtxcompensatingEdge, f : Double) -> DbtxcompensatingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_edge_add(a : DbtxcompensatingEdge, b : DbtxcompensatingEdge) -> DbtxcompensatingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingEdge::add(self : DbtxcompensatingEdge, other : DbtxcompensatingEdge) -> DbtxcompensatingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_edge_copy(s : DbtxcompensatingEdge) -> DbtxcompensatingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingEdge::copy(self : DbtxcompensatingEdge) -> DbtxcompensatingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_edge_fill(s : DbtxcompensatingEdge, v : Double) -> DbtxcompensatingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingEdge::fill(self : DbtxcompensatingEdge, v : Double) -> DbtxcompensatingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_edge_min(s : DbtxcompensatingEdge) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingEdge::min(self : DbtxcompensatingEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_edge_max(s : DbtxcompensatingEdge) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingEdge::max(self : DbtxcompensatingEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_edge_to_string(s : DbtxcompensatingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingEdge::to_string(self : DbtxcompensatingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingPath {
@@ -606,45 +606,45 @@ pub fn db_tx_compensating_path_make(size : Int) -> DbtxcompensatingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_path_len(s : DbtxcompensatingPath) -> Int { s.size }
+pub fn DbtxcompensatingPath::len(self : DbtxcompensatingPath) -> Int { self.size }
 
-pub fn db_tx_compensating_path_get(s : DbtxcompensatingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingPath::get(self : DbtxcompensatingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_path_set(s : DbtxcompensatingPath, i : Int, v : Double) -> DbtxcompensatingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingPath::set(self : DbtxcompensatingPath, i : Int, v : Double) -> DbtxcompensatingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_path_sum(s : DbtxcompensatingPath) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingPath::sum(self : DbtxcompensatingPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_path_mean(s : DbtxcompensatingPath) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingPath::mean(self : DbtxcompensatingPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_path_scale(s : DbtxcompensatingPath, f : Double) -> DbtxcompensatingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingPath::scale(self : DbtxcompensatingPath, f : Double) -> DbtxcompensatingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_path_add(a : DbtxcompensatingPath, b : DbtxcompensatingPath) -> DbtxcompensatingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingPath::add(self : DbtxcompensatingPath, other : DbtxcompensatingPath) -> DbtxcompensatingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_path_copy(s : DbtxcompensatingPath) -> DbtxcompensatingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingPath::copy(self : DbtxcompensatingPath) -> DbtxcompensatingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_path_fill(s : DbtxcompensatingPath, v : Double) -> DbtxcompensatingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingPath::fill(self : DbtxcompensatingPath, v : Double) -> DbtxcompensatingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_path_min(s : DbtxcompensatingPath) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingPath::min(self : DbtxcompensatingPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_path_max(s : DbtxcompensatingPath) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingPath::max(self : DbtxcompensatingPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_path_to_string(s : DbtxcompensatingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingPath::to_string(self : DbtxcompensatingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_compensating_cluster_make(size : Int) -> DbtxcompensatingCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_cluster_len(s : DbtxcompensatingCluster) -> Int { s.size }
+pub fn DbtxcompensatingCluster::len(self : DbtxcompensatingCluster) -> Int { self.size }
 
-pub fn db_tx_compensating_cluster_get(s : DbtxcompensatingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingCluster::get(self : DbtxcompensatingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_cluster_set(s : DbtxcompensatingCluster, i : Int, v : Double) -> DbtxcompensatingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCluster::set(self : DbtxcompensatingCluster, i : Int, v : Double) -> DbtxcompensatingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cluster_sum(s : DbtxcompensatingCluster) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingCluster::sum(self : DbtxcompensatingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_cluster_mean(s : DbtxcompensatingCluster) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingCluster::mean(self : DbtxcompensatingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_cluster_scale(s : DbtxcompensatingCluster, f : Double) -> DbtxcompensatingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCluster::scale(self : DbtxcompensatingCluster, f : Double) -> DbtxcompensatingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cluster_add(a : DbtxcompensatingCluster, b : DbtxcompensatingCluster) -> DbtxcompensatingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingCluster::add(self : DbtxcompensatingCluster, other : DbtxcompensatingCluster) -> DbtxcompensatingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cluster_copy(s : DbtxcompensatingCluster) -> DbtxcompensatingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCluster::copy(self : DbtxcompensatingCluster) -> DbtxcompensatingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cluster_fill(s : DbtxcompensatingCluster, v : Double) -> DbtxcompensatingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCluster::fill(self : DbtxcompensatingCluster, v : Double) -> DbtxcompensatingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cluster_min(s : DbtxcompensatingCluster) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingCluster::min(self : DbtxcompensatingCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_cluster_max(s : DbtxcompensatingCluster) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingCluster::max(self : DbtxcompensatingCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_cluster_to_string(s : DbtxcompensatingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingCluster::to_string(self : DbtxcompensatingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingModel {
@@ -708,45 +708,45 @@ pub fn db_tx_compensating_model_make(size : Int) -> DbtxcompensatingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_model_len(s : DbtxcompensatingModel) -> Int { s.size }
+pub fn DbtxcompensatingModel::len(self : DbtxcompensatingModel) -> Int { self.size }
 
-pub fn db_tx_compensating_model_get(s : DbtxcompensatingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingModel::get(self : DbtxcompensatingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_model_set(s : DbtxcompensatingModel, i : Int, v : Double) -> DbtxcompensatingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingModel::set(self : DbtxcompensatingModel, i : Int, v : Double) -> DbtxcompensatingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_model_sum(s : DbtxcompensatingModel) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingModel::sum(self : DbtxcompensatingModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_model_mean(s : DbtxcompensatingModel) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingModel::mean(self : DbtxcompensatingModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_model_scale(s : DbtxcompensatingModel, f : Double) -> DbtxcompensatingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingModel::scale(self : DbtxcompensatingModel, f : Double) -> DbtxcompensatingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_model_add(a : DbtxcompensatingModel, b : DbtxcompensatingModel) -> DbtxcompensatingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingModel::add(self : DbtxcompensatingModel, other : DbtxcompensatingModel) -> DbtxcompensatingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_model_copy(s : DbtxcompensatingModel) -> DbtxcompensatingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingModel::copy(self : DbtxcompensatingModel) -> DbtxcompensatingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_model_fill(s : DbtxcompensatingModel, v : Double) -> DbtxcompensatingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingModel::fill(self : DbtxcompensatingModel, v : Double) -> DbtxcompensatingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_model_min(s : DbtxcompensatingModel) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingModel::min(self : DbtxcompensatingModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_model_max(s : DbtxcompensatingModel) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingModel::max(self : DbtxcompensatingModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_model_to_string(s : DbtxcompensatingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingModel::to_string(self : DbtxcompensatingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_compensating_layer_make(size : Int) -> DbtxcompensatingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_layer_len(s : DbtxcompensatingLayer) -> Int { s.size }
+pub fn DbtxcompensatingLayer::len(self : DbtxcompensatingLayer) -> Int { self.size }
 
-pub fn db_tx_compensating_layer_get(s : DbtxcompensatingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingLayer::get(self : DbtxcompensatingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_layer_set(s : DbtxcompensatingLayer, i : Int, v : Double) -> DbtxcompensatingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingLayer::set(self : DbtxcompensatingLayer, i : Int, v : Double) -> DbtxcompensatingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_layer_sum(s : DbtxcompensatingLayer) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingLayer::sum(self : DbtxcompensatingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_layer_mean(s : DbtxcompensatingLayer) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingLayer::mean(self : DbtxcompensatingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_layer_scale(s : DbtxcompensatingLayer, f : Double) -> DbtxcompensatingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingLayer::scale(self : DbtxcompensatingLayer, f : Double) -> DbtxcompensatingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_layer_add(a : DbtxcompensatingLayer, b : DbtxcompensatingLayer) -> DbtxcompensatingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingLayer::add(self : DbtxcompensatingLayer, other : DbtxcompensatingLayer) -> DbtxcompensatingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_layer_copy(s : DbtxcompensatingLayer) -> DbtxcompensatingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingLayer::copy(self : DbtxcompensatingLayer) -> DbtxcompensatingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_layer_fill(s : DbtxcompensatingLayer, v : Double) -> DbtxcompensatingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingLayer::fill(self : DbtxcompensatingLayer, v : Double) -> DbtxcompensatingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_layer_min(s : DbtxcompensatingLayer) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingLayer::min(self : DbtxcompensatingLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_layer_max(s : DbtxcompensatingLayer) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingLayer::max(self : DbtxcompensatingLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_layer_to_string(s : DbtxcompensatingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingLayer::to_string(self : DbtxcompensatingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_compensating_buffer_make(size : Int) -> DbtxcompensatingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_buffer_len(s : DbtxcompensatingBuffer) -> Int { s.size }
+pub fn DbtxcompensatingBuffer::len(self : DbtxcompensatingBuffer) -> Int { self.size }
 
-pub fn db_tx_compensating_buffer_get(s : DbtxcompensatingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingBuffer::get(self : DbtxcompensatingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_buffer_set(s : DbtxcompensatingBuffer, i : Int, v : Double) -> DbtxcompensatingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingBuffer::set(self : DbtxcompensatingBuffer, i : Int, v : Double) -> DbtxcompensatingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_buffer_sum(s : DbtxcompensatingBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingBuffer::sum(self : DbtxcompensatingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_buffer_mean(s : DbtxcompensatingBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingBuffer::mean(self : DbtxcompensatingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_buffer_scale(s : DbtxcompensatingBuffer, f : Double) -> DbtxcompensatingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingBuffer::scale(self : DbtxcompensatingBuffer, f : Double) -> DbtxcompensatingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_buffer_add(a : DbtxcompensatingBuffer, b : DbtxcompensatingBuffer) -> DbtxcompensatingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingBuffer::add(self : DbtxcompensatingBuffer, other : DbtxcompensatingBuffer) -> DbtxcompensatingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_buffer_copy(s : DbtxcompensatingBuffer) -> DbtxcompensatingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingBuffer::copy(self : DbtxcompensatingBuffer) -> DbtxcompensatingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_buffer_fill(s : DbtxcompensatingBuffer, v : Double) -> DbtxcompensatingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingBuffer::fill(self : DbtxcompensatingBuffer, v : Double) -> DbtxcompensatingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_buffer_min(s : DbtxcompensatingBuffer) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingBuffer::min(self : DbtxcompensatingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_buffer_max(s : DbtxcompensatingBuffer) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingBuffer::max(self : DbtxcompensatingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_buffer_to_string(s : DbtxcompensatingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingBuffer::to_string(self : DbtxcompensatingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_compensating_cursor_make(size : Int) -> DbtxcompensatingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_cursor_len(s : DbtxcompensatingCursor) -> Int { s.size }
+pub fn DbtxcompensatingCursor::len(self : DbtxcompensatingCursor) -> Int { self.size }
 
-pub fn db_tx_compensating_cursor_get(s : DbtxcompensatingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingCursor::get(self : DbtxcompensatingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_cursor_set(s : DbtxcompensatingCursor, i : Int, v : Double) -> DbtxcompensatingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCursor::set(self : DbtxcompensatingCursor, i : Int, v : Double) -> DbtxcompensatingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cursor_sum(s : DbtxcompensatingCursor) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingCursor::sum(self : DbtxcompensatingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_cursor_mean(s : DbtxcompensatingCursor) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingCursor::mean(self : DbtxcompensatingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_cursor_scale(s : DbtxcompensatingCursor, f : Double) -> DbtxcompensatingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCursor::scale(self : DbtxcompensatingCursor, f : Double) -> DbtxcompensatingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cursor_add(a : DbtxcompensatingCursor, b : DbtxcompensatingCursor) -> DbtxcompensatingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingCursor::add(self : DbtxcompensatingCursor, other : DbtxcompensatingCursor) -> DbtxcompensatingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cursor_copy(s : DbtxcompensatingCursor) -> DbtxcompensatingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCursor::copy(self : DbtxcompensatingCursor) -> DbtxcompensatingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cursor_fill(s : DbtxcompensatingCursor, v : Double) -> DbtxcompensatingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingCursor::fill(self : DbtxcompensatingCursor, v : Double) -> DbtxcompensatingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_cursor_min(s : DbtxcompensatingCursor) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingCursor::min(self : DbtxcompensatingCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_cursor_max(s : DbtxcompensatingCursor) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingCursor::max(self : DbtxcompensatingCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_cursor_to_string(s : DbtxcompensatingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingCursor::to_string(self : DbtxcompensatingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingView {
@@ -912,45 +912,45 @@ pub fn db_tx_compensating_view_make(size : Int) -> DbtxcompensatingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_view_len(s : DbtxcompensatingView) -> Int { s.size }
+pub fn DbtxcompensatingView::len(self : DbtxcompensatingView) -> Int { self.size }
 
-pub fn db_tx_compensating_view_get(s : DbtxcompensatingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingView::get(self : DbtxcompensatingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_view_set(s : DbtxcompensatingView, i : Int, v : Double) -> DbtxcompensatingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingView::set(self : DbtxcompensatingView, i : Int, v : Double) -> DbtxcompensatingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_view_sum(s : DbtxcompensatingView) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingView::sum(self : DbtxcompensatingView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_view_mean(s : DbtxcompensatingView) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingView::mean(self : DbtxcompensatingView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_view_scale(s : DbtxcompensatingView, f : Double) -> DbtxcompensatingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingView::scale(self : DbtxcompensatingView, f : Double) -> DbtxcompensatingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_view_add(a : DbtxcompensatingView, b : DbtxcompensatingView) -> DbtxcompensatingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingView::add(self : DbtxcompensatingView, other : DbtxcompensatingView) -> DbtxcompensatingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_view_copy(s : DbtxcompensatingView) -> DbtxcompensatingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingView::copy(self : DbtxcompensatingView) -> DbtxcompensatingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_view_fill(s : DbtxcompensatingView, v : Double) -> DbtxcompensatingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingView::fill(self : DbtxcompensatingView, v : Double) -> DbtxcompensatingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_view_min(s : DbtxcompensatingView) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingView::min(self : DbtxcompensatingView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_view_max(s : DbtxcompensatingView) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingView::max(self : DbtxcompensatingView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_view_to_string(s : DbtxcompensatingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingView::to_string(self : DbtxcompensatingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingRange {
@@ -963,45 +963,45 @@ pub fn db_tx_compensating_range_make(size : Int) -> DbtxcompensatingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_range_len(s : DbtxcompensatingRange) -> Int { s.size }
+pub fn DbtxcompensatingRange::len(self : DbtxcompensatingRange) -> Int { self.size }
 
-pub fn db_tx_compensating_range_get(s : DbtxcompensatingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingRange::get(self : DbtxcompensatingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_range_set(s : DbtxcompensatingRange, i : Int, v : Double) -> DbtxcompensatingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingRange::set(self : DbtxcompensatingRange, i : Int, v : Double) -> DbtxcompensatingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_range_sum(s : DbtxcompensatingRange) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingRange::sum(self : DbtxcompensatingRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_range_mean(s : DbtxcompensatingRange) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingRange::mean(self : DbtxcompensatingRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_range_scale(s : DbtxcompensatingRange, f : Double) -> DbtxcompensatingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingRange::scale(self : DbtxcompensatingRange, f : Double) -> DbtxcompensatingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_range_add(a : DbtxcompensatingRange, b : DbtxcompensatingRange) -> DbtxcompensatingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingRange::add(self : DbtxcompensatingRange, other : DbtxcompensatingRange) -> DbtxcompensatingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_range_copy(s : DbtxcompensatingRange) -> DbtxcompensatingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingRange::copy(self : DbtxcompensatingRange) -> DbtxcompensatingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_range_fill(s : DbtxcompensatingRange, v : Double) -> DbtxcompensatingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingRange::fill(self : DbtxcompensatingRange, v : Double) -> DbtxcompensatingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_range_min(s : DbtxcompensatingRange) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingRange::min(self : DbtxcompensatingRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_range_max(s : DbtxcompensatingRange) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingRange::max(self : DbtxcompensatingRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_range_to_string(s : DbtxcompensatingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingRange::to_string(self : DbtxcompensatingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxcompensatingSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_compensating_slice_make(size : Int) -> DbtxcompensatingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_compensating_slice_len(s : DbtxcompensatingSlice) -> Int { s.size }
+pub fn DbtxcompensatingSlice::len(self : DbtxcompensatingSlice) -> Int { self.size }
 
-pub fn db_tx_compensating_slice_get(s : DbtxcompensatingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxcompensatingSlice::get(self : DbtxcompensatingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_compensating_slice_set(s : DbtxcompensatingSlice, i : Int, v : Double) -> DbtxcompensatingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxcompensatingSlice::set(self : DbtxcompensatingSlice, i : Int, v : Double) -> DbtxcompensatingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_slice_sum(s : DbtxcompensatingSlice) -> Double { @_common.sum(s.data) }
+pub fn DbtxcompensatingSlice::sum(self : DbtxcompensatingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_compensating_slice_mean(s : DbtxcompensatingSlice) -> Double { @_common.mean(s.data) }
+pub fn DbtxcompensatingSlice::mean(self : DbtxcompensatingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_compensating_slice_scale(s : DbtxcompensatingSlice, f : Double) -> DbtxcompensatingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingSlice::scale(self : DbtxcompensatingSlice, f : Double) -> DbtxcompensatingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_slice_add(a : DbtxcompensatingSlice, b : DbtxcompensatingSlice) -> DbtxcompensatingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxcompensatingSlice::add(self : DbtxcompensatingSlice, other : DbtxcompensatingSlice) -> DbtxcompensatingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_compensating_slice_copy(s : DbtxcompensatingSlice) -> DbtxcompensatingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingSlice::copy(self : DbtxcompensatingSlice) -> DbtxcompensatingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_slice_fill(s : DbtxcompensatingSlice, v : Double) -> DbtxcompensatingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxcompensatingSlice::fill(self : DbtxcompensatingSlice, v : Double) -> DbtxcompensatingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_compensating_slice_min(s : DbtxcompensatingSlice) -> Double { @_common.min(s.data) }
+pub fn DbtxcompensatingSlice::min(self : DbtxcompensatingSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_compensating_slice_max(s : DbtxcompensatingSlice) -> Double { @_common.max(s.data) }
+pub fn DbtxcompensatingSlice::max(self : DbtxcompensatingSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_compensating_slice_to_string(s : DbtxcompensatingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxcompensatingSlice::to_string(self : DbtxcompensatingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

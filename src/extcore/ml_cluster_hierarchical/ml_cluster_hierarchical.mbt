@@ -351,45 +351,45 @@ pub fn ml_cluster_hierarchical_frame_make(size : Int) -> MlclusterhierarchicalFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_frame_len(s : MlclusterhierarchicalFrame) -> Int { s.size }
+pub fn MlclusterhierarchicalFrame::len(self : MlclusterhierarchicalFrame) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_frame_get(s : MlclusterhierarchicalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalFrame::get(self : MlclusterhierarchicalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_frame_set(s : MlclusterhierarchicalFrame, i : Int, v : Double) -> MlclusterhierarchicalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalFrame::set(self : MlclusterhierarchicalFrame, i : Int, v : Double) -> MlclusterhierarchicalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_frame_sum(s : MlclusterhierarchicalFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalFrame::sum(self : MlclusterhierarchicalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_frame_mean(s : MlclusterhierarchicalFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalFrame::mean(self : MlclusterhierarchicalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_frame_scale(s : MlclusterhierarchicalFrame, f : Double) -> MlclusterhierarchicalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalFrame::scale(self : MlclusterhierarchicalFrame, f : Double) -> MlclusterhierarchicalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_frame_add(a : MlclusterhierarchicalFrame, b : MlclusterhierarchicalFrame) -> MlclusterhierarchicalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalFrame::add(self : MlclusterhierarchicalFrame, other : MlclusterhierarchicalFrame) -> MlclusterhierarchicalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_frame_copy(s : MlclusterhierarchicalFrame) -> MlclusterhierarchicalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalFrame::copy(self : MlclusterhierarchicalFrame) -> MlclusterhierarchicalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_frame_fill(s : MlclusterhierarchicalFrame, v : Double) -> MlclusterhierarchicalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalFrame::fill(self : MlclusterhierarchicalFrame, v : Double) -> MlclusterhierarchicalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_frame_min(s : MlclusterhierarchicalFrame) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalFrame::min(self : MlclusterhierarchicalFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_frame_max(s : MlclusterhierarchicalFrame) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalFrame::max(self : MlclusterhierarchicalFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_frame_to_string(s : MlclusterhierarchicalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalFrame::to_string(self : MlclusterhierarchicalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalTable {
@@ -402,45 +402,45 @@ pub fn ml_cluster_hierarchical_table_make(size : Int) -> MlclusterhierarchicalTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_table_len(s : MlclusterhierarchicalTable) -> Int { s.size }
+pub fn MlclusterhierarchicalTable::len(self : MlclusterhierarchicalTable) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_table_get(s : MlclusterhierarchicalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalTable::get(self : MlclusterhierarchicalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_table_set(s : MlclusterhierarchicalTable, i : Int, v : Double) -> MlclusterhierarchicalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalTable::set(self : MlclusterhierarchicalTable, i : Int, v : Double) -> MlclusterhierarchicalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_table_sum(s : MlclusterhierarchicalTable) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalTable::sum(self : MlclusterhierarchicalTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_table_mean(s : MlclusterhierarchicalTable) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalTable::mean(self : MlclusterhierarchicalTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_table_scale(s : MlclusterhierarchicalTable, f : Double) -> MlclusterhierarchicalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalTable::scale(self : MlclusterhierarchicalTable, f : Double) -> MlclusterhierarchicalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_table_add(a : MlclusterhierarchicalTable, b : MlclusterhierarchicalTable) -> MlclusterhierarchicalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalTable::add(self : MlclusterhierarchicalTable, other : MlclusterhierarchicalTable) -> MlclusterhierarchicalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_table_copy(s : MlclusterhierarchicalTable) -> MlclusterhierarchicalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalTable::copy(self : MlclusterhierarchicalTable) -> MlclusterhierarchicalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_table_fill(s : MlclusterhierarchicalTable, v : Double) -> MlclusterhierarchicalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalTable::fill(self : MlclusterhierarchicalTable, v : Double) -> MlclusterhierarchicalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_table_min(s : MlclusterhierarchicalTable) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalTable::min(self : MlclusterhierarchicalTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_table_max(s : MlclusterhierarchicalTable) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalTable::max(self : MlclusterhierarchicalTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_table_to_string(s : MlclusterhierarchicalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalTable::to_string(self : MlclusterhierarchicalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalGraphN {
@@ -453,45 +453,45 @@ pub fn ml_cluster_hierarchical_graphn_make(size : Int) -> MlclusterhierarchicalG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_graphn_len(s : MlclusterhierarchicalGraphN) -> Int { s.size }
+pub fn MlclusterhierarchicalGraphN::len(self : MlclusterhierarchicalGraphN) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_graphn_get(s : MlclusterhierarchicalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalGraphN::get(self : MlclusterhierarchicalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_graphn_set(s : MlclusterhierarchicalGraphN, i : Int, v : Double) -> MlclusterhierarchicalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalGraphN::set(self : MlclusterhierarchicalGraphN, i : Int, v : Double) -> MlclusterhierarchicalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_graphn_sum(s : MlclusterhierarchicalGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalGraphN::sum(self : MlclusterhierarchicalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_graphn_mean(s : MlclusterhierarchicalGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalGraphN::mean(self : MlclusterhierarchicalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_graphn_scale(s : MlclusterhierarchicalGraphN, f : Double) -> MlclusterhierarchicalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalGraphN::scale(self : MlclusterhierarchicalGraphN, f : Double) -> MlclusterhierarchicalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_graphn_add(a : MlclusterhierarchicalGraphN, b : MlclusterhierarchicalGraphN) -> MlclusterhierarchicalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalGraphN::add(self : MlclusterhierarchicalGraphN, other : MlclusterhierarchicalGraphN) -> MlclusterhierarchicalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_graphn_copy(s : MlclusterhierarchicalGraphN) -> MlclusterhierarchicalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalGraphN::copy(self : MlclusterhierarchicalGraphN) -> MlclusterhierarchicalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_graphn_fill(s : MlclusterhierarchicalGraphN, v : Double) -> MlclusterhierarchicalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalGraphN::fill(self : MlclusterhierarchicalGraphN, v : Double) -> MlclusterhierarchicalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_graphn_min(s : MlclusterhierarchicalGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalGraphN::min(self : MlclusterhierarchicalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_graphn_max(s : MlclusterhierarchicalGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalGraphN::max(self : MlclusterhierarchicalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_graphn_to_string(s : MlclusterhierarchicalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalGraphN::to_string(self : MlclusterhierarchicalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalNode {
@@ -504,45 +504,45 @@ pub fn ml_cluster_hierarchical_node_make(size : Int) -> MlclusterhierarchicalNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_node_len(s : MlclusterhierarchicalNode) -> Int { s.size }
+pub fn MlclusterhierarchicalNode::len(self : MlclusterhierarchicalNode) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_node_get(s : MlclusterhierarchicalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalNode::get(self : MlclusterhierarchicalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_node_set(s : MlclusterhierarchicalNode, i : Int, v : Double) -> MlclusterhierarchicalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalNode::set(self : MlclusterhierarchicalNode, i : Int, v : Double) -> MlclusterhierarchicalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_node_sum(s : MlclusterhierarchicalNode) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalNode::sum(self : MlclusterhierarchicalNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_node_mean(s : MlclusterhierarchicalNode) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalNode::mean(self : MlclusterhierarchicalNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_node_scale(s : MlclusterhierarchicalNode, f : Double) -> MlclusterhierarchicalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalNode::scale(self : MlclusterhierarchicalNode, f : Double) -> MlclusterhierarchicalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_node_add(a : MlclusterhierarchicalNode, b : MlclusterhierarchicalNode) -> MlclusterhierarchicalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalNode::add(self : MlclusterhierarchicalNode, other : MlclusterhierarchicalNode) -> MlclusterhierarchicalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_node_copy(s : MlclusterhierarchicalNode) -> MlclusterhierarchicalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalNode::copy(self : MlclusterhierarchicalNode) -> MlclusterhierarchicalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_node_fill(s : MlclusterhierarchicalNode, v : Double) -> MlclusterhierarchicalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalNode::fill(self : MlclusterhierarchicalNode, v : Double) -> MlclusterhierarchicalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_node_min(s : MlclusterhierarchicalNode) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalNode::min(self : MlclusterhierarchicalNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_node_max(s : MlclusterhierarchicalNode) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalNode::max(self : MlclusterhierarchicalNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_node_to_string(s : MlclusterhierarchicalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalNode::to_string(self : MlclusterhierarchicalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalEdge {
@@ -555,45 +555,45 @@ pub fn ml_cluster_hierarchical_edge_make(size : Int) -> MlclusterhierarchicalEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_edge_len(s : MlclusterhierarchicalEdge) -> Int { s.size }
+pub fn MlclusterhierarchicalEdge::len(self : MlclusterhierarchicalEdge) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_edge_get(s : MlclusterhierarchicalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalEdge::get(self : MlclusterhierarchicalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_edge_set(s : MlclusterhierarchicalEdge, i : Int, v : Double) -> MlclusterhierarchicalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalEdge::set(self : MlclusterhierarchicalEdge, i : Int, v : Double) -> MlclusterhierarchicalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_edge_sum(s : MlclusterhierarchicalEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalEdge::sum(self : MlclusterhierarchicalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_edge_mean(s : MlclusterhierarchicalEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalEdge::mean(self : MlclusterhierarchicalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_edge_scale(s : MlclusterhierarchicalEdge, f : Double) -> MlclusterhierarchicalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalEdge::scale(self : MlclusterhierarchicalEdge, f : Double) -> MlclusterhierarchicalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_edge_add(a : MlclusterhierarchicalEdge, b : MlclusterhierarchicalEdge) -> MlclusterhierarchicalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalEdge::add(self : MlclusterhierarchicalEdge, other : MlclusterhierarchicalEdge) -> MlclusterhierarchicalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_edge_copy(s : MlclusterhierarchicalEdge) -> MlclusterhierarchicalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalEdge::copy(self : MlclusterhierarchicalEdge) -> MlclusterhierarchicalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_edge_fill(s : MlclusterhierarchicalEdge, v : Double) -> MlclusterhierarchicalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalEdge::fill(self : MlclusterhierarchicalEdge, v : Double) -> MlclusterhierarchicalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_edge_min(s : MlclusterhierarchicalEdge) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalEdge::min(self : MlclusterhierarchicalEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_edge_max(s : MlclusterhierarchicalEdge) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalEdge::max(self : MlclusterhierarchicalEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_edge_to_string(s : MlclusterhierarchicalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalEdge::to_string(self : MlclusterhierarchicalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalPath {
@@ -606,45 +606,45 @@ pub fn ml_cluster_hierarchical_path_make(size : Int) -> MlclusterhierarchicalPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_path_len(s : MlclusterhierarchicalPath) -> Int { s.size }
+pub fn MlclusterhierarchicalPath::len(self : MlclusterhierarchicalPath) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_path_get(s : MlclusterhierarchicalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalPath::get(self : MlclusterhierarchicalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_path_set(s : MlclusterhierarchicalPath, i : Int, v : Double) -> MlclusterhierarchicalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalPath::set(self : MlclusterhierarchicalPath, i : Int, v : Double) -> MlclusterhierarchicalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_path_sum(s : MlclusterhierarchicalPath) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalPath::sum(self : MlclusterhierarchicalPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_path_mean(s : MlclusterhierarchicalPath) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalPath::mean(self : MlclusterhierarchicalPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_path_scale(s : MlclusterhierarchicalPath, f : Double) -> MlclusterhierarchicalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalPath::scale(self : MlclusterhierarchicalPath, f : Double) -> MlclusterhierarchicalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_path_add(a : MlclusterhierarchicalPath, b : MlclusterhierarchicalPath) -> MlclusterhierarchicalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalPath::add(self : MlclusterhierarchicalPath, other : MlclusterhierarchicalPath) -> MlclusterhierarchicalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_path_copy(s : MlclusterhierarchicalPath) -> MlclusterhierarchicalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalPath::copy(self : MlclusterhierarchicalPath) -> MlclusterhierarchicalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_path_fill(s : MlclusterhierarchicalPath, v : Double) -> MlclusterhierarchicalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalPath::fill(self : MlclusterhierarchicalPath, v : Double) -> MlclusterhierarchicalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_path_min(s : MlclusterhierarchicalPath) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalPath::min(self : MlclusterhierarchicalPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_path_max(s : MlclusterhierarchicalPath) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalPath::max(self : MlclusterhierarchicalPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_path_to_string(s : MlclusterhierarchicalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalPath::to_string(self : MlclusterhierarchicalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalCluster {
@@ -657,45 +657,45 @@ pub fn ml_cluster_hierarchical_cluster_make(size : Int) -> Mlclusterhierarchical
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_cluster_len(s : MlclusterhierarchicalCluster) -> Int { s.size }
+pub fn MlclusterhierarchicalCluster::len(self : MlclusterhierarchicalCluster) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_cluster_get(s : MlclusterhierarchicalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalCluster::get(self : MlclusterhierarchicalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_cluster_set(s : MlclusterhierarchicalCluster, i : Int, v : Double) -> MlclusterhierarchicalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCluster::set(self : MlclusterhierarchicalCluster, i : Int, v : Double) -> MlclusterhierarchicalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cluster_sum(s : MlclusterhierarchicalCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalCluster::sum(self : MlclusterhierarchicalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_cluster_mean(s : MlclusterhierarchicalCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalCluster::mean(self : MlclusterhierarchicalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_cluster_scale(s : MlclusterhierarchicalCluster, f : Double) -> MlclusterhierarchicalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCluster::scale(self : MlclusterhierarchicalCluster, f : Double) -> MlclusterhierarchicalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cluster_add(a : MlclusterhierarchicalCluster, b : MlclusterhierarchicalCluster) -> MlclusterhierarchicalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalCluster::add(self : MlclusterhierarchicalCluster, other : MlclusterhierarchicalCluster) -> MlclusterhierarchicalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cluster_copy(s : MlclusterhierarchicalCluster) -> MlclusterhierarchicalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCluster::copy(self : MlclusterhierarchicalCluster) -> MlclusterhierarchicalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cluster_fill(s : MlclusterhierarchicalCluster, v : Double) -> MlclusterhierarchicalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCluster::fill(self : MlclusterhierarchicalCluster, v : Double) -> MlclusterhierarchicalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cluster_min(s : MlclusterhierarchicalCluster) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalCluster::min(self : MlclusterhierarchicalCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_cluster_max(s : MlclusterhierarchicalCluster) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalCluster::max(self : MlclusterhierarchicalCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_cluster_to_string(s : MlclusterhierarchicalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalCluster::to_string(self : MlclusterhierarchicalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalModel {
@@ -708,45 +708,45 @@ pub fn ml_cluster_hierarchical_model_make(size : Int) -> MlclusterhierarchicalMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_model_len(s : MlclusterhierarchicalModel) -> Int { s.size }
+pub fn MlclusterhierarchicalModel::len(self : MlclusterhierarchicalModel) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_model_get(s : MlclusterhierarchicalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalModel::get(self : MlclusterhierarchicalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_model_set(s : MlclusterhierarchicalModel, i : Int, v : Double) -> MlclusterhierarchicalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalModel::set(self : MlclusterhierarchicalModel, i : Int, v : Double) -> MlclusterhierarchicalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_model_sum(s : MlclusterhierarchicalModel) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalModel::sum(self : MlclusterhierarchicalModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_model_mean(s : MlclusterhierarchicalModel) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalModel::mean(self : MlclusterhierarchicalModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_model_scale(s : MlclusterhierarchicalModel, f : Double) -> MlclusterhierarchicalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalModel::scale(self : MlclusterhierarchicalModel, f : Double) -> MlclusterhierarchicalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_model_add(a : MlclusterhierarchicalModel, b : MlclusterhierarchicalModel) -> MlclusterhierarchicalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalModel::add(self : MlclusterhierarchicalModel, other : MlclusterhierarchicalModel) -> MlclusterhierarchicalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_model_copy(s : MlclusterhierarchicalModel) -> MlclusterhierarchicalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalModel::copy(self : MlclusterhierarchicalModel) -> MlclusterhierarchicalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_model_fill(s : MlclusterhierarchicalModel, v : Double) -> MlclusterhierarchicalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalModel::fill(self : MlclusterhierarchicalModel, v : Double) -> MlclusterhierarchicalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_model_min(s : MlclusterhierarchicalModel) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalModel::min(self : MlclusterhierarchicalModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_model_max(s : MlclusterhierarchicalModel) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalModel::max(self : MlclusterhierarchicalModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_model_to_string(s : MlclusterhierarchicalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalModel::to_string(self : MlclusterhierarchicalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalLayer {
@@ -759,45 +759,45 @@ pub fn ml_cluster_hierarchical_layer_make(size : Int) -> MlclusterhierarchicalLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_layer_len(s : MlclusterhierarchicalLayer) -> Int { s.size }
+pub fn MlclusterhierarchicalLayer::len(self : MlclusterhierarchicalLayer) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_layer_get(s : MlclusterhierarchicalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalLayer::get(self : MlclusterhierarchicalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_layer_set(s : MlclusterhierarchicalLayer, i : Int, v : Double) -> MlclusterhierarchicalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalLayer::set(self : MlclusterhierarchicalLayer, i : Int, v : Double) -> MlclusterhierarchicalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_layer_sum(s : MlclusterhierarchicalLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalLayer::sum(self : MlclusterhierarchicalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_layer_mean(s : MlclusterhierarchicalLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalLayer::mean(self : MlclusterhierarchicalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_layer_scale(s : MlclusterhierarchicalLayer, f : Double) -> MlclusterhierarchicalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalLayer::scale(self : MlclusterhierarchicalLayer, f : Double) -> MlclusterhierarchicalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_layer_add(a : MlclusterhierarchicalLayer, b : MlclusterhierarchicalLayer) -> MlclusterhierarchicalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalLayer::add(self : MlclusterhierarchicalLayer, other : MlclusterhierarchicalLayer) -> MlclusterhierarchicalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_layer_copy(s : MlclusterhierarchicalLayer) -> MlclusterhierarchicalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalLayer::copy(self : MlclusterhierarchicalLayer) -> MlclusterhierarchicalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_layer_fill(s : MlclusterhierarchicalLayer, v : Double) -> MlclusterhierarchicalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalLayer::fill(self : MlclusterhierarchicalLayer, v : Double) -> MlclusterhierarchicalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_layer_min(s : MlclusterhierarchicalLayer) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalLayer::min(self : MlclusterhierarchicalLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_layer_max(s : MlclusterhierarchicalLayer) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalLayer::max(self : MlclusterhierarchicalLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_layer_to_string(s : MlclusterhierarchicalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalLayer::to_string(self : MlclusterhierarchicalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalBuffer {
@@ -810,45 +810,45 @@ pub fn ml_cluster_hierarchical_buffer_make(size : Int) -> MlclusterhierarchicalB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_buffer_len(s : MlclusterhierarchicalBuffer) -> Int { s.size }
+pub fn MlclusterhierarchicalBuffer::len(self : MlclusterhierarchicalBuffer) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_buffer_get(s : MlclusterhierarchicalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalBuffer::get(self : MlclusterhierarchicalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_buffer_set(s : MlclusterhierarchicalBuffer, i : Int, v : Double) -> MlclusterhierarchicalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalBuffer::set(self : MlclusterhierarchicalBuffer, i : Int, v : Double) -> MlclusterhierarchicalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_buffer_sum(s : MlclusterhierarchicalBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalBuffer::sum(self : MlclusterhierarchicalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_buffer_mean(s : MlclusterhierarchicalBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalBuffer::mean(self : MlclusterhierarchicalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_buffer_scale(s : MlclusterhierarchicalBuffer, f : Double) -> MlclusterhierarchicalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalBuffer::scale(self : MlclusterhierarchicalBuffer, f : Double) -> MlclusterhierarchicalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_buffer_add(a : MlclusterhierarchicalBuffer, b : MlclusterhierarchicalBuffer) -> MlclusterhierarchicalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalBuffer::add(self : MlclusterhierarchicalBuffer, other : MlclusterhierarchicalBuffer) -> MlclusterhierarchicalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_buffer_copy(s : MlclusterhierarchicalBuffer) -> MlclusterhierarchicalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalBuffer::copy(self : MlclusterhierarchicalBuffer) -> MlclusterhierarchicalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_buffer_fill(s : MlclusterhierarchicalBuffer, v : Double) -> MlclusterhierarchicalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalBuffer::fill(self : MlclusterhierarchicalBuffer, v : Double) -> MlclusterhierarchicalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_buffer_min(s : MlclusterhierarchicalBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalBuffer::min(self : MlclusterhierarchicalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_buffer_max(s : MlclusterhierarchicalBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalBuffer::max(self : MlclusterhierarchicalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_buffer_to_string(s : MlclusterhierarchicalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalBuffer::to_string(self : MlclusterhierarchicalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalCursor {
@@ -861,45 +861,45 @@ pub fn ml_cluster_hierarchical_cursor_make(size : Int) -> MlclusterhierarchicalC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_cursor_len(s : MlclusterhierarchicalCursor) -> Int { s.size }
+pub fn MlclusterhierarchicalCursor::len(self : MlclusterhierarchicalCursor) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_cursor_get(s : MlclusterhierarchicalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalCursor::get(self : MlclusterhierarchicalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_cursor_set(s : MlclusterhierarchicalCursor, i : Int, v : Double) -> MlclusterhierarchicalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCursor::set(self : MlclusterhierarchicalCursor, i : Int, v : Double) -> MlclusterhierarchicalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cursor_sum(s : MlclusterhierarchicalCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalCursor::sum(self : MlclusterhierarchicalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_cursor_mean(s : MlclusterhierarchicalCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalCursor::mean(self : MlclusterhierarchicalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_cursor_scale(s : MlclusterhierarchicalCursor, f : Double) -> MlclusterhierarchicalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCursor::scale(self : MlclusterhierarchicalCursor, f : Double) -> MlclusterhierarchicalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cursor_add(a : MlclusterhierarchicalCursor, b : MlclusterhierarchicalCursor) -> MlclusterhierarchicalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalCursor::add(self : MlclusterhierarchicalCursor, other : MlclusterhierarchicalCursor) -> MlclusterhierarchicalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cursor_copy(s : MlclusterhierarchicalCursor) -> MlclusterhierarchicalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCursor::copy(self : MlclusterhierarchicalCursor) -> MlclusterhierarchicalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cursor_fill(s : MlclusterhierarchicalCursor, v : Double) -> MlclusterhierarchicalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalCursor::fill(self : MlclusterhierarchicalCursor, v : Double) -> MlclusterhierarchicalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_cursor_min(s : MlclusterhierarchicalCursor) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalCursor::min(self : MlclusterhierarchicalCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_cursor_max(s : MlclusterhierarchicalCursor) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalCursor::max(self : MlclusterhierarchicalCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_cursor_to_string(s : MlclusterhierarchicalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalCursor::to_string(self : MlclusterhierarchicalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalView {
@@ -912,45 +912,45 @@ pub fn ml_cluster_hierarchical_view_make(size : Int) -> MlclusterhierarchicalVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_view_len(s : MlclusterhierarchicalView) -> Int { s.size }
+pub fn MlclusterhierarchicalView::len(self : MlclusterhierarchicalView) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_view_get(s : MlclusterhierarchicalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalView::get(self : MlclusterhierarchicalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_view_set(s : MlclusterhierarchicalView, i : Int, v : Double) -> MlclusterhierarchicalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalView::set(self : MlclusterhierarchicalView, i : Int, v : Double) -> MlclusterhierarchicalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_view_sum(s : MlclusterhierarchicalView) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalView::sum(self : MlclusterhierarchicalView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_view_mean(s : MlclusterhierarchicalView) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalView::mean(self : MlclusterhierarchicalView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_view_scale(s : MlclusterhierarchicalView, f : Double) -> MlclusterhierarchicalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalView::scale(self : MlclusterhierarchicalView, f : Double) -> MlclusterhierarchicalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_view_add(a : MlclusterhierarchicalView, b : MlclusterhierarchicalView) -> MlclusterhierarchicalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalView::add(self : MlclusterhierarchicalView, other : MlclusterhierarchicalView) -> MlclusterhierarchicalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_view_copy(s : MlclusterhierarchicalView) -> MlclusterhierarchicalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalView::copy(self : MlclusterhierarchicalView) -> MlclusterhierarchicalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_view_fill(s : MlclusterhierarchicalView, v : Double) -> MlclusterhierarchicalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalView::fill(self : MlclusterhierarchicalView, v : Double) -> MlclusterhierarchicalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_view_min(s : MlclusterhierarchicalView) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalView::min(self : MlclusterhierarchicalView) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_view_max(s : MlclusterhierarchicalView) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalView::max(self : MlclusterhierarchicalView) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_view_to_string(s : MlclusterhierarchicalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalView::to_string(self : MlclusterhierarchicalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalRange {
@@ -963,45 +963,45 @@ pub fn ml_cluster_hierarchical_range_make(size : Int) -> MlclusterhierarchicalRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_range_len(s : MlclusterhierarchicalRange) -> Int { s.size }
+pub fn MlclusterhierarchicalRange::len(self : MlclusterhierarchicalRange) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_range_get(s : MlclusterhierarchicalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalRange::get(self : MlclusterhierarchicalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_range_set(s : MlclusterhierarchicalRange, i : Int, v : Double) -> MlclusterhierarchicalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalRange::set(self : MlclusterhierarchicalRange, i : Int, v : Double) -> MlclusterhierarchicalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_range_sum(s : MlclusterhierarchicalRange) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalRange::sum(self : MlclusterhierarchicalRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_range_mean(s : MlclusterhierarchicalRange) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalRange::mean(self : MlclusterhierarchicalRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_range_scale(s : MlclusterhierarchicalRange, f : Double) -> MlclusterhierarchicalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalRange::scale(self : MlclusterhierarchicalRange, f : Double) -> MlclusterhierarchicalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_range_add(a : MlclusterhierarchicalRange, b : MlclusterhierarchicalRange) -> MlclusterhierarchicalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalRange::add(self : MlclusterhierarchicalRange, other : MlclusterhierarchicalRange) -> MlclusterhierarchicalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_range_copy(s : MlclusterhierarchicalRange) -> MlclusterhierarchicalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalRange::copy(self : MlclusterhierarchicalRange) -> MlclusterhierarchicalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_range_fill(s : MlclusterhierarchicalRange, v : Double) -> MlclusterhierarchicalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalRange::fill(self : MlclusterhierarchicalRange, v : Double) -> MlclusterhierarchicalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_range_min(s : MlclusterhierarchicalRange) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalRange::min(self : MlclusterhierarchicalRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_range_max(s : MlclusterhierarchicalRange) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalRange::max(self : MlclusterhierarchicalRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_range_to_string(s : MlclusterhierarchicalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalRange::to_string(self : MlclusterhierarchicalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclusterhierarchicalSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_cluster_hierarchical_slice_make(size : Int) -> MlclusterhierarchicalSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_cluster_hierarchical_slice_len(s : MlclusterhierarchicalSlice) -> Int { s.size }
+pub fn MlclusterhierarchicalSlice::len(self : MlclusterhierarchicalSlice) -> Int { self.size }
 
-pub fn ml_cluster_hierarchical_slice_get(s : MlclusterhierarchicalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclusterhierarchicalSlice::get(self : MlclusterhierarchicalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_cluster_hierarchical_slice_set(s : MlclusterhierarchicalSlice, i : Int, v : Double) -> MlclusterhierarchicalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalSlice::set(self : MlclusterhierarchicalSlice, i : Int, v : Double) -> MlclusterhierarchicalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_slice_sum(s : MlclusterhierarchicalSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclusterhierarchicalSlice::sum(self : MlclusterhierarchicalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_cluster_hierarchical_slice_mean(s : MlclusterhierarchicalSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclusterhierarchicalSlice::mean(self : MlclusterhierarchicalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_cluster_hierarchical_slice_scale(s : MlclusterhierarchicalSlice, f : Double) -> MlclusterhierarchicalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalSlice::scale(self : MlclusterhierarchicalSlice, f : Double) -> MlclusterhierarchicalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_slice_add(a : MlclusterhierarchicalSlice, b : MlclusterhierarchicalSlice) -> MlclusterhierarchicalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclusterhierarchicalSlice::add(self : MlclusterhierarchicalSlice, other : MlclusterhierarchicalSlice) -> MlclusterhierarchicalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_slice_copy(s : MlclusterhierarchicalSlice) -> MlclusterhierarchicalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalSlice::copy(self : MlclusterhierarchicalSlice) -> MlclusterhierarchicalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_slice_fill(s : MlclusterhierarchicalSlice, v : Double) -> MlclusterhierarchicalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclusterhierarchicalSlice::fill(self : MlclusterhierarchicalSlice, v : Double) -> MlclusterhierarchicalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_cluster_hierarchical_slice_min(s : MlclusterhierarchicalSlice) -> Double { @_common.min(s.data) }
+pub fn MlclusterhierarchicalSlice::min(self : MlclusterhierarchicalSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_cluster_hierarchical_slice_max(s : MlclusterhierarchicalSlice) -> Double { @_common.max(s.data) }
+pub fn MlclusterhierarchicalSlice::max(self : MlclusterhierarchicalSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_cluster_hierarchical_slice_to_string(s : MlclusterhierarchicalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclusterhierarchicalSlice::to_string(self : MlclusterhierarchicalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

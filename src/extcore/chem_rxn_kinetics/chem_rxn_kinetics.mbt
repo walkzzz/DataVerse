@@ -351,45 +351,45 @@ pub fn chem_rxn_kinetics_frame_make(size : Int) -> ChemrxnkineticsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_frame_len(s : ChemrxnkineticsFrame) -> Int { s.size }
+pub fn ChemrxnkineticsFrame::len(self : ChemrxnkineticsFrame) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_frame_get(s : ChemrxnkineticsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsFrame::get(self : ChemrxnkineticsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_frame_set(s : ChemrxnkineticsFrame, i : Int, v : Double) -> ChemrxnkineticsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsFrame::set(self : ChemrxnkineticsFrame, i : Int, v : Double) -> ChemrxnkineticsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_frame_sum(s : ChemrxnkineticsFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsFrame::sum(self : ChemrxnkineticsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_frame_mean(s : ChemrxnkineticsFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsFrame::mean(self : ChemrxnkineticsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_frame_scale(s : ChemrxnkineticsFrame, f : Double) -> ChemrxnkineticsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsFrame::scale(self : ChemrxnkineticsFrame, f : Double) -> ChemrxnkineticsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_frame_add(a : ChemrxnkineticsFrame, b : ChemrxnkineticsFrame) -> ChemrxnkineticsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsFrame::add(self : ChemrxnkineticsFrame, other : ChemrxnkineticsFrame) -> ChemrxnkineticsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_frame_copy(s : ChemrxnkineticsFrame) -> ChemrxnkineticsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsFrame::copy(self : ChemrxnkineticsFrame) -> ChemrxnkineticsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_frame_fill(s : ChemrxnkineticsFrame, v : Double) -> ChemrxnkineticsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsFrame::fill(self : ChemrxnkineticsFrame, v : Double) -> ChemrxnkineticsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_frame_min(s : ChemrxnkineticsFrame) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsFrame::min(self : ChemrxnkineticsFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_frame_max(s : ChemrxnkineticsFrame) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsFrame::max(self : ChemrxnkineticsFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_frame_to_string(s : ChemrxnkineticsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsFrame::to_string(self : ChemrxnkineticsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsTable {
@@ -402,45 +402,45 @@ pub fn chem_rxn_kinetics_table_make(size : Int) -> ChemrxnkineticsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_table_len(s : ChemrxnkineticsTable) -> Int { s.size }
+pub fn ChemrxnkineticsTable::len(self : ChemrxnkineticsTable) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_table_get(s : ChemrxnkineticsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsTable::get(self : ChemrxnkineticsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_table_set(s : ChemrxnkineticsTable, i : Int, v : Double) -> ChemrxnkineticsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsTable::set(self : ChemrxnkineticsTable, i : Int, v : Double) -> ChemrxnkineticsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_table_sum(s : ChemrxnkineticsTable) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsTable::sum(self : ChemrxnkineticsTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_table_mean(s : ChemrxnkineticsTable) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsTable::mean(self : ChemrxnkineticsTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_table_scale(s : ChemrxnkineticsTable, f : Double) -> ChemrxnkineticsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsTable::scale(self : ChemrxnkineticsTable, f : Double) -> ChemrxnkineticsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_table_add(a : ChemrxnkineticsTable, b : ChemrxnkineticsTable) -> ChemrxnkineticsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsTable::add(self : ChemrxnkineticsTable, other : ChemrxnkineticsTable) -> ChemrxnkineticsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_table_copy(s : ChemrxnkineticsTable) -> ChemrxnkineticsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsTable::copy(self : ChemrxnkineticsTable) -> ChemrxnkineticsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_table_fill(s : ChemrxnkineticsTable, v : Double) -> ChemrxnkineticsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsTable::fill(self : ChemrxnkineticsTable, v : Double) -> ChemrxnkineticsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_table_min(s : ChemrxnkineticsTable) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsTable::min(self : ChemrxnkineticsTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_table_max(s : ChemrxnkineticsTable) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsTable::max(self : ChemrxnkineticsTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_table_to_string(s : ChemrxnkineticsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsTable::to_string(self : ChemrxnkineticsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsGraphN {
@@ -453,45 +453,45 @@ pub fn chem_rxn_kinetics_graphn_make(size : Int) -> ChemrxnkineticsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_graphn_len(s : ChemrxnkineticsGraphN) -> Int { s.size }
+pub fn ChemrxnkineticsGraphN::len(self : ChemrxnkineticsGraphN) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_graphn_get(s : ChemrxnkineticsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsGraphN::get(self : ChemrxnkineticsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_graphn_set(s : ChemrxnkineticsGraphN, i : Int, v : Double) -> ChemrxnkineticsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsGraphN::set(self : ChemrxnkineticsGraphN, i : Int, v : Double) -> ChemrxnkineticsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_graphn_sum(s : ChemrxnkineticsGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsGraphN::sum(self : ChemrxnkineticsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_graphn_mean(s : ChemrxnkineticsGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsGraphN::mean(self : ChemrxnkineticsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_graphn_scale(s : ChemrxnkineticsGraphN, f : Double) -> ChemrxnkineticsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsGraphN::scale(self : ChemrxnkineticsGraphN, f : Double) -> ChemrxnkineticsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_graphn_add(a : ChemrxnkineticsGraphN, b : ChemrxnkineticsGraphN) -> ChemrxnkineticsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsGraphN::add(self : ChemrxnkineticsGraphN, other : ChemrxnkineticsGraphN) -> ChemrxnkineticsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_graphn_copy(s : ChemrxnkineticsGraphN) -> ChemrxnkineticsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsGraphN::copy(self : ChemrxnkineticsGraphN) -> ChemrxnkineticsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_graphn_fill(s : ChemrxnkineticsGraphN, v : Double) -> ChemrxnkineticsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsGraphN::fill(self : ChemrxnkineticsGraphN, v : Double) -> ChemrxnkineticsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_graphn_min(s : ChemrxnkineticsGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsGraphN::min(self : ChemrxnkineticsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_graphn_max(s : ChemrxnkineticsGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsGraphN::max(self : ChemrxnkineticsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_graphn_to_string(s : ChemrxnkineticsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsGraphN::to_string(self : ChemrxnkineticsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsNode {
@@ -504,45 +504,45 @@ pub fn chem_rxn_kinetics_node_make(size : Int) -> ChemrxnkineticsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_node_len(s : ChemrxnkineticsNode) -> Int { s.size }
+pub fn ChemrxnkineticsNode::len(self : ChemrxnkineticsNode) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_node_get(s : ChemrxnkineticsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsNode::get(self : ChemrxnkineticsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_node_set(s : ChemrxnkineticsNode, i : Int, v : Double) -> ChemrxnkineticsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsNode::set(self : ChemrxnkineticsNode, i : Int, v : Double) -> ChemrxnkineticsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_node_sum(s : ChemrxnkineticsNode) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsNode::sum(self : ChemrxnkineticsNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_node_mean(s : ChemrxnkineticsNode) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsNode::mean(self : ChemrxnkineticsNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_node_scale(s : ChemrxnkineticsNode, f : Double) -> ChemrxnkineticsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsNode::scale(self : ChemrxnkineticsNode, f : Double) -> ChemrxnkineticsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_node_add(a : ChemrxnkineticsNode, b : ChemrxnkineticsNode) -> ChemrxnkineticsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsNode::add(self : ChemrxnkineticsNode, other : ChemrxnkineticsNode) -> ChemrxnkineticsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_node_copy(s : ChemrxnkineticsNode) -> ChemrxnkineticsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsNode::copy(self : ChemrxnkineticsNode) -> ChemrxnkineticsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_node_fill(s : ChemrxnkineticsNode, v : Double) -> ChemrxnkineticsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsNode::fill(self : ChemrxnkineticsNode, v : Double) -> ChemrxnkineticsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_node_min(s : ChemrxnkineticsNode) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsNode::min(self : ChemrxnkineticsNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_node_max(s : ChemrxnkineticsNode) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsNode::max(self : ChemrxnkineticsNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_node_to_string(s : ChemrxnkineticsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsNode::to_string(self : ChemrxnkineticsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsEdge {
@@ -555,45 +555,45 @@ pub fn chem_rxn_kinetics_edge_make(size : Int) -> ChemrxnkineticsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_edge_len(s : ChemrxnkineticsEdge) -> Int { s.size }
+pub fn ChemrxnkineticsEdge::len(self : ChemrxnkineticsEdge) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_edge_get(s : ChemrxnkineticsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsEdge::get(self : ChemrxnkineticsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_edge_set(s : ChemrxnkineticsEdge, i : Int, v : Double) -> ChemrxnkineticsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsEdge::set(self : ChemrxnkineticsEdge, i : Int, v : Double) -> ChemrxnkineticsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_edge_sum(s : ChemrxnkineticsEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsEdge::sum(self : ChemrxnkineticsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_edge_mean(s : ChemrxnkineticsEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsEdge::mean(self : ChemrxnkineticsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_edge_scale(s : ChemrxnkineticsEdge, f : Double) -> ChemrxnkineticsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsEdge::scale(self : ChemrxnkineticsEdge, f : Double) -> ChemrxnkineticsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_edge_add(a : ChemrxnkineticsEdge, b : ChemrxnkineticsEdge) -> ChemrxnkineticsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsEdge::add(self : ChemrxnkineticsEdge, other : ChemrxnkineticsEdge) -> ChemrxnkineticsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_edge_copy(s : ChemrxnkineticsEdge) -> ChemrxnkineticsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsEdge::copy(self : ChemrxnkineticsEdge) -> ChemrxnkineticsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_edge_fill(s : ChemrxnkineticsEdge, v : Double) -> ChemrxnkineticsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsEdge::fill(self : ChemrxnkineticsEdge, v : Double) -> ChemrxnkineticsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_edge_min(s : ChemrxnkineticsEdge) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsEdge::min(self : ChemrxnkineticsEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_edge_max(s : ChemrxnkineticsEdge) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsEdge::max(self : ChemrxnkineticsEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_edge_to_string(s : ChemrxnkineticsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsEdge::to_string(self : ChemrxnkineticsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsPath {
@@ -606,45 +606,45 @@ pub fn chem_rxn_kinetics_path_make(size : Int) -> ChemrxnkineticsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_path_len(s : ChemrxnkineticsPath) -> Int { s.size }
+pub fn ChemrxnkineticsPath::len(self : ChemrxnkineticsPath) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_path_get(s : ChemrxnkineticsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsPath::get(self : ChemrxnkineticsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_path_set(s : ChemrxnkineticsPath, i : Int, v : Double) -> ChemrxnkineticsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsPath::set(self : ChemrxnkineticsPath, i : Int, v : Double) -> ChemrxnkineticsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_path_sum(s : ChemrxnkineticsPath) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsPath::sum(self : ChemrxnkineticsPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_path_mean(s : ChemrxnkineticsPath) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsPath::mean(self : ChemrxnkineticsPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_path_scale(s : ChemrxnkineticsPath, f : Double) -> ChemrxnkineticsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsPath::scale(self : ChemrxnkineticsPath, f : Double) -> ChemrxnkineticsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_path_add(a : ChemrxnkineticsPath, b : ChemrxnkineticsPath) -> ChemrxnkineticsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsPath::add(self : ChemrxnkineticsPath, other : ChemrxnkineticsPath) -> ChemrxnkineticsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_path_copy(s : ChemrxnkineticsPath) -> ChemrxnkineticsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsPath::copy(self : ChemrxnkineticsPath) -> ChemrxnkineticsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_path_fill(s : ChemrxnkineticsPath, v : Double) -> ChemrxnkineticsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsPath::fill(self : ChemrxnkineticsPath, v : Double) -> ChemrxnkineticsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_path_min(s : ChemrxnkineticsPath) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsPath::min(self : ChemrxnkineticsPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_path_max(s : ChemrxnkineticsPath) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsPath::max(self : ChemrxnkineticsPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_path_to_string(s : ChemrxnkineticsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsPath::to_string(self : ChemrxnkineticsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsCluster {
@@ -657,45 +657,45 @@ pub fn chem_rxn_kinetics_cluster_make(size : Int) -> ChemrxnkineticsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_cluster_len(s : ChemrxnkineticsCluster) -> Int { s.size }
+pub fn ChemrxnkineticsCluster::len(self : ChemrxnkineticsCluster) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_cluster_get(s : ChemrxnkineticsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsCluster::get(self : ChemrxnkineticsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_cluster_set(s : ChemrxnkineticsCluster, i : Int, v : Double) -> ChemrxnkineticsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCluster::set(self : ChemrxnkineticsCluster, i : Int, v : Double) -> ChemrxnkineticsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cluster_sum(s : ChemrxnkineticsCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsCluster::sum(self : ChemrxnkineticsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_cluster_mean(s : ChemrxnkineticsCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsCluster::mean(self : ChemrxnkineticsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_cluster_scale(s : ChemrxnkineticsCluster, f : Double) -> ChemrxnkineticsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCluster::scale(self : ChemrxnkineticsCluster, f : Double) -> ChemrxnkineticsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cluster_add(a : ChemrxnkineticsCluster, b : ChemrxnkineticsCluster) -> ChemrxnkineticsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsCluster::add(self : ChemrxnkineticsCluster, other : ChemrxnkineticsCluster) -> ChemrxnkineticsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cluster_copy(s : ChemrxnkineticsCluster) -> ChemrxnkineticsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCluster::copy(self : ChemrxnkineticsCluster) -> ChemrxnkineticsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cluster_fill(s : ChemrxnkineticsCluster, v : Double) -> ChemrxnkineticsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCluster::fill(self : ChemrxnkineticsCluster, v : Double) -> ChemrxnkineticsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cluster_min(s : ChemrxnkineticsCluster) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsCluster::min(self : ChemrxnkineticsCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_cluster_max(s : ChemrxnkineticsCluster) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsCluster::max(self : ChemrxnkineticsCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_cluster_to_string(s : ChemrxnkineticsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsCluster::to_string(self : ChemrxnkineticsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsModel {
@@ -708,45 +708,45 @@ pub fn chem_rxn_kinetics_model_make(size : Int) -> ChemrxnkineticsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_model_len(s : ChemrxnkineticsModel) -> Int { s.size }
+pub fn ChemrxnkineticsModel::len(self : ChemrxnkineticsModel) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_model_get(s : ChemrxnkineticsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsModel::get(self : ChemrxnkineticsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_model_set(s : ChemrxnkineticsModel, i : Int, v : Double) -> ChemrxnkineticsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsModel::set(self : ChemrxnkineticsModel, i : Int, v : Double) -> ChemrxnkineticsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_model_sum(s : ChemrxnkineticsModel) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsModel::sum(self : ChemrxnkineticsModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_model_mean(s : ChemrxnkineticsModel) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsModel::mean(self : ChemrxnkineticsModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_model_scale(s : ChemrxnkineticsModel, f : Double) -> ChemrxnkineticsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsModel::scale(self : ChemrxnkineticsModel, f : Double) -> ChemrxnkineticsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_model_add(a : ChemrxnkineticsModel, b : ChemrxnkineticsModel) -> ChemrxnkineticsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsModel::add(self : ChemrxnkineticsModel, other : ChemrxnkineticsModel) -> ChemrxnkineticsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_model_copy(s : ChemrxnkineticsModel) -> ChemrxnkineticsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsModel::copy(self : ChemrxnkineticsModel) -> ChemrxnkineticsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_model_fill(s : ChemrxnkineticsModel, v : Double) -> ChemrxnkineticsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsModel::fill(self : ChemrxnkineticsModel, v : Double) -> ChemrxnkineticsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_model_min(s : ChemrxnkineticsModel) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsModel::min(self : ChemrxnkineticsModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_model_max(s : ChemrxnkineticsModel) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsModel::max(self : ChemrxnkineticsModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_model_to_string(s : ChemrxnkineticsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsModel::to_string(self : ChemrxnkineticsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsLayer {
@@ -759,45 +759,45 @@ pub fn chem_rxn_kinetics_layer_make(size : Int) -> ChemrxnkineticsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_layer_len(s : ChemrxnkineticsLayer) -> Int { s.size }
+pub fn ChemrxnkineticsLayer::len(self : ChemrxnkineticsLayer) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_layer_get(s : ChemrxnkineticsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsLayer::get(self : ChemrxnkineticsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_layer_set(s : ChemrxnkineticsLayer, i : Int, v : Double) -> ChemrxnkineticsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsLayer::set(self : ChemrxnkineticsLayer, i : Int, v : Double) -> ChemrxnkineticsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_layer_sum(s : ChemrxnkineticsLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsLayer::sum(self : ChemrxnkineticsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_layer_mean(s : ChemrxnkineticsLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsLayer::mean(self : ChemrxnkineticsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_layer_scale(s : ChemrxnkineticsLayer, f : Double) -> ChemrxnkineticsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsLayer::scale(self : ChemrxnkineticsLayer, f : Double) -> ChemrxnkineticsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_layer_add(a : ChemrxnkineticsLayer, b : ChemrxnkineticsLayer) -> ChemrxnkineticsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsLayer::add(self : ChemrxnkineticsLayer, other : ChemrxnkineticsLayer) -> ChemrxnkineticsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_layer_copy(s : ChemrxnkineticsLayer) -> ChemrxnkineticsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsLayer::copy(self : ChemrxnkineticsLayer) -> ChemrxnkineticsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_layer_fill(s : ChemrxnkineticsLayer, v : Double) -> ChemrxnkineticsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsLayer::fill(self : ChemrxnkineticsLayer, v : Double) -> ChemrxnkineticsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_layer_min(s : ChemrxnkineticsLayer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsLayer::min(self : ChemrxnkineticsLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_layer_max(s : ChemrxnkineticsLayer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsLayer::max(self : ChemrxnkineticsLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_layer_to_string(s : ChemrxnkineticsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsLayer::to_string(self : ChemrxnkineticsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsBuffer {
@@ -810,45 +810,45 @@ pub fn chem_rxn_kinetics_buffer_make(size : Int) -> ChemrxnkineticsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_buffer_len(s : ChemrxnkineticsBuffer) -> Int { s.size }
+pub fn ChemrxnkineticsBuffer::len(self : ChemrxnkineticsBuffer) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_buffer_get(s : ChemrxnkineticsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsBuffer::get(self : ChemrxnkineticsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_buffer_set(s : ChemrxnkineticsBuffer, i : Int, v : Double) -> ChemrxnkineticsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsBuffer::set(self : ChemrxnkineticsBuffer, i : Int, v : Double) -> ChemrxnkineticsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_buffer_sum(s : ChemrxnkineticsBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsBuffer::sum(self : ChemrxnkineticsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_buffer_mean(s : ChemrxnkineticsBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsBuffer::mean(self : ChemrxnkineticsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_buffer_scale(s : ChemrxnkineticsBuffer, f : Double) -> ChemrxnkineticsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsBuffer::scale(self : ChemrxnkineticsBuffer, f : Double) -> ChemrxnkineticsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_buffer_add(a : ChemrxnkineticsBuffer, b : ChemrxnkineticsBuffer) -> ChemrxnkineticsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsBuffer::add(self : ChemrxnkineticsBuffer, other : ChemrxnkineticsBuffer) -> ChemrxnkineticsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_buffer_copy(s : ChemrxnkineticsBuffer) -> ChemrxnkineticsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsBuffer::copy(self : ChemrxnkineticsBuffer) -> ChemrxnkineticsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_buffer_fill(s : ChemrxnkineticsBuffer, v : Double) -> ChemrxnkineticsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsBuffer::fill(self : ChemrxnkineticsBuffer, v : Double) -> ChemrxnkineticsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_buffer_min(s : ChemrxnkineticsBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsBuffer::min(self : ChemrxnkineticsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_buffer_max(s : ChemrxnkineticsBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsBuffer::max(self : ChemrxnkineticsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_buffer_to_string(s : ChemrxnkineticsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsBuffer::to_string(self : ChemrxnkineticsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsCursor {
@@ -861,45 +861,45 @@ pub fn chem_rxn_kinetics_cursor_make(size : Int) -> ChemrxnkineticsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_cursor_len(s : ChemrxnkineticsCursor) -> Int { s.size }
+pub fn ChemrxnkineticsCursor::len(self : ChemrxnkineticsCursor) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_cursor_get(s : ChemrxnkineticsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsCursor::get(self : ChemrxnkineticsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_cursor_set(s : ChemrxnkineticsCursor, i : Int, v : Double) -> ChemrxnkineticsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCursor::set(self : ChemrxnkineticsCursor, i : Int, v : Double) -> ChemrxnkineticsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cursor_sum(s : ChemrxnkineticsCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsCursor::sum(self : ChemrxnkineticsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_cursor_mean(s : ChemrxnkineticsCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsCursor::mean(self : ChemrxnkineticsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_cursor_scale(s : ChemrxnkineticsCursor, f : Double) -> ChemrxnkineticsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCursor::scale(self : ChemrxnkineticsCursor, f : Double) -> ChemrxnkineticsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cursor_add(a : ChemrxnkineticsCursor, b : ChemrxnkineticsCursor) -> ChemrxnkineticsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsCursor::add(self : ChemrxnkineticsCursor, other : ChemrxnkineticsCursor) -> ChemrxnkineticsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cursor_copy(s : ChemrxnkineticsCursor) -> ChemrxnkineticsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCursor::copy(self : ChemrxnkineticsCursor) -> ChemrxnkineticsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cursor_fill(s : ChemrxnkineticsCursor, v : Double) -> ChemrxnkineticsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsCursor::fill(self : ChemrxnkineticsCursor, v : Double) -> ChemrxnkineticsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_cursor_min(s : ChemrxnkineticsCursor) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsCursor::min(self : ChemrxnkineticsCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_cursor_max(s : ChemrxnkineticsCursor) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsCursor::max(self : ChemrxnkineticsCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_cursor_to_string(s : ChemrxnkineticsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsCursor::to_string(self : ChemrxnkineticsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsView {
@@ -912,45 +912,45 @@ pub fn chem_rxn_kinetics_view_make(size : Int) -> ChemrxnkineticsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_view_len(s : ChemrxnkineticsView) -> Int { s.size }
+pub fn ChemrxnkineticsView::len(self : ChemrxnkineticsView) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_view_get(s : ChemrxnkineticsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsView::get(self : ChemrxnkineticsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_view_set(s : ChemrxnkineticsView, i : Int, v : Double) -> ChemrxnkineticsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsView::set(self : ChemrxnkineticsView, i : Int, v : Double) -> ChemrxnkineticsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_view_sum(s : ChemrxnkineticsView) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsView::sum(self : ChemrxnkineticsView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_view_mean(s : ChemrxnkineticsView) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsView::mean(self : ChemrxnkineticsView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_view_scale(s : ChemrxnkineticsView, f : Double) -> ChemrxnkineticsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsView::scale(self : ChemrxnkineticsView, f : Double) -> ChemrxnkineticsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_view_add(a : ChemrxnkineticsView, b : ChemrxnkineticsView) -> ChemrxnkineticsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsView::add(self : ChemrxnkineticsView, other : ChemrxnkineticsView) -> ChemrxnkineticsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_view_copy(s : ChemrxnkineticsView) -> ChemrxnkineticsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsView::copy(self : ChemrxnkineticsView) -> ChemrxnkineticsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_view_fill(s : ChemrxnkineticsView, v : Double) -> ChemrxnkineticsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsView::fill(self : ChemrxnkineticsView, v : Double) -> ChemrxnkineticsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_view_min(s : ChemrxnkineticsView) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsView::min(self : ChemrxnkineticsView) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_view_max(s : ChemrxnkineticsView) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsView::max(self : ChemrxnkineticsView) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_view_to_string(s : ChemrxnkineticsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsView::to_string(self : ChemrxnkineticsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsRange {
@@ -963,45 +963,45 @@ pub fn chem_rxn_kinetics_range_make(size : Int) -> ChemrxnkineticsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_range_len(s : ChemrxnkineticsRange) -> Int { s.size }
+pub fn ChemrxnkineticsRange::len(self : ChemrxnkineticsRange) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_range_get(s : ChemrxnkineticsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsRange::get(self : ChemrxnkineticsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_range_set(s : ChemrxnkineticsRange, i : Int, v : Double) -> ChemrxnkineticsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsRange::set(self : ChemrxnkineticsRange, i : Int, v : Double) -> ChemrxnkineticsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_range_sum(s : ChemrxnkineticsRange) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsRange::sum(self : ChemrxnkineticsRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_range_mean(s : ChemrxnkineticsRange) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsRange::mean(self : ChemrxnkineticsRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_range_scale(s : ChemrxnkineticsRange, f : Double) -> ChemrxnkineticsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsRange::scale(self : ChemrxnkineticsRange, f : Double) -> ChemrxnkineticsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_range_add(a : ChemrxnkineticsRange, b : ChemrxnkineticsRange) -> ChemrxnkineticsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsRange::add(self : ChemrxnkineticsRange, other : ChemrxnkineticsRange) -> ChemrxnkineticsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_range_copy(s : ChemrxnkineticsRange) -> ChemrxnkineticsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsRange::copy(self : ChemrxnkineticsRange) -> ChemrxnkineticsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_range_fill(s : ChemrxnkineticsRange, v : Double) -> ChemrxnkineticsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsRange::fill(self : ChemrxnkineticsRange, v : Double) -> ChemrxnkineticsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_range_min(s : ChemrxnkineticsRange) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsRange::min(self : ChemrxnkineticsRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_range_max(s : ChemrxnkineticsRange) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsRange::max(self : ChemrxnkineticsRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_range_to_string(s : ChemrxnkineticsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsRange::to_string(self : ChemrxnkineticsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnkineticsSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_rxn_kinetics_slice_make(size : Int) -> ChemrxnkineticsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_kinetics_slice_len(s : ChemrxnkineticsSlice) -> Int { s.size }
+pub fn ChemrxnkineticsSlice::len(self : ChemrxnkineticsSlice) -> Int { self.size }
 
-pub fn chem_rxn_kinetics_slice_get(s : ChemrxnkineticsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnkineticsSlice::get(self : ChemrxnkineticsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_kinetics_slice_set(s : ChemrxnkineticsSlice, i : Int, v : Double) -> ChemrxnkineticsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsSlice::set(self : ChemrxnkineticsSlice, i : Int, v : Double) -> ChemrxnkineticsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_slice_sum(s : ChemrxnkineticsSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnkineticsSlice::sum(self : ChemrxnkineticsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_kinetics_slice_mean(s : ChemrxnkineticsSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnkineticsSlice::mean(self : ChemrxnkineticsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_kinetics_slice_scale(s : ChemrxnkineticsSlice, f : Double) -> ChemrxnkineticsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsSlice::scale(self : ChemrxnkineticsSlice, f : Double) -> ChemrxnkineticsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_slice_add(a : ChemrxnkineticsSlice, b : ChemrxnkineticsSlice) -> ChemrxnkineticsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnkineticsSlice::add(self : ChemrxnkineticsSlice, other : ChemrxnkineticsSlice) -> ChemrxnkineticsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_slice_copy(s : ChemrxnkineticsSlice) -> ChemrxnkineticsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsSlice::copy(self : ChemrxnkineticsSlice) -> ChemrxnkineticsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_slice_fill(s : ChemrxnkineticsSlice, v : Double) -> ChemrxnkineticsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnkineticsSlice::fill(self : ChemrxnkineticsSlice, v : Double) -> ChemrxnkineticsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_kinetics_slice_min(s : ChemrxnkineticsSlice) -> Double { @_common.min(s.data) }
+pub fn ChemrxnkineticsSlice::min(self : ChemrxnkineticsSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_kinetics_slice_max(s : ChemrxnkineticsSlice) -> Double { @_common.max(s.data) }
+pub fn ChemrxnkineticsSlice::max(self : ChemrxnkineticsSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_kinetics_slice_to_string(s : ChemrxnkineticsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnkineticsSlice::to_string(self : ChemrxnkineticsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_metric_clustering_frame_make(size : Int) -> MlmetricclusteringFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_frame_len(s : MlmetricclusteringFrame) -> Int { s.size }
+pub fn MlmetricclusteringFrame::len(self : MlmetricclusteringFrame) -> Int { self.size }
 
-pub fn ml_metric_clustering_frame_get(s : MlmetricclusteringFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringFrame::get(self : MlmetricclusteringFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_frame_set(s : MlmetricclusteringFrame, i : Int, v : Double) -> MlmetricclusteringFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringFrame::set(self : MlmetricclusteringFrame, i : Int, v : Double) -> MlmetricclusteringFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_frame_sum(s : MlmetricclusteringFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringFrame::sum(self : MlmetricclusteringFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_frame_mean(s : MlmetricclusteringFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringFrame::mean(self : MlmetricclusteringFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_frame_scale(s : MlmetricclusteringFrame, f : Double) -> MlmetricclusteringFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringFrame::scale(self : MlmetricclusteringFrame, f : Double) -> MlmetricclusteringFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_frame_add(a : MlmetricclusteringFrame, b : MlmetricclusteringFrame) -> MlmetricclusteringFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringFrame::add(self : MlmetricclusteringFrame, other : MlmetricclusteringFrame) -> MlmetricclusteringFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_frame_copy(s : MlmetricclusteringFrame) -> MlmetricclusteringFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringFrame::copy(self : MlmetricclusteringFrame) -> MlmetricclusteringFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_frame_fill(s : MlmetricclusteringFrame, v : Double) -> MlmetricclusteringFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringFrame::fill(self : MlmetricclusteringFrame, v : Double) -> MlmetricclusteringFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_frame_min(s : MlmetricclusteringFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringFrame::min(self : MlmetricclusteringFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_frame_max(s : MlmetricclusteringFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringFrame::max(self : MlmetricclusteringFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_frame_to_string(s : MlmetricclusteringFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringFrame::to_string(self : MlmetricclusteringFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_clustering_table_make(size : Int) -> MlmetricclusteringTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_table_len(s : MlmetricclusteringTable) -> Int { s.size }
+pub fn MlmetricclusteringTable::len(self : MlmetricclusteringTable) -> Int { self.size }
 
-pub fn ml_metric_clustering_table_get(s : MlmetricclusteringTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringTable::get(self : MlmetricclusteringTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_table_set(s : MlmetricclusteringTable, i : Int, v : Double) -> MlmetricclusteringTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringTable::set(self : MlmetricclusteringTable, i : Int, v : Double) -> MlmetricclusteringTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_table_sum(s : MlmetricclusteringTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringTable::sum(self : MlmetricclusteringTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_table_mean(s : MlmetricclusteringTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringTable::mean(self : MlmetricclusteringTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_table_scale(s : MlmetricclusteringTable, f : Double) -> MlmetricclusteringTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringTable::scale(self : MlmetricclusteringTable, f : Double) -> MlmetricclusteringTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_table_add(a : MlmetricclusteringTable, b : MlmetricclusteringTable) -> MlmetricclusteringTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringTable::add(self : MlmetricclusteringTable, other : MlmetricclusteringTable) -> MlmetricclusteringTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_table_copy(s : MlmetricclusteringTable) -> MlmetricclusteringTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringTable::copy(self : MlmetricclusteringTable) -> MlmetricclusteringTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_table_fill(s : MlmetricclusteringTable, v : Double) -> MlmetricclusteringTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringTable::fill(self : MlmetricclusteringTable, v : Double) -> MlmetricclusteringTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_table_min(s : MlmetricclusteringTable) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringTable::min(self : MlmetricclusteringTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_table_max(s : MlmetricclusteringTable) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringTable::max(self : MlmetricclusteringTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_table_to_string(s : MlmetricclusteringTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringTable::to_string(self : MlmetricclusteringTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_clustering_graphn_make(size : Int) -> MlmetricclusteringGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_graphn_len(s : MlmetricclusteringGraphN) -> Int { s.size }
+pub fn MlmetricclusteringGraphN::len(self : MlmetricclusteringGraphN) -> Int { self.size }
 
-pub fn ml_metric_clustering_graphn_get(s : MlmetricclusteringGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringGraphN::get(self : MlmetricclusteringGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_graphn_set(s : MlmetricclusteringGraphN, i : Int, v : Double) -> MlmetricclusteringGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringGraphN::set(self : MlmetricclusteringGraphN, i : Int, v : Double) -> MlmetricclusteringGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_graphn_sum(s : MlmetricclusteringGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringGraphN::sum(self : MlmetricclusteringGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_graphn_mean(s : MlmetricclusteringGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringGraphN::mean(self : MlmetricclusteringGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_graphn_scale(s : MlmetricclusteringGraphN, f : Double) -> MlmetricclusteringGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringGraphN::scale(self : MlmetricclusteringGraphN, f : Double) -> MlmetricclusteringGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_graphn_add(a : MlmetricclusteringGraphN, b : MlmetricclusteringGraphN) -> MlmetricclusteringGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringGraphN::add(self : MlmetricclusteringGraphN, other : MlmetricclusteringGraphN) -> MlmetricclusteringGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_graphn_copy(s : MlmetricclusteringGraphN) -> MlmetricclusteringGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringGraphN::copy(self : MlmetricclusteringGraphN) -> MlmetricclusteringGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_graphn_fill(s : MlmetricclusteringGraphN, v : Double) -> MlmetricclusteringGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringGraphN::fill(self : MlmetricclusteringGraphN, v : Double) -> MlmetricclusteringGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_graphn_min(s : MlmetricclusteringGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringGraphN::min(self : MlmetricclusteringGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_graphn_max(s : MlmetricclusteringGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringGraphN::max(self : MlmetricclusteringGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_graphn_to_string(s : MlmetricclusteringGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringGraphN::to_string(self : MlmetricclusteringGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_clustering_node_make(size : Int) -> MlmetricclusteringNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_node_len(s : MlmetricclusteringNode) -> Int { s.size }
+pub fn MlmetricclusteringNode::len(self : MlmetricclusteringNode) -> Int { self.size }
 
-pub fn ml_metric_clustering_node_get(s : MlmetricclusteringNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringNode::get(self : MlmetricclusteringNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_node_set(s : MlmetricclusteringNode, i : Int, v : Double) -> MlmetricclusteringNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringNode::set(self : MlmetricclusteringNode, i : Int, v : Double) -> MlmetricclusteringNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_node_sum(s : MlmetricclusteringNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringNode::sum(self : MlmetricclusteringNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_node_mean(s : MlmetricclusteringNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringNode::mean(self : MlmetricclusteringNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_node_scale(s : MlmetricclusteringNode, f : Double) -> MlmetricclusteringNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringNode::scale(self : MlmetricclusteringNode, f : Double) -> MlmetricclusteringNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_node_add(a : MlmetricclusteringNode, b : MlmetricclusteringNode) -> MlmetricclusteringNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringNode::add(self : MlmetricclusteringNode, other : MlmetricclusteringNode) -> MlmetricclusteringNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_node_copy(s : MlmetricclusteringNode) -> MlmetricclusteringNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringNode::copy(self : MlmetricclusteringNode) -> MlmetricclusteringNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_node_fill(s : MlmetricclusteringNode, v : Double) -> MlmetricclusteringNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringNode::fill(self : MlmetricclusteringNode, v : Double) -> MlmetricclusteringNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_node_min(s : MlmetricclusteringNode) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringNode::min(self : MlmetricclusteringNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_node_max(s : MlmetricclusteringNode) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringNode::max(self : MlmetricclusteringNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_node_to_string(s : MlmetricclusteringNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringNode::to_string(self : MlmetricclusteringNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_clustering_edge_make(size : Int) -> MlmetricclusteringEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_edge_len(s : MlmetricclusteringEdge) -> Int { s.size }
+pub fn MlmetricclusteringEdge::len(self : MlmetricclusteringEdge) -> Int { self.size }
 
-pub fn ml_metric_clustering_edge_get(s : MlmetricclusteringEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringEdge::get(self : MlmetricclusteringEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_edge_set(s : MlmetricclusteringEdge, i : Int, v : Double) -> MlmetricclusteringEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringEdge::set(self : MlmetricclusteringEdge, i : Int, v : Double) -> MlmetricclusteringEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_edge_sum(s : MlmetricclusteringEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringEdge::sum(self : MlmetricclusteringEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_edge_mean(s : MlmetricclusteringEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringEdge::mean(self : MlmetricclusteringEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_edge_scale(s : MlmetricclusteringEdge, f : Double) -> MlmetricclusteringEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringEdge::scale(self : MlmetricclusteringEdge, f : Double) -> MlmetricclusteringEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_edge_add(a : MlmetricclusteringEdge, b : MlmetricclusteringEdge) -> MlmetricclusteringEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringEdge::add(self : MlmetricclusteringEdge, other : MlmetricclusteringEdge) -> MlmetricclusteringEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_edge_copy(s : MlmetricclusteringEdge) -> MlmetricclusteringEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringEdge::copy(self : MlmetricclusteringEdge) -> MlmetricclusteringEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_edge_fill(s : MlmetricclusteringEdge, v : Double) -> MlmetricclusteringEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringEdge::fill(self : MlmetricclusteringEdge, v : Double) -> MlmetricclusteringEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_edge_min(s : MlmetricclusteringEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringEdge::min(self : MlmetricclusteringEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_edge_max(s : MlmetricclusteringEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringEdge::max(self : MlmetricclusteringEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_edge_to_string(s : MlmetricclusteringEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringEdge::to_string(self : MlmetricclusteringEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_clustering_path_make(size : Int) -> MlmetricclusteringPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_path_len(s : MlmetricclusteringPath) -> Int { s.size }
+pub fn MlmetricclusteringPath::len(self : MlmetricclusteringPath) -> Int { self.size }
 
-pub fn ml_metric_clustering_path_get(s : MlmetricclusteringPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringPath::get(self : MlmetricclusteringPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_path_set(s : MlmetricclusteringPath, i : Int, v : Double) -> MlmetricclusteringPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringPath::set(self : MlmetricclusteringPath, i : Int, v : Double) -> MlmetricclusteringPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_path_sum(s : MlmetricclusteringPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringPath::sum(self : MlmetricclusteringPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_path_mean(s : MlmetricclusteringPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringPath::mean(self : MlmetricclusteringPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_path_scale(s : MlmetricclusteringPath, f : Double) -> MlmetricclusteringPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringPath::scale(self : MlmetricclusteringPath, f : Double) -> MlmetricclusteringPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_path_add(a : MlmetricclusteringPath, b : MlmetricclusteringPath) -> MlmetricclusteringPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringPath::add(self : MlmetricclusteringPath, other : MlmetricclusteringPath) -> MlmetricclusteringPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_path_copy(s : MlmetricclusteringPath) -> MlmetricclusteringPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringPath::copy(self : MlmetricclusteringPath) -> MlmetricclusteringPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_path_fill(s : MlmetricclusteringPath, v : Double) -> MlmetricclusteringPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringPath::fill(self : MlmetricclusteringPath, v : Double) -> MlmetricclusteringPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_path_min(s : MlmetricclusteringPath) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringPath::min(self : MlmetricclusteringPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_path_max(s : MlmetricclusteringPath) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringPath::max(self : MlmetricclusteringPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_path_to_string(s : MlmetricclusteringPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringPath::to_string(self : MlmetricclusteringPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_clustering_cluster_make(size : Int) -> MlmetricclusteringCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_cluster_len(s : MlmetricclusteringCluster) -> Int { s.size }
+pub fn MlmetricclusteringCluster::len(self : MlmetricclusteringCluster) -> Int { self.size }
 
-pub fn ml_metric_clustering_cluster_get(s : MlmetricclusteringCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringCluster::get(self : MlmetricclusteringCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_cluster_set(s : MlmetricclusteringCluster, i : Int, v : Double) -> MlmetricclusteringCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCluster::set(self : MlmetricclusteringCluster, i : Int, v : Double) -> MlmetricclusteringCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cluster_sum(s : MlmetricclusteringCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringCluster::sum(self : MlmetricclusteringCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_cluster_mean(s : MlmetricclusteringCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringCluster::mean(self : MlmetricclusteringCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_cluster_scale(s : MlmetricclusteringCluster, f : Double) -> MlmetricclusteringCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCluster::scale(self : MlmetricclusteringCluster, f : Double) -> MlmetricclusteringCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cluster_add(a : MlmetricclusteringCluster, b : MlmetricclusteringCluster) -> MlmetricclusteringCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringCluster::add(self : MlmetricclusteringCluster, other : MlmetricclusteringCluster) -> MlmetricclusteringCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cluster_copy(s : MlmetricclusteringCluster) -> MlmetricclusteringCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCluster::copy(self : MlmetricclusteringCluster) -> MlmetricclusteringCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cluster_fill(s : MlmetricclusteringCluster, v : Double) -> MlmetricclusteringCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCluster::fill(self : MlmetricclusteringCluster, v : Double) -> MlmetricclusteringCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cluster_min(s : MlmetricclusteringCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringCluster::min(self : MlmetricclusteringCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_cluster_max(s : MlmetricclusteringCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringCluster::max(self : MlmetricclusteringCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_cluster_to_string(s : MlmetricclusteringCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringCluster::to_string(self : MlmetricclusteringCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_clustering_model_make(size : Int) -> MlmetricclusteringModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_model_len(s : MlmetricclusteringModel) -> Int { s.size }
+pub fn MlmetricclusteringModel::len(self : MlmetricclusteringModel) -> Int { self.size }
 
-pub fn ml_metric_clustering_model_get(s : MlmetricclusteringModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringModel::get(self : MlmetricclusteringModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_model_set(s : MlmetricclusteringModel, i : Int, v : Double) -> MlmetricclusteringModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringModel::set(self : MlmetricclusteringModel, i : Int, v : Double) -> MlmetricclusteringModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_model_sum(s : MlmetricclusteringModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringModel::sum(self : MlmetricclusteringModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_model_mean(s : MlmetricclusteringModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringModel::mean(self : MlmetricclusteringModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_model_scale(s : MlmetricclusteringModel, f : Double) -> MlmetricclusteringModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringModel::scale(self : MlmetricclusteringModel, f : Double) -> MlmetricclusteringModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_model_add(a : MlmetricclusteringModel, b : MlmetricclusteringModel) -> MlmetricclusteringModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringModel::add(self : MlmetricclusteringModel, other : MlmetricclusteringModel) -> MlmetricclusteringModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_model_copy(s : MlmetricclusteringModel) -> MlmetricclusteringModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringModel::copy(self : MlmetricclusteringModel) -> MlmetricclusteringModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_model_fill(s : MlmetricclusteringModel, v : Double) -> MlmetricclusteringModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringModel::fill(self : MlmetricclusteringModel, v : Double) -> MlmetricclusteringModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_model_min(s : MlmetricclusteringModel) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringModel::min(self : MlmetricclusteringModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_model_max(s : MlmetricclusteringModel) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringModel::max(self : MlmetricclusteringModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_model_to_string(s : MlmetricclusteringModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringModel::to_string(self : MlmetricclusteringModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_clustering_layer_make(size : Int) -> MlmetricclusteringLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_layer_len(s : MlmetricclusteringLayer) -> Int { s.size }
+pub fn MlmetricclusteringLayer::len(self : MlmetricclusteringLayer) -> Int { self.size }
 
-pub fn ml_metric_clustering_layer_get(s : MlmetricclusteringLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringLayer::get(self : MlmetricclusteringLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_layer_set(s : MlmetricclusteringLayer, i : Int, v : Double) -> MlmetricclusteringLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringLayer::set(self : MlmetricclusteringLayer, i : Int, v : Double) -> MlmetricclusteringLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_layer_sum(s : MlmetricclusteringLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringLayer::sum(self : MlmetricclusteringLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_layer_mean(s : MlmetricclusteringLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringLayer::mean(self : MlmetricclusteringLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_layer_scale(s : MlmetricclusteringLayer, f : Double) -> MlmetricclusteringLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringLayer::scale(self : MlmetricclusteringLayer, f : Double) -> MlmetricclusteringLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_layer_add(a : MlmetricclusteringLayer, b : MlmetricclusteringLayer) -> MlmetricclusteringLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringLayer::add(self : MlmetricclusteringLayer, other : MlmetricclusteringLayer) -> MlmetricclusteringLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_layer_copy(s : MlmetricclusteringLayer) -> MlmetricclusteringLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringLayer::copy(self : MlmetricclusteringLayer) -> MlmetricclusteringLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_layer_fill(s : MlmetricclusteringLayer, v : Double) -> MlmetricclusteringLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringLayer::fill(self : MlmetricclusteringLayer, v : Double) -> MlmetricclusteringLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_layer_min(s : MlmetricclusteringLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringLayer::min(self : MlmetricclusteringLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_layer_max(s : MlmetricclusteringLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringLayer::max(self : MlmetricclusteringLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_layer_to_string(s : MlmetricclusteringLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringLayer::to_string(self : MlmetricclusteringLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_clustering_buffer_make(size : Int) -> MlmetricclusteringBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_buffer_len(s : MlmetricclusteringBuffer) -> Int { s.size }
+pub fn MlmetricclusteringBuffer::len(self : MlmetricclusteringBuffer) -> Int { self.size }
 
-pub fn ml_metric_clustering_buffer_get(s : MlmetricclusteringBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringBuffer::get(self : MlmetricclusteringBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_buffer_set(s : MlmetricclusteringBuffer, i : Int, v : Double) -> MlmetricclusteringBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringBuffer::set(self : MlmetricclusteringBuffer, i : Int, v : Double) -> MlmetricclusteringBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_buffer_sum(s : MlmetricclusteringBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringBuffer::sum(self : MlmetricclusteringBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_buffer_mean(s : MlmetricclusteringBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringBuffer::mean(self : MlmetricclusteringBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_buffer_scale(s : MlmetricclusteringBuffer, f : Double) -> MlmetricclusteringBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringBuffer::scale(self : MlmetricclusteringBuffer, f : Double) -> MlmetricclusteringBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_buffer_add(a : MlmetricclusteringBuffer, b : MlmetricclusteringBuffer) -> MlmetricclusteringBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringBuffer::add(self : MlmetricclusteringBuffer, other : MlmetricclusteringBuffer) -> MlmetricclusteringBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_buffer_copy(s : MlmetricclusteringBuffer) -> MlmetricclusteringBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringBuffer::copy(self : MlmetricclusteringBuffer) -> MlmetricclusteringBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_buffer_fill(s : MlmetricclusteringBuffer, v : Double) -> MlmetricclusteringBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringBuffer::fill(self : MlmetricclusteringBuffer, v : Double) -> MlmetricclusteringBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_buffer_min(s : MlmetricclusteringBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringBuffer::min(self : MlmetricclusteringBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_buffer_max(s : MlmetricclusteringBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringBuffer::max(self : MlmetricclusteringBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_buffer_to_string(s : MlmetricclusteringBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringBuffer::to_string(self : MlmetricclusteringBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_clustering_cursor_make(size : Int) -> MlmetricclusteringCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_cursor_len(s : MlmetricclusteringCursor) -> Int { s.size }
+pub fn MlmetricclusteringCursor::len(self : MlmetricclusteringCursor) -> Int { self.size }
 
-pub fn ml_metric_clustering_cursor_get(s : MlmetricclusteringCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringCursor::get(self : MlmetricclusteringCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_cursor_set(s : MlmetricclusteringCursor, i : Int, v : Double) -> MlmetricclusteringCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCursor::set(self : MlmetricclusteringCursor, i : Int, v : Double) -> MlmetricclusteringCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cursor_sum(s : MlmetricclusteringCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringCursor::sum(self : MlmetricclusteringCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_cursor_mean(s : MlmetricclusteringCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringCursor::mean(self : MlmetricclusteringCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_cursor_scale(s : MlmetricclusteringCursor, f : Double) -> MlmetricclusteringCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCursor::scale(self : MlmetricclusteringCursor, f : Double) -> MlmetricclusteringCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cursor_add(a : MlmetricclusteringCursor, b : MlmetricclusteringCursor) -> MlmetricclusteringCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringCursor::add(self : MlmetricclusteringCursor, other : MlmetricclusteringCursor) -> MlmetricclusteringCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cursor_copy(s : MlmetricclusteringCursor) -> MlmetricclusteringCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCursor::copy(self : MlmetricclusteringCursor) -> MlmetricclusteringCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cursor_fill(s : MlmetricclusteringCursor, v : Double) -> MlmetricclusteringCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringCursor::fill(self : MlmetricclusteringCursor, v : Double) -> MlmetricclusteringCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_cursor_min(s : MlmetricclusteringCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringCursor::min(self : MlmetricclusteringCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_cursor_max(s : MlmetricclusteringCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringCursor::max(self : MlmetricclusteringCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_cursor_to_string(s : MlmetricclusteringCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringCursor::to_string(self : MlmetricclusteringCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringView {
@@ -912,45 +912,45 @@ pub fn ml_metric_clustering_view_make(size : Int) -> MlmetricclusteringView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_view_len(s : MlmetricclusteringView) -> Int { s.size }
+pub fn MlmetricclusteringView::len(self : MlmetricclusteringView) -> Int { self.size }
 
-pub fn ml_metric_clustering_view_get(s : MlmetricclusteringView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringView::get(self : MlmetricclusteringView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_view_set(s : MlmetricclusteringView, i : Int, v : Double) -> MlmetricclusteringView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringView::set(self : MlmetricclusteringView, i : Int, v : Double) -> MlmetricclusteringView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_view_sum(s : MlmetricclusteringView) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringView::sum(self : MlmetricclusteringView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_view_mean(s : MlmetricclusteringView) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringView::mean(self : MlmetricclusteringView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_view_scale(s : MlmetricclusteringView, f : Double) -> MlmetricclusteringView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringView::scale(self : MlmetricclusteringView, f : Double) -> MlmetricclusteringView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_view_add(a : MlmetricclusteringView, b : MlmetricclusteringView) -> MlmetricclusteringView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringView::add(self : MlmetricclusteringView, other : MlmetricclusteringView) -> MlmetricclusteringView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_view_copy(s : MlmetricclusteringView) -> MlmetricclusteringView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringView::copy(self : MlmetricclusteringView) -> MlmetricclusteringView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_view_fill(s : MlmetricclusteringView, v : Double) -> MlmetricclusteringView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringView::fill(self : MlmetricclusteringView, v : Double) -> MlmetricclusteringView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_view_min(s : MlmetricclusteringView) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringView::min(self : MlmetricclusteringView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_view_max(s : MlmetricclusteringView) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringView::max(self : MlmetricclusteringView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_view_to_string(s : MlmetricclusteringView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringView::to_string(self : MlmetricclusteringView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_clustering_range_make(size : Int) -> MlmetricclusteringRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_range_len(s : MlmetricclusteringRange) -> Int { s.size }
+pub fn MlmetricclusteringRange::len(self : MlmetricclusteringRange) -> Int { self.size }
 
-pub fn ml_metric_clustering_range_get(s : MlmetricclusteringRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringRange::get(self : MlmetricclusteringRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_range_set(s : MlmetricclusteringRange, i : Int, v : Double) -> MlmetricclusteringRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringRange::set(self : MlmetricclusteringRange, i : Int, v : Double) -> MlmetricclusteringRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_range_sum(s : MlmetricclusteringRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringRange::sum(self : MlmetricclusteringRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_range_mean(s : MlmetricclusteringRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringRange::mean(self : MlmetricclusteringRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_range_scale(s : MlmetricclusteringRange, f : Double) -> MlmetricclusteringRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringRange::scale(self : MlmetricclusteringRange, f : Double) -> MlmetricclusteringRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_range_add(a : MlmetricclusteringRange, b : MlmetricclusteringRange) -> MlmetricclusteringRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringRange::add(self : MlmetricclusteringRange, other : MlmetricclusteringRange) -> MlmetricclusteringRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_range_copy(s : MlmetricclusteringRange) -> MlmetricclusteringRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringRange::copy(self : MlmetricclusteringRange) -> MlmetricclusteringRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_range_fill(s : MlmetricclusteringRange, v : Double) -> MlmetricclusteringRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringRange::fill(self : MlmetricclusteringRange, v : Double) -> MlmetricclusteringRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_range_min(s : MlmetricclusteringRange) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringRange::min(self : MlmetricclusteringRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_range_max(s : MlmetricclusteringRange) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringRange::max(self : MlmetricclusteringRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_range_to_string(s : MlmetricclusteringRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringRange::to_string(self : MlmetricclusteringRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricclusteringSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_clustering_slice_make(size : Int) -> MlmetricclusteringSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_clustering_slice_len(s : MlmetricclusteringSlice) -> Int { s.size }
+pub fn MlmetricclusteringSlice::len(self : MlmetricclusteringSlice) -> Int { self.size }
 
-pub fn ml_metric_clustering_slice_get(s : MlmetricclusteringSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricclusteringSlice::get(self : MlmetricclusteringSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_clustering_slice_set(s : MlmetricclusteringSlice, i : Int, v : Double) -> MlmetricclusteringSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricclusteringSlice::set(self : MlmetricclusteringSlice, i : Int, v : Double) -> MlmetricclusteringSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_slice_sum(s : MlmetricclusteringSlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetricclusteringSlice::sum(self : MlmetricclusteringSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_clustering_slice_mean(s : MlmetricclusteringSlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetricclusteringSlice::mean(self : MlmetricclusteringSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_clustering_slice_scale(s : MlmetricclusteringSlice, f : Double) -> MlmetricclusteringSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringSlice::scale(self : MlmetricclusteringSlice, f : Double) -> MlmetricclusteringSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_slice_add(a : MlmetricclusteringSlice, b : MlmetricclusteringSlice) -> MlmetricclusteringSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricclusteringSlice::add(self : MlmetricclusteringSlice, other : MlmetricclusteringSlice) -> MlmetricclusteringSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_slice_copy(s : MlmetricclusteringSlice) -> MlmetricclusteringSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringSlice::copy(self : MlmetricclusteringSlice) -> MlmetricclusteringSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_slice_fill(s : MlmetricclusteringSlice, v : Double) -> MlmetricclusteringSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricclusteringSlice::fill(self : MlmetricclusteringSlice, v : Double) -> MlmetricclusteringSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_clustering_slice_min(s : MlmetricclusteringSlice) -> Double { @_common.min(s.data) }
+pub fn MlmetricclusteringSlice::min(self : MlmetricclusteringSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_clustering_slice_max(s : MlmetricclusteringSlice) -> Double { @_common.max(s.data) }
+pub fn MlmetricclusteringSlice::max(self : MlmetricclusteringSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_clustering_slice_to_string(s : MlmetricclusteringSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricclusteringSlice::to_string(self : MlmetricclusteringSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

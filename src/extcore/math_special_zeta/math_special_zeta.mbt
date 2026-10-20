@@ -351,45 +351,45 @@ pub fn math_special_zeta_frame_make(size : Int) -> MathspecialzetaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_frame_len(s : MathspecialzetaFrame) -> Int { s.size }
+pub fn MathspecialzetaFrame::len(self : MathspecialzetaFrame) -> Int { self.size }
 
-pub fn math_special_zeta_frame_get(s : MathspecialzetaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaFrame::get(self : MathspecialzetaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_frame_set(s : MathspecialzetaFrame, i : Int, v : Double) -> MathspecialzetaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaFrame::set(self : MathspecialzetaFrame, i : Int, v : Double) -> MathspecialzetaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_frame_sum(s : MathspecialzetaFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaFrame::sum(self : MathspecialzetaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_frame_mean(s : MathspecialzetaFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaFrame::mean(self : MathspecialzetaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_frame_scale(s : MathspecialzetaFrame, f : Double) -> MathspecialzetaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaFrame::scale(self : MathspecialzetaFrame, f : Double) -> MathspecialzetaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_frame_add(a : MathspecialzetaFrame, b : MathspecialzetaFrame) -> MathspecialzetaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaFrame::add(self : MathspecialzetaFrame, other : MathspecialzetaFrame) -> MathspecialzetaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_frame_copy(s : MathspecialzetaFrame) -> MathspecialzetaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaFrame::copy(self : MathspecialzetaFrame) -> MathspecialzetaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_frame_fill(s : MathspecialzetaFrame, v : Double) -> MathspecialzetaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaFrame::fill(self : MathspecialzetaFrame, v : Double) -> MathspecialzetaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_frame_min(s : MathspecialzetaFrame) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaFrame::min(self : MathspecialzetaFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_frame_max(s : MathspecialzetaFrame) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaFrame::max(self : MathspecialzetaFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_frame_to_string(s : MathspecialzetaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaFrame::to_string(self : MathspecialzetaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaTable {
@@ -402,45 +402,45 @@ pub fn math_special_zeta_table_make(size : Int) -> MathspecialzetaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_table_len(s : MathspecialzetaTable) -> Int { s.size }
+pub fn MathspecialzetaTable::len(self : MathspecialzetaTable) -> Int { self.size }
 
-pub fn math_special_zeta_table_get(s : MathspecialzetaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaTable::get(self : MathspecialzetaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_table_set(s : MathspecialzetaTable, i : Int, v : Double) -> MathspecialzetaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaTable::set(self : MathspecialzetaTable, i : Int, v : Double) -> MathspecialzetaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_table_sum(s : MathspecialzetaTable) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaTable::sum(self : MathspecialzetaTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_table_mean(s : MathspecialzetaTable) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaTable::mean(self : MathspecialzetaTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_table_scale(s : MathspecialzetaTable, f : Double) -> MathspecialzetaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaTable::scale(self : MathspecialzetaTable, f : Double) -> MathspecialzetaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_table_add(a : MathspecialzetaTable, b : MathspecialzetaTable) -> MathspecialzetaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaTable::add(self : MathspecialzetaTable, other : MathspecialzetaTable) -> MathspecialzetaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_table_copy(s : MathspecialzetaTable) -> MathspecialzetaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaTable::copy(self : MathspecialzetaTable) -> MathspecialzetaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_table_fill(s : MathspecialzetaTable, v : Double) -> MathspecialzetaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaTable::fill(self : MathspecialzetaTable, v : Double) -> MathspecialzetaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_table_min(s : MathspecialzetaTable) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaTable::min(self : MathspecialzetaTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_table_max(s : MathspecialzetaTable) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaTable::max(self : MathspecialzetaTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_table_to_string(s : MathspecialzetaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaTable::to_string(self : MathspecialzetaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_zeta_graphn_make(size : Int) -> MathspecialzetaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_graphn_len(s : MathspecialzetaGraphN) -> Int { s.size }
+pub fn MathspecialzetaGraphN::len(self : MathspecialzetaGraphN) -> Int { self.size }
 
-pub fn math_special_zeta_graphn_get(s : MathspecialzetaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaGraphN::get(self : MathspecialzetaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_graphn_set(s : MathspecialzetaGraphN, i : Int, v : Double) -> MathspecialzetaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaGraphN::set(self : MathspecialzetaGraphN, i : Int, v : Double) -> MathspecialzetaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_graphn_sum(s : MathspecialzetaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaGraphN::sum(self : MathspecialzetaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_graphn_mean(s : MathspecialzetaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaGraphN::mean(self : MathspecialzetaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_graphn_scale(s : MathspecialzetaGraphN, f : Double) -> MathspecialzetaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaGraphN::scale(self : MathspecialzetaGraphN, f : Double) -> MathspecialzetaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_graphn_add(a : MathspecialzetaGraphN, b : MathspecialzetaGraphN) -> MathspecialzetaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaGraphN::add(self : MathspecialzetaGraphN, other : MathspecialzetaGraphN) -> MathspecialzetaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_graphn_copy(s : MathspecialzetaGraphN) -> MathspecialzetaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaGraphN::copy(self : MathspecialzetaGraphN) -> MathspecialzetaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_graphn_fill(s : MathspecialzetaGraphN, v : Double) -> MathspecialzetaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaGraphN::fill(self : MathspecialzetaGraphN, v : Double) -> MathspecialzetaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_graphn_min(s : MathspecialzetaGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaGraphN::min(self : MathspecialzetaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_graphn_max(s : MathspecialzetaGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaGraphN::max(self : MathspecialzetaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_graphn_to_string(s : MathspecialzetaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaGraphN::to_string(self : MathspecialzetaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaNode {
@@ -504,45 +504,45 @@ pub fn math_special_zeta_node_make(size : Int) -> MathspecialzetaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_node_len(s : MathspecialzetaNode) -> Int { s.size }
+pub fn MathspecialzetaNode::len(self : MathspecialzetaNode) -> Int { self.size }
 
-pub fn math_special_zeta_node_get(s : MathspecialzetaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaNode::get(self : MathspecialzetaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_node_set(s : MathspecialzetaNode, i : Int, v : Double) -> MathspecialzetaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaNode::set(self : MathspecialzetaNode, i : Int, v : Double) -> MathspecialzetaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_node_sum(s : MathspecialzetaNode) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaNode::sum(self : MathspecialzetaNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_node_mean(s : MathspecialzetaNode) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaNode::mean(self : MathspecialzetaNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_node_scale(s : MathspecialzetaNode, f : Double) -> MathspecialzetaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaNode::scale(self : MathspecialzetaNode, f : Double) -> MathspecialzetaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_node_add(a : MathspecialzetaNode, b : MathspecialzetaNode) -> MathspecialzetaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaNode::add(self : MathspecialzetaNode, other : MathspecialzetaNode) -> MathspecialzetaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_node_copy(s : MathspecialzetaNode) -> MathspecialzetaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaNode::copy(self : MathspecialzetaNode) -> MathspecialzetaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_node_fill(s : MathspecialzetaNode, v : Double) -> MathspecialzetaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaNode::fill(self : MathspecialzetaNode, v : Double) -> MathspecialzetaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_node_min(s : MathspecialzetaNode) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaNode::min(self : MathspecialzetaNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_node_max(s : MathspecialzetaNode) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaNode::max(self : MathspecialzetaNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_node_to_string(s : MathspecialzetaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaNode::to_string(self : MathspecialzetaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaEdge {
@@ -555,45 +555,45 @@ pub fn math_special_zeta_edge_make(size : Int) -> MathspecialzetaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_edge_len(s : MathspecialzetaEdge) -> Int { s.size }
+pub fn MathspecialzetaEdge::len(self : MathspecialzetaEdge) -> Int { self.size }
 
-pub fn math_special_zeta_edge_get(s : MathspecialzetaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaEdge::get(self : MathspecialzetaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_edge_set(s : MathspecialzetaEdge, i : Int, v : Double) -> MathspecialzetaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaEdge::set(self : MathspecialzetaEdge, i : Int, v : Double) -> MathspecialzetaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_edge_sum(s : MathspecialzetaEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaEdge::sum(self : MathspecialzetaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_edge_mean(s : MathspecialzetaEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaEdge::mean(self : MathspecialzetaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_edge_scale(s : MathspecialzetaEdge, f : Double) -> MathspecialzetaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaEdge::scale(self : MathspecialzetaEdge, f : Double) -> MathspecialzetaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_edge_add(a : MathspecialzetaEdge, b : MathspecialzetaEdge) -> MathspecialzetaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaEdge::add(self : MathspecialzetaEdge, other : MathspecialzetaEdge) -> MathspecialzetaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_edge_copy(s : MathspecialzetaEdge) -> MathspecialzetaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaEdge::copy(self : MathspecialzetaEdge) -> MathspecialzetaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_edge_fill(s : MathspecialzetaEdge, v : Double) -> MathspecialzetaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaEdge::fill(self : MathspecialzetaEdge, v : Double) -> MathspecialzetaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_edge_min(s : MathspecialzetaEdge) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaEdge::min(self : MathspecialzetaEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_edge_max(s : MathspecialzetaEdge) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaEdge::max(self : MathspecialzetaEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_edge_to_string(s : MathspecialzetaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaEdge::to_string(self : MathspecialzetaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaPath {
@@ -606,45 +606,45 @@ pub fn math_special_zeta_path_make(size : Int) -> MathspecialzetaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_path_len(s : MathspecialzetaPath) -> Int { s.size }
+pub fn MathspecialzetaPath::len(self : MathspecialzetaPath) -> Int { self.size }
 
-pub fn math_special_zeta_path_get(s : MathspecialzetaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaPath::get(self : MathspecialzetaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_path_set(s : MathspecialzetaPath, i : Int, v : Double) -> MathspecialzetaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaPath::set(self : MathspecialzetaPath, i : Int, v : Double) -> MathspecialzetaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_path_sum(s : MathspecialzetaPath) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaPath::sum(self : MathspecialzetaPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_path_mean(s : MathspecialzetaPath) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaPath::mean(self : MathspecialzetaPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_path_scale(s : MathspecialzetaPath, f : Double) -> MathspecialzetaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaPath::scale(self : MathspecialzetaPath, f : Double) -> MathspecialzetaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_path_add(a : MathspecialzetaPath, b : MathspecialzetaPath) -> MathspecialzetaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaPath::add(self : MathspecialzetaPath, other : MathspecialzetaPath) -> MathspecialzetaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_path_copy(s : MathspecialzetaPath) -> MathspecialzetaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaPath::copy(self : MathspecialzetaPath) -> MathspecialzetaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_path_fill(s : MathspecialzetaPath, v : Double) -> MathspecialzetaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaPath::fill(self : MathspecialzetaPath, v : Double) -> MathspecialzetaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_path_min(s : MathspecialzetaPath) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaPath::min(self : MathspecialzetaPath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_path_max(s : MathspecialzetaPath) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaPath::max(self : MathspecialzetaPath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_path_to_string(s : MathspecialzetaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaPath::to_string(self : MathspecialzetaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaCluster {
@@ -657,45 +657,45 @@ pub fn math_special_zeta_cluster_make(size : Int) -> MathspecialzetaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_cluster_len(s : MathspecialzetaCluster) -> Int { s.size }
+pub fn MathspecialzetaCluster::len(self : MathspecialzetaCluster) -> Int { self.size }
 
-pub fn math_special_zeta_cluster_get(s : MathspecialzetaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaCluster::get(self : MathspecialzetaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_cluster_set(s : MathspecialzetaCluster, i : Int, v : Double) -> MathspecialzetaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaCluster::set(self : MathspecialzetaCluster, i : Int, v : Double) -> MathspecialzetaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cluster_sum(s : MathspecialzetaCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaCluster::sum(self : MathspecialzetaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_cluster_mean(s : MathspecialzetaCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaCluster::mean(self : MathspecialzetaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_cluster_scale(s : MathspecialzetaCluster, f : Double) -> MathspecialzetaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaCluster::scale(self : MathspecialzetaCluster, f : Double) -> MathspecialzetaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cluster_add(a : MathspecialzetaCluster, b : MathspecialzetaCluster) -> MathspecialzetaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaCluster::add(self : MathspecialzetaCluster, other : MathspecialzetaCluster) -> MathspecialzetaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_cluster_copy(s : MathspecialzetaCluster) -> MathspecialzetaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaCluster::copy(self : MathspecialzetaCluster) -> MathspecialzetaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cluster_fill(s : MathspecialzetaCluster, v : Double) -> MathspecialzetaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaCluster::fill(self : MathspecialzetaCluster, v : Double) -> MathspecialzetaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cluster_min(s : MathspecialzetaCluster) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaCluster::min(self : MathspecialzetaCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_cluster_max(s : MathspecialzetaCluster) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaCluster::max(self : MathspecialzetaCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_cluster_to_string(s : MathspecialzetaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaCluster::to_string(self : MathspecialzetaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaModel {
@@ -708,45 +708,45 @@ pub fn math_special_zeta_model_make(size : Int) -> MathspecialzetaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_model_len(s : MathspecialzetaModel) -> Int { s.size }
+pub fn MathspecialzetaModel::len(self : MathspecialzetaModel) -> Int { self.size }
 
-pub fn math_special_zeta_model_get(s : MathspecialzetaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaModel::get(self : MathspecialzetaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_model_set(s : MathspecialzetaModel, i : Int, v : Double) -> MathspecialzetaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaModel::set(self : MathspecialzetaModel, i : Int, v : Double) -> MathspecialzetaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_model_sum(s : MathspecialzetaModel) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaModel::sum(self : MathspecialzetaModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_model_mean(s : MathspecialzetaModel) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaModel::mean(self : MathspecialzetaModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_model_scale(s : MathspecialzetaModel, f : Double) -> MathspecialzetaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaModel::scale(self : MathspecialzetaModel, f : Double) -> MathspecialzetaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_model_add(a : MathspecialzetaModel, b : MathspecialzetaModel) -> MathspecialzetaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaModel::add(self : MathspecialzetaModel, other : MathspecialzetaModel) -> MathspecialzetaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_model_copy(s : MathspecialzetaModel) -> MathspecialzetaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaModel::copy(self : MathspecialzetaModel) -> MathspecialzetaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_model_fill(s : MathspecialzetaModel, v : Double) -> MathspecialzetaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaModel::fill(self : MathspecialzetaModel, v : Double) -> MathspecialzetaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_model_min(s : MathspecialzetaModel) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaModel::min(self : MathspecialzetaModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_model_max(s : MathspecialzetaModel) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaModel::max(self : MathspecialzetaModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_model_to_string(s : MathspecialzetaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaModel::to_string(self : MathspecialzetaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaLayer {
@@ -759,45 +759,45 @@ pub fn math_special_zeta_layer_make(size : Int) -> MathspecialzetaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_layer_len(s : MathspecialzetaLayer) -> Int { s.size }
+pub fn MathspecialzetaLayer::len(self : MathspecialzetaLayer) -> Int { self.size }
 
-pub fn math_special_zeta_layer_get(s : MathspecialzetaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaLayer::get(self : MathspecialzetaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_layer_set(s : MathspecialzetaLayer, i : Int, v : Double) -> MathspecialzetaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaLayer::set(self : MathspecialzetaLayer, i : Int, v : Double) -> MathspecialzetaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_layer_sum(s : MathspecialzetaLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaLayer::sum(self : MathspecialzetaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_layer_mean(s : MathspecialzetaLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaLayer::mean(self : MathspecialzetaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_layer_scale(s : MathspecialzetaLayer, f : Double) -> MathspecialzetaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaLayer::scale(self : MathspecialzetaLayer, f : Double) -> MathspecialzetaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_layer_add(a : MathspecialzetaLayer, b : MathspecialzetaLayer) -> MathspecialzetaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaLayer::add(self : MathspecialzetaLayer, other : MathspecialzetaLayer) -> MathspecialzetaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_layer_copy(s : MathspecialzetaLayer) -> MathspecialzetaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaLayer::copy(self : MathspecialzetaLayer) -> MathspecialzetaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_layer_fill(s : MathspecialzetaLayer, v : Double) -> MathspecialzetaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaLayer::fill(self : MathspecialzetaLayer, v : Double) -> MathspecialzetaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_layer_min(s : MathspecialzetaLayer) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaLayer::min(self : MathspecialzetaLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_layer_max(s : MathspecialzetaLayer) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaLayer::max(self : MathspecialzetaLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_layer_to_string(s : MathspecialzetaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaLayer::to_string(self : MathspecialzetaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_zeta_buffer_make(size : Int) -> MathspecialzetaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_buffer_len(s : MathspecialzetaBuffer) -> Int { s.size }
+pub fn MathspecialzetaBuffer::len(self : MathspecialzetaBuffer) -> Int { self.size }
 
-pub fn math_special_zeta_buffer_get(s : MathspecialzetaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaBuffer::get(self : MathspecialzetaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_buffer_set(s : MathspecialzetaBuffer, i : Int, v : Double) -> MathspecialzetaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaBuffer::set(self : MathspecialzetaBuffer, i : Int, v : Double) -> MathspecialzetaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_buffer_sum(s : MathspecialzetaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaBuffer::sum(self : MathspecialzetaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_buffer_mean(s : MathspecialzetaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaBuffer::mean(self : MathspecialzetaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_buffer_scale(s : MathspecialzetaBuffer, f : Double) -> MathspecialzetaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaBuffer::scale(self : MathspecialzetaBuffer, f : Double) -> MathspecialzetaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_buffer_add(a : MathspecialzetaBuffer, b : MathspecialzetaBuffer) -> MathspecialzetaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaBuffer::add(self : MathspecialzetaBuffer, other : MathspecialzetaBuffer) -> MathspecialzetaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_buffer_copy(s : MathspecialzetaBuffer) -> MathspecialzetaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaBuffer::copy(self : MathspecialzetaBuffer) -> MathspecialzetaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_buffer_fill(s : MathspecialzetaBuffer, v : Double) -> MathspecialzetaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaBuffer::fill(self : MathspecialzetaBuffer, v : Double) -> MathspecialzetaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_buffer_min(s : MathspecialzetaBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaBuffer::min(self : MathspecialzetaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_buffer_max(s : MathspecialzetaBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaBuffer::max(self : MathspecialzetaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_buffer_to_string(s : MathspecialzetaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaBuffer::to_string(self : MathspecialzetaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaCursor {
@@ -861,45 +861,45 @@ pub fn math_special_zeta_cursor_make(size : Int) -> MathspecialzetaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_cursor_len(s : MathspecialzetaCursor) -> Int { s.size }
+pub fn MathspecialzetaCursor::len(self : MathspecialzetaCursor) -> Int { self.size }
 
-pub fn math_special_zeta_cursor_get(s : MathspecialzetaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaCursor::get(self : MathspecialzetaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_cursor_set(s : MathspecialzetaCursor, i : Int, v : Double) -> MathspecialzetaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaCursor::set(self : MathspecialzetaCursor, i : Int, v : Double) -> MathspecialzetaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cursor_sum(s : MathspecialzetaCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaCursor::sum(self : MathspecialzetaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_cursor_mean(s : MathspecialzetaCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaCursor::mean(self : MathspecialzetaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_cursor_scale(s : MathspecialzetaCursor, f : Double) -> MathspecialzetaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaCursor::scale(self : MathspecialzetaCursor, f : Double) -> MathspecialzetaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cursor_add(a : MathspecialzetaCursor, b : MathspecialzetaCursor) -> MathspecialzetaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaCursor::add(self : MathspecialzetaCursor, other : MathspecialzetaCursor) -> MathspecialzetaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_cursor_copy(s : MathspecialzetaCursor) -> MathspecialzetaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaCursor::copy(self : MathspecialzetaCursor) -> MathspecialzetaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cursor_fill(s : MathspecialzetaCursor, v : Double) -> MathspecialzetaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaCursor::fill(self : MathspecialzetaCursor, v : Double) -> MathspecialzetaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_cursor_min(s : MathspecialzetaCursor) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaCursor::min(self : MathspecialzetaCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_cursor_max(s : MathspecialzetaCursor) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaCursor::max(self : MathspecialzetaCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_cursor_to_string(s : MathspecialzetaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaCursor::to_string(self : MathspecialzetaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaView {
@@ -912,45 +912,45 @@ pub fn math_special_zeta_view_make(size : Int) -> MathspecialzetaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_view_len(s : MathspecialzetaView) -> Int { s.size }
+pub fn MathspecialzetaView::len(self : MathspecialzetaView) -> Int { self.size }
 
-pub fn math_special_zeta_view_get(s : MathspecialzetaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaView::get(self : MathspecialzetaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_view_set(s : MathspecialzetaView, i : Int, v : Double) -> MathspecialzetaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaView::set(self : MathspecialzetaView, i : Int, v : Double) -> MathspecialzetaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_view_sum(s : MathspecialzetaView) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaView::sum(self : MathspecialzetaView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_view_mean(s : MathspecialzetaView) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaView::mean(self : MathspecialzetaView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_view_scale(s : MathspecialzetaView, f : Double) -> MathspecialzetaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaView::scale(self : MathspecialzetaView, f : Double) -> MathspecialzetaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_view_add(a : MathspecialzetaView, b : MathspecialzetaView) -> MathspecialzetaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaView::add(self : MathspecialzetaView, other : MathspecialzetaView) -> MathspecialzetaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_view_copy(s : MathspecialzetaView) -> MathspecialzetaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaView::copy(self : MathspecialzetaView) -> MathspecialzetaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_view_fill(s : MathspecialzetaView, v : Double) -> MathspecialzetaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaView::fill(self : MathspecialzetaView, v : Double) -> MathspecialzetaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_view_min(s : MathspecialzetaView) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaView::min(self : MathspecialzetaView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_view_max(s : MathspecialzetaView) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaView::max(self : MathspecialzetaView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_view_to_string(s : MathspecialzetaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaView::to_string(self : MathspecialzetaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaRange {
@@ -963,45 +963,45 @@ pub fn math_special_zeta_range_make(size : Int) -> MathspecialzetaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_range_len(s : MathspecialzetaRange) -> Int { s.size }
+pub fn MathspecialzetaRange::len(self : MathspecialzetaRange) -> Int { self.size }
 
-pub fn math_special_zeta_range_get(s : MathspecialzetaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaRange::get(self : MathspecialzetaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_range_set(s : MathspecialzetaRange, i : Int, v : Double) -> MathspecialzetaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaRange::set(self : MathspecialzetaRange, i : Int, v : Double) -> MathspecialzetaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_range_sum(s : MathspecialzetaRange) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaRange::sum(self : MathspecialzetaRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_range_mean(s : MathspecialzetaRange) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaRange::mean(self : MathspecialzetaRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_range_scale(s : MathspecialzetaRange, f : Double) -> MathspecialzetaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaRange::scale(self : MathspecialzetaRange, f : Double) -> MathspecialzetaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_range_add(a : MathspecialzetaRange, b : MathspecialzetaRange) -> MathspecialzetaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaRange::add(self : MathspecialzetaRange, other : MathspecialzetaRange) -> MathspecialzetaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_range_copy(s : MathspecialzetaRange) -> MathspecialzetaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaRange::copy(self : MathspecialzetaRange) -> MathspecialzetaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_range_fill(s : MathspecialzetaRange, v : Double) -> MathspecialzetaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaRange::fill(self : MathspecialzetaRange, v : Double) -> MathspecialzetaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_range_min(s : MathspecialzetaRange) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaRange::min(self : MathspecialzetaRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_range_max(s : MathspecialzetaRange) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaRange::max(self : MathspecialzetaRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_range_to_string(s : MathspecialzetaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaRange::to_string(self : MathspecialzetaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialzetaSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_zeta_slice_make(size : Int) -> MathspecialzetaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_zeta_slice_len(s : MathspecialzetaSlice) -> Int { s.size }
+pub fn MathspecialzetaSlice::len(self : MathspecialzetaSlice) -> Int { self.size }
 
-pub fn math_special_zeta_slice_get(s : MathspecialzetaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialzetaSlice::get(self : MathspecialzetaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_zeta_slice_set(s : MathspecialzetaSlice, i : Int, v : Double) -> MathspecialzetaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialzetaSlice::set(self : MathspecialzetaSlice, i : Int, v : Double) -> MathspecialzetaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_slice_sum(s : MathspecialzetaSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspecialzetaSlice::sum(self : MathspecialzetaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_zeta_slice_mean(s : MathspecialzetaSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspecialzetaSlice::mean(self : MathspecialzetaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_zeta_slice_scale(s : MathspecialzetaSlice, f : Double) -> MathspecialzetaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialzetaSlice::scale(self : MathspecialzetaSlice, f : Double) -> MathspecialzetaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_slice_add(a : MathspecialzetaSlice, b : MathspecialzetaSlice) -> MathspecialzetaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialzetaSlice::add(self : MathspecialzetaSlice, other : MathspecialzetaSlice) -> MathspecialzetaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_zeta_slice_copy(s : MathspecialzetaSlice) -> MathspecialzetaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialzetaSlice::copy(self : MathspecialzetaSlice) -> MathspecialzetaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_slice_fill(s : MathspecialzetaSlice, v : Double) -> MathspecialzetaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialzetaSlice::fill(self : MathspecialzetaSlice, v : Double) -> MathspecialzetaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_zeta_slice_min(s : MathspecialzetaSlice) -> Double { @_common.min(s.data) }
+pub fn MathspecialzetaSlice::min(self : MathspecialzetaSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_zeta_slice_max(s : MathspecialzetaSlice) -> Double { @_common.max(s.data) }
+pub fn MathspecialzetaSlice::max(self : MathspecialzetaSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_zeta_slice_to_string(s : MathspecialzetaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialzetaSlice::to_string(self : MathspecialzetaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

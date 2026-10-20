@@ -351,45 +351,45 @@ pub fn timeseries_forecast_seasonal_frame_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_frame_len(s : TimeseriesforecastseasonalFrame) -> Int { s.size }
+pub fn TimeseriesforecastseasonalFrame::len(self : TimeseriesforecastseasonalFrame) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_frame_get(s : TimeseriesforecastseasonalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalFrame::get(self : TimeseriesforecastseasonalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_frame_set(s : TimeseriesforecastseasonalFrame, i : Int, v : Double) -> TimeseriesforecastseasonalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalFrame::set(self : TimeseriesforecastseasonalFrame, i : Int, v : Double) -> TimeseriesforecastseasonalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_frame_sum(s : TimeseriesforecastseasonalFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalFrame::sum(self : TimeseriesforecastseasonalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_frame_mean(s : TimeseriesforecastseasonalFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalFrame::mean(self : TimeseriesforecastseasonalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_frame_scale(s : TimeseriesforecastseasonalFrame, f : Double) -> TimeseriesforecastseasonalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalFrame::scale(self : TimeseriesforecastseasonalFrame, f : Double) -> TimeseriesforecastseasonalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_frame_add(a : TimeseriesforecastseasonalFrame, b : TimeseriesforecastseasonalFrame) -> TimeseriesforecastseasonalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalFrame::add(self : TimeseriesforecastseasonalFrame, other : TimeseriesforecastseasonalFrame) -> TimeseriesforecastseasonalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_frame_copy(s : TimeseriesforecastseasonalFrame) -> TimeseriesforecastseasonalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalFrame::copy(self : TimeseriesforecastseasonalFrame) -> TimeseriesforecastseasonalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_frame_fill(s : TimeseriesforecastseasonalFrame, v : Double) -> TimeseriesforecastseasonalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalFrame::fill(self : TimeseriesforecastseasonalFrame, v : Double) -> TimeseriesforecastseasonalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_frame_min(s : TimeseriesforecastseasonalFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalFrame::min(self : TimeseriesforecastseasonalFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_frame_max(s : TimeseriesforecastseasonalFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalFrame::max(self : TimeseriesforecastseasonalFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_frame_to_string(s : TimeseriesforecastseasonalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalFrame::to_string(self : TimeseriesforecastseasonalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalTable {
@@ -402,45 +402,45 @@ pub fn timeseries_forecast_seasonal_table_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_table_len(s : TimeseriesforecastseasonalTable) -> Int { s.size }
+pub fn TimeseriesforecastseasonalTable::len(self : TimeseriesforecastseasonalTable) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_table_get(s : TimeseriesforecastseasonalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalTable::get(self : TimeseriesforecastseasonalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_table_set(s : TimeseriesforecastseasonalTable, i : Int, v : Double) -> TimeseriesforecastseasonalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalTable::set(self : TimeseriesforecastseasonalTable, i : Int, v : Double) -> TimeseriesforecastseasonalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_table_sum(s : TimeseriesforecastseasonalTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalTable::sum(self : TimeseriesforecastseasonalTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_table_mean(s : TimeseriesforecastseasonalTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalTable::mean(self : TimeseriesforecastseasonalTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_table_scale(s : TimeseriesforecastseasonalTable, f : Double) -> TimeseriesforecastseasonalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalTable::scale(self : TimeseriesforecastseasonalTable, f : Double) -> TimeseriesforecastseasonalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_table_add(a : TimeseriesforecastseasonalTable, b : TimeseriesforecastseasonalTable) -> TimeseriesforecastseasonalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalTable::add(self : TimeseriesforecastseasonalTable, other : TimeseriesforecastseasonalTable) -> TimeseriesforecastseasonalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_table_copy(s : TimeseriesforecastseasonalTable) -> TimeseriesforecastseasonalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalTable::copy(self : TimeseriesforecastseasonalTable) -> TimeseriesforecastseasonalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_table_fill(s : TimeseriesforecastseasonalTable, v : Double) -> TimeseriesforecastseasonalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalTable::fill(self : TimeseriesforecastseasonalTable, v : Double) -> TimeseriesforecastseasonalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_table_min(s : TimeseriesforecastseasonalTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalTable::min(self : TimeseriesforecastseasonalTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_table_max(s : TimeseriesforecastseasonalTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalTable::max(self : TimeseriesforecastseasonalTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_table_to_string(s : TimeseriesforecastseasonalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalTable::to_string(self : TimeseriesforecastseasonalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_forecast_seasonal_graphn_make(size : Int) -> Timeseriesforecas
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_len(s : TimeseriesforecastseasonalGraphN) -> Int { s.size }
+pub fn TimeseriesforecastseasonalGraphN::len(self : TimeseriesforecastseasonalGraphN) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_graphn_get(s : TimeseriesforecastseasonalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalGraphN::get(self : TimeseriesforecastseasonalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_set(s : TimeseriesforecastseasonalGraphN, i : Int, v : Double) -> TimeseriesforecastseasonalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalGraphN::set(self : TimeseriesforecastseasonalGraphN, i : Int, v : Double) -> TimeseriesforecastseasonalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_sum(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalGraphN::sum(self : TimeseriesforecastseasonalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_graphn_mean(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalGraphN::mean(self : TimeseriesforecastseasonalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_graphn_scale(s : TimeseriesforecastseasonalGraphN, f : Double) -> TimeseriesforecastseasonalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalGraphN::scale(self : TimeseriesforecastseasonalGraphN, f : Double) -> TimeseriesforecastseasonalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_add(a : TimeseriesforecastseasonalGraphN, b : TimeseriesforecastseasonalGraphN) -> TimeseriesforecastseasonalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalGraphN::add(self : TimeseriesforecastseasonalGraphN, other : TimeseriesforecastseasonalGraphN) -> TimeseriesforecastseasonalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_copy(s : TimeseriesforecastseasonalGraphN) -> TimeseriesforecastseasonalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalGraphN::copy(self : TimeseriesforecastseasonalGraphN) -> TimeseriesforecastseasonalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_fill(s : TimeseriesforecastseasonalGraphN, v : Double) -> TimeseriesforecastseasonalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalGraphN::fill(self : TimeseriesforecastseasonalGraphN, v : Double) -> TimeseriesforecastseasonalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_graphn_min(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalGraphN::min(self : TimeseriesforecastseasonalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_graphn_max(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalGraphN::max(self : TimeseriesforecastseasonalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_graphn_to_string(s : TimeseriesforecastseasonalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalGraphN::to_string(self : TimeseriesforecastseasonalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalNode {
@@ -504,45 +504,45 @@ pub fn timeseries_forecast_seasonal_node_make(size : Int) -> Timeseriesforecasts
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_node_len(s : TimeseriesforecastseasonalNode) -> Int { s.size }
+pub fn TimeseriesforecastseasonalNode::len(self : TimeseriesforecastseasonalNode) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_node_get(s : TimeseriesforecastseasonalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalNode::get(self : TimeseriesforecastseasonalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_node_set(s : TimeseriesforecastseasonalNode, i : Int, v : Double) -> TimeseriesforecastseasonalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalNode::set(self : TimeseriesforecastseasonalNode, i : Int, v : Double) -> TimeseriesforecastseasonalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_node_sum(s : TimeseriesforecastseasonalNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalNode::sum(self : TimeseriesforecastseasonalNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_node_mean(s : TimeseriesforecastseasonalNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalNode::mean(self : TimeseriesforecastseasonalNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_node_scale(s : TimeseriesforecastseasonalNode, f : Double) -> TimeseriesforecastseasonalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalNode::scale(self : TimeseriesforecastseasonalNode, f : Double) -> TimeseriesforecastseasonalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_node_add(a : TimeseriesforecastseasonalNode, b : TimeseriesforecastseasonalNode) -> TimeseriesforecastseasonalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalNode::add(self : TimeseriesforecastseasonalNode, other : TimeseriesforecastseasonalNode) -> TimeseriesforecastseasonalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_node_copy(s : TimeseriesforecastseasonalNode) -> TimeseriesforecastseasonalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalNode::copy(self : TimeseriesforecastseasonalNode) -> TimeseriesforecastseasonalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_node_fill(s : TimeseriesforecastseasonalNode, v : Double) -> TimeseriesforecastseasonalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalNode::fill(self : TimeseriesforecastseasonalNode, v : Double) -> TimeseriesforecastseasonalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_node_min(s : TimeseriesforecastseasonalNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalNode::min(self : TimeseriesforecastseasonalNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_node_max(s : TimeseriesforecastseasonalNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalNode::max(self : TimeseriesforecastseasonalNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_node_to_string(s : TimeseriesforecastseasonalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalNode::to_string(self : TimeseriesforecastseasonalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_forecast_seasonal_edge_make(size : Int) -> Timeseriesforecasts
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_edge_len(s : TimeseriesforecastseasonalEdge) -> Int { s.size }
+pub fn TimeseriesforecastseasonalEdge::len(self : TimeseriesforecastseasonalEdge) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_edge_get(s : TimeseriesforecastseasonalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalEdge::get(self : TimeseriesforecastseasonalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_edge_set(s : TimeseriesforecastseasonalEdge, i : Int, v : Double) -> TimeseriesforecastseasonalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalEdge::set(self : TimeseriesforecastseasonalEdge, i : Int, v : Double) -> TimeseriesforecastseasonalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_edge_sum(s : TimeseriesforecastseasonalEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalEdge::sum(self : TimeseriesforecastseasonalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_edge_mean(s : TimeseriesforecastseasonalEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalEdge::mean(self : TimeseriesforecastseasonalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_edge_scale(s : TimeseriesforecastseasonalEdge, f : Double) -> TimeseriesforecastseasonalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalEdge::scale(self : TimeseriesforecastseasonalEdge, f : Double) -> TimeseriesforecastseasonalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_edge_add(a : TimeseriesforecastseasonalEdge, b : TimeseriesforecastseasonalEdge) -> TimeseriesforecastseasonalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalEdge::add(self : TimeseriesforecastseasonalEdge, other : TimeseriesforecastseasonalEdge) -> TimeseriesforecastseasonalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_edge_copy(s : TimeseriesforecastseasonalEdge) -> TimeseriesforecastseasonalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalEdge::copy(self : TimeseriesforecastseasonalEdge) -> TimeseriesforecastseasonalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_edge_fill(s : TimeseriesforecastseasonalEdge, v : Double) -> TimeseriesforecastseasonalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalEdge::fill(self : TimeseriesforecastseasonalEdge, v : Double) -> TimeseriesforecastseasonalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_edge_min(s : TimeseriesforecastseasonalEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalEdge::min(self : TimeseriesforecastseasonalEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_edge_max(s : TimeseriesforecastseasonalEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalEdge::max(self : TimeseriesforecastseasonalEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_edge_to_string(s : TimeseriesforecastseasonalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalEdge::to_string(self : TimeseriesforecastseasonalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalPath {
@@ -606,45 +606,45 @@ pub fn timeseries_forecast_seasonal_path_make(size : Int) -> Timeseriesforecasts
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_path_len(s : TimeseriesforecastseasonalPath) -> Int { s.size }
+pub fn TimeseriesforecastseasonalPath::len(self : TimeseriesforecastseasonalPath) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_path_get(s : TimeseriesforecastseasonalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalPath::get(self : TimeseriesforecastseasonalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_path_set(s : TimeseriesforecastseasonalPath, i : Int, v : Double) -> TimeseriesforecastseasonalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalPath::set(self : TimeseriesforecastseasonalPath, i : Int, v : Double) -> TimeseriesforecastseasonalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_path_sum(s : TimeseriesforecastseasonalPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalPath::sum(self : TimeseriesforecastseasonalPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_path_mean(s : TimeseriesforecastseasonalPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalPath::mean(self : TimeseriesforecastseasonalPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_path_scale(s : TimeseriesforecastseasonalPath, f : Double) -> TimeseriesforecastseasonalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalPath::scale(self : TimeseriesforecastseasonalPath, f : Double) -> TimeseriesforecastseasonalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_path_add(a : TimeseriesforecastseasonalPath, b : TimeseriesforecastseasonalPath) -> TimeseriesforecastseasonalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalPath::add(self : TimeseriesforecastseasonalPath, other : TimeseriesforecastseasonalPath) -> TimeseriesforecastseasonalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_path_copy(s : TimeseriesforecastseasonalPath) -> TimeseriesforecastseasonalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalPath::copy(self : TimeseriesforecastseasonalPath) -> TimeseriesforecastseasonalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_path_fill(s : TimeseriesforecastseasonalPath, v : Double) -> TimeseriesforecastseasonalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalPath::fill(self : TimeseriesforecastseasonalPath, v : Double) -> TimeseriesforecastseasonalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_path_min(s : TimeseriesforecastseasonalPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalPath::min(self : TimeseriesforecastseasonalPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_path_max(s : TimeseriesforecastseasonalPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalPath::max(self : TimeseriesforecastseasonalPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_path_to_string(s : TimeseriesforecastseasonalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalPath::to_string(self : TimeseriesforecastseasonalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_forecast_seasonal_cluster_make(size : Int) -> Timeseriesforeca
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_len(s : TimeseriesforecastseasonalCluster) -> Int { s.size }
+pub fn TimeseriesforecastseasonalCluster::len(self : TimeseriesforecastseasonalCluster) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_cluster_get(s : TimeseriesforecastseasonalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalCluster::get(self : TimeseriesforecastseasonalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_set(s : TimeseriesforecastseasonalCluster, i : Int, v : Double) -> TimeseriesforecastseasonalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCluster::set(self : TimeseriesforecastseasonalCluster, i : Int, v : Double) -> TimeseriesforecastseasonalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_sum(s : TimeseriesforecastseasonalCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalCluster::sum(self : TimeseriesforecastseasonalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_cluster_mean(s : TimeseriesforecastseasonalCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalCluster::mean(self : TimeseriesforecastseasonalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_cluster_scale(s : TimeseriesforecastseasonalCluster, f : Double) -> TimeseriesforecastseasonalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCluster::scale(self : TimeseriesforecastseasonalCluster, f : Double) -> TimeseriesforecastseasonalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_add(a : TimeseriesforecastseasonalCluster, b : TimeseriesforecastseasonalCluster) -> TimeseriesforecastseasonalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalCluster::add(self : TimeseriesforecastseasonalCluster, other : TimeseriesforecastseasonalCluster) -> TimeseriesforecastseasonalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_copy(s : TimeseriesforecastseasonalCluster) -> TimeseriesforecastseasonalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCluster::copy(self : TimeseriesforecastseasonalCluster) -> TimeseriesforecastseasonalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_fill(s : TimeseriesforecastseasonalCluster, v : Double) -> TimeseriesforecastseasonalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCluster::fill(self : TimeseriesforecastseasonalCluster, v : Double) -> TimeseriesforecastseasonalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cluster_min(s : TimeseriesforecastseasonalCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalCluster::min(self : TimeseriesforecastseasonalCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_cluster_max(s : TimeseriesforecastseasonalCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalCluster::max(self : TimeseriesforecastseasonalCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_cluster_to_string(s : TimeseriesforecastseasonalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalCluster::to_string(self : TimeseriesforecastseasonalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalModel {
@@ -708,45 +708,45 @@ pub fn timeseries_forecast_seasonal_model_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_model_len(s : TimeseriesforecastseasonalModel) -> Int { s.size }
+pub fn TimeseriesforecastseasonalModel::len(self : TimeseriesforecastseasonalModel) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_model_get(s : TimeseriesforecastseasonalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalModel::get(self : TimeseriesforecastseasonalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_model_set(s : TimeseriesforecastseasonalModel, i : Int, v : Double) -> TimeseriesforecastseasonalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalModel::set(self : TimeseriesforecastseasonalModel, i : Int, v : Double) -> TimeseriesforecastseasonalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_model_sum(s : TimeseriesforecastseasonalModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalModel::sum(self : TimeseriesforecastseasonalModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_model_mean(s : TimeseriesforecastseasonalModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalModel::mean(self : TimeseriesforecastseasonalModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_model_scale(s : TimeseriesforecastseasonalModel, f : Double) -> TimeseriesforecastseasonalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalModel::scale(self : TimeseriesforecastseasonalModel, f : Double) -> TimeseriesforecastseasonalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_model_add(a : TimeseriesforecastseasonalModel, b : TimeseriesforecastseasonalModel) -> TimeseriesforecastseasonalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalModel::add(self : TimeseriesforecastseasonalModel, other : TimeseriesforecastseasonalModel) -> TimeseriesforecastseasonalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_model_copy(s : TimeseriesforecastseasonalModel) -> TimeseriesforecastseasonalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalModel::copy(self : TimeseriesforecastseasonalModel) -> TimeseriesforecastseasonalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_model_fill(s : TimeseriesforecastseasonalModel, v : Double) -> TimeseriesforecastseasonalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalModel::fill(self : TimeseriesforecastseasonalModel, v : Double) -> TimeseriesforecastseasonalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_model_min(s : TimeseriesforecastseasonalModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalModel::min(self : TimeseriesforecastseasonalModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_model_max(s : TimeseriesforecastseasonalModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalModel::max(self : TimeseriesforecastseasonalModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_model_to_string(s : TimeseriesforecastseasonalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalModel::to_string(self : TimeseriesforecastseasonalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_forecast_seasonal_layer_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_layer_len(s : TimeseriesforecastseasonalLayer) -> Int { s.size }
+pub fn TimeseriesforecastseasonalLayer::len(self : TimeseriesforecastseasonalLayer) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_layer_get(s : TimeseriesforecastseasonalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalLayer::get(self : TimeseriesforecastseasonalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_layer_set(s : TimeseriesforecastseasonalLayer, i : Int, v : Double) -> TimeseriesforecastseasonalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalLayer::set(self : TimeseriesforecastseasonalLayer, i : Int, v : Double) -> TimeseriesforecastseasonalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_layer_sum(s : TimeseriesforecastseasonalLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalLayer::sum(self : TimeseriesforecastseasonalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_layer_mean(s : TimeseriesforecastseasonalLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalLayer::mean(self : TimeseriesforecastseasonalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_layer_scale(s : TimeseriesforecastseasonalLayer, f : Double) -> TimeseriesforecastseasonalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalLayer::scale(self : TimeseriesforecastseasonalLayer, f : Double) -> TimeseriesforecastseasonalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_layer_add(a : TimeseriesforecastseasonalLayer, b : TimeseriesforecastseasonalLayer) -> TimeseriesforecastseasonalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalLayer::add(self : TimeseriesforecastseasonalLayer, other : TimeseriesforecastseasonalLayer) -> TimeseriesforecastseasonalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_layer_copy(s : TimeseriesforecastseasonalLayer) -> TimeseriesforecastseasonalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalLayer::copy(self : TimeseriesforecastseasonalLayer) -> TimeseriesforecastseasonalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_layer_fill(s : TimeseriesforecastseasonalLayer, v : Double) -> TimeseriesforecastseasonalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalLayer::fill(self : TimeseriesforecastseasonalLayer, v : Double) -> TimeseriesforecastseasonalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_layer_min(s : TimeseriesforecastseasonalLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalLayer::min(self : TimeseriesforecastseasonalLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_layer_max(s : TimeseriesforecastseasonalLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalLayer::max(self : TimeseriesforecastseasonalLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_layer_to_string(s : TimeseriesforecastseasonalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalLayer::to_string(self : TimeseriesforecastseasonalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_forecast_seasonal_buffer_make(size : Int) -> Timeseriesforecas
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_len(s : TimeseriesforecastseasonalBuffer) -> Int { s.size }
+pub fn TimeseriesforecastseasonalBuffer::len(self : TimeseriesforecastseasonalBuffer) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_buffer_get(s : TimeseriesforecastseasonalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalBuffer::get(self : TimeseriesforecastseasonalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_set(s : TimeseriesforecastseasonalBuffer, i : Int, v : Double) -> TimeseriesforecastseasonalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalBuffer::set(self : TimeseriesforecastseasonalBuffer, i : Int, v : Double) -> TimeseriesforecastseasonalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_sum(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalBuffer::sum(self : TimeseriesforecastseasonalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_buffer_mean(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalBuffer::mean(self : TimeseriesforecastseasonalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_buffer_scale(s : TimeseriesforecastseasonalBuffer, f : Double) -> TimeseriesforecastseasonalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalBuffer::scale(self : TimeseriesforecastseasonalBuffer, f : Double) -> TimeseriesforecastseasonalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_add(a : TimeseriesforecastseasonalBuffer, b : TimeseriesforecastseasonalBuffer) -> TimeseriesforecastseasonalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalBuffer::add(self : TimeseriesforecastseasonalBuffer, other : TimeseriesforecastseasonalBuffer) -> TimeseriesforecastseasonalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_copy(s : TimeseriesforecastseasonalBuffer) -> TimeseriesforecastseasonalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalBuffer::copy(self : TimeseriesforecastseasonalBuffer) -> TimeseriesforecastseasonalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_fill(s : TimeseriesforecastseasonalBuffer, v : Double) -> TimeseriesforecastseasonalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalBuffer::fill(self : TimeseriesforecastseasonalBuffer, v : Double) -> TimeseriesforecastseasonalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_buffer_min(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalBuffer::min(self : TimeseriesforecastseasonalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_buffer_max(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalBuffer::max(self : TimeseriesforecastseasonalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_buffer_to_string(s : TimeseriesforecastseasonalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalBuffer::to_string(self : TimeseriesforecastseasonalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_forecast_seasonal_cursor_make(size : Int) -> Timeseriesforecas
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_len(s : TimeseriesforecastseasonalCursor) -> Int { s.size }
+pub fn TimeseriesforecastseasonalCursor::len(self : TimeseriesforecastseasonalCursor) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_cursor_get(s : TimeseriesforecastseasonalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalCursor::get(self : TimeseriesforecastseasonalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_set(s : TimeseriesforecastseasonalCursor, i : Int, v : Double) -> TimeseriesforecastseasonalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCursor::set(self : TimeseriesforecastseasonalCursor, i : Int, v : Double) -> TimeseriesforecastseasonalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_sum(s : TimeseriesforecastseasonalCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalCursor::sum(self : TimeseriesforecastseasonalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_cursor_mean(s : TimeseriesforecastseasonalCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalCursor::mean(self : TimeseriesforecastseasonalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_cursor_scale(s : TimeseriesforecastseasonalCursor, f : Double) -> TimeseriesforecastseasonalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCursor::scale(self : TimeseriesforecastseasonalCursor, f : Double) -> TimeseriesforecastseasonalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_add(a : TimeseriesforecastseasonalCursor, b : TimeseriesforecastseasonalCursor) -> TimeseriesforecastseasonalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalCursor::add(self : TimeseriesforecastseasonalCursor, other : TimeseriesforecastseasonalCursor) -> TimeseriesforecastseasonalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_copy(s : TimeseriesforecastseasonalCursor) -> TimeseriesforecastseasonalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCursor::copy(self : TimeseriesforecastseasonalCursor) -> TimeseriesforecastseasonalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_fill(s : TimeseriesforecastseasonalCursor, v : Double) -> TimeseriesforecastseasonalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalCursor::fill(self : TimeseriesforecastseasonalCursor, v : Double) -> TimeseriesforecastseasonalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_cursor_min(s : TimeseriesforecastseasonalCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalCursor::min(self : TimeseriesforecastseasonalCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_cursor_max(s : TimeseriesforecastseasonalCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalCursor::max(self : TimeseriesforecastseasonalCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_cursor_to_string(s : TimeseriesforecastseasonalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalCursor::to_string(self : TimeseriesforecastseasonalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalView {
@@ -912,45 +912,45 @@ pub fn timeseries_forecast_seasonal_view_make(size : Int) -> Timeseriesforecasts
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_view_len(s : TimeseriesforecastseasonalView) -> Int { s.size }
+pub fn TimeseriesforecastseasonalView::len(self : TimeseriesforecastseasonalView) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_view_get(s : TimeseriesforecastseasonalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalView::get(self : TimeseriesforecastseasonalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_view_set(s : TimeseriesforecastseasonalView, i : Int, v : Double) -> TimeseriesforecastseasonalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalView::set(self : TimeseriesforecastseasonalView, i : Int, v : Double) -> TimeseriesforecastseasonalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_view_sum(s : TimeseriesforecastseasonalView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalView::sum(self : TimeseriesforecastseasonalView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_view_mean(s : TimeseriesforecastseasonalView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalView::mean(self : TimeseriesforecastseasonalView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_view_scale(s : TimeseriesforecastseasonalView, f : Double) -> TimeseriesforecastseasonalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalView::scale(self : TimeseriesforecastseasonalView, f : Double) -> TimeseriesforecastseasonalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_view_add(a : TimeseriesforecastseasonalView, b : TimeseriesforecastseasonalView) -> TimeseriesforecastseasonalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalView::add(self : TimeseriesforecastseasonalView, other : TimeseriesforecastseasonalView) -> TimeseriesforecastseasonalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_view_copy(s : TimeseriesforecastseasonalView) -> TimeseriesforecastseasonalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalView::copy(self : TimeseriesforecastseasonalView) -> TimeseriesforecastseasonalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_view_fill(s : TimeseriesforecastseasonalView, v : Double) -> TimeseriesforecastseasonalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalView::fill(self : TimeseriesforecastseasonalView, v : Double) -> TimeseriesforecastseasonalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_view_min(s : TimeseriesforecastseasonalView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalView::min(self : TimeseriesforecastseasonalView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_view_max(s : TimeseriesforecastseasonalView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalView::max(self : TimeseriesforecastseasonalView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_view_to_string(s : TimeseriesforecastseasonalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalView::to_string(self : TimeseriesforecastseasonalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalRange {
@@ -963,45 +963,45 @@ pub fn timeseries_forecast_seasonal_range_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_range_len(s : TimeseriesforecastseasonalRange) -> Int { s.size }
+pub fn TimeseriesforecastseasonalRange::len(self : TimeseriesforecastseasonalRange) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_range_get(s : TimeseriesforecastseasonalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalRange::get(self : TimeseriesforecastseasonalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_range_set(s : TimeseriesforecastseasonalRange, i : Int, v : Double) -> TimeseriesforecastseasonalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalRange::set(self : TimeseriesforecastseasonalRange, i : Int, v : Double) -> TimeseriesforecastseasonalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_range_sum(s : TimeseriesforecastseasonalRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalRange::sum(self : TimeseriesforecastseasonalRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_range_mean(s : TimeseriesforecastseasonalRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalRange::mean(self : TimeseriesforecastseasonalRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_range_scale(s : TimeseriesforecastseasonalRange, f : Double) -> TimeseriesforecastseasonalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalRange::scale(self : TimeseriesforecastseasonalRange, f : Double) -> TimeseriesforecastseasonalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_range_add(a : TimeseriesforecastseasonalRange, b : TimeseriesforecastseasonalRange) -> TimeseriesforecastseasonalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalRange::add(self : TimeseriesforecastseasonalRange, other : TimeseriesforecastseasonalRange) -> TimeseriesforecastseasonalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_range_copy(s : TimeseriesforecastseasonalRange) -> TimeseriesforecastseasonalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalRange::copy(self : TimeseriesforecastseasonalRange) -> TimeseriesforecastseasonalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_range_fill(s : TimeseriesforecastseasonalRange, v : Double) -> TimeseriesforecastseasonalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalRange::fill(self : TimeseriesforecastseasonalRange, v : Double) -> TimeseriesforecastseasonalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_range_min(s : TimeseriesforecastseasonalRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalRange::min(self : TimeseriesforecastseasonalRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_range_max(s : TimeseriesforecastseasonalRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalRange::max(self : TimeseriesforecastseasonalRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_range_to_string(s : TimeseriesforecastseasonalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalRange::to_string(self : TimeseriesforecastseasonalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastseasonalSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_forecast_seasonal_slice_make(size : Int) -> Timeseriesforecast
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_seasonal_slice_len(s : TimeseriesforecastseasonalSlice) -> Int { s.size }
+pub fn TimeseriesforecastseasonalSlice::len(self : TimeseriesforecastseasonalSlice) -> Int { self.size }
 
-pub fn timeseries_forecast_seasonal_slice_get(s : TimeseriesforecastseasonalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastseasonalSlice::get(self : TimeseriesforecastseasonalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_seasonal_slice_set(s : TimeseriesforecastseasonalSlice, i : Int, v : Double) -> TimeseriesforecastseasonalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalSlice::set(self : TimeseriesforecastseasonalSlice, i : Int, v : Double) -> TimeseriesforecastseasonalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_slice_sum(s : TimeseriesforecastseasonalSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastseasonalSlice::sum(self : TimeseriesforecastseasonalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_seasonal_slice_mean(s : TimeseriesforecastseasonalSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastseasonalSlice::mean(self : TimeseriesforecastseasonalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_seasonal_slice_scale(s : TimeseriesforecastseasonalSlice, f : Double) -> TimeseriesforecastseasonalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalSlice::scale(self : TimeseriesforecastseasonalSlice, f : Double) -> TimeseriesforecastseasonalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_slice_add(a : TimeseriesforecastseasonalSlice, b : TimeseriesforecastseasonalSlice) -> TimeseriesforecastseasonalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastseasonalSlice::add(self : TimeseriesforecastseasonalSlice, other : TimeseriesforecastseasonalSlice) -> TimeseriesforecastseasonalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_slice_copy(s : TimeseriesforecastseasonalSlice) -> TimeseriesforecastseasonalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalSlice::copy(self : TimeseriesforecastseasonalSlice) -> TimeseriesforecastseasonalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_slice_fill(s : TimeseriesforecastseasonalSlice, v : Double) -> TimeseriesforecastseasonalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastseasonalSlice::fill(self : TimeseriesforecastseasonalSlice, v : Double) -> TimeseriesforecastseasonalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_seasonal_slice_min(s : TimeseriesforecastseasonalSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastseasonalSlice::min(self : TimeseriesforecastseasonalSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_seasonal_slice_max(s : TimeseriesforecastseasonalSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastseasonalSlice::max(self : TimeseriesforecastseasonalSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_seasonal_slice_to_string(s : TimeseriesforecastseasonalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastseasonalSlice::to_string(self : TimeseriesforecastseasonalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

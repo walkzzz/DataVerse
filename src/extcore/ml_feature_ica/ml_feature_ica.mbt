@@ -351,45 +351,45 @@ pub fn ml_feature_ica_frame_make(size : Int) -> MlfeatureicaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_frame_len(s : MlfeatureicaFrame) -> Int { s.size }
+pub fn MlfeatureicaFrame::len(self : MlfeatureicaFrame) -> Int { self.size }
 
-pub fn ml_feature_ica_frame_get(s : MlfeatureicaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaFrame::get(self : MlfeatureicaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_frame_set(s : MlfeatureicaFrame, i : Int, v : Double) -> MlfeatureicaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaFrame::set(self : MlfeatureicaFrame, i : Int, v : Double) -> MlfeatureicaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_frame_sum(s : MlfeatureicaFrame) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaFrame::sum(self : MlfeatureicaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_frame_mean(s : MlfeatureicaFrame) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaFrame::mean(self : MlfeatureicaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_frame_scale(s : MlfeatureicaFrame, f : Double) -> MlfeatureicaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaFrame::scale(self : MlfeatureicaFrame, f : Double) -> MlfeatureicaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_frame_add(a : MlfeatureicaFrame, b : MlfeatureicaFrame) -> MlfeatureicaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaFrame::add(self : MlfeatureicaFrame, other : MlfeatureicaFrame) -> MlfeatureicaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_frame_copy(s : MlfeatureicaFrame) -> MlfeatureicaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaFrame::copy(self : MlfeatureicaFrame) -> MlfeatureicaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_frame_fill(s : MlfeatureicaFrame, v : Double) -> MlfeatureicaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaFrame::fill(self : MlfeatureicaFrame, v : Double) -> MlfeatureicaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_frame_min(s : MlfeatureicaFrame) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaFrame::min(self : MlfeatureicaFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_frame_max(s : MlfeatureicaFrame) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaFrame::max(self : MlfeatureicaFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_frame_to_string(s : MlfeatureicaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaFrame::to_string(self : MlfeatureicaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaTable {
@@ -402,45 +402,45 @@ pub fn ml_feature_ica_table_make(size : Int) -> MlfeatureicaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_table_len(s : MlfeatureicaTable) -> Int { s.size }
+pub fn MlfeatureicaTable::len(self : MlfeatureicaTable) -> Int { self.size }
 
-pub fn ml_feature_ica_table_get(s : MlfeatureicaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaTable::get(self : MlfeatureicaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_table_set(s : MlfeatureicaTable, i : Int, v : Double) -> MlfeatureicaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaTable::set(self : MlfeatureicaTable, i : Int, v : Double) -> MlfeatureicaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_table_sum(s : MlfeatureicaTable) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaTable::sum(self : MlfeatureicaTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_table_mean(s : MlfeatureicaTable) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaTable::mean(self : MlfeatureicaTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_table_scale(s : MlfeatureicaTable, f : Double) -> MlfeatureicaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaTable::scale(self : MlfeatureicaTable, f : Double) -> MlfeatureicaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_table_add(a : MlfeatureicaTable, b : MlfeatureicaTable) -> MlfeatureicaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaTable::add(self : MlfeatureicaTable, other : MlfeatureicaTable) -> MlfeatureicaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_table_copy(s : MlfeatureicaTable) -> MlfeatureicaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaTable::copy(self : MlfeatureicaTable) -> MlfeatureicaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_table_fill(s : MlfeatureicaTable, v : Double) -> MlfeatureicaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaTable::fill(self : MlfeatureicaTable, v : Double) -> MlfeatureicaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_table_min(s : MlfeatureicaTable) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaTable::min(self : MlfeatureicaTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_table_max(s : MlfeatureicaTable) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaTable::max(self : MlfeatureicaTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_table_to_string(s : MlfeatureicaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaTable::to_string(self : MlfeatureicaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaGraphN {
@@ -453,45 +453,45 @@ pub fn ml_feature_ica_graphn_make(size : Int) -> MlfeatureicaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_graphn_len(s : MlfeatureicaGraphN) -> Int { s.size }
+pub fn MlfeatureicaGraphN::len(self : MlfeatureicaGraphN) -> Int { self.size }
 
-pub fn ml_feature_ica_graphn_get(s : MlfeatureicaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaGraphN::get(self : MlfeatureicaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_graphn_set(s : MlfeatureicaGraphN, i : Int, v : Double) -> MlfeatureicaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaGraphN::set(self : MlfeatureicaGraphN, i : Int, v : Double) -> MlfeatureicaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_graphn_sum(s : MlfeatureicaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaGraphN::sum(self : MlfeatureicaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_graphn_mean(s : MlfeatureicaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaGraphN::mean(self : MlfeatureicaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_graphn_scale(s : MlfeatureicaGraphN, f : Double) -> MlfeatureicaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaGraphN::scale(self : MlfeatureicaGraphN, f : Double) -> MlfeatureicaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_graphn_add(a : MlfeatureicaGraphN, b : MlfeatureicaGraphN) -> MlfeatureicaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaGraphN::add(self : MlfeatureicaGraphN, other : MlfeatureicaGraphN) -> MlfeatureicaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_graphn_copy(s : MlfeatureicaGraphN) -> MlfeatureicaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaGraphN::copy(self : MlfeatureicaGraphN) -> MlfeatureicaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_graphn_fill(s : MlfeatureicaGraphN, v : Double) -> MlfeatureicaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaGraphN::fill(self : MlfeatureicaGraphN, v : Double) -> MlfeatureicaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_graphn_min(s : MlfeatureicaGraphN) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaGraphN::min(self : MlfeatureicaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_graphn_max(s : MlfeatureicaGraphN) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaGraphN::max(self : MlfeatureicaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_graphn_to_string(s : MlfeatureicaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaGraphN::to_string(self : MlfeatureicaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaNode {
@@ -504,45 +504,45 @@ pub fn ml_feature_ica_node_make(size : Int) -> MlfeatureicaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_node_len(s : MlfeatureicaNode) -> Int { s.size }
+pub fn MlfeatureicaNode::len(self : MlfeatureicaNode) -> Int { self.size }
 
-pub fn ml_feature_ica_node_get(s : MlfeatureicaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaNode::get(self : MlfeatureicaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_node_set(s : MlfeatureicaNode, i : Int, v : Double) -> MlfeatureicaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaNode::set(self : MlfeatureicaNode, i : Int, v : Double) -> MlfeatureicaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_node_sum(s : MlfeatureicaNode) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaNode::sum(self : MlfeatureicaNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_node_mean(s : MlfeatureicaNode) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaNode::mean(self : MlfeatureicaNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_node_scale(s : MlfeatureicaNode, f : Double) -> MlfeatureicaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaNode::scale(self : MlfeatureicaNode, f : Double) -> MlfeatureicaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_node_add(a : MlfeatureicaNode, b : MlfeatureicaNode) -> MlfeatureicaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaNode::add(self : MlfeatureicaNode, other : MlfeatureicaNode) -> MlfeatureicaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_node_copy(s : MlfeatureicaNode) -> MlfeatureicaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaNode::copy(self : MlfeatureicaNode) -> MlfeatureicaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_node_fill(s : MlfeatureicaNode, v : Double) -> MlfeatureicaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaNode::fill(self : MlfeatureicaNode, v : Double) -> MlfeatureicaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_node_min(s : MlfeatureicaNode) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaNode::min(self : MlfeatureicaNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_node_max(s : MlfeatureicaNode) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaNode::max(self : MlfeatureicaNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_node_to_string(s : MlfeatureicaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaNode::to_string(self : MlfeatureicaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaEdge {
@@ -555,45 +555,45 @@ pub fn ml_feature_ica_edge_make(size : Int) -> MlfeatureicaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_edge_len(s : MlfeatureicaEdge) -> Int { s.size }
+pub fn MlfeatureicaEdge::len(self : MlfeatureicaEdge) -> Int { self.size }
 
-pub fn ml_feature_ica_edge_get(s : MlfeatureicaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaEdge::get(self : MlfeatureicaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_edge_set(s : MlfeatureicaEdge, i : Int, v : Double) -> MlfeatureicaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaEdge::set(self : MlfeatureicaEdge, i : Int, v : Double) -> MlfeatureicaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_edge_sum(s : MlfeatureicaEdge) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaEdge::sum(self : MlfeatureicaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_edge_mean(s : MlfeatureicaEdge) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaEdge::mean(self : MlfeatureicaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_edge_scale(s : MlfeatureicaEdge, f : Double) -> MlfeatureicaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaEdge::scale(self : MlfeatureicaEdge, f : Double) -> MlfeatureicaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_edge_add(a : MlfeatureicaEdge, b : MlfeatureicaEdge) -> MlfeatureicaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaEdge::add(self : MlfeatureicaEdge, other : MlfeatureicaEdge) -> MlfeatureicaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_edge_copy(s : MlfeatureicaEdge) -> MlfeatureicaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaEdge::copy(self : MlfeatureicaEdge) -> MlfeatureicaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_edge_fill(s : MlfeatureicaEdge, v : Double) -> MlfeatureicaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaEdge::fill(self : MlfeatureicaEdge, v : Double) -> MlfeatureicaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_edge_min(s : MlfeatureicaEdge) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaEdge::min(self : MlfeatureicaEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_edge_max(s : MlfeatureicaEdge) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaEdge::max(self : MlfeatureicaEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_edge_to_string(s : MlfeatureicaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaEdge::to_string(self : MlfeatureicaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaPath {
@@ -606,45 +606,45 @@ pub fn ml_feature_ica_path_make(size : Int) -> MlfeatureicaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_path_len(s : MlfeatureicaPath) -> Int { s.size }
+pub fn MlfeatureicaPath::len(self : MlfeatureicaPath) -> Int { self.size }
 
-pub fn ml_feature_ica_path_get(s : MlfeatureicaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaPath::get(self : MlfeatureicaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_path_set(s : MlfeatureicaPath, i : Int, v : Double) -> MlfeatureicaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaPath::set(self : MlfeatureicaPath, i : Int, v : Double) -> MlfeatureicaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_path_sum(s : MlfeatureicaPath) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaPath::sum(self : MlfeatureicaPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_path_mean(s : MlfeatureicaPath) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaPath::mean(self : MlfeatureicaPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_path_scale(s : MlfeatureicaPath, f : Double) -> MlfeatureicaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaPath::scale(self : MlfeatureicaPath, f : Double) -> MlfeatureicaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_path_add(a : MlfeatureicaPath, b : MlfeatureicaPath) -> MlfeatureicaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaPath::add(self : MlfeatureicaPath, other : MlfeatureicaPath) -> MlfeatureicaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_path_copy(s : MlfeatureicaPath) -> MlfeatureicaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaPath::copy(self : MlfeatureicaPath) -> MlfeatureicaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_path_fill(s : MlfeatureicaPath, v : Double) -> MlfeatureicaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaPath::fill(self : MlfeatureicaPath, v : Double) -> MlfeatureicaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_path_min(s : MlfeatureicaPath) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaPath::min(self : MlfeatureicaPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_path_max(s : MlfeatureicaPath) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaPath::max(self : MlfeatureicaPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_path_to_string(s : MlfeatureicaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaPath::to_string(self : MlfeatureicaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaCluster {
@@ -657,45 +657,45 @@ pub fn ml_feature_ica_cluster_make(size : Int) -> MlfeatureicaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_cluster_len(s : MlfeatureicaCluster) -> Int { s.size }
+pub fn MlfeatureicaCluster::len(self : MlfeatureicaCluster) -> Int { self.size }
 
-pub fn ml_feature_ica_cluster_get(s : MlfeatureicaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaCluster::get(self : MlfeatureicaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_cluster_set(s : MlfeatureicaCluster, i : Int, v : Double) -> MlfeatureicaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaCluster::set(self : MlfeatureicaCluster, i : Int, v : Double) -> MlfeatureicaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cluster_sum(s : MlfeatureicaCluster) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaCluster::sum(self : MlfeatureicaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_cluster_mean(s : MlfeatureicaCluster) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaCluster::mean(self : MlfeatureicaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_cluster_scale(s : MlfeatureicaCluster, f : Double) -> MlfeatureicaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaCluster::scale(self : MlfeatureicaCluster, f : Double) -> MlfeatureicaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cluster_add(a : MlfeatureicaCluster, b : MlfeatureicaCluster) -> MlfeatureicaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaCluster::add(self : MlfeatureicaCluster, other : MlfeatureicaCluster) -> MlfeatureicaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cluster_copy(s : MlfeatureicaCluster) -> MlfeatureicaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaCluster::copy(self : MlfeatureicaCluster) -> MlfeatureicaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cluster_fill(s : MlfeatureicaCluster, v : Double) -> MlfeatureicaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaCluster::fill(self : MlfeatureicaCluster, v : Double) -> MlfeatureicaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cluster_min(s : MlfeatureicaCluster) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaCluster::min(self : MlfeatureicaCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_cluster_max(s : MlfeatureicaCluster) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaCluster::max(self : MlfeatureicaCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_cluster_to_string(s : MlfeatureicaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaCluster::to_string(self : MlfeatureicaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaModel {
@@ -708,45 +708,45 @@ pub fn ml_feature_ica_model_make(size : Int) -> MlfeatureicaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_model_len(s : MlfeatureicaModel) -> Int { s.size }
+pub fn MlfeatureicaModel::len(self : MlfeatureicaModel) -> Int { self.size }
 
-pub fn ml_feature_ica_model_get(s : MlfeatureicaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaModel::get(self : MlfeatureicaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_model_set(s : MlfeatureicaModel, i : Int, v : Double) -> MlfeatureicaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaModel::set(self : MlfeatureicaModel, i : Int, v : Double) -> MlfeatureicaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_model_sum(s : MlfeatureicaModel) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaModel::sum(self : MlfeatureicaModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_model_mean(s : MlfeatureicaModel) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaModel::mean(self : MlfeatureicaModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_model_scale(s : MlfeatureicaModel, f : Double) -> MlfeatureicaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaModel::scale(self : MlfeatureicaModel, f : Double) -> MlfeatureicaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_model_add(a : MlfeatureicaModel, b : MlfeatureicaModel) -> MlfeatureicaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaModel::add(self : MlfeatureicaModel, other : MlfeatureicaModel) -> MlfeatureicaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_model_copy(s : MlfeatureicaModel) -> MlfeatureicaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaModel::copy(self : MlfeatureicaModel) -> MlfeatureicaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_model_fill(s : MlfeatureicaModel, v : Double) -> MlfeatureicaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaModel::fill(self : MlfeatureicaModel, v : Double) -> MlfeatureicaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_model_min(s : MlfeatureicaModel) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaModel::min(self : MlfeatureicaModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_model_max(s : MlfeatureicaModel) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaModel::max(self : MlfeatureicaModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_model_to_string(s : MlfeatureicaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaModel::to_string(self : MlfeatureicaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaLayer {
@@ -759,45 +759,45 @@ pub fn ml_feature_ica_layer_make(size : Int) -> MlfeatureicaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_layer_len(s : MlfeatureicaLayer) -> Int { s.size }
+pub fn MlfeatureicaLayer::len(self : MlfeatureicaLayer) -> Int { self.size }
 
-pub fn ml_feature_ica_layer_get(s : MlfeatureicaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaLayer::get(self : MlfeatureicaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_layer_set(s : MlfeatureicaLayer, i : Int, v : Double) -> MlfeatureicaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaLayer::set(self : MlfeatureicaLayer, i : Int, v : Double) -> MlfeatureicaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_layer_sum(s : MlfeatureicaLayer) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaLayer::sum(self : MlfeatureicaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_layer_mean(s : MlfeatureicaLayer) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaLayer::mean(self : MlfeatureicaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_layer_scale(s : MlfeatureicaLayer, f : Double) -> MlfeatureicaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaLayer::scale(self : MlfeatureicaLayer, f : Double) -> MlfeatureicaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_layer_add(a : MlfeatureicaLayer, b : MlfeatureicaLayer) -> MlfeatureicaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaLayer::add(self : MlfeatureicaLayer, other : MlfeatureicaLayer) -> MlfeatureicaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_layer_copy(s : MlfeatureicaLayer) -> MlfeatureicaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaLayer::copy(self : MlfeatureicaLayer) -> MlfeatureicaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_layer_fill(s : MlfeatureicaLayer, v : Double) -> MlfeatureicaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaLayer::fill(self : MlfeatureicaLayer, v : Double) -> MlfeatureicaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_layer_min(s : MlfeatureicaLayer) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaLayer::min(self : MlfeatureicaLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_layer_max(s : MlfeatureicaLayer) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaLayer::max(self : MlfeatureicaLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_layer_to_string(s : MlfeatureicaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaLayer::to_string(self : MlfeatureicaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaBuffer {
@@ -810,45 +810,45 @@ pub fn ml_feature_ica_buffer_make(size : Int) -> MlfeatureicaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_buffer_len(s : MlfeatureicaBuffer) -> Int { s.size }
+pub fn MlfeatureicaBuffer::len(self : MlfeatureicaBuffer) -> Int { self.size }
 
-pub fn ml_feature_ica_buffer_get(s : MlfeatureicaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaBuffer::get(self : MlfeatureicaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_buffer_set(s : MlfeatureicaBuffer, i : Int, v : Double) -> MlfeatureicaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaBuffer::set(self : MlfeatureicaBuffer, i : Int, v : Double) -> MlfeatureicaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_buffer_sum(s : MlfeatureicaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaBuffer::sum(self : MlfeatureicaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_buffer_mean(s : MlfeatureicaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaBuffer::mean(self : MlfeatureicaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_buffer_scale(s : MlfeatureicaBuffer, f : Double) -> MlfeatureicaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaBuffer::scale(self : MlfeatureicaBuffer, f : Double) -> MlfeatureicaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_buffer_add(a : MlfeatureicaBuffer, b : MlfeatureicaBuffer) -> MlfeatureicaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaBuffer::add(self : MlfeatureicaBuffer, other : MlfeatureicaBuffer) -> MlfeatureicaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_buffer_copy(s : MlfeatureicaBuffer) -> MlfeatureicaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaBuffer::copy(self : MlfeatureicaBuffer) -> MlfeatureicaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_buffer_fill(s : MlfeatureicaBuffer, v : Double) -> MlfeatureicaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaBuffer::fill(self : MlfeatureicaBuffer, v : Double) -> MlfeatureicaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_buffer_min(s : MlfeatureicaBuffer) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaBuffer::min(self : MlfeatureicaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_buffer_max(s : MlfeatureicaBuffer) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaBuffer::max(self : MlfeatureicaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_buffer_to_string(s : MlfeatureicaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaBuffer::to_string(self : MlfeatureicaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaCursor {
@@ -861,45 +861,45 @@ pub fn ml_feature_ica_cursor_make(size : Int) -> MlfeatureicaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_cursor_len(s : MlfeatureicaCursor) -> Int { s.size }
+pub fn MlfeatureicaCursor::len(self : MlfeatureicaCursor) -> Int { self.size }
 
-pub fn ml_feature_ica_cursor_get(s : MlfeatureicaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaCursor::get(self : MlfeatureicaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_cursor_set(s : MlfeatureicaCursor, i : Int, v : Double) -> MlfeatureicaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaCursor::set(self : MlfeatureicaCursor, i : Int, v : Double) -> MlfeatureicaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cursor_sum(s : MlfeatureicaCursor) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaCursor::sum(self : MlfeatureicaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_cursor_mean(s : MlfeatureicaCursor) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaCursor::mean(self : MlfeatureicaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_cursor_scale(s : MlfeatureicaCursor, f : Double) -> MlfeatureicaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaCursor::scale(self : MlfeatureicaCursor, f : Double) -> MlfeatureicaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cursor_add(a : MlfeatureicaCursor, b : MlfeatureicaCursor) -> MlfeatureicaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaCursor::add(self : MlfeatureicaCursor, other : MlfeatureicaCursor) -> MlfeatureicaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cursor_copy(s : MlfeatureicaCursor) -> MlfeatureicaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaCursor::copy(self : MlfeatureicaCursor) -> MlfeatureicaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cursor_fill(s : MlfeatureicaCursor, v : Double) -> MlfeatureicaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaCursor::fill(self : MlfeatureicaCursor, v : Double) -> MlfeatureicaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_cursor_min(s : MlfeatureicaCursor) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaCursor::min(self : MlfeatureicaCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_cursor_max(s : MlfeatureicaCursor) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaCursor::max(self : MlfeatureicaCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_cursor_to_string(s : MlfeatureicaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaCursor::to_string(self : MlfeatureicaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaView {
@@ -912,45 +912,45 @@ pub fn ml_feature_ica_view_make(size : Int) -> MlfeatureicaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_view_len(s : MlfeatureicaView) -> Int { s.size }
+pub fn MlfeatureicaView::len(self : MlfeatureicaView) -> Int { self.size }
 
-pub fn ml_feature_ica_view_get(s : MlfeatureicaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaView::get(self : MlfeatureicaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_view_set(s : MlfeatureicaView, i : Int, v : Double) -> MlfeatureicaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaView::set(self : MlfeatureicaView, i : Int, v : Double) -> MlfeatureicaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_view_sum(s : MlfeatureicaView) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaView::sum(self : MlfeatureicaView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_view_mean(s : MlfeatureicaView) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaView::mean(self : MlfeatureicaView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_view_scale(s : MlfeatureicaView, f : Double) -> MlfeatureicaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaView::scale(self : MlfeatureicaView, f : Double) -> MlfeatureicaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_view_add(a : MlfeatureicaView, b : MlfeatureicaView) -> MlfeatureicaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaView::add(self : MlfeatureicaView, other : MlfeatureicaView) -> MlfeatureicaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_view_copy(s : MlfeatureicaView) -> MlfeatureicaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaView::copy(self : MlfeatureicaView) -> MlfeatureicaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_view_fill(s : MlfeatureicaView, v : Double) -> MlfeatureicaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaView::fill(self : MlfeatureicaView, v : Double) -> MlfeatureicaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_view_min(s : MlfeatureicaView) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaView::min(self : MlfeatureicaView) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_view_max(s : MlfeatureicaView) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaView::max(self : MlfeatureicaView) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_view_to_string(s : MlfeatureicaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaView::to_string(self : MlfeatureicaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaRange {
@@ -963,45 +963,45 @@ pub fn ml_feature_ica_range_make(size : Int) -> MlfeatureicaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_range_len(s : MlfeatureicaRange) -> Int { s.size }
+pub fn MlfeatureicaRange::len(self : MlfeatureicaRange) -> Int { self.size }
 
-pub fn ml_feature_ica_range_get(s : MlfeatureicaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaRange::get(self : MlfeatureicaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_range_set(s : MlfeatureicaRange, i : Int, v : Double) -> MlfeatureicaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaRange::set(self : MlfeatureicaRange, i : Int, v : Double) -> MlfeatureicaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_range_sum(s : MlfeatureicaRange) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaRange::sum(self : MlfeatureicaRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_range_mean(s : MlfeatureicaRange) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaRange::mean(self : MlfeatureicaRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_range_scale(s : MlfeatureicaRange, f : Double) -> MlfeatureicaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaRange::scale(self : MlfeatureicaRange, f : Double) -> MlfeatureicaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_range_add(a : MlfeatureicaRange, b : MlfeatureicaRange) -> MlfeatureicaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaRange::add(self : MlfeatureicaRange, other : MlfeatureicaRange) -> MlfeatureicaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_range_copy(s : MlfeatureicaRange) -> MlfeatureicaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaRange::copy(self : MlfeatureicaRange) -> MlfeatureicaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_range_fill(s : MlfeatureicaRange, v : Double) -> MlfeatureicaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaRange::fill(self : MlfeatureicaRange, v : Double) -> MlfeatureicaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_range_min(s : MlfeatureicaRange) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaRange::min(self : MlfeatureicaRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_range_max(s : MlfeatureicaRange) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaRange::max(self : MlfeatureicaRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_range_to_string(s : MlfeatureicaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaRange::to_string(self : MlfeatureicaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureicaSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_feature_ica_slice_make(size : Int) -> MlfeatureicaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_ica_slice_len(s : MlfeatureicaSlice) -> Int { s.size }
+pub fn MlfeatureicaSlice::len(self : MlfeatureicaSlice) -> Int { self.size }
 
-pub fn ml_feature_ica_slice_get(s : MlfeatureicaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureicaSlice::get(self : MlfeatureicaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_ica_slice_set(s : MlfeatureicaSlice, i : Int, v : Double) -> MlfeatureicaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureicaSlice::set(self : MlfeatureicaSlice, i : Int, v : Double) -> MlfeatureicaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_slice_sum(s : MlfeatureicaSlice) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureicaSlice::sum(self : MlfeatureicaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_ica_slice_mean(s : MlfeatureicaSlice) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureicaSlice::mean(self : MlfeatureicaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_ica_slice_scale(s : MlfeatureicaSlice, f : Double) -> MlfeatureicaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureicaSlice::scale(self : MlfeatureicaSlice, f : Double) -> MlfeatureicaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_slice_add(a : MlfeatureicaSlice, b : MlfeatureicaSlice) -> MlfeatureicaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureicaSlice::add(self : MlfeatureicaSlice, other : MlfeatureicaSlice) -> MlfeatureicaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_ica_slice_copy(s : MlfeatureicaSlice) -> MlfeatureicaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureicaSlice::copy(self : MlfeatureicaSlice) -> MlfeatureicaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_slice_fill(s : MlfeatureicaSlice, v : Double) -> MlfeatureicaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureicaSlice::fill(self : MlfeatureicaSlice, v : Double) -> MlfeatureicaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_ica_slice_min(s : MlfeatureicaSlice) -> Double { @_common.min(s.data) }
+pub fn MlfeatureicaSlice::min(self : MlfeatureicaSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_ica_slice_max(s : MlfeatureicaSlice) -> Double { @_common.max(s.data) }
+pub fn MlfeatureicaSlice::max(self : MlfeatureicaSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_ica_slice_to_string(s : MlfeatureicaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureicaSlice::to_string(self : MlfeatureicaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

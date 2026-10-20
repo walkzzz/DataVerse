@@ -351,45 +351,45 @@ pub fn net_proto_quic_frame_make(size : Int) -> NetprotoquicFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_frame_len(s : NetprotoquicFrame) -> Int { s.size }
+pub fn NetprotoquicFrame::len(self : NetprotoquicFrame) -> Int { self.size }
 
-pub fn net_proto_quic_frame_get(s : NetprotoquicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicFrame::get(self : NetprotoquicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_frame_set(s : NetprotoquicFrame, i : Int, v : Double) -> NetprotoquicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicFrame::set(self : NetprotoquicFrame, i : Int, v : Double) -> NetprotoquicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_frame_sum(s : NetprotoquicFrame) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicFrame::sum(self : NetprotoquicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_frame_mean(s : NetprotoquicFrame) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicFrame::mean(self : NetprotoquicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_frame_scale(s : NetprotoquicFrame, f : Double) -> NetprotoquicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicFrame::scale(self : NetprotoquicFrame, f : Double) -> NetprotoquicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_frame_add(a : NetprotoquicFrame, b : NetprotoquicFrame) -> NetprotoquicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicFrame::add(self : NetprotoquicFrame, other : NetprotoquicFrame) -> NetprotoquicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_frame_copy(s : NetprotoquicFrame) -> NetprotoquicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicFrame::copy(self : NetprotoquicFrame) -> NetprotoquicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_frame_fill(s : NetprotoquicFrame, v : Double) -> NetprotoquicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicFrame::fill(self : NetprotoquicFrame, v : Double) -> NetprotoquicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_frame_min(s : NetprotoquicFrame) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicFrame::min(self : NetprotoquicFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_frame_max(s : NetprotoquicFrame) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicFrame::max(self : NetprotoquicFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_frame_to_string(s : NetprotoquicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicFrame::to_string(self : NetprotoquicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicTable {
@@ -402,45 +402,45 @@ pub fn net_proto_quic_table_make(size : Int) -> NetprotoquicTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_table_len(s : NetprotoquicTable) -> Int { s.size }
+pub fn NetprotoquicTable::len(self : NetprotoquicTable) -> Int { self.size }
 
-pub fn net_proto_quic_table_get(s : NetprotoquicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicTable::get(self : NetprotoquicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_table_set(s : NetprotoquicTable, i : Int, v : Double) -> NetprotoquicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicTable::set(self : NetprotoquicTable, i : Int, v : Double) -> NetprotoquicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_table_sum(s : NetprotoquicTable) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicTable::sum(self : NetprotoquicTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_table_mean(s : NetprotoquicTable) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicTable::mean(self : NetprotoquicTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_table_scale(s : NetprotoquicTable, f : Double) -> NetprotoquicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicTable::scale(self : NetprotoquicTable, f : Double) -> NetprotoquicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_table_add(a : NetprotoquicTable, b : NetprotoquicTable) -> NetprotoquicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicTable::add(self : NetprotoquicTable, other : NetprotoquicTable) -> NetprotoquicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_table_copy(s : NetprotoquicTable) -> NetprotoquicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicTable::copy(self : NetprotoquicTable) -> NetprotoquicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_table_fill(s : NetprotoquicTable, v : Double) -> NetprotoquicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicTable::fill(self : NetprotoquicTable, v : Double) -> NetprotoquicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_table_min(s : NetprotoquicTable) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicTable::min(self : NetprotoquicTable) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_table_max(s : NetprotoquicTable) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicTable::max(self : NetprotoquicTable) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_table_to_string(s : NetprotoquicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicTable::to_string(self : NetprotoquicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicGraphN {
@@ -453,45 +453,45 @@ pub fn net_proto_quic_graphn_make(size : Int) -> NetprotoquicGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_graphn_len(s : NetprotoquicGraphN) -> Int { s.size }
+pub fn NetprotoquicGraphN::len(self : NetprotoquicGraphN) -> Int { self.size }
 
-pub fn net_proto_quic_graphn_get(s : NetprotoquicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicGraphN::get(self : NetprotoquicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_graphn_set(s : NetprotoquicGraphN, i : Int, v : Double) -> NetprotoquicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicGraphN::set(self : NetprotoquicGraphN, i : Int, v : Double) -> NetprotoquicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_graphn_sum(s : NetprotoquicGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicGraphN::sum(self : NetprotoquicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_graphn_mean(s : NetprotoquicGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicGraphN::mean(self : NetprotoquicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_graphn_scale(s : NetprotoquicGraphN, f : Double) -> NetprotoquicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicGraphN::scale(self : NetprotoquicGraphN, f : Double) -> NetprotoquicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_graphn_add(a : NetprotoquicGraphN, b : NetprotoquicGraphN) -> NetprotoquicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicGraphN::add(self : NetprotoquicGraphN, other : NetprotoquicGraphN) -> NetprotoquicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_graphn_copy(s : NetprotoquicGraphN) -> NetprotoquicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicGraphN::copy(self : NetprotoquicGraphN) -> NetprotoquicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_graphn_fill(s : NetprotoquicGraphN, v : Double) -> NetprotoquicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicGraphN::fill(self : NetprotoquicGraphN, v : Double) -> NetprotoquicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_graphn_min(s : NetprotoquicGraphN) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicGraphN::min(self : NetprotoquicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_graphn_max(s : NetprotoquicGraphN) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicGraphN::max(self : NetprotoquicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_graphn_to_string(s : NetprotoquicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicGraphN::to_string(self : NetprotoquicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicNode {
@@ -504,45 +504,45 @@ pub fn net_proto_quic_node_make(size : Int) -> NetprotoquicNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_node_len(s : NetprotoquicNode) -> Int { s.size }
+pub fn NetprotoquicNode::len(self : NetprotoquicNode) -> Int { self.size }
 
-pub fn net_proto_quic_node_get(s : NetprotoquicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicNode::get(self : NetprotoquicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_node_set(s : NetprotoquicNode, i : Int, v : Double) -> NetprotoquicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicNode::set(self : NetprotoquicNode, i : Int, v : Double) -> NetprotoquicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_node_sum(s : NetprotoquicNode) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicNode::sum(self : NetprotoquicNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_node_mean(s : NetprotoquicNode) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicNode::mean(self : NetprotoquicNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_node_scale(s : NetprotoquicNode, f : Double) -> NetprotoquicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicNode::scale(self : NetprotoquicNode, f : Double) -> NetprotoquicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_node_add(a : NetprotoquicNode, b : NetprotoquicNode) -> NetprotoquicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicNode::add(self : NetprotoquicNode, other : NetprotoquicNode) -> NetprotoquicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_node_copy(s : NetprotoquicNode) -> NetprotoquicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicNode::copy(self : NetprotoquicNode) -> NetprotoquicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_node_fill(s : NetprotoquicNode, v : Double) -> NetprotoquicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicNode::fill(self : NetprotoquicNode, v : Double) -> NetprotoquicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_node_min(s : NetprotoquicNode) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicNode::min(self : NetprotoquicNode) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_node_max(s : NetprotoquicNode) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicNode::max(self : NetprotoquicNode) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_node_to_string(s : NetprotoquicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicNode::to_string(self : NetprotoquicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicEdge {
@@ -555,45 +555,45 @@ pub fn net_proto_quic_edge_make(size : Int) -> NetprotoquicEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_edge_len(s : NetprotoquicEdge) -> Int { s.size }
+pub fn NetprotoquicEdge::len(self : NetprotoquicEdge) -> Int { self.size }
 
-pub fn net_proto_quic_edge_get(s : NetprotoquicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicEdge::get(self : NetprotoquicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_edge_set(s : NetprotoquicEdge, i : Int, v : Double) -> NetprotoquicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicEdge::set(self : NetprotoquicEdge, i : Int, v : Double) -> NetprotoquicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_edge_sum(s : NetprotoquicEdge) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicEdge::sum(self : NetprotoquicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_edge_mean(s : NetprotoquicEdge) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicEdge::mean(self : NetprotoquicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_edge_scale(s : NetprotoquicEdge, f : Double) -> NetprotoquicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicEdge::scale(self : NetprotoquicEdge, f : Double) -> NetprotoquicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_edge_add(a : NetprotoquicEdge, b : NetprotoquicEdge) -> NetprotoquicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicEdge::add(self : NetprotoquicEdge, other : NetprotoquicEdge) -> NetprotoquicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_edge_copy(s : NetprotoquicEdge) -> NetprotoquicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicEdge::copy(self : NetprotoquicEdge) -> NetprotoquicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_edge_fill(s : NetprotoquicEdge, v : Double) -> NetprotoquicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicEdge::fill(self : NetprotoquicEdge, v : Double) -> NetprotoquicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_edge_min(s : NetprotoquicEdge) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicEdge::min(self : NetprotoquicEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_edge_max(s : NetprotoquicEdge) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicEdge::max(self : NetprotoquicEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_edge_to_string(s : NetprotoquicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicEdge::to_string(self : NetprotoquicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicPath {
@@ -606,45 +606,45 @@ pub fn net_proto_quic_path_make(size : Int) -> NetprotoquicPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_path_len(s : NetprotoquicPath) -> Int { s.size }
+pub fn NetprotoquicPath::len(self : NetprotoquicPath) -> Int { self.size }
 
-pub fn net_proto_quic_path_get(s : NetprotoquicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicPath::get(self : NetprotoquicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_path_set(s : NetprotoquicPath, i : Int, v : Double) -> NetprotoquicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicPath::set(self : NetprotoquicPath, i : Int, v : Double) -> NetprotoquicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_path_sum(s : NetprotoquicPath) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicPath::sum(self : NetprotoquicPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_path_mean(s : NetprotoquicPath) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicPath::mean(self : NetprotoquicPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_path_scale(s : NetprotoquicPath, f : Double) -> NetprotoquicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicPath::scale(self : NetprotoquicPath, f : Double) -> NetprotoquicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_path_add(a : NetprotoquicPath, b : NetprotoquicPath) -> NetprotoquicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicPath::add(self : NetprotoquicPath, other : NetprotoquicPath) -> NetprotoquicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_path_copy(s : NetprotoquicPath) -> NetprotoquicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicPath::copy(self : NetprotoquicPath) -> NetprotoquicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_path_fill(s : NetprotoquicPath, v : Double) -> NetprotoquicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicPath::fill(self : NetprotoquicPath, v : Double) -> NetprotoquicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_path_min(s : NetprotoquicPath) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicPath::min(self : NetprotoquicPath) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_path_max(s : NetprotoquicPath) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicPath::max(self : NetprotoquicPath) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_path_to_string(s : NetprotoquicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicPath::to_string(self : NetprotoquicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicCluster {
@@ -657,45 +657,45 @@ pub fn net_proto_quic_cluster_make(size : Int) -> NetprotoquicCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_cluster_len(s : NetprotoquicCluster) -> Int { s.size }
+pub fn NetprotoquicCluster::len(self : NetprotoquicCluster) -> Int { self.size }
 
-pub fn net_proto_quic_cluster_get(s : NetprotoquicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicCluster::get(self : NetprotoquicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_cluster_set(s : NetprotoquicCluster, i : Int, v : Double) -> NetprotoquicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicCluster::set(self : NetprotoquicCluster, i : Int, v : Double) -> NetprotoquicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cluster_sum(s : NetprotoquicCluster) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicCluster::sum(self : NetprotoquicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_cluster_mean(s : NetprotoquicCluster) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicCluster::mean(self : NetprotoquicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_cluster_scale(s : NetprotoquicCluster, f : Double) -> NetprotoquicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicCluster::scale(self : NetprotoquicCluster, f : Double) -> NetprotoquicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cluster_add(a : NetprotoquicCluster, b : NetprotoquicCluster) -> NetprotoquicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicCluster::add(self : NetprotoquicCluster, other : NetprotoquicCluster) -> NetprotoquicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_cluster_copy(s : NetprotoquicCluster) -> NetprotoquicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicCluster::copy(self : NetprotoquicCluster) -> NetprotoquicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cluster_fill(s : NetprotoquicCluster, v : Double) -> NetprotoquicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicCluster::fill(self : NetprotoquicCluster, v : Double) -> NetprotoquicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cluster_min(s : NetprotoquicCluster) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicCluster::min(self : NetprotoquicCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_cluster_max(s : NetprotoquicCluster) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicCluster::max(self : NetprotoquicCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_cluster_to_string(s : NetprotoquicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicCluster::to_string(self : NetprotoquicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicModel {
@@ -708,45 +708,45 @@ pub fn net_proto_quic_model_make(size : Int) -> NetprotoquicModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_model_len(s : NetprotoquicModel) -> Int { s.size }
+pub fn NetprotoquicModel::len(self : NetprotoquicModel) -> Int { self.size }
 
-pub fn net_proto_quic_model_get(s : NetprotoquicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicModel::get(self : NetprotoquicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_model_set(s : NetprotoquicModel, i : Int, v : Double) -> NetprotoquicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicModel::set(self : NetprotoquicModel, i : Int, v : Double) -> NetprotoquicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_model_sum(s : NetprotoquicModel) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicModel::sum(self : NetprotoquicModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_model_mean(s : NetprotoquicModel) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicModel::mean(self : NetprotoquicModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_model_scale(s : NetprotoquicModel, f : Double) -> NetprotoquicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicModel::scale(self : NetprotoquicModel, f : Double) -> NetprotoquicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_model_add(a : NetprotoquicModel, b : NetprotoquicModel) -> NetprotoquicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicModel::add(self : NetprotoquicModel, other : NetprotoquicModel) -> NetprotoquicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_model_copy(s : NetprotoquicModel) -> NetprotoquicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicModel::copy(self : NetprotoquicModel) -> NetprotoquicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_model_fill(s : NetprotoquicModel, v : Double) -> NetprotoquicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicModel::fill(self : NetprotoquicModel, v : Double) -> NetprotoquicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_model_min(s : NetprotoquicModel) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicModel::min(self : NetprotoquicModel) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_model_max(s : NetprotoquicModel) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicModel::max(self : NetprotoquicModel) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_model_to_string(s : NetprotoquicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicModel::to_string(self : NetprotoquicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicLayer {
@@ -759,45 +759,45 @@ pub fn net_proto_quic_layer_make(size : Int) -> NetprotoquicLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_layer_len(s : NetprotoquicLayer) -> Int { s.size }
+pub fn NetprotoquicLayer::len(self : NetprotoquicLayer) -> Int { self.size }
 
-pub fn net_proto_quic_layer_get(s : NetprotoquicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicLayer::get(self : NetprotoquicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_layer_set(s : NetprotoquicLayer, i : Int, v : Double) -> NetprotoquicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicLayer::set(self : NetprotoquicLayer, i : Int, v : Double) -> NetprotoquicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_layer_sum(s : NetprotoquicLayer) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicLayer::sum(self : NetprotoquicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_layer_mean(s : NetprotoquicLayer) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicLayer::mean(self : NetprotoquicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_layer_scale(s : NetprotoquicLayer, f : Double) -> NetprotoquicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicLayer::scale(self : NetprotoquicLayer, f : Double) -> NetprotoquicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_layer_add(a : NetprotoquicLayer, b : NetprotoquicLayer) -> NetprotoquicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicLayer::add(self : NetprotoquicLayer, other : NetprotoquicLayer) -> NetprotoquicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_layer_copy(s : NetprotoquicLayer) -> NetprotoquicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicLayer::copy(self : NetprotoquicLayer) -> NetprotoquicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_layer_fill(s : NetprotoquicLayer, v : Double) -> NetprotoquicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicLayer::fill(self : NetprotoquicLayer, v : Double) -> NetprotoquicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_layer_min(s : NetprotoquicLayer) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicLayer::min(self : NetprotoquicLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_layer_max(s : NetprotoquicLayer) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicLayer::max(self : NetprotoquicLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_layer_to_string(s : NetprotoquicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicLayer::to_string(self : NetprotoquicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicBuffer {
@@ -810,45 +810,45 @@ pub fn net_proto_quic_buffer_make(size : Int) -> NetprotoquicBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_buffer_len(s : NetprotoquicBuffer) -> Int { s.size }
+pub fn NetprotoquicBuffer::len(self : NetprotoquicBuffer) -> Int { self.size }
 
-pub fn net_proto_quic_buffer_get(s : NetprotoquicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicBuffer::get(self : NetprotoquicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_buffer_set(s : NetprotoquicBuffer, i : Int, v : Double) -> NetprotoquicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicBuffer::set(self : NetprotoquicBuffer, i : Int, v : Double) -> NetprotoquicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_buffer_sum(s : NetprotoquicBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicBuffer::sum(self : NetprotoquicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_buffer_mean(s : NetprotoquicBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicBuffer::mean(self : NetprotoquicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_buffer_scale(s : NetprotoquicBuffer, f : Double) -> NetprotoquicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicBuffer::scale(self : NetprotoquicBuffer, f : Double) -> NetprotoquicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_buffer_add(a : NetprotoquicBuffer, b : NetprotoquicBuffer) -> NetprotoquicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicBuffer::add(self : NetprotoquicBuffer, other : NetprotoquicBuffer) -> NetprotoquicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_buffer_copy(s : NetprotoquicBuffer) -> NetprotoquicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicBuffer::copy(self : NetprotoquicBuffer) -> NetprotoquicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_buffer_fill(s : NetprotoquicBuffer, v : Double) -> NetprotoquicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicBuffer::fill(self : NetprotoquicBuffer, v : Double) -> NetprotoquicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_buffer_min(s : NetprotoquicBuffer) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicBuffer::min(self : NetprotoquicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_buffer_max(s : NetprotoquicBuffer) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicBuffer::max(self : NetprotoquicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_buffer_to_string(s : NetprotoquicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicBuffer::to_string(self : NetprotoquicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicCursor {
@@ -861,45 +861,45 @@ pub fn net_proto_quic_cursor_make(size : Int) -> NetprotoquicCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_cursor_len(s : NetprotoquicCursor) -> Int { s.size }
+pub fn NetprotoquicCursor::len(self : NetprotoquicCursor) -> Int { self.size }
 
-pub fn net_proto_quic_cursor_get(s : NetprotoquicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicCursor::get(self : NetprotoquicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_cursor_set(s : NetprotoquicCursor, i : Int, v : Double) -> NetprotoquicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicCursor::set(self : NetprotoquicCursor, i : Int, v : Double) -> NetprotoquicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cursor_sum(s : NetprotoquicCursor) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicCursor::sum(self : NetprotoquicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_cursor_mean(s : NetprotoquicCursor) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicCursor::mean(self : NetprotoquicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_cursor_scale(s : NetprotoquicCursor, f : Double) -> NetprotoquicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicCursor::scale(self : NetprotoquicCursor, f : Double) -> NetprotoquicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cursor_add(a : NetprotoquicCursor, b : NetprotoquicCursor) -> NetprotoquicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicCursor::add(self : NetprotoquicCursor, other : NetprotoquicCursor) -> NetprotoquicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_cursor_copy(s : NetprotoquicCursor) -> NetprotoquicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicCursor::copy(self : NetprotoquicCursor) -> NetprotoquicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cursor_fill(s : NetprotoquicCursor, v : Double) -> NetprotoquicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicCursor::fill(self : NetprotoquicCursor, v : Double) -> NetprotoquicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_cursor_min(s : NetprotoquicCursor) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicCursor::min(self : NetprotoquicCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_cursor_max(s : NetprotoquicCursor) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicCursor::max(self : NetprotoquicCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_cursor_to_string(s : NetprotoquicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicCursor::to_string(self : NetprotoquicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicView {
@@ -912,45 +912,45 @@ pub fn net_proto_quic_view_make(size : Int) -> NetprotoquicView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_view_len(s : NetprotoquicView) -> Int { s.size }
+pub fn NetprotoquicView::len(self : NetprotoquicView) -> Int { self.size }
 
-pub fn net_proto_quic_view_get(s : NetprotoquicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicView::get(self : NetprotoquicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_view_set(s : NetprotoquicView, i : Int, v : Double) -> NetprotoquicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicView::set(self : NetprotoquicView, i : Int, v : Double) -> NetprotoquicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_view_sum(s : NetprotoquicView) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicView::sum(self : NetprotoquicView) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_view_mean(s : NetprotoquicView) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicView::mean(self : NetprotoquicView) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_view_scale(s : NetprotoquicView, f : Double) -> NetprotoquicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicView::scale(self : NetprotoquicView, f : Double) -> NetprotoquicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_view_add(a : NetprotoquicView, b : NetprotoquicView) -> NetprotoquicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicView::add(self : NetprotoquicView, other : NetprotoquicView) -> NetprotoquicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_view_copy(s : NetprotoquicView) -> NetprotoquicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicView::copy(self : NetprotoquicView) -> NetprotoquicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_view_fill(s : NetprotoquicView, v : Double) -> NetprotoquicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicView::fill(self : NetprotoquicView, v : Double) -> NetprotoquicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_view_min(s : NetprotoquicView) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicView::min(self : NetprotoquicView) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_view_max(s : NetprotoquicView) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicView::max(self : NetprotoquicView) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_view_to_string(s : NetprotoquicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicView::to_string(self : NetprotoquicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicRange {
@@ -963,45 +963,45 @@ pub fn net_proto_quic_range_make(size : Int) -> NetprotoquicRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_range_len(s : NetprotoquicRange) -> Int { s.size }
+pub fn NetprotoquicRange::len(self : NetprotoquicRange) -> Int { self.size }
 
-pub fn net_proto_quic_range_get(s : NetprotoquicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicRange::get(self : NetprotoquicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_range_set(s : NetprotoquicRange, i : Int, v : Double) -> NetprotoquicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicRange::set(self : NetprotoquicRange, i : Int, v : Double) -> NetprotoquicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_range_sum(s : NetprotoquicRange) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicRange::sum(self : NetprotoquicRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_range_mean(s : NetprotoquicRange) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicRange::mean(self : NetprotoquicRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_range_scale(s : NetprotoquicRange, f : Double) -> NetprotoquicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicRange::scale(self : NetprotoquicRange, f : Double) -> NetprotoquicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_range_add(a : NetprotoquicRange, b : NetprotoquicRange) -> NetprotoquicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicRange::add(self : NetprotoquicRange, other : NetprotoquicRange) -> NetprotoquicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_range_copy(s : NetprotoquicRange) -> NetprotoquicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicRange::copy(self : NetprotoquicRange) -> NetprotoquicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_range_fill(s : NetprotoquicRange, v : Double) -> NetprotoquicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicRange::fill(self : NetprotoquicRange, v : Double) -> NetprotoquicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_range_min(s : NetprotoquicRange) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicRange::min(self : NetprotoquicRange) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_range_max(s : NetprotoquicRange) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicRange::max(self : NetprotoquicRange) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_range_to_string(s : NetprotoquicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicRange::to_string(self : NetprotoquicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetprotoquicSlice {
@@ -1014,44 +1014,44 @@ pub fn net_proto_quic_slice_make(size : Int) -> NetprotoquicSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_proto_quic_slice_len(s : NetprotoquicSlice) -> Int { s.size }
+pub fn NetprotoquicSlice::len(self : NetprotoquicSlice) -> Int { self.size }
 
-pub fn net_proto_quic_slice_get(s : NetprotoquicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetprotoquicSlice::get(self : NetprotoquicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_proto_quic_slice_set(s : NetprotoquicSlice, i : Int, v : Double) -> NetprotoquicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetprotoquicSlice::set(self : NetprotoquicSlice, i : Int, v : Double) -> NetprotoquicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_slice_sum(s : NetprotoquicSlice) -> Double { @_common.sum(s.data) }
+pub fn NetprotoquicSlice::sum(self : NetprotoquicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_proto_quic_slice_mean(s : NetprotoquicSlice) -> Double { @_common.mean(s.data) }
+pub fn NetprotoquicSlice::mean(self : NetprotoquicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_proto_quic_slice_scale(s : NetprotoquicSlice, f : Double) -> NetprotoquicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetprotoquicSlice::scale(self : NetprotoquicSlice, f : Double) -> NetprotoquicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_slice_add(a : NetprotoquicSlice, b : NetprotoquicSlice) -> NetprotoquicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetprotoquicSlice::add(self : NetprotoquicSlice, other : NetprotoquicSlice) -> NetprotoquicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_proto_quic_slice_copy(s : NetprotoquicSlice) -> NetprotoquicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetprotoquicSlice::copy(self : NetprotoquicSlice) -> NetprotoquicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_slice_fill(s : NetprotoquicSlice, v : Double) -> NetprotoquicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetprotoquicSlice::fill(self : NetprotoquicSlice, v : Double) -> NetprotoquicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_proto_quic_slice_min(s : NetprotoquicSlice) -> Double { @_common.min(s.data) }
+pub fn NetprotoquicSlice::min(self : NetprotoquicSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_proto_quic_slice_max(s : NetprotoquicSlice) -> Double { @_common.max(s.data) }
+pub fn NetprotoquicSlice::max(self : NetprotoquicSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_proto_quic_slice_to_string(s : NetprotoquicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetprotoquicSlice::to_string(self : NetprotoquicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

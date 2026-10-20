@@ -351,45 +351,45 @@ pub fn physics_em_maxwell_frame_make(size : Int) -> PhysicsemmaxwellFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_frame_len(s : PhysicsemmaxwellFrame) -> Int { s.size }
+pub fn PhysicsemmaxwellFrame::len(self : PhysicsemmaxwellFrame) -> Int { self.size }
 
-pub fn physics_em_maxwell_frame_get(s : PhysicsemmaxwellFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellFrame::get(self : PhysicsemmaxwellFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_frame_set(s : PhysicsemmaxwellFrame, i : Int, v : Double) -> PhysicsemmaxwellFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellFrame::set(self : PhysicsemmaxwellFrame, i : Int, v : Double) -> PhysicsemmaxwellFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_frame_sum(s : PhysicsemmaxwellFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellFrame::sum(self : PhysicsemmaxwellFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_frame_mean(s : PhysicsemmaxwellFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellFrame::mean(self : PhysicsemmaxwellFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_frame_scale(s : PhysicsemmaxwellFrame, f : Double) -> PhysicsemmaxwellFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellFrame::scale(self : PhysicsemmaxwellFrame, f : Double) -> PhysicsemmaxwellFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_frame_add(a : PhysicsemmaxwellFrame, b : PhysicsemmaxwellFrame) -> PhysicsemmaxwellFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellFrame::add(self : PhysicsemmaxwellFrame, other : PhysicsemmaxwellFrame) -> PhysicsemmaxwellFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_frame_copy(s : PhysicsemmaxwellFrame) -> PhysicsemmaxwellFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellFrame::copy(self : PhysicsemmaxwellFrame) -> PhysicsemmaxwellFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_frame_fill(s : PhysicsemmaxwellFrame, v : Double) -> PhysicsemmaxwellFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellFrame::fill(self : PhysicsemmaxwellFrame, v : Double) -> PhysicsemmaxwellFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_frame_min(s : PhysicsemmaxwellFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellFrame::min(self : PhysicsemmaxwellFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_frame_max(s : PhysicsemmaxwellFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellFrame::max(self : PhysicsemmaxwellFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_frame_to_string(s : PhysicsemmaxwellFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellFrame::to_string(self : PhysicsemmaxwellFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellTable {
@@ -402,45 +402,45 @@ pub fn physics_em_maxwell_table_make(size : Int) -> PhysicsemmaxwellTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_table_len(s : PhysicsemmaxwellTable) -> Int { s.size }
+pub fn PhysicsemmaxwellTable::len(self : PhysicsemmaxwellTable) -> Int { self.size }
 
-pub fn physics_em_maxwell_table_get(s : PhysicsemmaxwellTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellTable::get(self : PhysicsemmaxwellTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_table_set(s : PhysicsemmaxwellTable, i : Int, v : Double) -> PhysicsemmaxwellTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellTable::set(self : PhysicsemmaxwellTable, i : Int, v : Double) -> PhysicsemmaxwellTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_table_sum(s : PhysicsemmaxwellTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellTable::sum(self : PhysicsemmaxwellTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_table_mean(s : PhysicsemmaxwellTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellTable::mean(self : PhysicsemmaxwellTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_table_scale(s : PhysicsemmaxwellTable, f : Double) -> PhysicsemmaxwellTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellTable::scale(self : PhysicsemmaxwellTable, f : Double) -> PhysicsemmaxwellTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_table_add(a : PhysicsemmaxwellTable, b : PhysicsemmaxwellTable) -> PhysicsemmaxwellTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellTable::add(self : PhysicsemmaxwellTable, other : PhysicsemmaxwellTable) -> PhysicsemmaxwellTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_table_copy(s : PhysicsemmaxwellTable) -> PhysicsemmaxwellTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellTable::copy(self : PhysicsemmaxwellTable) -> PhysicsemmaxwellTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_table_fill(s : PhysicsemmaxwellTable, v : Double) -> PhysicsemmaxwellTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellTable::fill(self : PhysicsemmaxwellTable, v : Double) -> PhysicsemmaxwellTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_table_min(s : PhysicsemmaxwellTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellTable::min(self : PhysicsemmaxwellTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_table_max(s : PhysicsemmaxwellTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellTable::max(self : PhysicsemmaxwellTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_table_to_string(s : PhysicsemmaxwellTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellTable::to_string(self : PhysicsemmaxwellTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_maxwell_graphn_make(size : Int) -> PhysicsemmaxwellGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_graphn_len(s : PhysicsemmaxwellGraphN) -> Int { s.size }
+pub fn PhysicsemmaxwellGraphN::len(self : PhysicsemmaxwellGraphN) -> Int { self.size }
 
-pub fn physics_em_maxwell_graphn_get(s : PhysicsemmaxwellGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellGraphN::get(self : PhysicsemmaxwellGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_graphn_set(s : PhysicsemmaxwellGraphN, i : Int, v : Double) -> PhysicsemmaxwellGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellGraphN::set(self : PhysicsemmaxwellGraphN, i : Int, v : Double) -> PhysicsemmaxwellGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_graphn_sum(s : PhysicsemmaxwellGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellGraphN::sum(self : PhysicsemmaxwellGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_graphn_mean(s : PhysicsemmaxwellGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellGraphN::mean(self : PhysicsemmaxwellGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_graphn_scale(s : PhysicsemmaxwellGraphN, f : Double) -> PhysicsemmaxwellGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellGraphN::scale(self : PhysicsemmaxwellGraphN, f : Double) -> PhysicsemmaxwellGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_graphn_add(a : PhysicsemmaxwellGraphN, b : PhysicsemmaxwellGraphN) -> PhysicsemmaxwellGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellGraphN::add(self : PhysicsemmaxwellGraphN, other : PhysicsemmaxwellGraphN) -> PhysicsemmaxwellGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_graphn_copy(s : PhysicsemmaxwellGraphN) -> PhysicsemmaxwellGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellGraphN::copy(self : PhysicsemmaxwellGraphN) -> PhysicsemmaxwellGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_graphn_fill(s : PhysicsemmaxwellGraphN, v : Double) -> PhysicsemmaxwellGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellGraphN::fill(self : PhysicsemmaxwellGraphN, v : Double) -> PhysicsemmaxwellGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_graphn_min(s : PhysicsemmaxwellGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellGraphN::min(self : PhysicsemmaxwellGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_graphn_max(s : PhysicsemmaxwellGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellGraphN::max(self : PhysicsemmaxwellGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_graphn_to_string(s : PhysicsemmaxwellGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellGraphN::to_string(self : PhysicsemmaxwellGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellNode {
@@ -504,45 +504,45 @@ pub fn physics_em_maxwell_node_make(size : Int) -> PhysicsemmaxwellNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_node_len(s : PhysicsemmaxwellNode) -> Int { s.size }
+pub fn PhysicsemmaxwellNode::len(self : PhysicsemmaxwellNode) -> Int { self.size }
 
-pub fn physics_em_maxwell_node_get(s : PhysicsemmaxwellNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellNode::get(self : PhysicsemmaxwellNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_node_set(s : PhysicsemmaxwellNode, i : Int, v : Double) -> PhysicsemmaxwellNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellNode::set(self : PhysicsemmaxwellNode, i : Int, v : Double) -> PhysicsemmaxwellNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_node_sum(s : PhysicsemmaxwellNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellNode::sum(self : PhysicsemmaxwellNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_node_mean(s : PhysicsemmaxwellNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellNode::mean(self : PhysicsemmaxwellNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_node_scale(s : PhysicsemmaxwellNode, f : Double) -> PhysicsemmaxwellNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellNode::scale(self : PhysicsemmaxwellNode, f : Double) -> PhysicsemmaxwellNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_node_add(a : PhysicsemmaxwellNode, b : PhysicsemmaxwellNode) -> PhysicsemmaxwellNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellNode::add(self : PhysicsemmaxwellNode, other : PhysicsemmaxwellNode) -> PhysicsemmaxwellNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_node_copy(s : PhysicsemmaxwellNode) -> PhysicsemmaxwellNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellNode::copy(self : PhysicsemmaxwellNode) -> PhysicsemmaxwellNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_node_fill(s : PhysicsemmaxwellNode, v : Double) -> PhysicsemmaxwellNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellNode::fill(self : PhysicsemmaxwellNode, v : Double) -> PhysicsemmaxwellNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_node_min(s : PhysicsemmaxwellNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellNode::min(self : PhysicsemmaxwellNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_node_max(s : PhysicsemmaxwellNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellNode::max(self : PhysicsemmaxwellNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_node_to_string(s : PhysicsemmaxwellNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellNode::to_string(self : PhysicsemmaxwellNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_maxwell_edge_make(size : Int) -> PhysicsemmaxwellEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_edge_len(s : PhysicsemmaxwellEdge) -> Int { s.size }
+pub fn PhysicsemmaxwellEdge::len(self : PhysicsemmaxwellEdge) -> Int { self.size }
 
-pub fn physics_em_maxwell_edge_get(s : PhysicsemmaxwellEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellEdge::get(self : PhysicsemmaxwellEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_edge_set(s : PhysicsemmaxwellEdge, i : Int, v : Double) -> PhysicsemmaxwellEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellEdge::set(self : PhysicsemmaxwellEdge, i : Int, v : Double) -> PhysicsemmaxwellEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_edge_sum(s : PhysicsemmaxwellEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellEdge::sum(self : PhysicsemmaxwellEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_edge_mean(s : PhysicsemmaxwellEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellEdge::mean(self : PhysicsemmaxwellEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_edge_scale(s : PhysicsemmaxwellEdge, f : Double) -> PhysicsemmaxwellEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellEdge::scale(self : PhysicsemmaxwellEdge, f : Double) -> PhysicsemmaxwellEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_edge_add(a : PhysicsemmaxwellEdge, b : PhysicsemmaxwellEdge) -> PhysicsemmaxwellEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellEdge::add(self : PhysicsemmaxwellEdge, other : PhysicsemmaxwellEdge) -> PhysicsemmaxwellEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_edge_copy(s : PhysicsemmaxwellEdge) -> PhysicsemmaxwellEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellEdge::copy(self : PhysicsemmaxwellEdge) -> PhysicsemmaxwellEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_edge_fill(s : PhysicsemmaxwellEdge, v : Double) -> PhysicsemmaxwellEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellEdge::fill(self : PhysicsemmaxwellEdge, v : Double) -> PhysicsemmaxwellEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_edge_min(s : PhysicsemmaxwellEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellEdge::min(self : PhysicsemmaxwellEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_edge_max(s : PhysicsemmaxwellEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellEdge::max(self : PhysicsemmaxwellEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_edge_to_string(s : PhysicsemmaxwellEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellEdge::to_string(self : PhysicsemmaxwellEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellPath {
@@ -606,45 +606,45 @@ pub fn physics_em_maxwell_path_make(size : Int) -> PhysicsemmaxwellPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_path_len(s : PhysicsemmaxwellPath) -> Int { s.size }
+pub fn PhysicsemmaxwellPath::len(self : PhysicsemmaxwellPath) -> Int { self.size }
 
-pub fn physics_em_maxwell_path_get(s : PhysicsemmaxwellPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellPath::get(self : PhysicsemmaxwellPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_path_set(s : PhysicsemmaxwellPath, i : Int, v : Double) -> PhysicsemmaxwellPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellPath::set(self : PhysicsemmaxwellPath, i : Int, v : Double) -> PhysicsemmaxwellPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_path_sum(s : PhysicsemmaxwellPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellPath::sum(self : PhysicsemmaxwellPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_path_mean(s : PhysicsemmaxwellPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellPath::mean(self : PhysicsemmaxwellPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_path_scale(s : PhysicsemmaxwellPath, f : Double) -> PhysicsemmaxwellPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellPath::scale(self : PhysicsemmaxwellPath, f : Double) -> PhysicsemmaxwellPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_path_add(a : PhysicsemmaxwellPath, b : PhysicsemmaxwellPath) -> PhysicsemmaxwellPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellPath::add(self : PhysicsemmaxwellPath, other : PhysicsemmaxwellPath) -> PhysicsemmaxwellPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_path_copy(s : PhysicsemmaxwellPath) -> PhysicsemmaxwellPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellPath::copy(self : PhysicsemmaxwellPath) -> PhysicsemmaxwellPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_path_fill(s : PhysicsemmaxwellPath, v : Double) -> PhysicsemmaxwellPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellPath::fill(self : PhysicsemmaxwellPath, v : Double) -> PhysicsemmaxwellPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_path_min(s : PhysicsemmaxwellPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellPath::min(self : PhysicsemmaxwellPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_path_max(s : PhysicsemmaxwellPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellPath::max(self : PhysicsemmaxwellPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_path_to_string(s : PhysicsemmaxwellPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellPath::to_string(self : PhysicsemmaxwellPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_maxwell_cluster_make(size : Int) -> PhysicsemmaxwellCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_cluster_len(s : PhysicsemmaxwellCluster) -> Int { s.size }
+pub fn PhysicsemmaxwellCluster::len(self : PhysicsemmaxwellCluster) -> Int { self.size }
 
-pub fn physics_em_maxwell_cluster_get(s : PhysicsemmaxwellCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellCluster::get(self : PhysicsemmaxwellCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_cluster_set(s : PhysicsemmaxwellCluster, i : Int, v : Double) -> PhysicsemmaxwellCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCluster::set(self : PhysicsemmaxwellCluster, i : Int, v : Double) -> PhysicsemmaxwellCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cluster_sum(s : PhysicsemmaxwellCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellCluster::sum(self : PhysicsemmaxwellCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_cluster_mean(s : PhysicsemmaxwellCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellCluster::mean(self : PhysicsemmaxwellCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_cluster_scale(s : PhysicsemmaxwellCluster, f : Double) -> PhysicsemmaxwellCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCluster::scale(self : PhysicsemmaxwellCluster, f : Double) -> PhysicsemmaxwellCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cluster_add(a : PhysicsemmaxwellCluster, b : PhysicsemmaxwellCluster) -> PhysicsemmaxwellCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellCluster::add(self : PhysicsemmaxwellCluster, other : PhysicsemmaxwellCluster) -> PhysicsemmaxwellCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cluster_copy(s : PhysicsemmaxwellCluster) -> PhysicsemmaxwellCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCluster::copy(self : PhysicsemmaxwellCluster) -> PhysicsemmaxwellCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cluster_fill(s : PhysicsemmaxwellCluster, v : Double) -> PhysicsemmaxwellCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCluster::fill(self : PhysicsemmaxwellCluster, v : Double) -> PhysicsemmaxwellCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cluster_min(s : PhysicsemmaxwellCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellCluster::min(self : PhysicsemmaxwellCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_cluster_max(s : PhysicsemmaxwellCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellCluster::max(self : PhysicsemmaxwellCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_cluster_to_string(s : PhysicsemmaxwellCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellCluster::to_string(self : PhysicsemmaxwellCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellModel {
@@ -708,45 +708,45 @@ pub fn physics_em_maxwell_model_make(size : Int) -> PhysicsemmaxwellModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_model_len(s : PhysicsemmaxwellModel) -> Int { s.size }
+pub fn PhysicsemmaxwellModel::len(self : PhysicsemmaxwellModel) -> Int { self.size }
 
-pub fn physics_em_maxwell_model_get(s : PhysicsemmaxwellModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellModel::get(self : PhysicsemmaxwellModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_model_set(s : PhysicsemmaxwellModel, i : Int, v : Double) -> PhysicsemmaxwellModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellModel::set(self : PhysicsemmaxwellModel, i : Int, v : Double) -> PhysicsemmaxwellModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_model_sum(s : PhysicsemmaxwellModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellModel::sum(self : PhysicsemmaxwellModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_model_mean(s : PhysicsemmaxwellModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellModel::mean(self : PhysicsemmaxwellModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_model_scale(s : PhysicsemmaxwellModel, f : Double) -> PhysicsemmaxwellModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellModel::scale(self : PhysicsemmaxwellModel, f : Double) -> PhysicsemmaxwellModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_model_add(a : PhysicsemmaxwellModel, b : PhysicsemmaxwellModel) -> PhysicsemmaxwellModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellModel::add(self : PhysicsemmaxwellModel, other : PhysicsemmaxwellModel) -> PhysicsemmaxwellModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_model_copy(s : PhysicsemmaxwellModel) -> PhysicsemmaxwellModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellModel::copy(self : PhysicsemmaxwellModel) -> PhysicsemmaxwellModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_model_fill(s : PhysicsemmaxwellModel, v : Double) -> PhysicsemmaxwellModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellModel::fill(self : PhysicsemmaxwellModel, v : Double) -> PhysicsemmaxwellModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_model_min(s : PhysicsemmaxwellModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellModel::min(self : PhysicsemmaxwellModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_model_max(s : PhysicsemmaxwellModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellModel::max(self : PhysicsemmaxwellModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_model_to_string(s : PhysicsemmaxwellModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellModel::to_string(self : PhysicsemmaxwellModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_maxwell_layer_make(size : Int) -> PhysicsemmaxwellLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_layer_len(s : PhysicsemmaxwellLayer) -> Int { s.size }
+pub fn PhysicsemmaxwellLayer::len(self : PhysicsemmaxwellLayer) -> Int { self.size }
 
-pub fn physics_em_maxwell_layer_get(s : PhysicsemmaxwellLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellLayer::get(self : PhysicsemmaxwellLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_layer_set(s : PhysicsemmaxwellLayer, i : Int, v : Double) -> PhysicsemmaxwellLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellLayer::set(self : PhysicsemmaxwellLayer, i : Int, v : Double) -> PhysicsemmaxwellLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_layer_sum(s : PhysicsemmaxwellLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellLayer::sum(self : PhysicsemmaxwellLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_layer_mean(s : PhysicsemmaxwellLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellLayer::mean(self : PhysicsemmaxwellLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_layer_scale(s : PhysicsemmaxwellLayer, f : Double) -> PhysicsemmaxwellLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellLayer::scale(self : PhysicsemmaxwellLayer, f : Double) -> PhysicsemmaxwellLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_layer_add(a : PhysicsemmaxwellLayer, b : PhysicsemmaxwellLayer) -> PhysicsemmaxwellLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellLayer::add(self : PhysicsemmaxwellLayer, other : PhysicsemmaxwellLayer) -> PhysicsemmaxwellLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_layer_copy(s : PhysicsemmaxwellLayer) -> PhysicsemmaxwellLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellLayer::copy(self : PhysicsemmaxwellLayer) -> PhysicsemmaxwellLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_layer_fill(s : PhysicsemmaxwellLayer, v : Double) -> PhysicsemmaxwellLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellLayer::fill(self : PhysicsemmaxwellLayer, v : Double) -> PhysicsemmaxwellLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_layer_min(s : PhysicsemmaxwellLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellLayer::min(self : PhysicsemmaxwellLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_layer_max(s : PhysicsemmaxwellLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellLayer::max(self : PhysicsemmaxwellLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_layer_to_string(s : PhysicsemmaxwellLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellLayer::to_string(self : PhysicsemmaxwellLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_maxwell_buffer_make(size : Int) -> PhysicsemmaxwellBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_buffer_len(s : PhysicsemmaxwellBuffer) -> Int { s.size }
+pub fn PhysicsemmaxwellBuffer::len(self : PhysicsemmaxwellBuffer) -> Int { self.size }
 
-pub fn physics_em_maxwell_buffer_get(s : PhysicsemmaxwellBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellBuffer::get(self : PhysicsemmaxwellBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_buffer_set(s : PhysicsemmaxwellBuffer, i : Int, v : Double) -> PhysicsemmaxwellBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellBuffer::set(self : PhysicsemmaxwellBuffer, i : Int, v : Double) -> PhysicsemmaxwellBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_buffer_sum(s : PhysicsemmaxwellBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellBuffer::sum(self : PhysicsemmaxwellBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_buffer_mean(s : PhysicsemmaxwellBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellBuffer::mean(self : PhysicsemmaxwellBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_buffer_scale(s : PhysicsemmaxwellBuffer, f : Double) -> PhysicsemmaxwellBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellBuffer::scale(self : PhysicsemmaxwellBuffer, f : Double) -> PhysicsemmaxwellBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_buffer_add(a : PhysicsemmaxwellBuffer, b : PhysicsemmaxwellBuffer) -> PhysicsemmaxwellBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellBuffer::add(self : PhysicsemmaxwellBuffer, other : PhysicsemmaxwellBuffer) -> PhysicsemmaxwellBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_buffer_copy(s : PhysicsemmaxwellBuffer) -> PhysicsemmaxwellBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellBuffer::copy(self : PhysicsemmaxwellBuffer) -> PhysicsemmaxwellBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_buffer_fill(s : PhysicsemmaxwellBuffer, v : Double) -> PhysicsemmaxwellBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellBuffer::fill(self : PhysicsemmaxwellBuffer, v : Double) -> PhysicsemmaxwellBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_buffer_min(s : PhysicsemmaxwellBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellBuffer::min(self : PhysicsemmaxwellBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_buffer_max(s : PhysicsemmaxwellBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellBuffer::max(self : PhysicsemmaxwellBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_buffer_to_string(s : PhysicsemmaxwellBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellBuffer::to_string(self : PhysicsemmaxwellBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_maxwell_cursor_make(size : Int) -> PhysicsemmaxwellCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_cursor_len(s : PhysicsemmaxwellCursor) -> Int { s.size }
+pub fn PhysicsemmaxwellCursor::len(self : PhysicsemmaxwellCursor) -> Int { self.size }
 
-pub fn physics_em_maxwell_cursor_get(s : PhysicsemmaxwellCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellCursor::get(self : PhysicsemmaxwellCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_cursor_set(s : PhysicsemmaxwellCursor, i : Int, v : Double) -> PhysicsemmaxwellCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCursor::set(self : PhysicsemmaxwellCursor, i : Int, v : Double) -> PhysicsemmaxwellCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cursor_sum(s : PhysicsemmaxwellCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellCursor::sum(self : PhysicsemmaxwellCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_cursor_mean(s : PhysicsemmaxwellCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellCursor::mean(self : PhysicsemmaxwellCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_cursor_scale(s : PhysicsemmaxwellCursor, f : Double) -> PhysicsemmaxwellCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCursor::scale(self : PhysicsemmaxwellCursor, f : Double) -> PhysicsemmaxwellCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cursor_add(a : PhysicsemmaxwellCursor, b : PhysicsemmaxwellCursor) -> PhysicsemmaxwellCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellCursor::add(self : PhysicsemmaxwellCursor, other : PhysicsemmaxwellCursor) -> PhysicsemmaxwellCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cursor_copy(s : PhysicsemmaxwellCursor) -> PhysicsemmaxwellCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCursor::copy(self : PhysicsemmaxwellCursor) -> PhysicsemmaxwellCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cursor_fill(s : PhysicsemmaxwellCursor, v : Double) -> PhysicsemmaxwellCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellCursor::fill(self : PhysicsemmaxwellCursor, v : Double) -> PhysicsemmaxwellCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_cursor_min(s : PhysicsemmaxwellCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellCursor::min(self : PhysicsemmaxwellCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_cursor_max(s : PhysicsemmaxwellCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellCursor::max(self : PhysicsemmaxwellCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_cursor_to_string(s : PhysicsemmaxwellCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellCursor::to_string(self : PhysicsemmaxwellCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellView {
@@ -912,45 +912,45 @@ pub fn physics_em_maxwell_view_make(size : Int) -> PhysicsemmaxwellView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_view_len(s : PhysicsemmaxwellView) -> Int { s.size }
+pub fn PhysicsemmaxwellView::len(self : PhysicsemmaxwellView) -> Int { self.size }
 
-pub fn physics_em_maxwell_view_get(s : PhysicsemmaxwellView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellView::get(self : PhysicsemmaxwellView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_view_set(s : PhysicsemmaxwellView, i : Int, v : Double) -> PhysicsemmaxwellView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellView::set(self : PhysicsemmaxwellView, i : Int, v : Double) -> PhysicsemmaxwellView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_view_sum(s : PhysicsemmaxwellView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellView::sum(self : PhysicsemmaxwellView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_view_mean(s : PhysicsemmaxwellView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellView::mean(self : PhysicsemmaxwellView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_view_scale(s : PhysicsemmaxwellView, f : Double) -> PhysicsemmaxwellView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellView::scale(self : PhysicsemmaxwellView, f : Double) -> PhysicsemmaxwellView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_view_add(a : PhysicsemmaxwellView, b : PhysicsemmaxwellView) -> PhysicsemmaxwellView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellView::add(self : PhysicsemmaxwellView, other : PhysicsemmaxwellView) -> PhysicsemmaxwellView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_view_copy(s : PhysicsemmaxwellView) -> PhysicsemmaxwellView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellView::copy(self : PhysicsemmaxwellView) -> PhysicsemmaxwellView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_view_fill(s : PhysicsemmaxwellView, v : Double) -> PhysicsemmaxwellView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellView::fill(self : PhysicsemmaxwellView, v : Double) -> PhysicsemmaxwellView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_view_min(s : PhysicsemmaxwellView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellView::min(self : PhysicsemmaxwellView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_view_max(s : PhysicsemmaxwellView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellView::max(self : PhysicsemmaxwellView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_view_to_string(s : PhysicsemmaxwellView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellView::to_string(self : PhysicsemmaxwellView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellRange {
@@ -963,45 +963,45 @@ pub fn physics_em_maxwell_range_make(size : Int) -> PhysicsemmaxwellRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_range_len(s : PhysicsemmaxwellRange) -> Int { s.size }
+pub fn PhysicsemmaxwellRange::len(self : PhysicsemmaxwellRange) -> Int { self.size }
 
-pub fn physics_em_maxwell_range_get(s : PhysicsemmaxwellRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellRange::get(self : PhysicsemmaxwellRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_range_set(s : PhysicsemmaxwellRange, i : Int, v : Double) -> PhysicsemmaxwellRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellRange::set(self : PhysicsemmaxwellRange, i : Int, v : Double) -> PhysicsemmaxwellRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_range_sum(s : PhysicsemmaxwellRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellRange::sum(self : PhysicsemmaxwellRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_range_mean(s : PhysicsemmaxwellRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellRange::mean(self : PhysicsemmaxwellRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_range_scale(s : PhysicsemmaxwellRange, f : Double) -> PhysicsemmaxwellRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellRange::scale(self : PhysicsemmaxwellRange, f : Double) -> PhysicsemmaxwellRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_range_add(a : PhysicsemmaxwellRange, b : PhysicsemmaxwellRange) -> PhysicsemmaxwellRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellRange::add(self : PhysicsemmaxwellRange, other : PhysicsemmaxwellRange) -> PhysicsemmaxwellRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_range_copy(s : PhysicsemmaxwellRange) -> PhysicsemmaxwellRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellRange::copy(self : PhysicsemmaxwellRange) -> PhysicsemmaxwellRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_range_fill(s : PhysicsemmaxwellRange, v : Double) -> PhysicsemmaxwellRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellRange::fill(self : PhysicsemmaxwellRange, v : Double) -> PhysicsemmaxwellRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_range_min(s : PhysicsemmaxwellRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellRange::min(self : PhysicsemmaxwellRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_range_max(s : PhysicsemmaxwellRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellRange::max(self : PhysicsemmaxwellRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_range_to_string(s : PhysicsemmaxwellRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellRange::to_string(self : PhysicsemmaxwellRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemmaxwellSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_maxwell_slice_make(size : Int) -> PhysicsemmaxwellSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_maxwell_slice_len(s : PhysicsemmaxwellSlice) -> Int { s.size }
+pub fn PhysicsemmaxwellSlice::len(self : PhysicsemmaxwellSlice) -> Int { self.size }
 
-pub fn physics_em_maxwell_slice_get(s : PhysicsemmaxwellSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemmaxwellSlice::get(self : PhysicsemmaxwellSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_maxwell_slice_set(s : PhysicsemmaxwellSlice, i : Int, v : Double) -> PhysicsemmaxwellSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellSlice::set(self : PhysicsemmaxwellSlice, i : Int, v : Double) -> PhysicsemmaxwellSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_slice_sum(s : PhysicsemmaxwellSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemmaxwellSlice::sum(self : PhysicsemmaxwellSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_maxwell_slice_mean(s : PhysicsemmaxwellSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemmaxwellSlice::mean(self : PhysicsemmaxwellSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_maxwell_slice_scale(s : PhysicsemmaxwellSlice, f : Double) -> PhysicsemmaxwellSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellSlice::scale(self : PhysicsemmaxwellSlice, f : Double) -> PhysicsemmaxwellSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_slice_add(a : PhysicsemmaxwellSlice, b : PhysicsemmaxwellSlice) -> PhysicsemmaxwellSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemmaxwellSlice::add(self : PhysicsemmaxwellSlice, other : PhysicsemmaxwellSlice) -> PhysicsemmaxwellSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_slice_copy(s : PhysicsemmaxwellSlice) -> PhysicsemmaxwellSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellSlice::copy(self : PhysicsemmaxwellSlice) -> PhysicsemmaxwellSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_slice_fill(s : PhysicsemmaxwellSlice, v : Double) -> PhysicsemmaxwellSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemmaxwellSlice::fill(self : PhysicsemmaxwellSlice, v : Double) -> PhysicsemmaxwellSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_maxwell_slice_min(s : PhysicsemmaxwellSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemmaxwellSlice::min(self : PhysicsemmaxwellSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_maxwell_slice_max(s : PhysicsemmaxwellSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemmaxwellSlice::max(self : PhysicsemmaxwellSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_maxwell_slice_to_string(s : PhysicsemmaxwellSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemmaxwellSlice::to_string(self : PhysicsemmaxwellSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

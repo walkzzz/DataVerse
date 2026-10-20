@@ -351,45 +351,45 @@ pub fn sort_dist_counting_frame_make(size : Int) -> SortdistcountingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_frame_len(s : SortdistcountingFrame) -> Int { s.size }
+pub fn SortdistcountingFrame::len(self : SortdistcountingFrame) -> Int { self.size }
 
-pub fn sort_dist_counting_frame_get(s : SortdistcountingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingFrame::get(self : SortdistcountingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_frame_set(s : SortdistcountingFrame, i : Int, v : Double) -> SortdistcountingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingFrame::set(self : SortdistcountingFrame, i : Int, v : Double) -> SortdistcountingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_frame_sum(s : SortdistcountingFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingFrame::sum(self : SortdistcountingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_frame_mean(s : SortdistcountingFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingFrame::mean(self : SortdistcountingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_frame_scale(s : SortdistcountingFrame, f : Double) -> SortdistcountingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingFrame::scale(self : SortdistcountingFrame, f : Double) -> SortdistcountingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_frame_add(a : SortdistcountingFrame, b : SortdistcountingFrame) -> SortdistcountingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingFrame::add(self : SortdistcountingFrame, other : SortdistcountingFrame) -> SortdistcountingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_frame_copy(s : SortdistcountingFrame) -> SortdistcountingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingFrame::copy(self : SortdistcountingFrame) -> SortdistcountingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_frame_fill(s : SortdistcountingFrame, v : Double) -> SortdistcountingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingFrame::fill(self : SortdistcountingFrame, v : Double) -> SortdistcountingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_frame_min(s : SortdistcountingFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingFrame::min(self : SortdistcountingFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_frame_max(s : SortdistcountingFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingFrame::max(self : SortdistcountingFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_frame_to_string(s : SortdistcountingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingFrame::to_string(self : SortdistcountingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_counting_table_make(size : Int) -> SortdistcountingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_table_len(s : SortdistcountingTable) -> Int { s.size }
+pub fn SortdistcountingTable::len(self : SortdistcountingTable) -> Int { self.size }
 
-pub fn sort_dist_counting_table_get(s : SortdistcountingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingTable::get(self : SortdistcountingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_table_set(s : SortdistcountingTable, i : Int, v : Double) -> SortdistcountingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingTable::set(self : SortdistcountingTable, i : Int, v : Double) -> SortdistcountingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_table_sum(s : SortdistcountingTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingTable::sum(self : SortdistcountingTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_table_mean(s : SortdistcountingTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingTable::mean(self : SortdistcountingTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_table_scale(s : SortdistcountingTable, f : Double) -> SortdistcountingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingTable::scale(self : SortdistcountingTable, f : Double) -> SortdistcountingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_table_add(a : SortdistcountingTable, b : SortdistcountingTable) -> SortdistcountingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingTable::add(self : SortdistcountingTable, other : SortdistcountingTable) -> SortdistcountingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_table_copy(s : SortdistcountingTable) -> SortdistcountingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingTable::copy(self : SortdistcountingTable) -> SortdistcountingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_table_fill(s : SortdistcountingTable, v : Double) -> SortdistcountingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingTable::fill(self : SortdistcountingTable, v : Double) -> SortdistcountingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_table_min(s : SortdistcountingTable) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingTable::min(self : SortdistcountingTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_table_max(s : SortdistcountingTable) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingTable::max(self : SortdistcountingTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_table_to_string(s : SortdistcountingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingTable::to_string(self : SortdistcountingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_counting_graphn_make(size : Int) -> SortdistcountingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_graphn_len(s : SortdistcountingGraphN) -> Int { s.size }
+pub fn SortdistcountingGraphN::len(self : SortdistcountingGraphN) -> Int { self.size }
 
-pub fn sort_dist_counting_graphn_get(s : SortdistcountingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingGraphN::get(self : SortdistcountingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_graphn_set(s : SortdistcountingGraphN, i : Int, v : Double) -> SortdistcountingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingGraphN::set(self : SortdistcountingGraphN, i : Int, v : Double) -> SortdistcountingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_graphn_sum(s : SortdistcountingGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingGraphN::sum(self : SortdistcountingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_graphn_mean(s : SortdistcountingGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingGraphN::mean(self : SortdistcountingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_graphn_scale(s : SortdistcountingGraphN, f : Double) -> SortdistcountingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingGraphN::scale(self : SortdistcountingGraphN, f : Double) -> SortdistcountingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_graphn_add(a : SortdistcountingGraphN, b : SortdistcountingGraphN) -> SortdistcountingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingGraphN::add(self : SortdistcountingGraphN, other : SortdistcountingGraphN) -> SortdistcountingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_graphn_copy(s : SortdistcountingGraphN) -> SortdistcountingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingGraphN::copy(self : SortdistcountingGraphN) -> SortdistcountingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_graphn_fill(s : SortdistcountingGraphN, v : Double) -> SortdistcountingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingGraphN::fill(self : SortdistcountingGraphN, v : Double) -> SortdistcountingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_graphn_min(s : SortdistcountingGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingGraphN::min(self : SortdistcountingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_graphn_max(s : SortdistcountingGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingGraphN::max(self : SortdistcountingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_graphn_to_string(s : SortdistcountingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingGraphN::to_string(self : SortdistcountingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_counting_node_make(size : Int) -> SortdistcountingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_node_len(s : SortdistcountingNode) -> Int { s.size }
+pub fn SortdistcountingNode::len(self : SortdistcountingNode) -> Int { self.size }
 
-pub fn sort_dist_counting_node_get(s : SortdistcountingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingNode::get(self : SortdistcountingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_node_set(s : SortdistcountingNode, i : Int, v : Double) -> SortdistcountingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingNode::set(self : SortdistcountingNode, i : Int, v : Double) -> SortdistcountingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_node_sum(s : SortdistcountingNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingNode::sum(self : SortdistcountingNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_node_mean(s : SortdistcountingNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingNode::mean(self : SortdistcountingNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_node_scale(s : SortdistcountingNode, f : Double) -> SortdistcountingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingNode::scale(self : SortdistcountingNode, f : Double) -> SortdistcountingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_node_add(a : SortdistcountingNode, b : SortdistcountingNode) -> SortdistcountingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingNode::add(self : SortdistcountingNode, other : SortdistcountingNode) -> SortdistcountingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_node_copy(s : SortdistcountingNode) -> SortdistcountingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingNode::copy(self : SortdistcountingNode) -> SortdistcountingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_node_fill(s : SortdistcountingNode, v : Double) -> SortdistcountingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingNode::fill(self : SortdistcountingNode, v : Double) -> SortdistcountingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_node_min(s : SortdistcountingNode) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingNode::min(self : SortdistcountingNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_node_max(s : SortdistcountingNode) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingNode::max(self : SortdistcountingNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_node_to_string(s : SortdistcountingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingNode::to_string(self : SortdistcountingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_counting_edge_make(size : Int) -> SortdistcountingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_edge_len(s : SortdistcountingEdge) -> Int { s.size }
+pub fn SortdistcountingEdge::len(self : SortdistcountingEdge) -> Int { self.size }
 
-pub fn sort_dist_counting_edge_get(s : SortdistcountingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingEdge::get(self : SortdistcountingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_edge_set(s : SortdistcountingEdge, i : Int, v : Double) -> SortdistcountingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingEdge::set(self : SortdistcountingEdge, i : Int, v : Double) -> SortdistcountingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_edge_sum(s : SortdistcountingEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingEdge::sum(self : SortdistcountingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_edge_mean(s : SortdistcountingEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingEdge::mean(self : SortdistcountingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_edge_scale(s : SortdistcountingEdge, f : Double) -> SortdistcountingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingEdge::scale(self : SortdistcountingEdge, f : Double) -> SortdistcountingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_edge_add(a : SortdistcountingEdge, b : SortdistcountingEdge) -> SortdistcountingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingEdge::add(self : SortdistcountingEdge, other : SortdistcountingEdge) -> SortdistcountingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_edge_copy(s : SortdistcountingEdge) -> SortdistcountingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingEdge::copy(self : SortdistcountingEdge) -> SortdistcountingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_edge_fill(s : SortdistcountingEdge, v : Double) -> SortdistcountingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingEdge::fill(self : SortdistcountingEdge, v : Double) -> SortdistcountingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_edge_min(s : SortdistcountingEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingEdge::min(self : SortdistcountingEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_edge_max(s : SortdistcountingEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingEdge::max(self : SortdistcountingEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_edge_to_string(s : SortdistcountingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingEdge::to_string(self : SortdistcountingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingPath {
@@ -606,45 +606,45 @@ pub fn sort_dist_counting_path_make(size : Int) -> SortdistcountingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_path_len(s : SortdistcountingPath) -> Int { s.size }
+pub fn SortdistcountingPath::len(self : SortdistcountingPath) -> Int { self.size }
 
-pub fn sort_dist_counting_path_get(s : SortdistcountingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingPath::get(self : SortdistcountingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_path_set(s : SortdistcountingPath, i : Int, v : Double) -> SortdistcountingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingPath::set(self : SortdistcountingPath, i : Int, v : Double) -> SortdistcountingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_path_sum(s : SortdistcountingPath) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingPath::sum(self : SortdistcountingPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_path_mean(s : SortdistcountingPath) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingPath::mean(self : SortdistcountingPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_path_scale(s : SortdistcountingPath, f : Double) -> SortdistcountingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingPath::scale(self : SortdistcountingPath, f : Double) -> SortdistcountingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_path_add(a : SortdistcountingPath, b : SortdistcountingPath) -> SortdistcountingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingPath::add(self : SortdistcountingPath, other : SortdistcountingPath) -> SortdistcountingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_path_copy(s : SortdistcountingPath) -> SortdistcountingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingPath::copy(self : SortdistcountingPath) -> SortdistcountingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_path_fill(s : SortdistcountingPath, v : Double) -> SortdistcountingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingPath::fill(self : SortdistcountingPath, v : Double) -> SortdistcountingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_path_min(s : SortdistcountingPath) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingPath::min(self : SortdistcountingPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_path_max(s : SortdistcountingPath) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingPath::max(self : SortdistcountingPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_path_to_string(s : SortdistcountingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingPath::to_string(self : SortdistcountingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_counting_cluster_make(size : Int) -> SortdistcountingCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_cluster_len(s : SortdistcountingCluster) -> Int { s.size }
+pub fn SortdistcountingCluster::len(self : SortdistcountingCluster) -> Int { self.size }
 
-pub fn sort_dist_counting_cluster_get(s : SortdistcountingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingCluster::get(self : SortdistcountingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_cluster_set(s : SortdistcountingCluster, i : Int, v : Double) -> SortdistcountingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingCluster::set(self : SortdistcountingCluster, i : Int, v : Double) -> SortdistcountingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cluster_sum(s : SortdistcountingCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingCluster::sum(self : SortdistcountingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_cluster_mean(s : SortdistcountingCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingCluster::mean(self : SortdistcountingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_cluster_scale(s : SortdistcountingCluster, f : Double) -> SortdistcountingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingCluster::scale(self : SortdistcountingCluster, f : Double) -> SortdistcountingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cluster_add(a : SortdistcountingCluster, b : SortdistcountingCluster) -> SortdistcountingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingCluster::add(self : SortdistcountingCluster, other : SortdistcountingCluster) -> SortdistcountingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cluster_copy(s : SortdistcountingCluster) -> SortdistcountingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingCluster::copy(self : SortdistcountingCluster) -> SortdistcountingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cluster_fill(s : SortdistcountingCluster, v : Double) -> SortdistcountingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingCluster::fill(self : SortdistcountingCluster, v : Double) -> SortdistcountingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cluster_min(s : SortdistcountingCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingCluster::min(self : SortdistcountingCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_cluster_max(s : SortdistcountingCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingCluster::max(self : SortdistcountingCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_cluster_to_string(s : SortdistcountingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingCluster::to_string(self : SortdistcountingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_counting_model_make(size : Int) -> SortdistcountingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_model_len(s : SortdistcountingModel) -> Int { s.size }
+pub fn SortdistcountingModel::len(self : SortdistcountingModel) -> Int { self.size }
 
-pub fn sort_dist_counting_model_get(s : SortdistcountingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingModel::get(self : SortdistcountingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_model_set(s : SortdistcountingModel, i : Int, v : Double) -> SortdistcountingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingModel::set(self : SortdistcountingModel, i : Int, v : Double) -> SortdistcountingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_model_sum(s : SortdistcountingModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingModel::sum(self : SortdistcountingModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_model_mean(s : SortdistcountingModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingModel::mean(self : SortdistcountingModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_model_scale(s : SortdistcountingModel, f : Double) -> SortdistcountingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingModel::scale(self : SortdistcountingModel, f : Double) -> SortdistcountingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_model_add(a : SortdistcountingModel, b : SortdistcountingModel) -> SortdistcountingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingModel::add(self : SortdistcountingModel, other : SortdistcountingModel) -> SortdistcountingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_model_copy(s : SortdistcountingModel) -> SortdistcountingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingModel::copy(self : SortdistcountingModel) -> SortdistcountingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_model_fill(s : SortdistcountingModel, v : Double) -> SortdistcountingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingModel::fill(self : SortdistcountingModel, v : Double) -> SortdistcountingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_model_min(s : SortdistcountingModel) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingModel::min(self : SortdistcountingModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_model_max(s : SortdistcountingModel) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingModel::max(self : SortdistcountingModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_model_to_string(s : SortdistcountingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingModel::to_string(self : SortdistcountingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_counting_layer_make(size : Int) -> SortdistcountingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_layer_len(s : SortdistcountingLayer) -> Int { s.size }
+pub fn SortdistcountingLayer::len(self : SortdistcountingLayer) -> Int { self.size }
 
-pub fn sort_dist_counting_layer_get(s : SortdistcountingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingLayer::get(self : SortdistcountingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_layer_set(s : SortdistcountingLayer, i : Int, v : Double) -> SortdistcountingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingLayer::set(self : SortdistcountingLayer, i : Int, v : Double) -> SortdistcountingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_layer_sum(s : SortdistcountingLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingLayer::sum(self : SortdistcountingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_layer_mean(s : SortdistcountingLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingLayer::mean(self : SortdistcountingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_layer_scale(s : SortdistcountingLayer, f : Double) -> SortdistcountingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingLayer::scale(self : SortdistcountingLayer, f : Double) -> SortdistcountingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_layer_add(a : SortdistcountingLayer, b : SortdistcountingLayer) -> SortdistcountingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingLayer::add(self : SortdistcountingLayer, other : SortdistcountingLayer) -> SortdistcountingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_layer_copy(s : SortdistcountingLayer) -> SortdistcountingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingLayer::copy(self : SortdistcountingLayer) -> SortdistcountingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_layer_fill(s : SortdistcountingLayer, v : Double) -> SortdistcountingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingLayer::fill(self : SortdistcountingLayer, v : Double) -> SortdistcountingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_layer_min(s : SortdistcountingLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingLayer::min(self : SortdistcountingLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_layer_max(s : SortdistcountingLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingLayer::max(self : SortdistcountingLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_layer_to_string(s : SortdistcountingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingLayer::to_string(self : SortdistcountingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_counting_buffer_make(size : Int) -> SortdistcountingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_buffer_len(s : SortdistcountingBuffer) -> Int { s.size }
+pub fn SortdistcountingBuffer::len(self : SortdistcountingBuffer) -> Int { self.size }
 
-pub fn sort_dist_counting_buffer_get(s : SortdistcountingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingBuffer::get(self : SortdistcountingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_buffer_set(s : SortdistcountingBuffer, i : Int, v : Double) -> SortdistcountingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingBuffer::set(self : SortdistcountingBuffer, i : Int, v : Double) -> SortdistcountingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_buffer_sum(s : SortdistcountingBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingBuffer::sum(self : SortdistcountingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_buffer_mean(s : SortdistcountingBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingBuffer::mean(self : SortdistcountingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_buffer_scale(s : SortdistcountingBuffer, f : Double) -> SortdistcountingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingBuffer::scale(self : SortdistcountingBuffer, f : Double) -> SortdistcountingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_buffer_add(a : SortdistcountingBuffer, b : SortdistcountingBuffer) -> SortdistcountingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingBuffer::add(self : SortdistcountingBuffer, other : SortdistcountingBuffer) -> SortdistcountingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_buffer_copy(s : SortdistcountingBuffer) -> SortdistcountingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingBuffer::copy(self : SortdistcountingBuffer) -> SortdistcountingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_buffer_fill(s : SortdistcountingBuffer, v : Double) -> SortdistcountingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingBuffer::fill(self : SortdistcountingBuffer, v : Double) -> SortdistcountingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_buffer_min(s : SortdistcountingBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingBuffer::min(self : SortdistcountingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_buffer_max(s : SortdistcountingBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingBuffer::max(self : SortdistcountingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_buffer_to_string(s : SortdistcountingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingBuffer::to_string(self : SortdistcountingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_counting_cursor_make(size : Int) -> SortdistcountingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_cursor_len(s : SortdistcountingCursor) -> Int { s.size }
+pub fn SortdistcountingCursor::len(self : SortdistcountingCursor) -> Int { self.size }
 
-pub fn sort_dist_counting_cursor_get(s : SortdistcountingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingCursor::get(self : SortdistcountingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_cursor_set(s : SortdistcountingCursor, i : Int, v : Double) -> SortdistcountingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingCursor::set(self : SortdistcountingCursor, i : Int, v : Double) -> SortdistcountingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cursor_sum(s : SortdistcountingCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingCursor::sum(self : SortdistcountingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_cursor_mean(s : SortdistcountingCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingCursor::mean(self : SortdistcountingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_cursor_scale(s : SortdistcountingCursor, f : Double) -> SortdistcountingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingCursor::scale(self : SortdistcountingCursor, f : Double) -> SortdistcountingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cursor_add(a : SortdistcountingCursor, b : SortdistcountingCursor) -> SortdistcountingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingCursor::add(self : SortdistcountingCursor, other : SortdistcountingCursor) -> SortdistcountingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cursor_copy(s : SortdistcountingCursor) -> SortdistcountingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingCursor::copy(self : SortdistcountingCursor) -> SortdistcountingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cursor_fill(s : SortdistcountingCursor, v : Double) -> SortdistcountingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingCursor::fill(self : SortdistcountingCursor, v : Double) -> SortdistcountingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_cursor_min(s : SortdistcountingCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingCursor::min(self : SortdistcountingCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_cursor_max(s : SortdistcountingCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingCursor::max(self : SortdistcountingCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_cursor_to_string(s : SortdistcountingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingCursor::to_string(self : SortdistcountingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingView {
@@ -912,45 +912,45 @@ pub fn sort_dist_counting_view_make(size : Int) -> SortdistcountingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_view_len(s : SortdistcountingView) -> Int { s.size }
+pub fn SortdistcountingView::len(self : SortdistcountingView) -> Int { self.size }
 
-pub fn sort_dist_counting_view_get(s : SortdistcountingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingView::get(self : SortdistcountingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_view_set(s : SortdistcountingView, i : Int, v : Double) -> SortdistcountingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingView::set(self : SortdistcountingView, i : Int, v : Double) -> SortdistcountingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_view_sum(s : SortdistcountingView) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingView::sum(self : SortdistcountingView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_view_mean(s : SortdistcountingView) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingView::mean(self : SortdistcountingView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_view_scale(s : SortdistcountingView, f : Double) -> SortdistcountingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingView::scale(self : SortdistcountingView, f : Double) -> SortdistcountingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_view_add(a : SortdistcountingView, b : SortdistcountingView) -> SortdistcountingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingView::add(self : SortdistcountingView, other : SortdistcountingView) -> SortdistcountingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_view_copy(s : SortdistcountingView) -> SortdistcountingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingView::copy(self : SortdistcountingView) -> SortdistcountingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_view_fill(s : SortdistcountingView, v : Double) -> SortdistcountingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingView::fill(self : SortdistcountingView, v : Double) -> SortdistcountingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_view_min(s : SortdistcountingView) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingView::min(self : SortdistcountingView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_view_max(s : SortdistcountingView) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingView::max(self : SortdistcountingView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_view_to_string(s : SortdistcountingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingView::to_string(self : SortdistcountingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_counting_range_make(size : Int) -> SortdistcountingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_range_len(s : SortdistcountingRange) -> Int { s.size }
+pub fn SortdistcountingRange::len(self : SortdistcountingRange) -> Int { self.size }
 
-pub fn sort_dist_counting_range_get(s : SortdistcountingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingRange::get(self : SortdistcountingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_range_set(s : SortdistcountingRange, i : Int, v : Double) -> SortdistcountingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingRange::set(self : SortdistcountingRange, i : Int, v : Double) -> SortdistcountingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_range_sum(s : SortdistcountingRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingRange::sum(self : SortdistcountingRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_range_mean(s : SortdistcountingRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingRange::mean(self : SortdistcountingRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_range_scale(s : SortdistcountingRange, f : Double) -> SortdistcountingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingRange::scale(self : SortdistcountingRange, f : Double) -> SortdistcountingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_range_add(a : SortdistcountingRange, b : SortdistcountingRange) -> SortdistcountingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingRange::add(self : SortdistcountingRange, other : SortdistcountingRange) -> SortdistcountingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_range_copy(s : SortdistcountingRange) -> SortdistcountingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingRange::copy(self : SortdistcountingRange) -> SortdistcountingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_range_fill(s : SortdistcountingRange, v : Double) -> SortdistcountingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingRange::fill(self : SortdistcountingRange, v : Double) -> SortdistcountingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_range_min(s : SortdistcountingRange) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingRange::min(self : SortdistcountingRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_range_max(s : SortdistcountingRange) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingRange::max(self : SortdistcountingRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_range_to_string(s : SortdistcountingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingRange::to_string(self : SortdistcountingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistcountingSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_counting_slice_make(size : Int) -> SortdistcountingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_counting_slice_len(s : SortdistcountingSlice) -> Int { s.size }
+pub fn SortdistcountingSlice::len(self : SortdistcountingSlice) -> Int { self.size }
 
-pub fn sort_dist_counting_slice_get(s : SortdistcountingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistcountingSlice::get(self : SortdistcountingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_counting_slice_set(s : SortdistcountingSlice, i : Int, v : Double) -> SortdistcountingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistcountingSlice::set(self : SortdistcountingSlice, i : Int, v : Double) -> SortdistcountingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_slice_sum(s : SortdistcountingSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistcountingSlice::sum(self : SortdistcountingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_counting_slice_mean(s : SortdistcountingSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistcountingSlice::mean(self : SortdistcountingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_counting_slice_scale(s : SortdistcountingSlice, f : Double) -> SortdistcountingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistcountingSlice::scale(self : SortdistcountingSlice, f : Double) -> SortdistcountingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_slice_add(a : SortdistcountingSlice, b : SortdistcountingSlice) -> SortdistcountingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistcountingSlice::add(self : SortdistcountingSlice, other : SortdistcountingSlice) -> SortdistcountingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_counting_slice_copy(s : SortdistcountingSlice) -> SortdistcountingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistcountingSlice::copy(self : SortdistcountingSlice) -> SortdistcountingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_slice_fill(s : SortdistcountingSlice, v : Double) -> SortdistcountingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistcountingSlice::fill(self : SortdistcountingSlice, v : Double) -> SortdistcountingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_counting_slice_min(s : SortdistcountingSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistcountingSlice::min(self : SortdistcountingSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_counting_slice_max(s : SortdistcountingSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistcountingSlice::max(self : SortdistcountingSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_counting_slice_to_string(s : SortdistcountingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistcountingSlice::to_string(self : SortdistcountingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

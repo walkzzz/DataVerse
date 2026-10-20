@@ -351,45 +351,45 @@ pub fn graph_flow_mcmf_frame_make(size : Int) -> GraphflowmcmfFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_frame_len(s : GraphflowmcmfFrame) -> Int { s.size }
+pub fn GraphflowmcmfFrame::len(self : GraphflowmcmfFrame) -> Int { self.size }
 
-pub fn graph_flow_mcmf_frame_get(s : GraphflowmcmfFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfFrame::get(self : GraphflowmcmfFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_frame_set(s : GraphflowmcmfFrame, i : Int, v : Double) -> GraphflowmcmfFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfFrame::set(self : GraphflowmcmfFrame, i : Int, v : Double) -> GraphflowmcmfFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_frame_sum(s : GraphflowmcmfFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfFrame::sum(self : GraphflowmcmfFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_frame_mean(s : GraphflowmcmfFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfFrame::mean(self : GraphflowmcmfFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_frame_scale(s : GraphflowmcmfFrame, f : Double) -> GraphflowmcmfFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfFrame::scale(self : GraphflowmcmfFrame, f : Double) -> GraphflowmcmfFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_frame_add(a : GraphflowmcmfFrame, b : GraphflowmcmfFrame) -> GraphflowmcmfFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfFrame::add(self : GraphflowmcmfFrame, other : GraphflowmcmfFrame) -> GraphflowmcmfFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_frame_copy(s : GraphflowmcmfFrame) -> GraphflowmcmfFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfFrame::copy(self : GraphflowmcmfFrame) -> GraphflowmcmfFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_frame_fill(s : GraphflowmcmfFrame, v : Double) -> GraphflowmcmfFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfFrame::fill(self : GraphflowmcmfFrame, v : Double) -> GraphflowmcmfFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_frame_min(s : GraphflowmcmfFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfFrame::min(self : GraphflowmcmfFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_frame_max(s : GraphflowmcmfFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfFrame::max(self : GraphflowmcmfFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_frame_to_string(s : GraphflowmcmfFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfFrame::to_string(self : GraphflowmcmfFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_mcmf_table_make(size : Int) -> GraphflowmcmfTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_table_len(s : GraphflowmcmfTable) -> Int { s.size }
+pub fn GraphflowmcmfTable::len(self : GraphflowmcmfTable) -> Int { self.size }
 
-pub fn graph_flow_mcmf_table_get(s : GraphflowmcmfTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfTable::get(self : GraphflowmcmfTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_table_set(s : GraphflowmcmfTable, i : Int, v : Double) -> GraphflowmcmfTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfTable::set(self : GraphflowmcmfTable, i : Int, v : Double) -> GraphflowmcmfTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_table_sum(s : GraphflowmcmfTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfTable::sum(self : GraphflowmcmfTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_table_mean(s : GraphflowmcmfTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfTable::mean(self : GraphflowmcmfTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_table_scale(s : GraphflowmcmfTable, f : Double) -> GraphflowmcmfTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfTable::scale(self : GraphflowmcmfTable, f : Double) -> GraphflowmcmfTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_table_add(a : GraphflowmcmfTable, b : GraphflowmcmfTable) -> GraphflowmcmfTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfTable::add(self : GraphflowmcmfTable, other : GraphflowmcmfTable) -> GraphflowmcmfTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_table_copy(s : GraphflowmcmfTable) -> GraphflowmcmfTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfTable::copy(self : GraphflowmcmfTable) -> GraphflowmcmfTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_table_fill(s : GraphflowmcmfTable, v : Double) -> GraphflowmcmfTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfTable::fill(self : GraphflowmcmfTable, v : Double) -> GraphflowmcmfTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_table_min(s : GraphflowmcmfTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfTable::min(self : GraphflowmcmfTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_table_max(s : GraphflowmcmfTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfTable::max(self : GraphflowmcmfTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_table_to_string(s : GraphflowmcmfTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfTable::to_string(self : GraphflowmcmfTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_mcmf_graphn_make(size : Int) -> GraphflowmcmfGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_graphn_len(s : GraphflowmcmfGraphN) -> Int { s.size }
+pub fn GraphflowmcmfGraphN::len(self : GraphflowmcmfGraphN) -> Int { self.size }
 
-pub fn graph_flow_mcmf_graphn_get(s : GraphflowmcmfGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfGraphN::get(self : GraphflowmcmfGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_graphn_set(s : GraphflowmcmfGraphN, i : Int, v : Double) -> GraphflowmcmfGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfGraphN::set(self : GraphflowmcmfGraphN, i : Int, v : Double) -> GraphflowmcmfGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_graphn_sum(s : GraphflowmcmfGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfGraphN::sum(self : GraphflowmcmfGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_graphn_mean(s : GraphflowmcmfGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfGraphN::mean(self : GraphflowmcmfGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_graphn_scale(s : GraphflowmcmfGraphN, f : Double) -> GraphflowmcmfGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfGraphN::scale(self : GraphflowmcmfGraphN, f : Double) -> GraphflowmcmfGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_graphn_add(a : GraphflowmcmfGraphN, b : GraphflowmcmfGraphN) -> GraphflowmcmfGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfGraphN::add(self : GraphflowmcmfGraphN, other : GraphflowmcmfGraphN) -> GraphflowmcmfGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_graphn_copy(s : GraphflowmcmfGraphN) -> GraphflowmcmfGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfGraphN::copy(self : GraphflowmcmfGraphN) -> GraphflowmcmfGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_graphn_fill(s : GraphflowmcmfGraphN, v : Double) -> GraphflowmcmfGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfGraphN::fill(self : GraphflowmcmfGraphN, v : Double) -> GraphflowmcmfGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_graphn_min(s : GraphflowmcmfGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfGraphN::min(self : GraphflowmcmfGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_graphn_max(s : GraphflowmcmfGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfGraphN::max(self : GraphflowmcmfGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_graphn_to_string(s : GraphflowmcmfGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfGraphN::to_string(self : GraphflowmcmfGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_mcmf_node_make(size : Int) -> GraphflowmcmfNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_node_len(s : GraphflowmcmfNode) -> Int { s.size }
+pub fn GraphflowmcmfNode::len(self : GraphflowmcmfNode) -> Int { self.size }
 
-pub fn graph_flow_mcmf_node_get(s : GraphflowmcmfNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfNode::get(self : GraphflowmcmfNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_node_set(s : GraphflowmcmfNode, i : Int, v : Double) -> GraphflowmcmfNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfNode::set(self : GraphflowmcmfNode, i : Int, v : Double) -> GraphflowmcmfNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_node_sum(s : GraphflowmcmfNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfNode::sum(self : GraphflowmcmfNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_node_mean(s : GraphflowmcmfNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfNode::mean(self : GraphflowmcmfNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_node_scale(s : GraphflowmcmfNode, f : Double) -> GraphflowmcmfNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfNode::scale(self : GraphflowmcmfNode, f : Double) -> GraphflowmcmfNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_node_add(a : GraphflowmcmfNode, b : GraphflowmcmfNode) -> GraphflowmcmfNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfNode::add(self : GraphflowmcmfNode, other : GraphflowmcmfNode) -> GraphflowmcmfNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_node_copy(s : GraphflowmcmfNode) -> GraphflowmcmfNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfNode::copy(self : GraphflowmcmfNode) -> GraphflowmcmfNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_node_fill(s : GraphflowmcmfNode, v : Double) -> GraphflowmcmfNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfNode::fill(self : GraphflowmcmfNode, v : Double) -> GraphflowmcmfNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_node_min(s : GraphflowmcmfNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfNode::min(self : GraphflowmcmfNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_node_max(s : GraphflowmcmfNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfNode::max(self : GraphflowmcmfNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_node_to_string(s : GraphflowmcmfNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfNode::to_string(self : GraphflowmcmfNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_mcmf_edge_make(size : Int) -> GraphflowmcmfEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_edge_len(s : GraphflowmcmfEdge) -> Int { s.size }
+pub fn GraphflowmcmfEdge::len(self : GraphflowmcmfEdge) -> Int { self.size }
 
-pub fn graph_flow_mcmf_edge_get(s : GraphflowmcmfEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfEdge::get(self : GraphflowmcmfEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_edge_set(s : GraphflowmcmfEdge, i : Int, v : Double) -> GraphflowmcmfEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfEdge::set(self : GraphflowmcmfEdge, i : Int, v : Double) -> GraphflowmcmfEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_edge_sum(s : GraphflowmcmfEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfEdge::sum(self : GraphflowmcmfEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_edge_mean(s : GraphflowmcmfEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfEdge::mean(self : GraphflowmcmfEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_edge_scale(s : GraphflowmcmfEdge, f : Double) -> GraphflowmcmfEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfEdge::scale(self : GraphflowmcmfEdge, f : Double) -> GraphflowmcmfEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_edge_add(a : GraphflowmcmfEdge, b : GraphflowmcmfEdge) -> GraphflowmcmfEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfEdge::add(self : GraphflowmcmfEdge, other : GraphflowmcmfEdge) -> GraphflowmcmfEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_edge_copy(s : GraphflowmcmfEdge) -> GraphflowmcmfEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfEdge::copy(self : GraphflowmcmfEdge) -> GraphflowmcmfEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_edge_fill(s : GraphflowmcmfEdge, v : Double) -> GraphflowmcmfEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfEdge::fill(self : GraphflowmcmfEdge, v : Double) -> GraphflowmcmfEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_edge_min(s : GraphflowmcmfEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfEdge::min(self : GraphflowmcmfEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_edge_max(s : GraphflowmcmfEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfEdge::max(self : GraphflowmcmfEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_edge_to_string(s : GraphflowmcmfEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfEdge::to_string(self : GraphflowmcmfEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfPath {
@@ -606,45 +606,45 @@ pub fn graph_flow_mcmf_path_make(size : Int) -> GraphflowmcmfPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_path_len(s : GraphflowmcmfPath) -> Int { s.size }
+pub fn GraphflowmcmfPath::len(self : GraphflowmcmfPath) -> Int { self.size }
 
-pub fn graph_flow_mcmf_path_get(s : GraphflowmcmfPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfPath::get(self : GraphflowmcmfPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_path_set(s : GraphflowmcmfPath, i : Int, v : Double) -> GraphflowmcmfPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfPath::set(self : GraphflowmcmfPath, i : Int, v : Double) -> GraphflowmcmfPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_path_sum(s : GraphflowmcmfPath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfPath::sum(self : GraphflowmcmfPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_path_mean(s : GraphflowmcmfPath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfPath::mean(self : GraphflowmcmfPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_path_scale(s : GraphflowmcmfPath, f : Double) -> GraphflowmcmfPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfPath::scale(self : GraphflowmcmfPath, f : Double) -> GraphflowmcmfPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_path_add(a : GraphflowmcmfPath, b : GraphflowmcmfPath) -> GraphflowmcmfPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfPath::add(self : GraphflowmcmfPath, other : GraphflowmcmfPath) -> GraphflowmcmfPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_path_copy(s : GraphflowmcmfPath) -> GraphflowmcmfPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfPath::copy(self : GraphflowmcmfPath) -> GraphflowmcmfPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_path_fill(s : GraphflowmcmfPath, v : Double) -> GraphflowmcmfPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfPath::fill(self : GraphflowmcmfPath, v : Double) -> GraphflowmcmfPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_path_min(s : GraphflowmcmfPath) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfPath::min(self : GraphflowmcmfPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_path_max(s : GraphflowmcmfPath) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfPath::max(self : GraphflowmcmfPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_path_to_string(s : GraphflowmcmfPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfPath::to_string(self : GraphflowmcmfPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_mcmf_cluster_make(size : Int) -> GraphflowmcmfCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_cluster_len(s : GraphflowmcmfCluster) -> Int { s.size }
+pub fn GraphflowmcmfCluster::len(self : GraphflowmcmfCluster) -> Int { self.size }
 
-pub fn graph_flow_mcmf_cluster_get(s : GraphflowmcmfCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfCluster::get(self : GraphflowmcmfCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_cluster_set(s : GraphflowmcmfCluster, i : Int, v : Double) -> GraphflowmcmfCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCluster::set(self : GraphflowmcmfCluster, i : Int, v : Double) -> GraphflowmcmfCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cluster_sum(s : GraphflowmcmfCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfCluster::sum(self : GraphflowmcmfCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_cluster_mean(s : GraphflowmcmfCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfCluster::mean(self : GraphflowmcmfCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_cluster_scale(s : GraphflowmcmfCluster, f : Double) -> GraphflowmcmfCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCluster::scale(self : GraphflowmcmfCluster, f : Double) -> GraphflowmcmfCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cluster_add(a : GraphflowmcmfCluster, b : GraphflowmcmfCluster) -> GraphflowmcmfCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfCluster::add(self : GraphflowmcmfCluster, other : GraphflowmcmfCluster) -> GraphflowmcmfCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cluster_copy(s : GraphflowmcmfCluster) -> GraphflowmcmfCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCluster::copy(self : GraphflowmcmfCluster) -> GraphflowmcmfCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cluster_fill(s : GraphflowmcmfCluster, v : Double) -> GraphflowmcmfCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCluster::fill(self : GraphflowmcmfCluster, v : Double) -> GraphflowmcmfCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cluster_min(s : GraphflowmcmfCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfCluster::min(self : GraphflowmcmfCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_cluster_max(s : GraphflowmcmfCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfCluster::max(self : GraphflowmcmfCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_cluster_to_string(s : GraphflowmcmfCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfCluster::to_string(self : GraphflowmcmfCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_mcmf_model_make(size : Int) -> GraphflowmcmfModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_model_len(s : GraphflowmcmfModel) -> Int { s.size }
+pub fn GraphflowmcmfModel::len(self : GraphflowmcmfModel) -> Int { self.size }
 
-pub fn graph_flow_mcmf_model_get(s : GraphflowmcmfModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfModel::get(self : GraphflowmcmfModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_model_set(s : GraphflowmcmfModel, i : Int, v : Double) -> GraphflowmcmfModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfModel::set(self : GraphflowmcmfModel, i : Int, v : Double) -> GraphflowmcmfModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_model_sum(s : GraphflowmcmfModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfModel::sum(self : GraphflowmcmfModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_model_mean(s : GraphflowmcmfModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfModel::mean(self : GraphflowmcmfModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_model_scale(s : GraphflowmcmfModel, f : Double) -> GraphflowmcmfModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfModel::scale(self : GraphflowmcmfModel, f : Double) -> GraphflowmcmfModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_model_add(a : GraphflowmcmfModel, b : GraphflowmcmfModel) -> GraphflowmcmfModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfModel::add(self : GraphflowmcmfModel, other : GraphflowmcmfModel) -> GraphflowmcmfModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_model_copy(s : GraphflowmcmfModel) -> GraphflowmcmfModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfModel::copy(self : GraphflowmcmfModel) -> GraphflowmcmfModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_model_fill(s : GraphflowmcmfModel, v : Double) -> GraphflowmcmfModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfModel::fill(self : GraphflowmcmfModel, v : Double) -> GraphflowmcmfModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_model_min(s : GraphflowmcmfModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfModel::min(self : GraphflowmcmfModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_model_max(s : GraphflowmcmfModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfModel::max(self : GraphflowmcmfModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_model_to_string(s : GraphflowmcmfModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfModel::to_string(self : GraphflowmcmfModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_mcmf_layer_make(size : Int) -> GraphflowmcmfLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_layer_len(s : GraphflowmcmfLayer) -> Int { s.size }
+pub fn GraphflowmcmfLayer::len(self : GraphflowmcmfLayer) -> Int { self.size }
 
-pub fn graph_flow_mcmf_layer_get(s : GraphflowmcmfLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfLayer::get(self : GraphflowmcmfLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_layer_set(s : GraphflowmcmfLayer, i : Int, v : Double) -> GraphflowmcmfLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfLayer::set(self : GraphflowmcmfLayer, i : Int, v : Double) -> GraphflowmcmfLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_layer_sum(s : GraphflowmcmfLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfLayer::sum(self : GraphflowmcmfLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_layer_mean(s : GraphflowmcmfLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfLayer::mean(self : GraphflowmcmfLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_layer_scale(s : GraphflowmcmfLayer, f : Double) -> GraphflowmcmfLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfLayer::scale(self : GraphflowmcmfLayer, f : Double) -> GraphflowmcmfLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_layer_add(a : GraphflowmcmfLayer, b : GraphflowmcmfLayer) -> GraphflowmcmfLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfLayer::add(self : GraphflowmcmfLayer, other : GraphflowmcmfLayer) -> GraphflowmcmfLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_layer_copy(s : GraphflowmcmfLayer) -> GraphflowmcmfLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfLayer::copy(self : GraphflowmcmfLayer) -> GraphflowmcmfLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_layer_fill(s : GraphflowmcmfLayer, v : Double) -> GraphflowmcmfLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfLayer::fill(self : GraphflowmcmfLayer, v : Double) -> GraphflowmcmfLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_layer_min(s : GraphflowmcmfLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfLayer::min(self : GraphflowmcmfLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_layer_max(s : GraphflowmcmfLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfLayer::max(self : GraphflowmcmfLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_layer_to_string(s : GraphflowmcmfLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfLayer::to_string(self : GraphflowmcmfLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_mcmf_buffer_make(size : Int) -> GraphflowmcmfBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_buffer_len(s : GraphflowmcmfBuffer) -> Int { s.size }
+pub fn GraphflowmcmfBuffer::len(self : GraphflowmcmfBuffer) -> Int { self.size }
 
-pub fn graph_flow_mcmf_buffer_get(s : GraphflowmcmfBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfBuffer::get(self : GraphflowmcmfBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_buffer_set(s : GraphflowmcmfBuffer, i : Int, v : Double) -> GraphflowmcmfBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfBuffer::set(self : GraphflowmcmfBuffer, i : Int, v : Double) -> GraphflowmcmfBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_buffer_sum(s : GraphflowmcmfBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfBuffer::sum(self : GraphflowmcmfBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_buffer_mean(s : GraphflowmcmfBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfBuffer::mean(self : GraphflowmcmfBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_buffer_scale(s : GraphflowmcmfBuffer, f : Double) -> GraphflowmcmfBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfBuffer::scale(self : GraphflowmcmfBuffer, f : Double) -> GraphflowmcmfBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_buffer_add(a : GraphflowmcmfBuffer, b : GraphflowmcmfBuffer) -> GraphflowmcmfBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfBuffer::add(self : GraphflowmcmfBuffer, other : GraphflowmcmfBuffer) -> GraphflowmcmfBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_buffer_copy(s : GraphflowmcmfBuffer) -> GraphflowmcmfBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfBuffer::copy(self : GraphflowmcmfBuffer) -> GraphflowmcmfBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_buffer_fill(s : GraphflowmcmfBuffer, v : Double) -> GraphflowmcmfBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfBuffer::fill(self : GraphflowmcmfBuffer, v : Double) -> GraphflowmcmfBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_buffer_min(s : GraphflowmcmfBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfBuffer::min(self : GraphflowmcmfBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_buffer_max(s : GraphflowmcmfBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfBuffer::max(self : GraphflowmcmfBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_buffer_to_string(s : GraphflowmcmfBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfBuffer::to_string(self : GraphflowmcmfBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_mcmf_cursor_make(size : Int) -> GraphflowmcmfCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_cursor_len(s : GraphflowmcmfCursor) -> Int { s.size }
+pub fn GraphflowmcmfCursor::len(self : GraphflowmcmfCursor) -> Int { self.size }
 
-pub fn graph_flow_mcmf_cursor_get(s : GraphflowmcmfCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfCursor::get(self : GraphflowmcmfCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_cursor_set(s : GraphflowmcmfCursor, i : Int, v : Double) -> GraphflowmcmfCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCursor::set(self : GraphflowmcmfCursor, i : Int, v : Double) -> GraphflowmcmfCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cursor_sum(s : GraphflowmcmfCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfCursor::sum(self : GraphflowmcmfCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_cursor_mean(s : GraphflowmcmfCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfCursor::mean(self : GraphflowmcmfCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_cursor_scale(s : GraphflowmcmfCursor, f : Double) -> GraphflowmcmfCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCursor::scale(self : GraphflowmcmfCursor, f : Double) -> GraphflowmcmfCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cursor_add(a : GraphflowmcmfCursor, b : GraphflowmcmfCursor) -> GraphflowmcmfCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfCursor::add(self : GraphflowmcmfCursor, other : GraphflowmcmfCursor) -> GraphflowmcmfCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cursor_copy(s : GraphflowmcmfCursor) -> GraphflowmcmfCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCursor::copy(self : GraphflowmcmfCursor) -> GraphflowmcmfCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cursor_fill(s : GraphflowmcmfCursor, v : Double) -> GraphflowmcmfCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfCursor::fill(self : GraphflowmcmfCursor, v : Double) -> GraphflowmcmfCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_cursor_min(s : GraphflowmcmfCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfCursor::min(self : GraphflowmcmfCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_cursor_max(s : GraphflowmcmfCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfCursor::max(self : GraphflowmcmfCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_cursor_to_string(s : GraphflowmcmfCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfCursor::to_string(self : GraphflowmcmfCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfView {
@@ -912,45 +912,45 @@ pub fn graph_flow_mcmf_view_make(size : Int) -> GraphflowmcmfView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_view_len(s : GraphflowmcmfView) -> Int { s.size }
+pub fn GraphflowmcmfView::len(self : GraphflowmcmfView) -> Int { self.size }
 
-pub fn graph_flow_mcmf_view_get(s : GraphflowmcmfView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfView::get(self : GraphflowmcmfView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_view_set(s : GraphflowmcmfView, i : Int, v : Double) -> GraphflowmcmfView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfView::set(self : GraphflowmcmfView, i : Int, v : Double) -> GraphflowmcmfView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_view_sum(s : GraphflowmcmfView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfView::sum(self : GraphflowmcmfView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_view_mean(s : GraphflowmcmfView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfView::mean(self : GraphflowmcmfView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_view_scale(s : GraphflowmcmfView, f : Double) -> GraphflowmcmfView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfView::scale(self : GraphflowmcmfView, f : Double) -> GraphflowmcmfView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_view_add(a : GraphflowmcmfView, b : GraphflowmcmfView) -> GraphflowmcmfView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfView::add(self : GraphflowmcmfView, other : GraphflowmcmfView) -> GraphflowmcmfView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_view_copy(s : GraphflowmcmfView) -> GraphflowmcmfView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfView::copy(self : GraphflowmcmfView) -> GraphflowmcmfView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_view_fill(s : GraphflowmcmfView, v : Double) -> GraphflowmcmfView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfView::fill(self : GraphflowmcmfView, v : Double) -> GraphflowmcmfView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_view_min(s : GraphflowmcmfView) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfView::min(self : GraphflowmcmfView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_view_max(s : GraphflowmcmfView) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfView::max(self : GraphflowmcmfView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_view_to_string(s : GraphflowmcmfView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfView::to_string(self : GraphflowmcmfView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_mcmf_range_make(size : Int) -> GraphflowmcmfRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_range_len(s : GraphflowmcmfRange) -> Int { s.size }
+pub fn GraphflowmcmfRange::len(self : GraphflowmcmfRange) -> Int { self.size }
 
-pub fn graph_flow_mcmf_range_get(s : GraphflowmcmfRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfRange::get(self : GraphflowmcmfRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_range_set(s : GraphflowmcmfRange, i : Int, v : Double) -> GraphflowmcmfRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfRange::set(self : GraphflowmcmfRange, i : Int, v : Double) -> GraphflowmcmfRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_range_sum(s : GraphflowmcmfRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfRange::sum(self : GraphflowmcmfRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_range_mean(s : GraphflowmcmfRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfRange::mean(self : GraphflowmcmfRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_range_scale(s : GraphflowmcmfRange, f : Double) -> GraphflowmcmfRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfRange::scale(self : GraphflowmcmfRange, f : Double) -> GraphflowmcmfRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_range_add(a : GraphflowmcmfRange, b : GraphflowmcmfRange) -> GraphflowmcmfRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfRange::add(self : GraphflowmcmfRange, other : GraphflowmcmfRange) -> GraphflowmcmfRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_range_copy(s : GraphflowmcmfRange) -> GraphflowmcmfRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfRange::copy(self : GraphflowmcmfRange) -> GraphflowmcmfRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_range_fill(s : GraphflowmcmfRange, v : Double) -> GraphflowmcmfRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfRange::fill(self : GraphflowmcmfRange, v : Double) -> GraphflowmcmfRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_range_min(s : GraphflowmcmfRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfRange::min(self : GraphflowmcmfRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_range_max(s : GraphflowmcmfRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfRange::max(self : GraphflowmcmfRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_range_to_string(s : GraphflowmcmfRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfRange::to_string(self : GraphflowmcmfRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmcmfSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_mcmf_slice_make(size : Int) -> GraphflowmcmfSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mcmf_slice_len(s : GraphflowmcmfSlice) -> Int { s.size }
+pub fn GraphflowmcmfSlice::len(self : GraphflowmcmfSlice) -> Int { self.size }
 
-pub fn graph_flow_mcmf_slice_get(s : GraphflowmcmfSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmcmfSlice::get(self : GraphflowmcmfSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mcmf_slice_set(s : GraphflowmcmfSlice, i : Int, v : Double) -> GraphflowmcmfSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmcmfSlice::set(self : GraphflowmcmfSlice, i : Int, v : Double) -> GraphflowmcmfSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_slice_sum(s : GraphflowmcmfSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmcmfSlice::sum(self : GraphflowmcmfSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mcmf_slice_mean(s : GraphflowmcmfSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmcmfSlice::mean(self : GraphflowmcmfSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mcmf_slice_scale(s : GraphflowmcmfSlice, f : Double) -> GraphflowmcmfSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfSlice::scale(self : GraphflowmcmfSlice, f : Double) -> GraphflowmcmfSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_slice_add(a : GraphflowmcmfSlice, b : GraphflowmcmfSlice) -> GraphflowmcmfSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmcmfSlice::add(self : GraphflowmcmfSlice, other : GraphflowmcmfSlice) -> GraphflowmcmfSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_slice_copy(s : GraphflowmcmfSlice) -> GraphflowmcmfSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfSlice::copy(self : GraphflowmcmfSlice) -> GraphflowmcmfSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_slice_fill(s : GraphflowmcmfSlice, v : Double) -> GraphflowmcmfSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmcmfSlice::fill(self : GraphflowmcmfSlice, v : Double) -> GraphflowmcmfSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mcmf_slice_min(s : GraphflowmcmfSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowmcmfSlice::min(self : GraphflowmcmfSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mcmf_slice_max(s : GraphflowmcmfSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowmcmfSlice::max(self : GraphflowmcmfSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mcmf_slice_to_string(s : GraphflowmcmfSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmcmfSlice::to_string(self : GraphflowmcmfSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

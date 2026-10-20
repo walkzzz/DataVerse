@@ -351,45 +351,45 @@ pub fn image_transform_rotate_frame_make(size : Int) -> ImagetransformrotateFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_frame_len(s : ImagetransformrotateFrame) -> Int { s.size }
+pub fn ImagetransformrotateFrame::len(self : ImagetransformrotateFrame) -> Int { self.size }
 
-pub fn image_transform_rotate_frame_get(s : ImagetransformrotateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateFrame::get(self : ImagetransformrotateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_frame_set(s : ImagetransformrotateFrame, i : Int, v : Double) -> ImagetransformrotateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateFrame::set(self : ImagetransformrotateFrame, i : Int, v : Double) -> ImagetransformrotateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_frame_sum(s : ImagetransformrotateFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateFrame::sum(self : ImagetransformrotateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_frame_mean(s : ImagetransformrotateFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateFrame::mean(self : ImagetransformrotateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_frame_scale(s : ImagetransformrotateFrame, f : Double) -> ImagetransformrotateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateFrame::scale(self : ImagetransformrotateFrame, f : Double) -> ImagetransformrotateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_frame_add(a : ImagetransformrotateFrame, b : ImagetransformrotateFrame) -> ImagetransformrotateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateFrame::add(self : ImagetransformrotateFrame, other : ImagetransformrotateFrame) -> ImagetransformrotateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_frame_copy(s : ImagetransformrotateFrame) -> ImagetransformrotateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateFrame::copy(self : ImagetransformrotateFrame) -> ImagetransformrotateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_frame_fill(s : ImagetransformrotateFrame, v : Double) -> ImagetransformrotateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateFrame::fill(self : ImagetransformrotateFrame, v : Double) -> ImagetransformrotateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_frame_min(s : ImagetransformrotateFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateFrame::min(self : ImagetransformrotateFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_frame_max(s : ImagetransformrotateFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateFrame::max(self : ImagetransformrotateFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_frame_to_string(s : ImagetransformrotateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateFrame::to_string(self : ImagetransformrotateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateTable {
@@ -402,45 +402,45 @@ pub fn image_transform_rotate_table_make(size : Int) -> ImagetransformrotateTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_table_len(s : ImagetransformrotateTable) -> Int { s.size }
+pub fn ImagetransformrotateTable::len(self : ImagetransformrotateTable) -> Int { self.size }
 
-pub fn image_transform_rotate_table_get(s : ImagetransformrotateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateTable::get(self : ImagetransformrotateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_table_set(s : ImagetransformrotateTable, i : Int, v : Double) -> ImagetransformrotateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateTable::set(self : ImagetransformrotateTable, i : Int, v : Double) -> ImagetransformrotateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_table_sum(s : ImagetransformrotateTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateTable::sum(self : ImagetransformrotateTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_table_mean(s : ImagetransformrotateTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateTable::mean(self : ImagetransformrotateTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_table_scale(s : ImagetransformrotateTable, f : Double) -> ImagetransformrotateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateTable::scale(self : ImagetransformrotateTable, f : Double) -> ImagetransformrotateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_table_add(a : ImagetransformrotateTable, b : ImagetransformrotateTable) -> ImagetransformrotateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateTable::add(self : ImagetransformrotateTable, other : ImagetransformrotateTable) -> ImagetransformrotateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_table_copy(s : ImagetransformrotateTable) -> ImagetransformrotateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateTable::copy(self : ImagetransformrotateTable) -> ImagetransformrotateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_table_fill(s : ImagetransformrotateTable, v : Double) -> ImagetransformrotateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateTable::fill(self : ImagetransformrotateTable, v : Double) -> ImagetransformrotateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_table_min(s : ImagetransformrotateTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateTable::min(self : ImagetransformrotateTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_table_max(s : ImagetransformrotateTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateTable::max(self : ImagetransformrotateTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_table_to_string(s : ImagetransformrotateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateTable::to_string(self : ImagetransformrotateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_rotate_graphn_make(size : Int) -> ImagetransformrotateGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_graphn_len(s : ImagetransformrotateGraphN) -> Int { s.size }
+pub fn ImagetransformrotateGraphN::len(self : ImagetransformrotateGraphN) -> Int { self.size }
 
-pub fn image_transform_rotate_graphn_get(s : ImagetransformrotateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateGraphN::get(self : ImagetransformrotateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_graphn_set(s : ImagetransformrotateGraphN, i : Int, v : Double) -> ImagetransformrotateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateGraphN::set(self : ImagetransformrotateGraphN, i : Int, v : Double) -> ImagetransformrotateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_graphn_sum(s : ImagetransformrotateGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateGraphN::sum(self : ImagetransformrotateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_graphn_mean(s : ImagetransformrotateGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateGraphN::mean(self : ImagetransformrotateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_graphn_scale(s : ImagetransformrotateGraphN, f : Double) -> ImagetransformrotateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateGraphN::scale(self : ImagetransformrotateGraphN, f : Double) -> ImagetransformrotateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_graphn_add(a : ImagetransformrotateGraphN, b : ImagetransformrotateGraphN) -> ImagetransformrotateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateGraphN::add(self : ImagetransformrotateGraphN, other : ImagetransformrotateGraphN) -> ImagetransformrotateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_graphn_copy(s : ImagetransformrotateGraphN) -> ImagetransformrotateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateGraphN::copy(self : ImagetransformrotateGraphN) -> ImagetransformrotateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_graphn_fill(s : ImagetransformrotateGraphN, v : Double) -> ImagetransformrotateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateGraphN::fill(self : ImagetransformrotateGraphN, v : Double) -> ImagetransformrotateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_graphn_min(s : ImagetransformrotateGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateGraphN::min(self : ImagetransformrotateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_graphn_max(s : ImagetransformrotateGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateGraphN::max(self : ImagetransformrotateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_graphn_to_string(s : ImagetransformrotateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateGraphN::to_string(self : ImagetransformrotateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateNode {
@@ -504,45 +504,45 @@ pub fn image_transform_rotate_node_make(size : Int) -> ImagetransformrotateNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_node_len(s : ImagetransformrotateNode) -> Int { s.size }
+pub fn ImagetransformrotateNode::len(self : ImagetransformrotateNode) -> Int { self.size }
 
-pub fn image_transform_rotate_node_get(s : ImagetransformrotateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateNode::get(self : ImagetransformrotateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_node_set(s : ImagetransformrotateNode, i : Int, v : Double) -> ImagetransformrotateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateNode::set(self : ImagetransformrotateNode, i : Int, v : Double) -> ImagetransformrotateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_node_sum(s : ImagetransformrotateNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateNode::sum(self : ImagetransformrotateNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_node_mean(s : ImagetransformrotateNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateNode::mean(self : ImagetransformrotateNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_node_scale(s : ImagetransformrotateNode, f : Double) -> ImagetransformrotateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateNode::scale(self : ImagetransformrotateNode, f : Double) -> ImagetransformrotateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_node_add(a : ImagetransformrotateNode, b : ImagetransformrotateNode) -> ImagetransformrotateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateNode::add(self : ImagetransformrotateNode, other : ImagetransformrotateNode) -> ImagetransformrotateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_node_copy(s : ImagetransformrotateNode) -> ImagetransformrotateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateNode::copy(self : ImagetransformrotateNode) -> ImagetransformrotateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_node_fill(s : ImagetransformrotateNode, v : Double) -> ImagetransformrotateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateNode::fill(self : ImagetransformrotateNode, v : Double) -> ImagetransformrotateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_node_min(s : ImagetransformrotateNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateNode::min(self : ImagetransformrotateNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_node_max(s : ImagetransformrotateNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateNode::max(self : ImagetransformrotateNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_node_to_string(s : ImagetransformrotateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateNode::to_string(self : ImagetransformrotateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_rotate_edge_make(size : Int) -> ImagetransformrotateEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_edge_len(s : ImagetransformrotateEdge) -> Int { s.size }
+pub fn ImagetransformrotateEdge::len(self : ImagetransformrotateEdge) -> Int { self.size }
 
-pub fn image_transform_rotate_edge_get(s : ImagetransformrotateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateEdge::get(self : ImagetransformrotateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_edge_set(s : ImagetransformrotateEdge, i : Int, v : Double) -> ImagetransformrotateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateEdge::set(self : ImagetransformrotateEdge, i : Int, v : Double) -> ImagetransformrotateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_edge_sum(s : ImagetransformrotateEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateEdge::sum(self : ImagetransformrotateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_edge_mean(s : ImagetransformrotateEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateEdge::mean(self : ImagetransformrotateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_edge_scale(s : ImagetransformrotateEdge, f : Double) -> ImagetransformrotateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateEdge::scale(self : ImagetransformrotateEdge, f : Double) -> ImagetransformrotateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_edge_add(a : ImagetransformrotateEdge, b : ImagetransformrotateEdge) -> ImagetransformrotateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateEdge::add(self : ImagetransformrotateEdge, other : ImagetransformrotateEdge) -> ImagetransformrotateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_edge_copy(s : ImagetransformrotateEdge) -> ImagetransformrotateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateEdge::copy(self : ImagetransformrotateEdge) -> ImagetransformrotateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_edge_fill(s : ImagetransformrotateEdge, v : Double) -> ImagetransformrotateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateEdge::fill(self : ImagetransformrotateEdge, v : Double) -> ImagetransformrotateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_edge_min(s : ImagetransformrotateEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateEdge::min(self : ImagetransformrotateEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_edge_max(s : ImagetransformrotateEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateEdge::max(self : ImagetransformrotateEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_edge_to_string(s : ImagetransformrotateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateEdge::to_string(self : ImagetransformrotateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotatePath {
@@ -606,45 +606,45 @@ pub fn image_transform_rotate_path_make(size : Int) -> ImagetransformrotatePath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_path_len(s : ImagetransformrotatePath) -> Int { s.size }
+pub fn ImagetransformrotatePath::len(self : ImagetransformrotatePath) -> Int { self.size }
 
-pub fn image_transform_rotate_path_get(s : ImagetransformrotatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotatePath::get(self : ImagetransformrotatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_path_set(s : ImagetransformrotatePath, i : Int, v : Double) -> ImagetransformrotatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotatePath::set(self : ImagetransformrotatePath, i : Int, v : Double) -> ImagetransformrotatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_path_sum(s : ImagetransformrotatePath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotatePath::sum(self : ImagetransformrotatePath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_path_mean(s : ImagetransformrotatePath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotatePath::mean(self : ImagetransformrotatePath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_path_scale(s : ImagetransformrotatePath, f : Double) -> ImagetransformrotatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotatePath::scale(self : ImagetransformrotatePath, f : Double) -> ImagetransformrotatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_path_add(a : ImagetransformrotatePath, b : ImagetransformrotatePath) -> ImagetransformrotatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotatePath::add(self : ImagetransformrotatePath, other : ImagetransformrotatePath) -> ImagetransformrotatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_path_copy(s : ImagetransformrotatePath) -> ImagetransformrotatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotatePath::copy(self : ImagetransformrotatePath) -> ImagetransformrotatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_path_fill(s : ImagetransformrotatePath, v : Double) -> ImagetransformrotatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotatePath::fill(self : ImagetransformrotatePath, v : Double) -> ImagetransformrotatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_path_min(s : ImagetransformrotatePath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotatePath::min(self : ImagetransformrotatePath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_path_max(s : ImagetransformrotatePath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotatePath::max(self : ImagetransformrotatePath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_path_to_string(s : ImagetransformrotatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotatePath::to_string(self : ImagetransformrotatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_rotate_cluster_make(size : Int) -> ImagetransformrotateCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_cluster_len(s : ImagetransformrotateCluster) -> Int { s.size }
+pub fn ImagetransformrotateCluster::len(self : ImagetransformrotateCluster) -> Int { self.size }
 
-pub fn image_transform_rotate_cluster_get(s : ImagetransformrotateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateCluster::get(self : ImagetransformrotateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_cluster_set(s : ImagetransformrotateCluster, i : Int, v : Double) -> ImagetransformrotateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCluster::set(self : ImagetransformrotateCluster, i : Int, v : Double) -> ImagetransformrotateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cluster_sum(s : ImagetransformrotateCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateCluster::sum(self : ImagetransformrotateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_cluster_mean(s : ImagetransformrotateCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateCluster::mean(self : ImagetransformrotateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_cluster_scale(s : ImagetransformrotateCluster, f : Double) -> ImagetransformrotateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCluster::scale(self : ImagetransformrotateCluster, f : Double) -> ImagetransformrotateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cluster_add(a : ImagetransformrotateCluster, b : ImagetransformrotateCluster) -> ImagetransformrotateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateCluster::add(self : ImagetransformrotateCluster, other : ImagetransformrotateCluster) -> ImagetransformrotateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cluster_copy(s : ImagetransformrotateCluster) -> ImagetransformrotateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCluster::copy(self : ImagetransformrotateCluster) -> ImagetransformrotateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cluster_fill(s : ImagetransformrotateCluster, v : Double) -> ImagetransformrotateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCluster::fill(self : ImagetransformrotateCluster, v : Double) -> ImagetransformrotateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cluster_min(s : ImagetransformrotateCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateCluster::min(self : ImagetransformrotateCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_cluster_max(s : ImagetransformrotateCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateCluster::max(self : ImagetransformrotateCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_cluster_to_string(s : ImagetransformrotateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateCluster::to_string(self : ImagetransformrotateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateModel {
@@ -708,45 +708,45 @@ pub fn image_transform_rotate_model_make(size : Int) -> ImagetransformrotateMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_model_len(s : ImagetransformrotateModel) -> Int { s.size }
+pub fn ImagetransformrotateModel::len(self : ImagetransformrotateModel) -> Int { self.size }
 
-pub fn image_transform_rotate_model_get(s : ImagetransformrotateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateModel::get(self : ImagetransformrotateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_model_set(s : ImagetransformrotateModel, i : Int, v : Double) -> ImagetransformrotateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateModel::set(self : ImagetransformrotateModel, i : Int, v : Double) -> ImagetransformrotateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_model_sum(s : ImagetransformrotateModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateModel::sum(self : ImagetransformrotateModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_model_mean(s : ImagetransformrotateModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateModel::mean(self : ImagetransformrotateModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_model_scale(s : ImagetransformrotateModel, f : Double) -> ImagetransformrotateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateModel::scale(self : ImagetransformrotateModel, f : Double) -> ImagetransformrotateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_model_add(a : ImagetransformrotateModel, b : ImagetransformrotateModel) -> ImagetransformrotateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateModel::add(self : ImagetransformrotateModel, other : ImagetransformrotateModel) -> ImagetransformrotateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_model_copy(s : ImagetransformrotateModel) -> ImagetransformrotateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateModel::copy(self : ImagetransformrotateModel) -> ImagetransformrotateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_model_fill(s : ImagetransformrotateModel, v : Double) -> ImagetransformrotateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateModel::fill(self : ImagetransformrotateModel, v : Double) -> ImagetransformrotateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_model_min(s : ImagetransformrotateModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateModel::min(self : ImagetransformrotateModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_model_max(s : ImagetransformrotateModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateModel::max(self : ImagetransformrotateModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_model_to_string(s : ImagetransformrotateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateModel::to_string(self : ImagetransformrotateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_rotate_layer_make(size : Int) -> ImagetransformrotateLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_layer_len(s : ImagetransformrotateLayer) -> Int { s.size }
+pub fn ImagetransformrotateLayer::len(self : ImagetransformrotateLayer) -> Int { self.size }
 
-pub fn image_transform_rotate_layer_get(s : ImagetransformrotateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateLayer::get(self : ImagetransformrotateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_layer_set(s : ImagetransformrotateLayer, i : Int, v : Double) -> ImagetransformrotateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateLayer::set(self : ImagetransformrotateLayer, i : Int, v : Double) -> ImagetransformrotateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_layer_sum(s : ImagetransformrotateLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateLayer::sum(self : ImagetransformrotateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_layer_mean(s : ImagetransformrotateLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateLayer::mean(self : ImagetransformrotateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_layer_scale(s : ImagetransformrotateLayer, f : Double) -> ImagetransformrotateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateLayer::scale(self : ImagetransformrotateLayer, f : Double) -> ImagetransformrotateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_layer_add(a : ImagetransformrotateLayer, b : ImagetransformrotateLayer) -> ImagetransformrotateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateLayer::add(self : ImagetransformrotateLayer, other : ImagetransformrotateLayer) -> ImagetransformrotateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_layer_copy(s : ImagetransformrotateLayer) -> ImagetransformrotateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateLayer::copy(self : ImagetransformrotateLayer) -> ImagetransformrotateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_layer_fill(s : ImagetransformrotateLayer, v : Double) -> ImagetransformrotateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateLayer::fill(self : ImagetransformrotateLayer, v : Double) -> ImagetransformrotateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_layer_min(s : ImagetransformrotateLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateLayer::min(self : ImagetransformrotateLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_layer_max(s : ImagetransformrotateLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateLayer::max(self : ImagetransformrotateLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_layer_to_string(s : ImagetransformrotateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateLayer::to_string(self : ImagetransformrotateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_rotate_buffer_make(size : Int) -> ImagetransformrotateBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_buffer_len(s : ImagetransformrotateBuffer) -> Int { s.size }
+pub fn ImagetransformrotateBuffer::len(self : ImagetransformrotateBuffer) -> Int { self.size }
 
-pub fn image_transform_rotate_buffer_get(s : ImagetransformrotateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateBuffer::get(self : ImagetransformrotateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_buffer_set(s : ImagetransformrotateBuffer, i : Int, v : Double) -> ImagetransformrotateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateBuffer::set(self : ImagetransformrotateBuffer, i : Int, v : Double) -> ImagetransformrotateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_buffer_sum(s : ImagetransformrotateBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateBuffer::sum(self : ImagetransformrotateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_buffer_mean(s : ImagetransformrotateBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateBuffer::mean(self : ImagetransformrotateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_buffer_scale(s : ImagetransformrotateBuffer, f : Double) -> ImagetransformrotateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateBuffer::scale(self : ImagetransformrotateBuffer, f : Double) -> ImagetransformrotateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_buffer_add(a : ImagetransformrotateBuffer, b : ImagetransformrotateBuffer) -> ImagetransformrotateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateBuffer::add(self : ImagetransformrotateBuffer, other : ImagetransformrotateBuffer) -> ImagetransformrotateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_buffer_copy(s : ImagetransformrotateBuffer) -> ImagetransformrotateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateBuffer::copy(self : ImagetransformrotateBuffer) -> ImagetransformrotateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_buffer_fill(s : ImagetransformrotateBuffer, v : Double) -> ImagetransformrotateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateBuffer::fill(self : ImagetransformrotateBuffer, v : Double) -> ImagetransformrotateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_buffer_min(s : ImagetransformrotateBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateBuffer::min(self : ImagetransformrotateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_buffer_max(s : ImagetransformrotateBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateBuffer::max(self : ImagetransformrotateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_buffer_to_string(s : ImagetransformrotateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateBuffer::to_string(self : ImagetransformrotateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_rotate_cursor_make(size : Int) -> ImagetransformrotateCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_cursor_len(s : ImagetransformrotateCursor) -> Int { s.size }
+pub fn ImagetransformrotateCursor::len(self : ImagetransformrotateCursor) -> Int { self.size }
 
-pub fn image_transform_rotate_cursor_get(s : ImagetransformrotateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateCursor::get(self : ImagetransformrotateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_cursor_set(s : ImagetransformrotateCursor, i : Int, v : Double) -> ImagetransformrotateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCursor::set(self : ImagetransformrotateCursor, i : Int, v : Double) -> ImagetransformrotateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cursor_sum(s : ImagetransformrotateCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateCursor::sum(self : ImagetransformrotateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_cursor_mean(s : ImagetransformrotateCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateCursor::mean(self : ImagetransformrotateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_cursor_scale(s : ImagetransformrotateCursor, f : Double) -> ImagetransformrotateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCursor::scale(self : ImagetransformrotateCursor, f : Double) -> ImagetransformrotateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cursor_add(a : ImagetransformrotateCursor, b : ImagetransformrotateCursor) -> ImagetransformrotateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateCursor::add(self : ImagetransformrotateCursor, other : ImagetransformrotateCursor) -> ImagetransformrotateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cursor_copy(s : ImagetransformrotateCursor) -> ImagetransformrotateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCursor::copy(self : ImagetransformrotateCursor) -> ImagetransformrotateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cursor_fill(s : ImagetransformrotateCursor, v : Double) -> ImagetransformrotateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateCursor::fill(self : ImagetransformrotateCursor, v : Double) -> ImagetransformrotateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_cursor_min(s : ImagetransformrotateCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateCursor::min(self : ImagetransformrotateCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_cursor_max(s : ImagetransformrotateCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateCursor::max(self : ImagetransformrotateCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_cursor_to_string(s : ImagetransformrotateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateCursor::to_string(self : ImagetransformrotateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateView {
@@ -912,45 +912,45 @@ pub fn image_transform_rotate_view_make(size : Int) -> ImagetransformrotateView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_view_len(s : ImagetransformrotateView) -> Int { s.size }
+pub fn ImagetransformrotateView::len(self : ImagetransformrotateView) -> Int { self.size }
 
-pub fn image_transform_rotate_view_get(s : ImagetransformrotateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateView::get(self : ImagetransformrotateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_view_set(s : ImagetransformrotateView, i : Int, v : Double) -> ImagetransformrotateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateView::set(self : ImagetransformrotateView, i : Int, v : Double) -> ImagetransformrotateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_view_sum(s : ImagetransformrotateView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateView::sum(self : ImagetransformrotateView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_view_mean(s : ImagetransformrotateView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateView::mean(self : ImagetransformrotateView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_view_scale(s : ImagetransformrotateView, f : Double) -> ImagetransformrotateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateView::scale(self : ImagetransformrotateView, f : Double) -> ImagetransformrotateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_view_add(a : ImagetransformrotateView, b : ImagetransformrotateView) -> ImagetransformrotateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateView::add(self : ImagetransformrotateView, other : ImagetransformrotateView) -> ImagetransformrotateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_view_copy(s : ImagetransformrotateView) -> ImagetransformrotateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateView::copy(self : ImagetransformrotateView) -> ImagetransformrotateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_view_fill(s : ImagetransformrotateView, v : Double) -> ImagetransformrotateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateView::fill(self : ImagetransformrotateView, v : Double) -> ImagetransformrotateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_view_min(s : ImagetransformrotateView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateView::min(self : ImagetransformrotateView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_view_max(s : ImagetransformrotateView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateView::max(self : ImagetransformrotateView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_view_to_string(s : ImagetransformrotateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateView::to_string(self : ImagetransformrotateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateRange {
@@ -963,45 +963,45 @@ pub fn image_transform_rotate_range_make(size : Int) -> ImagetransformrotateRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_range_len(s : ImagetransformrotateRange) -> Int { s.size }
+pub fn ImagetransformrotateRange::len(self : ImagetransformrotateRange) -> Int { self.size }
 
-pub fn image_transform_rotate_range_get(s : ImagetransformrotateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateRange::get(self : ImagetransformrotateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_range_set(s : ImagetransformrotateRange, i : Int, v : Double) -> ImagetransformrotateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateRange::set(self : ImagetransformrotateRange, i : Int, v : Double) -> ImagetransformrotateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_range_sum(s : ImagetransformrotateRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateRange::sum(self : ImagetransformrotateRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_range_mean(s : ImagetransformrotateRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateRange::mean(self : ImagetransformrotateRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_range_scale(s : ImagetransformrotateRange, f : Double) -> ImagetransformrotateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateRange::scale(self : ImagetransformrotateRange, f : Double) -> ImagetransformrotateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_range_add(a : ImagetransformrotateRange, b : ImagetransformrotateRange) -> ImagetransformrotateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateRange::add(self : ImagetransformrotateRange, other : ImagetransformrotateRange) -> ImagetransformrotateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_range_copy(s : ImagetransformrotateRange) -> ImagetransformrotateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateRange::copy(self : ImagetransformrotateRange) -> ImagetransformrotateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_range_fill(s : ImagetransformrotateRange, v : Double) -> ImagetransformrotateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateRange::fill(self : ImagetransformrotateRange, v : Double) -> ImagetransformrotateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_range_min(s : ImagetransformrotateRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateRange::min(self : ImagetransformrotateRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_range_max(s : ImagetransformrotateRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateRange::max(self : ImagetransformrotateRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_range_to_string(s : ImagetransformrotateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateRange::to_string(self : ImagetransformrotateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformrotateSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_rotate_slice_make(size : Int) -> ImagetransformrotateSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_rotate_slice_len(s : ImagetransformrotateSlice) -> Int { s.size }
+pub fn ImagetransformrotateSlice::len(self : ImagetransformrotateSlice) -> Int { self.size }
 
-pub fn image_transform_rotate_slice_get(s : ImagetransformrotateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformrotateSlice::get(self : ImagetransformrotateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_rotate_slice_set(s : ImagetransformrotateSlice, i : Int, v : Double) -> ImagetransformrotateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformrotateSlice::set(self : ImagetransformrotateSlice, i : Int, v : Double) -> ImagetransformrotateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_slice_sum(s : ImagetransformrotateSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformrotateSlice::sum(self : ImagetransformrotateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_rotate_slice_mean(s : ImagetransformrotateSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformrotateSlice::mean(self : ImagetransformrotateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_rotate_slice_scale(s : ImagetransformrotateSlice, f : Double) -> ImagetransformrotateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateSlice::scale(self : ImagetransformrotateSlice, f : Double) -> ImagetransformrotateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_slice_add(a : ImagetransformrotateSlice, b : ImagetransformrotateSlice) -> ImagetransformrotateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformrotateSlice::add(self : ImagetransformrotateSlice, other : ImagetransformrotateSlice) -> ImagetransformrotateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_rotate_slice_copy(s : ImagetransformrotateSlice) -> ImagetransformrotateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateSlice::copy(self : ImagetransformrotateSlice) -> ImagetransformrotateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_slice_fill(s : ImagetransformrotateSlice, v : Double) -> ImagetransformrotateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformrotateSlice::fill(self : ImagetransformrotateSlice, v : Double) -> ImagetransformrotateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_rotate_slice_min(s : ImagetransformrotateSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformrotateSlice::min(self : ImagetransformrotateSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_rotate_slice_max(s : ImagetransformrotateSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformrotateSlice::max(self : ImagetransformrotateSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_rotate_slice_to_string(s : ImagetransformrotateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformrotateSlice::to_string(self : ImagetransformrotateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

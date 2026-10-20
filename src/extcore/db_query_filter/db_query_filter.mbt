@@ -351,45 +351,45 @@ pub fn db_query_filter_frame_make(size : Int) -> DbqueryfilterFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_frame_len(s : DbqueryfilterFrame) -> Int { s.size }
+pub fn DbqueryfilterFrame::len(self : DbqueryfilterFrame) -> Int { self.size }
 
-pub fn db_query_filter_frame_get(s : DbqueryfilterFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterFrame::get(self : DbqueryfilterFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_frame_set(s : DbqueryfilterFrame, i : Int, v : Double) -> DbqueryfilterFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterFrame::set(self : DbqueryfilterFrame, i : Int, v : Double) -> DbqueryfilterFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_frame_sum(s : DbqueryfilterFrame) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterFrame::sum(self : DbqueryfilterFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_frame_mean(s : DbqueryfilterFrame) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterFrame::mean(self : DbqueryfilterFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_frame_scale(s : DbqueryfilterFrame, f : Double) -> DbqueryfilterFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterFrame::scale(self : DbqueryfilterFrame, f : Double) -> DbqueryfilterFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_frame_add(a : DbqueryfilterFrame, b : DbqueryfilterFrame) -> DbqueryfilterFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterFrame::add(self : DbqueryfilterFrame, other : DbqueryfilterFrame) -> DbqueryfilterFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_frame_copy(s : DbqueryfilterFrame) -> DbqueryfilterFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterFrame::copy(self : DbqueryfilterFrame) -> DbqueryfilterFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_frame_fill(s : DbqueryfilterFrame, v : Double) -> DbqueryfilterFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterFrame::fill(self : DbqueryfilterFrame, v : Double) -> DbqueryfilterFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_frame_min(s : DbqueryfilterFrame) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterFrame::min(self : DbqueryfilterFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_frame_max(s : DbqueryfilterFrame) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterFrame::max(self : DbqueryfilterFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_frame_to_string(s : DbqueryfilterFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterFrame::to_string(self : DbqueryfilterFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterTable {
@@ -402,45 +402,45 @@ pub fn db_query_filter_table_make(size : Int) -> DbqueryfilterTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_table_len(s : DbqueryfilterTable) -> Int { s.size }
+pub fn DbqueryfilterTable::len(self : DbqueryfilterTable) -> Int { self.size }
 
-pub fn db_query_filter_table_get(s : DbqueryfilterTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterTable::get(self : DbqueryfilterTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_table_set(s : DbqueryfilterTable, i : Int, v : Double) -> DbqueryfilterTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterTable::set(self : DbqueryfilterTable, i : Int, v : Double) -> DbqueryfilterTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_table_sum(s : DbqueryfilterTable) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterTable::sum(self : DbqueryfilterTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_table_mean(s : DbqueryfilterTable) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterTable::mean(self : DbqueryfilterTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_table_scale(s : DbqueryfilterTable, f : Double) -> DbqueryfilterTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterTable::scale(self : DbqueryfilterTable, f : Double) -> DbqueryfilterTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_table_add(a : DbqueryfilterTable, b : DbqueryfilterTable) -> DbqueryfilterTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterTable::add(self : DbqueryfilterTable, other : DbqueryfilterTable) -> DbqueryfilterTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_table_copy(s : DbqueryfilterTable) -> DbqueryfilterTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterTable::copy(self : DbqueryfilterTable) -> DbqueryfilterTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_table_fill(s : DbqueryfilterTable, v : Double) -> DbqueryfilterTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterTable::fill(self : DbqueryfilterTable, v : Double) -> DbqueryfilterTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_table_min(s : DbqueryfilterTable) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterTable::min(self : DbqueryfilterTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_table_max(s : DbqueryfilterTable) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterTable::max(self : DbqueryfilterTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_table_to_string(s : DbqueryfilterTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterTable::to_string(self : DbqueryfilterTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_filter_graphn_make(size : Int) -> DbqueryfilterGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_graphn_len(s : DbqueryfilterGraphN) -> Int { s.size }
+pub fn DbqueryfilterGraphN::len(self : DbqueryfilterGraphN) -> Int { self.size }
 
-pub fn db_query_filter_graphn_get(s : DbqueryfilterGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterGraphN::get(self : DbqueryfilterGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_graphn_set(s : DbqueryfilterGraphN, i : Int, v : Double) -> DbqueryfilterGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterGraphN::set(self : DbqueryfilterGraphN, i : Int, v : Double) -> DbqueryfilterGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_graphn_sum(s : DbqueryfilterGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterGraphN::sum(self : DbqueryfilterGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_graphn_mean(s : DbqueryfilterGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterGraphN::mean(self : DbqueryfilterGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_graphn_scale(s : DbqueryfilterGraphN, f : Double) -> DbqueryfilterGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterGraphN::scale(self : DbqueryfilterGraphN, f : Double) -> DbqueryfilterGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_graphn_add(a : DbqueryfilterGraphN, b : DbqueryfilterGraphN) -> DbqueryfilterGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterGraphN::add(self : DbqueryfilterGraphN, other : DbqueryfilterGraphN) -> DbqueryfilterGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_graphn_copy(s : DbqueryfilterGraphN) -> DbqueryfilterGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterGraphN::copy(self : DbqueryfilterGraphN) -> DbqueryfilterGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_graphn_fill(s : DbqueryfilterGraphN, v : Double) -> DbqueryfilterGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterGraphN::fill(self : DbqueryfilterGraphN, v : Double) -> DbqueryfilterGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_graphn_min(s : DbqueryfilterGraphN) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterGraphN::min(self : DbqueryfilterGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_graphn_max(s : DbqueryfilterGraphN) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterGraphN::max(self : DbqueryfilterGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_graphn_to_string(s : DbqueryfilterGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterGraphN::to_string(self : DbqueryfilterGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterNode {
@@ -504,45 +504,45 @@ pub fn db_query_filter_node_make(size : Int) -> DbqueryfilterNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_node_len(s : DbqueryfilterNode) -> Int { s.size }
+pub fn DbqueryfilterNode::len(self : DbqueryfilterNode) -> Int { self.size }
 
-pub fn db_query_filter_node_get(s : DbqueryfilterNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterNode::get(self : DbqueryfilterNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_node_set(s : DbqueryfilterNode, i : Int, v : Double) -> DbqueryfilterNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterNode::set(self : DbqueryfilterNode, i : Int, v : Double) -> DbqueryfilterNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_node_sum(s : DbqueryfilterNode) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterNode::sum(self : DbqueryfilterNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_node_mean(s : DbqueryfilterNode) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterNode::mean(self : DbqueryfilterNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_node_scale(s : DbqueryfilterNode, f : Double) -> DbqueryfilterNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterNode::scale(self : DbqueryfilterNode, f : Double) -> DbqueryfilterNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_node_add(a : DbqueryfilterNode, b : DbqueryfilterNode) -> DbqueryfilterNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterNode::add(self : DbqueryfilterNode, other : DbqueryfilterNode) -> DbqueryfilterNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_node_copy(s : DbqueryfilterNode) -> DbqueryfilterNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterNode::copy(self : DbqueryfilterNode) -> DbqueryfilterNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_node_fill(s : DbqueryfilterNode, v : Double) -> DbqueryfilterNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterNode::fill(self : DbqueryfilterNode, v : Double) -> DbqueryfilterNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_node_min(s : DbqueryfilterNode) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterNode::min(self : DbqueryfilterNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_node_max(s : DbqueryfilterNode) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterNode::max(self : DbqueryfilterNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_node_to_string(s : DbqueryfilterNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterNode::to_string(self : DbqueryfilterNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterEdge {
@@ -555,45 +555,45 @@ pub fn db_query_filter_edge_make(size : Int) -> DbqueryfilterEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_edge_len(s : DbqueryfilterEdge) -> Int { s.size }
+pub fn DbqueryfilterEdge::len(self : DbqueryfilterEdge) -> Int { self.size }
 
-pub fn db_query_filter_edge_get(s : DbqueryfilterEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterEdge::get(self : DbqueryfilterEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_edge_set(s : DbqueryfilterEdge, i : Int, v : Double) -> DbqueryfilterEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterEdge::set(self : DbqueryfilterEdge, i : Int, v : Double) -> DbqueryfilterEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_edge_sum(s : DbqueryfilterEdge) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterEdge::sum(self : DbqueryfilterEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_edge_mean(s : DbqueryfilterEdge) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterEdge::mean(self : DbqueryfilterEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_edge_scale(s : DbqueryfilterEdge, f : Double) -> DbqueryfilterEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterEdge::scale(self : DbqueryfilterEdge, f : Double) -> DbqueryfilterEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_edge_add(a : DbqueryfilterEdge, b : DbqueryfilterEdge) -> DbqueryfilterEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterEdge::add(self : DbqueryfilterEdge, other : DbqueryfilterEdge) -> DbqueryfilterEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_edge_copy(s : DbqueryfilterEdge) -> DbqueryfilterEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterEdge::copy(self : DbqueryfilterEdge) -> DbqueryfilterEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_edge_fill(s : DbqueryfilterEdge, v : Double) -> DbqueryfilterEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterEdge::fill(self : DbqueryfilterEdge, v : Double) -> DbqueryfilterEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_edge_min(s : DbqueryfilterEdge) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterEdge::min(self : DbqueryfilterEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_edge_max(s : DbqueryfilterEdge) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterEdge::max(self : DbqueryfilterEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_edge_to_string(s : DbqueryfilterEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterEdge::to_string(self : DbqueryfilterEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterPath {
@@ -606,45 +606,45 @@ pub fn db_query_filter_path_make(size : Int) -> DbqueryfilterPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_path_len(s : DbqueryfilterPath) -> Int { s.size }
+pub fn DbqueryfilterPath::len(self : DbqueryfilterPath) -> Int { self.size }
 
-pub fn db_query_filter_path_get(s : DbqueryfilterPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterPath::get(self : DbqueryfilterPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_path_set(s : DbqueryfilterPath, i : Int, v : Double) -> DbqueryfilterPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterPath::set(self : DbqueryfilterPath, i : Int, v : Double) -> DbqueryfilterPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_path_sum(s : DbqueryfilterPath) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterPath::sum(self : DbqueryfilterPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_path_mean(s : DbqueryfilterPath) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterPath::mean(self : DbqueryfilterPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_path_scale(s : DbqueryfilterPath, f : Double) -> DbqueryfilterPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterPath::scale(self : DbqueryfilterPath, f : Double) -> DbqueryfilterPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_path_add(a : DbqueryfilterPath, b : DbqueryfilterPath) -> DbqueryfilterPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterPath::add(self : DbqueryfilterPath, other : DbqueryfilterPath) -> DbqueryfilterPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_path_copy(s : DbqueryfilterPath) -> DbqueryfilterPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterPath::copy(self : DbqueryfilterPath) -> DbqueryfilterPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_path_fill(s : DbqueryfilterPath, v : Double) -> DbqueryfilterPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterPath::fill(self : DbqueryfilterPath, v : Double) -> DbqueryfilterPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_path_min(s : DbqueryfilterPath) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterPath::min(self : DbqueryfilterPath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_path_max(s : DbqueryfilterPath) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterPath::max(self : DbqueryfilterPath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_path_to_string(s : DbqueryfilterPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterPath::to_string(self : DbqueryfilterPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterCluster {
@@ -657,45 +657,45 @@ pub fn db_query_filter_cluster_make(size : Int) -> DbqueryfilterCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_cluster_len(s : DbqueryfilterCluster) -> Int { s.size }
+pub fn DbqueryfilterCluster::len(self : DbqueryfilterCluster) -> Int { self.size }
 
-pub fn db_query_filter_cluster_get(s : DbqueryfilterCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterCluster::get(self : DbqueryfilterCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_cluster_set(s : DbqueryfilterCluster, i : Int, v : Double) -> DbqueryfilterCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterCluster::set(self : DbqueryfilterCluster, i : Int, v : Double) -> DbqueryfilterCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cluster_sum(s : DbqueryfilterCluster) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterCluster::sum(self : DbqueryfilterCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_cluster_mean(s : DbqueryfilterCluster) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterCluster::mean(self : DbqueryfilterCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_cluster_scale(s : DbqueryfilterCluster, f : Double) -> DbqueryfilterCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterCluster::scale(self : DbqueryfilterCluster, f : Double) -> DbqueryfilterCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cluster_add(a : DbqueryfilterCluster, b : DbqueryfilterCluster) -> DbqueryfilterCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterCluster::add(self : DbqueryfilterCluster, other : DbqueryfilterCluster) -> DbqueryfilterCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_cluster_copy(s : DbqueryfilterCluster) -> DbqueryfilterCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterCluster::copy(self : DbqueryfilterCluster) -> DbqueryfilterCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cluster_fill(s : DbqueryfilterCluster, v : Double) -> DbqueryfilterCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterCluster::fill(self : DbqueryfilterCluster, v : Double) -> DbqueryfilterCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cluster_min(s : DbqueryfilterCluster) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterCluster::min(self : DbqueryfilterCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_cluster_max(s : DbqueryfilterCluster) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterCluster::max(self : DbqueryfilterCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_cluster_to_string(s : DbqueryfilterCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterCluster::to_string(self : DbqueryfilterCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterModel {
@@ -708,45 +708,45 @@ pub fn db_query_filter_model_make(size : Int) -> DbqueryfilterModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_model_len(s : DbqueryfilterModel) -> Int { s.size }
+pub fn DbqueryfilterModel::len(self : DbqueryfilterModel) -> Int { self.size }
 
-pub fn db_query_filter_model_get(s : DbqueryfilterModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterModel::get(self : DbqueryfilterModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_model_set(s : DbqueryfilterModel, i : Int, v : Double) -> DbqueryfilterModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterModel::set(self : DbqueryfilterModel, i : Int, v : Double) -> DbqueryfilterModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_model_sum(s : DbqueryfilterModel) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterModel::sum(self : DbqueryfilterModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_model_mean(s : DbqueryfilterModel) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterModel::mean(self : DbqueryfilterModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_model_scale(s : DbqueryfilterModel, f : Double) -> DbqueryfilterModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterModel::scale(self : DbqueryfilterModel, f : Double) -> DbqueryfilterModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_model_add(a : DbqueryfilterModel, b : DbqueryfilterModel) -> DbqueryfilterModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterModel::add(self : DbqueryfilterModel, other : DbqueryfilterModel) -> DbqueryfilterModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_model_copy(s : DbqueryfilterModel) -> DbqueryfilterModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterModel::copy(self : DbqueryfilterModel) -> DbqueryfilterModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_model_fill(s : DbqueryfilterModel, v : Double) -> DbqueryfilterModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterModel::fill(self : DbqueryfilterModel, v : Double) -> DbqueryfilterModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_model_min(s : DbqueryfilterModel) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterModel::min(self : DbqueryfilterModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_model_max(s : DbqueryfilterModel) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterModel::max(self : DbqueryfilterModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_model_to_string(s : DbqueryfilterModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterModel::to_string(self : DbqueryfilterModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterLayer {
@@ -759,45 +759,45 @@ pub fn db_query_filter_layer_make(size : Int) -> DbqueryfilterLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_layer_len(s : DbqueryfilterLayer) -> Int { s.size }
+pub fn DbqueryfilterLayer::len(self : DbqueryfilterLayer) -> Int { self.size }
 
-pub fn db_query_filter_layer_get(s : DbqueryfilterLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterLayer::get(self : DbqueryfilterLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_layer_set(s : DbqueryfilterLayer, i : Int, v : Double) -> DbqueryfilterLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterLayer::set(self : DbqueryfilterLayer, i : Int, v : Double) -> DbqueryfilterLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_layer_sum(s : DbqueryfilterLayer) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterLayer::sum(self : DbqueryfilterLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_layer_mean(s : DbqueryfilterLayer) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterLayer::mean(self : DbqueryfilterLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_layer_scale(s : DbqueryfilterLayer, f : Double) -> DbqueryfilterLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterLayer::scale(self : DbqueryfilterLayer, f : Double) -> DbqueryfilterLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_layer_add(a : DbqueryfilterLayer, b : DbqueryfilterLayer) -> DbqueryfilterLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterLayer::add(self : DbqueryfilterLayer, other : DbqueryfilterLayer) -> DbqueryfilterLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_layer_copy(s : DbqueryfilterLayer) -> DbqueryfilterLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterLayer::copy(self : DbqueryfilterLayer) -> DbqueryfilterLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_layer_fill(s : DbqueryfilterLayer, v : Double) -> DbqueryfilterLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterLayer::fill(self : DbqueryfilterLayer, v : Double) -> DbqueryfilterLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_layer_min(s : DbqueryfilterLayer) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterLayer::min(self : DbqueryfilterLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_layer_max(s : DbqueryfilterLayer) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterLayer::max(self : DbqueryfilterLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_layer_to_string(s : DbqueryfilterLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterLayer::to_string(self : DbqueryfilterLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_filter_buffer_make(size : Int) -> DbqueryfilterBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_buffer_len(s : DbqueryfilterBuffer) -> Int { s.size }
+pub fn DbqueryfilterBuffer::len(self : DbqueryfilterBuffer) -> Int { self.size }
 
-pub fn db_query_filter_buffer_get(s : DbqueryfilterBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterBuffer::get(self : DbqueryfilterBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_buffer_set(s : DbqueryfilterBuffer, i : Int, v : Double) -> DbqueryfilterBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterBuffer::set(self : DbqueryfilterBuffer, i : Int, v : Double) -> DbqueryfilterBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_buffer_sum(s : DbqueryfilterBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterBuffer::sum(self : DbqueryfilterBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_buffer_mean(s : DbqueryfilterBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterBuffer::mean(self : DbqueryfilterBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_buffer_scale(s : DbqueryfilterBuffer, f : Double) -> DbqueryfilterBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterBuffer::scale(self : DbqueryfilterBuffer, f : Double) -> DbqueryfilterBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_buffer_add(a : DbqueryfilterBuffer, b : DbqueryfilterBuffer) -> DbqueryfilterBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterBuffer::add(self : DbqueryfilterBuffer, other : DbqueryfilterBuffer) -> DbqueryfilterBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_buffer_copy(s : DbqueryfilterBuffer) -> DbqueryfilterBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterBuffer::copy(self : DbqueryfilterBuffer) -> DbqueryfilterBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_buffer_fill(s : DbqueryfilterBuffer, v : Double) -> DbqueryfilterBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterBuffer::fill(self : DbqueryfilterBuffer, v : Double) -> DbqueryfilterBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_buffer_min(s : DbqueryfilterBuffer) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterBuffer::min(self : DbqueryfilterBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_buffer_max(s : DbqueryfilterBuffer) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterBuffer::max(self : DbqueryfilterBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_buffer_to_string(s : DbqueryfilterBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterBuffer::to_string(self : DbqueryfilterBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterCursor {
@@ -861,45 +861,45 @@ pub fn db_query_filter_cursor_make(size : Int) -> DbqueryfilterCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_cursor_len(s : DbqueryfilterCursor) -> Int { s.size }
+pub fn DbqueryfilterCursor::len(self : DbqueryfilterCursor) -> Int { self.size }
 
-pub fn db_query_filter_cursor_get(s : DbqueryfilterCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterCursor::get(self : DbqueryfilterCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_cursor_set(s : DbqueryfilterCursor, i : Int, v : Double) -> DbqueryfilterCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterCursor::set(self : DbqueryfilterCursor, i : Int, v : Double) -> DbqueryfilterCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cursor_sum(s : DbqueryfilterCursor) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterCursor::sum(self : DbqueryfilterCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_cursor_mean(s : DbqueryfilterCursor) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterCursor::mean(self : DbqueryfilterCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_cursor_scale(s : DbqueryfilterCursor, f : Double) -> DbqueryfilterCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterCursor::scale(self : DbqueryfilterCursor, f : Double) -> DbqueryfilterCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cursor_add(a : DbqueryfilterCursor, b : DbqueryfilterCursor) -> DbqueryfilterCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterCursor::add(self : DbqueryfilterCursor, other : DbqueryfilterCursor) -> DbqueryfilterCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_cursor_copy(s : DbqueryfilterCursor) -> DbqueryfilterCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterCursor::copy(self : DbqueryfilterCursor) -> DbqueryfilterCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cursor_fill(s : DbqueryfilterCursor, v : Double) -> DbqueryfilterCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterCursor::fill(self : DbqueryfilterCursor, v : Double) -> DbqueryfilterCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_cursor_min(s : DbqueryfilterCursor) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterCursor::min(self : DbqueryfilterCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_cursor_max(s : DbqueryfilterCursor) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterCursor::max(self : DbqueryfilterCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_cursor_to_string(s : DbqueryfilterCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterCursor::to_string(self : DbqueryfilterCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterView {
@@ -912,45 +912,45 @@ pub fn db_query_filter_view_make(size : Int) -> DbqueryfilterView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_view_len(s : DbqueryfilterView) -> Int { s.size }
+pub fn DbqueryfilterView::len(self : DbqueryfilterView) -> Int { self.size }
 
-pub fn db_query_filter_view_get(s : DbqueryfilterView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterView::get(self : DbqueryfilterView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_view_set(s : DbqueryfilterView, i : Int, v : Double) -> DbqueryfilterView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterView::set(self : DbqueryfilterView, i : Int, v : Double) -> DbqueryfilterView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_view_sum(s : DbqueryfilterView) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterView::sum(self : DbqueryfilterView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_view_mean(s : DbqueryfilterView) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterView::mean(self : DbqueryfilterView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_view_scale(s : DbqueryfilterView, f : Double) -> DbqueryfilterView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterView::scale(self : DbqueryfilterView, f : Double) -> DbqueryfilterView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_view_add(a : DbqueryfilterView, b : DbqueryfilterView) -> DbqueryfilterView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterView::add(self : DbqueryfilterView, other : DbqueryfilterView) -> DbqueryfilterView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_view_copy(s : DbqueryfilterView) -> DbqueryfilterView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterView::copy(self : DbqueryfilterView) -> DbqueryfilterView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_view_fill(s : DbqueryfilterView, v : Double) -> DbqueryfilterView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterView::fill(self : DbqueryfilterView, v : Double) -> DbqueryfilterView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_view_min(s : DbqueryfilterView) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterView::min(self : DbqueryfilterView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_view_max(s : DbqueryfilterView) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterView::max(self : DbqueryfilterView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_view_to_string(s : DbqueryfilterView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterView::to_string(self : DbqueryfilterView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterRange {
@@ -963,45 +963,45 @@ pub fn db_query_filter_range_make(size : Int) -> DbqueryfilterRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_range_len(s : DbqueryfilterRange) -> Int { s.size }
+pub fn DbqueryfilterRange::len(self : DbqueryfilterRange) -> Int { self.size }
 
-pub fn db_query_filter_range_get(s : DbqueryfilterRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterRange::get(self : DbqueryfilterRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_range_set(s : DbqueryfilterRange, i : Int, v : Double) -> DbqueryfilterRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterRange::set(self : DbqueryfilterRange, i : Int, v : Double) -> DbqueryfilterRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_range_sum(s : DbqueryfilterRange) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterRange::sum(self : DbqueryfilterRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_range_mean(s : DbqueryfilterRange) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterRange::mean(self : DbqueryfilterRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_range_scale(s : DbqueryfilterRange, f : Double) -> DbqueryfilterRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterRange::scale(self : DbqueryfilterRange, f : Double) -> DbqueryfilterRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_range_add(a : DbqueryfilterRange, b : DbqueryfilterRange) -> DbqueryfilterRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterRange::add(self : DbqueryfilterRange, other : DbqueryfilterRange) -> DbqueryfilterRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_range_copy(s : DbqueryfilterRange) -> DbqueryfilterRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterRange::copy(self : DbqueryfilterRange) -> DbqueryfilterRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_range_fill(s : DbqueryfilterRange, v : Double) -> DbqueryfilterRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterRange::fill(self : DbqueryfilterRange, v : Double) -> DbqueryfilterRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_range_min(s : DbqueryfilterRange) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterRange::min(self : DbqueryfilterRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_range_max(s : DbqueryfilterRange) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterRange::max(self : DbqueryfilterRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_range_to_string(s : DbqueryfilterRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterRange::to_string(self : DbqueryfilterRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryfilterSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_filter_slice_make(size : Int) -> DbqueryfilterSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_filter_slice_len(s : DbqueryfilterSlice) -> Int { s.size }
+pub fn DbqueryfilterSlice::len(self : DbqueryfilterSlice) -> Int { self.size }
 
-pub fn db_query_filter_slice_get(s : DbqueryfilterSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryfilterSlice::get(self : DbqueryfilterSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_filter_slice_set(s : DbqueryfilterSlice, i : Int, v : Double) -> DbqueryfilterSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryfilterSlice::set(self : DbqueryfilterSlice, i : Int, v : Double) -> DbqueryfilterSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_slice_sum(s : DbqueryfilterSlice) -> Double { @_common.sum(s.data) }
+pub fn DbqueryfilterSlice::sum(self : DbqueryfilterSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_filter_slice_mean(s : DbqueryfilterSlice) -> Double { @_common.mean(s.data) }
+pub fn DbqueryfilterSlice::mean(self : DbqueryfilterSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_filter_slice_scale(s : DbqueryfilterSlice, f : Double) -> DbqueryfilterSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryfilterSlice::scale(self : DbqueryfilterSlice, f : Double) -> DbqueryfilterSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_slice_add(a : DbqueryfilterSlice, b : DbqueryfilterSlice) -> DbqueryfilterSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryfilterSlice::add(self : DbqueryfilterSlice, other : DbqueryfilterSlice) -> DbqueryfilterSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_filter_slice_copy(s : DbqueryfilterSlice) -> DbqueryfilterSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryfilterSlice::copy(self : DbqueryfilterSlice) -> DbqueryfilterSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_slice_fill(s : DbqueryfilterSlice, v : Double) -> DbqueryfilterSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryfilterSlice::fill(self : DbqueryfilterSlice, v : Double) -> DbqueryfilterSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_filter_slice_min(s : DbqueryfilterSlice) -> Double { @_common.min(s.data) }
+pub fn DbqueryfilterSlice::min(self : DbqueryfilterSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_filter_slice_max(s : DbqueryfilterSlice) -> Double { @_common.max(s.data) }
+pub fn DbqueryfilterSlice::max(self : DbqueryfilterSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_filter_slice_to_string(s : DbqueryfilterSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryfilterSlice::to_string(self : DbqueryfilterSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

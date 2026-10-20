@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_validate_frame_make(size : Int) -> Bioseqassemblyvalidat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_frame_len(s : BioseqassemblyvalidateFrame) -> Int { s.size }
+pub fn BioseqassemblyvalidateFrame::len(self : BioseqassemblyvalidateFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_frame_get(s : BioseqassemblyvalidateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateFrame::get(self : BioseqassemblyvalidateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_frame_set(s : BioseqassemblyvalidateFrame, i : Int, v : Double) -> BioseqassemblyvalidateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateFrame::set(self : BioseqassemblyvalidateFrame, i : Int, v : Double) -> BioseqassemblyvalidateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_frame_sum(s : BioseqassemblyvalidateFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateFrame::sum(self : BioseqassemblyvalidateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_frame_mean(s : BioseqassemblyvalidateFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateFrame::mean(self : BioseqassemblyvalidateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_frame_scale(s : BioseqassemblyvalidateFrame, f : Double) -> BioseqassemblyvalidateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateFrame::scale(self : BioseqassemblyvalidateFrame, f : Double) -> BioseqassemblyvalidateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_frame_add(a : BioseqassemblyvalidateFrame, b : BioseqassemblyvalidateFrame) -> BioseqassemblyvalidateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateFrame::add(self : BioseqassemblyvalidateFrame, other : BioseqassemblyvalidateFrame) -> BioseqassemblyvalidateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_frame_copy(s : BioseqassemblyvalidateFrame) -> BioseqassemblyvalidateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateFrame::copy(self : BioseqassemblyvalidateFrame) -> BioseqassemblyvalidateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_frame_fill(s : BioseqassemblyvalidateFrame, v : Double) -> BioseqassemblyvalidateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateFrame::fill(self : BioseqassemblyvalidateFrame, v : Double) -> BioseqassemblyvalidateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_frame_min(s : BioseqassemblyvalidateFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateFrame::min(self : BioseqassemblyvalidateFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_frame_max(s : BioseqassemblyvalidateFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateFrame::max(self : BioseqassemblyvalidateFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_frame_to_string(s : BioseqassemblyvalidateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateFrame::to_string(self : BioseqassemblyvalidateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_validate_table_make(size : Int) -> Bioseqassemblyvalidat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_table_len(s : BioseqassemblyvalidateTable) -> Int { s.size }
+pub fn BioseqassemblyvalidateTable::len(self : BioseqassemblyvalidateTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_table_get(s : BioseqassemblyvalidateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateTable::get(self : BioseqassemblyvalidateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_table_set(s : BioseqassemblyvalidateTable, i : Int, v : Double) -> BioseqassemblyvalidateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateTable::set(self : BioseqassemblyvalidateTable, i : Int, v : Double) -> BioseqassemblyvalidateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_table_sum(s : BioseqassemblyvalidateTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateTable::sum(self : BioseqassemblyvalidateTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_table_mean(s : BioseqassemblyvalidateTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateTable::mean(self : BioseqassemblyvalidateTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_table_scale(s : BioseqassemblyvalidateTable, f : Double) -> BioseqassemblyvalidateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateTable::scale(self : BioseqassemblyvalidateTable, f : Double) -> BioseqassemblyvalidateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_table_add(a : BioseqassemblyvalidateTable, b : BioseqassemblyvalidateTable) -> BioseqassemblyvalidateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateTable::add(self : BioseqassemblyvalidateTable, other : BioseqassemblyvalidateTable) -> BioseqassemblyvalidateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_table_copy(s : BioseqassemblyvalidateTable) -> BioseqassemblyvalidateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateTable::copy(self : BioseqassemblyvalidateTable) -> BioseqassemblyvalidateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_table_fill(s : BioseqassemblyvalidateTable, v : Double) -> BioseqassemblyvalidateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateTable::fill(self : BioseqassemblyvalidateTable, v : Double) -> BioseqassemblyvalidateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_table_min(s : BioseqassemblyvalidateTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateTable::min(self : BioseqassemblyvalidateTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_table_max(s : BioseqassemblyvalidateTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateTable::max(self : BioseqassemblyvalidateTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_table_to_string(s : BioseqassemblyvalidateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateTable::to_string(self : BioseqassemblyvalidateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_validate_graphn_make(size : Int) -> Bioseqassemblyvalida
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_graphn_len(s : BioseqassemblyvalidateGraphN) -> Int { s.size }
+pub fn BioseqassemblyvalidateGraphN::len(self : BioseqassemblyvalidateGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_graphn_get(s : BioseqassemblyvalidateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateGraphN::get(self : BioseqassemblyvalidateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_graphn_set(s : BioseqassemblyvalidateGraphN, i : Int, v : Double) -> BioseqassemblyvalidateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateGraphN::set(self : BioseqassemblyvalidateGraphN, i : Int, v : Double) -> BioseqassemblyvalidateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_graphn_sum(s : BioseqassemblyvalidateGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateGraphN::sum(self : BioseqassemblyvalidateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_graphn_mean(s : BioseqassemblyvalidateGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateGraphN::mean(self : BioseqassemblyvalidateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_graphn_scale(s : BioseqassemblyvalidateGraphN, f : Double) -> BioseqassemblyvalidateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateGraphN::scale(self : BioseqassemblyvalidateGraphN, f : Double) -> BioseqassemblyvalidateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_graphn_add(a : BioseqassemblyvalidateGraphN, b : BioseqassemblyvalidateGraphN) -> BioseqassemblyvalidateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateGraphN::add(self : BioseqassemblyvalidateGraphN, other : BioseqassemblyvalidateGraphN) -> BioseqassemblyvalidateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_graphn_copy(s : BioseqassemblyvalidateGraphN) -> BioseqassemblyvalidateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateGraphN::copy(self : BioseqassemblyvalidateGraphN) -> BioseqassemblyvalidateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_graphn_fill(s : BioseqassemblyvalidateGraphN, v : Double) -> BioseqassemblyvalidateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateGraphN::fill(self : BioseqassemblyvalidateGraphN, v : Double) -> BioseqassemblyvalidateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_graphn_min(s : BioseqassemblyvalidateGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateGraphN::min(self : BioseqassemblyvalidateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_graphn_max(s : BioseqassemblyvalidateGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateGraphN::max(self : BioseqassemblyvalidateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_graphn_to_string(s : BioseqassemblyvalidateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateGraphN::to_string(self : BioseqassemblyvalidateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_validate_node_make(size : Int) -> Bioseqassemblyvalidate
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_node_len(s : BioseqassemblyvalidateNode) -> Int { s.size }
+pub fn BioseqassemblyvalidateNode::len(self : BioseqassemblyvalidateNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_node_get(s : BioseqassemblyvalidateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateNode::get(self : BioseqassemblyvalidateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_node_set(s : BioseqassemblyvalidateNode, i : Int, v : Double) -> BioseqassemblyvalidateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateNode::set(self : BioseqassemblyvalidateNode, i : Int, v : Double) -> BioseqassemblyvalidateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_node_sum(s : BioseqassemblyvalidateNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateNode::sum(self : BioseqassemblyvalidateNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_node_mean(s : BioseqassemblyvalidateNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateNode::mean(self : BioseqassemblyvalidateNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_node_scale(s : BioseqassemblyvalidateNode, f : Double) -> BioseqassemblyvalidateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateNode::scale(self : BioseqassemblyvalidateNode, f : Double) -> BioseqassemblyvalidateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_node_add(a : BioseqassemblyvalidateNode, b : BioseqassemblyvalidateNode) -> BioseqassemblyvalidateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateNode::add(self : BioseqassemblyvalidateNode, other : BioseqassemblyvalidateNode) -> BioseqassemblyvalidateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_node_copy(s : BioseqassemblyvalidateNode) -> BioseqassemblyvalidateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateNode::copy(self : BioseqassemblyvalidateNode) -> BioseqassemblyvalidateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_node_fill(s : BioseqassemblyvalidateNode, v : Double) -> BioseqassemblyvalidateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateNode::fill(self : BioseqassemblyvalidateNode, v : Double) -> BioseqassemblyvalidateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_node_min(s : BioseqassemblyvalidateNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateNode::min(self : BioseqassemblyvalidateNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_node_max(s : BioseqassemblyvalidateNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateNode::max(self : BioseqassemblyvalidateNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_node_to_string(s : BioseqassemblyvalidateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateNode::to_string(self : BioseqassemblyvalidateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_validate_edge_make(size : Int) -> Bioseqassemblyvalidate
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_edge_len(s : BioseqassemblyvalidateEdge) -> Int { s.size }
+pub fn BioseqassemblyvalidateEdge::len(self : BioseqassemblyvalidateEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_edge_get(s : BioseqassemblyvalidateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateEdge::get(self : BioseqassemblyvalidateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_edge_set(s : BioseqassemblyvalidateEdge, i : Int, v : Double) -> BioseqassemblyvalidateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateEdge::set(self : BioseqassemblyvalidateEdge, i : Int, v : Double) -> BioseqassemblyvalidateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_edge_sum(s : BioseqassemblyvalidateEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateEdge::sum(self : BioseqassemblyvalidateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_edge_mean(s : BioseqassemblyvalidateEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateEdge::mean(self : BioseqassemblyvalidateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_edge_scale(s : BioseqassemblyvalidateEdge, f : Double) -> BioseqassemblyvalidateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateEdge::scale(self : BioseqassemblyvalidateEdge, f : Double) -> BioseqassemblyvalidateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_edge_add(a : BioseqassemblyvalidateEdge, b : BioseqassemblyvalidateEdge) -> BioseqassemblyvalidateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateEdge::add(self : BioseqassemblyvalidateEdge, other : BioseqassemblyvalidateEdge) -> BioseqassemblyvalidateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_edge_copy(s : BioseqassemblyvalidateEdge) -> BioseqassemblyvalidateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateEdge::copy(self : BioseqassemblyvalidateEdge) -> BioseqassemblyvalidateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_edge_fill(s : BioseqassemblyvalidateEdge, v : Double) -> BioseqassemblyvalidateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateEdge::fill(self : BioseqassemblyvalidateEdge, v : Double) -> BioseqassemblyvalidateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_edge_min(s : BioseqassemblyvalidateEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateEdge::min(self : BioseqassemblyvalidateEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_edge_max(s : BioseqassemblyvalidateEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateEdge::max(self : BioseqassemblyvalidateEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_edge_to_string(s : BioseqassemblyvalidateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateEdge::to_string(self : BioseqassemblyvalidateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidatePath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_validate_path_make(size : Int) -> Bioseqassemblyvalidate
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_path_len(s : BioseqassemblyvalidatePath) -> Int { s.size }
+pub fn BioseqassemblyvalidatePath::len(self : BioseqassemblyvalidatePath) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_path_get(s : BioseqassemblyvalidatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidatePath::get(self : BioseqassemblyvalidatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_path_set(s : BioseqassemblyvalidatePath, i : Int, v : Double) -> BioseqassemblyvalidatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidatePath::set(self : BioseqassemblyvalidatePath, i : Int, v : Double) -> BioseqassemblyvalidatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_path_sum(s : BioseqassemblyvalidatePath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidatePath::sum(self : BioseqassemblyvalidatePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_path_mean(s : BioseqassemblyvalidatePath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidatePath::mean(self : BioseqassemblyvalidatePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_path_scale(s : BioseqassemblyvalidatePath, f : Double) -> BioseqassemblyvalidatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidatePath::scale(self : BioseqassemblyvalidatePath, f : Double) -> BioseqassemblyvalidatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_path_add(a : BioseqassemblyvalidatePath, b : BioseqassemblyvalidatePath) -> BioseqassemblyvalidatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidatePath::add(self : BioseqassemblyvalidatePath, other : BioseqassemblyvalidatePath) -> BioseqassemblyvalidatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_path_copy(s : BioseqassemblyvalidatePath) -> BioseqassemblyvalidatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidatePath::copy(self : BioseqassemblyvalidatePath) -> BioseqassemblyvalidatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_path_fill(s : BioseqassemblyvalidatePath, v : Double) -> BioseqassemblyvalidatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidatePath::fill(self : BioseqassemblyvalidatePath, v : Double) -> BioseqassemblyvalidatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_path_min(s : BioseqassemblyvalidatePath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidatePath::min(self : BioseqassemblyvalidatePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_path_max(s : BioseqassemblyvalidatePath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidatePath::max(self : BioseqassemblyvalidatePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_path_to_string(s : BioseqassemblyvalidatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidatePath::to_string(self : BioseqassemblyvalidatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_validate_cluster_make(size : Int) -> Bioseqassemblyvalid
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_cluster_len(s : BioseqassemblyvalidateCluster) -> Int { s.size }
+pub fn BioseqassemblyvalidateCluster::len(self : BioseqassemblyvalidateCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_cluster_get(s : BioseqassemblyvalidateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateCluster::get(self : BioseqassemblyvalidateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_cluster_set(s : BioseqassemblyvalidateCluster, i : Int, v : Double) -> BioseqassemblyvalidateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCluster::set(self : BioseqassemblyvalidateCluster, i : Int, v : Double) -> BioseqassemblyvalidateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cluster_sum(s : BioseqassemblyvalidateCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateCluster::sum(self : BioseqassemblyvalidateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_cluster_mean(s : BioseqassemblyvalidateCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateCluster::mean(self : BioseqassemblyvalidateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_cluster_scale(s : BioseqassemblyvalidateCluster, f : Double) -> BioseqassemblyvalidateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCluster::scale(self : BioseqassemblyvalidateCluster, f : Double) -> BioseqassemblyvalidateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cluster_add(a : BioseqassemblyvalidateCluster, b : BioseqassemblyvalidateCluster) -> BioseqassemblyvalidateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateCluster::add(self : BioseqassemblyvalidateCluster, other : BioseqassemblyvalidateCluster) -> BioseqassemblyvalidateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cluster_copy(s : BioseqassemblyvalidateCluster) -> BioseqassemblyvalidateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCluster::copy(self : BioseqassemblyvalidateCluster) -> BioseqassemblyvalidateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cluster_fill(s : BioseqassemblyvalidateCluster, v : Double) -> BioseqassemblyvalidateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCluster::fill(self : BioseqassemblyvalidateCluster, v : Double) -> BioseqassemblyvalidateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cluster_min(s : BioseqassemblyvalidateCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateCluster::min(self : BioseqassemblyvalidateCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_cluster_max(s : BioseqassemblyvalidateCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateCluster::max(self : BioseqassemblyvalidateCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_cluster_to_string(s : BioseqassemblyvalidateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateCluster::to_string(self : BioseqassemblyvalidateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_validate_model_make(size : Int) -> Bioseqassemblyvalidat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_model_len(s : BioseqassemblyvalidateModel) -> Int { s.size }
+pub fn BioseqassemblyvalidateModel::len(self : BioseqassemblyvalidateModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_model_get(s : BioseqassemblyvalidateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateModel::get(self : BioseqassemblyvalidateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_model_set(s : BioseqassemblyvalidateModel, i : Int, v : Double) -> BioseqassemblyvalidateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateModel::set(self : BioseqassemblyvalidateModel, i : Int, v : Double) -> BioseqassemblyvalidateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_model_sum(s : BioseqassemblyvalidateModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateModel::sum(self : BioseqassemblyvalidateModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_model_mean(s : BioseqassemblyvalidateModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateModel::mean(self : BioseqassemblyvalidateModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_model_scale(s : BioseqassemblyvalidateModel, f : Double) -> BioseqassemblyvalidateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateModel::scale(self : BioseqassemblyvalidateModel, f : Double) -> BioseqassemblyvalidateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_model_add(a : BioseqassemblyvalidateModel, b : BioseqassemblyvalidateModel) -> BioseqassemblyvalidateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateModel::add(self : BioseqassemblyvalidateModel, other : BioseqassemblyvalidateModel) -> BioseqassemblyvalidateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_model_copy(s : BioseqassemblyvalidateModel) -> BioseqassemblyvalidateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateModel::copy(self : BioseqassemblyvalidateModel) -> BioseqassemblyvalidateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_model_fill(s : BioseqassemblyvalidateModel, v : Double) -> BioseqassemblyvalidateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateModel::fill(self : BioseqassemblyvalidateModel, v : Double) -> BioseqassemblyvalidateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_model_min(s : BioseqassemblyvalidateModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateModel::min(self : BioseqassemblyvalidateModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_model_max(s : BioseqassemblyvalidateModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateModel::max(self : BioseqassemblyvalidateModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_model_to_string(s : BioseqassemblyvalidateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateModel::to_string(self : BioseqassemblyvalidateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_validate_layer_make(size : Int) -> Bioseqassemblyvalidat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_layer_len(s : BioseqassemblyvalidateLayer) -> Int { s.size }
+pub fn BioseqassemblyvalidateLayer::len(self : BioseqassemblyvalidateLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_layer_get(s : BioseqassemblyvalidateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateLayer::get(self : BioseqassemblyvalidateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_layer_set(s : BioseqassemblyvalidateLayer, i : Int, v : Double) -> BioseqassemblyvalidateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateLayer::set(self : BioseqassemblyvalidateLayer, i : Int, v : Double) -> BioseqassemblyvalidateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_layer_sum(s : BioseqassemblyvalidateLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateLayer::sum(self : BioseqassemblyvalidateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_layer_mean(s : BioseqassemblyvalidateLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateLayer::mean(self : BioseqassemblyvalidateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_layer_scale(s : BioseqassemblyvalidateLayer, f : Double) -> BioseqassemblyvalidateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateLayer::scale(self : BioseqassemblyvalidateLayer, f : Double) -> BioseqassemblyvalidateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_layer_add(a : BioseqassemblyvalidateLayer, b : BioseqassemblyvalidateLayer) -> BioseqassemblyvalidateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateLayer::add(self : BioseqassemblyvalidateLayer, other : BioseqassemblyvalidateLayer) -> BioseqassemblyvalidateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_layer_copy(s : BioseqassemblyvalidateLayer) -> BioseqassemblyvalidateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateLayer::copy(self : BioseqassemblyvalidateLayer) -> BioseqassemblyvalidateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_layer_fill(s : BioseqassemblyvalidateLayer, v : Double) -> BioseqassemblyvalidateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateLayer::fill(self : BioseqassemblyvalidateLayer, v : Double) -> BioseqassemblyvalidateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_layer_min(s : BioseqassemblyvalidateLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateLayer::min(self : BioseqassemblyvalidateLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_layer_max(s : BioseqassemblyvalidateLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateLayer::max(self : BioseqassemblyvalidateLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_layer_to_string(s : BioseqassemblyvalidateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateLayer::to_string(self : BioseqassemblyvalidateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_validate_buffer_make(size : Int) -> Bioseqassemblyvalida
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_buffer_len(s : BioseqassemblyvalidateBuffer) -> Int { s.size }
+pub fn BioseqassemblyvalidateBuffer::len(self : BioseqassemblyvalidateBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_buffer_get(s : BioseqassemblyvalidateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateBuffer::get(self : BioseqassemblyvalidateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_buffer_set(s : BioseqassemblyvalidateBuffer, i : Int, v : Double) -> BioseqassemblyvalidateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateBuffer::set(self : BioseqassemblyvalidateBuffer, i : Int, v : Double) -> BioseqassemblyvalidateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_buffer_sum(s : BioseqassemblyvalidateBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateBuffer::sum(self : BioseqassemblyvalidateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_buffer_mean(s : BioseqassemblyvalidateBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateBuffer::mean(self : BioseqassemblyvalidateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_buffer_scale(s : BioseqassemblyvalidateBuffer, f : Double) -> BioseqassemblyvalidateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateBuffer::scale(self : BioseqassemblyvalidateBuffer, f : Double) -> BioseqassemblyvalidateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_buffer_add(a : BioseqassemblyvalidateBuffer, b : BioseqassemblyvalidateBuffer) -> BioseqassemblyvalidateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateBuffer::add(self : BioseqassemblyvalidateBuffer, other : BioseqassemblyvalidateBuffer) -> BioseqassemblyvalidateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_buffer_copy(s : BioseqassemblyvalidateBuffer) -> BioseqassemblyvalidateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateBuffer::copy(self : BioseqassemblyvalidateBuffer) -> BioseqassemblyvalidateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_buffer_fill(s : BioseqassemblyvalidateBuffer, v : Double) -> BioseqassemblyvalidateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateBuffer::fill(self : BioseqassemblyvalidateBuffer, v : Double) -> BioseqassemblyvalidateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_buffer_min(s : BioseqassemblyvalidateBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateBuffer::min(self : BioseqassemblyvalidateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_buffer_max(s : BioseqassemblyvalidateBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateBuffer::max(self : BioseqassemblyvalidateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_buffer_to_string(s : BioseqassemblyvalidateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateBuffer::to_string(self : BioseqassemblyvalidateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_validate_cursor_make(size : Int) -> Bioseqassemblyvalida
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_cursor_len(s : BioseqassemblyvalidateCursor) -> Int { s.size }
+pub fn BioseqassemblyvalidateCursor::len(self : BioseqassemblyvalidateCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_cursor_get(s : BioseqassemblyvalidateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateCursor::get(self : BioseqassemblyvalidateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_cursor_set(s : BioseqassemblyvalidateCursor, i : Int, v : Double) -> BioseqassemblyvalidateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCursor::set(self : BioseqassemblyvalidateCursor, i : Int, v : Double) -> BioseqassemblyvalidateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cursor_sum(s : BioseqassemblyvalidateCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateCursor::sum(self : BioseqassemblyvalidateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_cursor_mean(s : BioseqassemblyvalidateCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateCursor::mean(self : BioseqassemblyvalidateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_cursor_scale(s : BioseqassemblyvalidateCursor, f : Double) -> BioseqassemblyvalidateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCursor::scale(self : BioseqassemblyvalidateCursor, f : Double) -> BioseqassemblyvalidateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cursor_add(a : BioseqassemblyvalidateCursor, b : BioseqassemblyvalidateCursor) -> BioseqassemblyvalidateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateCursor::add(self : BioseqassemblyvalidateCursor, other : BioseqassemblyvalidateCursor) -> BioseqassemblyvalidateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cursor_copy(s : BioseqassemblyvalidateCursor) -> BioseqassemblyvalidateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCursor::copy(self : BioseqassemblyvalidateCursor) -> BioseqassemblyvalidateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cursor_fill(s : BioseqassemblyvalidateCursor, v : Double) -> BioseqassemblyvalidateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateCursor::fill(self : BioseqassemblyvalidateCursor, v : Double) -> BioseqassemblyvalidateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_cursor_min(s : BioseqassemblyvalidateCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateCursor::min(self : BioseqassemblyvalidateCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_cursor_max(s : BioseqassemblyvalidateCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateCursor::max(self : BioseqassemblyvalidateCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_cursor_to_string(s : BioseqassemblyvalidateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateCursor::to_string(self : BioseqassemblyvalidateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_validate_view_make(size : Int) -> Bioseqassemblyvalidate
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_view_len(s : BioseqassemblyvalidateView) -> Int { s.size }
+pub fn BioseqassemblyvalidateView::len(self : BioseqassemblyvalidateView) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_view_get(s : BioseqassemblyvalidateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateView::get(self : BioseqassemblyvalidateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_view_set(s : BioseqassemblyvalidateView, i : Int, v : Double) -> BioseqassemblyvalidateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateView::set(self : BioseqassemblyvalidateView, i : Int, v : Double) -> BioseqassemblyvalidateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_view_sum(s : BioseqassemblyvalidateView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateView::sum(self : BioseqassemblyvalidateView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_view_mean(s : BioseqassemblyvalidateView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateView::mean(self : BioseqassemblyvalidateView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_view_scale(s : BioseqassemblyvalidateView, f : Double) -> BioseqassemblyvalidateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateView::scale(self : BioseqassemblyvalidateView, f : Double) -> BioseqassemblyvalidateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_view_add(a : BioseqassemblyvalidateView, b : BioseqassemblyvalidateView) -> BioseqassemblyvalidateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateView::add(self : BioseqassemblyvalidateView, other : BioseqassemblyvalidateView) -> BioseqassemblyvalidateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_view_copy(s : BioseqassemblyvalidateView) -> BioseqassemblyvalidateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateView::copy(self : BioseqassemblyvalidateView) -> BioseqassemblyvalidateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_view_fill(s : BioseqassemblyvalidateView, v : Double) -> BioseqassemblyvalidateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateView::fill(self : BioseqassemblyvalidateView, v : Double) -> BioseqassemblyvalidateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_view_min(s : BioseqassemblyvalidateView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateView::min(self : BioseqassemblyvalidateView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_view_max(s : BioseqassemblyvalidateView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateView::max(self : BioseqassemblyvalidateView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_view_to_string(s : BioseqassemblyvalidateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateView::to_string(self : BioseqassemblyvalidateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_validate_range_make(size : Int) -> Bioseqassemblyvalidat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_range_len(s : BioseqassemblyvalidateRange) -> Int { s.size }
+pub fn BioseqassemblyvalidateRange::len(self : BioseqassemblyvalidateRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_range_get(s : BioseqassemblyvalidateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateRange::get(self : BioseqassemblyvalidateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_range_set(s : BioseqassemblyvalidateRange, i : Int, v : Double) -> BioseqassemblyvalidateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateRange::set(self : BioseqassemblyvalidateRange, i : Int, v : Double) -> BioseqassemblyvalidateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_range_sum(s : BioseqassemblyvalidateRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateRange::sum(self : BioseqassemblyvalidateRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_range_mean(s : BioseqassemblyvalidateRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateRange::mean(self : BioseqassemblyvalidateRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_range_scale(s : BioseqassemblyvalidateRange, f : Double) -> BioseqassemblyvalidateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateRange::scale(self : BioseqassemblyvalidateRange, f : Double) -> BioseqassemblyvalidateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_range_add(a : BioseqassemblyvalidateRange, b : BioseqassemblyvalidateRange) -> BioseqassemblyvalidateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateRange::add(self : BioseqassemblyvalidateRange, other : BioseqassemblyvalidateRange) -> BioseqassemblyvalidateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_range_copy(s : BioseqassemblyvalidateRange) -> BioseqassemblyvalidateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateRange::copy(self : BioseqassemblyvalidateRange) -> BioseqassemblyvalidateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_range_fill(s : BioseqassemblyvalidateRange, v : Double) -> BioseqassemblyvalidateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateRange::fill(self : BioseqassemblyvalidateRange, v : Double) -> BioseqassemblyvalidateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_range_min(s : BioseqassemblyvalidateRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateRange::min(self : BioseqassemblyvalidateRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_range_max(s : BioseqassemblyvalidateRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateRange::max(self : BioseqassemblyvalidateRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_range_to_string(s : BioseqassemblyvalidateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateRange::to_string(self : BioseqassemblyvalidateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyvalidateSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_validate_slice_make(size : Int) -> Bioseqassemblyvalidat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_validate_slice_len(s : BioseqassemblyvalidateSlice) -> Int { s.size }
+pub fn BioseqassemblyvalidateSlice::len(self : BioseqassemblyvalidateSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_validate_slice_get(s : BioseqassemblyvalidateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblyvalidateSlice::get(self : BioseqassemblyvalidateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_validate_slice_set(s : BioseqassemblyvalidateSlice, i : Int, v : Double) -> BioseqassemblyvalidateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateSlice::set(self : BioseqassemblyvalidateSlice, i : Int, v : Double) -> BioseqassemblyvalidateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_slice_sum(s : BioseqassemblyvalidateSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblyvalidateSlice::sum(self : BioseqassemblyvalidateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_validate_slice_mean(s : BioseqassemblyvalidateSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblyvalidateSlice::mean(self : BioseqassemblyvalidateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_validate_slice_scale(s : BioseqassemblyvalidateSlice, f : Double) -> BioseqassemblyvalidateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateSlice::scale(self : BioseqassemblyvalidateSlice, f : Double) -> BioseqassemblyvalidateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_slice_add(a : BioseqassemblyvalidateSlice, b : BioseqassemblyvalidateSlice) -> BioseqassemblyvalidateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblyvalidateSlice::add(self : BioseqassemblyvalidateSlice, other : BioseqassemblyvalidateSlice) -> BioseqassemblyvalidateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_slice_copy(s : BioseqassemblyvalidateSlice) -> BioseqassemblyvalidateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateSlice::copy(self : BioseqassemblyvalidateSlice) -> BioseqassemblyvalidateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_slice_fill(s : BioseqassemblyvalidateSlice, v : Double) -> BioseqassemblyvalidateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblyvalidateSlice::fill(self : BioseqassemblyvalidateSlice, v : Double) -> BioseqassemblyvalidateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_validate_slice_min(s : BioseqassemblyvalidateSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblyvalidateSlice::min(self : BioseqassemblyvalidateSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_validate_slice_max(s : BioseqassemblyvalidateSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblyvalidateSlice::max(self : BioseqassemblyvalidateSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_validate_slice_to_string(s : BioseqassemblyvalidateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblyvalidateSlice::to_string(self : BioseqassemblyvalidateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

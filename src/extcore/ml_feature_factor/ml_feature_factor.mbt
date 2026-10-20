@@ -351,45 +351,45 @@ pub fn ml_feature_factor_frame_make(size : Int) -> MlfeaturefactorFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_frame_len(s : MlfeaturefactorFrame) -> Int { s.size }
+pub fn MlfeaturefactorFrame::len(self : MlfeaturefactorFrame) -> Int { self.size }
 
-pub fn ml_feature_factor_frame_get(s : MlfeaturefactorFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorFrame::get(self : MlfeaturefactorFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_frame_set(s : MlfeaturefactorFrame, i : Int, v : Double) -> MlfeaturefactorFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorFrame::set(self : MlfeaturefactorFrame, i : Int, v : Double) -> MlfeaturefactorFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_frame_sum(s : MlfeaturefactorFrame) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorFrame::sum(self : MlfeaturefactorFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_frame_mean(s : MlfeaturefactorFrame) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorFrame::mean(self : MlfeaturefactorFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_frame_scale(s : MlfeaturefactorFrame, f : Double) -> MlfeaturefactorFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorFrame::scale(self : MlfeaturefactorFrame, f : Double) -> MlfeaturefactorFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_frame_add(a : MlfeaturefactorFrame, b : MlfeaturefactorFrame) -> MlfeaturefactorFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorFrame::add(self : MlfeaturefactorFrame, other : MlfeaturefactorFrame) -> MlfeaturefactorFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_frame_copy(s : MlfeaturefactorFrame) -> MlfeaturefactorFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorFrame::copy(self : MlfeaturefactorFrame) -> MlfeaturefactorFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_frame_fill(s : MlfeaturefactorFrame, v : Double) -> MlfeaturefactorFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorFrame::fill(self : MlfeaturefactorFrame, v : Double) -> MlfeaturefactorFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_frame_min(s : MlfeaturefactorFrame) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorFrame::min(self : MlfeaturefactorFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_frame_max(s : MlfeaturefactorFrame) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorFrame::max(self : MlfeaturefactorFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_frame_to_string(s : MlfeaturefactorFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorFrame::to_string(self : MlfeaturefactorFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorTable {
@@ -402,45 +402,45 @@ pub fn ml_feature_factor_table_make(size : Int) -> MlfeaturefactorTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_table_len(s : MlfeaturefactorTable) -> Int { s.size }
+pub fn MlfeaturefactorTable::len(self : MlfeaturefactorTable) -> Int { self.size }
 
-pub fn ml_feature_factor_table_get(s : MlfeaturefactorTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorTable::get(self : MlfeaturefactorTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_table_set(s : MlfeaturefactorTable, i : Int, v : Double) -> MlfeaturefactorTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorTable::set(self : MlfeaturefactorTable, i : Int, v : Double) -> MlfeaturefactorTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_table_sum(s : MlfeaturefactorTable) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorTable::sum(self : MlfeaturefactorTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_table_mean(s : MlfeaturefactorTable) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorTable::mean(self : MlfeaturefactorTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_table_scale(s : MlfeaturefactorTable, f : Double) -> MlfeaturefactorTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorTable::scale(self : MlfeaturefactorTable, f : Double) -> MlfeaturefactorTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_table_add(a : MlfeaturefactorTable, b : MlfeaturefactorTable) -> MlfeaturefactorTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorTable::add(self : MlfeaturefactorTable, other : MlfeaturefactorTable) -> MlfeaturefactorTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_table_copy(s : MlfeaturefactorTable) -> MlfeaturefactorTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorTable::copy(self : MlfeaturefactorTable) -> MlfeaturefactorTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_table_fill(s : MlfeaturefactorTable, v : Double) -> MlfeaturefactorTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorTable::fill(self : MlfeaturefactorTable, v : Double) -> MlfeaturefactorTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_table_min(s : MlfeaturefactorTable) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorTable::min(self : MlfeaturefactorTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_table_max(s : MlfeaturefactorTable) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorTable::max(self : MlfeaturefactorTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_table_to_string(s : MlfeaturefactorTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorTable::to_string(self : MlfeaturefactorTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorGraphN {
@@ -453,45 +453,45 @@ pub fn ml_feature_factor_graphn_make(size : Int) -> MlfeaturefactorGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_graphn_len(s : MlfeaturefactorGraphN) -> Int { s.size }
+pub fn MlfeaturefactorGraphN::len(self : MlfeaturefactorGraphN) -> Int { self.size }
 
-pub fn ml_feature_factor_graphn_get(s : MlfeaturefactorGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorGraphN::get(self : MlfeaturefactorGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_graphn_set(s : MlfeaturefactorGraphN, i : Int, v : Double) -> MlfeaturefactorGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorGraphN::set(self : MlfeaturefactorGraphN, i : Int, v : Double) -> MlfeaturefactorGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_graphn_sum(s : MlfeaturefactorGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorGraphN::sum(self : MlfeaturefactorGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_graphn_mean(s : MlfeaturefactorGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorGraphN::mean(self : MlfeaturefactorGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_graphn_scale(s : MlfeaturefactorGraphN, f : Double) -> MlfeaturefactorGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorGraphN::scale(self : MlfeaturefactorGraphN, f : Double) -> MlfeaturefactorGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_graphn_add(a : MlfeaturefactorGraphN, b : MlfeaturefactorGraphN) -> MlfeaturefactorGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorGraphN::add(self : MlfeaturefactorGraphN, other : MlfeaturefactorGraphN) -> MlfeaturefactorGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_graphn_copy(s : MlfeaturefactorGraphN) -> MlfeaturefactorGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorGraphN::copy(self : MlfeaturefactorGraphN) -> MlfeaturefactorGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_graphn_fill(s : MlfeaturefactorGraphN, v : Double) -> MlfeaturefactorGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorGraphN::fill(self : MlfeaturefactorGraphN, v : Double) -> MlfeaturefactorGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_graphn_min(s : MlfeaturefactorGraphN) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorGraphN::min(self : MlfeaturefactorGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_graphn_max(s : MlfeaturefactorGraphN) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorGraphN::max(self : MlfeaturefactorGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_graphn_to_string(s : MlfeaturefactorGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorGraphN::to_string(self : MlfeaturefactorGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorNode {
@@ -504,45 +504,45 @@ pub fn ml_feature_factor_node_make(size : Int) -> MlfeaturefactorNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_node_len(s : MlfeaturefactorNode) -> Int { s.size }
+pub fn MlfeaturefactorNode::len(self : MlfeaturefactorNode) -> Int { self.size }
 
-pub fn ml_feature_factor_node_get(s : MlfeaturefactorNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorNode::get(self : MlfeaturefactorNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_node_set(s : MlfeaturefactorNode, i : Int, v : Double) -> MlfeaturefactorNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorNode::set(self : MlfeaturefactorNode, i : Int, v : Double) -> MlfeaturefactorNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_node_sum(s : MlfeaturefactorNode) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorNode::sum(self : MlfeaturefactorNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_node_mean(s : MlfeaturefactorNode) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorNode::mean(self : MlfeaturefactorNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_node_scale(s : MlfeaturefactorNode, f : Double) -> MlfeaturefactorNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorNode::scale(self : MlfeaturefactorNode, f : Double) -> MlfeaturefactorNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_node_add(a : MlfeaturefactorNode, b : MlfeaturefactorNode) -> MlfeaturefactorNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorNode::add(self : MlfeaturefactorNode, other : MlfeaturefactorNode) -> MlfeaturefactorNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_node_copy(s : MlfeaturefactorNode) -> MlfeaturefactorNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorNode::copy(self : MlfeaturefactorNode) -> MlfeaturefactorNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_node_fill(s : MlfeaturefactorNode, v : Double) -> MlfeaturefactorNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorNode::fill(self : MlfeaturefactorNode, v : Double) -> MlfeaturefactorNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_node_min(s : MlfeaturefactorNode) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorNode::min(self : MlfeaturefactorNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_node_max(s : MlfeaturefactorNode) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorNode::max(self : MlfeaturefactorNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_node_to_string(s : MlfeaturefactorNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorNode::to_string(self : MlfeaturefactorNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorEdge {
@@ -555,45 +555,45 @@ pub fn ml_feature_factor_edge_make(size : Int) -> MlfeaturefactorEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_edge_len(s : MlfeaturefactorEdge) -> Int { s.size }
+pub fn MlfeaturefactorEdge::len(self : MlfeaturefactorEdge) -> Int { self.size }
 
-pub fn ml_feature_factor_edge_get(s : MlfeaturefactorEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorEdge::get(self : MlfeaturefactorEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_edge_set(s : MlfeaturefactorEdge, i : Int, v : Double) -> MlfeaturefactorEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorEdge::set(self : MlfeaturefactorEdge, i : Int, v : Double) -> MlfeaturefactorEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_edge_sum(s : MlfeaturefactorEdge) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorEdge::sum(self : MlfeaturefactorEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_edge_mean(s : MlfeaturefactorEdge) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorEdge::mean(self : MlfeaturefactorEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_edge_scale(s : MlfeaturefactorEdge, f : Double) -> MlfeaturefactorEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorEdge::scale(self : MlfeaturefactorEdge, f : Double) -> MlfeaturefactorEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_edge_add(a : MlfeaturefactorEdge, b : MlfeaturefactorEdge) -> MlfeaturefactorEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorEdge::add(self : MlfeaturefactorEdge, other : MlfeaturefactorEdge) -> MlfeaturefactorEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_edge_copy(s : MlfeaturefactorEdge) -> MlfeaturefactorEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorEdge::copy(self : MlfeaturefactorEdge) -> MlfeaturefactorEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_edge_fill(s : MlfeaturefactorEdge, v : Double) -> MlfeaturefactorEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorEdge::fill(self : MlfeaturefactorEdge, v : Double) -> MlfeaturefactorEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_edge_min(s : MlfeaturefactorEdge) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorEdge::min(self : MlfeaturefactorEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_edge_max(s : MlfeaturefactorEdge) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorEdge::max(self : MlfeaturefactorEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_edge_to_string(s : MlfeaturefactorEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorEdge::to_string(self : MlfeaturefactorEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorPath {
@@ -606,45 +606,45 @@ pub fn ml_feature_factor_path_make(size : Int) -> MlfeaturefactorPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_path_len(s : MlfeaturefactorPath) -> Int { s.size }
+pub fn MlfeaturefactorPath::len(self : MlfeaturefactorPath) -> Int { self.size }
 
-pub fn ml_feature_factor_path_get(s : MlfeaturefactorPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorPath::get(self : MlfeaturefactorPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_path_set(s : MlfeaturefactorPath, i : Int, v : Double) -> MlfeaturefactorPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorPath::set(self : MlfeaturefactorPath, i : Int, v : Double) -> MlfeaturefactorPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_path_sum(s : MlfeaturefactorPath) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorPath::sum(self : MlfeaturefactorPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_path_mean(s : MlfeaturefactorPath) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorPath::mean(self : MlfeaturefactorPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_path_scale(s : MlfeaturefactorPath, f : Double) -> MlfeaturefactorPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorPath::scale(self : MlfeaturefactorPath, f : Double) -> MlfeaturefactorPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_path_add(a : MlfeaturefactorPath, b : MlfeaturefactorPath) -> MlfeaturefactorPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorPath::add(self : MlfeaturefactorPath, other : MlfeaturefactorPath) -> MlfeaturefactorPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_path_copy(s : MlfeaturefactorPath) -> MlfeaturefactorPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorPath::copy(self : MlfeaturefactorPath) -> MlfeaturefactorPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_path_fill(s : MlfeaturefactorPath, v : Double) -> MlfeaturefactorPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorPath::fill(self : MlfeaturefactorPath, v : Double) -> MlfeaturefactorPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_path_min(s : MlfeaturefactorPath) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorPath::min(self : MlfeaturefactorPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_path_max(s : MlfeaturefactorPath) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorPath::max(self : MlfeaturefactorPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_path_to_string(s : MlfeaturefactorPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorPath::to_string(self : MlfeaturefactorPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorCluster {
@@ -657,45 +657,45 @@ pub fn ml_feature_factor_cluster_make(size : Int) -> MlfeaturefactorCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_cluster_len(s : MlfeaturefactorCluster) -> Int { s.size }
+pub fn MlfeaturefactorCluster::len(self : MlfeaturefactorCluster) -> Int { self.size }
 
-pub fn ml_feature_factor_cluster_get(s : MlfeaturefactorCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorCluster::get(self : MlfeaturefactorCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_cluster_set(s : MlfeaturefactorCluster, i : Int, v : Double) -> MlfeaturefactorCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCluster::set(self : MlfeaturefactorCluster, i : Int, v : Double) -> MlfeaturefactorCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cluster_sum(s : MlfeaturefactorCluster) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorCluster::sum(self : MlfeaturefactorCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_cluster_mean(s : MlfeaturefactorCluster) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorCluster::mean(self : MlfeaturefactorCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_cluster_scale(s : MlfeaturefactorCluster, f : Double) -> MlfeaturefactorCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCluster::scale(self : MlfeaturefactorCluster, f : Double) -> MlfeaturefactorCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cluster_add(a : MlfeaturefactorCluster, b : MlfeaturefactorCluster) -> MlfeaturefactorCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorCluster::add(self : MlfeaturefactorCluster, other : MlfeaturefactorCluster) -> MlfeaturefactorCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cluster_copy(s : MlfeaturefactorCluster) -> MlfeaturefactorCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCluster::copy(self : MlfeaturefactorCluster) -> MlfeaturefactorCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cluster_fill(s : MlfeaturefactorCluster, v : Double) -> MlfeaturefactorCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCluster::fill(self : MlfeaturefactorCluster, v : Double) -> MlfeaturefactorCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cluster_min(s : MlfeaturefactorCluster) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorCluster::min(self : MlfeaturefactorCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_cluster_max(s : MlfeaturefactorCluster) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorCluster::max(self : MlfeaturefactorCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_cluster_to_string(s : MlfeaturefactorCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorCluster::to_string(self : MlfeaturefactorCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorModel {
@@ -708,45 +708,45 @@ pub fn ml_feature_factor_model_make(size : Int) -> MlfeaturefactorModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_model_len(s : MlfeaturefactorModel) -> Int { s.size }
+pub fn MlfeaturefactorModel::len(self : MlfeaturefactorModel) -> Int { self.size }
 
-pub fn ml_feature_factor_model_get(s : MlfeaturefactorModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorModel::get(self : MlfeaturefactorModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_model_set(s : MlfeaturefactorModel, i : Int, v : Double) -> MlfeaturefactorModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorModel::set(self : MlfeaturefactorModel, i : Int, v : Double) -> MlfeaturefactorModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_model_sum(s : MlfeaturefactorModel) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorModel::sum(self : MlfeaturefactorModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_model_mean(s : MlfeaturefactorModel) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorModel::mean(self : MlfeaturefactorModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_model_scale(s : MlfeaturefactorModel, f : Double) -> MlfeaturefactorModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorModel::scale(self : MlfeaturefactorModel, f : Double) -> MlfeaturefactorModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_model_add(a : MlfeaturefactorModel, b : MlfeaturefactorModel) -> MlfeaturefactorModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorModel::add(self : MlfeaturefactorModel, other : MlfeaturefactorModel) -> MlfeaturefactorModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_model_copy(s : MlfeaturefactorModel) -> MlfeaturefactorModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorModel::copy(self : MlfeaturefactorModel) -> MlfeaturefactorModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_model_fill(s : MlfeaturefactorModel, v : Double) -> MlfeaturefactorModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorModel::fill(self : MlfeaturefactorModel, v : Double) -> MlfeaturefactorModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_model_min(s : MlfeaturefactorModel) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorModel::min(self : MlfeaturefactorModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_model_max(s : MlfeaturefactorModel) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorModel::max(self : MlfeaturefactorModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_model_to_string(s : MlfeaturefactorModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorModel::to_string(self : MlfeaturefactorModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorLayer {
@@ -759,45 +759,45 @@ pub fn ml_feature_factor_layer_make(size : Int) -> MlfeaturefactorLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_layer_len(s : MlfeaturefactorLayer) -> Int { s.size }
+pub fn MlfeaturefactorLayer::len(self : MlfeaturefactorLayer) -> Int { self.size }
 
-pub fn ml_feature_factor_layer_get(s : MlfeaturefactorLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorLayer::get(self : MlfeaturefactorLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_layer_set(s : MlfeaturefactorLayer, i : Int, v : Double) -> MlfeaturefactorLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorLayer::set(self : MlfeaturefactorLayer, i : Int, v : Double) -> MlfeaturefactorLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_layer_sum(s : MlfeaturefactorLayer) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorLayer::sum(self : MlfeaturefactorLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_layer_mean(s : MlfeaturefactorLayer) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorLayer::mean(self : MlfeaturefactorLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_layer_scale(s : MlfeaturefactorLayer, f : Double) -> MlfeaturefactorLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorLayer::scale(self : MlfeaturefactorLayer, f : Double) -> MlfeaturefactorLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_layer_add(a : MlfeaturefactorLayer, b : MlfeaturefactorLayer) -> MlfeaturefactorLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorLayer::add(self : MlfeaturefactorLayer, other : MlfeaturefactorLayer) -> MlfeaturefactorLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_layer_copy(s : MlfeaturefactorLayer) -> MlfeaturefactorLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorLayer::copy(self : MlfeaturefactorLayer) -> MlfeaturefactorLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_layer_fill(s : MlfeaturefactorLayer, v : Double) -> MlfeaturefactorLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorLayer::fill(self : MlfeaturefactorLayer, v : Double) -> MlfeaturefactorLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_layer_min(s : MlfeaturefactorLayer) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorLayer::min(self : MlfeaturefactorLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_layer_max(s : MlfeaturefactorLayer) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorLayer::max(self : MlfeaturefactorLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_layer_to_string(s : MlfeaturefactorLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorLayer::to_string(self : MlfeaturefactorLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorBuffer {
@@ -810,45 +810,45 @@ pub fn ml_feature_factor_buffer_make(size : Int) -> MlfeaturefactorBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_buffer_len(s : MlfeaturefactorBuffer) -> Int { s.size }
+pub fn MlfeaturefactorBuffer::len(self : MlfeaturefactorBuffer) -> Int { self.size }
 
-pub fn ml_feature_factor_buffer_get(s : MlfeaturefactorBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorBuffer::get(self : MlfeaturefactorBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_buffer_set(s : MlfeaturefactorBuffer, i : Int, v : Double) -> MlfeaturefactorBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorBuffer::set(self : MlfeaturefactorBuffer, i : Int, v : Double) -> MlfeaturefactorBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_buffer_sum(s : MlfeaturefactorBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorBuffer::sum(self : MlfeaturefactorBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_buffer_mean(s : MlfeaturefactorBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorBuffer::mean(self : MlfeaturefactorBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_buffer_scale(s : MlfeaturefactorBuffer, f : Double) -> MlfeaturefactorBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorBuffer::scale(self : MlfeaturefactorBuffer, f : Double) -> MlfeaturefactorBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_buffer_add(a : MlfeaturefactorBuffer, b : MlfeaturefactorBuffer) -> MlfeaturefactorBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorBuffer::add(self : MlfeaturefactorBuffer, other : MlfeaturefactorBuffer) -> MlfeaturefactorBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_buffer_copy(s : MlfeaturefactorBuffer) -> MlfeaturefactorBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorBuffer::copy(self : MlfeaturefactorBuffer) -> MlfeaturefactorBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_buffer_fill(s : MlfeaturefactorBuffer, v : Double) -> MlfeaturefactorBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorBuffer::fill(self : MlfeaturefactorBuffer, v : Double) -> MlfeaturefactorBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_buffer_min(s : MlfeaturefactorBuffer) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorBuffer::min(self : MlfeaturefactorBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_buffer_max(s : MlfeaturefactorBuffer) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorBuffer::max(self : MlfeaturefactorBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_buffer_to_string(s : MlfeaturefactorBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorBuffer::to_string(self : MlfeaturefactorBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorCursor {
@@ -861,45 +861,45 @@ pub fn ml_feature_factor_cursor_make(size : Int) -> MlfeaturefactorCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_cursor_len(s : MlfeaturefactorCursor) -> Int { s.size }
+pub fn MlfeaturefactorCursor::len(self : MlfeaturefactorCursor) -> Int { self.size }
 
-pub fn ml_feature_factor_cursor_get(s : MlfeaturefactorCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorCursor::get(self : MlfeaturefactorCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_cursor_set(s : MlfeaturefactorCursor, i : Int, v : Double) -> MlfeaturefactorCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCursor::set(self : MlfeaturefactorCursor, i : Int, v : Double) -> MlfeaturefactorCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cursor_sum(s : MlfeaturefactorCursor) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorCursor::sum(self : MlfeaturefactorCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_cursor_mean(s : MlfeaturefactorCursor) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorCursor::mean(self : MlfeaturefactorCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_cursor_scale(s : MlfeaturefactorCursor, f : Double) -> MlfeaturefactorCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCursor::scale(self : MlfeaturefactorCursor, f : Double) -> MlfeaturefactorCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cursor_add(a : MlfeaturefactorCursor, b : MlfeaturefactorCursor) -> MlfeaturefactorCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorCursor::add(self : MlfeaturefactorCursor, other : MlfeaturefactorCursor) -> MlfeaturefactorCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cursor_copy(s : MlfeaturefactorCursor) -> MlfeaturefactorCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCursor::copy(self : MlfeaturefactorCursor) -> MlfeaturefactorCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cursor_fill(s : MlfeaturefactorCursor, v : Double) -> MlfeaturefactorCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorCursor::fill(self : MlfeaturefactorCursor, v : Double) -> MlfeaturefactorCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_cursor_min(s : MlfeaturefactorCursor) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorCursor::min(self : MlfeaturefactorCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_cursor_max(s : MlfeaturefactorCursor) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorCursor::max(self : MlfeaturefactorCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_cursor_to_string(s : MlfeaturefactorCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorCursor::to_string(self : MlfeaturefactorCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorView {
@@ -912,45 +912,45 @@ pub fn ml_feature_factor_view_make(size : Int) -> MlfeaturefactorView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_view_len(s : MlfeaturefactorView) -> Int { s.size }
+pub fn MlfeaturefactorView::len(self : MlfeaturefactorView) -> Int { self.size }
 
-pub fn ml_feature_factor_view_get(s : MlfeaturefactorView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorView::get(self : MlfeaturefactorView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_view_set(s : MlfeaturefactorView, i : Int, v : Double) -> MlfeaturefactorView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorView::set(self : MlfeaturefactorView, i : Int, v : Double) -> MlfeaturefactorView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_view_sum(s : MlfeaturefactorView) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorView::sum(self : MlfeaturefactorView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_view_mean(s : MlfeaturefactorView) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorView::mean(self : MlfeaturefactorView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_view_scale(s : MlfeaturefactorView, f : Double) -> MlfeaturefactorView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorView::scale(self : MlfeaturefactorView, f : Double) -> MlfeaturefactorView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_view_add(a : MlfeaturefactorView, b : MlfeaturefactorView) -> MlfeaturefactorView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorView::add(self : MlfeaturefactorView, other : MlfeaturefactorView) -> MlfeaturefactorView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_view_copy(s : MlfeaturefactorView) -> MlfeaturefactorView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorView::copy(self : MlfeaturefactorView) -> MlfeaturefactorView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_view_fill(s : MlfeaturefactorView, v : Double) -> MlfeaturefactorView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorView::fill(self : MlfeaturefactorView, v : Double) -> MlfeaturefactorView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_view_min(s : MlfeaturefactorView) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorView::min(self : MlfeaturefactorView) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_view_max(s : MlfeaturefactorView) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorView::max(self : MlfeaturefactorView) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_view_to_string(s : MlfeaturefactorView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorView::to_string(self : MlfeaturefactorView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorRange {
@@ -963,45 +963,45 @@ pub fn ml_feature_factor_range_make(size : Int) -> MlfeaturefactorRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_range_len(s : MlfeaturefactorRange) -> Int { s.size }
+pub fn MlfeaturefactorRange::len(self : MlfeaturefactorRange) -> Int { self.size }
 
-pub fn ml_feature_factor_range_get(s : MlfeaturefactorRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorRange::get(self : MlfeaturefactorRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_range_set(s : MlfeaturefactorRange, i : Int, v : Double) -> MlfeaturefactorRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorRange::set(self : MlfeaturefactorRange, i : Int, v : Double) -> MlfeaturefactorRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_range_sum(s : MlfeaturefactorRange) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorRange::sum(self : MlfeaturefactorRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_range_mean(s : MlfeaturefactorRange) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorRange::mean(self : MlfeaturefactorRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_range_scale(s : MlfeaturefactorRange, f : Double) -> MlfeaturefactorRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorRange::scale(self : MlfeaturefactorRange, f : Double) -> MlfeaturefactorRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_range_add(a : MlfeaturefactorRange, b : MlfeaturefactorRange) -> MlfeaturefactorRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorRange::add(self : MlfeaturefactorRange, other : MlfeaturefactorRange) -> MlfeaturefactorRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_range_copy(s : MlfeaturefactorRange) -> MlfeaturefactorRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorRange::copy(self : MlfeaturefactorRange) -> MlfeaturefactorRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_range_fill(s : MlfeaturefactorRange, v : Double) -> MlfeaturefactorRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorRange::fill(self : MlfeaturefactorRange, v : Double) -> MlfeaturefactorRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_range_min(s : MlfeaturefactorRange) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorRange::min(self : MlfeaturefactorRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_range_max(s : MlfeaturefactorRange) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorRange::max(self : MlfeaturefactorRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_range_to_string(s : MlfeaturefactorRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorRange::to_string(self : MlfeaturefactorRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturefactorSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_feature_factor_slice_make(size : Int) -> MlfeaturefactorSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_factor_slice_len(s : MlfeaturefactorSlice) -> Int { s.size }
+pub fn MlfeaturefactorSlice::len(self : MlfeaturefactorSlice) -> Int { self.size }
 
-pub fn ml_feature_factor_slice_get(s : MlfeaturefactorSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturefactorSlice::get(self : MlfeaturefactorSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_factor_slice_set(s : MlfeaturefactorSlice, i : Int, v : Double) -> MlfeaturefactorSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturefactorSlice::set(self : MlfeaturefactorSlice, i : Int, v : Double) -> MlfeaturefactorSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_slice_sum(s : MlfeaturefactorSlice) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturefactorSlice::sum(self : MlfeaturefactorSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_factor_slice_mean(s : MlfeaturefactorSlice) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturefactorSlice::mean(self : MlfeaturefactorSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_factor_slice_scale(s : MlfeaturefactorSlice, f : Double) -> MlfeaturefactorSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorSlice::scale(self : MlfeaturefactorSlice, f : Double) -> MlfeaturefactorSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_slice_add(a : MlfeaturefactorSlice, b : MlfeaturefactorSlice) -> MlfeaturefactorSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturefactorSlice::add(self : MlfeaturefactorSlice, other : MlfeaturefactorSlice) -> MlfeaturefactorSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_factor_slice_copy(s : MlfeaturefactorSlice) -> MlfeaturefactorSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorSlice::copy(self : MlfeaturefactorSlice) -> MlfeaturefactorSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_slice_fill(s : MlfeaturefactorSlice, v : Double) -> MlfeaturefactorSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturefactorSlice::fill(self : MlfeaturefactorSlice, v : Double) -> MlfeaturefactorSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_factor_slice_min(s : MlfeaturefactorSlice) -> Double { @_common.min(s.data) }
+pub fn MlfeaturefactorSlice::min(self : MlfeaturefactorSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_factor_slice_max(s : MlfeaturefactorSlice) -> Double { @_common.max(s.data) }
+pub fn MlfeaturefactorSlice::max(self : MlfeaturefactorSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_factor_slice_to_string(s : MlfeaturefactorSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturefactorSlice::to_string(self : MlfeaturefactorSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

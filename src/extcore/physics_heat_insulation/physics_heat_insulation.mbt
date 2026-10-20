@@ -351,45 +351,45 @@ pub fn physics_heat_insulation_frame_make(size : Int) -> PhysicsheatinsulationFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_frame_len(s : PhysicsheatinsulationFrame) -> Int { s.size }
+pub fn PhysicsheatinsulationFrame::len(self : PhysicsheatinsulationFrame) -> Int { self.size }
 
-pub fn physics_heat_insulation_frame_get(s : PhysicsheatinsulationFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationFrame::get(self : PhysicsheatinsulationFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_frame_set(s : PhysicsheatinsulationFrame, i : Int, v : Double) -> PhysicsheatinsulationFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationFrame::set(self : PhysicsheatinsulationFrame, i : Int, v : Double) -> PhysicsheatinsulationFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_frame_sum(s : PhysicsheatinsulationFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationFrame::sum(self : PhysicsheatinsulationFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_frame_mean(s : PhysicsheatinsulationFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationFrame::mean(self : PhysicsheatinsulationFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_frame_scale(s : PhysicsheatinsulationFrame, f : Double) -> PhysicsheatinsulationFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationFrame::scale(self : PhysicsheatinsulationFrame, f : Double) -> PhysicsheatinsulationFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_frame_add(a : PhysicsheatinsulationFrame, b : PhysicsheatinsulationFrame) -> PhysicsheatinsulationFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationFrame::add(self : PhysicsheatinsulationFrame, other : PhysicsheatinsulationFrame) -> PhysicsheatinsulationFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_frame_copy(s : PhysicsheatinsulationFrame) -> PhysicsheatinsulationFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationFrame::copy(self : PhysicsheatinsulationFrame) -> PhysicsheatinsulationFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_frame_fill(s : PhysicsheatinsulationFrame, v : Double) -> PhysicsheatinsulationFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationFrame::fill(self : PhysicsheatinsulationFrame, v : Double) -> PhysicsheatinsulationFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_frame_min(s : PhysicsheatinsulationFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationFrame::min(self : PhysicsheatinsulationFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_frame_max(s : PhysicsheatinsulationFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationFrame::max(self : PhysicsheatinsulationFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_frame_to_string(s : PhysicsheatinsulationFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationFrame::to_string(self : PhysicsheatinsulationFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationTable {
@@ -402,45 +402,45 @@ pub fn physics_heat_insulation_table_make(size : Int) -> PhysicsheatinsulationTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_table_len(s : PhysicsheatinsulationTable) -> Int { s.size }
+pub fn PhysicsheatinsulationTable::len(self : PhysicsheatinsulationTable) -> Int { self.size }
 
-pub fn physics_heat_insulation_table_get(s : PhysicsheatinsulationTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationTable::get(self : PhysicsheatinsulationTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_table_set(s : PhysicsheatinsulationTable, i : Int, v : Double) -> PhysicsheatinsulationTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationTable::set(self : PhysicsheatinsulationTable, i : Int, v : Double) -> PhysicsheatinsulationTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_table_sum(s : PhysicsheatinsulationTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationTable::sum(self : PhysicsheatinsulationTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_table_mean(s : PhysicsheatinsulationTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationTable::mean(self : PhysicsheatinsulationTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_table_scale(s : PhysicsheatinsulationTable, f : Double) -> PhysicsheatinsulationTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationTable::scale(self : PhysicsheatinsulationTable, f : Double) -> PhysicsheatinsulationTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_table_add(a : PhysicsheatinsulationTable, b : PhysicsheatinsulationTable) -> PhysicsheatinsulationTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationTable::add(self : PhysicsheatinsulationTable, other : PhysicsheatinsulationTable) -> PhysicsheatinsulationTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_table_copy(s : PhysicsheatinsulationTable) -> PhysicsheatinsulationTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationTable::copy(self : PhysicsheatinsulationTable) -> PhysicsheatinsulationTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_table_fill(s : PhysicsheatinsulationTable, v : Double) -> PhysicsheatinsulationTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationTable::fill(self : PhysicsheatinsulationTable, v : Double) -> PhysicsheatinsulationTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_table_min(s : PhysicsheatinsulationTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationTable::min(self : PhysicsheatinsulationTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_table_max(s : PhysicsheatinsulationTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationTable::max(self : PhysicsheatinsulationTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_table_to_string(s : PhysicsheatinsulationTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationTable::to_string(self : PhysicsheatinsulationTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationGraphN {
@@ -453,45 +453,45 @@ pub fn physics_heat_insulation_graphn_make(size : Int) -> PhysicsheatinsulationG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_graphn_len(s : PhysicsheatinsulationGraphN) -> Int { s.size }
+pub fn PhysicsheatinsulationGraphN::len(self : PhysicsheatinsulationGraphN) -> Int { self.size }
 
-pub fn physics_heat_insulation_graphn_get(s : PhysicsheatinsulationGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationGraphN::get(self : PhysicsheatinsulationGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_graphn_set(s : PhysicsheatinsulationGraphN, i : Int, v : Double) -> PhysicsheatinsulationGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationGraphN::set(self : PhysicsheatinsulationGraphN, i : Int, v : Double) -> PhysicsheatinsulationGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_graphn_sum(s : PhysicsheatinsulationGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationGraphN::sum(self : PhysicsheatinsulationGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_graphn_mean(s : PhysicsheatinsulationGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationGraphN::mean(self : PhysicsheatinsulationGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_graphn_scale(s : PhysicsheatinsulationGraphN, f : Double) -> PhysicsheatinsulationGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationGraphN::scale(self : PhysicsheatinsulationGraphN, f : Double) -> PhysicsheatinsulationGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_graphn_add(a : PhysicsheatinsulationGraphN, b : PhysicsheatinsulationGraphN) -> PhysicsheatinsulationGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationGraphN::add(self : PhysicsheatinsulationGraphN, other : PhysicsheatinsulationGraphN) -> PhysicsheatinsulationGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_graphn_copy(s : PhysicsheatinsulationGraphN) -> PhysicsheatinsulationGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationGraphN::copy(self : PhysicsheatinsulationGraphN) -> PhysicsheatinsulationGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_graphn_fill(s : PhysicsheatinsulationGraphN, v : Double) -> PhysicsheatinsulationGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationGraphN::fill(self : PhysicsheatinsulationGraphN, v : Double) -> PhysicsheatinsulationGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_graphn_min(s : PhysicsheatinsulationGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationGraphN::min(self : PhysicsheatinsulationGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_graphn_max(s : PhysicsheatinsulationGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationGraphN::max(self : PhysicsheatinsulationGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_graphn_to_string(s : PhysicsheatinsulationGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationGraphN::to_string(self : PhysicsheatinsulationGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationNode {
@@ -504,45 +504,45 @@ pub fn physics_heat_insulation_node_make(size : Int) -> PhysicsheatinsulationNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_node_len(s : PhysicsheatinsulationNode) -> Int { s.size }
+pub fn PhysicsheatinsulationNode::len(self : PhysicsheatinsulationNode) -> Int { self.size }
 
-pub fn physics_heat_insulation_node_get(s : PhysicsheatinsulationNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationNode::get(self : PhysicsheatinsulationNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_node_set(s : PhysicsheatinsulationNode, i : Int, v : Double) -> PhysicsheatinsulationNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationNode::set(self : PhysicsheatinsulationNode, i : Int, v : Double) -> PhysicsheatinsulationNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_node_sum(s : PhysicsheatinsulationNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationNode::sum(self : PhysicsheatinsulationNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_node_mean(s : PhysicsheatinsulationNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationNode::mean(self : PhysicsheatinsulationNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_node_scale(s : PhysicsheatinsulationNode, f : Double) -> PhysicsheatinsulationNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationNode::scale(self : PhysicsheatinsulationNode, f : Double) -> PhysicsheatinsulationNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_node_add(a : PhysicsheatinsulationNode, b : PhysicsheatinsulationNode) -> PhysicsheatinsulationNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationNode::add(self : PhysicsheatinsulationNode, other : PhysicsheatinsulationNode) -> PhysicsheatinsulationNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_node_copy(s : PhysicsheatinsulationNode) -> PhysicsheatinsulationNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationNode::copy(self : PhysicsheatinsulationNode) -> PhysicsheatinsulationNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_node_fill(s : PhysicsheatinsulationNode, v : Double) -> PhysicsheatinsulationNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationNode::fill(self : PhysicsheatinsulationNode, v : Double) -> PhysicsheatinsulationNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_node_min(s : PhysicsheatinsulationNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationNode::min(self : PhysicsheatinsulationNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_node_max(s : PhysicsheatinsulationNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationNode::max(self : PhysicsheatinsulationNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_node_to_string(s : PhysicsheatinsulationNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationNode::to_string(self : PhysicsheatinsulationNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationEdge {
@@ -555,45 +555,45 @@ pub fn physics_heat_insulation_edge_make(size : Int) -> PhysicsheatinsulationEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_edge_len(s : PhysicsheatinsulationEdge) -> Int { s.size }
+pub fn PhysicsheatinsulationEdge::len(self : PhysicsheatinsulationEdge) -> Int { self.size }
 
-pub fn physics_heat_insulation_edge_get(s : PhysicsheatinsulationEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationEdge::get(self : PhysicsheatinsulationEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_edge_set(s : PhysicsheatinsulationEdge, i : Int, v : Double) -> PhysicsheatinsulationEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationEdge::set(self : PhysicsheatinsulationEdge, i : Int, v : Double) -> PhysicsheatinsulationEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_edge_sum(s : PhysicsheatinsulationEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationEdge::sum(self : PhysicsheatinsulationEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_edge_mean(s : PhysicsheatinsulationEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationEdge::mean(self : PhysicsheatinsulationEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_edge_scale(s : PhysicsheatinsulationEdge, f : Double) -> PhysicsheatinsulationEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationEdge::scale(self : PhysicsheatinsulationEdge, f : Double) -> PhysicsheatinsulationEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_edge_add(a : PhysicsheatinsulationEdge, b : PhysicsheatinsulationEdge) -> PhysicsheatinsulationEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationEdge::add(self : PhysicsheatinsulationEdge, other : PhysicsheatinsulationEdge) -> PhysicsheatinsulationEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_edge_copy(s : PhysicsheatinsulationEdge) -> PhysicsheatinsulationEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationEdge::copy(self : PhysicsheatinsulationEdge) -> PhysicsheatinsulationEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_edge_fill(s : PhysicsheatinsulationEdge, v : Double) -> PhysicsheatinsulationEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationEdge::fill(self : PhysicsheatinsulationEdge, v : Double) -> PhysicsheatinsulationEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_edge_min(s : PhysicsheatinsulationEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationEdge::min(self : PhysicsheatinsulationEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_edge_max(s : PhysicsheatinsulationEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationEdge::max(self : PhysicsheatinsulationEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_edge_to_string(s : PhysicsheatinsulationEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationEdge::to_string(self : PhysicsheatinsulationEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationPath {
@@ -606,45 +606,45 @@ pub fn physics_heat_insulation_path_make(size : Int) -> PhysicsheatinsulationPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_path_len(s : PhysicsheatinsulationPath) -> Int { s.size }
+pub fn PhysicsheatinsulationPath::len(self : PhysicsheatinsulationPath) -> Int { self.size }
 
-pub fn physics_heat_insulation_path_get(s : PhysicsheatinsulationPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationPath::get(self : PhysicsheatinsulationPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_path_set(s : PhysicsheatinsulationPath, i : Int, v : Double) -> PhysicsheatinsulationPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationPath::set(self : PhysicsheatinsulationPath, i : Int, v : Double) -> PhysicsheatinsulationPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_path_sum(s : PhysicsheatinsulationPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationPath::sum(self : PhysicsheatinsulationPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_path_mean(s : PhysicsheatinsulationPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationPath::mean(self : PhysicsheatinsulationPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_path_scale(s : PhysicsheatinsulationPath, f : Double) -> PhysicsheatinsulationPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationPath::scale(self : PhysicsheatinsulationPath, f : Double) -> PhysicsheatinsulationPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_path_add(a : PhysicsheatinsulationPath, b : PhysicsheatinsulationPath) -> PhysicsheatinsulationPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationPath::add(self : PhysicsheatinsulationPath, other : PhysicsheatinsulationPath) -> PhysicsheatinsulationPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_path_copy(s : PhysicsheatinsulationPath) -> PhysicsheatinsulationPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationPath::copy(self : PhysicsheatinsulationPath) -> PhysicsheatinsulationPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_path_fill(s : PhysicsheatinsulationPath, v : Double) -> PhysicsheatinsulationPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationPath::fill(self : PhysicsheatinsulationPath, v : Double) -> PhysicsheatinsulationPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_path_min(s : PhysicsheatinsulationPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationPath::min(self : PhysicsheatinsulationPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_path_max(s : PhysicsheatinsulationPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationPath::max(self : PhysicsheatinsulationPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_path_to_string(s : PhysicsheatinsulationPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationPath::to_string(self : PhysicsheatinsulationPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationCluster {
@@ -657,45 +657,45 @@ pub fn physics_heat_insulation_cluster_make(size : Int) -> Physicsheatinsulation
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_cluster_len(s : PhysicsheatinsulationCluster) -> Int { s.size }
+pub fn PhysicsheatinsulationCluster::len(self : PhysicsheatinsulationCluster) -> Int { self.size }
 
-pub fn physics_heat_insulation_cluster_get(s : PhysicsheatinsulationCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationCluster::get(self : PhysicsheatinsulationCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_cluster_set(s : PhysicsheatinsulationCluster, i : Int, v : Double) -> PhysicsheatinsulationCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCluster::set(self : PhysicsheatinsulationCluster, i : Int, v : Double) -> PhysicsheatinsulationCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cluster_sum(s : PhysicsheatinsulationCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationCluster::sum(self : PhysicsheatinsulationCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_cluster_mean(s : PhysicsheatinsulationCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationCluster::mean(self : PhysicsheatinsulationCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_cluster_scale(s : PhysicsheatinsulationCluster, f : Double) -> PhysicsheatinsulationCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCluster::scale(self : PhysicsheatinsulationCluster, f : Double) -> PhysicsheatinsulationCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cluster_add(a : PhysicsheatinsulationCluster, b : PhysicsheatinsulationCluster) -> PhysicsheatinsulationCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationCluster::add(self : PhysicsheatinsulationCluster, other : PhysicsheatinsulationCluster) -> PhysicsheatinsulationCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cluster_copy(s : PhysicsheatinsulationCluster) -> PhysicsheatinsulationCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCluster::copy(self : PhysicsheatinsulationCluster) -> PhysicsheatinsulationCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cluster_fill(s : PhysicsheatinsulationCluster, v : Double) -> PhysicsheatinsulationCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCluster::fill(self : PhysicsheatinsulationCluster, v : Double) -> PhysicsheatinsulationCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cluster_min(s : PhysicsheatinsulationCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationCluster::min(self : PhysicsheatinsulationCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_cluster_max(s : PhysicsheatinsulationCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationCluster::max(self : PhysicsheatinsulationCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_cluster_to_string(s : PhysicsheatinsulationCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationCluster::to_string(self : PhysicsheatinsulationCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationModel {
@@ -708,45 +708,45 @@ pub fn physics_heat_insulation_model_make(size : Int) -> PhysicsheatinsulationMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_model_len(s : PhysicsheatinsulationModel) -> Int { s.size }
+pub fn PhysicsheatinsulationModel::len(self : PhysicsheatinsulationModel) -> Int { self.size }
 
-pub fn physics_heat_insulation_model_get(s : PhysicsheatinsulationModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationModel::get(self : PhysicsheatinsulationModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_model_set(s : PhysicsheatinsulationModel, i : Int, v : Double) -> PhysicsheatinsulationModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationModel::set(self : PhysicsheatinsulationModel, i : Int, v : Double) -> PhysicsheatinsulationModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_model_sum(s : PhysicsheatinsulationModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationModel::sum(self : PhysicsheatinsulationModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_model_mean(s : PhysicsheatinsulationModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationModel::mean(self : PhysicsheatinsulationModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_model_scale(s : PhysicsheatinsulationModel, f : Double) -> PhysicsheatinsulationModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationModel::scale(self : PhysicsheatinsulationModel, f : Double) -> PhysicsheatinsulationModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_model_add(a : PhysicsheatinsulationModel, b : PhysicsheatinsulationModel) -> PhysicsheatinsulationModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationModel::add(self : PhysicsheatinsulationModel, other : PhysicsheatinsulationModel) -> PhysicsheatinsulationModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_model_copy(s : PhysicsheatinsulationModel) -> PhysicsheatinsulationModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationModel::copy(self : PhysicsheatinsulationModel) -> PhysicsheatinsulationModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_model_fill(s : PhysicsheatinsulationModel, v : Double) -> PhysicsheatinsulationModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationModel::fill(self : PhysicsheatinsulationModel, v : Double) -> PhysicsheatinsulationModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_model_min(s : PhysicsheatinsulationModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationModel::min(self : PhysicsheatinsulationModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_model_max(s : PhysicsheatinsulationModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationModel::max(self : PhysicsheatinsulationModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_model_to_string(s : PhysicsheatinsulationModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationModel::to_string(self : PhysicsheatinsulationModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationLayer {
@@ -759,45 +759,45 @@ pub fn physics_heat_insulation_layer_make(size : Int) -> PhysicsheatinsulationLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_layer_len(s : PhysicsheatinsulationLayer) -> Int { s.size }
+pub fn PhysicsheatinsulationLayer::len(self : PhysicsheatinsulationLayer) -> Int { self.size }
 
-pub fn physics_heat_insulation_layer_get(s : PhysicsheatinsulationLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationLayer::get(self : PhysicsheatinsulationLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_layer_set(s : PhysicsheatinsulationLayer, i : Int, v : Double) -> PhysicsheatinsulationLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationLayer::set(self : PhysicsheatinsulationLayer, i : Int, v : Double) -> PhysicsheatinsulationLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_layer_sum(s : PhysicsheatinsulationLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationLayer::sum(self : PhysicsheatinsulationLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_layer_mean(s : PhysicsheatinsulationLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationLayer::mean(self : PhysicsheatinsulationLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_layer_scale(s : PhysicsheatinsulationLayer, f : Double) -> PhysicsheatinsulationLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationLayer::scale(self : PhysicsheatinsulationLayer, f : Double) -> PhysicsheatinsulationLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_layer_add(a : PhysicsheatinsulationLayer, b : PhysicsheatinsulationLayer) -> PhysicsheatinsulationLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationLayer::add(self : PhysicsheatinsulationLayer, other : PhysicsheatinsulationLayer) -> PhysicsheatinsulationLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_layer_copy(s : PhysicsheatinsulationLayer) -> PhysicsheatinsulationLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationLayer::copy(self : PhysicsheatinsulationLayer) -> PhysicsheatinsulationLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_layer_fill(s : PhysicsheatinsulationLayer, v : Double) -> PhysicsheatinsulationLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationLayer::fill(self : PhysicsheatinsulationLayer, v : Double) -> PhysicsheatinsulationLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_layer_min(s : PhysicsheatinsulationLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationLayer::min(self : PhysicsheatinsulationLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_layer_max(s : PhysicsheatinsulationLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationLayer::max(self : PhysicsheatinsulationLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_layer_to_string(s : PhysicsheatinsulationLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationLayer::to_string(self : PhysicsheatinsulationLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationBuffer {
@@ -810,45 +810,45 @@ pub fn physics_heat_insulation_buffer_make(size : Int) -> PhysicsheatinsulationB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_buffer_len(s : PhysicsheatinsulationBuffer) -> Int { s.size }
+pub fn PhysicsheatinsulationBuffer::len(self : PhysicsheatinsulationBuffer) -> Int { self.size }
 
-pub fn physics_heat_insulation_buffer_get(s : PhysicsheatinsulationBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationBuffer::get(self : PhysicsheatinsulationBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_buffer_set(s : PhysicsheatinsulationBuffer, i : Int, v : Double) -> PhysicsheatinsulationBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationBuffer::set(self : PhysicsheatinsulationBuffer, i : Int, v : Double) -> PhysicsheatinsulationBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_buffer_sum(s : PhysicsheatinsulationBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationBuffer::sum(self : PhysicsheatinsulationBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_buffer_mean(s : PhysicsheatinsulationBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationBuffer::mean(self : PhysicsheatinsulationBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_buffer_scale(s : PhysicsheatinsulationBuffer, f : Double) -> PhysicsheatinsulationBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationBuffer::scale(self : PhysicsheatinsulationBuffer, f : Double) -> PhysicsheatinsulationBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_buffer_add(a : PhysicsheatinsulationBuffer, b : PhysicsheatinsulationBuffer) -> PhysicsheatinsulationBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationBuffer::add(self : PhysicsheatinsulationBuffer, other : PhysicsheatinsulationBuffer) -> PhysicsheatinsulationBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_buffer_copy(s : PhysicsheatinsulationBuffer) -> PhysicsheatinsulationBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationBuffer::copy(self : PhysicsheatinsulationBuffer) -> PhysicsheatinsulationBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_buffer_fill(s : PhysicsheatinsulationBuffer, v : Double) -> PhysicsheatinsulationBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationBuffer::fill(self : PhysicsheatinsulationBuffer, v : Double) -> PhysicsheatinsulationBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_buffer_min(s : PhysicsheatinsulationBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationBuffer::min(self : PhysicsheatinsulationBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_buffer_max(s : PhysicsheatinsulationBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationBuffer::max(self : PhysicsheatinsulationBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_buffer_to_string(s : PhysicsheatinsulationBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationBuffer::to_string(self : PhysicsheatinsulationBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationCursor {
@@ -861,45 +861,45 @@ pub fn physics_heat_insulation_cursor_make(size : Int) -> PhysicsheatinsulationC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_cursor_len(s : PhysicsheatinsulationCursor) -> Int { s.size }
+pub fn PhysicsheatinsulationCursor::len(self : PhysicsheatinsulationCursor) -> Int { self.size }
 
-pub fn physics_heat_insulation_cursor_get(s : PhysicsheatinsulationCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationCursor::get(self : PhysicsheatinsulationCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_cursor_set(s : PhysicsheatinsulationCursor, i : Int, v : Double) -> PhysicsheatinsulationCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCursor::set(self : PhysicsheatinsulationCursor, i : Int, v : Double) -> PhysicsheatinsulationCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cursor_sum(s : PhysicsheatinsulationCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationCursor::sum(self : PhysicsheatinsulationCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_cursor_mean(s : PhysicsheatinsulationCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationCursor::mean(self : PhysicsheatinsulationCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_cursor_scale(s : PhysicsheatinsulationCursor, f : Double) -> PhysicsheatinsulationCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCursor::scale(self : PhysicsheatinsulationCursor, f : Double) -> PhysicsheatinsulationCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cursor_add(a : PhysicsheatinsulationCursor, b : PhysicsheatinsulationCursor) -> PhysicsheatinsulationCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationCursor::add(self : PhysicsheatinsulationCursor, other : PhysicsheatinsulationCursor) -> PhysicsheatinsulationCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cursor_copy(s : PhysicsheatinsulationCursor) -> PhysicsheatinsulationCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCursor::copy(self : PhysicsheatinsulationCursor) -> PhysicsheatinsulationCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cursor_fill(s : PhysicsheatinsulationCursor, v : Double) -> PhysicsheatinsulationCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationCursor::fill(self : PhysicsheatinsulationCursor, v : Double) -> PhysicsheatinsulationCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_cursor_min(s : PhysicsheatinsulationCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationCursor::min(self : PhysicsheatinsulationCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_cursor_max(s : PhysicsheatinsulationCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationCursor::max(self : PhysicsheatinsulationCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_cursor_to_string(s : PhysicsheatinsulationCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationCursor::to_string(self : PhysicsheatinsulationCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationView {
@@ -912,45 +912,45 @@ pub fn physics_heat_insulation_view_make(size : Int) -> PhysicsheatinsulationVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_view_len(s : PhysicsheatinsulationView) -> Int { s.size }
+pub fn PhysicsheatinsulationView::len(self : PhysicsheatinsulationView) -> Int { self.size }
 
-pub fn physics_heat_insulation_view_get(s : PhysicsheatinsulationView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationView::get(self : PhysicsheatinsulationView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_view_set(s : PhysicsheatinsulationView, i : Int, v : Double) -> PhysicsheatinsulationView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationView::set(self : PhysicsheatinsulationView, i : Int, v : Double) -> PhysicsheatinsulationView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_view_sum(s : PhysicsheatinsulationView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationView::sum(self : PhysicsheatinsulationView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_view_mean(s : PhysicsheatinsulationView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationView::mean(self : PhysicsheatinsulationView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_view_scale(s : PhysicsheatinsulationView, f : Double) -> PhysicsheatinsulationView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationView::scale(self : PhysicsheatinsulationView, f : Double) -> PhysicsheatinsulationView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_view_add(a : PhysicsheatinsulationView, b : PhysicsheatinsulationView) -> PhysicsheatinsulationView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationView::add(self : PhysicsheatinsulationView, other : PhysicsheatinsulationView) -> PhysicsheatinsulationView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_view_copy(s : PhysicsheatinsulationView) -> PhysicsheatinsulationView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationView::copy(self : PhysicsheatinsulationView) -> PhysicsheatinsulationView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_view_fill(s : PhysicsheatinsulationView, v : Double) -> PhysicsheatinsulationView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationView::fill(self : PhysicsheatinsulationView, v : Double) -> PhysicsheatinsulationView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_view_min(s : PhysicsheatinsulationView) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationView::min(self : PhysicsheatinsulationView) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_view_max(s : PhysicsheatinsulationView) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationView::max(self : PhysicsheatinsulationView) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_view_to_string(s : PhysicsheatinsulationView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationView::to_string(self : PhysicsheatinsulationView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationRange {
@@ -963,45 +963,45 @@ pub fn physics_heat_insulation_range_make(size : Int) -> PhysicsheatinsulationRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_range_len(s : PhysicsheatinsulationRange) -> Int { s.size }
+pub fn PhysicsheatinsulationRange::len(self : PhysicsheatinsulationRange) -> Int { self.size }
 
-pub fn physics_heat_insulation_range_get(s : PhysicsheatinsulationRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationRange::get(self : PhysicsheatinsulationRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_range_set(s : PhysicsheatinsulationRange, i : Int, v : Double) -> PhysicsheatinsulationRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationRange::set(self : PhysicsheatinsulationRange, i : Int, v : Double) -> PhysicsheatinsulationRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_range_sum(s : PhysicsheatinsulationRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationRange::sum(self : PhysicsheatinsulationRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_range_mean(s : PhysicsheatinsulationRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationRange::mean(self : PhysicsheatinsulationRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_range_scale(s : PhysicsheatinsulationRange, f : Double) -> PhysicsheatinsulationRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationRange::scale(self : PhysicsheatinsulationRange, f : Double) -> PhysicsheatinsulationRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_range_add(a : PhysicsheatinsulationRange, b : PhysicsheatinsulationRange) -> PhysicsheatinsulationRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationRange::add(self : PhysicsheatinsulationRange, other : PhysicsheatinsulationRange) -> PhysicsheatinsulationRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_range_copy(s : PhysicsheatinsulationRange) -> PhysicsheatinsulationRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationRange::copy(self : PhysicsheatinsulationRange) -> PhysicsheatinsulationRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_range_fill(s : PhysicsheatinsulationRange, v : Double) -> PhysicsheatinsulationRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationRange::fill(self : PhysicsheatinsulationRange, v : Double) -> PhysicsheatinsulationRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_range_min(s : PhysicsheatinsulationRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationRange::min(self : PhysicsheatinsulationRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_range_max(s : PhysicsheatinsulationRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationRange::max(self : PhysicsheatinsulationRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_range_to_string(s : PhysicsheatinsulationRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationRange::to_string(self : PhysicsheatinsulationRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatinsulationSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_heat_insulation_slice_make(size : Int) -> PhysicsheatinsulationSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_insulation_slice_len(s : PhysicsheatinsulationSlice) -> Int { s.size }
+pub fn PhysicsheatinsulationSlice::len(self : PhysicsheatinsulationSlice) -> Int { self.size }
 
-pub fn physics_heat_insulation_slice_get(s : PhysicsheatinsulationSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatinsulationSlice::get(self : PhysicsheatinsulationSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_insulation_slice_set(s : PhysicsheatinsulationSlice, i : Int, v : Double) -> PhysicsheatinsulationSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationSlice::set(self : PhysicsheatinsulationSlice, i : Int, v : Double) -> PhysicsheatinsulationSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_slice_sum(s : PhysicsheatinsulationSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatinsulationSlice::sum(self : PhysicsheatinsulationSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_insulation_slice_mean(s : PhysicsheatinsulationSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatinsulationSlice::mean(self : PhysicsheatinsulationSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_insulation_slice_scale(s : PhysicsheatinsulationSlice, f : Double) -> PhysicsheatinsulationSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationSlice::scale(self : PhysicsheatinsulationSlice, f : Double) -> PhysicsheatinsulationSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_slice_add(a : PhysicsheatinsulationSlice, b : PhysicsheatinsulationSlice) -> PhysicsheatinsulationSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatinsulationSlice::add(self : PhysicsheatinsulationSlice, other : PhysicsheatinsulationSlice) -> PhysicsheatinsulationSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_slice_copy(s : PhysicsheatinsulationSlice) -> PhysicsheatinsulationSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationSlice::copy(self : PhysicsheatinsulationSlice) -> PhysicsheatinsulationSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_slice_fill(s : PhysicsheatinsulationSlice, v : Double) -> PhysicsheatinsulationSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatinsulationSlice::fill(self : PhysicsheatinsulationSlice, v : Double) -> PhysicsheatinsulationSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_insulation_slice_min(s : PhysicsheatinsulationSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatinsulationSlice::min(self : PhysicsheatinsulationSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_insulation_slice_max(s : PhysicsheatinsulationSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatinsulationSlice::max(self : PhysicsheatinsulationSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_insulation_slice_to_string(s : PhysicsheatinsulationSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatinsulationSlice::to_string(self : PhysicsheatinsulationSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

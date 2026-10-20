@@ -351,45 +351,45 @@ pub fn ds_list_unrolled_frame_make(size : Int) -> DslistunrolledFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_frame_len(s : DslistunrolledFrame) -> Int { s.size }
+pub fn DslistunrolledFrame::len(self : DslistunrolledFrame) -> Int { self.size }
 
-pub fn ds_list_unrolled_frame_get(s : DslistunrolledFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledFrame::get(self : DslistunrolledFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_frame_set(s : DslistunrolledFrame, i : Int, v : Double) -> DslistunrolledFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledFrame::set(self : DslistunrolledFrame, i : Int, v : Double) -> DslistunrolledFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_frame_sum(s : DslistunrolledFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledFrame::sum(self : DslistunrolledFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_frame_mean(s : DslistunrolledFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledFrame::mean(self : DslistunrolledFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_frame_scale(s : DslistunrolledFrame, f : Double) -> DslistunrolledFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledFrame::scale(self : DslistunrolledFrame, f : Double) -> DslistunrolledFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_frame_add(a : DslistunrolledFrame, b : DslistunrolledFrame) -> DslistunrolledFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledFrame::add(self : DslistunrolledFrame, other : DslistunrolledFrame) -> DslistunrolledFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_frame_copy(s : DslistunrolledFrame) -> DslistunrolledFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledFrame::copy(self : DslistunrolledFrame) -> DslistunrolledFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_frame_fill(s : DslistunrolledFrame, v : Double) -> DslistunrolledFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledFrame::fill(self : DslistunrolledFrame, v : Double) -> DslistunrolledFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_frame_min(s : DslistunrolledFrame) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledFrame::min(self : DslistunrolledFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_frame_max(s : DslistunrolledFrame) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledFrame::max(self : DslistunrolledFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_frame_to_string(s : DslistunrolledFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledFrame::to_string(self : DslistunrolledFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledTable {
@@ -402,45 +402,45 @@ pub fn ds_list_unrolled_table_make(size : Int) -> DslistunrolledTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_table_len(s : DslistunrolledTable) -> Int { s.size }
+pub fn DslistunrolledTable::len(self : DslistunrolledTable) -> Int { self.size }
 
-pub fn ds_list_unrolled_table_get(s : DslistunrolledTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledTable::get(self : DslistunrolledTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_table_set(s : DslistunrolledTable, i : Int, v : Double) -> DslistunrolledTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledTable::set(self : DslistunrolledTable, i : Int, v : Double) -> DslistunrolledTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_table_sum(s : DslistunrolledTable) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledTable::sum(self : DslistunrolledTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_table_mean(s : DslistunrolledTable) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledTable::mean(self : DslistunrolledTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_table_scale(s : DslistunrolledTable, f : Double) -> DslistunrolledTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledTable::scale(self : DslistunrolledTable, f : Double) -> DslistunrolledTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_table_add(a : DslistunrolledTable, b : DslistunrolledTable) -> DslistunrolledTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledTable::add(self : DslistunrolledTable, other : DslistunrolledTable) -> DslistunrolledTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_table_copy(s : DslistunrolledTable) -> DslistunrolledTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledTable::copy(self : DslistunrolledTable) -> DslistunrolledTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_table_fill(s : DslistunrolledTable, v : Double) -> DslistunrolledTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledTable::fill(self : DslistunrolledTable, v : Double) -> DslistunrolledTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_table_min(s : DslistunrolledTable) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledTable::min(self : DslistunrolledTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_table_max(s : DslistunrolledTable) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledTable::max(self : DslistunrolledTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_table_to_string(s : DslistunrolledTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledTable::to_string(self : DslistunrolledTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_unrolled_graphn_make(size : Int) -> DslistunrolledGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_graphn_len(s : DslistunrolledGraphN) -> Int { s.size }
+pub fn DslistunrolledGraphN::len(self : DslistunrolledGraphN) -> Int { self.size }
 
-pub fn ds_list_unrolled_graphn_get(s : DslistunrolledGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledGraphN::get(self : DslistunrolledGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_graphn_set(s : DslistunrolledGraphN, i : Int, v : Double) -> DslistunrolledGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledGraphN::set(self : DslistunrolledGraphN, i : Int, v : Double) -> DslistunrolledGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_graphn_sum(s : DslistunrolledGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledGraphN::sum(self : DslistunrolledGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_graphn_mean(s : DslistunrolledGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledGraphN::mean(self : DslistunrolledGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_graphn_scale(s : DslistunrolledGraphN, f : Double) -> DslistunrolledGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledGraphN::scale(self : DslistunrolledGraphN, f : Double) -> DslistunrolledGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_graphn_add(a : DslistunrolledGraphN, b : DslistunrolledGraphN) -> DslistunrolledGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledGraphN::add(self : DslistunrolledGraphN, other : DslistunrolledGraphN) -> DslistunrolledGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_graphn_copy(s : DslistunrolledGraphN) -> DslistunrolledGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledGraphN::copy(self : DslistunrolledGraphN) -> DslistunrolledGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_graphn_fill(s : DslistunrolledGraphN, v : Double) -> DslistunrolledGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledGraphN::fill(self : DslistunrolledGraphN, v : Double) -> DslistunrolledGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_graphn_min(s : DslistunrolledGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledGraphN::min(self : DslistunrolledGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_graphn_max(s : DslistunrolledGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledGraphN::max(self : DslistunrolledGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_graphn_to_string(s : DslistunrolledGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledGraphN::to_string(self : DslistunrolledGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledNode {
@@ -504,45 +504,45 @@ pub fn ds_list_unrolled_node_make(size : Int) -> DslistunrolledNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_node_len(s : DslistunrolledNode) -> Int { s.size }
+pub fn DslistunrolledNode::len(self : DslistunrolledNode) -> Int { self.size }
 
-pub fn ds_list_unrolled_node_get(s : DslistunrolledNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledNode::get(self : DslistunrolledNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_node_set(s : DslistunrolledNode, i : Int, v : Double) -> DslistunrolledNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledNode::set(self : DslistunrolledNode, i : Int, v : Double) -> DslistunrolledNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_node_sum(s : DslistunrolledNode) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledNode::sum(self : DslistunrolledNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_node_mean(s : DslistunrolledNode) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledNode::mean(self : DslistunrolledNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_node_scale(s : DslistunrolledNode, f : Double) -> DslistunrolledNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledNode::scale(self : DslistunrolledNode, f : Double) -> DslistunrolledNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_node_add(a : DslistunrolledNode, b : DslistunrolledNode) -> DslistunrolledNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledNode::add(self : DslistunrolledNode, other : DslistunrolledNode) -> DslistunrolledNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_node_copy(s : DslistunrolledNode) -> DslistunrolledNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledNode::copy(self : DslistunrolledNode) -> DslistunrolledNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_node_fill(s : DslistunrolledNode, v : Double) -> DslistunrolledNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledNode::fill(self : DslistunrolledNode, v : Double) -> DslistunrolledNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_node_min(s : DslistunrolledNode) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledNode::min(self : DslistunrolledNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_node_max(s : DslistunrolledNode) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledNode::max(self : DslistunrolledNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_node_to_string(s : DslistunrolledNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledNode::to_string(self : DslistunrolledNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_unrolled_edge_make(size : Int) -> DslistunrolledEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_edge_len(s : DslistunrolledEdge) -> Int { s.size }
+pub fn DslistunrolledEdge::len(self : DslistunrolledEdge) -> Int { self.size }
 
-pub fn ds_list_unrolled_edge_get(s : DslistunrolledEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledEdge::get(self : DslistunrolledEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_edge_set(s : DslistunrolledEdge, i : Int, v : Double) -> DslistunrolledEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledEdge::set(self : DslistunrolledEdge, i : Int, v : Double) -> DslistunrolledEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_edge_sum(s : DslistunrolledEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledEdge::sum(self : DslistunrolledEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_edge_mean(s : DslistunrolledEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledEdge::mean(self : DslistunrolledEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_edge_scale(s : DslistunrolledEdge, f : Double) -> DslistunrolledEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledEdge::scale(self : DslistunrolledEdge, f : Double) -> DslistunrolledEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_edge_add(a : DslistunrolledEdge, b : DslistunrolledEdge) -> DslistunrolledEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledEdge::add(self : DslistunrolledEdge, other : DslistunrolledEdge) -> DslistunrolledEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_edge_copy(s : DslistunrolledEdge) -> DslistunrolledEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledEdge::copy(self : DslistunrolledEdge) -> DslistunrolledEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_edge_fill(s : DslistunrolledEdge, v : Double) -> DslistunrolledEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledEdge::fill(self : DslistunrolledEdge, v : Double) -> DslistunrolledEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_edge_min(s : DslistunrolledEdge) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledEdge::min(self : DslistunrolledEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_edge_max(s : DslistunrolledEdge) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledEdge::max(self : DslistunrolledEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_edge_to_string(s : DslistunrolledEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledEdge::to_string(self : DslistunrolledEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledPath {
@@ -606,45 +606,45 @@ pub fn ds_list_unrolled_path_make(size : Int) -> DslistunrolledPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_path_len(s : DslistunrolledPath) -> Int { s.size }
+pub fn DslistunrolledPath::len(self : DslistunrolledPath) -> Int { self.size }
 
-pub fn ds_list_unrolled_path_get(s : DslistunrolledPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledPath::get(self : DslistunrolledPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_path_set(s : DslistunrolledPath, i : Int, v : Double) -> DslistunrolledPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledPath::set(self : DslistunrolledPath, i : Int, v : Double) -> DslistunrolledPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_path_sum(s : DslistunrolledPath) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledPath::sum(self : DslistunrolledPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_path_mean(s : DslistunrolledPath) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledPath::mean(self : DslistunrolledPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_path_scale(s : DslistunrolledPath, f : Double) -> DslistunrolledPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledPath::scale(self : DslistunrolledPath, f : Double) -> DslistunrolledPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_path_add(a : DslistunrolledPath, b : DslistunrolledPath) -> DslistunrolledPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledPath::add(self : DslistunrolledPath, other : DslistunrolledPath) -> DslistunrolledPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_path_copy(s : DslistunrolledPath) -> DslistunrolledPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledPath::copy(self : DslistunrolledPath) -> DslistunrolledPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_path_fill(s : DslistunrolledPath, v : Double) -> DslistunrolledPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledPath::fill(self : DslistunrolledPath, v : Double) -> DslistunrolledPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_path_min(s : DslistunrolledPath) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledPath::min(self : DslistunrolledPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_path_max(s : DslistunrolledPath) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledPath::max(self : DslistunrolledPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_path_to_string(s : DslistunrolledPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledPath::to_string(self : DslistunrolledPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_unrolled_cluster_make(size : Int) -> DslistunrolledCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_cluster_len(s : DslistunrolledCluster) -> Int { s.size }
+pub fn DslistunrolledCluster::len(self : DslistunrolledCluster) -> Int { self.size }
 
-pub fn ds_list_unrolled_cluster_get(s : DslistunrolledCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledCluster::get(self : DslistunrolledCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_cluster_set(s : DslistunrolledCluster, i : Int, v : Double) -> DslistunrolledCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledCluster::set(self : DslistunrolledCluster, i : Int, v : Double) -> DslistunrolledCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cluster_sum(s : DslistunrolledCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledCluster::sum(self : DslistunrolledCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_cluster_mean(s : DslistunrolledCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledCluster::mean(self : DslistunrolledCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_cluster_scale(s : DslistunrolledCluster, f : Double) -> DslistunrolledCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledCluster::scale(self : DslistunrolledCluster, f : Double) -> DslistunrolledCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cluster_add(a : DslistunrolledCluster, b : DslistunrolledCluster) -> DslistunrolledCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledCluster::add(self : DslistunrolledCluster, other : DslistunrolledCluster) -> DslistunrolledCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cluster_copy(s : DslistunrolledCluster) -> DslistunrolledCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledCluster::copy(self : DslistunrolledCluster) -> DslistunrolledCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cluster_fill(s : DslistunrolledCluster, v : Double) -> DslistunrolledCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledCluster::fill(self : DslistunrolledCluster, v : Double) -> DslistunrolledCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cluster_min(s : DslistunrolledCluster) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledCluster::min(self : DslistunrolledCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_cluster_max(s : DslistunrolledCluster) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledCluster::max(self : DslistunrolledCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_cluster_to_string(s : DslistunrolledCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledCluster::to_string(self : DslistunrolledCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledModel {
@@ -708,45 +708,45 @@ pub fn ds_list_unrolled_model_make(size : Int) -> DslistunrolledModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_model_len(s : DslistunrolledModel) -> Int { s.size }
+pub fn DslistunrolledModel::len(self : DslistunrolledModel) -> Int { self.size }
 
-pub fn ds_list_unrolled_model_get(s : DslistunrolledModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledModel::get(self : DslistunrolledModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_model_set(s : DslistunrolledModel, i : Int, v : Double) -> DslistunrolledModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledModel::set(self : DslistunrolledModel, i : Int, v : Double) -> DslistunrolledModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_model_sum(s : DslistunrolledModel) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledModel::sum(self : DslistunrolledModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_model_mean(s : DslistunrolledModel) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledModel::mean(self : DslistunrolledModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_model_scale(s : DslistunrolledModel, f : Double) -> DslistunrolledModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledModel::scale(self : DslistunrolledModel, f : Double) -> DslistunrolledModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_model_add(a : DslistunrolledModel, b : DslistunrolledModel) -> DslistunrolledModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledModel::add(self : DslistunrolledModel, other : DslistunrolledModel) -> DslistunrolledModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_model_copy(s : DslistunrolledModel) -> DslistunrolledModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledModel::copy(self : DslistunrolledModel) -> DslistunrolledModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_model_fill(s : DslistunrolledModel, v : Double) -> DslistunrolledModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledModel::fill(self : DslistunrolledModel, v : Double) -> DslistunrolledModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_model_min(s : DslistunrolledModel) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledModel::min(self : DslistunrolledModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_model_max(s : DslistunrolledModel) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledModel::max(self : DslistunrolledModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_model_to_string(s : DslistunrolledModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledModel::to_string(self : DslistunrolledModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_unrolled_layer_make(size : Int) -> DslistunrolledLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_layer_len(s : DslistunrolledLayer) -> Int { s.size }
+pub fn DslistunrolledLayer::len(self : DslistunrolledLayer) -> Int { self.size }
 
-pub fn ds_list_unrolled_layer_get(s : DslistunrolledLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledLayer::get(self : DslistunrolledLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_layer_set(s : DslistunrolledLayer, i : Int, v : Double) -> DslistunrolledLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledLayer::set(self : DslistunrolledLayer, i : Int, v : Double) -> DslistunrolledLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_layer_sum(s : DslistunrolledLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledLayer::sum(self : DslistunrolledLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_layer_mean(s : DslistunrolledLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledLayer::mean(self : DslistunrolledLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_layer_scale(s : DslistunrolledLayer, f : Double) -> DslistunrolledLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledLayer::scale(self : DslistunrolledLayer, f : Double) -> DslistunrolledLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_layer_add(a : DslistunrolledLayer, b : DslistunrolledLayer) -> DslistunrolledLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledLayer::add(self : DslistunrolledLayer, other : DslistunrolledLayer) -> DslistunrolledLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_layer_copy(s : DslistunrolledLayer) -> DslistunrolledLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledLayer::copy(self : DslistunrolledLayer) -> DslistunrolledLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_layer_fill(s : DslistunrolledLayer, v : Double) -> DslistunrolledLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledLayer::fill(self : DslistunrolledLayer, v : Double) -> DslistunrolledLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_layer_min(s : DslistunrolledLayer) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledLayer::min(self : DslistunrolledLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_layer_max(s : DslistunrolledLayer) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledLayer::max(self : DslistunrolledLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_layer_to_string(s : DslistunrolledLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledLayer::to_string(self : DslistunrolledLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_unrolled_buffer_make(size : Int) -> DslistunrolledBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_buffer_len(s : DslistunrolledBuffer) -> Int { s.size }
+pub fn DslistunrolledBuffer::len(self : DslistunrolledBuffer) -> Int { self.size }
 
-pub fn ds_list_unrolled_buffer_get(s : DslistunrolledBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledBuffer::get(self : DslistunrolledBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_buffer_set(s : DslistunrolledBuffer, i : Int, v : Double) -> DslistunrolledBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledBuffer::set(self : DslistunrolledBuffer, i : Int, v : Double) -> DslistunrolledBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_buffer_sum(s : DslistunrolledBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledBuffer::sum(self : DslistunrolledBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_buffer_mean(s : DslistunrolledBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledBuffer::mean(self : DslistunrolledBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_buffer_scale(s : DslistunrolledBuffer, f : Double) -> DslistunrolledBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledBuffer::scale(self : DslistunrolledBuffer, f : Double) -> DslistunrolledBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_buffer_add(a : DslistunrolledBuffer, b : DslistunrolledBuffer) -> DslistunrolledBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledBuffer::add(self : DslistunrolledBuffer, other : DslistunrolledBuffer) -> DslistunrolledBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_buffer_copy(s : DslistunrolledBuffer) -> DslistunrolledBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledBuffer::copy(self : DslistunrolledBuffer) -> DslistunrolledBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_buffer_fill(s : DslistunrolledBuffer, v : Double) -> DslistunrolledBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledBuffer::fill(self : DslistunrolledBuffer, v : Double) -> DslistunrolledBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_buffer_min(s : DslistunrolledBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledBuffer::min(self : DslistunrolledBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_buffer_max(s : DslistunrolledBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledBuffer::max(self : DslistunrolledBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_buffer_to_string(s : DslistunrolledBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledBuffer::to_string(self : DslistunrolledBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_unrolled_cursor_make(size : Int) -> DslistunrolledCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_cursor_len(s : DslistunrolledCursor) -> Int { s.size }
+pub fn DslistunrolledCursor::len(self : DslistunrolledCursor) -> Int { self.size }
 
-pub fn ds_list_unrolled_cursor_get(s : DslistunrolledCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledCursor::get(self : DslistunrolledCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_cursor_set(s : DslistunrolledCursor, i : Int, v : Double) -> DslistunrolledCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledCursor::set(self : DslistunrolledCursor, i : Int, v : Double) -> DslistunrolledCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cursor_sum(s : DslistunrolledCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledCursor::sum(self : DslistunrolledCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_cursor_mean(s : DslistunrolledCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledCursor::mean(self : DslistunrolledCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_cursor_scale(s : DslistunrolledCursor, f : Double) -> DslistunrolledCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledCursor::scale(self : DslistunrolledCursor, f : Double) -> DslistunrolledCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cursor_add(a : DslistunrolledCursor, b : DslistunrolledCursor) -> DslistunrolledCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledCursor::add(self : DslistunrolledCursor, other : DslistunrolledCursor) -> DslistunrolledCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cursor_copy(s : DslistunrolledCursor) -> DslistunrolledCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledCursor::copy(self : DslistunrolledCursor) -> DslistunrolledCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cursor_fill(s : DslistunrolledCursor, v : Double) -> DslistunrolledCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledCursor::fill(self : DslistunrolledCursor, v : Double) -> DslistunrolledCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_cursor_min(s : DslistunrolledCursor) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledCursor::min(self : DslistunrolledCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_cursor_max(s : DslistunrolledCursor) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledCursor::max(self : DslistunrolledCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_cursor_to_string(s : DslistunrolledCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledCursor::to_string(self : DslistunrolledCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledView {
@@ -912,45 +912,45 @@ pub fn ds_list_unrolled_view_make(size : Int) -> DslistunrolledView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_view_len(s : DslistunrolledView) -> Int { s.size }
+pub fn DslistunrolledView::len(self : DslistunrolledView) -> Int { self.size }
 
-pub fn ds_list_unrolled_view_get(s : DslistunrolledView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledView::get(self : DslistunrolledView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_view_set(s : DslistunrolledView, i : Int, v : Double) -> DslistunrolledView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledView::set(self : DslistunrolledView, i : Int, v : Double) -> DslistunrolledView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_view_sum(s : DslistunrolledView) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledView::sum(self : DslistunrolledView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_view_mean(s : DslistunrolledView) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledView::mean(self : DslistunrolledView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_view_scale(s : DslistunrolledView, f : Double) -> DslistunrolledView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledView::scale(self : DslistunrolledView, f : Double) -> DslistunrolledView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_view_add(a : DslistunrolledView, b : DslistunrolledView) -> DslistunrolledView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledView::add(self : DslistunrolledView, other : DslistunrolledView) -> DslistunrolledView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_view_copy(s : DslistunrolledView) -> DslistunrolledView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledView::copy(self : DslistunrolledView) -> DslistunrolledView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_view_fill(s : DslistunrolledView, v : Double) -> DslistunrolledView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledView::fill(self : DslistunrolledView, v : Double) -> DslistunrolledView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_view_min(s : DslistunrolledView) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledView::min(self : DslistunrolledView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_view_max(s : DslistunrolledView) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledView::max(self : DslistunrolledView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_view_to_string(s : DslistunrolledView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledView::to_string(self : DslistunrolledView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledRange {
@@ -963,45 +963,45 @@ pub fn ds_list_unrolled_range_make(size : Int) -> DslistunrolledRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_range_len(s : DslistunrolledRange) -> Int { s.size }
+pub fn DslistunrolledRange::len(self : DslistunrolledRange) -> Int { self.size }
 
-pub fn ds_list_unrolled_range_get(s : DslistunrolledRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledRange::get(self : DslistunrolledRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_range_set(s : DslistunrolledRange, i : Int, v : Double) -> DslistunrolledRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledRange::set(self : DslistunrolledRange, i : Int, v : Double) -> DslistunrolledRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_range_sum(s : DslistunrolledRange) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledRange::sum(self : DslistunrolledRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_range_mean(s : DslistunrolledRange) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledRange::mean(self : DslistunrolledRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_range_scale(s : DslistunrolledRange, f : Double) -> DslistunrolledRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledRange::scale(self : DslistunrolledRange, f : Double) -> DslistunrolledRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_range_add(a : DslistunrolledRange, b : DslistunrolledRange) -> DslistunrolledRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledRange::add(self : DslistunrolledRange, other : DslistunrolledRange) -> DslistunrolledRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_range_copy(s : DslistunrolledRange) -> DslistunrolledRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledRange::copy(self : DslistunrolledRange) -> DslistunrolledRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_range_fill(s : DslistunrolledRange, v : Double) -> DslistunrolledRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledRange::fill(self : DslistunrolledRange, v : Double) -> DslistunrolledRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_range_min(s : DslistunrolledRange) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledRange::min(self : DslistunrolledRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_range_max(s : DslistunrolledRange) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledRange::max(self : DslistunrolledRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_range_to_string(s : DslistunrolledRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledRange::to_string(self : DslistunrolledRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistunrolledSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_unrolled_slice_make(size : Int) -> DslistunrolledSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_unrolled_slice_len(s : DslistunrolledSlice) -> Int { s.size }
+pub fn DslistunrolledSlice::len(self : DslistunrolledSlice) -> Int { self.size }
 
-pub fn ds_list_unrolled_slice_get(s : DslistunrolledSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistunrolledSlice::get(self : DslistunrolledSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_unrolled_slice_set(s : DslistunrolledSlice, i : Int, v : Double) -> DslistunrolledSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistunrolledSlice::set(self : DslistunrolledSlice, i : Int, v : Double) -> DslistunrolledSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_slice_sum(s : DslistunrolledSlice) -> Double { @_common.sum(s.data) }
+pub fn DslistunrolledSlice::sum(self : DslistunrolledSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_unrolled_slice_mean(s : DslistunrolledSlice) -> Double { @_common.mean(s.data) }
+pub fn DslistunrolledSlice::mean(self : DslistunrolledSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_unrolled_slice_scale(s : DslistunrolledSlice, f : Double) -> DslistunrolledSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistunrolledSlice::scale(self : DslistunrolledSlice, f : Double) -> DslistunrolledSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_slice_add(a : DslistunrolledSlice, b : DslistunrolledSlice) -> DslistunrolledSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistunrolledSlice::add(self : DslistunrolledSlice, other : DslistunrolledSlice) -> DslistunrolledSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_slice_copy(s : DslistunrolledSlice) -> DslistunrolledSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistunrolledSlice::copy(self : DslistunrolledSlice) -> DslistunrolledSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_slice_fill(s : DslistunrolledSlice, v : Double) -> DslistunrolledSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistunrolledSlice::fill(self : DslistunrolledSlice, v : Double) -> DslistunrolledSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_unrolled_slice_min(s : DslistunrolledSlice) -> Double { @_common.min(s.data) }
+pub fn DslistunrolledSlice::min(self : DslistunrolledSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_unrolled_slice_max(s : DslistunrolledSlice) -> Double { @_common.max(s.data) }
+pub fn DslistunrolledSlice::max(self : DslistunrolledSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_unrolled_slice_to_string(s : DslistunrolledSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistunrolledSlice::to_string(self : DslistunrolledSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

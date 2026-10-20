@@ -351,45 +351,45 @@ pub fn chem_desc_fcfp_frame_make(size : Int) -> ChemdescfcfpFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_frame_len(s : ChemdescfcfpFrame) -> Int { s.size }
+pub fn ChemdescfcfpFrame::len(self : ChemdescfcfpFrame) -> Int { self.size }
 
-pub fn chem_desc_fcfp_frame_get(s : ChemdescfcfpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpFrame::get(self : ChemdescfcfpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_frame_set(s : ChemdescfcfpFrame, i : Int, v : Double) -> ChemdescfcfpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpFrame::set(self : ChemdescfcfpFrame, i : Int, v : Double) -> ChemdescfcfpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_frame_sum(s : ChemdescfcfpFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpFrame::sum(self : ChemdescfcfpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_frame_mean(s : ChemdescfcfpFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpFrame::mean(self : ChemdescfcfpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_frame_scale(s : ChemdescfcfpFrame, f : Double) -> ChemdescfcfpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpFrame::scale(self : ChemdescfcfpFrame, f : Double) -> ChemdescfcfpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_frame_add(a : ChemdescfcfpFrame, b : ChemdescfcfpFrame) -> ChemdescfcfpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpFrame::add(self : ChemdescfcfpFrame, other : ChemdescfcfpFrame) -> ChemdescfcfpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_frame_copy(s : ChemdescfcfpFrame) -> ChemdescfcfpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpFrame::copy(self : ChemdescfcfpFrame) -> ChemdescfcfpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_frame_fill(s : ChemdescfcfpFrame, v : Double) -> ChemdescfcfpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpFrame::fill(self : ChemdescfcfpFrame, v : Double) -> ChemdescfcfpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_frame_min(s : ChemdescfcfpFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpFrame::min(self : ChemdescfcfpFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_frame_max(s : ChemdescfcfpFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpFrame::max(self : ChemdescfcfpFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_frame_to_string(s : ChemdescfcfpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpFrame::to_string(self : ChemdescfcfpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_fcfp_table_make(size : Int) -> ChemdescfcfpTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_table_len(s : ChemdescfcfpTable) -> Int { s.size }
+pub fn ChemdescfcfpTable::len(self : ChemdescfcfpTable) -> Int { self.size }
 
-pub fn chem_desc_fcfp_table_get(s : ChemdescfcfpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpTable::get(self : ChemdescfcfpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_table_set(s : ChemdescfcfpTable, i : Int, v : Double) -> ChemdescfcfpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpTable::set(self : ChemdescfcfpTable, i : Int, v : Double) -> ChemdescfcfpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_table_sum(s : ChemdescfcfpTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpTable::sum(self : ChemdescfcfpTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_table_mean(s : ChemdescfcfpTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpTable::mean(self : ChemdescfcfpTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_table_scale(s : ChemdescfcfpTable, f : Double) -> ChemdescfcfpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpTable::scale(self : ChemdescfcfpTable, f : Double) -> ChemdescfcfpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_table_add(a : ChemdescfcfpTable, b : ChemdescfcfpTable) -> ChemdescfcfpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpTable::add(self : ChemdescfcfpTable, other : ChemdescfcfpTable) -> ChemdescfcfpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_table_copy(s : ChemdescfcfpTable) -> ChemdescfcfpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpTable::copy(self : ChemdescfcfpTable) -> ChemdescfcfpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_table_fill(s : ChemdescfcfpTable, v : Double) -> ChemdescfcfpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpTable::fill(self : ChemdescfcfpTable, v : Double) -> ChemdescfcfpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_table_min(s : ChemdescfcfpTable) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpTable::min(self : ChemdescfcfpTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_table_max(s : ChemdescfcfpTable) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpTable::max(self : ChemdescfcfpTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_table_to_string(s : ChemdescfcfpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpTable::to_string(self : ChemdescfcfpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_fcfp_graphn_make(size : Int) -> ChemdescfcfpGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_graphn_len(s : ChemdescfcfpGraphN) -> Int { s.size }
+pub fn ChemdescfcfpGraphN::len(self : ChemdescfcfpGraphN) -> Int { self.size }
 
-pub fn chem_desc_fcfp_graphn_get(s : ChemdescfcfpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpGraphN::get(self : ChemdescfcfpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_graphn_set(s : ChemdescfcfpGraphN, i : Int, v : Double) -> ChemdescfcfpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpGraphN::set(self : ChemdescfcfpGraphN, i : Int, v : Double) -> ChemdescfcfpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_graphn_sum(s : ChemdescfcfpGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpGraphN::sum(self : ChemdescfcfpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_graphn_mean(s : ChemdescfcfpGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpGraphN::mean(self : ChemdescfcfpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_graphn_scale(s : ChemdescfcfpGraphN, f : Double) -> ChemdescfcfpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpGraphN::scale(self : ChemdescfcfpGraphN, f : Double) -> ChemdescfcfpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_graphn_add(a : ChemdescfcfpGraphN, b : ChemdescfcfpGraphN) -> ChemdescfcfpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpGraphN::add(self : ChemdescfcfpGraphN, other : ChemdescfcfpGraphN) -> ChemdescfcfpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_graphn_copy(s : ChemdescfcfpGraphN) -> ChemdescfcfpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpGraphN::copy(self : ChemdescfcfpGraphN) -> ChemdescfcfpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_graphn_fill(s : ChemdescfcfpGraphN, v : Double) -> ChemdescfcfpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpGraphN::fill(self : ChemdescfcfpGraphN, v : Double) -> ChemdescfcfpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_graphn_min(s : ChemdescfcfpGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpGraphN::min(self : ChemdescfcfpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_graphn_max(s : ChemdescfcfpGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpGraphN::max(self : ChemdescfcfpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_graphn_to_string(s : ChemdescfcfpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpGraphN::to_string(self : ChemdescfcfpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_fcfp_node_make(size : Int) -> ChemdescfcfpNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_node_len(s : ChemdescfcfpNode) -> Int { s.size }
+pub fn ChemdescfcfpNode::len(self : ChemdescfcfpNode) -> Int { self.size }
 
-pub fn chem_desc_fcfp_node_get(s : ChemdescfcfpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpNode::get(self : ChemdescfcfpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_node_set(s : ChemdescfcfpNode, i : Int, v : Double) -> ChemdescfcfpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpNode::set(self : ChemdescfcfpNode, i : Int, v : Double) -> ChemdescfcfpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_node_sum(s : ChemdescfcfpNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpNode::sum(self : ChemdescfcfpNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_node_mean(s : ChemdescfcfpNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpNode::mean(self : ChemdescfcfpNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_node_scale(s : ChemdescfcfpNode, f : Double) -> ChemdescfcfpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpNode::scale(self : ChemdescfcfpNode, f : Double) -> ChemdescfcfpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_node_add(a : ChemdescfcfpNode, b : ChemdescfcfpNode) -> ChemdescfcfpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpNode::add(self : ChemdescfcfpNode, other : ChemdescfcfpNode) -> ChemdescfcfpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_node_copy(s : ChemdescfcfpNode) -> ChemdescfcfpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpNode::copy(self : ChemdescfcfpNode) -> ChemdescfcfpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_node_fill(s : ChemdescfcfpNode, v : Double) -> ChemdescfcfpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpNode::fill(self : ChemdescfcfpNode, v : Double) -> ChemdescfcfpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_node_min(s : ChemdescfcfpNode) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpNode::min(self : ChemdescfcfpNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_node_max(s : ChemdescfcfpNode) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpNode::max(self : ChemdescfcfpNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_node_to_string(s : ChemdescfcfpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpNode::to_string(self : ChemdescfcfpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_fcfp_edge_make(size : Int) -> ChemdescfcfpEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_edge_len(s : ChemdescfcfpEdge) -> Int { s.size }
+pub fn ChemdescfcfpEdge::len(self : ChemdescfcfpEdge) -> Int { self.size }
 
-pub fn chem_desc_fcfp_edge_get(s : ChemdescfcfpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpEdge::get(self : ChemdescfcfpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_edge_set(s : ChemdescfcfpEdge, i : Int, v : Double) -> ChemdescfcfpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpEdge::set(self : ChemdescfcfpEdge, i : Int, v : Double) -> ChemdescfcfpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_edge_sum(s : ChemdescfcfpEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpEdge::sum(self : ChemdescfcfpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_edge_mean(s : ChemdescfcfpEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpEdge::mean(self : ChemdescfcfpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_edge_scale(s : ChemdescfcfpEdge, f : Double) -> ChemdescfcfpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpEdge::scale(self : ChemdescfcfpEdge, f : Double) -> ChemdescfcfpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_edge_add(a : ChemdescfcfpEdge, b : ChemdescfcfpEdge) -> ChemdescfcfpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpEdge::add(self : ChemdescfcfpEdge, other : ChemdescfcfpEdge) -> ChemdescfcfpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_edge_copy(s : ChemdescfcfpEdge) -> ChemdescfcfpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpEdge::copy(self : ChemdescfcfpEdge) -> ChemdescfcfpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_edge_fill(s : ChemdescfcfpEdge, v : Double) -> ChemdescfcfpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpEdge::fill(self : ChemdescfcfpEdge, v : Double) -> ChemdescfcfpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_edge_min(s : ChemdescfcfpEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpEdge::min(self : ChemdescfcfpEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_edge_max(s : ChemdescfcfpEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpEdge::max(self : ChemdescfcfpEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_edge_to_string(s : ChemdescfcfpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpEdge::to_string(self : ChemdescfcfpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_fcfp_path_make(size : Int) -> ChemdescfcfpPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_path_len(s : ChemdescfcfpPath) -> Int { s.size }
+pub fn ChemdescfcfpPath::len(self : ChemdescfcfpPath) -> Int { self.size }
 
-pub fn chem_desc_fcfp_path_get(s : ChemdescfcfpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpPath::get(self : ChemdescfcfpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_path_set(s : ChemdescfcfpPath, i : Int, v : Double) -> ChemdescfcfpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpPath::set(self : ChemdescfcfpPath, i : Int, v : Double) -> ChemdescfcfpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_path_sum(s : ChemdescfcfpPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpPath::sum(self : ChemdescfcfpPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_path_mean(s : ChemdescfcfpPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpPath::mean(self : ChemdescfcfpPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_path_scale(s : ChemdescfcfpPath, f : Double) -> ChemdescfcfpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpPath::scale(self : ChemdescfcfpPath, f : Double) -> ChemdescfcfpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_path_add(a : ChemdescfcfpPath, b : ChemdescfcfpPath) -> ChemdescfcfpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpPath::add(self : ChemdescfcfpPath, other : ChemdescfcfpPath) -> ChemdescfcfpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_path_copy(s : ChemdescfcfpPath) -> ChemdescfcfpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpPath::copy(self : ChemdescfcfpPath) -> ChemdescfcfpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_path_fill(s : ChemdescfcfpPath, v : Double) -> ChemdescfcfpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpPath::fill(self : ChemdescfcfpPath, v : Double) -> ChemdescfcfpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_path_min(s : ChemdescfcfpPath) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpPath::min(self : ChemdescfcfpPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_path_max(s : ChemdescfcfpPath) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpPath::max(self : ChemdescfcfpPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_path_to_string(s : ChemdescfcfpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpPath::to_string(self : ChemdescfcfpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_fcfp_cluster_make(size : Int) -> ChemdescfcfpCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_cluster_len(s : ChemdescfcfpCluster) -> Int { s.size }
+pub fn ChemdescfcfpCluster::len(self : ChemdescfcfpCluster) -> Int { self.size }
 
-pub fn chem_desc_fcfp_cluster_get(s : ChemdescfcfpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpCluster::get(self : ChemdescfcfpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_cluster_set(s : ChemdescfcfpCluster, i : Int, v : Double) -> ChemdescfcfpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCluster::set(self : ChemdescfcfpCluster, i : Int, v : Double) -> ChemdescfcfpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cluster_sum(s : ChemdescfcfpCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpCluster::sum(self : ChemdescfcfpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_cluster_mean(s : ChemdescfcfpCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpCluster::mean(self : ChemdescfcfpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_cluster_scale(s : ChemdescfcfpCluster, f : Double) -> ChemdescfcfpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCluster::scale(self : ChemdescfcfpCluster, f : Double) -> ChemdescfcfpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cluster_add(a : ChemdescfcfpCluster, b : ChemdescfcfpCluster) -> ChemdescfcfpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpCluster::add(self : ChemdescfcfpCluster, other : ChemdescfcfpCluster) -> ChemdescfcfpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cluster_copy(s : ChemdescfcfpCluster) -> ChemdescfcfpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCluster::copy(self : ChemdescfcfpCluster) -> ChemdescfcfpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cluster_fill(s : ChemdescfcfpCluster, v : Double) -> ChemdescfcfpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCluster::fill(self : ChemdescfcfpCluster, v : Double) -> ChemdescfcfpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cluster_min(s : ChemdescfcfpCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpCluster::min(self : ChemdescfcfpCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_cluster_max(s : ChemdescfcfpCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpCluster::max(self : ChemdescfcfpCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_cluster_to_string(s : ChemdescfcfpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpCluster::to_string(self : ChemdescfcfpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_fcfp_model_make(size : Int) -> ChemdescfcfpModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_model_len(s : ChemdescfcfpModel) -> Int { s.size }
+pub fn ChemdescfcfpModel::len(self : ChemdescfcfpModel) -> Int { self.size }
 
-pub fn chem_desc_fcfp_model_get(s : ChemdescfcfpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpModel::get(self : ChemdescfcfpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_model_set(s : ChemdescfcfpModel, i : Int, v : Double) -> ChemdescfcfpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpModel::set(self : ChemdescfcfpModel, i : Int, v : Double) -> ChemdescfcfpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_model_sum(s : ChemdescfcfpModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpModel::sum(self : ChemdescfcfpModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_model_mean(s : ChemdescfcfpModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpModel::mean(self : ChemdescfcfpModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_model_scale(s : ChemdescfcfpModel, f : Double) -> ChemdescfcfpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpModel::scale(self : ChemdescfcfpModel, f : Double) -> ChemdescfcfpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_model_add(a : ChemdescfcfpModel, b : ChemdescfcfpModel) -> ChemdescfcfpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpModel::add(self : ChemdescfcfpModel, other : ChemdescfcfpModel) -> ChemdescfcfpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_model_copy(s : ChemdescfcfpModel) -> ChemdescfcfpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpModel::copy(self : ChemdescfcfpModel) -> ChemdescfcfpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_model_fill(s : ChemdescfcfpModel, v : Double) -> ChemdescfcfpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpModel::fill(self : ChemdescfcfpModel, v : Double) -> ChemdescfcfpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_model_min(s : ChemdescfcfpModel) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpModel::min(self : ChemdescfcfpModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_model_max(s : ChemdescfcfpModel) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpModel::max(self : ChemdescfcfpModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_model_to_string(s : ChemdescfcfpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpModel::to_string(self : ChemdescfcfpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_fcfp_layer_make(size : Int) -> ChemdescfcfpLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_layer_len(s : ChemdescfcfpLayer) -> Int { s.size }
+pub fn ChemdescfcfpLayer::len(self : ChemdescfcfpLayer) -> Int { self.size }
 
-pub fn chem_desc_fcfp_layer_get(s : ChemdescfcfpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpLayer::get(self : ChemdescfcfpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_layer_set(s : ChemdescfcfpLayer, i : Int, v : Double) -> ChemdescfcfpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpLayer::set(self : ChemdescfcfpLayer, i : Int, v : Double) -> ChemdescfcfpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_layer_sum(s : ChemdescfcfpLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpLayer::sum(self : ChemdescfcfpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_layer_mean(s : ChemdescfcfpLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpLayer::mean(self : ChemdescfcfpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_layer_scale(s : ChemdescfcfpLayer, f : Double) -> ChemdescfcfpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpLayer::scale(self : ChemdescfcfpLayer, f : Double) -> ChemdescfcfpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_layer_add(a : ChemdescfcfpLayer, b : ChemdescfcfpLayer) -> ChemdescfcfpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpLayer::add(self : ChemdescfcfpLayer, other : ChemdescfcfpLayer) -> ChemdescfcfpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_layer_copy(s : ChemdescfcfpLayer) -> ChemdescfcfpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpLayer::copy(self : ChemdescfcfpLayer) -> ChemdescfcfpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_layer_fill(s : ChemdescfcfpLayer, v : Double) -> ChemdescfcfpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpLayer::fill(self : ChemdescfcfpLayer, v : Double) -> ChemdescfcfpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_layer_min(s : ChemdescfcfpLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpLayer::min(self : ChemdescfcfpLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_layer_max(s : ChemdescfcfpLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpLayer::max(self : ChemdescfcfpLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_layer_to_string(s : ChemdescfcfpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpLayer::to_string(self : ChemdescfcfpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_fcfp_buffer_make(size : Int) -> ChemdescfcfpBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_buffer_len(s : ChemdescfcfpBuffer) -> Int { s.size }
+pub fn ChemdescfcfpBuffer::len(self : ChemdescfcfpBuffer) -> Int { self.size }
 
-pub fn chem_desc_fcfp_buffer_get(s : ChemdescfcfpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpBuffer::get(self : ChemdescfcfpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_buffer_set(s : ChemdescfcfpBuffer, i : Int, v : Double) -> ChemdescfcfpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpBuffer::set(self : ChemdescfcfpBuffer, i : Int, v : Double) -> ChemdescfcfpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_buffer_sum(s : ChemdescfcfpBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpBuffer::sum(self : ChemdescfcfpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_buffer_mean(s : ChemdescfcfpBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpBuffer::mean(self : ChemdescfcfpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_buffer_scale(s : ChemdescfcfpBuffer, f : Double) -> ChemdescfcfpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpBuffer::scale(self : ChemdescfcfpBuffer, f : Double) -> ChemdescfcfpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_buffer_add(a : ChemdescfcfpBuffer, b : ChemdescfcfpBuffer) -> ChemdescfcfpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpBuffer::add(self : ChemdescfcfpBuffer, other : ChemdescfcfpBuffer) -> ChemdescfcfpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_buffer_copy(s : ChemdescfcfpBuffer) -> ChemdescfcfpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpBuffer::copy(self : ChemdescfcfpBuffer) -> ChemdescfcfpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_buffer_fill(s : ChemdescfcfpBuffer, v : Double) -> ChemdescfcfpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpBuffer::fill(self : ChemdescfcfpBuffer, v : Double) -> ChemdescfcfpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_buffer_min(s : ChemdescfcfpBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpBuffer::min(self : ChemdescfcfpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_buffer_max(s : ChemdescfcfpBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpBuffer::max(self : ChemdescfcfpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_buffer_to_string(s : ChemdescfcfpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpBuffer::to_string(self : ChemdescfcfpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_fcfp_cursor_make(size : Int) -> ChemdescfcfpCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_cursor_len(s : ChemdescfcfpCursor) -> Int { s.size }
+pub fn ChemdescfcfpCursor::len(self : ChemdescfcfpCursor) -> Int { self.size }
 
-pub fn chem_desc_fcfp_cursor_get(s : ChemdescfcfpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpCursor::get(self : ChemdescfcfpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_cursor_set(s : ChemdescfcfpCursor, i : Int, v : Double) -> ChemdescfcfpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCursor::set(self : ChemdescfcfpCursor, i : Int, v : Double) -> ChemdescfcfpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cursor_sum(s : ChemdescfcfpCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpCursor::sum(self : ChemdescfcfpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_cursor_mean(s : ChemdescfcfpCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpCursor::mean(self : ChemdescfcfpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_cursor_scale(s : ChemdescfcfpCursor, f : Double) -> ChemdescfcfpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCursor::scale(self : ChemdescfcfpCursor, f : Double) -> ChemdescfcfpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cursor_add(a : ChemdescfcfpCursor, b : ChemdescfcfpCursor) -> ChemdescfcfpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpCursor::add(self : ChemdescfcfpCursor, other : ChemdescfcfpCursor) -> ChemdescfcfpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cursor_copy(s : ChemdescfcfpCursor) -> ChemdescfcfpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCursor::copy(self : ChemdescfcfpCursor) -> ChemdescfcfpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cursor_fill(s : ChemdescfcfpCursor, v : Double) -> ChemdescfcfpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpCursor::fill(self : ChemdescfcfpCursor, v : Double) -> ChemdescfcfpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_cursor_min(s : ChemdescfcfpCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpCursor::min(self : ChemdescfcfpCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_cursor_max(s : ChemdescfcfpCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpCursor::max(self : ChemdescfcfpCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_cursor_to_string(s : ChemdescfcfpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpCursor::to_string(self : ChemdescfcfpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpView {
@@ -912,45 +912,45 @@ pub fn chem_desc_fcfp_view_make(size : Int) -> ChemdescfcfpView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_view_len(s : ChemdescfcfpView) -> Int { s.size }
+pub fn ChemdescfcfpView::len(self : ChemdescfcfpView) -> Int { self.size }
 
-pub fn chem_desc_fcfp_view_get(s : ChemdescfcfpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpView::get(self : ChemdescfcfpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_view_set(s : ChemdescfcfpView, i : Int, v : Double) -> ChemdescfcfpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpView::set(self : ChemdescfcfpView, i : Int, v : Double) -> ChemdescfcfpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_view_sum(s : ChemdescfcfpView) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpView::sum(self : ChemdescfcfpView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_view_mean(s : ChemdescfcfpView) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpView::mean(self : ChemdescfcfpView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_view_scale(s : ChemdescfcfpView, f : Double) -> ChemdescfcfpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpView::scale(self : ChemdescfcfpView, f : Double) -> ChemdescfcfpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_view_add(a : ChemdescfcfpView, b : ChemdescfcfpView) -> ChemdescfcfpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpView::add(self : ChemdescfcfpView, other : ChemdescfcfpView) -> ChemdescfcfpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_view_copy(s : ChemdescfcfpView) -> ChemdescfcfpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpView::copy(self : ChemdescfcfpView) -> ChemdescfcfpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_view_fill(s : ChemdescfcfpView, v : Double) -> ChemdescfcfpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpView::fill(self : ChemdescfcfpView, v : Double) -> ChemdescfcfpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_view_min(s : ChemdescfcfpView) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpView::min(self : ChemdescfcfpView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_view_max(s : ChemdescfcfpView) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpView::max(self : ChemdescfcfpView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_view_to_string(s : ChemdescfcfpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpView::to_string(self : ChemdescfcfpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_fcfp_range_make(size : Int) -> ChemdescfcfpRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_range_len(s : ChemdescfcfpRange) -> Int { s.size }
+pub fn ChemdescfcfpRange::len(self : ChemdescfcfpRange) -> Int { self.size }
 
-pub fn chem_desc_fcfp_range_get(s : ChemdescfcfpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpRange::get(self : ChemdescfcfpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_range_set(s : ChemdescfcfpRange, i : Int, v : Double) -> ChemdescfcfpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpRange::set(self : ChemdescfcfpRange, i : Int, v : Double) -> ChemdescfcfpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_range_sum(s : ChemdescfcfpRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpRange::sum(self : ChemdescfcfpRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_range_mean(s : ChemdescfcfpRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpRange::mean(self : ChemdescfcfpRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_range_scale(s : ChemdescfcfpRange, f : Double) -> ChemdescfcfpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpRange::scale(self : ChemdescfcfpRange, f : Double) -> ChemdescfcfpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_range_add(a : ChemdescfcfpRange, b : ChemdescfcfpRange) -> ChemdescfcfpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpRange::add(self : ChemdescfcfpRange, other : ChemdescfcfpRange) -> ChemdescfcfpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_range_copy(s : ChemdescfcfpRange) -> ChemdescfcfpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpRange::copy(self : ChemdescfcfpRange) -> ChemdescfcfpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_range_fill(s : ChemdescfcfpRange, v : Double) -> ChemdescfcfpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpRange::fill(self : ChemdescfcfpRange, v : Double) -> ChemdescfcfpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_range_min(s : ChemdescfcfpRange) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpRange::min(self : ChemdescfcfpRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_range_max(s : ChemdescfcfpRange) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpRange::max(self : ChemdescfcfpRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_range_to_string(s : ChemdescfcfpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpRange::to_string(self : ChemdescfcfpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescfcfpSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_fcfp_slice_make(size : Int) -> ChemdescfcfpSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_fcfp_slice_len(s : ChemdescfcfpSlice) -> Int { s.size }
+pub fn ChemdescfcfpSlice::len(self : ChemdescfcfpSlice) -> Int { self.size }
 
-pub fn chem_desc_fcfp_slice_get(s : ChemdescfcfpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescfcfpSlice::get(self : ChemdescfcfpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_fcfp_slice_set(s : ChemdescfcfpSlice, i : Int, v : Double) -> ChemdescfcfpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescfcfpSlice::set(self : ChemdescfcfpSlice, i : Int, v : Double) -> ChemdescfcfpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_slice_sum(s : ChemdescfcfpSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdescfcfpSlice::sum(self : ChemdescfcfpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_fcfp_slice_mean(s : ChemdescfcfpSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdescfcfpSlice::mean(self : ChemdescfcfpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_fcfp_slice_scale(s : ChemdescfcfpSlice, f : Double) -> ChemdescfcfpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpSlice::scale(self : ChemdescfcfpSlice, f : Double) -> ChemdescfcfpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_slice_add(a : ChemdescfcfpSlice, b : ChemdescfcfpSlice) -> ChemdescfcfpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescfcfpSlice::add(self : ChemdescfcfpSlice, other : ChemdescfcfpSlice) -> ChemdescfcfpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_slice_copy(s : ChemdescfcfpSlice) -> ChemdescfcfpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpSlice::copy(self : ChemdescfcfpSlice) -> ChemdescfcfpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_slice_fill(s : ChemdescfcfpSlice, v : Double) -> ChemdescfcfpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescfcfpSlice::fill(self : ChemdescfcfpSlice, v : Double) -> ChemdescfcfpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_fcfp_slice_min(s : ChemdescfcfpSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdescfcfpSlice::min(self : ChemdescfcfpSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_fcfp_slice_max(s : ChemdescfcfpSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdescfcfpSlice::max(self : ChemdescfcfpSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_fcfp_slice_to_string(s : ChemdescfcfpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescfcfpSlice::to_string(self : ChemdescfcfpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

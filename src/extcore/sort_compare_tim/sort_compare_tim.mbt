@@ -351,45 +351,45 @@ pub fn sort_compare_tim_frame_make(size : Int) -> SortcomparetimFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_frame_len(s : SortcomparetimFrame) -> Int { s.size }
+pub fn SortcomparetimFrame::len(self : SortcomparetimFrame) -> Int { self.size }
 
-pub fn sort_compare_tim_frame_get(s : SortcomparetimFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimFrame::get(self : SortcomparetimFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_frame_set(s : SortcomparetimFrame, i : Int, v : Double) -> SortcomparetimFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimFrame::set(self : SortcomparetimFrame, i : Int, v : Double) -> SortcomparetimFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_frame_sum(s : SortcomparetimFrame) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimFrame::sum(self : SortcomparetimFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_frame_mean(s : SortcomparetimFrame) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimFrame::mean(self : SortcomparetimFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_frame_scale(s : SortcomparetimFrame, f : Double) -> SortcomparetimFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimFrame::scale(self : SortcomparetimFrame, f : Double) -> SortcomparetimFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_frame_add(a : SortcomparetimFrame, b : SortcomparetimFrame) -> SortcomparetimFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimFrame::add(self : SortcomparetimFrame, other : SortcomparetimFrame) -> SortcomparetimFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_frame_copy(s : SortcomparetimFrame) -> SortcomparetimFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimFrame::copy(self : SortcomparetimFrame) -> SortcomparetimFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_frame_fill(s : SortcomparetimFrame, v : Double) -> SortcomparetimFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimFrame::fill(self : SortcomparetimFrame, v : Double) -> SortcomparetimFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_frame_min(s : SortcomparetimFrame) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimFrame::min(self : SortcomparetimFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_frame_max(s : SortcomparetimFrame) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimFrame::max(self : SortcomparetimFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_frame_to_string(s : SortcomparetimFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimFrame::to_string(self : SortcomparetimFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimTable {
@@ -402,45 +402,45 @@ pub fn sort_compare_tim_table_make(size : Int) -> SortcomparetimTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_table_len(s : SortcomparetimTable) -> Int { s.size }
+pub fn SortcomparetimTable::len(self : SortcomparetimTable) -> Int { self.size }
 
-pub fn sort_compare_tim_table_get(s : SortcomparetimTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimTable::get(self : SortcomparetimTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_table_set(s : SortcomparetimTable, i : Int, v : Double) -> SortcomparetimTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimTable::set(self : SortcomparetimTable, i : Int, v : Double) -> SortcomparetimTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_table_sum(s : SortcomparetimTable) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimTable::sum(self : SortcomparetimTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_table_mean(s : SortcomparetimTable) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimTable::mean(self : SortcomparetimTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_table_scale(s : SortcomparetimTable, f : Double) -> SortcomparetimTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimTable::scale(self : SortcomparetimTable, f : Double) -> SortcomparetimTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_table_add(a : SortcomparetimTable, b : SortcomparetimTable) -> SortcomparetimTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimTable::add(self : SortcomparetimTable, other : SortcomparetimTable) -> SortcomparetimTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_table_copy(s : SortcomparetimTable) -> SortcomparetimTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimTable::copy(self : SortcomparetimTable) -> SortcomparetimTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_table_fill(s : SortcomparetimTable, v : Double) -> SortcomparetimTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimTable::fill(self : SortcomparetimTable, v : Double) -> SortcomparetimTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_table_min(s : SortcomparetimTable) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimTable::min(self : SortcomparetimTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_table_max(s : SortcomparetimTable) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimTable::max(self : SortcomparetimTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_table_to_string(s : SortcomparetimTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimTable::to_string(self : SortcomparetimTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimGraphN {
@@ -453,45 +453,45 @@ pub fn sort_compare_tim_graphn_make(size : Int) -> SortcomparetimGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_graphn_len(s : SortcomparetimGraphN) -> Int { s.size }
+pub fn SortcomparetimGraphN::len(self : SortcomparetimGraphN) -> Int { self.size }
 
-pub fn sort_compare_tim_graphn_get(s : SortcomparetimGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimGraphN::get(self : SortcomparetimGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_graphn_set(s : SortcomparetimGraphN, i : Int, v : Double) -> SortcomparetimGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimGraphN::set(self : SortcomparetimGraphN, i : Int, v : Double) -> SortcomparetimGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_graphn_sum(s : SortcomparetimGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimGraphN::sum(self : SortcomparetimGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_graphn_mean(s : SortcomparetimGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimGraphN::mean(self : SortcomparetimGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_graphn_scale(s : SortcomparetimGraphN, f : Double) -> SortcomparetimGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimGraphN::scale(self : SortcomparetimGraphN, f : Double) -> SortcomparetimGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_graphn_add(a : SortcomparetimGraphN, b : SortcomparetimGraphN) -> SortcomparetimGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimGraphN::add(self : SortcomparetimGraphN, other : SortcomparetimGraphN) -> SortcomparetimGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_graphn_copy(s : SortcomparetimGraphN) -> SortcomparetimGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimGraphN::copy(self : SortcomparetimGraphN) -> SortcomparetimGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_graphn_fill(s : SortcomparetimGraphN, v : Double) -> SortcomparetimGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimGraphN::fill(self : SortcomparetimGraphN, v : Double) -> SortcomparetimGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_graphn_min(s : SortcomparetimGraphN) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimGraphN::min(self : SortcomparetimGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_graphn_max(s : SortcomparetimGraphN) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimGraphN::max(self : SortcomparetimGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_graphn_to_string(s : SortcomparetimGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimGraphN::to_string(self : SortcomparetimGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimNode {
@@ -504,45 +504,45 @@ pub fn sort_compare_tim_node_make(size : Int) -> SortcomparetimNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_node_len(s : SortcomparetimNode) -> Int { s.size }
+pub fn SortcomparetimNode::len(self : SortcomparetimNode) -> Int { self.size }
 
-pub fn sort_compare_tim_node_get(s : SortcomparetimNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimNode::get(self : SortcomparetimNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_node_set(s : SortcomparetimNode, i : Int, v : Double) -> SortcomparetimNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimNode::set(self : SortcomparetimNode, i : Int, v : Double) -> SortcomparetimNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_node_sum(s : SortcomparetimNode) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimNode::sum(self : SortcomparetimNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_node_mean(s : SortcomparetimNode) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimNode::mean(self : SortcomparetimNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_node_scale(s : SortcomparetimNode, f : Double) -> SortcomparetimNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimNode::scale(self : SortcomparetimNode, f : Double) -> SortcomparetimNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_node_add(a : SortcomparetimNode, b : SortcomparetimNode) -> SortcomparetimNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimNode::add(self : SortcomparetimNode, other : SortcomparetimNode) -> SortcomparetimNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_node_copy(s : SortcomparetimNode) -> SortcomparetimNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimNode::copy(self : SortcomparetimNode) -> SortcomparetimNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_node_fill(s : SortcomparetimNode, v : Double) -> SortcomparetimNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimNode::fill(self : SortcomparetimNode, v : Double) -> SortcomparetimNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_node_min(s : SortcomparetimNode) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimNode::min(self : SortcomparetimNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_node_max(s : SortcomparetimNode) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimNode::max(self : SortcomparetimNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_node_to_string(s : SortcomparetimNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimNode::to_string(self : SortcomparetimNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimEdge {
@@ -555,45 +555,45 @@ pub fn sort_compare_tim_edge_make(size : Int) -> SortcomparetimEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_edge_len(s : SortcomparetimEdge) -> Int { s.size }
+pub fn SortcomparetimEdge::len(self : SortcomparetimEdge) -> Int { self.size }
 
-pub fn sort_compare_tim_edge_get(s : SortcomparetimEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimEdge::get(self : SortcomparetimEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_edge_set(s : SortcomparetimEdge, i : Int, v : Double) -> SortcomparetimEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimEdge::set(self : SortcomparetimEdge, i : Int, v : Double) -> SortcomparetimEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_edge_sum(s : SortcomparetimEdge) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimEdge::sum(self : SortcomparetimEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_edge_mean(s : SortcomparetimEdge) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimEdge::mean(self : SortcomparetimEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_edge_scale(s : SortcomparetimEdge, f : Double) -> SortcomparetimEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimEdge::scale(self : SortcomparetimEdge, f : Double) -> SortcomparetimEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_edge_add(a : SortcomparetimEdge, b : SortcomparetimEdge) -> SortcomparetimEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimEdge::add(self : SortcomparetimEdge, other : SortcomparetimEdge) -> SortcomparetimEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_edge_copy(s : SortcomparetimEdge) -> SortcomparetimEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimEdge::copy(self : SortcomparetimEdge) -> SortcomparetimEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_edge_fill(s : SortcomparetimEdge, v : Double) -> SortcomparetimEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimEdge::fill(self : SortcomparetimEdge, v : Double) -> SortcomparetimEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_edge_min(s : SortcomparetimEdge) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimEdge::min(self : SortcomparetimEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_edge_max(s : SortcomparetimEdge) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimEdge::max(self : SortcomparetimEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_edge_to_string(s : SortcomparetimEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimEdge::to_string(self : SortcomparetimEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimPath {
@@ -606,45 +606,45 @@ pub fn sort_compare_tim_path_make(size : Int) -> SortcomparetimPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_path_len(s : SortcomparetimPath) -> Int { s.size }
+pub fn SortcomparetimPath::len(self : SortcomparetimPath) -> Int { self.size }
 
-pub fn sort_compare_tim_path_get(s : SortcomparetimPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimPath::get(self : SortcomparetimPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_path_set(s : SortcomparetimPath, i : Int, v : Double) -> SortcomparetimPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimPath::set(self : SortcomparetimPath, i : Int, v : Double) -> SortcomparetimPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_path_sum(s : SortcomparetimPath) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimPath::sum(self : SortcomparetimPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_path_mean(s : SortcomparetimPath) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimPath::mean(self : SortcomparetimPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_path_scale(s : SortcomparetimPath, f : Double) -> SortcomparetimPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimPath::scale(self : SortcomparetimPath, f : Double) -> SortcomparetimPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_path_add(a : SortcomparetimPath, b : SortcomparetimPath) -> SortcomparetimPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimPath::add(self : SortcomparetimPath, other : SortcomparetimPath) -> SortcomparetimPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_path_copy(s : SortcomparetimPath) -> SortcomparetimPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimPath::copy(self : SortcomparetimPath) -> SortcomparetimPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_path_fill(s : SortcomparetimPath, v : Double) -> SortcomparetimPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimPath::fill(self : SortcomparetimPath, v : Double) -> SortcomparetimPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_path_min(s : SortcomparetimPath) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimPath::min(self : SortcomparetimPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_path_max(s : SortcomparetimPath) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimPath::max(self : SortcomparetimPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_path_to_string(s : SortcomparetimPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimPath::to_string(self : SortcomparetimPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimCluster {
@@ -657,45 +657,45 @@ pub fn sort_compare_tim_cluster_make(size : Int) -> SortcomparetimCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_cluster_len(s : SortcomparetimCluster) -> Int { s.size }
+pub fn SortcomparetimCluster::len(self : SortcomparetimCluster) -> Int { self.size }
 
-pub fn sort_compare_tim_cluster_get(s : SortcomparetimCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimCluster::get(self : SortcomparetimCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_cluster_set(s : SortcomparetimCluster, i : Int, v : Double) -> SortcomparetimCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimCluster::set(self : SortcomparetimCluster, i : Int, v : Double) -> SortcomparetimCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cluster_sum(s : SortcomparetimCluster) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimCluster::sum(self : SortcomparetimCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_cluster_mean(s : SortcomparetimCluster) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimCluster::mean(self : SortcomparetimCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_cluster_scale(s : SortcomparetimCluster, f : Double) -> SortcomparetimCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimCluster::scale(self : SortcomparetimCluster, f : Double) -> SortcomparetimCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cluster_add(a : SortcomparetimCluster, b : SortcomparetimCluster) -> SortcomparetimCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimCluster::add(self : SortcomparetimCluster, other : SortcomparetimCluster) -> SortcomparetimCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cluster_copy(s : SortcomparetimCluster) -> SortcomparetimCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimCluster::copy(self : SortcomparetimCluster) -> SortcomparetimCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cluster_fill(s : SortcomparetimCluster, v : Double) -> SortcomparetimCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimCluster::fill(self : SortcomparetimCluster, v : Double) -> SortcomparetimCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cluster_min(s : SortcomparetimCluster) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimCluster::min(self : SortcomparetimCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_cluster_max(s : SortcomparetimCluster) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimCluster::max(self : SortcomparetimCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_cluster_to_string(s : SortcomparetimCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimCluster::to_string(self : SortcomparetimCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimModel {
@@ -708,45 +708,45 @@ pub fn sort_compare_tim_model_make(size : Int) -> SortcomparetimModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_model_len(s : SortcomparetimModel) -> Int { s.size }
+pub fn SortcomparetimModel::len(self : SortcomparetimModel) -> Int { self.size }
 
-pub fn sort_compare_tim_model_get(s : SortcomparetimModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimModel::get(self : SortcomparetimModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_model_set(s : SortcomparetimModel, i : Int, v : Double) -> SortcomparetimModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimModel::set(self : SortcomparetimModel, i : Int, v : Double) -> SortcomparetimModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_model_sum(s : SortcomparetimModel) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimModel::sum(self : SortcomparetimModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_model_mean(s : SortcomparetimModel) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimModel::mean(self : SortcomparetimModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_model_scale(s : SortcomparetimModel, f : Double) -> SortcomparetimModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimModel::scale(self : SortcomparetimModel, f : Double) -> SortcomparetimModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_model_add(a : SortcomparetimModel, b : SortcomparetimModel) -> SortcomparetimModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimModel::add(self : SortcomparetimModel, other : SortcomparetimModel) -> SortcomparetimModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_model_copy(s : SortcomparetimModel) -> SortcomparetimModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimModel::copy(self : SortcomparetimModel) -> SortcomparetimModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_model_fill(s : SortcomparetimModel, v : Double) -> SortcomparetimModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimModel::fill(self : SortcomparetimModel, v : Double) -> SortcomparetimModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_model_min(s : SortcomparetimModel) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimModel::min(self : SortcomparetimModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_model_max(s : SortcomparetimModel) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimModel::max(self : SortcomparetimModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_model_to_string(s : SortcomparetimModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimModel::to_string(self : SortcomparetimModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimLayer {
@@ -759,45 +759,45 @@ pub fn sort_compare_tim_layer_make(size : Int) -> SortcomparetimLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_layer_len(s : SortcomparetimLayer) -> Int { s.size }
+pub fn SortcomparetimLayer::len(self : SortcomparetimLayer) -> Int { self.size }
 
-pub fn sort_compare_tim_layer_get(s : SortcomparetimLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimLayer::get(self : SortcomparetimLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_layer_set(s : SortcomparetimLayer, i : Int, v : Double) -> SortcomparetimLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimLayer::set(self : SortcomparetimLayer, i : Int, v : Double) -> SortcomparetimLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_layer_sum(s : SortcomparetimLayer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimLayer::sum(self : SortcomparetimLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_layer_mean(s : SortcomparetimLayer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimLayer::mean(self : SortcomparetimLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_layer_scale(s : SortcomparetimLayer, f : Double) -> SortcomparetimLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimLayer::scale(self : SortcomparetimLayer, f : Double) -> SortcomparetimLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_layer_add(a : SortcomparetimLayer, b : SortcomparetimLayer) -> SortcomparetimLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimLayer::add(self : SortcomparetimLayer, other : SortcomparetimLayer) -> SortcomparetimLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_layer_copy(s : SortcomparetimLayer) -> SortcomparetimLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimLayer::copy(self : SortcomparetimLayer) -> SortcomparetimLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_layer_fill(s : SortcomparetimLayer, v : Double) -> SortcomparetimLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimLayer::fill(self : SortcomparetimLayer, v : Double) -> SortcomparetimLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_layer_min(s : SortcomparetimLayer) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimLayer::min(self : SortcomparetimLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_layer_max(s : SortcomparetimLayer) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimLayer::max(self : SortcomparetimLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_layer_to_string(s : SortcomparetimLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimLayer::to_string(self : SortcomparetimLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimBuffer {
@@ -810,45 +810,45 @@ pub fn sort_compare_tim_buffer_make(size : Int) -> SortcomparetimBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_buffer_len(s : SortcomparetimBuffer) -> Int { s.size }
+pub fn SortcomparetimBuffer::len(self : SortcomparetimBuffer) -> Int { self.size }
 
-pub fn sort_compare_tim_buffer_get(s : SortcomparetimBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimBuffer::get(self : SortcomparetimBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_buffer_set(s : SortcomparetimBuffer, i : Int, v : Double) -> SortcomparetimBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimBuffer::set(self : SortcomparetimBuffer, i : Int, v : Double) -> SortcomparetimBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_buffer_sum(s : SortcomparetimBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimBuffer::sum(self : SortcomparetimBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_buffer_mean(s : SortcomparetimBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimBuffer::mean(self : SortcomparetimBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_buffer_scale(s : SortcomparetimBuffer, f : Double) -> SortcomparetimBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimBuffer::scale(self : SortcomparetimBuffer, f : Double) -> SortcomparetimBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_buffer_add(a : SortcomparetimBuffer, b : SortcomparetimBuffer) -> SortcomparetimBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimBuffer::add(self : SortcomparetimBuffer, other : SortcomparetimBuffer) -> SortcomparetimBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_buffer_copy(s : SortcomparetimBuffer) -> SortcomparetimBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimBuffer::copy(self : SortcomparetimBuffer) -> SortcomparetimBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_buffer_fill(s : SortcomparetimBuffer, v : Double) -> SortcomparetimBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimBuffer::fill(self : SortcomparetimBuffer, v : Double) -> SortcomparetimBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_buffer_min(s : SortcomparetimBuffer) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimBuffer::min(self : SortcomparetimBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_buffer_max(s : SortcomparetimBuffer) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimBuffer::max(self : SortcomparetimBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_buffer_to_string(s : SortcomparetimBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimBuffer::to_string(self : SortcomparetimBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimCursor {
@@ -861,45 +861,45 @@ pub fn sort_compare_tim_cursor_make(size : Int) -> SortcomparetimCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_cursor_len(s : SortcomparetimCursor) -> Int { s.size }
+pub fn SortcomparetimCursor::len(self : SortcomparetimCursor) -> Int { self.size }
 
-pub fn sort_compare_tim_cursor_get(s : SortcomparetimCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimCursor::get(self : SortcomparetimCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_cursor_set(s : SortcomparetimCursor, i : Int, v : Double) -> SortcomparetimCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimCursor::set(self : SortcomparetimCursor, i : Int, v : Double) -> SortcomparetimCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cursor_sum(s : SortcomparetimCursor) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimCursor::sum(self : SortcomparetimCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_cursor_mean(s : SortcomparetimCursor) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimCursor::mean(self : SortcomparetimCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_cursor_scale(s : SortcomparetimCursor, f : Double) -> SortcomparetimCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimCursor::scale(self : SortcomparetimCursor, f : Double) -> SortcomparetimCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cursor_add(a : SortcomparetimCursor, b : SortcomparetimCursor) -> SortcomparetimCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimCursor::add(self : SortcomparetimCursor, other : SortcomparetimCursor) -> SortcomparetimCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cursor_copy(s : SortcomparetimCursor) -> SortcomparetimCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimCursor::copy(self : SortcomparetimCursor) -> SortcomparetimCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cursor_fill(s : SortcomparetimCursor, v : Double) -> SortcomparetimCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimCursor::fill(self : SortcomparetimCursor, v : Double) -> SortcomparetimCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_cursor_min(s : SortcomparetimCursor) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimCursor::min(self : SortcomparetimCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_cursor_max(s : SortcomparetimCursor) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimCursor::max(self : SortcomparetimCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_cursor_to_string(s : SortcomparetimCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimCursor::to_string(self : SortcomparetimCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimView {
@@ -912,45 +912,45 @@ pub fn sort_compare_tim_view_make(size : Int) -> SortcomparetimView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_view_len(s : SortcomparetimView) -> Int { s.size }
+pub fn SortcomparetimView::len(self : SortcomparetimView) -> Int { self.size }
 
-pub fn sort_compare_tim_view_get(s : SortcomparetimView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimView::get(self : SortcomparetimView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_view_set(s : SortcomparetimView, i : Int, v : Double) -> SortcomparetimView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimView::set(self : SortcomparetimView, i : Int, v : Double) -> SortcomparetimView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_view_sum(s : SortcomparetimView) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimView::sum(self : SortcomparetimView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_view_mean(s : SortcomparetimView) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimView::mean(self : SortcomparetimView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_view_scale(s : SortcomparetimView, f : Double) -> SortcomparetimView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimView::scale(self : SortcomparetimView, f : Double) -> SortcomparetimView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_view_add(a : SortcomparetimView, b : SortcomparetimView) -> SortcomparetimView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimView::add(self : SortcomparetimView, other : SortcomparetimView) -> SortcomparetimView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_view_copy(s : SortcomparetimView) -> SortcomparetimView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimView::copy(self : SortcomparetimView) -> SortcomparetimView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_view_fill(s : SortcomparetimView, v : Double) -> SortcomparetimView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimView::fill(self : SortcomparetimView, v : Double) -> SortcomparetimView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_view_min(s : SortcomparetimView) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimView::min(self : SortcomparetimView) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_view_max(s : SortcomparetimView) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimView::max(self : SortcomparetimView) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_view_to_string(s : SortcomparetimView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimView::to_string(self : SortcomparetimView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimRange {
@@ -963,45 +963,45 @@ pub fn sort_compare_tim_range_make(size : Int) -> SortcomparetimRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_range_len(s : SortcomparetimRange) -> Int { s.size }
+pub fn SortcomparetimRange::len(self : SortcomparetimRange) -> Int { self.size }
 
-pub fn sort_compare_tim_range_get(s : SortcomparetimRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimRange::get(self : SortcomparetimRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_range_set(s : SortcomparetimRange, i : Int, v : Double) -> SortcomparetimRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimRange::set(self : SortcomparetimRange, i : Int, v : Double) -> SortcomparetimRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_range_sum(s : SortcomparetimRange) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimRange::sum(self : SortcomparetimRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_range_mean(s : SortcomparetimRange) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimRange::mean(self : SortcomparetimRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_range_scale(s : SortcomparetimRange, f : Double) -> SortcomparetimRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimRange::scale(self : SortcomparetimRange, f : Double) -> SortcomparetimRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_range_add(a : SortcomparetimRange, b : SortcomparetimRange) -> SortcomparetimRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimRange::add(self : SortcomparetimRange, other : SortcomparetimRange) -> SortcomparetimRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_range_copy(s : SortcomparetimRange) -> SortcomparetimRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimRange::copy(self : SortcomparetimRange) -> SortcomparetimRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_range_fill(s : SortcomparetimRange, v : Double) -> SortcomparetimRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimRange::fill(self : SortcomparetimRange, v : Double) -> SortcomparetimRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_range_min(s : SortcomparetimRange) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimRange::min(self : SortcomparetimRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_range_max(s : SortcomparetimRange) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimRange::max(self : SortcomparetimRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_range_to_string(s : SortcomparetimRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimRange::to_string(self : SortcomparetimRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_compare_tim_slice_make(size : Int) -> SortcomparetimSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_tim_slice_len(s : SortcomparetimSlice) -> Int { s.size }
+pub fn SortcomparetimSlice::len(self : SortcomparetimSlice) -> Int { self.size }
 
-pub fn sort_compare_tim_slice_get(s : SortcomparetimSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparetimSlice::get(self : SortcomparetimSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_tim_slice_set(s : SortcomparetimSlice, i : Int, v : Double) -> SortcomparetimSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparetimSlice::set(self : SortcomparetimSlice, i : Int, v : Double) -> SortcomparetimSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_slice_sum(s : SortcomparetimSlice) -> Double { @_common.sum(s.data) }
+pub fn SortcomparetimSlice::sum(self : SortcomparetimSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_tim_slice_mean(s : SortcomparetimSlice) -> Double { @_common.mean(s.data) }
+pub fn SortcomparetimSlice::mean(self : SortcomparetimSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_tim_slice_scale(s : SortcomparetimSlice, f : Double) -> SortcomparetimSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparetimSlice::scale(self : SortcomparetimSlice, f : Double) -> SortcomparetimSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_slice_add(a : SortcomparetimSlice, b : SortcomparetimSlice) -> SortcomparetimSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparetimSlice::add(self : SortcomparetimSlice, other : SortcomparetimSlice) -> SortcomparetimSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_tim_slice_copy(s : SortcomparetimSlice) -> SortcomparetimSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparetimSlice::copy(self : SortcomparetimSlice) -> SortcomparetimSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_slice_fill(s : SortcomparetimSlice, v : Double) -> SortcomparetimSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparetimSlice::fill(self : SortcomparetimSlice, v : Double) -> SortcomparetimSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_tim_slice_min(s : SortcomparetimSlice) -> Double { @_common.min(s.data) }
+pub fn SortcomparetimSlice::min(self : SortcomparetimSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_tim_slice_max(s : SortcomparetimSlice) -> Double { @_common.max(s.data) }
+pub fn SortcomparetimSlice::max(self : SortcomparetimSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_tim_slice_to_string(s : SortcomparetimSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparetimSlice::to_string(self : SortcomparetimSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

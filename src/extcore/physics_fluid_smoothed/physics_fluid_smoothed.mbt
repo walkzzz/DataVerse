@@ -351,45 +351,45 @@ pub fn physics_fluid_smoothed_frame_make(size : Int) -> PhysicsfluidsmoothedFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_frame_len(s : PhysicsfluidsmoothedFrame) -> Int { s.size }
+pub fn PhysicsfluidsmoothedFrame::len(self : PhysicsfluidsmoothedFrame) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_frame_get(s : PhysicsfluidsmoothedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedFrame::get(self : PhysicsfluidsmoothedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_frame_set(s : PhysicsfluidsmoothedFrame, i : Int, v : Double) -> PhysicsfluidsmoothedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedFrame::set(self : PhysicsfluidsmoothedFrame, i : Int, v : Double) -> PhysicsfluidsmoothedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_frame_sum(s : PhysicsfluidsmoothedFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedFrame::sum(self : PhysicsfluidsmoothedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_frame_mean(s : PhysicsfluidsmoothedFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedFrame::mean(self : PhysicsfluidsmoothedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_frame_scale(s : PhysicsfluidsmoothedFrame, f : Double) -> PhysicsfluidsmoothedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedFrame::scale(self : PhysicsfluidsmoothedFrame, f : Double) -> PhysicsfluidsmoothedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_frame_add(a : PhysicsfluidsmoothedFrame, b : PhysicsfluidsmoothedFrame) -> PhysicsfluidsmoothedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedFrame::add(self : PhysicsfluidsmoothedFrame, other : PhysicsfluidsmoothedFrame) -> PhysicsfluidsmoothedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_frame_copy(s : PhysicsfluidsmoothedFrame) -> PhysicsfluidsmoothedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedFrame::copy(self : PhysicsfluidsmoothedFrame) -> PhysicsfluidsmoothedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_frame_fill(s : PhysicsfluidsmoothedFrame, v : Double) -> PhysicsfluidsmoothedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedFrame::fill(self : PhysicsfluidsmoothedFrame, v : Double) -> PhysicsfluidsmoothedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_frame_min(s : PhysicsfluidsmoothedFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedFrame::min(self : PhysicsfluidsmoothedFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_frame_max(s : PhysicsfluidsmoothedFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedFrame::max(self : PhysicsfluidsmoothedFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_frame_to_string(s : PhysicsfluidsmoothedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedFrame::to_string(self : PhysicsfluidsmoothedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedTable {
@@ -402,45 +402,45 @@ pub fn physics_fluid_smoothed_table_make(size : Int) -> PhysicsfluidsmoothedTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_table_len(s : PhysicsfluidsmoothedTable) -> Int { s.size }
+pub fn PhysicsfluidsmoothedTable::len(self : PhysicsfluidsmoothedTable) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_table_get(s : PhysicsfluidsmoothedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedTable::get(self : PhysicsfluidsmoothedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_table_set(s : PhysicsfluidsmoothedTable, i : Int, v : Double) -> PhysicsfluidsmoothedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedTable::set(self : PhysicsfluidsmoothedTable, i : Int, v : Double) -> PhysicsfluidsmoothedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_table_sum(s : PhysicsfluidsmoothedTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedTable::sum(self : PhysicsfluidsmoothedTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_table_mean(s : PhysicsfluidsmoothedTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedTable::mean(self : PhysicsfluidsmoothedTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_table_scale(s : PhysicsfluidsmoothedTable, f : Double) -> PhysicsfluidsmoothedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedTable::scale(self : PhysicsfluidsmoothedTable, f : Double) -> PhysicsfluidsmoothedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_table_add(a : PhysicsfluidsmoothedTable, b : PhysicsfluidsmoothedTable) -> PhysicsfluidsmoothedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedTable::add(self : PhysicsfluidsmoothedTable, other : PhysicsfluidsmoothedTable) -> PhysicsfluidsmoothedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_table_copy(s : PhysicsfluidsmoothedTable) -> PhysicsfluidsmoothedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedTable::copy(self : PhysicsfluidsmoothedTable) -> PhysicsfluidsmoothedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_table_fill(s : PhysicsfluidsmoothedTable, v : Double) -> PhysicsfluidsmoothedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedTable::fill(self : PhysicsfluidsmoothedTable, v : Double) -> PhysicsfluidsmoothedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_table_min(s : PhysicsfluidsmoothedTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedTable::min(self : PhysicsfluidsmoothedTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_table_max(s : PhysicsfluidsmoothedTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedTable::max(self : PhysicsfluidsmoothedTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_table_to_string(s : PhysicsfluidsmoothedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedTable::to_string(self : PhysicsfluidsmoothedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedGraphN {
@@ -453,45 +453,45 @@ pub fn physics_fluid_smoothed_graphn_make(size : Int) -> PhysicsfluidsmoothedGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_graphn_len(s : PhysicsfluidsmoothedGraphN) -> Int { s.size }
+pub fn PhysicsfluidsmoothedGraphN::len(self : PhysicsfluidsmoothedGraphN) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_graphn_get(s : PhysicsfluidsmoothedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedGraphN::get(self : PhysicsfluidsmoothedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_graphn_set(s : PhysicsfluidsmoothedGraphN, i : Int, v : Double) -> PhysicsfluidsmoothedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedGraphN::set(self : PhysicsfluidsmoothedGraphN, i : Int, v : Double) -> PhysicsfluidsmoothedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_graphn_sum(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedGraphN::sum(self : PhysicsfluidsmoothedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_graphn_mean(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedGraphN::mean(self : PhysicsfluidsmoothedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_graphn_scale(s : PhysicsfluidsmoothedGraphN, f : Double) -> PhysicsfluidsmoothedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedGraphN::scale(self : PhysicsfluidsmoothedGraphN, f : Double) -> PhysicsfluidsmoothedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_graphn_add(a : PhysicsfluidsmoothedGraphN, b : PhysicsfluidsmoothedGraphN) -> PhysicsfluidsmoothedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedGraphN::add(self : PhysicsfluidsmoothedGraphN, other : PhysicsfluidsmoothedGraphN) -> PhysicsfluidsmoothedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_graphn_copy(s : PhysicsfluidsmoothedGraphN) -> PhysicsfluidsmoothedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedGraphN::copy(self : PhysicsfluidsmoothedGraphN) -> PhysicsfluidsmoothedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_graphn_fill(s : PhysicsfluidsmoothedGraphN, v : Double) -> PhysicsfluidsmoothedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedGraphN::fill(self : PhysicsfluidsmoothedGraphN, v : Double) -> PhysicsfluidsmoothedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_graphn_min(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedGraphN::min(self : PhysicsfluidsmoothedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_graphn_max(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedGraphN::max(self : PhysicsfluidsmoothedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_graphn_to_string(s : PhysicsfluidsmoothedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedGraphN::to_string(self : PhysicsfluidsmoothedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedNode {
@@ -504,45 +504,45 @@ pub fn physics_fluid_smoothed_node_make(size : Int) -> PhysicsfluidsmoothedNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_node_len(s : PhysicsfluidsmoothedNode) -> Int { s.size }
+pub fn PhysicsfluidsmoothedNode::len(self : PhysicsfluidsmoothedNode) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_node_get(s : PhysicsfluidsmoothedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedNode::get(self : PhysicsfluidsmoothedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_node_set(s : PhysicsfluidsmoothedNode, i : Int, v : Double) -> PhysicsfluidsmoothedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedNode::set(self : PhysicsfluidsmoothedNode, i : Int, v : Double) -> PhysicsfluidsmoothedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_node_sum(s : PhysicsfluidsmoothedNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedNode::sum(self : PhysicsfluidsmoothedNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_node_mean(s : PhysicsfluidsmoothedNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedNode::mean(self : PhysicsfluidsmoothedNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_node_scale(s : PhysicsfluidsmoothedNode, f : Double) -> PhysicsfluidsmoothedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedNode::scale(self : PhysicsfluidsmoothedNode, f : Double) -> PhysicsfluidsmoothedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_node_add(a : PhysicsfluidsmoothedNode, b : PhysicsfluidsmoothedNode) -> PhysicsfluidsmoothedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedNode::add(self : PhysicsfluidsmoothedNode, other : PhysicsfluidsmoothedNode) -> PhysicsfluidsmoothedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_node_copy(s : PhysicsfluidsmoothedNode) -> PhysicsfluidsmoothedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedNode::copy(self : PhysicsfluidsmoothedNode) -> PhysicsfluidsmoothedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_node_fill(s : PhysicsfluidsmoothedNode, v : Double) -> PhysicsfluidsmoothedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedNode::fill(self : PhysicsfluidsmoothedNode, v : Double) -> PhysicsfluidsmoothedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_node_min(s : PhysicsfluidsmoothedNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedNode::min(self : PhysicsfluidsmoothedNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_node_max(s : PhysicsfluidsmoothedNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedNode::max(self : PhysicsfluidsmoothedNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_node_to_string(s : PhysicsfluidsmoothedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedNode::to_string(self : PhysicsfluidsmoothedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedEdge {
@@ -555,45 +555,45 @@ pub fn physics_fluid_smoothed_edge_make(size : Int) -> PhysicsfluidsmoothedEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_edge_len(s : PhysicsfluidsmoothedEdge) -> Int { s.size }
+pub fn PhysicsfluidsmoothedEdge::len(self : PhysicsfluidsmoothedEdge) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_edge_get(s : PhysicsfluidsmoothedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedEdge::get(self : PhysicsfluidsmoothedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_edge_set(s : PhysicsfluidsmoothedEdge, i : Int, v : Double) -> PhysicsfluidsmoothedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedEdge::set(self : PhysicsfluidsmoothedEdge, i : Int, v : Double) -> PhysicsfluidsmoothedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_edge_sum(s : PhysicsfluidsmoothedEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedEdge::sum(self : PhysicsfluidsmoothedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_edge_mean(s : PhysicsfluidsmoothedEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedEdge::mean(self : PhysicsfluidsmoothedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_edge_scale(s : PhysicsfluidsmoothedEdge, f : Double) -> PhysicsfluidsmoothedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedEdge::scale(self : PhysicsfluidsmoothedEdge, f : Double) -> PhysicsfluidsmoothedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_edge_add(a : PhysicsfluidsmoothedEdge, b : PhysicsfluidsmoothedEdge) -> PhysicsfluidsmoothedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedEdge::add(self : PhysicsfluidsmoothedEdge, other : PhysicsfluidsmoothedEdge) -> PhysicsfluidsmoothedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_edge_copy(s : PhysicsfluidsmoothedEdge) -> PhysicsfluidsmoothedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedEdge::copy(self : PhysicsfluidsmoothedEdge) -> PhysicsfluidsmoothedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_edge_fill(s : PhysicsfluidsmoothedEdge, v : Double) -> PhysicsfluidsmoothedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedEdge::fill(self : PhysicsfluidsmoothedEdge, v : Double) -> PhysicsfluidsmoothedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_edge_min(s : PhysicsfluidsmoothedEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedEdge::min(self : PhysicsfluidsmoothedEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_edge_max(s : PhysicsfluidsmoothedEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedEdge::max(self : PhysicsfluidsmoothedEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_edge_to_string(s : PhysicsfluidsmoothedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedEdge::to_string(self : PhysicsfluidsmoothedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedPath {
@@ -606,45 +606,45 @@ pub fn physics_fluid_smoothed_path_make(size : Int) -> PhysicsfluidsmoothedPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_path_len(s : PhysicsfluidsmoothedPath) -> Int { s.size }
+pub fn PhysicsfluidsmoothedPath::len(self : PhysicsfluidsmoothedPath) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_path_get(s : PhysicsfluidsmoothedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedPath::get(self : PhysicsfluidsmoothedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_path_set(s : PhysicsfluidsmoothedPath, i : Int, v : Double) -> PhysicsfluidsmoothedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedPath::set(self : PhysicsfluidsmoothedPath, i : Int, v : Double) -> PhysicsfluidsmoothedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_path_sum(s : PhysicsfluidsmoothedPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedPath::sum(self : PhysicsfluidsmoothedPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_path_mean(s : PhysicsfluidsmoothedPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedPath::mean(self : PhysicsfluidsmoothedPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_path_scale(s : PhysicsfluidsmoothedPath, f : Double) -> PhysicsfluidsmoothedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedPath::scale(self : PhysicsfluidsmoothedPath, f : Double) -> PhysicsfluidsmoothedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_path_add(a : PhysicsfluidsmoothedPath, b : PhysicsfluidsmoothedPath) -> PhysicsfluidsmoothedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedPath::add(self : PhysicsfluidsmoothedPath, other : PhysicsfluidsmoothedPath) -> PhysicsfluidsmoothedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_path_copy(s : PhysicsfluidsmoothedPath) -> PhysicsfluidsmoothedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedPath::copy(self : PhysicsfluidsmoothedPath) -> PhysicsfluidsmoothedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_path_fill(s : PhysicsfluidsmoothedPath, v : Double) -> PhysicsfluidsmoothedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedPath::fill(self : PhysicsfluidsmoothedPath, v : Double) -> PhysicsfluidsmoothedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_path_min(s : PhysicsfluidsmoothedPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedPath::min(self : PhysicsfluidsmoothedPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_path_max(s : PhysicsfluidsmoothedPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedPath::max(self : PhysicsfluidsmoothedPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_path_to_string(s : PhysicsfluidsmoothedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedPath::to_string(self : PhysicsfluidsmoothedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedCluster {
@@ -657,45 +657,45 @@ pub fn physics_fluid_smoothed_cluster_make(size : Int) -> PhysicsfluidsmoothedCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_cluster_len(s : PhysicsfluidsmoothedCluster) -> Int { s.size }
+pub fn PhysicsfluidsmoothedCluster::len(self : PhysicsfluidsmoothedCluster) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_cluster_get(s : PhysicsfluidsmoothedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedCluster::get(self : PhysicsfluidsmoothedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_cluster_set(s : PhysicsfluidsmoothedCluster, i : Int, v : Double) -> PhysicsfluidsmoothedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCluster::set(self : PhysicsfluidsmoothedCluster, i : Int, v : Double) -> PhysicsfluidsmoothedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cluster_sum(s : PhysicsfluidsmoothedCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedCluster::sum(self : PhysicsfluidsmoothedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_cluster_mean(s : PhysicsfluidsmoothedCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedCluster::mean(self : PhysicsfluidsmoothedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_cluster_scale(s : PhysicsfluidsmoothedCluster, f : Double) -> PhysicsfluidsmoothedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCluster::scale(self : PhysicsfluidsmoothedCluster, f : Double) -> PhysicsfluidsmoothedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cluster_add(a : PhysicsfluidsmoothedCluster, b : PhysicsfluidsmoothedCluster) -> PhysicsfluidsmoothedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedCluster::add(self : PhysicsfluidsmoothedCluster, other : PhysicsfluidsmoothedCluster) -> PhysicsfluidsmoothedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cluster_copy(s : PhysicsfluidsmoothedCluster) -> PhysicsfluidsmoothedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCluster::copy(self : PhysicsfluidsmoothedCluster) -> PhysicsfluidsmoothedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cluster_fill(s : PhysicsfluidsmoothedCluster, v : Double) -> PhysicsfluidsmoothedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCluster::fill(self : PhysicsfluidsmoothedCluster, v : Double) -> PhysicsfluidsmoothedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cluster_min(s : PhysicsfluidsmoothedCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedCluster::min(self : PhysicsfluidsmoothedCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_cluster_max(s : PhysicsfluidsmoothedCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedCluster::max(self : PhysicsfluidsmoothedCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_cluster_to_string(s : PhysicsfluidsmoothedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedCluster::to_string(self : PhysicsfluidsmoothedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedModel {
@@ -708,45 +708,45 @@ pub fn physics_fluid_smoothed_model_make(size : Int) -> PhysicsfluidsmoothedMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_model_len(s : PhysicsfluidsmoothedModel) -> Int { s.size }
+pub fn PhysicsfluidsmoothedModel::len(self : PhysicsfluidsmoothedModel) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_model_get(s : PhysicsfluidsmoothedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedModel::get(self : PhysicsfluidsmoothedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_model_set(s : PhysicsfluidsmoothedModel, i : Int, v : Double) -> PhysicsfluidsmoothedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedModel::set(self : PhysicsfluidsmoothedModel, i : Int, v : Double) -> PhysicsfluidsmoothedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_model_sum(s : PhysicsfluidsmoothedModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedModel::sum(self : PhysicsfluidsmoothedModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_model_mean(s : PhysicsfluidsmoothedModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedModel::mean(self : PhysicsfluidsmoothedModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_model_scale(s : PhysicsfluidsmoothedModel, f : Double) -> PhysicsfluidsmoothedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedModel::scale(self : PhysicsfluidsmoothedModel, f : Double) -> PhysicsfluidsmoothedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_model_add(a : PhysicsfluidsmoothedModel, b : PhysicsfluidsmoothedModel) -> PhysicsfluidsmoothedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedModel::add(self : PhysicsfluidsmoothedModel, other : PhysicsfluidsmoothedModel) -> PhysicsfluidsmoothedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_model_copy(s : PhysicsfluidsmoothedModel) -> PhysicsfluidsmoothedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedModel::copy(self : PhysicsfluidsmoothedModel) -> PhysicsfluidsmoothedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_model_fill(s : PhysicsfluidsmoothedModel, v : Double) -> PhysicsfluidsmoothedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedModel::fill(self : PhysicsfluidsmoothedModel, v : Double) -> PhysicsfluidsmoothedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_model_min(s : PhysicsfluidsmoothedModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedModel::min(self : PhysicsfluidsmoothedModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_model_max(s : PhysicsfluidsmoothedModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedModel::max(self : PhysicsfluidsmoothedModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_model_to_string(s : PhysicsfluidsmoothedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedModel::to_string(self : PhysicsfluidsmoothedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedLayer {
@@ -759,45 +759,45 @@ pub fn physics_fluid_smoothed_layer_make(size : Int) -> PhysicsfluidsmoothedLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_layer_len(s : PhysicsfluidsmoothedLayer) -> Int { s.size }
+pub fn PhysicsfluidsmoothedLayer::len(self : PhysicsfluidsmoothedLayer) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_layer_get(s : PhysicsfluidsmoothedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedLayer::get(self : PhysicsfluidsmoothedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_layer_set(s : PhysicsfluidsmoothedLayer, i : Int, v : Double) -> PhysicsfluidsmoothedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedLayer::set(self : PhysicsfluidsmoothedLayer, i : Int, v : Double) -> PhysicsfluidsmoothedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_layer_sum(s : PhysicsfluidsmoothedLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedLayer::sum(self : PhysicsfluidsmoothedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_layer_mean(s : PhysicsfluidsmoothedLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedLayer::mean(self : PhysicsfluidsmoothedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_layer_scale(s : PhysicsfluidsmoothedLayer, f : Double) -> PhysicsfluidsmoothedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedLayer::scale(self : PhysicsfluidsmoothedLayer, f : Double) -> PhysicsfluidsmoothedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_layer_add(a : PhysicsfluidsmoothedLayer, b : PhysicsfluidsmoothedLayer) -> PhysicsfluidsmoothedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedLayer::add(self : PhysicsfluidsmoothedLayer, other : PhysicsfluidsmoothedLayer) -> PhysicsfluidsmoothedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_layer_copy(s : PhysicsfluidsmoothedLayer) -> PhysicsfluidsmoothedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedLayer::copy(self : PhysicsfluidsmoothedLayer) -> PhysicsfluidsmoothedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_layer_fill(s : PhysicsfluidsmoothedLayer, v : Double) -> PhysicsfluidsmoothedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedLayer::fill(self : PhysicsfluidsmoothedLayer, v : Double) -> PhysicsfluidsmoothedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_layer_min(s : PhysicsfluidsmoothedLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedLayer::min(self : PhysicsfluidsmoothedLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_layer_max(s : PhysicsfluidsmoothedLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedLayer::max(self : PhysicsfluidsmoothedLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_layer_to_string(s : PhysicsfluidsmoothedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedLayer::to_string(self : PhysicsfluidsmoothedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedBuffer {
@@ -810,45 +810,45 @@ pub fn physics_fluid_smoothed_buffer_make(size : Int) -> PhysicsfluidsmoothedBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_buffer_len(s : PhysicsfluidsmoothedBuffer) -> Int { s.size }
+pub fn PhysicsfluidsmoothedBuffer::len(self : PhysicsfluidsmoothedBuffer) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_buffer_get(s : PhysicsfluidsmoothedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedBuffer::get(self : PhysicsfluidsmoothedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_buffer_set(s : PhysicsfluidsmoothedBuffer, i : Int, v : Double) -> PhysicsfluidsmoothedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedBuffer::set(self : PhysicsfluidsmoothedBuffer, i : Int, v : Double) -> PhysicsfluidsmoothedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_buffer_sum(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedBuffer::sum(self : PhysicsfluidsmoothedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_buffer_mean(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedBuffer::mean(self : PhysicsfluidsmoothedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_buffer_scale(s : PhysicsfluidsmoothedBuffer, f : Double) -> PhysicsfluidsmoothedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedBuffer::scale(self : PhysicsfluidsmoothedBuffer, f : Double) -> PhysicsfluidsmoothedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_buffer_add(a : PhysicsfluidsmoothedBuffer, b : PhysicsfluidsmoothedBuffer) -> PhysicsfluidsmoothedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedBuffer::add(self : PhysicsfluidsmoothedBuffer, other : PhysicsfluidsmoothedBuffer) -> PhysicsfluidsmoothedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_buffer_copy(s : PhysicsfluidsmoothedBuffer) -> PhysicsfluidsmoothedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedBuffer::copy(self : PhysicsfluidsmoothedBuffer) -> PhysicsfluidsmoothedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_buffer_fill(s : PhysicsfluidsmoothedBuffer, v : Double) -> PhysicsfluidsmoothedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedBuffer::fill(self : PhysicsfluidsmoothedBuffer, v : Double) -> PhysicsfluidsmoothedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_buffer_min(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedBuffer::min(self : PhysicsfluidsmoothedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_buffer_max(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedBuffer::max(self : PhysicsfluidsmoothedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_buffer_to_string(s : PhysicsfluidsmoothedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedBuffer::to_string(self : PhysicsfluidsmoothedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedCursor {
@@ -861,45 +861,45 @@ pub fn physics_fluid_smoothed_cursor_make(size : Int) -> PhysicsfluidsmoothedCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_cursor_len(s : PhysicsfluidsmoothedCursor) -> Int { s.size }
+pub fn PhysicsfluidsmoothedCursor::len(self : PhysicsfluidsmoothedCursor) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_cursor_get(s : PhysicsfluidsmoothedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedCursor::get(self : PhysicsfluidsmoothedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_cursor_set(s : PhysicsfluidsmoothedCursor, i : Int, v : Double) -> PhysicsfluidsmoothedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCursor::set(self : PhysicsfluidsmoothedCursor, i : Int, v : Double) -> PhysicsfluidsmoothedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cursor_sum(s : PhysicsfluidsmoothedCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedCursor::sum(self : PhysicsfluidsmoothedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_cursor_mean(s : PhysicsfluidsmoothedCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedCursor::mean(self : PhysicsfluidsmoothedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_cursor_scale(s : PhysicsfluidsmoothedCursor, f : Double) -> PhysicsfluidsmoothedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCursor::scale(self : PhysicsfluidsmoothedCursor, f : Double) -> PhysicsfluidsmoothedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cursor_add(a : PhysicsfluidsmoothedCursor, b : PhysicsfluidsmoothedCursor) -> PhysicsfluidsmoothedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedCursor::add(self : PhysicsfluidsmoothedCursor, other : PhysicsfluidsmoothedCursor) -> PhysicsfluidsmoothedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cursor_copy(s : PhysicsfluidsmoothedCursor) -> PhysicsfluidsmoothedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCursor::copy(self : PhysicsfluidsmoothedCursor) -> PhysicsfluidsmoothedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cursor_fill(s : PhysicsfluidsmoothedCursor, v : Double) -> PhysicsfluidsmoothedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedCursor::fill(self : PhysicsfluidsmoothedCursor, v : Double) -> PhysicsfluidsmoothedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_cursor_min(s : PhysicsfluidsmoothedCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedCursor::min(self : PhysicsfluidsmoothedCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_cursor_max(s : PhysicsfluidsmoothedCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedCursor::max(self : PhysicsfluidsmoothedCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_cursor_to_string(s : PhysicsfluidsmoothedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedCursor::to_string(self : PhysicsfluidsmoothedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedView {
@@ -912,45 +912,45 @@ pub fn physics_fluid_smoothed_view_make(size : Int) -> PhysicsfluidsmoothedView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_view_len(s : PhysicsfluidsmoothedView) -> Int { s.size }
+pub fn PhysicsfluidsmoothedView::len(self : PhysicsfluidsmoothedView) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_view_get(s : PhysicsfluidsmoothedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedView::get(self : PhysicsfluidsmoothedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_view_set(s : PhysicsfluidsmoothedView, i : Int, v : Double) -> PhysicsfluidsmoothedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedView::set(self : PhysicsfluidsmoothedView, i : Int, v : Double) -> PhysicsfluidsmoothedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_view_sum(s : PhysicsfluidsmoothedView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedView::sum(self : PhysicsfluidsmoothedView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_view_mean(s : PhysicsfluidsmoothedView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedView::mean(self : PhysicsfluidsmoothedView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_view_scale(s : PhysicsfluidsmoothedView, f : Double) -> PhysicsfluidsmoothedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedView::scale(self : PhysicsfluidsmoothedView, f : Double) -> PhysicsfluidsmoothedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_view_add(a : PhysicsfluidsmoothedView, b : PhysicsfluidsmoothedView) -> PhysicsfluidsmoothedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedView::add(self : PhysicsfluidsmoothedView, other : PhysicsfluidsmoothedView) -> PhysicsfluidsmoothedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_view_copy(s : PhysicsfluidsmoothedView) -> PhysicsfluidsmoothedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedView::copy(self : PhysicsfluidsmoothedView) -> PhysicsfluidsmoothedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_view_fill(s : PhysicsfluidsmoothedView, v : Double) -> PhysicsfluidsmoothedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedView::fill(self : PhysicsfluidsmoothedView, v : Double) -> PhysicsfluidsmoothedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_view_min(s : PhysicsfluidsmoothedView) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedView::min(self : PhysicsfluidsmoothedView) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_view_max(s : PhysicsfluidsmoothedView) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedView::max(self : PhysicsfluidsmoothedView) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_view_to_string(s : PhysicsfluidsmoothedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedView::to_string(self : PhysicsfluidsmoothedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedRange {
@@ -963,45 +963,45 @@ pub fn physics_fluid_smoothed_range_make(size : Int) -> PhysicsfluidsmoothedRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_range_len(s : PhysicsfluidsmoothedRange) -> Int { s.size }
+pub fn PhysicsfluidsmoothedRange::len(self : PhysicsfluidsmoothedRange) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_range_get(s : PhysicsfluidsmoothedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedRange::get(self : PhysicsfluidsmoothedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_range_set(s : PhysicsfluidsmoothedRange, i : Int, v : Double) -> PhysicsfluidsmoothedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedRange::set(self : PhysicsfluidsmoothedRange, i : Int, v : Double) -> PhysicsfluidsmoothedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_range_sum(s : PhysicsfluidsmoothedRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedRange::sum(self : PhysicsfluidsmoothedRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_range_mean(s : PhysicsfluidsmoothedRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedRange::mean(self : PhysicsfluidsmoothedRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_range_scale(s : PhysicsfluidsmoothedRange, f : Double) -> PhysicsfluidsmoothedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedRange::scale(self : PhysicsfluidsmoothedRange, f : Double) -> PhysicsfluidsmoothedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_range_add(a : PhysicsfluidsmoothedRange, b : PhysicsfluidsmoothedRange) -> PhysicsfluidsmoothedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedRange::add(self : PhysicsfluidsmoothedRange, other : PhysicsfluidsmoothedRange) -> PhysicsfluidsmoothedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_range_copy(s : PhysicsfluidsmoothedRange) -> PhysicsfluidsmoothedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedRange::copy(self : PhysicsfluidsmoothedRange) -> PhysicsfluidsmoothedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_range_fill(s : PhysicsfluidsmoothedRange, v : Double) -> PhysicsfluidsmoothedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedRange::fill(self : PhysicsfluidsmoothedRange, v : Double) -> PhysicsfluidsmoothedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_range_min(s : PhysicsfluidsmoothedRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedRange::min(self : PhysicsfluidsmoothedRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_range_max(s : PhysicsfluidsmoothedRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedRange::max(self : PhysicsfluidsmoothedRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_range_to_string(s : PhysicsfluidsmoothedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedRange::to_string(self : PhysicsfluidsmoothedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidsmoothedSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_fluid_smoothed_slice_make(size : Int) -> PhysicsfluidsmoothedSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_smoothed_slice_len(s : PhysicsfluidsmoothedSlice) -> Int { s.size }
+pub fn PhysicsfluidsmoothedSlice::len(self : PhysicsfluidsmoothedSlice) -> Int { self.size }
 
-pub fn physics_fluid_smoothed_slice_get(s : PhysicsfluidsmoothedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidsmoothedSlice::get(self : PhysicsfluidsmoothedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_smoothed_slice_set(s : PhysicsfluidsmoothedSlice, i : Int, v : Double) -> PhysicsfluidsmoothedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedSlice::set(self : PhysicsfluidsmoothedSlice, i : Int, v : Double) -> PhysicsfluidsmoothedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_slice_sum(s : PhysicsfluidsmoothedSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidsmoothedSlice::sum(self : PhysicsfluidsmoothedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_smoothed_slice_mean(s : PhysicsfluidsmoothedSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidsmoothedSlice::mean(self : PhysicsfluidsmoothedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_smoothed_slice_scale(s : PhysicsfluidsmoothedSlice, f : Double) -> PhysicsfluidsmoothedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedSlice::scale(self : PhysicsfluidsmoothedSlice, f : Double) -> PhysicsfluidsmoothedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_slice_add(a : PhysicsfluidsmoothedSlice, b : PhysicsfluidsmoothedSlice) -> PhysicsfluidsmoothedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidsmoothedSlice::add(self : PhysicsfluidsmoothedSlice, other : PhysicsfluidsmoothedSlice) -> PhysicsfluidsmoothedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_slice_copy(s : PhysicsfluidsmoothedSlice) -> PhysicsfluidsmoothedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedSlice::copy(self : PhysicsfluidsmoothedSlice) -> PhysicsfluidsmoothedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_slice_fill(s : PhysicsfluidsmoothedSlice, v : Double) -> PhysicsfluidsmoothedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidsmoothedSlice::fill(self : PhysicsfluidsmoothedSlice, v : Double) -> PhysicsfluidsmoothedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_smoothed_slice_min(s : PhysicsfluidsmoothedSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidsmoothedSlice::min(self : PhysicsfluidsmoothedSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_smoothed_slice_max(s : PhysicsfluidsmoothedSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidsmoothedSlice::max(self : PhysicsfluidsmoothedSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_smoothed_slice_to_string(s : PhysicsfluidsmoothedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidsmoothedSlice::to_string(self : PhysicsfluidsmoothedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

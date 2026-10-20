@@ -351,45 +351,45 @@ pub fn math_svd_frame_make(size : Int) -> MathsvdFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_frame_len(s : MathsvdFrame) -> Int { s.size }
+pub fn MathsvdFrame::len(self : MathsvdFrame) -> Int { self.size }
 
-pub fn math_svd_frame_get(s : MathsvdFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdFrame::get(self : MathsvdFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_frame_set(s : MathsvdFrame, i : Int, v : Double) -> MathsvdFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdFrame::set(self : MathsvdFrame, i : Int, v : Double) -> MathsvdFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_frame_sum(s : MathsvdFrame) -> Double { @_common.sum(s.data) }
+pub fn MathsvdFrame::sum(self : MathsvdFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_frame_mean(s : MathsvdFrame) -> Double { @_common.mean(s.data) }
+pub fn MathsvdFrame::mean(self : MathsvdFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_frame_scale(s : MathsvdFrame, f : Double) -> MathsvdFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdFrame::scale(self : MathsvdFrame, f : Double) -> MathsvdFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_frame_add(a : MathsvdFrame, b : MathsvdFrame) -> MathsvdFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdFrame::add(self : MathsvdFrame, other : MathsvdFrame) -> MathsvdFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_frame_copy(s : MathsvdFrame) -> MathsvdFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdFrame::copy(self : MathsvdFrame) -> MathsvdFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_frame_fill(s : MathsvdFrame, v : Double) -> MathsvdFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdFrame::fill(self : MathsvdFrame, v : Double) -> MathsvdFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_frame_min(s : MathsvdFrame) -> Double { @_common.min(s.data) }
+pub fn MathsvdFrame::min(self : MathsvdFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_frame_max(s : MathsvdFrame) -> Double { @_common.max(s.data) }
+pub fn MathsvdFrame::max(self : MathsvdFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_frame_to_string(s : MathsvdFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdFrame::to_string(self : MathsvdFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdTable {
@@ -402,45 +402,45 @@ pub fn math_svd_table_make(size : Int) -> MathsvdTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_table_len(s : MathsvdTable) -> Int { s.size }
+pub fn MathsvdTable::len(self : MathsvdTable) -> Int { self.size }
 
-pub fn math_svd_table_get(s : MathsvdTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdTable::get(self : MathsvdTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_table_set(s : MathsvdTable, i : Int, v : Double) -> MathsvdTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdTable::set(self : MathsvdTable, i : Int, v : Double) -> MathsvdTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_table_sum(s : MathsvdTable) -> Double { @_common.sum(s.data) }
+pub fn MathsvdTable::sum(self : MathsvdTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_table_mean(s : MathsvdTable) -> Double { @_common.mean(s.data) }
+pub fn MathsvdTable::mean(self : MathsvdTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_table_scale(s : MathsvdTable, f : Double) -> MathsvdTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdTable::scale(self : MathsvdTable, f : Double) -> MathsvdTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_table_add(a : MathsvdTable, b : MathsvdTable) -> MathsvdTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdTable::add(self : MathsvdTable, other : MathsvdTable) -> MathsvdTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_table_copy(s : MathsvdTable) -> MathsvdTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdTable::copy(self : MathsvdTable) -> MathsvdTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_table_fill(s : MathsvdTable, v : Double) -> MathsvdTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdTable::fill(self : MathsvdTable, v : Double) -> MathsvdTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_table_min(s : MathsvdTable) -> Double { @_common.min(s.data) }
+pub fn MathsvdTable::min(self : MathsvdTable) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_table_max(s : MathsvdTable) -> Double { @_common.max(s.data) }
+pub fn MathsvdTable::max(self : MathsvdTable) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_table_to_string(s : MathsvdTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdTable::to_string(self : MathsvdTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdGraphN {
@@ -453,45 +453,45 @@ pub fn math_svd_graphn_make(size : Int) -> MathsvdGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_graphn_len(s : MathsvdGraphN) -> Int { s.size }
+pub fn MathsvdGraphN::len(self : MathsvdGraphN) -> Int { self.size }
 
-pub fn math_svd_graphn_get(s : MathsvdGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdGraphN::get(self : MathsvdGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_graphn_set(s : MathsvdGraphN, i : Int, v : Double) -> MathsvdGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdGraphN::set(self : MathsvdGraphN, i : Int, v : Double) -> MathsvdGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_graphn_sum(s : MathsvdGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathsvdGraphN::sum(self : MathsvdGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_graphn_mean(s : MathsvdGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathsvdGraphN::mean(self : MathsvdGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_graphn_scale(s : MathsvdGraphN, f : Double) -> MathsvdGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdGraphN::scale(self : MathsvdGraphN, f : Double) -> MathsvdGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_graphn_add(a : MathsvdGraphN, b : MathsvdGraphN) -> MathsvdGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdGraphN::add(self : MathsvdGraphN, other : MathsvdGraphN) -> MathsvdGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_graphn_copy(s : MathsvdGraphN) -> MathsvdGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdGraphN::copy(self : MathsvdGraphN) -> MathsvdGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_graphn_fill(s : MathsvdGraphN, v : Double) -> MathsvdGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdGraphN::fill(self : MathsvdGraphN, v : Double) -> MathsvdGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_graphn_min(s : MathsvdGraphN) -> Double { @_common.min(s.data) }
+pub fn MathsvdGraphN::min(self : MathsvdGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_graphn_max(s : MathsvdGraphN) -> Double { @_common.max(s.data) }
+pub fn MathsvdGraphN::max(self : MathsvdGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_graphn_to_string(s : MathsvdGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdGraphN::to_string(self : MathsvdGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdNode {
@@ -504,45 +504,45 @@ pub fn math_svd_node_make(size : Int) -> MathsvdNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_node_len(s : MathsvdNode) -> Int { s.size }
+pub fn MathsvdNode::len(self : MathsvdNode) -> Int { self.size }
 
-pub fn math_svd_node_get(s : MathsvdNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdNode::get(self : MathsvdNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_node_set(s : MathsvdNode, i : Int, v : Double) -> MathsvdNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdNode::set(self : MathsvdNode, i : Int, v : Double) -> MathsvdNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_node_sum(s : MathsvdNode) -> Double { @_common.sum(s.data) }
+pub fn MathsvdNode::sum(self : MathsvdNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_node_mean(s : MathsvdNode) -> Double { @_common.mean(s.data) }
+pub fn MathsvdNode::mean(self : MathsvdNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_node_scale(s : MathsvdNode, f : Double) -> MathsvdNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdNode::scale(self : MathsvdNode, f : Double) -> MathsvdNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_node_add(a : MathsvdNode, b : MathsvdNode) -> MathsvdNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdNode::add(self : MathsvdNode, other : MathsvdNode) -> MathsvdNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_node_copy(s : MathsvdNode) -> MathsvdNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdNode::copy(self : MathsvdNode) -> MathsvdNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_node_fill(s : MathsvdNode, v : Double) -> MathsvdNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdNode::fill(self : MathsvdNode, v : Double) -> MathsvdNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_node_min(s : MathsvdNode) -> Double { @_common.min(s.data) }
+pub fn MathsvdNode::min(self : MathsvdNode) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_node_max(s : MathsvdNode) -> Double { @_common.max(s.data) }
+pub fn MathsvdNode::max(self : MathsvdNode) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_node_to_string(s : MathsvdNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdNode::to_string(self : MathsvdNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdEdge {
@@ -555,45 +555,45 @@ pub fn math_svd_edge_make(size : Int) -> MathsvdEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_edge_len(s : MathsvdEdge) -> Int { s.size }
+pub fn MathsvdEdge::len(self : MathsvdEdge) -> Int { self.size }
 
-pub fn math_svd_edge_get(s : MathsvdEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdEdge::get(self : MathsvdEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_edge_set(s : MathsvdEdge, i : Int, v : Double) -> MathsvdEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdEdge::set(self : MathsvdEdge, i : Int, v : Double) -> MathsvdEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_edge_sum(s : MathsvdEdge) -> Double { @_common.sum(s.data) }
+pub fn MathsvdEdge::sum(self : MathsvdEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_edge_mean(s : MathsvdEdge) -> Double { @_common.mean(s.data) }
+pub fn MathsvdEdge::mean(self : MathsvdEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_edge_scale(s : MathsvdEdge, f : Double) -> MathsvdEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdEdge::scale(self : MathsvdEdge, f : Double) -> MathsvdEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_edge_add(a : MathsvdEdge, b : MathsvdEdge) -> MathsvdEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdEdge::add(self : MathsvdEdge, other : MathsvdEdge) -> MathsvdEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_edge_copy(s : MathsvdEdge) -> MathsvdEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdEdge::copy(self : MathsvdEdge) -> MathsvdEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_edge_fill(s : MathsvdEdge, v : Double) -> MathsvdEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdEdge::fill(self : MathsvdEdge, v : Double) -> MathsvdEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_edge_min(s : MathsvdEdge) -> Double { @_common.min(s.data) }
+pub fn MathsvdEdge::min(self : MathsvdEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_edge_max(s : MathsvdEdge) -> Double { @_common.max(s.data) }
+pub fn MathsvdEdge::max(self : MathsvdEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_edge_to_string(s : MathsvdEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdEdge::to_string(self : MathsvdEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdPath {
@@ -606,45 +606,45 @@ pub fn math_svd_path_make(size : Int) -> MathsvdPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_path_len(s : MathsvdPath) -> Int { s.size }
+pub fn MathsvdPath::len(self : MathsvdPath) -> Int { self.size }
 
-pub fn math_svd_path_get(s : MathsvdPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdPath::get(self : MathsvdPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_path_set(s : MathsvdPath, i : Int, v : Double) -> MathsvdPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdPath::set(self : MathsvdPath, i : Int, v : Double) -> MathsvdPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_path_sum(s : MathsvdPath) -> Double { @_common.sum(s.data) }
+pub fn MathsvdPath::sum(self : MathsvdPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_path_mean(s : MathsvdPath) -> Double { @_common.mean(s.data) }
+pub fn MathsvdPath::mean(self : MathsvdPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_path_scale(s : MathsvdPath, f : Double) -> MathsvdPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdPath::scale(self : MathsvdPath, f : Double) -> MathsvdPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_path_add(a : MathsvdPath, b : MathsvdPath) -> MathsvdPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdPath::add(self : MathsvdPath, other : MathsvdPath) -> MathsvdPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_path_copy(s : MathsvdPath) -> MathsvdPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdPath::copy(self : MathsvdPath) -> MathsvdPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_path_fill(s : MathsvdPath, v : Double) -> MathsvdPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdPath::fill(self : MathsvdPath, v : Double) -> MathsvdPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_path_min(s : MathsvdPath) -> Double { @_common.min(s.data) }
+pub fn MathsvdPath::min(self : MathsvdPath) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_path_max(s : MathsvdPath) -> Double { @_common.max(s.data) }
+pub fn MathsvdPath::max(self : MathsvdPath) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_path_to_string(s : MathsvdPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdPath::to_string(self : MathsvdPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdCluster {
@@ -657,45 +657,45 @@ pub fn math_svd_cluster_make(size : Int) -> MathsvdCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_cluster_len(s : MathsvdCluster) -> Int { s.size }
+pub fn MathsvdCluster::len(self : MathsvdCluster) -> Int { self.size }
 
-pub fn math_svd_cluster_get(s : MathsvdCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdCluster::get(self : MathsvdCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_cluster_set(s : MathsvdCluster, i : Int, v : Double) -> MathsvdCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdCluster::set(self : MathsvdCluster, i : Int, v : Double) -> MathsvdCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cluster_sum(s : MathsvdCluster) -> Double { @_common.sum(s.data) }
+pub fn MathsvdCluster::sum(self : MathsvdCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_cluster_mean(s : MathsvdCluster) -> Double { @_common.mean(s.data) }
+pub fn MathsvdCluster::mean(self : MathsvdCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_cluster_scale(s : MathsvdCluster, f : Double) -> MathsvdCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdCluster::scale(self : MathsvdCluster, f : Double) -> MathsvdCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cluster_add(a : MathsvdCluster, b : MathsvdCluster) -> MathsvdCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdCluster::add(self : MathsvdCluster, other : MathsvdCluster) -> MathsvdCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_cluster_copy(s : MathsvdCluster) -> MathsvdCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdCluster::copy(self : MathsvdCluster) -> MathsvdCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cluster_fill(s : MathsvdCluster, v : Double) -> MathsvdCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdCluster::fill(self : MathsvdCluster, v : Double) -> MathsvdCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cluster_min(s : MathsvdCluster) -> Double { @_common.min(s.data) }
+pub fn MathsvdCluster::min(self : MathsvdCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_cluster_max(s : MathsvdCluster) -> Double { @_common.max(s.data) }
+pub fn MathsvdCluster::max(self : MathsvdCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_cluster_to_string(s : MathsvdCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdCluster::to_string(self : MathsvdCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdModel {
@@ -708,45 +708,45 @@ pub fn math_svd_model_make(size : Int) -> MathsvdModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_model_len(s : MathsvdModel) -> Int { s.size }
+pub fn MathsvdModel::len(self : MathsvdModel) -> Int { self.size }
 
-pub fn math_svd_model_get(s : MathsvdModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdModel::get(self : MathsvdModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_model_set(s : MathsvdModel, i : Int, v : Double) -> MathsvdModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdModel::set(self : MathsvdModel, i : Int, v : Double) -> MathsvdModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_model_sum(s : MathsvdModel) -> Double { @_common.sum(s.data) }
+pub fn MathsvdModel::sum(self : MathsvdModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_model_mean(s : MathsvdModel) -> Double { @_common.mean(s.data) }
+pub fn MathsvdModel::mean(self : MathsvdModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_model_scale(s : MathsvdModel, f : Double) -> MathsvdModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdModel::scale(self : MathsvdModel, f : Double) -> MathsvdModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_model_add(a : MathsvdModel, b : MathsvdModel) -> MathsvdModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdModel::add(self : MathsvdModel, other : MathsvdModel) -> MathsvdModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_model_copy(s : MathsvdModel) -> MathsvdModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdModel::copy(self : MathsvdModel) -> MathsvdModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_model_fill(s : MathsvdModel, v : Double) -> MathsvdModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdModel::fill(self : MathsvdModel, v : Double) -> MathsvdModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_model_min(s : MathsvdModel) -> Double { @_common.min(s.data) }
+pub fn MathsvdModel::min(self : MathsvdModel) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_model_max(s : MathsvdModel) -> Double { @_common.max(s.data) }
+pub fn MathsvdModel::max(self : MathsvdModel) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_model_to_string(s : MathsvdModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdModel::to_string(self : MathsvdModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdLayer {
@@ -759,45 +759,45 @@ pub fn math_svd_layer_make(size : Int) -> MathsvdLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_layer_len(s : MathsvdLayer) -> Int { s.size }
+pub fn MathsvdLayer::len(self : MathsvdLayer) -> Int { self.size }
 
-pub fn math_svd_layer_get(s : MathsvdLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdLayer::get(self : MathsvdLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_layer_set(s : MathsvdLayer, i : Int, v : Double) -> MathsvdLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdLayer::set(self : MathsvdLayer, i : Int, v : Double) -> MathsvdLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_layer_sum(s : MathsvdLayer) -> Double { @_common.sum(s.data) }
+pub fn MathsvdLayer::sum(self : MathsvdLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_layer_mean(s : MathsvdLayer) -> Double { @_common.mean(s.data) }
+pub fn MathsvdLayer::mean(self : MathsvdLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_layer_scale(s : MathsvdLayer, f : Double) -> MathsvdLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdLayer::scale(self : MathsvdLayer, f : Double) -> MathsvdLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_layer_add(a : MathsvdLayer, b : MathsvdLayer) -> MathsvdLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdLayer::add(self : MathsvdLayer, other : MathsvdLayer) -> MathsvdLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_layer_copy(s : MathsvdLayer) -> MathsvdLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdLayer::copy(self : MathsvdLayer) -> MathsvdLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_layer_fill(s : MathsvdLayer, v : Double) -> MathsvdLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdLayer::fill(self : MathsvdLayer, v : Double) -> MathsvdLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_layer_min(s : MathsvdLayer) -> Double { @_common.min(s.data) }
+pub fn MathsvdLayer::min(self : MathsvdLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_layer_max(s : MathsvdLayer) -> Double { @_common.max(s.data) }
+pub fn MathsvdLayer::max(self : MathsvdLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_layer_to_string(s : MathsvdLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdLayer::to_string(self : MathsvdLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdBuffer {
@@ -810,45 +810,45 @@ pub fn math_svd_buffer_make(size : Int) -> MathsvdBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_buffer_len(s : MathsvdBuffer) -> Int { s.size }
+pub fn MathsvdBuffer::len(self : MathsvdBuffer) -> Int { self.size }
 
-pub fn math_svd_buffer_get(s : MathsvdBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdBuffer::get(self : MathsvdBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_buffer_set(s : MathsvdBuffer, i : Int, v : Double) -> MathsvdBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdBuffer::set(self : MathsvdBuffer, i : Int, v : Double) -> MathsvdBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_buffer_sum(s : MathsvdBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathsvdBuffer::sum(self : MathsvdBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_buffer_mean(s : MathsvdBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathsvdBuffer::mean(self : MathsvdBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_buffer_scale(s : MathsvdBuffer, f : Double) -> MathsvdBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdBuffer::scale(self : MathsvdBuffer, f : Double) -> MathsvdBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_buffer_add(a : MathsvdBuffer, b : MathsvdBuffer) -> MathsvdBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdBuffer::add(self : MathsvdBuffer, other : MathsvdBuffer) -> MathsvdBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_buffer_copy(s : MathsvdBuffer) -> MathsvdBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdBuffer::copy(self : MathsvdBuffer) -> MathsvdBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_buffer_fill(s : MathsvdBuffer, v : Double) -> MathsvdBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdBuffer::fill(self : MathsvdBuffer, v : Double) -> MathsvdBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_buffer_min(s : MathsvdBuffer) -> Double { @_common.min(s.data) }
+pub fn MathsvdBuffer::min(self : MathsvdBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_buffer_max(s : MathsvdBuffer) -> Double { @_common.max(s.data) }
+pub fn MathsvdBuffer::max(self : MathsvdBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_buffer_to_string(s : MathsvdBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdBuffer::to_string(self : MathsvdBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdCursor {
@@ -861,45 +861,45 @@ pub fn math_svd_cursor_make(size : Int) -> MathsvdCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_cursor_len(s : MathsvdCursor) -> Int { s.size }
+pub fn MathsvdCursor::len(self : MathsvdCursor) -> Int { self.size }
 
-pub fn math_svd_cursor_get(s : MathsvdCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdCursor::get(self : MathsvdCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_cursor_set(s : MathsvdCursor, i : Int, v : Double) -> MathsvdCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdCursor::set(self : MathsvdCursor, i : Int, v : Double) -> MathsvdCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cursor_sum(s : MathsvdCursor) -> Double { @_common.sum(s.data) }
+pub fn MathsvdCursor::sum(self : MathsvdCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_cursor_mean(s : MathsvdCursor) -> Double { @_common.mean(s.data) }
+pub fn MathsvdCursor::mean(self : MathsvdCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_cursor_scale(s : MathsvdCursor, f : Double) -> MathsvdCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdCursor::scale(self : MathsvdCursor, f : Double) -> MathsvdCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cursor_add(a : MathsvdCursor, b : MathsvdCursor) -> MathsvdCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdCursor::add(self : MathsvdCursor, other : MathsvdCursor) -> MathsvdCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_cursor_copy(s : MathsvdCursor) -> MathsvdCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdCursor::copy(self : MathsvdCursor) -> MathsvdCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cursor_fill(s : MathsvdCursor, v : Double) -> MathsvdCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdCursor::fill(self : MathsvdCursor, v : Double) -> MathsvdCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_cursor_min(s : MathsvdCursor) -> Double { @_common.min(s.data) }
+pub fn MathsvdCursor::min(self : MathsvdCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_cursor_max(s : MathsvdCursor) -> Double { @_common.max(s.data) }
+pub fn MathsvdCursor::max(self : MathsvdCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_cursor_to_string(s : MathsvdCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdCursor::to_string(self : MathsvdCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdView {
@@ -912,45 +912,45 @@ pub fn math_svd_view_make(size : Int) -> MathsvdView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_view_len(s : MathsvdView) -> Int { s.size }
+pub fn MathsvdView::len(self : MathsvdView) -> Int { self.size }
 
-pub fn math_svd_view_get(s : MathsvdView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdView::get(self : MathsvdView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_view_set(s : MathsvdView, i : Int, v : Double) -> MathsvdView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdView::set(self : MathsvdView, i : Int, v : Double) -> MathsvdView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_view_sum(s : MathsvdView) -> Double { @_common.sum(s.data) }
+pub fn MathsvdView::sum(self : MathsvdView) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_view_mean(s : MathsvdView) -> Double { @_common.mean(s.data) }
+pub fn MathsvdView::mean(self : MathsvdView) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_view_scale(s : MathsvdView, f : Double) -> MathsvdView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdView::scale(self : MathsvdView, f : Double) -> MathsvdView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_view_add(a : MathsvdView, b : MathsvdView) -> MathsvdView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdView::add(self : MathsvdView, other : MathsvdView) -> MathsvdView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_view_copy(s : MathsvdView) -> MathsvdView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdView::copy(self : MathsvdView) -> MathsvdView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_view_fill(s : MathsvdView, v : Double) -> MathsvdView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdView::fill(self : MathsvdView, v : Double) -> MathsvdView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_view_min(s : MathsvdView) -> Double { @_common.min(s.data) }
+pub fn MathsvdView::min(self : MathsvdView) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_view_max(s : MathsvdView) -> Double { @_common.max(s.data) }
+pub fn MathsvdView::max(self : MathsvdView) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_view_to_string(s : MathsvdView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdView::to_string(self : MathsvdView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdRange {
@@ -963,45 +963,45 @@ pub fn math_svd_range_make(size : Int) -> MathsvdRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_range_len(s : MathsvdRange) -> Int { s.size }
+pub fn MathsvdRange::len(self : MathsvdRange) -> Int { self.size }
 
-pub fn math_svd_range_get(s : MathsvdRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdRange::get(self : MathsvdRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_range_set(s : MathsvdRange, i : Int, v : Double) -> MathsvdRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdRange::set(self : MathsvdRange, i : Int, v : Double) -> MathsvdRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_range_sum(s : MathsvdRange) -> Double { @_common.sum(s.data) }
+pub fn MathsvdRange::sum(self : MathsvdRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_range_mean(s : MathsvdRange) -> Double { @_common.mean(s.data) }
+pub fn MathsvdRange::mean(self : MathsvdRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_range_scale(s : MathsvdRange, f : Double) -> MathsvdRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdRange::scale(self : MathsvdRange, f : Double) -> MathsvdRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_range_add(a : MathsvdRange, b : MathsvdRange) -> MathsvdRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdRange::add(self : MathsvdRange, other : MathsvdRange) -> MathsvdRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_range_copy(s : MathsvdRange) -> MathsvdRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdRange::copy(self : MathsvdRange) -> MathsvdRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_range_fill(s : MathsvdRange, v : Double) -> MathsvdRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdRange::fill(self : MathsvdRange, v : Double) -> MathsvdRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_range_min(s : MathsvdRange) -> Double { @_common.min(s.data) }
+pub fn MathsvdRange::min(self : MathsvdRange) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_range_max(s : MathsvdRange) -> Double { @_common.max(s.data) }
+pub fn MathsvdRange::max(self : MathsvdRange) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_range_to_string(s : MathsvdRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdRange::to_string(self : MathsvdRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathsvdSlice {
@@ -1014,44 +1014,44 @@ pub fn math_svd_slice_make(size : Int) -> MathsvdSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_svd_slice_len(s : MathsvdSlice) -> Int { s.size }
+pub fn MathsvdSlice::len(self : MathsvdSlice) -> Int { self.size }
 
-pub fn math_svd_slice_get(s : MathsvdSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathsvdSlice::get(self : MathsvdSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_svd_slice_set(s : MathsvdSlice, i : Int, v : Double) -> MathsvdSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathsvdSlice::set(self : MathsvdSlice, i : Int, v : Double) -> MathsvdSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_slice_sum(s : MathsvdSlice) -> Double { @_common.sum(s.data) }
+pub fn MathsvdSlice::sum(self : MathsvdSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_svd_slice_mean(s : MathsvdSlice) -> Double { @_common.mean(s.data) }
+pub fn MathsvdSlice::mean(self : MathsvdSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_svd_slice_scale(s : MathsvdSlice, f : Double) -> MathsvdSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathsvdSlice::scale(self : MathsvdSlice, f : Double) -> MathsvdSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_slice_add(a : MathsvdSlice, b : MathsvdSlice) -> MathsvdSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathsvdSlice::add(self : MathsvdSlice, other : MathsvdSlice) -> MathsvdSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_svd_slice_copy(s : MathsvdSlice) -> MathsvdSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathsvdSlice::copy(self : MathsvdSlice) -> MathsvdSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_slice_fill(s : MathsvdSlice, v : Double) -> MathsvdSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathsvdSlice::fill(self : MathsvdSlice, v : Double) -> MathsvdSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_svd_slice_min(s : MathsvdSlice) -> Double { @_common.min(s.data) }
+pub fn MathsvdSlice::min(self : MathsvdSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_svd_slice_max(s : MathsvdSlice) -> Double { @_common.max(s.data) }
+pub fn MathsvdSlice::max(self : MathsvdSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_svd_slice_to_string(s : MathsvdSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathsvdSlice::to_string(self : MathsvdSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

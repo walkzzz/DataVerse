@@ -351,45 +351,45 @@ pub fn sort_exchange_j_frame_make(size : Int) -> SortexchangejFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_frame_len(s : SortexchangejFrame) -> Int { s.size }
+pub fn SortexchangejFrame::len(self : SortexchangejFrame) -> Int { self.size }
 
-pub fn sort_exchange_j_frame_get(s : SortexchangejFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejFrame::get(self : SortexchangejFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_frame_set(s : SortexchangejFrame, i : Int, v : Double) -> SortexchangejFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejFrame::set(self : SortexchangejFrame, i : Int, v : Double) -> SortexchangejFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_frame_sum(s : SortexchangejFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejFrame::sum(self : SortexchangejFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_frame_mean(s : SortexchangejFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejFrame::mean(self : SortexchangejFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_frame_scale(s : SortexchangejFrame, f : Double) -> SortexchangejFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejFrame::scale(self : SortexchangejFrame, f : Double) -> SortexchangejFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_frame_add(a : SortexchangejFrame, b : SortexchangejFrame) -> SortexchangejFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejFrame::add(self : SortexchangejFrame, other : SortexchangejFrame) -> SortexchangejFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_frame_copy(s : SortexchangejFrame) -> SortexchangejFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejFrame::copy(self : SortexchangejFrame) -> SortexchangejFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_frame_fill(s : SortexchangejFrame, v : Double) -> SortexchangejFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejFrame::fill(self : SortexchangejFrame, v : Double) -> SortexchangejFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_frame_min(s : SortexchangejFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangejFrame::min(self : SortexchangejFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_frame_max(s : SortexchangejFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangejFrame::max(self : SortexchangejFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_frame_to_string(s : SortexchangejFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejFrame::to_string(self : SortexchangejFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_j_table_make(size : Int) -> SortexchangejTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_table_len(s : SortexchangejTable) -> Int { s.size }
+pub fn SortexchangejTable::len(self : SortexchangejTable) -> Int { self.size }
 
-pub fn sort_exchange_j_table_get(s : SortexchangejTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejTable::get(self : SortexchangejTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_table_set(s : SortexchangejTable, i : Int, v : Double) -> SortexchangejTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejTable::set(self : SortexchangejTable, i : Int, v : Double) -> SortexchangejTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_table_sum(s : SortexchangejTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejTable::sum(self : SortexchangejTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_table_mean(s : SortexchangejTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejTable::mean(self : SortexchangejTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_table_scale(s : SortexchangejTable, f : Double) -> SortexchangejTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejTable::scale(self : SortexchangejTable, f : Double) -> SortexchangejTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_table_add(a : SortexchangejTable, b : SortexchangejTable) -> SortexchangejTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejTable::add(self : SortexchangejTable, other : SortexchangejTable) -> SortexchangejTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_table_copy(s : SortexchangejTable) -> SortexchangejTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejTable::copy(self : SortexchangejTable) -> SortexchangejTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_table_fill(s : SortexchangejTable, v : Double) -> SortexchangejTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejTable::fill(self : SortexchangejTable, v : Double) -> SortexchangejTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_table_min(s : SortexchangejTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangejTable::min(self : SortexchangejTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_table_max(s : SortexchangejTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangejTable::max(self : SortexchangejTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_table_to_string(s : SortexchangejTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejTable::to_string(self : SortexchangejTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_j_graphn_make(size : Int) -> SortexchangejGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_graphn_len(s : SortexchangejGraphN) -> Int { s.size }
+pub fn SortexchangejGraphN::len(self : SortexchangejGraphN) -> Int { self.size }
 
-pub fn sort_exchange_j_graphn_get(s : SortexchangejGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejGraphN::get(self : SortexchangejGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_graphn_set(s : SortexchangejGraphN, i : Int, v : Double) -> SortexchangejGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejGraphN::set(self : SortexchangejGraphN, i : Int, v : Double) -> SortexchangejGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_graphn_sum(s : SortexchangejGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejGraphN::sum(self : SortexchangejGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_graphn_mean(s : SortexchangejGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejGraphN::mean(self : SortexchangejGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_graphn_scale(s : SortexchangejGraphN, f : Double) -> SortexchangejGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejGraphN::scale(self : SortexchangejGraphN, f : Double) -> SortexchangejGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_graphn_add(a : SortexchangejGraphN, b : SortexchangejGraphN) -> SortexchangejGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejGraphN::add(self : SortexchangejGraphN, other : SortexchangejGraphN) -> SortexchangejGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_graphn_copy(s : SortexchangejGraphN) -> SortexchangejGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejGraphN::copy(self : SortexchangejGraphN) -> SortexchangejGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_graphn_fill(s : SortexchangejGraphN, v : Double) -> SortexchangejGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejGraphN::fill(self : SortexchangejGraphN, v : Double) -> SortexchangejGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_graphn_min(s : SortexchangejGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangejGraphN::min(self : SortexchangejGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_graphn_max(s : SortexchangejGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangejGraphN::max(self : SortexchangejGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_graphn_to_string(s : SortexchangejGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejGraphN::to_string(self : SortexchangejGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_j_node_make(size : Int) -> SortexchangejNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_node_len(s : SortexchangejNode) -> Int { s.size }
+pub fn SortexchangejNode::len(self : SortexchangejNode) -> Int { self.size }
 
-pub fn sort_exchange_j_node_get(s : SortexchangejNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejNode::get(self : SortexchangejNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_node_set(s : SortexchangejNode, i : Int, v : Double) -> SortexchangejNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejNode::set(self : SortexchangejNode, i : Int, v : Double) -> SortexchangejNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_node_sum(s : SortexchangejNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejNode::sum(self : SortexchangejNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_node_mean(s : SortexchangejNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejNode::mean(self : SortexchangejNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_node_scale(s : SortexchangejNode, f : Double) -> SortexchangejNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejNode::scale(self : SortexchangejNode, f : Double) -> SortexchangejNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_node_add(a : SortexchangejNode, b : SortexchangejNode) -> SortexchangejNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejNode::add(self : SortexchangejNode, other : SortexchangejNode) -> SortexchangejNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_node_copy(s : SortexchangejNode) -> SortexchangejNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejNode::copy(self : SortexchangejNode) -> SortexchangejNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_node_fill(s : SortexchangejNode, v : Double) -> SortexchangejNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejNode::fill(self : SortexchangejNode, v : Double) -> SortexchangejNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_node_min(s : SortexchangejNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangejNode::min(self : SortexchangejNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_node_max(s : SortexchangejNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangejNode::max(self : SortexchangejNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_node_to_string(s : SortexchangejNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejNode::to_string(self : SortexchangejNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_j_edge_make(size : Int) -> SortexchangejEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_edge_len(s : SortexchangejEdge) -> Int { s.size }
+pub fn SortexchangejEdge::len(self : SortexchangejEdge) -> Int { self.size }
 
-pub fn sort_exchange_j_edge_get(s : SortexchangejEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejEdge::get(self : SortexchangejEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_edge_set(s : SortexchangejEdge, i : Int, v : Double) -> SortexchangejEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejEdge::set(self : SortexchangejEdge, i : Int, v : Double) -> SortexchangejEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_edge_sum(s : SortexchangejEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejEdge::sum(self : SortexchangejEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_edge_mean(s : SortexchangejEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejEdge::mean(self : SortexchangejEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_edge_scale(s : SortexchangejEdge, f : Double) -> SortexchangejEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejEdge::scale(self : SortexchangejEdge, f : Double) -> SortexchangejEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_edge_add(a : SortexchangejEdge, b : SortexchangejEdge) -> SortexchangejEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejEdge::add(self : SortexchangejEdge, other : SortexchangejEdge) -> SortexchangejEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_edge_copy(s : SortexchangejEdge) -> SortexchangejEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejEdge::copy(self : SortexchangejEdge) -> SortexchangejEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_edge_fill(s : SortexchangejEdge, v : Double) -> SortexchangejEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejEdge::fill(self : SortexchangejEdge, v : Double) -> SortexchangejEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_edge_min(s : SortexchangejEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangejEdge::min(self : SortexchangejEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_edge_max(s : SortexchangejEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangejEdge::max(self : SortexchangejEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_edge_to_string(s : SortexchangejEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejEdge::to_string(self : SortexchangejEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejPath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_j_path_make(size : Int) -> SortexchangejPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_path_len(s : SortexchangejPath) -> Int { s.size }
+pub fn SortexchangejPath::len(self : SortexchangejPath) -> Int { self.size }
 
-pub fn sort_exchange_j_path_get(s : SortexchangejPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejPath::get(self : SortexchangejPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_path_set(s : SortexchangejPath, i : Int, v : Double) -> SortexchangejPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejPath::set(self : SortexchangejPath, i : Int, v : Double) -> SortexchangejPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_path_sum(s : SortexchangejPath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejPath::sum(self : SortexchangejPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_path_mean(s : SortexchangejPath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejPath::mean(self : SortexchangejPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_path_scale(s : SortexchangejPath, f : Double) -> SortexchangejPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejPath::scale(self : SortexchangejPath, f : Double) -> SortexchangejPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_path_add(a : SortexchangejPath, b : SortexchangejPath) -> SortexchangejPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejPath::add(self : SortexchangejPath, other : SortexchangejPath) -> SortexchangejPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_path_copy(s : SortexchangejPath) -> SortexchangejPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejPath::copy(self : SortexchangejPath) -> SortexchangejPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_path_fill(s : SortexchangejPath, v : Double) -> SortexchangejPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejPath::fill(self : SortexchangejPath, v : Double) -> SortexchangejPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_path_min(s : SortexchangejPath) -> Double { @_common.min(s.data) }
+pub fn SortexchangejPath::min(self : SortexchangejPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_path_max(s : SortexchangejPath) -> Double { @_common.max(s.data) }
+pub fn SortexchangejPath::max(self : SortexchangejPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_path_to_string(s : SortexchangejPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejPath::to_string(self : SortexchangejPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_j_cluster_make(size : Int) -> SortexchangejCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_cluster_len(s : SortexchangejCluster) -> Int { s.size }
+pub fn SortexchangejCluster::len(self : SortexchangejCluster) -> Int { self.size }
 
-pub fn sort_exchange_j_cluster_get(s : SortexchangejCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejCluster::get(self : SortexchangejCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_cluster_set(s : SortexchangejCluster, i : Int, v : Double) -> SortexchangejCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejCluster::set(self : SortexchangejCluster, i : Int, v : Double) -> SortexchangejCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cluster_sum(s : SortexchangejCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejCluster::sum(self : SortexchangejCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_cluster_mean(s : SortexchangejCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejCluster::mean(self : SortexchangejCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_cluster_scale(s : SortexchangejCluster, f : Double) -> SortexchangejCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejCluster::scale(self : SortexchangejCluster, f : Double) -> SortexchangejCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cluster_add(a : SortexchangejCluster, b : SortexchangejCluster) -> SortexchangejCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejCluster::add(self : SortexchangejCluster, other : SortexchangejCluster) -> SortexchangejCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cluster_copy(s : SortexchangejCluster) -> SortexchangejCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejCluster::copy(self : SortexchangejCluster) -> SortexchangejCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cluster_fill(s : SortexchangejCluster, v : Double) -> SortexchangejCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejCluster::fill(self : SortexchangejCluster, v : Double) -> SortexchangejCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cluster_min(s : SortexchangejCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangejCluster::min(self : SortexchangejCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_cluster_max(s : SortexchangejCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangejCluster::max(self : SortexchangejCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_cluster_to_string(s : SortexchangejCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejCluster::to_string(self : SortexchangejCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_j_model_make(size : Int) -> SortexchangejModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_model_len(s : SortexchangejModel) -> Int { s.size }
+pub fn SortexchangejModel::len(self : SortexchangejModel) -> Int { self.size }
 
-pub fn sort_exchange_j_model_get(s : SortexchangejModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejModel::get(self : SortexchangejModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_model_set(s : SortexchangejModel, i : Int, v : Double) -> SortexchangejModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejModel::set(self : SortexchangejModel, i : Int, v : Double) -> SortexchangejModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_model_sum(s : SortexchangejModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejModel::sum(self : SortexchangejModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_model_mean(s : SortexchangejModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejModel::mean(self : SortexchangejModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_model_scale(s : SortexchangejModel, f : Double) -> SortexchangejModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejModel::scale(self : SortexchangejModel, f : Double) -> SortexchangejModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_model_add(a : SortexchangejModel, b : SortexchangejModel) -> SortexchangejModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejModel::add(self : SortexchangejModel, other : SortexchangejModel) -> SortexchangejModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_model_copy(s : SortexchangejModel) -> SortexchangejModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejModel::copy(self : SortexchangejModel) -> SortexchangejModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_model_fill(s : SortexchangejModel, v : Double) -> SortexchangejModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejModel::fill(self : SortexchangejModel, v : Double) -> SortexchangejModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_model_min(s : SortexchangejModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangejModel::min(self : SortexchangejModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_model_max(s : SortexchangejModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangejModel::max(self : SortexchangejModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_model_to_string(s : SortexchangejModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejModel::to_string(self : SortexchangejModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_j_layer_make(size : Int) -> SortexchangejLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_layer_len(s : SortexchangejLayer) -> Int { s.size }
+pub fn SortexchangejLayer::len(self : SortexchangejLayer) -> Int { self.size }
 
-pub fn sort_exchange_j_layer_get(s : SortexchangejLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejLayer::get(self : SortexchangejLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_layer_set(s : SortexchangejLayer, i : Int, v : Double) -> SortexchangejLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejLayer::set(self : SortexchangejLayer, i : Int, v : Double) -> SortexchangejLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_layer_sum(s : SortexchangejLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejLayer::sum(self : SortexchangejLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_layer_mean(s : SortexchangejLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejLayer::mean(self : SortexchangejLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_layer_scale(s : SortexchangejLayer, f : Double) -> SortexchangejLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejLayer::scale(self : SortexchangejLayer, f : Double) -> SortexchangejLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_layer_add(a : SortexchangejLayer, b : SortexchangejLayer) -> SortexchangejLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejLayer::add(self : SortexchangejLayer, other : SortexchangejLayer) -> SortexchangejLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_layer_copy(s : SortexchangejLayer) -> SortexchangejLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejLayer::copy(self : SortexchangejLayer) -> SortexchangejLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_layer_fill(s : SortexchangejLayer, v : Double) -> SortexchangejLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejLayer::fill(self : SortexchangejLayer, v : Double) -> SortexchangejLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_layer_min(s : SortexchangejLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangejLayer::min(self : SortexchangejLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_layer_max(s : SortexchangejLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangejLayer::max(self : SortexchangejLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_layer_to_string(s : SortexchangejLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejLayer::to_string(self : SortexchangejLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_j_buffer_make(size : Int) -> SortexchangejBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_buffer_len(s : SortexchangejBuffer) -> Int { s.size }
+pub fn SortexchangejBuffer::len(self : SortexchangejBuffer) -> Int { self.size }
 
-pub fn sort_exchange_j_buffer_get(s : SortexchangejBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejBuffer::get(self : SortexchangejBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_buffer_set(s : SortexchangejBuffer, i : Int, v : Double) -> SortexchangejBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejBuffer::set(self : SortexchangejBuffer, i : Int, v : Double) -> SortexchangejBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_buffer_sum(s : SortexchangejBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejBuffer::sum(self : SortexchangejBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_buffer_mean(s : SortexchangejBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejBuffer::mean(self : SortexchangejBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_buffer_scale(s : SortexchangejBuffer, f : Double) -> SortexchangejBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejBuffer::scale(self : SortexchangejBuffer, f : Double) -> SortexchangejBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_buffer_add(a : SortexchangejBuffer, b : SortexchangejBuffer) -> SortexchangejBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejBuffer::add(self : SortexchangejBuffer, other : SortexchangejBuffer) -> SortexchangejBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_buffer_copy(s : SortexchangejBuffer) -> SortexchangejBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejBuffer::copy(self : SortexchangejBuffer) -> SortexchangejBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_buffer_fill(s : SortexchangejBuffer, v : Double) -> SortexchangejBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejBuffer::fill(self : SortexchangejBuffer, v : Double) -> SortexchangejBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_buffer_min(s : SortexchangejBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangejBuffer::min(self : SortexchangejBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_buffer_max(s : SortexchangejBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangejBuffer::max(self : SortexchangejBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_buffer_to_string(s : SortexchangejBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejBuffer::to_string(self : SortexchangejBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_j_cursor_make(size : Int) -> SortexchangejCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_cursor_len(s : SortexchangejCursor) -> Int { s.size }
+pub fn SortexchangejCursor::len(self : SortexchangejCursor) -> Int { self.size }
 
-pub fn sort_exchange_j_cursor_get(s : SortexchangejCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejCursor::get(self : SortexchangejCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_cursor_set(s : SortexchangejCursor, i : Int, v : Double) -> SortexchangejCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejCursor::set(self : SortexchangejCursor, i : Int, v : Double) -> SortexchangejCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cursor_sum(s : SortexchangejCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejCursor::sum(self : SortexchangejCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_cursor_mean(s : SortexchangejCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejCursor::mean(self : SortexchangejCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_cursor_scale(s : SortexchangejCursor, f : Double) -> SortexchangejCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejCursor::scale(self : SortexchangejCursor, f : Double) -> SortexchangejCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cursor_add(a : SortexchangejCursor, b : SortexchangejCursor) -> SortexchangejCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejCursor::add(self : SortexchangejCursor, other : SortexchangejCursor) -> SortexchangejCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cursor_copy(s : SortexchangejCursor) -> SortexchangejCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejCursor::copy(self : SortexchangejCursor) -> SortexchangejCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cursor_fill(s : SortexchangejCursor, v : Double) -> SortexchangejCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejCursor::fill(self : SortexchangejCursor, v : Double) -> SortexchangejCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_cursor_min(s : SortexchangejCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangejCursor::min(self : SortexchangejCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_cursor_max(s : SortexchangejCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangejCursor::max(self : SortexchangejCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_cursor_to_string(s : SortexchangejCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejCursor::to_string(self : SortexchangejCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_j_view_make(size : Int) -> SortexchangejView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_view_len(s : SortexchangejView) -> Int { s.size }
+pub fn SortexchangejView::len(self : SortexchangejView) -> Int { self.size }
 
-pub fn sort_exchange_j_view_get(s : SortexchangejView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejView::get(self : SortexchangejView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_view_set(s : SortexchangejView, i : Int, v : Double) -> SortexchangejView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejView::set(self : SortexchangejView, i : Int, v : Double) -> SortexchangejView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_view_sum(s : SortexchangejView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejView::sum(self : SortexchangejView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_view_mean(s : SortexchangejView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejView::mean(self : SortexchangejView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_view_scale(s : SortexchangejView, f : Double) -> SortexchangejView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejView::scale(self : SortexchangejView, f : Double) -> SortexchangejView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_view_add(a : SortexchangejView, b : SortexchangejView) -> SortexchangejView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejView::add(self : SortexchangejView, other : SortexchangejView) -> SortexchangejView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_view_copy(s : SortexchangejView) -> SortexchangejView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejView::copy(self : SortexchangejView) -> SortexchangejView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_view_fill(s : SortexchangejView, v : Double) -> SortexchangejView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejView::fill(self : SortexchangejView, v : Double) -> SortexchangejView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_view_min(s : SortexchangejView) -> Double { @_common.min(s.data) }
+pub fn SortexchangejView::min(self : SortexchangejView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_view_max(s : SortexchangejView) -> Double { @_common.max(s.data) }
+pub fn SortexchangejView::max(self : SortexchangejView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_view_to_string(s : SortexchangejView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejView::to_string(self : SortexchangejView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_j_range_make(size : Int) -> SortexchangejRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_range_len(s : SortexchangejRange) -> Int { s.size }
+pub fn SortexchangejRange::len(self : SortexchangejRange) -> Int { self.size }
 
-pub fn sort_exchange_j_range_get(s : SortexchangejRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejRange::get(self : SortexchangejRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_range_set(s : SortexchangejRange, i : Int, v : Double) -> SortexchangejRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejRange::set(self : SortexchangejRange, i : Int, v : Double) -> SortexchangejRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_range_sum(s : SortexchangejRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejRange::sum(self : SortexchangejRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_range_mean(s : SortexchangejRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejRange::mean(self : SortexchangejRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_range_scale(s : SortexchangejRange, f : Double) -> SortexchangejRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejRange::scale(self : SortexchangejRange, f : Double) -> SortexchangejRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_range_add(a : SortexchangejRange, b : SortexchangejRange) -> SortexchangejRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejRange::add(self : SortexchangejRange, other : SortexchangejRange) -> SortexchangejRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_range_copy(s : SortexchangejRange) -> SortexchangejRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejRange::copy(self : SortexchangejRange) -> SortexchangejRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_range_fill(s : SortexchangejRange, v : Double) -> SortexchangejRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejRange::fill(self : SortexchangejRange, v : Double) -> SortexchangejRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_range_min(s : SortexchangejRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangejRange::min(self : SortexchangejRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_range_max(s : SortexchangejRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangejRange::max(self : SortexchangejRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_range_to_string(s : SortexchangejRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejRange::to_string(self : SortexchangejRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangejSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_j_slice_make(size : Int) -> SortexchangejSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_j_slice_len(s : SortexchangejSlice) -> Int { s.size }
+pub fn SortexchangejSlice::len(self : SortexchangejSlice) -> Int { self.size }
 
-pub fn sort_exchange_j_slice_get(s : SortexchangejSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangejSlice::get(self : SortexchangejSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_j_slice_set(s : SortexchangejSlice, i : Int, v : Double) -> SortexchangejSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangejSlice::set(self : SortexchangejSlice, i : Int, v : Double) -> SortexchangejSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_slice_sum(s : SortexchangejSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangejSlice::sum(self : SortexchangejSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_j_slice_mean(s : SortexchangejSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangejSlice::mean(self : SortexchangejSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_j_slice_scale(s : SortexchangejSlice, f : Double) -> SortexchangejSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangejSlice::scale(self : SortexchangejSlice, f : Double) -> SortexchangejSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_slice_add(a : SortexchangejSlice, b : SortexchangejSlice) -> SortexchangejSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangejSlice::add(self : SortexchangejSlice, other : SortexchangejSlice) -> SortexchangejSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_j_slice_copy(s : SortexchangejSlice) -> SortexchangejSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangejSlice::copy(self : SortexchangejSlice) -> SortexchangejSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_slice_fill(s : SortexchangejSlice, v : Double) -> SortexchangejSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangejSlice::fill(self : SortexchangejSlice, v : Double) -> SortexchangejSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_j_slice_min(s : SortexchangejSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangejSlice::min(self : SortexchangejSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_j_slice_max(s : SortexchangejSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangejSlice::max(self : SortexchangejSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_j_slice_to_string(s : SortexchangejSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangejSlice::to_string(self : SortexchangejSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

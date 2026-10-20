@@ -351,45 +351,45 @@ pub fn ds_tree_fenwick_frame_make(size : Int) -> DstreefenwickFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_frame_len(s : DstreefenwickFrame) -> Int { s.size }
+pub fn DstreefenwickFrame::len(self : DstreefenwickFrame) -> Int { self.size }
 
-pub fn ds_tree_fenwick_frame_get(s : DstreefenwickFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickFrame::get(self : DstreefenwickFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_frame_set(s : DstreefenwickFrame, i : Int, v : Double) -> DstreefenwickFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickFrame::set(self : DstreefenwickFrame, i : Int, v : Double) -> DstreefenwickFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_frame_sum(s : DstreefenwickFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickFrame::sum(self : DstreefenwickFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_frame_mean(s : DstreefenwickFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickFrame::mean(self : DstreefenwickFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_frame_scale(s : DstreefenwickFrame, f : Double) -> DstreefenwickFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickFrame::scale(self : DstreefenwickFrame, f : Double) -> DstreefenwickFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_frame_add(a : DstreefenwickFrame, b : DstreefenwickFrame) -> DstreefenwickFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickFrame::add(self : DstreefenwickFrame, other : DstreefenwickFrame) -> DstreefenwickFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_frame_copy(s : DstreefenwickFrame) -> DstreefenwickFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickFrame::copy(self : DstreefenwickFrame) -> DstreefenwickFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_frame_fill(s : DstreefenwickFrame, v : Double) -> DstreefenwickFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickFrame::fill(self : DstreefenwickFrame, v : Double) -> DstreefenwickFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_frame_min(s : DstreefenwickFrame) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickFrame::min(self : DstreefenwickFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_frame_max(s : DstreefenwickFrame) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickFrame::max(self : DstreefenwickFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_frame_to_string(s : DstreefenwickFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickFrame::to_string(self : DstreefenwickFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_fenwick_table_make(size : Int) -> DstreefenwickTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_table_len(s : DstreefenwickTable) -> Int { s.size }
+pub fn DstreefenwickTable::len(self : DstreefenwickTable) -> Int { self.size }
 
-pub fn ds_tree_fenwick_table_get(s : DstreefenwickTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickTable::get(self : DstreefenwickTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_table_set(s : DstreefenwickTable, i : Int, v : Double) -> DstreefenwickTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickTable::set(self : DstreefenwickTable, i : Int, v : Double) -> DstreefenwickTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_table_sum(s : DstreefenwickTable) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickTable::sum(self : DstreefenwickTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_table_mean(s : DstreefenwickTable) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickTable::mean(self : DstreefenwickTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_table_scale(s : DstreefenwickTable, f : Double) -> DstreefenwickTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickTable::scale(self : DstreefenwickTable, f : Double) -> DstreefenwickTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_table_add(a : DstreefenwickTable, b : DstreefenwickTable) -> DstreefenwickTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickTable::add(self : DstreefenwickTable, other : DstreefenwickTable) -> DstreefenwickTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_table_copy(s : DstreefenwickTable) -> DstreefenwickTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickTable::copy(self : DstreefenwickTable) -> DstreefenwickTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_table_fill(s : DstreefenwickTable, v : Double) -> DstreefenwickTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickTable::fill(self : DstreefenwickTable, v : Double) -> DstreefenwickTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_table_min(s : DstreefenwickTable) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickTable::min(self : DstreefenwickTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_table_max(s : DstreefenwickTable) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickTable::max(self : DstreefenwickTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_table_to_string(s : DstreefenwickTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickTable::to_string(self : DstreefenwickTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_fenwick_graphn_make(size : Int) -> DstreefenwickGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_graphn_len(s : DstreefenwickGraphN) -> Int { s.size }
+pub fn DstreefenwickGraphN::len(self : DstreefenwickGraphN) -> Int { self.size }
 
-pub fn ds_tree_fenwick_graphn_get(s : DstreefenwickGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickGraphN::get(self : DstreefenwickGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_graphn_set(s : DstreefenwickGraphN, i : Int, v : Double) -> DstreefenwickGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickGraphN::set(self : DstreefenwickGraphN, i : Int, v : Double) -> DstreefenwickGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_graphn_sum(s : DstreefenwickGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickGraphN::sum(self : DstreefenwickGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_graphn_mean(s : DstreefenwickGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickGraphN::mean(self : DstreefenwickGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_graphn_scale(s : DstreefenwickGraphN, f : Double) -> DstreefenwickGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickGraphN::scale(self : DstreefenwickGraphN, f : Double) -> DstreefenwickGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_graphn_add(a : DstreefenwickGraphN, b : DstreefenwickGraphN) -> DstreefenwickGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickGraphN::add(self : DstreefenwickGraphN, other : DstreefenwickGraphN) -> DstreefenwickGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_graphn_copy(s : DstreefenwickGraphN) -> DstreefenwickGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickGraphN::copy(self : DstreefenwickGraphN) -> DstreefenwickGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_graphn_fill(s : DstreefenwickGraphN, v : Double) -> DstreefenwickGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickGraphN::fill(self : DstreefenwickGraphN, v : Double) -> DstreefenwickGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_graphn_min(s : DstreefenwickGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickGraphN::min(self : DstreefenwickGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_graphn_max(s : DstreefenwickGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickGraphN::max(self : DstreefenwickGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_graphn_to_string(s : DstreefenwickGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickGraphN::to_string(self : DstreefenwickGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_fenwick_node_make(size : Int) -> DstreefenwickNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_node_len(s : DstreefenwickNode) -> Int { s.size }
+pub fn DstreefenwickNode::len(self : DstreefenwickNode) -> Int { self.size }
 
-pub fn ds_tree_fenwick_node_get(s : DstreefenwickNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickNode::get(self : DstreefenwickNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_node_set(s : DstreefenwickNode, i : Int, v : Double) -> DstreefenwickNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickNode::set(self : DstreefenwickNode, i : Int, v : Double) -> DstreefenwickNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_node_sum(s : DstreefenwickNode) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickNode::sum(self : DstreefenwickNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_node_mean(s : DstreefenwickNode) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickNode::mean(self : DstreefenwickNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_node_scale(s : DstreefenwickNode, f : Double) -> DstreefenwickNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickNode::scale(self : DstreefenwickNode, f : Double) -> DstreefenwickNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_node_add(a : DstreefenwickNode, b : DstreefenwickNode) -> DstreefenwickNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickNode::add(self : DstreefenwickNode, other : DstreefenwickNode) -> DstreefenwickNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_node_copy(s : DstreefenwickNode) -> DstreefenwickNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickNode::copy(self : DstreefenwickNode) -> DstreefenwickNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_node_fill(s : DstreefenwickNode, v : Double) -> DstreefenwickNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickNode::fill(self : DstreefenwickNode, v : Double) -> DstreefenwickNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_node_min(s : DstreefenwickNode) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickNode::min(self : DstreefenwickNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_node_max(s : DstreefenwickNode) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickNode::max(self : DstreefenwickNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_node_to_string(s : DstreefenwickNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickNode::to_string(self : DstreefenwickNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_fenwick_edge_make(size : Int) -> DstreefenwickEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_edge_len(s : DstreefenwickEdge) -> Int { s.size }
+pub fn DstreefenwickEdge::len(self : DstreefenwickEdge) -> Int { self.size }
 
-pub fn ds_tree_fenwick_edge_get(s : DstreefenwickEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickEdge::get(self : DstreefenwickEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_edge_set(s : DstreefenwickEdge, i : Int, v : Double) -> DstreefenwickEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickEdge::set(self : DstreefenwickEdge, i : Int, v : Double) -> DstreefenwickEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_edge_sum(s : DstreefenwickEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickEdge::sum(self : DstreefenwickEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_edge_mean(s : DstreefenwickEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickEdge::mean(self : DstreefenwickEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_edge_scale(s : DstreefenwickEdge, f : Double) -> DstreefenwickEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickEdge::scale(self : DstreefenwickEdge, f : Double) -> DstreefenwickEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_edge_add(a : DstreefenwickEdge, b : DstreefenwickEdge) -> DstreefenwickEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickEdge::add(self : DstreefenwickEdge, other : DstreefenwickEdge) -> DstreefenwickEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_edge_copy(s : DstreefenwickEdge) -> DstreefenwickEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickEdge::copy(self : DstreefenwickEdge) -> DstreefenwickEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_edge_fill(s : DstreefenwickEdge, v : Double) -> DstreefenwickEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickEdge::fill(self : DstreefenwickEdge, v : Double) -> DstreefenwickEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_edge_min(s : DstreefenwickEdge) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickEdge::min(self : DstreefenwickEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_edge_max(s : DstreefenwickEdge) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickEdge::max(self : DstreefenwickEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_edge_to_string(s : DstreefenwickEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickEdge::to_string(self : DstreefenwickEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_fenwick_path_make(size : Int) -> DstreefenwickPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_path_len(s : DstreefenwickPath) -> Int { s.size }
+pub fn DstreefenwickPath::len(self : DstreefenwickPath) -> Int { self.size }
 
-pub fn ds_tree_fenwick_path_get(s : DstreefenwickPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickPath::get(self : DstreefenwickPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_path_set(s : DstreefenwickPath, i : Int, v : Double) -> DstreefenwickPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickPath::set(self : DstreefenwickPath, i : Int, v : Double) -> DstreefenwickPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_path_sum(s : DstreefenwickPath) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickPath::sum(self : DstreefenwickPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_path_mean(s : DstreefenwickPath) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickPath::mean(self : DstreefenwickPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_path_scale(s : DstreefenwickPath, f : Double) -> DstreefenwickPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickPath::scale(self : DstreefenwickPath, f : Double) -> DstreefenwickPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_path_add(a : DstreefenwickPath, b : DstreefenwickPath) -> DstreefenwickPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickPath::add(self : DstreefenwickPath, other : DstreefenwickPath) -> DstreefenwickPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_path_copy(s : DstreefenwickPath) -> DstreefenwickPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickPath::copy(self : DstreefenwickPath) -> DstreefenwickPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_path_fill(s : DstreefenwickPath, v : Double) -> DstreefenwickPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickPath::fill(self : DstreefenwickPath, v : Double) -> DstreefenwickPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_path_min(s : DstreefenwickPath) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickPath::min(self : DstreefenwickPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_path_max(s : DstreefenwickPath) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickPath::max(self : DstreefenwickPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_path_to_string(s : DstreefenwickPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickPath::to_string(self : DstreefenwickPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_fenwick_cluster_make(size : Int) -> DstreefenwickCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_cluster_len(s : DstreefenwickCluster) -> Int { s.size }
+pub fn DstreefenwickCluster::len(self : DstreefenwickCluster) -> Int { self.size }
 
-pub fn ds_tree_fenwick_cluster_get(s : DstreefenwickCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickCluster::get(self : DstreefenwickCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_cluster_set(s : DstreefenwickCluster, i : Int, v : Double) -> DstreefenwickCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickCluster::set(self : DstreefenwickCluster, i : Int, v : Double) -> DstreefenwickCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cluster_sum(s : DstreefenwickCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickCluster::sum(self : DstreefenwickCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_cluster_mean(s : DstreefenwickCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickCluster::mean(self : DstreefenwickCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_cluster_scale(s : DstreefenwickCluster, f : Double) -> DstreefenwickCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickCluster::scale(self : DstreefenwickCluster, f : Double) -> DstreefenwickCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cluster_add(a : DstreefenwickCluster, b : DstreefenwickCluster) -> DstreefenwickCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickCluster::add(self : DstreefenwickCluster, other : DstreefenwickCluster) -> DstreefenwickCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cluster_copy(s : DstreefenwickCluster) -> DstreefenwickCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickCluster::copy(self : DstreefenwickCluster) -> DstreefenwickCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cluster_fill(s : DstreefenwickCluster, v : Double) -> DstreefenwickCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickCluster::fill(self : DstreefenwickCluster, v : Double) -> DstreefenwickCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cluster_min(s : DstreefenwickCluster) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickCluster::min(self : DstreefenwickCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_cluster_max(s : DstreefenwickCluster) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickCluster::max(self : DstreefenwickCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_cluster_to_string(s : DstreefenwickCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickCluster::to_string(self : DstreefenwickCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_fenwick_model_make(size : Int) -> DstreefenwickModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_model_len(s : DstreefenwickModel) -> Int { s.size }
+pub fn DstreefenwickModel::len(self : DstreefenwickModel) -> Int { self.size }
 
-pub fn ds_tree_fenwick_model_get(s : DstreefenwickModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickModel::get(self : DstreefenwickModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_model_set(s : DstreefenwickModel, i : Int, v : Double) -> DstreefenwickModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickModel::set(self : DstreefenwickModel, i : Int, v : Double) -> DstreefenwickModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_model_sum(s : DstreefenwickModel) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickModel::sum(self : DstreefenwickModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_model_mean(s : DstreefenwickModel) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickModel::mean(self : DstreefenwickModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_model_scale(s : DstreefenwickModel, f : Double) -> DstreefenwickModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickModel::scale(self : DstreefenwickModel, f : Double) -> DstreefenwickModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_model_add(a : DstreefenwickModel, b : DstreefenwickModel) -> DstreefenwickModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickModel::add(self : DstreefenwickModel, other : DstreefenwickModel) -> DstreefenwickModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_model_copy(s : DstreefenwickModel) -> DstreefenwickModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickModel::copy(self : DstreefenwickModel) -> DstreefenwickModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_model_fill(s : DstreefenwickModel, v : Double) -> DstreefenwickModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickModel::fill(self : DstreefenwickModel, v : Double) -> DstreefenwickModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_model_min(s : DstreefenwickModel) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickModel::min(self : DstreefenwickModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_model_max(s : DstreefenwickModel) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickModel::max(self : DstreefenwickModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_model_to_string(s : DstreefenwickModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickModel::to_string(self : DstreefenwickModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_fenwick_layer_make(size : Int) -> DstreefenwickLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_layer_len(s : DstreefenwickLayer) -> Int { s.size }
+pub fn DstreefenwickLayer::len(self : DstreefenwickLayer) -> Int { self.size }
 
-pub fn ds_tree_fenwick_layer_get(s : DstreefenwickLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickLayer::get(self : DstreefenwickLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_layer_set(s : DstreefenwickLayer, i : Int, v : Double) -> DstreefenwickLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickLayer::set(self : DstreefenwickLayer, i : Int, v : Double) -> DstreefenwickLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_layer_sum(s : DstreefenwickLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickLayer::sum(self : DstreefenwickLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_layer_mean(s : DstreefenwickLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickLayer::mean(self : DstreefenwickLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_layer_scale(s : DstreefenwickLayer, f : Double) -> DstreefenwickLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickLayer::scale(self : DstreefenwickLayer, f : Double) -> DstreefenwickLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_layer_add(a : DstreefenwickLayer, b : DstreefenwickLayer) -> DstreefenwickLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickLayer::add(self : DstreefenwickLayer, other : DstreefenwickLayer) -> DstreefenwickLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_layer_copy(s : DstreefenwickLayer) -> DstreefenwickLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickLayer::copy(self : DstreefenwickLayer) -> DstreefenwickLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_layer_fill(s : DstreefenwickLayer, v : Double) -> DstreefenwickLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickLayer::fill(self : DstreefenwickLayer, v : Double) -> DstreefenwickLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_layer_min(s : DstreefenwickLayer) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickLayer::min(self : DstreefenwickLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_layer_max(s : DstreefenwickLayer) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickLayer::max(self : DstreefenwickLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_layer_to_string(s : DstreefenwickLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickLayer::to_string(self : DstreefenwickLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_fenwick_buffer_make(size : Int) -> DstreefenwickBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_buffer_len(s : DstreefenwickBuffer) -> Int { s.size }
+pub fn DstreefenwickBuffer::len(self : DstreefenwickBuffer) -> Int { self.size }
 
-pub fn ds_tree_fenwick_buffer_get(s : DstreefenwickBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickBuffer::get(self : DstreefenwickBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_buffer_set(s : DstreefenwickBuffer, i : Int, v : Double) -> DstreefenwickBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickBuffer::set(self : DstreefenwickBuffer, i : Int, v : Double) -> DstreefenwickBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_buffer_sum(s : DstreefenwickBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickBuffer::sum(self : DstreefenwickBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_buffer_mean(s : DstreefenwickBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickBuffer::mean(self : DstreefenwickBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_buffer_scale(s : DstreefenwickBuffer, f : Double) -> DstreefenwickBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickBuffer::scale(self : DstreefenwickBuffer, f : Double) -> DstreefenwickBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_buffer_add(a : DstreefenwickBuffer, b : DstreefenwickBuffer) -> DstreefenwickBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickBuffer::add(self : DstreefenwickBuffer, other : DstreefenwickBuffer) -> DstreefenwickBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_buffer_copy(s : DstreefenwickBuffer) -> DstreefenwickBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickBuffer::copy(self : DstreefenwickBuffer) -> DstreefenwickBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_buffer_fill(s : DstreefenwickBuffer, v : Double) -> DstreefenwickBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickBuffer::fill(self : DstreefenwickBuffer, v : Double) -> DstreefenwickBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_buffer_min(s : DstreefenwickBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickBuffer::min(self : DstreefenwickBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_buffer_max(s : DstreefenwickBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickBuffer::max(self : DstreefenwickBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_buffer_to_string(s : DstreefenwickBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickBuffer::to_string(self : DstreefenwickBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_fenwick_cursor_make(size : Int) -> DstreefenwickCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_cursor_len(s : DstreefenwickCursor) -> Int { s.size }
+pub fn DstreefenwickCursor::len(self : DstreefenwickCursor) -> Int { self.size }
 
-pub fn ds_tree_fenwick_cursor_get(s : DstreefenwickCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickCursor::get(self : DstreefenwickCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_cursor_set(s : DstreefenwickCursor, i : Int, v : Double) -> DstreefenwickCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickCursor::set(self : DstreefenwickCursor, i : Int, v : Double) -> DstreefenwickCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cursor_sum(s : DstreefenwickCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickCursor::sum(self : DstreefenwickCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_cursor_mean(s : DstreefenwickCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickCursor::mean(self : DstreefenwickCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_cursor_scale(s : DstreefenwickCursor, f : Double) -> DstreefenwickCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickCursor::scale(self : DstreefenwickCursor, f : Double) -> DstreefenwickCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cursor_add(a : DstreefenwickCursor, b : DstreefenwickCursor) -> DstreefenwickCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickCursor::add(self : DstreefenwickCursor, other : DstreefenwickCursor) -> DstreefenwickCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cursor_copy(s : DstreefenwickCursor) -> DstreefenwickCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickCursor::copy(self : DstreefenwickCursor) -> DstreefenwickCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cursor_fill(s : DstreefenwickCursor, v : Double) -> DstreefenwickCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickCursor::fill(self : DstreefenwickCursor, v : Double) -> DstreefenwickCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_cursor_min(s : DstreefenwickCursor) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickCursor::min(self : DstreefenwickCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_cursor_max(s : DstreefenwickCursor) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickCursor::max(self : DstreefenwickCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_cursor_to_string(s : DstreefenwickCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickCursor::to_string(self : DstreefenwickCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickView {
@@ -912,45 +912,45 @@ pub fn ds_tree_fenwick_view_make(size : Int) -> DstreefenwickView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_view_len(s : DstreefenwickView) -> Int { s.size }
+pub fn DstreefenwickView::len(self : DstreefenwickView) -> Int { self.size }
 
-pub fn ds_tree_fenwick_view_get(s : DstreefenwickView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickView::get(self : DstreefenwickView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_view_set(s : DstreefenwickView, i : Int, v : Double) -> DstreefenwickView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickView::set(self : DstreefenwickView, i : Int, v : Double) -> DstreefenwickView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_view_sum(s : DstreefenwickView) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickView::sum(self : DstreefenwickView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_view_mean(s : DstreefenwickView) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickView::mean(self : DstreefenwickView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_view_scale(s : DstreefenwickView, f : Double) -> DstreefenwickView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickView::scale(self : DstreefenwickView, f : Double) -> DstreefenwickView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_view_add(a : DstreefenwickView, b : DstreefenwickView) -> DstreefenwickView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickView::add(self : DstreefenwickView, other : DstreefenwickView) -> DstreefenwickView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_view_copy(s : DstreefenwickView) -> DstreefenwickView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickView::copy(self : DstreefenwickView) -> DstreefenwickView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_view_fill(s : DstreefenwickView, v : Double) -> DstreefenwickView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickView::fill(self : DstreefenwickView, v : Double) -> DstreefenwickView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_view_min(s : DstreefenwickView) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickView::min(self : DstreefenwickView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_view_max(s : DstreefenwickView) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickView::max(self : DstreefenwickView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_view_to_string(s : DstreefenwickView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickView::to_string(self : DstreefenwickView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_fenwick_range_make(size : Int) -> DstreefenwickRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_range_len(s : DstreefenwickRange) -> Int { s.size }
+pub fn DstreefenwickRange::len(self : DstreefenwickRange) -> Int { self.size }
 
-pub fn ds_tree_fenwick_range_get(s : DstreefenwickRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickRange::get(self : DstreefenwickRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_range_set(s : DstreefenwickRange, i : Int, v : Double) -> DstreefenwickRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickRange::set(self : DstreefenwickRange, i : Int, v : Double) -> DstreefenwickRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_range_sum(s : DstreefenwickRange) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickRange::sum(self : DstreefenwickRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_range_mean(s : DstreefenwickRange) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickRange::mean(self : DstreefenwickRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_range_scale(s : DstreefenwickRange, f : Double) -> DstreefenwickRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickRange::scale(self : DstreefenwickRange, f : Double) -> DstreefenwickRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_range_add(a : DstreefenwickRange, b : DstreefenwickRange) -> DstreefenwickRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickRange::add(self : DstreefenwickRange, other : DstreefenwickRange) -> DstreefenwickRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_range_copy(s : DstreefenwickRange) -> DstreefenwickRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickRange::copy(self : DstreefenwickRange) -> DstreefenwickRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_range_fill(s : DstreefenwickRange, v : Double) -> DstreefenwickRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickRange::fill(self : DstreefenwickRange, v : Double) -> DstreefenwickRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_range_min(s : DstreefenwickRange) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickRange::min(self : DstreefenwickRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_range_max(s : DstreefenwickRange) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickRange::max(self : DstreefenwickRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_range_to_string(s : DstreefenwickRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickRange::to_string(self : DstreefenwickRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_fenwick_slice_make(size : Int) -> DstreefenwickSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_fenwick_slice_len(s : DstreefenwickSlice) -> Int { s.size }
+pub fn DstreefenwickSlice::len(self : DstreefenwickSlice) -> Int { self.size }
 
-pub fn ds_tree_fenwick_slice_get(s : DstreefenwickSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreefenwickSlice::get(self : DstreefenwickSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_fenwick_slice_set(s : DstreefenwickSlice, i : Int, v : Double) -> DstreefenwickSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreefenwickSlice::set(self : DstreefenwickSlice, i : Int, v : Double) -> DstreefenwickSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_slice_sum(s : DstreefenwickSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreefenwickSlice::sum(self : DstreefenwickSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_fenwick_slice_mean(s : DstreefenwickSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreefenwickSlice::mean(self : DstreefenwickSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_fenwick_slice_scale(s : DstreefenwickSlice, f : Double) -> DstreefenwickSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreefenwickSlice::scale(self : DstreefenwickSlice, f : Double) -> DstreefenwickSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_slice_add(a : DstreefenwickSlice, b : DstreefenwickSlice) -> DstreefenwickSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreefenwickSlice::add(self : DstreefenwickSlice, other : DstreefenwickSlice) -> DstreefenwickSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_slice_copy(s : DstreefenwickSlice) -> DstreefenwickSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreefenwickSlice::copy(self : DstreefenwickSlice) -> DstreefenwickSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_slice_fill(s : DstreefenwickSlice, v : Double) -> DstreefenwickSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreefenwickSlice::fill(self : DstreefenwickSlice, v : Double) -> DstreefenwickSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_fenwick_slice_min(s : DstreefenwickSlice) -> Double { @_common.min(s.data) }
+pub fn DstreefenwickSlice::min(self : DstreefenwickSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_fenwick_slice_max(s : DstreefenwickSlice) -> Double { @_common.max(s.data) }
+pub fn DstreefenwickSlice::max(self : DstreefenwickSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_fenwick_slice_to_string(s : DstreefenwickSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreefenwickSlice::to_string(self : DstreefenwickSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

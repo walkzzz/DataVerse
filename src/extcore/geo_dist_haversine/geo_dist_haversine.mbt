@@ -351,45 +351,45 @@ pub fn geo_dist_haversine_frame_make(size : Int) -> GeodisthaversineFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_frame_len(s : GeodisthaversineFrame) -> Int { s.size }
+pub fn GeodisthaversineFrame::len(self : GeodisthaversineFrame) -> Int { self.size }
 
-pub fn geo_dist_haversine_frame_get(s : GeodisthaversineFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineFrame::get(self : GeodisthaversineFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_frame_set(s : GeodisthaversineFrame, i : Int, v : Double) -> GeodisthaversineFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineFrame::set(self : GeodisthaversineFrame, i : Int, v : Double) -> GeodisthaversineFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_frame_sum(s : GeodisthaversineFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineFrame::sum(self : GeodisthaversineFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_frame_mean(s : GeodisthaversineFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineFrame::mean(self : GeodisthaversineFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_frame_scale(s : GeodisthaversineFrame, f : Double) -> GeodisthaversineFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineFrame::scale(self : GeodisthaversineFrame, f : Double) -> GeodisthaversineFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_frame_add(a : GeodisthaversineFrame, b : GeodisthaversineFrame) -> GeodisthaversineFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineFrame::add(self : GeodisthaversineFrame, other : GeodisthaversineFrame) -> GeodisthaversineFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_frame_copy(s : GeodisthaversineFrame) -> GeodisthaversineFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineFrame::copy(self : GeodisthaversineFrame) -> GeodisthaversineFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_frame_fill(s : GeodisthaversineFrame, v : Double) -> GeodisthaversineFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineFrame::fill(self : GeodisthaversineFrame, v : Double) -> GeodisthaversineFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_frame_min(s : GeodisthaversineFrame) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineFrame::min(self : GeodisthaversineFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_frame_max(s : GeodisthaversineFrame) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineFrame::max(self : GeodisthaversineFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_frame_to_string(s : GeodisthaversineFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineFrame::to_string(self : GeodisthaversineFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_haversine_table_make(size : Int) -> GeodisthaversineTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_table_len(s : GeodisthaversineTable) -> Int { s.size }
+pub fn GeodisthaversineTable::len(self : GeodisthaversineTable) -> Int { self.size }
 
-pub fn geo_dist_haversine_table_get(s : GeodisthaversineTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineTable::get(self : GeodisthaversineTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_table_set(s : GeodisthaversineTable, i : Int, v : Double) -> GeodisthaversineTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineTable::set(self : GeodisthaversineTable, i : Int, v : Double) -> GeodisthaversineTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_table_sum(s : GeodisthaversineTable) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineTable::sum(self : GeodisthaversineTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_table_mean(s : GeodisthaversineTable) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineTable::mean(self : GeodisthaversineTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_table_scale(s : GeodisthaversineTable, f : Double) -> GeodisthaversineTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineTable::scale(self : GeodisthaversineTable, f : Double) -> GeodisthaversineTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_table_add(a : GeodisthaversineTable, b : GeodisthaversineTable) -> GeodisthaversineTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineTable::add(self : GeodisthaversineTable, other : GeodisthaversineTable) -> GeodisthaversineTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_table_copy(s : GeodisthaversineTable) -> GeodisthaversineTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineTable::copy(self : GeodisthaversineTable) -> GeodisthaversineTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_table_fill(s : GeodisthaversineTable, v : Double) -> GeodisthaversineTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineTable::fill(self : GeodisthaversineTable, v : Double) -> GeodisthaversineTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_table_min(s : GeodisthaversineTable) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineTable::min(self : GeodisthaversineTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_table_max(s : GeodisthaversineTable) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineTable::max(self : GeodisthaversineTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_table_to_string(s : GeodisthaversineTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineTable::to_string(self : GeodisthaversineTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_haversine_graphn_make(size : Int) -> GeodisthaversineGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_graphn_len(s : GeodisthaversineGraphN) -> Int { s.size }
+pub fn GeodisthaversineGraphN::len(self : GeodisthaversineGraphN) -> Int { self.size }
 
-pub fn geo_dist_haversine_graphn_get(s : GeodisthaversineGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineGraphN::get(self : GeodisthaversineGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_graphn_set(s : GeodisthaversineGraphN, i : Int, v : Double) -> GeodisthaversineGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineGraphN::set(self : GeodisthaversineGraphN, i : Int, v : Double) -> GeodisthaversineGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_graphn_sum(s : GeodisthaversineGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineGraphN::sum(self : GeodisthaversineGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_graphn_mean(s : GeodisthaversineGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineGraphN::mean(self : GeodisthaversineGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_graphn_scale(s : GeodisthaversineGraphN, f : Double) -> GeodisthaversineGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineGraphN::scale(self : GeodisthaversineGraphN, f : Double) -> GeodisthaversineGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_graphn_add(a : GeodisthaversineGraphN, b : GeodisthaversineGraphN) -> GeodisthaversineGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineGraphN::add(self : GeodisthaversineGraphN, other : GeodisthaversineGraphN) -> GeodisthaversineGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_graphn_copy(s : GeodisthaversineGraphN) -> GeodisthaversineGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineGraphN::copy(self : GeodisthaversineGraphN) -> GeodisthaversineGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_graphn_fill(s : GeodisthaversineGraphN, v : Double) -> GeodisthaversineGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineGraphN::fill(self : GeodisthaversineGraphN, v : Double) -> GeodisthaversineGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_graphn_min(s : GeodisthaversineGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineGraphN::min(self : GeodisthaversineGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_graphn_max(s : GeodisthaversineGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineGraphN::max(self : GeodisthaversineGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_graphn_to_string(s : GeodisthaversineGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineGraphN::to_string(self : GeodisthaversineGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_haversine_node_make(size : Int) -> GeodisthaversineNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_node_len(s : GeodisthaversineNode) -> Int { s.size }
+pub fn GeodisthaversineNode::len(self : GeodisthaversineNode) -> Int { self.size }
 
-pub fn geo_dist_haversine_node_get(s : GeodisthaversineNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineNode::get(self : GeodisthaversineNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_node_set(s : GeodisthaversineNode, i : Int, v : Double) -> GeodisthaversineNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineNode::set(self : GeodisthaversineNode, i : Int, v : Double) -> GeodisthaversineNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_node_sum(s : GeodisthaversineNode) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineNode::sum(self : GeodisthaversineNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_node_mean(s : GeodisthaversineNode) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineNode::mean(self : GeodisthaversineNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_node_scale(s : GeodisthaversineNode, f : Double) -> GeodisthaversineNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineNode::scale(self : GeodisthaversineNode, f : Double) -> GeodisthaversineNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_node_add(a : GeodisthaversineNode, b : GeodisthaversineNode) -> GeodisthaversineNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineNode::add(self : GeodisthaversineNode, other : GeodisthaversineNode) -> GeodisthaversineNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_node_copy(s : GeodisthaversineNode) -> GeodisthaversineNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineNode::copy(self : GeodisthaversineNode) -> GeodisthaversineNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_node_fill(s : GeodisthaversineNode, v : Double) -> GeodisthaversineNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineNode::fill(self : GeodisthaversineNode, v : Double) -> GeodisthaversineNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_node_min(s : GeodisthaversineNode) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineNode::min(self : GeodisthaversineNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_node_max(s : GeodisthaversineNode) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineNode::max(self : GeodisthaversineNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_node_to_string(s : GeodisthaversineNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineNode::to_string(self : GeodisthaversineNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_haversine_edge_make(size : Int) -> GeodisthaversineEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_edge_len(s : GeodisthaversineEdge) -> Int { s.size }
+pub fn GeodisthaversineEdge::len(self : GeodisthaversineEdge) -> Int { self.size }
 
-pub fn geo_dist_haversine_edge_get(s : GeodisthaversineEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineEdge::get(self : GeodisthaversineEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_edge_set(s : GeodisthaversineEdge, i : Int, v : Double) -> GeodisthaversineEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineEdge::set(self : GeodisthaversineEdge, i : Int, v : Double) -> GeodisthaversineEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_edge_sum(s : GeodisthaversineEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineEdge::sum(self : GeodisthaversineEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_edge_mean(s : GeodisthaversineEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineEdge::mean(self : GeodisthaversineEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_edge_scale(s : GeodisthaversineEdge, f : Double) -> GeodisthaversineEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineEdge::scale(self : GeodisthaversineEdge, f : Double) -> GeodisthaversineEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_edge_add(a : GeodisthaversineEdge, b : GeodisthaversineEdge) -> GeodisthaversineEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineEdge::add(self : GeodisthaversineEdge, other : GeodisthaversineEdge) -> GeodisthaversineEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_edge_copy(s : GeodisthaversineEdge) -> GeodisthaversineEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineEdge::copy(self : GeodisthaversineEdge) -> GeodisthaversineEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_edge_fill(s : GeodisthaversineEdge, v : Double) -> GeodisthaversineEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineEdge::fill(self : GeodisthaversineEdge, v : Double) -> GeodisthaversineEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_edge_min(s : GeodisthaversineEdge) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineEdge::min(self : GeodisthaversineEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_edge_max(s : GeodisthaversineEdge) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineEdge::max(self : GeodisthaversineEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_edge_to_string(s : GeodisthaversineEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineEdge::to_string(self : GeodisthaversineEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversinePath {
@@ -606,45 +606,45 @@ pub fn geo_dist_haversine_path_make(size : Int) -> GeodisthaversinePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_path_len(s : GeodisthaversinePath) -> Int { s.size }
+pub fn GeodisthaversinePath::len(self : GeodisthaversinePath) -> Int { self.size }
 
-pub fn geo_dist_haversine_path_get(s : GeodisthaversinePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversinePath::get(self : GeodisthaversinePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_path_set(s : GeodisthaversinePath, i : Int, v : Double) -> GeodisthaversinePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversinePath::set(self : GeodisthaversinePath, i : Int, v : Double) -> GeodisthaversinePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_path_sum(s : GeodisthaversinePath) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversinePath::sum(self : GeodisthaversinePath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_path_mean(s : GeodisthaversinePath) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversinePath::mean(self : GeodisthaversinePath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_path_scale(s : GeodisthaversinePath, f : Double) -> GeodisthaversinePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversinePath::scale(self : GeodisthaversinePath, f : Double) -> GeodisthaversinePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_path_add(a : GeodisthaversinePath, b : GeodisthaversinePath) -> GeodisthaversinePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversinePath::add(self : GeodisthaversinePath, other : GeodisthaversinePath) -> GeodisthaversinePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_path_copy(s : GeodisthaversinePath) -> GeodisthaversinePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversinePath::copy(self : GeodisthaversinePath) -> GeodisthaversinePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_path_fill(s : GeodisthaversinePath, v : Double) -> GeodisthaversinePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversinePath::fill(self : GeodisthaversinePath, v : Double) -> GeodisthaversinePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_path_min(s : GeodisthaversinePath) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversinePath::min(self : GeodisthaversinePath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_path_max(s : GeodisthaversinePath) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversinePath::max(self : GeodisthaversinePath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_path_to_string(s : GeodisthaversinePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversinePath::to_string(self : GeodisthaversinePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_haversine_cluster_make(size : Int) -> GeodisthaversineCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_cluster_len(s : GeodisthaversineCluster) -> Int { s.size }
+pub fn GeodisthaversineCluster::len(self : GeodisthaversineCluster) -> Int { self.size }
 
-pub fn geo_dist_haversine_cluster_get(s : GeodisthaversineCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineCluster::get(self : GeodisthaversineCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_cluster_set(s : GeodisthaversineCluster, i : Int, v : Double) -> GeodisthaversineCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineCluster::set(self : GeodisthaversineCluster, i : Int, v : Double) -> GeodisthaversineCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cluster_sum(s : GeodisthaversineCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineCluster::sum(self : GeodisthaversineCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_cluster_mean(s : GeodisthaversineCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineCluster::mean(self : GeodisthaversineCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_cluster_scale(s : GeodisthaversineCluster, f : Double) -> GeodisthaversineCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineCluster::scale(self : GeodisthaversineCluster, f : Double) -> GeodisthaversineCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cluster_add(a : GeodisthaversineCluster, b : GeodisthaversineCluster) -> GeodisthaversineCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineCluster::add(self : GeodisthaversineCluster, other : GeodisthaversineCluster) -> GeodisthaversineCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cluster_copy(s : GeodisthaversineCluster) -> GeodisthaversineCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineCluster::copy(self : GeodisthaversineCluster) -> GeodisthaversineCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cluster_fill(s : GeodisthaversineCluster, v : Double) -> GeodisthaversineCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineCluster::fill(self : GeodisthaversineCluster, v : Double) -> GeodisthaversineCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cluster_min(s : GeodisthaversineCluster) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineCluster::min(self : GeodisthaversineCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_cluster_max(s : GeodisthaversineCluster) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineCluster::max(self : GeodisthaversineCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_cluster_to_string(s : GeodisthaversineCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineCluster::to_string(self : GeodisthaversineCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_haversine_model_make(size : Int) -> GeodisthaversineModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_model_len(s : GeodisthaversineModel) -> Int { s.size }
+pub fn GeodisthaversineModel::len(self : GeodisthaversineModel) -> Int { self.size }
 
-pub fn geo_dist_haversine_model_get(s : GeodisthaversineModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineModel::get(self : GeodisthaversineModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_model_set(s : GeodisthaversineModel, i : Int, v : Double) -> GeodisthaversineModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineModel::set(self : GeodisthaversineModel, i : Int, v : Double) -> GeodisthaversineModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_model_sum(s : GeodisthaversineModel) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineModel::sum(self : GeodisthaversineModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_model_mean(s : GeodisthaversineModel) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineModel::mean(self : GeodisthaversineModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_model_scale(s : GeodisthaversineModel, f : Double) -> GeodisthaversineModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineModel::scale(self : GeodisthaversineModel, f : Double) -> GeodisthaversineModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_model_add(a : GeodisthaversineModel, b : GeodisthaversineModel) -> GeodisthaversineModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineModel::add(self : GeodisthaversineModel, other : GeodisthaversineModel) -> GeodisthaversineModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_model_copy(s : GeodisthaversineModel) -> GeodisthaversineModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineModel::copy(self : GeodisthaversineModel) -> GeodisthaversineModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_model_fill(s : GeodisthaversineModel, v : Double) -> GeodisthaversineModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineModel::fill(self : GeodisthaversineModel, v : Double) -> GeodisthaversineModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_model_min(s : GeodisthaversineModel) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineModel::min(self : GeodisthaversineModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_model_max(s : GeodisthaversineModel) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineModel::max(self : GeodisthaversineModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_model_to_string(s : GeodisthaversineModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineModel::to_string(self : GeodisthaversineModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_haversine_layer_make(size : Int) -> GeodisthaversineLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_layer_len(s : GeodisthaversineLayer) -> Int { s.size }
+pub fn GeodisthaversineLayer::len(self : GeodisthaversineLayer) -> Int { self.size }
 
-pub fn geo_dist_haversine_layer_get(s : GeodisthaversineLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineLayer::get(self : GeodisthaversineLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_layer_set(s : GeodisthaversineLayer, i : Int, v : Double) -> GeodisthaversineLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineLayer::set(self : GeodisthaversineLayer, i : Int, v : Double) -> GeodisthaversineLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_layer_sum(s : GeodisthaversineLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineLayer::sum(self : GeodisthaversineLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_layer_mean(s : GeodisthaversineLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineLayer::mean(self : GeodisthaversineLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_layer_scale(s : GeodisthaversineLayer, f : Double) -> GeodisthaversineLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineLayer::scale(self : GeodisthaversineLayer, f : Double) -> GeodisthaversineLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_layer_add(a : GeodisthaversineLayer, b : GeodisthaversineLayer) -> GeodisthaversineLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineLayer::add(self : GeodisthaversineLayer, other : GeodisthaversineLayer) -> GeodisthaversineLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_layer_copy(s : GeodisthaversineLayer) -> GeodisthaversineLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineLayer::copy(self : GeodisthaversineLayer) -> GeodisthaversineLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_layer_fill(s : GeodisthaversineLayer, v : Double) -> GeodisthaversineLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineLayer::fill(self : GeodisthaversineLayer, v : Double) -> GeodisthaversineLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_layer_min(s : GeodisthaversineLayer) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineLayer::min(self : GeodisthaversineLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_layer_max(s : GeodisthaversineLayer) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineLayer::max(self : GeodisthaversineLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_layer_to_string(s : GeodisthaversineLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineLayer::to_string(self : GeodisthaversineLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_haversine_buffer_make(size : Int) -> GeodisthaversineBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_buffer_len(s : GeodisthaversineBuffer) -> Int { s.size }
+pub fn GeodisthaversineBuffer::len(self : GeodisthaversineBuffer) -> Int { self.size }
 
-pub fn geo_dist_haversine_buffer_get(s : GeodisthaversineBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineBuffer::get(self : GeodisthaversineBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_buffer_set(s : GeodisthaversineBuffer, i : Int, v : Double) -> GeodisthaversineBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineBuffer::set(self : GeodisthaversineBuffer, i : Int, v : Double) -> GeodisthaversineBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_buffer_sum(s : GeodisthaversineBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineBuffer::sum(self : GeodisthaversineBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_buffer_mean(s : GeodisthaversineBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineBuffer::mean(self : GeodisthaversineBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_buffer_scale(s : GeodisthaversineBuffer, f : Double) -> GeodisthaversineBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineBuffer::scale(self : GeodisthaversineBuffer, f : Double) -> GeodisthaversineBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_buffer_add(a : GeodisthaversineBuffer, b : GeodisthaversineBuffer) -> GeodisthaversineBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineBuffer::add(self : GeodisthaversineBuffer, other : GeodisthaversineBuffer) -> GeodisthaversineBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_buffer_copy(s : GeodisthaversineBuffer) -> GeodisthaversineBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineBuffer::copy(self : GeodisthaversineBuffer) -> GeodisthaversineBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_buffer_fill(s : GeodisthaversineBuffer, v : Double) -> GeodisthaversineBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineBuffer::fill(self : GeodisthaversineBuffer, v : Double) -> GeodisthaversineBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_buffer_min(s : GeodisthaversineBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineBuffer::min(self : GeodisthaversineBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_buffer_max(s : GeodisthaversineBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineBuffer::max(self : GeodisthaversineBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_buffer_to_string(s : GeodisthaversineBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineBuffer::to_string(self : GeodisthaversineBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_haversine_cursor_make(size : Int) -> GeodisthaversineCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_cursor_len(s : GeodisthaversineCursor) -> Int { s.size }
+pub fn GeodisthaversineCursor::len(self : GeodisthaversineCursor) -> Int { self.size }
 
-pub fn geo_dist_haversine_cursor_get(s : GeodisthaversineCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineCursor::get(self : GeodisthaversineCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_cursor_set(s : GeodisthaversineCursor, i : Int, v : Double) -> GeodisthaversineCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineCursor::set(self : GeodisthaversineCursor, i : Int, v : Double) -> GeodisthaversineCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cursor_sum(s : GeodisthaversineCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineCursor::sum(self : GeodisthaversineCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_cursor_mean(s : GeodisthaversineCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineCursor::mean(self : GeodisthaversineCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_cursor_scale(s : GeodisthaversineCursor, f : Double) -> GeodisthaversineCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineCursor::scale(self : GeodisthaversineCursor, f : Double) -> GeodisthaversineCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cursor_add(a : GeodisthaversineCursor, b : GeodisthaversineCursor) -> GeodisthaversineCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineCursor::add(self : GeodisthaversineCursor, other : GeodisthaversineCursor) -> GeodisthaversineCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cursor_copy(s : GeodisthaversineCursor) -> GeodisthaversineCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineCursor::copy(self : GeodisthaversineCursor) -> GeodisthaversineCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cursor_fill(s : GeodisthaversineCursor, v : Double) -> GeodisthaversineCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineCursor::fill(self : GeodisthaversineCursor, v : Double) -> GeodisthaversineCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_cursor_min(s : GeodisthaversineCursor) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineCursor::min(self : GeodisthaversineCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_cursor_max(s : GeodisthaversineCursor) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineCursor::max(self : GeodisthaversineCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_cursor_to_string(s : GeodisthaversineCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineCursor::to_string(self : GeodisthaversineCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineView {
@@ -912,45 +912,45 @@ pub fn geo_dist_haversine_view_make(size : Int) -> GeodisthaversineView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_view_len(s : GeodisthaversineView) -> Int { s.size }
+pub fn GeodisthaversineView::len(self : GeodisthaversineView) -> Int { self.size }
 
-pub fn geo_dist_haversine_view_get(s : GeodisthaversineView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineView::get(self : GeodisthaversineView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_view_set(s : GeodisthaversineView, i : Int, v : Double) -> GeodisthaversineView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineView::set(self : GeodisthaversineView, i : Int, v : Double) -> GeodisthaversineView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_view_sum(s : GeodisthaversineView) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineView::sum(self : GeodisthaversineView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_view_mean(s : GeodisthaversineView) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineView::mean(self : GeodisthaversineView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_view_scale(s : GeodisthaversineView, f : Double) -> GeodisthaversineView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineView::scale(self : GeodisthaversineView, f : Double) -> GeodisthaversineView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_view_add(a : GeodisthaversineView, b : GeodisthaversineView) -> GeodisthaversineView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineView::add(self : GeodisthaversineView, other : GeodisthaversineView) -> GeodisthaversineView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_view_copy(s : GeodisthaversineView) -> GeodisthaversineView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineView::copy(self : GeodisthaversineView) -> GeodisthaversineView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_view_fill(s : GeodisthaversineView, v : Double) -> GeodisthaversineView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineView::fill(self : GeodisthaversineView, v : Double) -> GeodisthaversineView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_view_min(s : GeodisthaversineView) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineView::min(self : GeodisthaversineView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_view_max(s : GeodisthaversineView) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineView::max(self : GeodisthaversineView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_view_to_string(s : GeodisthaversineView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineView::to_string(self : GeodisthaversineView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_haversine_range_make(size : Int) -> GeodisthaversineRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_range_len(s : GeodisthaversineRange) -> Int { s.size }
+pub fn GeodisthaversineRange::len(self : GeodisthaversineRange) -> Int { self.size }
 
-pub fn geo_dist_haversine_range_get(s : GeodisthaversineRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineRange::get(self : GeodisthaversineRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_range_set(s : GeodisthaversineRange, i : Int, v : Double) -> GeodisthaversineRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineRange::set(self : GeodisthaversineRange, i : Int, v : Double) -> GeodisthaversineRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_range_sum(s : GeodisthaversineRange) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineRange::sum(self : GeodisthaversineRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_range_mean(s : GeodisthaversineRange) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineRange::mean(self : GeodisthaversineRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_range_scale(s : GeodisthaversineRange, f : Double) -> GeodisthaversineRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineRange::scale(self : GeodisthaversineRange, f : Double) -> GeodisthaversineRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_range_add(a : GeodisthaversineRange, b : GeodisthaversineRange) -> GeodisthaversineRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineRange::add(self : GeodisthaversineRange, other : GeodisthaversineRange) -> GeodisthaversineRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_range_copy(s : GeodisthaversineRange) -> GeodisthaversineRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineRange::copy(self : GeodisthaversineRange) -> GeodisthaversineRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_range_fill(s : GeodisthaversineRange, v : Double) -> GeodisthaversineRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineRange::fill(self : GeodisthaversineRange, v : Double) -> GeodisthaversineRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_range_min(s : GeodisthaversineRange) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineRange::min(self : GeodisthaversineRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_range_max(s : GeodisthaversineRange) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineRange::max(self : GeodisthaversineRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_range_to_string(s : GeodisthaversineRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineRange::to_string(self : GeodisthaversineRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodisthaversineSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_haversine_slice_make(size : Int) -> GeodisthaversineSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_haversine_slice_len(s : GeodisthaversineSlice) -> Int { s.size }
+pub fn GeodisthaversineSlice::len(self : GeodisthaversineSlice) -> Int { self.size }
 
-pub fn geo_dist_haversine_slice_get(s : GeodisthaversineSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodisthaversineSlice::get(self : GeodisthaversineSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_haversine_slice_set(s : GeodisthaversineSlice, i : Int, v : Double) -> GeodisthaversineSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodisthaversineSlice::set(self : GeodisthaversineSlice, i : Int, v : Double) -> GeodisthaversineSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_slice_sum(s : GeodisthaversineSlice) -> Double { @_common.sum(s.data) }
+pub fn GeodisthaversineSlice::sum(self : GeodisthaversineSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_haversine_slice_mean(s : GeodisthaversineSlice) -> Double { @_common.mean(s.data) }
+pub fn GeodisthaversineSlice::mean(self : GeodisthaversineSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_haversine_slice_scale(s : GeodisthaversineSlice, f : Double) -> GeodisthaversineSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodisthaversineSlice::scale(self : GeodisthaversineSlice, f : Double) -> GeodisthaversineSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_slice_add(a : GeodisthaversineSlice, b : GeodisthaversineSlice) -> GeodisthaversineSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodisthaversineSlice::add(self : GeodisthaversineSlice, other : GeodisthaversineSlice) -> GeodisthaversineSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_slice_copy(s : GeodisthaversineSlice) -> GeodisthaversineSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodisthaversineSlice::copy(self : GeodisthaversineSlice) -> GeodisthaversineSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_slice_fill(s : GeodisthaversineSlice, v : Double) -> GeodisthaversineSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodisthaversineSlice::fill(self : GeodisthaversineSlice, v : Double) -> GeodisthaversineSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_haversine_slice_min(s : GeodisthaversineSlice) -> Double { @_common.min(s.data) }
+pub fn GeodisthaversineSlice::min(self : GeodisthaversineSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_haversine_slice_max(s : GeodisthaversineSlice) -> Double { @_common.max(s.data) }
+pub fn GeodisthaversineSlice::max(self : GeodisthaversineSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_haversine_slice_to_string(s : GeodisthaversineSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodisthaversineSlice::to_string(self : GeodisthaversineSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_ensemble_catboost_frame_make(size : Int) -> MlensemblecatboostFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_frame_len(s : MlensemblecatboostFrame) -> Int { s.size }
+pub fn MlensemblecatboostFrame::len(self : MlensemblecatboostFrame) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_frame_get(s : MlensemblecatboostFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostFrame::get(self : MlensemblecatboostFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_frame_set(s : MlensemblecatboostFrame, i : Int, v : Double) -> MlensemblecatboostFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostFrame::set(self : MlensemblecatboostFrame, i : Int, v : Double) -> MlensemblecatboostFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_frame_sum(s : MlensemblecatboostFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostFrame::sum(self : MlensemblecatboostFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_frame_mean(s : MlensemblecatboostFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostFrame::mean(self : MlensemblecatboostFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_frame_scale(s : MlensemblecatboostFrame, f : Double) -> MlensemblecatboostFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostFrame::scale(self : MlensemblecatboostFrame, f : Double) -> MlensemblecatboostFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_frame_add(a : MlensemblecatboostFrame, b : MlensemblecatboostFrame) -> MlensemblecatboostFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostFrame::add(self : MlensemblecatboostFrame, other : MlensemblecatboostFrame) -> MlensemblecatboostFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_frame_copy(s : MlensemblecatboostFrame) -> MlensemblecatboostFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostFrame::copy(self : MlensemblecatboostFrame) -> MlensemblecatboostFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_frame_fill(s : MlensemblecatboostFrame, v : Double) -> MlensemblecatboostFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostFrame::fill(self : MlensemblecatboostFrame, v : Double) -> MlensemblecatboostFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_frame_min(s : MlensemblecatboostFrame) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostFrame::min(self : MlensemblecatboostFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_frame_max(s : MlensemblecatboostFrame) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostFrame::max(self : MlensemblecatboostFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_frame_to_string(s : MlensemblecatboostFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostFrame::to_string(self : MlensemblecatboostFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_catboost_table_make(size : Int) -> MlensemblecatboostTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_table_len(s : MlensemblecatboostTable) -> Int { s.size }
+pub fn MlensemblecatboostTable::len(self : MlensemblecatboostTable) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_table_get(s : MlensemblecatboostTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostTable::get(self : MlensemblecatboostTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_table_set(s : MlensemblecatboostTable, i : Int, v : Double) -> MlensemblecatboostTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostTable::set(self : MlensemblecatboostTable, i : Int, v : Double) -> MlensemblecatboostTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_table_sum(s : MlensemblecatboostTable) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostTable::sum(self : MlensemblecatboostTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_table_mean(s : MlensemblecatboostTable) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostTable::mean(self : MlensemblecatboostTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_table_scale(s : MlensemblecatboostTable, f : Double) -> MlensemblecatboostTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostTable::scale(self : MlensemblecatboostTable, f : Double) -> MlensemblecatboostTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_table_add(a : MlensemblecatboostTable, b : MlensemblecatboostTable) -> MlensemblecatboostTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostTable::add(self : MlensemblecatboostTable, other : MlensemblecatboostTable) -> MlensemblecatboostTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_table_copy(s : MlensemblecatboostTable) -> MlensemblecatboostTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostTable::copy(self : MlensemblecatboostTable) -> MlensemblecatboostTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_table_fill(s : MlensemblecatboostTable, v : Double) -> MlensemblecatboostTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostTable::fill(self : MlensemblecatboostTable, v : Double) -> MlensemblecatboostTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_table_min(s : MlensemblecatboostTable) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostTable::min(self : MlensemblecatboostTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_table_max(s : MlensemblecatboostTable) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostTable::max(self : MlensemblecatboostTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_table_to_string(s : MlensemblecatboostTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostTable::to_string(self : MlensemblecatboostTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_catboost_graphn_make(size : Int) -> MlensemblecatboostGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_graphn_len(s : MlensemblecatboostGraphN) -> Int { s.size }
+pub fn MlensemblecatboostGraphN::len(self : MlensemblecatboostGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_graphn_get(s : MlensemblecatboostGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostGraphN::get(self : MlensemblecatboostGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_graphn_set(s : MlensemblecatboostGraphN, i : Int, v : Double) -> MlensemblecatboostGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostGraphN::set(self : MlensemblecatboostGraphN, i : Int, v : Double) -> MlensemblecatboostGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_graphn_sum(s : MlensemblecatboostGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostGraphN::sum(self : MlensemblecatboostGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_graphn_mean(s : MlensemblecatboostGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostGraphN::mean(self : MlensemblecatboostGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_graphn_scale(s : MlensemblecatboostGraphN, f : Double) -> MlensemblecatboostGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostGraphN::scale(self : MlensemblecatboostGraphN, f : Double) -> MlensemblecatboostGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_graphn_add(a : MlensemblecatboostGraphN, b : MlensemblecatboostGraphN) -> MlensemblecatboostGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostGraphN::add(self : MlensemblecatboostGraphN, other : MlensemblecatboostGraphN) -> MlensemblecatboostGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_graphn_copy(s : MlensemblecatboostGraphN) -> MlensemblecatboostGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostGraphN::copy(self : MlensemblecatboostGraphN) -> MlensemblecatboostGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_graphn_fill(s : MlensemblecatboostGraphN, v : Double) -> MlensemblecatboostGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostGraphN::fill(self : MlensemblecatboostGraphN, v : Double) -> MlensemblecatboostGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_graphn_min(s : MlensemblecatboostGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostGraphN::min(self : MlensemblecatboostGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_graphn_max(s : MlensemblecatboostGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostGraphN::max(self : MlensemblecatboostGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_graphn_to_string(s : MlensemblecatboostGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostGraphN::to_string(self : MlensemblecatboostGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_catboost_node_make(size : Int) -> MlensemblecatboostNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_node_len(s : MlensemblecatboostNode) -> Int { s.size }
+pub fn MlensemblecatboostNode::len(self : MlensemblecatboostNode) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_node_get(s : MlensemblecatboostNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostNode::get(self : MlensemblecatboostNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_node_set(s : MlensemblecatboostNode, i : Int, v : Double) -> MlensemblecatboostNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostNode::set(self : MlensemblecatboostNode, i : Int, v : Double) -> MlensemblecatboostNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_node_sum(s : MlensemblecatboostNode) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostNode::sum(self : MlensemblecatboostNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_node_mean(s : MlensemblecatboostNode) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostNode::mean(self : MlensemblecatboostNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_node_scale(s : MlensemblecatboostNode, f : Double) -> MlensemblecatboostNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostNode::scale(self : MlensemblecatboostNode, f : Double) -> MlensemblecatboostNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_node_add(a : MlensemblecatboostNode, b : MlensemblecatboostNode) -> MlensemblecatboostNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostNode::add(self : MlensemblecatboostNode, other : MlensemblecatboostNode) -> MlensemblecatboostNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_node_copy(s : MlensemblecatboostNode) -> MlensemblecatboostNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostNode::copy(self : MlensemblecatboostNode) -> MlensemblecatboostNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_node_fill(s : MlensemblecatboostNode, v : Double) -> MlensemblecatboostNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostNode::fill(self : MlensemblecatboostNode, v : Double) -> MlensemblecatboostNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_node_min(s : MlensemblecatboostNode) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostNode::min(self : MlensemblecatboostNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_node_max(s : MlensemblecatboostNode) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostNode::max(self : MlensemblecatboostNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_node_to_string(s : MlensemblecatboostNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostNode::to_string(self : MlensemblecatboostNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_catboost_edge_make(size : Int) -> MlensemblecatboostEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_edge_len(s : MlensemblecatboostEdge) -> Int { s.size }
+pub fn MlensemblecatboostEdge::len(self : MlensemblecatboostEdge) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_edge_get(s : MlensemblecatboostEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostEdge::get(self : MlensemblecatboostEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_edge_set(s : MlensemblecatboostEdge, i : Int, v : Double) -> MlensemblecatboostEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostEdge::set(self : MlensemblecatboostEdge, i : Int, v : Double) -> MlensemblecatboostEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_edge_sum(s : MlensemblecatboostEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostEdge::sum(self : MlensemblecatboostEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_edge_mean(s : MlensemblecatboostEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostEdge::mean(self : MlensemblecatboostEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_edge_scale(s : MlensemblecatboostEdge, f : Double) -> MlensemblecatboostEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostEdge::scale(self : MlensemblecatboostEdge, f : Double) -> MlensemblecatboostEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_edge_add(a : MlensemblecatboostEdge, b : MlensemblecatboostEdge) -> MlensemblecatboostEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostEdge::add(self : MlensemblecatboostEdge, other : MlensemblecatboostEdge) -> MlensemblecatboostEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_edge_copy(s : MlensemblecatboostEdge) -> MlensemblecatboostEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostEdge::copy(self : MlensemblecatboostEdge) -> MlensemblecatboostEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_edge_fill(s : MlensemblecatboostEdge, v : Double) -> MlensemblecatboostEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostEdge::fill(self : MlensemblecatboostEdge, v : Double) -> MlensemblecatboostEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_edge_min(s : MlensemblecatboostEdge) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostEdge::min(self : MlensemblecatboostEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_edge_max(s : MlensemblecatboostEdge) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostEdge::max(self : MlensemblecatboostEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_edge_to_string(s : MlensemblecatboostEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostEdge::to_string(self : MlensemblecatboostEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_catboost_path_make(size : Int) -> MlensemblecatboostPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_path_len(s : MlensemblecatboostPath) -> Int { s.size }
+pub fn MlensemblecatboostPath::len(self : MlensemblecatboostPath) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_path_get(s : MlensemblecatboostPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostPath::get(self : MlensemblecatboostPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_path_set(s : MlensemblecatboostPath, i : Int, v : Double) -> MlensemblecatboostPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostPath::set(self : MlensemblecatboostPath, i : Int, v : Double) -> MlensemblecatboostPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_path_sum(s : MlensemblecatboostPath) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostPath::sum(self : MlensemblecatboostPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_path_mean(s : MlensemblecatboostPath) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostPath::mean(self : MlensemblecatboostPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_path_scale(s : MlensemblecatboostPath, f : Double) -> MlensemblecatboostPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostPath::scale(self : MlensemblecatboostPath, f : Double) -> MlensemblecatboostPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_path_add(a : MlensemblecatboostPath, b : MlensemblecatboostPath) -> MlensemblecatboostPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostPath::add(self : MlensemblecatboostPath, other : MlensemblecatboostPath) -> MlensemblecatboostPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_path_copy(s : MlensemblecatboostPath) -> MlensemblecatboostPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostPath::copy(self : MlensemblecatboostPath) -> MlensemblecatboostPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_path_fill(s : MlensemblecatboostPath, v : Double) -> MlensemblecatboostPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostPath::fill(self : MlensemblecatboostPath, v : Double) -> MlensemblecatboostPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_path_min(s : MlensemblecatboostPath) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostPath::min(self : MlensemblecatboostPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_path_max(s : MlensemblecatboostPath) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostPath::max(self : MlensemblecatboostPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_path_to_string(s : MlensemblecatboostPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostPath::to_string(self : MlensemblecatboostPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_catboost_cluster_make(size : Int) -> MlensemblecatboostCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_cluster_len(s : MlensemblecatboostCluster) -> Int { s.size }
+pub fn MlensemblecatboostCluster::len(self : MlensemblecatboostCluster) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_cluster_get(s : MlensemblecatboostCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostCluster::get(self : MlensemblecatboostCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_cluster_set(s : MlensemblecatboostCluster, i : Int, v : Double) -> MlensemblecatboostCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCluster::set(self : MlensemblecatboostCluster, i : Int, v : Double) -> MlensemblecatboostCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cluster_sum(s : MlensemblecatboostCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostCluster::sum(self : MlensemblecatboostCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_cluster_mean(s : MlensemblecatboostCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostCluster::mean(self : MlensemblecatboostCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_cluster_scale(s : MlensemblecatboostCluster, f : Double) -> MlensemblecatboostCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCluster::scale(self : MlensemblecatboostCluster, f : Double) -> MlensemblecatboostCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cluster_add(a : MlensemblecatboostCluster, b : MlensemblecatboostCluster) -> MlensemblecatboostCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostCluster::add(self : MlensemblecatboostCluster, other : MlensemblecatboostCluster) -> MlensemblecatboostCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cluster_copy(s : MlensemblecatboostCluster) -> MlensemblecatboostCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCluster::copy(self : MlensemblecatboostCluster) -> MlensemblecatboostCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cluster_fill(s : MlensemblecatboostCluster, v : Double) -> MlensemblecatboostCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCluster::fill(self : MlensemblecatboostCluster, v : Double) -> MlensemblecatboostCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cluster_min(s : MlensemblecatboostCluster) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostCluster::min(self : MlensemblecatboostCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_cluster_max(s : MlensemblecatboostCluster) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostCluster::max(self : MlensemblecatboostCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_cluster_to_string(s : MlensemblecatboostCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostCluster::to_string(self : MlensemblecatboostCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_catboost_model_make(size : Int) -> MlensemblecatboostModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_model_len(s : MlensemblecatboostModel) -> Int { s.size }
+pub fn MlensemblecatboostModel::len(self : MlensemblecatboostModel) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_model_get(s : MlensemblecatboostModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostModel::get(self : MlensemblecatboostModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_model_set(s : MlensemblecatboostModel, i : Int, v : Double) -> MlensemblecatboostModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostModel::set(self : MlensemblecatboostModel, i : Int, v : Double) -> MlensemblecatboostModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_model_sum(s : MlensemblecatboostModel) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostModel::sum(self : MlensemblecatboostModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_model_mean(s : MlensemblecatboostModel) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostModel::mean(self : MlensemblecatboostModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_model_scale(s : MlensemblecatboostModel, f : Double) -> MlensemblecatboostModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostModel::scale(self : MlensemblecatboostModel, f : Double) -> MlensemblecatboostModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_model_add(a : MlensemblecatboostModel, b : MlensemblecatboostModel) -> MlensemblecatboostModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostModel::add(self : MlensemblecatboostModel, other : MlensemblecatboostModel) -> MlensemblecatboostModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_model_copy(s : MlensemblecatboostModel) -> MlensemblecatboostModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostModel::copy(self : MlensemblecatboostModel) -> MlensemblecatboostModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_model_fill(s : MlensemblecatboostModel, v : Double) -> MlensemblecatboostModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostModel::fill(self : MlensemblecatboostModel, v : Double) -> MlensemblecatboostModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_model_min(s : MlensemblecatboostModel) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostModel::min(self : MlensemblecatboostModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_model_max(s : MlensemblecatboostModel) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostModel::max(self : MlensemblecatboostModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_model_to_string(s : MlensemblecatboostModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostModel::to_string(self : MlensemblecatboostModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_catboost_layer_make(size : Int) -> MlensemblecatboostLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_layer_len(s : MlensemblecatboostLayer) -> Int { s.size }
+pub fn MlensemblecatboostLayer::len(self : MlensemblecatboostLayer) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_layer_get(s : MlensemblecatboostLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostLayer::get(self : MlensemblecatboostLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_layer_set(s : MlensemblecatboostLayer, i : Int, v : Double) -> MlensemblecatboostLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostLayer::set(self : MlensemblecatboostLayer, i : Int, v : Double) -> MlensemblecatboostLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_layer_sum(s : MlensemblecatboostLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostLayer::sum(self : MlensemblecatboostLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_layer_mean(s : MlensemblecatboostLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostLayer::mean(self : MlensemblecatboostLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_layer_scale(s : MlensemblecatboostLayer, f : Double) -> MlensemblecatboostLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostLayer::scale(self : MlensemblecatboostLayer, f : Double) -> MlensemblecatboostLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_layer_add(a : MlensemblecatboostLayer, b : MlensemblecatboostLayer) -> MlensemblecatboostLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostLayer::add(self : MlensemblecatboostLayer, other : MlensemblecatboostLayer) -> MlensemblecatboostLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_layer_copy(s : MlensemblecatboostLayer) -> MlensemblecatboostLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostLayer::copy(self : MlensemblecatboostLayer) -> MlensemblecatboostLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_layer_fill(s : MlensemblecatboostLayer, v : Double) -> MlensemblecatboostLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostLayer::fill(self : MlensemblecatboostLayer, v : Double) -> MlensemblecatboostLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_layer_min(s : MlensemblecatboostLayer) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostLayer::min(self : MlensemblecatboostLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_layer_max(s : MlensemblecatboostLayer) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostLayer::max(self : MlensemblecatboostLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_layer_to_string(s : MlensemblecatboostLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostLayer::to_string(self : MlensemblecatboostLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_catboost_buffer_make(size : Int) -> MlensemblecatboostBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_buffer_len(s : MlensemblecatboostBuffer) -> Int { s.size }
+pub fn MlensemblecatboostBuffer::len(self : MlensemblecatboostBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_buffer_get(s : MlensemblecatboostBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostBuffer::get(self : MlensemblecatboostBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_buffer_set(s : MlensemblecatboostBuffer, i : Int, v : Double) -> MlensemblecatboostBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostBuffer::set(self : MlensemblecatboostBuffer, i : Int, v : Double) -> MlensemblecatboostBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_buffer_sum(s : MlensemblecatboostBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostBuffer::sum(self : MlensemblecatboostBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_buffer_mean(s : MlensemblecatboostBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostBuffer::mean(self : MlensemblecatboostBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_buffer_scale(s : MlensemblecatboostBuffer, f : Double) -> MlensemblecatboostBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostBuffer::scale(self : MlensemblecatboostBuffer, f : Double) -> MlensemblecatboostBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_buffer_add(a : MlensemblecatboostBuffer, b : MlensemblecatboostBuffer) -> MlensemblecatboostBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostBuffer::add(self : MlensemblecatboostBuffer, other : MlensemblecatboostBuffer) -> MlensemblecatboostBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_buffer_copy(s : MlensemblecatboostBuffer) -> MlensemblecatboostBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostBuffer::copy(self : MlensemblecatboostBuffer) -> MlensemblecatboostBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_buffer_fill(s : MlensemblecatboostBuffer, v : Double) -> MlensemblecatboostBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostBuffer::fill(self : MlensemblecatboostBuffer, v : Double) -> MlensemblecatboostBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_buffer_min(s : MlensemblecatboostBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostBuffer::min(self : MlensemblecatboostBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_buffer_max(s : MlensemblecatboostBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostBuffer::max(self : MlensemblecatboostBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_buffer_to_string(s : MlensemblecatboostBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostBuffer::to_string(self : MlensemblecatboostBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_catboost_cursor_make(size : Int) -> MlensemblecatboostCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_cursor_len(s : MlensemblecatboostCursor) -> Int { s.size }
+pub fn MlensemblecatboostCursor::len(self : MlensemblecatboostCursor) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_cursor_get(s : MlensemblecatboostCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostCursor::get(self : MlensemblecatboostCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_cursor_set(s : MlensemblecatboostCursor, i : Int, v : Double) -> MlensemblecatboostCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCursor::set(self : MlensemblecatboostCursor, i : Int, v : Double) -> MlensemblecatboostCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cursor_sum(s : MlensemblecatboostCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostCursor::sum(self : MlensemblecatboostCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_cursor_mean(s : MlensemblecatboostCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostCursor::mean(self : MlensemblecatboostCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_cursor_scale(s : MlensemblecatboostCursor, f : Double) -> MlensemblecatboostCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCursor::scale(self : MlensemblecatboostCursor, f : Double) -> MlensemblecatboostCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cursor_add(a : MlensemblecatboostCursor, b : MlensemblecatboostCursor) -> MlensemblecatboostCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostCursor::add(self : MlensemblecatboostCursor, other : MlensemblecatboostCursor) -> MlensemblecatboostCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cursor_copy(s : MlensemblecatboostCursor) -> MlensemblecatboostCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCursor::copy(self : MlensemblecatboostCursor) -> MlensemblecatboostCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cursor_fill(s : MlensemblecatboostCursor, v : Double) -> MlensemblecatboostCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostCursor::fill(self : MlensemblecatboostCursor, v : Double) -> MlensemblecatboostCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_cursor_min(s : MlensemblecatboostCursor) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostCursor::min(self : MlensemblecatboostCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_cursor_max(s : MlensemblecatboostCursor) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostCursor::max(self : MlensemblecatboostCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_cursor_to_string(s : MlensemblecatboostCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostCursor::to_string(self : MlensemblecatboostCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_catboost_view_make(size : Int) -> MlensemblecatboostView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_view_len(s : MlensemblecatboostView) -> Int { s.size }
+pub fn MlensemblecatboostView::len(self : MlensemblecatboostView) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_view_get(s : MlensemblecatboostView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostView::get(self : MlensemblecatboostView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_view_set(s : MlensemblecatboostView, i : Int, v : Double) -> MlensemblecatboostView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostView::set(self : MlensemblecatboostView, i : Int, v : Double) -> MlensemblecatboostView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_view_sum(s : MlensemblecatboostView) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostView::sum(self : MlensemblecatboostView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_view_mean(s : MlensemblecatboostView) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostView::mean(self : MlensemblecatboostView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_view_scale(s : MlensemblecatboostView, f : Double) -> MlensemblecatboostView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostView::scale(self : MlensemblecatboostView, f : Double) -> MlensemblecatboostView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_view_add(a : MlensemblecatboostView, b : MlensemblecatboostView) -> MlensemblecatboostView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostView::add(self : MlensemblecatboostView, other : MlensemblecatboostView) -> MlensemblecatboostView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_view_copy(s : MlensemblecatboostView) -> MlensemblecatboostView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostView::copy(self : MlensemblecatboostView) -> MlensemblecatboostView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_view_fill(s : MlensemblecatboostView, v : Double) -> MlensemblecatboostView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostView::fill(self : MlensemblecatboostView, v : Double) -> MlensemblecatboostView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_view_min(s : MlensemblecatboostView) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostView::min(self : MlensemblecatboostView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_view_max(s : MlensemblecatboostView) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostView::max(self : MlensemblecatboostView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_view_to_string(s : MlensemblecatboostView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostView::to_string(self : MlensemblecatboostView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_catboost_range_make(size : Int) -> MlensemblecatboostRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_range_len(s : MlensemblecatboostRange) -> Int { s.size }
+pub fn MlensemblecatboostRange::len(self : MlensemblecatboostRange) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_range_get(s : MlensemblecatboostRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostRange::get(self : MlensemblecatboostRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_range_set(s : MlensemblecatboostRange, i : Int, v : Double) -> MlensemblecatboostRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostRange::set(self : MlensemblecatboostRange, i : Int, v : Double) -> MlensemblecatboostRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_range_sum(s : MlensemblecatboostRange) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostRange::sum(self : MlensemblecatboostRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_range_mean(s : MlensemblecatboostRange) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostRange::mean(self : MlensemblecatboostRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_range_scale(s : MlensemblecatboostRange, f : Double) -> MlensemblecatboostRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostRange::scale(self : MlensemblecatboostRange, f : Double) -> MlensemblecatboostRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_range_add(a : MlensemblecatboostRange, b : MlensemblecatboostRange) -> MlensemblecatboostRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostRange::add(self : MlensemblecatboostRange, other : MlensemblecatboostRange) -> MlensemblecatboostRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_range_copy(s : MlensemblecatboostRange) -> MlensemblecatboostRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostRange::copy(self : MlensemblecatboostRange) -> MlensemblecatboostRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_range_fill(s : MlensemblecatboostRange, v : Double) -> MlensemblecatboostRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostRange::fill(self : MlensemblecatboostRange, v : Double) -> MlensemblecatboostRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_range_min(s : MlensemblecatboostRange) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostRange::min(self : MlensemblecatboostRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_range_max(s : MlensemblecatboostRange) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostRange::max(self : MlensemblecatboostRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_range_to_string(s : MlensemblecatboostRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostRange::to_string(self : MlensemblecatboostRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_catboost_slice_make(size : Int) -> MlensemblecatboostSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_catboost_slice_len(s : MlensemblecatboostSlice) -> Int { s.size }
+pub fn MlensemblecatboostSlice::len(self : MlensemblecatboostSlice) -> Int { self.size }
 
-pub fn ml_ensemble_catboost_slice_get(s : MlensemblecatboostSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblecatboostSlice::get(self : MlensemblecatboostSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_catboost_slice_set(s : MlensemblecatboostSlice, i : Int, v : Double) -> MlensemblecatboostSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblecatboostSlice::set(self : MlensemblecatboostSlice, i : Int, v : Double) -> MlensemblecatboostSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_slice_sum(s : MlensemblecatboostSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensemblecatboostSlice::sum(self : MlensemblecatboostSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_catboost_slice_mean(s : MlensemblecatboostSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensemblecatboostSlice::mean(self : MlensemblecatboostSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_catboost_slice_scale(s : MlensemblecatboostSlice, f : Double) -> MlensemblecatboostSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostSlice::scale(self : MlensemblecatboostSlice, f : Double) -> MlensemblecatboostSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_slice_add(a : MlensemblecatboostSlice, b : MlensemblecatboostSlice) -> MlensemblecatboostSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblecatboostSlice::add(self : MlensemblecatboostSlice, other : MlensemblecatboostSlice) -> MlensemblecatboostSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_slice_copy(s : MlensemblecatboostSlice) -> MlensemblecatboostSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostSlice::copy(self : MlensemblecatboostSlice) -> MlensemblecatboostSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_slice_fill(s : MlensemblecatboostSlice, v : Double) -> MlensemblecatboostSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblecatboostSlice::fill(self : MlensemblecatboostSlice, v : Double) -> MlensemblecatboostSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_catboost_slice_min(s : MlensemblecatboostSlice) -> Double { @_common.min(s.data) }
+pub fn MlensemblecatboostSlice::min(self : MlensemblecatboostSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_catboost_slice_max(s : MlensemblecatboostSlice) -> Double { @_common.max(s.data) }
+pub fn MlensemblecatboostSlice::max(self : MlensemblecatboostSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_catboost_slice_to_string(s : MlensemblecatboostSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblecatboostSlice::to_string(self : MlensemblecatboostSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

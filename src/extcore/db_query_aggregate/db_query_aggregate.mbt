@@ -351,45 +351,45 @@ pub fn db_query_aggregate_frame_make(size : Int) -> DbqueryaggregateFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_frame_len(s : DbqueryaggregateFrame) -> Int { s.size }
+pub fn DbqueryaggregateFrame::len(self : DbqueryaggregateFrame) -> Int { self.size }
 
-pub fn db_query_aggregate_frame_get(s : DbqueryaggregateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateFrame::get(self : DbqueryaggregateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_frame_set(s : DbqueryaggregateFrame, i : Int, v : Double) -> DbqueryaggregateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateFrame::set(self : DbqueryaggregateFrame, i : Int, v : Double) -> DbqueryaggregateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_frame_sum(s : DbqueryaggregateFrame) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateFrame::sum(self : DbqueryaggregateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_frame_mean(s : DbqueryaggregateFrame) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateFrame::mean(self : DbqueryaggregateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_frame_scale(s : DbqueryaggregateFrame, f : Double) -> DbqueryaggregateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateFrame::scale(self : DbqueryaggregateFrame, f : Double) -> DbqueryaggregateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_frame_add(a : DbqueryaggregateFrame, b : DbqueryaggregateFrame) -> DbqueryaggregateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateFrame::add(self : DbqueryaggregateFrame, other : DbqueryaggregateFrame) -> DbqueryaggregateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_frame_copy(s : DbqueryaggregateFrame) -> DbqueryaggregateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateFrame::copy(self : DbqueryaggregateFrame) -> DbqueryaggregateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_frame_fill(s : DbqueryaggregateFrame, v : Double) -> DbqueryaggregateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateFrame::fill(self : DbqueryaggregateFrame, v : Double) -> DbqueryaggregateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_frame_min(s : DbqueryaggregateFrame) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateFrame::min(self : DbqueryaggregateFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_frame_max(s : DbqueryaggregateFrame) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateFrame::max(self : DbqueryaggregateFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_frame_to_string(s : DbqueryaggregateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateFrame::to_string(self : DbqueryaggregateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateTable {
@@ -402,45 +402,45 @@ pub fn db_query_aggregate_table_make(size : Int) -> DbqueryaggregateTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_table_len(s : DbqueryaggregateTable) -> Int { s.size }
+pub fn DbqueryaggregateTable::len(self : DbqueryaggregateTable) -> Int { self.size }
 
-pub fn db_query_aggregate_table_get(s : DbqueryaggregateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateTable::get(self : DbqueryaggregateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_table_set(s : DbqueryaggregateTable, i : Int, v : Double) -> DbqueryaggregateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateTable::set(self : DbqueryaggregateTable, i : Int, v : Double) -> DbqueryaggregateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_table_sum(s : DbqueryaggregateTable) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateTable::sum(self : DbqueryaggregateTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_table_mean(s : DbqueryaggregateTable) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateTable::mean(self : DbqueryaggregateTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_table_scale(s : DbqueryaggregateTable, f : Double) -> DbqueryaggregateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateTable::scale(self : DbqueryaggregateTable, f : Double) -> DbqueryaggregateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_table_add(a : DbqueryaggregateTable, b : DbqueryaggregateTable) -> DbqueryaggregateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateTable::add(self : DbqueryaggregateTable, other : DbqueryaggregateTable) -> DbqueryaggregateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_table_copy(s : DbqueryaggregateTable) -> DbqueryaggregateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateTable::copy(self : DbqueryaggregateTable) -> DbqueryaggregateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_table_fill(s : DbqueryaggregateTable, v : Double) -> DbqueryaggregateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateTable::fill(self : DbqueryaggregateTable, v : Double) -> DbqueryaggregateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_table_min(s : DbqueryaggregateTable) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateTable::min(self : DbqueryaggregateTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_table_max(s : DbqueryaggregateTable) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateTable::max(self : DbqueryaggregateTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_table_to_string(s : DbqueryaggregateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateTable::to_string(self : DbqueryaggregateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_aggregate_graphn_make(size : Int) -> DbqueryaggregateGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_graphn_len(s : DbqueryaggregateGraphN) -> Int { s.size }
+pub fn DbqueryaggregateGraphN::len(self : DbqueryaggregateGraphN) -> Int { self.size }
 
-pub fn db_query_aggregate_graphn_get(s : DbqueryaggregateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateGraphN::get(self : DbqueryaggregateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_graphn_set(s : DbqueryaggregateGraphN, i : Int, v : Double) -> DbqueryaggregateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateGraphN::set(self : DbqueryaggregateGraphN, i : Int, v : Double) -> DbqueryaggregateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_graphn_sum(s : DbqueryaggregateGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateGraphN::sum(self : DbqueryaggregateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_graphn_mean(s : DbqueryaggregateGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateGraphN::mean(self : DbqueryaggregateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_graphn_scale(s : DbqueryaggregateGraphN, f : Double) -> DbqueryaggregateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateGraphN::scale(self : DbqueryaggregateGraphN, f : Double) -> DbqueryaggregateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_graphn_add(a : DbqueryaggregateGraphN, b : DbqueryaggregateGraphN) -> DbqueryaggregateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateGraphN::add(self : DbqueryaggregateGraphN, other : DbqueryaggregateGraphN) -> DbqueryaggregateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_graphn_copy(s : DbqueryaggregateGraphN) -> DbqueryaggregateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateGraphN::copy(self : DbqueryaggregateGraphN) -> DbqueryaggregateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_graphn_fill(s : DbqueryaggregateGraphN, v : Double) -> DbqueryaggregateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateGraphN::fill(self : DbqueryaggregateGraphN, v : Double) -> DbqueryaggregateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_graphn_min(s : DbqueryaggregateGraphN) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateGraphN::min(self : DbqueryaggregateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_graphn_max(s : DbqueryaggregateGraphN) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateGraphN::max(self : DbqueryaggregateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_graphn_to_string(s : DbqueryaggregateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateGraphN::to_string(self : DbqueryaggregateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateNode {
@@ -504,45 +504,45 @@ pub fn db_query_aggregate_node_make(size : Int) -> DbqueryaggregateNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_node_len(s : DbqueryaggregateNode) -> Int { s.size }
+pub fn DbqueryaggregateNode::len(self : DbqueryaggregateNode) -> Int { self.size }
 
-pub fn db_query_aggregate_node_get(s : DbqueryaggregateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateNode::get(self : DbqueryaggregateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_node_set(s : DbqueryaggregateNode, i : Int, v : Double) -> DbqueryaggregateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateNode::set(self : DbqueryaggregateNode, i : Int, v : Double) -> DbqueryaggregateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_node_sum(s : DbqueryaggregateNode) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateNode::sum(self : DbqueryaggregateNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_node_mean(s : DbqueryaggregateNode) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateNode::mean(self : DbqueryaggregateNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_node_scale(s : DbqueryaggregateNode, f : Double) -> DbqueryaggregateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateNode::scale(self : DbqueryaggregateNode, f : Double) -> DbqueryaggregateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_node_add(a : DbqueryaggregateNode, b : DbqueryaggregateNode) -> DbqueryaggregateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateNode::add(self : DbqueryaggregateNode, other : DbqueryaggregateNode) -> DbqueryaggregateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_node_copy(s : DbqueryaggregateNode) -> DbqueryaggregateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateNode::copy(self : DbqueryaggregateNode) -> DbqueryaggregateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_node_fill(s : DbqueryaggregateNode, v : Double) -> DbqueryaggregateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateNode::fill(self : DbqueryaggregateNode, v : Double) -> DbqueryaggregateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_node_min(s : DbqueryaggregateNode) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateNode::min(self : DbqueryaggregateNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_node_max(s : DbqueryaggregateNode) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateNode::max(self : DbqueryaggregateNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_node_to_string(s : DbqueryaggregateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateNode::to_string(self : DbqueryaggregateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateEdge {
@@ -555,45 +555,45 @@ pub fn db_query_aggregate_edge_make(size : Int) -> DbqueryaggregateEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_edge_len(s : DbqueryaggregateEdge) -> Int { s.size }
+pub fn DbqueryaggregateEdge::len(self : DbqueryaggregateEdge) -> Int { self.size }
 
-pub fn db_query_aggregate_edge_get(s : DbqueryaggregateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateEdge::get(self : DbqueryaggregateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_edge_set(s : DbqueryaggregateEdge, i : Int, v : Double) -> DbqueryaggregateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateEdge::set(self : DbqueryaggregateEdge, i : Int, v : Double) -> DbqueryaggregateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_edge_sum(s : DbqueryaggregateEdge) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateEdge::sum(self : DbqueryaggregateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_edge_mean(s : DbqueryaggregateEdge) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateEdge::mean(self : DbqueryaggregateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_edge_scale(s : DbqueryaggregateEdge, f : Double) -> DbqueryaggregateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateEdge::scale(self : DbqueryaggregateEdge, f : Double) -> DbqueryaggregateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_edge_add(a : DbqueryaggregateEdge, b : DbqueryaggregateEdge) -> DbqueryaggregateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateEdge::add(self : DbqueryaggregateEdge, other : DbqueryaggregateEdge) -> DbqueryaggregateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_edge_copy(s : DbqueryaggregateEdge) -> DbqueryaggregateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateEdge::copy(self : DbqueryaggregateEdge) -> DbqueryaggregateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_edge_fill(s : DbqueryaggregateEdge, v : Double) -> DbqueryaggregateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateEdge::fill(self : DbqueryaggregateEdge, v : Double) -> DbqueryaggregateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_edge_min(s : DbqueryaggregateEdge) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateEdge::min(self : DbqueryaggregateEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_edge_max(s : DbqueryaggregateEdge) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateEdge::max(self : DbqueryaggregateEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_edge_to_string(s : DbqueryaggregateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateEdge::to_string(self : DbqueryaggregateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregatePath {
@@ -606,45 +606,45 @@ pub fn db_query_aggregate_path_make(size : Int) -> DbqueryaggregatePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_path_len(s : DbqueryaggregatePath) -> Int { s.size }
+pub fn DbqueryaggregatePath::len(self : DbqueryaggregatePath) -> Int { self.size }
 
-pub fn db_query_aggregate_path_get(s : DbqueryaggregatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregatePath::get(self : DbqueryaggregatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_path_set(s : DbqueryaggregatePath, i : Int, v : Double) -> DbqueryaggregatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregatePath::set(self : DbqueryaggregatePath, i : Int, v : Double) -> DbqueryaggregatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_path_sum(s : DbqueryaggregatePath) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregatePath::sum(self : DbqueryaggregatePath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_path_mean(s : DbqueryaggregatePath) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregatePath::mean(self : DbqueryaggregatePath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_path_scale(s : DbqueryaggregatePath, f : Double) -> DbqueryaggregatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregatePath::scale(self : DbqueryaggregatePath, f : Double) -> DbqueryaggregatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_path_add(a : DbqueryaggregatePath, b : DbqueryaggregatePath) -> DbqueryaggregatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregatePath::add(self : DbqueryaggregatePath, other : DbqueryaggregatePath) -> DbqueryaggregatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_path_copy(s : DbqueryaggregatePath) -> DbqueryaggregatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregatePath::copy(self : DbqueryaggregatePath) -> DbqueryaggregatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_path_fill(s : DbqueryaggregatePath, v : Double) -> DbqueryaggregatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregatePath::fill(self : DbqueryaggregatePath, v : Double) -> DbqueryaggregatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_path_min(s : DbqueryaggregatePath) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregatePath::min(self : DbqueryaggregatePath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_path_max(s : DbqueryaggregatePath) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregatePath::max(self : DbqueryaggregatePath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_path_to_string(s : DbqueryaggregatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregatePath::to_string(self : DbqueryaggregatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateCluster {
@@ -657,45 +657,45 @@ pub fn db_query_aggregate_cluster_make(size : Int) -> DbqueryaggregateCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_cluster_len(s : DbqueryaggregateCluster) -> Int { s.size }
+pub fn DbqueryaggregateCluster::len(self : DbqueryaggregateCluster) -> Int { self.size }
 
-pub fn db_query_aggregate_cluster_get(s : DbqueryaggregateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateCluster::get(self : DbqueryaggregateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_cluster_set(s : DbqueryaggregateCluster, i : Int, v : Double) -> DbqueryaggregateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCluster::set(self : DbqueryaggregateCluster, i : Int, v : Double) -> DbqueryaggregateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cluster_sum(s : DbqueryaggregateCluster) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateCluster::sum(self : DbqueryaggregateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_cluster_mean(s : DbqueryaggregateCluster) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateCluster::mean(self : DbqueryaggregateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_cluster_scale(s : DbqueryaggregateCluster, f : Double) -> DbqueryaggregateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCluster::scale(self : DbqueryaggregateCluster, f : Double) -> DbqueryaggregateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cluster_add(a : DbqueryaggregateCluster, b : DbqueryaggregateCluster) -> DbqueryaggregateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateCluster::add(self : DbqueryaggregateCluster, other : DbqueryaggregateCluster) -> DbqueryaggregateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cluster_copy(s : DbqueryaggregateCluster) -> DbqueryaggregateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCluster::copy(self : DbqueryaggregateCluster) -> DbqueryaggregateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cluster_fill(s : DbqueryaggregateCluster, v : Double) -> DbqueryaggregateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCluster::fill(self : DbqueryaggregateCluster, v : Double) -> DbqueryaggregateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cluster_min(s : DbqueryaggregateCluster) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateCluster::min(self : DbqueryaggregateCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_cluster_max(s : DbqueryaggregateCluster) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateCluster::max(self : DbqueryaggregateCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_cluster_to_string(s : DbqueryaggregateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateCluster::to_string(self : DbqueryaggregateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateModel {
@@ -708,45 +708,45 @@ pub fn db_query_aggregate_model_make(size : Int) -> DbqueryaggregateModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_model_len(s : DbqueryaggregateModel) -> Int { s.size }
+pub fn DbqueryaggregateModel::len(self : DbqueryaggregateModel) -> Int { self.size }
 
-pub fn db_query_aggregate_model_get(s : DbqueryaggregateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateModel::get(self : DbqueryaggregateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_model_set(s : DbqueryaggregateModel, i : Int, v : Double) -> DbqueryaggregateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateModel::set(self : DbqueryaggregateModel, i : Int, v : Double) -> DbqueryaggregateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_model_sum(s : DbqueryaggregateModel) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateModel::sum(self : DbqueryaggregateModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_model_mean(s : DbqueryaggregateModel) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateModel::mean(self : DbqueryaggregateModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_model_scale(s : DbqueryaggregateModel, f : Double) -> DbqueryaggregateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateModel::scale(self : DbqueryaggregateModel, f : Double) -> DbqueryaggregateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_model_add(a : DbqueryaggregateModel, b : DbqueryaggregateModel) -> DbqueryaggregateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateModel::add(self : DbqueryaggregateModel, other : DbqueryaggregateModel) -> DbqueryaggregateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_model_copy(s : DbqueryaggregateModel) -> DbqueryaggregateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateModel::copy(self : DbqueryaggregateModel) -> DbqueryaggregateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_model_fill(s : DbqueryaggregateModel, v : Double) -> DbqueryaggregateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateModel::fill(self : DbqueryaggregateModel, v : Double) -> DbqueryaggregateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_model_min(s : DbqueryaggregateModel) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateModel::min(self : DbqueryaggregateModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_model_max(s : DbqueryaggregateModel) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateModel::max(self : DbqueryaggregateModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_model_to_string(s : DbqueryaggregateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateModel::to_string(self : DbqueryaggregateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateLayer {
@@ -759,45 +759,45 @@ pub fn db_query_aggregate_layer_make(size : Int) -> DbqueryaggregateLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_layer_len(s : DbqueryaggregateLayer) -> Int { s.size }
+pub fn DbqueryaggregateLayer::len(self : DbqueryaggregateLayer) -> Int { self.size }
 
-pub fn db_query_aggregate_layer_get(s : DbqueryaggregateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateLayer::get(self : DbqueryaggregateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_layer_set(s : DbqueryaggregateLayer, i : Int, v : Double) -> DbqueryaggregateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateLayer::set(self : DbqueryaggregateLayer, i : Int, v : Double) -> DbqueryaggregateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_layer_sum(s : DbqueryaggregateLayer) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateLayer::sum(self : DbqueryaggregateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_layer_mean(s : DbqueryaggregateLayer) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateLayer::mean(self : DbqueryaggregateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_layer_scale(s : DbqueryaggregateLayer, f : Double) -> DbqueryaggregateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateLayer::scale(self : DbqueryaggregateLayer, f : Double) -> DbqueryaggregateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_layer_add(a : DbqueryaggregateLayer, b : DbqueryaggregateLayer) -> DbqueryaggregateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateLayer::add(self : DbqueryaggregateLayer, other : DbqueryaggregateLayer) -> DbqueryaggregateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_layer_copy(s : DbqueryaggregateLayer) -> DbqueryaggregateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateLayer::copy(self : DbqueryaggregateLayer) -> DbqueryaggregateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_layer_fill(s : DbqueryaggregateLayer, v : Double) -> DbqueryaggregateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateLayer::fill(self : DbqueryaggregateLayer, v : Double) -> DbqueryaggregateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_layer_min(s : DbqueryaggregateLayer) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateLayer::min(self : DbqueryaggregateLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_layer_max(s : DbqueryaggregateLayer) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateLayer::max(self : DbqueryaggregateLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_layer_to_string(s : DbqueryaggregateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateLayer::to_string(self : DbqueryaggregateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_aggregate_buffer_make(size : Int) -> DbqueryaggregateBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_buffer_len(s : DbqueryaggregateBuffer) -> Int { s.size }
+pub fn DbqueryaggregateBuffer::len(self : DbqueryaggregateBuffer) -> Int { self.size }
 
-pub fn db_query_aggregate_buffer_get(s : DbqueryaggregateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateBuffer::get(self : DbqueryaggregateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_buffer_set(s : DbqueryaggregateBuffer, i : Int, v : Double) -> DbqueryaggregateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateBuffer::set(self : DbqueryaggregateBuffer, i : Int, v : Double) -> DbqueryaggregateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_buffer_sum(s : DbqueryaggregateBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateBuffer::sum(self : DbqueryaggregateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_buffer_mean(s : DbqueryaggregateBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateBuffer::mean(self : DbqueryaggregateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_buffer_scale(s : DbqueryaggregateBuffer, f : Double) -> DbqueryaggregateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateBuffer::scale(self : DbqueryaggregateBuffer, f : Double) -> DbqueryaggregateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_buffer_add(a : DbqueryaggregateBuffer, b : DbqueryaggregateBuffer) -> DbqueryaggregateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateBuffer::add(self : DbqueryaggregateBuffer, other : DbqueryaggregateBuffer) -> DbqueryaggregateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_buffer_copy(s : DbqueryaggregateBuffer) -> DbqueryaggregateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateBuffer::copy(self : DbqueryaggregateBuffer) -> DbqueryaggregateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_buffer_fill(s : DbqueryaggregateBuffer, v : Double) -> DbqueryaggregateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateBuffer::fill(self : DbqueryaggregateBuffer, v : Double) -> DbqueryaggregateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_buffer_min(s : DbqueryaggregateBuffer) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateBuffer::min(self : DbqueryaggregateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_buffer_max(s : DbqueryaggregateBuffer) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateBuffer::max(self : DbqueryaggregateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_buffer_to_string(s : DbqueryaggregateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateBuffer::to_string(self : DbqueryaggregateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateCursor {
@@ -861,45 +861,45 @@ pub fn db_query_aggregate_cursor_make(size : Int) -> DbqueryaggregateCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_cursor_len(s : DbqueryaggregateCursor) -> Int { s.size }
+pub fn DbqueryaggregateCursor::len(self : DbqueryaggregateCursor) -> Int { self.size }
 
-pub fn db_query_aggregate_cursor_get(s : DbqueryaggregateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateCursor::get(self : DbqueryaggregateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_cursor_set(s : DbqueryaggregateCursor, i : Int, v : Double) -> DbqueryaggregateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCursor::set(self : DbqueryaggregateCursor, i : Int, v : Double) -> DbqueryaggregateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cursor_sum(s : DbqueryaggregateCursor) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateCursor::sum(self : DbqueryaggregateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_cursor_mean(s : DbqueryaggregateCursor) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateCursor::mean(self : DbqueryaggregateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_cursor_scale(s : DbqueryaggregateCursor, f : Double) -> DbqueryaggregateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCursor::scale(self : DbqueryaggregateCursor, f : Double) -> DbqueryaggregateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cursor_add(a : DbqueryaggregateCursor, b : DbqueryaggregateCursor) -> DbqueryaggregateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateCursor::add(self : DbqueryaggregateCursor, other : DbqueryaggregateCursor) -> DbqueryaggregateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cursor_copy(s : DbqueryaggregateCursor) -> DbqueryaggregateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCursor::copy(self : DbqueryaggregateCursor) -> DbqueryaggregateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cursor_fill(s : DbqueryaggregateCursor, v : Double) -> DbqueryaggregateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateCursor::fill(self : DbqueryaggregateCursor, v : Double) -> DbqueryaggregateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_cursor_min(s : DbqueryaggregateCursor) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateCursor::min(self : DbqueryaggregateCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_cursor_max(s : DbqueryaggregateCursor) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateCursor::max(self : DbqueryaggregateCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_cursor_to_string(s : DbqueryaggregateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateCursor::to_string(self : DbqueryaggregateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateView {
@@ -912,45 +912,45 @@ pub fn db_query_aggregate_view_make(size : Int) -> DbqueryaggregateView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_view_len(s : DbqueryaggregateView) -> Int { s.size }
+pub fn DbqueryaggregateView::len(self : DbqueryaggregateView) -> Int { self.size }
 
-pub fn db_query_aggregate_view_get(s : DbqueryaggregateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateView::get(self : DbqueryaggregateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_view_set(s : DbqueryaggregateView, i : Int, v : Double) -> DbqueryaggregateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateView::set(self : DbqueryaggregateView, i : Int, v : Double) -> DbqueryaggregateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_view_sum(s : DbqueryaggregateView) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateView::sum(self : DbqueryaggregateView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_view_mean(s : DbqueryaggregateView) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateView::mean(self : DbqueryaggregateView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_view_scale(s : DbqueryaggregateView, f : Double) -> DbqueryaggregateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateView::scale(self : DbqueryaggregateView, f : Double) -> DbqueryaggregateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_view_add(a : DbqueryaggregateView, b : DbqueryaggregateView) -> DbqueryaggregateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateView::add(self : DbqueryaggregateView, other : DbqueryaggregateView) -> DbqueryaggregateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_view_copy(s : DbqueryaggregateView) -> DbqueryaggregateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateView::copy(self : DbqueryaggregateView) -> DbqueryaggregateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_view_fill(s : DbqueryaggregateView, v : Double) -> DbqueryaggregateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateView::fill(self : DbqueryaggregateView, v : Double) -> DbqueryaggregateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_view_min(s : DbqueryaggregateView) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateView::min(self : DbqueryaggregateView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_view_max(s : DbqueryaggregateView) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateView::max(self : DbqueryaggregateView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_view_to_string(s : DbqueryaggregateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateView::to_string(self : DbqueryaggregateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateRange {
@@ -963,45 +963,45 @@ pub fn db_query_aggregate_range_make(size : Int) -> DbqueryaggregateRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_range_len(s : DbqueryaggregateRange) -> Int { s.size }
+pub fn DbqueryaggregateRange::len(self : DbqueryaggregateRange) -> Int { self.size }
 
-pub fn db_query_aggregate_range_get(s : DbqueryaggregateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateRange::get(self : DbqueryaggregateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_range_set(s : DbqueryaggregateRange, i : Int, v : Double) -> DbqueryaggregateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateRange::set(self : DbqueryaggregateRange, i : Int, v : Double) -> DbqueryaggregateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_range_sum(s : DbqueryaggregateRange) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateRange::sum(self : DbqueryaggregateRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_range_mean(s : DbqueryaggregateRange) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateRange::mean(self : DbqueryaggregateRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_range_scale(s : DbqueryaggregateRange, f : Double) -> DbqueryaggregateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateRange::scale(self : DbqueryaggregateRange, f : Double) -> DbqueryaggregateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_range_add(a : DbqueryaggregateRange, b : DbqueryaggregateRange) -> DbqueryaggregateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateRange::add(self : DbqueryaggregateRange, other : DbqueryaggregateRange) -> DbqueryaggregateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_range_copy(s : DbqueryaggregateRange) -> DbqueryaggregateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateRange::copy(self : DbqueryaggregateRange) -> DbqueryaggregateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_range_fill(s : DbqueryaggregateRange, v : Double) -> DbqueryaggregateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateRange::fill(self : DbqueryaggregateRange, v : Double) -> DbqueryaggregateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_range_min(s : DbqueryaggregateRange) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateRange::min(self : DbqueryaggregateRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_range_max(s : DbqueryaggregateRange) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateRange::max(self : DbqueryaggregateRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_range_to_string(s : DbqueryaggregateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateRange::to_string(self : DbqueryaggregateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbqueryaggregateSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_aggregate_slice_make(size : Int) -> DbqueryaggregateSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_aggregate_slice_len(s : DbqueryaggregateSlice) -> Int { s.size }
+pub fn DbqueryaggregateSlice::len(self : DbqueryaggregateSlice) -> Int { self.size }
 
-pub fn db_query_aggregate_slice_get(s : DbqueryaggregateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbqueryaggregateSlice::get(self : DbqueryaggregateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_aggregate_slice_set(s : DbqueryaggregateSlice, i : Int, v : Double) -> DbqueryaggregateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbqueryaggregateSlice::set(self : DbqueryaggregateSlice, i : Int, v : Double) -> DbqueryaggregateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_slice_sum(s : DbqueryaggregateSlice) -> Double { @_common.sum(s.data) }
+pub fn DbqueryaggregateSlice::sum(self : DbqueryaggregateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_aggregate_slice_mean(s : DbqueryaggregateSlice) -> Double { @_common.mean(s.data) }
+pub fn DbqueryaggregateSlice::mean(self : DbqueryaggregateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_aggregate_slice_scale(s : DbqueryaggregateSlice, f : Double) -> DbqueryaggregateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateSlice::scale(self : DbqueryaggregateSlice, f : Double) -> DbqueryaggregateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_slice_add(a : DbqueryaggregateSlice, b : DbqueryaggregateSlice) -> DbqueryaggregateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbqueryaggregateSlice::add(self : DbqueryaggregateSlice, other : DbqueryaggregateSlice) -> DbqueryaggregateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_aggregate_slice_copy(s : DbqueryaggregateSlice) -> DbqueryaggregateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateSlice::copy(self : DbqueryaggregateSlice) -> DbqueryaggregateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_slice_fill(s : DbqueryaggregateSlice, v : Double) -> DbqueryaggregateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbqueryaggregateSlice::fill(self : DbqueryaggregateSlice, v : Double) -> DbqueryaggregateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_aggregate_slice_min(s : DbqueryaggregateSlice) -> Double { @_common.min(s.data) }
+pub fn DbqueryaggregateSlice::min(self : DbqueryaggregateSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_aggregate_slice_max(s : DbqueryaggregateSlice) -> Double { @_common.max(s.data) }
+pub fn DbqueryaggregateSlice::max(self : DbqueryaggregateSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_aggregate_slice_to_string(s : DbqueryaggregateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbqueryaggregateSlice::to_string(self : DbqueryaggregateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

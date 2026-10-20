@@ -351,45 +351,45 @@ pub fn chem_desc_atompair_frame_make(size : Int) -> ChemdescatompairFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_frame_len(s : ChemdescatompairFrame) -> Int { s.size }
+pub fn ChemdescatompairFrame::len(self : ChemdescatompairFrame) -> Int { self.size }
 
-pub fn chem_desc_atompair_frame_get(s : ChemdescatompairFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairFrame::get(self : ChemdescatompairFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_frame_set(s : ChemdescatompairFrame, i : Int, v : Double) -> ChemdescatompairFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairFrame::set(self : ChemdescatompairFrame, i : Int, v : Double) -> ChemdescatompairFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_frame_sum(s : ChemdescatompairFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairFrame::sum(self : ChemdescatompairFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_frame_mean(s : ChemdescatompairFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairFrame::mean(self : ChemdescatompairFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_frame_scale(s : ChemdescatompairFrame, f : Double) -> ChemdescatompairFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairFrame::scale(self : ChemdescatompairFrame, f : Double) -> ChemdescatompairFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_frame_add(a : ChemdescatompairFrame, b : ChemdescatompairFrame) -> ChemdescatompairFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairFrame::add(self : ChemdescatompairFrame, other : ChemdescatompairFrame) -> ChemdescatompairFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_frame_copy(s : ChemdescatompairFrame) -> ChemdescatompairFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairFrame::copy(self : ChemdescatompairFrame) -> ChemdescatompairFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_frame_fill(s : ChemdescatompairFrame, v : Double) -> ChemdescatompairFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairFrame::fill(self : ChemdescatompairFrame, v : Double) -> ChemdescatompairFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_frame_min(s : ChemdescatompairFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairFrame::min(self : ChemdescatompairFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_frame_max(s : ChemdescatompairFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairFrame::max(self : ChemdescatompairFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_frame_to_string(s : ChemdescatompairFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairFrame::to_string(self : ChemdescatompairFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_atompair_table_make(size : Int) -> ChemdescatompairTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_table_len(s : ChemdescatompairTable) -> Int { s.size }
+pub fn ChemdescatompairTable::len(self : ChemdescatompairTable) -> Int { self.size }
 
-pub fn chem_desc_atompair_table_get(s : ChemdescatompairTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairTable::get(self : ChemdescatompairTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_table_set(s : ChemdescatompairTable, i : Int, v : Double) -> ChemdescatompairTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairTable::set(self : ChemdescatompairTable, i : Int, v : Double) -> ChemdescatompairTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_table_sum(s : ChemdescatompairTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairTable::sum(self : ChemdescatompairTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_table_mean(s : ChemdescatompairTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairTable::mean(self : ChemdescatompairTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_table_scale(s : ChemdescatompairTable, f : Double) -> ChemdescatompairTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairTable::scale(self : ChemdescatompairTable, f : Double) -> ChemdescatompairTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_table_add(a : ChemdescatompairTable, b : ChemdescatompairTable) -> ChemdescatompairTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairTable::add(self : ChemdescatompairTable, other : ChemdescatompairTable) -> ChemdescatompairTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_table_copy(s : ChemdescatompairTable) -> ChemdescatompairTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairTable::copy(self : ChemdescatompairTable) -> ChemdescatompairTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_table_fill(s : ChemdescatompairTable, v : Double) -> ChemdescatompairTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairTable::fill(self : ChemdescatompairTable, v : Double) -> ChemdescatompairTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_table_min(s : ChemdescatompairTable) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairTable::min(self : ChemdescatompairTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_table_max(s : ChemdescatompairTable) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairTable::max(self : ChemdescatompairTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_table_to_string(s : ChemdescatompairTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairTable::to_string(self : ChemdescatompairTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_atompair_graphn_make(size : Int) -> ChemdescatompairGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_graphn_len(s : ChemdescatompairGraphN) -> Int { s.size }
+pub fn ChemdescatompairGraphN::len(self : ChemdescatompairGraphN) -> Int { self.size }
 
-pub fn chem_desc_atompair_graphn_get(s : ChemdescatompairGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairGraphN::get(self : ChemdescatompairGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_graphn_set(s : ChemdescatompairGraphN, i : Int, v : Double) -> ChemdescatompairGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairGraphN::set(self : ChemdescatompairGraphN, i : Int, v : Double) -> ChemdescatompairGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_graphn_sum(s : ChemdescatompairGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairGraphN::sum(self : ChemdescatompairGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_graphn_mean(s : ChemdescatompairGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairGraphN::mean(self : ChemdescatompairGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_graphn_scale(s : ChemdescatompairGraphN, f : Double) -> ChemdescatompairGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairGraphN::scale(self : ChemdescatompairGraphN, f : Double) -> ChemdescatompairGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_graphn_add(a : ChemdescatompairGraphN, b : ChemdescatompairGraphN) -> ChemdescatompairGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairGraphN::add(self : ChemdescatompairGraphN, other : ChemdescatompairGraphN) -> ChemdescatompairGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_graphn_copy(s : ChemdescatompairGraphN) -> ChemdescatompairGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairGraphN::copy(self : ChemdescatompairGraphN) -> ChemdescatompairGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_graphn_fill(s : ChemdescatompairGraphN, v : Double) -> ChemdescatompairGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairGraphN::fill(self : ChemdescatompairGraphN, v : Double) -> ChemdescatompairGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_graphn_min(s : ChemdescatompairGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairGraphN::min(self : ChemdescatompairGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_graphn_max(s : ChemdescatompairGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairGraphN::max(self : ChemdescatompairGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_graphn_to_string(s : ChemdescatompairGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairGraphN::to_string(self : ChemdescatompairGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_atompair_node_make(size : Int) -> ChemdescatompairNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_node_len(s : ChemdescatompairNode) -> Int { s.size }
+pub fn ChemdescatompairNode::len(self : ChemdescatompairNode) -> Int { self.size }
 
-pub fn chem_desc_atompair_node_get(s : ChemdescatompairNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairNode::get(self : ChemdescatompairNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_node_set(s : ChemdescatompairNode, i : Int, v : Double) -> ChemdescatompairNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairNode::set(self : ChemdescatompairNode, i : Int, v : Double) -> ChemdescatompairNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_node_sum(s : ChemdescatompairNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairNode::sum(self : ChemdescatompairNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_node_mean(s : ChemdescatompairNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairNode::mean(self : ChemdescatompairNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_node_scale(s : ChemdescatompairNode, f : Double) -> ChemdescatompairNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairNode::scale(self : ChemdescatompairNode, f : Double) -> ChemdescatompairNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_node_add(a : ChemdescatompairNode, b : ChemdescatompairNode) -> ChemdescatompairNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairNode::add(self : ChemdescatompairNode, other : ChemdescatompairNode) -> ChemdescatompairNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_node_copy(s : ChemdescatompairNode) -> ChemdescatompairNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairNode::copy(self : ChemdescatompairNode) -> ChemdescatompairNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_node_fill(s : ChemdescatompairNode, v : Double) -> ChemdescatompairNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairNode::fill(self : ChemdescatompairNode, v : Double) -> ChemdescatompairNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_node_min(s : ChemdescatompairNode) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairNode::min(self : ChemdescatompairNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_node_max(s : ChemdescatompairNode) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairNode::max(self : ChemdescatompairNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_node_to_string(s : ChemdescatompairNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairNode::to_string(self : ChemdescatompairNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_atompair_edge_make(size : Int) -> ChemdescatompairEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_edge_len(s : ChemdescatompairEdge) -> Int { s.size }
+pub fn ChemdescatompairEdge::len(self : ChemdescatompairEdge) -> Int { self.size }
 
-pub fn chem_desc_atompair_edge_get(s : ChemdescatompairEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairEdge::get(self : ChemdescatompairEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_edge_set(s : ChemdescatompairEdge, i : Int, v : Double) -> ChemdescatompairEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairEdge::set(self : ChemdescatompairEdge, i : Int, v : Double) -> ChemdescatompairEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_edge_sum(s : ChemdescatompairEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairEdge::sum(self : ChemdescatompairEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_edge_mean(s : ChemdescatompairEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairEdge::mean(self : ChemdescatompairEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_edge_scale(s : ChemdescatompairEdge, f : Double) -> ChemdescatompairEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairEdge::scale(self : ChemdescatompairEdge, f : Double) -> ChemdescatompairEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_edge_add(a : ChemdescatompairEdge, b : ChemdescatompairEdge) -> ChemdescatompairEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairEdge::add(self : ChemdescatompairEdge, other : ChemdescatompairEdge) -> ChemdescatompairEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_edge_copy(s : ChemdescatompairEdge) -> ChemdescatompairEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairEdge::copy(self : ChemdescatompairEdge) -> ChemdescatompairEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_edge_fill(s : ChemdescatompairEdge, v : Double) -> ChemdescatompairEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairEdge::fill(self : ChemdescatompairEdge, v : Double) -> ChemdescatompairEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_edge_min(s : ChemdescatompairEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairEdge::min(self : ChemdescatompairEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_edge_max(s : ChemdescatompairEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairEdge::max(self : ChemdescatompairEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_edge_to_string(s : ChemdescatompairEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairEdge::to_string(self : ChemdescatompairEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_atompair_path_make(size : Int) -> ChemdescatompairPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_path_len(s : ChemdescatompairPath) -> Int { s.size }
+pub fn ChemdescatompairPath::len(self : ChemdescatompairPath) -> Int { self.size }
 
-pub fn chem_desc_atompair_path_get(s : ChemdescatompairPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairPath::get(self : ChemdescatompairPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_path_set(s : ChemdescatompairPath, i : Int, v : Double) -> ChemdescatompairPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairPath::set(self : ChemdescatompairPath, i : Int, v : Double) -> ChemdescatompairPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_path_sum(s : ChemdescatompairPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairPath::sum(self : ChemdescatompairPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_path_mean(s : ChemdescatompairPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairPath::mean(self : ChemdescatompairPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_path_scale(s : ChemdescatompairPath, f : Double) -> ChemdescatompairPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairPath::scale(self : ChemdescatompairPath, f : Double) -> ChemdescatompairPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_path_add(a : ChemdescatompairPath, b : ChemdescatompairPath) -> ChemdescatompairPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairPath::add(self : ChemdescatompairPath, other : ChemdescatompairPath) -> ChemdescatompairPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_path_copy(s : ChemdescatompairPath) -> ChemdescatompairPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairPath::copy(self : ChemdescatompairPath) -> ChemdescatompairPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_path_fill(s : ChemdescatompairPath, v : Double) -> ChemdescatompairPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairPath::fill(self : ChemdescatompairPath, v : Double) -> ChemdescatompairPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_path_min(s : ChemdescatompairPath) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairPath::min(self : ChemdescatompairPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_path_max(s : ChemdescatompairPath) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairPath::max(self : ChemdescatompairPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_path_to_string(s : ChemdescatompairPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairPath::to_string(self : ChemdescatompairPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_atompair_cluster_make(size : Int) -> ChemdescatompairCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_cluster_len(s : ChemdescatompairCluster) -> Int { s.size }
+pub fn ChemdescatompairCluster::len(self : ChemdescatompairCluster) -> Int { self.size }
 
-pub fn chem_desc_atompair_cluster_get(s : ChemdescatompairCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairCluster::get(self : ChemdescatompairCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_cluster_set(s : ChemdescatompairCluster, i : Int, v : Double) -> ChemdescatompairCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairCluster::set(self : ChemdescatompairCluster, i : Int, v : Double) -> ChemdescatompairCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cluster_sum(s : ChemdescatompairCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairCluster::sum(self : ChemdescatompairCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_cluster_mean(s : ChemdescatompairCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairCluster::mean(self : ChemdescatompairCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_cluster_scale(s : ChemdescatompairCluster, f : Double) -> ChemdescatompairCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairCluster::scale(self : ChemdescatompairCluster, f : Double) -> ChemdescatompairCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cluster_add(a : ChemdescatompairCluster, b : ChemdescatompairCluster) -> ChemdescatompairCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairCluster::add(self : ChemdescatompairCluster, other : ChemdescatompairCluster) -> ChemdescatompairCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cluster_copy(s : ChemdescatompairCluster) -> ChemdescatompairCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairCluster::copy(self : ChemdescatompairCluster) -> ChemdescatompairCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cluster_fill(s : ChemdescatompairCluster, v : Double) -> ChemdescatompairCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairCluster::fill(self : ChemdescatompairCluster, v : Double) -> ChemdescatompairCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cluster_min(s : ChemdescatompairCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairCluster::min(self : ChemdescatompairCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_cluster_max(s : ChemdescatompairCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairCluster::max(self : ChemdescatompairCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_cluster_to_string(s : ChemdescatompairCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairCluster::to_string(self : ChemdescatompairCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_atompair_model_make(size : Int) -> ChemdescatompairModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_model_len(s : ChemdescatompairModel) -> Int { s.size }
+pub fn ChemdescatompairModel::len(self : ChemdescatompairModel) -> Int { self.size }
 
-pub fn chem_desc_atompair_model_get(s : ChemdescatompairModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairModel::get(self : ChemdescatompairModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_model_set(s : ChemdescatompairModel, i : Int, v : Double) -> ChemdescatompairModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairModel::set(self : ChemdescatompairModel, i : Int, v : Double) -> ChemdescatompairModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_model_sum(s : ChemdescatompairModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairModel::sum(self : ChemdescatompairModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_model_mean(s : ChemdescatompairModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairModel::mean(self : ChemdescatompairModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_model_scale(s : ChemdescatompairModel, f : Double) -> ChemdescatompairModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairModel::scale(self : ChemdescatompairModel, f : Double) -> ChemdescatompairModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_model_add(a : ChemdescatompairModel, b : ChemdescatompairModel) -> ChemdescatompairModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairModel::add(self : ChemdescatompairModel, other : ChemdescatompairModel) -> ChemdescatompairModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_model_copy(s : ChemdescatompairModel) -> ChemdescatompairModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairModel::copy(self : ChemdescatompairModel) -> ChemdescatompairModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_model_fill(s : ChemdescatompairModel, v : Double) -> ChemdescatompairModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairModel::fill(self : ChemdescatompairModel, v : Double) -> ChemdescatompairModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_model_min(s : ChemdescatompairModel) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairModel::min(self : ChemdescatompairModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_model_max(s : ChemdescatompairModel) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairModel::max(self : ChemdescatompairModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_model_to_string(s : ChemdescatompairModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairModel::to_string(self : ChemdescatompairModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_atompair_layer_make(size : Int) -> ChemdescatompairLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_layer_len(s : ChemdescatompairLayer) -> Int { s.size }
+pub fn ChemdescatompairLayer::len(self : ChemdescatompairLayer) -> Int { self.size }
 
-pub fn chem_desc_atompair_layer_get(s : ChemdescatompairLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairLayer::get(self : ChemdescatompairLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_layer_set(s : ChemdescatompairLayer, i : Int, v : Double) -> ChemdescatompairLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairLayer::set(self : ChemdescatompairLayer, i : Int, v : Double) -> ChemdescatompairLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_layer_sum(s : ChemdescatompairLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairLayer::sum(self : ChemdescatompairLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_layer_mean(s : ChemdescatompairLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairLayer::mean(self : ChemdescatompairLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_layer_scale(s : ChemdescatompairLayer, f : Double) -> ChemdescatompairLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairLayer::scale(self : ChemdescatompairLayer, f : Double) -> ChemdescatompairLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_layer_add(a : ChemdescatompairLayer, b : ChemdescatompairLayer) -> ChemdescatompairLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairLayer::add(self : ChemdescatompairLayer, other : ChemdescatompairLayer) -> ChemdescatompairLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_layer_copy(s : ChemdescatompairLayer) -> ChemdescatompairLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairLayer::copy(self : ChemdescatompairLayer) -> ChemdescatompairLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_layer_fill(s : ChemdescatompairLayer, v : Double) -> ChemdescatompairLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairLayer::fill(self : ChemdescatompairLayer, v : Double) -> ChemdescatompairLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_layer_min(s : ChemdescatompairLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairLayer::min(self : ChemdescatompairLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_layer_max(s : ChemdescatompairLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairLayer::max(self : ChemdescatompairLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_layer_to_string(s : ChemdescatompairLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairLayer::to_string(self : ChemdescatompairLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_atompair_buffer_make(size : Int) -> ChemdescatompairBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_buffer_len(s : ChemdescatompairBuffer) -> Int { s.size }
+pub fn ChemdescatompairBuffer::len(self : ChemdescatompairBuffer) -> Int { self.size }
 
-pub fn chem_desc_atompair_buffer_get(s : ChemdescatompairBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairBuffer::get(self : ChemdescatompairBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_buffer_set(s : ChemdescatompairBuffer, i : Int, v : Double) -> ChemdescatompairBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairBuffer::set(self : ChemdescatompairBuffer, i : Int, v : Double) -> ChemdescatompairBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_buffer_sum(s : ChemdescatompairBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairBuffer::sum(self : ChemdescatompairBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_buffer_mean(s : ChemdescatompairBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairBuffer::mean(self : ChemdescatompairBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_buffer_scale(s : ChemdescatompairBuffer, f : Double) -> ChemdescatompairBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairBuffer::scale(self : ChemdescatompairBuffer, f : Double) -> ChemdescatompairBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_buffer_add(a : ChemdescatompairBuffer, b : ChemdescatompairBuffer) -> ChemdescatompairBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairBuffer::add(self : ChemdescatompairBuffer, other : ChemdescatompairBuffer) -> ChemdescatompairBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_buffer_copy(s : ChemdescatompairBuffer) -> ChemdescatompairBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairBuffer::copy(self : ChemdescatompairBuffer) -> ChemdescatompairBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_buffer_fill(s : ChemdescatompairBuffer, v : Double) -> ChemdescatompairBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairBuffer::fill(self : ChemdescatompairBuffer, v : Double) -> ChemdescatompairBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_buffer_min(s : ChemdescatompairBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairBuffer::min(self : ChemdescatompairBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_buffer_max(s : ChemdescatompairBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairBuffer::max(self : ChemdescatompairBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_buffer_to_string(s : ChemdescatompairBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairBuffer::to_string(self : ChemdescatompairBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_atompair_cursor_make(size : Int) -> ChemdescatompairCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_cursor_len(s : ChemdescatompairCursor) -> Int { s.size }
+pub fn ChemdescatompairCursor::len(self : ChemdescatompairCursor) -> Int { self.size }
 
-pub fn chem_desc_atompair_cursor_get(s : ChemdescatompairCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairCursor::get(self : ChemdescatompairCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_cursor_set(s : ChemdescatompairCursor, i : Int, v : Double) -> ChemdescatompairCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairCursor::set(self : ChemdescatompairCursor, i : Int, v : Double) -> ChemdescatompairCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cursor_sum(s : ChemdescatompairCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairCursor::sum(self : ChemdescatompairCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_cursor_mean(s : ChemdescatompairCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairCursor::mean(self : ChemdescatompairCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_cursor_scale(s : ChemdescatompairCursor, f : Double) -> ChemdescatompairCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairCursor::scale(self : ChemdescatompairCursor, f : Double) -> ChemdescatompairCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cursor_add(a : ChemdescatompairCursor, b : ChemdescatompairCursor) -> ChemdescatompairCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairCursor::add(self : ChemdescatompairCursor, other : ChemdescatompairCursor) -> ChemdescatompairCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cursor_copy(s : ChemdescatompairCursor) -> ChemdescatompairCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairCursor::copy(self : ChemdescatompairCursor) -> ChemdescatompairCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cursor_fill(s : ChemdescatompairCursor, v : Double) -> ChemdescatompairCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairCursor::fill(self : ChemdescatompairCursor, v : Double) -> ChemdescatompairCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_cursor_min(s : ChemdescatompairCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairCursor::min(self : ChemdescatompairCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_cursor_max(s : ChemdescatompairCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairCursor::max(self : ChemdescatompairCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_cursor_to_string(s : ChemdescatompairCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairCursor::to_string(self : ChemdescatompairCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairView {
@@ -912,45 +912,45 @@ pub fn chem_desc_atompair_view_make(size : Int) -> ChemdescatompairView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_view_len(s : ChemdescatompairView) -> Int { s.size }
+pub fn ChemdescatompairView::len(self : ChemdescatompairView) -> Int { self.size }
 
-pub fn chem_desc_atompair_view_get(s : ChemdescatompairView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairView::get(self : ChemdescatompairView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_view_set(s : ChemdescatompairView, i : Int, v : Double) -> ChemdescatompairView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairView::set(self : ChemdescatompairView, i : Int, v : Double) -> ChemdescatompairView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_view_sum(s : ChemdescatompairView) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairView::sum(self : ChemdescatompairView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_view_mean(s : ChemdescatompairView) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairView::mean(self : ChemdescatompairView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_view_scale(s : ChemdescatompairView, f : Double) -> ChemdescatompairView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairView::scale(self : ChemdescatompairView, f : Double) -> ChemdescatompairView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_view_add(a : ChemdescatompairView, b : ChemdescatompairView) -> ChemdescatompairView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairView::add(self : ChemdescatompairView, other : ChemdescatompairView) -> ChemdescatompairView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_view_copy(s : ChemdescatompairView) -> ChemdescatompairView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairView::copy(self : ChemdescatompairView) -> ChemdescatompairView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_view_fill(s : ChemdescatompairView, v : Double) -> ChemdescatompairView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairView::fill(self : ChemdescatompairView, v : Double) -> ChemdescatompairView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_view_min(s : ChemdescatompairView) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairView::min(self : ChemdescatompairView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_view_max(s : ChemdescatompairView) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairView::max(self : ChemdescatompairView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_view_to_string(s : ChemdescatompairView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairView::to_string(self : ChemdescatompairView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_atompair_range_make(size : Int) -> ChemdescatompairRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_range_len(s : ChemdescatompairRange) -> Int { s.size }
+pub fn ChemdescatompairRange::len(self : ChemdescatompairRange) -> Int { self.size }
 
-pub fn chem_desc_atompair_range_get(s : ChemdescatompairRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairRange::get(self : ChemdescatompairRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_range_set(s : ChemdescatompairRange, i : Int, v : Double) -> ChemdescatompairRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairRange::set(self : ChemdescatompairRange, i : Int, v : Double) -> ChemdescatompairRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_range_sum(s : ChemdescatompairRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairRange::sum(self : ChemdescatompairRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_range_mean(s : ChemdescatompairRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairRange::mean(self : ChemdescatompairRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_range_scale(s : ChemdescatompairRange, f : Double) -> ChemdescatompairRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairRange::scale(self : ChemdescatompairRange, f : Double) -> ChemdescatompairRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_range_add(a : ChemdescatompairRange, b : ChemdescatompairRange) -> ChemdescatompairRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairRange::add(self : ChemdescatompairRange, other : ChemdescatompairRange) -> ChemdescatompairRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_range_copy(s : ChemdescatompairRange) -> ChemdescatompairRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairRange::copy(self : ChemdescatompairRange) -> ChemdescatompairRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_range_fill(s : ChemdescatompairRange, v : Double) -> ChemdescatompairRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairRange::fill(self : ChemdescatompairRange, v : Double) -> ChemdescatompairRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_range_min(s : ChemdescatompairRange) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairRange::min(self : ChemdescatompairRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_range_max(s : ChemdescatompairRange) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairRange::max(self : ChemdescatompairRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_range_to_string(s : ChemdescatompairRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairRange::to_string(self : ChemdescatompairRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdescatompairSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_atompair_slice_make(size : Int) -> ChemdescatompairSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_atompair_slice_len(s : ChemdescatompairSlice) -> Int { s.size }
+pub fn ChemdescatompairSlice::len(self : ChemdescatompairSlice) -> Int { self.size }
 
-pub fn chem_desc_atompair_slice_get(s : ChemdescatompairSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdescatompairSlice::get(self : ChemdescatompairSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_atompair_slice_set(s : ChemdescatompairSlice, i : Int, v : Double) -> ChemdescatompairSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdescatompairSlice::set(self : ChemdescatompairSlice, i : Int, v : Double) -> ChemdescatompairSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_slice_sum(s : ChemdescatompairSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdescatompairSlice::sum(self : ChemdescatompairSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_atompair_slice_mean(s : ChemdescatompairSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdescatompairSlice::mean(self : ChemdescatompairSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_atompair_slice_scale(s : ChemdescatompairSlice, f : Double) -> ChemdescatompairSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdescatompairSlice::scale(self : ChemdescatompairSlice, f : Double) -> ChemdescatompairSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_slice_add(a : ChemdescatompairSlice, b : ChemdescatompairSlice) -> ChemdescatompairSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdescatompairSlice::add(self : ChemdescatompairSlice, other : ChemdescatompairSlice) -> ChemdescatompairSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_slice_copy(s : ChemdescatompairSlice) -> ChemdescatompairSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdescatompairSlice::copy(self : ChemdescatompairSlice) -> ChemdescatompairSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_slice_fill(s : ChemdescatompairSlice, v : Double) -> ChemdescatompairSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdescatompairSlice::fill(self : ChemdescatompairSlice, v : Double) -> ChemdescatompairSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_atompair_slice_min(s : ChemdescatompairSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdescatompairSlice::min(self : ChemdescatompairSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_atompair_slice_max(s : ChemdescatompairSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdescatompairSlice::max(self : ChemdescatompairSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_atompair_slice_to_string(s : ChemdescatompairSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdescatompairSlice::to_string(self : ChemdescatompairSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

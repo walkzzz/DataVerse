@@ -351,45 +351,45 @@ pub fn db_index_invert_frame_make(size : Int) -> DbindexinvertFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_frame_len(s : DbindexinvertFrame) -> Int { s.size }
+pub fn DbindexinvertFrame::len(self : DbindexinvertFrame) -> Int { self.size }
 
-pub fn db_index_invert_frame_get(s : DbindexinvertFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertFrame::get(self : DbindexinvertFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_frame_set(s : DbindexinvertFrame, i : Int, v : Double) -> DbindexinvertFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertFrame::set(self : DbindexinvertFrame, i : Int, v : Double) -> DbindexinvertFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_frame_sum(s : DbindexinvertFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertFrame::sum(self : DbindexinvertFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_frame_mean(s : DbindexinvertFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertFrame::mean(self : DbindexinvertFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_frame_scale(s : DbindexinvertFrame, f : Double) -> DbindexinvertFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertFrame::scale(self : DbindexinvertFrame, f : Double) -> DbindexinvertFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_frame_add(a : DbindexinvertFrame, b : DbindexinvertFrame) -> DbindexinvertFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertFrame::add(self : DbindexinvertFrame, other : DbindexinvertFrame) -> DbindexinvertFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_frame_copy(s : DbindexinvertFrame) -> DbindexinvertFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertFrame::copy(self : DbindexinvertFrame) -> DbindexinvertFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_frame_fill(s : DbindexinvertFrame, v : Double) -> DbindexinvertFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertFrame::fill(self : DbindexinvertFrame, v : Double) -> DbindexinvertFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_frame_min(s : DbindexinvertFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertFrame::min(self : DbindexinvertFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_frame_max(s : DbindexinvertFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertFrame::max(self : DbindexinvertFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_frame_to_string(s : DbindexinvertFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertFrame::to_string(self : DbindexinvertFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertTable {
@@ -402,45 +402,45 @@ pub fn db_index_invert_table_make(size : Int) -> DbindexinvertTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_table_len(s : DbindexinvertTable) -> Int { s.size }
+pub fn DbindexinvertTable::len(self : DbindexinvertTable) -> Int { self.size }
 
-pub fn db_index_invert_table_get(s : DbindexinvertTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertTable::get(self : DbindexinvertTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_table_set(s : DbindexinvertTable, i : Int, v : Double) -> DbindexinvertTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertTable::set(self : DbindexinvertTable, i : Int, v : Double) -> DbindexinvertTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_table_sum(s : DbindexinvertTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertTable::sum(self : DbindexinvertTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_table_mean(s : DbindexinvertTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertTable::mean(self : DbindexinvertTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_table_scale(s : DbindexinvertTable, f : Double) -> DbindexinvertTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertTable::scale(self : DbindexinvertTable, f : Double) -> DbindexinvertTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_table_add(a : DbindexinvertTable, b : DbindexinvertTable) -> DbindexinvertTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertTable::add(self : DbindexinvertTable, other : DbindexinvertTable) -> DbindexinvertTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_table_copy(s : DbindexinvertTable) -> DbindexinvertTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertTable::copy(self : DbindexinvertTable) -> DbindexinvertTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_table_fill(s : DbindexinvertTable, v : Double) -> DbindexinvertTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertTable::fill(self : DbindexinvertTable, v : Double) -> DbindexinvertTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_table_min(s : DbindexinvertTable) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertTable::min(self : DbindexinvertTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_table_max(s : DbindexinvertTable) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertTable::max(self : DbindexinvertTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_table_to_string(s : DbindexinvertTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertTable::to_string(self : DbindexinvertTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_invert_graphn_make(size : Int) -> DbindexinvertGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_graphn_len(s : DbindexinvertGraphN) -> Int { s.size }
+pub fn DbindexinvertGraphN::len(self : DbindexinvertGraphN) -> Int { self.size }
 
-pub fn db_index_invert_graphn_get(s : DbindexinvertGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertGraphN::get(self : DbindexinvertGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_graphn_set(s : DbindexinvertGraphN, i : Int, v : Double) -> DbindexinvertGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertGraphN::set(self : DbindexinvertGraphN, i : Int, v : Double) -> DbindexinvertGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_graphn_sum(s : DbindexinvertGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertGraphN::sum(self : DbindexinvertGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_graphn_mean(s : DbindexinvertGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertGraphN::mean(self : DbindexinvertGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_graphn_scale(s : DbindexinvertGraphN, f : Double) -> DbindexinvertGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertGraphN::scale(self : DbindexinvertGraphN, f : Double) -> DbindexinvertGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_graphn_add(a : DbindexinvertGraphN, b : DbindexinvertGraphN) -> DbindexinvertGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertGraphN::add(self : DbindexinvertGraphN, other : DbindexinvertGraphN) -> DbindexinvertGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_graphn_copy(s : DbindexinvertGraphN) -> DbindexinvertGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertGraphN::copy(self : DbindexinvertGraphN) -> DbindexinvertGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_graphn_fill(s : DbindexinvertGraphN, v : Double) -> DbindexinvertGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertGraphN::fill(self : DbindexinvertGraphN, v : Double) -> DbindexinvertGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_graphn_min(s : DbindexinvertGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertGraphN::min(self : DbindexinvertGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_graphn_max(s : DbindexinvertGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertGraphN::max(self : DbindexinvertGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_graphn_to_string(s : DbindexinvertGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertGraphN::to_string(self : DbindexinvertGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertNode {
@@ -504,45 +504,45 @@ pub fn db_index_invert_node_make(size : Int) -> DbindexinvertNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_node_len(s : DbindexinvertNode) -> Int { s.size }
+pub fn DbindexinvertNode::len(self : DbindexinvertNode) -> Int { self.size }
 
-pub fn db_index_invert_node_get(s : DbindexinvertNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertNode::get(self : DbindexinvertNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_node_set(s : DbindexinvertNode, i : Int, v : Double) -> DbindexinvertNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertNode::set(self : DbindexinvertNode, i : Int, v : Double) -> DbindexinvertNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_node_sum(s : DbindexinvertNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertNode::sum(self : DbindexinvertNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_node_mean(s : DbindexinvertNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertNode::mean(self : DbindexinvertNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_node_scale(s : DbindexinvertNode, f : Double) -> DbindexinvertNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertNode::scale(self : DbindexinvertNode, f : Double) -> DbindexinvertNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_node_add(a : DbindexinvertNode, b : DbindexinvertNode) -> DbindexinvertNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertNode::add(self : DbindexinvertNode, other : DbindexinvertNode) -> DbindexinvertNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_node_copy(s : DbindexinvertNode) -> DbindexinvertNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertNode::copy(self : DbindexinvertNode) -> DbindexinvertNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_node_fill(s : DbindexinvertNode, v : Double) -> DbindexinvertNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertNode::fill(self : DbindexinvertNode, v : Double) -> DbindexinvertNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_node_min(s : DbindexinvertNode) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertNode::min(self : DbindexinvertNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_node_max(s : DbindexinvertNode) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertNode::max(self : DbindexinvertNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_node_to_string(s : DbindexinvertNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertNode::to_string(self : DbindexinvertNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertEdge {
@@ -555,45 +555,45 @@ pub fn db_index_invert_edge_make(size : Int) -> DbindexinvertEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_edge_len(s : DbindexinvertEdge) -> Int { s.size }
+pub fn DbindexinvertEdge::len(self : DbindexinvertEdge) -> Int { self.size }
 
-pub fn db_index_invert_edge_get(s : DbindexinvertEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertEdge::get(self : DbindexinvertEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_edge_set(s : DbindexinvertEdge, i : Int, v : Double) -> DbindexinvertEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertEdge::set(self : DbindexinvertEdge, i : Int, v : Double) -> DbindexinvertEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_edge_sum(s : DbindexinvertEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertEdge::sum(self : DbindexinvertEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_edge_mean(s : DbindexinvertEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertEdge::mean(self : DbindexinvertEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_edge_scale(s : DbindexinvertEdge, f : Double) -> DbindexinvertEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertEdge::scale(self : DbindexinvertEdge, f : Double) -> DbindexinvertEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_edge_add(a : DbindexinvertEdge, b : DbindexinvertEdge) -> DbindexinvertEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertEdge::add(self : DbindexinvertEdge, other : DbindexinvertEdge) -> DbindexinvertEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_edge_copy(s : DbindexinvertEdge) -> DbindexinvertEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertEdge::copy(self : DbindexinvertEdge) -> DbindexinvertEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_edge_fill(s : DbindexinvertEdge, v : Double) -> DbindexinvertEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertEdge::fill(self : DbindexinvertEdge, v : Double) -> DbindexinvertEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_edge_min(s : DbindexinvertEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertEdge::min(self : DbindexinvertEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_edge_max(s : DbindexinvertEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertEdge::max(self : DbindexinvertEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_edge_to_string(s : DbindexinvertEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertEdge::to_string(self : DbindexinvertEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertPath {
@@ -606,45 +606,45 @@ pub fn db_index_invert_path_make(size : Int) -> DbindexinvertPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_path_len(s : DbindexinvertPath) -> Int { s.size }
+pub fn DbindexinvertPath::len(self : DbindexinvertPath) -> Int { self.size }
 
-pub fn db_index_invert_path_get(s : DbindexinvertPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertPath::get(self : DbindexinvertPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_path_set(s : DbindexinvertPath, i : Int, v : Double) -> DbindexinvertPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertPath::set(self : DbindexinvertPath, i : Int, v : Double) -> DbindexinvertPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_path_sum(s : DbindexinvertPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertPath::sum(self : DbindexinvertPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_path_mean(s : DbindexinvertPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertPath::mean(self : DbindexinvertPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_path_scale(s : DbindexinvertPath, f : Double) -> DbindexinvertPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertPath::scale(self : DbindexinvertPath, f : Double) -> DbindexinvertPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_path_add(a : DbindexinvertPath, b : DbindexinvertPath) -> DbindexinvertPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertPath::add(self : DbindexinvertPath, other : DbindexinvertPath) -> DbindexinvertPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_path_copy(s : DbindexinvertPath) -> DbindexinvertPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertPath::copy(self : DbindexinvertPath) -> DbindexinvertPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_path_fill(s : DbindexinvertPath, v : Double) -> DbindexinvertPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertPath::fill(self : DbindexinvertPath, v : Double) -> DbindexinvertPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_path_min(s : DbindexinvertPath) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertPath::min(self : DbindexinvertPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_path_max(s : DbindexinvertPath) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertPath::max(self : DbindexinvertPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_path_to_string(s : DbindexinvertPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertPath::to_string(self : DbindexinvertPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertCluster {
@@ -657,45 +657,45 @@ pub fn db_index_invert_cluster_make(size : Int) -> DbindexinvertCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_cluster_len(s : DbindexinvertCluster) -> Int { s.size }
+pub fn DbindexinvertCluster::len(self : DbindexinvertCluster) -> Int { self.size }
 
-pub fn db_index_invert_cluster_get(s : DbindexinvertCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertCluster::get(self : DbindexinvertCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_cluster_set(s : DbindexinvertCluster, i : Int, v : Double) -> DbindexinvertCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertCluster::set(self : DbindexinvertCluster, i : Int, v : Double) -> DbindexinvertCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cluster_sum(s : DbindexinvertCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertCluster::sum(self : DbindexinvertCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_cluster_mean(s : DbindexinvertCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertCluster::mean(self : DbindexinvertCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_cluster_scale(s : DbindexinvertCluster, f : Double) -> DbindexinvertCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertCluster::scale(self : DbindexinvertCluster, f : Double) -> DbindexinvertCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cluster_add(a : DbindexinvertCluster, b : DbindexinvertCluster) -> DbindexinvertCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertCluster::add(self : DbindexinvertCluster, other : DbindexinvertCluster) -> DbindexinvertCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_cluster_copy(s : DbindexinvertCluster) -> DbindexinvertCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertCluster::copy(self : DbindexinvertCluster) -> DbindexinvertCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cluster_fill(s : DbindexinvertCluster, v : Double) -> DbindexinvertCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertCluster::fill(self : DbindexinvertCluster, v : Double) -> DbindexinvertCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cluster_min(s : DbindexinvertCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertCluster::min(self : DbindexinvertCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_cluster_max(s : DbindexinvertCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertCluster::max(self : DbindexinvertCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_cluster_to_string(s : DbindexinvertCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertCluster::to_string(self : DbindexinvertCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertModel {
@@ -708,45 +708,45 @@ pub fn db_index_invert_model_make(size : Int) -> DbindexinvertModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_model_len(s : DbindexinvertModel) -> Int { s.size }
+pub fn DbindexinvertModel::len(self : DbindexinvertModel) -> Int { self.size }
 
-pub fn db_index_invert_model_get(s : DbindexinvertModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertModel::get(self : DbindexinvertModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_model_set(s : DbindexinvertModel, i : Int, v : Double) -> DbindexinvertModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertModel::set(self : DbindexinvertModel, i : Int, v : Double) -> DbindexinvertModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_model_sum(s : DbindexinvertModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertModel::sum(self : DbindexinvertModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_model_mean(s : DbindexinvertModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertModel::mean(self : DbindexinvertModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_model_scale(s : DbindexinvertModel, f : Double) -> DbindexinvertModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertModel::scale(self : DbindexinvertModel, f : Double) -> DbindexinvertModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_model_add(a : DbindexinvertModel, b : DbindexinvertModel) -> DbindexinvertModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertModel::add(self : DbindexinvertModel, other : DbindexinvertModel) -> DbindexinvertModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_model_copy(s : DbindexinvertModel) -> DbindexinvertModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertModel::copy(self : DbindexinvertModel) -> DbindexinvertModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_model_fill(s : DbindexinvertModel, v : Double) -> DbindexinvertModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertModel::fill(self : DbindexinvertModel, v : Double) -> DbindexinvertModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_model_min(s : DbindexinvertModel) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertModel::min(self : DbindexinvertModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_model_max(s : DbindexinvertModel) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertModel::max(self : DbindexinvertModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_model_to_string(s : DbindexinvertModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertModel::to_string(self : DbindexinvertModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertLayer {
@@ -759,45 +759,45 @@ pub fn db_index_invert_layer_make(size : Int) -> DbindexinvertLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_layer_len(s : DbindexinvertLayer) -> Int { s.size }
+pub fn DbindexinvertLayer::len(self : DbindexinvertLayer) -> Int { self.size }
 
-pub fn db_index_invert_layer_get(s : DbindexinvertLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertLayer::get(self : DbindexinvertLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_layer_set(s : DbindexinvertLayer, i : Int, v : Double) -> DbindexinvertLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertLayer::set(self : DbindexinvertLayer, i : Int, v : Double) -> DbindexinvertLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_layer_sum(s : DbindexinvertLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertLayer::sum(self : DbindexinvertLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_layer_mean(s : DbindexinvertLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertLayer::mean(self : DbindexinvertLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_layer_scale(s : DbindexinvertLayer, f : Double) -> DbindexinvertLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertLayer::scale(self : DbindexinvertLayer, f : Double) -> DbindexinvertLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_layer_add(a : DbindexinvertLayer, b : DbindexinvertLayer) -> DbindexinvertLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertLayer::add(self : DbindexinvertLayer, other : DbindexinvertLayer) -> DbindexinvertLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_layer_copy(s : DbindexinvertLayer) -> DbindexinvertLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertLayer::copy(self : DbindexinvertLayer) -> DbindexinvertLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_layer_fill(s : DbindexinvertLayer, v : Double) -> DbindexinvertLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertLayer::fill(self : DbindexinvertLayer, v : Double) -> DbindexinvertLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_layer_min(s : DbindexinvertLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertLayer::min(self : DbindexinvertLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_layer_max(s : DbindexinvertLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertLayer::max(self : DbindexinvertLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_layer_to_string(s : DbindexinvertLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertLayer::to_string(self : DbindexinvertLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_invert_buffer_make(size : Int) -> DbindexinvertBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_buffer_len(s : DbindexinvertBuffer) -> Int { s.size }
+pub fn DbindexinvertBuffer::len(self : DbindexinvertBuffer) -> Int { self.size }
 
-pub fn db_index_invert_buffer_get(s : DbindexinvertBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertBuffer::get(self : DbindexinvertBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_buffer_set(s : DbindexinvertBuffer, i : Int, v : Double) -> DbindexinvertBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertBuffer::set(self : DbindexinvertBuffer, i : Int, v : Double) -> DbindexinvertBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_buffer_sum(s : DbindexinvertBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertBuffer::sum(self : DbindexinvertBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_buffer_mean(s : DbindexinvertBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertBuffer::mean(self : DbindexinvertBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_buffer_scale(s : DbindexinvertBuffer, f : Double) -> DbindexinvertBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertBuffer::scale(self : DbindexinvertBuffer, f : Double) -> DbindexinvertBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_buffer_add(a : DbindexinvertBuffer, b : DbindexinvertBuffer) -> DbindexinvertBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertBuffer::add(self : DbindexinvertBuffer, other : DbindexinvertBuffer) -> DbindexinvertBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_buffer_copy(s : DbindexinvertBuffer) -> DbindexinvertBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertBuffer::copy(self : DbindexinvertBuffer) -> DbindexinvertBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_buffer_fill(s : DbindexinvertBuffer, v : Double) -> DbindexinvertBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertBuffer::fill(self : DbindexinvertBuffer, v : Double) -> DbindexinvertBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_buffer_min(s : DbindexinvertBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertBuffer::min(self : DbindexinvertBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_buffer_max(s : DbindexinvertBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertBuffer::max(self : DbindexinvertBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_buffer_to_string(s : DbindexinvertBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertBuffer::to_string(self : DbindexinvertBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertCursor {
@@ -861,45 +861,45 @@ pub fn db_index_invert_cursor_make(size : Int) -> DbindexinvertCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_cursor_len(s : DbindexinvertCursor) -> Int { s.size }
+pub fn DbindexinvertCursor::len(self : DbindexinvertCursor) -> Int { self.size }
 
-pub fn db_index_invert_cursor_get(s : DbindexinvertCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertCursor::get(self : DbindexinvertCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_cursor_set(s : DbindexinvertCursor, i : Int, v : Double) -> DbindexinvertCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertCursor::set(self : DbindexinvertCursor, i : Int, v : Double) -> DbindexinvertCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cursor_sum(s : DbindexinvertCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertCursor::sum(self : DbindexinvertCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_cursor_mean(s : DbindexinvertCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertCursor::mean(self : DbindexinvertCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_cursor_scale(s : DbindexinvertCursor, f : Double) -> DbindexinvertCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertCursor::scale(self : DbindexinvertCursor, f : Double) -> DbindexinvertCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cursor_add(a : DbindexinvertCursor, b : DbindexinvertCursor) -> DbindexinvertCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertCursor::add(self : DbindexinvertCursor, other : DbindexinvertCursor) -> DbindexinvertCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_cursor_copy(s : DbindexinvertCursor) -> DbindexinvertCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertCursor::copy(self : DbindexinvertCursor) -> DbindexinvertCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cursor_fill(s : DbindexinvertCursor, v : Double) -> DbindexinvertCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertCursor::fill(self : DbindexinvertCursor, v : Double) -> DbindexinvertCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_cursor_min(s : DbindexinvertCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertCursor::min(self : DbindexinvertCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_cursor_max(s : DbindexinvertCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertCursor::max(self : DbindexinvertCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_cursor_to_string(s : DbindexinvertCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertCursor::to_string(self : DbindexinvertCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertView {
@@ -912,45 +912,45 @@ pub fn db_index_invert_view_make(size : Int) -> DbindexinvertView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_view_len(s : DbindexinvertView) -> Int { s.size }
+pub fn DbindexinvertView::len(self : DbindexinvertView) -> Int { self.size }
 
-pub fn db_index_invert_view_get(s : DbindexinvertView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertView::get(self : DbindexinvertView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_view_set(s : DbindexinvertView, i : Int, v : Double) -> DbindexinvertView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertView::set(self : DbindexinvertView, i : Int, v : Double) -> DbindexinvertView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_view_sum(s : DbindexinvertView) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertView::sum(self : DbindexinvertView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_view_mean(s : DbindexinvertView) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertView::mean(self : DbindexinvertView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_view_scale(s : DbindexinvertView, f : Double) -> DbindexinvertView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertView::scale(self : DbindexinvertView, f : Double) -> DbindexinvertView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_view_add(a : DbindexinvertView, b : DbindexinvertView) -> DbindexinvertView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertView::add(self : DbindexinvertView, other : DbindexinvertView) -> DbindexinvertView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_view_copy(s : DbindexinvertView) -> DbindexinvertView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertView::copy(self : DbindexinvertView) -> DbindexinvertView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_view_fill(s : DbindexinvertView, v : Double) -> DbindexinvertView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertView::fill(self : DbindexinvertView, v : Double) -> DbindexinvertView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_view_min(s : DbindexinvertView) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertView::min(self : DbindexinvertView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_view_max(s : DbindexinvertView) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertView::max(self : DbindexinvertView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_view_to_string(s : DbindexinvertView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertView::to_string(self : DbindexinvertView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertRange {
@@ -963,45 +963,45 @@ pub fn db_index_invert_range_make(size : Int) -> DbindexinvertRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_range_len(s : DbindexinvertRange) -> Int { s.size }
+pub fn DbindexinvertRange::len(self : DbindexinvertRange) -> Int { self.size }
 
-pub fn db_index_invert_range_get(s : DbindexinvertRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertRange::get(self : DbindexinvertRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_range_set(s : DbindexinvertRange, i : Int, v : Double) -> DbindexinvertRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertRange::set(self : DbindexinvertRange, i : Int, v : Double) -> DbindexinvertRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_range_sum(s : DbindexinvertRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertRange::sum(self : DbindexinvertRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_range_mean(s : DbindexinvertRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertRange::mean(self : DbindexinvertRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_range_scale(s : DbindexinvertRange, f : Double) -> DbindexinvertRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertRange::scale(self : DbindexinvertRange, f : Double) -> DbindexinvertRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_range_add(a : DbindexinvertRange, b : DbindexinvertRange) -> DbindexinvertRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertRange::add(self : DbindexinvertRange, other : DbindexinvertRange) -> DbindexinvertRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_range_copy(s : DbindexinvertRange) -> DbindexinvertRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertRange::copy(self : DbindexinvertRange) -> DbindexinvertRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_range_fill(s : DbindexinvertRange, v : Double) -> DbindexinvertRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertRange::fill(self : DbindexinvertRange, v : Double) -> DbindexinvertRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_range_min(s : DbindexinvertRange) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertRange::min(self : DbindexinvertRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_range_max(s : DbindexinvertRange) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertRange::max(self : DbindexinvertRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_range_to_string(s : DbindexinvertRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertRange::to_string(self : DbindexinvertRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexinvertSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_invert_slice_make(size : Int) -> DbindexinvertSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_invert_slice_len(s : DbindexinvertSlice) -> Int { s.size }
+pub fn DbindexinvertSlice::len(self : DbindexinvertSlice) -> Int { self.size }
 
-pub fn db_index_invert_slice_get(s : DbindexinvertSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexinvertSlice::get(self : DbindexinvertSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_invert_slice_set(s : DbindexinvertSlice, i : Int, v : Double) -> DbindexinvertSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexinvertSlice::set(self : DbindexinvertSlice, i : Int, v : Double) -> DbindexinvertSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_slice_sum(s : DbindexinvertSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexinvertSlice::sum(self : DbindexinvertSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_invert_slice_mean(s : DbindexinvertSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexinvertSlice::mean(self : DbindexinvertSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_invert_slice_scale(s : DbindexinvertSlice, f : Double) -> DbindexinvertSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexinvertSlice::scale(self : DbindexinvertSlice, f : Double) -> DbindexinvertSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_slice_add(a : DbindexinvertSlice, b : DbindexinvertSlice) -> DbindexinvertSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexinvertSlice::add(self : DbindexinvertSlice, other : DbindexinvertSlice) -> DbindexinvertSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_invert_slice_copy(s : DbindexinvertSlice) -> DbindexinvertSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexinvertSlice::copy(self : DbindexinvertSlice) -> DbindexinvertSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_slice_fill(s : DbindexinvertSlice, v : Double) -> DbindexinvertSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexinvertSlice::fill(self : DbindexinvertSlice, v : Double) -> DbindexinvertSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_invert_slice_min(s : DbindexinvertSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexinvertSlice::min(self : DbindexinvertSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_invert_slice_max(s : DbindexinvertSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexinvertSlice::max(self : DbindexinvertSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_invert_slice_to_string(s : DbindexinvertSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexinvertSlice::to_string(self : DbindexinvertSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

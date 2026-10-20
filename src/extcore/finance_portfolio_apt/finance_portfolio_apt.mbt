@@ -351,45 +351,45 @@ pub fn finance_portfolio_apt_frame_make(size : Int) -> FinanceportfolioaptFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_frame_len(s : FinanceportfolioaptFrame) -> Int { s.size }
+pub fn FinanceportfolioaptFrame::len(self : FinanceportfolioaptFrame) -> Int { self.size }
 
-pub fn finance_portfolio_apt_frame_get(s : FinanceportfolioaptFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptFrame::get(self : FinanceportfolioaptFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_frame_set(s : FinanceportfolioaptFrame, i : Int, v : Double) -> FinanceportfolioaptFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptFrame::set(self : FinanceportfolioaptFrame, i : Int, v : Double) -> FinanceportfolioaptFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_frame_sum(s : FinanceportfolioaptFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptFrame::sum(self : FinanceportfolioaptFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_frame_mean(s : FinanceportfolioaptFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptFrame::mean(self : FinanceportfolioaptFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_frame_scale(s : FinanceportfolioaptFrame, f : Double) -> FinanceportfolioaptFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptFrame::scale(self : FinanceportfolioaptFrame, f : Double) -> FinanceportfolioaptFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_frame_add(a : FinanceportfolioaptFrame, b : FinanceportfolioaptFrame) -> FinanceportfolioaptFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptFrame::add(self : FinanceportfolioaptFrame, other : FinanceportfolioaptFrame) -> FinanceportfolioaptFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_frame_copy(s : FinanceportfolioaptFrame) -> FinanceportfolioaptFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptFrame::copy(self : FinanceportfolioaptFrame) -> FinanceportfolioaptFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_frame_fill(s : FinanceportfolioaptFrame, v : Double) -> FinanceportfolioaptFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptFrame::fill(self : FinanceportfolioaptFrame, v : Double) -> FinanceportfolioaptFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_frame_min(s : FinanceportfolioaptFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptFrame::min(self : FinanceportfolioaptFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_frame_max(s : FinanceportfolioaptFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptFrame::max(self : FinanceportfolioaptFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_frame_to_string(s : FinanceportfolioaptFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptFrame::to_string(self : FinanceportfolioaptFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptTable {
@@ -402,45 +402,45 @@ pub fn finance_portfolio_apt_table_make(size : Int) -> FinanceportfolioaptTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_table_len(s : FinanceportfolioaptTable) -> Int { s.size }
+pub fn FinanceportfolioaptTable::len(self : FinanceportfolioaptTable) -> Int { self.size }
 
-pub fn finance_portfolio_apt_table_get(s : FinanceportfolioaptTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptTable::get(self : FinanceportfolioaptTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_table_set(s : FinanceportfolioaptTable, i : Int, v : Double) -> FinanceportfolioaptTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptTable::set(self : FinanceportfolioaptTable, i : Int, v : Double) -> FinanceportfolioaptTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_table_sum(s : FinanceportfolioaptTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptTable::sum(self : FinanceportfolioaptTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_table_mean(s : FinanceportfolioaptTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptTable::mean(self : FinanceportfolioaptTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_table_scale(s : FinanceportfolioaptTable, f : Double) -> FinanceportfolioaptTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptTable::scale(self : FinanceportfolioaptTable, f : Double) -> FinanceportfolioaptTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_table_add(a : FinanceportfolioaptTable, b : FinanceportfolioaptTable) -> FinanceportfolioaptTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptTable::add(self : FinanceportfolioaptTable, other : FinanceportfolioaptTable) -> FinanceportfolioaptTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_table_copy(s : FinanceportfolioaptTable) -> FinanceportfolioaptTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptTable::copy(self : FinanceportfolioaptTable) -> FinanceportfolioaptTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_table_fill(s : FinanceportfolioaptTable, v : Double) -> FinanceportfolioaptTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptTable::fill(self : FinanceportfolioaptTable, v : Double) -> FinanceportfolioaptTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_table_min(s : FinanceportfolioaptTable) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptTable::min(self : FinanceportfolioaptTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_table_max(s : FinanceportfolioaptTable) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptTable::max(self : FinanceportfolioaptTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_table_to_string(s : FinanceportfolioaptTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptTable::to_string(self : FinanceportfolioaptTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptGraphN {
@@ -453,45 +453,45 @@ pub fn finance_portfolio_apt_graphn_make(size : Int) -> FinanceportfolioaptGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_graphn_len(s : FinanceportfolioaptGraphN) -> Int { s.size }
+pub fn FinanceportfolioaptGraphN::len(self : FinanceportfolioaptGraphN) -> Int { self.size }
 
-pub fn finance_portfolio_apt_graphn_get(s : FinanceportfolioaptGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptGraphN::get(self : FinanceportfolioaptGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_graphn_set(s : FinanceportfolioaptGraphN, i : Int, v : Double) -> FinanceportfolioaptGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptGraphN::set(self : FinanceportfolioaptGraphN, i : Int, v : Double) -> FinanceportfolioaptGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_graphn_sum(s : FinanceportfolioaptGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptGraphN::sum(self : FinanceportfolioaptGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_graphn_mean(s : FinanceportfolioaptGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptGraphN::mean(self : FinanceportfolioaptGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_graphn_scale(s : FinanceportfolioaptGraphN, f : Double) -> FinanceportfolioaptGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptGraphN::scale(self : FinanceportfolioaptGraphN, f : Double) -> FinanceportfolioaptGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_graphn_add(a : FinanceportfolioaptGraphN, b : FinanceportfolioaptGraphN) -> FinanceportfolioaptGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptGraphN::add(self : FinanceportfolioaptGraphN, other : FinanceportfolioaptGraphN) -> FinanceportfolioaptGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_graphn_copy(s : FinanceportfolioaptGraphN) -> FinanceportfolioaptGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptGraphN::copy(self : FinanceportfolioaptGraphN) -> FinanceportfolioaptGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_graphn_fill(s : FinanceportfolioaptGraphN, v : Double) -> FinanceportfolioaptGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptGraphN::fill(self : FinanceportfolioaptGraphN, v : Double) -> FinanceportfolioaptGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_graphn_min(s : FinanceportfolioaptGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptGraphN::min(self : FinanceportfolioaptGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_graphn_max(s : FinanceportfolioaptGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptGraphN::max(self : FinanceportfolioaptGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_graphn_to_string(s : FinanceportfolioaptGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptGraphN::to_string(self : FinanceportfolioaptGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptNode {
@@ -504,45 +504,45 @@ pub fn finance_portfolio_apt_node_make(size : Int) -> FinanceportfolioaptNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_node_len(s : FinanceportfolioaptNode) -> Int { s.size }
+pub fn FinanceportfolioaptNode::len(self : FinanceportfolioaptNode) -> Int { self.size }
 
-pub fn finance_portfolio_apt_node_get(s : FinanceportfolioaptNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptNode::get(self : FinanceportfolioaptNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_node_set(s : FinanceportfolioaptNode, i : Int, v : Double) -> FinanceportfolioaptNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptNode::set(self : FinanceportfolioaptNode, i : Int, v : Double) -> FinanceportfolioaptNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_node_sum(s : FinanceportfolioaptNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptNode::sum(self : FinanceportfolioaptNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_node_mean(s : FinanceportfolioaptNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptNode::mean(self : FinanceportfolioaptNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_node_scale(s : FinanceportfolioaptNode, f : Double) -> FinanceportfolioaptNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptNode::scale(self : FinanceportfolioaptNode, f : Double) -> FinanceportfolioaptNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_node_add(a : FinanceportfolioaptNode, b : FinanceportfolioaptNode) -> FinanceportfolioaptNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptNode::add(self : FinanceportfolioaptNode, other : FinanceportfolioaptNode) -> FinanceportfolioaptNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_node_copy(s : FinanceportfolioaptNode) -> FinanceportfolioaptNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptNode::copy(self : FinanceportfolioaptNode) -> FinanceportfolioaptNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_node_fill(s : FinanceportfolioaptNode, v : Double) -> FinanceportfolioaptNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptNode::fill(self : FinanceportfolioaptNode, v : Double) -> FinanceportfolioaptNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_node_min(s : FinanceportfolioaptNode) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptNode::min(self : FinanceportfolioaptNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_node_max(s : FinanceportfolioaptNode) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptNode::max(self : FinanceportfolioaptNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_node_to_string(s : FinanceportfolioaptNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptNode::to_string(self : FinanceportfolioaptNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptEdge {
@@ -555,45 +555,45 @@ pub fn finance_portfolio_apt_edge_make(size : Int) -> FinanceportfolioaptEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_edge_len(s : FinanceportfolioaptEdge) -> Int { s.size }
+pub fn FinanceportfolioaptEdge::len(self : FinanceportfolioaptEdge) -> Int { self.size }
 
-pub fn finance_portfolio_apt_edge_get(s : FinanceportfolioaptEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptEdge::get(self : FinanceportfolioaptEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_edge_set(s : FinanceportfolioaptEdge, i : Int, v : Double) -> FinanceportfolioaptEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptEdge::set(self : FinanceportfolioaptEdge, i : Int, v : Double) -> FinanceportfolioaptEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_edge_sum(s : FinanceportfolioaptEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptEdge::sum(self : FinanceportfolioaptEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_edge_mean(s : FinanceportfolioaptEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptEdge::mean(self : FinanceportfolioaptEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_edge_scale(s : FinanceportfolioaptEdge, f : Double) -> FinanceportfolioaptEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptEdge::scale(self : FinanceportfolioaptEdge, f : Double) -> FinanceportfolioaptEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_edge_add(a : FinanceportfolioaptEdge, b : FinanceportfolioaptEdge) -> FinanceportfolioaptEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptEdge::add(self : FinanceportfolioaptEdge, other : FinanceportfolioaptEdge) -> FinanceportfolioaptEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_edge_copy(s : FinanceportfolioaptEdge) -> FinanceportfolioaptEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptEdge::copy(self : FinanceportfolioaptEdge) -> FinanceportfolioaptEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_edge_fill(s : FinanceportfolioaptEdge, v : Double) -> FinanceportfolioaptEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptEdge::fill(self : FinanceportfolioaptEdge, v : Double) -> FinanceportfolioaptEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_edge_min(s : FinanceportfolioaptEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptEdge::min(self : FinanceportfolioaptEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_edge_max(s : FinanceportfolioaptEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptEdge::max(self : FinanceportfolioaptEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_edge_to_string(s : FinanceportfolioaptEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptEdge::to_string(self : FinanceportfolioaptEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptPath {
@@ -606,45 +606,45 @@ pub fn finance_portfolio_apt_path_make(size : Int) -> FinanceportfolioaptPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_path_len(s : FinanceportfolioaptPath) -> Int { s.size }
+pub fn FinanceportfolioaptPath::len(self : FinanceportfolioaptPath) -> Int { self.size }
 
-pub fn finance_portfolio_apt_path_get(s : FinanceportfolioaptPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptPath::get(self : FinanceportfolioaptPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_path_set(s : FinanceportfolioaptPath, i : Int, v : Double) -> FinanceportfolioaptPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptPath::set(self : FinanceportfolioaptPath, i : Int, v : Double) -> FinanceportfolioaptPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_path_sum(s : FinanceportfolioaptPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptPath::sum(self : FinanceportfolioaptPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_path_mean(s : FinanceportfolioaptPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptPath::mean(self : FinanceportfolioaptPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_path_scale(s : FinanceportfolioaptPath, f : Double) -> FinanceportfolioaptPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptPath::scale(self : FinanceportfolioaptPath, f : Double) -> FinanceportfolioaptPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_path_add(a : FinanceportfolioaptPath, b : FinanceportfolioaptPath) -> FinanceportfolioaptPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptPath::add(self : FinanceportfolioaptPath, other : FinanceportfolioaptPath) -> FinanceportfolioaptPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_path_copy(s : FinanceportfolioaptPath) -> FinanceportfolioaptPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptPath::copy(self : FinanceportfolioaptPath) -> FinanceportfolioaptPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_path_fill(s : FinanceportfolioaptPath, v : Double) -> FinanceportfolioaptPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptPath::fill(self : FinanceportfolioaptPath, v : Double) -> FinanceportfolioaptPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_path_min(s : FinanceportfolioaptPath) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptPath::min(self : FinanceportfolioaptPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_path_max(s : FinanceportfolioaptPath) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptPath::max(self : FinanceportfolioaptPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_path_to_string(s : FinanceportfolioaptPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptPath::to_string(self : FinanceportfolioaptPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptCluster {
@@ -657,45 +657,45 @@ pub fn finance_portfolio_apt_cluster_make(size : Int) -> FinanceportfolioaptClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_cluster_len(s : FinanceportfolioaptCluster) -> Int { s.size }
+pub fn FinanceportfolioaptCluster::len(self : FinanceportfolioaptCluster) -> Int { self.size }
 
-pub fn finance_portfolio_apt_cluster_get(s : FinanceportfolioaptCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptCluster::get(self : FinanceportfolioaptCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_cluster_set(s : FinanceportfolioaptCluster, i : Int, v : Double) -> FinanceportfolioaptCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCluster::set(self : FinanceportfolioaptCluster, i : Int, v : Double) -> FinanceportfolioaptCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cluster_sum(s : FinanceportfolioaptCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptCluster::sum(self : FinanceportfolioaptCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_cluster_mean(s : FinanceportfolioaptCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptCluster::mean(self : FinanceportfolioaptCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_cluster_scale(s : FinanceportfolioaptCluster, f : Double) -> FinanceportfolioaptCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCluster::scale(self : FinanceportfolioaptCluster, f : Double) -> FinanceportfolioaptCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cluster_add(a : FinanceportfolioaptCluster, b : FinanceportfolioaptCluster) -> FinanceportfolioaptCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptCluster::add(self : FinanceportfolioaptCluster, other : FinanceportfolioaptCluster) -> FinanceportfolioaptCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cluster_copy(s : FinanceportfolioaptCluster) -> FinanceportfolioaptCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCluster::copy(self : FinanceportfolioaptCluster) -> FinanceportfolioaptCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cluster_fill(s : FinanceportfolioaptCluster, v : Double) -> FinanceportfolioaptCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCluster::fill(self : FinanceportfolioaptCluster, v : Double) -> FinanceportfolioaptCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cluster_min(s : FinanceportfolioaptCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptCluster::min(self : FinanceportfolioaptCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_cluster_max(s : FinanceportfolioaptCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptCluster::max(self : FinanceportfolioaptCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_cluster_to_string(s : FinanceportfolioaptCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptCluster::to_string(self : FinanceportfolioaptCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptModel {
@@ -708,45 +708,45 @@ pub fn finance_portfolio_apt_model_make(size : Int) -> FinanceportfolioaptModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_model_len(s : FinanceportfolioaptModel) -> Int { s.size }
+pub fn FinanceportfolioaptModel::len(self : FinanceportfolioaptModel) -> Int { self.size }
 
-pub fn finance_portfolio_apt_model_get(s : FinanceportfolioaptModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptModel::get(self : FinanceportfolioaptModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_model_set(s : FinanceportfolioaptModel, i : Int, v : Double) -> FinanceportfolioaptModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptModel::set(self : FinanceportfolioaptModel, i : Int, v : Double) -> FinanceportfolioaptModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_model_sum(s : FinanceportfolioaptModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptModel::sum(self : FinanceportfolioaptModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_model_mean(s : FinanceportfolioaptModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptModel::mean(self : FinanceportfolioaptModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_model_scale(s : FinanceportfolioaptModel, f : Double) -> FinanceportfolioaptModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptModel::scale(self : FinanceportfolioaptModel, f : Double) -> FinanceportfolioaptModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_model_add(a : FinanceportfolioaptModel, b : FinanceportfolioaptModel) -> FinanceportfolioaptModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptModel::add(self : FinanceportfolioaptModel, other : FinanceportfolioaptModel) -> FinanceportfolioaptModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_model_copy(s : FinanceportfolioaptModel) -> FinanceportfolioaptModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptModel::copy(self : FinanceportfolioaptModel) -> FinanceportfolioaptModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_model_fill(s : FinanceportfolioaptModel, v : Double) -> FinanceportfolioaptModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptModel::fill(self : FinanceportfolioaptModel, v : Double) -> FinanceportfolioaptModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_model_min(s : FinanceportfolioaptModel) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptModel::min(self : FinanceportfolioaptModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_model_max(s : FinanceportfolioaptModel) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptModel::max(self : FinanceportfolioaptModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_model_to_string(s : FinanceportfolioaptModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptModel::to_string(self : FinanceportfolioaptModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptLayer {
@@ -759,45 +759,45 @@ pub fn finance_portfolio_apt_layer_make(size : Int) -> FinanceportfolioaptLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_layer_len(s : FinanceportfolioaptLayer) -> Int { s.size }
+pub fn FinanceportfolioaptLayer::len(self : FinanceportfolioaptLayer) -> Int { self.size }
 
-pub fn finance_portfolio_apt_layer_get(s : FinanceportfolioaptLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptLayer::get(self : FinanceportfolioaptLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_layer_set(s : FinanceportfolioaptLayer, i : Int, v : Double) -> FinanceportfolioaptLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptLayer::set(self : FinanceportfolioaptLayer, i : Int, v : Double) -> FinanceportfolioaptLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_layer_sum(s : FinanceportfolioaptLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptLayer::sum(self : FinanceportfolioaptLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_layer_mean(s : FinanceportfolioaptLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptLayer::mean(self : FinanceportfolioaptLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_layer_scale(s : FinanceportfolioaptLayer, f : Double) -> FinanceportfolioaptLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptLayer::scale(self : FinanceportfolioaptLayer, f : Double) -> FinanceportfolioaptLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_layer_add(a : FinanceportfolioaptLayer, b : FinanceportfolioaptLayer) -> FinanceportfolioaptLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptLayer::add(self : FinanceportfolioaptLayer, other : FinanceportfolioaptLayer) -> FinanceportfolioaptLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_layer_copy(s : FinanceportfolioaptLayer) -> FinanceportfolioaptLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptLayer::copy(self : FinanceportfolioaptLayer) -> FinanceportfolioaptLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_layer_fill(s : FinanceportfolioaptLayer, v : Double) -> FinanceportfolioaptLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptLayer::fill(self : FinanceportfolioaptLayer, v : Double) -> FinanceportfolioaptLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_layer_min(s : FinanceportfolioaptLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptLayer::min(self : FinanceportfolioaptLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_layer_max(s : FinanceportfolioaptLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptLayer::max(self : FinanceportfolioaptLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_layer_to_string(s : FinanceportfolioaptLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptLayer::to_string(self : FinanceportfolioaptLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptBuffer {
@@ -810,45 +810,45 @@ pub fn finance_portfolio_apt_buffer_make(size : Int) -> FinanceportfolioaptBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_buffer_len(s : FinanceportfolioaptBuffer) -> Int { s.size }
+pub fn FinanceportfolioaptBuffer::len(self : FinanceportfolioaptBuffer) -> Int { self.size }
 
-pub fn finance_portfolio_apt_buffer_get(s : FinanceportfolioaptBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptBuffer::get(self : FinanceportfolioaptBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_buffer_set(s : FinanceportfolioaptBuffer, i : Int, v : Double) -> FinanceportfolioaptBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptBuffer::set(self : FinanceportfolioaptBuffer, i : Int, v : Double) -> FinanceportfolioaptBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_buffer_sum(s : FinanceportfolioaptBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptBuffer::sum(self : FinanceportfolioaptBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_buffer_mean(s : FinanceportfolioaptBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptBuffer::mean(self : FinanceportfolioaptBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_buffer_scale(s : FinanceportfolioaptBuffer, f : Double) -> FinanceportfolioaptBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptBuffer::scale(self : FinanceportfolioaptBuffer, f : Double) -> FinanceportfolioaptBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_buffer_add(a : FinanceportfolioaptBuffer, b : FinanceportfolioaptBuffer) -> FinanceportfolioaptBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptBuffer::add(self : FinanceportfolioaptBuffer, other : FinanceportfolioaptBuffer) -> FinanceportfolioaptBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_buffer_copy(s : FinanceportfolioaptBuffer) -> FinanceportfolioaptBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptBuffer::copy(self : FinanceportfolioaptBuffer) -> FinanceportfolioaptBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_buffer_fill(s : FinanceportfolioaptBuffer, v : Double) -> FinanceportfolioaptBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptBuffer::fill(self : FinanceportfolioaptBuffer, v : Double) -> FinanceportfolioaptBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_buffer_min(s : FinanceportfolioaptBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptBuffer::min(self : FinanceportfolioaptBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_buffer_max(s : FinanceportfolioaptBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptBuffer::max(self : FinanceportfolioaptBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_buffer_to_string(s : FinanceportfolioaptBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptBuffer::to_string(self : FinanceportfolioaptBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptCursor {
@@ -861,45 +861,45 @@ pub fn finance_portfolio_apt_cursor_make(size : Int) -> FinanceportfolioaptCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_cursor_len(s : FinanceportfolioaptCursor) -> Int { s.size }
+pub fn FinanceportfolioaptCursor::len(self : FinanceportfolioaptCursor) -> Int { self.size }
 
-pub fn finance_portfolio_apt_cursor_get(s : FinanceportfolioaptCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptCursor::get(self : FinanceportfolioaptCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_cursor_set(s : FinanceportfolioaptCursor, i : Int, v : Double) -> FinanceportfolioaptCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCursor::set(self : FinanceportfolioaptCursor, i : Int, v : Double) -> FinanceportfolioaptCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cursor_sum(s : FinanceportfolioaptCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptCursor::sum(self : FinanceportfolioaptCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_cursor_mean(s : FinanceportfolioaptCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptCursor::mean(self : FinanceportfolioaptCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_cursor_scale(s : FinanceportfolioaptCursor, f : Double) -> FinanceportfolioaptCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCursor::scale(self : FinanceportfolioaptCursor, f : Double) -> FinanceportfolioaptCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cursor_add(a : FinanceportfolioaptCursor, b : FinanceportfolioaptCursor) -> FinanceportfolioaptCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptCursor::add(self : FinanceportfolioaptCursor, other : FinanceportfolioaptCursor) -> FinanceportfolioaptCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cursor_copy(s : FinanceportfolioaptCursor) -> FinanceportfolioaptCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCursor::copy(self : FinanceportfolioaptCursor) -> FinanceportfolioaptCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cursor_fill(s : FinanceportfolioaptCursor, v : Double) -> FinanceportfolioaptCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptCursor::fill(self : FinanceportfolioaptCursor, v : Double) -> FinanceportfolioaptCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_cursor_min(s : FinanceportfolioaptCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptCursor::min(self : FinanceportfolioaptCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_cursor_max(s : FinanceportfolioaptCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptCursor::max(self : FinanceportfolioaptCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_cursor_to_string(s : FinanceportfolioaptCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptCursor::to_string(self : FinanceportfolioaptCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptView {
@@ -912,45 +912,45 @@ pub fn finance_portfolio_apt_view_make(size : Int) -> FinanceportfolioaptView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_view_len(s : FinanceportfolioaptView) -> Int { s.size }
+pub fn FinanceportfolioaptView::len(self : FinanceportfolioaptView) -> Int { self.size }
 
-pub fn finance_portfolio_apt_view_get(s : FinanceportfolioaptView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptView::get(self : FinanceportfolioaptView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_view_set(s : FinanceportfolioaptView, i : Int, v : Double) -> FinanceportfolioaptView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptView::set(self : FinanceportfolioaptView, i : Int, v : Double) -> FinanceportfolioaptView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_view_sum(s : FinanceportfolioaptView) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptView::sum(self : FinanceportfolioaptView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_view_mean(s : FinanceportfolioaptView) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptView::mean(self : FinanceportfolioaptView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_view_scale(s : FinanceportfolioaptView, f : Double) -> FinanceportfolioaptView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptView::scale(self : FinanceportfolioaptView, f : Double) -> FinanceportfolioaptView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_view_add(a : FinanceportfolioaptView, b : FinanceportfolioaptView) -> FinanceportfolioaptView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptView::add(self : FinanceportfolioaptView, other : FinanceportfolioaptView) -> FinanceportfolioaptView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_view_copy(s : FinanceportfolioaptView) -> FinanceportfolioaptView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptView::copy(self : FinanceportfolioaptView) -> FinanceportfolioaptView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_view_fill(s : FinanceportfolioaptView, v : Double) -> FinanceportfolioaptView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptView::fill(self : FinanceportfolioaptView, v : Double) -> FinanceportfolioaptView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_view_min(s : FinanceportfolioaptView) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptView::min(self : FinanceportfolioaptView) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_view_max(s : FinanceportfolioaptView) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptView::max(self : FinanceportfolioaptView) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_view_to_string(s : FinanceportfolioaptView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptView::to_string(self : FinanceportfolioaptView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptRange {
@@ -963,45 +963,45 @@ pub fn finance_portfolio_apt_range_make(size : Int) -> FinanceportfolioaptRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_range_len(s : FinanceportfolioaptRange) -> Int { s.size }
+pub fn FinanceportfolioaptRange::len(self : FinanceportfolioaptRange) -> Int { self.size }
 
-pub fn finance_portfolio_apt_range_get(s : FinanceportfolioaptRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptRange::get(self : FinanceportfolioaptRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_range_set(s : FinanceportfolioaptRange, i : Int, v : Double) -> FinanceportfolioaptRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptRange::set(self : FinanceportfolioaptRange, i : Int, v : Double) -> FinanceportfolioaptRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_range_sum(s : FinanceportfolioaptRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptRange::sum(self : FinanceportfolioaptRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_range_mean(s : FinanceportfolioaptRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptRange::mean(self : FinanceportfolioaptRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_range_scale(s : FinanceportfolioaptRange, f : Double) -> FinanceportfolioaptRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptRange::scale(self : FinanceportfolioaptRange, f : Double) -> FinanceportfolioaptRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_range_add(a : FinanceportfolioaptRange, b : FinanceportfolioaptRange) -> FinanceportfolioaptRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptRange::add(self : FinanceportfolioaptRange, other : FinanceportfolioaptRange) -> FinanceportfolioaptRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_range_copy(s : FinanceportfolioaptRange) -> FinanceportfolioaptRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptRange::copy(self : FinanceportfolioaptRange) -> FinanceportfolioaptRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_range_fill(s : FinanceportfolioaptRange, v : Double) -> FinanceportfolioaptRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptRange::fill(self : FinanceportfolioaptRange, v : Double) -> FinanceportfolioaptRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_range_min(s : FinanceportfolioaptRange) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptRange::min(self : FinanceportfolioaptRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_range_max(s : FinanceportfolioaptRange) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptRange::max(self : FinanceportfolioaptRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_range_to_string(s : FinanceportfolioaptRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptRange::to_string(self : FinanceportfolioaptRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioaptSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_portfolio_apt_slice_make(size : Int) -> FinanceportfolioaptSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_apt_slice_len(s : FinanceportfolioaptSlice) -> Int { s.size }
+pub fn FinanceportfolioaptSlice::len(self : FinanceportfolioaptSlice) -> Int { self.size }
 
-pub fn finance_portfolio_apt_slice_get(s : FinanceportfolioaptSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioaptSlice::get(self : FinanceportfolioaptSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_apt_slice_set(s : FinanceportfolioaptSlice, i : Int, v : Double) -> FinanceportfolioaptSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptSlice::set(self : FinanceportfolioaptSlice, i : Int, v : Double) -> FinanceportfolioaptSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_slice_sum(s : FinanceportfolioaptSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioaptSlice::sum(self : FinanceportfolioaptSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_apt_slice_mean(s : FinanceportfolioaptSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioaptSlice::mean(self : FinanceportfolioaptSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_apt_slice_scale(s : FinanceportfolioaptSlice, f : Double) -> FinanceportfolioaptSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptSlice::scale(self : FinanceportfolioaptSlice, f : Double) -> FinanceportfolioaptSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_slice_add(a : FinanceportfolioaptSlice, b : FinanceportfolioaptSlice) -> FinanceportfolioaptSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioaptSlice::add(self : FinanceportfolioaptSlice, other : FinanceportfolioaptSlice) -> FinanceportfolioaptSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_slice_copy(s : FinanceportfolioaptSlice) -> FinanceportfolioaptSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptSlice::copy(self : FinanceportfolioaptSlice) -> FinanceportfolioaptSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_slice_fill(s : FinanceportfolioaptSlice, v : Double) -> FinanceportfolioaptSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioaptSlice::fill(self : FinanceportfolioaptSlice, v : Double) -> FinanceportfolioaptSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_apt_slice_min(s : FinanceportfolioaptSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioaptSlice::min(self : FinanceportfolioaptSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_apt_slice_max(s : FinanceportfolioaptSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioaptSlice::max(self : FinanceportfolioaptSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_apt_slice_to_string(s : FinanceportfolioaptSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioaptSlice::to_string(self : FinanceportfolioaptSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

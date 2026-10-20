@@ -351,45 +351,45 @@ pub fn graph_flow_mincut_frame_make(size : Int) -> GraphflowmincutFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_frame_len(s : GraphflowmincutFrame) -> Int { s.size }
+pub fn GraphflowmincutFrame::len(self : GraphflowmincutFrame) -> Int { self.size }
 
-pub fn graph_flow_mincut_frame_get(s : GraphflowmincutFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutFrame::get(self : GraphflowmincutFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_frame_set(s : GraphflowmincutFrame, i : Int, v : Double) -> GraphflowmincutFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutFrame::set(self : GraphflowmincutFrame, i : Int, v : Double) -> GraphflowmincutFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_frame_sum(s : GraphflowmincutFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutFrame::sum(self : GraphflowmincutFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_frame_mean(s : GraphflowmincutFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutFrame::mean(self : GraphflowmincutFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_frame_scale(s : GraphflowmincutFrame, f : Double) -> GraphflowmincutFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutFrame::scale(self : GraphflowmincutFrame, f : Double) -> GraphflowmincutFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_frame_add(a : GraphflowmincutFrame, b : GraphflowmincutFrame) -> GraphflowmincutFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutFrame::add(self : GraphflowmincutFrame, other : GraphflowmincutFrame) -> GraphflowmincutFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_frame_copy(s : GraphflowmincutFrame) -> GraphflowmincutFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutFrame::copy(self : GraphflowmincutFrame) -> GraphflowmincutFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_frame_fill(s : GraphflowmincutFrame, v : Double) -> GraphflowmincutFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutFrame::fill(self : GraphflowmincutFrame, v : Double) -> GraphflowmincutFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_frame_min(s : GraphflowmincutFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutFrame::min(self : GraphflowmincutFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_frame_max(s : GraphflowmincutFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutFrame::max(self : GraphflowmincutFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_frame_to_string(s : GraphflowmincutFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutFrame::to_string(self : GraphflowmincutFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_mincut_table_make(size : Int) -> GraphflowmincutTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_table_len(s : GraphflowmincutTable) -> Int { s.size }
+pub fn GraphflowmincutTable::len(self : GraphflowmincutTable) -> Int { self.size }
 
-pub fn graph_flow_mincut_table_get(s : GraphflowmincutTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutTable::get(self : GraphflowmincutTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_table_set(s : GraphflowmincutTable, i : Int, v : Double) -> GraphflowmincutTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutTable::set(self : GraphflowmincutTable, i : Int, v : Double) -> GraphflowmincutTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_table_sum(s : GraphflowmincutTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutTable::sum(self : GraphflowmincutTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_table_mean(s : GraphflowmincutTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutTable::mean(self : GraphflowmincutTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_table_scale(s : GraphflowmincutTable, f : Double) -> GraphflowmincutTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutTable::scale(self : GraphflowmincutTable, f : Double) -> GraphflowmincutTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_table_add(a : GraphflowmincutTable, b : GraphflowmincutTable) -> GraphflowmincutTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutTable::add(self : GraphflowmincutTable, other : GraphflowmincutTable) -> GraphflowmincutTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_table_copy(s : GraphflowmincutTable) -> GraphflowmincutTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutTable::copy(self : GraphflowmincutTable) -> GraphflowmincutTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_table_fill(s : GraphflowmincutTable, v : Double) -> GraphflowmincutTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutTable::fill(self : GraphflowmincutTable, v : Double) -> GraphflowmincutTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_table_min(s : GraphflowmincutTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutTable::min(self : GraphflowmincutTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_table_max(s : GraphflowmincutTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutTable::max(self : GraphflowmincutTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_table_to_string(s : GraphflowmincutTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutTable::to_string(self : GraphflowmincutTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_mincut_graphn_make(size : Int) -> GraphflowmincutGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_graphn_len(s : GraphflowmincutGraphN) -> Int { s.size }
+pub fn GraphflowmincutGraphN::len(self : GraphflowmincutGraphN) -> Int { self.size }
 
-pub fn graph_flow_mincut_graphn_get(s : GraphflowmincutGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutGraphN::get(self : GraphflowmincutGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_graphn_set(s : GraphflowmincutGraphN, i : Int, v : Double) -> GraphflowmincutGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutGraphN::set(self : GraphflowmincutGraphN, i : Int, v : Double) -> GraphflowmincutGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_graphn_sum(s : GraphflowmincutGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutGraphN::sum(self : GraphflowmincutGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_graphn_mean(s : GraphflowmincutGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutGraphN::mean(self : GraphflowmincutGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_graphn_scale(s : GraphflowmincutGraphN, f : Double) -> GraphflowmincutGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutGraphN::scale(self : GraphflowmincutGraphN, f : Double) -> GraphflowmincutGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_graphn_add(a : GraphflowmincutGraphN, b : GraphflowmincutGraphN) -> GraphflowmincutGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutGraphN::add(self : GraphflowmincutGraphN, other : GraphflowmincutGraphN) -> GraphflowmincutGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_graphn_copy(s : GraphflowmincutGraphN) -> GraphflowmincutGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutGraphN::copy(self : GraphflowmincutGraphN) -> GraphflowmincutGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_graphn_fill(s : GraphflowmincutGraphN, v : Double) -> GraphflowmincutGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutGraphN::fill(self : GraphflowmincutGraphN, v : Double) -> GraphflowmincutGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_graphn_min(s : GraphflowmincutGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutGraphN::min(self : GraphflowmincutGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_graphn_max(s : GraphflowmincutGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutGraphN::max(self : GraphflowmincutGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_graphn_to_string(s : GraphflowmincutGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutGraphN::to_string(self : GraphflowmincutGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_mincut_node_make(size : Int) -> GraphflowmincutNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_node_len(s : GraphflowmincutNode) -> Int { s.size }
+pub fn GraphflowmincutNode::len(self : GraphflowmincutNode) -> Int { self.size }
 
-pub fn graph_flow_mincut_node_get(s : GraphflowmincutNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutNode::get(self : GraphflowmincutNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_node_set(s : GraphflowmincutNode, i : Int, v : Double) -> GraphflowmincutNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutNode::set(self : GraphflowmincutNode, i : Int, v : Double) -> GraphflowmincutNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_node_sum(s : GraphflowmincutNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutNode::sum(self : GraphflowmincutNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_node_mean(s : GraphflowmincutNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutNode::mean(self : GraphflowmincutNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_node_scale(s : GraphflowmincutNode, f : Double) -> GraphflowmincutNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutNode::scale(self : GraphflowmincutNode, f : Double) -> GraphflowmincutNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_node_add(a : GraphflowmincutNode, b : GraphflowmincutNode) -> GraphflowmincutNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutNode::add(self : GraphflowmincutNode, other : GraphflowmincutNode) -> GraphflowmincutNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_node_copy(s : GraphflowmincutNode) -> GraphflowmincutNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutNode::copy(self : GraphflowmincutNode) -> GraphflowmincutNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_node_fill(s : GraphflowmincutNode, v : Double) -> GraphflowmincutNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutNode::fill(self : GraphflowmincutNode, v : Double) -> GraphflowmincutNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_node_min(s : GraphflowmincutNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutNode::min(self : GraphflowmincutNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_node_max(s : GraphflowmincutNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutNode::max(self : GraphflowmincutNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_node_to_string(s : GraphflowmincutNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutNode::to_string(self : GraphflowmincutNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_mincut_edge_make(size : Int) -> GraphflowmincutEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_edge_len(s : GraphflowmincutEdge) -> Int { s.size }
+pub fn GraphflowmincutEdge::len(self : GraphflowmincutEdge) -> Int { self.size }
 
-pub fn graph_flow_mincut_edge_get(s : GraphflowmincutEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutEdge::get(self : GraphflowmincutEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_edge_set(s : GraphflowmincutEdge, i : Int, v : Double) -> GraphflowmincutEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutEdge::set(self : GraphflowmincutEdge, i : Int, v : Double) -> GraphflowmincutEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_edge_sum(s : GraphflowmincutEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutEdge::sum(self : GraphflowmincutEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_edge_mean(s : GraphflowmincutEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutEdge::mean(self : GraphflowmincutEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_edge_scale(s : GraphflowmincutEdge, f : Double) -> GraphflowmincutEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutEdge::scale(self : GraphflowmincutEdge, f : Double) -> GraphflowmincutEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_edge_add(a : GraphflowmincutEdge, b : GraphflowmincutEdge) -> GraphflowmincutEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutEdge::add(self : GraphflowmincutEdge, other : GraphflowmincutEdge) -> GraphflowmincutEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_edge_copy(s : GraphflowmincutEdge) -> GraphflowmincutEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutEdge::copy(self : GraphflowmincutEdge) -> GraphflowmincutEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_edge_fill(s : GraphflowmincutEdge, v : Double) -> GraphflowmincutEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutEdge::fill(self : GraphflowmincutEdge, v : Double) -> GraphflowmincutEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_edge_min(s : GraphflowmincutEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutEdge::min(self : GraphflowmincutEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_edge_max(s : GraphflowmincutEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutEdge::max(self : GraphflowmincutEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_edge_to_string(s : GraphflowmincutEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutEdge::to_string(self : GraphflowmincutEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutPath {
@@ -606,45 +606,45 @@ pub fn graph_flow_mincut_path_make(size : Int) -> GraphflowmincutPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_path_len(s : GraphflowmincutPath) -> Int { s.size }
+pub fn GraphflowmincutPath::len(self : GraphflowmincutPath) -> Int { self.size }
 
-pub fn graph_flow_mincut_path_get(s : GraphflowmincutPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutPath::get(self : GraphflowmincutPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_path_set(s : GraphflowmincutPath, i : Int, v : Double) -> GraphflowmincutPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutPath::set(self : GraphflowmincutPath, i : Int, v : Double) -> GraphflowmincutPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_path_sum(s : GraphflowmincutPath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutPath::sum(self : GraphflowmincutPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_path_mean(s : GraphflowmincutPath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutPath::mean(self : GraphflowmincutPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_path_scale(s : GraphflowmincutPath, f : Double) -> GraphflowmincutPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutPath::scale(self : GraphflowmincutPath, f : Double) -> GraphflowmincutPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_path_add(a : GraphflowmincutPath, b : GraphflowmincutPath) -> GraphflowmincutPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutPath::add(self : GraphflowmincutPath, other : GraphflowmincutPath) -> GraphflowmincutPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_path_copy(s : GraphflowmincutPath) -> GraphflowmincutPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutPath::copy(self : GraphflowmincutPath) -> GraphflowmincutPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_path_fill(s : GraphflowmincutPath, v : Double) -> GraphflowmincutPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutPath::fill(self : GraphflowmincutPath, v : Double) -> GraphflowmincutPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_path_min(s : GraphflowmincutPath) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutPath::min(self : GraphflowmincutPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_path_max(s : GraphflowmincutPath) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutPath::max(self : GraphflowmincutPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_path_to_string(s : GraphflowmincutPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutPath::to_string(self : GraphflowmincutPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_mincut_cluster_make(size : Int) -> GraphflowmincutCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_cluster_len(s : GraphflowmincutCluster) -> Int { s.size }
+pub fn GraphflowmincutCluster::len(self : GraphflowmincutCluster) -> Int { self.size }
 
-pub fn graph_flow_mincut_cluster_get(s : GraphflowmincutCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutCluster::get(self : GraphflowmincutCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_cluster_set(s : GraphflowmincutCluster, i : Int, v : Double) -> GraphflowmincutCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutCluster::set(self : GraphflowmincutCluster, i : Int, v : Double) -> GraphflowmincutCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cluster_sum(s : GraphflowmincutCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutCluster::sum(self : GraphflowmincutCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_cluster_mean(s : GraphflowmincutCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutCluster::mean(self : GraphflowmincutCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_cluster_scale(s : GraphflowmincutCluster, f : Double) -> GraphflowmincutCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutCluster::scale(self : GraphflowmincutCluster, f : Double) -> GraphflowmincutCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cluster_add(a : GraphflowmincutCluster, b : GraphflowmincutCluster) -> GraphflowmincutCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutCluster::add(self : GraphflowmincutCluster, other : GraphflowmincutCluster) -> GraphflowmincutCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cluster_copy(s : GraphflowmincutCluster) -> GraphflowmincutCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutCluster::copy(self : GraphflowmincutCluster) -> GraphflowmincutCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cluster_fill(s : GraphflowmincutCluster, v : Double) -> GraphflowmincutCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutCluster::fill(self : GraphflowmincutCluster, v : Double) -> GraphflowmincutCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cluster_min(s : GraphflowmincutCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutCluster::min(self : GraphflowmincutCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_cluster_max(s : GraphflowmincutCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutCluster::max(self : GraphflowmincutCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_cluster_to_string(s : GraphflowmincutCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutCluster::to_string(self : GraphflowmincutCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_mincut_model_make(size : Int) -> GraphflowmincutModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_model_len(s : GraphflowmincutModel) -> Int { s.size }
+pub fn GraphflowmincutModel::len(self : GraphflowmincutModel) -> Int { self.size }
 
-pub fn graph_flow_mincut_model_get(s : GraphflowmincutModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutModel::get(self : GraphflowmincutModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_model_set(s : GraphflowmincutModel, i : Int, v : Double) -> GraphflowmincutModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutModel::set(self : GraphflowmincutModel, i : Int, v : Double) -> GraphflowmincutModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_model_sum(s : GraphflowmincutModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutModel::sum(self : GraphflowmincutModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_model_mean(s : GraphflowmincutModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutModel::mean(self : GraphflowmincutModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_model_scale(s : GraphflowmincutModel, f : Double) -> GraphflowmincutModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutModel::scale(self : GraphflowmincutModel, f : Double) -> GraphflowmincutModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_model_add(a : GraphflowmincutModel, b : GraphflowmincutModel) -> GraphflowmincutModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutModel::add(self : GraphflowmincutModel, other : GraphflowmincutModel) -> GraphflowmincutModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_model_copy(s : GraphflowmincutModel) -> GraphflowmincutModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutModel::copy(self : GraphflowmincutModel) -> GraphflowmincutModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_model_fill(s : GraphflowmincutModel, v : Double) -> GraphflowmincutModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutModel::fill(self : GraphflowmincutModel, v : Double) -> GraphflowmincutModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_model_min(s : GraphflowmincutModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutModel::min(self : GraphflowmincutModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_model_max(s : GraphflowmincutModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutModel::max(self : GraphflowmincutModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_model_to_string(s : GraphflowmincutModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutModel::to_string(self : GraphflowmincutModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_mincut_layer_make(size : Int) -> GraphflowmincutLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_layer_len(s : GraphflowmincutLayer) -> Int { s.size }
+pub fn GraphflowmincutLayer::len(self : GraphflowmincutLayer) -> Int { self.size }
 
-pub fn graph_flow_mincut_layer_get(s : GraphflowmincutLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutLayer::get(self : GraphflowmincutLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_layer_set(s : GraphflowmincutLayer, i : Int, v : Double) -> GraphflowmincutLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutLayer::set(self : GraphflowmincutLayer, i : Int, v : Double) -> GraphflowmincutLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_layer_sum(s : GraphflowmincutLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutLayer::sum(self : GraphflowmincutLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_layer_mean(s : GraphflowmincutLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutLayer::mean(self : GraphflowmincutLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_layer_scale(s : GraphflowmincutLayer, f : Double) -> GraphflowmincutLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutLayer::scale(self : GraphflowmincutLayer, f : Double) -> GraphflowmincutLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_layer_add(a : GraphflowmincutLayer, b : GraphflowmincutLayer) -> GraphflowmincutLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutLayer::add(self : GraphflowmincutLayer, other : GraphflowmincutLayer) -> GraphflowmincutLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_layer_copy(s : GraphflowmincutLayer) -> GraphflowmincutLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutLayer::copy(self : GraphflowmincutLayer) -> GraphflowmincutLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_layer_fill(s : GraphflowmincutLayer, v : Double) -> GraphflowmincutLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutLayer::fill(self : GraphflowmincutLayer, v : Double) -> GraphflowmincutLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_layer_min(s : GraphflowmincutLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutLayer::min(self : GraphflowmincutLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_layer_max(s : GraphflowmincutLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutLayer::max(self : GraphflowmincutLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_layer_to_string(s : GraphflowmincutLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutLayer::to_string(self : GraphflowmincutLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_mincut_buffer_make(size : Int) -> GraphflowmincutBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_buffer_len(s : GraphflowmincutBuffer) -> Int { s.size }
+pub fn GraphflowmincutBuffer::len(self : GraphflowmincutBuffer) -> Int { self.size }
 
-pub fn graph_flow_mincut_buffer_get(s : GraphflowmincutBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutBuffer::get(self : GraphflowmincutBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_buffer_set(s : GraphflowmincutBuffer, i : Int, v : Double) -> GraphflowmincutBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutBuffer::set(self : GraphflowmincutBuffer, i : Int, v : Double) -> GraphflowmincutBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_buffer_sum(s : GraphflowmincutBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutBuffer::sum(self : GraphflowmincutBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_buffer_mean(s : GraphflowmincutBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutBuffer::mean(self : GraphflowmincutBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_buffer_scale(s : GraphflowmincutBuffer, f : Double) -> GraphflowmincutBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutBuffer::scale(self : GraphflowmincutBuffer, f : Double) -> GraphflowmincutBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_buffer_add(a : GraphflowmincutBuffer, b : GraphflowmincutBuffer) -> GraphflowmincutBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutBuffer::add(self : GraphflowmincutBuffer, other : GraphflowmincutBuffer) -> GraphflowmincutBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_buffer_copy(s : GraphflowmincutBuffer) -> GraphflowmincutBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutBuffer::copy(self : GraphflowmincutBuffer) -> GraphflowmincutBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_buffer_fill(s : GraphflowmincutBuffer, v : Double) -> GraphflowmincutBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutBuffer::fill(self : GraphflowmincutBuffer, v : Double) -> GraphflowmincutBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_buffer_min(s : GraphflowmincutBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutBuffer::min(self : GraphflowmincutBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_buffer_max(s : GraphflowmincutBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutBuffer::max(self : GraphflowmincutBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_buffer_to_string(s : GraphflowmincutBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutBuffer::to_string(self : GraphflowmincutBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_mincut_cursor_make(size : Int) -> GraphflowmincutCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_cursor_len(s : GraphflowmincutCursor) -> Int { s.size }
+pub fn GraphflowmincutCursor::len(self : GraphflowmincutCursor) -> Int { self.size }
 
-pub fn graph_flow_mincut_cursor_get(s : GraphflowmincutCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutCursor::get(self : GraphflowmincutCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_cursor_set(s : GraphflowmincutCursor, i : Int, v : Double) -> GraphflowmincutCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutCursor::set(self : GraphflowmincutCursor, i : Int, v : Double) -> GraphflowmincutCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cursor_sum(s : GraphflowmincutCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutCursor::sum(self : GraphflowmincutCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_cursor_mean(s : GraphflowmincutCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutCursor::mean(self : GraphflowmincutCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_cursor_scale(s : GraphflowmincutCursor, f : Double) -> GraphflowmincutCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutCursor::scale(self : GraphflowmincutCursor, f : Double) -> GraphflowmincutCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cursor_add(a : GraphflowmincutCursor, b : GraphflowmincutCursor) -> GraphflowmincutCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutCursor::add(self : GraphflowmincutCursor, other : GraphflowmincutCursor) -> GraphflowmincutCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cursor_copy(s : GraphflowmincutCursor) -> GraphflowmincutCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutCursor::copy(self : GraphflowmincutCursor) -> GraphflowmincutCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cursor_fill(s : GraphflowmincutCursor, v : Double) -> GraphflowmincutCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutCursor::fill(self : GraphflowmincutCursor, v : Double) -> GraphflowmincutCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_cursor_min(s : GraphflowmincutCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutCursor::min(self : GraphflowmincutCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_cursor_max(s : GraphflowmincutCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutCursor::max(self : GraphflowmincutCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_cursor_to_string(s : GraphflowmincutCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutCursor::to_string(self : GraphflowmincutCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutView {
@@ -912,45 +912,45 @@ pub fn graph_flow_mincut_view_make(size : Int) -> GraphflowmincutView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_view_len(s : GraphflowmincutView) -> Int { s.size }
+pub fn GraphflowmincutView::len(self : GraphflowmincutView) -> Int { self.size }
 
-pub fn graph_flow_mincut_view_get(s : GraphflowmincutView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutView::get(self : GraphflowmincutView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_view_set(s : GraphflowmincutView, i : Int, v : Double) -> GraphflowmincutView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutView::set(self : GraphflowmincutView, i : Int, v : Double) -> GraphflowmincutView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_view_sum(s : GraphflowmincutView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutView::sum(self : GraphflowmincutView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_view_mean(s : GraphflowmincutView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutView::mean(self : GraphflowmincutView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_view_scale(s : GraphflowmincutView, f : Double) -> GraphflowmincutView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutView::scale(self : GraphflowmincutView, f : Double) -> GraphflowmincutView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_view_add(a : GraphflowmincutView, b : GraphflowmincutView) -> GraphflowmincutView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutView::add(self : GraphflowmincutView, other : GraphflowmincutView) -> GraphflowmincutView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_view_copy(s : GraphflowmincutView) -> GraphflowmincutView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutView::copy(self : GraphflowmincutView) -> GraphflowmincutView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_view_fill(s : GraphflowmincutView, v : Double) -> GraphflowmincutView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutView::fill(self : GraphflowmincutView, v : Double) -> GraphflowmincutView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_view_min(s : GraphflowmincutView) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutView::min(self : GraphflowmincutView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_view_max(s : GraphflowmincutView) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutView::max(self : GraphflowmincutView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_view_to_string(s : GraphflowmincutView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutView::to_string(self : GraphflowmincutView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_mincut_range_make(size : Int) -> GraphflowmincutRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_range_len(s : GraphflowmincutRange) -> Int { s.size }
+pub fn GraphflowmincutRange::len(self : GraphflowmincutRange) -> Int { self.size }
 
-pub fn graph_flow_mincut_range_get(s : GraphflowmincutRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutRange::get(self : GraphflowmincutRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_range_set(s : GraphflowmincutRange, i : Int, v : Double) -> GraphflowmincutRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutRange::set(self : GraphflowmincutRange, i : Int, v : Double) -> GraphflowmincutRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_range_sum(s : GraphflowmincutRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutRange::sum(self : GraphflowmincutRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_range_mean(s : GraphflowmincutRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutRange::mean(self : GraphflowmincutRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_range_scale(s : GraphflowmincutRange, f : Double) -> GraphflowmincutRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutRange::scale(self : GraphflowmincutRange, f : Double) -> GraphflowmincutRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_range_add(a : GraphflowmincutRange, b : GraphflowmincutRange) -> GraphflowmincutRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutRange::add(self : GraphflowmincutRange, other : GraphflowmincutRange) -> GraphflowmincutRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_range_copy(s : GraphflowmincutRange) -> GraphflowmincutRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutRange::copy(self : GraphflowmincutRange) -> GraphflowmincutRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_range_fill(s : GraphflowmincutRange, v : Double) -> GraphflowmincutRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutRange::fill(self : GraphflowmincutRange, v : Double) -> GraphflowmincutRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_range_min(s : GraphflowmincutRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutRange::min(self : GraphflowmincutRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_range_max(s : GraphflowmincutRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutRange::max(self : GraphflowmincutRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_range_to_string(s : GraphflowmincutRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutRange::to_string(self : GraphflowmincutRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmincutSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_mincut_slice_make(size : Int) -> GraphflowmincutSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_mincut_slice_len(s : GraphflowmincutSlice) -> Int { s.size }
+pub fn GraphflowmincutSlice::len(self : GraphflowmincutSlice) -> Int { self.size }
 
-pub fn graph_flow_mincut_slice_get(s : GraphflowmincutSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmincutSlice::get(self : GraphflowmincutSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_mincut_slice_set(s : GraphflowmincutSlice, i : Int, v : Double) -> GraphflowmincutSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmincutSlice::set(self : GraphflowmincutSlice, i : Int, v : Double) -> GraphflowmincutSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_slice_sum(s : GraphflowmincutSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmincutSlice::sum(self : GraphflowmincutSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_mincut_slice_mean(s : GraphflowmincutSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmincutSlice::mean(self : GraphflowmincutSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_mincut_slice_scale(s : GraphflowmincutSlice, f : Double) -> GraphflowmincutSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmincutSlice::scale(self : GraphflowmincutSlice, f : Double) -> GraphflowmincutSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_slice_add(a : GraphflowmincutSlice, b : GraphflowmincutSlice) -> GraphflowmincutSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmincutSlice::add(self : GraphflowmincutSlice, other : GraphflowmincutSlice) -> GraphflowmincutSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_slice_copy(s : GraphflowmincutSlice) -> GraphflowmincutSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmincutSlice::copy(self : GraphflowmincutSlice) -> GraphflowmincutSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_slice_fill(s : GraphflowmincutSlice, v : Double) -> GraphflowmincutSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmincutSlice::fill(self : GraphflowmincutSlice, v : Double) -> GraphflowmincutSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_mincut_slice_min(s : GraphflowmincutSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowmincutSlice::min(self : GraphflowmincutSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_mincut_slice_max(s : GraphflowmincutSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowmincutSlice::max(self : GraphflowmincutSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_mincut_slice_to_string(s : GraphflowmincutSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmincutSlice::to_string(self : GraphflowmincutSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

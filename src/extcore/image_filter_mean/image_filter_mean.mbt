@@ -351,45 +351,45 @@ pub fn image_filter_mean_frame_make(size : Int) -> ImagefiltermeanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_frame_len(s : ImagefiltermeanFrame) -> Int { s.size }
+pub fn ImagefiltermeanFrame::len(self : ImagefiltermeanFrame) -> Int { self.size }
 
-pub fn image_filter_mean_frame_get(s : ImagefiltermeanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanFrame::get(self : ImagefiltermeanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_frame_set(s : ImagefiltermeanFrame, i : Int, v : Double) -> ImagefiltermeanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanFrame::set(self : ImagefiltermeanFrame, i : Int, v : Double) -> ImagefiltermeanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_frame_sum(s : ImagefiltermeanFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanFrame::sum(self : ImagefiltermeanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_frame_mean(s : ImagefiltermeanFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanFrame::mean(self : ImagefiltermeanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_frame_scale(s : ImagefiltermeanFrame, f : Double) -> ImagefiltermeanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanFrame::scale(self : ImagefiltermeanFrame, f : Double) -> ImagefiltermeanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_frame_add(a : ImagefiltermeanFrame, b : ImagefiltermeanFrame) -> ImagefiltermeanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanFrame::add(self : ImagefiltermeanFrame, other : ImagefiltermeanFrame) -> ImagefiltermeanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_frame_copy(s : ImagefiltermeanFrame) -> ImagefiltermeanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanFrame::copy(self : ImagefiltermeanFrame) -> ImagefiltermeanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_frame_fill(s : ImagefiltermeanFrame, v : Double) -> ImagefiltermeanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanFrame::fill(self : ImagefiltermeanFrame, v : Double) -> ImagefiltermeanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_frame_min(s : ImagefiltermeanFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanFrame::min(self : ImagefiltermeanFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_frame_max(s : ImagefiltermeanFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanFrame::max(self : ImagefiltermeanFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_frame_to_string(s : ImagefiltermeanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanFrame::to_string(self : ImagefiltermeanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanTable {
@@ -402,45 +402,45 @@ pub fn image_filter_mean_table_make(size : Int) -> ImagefiltermeanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_table_len(s : ImagefiltermeanTable) -> Int { s.size }
+pub fn ImagefiltermeanTable::len(self : ImagefiltermeanTable) -> Int { self.size }
 
-pub fn image_filter_mean_table_get(s : ImagefiltermeanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanTable::get(self : ImagefiltermeanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_table_set(s : ImagefiltermeanTable, i : Int, v : Double) -> ImagefiltermeanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanTable::set(self : ImagefiltermeanTable, i : Int, v : Double) -> ImagefiltermeanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_table_sum(s : ImagefiltermeanTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanTable::sum(self : ImagefiltermeanTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_table_mean(s : ImagefiltermeanTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanTable::mean(self : ImagefiltermeanTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_table_scale(s : ImagefiltermeanTable, f : Double) -> ImagefiltermeanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanTable::scale(self : ImagefiltermeanTable, f : Double) -> ImagefiltermeanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_table_add(a : ImagefiltermeanTable, b : ImagefiltermeanTable) -> ImagefiltermeanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanTable::add(self : ImagefiltermeanTable, other : ImagefiltermeanTable) -> ImagefiltermeanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_table_copy(s : ImagefiltermeanTable) -> ImagefiltermeanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanTable::copy(self : ImagefiltermeanTable) -> ImagefiltermeanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_table_fill(s : ImagefiltermeanTable, v : Double) -> ImagefiltermeanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanTable::fill(self : ImagefiltermeanTable, v : Double) -> ImagefiltermeanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_table_min(s : ImagefiltermeanTable) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanTable::min(self : ImagefiltermeanTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_table_max(s : ImagefiltermeanTable) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanTable::max(self : ImagefiltermeanTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_table_to_string(s : ImagefiltermeanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanTable::to_string(self : ImagefiltermeanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_mean_graphn_make(size : Int) -> ImagefiltermeanGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_graphn_len(s : ImagefiltermeanGraphN) -> Int { s.size }
+pub fn ImagefiltermeanGraphN::len(self : ImagefiltermeanGraphN) -> Int { self.size }
 
-pub fn image_filter_mean_graphn_get(s : ImagefiltermeanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanGraphN::get(self : ImagefiltermeanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_graphn_set(s : ImagefiltermeanGraphN, i : Int, v : Double) -> ImagefiltermeanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanGraphN::set(self : ImagefiltermeanGraphN, i : Int, v : Double) -> ImagefiltermeanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_graphn_sum(s : ImagefiltermeanGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanGraphN::sum(self : ImagefiltermeanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_graphn_mean(s : ImagefiltermeanGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanGraphN::mean(self : ImagefiltermeanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_graphn_scale(s : ImagefiltermeanGraphN, f : Double) -> ImagefiltermeanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanGraphN::scale(self : ImagefiltermeanGraphN, f : Double) -> ImagefiltermeanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_graphn_add(a : ImagefiltermeanGraphN, b : ImagefiltermeanGraphN) -> ImagefiltermeanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanGraphN::add(self : ImagefiltermeanGraphN, other : ImagefiltermeanGraphN) -> ImagefiltermeanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_graphn_copy(s : ImagefiltermeanGraphN) -> ImagefiltermeanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanGraphN::copy(self : ImagefiltermeanGraphN) -> ImagefiltermeanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_graphn_fill(s : ImagefiltermeanGraphN, v : Double) -> ImagefiltermeanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanGraphN::fill(self : ImagefiltermeanGraphN, v : Double) -> ImagefiltermeanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_graphn_min(s : ImagefiltermeanGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanGraphN::min(self : ImagefiltermeanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_graphn_max(s : ImagefiltermeanGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanGraphN::max(self : ImagefiltermeanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_graphn_to_string(s : ImagefiltermeanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanGraphN::to_string(self : ImagefiltermeanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanNode {
@@ -504,45 +504,45 @@ pub fn image_filter_mean_node_make(size : Int) -> ImagefiltermeanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_node_len(s : ImagefiltermeanNode) -> Int { s.size }
+pub fn ImagefiltermeanNode::len(self : ImagefiltermeanNode) -> Int { self.size }
 
-pub fn image_filter_mean_node_get(s : ImagefiltermeanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanNode::get(self : ImagefiltermeanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_node_set(s : ImagefiltermeanNode, i : Int, v : Double) -> ImagefiltermeanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanNode::set(self : ImagefiltermeanNode, i : Int, v : Double) -> ImagefiltermeanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_node_sum(s : ImagefiltermeanNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanNode::sum(self : ImagefiltermeanNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_node_mean(s : ImagefiltermeanNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanNode::mean(self : ImagefiltermeanNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_node_scale(s : ImagefiltermeanNode, f : Double) -> ImagefiltermeanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanNode::scale(self : ImagefiltermeanNode, f : Double) -> ImagefiltermeanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_node_add(a : ImagefiltermeanNode, b : ImagefiltermeanNode) -> ImagefiltermeanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanNode::add(self : ImagefiltermeanNode, other : ImagefiltermeanNode) -> ImagefiltermeanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_node_copy(s : ImagefiltermeanNode) -> ImagefiltermeanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanNode::copy(self : ImagefiltermeanNode) -> ImagefiltermeanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_node_fill(s : ImagefiltermeanNode, v : Double) -> ImagefiltermeanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanNode::fill(self : ImagefiltermeanNode, v : Double) -> ImagefiltermeanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_node_min(s : ImagefiltermeanNode) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanNode::min(self : ImagefiltermeanNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_node_max(s : ImagefiltermeanNode) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanNode::max(self : ImagefiltermeanNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_node_to_string(s : ImagefiltermeanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanNode::to_string(self : ImagefiltermeanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_mean_edge_make(size : Int) -> ImagefiltermeanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_edge_len(s : ImagefiltermeanEdge) -> Int { s.size }
+pub fn ImagefiltermeanEdge::len(self : ImagefiltermeanEdge) -> Int { self.size }
 
-pub fn image_filter_mean_edge_get(s : ImagefiltermeanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanEdge::get(self : ImagefiltermeanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_edge_set(s : ImagefiltermeanEdge, i : Int, v : Double) -> ImagefiltermeanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanEdge::set(self : ImagefiltermeanEdge, i : Int, v : Double) -> ImagefiltermeanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_edge_sum(s : ImagefiltermeanEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanEdge::sum(self : ImagefiltermeanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_edge_mean(s : ImagefiltermeanEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanEdge::mean(self : ImagefiltermeanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_edge_scale(s : ImagefiltermeanEdge, f : Double) -> ImagefiltermeanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanEdge::scale(self : ImagefiltermeanEdge, f : Double) -> ImagefiltermeanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_edge_add(a : ImagefiltermeanEdge, b : ImagefiltermeanEdge) -> ImagefiltermeanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanEdge::add(self : ImagefiltermeanEdge, other : ImagefiltermeanEdge) -> ImagefiltermeanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_edge_copy(s : ImagefiltermeanEdge) -> ImagefiltermeanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanEdge::copy(self : ImagefiltermeanEdge) -> ImagefiltermeanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_edge_fill(s : ImagefiltermeanEdge, v : Double) -> ImagefiltermeanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanEdge::fill(self : ImagefiltermeanEdge, v : Double) -> ImagefiltermeanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_edge_min(s : ImagefiltermeanEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanEdge::min(self : ImagefiltermeanEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_edge_max(s : ImagefiltermeanEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanEdge::max(self : ImagefiltermeanEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_edge_to_string(s : ImagefiltermeanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanEdge::to_string(self : ImagefiltermeanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanPath {
@@ -606,45 +606,45 @@ pub fn image_filter_mean_path_make(size : Int) -> ImagefiltermeanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_path_len(s : ImagefiltermeanPath) -> Int { s.size }
+pub fn ImagefiltermeanPath::len(self : ImagefiltermeanPath) -> Int { self.size }
 
-pub fn image_filter_mean_path_get(s : ImagefiltermeanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanPath::get(self : ImagefiltermeanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_path_set(s : ImagefiltermeanPath, i : Int, v : Double) -> ImagefiltermeanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanPath::set(self : ImagefiltermeanPath, i : Int, v : Double) -> ImagefiltermeanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_path_sum(s : ImagefiltermeanPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanPath::sum(self : ImagefiltermeanPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_path_mean(s : ImagefiltermeanPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanPath::mean(self : ImagefiltermeanPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_path_scale(s : ImagefiltermeanPath, f : Double) -> ImagefiltermeanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanPath::scale(self : ImagefiltermeanPath, f : Double) -> ImagefiltermeanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_path_add(a : ImagefiltermeanPath, b : ImagefiltermeanPath) -> ImagefiltermeanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanPath::add(self : ImagefiltermeanPath, other : ImagefiltermeanPath) -> ImagefiltermeanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_path_copy(s : ImagefiltermeanPath) -> ImagefiltermeanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanPath::copy(self : ImagefiltermeanPath) -> ImagefiltermeanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_path_fill(s : ImagefiltermeanPath, v : Double) -> ImagefiltermeanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanPath::fill(self : ImagefiltermeanPath, v : Double) -> ImagefiltermeanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_path_min(s : ImagefiltermeanPath) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanPath::min(self : ImagefiltermeanPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_path_max(s : ImagefiltermeanPath) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanPath::max(self : ImagefiltermeanPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_path_to_string(s : ImagefiltermeanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanPath::to_string(self : ImagefiltermeanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_mean_cluster_make(size : Int) -> ImagefiltermeanCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_cluster_len(s : ImagefiltermeanCluster) -> Int { s.size }
+pub fn ImagefiltermeanCluster::len(self : ImagefiltermeanCluster) -> Int { self.size }
 
-pub fn image_filter_mean_cluster_get(s : ImagefiltermeanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanCluster::get(self : ImagefiltermeanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_cluster_set(s : ImagefiltermeanCluster, i : Int, v : Double) -> ImagefiltermeanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCluster::set(self : ImagefiltermeanCluster, i : Int, v : Double) -> ImagefiltermeanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cluster_sum(s : ImagefiltermeanCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanCluster::sum(self : ImagefiltermeanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_cluster_mean(s : ImagefiltermeanCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanCluster::mean(self : ImagefiltermeanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_cluster_scale(s : ImagefiltermeanCluster, f : Double) -> ImagefiltermeanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCluster::scale(self : ImagefiltermeanCluster, f : Double) -> ImagefiltermeanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cluster_add(a : ImagefiltermeanCluster, b : ImagefiltermeanCluster) -> ImagefiltermeanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanCluster::add(self : ImagefiltermeanCluster, other : ImagefiltermeanCluster) -> ImagefiltermeanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_cluster_copy(s : ImagefiltermeanCluster) -> ImagefiltermeanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCluster::copy(self : ImagefiltermeanCluster) -> ImagefiltermeanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cluster_fill(s : ImagefiltermeanCluster, v : Double) -> ImagefiltermeanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCluster::fill(self : ImagefiltermeanCluster, v : Double) -> ImagefiltermeanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cluster_min(s : ImagefiltermeanCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanCluster::min(self : ImagefiltermeanCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_cluster_max(s : ImagefiltermeanCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanCluster::max(self : ImagefiltermeanCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_cluster_to_string(s : ImagefiltermeanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanCluster::to_string(self : ImagefiltermeanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanModel {
@@ -708,45 +708,45 @@ pub fn image_filter_mean_model_make(size : Int) -> ImagefiltermeanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_model_len(s : ImagefiltermeanModel) -> Int { s.size }
+pub fn ImagefiltermeanModel::len(self : ImagefiltermeanModel) -> Int { self.size }
 
-pub fn image_filter_mean_model_get(s : ImagefiltermeanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanModel::get(self : ImagefiltermeanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_model_set(s : ImagefiltermeanModel, i : Int, v : Double) -> ImagefiltermeanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanModel::set(self : ImagefiltermeanModel, i : Int, v : Double) -> ImagefiltermeanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_model_sum(s : ImagefiltermeanModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanModel::sum(self : ImagefiltermeanModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_model_mean(s : ImagefiltermeanModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanModel::mean(self : ImagefiltermeanModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_model_scale(s : ImagefiltermeanModel, f : Double) -> ImagefiltermeanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanModel::scale(self : ImagefiltermeanModel, f : Double) -> ImagefiltermeanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_model_add(a : ImagefiltermeanModel, b : ImagefiltermeanModel) -> ImagefiltermeanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanModel::add(self : ImagefiltermeanModel, other : ImagefiltermeanModel) -> ImagefiltermeanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_model_copy(s : ImagefiltermeanModel) -> ImagefiltermeanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanModel::copy(self : ImagefiltermeanModel) -> ImagefiltermeanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_model_fill(s : ImagefiltermeanModel, v : Double) -> ImagefiltermeanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanModel::fill(self : ImagefiltermeanModel, v : Double) -> ImagefiltermeanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_model_min(s : ImagefiltermeanModel) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanModel::min(self : ImagefiltermeanModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_model_max(s : ImagefiltermeanModel) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanModel::max(self : ImagefiltermeanModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_model_to_string(s : ImagefiltermeanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanModel::to_string(self : ImagefiltermeanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_mean_layer_make(size : Int) -> ImagefiltermeanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_layer_len(s : ImagefiltermeanLayer) -> Int { s.size }
+pub fn ImagefiltermeanLayer::len(self : ImagefiltermeanLayer) -> Int { self.size }
 
-pub fn image_filter_mean_layer_get(s : ImagefiltermeanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanLayer::get(self : ImagefiltermeanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_layer_set(s : ImagefiltermeanLayer, i : Int, v : Double) -> ImagefiltermeanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanLayer::set(self : ImagefiltermeanLayer, i : Int, v : Double) -> ImagefiltermeanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_layer_sum(s : ImagefiltermeanLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanLayer::sum(self : ImagefiltermeanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_layer_mean(s : ImagefiltermeanLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanLayer::mean(self : ImagefiltermeanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_layer_scale(s : ImagefiltermeanLayer, f : Double) -> ImagefiltermeanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanLayer::scale(self : ImagefiltermeanLayer, f : Double) -> ImagefiltermeanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_layer_add(a : ImagefiltermeanLayer, b : ImagefiltermeanLayer) -> ImagefiltermeanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanLayer::add(self : ImagefiltermeanLayer, other : ImagefiltermeanLayer) -> ImagefiltermeanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_layer_copy(s : ImagefiltermeanLayer) -> ImagefiltermeanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanLayer::copy(self : ImagefiltermeanLayer) -> ImagefiltermeanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_layer_fill(s : ImagefiltermeanLayer, v : Double) -> ImagefiltermeanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanLayer::fill(self : ImagefiltermeanLayer, v : Double) -> ImagefiltermeanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_layer_min(s : ImagefiltermeanLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanLayer::min(self : ImagefiltermeanLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_layer_max(s : ImagefiltermeanLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanLayer::max(self : ImagefiltermeanLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_layer_to_string(s : ImagefiltermeanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanLayer::to_string(self : ImagefiltermeanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_mean_buffer_make(size : Int) -> ImagefiltermeanBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_buffer_len(s : ImagefiltermeanBuffer) -> Int { s.size }
+pub fn ImagefiltermeanBuffer::len(self : ImagefiltermeanBuffer) -> Int { self.size }
 
-pub fn image_filter_mean_buffer_get(s : ImagefiltermeanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanBuffer::get(self : ImagefiltermeanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_buffer_set(s : ImagefiltermeanBuffer, i : Int, v : Double) -> ImagefiltermeanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanBuffer::set(self : ImagefiltermeanBuffer, i : Int, v : Double) -> ImagefiltermeanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_buffer_sum(s : ImagefiltermeanBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanBuffer::sum(self : ImagefiltermeanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_buffer_mean(s : ImagefiltermeanBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanBuffer::mean(self : ImagefiltermeanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_buffer_scale(s : ImagefiltermeanBuffer, f : Double) -> ImagefiltermeanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanBuffer::scale(self : ImagefiltermeanBuffer, f : Double) -> ImagefiltermeanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_buffer_add(a : ImagefiltermeanBuffer, b : ImagefiltermeanBuffer) -> ImagefiltermeanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanBuffer::add(self : ImagefiltermeanBuffer, other : ImagefiltermeanBuffer) -> ImagefiltermeanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_buffer_copy(s : ImagefiltermeanBuffer) -> ImagefiltermeanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanBuffer::copy(self : ImagefiltermeanBuffer) -> ImagefiltermeanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_buffer_fill(s : ImagefiltermeanBuffer, v : Double) -> ImagefiltermeanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanBuffer::fill(self : ImagefiltermeanBuffer, v : Double) -> ImagefiltermeanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_buffer_min(s : ImagefiltermeanBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanBuffer::min(self : ImagefiltermeanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_buffer_max(s : ImagefiltermeanBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanBuffer::max(self : ImagefiltermeanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_buffer_to_string(s : ImagefiltermeanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanBuffer::to_string(self : ImagefiltermeanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_mean_cursor_make(size : Int) -> ImagefiltermeanCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_cursor_len(s : ImagefiltermeanCursor) -> Int { s.size }
+pub fn ImagefiltermeanCursor::len(self : ImagefiltermeanCursor) -> Int { self.size }
 
-pub fn image_filter_mean_cursor_get(s : ImagefiltermeanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanCursor::get(self : ImagefiltermeanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_cursor_set(s : ImagefiltermeanCursor, i : Int, v : Double) -> ImagefiltermeanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCursor::set(self : ImagefiltermeanCursor, i : Int, v : Double) -> ImagefiltermeanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cursor_sum(s : ImagefiltermeanCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanCursor::sum(self : ImagefiltermeanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_cursor_mean(s : ImagefiltermeanCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanCursor::mean(self : ImagefiltermeanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_cursor_scale(s : ImagefiltermeanCursor, f : Double) -> ImagefiltermeanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCursor::scale(self : ImagefiltermeanCursor, f : Double) -> ImagefiltermeanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cursor_add(a : ImagefiltermeanCursor, b : ImagefiltermeanCursor) -> ImagefiltermeanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanCursor::add(self : ImagefiltermeanCursor, other : ImagefiltermeanCursor) -> ImagefiltermeanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_cursor_copy(s : ImagefiltermeanCursor) -> ImagefiltermeanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCursor::copy(self : ImagefiltermeanCursor) -> ImagefiltermeanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cursor_fill(s : ImagefiltermeanCursor, v : Double) -> ImagefiltermeanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanCursor::fill(self : ImagefiltermeanCursor, v : Double) -> ImagefiltermeanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_cursor_min(s : ImagefiltermeanCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanCursor::min(self : ImagefiltermeanCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_cursor_max(s : ImagefiltermeanCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanCursor::max(self : ImagefiltermeanCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_cursor_to_string(s : ImagefiltermeanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanCursor::to_string(self : ImagefiltermeanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanView {
@@ -912,45 +912,45 @@ pub fn image_filter_mean_view_make(size : Int) -> ImagefiltermeanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_view_len(s : ImagefiltermeanView) -> Int { s.size }
+pub fn ImagefiltermeanView::len(self : ImagefiltermeanView) -> Int { self.size }
 
-pub fn image_filter_mean_view_get(s : ImagefiltermeanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanView::get(self : ImagefiltermeanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_view_set(s : ImagefiltermeanView, i : Int, v : Double) -> ImagefiltermeanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanView::set(self : ImagefiltermeanView, i : Int, v : Double) -> ImagefiltermeanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_view_sum(s : ImagefiltermeanView) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanView::sum(self : ImagefiltermeanView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_view_mean(s : ImagefiltermeanView) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanView::mean(self : ImagefiltermeanView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_view_scale(s : ImagefiltermeanView, f : Double) -> ImagefiltermeanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanView::scale(self : ImagefiltermeanView, f : Double) -> ImagefiltermeanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_view_add(a : ImagefiltermeanView, b : ImagefiltermeanView) -> ImagefiltermeanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanView::add(self : ImagefiltermeanView, other : ImagefiltermeanView) -> ImagefiltermeanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_view_copy(s : ImagefiltermeanView) -> ImagefiltermeanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanView::copy(self : ImagefiltermeanView) -> ImagefiltermeanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_view_fill(s : ImagefiltermeanView, v : Double) -> ImagefiltermeanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanView::fill(self : ImagefiltermeanView, v : Double) -> ImagefiltermeanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_view_min(s : ImagefiltermeanView) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanView::min(self : ImagefiltermeanView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_view_max(s : ImagefiltermeanView) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanView::max(self : ImagefiltermeanView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_view_to_string(s : ImagefiltermeanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanView::to_string(self : ImagefiltermeanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanRange {
@@ -963,45 +963,45 @@ pub fn image_filter_mean_range_make(size : Int) -> ImagefiltermeanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_range_len(s : ImagefiltermeanRange) -> Int { s.size }
+pub fn ImagefiltermeanRange::len(self : ImagefiltermeanRange) -> Int { self.size }
 
-pub fn image_filter_mean_range_get(s : ImagefiltermeanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanRange::get(self : ImagefiltermeanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_range_set(s : ImagefiltermeanRange, i : Int, v : Double) -> ImagefiltermeanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanRange::set(self : ImagefiltermeanRange, i : Int, v : Double) -> ImagefiltermeanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_range_sum(s : ImagefiltermeanRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanRange::sum(self : ImagefiltermeanRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_range_mean(s : ImagefiltermeanRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanRange::mean(self : ImagefiltermeanRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_range_scale(s : ImagefiltermeanRange, f : Double) -> ImagefiltermeanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanRange::scale(self : ImagefiltermeanRange, f : Double) -> ImagefiltermeanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_range_add(a : ImagefiltermeanRange, b : ImagefiltermeanRange) -> ImagefiltermeanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanRange::add(self : ImagefiltermeanRange, other : ImagefiltermeanRange) -> ImagefiltermeanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_range_copy(s : ImagefiltermeanRange) -> ImagefiltermeanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanRange::copy(self : ImagefiltermeanRange) -> ImagefiltermeanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_range_fill(s : ImagefiltermeanRange, v : Double) -> ImagefiltermeanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanRange::fill(self : ImagefiltermeanRange, v : Double) -> ImagefiltermeanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_range_min(s : ImagefiltermeanRange) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanRange::min(self : ImagefiltermeanRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_range_max(s : ImagefiltermeanRange) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanRange::max(self : ImagefiltermeanRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_range_to_string(s : ImagefiltermeanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanRange::to_string(self : ImagefiltermeanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermeanSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_mean_slice_make(size : Int) -> ImagefiltermeanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_mean_slice_len(s : ImagefiltermeanSlice) -> Int { s.size }
+pub fn ImagefiltermeanSlice::len(self : ImagefiltermeanSlice) -> Int { self.size }
 
-pub fn image_filter_mean_slice_get(s : ImagefiltermeanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermeanSlice::get(self : ImagefiltermeanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_mean_slice_set(s : ImagefiltermeanSlice, i : Int, v : Double) -> ImagefiltermeanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermeanSlice::set(self : ImagefiltermeanSlice, i : Int, v : Double) -> ImagefiltermeanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_slice_sum(s : ImagefiltermeanSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermeanSlice::sum(self : ImagefiltermeanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_mean_slice_mean(s : ImagefiltermeanSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermeanSlice::mean(self : ImagefiltermeanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_mean_slice_scale(s : ImagefiltermeanSlice, f : Double) -> ImagefiltermeanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanSlice::scale(self : ImagefiltermeanSlice, f : Double) -> ImagefiltermeanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_slice_add(a : ImagefiltermeanSlice, b : ImagefiltermeanSlice) -> ImagefiltermeanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermeanSlice::add(self : ImagefiltermeanSlice, other : ImagefiltermeanSlice) -> ImagefiltermeanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_mean_slice_copy(s : ImagefiltermeanSlice) -> ImagefiltermeanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanSlice::copy(self : ImagefiltermeanSlice) -> ImagefiltermeanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_slice_fill(s : ImagefiltermeanSlice, v : Double) -> ImagefiltermeanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermeanSlice::fill(self : ImagefiltermeanSlice, v : Double) -> ImagefiltermeanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_mean_slice_min(s : ImagefiltermeanSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermeanSlice::min(self : ImagefiltermeanSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_mean_slice_max(s : ImagefiltermeanSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermeanSlice::max(self : ImagefiltermeanSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_mean_slice_to_string(s : ImagefiltermeanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermeanSlice::to_string(self : ImagefiltermeanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

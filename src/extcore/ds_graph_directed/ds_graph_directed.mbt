@@ -351,45 +351,45 @@ pub fn ds_graph_directed_frame_make(size : Int) -> DsgraphdirectedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_frame_len(s : DsgraphdirectedFrame) -> Int { s.size }
+pub fn DsgraphdirectedFrame::len(self : DsgraphdirectedFrame) -> Int { self.size }
 
-pub fn ds_graph_directed_frame_get(s : DsgraphdirectedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedFrame::get(self : DsgraphdirectedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_frame_set(s : DsgraphdirectedFrame, i : Int, v : Double) -> DsgraphdirectedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedFrame::set(self : DsgraphdirectedFrame, i : Int, v : Double) -> DsgraphdirectedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_frame_sum(s : DsgraphdirectedFrame) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedFrame::sum(self : DsgraphdirectedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_frame_mean(s : DsgraphdirectedFrame) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedFrame::mean(self : DsgraphdirectedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_frame_scale(s : DsgraphdirectedFrame, f : Double) -> DsgraphdirectedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedFrame::scale(self : DsgraphdirectedFrame, f : Double) -> DsgraphdirectedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_frame_add(a : DsgraphdirectedFrame, b : DsgraphdirectedFrame) -> DsgraphdirectedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedFrame::add(self : DsgraphdirectedFrame, other : DsgraphdirectedFrame) -> DsgraphdirectedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_frame_copy(s : DsgraphdirectedFrame) -> DsgraphdirectedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedFrame::copy(self : DsgraphdirectedFrame) -> DsgraphdirectedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_frame_fill(s : DsgraphdirectedFrame, v : Double) -> DsgraphdirectedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedFrame::fill(self : DsgraphdirectedFrame, v : Double) -> DsgraphdirectedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_frame_min(s : DsgraphdirectedFrame) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedFrame::min(self : DsgraphdirectedFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_frame_max(s : DsgraphdirectedFrame) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedFrame::max(self : DsgraphdirectedFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_frame_to_string(s : DsgraphdirectedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedFrame::to_string(self : DsgraphdirectedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedTable {
@@ -402,45 +402,45 @@ pub fn ds_graph_directed_table_make(size : Int) -> DsgraphdirectedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_table_len(s : DsgraphdirectedTable) -> Int { s.size }
+pub fn DsgraphdirectedTable::len(self : DsgraphdirectedTable) -> Int { self.size }
 
-pub fn ds_graph_directed_table_get(s : DsgraphdirectedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedTable::get(self : DsgraphdirectedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_table_set(s : DsgraphdirectedTable, i : Int, v : Double) -> DsgraphdirectedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedTable::set(self : DsgraphdirectedTable, i : Int, v : Double) -> DsgraphdirectedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_table_sum(s : DsgraphdirectedTable) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedTable::sum(self : DsgraphdirectedTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_table_mean(s : DsgraphdirectedTable) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedTable::mean(self : DsgraphdirectedTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_table_scale(s : DsgraphdirectedTable, f : Double) -> DsgraphdirectedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedTable::scale(self : DsgraphdirectedTable, f : Double) -> DsgraphdirectedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_table_add(a : DsgraphdirectedTable, b : DsgraphdirectedTable) -> DsgraphdirectedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedTable::add(self : DsgraphdirectedTable, other : DsgraphdirectedTable) -> DsgraphdirectedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_table_copy(s : DsgraphdirectedTable) -> DsgraphdirectedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedTable::copy(self : DsgraphdirectedTable) -> DsgraphdirectedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_table_fill(s : DsgraphdirectedTable, v : Double) -> DsgraphdirectedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedTable::fill(self : DsgraphdirectedTable, v : Double) -> DsgraphdirectedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_table_min(s : DsgraphdirectedTable) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedTable::min(self : DsgraphdirectedTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_table_max(s : DsgraphdirectedTable) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedTable::max(self : DsgraphdirectedTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_table_to_string(s : DsgraphdirectedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedTable::to_string(self : DsgraphdirectedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedGraphN {
@@ -453,45 +453,45 @@ pub fn ds_graph_directed_graphn_make(size : Int) -> DsgraphdirectedGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_graphn_len(s : DsgraphdirectedGraphN) -> Int { s.size }
+pub fn DsgraphdirectedGraphN::len(self : DsgraphdirectedGraphN) -> Int { self.size }
 
-pub fn ds_graph_directed_graphn_get(s : DsgraphdirectedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedGraphN::get(self : DsgraphdirectedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_graphn_set(s : DsgraphdirectedGraphN, i : Int, v : Double) -> DsgraphdirectedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedGraphN::set(self : DsgraphdirectedGraphN, i : Int, v : Double) -> DsgraphdirectedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_graphn_sum(s : DsgraphdirectedGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedGraphN::sum(self : DsgraphdirectedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_graphn_mean(s : DsgraphdirectedGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedGraphN::mean(self : DsgraphdirectedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_graphn_scale(s : DsgraphdirectedGraphN, f : Double) -> DsgraphdirectedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedGraphN::scale(self : DsgraphdirectedGraphN, f : Double) -> DsgraphdirectedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_graphn_add(a : DsgraphdirectedGraphN, b : DsgraphdirectedGraphN) -> DsgraphdirectedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedGraphN::add(self : DsgraphdirectedGraphN, other : DsgraphdirectedGraphN) -> DsgraphdirectedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_graphn_copy(s : DsgraphdirectedGraphN) -> DsgraphdirectedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedGraphN::copy(self : DsgraphdirectedGraphN) -> DsgraphdirectedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_graphn_fill(s : DsgraphdirectedGraphN, v : Double) -> DsgraphdirectedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedGraphN::fill(self : DsgraphdirectedGraphN, v : Double) -> DsgraphdirectedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_graphn_min(s : DsgraphdirectedGraphN) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedGraphN::min(self : DsgraphdirectedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_graphn_max(s : DsgraphdirectedGraphN) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedGraphN::max(self : DsgraphdirectedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_graphn_to_string(s : DsgraphdirectedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedGraphN::to_string(self : DsgraphdirectedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedNode {
@@ -504,45 +504,45 @@ pub fn ds_graph_directed_node_make(size : Int) -> DsgraphdirectedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_node_len(s : DsgraphdirectedNode) -> Int { s.size }
+pub fn DsgraphdirectedNode::len(self : DsgraphdirectedNode) -> Int { self.size }
 
-pub fn ds_graph_directed_node_get(s : DsgraphdirectedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedNode::get(self : DsgraphdirectedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_node_set(s : DsgraphdirectedNode, i : Int, v : Double) -> DsgraphdirectedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedNode::set(self : DsgraphdirectedNode, i : Int, v : Double) -> DsgraphdirectedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_node_sum(s : DsgraphdirectedNode) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedNode::sum(self : DsgraphdirectedNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_node_mean(s : DsgraphdirectedNode) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedNode::mean(self : DsgraphdirectedNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_node_scale(s : DsgraphdirectedNode, f : Double) -> DsgraphdirectedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedNode::scale(self : DsgraphdirectedNode, f : Double) -> DsgraphdirectedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_node_add(a : DsgraphdirectedNode, b : DsgraphdirectedNode) -> DsgraphdirectedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedNode::add(self : DsgraphdirectedNode, other : DsgraphdirectedNode) -> DsgraphdirectedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_node_copy(s : DsgraphdirectedNode) -> DsgraphdirectedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedNode::copy(self : DsgraphdirectedNode) -> DsgraphdirectedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_node_fill(s : DsgraphdirectedNode, v : Double) -> DsgraphdirectedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedNode::fill(self : DsgraphdirectedNode, v : Double) -> DsgraphdirectedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_node_min(s : DsgraphdirectedNode) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedNode::min(self : DsgraphdirectedNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_node_max(s : DsgraphdirectedNode) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedNode::max(self : DsgraphdirectedNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_node_to_string(s : DsgraphdirectedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedNode::to_string(self : DsgraphdirectedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedEdge {
@@ -555,45 +555,45 @@ pub fn ds_graph_directed_edge_make(size : Int) -> DsgraphdirectedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_edge_len(s : DsgraphdirectedEdge) -> Int { s.size }
+pub fn DsgraphdirectedEdge::len(self : DsgraphdirectedEdge) -> Int { self.size }
 
-pub fn ds_graph_directed_edge_get(s : DsgraphdirectedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedEdge::get(self : DsgraphdirectedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_edge_set(s : DsgraphdirectedEdge, i : Int, v : Double) -> DsgraphdirectedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedEdge::set(self : DsgraphdirectedEdge, i : Int, v : Double) -> DsgraphdirectedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_edge_sum(s : DsgraphdirectedEdge) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedEdge::sum(self : DsgraphdirectedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_edge_mean(s : DsgraphdirectedEdge) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedEdge::mean(self : DsgraphdirectedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_edge_scale(s : DsgraphdirectedEdge, f : Double) -> DsgraphdirectedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedEdge::scale(self : DsgraphdirectedEdge, f : Double) -> DsgraphdirectedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_edge_add(a : DsgraphdirectedEdge, b : DsgraphdirectedEdge) -> DsgraphdirectedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedEdge::add(self : DsgraphdirectedEdge, other : DsgraphdirectedEdge) -> DsgraphdirectedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_edge_copy(s : DsgraphdirectedEdge) -> DsgraphdirectedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedEdge::copy(self : DsgraphdirectedEdge) -> DsgraphdirectedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_edge_fill(s : DsgraphdirectedEdge, v : Double) -> DsgraphdirectedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedEdge::fill(self : DsgraphdirectedEdge, v : Double) -> DsgraphdirectedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_edge_min(s : DsgraphdirectedEdge) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedEdge::min(self : DsgraphdirectedEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_edge_max(s : DsgraphdirectedEdge) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedEdge::max(self : DsgraphdirectedEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_edge_to_string(s : DsgraphdirectedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedEdge::to_string(self : DsgraphdirectedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedPath {
@@ -606,45 +606,45 @@ pub fn ds_graph_directed_path_make(size : Int) -> DsgraphdirectedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_path_len(s : DsgraphdirectedPath) -> Int { s.size }
+pub fn DsgraphdirectedPath::len(self : DsgraphdirectedPath) -> Int { self.size }
 
-pub fn ds_graph_directed_path_get(s : DsgraphdirectedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedPath::get(self : DsgraphdirectedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_path_set(s : DsgraphdirectedPath, i : Int, v : Double) -> DsgraphdirectedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedPath::set(self : DsgraphdirectedPath, i : Int, v : Double) -> DsgraphdirectedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_path_sum(s : DsgraphdirectedPath) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedPath::sum(self : DsgraphdirectedPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_path_mean(s : DsgraphdirectedPath) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedPath::mean(self : DsgraphdirectedPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_path_scale(s : DsgraphdirectedPath, f : Double) -> DsgraphdirectedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedPath::scale(self : DsgraphdirectedPath, f : Double) -> DsgraphdirectedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_path_add(a : DsgraphdirectedPath, b : DsgraphdirectedPath) -> DsgraphdirectedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedPath::add(self : DsgraphdirectedPath, other : DsgraphdirectedPath) -> DsgraphdirectedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_path_copy(s : DsgraphdirectedPath) -> DsgraphdirectedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedPath::copy(self : DsgraphdirectedPath) -> DsgraphdirectedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_path_fill(s : DsgraphdirectedPath, v : Double) -> DsgraphdirectedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedPath::fill(self : DsgraphdirectedPath, v : Double) -> DsgraphdirectedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_path_min(s : DsgraphdirectedPath) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedPath::min(self : DsgraphdirectedPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_path_max(s : DsgraphdirectedPath) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedPath::max(self : DsgraphdirectedPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_path_to_string(s : DsgraphdirectedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedPath::to_string(self : DsgraphdirectedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedCluster {
@@ -657,45 +657,45 @@ pub fn ds_graph_directed_cluster_make(size : Int) -> DsgraphdirectedCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_cluster_len(s : DsgraphdirectedCluster) -> Int { s.size }
+pub fn DsgraphdirectedCluster::len(self : DsgraphdirectedCluster) -> Int { self.size }
 
-pub fn ds_graph_directed_cluster_get(s : DsgraphdirectedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedCluster::get(self : DsgraphdirectedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_cluster_set(s : DsgraphdirectedCluster, i : Int, v : Double) -> DsgraphdirectedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCluster::set(self : DsgraphdirectedCluster, i : Int, v : Double) -> DsgraphdirectedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cluster_sum(s : DsgraphdirectedCluster) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedCluster::sum(self : DsgraphdirectedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_cluster_mean(s : DsgraphdirectedCluster) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedCluster::mean(self : DsgraphdirectedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_cluster_scale(s : DsgraphdirectedCluster, f : Double) -> DsgraphdirectedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCluster::scale(self : DsgraphdirectedCluster, f : Double) -> DsgraphdirectedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cluster_add(a : DsgraphdirectedCluster, b : DsgraphdirectedCluster) -> DsgraphdirectedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedCluster::add(self : DsgraphdirectedCluster, other : DsgraphdirectedCluster) -> DsgraphdirectedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cluster_copy(s : DsgraphdirectedCluster) -> DsgraphdirectedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCluster::copy(self : DsgraphdirectedCluster) -> DsgraphdirectedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cluster_fill(s : DsgraphdirectedCluster, v : Double) -> DsgraphdirectedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCluster::fill(self : DsgraphdirectedCluster, v : Double) -> DsgraphdirectedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cluster_min(s : DsgraphdirectedCluster) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedCluster::min(self : DsgraphdirectedCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_cluster_max(s : DsgraphdirectedCluster) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedCluster::max(self : DsgraphdirectedCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_cluster_to_string(s : DsgraphdirectedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedCluster::to_string(self : DsgraphdirectedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedModel {
@@ -708,45 +708,45 @@ pub fn ds_graph_directed_model_make(size : Int) -> DsgraphdirectedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_model_len(s : DsgraphdirectedModel) -> Int { s.size }
+pub fn DsgraphdirectedModel::len(self : DsgraphdirectedModel) -> Int { self.size }
 
-pub fn ds_graph_directed_model_get(s : DsgraphdirectedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedModel::get(self : DsgraphdirectedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_model_set(s : DsgraphdirectedModel, i : Int, v : Double) -> DsgraphdirectedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedModel::set(self : DsgraphdirectedModel, i : Int, v : Double) -> DsgraphdirectedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_model_sum(s : DsgraphdirectedModel) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedModel::sum(self : DsgraphdirectedModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_model_mean(s : DsgraphdirectedModel) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedModel::mean(self : DsgraphdirectedModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_model_scale(s : DsgraphdirectedModel, f : Double) -> DsgraphdirectedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedModel::scale(self : DsgraphdirectedModel, f : Double) -> DsgraphdirectedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_model_add(a : DsgraphdirectedModel, b : DsgraphdirectedModel) -> DsgraphdirectedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedModel::add(self : DsgraphdirectedModel, other : DsgraphdirectedModel) -> DsgraphdirectedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_model_copy(s : DsgraphdirectedModel) -> DsgraphdirectedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedModel::copy(self : DsgraphdirectedModel) -> DsgraphdirectedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_model_fill(s : DsgraphdirectedModel, v : Double) -> DsgraphdirectedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedModel::fill(self : DsgraphdirectedModel, v : Double) -> DsgraphdirectedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_model_min(s : DsgraphdirectedModel) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedModel::min(self : DsgraphdirectedModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_model_max(s : DsgraphdirectedModel) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedModel::max(self : DsgraphdirectedModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_model_to_string(s : DsgraphdirectedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedModel::to_string(self : DsgraphdirectedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedLayer {
@@ -759,45 +759,45 @@ pub fn ds_graph_directed_layer_make(size : Int) -> DsgraphdirectedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_layer_len(s : DsgraphdirectedLayer) -> Int { s.size }
+pub fn DsgraphdirectedLayer::len(self : DsgraphdirectedLayer) -> Int { self.size }
 
-pub fn ds_graph_directed_layer_get(s : DsgraphdirectedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedLayer::get(self : DsgraphdirectedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_layer_set(s : DsgraphdirectedLayer, i : Int, v : Double) -> DsgraphdirectedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedLayer::set(self : DsgraphdirectedLayer, i : Int, v : Double) -> DsgraphdirectedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_layer_sum(s : DsgraphdirectedLayer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedLayer::sum(self : DsgraphdirectedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_layer_mean(s : DsgraphdirectedLayer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedLayer::mean(self : DsgraphdirectedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_layer_scale(s : DsgraphdirectedLayer, f : Double) -> DsgraphdirectedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedLayer::scale(self : DsgraphdirectedLayer, f : Double) -> DsgraphdirectedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_layer_add(a : DsgraphdirectedLayer, b : DsgraphdirectedLayer) -> DsgraphdirectedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedLayer::add(self : DsgraphdirectedLayer, other : DsgraphdirectedLayer) -> DsgraphdirectedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_layer_copy(s : DsgraphdirectedLayer) -> DsgraphdirectedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedLayer::copy(self : DsgraphdirectedLayer) -> DsgraphdirectedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_layer_fill(s : DsgraphdirectedLayer, v : Double) -> DsgraphdirectedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedLayer::fill(self : DsgraphdirectedLayer, v : Double) -> DsgraphdirectedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_layer_min(s : DsgraphdirectedLayer) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedLayer::min(self : DsgraphdirectedLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_layer_max(s : DsgraphdirectedLayer) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedLayer::max(self : DsgraphdirectedLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_layer_to_string(s : DsgraphdirectedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedLayer::to_string(self : DsgraphdirectedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedBuffer {
@@ -810,45 +810,45 @@ pub fn ds_graph_directed_buffer_make(size : Int) -> DsgraphdirectedBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_buffer_len(s : DsgraphdirectedBuffer) -> Int { s.size }
+pub fn DsgraphdirectedBuffer::len(self : DsgraphdirectedBuffer) -> Int { self.size }
 
-pub fn ds_graph_directed_buffer_get(s : DsgraphdirectedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedBuffer::get(self : DsgraphdirectedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_buffer_set(s : DsgraphdirectedBuffer, i : Int, v : Double) -> DsgraphdirectedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedBuffer::set(self : DsgraphdirectedBuffer, i : Int, v : Double) -> DsgraphdirectedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_buffer_sum(s : DsgraphdirectedBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedBuffer::sum(self : DsgraphdirectedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_buffer_mean(s : DsgraphdirectedBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedBuffer::mean(self : DsgraphdirectedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_buffer_scale(s : DsgraphdirectedBuffer, f : Double) -> DsgraphdirectedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedBuffer::scale(self : DsgraphdirectedBuffer, f : Double) -> DsgraphdirectedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_buffer_add(a : DsgraphdirectedBuffer, b : DsgraphdirectedBuffer) -> DsgraphdirectedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedBuffer::add(self : DsgraphdirectedBuffer, other : DsgraphdirectedBuffer) -> DsgraphdirectedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_buffer_copy(s : DsgraphdirectedBuffer) -> DsgraphdirectedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedBuffer::copy(self : DsgraphdirectedBuffer) -> DsgraphdirectedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_buffer_fill(s : DsgraphdirectedBuffer, v : Double) -> DsgraphdirectedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedBuffer::fill(self : DsgraphdirectedBuffer, v : Double) -> DsgraphdirectedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_buffer_min(s : DsgraphdirectedBuffer) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedBuffer::min(self : DsgraphdirectedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_buffer_max(s : DsgraphdirectedBuffer) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedBuffer::max(self : DsgraphdirectedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_buffer_to_string(s : DsgraphdirectedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedBuffer::to_string(self : DsgraphdirectedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedCursor {
@@ -861,45 +861,45 @@ pub fn ds_graph_directed_cursor_make(size : Int) -> DsgraphdirectedCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_cursor_len(s : DsgraphdirectedCursor) -> Int { s.size }
+pub fn DsgraphdirectedCursor::len(self : DsgraphdirectedCursor) -> Int { self.size }
 
-pub fn ds_graph_directed_cursor_get(s : DsgraphdirectedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedCursor::get(self : DsgraphdirectedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_cursor_set(s : DsgraphdirectedCursor, i : Int, v : Double) -> DsgraphdirectedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCursor::set(self : DsgraphdirectedCursor, i : Int, v : Double) -> DsgraphdirectedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cursor_sum(s : DsgraphdirectedCursor) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedCursor::sum(self : DsgraphdirectedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_cursor_mean(s : DsgraphdirectedCursor) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedCursor::mean(self : DsgraphdirectedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_cursor_scale(s : DsgraphdirectedCursor, f : Double) -> DsgraphdirectedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCursor::scale(self : DsgraphdirectedCursor, f : Double) -> DsgraphdirectedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cursor_add(a : DsgraphdirectedCursor, b : DsgraphdirectedCursor) -> DsgraphdirectedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedCursor::add(self : DsgraphdirectedCursor, other : DsgraphdirectedCursor) -> DsgraphdirectedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cursor_copy(s : DsgraphdirectedCursor) -> DsgraphdirectedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCursor::copy(self : DsgraphdirectedCursor) -> DsgraphdirectedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cursor_fill(s : DsgraphdirectedCursor, v : Double) -> DsgraphdirectedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedCursor::fill(self : DsgraphdirectedCursor, v : Double) -> DsgraphdirectedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_cursor_min(s : DsgraphdirectedCursor) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedCursor::min(self : DsgraphdirectedCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_cursor_max(s : DsgraphdirectedCursor) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedCursor::max(self : DsgraphdirectedCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_cursor_to_string(s : DsgraphdirectedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedCursor::to_string(self : DsgraphdirectedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedView {
@@ -912,45 +912,45 @@ pub fn ds_graph_directed_view_make(size : Int) -> DsgraphdirectedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_view_len(s : DsgraphdirectedView) -> Int { s.size }
+pub fn DsgraphdirectedView::len(self : DsgraphdirectedView) -> Int { self.size }
 
-pub fn ds_graph_directed_view_get(s : DsgraphdirectedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedView::get(self : DsgraphdirectedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_view_set(s : DsgraphdirectedView, i : Int, v : Double) -> DsgraphdirectedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedView::set(self : DsgraphdirectedView, i : Int, v : Double) -> DsgraphdirectedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_view_sum(s : DsgraphdirectedView) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedView::sum(self : DsgraphdirectedView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_view_mean(s : DsgraphdirectedView) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedView::mean(self : DsgraphdirectedView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_view_scale(s : DsgraphdirectedView, f : Double) -> DsgraphdirectedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedView::scale(self : DsgraphdirectedView, f : Double) -> DsgraphdirectedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_view_add(a : DsgraphdirectedView, b : DsgraphdirectedView) -> DsgraphdirectedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedView::add(self : DsgraphdirectedView, other : DsgraphdirectedView) -> DsgraphdirectedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_view_copy(s : DsgraphdirectedView) -> DsgraphdirectedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedView::copy(self : DsgraphdirectedView) -> DsgraphdirectedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_view_fill(s : DsgraphdirectedView, v : Double) -> DsgraphdirectedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedView::fill(self : DsgraphdirectedView, v : Double) -> DsgraphdirectedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_view_min(s : DsgraphdirectedView) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedView::min(self : DsgraphdirectedView) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_view_max(s : DsgraphdirectedView) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedView::max(self : DsgraphdirectedView) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_view_to_string(s : DsgraphdirectedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedView::to_string(self : DsgraphdirectedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedRange {
@@ -963,45 +963,45 @@ pub fn ds_graph_directed_range_make(size : Int) -> DsgraphdirectedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_range_len(s : DsgraphdirectedRange) -> Int { s.size }
+pub fn DsgraphdirectedRange::len(self : DsgraphdirectedRange) -> Int { self.size }
 
-pub fn ds_graph_directed_range_get(s : DsgraphdirectedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedRange::get(self : DsgraphdirectedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_range_set(s : DsgraphdirectedRange, i : Int, v : Double) -> DsgraphdirectedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedRange::set(self : DsgraphdirectedRange, i : Int, v : Double) -> DsgraphdirectedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_range_sum(s : DsgraphdirectedRange) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedRange::sum(self : DsgraphdirectedRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_range_mean(s : DsgraphdirectedRange) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedRange::mean(self : DsgraphdirectedRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_range_scale(s : DsgraphdirectedRange, f : Double) -> DsgraphdirectedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedRange::scale(self : DsgraphdirectedRange, f : Double) -> DsgraphdirectedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_range_add(a : DsgraphdirectedRange, b : DsgraphdirectedRange) -> DsgraphdirectedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedRange::add(self : DsgraphdirectedRange, other : DsgraphdirectedRange) -> DsgraphdirectedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_range_copy(s : DsgraphdirectedRange) -> DsgraphdirectedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedRange::copy(self : DsgraphdirectedRange) -> DsgraphdirectedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_range_fill(s : DsgraphdirectedRange, v : Double) -> DsgraphdirectedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedRange::fill(self : DsgraphdirectedRange, v : Double) -> DsgraphdirectedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_range_min(s : DsgraphdirectedRange) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedRange::min(self : DsgraphdirectedRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_range_max(s : DsgraphdirectedRange) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedRange::max(self : DsgraphdirectedRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_range_to_string(s : DsgraphdirectedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedRange::to_string(self : DsgraphdirectedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphdirectedSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_graph_directed_slice_make(size : Int) -> DsgraphdirectedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_directed_slice_len(s : DsgraphdirectedSlice) -> Int { s.size }
+pub fn DsgraphdirectedSlice::len(self : DsgraphdirectedSlice) -> Int { self.size }
 
-pub fn ds_graph_directed_slice_get(s : DsgraphdirectedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphdirectedSlice::get(self : DsgraphdirectedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_directed_slice_set(s : DsgraphdirectedSlice, i : Int, v : Double) -> DsgraphdirectedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphdirectedSlice::set(self : DsgraphdirectedSlice, i : Int, v : Double) -> DsgraphdirectedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_slice_sum(s : DsgraphdirectedSlice) -> Double { @_common.sum(s.data) }
+pub fn DsgraphdirectedSlice::sum(self : DsgraphdirectedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_directed_slice_mean(s : DsgraphdirectedSlice) -> Double { @_common.mean(s.data) }
+pub fn DsgraphdirectedSlice::mean(self : DsgraphdirectedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_directed_slice_scale(s : DsgraphdirectedSlice, f : Double) -> DsgraphdirectedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedSlice::scale(self : DsgraphdirectedSlice, f : Double) -> DsgraphdirectedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_slice_add(a : DsgraphdirectedSlice, b : DsgraphdirectedSlice) -> DsgraphdirectedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphdirectedSlice::add(self : DsgraphdirectedSlice, other : DsgraphdirectedSlice) -> DsgraphdirectedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_directed_slice_copy(s : DsgraphdirectedSlice) -> DsgraphdirectedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedSlice::copy(self : DsgraphdirectedSlice) -> DsgraphdirectedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_slice_fill(s : DsgraphdirectedSlice, v : Double) -> DsgraphdirectedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphdirectedSlice::fill(self : DsgraphdirectedSlice, v : Double) -> DsgraphdirectedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_directed_slice_min(s : DsgraphdirectedSlice) -> Double { @_common.min(s.data) }
+pub fn DsgraphdirectedSlice::min(self : DsgraphdirectedSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_directed_slice_max(s : DsgraphdirectedSlice) -> Double { @_common.max(s.data) }
+pub fn DsgraphdirectedSlice::max(self : DsgraphdirectedSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_directed_slice_to_string(s : DsgraphdirectedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphdirectedSlice::to_string(self : DsgraphdirectedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

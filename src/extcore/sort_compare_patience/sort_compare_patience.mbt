@@ -351,45 +351,45 @@ pub fn sort_compare_patience_frame_make(size : Int) -> SortcomparepatienceFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_frame_len(s : SortcomparepatienceFrame) -> Int { s.size }
+pub fn SortcomparepatienceFrame::len(self : SortcomparepatienceFrame) -> Int { self.size }
 
-pub fn sort_compare_patience_frame_get(s : SortcomparepatienceFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceFrame::get(self : SortcomparepatienceFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_frame_set(s : SortcomparepatienceFrame, i : Int, v : Double) -> SortcomparepatienceFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceFrame::set(self : SortcomparepatienceFrame, i : Int, v : Double) -> SortcomparepatienceFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_frame_sum(s : SortcomparepatienceFrame) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceFrame::sum(self : SortcomparepatienceFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_frame_mean(s : SortcomparepatienceFrame) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceFrame::mean(self : SortcomparepatienceFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_frame_scale(s : SortcomparepatienceFrame, f : Double) -> SortcomparepatienceFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceFrame::scale(self : SortcomparepatienceFrame, f : Double) -> SortcomparepatienceFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_frame_add(a : SortcomparepatienceFrame, b : SortcomparepatienceFrame) -> SortcomparepatienceFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceFrame::add(self : SortcomparepatienceFrame, other : SortcomparepatienceFrame) -> SortcomparepatienceFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_frame_copy(s : SortcomparepatienceFrame) -> SortcomparepatienceFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceFrame::copy(self : SortcomparepatienceFrame) -> SortcomparepatienceFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_frame_fill(s : SortcomparepatienceFrame, v : Double) -> SortcomparepatienceFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceFrame::fill(self : SortcomparepatienceFrame, v : Double) -> SortcomparepatienceFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_frame_min(s : SortcomparepatienceFrame) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceFrame::min(self : SortcomparepatienceFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_frame_max(s : SortcomparepatienceFrame) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceFrame::max(self : SortcomparepatienceFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_frame_to_string(s : SortcomparepatienceFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceFrame::to_string(self : SortcomparepatienceFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceTable {
@@ -402,45 +402,45 @@ pub fn sort_compare_patience_table_make(size : Int) -> SortcomparepatienceTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_table_len(s : SortcomparepatienceTable) -> Int { s.size }
+pub fn SortcomparepatienceTable::len(self : SortcomparepatienceTable) -> Int { self.size }
 
-pub fn sort_compare_patience_table_get(s : SortcomparepatienceTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceTable::get(self : SortcomparepatienceTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_table_set(s : SortcomparepatienceTable, i : Int, v : Double) -> SortcomparepatienceTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceTable::set(self : SortcomparepatienceTable, i : Int, v : Double) -> SortcomparepatienceTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_table_sum(s : SortcomparepatienceTable) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceTable::sum(self : SortcomparepatienceTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_table_mean(s : SortcomparepatienceTable) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceTable::mean(self : SortcomparepatienceTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_table_scale(s : SortcomparepatienceTable, f : Double) -> SortcomparepatienceTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceTable::scale(self : SortcomparepatienceTable, f : Double) -> SortcomparepatienceTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_table_add(a : SortcomparepatienceTable, b : SortcomparepatienceTable) -> SortcomparepatienceTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceTable::add(self : SortcomparepatienceTable, other : SortcomparepatienceTable) -> SortcomparepatienceTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_table_copy(s : SortcomparepatienceTable) -> SortcomparepatienceTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceTable::copy(self : SortcomparepatienceTable) -> SortcomparepatienceTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_table_fill(s : SortcomparepatienceTable, v : Double) -> SortcomparepatienceTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceTable::fill(self : SortcomparepatienceTable, v : Double) -> SortcomparepatienceTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_table_min(s : SortcomparepatienceTable) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceTable::min(self : SortcomparepatienceTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_table_max(s : SortcomparepatienceTable) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceTable::max(self : SortcomparepatienceTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_table_to_string(s : SortcomparepatienceTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceTable::to_string(self : SortcomparepatienceTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceGraphN {
@@ -453,45 +453,45 @@ pub fn sort_compare_patience_graphn_make(size : Int) -> SortcomparepatienceGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_graphn_len(s : SortcomparepatienceGraphN) -> Int { s.size }
+pub fn SortcomparepatienceGraphN::len(self : SortcomparepatienceGraphN) -> Int { self.size }
 
-pub fn sort_compare_patience_graphn_get(s : SortcomparepatienceGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceGraphN::get(self : SortcomparepatienceGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_graphn_set(s : SortcomparepatienceGraphN, i : Int, v : Double) -> SortcomparepatienceGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceGraphN::set(self : SortcomparepatienceGraphN, i : Int, v : Double) -> SortcomparepatienceGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_graphn_sum(s : SortcomparepatienceGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceGraphN::sum(self : SortcomparepatienceGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_graphn_mean(s : SortcomparepatienceGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceGraphN::mean(self : SortcomparepatienceGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_graphn_scale(s : SortcomparepatienceGraphN, f : Double) -> SortcomparepatienceGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceGraphN::scale(self : SortcomparepatienceGraphN, f : Double) -> SortcomparepatienceGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_graphn_add(a : SortcomparepatienceGraphN, b : SortcomparepatienceGraphN) -> SortcomparepatienceGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceGraphN::add(self : SortcomparepatienceGraphN, other : SortcomparepatienceGraphN) -> SortcomparepatienceGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_graphn_copy(s : SortcomparepatienceGraphN) -> SortcomparepatienceGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceGraphN::copy(self : SortcomparepatienceGraphN) -> SortcomparepatienceGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_graphn_fill(s : SortcomparepatienceGraphN, v : Double) -> SortcomparepatienceGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceGraphN::fill(self : SortcomparepatienceGraphN, v : Double) -> SortcomparepatienceGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_graphn_min(s : SortcomparepatienceGraphN) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceGraphN::min(self : SortcomparepatienceGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_graphn_max(s : SortcomparepatienceGraphN) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceGraphN::max(self : SortcomparepatienceGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_graphn_to_string(s : SortcomparepatienceGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceGraphN::to_string(self : SortcomparepatienceGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceNode {
@@ -504,45 +504,45 @@ pub fn sort_compare_patience_node_make(size : Int) -> SortcomparepatienceNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_node_len(s : SortcomparepatienceNode) -> Int { s.size }
+pub fn SortcomparepatienceNode::len(self : SortcomparepatienceNode) -> Int { self.size }
 
-pub fn sort_compare_patience_node_get(s : SortcomparepatienceNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceNode::get(self : SortcomparepatienceNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_node_set(s : SortcomparepatienceNode, i : Int, v : Double) -> SortcomparepatienceNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceNode::set(self : SortcomparepatienceNode, i : Int, v : Double) -> SortcomparepatienceNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_node_sum(s : SortcomparepatienceNode) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceNode::sum(self : SortcomparepatienceNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_node_mean(s : SortcomparepatienceNode) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceNode::mean(self : SortcomparepatienceNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_node_scale(s : SortcomparepatienceNode, f : Double) -> SortcomparepatienceNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceNode::scale(self : SortcomparepatienceNode, f : Double) -> SortcomparepatienceNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_node_add(a : SortcomparepatienceNode, b : SortcomparepatienceNode) -> SortcomparepatienceNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceNode::add(self : SortcomparepatienceNode, other : SortcomparepatienceNode) -> SortcomparepatienceNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_node_copy(s : SortcomparepatienceNode) -> SortcomparepatienceNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceNode::copy(self : SortcomparepatienceNode) -> SortcomparepatienceNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_node_fill(s : SortcomparepatienceNode, v : Double) -> SortcomparepatienceNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceNode::fill(self : SortcomparepatienceNode, v : Double) -> SortcomparepatienceNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_node_min(s : SortcomparepatienceNode) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceNode::min(self : SortcomparepatienceNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_node_max(s : SortcomparepatienceNode) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceNode::max(self : SortcomparepatienceNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_node_to_string(s : SortcomparepatienceNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceNode::to_string(self : SortcomparepatienceNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceEdge {
@@ -555,45 +555,45 @@ pub fn sort_compare_patience_edge_make(size : Int) -> SortcomparepatienceEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_edge_len(s : SortcomparepatienceEdge) -> Int { s.size }
+pub fn SortcomparepatienceEdge::len(self : SortcomparepatienceEdge) -> Int { self.size }
 
-pub fn sort_compare_patience_edge_get(s : SortcomparepatienceEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceEdge::get(self : SortcomparepatienceEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_edge_set(s : SortcomparepatienceEdge, i : Int, v : Double) -> SortcomparepatienceEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceEdge::set(self : SortcomparepatienceEdge, i : Int, v : Double) -> SortcomparepatienceEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_edge_sum(s : SortcomparepatienceEdge) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceEdge::sum(self : SortcomparepatienceEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_edge_mean(s : SortcomparepatienceEdge) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceEdge::mean(self : SortcomparepatienceEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_edge_scale(s : SortcomparepatienceEdge, f : Double) -> SortcomparepatienceEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceEdge::scale(self : SortcomparepatienceEdge, f : Double) -> SortcomparepatienceEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_edge_add(a : SortcomparepatienceEdge, b : SortcomparepatienceEdge) -> SortcomparepatienceEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceEdge::add(self : SortcomparepatienceEdge, other : SortcomparepatienceEdge) -> SortcomparepatienceEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_edge_copy(s : SortcomparepatienceEdge) -> SortcomparepatienceEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceEdge::copy(self : SortcomparepatienceEdge) -> SortcomparepatienceEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_edge_fill(s : SortcomparepatienceEdge, v : Double) -> SortcomparepatienceEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceEdge::fill(self : SortcomparepatienceEdge, v : Double) -> SortcomparepatienceEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_edge_min(s : SortcomparepatienceEdge) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceEdge::min(self : SortcomparepatienceEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_edge_max(s : SortcomparepatienceEdge) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceEdge::max(self : SortcomparepatienceEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_edge_to_string(s : SortcomparepatienceEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceEdge::to_string(self : SortcomparepatienceEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatiencePath {
@@ -606,45 +606,45 @@ pub fn sort_compare_patience_path_make(size : Int) -> SortcomparepatiencePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_path_len(s : SortcomparepatiencePath) -> Int { s.size }
+pub fn SortcomparepatiencePath::len(self : SortcomparepatiencePath) -> Int { self.size }
 
-pub fn sort_compare_patience_path_get(s : SortcomparepatiencePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatiencePath::get(self : SortcomparepatiencePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_path_set(s : SortcomparepatiencePath, i : Int, v : Double) -> SortcomparepatiencePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatiencePath::set(self : SortcomparepatiencePath, i : Int, v : Double) -> SortcomparepatiencePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_path_sum(s : SortcomparepatiencePath) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatiencePath::sum(self : SortcomparepatiencePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_path_mean(s : SortcomparepatiencePath) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatiencePath::mean(self : SortcomparepatiencePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_path_scale(s : SortcomparepatiencePath, f : Double) -> SortcomparepatiencePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatiencePath::scale(self : SortcomparepatiencePath, f : Double) -> SortcomparepatiencePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_path_add(a : SortcomparepatiencePath, b : SortcomparepatiencePath) -> SortcomparepatiencePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatiencePath::add(self : SortcomparepatiencePath, other : SortcomparepatiencePath) -> SortcomparepatiencePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_path_copy(s : SortcomparepatiencePath) -> SortcomparepatiencePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatiencePath::copy(self : SortcomparepatiencePath) -> SortcomparepatiencePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_path_fill(s : SortcomparepatiencePath, v : Double) -> SortcomparepatiencePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatiencePath::fill(self : SortcomparepatiencePath, v : Double) -> SortcomparepatiencePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_path_min(s : SortcomparepatiencePath) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatiencePath::min(self : SortcomparepatiencePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_path_max(s : SortcomparepatiencePath) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatiencePath::max(self : SortcomparepatiencePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_path_to_string(s : SortcomparepatiencePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatiencePath::to_string(self : SortcomparepatiencePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceCluster {
@@ -657,45 +657,45 @@ pub fn sort_compare_patience_cluster_make(size : Int) -> SortcomparepatienceClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_cluster_len(s : SortcomparepatienceCluster) -> Int { s.size }
+pub fn SortcomparepatienceCluster::len(self : SortcomparepatienceCluster) -> Int { self.size }
 
-pub fn sort_compare_patience_cluster_get(s : SortcomparepatienceCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceCluster::get(self : SortcomparepatienceCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_cluster_set(s : SortcomparepatienceCluster, i : Int, v : Double) -> SortcomparepatienceCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCluster::set(self : SortcomparepatienceCluster, i : Int, v : Double) -> SortcomparepatienceCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cluster_sum(s : SortcomparepatienceCluster) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceCluster::sum(self : SortcomparepatienceCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_cluster_mean(s : SortcomparepatienceCluster) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceCluster::mean(self : SortcomparepatienceCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_cluster_scale(s : SortcomparepatienceCluster, f : Double) -> SortcomparepatienceCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCluster::scale(self : SortcomparepatienceCluster, f : Double) -> SortcomparepatienceCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cluster_add(a : SortcomparepatienceCluster, b : SortcomparepatienceCluster) -> SortcomparepatienceCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceCluster::add(self : SortcomparepatienceCluster, other : SortcomparepatienceCluster) -> SortcomparepatienceCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cluster_copy(s : SortcomparepatienceCluster) -> SortcomparepatienceCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCluster::copy(self : SortcomparepatienceCluster) -> SortcomparepatienceCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cluster_fill(s : SortcomparepatienceCluster, v : Double) -> SortcomparepatienceCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCluster::fill(self : SortcomparepatienceCluster, v : Double) -> SortcomparepatienceCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cluster_min(s : SortcomparepatienceCluster) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceCluster::min(self : SortcomparepatienceCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_cluster_max(s : SortcomparepatienceCluster) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceCluster::max(self : SortcomparepatienceCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_cluster_to_string(s : SortcomparepatienceCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceCluster::to_string(self : SortcomparepatienceCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceModel {
@@ -708,45 +708,45 @@ pub fn sort_compare_patience_model_make(size : Int) -> SortcomparepatienceModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_model_len(s : SortcomparepatienceModel) -> Int { s.size }
+pub fn SortcomparepatienceModel::len(self : SortcomparepatienceModel) -> Int { self.size }
 
-pub fn sort_compare_patience_model_get(s : SortcomparepatienceModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceModel::get(self : SortcomparepatienceModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_model_set(s : SortcomparepatienceModel, i : Int, v : Double) -> SortcomparepatienceModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceModel::set(self : SortcomparepatienceModel, i : Int, v : Double) -> SortcomparepatienceModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_model_sum(s : SortcomparepatienceModel) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceModel::sum(self : SortcomparepatienceModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_model_mean(s : SortcomparepatienceModel) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceModel::mean(self : SortcomparepatienceModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_model_scale(s : SortcomparepatienceModel, f : Double) -> SortcomparepatienceModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceModel::scale(self : SortcomparepatienceModel, f : Double) -> SortcomparepatienceModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_model_add(a : SortcomparepatienceModel, b : SortcomparepatienceModel) -> SortcomparepatienceModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceModel::add(self : SortcomparepatienceModel, other : SortcomparepatienceModel) -> SortcomparepatienceModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_model_copy(s : SortcomparepatienceModel) -> SortcomparepatienceModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceModel::copy(self : SortcomparepatienceModel) -> SortcomparepatienceModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_model_fill(s : SortcomparepatienceModel, v : Double) -> SortcomparepatienceModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceModel::fill(self : SortcomparepatienceModel, v : Double) -> SortcomparepatienceModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_model_min(s : SortcomparepatienceModel) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceModel::min(self : SortcomparepatienceModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_model_max(s : SortcomparepatienceModel) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceModel::max(self : SortcomparepatienceModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_model_to_string(s : SortcomparepatienceModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceModel::to_string(self : SortcomparepatienceModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceLayer {
@@ -759,45 +759,45 @@ pub fn sort_compare_patience_layer_make(size : Int) -> SortcomparepatienceLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_layer_len(s : SortcomparepatienceLayer) -> Int { s.size }
+pub fn SortcomparepatienceLayer::len(self : SortcomparepatienceLayer) -> Int { self.size }
 
-pub fn sort_compare_patience_layer_get(s : SortcomparepatienceLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceLayer::get(self : SortcomparepatienceLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_layer_set(s : SortcomparepatienceLayer, i : Int, v : Double) -> SortcomparepatienceLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceLayer::set(self : SortcomparepatienceLayer, i : Int, v : Double) -> SortcomparepatienceLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_layer_sum(s : SortcomparepatienceLayer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceLayer::sum(self : SortcomparepatienceLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_layer_mean(s : SortcomparepatienceLayer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceLayer::mean(self : SortcomparepatienceLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_layer_scale(s : SortcomparepatienceLayer, f : Double) -> SortcomparepatienceLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceLayer::scale(self : SortcomparepatienceLayer, f : Double) -> SortcomparepatienceLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_layer_add(a : SortcomparepatienceLayer, b : SortcomparepatienceLayer) -> SortcomparepatienceLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceLayer::add(self : SortcomparepatienceLayer, other : SortcomparepatienceLayer) -> SortcomparepatienceLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_layer_copy(s : SortcomparepatienceLayer) -> SortcomparepatienceLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceLayer::copy(self : SortcomparepatienceLayer) -> SortcomparepatienceLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_layer_fill(s : SortcomparepatienceLayer, v : Double) -> SortcomparepatienceLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceLayer::fill(self : SortcomparepatienceLayer, v : Double) -> SortcomparepatienceLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_layer_min(s : SortcomparepatienceLayer) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceLayer::min(self : SortcomparepatienceLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_layer_max(s : SortcomparepatienceLayer) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceLayer::max(self : SortcomparepatienceLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_layer_to_string(s : SortcomparepatienceLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceLayer::to_string(self : SortcomparepatienceLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceBuffer {
@@ -810,45 +810,45 @@ pub fn sort_compare_patience_buffer_make(size : Int) -> SortcomparepatienceBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_buffer_len(s : SortcomparepatienceBuffer) -> Int { s.size }
+pub fn SortcomparepatienceBuffer::len(self : SortcomparepatienceBuffer) -> Int { self.size }
 
-pub fn sort_compare_patience_buffer_get(s : SortcomparepatienceBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceBuffer::get(self : SortcomparepatienceBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_buffer_set(s : SortcomparepatienceBuffer, i : Int, v : Double) -> SortcomparepatienceBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceBuffer::set(self : SortcomparepatienceBuffer, i : Int, v : Double) -> SortcomparepatienceBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_buffer_sum(s : SortcomparepatienceBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceBuffer::sum(self : SortcomparepatienceBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_buffer_mean(s : SortcomparepatienceBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceBuffer::mean(self : SortcomparepatienceBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_buffer_scale(s : SortcomparepatienceBuffer, f : Double) -> SortcomparepatienceBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceBuffer::scale(self : SortcomparepatienceBuffer, f : Double) -> SortcomparepatienceBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_buffer_add(a : SortcomparepatienceBuffer, b : SortcomparepatienceBuffer) -> SortcomparepatienceBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceBuffer::add(self : SortcomparepatienceBuffer, other : SortcomparepatienceBuffer) -> SortcomparepatienceBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_buffer_copy(s : SortcomparepatienceBuffer) -> SortcomparepatienceBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceBuffer::copy(self : SortcomparepatienceBuffer) -> SortcomparepatienceBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_buffer_fill(s : SortcomparepatienceBuffer, v : Double) -> SortcomparepatienceBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceBuffer::fill(self : SortcomparepatienceBuffer, v : Double) -> SortcomparepatienceBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_buffer_min(s : SortcomparepatienceBuffer) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceBuffer::min(self : SortcomparepatienceBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_buffer_max(s : SortcomparepatienceBuffer) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceBuffer::max(self : SortcomparepatienceBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_buffer_to_string(s : SortcomparepatienceBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceBuffer::to_string(self : SortcomparepatienceBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceCursor {
@@ -861,45 +861,45 @@ pub fn sort_compare_patience_cursor_make(size : Int) -> SortcomparepatienceCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_cursor_len(s : SortcomparepatienceCursor) -> Int { s.size }
+pub fn SortcomparepatienceCursor::len(self : SortcomparepatienceCursor) -> Int { self.size }
 
-pub fn sort_compare_patience_cursor_get(s : SortcomparepatienceCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceCursor::get(self : SortcomparepatienceCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_cursor_set(s : SortcomparepatienceCursor, i : Int, v : Double) -> SortcomparepatienceCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCursor::set(self : SortcomparepatienceCursor, i : Int, v : Double) -> SortcomparepatienceCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cursor_sum(s : SortcomparepatienceCursor) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceCursor::sum(self : SortcomparepatienceCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_cursor_mean(s : SortcomparepatienceCursor) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceCursor::mean(self : SortcomparepatienceCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_cursor_scale(s : SortcomparepatienceCursor, f : Double) -> SortcomparepatienceCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCursor::scale(self : SortcomparepatienceCursor, f : Double) -> SortcomparepatienceCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cursor_add(a : SortcomparepatienceCursor, b : SortcomparepatienceCursor) -> SortcomparepatienceCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceCursor::add(self : SortcomparepatienceCursor, other : SortcomparepatienceCursor) -> SortcomparepatienceCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cursor_copy(s : SortcomparepatienceCursor) -> SortcomparepatienceCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCursor::copy(self : SortcomparepatienceCursor) -> SortcomparepatienceCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cursor_fill(s : SortcomparepatienceCursor, v : Double) -> SortcomparepatienceCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceCursor::fill(self : SortcomparepatienceCursor, v : Double) -> SortcomparepatienceCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_cursor_min(s : SortcomparepatienceCursor) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceCursor::min(self : SortcomparepatienceCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_cursor_max(s : SortcomparepatienceCursor) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceCursor::max(self : SortcomparepatienceCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_cursor_to_string(s : SortcomparepatienceCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceCursor::to_string(self : SortcomparepatienceCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceView {
@@ -912,45 +912,45 @@ pub fn sort_compare_patience_view_make(size : Int) -> SortcomparepatienceView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_view_len(s : SortcomparepatienceView) -> Int { s.size }
+pub fn SortcomparepatienceView::len(self : SortcomparepatienceView) -> Int { self.size }
 
-pub fn sort_compare_patience_view_get(s : SortcomparepatienceView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceView::get(self : SortcomparepatienceView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_view_set(s : SortcomparepatienceView, i : Int, v : Double) -> SortcomparepatienceView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceView::set(self : SortcomparepatienceView, i : Int, v : Double) -> SortcomparepatienceView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_view_sum(s : SortcomparepatienceView) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceView::sum(self : SortcomparepatienceView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_view_mean(s : SortcomparepatienceView) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceView::mean(self : SortcomparepatienceView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_view_scale(s : SortcomparepatienceView, f : Double) -> SortcomparepatienceView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceView::scale(self : SortcomparepatienceView, f : Double) -> SortcomparepatienceView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_view_add(a : SortcomparepatienceView, b : SortcomparepatienceView) -> SortcomparepatienceView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceView::add(self : SortcomparepatienceView, other : SortcomparepatienceView) -> SortcomparepatienceView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_view_copy(s : SortcomparepatienceView) -> SortcomparepatienceView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceView::copy(self : SortcomparepatienceView) -> SortcomparepatienceView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_view_fill(s : SortcomparepatienceView, v : Double) -> SortcomparepatienceView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceView::fill(self : SortcomparepatienceView, v : Double) -> SortcomparepatienceView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_view_min(s : SortcomparepatienceView) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceView::min(self : SortcomparepatienceView) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_view_max(s : SortcomparepatienceView) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceView::max(self : SortcomparepatienceView) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_view_to_string(s : SortcomparepatienceView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceView::to_string(self : SortcomparepatienceView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceRange {
@@ -963,45 +963,45 @@ pub fn sort_compare_patience_range_make(size : Int) -> SortcomparepatienceRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_range_len(s : SortcomparepatienceRange) -> Int { s.size }
+pub fn SortcomparepatienceRange::len(self : SortcomparepatienceRange) -> Int { self.size }
 
-pub fn sort_compare_patience_range_get(s : SortcomparepatienceRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceRange::get(self : SortcomparepatienceRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_range_set(s : SortcomparepatienceRange, i : Int, v : Double) -> SortcomparepatienceRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceRange::set(self : SortcomparepatienceRange, i : Int, v : Double) -> SortcomparepatienceRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_range_sum(s : SortcomparepatienceRange) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceRange::sum(self : SortcomparepatienceRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_range_mean(s : SortcomparepatienceRange) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceRange::mean(self : SortcomparepatienceRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_range_scale(s : SortcomparepatienceRange, f : Double) -> SortcomparepatienceRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceRange::scale(self : SortcomparepatienceRange, f : Double) -> SortcomparepatienceRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_range_add(a : SortcomparepatienceRange, b : SortcomparepatienceRange) -> SortcomparepatienceRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceRange::add(self : SortcomparepatienceRange, other : SortcomparepatienceRange) -> SortcomparepatienceRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_range_copy(s : SortcomparepatienceRange) -> SortcomparepatienceRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceRange::copy(self : SortcomparepatienceRange) -> SortcomparepatienceRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_range_fill(s : SortcomparepatienceRange, v : Double) -> SortcomparepatienceRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceRange::fill(self : SortcomparepatienceRange, v : Double) -> SortcomparepatienceRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_range_min(s : SortcomparepatienceRange) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceRange::min(self : SortcomparepatienceRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_range_max(s : SortcomparepatienceRange) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceRange::max(self : SortcomparepatienceRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_range_to_string(s : SortcomparepatienceRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceRange::to_string(self : SortcomparepatienceRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcomparepatienceSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_compare_patience_slice_make(size : Int) -> SortcomparepatienceSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_patience_slice_len(s : SortcomparepatienceSlice) -> Int { s.size }
+pub fn SortcomparepatienceSlice::len(self : SortcomparepatienceSlice) -> Int { self.size }
 
-pub fn sort_compare_patience_slice_get(s : SortcomparepatienceSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcomparepatienceSlice::get(self : SortcomparepatienceSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_patience_slice_set(s : SortcomparepatienceSlice, i : Int, v : Double) -> SortcomparepatienceSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcomparepatienceSlice::set(self : SortcomparepatienceSlice, i : Int, v : Double) -> SortcomparepatienceSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_slice_sum(s : SortcomparepatienceSlice) -> Double { @_common.sum(s.data) }
+pub fn SortcomparepatienceSlice::sum(self : SortcomparepatienceSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_patience_slice_mean(s : SortcomparepatienceSlice) -> Double { @_common.mean(s.data) }
+pub fn SortcomparepatienceSlice::mean(self : SortcomparepatienceSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_patience_slice_scale(s : SortcomparepatienceSlice, f : Double) -> SortcomparepatienceSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceSlice::scale(self : SortcomparepatienceSlice, f : Double) -> SortcomparepatienceSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_slice_add(a : SortcomparepatienceSlice, b : SortcomparepatienceSlice) -> SortcomparepatienceSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcomparepatienceSlice::add(self : SortcomparepatienceSlice, other : SortcomparepatienceSlice) -> SortcomparepatienceSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_patience_slice_copy(s : SortcomparepatienceSlice) -> SortcomparepatienceSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceSlice::copy(self : SortcomparepatienceSlice) -> SortcomparepatienceSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_slice_fill(s : SortcomparepatienceSlice, v : Double) -> SortcomparepatienceSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcomparepatienceSlice::fill(self : SortcomparepatienceSlice, v : Double) -> SortcomparepatienceSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_patience_slice_min(s : SortcomparepatienceSlice) -> Double { @_common.min(s.data) }
+pub fn SortcomparepatienceSlice::min(self : SortcomparepatienceSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_patience_slice_max(s : SortcomparepatienceSlice) -> Double { @_common.max(s.data) }
+pub fn SortcomparepatienceSlice::max(self : SortcomparepatienceSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_patience_slice_to_string(s : SortcomparepatienceSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcomparepatienceSlice::to_string(self : SortcomparepatienceSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

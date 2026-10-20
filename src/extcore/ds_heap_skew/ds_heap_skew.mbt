@@ -351,45 +351,45 @@ pub fn ds_heap_skew_frame_make(size : Int) -> DsheapskewFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_frame_len(s : DsheapskewFrame) -> Int { s.size }
+pub fn DsheapskewFrame::len(self : DsheapskewFrame) -> Int { self.size }
 
-pub fn ds_heap_skew_frame_get(s : DsheapskewFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewFrame::get(self : DsheapskewFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_frame_set(s : DsheapskewFrame, i : Int, v : Double) -> DsheapskewFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewFrame::set(self : DsheapskewFrame, i : Int, v : Double) -> DsheapskewFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_frame_sum(s : DsheapskewFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewFrame::sum(self : DsheapskewFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_frame_mean(s : DsheapskewFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewFrame::mean(self : DsheapskewFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_frame_scale(s : DsheapskewFrame, f : Double) -> DsheapskewFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewFrame::scale(self : DsheapskewFrame, f : Double) -> DsheapskewFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_frame_add(a : DsheapskewFrame, b : DsheapskewFrame) -> DsheapskewFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewFrame::add(self : DsheapskewFrame, other : DsheapskewFrame) -> DsheapskewFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_frame_copy(s : DsheapskewFrame) -> DsheapskewFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewFrame::copy(self : DsheapskewFrame) -> DsheapskewFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_frame_fill(s : DsheapskewFrame, v : Double) -> DsheapskewFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewFrame::fill(self : DsheapskewFrame, v : Double) -> DsheapskewFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_frame_min(s : DsheapskewFrame) -> Double { @_common.min(s.data) }
+pub fn DsheapskewFrame::min(self : DsheapskewFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_frame_max(s : DsheapskewFrame) -> Double { @_common.max(s.data) }
+pub fn DsheapskewFrame::max(self : DsheapskewFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_frame_to_string(s : DsheapskewFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewFrame::to_string(self : DsheapskewFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_skew_table_make(size : Int) -> DsheapskewTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_table_len(s : DsheapskewTable) -> Int { s.size }
+pub fn DsheapskewTable::len(self : DsheapskewTable) -> Int { self.size }
 
-pub fn ds_heap_skew_table_get(s : DsheapskewTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewTable::get(self : DsheapskewTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_table_set(s : DsheapskewTable, i : Int, v : Double) -> DsheapskewTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewTable::set(self : DsheapskewTable, i : Int, v : Double) -> DsheapskewTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_table_sum(s : DsheapskewTable) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewTable::sum(self : DsheapskewTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_table_mean(s : DsheapskewTable) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewTable::mean(self : DsheapskewTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_table_scale(s : DsheapskewTable, f : Double) -> DsheapskewTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewTable::scale(self : DsheapskewTable, f : Double) -> DsheapskewTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_table_add(a : DsheapskewTable, b : DsheapskewTable) -> DsheapskewTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewTable::add(self : DsheapskewTable, other : DsheapskewTable) -> DsheapskewTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_table_copy(s : DsheapskewTable) -> DsheapskewTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewTable::copy(self : DsheapskewTable) -> DsheapskewTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_table_fill(s : DsheapskewTable, v : Double) -> DsheapskewTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewTable::fill(self : DsheapskewTable, v : Double) -> DsheapskewTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_table_min(s : DsheapskewTable) -> Double { @_common.min(s.data) }
+pub fn DsheapskewTable::min(self : DsheapskewTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_table_max(s : DsheapskewTable) -> Double { @_common.max(s.data) }
+pub fn DsheapskewTable::max(self : DsheapskewTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_table_to_string(s : DsheapskewTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewTable::to_string(self : DsheapskewTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_skew_graphn_make(size : Int) -> DsheapskewGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_graphn_len(s : DsheapskewGraphN) -> Int { s.size }
+pub fn DsheapskewGraphN::len(self : DsheapskewGraphN) -> Int { self.size }
 
-pub fn ds_heap_skew_graphn_get(s : DsheapskewGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewGraphN::get(self : DsheapskewGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_graphn_set(s : DsheapskewGraphN, i : Int, v : Double) -> DsheapskewGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewGraphN::set(self : DsheapskewGraphN, i : Int, v : Double) -> DsheapskewGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_graphn_sum(s : DsheapskewGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewGraphN::sum(self : DsheapskewGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_graphn_mean(s : DsheapskewGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewGraphN::mean(self : DsheapskewGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_graphn_scale(s : DsheapskewGraphN, f : Double) -> DsheapskewGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewGraphN::scale(self : DsheapskewGraphN, f : Double) -> DsheapskewGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_graphn_add(a : DsheapskewGraphN, b : DsheapskewGraphN) -> DsheapskewGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewGraphN::add(self : DsheapskewGraphN, other : DsheapskewGraphN) -> DsheapskewGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_graphn_copy(s : DsheapskewGraphN) -> DsheapskewGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewGraphN::copy(self : DsheapskewGraphN) -> DsheapskewGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_graphn_fill(s : DsheapskewGraphN, v : Double) -> DsheapskewGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewGraphN::fill(self : DsheapskewGraphN, v : Double) -> DsheapskewGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_graphn_min(s : DsheapskewGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheapskewGraphN::min(self : DsheapskewGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_graphn_max(s : DsheapskewGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheapskewGraphN::max(self : DsheapskewGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_graphn_to_string(s : DsheapskewGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewGraphN::to_string(self : DsheapskewGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_skew_node_make(size : Int) -> DsheapskewNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_node_len(s : DsheapskewNode) -> Int { s.size }
+pub fn DsheapskewNode::len(self : DsheapskewNode) -> Int { self.size }
 
-pub fn ds_heap_skew_node_get(s : DsheapskewNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewNode::get(self : DsheapskewNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_node_set(s : DsheapskewNode, i : Int, v : Double) -> DsheapskewNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewNode::set(self : DsheapskewNode, i : Int, v : Double) -> DsheapskewNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_node_sum(s : DsheapskewNode) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewNode::sum(self : DsheapskewNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_node_mean(s : DsheapskewNode) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewNode::mean(self : DsheapskewNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_node_scale(s : DsheapskewNode, f : Double) -> DsheapskewNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewNode::scale(self : DsheapskewNode, f : Double) -> DsheapskewNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_node_add(a : DsheapskewNode, b : DsheapskewNode) -> DsheapskewNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewNode::add(self : DsheapskewNode, other : DsheapskewNode) -> DsheapskewNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_node_copy(s : DsheapskewNode) -> DsheapskewNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewNode::copy(self : DsheapskewNode) -> DsheapskewNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_node_fill(s : DsheapskewNode, v : Double) -> DsheapskewNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewNode::fill(self : DsheapskewNode, v : Double) -> DsheapskewNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_node_min(s : DsheapskewNode) -> Double { @_common.min(s.data) }
+pub fn DsheapskewNode::min(self : DsheapskewNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_node_max(s : DsheapskewNode) -> Double { @_common.max(s.data) }
+pub fn DsheapskewNode::max(self : DsheapskewNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_node_to_string(s : DsheapskewNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewNode::to_string(self : DsheapskewNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_skew_edge_make(size : Int) -> DsheapskewEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_edge_len(s : DsheapskewEdge) -> Int { s.size }
+pub fn DsheapskewEdge::len(self : DsheapskewEdge) -> Int { self.size }
 
-pub fn ds_heap_skew_edge_get(s : DsheapskewEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewEdge::get(self : DsheapskewEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_edge_set(s : DsheapskewEdge, i : Int, v : Double) -> DsheapskewEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewEdge::set(self : DsheapskewEdge, i : Int, v : Double) -> DsheapskewEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_edge_sum(s : DsheapskewEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewEdge::sum(self : DsheapskewEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_edge_mean(s : DsheapskewEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewEdge::mean(self : DsheapskewEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_edge_scale(s : DsheapskewEdge, f : Double) -> DsheapskewEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewEdge::scale(self : DsheapskewEdge, f : Double) -> DsheapskewEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_edge_add(a : DsheapskewEdge, b : DsheapskewEdge) -> DsheapskewEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewEdge::add(self : DsheapskewEdge, other : DsheapskewEdge) -> DsheapskewEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_edge_copy(s : DsheapskewEdge) -> DsheapskewEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewEdge::copy(self : DsheapskewEdge) -> DsheapskewEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_edge_fill(s : DsheapskewEdge, v : Double) -> DsheapskewEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewEdge::fill(self : DsheapskewEdge, v : Double) -> DsheapskewEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_edge_min(s : DsheapskewEdge) -> Double { @_common.min(s.data) }
+pub fn DsheapskewEdge::min(self : DsheapskewEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_edge_max(s : DsheapskewEdge) -> Double { @_common.max(s.data) }
+pub fn DsheapskewEdge::max(self : DsheapskewEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_edge_to_string(s : DsheapskewEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewEdge::to_string(self : DsheapskewEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_skew_path_make(size : Int) -> DsheapskewPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_path_len(s : DsheapskewPath) -> Int { s.size }
+pub fn DsheapskewPath::len(self : DsheapskewPath) -> Int { self.size }
 
-pub fn ds_heap_skew_path_get(s : DsheapskewPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewPath::get(self : DsheapskewPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_path_set(s : DsheapskewPath, i : Int, v : Double) -> DsheapskewPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewPath::set(self : DsheapskewPath, i : Int, v : Double) -> DsheapskewPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_path_sum(s : DsheapskewPath) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewPath::sum(self : DsheapskewPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_path_mean(s : DsheapskewPath) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewPath::mean(self : DsheapskewPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_path_scale(s : DsheapskewPath, f : Double) -> DsheapskewPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewPath::scale(self : DsheapskewPath, f : Double) -> DsheapskewPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_path_add(a : DsheapskewPath, b : DsheapskewPath) -> DsheapskewPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewPath::add(self : DsheapskewPath, other : DsheapskewPath) -> DsheapskewPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_path_copy(s : DsheapskewPath) -> DsheapskewPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewPath::copy(self : DsheapskewPath) -> DsheapskewPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_path_fill(s : DsheapskewPath, v : Double) -> DsheapskewPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewPath::fill(self : DsheapskewPath, v : Double) -> DsheapskewPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_path_min(s : DsheapskewPath) -> Double { @_common.min(s.data) }
+pub fn DsheapskewPath::min(self : DsheapskewPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_path_max(s : DsheapskewPath) -> Double { @_common.max(s.data) }
+pub fn DsheapskewPath::max(self : DsheapskewPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_path_to_string(s : DsheapskewPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewPath::to_string(self : DsheapskewPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_skew_cluster_make(size : Int) -> DsheapskewCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_cluster_len(s : DsheapskewCluster) -> Int { s.size }
+pub fn DsheapskewCluster::len(self : DsheapskewCluster) -> Int { self.size }
 
-pub fn ds_heap_skew_cluster_get(s : DsheapskewCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewCluster::get(self : DsheapskewCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_cluster_set(s : DsheapskewCluster, i : Int, v : Double) -> DsheapskewCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewCluster::set(self : DsheapskewCluster, i : Int, v : Double) -> DsheapskewCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cluster_sum(s : DsheapskewCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewCluster::sum(self : DsheapskewCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_cluster_mean(s : DsheapskewCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewCluster::mean(self : DsheapskewCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_cluster_scale(s : DsheapskewCluster, f : Double) -> DsheapskewCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewCluster::scale(self : DsheapskewCluster, f : Double) -> DsheapskewCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cluster_add(a : DsheapskewCluster, b : DsheapskewCluster) -> DsheapskewCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewCluster::add(self : DsheapskewCluster, other : DsheapskewCluster) -> DsheapskewCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cluster_copy(s : DsheapskewCluster) -> DsheapskewCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewCluster::copy(self : DsheapskewCluster) -> DsheapskewCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cluster_fill(s : DsheapskewCluster, v : Double) -> DsheapskewCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewCluster::fill(self : DsheapskewCluster, v : Double) -> DsheapskewCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cluster_min(s : DsheapskewCluster) -> Double { @_common.min(s.data) }
+pub fn DsheapskewCluster::min(self : DsheapskewCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_cluster_max(s : DsheapskewCluster) -> Double { @_common.max(s.data) }
+pub fn DsheapskewCluster::max(self : DsheapskewCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_cluster_to_string(s : DsheapskewCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewCluster::to_string(self : DsheapskewCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_skew_model_make(size : Int) -> DsheapskewModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_model_len(s : DsheapskewModel) -> Int { s.size }
+pub fn DsheapskewModel::len(self : DsheapskewModel) -> Int { self.size }
 
-pub fn ds_heap_skew_model_get(s : DsheapskewModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewModel::get(self : DsheapskewModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_model_set(s : DsheapskewModel, i : Int, v : Double) -> DsheapskewModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewModel::set(self : DsheapskewModel, i : Int, v : Double) -> DsheapskewModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_model_sum(s : DsheapskewModel) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewModel::sum(self : DsheapskewModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_model_mean(s : DsheapskewModel) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewModel::mean(self : DsheapskewModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_model_scale(s : DsheapskewModel, f : Double) -> DsheapskewModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewModel::scale(self : DsheapskewModel, f : Double) -> DsheapskewModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_model_add(a : DsheapskewModel, b : DsheapskewModel) -> DsheapskewModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewModel::add(self : DsheapskewModel, other : DsheapskewModel) -> DsheapskewModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_model_copy(s : DsheapskewModel) -> DsheapskewModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewModel::copy(self : DsheapskewModel) -> DsheapskewModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_model_fill(s : DsheapskewModel, v : Double) -> DsheapskewModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewModel::fill(self : DsheapskewModel, v : Double) -> DsheapskewModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_model_min(s : DsheapskewModel) -> Double { @_common.min(s.data) }
+pub fn DsheapskewModel::min(self : DsheapskewModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_model_max(s : DsheapskewModel) -> Double { @_common.max(s.data) }
+pub fn DsheapskewModel::max(self : DsheapskewModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_model_to_string(s : DsheapskewModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewModel::to_string(self : DsheapskewModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_skew_layer_make(size : Int) -> DsheapskewLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_layer_len(s : DsheapskewLayer) -> Int { s.size }
+pub fn DsheapskewLayer::len(self : DsheapskewLayer) -> Int { self.size }
 
-pub fn ds_heap_skew_layer_get(s : DsheapskewLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewLayer::get(self : DsheapskewLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_layer_set(s : DsheapskewLayer, i : Int, v : Double) -> DsheapskewLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewLayer::set(self : DsheapskewLayer, i : Int, v : Double) -> DsheapskewLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_layer_sum(s : DsheapskewLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewLayer::sum(self : DsheapskewLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_layer_mean(s : DsheapskewLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewLayer::mean(self : DsheapskewLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_layer_scale(s : DsheapskewLayer, f : Double) -> DsheapskewLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewLayer::scale(self : DsheapskewLayer, f : Double) -> DsheapskewLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_layer_add(a : DsheapskewLayer, b : DsheapskewLayer) -> DsheapskewLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewLayer::add(self : DsheapskewLayer, other : DsheapskewLayer) -> DsheapskewLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_layer_copy(s : DsheapskewLayer) -> DsheapskewLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewLayer::copy(self : DsheapskewLayer) -> DsheapskewLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_layer_fill(s : DsheapskewLayer, v : Double) -> DsheapskewLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewLayer::fill(self : DsheapskewLayer, v : Double) -> DsheapskewLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_layer_min(s : DsheapskewLayer) -> Double { @_common.min(s.data) }
+pub fn DsheapskewLayer::min(self : DsheapskewLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_layer_max(s : DsheapskewLayer) -> Double { @_common.max(s.data) }
+pub fn DsheapskewLayer::max(self : DsheapskewLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_layer_to_string(s : DsheapskewLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewLayer::to_string(self : DsheapskewLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_skew_buffer_make(size : Int) -> DsheapskewBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_buffer_len(s : DsheapskewBuffer) -> Int { s.size }
+pub fn DsheapskewBuffer::len(self : DsheapskewBuffer) -> Int { self.size }
 
-pub fn ds_heap_skew_buffer_get(s : DsheapskewBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewBuffer::get(self : DsheapskewBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_buffer_set(s : DsheapskewBuffer, i : Int, v : Double) -> DsheapskewBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewBuffer::set(self : DsheapskewBuffer, i : Int, v : Double) -> DsheapskewBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_buffer_sum(s : DsheapskewBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewBuffer::sum(self : DsheapskewBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_buffer_mean(s : DsheapskewBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewBuffer::mean(self : DsheapskewBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_buffer_scale(s : DsheapskewBuffer, f : Double) -> DsheapskewBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewBuffer::scale(self : DsheapskewBuffer, f : Double) -> DsheapskewBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_buffer_add(a : DsheapskewBuffer, b : DsheapskewBuffer) -> DsheapskewBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewBuffer::add(self : DsheapskewBuffer, other : DsheapskewBuffer) -> DsheapskewBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_buffer_copy(s : DsheapskewBuffer) -> DsheapskewBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewBuffer::copy(self : DsheapskewBuffer) -> DsheapskewBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_buffer_fill(s : DsheapskewBuffer, v : Double) -> DsheapskewBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewBuffer::fill(self : DsheapskewBuffer, v : Double) -> DsheapskewBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_buffer_min(s : DsheapskewBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheapskewBuffer::min(self : DsheapskewBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_buffer_max(s : DsheapskewBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheapskewBuffer::max(self : DsheapskewBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_buffer_to_string(s : DsheapskewBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewBuffer::to_string(self : DsheapskewBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_skew_cursor_make(size : Int) -> DsheapskewCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_cursor_len(s : DsheapskewCursor) -> Int { s.size }
+pub fn DsheapskewCursor::len(self : DsheapskewCursor) -> Int { self.size }
 
-pub fn ds_heap_skew_cursor_get(s : DsheapskewCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewCursor::get(self : DsheapskewCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_cursor_set(s : DsheapskewCursor, i : Int, v : Double) -> DsheapskewCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewCursor::set(self : DsheapskewCursor, i : Int, v : Double) -> DsheapskewCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cursor_sum(s : DsheapskewCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewCursor::sum(self : DsheapskewCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_cursor_mean(s : DsheapskewCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewCursor::mean(self : DsheapskewCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_cursor_scale(s : DsheapskewCursor, f : Double) -> DsheapskewCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewCursor::scale(self : DsheapskewCursor, f : Double) -> DsheapskewCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cursor_add(a : DsheapskewCursor, b : DsheapskewCursor) -> DsheapskewCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewCursor::add(self : DsheapskewCursor, other : DsheapskewCursor) -> DsheapskewCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cursor_copy(s : DsheapskewCursor) -> DsheapskewCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewCursor::copy(self : DsheapskewCursor) -> DsheapskewCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cursor_fill(s : DsheapskewCursor, v : Double) -> DsheapskewCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewCursor::fill(self : DsheapskewCursor, v : Double) -> DsheapskewCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_cursor_min(s : DsheapskewCursor) -> Double { @_common.min(s.data) }
+pub fn DsheapskewCursor::min(self : DsheapskewCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_cursor_max(s : DsheapskewCursor) -> Double { @_common.max(s.data) }
+pub fn DsheapskewCursor::max(self : DsheapskewCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_cursor_to_string(s : DsheapskewCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewCursor::to_string(self : DsheapskewCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewView {
@@ -912,45 +912,45 @@ pub fn ds_heap_skew_view_make(size : Int) -> DsheapskewView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_view_len(s : DsheapskewView) -> Int { s.size }
+pub fn DsheapskewView::len(self : DsheapskewView) -> Int { self.size }
 
-pub fn ds_heap_skew_view_get(s : DsheapskewView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewView::get(self : DsheapskewView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_view_set(s : DsheapskewView, i : Int, v : Double) -> DsheapskewView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewView::set(self : DsheapskewView, i : Int, v : Double) -> DsheapskewView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_view_sum(s : DsheapskewView) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewView::sum(self : DsheapskewView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_view_mean(s : DsheapskewView) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewView::mean(self : DsheapskewView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_view_scale(s : DsheapskewView, f : Double) -> DsheapskewView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewView::scale(self : DsheapskewView, f : Double) -> DsheapskewView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_view_add(a : DsheapskewView, b : DsheapskewView) -> DsheapskewView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewView::add(self : DsheapskewView, other : DsheapskewView) -> DsheapskewView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_view_copy(s : DsheapskewView) -> DsheapskewView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewView::copy(self : DsheapskewView) -> DsheapskewView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_view_fill(s : DsheapskewView, v : Double) -> DsheapskewView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewView::fill(self : DsheapskewView, v : Double) -> DsheapskewView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_view_min(s : DsheapskewView) -> Double { @_common.min(s.data) }
+pub fn DsheapskewView::min(self : DsheapskewView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_view_max(s : DsheapskewView) -> Double { @_common.max(s.data) }
+pub fn DsheapskewView::max(self : DsheapskewView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_view_to_string(s : DsheapskewView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewView::to_string(self : DsheapskewView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_skew_range_make(size : Int) -> DsheapskewRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_range_len(s : DsheapskewRange) -> Int { s.size }
+pub fn DsheapskewRange::len(self : DsheapskewRange) -> Int { self.size }
 
-pub fn ds_heap_skew_range_get(s : DsheapskewRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewRange::get(self : DsheapskewRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_range_set(s : DsheapskewRange, i : Int, v : Double) -> DsheapskewRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewRange::set(self : DsheapskewRange, i : Int, v : Double) -> DsheapskewRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_range_sum(s : DsheapskewRange) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewRange::sum(self : DsheapskewRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_range_mean(s : DsheapskewRange) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewRange::mean(self : DsheapskewRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_range_scale(s : DsheapskewRange, f : Double) -> DsheapskewRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewRange::scale(self : DsheapskewRange, f : Double) -> DsheapskewRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_range_add(a : DsheapskewRange, b : DsheapskewRange) -> DsheapskewRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewRange::add(self : DsheapskewRange, other : DsheapskewRange) -> DsheapskewRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_range_copy(s : DsheapskewRange) -> DsheapskewRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewRange::copy(self : DsheapskewRange) -> DsheapskewRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_range_fill(s : DsheapskewRange, v : Double) -> DsheapskewRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewRange::fill(self : DsheapskewRange, v : Double) -> DsheapskewRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_range_min(s : DsheapskewRange) -> Double { @_common.min(s.data) }
+pub fn DsheapskewRange::min(self : DsheapskewRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_range_max(s : DsheapskewRange) -> Double { @_common.max(s.data) }
+pub fn DsheapskewRange::max(self : DsheapskewRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_range_to_string(s : DsheapskewRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewRange::to_string(self : DsheapskewRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapskewSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_skew_slice_make(size : Int) -> DsheapskewSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_skew_slice_len(s : DsheapskewSlice) -> Int { s.size }
+pub fn DsheapskewSlice::len(self : DsheapskewSlice) -> Int { self.size }
 
-pub fn ds_heap_skew_slice_get(s : DsheapskewSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapskewSlice::get(self : DsheapskewSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_skew_slice_set(s : DsheapskewSlice, i : Int, v : Double) -> DsheapskewSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapskewSlice::set(self : DsheapskewSlice, i : Int, v : Double) -> DsheapskewSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_slice_sum(s : DsheapskewSlice) -> Double { @_common.sum(s.data) }
+pub fn DsheapskewSlice::sum(self : DsheapskewSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_skew_slice_mean(s : DsheapskewSlice) -> Double { @_common.mean(s.data) }
+pub fn DsheapskewSlice::mean(self : DsheapskewSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_skew_slice_scale(s : DsheapskewSlice, f : Double) -> DsheapskewSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapskewSlice::scale(self : DsheapskewSlice, f : Double) -> DsheapskewSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_slice_add(a : DsheapskewSlice, b : DsheapskewSlice) -> DsheapskewSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapskewSlice::add(self : DsheapskewSlice, other : DsheapskewSlice) -> DsheapskewSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_skew_slice_copy(s : DsheapskewSlice) -> DsheapskewSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapskewSlice::copy(self : DsheapskewSlice) -> DsheapskewSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_slice_fill(s : DsheapskewSlice, v : Double) -> DsheapskewSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapskewSlice::fill(self : DsheapskewSlice, v : Double) -> DsheapskewSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_skew_slice_min(s : DsheapskewSlice) -> Double { @_common.min(s.data) }
+pub fn DsheapskewSlice::min(self : DsheapskewSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_skew_slice_max(s : DsheapskewSlice) -> Double { @_common.max(s.data) }
+pub fn DsheapskewSlice::max(self : DsheapskewSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_skew_slice_to_string(s : DsheapskewSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapskewSlice::to_string(self : DsheapskewSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

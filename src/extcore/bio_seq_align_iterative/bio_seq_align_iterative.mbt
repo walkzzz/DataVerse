@@ -351,45 +351,45 @@ pub fn bio_seq_align_iterative_frame_make(size : Int) -> BioseqaligniterativeFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_frame_len(s : BioseqaligniterativeFrame) -> Int { s.size }
+pub fn BioseqaligniterativeFrame::len(self : BioseqaligniterativeFrame) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_frame_get(s : BioseqaligniterativeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeFrame::get(self : BioseqaligniterativeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_frame_set(s : BioseqaligniterativeFrame, i : Int, v : Double) -> BioseqaligniterativeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeFrame::set(self : BioseqaligniterativeFrame, i : Int, v : Double) -> BioseqaligniterativeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_frame_sum(s : BioseqaligniterativeFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeFrame::sum(self : BioseqaligniterativeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_frame_mean(s : BioseqaligniterativeFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeFrame::mean(self : BioseqaligniterativeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_frame_scale(s : BioseqaligniterativeFrame, f : Double) -> BioseqaligniterativeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeFrame::scale(self : BioseqaligniterativeFrame, f : Double) -> BioseqaligniterativeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_frame_add(a : BioseqaligniterativeFrame, b : BioseqaligniterativeFrame) -> BioseqaligniterativeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeFrame::add(self : BioseqaligniterativeFrame, other : BioseqaligniterativeFrame) -> BioseqaligniterativeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_frame_copy(s : BioseqaligniterativeFrame) -> BioseqaligniterativeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeFrame::copy(self : BioseqaligniterativeFrame) -> BioseqaligniterativeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_frame_fill(s : BioseqaligniterativeFrame, v : Double) -> BioseqaligniterativeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeFrame::fill(self : BioseqaligniterativeFrame, v : Double) -> BioseqaligniterativeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_frame_min(s : BioseqaligniterativeFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeFrame::min(self : BioseqaligniterativeFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_frame_max(s : BioseqaligniterativeFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeFrame::max(self : BioseqaligniterativeFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_frame_to_string(s : BioseqaligniterativeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeFrame::to_string(self : BioseqaligniterativeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_align_iterative_table_make(size : Int) -> BioseqaligniterativeTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_table_len(s : BioseqaligniterativeTable) -> Int { s.size }
+pub fn BioseqaligniterativeTable::len(self : BioseqaligniterativeTable) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_table_get(s : BioseqaligniterativeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeTable::get(self : BioseqaligniterativeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_table_set(s : BioseqaligniterativeTable, i : Int, v : Double) -> BioseqaligniterativeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeTable::set(self : BioseqaligniterativeTable, i : Int, v : Double) -> BioseqaligniterativeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_table_sum(s : BioseqaligniterativeTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeTable::sum(self : BioseqaligniterativeTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_table_mean(s : BioseqaligniterativeTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeTable::mean(self : BioseqaligniterativeTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_table_scale(s : BioseqaligniterativeTable, f : Double) -> BioseqaligniterativeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeTable::scale(self : BioseqaligniterativeTable, f : Double) -> BioseqaligniterativeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_table_add(a : BioseqaligniterativeTable, b : BioseqaligniterativeTable) -> BioseqaligniterativeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeTable::add(self : BioseqaligniterativeTable, other : BioseqaligniterativeTable) -> BioseqaligniterativeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_table_copy(s : BioseqaligniterativeTable) -> BioseqaligniterativeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeTable::copy(self : BioseqaligniterativeTable) -> BioseqaligniterativeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_table_fill(s : BioseqaligniterativeTable, v : Double) -> BioseqaligniterativeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeTable::fill(self : BioseqaligniterativeTable, v : Double) -> BioseqaligniterativeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_table_min(s : BioseqaligniterativeTable) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeTable::min(self : BioseqaligniterativeTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_table_max(s : BioseqaligniterativeTable) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeTable::max(self : BioseqaligniterativeTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_table_to_string(s : BioseqaligniterativeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeTable::to_string(self : BioseqaligniterativeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_align_iterative_graphn_make(size : Int) -> BioseqaligniterativeGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_graphn_len(s : BioseqaligniterativeGraphN) -> Int { s.size }
+pub fn BioseqaligniterativeGraphN::len(self : BioseqaligniterativeGraphN) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_graphn_get(s : BioseqaligniterativeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeGraphN::get(self : BioseqaligniterativeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_graphn_set(s : BioseqaligniterativeGraphN, i : Int, v : Double) -> BioseqaligniterativeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeGraphN::set(self : BioseqaligniterativeGraphN, i : Int, v : Double) -> BioseqaligniterativeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_graphn_sum(s : BioseqaligniterativeGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeGraphN::sum(self : BioseqaligniterativeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_graphn_mean(s : BioseqaligniterativeGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeGraphN::mean(self : BioseqaligniterativeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_graphn_scale(s : BioseqaligniterativeGraphN, f : Double) -> BioseqaligniterativeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeGraphN::scale(self : BioseqaligniterativeGraphN, f : Double) -> BioseqaligniterativeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_graphn_add(a : BioseqaligniterativeGraphN, b : BioseqaligniterativeGraphN) -> BioseqaligniterativeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeGraphN::add(self : BioseqaligniterativeGraphN, other : BioseqaligniterativeGraphN) -> BioseqaligniterativeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_graphn_copy(s : BioseqaligniterativeGraphN) -> BioseqaligniterativeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeGraphN::copy(self : BioseqaligniterativeGraphN) -> BioseqaligniterativeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_graphn_fill(s : BioseqaligniterativeGraphN, v : Double) -> BioseqaligniterativeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeGraphN::fill(self : BioseqaligniterativeGraphN, v : Double) -> BioseqaligniterativeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_graphn_min(s : BioseqaligniterativeGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeGraphN::min(self : BioseqaligniterativeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_graphn_max(s : BioseqaligniterativeGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeGraphN::max(self : BioseqaligniterativeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_graphn_to_string(s : BioseqaligniterativeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeGraphN::to_string(self : BioseqaligniterativeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_align_iterative_node_make(size : Int) -> BioseqaligniterativeNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_node_len(s : BioseqaligniterativeNode) -> Int { s.size }
+pub fn BioseqaligniterativeNode::len(self : BioseqaligniterativeNode) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_node_get(s : BioseqaligniterativeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeNode::get(self : BioseqaligniterativeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_node_set(s : BioseqaligniterativeNode, i : Int, v : Double) -> BioseqaligniterativeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeNode::set(self : BioseqaligniterativeNode, i : Int, v : Double) -> BioseqaligniterativeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_node_sum(s : BioseqaligniterativeNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeNode::sum(self : BioseqaligniterativeNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_node_mean(s : BioseqaligniterativeNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeNode::mean(self : BioseqaligniterativeNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_node_scale(s : BioseqaligniterativeNode, f : Double) -> BioseqaligniterativeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeNode::scale(self : BioseqaligniterativeNode, f : Double) -> BioseqaligniterativeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_node_add(a : BioseqaligniterativeNode, b : BioseqaligniterativeNode) -> BioseqaligniterativeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeNode::add(self : BioseqaligniterativeNode, other : BioseqaligniterativeNode) -> BioseqaligniterativeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_node_copy(s : BioseqaligniterativeNode) -> BioseqaligniterativeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeNode::copy(self : BioseqaligniterativeNode) -> BioseqaligniterativeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_node_fill(s : BioseqaligniterativeNode, v : Double) -> BioseqaligniterativeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeNode::fill(self : BioseqaligniterativeNode, v : Double) -> BioseqaligniterativeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_node_min(s : BioseqaligniterativeNode) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeNode::min(self : BioseqaligniterativeNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_node_max(s : BioseqaligniterativeNode) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeNode::max(self : BioseqaligniterativeNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_node_to_string(s : BioseqaligniterativeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeNode::to_string(self : BioseqaligniterativeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_align_iterative_edge_make(size : Int) -> BioseqaligniterativeEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_edge_len(s : BioseqaligniterativeEdge) -> Int { s.size }
+pub fn BioseqaligniterativeEdge::len(self : BioseqaligniterativeEdge) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_edge_get(s : BioseqaligniterativeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeEdge::get(self : BioseqaligniterativeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_edge_set(s : BioseqaligniterativeEdge, i : Int, v : Double) -> BioseqaligniterativeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeEdge::set(self : BioseqaligniterativeEdge, i : Int, v : Double) -> BioseqaligniterativeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_edge_sum(s : BioseqaligniterativeEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeEdge::sum(self : BioseqaligniterativeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_edge_mean(s : BioseqaligniterativeEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeEdge::mean(self : BioseqaligniterativeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_edge_scale(s : BioseqaligniterativeEdge, f : Double) -> BioseqaligniterativeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeEdge::scale(self : BioseqaligniterativeEdge, f : Double) -> BioseqaligniterativeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_edge_add(a : BioseqaligniterativeEdge, b : BioseqaligniterativeEdge) -> BioseqaligniterativeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeEdge::add(self : BioseqaligniterativeEdge, other : BioseqaligniterativeEdge) -> BioseqaligniterativeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_edge_copy(s : BioseqaligniterativeEdge) -> BioseqaligniterativeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeEdge::copy(self : BioseqaligniterativeEdge) -> BioseqaligniterativeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_edge_fill(s : BioseqaligniterativeEdge, v : Double) -> BioseqaligniterativeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeEdge::fill(self : BioseqaligniterativeEdge, v : Double) -> BioseqaligniterativeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_edge_min(s : BioseqaligniterativeEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeEdge::min(self : BioseqaligniterativeEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_edge_max(s : BioseqaligniterativeEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeEdge::max(self : BioseqaligniterativeEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_edge_to_string(s : BioseqaligniterativeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeEdge::to_string(self : BioseqaligniterativeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativePath {
@@ -606,45 +606,45 @@ pub fn bio_seq_align_iterative_path_make(size : Int) -> BioseqaligniterativePath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_path_len(s : BioseqaligniterativePath) -> Int { s.size }
+pub fn BioseqaligniterativePath::len(self : BioseqaligniterativePath) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_path_get(s : BioseqaligniterativePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativePath::get(self : BioseqaligniterativePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_path_set(s : BioseqaligniterativePath, i : Int, v : Double) -> BioseqaligniterativePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativePath::set(self : BioseqaligniterativePath, i : Int, v : Double) -> BioseqaligniterativePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_path_sum(s : BioseqaligniterativePath) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativePath::sum(self : BioseqaligniterativePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_path_mean(s : BioseqaligniterativePath) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativePath::mean(self : BioseqaligniterativePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_path_scale(s : BioseqaligniterativePath, f : Double) -> BioseqaligniterativePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativePath::scale(self : BioseqaligniterativePath, f : Double) -> BioseqaligniterativePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_path_add(a : BioseqaligniterativePath, b : BioseqaligniterativePath) -> BioseqaligniterativePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativePath::add(self : BioseqaligniterativePath, other : BioseqaligniterativePath) -> BioseqaligniterativePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_path_copy(s : BioseqaligniterativePath) -> BioseqaligniterativePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativePath::copy(self : BioseqaligniterativePath) -> BioseqaligniterativePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_path_fill(s : BioseqaligniterativePath, v : Double) -> BioseqaligniterativePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativePath::fill(self : BioseqaligniterativePath, v : Double) -> BioseqaligniterativePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_path_min(s : BioseqaligniterativePath) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativePath::min(self : BioseqaligniterativePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_path_max(s : BioseqaligniterativePath) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativePath::max(self : BioseqaligniterativePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_path_to_string(s : BioseqaligniterativePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativePath::to_string(self : BioseqaligniterativePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_align_iterative_cluster_make(size : Int) -> BioseqaligniterativeC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_cluster_len(s : BioseqaligniterativeCluster) -> Int { s.size }
+pub fn BioseqaligniterativeCluster::len(self : BioseqaligniterativeCluster) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_cluster_get(s : BioseqaligniterativeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeCluster::get(self : BioseqaligniterativeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_cluster_set(s : BioseqaligniterativeCluster, i : Int, v : Double) -> BioseqaligniterativeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCluster::set(self : BioseqaligniterativeCluster, i : Int, v : Double) -> BioseqaligniterativeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cluster_sum(s : BioseqaligniterativeCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeCluster::sum(self : BioseqaligniterativeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_cluster_mean(s : BioseqaligniterativeCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeCluster::mean(self : BioseqaligniterativeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_cluster_scale(s : BioseqaligniterativeCluster, f : Double) -> BioseqaligniterativeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCluster::scale(self : BioseqaligniterativeCluster, f : Double) -> BioseqaligniterativeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cluster_add(a : BioseqaligniterativeCluster, b : BioseqaligniterativeCluster) -> BioseqaligniterativeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeCluster::add(self : BioseqaligniterativeCluster, other : BioseqaligniterativeCluster) -> BioseqaligniterativeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cluster_copy(s : BioseqaligniterativeCluster) -> BioseqaligniterativeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCluster::copy(self : BioseqaligniterativeCluster) -> BioseqaligniterativeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cluster_fill(s : BioseqaligniterativeCluster, v : Double) -> BioseqaligniterativeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCluster::fill(self : BioseqaligniterativeCluster, v : Double) -> BioseqaligniterativeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cluster_min(s : BioseqaligniterativeCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeCluster::min(self : BioseqaligniterativeCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_cluster_max(s : BioseqaligniterativeCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeCluster::max(self : BioseqaligniterativeCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_cluster_to_string(s : BioseqaligniterativeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeCluster::to_string(self : BioseqaligniterativeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_align_iterative_model_make(size : Int) -> BioseqaligniterativeMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_model_len(s : BioseqaligniterativeModel) -> Int { s.size }
+pub fn BioseqaligniterativeModel::len(self : BioseqaligniterativeModel) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_model_get(s : BioseqaligniterativeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeModel::get(self : BioseqaligniterativeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_model_set(s : BioseqaligniterativeModel, i : Int, v : Double) -> BioseqaligniterativeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeModel::set(self : BioseqaligniterativeModel, i : Int, v : Double) -> BioseqaligniterativeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_model_sum(s : BioseqaligniterativeModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeModel::sum(self : BioseqaligniterativeModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_model_mean(s : BioseqaligniterativeModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeModel::mean(self : BioseqaligniterativeModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_model_scale(s : BioseqaligniterativeModel, f : Double) -> BioseqaligniterativeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeModel::scale(self : BioseqaligniterativeModel, f : Double) -> BioseqaligniterativeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_model_add(a : BioseqaligniterativeModel, b : BioseqaligniterativeModel) -> BioseqaligniterativeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeModel::add(self : BioseqaligniterativeModel, other : BioseqaligniterativeModel) -> BioseqaligniterativeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_model_copy(s : BioseqaligniterativeModel) -> BioseqaligniterativeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeModel::copy(self : BioseqaligniterativeModel) -> BioseqaligniterativeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_model_fill(s : BioseqaligniterativeModel, v : Double) -> BioseqaligniterativeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeModel::fill(self : BioseqaligniterativeModel, v : Double) -> BioseqaligniterativeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_model_min(s : BioseqaligniterativeModel) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeModel::min(self : BioseqaligniterativeModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_model_max(s : BioseqaligniterativeModel) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeModel::max(self : BioseqaligniterativeModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_model_to_string(s : BioseqaligniterativeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeModel::to_string(self : BioseqaligniterativeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_align_iterative_layer_make(size : Int) -> BioseqaligniterativeLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_layer_len(s : BioseqaligniterativeLayer) -> Int { s.size }
+pub fn BioseqaligniterativeLayer::len(self : BioseqaligniterativeLayer) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_layer_get(s : BioseqaligniterativeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeLayer::get(self : BioseqaligniterativeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_layer_set(s : BioseqaligniterativeLayer, i : Int, v : Double) -> BioseqaligniterativeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeLayer::set(self : BioseqaligniterativeLayer, i : Int, v : Double) -> BioseqaligniterativeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_layer_sum(s : BioseqaligniterativeLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeLayer::sum(self : BioseqaligniterativeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_layer_mean(s : BioseqaligniterativeLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeLayer::mean(self : BioseqaligniterativeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_layer_scale(s : BioseqaligniterativeLayer, f : Double) -> BioseqaligniterativeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeLayer::scale(self : BioseqaligniterativeLayer, f : Double) -> BioseqaligniterativeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_layer_add(a : BioseqaligniterativeLayer, b : BioseqaligniterativeLayer) -> BioseqaligniterativeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeLayer::add(self : BioseqaligniterativeLayer, other : BioseqaligniterativeLayer) -> BioseqaligniterativeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_layer_copy(s : BioseqaligniterativeLayer) -> BioseqaligniterativeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeLayer::copy(self : BioseqaligniterativeLayer) -> BioseqaligniterativeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_layer_fill(s : BioseqaligniterativeLayer, v : Double) -> BioseqaligniterativeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeLayer::fill(self : BioseqaligniterativeLayer, v : Double) -> BioseqaligniterativeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_layer_min(s : BioseqaligniterativeLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeLayer::min(self : BioseqaligniterativeLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_layer_max(s : BioseqaligniterativeLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeLayer::max(self : BioseqaligniterativeLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_layer_to_string(s : BioseqaligniterativeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeLayer::to_string(self : BioseqaligniterativeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_align_iterative_buffer_make(size : Int) -> BioseqaligniterativeBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_buffer_len(s : BioseqaligniterativeBuffer) -> Int { s.size }
+pub fn BioseqaligniterativeBuffer::len(self : BioseqaligniterativeBuffer) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_buffer_get(s : BioseqaligniterativeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeBuffer::get(self : BioseqaligniterativeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_buffer_set(s : BioseqaligniterativeBuffer, i : Int, v : Double) -> BioseqaligniterativeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeBuffer::set(self : BioseqaligniterativeBuffer, i : Int, v : Double) -> BioseqaligniterativeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_buffer_sum(s : BioseqaligniterativeBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeBuffer::sum(self : BioseqaligniterativeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_buffer_mean(s : BioseqaligniterativeBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeBuffer::mean(self : BioseqaligniterativeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_buffer_scale(s : BioseqaligniterativeBuffer, f : Double) -> BioseqaligniterativeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeBuffer::scale(self : BioseqaligniterativeBuffer, f : Double) -> BioseqaligniterativeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_buffer_add(a : BioseqaligniterativeBuffer, b : BioseqaligniterativeBuffer) -> BioseqaligniterativeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeBuffer::add(self : BioseqaligniterativeBuffer, other : BioseqaligniterativeBuffer) -> BioseqaligniterativeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_buffer_copy(s : BioseqaligniterativeBuffer) -> BioseqaligniterativeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeBuffer::copy(self : BioseqaligniterativeBuffer) -> BioseqaligniterativeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_buffer_fill(s : BioseqaligniterativeBuffer, v : Double) -> BioseqaligniterativeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeBuffer::fill(self : BioseqaligniterativeBuffer, v : Double) -> BioseqaligniterativeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_buffer_min(s : BioseqaligniterativeBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeBuffer::min(self : BioseqaligniterativeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_buffer_max(s : BioseqaligniterativeBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeBuffer::max(self : BioseqaligniterativeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_buffer_to_string(s : BioseqaligniterativeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeBuffer::to_string(self : BioseqaligniterativeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_align_iterative_cursor_make(size : Int) -> BioseqaligniterativeCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_cursor_len(s : BioseqaligniterativeCursor) -> Int { s.size }
+pub fn BioseqaligniterativeCursor::len(self : BioseqaligniterativeCursor) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_cursor_get(s : BioseqaligniterativeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeCursor::get(self : BioseqaligniterativeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_cursor_set(s : BioseqaligniterativeCursor, i : Int, v : Double) -> BioseqaligniterativeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCursor::set(self : BioseqaligniterativeCursor, i : Int, v : Double) -> BioseqaligniterativeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cursor_sum(s : BioseqaligniterativeCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeCursor::sum(self : BioseqaligniterativeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_cursor_mean(s : BioseqaligniterativeCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeCursor::mean(self : BioseqaligniterativeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_cursor_scale(s : BioseqaligniterativeCursor, f : Double) -> BioseqaligniterativeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCursor::scale(self : BioseqaligniterativeCursor, f : Double) -> BioseqaligniterativeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cursor_add(a : BioseqaligniterativeCursor, b : BioseqaligniterativeCursor) -> BioseqaligniterativeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeCursor::add(self : BioseqaligniterativeCursor, other : BioseqaligniterativeCursor) -> BioseqaligniterativeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cursor_copy(s : BioseqaligniterativeCursor) -> BioseqaligniterativeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCursor::copy(self : BioseqaligniterativeCursor) -> BioseqaligniterativeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cursor_fill(s : BioseqaligniterativeCursor, v : Double) -> BioseqaligniterativeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeCursor::fill(self : BioseqaligniterativeCursor, v : Double) -> BioseqaligniterativeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_cursor_min(s : BioseqaligniterativeCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeCursor::min(self : BioseqaligniterativeCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_cursor_max(s : BioseqaligniterativeCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeCursor::max(self : BioseqaligniterativeCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_cursor_to_string(s : BioseqaligniterativeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeCursor::to_string(self : BioseqaligniterativeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeView {
@@ -912,45 +912,45 @@ pub fn bio_seq_align_iterative_view_make(size : Int) -> BioseqaligniterativeView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_view_len(s : BioseqaligniterativeView) -> Int { s.size }
+pub fn BioseqaligniterativeView::len(self : BioseqaligniterativeView) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_view_get(s : BioseqaligniterativeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeView::get(self : BioseqaligniterativeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_view_set(s : BioseqaligniterativeView, i : Int, v : Double) -> BioseqaligniterativeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeView::set(self : BioseqaligniterativeView, i : Int, v : Double) -> BioseqaligniterativeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_view_sum(s : BioseqaligniterativeView) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeView::sum(self : BioseqaligniterativeView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_view_mean(s : BioseqaligniterativeView) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeView::mean(self : BioseqaligniterativeView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_view_scale(s : BioseqaligniterativeView, f : Double) -> BioseqaligniterativeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeView::scale(self : BioseqaligniterativeView, f : Double) -> BioseqaligniterativeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_view_add(a : BioseqaligniterativeView, b : BioseqaligniterativeView) -> BioseqaligniterativeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeView::add(self : BioseqaligniterativeView, other : BioseqaligniterativeView) -> BioseqaligniterativeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_view_copy(s : BioseqaligniterativeView) -> BioseqaligniterativeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeView::copy(self : BioseqaligniterativeView) -> BioseqaligniterativeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_view_fill(s : BioseqaligniterativeView, v : Double) -> BioseqaligniterativeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeView::fill(self : BioseqaligniterativeView, v : Double) -> BioseqaligniterativeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_view_min(s : BioseqaligniterativeView) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeView::min(self : BioseqaligniterativeView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_view_max(s : BioseqaligniterativeView) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeView::max(self : BioseqaligniterativeView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_view_to_string(s : BioseqaligniterativeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeView::to_string(self : BioseqaligniterativeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_align_iterative_range_make(size : Int) -> BioseqaligniterativeRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_range_len(s : BioseqaligniterativeRange) -> Int { s.size }
+pub fn BioseqaligniterativeRange::len(self : BioseqaligniterativeRange) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_range_get(s : BioseqaligniterativeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeRange::get(self : BioseqaligniterativeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_range_set(s : BioseqaligniterativeRange, i : Int, v : Double) -> BioseqaligniterativeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeRange::set(self : BioseqaligniterativeRange, i : Int, v : Double) -> BioseqaligniterativeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_range_sum(s : BioseqaligniterativeRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeRange::sum(self : BioseqaligniterativeRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_range_mean(s : BioseqaligniterativeRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeRange::mean(self : BioseqaligniterativeRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_range_scale(s : BioseqaligniterativeRange, f : Double) -> BioseqaligniterativeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeRange::scale(self : BioseqaligniterativeRange, f : Double) -> BioseqaligniterativeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_range_add(a : BioseqaligniterativeRange, b : BioseqaligniterativeRange) -> BioseqaligniterativeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeRange::add(self : BioseqaligniterativeRange, other : BioseqaligniterativeRange) -> BioseqaligniterativeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_range_copy(s : BioseqaligniterativeRange) -> BioseqaligniterativeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeRange::copy(self : BioseqaligniterativeRange) -> BioseqaligniterativeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_range_fill(s : BioseqaligniterativeRange, v : Double) -> BioseqaligniterativeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeRange::fill(self : BioseqaligniterativeRange, v : Double) -> BioseqaligniterativeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_range_min(s : BioseqaligniterativeRange) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeRange::min(self : BioseqaligniterativeRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_range_max(s : BioseqaligniterativeRange) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeRange::max(self : BioseqaligniterativeRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_range_to_string(s : BioseqaligniterativeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeRange::to_string(self : BioseqaligniterativeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqaligniterativeSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_align_iterative_slice_make(size : Int) -> BioseqaligniterativeSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_align_iterative_slice_len(s : BioseqaligniterativeSlice) -> Int { s.size }
+pub fn BioseqaligniterativeSlice::len(self : BioseqaligniterativeSlice) -> Int { self.size }
 
-pub fn bio_seq_align_iterative_slice_get(s : BioseqaligniterativeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqaligniterativeSlice::get(self : BioseqaligniterativeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_align_iterative_slice_set(s : BioseqaligniterativeSlice, i : Int, v : Double) -> BioseqaligniterativeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeSlice::set(self : BioseqaligniterativeSlice, i : Int, v : Double) -> BioseqaligniterativeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_slice_sum(s : BioseqaligniterativeSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqaligniterativeSlice::sum(self : BioseqaligniterativeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_align_iterative_slice_mean(s : BioseqaligniterativeSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqaligniterativeSlice::mean(self : BioseqaligniterativeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_align_iterative_slice_scale(s : BioseqaligniterativeSlice, f : Double) -> BioseqaligniterativeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeSlice::scale(self : BioseqaligniterativeSlice, f : Double) -> BioseqaligniterativeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_slice_add(a : BioseqaligniterativeSlice, b : BioseqaligniterativeSlice) -> BioseqaligniterativeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqaligniterativeSlice::add(self : BioseqaligniterativeSlice, other : BioseqaligniterativeSlice) -> BioseqaligniterativeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_slice_copy(s : BioseqaligniterativeSlice) -> BioseqaligniterativeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeSlice::copy(self : BioseqaligniterativeSlice) -> BioseqaligniterativeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_slice_fill(s : BioseqaligniterativeSlice, v : Double) -> BioseqaligniterativeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqaligniterativeSlice::fill(self : BioseqaligniterativeSlice, v : Double) -> BioseqaligniterativeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_align_iterative_slice_min(s : BioseqaligniterativeSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqaligniterativeSlice::min(self : BioseqaligniterativeSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_align_iterative_slice_max(s : BioseqaligniterativeSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqaligniterativeSlice::max(self : BioseqaligniterativeSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_align_iterative_slice_to_string(s : BioseqaligniterativeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqaligniterativeSlice::to_string(self : BioseqaligniterativeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_list_xor_frame_make(size : Int) -> DslistxorFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_frame_len(s : DslistxorFrame) -> Int { s.size }
+pub fn DslistxorFrame::len(self : DslistxorFrame) -> Int { self.size }
 
-pub fn ds_list_xor_frame_get(s : DslistxorFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorFrame::get(self : DslistxorFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_frame_set(s : DslistxorFrame, i : Int, v : Double) -> DslistxorFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorFrame::set(self : DslistxorFrame, i : Int, v : Double) -> DslistxorFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_frame_sum(s : DslistxorFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistxorFrame::sum(self : DslistxorFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_frame_mean(s : DslistxorFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistxorFrame::mean(self : DslistxorFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_frame_scale(s : DslistxorFrame, f : Double) -> DslistxorFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorFrame::scale(self : DslistxorFrame, f : Double) -> DslistxorFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_frame_add(a : DslistxorFrame, b : DslistxorFrame) -> DslistxorFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorFrame::add(self : DslistxorFrame, other : DslistxorFrame) -> DslistxorFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_frame_copy(s : DslistxorFrame) -> DslistxorFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorFrame::copy(self : DslistxorFrame) -> DslistxorFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_frame_fill(s : DslistxorFrame, v : Double) -> DslistxorFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorFrame::fill(self : DslistxorFrame, v : Double) -> DslistxorFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_frame_min(s : DslistxorFrame) -> Double { @_common.min(s.data) }
+pub fn DslistxorFrame::min(self : DslistxorFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_frame_max(s : DslistxorFrame) -> Double { @_common.max(s.data) }
+pub fn DslistxorFrame::max(self : DslistxorFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_frame_to_string(s : DslistxorFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorFrame::to_string(self : DslistxorFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorTable {
@@ -402,45 +402,45 @@ pub fn ds_list_xor_table_make(size : Int) -> DslistxorTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_table_len(s : DslistxorTable) -> Int { s.size }
+pub fn DslistxorTable::len(self : DslistxorTable) -> Int { self.size }
 
-pub fn ds_list_xor_table_get(s : DslistxorTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorTable::get(self : DslistxorTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_table_set(s : DslistxorTable, i : Int, v : Double) -> DslistxorTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorTable::set(self : DslistxorTable, i : Int, v : Double) -> DslistxorTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_table_sum(s : DslistxorTable) -> Double { @_common.sum(s.data) }
+pub fn DslistxorTable::sum(self : DslistxorTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_table_mean(s : DslistxorTable) -> Double { @_common.mean(s.data) }
+pub fn DslistxorTable::mean(self : DslistxorTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_table_scale(s : DslistxorTable, f : Double) -> DslistxorTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorTable::scale(self : DslistxorTable, f : Double) -> DslistxorTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_table_add(a : DslistxorTable, b : DslistxorTable) -> DslistxorTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorTable::add(self : DslistxorTable, other : DslistxorTable) -> DslistxorTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_table_copy(s : DslistxorTable) -> DslistxorTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorTable::copy(self : DslistxorTable) -> DslistxorTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_table_fill(s : DslistxorTable, v : Double) -> DslistxorTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorTable::fill(self : DslistxorTable, v : Double) -> DslistxorTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_table_min(s : DslistxorTable) -> Double { @_common.min(s.data) }
+pub fn DslistxorTable::min(self : DslistxorTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_table_max(s : DslistxorTable) -> Double { @_common.max(s.data) }
+pub fn DslistxorTable::max(self : DslistxorTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_table_to_string(s : DslistxorTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorTable::to_string(self : DslistxorTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_xor_graphn_make(size : Int) -> DslistxorGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_graphn_len(s : DslistxorGraphN) -> Int { s.size }
+pub fn DslistxorGraphN::len(self : DslistxorGraphN) -> Int { self.size }
 
-pub fn ds_list_xor_graphn_get(s : DslistxorGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorGraphN::get(self : DslistxorGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_graphn_set(s : DslistxorGraphN, i : Int, v : Double) -> DslistxorGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorGraphN::set(self : DslistxorGraphN, i : Int, v : Double) -> DslistxorGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_graphn_sum(s : DslistxorGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistxorGraphN::sum(self : DslistxorGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_graphn_mean(s : DslistxorGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistxorGraphN::mean(self : DslistxorGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_graphn_scale(s : DslistxorGraphN, f : Double) -> DslistxorGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorGraphN::scale(self : DslistxorGraphN, f : Double) -> DslistxorGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_graphn_add(a : DslistxorGraphN, b : DslistxorGraphN) -> DslistxorGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorGraphN::add(self : DslistxorGraphN, other : DslistxorGraphN) -> DslistxorGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_graphn_copy(s : DslistxorGraphN) -> DslistxorGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorGraphN::copy(self : DslistxorGraphN) -> DslistxorGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_graphn_fill(s : DslistxorGraphN, v : Double) -> DslistxorGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorGraphN::fill(self : DslistxorGraphN, v : Double) -> DslistxorGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_graphn_min(s : DslistxorGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistxorGraphN::min(self : DslistxorGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_graphn_max(s : DslistxorGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistxorGraphN::max(self : DslistxorGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_graphn_to_string(s : DslistxorGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorGraphN::to_string(self : DslistxorGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorNode {
@@ -504,45 +504,45 @@ pub fn ds_list_xor_node_make(size : Int) -> DslistxorNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_node_len(s : DslistxorNode) -> Int { s.size }
+pub fn DslistxorNode::len(self : DslistxorNode) -> Int { self.size }
 
-pub fn ds_list_xor_node_get(s : DslistxorNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorNode::get(self : DslistxorNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_node_set(s : DslistxorNode, i : Int, v : Double) -> DslistxorNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorNode::set(self : DslistxorNode, i : Int, v : Double) -> DslistxorNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_node_sum(s : DslistxorNode) -> Double { @_common.sum(s.data) }
+pub fn DslistxorNode::sum(self : DslistxorNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_node_mean(s : DslistxorNode) -> Double { @_common.mean(s.data) }
+pub fn DslistxorNode::mean(self : DslistxorNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_node_scale(s : DslistxorNode, f : Double) -> DslistxorNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorNode::scale(self : DslistxorNode, f : Double) -> DslistxorNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_node_add(a : DslistxorNode, b : DslistxorNode) -> DslistxorNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorNode::add(self : DslistxorNode, other : DslistxorNode) -> DslistxorNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_node_copy(s : DslistxorNode) -> DslistxorNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorNode::copy(self : DslistxorNode) -> DslistxorNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_node_fill(s : DslistxorNode, v : Double) -> DslistxorNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorNode::fill(self : DslistxorNode, v : Double) -> DslistxorNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_node_min(s : DslistxorNode) -> Double { @_common.min(s.data) }
+pub fn DslistxorNode::min(self : DslistxorNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_node_max(s : DslistxorNode) -> Double { @_common.max(s.data) }
+pub fn DslistxorNode::max(self : DslistxorNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_node_to_string(s : DslistxorNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorNode::to_string(self : DslistxorNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_xor_edge_make(size : Int) -> DslistxorEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_edge_len(s : DslistxorEdge) -> Int { s.size }
+pub fn DslistxorEdge::len(self : DslistxorEdge) -> Int { self.size }
 
-pub fn ds_list_xor_edge_get(s : DslistxorEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorEdge::get(self : DslistxorEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_edge_set(s : DslistxorEdge, i : Int, v : Double) -> DslistxorEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorEdge::set(self : DslistxorEdge, i : Int, v : Double) -> DslistxorEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_edge_sum(s : DslistxorEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistxorEdge::sum(self : DslistxorEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_edge_mean(s : DslistxorEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistxorEdge::mean(self : DslistxorEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_edge_scale(s : DslistxorEdge, f : Double) -> DslistxorEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorEdge::scale(self : DslistxorEdge, f : Double) -> DslistxorEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_edge_add(a : DslistxorEdge, b : DslistxorEdge) -> DslistxorEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorEdge::add(self : DslistxorEdge, other : DslistxorEdge) -> DslistxorEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_edge_copy(s : DslistxorEdge) -> DslistxorEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorEdge::copy(self : DslistxorEdge) -> DslistxorEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_edge_fill(s : DslistxorEdge, v : Double) -> DslistxorEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorEdge::fill(self : DslistxorEdge, v : Double) -> DslistxorEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_edge_min(s : DslistxorEdge) -> Double { @_common.min(s.data) }
+pub fn DslistxorEdge::min(self : DslistxorEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_edge_max(s : DslistxorEdge) -> Double { @_common.max(s.data) }
+pub fn DslistxorEdge::max(self : DslistxorEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_edge_to_string(s : DslistxorEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorEdge::to_string(self : DslistxorEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorPath {
@@ -606,45 +606,45 @@ pub fn ds_list_xor_path_make(size : Int) -> DslistxorPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_path_len(s : DslistxorPath) -> Int { s.size }
+pub fn DslistxorPath::len(self : DslistxorPath) -> Int { self.size }
 
-pub fn ds_list_xor_path_get(s : DslistxorPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorPath::get(self : DslistxorPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_path_set(s : DslistxorPath, i : Int, v : Double) -> DslistxorPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorPath::set(self : DslistxorPath, i : Int, v : Double) -> DslistxorPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_path_sum(s : DslistxorPath) -> Double { @_common.sum(s.data) }
+pub fn DslistxorPath::sum(self : DslistxorPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_path_mean(s : DslistxorPath) -> Double { @_common.mean(s.data) }
+pub fn DslistxorPath::mean(self : DslistxorPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_path_scale(s : DslistxorPath, f : Double) -> DslistxorPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorPath::scale(self : DslistxorPath, f : Double) -> DslistxorPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_path_add(a : DslistxorPath, b : DslistxorPath) -> DslistxorPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorPath::add(self : DslistxorPath, other : DslistxorPath) -> DslistxorPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_path_copy(s : DslistxorPath) -> DslistxorPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorPath::copy(self : DslistxorPath) -> DslistxorPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_path_fill(s : DslistxorPath, v : Double) -> DslistxorPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorPath::fill(self : DslistxorPath, v : Double) -> DslistxorPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_path_min(s : DslistxorPath) -> Double { @_common.min(s.data) }
+pub fn DslistxorPath::min(self : DslistxorPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_path_max(s : DslistxorPath) -> Double { @_common.max(s.data) }
+pub fn DslistxorPath::max(self : DslistxorPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_path_to_string(s : DslistxorPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorPath::to_string(self : DslistxorPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_xor_cluster_make(size : Int) -> DslistxorCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_cluster_len(s : DslistxorCluster) -> Int { s.size }
+pub fn DslistxorCluster::len(self : DslistxorCluster) -> Int { self.size }
 
-pub fn ds_list_xor_cluster_get(s : DslistxorCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorCluster::get(self : DslistxorCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_cluster_set(s : DslistxorCluster, i : Int, v : Double) -> DslistxorCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorCluster::set(self : DslistxorCluster, i : Int, v : Double) -> DslistxorCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cluster_sum(s : DslistxorCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistxorCluster::sum(self : DslistxorCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_cluster_mean(s : DslistxorCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistxorCluster::mean(self : DslistxorCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_cluster_scale(s : DslistxorCluster, f : Double) -> DslistxorCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorCluster::scale(self : DslistxorCluster, f : Double) -> DslistxorCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cluster_add(a : DslistxorCluster, b : DslistxorCluster) -> DslistxorCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorCluster::add(self : DslistxorCluster, other : DslistxorCluster) -> DslistxorCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_cluster_copy(s : DslistxorCluster) -> DslistxorCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorCluster::copy(self : DslistxorCluster) -> DslistxorCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cluster_fill(s : DslistxorCluster, v : Double) -> DslistxorCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorCluster::fill(self : DslistxorCluster, v : Double) -> DslistxorCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cluster_min(s : DslistxorCluster) -> Double { @_common.min(s.data) }
+pub fn DslistxorCluster::min(self : DslistxorCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_cluster_max(s : DslistxorCluster) -> Double { @_common.max(s.data) }
+pub fn DslistxorCluster::max(self : DslistxorCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_cluster_to_string(s : DslistxorCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorCluster::to_string(self : DslistxorCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorModel {
@@ -708,45 +708,45 @@ pub fn ds_list_xor_model_make(size : Int) -> DslistxorModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_model_len(s : DslistxorModel) -> Int { s.size }
+pub fn DslistxorModel::len(self : DslistxorModel) -> Int { self.size }
 
-pub fn ds_list_xor_model_get(s : DslistxorModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorModel::get(self : DslistxorModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_model_set(s : DslistxorModel, i : Int, v : Double) -> DslistxorModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorModel::set(self : DslistxorModel, i : Int, v : Double) -> DslistxorModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_model_sum(s : DslistxorModel) -> Double { @_common.sum(s.data) }
+pub fn DslistxorModel::sum(self : DslistxorModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_model_mean(s : DslistxorModel) -> Double { @_common.mean(s.data) }
+pub fn DslistxorModel::mean(self : DslistxorModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_model_scale(s : DslistxorModel, f : Double) -> DslistxorModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorModel::scale(self : DslistxorModel, f : Double) -> DslistxorModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_model_add(a : DslistxorModel, b : DslistxorModel) -> DslistxorModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorModel::add(self : DslistxorModel, other : DslistxorModel) -> DslistxorModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_model_copy(s : DslistxorModel) -> DslistxorModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorModel::copy(self : DslistxorModel) -> DslistxorModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_model_fill(s : DslistxorModel, v : Double) -> DslistxorModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorModel::fill(self : DslistxorModel, v : Double) -> DslistxorModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_model_min(s : DslistxorModel) -> Double { @_common.min(s.data) }
+pub fn DslistxorModel::min(self : DslistxorModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_model_max(s : DslistxorModel) -> Double { @_common.max(s.data) }
+pub fn DslistxorModel::max(self : DslistxorModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_model_to_string(s : DslistxorModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorModel::to_string(self : DslistxorModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_xor_layer_make(size : Int) -> DslistxorLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_layer_len(s : DslistxorLayer) -> Int { s.size }
+pub fn DslistxorLayer::len(self : DslistxorLayer) -> Int { self.size }
 
-pub fn ds_list_xor_layer_get(s : DslistxorLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorLayer::get(self : DslistxorLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_layer_set(s : DslistxorLayer, i : Int, v : Double) -> DslistxorLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorLayer::set(self : DslistxorLayer, i : Int, v : Double) -> DslistxorLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_layer_sum(s : DslistxorLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistxorLayer::sum(self : DslistxorLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_layer_mean(s : DslistxorLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistxorLayer::mean(self : DslistxorLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_layer_scale(s : DslistxorLayer, f : Double) -> DslistxorLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorLayer::scale(self : DslistxorLayer, f : Double) -> DslistxorLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_layer_add(a : DslistxorLayer, b : DslistxorLayer) -> DslistxorLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorLayer::add(self : DslistxorLayer, other : DslistxorLayer) -> DslistxorLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_layer_copy(s : DslistxorLayer) -> DslistxorLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorLayer::copy(self : DslistxorLayer) -> DslistxorLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_layer_fill(s : DslistxorLayer, v : Double) -> DslistxorLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorLayer::fill(self : DslistxorLayer, v : Double) -> DslistxorLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_layer_min(s : DslistxorLayer) -> Double { @_common.min(s.data) }
+pub fn DslistxorLayer::min(self : DslistxorLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_layer_max(s : DslistxorLayer) -> Double { @_common.max(s.data) }
+pub fn DslistxorLayer::max(self : DslistxorLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_layer_to_string(s : DslistxorLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorLayer::to_string(self : DslistxorLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_xor_buffer_make(size : Int) -> DslistxorBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_buffer_len(s : DslistxorBuffer) -> Int { s.size }
+pub fn DslistxorBuffer::len(self : DslistxorBuffer) -> Int { self.size }
 
-pub fn ds_list_xor_buffer_get(s : DslistxorBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorBuffer::get(self : DslistxorBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_buffer_set(s : DslistxorBuffer, i : Int, v : Double) -> DslistxorBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorBuffer::set(self : DslistxorBuffer, i : Int, v : Double) -> DslistxorBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_buffer_sum(s : DslistxorBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistxorBuffer::sum(self : DslistxorBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_buffer_mean(s : DslistxorBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistxorBuffer::mean(self : DslistxorBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_buffer_scale(s : DslistxorBuffer, f : Double) -> DslistxorBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorBuffer::scale(self : DslistxorBuffer, f : Double) -> DslistxorBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_buffer_add(a : DslistxorBuffer, b : DslistxorBuffer) -> DslistxorBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorBuffer::add(self : DslistxorBuffer, other : DslistxorBuffer) -> DslistxorBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_buffer_copy(s : DslistxorBuffer) -> DslistxorBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorBuffer::copy(self : DslistxorBuffer) -> DslistxorBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_buffer_fill(s : DslistxorBuffer, v : Double) -> DslistxorBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorBuffer::fill(self : DslistxorBuffer, v : Double) -> DslistxorBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_buffer_min(s : DslistxorBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistxorBuffer::min(self : DslistxorBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_buffer_max(s : DslistxorBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistxorBuffer::max(self : DslistxorBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_buffer_to_string(s : DslistxorBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorBuffer::to_string(self : DslistxorBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_xor_cursor_make(size : Int) -> DslistxorCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_cursor_len(s : DslistxorCursor) -> Int { s.size }
+pub fn DslistxorCursor::len(self : DslistxorCursor) -> Int { self.size }
 
-pub fn ds_list_xor_cursor_get(s : DslistxorCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorCursor::get(self : DslistxorCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_cursor_set(s : DslistxorCursor, i : Int, v : Double) -> DslistxorCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorCursor::set(self : DslistxorCursor, i : Int, v : Double) -> DslistxorCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cursor_sum(s : DslistxorCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistxorCursor::sum(self : DslistxorCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_cursor_mean(s : DslistxorCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistxorCursor::mean(self : DslistxorCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_cursor_scale(s : DslistxorCursor, f : Double) -> DslistxorCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorCursor::scale(self : DslistxorCursor, f : Double) -> DslistxorCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cursor_add(a : DslistxorCursor, b : DslistxorCursor) -> DslistxorCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorCursor::add(self : DslistxorCursor, other : DslistxorCursor) -> DslistxorCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_cursor_copy(s : DslistxorCursor) -> DslistxorCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorCursor::copy(self : DslistxorCursor) -> DslistxorCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cursor_fill(s : DslistxorCursor, v : Double) -> DslistxorCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorCursor::fill(self : DslistxorCursor, v : Double) -> DslistxorCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_cursor_min(s : DslistxorCursor) -> Double { @_common.min(s.data) }
+pub fn DslistxorCursor::min(self : DslistxorCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_cursor_max(s : DslistxorCursor) -> Double { @_common.max(s.data) }
+pub fn DslistxorCursor::max(self : DslistxorCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_cursor_to_string(s : DslistxorCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorCursor::to_string(self : DslistxorCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorView {
@@ -912,45 +912,45 @@ pub fn ds_list_xor_view_make(size : Int) -> DslistxorView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_view_len(s : DslistxorView) -> Int { s.size }
+pub fn DslistxorView::len(self : DslistxorView) -> Int { self.size }
 
-pub fn ds_list_xor_view_get(s : DslistxorView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorView::get(self : DslistxorView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_view_set(s : DslistxorView, i : Int, v : Double) -> DslistxorView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorView::set(self : DslistxorView, i : Int, v : Double) -> DslistxorView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_view_sum(s : DslistxorView) -> Double { @_common.sum(s.data) }
+pub fn DslistxorView::sum(self : DslistxorView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_view_mean(s : DslistxorView) -> Double { @_common.mean(s.data) }
+pub fn DslistxorView::mean(self : DslistxorView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_view_scale(s : DslistxorView, f : Double) -> DslistxorView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorView::scale(self : DslistxorView, f : Double) -> DslistxorView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_view_add(a : DslistxorView, b : DslistxorView) -> DslistxorView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorView::add(self : DslistxorView, other : DslistxorView) -> DslistxorView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_view_copy(s : DslistxorView) -> DslistxorView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorView::copy(self : DslistxorView) -> DslistxorView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_view_fill(s : DslistxorView, v : Double) -> DslistxorView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorView::fill(self : DslistxorView, v : Double) -> DslistxorView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_view_min(s : DslistxorView) -> Double { @_common.min(s.data) }
+pub fn DslistxorView::min(self : DslistxorView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_view_max(s : DslistxorView) -> Double { @_common.max(s.data) }
+pub fn DslistxorView::max(self : DslistxorView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_view_to_string(s : DslistxorView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorView::to_string(self : DslistxorView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorRange {
@@ -963,45 +963,45 @@ pub fn ds_list_xor_range_make(size : Int) -> DslistxorRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_range_len(s : DslistxorRange) -> Int { s.size }
+pub fn DslistxorRange::len(self : DslistxorRange) -> Int { self.size }
 
-pub fn ds_list_xor_range_get(s : DslistxorRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorRange::get(self : DslistxorRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_range_set(s : DslistxorRange, i : Int, v : Double) -> DslistxorRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorRange::set(self : DslistxorRange, i : Int, v : Double) -> DslistxorRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_range_sum(s : DslistxorRange) -> Double { @_common.sum(s.data) }
+pub fn DslistxorRange::sum(self : DslistxorRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_range_mean(s : DslistxorRange) -> Double { @_common.mean(s.data) }
+pub fn DslistxorRange::mean(self : DslistxorRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_range_scale(s : DslistxorRange, f : Double) -> DslistxorRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorRange::scale(self : DslistxorRange, f : Double) -> DslistxorRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_range_add(a : DslistxorRange, b : DslistxorRange) -> DslistxorRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorRange::add(self : DslistxorRange, other : DslistxorRange) -> DslistxorRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_range_copy(s : DslistxorRange) -> DslistxorRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorRange::copy(self : DslistxorRange) -> DslistxorRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_range_fill(s : DslistxorRange, v : Double) -> DslistxorRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorRange::fill(self : DslistxorRange, v : Double) -> DslistxorRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_range_min(s : DslistxorRange) -> Double { @_common.min(s.data) }
+pub fn DslistxorRange::min(self : DslistxorRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_range_max(s : DslistxorRange) -> Double { @_common.max(s.data) }
+pub fn DslistxorRange::max(self : DslistxorRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_range_to_string(s : DslistxorRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorRange::to_string(self : DslistxorRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistxorSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_xor_slice_make(size : Int) -> DslistxorSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_xor_slice_len(s : DslistxorSlice) -> Int { s.size }
+pub fn DslistxorSlice::len(self : DslistxorSlice) -> Int { self.size }
 
-pub fn ds_list_xor_slice_get(s : DslistxorSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistxorSlice::get(self : DslistxorSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_xor_slice_set(s : DslistxorSlice, i : Int, v : Double) -> DslistxorSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistxorSlice::set(self : DslistxorSlice, i : Int, v : Double) -> DslistxorSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_slice_sum(s : DslistxorSlice) -> Double { @_common.sum(s.data) }
+pub fn DslistxorSlice::sum(self : DslistxorSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_xor_slice_mean(s : DslistxorSlice) -> Double { @_common.mean(s.data) }
+pub fn DslistxorSlice::mean(self : DslistxorSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_xor_slice_scale(s : DslistxorSlice, f : Double) -> DslistxorSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistxorSlice::scale(self : DslistxorSlice, f : Double) -> DslistxorSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_slice_add(a : DslistxorSlice, b : DslistxorSlice) -> DslistxorSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistxorSlice::add(self : DslistxorSlice, other : DslistxorSlice) -> DslistxorSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_xor_slice_copy(s : DslistxorSlice) -> DslistxorSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistxorSlice::copy(self : DslistxorSlice) -> DslistxorSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_slice_fill(s : DslistxorSlice, v : Double) -> DslistxorSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistxorSlice::fill(self : DslistxorSlice, v : Double) -> DslistxorSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_xor_slice_min(s : DslistxorSlice) -> Double { @_common.min(s.data) }
+pub fn DslistxorSlice::min(self : DslistxorSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_xor_slice_max(s : DslistxorSlice) -> Double { @_common.max(s.data) }
+pub fn DslistxorSlice::max(self : DslistxorSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_xor_slice_to_string(s : DslistxorSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistxorSlice::to_string(self : DslistxorSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

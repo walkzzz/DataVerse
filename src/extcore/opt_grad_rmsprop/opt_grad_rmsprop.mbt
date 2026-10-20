@@ -351,45 +351,45 @@ pub fn opt_grad_rmsprop_frame_make(size : Int) -> OptgradrmspropFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_frame_len(s : OptgradrmspropFrame) -> Int { s.size }
+pub fn OptgradrmspropFrame::len(self : OptgradrmspropFrame) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_frame_get(s : OptgradrmspropFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropFrame::get(self : OptgradrmspropFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_frame_set(s : OptgradrmspropFrame, i : Int, v : Double) -> OptgradrmspropFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropFrame::set(self : OptgradrmspropFrame, i : Int, v : Double) -> OptgradrmspropFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_frame_sum(s : OptgradrmspropFrame) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropFrame::sum(self : OptgradrmspropFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_frame_mean(s : OptgradrmspropFrame) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropFrame::mean(self : OptgradrmspropFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_frame_scale(s : OptgradrmspropFrame, f : Double) -> OptgradrmspropFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropFrame::scale(self : OptgradrmspropFrame, f : Double) -> OptgradrmspropFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_frame_add(a : OptgradrmspropFrame, b : OptgradrmspropFrame) -> OptgradrmspropFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropFrame::add(self : OptgradrmspropFrame, other : OptgradrmspropFrame) -> OptgradrmspropFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_frame_copy(s : OptgradrmspropFrame) -> OptgradrmspropFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropFrame::copy(self : OptgradrmspropFrame) -> OptgradrmspropFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_frame_fill(s : OptgradrmspropFrame, v : Double) -> OptgradrmspropFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropFrame::fill(self : OptgradrmspropFrame, v : Double) -> OptgradrmspropFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_frame_min(s : OptgradrmspropFrame) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropFrame::min(self : OptgradrmspropFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_frame_max(s : OptgradrmspropFrame) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropFrame::max(self : OptgradrmspropFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_frame_to_string(s : OptgradrmspropFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropFrame::to_string(self : OptgradrmspropFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropTable {
@@ -402,45 +402,45 @@ pub fn opt_grad_rmsprop_table_make(size : Int) -> OptgradrmspropTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_table_len(s : OptgradrmspropTable) -> Int { s.size }
+pub fn OptgradrmspropTable::len(self : OptgradrmspropTable) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_table_get(s : OptgradrmspropTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropTable::get(self : OptgradrmspropTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_table_set(s : OptgradrmspropTable, i : Int, v : Double) -> OptgradrmspropTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropTable::set(self : OptgradrmspropTable, i : Int, v : Double) -> OptgradrmspropTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_table_sum(s : OptgradrmspropTable) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropTable::sum(self : OptgradrmspropTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_table_mean(s : OptgradrmspropTable) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropTable::mean(self : OptgradrmspropTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_table_scale(s : OptgradrmspropTable, f : Double) -> OptgradrmspropTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropTable::scale(self : OptgradrmspropTable, f : Double) -> OptgradrmspropTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_table_add(a : OptgradrmspropTable, b : OptgradrmspropTable) -> OptgradrmspropTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropTable::add(self : OptgradrmspropTable, other : OptgradrmspropTable) -> OptgradrmspropTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_table_copy(s : OptgradrmspropTable) -> OptgradrmspropTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropTable::copy(self : OptgradrmspropTable) -> OptgradrmspropTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_table_fill(s : OptgradrmspropTable, v : Double) -> OptgradrmspropTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropTable::fill(self : OptgradrmspropTable, v : Double) -> OptgradrmspropTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_table_min(s : OptgradrmspropTable) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropTable::min(self : OptgradrmspropTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_table_max(s : OptgradrmspropTable) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropTable::max(self : OptgradrmspropTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_table_to_string(s : OptgradrmspropTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropTable::to_string(self : OptgradrmspropTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropGraphN {
@@ -453,45 +453,45 @@ pub fn opt_grad_rmsprop_graphn_make(size : Int) -> OptgradrmspropGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_graphn_len(s : OptgradrmspropGraphN) -> Int { s.size }
+pub fn OptgradrmspropGraphN::len(self : OptgradrmspropGraphN) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_graphn_get(s : OptgradrmspropGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropGraphN::get(self : OptgradrmspropGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_graphn_set(s : OptgradrmspropGraphN, i : Int, v : Double) -> OptgradrmspropGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropGraphN::set(self : OptgradrmspropGraphN, i : Int, v : Double) -> OptgradrmspropGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_graphn_sum(s : OptgradrmspropGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropGraphN::sum(self : OptgradrmspropGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_graphn_mean(s : OptgradrmspropGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropGraphN::mean(self : OptgradrmspropGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_graphn_scale(s : OptgradrmspropGraphN, f : Double) -> OptgradrmspropGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropGraphN::scale(self : OptgradrmspropGraphN, f : Double) -> OptgradrmspropGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_graphn_add(a : OptgradrmspropGraphN, b : OptgradrmspropGraphN) -> OptgradrmspropGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropGraphN::add(self : OptgradrmspropGraphN, other : OptgradrmspropGraphN) -> OptgradrmspropGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_graphn_copy(s : OptgradrmspropGraphN) -> OptgradrmspropGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropGraphN::copy(self : OptgradrmspropGraphN) -> OptgradrmspropGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_graphn_fill(s : OptgradrmspropGraphN, v : Double) -> OptgradrmspropGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropGraphN::fill(self : OptgradrmspropGraphN, v : Double) -> OptgradrmspropGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_graphn_min(s : OptgradrmspropGraphN) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropGraphN::min(self : OptgradrmspropGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_graphn_max(s : OptgradrmspropGraphN) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropGraphN::max(self : OptgradrmspropGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_graphn_to_string(s : OptgradrmspropGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropGraphN::to_string(self : OptgradrmspropGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropNode {
@@ -504,45 +504,45 @@ pub fn opt_grad_rmsprop_node_make(size : Int) -> OptgradrmspropNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_node_len(s : OptgradrmspropNode) -> Int { s.size }
+pub fn OptgradrmspropNode::len(self : OptgradrmspropNode) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_node_get(s : OptgradrmspropNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropNode::get(self : OptgradrmspropNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_node_set(s : OptgradrmspropNode, i : Int, v : Double) -> OptgradrmspropNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropNode::set(self : OptgradrmspropNode, i : Int, v : Double) -> OptgradrmspropNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_node_sum(s : OptgradrmspropNode) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropNode::sum(self : OptgradrmspropNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_node_mean(s : OptgradrmspropNode) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropNode::mean(self : OptgradrmspropNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_node_scale(s : OptgradrmspropNode, f : Double) -> OptgradrmspropNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropNode::scale(self : OptgradrmspropNode, f : Double) -> OptgradrmspropNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_node_add(a : OptgradrmspropNode, b : OptgradrmspropNode) -> OptgradrmspropNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropNode::add(self : OptgradrmspropNode, other : OptgradrmspropNode) -> OptgradrmspropNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_node_copy(s : OptgradrmspropNode) -> OptgradrmspropNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropNode::copy(self : OptgradrmspropNode) -> OptgradrmspropNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_node_fill(s : OptgradrmspropNode, v : Double) -> OptgradrmspropNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropNode::fill(self : OptgradrmspropNode, v : Double) -> OptgradrmspropNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_node_min(s : OptgradrmspropNode) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropNode::min(self : OptgradrmspropNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_node_max(s : OptgradrmspropNode) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropNode::max(self : OptgradrmspropNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_node_to_string(s : OptgradrmspropNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropNode::to_string(self : OptgradrmspropNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropEdge {
@@ -555,45 +555,45 @@ pub fn opt_grad_rmsprop_edge_make(size : Int) -> OptgradrmspropEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_edge_len(s : OptgradrmspropEdge) -> Int { s.size }
+pub fn OptgradrmspropEdge::len(self : OptgradrmspropEdge) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_edge_get(s : OptgradrmspropEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropEdge::get(self : OptgradrmspropEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_edge_set(s : OptgradrmspropEdge, i : Int, v : Double) -> OptgradrmspropEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropEdge::set(self : OptgradrmspropEdge, i : Int, v : Double) -> OptgradrmspropEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_edge_sum(s : OptgradrmspropEdge) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropEdge::sum(self : OptgradrmspropEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_edge_mean(s : OptgradrmspropEdge) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropEdge::mean(self : OptgradrmspropEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_edge_scale(s : OptgradrmspropEdge, f : Double) -> OptgradrmspropEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropEdge::scale(self : OptgradrmspropEdge, f : Double) -> OptgradrmspropEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_edge_add(a : OptgradrmspropEdge, b : OptgradrmspropEdge) -> OptgradrmspropEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropEdge::add(self : OptgradrmspropEdge, other : OptgradrmspropEdge) -> OptgradrmspropEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_edge_copy(s : OptgradrmspropEdge) -> OptgradrmspropEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropEdge::copy(self : OptgradrmspropEdge) -> OptgradrmspropEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_edge_fill(s : OptgradrmspropEdge, v : Double) -> OptgradrmspropEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropEdge::fill(self : OptgradrmspropEdge, v : Double) -> OptgradrmspropEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_edge_min(s : OptgradrmspropEdge) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropEdge::min(self : OptgradrmspropEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_edge_max(s : OptgradrmspropEdge) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropEdge::max(self : OptgradrmspropEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_edge_to_string(s : OptgradrmspropEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropEdge::to_string(self : OptgradrmspropEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropPath {
@@ -606,45 +606,45 @@ pub fn opt_grad_rmsprop_path_make(size : Int) -> OptgradrmspropPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_path_len(s : OptgradrmspropPath) -> Int { s.size }
+pub fn OptgradrmspropPath::len(self : OptgradrmspropPath) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_path_get(s : OptgradrmspropPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropPath::get(self : OptgradrmspropPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_path_set(s : OptgradrmspropPath, i : Int, v : Double) -> OptgradrmspropPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropPath::set(self : OptgradrmspropPath, i : Int, v : Double) -> OptgradrmspropPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_path_sum(s : OptgradrmspropPath) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropPath::sum(self : OptgradrmspropPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_path_mean(s : OptgradrmspropPath) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropPath::mean(self : OptgradrmspropPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_path_scale(s : OptgradrmspropPath, f : Double) -> OptgradrmspropPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropPath::scale(self : OptgradrmspropPath, f : Double) -> OptgradrmspropPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_path_add(a : OptgradrmspropPath, b : OptgradrmspropPath) -> OptgradrmspropPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropPath::add(self : OptgradrmspropPath, other : OptgradrmspropPath) -> OptgradrmspropPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_path_copy(s : OptgradrmspropPath) -> OptgradrmspropPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropPath::copy(self : OptgradrmspropPath) -> OptgradrmspropPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_path_fill(s : OptgradrmspropPath, v : Double) -> OptgradrmspropPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropPath::fill(self : OptgradrmspropPath, v : Double) -> OptgradrmspropPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_path_min(s : OptgradrmspropPath) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropPath::min(self : OptgradrmspropPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_path_max(s : OptgradrmspropPath) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropPath::max(self : OptgradrmspropPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_path_to_string(s : OptgradrmspropPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropPath::to_string(self : OptgradrmspropPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropCluster {
@@ -657,45 +657,45 @@ pub fn opt_grad_rmsprop_cluster_make(size : Int) -> OptgradrmspropCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_cluster_len(s : OptgradrmspropCluster) -> Int { s.size }
+pub fn OptgradrmspropCluster::len(self : OptgradrmspropCluster) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_cluster_get(s : OptgradrmspropCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropCluster::get(self : OptgradrmspropCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_cluster_set(s : OptgradrmspropCluster, i : Int, v : Double) -> OptgradrmspropCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropCluster::set(self : OptgradrmspropCluster, i : Int, v : Double) -> OptgradrmspropCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cluster_sum(s : OptgradrmspropCluster) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropCluster::sum(self : OptgradrmspropCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_cluster_mean(s : OptgradrmspropCluster) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropCluster::mean(self : OptgradrmspropCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_cluster_scale(s : OptgradrmspropCluster, f : Double) -> OptgradrmspropCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropCluster::scale(self : OptgradrmspropCluster, f : Double) -> OptgradrmspropCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cluster_add(a : OptgradrmspropCluster, b : OptgradrmspropCluster) -> OptgradrmspropCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropCluster::add(self : OptgradrmspropCluster, other : OptgradrmspropCluster) -> OptgradrmspropCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cluster_copy(s : OptgradrmspropCluster) -> OptgradrmspropCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropCluster::copy(self : OptgradrmspropCluster) -> OptgradrmspropCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cluster_fill(s : OptgradrmspropCluster, v : Double) -> OptgradrmspropCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropCluster::fill(self : OptgradrmspropCluster, v : Double) -> OptgradrmspropCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cluster_min(s : OptgradrmspropCluster) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropCluster::min(self : OptgradrmspropCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_cluster_max(s : OptgradrmspropCluster) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropCluster::max(self : OptgradrmspropCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_cluster_to_string(s : OptgradrmspropCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropCluster::to_string(self : OptgradrmspropCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropModel {
@@ -708,45 +708,45 @@ pub fn opt_grad_rmsprop_model_make(size : Int) -> OptgradrmspropModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_model_len(s : OptgradrmspropModel) -> Int { s.size }
+pub fn OptgradrmspropModel::len(self : OptgradrmspropModel) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_model_get(s : OptgradrmspropModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropModel::get(self : OptgradrmspropModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_model_set(s : OptgradrmspropModel, i : Int, v : Double) -> OptgradrmspropModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropModel::set(self : OptgradrmspropModel, i : Int, v : Double) -> OptgradrmspropModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_model_sum(s : OptgradrmspropModel) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropModel::sum(self : OptgradrmspropModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_model_mean(s : OptgradrmspropModel) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropModel::mean(self : OptgradrmspropModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_model_scale(s : OptgradrmspropModel, f : Double) -> OptgradrmspropModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropModel::scale(self : OptgradrmspropModel, f : Double) -> OptgradrmspropModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_model_add(a : OptgradrmspropModel, b : OptgradrmspropModel) -> OptgradrmspropModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropModel::add(self : OptgradrmspropModel, other : OptgradrmspropModel) -> OptgradrmspropModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_model_copy(s : OptgradrmspropModel) -> OptgradrmspropModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropModel::copy(self : OptgradrmspropModel) -> OptgradrmspropModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_model_fill(s : OptgradrmspropModel, v : Double) -> OptgradrmspropModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropModel::fill(self : OptgradrmspropModel, v : Double) -> OptgradrmspropModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_model_min(s : OptgradrmspropModel) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropModel::min(self : OptgradrmspropModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_model_max(s : OptgradrmspropModel) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropModel::max(self : OptgradrmspropModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_model_to_string(s : OptgradrmspropModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropModel::to_string(self : OptgradrmspropModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropLayer {
@@ -759,45 +759,45 @@ pub fn opt_grad_rmsprop_layer_make(size : Int) -> OptgradrmspropLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_layer_len(s : OptgradrmspropLayer) -> Int { s.size }
+pub fn OptgradrmspropLayer::len(self : OptgradrmspropLayer) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_layer_get(s : OptgradrmspropLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropLayer::get(self : OptgradrmspropLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_layer_set(s : OptgradrmspropLayer, i : Int, v : Double) -> OptgradrmspropLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropLayer::set(self : OptgradrmspropLayer, i : Int, v : Double) -> OptgradrmspropLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_layer_sum(s : OptgradrmspropLayer) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropLayer::sum(self : OptgradrmspropLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_layer_mean(s : OptgradrmspropLayer) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropLayer::mean(self : OptgradrmspropLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_layer_scale(s : OptgradrmspropLayer, f : Double) -> OptgradrmspropLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropLayer::scale(self : OptgradrmspropLayer, f : Double) -> OptgradrmspropLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_layer_add(a : OptgradrmspropLayer, b : OptgradrmspropLayer) -> OptgradrmspropLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropLayer::add(self : OptgradrmspropLayer, other : OptgradrmspropLayer) -> OptgradrmspropLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_layer_copy(s : OptgradrmspropLayer) -> OptgradrmspropLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropLayer::copy(self : OptgradrmspropLayer) -> OptgradrmspropLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_layer_fill(s : OptgradrmspropLayer, v : Double) -> OptgradrmspropLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropLayer::fill(self : OptgradrmspropLayer, v : Double) -> OptgradrmspropLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_layer_min(s : OptgradrmspropLayer) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropLayer::min(self : OptgradrmspropLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_layer_max(s : OptgradrmspropLayer) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropLayer::max(self : OptgradrmspropLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_layer_to_string(s : OptgradrmspropLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropLayer::to_string(self : OptgradrmspropLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropBuffer {
@@ -810,45 +810,45 @@ pub fn opt_grad_rmsprop_buffer_make(size : Int) -> OptgradrmspropBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_buffer_len(s : OptgradrmspropBuffer) -> Int { s.size }
+pub fn OptgradrmspropBuffer::len(self : OptgradrmspropBuffer) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_buffer_get(s : OptgradrmspropBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropBuffer::get(self : OptgradrmspropBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_buffer_set(s : OptgradrmspropBuffer, i : Int, v : Double) -> OptgradrmspropBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropBuffer::set(self : OptgradrmspropBuffer, i : Int, v : Double) -> OptgradrmspropBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_buffer_sum(s : OptgradrmspropBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropBuffer::sum(self : OptgradrmspropBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_buffer_mean(s : OptgradrmspropBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropBuffer::mean(self : OptgradrmspropBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_buffer_scale(s : OptgradrmspropBuffer, f : Double) -> OptgradrmspropBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropBuffer::scale(self : OptgradrmspropBuffer, f : Double) -> OptgradrmspropBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_buffer_add(a : OptgradrmspropBuffer, b : OptgradrmspropBuffer) -> OptgradrmspropBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropBuffer::add(self : OptgradrmspropBuffer, other : OptgradrmspropBuffer) -> OptgradrmspropBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_buffer_copy(s : OptgradrmspropBuffer) -> OptgradrmspropBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropBuffer::copy(self : OptgradrmspropBuffer) -> OptgradrmspropBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_buffer_fill(s : OptgradrmspropBuffer, v : Double) -> OptgradrmspropBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropBuffer::fill(self : OptgradrmspropBuffer, v : Double) -> OptgradrmspropBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_buffer_min(s : OptgradrmspropBuffer) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropBuffer::min(self : OptgradrmspropBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_buffer_max(s : OptgradrmspropBuffer) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropBuffer::max(self : OptgradrmspropBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_buffer_to_string(s : OptgradrmspropBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropBuffer::to_string(self : OptgradrmspropBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropCursor {
@@ -861,45 +861,45 @@ pub fn opt_grad_rmsprop_cursor_make(size : Int) -> OptgradrmspropCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_cursor_len(s : OptgradrmspropCursor) -> Int { s.size }
+pub fn OptgradrmspropCursor::len(self : OptgradrmspropCursor) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_cursor_get(s : OptgradrmspropCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropCursor::get(self : OptgradrmspropCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_cursor_set(s : OptgradrmspropCursor, i : Int, v : Double) -> OptgradrmspropCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropCursor::set(self : OptgradrmspropCursor, i : Int, v : Double) -> OptgradrmspropCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cursor_sum(s : OptgradrmspropCursor) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropCursor::sum(self : OptgradrmspropCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_cursor_mean(s : OptgradrmspropCursor) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropCursor::mean(self : OptgradrmspropCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_cursor_scale(s : OptgradrmspropCursor, f : Double) -> OptgradrmspropCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropCursor::scale(self : OptgradrmspropCursor, f : Double) -> OptgradrmspropCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cursor_add(a : OptgradrmspropCursor, b : OptgradrmspropCursor) -> OptgradrmspropCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropCursor::add(self : OptgradrmspropCursor, other : OptgradrmspropCursor) -> OptgradrmspropCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cursor_copy(s : OptgradrmspropCursor) -> OptgradrmspropCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropCursor::copy(self : OptgradrmspropCursor) -> OptgradrmspropCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cursor_fill(s : OptgradrmspropCursor, v : Double) -> OptgradrmspropCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropCursor::fill(self : OptgradrmspropCursor, v : Double) -> OptgradrmspropCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_cursor_min(s : OptgradrmspropCursor) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropCursor::min(self : OptgradrmspropCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_cursor_max(s : OptgradrmspropCursor) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropCursor::max(self : OptgradrmspropCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_cursor_to_string(s : OptgradrmspropCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropCursor::to_string(self : OptgradrmspropCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropView {
@@ -912,45 +912,45 @@ pub fn opt_grad_rmsprop_view_make(size : Int) -> OptgradrmspropView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_view_len(s : OptgradrmspropView) -> Int { s.size }
+pub fn OptgradrmspropView::len(self : OptgradrmspropView) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_view_get(s : OptgradrmspropView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropView::get(self : OptgradrmspropView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_view_set(s : OptgradrmspropView, i : Int, v : Double) -> OptgradrmspropView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropView::set(self : OptgradrmspropView, i : Int, v : Double) -> OptgradrmspropView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_view_sum(s : OptgradrmspropView) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropView::sum(self : OptgradrmspropView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_view_mean(s : OptgradrmspropView) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropView::mean(self : OptgradrmspropView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_view_scale(s : OptgradrmspropView, f : Double) -> OptgradrmspropView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropView::scale(self : OptgradrmspropView, f : Double) -> OptgradrmspropView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_view_add(a : OptgradrmspropView, b : OptgradrmspropView) -> OptgradrmspropView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropView::add(self : OptgradrmspropView, other : OptgradrmspropView) -> OptgradrmspropView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_view_copy(s : OptgradrmspropView) -> OptgradrmspropView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropView::copy(self : OptgradrmspropView) -> OptgradrmspropView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_view_fill(s : OptgradrmspropView, v : Double) -> OptgradrmspropView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropView::fill(self : OptgradrmspropView, v : Double) -> OptgradrmspropView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_view_min(s : OptgradrmspropView) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropView::min(self : OptgradrmspropView) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_view_max(s : OptgradrmspropView) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropView::max(self : OptgradrmspropView) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_view_to_string(s : OptgradrmspropView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropView::to_string(self : OptgradrmspropView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropRange {
@@ -963,45 +963,45 @@ pub fn opt_grad_rmsprop_range_make(size : Int) -> OptgradrmspropRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_range_len(s : OptgradrmspropRange) -> Int { s.size }
+pub fn OptgradrmspropRange::len(self : OptgradrmspropRange) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_range_get(s : OptgradrmspropRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropRange::get(self : OptgradrmspropRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_range_set(s : OptgradrmspropRange, i : Int, v : Double) -> OptgradrmspropRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropRange::set(self : OptgradrmspropRange, i : Int, v : Double) -> OptgradrmspropRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_range_sum(s : OptgradrmspropRange) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropRange::sum(self : OptgradrmspropRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_range_mean(s : OptgradrmspropRange) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropRange::mean(self : OptgradrmspropRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_range_scale(s : OptgradrmspropRange, f : Double) -> OptgradrmspropRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropRange::scale(self : OptgradrmspropRange, f : Double) -> OptgradrmspropRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_range_add(a : OptgradrmspropRange, b : OptgradrmspropRange) -> OptgradrmspropRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropRange::add(self : OptgradrmspropRange, other : OptgradrmspropRange) -> OptgradrmspropRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_range_copy(s : OptgradrmspropRange) -> OptgradrmspropRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropRange::copy(self : OptgradrmspropRange) -> OptgradrmspropRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_range_fill(s : OptgradrmspropRange, v : Double) -> OptgradrmspropRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropRange::fill(self : OptgradrmspropRange, v : Double) -> OptgradrmspropRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_range_min(s : OptgradrmspropRange) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropRange::min(self : OptgradrmspropRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_range_max(s : OptgradrmspropRange) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropRange::max(self : OptgradrmspropRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_range_to_string(s : OptgradrmspropRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropRange::to_string(self : OptgradrmspropRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptgradrmspropSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_grad_rmsprop_slice_make(size : Int) -> OptgradrmspropSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_grad_rmsprop_slice_len(s : OptgradrmspropSlice) -> Int { s.size }
+pub fn OptgradrmspropSlice::len(self : OptgradrmspropSlice) -> Int { self.size }
 
-pub fn opt_grad_rmsprop_slice_get(s : OptgradrmspropSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptgradrmspropSlice::get(self : OptgradrmspropSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_grad_rmsprop_slice_set(s : OptgradrmspropSlice, i : Int, v : Double) -> OptgradrmspropSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptgradrmspropSlice::set(self : OptgradrmspropSlice, i : Int, v : Double) -> OptgradrmspropSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_slice_sum(s : OptgradrmspropSlice) -> Double { @_common.sum(s.data) }
+pub fn OptgradrmspropSlice::sum(self : OptgradrmspropSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_grad_rmsprop_slice_mean(s : OptgradrmspropSlice) -> Double { @_common.mean(s.data) }
+pub fn OptgradrmspropSlice::mean(self : OptgradrmspropSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_grad_rmsprop_slice_scale(s : OptgradrmspropSlice, f : Double) -> OptgradrmspropSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptgradrmspropSlice::scale(self : OptgradrmspropSlice, f : Double) -> OptgradrmspropSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_slice_add(a : OptgradrmspropSlice, b : OptgradrmspropSlice) -> OptgradrmspropSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptgradrmspropSlice::add(self : OptgradrmspropSlice, other : OptgradrmspropSlice) -> OptgradrmspropSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_slice_copy(s : OptgradrmspropSlice) -> OptgradrmspropSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptgradrmspropSlice::copy(self : OptgradrmspropSlice) -> OptgradrmspropSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_slice_fill(s : OptgradrmspropSlice, v : Double) -> OptgradrmspropSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptgradrmspropSlice::fill(self : OptgradrmspropSlice, v : Double) -> OptgradrmspropSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_grad_rmsprop_slice_min(s : OptgradrmspropSlice) -> Double { @_common.min(s.data) }
+pub fn OptgradrmspropSlice::min(self : OptgradrmspropSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_grad_rmsprop_slice_max(s : OptgradrmspropSlice) -> Double { @_common.max(s.data) }
+pub fn OptgradrmspropSlice::max(self : OptgradrmspropSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_grad_rmsprop_slice_to_string(s : OptgradrmspropSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptgradrmspropSlice::to_string(self : OptgradrmspropSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn nlp_parse_malt_frame_make(size : Int) -> NlpparsemaltFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_frame_len(s : NlpparsemaltFrame) -> Int { s.size }
+pub fn NlpparsemaltFrame::len(self : NlpparsemaltFrame) -> Int { self.size }
 
-pub fn nlp_parse_malt_frame_get(s : NlpparsemaltFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltFrame::get(self : NlpparsemaltFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_frame_set(s : NlpparsemaltFrame, i : Int, v : Double) -> NlpparsemaltFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltFrame::set(self : NlpparsemaltFrame, i : Int, v : Double) -> NlpparsemaltFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_frame_sum(s : NlpparsemaltFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltFrame::sum(self : NlpparsemaltFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_frame_mean(s : NlpparsemaltFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltFrame::mean(self : NlpparsemaltFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_frame_scale(s : NlpparsemaltFrame, f : Double) -> NlpparsemaltFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltFrame::scale(self : NlpparsemaltFrame, f : Double) -> NlpparsemaltFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_frame_add(a : NlpparsemaltFrame, b : NlpparsemaltFrame) -> NlpparsemaltFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltFrame::add(self : NlpparsemaltFrame, other : NlpparsemaltFrame) -> NlpparsemaltFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_frame_copy(s : NlpparsemaltFrame) -> NlpparsemaltFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltFrame::copy(self : NlpparsemaltFrame) -> NlpparsemaltFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_frame_fill(s : NlpparsemaltFrame, v : Double) -> NlpparsemaltFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltFrame::fill(self : NlpparsemaltFrame, v : Double) -> NlpparsemaltFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_frame_min(s : NlpparsemaltFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltFrame::min(self : NlpparsemaltFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_frame_max(s : NlpparsemaltFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltFrame::max(self : NlpparsemaltFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_frame_to_string(s : NlpparsemaltFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltFrame::to_string(self : NlpparsemaltFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_malt_table_make(size : Int) -> NlpparsemaltTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_table_len(s : NlpparsemaltTable) -> Int { s.size }
+pub fn NlpparsemaltTable::len(self : NlpparsemaltTable) -> Int { self.size }
 
-pub fn nlp_parse_malt_table_get(s : NlpparsemaltTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltTable::get(self : NlpparsemaltTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_table_set(s : NlpparsemaltTable, i : Int, v : Double) -> NlpparsemaltTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltTable::set(self : NlpparsemaltTable, i : Int, v : Double) -> NlpparsemaltTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_table_sum(s : NlpparsemaltTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltTable::sum(self : NlpparsemaltTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_table_mean(s : NlpparsemaltTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltTable::mean(self : NlpparsemaltTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_table_scale(s : NlpparsemaltTable, f : Double) -> NlpparsemaltTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltTable::scale(self : NlpparsemaltTable, f : Double) -> NlpparsemaltTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_table_add(a : NlpparsemaltTable, b : NlpparsemaltTable) -> NlpparsemaltTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltTable::add(self : NlpparsemaltTable, other : NlpparsemaltTable) -> NlpparsemaltTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_table_copy(s : NlpparsemaltTable) -> NlpparsemaltTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltTable::copy(self : NlpparsemaltTable) -> NlpparsemaltTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_table_fill(s : NlpparsemaltTable, v : Double) -> NlpparsemaltTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltTable::fill(self : NlpparsemaltTable, v : Double) -> NlpparsemaltTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_table_min(s : NlpparsemaltTable) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltTable::min(self : NlpparsemaltTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_table_max(s : NlpparsemaltTable) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltTable::max(self : NlpparsemaltTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_table_to_string(s : NlpparsemaltTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltTable::to_string(self : NlpparsemaltTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_malt_graphn_make(size : Int) -> NlpparsemaltGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_graphn_len(s : NlpparsemaltGraphN) -> Int { s.size }
+pub fn NlpparsemaltGraphN::len(self : NlpparsemaltGraphN) -> Int { self.size }
 
-pub fn nlp_parse_malt_graphn_get(s : NlpparsemaltGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltGraphN::get(self : NlpparsemaltGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_graphn_set(s : NlpparsemaltGraphN, i : Int, v : Double) -> NlpparsemaltGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltGraphN::set(self : NlpparsemaltGraphN, i : Int, v : Double) -> NlpparsemaltGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_graphn_sum(s : NlpparsemaltGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltGraphN::sum(self : NlpparsemaltGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_graphn_mean(s : NlpparsemaltGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltGraphN::mean(self : NlpparsemaltGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_graphn_scale(s : NlpparsemaltGraphN, f : Double) -> NlpparsemaltGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltGraphN::scale(self : NlpparsemaltGraphN, f : Double) -> NlpparsemaltGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_graphn_add(a : NlpparsemaltGraphN, b : NlpparsemaltGraphN) -> NlpparsemaltGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltGraphN::add(self : NlpparsemaltGraphN, other : NlpparsemaltGraphN) -> NlpparsemaltGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_graphn_copy(s : NlpparsemaltGraphN) -> NlpparsemaltGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltGraphN::copy(self : NlpparsemaltGraphN) -> NlpparsemaltGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_graphn_fill(s : NlpparsemaltGraphN, v : Double) -> NlpparsemaltGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltGraphN::fill(self : NlpparsemaltGraphN, v : Double) -> NlpparsemaltGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_graphn_min(s : NlpparsemaltGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltGraphN::min(self : NlpparsemaltGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_graphn_max(s : NlpparsemaltGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltGraphN::max(self : NlpparsemaltGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_graphn_to_string(s : NlpparsemaltGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltGraphN::to_string(self : NlpparsemaltGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_malt_node_make(size : Int) -> NlpparsemaltNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_node_len(s : NlpparsemaltNode) -> Int { s.size }
+pub fn NlpparsemaltNode::len(self : NlpparsemaltNode) -> Int { self.size }
 
-pub fn nlp_parse_malt_node_get(s : NlpparsemaltNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltNode::get(self : NlpparsemaltNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_node_set(s : NlpparsemaltNode, i : Int, v : Double) -> NlpparsemaltNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltNode::set(self : NlpparsemaltNode, i : Int, v : Double) -> NlpparsemaltNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_node_sum(s : NlpparsemaltNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltNode::sum(self : NlpparsemaltNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_node_mean(s : NlpparsemaltNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltNode::mean(self : NlpparsemaltNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_node_scale(s : NlpparsemaltNode, f : Double) -> NlpparsemaltNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltNode::scale(self : NlpparsemaltNode, f : Double) -> NlpparsemaltNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_node_add(a : NlpparsemaltNode, b : NlpparsemaltNode) -> NlpparsemaltNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltNode::add(self : NlpparsemaltNode, other : NlpparsemaltNode) -> NlpparsemaltNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_node_copy(s : NlpparsemaltNode) -> NlpparsemaltNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltNode::copy(self : NlpparsemaltNode) -> NlpparsemaltNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_node_fill(s : NlpparsemaltNode, v : Double) -> NlpparsemaltNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltNode::fill(self : NlpparsemaltNode, v : Double) -> NlpparsemaltNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_node_min(s : NlpparsemaltNode) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltNode::min(self : NlpparsemaltNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_node_max(s : NlpparsemaltNode) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltNode::max(self : NlpparsemaltNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_node_to_string(s : NlpparsemaltNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltNode::to_string(self : NlpparsemaltNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_malt_edge_make(size : Int) -> NlpparsemaltEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_edge_len(s : NlpparsemaltEdge) -> Int { s.size }
+pub fn NlpparsemaltEdge::len(self : NlpparsemaltEdge) -> Int { self.size }
 
-pub fn nlp_parse_malt_edge_get(s : NlpparsemaltEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltEdge::get(self : NlpparsemaltEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_edge_set(s : NlpparsemaltEdge, i : Int, v : Double) -> NlpparsemaltEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltEdge::set(self : NlpparsemaltEdge, i : Int, v : Double) -> NlpparsemaltEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_edge_sum(s : NlpparsemaltEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltEdge::sum(self : NlpparsemaltEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_edge_mean(s : NlpparsemaltEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltEdge::mean(self : NlpparsemaltEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_edge_scale(s : NlpparsemaltEdge, f : Double) -> NlpparsemaltEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltEdge::scale(self : NlpparsemaltEdge, f : Double) -> NlpparsemaltEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_edge_add(a : NlpparsemaltEdge, b : NlpparsemaltEdge) -> NlpparsemaltEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltEdge::add(self : NlpparsemaltEdge, other : NlpparsemaltEdge) -> NlpparsemaltEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_edge_copy(s : NlpparsemaltEdge) -> NlpparsemaltEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltEdge::copy(self : NlpparsemaltEdge) -> NlpparsemaltEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_edge_fill(s : NlpparsemaltEdge, v : Double) -> NlpparsemaltEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltEdge::fill(self : NlpparsemaltEdge, v : Double) -> NlpparsemaltEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_edge_min(s : NlpparsemaltEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltEdge::min(self : NlpparsemaltEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_edge_max(s : NlpparsemaltEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltEdge::max(self : NlpparsemaltEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_edge_to_string(s : NlpparsemaltEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltEdge::to_string(self : NlpparsemaltEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_malt_path_make(size : Int) -> NlpparsemaltPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_path_len(s : NlpparsemaltPath) -> Int { s.size }
+pub fn NlpparsemaltPath::len(self : NlpparsemaltPath) -> Int { self.size }
 
-pub fn nlp_parse_malt_path_get(s : NlpparsemaltPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltPath::get(self : NlpparsemaltPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_path_set(s : NlpparsemaltPath, i : Int, v : Double) -> NlpparsemaltPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltPath::set(self : NlpparsemaltPath, i : Int, v : Double) -> NlpparsemaltPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_path_sum(s : NlpparsemaltPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltPath::sum(self : NlpparsemaltPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_path_mean(s : NlpparsemaltPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltPath::mean(self : NlpparsemaltPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_path_scale(s : NlpparsemaltPath, f : Double) -> NlpparsemaltPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltPath::scale(self : NlpparsemaltPath, f : Double) -> NlpparsemaltPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_path_add(a : NlpparsemaltPath, b : NlpparsemaltPath) -> NlpparsemaltPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltPath::add(self : NlpparsemaltPath, other : NlpparsemaltPath) -> NlpparsemaltPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_path_copy(s : NlpparsemaltPath) -> NlpparsemaltPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltPath::copy(self : NlpparsemaltPath) -> NlpparsemaltPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_path_fill(s : NlpparsemaltPath, v : Double) -> NlpparsemaltPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltPath::fill(self : NlpparsemaltPath, v : Double) -> NlpparsemaltPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_path_min(s : NlpparsemaltPath) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltPath::min(self : NlpparsemaltPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_path_max(s : NlpparsemaltPath) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltPath::max(self : NlpparsemaltPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_path_to_string(s : NlpparsemaltPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltPath::to_string(self : NlpparsemaltPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_malt_cluster_make(size : Int) -> NlpparsemaltCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_cluster_len(s : NlpparsemaltCluster) -> Int { s.size }
+pub fn NlpparsemaltCluster::len(self : NlpparsemaltCluster) -> Int { self.size }
 
-pub fn nlp_parse_malt_cluster_get(s : NlpparsemaltCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltCluster::get(self : NlpparsemaltCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_cluster_set(s : NlpparsemaltCluster, i : Int, v : Double) -> NlpparsemaltCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltCluster::set(self : NlpparsemaltCluster, i : Int, v : Double) -> NlpparsemaltCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cluster_sum(s : NlpparsemaltCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltCluster::sum(self : NlpparsemaltCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_cluster_mean(s : NlpparsemaltCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltCluster::mean(self : NlpparsemaltCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_cluster_scale(s : NlpparsemaltCluster, f : Double) -> NlpparsemaltCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltCluster::scale(self : NlpparsemaltCluster, f : Double) -> NlpparsemaltCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cluster_add(a : NlpparsemaltCluster, b : NlpparsemaltCluster) -> NlpparsemaltCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltCluster::add(self : NlpparsemaltCluster, other : NlpparsemaltCluster) -> NlpparsemaltCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cluster_copy(s : NlpparsemaltCluster) -> NlpparsemaltCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltCluster::copy(self : NlpparsemaltCluster) -> NlpparsemaltCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cluster_fill(s : NlpparsemaltCluster, v : Double) -> NlpparsemaltCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltCluster::fill(self : NlpparsemaltCluster, v : Double) -> NlpparsemaltCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cluster_min(s : NlpparsemaltCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltCluster::min(self : NlpparsemaltCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_cluster_max(s : NlpparsemaltCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltCluster::max(self : NlpparsemaltCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_cluster_to_string(s : NlpparsemaltCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltCluster::to_string(self : NlpparsemaltCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_malt_model_make(size : Int) -> NlpparsemaltModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_model_len(s : NlpparsemaltModel) -> Int { s.size }
+pub fn NlpparsemaltModel::len(self : NlpparsemaltModel) -> Int { self.size }
 
-pub fn nlp_parse_malt_model_get(s : NlpparsemaltModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltModel::get(self : NlpparsemaltModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_model_set(s : NlpparsemaltModel, i : Int, v : Double) -> NlpparsemaltModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltModel::set(self : NlpparsemaltModel, i : Int, v : Double) -> NlpparsemaltModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_model_sum(s : NlpparsemaltModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltModel::sum(self : NlpparsemaltModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_model_mean(s : NlpparsemaltModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltModel::mean(self : NlpparsemaltModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_model_scale(s : NlpparsemaltModel, f : Double) -> NlpparsemaltModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltModel::scale(self : NlpparsemaltModel, f : Double) -> NlpparsemaltModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_model_add(a : NlpparsemaltModel, b : NlpparsemaltModel) -> NlpparsemaltModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltModel::add(self : NlpparsemaltModel, other : NlpparsemaltModel) -> NlpparsemaltModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_model_copy(s : NlpparsemaltModel) -> NlpparsemaltModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltModel::copy(self : NlpparsemaltModel) -> NlpparsemaltModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_model_fill(s : NlpparsemaltModel, v : Double) -> NlpparsemaltModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltModel::fill(self : NlpparsemaltModel, v : Double) -> NlpparsemaltModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_model_min(s : NlpparsemaltModel) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltModel::min(self : NlpparsemaltModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_model_max(s : NlpparsemaltModel) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltModel::max(self : NlpparsemaltModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_model_to_string(s : NlpparsemaltModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltModel::to_string(self : NlpparsemaltModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_malt_layer_make(size : Int) -> NlpparsemaltLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_layer_len(s : NlpparsemaltLayer) -> Int { s.size }
+pub fn NlpparsemaltLayer::len(self : NlpparsemaltLayer) -> Int { self.size }
 
-pub fn nlp_parse_malt_layer_get(s : NlpparsemaltLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltLayer::get(self : NlpparsemaltLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_layer_set(s : NlpparsemaltLayer, i : Int, v : Double) -> NlpparsemaltLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltLayer::set(self : NlpparsemaltLayer, i : Int, v : Double) -> NlpparsemaltLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_layer_sum(s : NlpparsemaltLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltLayer::sum(self : NlpparsemaltLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_layer_mean(s : NlpparsemaltLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltLayer::mean(self : NlpparsemaltLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_layer_scale(s : NlpparsemaltLayer, f : Double) -> NlpparsemaltLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltLayer::scale(self : NlpparsemaltLayer, f : Double) -> NlpparsemaltLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_layer_add(a : NlpparsemaltLayer, b : NlpparsemaltLayer) -> NlpparsemaltLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltLayer::add(self : NlpparsemaltLayer, other : NlpparsemaltLayer) -> NlpparsemaltLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_layer_copy(s : NlpparsemaltLayer) -> NlpparsemaltLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltLayer::copy(self : NlpparsemaltLayer) -> NlpparsemaltLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_layer_fill(s : NlpparsemaltLayer, v : Double) -> NlpparsemaltLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltLayer::fill(self : NlpparsemaltLayer, v : Double) -> NlpparsemaltLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_layer_min(s : NlpparsemaltLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltLayer::min(self : NlpparsemaltLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_layer_max(s : NlpparsemaltLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltLayer::max(self : NlpparsemaltLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_layer_to_string(s : NlpparsemaltLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltLayer::to_string(self : NlpparsemaltLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_malt_buffer_make(size : Int) -> NlpparsemaltBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_buffer_len(s : NlpparsemaltBuffer) -> Int { s.size }
+pub fn NlpparsemaltBuffer::len(self : NlpparsemaltBuffer) -> Int { self.size }
 
-pub fn nlp_parse_malt_buffer_get(s : NlpparsemaltBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltBuffer::get(self : NlpparsemaltBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_buffer_set(s : NlpparsemaltBuffer, i : Int, v : Double) -> NlpparsemaltBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltBuffer::set(self : NlpparsemaltBuffer, i : Int, v : Double) -> NlpparsemaltBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_buffer_sum(s : NlpparsemaltBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltBuffer::sum(self : NlpparsemaltBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_buffer_mean(s : NlpparsemaltBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltBuffer::mean(self : NlpparsemaltBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_buffer_scale(s : NlpparsemaltBuffer, f : Double) -> NlpparsemaltBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltBuffer::scale(self : NlpparsemaltBuffer, f : Double) -> NlpparsemaltBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_buffer_add(a : NlpparsemaltBuffer, b : NlpparsemaltBuffer) -> NlpparsemaltBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltBuffer::add(self : NlpparsemaltBuffer, other : NlpparsemaltBuffer) -> NlpparsemaltBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_buffer_copy(s : NlpparsemaltBuffer) -> NlpparsemaltBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltBuffer::copy(self : NlpparsemaltBuffer) -> NlpparsemaltBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_buffer_fill(s : NlpparsemaltBuffer, v : Double) -> NlpparsemaltBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltBuffer::fill(self : NlpparsemaltBuffer, v : Double) -> NlpparsemaltBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_buffer_min(s : NlpparsemaltBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltBuffer::min(self : NlpparsemaltBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_buffer_max(s : NlpparsemaltBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltBuffer::max(self : NlpparsemaltBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_buffer_to_string(s : NlpparsemaltBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltBuffer::to_string(self : NlpparsemaltBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_malt_cursor_make(size : Int) -> NlpparsemaltCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_cursor_len(s : NlpparsemaltCursor) -> Int { s.size }
+pub fn NlpparsemaltCursor::len(self : NlpparsemaltCursor) -> Int { self.size }
 
-pub fn nlp_parse_malt_cursor_get(s : NlpparsemaltCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltCursor::get(self : NlpparsemaltCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_cursor_set(s : NlpparsemaltCursor, i : Int, v : Double) -> NlpparsemaltCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltCursor::set(self : NlpparsemaltCursor, i : Int, v : Double) -> NlpparsemaltCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cursor_sum(s : NlpparsemaltCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltCursor::sum(self : NlpparsemaltCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_cursor_mean(s : NlpparsemaltCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltCursor::mean(self : NlpparsemaltCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_cursor_scale(s : NlpparsemaltCursor, f : Double) -> NlpparsemaltCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltCursor::scale(self : NlpparsemaltCursor, f : Double) -> NlpparsemaltCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cursor_add(a : NlpparsemaltCursor, b : NlpparsemaltCursor) -> NlpparsemaltCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltCursor::add(self : NlpparsemaltCursor, other : NlpparsemaltCursor) -> NlpparsemaltCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cursor_copy(s : NlpparsemaltCursor) -> NlpparsemaltCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltCursor::copy(self : NlpparsemaltCursor) -> NlpparsemaltCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cursor_fill(s : NlpparsemaltCursor, v : Double) -> NlpparsemaltCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltCursor::fill(self : NlpparsemaltCursor, v : Double) -> NlpparsemaltCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_cursor_min(s : NlpparsemaltCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltCursor::min(self : NlpparsemaltCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_cursor_max(s : NlpparsemaltCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltCursor::max(self : NlpparsemaltCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_cursor_to_string(s : NlpparsemaltCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltCursor::to_string(self : NlpparsemaltCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_malt_view_make(size : Int) -> NlpparsemaltView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_view_len(s : NlpparsemaltView) -> Int { s.size }
+pub fn NlpparsemaltView::len(self : NlpparsemaltView) -> Int { self.size }
 
-pub fn nlp_parse_malt_view_get(s : NlpparsemaltView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltView::get(self : NlpparsemaltView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_view_set(s : NlpparsemaltView, i : Int, v : Double) -> NlpparsemaltView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltView::set(self : NlpparsemaltView, i : Int, v : Double) -> NlpparsemaltView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_view_sum(s : NlpparsemaltView) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltView::sum(self : NlpparsemaltView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_view_mean(s : NlpparsemaltView) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltView::mean(self : NlpparsemaltView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_view_scale(s : NlpparsemaltView, f : Double) -> NlpparsemaltView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltView::scale(self : NlpparsemaltView, f : Double) -> NlpparsemaltView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_view_add(a : NlpparsemaltView, b : NlpparsemaltView) -> NlpparsemaltView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltView::add(self : NlpparsemaltView, other : NlpparsemaltView) -> NlpparsemaltView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_view_copy(s : NlpparsemaltView) -> NlpparsemaltView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltView::copy(self : NlpparsemaltView) -> NlpparsemaltView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_view_fill(s : NlpparsemaltView, v : Double) -> NlpparsemaltView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltView::fill(self : NlpparsemaltView, v : Double) -> NlpparsemaltView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_view_min(s : NlpparsemaltView) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltView::min(self : NlpparsemaltView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_view_max(s : NlpparsemaltView) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltView::max(self : NlpparsemaltView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_view_to_string(s : NlpparsemaltView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltView::to_string(self : NlpparsemaltView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_malt_range_make(size : Int) -> NlpparsemaltRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_range_len(s : NlpparsemaltRange) -> Int { s.size }
+pub fn NlpparsemaltRange::len(self : NlpparsemaltRange) -> Int { self.size }
 
-pub fn nlp_parse_malt_range_get(s : NlpparsemaltRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltRange::get(self : NlpparsemaltRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_range_set(s : NlpparsemaltRange, i : Int, v : Double) -> NlpparsemaltRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltRange::set(self : NlpparsemaltRange, i : Int, v : Double) -> NlpparsemaltRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_range_sum(s : NlpparsemaltRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltRange::sum(self : NlpparsemaltRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_range_mean(s : NlpparsemaltRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltRange::mean(self : NlpparsemaltRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_range_scale(s : NlpparsemaltRange, f : Double) -> NlpparsemaltRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltRange::scale(self : NlpparsemaltRange, f : Double) -> NlpparsemaltRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_range_add(a : NlpparsemaltRange, b : NlpparsemaltRange) -> NlpparsemaltRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltRange::add(self : NlpparsemaltRange, other : NlpparsemaltRange) -> NlpparsemaltRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_range_copy(s : NlpparsemaltRange) -> NlpparsemaltRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltRange::copy(self : NlpparsemaltRange) -> NlpparsemaltRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_range_fill(s : NlpparsemaltRange, v : Double) -> NlpparsemaltRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltRange::fill(self : NlpparsemaltRange, v : Double) -> NlpparsemaltRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_range_min(s : NlpparsemaltRange) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltRange::min(self : NlpparsemaltRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_range_max(s : NlpparsemaltRange) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltRange::max(self : NlpparsemaltRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_range_to_string(s : NlpparsemaltRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltRange::to_string(self : NlpparsemaltRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_malt_slice_make(size : Int) -> NlpparsemaltSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_malt_slice_len(s : NlpparsemaltSlice) -> Int { s.size }
+pub fn NlpparsemaltSlice::len(self : NlpparsemaltSlice) -> Int { self.size }
 
-pub fn nlp_parse_malt_slice_get(s : NlpparsemaltSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsemaltSlice::get(self : NlpparsemaltSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_malt_slice_set(s : NlpparsemaltSlice, i : Int, v : Double) -> NlpparsemaltSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsemaltSlice::set(self : NlpparsemaltSlice, i : Int, v : Double) -> NlpparsemaltSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_slice_sum(s : NlpparsemaltSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparsemaltSlice::sum(self : NlpparsemaltSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_malt_slice_mean(s : NlpparsemaltSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparsemaltSlice::mean(self : NlpparsemaltSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_malt_slice_scale(s : NlpparsemaltSlice, f : Double) -> NlpparsemaltSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsemaltSlice::scale(self : NlpparsemaltSlice, f : Double) -> NlpparsemaltSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_slice_add(a : NlpparsemaltSlice, b : NlpparsemaltSlice) -> NlpparsemaltSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsemaltSlice::add(self : NlpparsemaltSlice, other : NlpparsemaltSlice) -> NlpparsemaltSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_slice_copy(s : NlpparsemaltSlice) -> NlpparsemaltSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsemaltSlice::copy(self : NlpparsemaltSlice) -> NlpparsemaltSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_slice_fill(s : NlpparsemaltSlice, v : Double) -> NlpparsemaltSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsemaltSlice::fill(self : NlpparsemaltSlice, v : Double) -> NlpparsemaltSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_malt_slice_min(s : NlpparsemaltSlice) -> Double { @_common.min(s.data) }
+pub fn NlpparsemaltSlice::min(self : NlpparsemaltSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_malt_slice_max(s : NlpparsemaltSlice) -> Double { @_common.max(s.data) }
+pub fn NlpparsemaltSlice::max(self : NlpparsemaltSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_malt_slice_to_string(s : NlpparsemaltSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsemaltSlice::to_string(self : NlpparsemaltSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

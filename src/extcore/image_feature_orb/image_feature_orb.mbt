@@ -351,45 +351,45 @@ pub fn image_feature_orb_frame_make(size : Int) -> ImagefeatureorbFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_frame_len(s : ImagefeatureorbFrame) -> Int { s.size }
+pub fn ImagefeatureorbFrame::len(self : ImagefeatureorbFrame) -> Int { self.size }
 
-pub fn image_feature_orb_frame_get(s : ImagefeatureorbFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbFrame::get(self : ImagefeatureorbFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_frame_set(s : ImagefeatureorbFrame, i : Int, v : Double) -> ImagefeatureorbFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbFrame::set(self : ImagefeatureorbFrame, i : Int, v : Double) -> ImagefeatureorbFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_frame_sum(s : ImagefeatureorbFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbFrame::sum(self : ImagefeatureorbFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_frame_mean(s : ImagefeatureorbFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbFrame::mean(self : ImagefeatureorbFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_frame_scale(s : ImagefeatureorbFrame, f : Double) -> ImagefeatureorbFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbFrame::scale(self : ImagefeatureorbFrame, f : Double) -> ImagefeatureorbFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_frame_add(a : ImagefeatureorbFrame, b : ImagefeatureorbFrame) -> ImagefeatureorbFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbFrame::add(self : ImagefeatureorbFrame, other : ImagefeatureorbFrame) -> ImagefeatureorbFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_frame_copy(s : ImagefeatureorbFrame) -> ImagefeatureorbFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbFrame::copy(self : ImagefeatureorbFrame) -> ImagefeatureorbFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_frame_fill(s : ImagefeatureorbFrame, v : Double) -> ImagefeatureorbFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbFrame::fill(self : ImagefeatureorbFrame, v : Double) -> ImagefeatureorbFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_frame_min(s : ImagefeatureorbFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbFrame::min(self : ImagefeatureorbFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_frame_max(s : ImagefeatureorbFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbFrame::max(self : ImagefeatureorbFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_frame_to_string(s : ImagefeatureorbFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbFrame::to_string(self : ImagefeatureorbFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbTable {
@@ -402,45 +402,45 @@ pub fn image_feature_orb_table_make(size : Int) -> ImagefeatureorbTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_table_len(s : ImagefeatureorbTable) -> Int { s.size }
+pub fn ImagefeatureorbTable::len(self : ImagefeatureorbTable) -> Int { self.size }
 
-pub fn image_feature_orb_table_get(s : ImagefeatureorbTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbTable::get(self : ImagefeatureorbTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_table_set(s : ImagefeatureorbTable, i : Int, v : Double) -> ImagefeatureorbTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbTable::set(self : ImagefeatureorbTable, i : Int, v : Double) -> ImagefeatureorbTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_table_sum(s : ImagefeatureorbTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbTable::sum(self : ImagefeatureorbTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_table_mean(s : ImagefeatureorbTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbTable::mean(self : ImagefeatureorbTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_table_scale(s : ImagefeatureorbTable, f : Double) -> ImagefeatureorbTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbTable::scale(self : ImagefeatureorbTable, f : Double) -> ImagefeatureorbTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_table_add(a : ImagefeatureorbTable, b : ImagefeatureorbTable) -> ImagefeatureorbTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbTable::add(self : ImagefeatureorbTable, other : ImagefeatureorbTable) -> ImagefeatureorbTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_table_copy(s : ImagefeatureorbTable) -> ImagefeatureorbTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbTable::copy(self : ImagefeatureorbTable) -> ImagefeatureorbTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_table_fill(s : ImagefeatureorbTable, v : Double) -> ImagefeatureorbTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbTable::fill(self : ImagefeatureorbTable, v : Double) -> ImagefeatureorbTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_table_min(s : ImagefeatureorbTable) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbTable::min(self : ImagefeatureorbTable) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_table_max(s : ImagefeatureorbTable) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbTable::max(self : ImagefeatureorbTable) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_table_to_string(s : ImagefeatureorbTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbTable::to_string(self : ImagefeatureorbTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbGraphN {
@@ -453,45 +453,45 @@ pub fn image_feature_orb_graphn_make(size : Int) -> ImagefeatureorbGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_graphn_len(s : ImagefeatureorbGraphN) -> Int { s.size }
+pub fn ImagefeatureorbGraphN::len(self : ImagefeatureorbGraphN) -> Int { self.size }
 
-pub fn image_feature_orb_graphn_get(s : ImagefeatureorbGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbGraphN::get(self : ImagefeatureorbGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_graphn_set(s : ImagefeatureorbGraphN, i : Int, v : Double) -> ImagefeatureorbGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbGraphN::set(self : ImagefeatureorbGraphN, i : Int, v : Double) -> ImagefeatureorbGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_graphn_sum(s : ImagefeatureorbGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbGraphN::sum(self : ImagefeatureorbGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_graphn_mean(s : ImagefeatureorbGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbGraphN::mean(self : ImagefeatureorbGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_graphn_scale(s : ImagefeatureorbGraphN, f : Double) -> ImagefeatureorbGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbGraphN::scale(self : ImagefeatureorbGraphN, f : Double) -> ImagefeatureorbGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_graphn_add(a : ImagefeatureorbGraphN, b : ImagefeatureorbGraphN) -> ImagefeatureorbGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbGraphN::add(self : ImagefeatureorbGraphN, other : ImagefeatureorbGraphN) -> ImagefeatureorbGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_graphn_copy(s : ImagefeatureorbGraphN) -> ImagefeatureorbGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbGraphN::copy(self : ImagefeatureorbGraphN) -> ImagefeatureorbGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_graphn_fill(s : ImagefeatureorbGraphN, v : Double) -> ImagefeatureorbGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbGraphN::fill(self : ImagefeatureorbGraphN, v : Double) -> ImagefeatureorbGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_graphn_min(s : ImagefeatureorbGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbGraphN::min(self : ImagefeatureorbGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_graphn_max(s : ImagefeatureorbGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbGraphN::max(self : ImagefeatureorbGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_graphn_to_string(s : ImagefeatureorbGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbGraphN::to_string(self : ImagefeatureorbGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbNode {
@@ -504,45 +504,45 @@ pub fn image_feature_orb_node_make(size : Int) -> ImagefeatureorbNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_node_len(s : ImagefeatureorbNode) -> Int { s.size }
+pub fn ImagefeatureorbNode::len(self : ImagefeatureorbNode) -> Int { self.size }
 
-pub fn image_feature_orb_node_get(s : ImagefeatureorbNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbNode::get(self : ImagefeatureorbNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_node_set(s : ImagefeatureorbNode, i : Int, v : Double) -> ImagefeatureorbNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbNode::set(self : ImagefeatureorbNode, i : Int, v : Double) -> ImagefeatureorbNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_node_sum(s : ImagefeatureorbNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbNode::sum(self : ImagefeatureorbNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_node_mean(s : ImagefeatureorbNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbNode::mean(self : ImagefeatureorbNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_node_scale(s : ImagefeatureorbNode, f : Double) -> ImagefeatureorbNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbNode::scale(self : ImagefeatureorbNode, f : Double) -> ImagefeatureorbNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_node_add(a : ImagefeatureorbNode, b : ImagefeatureorbNode) -> ImagefeatureorbNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbNode::add(self : ImagefeatureorbNode, other : ImagefeatureorbNode) -> ImagefeatureorbNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_node_copy(s : ImagefeatureorbNode) -> ImagefeatureorbNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbNode::copy(self : ImagefeatureorbNode) -> ImagefeatureorbNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_node_fill(s : ImagefeatureorbNode, v : Double) -> ImagefeatureorbNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbNode::fill(self : ImagefeatureorbNode, v : Double) -> ImagefeatureorbNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_node_min(s : ImagefeatureorbNode) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbNode::min(self : ImagefeatureorbNode) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_node_max(s : ImagefeatureorbNode) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbNode::max(self : ImagefeatureorbNode) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_node_to_string(s : ImagefeatureorbNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbNode::to_string(self : ImagefeatureorbNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbEdge {
@@ -555,45 +555,45 @@ pub fn image_feature_orb_edge_make(size : Int) -> ImagefeatureorbEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_edge_len(s : ImagefeatureorbEdge) -> Int { s.size }
+pub fn ImagefeatureorbEdge::len(self : ImagefeatureorbEdge) -> Int { self.size }
 
-pub fn image_feature_orb_edge_get(s : ImagefeatureorbEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbEdge::get(self : ImagefeatureorbEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_edge_set(s : ImagefeatureorbEdge, i : Int, v : Double) -> ImagefeatureorbEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbEdge::set(self : ImagefeatureorbEdge, i : Int, v : Double) -> ImagefeatureorbEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_edge_sum(s : ImagefeatureorbEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbEdge::sum(self : ImagefeatureorbEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_edge_mean(s : ImagefeatureorbEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbEdge::mean(self : ImagefeatureorbEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_edge_scale(s : ImagefeatureorbEdge, f : Double) -> ImagefeatureorbEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbEdge::scale(self : ImagefeatureorbEdge, f : Double) -> ImagefeatureorbEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_edge_add(a : ImagefeatureorbEdge, b : ImagefeatureorbEdge) -> ImagefeatureorbEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbEdge::add(self : ImagefeatureorbEdge, other : ImagefeatureorbEdge) -> ImagefeatureorbEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_edge_copy(s : ImagefeatureorbEdge) -> ImagefeatureorbEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbEdge::copy(self : ImagefeatureorbEdge) -> ImagefeatureorbEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_edge_fill(s : ImagefeatureorbEdge, v : Double) -> ImagefeatureorbEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbEdge::fill(self : ImagefeatureorbEdge, v : Double) -> ImagefeatureorbEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_edge_min(s : ImagefeatureorbEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbEdge::min(self : ImagefeatureorbEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_edge_max(s : ImagefeatureorbEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbEdge::max(self : ImagefeatureorbEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_edge_to_string(s : ImagefeatureorbEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbEdge::to_string(self : ImagefeatureorbEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbPath {
@@ -606,45 +606,45 @@ pub fn image_feature_orb_path_make(size : Int) -> ImagefeatureorbPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_path_len(s : ImagefeatureorbPath) -> Int { s.size }
+pub fn ImagefeatureorbPath::len(self : ImagefeatureorbPath) -> Int { self.size }
 
-pub fn image_feature_orb_path_get(s : ImagefeatureorbPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbPath::get(self : ImagefeatureorbPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_path_set(s : ImagefeatureorbPath, i : Int, v : Double) -> ImagefeatureorbPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbPath::set(self : ImagefeatureorbPath, i : Int, v : Double) -> ImagefeatureorbPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_path_sum(s : ImagefeatureorbPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbPath::sum(self : ImagefeatureorbPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_path_mean(s : ImagefeatureorbPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbPath::mean(self : ImagefeatureorbPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_path_scale(s : ImagefeatureorbPath, f : Double) -> ImagefeatureorbPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbPath::scale(self : ImagefeatureorbPath, f : Double) -> ImagefeatureorbPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_path_add(a : ImagefeatureorbPath, b : ImagefeatureorbPath) -> ImagefeatureorbPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbPath::add(self : ImagefeatureorbPath, other : ImagefeatureorbPath) -> ImagefeatureorbPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_path_copy(s : ImagefeatureorbPath) -> ImagefeatureorbPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbPath::copy(self : ImagefeatureorbPath) -> ImagefeatureorbPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_path_fill(s : ImagefeatureorbPath, v : Double) -> ImagefeatureorbPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbPath::fill(self : ImagefeatureorbPath, v : Double) -> ImagefeatureorbPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_path_min(s : ImagefeatureorbPath) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbPath::min(self : ImagefeatureorbPath) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_path_max(s : ImagefeatureorbPath) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbPath::max(self : ImagefeatureorbPath) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_path_to_string(s : ImagefeatureorbPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbPath::to_string(self : ImagefeatureorbPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbCluster {
@@ -657,45 +657,45 @@ pub fn image_feature_orb_cluster_make(size : Int) -> ImagefeatureorbCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_cluster_len(s : ImagefeatureorbCluster) -> Int { s.size }
+pub fn ImagefeatureorbCluster::len(self : ImagefeatureorbCluster) -> Int { self.size }
 
-pub fn image_feature_orb_cluster_get(s : ImagefeatureorbCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbCluster::get(self : ImagefeatureorbCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_cluster_set(s : ImagefeatureorbCluster, i : Int, v : Double) -> ImagefeatureorbCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCluster::set(self : ImagefeatureorbCluster, i : Int, v : Double) -> ImagefeatureorbCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cluster_sum(s : ImagefeatureorbCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbCluster::sum(self : ImagefeatureorbCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_cluster_mean(s : ImagefeatureorbCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbCluster::mean(self : ImagefeatureorbCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_cluster_scale(s : ImagefeatureorbCluster, f : Double) -> ImagefeatureorbCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCluster::scale(self : ImagefeatureorbCluster, f : Double) -> ImagefeatureorbCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cluster_add(a : ImagefeatureorbCluster, b : ImagefeatureorbCluster) -> ImagefeatureorbCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbCluster::add(self : ImagefeatureorbCluster, other : ImagefeatureorbCluster) -> ImagefeatureorbCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_cluster_copy(s : ImagefeatureorbCluster) -> ImagefeatureorbCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCluster::copy(self : ImagefeatureorbCluster) -> ImagefeatureorbCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cluster_fill(s : ImagefeatureorbCluster, v : Double) -> ImagefeatureorbCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCluster::fill(self : ImagefeatureorbCluster, v : Double) -> ImagefeatureorbCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cluster_min(s : ImagefeatureorbCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbCluster::min(self : ImagefeatureorbCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_cluster_max(s : ImagefeatureorbCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbCluster::max(self : ImagefeatureorbCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_cluster_to_string(s : ImagefeatureorbCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbCluster::to_string(self : ImagefeatureorbCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbModel {
@@ -708,45 +708,45 @@ pub fn image_feature_orb_model_make(size : Int) -> ImagefeatureorbModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_model_len(s : ImagefeatureorbModel) -> Int { s.size }
+pub fn ImagefeatureorbModel::len(self : ImagefeatureorbModel) -> Int { self.size }
 
-pub fn image_feature_orb_model_get(s : ImagefeatureorbModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbModel::get(self : ImagefeatureorbModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_model_set(s : ImagefeatureorbModel, i : Int, v : Double) -> ImagefeatureorbModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbModel::set(self : ImagefeatureorbModel, i : Int, v : Double) -> ImagefeatureorbModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_model_sum(s : ImagefeatureorbModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbModel::sum(self : ImagefeatureorbModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_model_mean(s : ImagefeatureorbModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbModel::mean(self : ImagefeatureorbModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_model_scale(s : ImagefeatureorbModel, f : Double) -> ImagefeatureorbModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbModel::scale(self : ImagefeatureorbModel, f : Double) -> ImagefeatureorbModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_model_add(a : ImagefeatureorbModel, b : ImagefeatureorbModel) -> ImagefeatureorbModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbModel::add(self : ImagefeatureorbModel, other : ImagefeatureorbModel) -> ImagefeatureorbModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_model_copy(s : ImagefeatureorbModel) -> ImagefeatureorbModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbModel::copy(self : ImagefeatureorbModel) -> ImagefeatureorbModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_model_fill(s : ImagefeatureorbModel, v : Double) -> ImagefeatureorbModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbModel::fill(self : ImagefeatureorbModel, v : Double) -> ImagefeatureorbModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_model_min(s : ImagefeatureorbModel) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbModel::min(self : ImagefeatureorbModel) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_model_max(s : ImagefeatureorbModel) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbModel::max(self : ImagefeatureorbModel) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_model_to_string(s : ImagefeatureorbModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbModel::to_string(self : ImagefeatureorbModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbLayer {
@@ -759,45 +759,45 @@ pub fn image_feature_orb_layer_make(size : Int) -> ImagefeatureorbLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_layer_len(s : ImagefeatureorbLayer) -> Int { s.size }
+pub fn ImagefeatureorbLayer::len(self : ImagefeatureorbLayer) -> Int { self.size }
 
-pub fn image_feature_orb_layer_get(s : ImagefeatureorbLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbLayer::get(self : ImagefeatureorbLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_layer_set(s : ImagefeatureorbLayer, i : Int, v : Double) -> ImagefeatureorbLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbLayer::set(self : ImagefeatureorbLayer, i : Int, v : Double) -> ImagefeatureorbLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_layer_sum(s : ImagefeatureorbLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbLayer::sum(self : ImagefeatureorbLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_layer_mean(s : ImagefeatureorbLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbLayer::mean(self : ImagefeatureorbLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_layer_scale(s : ImagefeatureorbLayer, f : Double) -> ImagefeatureorbLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbLayer::scale(self : ImagefeatureorbLayer, f : Double) -> ImagefeatureorbLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_layer_add(a : ImagefeatureorbLayer, b : ImagefeatureorbLayer) -> ImagefeatureorbLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbLayer::add(self : ImagefeatureorbLayer, other : ImagefeatureorbLayer) -> ImagefeatureorbLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_layer_copy(s : ImagefeatureorbLayer) -> ImagefeatureorbLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbLayer::copy(self : ImagefeatureorbLayer) -> ImagefeatureorbLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_layer_fill(s : ImagefeatureorbLayer, v : Double) -> ImagefeatureorbLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbLayer::fill(self : ImagefeatureorbLayer, v : Double) -> ImagefeatureorbLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_layer_min(s : ImagefeatureorbLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbLayer::min(self : ImagefeatureorbLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_layer_max(s : ImagefeatureorbLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbLayer::max(self : ImagefeatureorbLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_layer_to_string(s : ImagefeatureorbLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbLayer::to_string(self : ImagefeatureorbLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbBuffer {
@@ -810,45 +810,45 @@ pub fn image_feature_orb_buffer_make(size : Int) -> ImagefeatureorbBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_buffer_len(s : ImagefeatureorbBuffer) -> Int { s.size }
+pub fn ImagefeatureorbBuffer::len(self : ImagefeatureorbBuffer) -> Int { self.size }
 
-pub fn image_feature_orb_buffer_get(s : ImagefeatureorbBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbBuffer::get(self : ImagefeatureorbBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_buffer_set(s : ImagefeatureorbBuffer, i : Int, v : Double) -> ImagefeatureorbBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbBuffer::set(self : ImagefeatureorbBuffer, i : Int, v : Double) -> ImagefeatureorbBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_buffer_sum(s : ImagefeatureorbBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbBuffer::sum(self : ImagefeatureorbBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_buffer_mean(s : ImagefeatureorbBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbBuffer::mean(self : ImagefeatureorbBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_buffer_scale(s : ImagefeatureorbBuffer, f : Double) -> ImagefeatureorbBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbBuffer::scale(self : ImagefeatureorbBuffer, f : Double) -> ImagefeatureorbBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_buffer_add(a : ImagefeatureorbBuffer, b : ImagefeatureorbBuffer) -> ImagefeatureorbBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbBuffer::add(self : ImagefeatureorbBuffer, other : ImagefeatureorbBuffer) -> ImagefeatureorbBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_buffer_copy(s : ImagefeatureorbBuffer) -> ImagefeatureorbBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbBuffer::copy(self : ImagefeatureorbBuffer) -> ImagefeatureorbBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_buffer_fill(s : ImagefeatureorbBuffer, v : Double) -> ImagefeatureorbBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbBuffer::fill(self : ImagefeatureorbBuffer, v : Double) -> ImagefeatureorbBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_buffer_min(s : ImagefeatureorbBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbBuffer::min(self : ImagefeatureorbBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_buffer_max(s : ImagefeatureorbBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbBuffer::max(self : ImagefeatureorbBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_buffer_to_string(s : ImagefeatureorbBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbBuffer::to_string(self : ImagefeatureorbBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbCursor {
@@ -861,45 +861,45 @@ pub fn image_feature_orb_cursor_make(size : Int) -> ImagefeatureorbCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_cursor_len(s : ImagefeatureorbCursor) -> Int { s.size }
+pub fn ImagefeatureorbCursor::len(self : ImagefeatureorbCursor) -> Int { self.size }
 
-pub fn image_feature_orb_cursor_get(s : ImagefeatureorbCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbCursor::get(self : ImagefeatureorbCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_cursor_set(s : ImagefeatureorbCursor, i : Int, v : Double) -> ImagefeatureorbCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCursor::set(self : ImagefeatureorbCursor, i : Int, v : Double) -> ImagefeatureorbCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cursor_sum(s : ImagefeatureorbCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbCursor::sum(self : ImagefeatureorbCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_cursor_mean(s : ImagefeatureorbCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbCursor::mean(self : ImagefeatureorbCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_cursor_scale(s : ImagefeatureorbCursor, f : Double) -> ImagefeatureorbCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCursor::scale(self : ImagefeatureorbCursor, f : Double) -> ImagefeatureorbCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cursor_add(a : ImagefeatureorbCursor, b : ImagefeatureorbCursor) -> ImagefeatureorbCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbCursor::add(self : ImagefeatureorbCursor, other : ImagefeatureorbCursor) -> ImagefeatureorbCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_cursor_copy(s : ImagefeatureorbCursor) -> ImagefeatureorbCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCursor::copy(self : ImagefeatureorbCursor) -> ImagefeatureorbCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cursor_fill(s : ImagefeatureorbCursor, v : Double) -> ImagefeatureorbCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbCursor::fill(self : ImagefeatureorbCursor, v : Double) -> ImagefeatureorbCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_cursor_min(s : ImagefeatureorbCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbCursor::min(self : ImagefeatureorbCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_cursor_max(s : ImagefeatureorbCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbCursor::max(self : ImagefeatureorbCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_cursor_to_string(s : ImagefeatureorbCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbCursor::to_string(self : ImagefeatureorbCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbView {
@@ -912,45 +912,45 @@ pub fn image_feature_orb_view_make(size : Int) -> ImagefeatureorbView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_view_len(s : ImagefeatureorbView) -> Int { s.size }
+pub fn ImagefeatureorbView::len(self : ImagefeatureorbView) -> Int { self.size }
 
-pub fn image_feature_orb_view_get(s : ImagefeatureorbView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbView::get(self : ImagefeatureorbView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_view_set(s : ImagefeatureorbView, i : Int, v : Double) -> ImagefeatureorbView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbView::set(self : ImagefeatureorbView, i : Int, v : Double) -> ImagefeatureorbView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_view_sum(s : ImagefeatureorbView) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbView::sum(self : ImagefeatureorbView) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_view_mean(s : ImagefeatureorbView) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbView::mean(self : ImagefeatureorbView) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_view_scale(s : ImagefeatureorbView, f : Double) -> ImagefeatureorbView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbView::scale(self : ImagefeatureorbView, f : Double) -> ImagefeatureorbView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_view_add(a : ImagefeatureorbView, b : ImagefeatureorbView) -> ImagefeatureorbView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbView::add(self : ImagefeatureorbView, other : ImagefeatureorbView) -> ImagefeatureorbView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_view_copy(s : ImagefeatureorbView) -> ImagefeatureorbView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbView::copy(self : ImagefeatureorbView) -> ImagefeatureorbView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_view_fill(s : ImagefeatureorbView, v : Double) -> ImagefeatureorbView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbView::fill(self : ImagefeatureorbView, v : Double) -> ImagefeatureorbView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_view_min(s : ImagefeatureorbView) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbView::min(self : ImagefeatureorbView) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_view_max(s : ImagefeatureorbView) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbView::max(self : ImagefeatureorbView) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_view_to_string(s : ImagefeatureorbView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbView::to_string(self : ImagefeatureorbView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbRange {
@@ -963,45 +963,45 @@ pub fn image_feature_orb_range_make(size : Int) -> ImagefeatureorbRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_range_len(s : ImagefeatureorbRange) -> Int { s.size }
+pub fn ImagefeatureorbRange::len(self : ImagefeatureorbRange) -> Int { self.size }
 
-pub fn image_feature_orb_range_get(s : ImagefeatureorbRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbRange::get(self : ImagefeatureorbRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_range_set(s : ImagefeatureorbRange, i : Int, v : Double) -> ImagefeatureorbRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbRange::set(self : ImagefeatureorbRange, i : Int, v : Double) -> ImagefeatureorbRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_range_sum(s : ImagefeatureorbRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbRange::sum(self : ImagefeatureorbRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_range_mean(s : ImagefeatureorbRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbRange::mean(self : ImagefeatureorbRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_range_scale(s : ImagefeatureorbRange, f : Double) -> ImagefeatureorbRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbRange::scale(self : ImagefeatureorbRange, f : Double) -> ImagefeatureorbRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_range_add(a : ImagefeatureorbRange, b : ImagefeatureorbRange) -> ImagefeatureorbRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbRange::add(self : ImagefeatureorbRange, other : ImagefeatureorbRange) -> ImagefeatureorbRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_range_copy(s : ImagefeatureorbRange) -> ImagefeatureorbRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbRange::copy(self : ImagefeatureorbRange) -> ImagefeatureorbRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_range_fill(s : ImagefeatureorbRange, v : Double) -> ImagefeatureorbRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbRange::fill(self : ImagefeatureorbRange, v : Double) -> ImagefeatureorbRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_range_min(s : ImagefeatureorbRange) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbRange::min(self : ImagefeatureorbRange) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_range_max(s : ImagefeatureorbRange) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbRange::max(self : ImagefeatureorbRange) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_range_to_string(s : ImagefeatureorbRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbRange::to_string(self : ImagefeatureorbRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureorbSlice {
@@ -1014,44 +1014,44 @@ pub fn image_feature_orb_slice_make(size : Int) -> ImagefeatureorbSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_orb_slice_len(s : ImagefeatureorbSlice) -> Int { s.size }
+pub fn ImagefeatureorbSlice::len(self : ImagefeatureorbSlice) -> Int { self.size }
 
-pub fn image_feature_orb_slice_get(s : ImagefeatureorbSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeatureorbSlice::get(self : ImagefeatureorbSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_orb_slice_set(s : ImagefeatureorbSlice, i : Int, v : Double) -> ImagefeatureorbSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeatureorbSlice::set(self : ImagefeatureorbSlice, i : Int, v : Double) -> ImagefeatureorbSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_slice_sum(s : ImagefeatureorbSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefeatureorbSlice::sum(self : ImagefeatureorbSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_orb_slice_mean(s : ImagefeatureorbSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefeatureorbSlice::mean(self : ImagefeatureorbSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_orb_slice_scale(s : ImagefeatureorbSlice, f : Double) -> ImagefeatureorbSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbSlice::scale(self : ImagefeatureorbSlice, f : Double) -> ImagefeatureorbSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_slice_add(a : ImagefeatureorbSlice, b : ImagefeatureorbSlice) -> ImagefeatureorbSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeatureorbSlice::add(self : ImagefeatureorbSlice, other : ImagefeatureorbSlice) -> ImagefeatureorbSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_orb_slice_copy(s : ImagefeatureorbSlice) -> ImagefeatureorbSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbSlice::copy(self : ImagefeatureorbSlice) -> ImagefeatureorbSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_slice_fill(s : ImagefeatureorbSlice, v : Double) -> ImagefeatureorbSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeatureorbSlice::fill(self : ImagefeatureorbSlice, v : Double) -> ImagefeatureorbSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_orb_slice_min(s : ImagefeatureorbSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefeatureorbSlice::min(self : ImagefeatureorbSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_orb_slice_max(s : ImagefeatureorbSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefeatureorbSlice::max(self : ImagefeatureorbSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_orb_slice_to_string(s : ImagefeatureorbSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeatureorbSlice::to_string(self : ImagefeatureorbSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

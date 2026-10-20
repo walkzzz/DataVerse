@@ -351,45 +351,45 @@ pub fn image_morph_erode_frame_make(size : Int) -> ImagemorpherodeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_frame_len(s : ImagemorpherodeFrame) -> Int { s.size }
+pub fn ImagemorpherodeFrame::len(self : ImagemorpherodeFrame) -> Int { self.size }
 
-pub fn image_morph_erode_frame_get(s : ImagemorpherodeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeFrame::get(self : ImagemorpherodeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_frame_set(s : ImagemorpherodeFrame, i : Int, v : Double) -> ImagemorpherodeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeFrame::set(self : ImagemorpherodeFrame, i : Int, v : Double) -> ImagemorpherodeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_frame_sum(s : ImagemorpherodeFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeFrame::sum(self : ImagemorpherodeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_frame_mean(s : ImagemorpherodeFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeFrame::mean(self : ImagemorpherodeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_frame_scale(s : ImagemorpherodeFrame, f : Double) -> ImagemorpherodeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeFrame::scale(self : ImagemorpherodeFrame, f : Double) -> ImagemorpherodeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_frame_add(a : ImagemorpherodeFrame, b : ImagemorpherodeFrame) -> ImagemorpherodeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeFrame::add(self : ImagemorpherodeFrame, other : ImagemorpherodeFrame) -> ImagemorpherodeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_frame_copy(s : ImagemorpherodeFrame) -> ImagemorpherodeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeFrame::copy(self : ImagemorpherodeFrame) -> ImagemorpherodeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_frame_fill(s : ImagemorpherodeFrame, v : Double) -> ImagemorpherodeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeFrame::fill(self : ImagemorpherodeFrame, v : Double) -> ImagemorpherodeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_frame_min(s : ImagemorpherodeFrame) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeFrame::min(self : ImagemorpherodeFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_frame_max(s : ImagemorpherodeFrame) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeFrame::max(self : ImagemorpherodeFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_frame_to_string(s : ImagemorpherodeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeFrame::to_string(self : ImagemorpherodeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeTable {
@@ -402,45 +402,45 @@ pub fn image_morph_erode_table_make(size : Int) -> ImagemorpherodeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_table_len(s : ImagemorpherodeTable) -> Int { s.size }
+pub fn ImagemorpherodeTable::len(self : ImagemorpherodeTable) -> Int { self.size }
 
-pub fn image_morph_erode_table_get(s : ImagemorpherodeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeTable::get(self : ImagemorpherodeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_table_set(s : ImagemorpherodeTable, i : Int, v : Double) -> ImagemorpherodeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeTable::set(self : ImagemorpherodeTable, i : Int, v : Double) -> ImagemorpherodeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_table_sum(s : ImagemorpherodeTable) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeTable::sum(self : ImagemorpherodeTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_table_mean(s : ImagemorpherodeTable) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeTable::mean(self : ImagemorpherodeTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_table_scale(s : ImagemorpherodeTable, f : Double) -> ImagemorpherodeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeTable::scale(self : ImagemorpherodeTable, f : Double) -> ImagemorpherodeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_table_add(a : ImagemorpherodeTable, b : ImagemorpherodeTable) -> ImagemorpherodeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeTable::add(self : ImagemorpherodeTable, other : ImagemorpherodeTable) -> ImagemorpherodeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_table_copy(s : ImagemorpherodeTable) -> ImagemorpherodeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeTable::copy(self : ImagemorpherodeTable) -> ImagemorpherodeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_table_fill(s : ImagemorpherodeTable, v : Double) -> ImagemorpherodeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeTable::fill(self : ImagemorpherodeTable, v : Double) -> ImagemorpherodeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_table_min(s : ImagemorpherodeTable) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeTable::min(self : ImagemorpherodeTable) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_table_max(s : ImagemorpherodeTable) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeTable::max(self : ImagemorpherodeTable) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_table_to_string(s : ImagemorpherodeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeTable::to_string(self : ImagemorpherodeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeGraphN {
@@ -453,45 +453,45 @@ pub fn image_morph_erode_graphn_make(size : Int) -> ImagemorpherodeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_graphn_len(s : ImagemorpherodeGraphN) -> Int { s.size }
+pub fn ImagemorpherodeGraphN::len(self : ImagemorpherodeGraphN) -> Int { self.size }
 
-pub fn image_morph_erode_graphn_get(s : ImagemorpherodeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeGraphN::get(self : ImagemorpherodeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_graphn_set(s : ImagemorpherodeGraphN, i : Int, v : Double) -> ImagemorpherodeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeGraphN::set(self : ImagemorpherodeGraphN, i : Int, v : Double) -> ImagemorpherodeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_graphn_sum(s : ImagemorpherodeGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeGraphN::sum(self : ImagemorpherodeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_graphn_mean(s : ImagemorpherodeGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeGraphN::mean(self : ImagemorpherodeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_graphn_scale(s : ImagemorpherodeGraphN, f : Double) -> ImagemorpherodeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeGraphN::scale(self : ImagemorpherodeGraphN, f : Double) -> ImagemorpherodeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_graphn_add(a : ImagemorpherodeGraphN, b : ImagemorpherodeGraphN) -> ImagemorpherodeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeGraphN::add(self : ImagemorpherodeGraphN, other : ImagemorpherodeGraphN) -> ImagemorpherodeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_graphn_copy(s : ImagemorpherodeGraphN) -> ImagemorpherodeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeGraphN::copy(self : ImagemorpherodeGraphN) -> ImagemorpherodeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_graphn_fill(s : ImagemorpherodeGraphN, v : Double) -> ImagemorpherodeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeGraphN::fill(self : ImagemorpherodeGraphN, v : Double) -> ImagemorpherodeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_graphn_min(s : ImagemorpherodeGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeGraphN::min(self : ImagemorpherodeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_graphn_max(s : ImagemorpherodeGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeGraphN::max(self : ImagemorpherodeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_graphn_to_string(s : ImagemorpherodeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeGraphN::to_string(self : ImagemorpherodeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeNode {
@@ -504,45 +504,45 @@ pub fn image_morph_erode_node_make(size : Int) -> ImagemorpherodeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_node_len(s : ImagemorpherodeNode) -> Int { s.size }
+pub fn ImagemorpherodeNode::len(self : ImagemorpherodeNode) -> Int { self.size }
 
-pub fn image_morph_erode_node_get(s : ImagemorpherodeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeNode::get(self : ImagemorpherodeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_node_set(s : ImagemorpherodeNode, i : Int, v : Double) -> ImagemorpherodeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeNode::set(self : ImagemorpherodeNode, i : Int, v : Double) -> ImagemorpherodeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_node_sum(s : ImagemorpherodeNode) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeNode::sum(self : ImagemorpherodeNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_node_mean(s : ImagemorpherodeNode) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeNode::mean(self : ImagemorpherodeNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_node_scale(s : ImagemorpherodeNode, f : Double) -> ImagemorpherodeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeNode::scale(self : ImagemorpherodeNode, f : Double) -> ImagemorpherodeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_node_add(a : ImagemorpherodeNode, b : ImagemorpherodeNode) -> ImagemorpherodeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeNode::add(self : ImagemorpherodeNode, other : ImagemorpherodeNode) -> ImagemorpherodeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_node_copy(s : ImagemorpherodeNode) -> ImagemorpherodeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeNode::copy(self : ImagemorpherodeNode) -> ImagemorpherodeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_node_fill(s : ImagemorpherodeNode, v : Double) -> ImagemorpherodeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeNode::fill(self : ImagemorpherodeNode, v : Double) -> ImagemorpherodeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_node_min(s : ImagemorpherodeNode) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeNode::min(self : ImagemorpherodeNode) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_node_max(s : ImagemorpherodeNode) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeNode::max(self : ImagemorpherodeNode) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_node_to_string(s : ImagemorpherodeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeNode::to_string(self : ImagemorpherodeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeEdge {
@@ -555,45 +555,45 @@ pub fn image_morph_erode_edge_make(size : Int) -> ImagemorpherodeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_edge_len(s : ImagemorpherodeEdge) -> Int { s.size }
+pub fn ImagemorpherodeEdge::len(self : ImagemorpherodeEdge) -> Int { self.size }
 
-pub fn image_morph_erode_edge_get(s : ImagemorpherodeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeEdge::get(self : ImagemorpherodeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_edge_set(s : ImagemorpherodeEdge, i : Int, v : Double) -> ImagemorpherodeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeEdge::set(self : ImagemorpherodeEdge, i : Int, v : Double) -> ImagemorpherodeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_edge_sum(s : ImagemorpherodeEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeEdge::sum(self : ImagemorpherodeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_edge_mean(s : ImagemorpherodeEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeEdge::mean(self : ImagemorpherodeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_edge_scale(s : ImagemorpherodeEdge, f : Double) -> ImagemorpherodeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeEdge::scale(self : ImagemorpherodeEdge, f : Double) -> ImagemorpherodeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_edge_add(a : ImagemorpherodeEdge, b : ImagemorpherodeEdge) -> ImagemorpherodeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeEdge::add(self : ImagemorpherodeEdge, other : ImagemorpherodeEdge) -> ImagemorpherodeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_edge_copy(s : ImagemorpherodeEdge) -> ImagemorpherodeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeEdge::copy(self : ImagemorpherodeEdge) -> ImagemorpherodeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_edge_fill(s : ImagemorpherodeEdge, v : Double) -> ImagemorpherodeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeEdge::fill(self : ImagemorpherodeEdge, v : Double) -> ImagemorpherodeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_edge_min(s : ImagemorpherodeEdge) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeEdge::min(self : ImagemorpherodeEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_edge_max(s : ImagemorpherodeEdge) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeEdge::max(self : ImagemorpherodeEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_edge_to_string(s : ImagemorpherodeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeEdge::to_string(self : ImagemorpherodeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodePath {
@@ -606,45 +606,45 @@ pub fn image_morph_erode_path_make(size : Int) -> ImagemorpherodePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_path_len(s : ImagemorpherodePath) -> Int { s.size }
+pub fn ImagemorpherodePath::len(self : ImagemorpherodePath) -> Int { self.size }
 
-pub fn image_morph_erode_path_get(s : ImagemorpherodePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodePath::get(self : ImagemorpherodePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_path_set(s : ImagemorpherodePath, i : Int, v : Double) -> ImagemorpherodePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodePath::set(self : ImagemorpherodePath, i : Int, v : Double) -> ImagemorpherodePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_path_sum(s : ImagemorpherodePath) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodePath::sum(self : ImagemorpherodePath) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_path_mean(s : ImagemorpherodePath) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodePath::mean(self : ImagemorpherodePath) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_path_scale(s : ImagemorpherodePath, f : Double) -> ImagemorpherodePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodePath::scale(self : ImagemorpherodePath, f : Double) -> ImagemorpherodePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_path_add(a : ImagemorpherodePath, b : ImagemorpherodePath) -> ImagemorpherodePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodePath::add(self : ImagemorpherodePath, other : ImagemorpherodePath) -> ImagemorpherodePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_path_copy(s : ImagemorpherodePath) -> ImagemorpherodePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodePath::copy(self : ImagemorpherodePath) -> ImagemorpherodePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_path_fill(s : ImagemorpherodePath, v : Double) -> ImagemorpherodePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodePath::fill(self : ImagemorpherodePath, v : Double) -> ImagemorpherodePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_path_min(s : ImagemorpherodePath) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodePath::min(self : ImagemorpherodePath) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_path_max(s : ImagemorpherodePath) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodePath::max(self : ImagemorpherodePath) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_path_to_string(s : ImagemorpherodePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodePath::to_string(self : ImagemorpherodePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeCluster {
@@ -657,45 +657,45 @@ pub fn image_morph_erode_cluster_make(size : Int) -> ImagemorpherodeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_cluster_len(s : ImagemorpherodeCluster) -> Int { s.size }
+pub fn ImagemorpherodeCluster::len(self : ImagemorpherodeCluster) -> Int { self.size }
 
-pub fn image_morph_erode_cluster_get(s : ImagemorpherodeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeCluster::get(self : ImagemorpherodeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_cluster_set(s : ImagemorpherodeCluster, i : Int, v : Double) -> ImagemorpherodeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCluster::set(self : ImagemorpherodeCluster, i : Int, v : Double) -> ImagemorpherodeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cluster_sum(s : ImagemorpherodeCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeCluster::sum(self : ImagemorpherodeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_cluster_mean(s : ImagemorpherodeCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeCluster::mean(self : ImagemorpherodeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_cluster_scale(s : ImagemorpherodeCluster, f : Double) -> ImagemorpherodeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCluster::scale(self : ImagemorpherodeCluster, f : Double) -> ImagemorpherodeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cluster_add(a : ImagemorpherodeCluster, b : ImagemorpherodeCluster) -> ImagemorpherodeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeCluster::add(self : ImagemorpherodeCluster, other : ImagemorpherodeCluster) -> ImagemorpherodeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_cluster_copy(s : ImagemorpherodeCluster) -> ImagemorpherodeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCluster::copy(self : ImagemorpherodeCluster) -> ImagemorpherodeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cluster_fill(s : ImagemorpherodeCluster, v : Double) -> ImagemorpherodeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCluster::fill(self : ImagemorpherodeCluster, v : Double) -> ImagemorpherodeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cluster_min(s : ImagemorpherodeCluster) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeCluster::min(self : ImagemorpherodeCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_cluster_max(s : ImagemorpherodeCluster) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeCluster::max(self : ImagemorpherodeCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_cluster_to_string(s : ImagemorpherodeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeCluster::to_string(self : ImagemorpherodeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeModel {
@@ -708,45 +708,45 @@ pub fn image_morph_erode_model_make(size : Int) -> ImagemorpherodeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_model_len(s : ImagemorpherodeModel) -> Int { s.size }
+pub fn ImagemorpherodeModel::len(self : ImagemorpherodeModel) -> Int { self.size }
 
-pub fn image_morph_erode_model_get(s : ImagemorpherodeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeModel::get(self : ImagemorpherodeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_model_set(s : ImagemorpherodeModel, i : Int, v : Double) -> ImagemorpherodeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeModel::set(self : ImagemorpherodeModel, i : Int, v : Double) -> ImagemorpherodeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_model_sum(s : ImagemorpherodeModel) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeModel::sum(self : ImagemorpherodeModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_model_mean(s : ImagemorpherodeModel) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeModel::mean(self : ImagemorpherodeModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_model_scale(s : ImagemorpherodeModel, f : Double) -> ImagemorpherodeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeModel::scale(self : ImagemorpherodeModel, f : Double) -> ImagemorpherodeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_model_add(a : ImagemorpherodeModel, b : ImagemorpherodeModel) -> ImagemorpherodeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeModel::add(self : ImagemorpherodeModel, other : ImagemorpherodeModel) -> ImagemorpherodeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_model_copy(s : ImagemorpherodeModel) -> ImagemorpherodeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeModel::copy(self : ImagemorpherodeModel) -> ImagemorpherodeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_model_fill(s : ImagemorpherodeModel, v : Double) -> ImagemorpherodeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeModel::fill(self : ImagemorpherodeModel, v : Double) -> ImagemorpherodeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_model_min(s : ImagemorpherodeModel) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeModel::min(self : ImagemorpherodeModel) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_model_max(s : ImagemorpherodeModel) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeModel::max(self : ImagemorpherodeModel) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_model_to_string(s : ImagemorpherodeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeModel::to_string(self : ImagemorpherodeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeLayer {
@@ -759,45 +759,45 @@ pub fn image_morph_erode_layer_make(size : Int) -> ImagemorpherodeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_layer_len(s : ImagemorpherodeLayer) -> Int { s.size }
+pub fn ImagemorpherodeLayer::len(self : ImagemorpherodeLayer) -> Int { self.size }
 
-pub fn image_morph_erode_layer_get(s : ImagemorpherodeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeLayer::get(self : ImagemorpherodeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_layer_set(s : ImagemorpherodeLayer, i : Int, v : Double) -> ImagemorpherodeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeLayer::set(self : ImagemorpherodeLayer, i : Int, v : Double) -> ImagemorpherodeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_layer_sum(s : ImagemorpherodeLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeLayer::sum(self : ImagemorpherodeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_layer_mean(s : ImagemorpherodeLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeLayer::mean(self : ImagemorpherodeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_layer_scale(s : ImagemorpherodeLayer, f : Double) -> ImagemorpherodeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeLayer::scale(self : ImagemorpherodeLayer, f : Double) -> ImagemorpherodeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_layer_add(a : ImagemorpherodeLayer, b : ImagemorpherodeLayer) -> ImagemorpherodeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeLayer::add(self : ImagemorpherodeLayer, other : ImagemorpherodeLayer) -> ImagemorpherodeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_layer_copy(s : ImagemorpherodeLayer) -> ImagemorpherodeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeLayer::copy(self : ImagemorpherodeLayer) -> ImagemorpherodeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_layer_fill(s : ImagemorpherodeLayer, v : Double) -> ImagemorpherodeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeLayer::fill(self : ImagemorpherodeLayer, v : Double) -> ImagemorpherodeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_layer_min(s : ImagemorpherodeLayer) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeLayer::min(self : ImagemorpherodeLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_layer_max(s : ImagemorpherodeLayer) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeLayer::max(self : ImagemorpherodeLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_layer_to_string(s : ImagemorpherodeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeLayer::to_string(self : ImagemorpherodeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeBuffer {
@@ -810,45 +810,45 @@ pub fn image_morph_erode_buffer_make(size : Int) -> ImagemorpherodeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_buffer_len(s : ImagemorpherodeBuffer) -> Int { s.size }
+pub fn ImagemorpherodeBuffer::len(self : ImagemorpherodeBuffer) -> Int { self.size }
 
-pub fn image_morph_erode_buffer_get(s : ImagemorpherodeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeBuffer::get(self : ImagemorpherodeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_buffer_set(s : ImagemorpherodeBuffer, i : Int, v : Double) -> ImagemorpherodeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeBuffer::set(self : ImagemorpherodeBuffer, i : Int, v : Double) -> ImagemorpherodeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_buffer_sum(s : ImagemorpherodeBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeBuffer::sum(self : ImagemorpherodeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_buffer_mean(s : ImagemorpherodeBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeBuffer::mean(self : ImagemorpherodeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_buffer_scale(s : ImagemorpherodeBuffer, f : Double) -> ImagemorpherodeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeBuffer::scale(self : ImagemorpherodeBuffer, f : Double) -> ImagemorpherodeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_buffer_add(a : ImagemorpherodeBuffer, b : ImagemorpherodeBuffer) -> ImagemorpherodeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeBuffer::add(self : ImagemorpherodeBuffer, other : ImagemorpherodeBuffer) -> ImagemorpherodeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_buffer_copy(s : ImagemorpherodeBuffer) -> ImagemorpherodeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeBuffer::copy(self : ImagemorpherodeBuffer) -> ImagemorpherodeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_buffer_fill(s : ImagemorpherodeBuffer, v : Double) -> ImagemorpherodeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeBuffer::fill(self : ImagemorpherodeBuffer, v : Double) -> ImagemorpherodeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_buffer_min(s : ImagemorpherodeBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeBuffer::min(self : ImagemorpherodeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_buffer_max(s : ImagemorpherodeBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeBuffer::max(self : ImagemorpherodeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_buffer_to_string(s : ImagemorpherodeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeBuffer::to_string(self : ImagemorpherodeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeCursor {
@@ -861,45 +861,45 @@ pub fn image_morph_erode_cursor_make(size : Int) -> ImagemorpherodeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_cursor_len(s : ImagemorpherodeCursor) -> Int { s.size }
+pub fn ImagemorpherodeCursor::len(self : ImagemorpherodeCursor) -> Int { self.size }
 
-pub fn image_morph_erode_cursor_get(s : ImagemorpherodeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeCursor::get(self : ImagemorpherodeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_cursor_set(s : ImagemorpherodeCursor, i : Int, v : Double) -> ImagemorpherodeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCursor::set(self : ImagemorpherodeCursor, i : Int, v : Double) -> ImagemorpherodeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cursor_sum(s : ImagemorpherodeCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeCursor::sum(self : ImagemorpherodeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_cursor_mean(s : ImagemorpherodeCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeCursor::mean(self : ImagemorpherodeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_cursor_scale(s : ImagemorpherodeCursor, f : Double) -> ImagemorpherodeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCursor::scale(self : ImagemorpherodeCursor, f : Double) -> ImagemorpherodeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cursor_add(a : ImagemorpherodeCursor, b : ImagemorpherodeCursor) -> ImagemorpherodeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeCursor::add(self : ImagemorpherodeCursor, other : ImagemorpherodeCursor) -> ImagemorpherodeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_cursor_copy(s : ImagemorpherodeCursor) -> ImagemorpherodeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCursor::copy(self : ImagemorpherodeCursor) -> ImagemorpherodeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cursor_fill(s : ImagemorpherodeCursor, v : Double) -> ImagemorpherodeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeCursor::fill(self : ImagemorpherodeCursor, v : Double) -> ImagemorpherodeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_cursor_min(s : ImagemorpherodeCursor) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeCursor::min(self : ImagemorpherodeCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_cursor_max(s : ImagemorpherodeCursor) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeCursor::max(self : ImagemorpherodeCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_cursor_to_string(s : ImagemorpherodeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeCursor::to_string(self : ImagemorpherodeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeView {
@@ -912,45 +912,45 @@ pub fn image_morph_erode_view_make(size : Int) -> ImagemorpherodeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_view_len(s : ImagemorpherodeView) -> Int { s.size }
+pub fn ImagemorpherodeView::len(self : ImagemorpherodeView) -> Int { self.size }
 
-pub fn image_morph_erode_view_get(s : ImagemorpherodeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeView::get(self : ImagemorpherodeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_view_set(s : ImagemorpherodeView, i : Int, v : Double) -> ImagemorpherodeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeView::set(self : ImagemorpherodeView, i : Int, v : Double) -> ImagemorpherodeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_view_sum(s : ImagemorpherodeView) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeView::sum(self : ImagemorpherodeView) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_view_mean(s : ImagemorpherodeView) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeView::mean(self : ImagemorpherodeView) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_view_scale(s : ImagemorpherodeView, f : Double) -> ImagemorpherodeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeView::scale(self : ImagemorpherodeView, f : Double) -> ImagemorpherodeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_view_add(a : ImagemorpherodeView, b : ImagemorpherodeView) -> ImagemorpherodeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeView::add(self : ImagemorpherodeView, other : ImagemorpherodeView) -> ImagemorpherodeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_view_copy(s : ImagemorpherodeView) -> ImagemorpherodeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeView::copy(self : ImagemorpherodeView) -> ImagemorpherodeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_view_fill(s : ImagemorpherodeView, v : Double) -> ImagemorpherodeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeView::fill(self : ImagemorpherodeView, v : Double) -> ImagemorpherodeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_view_min(s : ImagemorpherodeView) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeView::min(self : ImagemorpherodeView) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_view_max(s : ImagemorpherodeView) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeView::max(self : ImagemorpherodeView) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_view_to_string(s : ImagemorpherodeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeView::to_string(self : ImagemorpherodeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeRange {
@@ -963,45 +963,45 @@ pub fn image_morph_erode_range_make(size : Int) -> ImagemorpherodeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_range_len(s : ImagemorpherodeRange) -> Int { s.size }
+pub fn ImagemorpherodeRange::len(self : ImagemorpherodeRange) -> Int { self.size }
 
-pub fn image_morph_erode_range_get(s : ImagemorpherodeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeRange::get(self : ImagemorpherodeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_range_set(s : ImagemorpherodeRange, i : Int, v : Double) -> ImagemorpherodeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeRange::set(self : ImagemorpherodeRange, i : Int, v : Double) -> ImagemorpherodeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_range_sum(s : ImagemorpherodeRange) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeRange::sum(self : ImagemorpherodeRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_range_mean(s : ImagemorpherodeRange) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeRange::mean(self : ImagemorpherodeRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_range_scale(s : ImagemorpherodeRange, f : Double) -> ImagemorpherodeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeRange::scale(self : ImagemorpherodeRange, f : Double) -> ImagemorpherodeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_range_add(a : ImagemorpherodeRange, b : ImagemorpherodeRange) -> ImagemorpherodeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeRange::add(self : ImagemorpherodeRange, other : ImagemorpherodeRange) -> ImagemorpherodeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_range_copy(s : ImagemorpherodeRange) -> ImagemorpherodeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeRange::copy(self : ImagemorpherodeRange) -> ImagemorpherodeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_range_fill(s : ImagemorpherodeRange, v : Double) -> ImagemorpherodeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeRange::fill(self : ImagemorpherodeRange, v : Double) -> ImagemorpherodeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_range_min(s : ImagemorpherodeRange) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeRange::min(self : ImagemorpherodeRange) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_range_max(s : ImagemorpherodeRange) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeRange::max(self : ImagemorpherodeRange) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_range_to_string(s : ImagemorpherodeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeRange::to_string(self : ImagemorpherodeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorpherodeSlice {
@@ -1014,44 +1014,44 @@ pub fn image_morph_erode_slice_make(size : Int) -> ImagemorpherodeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_erode_slice_len(s : ImagemorpherodeSlice) -> Int { s.size }
+pub fn ImagemorpherodeSlice::len(self : ImagemorpherodeSlice) -> Int { self.size }
 
-pub fn image_morph_erode_slice_get(s : ImagemorpherodeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorpherodeSlice::get(self : ImagemorpherodeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_erode_slice_set(s : ImagemorpherodeSlice, i : Int, v : Double) -> ImagemorpherodeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorpherodeSlice::set(self : ImagemorpherodeSlice, i : Int, v : Double) -> ImagemorpherodeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_slice_sum(s : ImagemorpherodeSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagemorpherodeSlice::sum(self : ImagemorpherodeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_erode_slice_mean(s : ImagemorpherodeSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagemorpherodeSlice::mean(self : ImagemorpherodeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_erode_slice_scale(s : ImagemorpherodeSlice, f : Double) -> ImagemorpherodeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeSlice::scale(self : ImagemorpherodeSlice, f : Double) -> ImagemorpherodeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_slice_add(a : ImagemorpherodeSlice, b : ImagemorpherodeSlice) -> ImagemorpherodeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorpherodeSlice::add(self : ImagemorpherodeSlice, other : ImagemorpherodeSlice) -> ImagemorpherodeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_erode_slice_copy(s : ImagemorpherodeSlice) -> ImagemorpherodeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeSlice::copy(self : ImagemorpherodeSlice) -> ImagemorpherodeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_slice_fill(s : ImagemorpherodeSlice, v : Double) -> ImagemorpherodeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorpherodeSlice::fill(self : ImagemorpherodeSlice, v : Double) -> ImagemorpherodeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_erode_slice_min(s : ImagemorpherodeSlice) -> Double { @_common.min(s.data) }
+pub fn ImagemorpherodeSlice::min(self : ImagemorpherodeSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_erode_slice_max(s : ImagemorpherodeSlice) -> Double { @_common.max(s.data) }
+pub fn ImagemorpherodeSlice::max(self : ImagemorpherodeSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_erode_slice_to_string(s : ImagemorpherodeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorpherodeSlice::to_string(self : ImagemorpherodeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

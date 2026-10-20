@@ -351,45 +351,45 @@ pub fn db_tx_3pc_frame_make(size : Int) -> Dbtx3pcFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_frame_len(s : Dbtx3pcFrame) -> Int { s.size }
+pub fn Dbtx3pcFrame::len(self : Dbtx3pcFrame) -> Int { self.size }
 
-pub fn db_tx_3pc_frame_get(s : Dbtx3pcFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcFrame::get(self : Dbtx3pcFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_frame_set(s : Dbtx3pcFrame, i : Int, v : Double) -> Dbtx3pcFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcFrame::set(self : Dbtx3pcFrame, i : Int, v : Double) -> Dbtx3pcFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_frame_sum(s : Dbtx3pcFrame) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcFrame::sum(self : Dbtx3pcFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_frame_mean(s : Dbtx3pcFrame) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcFrame::mean(self : Dbtx3pcFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_frame_scale(s : Dbtx3pcFrame, f : Double) -> Dbtx3pcFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcFrame::scale(self : Dbtx3pcFrame, f : Double) -> Dbtx3pcFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_frame_add(a : Dbtx3pcFrame, b : Dbtx3pcFrame) -> Dbtx3pcFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcFrame::add(self : Dbtx3pcFrame, other : Dbtx3pcFrame) -> Dbtx3pcFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_frame_copy(s : Dbtx3pcFrame) -> Dbtx3pcFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcFrame::copy(self : Dbtx3pcFrame) -> Dbtx3pcFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_frame_fill(s : Dbtx3pcFrame, v : Double) -> Dbtx3pcFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcFrame::fill(self : Dbtx3pcFrame, v : Double) -> Dbtx3pcFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_frame_min(s : Dbtx3pcFrame) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcFrame::min(self : Dbtx3pcFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_frame_max(s : Dbtx3pcFrame) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcFrame::max(self : Dbtx3pcFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_frame_to_string(s : Dbtx3pcFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcFrame::to_string(self : Dbtx3pcFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcTable {
@@ -402,45 +402,45 @@ pub fn db_tx_3pc_table_make(size : Int) -> Dbtx3pcTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_table_len(s : Dbtx3pcTable) -> Int { s.size }
+pub fn Dbtx3pcTable::len(self : Dbtx3pcTable) -> Int { self.size }
 
-pub fn db_tx_3pc_table_get(s : Dbtx3pcTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcTable::get(self : Dbtx3pcTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_table_set(s : Dbtx3pcTable, i : Int, v : Double) -> Dbtx3pcTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcTable::set(self : Dbtx3pcTable, i : Int, v : Double) -> Dbtx3pcTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_table_sum(s : Dbtx3pcTable) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcTable::sum(self : Dbtx3pcTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_table_mean(s : Dbtx3pcTable) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcTable::mean(self : Dbtx3pcTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_table_scale(s : Dbtx3pcTable, f : Double) -> Dbtx3pcTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcTable::scale(self : Dbtx3pcTable, f : Double) -> Dbtx3pcTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_table_add(a : Dbtx3pcTable, b : Dbtx3pcTable) -> Dbtx3pcTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcTable::add(self : Dbtx3pcTable, other : Dbtx3pcTable) -> Dbtx3pcTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_table_copy(s : Dbtx3pcTable) -> Dbtx3pcTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcTable::copy(self : Dbtx3pcTable) -> Dbtx3pcTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_table_fill(s : Dbtx3pcTable, v : Double) -> Dbtx3pcTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcTable::fill(self : Dbtx3pcTable, v : Double) -> Dbtx3pcTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_table_min(s : Dbtx3pcTable) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcTable::min(self : Dbtx3pcTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_table_max(s : Dbtx3pcTable) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcTable::max(self : Dbtx3pcTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_table_to_string(s : Dbtx3pcTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcTable::to_string(self : Dbtx3pcTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_3pc_graphn_make(size : Int) -> Dbtx3pcGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_graphn_len(s : Dbtx3pcGraphN) -> Int { s.size }
+pub fn Dbtx3pcGraphN::len(self : Dbtx3pcGraphN) -> Int { self.size }
 
-pub fn db_tx_3pc_graphn_get(s : Dbtx3pcGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcGraphN::get(self : Dbtx3pcGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_graphn_set(s : Dbtx3pcGraphN, i : Int, v : Double) -> Dbtx3pcGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcGraphN::set(self : Dbtx3pcGraphN, i : Int, v : Double) -> Dbtx3pcGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_graphn_sum(s : Dbtx3pcGraphN) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcGraphN::sum(self : Dbtx3pcGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_graphn_mean(s : Dbtx3pcGraphN) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcGraphN::mean(self : Dbtx3pcGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_graphn_scale(s : Dbtx3pcGraphN, f : Double) -> Dbtx3pcGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcGraphN::scale(self : Dbtx3pcGraphN, f : Double) -> Dbtx3pcGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_graphn_add(a : Dbtx3pcGraphN, b : Dbtx3pcGraphN) -> Dbtx3pcGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcGraphN::add(self : Dbtx3pcGraphN, other : Dbtx3pcGraphN) -> Dbtx3pcGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_graphn_copy(s : Dbtx3pcGraphN) -> Dbtx3pcGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcGraphN::copy(self : Dbtx3pcGraphN) -> Dbtx3pcGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_graphn_fill(s : Dbtx3pcGraphN, v : Double) -> Dbtx3pcGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcGraphN::fill(self : Dbtx3pcGraphN, v : Double) -> Dbtx3pcGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_graphn_min(s : Dbtx3pcGraphN) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcGraphN::min(self : Dbtx3pcGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_graphn_max(s : Dbtx3pcGraphN) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcGraphN::max(self : Dbtx3pcGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_graphn_to_string(s : Dbtx3pcGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcGraphN::to_string(self : Dbtx3pcGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcNode {
@@ -504,45 +504,45 @@ pub fn db_tx_3pc_node_make(size : Int) -> Dbtx3pcNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_node_len(s : Dbtx3pcNode) -> Int { s.size }
+pub fn Dbtx3pcNode::len(self : Dbtx3pcNode) -> Int { self.size }
 
-pub fn db_tx_3pc_node_get(s : Dbtx3pcNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcNode::get(self : Dbtx3pcNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_node_set(s : Dbtx3pcNode, i : Int, v : Double) -> Dbtx3pcNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcNode::set(self : Dbtx3pcNode, i : Int, v : Double) -> Dbtx3pcNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_node_sum(s : Dbtx3pcNode) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcNode::sum(self : Dbtx3pcNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_node_mean(s : Dbtx3pcNode) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcNode::mean(self : Dbtx3pcNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_node_scale(s : Dbtx3pcNode, f : Double) -> Dbtx3pcNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcNode::scale(self : Dbtx3pcNode, f : Double) -> Dbtx3pcNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_node_add(a : Dbtx3pcNode, b : Dbtx3pcNode) -> Dbtx3pcNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcNode::add(self : Dbtx3pcNode, other : Dbtx3pcNode) -> Dbtx3pcNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_node_copy(s : Dbtx3pcNode) -> Dbtx3pcNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcNode::copy(self : Dbtx3pcNode) -> Dbtx3pcNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_node_fill(s : Dbtx3pcNode, v : Double) -> Dbtx3pcNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcNode::fill(self : Dbtx3pcNode, v : Double) -> Dbtx3pcNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_node_min(s : Dbtx3pcNode) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcNode::min(self : Dbtx3pcNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_node_max(s : Dbtx3pcNode) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcNode::max(self : Dbtx3pcNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_node_to_string(s : Dbtx3pcNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcNode::to_string(self : Dbtx3pcNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_3pc_edge_make(size : Int) -> Dbtx3pcEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_edge_len(s : Dbtx3pcEdge) -> Int { s.size }
+pub fn Dbtx3pcEdge::len(self : Dbtx3pcEdge) -> Int { self.size }
 
-pub fn db_tx_3pc_edge_get(s : Dbtx3pcEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcEdge::get(self : Dbtx3pcEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_edge_set(s : Dbtx3pcEdge, i : Int, v : Double) -> Dbtx3pcEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcEdge::set(self : Dbtx3pcEdge, i : Int, v : Double) -> Dbtx3pcEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_edge_sum(s : Dbtx3pcEdge) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcEdge::sum(self : Dbtx3pcEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_edge_mean(s : Dbtx3pcEdge) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcEdge::mean(self : Dbtx3pcEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_edge_scale(s : Dbtx3pcEdge, f : Double) -> Dbtx3pcEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcEdge::scale(self : Dbtx3pcEdge, f : Double) -> Dbtx3pcEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_edge_add(a : Dbtx3pcEdge, b : Dbtx3pcEdge) -> Dbtx3pcEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcEdge::add(self : Dbtx3pcEdge, other : Dbtx3pcEdge) -> Dbtx3pcEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_edge_copy(s : Dbtx3pcEdge) -> Dbtx3pcEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcEdge::copy(self : Dbtx3pcEdge) -> Dbtx3pcEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_edge_fill(s : Dbtx3pcEdge, v : Double) -> Dbtx3pcEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcEdge::fill(self : Dbtx3pcEdge, v : Double) -> Dbtx3pcEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_edge_min(s : Dbtx3pcEdge) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcEdge::min(self : Dbtx3pcEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_edge_max(s : Dbtx3pcEdge) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcEdge::max(self : Dbtx3pcEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_edge_to_string(s : Dbtx3pcEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcEdge::to_string(self : Dbtx3pcEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcPath {
@@ -606,45 +606,45 @@ pub fn db_tx_3pc_path_make(size : Int) -> Dbtx3pcPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_path_len(s : Dbtx3pcPath) -> Int { s.size }
+pub fn Dbtx3pcPath::len(self : Dbtx3pcPath) -> Int { self.size }
 
-pub fn db_tx_3pc_path_get(s : Dbtx3pcPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcPath::get(self : Dbtx3pcPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_path_set(s : Dbtx3pcPath, i : Int, v : Double) -> Dbtx3pcPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcPath::set(self : Dbtx3pcPath, i : Int, v : Double) -> Dbtx3pcPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_path_sum(s : Dbtx3pcPath) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcPath::sum(self : Dbtx3pcPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_path_mean(s : Dbtx3pcPath) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcPath::mean(self : Dbtx3pcPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_path_scale(s : Dbtx3pcPath, f : Double) -> Dbtx3pcPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcPath::scale(self : Dbtx3pcPath, f : Double) -> Dbtx3pcPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_path_add(a : Dbtx3pcPath, b : Dbtx3pcPath) -> Dbtx3pcPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcPath::add(self : Dbtx3pcPath, other : Dbtx3pcPath) -> Dbtx3pcPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_path_copy(s : Dbtx3pcPath) -> Dbtx3pcPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcPath::copy(self : Dbtx3pcPath) -> Dbtx3pcPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_path_fill(s : Dbtx3pcPath, v : Double) -> Dbtx3pcPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcPath::fill(self : Dbtx3pcPath, v : Double) -> Dbtx3pcPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_path_min(s : Dbtx3pcPath) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcPath::min(self : Dbtx3pcPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_path_max(s : Dbtx3pcPath) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcPath::max(self : Dbtx3pcPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_path_to_string(s : Dbtx3pcPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcPath::to_string(self : Dbtx3pcPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_3pc_cluster_make(size : Int) -> Dbtx3pcCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_cluster_len(s : Dbtx3pcCluster) -> Int { s.size }
+pub fn Dbtx3pcCluster::len(self : Dbtx3pcCluster) -> Int { self.size }
 
-pub fn db_tx_3pc_cluster_get(s : Dbtx3pcCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcCluster::get(self : Dbtx3pcCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_cluster_set(s : Dbtx3pcCluster, i : Int, v : Double) -> Dbtx3pcCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcCluster::set(self : Dbtx3pcCluster, i : Int, v : Double) -> Dbtx3pcCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cluster_sum(s : Dbtx3pcCluster) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcCluster::sum(self : Dbtx3pcCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_cluster_mean(s : Dbtx3pcCluster) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcCluster::mean(self : Dbtx3pcCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_cluster_scale(s : Dbtx3pcCluster, f : Double) -> Dbtx3pcCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcCluster::scale(self : Dbtx3pcCluster, f : Double) -> Dbtx3pcCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cluster_add(a : Dbtx3pcCluster, b : Dbtx3pcCluster) -> Dbtx3pcCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcCluster::add(self : Dbtx3pcCluster, other : Dbtx3pcCluster) -> Dbtx3pcCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cluster_copy(s : Dbtx3pcCluster) -> Dbtx3pcCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcCluster::copy(self : Dbtx3pcCluster) -> Dbtx3pcCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cluster_fill(s : Dbtx3pcCluster, v : Double) -> Dbtx3pcCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcCluster::fill(self : Dbtx3pcCluster, v : Double) -> Dbtx3pcCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cluster_min(s : Dbtx3pcCluster) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcCluster::min(self : Dbtx3pcCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_cluster_max(s : Dbtx3pcCluster) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcCluster::max(self : Dbtx3pcCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_cluster_to_string(s : Dbtx3pcCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcCluster::to_string(self : Dbtx3pcCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcModel {
@@ -708,45 +708,45 @@ pub fn db_tx_3pc_model_make(size : Int) -> Dbtx3pcModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_model_len(s : Dbtx3pcModel) -> Int { s.size }
+pub fn Dbtx3pcModel::len(self : Dbtx3pcModel) -> Int { self.size }
 
-pub fn db_tx_3pc_model_get(s : Dbtx3pcModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcModel::get(self : Dbtx3pcModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_model_set(s : Dbtx3pcModel, i : Int, v : Double) -> Dbtx3pcModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcModel::set(self : Dbtx3pcModel, i : Int, v : Double) -> Dbtx3pcModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_model_sum(s : Dbtx3pcModel) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcModel::sum(self : Dbtx3pcModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_model_mean(s : Dbtx3pcModel) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcModel::mean(self : Dbtx3pcModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_model_scale(s : Dbtx3pcModel, f : Double) -> Dbtx3pcModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcModel::scale(self : Dbtx3pcModel, f : Double) -> Dbtx3pcModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_model_add(a : Dbtx3pcModel, b : Dbtx3pcModel) -> Dbtx3pcModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcModel::add(self : Dbtx3pcModel, other : Dbtx3pcModel) -> Dbtx3pcModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_model_copy(s : Dbtx3pcModel) -> Dbtx3pcModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcModel::copy(self : Dbtx3pcModel) -> Dbtx3pcModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_model_fill(s : Dbtx3pcModel, v : Double) -> Dbtx3pcModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcModel::fill(self : Dbtx3pcModel, v : Double) -> Dbtx3pcModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_model_min(s : Dbtx3pcModel) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcModel::min(self : Dbtx3pcModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_model_max(s : Dbtx3pcModel) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcModel::max(self : Dbtx3pcModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_model_to_string(s : Dbtx3pcModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcModel::to_string(self : Dbtx3pcModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_3pc_layer_make(size : Int) -> Dbtx3pcLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_layer_len(s : Dbtx3pcLayer) -> Int { s.size }
+pub fn Dbtx3pcLayer::len(self : Dbtx3pcLayer) -> Int { self.size }
 
-pub fn db_tx_3pc_layer_get(s : Dbtx3pcLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcLayer::get(self : Dbtx3pcLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_layer_set(s : Dbtx3pcLayer, i : Int, v : Double) -> Dbtx3pcLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcLayer::set(self : Dbtx3pcLayer, i : Int, v : Double) -> Dbtx3pcLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_layer_sum(s : Dbtx3pcLayer) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcLayer::sum(self : Dbtx3pcLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_layer_mean(s : Dbtx3pcLayer) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcLayer::mean(self : Dbtx3pcLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_layer_scale(s : Dbtx3pcLayer, f : Double) -> Dbtx3pcLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcLayer::scale(self : Dbtx3pcLayer, f : Double) -> Dbtx3pcLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_layer_add(a : Dbtx3pcLayer, b : Dbtx3pcLayer) -> Dbtx3pcLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcLayer::add(self : Dbtx3pcLayer, other : Dbtx3pcLayer) -> Dbtx3pcLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_layer_copy(s : Dbtx3pcLayer) -> Dbtx3pcLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcLayer::copy(self : Dbtx3pcLayer) -> Dbtx3pcLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_layer_fill(s : Dbtx3pcLayer, v : Double) -> Dbtx3pcLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcLayer::fill(self : Dbtx3pcLayer, v : Double) -> Dbtx3pcLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_layer_min(s : Dbtx3pcLayer) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcLayer::min(self : Dbtx3pcLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_layer_max(s : Dbtx3pcLayer) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcLayer::max(self : Dbtx3pcLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_layer_to_string(s : Dbtx3pcLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcLayer::to_string(self : Dbtx3pcLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_3pc_buffer_make(size : Int) -> Dbtx3pcBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_buffer_len(s : Dbtx3pcBuffer) -> Int { s.size }
+pub fn Dbtx3pcBuffer::len(self : Dbtx3pcBuffer) -> Int { self.size }
 
-pub fn db_tx_3pc_buffer_get(s : Dbtx3pcBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcBuffer::get(self : Dbtx3pcBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_buffer_set(s : Dbtx3pcBuffer, i : Int, v : Double) -> Dbtx3pcBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcBuffer::set(self : Dbtx3pcBuffer, i : Int, v : Double) -> Dbtx3pcBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_buffer_sum(s : Dbtx3pcBuffer) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcBuffer::sum(self : Dbtx3pcBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_buffer_mean(s : Dbtx3pcBuffer) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcBuffer::mean(self : Dbtx3pcBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_buffer_scale(s : Dbtx3pcBuffer, f : Double) -> Dbtx3pcBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcBuffer::scale(self : Dbtx3pcBuffer, f : Double) -> Dbtx3pcBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_buffer_add(a : Dbtx3pcBuffer, b : Dbtx3pcBuffer) -> Dbtx3pcBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcBuffer::add(self : Dbtx3pcBuffer, other : Dbtx3pcBuffer) -> Dbtx3pcBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_buffer_copy(s : Dbtx3pcBuffer) -> Dbtx3pcBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcBuffer::copy(self : Dbtx3pcBuffer) -> Dbtx3pcBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_buffer_fill(s : Dbtx3pcBuffer, v : Double) -> Dbtx3pcBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcBuffer::fill(self : Dbtx3pcBuffer, v : Double) -> Dbtx3pcBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_buffer_min(s : Dbtx3pcBuffer) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcBuffer::min(self : Dbtx3pcBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_buffer_max(s : Dbtx3pcBuffer) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcBuffer::max(self : Dbtx3pcBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_buffer_to_string(s : Dbtx3pcBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcBuffer::to_string(self : Dbtx3pcBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_3pc_cursor_make(size : Int) -> Dbtx3pcCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_cursor_len(s : Dbtx3pcCursor) -> Int { s.size }
+pub fn Dbtx3pcCursor::len(self : Dbtx3pcCursor) -> Int { self.size }
 
-pub fn db_tx_3pc_cursor_get(s : Dbtx3pcCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcCursor::get(self : Dbtx3pcCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_cursor_set(s : Dbtx3pcCursor, i : Int, v : Double) -> Dbtx3pcCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcCursor::set(self : Dbtx3pcCursor, i : Int, v : Double) -> Dbtx3pcCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cursor_sum(s : Dbtx3pcCursor) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcCursor::sum(self : Dbtx3pcCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_cursor_mean(s : Dbtx3pcCursor) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcCursor::mean(self : Dbtx3pcCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_cursor_scale(s : Dbtx3pcCursor, f : Double) -> Dbtx3pcCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcCursor::scale(self : Dbtx3pcCursor, f : Double) -> Dbtx3pcCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cursor_add(a : Dbtx3pcCursor, b : Dbtx3pcCursor) -> Dbtx3pcCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcCursor::add(self : Dbtx3pcCursor, other : Dbtx3pcCursor) -> Dbtx3pcCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cursor_copy(s : Dbtx3pcCursor) -> Dbtx3pcCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcCursor::copy(self : Dbtx3pcCursor) -> Dbtx3pcCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cursor_fill(s : Dbtx3pcCursor, v : Double) -> Dbtx3pcCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcCursor::fill(self : Dbtx3pcCursor, v : Double) -> Dbtx3pcCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_cursor_min(s : Dbtx3pcCursor) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcCursor::min(self : Dbtx3pcCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_cursor_max(s : Dbtx3pcCursor) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcCursor::max(self : Dbtx3pcCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_cursor_to_string(s : Dbtx3pcCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcCursor::to_string(self : Dbtx3pcCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcView {
@@ -912,45 +912,45 @@ pub fn db_tx_3pc_view_make(size : Int) -> Dbtx3pcView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_view_len(s : Dbtx3pcView) -> Int { s.size }
+pub fn Dbtx3pcView::len(self : Dbtx3pcView) -> Int { self.size }
 
-pub fn db_tx_3pc_view_get(s : Dbtx3pcView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcView::get(self : Dbtx3pcView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_view_set(s : Dbtx3pcView, i : Int, v : Double) -> Dbtx3pcView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcView::set(self : Dbtx3pcView, i : Int, v : Double) -> Dbtx3pcView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_view_sum(s : Dbtx3pcView) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcView::sum(self : Dbtx3pcView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_view_mean(s : Dbtx3pcView) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcView::mean(self : Dbtx3pcView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_view_scale(s : Dbtx3pcView, f : Double) -> Dbtx3pcView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcView::scale(self : Dbtx3pcView, f : Double) -> Dbtx3pcView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_view_add(a : Dbtx3pcView, b : Dbtx3pcView) -> Dbtx3pcView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcView::add(self : Dbtx3pcView, other : Dbtx3pcView) -> Dbtx3pcView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_view_copy(s : Dbtx3pcView) -> Dbtx3pcView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcView::copy(self : Dbtx3pcView) -> Dbtx3pcView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_view_fill(s : Dbtx3pcView, v : Double) -> Dbtx3pcView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcView::fill(self : Dbtx3pcView, v : Double) -> Dbtx3pcView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_view_min(s : Dbtx3pcView) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcView::min(self : Dbtx3pcView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_view_max(s : Dbtx3pcView) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcView::max(self : Dbtx3pcView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_view_to_string(s : Dbtx3pcView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcView::to_string(self : Dbtx3pcView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcRange {
@@ -963,45 +963,45 @@ pub fn db_tx_3pc_range_make(size : Int) -> Dbtx3pcRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_range_len(s : Dbtx3pcRange) -> Int { s.size }
+pub fn Dbtx3pcRange::len(self : Dbtx3pcRange) -> Int { self.size }
 
-pub fn db_tx_3pc_range_get(s : Dbtx3pcRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcRange::get(self : Dbtx3pcRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_range_set(s : Dbtx3pcRange, i : Int, v : Double) -> Dbtx3pcRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcRange::set(self : Dbtx3pcRange, i : Int, v : Double) -> Dbtx3pcRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_range_sum(s : Dbtx3pcRange) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcRange::sum(self : Dbtx3pcRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_range_mean(s : Dbtx3pcRange) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcRange::mean(self : Dbtx3pcRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_range_scale(s : Dbtx3pcRange, f : Double) -> Dbtx3pcRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcRange::scale(self : Dbtx3pcRange, f : Double) -> Dbtx3pcRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_range_add(a : Dbtx3pcRange, b : Dbtx3pcRange) -> Dbtx3pcRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcRange::add(self : Dbtx3pcRange, other : Dbtx3pcRange) -> Dbtx3pcRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_range_copy(s : Dbtx3pcRange) -> Dbtx3pcRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcRange::copy(self : Dbtx3pcRange) -> Dbtx3pcRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_range_fill(s : Dbtx3pcRange, v : Double) -> Dbtx3pcRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcRange::fill(self : Dbtx3pcRange, v : Double) -> Dbtx3pcRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_range_min(s : Dbtx3pcRange) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcRange::min(self : Dbtx3pcRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_range_max(s : Dbtx3pcRange) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcRange::max(self : Dbtx3pcRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_range_to_string(s : Dbtx3pcRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcRange::to_string(self : Dbtx3pcRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx3pcSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_3pc_slice_make(size : Int) -> Dbtx3pcSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_3pc_slice_len(s : Dbtx3pcSlice) -> Int { s.size }
+pub fn Dbtx3pcSlice::len(self : Dbtx3pcSlice) -> Int { self.size }
 
-pub fn db_tx_3pc_slice_get(s : Dbtx3pcSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx3pcSlice::get(self : Dbtx3pcSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_3pc_slice_set(s : Dbtx3pcSlice, i : Int, v : Double) -> Dbtx3pcSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx3pcSlice::set(self : Dbtx3pcSlice, i : Int, v : Double) -> Dbtx3pcSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_slice_sum(s : Dbtx3pcSlice) -> Double { @_common.sum(s.data) }
+pub fn Dbtx3pcSlice::sum(self : Dbtx3pcSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_3pc_slice_mean(s : Dbtx3pcSlice) -> Double { @_common.mean(s.data) }
+pub fn Dbtx3pcSlice::mean(self : Dbtx3pcSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_3pc_slice_scale(s : Dbtx3pcSlice, f : Double) -> Dbtx3pcSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx3pcSlice::scale(self : Dbtx3pcSlice, f : Double) -> Dbtx3pcSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_slice_add(a : Dbtx3pcSlice, b : Dbtx3pcSlice) -> Dbtx3pcSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx3pcSlice::add(self : Dbtx3pcSlice, other : Dbtx3pcSlice) -> Dbtx3pcSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_3pc_slice_copy(s : Dbtx3pcSlice) -> Dbtx3pcSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx3pcSlice::copy(self : Dbtx3pcSlice) -> Dbtx3pcSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_slice_fill(s : Dbtx3pcSlice, v : Double) -> Dbtx3pcSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx3pcSlice::fill(self : Dbtx3pcSlice, v : Double) -> Dbtx3pcSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_3pc_slice_min(s : Dbtx3pcSlice) -> Double { @_common.min(s.data) }
+pub fn Dbtx3pcSlice::min(self : Dbtx3pcSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_3pc_slice_max(s : Dbtx3pcSlice) -> Double { @_common.max(s.data) }
+pub fn Dbtx3pcSlice::max(self : Dbtx3pcSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_3pc_slice_to_string(s : Dbtx3pcSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx3pcSlice::to_string(self : Dbtx3pcSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

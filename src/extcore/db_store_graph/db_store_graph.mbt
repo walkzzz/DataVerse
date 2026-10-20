@@ -351,45 +351,45 @@ pub fn db_store_graph_frame_make(size : Int) -> DbstoregraphFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_frame_len(s : DbstoregraphFrame) -> Int { s.size }
+pub fn DbstoregraphFrame::len(self : DbstoregraphFrame) -> Int { self.size }
 
-pub fn db_store_graph_frame_get(s : DbstoregraphFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphFrame::get(self : DbstoregraphFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_frame_set(s : DbstoregraphFrame, i : Int, v : Double) -> DbstoregraphFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphFrame::set(self : DbstoregraphFrame, i : Int, v : Double) -> DbstoregraphFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_frame_sum(s : DbstoregraphFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphFrame::sum(self : DbstoregraphFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_frame_mean(s : DbstoregraphFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphFrame::mean(self : DbstoregraphFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_frame_scale(s : DbstoregraphFrame, f : Double) -> DbstoregraphFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphFrame::scale(self : DbstoregraphFrame, f : Double) -> DbstoregraphFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_frame_add(a : DbstoregraphFrame, b : DbstoregraphFrame) -> DbstoregraphFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphFrame::add(self : DbstoregraphFrame, other : DbstoregraphFrame) -> DbstoregraphFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_frame_copy(s : DbstoregraphFrame) -> DbstoregraphFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphFrame::copy(self : DbstoregraphFrame) -> DbstoregraphFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_frame_fill(s : DbstoregraphFrame, v : Double) -> DbstoregraphFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphFrame::fill(self : DbstoregraphFrame, v : Double) -> DbstoregraphFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_frame_min(s : DbstoregraphFrame) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphFrame::min(self : DbstoregraphFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_frame_max(s : DbstoregraphFrame) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphFrame::max(self : DbstoregraphFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_frame_to_string(s : DbstoregraphFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphFrame::to_string(self : DbstoregraphFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphTable {
@@ -402,45 +402,45 @@ pub fn db_store_graph_table_make(size : Int) -> DbstoregraphTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_table_len(s : DbstoregraphTable) -> Int { s.size }
+pub fn DbstoregraphTable::len(self : DbstoregraphTable) -> Int { self.size }
 
-pub fn db_store_graph_table_get(s : DbstoregraphTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphTable::get(self : DbstoregraphTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_table_set(s : DbstoregraphTable, i : Int, v : Double) -> DbstoregraphTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphTable::set(self : DbstoregraphTable, i : Int, v : Double) -> DbstoregraphTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_table_sum(s : DbstoregraphTable) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphTable::sum(self : DbstoregraphTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_table_mean(s : DbstoregraphTable) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphTable::mean(self : DbstoregraphTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_table_scale(s : DbstoregraphTable, f : Double) -> DbstoregraphTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphTable::scale(self : DbstoregraphTable, f : Double) -> DbstoregraphTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_table_add(a : DbstoregraphTable, b : DbstoregraphTable) -> DbstoregraphTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphTable::add(self : DbstoregraphTable, other : DbstoregraphTable) -> DbstoregraphTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_table_copy(s : DbstoregraphTable) -> DbstoregraphTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphTable::copy(self : DbstoregraphTable) -> DbstoregraphTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_table_fill(s : DbstoregraphTable, v : Double) -> DbstoregraphTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphTable::fill(self : DbstoregraphTable, v : Double) -> DbstoregraphTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_table_min(s : DbstoregraphTable) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphTable::min(self : DbstoregraphTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_table_max(s : DbstoregraphTable) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphTable::max(self : DbstoregraphTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_table_to_string(s : DbstoregraphTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphTable::to_string(self : DbstoregraphTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_graph_graphn_make(size : Int) -> DbstoregraphGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_graphn_len(s : DbstoregraphGraphN) -> Int { s.size }
+pub fn DbstoregraphGraphN::len(self : DbstoregraphGraphN) -> Int { self.size }
 
-pub fn db_store_graph_graphn_get(s : DbstoregraphGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphGraphN::get(self : DbstoregraphGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_graphn_set(s : DbstoregraphGraphN, i : Int, v : Double) -> DbstoregraphGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphGraphN::set(self : DbstoregraphGraphN, i : Int, v : Double) -> DbstoregraphGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_graphn_sum(s : DbstoregraphGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphGraphN::sum(self : DbstoregraphGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_graphn_mean(s : DbstoregraphGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphGraphN::mean(self : DbstoregraphGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_graphn_scale(s : DbstoregraphGraphN, f : Double) -> DbstoregraphGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphGraphN::scale(self : DbstoregraphGraphN, f : Double) -> DbstoregraphGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_graphn_add(a : DbstoregraphGraphN, b : DbstoregraphGraphN) -> DbstoregraphGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphGraphN::add(self : DbstoregraphGraphN, other : DbstoregraphGraphN) -> DbstoregraphGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_graphn_copy(s : DbstoregraphGraphN) -> DbstoregraphGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphGraphN::copy(self : DbstoregraphGraphN) -> DbstoregraphGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_graphn_fill(s : DbstoregraphGraphN, v : Double) -> DbstoregraphGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphGraphN::fill(self : DbstoregraphGraphN, v : Double) -> DbstoregraphGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_graphn_min(s : DbstoregraphGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphGraphN::min(self : DbstoregraphGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_graphn_max(s : DbstoregraphGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphGraphN::max(self : DbstoregraphGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_graphn_to_string(s : DbstoregraphGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphGraphN::to_string(self : DbstoregraphGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphNode {
@@ -504,45 +504,45 @@ pub fn db_store_graph_node_make(size : Int) -> DbstoregraphNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_node_len(s : DbstoregraphNode) -> Int { s.size }
+pub fn DbstoregraphNode::len(self : DbstoregraphNode) -> Int { self.size }
 
-pub fn db_store_graph_node_get(s : DbstoregraphNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphNode::get(self : DbstoregraphNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_node_set(s : DbstoregraphNode, i : Int, v : Double) -> DbstoregraphNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphNode::set(self : DbstoregraphNode, i : Int, v : Double) -> DbstoregraphNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_node_sum(s : DbstoregraphNode) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphNode::sum(self : DbstoregraphNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_node_mean(s : DbstoregraphNode) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphNode::mean(self : DbstoregraphNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_node_scale(s : DbstoregraphNode, f : Double) -> DbstoregraphNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphNode::scale(self : DbstoregraphNode, f : Double) -> DbstoregraphNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_node_add(a : DbstoregraphNode, b : DbstoregraphNode) -> DbstoregraphNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphNode::add(self : DbstoregraphNode, other : DbstoregraphNode) -> DbstoregraphNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_node_copy(s : DbstoregraphNode) -> DbstoregraphNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphNode::copy(self : DbstoregraphNode) -> DbstoregraphNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_node_fill(s : DbstoregraphNode, v : Double) -> DbstoregraphNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphNode::fill(self : DbstoregraphNode, v : Double) -> DbstoregraphNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_node_min(s : DbstoregraphNode) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphNode::min(self : DbstoregraphNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_node_max(s : DbstoregraphNode) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphNode::max(self : DbstoregraphNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_node_to_string(s : DbstoregraphNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphNode::to_string(self : DbstoregraphNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphEdge {
@@ -555,45 +555,45 @@ pub fn db_store_graph_edge_make(size : Int) -> DbstoregraphEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_edge_len(s : DbstoregraphEdge) -> Int { s.size }
+pub fn DbstoregraphEdge::len(self : DbstoregraphEdge) -> Int { self.size }
 
-pub fn db_store_graph_edge_get(s : DbstoregraphEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphEdge::get(self : DbstoregraphEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_edge_set(s : DbstoregraphEdge, i : Int, v : Double) -> DbstoregraphEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphEdge::set(self : DbstoregraphEdge, i : Int, v : Double) -> DbstoregraphEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_edge_sum(s : DbstoregraphEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphEdge::sum(self : DbstoregraphEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_edge_mean(s : DbstoregraphEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphEdge::mean(self : DbstoregraphEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_edge_scale(s : DbstoregraphEdge, f : Double) -> DbstoregraphEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphEdge::scale(self : DbstoregraphEdge, f : Double) -> DbstoregraphEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_edge_add(a : DbstoregraphEdge, b : DbstoregraphEdge) -> DbstoregraphEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphEdge::add(self : DbstoregraphEdge, other : DbstoregraphEdge) -> DbstoregraphEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_edge_copy(s : DbstoregraphEdge) -> DbstoregraphEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphEdge::copy(self : DbstoregraphEdge) -> DbstoregraphEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_edge_fill(s : DbstoregraphEdge, v : Double) -> DbstoregraphEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphEdge::fill(self : DbstoregraphEdge, v : Double) -> DbstoregraphEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_edge_min(s : DbstoregraphEdge) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphEdge::min(self : DbstoregraphEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_edge_max(s : DbstoregraphEdge) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphEdge::max(self : DbstoregraphEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_edge_to_string(s : DbstoregraphEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphEdge::to_string(self : DbstoregraphEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphPath {
@@ -606,45 +606,45 @@ pub fn db_store_graph_path_make(size : Int) -> DbstoregraphPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_path_len(s : DbstoregraphPath) -> Int { s.size }
+pub fn DbstoregraphPath::len(self : DbstoregraphPath) -> Int { self.size }
 
-pub fn db_store_graph_path_get(s : DbstoregraphPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphPath::get(self : DbstoregraphPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_path_set(s : DbstoregraphPath, i : Int, v : Double) -> DbstoregraphPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphPath::set(self : DbstoregraphPath, i : Int, v : Double) -> DbstoregraphPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_path_sum(s : DbstoregraphPath) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphPath::sum(self : DbstoregraphPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_path_mean(s : DbstoregraphPath) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphPath::mean(self : DbstoregraphPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_path_scale(s : DbstoregraphPath, f : Double) -> DbstoregraphPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphPath::scale(self : DbstoregraphPath, f : Double) -> DbstoregraphPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_path_add(a : DbstoregraphPath, b : DbstoregraphPath) -> DbstoregraphPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphPath::add(self : DbstoregraphPath, other : DbstoregraphPath) -> DbstoregraphPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_path_copy(s : DbstoregraphPath) -> DbstoregraphPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphPath::copy(self : DbstoregraphPath) -> DbstoregraphPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_path_fill(s : DbstoregraphPath, v : Double) -> DbstoregraphPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphPath::fill(self : DbstoregraphPath, v : Double) -> DbstoregraphPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_path_min(s : DbstoregraphPath) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphPath::min(self : DbstoregraphPath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_path_max(s : DbstoregraphPath) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphPath::max(self : DbstoregraphPath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_path_to_string(s : DbstoregraphPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphPath::to_string(self : DbstoregraphPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphCluster {
@@ -657,45 +657,45 @@ pub fn db_store_graph_cluster_make(size : Int) -> DbstoregraphCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_cluster_len(s : DbstoregraphCluster) -> Int { s.size }
+pub fn DbstoregraphCluster::len(self : DbstoregraphCluster) -> Int { self.size }
 
-pub fn db_store_graph_cluster_get(s : DbstoregraphCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphCluster::get(self : DbstoregraphCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_cluster_set(s : DbstoregraphCluster, i : Int, v : Double) -> DbstoregraphCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphCluster::set(self : DbstoregraphCluster, i : Int, v : Double) -> DbstoregraphCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cluster_sum(s : DbstoregraphCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphCluster::sum(self : DbstoregraphCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_cluster_mean(s : DbstoregraphCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphCluster::mean(self : DbstoregraphCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_cluster_scale(s : DbstoregraphCluster, f : Double) -> DbstoregraphCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphCluster::scale(self : DbstoregraphCluster, f : Double) -> DbstoregraphCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cluster_add(a : DbstoregraphCluster, b : DbstoregraphCluster) -> DbstoregraphCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphCluster::add(self : DbstoregraphCluster, other : DbstoregraphCluster) -> DbstoregraphCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_cluster_copy(s : DbstoregraphCluster) -> DbstoregraphCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphCluster::copy(self : DbstoregraphCluster) -> DbstoregraphCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cluster_fill(s : DbstoregraphCluster, v : Double) -> DbstoregraphCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphCluster::fill(self : DbstoregraphCluster, v : Double) -> DbstoregraphCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cluster_min(s : DbstoregraphCluster) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphCluster::min(self : DbstoregraphCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_cluster_max(s : DbstoregraphCluster) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphCluster::max(self : DbstoregraphCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_cluster_to_string(s : DbstoregraphCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphCluster::to_string(self : DbstoregraphCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphModel {
@@ -708,45 +708,45 @@ pub fn db_store_graph_model_make(size : Int) -> DbstoregraphModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_model_len(s : DbstoregraphModel) -> Int { s.size }
+pub fn DbstoregraphModel::len(self : DbstoregraphModel) -> Int { self.size }
 
-pub fn db_store_graph_model_get(s : DbstoregraphModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphModel::get(self : DbstoregraphModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_model_set(s : DbstoregraphModel, i : Int, v : Double) -> DbstoregraphModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphModel::set(self : DbstoregraphModel, i : Int, v : Double) -> DbstoregraphModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_model_sum(s : DbstoregraphModel) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphModel::sum(self : DbstoregraphModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_model_mean(s : DbstoregraphModel) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphModel::mean(self : DbstoregraphModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_model_scale(s : DbstoregraphModel, f : Double) -> DbstoregraphModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphModel::scale(self : DbstoregraphModel, f : Double) -> DbstoregraphModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_model_add(a : DbstoregraphModel, b : DbstoregraphModel) -> DbstoregraphModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphModel::add(self : DbstoregraphModel, other : DbstoregraphModel) -> DbstoregraphModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_model_copy(s : DbstoregraphModel) -> DbstoregraphModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphModel::copy(self : DbstoregraphModel) -> DbstoregraphModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_model_fill(s : DbstoregraphModel, v : Double) -> DbstoregraphModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphModel::fill(self : DbstoregraphModel, v : Double) -> DbstoregraphModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_model_min(s : DbstoregraphModel) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphModel::min(self : DbstoregraphModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_model_max(s : DbstoregraphModel) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphModel::max(self : DbstoregraphModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_model_to_string(s : DbstoregraphModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphModel::to_string(self : DbstoregraphModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphLayer {
@@ -759,45 +759,45 @@ pub fn db_store_graph_layer_make(size : Int) -> DbstoregraphLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_layer_len(s : DbstoregraphLayer) -> Int { s.size }
+pub fn DbstoregraphLayer::len(self : DbstoregraphLayer) -> Int { self.size }
 
-pub fn db_store_graph_layer_get(s : DbstoregraphLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphLayer::get(self : DbstoregraphLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_layer_set(s : DbstoregraphLayer, i : Int, v : Double) -> DbstoregraphLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphLayer::set(self : DbstoregraphLayer, i : Int, v : Double) -> DbstoregraphLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_layer_sum(s : DbstoregraphLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphLayer::sum(self : DbstoregraphLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_layer_mean(s : DbstoregraphLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphLayer::mean(self : DbstoregraphLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_layer_scale(s : DbstoregraphLayer, f : Double) -> DbstoregraphLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphLayer::scale(self : DbstoregraphLayer, f : Double) -> DbstoregraphLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_layer_add(a : DbstoregraphLayer, b : DbstoregraphLayer) -> DbstoregraphLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphLayer::add(self : DbstoregraphLayer, other : DbstoregraphLayer) -> DbstoregraphLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_layer_copy(s : DbstoregraphLayer) -> DbstoregraphLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphLayer::copy(self : DbstoregraphLayer) -> DbstoregraphLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_layer_fill(s : DbstoregraphLayer, v : Double) -> DbstoregraphLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphLayer::fill(self : DbstoregraphLayer, v : Double) -> DbstoregraphLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_layer_min(s : DbstoregraphLayer) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphLayer::min(self : DbstoregraphLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_layer_max(s : DbstoregraphLayer) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphLayer::max(self : DbstoregraphLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_layer_to_string(s : DbstoregraphLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphLayer::to_string(self : DbstoregraphLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_graph_buffer_make(size : Int) -> DbstoregraphBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_buffer_len(s : DbstoregraphBuffer) -> Int { s.size }
+pub fn DbstoregraphBuffer::len(self : DbstoregraphBuffer) -> Int { self.size }
 
-pub fn db_store_graph_buffer_get(s : DbstoregraphBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphBuffer::get(self : DbstoregraphBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_buffer_set(s : DbstoregraphBuffer, i : Int, v : Double) -> DbstoregraphBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphBuffer::set(self : DbstoregraphBuffer, i : Int, v : Double) -> DbstoregraphBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_buffer_sum(s : DbstoregraphBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphBuffer::sum(self : DbstoregraphBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_buffer_mean(s : DbstoregraphBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphBuffer::mean(self : DbstoregraphBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_buffer_scale(s : DbstoregraphBuffer, f : Double) -> DbstoregraphBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphBuffer::scale(self : DbstoregraphBuffer, f : Double) -> DbstoregraphBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_buffer_add(a : DbstoregraphBuffer, b : DbstoregraphBuffer) -> DbstoregraphBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphBuffer::add(self : DbstoregraphBuffer, other : DbstoregraphBuffer) -> DbstoregraphBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_buffer_copy(s : DbstoregraphBuffer) -> DbstoregraphBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphBuffer::copy(self : DbstoregraphBuffer) -> DbstoregraphBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_buffer_fill(s : DbstoregraphBuffer, v : Double) -> DbstoregraphBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphBuffer::fill(self : DbstoregraphBuffer, v : Double) -> DbstoregraphBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_buffer_min(s : DbstoregraphBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphBuffer::min(self : DbstoregraphBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_buffer_max(s : DbstoregraphBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphBuffer::max(self : DbstoregraphBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_buffer_to_string(s : DbstoregraphBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphBuffer::to_string(self : DbstoregraphBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphCursor {
@@ -861,45 +861,45 @@ pub fn db_store_graph_cursor_make(size : Int) -> DbstoregraphCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_cursor_len(s : DbstoregraphCursor) -> Int { s.size }
+pub fn DbstoregraphCursor::len(self : DbstoregraphCursor) -> Int { self.size }
 
-pub fn db_store_graph_cursor_get(s : DbstoregraphCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphCursor::get(self : DbstoregraphCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_cursor_set(s : DbstoregraphCursor, i : Int, v : Double) -> DbstoregraphCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphCursor::set(self : DbstoregraphCursor, i : Int, v : Double) -> DbstoregraphCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cursor_sum(s : DbstoregraphCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphCursor::sum(self : DbstoregraphCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_cursor_mean(s : DbstoregraphCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphCursor::mean(self : DbstoregraphCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_cursor_scale(s : DbstoregraphCursor, f : Double) -> DbstoregraphCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphCursor::scale(self : DbstoregraphCursor, f : Double) -> DbstoregraphCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cursor_add(a : DbstoregraphCursor, b : DbstoregraphCursor) -> DbstoregraphCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphCursor::add(self : DbstoregraphCursor, other : DbstoregraphCursor) -> DbstoregraphCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_cursor_copy(s : DbstoregraphCursor) -> DbstoregraphCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphCursor::copy(self : DbstoregraphCursor) -> DbstoregraphCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cursor_fill(s : DbstoregraphCursor, v : Double) -> DbstoregraphCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphCursor::fill(self : DbstoregraphCursor, v : Double) -> DbstoregraphCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_cursor_min(s : DbstoregraphCursor) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphCursor::min(self : DbstoregraphCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_cursor_max(s : DbstoregraphCursor) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphCursor::max(self : DbstoregraphCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_cursor_to_string(s : DbstoregraphCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphCursor::to_string(self : DbstoregraphCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphView {
@@ -912,45 +912,45 @@ pub fn db_store_graph_view_make(size : Int) -> DbstoregraphView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_view_len(s : DbstoregraphView) -> Int { s.size }
+pub fn DbstoregraphView::len(self : DbstoregraphView) -> Int { self.size }
 
-pub fn db_store_graph_view_get(s : DbstoregraphView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphView::get(self : DbstoregraphView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_view_set(s : DbstoregraphView, i : Int, v : Double) -> DbstoregraphView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphView::set(self : DbstoregraphView, i : Int, v : Double) -> DbstoregraphView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_view_sum(s : DbstoregraphView) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphView::sum(self : DbstoregraphView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_view_mean(s : DbstoregraphView) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphView::mean(self : DbstoregraphView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_view_scale(s : DbstoregraphView, f : Double) -> DbstoregraphView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphView::scale(self : DbstoregraphView, f : Double) -> DbstoregraphView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_view_add(a : DbstoregraphView, b : DbstoregraphView) -> DbstoregraphView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphView::add(self : DbstoregraphView, other : DbstoregraphView) -> DbstoregraphView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_view_copy(s : DbstoregraphView) -> DbstoregraphView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphView::copy(self : DbstoregraphView) -> DbstoregraphView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_view_fill(s : DbstoregraphView, v : Double) -> DbstoregraphView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphView::fill(self : DbstoregraphView, v : Double) -> DbstoregraphView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_view_min(s : DbstoregraphView) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphView::min(self : DbstoregraphView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_view_max(s : DbstoregraphView) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphView::max(self : DbstoregraphView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_view_to_string(s : DbstoregraphView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphView::to_string(self : DbstoregraphView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphRange {
@@ -963,45 +963,45 @@ pub fn db_store_graph_range_make(size : Int) -> DbstoregraphRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_range_len(s : DbstoregraphRange) -> Int { s.size }
+pub fn DbstoregraphRange::len(self : DbstoregraphRange) -> Int { self.size }
 
-pub fn db_store_graph_range_get(s : DbstoregraphRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphRange::get(self : DbstoregraphRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_range_set(s : DbstoregraphRange, i : Int, v : Double) -> DbstoregraphRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphRange::set(self : DbstoregraphRange, i : Int, v : Double) -> DbstoregraphRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_range_sum(s : DbstoregraphRange) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphRange::sum(self : DbstoregraphRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_range_mean(s : DbstoregraphRange) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphRange::mean(self : DbstoregraphRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_range_scale(s : DbstoregraphRange, f : Double) -> DbstoregraphRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphRange::scale(self : DbstoregraphRange, f : Double) -> DbstoregraphRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_range_add(a : DbstoregraphRange, b : DbstoregraphRange) -> DbstoregraphRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphRange::add(self : DbstoregraphRange, other : DbstoregraphRange) -> DbstoregraphRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_range_copy(s : DbstoregraphRange) -> DbstoregraphRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphRange::copy(self : DbstoregraphRange) -> DbstoregraphRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_range_fill(s : DbstoregraphRange, v : Double) -> DbstoregraphRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphRange::fill(self : DbstoregraphRange, v : Double) -> DbstoregraphRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_range_min(s : DbstoregraphRange) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphRange::min(self : DbstoregraphRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_range_max(s : DbstoregraphRange) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphRange::max(self : DbstoregraphRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_range_to_string(s : DbstoregraphRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphRange::to_string(self : DbstoregraphRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoregraphSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_graph_slice_make(size : Int) -> DbstoregraphSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_graph_slice_len(s : DbstoregraphSlice) -> Int { s.size }
+pub fn DbstoregraphSlice::len(self : DbstoregraphSlice) -> Int { self.size }
 
-pub fn db_store_graph_slice_get(s : DbstoregraphSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoregraphSlice::get(self : DbstoregraphSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_graph_slice_set(s : DbstoregraphSlice, i : Int, v : Double) -> DbstoregraphSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoregraphSlice::set(self : DbstoregraphSlice, i : Int, v : Double) -> DbstoregraphSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_slice_sum(s : DbstoregraphSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstoregraphSlice::sum(self : DbstoregraphSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_graph_slice_mean(s : DbstoregraphSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstoregraphSlice::mean(self : DbstoregraphSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_graph_slice_scale(s : DbstoregraphSlice, f : Double) -> DbstoregraphSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoregraphSlice::scale(self : DbstoregraphSlice, f : Double) -> DbstoregraphSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_slice_add(a : DbstoregraphSlice, b : DbstoregraphSlice) -> DbstoregraphSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoregraphSlice::add(self : DbstoregraphSlice, other : DbstoregraphSlice) -> DbstoregraphSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_graph_slice_copy(s : DbstoregraphSlice) -> DbstoregraphSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoregraphSlice::copy(self : DbstoregraphSlice) -> DbstoregraphSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_slice_fill(s : DbstoregraphSlice, v : Double) -> DbstoregraphSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoregraphSlice::fill(self : DbstoregraphSlice, v : Double) -> DbstoregraphSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_graph_slice_min(s : DbstoregraphSlice) -> Double { @_common.min(s.data) }
+pub fn DbstoregraphSlice::min(self : DbstoregraphSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_graph_slice_max(s : DbstoregraphSlice) -> Double { @_common.max(s.data) }
+pub fn DbstoregraphSlice::max(self : DbstoregraphSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_graph_slice_to_string(s : DbstoregraphSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoregraphSlice::to_string(self : DbstoregraphSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

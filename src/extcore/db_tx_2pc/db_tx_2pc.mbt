@@ -351,45 +351,45 @@ pub fn db_tx_2pc_frame_make(size : Int) -> Dbtx2pcFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_frame_len(s : Dbtx2pcFrame) -> Int { s.size }
+pub fn Dbtx2pcFrame::len(self : Dbtx2pcFrame) -> Int { self.size }
 
-pub fn db_tx_2pc_frame_get(s : Dbtx2pcFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcFrame::get(self : Dbtx2pcFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_frame_set(s : Dbtx2pcFrame, i : Int, v : Double) -> Dbtx2pcFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcFrame::set(self : Dbtx2pcFrame, i : Int, v : Double) -> Dbtx2pcFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_frame_sum(s : Dbtx2pcFrame) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcFrame::sum(self : Dbtx2pcFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_frame_mean(s : Dbtx2pcFrame) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcFrame::mean(self : Dbtx2pcFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_frame_scale(s : Dbtx2pcFrame, f : Double) -> Dbtx2pcFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcFrame::scale(self : Dbtx2pcFrame, f : Double) -> Dbtx2pcFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_frame_add(a : Dbtx2pcFrame, b : Dbtx2pcFrame) -> Dbtx2pcFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcFrame::add(self : Dbtx2pcFrame, other : Dbtx2pcFrame) -> Dbtx2pcFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_frame_copy(s : Dbtx2pcFrame) -> Dbtx2pcFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcFrame::copy(self : Dbtx2pcFrame) -> Dbtx2pcFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_frame_fill(s : Dbtx2pcFrame, v : Double) -> Dbtx2pcFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcFrame::fill(self : Dbtx2pcFrame, v : Double) -> Dbtx2pcFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_frame_min(s : Dbtx2pcFrame) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcFrame::min(self : Dbtx2pcFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_frame_max(s : Dbtx2pcFrame) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcFrame::max(self : Dbtx2pcFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_frame_to_string(s : Dbtx2pcFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcFrame::to_string(self : Dbtx2pcFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcTable {
@@ -402,45 +402,45 @@ pub fn db_tx_2pc_table_make(size : Int) -> Dbtx2pcTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_table_len(s : Dbtx2pcTable) -> Int { s.size }
+pub fn Dbtx2pcTable::len(self : Dbtx2pcTable) -> Int { self.size }
 
-pub fn db_tx_2pc_table_get(s : Dbtx2pcTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcTable::get(self : Dbtx2pcTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_table_set(s : Dbtx2pcTable, i : Int, v : Double) -> Dbtx2pcTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcTable::set(self : Dbtx2pcTable, i : Int, v : Double) -> Dbtx2pcTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_table_sum(s : Dbtx2pcTable) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcTable::sum(self : Dbtx2pcTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_table_mean(s : Dbtx2pcTable) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcTable::mean(self : Dbtx2pcTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_table_scale(s : Dbtx2pcTable, f : Double) -> Dbtx2pcTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcTable::scale(self : Dbtx2pcTable, f : Double) -> Dbtx2pcTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_table_add(a : Dbtx2pcTable, b : Dbtx2pcTable) -> Dbtx2pcTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcTable::add(self : Dbtx2pcTable, other : Dbtx2pcTable) -> Dbtx2pcTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_table_copy(s : Dbtx2pcTable) -> Dbtx2pcTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcTable::copy(self : Dbtx2pcTable) -> Dbtx2pcTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_table_fill(s : Dbtx2pcTable, v : Double) -> Dbtx2pcTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcTable::fill(self : Dbtx2pcTable, v : Double) -> Dbtx2pcTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_table_min(s : Dbtx2pcTable) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcTable::min(self : Dbtx2pcTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_table_max(s : Dbtx2pcTable) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcTable::max(self : Dbtx2pcTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_table_to_string(s : Dbtx2pcTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcTable::to_string(self : Dbtx2pcTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_2pc_graphn_make(size : Int) -> Dbtx2pcGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_graphn_len(s : Dbtx2pcGraphN) -> Int { s.size }
+pub fn Dbtx2pcGraphN::len(self : Dbtx2pcGraphN) -> Int { self.size }
 
-pub fn db_tx_2pc_graphn_get(s : Dbtx2pcGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcGraphN::get(self : Dbtx2pcGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_graphn_set(s : Dbtx2pcGraphN, i : Int, v : Double) -> Dbtx2pcGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcGraphN::set(self : Dbtx2pcGraphN, i : Int, v : Double) -> Dbtx2pcGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_graphn_sum(s : Dbtx2pcGraphN) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcGraphN::sum(self : Dbtx2pcGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_graphn_mean(s : Dbtx2pcGraphN) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcGraphN::mean(self : Dbtx2pcGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_graphn_scale(s : Dbtx2pcGraphN, f : Double) -> Dbtx2pcGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcGraphN::scale(self : Dbtx2pcGraphN, f : Double) -> Dbtx2pcGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_graphn_add(a : Dbtx2pcGraphN, b : Dbtx2pcGraphN) -> Dbtx2pcGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcGraphN::add(self : Dbtx2pcGraphN, other : Dbtx2pcGraphN) -> Dbtx2pcGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_graphn_copy(s : Dbtx2pcGraphN) -> Dbtx2pcGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcGraphN::copy(self : Dbtx2pcGraphN) -> Dbtx2pcGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_graphn_fill(s : Dbtx2pcGraphN, v : Double) -> Dbtx2pcGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcGraphN::fill(self : Dbtx2pcGraphN, v : Double) -> Dbtx2pcGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_graphn_min(s : Dbtx2pcGraphN) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcGraphN::min(self : Dbtx2pcGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_graphn_max(s : Dbtx2pcGraphN) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcGraphN::max(self : Dbtx2pcGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_graphn_to_string(s : Dbtx2pcGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcGraphN::to_string(self : Dbtx2pcGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcNode {
@@ -504,45 +504,45 @@ pub fn db_tx_2pc_node_make(size : Int) -> Dbtx2pcNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_node_len(s : Dbtx2pcNode) -> Int { s.size }
+pub fn Dbtx2pcNode::len(self : Dbtx2pcNode) -> Int { self.size }
 
-pub fn db_tx_2pc_node_get(s : Dbtx2pcNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcNode::get(self : Dbtx2pcNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_node_set(s : Dbtx2pcNode, i : Int, v : Double) -> Dbtx2pcNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcNode::set(self : Dbtx2pcNode, i : Int, v : Double) -> Dbtx2pcNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_node_sum(s : Dbtx2pcNode) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcNode::sum(self : Dbtx2pcNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_node_mean(s : Dbtx2pcNode) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcNode::mean(self : Dbtx2pcNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_node_scale(s : Dbtx2pcNode, f : Double) -> Dbtx2pcNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcNode::scale(self : Dbtx2pcNode, f : Double) -> Dbtx2pcNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_node_add(a : Dbtx2pcNode, b : Dbtx2pcNode) -> Dbtx2pcNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcNode::add(self : Dbtx2pcNode, other : Dbtx2pcNode) -> Dbtx2pcNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_node_copy(s : Dbtx2pcNode) -> Dbtx2pcNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcNode::copy(self : Dbtx2pcNode) -> Dbtx2pcNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_node_fill(s : Dbtx2pcNode, v : Double) -> Dbtx2pcNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcNode::fill(self : Dbtx2pcNode, v : Double) -> Dbtx2pcNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_node_min(s : Dbtx2pcNode) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcNode::min(self : Dbtx2pcNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_node_max(s : Dbtx2pcNode) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcNode::max(self : Dbtx2pcNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_node_to_string(s : Dbtx2pcNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcNode::to_string(self : Dbtx2pcNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_2pc_edge_make(size : Int) -> Dbtx2pcEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_edge_len(s : Dbtx2pcEdge) -> Int { s.size }
+pub fn Dbtx2pcEdge::len(self : Dbtx2pcEdge) -> Int { self.size }
 
-pub fn db_tx_2pc_edge_get(s : Dbtx2pcEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcEdge::get(self : Dbtx2pcEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_edge_set(s : Dbtx2pcEdge, i : Int, v : Double) -> Dbtx2pcEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcEdge::set(self : Dbtx2pcEdge, i : Int, v : Double) -> Dbtx2pcEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_edge_sum(s : Dbtx2pcEdge) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcEdge::sum(self : Dbtx2pcEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_edge_mean(s : Dbtx2pcEdge) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcEdge::mean(self : Dbtx2pcEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_edge_scale(s : Dbtx2pcEdge, f : Double) -> Dbtx2pcEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcEdge::scale(self : Dbtx2pcEdge, f : Double) -> Dbtx2pcEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_edge_add(a : Dbtx2pcEdge, b : Dbtx2pcEdge) -> Dbtx2pcEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcEdge::add(self : Dbtx2pcEdge, other : Dbtx2pcEdge) -> Dbtx2pcEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_edge_copy(s : Dbtx2pcEdge) -> Dbtx2pcEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcEdge::copy(self : Dbtx2pcEdge) -> Dbtx2pcEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_edge_fill(s : Dbtx2pcEdge, v : Double) -> Dbtx2pcEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcEdge::fill(self : Dbtx2pcEdge, v : Double) -> Dbtx2pcEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_edge_min(s : Dbtx2pcEdge) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcEdge::min(self : Dbtx2pcEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_edge_max(s : Dbtx2pcEdge) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcEdge::max(self : Dbtx2pcEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_edge_to_string(s : Dbtx2pcEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcEdge::to_string(self : Dbtx2pcEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcPath {
@@ -606,45 +606,45 @@ pub fn db_tx_2pc_path_make(size : Int) -> Dbtx2pcPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_path_len(s : Dbtx2pcPath) -> Int { s.size }
+pub fn Dbtx2pcPath::len(self : Dbtx2pcPath) -> Int { self.size }
 
-pub fn db_tx_2pc_path_get(s : Dbtx2pcPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcPath::get(self : Dbtx2pcPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_path_set(s : Dbtx2pcPath, i : Int, v : Double) -> Dbtx2pcPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcPath::set(self : Dbtx2pcPath, i : Int, v : Double) -> Dbtx2pcPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_path_sum(s : Dbtx2pcPath) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcPath::sum(self : Dbtx2pcPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_path_mean(s : Dbtx2pcPath) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcPath::mean(self : Dbtx2pcPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_path_scale(s : Dbtx2pcPath, f : Double) -> Dbtx2pcPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcPath::scale(self : Dbtx2pcPath, f : Double) -> Dbtx2pcPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_path_add(a : Dbtx2pcPath, b : Dbtx2pcPath) -> Dbtx2pcPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcPath::add(self : Dbtx2pcPath, other : Dbtx2pcPath) -> Dbtx2pcPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_path_copy(s : Dbtx2pcPath) -> Dbtx2pcPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcPath::copy(self : Dbtx2pcPath) -> Dbtx2pcPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_path_fill(s : Dbtx2pcPath, v : Double) -> Dbtx2pcPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcPath::fill(self : Dbtx2pcPath, v : Double) -> Dbtx2pcPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_path_min(s : Dbtx2pcPath) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcPath::min(self : Dbtx2pcPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_path_max(s : Dbtx2pcPath) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcPath::max(self : Dbtx2pcPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_path_to_string(s : Dbtx2pcPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcPath::to_string(self : Dbtx2pcPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_2pc_cluster_make(size : Int) -> Dbtx2pcCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_cluster_len(s : Dbtx2pcCluster) -> Int { s.size }
+pub fn Dbtx2pcCluster::len(self : Dbtx2pcCluster) -> Int { self.size }
 
-pub fn db_tx_2pc_cluster_get(s : Dbtx2pcCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcCluster::get(self : Dbtx2pcCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_cluster_set(s : Dbtx2pcCluster, i : Int, v : Double) -> Dbtx2pcCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcCluster::set(self : Dbtx2pcCluster, i : Int, v : Double) -> Dbtx2pcCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cluster_sum(s : Dbtx2pcCluster) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcCluster::sum(self : Dbtx2pcCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_cluster_mean(s : Dbtx2pcCluster) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcCluster::mean(self : Dbtx2pcCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_cluster_scale(s : Dbtx2pcCluster, f : Double) -> Dbtx2pcCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcCluster::scale(self : Dbtx2pcCluster, f : Double) -> Dbtx2pcCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cluster_add(a : Dbtx2pcCluster, b : Dbtx2pcCluster) -> Dbtx2pcCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcCluster::add(self : Dbtx2pcCluster, other : Dbtx2pcCluster) -> Dbtx2pcCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cluster_copy(s : Dbtx2pcCluster) -> Dbtx2pcCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcCluster::copy(self : Dbtx2pcCluster) -> Dbtx2pcCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cluster_fill(s : Dbtx2pcCluster, v : Double) -> Dbtx2pcCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcCluster::fill(self : Dbtx2pcCluster, v : Double) -> Dbtx2pcCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cluster_min(s : Dbtx2pcCluster) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcCluster::min(self : Dbtx2pcCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_cluster_max(s : Dbtx2pcCluster) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcCluster::max(self : Dbtx2pcCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_cluster_to_string(s : Dbtx2pcCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcCluster::to_string(self : Dbtx2pcCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcModel {
@@ -708,45 +708,45 @@ pub fn db_tx_2pc_model_make(size : Int) -> Dbtx2pcModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_model_len(s : Dbtx2pcModel) -> Int { s.size }
+pub fn Dbtx2pcModel::len(self : Dbtx2pcModel) -> Int { self.size }
 
-pub fn db_tx_2pc_model_get(s : Dbtx2pcModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcModel::get(self : Dbtx2pcModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_model_set(s : Dbtx2pcModel, i : Int, v : Double) -> Dbtx2pcModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcModel::set(self : Dbtx2pcModel, i : Int, v : Double) -> Dbtx2pcModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_model_sum(s : Dbtx2pcModel) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcModel::sum(self : Dbtx2pcModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_model_mean(s : Dbtx2pcModel) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcModel::mean(self : Dbtx2pcModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_model_scale(s : Dbtx2pcModel, f : Double) -> Dbtx2pcModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcModel::scale(self : Dbtx2pcModel, f : Double) -> Dbtx2pcModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_model_add(a : Dbtx2pcModel, b : Dbtx2pcModel) -> Dbtx2pcModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcModel::add(self : Dbtx2pcModel, other : Dbtx2pcModel) -> Dbtx2pcModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_model_copy(s : Dbtx2pcModel) -> Dbtx2pcModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcModel::copy(self : Dbtx2pcModel) -> Dbtx2pcModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_model_fill(s : Dbtx2pcModel, v : Double) -> Dbtx2pcModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcModel::fill(self : Dbtx2pcModel, v : Double) -> Dbtx2pcModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_model_min(s : Dbtx2pcModel) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcModel::min(self : Dbtx2pcModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_model_max(s : Dbtx2pcModel) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcModel::max(self : Dbtx2pcModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_model_to_string(s : Dbtx2pcModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcModel::to_string(self : Dbtx2pcModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_2pc_layer_make(size : Int) -> Dbtx2pcLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_layer_len(s : Dbtx2pcLayer) -> Int { s.size }
+pub fn Dbtx2pcLayer::len(self : Dbtx2pcLayer) -> Int { self.size }
 
-pub fn db_tx_2pc_layer_get(s : Dbtx2pcLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcLayer::get(self : Dbtx2pcLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_layer_set(s : Dbtx2pcLayer, i : Int, v : Double) -> Dbtx2pcLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcLayer::set(self : Dbtx2pcLayer, i : Int, v : Double) -> Dbtx2pcLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_layer_sum(s : Dbtx2pcLayer) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcLayer::sum(self : Dbtx2pcLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_layer_mean(s : Dbtx2pcLayer) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcLayer::mean(self : Dbtx2pcLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_layer_scale(s : Dbtx2pcLayer, f : Double) -> Dbtx2pcLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcLayer::scale(self : Dbtx2pcLayer, f : Double) -> Dbtx2pcLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_layer_add(a : Dbtx2pcLayer, b : Dbtx2pcLayer) -> Dbtx2pcLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcLayer::add(self : Dbtx2pcLayer, other : Dbtx2pcLayer) -> Dbtx2pcLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_layer_copy(s : Dbtx2pcLayer) -> Dbtx2pcLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcLayer::copy(self : Dbtx2pcLayer) -> Dbtx2pcLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_layer_fill(s : Dbtx2pcLayer, v : Double) -> Dbtx2pcLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcLayer::fill(self : Dbtx2pcLayer, v : Double) -> Dbtx2pcLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_layer_min(s : Dbtx2pcLayer) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcLayer::min(self : Dbtx2pcLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_layer_max(s : Dbtx2pcLayer) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcLayer::max(self : Dbtx2pcLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_layer_to_string(s : Dbtx2pcLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcLayer::to_string(self : Dbtx2pcLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_2pc_buffer_make(size : Int) -> Dbtx2pcBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_buffer_len(s : Dbtx2pcBuffer) -> Int { s.size }
+pub fn Dbtx2pcBuffer::len(self : Dbtx2pcBuffer) -> Int { self.size }
 
-pub fn db_tx_2pc_buffer_get(s : Dbtx2pcBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcBuffer::get(self : Dbtx2pcBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_buffer_set(s : Dbtx2pcBuffer, i : Int, v : Double) -> Dbtx2pcBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcBuffer::set(self : Dbtx2pcBuffer, i : Int, v : Double) -> Dbtx2pcBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_buffer_sum(s : Dbtx2pcBuffer) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcBuffer::sum(self : Dbtx2pcBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_buffer_mean(s : Dbtx2pcBuffer) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcBuffer::mean(self : Dbtx2pcBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_buffer_scale(s : Dbtx2pcBuffer, f : Double) -> Dbtx2pcBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcBuffer::scale(self : Dbtx2pcBuffer, f : Double) -> Dbtx2pcBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_buffer_add(a : Dbtx2pcBuffer, b : Dbtx2pcBuffer) -> Dbtx2pcBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcBuffer::add(self : Dbtx2pcBuffer, other : Dbtx2pcBuffer) -> Dbtx2pcBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_buffer_copy(s : Dbtx2pcBuffer) -> Dbtx2pcBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcBuffer::copy(self : Dbtx2pcBuffer) -> Dbtx2pcBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_buffer_fill(s : Dbtx2pcBuffer, v : Double) -> Dbtx2pcBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcBuffer::fill(self : Dbtx2pcBuffer, v : Double) -> Dbtx2pcBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_buffer_min(s : Dbtx2pcBuffer) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcBuffer::min(self : Dbtx2pcBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_buffer_max(s : Dbtx2pcBuffer) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcBuffer::max(self : Dbtx2pcBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_buffer_to_string(s : Dbtx2pcBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcBuffer::to_string(self : Dbtx2pcBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_2pc_cursor_make(size : Int) -> Dbtx2pcCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_cursor_len(s : Dbtx2pcCursor) -> Int { s.size }
+pub fn Dbtx2pcCursor::len(self : Dbtx2pcCursor) -> Int { self.size }
 
-pub fn db_tx_2pc_cursor_get(s : Dbtx2pcCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcCursor::get(self : Dbtx2pcCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_cursor_set(s : Dbtx2pcCursor, i : Int, v : Double) -> Dbtx2pcCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcCursor::set(self : Dbtx2pcCursor, i : Int, v : Double) -> Dbtx2pcCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cursor_sum(s : Dbtx2pcCursor) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcCursor::sum(self : Dbtx2pcCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_cursor_mean(s : Dbtx2pcCursor) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcCursor::mean(self : Dbtx2pcCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_cursor_scale(s : Dbtx2pcCursor, f : Double) -> Dbtx2pcCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcCursor::scale(self : Dbtx2pcCursor, f : Double) -> Dbtx2pcCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cursor_add(a : Dbtx2pcCursor, b : Dbtx2pcCursor) -> Dbtx2pcCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcCursor::add(self : Dbtx2pcCursor, other : Dbtx2pcCursor) -> Dbtx2pcCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cursor_copy(s : Dbtx2pcCursor) -> Dbtx2pcCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcCursor::copy(self : Dbtx2pcCursor) -> Dbtx2pcCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cursor_fill(s : Dbtx2pcCursor, v : Double) -> Dbtx2pcCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcCursor::fill(self : Dbtx2pcCursor, v : Double) -> Dbtx2pcCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_cursor_min(s : Dbtx2pcCursor) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcCursor::min(self : Dbtx2pcCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_cursor_max(s : Dbtx2pcCursor) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcCursor::max(self : Dbtx2pcCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_cursor_to_string(s : Dbtx2pcCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcCursor::to_string(self : Dbtx2pcCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcView {
@@ -912,45 +912,45 @@ pub fn db_tx_2pc_view_make(size : Int) -> Dbtx2pcView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_view_len(s : Dbtx2pcView) -> Int { s.size }
+pub fn Dbtx2pcView::len(self : Dbtx2pcView) -> Int { self.size }
 
-pub fn db_tx_2pc_view_get(s : Dbtx2pcView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcView::get(self : Dbtx2pcView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_view_set(s : Dbtx2pcView, i : Int, v : Double) -> Dbtx2pcView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcView::set(self : Dbtx2pcView, i : Int, v : Double) -> Dbtx2pcView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_view_sum(s : Dbtx2pcView) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcView::sum(self : Dbtx2pcView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_view_mean(s : Dbtx2pcView) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcView::mean(self : Dbtx2pcView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_view_scale(s : Dbtx2pcView, f : Double) -> Dbtx2pcView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcView::scale(self : Dbtx2pcView, f : Double) -> Dbtx2pcView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_view_add(a : Dbtx2pcView, b : Dbtx2pcView) -> Dbtx2pcView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcView::add(self : Dbtx2pcView, other : Dbtx2pcView) -> Dbtx2pcView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_view_copy(s : Dbtx2pcView) -> Dbtx2pcView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcView::copy(self : Dbtx2pcView) -> Dbtx2pcView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_view_fill(s : Dbtx2pcView, v : Double) -> Dbtx2pcView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcView::fill(self : Dbtx2pcView, v : Double) -> Dbtx2pcView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_view_min(s : Dbtx2pcView) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcView::min(self : Dbtx2pcView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_view_max(s : Dbtx2pcView) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcView::max(self : Dbtx2pcView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_view_to_string(s : Dbtx2pcView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcView::to_string(self : Dbtx2pcView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcRange {
@@ -963,45 +963,45 @@ pub fn db_tx_2pc_range_make(size : Int) -> Dbtx2pcRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_range_len(s : Dbtx2pcRange) -> Int { s.size }
+pub fn Dbtx2pcRange::len(self : Dbtx2pcRange) -> Int { self.size }
 
-pub fn db_tx_2pc_range_get(s : Dbtx2pcRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcRange::get(self : Dbtx2pcRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_range_set(s : Dbtx2pcRange, i : Int, v : Double) -> Dbtx2pcRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcRange::set(self : Dbtx2pcRange, i : Int, v : Double) -> Dbtx2pcRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_range_sum(s : Dbtx2pcRange) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcRange::sum(self : Dbtx2pcRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_range_mean(s : Dbtx2pcRange) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcRange::mean(self : Dbtx2pcRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_range_scale(s : Dbtx2pcRange, f : Double) -> Dbtx2pcRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcRange::scale(self : Dbtx2pcRange, f : Double) -> Dbtx2pcRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_range_add(a : Dbtx2pcRange, b : Dbtx2pcRange) -> Dbtx2pcRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcRange::add(self : Dbtx2pcRange, other : Dbtx2pcRange) -> Dbtx2pcRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_range_copy(s : Dbtx2pcRange) -> Dbtx2pcRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcRange::copy(self : Dbtx2pcRange) -> Dbtx2pcRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_range_fill(s : Dbtx2pcRange, v : Double) -> Dbtx2pcRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcRange::fill(self : Dbtx2pcRange, v : Double) -> Dbtx2pcRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_range_min(s : Dbtx2pcRange) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcRange::min(self : Dbtx2pcRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_range_max(s : Dbtx2pcRange) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcRange::max(self : Dbtx2pcRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_range_to_string(s : Dbtx2pcRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcRange::to_string(self : Dbtx2pcRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Dbtx2pcSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_2pc_slice_make(size : Int) -> Dbtx2pcSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_2pc_slice_len(s : Dbtx2pcSlice) -> Int { s.size }
+pub fn Dbtx2pcSlice::len(self : Dbtx2pcSlice) -> Int { self.size }
 
-pub fn db_tx_2pc_slice_get(s : Dbtx2pcSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Dbtx2pcSlice::get(self : Dbtx2pcSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_2pc_slice_set(s : Dbtx2pcSlice, i : Int, v : Double) -> Dbtx2pcSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Dbtx2pcSlice::set(self : Dbtx2pcSlice, i : Int, v : Double) -> Dbtx2pcSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_slice_sum(s : Dbtx2pcSlice) -> Double { @_common.sum(s.data) }
+pub fn Dbtx2pcSlice::sum(self : Dbtx2pcSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_2pc_slice_mean(s : Dbtx2pcSlice) -> Double { @_common.mean(s.data) }
+pub fn Dbtx2pcSlice::mean(self : Dbtx2pcSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_2pc_slice_scale(s : Dbtx2pcSlice, f : Double) -> Dbtx2pcSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Dbtx2pcSlice::scale(self : Dbtx2pcSlice, f : Double) -> Dbtx2pcSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_slice_add(a : Dbtx2pcSlice, b : Dbtx2pcSlice) -> Dbtx2pcSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Dbtx2pcSlice::add(self : Dbtx2pcSlice, other : Dbtx2pcSlice) -> Dbtx2pcSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_2pc_slice_copy(s : Dbtx2pcSlice) -> Dbtx2pcSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Dbtx2pcSlice::copy(self : Dbtx2pcSlice) -> Dbtx2pcSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_slice_fill(s : Dbtx2pcSlice, v : Double) -> Dbtx2pcSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Dbtx2pcSlice::fill(self : Dbtx2pcSlice, v : Double) -> Dbtx2pcSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_2pc_slice_min(s : Dbtx2pcSlice) -> Double { @_common.min(s.data) }
+pub fn Dbtx2pcSlice::min(self : Dbtx2pcSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_2pc_slice_max(s : Dbtx2pcSlice) -> Double { @_common.max(s.data) }
+pub fn Dbtx2pcSlice::max(self : Dbtx2pcSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_2pc_slice_to_string(s : Dbtx2pcSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Dbtx2pcSlice::to_string(self : Dbtx2pcSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

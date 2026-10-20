@@ -351,45 +351,45 @@ pub fn sort_hybrid_timsort_frame_make(size : Int) -> SorthybridtimsortFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_frame_len(s : SorthybridtimsortFrame) -> Int { s.size }
+pub fn SorthybridtimsortFrame::len(self : SorthybridtimsortFrame) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_frame_get(s : SorthybridtimsortFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortFrame::get(self : SorthybridtimsortFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_frame_set(s : SorthybridtimsortFrame, i : Int, v : Double) -> SorthybridtimsortFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortFrame::set(self : SorthybridtimsortFrame, i : Int, v : Double) -> SorthybridtimsortFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_frame_sum(s : SorthybridtimsortFrame) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortFrame::sum(self : SorthybridtimsortFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_frame_mean(s : SorthybridtimsortFrame) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortFrame::mean(self : SorthybridtimsortFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_frame_scale(s : SorthybridtimsortFrame, f : Double) -> SorthybridtimsortFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortFrame::scale(self : SorthybridtimsortFrame, f : Double) -> SorthybridtimsortFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_frame_add(a : SorthybridtimsortFrame, b : SorthybridtimsortFrame) -> SorthybridtimsortFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortFrame::add(self : SorthybridtimsortFrame, other : SorthybridtimsortFrame) -> SorthybridtimsortFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_frame_copy(s : SorthybridtimsortFrame) -> SorthybridtimsortFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortFrame::copy(self : SorthybridtimsortFrame) -> SorthybridtimsortFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_frame_fill(s : SorthybridtimsortFrame, v : Double) -> SorthybridtimsortFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortFrame::fill(self : SorthybridtimsortFrame, v : Double) -> SorthybridtimsortFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_frame_min(s : SorthybridtimsortFrame) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortFrame::min(self : SorthybridtimsortFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_frame_max(s : SorthybridtimsortFrame) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortFrame::max(self : SorthybridtimsortFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_frame_to_string(s : SorthybridtimsortFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortFrame::to_string(self : SorthybridtimsortFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortTable {
@@ -402,45 +402,45 @@ pub fn sort_hybrid_timsort_table_make(size : Int) -> SorthybridtimsortTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_table_len(s : SorthybridtimsortTable) -> Int { s.size }
+pub fn SorthybridtimsortTable::len(self : SorthybridtimsortTable) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_table_get(s : SorthybridtimsortTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortTable::get(self : SorthybridtimsortTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_table_set(s : SorthybridtimsortTable, i : Int, v : Double) -> SorthybridtimsortTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortTable::set(self : SorthybridtimsortTable, i : Int, v : Double) -> SorthybridtimsortTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_table_sum(s : SorthybridtimsortTable) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortTable::sum(self : SorthybridtimsortTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_table_mean(s : SorthybridtimsortTable) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortTable::mean(self : SorthybridtimsortTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_table_scale(s : SorthybridtimsortTable, f : Double) -> SorthybridtimsortTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortTable::scale(self : SorthybridtimsortTable, f : Double) -> SorthybridtimsortTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_table_add(a : SorthybridtimsortTable, b : SorthybridtimsortTable) -> SorthybridtimsortTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortTable::add(self : SorthybridtimsortTable, other : SorthybridtimsortTable) -> SorthybridtimsortTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_table_copy(s : SorthybridtimsortTable) -> SorthybridtimsortTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortTable::copy(self : SorthybridtimsortTable) -> SorthybridtimsortTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_table_fill(s : SorthybridtimsortTable, v : Double) -> SorthybridtimsortTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortTable::fill(self : SorthybridtimsortTable, v : Double) -> SorthybridtimsortTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_table_min(s : SorthybridtimsortTable) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortTable::min(self : SorthybridtimsortTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_table_max(s : SorthybridtimsortTable) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortTable::max(self : SorthybridtimsortTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_table_to_string(s : SorthybridtimsortTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortTable::to_string(self : SorthybridtimsortTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortGraphN {
@@ -453,45 +453,45 @@ pub fn sort_hybrid_timsort_graphn_make(size : Int) -> SorthybridtimsortGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_graphn_len(s : SorthybridtimsortGraphN) -> Int { s.size }
+pub fn SorthybridtimsortGraphN::len(self : SorthybridtimsortGraphN) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_graphn_get(s : SorthybridtimsortGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortGraphN::get(self : SorthybridtimsortGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_graphn_set(s : SorthybridtimsortGraphN, i : Int, v : Double) -> SorthybridtimsortGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortGraphN::set(self : SorthybridtimsortGraphN, i : Int, v : Double) -> SorthybridtimsortGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_graphn_sum(s : SorthybridtimsortGraphN) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortGraphN::sum(self : SorthybridtimsortGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_graphn_mean(s : SorthybridtimsortGraphN) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortGraphN::mean(self : SorthybridtimsortGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_graphn_scale(s : SorthybridtimsortGraphN, f : Double) -> SorthybridtimsortGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortGraphN::scale(self : SorthybridtimsortGraphN, f : Double) -> SorthybridtimsortGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_graphn_add(a : SorthybridtimsortGraphN, b : SorthybridtimsortGraphN) -> SorthybridtimsortGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortGraphN::add(self : SorthybridtimsortGraphN, other : SorthybridtimsortGraphN) -> SorthybridtimsortGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_graphn_copy(s : SorthybridtimsortGraphN) -> SorthybridtimsortGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortGraphN::copy(self : SorthybridtimsortGraphN) -> SorthybridtimsortGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_graphn_fill(s : SorthybridtimsortGraphN, v : Double) -> SorthybridtimsortGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortGraphN::fill(self : SorthybridtimsortGraphN, v : Double) -> SorthybridtimsortGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_graphn_min(s : SorthybridtimsortGraphN) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortGraphN::min(self : SorthybridtimsortGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_graphn_max(s : SorthybridtimsortGraphN) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortGraphN::max(self : SorthybridtimsortGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_graphn_to_string(s : SorthybridtimsortGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortGraphN::to_string(self : SorthybridtimsortGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortNode {
@@ -504,45 +504,45 @@ pub fn sort_hybrid_timsort_node_make(size : Int) -> SorthybridtimsortNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_node_len(s : SorthybridtimsortNode) -> Int { s.size }
+pub fn SorthybridtimsortNode::len(self : SorthybridtimsortNode) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_node_get(s : SorthybridtimsortNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortNode::get(self : SorthybridtimsortNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_node_set(s : SorthybridtimsortNode, i : Int, v : Double) -> SorthybridtimsortNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortNode::set(self : SorthybridtimsortNode, i : Int, v : Double) -> SorthybridtimsortNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_node_sum(s : SorthybridtimsortNode) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortNode::sum(self : SorthybridtimsortNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_node_mean(s : SorthybridtimsortNode) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortNode::mean(self : SorthybridtimsortNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_node_scale(s : SorthybridtimsortNode, f : Double) -> SorthybridtimsortNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortNode::scale(self : SorthybridtimsortNode, f : Double) -> SorthybridtimsortNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_node_add(a : SorthybridtimsortNode, b : SorthybridtimsortNode) -> SorthybridtimsortNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortNode::add(self : SorthybridtimsortNode, other : SorthybridtimsortNode) -> SorthybridtimsortNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_node_copy(s : SorthybridtimsortNode) -> SorthybridtimsortNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortNode::copy(self : SorthybridtimsortNode) -> SorthybridtimsortNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_node_fill(s : SorthybridtimsortNode, v : Double) -> SorthybridtimsortNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortNode::fill(self : SorthybridtimsortNode, v : Double) -> SorthybridtimsortNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_node_min(s : SorthybridtimsortNode) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortNode::min(self : SorthybridtimsortNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_node_max(s : SorthybridtimsortNode) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortNode::max(self : SorthybridtimsortNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_node_to_string(s : SorthybridtimsortNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortNode::to_string(self : SorthybridtimsortNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortEdge {
@@ -555,45 +555,45 @@ pub fn sort_hybrid_timsort_edge_make(size : Int) -> SorthybridtimsortEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_edge_len(s : SorthybridtimsortEdge) -> Int { s.size }
+pub fn SorthybridtimsortEdge::len(self : SorthybridtimsortEdge) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_edge_get(s : SorthybridtimsortEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortEdge::get(self : SorthybridtimsortEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_edge_set(s : SorthybridtimsortEdge, i : Int, v : Double) -> SorthybridtimsortEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortEdge::set(self : SorthybridtimsortEdge, i : Int, v : Double) -> SorthybridtimsortEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_edge_sum(s : SorthybridtimsortEdge) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortEdge::sum(self : SorthybridtimsortEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_edge_mean(s : SorthybridtimsortEdge) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortEdge::mean(self : SorthybridtimsortEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_edge_scale(s : SorthybridtimsortEdge, f : Double) -> SorthybridtimsortEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortEdge::scale(self : SorthybridtimsortEdge, f : Double) -> SorthybridtimsortEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_edge_add(a : SorthybridtimsortEdge, b : SorthybridtimsortEdge) -> SorthybridtimsortEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortEdge::add(self : SorthybridtimsortEdge, other : SorthybridtimsortEdge) -> SorthybridtimsortEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_edge_copy(s : SorthybridtimsortEdge) -> SorthybridtimsortEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortEdge::copy(self : SorthybridtimsortEdge) -> SorthybridtimsortEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_edge_fill(s : SorthybridtimsortEdge, v : Double) -> SorthybridtimsortEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortEdge::fill(self : SorthybridtimsortEdge, v : Double) -> SorthybridtimsortEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_edge_min(s : SorthybridtimsortEdge) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortEdge::min(self : SorthybridtimsortEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_edge_max(s : SorthybridtimsortEdge) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortEdge::max(self : SorthybridtimsortEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_edge_to_string(s : SorthybridtimsortEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortEdge::to_string(self : SorthybridtimsortEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortPath {
@@ -606,45 +606,45 @@ pub fn sort_hybrid_timsort_path_make(size : Int) -> SorthybridtimsortPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_path_len(s : SorthybridtimsortPath) -> Int { s.size }
+pub fn SorthybridtimsortPath::len(self : SorthybridtimsortPath) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_path_get(s : SorthybridtimsortPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortPath::get(self : SorthybridtimsortPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_path_set(s : SorthybridtimsortPath, i : Int, v : Double) -> SorthybridtimsortPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortPath::set(self : SorthybridtimsortPath, i : Int, v : Double) -> SorthybridtimsortPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_path_sum(s : SorthybridtimsortPath) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortPath::sum(self : SorthybridtimsortPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_path_mean(s : SorthybridtimsortPath) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortPath::mean(self : SorthybridtimsortPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_path_scale(s : SorthybridtimsortPath, f : Double) -> SorthybridtimsortPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortPath::scale(self : SorthybridtimsortPath, f : Double) -> SorthybridtimsortPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_path_add(a : SorthybridtimsortPath, b : SorthybridtimsortPath) -> SorthybridtimsortPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortPath::add(self : SorthybridtimsortPath, other : SorthybridtimsortPath) -> SorthybridtimsortPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_path_copy(s : SorthybridtimsortPath) -> SorthybridtimsortPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortPath::copy(self : SorthybridtimsortPath) -> SorthybridtimsortPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_path_fill(s : SorthybridtimsortPath, v : Double) -> SorthybridtimsortPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortPath::fill(self : SorthybridtimsortPath, v : Double) -> SorthybridtimsortPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_path_min(s : SorthybridtimsortPath) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortPath::min(self : SorthybridtimsortPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_path_max(s : SorthybridtimsortPath) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortPath::max(self : SorthybridtimsortPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_path_to_string(s : SorthybridtimsortPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortPath::to_string(self : SorthybridtimsortPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortCluster {
@@ -657,45 +657,45 @@ pub fn sort_hybrid_timsort_cluster_make(size : Int) -> SorthybridtimsortCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_cluster_len(s : SorthybridtimsortCluster) -> Int { s.size }
+pub fn SorthybridtimsortCluster::len(self : SorthybridtimsortCluster) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_cluster_get(s : SorthybridtimsortCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortCluster::get(self : SorthybridtimsortCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_cluster_set(s : SorthybridtimsortCluster, i : Int, v : Double) -> SorthybridtimsortCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCluster::set(self : SorthybridtimsortCluster, i : Int, v : Double) -> SorthybridtimsortCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cluster_sum(s : SorthybridtimsortCluster) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortCluster::sum(self : SorthybridtimsortCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_cluster_mean(s : SorthybridtimsortCluster) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortCluster::mean(self : SorthybridtimsortCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_cluster_scale(s : SorthybridtimsortCluster, f : Double) -> SorthybridtimsortCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCluster::scale(self : SorthybridtimsortCluster, f : Double) -> SorthybridtimsortCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cluster_add(a : SorthybridtimsortCluster, b : SorthybridtimsortCluster) -> SorthybridtimsortCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortCluster::add(self : SorthybridtimsortCluster, other : SorthybridtimsortCluster) -> SorthybridtimsortCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cluster_copy(s : SorthybridtimsortCluster) -> SorthybridtimsortCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCluster::copy(self : SorthybridtimsortCluster) -> SorthybridtimsortCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cluster_fill(s : SorthybridtimsortCluster, v : Double) -> SorthybridtimsortCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCluster::fill(self : SorthybridtimsortCluster, v : Double) -> SorthybridtimsortCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cluster_min(s : SorthybridtimsortCluster) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortCluster::min(self : SorthybridtimsortCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_cluster_max(s : SorthybridtimsortCluster) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortCluster::max(self : SorthybridtimsortCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_cluster_to_string(s : SorthybridtimsortCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortCluster::to_string(self : SorthybridtimsortCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortModel {
@@ -708,45 +708,45 @@ pub fn sort_hybrid_timsort_model_make(size : Int) -> SorthybridtimsortModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_model_len(s : SorthybridtimsortModel) -> Int { s.size }
+pub fn SorthybridtimsortModel::len(self : SorthybridtimsortModel) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_model_get(s : SorthybridtimsortModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortModel::get(self : SorthybridtimsortModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_model_set(s : SorthybridtimsortModel, i : Int, v : Double) -> SorthybridtimsortModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortModel::set(self : SorthybridtimsortModel, i : Int, v : Double) -> SorthybridtimsortModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_model_sum(s : SorthybridtimsortModel) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortModel::sum(self : SorthybridtimsortModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_model_mean(s : SorthybridtimsortModel) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortModel::mean(self : SorthybridtimsortModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_model_scale(s : SorthybridtimsortModel, f : Double) -> SorthybridtimsortModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortModel::scale(self : SorthybridtimsortModel, f : Double) -> SorthybridtimsortModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_model_add(a : SorthybridtimsortModel, b : SorthybridtimsortModel) -> SorthybridtimsortModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortModel::add(self : SorthybridtimsortModel, other : SorthybridtimsortModel) -> SorthybridtimsortModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_model_copy(s : SorthybridtimsortModel) -> SorthybridtimsortModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortModel::copy(self : SorthybridtimsortModel) -> SorthybridtimsortModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_model_fill(s : SorthybridtimsortModel, v : Double) -> SorthybridtimsortModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortModel::fill(self : SorthybridtimsortModel, v : Double) -> SorthybridtimsortModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_model_min(s : SorthybridtimsortModel) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortModel::min(self : SorthybridtimsortModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_model_max(s : SorthybridtimsortModel) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortModel::max(self : SorthybridtimsortModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_model_to_string(s : SorthybridtimsortModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortModel::to_string(self : SorthybridtimsortModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortLayer {
@@ -759,45 +759,45 @@ pub fn sort_hybrid_timsort_layer_make(size : Int) -> SorthybridtimsortLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_layer_len(s : SorthybridtimsortLayer) -> Int { s.size }
+pub fn SorthybridtimsortLayer::len(self : SorthybridtimsortLayer) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_layer_get(s : SorthybridtimsortLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortLayer::get(self : SorthybridtimsortLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_layer_set(s : SorthybridtimsortLayer, i : Int, v : Double) -> SorthybridtimsortLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortLayer::set(self : SorthybridtimsortLayer, i : Int, v : Double) -> SorthybridtimsortLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_layer_sum(s : SorthybridtimsortLayer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortLayer::sum(self : SorthybridtimsortLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_layer_mean(s : SorthybridtimsortLayer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortLayer::mean(self : SorthybridtimsortLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_layer_scale(s : SorthybridtimsortLayer, f : Double) -> SorthybridtimsortLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortLayer::scale(self : SorthybridtimsortLayer, f : Double) -> SorthybridtimsortLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_layer_add(a : SorthybridtimsortLayer, b : SorthybridtimsortLayer) -> SorthybridtimsortLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortLayer::add(self : SorthybridtimsortLayer, other : SorthybridtimsortLayer) -> SorthybridtimsortLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_layer_copy(s : SorthybridtimsortLayer) -> SorthybridtimsortLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortLayer::copy(self : SorthybridtimsortLayer) -> SorthybridtimsortLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_layer_fill(s : SorthybridtimsortLayer, v : Double) -> SorthybridtimsortLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortLayer::fill(self : SorthybridtimsortLayer, v : Double) -> SorthybridtimsortLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_layer_min(s : SorthybridtimsortLayer) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortLayer::min(self : SorthybridtimsortLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_layer_max(s : SorthybridtimsortLayer) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortLayer::max(self : SorthybridtimsortLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_layer_to_string(s : SorthybridtimsortLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortLayer::to_string(self : SorthybridtimsortLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortBuffer {
@@ -810,45 +810,45 @@ pub fn sort_hybrid_timsort_buffer_make(size : Int) -> SorthybridtimsortBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_buffer_len(s : SorthybridtimsortBuffer) -> Int { s.size }
+pub fn SorthybridtimsortBuffer::len(self : SorthybridtimsortBuffer) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_buffer_get(s : SorthybridtimsortBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortBuffer::get(self : SorthybridtimsortBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_buffer_set(s : SorthybridtimsortBuffer, i : Int, v : Double) -> SorthybridtimsortBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortBuffer::set(self : SorthybridtimsortBuffer, i : Int, v : Double) -> SorthybridtimsortBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_buffer_sum(s : SorthybridtimsortBuffer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortBuffer::sum(self : SorthybridtimsortBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_buffer_mean(s : SorthybridtimsortBuffer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortBuffer::mean(self : SorthybridtimsortBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_buffer_scale(s : SorthybridtimsortBuffer, f : Double) -> SorthybridtimsortBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortBuffer::scale(self : SorthybridtimsortBuffer, f : Double) -> SorthybridtimsortBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_buffer_add(a : SorthybridtimsortBuffer, b : SorthybridtimsortBuffer) -> SorthybridtimsortBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortBuffer::add(self : SorthybridtimsortBuffer, other : SorthybridtimsortBuffer) -> SorthybridtimsortBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_buffer_copy(s : SorthybridtimsortBuffer) -> SorthybridtimsortBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortBuffer::copy(self : SorthybridtimsortBuffer) -> SorthybridtimsortBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_buffer_fill(s : SorthybridtimsortBuffer, v : Double) -> SorthybridtimsortBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortBuffer::fill(self : SorthybridtimsortBuffer, v : Double) -> SorthybridtimsortBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_buffer_min(s : SorthybridtimsortBuffer) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortBuffer::min(self : SorthybridtimsortBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_buffer_max(s : SorthybridtimsortBuffer) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortBuffer::max(self : SorthybridtimsortBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_buffer_to_string(s : SorthybridtimsortBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortBuffer::to_string(self : SorthybridtimsortBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortCursor {
@@ -861,45 +861,45 @@ pub fn sort_hybrid_timsort_cursor_make(size : Int) -> SorthybridtimsortCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_cursor_len(s : SorthybridtimsortCursor) -> Int { s.size }
+pub fn SorthybridtimsortCursor::len(self : SorthybridtimsortCursor) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_cursor_get(s : SorthybridtimsortCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortCursor::get(self : SorthybridtimsortCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_cursor_set(s : SorthybridtimsortCursor, i : Int, v : Double) -> SorthybridtimsortCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCursor::set(self : SorthybridtimsortCursor, i : Int, v : Double) -> SorthybridtimsortCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cursor_sum(s : SorthybridtimsortCursor) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortCursor::sum(self : SorthybridtimsortCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_cursor_mean(s : SorthybridtimsortCursor) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortCursor::mean(self : SorthybridtimsortCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_cursor_scale(s : SorthybridtimsortCursor, f : Double) -> SorthybridtimsortCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCursor::scale(self : SorthybridtimsortCursor, f : Double) -> SorthybridtimsortCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cursor_add(a : SorthybridtimsortCursor, b : SorthybridtimsortCursor) -> SorthybridtimsortCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortCursor::add(self : SorthybridtimsortCursor, other : SorthybridtimsortCursor) -> SorthybridtimsortCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cursor_copy(s : SorthybridtimsortCursor) -> SorthybridtimsortCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCursor::copy(self : SorthybridtimsortCursor) -> SorthybridtimsortCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cursor_fill(s : SorthybridtimsortCursor, v : Double) -> SorthybridtimsortCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortCursor::fill(self : SorthybridtimsortCursor, v : Double) -> SorthybridtimsortCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_cursor_min(s : SorthybridtimsortCursor) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortCursor::min(self : SorthybridtimsortCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_cursor_max(s : SorthybridtimsortCursor) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortCursor::max(self : SorthybridtimsortCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_cursor_to_string(s : SorthybridtimsortCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortCursor::to_string(self : SorthybridtimsortCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortView {
@@ -912,45 +912,45 @@ pub fn sort_hybrid_timsort_view_make(size : Int) -> SorthybridtimsortView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_view_len(s : SorthybridtimsortView) -> Int { s.size }
+pub fn SorthybridtimsortView::len(self : SorthybridtimsortView) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_view_get(s : SorthybridtimsortView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortView::get(self : SorthybridtimsortView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_view_set(s : SorthybridtimsortView, i : Int, v : Double) -> SorthybridtimsortView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortView::set(self : SorthybridtimsortView, i : Int, v : Double) -> SorthybridtimsortView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_view_sum(s : SorthybridtimsortView) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortView::sum(self : SorthybridtimsortView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_view_mean(s : SorthybridtimsortView) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortView::mean(self : SorthybridtimsortView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_view_scale(s : SorthybridtimsortView, f : Double) -> SorthybridtimsortView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortView::scale(self : SorthybridtimsortView, f : Double) -> SorthybridtimsortView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_view_add(a : SorthybridtimsortView, b : SorthybridtimsortView) -> SorthybridtimsortView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortView::add(self : SorthybridtimsortView, other : SorthybridtimsortView) -> SorthybridtimsortView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_view_copy(s : SorthybridtimsortView) -> SorthybridtimsortView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortView::copy(self : SorthybridtimsortView) -> SorthybridtimsortView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_view_fill(s : SorthybridtimsortView, v : Double) -> SorthybridtimsortView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortView::fill(self : SorthybridtimsortView, v : Double) -> SorthybridtimsortView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_view_min(s : SorthybridtimsortView) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortView::min(self : SorthybridtimsortView) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_view_max(s : SorthybridtimsortView) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortView::max(self : SorthybridtimsortView) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_view_to_string(s : SorthybridtimsortView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortView::to_string(self : SorthybridtimsortView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortRange {
@@ -963,45 +963,45 @@ pub fn sort_hybrid_timsort_range_make(size : Int) -> SorthybridtimsortRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_range_len(s : SorthybridtimsortRange) -> Int { s.size }
+pub fn SorthybridtimsortRange::len(self : SorthybridtimsortRange) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_range_get(s : SorthybridtimsortRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortRange::get(self : SorthybridtimsortRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_range_set(s : SorthybridtimsortRange, i : Int, v : Double) -> SorthybridtimsortRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortRange::set(self : SorthybridtimsortRange, i : Int, v : Double) -> SorthybridtimsortRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_range_sum(s : SorthybridtimsortRange) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortRange::sum(self : SorthybridtimsortRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_range_mean(s : SorthybridtimsortRange) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortRange::mean(self : SorthybridtimsortRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_range_scale(s : SorthybridtimsortRange, f : Double) -> SorthybridtimsortRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortRange::scale(self : SorthybridtimsortRange, f : Double) -> SorthybridtimsortRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_range_add(a : SorthybridtimsortRange, b : SorthybridtimsortRange) -> SorthybridtimsortRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortRange::add(self : SorthybridtimsortRange, other : SorthybridtimsortRange) -> SorthybridtimsortRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_range_copy(s : SorthybridtimsortRange) -> SorthybridtimsortRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortRange::copy(self : SorthybridtimsortRange) -> SorthybridtimsortRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_range_fill(s : SorthybridtimsortRange, v : Double) -> SorthybridtimsortRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortRange::fill(self : SorthybridtimsortRange, v : Double) -> SorthybridtimsortRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_range_min(s : SorthybridtimsortRange) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortRange::min(self : SorthybridtimsortRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_range_max(s : SorthybridtimsortRange) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortRange::max(self : SorthybridtimsortRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_range_to_string(s : SorthybridtimsortRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortRange::to_string(self : SorthybridtimsortRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridtimsortSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_hybrid_timsort_slice_make(size : Int) -> SorthybridtimsortSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_timsort_slice_len(s : SorthybridtimsortSlice) -> Int { s.size }
+pub fn SorthybridtimsortSlice::len(self : SorthybridtimsortSlice) -> Int { self.size }
 
-pub fn sort_hybrid_timsort_slice_get(s : SorthybridtimsortSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridtimsortSlice::get(self : SorthybridtimsortSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_timsort_slice_set(s : SorthybridtimsortSlice, i : Int, v : Double) -> SorthybridtimsortSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridtimsortSlice::set(self : SorthybridtimsortSlice, i : Int, v : Double) -> SorthybridtimsortSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_slice_sum(s : SorthybridtimsortSlice) -> Double { @_common.sum(s.data) }
+pub fn SorthybridtimsortSlice::sum(self : SorthybridtimsortSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_timsort_slice_mean(s : SorthybridtimsortSlice) -> Double { @_common.mean(s.data) }
+pub fn SorthybridtimsortSlice::mean(self : SorthybridtimsortSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_timsort_slice_scale(s : SorthybridtimsortSlice, f : Double) -> SorthybridtimsortSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortSlice::scale(self : SorthybridtimsortSlice, f : Double) -> SorthybridtimsortSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_slice_add(a : SorthybridtimsortSlice, b : SorthybridtimsortSlice) -> SorthybridtimsortSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridtimsortSlice::add(self : SorthybridtimsortSlice, other : SorthybridtimsortSlice) -> SorthybridtimsortSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_slice_copy(s : SorthybridtimsortSlice) -> SorthybridtimsortSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortSlice::copy(self : SorthybridtimsortSlice) -> SorthybridtimsortSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_slice_fill(s : SorthybridtimsortSlice, v : Double) -> SorthybridtimsortSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridtimsortSlice::fill(self : SorthybridtimsortSlice, v : Double) -> SorthybridtimsortSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_timsort_slice_min(s : SorthybridtimsortSlice) -> Double { @_common.min(s.data) }
+pub fn SorthybridtimsortSlice::min(self : SorthybridtimsortSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_timsort_slice_max(s : SorthybridtimsortSlice) -> Double { @_common.max(s.data) }
+pub fn SorthybridtimsortSlice::max(self : SorthybridtimsortSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_timsort_slice_to_string(s : SorthybridtimsortSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridtimsortSlice::to_string(self : SorthybridtimsortSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

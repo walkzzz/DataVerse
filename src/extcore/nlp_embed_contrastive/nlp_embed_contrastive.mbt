@@ -351,45 +351,45 @@ pub fn nlp_embed_contrastive_frame_make(size : Int) -> NlpembedcontrastiveFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_frame_len(s : NlpembedcontrastiveFrame) -> Int { s.size }
+pub fn NlpembedcontrastiveFrame::len(self : NlpembedcontrastiveFrame) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_frame_get(s : NlpembedcontrastiveFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveFrame::get(self : NlpembedcontrastiveFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_frame_set(s : NlpembedcontrastiveFrame, i : Int, v : Double) -> NlpembedcontrastiveFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveFrame::set(self : NlpembedcontrastiveFrame, i : Int, v : Double) -> NlpembedcontrastiveFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_frame_sum(s : NlpembedcontrastiveFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveFrame::sum(self : NlpembedcontrastiveFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_frame_mean(s : NlpembedcontrastiveFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveFrame::mean(self : NlpembedcontrastiveFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_frame_scale(s : NlpembedcontrastiveFrame, f : Double) -> NlpembedcontrastiveFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveFrame::scale(self : NlpembedcontrastiveFrame, f : Double) -> NlpembedcontrastiveFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_frame_add(a : NlpembedcontrastiveFrame, b : NlpembedcontrastiveFrame) -> NlpembedcontrastiveFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveFrame::add(self : NlpembedcontrastiveFrame, other : NlpembedcontrastiveFrame) -> NlpembedcontrastiveFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_frame_copy(s : NlpembedcontrastiveFrame) -> NlpembedcontrastiveFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveFrame::copy(self : NlpembedcontrastiveFrame) -> NlpembedcontrastiveFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_frame_fill(s : NlpembedcontrastiveFrame, v : Double) -> NlpembedcontrastiveFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveFrame::fill(self : NlpembedcontrastiveFrame, v : Double) -> NlpembedcontrastiveFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_frame_min(s : NlpembedcontrastiveFrame) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveFrame::min(self : NlpembedcontrastiveFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_frame_max(s : NlpembedcontrastiveFrame) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveFrame::max(self : NlpembedcontrastiveFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_frame_to_string(s : NlpembedcontrastiveFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveFrame::to_string(self : NlpembedcontrastiveFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_contrastive_table_make(size : Int) -> NlpembedcontrastiveTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_table_len(s : NlpembedcontrastiveTable) -> Int { s.size }
+pub fn NlpembedcontrastiveTable::len(self : NlpembedcontrastiveTable) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_table_get(s : NlpembedcontrastiveTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveTable::get(self : NlpembedcontrastiveTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_table_set(s : NlpembedcontrastiveTable, i : Int, v : Double) -> NlpembedcontrastiveTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveTable::set(self : NlpembedcontrastiveTable, i : Int, v : Double) -> NlpembedcontrastiveTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_table_sum(s : NlpembedcontrastiveTable) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveTable::sum(self : NlpembedcontrastiveTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_table_mean(s : NlpembedcontrastiveTable) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveTable::mean(self : NlpembedcontrastiveTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_table_scale(s : NlpembedcontrastiveTable, f : Double) -> NlpembedcontrastiveTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveTable::scale(self : NlpembedcontrastiveTable, f : Double) -> NlpembedcontrastiveTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_table_add(a : NlpembedcontrastiveTable, b : NlpembedcontrastiveTable) -> NlpembedcontrastiveTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveTable::add(self : NlpembedcontrastiveTable, other : NlpembedcontrastiveTable) -> NlpembedcontrastiveTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_table_copy(s : NlpembedcontrastiveTable) -> NlpembedcontrastiveTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveTable::copy(self : NlpembedcontrastiveTable) -> NlpembedcontrastiveTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_table_fill(s : NlpembedcontrastiveTable, v : Double) -> NlpembedcontrastiveTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveTable::fill(self : NlpembedcontrastiveTable, v : Double) -> NlpembedcontrastiveTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_table_min(s : NlpembedcontrastiveTable) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveTable::min(self : NlpembedcontrastiveTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_table_max(s : NlpembedcontrastiveTable) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveTable::max(self : NlpembedcontrastiveTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_table_to_string(s : NlpembedcontrastiveTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveTable::to_string(self : NlpembedcontrastiveTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_contrastive_graphn_make(size : Int) -> NlpembedcontrastiveGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_graphn_len(s : NlpembedcontrastiveGraphN) -> Int { s.size }
+pub fn NlpembedcontrastiveGraphN::len(self : NlpembedcontrastiveGraphN) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_graphn_get(s : NlpembedcontrastiveGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveGraphN::get(self : NlpembedcontrastiveGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_graphn_set(s : NlpembedcontrastiveGraphN, i : Int, v : Double) -> NlpembedcontrastiveGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveGraphN::set(self : NlpembedcontrastiveGraphN, i : Int, v : Double) -> NlpembedcontrastiveGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_graphn_sum(s : NlpembedcontrastiveGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveGraphN::sum(self : NlpembedcontrastiveGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_graphn_mean(s : NlpembedcontrastiveGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveGraphN::mean(self : NlpembedcontrastiveGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_graphn_scale(s : NlpembedcontrastiveGraphN, f : Double) -> NlpembedcontrastiveGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveGraphN::scale(self : NlpembedcontrastiveGraphN, f : Double) -> NlpembedcontrastiveGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_graphn_add(a : NlpembedcontrastiveGraphN, b : NlpembedcontrastiveGraphN) -> NlpembedcontrastiveGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveGraphN::add(self : NlpembedcontrastiveGraphN, other : NlpembedcontrastiveGraphN) -> NlpembedcontrastiveGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_graphn_copy(s : NlpembedcontrastiveGraphN) -> NlpembedcontrastiveGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveGraphN::copy(self : NlpembedcontrastiveGraphN) -> NlpembedcontrastiveGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_graphn_fill(s : NlpembedcontrastiveGraphN, v : Double) -> NlpembedcontrastiveGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveGraphN::fill(self : NlpembedcontrastiveGraphN, v : Double) -> NlpembedcontrastiveGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_graphn_min(s : NlpembedcontrastiveGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveGraphN::min(self : NlpembedcontrastiveGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_graphn_max(s : NlpembedcontrastiveGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveGraphN::max(self : NlpembedcontrastiveGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_graphn_to_string(s : NlpembedcontrastiveGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveGraphN::to_string(self : NlpembedcontrastiveGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_contrastive_node_make(size : Int) -> NlpembedcontrastiveNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_node_len(s : NlpembedcontrastiveNode) -> Int { s.size }
+pub fn NlpembedcontrastiveNode::len(self : NlpembedcontrastiveNode) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_node_get(s : NlpembedcontrastiveNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveNode::get(self : NlpembedcontrastiveNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_node_set(s : NlpembedcontrastiveNode, i : Int, v : Double) -> NlpembedcontrastiveNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveNode::set(self : NlpembedcontrastiveNode, i : Int, v : Double) -> NlpembedcontrastiveNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_node_sum(s : NlpembedcontrastiveNode) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveNode::sum(self : NlpembedcontrastiveNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_node_mean(s : NlpembedcontrastiveNode) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveNode::mean(self : NlpembedcontrastiveNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_node_scale(s : NlpembedcontrastiveNode, f : Double) -> NlpembedcontrastiveNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveNode::scale(self : NlpembedcontrastiveNode, f : Double) -> NlpembedcontrastiveNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_node_add(a : NlpembedcontrastiveNode, b : NlpembedcontrastiveNode) -> NlpembedcontrastiveNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveNode::add(self : NlpembedcontrastiveNode, other : NlpembedcontrastiveNode) -> NlpembedcontrastiveNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_node_copy(s : NlpembedcontrastiveNode) -> NlpembedcontrastiveNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveNode::copy(self : NlpembedcontrastiveNode) -> NlpembedcontrastiveNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_node_fill(s : NlpembedcontrastiveNode, v : Double) -> NlpembedcontrastiveNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveNode::fill(self : NlpembedcontrastiveNode, v : Double) -> NlpembedcontrastiveNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_node_min(s : NlpembedcontrastiveNode) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveNode::min(self : NlpembedcontrastiveNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_node_max(s : NlpembedcontrastiveNode) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveNode::max(self : NlpembedcontrastiveNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_node_to_string(s : NlpembedcontrastiveNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveNode::to_string(self : NlpembedcontrastiveNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_contrastive_edge_make(size : Int) -> NlpembedcontrastiveEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_edge_len(s : NlpembedcontrastiveEdge) -> Int { s.size }
+pub fn NlpembedcontrastiveEdge::len(self : NlpembedcontrastiveEdge) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_edge_get(s : NlpembedcontrastiveEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveEdge::get(self : NlpembedcontrastiveEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_edge_set(s : NlpembedcontrastiveEdge, i : Int, v : Double) -> NlpembedcontrastiveEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveEdge::set(self : NlpembedcontrastiveEdge, i : Int, v : Double) -> NlpembedcontrastiveEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_edge_sum(s : NlpembedcontrastiveEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveEdge::sum(self : NlpembedcontrastiveEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_edge_mean(s : NlpembedcontrastiveEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveEdge::mean(self : NlpembedcontrastiveEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_edge_scale(s : NlpembedcontrastiveEdge, f : Double) -> NlpembedcontrastiveEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveEdge::scale(self : NlpembedcontrastiveEdge, f : Double) -> NlpembedcontrastiveEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_edge_add(a : NlpembedcontrastiveEdge, b : NlpembedcontrastiveEdge) -> NlpembedcontrastiveEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveEdge::add(self : NlpembedcontrastiveEdge, other : NlpembedcontrastiveEdge) -> NlpembedcontrastiveEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_edge_copy(s : NlpembedcontrastiveEdge) -> NlpembedcontrastiveEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveEdge::copy(self : NlpembedcontrastiveEdge) -> NlpembedcontrastiveEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_edge_fill(s : NlpembedcontrastiveEdge, v : Double) -> NlpembedcontrastiveEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveEdge::fill(self : NlpembedcontrastiveEdge, v : Double) -> NlpembedcontrastiveEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_edge_min(s : NlpembedcontrastiveEdge) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveEdge::min(self : NlpembedcontrastiveEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_edge_max(s : NlpembedcontrastiveEdge) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveEdge::max(self : NlpembedcontrastiveEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_edge_to_string(s : NlpembedcontrastiveEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveEdge::to_string(self : NlpembedcontrastiveEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastivePath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_contrastive_path_make(size : Int) -> NlpembedcontrastivePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_path_len(s : NlpembedcontrastivePath) -> Int { s.size }
+pub fn NlpembedcontrastivePath::len(self : NlpembedcontrastivePath) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_path_get(s : NlpembedcontrastivePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastivePath::get(self : NlpembedcontrastivePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_path_set(s : NlpembedcontrastivePath, i : Int, v : Double) -> NlpembedcontrastivePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastivePath::set(self : NlpembedcontrastivePath, i : Int, v : Double) -> NlpembedcontrastivePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_path_sum(s : NlpembedcontrastivePath) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastivePath::sum(self : NlpembedcontrastivePath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_path_mean(s : NlpembedcontrastivePath) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastivePath::mean(self : NlpembedcontrastivePath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_path_scale(s : NlpembedcontrastivePath, f : Double) -> NlpembedcontrastivePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastivePath::scale(self : NlpembedcontrastivePath, f : Double) -> NlpembedcontrastivePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_path_add(a : NlpembedcontrastivePath, b : NlpembedcontrastivePath) -> NlpembedcontrastivePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastivePath::add(self : NlpembedcontrastivePath, other : NlpembedcontrastivePath) -> NlpembedcontrastivePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_path_copy(s : NlpembedcontrastivePath) -> NlpembedcontrastivePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastivePath::copy(self : NlpembedcontrastivePath) -> NlpembedcontrastivePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_path_fill(s : NlpembedcontrastivePath, v : Double) -> NlpembedcontrastivePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastivePath::fill(self : NlpembedcontrastivePath, v : Double) -> NlpembedcontrastivePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_path_min(s : NlpembedcontrastivePath) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastivePath::min(self : NlpembedcontrastivePath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_path_max(s : NlpembedcontrastivePath) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastivePath::max(self : NlpembedcontrastivePath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_path_to_string(s : NlpembedcontrastivePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastivePath::to_string(self : NlpembedcontrastivePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_contrastive_cluster_make(size : Int) -> NlpembedcontrastiveClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_cluster_len(s : NlpembedcontrastiveCluster) -> Int { s.size }
+pub fn NlpembedcontrastiveCluster::len(self : NlpembedcontrastiveCluster) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_cluster_get(s : NlpembedcontrastiveCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveCluster::get(self : NlpembedcontrastiveCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_cluster_set(s : NlpembedcontrastiveCluster, i : Int, v : Double) -> NlpembedcontrastiveCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCluster::set(self : NlpembedcontrastiveCluster, i : Int, v : Double) -> NlpembedcontrastiveCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cluster_sum(s : NlpembedcontrastiveCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveCluster::sum(self : NlpembedcontrastiveCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_cluster_mean(s : NlpembedcontrastiveCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveCluster::mean(self : NlpembedcontrastiveCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_cluster_scale(s : NlpembedcontrastiveCluster, f : Double) -> NlpembedcontrastiveCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCluster::scale(self : NlpembedcontrastiveCluster, f : Double) -> NlpembedcontrastiveCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cluster_add(a : NlpembedcontrastiveCluster, b : NlpembedcontrastiveCluster) -> NlpembedcontrastiveCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveCluster::add(self : NlpembedcontrastiveCluster, other : NlpembedcontrastiveCluster) -> NlpembedcontrastiveCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cluster_copy(s : NlpembedcontrastiveCluster) -> NlpembedcontrastiveCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCluster::copy(self : NlpembedcontrastiveCluster) -> NlpembedcontrastiveCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cluster_fill(s : NlpembedcontrastiveCluster, v : Double) -> NlpembedcontrastiveCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCluster::fill(self : NlpembedcontrastiveCluster, v : Double) -> NlpembedcontrastiveCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cluster_min(s : NlpembedcontrastiveCluster) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveCluster::min(self : NlpembedcontrastiveCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_cluster_max(s : NlpembedcontrastiveCluster) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveCluster::max(self : NlpembedcontrastiveCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_cluster_to_string(s : NlpembedcontrastiveCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveCluster::to_string(self : NlpembedcontrastiveCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_contrastive_model_make(size : Int) -> NlpembedcontrastiveModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_model_len(s : NlpembedcontrastiveModel) -> Int { s.size }
+pub fn NlpembedcontrastiveModel::len(self : NlpembedcontrastiveModel) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_model_get(s : NlpembedcontrastiveModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveModel::get(self : NlpembedcontrastiveModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_model_set(s : NlpembedcontrastiveModel, i : Int, v : Double) -> NlpembedcontrastiveModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveModel::set(self : NlpembedcontrastiveModel, i : Int, v : Double) -> NlpembedcontrastiveModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_model_sum(s : NlpembedcontrastiveModel) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveModel::sum(self : NlpembedcontrastiveModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_model_mean(s : NlpembedcontrastiveModel) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveModel::mean(self : NlpembedcontrastiveModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_model_scale(s : NlpembedcontrastiveModel, f : Double) -> NlpembedcontrastiveModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveModel::scale(self : NlpembedcontrastiveModel, f : Double) -> NlpembedcontrastiveModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_model_add(a : NlpembedcontrastiveModel, b : NlpembedcontrastiveModel) -> NlpembedcontrastiveModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveModel::add(self : NlpembedcontrastiveModel, other : NlpembedcontrastiveModel) -> NlpembedcontrastiveModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_model_copy(s : NlpembedcontrastiveModel) -> NlpembedcontrastiveModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveModel::copy(self : NlpembedcontrastiveModel) -> NlpembedcontrastiveModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_model_fill(s : NlpembedcontrastiveModel, v : Double) -> NlpembedcontrastiveModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveModel::fill(self : NlpembedcontrastiveModel, v : Double) -> NlpembedcontrastiveModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_model_min(s : NlpembedcontrastiveModel) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveModel::min(self : NlpembedcontrastiveModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_model_max(s : NlpembedcontrastiveModel) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveModel::max(self : NlpembedcontrastiveModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_model_to_string(s : NlpembedcontrastiveModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveModel::to_string(self : NlpembedcontrastiveModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_contrastive_layer_make(size : Int) -> NlpembedcontrastiveLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_layer_len(s : NlpembedcontrastiveLayer) -> Int { s.size }
+pub fn NlpembedcontrastiveLayer::len(self : NlpembedcontrastiveLayer) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_layer_get(s : NlpembedcontrastiveLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveLayer::get(self : NlpembedcontrastiveLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_layer_set(s : NlpembedcontrastiveLayer, i : Int, v : Double) -> NlpembedcontrastiveLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveLayer::set(self : NlpembedcontrastiveLayer, i : Int, v : Double) -> NlpembedcontrastiveLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_layer_sum(s : NlpembedcontrastiveLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveLayer::sum(self : NlpembedcontrastiveLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_layer_mean(s : NlpembedcontrastiveLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveLayer::mean(self : NlpembedcontrastiveLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_layer_scale(s : NlpembedcontrastiveLayer, f : Double) -> NlpembedcontrastiveLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveLayer::scale(self : NlpembedcontrastiveLayer, f : Double) -> NlpembedcontrastiveLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_layer_add(a : NlpembedcontrastiveLayer, b : NlpembedcontrastiveLayer) -> NlpembedcontrastiveLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveLayer::add(self : NlpembedcontrastiveLayer, other : NlpembedcontrastiveLayer) -> NlpembedcontrastiveLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_layer_copy(s : NlpembedcontrastiveLayer) -> NlpembedcontrastiveLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveLayer::copy(self : NlpembedcontrastiveLayer) -> NlpembedcontrastiveLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_layer_fill(s : NlpembedcontrastiveLayer, v : Double) -> NlpembedcontrastiveLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveLayer::fill(self : NlpembedcontrastiveLayer, v : Double) -> NlpembedcontrastiveLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_layer_min(s : NlpembedcontrastiveLayer) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveLayer::min(self : NlpembedcontrastiveLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_layer_max(s : NlpembedcontrastiveLayer) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveLayer::max(self : NlpembedcontrastiveLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_layer_to_string(s : NlpembedcontrastiveLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveLayer::to_string(self : NlpembedcontrastiveLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_contrastive_buffer_make(size : Int) -> NlpembedcontrastiveBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_buffer_len(s : NlpembedcontrastiveBuffer) -> Int { s.size }
+pub fn NlpembedcontrastiveBuffer::len(self : NlpembedcontrastiveBuffer) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_buffer_get(s : NlpembedcontrastiveBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveBuffer::get(self : NlpembedcontrastiveBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_buffer_set(s : NlpembedcontrastiveBuffer, i : Int, v : Double) -> NlpembedcontrastiveBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveBuffer::set(self : NlpembedcontrastiveBuffer, i : Int, v : Double) -> NlpembedcontrastiveBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_buffer_sum(s : NlpembedcontrastiveBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveBuffer::sum(self : NlpembedcontrastiveBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_buffer_mean(s : NlpembedcontrastiveBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveBuffer::mean(self : NlpembedcontrastiveBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_buffer_scale(s : NlpembedcontrastiveBuffer, f : Double) -> NlpembedcontrastiveBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveBuffer::scale(self : NlpembedcontrastiveBuffer, f : Double) -> NlpembedcontrastiveBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_buffer_add(a : NlpembedcontrastiveBuffer, b : NlpembedcontrastiveBuffer) -> NlpembedcontrastiveBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveBuffer::add(self : NlpembedcontrastiveBuffer, other : NlpembedcontrastiveBuffer) -> NlpembedcontrastiveBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_buffer_copy(s : NlpembedcontrastiveBuffer) -> NlpembedcontrastiveBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveBuffer::copy(self : NlpembedcontrastiveBuffer) -> NlpembedcontrastiveBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_buffer_fill(s : NlpembedcontrastiveBuffer, v : Double) -> NlpembedcontrastiveBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveBuffer::fill(self : NlpembedcontrastiveBuffer, v : Double) -> NlpembedcontrastiveBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_buffer_min(s : NlpembedcontrastiveBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveBuffer::min(self : NlpembedcontrastiveBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_buffer_max(s : NlpembedcontrastiveBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveBuffer::max(self : NlpembedcontrastiveBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_buffer_to_string(s : NlpembedcontrastiveBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveBuffer::to_string(self : NlpembedcontrastiveBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_contrastive_cursor_make(size : Int) -> NlpembedcontrastiveCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_cursor_len(s : NlpembedcontrastiveCursor) -> Int { s.size }
+pub fn NlpembedcontrastiveCursor::len(self : NlpembedcontrastiveCursor) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_cursor_get(s : NlpembedcontrastiveCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveCursor::get(self : NlpembedcontrastiveCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_cursor_set(s : NlpembedcontrastiveCursor, i : Int, v : Double) -> NlpembedcontrastiveCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCursor::set(self : NlpembedcontrastiveCursor, i : Int, v : Double) -> NlpembedcontrastiveCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cursor_sum(s : NlpembedcontrastiveCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveCursor::sum(self : NlpembedcontrastiveCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_cursor_mean(s : NlpembedcontrastiveCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveCursor::mean(self : NlpembedcontrastiveCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_cursor_scale(s : NlpembedcontrastiveCursor, f : Double) -> NlpembedcontrastiveCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCursor::scale(self : NlpembedcontrastiveCursor, f : Double) -> NlpembedcontrastiveCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cursor_add(a : NlpembedcontrastiveCursor, b : NlpembedcontrastiveCursor) -> NlpembedcontrastiveCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveCursor::add(self : NlpembedcontrastiveCursor, other : NlpembedcontrastiveCursor) -> NlpembedcontrastiveCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cursor_copy(s : NlpembedcontrastiveCursor) -> NlpembedcontrastiveCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCursor::copy(self : NlpembedcontrastiveCursor) -> NlpembedcontrastiveCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cursor_fill(s : NlpembedcontrastiveCursor, v : Double) -> NlpembedcontrastiveCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveCursor::fill(self : NlpembedcontrastiveCursor, v : Double) -> NlpembedcontrastiveCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_cursor_min(s : NlpembedcontrastiveCursor) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveCursor::min(self : NlpembedcontrastiveCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_cursor_max(s : NlpembedcontrastiveCursor) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveCursor::max(self : NlpembedcontrastiveCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_cursor_to_string(s : NlpembedcontrastiveCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveCursor::to_string(self : NlpembedcontrastiveCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_contrastive_view_make(size : Int) -> NlpembedcontrastiveView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_view_len(s : NlpembedcontrastiveView) -> Int { s.size }
+pub fn NlpembedcontrastiveView::len(self : NlpembedcontrastiveView) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_view_get(s : NlpembedcontrastiveView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveView::get(self : NlpembedcontrastiveView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_view_set(s : NlpembedcontrastiveView, i : Int, v : Double) -> NlpembedcontrastiveView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveView::set(self : NlpembedcontrastiveView, i : Int, v : Double) -> NlpembedcontrastiveView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_view_sum(s : NlpembedcontrastiveView) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveView::sum(self : NlpembedcontrastiveView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_view_mean(s : NlpembedcontrastiveView) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveView::mean(self : NlpembedcontrastiveView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_view_scale(s : NlpembedcontrastiveView, f : Double) -> NlpembedcontrastiveView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveView::scale(self : NlpembedcontrastiveView, f : Double) -> NlpembedcontrastiveView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_view_add(a : NlpembedcontrastiveView, b : NlpembedcontrastiveView) -> NlpembedcontrastiveView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveView::add(self : NlpembedcontrastiveView, other : NlpembedcontrastiveView) -> NlpembedcontrastiveView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_view_copy(s : NlpembedcontrastiveView) -> NlpembedcontrastiveView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveView::copy(self : NlpembedcontrastiveView) -> NlpembedcontrastiveView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_view_fill(s : NlpembedcontrastiveView, v : Double) -> NlpembedcontrastiveView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveView::fill(self : NlpembedcontrastiveView, v : Double) -> NlpembedcontrastiveView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_view_min(s : NlpembedcontrastiveView) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveView::min(self : NlpembedcontrastiveView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_view_max(s : NlpembedcontrastiveView) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveView::max(self : NlpembedcontrastiveView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_view_to_string(s : NlpembedcontrastiveView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveView::to_string(self : NlpembedcontrastiveView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_contrastive_range_make(size : Int) -> NlpembedcontrastiveRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_range_len(s : NlpembedcontrastiveRange) -> Int { s.size }
+pub fn NlpembedcontrastiveRange::len(self : NlpembedcontrastiveRange) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_range_get(s : NlpembedcontrastiveRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveRange::get(self : NlpembedcontrastiveRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_range_set(s : NlpembedcontrastiveRange, i : Int, v : Double) -> NlpembedcontrastiveRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveRange::set(self : NlpembedcontrastiveRange, i : Int, v : Double) -> NlpembedcontrastiveRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_range_sum(s : NlpembedcontrastiveRange) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveRange::sum(self : NlpembedcontrastiveRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_range_mean(s : NlpembedcontrastiveRange) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveRange::mean(self : NlpembedcontrastiveRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_range_scale(s : NlpembedcontrastiveRange, f : Double) -> NlpembedcontrastiveRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveRange::scale(self : NlpembedcontrastiveRange, f : Double) -> NlpembedcontrastiveRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_range_add(a : NlpembedcontrastiveRange, b : NlpembedcontrastiveRange) -> NlpembedcontrastiveRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveRange::add(self : NlpembedcontrastiveRange, other : NlpembedcontrastiveRange) -> NlpembedcontrastiveRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_range_copy(s : NlpembedcontrastiveRange) -> NlpembedcontrastiveRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveRange::copy(self : NlpembedcontrastiveRange) -> NlpembedcontrastiveRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_range_fill(s : NlpembedcontrastiveRange, v : Double) -> NlpembedcontrastiveRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveRange::fill(self : NlpembedcontrastiveRange, v : Double) -> NlpembedcontrastiveRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_range_min(s : NlpembedcontrastiveRange) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveRange::min(self : NlpembedcontrastiveRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_range_max(s : NlpembedcontrastiveRange) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveRange::max(self : NlpembedcontrastiveRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_range_to_string(s : NlpembedcontrastiveRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveRange::to_string(self : NlpembedcontrastiveRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedcontrastiveSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_contrastive_slice_make(size : Int) -> NlpembedcontrastiveSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_contrastive_slice_len(s : NlpembedcontrastiveSlice) -> Int { s.size }
+pub fn NlpembedcontrastiveSlice::len(self : NlpembedcontrastiveSlice) -> Int { self.size }
 
-pub fn nlp_embed_contrastive_slice_get(s : NlpembedcontrastiveSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedcontrastiveSlice::get(self : NlpembedcontrastiveSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_contrastive_slice_set(s : NlpembedcontrastiveSlice, i : Int, v : Double) -> NlpembedcontrastiveSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveSlice::set(self : NlpembedcontrastiveSlice, i : Int, v : Double) -> NlpembedcontrastiveSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_slice_sum(s : NlpembedcontrastiveSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpembedcontrastiveSlice::sum(self : NlpembedcontrastiveSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_contrastive_slice_mean(s : NlpembedcontrastiveSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpembedcontrastiveSlice::mean(self : NlpembedcontrastiveSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_contrastive_slice_scale(s : NlpembedcontrastiveSlice, f : Double) -> NlpembedcontrastiveSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveSlice::scale(self : NlpembedcontrastiveSlice, f : Double) -> NlpembedcontrastiveSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_slice_add(a : NlpembedcontrastiveSlice, b : NlpembedcontrastiveSlice) -> NlpembedcontrastiveSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedcontrastiveSlice::add(self : NlpembedcontrastiveSlice, other : NlpembedcontrastiveSlice) -> NlpembedcontrastiveSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_slice_copy(s : NlpembedcontrastiveSlice) -> NlpembedcontrastiveSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveSlice::copy(self : NlpembedcontrastiveSlice) -> NlpembedcontrastiveSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_slice_fill(s : NlpembedcontrastiveSlice, v : Double) -> NlpembedcontrastiveSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedcontrastiveSlice::fill(self : NlpembedcontrastiveSlice, v : Double) -> NlpembedcontrastiveSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_contrastive_slice_min(s : NlpembedcontrastiveSlice) -> Double { @_common.min(s.data) }
+pub fn NlpembedcontrastiveSlice::min(self : NlpembedcontrastiveSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_contrastive_slice_max(s : NlpembedcontrastiveSlice) -> Double { @_common.max(s.data) }
+pub fn NlpembedcontrastiveSlice::max(self : NlpembedcontrastiveSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_contrastive_slice_to_string(s : NlpembedcontrastiveSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedcontrastiveSlice::to_string(self : NlpembedcontrastiveSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

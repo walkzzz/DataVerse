@@ -351,45 +351,45 @@ pub fn ml_regress_quantile_frame_make(size : Int) -> MlregressquantileFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_frame_len(s : MlregressquantileFrame) -> Int { s.size }
+pub fn MlregressquantileFrame::len(self : MlregressquantileFrame) -> Int { self.size }
 
-pub fn ml_regress_quantile_frame_get(s : MlregressquantileFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileFrame::get(self : MlregressquantileFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_frame_set(s : MlregressquantileFrame, i : Int, v : Double) -> MlregressquantileFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileFrame::set(self : MlregressquantileFrame, i : Int, v : Double) -> MlregressquantileFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_frame_sum(s : MlregressquantileFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileFrame::sum(self : MlregressquantileFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_frame_mean(s : MlregressquantileFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileFrame::mean(self : MlregressquantileFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_frame_scale(s : MlregressquantileFrame, f : Double) -> MlregressquantileFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileFrame::scale(self : MlregressquantileFrame, f : Double) -> MlregressquantileFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_frame_add(a : MlregressquantileFrame, b : MlregressquantileFrame) -> MlregressquantileFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileFrame::add(self : MlregressquantileFrame, other : MlregressquantileFrame) -> MlregressquantileFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_frame_copy(s : MlregressquantileFrame) -> MlregressquantileFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileFrame::copy(self : MlregressquantileFrame) -> MlregressquantileFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_frame_fill(s : MlregressquantileFrame, v : Double) -> MlregressquantileFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileFrame::fill(self : MlregressquantileFrame, v : Double) -> MlregressquantileFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_frame_min(s : MlregressquantileFrame) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileFrame::min(self : MlregressquantileFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_frame_max(s : MlregressquantileFrame) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileFrame::max(self : MlregressquantileFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_frame_to_string(s : MlregressquantileFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileFrame::to_string(self : MlregressquantileFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_quantile_table_make(size : Int) -> MlregressquantileTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_table_len(s : MlregressquantileTable) -> Int { s.size }
+pub fn MlregressquantileTable::len(self : MlregressquantileTable) -> Int { self.size }
 
-pub fn ml_regress_quantile_table_get(s : MlregressquantileTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileTable::get(self : MlregressquantileTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_table_set(s : MlregressquantileTable, i : Int, v : Double) -> MlregressquantileTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileTable::set(self : MlregressquantileTable, i : Int, v : Double) -> MlregressquantileTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_table_sum(s : MlregressquantileTable) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileTable::sum(self : MlregressquantileTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_table_mean(s : MlregressquantileTable) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileTable::mean(self : MlregressquantileTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_table_scale(s : MlregressquantileTable, f : Double) -> MlregressquantileTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileTable::scale(self : MlregressquantileTable, f : Double) -> MlregressquantileTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_table_add(a : MlregressquantileTable, b : MlregressquantileTable) -> MlregressquantileTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileTable::add(self : MlregressquantileTable, other : MlregressquantileTable) -> MlregressquantileTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_table_copy(s : MlregressquantileTable) -> MlregressquantileTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileTable::copy(self : MlregressquantileTable) -> MlregressquantileTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_table_fill(s : MlregressquantileTable, v : Double) -> MlregressquantileTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileTable::fill(self : MlregressquantileTable, v : Double) -> MlregressquantileTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_table_min(s : MlregressquantileTable) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileTable::min(self : MlregressquantileTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_table_max(s : MlregressquantileTable) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileTable::max(self : MlregressquantileTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_table_to_string(s : MlregressquantileTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileTable::to_string(self : MlregressquantileTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_quantile_graphn_make(size : Int) -> MlregressquantileGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_graphn_len(s : MlregressquantileGraphN) -> Int { s.size }
+pub fn MlregressquantileGraphN::len(self : MlregressquantileGraphN) -> Int { self.size }
 
-pub fn ml_regress_quantile_graphn_get(s : MlregressquantileGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileGraphN::get(self : MlregressquantileGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_graphn_set(s : MlregressquantileGraphN, i : Int, v : Double) -> MlregressquantileGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileGraphN::set(self : MlregressquantileGraphN, i : Int, v : Double) -> MlregressquantileGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_graphn_sum(s : MlregressquantileGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileGraphN::sum(self : MlregressquantileGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_graphn_mean(s : MlregressquantileGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileGraphN::mean(self : MlregressquantileGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_graphn_scale(s : MlregressquantileGraphN, f : Double) -> MlregressquantileGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileGraphN::scale(self : MlregressquantileGraphN, f : Double) -> MlregressquantileGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_graphn_add(a : MlregressquantileGraphN, b : MlregressquantileGraphN) -> MlregressquantileGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileGraphN::add(self : MlregressquantileGraphN, other : MlregressquantileGraphN) -> MlregressquantileGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_graphn_copy(s : MlregressquantileGraphN) -> MlregressquantileGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileGraphN::copy(self : MlregressquantileGraphN) -> MlregressquantileGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_graphn_fill(s : MlregressquantileGraphN, v : Double) -> MlregressquantileGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileGraphN::fill(self : MlregressquantileGraphN, v : Double) -> MlregressquantileGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_graphn_min(s : MlregressquantileGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileGraphN::min(self : MlregressquantileGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_graphn_max(s : MlregressquantileGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileGraphN::max(self : MlregressquantileGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_graphn_to_string(s : MlregressquantileGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileGraphN::to_string(self : MlregressquantileGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_quantile_node_make(size : Int) -> MlregressquantileNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_node_len(s : MlregressquantileNode) -> Int { s.size }
+pub fn MlregressquantileNode::len(self : MlregressquantileNode) -> Int { self.size }
 
-pub fn ml_regress_quantile_node_get(s : MlregressquantileNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileNode::get(self : MlregressquantileNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_node_set(s : MlregressquantileNode, i : Int, v : Double) -> MlregressquantileNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileNode::set(self : MlregressquantileNode, i : Int, v : Double) -> MlregressquantileNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_node_sum(s : MlregressquantileNode) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileNode::sum(self : MlregressquantileNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_node_mean(s : MlregressquantileNode) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileNode::mean(self : MlregressquantileNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_node_scale(s : MlregressquantileNode, f : Double) -> MlregressquantileNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileNode::scale(self : MlregressquantileNode, f : Double) -> MlregressquantileNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_node_add(a : MlregressquantileNode, b : MlregressquantileNode) -> MlregressquantileNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileNode::add(self : MlregressquantileNode, other : MlregressquantileNode) -> MlregressquantileNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_node_copy(s : MlregressquantileNode) -> MlregressquantileNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileNode::copy(self : MlregressquantileNode) -> MlregressquantileNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_node_fill(s : MlregressquantileNode, v : Double) -> MlregressquantileNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileNode::fill(self : MlregressquantileNode, v : Double) -> MlregressquantileNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_node_min(s : MlregressquantileNode) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileNode::min(self : MlregressquantileNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_node_max(s : MlregressquantileNode) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileNode::max(self : MlregressquantileNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_node_to_string(s : MlregressquantileNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileNode::to_string(self : MlregressquantileNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_quantile_edge_make(size : Int) -> MlregressquantileEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_edge_len(s : MlregressquantileEdge) -> Int { s.size }
+pub fn MlregressquantileEdge::len(self : MlregressquantileEdge) -> Int { self.size }
 
-pub fn ml_regress_quantile_edge_get(s : MlregressquantileEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileEdge::get(self : MlregressquantileEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_edge_set(s : MlregressquantileEdge, i : Int, v : Double) -> MlregressquantileEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileEdge::set(self : MlregressquantileEdge, i : Int, v : Double) -> MlregressquantileEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_edge_sum(s : MlregressquantileEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileEdge::sum(self : MlregressquantileEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_edge_mean(s : MlregressquantileEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileEdge::mean(self : MlregressquantileEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_edge_scale(s : MlregressquantileEdge, f : Double) -> MlregressquantileEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileEdge::scale(self : MlregressquantileEdge, f : Double) -> MlregressquantileEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_edge_add(a : MlregressquantileEdge, b : MlregressquantileEdge) -> MlregressquantileEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileEdge::add(self : MlregressquantileEdge, other : MlregressquantileEdge) -> MlregressquantileEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_edge_copy(s : MlregressquantileEdge) -> MlregressquantileEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileEdge::copy(self : MlregressquantileEdge) -> MlregressquantileEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_edge_fill(s : MlregressquantileEdge, v : Double) -> MlregressquantileEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileEdge::fill(self : MlregressquantileEdge, v : Double) -> MlregressquantileEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_edge_min(s : MlregressquantileEdge) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileEdge::min(self : MlregressquantileEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_edge_max(s : MlregressquantileEdge) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileEdge::max(self : MlregressquantileEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_edge_to_string(s : MlregressquantileEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileEdge::to_string(self : MlregressquantileEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantilePath {
@@ -606,45 +606,45 @@ pub fn ml_regress_quantile_path_make(size : Int) -> MlregressquantilePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_path_len(s : MlregressquantilePath) -> Int { s.size }
+pub fn MlregressquantilePath::len(self : MlregressquantilePath) -> Int { self.size }
 
-pub fn ml_regress_quantile_path_get(s : MlregressquantilePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantilePath::get(self : MlregressquantilePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_path_set(s : MlregressquantilePath, i : Int, v : Double) -> MlregressquantilePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantilePath::set(self : MlregressquantilePath, i : Int, v : Double) -> MlregressquantilePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_path_sum(s : MlregressquantilePath) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantilePath::sum(self : MlregressquantilePath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_path_mean(s : MlregressquantilePath) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantilePath::mean(self : MlregressquantilePath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_path_scale(s : MlregressquantilePath, f : Double) -> MlregressquantilePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantilePath::scale(self : MlregressquantilePath, f : Double) -> MlregressquantilePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_path_add(a : MlregressquantilePath, b : MlregressquantilePath) -> MlregressquantilePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantilePath::add(self : MlregressquantilePath, other : MlregressquantilePath) -> MlregressquantilePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_path_copy(s : MlregressquantilePath) -> MlregressquantilePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantilePath::copy(self : MlregressquantilePath) -> MlregressquantilePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_path_fill(s : MlregressquantilePath, v : Double) -> MlregressquantilePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantilePath::fill(self : MlregressquantilePath, v : Double) -> MlregressquantilePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_path_min(s : MlregressquantilePath) -> Double { @_common.min(s.data) }
+pub fn MlregressquantilePath::min(self : MlregressquantilePath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_path_max(s : MlregressquantilePath) -> Double { @_common.max(s.data) }
+pub fn MlregressquantilePath::max(self : MlregressquantilePath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_path_to_string(s : MlregressquantilePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantilePath::to_string(self : MlregressquantilePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_quantile_cluster_make(size : Int) -> MlregressquantileCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_cluster_len(s : MlregressquantileCluster) -> Int { s.size }
+pub fn MlregressquantileCluster::len(self : MlregressquantileCluster) -> Int { self.size }
 
-pub fn ml_regress_quantile_cluster_get(s : MlregressquantileCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileCluster::get(self : MlregressquantileCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_cluster_set(s : MlregressquantileCluster, i : Int, v : Double) -> MlregressquantileCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileCluster::set(self : MlregressquantileCluster, i : Int, v : Double) -> MlregressquantileCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cluster_sum(s : MlregressquantileCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileCluster::sum(self : MlregressquantileCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_cluster_mean(s : MlregressquantileCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileCluster::mean(self : MlregressquantileCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_cluster_scale(s : MlregressquantileCluster, f : Double) -> MlregressquantileCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileCluster::scale(self : MlregressquantileCluster, f : Double) -> MlregressquantileCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cluster_add(a : MlregressquantileCluster, b : MlregressquantileCluster) -> MlregressquantileCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileCluster::add(self : MlregressquantileCluster, other : MlregressquantileCluster) -> MlregressquantileCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cluster_copy(s : MlregressquantileCluster) -> MlregressquantileCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileCluster::copy(self : MlregressquantileCluster) -> MlregressquantileCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cluster_fill(s : MlregressquantileCluster, v : Double) -> MlregressquantileCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileCluster::fill(self : MlregressquantileCluster, v : Double) -> MlregressquantileCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cluster_min(s : MlregressquantileCluster) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileCluster::min(self : MlregressquantileCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_cluster_max(s : MlregressquantileCluster) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileCluster::max(self : MlregressquantileCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_cluster_to_string(s : MlregressquantileCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileCluster::to_string(self : MlregressquantileCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_quantile_model_make(size : Int) -> MlregressquantileModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_model_len(s : MlregressquantileModel) -> Int { s.size }
+pub fn MlregressquantileModel::len(self : MlregressquantileModel) -> Int { self.size }
 
-pub fn ml_regress_quantile_model_get(s : MlregressquantileModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileModel::get(self : MlregressquantileModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_model_set(s : MlregressquantileModel, i : Int, v : Double) -> MlregressquantileModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileModel::set(self : MlregressquantileModel, i : Int, v : Double) -> MlregressquantileModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_model_sum(s : MlregressquantileModel) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileModel::sum(self : MlregressquantileModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_model_mean(s : MlregressquantileModel) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileModel::mean(self : MlregressquantileModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_model_scale(s : MlregressquantileModel, f : Double) -> MlregressquantileModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileModel::scale(self : MlregressquantileModel, f : Double) -> MlregressquantileModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_model_add(a : MlregressquantileModel, b : MlregressquantileModel) -> MlregressquantileModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileModel::add(self : MlregressquantileModel, other : MlregressquantileModel) -> MlregressquantileModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_model_copy(s : MlregressquantileModel) -> MlregressquantileModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileModel::copy(self : MlregressquantileModel) -> MlregressquantileModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_model_fill(s : MlregressquantileModel, v : Double) -> MlregressquantileModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileModel::fill(self : MlregressquantileModel, v : Double) -> MlregressquantileModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_model_min(s : MlregressquantileModel) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileModel::min(self : MlregressquantileModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_model_max(s : MlregressquantileModel) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileModel::max(self : MlregressquantileModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_model_to_string(s : MlregressquantileModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileModel::to_string(self : MlregressquantileModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_quantile_layer_make(size : Int) -> MlregressquantileLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_layer_len(s : MlregressquantileLayer) -> Int { s.size }
+pub fn MlregressquantileLayer::len(self : MlregressquantileLayer) -> Int { self.size }
 
-pub fn ml_regress_quantile_layer_get(s : MlregressquantileLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileLayer::get(self : MlregressquantileLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_layer_set(s : MlregressquantileLayer, i : Int, v : Double) -> MlregressquantileLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileLayer::set(self : MlregressquantileLayer, i : Int, v : Double) -> MlregressquantileLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_layer_sum(s : MlregressquantileLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileLayer::sum(self : MlregressquantileLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_layer_mean(s : MlregressquantileLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileLayer::mean(self : MlregressquantileLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_layer_scale(s : MlregressquantileLayer, f : Double) -> MlregressquantileLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileLayer::scale(self : MlregressquantileLayer, f : Double) -> MlregressquantileLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_layer_add(a : MlregressquantileLayer, b : MlregressquantileLayer) -> MlregressquantileLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileLayer::add(self : MlregressquantileLayer, other : MlregressquantileLayer) -> MlregressquantileLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_layer_copy(s : MlregressquantileLayer) -> MlregressquantileLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileLayer::copy(self : MlregressquantileLayer) -> MlregressquantileLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_layer_fill(s : MlregressquantileLayer, v : Double) -> MlregressquantileLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileLayer::fill(self : MlregressquantileLayer, v : Double) -> MlregressquantileLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_layer_min(s : MlregressquantileLayer) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileLayer::min(self : MlregressquantileLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_layer_max(s : MlregressquantileLayer) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileLayer::max(self : MlregressquantileLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_layer_to_string(s : MlregressquantileLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileLayer::to_string(self : MlregressquantileLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_quantile_buffer_make(size : Int) -> MlregressquantileBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_buffer_len(s : MlregressquantileBuffer) -> Int { s.size }
+pub fn MlregressquantileBuffer::len(self : MlregressquantileBuffer) -> Int { self.size }
 
-pub fn ml_regress_quantile_buffer_get(s : MlregressquantileBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileBuffer::get(self : MlregressquantileBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_buffer_set(s : MlregressquantileBuffer, i : Int, v : Double) -> MlregressquantileBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileBuffer::set(self : MlregressquantileBuffer, i : Int, v : Double) -> MlregressquantileBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_buffer_sum(s : MlregressquantileBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileBuffer::sum(self : MlregressquantileBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_buffer_mean(s : MlregressquantileBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileBuffer::mean(self : MlregressquantileBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_buffer_scale(s : MlregressquantileBuffer, f : Double) -> MlregressquantileBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileBuffer::scale(self : MlregressquantileBuffer, f : Double) -> MlregressquantileBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_buffer_add(a : MlregressquantileBuffer, b : MlregressquantileBuffer) -> MlregressquantileBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileBuffer::add(self : MlregressquantileBuffer, other : MlregressquantileBuffer) -> MlregressquantileBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_buffer_copy(s : MlregressquantileBuffer) -> MlregressquantileBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileBuffer::copy(self : MlregressquantileBuffer) -> MlregressquantileBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_buffer_fill(s : MlregressquantileBuffer, v : Double) -> MlregressquantileBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileBuffer::fill(self : MlregressquantileBuffer, v : Double) -> MlregressquantileBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_buffer_min(s : MlregressquantileBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileBuffer::min(self : MlregressquantileBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_buffer_max(s : MlregressquantileBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileBuffer::max(self : MlregressquantileBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_buffer_to_string(s : MlregressquantileBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileBuffer::to_string(self : MlregressquantileBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_quantile_cursor_make(size : Int) -> MlregressquantileCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_cursor_len(s : MlregressquantileCursor) -> Int { s.size }
+pub fn MlregressquantileCursor::len(self : MlregressquantileCursor) -> Int { self.size }
 
-pub fn ml_regress_quantile_cursor_get(s : MlregressquantileCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileCursor::get(self : MlregressquantileCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_cursor_set(s : MlregressquantileCursor, i : Int, v : Double) -> MlregressquantileCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileCursor::set(self : MlregressquantileCursor, i : Int, v : Double) -> MlregressquantileCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cursor_sum(s : MlregressquantileCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileCursor::sum(self : MlregressquantileCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_cursor_mean(s : MlregressquantileCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileCursor::mean(self : MlregressquantileCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_cursor_scale(s : MlregressquantileCursor, f : Double) -> MlregressquantileCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileCursor::scale(self : MlregressquantileCursor, f : Double) -> MlregressquantileCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cursor_add(a : MlregressquantileCursor, b : MlregressquantileCursor) -> MlregressquantileCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileCursor::add(self : MlregressquantileCursor, other : MlregressquantileCursor) -> MlregressquantileCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cursor_copy(s : MlregressquantileCursor) -> MlregressquantileCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileCursor::copy(self : MlregressquantileCursor) -> MlregressquantileCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cursor_fill(s : MlregressquantileCursor, v : Double) -> MlregressquantileCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileCursor::fill(self : MlregressquantileCursor, v : Double) -> MlregressquantileCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_cursor_min(s : MlregressquantileCursor) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileCursor::min(self : MlregressquantileCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_cursor_max(s : MlregressquantileCursor) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileCursor::max(self : MlregressquantileCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_cursor_to_string(s : MlregressquantileCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileCursor::to_string(self : MlregressquantileCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileView {
@@ -912,45 +912,45 @@ pub fn ml_regress_quantile_view_make(size : Int) -> MlregressquantileView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_view_len(s : MlregressquantileView) -> Int { s.size }
+pub fn MlregressquantileView::len(self : MlregressquantileView) -> Int { self.size }
 
-pub fn ml_regress_quantile_view_get(s : MlregressquantileView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileView::get(self : MlregressquantileView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_view_set(s : MlregressquantileView, i : Int, v : Double) -> MlregressquantileView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileView::set(self : MlregressquantileView, i : Int, v : Double) -> MlregressquantileView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_view_sum(s : MlregressquantileView) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileView::sum(self : MlregressquantileView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_view_mean(s : MlregressquantileView) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileView::mean(self : MlregressquantileView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_view_scale(s : MlregressquantileView, f : Double) -> MlregressquantileView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileView::scale(self : MlregressquantileView, f : Double) -> MlregressquantileView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_view_add(a : MlregressquantileView, b : MlregressquantileView) -> MlregressquantileView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileView::add(self : MlregressquantileView, other : MlregressquantileView) -> MlregressquantileView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_view_copy(s : MlregressquantileView) -> MlregressquantileView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileView::copy(self : MlregressquantileView) -> MlregressquantileView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_view_fill(s : MlregressquantileView, v : Double) -> MlregressquantileView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileView::fill(self : MlregressquantileView, v : Double) -> MlregressquantileView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_view_min(s : MlregressquantileView) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileView::min(self : MlregressquantileView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_view_max(s : MlregressquantileView) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileView::max(self : MlregressquantileView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_view_to_string(s : MlregressquantileView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileView::to_string(self : MlregressquantileView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_quantile_range_make(size : Int) -> MlregressquantileRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_range_len(s : MlregressquantileRange) -> Int { s.size }
+pub fn MlregressquantileRange::len(self : MlregressquantileRange) -> Int { self.size }
 
-pub fn ml_regress_quantile_range_get(s : MlregressquantileRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileRange::get(self : MlregressquantileRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_range_set(s : MlregressquantileRange, i : Int, v : Double) -> MlregressquantileRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileRange::set(self : MlregressquantileRange, i : Int, v : Double) -> MlregressquantileRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_range_sum(s : MlregressquantileRange) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileRange::sum(self : MlregressquantileRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_range_mean(s : MlregressquantileRange) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileRange::mean(self : MlregressquantileRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_range_scale(s : MlregressquantileRange, f : Double) -> MlregressquantileRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileRange::scale(self : MlregressquantileRange, f : Double) -> MlregressquantileRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_range_add(a : MlregressquantileRange, b : MlregressquantileRange) -> MlregressquantileRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileRange::add(self : MlregressquantileRange, other : MlregressquantileRange) -> MlregressquantileRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_range_copy(s : MlregressquantileRange) -> MlregressquantileRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileRange::copy(self : MlregressquantileRange) -> MlregressquantileRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_range_fill(s : MlregressquantileRange, v : Double) -> MlregressquantileRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileRange::fill(self : MlregressquantileRange, v : Double) -> MlregressquantileRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_range_min(s : MlregressquantileRange) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileRange::min(self : MlregressquantileRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_range_max(s : MlregressquantileRange) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileRange::max(self : MlregressquantileRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_range_to_string(s : MlregressquantileRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileRange::to_string(self : MlregressquantileRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressquantileSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_quantile_slice_make(size : Int) -> MlregressquantileSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_quantile_slice_len(s : MlregressquantileSlice) -> Int { s.size }
+pub fn MlregressquantileSlice::len(self : MlregressquantileSlice) -> Int { self.size }
 
-pub fn ml_regress_quantile_slice_get(s : MlregressquantileSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressquantileSlice::get(self : MlregressquantileSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_quantile_slice_set(s : MlregressquantileSlice, i : Int, v : Double) -> MlregressquantileSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressquantileSlice::set(self : MlregressquantileSlice, i : Int, v : Double) -> MlregressquantileSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_slice_sum(s : MlregressquantileSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregressquantileSlice::sum(self : MlregressquantileSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_quantile_slice_mean(s : MlregressquantileSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregressquantileSlice::mean(self : MlregressquantileSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_quantile_slice_scale(s : MlregressquantileSlice, f : Double) -> MlregressquantileSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressquantileSlice::scale(self : MlregressquantileSlice, f : Double) -> MlregressquantileSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_slice_add(a : MlregressquantileSlice, b : MlregressquantileSlice) -> MlregressquantileSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressquantileSlice::add(self : MlregressquantileSlice, other : MlregressquantileSlice) -> MlregressquantileSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_slice_copy(s : MlregressquantileSlice) -> MlregressquantileSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressquantileSlice::copy(self : MlregressquantileSlice) -> MlregressquantileSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_slice_fill(s : MlregressquantileSlice, v : Double) -> MlregressquantileSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressquantileSlice::fill(self : MlregressquantileSlice, v : Double) -> MlregressquantileSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_quantile_slice_min(s : MlregressquantileSlice) -> Double { @_common.min(s.data) }
+pub fn MlregressquantileSlice::min(self : MlregressquantileSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_quantile_slice_max(s : MlregressquantileSlice) -> Double { @_common.max(s.data) }
+pub fn MlregressquantileSlice::max(self : MlregressquantileSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_quantile_slice_to_string(s : MlregressquantileSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressquantileSlice::to_string(self : MlregressquantileSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

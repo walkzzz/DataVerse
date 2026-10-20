@@ -351,45 +351,45 @@ pub fn crypto_sign_rsa_pkcs_frame_make(size : Int) -> CryptosignrsapkcsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_len(s : CryptosignrsapkcsFrame) -> Int { s.size }
+pub fn CryptosignrsapkcsFrame::len(self : CryptosignrsapkcsFrame) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_frame_get(s : CryptosignrsapkcsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsFrame::get(self : CryptosignrsapkcsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_set(s : CryptosignrsapkcsFrame, i : Int, v : Double) -> CryptosignrsapkcsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsFrame::set(self : CryptosignrsapkcsFrame, i : Int, v : Double) -> CryptosignrsapkcsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_sum(s : CryptosignrsapkcsFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsFrame::sum(self : CryptosignrsapkcsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_frame_mean(s : CryptosignrsapkcsFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsFrame::mean(self : CryptosignrsapkcsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_frame_scale(s : CryptosignrsapkcsFrame, f : Double) -> CryptosignrsapkcsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsFrame::scale(self : CryptosignrsapkcsFrame, f : Double) -> CryptosignrsapkcsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_add(a : CryptosignrsapkcsFrame, b : CryptosignrsapkcsFrame) -> CryptosignrsapkcsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsFrame::add(self : CryptosignrsapkcsFrame, other : CryptosignrsapkcsFrame) -> CryptosignrsapkcsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_copy(s : CryptosignrsapkcsFrame) -> CryptosignrsapkcsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsFrame::copy(self : CryptosignrsapkcsFrame) -> CryptosignrsapkcsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_fill(s : CryptosignrsapkcsFrame, v : Double) -> CryptosignrsapkcsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsFrame::fill(self : CryptosignrsapkcsFrame, v : Double) -> CryptosignrsapkcsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_frame_min(s : CryptosignrsapkcsFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsFrame::min(self : CryptosignrsapkcsFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_frame_max(s : CryptosignrsapkcsFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsFrame::max(self : CryptosignrsapkcsFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_frame_to_string(s : CryptosignrsapkcsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsFrame::to_string(self : CryptosignrsapkcsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsTable {
@@ -402,45 +402,45 @@ pub fn crypto_sign_rsa_pkcs_table_make(size : Int) -> CryptosignrsapkcsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_len(s : CryptosignrsapkcsTable) -> Int { s.size }
+pub fn CryptosignrsapkcsTable::len(self : CryptosignrsapkcsTable) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_table_get(s : CryptosignrsapkcsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsTable::get(self : CryptosignrsapkcsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_set(s : CryptosignrsapkcsTable, i : Int, v : Double) -> CryptosignrsapkcsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsTable::set(self : CryptosignrsapkcsTable, i : Int, v : Double) -> CryptosignrsapkcsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_sum(s : CryptosignrsapkcsTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsTable::sum(self : CryptosignrsapkcsTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_table_mean(s : CryptosignrsapkcsTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsTable::mean(self : CryptosignrsapkcsTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_table_scale(s : CryptosignrsapkcsTable, f : Double) -> CryptosignrsapkcsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsTable::scale(self : CryptosignrsapkcsTable, f : Double) -> CryptosignrsapkcsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_add(a : CryptosignrsapkcsTable, b : CryptosignrsapkcsTable) -> CryptosignrsapkcsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsTable::add(self : CryptosignrsapkcsTable, other : CryptosignrsapkcsTable) -> CryptosignrsapkcsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_copy(s : CryptosignrsapkcsTable) -> CryptosignrsapkcsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsTable::copy(self : CryptosignrsapkcsTable) -> CryptosignrsapkcsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_fill(s : CryptosignrsapkcsTable, v : Double) -> CryptosignrsapkcsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsTable::fill(self : CryptosignrsapkcsTable, v : Double) -> CryptosignrsapkcsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_table_min(s : CryptosignrsapkcsTable) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsTable::min(self : CryptosignrsapkcsTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_table_max(s : CryptosignrsapkcsTable) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsTable::max(self : CryptosignrsapkcsTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_table_to_string(s : CryptosignrsapkcsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsTable::to_string(self : CryptosignrsapkcsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sign_rsa_pkcs_graphn_make(size : Int) -> CryptosignrsapkcsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_len(s : CryptosignrsapkcsGraphN) -> Int { s.size }
+pub fn CryptosignrsapkcsGraphN::len(self : CryptosignrsapkcsGraphN) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_graphn_get(s : CryptosignrsapkcsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsGraphN::get(self : CryptosignrsapkcsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_set(s : CryptosignrsapkcsGraphN, i : Int, v : Double) -> CryptosignrsapkcsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsGraphN::set(self : CryptosignrsapkcsGraphN, i : Int, v : Double) -> CryptosignrsapkcsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_sum(s : CryptosignrsapkcsGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsGraphN::sum(self : CryptosignrsapkcsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_graphn_mean(s : CryptosignrsapkcsGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsGraphN::mean(self : CryptosignrsapkcsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_graphn_scale(s : CryptosignrsapkcsGraphN, f : Double) -> CryptosignrsapkcsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsGraphN::scale(self : CryptosignrsapkcsGraphN, f : Double) -> CryptosignrsapkcsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_add(a : CryptosignrsapkcsGraphN, b : CryptosignrsapkcsGraphN) -> CryptosignrsapkcsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsGraphN::add(self : CryptosignrsapkcsGraphN, other : CryptosignrsapkcsGraphN) -> CryptosignrsapkcsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_copy(s : CryptosignrsapkcsGraphN) -> CryptosignrsapkcsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsGraphN::copy(self : CryptosignrsapkcsGraphN) -> CryptosignrsapkcsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_fill(s : CryptosignrsapkcsGraphN, v : Double) -> CryptosignrsapkcsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsGraphN::fill(self : CryptosignrsapkcsGraphN, v : Double) -> CryptosignrsapkcsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_graphn_min(s : CryptosignrsapkcsGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsGraphN::min(self : CryptosignrsapkcsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_graphn_max(s : CryptosignrsapkcsGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsGraphN::max(self : CryptosignrsapkcsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_graphn_to_string(s : CryptosignrsapkcsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsGraphN::to_string(self : CryptosignrsapkcsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsNode {
@@ -504,45 +504,45 @@ pub fn crypto_sign_rsa_pkcs_node_make(size : Int) -> CryptosignrsapkcsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_len(s : CryptosignrsapkcsNode) -> Int { s.size }
+pub fn CryptosignrsapkcsNode::len(self : CryptosignrsapkcsNode) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_node_get(s : CryptosignrsapkcsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsNode::get(self : CryptosignrsapkcsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_set(s : CryptosignrsapkcsNode, i : Int, v : Double) -> CryptosignrsapkcsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsNode::set(self : CryptosignrsapkcsNode, i : Int, v : Double) -> CryptosignrsapkcsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_sum(s : CryptosignrsapkcsNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsNode::sum(self : CryptosignrsapkcsNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_node_mean(s : CryptosignrsapkcsNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsNode::mean(self : CryptosignrsapkcsNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_node_scale(s : CryptosignrsapkcsNode, f : Double) -> CryptosignrsapkcsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsNode::scale(self : CryptosignrsapkcsNode, f : Double) -> CryptosignrsapkcsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_add(a : CryptosignrsapkcsNode, b : CryptosignrsapkcsNode) -> CryptosignrsapkcsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsNode::add(self : CryptosignrsapkcsNode, other : CryptosignrsapkcsNode) -> CryptosignrsapkcsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_copy(s : CryptosignrsapkcsNode) -> CryptosignrsapkcsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsNode::copy(self : CryptosignrsapkcsNode) -> CryptosignrsapkcsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_fill(s : CryptosignrsapkcsNode, v : Double) -> CryptosignrsapkcsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsNode::fill(self : CryptosignrsapkcsNode, v : Double) -> CryptosignrsapkcsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_node_min(s : CryptosignrsapkcsNode) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsNode::min(self : CryptosignrsapkcsNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_node_max(s : CryptosignrsapkcsNode) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsNode::max(self : CryptosignrsapkcsNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_node_to_string(s : CryptosignrsapkcsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsNode::to_string(self : CryptosignrsapkcsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sign_rsa_pkcs_edge_make(size : Int) -> CryptosignrsapkcsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_len(s : CryptosignrsapkcsEdge) -> Int { s.size }
+pub fn CryptosignrsapkcsEdge::len(self : CryptosignrsapkcsEdge) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_edge_get(s : CryptosignrsapkcsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsEdge::get(self : CryptosignrsapkcsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_set(s : CryptosignrsapkcsEdge, i : Int, v : Double) -> CryptosignrsapkcsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsEdge::set(self : CryptosignrsapkcsEdge, i : Int, v : Double) -> CryptosignrsapkcsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_sum(s : CryptosignrsapkcsEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsEdge::sum(self : CryptosignrsapkcsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_edge_mean(s : CryptosignrsapkcsEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsEdge::mean(self : CryptosignrsapkcsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_edge_scale(s : CryptosignrsapkcsEdge, f : Double) -> CryptosignrsapkcsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsEdge::scale(self : CryptosignrsapkcsEdge, f : Double) -> CryptosignrsapkcsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_add(a : CryptosignrsapkcsEdge, b : CryptosignrsapkcsEdge) -> CryptosignrsapkcsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsEdge::add(self : CryptosignrsapkcsEdge, other : CryptosignrsapkcsEdge) -> CryptosignrsapkcsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_copy(s : CryptosignrsapkcsEdge) -> CryptosignrsapkcsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsEdge::copy(self : CryptosignrsapkcsEdge) -> CryptosignrsapkcsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_fill(s : CryptosignrsapkcsEdge, v : Double) -> CryptosignrsapkcsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsEdge::fill(self : CryptosignrsapkcsEdge, v : Double) -> CryptosignrsapkcsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_edge_min(s : CryptosignrsapkcsEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsEdge::min(self : CryptosignrsapkcsEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_edge_max(s : CryptosignrsapkcsEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsEdge::max(self : CryptosignrsapkcsEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_edge_to_string(s : CryptosignrsapkcsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsEdge::to_string(self : CryptosignrsapkcsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsPath {
@@ -606,45 +606,45 @@ pub fn crypto_sign_rsa_pkcs_path_make(size : Int) -> CryptosignrsapkcsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_len(s : CryptosignrsapkcsPath) -> Int { s.size }
+pub fn CryptosignrsapkcsPath::len(self : CryptosignrsapkcsPath) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_path_get(s : CryptosignrsapkcsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsPath::get(self : CryptosignrsapkcsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_set(s : CryptosignrsapkcsPath, i : Int, v : Double) -> CryptosignrsapkcsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsPath::set(self : CryptosignrsapkcsPath, i : Int, v : Double) -> CryptosignrsapkcsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_sum(s : CryptosignrsapkcsPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsPath::sum(self : CryptosignrsapkcsPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_path_mean(s : CryptosignrsapkcsPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsPath::mean(self : CryptosignrsapkcsPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_path_scale(s : CryptosignrsapkcsPath, f : Double) -> CryptosignrsapkcsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsPath::scale(self : CryptosignrsapkcsPath, f : Double) -> CryptosignrsapkcsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_add(a : CryptosignrsapkcsPath, b : CryptosignrsapkcsPath) -> CryptosignrsapkcsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsPath::add(self : CryptosignrsapkcsPath, other : CryptosignrsapkcsPath) -> CryptosignrsapkcsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_copy(s : CryptosignrsapkcsPath) -> CryptosignrsapkcsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsPath::copy(self : CryptosignrsapkcsPath) -> CryptosignrsapkcsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_fill(s : CryptosignrsapkcsPath, v : Double) -> CryptosignrsapkcsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsPath::fill(self : CryptosignrsapkcsPath, v : Double) -> CryptosignrsapkcsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_path_min(s : CryptosignrsapkcsPath) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsPath::min(self : CryptosignrsapkcsPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_path_max(s : CryptosignrsapkcsPath) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsPath::max(self : CryptosignrsapkcsPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_path_to_string(s : CryptosignrsapkcsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsPath::to_string(self : CryptosignrsapkcsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sign_rsa_pkcs_cluster_make(size : Int) -> CryptosignrsapkcsCluster
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_len(s : CryptosignrsapkcsCluster) -> Int { s.size }
+pub fn CryptosignrsapkcsCluster::len(self : CryptosignrsapkcsCluster) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_cluster_get(s : CryptosignrsapkcsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsCluster::get(self : CryptosignrsapkcsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_set(s : CryptosignrsapkcsCluster, i : Int, v : Double) -> CryptosignrsapkcsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCluster::set(self : CryptosignrsapkcsCluster, i : Int, v : Double) -> CryptosignrsapkcsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_sum(s : CryptosignrsapkcsCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsCluster::sum(self : CryptosignrsapkcsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cluster_mean(s : CryptosignrsapkcsCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsCluster::mean(self : CryptosignrsapkcsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cluster_scale(s : CryptosignrsapkcsCluster, f : Double) -> CryptosignrsapkcsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCluster::scale(self : CryptosignrsapkcsCluster, f : Double) -> CryptosignrsapkcsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_add(a : CryptosignrsapkcsCluster, b : CryptosignrsapkcsCluster) -> CryptosignrsapkcsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsCluster::add(self : CryptosignrsapkcsCluster, other : CryptosignrsapkcsCluster) -> CryptosignrsapkcsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_copy(s : CryptosignrsapkcsCluster) -> CryptosignrsapkcsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCluster::copy(self : CryptosignrsapkcsCluster) -> CryptosignrsapkcsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_fill(s : CryptosignrsapkcsCluster, v : Double) -> CryptosignrsapkcsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCluster::fill(self : CryptosignrsapkcsCluster, v : Double) -> CryptosignrsapkcsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cluster_min(s : CryptosignrsapkcsCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsCluster::min(self : CryptosignrsapkcsCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cluster_max(s : CryptosignrsapkcsCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsCluster::max(self : CryptosignrsapkcsCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cluster_to_string(s : CryptosignrsapkcsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsCluster::to_string(self : CryptosignrsapkcsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsModel {
@@ -708,45 +708,45 @@ pub fn crypto_sign_rsa_pkcs_model_make(size : Int) -> CryptosignrsapkcsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_len(s : CryptosignrsapkcsModel) -> Int { s.size }
+pub fn CryptosignrsapkcsModel::len(self : CryptosignrsapkcsModel) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_model_get(s : CryptosignrsapkcsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsModel::get(self : CryptosignrsapkcsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_set(s : CryptosignrsapkcsModel, i : Int, v : Double) -> CryptosignrsapkcsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsModel::set(self : CryptosignrsapkcsModel, i : Int, v : Double) -> CryptosignrsapkcsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_sum(s : CryptosignrsapkcsModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsModel::sum(self : CryptosignrsapkcsModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_model_mean(s : CryptosignrsapkcsModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsModel::mean(self : CryptosignrsapkcsModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_model_scale(s : CryptosignrsapkcsModel, f : Double) -> CryptosignrsapkcsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsModel::scale(self : CryptosignrsapkcsModel, f : Double) -> CryptosignrsapkcsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_add(a : CryptosignrsapkcsModel, b : CryptosignrsapkcsModel) -> CryptosignrsapkcsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsModel::add(self : CryptosignrsapkcsModel, other : CryptosignrsapkcsModel) -> CryptosignrsapkcsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_copy(s : CryptosignrsapkcsModel) -> CryptosignrsapkcsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsModel::copy(self : CryptosignrsapkcsModel) -> CryptosignrsapkcsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_fill(s : CryptosignrsapkcsModel, v : Double) -> CryptosignrsapkcsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsModel::fill(self : CryptosignrsapkcsModel, v : Double) -> CryptosignrsapkcsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_model_min(s : CryptosignrsapkcsModel) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsModel::min(self : CryptosignrsapkcsModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_model_max(s : CryptosignrsapkcsModel) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsModel::max(self : CryptosignrsapkcsModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_model_to_string(s : CryptosignrsapkcsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsModel::to_string(self : CryptosignrsapkcsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sign_rsa_pkcs_layer_make(size : Int) -> CryptosignrsapkcsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_len(s : CryptosignrsapkcsLayer) -> Int { s.size }
+pub fn CryptosignrsapkcsLayer::len(self : CryptosignrsapkcsLayer) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_layer_get(s : CryptosignrsapkcsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsLayer::get(self : CryptosignrsapkcsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_set(s : CryptosignrsapkcsLayer, i : Int, v : Double) -> CryptosignrsapkcsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsLayer::set(self : CryptosignrsapkcsLayer, i : Int, v : Double) -> CryptosignrsapkcsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_sum(s : CryptosignrsapkcsLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsLayer::sum(self : CryptosignrsapkcsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_layer_mean(s : CryptosignrsapkcsLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsLayer::mean(self : CryptosignrsapkcsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_layer_scale(s : CryptosignrsapkcsLayer, f : Double) -> CryptosignrsapkcsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsLayer::scale(self : CryptosignrsapkcsLayer, f : Double) -> CryptosignrsapkcsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_add(a : CryptosignrsapkcsLayer, b : CryptosignrsapkcsLayer) -> CryptosignrsapkcsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsLayer::add(self : CryptosignrsapkcsLayer, other : CryptosignrsapkcsLayer) -> CryptosignrsapkcsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_copy(s : CryptosignrsapkcsLayer) -> CryptosignrsapkcsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsLayer::copy(self : CryptosignrsapkcsLayer) -> CryptosignrsapkcsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_fill(s : CryptosignrsapkcsLayer, v : Double) -> CryptosignrsapkcsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsLayer::fill(self : CryptosignrsapkcsLayer, v : Double) -> CryptosignrsapkcsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_layer_min(s : CryptosignrsapkcsLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsLayer::min(self : CryptosignrsapkcsLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_layer_max(s : CryptosignrsapkcsLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsLayer::max(self : CryptosignrsapkcsLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_layer_to_string(s : CryptosignrsapkcsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsLayer::to_string(self : CryptosignrsapkcsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sign_rsa_pkcs_buffer_make(size : Int) -> CryptosignrsapkcsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_len(s : CryptosignrsapkcsBuffer) -> Int { s.size }
+pub fn CryptosignrsapkcsBuffer::len(self : CryptosignrsapkcsBuffer) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_buffer_get(s : CryptosignrsapkcsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsBuffer::get(self : CryptosignrsapkcsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_set(s : CryptosignrsapkcsBuffer, i : Int, v : Double) -> CryptosignrsapkcsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsBuffer::set(self : CryptosignrsapkcsBuffer, i : Int, v : Double) -> CryptosignrsapkcsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_sum(s : CryptosignrsapkcsBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsBuffer::sum(self : CryptosignrsapkcsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_buffer_mean(s : CryptosignrsapkcsBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsBuffer::mean(self : CryptosignrsapkcsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_buffer_scale(s : CryptosignrsapkcsBuffer, f : Double) -> CryptosignrsapkcsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsBuffer::scale(self : CryptosignrsapkcsBuffer, f : Double) -> CryptosignrsapkcsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_add(a : CryptosignrsapkcsBuffer, b : CryptosignrsapkcsBuffer) -> CryptosignrsapkcsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsBuffer::add(self : CryptosignrsapkcsBuffer, other : CryptosignrsapkcsBuffer) -> CryptosignrsapkcsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_copy(s : CryptosignrsapkcsBuffer) -> CryptosignrsapkcsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsBuffer::copy(self : CryptosignrsapkcsBuffer) -> CryptosignrsapkcsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_fill(s : CryptosignrsapkcsBuffer, v : Double) -> CryptosignrsapkcsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsBuffer::fill(self : CryptosignrsapkcsBuffer, v : Double) -> CryptosignrsapkcsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_buffer_min(s : CryptosignrsapkcsBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsBuffer::min(self : CryptosignrsapkcsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_buffer_max(s : CryptosignrsapkcsBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsBuffer::max(self : CryptosignrsapkcsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_buffer_to_string(s : CryptosignrsapkcsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsBuffer::to_string(self : CryptosignrsapkcsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sign_rsa_pkcs_cursor_make(size : Int) -> CryptosignrsapkcsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_len(s : CryptosignrsapkcsCursor) -> Int { s.size }
+pub fn CryptosignrsapkcsCursor::len(self : CryptosignrsapkcsCursor) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_cursor_get(s : CryptosignrsapkcsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsCursor::get(self : CryptosignrsapkcsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_set(s : CryptosignrsapkcsCursor, i : Int, v : Double) -> CryptosignrsapkcsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCursor::set(self : CryptosignrsapkcsCursor, i : Int, v : Double) -> CryptosignrsapkcsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_sum(s : CryptosignrsapkcsCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsCursor::sum(self : CryptosignrsapkcsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cursor_mean(s : CryptosignrsapkcsCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsCursor::mean(self : CryptosignrsapkcsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cursor_scale(s : CryptosignrsapkcsCursor, f : Double) -> CryptosignrsapkcsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCursor::scale(self : CryptosignrsapkcsCursor, f : Double) -> CryptosignrsapkcsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_add(a : CryptosignrsapkcsCursor, b : CryptosignrsapkcsCursor) -> CryptosignrsapkcsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsCursor::add(self : CryptosignrsapkcsCursor, other : CryptosignrsapkcsCursor) -> CryptosignrsapkcsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_copy(s : CryptosignrsapkcsCursor) -> CryptosignrsapkcsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCursor::copy(self : CryptosignrsapkcsCursor) -> CryptosignrsapkcsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_fill(s : CryptosignrsapkcsCursor, v : Double) -> CryptosignrsapkcsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsCursor::fill(self : CryptosignrsapkcsCursor, v : Double) -> CryptosignrsapkcsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_cursor_min(s : CryptosignrsapkcsCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsCursor::min(self : CryptosignrsapkcsCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cursor_max(s : CryptosignrsapkcsCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsCursor::max(self : CryptosignrsapkcsCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_cursor_to_string(s : CryptosignrsapkcsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsCursor::to_string(self : CryptosignrsapkcsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsView {
@@ -912,45 +912,45 @@ pub fn crypto_sign_rsa_pkcs_view_make(size : Int) -> CryptosignrsapkcsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_len(s : CryptosignrsapkcsView) -> Int { s.size }
+pub fn CryptosignrsapkcsView::len(self : CryptosignrsapkcsView) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_view_get(s : CryptosignrsapkcsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsView::get(self : CryptosignrsapkcsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_set(s : CryptosignrsapkcsView, i : Int, v : Double) -> CryptosignrsapkcsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsView::set(self : CryptosignrsapkcsView, i : Int, v : Double) -> CryptosignrsapkcsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_sum(s : CryptosignrsapkcsView) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsView::sum(self : CryptosignrsapkcsView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_view_mean(s : CryptosignrsapkcsView) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsView::mean(self : CryptosignrsapkcsView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_view_scale(s : CryptosignrsapkcsView, f : Double) -> CryptosignrsapkcsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsView::scale(self : CryptosignrsapkcsView, f : Double) -> CryptosignrsapkcsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_add(a : CryptosignrsapkcsView, b : CryptosignrsapkcsView) -> CryptosignrsapkcsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsView::add(self : CryptosignrsapkcsView, other : CryptosignrsapkcsView) -> CryptosignrsapkcsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_copy(s : CryptosignrsapkcsView) -> CryptosignrsapkcsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsView::copy(self : CryptosignrsapkcsView) -> CryptosignrsapkcsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_fill(s : CryptosignrsapkcsView, v : Double) -> CryptosignrsapkcsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsView::fill(self : CryptosignrsapkcsView, v : Double) -> CryptosignrsapkcsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_view_min(s : CryptosignrsapkcsView) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsView::min(self : CryptosignrsapkcsView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_view_max(s : CryptosignrsapkcsView) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsView::max(self : CryptosignrsapkcsView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_view_to_string(s : CryptosignrsapkcsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsView::to_string(self : CryptosignrsapkcsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsRange {
@@ -963,45 +963,45 @@ pub fn crypto_sign_rsa_pkcs_range_make(size : Int) -> CryptosignrsapkcsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_len(s : CryptosignrsapkcsRange) -> Int { s.size }
+pub fn CryptosignrsapkcsRange::len(self : CryptosignrsapkcsRange) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_range_get(s : CryptosignrsapkcsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsRange::get(self : CryptosignrsapkcsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_set(s : CryptosignrsapkcsRange, i : Int, v : Double) -> CryptosignrsapkcsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsRange::set(self : CryptosignrsapkcsRange, i : Int, v : Double) -> CryptosignrsapkcsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_sum(s : CryptosignrsapkcsRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsRange::sum(self : CryptosignrsapkcsRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_range_mean(s : CryptosignrsapkcsRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsRange::mean(self : CryptosignrsapkcsRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_range_scale(s : CryptosignrsapkcsRange, f : Double) -> CryptosignrsapkcsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsRange::scale(self : CryptosignrsapkcsRange, f : Double) -> CryptosignrsapkcsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_add(a : CryptosignrsapkcsRange, b : CryptosignrsapkcsRange) -> CryptosignrsapkcsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsRange::add(self : CryptosignrsapkcsRange, other : CryptosignrsapkcsRange) -> CryptosignrsapkcsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_copy(s : CryptosignrsapkcsRange) -> CryptosignrsapkcsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsRange::copy(self : CryptosignrsapkcsRange) -> CryptosignrsapkcsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_fill(s : CryptosignrsapkcsRange, v : Double) -> CryptosignrsapkcsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsRange::fill(self : CryptosignrsapkcsRange, v : Double) -> CryptosignrsapkcsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_range_min(s : CryptosignrsapkcsRange) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsRange::min(self : CryptosignrsapkcsRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_range_max(s : CryptosignrsapkcsRange) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsRange::max(self : CryptosignrsapkcsRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_range_to_string(s : CryptosignrsapkcsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsRange::to_string(self : CryptosignrsapkcsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosignrsapkcsSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sign_rsa_pkcs_slice_make(size : Int) -> CryptosignrsapkcsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_len(s : CryptosignrsapkcsSlice) -> Int { s.size }
+pub fn CryptosignrsapkcsSlice::len(self : CryptosignrsapkcsSlice) -> Int { self.size }
 
-pub fn crypto_sign_rsa_pkcs_slice_get(s : CryptosignrsapkcsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosignrsapkcsSlice::get(self : CryptosignrsapkcsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_set(s : CryptosignrsapkcsSlice, i : Int, v : Double) -> CryptosignrsapkcsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsSlice::set(self : CryptosignrsapkcsSlice, i : Int, v : Double) -> CryptosignrsapkcsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_sum(s : CryptosignrsapkcsSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosignrsapkcsSlice::sum(self : CryptosignrsapkcsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_slice_mean(s : CryptosignrsapkcsSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosignrsapkcsSlice::mean(self : CryptosignrsapkcsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_slice_scale(s : CryptosignrsapkcsSlice, f : Double) -> CryptosignrsapkcsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsSlice::scale(self : CryptosignrsapkcsSlice, f : Double) -> CryptosignrsapkcsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_add(a : CryptosignrsapkcsSlice, b : CryptosignrsapkcsSlice) -> CryptosignrsapkcsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosignrsapkcsSlice::add(self : CryptosignrsapkcsSlice, other : CryptosignrsapkcsSlice) -> CryptosignrsapkcsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_copy(s : CryptosignrsapkcsSlice) -> CryptosignrsapkcsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsSlice::copy(self : CryptosignrsapkcsSlice) -> CryptosignrsapkcsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_fill(s : CryptosignrsapkcsSlice, v : Double) -> CryptosignrsapkcsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosignrsapkcsSlice::fill(self : CryptosignrsapkcsSlice, v : Double) -> CryptosignrsapkcsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_rsa_pkcs_slice_min(s : CryptosignrsapkcsSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosignrsapkcsSlice::min(self : CryptosignrsapkcsSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_slice_max(s : CryptosignrsapkcsSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosignrsapkcsSlice::max(self : CryptosignrsapkcsSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_rsa_pkcs_slice_to_string(s : CryptosignrsapkcsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosignrsapkcsSlice::to_string(self : CryptosignrsapkcsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

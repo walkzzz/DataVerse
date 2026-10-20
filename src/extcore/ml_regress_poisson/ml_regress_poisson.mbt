@@ -351,45 +351,45 @@ pub fn ml_regress_poisson_frame_make(size : Int) -> MlregresspoissonFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_frame_len(s : MlregresspoissonFrame) -> Int { s.size }
+pub fn MlregresspoissonFrame::len(self : MlregresspoissonFrame) -> Int { self.size }
 
-pub fn ml_regress_poisson_frame_get(s : MlregresspoissonFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonFrame::get(self : MlregresspoissonFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_frame_set(s : MlregresspoissonFrame, i : Int, v : Double) -> MlregresspoissonFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonFrame::set(self : MlregresspoissonFrame, i : Int, v : Double) -> MlregresspoissonFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_frame_sum(s : MlregresspoissonFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonFrame::sum(self : MlregresspoissonFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_frame_mean(s : MlregresspoissonFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonFrame::mean(self : MlregresspoissonFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_frame_scale(s : MlregresspoissonFrame, f : Double) -> MlregresspoissonFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonFrame::scale(self : MlregresspoissonFrame, f : Double) -> MlregresspoissonFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_frame_add(a : MlregresspoissonFrame, b : MlregresspoissonFrame) -> MlregresspoissonFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonFrame::add(self : MlregresspoissonFrame, other : MlregresspoissonFrame) -> MlregresspoissonFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_frame_copy(s : MlregresspoissonFrame) -> MlregresspoissonFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonFrame::copy(self : MlregresspoissonFrame) -> MlregresspoissonFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_frame_fill(s : MlregresspoissonFrame, v : Double) -> MlregresspoissonFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonFrame::fill(self : MlregresspoissonFrame, v : Double) -> MlregresspoissonFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_frame_min(s : MlregresspoissonFrame) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonFrame::min(self : MlregresspoissonFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_frame_max(s : MlregresspoissonFrame) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonFrame::max(self : MlregresspoissonFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_frame_to_string(s : MlregresspoissonFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonFrame::to_string(self : MlregresspoissonFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_poisson_table_make(size : Int) -> MlregresspoissonTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_table_len(s : MlregresspoissonTable) -> Int { s.size }
+pub fn MlregresspoissonTable::len(self : MlregresspoissonTable) -> Int { self.size }
 
-pub fn ml_regress_poisson_table_get(s : MlregresspoissonTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonTable::get(self : MlregresspoissonTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_table_set(s : MlregresspoissonTable, i : Int, v : Double) -> MlregresspoissonTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonTable::set(self : MlregresspoissonTable, i : Int, v : Double) -> MlregresspoissonTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_table_sum(s : MlregresspoissonTable) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonTable::sum(self : MlregresspoissonTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_table_mean(s : MlregresspoissonTable) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonTable::mean(self : MlregresspoissonTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_table_scale(s : MlregresspoissonTable, f : Double) -> MlregresspoissonTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonTable::scale(self : MlregresspoissonTable, f : Double) -> MlregresspoissonTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_table_add(a : MlregresspoissonTable, b : MlregresspoissonTable) -> MlregresspoissonTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonTable::add(self : MlregresspoissonTable, other : MlregresspoissonTable) -> MlregresspoissonTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_table_copy(s : MlregresspoissonTable) -> MlregresspoissonTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonTable::copy(self : MlregresspoissonTable) -> MlregresspoissonTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_table_fill(s : MlregresspoissonTable, v : Double) -> MlregresspoissonTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonTable::fill(self : MlregresspoissonTable, v : Double) -> MlregresspoissonTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_table_min(s : MlregresspoissonTable) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonTable::min(self : MlregresspoissonTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_table_max(s : MlregresspoissonTable) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonTable::max(self : MlregresspoissonTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_table_to_string(s : MlregresspoissonTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonTable::to_string(self : MlregresspoissonTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_poisson_graphn_make(size : Int) -> MlregresspoissonGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_graphn_len(s : MlregresspoissonGraphN) -> Int { s.size }
+pub fn MlregresspoissonGraphN::len(self : MlregresspoissonGraphN) -> Int { self.size }
 
-pub fn ml_regress_poisson_graphn_get(s : MlregresspoissonGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonGraphN::get(self : MlregresspoissonGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_graphn_set(s : MlregresspoissonGraphN, i : Int, v : Double) -> MlregresspoissonGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonGraphN::set(self : MlregresspoissonGraphN, i : Int, v : Double) -> MlregresspoissonGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_graphn_sum(s : MlregresspoissonGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonGraphN::sum(self : MlregresspoissonGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_graphn_mean(s : MlregresspoissonGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonGraphN::mean(self : MlregresspoissonGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_graphn_scale(s : MlregresspoissonGraphN, f : Double) -> MlregresspoissonGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonGraphN::scale(self : MlregresspoissonGraphN, f : Double) -> MlregresspoissonGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_graphn_add(a : MlregresspoissonGraphN, b : MlregresspoissonGraphN) -> MlregresspoissonGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonGraphN::add(self : MlregresspoissonGraphN, other : MlregresspoissonGraphN) -> MlregresspoissonGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_graphn_copy(s : MlregresspoissonGraphN) -> MlregresspoissonGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonGraphN::copy(self : MlregresspoissonGraphN) -> MlregresspoissonGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_graphn_fill(s : MlregresspoissonGraphN, v : Double) -> MlregresspoissonGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonGraphN::fill(self : MlregresspoissonGraphN, v : Double) -> MlregresspoissonGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_graphn_min(s : MlregresspoissonGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonGraphN::min(self : MlregresspoissonGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_graphn_max(s : MlregresspoissonGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonGraphN::max(self : MlregresspoissonGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_graphn_to_string(s : MlregresspoissonGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonGraphN::to_string(self : MlregresspoissonGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_poisson_node_make(size : Int) -> MlregresspoissonNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_node_len(s : MlregresspoissonNode) -> Int { s.size }
+pub fn MlregresspoissonNode::len(self : MlregresspoissonNode) -> Int { self.size }
 
-pub fn ml_regress_poisson_node_get(s : MlregresspoissonNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonNode::get(self : MlregresspoissonNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_node_set(s : MlregresspoissonNode, i : Int, v : Double) -> MlregresspoissonNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonNode::set(self : MlregresspoissonNode, i : Int, v : Double) -> MlregresspoissonNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_node_sum(s : MlregresspoissonNode) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonNode::sum(self : MlregresspoissonNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_node_mean(s : MlregresspoissonNode) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonNode::mean(self : MlregresspoissonNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_node_scale(s : MlregresspoissonNode, f : Double) -> MlregresspoissonNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonNode::scale(self : MlregresspoissonNode, f : Double) -> MlregresspoissonNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_node_add(a : MlregresspoissonNode, b : MlregresspoissonNode) -> MlregresspoissonNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonNode::add(self : MlregresspoissonNode, other : MlregresspoissonNode) -> MlregresspoissonNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_node_copy(s : MlregresspoissonNode) -> MlregresspoissonNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonNode::copy(self : MlregresspoissonNode) -> MlregresspoissonNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_node_fill(s : MlregresspoissonNode, v : Double) -> MlregresspoissonNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonNode::fill(self : MlregresspoissonNode, v : Double) -> MlregresspoissonNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_node_min(s : MlregresspoissonNode) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonNode::min(self : MlregresspoissonNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_node_max(s : MlregresspoissonNode) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonNode::max(self : MlregresspoissonNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_node_to_string(s : MlregresspoissonNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonNode::to_string(self : MlregresspoissonNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_poisson_edge_make(size : Int) -> MlregresspoissonEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_edge_len(s : MlregresspoissonEdge) -> Int { s.size }
+pub fn MlregresspoissonEdge::len(self : MlregresspoissonEdge) -> Int { self.size }
 
-pub fn ml_regress_poisson_edge_get(s : MlregresspoissonEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonEdge::get(self : MlregresspoissonEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_edge_set(s : MlregresspoissonEdge, i : Int, v : Double) -> MlregresspoissonEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonEdge::set(self : MlregresspoissonEdge, i : Int, v : Double) -> MlregresspoissonEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_edge_sum(s : MlregresspoissonEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonEdge::sum(self : MlregresspoissonEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_edge_mean(s : MlregresspoissonEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonEdge::mean(self : MlregresspoissonEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_edge_scale(s : MlregresspoissonEdge, f : Double) -> MlregresspoissonEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonEdge::scale(self : MlregresspoissonEdge, f : Double) -> MlregresspoissonEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_edge_add(a : MlregresspoissonEdge, b : MlregresspoissonEdge) -> MlregresspoissonEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonEdge::add(self : MlregresspoissonEdge, other : MlregresspoissonEdge) -> MlregresspoissonEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_edge_copy(s : MlregresspoissonEdge) -> MlregresspoissonEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonEdge::copy(self : MlregresspoissonEdge) -> MlregresspoissonEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_edge_fill(s : MlregresspoissonEdge, v : Double) -> MlregresspoissonEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonEdge::fill(self : MlregresspoissonEdge, v : Double) -> MlregresspoissonEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_edge_min(s : MlregresspoissonEdge) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonEdge::min(self : MlregresspoissonEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_edge_max(s : MlregresspoissonEdge) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonEdge::max(self : MlregresspoissonEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_edge_to_string(s : MlregresspoissonEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonEdge::to_string(self : MlregresspoissonEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_poisson_path_make(size : Int) -> MlregresspoissonPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_path_len(s : MlregresspoissonPath) -> Int { s.size }
+pub fn MlregresspoissonPath::len(self : MlregresspoissonPath) -> Int { self.size }
 
-pub fn ml_regress_poisson_path_get(s : MlregresspoissonPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonPath::get(self : MlregresspoissonPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_path_set(s : MlregresspoissonPath, i : Int, v : Double) -> MlregresspoissonPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonPath::set(self : MlregresspoissonPath, i : Int, v : Double) -> MlregresspoissonPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_path_sum(s : MlregresspoissonPath) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonPath::sum(self : MlregresspoissonPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_path_mean(s : MlregresspoissonPath) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonPath::mean(self : MlregresspoissonPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_path_scale(s : MlregresspoissonPath, f : Double) -> MlregresspoissonPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonPath::scale(self : MlregresspoissonPath, f : Double) -> MlregresspoissonPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_path_add(a : MlregresspoissonPath, b : MlregresspoissonPath) -> MlregresspoissonPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonPath::add(self : MlregresspoissonPath, other : MlregresspoissonPath) -> MlregresspoissonPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_path_copy(s : MlregresspoissonPath) -> MlregresspoissonPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonPath::copy(self : MlregresspoissonPath) -> MlregresspoissonPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_path_fill(s : MlregresspoissonPath, v : Double) -> MlregresspoissonPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonPath::fill(self : MlregresspoissonPath, v : Double) -> MlregresspoissonPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_path_min(s : MlregresspoissonPath) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonPath::min(self : MlregresspoissonPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_path_max(s : MlregresspoissonPath) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonPath::max(self : MlregresspoissonPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_path_to_string(s : MlregresspoissonPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonPath::to_string(self : MlregresspoissonPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_poisson_cluster_make(size : Int) -> MlregresspoissonCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_cluster_len(s : MlregresspoissonCluster) -> Int { s.size }
+pub fn MlregresspoissonCluster::len(self : MlregresspoissonCluster) -> Int { self.size }
 
-pub fn ml_regress_poisson_cluster_get(s : MlregresspoissonCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonCluster::get(self : MlregresspoissonCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_cluster_set(s : MlregresspoissonCluster, i : Int, v : Double) -> MlregresspoissonCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonCluster::set(self : MlregresspoissonCluster, i : Int, v : Double) -> MlregresspoissonCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cluster_sum(s : MlregresspoissonCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonCluster::sum(self : MlregresspoissonCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_cluster_mean(s : MlregresspoissonCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonCluster::mean(self : MlregresspoissonCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_cluster_scale(s : MlregresspoissonCluster, f : Double) -> MlregresspoissonCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonCluster::scale(self : MlregresspoissonCluster, f : Double) -> MlregresspoissonCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cluster_add(a : MlregresspoissonCluster, b : MlregresspoissonCluster) -> MlregresspoissonCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonCluster::add(self : MlregresspoissonCluster, other : MlregresspoissonCluster) -> MlregresspoissonCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cluster_copy(s : MlregresspoissonCluster) -> MlregresspoissonCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonCluster::copy(self : MlregresspoissonCluster) -> MlregresspoissonCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cluster_fill(s : MlregresspoissonCluster, v : Double) -> MlregresspoissonCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonCluster::fill(self : MlregresspoissonCluster, v : Double) -> MlregresspoissonCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cluster_min(s : MlregresspoissonCluster) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonCluster::min(self : MlregresspoissonCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_cluster_max(s : MlregresspoissonCluster) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonCluster::max(self : MlregresspoissonCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_cluster_to_string(s : MlregresspoissonCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonCluster::to_string(self : MlregresspoissonCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_poisson_model_make(size : Int) -> MlregresspoissonModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_model_len(s : MlregresspoissonModel) -> Int { s.size }
+pub fn MlregresspoissonModel::len(self : MlregresspoissonModel) -> Int { self.size }
 
-pub fn ml_regress_poisson_model_get(s : MlregresspoissonModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonModel::get(self : MlregresspoissonModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_model_set(s : MlregresspoissonModel, i : Int, v : Double) -> MlregresspoissonModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonModel::set(self : MlregresspoissonModel, i : Int, v : Double) -> MlregresspoissonModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_model_sum(s : MlregresspoissonModel) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonModel::sum(self : MlregresspoissonModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_model_mean(s : MlregresspoissonModel) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonModel::mean(self : MlregresspoissonModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_model_scale(s : MlregresspoissonModel, f : Double) -> MlregresspoissonModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonModel::scale(self : MlregresspoissonModel, f : Double) -> MlregresspoissonModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_model_add(a : MlregresspoissonModel, b : MlregresspoissonModel) -> MlregresspoissonModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonModel::add(self : MlregresspoissonModel, other : MlregresspoissonModel) -> MlregresspoissonModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_model_copy(s : MlregresspoissonModel) -> MlregresspoissonModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonModel::copy(self : MlregresspoissonModel) -> MlregresspoissonModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_model_fill(s : MlregresspoissonModel, v : Double) -> MlregresspoissonModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonModel::fill(self : MlregresspoissonModel, v : Double) -> MlregresspoissonModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_model_min(s : MlregresspoissonModel) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonModel::min(self : MlregresspoissonModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_model_max(s : MlregresspoissonModel) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonModel::max(self : MlregresspoissonModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_model_to_string(s : MlregresspoissonModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonModel::to_string(self : MlregresspoissonModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_poisson_layer_make(size : Int) -> MlregresspoissonLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_layer_len(s : MlregresspoissonLayer) -> Int { s.size }
+pub fn MlregresspoissonLayer::len(self : MlregresspoissonLayer) -> Int { self.size }
 
-pub fn ml_regress_poisson_layer_get(s : MlregresspoissonLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonLayer::get(self : MlregresspoissonLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_layer_set(s : MlregresspoissonLayer, i : Int, v : Double) -> MlregresspoissonLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonLayer::set(self : MlregresspoissonLayer, i : Int, v : Double) -> MlregresspoissonLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_layer_sum(s : MlregresspoissonLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonLayer::sum(self : MlregresspoissonLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_layer_mean(s : MlregresspoissonLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonLayer::mean(self : MlregresspoissonLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_layer_scale(s : MlregresspoissonLayer, f : Double) -> MlregresspoissonLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonLayer::scale(self : MlregresspoissonLayer, f : Double) -> MlregresspoissonLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_layer_add(a : MlregresspoissonLayer, b : MlregresspoissonLayer) -> MlregresspoissonLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonLayer::add(self : MlregresspoissonLayer, other : MlregresspoissonLayer) -> MlregresspoissonLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_layer_copy(s : MlregresspoissonLayer) -> MlregresspoissonLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonLayer::copy(self : MlregresspoissonLayer) -> MlregresspoissonLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_layer_fill(s : MlregresspoissonLayer, v : Double) -> MlregresspoissonLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonLayer::fill(self : MlregresspoissonLayer, v : Double) -> MlregresspoissonLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_layer_min(s : MlregresspoissonLayer) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonLayer::min(self : MlregresspoissonLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_layer_max(s : MlregresspoissonLayer) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonLayer::max(self : MlregresspoissonLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_layer_to_string(s : MlregresspoissonLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonLayer::to_string(self : MlregresspoissonLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_poisson_buffer_make(size : Int) -> MlregresspoissonBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_buffer_len(s : MlregresspoissonBuffer) -> Int { s.size }
+pub fn MlregresspoissonBuffer::len(self : MlregresspoissonBuffer) -> Int { self.size }
 
-pub fn ml_regress_poisson_buffer_get(s : MlregresspoissonBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonBuffer::get(self : MlregresspoissonBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_buffer_set(s : MlregresspoissonBuffer, i : Int, v : Double) -> MlregresspoissonBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonBuffer::set(self : MlregresspoissonBuffer, i : Int, v : Double) -> MlregresspoissonBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_buffer_sum(s : MlregresspoissonBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonBuffer::sum(self : MlregresspoissonBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_buffer_mean(s : MlregresspoissonBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonBuffer::mean(self : MlregresspoissonBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_buffer_scale(s : MlregresspoissonBuffer, f : Double) -> MlregresspoissonBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonBuffer::scale(self : MlregresspoissonBuffer, f : Double) -> MlregresspoissonBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_buffer_add(a : MlregresspoissonBuffer, b : MlregresspoissonBuffer) -> MlregresspoissonBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonBuffer::add(self : MlregresspoissonBuffer, other : MlregresspoissonBuffer) -> MlregresspoissonBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_buffer_copy(s : MlregresspoissonBuffer) -> MlregresspoissonBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonBuffer::copy(self : MlregresspoissonBuffer) -> MlregresspoissonBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_buffer_fill(s : MlregresspoissonBuffer, v : Double) -> MlregresspoissonBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonBuffer::fill(self : MlregresspoissonBuffer, v : Double) -> MlregresspoissonBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_buffer_min(s : MlregresspoissonBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonBuffer::min(self : MlregresspoissonBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_buffer_max(s : MlregresspoissonBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonBuffer::max(self : MlregresspoissonBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_buffer_to_string(s : MlregresspoissonBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonBuffer::to_string(self : MlregresspoissonBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_poisson_cursor_make(size : Int) -> MlregresspoissonCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_cursor_len(s : MlregresspoissonCursor) -> Int { s.size }
+pub fn MlregresspoissonCursor::len(self : MlregresspoissonCursor) -> Int { self.size }
 
-pub fn ml_regress_poisson_cursor_get(s : MlregresspoissonCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonCursor::get(self : MlregresspoissonCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_cursor_set(s : MlregresspoissonCursor, i : Int, v : Double) -> MlregresspoissonCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonCursor::set(self : MlregresspoissonCursor, i : Int, v : Double) -> MlregresspoissonCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cursor_sum(s : MlregresspoissonCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonCursor::sum(self : MlregresspoissonCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_cursor_mean(s : MlregresspoissonCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonCursor::mean(self : MlregresspoissonCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_cursor_scale(s : MlregresspoissonCursor, f : Double) -> MlregresspoissonCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonCursor::scale(self : MlregresspoissonCursor, f : Double) -> MlregresspoissonCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cursor_add(a : MlregresspoissonCursor, b : MlregresspoissonCursor) -> MlregresspoissonCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonCursor::add(self : MlregresspoissonCursor, other : MlregresspoissonCursor) -> MlregresspoissonCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cursor_copy(s : MlregresspoissonCursor) -> MlregresspoissonCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonCursor::copy(self : MlregresspoissonCursor) -> MlregresspoissonCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cursor_fill(s : MlregresspoissonCursor, v : Double) -> MlregresspoissonCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonCursor::fill(self : MlregresspoissonCursor, v : Double) -> MlregresspoissonCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_cursor_min(s : MlregresspoissonCursor) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonCursor::min(self : MlregresspoissonCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_cursor_max(s : MlregresspoissonCursor) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonCursor::max(self : MlregresspoissonCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_cursor_to_string(s : MlregresspoissonCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonCursor::to_string(self : MlregresspoissonCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonView {
@@ -912,45 +912,45 @@ pub fn ml_regress_poisson_view_make(size : Int) -> MlregresspoissonView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_view_len(s : MlregresspoissonView) -> Int { s.size }
+pub fn MlregresspoissonView::len(self : MlregresspoissonView) -> Int { self.size }
 
-pub fn ml_regress_poisson_view_get(s : MlregresspoissonView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonView::get(self : MlregresspoissonView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_view_set(s : MlregresspoissonView, i : Int, v : Double) -> MlregresspoissonView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonView::set(self : MlregresspoissonView, i : Int, v : Double) -> MlregresspoissonView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_view_sum(s : MlregresspoissonView) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonView::sum(self : MlregresspoissonView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_view_mean(s : MlregresspoissonView) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonView::mean(self : MlregresspoissonView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_view_scale(s : MlregresspoissonView, f : Double) -> MlregresspoissonView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonView::scale(self : MlregresspoissonView, f : Double) -> MlregresspoissonView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_view_add(a : MlregresspoissonView, b : MlregresspoissonView) -> MlregresspoissonView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonView::add(self : MlregresspoissonView, other : MlregresspoissonView) -> MlregresspoissonView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_view_copy(s : MlregresspoissonView) -> MlregresspoissonView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonView::copy(self : MlregresspoissonView) -> MlregresspoissonView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_view_fill(s : MlregresspoissonView, v : Double) -> MlregresspoissonView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonView::fill(self : MlregresspoissonView, v : Double) -> MlregresspoissonView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_view_min(s : MlregresspoissonView) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonView::min(self : MlregresspoissonView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_view_max(s : MlregresspoissonView) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonView::max(self : MlregresspoissonView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_view_to_string(s : MlregresspoissonView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonView::to_string(self : MlregresspoissonView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_poisson_range_make(size : Int) -> MlregresspoissonRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_range_len(s : MlregresspoissonRange) -> Int { s.size }
+pub fn MlregresspoissonRange::len(self : MlregresspoissonRange) -> Int { self.size }
 
-pub fn ml_regress_poisson_range_get(s : MlregresspoissonRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonRange::get(self : MlregresspoissonRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_range_set(s : MlregresspoissonRange, i : Int, v : Double) -> MlregresspoissonRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonRange::set(self : MlregresspoissonRange, i : Int, v : Double) -> MlregresspoissonRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_range_sum(s : MlregresspoissonRange) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonRange::sum(self : MlregresspoissonRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_range_mean(s : MlregresspoissonRange) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonRange::mean(self : MlregresspoissonRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_range_scale(s : MlregresspoissonRange, f : Double) -> MlregresspoissonRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonRange::scale(self : MlregresspoissonRange, f : Double) -> MlregresspoissonRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_range_add(a : MlregresspoissonRange, b : MlregresspoissonRange) -> MlregresspoissonRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonRange::add(self : MlregresspoissonRange, other : MlregresspoissonRange) -> MlregresspoissonRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_range_copy(s : MlregresspoissonRange) -> MlregresspoissonRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonRange::copy(self : MlregresspoissonRange) -> MlregresspoissonRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_range_fill(s : MlregresspoissonRange, v : Double) -> MlregresspoissonRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonRange::fill(self : MlregresspoissonRange, v : Double) -> MlregresspoissonRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_range_min(s : MlregresspoissonRange) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonRange::min(self : MlregresspoissonRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_range_max(s : MlregresspoissonRange) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonRange::max(self : MlregresspoissonRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_range_to_string(s : MlregresspoissonRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonRange::to_string(self : MlregresspoissonRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspoissonSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_poisson_slice_make(size : Int) -> MlregresspoissonSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poisson_slice_len(s : MlregresspoissonSlice) -> Int { s.size }
+pub fn MlregresspoissonSlice::len(self : MlregresspoissonSlice) -> Int { self.size }
 
-pub fn ml_regress_poisson_slice_get(s : MlregresspoissonSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspoissonSlice::get(self : MlregresspoissonSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poisson_slice_set(s : MlregresspoissonSlice, i : Int, v : Double) -> MlregresspoissonSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspoissonSlice::set(self : MlregresspoissonSlice, i : Int, v : Double) -> MlregresspoissonSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_slice_sum(s : MlregresspoissonSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregresspoissonSlice::sum(self : MlregresspoissonSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poisson_slice_mean(s : MlregresspoissonSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregresspoissonSlice::mean(self : MlregresspoissonSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poisson_slice_scale(s : MlregresspoissonSlice, f : Double) -> MlregresspoissonSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspoissonSlice::scale(self : MlregresspoissonSlice, f : Double) -> MlregresspoissonSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_slice_add(a : MlregresspoissonSlice, b : MlregresspoissonSlice) -> MlregresspoissonSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspoissonSlice::add(self : MlregresspoissonSlice, other : MlregresspoissonSlice) -> MlregresspoissonSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_slice_copy(s : MlregresspoissonSlice) -> MlregresspoissonSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspoissonSlice::copy(self : MlregresspoissonSlice) -> MlregresspoissonSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_slice_fill(s : MlregresspoissonSlice, v : Double) -> MlregresspoissonSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspoissonSlice::fill(self : MlregresspoissonSlice, v : Double) -> MlregresspoissonSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poisson_slice_min(s : MlregresspoissonSlice) -> Double { @_common.min(s.data) }
+pub fn MlregresspoissonSlice::min(self : MlregresspoissonSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poisson_slice_max(s : MlregresspoissonSlice) -> Double { @_common.max(s.data) }
+pub fn MlregresspoissonSlice::max(self : MlregresspoissonSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poisson_slice_to_string(s : MlregresspoissonSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspoissonSlice::to_string(self : MlregresspoissonSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

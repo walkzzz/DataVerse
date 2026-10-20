@@ -351,45 +351,45 @@ pub fn ml_feature_pca_frame_make(size : Int) -> MlfeaturepcaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_frame_len(s : MlfeaturepcaFrame) -> Int { s.size }
+pub fn MlfeaturepcaFrame::len(self : MlfeaturepcaFrame) -> Int { self.size }
 
-pub fn ml_feature_pca_frame_get(s : MlfeaturepcaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaFrame::get(self : MlfeaturepcaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_frame_set(s : MlfeaturepcaFrame, i : Int, v : Double) -> MlfeaturepcaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaFrame::set(self : MlfeaturepcaFrame, i : Int, v : Double) -> MlfeaturepcaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_frame_sum(s : MlfeaturepcaFrame) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaFrame::sum(self : MlfeaturepcaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_frame_mean(s : MlfeaturepcaFrame) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaFrame::mean(self : MlfeaturepcaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_frame_scale(s : MlfeaturepcaFrame, f : Double) -> MlfeaturepcaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaFrame::scale(self : MlfeaturepcaFrame, f : Double) -> MlfeaturepcaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_frame_add(a : MlfeaturepcaFrame, b : MlfeaturepcaFrame) -> MlfeaturepcaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaFrame::add(self : MlfeaturepcaFrame, other : MlfeaturepcaFrame) -> MlfeaturepcaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_frame_copy(s : MlfeaturepcaFrame) -> MlfeaturepcaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaFrame::copy(self : MlfeaturepcaFrame) -> MlfeaturepcaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_frame_fill(s : MlfeaturepcaFrame, v : Double) -> MlfeaturepcaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaFrame::fill(self : MlfeaturepcaFrame, v : Double) -> MlfeaturepcaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_frame_min(s : MlfeaturepcaFrame) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaFrame::min(self : MlfeaturepcaFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_frame_max(s : MlfeaturepcaFrame) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaFrame::max(self : MlfeaturepcaFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_frame_to_string(s : MlfeaturepcaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaFrame::to_string(self : MlfeaturepcaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaTable {
@@ -402,45 +402,45 @@ pub fn ml_feature_pca_table_make(size : Int) -> MlfeaturepcaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_table_len(s : MlfeaturepcaTable) -> Int { s.size }
+pub fn MlfeaturepcaTable::len(self : MlfeaturepcaTable) -> Int { self.size }
 
-pub fn ml_feature_pca_table_get(s : MlfeaturepcaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaTable::get(self : MlfeaturepcaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_table_set(s : MlfeaturepcaTable, i : Int, v : Double) -> MlfeaturepcaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaTable::set(self : MlfeaturepcaTable, i : Int, v : Double) -> MlfeaturepcaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_table_sum(s : MlfeaturepcaTable) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaTable::sum(self : MlfeaturepcaTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_table_mean(s : MlfeaturepcaTable) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaTable::mean(self : MlfeaturepcaTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_table_scale(s : MlfeaturepcaTable, f : Double) -> MlfeaturepcaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaTable::scale(self : MlfeaturepcaTable, f : Double) -> MlfeaturepcaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_table_add(a : MlfeaturepcaTable, b : MlfeaturepcaTable) -> MlfeaturepcaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaTable::add(self : MlfeaturepcaTable, other : MlfeaturepcaTable) -> MlfeaturepcaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_table_copy(s : MlfeaturepcaTable) -> MlfeaturepcaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaTable::copy(self : MlfeaturepcaTable) -> MlfeaturepcaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_table_fill(s : MlfeaturepcaTable, v : Double) -> MlfeaturepcaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaTable::fill(self : MlfeaturepcaTable, v : Double) -> MlfeaturepcaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_table_min(s : MlfeaturepcaTable) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaTable::min(self : MlfeaturepcaTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_table_max(s : MlfeaturepcaTable) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaTable::max(self : MlfeaturepcaTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_table_to_string(s : MlfeaturepcaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaTable::to_string(self : MlfeaturepcaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaGraphN {
@@ -453,45 +453,45 @@ pub fn ml_feature_pca_graphn_make(size : Int) -> MlfeaturepcaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_graphn_len(s : MlfeaturepcaGraphN) -> Int { s.size }
+pub fn MlfeaturepcaGraphN::len(self : MlfeaturepcaGraphN) -> Int { self.size }
 
-pub fn ml_feature_pca_graphn_get(s : MlfeaturepcaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaGraphN::get(self : MlfeaturepcaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_graphn_set(s : MlfeaturepcaGraphN, i : Int, v : Double) -> MlfeaturepcaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaGraphN::set(self : MlfeaturepcaGraphN, i : Int, v : Double) -> MlfeaturepcaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_graphn_sum(s : MlfeaturepcaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaGraphN::sum(self : MlfeaturepcaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_graphn_mean(s : MlfeaturepcaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaGraphN::mean(self : MlfeaturepcaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_graphn_scale(s : MlfeaturepcaGraphN, f : Double) -> MlfeaturepcaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaGraphN::scale(self : MlfeaturepcaGraphN, f : Double) -> MlfeaturepcaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_graphn_add(a : MlfeaturepcaGraphN, b : MlfeaturepcaGraphN) -> MlfeaturepcaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaGraphN::add(self : MlfeaturepcaGraphN, other : MlfeaturepcaGraphN) -> MlfeaturepcaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_graphn_copy(s : MlfeaturepcaGraphN) -> MlfeaturepcaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaGraphN::copy(self : MlfeaturepcaGraphN) -> MlfeaturepcaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_graphn_fill(s : MlfeaturepcaGraphN, v : Double) -> MlfeaturepcaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaGraphN::fill(self : MlfeaturepcaGraphN, v : Double) -> MlfeaturepcaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_graphn_min(s : MlfeaturepcaGraphN) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaGraphN::min(self : MlfeaturepcaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_graphn_max(s : MlfeaturepcaGraphN) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaGraphN::max(self : MlfeaturepcaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_graphn_to_string(s : MlfeaturepcaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaGraphN::to_string(self : MlfeaturepcaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaNode {
@@ -504,45 +504,45 @@ pub fn ml_feature_pca_node_make(size : Int) -> MlfeaturepcaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_node_len(s : MlfeaturepcaNode) -> Int { s.size }
+pub fn MlfeaturepcaNode::len(self : MlfeaturepcaNode) -> Int { self.size }
 
-pub fn ml_feature_pca_node_get(s : MlfeaturepcaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaNode::get(self : MlfeaturepcaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_node_set(s : MlfeaturepcaNode, i : Int, v : Double) -> MlfeaturepcaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaNode::set(self : MlfeaturepcaNode, i : Int, v : Double) -> MlfeaturepcaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_node_sum(s : MlfeaturepcaNode) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaNode::sum(self : MlfeaturepcaNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_node_mean(s : MlfeaturepcaNode) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaNode::mean(self : MlfeaturepcaNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_node_scale(s : MlfeaturepcaNode, f : Double) -> MlfeaturepcaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaNode::scale(self : MlfeaturepcaNode, f : Double) -> MlfeaturepcaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_node_add(a : MlfeaturepcaNode, b : MlfeaturepcaNode) -> MlfeaturepcaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaNode::add(self : MlfeaturepcaNode, other : MlfeaturepcaNode) -> MlfeaturepcaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_node_copy(s : MlfeaturepcaNode) -> MlfeaturepcaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaNode::copy(self : MlfeaturepcaNode) -> MlfeaturepcaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_node_fill(s : MlfeaturepcaNode, v : Double) -> MlfeaturepcaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaNode::fill(self : MlfeaturepcaNode, v : Double) -> MlfeaturepcaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_node_min(s : MlfeaturepcaNode) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaNode::min(self : MlfeaturepcaNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_node_max(s : MlfeaturepcaNode) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaNode::max(self : MlfeaturepcaNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_node_to_string(s : MlfeaturepcaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaNode::to_string(self : MlfeaturepcaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaEdge {
@@ -555,45 +555,45 @@ pub fn ml_feature_pca_edge_make(size : Int) -> MlfeaturepcaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_edge_len(s : MlfeaturepcaEdge) -> Int { s.size }
+pub fn MlfeaturepcaEdge::len(self : MlfeaturepcaEdge) -> Int { self.size }
 
-pub fn ml_feature_pca_edge_get(s : MlfeaturepcaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaEdge::get(self : MlfeaturepcaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_edge_set(s : MlfeaturepcaEdge, i : Int, v : Double) -> MlfeaturepcaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaEdge::set(self : MlfeaturepcaEdge, i : Int, v : Double) -> MlfeaturepcaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_edge_sum(s : MlfeaturepcaEdge) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaEdge::sum(self : MlfeaturepcaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_edge_mean(s : MlfeaturepcaEdge) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaEdge::mean(self : MlfeaturepcaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_edge_scale(s : MlfeaturepcaEdge, f : Double) -> MlfeaturepcaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaEdge::scale(self : MlfeaturepcaEdge, f : Double) -> MlfeaturepcaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_edge_add(a : MlfeaturepcaEdge, b : MlfeaturepcaEdge) -> MlfeaturepcaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaEdge::add(self : MlfeaturepcaEdge, other : MlfeaturepcaEdge) -> MlfeaturepcaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_edge_copy(s : MlfeaturepcaEdge) -> MlfeaturepcaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaEdge::copy(self : MlfeaturepcaEdge) -> MlfeaturepcaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_edge_fill(s : MlfeaturepcaEdge, v : Double) -> MlfeaturepcaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaEdge::fill(self : MlfeaturepcaEdge, v : Double) -> MlfeaturepcaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_edge_min(s : MlfeaturepcaEdge) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaEdge::min(self : MlfeaturepcaEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_edge_max(s : MlfeaturepcaEdge) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaEdge::max(self : MlfeaturepcaEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_edge_to_string(s : MlfeaturepcaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaEdge::to_string(self : MlfeaturepcaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaPath {
@@ -606,45 +606,45 @@ pub fn ml_feature_pca_path_make(size : Int) -> MlfeaturepcaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_path_len(s : MlfeaturepcaPath) -> Int { s.size }
+pub fn MlfeaturepcaPath::len(self : MlfeaturepcaPath) -> Int { self.size }
 
-pub fn ml_feature_pca_path_get(s : MlfeaturepcaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaPath::get(self : MlfeaturepcaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_path_set(s : MlfeaturepcaPath, i : Int, v : Double) -> MlfeaturepcaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaPath::set(self : MlfeaturepcaPath, i : Int, v : Double) -> MlfeaturepcaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_path_sum(s : MlfeaturepcaPath) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaPath::sum(self : MlfeaturepcaPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_path_mean(s : MlfeaturepcaPath) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaPath::mean(self : MlfeaturepcaPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_path_scale(s : MlfeaturepcaPath, f : Double) -> MlfeaturepcaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaPath::scale(self : MlfeaturepcaPath, f : Double) -> MlfeaturepcaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_path_add(a : MlfeaturepcaPath, b : MlfeaturepcaPath) -> MlfeaturepcaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaPath::add(self : MlfeaturepcaPath, other : MlfeaturepcaPath) -> MlfeaturepcaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_path_copy(s : MlfeaturepcaPath) -> MlfeaturepcaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaPath::copy(self : MlfeaturepcaPath) -> MlfeaturepcaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_path_fill(s : MlfeaturepcaPath, v : Double) -> MlfeaturepcaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaPath::fill(self : MlfeaturepcaPath, v : Double) -> MlfeaturepcaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_path_min(s : MlfeaturepcaPath) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaPath::min(self : MlfeaturepcaPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_path_max(s : MlfeaturepcaPath) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaPath::max(self : MlfeaturepcaPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_path_to_string(s : MlfeaturepcaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaPath::to_string(self : MlfeaturepcaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaCluster {
@@ -657,45 +657,45 @@ pub fn ml_feature_pca_cluster_make(size : Int) -> MlfeaturepcaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_cluster_len(s : MlfeaturepcaCluster) -> Int { s.size }
+pub fn MlfeaturepcaCluster::len(self : MlfeaturepcaCluster) -> Int { self.size }
 
-pub fn ml_feature_pca_cluster_get(s : MlfeaturepcaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaCluster::get(self : MlfeaturepcaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_cluster_set(s : MlfeaturepcaCluster, i : Int, v : Double) -> MlfeaturepcaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCluster::set(self : MlfeaturepcaCluster, i : Int, v : Double) -> MlfeaturepcaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cluster_sum(s : MlfeaturepcaCluster) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaCluster::sum(self : MlfeaturepcaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_cluster_mean(s : MlfeaturepcaCluster) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaCluster::mean(self : MlfeaturepcaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_cluster_scale(s : MlfeaturepcaCluster, f : Double) -> MlfeaturepcaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCluster::scale(self : MlfeaturepcaCluster, f : Double) -> MlfeaturepcaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cluster_add(a : MlfeaturepcaCluster, b : MlfeaturepcaCluster) -> MlfeaturepcaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaCluster::add(self : MlfeaturepcaCluster, other : MlfeaturepcaCluster) -> MlfeaturepcaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cluster_copy(s : MlfeaturepcaCluster) -> MlfeaturepcaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCluster::copy(self : MlfeaturepcaCluster) -> MlfeaturepcaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cluster_fill(s : MlfeaturepcaCluster, v : Double) -> MlfeaturepcaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCluster::fill(self : MlfeaturepcaCluster, v : Double) -> MlfeaturepcaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cluster_min(s : MlfeaturepcaCluster) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaCluster::min(self : MlfeaturepcaCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_cluster_max(s : MlfeaturepcaCluster) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaCluster::max(self : MlfeaturepcaCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_cluster_to_string(s : MlfeaturepcaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaCluster::to_string(self : MlfeaturepcaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaModel {
@@ -708,45 +708,45 @@ pub fn ml_feature_pca_model_make(size : Int) -> MlfeaturepcaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_model_len(s : MlfeaturepcaModel) -> Int { s.size }
+pub fn MlfeaturepcaModel::len(self : MlfeaturepcaModel) -> Int { self.size }
 
-pub fn ml_feature_pca_model_get(s : MlfeaturepcaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaModel::get(self : MlfeaturepcaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_model_set(s : MlfeaturepcaModel, i : Int, v : Double) -> MlfeaturepcaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaModel::set(self : MlfeaturepcaModel, i : Int, v : Double) -> MlfeaturepcaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_model_sum(s : MlfeaturepcaModel) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaModel::sum(self : MlfeaturepcaModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_model_mean(s : MlfeaturepcaModel) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaModel::mean(self : MlfeaturepcaModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_model_scale(s : MlfeaturepcaModel, f : Double) -> MlfeaturepcaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaModel::scale(self : MlfeaturepcaModel, f : Double) -> MlfeaturepcaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_model_add(a : MlfeaturepcaModel, b : MlfeaturepcaModel) -> MlfeaturepcaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaModel::add(self : MlfeaturepcaModel, other : MlfeaturepcaModel) -> MlfeaturepcaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_model_copy(s : MlfeaturepcaModel) -> MlfeaturepcaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaModel::copy(self : MlfeaturepcaModel) -> MlfeaturepcaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_model_fill(s : MlfeaturepcaModel, v : Double) -> MlfeaturepcaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaModel::fill(self : MlfeaturepcaModel, v : Double) -> MlfeaturepcaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_model_min(s : MlfeaturepcaModel) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaModel::min(self : MlfeaturepcaModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_model_max(s : MlfeaturepcaModel) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaModel::max(self : MlfeaturepcaModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_model_to_string(s : MlfeaturepcaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaModel::to_string(self : MlfeaturepcaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaLayer {
@@ -759,45 +759,45 @@ pub fn ml_feature_pca_layer_make(size : Int) -> MlfeaturepcaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_layer_len(s : MlfeaturepcaLayer) -> Int { s.size }
+pub fn MlfeaturepcaLayer::len(self : MlfeaturepcaLayer) -> Int { self.size }
 
-pub fn ml_feature_pca_layer_get(s : MlfeaturepcaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaLayer::get(self : MlfeaturepcaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_layer_set(s : MlfeaturepcaLayer, i : Int, v : Double) -> MlfeaturepcaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaLayer::set(self : MlfeaturepcaLayer, i : Int, v : Double) -> MlfeaturepcaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_layer_sum(s : MlfeaturepcaLayer) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaLayer::sum(self : MlfeaturepcaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_layer_mean(s : MlfeaturepcaLayer) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaLayer::mean(self : MlfeaturepcaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_layer_scale(s : MlfeaturepcaLayer, f : Double) -> MlfeaturepcaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaLayer::scale(self : MlfeaturepcaLayer, f : Double) -> MlfeaturepcaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_layer_add(a : MlfeaturepcaLayer, b : MlfeaturepcaLayer) -> MlfeaturepcaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaLayer::add(self : MlfeaturepcaLayer, other : MlfeaturepcaLayer) -> MlfeaturepcaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_layer_copy(s : MlfeaturepcaLayer) -> MlfeaturepcaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaLayer::copy(self : MlfeaturepcaLayer) -> MlfeaturepcaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_layer_fill(s : MlfeaturepcaLayer, v : Double) -> MlfeaturepcaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaLayer::fill(self : MlfeaturepcaLayer, v : Double) -> MlfeaturepcaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_layer_min(s : MlfeaturepcaLayer) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaLayer::min(self : MlfeaturepcaLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_layer_max(s : MlfeaturepcaLayer) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaLayer::max(self : MlfeaturepcaLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_layer_to_string(s : MlfeaturepcaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaLayer::to_string(self : MlfeaturepcaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaBuffer {
@@ -810,45 +810,45 @@ pub fn ml_feature_pca_buffer_make(size : Int) -> MlfeaturepcaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_buffer_len(s : MlfeaturepcaBuffer) -> Int { s.size }
+pub fn MlfeaturepcaBuffer::len(self : MlfeaturepcaBuffer) -> Int { self.size }
 
-pub fn ml_feature_pca_buffer_get(s : MlfeaturepcaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaBuffer::get(self : MlfeaturepcaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_buffer_set(s : MlfeaturepcaBuffer, i : Int, v : Double) -> MlfeaturepcaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaBuffer::set(self : MlfeaturepcaBuffer, i : Int, v : Double) -> MlfeaturepcaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_buffer_sum(s : MlfeaturepcaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaBuffer::sum(self : MlfeaturepcaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_buffer_mean(s : MlfeaturepcaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaBuffer::mean(self : MlfeaturepcaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_buffer_scale(s : MlfeaturepcaBuffer, f : Double) -> MlfeaturepcaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaBuffer::scale(self : MlfeaturepcaBuffer, f : Double) -> MlfeaturepcaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_buffer_add(a : MlfeaturepcaBuffer, b : MlfeaturepcaBuffer) -> MlfeaturepcaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaBuffer::add(self : MlfeaturepcaBuffer, other : MlfeaturepcaBuffer) -> MlfeaturepcaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_buffer_copy(s : MlfeaturepcaBuffer) -> MlfeaturepcaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaBuffer::copy(self : MlfeaturepcaBuffer) -> MlfeaturepcaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_buffer_fill(s : MlfeaturepcaBuffer, v : Double) -> MlfeaturepcaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaBuffer::fill(self : MlfeaturepcaBuffer, v : Double) -> MlfeaturepcaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_buffer_min(s : MlfeaturepcaBuffer) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaBuffer::min(self : MlfeaturepcaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_buffer_max(s : MlfeaturepcaBuffer) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaBuffer::max(self : MlfeaturepcaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_buffer_to_string(s : MlfeaturepcaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaBuffer::to_string(self : MlfeaturepcaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaCursor {
@@ -861,45 +861,45 @@ pub fn ml_feature_pca_cursor_make(size : Int) -> MlfeaturepcaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_cursor_len(s : MlfeaturepcaCursor) -> Int { s.size }
+pub fn MlfeaturepcaCursor::len(self : MlfeaturepcaCursor) -> Int { self.size }
 
-pub fn ml_feature_pca_cursor_get(s : MlfeaturepcaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaCursor::get(self : MlfeaturepcaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_cursor_set(s : MlfeaturepcaCursor, i : Int, v : Double) -> MlfeaturepcaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCursor::set(self : MlfeaturepcaCursor, i : Int, v : Double) -> MlfeaturepcaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cursor_sum(s : MlfeaturepcaCursor) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaCursor::sum(self : MlfeaturepcaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_cursor_mean(s : MlfeaturepcaCursor) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaCursor::mean(self : MlfeaturepcaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_cursor_scale(s : MlfeaturepcaCursor, f : Double) -> MlfeaturepcaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCursor::scale(self : MlfeaturepcaCursor, f : Double) -> MlfeaturepcaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cursor_add(a : MlfeaturepcaCursor, b : MlfeaturepcaCursor) -> MlfeaturepcaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaCursor::add(self : MlfeaturepcaCursor, other : MlfeaturepcaCursor) -> MlfeaturepcaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cursor_copy(s : MlfeaturepcaCursor) -> MlfeaturepcaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCursor::copy(self : MlfeaturepcaCursor) -> MlfeaturepcaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cursor_fill(s : MlfeaturepcaCursor, v : Double) -> MlfeaturepcaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaCursor::fill(self : MlfeaturepcaCursor, v : Double) -> MlfeaturepcaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_cursor_min(s : MlfeaturepcaCursor) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaCursor::min(self : MlfeaturepcaCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_cursor_max(s : MlfeaturepcaCursor) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaCursor::max(self : MlfeaturepcaCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_cursor_to_string(s : MlfeaturepcaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaCursor::to_string(self : MlfeaturepcaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaView {
@@ -912,45 +912,45 @@ pub fn ml_feature_pca_view_make(size : Int) -> MlfeaturepcaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_view_len(s : MlfeaturepcaView) -> Int { s.size }
+pub fn MlfeaturepcaView::len(self : MlfeaturepcaView) -> Int { self.size }
 
-pub fn ml_feature_pca_view_get(s : MlfeaturepcaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaView::get(self : MlfeaturepcaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_view_set(s : MlfeaturepcaView, i : Int, v : Double) -> MlfeaturepcaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaView::set(self : MlfeaturepcaView, i : Int, v : Double) -> MlfeaturepcaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_view_sum(s : MlfeaturepcaView) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaView::sum(self : MlfeaturepcaView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_view_mean(s : MlfeaturepcaView) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaView::mean(self : MlfeaturepcaView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_view_scale(s : MlfeaturepcaView, f : Double) -> MlfeaturepcaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaView::scale(self : MlfeaturepcaView, f : Double) -> MlfeaturepcaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_view_add(a : MlfeaturepcaView, b : MlfeaturepcaView) -> MlfeaturepcaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaView::add(self : MlfeaturepcaView, other : MlfeaturepcaView) -> MlfeaturepcaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_view_copy(s : MlfeaturepcaView) -> MlfeaturepcaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaView::copy(self : MlfeaturepcaView) -> MlfeaturepcaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_view_fill(s : MlfeaturepcaView, v : Double) -> MlfeaturepcaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaView::fill(self : MlfeaturepcaView, v : Double) -> MlfeaturepcaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_view_min(s : MlfeaturepcaView) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaView::min(self : MlfeaturepcaView) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_view_max(s : MlfeaturepcaView) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaView::max(self : MlfeaturepcaView) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_view_to_string(s : MlfeaturepcaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaView::to_string(self : MlfeaturepcaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaRange {
@@ -963,45 +963,45 @@ pub fn ml_feature_pca_range_make(size : Int) -> MlfeaturepcaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_range_len(s : MlfeaturepcaRange) -> Int { s.size }
+pub fn MlfeaturepcaRange::len(self : MlfeaturepcaRange) -> Int { self.size }
 
-pub fn ml_feature_pca_range_get(s : MlfeaturepcaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaRange::get(self : MlfeaturepcaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_range_set(s : MlfeaturepcaRange, i : Int, v : Double) -> MlfeaturepcaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaRange::set(self : MlfeaturepcaRange, i : Int, v : Double) -> MlfeaturepcaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_range_sum(s : MlfeaturepcaRange) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaRange::sum(self : MlfeaturepcaRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_range_mean(s : MlfeaturepcaRange) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaRange::mean(self : MlfeaturepcaRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_range_scale(s : MlfeaturepcaRange, f : Double) -> MlfeaturepcaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaRange::scale(self : MlfeaturepcaRange, f : Double) -> MlfeaturepcaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_range_add(a : MlfeaturepcaRange, b : MlfeaturepcaRange) -> MlfeaturepcaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaRange::add(self : MlfeaturepcaRange, other : MlfeaturepcaRange) -> MlfeaturepcaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_range_copy(s : MlfeaturepcaRange) -> MlfeaturepcaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaRange::copy(self : MlfeaturepcaRange) -> MlfeaturepcaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_range_fill(s : MlfeaturepcaRange, v : Double) -> MlfeaturepcaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaRange::fill(self : MlfeaturepcaRange, v : Double) -> MlfeaturepcaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_range_min(s : MlfeaturepcaRange) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaRange::min(self : MlfeaturepcaRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_range_max(s : MlfeaturepcaRange) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaRange::max(self : MlfeaturepcaRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_range_to_string(s : MlfeaturepcaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaRange::to_string(self : MlfeaturepcaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturepcaSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_feature_pca_slice_make(size : Int) -> MlfeaturepcaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_pca_slice_len(s : MlfeaturepcaSlice) -> Int { s.size }
+pub fn MlfeaturepcaSlice::len(self : MlfeaturepcaSlice) -> Int { self.size }
 
-pub fn ml_feature_pca_slice_get(s : MlfeaturepcaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturepcaSlice::get(self : MlfeaturepcaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_pca_slice_set(s : MlfeaturepcaSlice, i : Int, v : Double) -> MlfeaturepcaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturepcaSlice::set(self : MlfeaturepcaSlice, i : Int, v : Double) -> MlfeaturepcaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_slice_sum(s : MlfeaturepcaSlice) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturepcaSlice::sum(self : MlfeaturepcaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_pca_slice_mean(s : MlfeaturepcaSlice) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturepcaSlice::mean(self : MlfeaturepcaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_pca_slice_scale(s : MlfeaturepcaSlice, f : Double) -> MlfeaturepcaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaSlice::scale(self : MlfeaturepcaSlice, f : Double) -> MlfeaturepcaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_slice_add(a : MlfeaturepcaSlice, b : MlfeaturepcaSlice) -> MlfeaturepcaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturepcaSlice::add(self : MlfeaturepcaSlice, other : MlfeaturepcaSlice) -> MlfeaturepcaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_pca_slice_copy(s : MlfeaturepcaSlice) -> MlfeaturepcaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaSlice::copy(self : MlfeaturepcaSlice) -> MlfeaturepcaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_slice_fill(s : MlfeaturepcaSlice, v : Double) -> MlfeaturepcaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturepcaSlice::fill(self : MlfeaturepcaSlice, v : Double) -> MlfeaturepcaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_pca_slice_min(s : MlfeaturepcaSlice) -> Double { @_common.min(s.data) }
+pub fn MlfeaturepcaSlice::min(self : MlfeaturepcaSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_pca_slice_max(s : MlfeaturepcaSlice) -> Double { @_common.max(s.data) }
+pub fn MlfeaturepcaSlice::max(self : MlfeaturepcaSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_pca_slice_to_string(s : MlfeaturepcaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturepcaSlice::to_string(self : MlfeaturepcaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

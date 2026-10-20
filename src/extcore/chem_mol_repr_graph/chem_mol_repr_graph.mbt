@@ -351,45 +351,45 @@ pub fn chem_mol_repr_graph_frame_make(size : Int) -> ChemmolreprgraphFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_frame_len(s : ChemmolreprgraphFrame) -> Int { s.size }
+pub fn ChemmolreprgraphFrame::len(self : ChemmolreprgraphFrame) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_frame_get(s : ChemmolreprgraphFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphFrame::get(self : ChemmolreprgraphFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_frame_set(s : ChemmolreprgraphFrame, i : Int, v : Double) -> ChemmolreprgraphFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphFrame::set(self : ChemmolreprgraphFrame, i : Int, v : Double) -> ChemmolreprgraphFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_frame_sum(s : ChemmolreprgraphFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphFrame::sum(self : ChemmolreprgraphFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_frame_mean(s : ChemmolreprgraphFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphFrame::mean(self : ChemmolreprgraphFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_frame_scale(s : ChemmolreprgraphFrame, f : Double) -> ChemmolreprgraphFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphFrame::scale(self : ChemmolreprgraphFrame, f : Double) -> ChemmolreprgraphFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_frame_add(a : ChemmolreprgraphFrame, b : ChemmolreprgraphFrame) -> ChemmolreprgraphFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphFrame::add(self : ChemmolreprgraphFrame, other : ChemmolreprgraphFrame) -> ChemmolreprgraphFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_frame_copy(s : ChemmolreprgraphFrame) -> ChemmolreprgraphFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphFrame::copy(self : ChemmolreprgraphFrame) -> ChemmolreprgraphFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_frame_fill(s : ChemmolreprgraphFrame, v : Double) -> ChemmolreprgraphFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphFrame::fill(self : ChemmolreprgraphFrame, v : Double) -> ChemmolreprgraphFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_frame_min(s : ChemmolreprgraphFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphFrame::min(self : ChemmolreprgraphFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_frame_max(s : ChemmolreprgraphFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphFrame::max(self : ChemmolreprgraphFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_frame_to_string(s : ChemmolreprgraphFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphFrame::to_string(self : ChemmolreprgraphFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_repr_graph_table_make(size : Int) -> ChemmolreprgraphTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_table_len(s : ChemmolreprgraphTable) -> Int { s.size }
+pub fn ChemmolreprgraphTable::len(self : ChemmolreprgraphTable) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_table_get(s : ChemmolreprgraphTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphTable::get(self : ChemmolreprgraphTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_table_set(s : ChemmolreprgraphTable, i : Int, v : Double) -> ChemmolreprgraphTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphTable::set(self : ChemmolreprgraphTable, i : Int, v : Double) -> ChemmolreprgraphTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_table_sum(s : ChemmolreprgraphTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphTable::sum(self : ChemmolreprgraphTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_table_mean(s : ChemmolreprgraphTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphTable::mean(self : ChemmolreprgraphTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_table_scale(s : ChemmolreprgraphTable, f : Double) -> ChemmolreprgraphTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphTable::scale(self : ChemmolreprgraphTable, f : Double) -> ChemmolreprgraphTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_table_add(a : ChemmolreprgraphTable, b : ChemmolreprgraphTable) -> ChemmolreprgraphTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphTable::add(self : ChemmolreprgraphTable, other : ChemmolreprgraphTable) -> ChemmolreprgraphTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_table_copy(s : ChemmolreprgraphTable) -> ChemmolreprgraphTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphTable::copy(self : ChemmolreprgraphTable) -> ChemmolreprgraphTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_table_fill(s : ChemmolreprgraphTable, v : Double) -> ChemmolreprgraphTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphTable::fill(self : ChemmolreprgraphTable, v : Double) -> ChemmolreprgraphTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_table_min(s : ChemmolreprgraphTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphTable::min(self : ChemmolreprgraphTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_table_max(s : ChemmolreprgraphTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphTable::max(self : ChemmolreprgraphTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_table_to_string(s : ChemmolreprgraphTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphTable::to_string(self : ChemmolreprgraphTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_repr_graph_graphn_make(size : Int) -> ChemmolreprgraphGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_graphn_len(s : ChemmolreprgraphGraphN) -> Int { s.size }
+pub fn ChemmolreprgraphGraphN::len(self : ChemmolreprgraphGraphN) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_graphn_get(s : ChemmolreprgraphGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphGraphN::get(self : ChemmolreprgraphGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_graphn_set(s : ChemmolreprgraphGraphN, i : Int, v : Double) -> ChemmolreprgraphGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphGraphN::set(self : ChemmolreprgraphGraphN, i : Int, v : Double) -> ChemmolreprgraphGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_graphn_sum(s : ChemmolreprgraphGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphGraphN::sum(self : ChemmolreprgraphGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_graphn_mean(s : ChemmolreprgraphGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphGraphN::mean(self : ChemmolreprgraphGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_graphn_scale(s : ChemmolreprgraphGraphN, f : Double) -> ChemmolreprgraphGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphGraphN::scale(self : ChemmolreprgraphGraphN, f : Double) -> ChemmolreprgraphGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_graphn_add(a : ChemmolreprgraphGraphN, b : ChemmolreprgraphGraphN) -> ChemmolreprgraphGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphGraphN::add(self : ChemmolreprgraphGraphN, other : ChemmolreprgraphGraphN) -> ChemmolreprgraphGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_graphn_copy(s : ChemmolreprgraphGraphN) -> ChemmolreprgraphGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphGraphN::copy(self : ChemmolreprgraphGraphN) -> ChemmolreprgraphGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_graphn_fill(s : ChemmolreprgraphGraphN, v : Double) -> ChemmolreprgraphGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphGraphN::fill(self : ChemmolreprgraphGraphN, v : Double) -> ChemmolreprgraphGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_graphn_min(s : ChemmolreprgraphGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphGraphN::min(self : ChemmolreprgraphGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_graphn_max(s : ChemmolreprgraphGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphGraphN::max(self : ChemmolreprgraphGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_graphn_to_string(s : ChemmolreprgraphGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphGraphN::to_string(self : ChemmolreprgraphGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_repr_graph_node_make(size : Int) -> ChemmolreprgraphNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_node_len(s : ChemmolreprgraphNode) -> Int { s.size }
+pub fn ChemmolreprgraphNode::len(self : ChemmolreprgraphNode) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_node_get(s : ChemmolreprgraphNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphNode::get(self : ChemmolreprgraphNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_node_set(s : ChemmolreprgraphNode, i : Int, v : Double) -> ChemmolreprgraphNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphNode::set(self : ChemmolreprgraphNode, i : Int, v : Double) -> ChemmolreprgraphNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_node_sum(s : ChemmolreprgraphNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphNode::sum(self : ChemmolreprgraphNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_node_mean(s : ChemmolreprgraphNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphNode::mean(self : ChemmolreprgraphNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_node_scale(s : ChemmolreprgraphNode, f : Double) -> ChemmolreprgraphNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphNode::scale(self : ChemmolreprgraphNode, f : Double) -> ChemmolreprgraphNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_node_add(a : ChemmolreprgraphNode, b : ChemmolreprgraphNode) -> ChemmolreprgraphNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphNode::add(self : ChemmolreprgraphNode, other : ChemmolreprgraphNode) -> ChemmolreprgraphNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_node_copy(s : ChemmolreprgraphNode) -> ChemmolreprgraphNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphNode::copy(self : ChemmolreprgraphNode) -> ChemmolreprgraphNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_node_fill(s : ChemmolreprgraphNode, v : Double) -> ChemmolreprgraphNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphNode::fill(self : ChemmolreprgraphNode, v : Double) -> ChemmolreprgraphNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_node_min(s : ChemmolreprgraphNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphNode::min(self : ChemmolreprgraphNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_node_max(s : ChemmolreprgraphNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphNode::max(self : ChemmolreprgraphNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_node_to_string(s : ChemmolreprgraphNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphNode::to_string(self : ChemmolreprgraphNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_repr_graph_edge_make(size : Int) -> ChemmolreprgraphEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_edge_len(s : ChemmolreprgraphEdge) -> Int { s.size }
+pub fn ChemmolreprgraphEdge::len(self : ChemmolreprgraphEdge) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_edge_get(s : ChemmolreprgraphEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphEdge::get(self : ChemmolreprgraphEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_edge_set(s : ChemmolreprgraphEdge, i : Int, v : Double) -> ChemmolreprgraphEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphEdge::set(self : ChemmolreprgraphEdge, i : Int, v : Double) -> ChemmolreprgraphEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_edge_sum(s : ChemmolreprgraphEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphEdge::sum(self : ChemmolreprgraphEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_edge_mean(s : ChemmolreprgraphEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphEdge::mean(self : ChemmolreprgraphEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_edge_scale(s : ChemmolreprgraphEdge, f : Double) -> ChemmolreprgraphEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphEdge::scale(self : ChemmolreprgraphEdge, f : Double) -> ChemmolreprgraphEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_edge_add(a : ChemmolreprgraphEdge, b : ChemmolreprgraphEdge) -> ChemmolreprgraphEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphEdge::add(self : ChemmolreprgraphEdge, other : ChemmolreprgraphEdge) -> ChemmolreprgraphEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_edge_copy(s : ChemmolreprgraphEdge) -> ChemmolreprgraphEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphEdge::copy(self : ChemmolreprgraphEdge) -> ChemmolreprgraphEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_edge_fill(s : ChemmolreprgraphEdge, v : Double) -> ChemmolreprgraphEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphEdge::fill(self : ChemmolreprgraphEdge, v : Double) -> ChemmolreprgraphEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_edge_min(s : ChemmolreprgraphEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphEdge::min(self : ChemmolreprgraphEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_edge_max(s : ChemmolreprgraphEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphEdge::max(self : ChemmolreprgraphEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_edge_to_string(s : ChemmolreprgraphEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphEdge::to_string(self : ChemmolreprgraphEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphPath {
@@ -606,45 +606,45 @@ pub fn chem_mol_repr_graph_path_make(size : Int) -> ChemmolreprgraphPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_path_len(s : ChemmolreprgraphPath) -> Int { s.size }
+pub fn ChemmolreprgraphPath::len(self : ChemmolreprgraphPath) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_path_get(s : ChemmolreprgraphPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphPath::get(self : ChemmolreprgraphPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_path_set(s : ChemmolreprgraphPath, i : Int, v : Double) -> ChemmolreprgraphPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphPath::set(self : ChemmolreprgraphPath, i : Int, v : Double) -> ChemmolreprgraphPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_path_sum(s : ChemmolreprgraphPath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphPath::sum(self : ChemmolreprgraphPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_path_mean(s : ChemmolreprgraphPath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphPath::mean(self : ChemmolreprgraphPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_path_scale(s : ChemmolreprgraphPath, f : Double) -> ChemmolreprgraphPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphPath::scale(self : ChemmolreprgraphPath, f : Double) -> ChemmolreprgraphPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_path_add(a : ChemmolreprgraphPath, b : ChemmolreprgraphPath) -> ChemmolreprgraphPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphPath::add(self : ChemmolreprgraphPath, other : ChemmolreprgraphPath) -> ChemmolreprgraphPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_path_copy(s : ChemmolreprgraphPath) -> ChemmolreprgraphPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphPath::copy(self : ChemmolreprgraphPath) -> ChemmolreprgraphPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_path_fill(s : ChemmolreprgraphPath, v : Double) -> ChemmolreprgraphPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphPath::fill(self : ChemmolreprgraphPath, v : Double) -> ChemmolreprgraphPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_path_min(s : ChemmolreprgraphPath) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphPath::min(self : ChemmolreprgraphPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_path_max(s : ChemmolreprgraphPath) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphPath::max(self : ChemmolreprgraphPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_path_to_string(s : ChemmolreprgraphPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphPath::to_string(self : ChemmolreprgraphPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_repr_graph_cluster_make(size : Int) -> ChemmolreprgraphCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_cluster_len(s : ChemmolreprgraphCluster) -> Int { s.size }
+pub fn ChemmolreprgraphCluster::len(self : ChemmolreprgraphCluster) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_cluster_get(s : ChemmolreprgraphCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphCluster::get(self : ChemmolreprgraphCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_cluster_set(s : ChemmolreprgraphCluster, i : Int, v : Double) -> ChemmolreprgraphCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCluster::set(self : ChemmolreprgraphCluster, i : Int, v : Double) -> ChemmolreprgraphCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cluster_sum(s : ChemmolreprgraphCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphCluster::sum(self : ChemmolreprgraphCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_cluster_mean(s : ChemmolreprgraphCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphCluster::mean(self : ChemmolreprgraphCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_cluster_scale(s : ChemmolreprgraphCluster, f : Double) -> ChemmolreprgraphCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCluster::scale(self : ChemmolreprgraphCluster, f : Double) -> ChemmolreprgraphCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cluster_add(a : ChemmolreprgraphCluster, b : ChemmolreprgraphCluster) -> ChemmolreprgraphCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphCluster::add(self : ChemmolreprgraphCluster, other : ChemmolreprgraphCluster) -> ChemmolreprgraphCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cluster_copy(s : ChemmolreprgraphCluster) -> ChemmolreprgraphCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCluster::copy(self : ChemmolreprgraphCluster) -> ChemmolreprgraphCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cluster_fill(s : ChemmolreprgraphCluster, v : Double) -> ChemmolreprgraphCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCluster::fill(self : ChemmolreprgraphCluster, v : Double) -> ChemmolreprgraphCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cluster_min(s : ChemmolreprgraphCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphCluster::min(self : ChemmolreprgraphCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_cluster_max(s : ChemmolreprgraphCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphCluster::max(self : ChemmolreprgraphCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_cluster_to_string(s : ChemmolreprgraphCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphCluster::to_string(self : ChemmolreprgraphCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_repr_graph_model_make(size : Int) -> ChemmolreprgraphModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_model_len(s : ChemmolreprgraphModel) -> Int { s.size }
+pub fn ChemmolreprgraphModel::len(self : ChemmolreprgraphModel) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_model_get(s : ChemmolreprgraphModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphModel::get(self : ChemmolreprgraphModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_model_set(s : ChemmolreprgraphModel, i : Int, v : Double) -> ChemmolreprgraphModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphModel::set(self : ChemmolreprgraphModel, i : Int, v : Double) -> ChemmolreprgraphModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_model_sum(s : ChemmolreprgraphModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphModel::sum(self : ChemmolreprgraphModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_model_mean(s : ChemmolreprgraphModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphModel::mean(self : ChemmolreprgraphModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_model_scale(s : ChemmolreprgraphModel, f : Double) -> ChemmolreprgraphModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphModel::scale(self : ChemmolreprgraphModel, f : Double) -> ChemmolreprgraphModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_model_add(a : ChemmolreprgraphModel, b : ChemmolreprgraphModel) -> ChemmolreprgraphModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphModel::add(self : ChemmolreprgraphModel, other : ChemmolreprgraphModel) -> ChemmolreprgraphModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_model_copy(s : ChemmolreprgraphModel) -> ChemmolreprgraphModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphModel::copy(self : ChemmolreprgraphModel) -> ChemmolreprgraphModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_model_fill(s : ChemmolreprgraphModel, v : Double) -> ChemmolreprgraphModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphModel::fill(self : ChemmolreprgraphModel, v : Double) -> ChemmolreprgraphModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_model_min(s : ChemmolreprgraphModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphModel::min(self : ChemmolreprgraphModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_model_max(s : ChemmolreprgraphModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphModel::max(self : ChemmolreprgraphModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_model_to_string(s : ChemmolreprgraphModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphModel::to_string(self : ChemmolreprgraphModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_repr_graph_layer_make(size : Int) -> ChemmolreprgraphLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_layer_len(s : ChemmolreprgraphLayer) -> Int { s.size }
+pub fn ChemmolreprgraphLayer::len(self : ChemmolreprgraphLayer) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_layer_get(s : ChemmolreprgraphLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphLayer::get(self : ChemmolreprgraphLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_layer_set(s : ChemmolreprgraphLayer, i : Int, v : Double) -> ChemmolreprgraphLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphLayer::set(self : ChemmolreprgraphLayer, i : Int, v : Double) -> ChemmolreprgraphLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_layer_sum(s : ChemmolreprgraphLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphLayer::sum(self : ChemmolreprgraphLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_layer_mean(s : ChemmolreprgraphLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphLayer::mean(self : ChemmolreprgraphLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_layer_scale(s : ChemmolreprgraphLayer, f : Double) -> ChemmolreprgraphLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphLayer::scale(self : ChemmolreprgraphLayer, f : Double) -> ChemmolreprgraphLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_layer_add(a : ChemmolreprgraphLayer, b : ChemmolreprgraphLayer) -> ChemmolreprgraphLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphLayer::add(self : ChemmolreprgraphLayer, other : ChemmolreprgraphLayer) -> ChemmolreprgraphLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_layer_copy(s : ChemmolreprgraphLayer) -> ChemmolreprgraphLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphLayer::copy(self : ChemmolreprgraphLayer) -> ChemmolreprgraphLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_layer_fill(s : ChemmolreprgraphLayer, v : Double) -> ChemmolreprgraphLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphLayer::fill(self : ChemmolreprgraphLayer, v : Double) -> ChemmolreprgraphLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_layer_min(s : ChemmolreprgraphLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphLayer::min(self : ChemmolreprgraphLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_layer_max(s : ChemmolreprgraphLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphLayer::max(self : ChemmolreprgraphLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_layer_to_string(s : ChemmolreprgraphLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphLayer::to_string(self : ChemmolreprgraphLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_repr_graph_buffer_make(size : Int) -> ChemmolreprgraphBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_buffer_len(s : ChemmolreprgraphBuffer) -> Int { s.size }
+pub fn ChemmolreprgraphBuffer::len(self : ChemmolreprgraphBuffer) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_buffer_get(s : ChemmolreprgraphBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphBuffer::get(self : ChemmolreprgraphBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_buffer_set(s : ChemmolreprgraphBuffer, i : Int, v : Double) -> ChemmolreprgraphBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphBuffer::set(self : ChemmolreprgraphBuffer, i : Int, v : Double) -> ChemmolreprgraphBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_buffer_sum(s : ChemmolreprgraphBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphBuffer::sum(self : ChemmolreprgraphBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_buffer_mean(s : ChemmolreprgraphBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphBuffer::mean(self : ChemmolreprgraphBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_buffer_scale(s : ChemmolreprgraphBuffer, f : Double) -> ChemmolreprgraphBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphBuffer::scale(self : ChemmolreprgraphBuffer, f : Double) -> ChemmolreprgraphBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_buffer_add(a : ChemmolreprgraphBuffer, b : ChemmolreprgraphBuffer) -> ChemmolreprgraphBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphBuffer::add(self : ChemmolreprgraphBuffer, other : ChemmolreprgraphBuffer) -> ChemmolreprgraphBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_buffer_copy(s : ChemmolreprgraphBuffer) -> ChemmolreprgraphBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphBuffer::copy(self : ChemmolreprgraphBuffer) -> ChemmolreprgraphBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_buffer_fill(s : ChemmolreprgraphBuffer, v : Double) -> ChemmolreprgraphBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphBuffer::fill(self : ChemmolreprgraphBuffer, v : Double) -> ChemmolreprgraphBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_buffer_min(s : ChemmolreprgraphBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphBuffer::min(self : ChemmolreprgraphBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_buffer_max(s : ChemmolreprgraphBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphBuffer::max(self : ChemmolreprgraphBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_buffer_to_string(s : ChemmolreprgraphBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphBuffer::to_string(self : ChemmolreprgraphBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_repr_graph_cursor_make(size : Int) -> ChemmolreprgraphCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_cursor_len(s : ChemmolreprgraphCursor) -> Int { s.size }
+pub fn ChemmolreprgraphCursor::len(self : ChemmolreprgraphCursor) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_cursor_get(s : ChemmolreprgraphCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphCursor::get(self : ChemmolreprgraphCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_cursor_set(s : ChemmolreprgraphCursor, i : Int, v : Double) -> ChemmolreprgraphCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCursor::set(self : ChemmolreprgraphCursor, i : Int, v : Double) -> ChemmolreprgraphCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cursor_sum(s : ChemmolreprgraphCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphCursor::sum(self : ChemmolreprgraphCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_cursor_mean(s : ChemmolreprgraphCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphCursor::mean(self : ChemmolreprgraphCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_cursor_scale(s : ChemmolreprgraphCursor, f : Double) -> ChemmolreprgraphCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCursor::scale(self : ChemmolreprgraphCursor, f : Double) -> ChemmolreprgraphCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cursor_add(a : ChemmolreprgraphCursor, b : ChemmolreprgraphCursor) -> ChemmolreprgraphCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphCursor::add(self : ChemmolreprgraphCursor, other : ChemmolreprgraphCursor) -> ChemmolreprgraphCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cursor_copy(s : ChemmolreprgraphCursor) -> ChemmolreprgraphCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCursor::copy(self : ChemmolreprgraphCursor) -> ChemmolreprgraphCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cursor_fill(s : ChemmolreprgraphCursor, v : Double) -> ChemmolreprgraphCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphCursor::fill(self : ChemmolreprgraphCursor, v : Double) -> ChemmolreprgraphCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_cursor_min(s : ChemmolreprgraphCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphCursor::min(self : ChemmolreprgraphCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_cursor_max(s : ChemmolreprgraphCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphCursor::max(self : ChemmolreprgraphCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_cursor_to_string(s : ChemmolreprgraphCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphCursor::to_string(self : ChemmolreprgraphCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphView {
@@ -912,45 +912,45 @@ pub fn chem_mol_repr_graph_view_make(size : Int) -> ChemmolreprgraphView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_view_len(s : ChemmolreprgraphView) -> Int { s.size }
+pub fn ChemmolreprgraphView::len(self : ChemmolreprgraphView) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_view_get(s : ChemmolreprgraphView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphView::get(self : ChemmolreprgraphView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_view_set(s : ChemmolreprgraphView, i : Int, v : Double) -> ChemmolreprgraphView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphView::set(self : ChemmolreprgraphView, i : Int, v : Double) -> ChemmolreprgraphView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_view_sum(s : ChemmolreprgraphView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphView::sum(self : ChemmolreprgraphView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_view_mean(s : ChemmolreprgraphView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphView::mean(self : ChemmolreprgraphView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_view_scale(s : ChemmolreprgraphView, f : Double) -> ChemmolreprgraphView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphView::scale(self : ChemmolreprgraphView, f : Double) -> ChemmolreprgraphView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_view_add(a : ChemmolreprgraphView, b : ChemmolreprgraphView) -> ChemmolreprgraphView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphView::add(self : ChemmolreprgraphView, other : ChemmolreprgraphView) -> ChemmolreprgraphView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_view_copy(s : ChemmolreprgraphView) -> ChemmolreprgraphView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphView::copy(self : ChemmolreprgraphView) -> ChemmolreprgraphView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_view_fill(s : ChemmolreprgraphView, v : Double) -> ChemmolreprgraphView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphView::fill(self : ChemmolreprgraphView, v : Double) -> ChemmolreprgraphView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_view_min(s : ChemmolreprgraphView) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphView::min(self : ChemmolreprgraphView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_view_max(s : ChemmolreprgraphView) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphView::max(self : ChemmolreprgraphView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_view_to_string(s : ChemmolreprgraphView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphView::to_string(self : ChemmolreprgraphView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_repr_graph_range_make(size : Int) -> ChemmolreprgraphRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_range_len(s : ChemmolreprgraphRange) -> Int { s.size }
+pub fn ChemmolreprgraphRange::len(self : ChemmolreprgraphRange) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_range_get(s : ChemmolreprgraphRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphRange::get(self : ChemmolreprgraphRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_range_set(s : ChemmolreprgraphRange, i : Int, v : Double) -> ChemmolreprgraphRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphRange::set(self : ChemmolreprgraphRange, i : Int, v : Double) -> ChemmolreprgraphRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_range_sum(s : ChemmolreprgraphRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphRange::sum(self : ChemmolreprgraphRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_range_mean(s : ChemmolreprgraphRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphRange::mean(self : ChemmolreprgraphRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_range_scale(s : ChemmolreprgraphRange, f : Double) -> ChemmolreprgraphRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphRange::scale(self : ChemmolreprgraphRange, f : Double) -> ChemmolreprgraphRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_range_add(a : ChemmolreprgraphRange, b : ChemmolreprgraphRange) -> ChemmolreprgraphRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphRange::add(self : ChemmolreprgraphRange, other : ChemmolreprgraphRange) -> ChemmolreprgraphRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_range_copy(s : ChemmolreprgraphRange) -> ChemmolreprgraphRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphRange::copy(self : ChemmolreprgraphRange) -> ChemmolreprgraphRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_range_fill(s : ChemmolreprgraphRange, v : Double) -> ChemmolreprgraphRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphRange::fill(self : ChemmolreprgraphRange, v : Double) -> ChemmolreprgraphRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_range_min(s : ChemmolreprgraphRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphRange::min(self : ChemmolreprgraphRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_range_max(s : ChemmolreprgraphRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphRange::max(self : ChemmolreprgraphRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_range_to_string(s : ChemmolreprgraphRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphRange::to_string(self : ChemmolreprgraphRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_repr_graph_slice_make(size : Int) -> ChemmolreprgraphSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_graph_slice_len(s : ChemmolreprgraphSlice) -> Int { s.size }
+pub fn ChemmolreprgraphSlice::len(self : ChemmolreprgraphSlice) -> Int { self.size }
 
-pub fn chem_mol_repr_graph_slice_get(s : ChemmolreprgraphSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprgraphSlice::get(self : ChemmolreprgraphSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_graph_slice_set(s : ChemmolreprgraphSlice, i : Int, v : Double) -> ChemmolreprgraphSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphSlice::set(self : ChemmolreprgraphSlice, i : Int, v : Double) -> ChemmolreprgraphSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_slice_sum(s : ChemmolreprgraphSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprgraphSlice::sum(self : ChemmolreprgraphSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_graph_slice_mean(s : ChemmolreprgraphSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprgraphSlice::mean(self : ChemmolreprgraphSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_graph_slice_scale(s : ChemmolreprgraphSlice, f : Double) -> ChemmolreprgraphSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphSlice::scale(self : ChemmolreprgraphSlice, f : Double) -> ChemmolreprgraphSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_slice_add(a : ChemmolreprgraphSlice, b : ChemmolreprgraphSlice) -> ChemmolreprgraphSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprgraphSlice::add(self : ChemmolreprgraphSlice, other : ChemmolreprgraphSlice) -> ChemmolreprgraphSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_slice_copy(s : ChemmolreprgraphSlice) -> ChemmolreprgraphSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphSlice::copy(self : ChemmolreprgraphSlice) -> ChemmolreprgraphSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_slice_fill(s : ChemmolreprgraphSlice, v : Double) -> ChemmolreprgraphSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprgraphSlice::fill(self : ChemmolreprgraphSlice, v : Double) -> ChemmolreprgraphSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_graph_slice_min(s : ChemmolreprgraphSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprgraphSlice::min(self : ChemmolreprgraphSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_graph_slice_max(s : ChemmolreprgraphSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprgraphSlice::max(self : ChemmolreprgraphSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_graph_slice_to_string(s : ChemmolreprgraphSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprgraphSlice::to_string(self : ChemmolreprgraphSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

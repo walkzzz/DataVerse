@@ -351,45 +351,45 @@ pub fn sort_dist_inplace_frame_make(size : Int) -> SortdistinplaceFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_frame_len(s : SortdistinplaceFrame) -> Int { s.size }
+pub fn SortdistinplaceFrame::len(self : SortdistinplaceFrame) -> Int { self.size }
 
-pub fn sort_dist_inplace_frame_get(s : SortdistinplaceFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceFrame::get(self : SortdistinplaceFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_frame_set(s : SortdistinplaceFrame, i : Int, v : Double) -> SortdistinplaceFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceFrame::set(self : SortdistinplaceFrame, i : Int, v : Double) -> SortdistinplaceFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_frame_sum(s : SortdistinplaceFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceFrame::sum(self : SortdistinplaceFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_frame_mean(s : SortdistinplaceFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceFrame::mean(self : SortdistinplaceFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_frame_scale(s : SortdistinplaceFrame, f : Double) -> SortdistinplaceFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceFrame::scale(self : SortdistinplaceFrame, f : Double) -> SortdistinplaceFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_frame_add(a : SortdistinplaceFrame, b : SortdistinplaceFrame) -> SortdistinplaceFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceFrame::add(self : SortdistinplaceFrame, other : SortdistinplaceFrame) -> SortdistinplaceFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_frame_copy(s : SortdistinplaceFrame) -> SortdistinplaceFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceFrame::copy(self : SortdistinplaceFrame) -> SortdistinplaceFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_frame_fill(s : SortdistinplaceFrame, v : Double) -> SortdistinplaceFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceFrame::fill(self : SortdistinplaceFrame, v : Double) -> SortdistinplaceFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_frame_min(s : SortdistinplaceFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceFrame::min(self : SortdistinplaceFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_frame_max(s : SortdistinplaceFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceFrame::max(self : SortdistinplaceFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_frame_to_string(s : SortdistinplaceFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceFrame::to_string(self : SortdistinplaceFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_inplace_table_make(size : Int) -> SortdistinplaceTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_table_len(s : SortdistinplaceTable) -> Int { s.size }
+pub fn SortdistinplaceTable::len(self : SortdistinplaceTable) -> Int { self.size }
 
-pub fn sort_dist_inplace_table_get(s : SortdistinplaceTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceTable::get(self : SortdistinplaceTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_table_set(s : SortdistinplaceTable, i : Int, v : Double) -> SortdistinplaceTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceTable::set(self : SortdistinplaceTable, i : Int, v : Double) -> SortdistinplaceTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_table_sum(s : SortdistinplaceTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceTable::sum(self : SortdistinplaceTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_table_mean(s : SortdistinplaceTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceTable::mean(self : SortdistinplaceTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_table_scale(s : SortdistinplaceTable, f : Double) -> SortdistinplaceTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceTable::scale(self : SortdistinplaceTable, f : Double) -> SortdistinplaceTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_table_add(a : SortdistinplaceTable, b : SortdistinplaceTable) -> SortdistinplaceTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceTable::add(self : SortdistinplaceTable, other : SortdistinplaceTable) -> SortdistinplaceTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_table_copy(s : SortdistinplaceTable) -> SortdistinplaceTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceTable::copy(self : SortdistinplaceTable) -> SortdistinplaceTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_table_fill(s : SortdistinplaceTable, v : Double) -> SortdistinplaceTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceTable::fill(self : SortdistinplaceTable, v : Double) -> SortdistinplaceTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_table_min(s : SortdistinplaceTable) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceTable::min(self : SortdistinplaceTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_table_max(s : SortdistinplaceTable) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceTable::max(self : SortdistinplaceTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_table_to_string(s : SortdistinplaceTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceTable::to_string(self : SortdistinplaceTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_inplace_graphn_make(size : Int) -> SortdistinplaceGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_graphn_len(s : SortdistinplaceGraphN) -> Int { s.size }
+pub fn SortdistinplaceGraphN::len(self : SortdistinplaceGraphN) -> Int { self.size }
 
-pub fn sort_dist_inplace_graphn_get(s : SortdistinplaceGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceGraphN::get(self : SortdistinplaceGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_graphn_set(s : SortdistinplaceGraphN, i : Int, v : Double) -> SortdistinplaceGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceGraphN::set(self : SortdistinplaceGraphN, i : Int, v : Double) -> SortdistinplaceGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_graphn_sum(s : SortdistinplaceGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceGraphN::sum(self : SortdistinplaceGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_graphn_mean(s : SortdistinplaceGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceGraphN::mean(self : SortdistinplaceGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_graphn_scale(s : SortdistinplaceGraphN, f : Double) -> SortdistinplaceGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceGraphN::scale(self : SortdistinplaceGraphN, f : Double) -> SortdistinplaceGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_graphn_add(a : SortdistinplaceGraphN, b : SortdistinplaceGraphN) -> SortdistinplaceGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceGraphN::add(self : SortdistinplaceGraphN, other : SortdistinplaceGraphN) -> SortdistinplaceGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_graphn_copy(s : SortdistinplaceGraphN) -> SortdistinplaceGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceGraphN::copy(self : SortdistinplaceGraphN) -> SortdistinplaceGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_graphn_fill(s : SortdistinplaceGraphN, v : Double) -> SortdistinplaceGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceGraphN::fill(self : SortdistinplaceGraphN, v : Double) -> SortdistinplaceGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_graphn_min(s : SortdistinplaceGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceGraphN::min(self : SortdistinplaceGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_graphn_max(s : SortdistinplaceGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceGraphN::max(self : SortdistinplaceGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_graphn_to_string(s : SortdistinplaceGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceGraphN::to_string(self : SortdistinplaceGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_inplace_node_make(size : Int) -> SortdistinplaceNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_node_len(s : SortdistinplaceNode) -> Int { s.size }
+pub fn SortdistinplaceNode::len(self : SortdistinplaceNode) -> Int { self.size }
 
-pub fn sort_dist_inplace_node_get(s : SortdistinplaceNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceNode::get(self : SortdistinplaceNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_node_set(s : SortdistinplaceNode, i : Int, v : Double) -> SortdistinplaceNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceNode::set(self : SortdistinplaceNode, i : Int, v : Double) -> SortdistinplaceNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_node_sum(s : SortdistinplaceNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceNode::sum(self : SortdistinplaceNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_node_mean(s : SortdistinplaceNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceNode::mean(self : SortdistinplaceNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_node_scale(s : SortdistinplaceNode, f : Double) -> SortdistinplaceNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceNode::scale(self : SortdistinplaceNode, f : Double) -> SortdistinplaceNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_node_add(a : SortdistinplaceNode, b : SortdistinplaceNode) -> SortdistinplaceNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceNode::add(self : SortdistinplaceNode, other : SortdistinplaceNode) -> SortdistinplaceNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_node_copy(s : SortdistinplaceNode) -> SortdistinplaceNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceNode::copy(self : SortdistinplaceNode) -> SortdistinplaceNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_node_fill(s : SortdistinplaceNode, v : Double) -> SortdistinplaceNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceNode::fill(self : SortdistinplaceNode, v : Double) -> SortdistinplaceNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_node_min(s : SortdistinplaceNode) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceNode::min(self : SortdistinplaceNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_node_max(s : SortdistinplaceNode) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceNode::max(self : SortdistinplaceNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_node_to_string(s : SortdistinplaceNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceNode::to_string(self : SortdistinplaceNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_inplace_edge_make(size : Int) -> SortdistinplaceEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_edge_len(s : SortdistinplaceEdge) -> Int { s.size }
+pub fn SortdistinplaceEdge::len(self : SortdistinplaceEdge) -> Int { self.size }
 
-pub fn sort_dist_inplace_edge_get(s : SortdistinplaceEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceEdge::get(self : SortdistinplaceEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_edge_set(s : SortdistinplaceEdge, i : Int, v : Double) -> SortdistinplaceEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceEdge::set(self : SortdistinplaceEdge, i : Int, v : Double) -> SortdistinplaceEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_edge_sum(s : SortdistinplaceEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceEdge::sum(self : SortdistinplaceEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_edge_mean(s : SortdistinplaceEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceEdge::mean(self : SortdistinplaceEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_edge_scale(s : SortdistinplaceEdge, f : Double) -> SortdistinplaceEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceEdge::scale(self : SortdistinplaceEdge, f : Double) -> SortdistinplaceEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_edge_add(a : SortdistinplaceEdge, b : SortdistinplaceEdge) -> SortdistinplaceEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceEdge::add(self : SortdistinplaceEdge, other : SortdistinplaceEdge) -> SortdistinplaceEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_edge_copy(s : SortdistinplaceEdge) -> SortdistinplaceEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceEdge::copy(self : SortdistinplaceEdge) -> SortdistinplaceEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_edge_fill(s : SortdistinplaceEdge, v : Double) -> SortdistinplaceEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceEdge::fill(self : SortdistinplaceEdge, v : Double) -> SortdistinplaceEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_edge_min(s : SortdistinplaceEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceEdge::min(self : SortdistinplaceEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_edge_max(s : SortdistinplaceEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceEdge::max(self : SortdistinplaceEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_edge_to_string(s : SortdistinplaceEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceEdge::to_string(self : SortdistinplaceEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplacePath {
@@ -606,45 +606,45 @@ pub fn sort_dist_inplace_path_make(size : Int) -> SortdistinplacePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_path_len(s : SortdistinplacePath) -> Int { s.size }
+pub fn SortdistinplacePath::len(self : SortdistinplacePath) -> Int { self.size }
 
-pub fn sort_dist_inplace_path_get(s : SortdistinplacePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplacePath::get(self : SortdistinplacePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_path_set(s : SortdistinplacePath, i : Int, v : Double) -> SortdistinplacePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplacePath::set(self : SortdistinplacePath, i : Int, v : Double) -> SortdistinplacePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_path_sum(s : SortdistinplacePath) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplacePath::sum(self : SortdistinplacePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_path_mean(s : SortdistinplacePath) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplacePath::mean(self : SortdistinplacePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_path_scale(s : SortdistinplacePath, f : Double) -> SortdistinplacePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplacePath::scale(self : SortdistinplacePath, f : Double) -> SortdistinplacePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_path_add(a : SortdistinplacePath, b : SortdistinplacePath) -> SortdistinplacePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplacePath::add(self : SortdistinplacePath, other : SortdistinplacePath) -> SortdistinplacePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_path_copy(s : SortdistinplacePath) -> SortdistinplacePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplacePath::copy(self : SortdistinplacePath) -> SortdistinplacePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_path_fill(s : SortdistinplacePath, v : Double) -> SortdistinplacePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplacePath::fill(self : SortdistinplacePath, v : Double) -> SortdistinplacePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_path_min(s : SortdistinplacePath) -> Double { @_common.min(s.data) }
+pub fn SortdistinplacePath::min(self : SortdistinplacePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_path_max(s : SortdistinplacePath) -> Double { @_common.max(s.data) }
+pub fn SortdistinplacePath::max(self : SortdistinplacePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_path_to_string(s : SortdistinplacePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplacePath::to_string(self : SortdistinplacePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_inplace_cluster_make(size : Int) -> SortdistinplaceCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_cluster_len(s : SortdistinplaceCluster) -> Int { s.size }
+pub fn SortdistinplaceCluster::len(self : SortdistinplaceCluster) -> Int { self.size }
 
-pub fn sort_dist_inplace_cluster_get(s : SortdistinplaceCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceCluster::get(self : SortdistinplaceCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_cluster_set(s : SortdistinplaceCluster, i : Int, v : Double) -> SortdistinplaceCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceCluster::set(self : SortdistinplaceCluster, i : Int, v : Double) -> SortdistinplaceCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cluster_sum(s : SortdistinplaceCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceCluster::sum(self : SortdistinplaceCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_cluster_mean(s : SortdistinplaceCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceCluster::mean(self : SortdistinplaceCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_cluster_scale(s : SortdistinplaceCluster, f : Double) -> SortdistinplaceCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceCluster::scale(self : SortdistinplaceCluster, f : Double) -> SortdistinplaceCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cluster_add(a : SortdistinplaceCluster, b : SortdistinplaceCluster) -> SortdistinplaceCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceCluster::add(self : SortdistinplaceCluster, other : SortdistinplaceCluster) -> SortdistinplaceCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cluster_copy(s : SortdistinplaceCluster) -> SortdistinplaceCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceCluster::copy(self : SortdistinplaceCluster) -> SortdistinplaceCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cluster_fill(s : SortdistinplaceCluster, v : Double) -> SortdistinplaceCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceCluster::fill(self : SortdistinplaceCluster, v : Double) -> SortdistinplaceCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cluster_min(s : SortdistinplaceCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceCluster::min(self : SortdistinplaceCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_cluster_max(s : SortdistinplaceCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceCluster::max(self : SortdistinplaceCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_cluster_to_string(s : SortdistinplaceCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceCluster::to_string(self : SortdistinplaceCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_inplace_model_make(size : Int) -> SortdistinplaceModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_model_len(s : SortdistinplaceModel) -> Int { s.size }
+pub fn SortdistinplaceModel::len(self : SortdistinplaceModel) -> Int { self.size }
 
-pub fn sort_dist_inplace_model_get(s : SortdistinplaceModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceModel::get(self : SortdistinplaceModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_model_set(s : SortdistinplaceModel, i : Int, v : Double) -> SortdistinplaceModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceModel::set(self : SortdistinplaceModel, i : Int, v : Double) -> SortdistinplaceModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_model_sum(s : SortdistinplaceModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceModel::sum(self : SortdistinplaceModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_model_mean(s : SortdistinplaceModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceModel::mean(self : SortdistinplaceModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_model_scale(s : SortdistinplaceModel, f : Double) -> SortdistinplaceModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceModel::scale(self : SortdistinplaceModel, f : Double) -> SortdistinplaceModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_model_add(a : SortdistinplaceModel, b : SortdistinplaceModel) -> SortdistinplaceModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceModel::add(self : SortdistinplaceModel, other : SortdistinplaceModel) -> SortdistinplaceModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_model_copy(s : SortdistinplaceModel) -> SortdistinplaceModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceModel::copy(self : SortdistinplaceModel) -> SortdistinplaceModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_model_fill(s : SortdistinplaceModel, v : Double) -> SortdistinplaceModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceModel::fill(self : SortdistinplaceModel, v : Double) -> SortdistinplaceModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_model_min(s : SortdistinplaceModel) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceModel::min(self : SortdistinplaceModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_model_max(s : SortdistinplaceModel) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceModel::max(self : SortdistinplaceModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_model_to_string(s : SortdistinplaceModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceModel::to_string(self : SortdistinplaceModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_inplace_layer_make(size : Int) -> SortdistinplaceLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_layer_len(s : SortdistinplaceLayer) -> Int { s.size }
+pub fn SortdistinplaceLayer::len(self : SortdistinplaceLayer) -> Int { self.size }
 
-pub fn sort_dist_inplace_layer_get(s : SortdistinplaceLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceLayer::get(self : SortdistinplaceLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_layer_set(s : SortdistinplaceLayer, i : Int, v : Double) -> SortdistinplaceLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceLayer::set(self : SortdistinplaceLayer, i : Int, v : Double) -> SortdistinplaceLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_layer_sum(s : SortdistinplaceLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceLayer::sum(self : SortdistinplaceLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_layer_mean(s : SortdistinplaceLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceLayer::mean(self : SortdistinplaceLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_layer_scale(s : SortdistinplaceLayer, f : Double) -> SortdistinplaceLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceLayer::scale(self : SortdistinplaceLayer, f : Double) -> SortdistinplaceLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_layer_add(a : SortdistinplaceLayer, b : SortdistinplaceLayer) -> SortdistinplaceLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceLayer::add(self : SortdistinplaceLayer, other : SortdistinplaceLayer) -> SortdistinplaceLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_layer_copy(s : SortdistinplaceLayer) -> SortdistinplaceLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceLayer::copy(self : SortdistinplaceLayer) -> SortdistinplaceLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_layer_fill(s : SortdistinplaceLayer, v : Double) -> SortdistinplaceLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceLayer::fill(self : SortdistinplaceLayer, v : Double) -> SortdistinplaceLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_layer_min(s : SortdistinplaceLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceLayer::min(self : SortdistinplaceLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_layer_max(s : SortdistinplaceLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceLayer::max(self : SortdistinplaceLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_layer_to_string(s : SortdistinplaceLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceLayer::to_string(self : SortdistinplaceLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_inplace_buffer_make(size : Int) -> SortdistinplaceBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_buffer_len(s : SortdistinplaceBuffer) -> Int { s.size }
+pub fn SortdistinplaceBuffer::len(self : SortdistinplaceBuffer) -> Int { self.size }
 
-pub fn sort_dist_inplace_buffer_get(s : SortdistinplaceBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceBuffer::get(self : SortdistinplaceBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_buffer_set(s : SortdistinplaceBuffer, i : Int, v : Double) -> SortdistinplaceBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceBuffer::set(self : SortdistinplaceBuffer, i : Int, v : Double) -> SortdistinplaceBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_buffer_sum(s : SortdistinplaceBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceBuffer::sum(self : SortdistinplaceBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_buffer_mean(s : SortdistinplaceBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceBuffer::mean(self : SortdistinplaceBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_buffer_scale(s : SortdistinplaceBuffer, f : Double) -> SortdistinplaceBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceBuffer::scale(self : SortdistinplaceBuffer, f : Double) -> SortdistinplaceBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_buffer_add(a : SortdistinplaceBuffer, b : SortdistinplaceBuffer) -> SortdistinplaceBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceBuffer::add(self : SortdistinplaceBuffer, other : SortdistinplaceBuffer) -> SortdistinplaceBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_buffer_copy(s : SortdistinplaceBuffer) -> SortdistinplaceBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceBuffer::copy(self : SortdistinplaceBuffer) -> SortdistinplaceBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_buffer_fill(s : SortdistinplaceBuffer, v : Double) -> SortdistinplaceBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceBuffer::fill(self : SortdistinplaceBuffer, v : Double) -> SortdistinplaceBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_buffer_min(s : SortdistinplaceBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceBuffer::min(self : SortdistinplaceBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_buffer_max(s : SortdistinplaceBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceBuffer::max(self : SortdistinplaceBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_buffer_to_string(s : SortdistinplaceBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceBuffer::to_string(self : SortdistinplaceBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_inplace_cursor_make(size : Int) -> SortdistinplaceCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_cursor_len(s : SortdistinplaceCursor) -> Int { s.size }
+pub fn SortdistinplaceCursor::len(self : SortdistinplaceCursor) -> Int { self.size }
 
-pub fn sort_dist_inplace_cursor_get(s : SortdistinplaceCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceCursor::get(self : SortdistinplaceCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_cursor_set(s : SortdistinplaceCursor, i : Int, v : Double) -> SortdistinplaceCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceCursor::set(self : SortdistinplaceCursor, i : Int, v : Double) -> SortdistinplaceCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cursor_sum(s : SortdistinplaceCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceCursor::sum(self : SortdistinplaceCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_cursor_mean(s : SortdistinplaceCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceCursor::mean(self : SortdistinplaceCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_cursor_scale(s : SortdistinplaceCursor, f : Double) -> SortdistinplaceCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceCursor::scale(self : SortdistinplaceCursor, f : Double) -> SortdistinplaceCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cursor_add(a : SortdistinplaceCursor, b : SortdistinplaceCursor) -> SortdistinplaceCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceCursor::add(self : SortdistinplaceCursor, other : SortdistinplaceCursor) -> SortdistinplaceCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cursor_copy(s : SortdistinplaceCursor) -> SortdistinplaceCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceCursor::copy(self : SortdistinplaceCursor) -> SortdistinplaceCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cursor_fill(s : SortdistinplaceCursor, v : Double) -> SortdistinplaceCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceCursor::fill(self : SortdistinplaceCursor, v : Double) -> SortdistinplaceCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_cursor_min(s : SortdistinplaceCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceCursor::min(self : SortdistinplaceCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_cursor_max(s : SortdistinplaceCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceCursor::max(self : SortdistinplaceCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_cursor_to_string(s : SortdistinplaceCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceCursor::to_string(self : SortdistinplaceCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceView {
@@ -912,45 +912,45 @@ pub fn sort_dist_inplace_view_make(size : Int) -> SortdistinplaceView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_view_len(s : SortdistinplaceView) -> Int { s.size }
+pub fn SortdistinplaceView::len(self : SortdistinplaceView) -> Int { self.size }
 
-pub fn sort_dist_inplace_view_get(s : SortdistinplaceView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceView::get(self : SortdistinplaceView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_view_set(s : SortdistinplaceView, i : Int, v : Double) -> SortdistinplaceView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceView::set(self : SortdistinplaceView, i : Int, v : Double) -> SortdistinplaceView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_view_sum(s : SortdistinplaceView) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceView::sum(self : SortdistinplaceView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_view_mean(s : SortdistinplaceView) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceView::mean(self : SortdistinplaceView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_view_scale(s : SortdistinplaceView, f : Double) -> SortdistinplaceView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceView::scale(self : SortdistinplaceView, f : Double) -> SortdistinplaceView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_view_add(a : SortdistinplaceView, b : SortdistinplaceView) -> SortdistinplaceView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceView::add(self : SortdistinplaceView, other : SortdistinplaceView) -> SortdistinplaceView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_view_copy(s : SortdistinplaceView) -> SortdistinplaceView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceView::copy(self : SortdistinplaceView) -> SortdistinplaceView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_view_fill(s : SortdistinplaceView, v : Double) -> SortdistinplaceView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceView::fill(self : SortdistinplaceView, v : Double) -> SortdistinplaceView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_view_min(s : SortdistinplaceView) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceView::min(self : SortdistinplaceView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_view_max(s : SortdistinplaceView) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceView::max(self : SortdistinplaceView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_view_to_string(s : SortdistinplaceView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceView::to_string(self : SortdistinplaceView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_inplace_range_make(size : Int) -> SortdistinplaceRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_range_len(s : SortdistinplaceRange) -> Int { s.size }
+pub fn SortdistinplaceRange::len(self : SortdistinplaceRange) -> Int { self.size }
 
-pub fn sort_dist_inplace_range_get(s : SortdistinplaceRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceRange::get(self : SortdistinplaceRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_range_set(s : SortdistinplaceRange, i : Int, v : Double) -> SortdistinplaceRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceRange::set(self : SortdistinplaceRange, i : Int, v : Double) -> SortdistinplaceRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_range_sum(s : SortdistinplaceRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceRange::sum(self : SortdistinplaceRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_range_mean(s : SortdistinplaceRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceRange::mean(self : SortdistinplaceRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_range_scale(s : SortdistinplaceRange, f : Double) -> SortdistinplaceRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceRange::scale(self : SortdistinplaceRange, f : Double) -> SortdistinplaceRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_range_add(a : SortdistinplaceRange, b : SortdistinplaceRange) -> SortdistinplaceRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceRange::add(self : SortdistinplaceRange, other : SortdistinplaceRange) -> SortdistinplaceRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_range_copy(s : SortdistinplaceRange) -> SortdistinplaceRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceRange::copy(self : SortdistinplaceRange) -> SortdistinplaceRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_range_fill(s : SortdistinplaceRange, v : Double) -> SortdistinplaceRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceRange::fill(self : SortdistinplaceRange, v : Double) -> SortdistinplaceRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_range_min(s : SortdistinplaceRange) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceRange::min(self : SortdistinplaceRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_range_max(s : SortdistinplaceRange) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceRange::max(self : SortdistinplaceRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_range_to_string(s : SortdistinplaceRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceRange::to_string(self : SortdistinplaceRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistinplaceSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_inplace_slice_make(size : Int) -> SortdistinplaceSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_inplace_slice_len(s : SortdistinplaceSlice) -> Int { s.size }
+pub fn SortdistinplaceSlice::len(self : SortdistinplaceSlice) -> Int { self.size }
 
-pub fn sort_dist_inplace_slice_get(s : SortdistinplaceSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistinplaceSlice::get(self : SortdistinplaceSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_inplace_slice_set(s : SortdistinplaceSlice, i : Int, v : Double) -> SortdistinplaceSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistinplaceSlice::set(self : SortdistinplaceSlice, i : Int, v : Double) -> SortdistinplaceSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_slice_sum(s : SortdistinplaceSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistinplaceSlice::sum(self : SortdistinplaceSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_inplace_slice_mean(s : SortdistinplaceSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistinplaceSlice::mean(self : SortdistinplaceSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_inplace_slice_scale(s : SortdistinplaceSlice, f : Double) -> SortdistinplaceSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistinplaceSlice::scale(self : SortdistinplaceSlice, f : Double) -> SortdistinplaceSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_slice_add(a : SortdistinplaceSlice, b : SortdistinplaceSlice) -> SortdistinplaceSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistinplaceSlice::add(self : SortdistinplaceSlice, other : SortdistinplaceSlice) -> SortdistinplaceSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_slice_copy(s : SortdistinplaceSlice) -> SortdistinplaceSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistinplaceSlice::copy(self : SortdistinplaceSlice) -> SortdistinplaceSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_slice_fill(s : SortdistinplaceSlice, v : Double) -> SortdistinplaceSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistinplaceSlice::fill(self : SortdistinplaceSlice, v : Double) -> SortdistinplaceSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_inplace_slice_min(s : SortdistinplaceSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistinplaceSlice::min(self : SortdistinplaceSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_inplace_slice_max(s : SortdistinplaceSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistinplaceSlice::max(self : SortdistinplaceSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_inplace_slice_to_string(s : SortdistinplaceSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistinplaceSlice::to_string(self : SortdistinplaceSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

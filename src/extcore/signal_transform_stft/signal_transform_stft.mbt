@@ -351,45 +351,45 @@ pub fn signal_transform_stft_frame_make(size : Int) -> SignaltransformstftFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_frame_len(s : SignaltransformstftFrame) -> Int { s.size }
+pub fn SignaltransformstftFrame::len(self : SignaltransformstftFrame) -> Int { self.size }
 
-pub fn signal_transform_stft_frame_get(s : SignaltransformstftFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftFrame::get(self : SignaltransformstftFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_frame_set(s : SignaltransformstftFrame, i : Int, v : Double) -> SignaltransformstftFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftFrame::set(self : SignaltransformstftFrame, i : Int, v : Double) -> SignaltransformstftFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_frame_sum(s : SignaltransformstftFrame) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftFrame::sum(self : SignaltransformstftFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_frame_mean(s : SignaltransformstftFrame) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftFrame::mean(self : SignaltransformstftFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_frame_scale(s : SignaltransformstftFrame, f : Double) -> SignaltransformstftFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftFrame::scale(self : SignaltransformstftFrame, f : Double) -> SignaltransformstftFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_frame_add(a : SignaltransformstftFrame, b : SignaltransformstftFrame) -> SignaltransformstftFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftFrame::add(self : SignaltransformstftFrame, other : SignaltransformstftFrame) -> SignaltransformstftFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_frame_copy(s : SignaltransformstftFrame) -> SignaltransformstftFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftFrame::copy(self : SignaltransformstftFrame) -> SignaltransformstftFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_frame_fill(s : SignaltransformstftFrame, v : Double) -> SignaltransformstftFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftFrame::fill(self : SignaltransformstftFrame, v : Double) -> SignaltransformstftFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_frame_min(s : SignaltransformstftFrame) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftFrame::min(self : SignaltransformstftFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_frame_max(s : SignaltransformstftFrame) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftFrame::max(self : SignaltransformstftFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_frame_to_string(s : SignaltransformstftFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftFrame::to_string(self : SignaltransformstftFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftTable {
@@ -402,45 +402,45 @@ pub fn signal_transform_stft_table_make(size : Int) -> SignaltransformstftTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_table_len(s : SignaltransformstftTable) -> Int { s.size }
+pub fn SignaltransformstftTable::len(self : SignaltransformstftTable) -> Int { self.size }
 
-pub fn signal_transform_stft_table_get(s : SignaltransformstftTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftTable::get(self : SignaltransformstftTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_table_set(s : SignaltransformstftTable, i : Int, v : Double) -> SignaltransformstftTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftTable::set(self : SignaltransformstftTable, i : Int, v : Double) -> SignaltransformstftTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_table_sum(s : SignaltransformstftTable) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftTable::sum(self : SignaltransformstftTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_table_mean(s : SignaltransformstftTable) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftTable::mean(self : SignaltransformstftTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_table_scale(s : SignaltransformstftTable, f : Double) -> SignaltransformstftTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftTable::scale(self : SignaltransformstftTable, f : Double) -> SignaltransformstftTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_table_add(a : SignaltransformstftTable, b : SignaltransformstftTable) -> SignaltransformstftTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftTable::add(self : SignaltransformstftTable, other : SignaltransformstftTable) -> SignaltransformstftTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_table_copy(s : SignaltransformstftTable) -> SignaltransformstftTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftTable::copy(self : SignaltransformstftTable) -> SignaltransformstftTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_table_fill(s : SignaltransformstftTable, v : Double) -> SignaltransformstftTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftTable::fill(self : SignaltransformstftTable, v : Double) -> SignaltransformstftTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_table_min(s : SignaltransformstftTable) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftTable::min(self : SignaltransformstftTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_table_max(s : SignaltransformstftTable) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftTable::max(self : SignaltransformstftTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_table_to_string(s : SignaltransformstftTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftTable::to_string(self : SignaltransformstftTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftGraphN {
@@ -453,45 +453,45 @@ pub fn signal_transform_stft_graphn_make(size : Int) -> SignaltransformstftGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_graphn_len(s : SignaltransformstftGraphN) -> Int { s.size }
+pub fn SignaltransformstftGraphN::len(self : SignaltransformstftGraphN) -> Int { self.size }
 
-pub fn signal_transform_stft_graphn_get(s : SignaltransformstftGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftGraphN::get(self : SignaltransformstftGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_graphn_set(s : SignaltransformstftGraphN, i : Int, v : Double) -> SignaltransformstftGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftGraphN::set(self : SignaltransformstftGraphN, i : Int, v : Double) -> SignaltransformstftGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_graphn_sum(s : SignaltransformstftGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftGraphN::sum(self : SignaltransformstftGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_graphn_mean(s : SignaltransformstftGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftGraphN::mean(self : SignaltransformstftGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_graphn_scale(s : SignaltransformstftGraphN, f : Double) -> SignaltransformstftGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftGraphN::scale(self : SignaltransformstftGraphN, f : Double) -> SignaltransformstftGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_graphn_add(a : SignaltransformstftGraphN, b : SignaltransformstftGraphN) -> SignaltransformstftGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftGraphN::add(self : SignaltransformstftGraphN, other : SignaltransformstftGraphN) -> SignaltransformstftGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_graphn_copy(s : SignaltransformstftGraphN) -> SignaltransformstftGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftGraphN::copy(self : SignaltransformstftGraphN) -> SignaltransformstftGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_graphn_fill(s : SignaltransformstftGraphN, v : Double) -> SignaltransformstftGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftGraphN::fill(self : SignaltransformstftGraphN, v : Double) -> SignaltransformstftGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_graphn_min(s : SignaltransformstftGraphN) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftGraphN::min(self : SignaltransformstftGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_graphn_max(s : SignaltransformstftGraphN) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftGraphN::max(self : SignaltransformstftGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_graphn_to_string(s : SignaltransformstftGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftGraphN::to_string(self : SignaltransformstftGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftNode {
@@ -504,45 +504,45 @@ pub fn signal_transform_stft_node_make(size : Int) -> SignaltransformstftNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_node_len(s : SignaltransformstftNode) -> Int { s.size }
+pub fn SignaltransformstftNode::len(self : SignaltransformstftNode) -> Int { self.size }
 
-pub fn signal_transform_stft_node_get(s : SignaltransformstftNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftNode::get(self : SignaltransformstftNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_node_set(s : SignaltransformstftNode, i : Int, v : Double) -> SignaltransformstftNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftNode::set(self : SignaltransformstftNode, i : Int, v : Double) -> SignaltransformstftNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_node_sum(s : SignaltransformstftNode) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftNode::sum(self : SignaltransformstftNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_node_mean(s : SignaltransformstftNode) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftNode::mean(self : SignaltransformstftNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_node_scale(s : SignaltransformstftNode, f : Double) -> SignaltransformstftNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftNode::scale(self : SignaltransformstftNode, f : Double) -> SignaltransformstftNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_node_add(a : SignaltransformstftNode, b : SignaltransformstftNode) -> SignaltransformstftNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftNode::add(self : SignaltransformstftNode, other : SignaltransformstftNode) -> SignaltransformstftNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_node_copy(s : SignaltransformstftNode) -> SignaltransformstftNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftNode::copy(self : SignaltransformstftNode) -> SignaltransformstftNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_node_fill(s : SignaltransformstftNode, v : Double) -> SignaltransformstftNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftNode::fill(self : SignaltransformstftNode, v : Double) -> SignaltransformstftNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_node_min(s : SignaltransformstftNode) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftNode::min(self : SignaltransformstftNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_node_max(s : SignaltransformstftNode) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftNode::max(self : SignaltransformstftNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_node_to_string(s : SignaltransformstftNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftNode::to_string(self : SignaltransformstftNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftEdge {
@@ -555,45 +555,45 @@ pub fn signal_transform_stft_edge_make(size : Int) -> SignaltransformstftEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_edge_len(s : SignaltransformstftEdge) -> Int { s.size }
+pub fn SignaltransformstftEdge::len(self : SignaltransformstftEdge) -> Int { self.size }
 
-pub fn signal_transform_stft_edge_get(s : SignaltransformstftEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftEdge::get(self : SignaltransformstftEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_edge_set(s : SignaltransformstftEdge, i : Int, v : Double) -> SignaltransformstftEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftEdge::set(self : SignaltransformstftEdge, i : Int, v : Double) -> SignaltransformstftEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_edge_sum(s : SignaltransformstftEdge) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftEdge::sum(self : SignaltransformstftEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_edge_mean(s : SignaltransformstftEdge) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftEdge::mean(self : SignaltransformstftEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_edge_scale(s : SignaltransformstftEdge, f : Double) -> SignaltransformstftEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftEdge::scale(self : SignaltransformstftEdge, f : Double) -> SignaltransformstftEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_edge_add(a : SignaltransformstftEdge, b : SignaltransformstftEdge) -> SignaltransformstftEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftEdge::add(self : SignaltransformstftEdge, other : SignaltransformstftEdge) -> SignaltransformstftEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_edge_copy(s : SignaltransformstftEdge) -> SignaltransformstftEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftEdge::copy(self : SignaltransformstftEdge) -> SignaltransformstftEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_edge_fill(s : SignaltransformstftEdge, v : Double) -> SignaltransformstftEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftEdge::fill(self : SignaltransformstftEdge, v : Double) -> SignaltransformstftEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_edge_min(s : SignaltransformstftEdge) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftEdge::min(self : SignaltransformstftEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_edge_max(s : SignaltransformstftEdge) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftEdge::max(self : SignaltransformstftEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_edge_to_string(s : SignaltransformstftEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftEdge::to_string(self : SignaltransformstftEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftPath {
@@ -606,45 +606,45 @@ pub fn signal_transform_stft_path_make(size : Int) -> SignaltransformstftPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_path_len(s : SignaltransformstftPath) -> Int { s.size }
+pub fn SignaltransformstftPath::len(self : SignaltransformstftPath) -> Int { self.size }
 
-pub fn signal_transform_stft_path_get(s : SignaltransformstftPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftPath::get(self : SignaltransformstftPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_path_set(s : SignaltransformstftPath, i : Int, v : Double) -> SignaltransformstftPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftPath::set(self : SignaltransformstftPath, i : Int, v : Double) -> SignaltransformstftPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_path_sum(s : SignaltransformstftPath) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftPath::sum(self : SignaltransformstftPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_path_mean(s : SignaltransformstftPath) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftPath::mean(self : SignaltransformstftPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_path_scale(s : SignaltransformstftPath, f : Double) -> SignaltransformstftPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftPath::scale(self : SignaltransformstftPath, f : Double) -> SignaltransformstftPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_path_add(a : SignaltransformstftPath, b : SignaltransformstftPath) -> SignaltransformstftPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftPath::add(self : SignaltransformstftPath, other : SignaltransformstftPath) -> SignaltransformstftPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_path_copy(s : SignaltransformstftPath) -> SignaltransformstftPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftPath::copy(self : SignaltransformstftPath) -> SignaltransformstftPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_path_fill(s : SignaltransformstftPath, v : Double) -> SignaltransformstftPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftPath::fill(self : SignaltransformstftPath, v : Double) -> SignaltransformstftPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_path_min(s : SignaltransformstftPath) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftPath::min(self : SignaltransformstftPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_path_max(s : SignaltransformstftPath) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftPath::max(self : SignaltransformstftPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_path_to_string(s : SignaltransformstftPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftPath::to_string(self : SignaltransformstftPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftCluster {
@@ -657,45 +657,45 @@ pub fn signal_transform_stft_cluster_make(size : Int) -> SignaltransformstftClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_cluster_len(s : SignaltransformstftCluster) -> Int { s.size }
+pub fn SignaltransformstftCluster::len(self : SignaltransformstftCluster) -> Int { self.size }
 
-pub fn signal_transform_stft_cluster_get(s : SignaltransformstftCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftCluster::get(self : SignaltransformstftCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_cluster_set(s : SignaltransformstftCluster, i : Int, v : Double) -> SignaltransformstftCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftCluster::set(self : SignaltransformstftCluster, i : Int, v : Double) -> SignaltransformstftCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cluster_sum(s : SignaltransformstftCluster) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftCluster::sum(self : SignaltransformstftCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_cluster_mean(s : SignaltransformstftCluster) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftCluster::mean(self : SignaltransformstftCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_cluster_scale(s : SignaltransformstftCluster, f : Double) -> SignaltransformstftCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftCluster::scale(self : SignaltransformstftCluster, f : Double) -> SignaltransformstftCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cluster_add(a : SignaltransformstftCluster, b : SignaltransformstftCluster) -> SignaltransformstftCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftCluster::add(self : SignaltransformstftCluster, other : SignaltransformstftCluster) -> SignaltransformstftCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cluster_copy(s : SignaltransformstftCluster) -> SignaltransformstftCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftCluster::copy(self : SignaltransformstftCluster) -> SignaltransformstftCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cluster_fill(s : SignaltransformstftCluster, v : Double) -> SignaltransformstftCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftCluster::fill(self : SignaltransformstftCluster, v : Double) -> SignaltransformstftCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cluster_min(s : SignaltransformstftCluster) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftCluster::min(self : SignaltransformstftCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_cluster_max(s : SignaltransformstftCluster) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftCluster::max(self : SignaltransformstftCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_cluster_to_string(s : SignaltransformstftCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftCluster::to_string(self : SignaltransformstftCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftModel {
@@ -708,45 +708,45 @@ pub fn signal_transform_stft_model_make(size : Int) -> SignaltransformstftModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_model_len(s : SignaltransformstftModel) -> Int { s.size }
+pub fn SignaltransformstftModel::len(self : SignaltransformstftModel) -> Int { self.size }
 
-pub fn signal_transform_stft_model_get(s : SignaltransformstftModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftModel::get(self : SignaltransformstftModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_model_set(s : SignaltransformstftModel, i : Int, v : Double) -> SignaltransformstftModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftModel::set(self : SignaltransformstftModel, i : Int, v : Double) -> SignaltransformstftModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_model_sum(s : SignaltransformstftModel) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftModel::sum(self : SignaltransformstftModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_model_mean(s : SignaltransformstftModel) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftModel::mean(self : SignaltransformstftModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_model_scale(s : SignaltransformstftModel, f : Double) -> SignaltransformstftModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftModel::scale(self : SignaltransformstftModel, f : Double) -> SignaltransformstftModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_model_add(a : SignaltransformstftModel, b : SignaltransformstftModel) -> SignaltransformstftModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftModel::add(self : SignaltransformstftModel, other : SignaltransformstftModel) -> SignaltransformstftModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_model_copy(s : SignaltransformstftModel) -> SignaltransformstftModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftModel::copy(self : SignaltransformstftModel) -> SignaltransformstftModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_model_fill(s : SignaltransformstftModel, v : Double) -> SignaltransformstftModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftModel::fill(self : SignaltransformstftModel, v : Double) -> SignaltransformstftModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_model_min(s : SignaltransformstftModel) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftModel::min(self : SignaltransformstftModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_model_max(s : SignaltransformstftModel) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftModel::max(self : SignaltransformstftModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_model_to_string(s : SignaltransformstftModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftModel::to_string(self : SignaltransformstftModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftLayer {
@@ -759,45 +759,45 @@ pub fn signal_transform_stft_layer_make(size : Int) -> SignaltransformstftLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_layer_len(s : SignaltransformstftLayer) -> Int { s.size }
+pub fn SignaltransformstftLayer::len(self : SignaltransformstftLayer) -> Int { self.size }
 
-pub fn signal_transform_stft_layer_get(s : SignaltransformstftLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftLayer::get(self : SignaltransformstftLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_layer_set(s : SignaltransformstftLayer, i : Int, v : Double) -> SignaltransformstftLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftLayer::set(self : SignaltransformstftLayer, i : Int, v : Double) -> SignaltransformstftLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_layer_sum(s : SignaltransformstftLayer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftLayer::sum(self : SignaltransformstftLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_layer_mean(s : SignaltransformstftLayer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftLayer::mean(self : SignaltransformstftLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_layer_scale(s : SignaltransformstftLayer, f : Double) -> SignaltransformstftLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftLayer::scale(self : SignaltransformstftLayer, f : Double) -> SignaltransformstftLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_layer_add(a : SignaltransformstftLayer, b : SignaltransformstftLayer) -> SignaltransformstftLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftLayer::add(self : SignaltransformstftLayer, other : SignaltransformstftLayer) -> SignaltransformstftLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_layer_copy(s : SignaltransformstftLayer) -> SignaltransformstftLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftLayer::copy(self : SignaltransformstftLayer) -> SignaltransformstftLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_layer_fill(s : SignaltransformstftLayer, v : Double) -> SignaltransformstftLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftLayer::fill(self : SignaltransformstftLayer, v : Double) -> SignaltransformstftLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_layer_min(s : SignaltransformstftLayer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftLayer::min(self : SignaltransformstftLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_layer_max(s : SignaltransformstftLayer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftLayer::max(self : SignaltransformstftLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_layer_to_string(s : SignaltransformstftLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftLayer::to_string(self : SignaltransformstftLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftBuffer {
@@ -810,45 +810,45 @@ pub fn signal_transform_stft_buffer_make(size : Int) -> SignaltransformstftBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_buffer_len(s : SignaltransformstftBuffer) -> Int { s.size }
+pub fn SignaltransformstftBuffer::len(self : SignaltransformstftBuffer) -> Int { self.size }
 
-pub fn signal_transform_stft_buffer_get(s : SignaltransformstftBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftBuffer::get(self : SignaltransformstftBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_buffer_set(s : SignaltransformstftBuffer, i : Int, v : Double) -> SignaltransformstftBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftBuffer::set(self : SignaltransformstftBuffer, i : Int, v : Double) -> SignaltransformstftBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_buffer_sum(s : SignaltransformstftBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftBuffer::sum(self : SignaltransformstftBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_buffer_mean(s : SignaltransformstftBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftBuffer::mean(self : SignaltransformstftBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_buffer_scale(s : SignaltransformstftBuffer, f : Double) -> SignaltransformstftBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftBuffer::scale(self : SignaltransformstftBuffer, f : Double) -> SignaltransformstftBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_buffer_add(a : SignaltransformstftBuffer, b : SignaltransformstftBuffer) -> SignaltransformstftBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftBuffer::add(self : SignaltransformstftBuffer, other : SignaltransformstftBuffer) -> SignaltransformstftBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_buffer_copy(s : SignaltransformstftBuffer) -> SignaltransformstftBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftBuffer::copy(self : SignaltransformstftBuffer) -> SignaltransformstftBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_buffer_fill(s : SignaltransformstftBuffer, v : Double) -> SignaltransformstftBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftBuffer::fill(self : SignaltransformstftBuffer, v : Double) -> SignaltransformstftBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_buffer_min(s : SignaltransformstftBuffer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftBuffer::min(self : SignaltransformstftBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_buffer_max(s : SignaltransformstftBuffer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftBuffer::max(self : SignaltransformstftBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_buffer_to_string(s : SignaltransformstftBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftBuffer::to_string(self : SignaltransformstftBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftCursor {
@@ -861,45 +861,45 @@ pub fn signal_transform_stft_cursor_make(size : Int) -> SignaltransformstftCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_cursor_len(s : SignaltransformstftCursor) -> Int { s.size }
+pub fn SignaltransformstftCursor::len(self : SignaltransformstftCursor) -> Int { self.size }
 
-pub fn signal_transform_stft_cursor_get(s : SignaltransformstftCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftCursor::get(self : SignaltransformstftCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_cursor_set(s : SignaltransformstftCursor, i : Int, v : Double) -> SignaltransformstftCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftCursor::set(self : SignaltransformstftCursor, i : Int, v : Double) -> SignaltransformstftCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cursor_sum(s : SignaltransformstftCursor) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftCursor::sum(self : SignaltransformstftCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_cursor_mean(s : SignaltransformstftCursor) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftCursor::mean(self : SignaltransformstftCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_cursor_scale(s : SignaltransformstftCursor, f : Double) -> SignaltransformstftCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftCursor::scale(self : SignaltransformstftCursor, f : Double) -> SignaltransformstftCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cursor_add(a : SignaltransformstftCursor, b : SignaltransformstftCursor) -> SignaltransformstftCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftCursor::add(self : SignaltransformstftCursor, other : SignaltransformstftCursor) -> SignaltransformstftCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cursor_copy(s : SignaltransformstftCursor) -> SignaltransformstftCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftCursor::copy(self : SignaltransformstftCursor) -> SignaltransformstftCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cursor_fill(s : SignaltransformstftCursor, v : Double) -> SignaltransformstftCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftCursor::fill(self : SignaltransformstftCursor, v : Double) -> SignaltransformstftCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_cursor_min(s : SignaltransformstftCursor) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftCursor::min(self : SignaltransformstftCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_cursor_max(s : SignaltransformstftCursor) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftCursor::max(self : SignaltransformstftCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_cursor_to_string(s : SignaltransformstftCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftCursor::to_string(self : SignaltransformstftCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftView {
@@ -912,45 +912,45 @@ pub fn signal_transform_stft_view_make(size : Int) -> SignaltransformstftView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_view_len(s : SignaltransformstftView) -> Int { s.size }
+pub fn SignaltransformstftView::len(self : SignaltransformstftView) -> Int { self.size }
 
-pub fn signal_transform_stft_view_get(s : SignaltransformstftView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftView::get(self : SignaltransformstftView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_view_set(s : SignaltransformstftView, i : Int, v : Double) -> SignaltransformstftView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftView::set(self : SignaltransformstftView, i : Int, v : Double) -> SignaltransformstftView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_view_sum(s : SignaltransformstftView) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftView::sum(self : SignaltransformstftView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_view_mean(s : SignaltransformstftView) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftView::mean(self : SignaltransformstftView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_view_scale(s : SignaltransformstftView, f : Double) -> SignaltransformstftView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftView::scale(self : SignaltransformstftView, f : Double) -> SignaltransformstftView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_view_add(a : SignaltransformstftView, b : SignaltransformstftView) -> SignaltransformstftView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftView::add(self : SignaltransformstftView, other : SignaltransformstftView) -> SignaltransformstftView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_view_copy(s : SignaltransformstftView) -> SignaltransformstftView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftView::copy(self : SignaltransformstftView) -> SignaltransformstftView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_view_fill(s : SignaltransformstftView, v : Double) -> SignaltransformstftView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftView::fill(self : SignaltransformstftView, v : Double) -> SignaltransformstftView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_view_min(s : SignaltransformstftView) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftView::min(self : SignaltransformstftView) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_view_max(s : SignaltransformstftView) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftView::max(self : SignaltransformstftView) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_view_to_string(s : SignaltransformstftView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftView::to_string(self : SignaltransformstftView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftRange {
@@ -963,45 +963,45 @@ pub fn signal_transform_stft_range_make(size : Int) -> SignaltransformstftRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_range_len(s : SignaltransformstftRange) -> Int { s.size }
+pub fn SignaltransformstftRange::len(self : SignaltransformstftRange) -> Int { self.size }
 
-pub fn signal_transform_stft_range_get(s : SignaltransformstftRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftRange::get(self : SignaltransformstftRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_range_set(s : SignaltransformstftRange, i : Int, v : Double) -> SignaltransformstftRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftRange::set(self : SignaltransformstftRange, i : Int, v : Double) -> SignaltransformstftRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_range_sum(s : SignaltransformstftRange) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftRange::sum(self : SignaltransformstftRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_range_mean(s : SignaltransformstftRange) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftRange::mean(self : SignaltransformstftRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_range_scale(s : SignaltransformstftRange, f : Double) -> SignaltransformstftRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftRange::scale(self : SignaltransformstftRange, f : Double) -> SignaltransformstftRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_range_add(a : SignaltransformstftRange, b : SignaltransformstftRange) -> SignaltransformstftRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftRange::add(self : SignaltransformstftRange, other : SignaltransformstftRange) -> SignaltransformstftRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_range_copy(s : SignaltransformstftRange) -> SignaltransformstftRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftRange::copy(self : SignaltransformstftRange) -> SignaltransformstftRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_range_fill(s : SignaltransformstftRange, v : Double) -> SignaltransformstftRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftRange::fill(self : SignaltransformstftRange, v : Double) -> SignaltransformstftRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_range_min(s : SignaltransformstftRange) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftRange::min(self : SignaltransformstftRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_range_max(s : SignaltransformstftRange) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftRange::max(self : SignaltransformstftRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_range_to_string(s : SignaltransformstftRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftRange::to_string(self : SignaltransformstftRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_transform_stft_slice_make(size : Int) -> SignaltransformstftSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_stft_slice_len(s : SignaltransformstftSlice) -> Int { s.size }
+pub fn SignaltransformstftSlice::len(self : SignaltransformstftSlice) -> Int { self.size }
 
-pub fn signal_transform_stft_slice_get(s : SignaltransformstftSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformstftSlice::get(self : SignaltransformstftSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_stft_slice_set(s : SignaltransformstftSlice, i : Int, v : Double) -> SignaltransformstftSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformstftSlice::set(self : SignaltransformstftSlice, i : Int, v : Double) -> SignaltransformstftSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_slice_sum(s : SignaltransformstftSlice) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformstftSlice::sum(self : SignaltransformstftSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_stft_slice_mean(s : SignaltransformstftSlice) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformstftSlice::mean(self : SignaltransformstftSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_stft_slice_scale(s : SignaltransformstftSlice, f : Double) -> SignaltransformstftSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformstftSlice::scale(self : SignaltransformstftSlice, f : Double) -> SignaltransformstftSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_slice_add(a : SignaltransformstftSlice, b : SignaltransformstftSlice) -> SignaltransformstftSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformstftSlice::add(self : SignaltransformstftSlice, other : SignaltransformstftSlice) -> SignaltransformstftSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_stft_slice_copy(s : SignaltransformstftSlice) -> SignaltransformstftSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformstftSlice::copy(self : SignaltransformstftSlice) -> SignaltransformstftSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_slice_fill(s : SignaltransformstftSlice, v : Double) -> SignaltransformstftSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformstftSlice::fill(self : SignaltransformstftSlice, v : Double) -> SignaltransformstftSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_stft_slice_min(s : SignaltransformstftSlice) -> Double { @_common.min(s.data) }
+pub fn SignaltransformstftSlice::min(self : SignaltransformstftSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_stft_slice_max(s : SignaltransformstftSlice) -> Double { @_common.max(s.data) }
+pub fn SignaltransformstftSlice::max(self : SignaltransformstftSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_stft_slice_to_string(s : SignaltransformstftSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformstftSlice::to_string(self : SignaltransformstftSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn net_sec_ips_frame_make(size : Int) -> NetsecipsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_frame_len(s : NetsecipsFrame) -> Int { s.size }
+pub fn NetsecipsFrame::len(self : NetsecipsFrame) -> Int { self.size }
 
-pub fn net_sec_ips_frame_get(s : NetsecipsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsFrame::get(self : NetsecipsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_frame_set(s : NetsecipsFrame, i : Int, v : Double) -> NetsecipsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsFrame::set(self : NetsecipsFrame, i : Int, v : Double) -> NetsecipsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_frame_sum(s : NetsecipsFrame) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsFrame::sum(self : NetsecipsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_frame_mean(s : NetsecipsFrame) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsFrame::mean(self : NetsecipsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_frame_scale(s : NetsecipsFrame, f : Double) -> NetsecipsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsFrame::scale(self : NetsecipsFrame, f : Double) -> NetsecipsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_frame_add(a : NetsecipsFrame, b : NetsecipsFrame) -> NetsecipsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsFrame::add(self : NetsecipsFrame, other : NetsecipsFrame) -> NetsecipsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_frame_copy(s : NetsecipsFrame) -> NetsecipsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsFrame::copy(self : NetsecipsFrame) -> NetsecipsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_frame_fill(s : NetsecipsFrame, v : Double) -> NetsecipsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsFrame::fill(self : NetsecipsFrame, v : Double) -> NetsecipsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_frame_min(s : NetsecipsFrame) -> Double { @_common.min(s.data) }
+pub fn NetsecipsFrame::min(self : NetsecipsFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_frame_max(s : NetsecipsFrame) -> Double { @_common.max(s.data) }
+pub fn NetsecipsFrame::max(self : NetsecipsFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_frame_to_string(s : NetsecipsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsFrame::to_string(self : NetsecipsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsTable {
@@ -402,45 +402,45 @@ pub fn net_sec_ips_table_make(size : Int) -> NetsecipsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_table_len(s : NetsecipsTable) -> Int { s.size }
+pub fn NetsecipsTable::len(self : NetsecipsTable) -> Int { self.size }
 
-pub fn net_sec_ips_table_get(s : NetsecipsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsTable::get(self : NetsecipsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_table_set(s : NetsecipsTable, i : Int, v : Double) -> NetsecipsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsTable::set(self : NetsecipsTable, i : Int, v : Double) -> NetsecipsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_table_sum(s : NetsecipsTable) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsTable::sum(self : NetsecipsTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_table_mean(s : NetsecipsTable) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsTable::mean(self : NetsecipsTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_table_scale(s : NetsecipsTable, f : Double) -> NetsecipsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsTable::scale(self : NetsecipsTable, f : Double) -> NetsecipsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_table_add(a : NetsecipsTable, b : NetsecipsTable) -> NetsecipsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsTable::add(self : NetsecipsTable, other : NetsecipsTable) -> NetsecipsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_table_copy(s : NetsecipsTable) -> NetsecipsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsTable::copy(self : NetsecipsTable) -> NetsecipsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_table_fill(s : NetsecipsTable, v : Double) -> NetsecipsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsTable::fill(self : NetsecipsTable, v : Double) -> NetsecipsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_table_min(s : NetsecipsTable) -> Double { @_common.min(s.data) }
+pub fn NetsecipsTable::min(self : NetsecipsTable) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_table_max(s : NetsecipsTable) -> Double { @_common.max(s.data) }
+pub fn NetsecipsTable::max(self : NetsecipsTable) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_table_to_string(s : NetsecipsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsTable::to_string(self : NetsecipsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsGraphN {
@@ -453,45 +453,45 @@ pub fn net_sec_ips_graphn_make(size : Int) -> NetsecipsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_graphn_len(s : NetsecipsGraphN) -> Int { s.size }
+pub fn NetsecipsGraphN::len(self : NetsecipsGraphN) -> Int { self.size }
 
-pub fn net_sec_ips_graphn_get(s : NetsecipsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsGraphN::get(self : NetsecipsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_graphn_set(s : NetsecipsGraphN, i : Int, v : Double) -> NetsecipsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsGraphN::set(self : NetsecipsGraphN, i : Int, v : Double) -> NetsecipsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_graphn_sum(s : NetsecipsGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsGraphN::sum(self : NetsecipsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_graphn_mean(s : NetsecipsGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsGraphN::mean(self : NetsecipsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_graphn_scale(s : NetsecipsGraphN, f : Double) -> NetsecipsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsGraphN::scale(self : NetsecipsGraphN, f : Double) -> NetsecipsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_graphn_add(a : NetsecipsGraphN, b : NetsecipsGraphN) -> NetsecipsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsGraphN::add(self : NetsecipsGraphN, other : NetsecipsGraphN) -> NetsecipsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_graphn_copy(s : NetsecipsGraphN) -> NetsecipsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsGraphN::copy(self : NetsecipsGraphN) -> NetsecipsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_graphn_fill(s : NetsecipsGraphN, v : Double) -> NetsecipsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsGraphN::fill(self : NetsecipsGraphN, v : Double) -> NetsecipsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_graphn_min(s : NetsecipsGraphN) -> Double { @_common.min(s.data) }
+pub fn NetsecipsGraphN::min(self : NetsecipsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_graphn_max(s : NetsecipsGraphN) -> Double { @_common.max(s.data) }
+pub fn NetsecipsGraphN::max(self : NetsecipsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_graphn_to_string(s : NetsecipsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsGraphN::to_string(self : NetsecipsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsNode {
@@ -504,45 +504,45 @@ pub fn net_sec_ips_node_make(size : Int) -> NetsecipsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_node_len(s : NetsecipsNode) -> Int { s.size }
+pub fn NetsecipsNode::len(self : NetsecipsNode) -> Int { self.size }
 
-pub fn net_sec_ips_node_get(s : NetsecipsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsNode::get(self : NetsecipsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_node_set(s : NetsecipsNode, i : Int, v : Double) -> NetsecipsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsNode::set(self : NetsecipsNode, i : Int, v : Double) -> NetsecipsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_node_sum(s : NetsecipsNode) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsNode::sum(self : NetsecipsNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_node_mean(s : NetsecipsNode) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsNode::mean(self : NetsecipsNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_node_scale(s : NetsecipsNode, f : Double) -> NetsecipsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsNode::scale(self : NetsecipsNode, f : Double) -> NetsecipsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_node_add(a : NetsecipsNode, b : NetsecipsNode) -> NetsecipsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsNode::add(self : NetsecipsNode, other : NetsecipsNode) -> NetsecipsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_node_copy(s : NetsecipsNode) -> NetsecipsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsNode::copy(self : NetsecipsNode) -> NetsecipsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_node_fill(s : NetsecipsNode, v : Double) -> NetsecipsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsNode::fill(self : NetsecipsNode, v : Double) -> NetsecipsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_node_min(s : NetsecipsNode) -> Double { @_common.min(s.data) }
+pub fn NetsecipsNode::min(self : NetsecipsNode) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_node_max(s : NetsecipsNode) -> Double { @_common.max(s.data) }
+pub fn NetsecipsNode::max(self : NetsecipsNode) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_node_to_string(s : NetsecipsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsNode::to_string(self : NetsecipsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsEdge {
@@ -555,45 +555,45 @@ pub fn net_sec_ips_edge_make(size : Int) -> NetsecipsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_edge_len(s : NetsecipsEdge) -> Int { s.size }
+pub fn NetsecipsEdge::len(self : NetsecipsEdge) -> Int { self.size }
 
-pub fn net_sec_ips_edge_get(s : NetsecipsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsEdge::get(self : NetsecipsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_edge_set(s : NetsecipsEdge, i : Int, v : Double) -> NetsecipsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsEdge::set(self : NetsecipsEdge, i : Int, v : Double) -> NetsecipsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_edge_sum(s : NetsecipsEdge) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsEdge::sum(self : NetsecipsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_edge_mean(s : NetsecipsEdge) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsEdge::mean(self : NetsecipsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_edge_scale(s : NetsecipsEdge, f : Double) -> NetsecipsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsEdge::scale(self : NetsecipsEdge, f : Double) -> NetsecipsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_edge_add(a : NetsecipsEdge, b : NetsecipsEdge) -> NetsecipsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsEdge::add(self : NetsecipsEdge, other : NetsecipsEdge) -> NetsecipsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_edge_copy(s : NetsecipsEdge) -> NetsecipsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsEdge::copy(self : NetsecipsEdge) -> NetsecipsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_edge_fill(s : NetsecipsEdge, v : Double) -> NetsecipsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsEdge::fill(self : NetsecipsEdge, v : Double) -> NetsecipsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_edge_min(s : NetsecipsEdge) -> Double { @_common.min(s.data) }
+pub fn NetsecipsEdge::min(self : NetsecipsEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_edge_max(s : NetsecipsEdge) -> Double { @_common.max(s.data) }
+pub fn NetsecipsEdge::max(self : NetsecipsEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_edge_to_string(s : NetsecipsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsEdge::to_string(self : NetsecipsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsPath {
@@ -606,45 +606,45 @@ pub fn net_sec_ips_path_make(size : Int) -> NetsecipsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_path_len(s : NetsecipsPath) -> Int { s.size }
+pub fn NetsecipsPath::len(self : NetsecipsPath) -> Int { self.size }
 
-pub fn net_sec_ips_path_get(s : NetsecipsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsPath::get(self : NetsecipsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_path_set(s : NetsecipsPath, i : Int, v : Double) -> NetsecipsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsPath::set(self : NetsecipsPath, i : Int, v : Double) -> NetsecipsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_path_sum(s : NetsecipsPath) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsPath::sum(self : NetsecipsPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_path_mean(s : NetsecipsPath) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsPath::mean(self : NetsecipsPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_path_scale(s : NetsecipsPath, f : Double) -> NetsecipsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsPath::scale(self : NetsecipsPath, f : Double) -> NetsecipsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_path_add(a : NetsecipsPath, b : NetsecipsPath) -> NetsecipsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsPath::add(self : NetsecipsPath, other : NetsecipsPath) -> NetsecipsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_path_copy(s : NetsecipsPath) -> NetsecipsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsPath::copy(self : NetsecipsPath) -> NetsecipsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_path_fill(s : NetsecipsPath, v : Double) -> NetsecipsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsPath::fill(self : NetsecipsPath, v : Double) -> NetsecipsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_path_min(s : NetsecipsPath) -> Double { @_common.min(s.data) }
+pub fn NetsecipsPath::min(self : NetsecipsPath) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_path_max(s : NetsecipsPath) -> Double { @_common.max(s.data) }
+pub fn NetsecipsPath::max(self : NetsecipsPath) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_path_to_string(s : NetsecipsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsPath::to_string(self : NetsecipsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsCluster {
@@ -657,45 +657,45 @@ pub fn net_sec_ips_cluster_make(size : Int) -> NetsecipsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_cluster_len(s : NetsecipsCluster) -> Int { s.size }
+pub fn NetsecipsCluster::len(self : NetsecipsCluster) -> Int { self.size }
 
-pub fn net_sec_ips_cluster_get(s : NetsecipsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsCluster::get(self : NetsecipsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_cluster_set(s : NetsecipsCluster, i : Int, v : Double) -> NetsecipsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsCluster::set(self : NetsecipsCluster, i : Int, v : Double) -> NetsecipsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cluster_sum(s : NetsecipsCluster) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsCluster::sum(self : NetsecipsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_cluster_mean(s : NetsecipsCluster) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsCluster::mean(self : NetsecipsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_cluster_scale(s : NetsecipsCluster, f : Double) -> NetsecipsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsCluster::scale(self : NetsecipsCluster, f : Double) -> NetsecipsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cluster_add(a : NetsecipsCluster, b : NetsecipsCluster) -> NetsecipsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsCluster::add(self : NetsecipsCluster, other : NetsecipsCluster) -> NetsecipsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_cluster_copy(s : NetsecipsCluster) -> NetsecipsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsCluster::copy(self : NetsecipsCluster) -> NetsecipsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cluster_fill(s : NetsecipsCluster, v : Double) -> NetsecipsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsCluster::fill(self : NetsecipsCluster, v : Double) -> NetsecipsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cluster_min(s : NetsecipsCluster) -> Double { @_common.min(s.data) }
+pub fn NetsecipsCluster::min(self : NetsecipsCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_cluster_max(s : NetsecipsCluster) -> Double { @_common.max(s.data) }
+pub fn NetsecipsCluster::max(self : NetsecipsCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_cluster_to_string(s : NetsecipsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsCluster::to_string(self : NetsecipsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsModel {
@@ -708,45 +708,45 @@ pub fn net_sec_ips_model_make(size : Int) -> NetsecipsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_model_len(s : NetsecipsModel) -> Int { s.size }
+pub fn NetsecipsModel::len(self : NetsecipsModel) -> Int { self.size }
 
-pub fn net_sec_ips_model_get(s : NetsecipsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsModel::get(self : NetsecipsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_model_set(s : NetsecipsModel, i : Int, v : Double) -> NetsecipsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsModel::set(self : NetsecipsModel, i : Int, v : Double) -> NetsecipsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_model_sum(s : NetsecipsModel) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsModel::sum(self : NetsecipsModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_model_mean(s : NetsecipsModel) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsModel::mean(self : NetsecipsModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_model_scale(s : NetsecipsModel, f : Double) -> NetsecipsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsModel::scale(self : NetsecipsModel, f : Double) -> NetsecipsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_model_add(a : NetsecipsModel, b : NetsecipsModel) -> NetsecipsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsModel::add(self : NetsecipsModel, other : NetsecipsModel) -> NetsecipsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_model_copy(s : NetsecipsModel) -> NetsecipsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsModel::copy(self : NetsecipsModel) -> NetsecipsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_model_fill(s : NetsecipsModel, v : Double) -> NetsecipsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsModel::fill(self : NetsecipsModel, v : Double) -> NetsecipsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_model_min(s : NetsecipsModel) -> Double { @_common.min(s.data) }
+pub fn NetsecipsModel::min(self : NetsecipsModel) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_model_max(s : NetsecipsModel) -> Double { @_common.max(s.data) }
+pub fn NetsecipsModel::max(self : NetsecipsModel) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_model_to_string(s : NetsecipsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsModel::to_string(self : NetsecipsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsLayer {
@@ -759,45 +759,45 @@ pub fn net_sec_ips_layer_make(size : Int) -> NetsecipsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_layer_len(s : NetsecipsLayer) -> Int { s.size }
+pub fn NetsecipsLayer::len(self : NetsecipsLayer) -> Int { self.size }
 
-pub fn net_sec_ips_layer_get(s : NetsecipsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsLayer::get(self : NetsecipsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_layer_set(s : NetsecipsLayer, i : Int, v : Double) -> NetsecipsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsLayer::set(self : NetsecipsLayer, i : Int, v : Double) -> NetsecipsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_layer_sum(s : NetsecipsLayer) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsLayer::sum(self : NetsecipsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_layer_mean(s : NetsecipsLayer) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsLayer::mean(self : NetsecipsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_layer_scale(s : NetsecipsLayer, f : Double) -> NetsecipsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsLayer::scale(self : NetsecipsLayer, f : Double) -> NetsecipsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_layer_add(a : NetsecipsLayer, b : NetsecipsLayer) -> NetsecipsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsLayer::add(self : NetsecipsLayer, other : NetsecipsLayer) -> NetsecipsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_layer_copy(s : NetsecipsLayer) -> NetsecipsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsLayer::copy(self : NetsecipsLayer) -> NetsecipsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_layer_fill(s : NetsecipsLayer, v : Double) -> NetsecipsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsLayer::fill(self : NetsecipsLayer, v : Double) -> NetsecipsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_layer_min(s : NetsecipsLayer) -> Double { @_common.min(s.data) }
+pub fn NetsecipsLayer::min(self : NetsecipsLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_layer_max(s : NetsecipsLayer) -> Double { @_common.max(s.data) }
+pub fn NetsecipsLayer::max(self : NetsecipsLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_layer_to_string(s : NetsecipsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsLayer::to_string(self : NetsecipsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsBuffer {
@@ -810,45 +810,45 @@ pub fn net_sec_ips_buffer_make(size : Int) -> NetsecipsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_buffer_len(s : NetsecipsBuffer) -> Int { s.size }
+pub fn NetsecipsBuffer::len(self : NetsecipsBuffer) -> Int { self.size }
 
-pub fn net_sec_ips_buffer_get(s : NetsecipsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsBuffer::get(self : NetsecipsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_buffer_set(s : NetsecipsBuffer, i : Int, v : Double) -> NetsecipsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsBuffer::set(self : NetsecipsBuffer, i : Int, v : Double) -> NetsecipsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_buffer_sum(s : NetsecipsBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsBuffer::sum(self : NetsecipsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_buffer_mean(s : NetsecipsBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsBuffer::mean(self : NetsecipsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_buffer_scale(s : NetsecipsBuffer, f : Double) -> NetsecipsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsBuffer::scale(self : NetsecipsBuffer, f : Double) -> NetsecipsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_buffer_add(a : NetsecipsBuffer, b : NetsecipsBuffer) -> NetsecipsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsBuffer::add(self : NetsecipsBuffer, other : NetsecipsBuffer) -> NetsecipsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_buffer_copy(s : NetsecipsBuffer) -> NetsecipsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsBuffer::copy(self : NetsecipsBuffer) -> NetsecipsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_buffer_fill(s : NetsecipsBuffer, v : Double) -> NetsecipsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsBuffer::fill(self : NetsecipsBuffer, v : Double) -> NetsecipsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_buffer_min(s : NetsecipsBuffer) -> Double { @_common.min(s.data) }
+pub fn NetsecipsBuffer::min(self : NetsecipsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_buffer_max(s : NetsecipsBuffer) -> Double { @_common.max(s.data) }
+pub fn NetsecipsBuffer::max(self : NetsecipsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_buffer_to_string(s : NetsecipsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsBuffer::to_string(self : NetsecipsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsCursor {
@@ -861,45 +861,45 @@ pub fn net_sec_ips_cursor_make(size : Int) -> NetsecipsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_cursor_len(s : NetsecipsCursor) -> Int { s.size }
+pub fn NetsecipsCursor::len(self : NetsecipsCursor) -> Int { self.size }
 
-pub fn net_sec_ips_cursor_get(s : NetsecipsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsCursor::get(self : NetsecipsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_cursor_set(s : NetsecipsCursor, i : Int, v : Double) -> NetsecipsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsCursor::set(self : NetsecipsCursor, i : Int, v : Double) -> NetsecipsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cursor_sum(s : NetsecipsCursor) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsCursor::sum(self : NetsecipsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_cursor_mean(s : NetsecipsCursor) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsCursor::mean(self : NetsecipsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_cursor_scale(s : NetsecipsCursor, f : Double) -> NetsecipsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsCursor::scale(self : NetsecipsCursor, f : Double) -> NetsecipsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cursor_add(a : NetsecipsCursor, b : NetsecipsCursor) -> NetsecipsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsCursor::add(self : NetsecipsCursor, other : NetsecipsCursor) -> NetsecipsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_cursor_copy(s : NetsecipsCursor) -> NetsecipsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsCursor::copy(self : NetsecipsCursor) -> NetsecipsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cursor_fill(s : NetsecipsCursor, v : Double) -> NetsecipsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsCursor::fill(self : NetsecipsCursor, v : Double) -> NetsecipsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_cursor_min(s : NetsecipsCursor) -> Double { @_common.min(s.data) }
+pub fn NetsecipsCursor::min(self : NetsecipsCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_cursor_max(s : NetsecipsCursor) -> Double { @_common.max(s.data) }
+pub fn NetsecipsCursor::max(self : NetsecipsCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_cursor_to_string(s : NetsecipsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsCursor::to_string(self : NetsecipsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsView {
@@ -912,45 +912,45 @@ pub fn net_sec_ips_view_make(size : Int) -> NetsecipsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_view_len(s : NetsecipsView) -> Int { s.size }
+pub fn NetsecipsView::len(self : NetsecipsView) -> Int { self.size }
 
-pub fn net_sec_ips_view_get(s : NetsecipsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsView::get(self : NetsecipsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_view_set(s : NetsecipsView, i : Int, v : Double) -> NetsecipsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsView::set(self : NetsecipsView, i : Int, v : Double) -> NetsecipsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_view_sum(s : NetsecipsView) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsView::sum(self : NetsecipsView) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_view_mean(s : NetsecipsView) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsView::mean(self : NetsecipsView) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_view_scale(s : NetsecipsView, f : Double) -> NetsecipsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsView::scale(self : NetsecipsView, f : Double) -> NetsecipsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_view_add(a : NetsecipsView, b : NetsecipsView) -> NetsecipsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsView::add(self : NetsecipsView, other : NetsecipsView) -> NetsecipsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_view_copy(s : NetsecipsView) -> NetsecipsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsView::copy(self : NetsecipsView) -> NetsecipsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_view_fill(s : NetsecipsView, v : Double) -> NetsecipsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsView::fill(self : NetsecipsView, v : Double) -> NetsecipsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_view_min(s : NetsecipsView) -> Double { @_common.min(s.data) }
+pub fn NetsecipsView::min(self : NetsecipsView) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_view_max(s : NetsecipsView) -> Double { @_common.max(s.data) }
+pub fn NetsecipsView::max(self : NetsecipsView) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_view_to_string(s : NetsecipsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsView::to_string(self : NetsecipsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsRange {
@@ -963,45 +963,45 @@ pub fn net_sec_ips_range_make(size : Int) -> NetsecipsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_range_len(s : NetsecipsRange) -> Int { s.size }
+pub fn NetsecipsRange::len(self : NetsecipsRange) -> Int { self.size }
 
-pub fn net_sec_ips_range_get(s : NetsecipsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsRange::get(self : NetsecipsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_range_set(s : NetsecipsRange, i : Int, v : Double) -> NetsecipsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsRange::set(self : NetsecipsRange, i : Int, v : Double) -> NetsecipsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_range_sum(s : NetsecipsRange) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsRange::sum(self : NetsecipsRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_range_mean(s : NetsecipsRange) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsRange::mean(self : NetsecipsRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_range_scale(s : NetsecipsRange, f : Double) -> NetsecipsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsRange::scale(self : NetsecipsRange, f : Double) -> NetsecipsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_range_add(a : NetsecipsRange, b : NetsecipsRange) -> NetsecipsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsRange::add(self : NetsecipsRange, other : NetsecipsRange) -> NetsecipsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_range_copy(s : NetsecipsRange) -> NetsecipsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsRange::copy(self : NetsecipsRange) -> NetsecipsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_range_fill(s : NetsecipsRange, v : Double) -> NetsecipsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsRange::fill(self : NetsecipsRange, v : Double) -> NetsecipsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_range_min(s : NetsecipsRange) -> Double { @_common.min(s.data) }
+pub fn NetsecipsRange::min(self : NetsecipsRange) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_range_max(s : NetsecipsRange) -> Double { @_common.max(s.data) }
+pub fn NetsecipsRange::max(self : NetsecipsRange) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_range_to_string(s : NetsecipsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsRange::to_string(self : NetsecipsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecipsSlice {
@@ -1014,44 +1014,44 @@ pub fn net_sec_ips_slice_make(size : Int) -> NetsecipsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ips_slice_len(s : NetsecipsSlice) -> Int { s.size }
+pub fn NetsecipsSlice::len(self : NetsecipsSlice) -> Int { self.size }
 
-pub fn net_sec_ips_slice_get(s : NetsecipsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecipsSlice::get(self : NetsecipsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ips_slice_set(s : NetsecipsSlice, i : Int, v : Double) -> NetsecipsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecipsSlice::set(self : NetsecipsSlice, i : Int, v : Double) -> NetsecipsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_slice_sum(s : NetsecipsSlice) -> Double { @_common.sum(s.data) }
+pub fn NetsecipsSlice::sum(self : NetsecipsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ips_slice_mean(s : NetsecipsSlice) -> Double { @_common.mean(s.data) }
+pub fn NetsecipsSlice::mean(self : NetsecipsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ips_slice_scale(s : NetsecipsSlice, f : Double) -> NetsecipsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecipsSlice::scale(self : NetsecipsSlice, f : Double) -> NetsecipsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_slice_add(a : NetsecipsSlice, b : NetsecipsSlice) -> NetsecipsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecipsSlice::add(self : NetsecipsSlice, other : NetsecipsSlice) -> NetsecipsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ips_slice_copy(s : NetsecipsSlice) -> NetsecipsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecipsSlice::copy(self : NetsecipsSlice) -> NetsecipsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_slice_fill(s : NetsecipsSlice, v : Double) -> NetsecipsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecipsSlice::fill(self : NetsecipsSlice, v : Double) -> NetsecipsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ips_slice_min(s : NetsecipsSlice) -> Double { @_common.min(s.data) }
+pub fn NetsecipsSlice::min(self : NetsecipsSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ips_slice_max(s : NetsecipsSlice) -> Double { @_common.max(s.data) }
+pub fn NetsecipsSlice::max(self : NetsecipsSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ips_slice_to_string(s : NetsecipsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecipsSlice::to_string(self : NetsecipsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn math_special_legendre_frame_make(size : Int) -> MathspeciallegendreFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_frame_len(s : MathspeciallegendreFrame) -> Int { s.size }
+pub fn MathspeciallegendreFrame::len(self : MathspeciallegendreFrame) -> Int { self.size }
 
-pub fn math_special_legendre_frame_get(s : MathspeciallegendreFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreFrame::get(self : MathspeciallegendreFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_frame_set(s : MathspeciallegendreFrame, i : Int, v : Double) -> MathspeciallegendreFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreFrame::set(self : MathspeciallegendreFrame, i : Int, v : Double) -> MathspeciallegendreFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_frame_sum(s : MathspeciallegendreFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreFrame::sum(self : MathspeciallegendreFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_frame_mean(s : MathspeciallegendreFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreFrame::mean(self : MathspeciallegendreFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_frame_scale(s : MathspeciallegendreFrame, f : Double) -> MathspeciallegendreFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreFrame::scale(self : MathspeciallegendreFrame, f : Double) -> MathspeciallegendreFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_frame_add(a : MathspeciallegendreFrame, b : MathspeciallegendreFrame) -> MathspeciallegendreFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreFrame::add(self : MathspeciallegendreFrame, other : MathspeciallegendreFrame) -> MathspeciallegendreFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_frame_copy(s : MathspeciallegendreFrame) -> MathspeciallegendreFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreFrame::copy(self : MathspeciallegendreFrame) -> MathspeciallegendreFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_frame_fill(s : MathspeciallegendreFrame, v : Double) -> MathspeciallegendreFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreFrame::fill(self : MathspeciallegendreFrame, v : Double) -> MathspeciallegendreFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_frame_min(s : MathspeciallegendreFrame) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreFrame::min(self : MathspeciallegendreFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_frame_max(s : MathspeciallegendreFrame) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreFrame::max(self : MathspeciallegendreFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_frame_to_string(s : MathspeciallegendreFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreFrame::to_string(self : MathspeciallegendreFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreTable {
@@ -402,45 +402,45 @@ pub fn math_special_legendre_table_make(size : Int) -> MathspeciallegendreTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_table_len(s : MathspeciallegendreTable) -> Int { s.size }
+pub fn MathspeciallegendreTable::len(self : MathspeciallegendreTable) -> Int { self.size }
 
-pub fn math_special_legendre_table_get(s : MathspeciallegendreTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreTable::get(self : MathspeciallegendreTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_table_set(s : MathspeciallegendreTable, i : Int, v : Double) -> MathspeciallegendreTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreTable::set(self : MathspeciallegendreTable, i : Int, v : Double) -> MathspeciallegendreTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_table_sum(s : MathspeciallegendreTable) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreTable::sum(self : MathspeciallegendreTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_table_mean(s : MathspeciallegendreTable) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreTable::mean(self : MathspeciallegendreTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_table_scale(s : MathspeciallegendreTable, f : Double) -> MathspeciallegendreTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreTable::scale(self : MathspeciallegendreTable, f : Double) -> MathspeciallegendreTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_table_add(a : MathspeciallegendreTable, b : MathspeciallegendreTable) -> MathspeciallegendreTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreTable::add(self : MathspeciallegendreTable, other : MathspeciallegendreTable) -> MathspeciallegendreTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_table_copy(s : MathspeciallegendreTable) -> MathspeciallegendreTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreTable::copy(self : MathspeciallegendreTable) -> MathspeciallegendreTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_table_fill(s : MathspeciallegendreTable, v : Double) -> MathspeciallegendreTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreTable::fill(self : MathspeciallegendreTable, v : Double) -> MathspeciallegendreTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_table_min(s : MathspeciallegendreTable) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreTable::min(self : MathspeciallegendreTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_table_max(s : MathspeciallegendreTable) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreTable::max(self : MathspeciallegendreTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_table_to_string(s : MathspeciallegendreTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreTable::to_string(self : MathspeciallegendreTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_legendre_graphn_make(size : Int) -> MathspeciallegendreGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_graphn_len(s : MathspeciallegendreGraphN) -> Int { s.size }
+pub fn MathspeciallegendreGraphN::len(self : MathspeciallegendreGraphN) -> Int { self.size }
 
-pub fn math_special_legendre_graphn_get(s : MathspeciallegendreGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreGraphN::get(self : MathspeciallegendreGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_graphn_set(s : MathspeciallegendreGraphN, i : Int, v : Double) -> MathspeciallegendreGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreGraphN::set(self : MathspeciallegendreGraphN, i : Int, v : Double) -> MathspeciallegendreGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_graphn_sum(s : MathspeciallegendreGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreGraphN::sum(self : MathspeciallegendreGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_graphn_mean(s : MathspeciallegendreGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreGraphN::mean(self : MathspeciallegendreGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_graphn_scale(s : MathspeciallegendreGraphN, f : Double) -> MathspeciallegendreGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreGraphN::scale(self : MathspeciallegendreGraphN, f : Double) -> MathspeciallegendreGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_graphn_add(a : MathspeciallegendreGraphN, b : MathspeciallegendreGraphN) -> MathspeciallegendreGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreGraphN::add(self : MathspeciallegendreGraphN, other : MathspeciallegendreGraphN) -> MathspeciallegendreGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_graphn_copy(s : MathspeciallegendreGraphN) -> MathspeciallegendreGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreGraphN::copy(self : MathspeciallegendreGraphN) -> MathspeciallegendreGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_graphn_fill(s : MathspeciallegendreGraphN, v : Double) -> MathspeciallegendreGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreGraphN::fill(self : MathspeciallegendreGraphN, v : Double) -> MathspeciallegendreGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_graphn_min(s : MathspeciallegendreGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreGraphN::min(self : MathspeciallegendreGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_graphn_max(s : MathspeciallegendreGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreGraphN::max(self : MathspeciallegendreGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_graphn_to_string(s : MathspeciallegendreGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreGraphN::to_string(self : MathspeciallegendreGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreNode {
@@ -504,45 +504,45 @@ pub fn math_special_legendre_node_make(size : Int) -> MathspeciallegendreNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_node_len(s : MathspeciallegendreNode) -> Int { s.size }
+pub fn MathspeciallegendreNode::len(self : MathspeciallegendreNode) -> Int { self.size }
 
-pub fn math_special_legendre_node_get(s : MathspeciallegendreNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreNode::get(self : MathspeciallegendreNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_node_set(s : MathspeciallegendreNode, i : Int, v : Double) -> MathspeciallegendreNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreNode::set(self : MathspeciallegendreNode, i : Int, v : Double) -> MathspeciallegendreNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_node_sum(s : MathspeciallegendreNode) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreNode::sum(self : MathspeciallegendreNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_node_mean(s : MathspeciallegendreNode) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreNode::mean(self : MathspeciallegendreNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_node_scale(s : MathspeciallegendreNode, f : Double) -> MathspeciallegendreNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreNode::scale(self : MathspeciallegendreNode, f : Double) -> MathspeciallegendreNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_node_add(a : MathspeciallegendreNode, b : MathspeciallegendreNode) -> MathspeciallegendreNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreNode::add(self : MathspeciallegendreNode, other : MathspeciallegendreNode) -> MathspeciallegendreNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_node_copy(s : MathspeciallegendreNode) -> MathspeciallegendreNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreNode::copy(self : MathspeciallegendreNode) -> MathspeciallegendreNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_node_fill(s : MathspeciallegendreNode, v : Double) -> MathspeciallegendreNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreNode::fill(self : MathspeciallegendreNode, v : Double) -> MathspeciallegendreNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_node_min(s : MathspeciallegendreNode) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreNode::min(self : MathspeciallegendreNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_node_max(s : MathspeciallegendreNode) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreNode::max(self : MathspeciallegendreNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_node_to_string(s : MathspeciallegendreNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreNode::to_string(self : MathspeciallegendreNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreEdge {
@@ -555,45 +555,45 @@ pub fn math_special_legendre_edge_make(size : Int) -> MathspeciallegendreEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_edge_len(s : MathspeciallegendreEdge) -> Int { s.size }
+pub fn MathspeciallegendreEdge::len(self : MathspeciallegendreEdge) -> Int { self.size }
 
-pub fn math_special_legendre_edge_get(s : MathspeciallegendreEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreEdge::get(self : MathspeciallegendreEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_edge_set(s : MathspeciallegendreEdge, i : Int, v : Double) -> MathspeciallegendreEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreEdge::set(self : MathspeciallegendreEdge, i : Int, v : Double) -> MathspeciallegendreEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_edge_sum(s : MathspeciallegendreEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreEdge::sum(self : MathspeciallegendreEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_edge_mean(s : MathspeciallegendreEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreEdge::mean(self : MathspeciallegendreEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_edge_scale(s : MathspeciallegendreEdge, f : Double) -> MathspeciallegendreEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreEdge::scale(self : MathspeciallegendreEdge, f : Double) -> MathspeciallegendreEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_edge_add(a : MathspeciallegendreEdge, b : MathspeciallegendreEdge) -> MathspeciallegendreEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreEdge::add(self : MathspeciallegendreEdge, other : MathspeciallegendreEdge) -> MathspeciallegendreEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_edge_copy(s : MathspeciallegendreEdge) -> MathspeciallegendreEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreEdge::copy(self : MathspeciallegendreEdge) -> MathspeciallegendreEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_edge_fill(s : MathspeciallegendreEdge, v : Double) -> MathspeciallegendreEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreEdge::fill(self : MathspeciallegendreEdge, v : Double) -> MathspeciallegendreEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_edge_min(s : MathspeciallegendreEdge) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreEdge::min(self : MathspeciallegendreEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_edge_max(s : MathspeciallegendreEdge) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreEdge::max(self : MathspeciallegendreEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_edge_to_string(s : MathspeciallegendreEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreEdge::to_string(self : MathspeciallegendreEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendrePath {
@@ -606,45 +606,45 @@ pub fn math_special_legendre_path_make(size : Int) -> MathspeciallegendrePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_path_len(s : MathspeciallegendrePath) -> Int { s.size }
+pub fn MathspeciallegendrePath::len(self : MathspeciallegendrePath) -> Int { self.size }
 
-pub fn math_special_legendre_path_get(s : MathspeciallegendrePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendrePath::get(self : MathspeciallegendrePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_path_set(s : MathspeciallegendrePath, i : Int, v : Double) -> MathspeciallegendrePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendrePath::set(self : MathspeciallegendrePath, i : Int, v : Double) -> MathspeciallegendrePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_path_sum(s : MathspeciallegendrePath) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendrePath::sum(self : MathspeciallegendrePath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_path_mean(s : MathspeciallegendrePath) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendrePath::mean(self : MathspeciallegendrePath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_path_scale(s : MathspeciallegendrePath, f : Double) -> MathspeciallegendrePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendrePath::scale(self : MathspeciallegendrePath, f : Double) -> MathspeciallegendrePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_path_add(a : MathspeciallegendrePath, b : MathspeciallegendrePath) -> MathspeciallegendrePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendrePath::add(self : MathspeciallegendrePath, other : MathspeciallegendrePath) -> MathspeciallegendrePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_path_copy(s : MathspeciallegendrePath) -> MathspeciallegendrePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendrePath::copy(self : MathspeciallegendrePath) -> MathspeciallegendrePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_path_fill(s : MathspeciallegendrePath, v : Double) -> MathspeciallegendrePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendrePath::fill(self : MathspeciallegendrePath, v : Double) -> MathspeciallegendrePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_path_min(s : MathspeciallegendrePath) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendrePath::min(self : MathspeciallegendrePath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_path_max(s : MathspeciallegendrePath) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendrePath::max(self : MathspeciallegendrePath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_path_to_string(s : MathspeciallegendrePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendrePath::to_string(self : MathspeciallegendrePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreCluster {
@@ -657,45 +657,45 @@ pub fn math_special_legendre_cluster_make(size : Int) -> MathspeciallegendreClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_cluster_len(s : MathspeciallegendreCluster) -> Int { s.size }
+pub fn MathspeciallegendreCluster::len(self : MathspeciallegendreCluster) -> Int { self.size }
 
-pub fn math_special_legendre_cluster_get(s : MathspeciallegendreCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreCluster::get(self : MathspeciallegendreCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_cluster_set(s : MathspeciallegendreCluster, i : Int, v : Double) -> MathspeciallegendreCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCluster::set(self : MathspeciallegendreCluster, i : Int, v : Double) -> MathspeciallegendreCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cluster_sum(s : MathspeciallegendreCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreCluster::sum(self : MathspeciallegendreCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_cluster_mean(s : MathspeciallegendreCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreCluster::mean(self : MathspeciallegendreCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_cluster_scale(s : MathspeciallegendreCluster, f : Double) -> MathspeciallegendreCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCluster::scale(self : MathspeciallegendreCluster, f : Double) -> MathspeciallegendreCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cluster_add(a : MathspeciallegendreCluster, b : MathspeciallegendreCluster) -> MathspeciallegendreCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreCluster::add(self : MathspeciallegendreCluster, other : MathspeciallegendreCluster) -> MathspeciallegendreCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_cluster_copy(s : MathspeciallegendreCluster) -> MathspeciallegendreCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCluster::copy(self : MathspeciallegendreCluster) -> MathspeciallegendreCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cluster_fill(s : MathspeciallegendreCluster, v : Double) -> MathspeciallegendreCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCluster::fill(self : MathspeciallegendreCluster, v : Double) -> MathspeciallegendreCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cluster_min(s : MathspeciallegendreCluster) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreCluster::min(self : MathspeciallegendreCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_cluster_max(s : MathspeciallegendreCluster) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreCluster::max(self : MathspeciallegendreCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_cluster_to_string(s : MathspeciallegendreCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreCluster::to_string(self : MathspeciallegendreCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreModel {
@@ -708,45 +708,45 @@ pub fn math_special_legendre_model_make(size : Int) -> MathspeciallegendreModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_model_len(s : MathspeciallegendreModel) -> Int { s.size }
+pub fn MathspeciallegendreModel::len(self : MathspeciallegendreModel) -> Int { self.size }
 
-pub fn math_special_legendre_model_get(s : MathspeciallegendreModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreModel::get(self : MathspeciallegendreModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_model_set(s : MathspeciallegendreModel, i : Int, v : Double) -> MathspeciallegendreModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreModel::set(self : MathspeciallegendreModel, i : Int, v : Double) -> MathspeciallegendreModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_model_sum(s : MathspeciallegendreModel) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreModel::sum(self : MathspeciallegendreModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_model_mean(s : MathspeciallegendreModel) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreModel::mean(self : MathspeciallegendreModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_model_scale(s : MathspeciallegendreModel, f : Double) -> MathspeciallegendreModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreModel::scale(self : MathspeciallegendreModel, f : Double) -> MathspeciallegendreModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_model_add(a : MathspeciallegendreModel, b : MathspeciallegendreModel) -> MathspeciallegendreModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreModel::add(self : MathspeciallegendreModel, other : MathspeciallegendreModel) -> MathspeciallegendreModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_model_copy(s : MathspeciallegendreModel) -> MathspeciallegendreModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreModel::copy(self : MathspeciallegendreModel) -> MathspeciallegendreModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_model_fill(s : MathspeciallegendreModel, v : Double) -> MathspeciallegendreModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreModel::fill(self : MathspeciallegendreModel, v : Double) -> MathspeciallegendreModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_model_min(s : MathspeciallegendreModel) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreModel::min(self : MathspeciallegendreModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_model_max(s : MathspeciallegendreModel) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreModel::max(self : MathspeciallegendreModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_model_to_string(s : MathspeciallegendreModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreModel::to_string(self : MathspeciallegendreModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreLayer {
@@ -759,45 +759,45 @@ pub fn math_special_legendre_layer_make(size : Int) -> MathspeciallegendreLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_layer_len(s : MathspeciallegendreLayer) -> Int { s.size }
+pub fn MathspeciallegendreLayer::len(self : MathspeciallegendreLayer) -> Int { self.size }
 
-pub fn math_special_legendre_layer_get(s : MathspeciallegendreLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreLayer::get(self : MathspeciallegendreLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_layer_set(s : MathspeciallegendreLayer, i : Int, v : Double) -> MathspeciallegendreLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreLayer::set(self : MathspeciallegendreLayer, i : Int, v : Double) -> MathspeciallegendreLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_layer_sum(s : MathspeciallegendreLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreLayer::sum(self : MathspeciallegendreLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_layer_mean(s : MathspeciallegendreLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreLayer::mean(self : MathspeciallegendreLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_layer_scale(s : MathspeciallegendreLayer, f : Double) -> MathspeciallegendreLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreLayer::scale(self : MathspeciallegendreLayer, f : Double) -> MathspeciallegendreLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_layer_add(a : MathspeciallegendreLayer, b : MathspeciallegendreLayer) -> MathspeciallegendreLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreLayer::add(self : MathspeciallegendreLayer, other : MathspeciallegendreLayer) -> MathspeciallegendreLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_layer_copy(s : MathspeciallegendreLayer) -> MathspeciallegendreLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreLayer::copy(self : MathspeciallegendreLayer) -> MathspeciallegendreLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_layer_fill(s : MathspeciallegendreLayer, v : Double) -> MathspeciallegendreLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreLayer::fill(self : MathspeciallegendreLayer, v : Double) -> MathspeciallegendreLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_layer_min(s : MathspeciallegendreLayer) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreLayer::min(self : MathspeciallegendreLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_layer_max(s : MathspeciallegendreLayer) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreLayer::max(self : MathspeciallegendreLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_layer_to_string(s : MathspeciallegendreLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreLayer::to_string(self : MathspeciallegendreLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_legendre_buffer_make(size : Int) -> MathspeciallegendreBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_buffer_len(s : MathspeciallegendreBuffer) -> Int { s.size }
+pub fn MathspeciallegendreBuffer::len(self : MathspeciallegendreBuffer) -> Int { self.size }
 
-pub fn math_special_legendre_buffer_get(s : MathspeciallegendreBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreBuffer::get(self : MathspeciallegendreBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_buffer_set(s : MathspeciallegendreBuffer, i : Int, v : Double) -> MathspeciallegendreBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreBuffer::set(self : MathspeciallegendreBuffer, i : Int, v : Double) -> MathspeciallegendreBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_buffer_sum(s : MathspeciallegendreBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreBuffer::sum(self : MathspeciallegendreBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_buffer_mean(s : MathspeciallegendreBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreBuffer::mean(self : MathspeciallegendreBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_buffer_scale(s : MathspeciallegendreBuffer, f : Double) -> MathspeciallegendreBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreBuffer::scale(self : MathspeciallegendreBuffer, f : Double) -> MathspeciallegendreBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_buffer_add(a : MathspeciallegendreBuffer, b : MathspeciallegendreBuffer) -> MathspeciallegendreBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreBuffer::add(self : MathspeciallegendreBuffer, other : MathspeciallegendreBuffer) -> MathspeciallegendreBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_buffer_copy(s : MathspeciallegendreBuffer) -> MathspeciallegendreBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreBuffer::copy(self : MathspeciallegendreBuffer) -> MathspeciallegendreBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_buffer_fill(s : MathspeciallegendreBuffer, v : Double) -> MathspeciallegendreBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreBuffer::fill(self : MathspeciallegendreBuffer, v : Double) -> MathspeciallegendreBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_buffer_min(s : MathspeciallegendreBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreBuffer::min(self : MathspeciallegendreBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_buffer_max(s : MathspeciallegendreBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreBuffer::max(self : MathspeciallegendreBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_buffer_to_string(s : MathspeciallegendreBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreBuffer::to_string(self : MathspeciallegendreBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreCursor {
@@ -861,45 +861,45 @@ pub fn math_special_legendre_cursor_make(size : Int) -> MathspeciallegendreCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_cursor_len(s : MathspeciallegendreCursor) -> Int { s.size }
+pub fn MathspeciallegendreCursor::len(self : MathspeciallegendreCursor) -> Int { self.size }
 
-pub fn math_special_legendre_cursor_get(s : MathspeciallegendreCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreCursor::get(self : MathspeciallegendreCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_cursor_set(s : MathspeciallegendreCursor, i : Int, v : Double) -> MathspeciallegendreCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCursor::set(self : MathspeciallegendreCursor, i : Int, v : Double) -> MathspeciallegendreCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cursor_sum(s : MathspeciallegendreCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreCursor::sum(self : MathspeciallegendreCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_cursor_mean(s : MathspeciallegendreCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreCursor::mean(self : MathspeciallegendreCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_cursor_scale(s : MathspeciallegendreCursor, f : Double) -> MathspeciallegendreCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCursor::scale(self : MathspeciallegendreCursor, f : Double) -> MathspeciallegendreCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cursor_add(a : MathspeciallegendreCursor, b : MathspeciallegendreCursor) -> MathspeciallegendreCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreCursor::add(self : MathspeciallegendreCursor, other : MathspeciallegendreCursor) -> MathspeciallegendreCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_cursor_copy(s : MathspeciallegendreCursor) -> MathspeciallegendreCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCursor::copy(self : MathspeciallegendreCursor) -> MathspeciallegendreCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cursor_fill(s : MathspeciallegendreCursor, v : Double) -> MathspeciallegendreCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreCursor::fill(self : MathspeciallegendreCursor, v : Double) -> MathspeciallegendreCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_cursor_min(s : MathspeciallegendreCursor) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreCursor::min(self : MathspeciallegendreCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_cursor_max(s : MathspeciallegendreCursor) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreCursor::max(self : MathspeciallegendreCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_cursor_to_string(s : MathspeciallegendreCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreCursor::to_string(self : MathspeciallegendreCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreView {
@@ -912,45 +912,45 @@ pub fn math_special_legendre_view_make(size : Int) -> MathspeciallegendreView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_view_len(s : MathspeciallegendreView) -> Int { s.size }
+pub fn MathspeciallegendreView::len(self : MathspeciallegendreView) -> Int { self.size }
 
-pub fn math_special_legendre_view_get(s : MathspeciallegendreView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreView::get(self : MathspeciallegendreView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_view_set(s : MathspeciallegendreView, i : Int, v : Double) -> MathspeciallegendreView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreView::set(self : MathspeciallegendreView, i : Int, v : Double) -> MathspeciallegendreView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_view_sum(s : MathspeciallegendreView) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreView::sum(self : MathspeciallegendreView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_view_mean(s : MathspeciallegendreView) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreView::mean(self : MathspeciallegendreView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_view_scale(s : MathspeciallegendreView, f : Double) -> MathspeciallegendreView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreView::scale(self : MathspeciallegendreView, f : Double) -> MathspeciallegendreView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_view_add(a : MathspeciallegendreView, b : MathspeciallegendreView) -> MathspeciallegendreView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreView::add(self : MathspeciallegendreView, other : MathspeciallegendreView) -> MathspeciallegendreView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_view_copy(s : MathspeciallegendreView) -> MathspeciallegendreView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreView::copy(self : MathspeciallegendreView) -> MathspeciallegendreView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_view_fill(s : MathspeciallegendreView, v : Double) -> MathspeciallegendreView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreView::fill(self : MathspeciallegendreView, v : Double) -> MathspeciallegendreView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_view_min(s : MathspeciallegendreView) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreView::min(self : MathspeciallegendreView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_view_max(s : MathspeciallegendreView) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreView::max(self : MathspeciallegendreView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_view_to_string(s : MathspeciallegendreView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreView::to_string(self : MathspeciallegendreView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreRange {
@@ -963,45 +963,45 @@ pub fn math_special_legendre_range_make(size : Int) -> MathspeciallegendreRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_range_len(s : MathspeciallegendreRange) -> Int { s.size }
+pub fn MathspeciallegendreRange::len(self : MathspeciallegendreRange) -> Int { self.size }
 
-pub fn math_special_legendre_range_get(s : MathspeciallegendreRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreRange::get(self : MathspeciallegendreRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_range_set(s : MathspeciallegendreRange, i : Int, v : Double) -> MathspeciallegendreRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreRange::set(self : MathspeciallegendreRange, i : Int, v : Double) -> MathspeciallegendreRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_range_sum(s : MathspeciallegendreRange) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreRange::sum(self : MathspeciallegendreRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_range_mean(s : MathspeciallegendreRange) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreRange::mean(self : MathspeciallegendreRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_range_scale(s : MathspeciallegendreRange, f : Double) -> MathspeciallegendreRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreRange::scale(self : MathspeciallegendreRange, f : Double) -> MathspeciallegendreRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_range_add(a : MathspeciallegendreRange, b : MathspeciallegendreRange) -> MathspeciallegendreRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreRange::add(self : MathspeciallegendreRange, other : MathspeciallegendreRange) -> MathspeciallegendreRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_range_copy(s : MathspeciallegendreRange) -> MathspeciallegendreRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreRange::copy(self : MathspeciallegendreRange) -> MathspeciallegendreRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_range_fill(s : MathspeciallegendreRange, v : Double) -> MathspeciallegendreRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreRange::fill(self : MathspeciallegendreRange, v : Double) -> MathspeciallegendreRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_range_min(s : MathspeciallegendreRange) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreRange::min(self : MathspeciallegendreRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_range_max(s : MathspeciallegendreRange) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreRange::max(self : MathspeciallegendreRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_range_to_string(s : MathspeciallegendreRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreRange::to_string(self : MathspeciallegendreRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspeciallegendreSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_legendre_slice_make(size : Int) -> MathspeciallegendreSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_legendre_slice_len(s : MathspeciallegendreSlice) -> Int { s.size }
+pub fn MathspeciallegendreSlice::len(self : MathspeciallegendreSlice) -> Int { self.size }
 
-pub fn math_special_legendre_slice_get(s : MathspeciallegendreSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspeciallegendreSlice::get(self : MathspeciallegendreSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_legendre_slice_set(s : MathspeciallegendreSlice, i : Int, v : Double) -> MathspeciallegendreSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspeciallegendreSlice::set(self : MathspeciallegendreSlice, i : Int, v : Double) -> MathspeciallegendreSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_slice_sum(s : MathspeciallegendreSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspeciallegendreSlice::sum(self : MathspeciallegendreSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_legendre_slice_mean(s : MathspeciallegendreSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspeciallegendreSlice::mean(self : MathspeciallegendreSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_legendre_slice_scale(s : MathspeciallegendreSlice, f : Double) -> MathspeciallegendreSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreSlice::scale(self : MathspeciallegendreSlice, f : Double) -> MathspeciallegendreSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_slice_add(a : MathspeciallegendreSlice, b : MathspeciallegendreSlice) -> MathspeciallegendreSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspeciallegendreSlice::add(self : MathspeciallegendreSlice, other : MathspeciallegendreSlice) -> MathspeciallegendreSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_legendre_slice_copy(s : MathspeciallegendreSlice) -> MathspeciallegendreSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreSlice::copy(self : MathspeciallegendreSlice) -> MathspeciallegendreSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_slice_fill(s : MathspeciallegendreSlice, v : Double) -> MathspeciallegendreSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspeciallegendreSlice::fill(self : MathspeciallegendreSlice, v : Double) -> MathspeciallegendreSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_legendre_slice_min(s : MathspeciallegendreSlice) -> Double { @_common.min(s.data) }
+pub fn MathspeciallegendreSlice::min(self : MathspeciallegendreSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_legendre_slice_max(s : MathspeciallegendreSlice) -> Double { @_common.max(s.data) }
+pub fn MathspeciallegendreSlice::max(self : MathspeciallegendreSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_legendre_slice_to_string(s : MathspeciallegendreSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspeciallegendreSlice::to_string(self : MathspeciallegendreSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

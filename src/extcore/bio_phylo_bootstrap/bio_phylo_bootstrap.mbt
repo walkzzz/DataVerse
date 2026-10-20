@@ -351,45 +351,45 @@ pub fn bio_phylo_bootstrap_frame_make(size : Int) -> BiophylobootstrapFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_frame_len(s : BiophylobootstrapFrame) -> Int { s.size }
+pub fn BiophylobootstrapFrame::len(self : BiophylobootstrapFrame) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_frame_get(s : BiophylobootstrapFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapFrame::get(self : BiophylobootstrapFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_frame_set(s : BiophylobootstrapFrame, i : Int, v : Double) -> BiophylobootstrapFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapFrame::set(self : BiophylobootstrapFrame, i : Int, v : Double) -> BiophylobootstrapFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_frame_sum(s : BiophylobootstrapFrame) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapFrame::sum(self : BiophylobootstrapFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_frame_mean(s : BiophylobootstrapFrame) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapFrame::mean(self : BiophylobootstrapFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_frame_scale(s : BiophylobootstrapFrame, f : Double) -> BiophylobootstrapFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapFrame::scale(self : BiophylobootstrapFrame, f : Double) -> BiophylobootstrapFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_frame_add(a : BiophylobootstrapFrame, b : BiophylobootstrapFrame) -> BiophylobootstrapFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapFrame::add(self : BiophylobootstrapFrame, other : BiophylobootstrapFrame) -> BiophylobootstrapFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_frame_copy(s : BiophylobootstrapFrame) -> BiophylobootstrapFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapFrame::copy(self : BiophylobootstrapFrame) -> BiophylobootstrapFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_frame_fill(s : BiophylobootstrapFrame, v : Double) -> BiophylobootstrapFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapFrame::fill(self : BiophylobootstrapFrame, v : Double) -> BiophylobootstrapFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_frame_min(s : BiophylobootstrapFrame) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapFrame::min(self : BiophylobootstrapFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_frame_max(s : BiophylobootstrapFrame) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapFrame::max(self : BiophylobootstrapFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_frame_to_string(s : BiophylobootstrapFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapFrame::to_string(self : BiophylobootstrapFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapTable {
@@ -402,45 +402,45 @@ pub fn bio_phylo_bootstrap_table_make(size : Int) -> BiophylobootstrapTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_table_len(s : BiophylobootstrapTable) -> Int { s.size }
+pub fn BiophylobootstrapTable::len(self : BiophylobootstrapTable) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_table_get(s : BiophylobootstrapTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapTable::get(self : BiophylobootstrapTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_table_set(s : BiophylobootstrapTable, i : Int, v : Double) -> BiophylobootstrapTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapTable::set(self : BiophylobootstrapTable, i : Int, v : Double) -> BiophylobootstrapTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_table_sum(s : BiophylobootstrapTable) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapTable::sum(self : BiophylobootstrapTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_table_mean(s : BiophylobootstrapTable) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapTable::mean(self : BiophylobootstrapTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_table_scale(s : BiophylobootstrapTable, f : Double) -> BiophylobootstrapTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapTable::scale(self : BiophylobootstrapTable, f : Double) -> BiophylobootstrapTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_table_add(a : BiophylobootstrapTable, b : BiophylobootstrapTable) -> BiophylobootstrapTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapTable::add(self : BiophylobootstrapTable, other : BiophylobootstrapTable) -> BiophylobootstrapTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_table_copy(s : BiophylobootstrapTable) -> BiophylobootstrapTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapTable::copy(self : BiophylobootstrapTable) -> BiophylobootstrapTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_table_fill(s : BiophylobootstrapTable, v : Double) -> BiophylobootstrapTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapTable::fill(self : BiophylobootstrapTable, v : Double) -> BiophylobootstrapTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_table_min(s : BiophylobootstrapTable) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapTable::min(self : BiophylobootstrapTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_table_max(s : BiophylobootstrapTable) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapTable::max(self : BiophylobootstrapTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_table_to_string(s : BiophylobootstrapTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapTable::to_string(self : BiophylobootstrapTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapGraphN {
@@ -453,45 +453,45 @@ pub fn bio_phylo_bootstrap_graphn_make(size : Int) -> BiophylobootstrapGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_graphn_len(s : BiophylobootstrapGraphN) -> Int { s.size }
+pub fn BiophylobootstrapGraphN::len(self : BiophylobootstrapGraphN) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_graphn_get(s : BiophylobootstrapGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapGraphN::get(self : BiophylobootstrapGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_graphn_set(s : BiophylobootstrapGraphN, i : Int, v : Double) -> BiophylobootstrapGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapGraphN::set(self : BiophylobootstrapGraphN, i : Int, v : Double) -> BiophylobootstrapGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_graphn_sum(s : BiophylobootstrapGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapGraphN::sum(self : BiophylobootstrapGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_graphn_mean(s : BiophylobootstrapGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapGraphN::mean(self : BiophylobootstrapGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_graphn_scale(s : BiophylobootstrapGraphN, f : Double) -> BiophylobootstrapGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapGraphN::scale(self : BiophylobootstrapGraphN, f : Double) -> BiophylobootstrapGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_graphn_add(a : BiophylobootstrapGraphN, b : BiophylobootstrapGraphN) -> BiophylobootstrapGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapGraphN::add(self : BiophylobootstrapGraphN, other : BiophylobootstrapGraphN) -> BiophylobootstrapGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_graphn_copy(s : BiophylobootstrapGraphN) -> BiophylobootstrapGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapGraphN::copy(self : BiophylobootstrapGraphN) -> BiophylobootstrapGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_graphn_fill(s : BiophylobootstrapGraphN, v : Double) -> BiophylobootstrapGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapGraphN::fill(self : BiophylobootstrapGraphN, v : Double) -> BiophylobootstrapGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_graphn_min(s : BiophylobootstrapGraphN) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapGraphN::min(self : BiophylobootstrapGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_graphn_max(s : BiophylobootstrapGraphN) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapGraphN::max(self : BiophylobootstrapGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_graphn_to_string(s : BiophylobootstrapGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapGraphN::to_string(self : BiophylobootstrapGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapNode {
@@ -504,45 +504,45 @@ pub fn bio_phylo_bootstrap_node_make(size : Int) -> BiophylobootstrapNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_node_len(s : BiophylobootstrapNode) -> Int { s.size }
+pub fn BiophylobootstrapNode::len(self : BiophylobootstrapNode) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_node_get(s : BiophylobootstrapNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapNode::get(self : BiophylobootstrapNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_node_set(s : BiophylobootstrapNode, i : Int, v : Double) -> BiophylobootstrapNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapNode::set(self : BiophylobootstrapNode, i : Int, v : Double) -> BiophylobootstrapNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_node_sum(s : BiophylobootstrapNode) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapNode::sum(self : BiophylobootstrapNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_node_mean(s : BiophylobootstrapNode) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapNode::mean(self : BiophylobootstrapNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_node_scale(s : BiophylobootstrapNode, f : Double) -> BiophylobootstrapNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapNode::scale(self : BiophylobootstrapNode, f : Double) -> BiophylobootstrapNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_node_add(a : BiophylobootstrapNode, b : BiophylobootstrapNode) -> BiophylobootstrapNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapNode::add(self : BiophylobootstrapNode, other : BiophylobootstrapNode) -> BiophylobootstrapNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_node_copy(s : BiophylobootstrapNode) -> BiophylobootstrapNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapNode::copy(self : BiophylobootstrapNode) -> BiophylobootstrapNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_node_fill(s : BiophylobootstrapNode, v : Double) -> BiophylobootstrapNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapNode::fill(self : BiophylobootstrapNode, v : Double) -> BiophylobootstrapNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_node_min(s : BiophylobootstrapNode) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapNode::min(self : BiophylobootstrapNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_node_max(s : BiophylobootstrapNode) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapNode::max(self : BiophylobootstrapNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_node_to_string(s : BiophylobootstrapNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapNode::to_string(self : BiophylobootstrapNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapEdge {
@@ -555,45 +555,45 @@ pub fn bio_phylo_bootstrap_edge_make(size : Int) -> BiophylobootstrapEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_edge_len(s : BiophylobootstrapEdge) -> Int { s.size }
+pub fn BiophylobootstrapEdge::len(self : BiophylobootstrapEdge) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_edge_get(s : BiophylobootstrapEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapEdge::get(self : BiophylobootstrapEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_edge_set(s : BiophylobootstrapEdge, i : Int, v : Double) -> BiophylobootstrapEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapEdge::set(self : BiophylobootstrapEdge, i : Int, v : Double) -> BiophylobootstrapEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_edge_sum(s : BiophylobootstrapEdge) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapEdge::sum(self : BiophylobootstrapEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_edge_mean(s : BiophylobootstrapEdge) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapEdge::mean(self : BiophylobootstrapEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_edge_scale(s : BiophylobootstrapEdge, f : Double) -> BiophylobootstrapEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapEdge::scale(self : BiophylobootstrapEdge, f : Double) -> BiophylobootstrapEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_edge_add(a : BiophylobootstrapEdge, b : BiophylobootstrapEdge) -> BiophylobootstrapEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapEdge::add(self : BiophylobootstrapEdge, other : BiophylobootstrapEdge) -> BiophylobootstrapEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_edge_copy(s : BiophylobootstrapEdge) -> BiophylobootstrapEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapEdge::copy(self : BiophylobootstrapEdge) -> BiophylobootstrapEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_edge_fill(s : BiophylobootstrapEdge, v : Double) -> BiophylobootstrapEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapEdge::fill(self : BiophylobootstrapEdge, v : Double) -> BiophylobootstrapEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_edge_min(s : BiophylobootstrapEdge) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapEdge::min(self : BiophylobootstrapEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_edge_max(s : BiophylobootstrapEdge) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapEdge::max(self : BiophylobootstrapEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_edge_to_string(s : BiophylobootstrapEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapEdge::to_string(self : BiophylobootstrapEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapPath {
@@ -606,45 +606,45 @@ pub fn bio_phylo_bootstrap_path_make(size : Int) -> BiophylobootstrapPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_path_len(s : BiophylobootstrapPath) -> Int { s.size }
+pub fn BiophylobootstrapPath::len(self : BiophylobootstrapPath) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_path_get(s : BiophylobootstrapPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapPath::get(self : BiophylobootstrapPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_path_set(s : BiophylobootstrapPath, i : Int, v : Double) -> BiophylobootstrapPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapPath::set(self : BiophylobootstrapPath, i : Int, v : Double) -> BiophylobootstrapPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_path_sum(s : BiophylobootstrapPath) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapPath::sum(self : BiophylobootstrapPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_path_mean(s : BiophylobootstrapPath) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapPath::mean(self : BiophylobootstrapPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_path_scale(s : BiophylobootstrapPath, f : Double) -> BiophylobootstrapPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapPath::scale(self : BiophylobootstrapPath, f : Double) -> BiophylobootstrapPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_path_add(a : BiophylobootstrapPath, b : BiophylobootstrapPath) -> BiophylobootstrapPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapPath::add(self : BiophylobootstrapPath, other : BiophylobootstrapPath) -> BiophylobootstrapPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_path_copy(s : BiophylobootstrapPath) -> BiophylobootstrapPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapPath::copy(self : BiophylobootstrapPath) -> BiophylobootstrapPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_path_fill(s : BiophylobootstrapPath, v : Double) -> BiophylobootstrapPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapPath::fill(self : BiophylobootstrapPath, v : Double) -> BiophylobootstrapPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_path_min(s : BiophylobootstrapPath) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapPath::min(self : BiophylobootstrapPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_path_max(s : BiophylobootstrapPath) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapPath::max(self : BiophylobootstrapPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_path_to_string(s : BiophylobootstrapPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapPath::to_string(self : BiophylobootstrapPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapCluster {
@@ -657,45 +657,45 @@ pub fn bio_phylo_bootstrap_cluster_make(size : Int) -> BiophylobootstrapCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_cluster_len(s : BiophylobootstrapCluster) -> Int { s.size }
+pub fn BiophylobootstrapCluster::len(self : BiophylobootstrapCluster) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_cluster_get(s : BiophylobootstrapCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapCluster::get(self : BiophylobootstrapCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_cluster_set(s : BiophylobootstrapCluster, i : Int, v : Double) -> BiophylobootstrapCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCluster::set(self : BiophylobootstrapCluster, i : Int, v : Double) -> BiophylobootstrapCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cluster_sum(s : BiophylobootstrapCluster) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapCluster::sum(self : BiophylobootstrapCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_cluster_mean(s : BiophylobootstrapCluster) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapCluster::mean(self : BiophylobootstrapCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_cluster_scale(s : BiophylobootstrapCluster, f : Double) -> BiophylobootstrapCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCluster::scale(self : BiophylobootstrapCluster, f : Double) -> BiophylobootstrapCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cluster_add(a : BiophylobootstrapCluster, b : BiophylobootstrapCluster) -> BiophylobootstrapCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapCluster::add(self : BiophylobootstrapCluster, other : BiophylobootstrapCluster) -> BiophylobootstrapCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cluster_copy(s : BiophylobootstrapCluster) -> BiophylobootstrapCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCluster::copy(self : BiophylobootstrapCluster) -> BiophylobootstrapCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cluster_fill(s : BiophylobootstrapCluster, v : Double) -> BiophylobootstrapCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCluster::fill(self : BiophylobootstrapCluster, v : Double) -> BiophylobootstrapCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cluster_min(s : BiophylobootstrapCluster) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapCluster::min(self : BiophylobootstrapCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_cluster_max(s : BiophylobootstrapCluster) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapCluster::max(self : BiophylobootstrapCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_cluster_to_string(s : BiophylobootstrapCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapCluster::to_string(self : BiophylobootstrapCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapModel {
@@ -708,45 +708,45 @@ pub fn bio_phylo_bootstrap_model_make(size : Int) -> BiophylobootstrapModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_model_len(s : BiophylobootstrapModel) -> Int { s.size }
+pub fn BiophylobootstrapModel::len(self : BiophylobootstrapModel) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_model_get(s : BiophylobootstrapModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapModel::get(self : BiophylobootstrapModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_model_set(s : BiophylobootstrapModel, i : Int, v : Double) -> BiophylobootstrapModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapModel::set(self : BiophylobootstrapModel, i : Int, v : Double) -> BiophylobootstrapModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_model_sum(s : BiophylobootstrapModel) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapModel::sum(self : BiophylobootstrapModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_model_mean(s : BiophylobootstrapModel) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapModel::mean(self : BiophylobootstrapModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_model_scale(s : BiophylobootstrapModel, f : Double) -> BiophylobootstrapModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapModel::scale(self : BiophylobootstrapModel, f : Double) -> BiophylobootstrapModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_model_add(a : BiophylobootstrapModel, b : BiophylobootstrapModel) -> BiophylobootstrapModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapModel::add(self : BiophylobootstrapModel, other : BiophylobootstrapModel) -> BiophylobootstrapModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_model_copy(s : BiophylobootstrapModel) -> BiophylobootstrapModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapModel::copy(self : BiophylobootstrapModel) -> BiophylobootstrapModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_model_fill(s : BiophylobootstrapModel, v : Double) -> BiophylobootstrapModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapModel::fill(self : BiophylobootstrapModel, v : Double) -> BiophylobootstrapModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_model_min(s : BiophylobootstrapModel) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapModel::min(self : BiophylobootstrapModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_model_max(s : BiophylobootstrapModel) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapModel::max(self : BiophylobootstrapModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_model_to_string(s : BiophylobootstrapModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapModel::to_string(self : BiophylobootstrapModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapLayer {
@@ -759,45 +759,45 @@ pub fn bio_phylo_bootstrap_layer_make(size : Int) -> BiophylobootstrapLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_layer_len(s : BiophylobootstrapLayer) -> Int { s.size }
+pub fn BiophylobootstrapLayer::len(self : BiophylobootstrapLayer) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_layer_get(s : BiophylobootstrapLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapLayer::get(self : BiophylobootstrapLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_layer_set(s : BiophylobootstrapLayer, i : Int, v : Double) -> BiophylobootstrapLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapLayer::set(self : BiophylobootstrapLayer, i : Int, v : Double) -> BiophylobootstrapLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_layer_sum(s : BiophylobootstrapLayer) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapLayer::sum(self : BiophylobootstrapLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_layer_mean(s : BiophylobootstrapLayer) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapLayer::mean(self : BiophylobootstrapLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_layer_scale(s : BiophylobootstrapLayer, f : Double) -> BiophylobootstrapLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapLayer::scale(self : BiophylobootstrapLayer, f : Double) -> BiophylobootstrapLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_layer_add(a : BiophylobootstrapLayer, b : BiophylobootstrapLayer) -> BiophylobootstrapLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapLayer::add(self : BiophylobootstrapLayer, other : BiophylobootstrapLayer) -> BiophylobootstrapLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_layer_copy(s : BiophylobootstrapLayer) -> BiophylobootstrapLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapLayer::copy(self : BiophylobootstrapLayer) -> BiophylobootstrapLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_layer_fill(s : BiophylobootstrapLayer, v : Double) -> BiophylobootstrapLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapLayer::fill(self : BiophylobootstrapLayer, v : Double) -> BiophylobootstrapLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_layer_min(s : BiophylobootstrapLayer) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapLayer::min(self : BiophylobootstrapLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_layer_max(s : BiophylobootstrapLayer) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapLayer::max(self : BiophylobootstrapLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_layer_to_string(s : BiophylobootstrapLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapLayer::to_string(self : BiophylobootstrapLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapBuffer {
@@ -810,45 +810,45 @@ pub fn bio_phylo_bootstrap_buffer_make(size : Int) -> BiophylobootstrapBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_buffer_len(s : BiophylobootstrapBuffer) -> Int { s.size }
+pub fn BiophylobootstrapBuffer::len(self : BiophylobootstrapBuffer) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_buffer_get(s : BiophylobootstrapBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapBuffer::get(self : BiophylobootstrapBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_buffer_set(s : BiophylobootstrapBuffer, i : Int, v : Double) -> BiophylobootstrapBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapBuffer::set(self : BiophylobootstrapBuffer, i : Int, v : Double) -> BiophylobootstrapBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_buffer_sum(s : BiophylobootstrapBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapBuffer::sum(self : BiophylobootstrapBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_buffer_mean(s : BiophylobootstrapBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapBuffer::mean(self : BiophylobootstrapBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_buffer_scale(s : BiophylobootstrapBuffer, f : Double) -> BiophylobootstrapBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapBuffer::scale(self : BiophylobootstrapBuffer, f : Double) -> BiophylobootstrapBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_buffer_add(a : BiophylobootstrapBuffer, b : BiophylobootstrapBuffer) -> BiophylobootstrapBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapBuffer::add(self : BiophylobootstrapBuffer, other : BiophylobootstrapBuffer) -> BiophylobootstrapBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_buffer_copy(s : BiophylobootstrapBuffer) -> BiophylobootstrapBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapBuffer::copy(self : BiophylobootstrapBuffer) -> BiophylobootstrapBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_buffer_fill(s : BiophylobootstrapBuffer, v : Double) -> BiophylobootstrapBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapBuffer::fill(self : BiophylobootstrapBuffer, v : Double) -> BiophylobootstrapBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_buffer_min(s : BiophylobootstrapBuffer) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapBuffer::min(self : BiophylobootstrapBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_buffer_max(s : BiophylobootstrapBuffer) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapBuffer::max(self : BiophylobootstrapBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_buffer_to_string(s : BiophylobootstrapBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapBuffer::to_string(self : BiophylobootstrapBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapCursor {
@@ -861,45 +861,45 @@ pub fn bio_phylo_bootstrap_cursor_make(size : Int) -> BiophylobootstrapCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_cursor_len(s : BiophylobootstrapCursor) -> Int { s.size }
+pub fn BiophylobootstrapCursor::len(self : BiophylobootstrapCursor) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_cursor_get(s : BiophylobootstrapCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapCursor::get(self : BiophylobootstrapCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_cursor_set(s : BiophylobootstrapCursor, i : Int, v : Double) -> BiophylobootstrapCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCursor::set(self : BiophylobootstrapCursor, i : Int, v : Double) -> BiophylobootstrapCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cursor_sum(s : BiophylobootstrapCursor) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapCursor::sum(self : BiophylobootstrapCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_cursor_mean(s : BiophylobootstrapCursor) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapCursor::mean(self : BiophylobootstrapCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_cursor_scale(s : BiophylobootstrapCursor, f : Double) -> BiophylobootstrapCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCursor::scale(self : BiophylobootstrapCursor, f : Double) -> BiophylobootstrapCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cursor_add(a : BiophylobootstrapCursor, b : BiophylobootstrapCursor) -> BiophylobootstrapCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapCursor::add(self : BiophylobootstrapCursor, other : BiophylobootstrapCursor) -> BiophylobootstrapCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cursor_copy(s : BiophylobootstrapCursor) -> BiophylobootstrapCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCursor::copy(self : BiophylobootstrapCursor) -> BiophylobootstrapCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cursor_fill(s : BiophylobootstrapCursor, v : Double) -> BiophylobootstrapCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapCursor::fill(self : BiophylobootstrapCursor, v : Double) -> BiophylobootstrapCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_cursor_min(s : BiophylobootstrapCursor) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapCursor::min(self : BiophylobootstrapCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_cursor_max(s : BiophylobootstrapCursor) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapCursor::max(self : BiophylobootstrapCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_cursor_to_string(s : BiophylobootstrapCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapCursor::to_string(self : BiophylobootstrapCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapView {
@@ -912,45 +912,45 @@ pub fn bio_phylo_bootstrap_view_make(size : Int) -> BiophylobootstrapView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_view_len(s : BiophylobootstrapView) -> Int { s.size }
+pub fn BiophylobootstrapView::len(self : BiophylobootstrapView) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_view_get(s : BiophylobootstrapView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapView::get(self : BiophylobootstrapView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_view_set(s : BiophylobootstrapView, i : Int, v : Double) -> BiophylobootstrapView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapView::set(self : BiophylobootstrapView, i : Int, v : Double) -> BiophylobootstrapView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_view_sum(s : BiophylobootstrapView) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapView::sum(self : BiophylobootstrapView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_view_mean(s : BiophylobootstrapView) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapView::mean(self : BiophylobootstrapView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_view_scale(s : BiophylobootstrapView, f : Double) -> BiophylobootstrapView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapView::scale(self : BiophylobootstrapView, f : Double) -> BiophylobootstrapView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_view_add(a : BiophylobootstrapView, b : BiophylobootstrapView) -> BiophylobootstrapView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapView::add(self : BiophylobootstrapView, other : BiophylobootstrapView) -> BiophylobootstrapView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_view_copy(s : BiophylobootstrapView) -> BiophylobootstrapView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapView::copy(self : BiophylobootstrapView) -> BiophylobootstrapView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_view_fill(s : BiophylobootstrapView, v : Double) -> BiophylobootstrapView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapView::fill(self : BiophylobootstrapView, v : Double) -> BiophylobootstrapView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_view_min(s : BiophylobootstrapView) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapView::min(self : BiophylobootstrapView) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_view_max(s : BiophylobootstrapView) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapView::max(self : BiophylobootstrapView) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_view_to_string(s : BiophylobootstrapView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapView::to_string(self : BiophylobootstrapView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapRange {
@@ -963,45 +963,45 @@ pub fn bio_phylo_bootstrap_range_make(size : Int) -> BiophylobootstrapRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_range_len(s : BiophylobootstrapRange) -> Int { s.size }
+pub fn BiophylobootstrapRange::len(self : BiophylobootstrapRange) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_range_get(s : BiophylobootstrapRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapRange::get(self : BiophylobootstrapRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_range_set(s : BiophylobootstrapRange, i : Int, v : Double) -> BiophylobootstrapRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapRange::set(self : BiophylobootstrapRange, i : Int, v : Double) -> BiophylobootstrapRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_range_sum(s : BiophylobootstrapRange) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapRange::sum(self : BiophylobootstrapRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_range_mean(s : BiophylobootstrapRange) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapRange::mean(self : BiophylobootstrapRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_range_scale(s : BiophylobootstrapRange, f : Double) -> BiophylobootstrapRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapRange::scale(self : BiophylobootstrapRange, f : Double) -> BiophylobootstrapRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_range_add(a : BiophylobootstrapRange, b : BiophylobootstrapRange) -> BiophylobootstrapRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapRange::add(self : BiophylobootstrapRange, other : BiophylobootstrapRange) -> BiophylobootstrapRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_range_copy(s : BiophylobootstrapRange) -> BiophylobootstrapRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapRange::copy(self : BiophylobootstrapRange) -> BiophylobootstrapRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_range_fill(s : BiophylobootstrapRange, v : Double) -> BiophylobootstrapRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapRange::fill(self : BiophylobootstrapRange, v : Double) -> BiophylobootstrapRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_range_min(s : BiophylobootstrapRange) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapRange::min(self : BiophylobootstrapRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_range_max(s : BiophylobootstrapRange) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapRange::max(self : BiophylobootstrapRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_range_to_string(s : BiophylobootstrapRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapRange::to_string(self : BiophylobootstrapRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophylobootstrapSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_phylo_bootstrap_slice_make(size : Int) -> BiophylobootstrapSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_bootstrap_slice_len(s : BiophylobootstrapSlice) -> Int { s.size }
+pub fn BiophylobootstrapSlice::len(self : BiophylobootstrapSlice) -> Int { self.size }
 
-pub fn bio_phylo_bootstrap_slice_get(s : BiophylobootstrapSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophylobootstrapSlice::get(self : BiophylobootstrapSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_bootstrap_slice_set(s : BiophylobootstrapSlice, i : Int, v : Double) -> BiophylobootstrapSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophylobootstrapSlice::set(self : BiophylobootstrapSlice, i : Int, v : Double) -> BiophylobootstrapSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_slice_sum(s : BiophylobootstrapSlice) -> Double { @_common.sum(s.data) }
+pub fn BiophylobootstrapSlice::sum(self : BiophylobootstrapSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_bootstrap_slice_mean(s : BiophylobootstrapSlice) -> Double { @_common.mean(s.data) }
+pub fn BiophylobootstrapSlice::mean(self : BiophylobootstrapSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_bootstrap_slice_scale(s : BiophylobootstrapSlice, f : Double) -> BiophylobootstrapSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapSlice::scale(self : BiophylobootstrapSlice, f : Double) -> BiophylobootstrapSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_slice_add(a : BiophylobootstrapSlice, b : BiophylobootstrapSlice) -> BiophylobootstrapSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophylobootstrapSlice::add(self : BiophylobootstrapSlice, other : BiophylobootstrapSlice) -> BiophylobootstrapSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_slice_copy(s : BiophylobootstrapSlice) -> BiophylobootstrapSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapSlice::copy(self : BiophylobootstrapSlice) -> BiophylobootstrapSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_slice_fill(s : BiophylobootstrapSlice, v : Double) -> BiophylobootstrapSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophylobootstrapSlice::fill(self : BiophylobootstrapSlice, v : Double) -> BiophylobootstrapSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_bootstrap_slice_min(s : BiophylobootstrapSlice) -> Double { @_common.min(s.data) }
+pub fn BiophylobootstrapSlice::min(self : BiophylobootstrapSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_bootstrap_slice_max(s : BiophylobootstrapSlice) -> Double { @_common.max(s.data) }
+pub fn BiophylobootstrapSlice::max(self : BiophylobootstrapSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_bootstrap_slice_to_string(s : BiophylobootstrapSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophylobootstrapSlice::to_string(self : BiophylobootstrapSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

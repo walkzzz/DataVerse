@@ -351,45 +351,45 @@ pub fn ml_feature_tsne_frame_make(size : Int) -> MlfeaturetsneFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_frame_len(s : MlfeaturetsneFrame) -> Int { s.size }
+pub fn MlfeaturetsneFrame::len(self : MlfeaturetsneFrame) -> Int { self.size }
 
-pub fn ml_feature_tsne_frame_get(s : MlfeaturetsneFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneFrame::get(self : MlfeaturetsneFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_frame_set(s : MlfeaturetsneFrame, i : Int, v : Double) -> MlfeaturetsneFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneFrame::set(self : MlfeaturetsneFrame, i : Int, v : Double) -> MlfeaturetsneFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_frame_sum(s : MlfeaturetsneFrame) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneFrame::sum(self : MlfeaturetsneFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_frame_mean(s : MlfeaturetsneFrame) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneFrame::mean(self : MlfeaturetsneFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_frame_scale(s : MlfeaturetsneFrame, f : Double) -> MlfeaturetsneFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneFrame::scale(self : MlfeaturetsneFrame, f : Double) -> MlfeaturetsneFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_frame_add(a : MlfeaturetsneFrame, b : MlfeaturetsneFrame) -> MlfeaturetsneFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneFrame::add(self : MlfeaturetsneFrame, other : MlfeaturetsneFrame) -> MlfeaturetsneFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_frame_copy(s : MlfeaturetsneFrame) -> MlfeaturetsneFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneFrame::copy(self : MlfeaturetsneFrame) -> MlfeaturetsneFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_frame_fill(s : MlfeaturetsneFrame, v : Double) -> MlfeaturetsneFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneFrame::fill(self : MlfeaturetsneFrame, v : Double) -> MlfeaturetsneFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_frame_min(s : MlfeaturetsneFrame) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneFrame::min(self : MlfeaturetsneFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_frame_max(s : MlfeaturetsneFrame) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneFrame::max(self : MlfeaturetsneFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_frame_to_string(s : MlfeaturetsneFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneFrame::to_string(self : MlfeaturetsneFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneTable {
@@ -402,45 +402,45 @@ pub fn ml_feature_tsne_table_make(size : Int) -> MlfeaturetsneTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_table_len(s : MlfeaturetsneTable) -> Int { s.size }
+pub fn MlfeaturetsneTable::len(self : MlfeaturetsneTable) -> Int { self.size }
 
-pub fn ml_feature_tsne_table_get(s : MlfeaturetsneTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneTable::get(self : MlfeaturetsneTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_table_set(s : MlfeaturetsneTable, i : Int, v : Double) -> MlfeaturetsneTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneTable::set(self : MlfeaturetsneTable, i : Int, v : Double) -> MlfeaturetsneTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_table_sum(s : MlfeaturetsneTable) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneTable::sum(self : MlfeaturetsneTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_table_mean(s : MlfeaturetsneTable) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneTable::mean(self : MlfeaturetsneTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_table_scale(s : MlfeaturetsneTable, f : Double) -> MlfeaturetsneTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneTable::scale(self : MlfeaturetsneTable, f : Double) -> MlfeaturetsneTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_table_add(a : MlfeaturetsneTable, b : MlfeaturetsneTable) -> MlfeaturetsneTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneTable::add(self : MlfeaturetsneTable, other : MlfeaturetsneTable) -> MlfeaturetsneTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_table_copy(s : MlfeaturetsneTable) -> MlfeaturetsneTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneTable::copy(self : MlfeaturetsneTable) -> MlfeaturetsneTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_table_fill(s : MlfeaturetsneTable, v : Double) -> MlfeaturetsneTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneTable::fill(self : MlfeaturetsneTable, v : Double) -> MlfeaturetsneTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_table_min(s : MlfeaturetsneTable) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneTable::min(self : MlfeaturetsneTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_table_max(s : MlfeaturetsneTable) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneTable::max(self : MlfeaturetsneTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_table_to_string(s : MlfeaturetsneTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneTable::to_string(self : MlfeaturetsneTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneGraphN {
@@ -453,45 +453,45 @@ pub fn ml_feature_tsne_graphn_make(size : Int) -> MlfeaturetsneGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_graphn_len(s : MlfeaturetsneGraphN) -> Int { s.size }
+pub fn MlfeaturetsneGraphN::len(self : MlfeaturetsneGraphN) -> Int { self.size }
 
-pub fn ml_feature_tsne_graphn_get(s : MlfeaturetsneGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneGraphN::get(self : MlfeaturetsneGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_graphn_set(s : MlfeaturetsneGraphN, i : Int, v : Double) -> MlfeaturetsneGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneGraphN::set(self : MlfeaturetsneGraphN, i : Int, v : Double) -> MlfeaturetsneGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_graphn_sum(s : MlfeaturetsneGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneGraphN::sum(self : MlfeaturetsneGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_graphn_mean(s : MlfeaturetsneGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneGraphN::mean(self : MlfeaturetsneGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_graphn_scale(s : MlfeaturetsneGraphN, f : Double) -> MlfeaturetsneGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneGraphN::scale(self : MlfeaturetsneGraphN, f : Double) -> MlfeaturetsneGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_graphn_add(a : MlfeaturetsneGraphN, b : MlfeaturetsneGraphN) -> MlfeaturetsneGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneGraphN::add(self : MlfeaturetsneGraphN, other : MlfeaturetsneGraphN) -> MlfeaturetsneGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_graphn_copy(s : MlfeaturetsneGraphN) -> MlfeaturetsneGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneGraphN::copy(self : MlfeaturetsneGraphN) -> MlfeaturetsneGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_graphn_fill(s : MlfeaturetsneGraphN, v : Double) -> MlfeaturetsneGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneGraphN::fill(self : MlfeaturetsneGraphN, v : Double) -> MlfeaturetsneGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_graphn_min(s : MlfeaturetsneGraphN) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneGraphN::min(self : MlfeaturetsneGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_graphn_max(s : MlfeaturetsneGraphN) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneGraphN::max(self : MlfeaturetsneGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_graphn_to_string(s : MlfeaturetsneGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneGraphN::to_string(self : MlfeaturetsneGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneNode {
@@ -504,45 +504,45 @@ pub fn ml_feature_tsne_node_make(size : Int) -> MlfeaturetsneNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_node_len(s : MlfeaturetsneNode) -> Int { s.size }
+pub fn MlfeaturetsneNode::len(self : MlfeaturetsneNode) -> Int { self.size }
 
-pub fn ml_feature_tsne_node_get(s : MlfeaturetsneNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneNode::get(self : MlfeaturetsneNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_node_set(s : MlfeaturetsneNode, i : Int, v : Double) -> MlfeaturetsneNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneNode::set(self : MlfeaturetsneNode, i : Int, v : Double) -> MlfeaturetsneNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_node_sum(s : MlfeaturetsneNode) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneNode::sum(self : MlfeaturetsneNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_node_mean(s : MlfeaturetsneNode) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneNode::mean(self : MlfeaturetsneNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_node_scale(s : MlfeaturetsneNode, f : Double) -> MlfeaturetsneNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneNode::scale(self : MlfeaturetsneNode, f : Double) -> MlfeaturetsneNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_node_add(a : MlfeaturetsneNode, b : MlfeaturetsneNode) -> MlfeaturetsneNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneNode::add(self : MlfeaturetsneNode, other : MlfeaturetsneNode) -> MlfeaturetsneNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_node_copy(s : MlfeaturetsneNode) -> MlfeaturetsneNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneNode::copy(self : MlfeaturetsneNode) -> MlfeaturetsneNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_node_fill(s : MlfeaturetsneNode, v : Double) -> MlfeaturetsneNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneNode::fill(self : MlfeaturetsneNode, v : Double) -> MlfeaturetsneNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_node_min(s : MlfeaturetsneNode) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneNode::min(self : MlfeaturetsneNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_node_max(s : MlfeaturetsneNode) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneNode::max(self : MlfeaturetsneNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_node_to_string(s : MlfeaturetsneNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneNode::to_string(self : MlfeaturetsneNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneEdge {
@@ -555,45 +555,45 @@ pub fn ml_feature_tsne_edge_make(size : Int) -> MlfeaturetsneEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_edge_len(s : MlfeaturetsneEdge) -> Int { s.size }
+pub fn MlfeaturetsneEdge::len(self : MlfeaturetsneEdge) -> Int { self.size }
 
-pub fn ml_feature_tsne_edge_get(s : MlfeaturetsneEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneEdge::get(self : MlfeaturetsneEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_edge_set(s : MlfeaturetsneEdge, i : Int, v : Double) -> MlfeaturetsneEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneEdge::set(self : MlfeaturetsneEdge, i : Int, v : Double) -> MlfeaturetsneEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_edge_sum(s : MlfeaturetsneEdge) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneEdge::sum(self : MlfeaturetsneEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_edge_mean(s : MlfeaturetsneEdge) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneEdge::mean(self : MlfeaturetsneEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_edge_scale(s : MlfeaturetsneEdge, f : Double) -> MlfeaturetsneEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneEdge::scale(self : MlfeaturetsneEdge, f : Double) -> MlfeaturetsneEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_edge_add(a : MlfeaturetsneEdge, b : MlfeaturetsneEdge) -> MlfeaturetsneEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneEdge::add(self : MlfeaturetsneEdge, other : MlfeaturetsneEdge) -> MlfeaturetsneEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_edge_copy(s : MlfeaturetsneEdge) -> MlfeaturetsneEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneEdge::copy(self : MlfeaturetsneEdge) -> MlfeaturetsneEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_edge_fill(s : MlfeaturetsneEdge, v : Double) -> MlfeaturetsneEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneEdge::fill(self : MlfeaturetsneEdge, v : Double) -> MlfeaturetsneEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_edge_min(s : MlfeaturetsneEdge) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneEdge::min(self : MlfeaturetsneEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_edge_max(s : MlfeaturetsneEdge) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneEdge::max(self : MlfeaturetsneEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_edge_to_string(s : MlfeaturetsneEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneEdge::to_string(self : MlfeaturetsneEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsnePath {
@@ -606,45 +606,45 @@ pub fn ml_feature_tsne_path_make(size : Int) -> MlfeaturetsnePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_path_len(s : MlfeaturetsnePath) -> Int { s.size }
+pub fn MlfeaturetsnePath::len(self : MlfeaturetsnePath) -> Int { self.size }
 
-pub fn ml_feature_tsne_path_get(s : MlfeaturetsnePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsnePath::get(self : MlfeaturetsnePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_path_set(s : MlfeaturetsnePath, i : Int, v : Double) -> MlfeaturetsnePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsnePath::set(self : MlfeaturetsnePath, i : Int, v : Double) -> MlfeaturetsnePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_path_sum(s : MlfeaturetsnePath) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsnePath::sum(self : MlfeaturetsnePath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_path_mean(s : MlfeaturetsnePath) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsnePath::mean(self : MlfeaturetsnePath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_path_scale(s : MlfeaturetsnePath, f : Double) -> MlfeaturetsnePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsnePath::scale(self : MlfeaturetsnePath, f : Double) -> MlfeaturetsnePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_path_add(a : MlfeaturetsnePath, b : MlfeaturetsnePath) -> MlfeaturetsnePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsnePath::add(self : MlfeaturetsnePath, other : MlfeaturetsnePath) -> MlfeaturetsnePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_path_copy(s : MlfeaturetsnePath) -> MlfeaturetsnePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsnePath::copy(self : MlfeaturetsnePath) -> MlfeaturetsnePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_path_fill(s : MlfeaturetsnePath, v : Double) -> MlfeaturetsnePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsnePath::fill(self : MlfeaturetsnePath, v : Double) -> MlfeaturetsnePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_path_min(s : MlfeaturetsnePath) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsnePath::min(self : MlfeaturetsnePath) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_path_max(s : MlfeaturetsnePath) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsnePath::max(self : MlfeaturetsnePath) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_path_to_string(s : MlfeaturetsnePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsnePath::to_string(self : MlfeaturetsnePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneCluster {
@@ -657,45 +657,45 @@ pub fn ml_feature_tsne_cluster_make(size : Int) -> MlfeaturetsneCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_cluster_len(s : MlfeaturetsneCluster) -> Int { s.size }
+pub fn MlfeaturetsneCluster::len(self : MlfeaturetsneCluster) -> Int { self.size }
 
-pub fn ml_feature_tsne_cluster_get(s : MlfeaturetsneCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneCluster::get(self : MlfeaturetsneCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_cluster_set(s : MlfeaturetsneCluster, i : Int, v : Double) -> MlfeaturetsneCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCluster::set(self : MlfeaturetsneCluster, i : Int, v : Double) -> MlfeaturetsneCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cluster_sum(s : MlfeaturetsneCluster) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneCluster::sum(self : MlfeaturetsneCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_cluster_mean(s : MlfeaturetsneCluster) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneCluster::mean(self : MlfeaturetsneCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_cluster_scale(s : MlfeaturetsneCluster, f : Double) -> MlfeaturetsneCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCluster::scale(self : MlfeaturetsneCluster, f : Double) -> MlfeaturetsneCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cluster_add(a : MlfeaturetsneCluster, b : MlfeaturetsneCluster) -> MlfeaturetsneCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneCluster::add(self : MlfeaturetsneCluster, other : MlfeaturetsneCluster) -> MlfeaturetsneCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cluster_copy(s : MlfeaturetsneCluster) -> MlfeaturetsneCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCluster::copy(self : MlfeaturetsneCluster) -> MlfeaturetsneCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cluster_fill(s : MlfeaturetsneCluster, v : Double) -> MlfeaturetsneCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCluster::fill(self : MlfeaturetsneCluster, v : Double) -> MlfeaturetsneCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cluster_min(s : MlfeaturetsneCluster) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneCluster::min(self : MlfeaturetsneCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_cluster_max(s : MlfeaturetsneCluster) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneCluster::max(self : MlfeaturetsneCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_cluster_to_string(s : MlfeaturetsneCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneCluster::to_string(self : MlfeaturetsneCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneModel {
@@ -708,45 +708,45 @@ pub fn ml_feature_tsne_model_make(size : Int) -> MlfeaturetsneModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_model_len(s : MlfeaturetsneModel) -> Int { s.size }
+pub fn MlfeaturetsneModel::len(self : MlfeaturetsneModel) -> Int { self.size }
 
-pub fn ml_feature_tsne_model_get(s : MlfeaturetsneModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneModel::get(self : MlfeaturetsneModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_model_set(s : MlfeaturetsneModel, i : Int, v : Double) -> MlfeaturetsneModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneModel::set(self : MlfeaturetsneModel, i : Int, v : Double) -> MlfeaturetsneModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_model_sum(s : MlfeaturetsneModel) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneModel::sum(self : MlfeaturetsneModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_model_mean(s : MlfeaturetsneModel) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneModel::mean(self : MlfeaturetsneModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_model_scale(s : MlfeaturetsneModel, f : Double) -> MlfeaturetsneModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneModel::scale(self : MlfeaturetsneModel, f : Double) -> MlfeaturetsneModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_model_add(a : MlfeaturetsneModel, b : MlfeaturetsneModel) -> MlfeaturetsneModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneModel::add(self : MlfeaturetsneModel, other : MlfeaturetsneModel) -> MlfeaturetsneModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_model_copy(s : MlfeaturetsneModel) -> MlfeaturetsneModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneModel::copy(self : MlfeaturetsneModel) -> MlfeaturetsneModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_model_fill(s : MlfeaturetsneModel, v : Double) -> MlfeaturetsneModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneModel::fill(self : MlfeaturetsneModel, v : Double) -> MlfeaturetsneModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_model_min(s : MlfeaturetsneModel) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneModel::min(self : MlfeaturetsneModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_model_max(s : MlfeaturetsneModel) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneModel::max(self : MlfeaturetsneModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_model_to_string(s : MlfeaturetsneModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneModel::to_string(self : MlfeaturetsneModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneLayer {
@@ -759,45 +759,45 @@ pub fn ml_feature_tsne_layer_make(size : Int) -> MlfeaturetsneLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_layer_len(s : MlfeaturetsneLayer) -> Int { s.size }
+pub fn MlfeaturetsneLayer::len(self : MlfeaturetsneLayer) -> Int { self.size }
 
-pub fn ml_feature_tsne_layer_get(s : MlfeaturetsneLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneLayer::get(self : MlfeaturetsneLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_layer_set(s : MlfeaturetsneLayer, i : Int, v : Double) -> MlfeaturetsneLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneLayer::set(self : MlfeaturetsneLayer, i : Int, v : Double) -> MlfeaturetsneLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_layer_sum(s : MlfeaturetsneLayer) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneLayer::sum(self : MlfeaturetsneLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_layer_mean(s : MlfeaturetsneLayer) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneLayer::mean(self : MlfeaturetsneLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_layer_scale(s : MlfeaturetsneLayer, f : Double) -> MlfeaturetsneLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneLayer::scale(self : MlfeaturetsneLayer, f : Double) -> MlfeaturetsneLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_layer_add(a : MlfeaturetsneLayer, b : MlfeaturetsneLayer) -> MlfeaturetsneLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneLayer::add(self : MlfeaturetsneLayer, other : MlfeaturetsneLayer) -> MlfeaturetsneLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_layer_copy(s : MlfeaturetsneLayer) -> MlfeaturetsneLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneLayer::copy(self : MlfeaturetsneLayer) -> MlfeaturetsneLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_layer_fill(s : MlfeaturetsneLayer, v : Double) -> MlfeaturetsneLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneLayer::fill(self : MlfeaturetsneLayer, v : Double) -> MlfeaturetsneLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_layer_min(s : MlfeaturetsneLayer) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneLayer::min(self : MlfeaturetsneLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_layer_max(s : MlfeaturetsneLayer) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneLayer::max(self : MlfeaturetsneLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_layer_to_string(s : MlfeaturetsneLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneLayer::to_string(self : MlfeaturetsneLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneBuffer {
@@ -810,45 +810,45 @@ pub fn ml_feature_tsne_buffer_make(size : Int) -> MlfeaturetsneBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_buffer_len(s : MlfeaturetsneBuffer) -> Int { s.size }
+pub fn MlfeaturetsneBuffer::len(self : MlfeaturetsneBuffer) -> Int { self.size }
 
-pub fn ml_feature_tsne_buffer_get(s : MlfeaturetsneBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneBuffer::get(self : MlfeaturetsneBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_buffer_set(s : MlfeaturetsneBuffer, i : Int, v : Double) -> MlfeaturetsneBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneBuffer::set(self : MlfeaturetsneBuffer, i : Int, v : Double) -> MlfeaturetsneBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_buffer_sum(s : MlfeaturetsneBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneBuffer::sum(self : MlfeaturetsneBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_buffer_mean(s : MlfeaturetsneBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneBuffer::mean(self : MlfeaturetsneBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_buffer_scale(s : MlfeaturetsneBuffer, f : Double) -> MlfeaturetsneBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneBuffer::scale(self : MlfeaturetsneBuffer, f : Double) -> MlfeaturetsneBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_buffer_add(a : MlfeaturetsneBuffer, b : MlfeaturetsneBuffer) -> MlfeaturetsneBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneBuffer::add(self : MlfeaturetsneBuffer, other : MlfeaturetsneBuffer) -> MlfeaturetsneBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_buffer_copy(s : MlfeaturetsneBuffer) -> MlfeaturetsneBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneBuffer::copy(self : MlfeaturetsneBuffer) -> MlfeaturetsneBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_buffer_fill(s : MlfeaturetsneBuffer, v : Double) -> MlfeaturetsneBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneBuffer::fill(self : MlfeaturetsneBuffer, v : Double) -> MlfeaturetsneBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_buffer_min(s : MlfeaturetsneBuffer) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneBuffer::min(self : MlfeaturetsneBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_buffer_max(s : MlfeaturetsneBuffer) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneBuffer::max(self : MlfeaturetsneBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_buffer_to_string(s : MlfeaturetsneBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneBuffer::to_string(self : MlfeaturetsneBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneCursor {
@@ -861,45 +861,45 @@ pub fn ml_feature_tsne_cursor_make(size : Int) -> MlfeaturetsneCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_cursor_len(s : MlfeaturetsneCursor) -> Int { s.size }
+pub fn MlfeaturetsneCursor::len(self : MlfeaturetsneCursor) -> Int { self.size }
 
-pub fn ml_feature_tsne_cursor_get(s : MlfeaturetsneCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneCursor::get(self : MlfeaturetsneCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_cursor_set(s : MlfeaturetsneCursor, i : Int, v : Double) -> MlfeaturetsneCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCursor::set(self : MlfeaturetsneCursor, i : Int, v : Double) -> MlfeaturetsneCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cursor_sum(s : MlfeaturetsneCursor) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneCursor::sum(self : MlfeaturetsneCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_cursor_mean(s : MlfeaturetsneCursor) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneCursor::mean(self : MlfeaturetsneCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_cursor_scale(s : MlfeaturetsneCursor, f : Double) -> MlfeaturetsneCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCursor::scale(self : MlfeaturetsneCursor, f : Double) -> MlfeaturetsneCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cursor_add(a : MlfeaturetsneCursor, b : MlfeaturetsneCursor) -> MlfeaturetsneCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneCursor::add(self : MlfeaturetsneCursor, other : MlfeaturetsneCursor) -> MlfeaturetsneCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cursor_copy(s : MlfeaturetsneCursor) -> MlfeaturetsneCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCursor::copy(self : MlfeaturetsneCursor) -> MlfeaturetsneCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cursor_fill(s : MlfeaturetsneCursor, v : Double) -> MlfeaturetsneCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneCursor::fill(self : MlfeaturetsneCursor, v : Double) -> MlfeaturetsneCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_cursor_min(s : MlfeaturetsneCursor) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneCursor::min(self : MlfeaturetsneCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_cursor_max(s : MlfeaturetsneCursor) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneCursor::max(self : MlfeaturetsneCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_cursor_to_string(s : MlfeaturetsneCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneCursor::to_string(self : MlfeaturetsneCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneView {
@@ -912,45 +912,45 @@ pub fn ml_feature_tsne_view_make(size : Int) -> MlfeaturetsneView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_view_len(s : MlfeaturetsneView) -> Int { s.size }
+pub fn MlfeaturetsneView::len(self : MlfeaturetsneView) -> Int { self.size }
 
-pub fn ml_feature_tsne_view_get(s : MlfeaturetsneView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneView::get(self : MlfeaturetsneView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_view_set(s : MlfeaturetsneView, i : Int, v : Double) -> MlfeaturetsneView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneView::set(self : MlfeaturetsneView, i : Int, v : Double) -> MlfeaturetsneView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_view_sum(s : MlfeaturetsneView) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneView::sum(self : MlfeaturetsneView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_view_mean(s : MlfeaturetsneView) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneView::mean(self : MlfeaturetsneView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_view_scale(s : MlfeaturetsneView, f : Double) -> MlfeaturetsneView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneView::scale(self : MlfeaturetsneView, f : Double) -> MlfeaturetsneView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_view_add(a : MlfeaturetsneView, b : MlfeaturetsneView) -> MlfeaturetsneView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneView::add(self : MlfeaturetsneView, other : MlfeaturetsneView) -> MlfeaturetsneView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_view_copy(s : MlfeaturetsneView) -> MlfeaturetsneView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneView::copy(self : MlfeaturetsneView) -> MlfeaturetsneView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_view_fill(s : MlfeaturetsneView, v : Double) -> MlfeaturetsneView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneView::fill(self : MlfeaturetsneView, v : Double) -> MlfeaturetsneView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_view_min(s : MlfeaturetsneView) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneView::min(self : MlfeaturetsneView) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_view_max(s : MlfeaturetsneView) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneView::max(self : MlfeaturetsneView) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_view_to_string(s : MlfeaturetsneView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneView::to_string(self : MlfeaturetsneView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneRange {
@@ -963,45 +963,45 @@ pub fn ml_feature_tsne_range_make(size : Int) -> MlfeaturetsneRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_range_len(s : MlfeaturetsneRange) -> Int { s.size }
+pub fn MlfeaturetsneRange::len(self : MlfeaturetsneRange) -> Int { self.size }
 
-pub fn ml_feature_tsne_range_get(s : MlfeaturetsneRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneRange::get(self : MlfeaturetsneRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_range_set(s : MlfeaturetsneRange, i : Int, v : Double) -> MlfeaturetsneRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneRange::set(self : MlfeaturetsneRange, i : Int, v : Double) -> MlfeaturetsneRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_range_sum(s : MlfeaturetsneRange) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneRange::sum(self : MlfeaturetsneRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_range_mean(s : MlfeaturetsneRange) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneRange::mean(self : MlfeaturetsneRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_range_scale(s : MlfeaturetsneRange, f : Double) -> MlfeaturetsneRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneRange::scale(self : MlfeaturetsneRange, f : Double) -> MlfeaturetsneRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_range_add(a : MlfeaturetsneRange, b : MlfeaturetsneRange) -> MlfeaturetsneRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneRange::add(self : MlfeaturetsneRange, other : MlfeaturetsneRange) -> MlfeaturetsneRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_range_copy(s : MlfeaturetsneRange) -> MlfeaturetsneRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneRange::copy(self : MlfeaturetsneRange) -> MlfeaturetsneRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_range_fill(s : MlfeaturetsneRange, v : Double) -> MlfeaturetsneRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneRange::fill(self : MlfeaturetsneRange, v : Double) -> MlfeaturetsneRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_range_min(s : MlfeaturetsneRange) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneRange::min(self : MlfeaturetsneRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_range_max(s : MlfeaturetsneRange) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneRange::max(self : MlfeaturetsneRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_range_to_string(s : MlfeaturetsneRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneRange::to_string(self : MlfeaturetsneRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeaturetsneSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_feature_tsne_slice_make(size : Int) -> MlfeaturetsneSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_tsne_slice_len(s : MlfeaturetsneSlice) -> Int { s.size }
+pub fn MlfeaturetsneSlice::len(self : MlfeaturetsneSlice) -> Int { self.size }
 
-pub fn ml_feature_tsne_slice_get(s : MlfeaturetsneSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeaturetsneSlice::get(self : MlfeaturetsneSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_tsne_slice_set(s : MlfeaturetsneSlice, i : Int, v : Double) -> MlfeaturetsneSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeaturetsneSlice::set(self : MlfeaturetsneSlice, i : Int, v : Double) -> MlfeaturetsneSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_slice_sum(s : MlfeaturetsneSlice) -> Double { @_common.sum(s.data) }
+pub fn MlfeaturetsneSlice::sum(self : MlfeaturetsneSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_tsne_slice_mean(s : MlfeaturetsneSlice) -> Double { @_common.mean(s.data) }
+pub fn MlfeaturetsneSlice::mean(self : MlfeaturetsneSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_tsne_slice_scale(s : MlfeaturetsneSlice, f : Double) -> MlfeaturetsneSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneSlice::scale(self : MlfeaturetsneSlice, f : Double) -> MlfeaturetsneSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_slice_add(a : MlfeaturetsneSlice, b : MlfeaturetsneSlice) -> MlfeaturetsneSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeaturetsneSlice::add(self : MlfeaturetsneSlice, other : MlfeaturetsneSlice) -> MlfeaturetsneSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_slice_copy(s : MlfeaturetsneSlice) -> MlfeaturetsneSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneSlice::copy(self : MlfeaturetsneSlice) -> MlfeaturetsneSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_slice_fill(s : MlfeaturetsneSlice, v : Double) -> MlfeaturetsneSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeaturetsneSlice::fill(self : MlfeaturetsneSlice, v : Double) -> MlfeaturetsneSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_tsne_slice_min(s : MlfeaturetsneSlice) -> Double { @_common.min(s.data) }
+pub fn MlfeaturetsneSlice::min(self : MlfeaturetsneSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_tsne_slice_max(s : MlfeaturetsneSlice) -> Double { @_common.max(s.data) }
+pub fn MlfeaturetsneSlice::max(self : MlfeaturetsneSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_tsne_slice_to_string(s : MlfeaturetsneSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeaturetsneSlice::to_string(self : MlfeaturetsneSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn sort_compare_heap_frame_make(size : Int) -> SortcompareheapFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_frame_len(s : SortcompareheapFrame) -> Int { s.size }
+pub fn SortcompareheapFrame::len(self : SortcompareheapFrame) -> Int { self.size }
 
-pub fn sort_compare_heap_frame_get(s : SortcompareheapFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapFrame::get(self : SortcompareheapFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_frame_set(s : SortcompareheapFrame, i : Int, v : Double) -> SortcompareheapFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapFrame::set(self : SortcompareheapFrame, i : Int, v : Double) -> SortcompareheapFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_frame_sum(s : SortcompareheapFrame) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapFrame::sum(self : SortcompareheapFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_frame_mean(s : SortcompareheapFrame) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapFrame::mean(self : SortcompareheapFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_frame_scale(s : SortcompareheapFrame, f : Double) -> SortcompareheapFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapFrame::scale(self : SortcompareheapFrame, f : Double) -> SortcompareheapFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_frame_add(a : SortcompareheapFrame, b : SortcompareheapFrame) -> SortcompareheapFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapFrame::add(self : SortcompareheapFrame, other : SortcompareheapFrame) -> SortcompareheapFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_frame_copy(s : SortcompareheapFrame) -> SortcompareheapFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapFrame::copy(self : SortcompareheapFrame) -> SortcompareheapFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_frame_fill(s : SortcompareheapFrame, v : Double) -> SortcompareheapFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapFrame::fill(self : SortcompareheapFrame, v : Double) -> SortcompareheapFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_frame_min(s : SortcompareheapFrame) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapFrame::min(self : SortcompareheapFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_frame_max(s : SortcompareheapFrame) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapFrame::max(self : SortcompareheapFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_frame_to_string(s : SortcompareheapFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapFrame::to_string(self : SortcompareheapFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapTable {
@@ -402,45 +402,45 @@ pub fn sort_compare_heap_table_make(size : Int) -> SortcompareheapTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_table_len(s : SortcompareheapTable) -> Int { s.size }
+pub fn SortcompareheapTable::len(self : SortcompareheapTable) -> Int { self.size }
 
-pub fn sort_compare_heap_table_get(s : SortcompareheapTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapTable::get(self : SortcompareheapTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_table_set(s : SortcompareheapTable, i : Int, v : Double) -> SortcompareheapTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapTable::set(self : SortcompareheapTable, i : Int, v : Double) -> SortcompareheapTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_table_sum(s : SortcompareheapTable) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapTable::sum(self : SortcompareheapTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_table_mean(s : SortcompareheapTable) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapTable::mean(self : SortcompareheapTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_table_scale(s : SortcompareheapTable, f : Double) -> SortcompareheapTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapTable::scale(self : SortcompareheapTable, f : Double) -> SortcompareheapTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_table_add(a : SortcompareheapTable, b : SortcompareheapTable) -> SortcompareheapTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapTable::add(self : SortcompareheapTable, other : SortcompareheapTable) -> SortcompareheapTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_table_copy(s : SortcompareheapTable) -> SortcompareheapTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapTable::copy(self : SortcompareheapTable) -> SortcompareheapTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_table_fill(s : SortcompareheapTable, v : Double) -> SortcompareheapTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapTable::fill(self : SortcompareheapTable, v : Double) -> SortcompareheapTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_table_min(s : SortcompareheapTable) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapTable::min(self : SortcompareheapTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_table_max(s : SortcompareheapTable) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapTable::max(self : SortcompareheapTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_table_to_string(s : SortcompareheapTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapTable::to_string(self : SortcompareheapTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapGraphN {
@@ -453,45 +453,45 @@ pub fn sort_compare_heap_graphn_make(size : Int) -> SortcompareheapGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_graphn_len(s : SortcompareheapGraphN) -> Int { s.size }
+pub fn SortcompareheapGraphN::len(self : SortcompareheapGraphN) -> Int { self.size }
 
-pub fn sort_compare_heap_graphn_get(s : SortcompareheapGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapGraphN::get(self : SortcompareheapGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_graphn_set(s : SortcompareheapGraphN, i : Int, v : Double) -> SortcompareheapGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapGraphN::set(self : SortcompareheapGraphN, i : Int, v : Double) -> SortcompareheapGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_graphn_sum(s : SortcompareheapGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapGraphN::sum(self : SortcompareheapGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_graphn_mean(s : SortcompareheapGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapGraphN::mean(self : SortcompareheapGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_graphn_scale(s : SortcompareheapGraphN, f : Double) -> SortcompareheapGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapGraphN::scale(self : SortcompareheapGraphN, f : Double) -> SortcompareheapGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_graphn_add(a : SortcompareheapGraphN, b : SortcompareheapGraphN) -> SortcompareheapGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapGraphN::add(self : SortcompareheapGraphN, other : SortcompareheapGraphN) -> SortcompareheapGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_graphn_copy(s : SortcompareheapGraphN) -> SortcompareheapGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapGraphN::copy(self : SortcompareheapGraphN) -> SortcompareheapGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_graphn_fill(s : SortcompareheapGraphN, v : Double) -> SortcompareheapGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapGraphN::fill(self : SortcompareheapGraphN, v : Double) -> SortcompareheapGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_graphn_min(s : SortcompareheapGraphN) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapGraphN::min(self : SortcompareheapGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_graphn_max(s : SortcompareheapGraphN) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapGraphN::max(self : SortcompareheapGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_graphn_to_string(s : SortcompareheapGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapGraphN::to_string(self : SortcompareheapGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapNode {
@@ -504,45 +504,45 @@ pub fn sort_compare_heap_node_make(size : Int) -> SortcompareheapNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_node_len(s : SortcompareheapNode) -> Int { s.size }
+pub fn SortcompareheapNode::len(self : SortcompareheapNode) -> Int { self.size }
 
-pub fn sort_compare_heap_node_get(s : SortcompareheapNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapNode::get(self : SortcompareheapNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_node_set(s : SortcompareheapNode, i : Int, v : Double) -> SortcompareheapNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapNode::set(self : SortcompareheapNode, i : Int, v : Double) -> SortcompareheapNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_node_sum(s : SortcompareheapNode) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapNode::sum(self : SortcompareheapNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_node_mean(s : SortcompareheapNode) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapNode::mean(self : SortcompareheapNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_node_scale(s : SortcompareheapNode, f : Double) -> SortcompareheapNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapNode::scale(self : SortcompareheapNode, f : Double) -> SortcompareheapNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_node_add(a : SortcompareheapNode, b : SortcompareheapNode) -> SortcompareheapNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapNode::add(self : SortcompareheapNode, other : SortcompareheapNode) -> SortcompareheapNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_node_copy(s : SortcompareheapNode) -> SortcompareheapNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapNode::copy(self : SortcompareheapNode) -> SortcompareheapNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_node_fill(s : SortcompareheapNode, v : Double) -> SortcompareheapNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapNode::fill(self : SortcompareheapNode, v : Double) -> SortcompareheapNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_node_min(s : SortcompareheapNode) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapNode::min(self : SortcompareheapNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_node_max(s : SortcompareheapNode) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapNode::max(self : SortcompareheapNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_node_to_string(s : SortcompareheapNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapNode::to_string(self : SortcompareheapNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapEdge {
@@ -555,45 +555,45 @@ pub fn sort_compare_heap_edge_make(size : Int) -> SortcompareheapEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_edge_len(s : SortcompareheapEdge) -> Int { s.size }
+pub fn SortcompareheapEdge::len(self : SortcompareheapEdge) -> Int { self.size }
 
-pub fn sort_compare_heap_edge_get(s : SortcompareheapEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapEdge::get(self : SortcompareheapEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_edge_set(s : SortcompareheapEdge, i : Int, v : Double) -> SortcompareheapEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapEdge::set(self : SortcompareheapEdge, i : Int, v : Double) -> SortcompareheapEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_edge_sum(s : SortcompareheapEdge) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapEdge::sum(self : SortcompareheapEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_edge_mean(s : SortcompareheapEdge) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapEdge::mean(self : SortcompareheapEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_edge_scale(s : SortcompareheapEdge, f : Double) -> SortcompareheapEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapEdge::scale(self : SortcompareheapEdge, f : Double) -> SortcompareheapEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_edge_add(a : SortcompareheapEdge, b : SortcompareheapEdge) -> SortcompareheapEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapEdge::add(self : SortcompareheapEdge, other : SortcompareheapEdge) -> SortcompareheapEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_edge_copy(s : SortcompareheapEdge) -> SortcompareheapEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapEdge::copy(self : SortcompareheapEdge) -> SortcompareheapEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_edge_fill(s : SortcompareheapEdge, v : Double) -> SortcompareheapEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapEdge::fill(self : SortcompareheapEdge, v : Double) -> SortcompareheapEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_edge_min(s : SortcompareheapEdge) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapEdge::min(self : SortcompareheapEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_edge_max(s : SortcompareheapEdge) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapEdge::max(self : SortcompareheapEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_edge_to_string(s : SortcompareheapEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapEdge::to_string(self : SortcompareheapEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapPath {
@@ -606,45 +606,45 @@ pub fn sort_compare_heap_path_make(size : Int) -> SortcompareheapPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_path_len(s : SortcompareheapPath) -> Int { s.size }
+pub fn SortcompareheapPath::len(self : SortcompareheapPath) -> Int { self.size }
 
-pub fn sort_compare_heap_path_get(s : SortcompareheapPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapPath::get(self : SortcompareheapPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_path_set(s : SortcompareheapPath, i : Int, v : Double) -> SortcompareheapPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapPath::set(self : SortcompareheapPath, i : Int, v : Double) -> SortcompareheapPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_path_sum(s : SortcompareheapPath) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapPath::sum(self : SortcompareheapPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_path_mean(s : SortcompareheapPath) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapPath::mean(self : SortcompareheapPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_path_scale(s : SortcompareheapPath, f : Double) -> SortcompareheapPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapPath::scale(self : SortcompareheapPath, f : Double) -> SortcompareheapPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_path_add(a : SortcompareheapPath, b : SortcompareheapPath) -> SortcompareheapPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapPath::add(self : SortcompareheapPath, other : SortcompareheapPath) -> SortcompareheapPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_path_copy(s : SortcompareheapPath) -> SortcompareheapPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapPath::copy(self : SortcompareheapPath) -> SortcompareheapPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_path_fill(s : SortcompareheapPath, v : Double) -> SortcompareheapPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapPath::fill(self : SortcompareheapPath, v : Double) -> SortcompareheapPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_path_min(s : SortcompareheapPath) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapPath::min(self : SortcompareheapPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_path_max(s : SortcompareheapPath) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapPath::max(self : SortcompareheapPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_path_to_string(s : SortcompareheapPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapPath::to_string(self : SortcompareheapPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapCluster {
@@ -657,45 +657,45 @@ pub fn sort_compare_heap_cluster_make(size : Int) -> SortcompareheapCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_cluster_len(s : SortcompareheapCluster) -> Int { s.size }
+pub fn SortcompareheapCluster::len(self : SortcompareheapCluster) -> Int { self.size }
 
-pub fn sort_compare_heap_cluster_get(s : SortcompareheapCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapCluster::get(self : SortcompareheapCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_cluster_set(s : SortcompareheapCluster, i : Int, v : Double) -> SortcompareheapCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapCluster::set(self : SortcompareheapCluster, i : Int, v : Double) -> SortcompareheapCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cluster_sum(s : SortcompareheapCluster) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapCluster::sum(self : SortcompareheapCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_cluster_mean(s : SortcompareheapCluster) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapCluster::mean(self : SortcompareheapCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_cluster_scale(s : SortcompareheapCluster, f : Double) -> SortcompareheapCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapCluster::scale(self : SortcompareheapCluster, f : Double) -> SortcompareheapCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cluster_add(a : SortcompareheapCluster, b : SortcompareheapCluster) -> SortcompareheapCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapCluster::add(self : SortcompareheapCluster, other : SortcompareheapCluster) -> SortcompareheapCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cluster_copy(s : SortcompareheapCluster) -> SortcompareheapCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapCluster::copy(self : SortcompareheapCluster) -> SortcompareheapCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cluster_fill(s : SortcompareheapCluster, v : Double) -> SortcompareheapCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapCluster::fill(self : SortcompareheapCluster, v : Double) -> SortcompareheapCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cluster_min(s : SortcompareheapCluster) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapCluster::min(self : SortcompareheapCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_cluster_max(s : SortcompareheapCluster) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapCluster::max(self : SortcompareheapCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_cluster_to_string(s : SortcompareheapCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapCluster::to_string(self : SortcompareheapCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapModel {
@@ -708,45 +708,45 @@ pub fn sort_compare_heap_model_make(size : Int) -> SortcompareheapModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_model_len(s : SortcompareheapModel) -> Int { s.size }
+pub fn SortcompareheapModel::len(self : SortcompareheapModel) -> Int { self.size }
 
-pub fn sort_compare_heap_model_get(s : SortcompareheapModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapModel::get(self : SortcompareheapModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_model_set(s : SortcompareheapModel, i : Int, v : Double) -> SortcompareheapModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapModel::set(self : SortcompareheapModel, i : Int, v : Double) -> SortcompareheapModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_model_sum(s : SortcompareheapModel) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapModel::sum(self : SortcompareheapModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_model_mean(s : SortcompareheapModel) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapModel::mean(self : SortcompareheapModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_model_scale(s : SortcompareheapModel, f : Double) -> SortcompareheapModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapModel::scale(self : SortcompareheapModel, f : Double) -> SortcompareheapModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_model_add(a : SortcompareheapModel, b : SortcompareheapModel) -> SortcompareheapModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapModel::add(self : SortcompareheapModel, other : SortcompareheapModel) -> SortcompareheapModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_model_copy(s : SortcompareheapModel) -> SortcompareheapModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapModel::copy(self : SortcompareheapModel) -> SortcompareheapModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_model_fill(s : SortcompareheapModel, v : Double) -> SortcompareheapModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapModel::fill(self : SortcompareheapModel, v : Double) -> SortcompareheapModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_model_min(s : SortcompareheapModel) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapModel::min(self : SortcompareheapModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_model_max(s : SortcompareheapModel) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapModel::max(self : SortcompareheapModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_model_to_string(s : SortcompareheapModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapModel::to_string(self : SortcompareheapModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapLayer {
@@ -759,45 +759,45 @@ pub fn sort_compare_heap_layer_make(size : Int) -> SortcompareheapLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_layer_len(s : SortcompareheapLayer) -> Int { s.size }
+pub fn SortcompareheapLayer::len(self : SortcompareheapLayer) -> Int { self.size }
 
-pub fn sort_compare_heap_layer_get(s : SortcompareheapLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapLayer::get(self : SortcompareheapLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_layer_set(s : SortcompareheapLayer, i : Int, v : Double) -> SortcompareheapLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapLayer::set(self : SortcompareheapLayer, i : Int, v : Double) -> SortcompareheapLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_layer_sum(s : SortcompareheapLayer) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapLayer::sum(self : SortcompareheapLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_layer_mean(s : SortcompareheapLayer) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapLayer::mean(self : SortcompareheapLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_layer_scale(s : SortcompareheapLayer, f : Double) -> SortcompareheapLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapLayer::scale(self : SortcompareheapLayer, f : Double) -> SortcompareheapLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_layer_add(a : SortcompareheapLayer, b : SortcompareheapLayer) -> SortcompareheapLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapLayer::add(self : SortcompareheapLayer, other : SortcompareheapLayer) -> SortcompareheapLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_layer_copy(s : SortcompareheapLayer) -> SortcompareheapLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapLayer::copy(self : SortcompareheapLayer) -> SortcompareheapLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_layer_fill(s : SortcompareheapLayer, v : Double) -> SortcompareheapLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapLayer::fill(self : SortcompareheapLayer, v : Double) -> SortcompareheapLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_layer_min(s : SortcompareheapLayer) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapLayer::min(self : SortcompareheapLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_layer_max(s : SortcompareheapLayer) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapLayer::max(self : SortcompareheapLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_layer_to_string(s : SortcompareheapLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapLayer::to_string(self : SortcompareheapLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapBuffer {
@@ -810,45 +810,45 @@ pub fn sort_compare_heap_buffer_make(size : Int) -> SortcompareheapBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_buffer_len(s : SortcompareheapBuffer) -> Int { s.size }
+pub fn SortcompareheapBuffer::len(self : SortcompareheapBuffer) -> Int { self.size }
 
-pub fn sort_compare_heap_buffer_get(s : SortcompareheapBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapBuffer::get(self : SortcompareheapBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_buffer_set(s : SortcompareheapBuffer, i : Int, v : Double) -> SortcompareheapBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapBuffer::set(self : SortcompareheapBuffer, i : Int, v : Double) -> SortcompareheapBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_buffer_sum(s : SortcompareheapBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapBuffer::sum(self : SortcompareheapBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_buffer_mean(s : SortcompareheapBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapBuffer::mean(self : SortcompareheapBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_buffer_scale(s : SortcompareheapBuffer, f : Double) -> SortcompareheapBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapBuffer::scale(self : SortcompareheapBuffer, f : Double) -> SortcompareheapBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_buffer_add(a : SortcompareheapBuffer, b : SortcompareheapBuffer) -> SortcompareheapBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapBuffer::add(self : SortcompareheapBuffer, other : SortcompareheapBuffer) -> SortcompareheapBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_buffer_copy(s : SortcompareheapBuffer) -> SortcompareheapBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapBuffer::copy(self : SortcompareheapBuffer) -> SortcompareheapBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_buffer_fill(s : SortcompareheapBuffer, v : Double) -> SortcompareheapBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapBuffer::fill(self : SortcompareheapBuffer, v : Double) -> SortcompareheapBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_buffer_min(s : SortcompareheapBuffer) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapBuffer::min(self : SortcompareheapBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_buffer_max(s : SortcompareheapBuffer) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapBuffer::max(self : SortcompareheapBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_buffer_to_string(s : SortcompareheapBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapBuffer::to_string(self : SortcompareheapBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapCursor {
@@ -861,45 +861,45 @@ pub fn sort_compare_heap_cursor_make(size : Int) -> SortcompareheapCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_cursor_len(s : SortcompareheapCursor) -> Int { s.size }
+pub fn SortcompareheapCursor::len(self : SortcompareheapCursor) -> Int { self.size }
 
-pub fn sort_compare_heap_cursor_get(s : SortcompareheapCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapCursor::get(self : SortcompareheapCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_cursor_set(s : SortcompareheapCursor, i : Int, v : Double) -> SortcompareheapCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapCursor::set(self : SortcompareheapCursor, i : Int, v : Double) -> SortcompareheapCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cursor_sum(s : SortcompareheapCursor) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapCursor::sum(self : SortcompareheapCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_cursor_mean(s : SortcompareheapCursor) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapCursor::mean(self : SortcompareheapCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_cursor_scale(s : SortcompareheapCursor, f : Double) -> SortcompareheapCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapCursor::scale(self : SortcompareheapCursor, f : Double) -> SortcompareheapCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cursor_add(a : SortcompareheapCursor, b : SortcompareheapCursor) -> SortcompareheapCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapCursor::add(self : SortcompareheapCursor, other : SortcompareheapCursor) -> SortcompareheapCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cursor_copy(s : SortcompareheapCursor) -> SortcompareheapCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapCursor::copy(self : SortcompareheapCursor) -> SortcompareheapCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cursor_fill(s : SortcompareheapCursor, v : Double) -> SortcompareheapCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapCursor::fill(self : SortcompareheapCursor, v : Double) -> SortcompareheapCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_cursor_min(s : SortcompareheapCursor) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapCursor::min(self : SortcompareheapCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_cursor_max(s : SortcompareheapCursor) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapCursor::max(self : SortcompareheapCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_cursor_to_string(s : SortcompareheapCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapCursor::to_string(self : SortcompareheapCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapView {
@@ -912,45 +912,45 @@ pub fn sort_compare_heap_view_make(size : Int) -> SortcompareheapView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_view_len(s : SortcompareheapView) -> Int { s.size }
+pub fn SortcompareheapView::len(self : SortcompareheapView) -> Int { self.size }
 
-pub fn sort_compare_heap_view_get(s : SortcompareheapView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapView::get(self : SortcompareheapView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_view_set(s : SortcompareheapView, i : Int, v : Double) -> SortcompareheapView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapView::set(self : SortcompareheapView, i : Int, v : Double) -> SortcompareheapView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_view_sum(s : SortcompareheapView) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapView::sum(self : SortcompareheapView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_view_mean(s : SortcompareheapView) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapView::mean(self : SortcompareheapView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_view_scale(s : SortcompareheapView, f : Double) -> SortcompareheapView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapView::scale(self : SortcompareheapView, f : Double) -> SortcompareheapView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_view_add(a : SortcompareheapView, b : SortcompareheapView) -> SortcompareheapView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapView::add(self : SortcompareheapView, other : SortcompareheapView) -> SortcompareheapView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_view_copy(s : SortcompareheapView) -> SortcompareheapView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapView::copy(self : SortcompareheapView) -> SortcompareheapView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_view_fill(s : SortcompareheapView, v : Double) -> SortcompareheapView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapView::fill(self : SortcompareheapView, v : Double) -> SortcompareheapView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_view_min(s : SortcompareheapView) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapView::min(self : SortcompareheapView) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_view_max(s : SortcompareheapView) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapView::max(self : SortcompareheapView) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_view_to_string(s : SortcompareheapView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapView::to_string(self : SortcompareheapView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapRange {
@@ -963,45 +963,45 @@ pub fn sort_compare_heap_range_make(size : Int) -> SortcompareheapRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_range_len(s : SortcompareheapRange) -> Int { s.size }
+pub fn SortcompareheapRange::len(self : SortcompareheapRange) -> Int { self.size }
 
-pub fn sort_compare_heap_range_get(s : SortcompareheapRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapRange::get(self : SortcompareheapRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_range_set(s : SortcompareheapRange, i : Int, v : Double) -> SortcompareheapRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapRange::set(self : SortcompareheapRange, i : Int, v : Double) -> SortcompareheapRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_range_sum(s : SortcompareheapRange) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapRange::sum(self : SortcompareheapRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_range_mean(s : SortcompareheapRange) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapRange::mean(self : SortcompareheapRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_range_scale(s : SortcompareheapRange, f : Double) -> SortcompareheapRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapRange::scale(self : SortcompareheapRange, f : Double) -> SortcompareheapRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_range_add(a : SortcompareheapRange, b : SortcompareheapRange) -> SortcompareheapRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapRange::add(self : SortcompareheapRange, other : SortcompareheapRange) -> SortcompareheapRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_range_copy(s : SortcompareheapRange) -> SortcompareheapRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapRange::copy(self : SortcompareheapRange) -> SortcompareheapRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_range_fill(s : SortcompareheapRange, v : Double) -> SortcompareheapRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapRange::fill(self : SortcompareheapRange, v : Double) -> SortcompareheapRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_range_min(s : SortcompareheapRange) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapRange::min(self : SortcompareheapRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_range_max(s : SortcompareheapRange) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapRange::max(self : SortcompareheapRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_range_to_string(s : SortcompareheapRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapRange::to_string(self : SortcompareheapRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_compare_heap_slice_make(size : Int) -> SortcompareheapSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_compare_heap_slice_len(s : SortcompareheapSlice) -> Int { s.size }
+pub fn SortcompareheapSlice::len(self : SortcompareheapSlice) -> Int { self.size }
 
-pub fn sort_compare_heap_slice_get(s : SortcompareheapSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortcompareheapSlice::get(self : SortcompareheapSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_compare_heap_slice_set(s : SortcompareheapSlice, i : Int, v : Double) -> SortcompareheapSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortcompareheapSlice::set(self : SortcompareheapSlice, i : Int, v : Double) -> SortcompareheapSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_slice_sum(s : SortcompareheapSlice) -> Double { @_common.sum(s.data) }
+pub fn SortcompareheapSlice::sum(self : SortcompareheapSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_compare_heap_slice_mean(s : SortcompareheapSlice) -> Double { @_common.mean(s.data) }
+pub fn SortcompareheapSlice::mean(self : SortcompareheapSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_compare_heap_slice_scale(s : SortcompareheapSlice, f : Double) -> SortcompareheapSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortcompareheapSlice::scale(self : SortcompareheapSlice, f : Double) -> SortcompareheapSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_slice_add(a : SortcompareheapSlice, b : SortcompareheapSlice) -> SortcompareheapSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortcompareheapSlice::add(self : SortcompareheapSlice, other : SortcompareheapSlice) -> SortcompareheapSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_compare_heap_slice_copy(s : SortcompareheapSlice) -> SortcompareheapSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortcompareheapSlice::copy(self : SortcompareheapSlice) -> SortcompareheapSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_slice_fill(s : SortcompareheapSlice, v : Double) -> SortcompareheapSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortcompareheapSlice::fill(self : SortcompareheapSlice, v : Double) -> SortcompareheapSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_compare_heap_slice_min(s : SortcompareheapSlice) -> Double { @_common.min(s.data) }
+pub fn SortcompareheapSlice::min(self : SortcompareheapSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_compare_heap_slice_max(s : SortcompareheapSlice) -> Double { @_common.max(s.data) }
+pub fn SortcompareheapSlice::max(self : SortcompareheapSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_compare_heap_slice_to_string(s : SortcompareheapSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortcompareheapSlice::to_string(self : SortcompareheapSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn nlp_tokenize_bpe_frame_make(size : Int) -> NlptokenizebpeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_frame_len(s : NlptokenizebpeFrame) -> Int { s.size }
+pub fn NlptokenizebpeFrame::len(self : NlptokenizebpeFrame) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_frame_get(s : NlptokenizebpeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeFrame::get(self : NlptokenizebpeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_frame_set(s : NlptokenizebpeFrame, i : Int, v : Double) -> NlptokenizebpeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeFrame::set(self : NlptokenizebpeFrame, i : Int, v : Double) -> NlptokenizebpeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_frame_sum(s : NlptokenizebpeFrame) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeFrame::sum(self : NlptokenizebpeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_frame_mean(s : NlptokenizebpeFrame) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeFrame::mean(self : NlptokenizebpeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_frame_scale(s : NlptokenizebpeFrame, f : Double) -> NlptokenizebpeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeFrame::scale(self : NlptokenizebpeFrame, f : Double) -> NlptokenizebpeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_frame_add(a : NlptokenizebpeFrame, b : NlptokenizebpeFrame) -> NlptokenizebpeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeFrame::add(self : NlptokenizebpeFrame, other : NlptokenizebpeFrame) -> NlptokenizebpeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_frame_copy(s : NlptokenizebpeFrame) -> NlptokenizebpeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeFrame::copy(self : NlptokenizebpeFrame) -> NlptokenizebpeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_frame_fill(s : NlptokenizebpeFrame, v : Double) -> NlptokenizebpeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeFrame::fill(self : NlptokenizebpeFrame, v : Double) -> NlptokenizebpeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_frame_min(s : NlptokenizebpeFrame) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeFrame::min(self : NlptokenizebpeFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_frame_max(s : NlptokenizebpeFrame) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeFrame::max(self : NlptokenizebpeFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_frame_to_string(s : NlptokenizebpeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeFrame::to_string(self : NlptokenizebpeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeTable {
@@ -402,45 +402,45 @@ pub fn nlp_tokenize_bpe_table_make(size : Int) -> NlptokenizebpeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_table_len(s : NlptokenizebpeTable) -> Int { s.size }
+pub fn NlptokenizebpeTable::len(self : NlptokenizebpeTable) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_table_get(s : NlptokenizebpeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeTable::get(self : NlptokenizebpeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_table_set(s : NlptokenizebpeTable, i : Int, v : Double) -> NlptokenizebpeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeTable::set(self : NlptokenizebpeTable, i : Int, v : Double) -> NlptokenizebpeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_table_sum(s : NlptokenizebpeTable) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeTable::sum(self : NlptokenizebpeTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_table_mean(s : NlptokenizebpeTable) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeTable::mean(self : NlptokenizebpeTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_table_scale(s : NlptokenizebpeTable, f : Double) -> NlptokenizebpeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeTable::scale(self : NlptokenizebpeTable, f : Double) -> NlptokenizebpeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_table_add(a : NlptokenizebpeTable, b : NlptokenizebpeTable) -> NlptokenizebpeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeTable::add(self : NlptokenizebpeTable, other : NlptokenizebpeTable) -> NlptokenizebpeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_table_copy(s : NlptokenizebpeTable) -> NlptokenizebpeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeTable::copy(self : NlptokenizebpeTable) -> NlptokenizebpeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_table_fill(s : NlptokenizebpeTable, v : Double) -> NlptokenizebpeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeTable::fill(self : NlptokenizebpeTable, v : Double) -> NlptokenizebpeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_table_min(s : NlptokenizebpeTable) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeTable::min(self : NlptokenizebpeTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_table_max(s : NlptokenizebpeTable) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeTable::max(self : NlptokenizebpeTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_table_to_string(s : NlptokenizebpeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeTable::to_string(self : NlptokenizebpeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_tokenize_bpe_graphn_make(size : Int) -> NlptokenizebpeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_graphn_len(s : NlptokenizebpeGraphN) -> Int { s.size }
+pub fn NlptokenizebpeGraphN::len(self : NlptokenizebpeGraphN) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_graphn_get(s : NlptokenizebpeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeGraphN::get(self : NlptokenizebpeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_graphn_set(s : NlptokenizebpeGraphN, i : Int, v : Double) -> NlptokenizebpeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeGraphN::set(self : NlptokenizebpeGraphN, i : Int, v : Double) -> NlptokenizebpeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_graphn_sum(s : NlptokenizebpeGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeGraphN::sum(self : NlptokenizebpeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_graphn_mean(s : NlptokenizebpeGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeGraphN::mean(self : NlptokenizebpeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_graphn_scale(s : NlptokenizebpeGraphN, f : Double) -> NlptokenizebpeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeGraphN::scale(self : NlptokenizebpeGraphN, f : Double) -> NlptokenizebpeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_graphn_add(a : NlptokenizebpeGraphN, b : NlptokenizebpeGraphN) -> NlptokenizebpeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeGraphN::add(self : NlptokenizebpeGraphN, other : NlptokenizebpeGraphN) -> NlptokenizebpeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_graphn_copy(s : NlptokenizebpeGraphN) -> NlptokenizebpeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeGraphN::copy(self : NlptokenizebpeGraphN) -> NlptokenizebpeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_graphn_fill(s : NlptokenizebpeGraphN, v : Double) -> NlptokenizebpeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeGraphN::fill(self : NlptokenizebpeGraphN, v : Double) -> NlptokenizebpeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_graphn_min(s : NlptokenizebpeGraphN) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeGraphN::min(self : NlptokenizebpeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_graphn_max(s : NlptokenizebpeGraphN) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeGraphN::max(self : NlptokenizebpeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_graphn_to_string(s : NlptokenizebpeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeGraphN::to_string(self : NlptokenizebpeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeNode {
@@ -504,45 +504,45 @@ pub fn nlp_tokenize_bpe_node_make(size : Int) -> NlptokenizebpeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_node_len(s : NlptokenizebpeNode) -> Int { s.size }
+pub fn NlptokenizebpeNode::len(self : NlptokenizebpeNode) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_node_get(s : NlptokenizebpeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeNode::get(self : NlptokenizebpeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_node_set(s : NlptokenizebpeNode, i : Int, v : Double) -> NlptokenizebpeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeNode::set(self : NlptokenizebpeNode, i : Int, v : Double) -> NlptokenizebpeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_node_sum(s : NlptokenizebpeNode) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeNode::sum(self : NlptokenizebpeNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_node_mean(s : NlptokenizebpeNode) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeNode::mean(self : NlptokenizebpeNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_node_scale(s : NlptokenizebpeNode, f : Double) -> NlptokenizebpeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeNode::scale(self : NlptokenizebpeNode, f : Double) -> NlptokenizebpeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_node_add(a : NlptokenizebpeNode, b : NlptokenizebpeNode) -> NlptokenizebpeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeNode::add(self : NlptokenizebpeNode, other : NlptokenizebpeNode) -> NlptokenizebpeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_node_copy(s : NlptokenizebpeNode) -> NlptokenizebpeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeNode::copy(self : NlptokenizebpeNode) -> NlptokenizebpeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_node_fill(s : NlptokenizebpeNode, v : Double) -> NlptokenizebpeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeNode::fill(self : NlptokenizebpeNode, v : Double) -> NlptokenizebpeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_node_min(s : NlptokenizebpeNode) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeNode::min(self : NlptokenizebpeNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_node_max(s : NlptokenizebpeNode) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeNode::max(self : NlptokenizebpeNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_node_to_string(s : NlptokenizebpeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeNode::to_string(self : NlptokenizebpeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeEdge {
@@ -555,45 +555,45 @@ pub fn nlp_tokenize_bpe_edge_make(size : Int) -> NlptokenizebpeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_edge_len(s : NlptokenizebpeEdge) -> Int { s.size }
+pub fn NlptokenizebpeEdge::len(self : NlptokenizebpeEdge) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_edge_get(s : NlptokenizebpeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeEdge::get(self : NlptokenizebpeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_edge_set(s : NlptokenizebpeEdge, i : Int, v : Double) -> NlptokenizebpeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeEdge::set(self : NlptokenizebpeEdge, i : Int, v : Double) -> NlptokenizebpeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_edge_sum(s : NlptokenizebpeEdge) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeEdge::sum(self : NlptokenizebpeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_edge_mean(s : NlptokenizebpeEdge) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeEdge::mean(self : NlptokenizebpeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_edge_scale(s : NlptokenizebpeEdge, f : Double) -> NlptokenizebpeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeEdge::scale(self : NlptokenizebpeEdge, f : Double) -> NlptokenizebpeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_edge_add(a : NlptokenizebpeEdge, b : NlptokenizebpeEdge) -> NlptokenizebpeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeEdge::add(self : NlptokenizebpeEdge, other : NlptokenizebpeEdge) -> NlptokenizebpeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_edge_copy(s : NlptokenizebpeEdge) -> NlptokenizebpeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeEdge::copy(self : NlptokenizebpeEdge) -> NlptokenizebpeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_edge_fill(s : NlptokenizebpeEdge, v : Double) -> NlptokenizebpeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeEdge::fill(self : NlptokenizebpeEdge, v : Double) -> NlptokenizebpeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_edge_min(s : NlptokenizebpeEdge) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeEdge::min(self : NlptokenizebpeEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_edge_max(s : NlptokenizebpeEdge) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeEdge::max(self : NlptokenizebpeEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_edge_to_string(s : NlptokenizebpeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeEdge::to_string(self : NlptokenizebpeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpePath {
@@ -606,45 +606,45 @@ pub fn nlp_tokenize_bpe_path_make(size : Int) -> NlptokenizebpePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_path_len(s : NlptokenizebpePath) -> Int { s.size }
+pub fn NlptokenizebpePath::len(self : NlptokenizebpePath) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_path_get(s : NlptokenizebpePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpePath::get(self : NlptokenizebpePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_path_set(s : NlptokenizebpePath, i : Int, v : Double) -> NlptokenizebpePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpePath::set(self : NlptokenizebpePath, i : Int, v : Double) -> NlptokenizebpePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_path_sum(s : NlptokenizebpePath) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpePath::sum(self : NlptokenizebpePath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_path_mean(s : NlptokenizebpePath) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpePath::mean(self : NlptokenizebpePath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_path_scale(s : NlptokenizebpePath, f : Double) -> NlptokenizebpePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpePath::scale(self : NlptokenizebpePath, f : Double) -> NlptokenizebpePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_path_add(a : NlptokenizebpePath, b : NlptokenizebpePath) -> NlptokenizebpePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpePath::add(self : NlptokenizebpePath, other : NlptokenizebpePath) -> NlptokenizebpePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_path_copy(s : NlptokenizebpePath) -> NlptokenizebpePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpePath::copy(self : NlptokenizebpePath) -> NlptokenizebpePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_path_fill(s : NlptokenizebpePath, v : Double) -> NlptokenizebpePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpePath::fill(self : NlptokenizebpePath, v : Double) -> NlptokenizebpePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_path_min(s : NlptokenizebpePath) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpePath::min(self : NlptokenizebpePath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_path_max(s : NlptokenizebpePath) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpePath::max(self : NlptokenizebpePath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_path_to_string(s : NlptokenizebpePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpePath::to_string(self : NlptokenizebpePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeCluster {
@@ -657,45 +657,45 @@ pub fn nlp_tokenize_bpe_cluster_make(size : Int) -> NlptokenizebpeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_cluster_len(s : NlptokenizebpeCluster) -> Int { s.size }
+pub fn NlptokenizebpeCluster::len(self : NlptokenizebpeCluster) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_cluster_get(s : NlptokenizebpeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeCluster::get(self : NlptokenizebpeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_cluster_set(s : NlptokenizebpeCluster, i : Int, v : Double) -> NlptokenizebpeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCluster::set(self : NlptokenizebpeCluster, i : Int, v : Double) -> NlptokenizebpeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cluster_sum(s : NlptokenizebpeCluster) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeCluster::sum(self : NlptokenizebpeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_cluster_mean(s : NlptokenizebpeCluster) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeCluster::mean(self : NlptokenizebpeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_cluster_scale(s : NlptokenizebpeCluster, f : Double) -> NlptokenizebpeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCluster::scale(self : NlptokenizebpeCluster, f : Double) -> NlptokenizebpeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cluster_add(a : NlptokenizebpeCluster, b : NlptokenizebpeCluster) -> NlptokenizebpeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeCluster::add(self : NlptokenizebpeCluster, other : NlptokenizebpeCluster) -> NlptokenizebpeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cluster_copy(s : NlptokenizebpeCluster) -> NlptokenizebpeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCluster::copy(self : NlptokenizebpeCluster) -> NlptokenizebpeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cluster_fill(s : NlptokenizebpeCluster, v : Double) -> NlptokenizebpeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCluster::fill(self : NlptokenizebpeCluster, v : Double) -> NlptokenizebpeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cluster_min(s : NlptokenizebpeCluster) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeCluster::min(self : NlptokenizebpeCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_cluster_max(s : NlptokenizebpeCluster) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeCluster::max(self : NlptokenizebpeCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_cluster_to_string(s : NlptokenizebpeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeCluster::to_string(self : NlptokenizebpeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeModel {
@@ -708,45 +708,45 @@ pub fn nlp_tokenize_bpe_model_make(size : Int) -> NlptokenizebpeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_model_len(s : NlptokenizebpeModel) -> Int { s.size }
+pub fn NlptokenizebpeModel::len(self : NlptokenizebpeModel) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_model_get(s : NlptokenizebpeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeModel::get(self : NlptokenizebpeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_model_set(s : NlptokenizebpeModel, i : Int, v : Double) -> NlptokenizebpeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeModel::set(self : NlptokenizebpeModel, i : Int, v : Double) -> NlptokenizebpeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_model_sum(s : NlptokenizebpeModel) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeModel::sum(self : NlptokenizebpeModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_model_mean(s : NlptokenizebpeModel) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeModel::mean(self : NlptokenizebpeModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_model_scale(s : NlptokenizebpeModel, f : Double) -> NlptokenizebpeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeModel::scale(self : NlptokenizebpeModel, f : Double) -> NlptokenizebpeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_model_add(a : NlptokenizebpeModel, b : NlptokenizebpeModel) -> NlptokenizebpeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeModel::add(self : NlptokenizebpeModel, other : NlptokenizebpeModel) -> NlptokenizebpeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_model_copy(s : NlptokenizebpeModel) -> NlptokenizebpeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeModel::copy(self : NlptokenizebpeModel) -> NlptokenizebpeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_model_fill(s : NlptokenizebpeModel, v : Double) -> NlptokenizebpeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeModel::fill(self : NlptokenizebpeModel, v : Double) -> NlptokenizebpeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_model_min(s : NlptokenizebpeModel) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeModel::min(self : NlptokenizebpeModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_model_max(s : NlptokenizebpeModel) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeModel::max(self : NlptokenizebpeModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_model_to_string(s : NlptokenizebpeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeModel::to_string(self : NlptokenizebpeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeLayer {
@@ -759,45 +759,45 @@ pub fn nlp_tokenize_bpe_layer_make(size : Int) -> NlptokenizebpeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_layer_len(s : NlptokenizebpeLayer) -> Int { s.size }
+pub fn NlptokenizebpeLayer::len(self : NlptokenizebpeLayer) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_layer_get(s : NlptokenizebpeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeLayer::get(self : NlptokenizebpeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_layer_set(s : NlptokenizebpeLayer, i : Int, v : Double) -> NlptokenizebpeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeLayer::set(self : NlptokenizebpeLayer, i : Int, v : Double) -> NlptokenizebpeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_layer_sum(s : NlptokenizebpeLayer) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeLayer::sum(self : NlptokenizebpeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_layer_mean(s : NlptokenizebpeLayer) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeLayer::mean(self : NlptokenizebpeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_layer_scale(s : NlptokenizebpeLayer, f : Double) -> NlptokenizebpeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeLayer::scale(self : NlptokenizebpeLayer, f : Double) -> NlptokenizebpeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_layer_add(a : NlptokenizebpeLayer, b : NlptokenizebpeLayer) -> NlptokenizebpeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeLayer::add(self : NlptokenizebpeLayer, other : NlptokenizebpeLayer) -> NlptokenizebpeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_layer_copy(s : NlptokenizebpeLayer) -> NlptokenizebpeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeLayer::copy(self : NlptokenizebpeLayer) -> NlptokenizebpeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_layer_fill(s : NlptokenizebpeLayer, v : Double) -> NlptokenizebpeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeLayer::fill(self : NlptokenizebpeLayer, v : Double) -> NlptokenizebpeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_layer_min(s : NlptokenizebpeLayer) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeLayer::min(self : NlptokenizebpeLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_layer_max(s : NlptokenizebpeLayer) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeLayer::max(self : NlptokenizebpeLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_layer_to_string(s : NlptokenizebpeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeLayer::to_string(self : NlptokenizebpeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_tokenize_bpe_buffer_make(size : Int) -> NlptokenizebpeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_buffer_len(s : NlptokenizebpeBuffer) -> Int { s.size }
+pub fn NlptokenizebpeBuffer::len(self : NlptokenizebpeBuffer) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_buffer_get(s : NlptokenizebpeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeBuffer::get(self : NlptokenizebpeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_buffer_set(s : NlptokenizebpeBuffer, i : Int, v : Double) -> NlptokenizebpeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeBuffer::set(self : NlptokenizebpeBuffer, i : Int, v : Double) -> NlptokenizebpeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_buffer_sum(s : NlptokenizebpeBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeBuffer::sum(self : NlptokenizebpeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_buffer_mean(s : NlptokenizebpeBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeBuffer::mean(self : NlptokenizebpeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_buffer_scale(s : NlptokenizebpeBuffer, f : Double) -> NlptokenizebpeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeBuffer::scale(self : NlptokenizebpeBuffer, f : Double) -> NlptokenizebpeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_buffer_add(a : NlptokenizebpeBuffer, b : NlptokenizebpeBuffer) -> NlptokenizebpeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeBuffer::add(self : NlptokenizebpeBuffer, other : NlptokenizebpeBuffer) -> NlptokenizebpeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_buffer_copy(s : NlptokenizebpeBuffer) -> NlptokenizebpeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeBuffer::copy(self : NlptokenizebpeBuffer) -> NlptokenizebpeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_buffer_fill(s : NlptokenizebpeBuffer, v : Double) -> NlptokenizebpeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeBuffer::fill(self : NlptokenizebpeBuffer, v : Double) -> NlptokenizebpeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_buffer_min(s : NlptokenizebpeBuffer) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeBuffer::min(self : NlptokenizebpeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_buffer_max(s : NlptokenizebpeBuffer) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeBuffer::max(self : NlptokenizebpeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_buffer_to_string(s : NlptokenizebpeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeBuffer::to_string(self : NlptokenizebpeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeCursor {
@@ -861,45 +861,45 @@ pub fn nlp_tokenize_bpe_cursor_make(size : Int) -> NlptokenizebpeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_cursor_len(s : NlptokenizebpeCursor) -> Int { s.size }
+pub fn NlptokenizebpeCursor::len(self : NlptokenizebpeCursor) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_cursor_get(s : NlptokenizebpeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeCursor::get(self : NlptokenizebpeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_cursor_set(s : NlptokenizebpeCursor, i : Int, v : Double) -> NlptokenizebpeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCursor::set(self : NlptokenizebpeCursor, i : Int, v : Double) -> NlptokenizebpeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cursor_sum(s : NlptokenizebpeCursor) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeCursor::sum(self : NlptokenizebpeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_cursor_mean(s : NlptokenizebpeCursor) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeCursor::mean(self : NlptokenizebpeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_cursor_scale(s : NlptokenizebpeCursor, f : Double) -> NlptokenizebpeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCursor::scale(self : NlptokenizebpeCursor, f : Double) -> NlptokenizebpeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cursor_add(a : NlptokenizebpeCursor, b : NlptokenizebpeCursor) -> NlptokenizebpeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeCursor::add(self : NlptokenizebpeCursor, other : NlptokenizebpeCursor) -> NlptokenizebpeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cursor_copy(s : NlptokenizebpeCursor) -> NlptokenizebpeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCursor::copy(self : NlptokenizebpeCursor) -> NlptokenizebpeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cursor_fill(s : NlptokenizebpeCursor, v : Double) -> NlptokenizebpeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeCursor::fill(self : NlptokenizebpeCursor, v : Double) -> NlptokenizebpeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_cursor_min(s : NlptokenizebpeCursor) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeCursor::min(self : NlptokenizebpeCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_cursor_max(s : NlptokenizebpeCursor) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeCursor::max(self : NlptokenizebpeCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_cursor_to_string(s : NlptokenizebpeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeCursor::to_string(self : NlptokenizebpeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeView {
@@ -912,45 +912,45 @@ pub fn nlp_tokenize_bpe_view_make(size : Int) -> NlptokenizebpeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_view_len(s : NlptokenizebpeView) -> Int { s.size }
+pub fn NlptokenizebpeView::len(self : NlptokenizebpeView) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_view_get(s : NlptokenizebpeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeView::get(self : NlptokenizebpeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_view_set(s : NlptokenizebpeView, i : Int, v : Double) -> NlptokenizebpeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeView::set(self : NlptokenizebpeView, i : Int, v : Double) -> NlptokenizebpeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_view_sum(s : NlptokenizebpeView) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeView::sum(self : NlptokenizebpeView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_view_mean(s : NlptokenizebpeView) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeView::mean(self : NlptokenizebpeView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_view_scale(s : NlptokenizebpeView, f : Double) -> NlptokenizebpeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeView::scale(self : NlptokenizebpeView, f : Double) -> NlptokenizebpeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_view_add(a : NlptokenizebpeView, b : NlptokenizebpeView) -> NlptokenizebpeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeView::add(self : NlptokenizebpeView, other : NlptokenizebpeView) -> NlptokenizebpeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_view_copy(s : NlptokenizebpeView) -> NlptokenizebpeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeView::copy(self : NlptokenizebpeView) -> NlptokenizebpeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_view_fill(s : NlptokenizebpeView, v : Double) -> NlptokenizebpeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeView::fill(self : NlptokenizebpeView, v : Double) -> NlptokenizebpeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_view_min(s : NlptokenizebpeView) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeView::min(self : NlptokenizebpeView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_view_max(s : NlptokenizebpeView) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeView::max(self : NlptokenizebpeView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_view_to_string(s : NlptokenizebpeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeView::to_string(self : NlptokenizebpeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeRange {
@@ -963,45 +963,45 @@ pub fn nlp_tokenize_bpe_range_make(size : Int) -> NlptokenizebpeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_range_len(s : NlptokenizebpeRange) -> Int { s.size }
+pub fn NlptokenizebpeRange::len(self : NlptokenizebpeRange) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_range_get(s : NlptokenizebpeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeRange::get(self : NlptokenizebpeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_range_set(s : NlptokenizebpeRange, i : Int, v : Double) -> NlptokenizebpeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeRange::set(self : NlptokenizebpeRange, i : Int, v : Double) -> NlptokenizebpeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_range_sum(s : NlptokenizebpeRange) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeRange::sum(self : NlptokenizebpeRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_range_mean(s : NlptokenizebpeRange) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeRange::mean(self : NlptokenizebpeRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_range_scale(s : NlptokenizebpeRange, f : Double) -> NlptokenizebpeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeRange::scale(self : NlptokenizebpeRange, f : Double) -> NlptokenizebpeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_range_add(a : NlptokenizebpeRange, b : NlptokenizebpeRange) -> NlptokenizebpeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeRange::add(self : NlptokenizebpeRange, other : NlptokenizebpeRange) -> NlptokenizebpeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_range_copy(s : NlptokenizebpeRange) -> NlptokenizebpeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeRange::copy(self : NlptokenizebpeRange) -> NlptokenizebpeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_range_fill(s : NlptokenizebpeRange, v : Double) -> NlptokenizebpeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeRange::fill(self : NlptokenizebpeRange, v : Double) -> NlptokenizebpeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_range_min(s : NlptokenizebpeRange) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeRange::min(self : NlptokenizebpeRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_range_max(s : NlptokenizebpeRange) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeRange::max(self : NlptokenizebpeRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_range_to_string(s : NlptokenizebpeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeRange::to_string(self : NlptokenizebpeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizebpeSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_tokenize_bpe_slice_make(size : Int) -> NlptokenizebpeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_bpe_slice_len(s : NlptokenizebpeSlice) -> Int { s.size }
+pub fn NlptokenizebpeSlice::len(self : NlptokenizebpeSlice) -> Int { self.size }
 
-pub fn nlp_tokenize_bpe_slice_get(s : NlptokenizebpeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizebpeSlice::get(self : NlptokenizebpeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_bpe_slice_set(s : NlptokenizebpeSlice, i : Int, v : Double) -> NlptokenizebpeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizebpeSlice::set(self : NlptokenizebpeSlice, i : Int, v : Double) -> NlptokenizebpeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_slice_sum(s : NlptokenizebpeSlice) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizebpeSlice::sum(self : NlptokenizebpeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_bpe_slice_mean(s : NlptokenizebpeSlice) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizebpeSlice::mean(self : NlptokenizebpeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_bpe_slice_scale(s : NlptokenizebpeSlice, f : Double) -> NlptokenizebpeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeSlice::scale(self : NlptokenizebpeSlice, f : Double) -> NlptokenizebpeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_slice_add(a : NlptokenizebpeSlice, b : NlptokenizebpeSlice) -> NlptokenizebpeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizebpeSlice::add(self : NlptokenizebpeSlice, other : NlptokenizebpeSlice) -> NlptokenizebpeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_slice_copy(s : NlptokenizebpeSlice) -> NlptokenizebpeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeSlice::copy(self : NlptokenizebpeSlice) -> NlptokenizebpeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_slice_fill(s : NlptokenizebpeSlice, v : Double) -> NlptokenizebpeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizebpeSlice::fill(self : NlptokenizebpeSlice, v : Double) -> NlptokenizebpeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_bpe_slice_min(s : NlptokenizebpeSlice) -> Double { @_common.min(s.data) }
+pub fn NlptokenizebpeSlice::min(self : NlptokenizebpeSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_bpe_slice_max(s : NlptokenizebpeSlice) -> Double { @_common.max(s.data) }
+pub fn NlptokenizebpeSlice::max(self : NlptokenizebpeSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_bpe_slice_to_string(s : NlptokenizebpeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizebpeSlice::to_string(self : NlptokenizebpeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

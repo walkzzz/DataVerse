@@ -351,45 +351,45 @@ pub fn sort_dist_pigeonhole_frame_make(size : Int) -> SortdistpigeonholeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_frame_len(s : SortdistpigeonholeFrame) -> Int { s.size }
+pub fn SortdistpigeonholeFrame::len(self : SortdistpigeonholeFrame) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_frame_get(s : SortdistpigeonholeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeFrame::get(self : SortdistpigeonholeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_frame_set(s : SortdistpigeonholeFrame, i : Int, v : Double) -> SortdistpigeonholeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeFrame::set(self : SortdistpigeonholeFrame, i : Int, v : Double) -> SortdistpigeonholeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_frame_sum(s : SortdistpigeonholeFrame) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeFrame::sum(self : SortdistpigeonholeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_frame_mean(s : SortdistpigeonholeFrame) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeFrame::mean(self : SortdistpigeonholeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_frame_scale(s : SortdistpigeonholeFrame, f : Double) -> SortdistpigeonholeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeFrame::scale(self : SortdistpigeonholeFrame, f : Double) -> SortdistpigeonholeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_frame_add(a : SortdistpigeonholeFrame, b : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeFrame::add(self : SortdistpigeonholeFrame, other : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_frame_copy(s : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeFrame::copy(self : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_frame_fill(s : SortdistpigeonholeFrame, v : Double) -> SortdistpigeonholeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeFrame::fill(self : SortdistpigeonholeFrame, v : Double) -> SortdistpigeonholeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_frame_min(s : SortdistpigeonholeFrame) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeFrame::min(self : SortdistpigeonholeFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_frame_max(s : SortdistpigeonholeFrame) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeFrame::max(self : SortdistpigeonholeFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_frame_to_string(s : SortdistpigeonholeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeFrame::to_string(self : SortdistpigeonholeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeTable {
@@ -402,45 +402,45 @@ pub fn sort_dist_pigeonhole_table_make(size : Int) -> SortdistpigeonholeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_table_len(s : SortdistpigeonholeTable) -> Int { s.size }
+pub fn SortdistpigeonholeTable::len(self : SortdistpigeonholeTable) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_table_get(s : SortdistpigeonholeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeTable::get(self : SortdistpigeonholeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_table_set(s : SortdistpigeonholeTable, i : Int, v : Double) -> SortdistpigeonholeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeTable::set(self : SortdistpigeonholeTable, i : Int, v : Double) -> SortdistpigeonholeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_table_sum(s : SortdistpigeonholeTable) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeTable::sum(self : SortdistpigeonholeTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_table_mean(s : SortdistpigeonholeTable) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeTable::mean(self : SortdistpigeonholeTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_table_scale(s : SortdistpigeonholeTable, f : Double) -> SortdistpigeonholeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeTable::scale(self : SortdistpigeonholeTable, f : Double) -> SortdistpigeonholeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_table_add(a : SortdistpigeonholeTable, b : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeTable::add(self : SortdistpigeonholeTable, other : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_table_copy(s : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeTable::copy(self : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_table_fill(s : SortdistpigeonholeTable, v : Double) -> SortdistpigeonholeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeTable::fill(self : SortdistpigeonholeTable, v : Double) -> SortdistpigeonholeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_table_min(s : SortdistpigeonholeTable) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeTable::min(self : SortdistpigeonholeTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_table_max(s : SortdistpigeonholeTable) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeTable::max(self : SortdistpigeonholeTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_table_to_string(s : SortdistpigeonholeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeTable::to_string(self : SortdistpigeonholeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeGraphN {
@@ -453,45 +453,45 @@ pub fn sort_dist_pigeonhole_graphn_make(size : Int) -> SortdistpigeonholeGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_graphn_len(s : SortdistpigeonholeGraphN) -> Int { s.size }
+pub fn SortdistpigeonholeGraphN::len(self : SortdistpigeonholeGraphN) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_graphn_get(s : SortdistpigeonholeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeGraphN::get(self : SortdistpigeonholeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_graphn_set(s : SortdistpigeonholeGraphN, i : Int, v : Double) -> SortdistpigeonholeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeGraphN::set(self : SortdistpigeonholeGraphN, i : Int, v : Double) -> SortdistpigeonholeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_graphn_sum(s : SortdistpigeonholeGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeGraphN::sum(self : SortdistpigeonholeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_graphn_mean(s : SortdistpigeonholeGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeGraphN::mean(self : SortdistpigeonholeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_graphn_scale(s : SortdistpigeonholeGraphN, f : Double) -> SortdistpigeonholeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeGraphN::scale(self : SortdistpigeonholeGraphN, f : Double) -> SortdistpigeonholeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_graphn_add(a : SortdistpigeonholeGraphN, b : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeGraphN::add(self : SortdistpigeonholeGraphN, other : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_graphn_copy(s : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeGraphN::copy(self : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_graphn_fill(s : SortdistpigeonholeGraphN, v : Double) -> SortdistpigeonholeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeGraphN::fill(self : SortdistpigeonholeGraphN, v : Double) -> SortdistpigeonholeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_graphn_min(s : SortdistpigeonholeGraphN) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeGraphN::min(self : SortdistpigeonholeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_graphn_max(s : SortdistpigeonholeGraphN) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeGraphN::max(self : SortdistpigeonholeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_graphn_to_string(s : SortdistpigeonholeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeGraphN::to_string(self : SortdistpigeonholeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeNode {
@@ -504,45 +504,45 @@ pub fn sort_dist_pigeonhole_node_make(size : Int) -> SortdistpigeonholeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_node_len(s : SortdistpigeonholeNode) -> Int { s.size }
+pub fn SortdistpigeonholeNode::len(self : SortdistpigeonholeNode) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_node_get(s : SortdistpigeonholeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeNode::get(self : SortdistpigeonholeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_node_set(s : SortdistpigeonholeNode, i : Int, v : Double) -> SortdistpigeonholeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeNode::set(self : SortdistpigeonholeNode, i : Int, v : Double) -> SortdistpigeonholeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_node_sum(s : SortdistpigeonholeNode) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeNode::sum(self : SortdistpigeonholeNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_node_mean(s : SortdistpigeonholeNode) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeNode::mean(self : SortdistpigeonholeNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_node_scale(s : SortdistpigeonholeNode, f : Double) -> SortdistpigeonholeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeNode::scale(self : SortdistpigeonholeNode, f : Double) -> SortdistpigeonholeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_node_add(a : SortdistpigeonholeNode, b : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeNode::add(self : SortdistpigeonholeNode, other : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_node_copy(s : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeNode::copy(self : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_node_fill(s : SortdistpigeonholeNode, v : Double) -> SortdistpigeonholeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeNode::fill(self : SortdistpigeonholeNode, v : Double) -> SortdistpigeonholeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_node_min(s : SortdistpigeonholeNode) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeNode::min(self : SortdistpigeonholeNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_node_max(s : SortdistpigeonholeNode) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeNode::max(self : SortdistpigeonholeNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_node_to_string(s : SortdistpigeonholeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeNode::to_string(self : SortdistpigeonholeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeEdge {
@@ -555,45 +555,45 @@ pub fn sort_dist_pigeonhole_edge_make(size : Int) -> SortdistpigeonholeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_edge_len(s : SortdistpigeonholeEdge) -> Int { s.size }
+pub fn SortdistpigeonholeEdge::len(self : SortdistpigeonholeEdge) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_edge_get(s : SortdistpigeonholeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeEdge::get(self : SortdistpigeonholeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_edge_set(s : SortdistpigeonholeEdge, i : Int, v : Double) -> SortdistpigeonholeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeEdge::set(self : SortdistpigeonholeEdge, i : Int, v : Double) -> SortdistpigeonholeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_edge_sum(s : SortdistpigeonholeEdge) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeEdge::sum(self : SortdistpigeonholeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_edge_mean(s : SortdistpigeonholeEdge) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeEdge::mean(self : SortdistpigeonholeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_edge_scale(s : SortdistpigeonholeEdge, f : Double) -> SortdistpigeonholeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeEdge::scale(self : SortdistpigeonholeEdge, f : Double) -> SortdistpigeonholeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_edge_add(a : SortdistpigeonholeEdge, b : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeEdge::add(self : SortdistpigeonholeEdge, other : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_edge_copy(s : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeEdge::copy(self : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_edge_fill(s : SortdistpigeonholeEdge, v : Double) -> SortdistpigeonholeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeEdge::fill(self : SortdistpigeonholeEdge, v : Double) -> SortdistpigeonholeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_edge_min(s : SortdistpigeonholeEdge) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeEdge::min(self : SortdistpigeonholeEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_edge_max(s : SortdistpigeonholeEdge) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeEdge::max(self : SortdistpigeonholeEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_edge_to_string(s : SortdistpigeonholeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeEdge::to_string(self : SortdistpigeonholeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholePath {
@@ -606,45 +606,45 @@ pub fn sort_dist_pigeonhole_path_make(size : Int) -> SortdistpigeonholePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_path_len(s : SortdistpigeonholePath) -> Int { s.size }
+pub fn SortdistpigeonholePath::len(self : SortdistpigeonholePath) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_path_get(s : SortdistpigeonholePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholePath::get(self : SortdistpigeonholePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_path_set(s : SortdistpigeonholePath, i : Int, v : Double) -> SortdistpigeonholePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholePath::set(self : SortdistpigeonholePath, i : Int, v : Double) -> SortdistpigeonholePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_path_sum(s : SortdistpigeonholePath) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholePath::sum(self : SortdistpigeonholePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_path_mean(s : SortdistpigeonholePath) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholePath::mean(self : SortdistpigeonholePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_path_scale(s : SortdistpigeonholePath, f : Double) -> SortdistpigeonholePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholePath::scale(self : SortdistpigeonholePath, f : Double) -> SortdistpigeonholePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_path_add(a : SortdistpigeonholePath, b : SortdistpigeonholePath) -> SortdistpigeonholePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholePath::add(self : SortdistpigeonholePath, other : SortdistpigeonholePath) -> SortdistpigeonholePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_path_copy(s : SortdistpigeonholePath) -> SortdistpigeonholePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholePath::copy(self : SortdistpigeonholePath) -> SortdistpigeonholePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_path_fill(s : SortdistpigeonholePath, v : Double) -> SortdistpigeonholePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholePath::fill(self : SortdistpigeonholePath, v : Double) -> SortdistpigeonholePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_path_min(s : SortdistpigeonholePath) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholePath::min(self : SortdistpigeonholePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_path_max(s : SortdistpigeonholePath) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholePath::max(self : SortdistpigeonholePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_path_to_string(s : SortdistpigeonholePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholePath::to_string(self : SortdistpigeonholePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeCluster {
@@ -657,45 +657,45 @@ pub fn sort_dist_pigeonhole_cluster_make(size : Int) -> SortdistpigeonholeCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_cluster_len(s : SortdistpigeonholeCluster) -> Int { s.size }
+pub fn SortdistpigeonholeCluster::len(self : SortdistpigeonholeCluster) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_cluster_get(s : SortdistpigeonholeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeCluster::get(self : SortdistpigeonholeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_cluster_set(s : SortdistpigeonholeCluster, i : Int, v : Double) -> SortdistpigeonholeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCluster::set(self : SortdistpigeonholeCluster, i : Int, v : Double) -> SortdistpigeonholeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cluster_sum(s : SortdistpigeonholeCluster) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeCluster::sum(self : SortdistpigeonholeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_cluster_mean(s : SortdistpigeonholeCluster) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeCluster::mean(self : SortdistpigeonholeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_cluster_scale(s : SortdistpigeonholeCluster, f : Double) -> SortdistpigeonholeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCluster::scale(self : SortdistpigeonholeCluster, f : Double) -> SortdistpigeonholeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cluster_add(a : SortdistpigeonholeCluster, b : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeCluster::add(self : SortdistpigeonholeCluster, other : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cluster_copy(s : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCluster::copy(self : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cluster_fill(s : SortdistpigeonholeCluster, v : Double) -> SortdistpigeonholeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCluster::fill(self : SortdistpigeonholeCluster, v : Double) -> SortdistpigeonholeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cluster_min(s : SortdistpigeonholeCluster) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeCluster::min(self : SortdistpigeonholeCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_cluster_max(s : SortdistpigeonholeCluster) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeCluster::max(self : SortdistpigeonholeCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_cluster_to_string(s : SortdistpigeonholeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeCluster::to_string(self : SortdistpigeonholeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeModel {
@@ -708,45 +708,45 @@ pub fn sort_dist_pigeonhole_model_make(size : Int) -> SortdistpigeonholeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_model_len(s : SortdistpigeonholeModel) -> Int { s.size }
+pub fn SortdistpigeonholeModel::len(self : SortdistpigeonholeModel) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_model_get(s : SortdistpigeonholeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeModel::get(self : SortdistpigeonholeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_model_set(s : SortdistpigeonholeModel, i : Int, v : Double) -> SortdistpigeonholeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeModel::set(self : SortdistpigeonholeModel, i : Int, v : Double) -> SortdistpigeonholeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_model_sum(s : SortdistpigeonholeModel) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeModel::sum(self : SortdistpigeonholeModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_model_mean(s : SortdistpigeonholeModel) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeModel::mean(self : SortdistpigeonholeModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_model_scale(s : SortdistpigeonholeModel, f : Double) -> SortdistpigeonholeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeModel::scale(self : SortdistpigeonholeModel, f : Double) -> SortdistpigeonholeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_model_add(a : SortdistpigeonholeModel, b : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeModel::add(self : SortdistpigeonholeModel, other : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_model_copy(s : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeModel::copy(self : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_model_fill(s : SortdistpigeonholeModel, v : Double) -> SortdistpigeonholeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeModel::fill(self : SortdistpigeonholeModel, v : Double) -> SortdistpigeonholeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_model_min(s : SortdistpigeonholeModel) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeModel::min(self : SortdistpigeonholeModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_model_max(s : SortdistpigeonholeModel) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeModel::max(self : SortdistpigeonholeModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_model_to_string(s : SortdistpigeonholeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeModel::to_string(self : SortdistpigeonholeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeLayer {
@@ -759,45 +759,45 @@ pub fn sort_dist_pigeonhole_layer_make(size : Int) -> SortdistpigeonholeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_layer_len(s : SortdistpigeonholeLayer) -> Int { s.size }
+pub fn SortdistpigeonholeLayer::len(self : SortdistpigeonholeLayer) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_layer_get(s : SortdistpigeonholeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeLayer::get(self : SortdistpigeonholeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_layer_set(s : SortdistpigeonholeLayer, i : Int, v : Double) -> SortdistpigeonholeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeLayer::set(self : SortdistpigeonholeLayer, i : Int, v : Double) -> SortdistpigeonholeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_layer_sum(s : SortdistpigeonholeLayer) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeLayer::sum(self : SortdistpigeonholeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_layer_mean(s : SortdistpigeonholeLayer) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeLayer::mean(self : SortdistpigeonholeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_layer_scale(s : SortdistpigeonholeLayer, f : Double) -> SortdistpigeonholeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeLayer::scale(self : SortdistpigeonholeLayer, f : Double) -> SortdistpigeonholeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_layer_add(a : SortdistpigeonholeLayer, b : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeLayer::add(self : SortdistpigeonholeLayer, other : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_layer_copy(s : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeLayer::copy(self : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_layer_fill(s : SortdistpigeonholeLayer, v : Double) -> SortdistpigeonholeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeLayer::fill(self : SortdistpigeonholeLayer, v : Double) -> SortdistpigeonholeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_layer_min(s : SortdistpigeonholeLayer) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeLayer::min(self : SortdistpigeonholeLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_layer_max(s : SortdistpigeonholeLayer) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeLayer::max(self : SortdistpigeonholeLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_layer_to_string(s : SortdistpigeonholeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeLayer::to_string(self : SortdistpigeonholeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeBuffer {
@@ -810,45 +810,45 @@ pub fn sort_dist_pigeonhole_buffer_make(size : Int) -> SortdistpigeonholeBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_buffer_len(s : SortdistpigeonholeBuffer) -> Int { s.size }
+pub fn SortdistpigeonholeBuffer::len(self : SortdistpigeonholeBuffer) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_buffer_get(s : SortdistpigeonholeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeBuffer::get(self : SortdistpigeonholeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_buffer_set(s : SortdistpigeonholeBuffer, i : Int, v : Double) -> SortdistpigeonholeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeBuffer::set(self : SortdistpigeonholeBuffer, i : Int, v : Double) -> SortdistpigeonholeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_buffer_sum(s : SortdistpigeonholeBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeBuffer::sum(self : SortdistpigeonholeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_buffer_mean(s : SortdistpigeonholeBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeBuffer::mean(self : SortdistpigeonholeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_buffer_scale(s : SortdistpigeonholeBuffer, f : Double) -> SortdistpigeonholeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeBuffer::scale(self : SortdistpigeonholeBuffer, f : Double) -> SortdistpigeonholeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_buffer_add(a : SortdistpigeonholeBuffer, b : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeBuffer::add(self : SortdistpigeonholeBuffer, other : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_buffer_copy(s : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeBuffer::copy(self : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_buffer_fill(s : SortdistpigeonholeBuffer, v : Double) -> SortdistpigeonholeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeBuffer::fill(self : SortdistpigeonholeBuffer, v : Double) -> SortdistpigeonholeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_buffer_min(s : SortdistpigeonholeBuffer) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeBuffer::min(self : SortdistpigeonholeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_buffer_max(s : SortdistpigeonholeBuffer) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeBuffer::max(self : SortdistpigeonholeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_buffer_to_string(s : SortdistpigeonholeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeBuffer::to_string(self : SortdistpigeonholeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeCursor {
@@ -861,45 +861,45 @@ pub fn sort_dist_pigeonhole_cursor_make(size : Int) -> SortdistpigeonholeCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_cursor_len(s : SortdistpigeonholeCursor) -> Int { s.size }
+pub fn SortdistpigeonholeCursor::len(self : SortdistpigeonholeCursor) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_cursor_get(s : SortdistpigeonholeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeCursor::get(self : SortdistpigeonholeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_cursor_set(s : SortdistpigeonholeCursor, i : Int, v : Double) -> SortdistpigeonholeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCursor::set(self : SortdistpigeonholeCursor, i : Int, v : Double) -> SortdistpigeonholeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cursor_sum(s : SortdistpigeonholeCursor) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeCursor::sum(self : SortdistpigeonholeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_cursor_mean(s : SortdistpigeonholeCursor) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeCursor::mean(self : SortdistpigeonholeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_cursor_scale(s : SortdistpigeonholeCursor, f : Double) -> SortdistpigeonholeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCursor::scale(self : SortdistpigeonholeCursor, f : Double) -> SortdistpigeonholeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cursor_add(a : SortdistpigeonholeCursor, b : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeCursor::add(self : SortdistpigeonholeCursor, other : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cursor_copy(s : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCursor::copy(self : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cursor_fill(s : SortdistpigeonholeCursor, v : Double) -> SortdistpigeonholeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeCursor::fill(self : SortdistpigeonholeCursor, v : Double) -> SortdistpigeonholeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_cursor_min(s : SortdistpigeonholeCursor) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeCursor::min(self : SortdistpigeonholeCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_cursor_max(s : SortdistpigeonholeCursor) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeCursor::max(self : SortdistpigeonholeCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_cursor_to_string(s : SortdistpigeonholeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeCursor::to_string(self : SortdistpigeonholeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeView {
@@ -912,45 +912,45 @@ pub fn sort_dist_pigeonhole_view_make(size : Int) -> SortdistpigeonholeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_view_len(s : SortdistpigeonholeView) -> Int { s.size }
+pub fn SortdistpigeonholeView::len(self : SortdistpigeonholeView) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_view_get(s : SortdistpigeonholeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeView::get(self : SortdistpigeonholeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_view_set(s : SortdistpigeonholeView, i : Int, v : Double) -> SortdistpigeonholeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeView::set(self : SortdistpigeonholeView, i : Int, v : Double) -> SortdistpigeonholeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_view_sum(s : SortdistpigeonholeView) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeView::sum(self : SortdistpigeonholeView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_view_mean(s : SortdistpigeonholeView) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeView::mean(self : SortdistpigeonholeView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_view_scale(s : SortdistpigeonholeView, f : Double) -> SortdistpigeonholeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeView::scale(self : SortdistpigeonholeView, f : Double) -> SortdistpigeonholeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_view_add(a : SortdistpigeonholeView, b : SortdistpigeonholeView) -> SortdistpigeonholeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeView::add(self : SortdistpigeonholeView, other : SortdistpigeonholeView) -> SortdistpigeonholeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_view_copy(s : SortdistpigeonholeView) -> SortdistpigeonholeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeView::copy(self : SortdistpigeonholeView) -> SortdistpigeonholeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_view_fill(s : SortdistpigeonholeView, v : Double) -> SortdistpigeonholeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeView::fill(self : SortdistpigeonholeView, v : Double) -> SortdistpigeonholeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_view_min(s : SortdistpigeonholeView) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeView::min(self : SortdistpigeonholeView) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_view_max(s : SortdistpigeonholeView) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeView::max(self : SortdistpigeonholeView) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_view_to_string(s : SortdistpigeonholeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeView::to_string(self : SortdistpigeonholeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeRange {
@@ -963,45 +963,45 @@ pub fn sort_dist_pigeonhole_range_make(size : Int) -> SortdistpigeonholeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_range_len(s : SortdistpigeonholeRange) -> Int { s.size }
+pub fn SortdistpigeonholeRange::len(self : SortdistpigeonholeRange) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_range_get(s : SortdistpigeonholeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeRange::get(self : SortdistpigeonholeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_range_set(s : SortdistpigeonholeRange, i : Int, v : Double) -> SortdistpigeonholeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeRange::set(self : SortdistpigeonholeRange, i : Int, v : Double) -> SortdistpigeonholeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_range_sum(s : SortdistpigeonholeRange) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeRange::sum(self : SortdistpigeonholeRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_range_mean(s : SortdistpigeonholeRange) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeRange::mean(self : SortdistpigeonholeRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_range_scale(s : SortdistpigeonholeRange, f : Double) -> SortdistpigeonholeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeRange::scale(self : SortdistpigeonholeRange, f : Double) -> SortdistpigeonholeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_range_add(a : SortdistpigeonholeRange, b : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeRange::add(self : SortdistpigeonholeRange, other : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_range_copy(s : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeRange::copy(self : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_range_fill(s : SortdistpigeonholeRange, v : Double) -> SortdistpigeonholeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeRange::fill(self : SortdistpigeonholeRange, v : Double) -> SortdistpigeonholeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_range_min(s : SortdistpigeonholeRange) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeRange::min(self : SortdistpigeonholeRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_range_max(s : SortdistpigeonholeRange) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeRange::max(self : SortdistpigeonholeRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_range_to_string(s : SortdistpigeonholeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeRange::to_string(self : SortdistpigeonholeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortdistpigeonholeSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_dist_pigeonhole_slice_make(size : Int) -> SortdistpigeonholeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_dist_pigeonhole_slice_len(s : SortdistpigeonholeSlice) -> Int { s.size }
+pub fn SortdistpigeonholeSlice::len(self : SortdistpigeonholeSlice) -> Int { self.size }
 
-pub fn sort_dist_pigeonhole_slice_get(s : SortdistpigeonholeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortdistpigeonholeSlice::get(self : SortdistpigeonholeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_dist_pigeonhole_slice_set(s : SortdistpigeonholeSlice, i : Int, v : Double) -> SortdistpigeonholeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeSlice::set(self : SortdistpigeonholeSlice, i : Int, v : Double) -> SortdistpigeonholeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_slice_sum(s : SortdistpigeonholeSlice) -> Double { @_common.sum(s.data) }
+pub fn SortdistpigeonholeSlice::sum(self : SortdistpigeonholeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_dist_pigeonhole_slice_mean(s : SortdistpigeonholeSlice) -> Double { @_common.mean(s.data) }
+pub fn SortdistpigeonholeSlice::mean(self : SortdistpigeonholeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_dist_pigeonhole_slice_scale(s : SortdistpigeonholeSlice, f : Double) -> SortdistpigeonholeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeSlice::scale(self : SortdistpigeonholeSlice, f : Double) -> SortdistpigeonholeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_slice_add(a : SortdistpigeonholeSlice, b : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortdistpigeonholeSlice::add(self : SortdistpigeonholeSlice, other : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_slice_copy(s : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeSlice::copy(self : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_slice_fill(s : SortdistpigeonholeSlice, v : Double) -> SortdistpigeonholeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortdistpigeonholeSlice::fill(self : SortdistpigeonholeSlice, v : Double) -> SortdistpigeonholeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_dist_pigeonhole_slice_min(s : SortdistpigeonholeSlice) -> Double { @_common.min(s.data) }
+pub fn SortdistpigeonholeSlice::min(self : SortdistpigeonholeSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_dist_pigeonhole_slice_max(s : SortdistpigeonholeSlice) -> Double { @_common.max(s.data) }
+pub fn SortdistpigeonholeSlice::max(self : SortdistpigeonholeSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_dist_pigeonhole_slice_to_string(s : SortdistpigeonholeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortdistpigeonholeSlice::to_string(self : SortdistpigeonholeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

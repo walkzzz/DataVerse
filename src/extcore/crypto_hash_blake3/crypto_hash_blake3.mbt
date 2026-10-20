@@ -351,45 +351,45 @@ pub fn crypto_hash_blake3_frame_make(size : Int) -> Cryptohashblake3Frame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_frame_len(s : Cryptohashblake3Frame) -> Int { s.size }
+pub fn Cryptohashblake3Frame::len(self : Cryptohashblake3Frame) -> Int { self.size }
 
-pub fn crypto_hash_blake3_frame_get(s : Cryptohashblake3Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Frame::get(self : Cryptohashblake3Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_frame_set(s : Cryptohashblake3Frame, i : Int, v : Double) -> Cryptohashblake3Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Frame::set(self : Cryptohashblake3Frame, i : Int, v : Double) -> Cryptohashblake3Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_frame_sum(s : Cryptohashblake3Frame) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Frame::sum(self : Cryptohashblake3Frame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_frame_mean(s : Cryptohashblake3Frame) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Frame::mean(self : Cryptohashblake3Frame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_frame_scale(s : Cryptohashblake3Frame, f : Double) -> Cryptohashblake3Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Frame::scale(self : Cryptohashblake3Frame, f : Double) -> Cryptohashblake3Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_frame_add(a : Cryptohashblake3Frame, b : Cryptohashblake3Frame) -> Cryptohashblake3Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Frame::add(self : Cryptohashblake3Frame, other : Cryptohashblake3Frame) -> Cryptohashblake3Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_frame_copy(s : Cryptohashblake3Frame) -> Cryptohashblake3Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Frame::copy(self : Cryptohashblake3Frame) -> Cryptohashblake3Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_frame_fill(s : Cryptohashblake3Frame, v : Double) -> Cryptohashblake3Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Frame::fill(self : Cryptohashblake3Frame, v : Double) -> Cryptohashblake3Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_frame_min(s : Cryptohashblake3Frame) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Frame::min(self : Cryptohashblake3Frame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_frame_max(s : Cryptohashblake3Frame) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Frame::max(self : Cryptohashblake3Frame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_frame_to_string(s : Cryptohashblake3Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Frame::to_string(self : Cryptohashblake3Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Table {
@@ -402,45 +402,45 @@ pub fn crypto_hash_blake3_table_make(size : Int) -> Cryptohashblake3Table {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_table_len(s : Cryptohashblake3Table) -> Int { s.size }
+pub fn Cryptohashblake3Table::len(self : Cryptohashblake3Table) -> Int { self.size }
 
-pub fn crypto_hash_blake3_table_get(s : Cryptohashblake3Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Table::get(self : Cryptohashblake3Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_table_set(s : Cryptohashblake3Table, i : Int, v : Double) -> Cryptohashblake3Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Table::set(self : Cryptohashblake3Table, i : Int, v : Double) -> Cryptohashblake3Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_table_sum(s : Cryptohashblake3Table) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Table::sum(self : Cryptohashblake3Table) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_table_mean(s : Cryptohashblake3Table) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Table::mean(self : Cryptohashblake3Table) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_table_scale(s : Cryptohashblake3Table, f : Double) -> Cryptohashblake3Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Table::scale(self : Cryptohashblake3Table, f : Double) -> Cryptohashblake3Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_table_add(a : Cryptohashblake3Table, b : Cryptohashblake3Table) -> Cryptohashblake3Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Table::add(self : Cryptohashblake3Table, other : Cryptohashblake3Table) -> Cryptohashblake3Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_table_copy(s : Cryptohashblake3Table) -> Cryptohashblake3Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Table::copy(self : Cryptohashblake3Table) -> Cryptohashblake3Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_table_fill(s : Cryptohashblake3Table, v : Double) -> Cryptohashblake3Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Table::fill(self : Cryptohashblake3Table, v : Double) -> Cryptohashblake3Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_table_min(s : Cryptohashblake3Table) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Table::min(self : Cryptohashblake3Table) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_table_max(s : Cryptohashblake3Table) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Table::max(self : Cryptohashblake3Table) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_table_to_string(s : Cryptohashblake3Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Table::to_string(self : Cryptohashblake3Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3GraphN {
@@ -453,45 +453,45 @@ pub fn crypto_hash_blake3_graphn_make(size : Int) -> Cryptohashblake3GraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_graphn_len(s : Cryptohashblake3GraphN) -> Int { s.size }
+pub fn Cryptohashblake3GraphN::len(self : Cryptohashblake3GraphN) -> Int { self.size }
 
-pub fn crypto_hash_blake3_graphn_get(s : Cryptohashblake3GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3GraphN::get(self : Cryptohashblake3GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_graphn_set(s : Cryptohashblake3GraphN, i : Int, v : Double) -> Cryptohashblake3GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3GraphN::set(self : Cryptohashblake3GraphN, i : Int, v : Double) -> Cryptohashblake3GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_graphn_sum(s : Cryptohashblake3GraphN) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3GraphN::sum(self : Cryptohashblake3GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_graphn_mean(s : Cryptohashblake3GraphN) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3GraphN::mean(self : Cryptohashblake3GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_graphn_scale(s : Cryptohashblake3GraphN, f : Double) -> Cryptohashblake3GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3GraphN::scale(self : Cryptohashblake3GraphN, f : Double) -> Cryptohashblake3GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_graphn_add(a : Cryptohashblake3GraphN, b : Cryptohashblake3GraphN) -> Cryptohashblake3GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3GraphN::add(self : Cryptohashblake3GraphN, other : Cryptohashblake3GraphN) -> Cryptohashblake3GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_graphn_copy(s : Cryptohashblake3GraphN) -> Cryptohashblake3GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3GraphN::copy(self : Cryptohashblake3GraphN) -> Cryptohashblake3GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_graphn_fill(s : Cryptohashblake3GraphN, v : Double) -> Cryptohashblake3GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3GraphN::fill(self : Cryptohashblake3GraphN, v : Double) -> Cryptohashblake3GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_graphn_min(s : Cryptohashblake3GraphN) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3GraphN::min(self : Cryptohashblake3GraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_graphn_max(s : Cryptohashblake3GraphN) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3GraphN::max(self : Cryptohashblake3GraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_graphn_to_string(s : Cryptohashblake3GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3GraphN::to_string(self : Cryptohashblake3GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Node {
@@ -504,45 +504,45 @@ pub fn crypto_hash_blake3_node_make(size : Int) -> Cryptohashblake3Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_node_len(s : Cryptohashblake3Node) -> Int { s.size }
+pub fn Cryptohashblake3Node::len(self : Cryptohashblake3Node) -> Int { self.size }
 
-pub fn crypto_hash_blake3_node_get(s : Cryptohashblake3Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Node::get(self : Cryptohashblake3Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_node_set(s : Cryptohashblake3Node, i : Int, v : Double) -> Cryptohashblake3Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Node::set(self : Cryptohashblake3Node, i : Int, v : Double) -> Cryptohashblake3Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_node_sum(s : Cryptohashblake3Node) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Node::sum(self : Cryptohashblake3Node) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_node_mean(s : Cryptohashblake3Node) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Node::mean(self : Cryptohashblake3Node) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_node_scale(s : Cryptohashblake3Node, f : Double) -> Cryptohashblake3Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Node::scale(self : Cryptohashblake3Node, f : Double) -> Cryptohashblake3Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_node_add(a : Cryptohashblake3Node, b : Cryptohashblake3Node) -> Cryptohashblake3Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Node::add(self : Cryptohashblake3Node, other : Cryptohashblake3Node) -> Cryptohashblake3Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_node_copy(s : Cryptohashblake3Node) -> Cryptohashblake3Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Node::copy(self : Cryptohashblake3Node) -> Cryptohashblake3Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_node_fill(s : Cryptohashblake3Node, v : Double) -> Cryptohashblake3Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Node::fill(self : Cryptohashblake3Node, v : Double) -> Cryptohashblake3Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_node_min(s : Cryptohashblake3Node) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Node::min(self : Cryptohashblake3Node) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_node_max(s : Cryptohashblake3Node) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Node::max(self : Cryptohashblake3Node) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_node_to_string(s : Cryptohashblake3Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Node::to_string(self : Cryptohashblake3Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Edge {
@@ -555,45 +555,45 @@ pub fn crypto_hash_blake3_edge_make(size : Int) -> Cryptohashblake3Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_edge_len(s : Cryptohashblake3Edge) -> Int { s.size }
+pub fn Cryptohashblake3Edge::len(self : Cryptohashblake3Edge) -> Int { self.size }
 
-pub fn crypto_hash_blake3_edge_get(s : Cryptohashblake3Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Edge::get(self : Cryptohashblake3Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_edge_set(s : Cryptohashblake3Edge, i : Int, v : Double) -> Cryptohashblake3Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Edge::set(self : Cryptohashblake3Edge, i : Int, v : Double) -> Cryptohashblake3Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_edge_sum(s : Cryptohashblake3Edge) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Edge::sum(self : Cryptohashblake3Edge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_edge_mean(s : Cryptohashblake3Edge) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Edge::mean(self : Cryptohashblake3Edge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_edge_scale(s : Cryptohashblake3Edge, f : Double) -> Cryptohashblake3Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Edge::scale(self : Cryptohashblake3Edge, f : Double) -> Cryptohashblake3Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_edge_add(a : Cryptohashblake3Edge, b : Cryptohashblake3Edge) -> Cryptohashblake3Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Edge::add(self : Cryptohashblake3Edge, other : Cryptohashblake3Edge) -> Cryptohashblake3Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_edge_copy(s : Cryptohashblake3Edge) -> Cryptohashblake3Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Edge::copy(self : Cryptohashblake3Edge) -> Cryptohashblake3Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_edge_fill(s : Cryptohashblake3Edge, v : Double) -> Cryptohashblake3Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Edge::fill(self : Cryptohashblake3Edge, v : Double) -> Cryptohashblake3Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_edge_min(s : Cryptohashblake3Edge) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Edge::min(self : Cryptohashblake3Edge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_edge_max(s : Cryptohashblake3Edge) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Edge::max(self : Cryptohashblake3Edge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_edge_to_string(s : Cryptohashblake3Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Edge::to_string(self : Cryptohashblake3Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Path {
@@ -606,45 +606,45 @@ pub fn crypto_hash_blake3_path_make(size : Int) -> Cryptohashblake3Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_path_len(s : Cryptohashblake3Path) -> Int { s.size }
+pub fn Cryptohashblake3Path::len(self : Cryptohashblake3Path) -> Int { self.size }
 
-pub fn crypto_hash_blake3_path_get(s : Cryptohashblake3Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Path::get(self : Cryptohashblake3Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_path_set(s : Cryptohashblake3Path, i : Int, v : Double) -> Cryptohashblake3Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Path::set(self : Cryptohashblake3Path, i : Int, v : Double) -> Cryptohashblake3Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_path_sum(s : Cryptohashblake3Path) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Path::sum(self : Cryptohashblake3Path) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_path_mean(s : Cryptohashblake3Path) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Path::mean(self : Cryptohashblake3Path) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_path_scale(s : Cryptohashblake3Path, f : Double) -> Cryptohashblake3Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Path::scale(self : Cryptohashblake3Path, f : Double) -> Cryptohashblake3Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_path_add(a : Cryptohashblake3Path, b : Cryptohashblake3Path) -> Cryptohashblake3Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Path::add(self : Cryptohashblake3Path, other : Cryptohashblake3Path) -> Cryptohashblake3Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_path_copy(s : Cryptohashblake3Path) -> Cryptohashblake3Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Path::copy(self : Cryptohashblake3Path) -> Cryptohashblake3Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_path_fill(s : Cryptohashblake3Path, v : Double) -> Cryptohashblake3Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Path::fill(self : Cryptohashblake3Path, v : Double) -> Cryptohashblake3Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_path_min(s : Cryptohashblake3Path) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Path::min(self : Cryptohashblake3Path) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_path_max(s : Cryptohashblake3Path) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Path::max(self : Cryptohashblake3Path) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_path_to_string(s : Cryptohashblake3Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Path::to_string(self : Cryptohashblake3Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Cluster {
@@ -657,45 +657,45 @@ pub fn crypto_hash_blake3_cluster_make(size : Int) -> Cryptohashblake3Cluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_cluster_len(s : Cryptohashblake3Cluster) -> Int { s.size }
+pub fn Cryptohashblake3Cluster::len(self : Cryptohashblake3Cluster) -> Int { self.size }
 
-pub fn crypto_hash_blake3_cluster_get(s : Cryptohashblake3Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Cluster::get(self : Cryptohashblake3Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_cluster_set(s : Cryptohashblake3Cluster, i : Int, v : Double) -> Cryptohashblake3Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cluster::set(self : Cryptohashblake3Cluster, i : Int, v : Double) -> Cryptohashblake3Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cluster_sum(s : Cryptohashblake3Cluster) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Cluster::sum(self : Cryptohashblake3Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_cluster_mean(s : Cryptohashblake3Cluster) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Cluster::mean(self : Cryptohashblake3Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_cluster_scale(s : Cryptohashblake3Cluster, f : Double) -> Cryptohashblake3Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cluster::scale(self : Cryptohashblake3Cluster, f : Double) -> Cryptohashblake3Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cluster_add(a : Cryptohashblake3Cluster, b : Cryptohashblake3Cluster) -> Cryptohashblake3Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Cluster::add(self : Cryptohashblake3Cluster, other : Cryptohashblake3Cluster) -> Cryptohashblake3Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cluster_copy(s : Cryptohashblake3Cluster) -> Cryptohashblake3Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cluster::copy(self : Cryptohashblake3Cluster) -> Cryptohashblake3Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cluster_fill(s : Cryptohashblake3Cluster, v : Double) -> Cryptohashblake3Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cluster::fill(self : Cryptohashblake3Cluster, v : Double) -> Cryptohashblake3Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cluster_min(s : Cryptohashblake3Cluster) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Cluster::min(self : Cryptohashblake3Cluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_cluster_max(s : Cryptohashblake3Cluster) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Cluster::max(self : Cryptohashblake3Cluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_cluster_to_string(s : Cryptohashblake3Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Cluster::to_string(self : Cryptohashblake3Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Model {
@@ -708,45 +708,45 @@ pub fn crypto_hash_blake3_model_make(size : Int) -> Cryptohashblake3Model {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_model_len(s : Cryptohashblake3Model) -> Int { s.size }
+pub fn Cryptohashblake3Model::len(self : Cryptohashblake3Model) -> Int { self.size }
 
-pub fn crypto_hash_blake3_model_get(s : Cryptohashblake3Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Model::get(self : Cryptohashblake3Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_model_set(s : Cryptohashblake3Model, i : Int, v : Double) -> Cryptohashblake3Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Model::set(self : Cryptohashblake3Model, i : Int, v : Double) -> Cryptohashblake3Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_model_sum(s : Cryptohashblake3Model) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Model::sum(self : Cryptohashblake3Model) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_model_mean(s : Cryptohashblake3Model) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Model::mean(self : Cryptohashblake3Model) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_model_scale(s : Cryptohashblake3Model, f : Double) -> Cryptohashblake3Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Model::scale(self : Cryptohashblake3Model, f : Double) -> Cryptohashblake3Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_model_add(a : Cryptohashblake3Model, b : Cryptohashblake3Model) -> Cryptohashblake3Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Model::add(self : Cryptohashblake3Model, other : Cryptohashblake3Model) -> Cryptohashblake3Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_model_copy(s : Cryptohashblake3Model) -> Cryptohashblake3Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Model::copy(self : Cryptohashblake3Model) -> Cryptohashblake3Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_model_fill(s : Cryptohashblake3Model, v : Double) -> Cryptohashblake3Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Model::fill(self : Cryptohashblake3Model, v : Double) -> Cryptohashblake3Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_model_min(s : Cryptohashblake3Model) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Model::min(self : Cryptohashblake3Model) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_model_max(s : Cryptohashblake3Model) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Model::max(self : Cryptohashblake3Model) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_model_to_string(s : Cryptohashblake3Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Model::to_string(self : Cryptohashblake3Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Layer {
@@ -759,45 +759,45 @@ pub fn crypto_hash_blake3_layer_make(size : Int) -> Cryptohashblake3Layer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_layer_len(s : Cryptohashblake3Layer) -> Int { s.size }
+pub fn Cryptohashblake3Layer::len(self : Cryptohashblake3Layer) -> Int { self.size }
 
-pub fn crypto_hash_blake3_layer_get(s : Cryptohashblake3Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Layer::get(self : Cryptohashblake3Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_layer_set(s : Cryptohashblake3Layer, i : Int, v : Double) -> Cryptohashblake3Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Layer::set(self : Cryptohashblake3Layer, i : Int, v : Double) -> Cryptohashblake3Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_layer_sum(s : Cryptohashblake3Layer) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Layer::sum(self : Cryptohashblake3Layer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_layer_mean(s : Cryptohashblake3Layer) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Layer::mean(self : Cryptohashblake3Layer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_layer_scale(s : Cryptohashblake3Layer, f : Double) -> Cryptohashblake3Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Layer::scale(self : Cryptohashblake3Layer, f : Double) -> Cryptohashblake3Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_layer_add(a : Cryptohashblake3Layer, b : Cryptohashblake3Layer) -> Cryptohashblake3Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Layer::add(self : Cryptohashblake3Layer, other : Cryptohashblake3Layer) -> Cryptohashblake3Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_layer_copy(s : Cryptohashblake3Layer) -> Cryptohashblake3Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Layer::copy(self : Cryptohashblake3Layer) -> Cryptohashblake3Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_layer_fill(s : Cryptohashblake3Layer, v : Double) -> Cryptohashblake3Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Layer::fill(self : Cryptohashblake3Layer, v : Double) -> Cryptohashblake3Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_layer_min(s : Cryptohashblake3Layer) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Layer::min(self : Cryptohashblake3Layer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_layer_max(s : Cryptohashblake3Layer) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Layer::max(self : Cryptohashblake3Layer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_layer_to_string(s : Cryptohashblake3Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Layer::to_string(self : Cryptohashblake3Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Buffer {
@@ -810,45 +810,45 @@ pub fn crypto_hash_blake3_buffer_make(size : Int) -> Cryptohashblake3Buffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_buffer_len(s : Cryptohashblake3Buffer) -> Int { s.size }
+pub fn Cryptohashblake3Buffer::len(self : Cryptohashblake3Buffer) -> Int { self.size }
 
-pub fn crypto_hash_blake3_buffer_get(s : Cryptohashblake3Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Buffer::get(self : Cryptohashblake3Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_buffer_set(s : Cryptohashblake3Buffer, i : Int, v : Double) -> Cryptohashblake3Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Buffer::set(self : Cryptohashblake3Buffer, i : Int, v : Double) -> Cryptohashblake3Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_buffer_sum(s : Cryptohashblake3Buffer) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Buffer::sum(self : Cryptohashblake3Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_buffer_mean(s : Cryptohashblake3Buffer) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Buffer::mean(self : Cryptohashblake3Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_buffer_scale(s : Cryptohashblake3Buffer, f : Double) -> Cryptohashblake3Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Buffer::scale(self : Cryptohashblake3Buffer, f : Double) -> Cryptohashblake3Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_buffer_add(a : Cryptohashblake3Buffer, b : Cryptohashblake3Buffer) -> Cryptohashblake3Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Buffer::add(self : Cryptohashblake3Buffer, other : Cryptohashblake3Buffer) -> Cryptohashblake3Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_buffer_copy(s : Cryptohashblake3Buffer) -> Cryptohashblake3Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Buffer::copy(self : Cryptohashblake3Buffer) -> Cryptohashblake3Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_buffer_fill(s : Cryptohashblake3Buffer, v : Double) -> Cryptohashblake3Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Buffer::fill(self : Cryptohashblake3Buffer, v : Double) -> Cryptohashblake3Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_buffer_min(s : Cryptohashblake3Buffer) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Buffer::min(self : Cryptohashblake3Buffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_buffer_max(s : Cryptohashblake3Buffer) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Buffer::max(self : Cryptohashblake3Buffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_buffer_to_string(s : Cryptohashblake3Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Buffer::to_string(self : Cryptohashblake3Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Cursor {
@@ -861,45 +861,45 @@ pub fn crypto_hash_blake3_cursor_make(size : Int) -> Cryptohashblake3Cursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_cursor_len(s : Cryptohashblake3Cursor) -> Int { s.size }
+pub fn Cryptohashblake3Cursor::len(self : Cryptohashblake3Cursor) -> Int { self.size }
 
-pub fn crypto_hash_blake3_cursor_get(s : Cryptohashblake3Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Cursor::get(self : Cryptohashblake3Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_cursor_set(s : Cryptohashblake3Cursor, i : Int, v : Double) -> Cryptohashblake3Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cursor::set(self : Cryptohashblake3Cursor, i : Int, v : Double) -> Cryptohashblake3Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cursor_sum(s : Cryptohashblake3Cursor) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Cursor::sum(self : Cryptohashblake3Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_cursor_mean(s : Cryptohashblake3Cursor) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Cursor::mean(self : Cryptohashblake3Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_cursor_scale(s : Cryptohashblake3Cursor, f : Double) -> Cryptohashblake3Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cursor::scale(self : Cryptohashblake3Cursor, f : Double) -> Cryptohashblake3Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cursor_add(a : Cryptohashblake3Cursor, b : Cryptohashblake3Cursor) -> Cryptohashblake3Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Cursor::add(self : Cryptohashblake3Cursor, other : Cryptohashblake3Cursor) -> Cryptohashblake3Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cursor_copy(s : Cryptohashblake3Cursor) -> Cryptohashblake3Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cursor::copy(self : Cryptohashblake3Cursor) -> Cryptohashblake3Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cursor_fill(s : Cryptohashblake3Cursor, v : Double) -> Cryptohashblake3Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Cursor::fill(self : Cryptohashblake3Cursor, v : Double) -> Cryptohashblake3Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_cursor_min(s : Cryptohashblake3Cursor) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Cursor::min(self : Cryptohashblake3Cursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_cursor_max(s : Cryptohashblake3Cursor) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Cursor::max(self : Cryptohashblake3Cursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_cursor_to_string(s : Cryptohashblake3Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Cursor::to_string(self : Cryptohashblake3Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3View {
@@ -912,45 +912,45 @@ pub fn crypto_hash_blake3_view_make(size : Int) -> Cryptohashblake3View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_view_len(s : Cryptohashblake3View) -> Int { s.size }
+pub fn Cryptohashblake3View::len(self : Cryptohashblake3View) -> Int { self.size }
 
-pub fn crypto_hash_blake3_view_get(s : Cryptohashblake3View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3View::get(self : Cryptohashblake3View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_view_set(s : Cryptohashblake3View, i : Int, v : Double) -> Cryptohashblake3View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3View::set(self : Cryptohashblake3View, i : Int, v : Double) -> Cryptohashblake3View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_view_sum(s : Cryptohashblake3View) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3View::sum(self : Cryptohashblake3View) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_view_mean(s : Cryptohashblake3View) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3View::mean(self : Cryptohashblake3View) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_view_scale(s : Cryptohashblake3View, f : Double) -> Cryptohashblake3View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3View::scale(self : Cryptohashblake3View, f : Double) -> Cryptohashblake3View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_view_add(a : Cryptohashblake3View, b : Cryptohashblake3View) -> Cryptohashblake3View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3View::add(self : Cryptohashblake3View, other : Cryptohashblake3View) -> Cryptohashblake3View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_view_copy(s : Cryptohashblake3View) -> Cryptohashblake3View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3View::copy(self : Cryptohashblake3View) -> Cryptohashblake3View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_view_fill(s : Cryptohashblake3View, v : Double) -> Cryptohashblake3View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3View::fill(self : Cryptohashblake3View, v : Double) -> Cryptohashblake3View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_view_min(s : Cryptohashblake3View) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3View::min(self : Cryptohashblake3View) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_view_max(s : Cryptohashblake3View) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3View::max(self : Cryptohashblake3View) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_view_to_string(s : Cryptohashblake3View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3View::to_string(self : Cryptohashblake3View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Range {
@@ -963,45 +963,45 @@ pub fn crypto_hash_blake3_range_make(size : Int) -> Cryptohashblake3Range {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_range_len(s : Cryptohashblake3Range) -> Int { s.size }
+pub fn Cryptohashblake3Range::len(self : Cryptohashblake3Range) -> Int { self.size }
 
-pub fn crypto_hash_blake3_range_get(s : Cryptohashblake3Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Range::get(self : Cryptohashblake3Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_range_set(s : Cryptohashblake3Range, i : Int, v : Double) -> Cryptohashblake3Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Range::set(self : Cryptohashblake3Range, i : Int, v : Double) -> Cryptohashblake3Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_range_sum(s : Cryptohashblake3Range) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Range::sum(self : Cryptohashblake3Range) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_range_mean(s : Cryptohashblake3Range) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Range::mean(self : Cryptohashblake3Range) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_range_scale(s : Cryptohashblake3Range, f : Double) -> Cryptohashblake3Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Range::scale(self : Cryptohashblake3Range, f : Double) -> Cryptohashblake3Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_range_add(a : Cryptohashblake3Range, b : Cryptohashblake3Range) -> Cryptohashblake3Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Range::add(self : Cryptohashblake3Range, other : Cryptohashblake3Range) -> Cryptohashblake3Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_range_copy(s : Cryptohashblake3Range) -> Cryptohashblake3Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Range::copy(self : Cryptohashblake3Range) -> Cryptohashblake3Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_range_fill(s : Cryptohashblake3Range, v : Double) -> Cryptohashblake3Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Range::fill(self : Cryptohashblake3Range, v : Double) -> Cryptohashblake3Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_range_min(s : Cryptohashblake3Range) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Range::min(self : Cryptohashblake3Range) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_range_max(s : Cryptohashblake3Range) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Range::max(self : Cryptohashblake3Range) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_range_to_string(s : Cryptohashblake3Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Range::to_string(self : Cryptohashblake3Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashblake3Slice {
@@ -1014,44 +1014,44 @@ pub fn crypto_hash_blake3_slice_make(size : Int) -> Cryptohashblake3Slice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_blake3_slice_len(s : Cryptohashblake3Slice) -> Int { s.size }
+pub fn Cryptohashblake3Slice::len(self : Cryptohashblake3Slice) -> Int { self.size }
 
-pub fn crypto_hash_blake3_slice_get(s : Cryptohashblake3Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashblake3Slice::get(self : Cryptohashblake3Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_blake3_slice_set(s : Cryptohashblake3Slice, i : Int, v : Double) -> Cryptohashblake3Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Slice::set(self : Cryptohashblake3Slice, i : Int, v : Double) -> Cryptohashblake3Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_slice_sum(s : Cryptohashblake3Slice) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashblake3Slice::sum(self : Cryptohashblake3Slice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_blake3_slice_mean(s : Cryptohashblake3Slice) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashblake3Slice::mean(self : Cryptohashblake3Slice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_blake3_slice_scale(s : Cryptohashblake3Slice, f : Double) -> Cryptohashblake3Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Slice::scale(self : Cryptohashblake3Slice, f : Double) -> Cryptohashblake3Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_slice_add(a : Cryptohashblake3Slice, b : Cryptohashblake3Slice) -> Cryptohashblake3Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashblake3Slice::add(self : Cryptohashblake3Slice, other : Cryptohashblake3Slice) -> Cryptohashblake3Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_slice_copy(s : Cryptohashblake3Slice) -> Cryptohashblake3Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Slice::copy(self : Cryptohashblake3Slice) -> Cryptohashblake3Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_slice_fill(s : Cryptohashblake3Slice, v : Double) -> Cryptohashblake3Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashblake3Slice::fill(self : Cryptohashblake3Slice, v : Double) -> Cryptohashblake3Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_blake3_slice_min(s : Cryptohashblake3Slice) -> Double { @_common.min(s.data) }
+pub fn Cryptohashblake3Slice::min(self : Cryptohashblake3Slice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_blake3_slice_max(s : Cryptohashblake3Slice) -> Double { @_common.max(s.data) }
+pub fn Cryptohashblake3Slice::max(self : Cryptohashblake3Slice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_blake3_slice_to_string(s : Cryptohashblake3Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashblake3Slice::to_string(self : Cryptohashblake3Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

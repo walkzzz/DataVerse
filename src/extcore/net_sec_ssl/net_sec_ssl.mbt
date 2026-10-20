@@ -351,45 +351,45 @@ pub fn net_sec_ssl_frame_make(size : Int) -> NetsecsslFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_frame_len(s : NetsecsslFrame) -> Int { s.size }
+pub fn NetsecsslFrame::len(self : NetsecsslFrame) -> Int { self.size }
 
-pub fn net_sec_ssl_frame_get(s : NetsecsslFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslFrame::get(self : NetsecsslFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_frame_set(s : NetsecsslFrame, i : Int, v : Double) -> NetsecsslFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslFrame::set(self : NetsecsslFrame, i : Int, v : Double) -> NetsecsslFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_frame_sum(s : NetsecsslFrame) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslFrame::sum(self : NetsecsslFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_frame_mean(s : NetsecsslFrame) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslFrame::mean(self : NetsecsslFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_frame_scale(s : NetsecsslFrame, f : Double) -> NetsecsslFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslFrame::scale(self : NetsecsslFrame, f : Double) -> NetsecsslFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_frame_add(a : NetsecsslFrame, b : NetsecsslFrame) -> NetsecsslFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslFrame::add(self : NetsecsslFrame, other : NetsecsslFrame) -> NetsecsslFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_frame_copy(s : NetsecsslFrame) -> NetsecsslFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslFrame::copy(self : NetsecsslFrame) -> NetsecsslFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_frame_fill(s : NetsecsslFrame, v : Double) -> NetsecsslFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslFrame::fill(self : NetsecsslFrame, v : Double) -> NetsecsslFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_frame_min(s : NetsecsslFrame) -> Double { @_common.min(s.data) }
+pub fn NetsecsslFrame::min(self : NetsecsslFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_frame_max(s : NetsecsslFrame) -> Double { @_common.max(s.data) }
+pub fn NetsecsslFrame::max(self : NetsecsslFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_frame_to_string(s : NetsecsslFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslFrame::to_string(self : NetsecsslFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslTable {
@@ -402,45 +402,45 @@ pub fn net_sec_ssl_table_make(size : Int) -> NetsecsslTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_table_len(s : NetsecsslTable) -> Int { s.size }
+pub fn NetsecsslTable::len(self : NetsecsslTable) -> Int { self.size }
 
-pub fn net_sec_ssl_table_get(s : NetsecsslTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslTable::get(self : NetsecsslTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_table_set(s : NetsecsslTable, i : Int, v : Double) -> NetsecsslTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslTable::set(self : NetsecsslTable, i : Int, v : Double) -> NetsecsslTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_table_sum(s : NetsecsslTable) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslTable::sum(self : NetsecsslTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_table_mean(s : NetsecsslTable) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslTable::mean(self : NetsecsslTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_table_scale(s : NetsecsslTable, f : Double) -> NetsecsslTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslTable::scale(self : NetsecsslTable, f : Double) -> NetsecsslTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_table_add(a : NetsecsslTable, b : NetsecsslTable) -> NetsecsslTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslTable::add(self : NetsecsslTable, other : NetsecsslTable) -> NetsecsslTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_table_copy(s : NetsecsslTable) -> NetsecsslTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslTable::copy(self : NetsecsslTable) -> NetsecsslTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_table_fill(s : NetsecsslTable, v : Double) -> NetsecsslTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslTable::fill(self : NetsecsslTable, v : Double) -> NetsecsslTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_table_min(s : NetsecsslTable) -> Double { @_common.min(s.data) }
+pub fn NetsecsslTable::min(self : NetsecsslTable) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_table_max(s : NetsecsslTable) -> Double { @_common.max(s.data) }
+pub fn NetsecsslTable::max(self : NetsecsslTable) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_table_to_string(s : NetsecsslTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslTable::to_string(self : NetsecsslTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslGraphN {
@@ -453,45 +453,45 @@ pub fn net_sec_ssl_graphn_make(size : Int) -> NetsecsslGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_graphn_len(s : NetsecsslGraphN) -> Int { s.size }
+pub fn NetsecsslGraphN::len(self : NetsecsslGraphN) -> Int { self.size }
 
-pub fn net_sec_ssl_graphn_get(s : NetsecsslGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslGraphN::get(self : NetsecsslGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_graphn_set(s : NetsecsslGraphN, i : Int, v : Double) -> NetsecsslGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslGraphN::set(self : NetsecsslGraphN, i : Int, v : Double) -> NetsecsslGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_graphn_sum(s : NetsecsslGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslGraphN::sum(self : NetsecsslGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_graphn_mean(s : NetsecsslGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslGraphN::mean(self : NetsecsslGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_graphn_scale(s : NetsecsslGraphN, f : Double) -> NetsecsslGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslGraphN::scale(self : NetsecsslGraphN, f : Double) -> NetsecsslGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_graphn_add(a : NetsecsslGraphN, b : NetsecsslGraphN) -> NetsecsslGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslGraphN::add(self : NetsecsslGraphN, other : NetsecsslGraphN) -> NetsecsslGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_graphn_copy(s : NetsecsslGraphN) -> NetsecsslGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslGraphN::copy(self : NetsecsslGraphN) -> NetsecsslGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_graphn_fill(s : NetsecsslGraphN, v : Double) -> NetsecsslGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslGraphN::fill(self : NetsecsslGraphN, v : Double) -> NetsecsslGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_graphn_min(s : NetsecsslGraphN) -> Double { @_common.min(s.data) }
+pub fn NetsecsslGraphN::min(self : NetsecsslGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_graphn_max(s : NetsecsslGraphN) -> Double { @_common.max(s.data) }
+pub fn NetsecsslGraphN::max(self : NetsecsslGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_graphn_to_string(s : NetsecsslGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslGraphN::to_string(self : NetsecsslGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslNode {
@@ -504,45 +504,45 @@ pub fn net_sec_ssl_node_make(size : Int) -> NetsecsslNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_node_len(s : NetsecsslNode) -> Int { s.size }
+pub fn NetsecsslNode::len(self : NetsecsslNode) -> Int { self.size }
 
-pub fn net_sec_ssl_node_get(s : NetsecsslNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslNode::get(self : NetsecsslNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_node_set(s : NetsecsslNode, i : Int, v : Double) -> NetsecsslNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslNode::set(self : NetsecsslNode, i : Int, v : Double) -> NetsecsslNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_node_sum(s : NetsecsslNode) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslNode::sum(self : NetsecsslNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_node_mean(s : NetsecsslNode) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslNode::mean(self : NetsecsslNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_node_scale(s : NetsecsslNode, f : Double) -> NetsecsslNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslNode::scale(self : NetsecsslNode, f : Double) -> NetsecsslNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_node_add(a : NetsecsslNode, b : NetsecsslNode) -> NetsecsslNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslNode::add(self : NetsecsslNode, other : NetsecsslNode) -> NetsecsslNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_node_copy(s : NetsecsslNode) -> NetsecsslNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslNode::copy(self : NetsecsslNode) -> NetsecsslNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_node_fill(s : NetsecsslNode, v : Double) -> NetsecsslNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslNode::fill(self : NetsecsslNode, v : Double) -> NetsecsslNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_node_min(s : NetsecsslNode) -> Double { @_common.min(s.data) }
+pub fn NetsecsslNode::min(self : NetsecsslNode) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_node_max(s : NetsecsslNode) -> Double { @_common.max(s.data) }
+pub fn NetsecsslNode::max(self : NetsecsslNode) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_node_to_string(s : NetsecsslNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslNode::to_string(self : NetsecsslNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslEdge {
@@ -555,45 +555,45 @@ pub fn net_sec_ssl_edge_make(size : Int) -> NetsecsslEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_edge_len(s : NetsecsslEdge) -> Int { s.size }
+pub fn NetsecsslEdge::len(self : NetsecsslEdge) -> Int { self.size }
 
-pub fn net_sec_ssl_edge_get(s : NetsecsslEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslEdge::get(self : NetsecsslEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_edge_set(s : NetsecsslEdge, i : Int, v : Double) -> NetsecsslEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslEdge::set(self : NetsecsslEdge, i : Int, v : Double) -> NetsecsslEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_edge_sum(s : NetsecsslEdge) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslEdge::sum(self : NetsecsslEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_edge_mean(s : NetsecsslEdge) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslEdge::mean(self : NetsecsslEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_edge_scale(s : NetsecsslEdge, f : Double) -> NetsecsslEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslEdge::scale(self : NetsecsslEdge, f : Double) -> NetsecsslEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_edge_add(a : NetsecsslEdge, b : NetsecsslEdge) -> NetsecsslEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslEdge::add(self : NetsecsslEdge, other : NetsecsslEdge) -> NetsecsslEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_edge_copy(s : NetsecsslEdge) -> NetsecsslEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslEdge::copy(self : NetsecsslEdge) -> NetsecsslEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_edge_fill(s : NetsecsslEdge, v : Double) -> NetsecsslEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslEdge::fill(self : NetsecsslEdge, v : Double) -> NetsecsslEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_edge_min(s : NetsecsslEdge) -> Double { @_common.min(s.data) }
+pub fn NetsecsslEdge::min(self : NetsecsslEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_edge_max(s : NetsecsslEdge) -> Double { @_common.max(s.data) }
+pub fn NetsecsslEdge::max(self : NetsecsslEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_edge_to_string(s : NetsecsslEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslEdge::to_string(self : NetsecsslEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslPath {
@@ -606,45 +606,45 @@ pub fn net_sec_ssl_path_make(size : Int) -> NetsecsslPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_path_len(s : NetsecsslPath) -> Int { s.size }
+pub fn NetsecsslPath::len(self : NetsecsslPath) -> Int { self.size }
 
-pub fn net_sec_ssl_path_get(s : NetsecsslPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslPath::get(self : NetsecsslPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_path_set(s : NetsecsslPath, i : Int, v : Double) -> NetsecsslPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslPath::set(self : NetsecsslPath, i : Int, v : Double) -> NetsecsslPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_path_sum(s : NetsecsslPath) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslPath::sum(self : NetsecsslPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_path_mean(s : NetsecsslPath) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslPath::mean(self : NetsecsslPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_path_scale(s : NetsecsslPath, f : Double) -> NetsecsslPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslPath::scale(self : NetsecsslPath, f : Double) -> NetsecsslPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_path_add(a : NetsecsslPath, b : NetsecsslPath) -> NetsecsslPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslPath::add(self : NetsecsslPath, other : NetsecsslPath) -> NetsecsslPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_path_copy(s : NetsecsslPath) -> NetsecsslPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslPath::copy(self : NetsecsslPath) -> NetsecsslPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_path_fill(s : NetsecsslPath, v : Double) -> NetsecsslPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslPath::fill(self : NetsecsslPath, v : Double) -> NetsecsslPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_path_min(s : NetsecsslPath) -> Double { @_common.min(s.data) }
+pub fn NetsecsslPath::min(self : NetsecsslPath) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_path_max(s : NetsecsslPath) -> Double { @_common.max(s.data) }
+pub fn NetsecsslPath::max(self : NetsecsslPath) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_path_to_string(s : NetsecsslPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslPath::to_string(self : NetsecsslPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslCluster {
@@ -657,45 +657,45 @@ pub fn net_sec_ssl_cluster_make(size : Int) -> NetsecsslCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_cluster_len(s : NetsecsslCluster) -> Int { s.size }
+pub fn NetsecsslCluster::len(self : NetsecsslCluster) -> Int { self.size }
 
-pub fn net_sec_ssl_cluster_get(s : NetsecsslCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslCluster::get(self : NetsecsslCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_cluster_set(s : NetsecsslCluster, i : Int, v : Double) -> NetsecsslCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslCluster::set(self : NetsecsslCluster, i : Int, v : Double) -> NetsecsslCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cluster_sum(s : NetsecsslCluster) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslCluster::sum(self : NetsecsslCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_cluster_mean(s : NetsecsslCluster) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslCluster::mean(self : NetsecsslCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_cluster_scale(s : NetsecsslCluster, f : Double) -> NetsecsslCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslCluster::scale(self : NetsecsslCluster, f : Double) -> NetsecsslCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cluster_add(a : NetsecsslCluster, b : NetsecsslCluster) -> NetsecsslCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslCluster::add(self : NetsecsslCluster, other : NetsecsslCluster) -> NetsecsslCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cluster_copy(s : NetsecsslCluster) -> NetsecsslCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslCluster::copy(self : NetsecsslCluster) -> NetsecsslCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cluster_fill(s : NetsecsslCluster, v : Double) -> NetsecsslCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslCluster::fill(self : NetsecsslCluster, v : Double) -> NetsecsslCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cluster_min(s : NetsecsslCluster) -> Double { @_common.min(s.data) }
+pub fn NetsecsslCluster::min(self : NetsecsslCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_cluster_max(s : NetsecsslCluster) -> Double { @_common.max(s.data) }
+pub fn NetsecsslCluster::max(self : NetsecsslCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_cluster_to_string(s : NetsecsslCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslCluster::to_string(self : NetsecsslCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslModel {
@@ -708,45 +708,45 @@ pub fn net_sec_ssl_model_make(size : Int) -> NetsecsslModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_model_len(s : NetsecsslModel) -> Int { s.size }
+pub fn NetsecsslModel::len(self : NetsecsslModel) -> Int { self.size }
 
-pub fn net_sec_ssl_model_get(s : NetsecsslModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslModel::get(self : NetsecsslModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_model_set(s : NetsecsslModel, i : Int, v : Double) -> NetsecsslModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslModel::set(self : NetsecsslModel, i : Int, v : Double) -> NetsecsslModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_model_sum(s : NetsecsslModel) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslModel::sum(self : NetsecsslModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_model_mean(s : NetsecsslModel) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslModel::mean(self : NetsecsslModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_model_scale(s : NetsecsslModel, f : Double) -> NetsecsslModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslModel::scale(self : NetsecsslModel, f : Double) -> NetsecsslModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_model_add(a : NetsecsslModel, b : NetsecsslModel) -> NetsecsslModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslModel::add(self : NetsecsslModel, other : NetsecsslModel) -> NetsecsslModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_model_copy(s : NetsecsslModel) -> NetsecsslModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslModel::copy(self : NetsecsslModel) -> NetsecsslModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_model_fill(s : NetsecsslModel, v : Double) -> NetsecsslModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslModel::fill(self : NetsecsslModel, v : Double) -> NetsecsslModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_model_min(s : NetsecsslModel) -> Double { @_common.min(s.data) }
+pub fn NetsecsslModel::min(self : NetsecsslModel) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_model_max(s : NetsecsslModel) -> Double { @_common.max(s.data) }
+pub fn NetsecsslModel::max(self : NetsecsslModel) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_model_to_string(s : NetsecsslModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslModel::to_string(self : NetsecsslModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslLayer {
@@ -759,45 +759,45 @@ pub fn net_sec_ssl_layer_make(size : Int) -> NetsecsslLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_layer_len(s : NetsecsslLayer) -> Int { s.size }
+pub fn NetsecsslLayer::len(self : NetsecsslLayer) -> Int { self.size }
 
-pub fn net_sec_ssl_layer_get(s : NetsecsslLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslLayer::get(self : NetsecsslLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_layer_set(s : NetsecsslLayer, i : Int, v : Double) -> NetsecsslLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslLayer::set(self : NetsecsslLayer, i : Int, v : Double) -> NetsecsslLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_layer_sum(s : NetsecsslLayer) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslLayer::sum(self : NetsecsslLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_layer_mean(s : NetsecsslLayer) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslLayer::mean(self : NetsecsslLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_layer_scale(s : NetsecsslLayer, f : Double) -> NetsecsslLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslLayer::scale(self : NetsecsslLayer, f : Double) -> NetsecsslLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_layer_add(a : NetsecsslLayer, b : NetsecsslLayer) -> NetsecsslLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslLayer::add(self : NetsecsslLayer, other : NetsecsslLayer) -> NetsecsslLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_layer_copy(s : NetsecsslLayer) -> NetsecsslLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslLayer::copy(self : NetsecsslLayer) -> NetsecsslLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_layer_fill(s : NetsecsslLayer, v : Double) -> NetsecsslLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslLayer::fill(self : NetsecsslLayer, v : Double) -> NetsecsslLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_layer_min(s : NetsecsslLayer) -> Double { @_common.min(s.data) }
+pub fn NetsecsslLayer::min(self : NetsecsslLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_layer_max(s : NetsecsslLayer) -> Double { @_common.max(s.data) }
+pub fn NetsecsslLayer::max(self : NetsecsslLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_layer_to_string(s : NetsecsslLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslLayer::to_string(self : NetsecsslLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslBuffer {
@@ -810,45 +810,45 @@ pub fn net_sec_ssl_buffer_make(size : Int) -> NetsecsslBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_buffer_len(s : NetsecsslBuffer) -> Int { s.size }
+pub fn NetsecsslBuffer::len(self : NetsecsslBuffer) -> Int { self.size }
 
-pub fn net_sec_ssl_buffer_get(s : NetsecsslBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslBuffer::get(self : NetsecsslBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_buffer_set(s : NetsecsslBuffer, i : Int, v : Double) -> NetsecsslBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslBuffer::set(self : NetsecsslBuffer, i : Int, v : Double) -> NetsecsslBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_buffer_sum(s : NetsecsslBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslBuffer::sum(self : NetsecsslBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_buffer_mean(s : NetsecsslBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslBuffer::mean(self : NetsecsslBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_buffer_scale(s : NetsecsslBuffer, f : Double) -> NetsecsslBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslBuffer::scale(self : NetsecsslBuffer, f : Double) -> NetsecsslBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_buffer_add(a : NetsecsslBuffer, b : NetsecsslBuffer) -> NetsecsslBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslBuffer::add(self : NetsecsslBuffer, other : NetsecsslBuffer) -> NetsecsslBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_buffer_copy(s : NetsecsslBuffer) -> NetsecsslBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslBuffer::copy(self : NetsecsslBuffer) -> NetsecsslBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_buffer_fill(s : NetsecsslBuffer, v : Double) -> NetsecsslBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslBuffer::fill(self : NetsecsslBuffer, v : Double) -> NetsecsslBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_buffer_min(s : NetsecsslBuffer) -> Double { @_common.min(s.data) }
+pub fn NetsecsslBuffer::min(self : NetsecsslBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_buffer_max(s : NetsecsslBuffer) -> Double { @_common.max(s.data) }
+pub fn NetsecsslBuffer::max(self : NetsecsslBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_buffer_to_string(s : NetsecsslBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslBuffer::to_string(self : NetsecsslBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslCursor {
@@ -861,45 +861,45 @@ pub fn net_sec_ssl_cursor_make(size : Int) -> NetsecsslCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_cursor_len(s : NetsecsslCursor) -> Int { s.size }
+pub fn NetsecsslCursor::len(self : NetsecsslCursor) -> Int { self.size }
 
-pub fn net_sec_ssl_cursor_get(s : NetsecsslCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslCursor::get(self : NetsecsslCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_cursor_set(s : NetsecsslCursor, i : Int, v : Double) -> NetsecsslCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslCursor::set(self : NetsecsslCursor, i : Int, v : Double) -> NetsecsslCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cursor_sum(s : NetsecsslCursor) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslCursor::sum(self : NetsecsslCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_cursor_mean(s : NetsecsslCursor) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslCursor::mean(self : NetsecsslCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_cursor_scale(s : NetsecsslCursor, f : Double) -> NetsecsslCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslCursor::scale(self : NetsecsslCursor, f : Double) -> NetsecsslCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cursor_add(a : NetsecsslCursor, b : NetsecsslCursor) -> NetsecsslCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslCursor::add(self : NetsecsslCursor, other : NetsecsslCursor) -> NetsecsslCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cursor_copy(s : NetsecsslCursor) -> NetsecsslCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslCursor::copy(self : NetsecsslCursor) -> NetsecsslCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cursor_fill(s : NetsecsslCursor, v : Double) -> NetsecsslCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslCursor::fill(self : NetsecsslCursor, v : Double) -> NetsecsslCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_cursor_min(s : NetsecsslCursor) -> Double { @_common.min(s.data) }
+pub fn NetsecsslCursor::min(self : NetsecsslCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_cursor_max(s : NetsecsslCursor) -> Double { @_common.max(s.data) }
+pub fn NetsecsslCursor::max(self : NetsecsslCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_cursor_to_string(s : NetsecsslCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslCursor::to_string(self : NetsecsslCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslView {
@@ -912,45 +912,45 @@ pub fn net_sec_ssl_view_make(size : Int) -> NetsecsslView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_view_len(s : NetsecsslView) -> Int { s.size }
+pub fn NetsecsslView::len(self : NetsecsslView) -> Int { self.size }
 
-pub fn net_sec_ssl_view_get(s : NetsecsslView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslView::get(self : NetsecsslView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_view_set(s : NetsecsslView, i : Int, v : Double) -> NetsecsslView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslView::set(self : NetsecsslView, i : Int, v : Double) -> NetsecsslView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_view_sum(s : NetsecsslView) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslView::sum(self : NetsecsslView) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_view_mean(s : NetsecsslView) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslView::mean(self : NetsecsslView) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_view_scale(s : NetsecsslView, f : Double) -> NetsecsslView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslView::scale(self : NetsecsslView, f : Double) -> NetsecsslView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_view_add(a : NetsecsslView, b : NetsecsslView) -> NetsecsslView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslView::add(self : NetsecsslView, other : NetsecsslView) -> NetsecsslView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_view_copy(s : NetsecsslView) -> NetsecsslView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslView::copy(self : NetsecsslView) -> NetsecsslView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_view_fill(s : NetsecsslView, v : Double) -> NetsecsslView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslView::fill(self : NetsecsslView, v : Double) -> NetsecsslView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_view_min(s : NetsecsslView) -> Double { @_common.min(s.data) }
+pub fn NetsecsslView::min(self : NetsecsslView) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_view_max(s : NetsecsslView) -> Double { @_common.max(s.data) }
+pub fn NetsecsslView::max(self : NetsecsslView) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_view_to_string(s : NetsecsslView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslView::to_string(self : NetsecsslView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslRange {
@@ -963,45 +963,45 @@ pub fn net_sec_ssl_range_make(size : Int) -> NetsecsslRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_range_len(s : NetsecsslRange) -> Int { s.size }
+pub fn NetsecsslRange::len(self : NetsecsslRange) -> Int { self.size }
 
-pub fn net_sec_ssl_range_get(s : NetsecsslRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslRange::get(self : NetsecsslRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_range_set(s : NetsecsslRange, i : Int, v : Double) -> NetsecsslRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslRange::set(self : NetsecsslRange, i : Int, v : Double) -> NetsecsslRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_range_sum(s : NetsecsslRange) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslRange::sum(self : NetsecsslRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_range_mean(s : NetsecsslRange) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslRange::mean(self : NetsecsslRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_range_scale(s : NetsecsslRange, f : Double) -> NetsecsslRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslRange::scale(self : NetsecsslRange, f : Double) -> NetsecsslRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_range_add(a : NetsecsslRange, b : NetsecsslRange) -> NetsecsslRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslRange::add(self : NetsecsslRange, other : NetsecsslRange) -> NetsecsslRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_range_copy(s : NetsecsslRange) -> NetsecsslRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslRange::copy(self : NetsecsslRange) -> NetsecsslRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_range_fill(s : NetsecsslRange, v : Double) -> NetsecsslRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslRange::fill(self : NetsecsslRange, v : Double) -> NetsecsslRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_range_min(s : NetsecsslRange) -> Double { @_common.min(s.data) }
+pub fn NetsecsslRange::min(self : NetsecsslRange) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_range_max(s : NetsecsslRange) -> Double { @_common.max(s.data) }
+pub fn NetsecsslRange::max(self : NetsecsslRange) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_range_to_string(s : NetsecsslRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslRange::to_string(self : NetsecsslRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecsslSlice {
@@ -1014,44 +1014,44 @@ pub fn net_sec_ssl_slice_make(size : Int) -> NetsecsslSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_ssl_slice_len(s : NetsecsslSlice) -> Int { s.size }
+pub fn NetsecsslSlice::len(self : NetsecsslSlice) -> Int { self.size }
 
-pub fn net_sec_ssl_slice_get(s : NetsecsslSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecsslSlice::get(self : NetsecsslSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_ssl_slice_set(s : NetsecsslSlice, i : Int, v : Double) -> NetsecsslSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecsslSlice::set(self : NetsecsslSlice, i : Int, v : Double) -> NetsecsslSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_slice_sum(s : NetsecsslSlice) -> Double { @_common.sum(s.data) }
+pub fn NetsecsslSlice::sum(self : NetsecsslSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_ssl_slice_mean(s : NetsecsslSlice) -> Double { @_common.mean(s.data) }
+pub fn NetsecsslSlice::mean(self : NetsecsslSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_ssl_slice_scale(s : NetsecsslSlice, f : Double) -> NetsecsslSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecsslSlice::scale(self : NetsecsslSlice, f : Double) -> NetsecsslSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_slice_add(a : NetsecsslSlice, b : NetsecsslSlice) -> NetsecsslSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecsslSlice::add(self : NetsecsslSlice, other : NetsecsslSlice) -> NetsecsslSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_ssl_slice_copy(s : NetsecsslSlice) -> NetsecsslSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecsslSlice::copy(self : NetsecsslSlice) -> NetsecsslSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_slice_fill(s : NetsecsslSlice, v : Double) -> NetsecsslSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecsslSlice::fill(self : NetsecsslSlice, v : Double) -> NetsecsslSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_ssl_slice_min(s : NetsecsslSlice) -> Double { @_common.min(s.data) }
+pub fn NetsecsslSlice::min(self : NetsecsslSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_ssl_slice_max(s : NetsecsslSlice) -> Double { @_common.max(s.data) }
+pub fn NetsecsslSlice::max(self : NetsecsslSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_ssl_slice_to_string(s : NetsecsslSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecsslSlice::to_string(self : NetsecsslSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

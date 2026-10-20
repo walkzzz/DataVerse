@@ -351,45 +351,45 @@ pub fn math_quadratic_prog_frame_make(size : Int) -> MathquadraticprogFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_frame_len(s : MathquadraticprogFrame) -> Int { s.size }
+pub fn MathquadraticprogFrame::len(self : MathquadraticprogFrame) -> Int { self.size }
 
-pub fn math_quadratic_prog_frame_get(s : MathquadraticprogFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogFrame::get(self : MathquadraticprogFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_frame_set(s : MathquadraticprogFrame, i : Int, v : Double) -> MathquadraticprogFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogFrame::set(self : MathquadraticprogFrame, i : Int, v : Double) -> MathquadraticprogFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_frame_sum(s : MathquadraticprogFrame) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogFrame::sum(self : MathquadraticprogFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_frame_mean(s : MathquadraticprogFrame) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogFrame::mean(self : MathquadraticprogFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_frame_scale(s : MathquadraticprogFrame, f : Double) -> MathquadraticprogFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogFrame::scale(self : MathquadraticprogFrame, f : Double) -> MathquadraticprogFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_frame_add(a : MathquadraticprogFrame, b : MathquadraticprogFrame) -> MathquadraticprogFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogFrame::add(self : MathquadraticprogFrame, other : MathquadraticprogFrame) -> MathquadraticprogFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_frame_copy(s : MathquadraticprogFrame) -> MathquadraticprogFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogFrame::copy(self : MathquadraticprogFrame) -> MathquadraticprogFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_frame_fill(s : MathquadraticprogFrame, v : Double) -> MathquadraticprogFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogFrame::fill(self : MathquadraticprogFrame, v : Double) -> MathquadraticprogFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_frame_min(s : MathquadraticprogFrame) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogFrame::min(self : MathquadraticprogFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_frame_max(s : MathquadraticprogFrame) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogFrame::max(self : MathquadraticprogFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_frame_to_string(s : MathquadraticprogFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogFrame::to_string(self : MathquadraticprogFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogTable {
@@ -402,45 +402,45 @@ pub fn math_quadratic_prog_table_make(size : Int) -> MathquadraticprogTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_table_len(s : MathquadraticprogTable) -> Int { s.size }
+pub fn MathquadraticprogTable::len(self : MathquadraticprogTable) -> Int { self.size }
 
-pub fn math_quadratic_prog_table_get(s : MathquadraticprogTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogTable::get(self : MathquadraticprogTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_table_set(s : MathquadraticprogTable, i : Int, v : Double) -> MathquadraticprogTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogTable::set(self : MathquadraticprogTable, i : Int, v : Double) -> MathquadraticprogTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_table_sum(s : MathquadraticprogTable) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogTable::sum(self : MathquadraticprogTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_table_mean(s : MathquadraticprogTable) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogTable::mean(self : MathquadraticprogTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_table_scale(s : MathquadraticprogTable, f : Double) -> MathquadraticprogTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogTable::scale(self : MathquadraticprogTable, f : Double) -> MathquadraticprogTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_table_add(a : MathquadraticprogTable, b : MathquadraticprogTable) -> MathquadraticprogTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogTable::add(self : MathquadraticprogTable, other : MathquadraticprogTable) -> MathquadraticprogTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_table_copy(s : MathquadraticprogTable) -> MathquadraticprogTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogTable::copy(self : MathquadraticprogTable) -> MathquadraticprogTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_table_fill(s : MathquadraticprogTable, v : Double) -> MathquadraticprogTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogTable::fill(self : MathquadraticprogTable, v : Double) -> MathquadraticprogTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_table_min(s : MathquadraticprogTable) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogTable::min(self : MathquadraticprogTable) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_table_max(s : MathquadraticprogTable) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogTable::max(self : MathquadraticprogTable) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_table_to_string(s : MathquadraticprogTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogTable::to_string(self : MathquadraticprogTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogGraphN {
@@ -453,45 +453,45 @@ pub fn math_quadratic_prog_graphn_make(size : Int) -> MathquadraticprogGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_graphn_len(s : MathquadraticprogGraphN) -> Int { s.size }
+pub fn MathquadraticprogGraphN::len(self : MathquadraticprogGraphN) -> Int { self.size }
 
-pub fn math_quadratic_prog_graphn_get(s : MathquadraticprogGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogGraphN::get(self : MathquadraticprogGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_graphn_set(s : MathquadraticprogGraphN, i : Int, v : Double) -> MathquadraticprogGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogGraphN::set(self : MathquadraticprogGraphN, i : Int, v : Double) -> MathquadraticprogGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_graphn_sum(s : MathquadraticprogGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogGraphN::sum(self : MathquadraticprogGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_graphn_mean(s : MathquadraticprogGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogGraphN::mean(self : MathquadraticprogGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_graphn_scale(s : MathquadraticprogGraphN, f : Double) -> MathquadraticprogGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogGraphN::scale(self : MathquadraticprogGraphN, f : Double) -> MathquadraticprogGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_graphn_add(a : MathquadraticprogGraphN, b : MathquadraticprogGraphN) -> MathquadraticprogGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogGraphN::add(self : MathquadraticprogGraphN, other : MathquadraticprogGraphN) -> MathquadraticprogGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_graphn_copy(s : MathquadraticprogGraphN) -> MathquadraticprogGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogGraphN::copy(self : MathquadraticprogGraphN) -> MathquadraticprogGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_graphn_fill(s : MathquadraticprogGraphN, v : Double) -> MathquadraticprogGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogGraphN::fill(self : MathquadraticprogGraphN, v : Double) -> MathquadraticprogGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_graphn_min(s : MathquadraticprogGraphN) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogGraphN::min(self : MathquadraticprogGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_graphn_max(s : MathquadraticprogGraphN) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogGraphN::max(self : MathquadraticprogGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_graphn_to_string(s : MathquadraticprogGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogGraphN::to_string(self : MathquadraticprogGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogNode {
@@ -504,45 +504,45 @@ pub fn math_quadratic_prog_node_make(size : Int) -> MathquadraticprogNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_node_len(s : MathquadraticprogNode) -> Int { s.size }
+pub fn MathquadraticprogNode::len(self : MathquadraticprogNode) -> Int { self.size }
 
-pub fn math_quadratic_prog_node_get(s : MathquadraticprogNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogNode::get(self : MathquadraticprogNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_node_set(s : MathquadraticprogNode, i : Int, v : Double) -> MathquadraticprogNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogNode::set(self : MathquadraticprogNode, i : Int, v : Double) -> MathquadraticprogNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_node_sum(s : MathquadraticprogNode) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogNode::sum(self : MathquadraticprogNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_node_mean(s : MathquadraticprogNode) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogNode::mean(self : MathquadraticprogNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_node_scale(s : MathquadraticprogNode, f : Double) -> MathquadraticprogNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogNode::scale(self : MathquadraticprogNode, f : Double) -> MathquadraticprogNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_node_add(a : MathquadraticprogNode, b : MathquadraticprogNode) -> MathquadraticprogNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogNode::add(self : MathquadraticprogNode, other : MathquadraticprogNode) -> MathquadraticprogNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_node_copy(s : MathquadraticprogNode) -> MathquadraticprogNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogNode::copy(self : MathquadraticprogNode) -> MathquadraticprogNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_node_fill(s : MathquadraticprogNode, v : Double) -> MathquadraticprogNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogNode::fill(self : MathquadraticprogNode, v : Double) -> MathquadraticprogNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_node_min(s : MathquadraticprogNode) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogNode::min(self : MathquadraticprogNode) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_node_max(s : MathquadraticprogNode) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogNode::max(self : MathquadraticprogNode) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_node_to_string(s : MathquadraticprogNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogNode::to_string(self : MathquadraticprogNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogEdge {
@@ -555,45 +555,45 @@ pub fn math_quadratic_prog_edge_make(size : Int) -> MathquadraticprogEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_edge_len(s : MathquadraticprogEdge) -> Int { s.size }
+pub fn MathquadraticprogEdge::len(self : MathquadraticprogEdge) -> Int { self.size }
 
-pub fn math_quadratic_prog_edge_get(s : MathquadraticprogEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogEdge::get(self : MathquadraticprogEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_edge_set(s : MathquadraticprogEdge, i : Int, v : Double) -> MathquadraticprogEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogEdge::set(self : MathquadraticprogEdge, i : Int, v : Double) -> MathquadraticprogEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_edge_sum(s : MathquadraticprogEdge) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogEdge::sum(self : MathquadraticprogEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_edge_mean(s : MathquadraticprogEdge) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogEdge::mean(self : MathquadraticprogEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_edge_scale(s : MathquadraticprogEdge, f : Double) -> MathquadraticprogEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogEdge::scale(self : MathquadraticprogEdge, f : Double) -> MathquadraticprogEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_edge_add(a : MathquadraticprogEdge, b : MathquadraticprogEdge) -> MathquadraticprogEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogEdge::add(self : MathquadraticprogEdge, other : MathquadraticprogEdge) -> MathquadraticprogEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_edge_copy(s : MathquadraticprogEdge) -> MathquadraticprogEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogEdge::copy(self : MathquadraticprogEdge) -> MathquadraticprogEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_edge_fill(s : MathquadraticprogEdge, v : Double) -> MathquadraticprogEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogEdge::fill(self : MathquadraticprogEdge, v : Double) -> MathquadraticprogEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_edge_min(s : MathquadraticprogEdge) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogEdge::min(self : MathquadraticprogEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_edge_max(s : MathquadraticprogEdge) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogEdge::max(self : MathquadraticprogEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_edge_to_string(s : MathquadraticprogEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogEdge::to_string(self : MathquadraticprogEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogPath {
@@ -606,45 +606,45 @@ pub fn math_quadratic_prog_path_make(size : Int) -> MathquadraticprogPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_path_len(s : MathquadraticprogPath) -> Int { s.size }
+pub fn MathquadraticprogPath::len(self : MathquadraticprogPath) -> Int { self.size }
 
-pub fn math_quadratic_prog_path_get(s : MathquadraticprogPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogPath::get(self : MathquadraticprogPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_path_set(s : MathquadraticprogPath, i : Int, v : Double) -> MathquadraticprogPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogPath::set(self : MathquadraticprogPath, i : Int, v : Double) -> MathquadraticprogPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_path_sum(s : MathquadraticprogPath) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogPath::sum(self : MathquadraticprogPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_path_mean(s : MathquadraticprogPath) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogPath::mean(self : MathquadraticprogPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_path_scale(s : MathquadraticprogPath, f : Double) -> MathquadraticprogPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogPath::scale(self : MathquadraticprogPath, f : Double) -> MathquadraticprogPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_path_add(a : MathquadraticprogPath, b : MathquadraticprogPath) -> MathquadraticprogPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogPath::add(self : MathquadraticprogPath, other : MathquadraticprogPath) -> MathquadraticprogPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_path_copy(s : MathquadraticprogPath) -> MathquadraticprogPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogPath::copy(self : MathquadraticprogPath) -> MathquadraticprogPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_path_fill(s : MathquadraticprogPath, v : Double) -> MathquadraticprogPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogPath::fill(self : MathquadraticprogPath, v : Double) -> MathquadraticprogPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_path_min(s : MathquadraticprogPath) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogPath::min(self : MathquadraticprogPath) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_path_max(s : MathquadraticprogPath) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogPath::max(self : MathquadraticprogPath) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_path_to_string(s : MathquadraticprogPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogPath::to_string(self : MathquadraticprogPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogCluster {
@@ -657,45 +657,45 @@ pub fn math_quadratic_prog_cluster_make(size : Int) -> MathquadraticprogCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_cluster_len(s : MathquadraticprogCluster) -> Int { s.size }
+pub fn MathquadraticprogCluster::len(self : MathquadraticprogCluster) -> Int { self.size }
 
-pub fn math_quadratic_prog_cluster_get(s : MathquadraticprogCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogCluster::get(self : MathquadraticprogCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_cluster_set(s : MathquadraticprogCluster, i : Int, v : Double) -> MathquadraticprogCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogCluster::set(self : MathquadraticprogCluster, i : Int, v : Double) -> MathquadraticprogCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cluster_sum(s : MathquadraticprogCluster) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogCluster::sum(self : MathquadraticprogCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_cluster_mean(s : MathquadraticprogCluster) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogCluster::mean(self : MathquadraticprogCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_cluster_scale(s : MathquadraticprogCluster, f : Double) -> MathquadraticprogCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogCluster::scale(self : MathquadraticprogCluster, f : Double) -> MathquadraticprogCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cluster_add(a : MathquadraticprogCluster, b : MathquadraticprogCluster) -> MathquadraticprogCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogCluster::add(self : MathquadraticprogCluster, other : MathquadraticprogCluster) -> MathquadraticprogCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cluster_copy(s : MathquadraticprogCluster) -> MathquadraticprogCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogCluster::copy(self : MathquadraticprogCluster) -> MathquadraticprogCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cluster_fill(s : MathquadraticprogCluster, v : Double) -> MathquadraticprogCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogCluster::fill(self : MathquadraticprogCluster, v : Double) -> MathquadraticprogCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cluster_min(s : MathquadraticprogCluster) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogCluster::min(self : MathquadraticprogCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_cluster_max(s : MathquadraticprogCluster) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogCluster::max(self : MathquadraticprogCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_cluster_to_string(s : MathquadraticprogCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogCluster::to_string(self : MathquadraticprogCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogModel {
@@ -708,45 +708,45 @@ pub fn math_quadratic_prog_model_make(size : Int) -> MathquadraticprogModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_model_len(s : MathquadraticprogModel) -> Int { s.size }
+pub fn MathquadraticprogModel::len(self : MathquadraticprogModel) -> Int { self.size }
 
-pub fn math_quadratic_prog_model_get(s : MathquadraticprogModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogModel::get(self : MathquadraticprogModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_model_set(s : MathquadraticprogModel, i : Int, v : Double) -> MathquadraticprogModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogModel::set(self : MathquadraticprogModel, i : Int, v : Double) -> MathquadraticprogModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_model_sum(s : MathquadraticprogModel) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogModel::sum(self : MathquadraticprogModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_model_mean(s : MathquadraticprogModel) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogModel::mean(self : MathquadraticprogModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_model_scale(s : MathquadraticprogModel, f : Double) -> MathquadraticprogModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogModel::scale(self : MathquadraticprogModel, f : Double) -> MathquadraticprogModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_model_add(a : MathquadraticprogModel, b : MathquadraticprogModel) -> MathquadraticprogModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogModel::add(self : MathquadraticprogModel, other : MathquadraticprogModel) -> MathquadraticprogModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_model_copy(s : MathquadraticprogModel) -> MathquadraticprogModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogModel::copy(self : MathquadraticprogModel) -> MathquadraticprogModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_model_fill(s : MathquadraticprogModel, v : Double) -> MathquadraticprogModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogModel::fill(self : MathquadraticprogModel, v : Double) -> MathquadraticprogModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_model_min(s : MathquadraticprogModel) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogModel::min(self : MathquadraticprogModel) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_model_max(s : MathquadraticprogModel) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogModel::max(self : MathquadraticprogModel) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_model_to_string(s : MathquadraticprogModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogModel::to_string(self : MathquadraticprogModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogLayer {
@@ -759,45 +759,45 @@ pub fn math_quadratic_prog_layer_make(size : Int) -> MathquadraticprogLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_layer_len(s : MathquadraticprogLayer) -> Int { s.size }
+pub fn MathquadraticprogLayer::len(self : MathquadraticprogLayer) -> Int { self.size }
 
-pub fn math_quadratic_prog_layer_get(s : MathquadraticprogLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogLayer::get(self : MathquadraticprogLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_layer_set(s : MathquadraticprogLayer, i : Int, v : Double) -> MathquadraticprogLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogLayer::set(self : MathquadraticprogLayer, i : Int, v : Double) -> MathquadraticprogLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_layer_sum(s : MathquadraticprogLayer) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogLayer::sum(self : MathquadraticprogLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_layer_mean(s : MathquadraticprogLayer) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogLayer::mean(self : MathquadraticprogLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_layer_scale(s : MathquadraticprogLayer, f : Double) -> MathquadraticprogLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogLayer::scale(self : MathquadraticprogLayer, f : Double) -> MathquadraticprogLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_layer_add(a : MathquadraticprogLayer, b : MathquadraticprogLayer) -> MathquadraticprogLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogLayer::add(self : MathquadraticprogLayer, other : MathquadraticprogLayer) -> MathquadraticprogLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_layer_copy(s : MathquadraticprogLayer) -> MathquadraticprogLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogLayer::copy(self : MathquadraticprogLayer) -> MathquadraticprogLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_layer_fill(s : MathquadraticprogLayer, v : Double) -> MathquadraticprogLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogLayer::fill(self : MathquadraticprogLayer, v : Double) -> MathquadraticprogLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_layer_min(s : MathquadraticprogLayer) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogLayer::min(self : MathquadraticprogLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_layer_max(s : MathquadraticprogLayer) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogLayer::max(self : MathquadraticprogLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_layer_to_string(s : MathquadraticprogLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogLayer::to_string(self : MathquadraticprogLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogBuffer {
@@ -810,45 +810,45 @@ pub fn math_quadratic_prog_buffer_make(size : Int) -> MathquadraticprogBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_buffer_len(s : MathquadraticprogBuffer) -> Int { s.size }
+pub fn MathquadraticprogBuffer::len(self : MathquadraticprogBuffer) -> Int { self.size }
 
-pub fn math_quadratic_prog_buffer_get(s : MathquadraticprogBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogBuffer::get(self : MathquadraticprogBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_buffer_set(s : MathquadraticprogBuffer, i : Int, v : Double) -> MathquadraticprogBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogBuffer::set(self : MathquadraticprogBuffer, i : Int, v : Double) -> MathquadraticprogBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_buffer_sum(s : MathquadraticprogBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogBuffer::sum(self : MathquadraticprogBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_buffer_mean(s : MathquadraticprogBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogBuffer::mean(self : MathquadraticprogBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_buffer_scale(s : MathquadraticprogBuffer, f : Double) -> MathquadraticprogBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogBuffer::scale(self : MathquadraticprogBuffer, f : Double) -> MathquadraticprogBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_buffer_add(a : MathquadraticprogBuffer, b : MathquadraticprogBuffer) -> MathquadraticprogBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogBuffer::add(self : MathquadraticprogBuffer, other : MathquadraticprogBuffer) -> MathquadraticprogBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_buffer_copy(s : MathquadraticprogBuffer) -> MathquadraticprogBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogBuffer::copy(self : MathquadraticprogBuffer) -> MathquadraticprogBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_buffer_fill(s : MathquadraticprogBuffer, v : Double) -> MathquadraticprogBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogBuffer::fill(self : MathquadraticprogBuffer, v : Double) -> MathquadraticprogBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_buffer_min(s : MathquadraticprogBuffer) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogBuffer::min(self : MathquadraticprogBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_buffer_max(s : MathquadraticprogBuffer) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogBuffer::max(self : MathquadraticprogBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_buffer_to_string(s : MathquadraticprogBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogBuffer::to_string(self : MathquadraticprogBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogCursor {
@@ -861,45 +861,45 @@ pub fn math_quadratic_prog_cursor_make(size : Int) -> MathquadraticprogCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_cursor_len(s : MathquadraticprogCursor) -> Int { s.size }
+pub fn MathquadraticprogCursor::len(self : MathquadraticprogCursor) -> Int { self.size }
 
-pub fn math_quadratic_prog_cursor_get(s : MathquadraticprogCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogCursor::get(self : MathquadraticprogCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_cursor_set(s : MathquadraticprogCursor, i : Int, v : Double) -> MathquadraticprogCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogCursor::set(self : MathquadraticprogCursor, i : Int, v : Double) -> MathquadraticprogCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cursor_sum(s : MathquadraticprogCursor) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogCursor::sum(self : MathquadraticprogCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_cursor_mean(s : MathquadraticprogCursor) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogCursor::mean(self : MathquadraticprogCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_cursor_scale(s : MathquadraticprogCursor, f : Double) -> MathquadraticprogCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogCursor::scale(self : MathquadraticprogCursor, f : Double) -> MathquadraticprogCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cursor_add(a : MathquadraticprogCursor, b : MathquadraticprogCursor) -> MathquadraticprogCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogCursor::add(self : MathquadraticprogCursor, other : MathquadraticprogCursor) -> MathquadraticprogCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cursor_copy(s : MathquadraticprogCursor) -> MathquadraticprogCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogCursor::copy(self : MathquadraticprogCursor) -> MathquadraticprogCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cursor_fill(s : MathquadraticprogCursor, v : Double) -> MathquadraticprogCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogCursor::fill(self : MathquadraticprogCursor, v : Double) -> MathquadraticprogCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_cursor_min(s : MathquadraticprogCursor) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogCursor::min(self : MathquadraticprogCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_cursor_max(s : MathquadraticprogCursor) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogCursor::max(self : MathquadraticprogCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_cursor_to_string(s : MathquadraticprogCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogCursor::to_string(self : MathquadraticprogCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogView {
@@ -912,45 +912,45 @@ pub fn math_quadratic_prog_view_make(size : Int) -> MathquadraticprogView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_view_len(s : MathquadraticprogView) -> Int { s.size }
+pub fn MathquadraticprogView::len(self : MathquadraticprogView) -> Int { self.size }
 
-pub fn math_quadratic_prog_view_get(s : MathquadraticprogView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogView::get(self : MathquadraticprogView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_view_set(s : MathquadraticprogView, i : Int, v : Double) -> MathquadraticprogView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogView::set(self : MathquadraticprogView, i : Int, v : Double) -> MathquadraticprogView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_view_sum(s : MathquadraticprogView) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogView::sum(self : MathquadraticprogView) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_view_mean(s : MathquadraticprogView) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogView::mean(self : MathquadraticprogView) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_view_scale(s : MathquadraticprogView, f : Double) -> MathquadraticprogView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogView::scale(self : MathquadraticprogView, f : Double) -> MathquadraticprogView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_view_add(a : MathquadraticprogView, b : MathquadraticprogView) -> MathquadraticprogView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogView::add(self : MathquadraticprogView, other : MathquadraticprogView) -> MathquadraticprogView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_view_copy(s : MathquadraticprogView) -> MathquadraticprogView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogView::copy(self : MathquadraticprogView) -> MathquadraticprogView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_view_fill(s : MathquadraticprogView, v : Double) -> MathquadraticprogView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogView::fill(self : MathquadraticprogView, v : Double) -> MathquadraticprogView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_view_min(s : MathquadraticprogView) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogView::min(self : MathquadraticprogView) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_view_max(s : MathquadraticprogView) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogView::max(self : MathquadraticprogView) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_view_to_string(s : MathquadraticprogView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogView::to_string(self : MathquadraticprogView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogRange {
@@ -963,45 +963,45 @@ pub fn math_quadratic_prog_range_make(size : Int) -> MathquadraticprogRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_range_len(s : MathquadraticprogRange) -> Int { s.size }
+pub fn MathquadraticprogRange::len(self : MathquadraticprogRange) -> Int { self.size }
 
-pub fn math_quadratic_prog_range_get(s : MathquadraticprogRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogRange::get(self : MathquadraticprogRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_range_set(s : MathquadraticprogRange, i : Int, v : Double) -> MathquadraticprogRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogRange::set(self : MathquadraticprogRange, i : Int, v : Double) -> MathquadraticprogRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_range_sum(s : MathquadraticprogRange) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogRange::sum(self : MathquadraticprogRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_range_mean(s : MathquadraticprogRange) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogRange::mean(self : MathquadraticprogRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_range_scale(s : MathquadraticprogRange, f : Double) -> MathquadraticprogRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogRange::scale(self : MathquadraticprogRange, f : Double) -> MathquadraticprogRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_range_add(a : MathquadraticprogRange, b : MathquadraticprogRange) -> MathquadraticprogRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogRange::add(self : MathquadraticprogRange, other : MathquadraticprogRange) -> MathquadraticprogRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_range_copy(s : MathquadraticprogRange) -> MathquadraticprogRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogRange::copy(self : MathquadraticprogRange) -> MathquadraticprogRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_range_fill(s : MathquadraticprogRange, v : Double) -> MathquadraticprogRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogRange::fill(self : MathquadraticprogRange, v : Double) -> MathquadraticprogRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_range_min(s : MathquadraticprogRange) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogRange::min(self : MathquadraticprogRange) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_range_max(s : MathquadraticprogRange) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogRange::max(self : MathquadraticprogRange) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_range_to_string(s : MathquadraticprogRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogRange::to_string(self : MathquadraticprogRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquadraticprogSlice {
@@ -1014,44 +1014,44 @@ pub fn math_quadratic_prog_slice_make(size : Int) -> MathquadraticprogSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quadratic_prog_slice_len(s : MathquadraticprogSlice) -> Int { s.size }
+pub fn MathquadraticprogSlice::len(self : MathquadraticprogSlice) -> Int { self.size }
 
-pub fn math_quadratic_prog_slice_get(s : MathquadraticprogSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquadraticprogSlice::get(self : MathquadraticprogSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quadratic_prog_slice_set(s : MathquadraticprogSlice, i : Int, v : Double) -> MathquadraticprogSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquadraticprogSlice::set(self : MathquadraticprogSlice, i : Int, v : Double) -> MathquadraticprogSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_slice_sum(s : MathquadraticprogSlice) -> Double { @_common.sum(s.data) }
+pub fn MathquadraticprogSlice::sum(self : MathquadraticprogSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_quadratic_prog_slice_mean(s : MathquadraticprogSlice) -> Double { @_common.mean(s.data) }
+pub fn MathquadraticprogSlice::mean(self : MathquadraticprogSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_quadratic_prog_slice_scale(s : MathquadraticprogSlice, f : Double) -> MathquadraticprogSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquadraticprogSlice::scale(self : MathquadraticprogSlice, f : Double) -> MathquadraticprogSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_slice_add(a : MathquadraticprogSlice, b : MathquadraticprogSlice) -> MathquadraticprogSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquadraticprogSlice::add(self : MathquadraticprogSlice, other : MathquadraticprogSlice) -> MathquadraticprogSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_slice_copy(s : MathquadraticprogSlice) -> MathquadraticprogSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquadraticprogSlice::copy(self : MathquadraticprogSlice) -> MathquadraticprogSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_slice_fill(s : MathquadraticprogSlice, v : Double) -> MathquadraticprogSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquadraticprogSlice::fill(self : MathquadraticprogSlice, v : Double) -> MathquadraticprogSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quadratic_prog_slice_min(s : MathquadraticprogSlice) -> Double { @_common.min(s.data) }
+pub fn MathquadraticprogSlice::min(self : MathquadraticprogSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_quadratic_prog_slice_max(s : MathquadraticprogSlice) -> Double { @_common.max(s.data) }
+pub fn MathquadraticprogSlice::max(self : MathquadraticprogSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_quadratic_prog_slice_to_string(s : MathquadraticprogSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquadraticprogSlice::to_string(self : MathquadraticprogSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

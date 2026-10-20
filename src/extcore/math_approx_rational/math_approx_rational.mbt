@@ -351,45 +351,45 @@ pub fn math_approx_rational_frame_make(size : Int) -> MathapproxrationalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_frame_len(s : MathapproxrationalFrame) -> Int { s.size }
+pub fn MathapproxrationalFrame::len(self : MathapproxrationalFrame) -> Int { self.size }
 
-pub fn math_approx_rational_frame_get(s : MathapproxrationalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalFrame::get(self : MathapproxrationalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_frame_set(s : MathapproxrationalFrame, i : Int, v : Double) -> MathapproxrationalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalFrame::set(self : MathapproxrationalFrame, i : Int, v : Double) -> MathapproxrationalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_frame_sum(s : MathapproxrationalFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalFrame::sum(self : MathapproxrationalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_frame_mean(s : MathapproxrationalFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalFrame::mean(self : MathapproxrationalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_frame_scale(s : MathapproxrationalFrame, f : Double) -> MathapproxrationalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalFrame::scale(self : MathapproxrationalFrame, f : Double) -> MathapproxrationalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_frame_add(a : MathapproxrationalFrame, b : MathapproxrationalFrame) -> MathapproxrationalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalFrame::add(self : MathapproxrationalFrame, other : MathapproxrationalFrame) -> MathapproxrationalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_frame_copy(s : MathapproxrationalFrame) -> MathapproxrationalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalFrame::copy(self : MathapproxrationalFrame) -> MathapproxrationalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_frame_fill(s : MathapproxrationalFrame, v : Double) -> MathapproxrationalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalFrame::fill(self : MathapproxrationalFrame, v : Double) -> MathapproxrationalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_frame_min(s : MathapproxrationalFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalFrame::min(self : MathapproxrationalFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_frame_max(s : MathapproxrationalFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalFrame::max(self : MathapproxrationalFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_frame_to_string(s : MathapproxrationalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalFrame::to_string(self : MathapproxrationalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalTable {
@@ -402,45 +402,45 @@ pub fn math_approx_rational_table_make(size : Int) -> MathapproxrationalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_table_len(s : MathapproxrationalTable) -> Int { s.size }
+pub fn MathapproxrationalTable::len(self : MathapproxrationalTable) -> Int { self.size }
 
-pub fn math_approx_rational_table_get(s : MathapproxrationalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalTable::get(self : MathapproxrationalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_table_set(s : MathapproxrationalTable, i : Int, v : Double) -> MathapproxrationalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalTable::set(self : MathapproxrationalTable, i : Int, v : Double) -> MathapproxrationalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_table_sum(s : MathapproxrationalTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalTable::sum(self : MathapproxrationalTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_table_mean(s : MathapproxrationalTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalTable::mean(self : MathapproxrationalTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_table_scale(s : MathapproxrationalTable, f : Double) -> MathapproxrationalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalTable::scale(self : MathapproxrationalTable, f : Double) -> MathapproxrationalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_table_add(a : MathapproxrationalTable, b : MathapproxrationalTable) -> MathapproxrationalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalTable::add(self : MathapproxrationalTable, other : MathapproxrationalTable) -> MathapproxrationalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_table_copy(s : MathapproxrationalTable) -> MathapproxrationalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalTable::copy(self : MathapproxrationalTable) -> MathapproxrationalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_table_fill(s : MathapproxrationalTable, v : Double) -> MathapproxrationalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalTable::fill(self : MathapproxrationalTable, v : Double) -> MathapproxrationalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_table_min(s : MathapproxrationalTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalTable::min(self : MathapproxrationalTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_table_max(s : MathapproxrationalTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalTable::max(self : MathapproxrationalTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_table_to_string(s : MathapproxrationalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalTable::to_string(self : MathapproxrationalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_rational_graphn_make(size : Int) -> MathapproxrationalGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_graphn_len(s : MathapproxrationalGraphN) -> Int { s.size }
+pub fn MathapproxrationalGraphN::len(self : MathapproxrationalGraphN) -> Int { self.size }
 
-pub fn math_approx_rational_graphn_get(s : MathapproxrationalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalGraphN::get(self : MathapproxrationalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_graphn_set(s : MathapproxrationalGraphN, i : Int, v : Double) -> MathapproxrationalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalGraphN::set(self : MathapproxrationalGraphN, i : Int, v : Double) -> MathapproxrationalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_graphn_sum(s : MathapproxrationalGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalGraphN::sum(self : MathapproxrationalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_graphn_mean(s : MathapproxrationalGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalGraphN::mean(self : MathapproxrationalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_graphn_scale(s : MathapproxrationalGraphN, f : Double) -> MathapproxrationalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalGraphN::scale(self : MathapproxrationalGraphN, f : Double) -> MathapproxrationalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_graphn_add(a : MathapproxrationalGraphN, b : MathapproxrationalGraphN) -> MathapproxrationalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalGraphN::add(self : MathapproxrationalGraphN, other : MathapproxrationalGraphN) -> MathapproxrationalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_graphn_copy(s : MathapproxrationalGraphN) -> MathapproxrationalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalGraphN::copy(self : MathapproxrationalGraphN) -> MathapproxrationalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_graphn_fill(s : MathapproxrationalGraphN, v : Double) -> MathapproxrationalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalGraphN::fill(self : MathapproxrationalGraphN, v : Double) -> MathapproxrationalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_graphn_min(s : MathapproxrationalGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalGraphN::min(self : MathapproxrationalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_graphn_max(s : MathapproxrationalGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalGraphN::max(self : MathapproxrationalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_graphn_to_string(s : MathapproxrationalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalGraphN::to_string(self : MathapproxrationalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalNode {
@@ -504,45 +504,45 @@ pub fn math_approx_rational_node_make(size : Int) -> MathapproxrationalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_node_len(s : MathapproxrationalNode) -> Int { s.size }
+pub fn MathapproxrationalNode::len(self : MathapproxrationalNode) -> Int { self.size }
 
-pub fn math_approx_rational_node_get(s : MathapproxrationalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalNode::get(self : MathapproxrationalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_node_set(s : MathapproxrationalNode, i : Int, v : Double) -> MathapproxrationalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalNode::set(self : MathapproxrationalNode, i : Int, v : Double) -> MathapproxrationalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_node_sum(s : MathapproxrationalNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalNode::sum(self : MathapproxrationalNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_node_mean(s : MathapproxrationalNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalNode::mean(self : MathapproxrationalNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_node_scale(s : MathapproxrationalNode, f : Double) -> MathapproxrationalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalNode::scale(self : MathapproxrationalNode, f : Double) -> MathapproxrationalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_node_add(a : MathapproxrationalNode, b : MathapproxrationalNode) -> MathapproxrationalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalNode::add(self : MathapproxrationalNode, other : MathapproxrationalNode) -> MathapproxrationalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_node_copy(s : MathapproxrationalNode) -> MathapproxrationalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalNode::copy(self : MathapproxrationalNode) -> MathapproxrationalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_node_fill(s : MathapproxrationalNode, v : Double) -> MathapproxrationalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalNode::fill(self : MathapproxrationalNode, v : Double) -> MathapproxrationalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_node_min(s : MathapproxrationalNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalNode::min(self : MathapproxrationalNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_node_max(s : MathapproxrationalNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalNode::max(self : MathapproxrationalNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_node_to_string(s : MathapproxrationalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalNode::to_string(self : MathapproxrationalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_rational_edge_make(size : Int) -> MathapproxrationalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_edge_len(s : MathapproxrationalEdge) -> Int { s.size }
+pub fn MathapproxrationalEdge::len(self : MathapproxrationalEdge) -> Int { self.size }
 
-pub fn math_approx_rational_edge_get(s : MathapproxrationalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalEdge::get(self : MathapproxrationalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_edge_set(s : MathapproxrationalEdge, i : Int, v : Double) -> MathapproxrationalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalEdge::set(self : MathapproxrationalEdge, i : Int, v : Double) -> MathapproxrationalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_edge_sum(s : MathapproxrationalEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalEdge::sum(self : MathapproxrationalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_edge_mean(s : MathapproxrationalEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalEdge::mean(self : MathapproxrationalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_edge_scale(s : MathapproxrationalEdge, f : Double) -> MathapproxrationalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalEdge::scale(self : MathapproxrationalEdge, f : Double) -> MathapproxrationalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_edge_add(a : MathapproxrationalEdge, b : MathapproxrationalEdge) -> MathapproxrationalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalEdge::add(self : MathapproxrationalEdge, other : MathapproxrationalEdge) -> MathapproxrationalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_edge_copy(s : MathapproxrationalEdge) -> MathapproxrationalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalEdge::copy(self : MathapproxrationalEdge) -> MathapproxrationalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_edge_fill(s : MathapproxrationalEdge, v : Double) -> MathapproxrationalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalEdge::fill(self : MathapproxrationalEdge, v : Double) -> MathapproxrationalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_edge_min(s : MathapproxrationalEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalEdge::min(self : MathapproxrationalEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_edge_max(s : MathapproxrationalEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalEdge::max(self : MathapproxrationalEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_edge_to_string(s : MathapproxrationalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalEdge::to_string(self : MathapproxrationalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalPath {
@@ -606,45 +606,45 @@ pub fn math_approx_rational_path_make(size : Int) -> MathapproxrationalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_path_len(s : MathapproxrationalPath) -> Int { s.size }
+pub fn MathapproxrationalPath::len(self : MathapproxrationalPath) -> Int { self.size }
 
-pub fn math_approx_rational_path_get(s : MathapproxrationalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalPath::get(self : MathapproxrationalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_path_set(s : MathapproxrationalPath, i : Int, v : Double) -> MathapproxrationalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalPath::set(self : MathapproxrationalPath, i : Int, v : Double) -> MathapproxrationalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_path_sum(s : MathapproxrationalPath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalPath::sum(self : MathapproxrationalPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_path_mean(s : MathapproxrationalPath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalPath::mean(self : MathapproxrationalPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_path_scale(s : MathapproxrationalPath, f : Double) -> MathapproxrationalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalPath::scale(self : MathapproxrationalPath, f : Double) -> MathapproxrationalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_path_add(a : MathapproxrationalPath, b : MathapproxrationalPath) -> MathapproxrationalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalPath::add(self : MathapproxrationalPath, other : MathapproxrationalPath) -> MathapproxrationalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_path_copy(s : MathapproxrationalPath) -> MathapproxrationalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalPath::copy(self : MathapproxrationalPath) -> MathapproxrationalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_path_fill(s : MathapproxrationalPath, v : Double) -> MathapproxrationalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalPath::fill(self : MathapproxrationalPath, v : Double) -> MathapproxrationalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_path_min(s : MathapproxrationalPath) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalPath::min(self : MathapproxrationalPath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_path_max(s : MathapproxrationalPath) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalPath::max(self : MathapproxrationalPath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_path_to_string(s : MathapproxrationalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalPath::to_string(self : MathapproxrationalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_rational_cluster_make(size : Int) -> MathapproxrationalCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_cluster_len(s : MathapproxrationalCluster) -> Int { s.size }
+pub fn MathapproxrationalCluster::len(self : MathapproxrationalCluster) -> Int { self.size }
 
-pub fn math_approx_rational_cluster_get(s : MathapproxrationalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalCluster::get(self : MathapproxrationalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_cluster_set(s : MathapproxrationalCluster, i : Int, v : Double) -> MathapproxrationalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalCluster::set(self : MathapproxrationalCluster, i : Int, v : Double) -> MathapproxrationalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cluster_sum(s : MathapproxrationalCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalCluster::sum(self : MathapproxrationalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_cluster_mean(s : MathapproxrationalCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalCluster::mean(self : MathapproxrationalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_cluster_scale(s : MathapproxrationalCluster, f : Double) -> MathapproxrationalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalCluster::scale(self : MathapproxrationalCluster, f : Double) -> MathapproxrationalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cluster_add(a : MathapproxrationalCluster, b : MathapproxrationalCluster) -> MathapproxrationalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalCluster::add(self : MathapproxrationalCluster, other : MathapproxrationalCluster) -> MathapproxrationalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_cluster_copy(s : MathapproxrationalCluster) -> MathapproxrationalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalCluster::copy(self : MathapproxrationalCluster) -> MathapproxrationalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cluster_fill(s : MathapproxrationalCluster, v : Double) -> MathapproxrationalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalCluster::fill(self : MathapproxrationalCluster, v : Double) -> MathapproxrationalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cluster_min(s : MathapproxrationalCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalCluster::min(self : MathapproxrationalCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_cluster_max(s : MathapproxrationalCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalCluster::max(self : MathapproxrationalCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_cluster_to_string(s : MathapproxrationalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalCluster::to_string(self : MathapproxrationalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalModel {
@@ -708,45 +708,45 @@ pub fn math_approx_rational_model_make(size : Int) -> MathapproxrationalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_model_len(s : MathapproxrationalModel) -> Int { s.size }
+pub fn MathapproxrationalModel::len(self : MathapproxrationalModel) -> Int { self.size }
 
-pub fn math_approx_rational_model_get(s : MathapproxrationalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalModel::get(self : MathapproxrationalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_model_set(s : MathapproxrationalModel, i : Int, v : Double) -> MathapproxrationalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalModel::set(self : MathapproxrationalModel, i : Int, v : Double) -> MathapproxrationalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_model_sum(s : MathapproxrationalModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalModel::sum(self : MathapproxrationalModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_model_mean(s : MathapproxrationalModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalModel::mean(self : MathapproxrationalModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_model_scale(s : MathapproxrationalModel, f : Double) -> MathapproxrationalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalModel::scale(self : MathapproxrationalModel, f : Double) -> MathapproxrationalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_model_add(a : MathapproxrationalModel, b : MathapproxrationalModel) -> MathapproxrationalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalModel::add(self : MathapproxrationalModel, other : MathapproxrationalModel) -> MathapproxrationalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_model_copy(s : MathapproxrationalModel) -> MathapproxrationalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalModel::copy(self : MathapproxrationalModel) -> MathapproxrationalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_model_fill(s : MathapproxrationalModel, v : Double) -> MathapproxrationalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalModel::fill(self : MathapproxrationalModel, v : Double) -> MathapproxrationalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_model_min(s : MathapproxrationalModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalModel::min(self : MathapproxrationalModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_model_max(s : MathapproxrationalModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalModel::max(self : MathapproxrationalModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_model_to_string(s : MathapproxrationalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalModel::to_string(self : MathapproxrationalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_rational_layer_make(size : Int) -> MathapproxrationalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_layer_len(s : MathapproxrationalLayer) -> Int { s.size }
+pub fn MathapproxrationalLayer::len(self : MathapproxrationalLayer) -> Int { self.size }
 
-pub fn math_approx_rational_layer_get(s : MathapproxrationalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalLayer::get(self : MathapproxrationalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_layer_set(s : MathapproxrationalLayer, i : Int, v : Double) -> MathapproxrationalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalLayer::set(self : MathapproxrationalLayer, i : Int, v : Double) -> MathapproxrationalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_layer_sum(s : MathapproxrationalLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalLayer::sum(self : MathapproxrationalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_layer_mean(s : MathapproxrationalLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalLayer::mean(self : MathapproxrationalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_layer_scale(s : MathapproxrationalLayer, f : Double) -> MathapproxrationalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalLayer::scale(self : MathapproxrationalLayer, f : Double) -> MathapproxrationalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_layer_add(a : MathapproxrationalLayer, b : MathapproxrationalLayer) -> MathapproxrationalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalLayer::add(self : MathapproxrationalLayer, other : MathapproxrationalLayer) -> MathapproxrationalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_layer_copy(s : MathapproxrationalLayer) -> MathapproxrationalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalLayer::copy(self : MathapproxrationalLayer) -> MathapproxrationalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_layer_fill(s : MathapproxrationalLayer, v : Double) -> MathapproxrationalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalLayer::fill(self : MathapproxrationalLayer, v : Double) -> MathapproxrationalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_layer_min(s : MathapproxrationalLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalLayer::min(self : MathapproxrationalLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_layer_max(s : MathapproxrationalLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalLayer::max(self : MathapproxrationalLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_layer_to_string(s : MathapproxrationalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalLayer::to_string(self : MathapproxrationalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_rational_buffer_make(size : Int) -> MathapproxrationalBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_buffer_len(s : MathapproxrationalBuffer) -> Int { s.size }
+pub fn MathapproxrationalBuffer::len(self : MathapproxrationalBuffer) -> Int { self.size }
 
-pub fn math_approx_rational_buffer_get(s : MathapproxrationalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalBuffer::get(self : MathapproxrationalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_buffer_set(s : MathapproxrationalBuffer, i : Int, v : Double) -> MathapproxrationalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalBuffer::set(self : MathapproxrationalBuffer, i : Int, v : Double) -> MathapproxrationalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_buffer_sum(s : MathapproxrationalBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalBuffer::sum(self : MathapproxrationalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_buffer_mean(s : MathapproxrationalBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalBuffer::mean(self : MathapproxrationalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_buffer_scale(s : MathapproxrationalBuffer, f : Double) -> MathapproxrationalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalBuffer::scale(self : MathapproxrationalBuffer, f : Double) -> MathapproxrationalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_buffer_add(a : MathapproxrationalBuffer, b : MathapproxrationalBuffer) -> MathapproxrationalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalBuffer::add(self : MathapproxrationalBuffer, other : MathapproxrationalBuffer) -> MathapproxrationalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_buffer_copy(s : MathapproxrationalBuffer) -> MathapproxrationalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalBuffer::copy(self : MathapproxrationalBuffer) -> MathapproxrationalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_buffer_fill(s : MathapproxrationalBuffer, v : Double) -> MathapproxrationalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalBuffer::fill(self : MathapproxrationalBuffer, v : Double) -> MathapproxrationalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_buffer_min(s : MathapproxrationalBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalBuffer::min(self : MathapproxrationalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_buffer_max(s : MathapproxrationalBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalBuffer::max(self : MathapproxrationalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_buffer_to_string(s : MathapproxrationalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalBuffer::to_string(self : MathapproxrationalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_rational_cursor_make(size : Int) -> MathapproxrationalCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_cursor_len(s : MathapproxrationalCursor) -> Int { s.size }
+pub fn MathapproxrationalCursor::len(self : MathapproxrationalCursor) -> Int { self.size }
 
-pub fn math_approx_rational_cursor_get(s : MathapproxrationalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalCursor::get(self : MathapproxrationalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_cursor_set(s : MathapproxrationalCursor, i : Int, v : Double) -> MathapproxrationalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalCursor::set(self : MathapproxrationalCursor, i : Int, v : Double) -> MathapproxrationalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cursor_sum(s : MathapproxrationalCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalCursor::sum(self : MathapproxrationalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_cursor_mean(s : MathapproxrationalCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalCursor::mean(self : MathapproxrationalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_cursor_scale(s : MathapproxrationalCursor, f : Double) -> MathapproxrationalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalCursor::scale(self : MathapproxrationalCursor, f : Double) -> MathapproxrationalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cursor_add(a : MathapproxrationalCursor, b : MathapproxrationalCursor) -> MathapproxrationalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalCursor::add(self : MathapproxrationalCursor, other : MathapproxrationalCursor) -> MathapproxrationalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_cursor_copy(s : MathapproxrationalCursor) -> MathapproxrationalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalCursor::copy(self : MathapproxrationalCursor) -> MathapproxrationalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cursor_fill(s : MathapproxrationalCursor, v : Double) -> MathapproxrationalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalCursor::fill(self : MathapproxrationalCursor, v : Double) -> MathapproxrationalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_cursor_min(s : MathapproxrationalCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalCursor::min(self : MathapproxrationalCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_cursor_max(s : MathapproxrationalCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalCursor::max(self : MathapproxrationalCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_cursor_to_string(s : MathapproxrationalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalCursor::to_string(self : MathapproxrationalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalView {
@@ -912,45 +912,45 @@ pub fn math_approx_rational_view_make(size : Int) -> MathapproxrationalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_view_len(s : MathapproxrationalView) -> Int { s.size }
+pub fn MathapproxrationalView::len(self : MathapproxrationalView) -> Int { self.size }
 
-pub fn math_approx_rational_view_get(s : MathapproxrationalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalView::get(self : MathapproxrationalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_view_set(s : MathapproxrationalView, i : Int, v : Double) -> MathapproxrationalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalView::set(self : MathapproxrationalView, i : Int, v : Double) -> MathapproxrationalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_view_sum(s : MathapproxrationalView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalView::sum(self : MathapproxrationalView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_view_mean(s : MathapproxrationalView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalView::mean(self : MathapproxrationalView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_view_scale(s : MathapproxrationalView, f : Double) -> MathapproxrationalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalView::scale(self : MathapproxrationalView, f : Double) -> MathapproxrationalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_view_add(a : MathapproxrationalView, b : MathapproxrationalView) -> MathapproxrationalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalView::add(self : MathapproxrationalView, other : MathapproxrationalView) -> MathapproxrationalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_view_copy(s : MathapproxrationalView) -> MathapproxrationalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalView::copy(self : MathapproxrationalView) -> MathapproxrationalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_view_fill(s : MathapproxrationalView, v : Double) -> MathapproxrationalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalView::fill(self : MathapproxrationalView, v : Double) -> MathapproxrationalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_view_min(s : MathapproxrationalView) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalView::min(self : MathapproxrationalView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_view_max(s : MathapproxrationalView) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalView::max(self : MathapproxrationalView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_view_to_string(s : MathapproxrationalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalView::to_string(self : MathapproxrationalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalRange {
@@ -963,45 +963,45 @@ pub fn math_approx_rational_range_make(size : Int) -> MathapproxrationalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_range_len(s : MathapproxrationalRange) -> Int { s.size }
+pub fn MathapproxrationalRange::len(self : MathapproxrationalRange) -> Int { self.size }
 
-pub fn math_approx_rational_range_get(s : MathapproxrationalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalRange::get(self : MathapproxrationalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_range_set(s : MathapproxrationalRange, i : Int, v : Double) -> MathapproxrationalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalRange::set(self : MathapproxrationalRange, i : Int, v : Double) -> MathapproxrationalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_range_sum(s : MathapproxrationalRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalRange::sum(self : MathapproxrationalRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_range_mean(s : MathapproxrationalRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalRange::mean(self : MathapproxrationalRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_range_scale(s : MathapproxrationalRange, f : Double) -> MathapproxrationalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalRange::scale(self : MathapproxrationalRange, f : Double) -> MathapproxrationalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_range_add(a : MathapproxrationalRange, b : MathapproxrationalRange) -> MathapproxrationalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalRange::add(self : MathapproxrationalRange, other : MathapproxrationalRange) -> MathapproxrationalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_range_copy(s : MathapproxrationalRange) -> MathapproxrationalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalRange::copy(self : MathapproxrationalRange) -> MathapproxrationalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_range_fill(s : MathapproxrationalRange, v : Double) -> MathapproxrationalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalRange::fill(self : MathapproxrationalRange, v : Double) -> MathapproxrationalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_range_min(s : MathapproxrationalRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalRange::min(self : MathapproxrationalRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_range_max(s : MathapproxrationalRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalRange::max(self : MathapproxrationalRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_range_to_string(s : MathapproxrationalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalRange::to_string(self : MathapproxrationalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxrationalSlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_rational_slice_make(size : Int) -> MathapproxrationalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_rational_slice_len(s : MathapproxrationalSlice) -> Int { s.size }
+pub fn MathapproxrationalSlice::len(self : MathapproxrationalSlice) -> Int { self.size }
 
-pub fn math_approx_rational_slice_get(s : MathapproxrationalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxrationalSlice::get(self : MathapproxrationalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_rational_slice_set(s : MathapproxrationalSlice, i : Int, v : Double) -> MathapproxrationalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxrationalSlice::set(self : MathapproxrationalSlice, i : Int, v : Double) -> MathapproxrationalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_slice_sum(s : MathapproxrationalSlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxrationalSlice::sum(self : MathapproxrationalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_rational_slice_mean(s : MathapproxrationalSlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxrationalSlice::mean(self : MathapproxrationalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_rational_slice_scale(s : MathapproxrationalSlice, f : Double) -> MathapproxrationalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxrationalSlice::scale(self : MathapproxrationalSlice, f : Double) -> MathapproxrationalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_slice_add(a : MathapproxrationalSlice, b : MathapproxrationalSlice) -> MathapproxrationalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxrationalSlice::add(self : MathapproxrationalSlice, other : MathapproxrationalSlice) -> MathapproxrationalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_rational_slice_copy(s : MathapproxrationalSlice) -> MathapproxrationalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxrationalSlice::copy(self : MathapproxrationalSlice) -> MathapproxrationalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_slice_fill(s : MathapproxrationalSlice, v : Double) -> MathapproxrationalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxrationalSlice::fill(self : MathapproxrationalSlice, v : Double) -> MathapproxrationalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_rational_slice_min(s : MathapproxrationalSlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxrationalSlice::min(self : MathapproxrationalSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_rational_slice_max(s : MathapproxrationalSlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxrationalSlice::max(self : MathapproxrationalSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_rational_slice_to_string(s : MathapproxrationalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxrationalSlice::to_string(self : MathapproxrationalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

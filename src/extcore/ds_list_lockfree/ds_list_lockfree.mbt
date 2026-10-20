@@ -351,45 +351,45 @@ pub fn ds_list_lockfree_frame_make(size : Int) -> DslistlockfreeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_frame_len(s : DslistlockfreeFrame) -> Int { s.size }
+pub fn DslistlockfreeFrame::len(self : DslistlockfreeFrame) -> Int { self.size }
 
-pub fn ds_list_lockfree_frame_get(s : DslistlockfreeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeFrame::get(self : DslistlockfreeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_frame_set(s : DslistlockfreeFrame, i : Int, v : Double) -> DslistlockfreeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeFrame::set(self : DslistlockfreeFrame, i : Int, v : Double) -> DslistlockfreeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_frame_sum(s : DslistlockfreeFrame) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeFrame::sum(self : DslistlockfreeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_frame_mean(s : DslistlockfreeFrame) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeFrame::mean(self : DslistlockfreeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_frame_scale(s : DslistlockfreeFrame, f : Double) -> DslistlockfreeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeFrame::scale(self : DslistlockfreeFrame, f : Double) -> DslistlockfreeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_frame_add(a : DslistlockfreeFrame, b : DslistlockfreeFrame) -> DslistlockfreeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeFrame::add(self : DslistlockfreeFrame, other : DslistlockfreeFrame) -> DslistlockfreeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_frame_copy(s : DslistlockfreeFrame) -> DslistlockfreeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeFrame::copy(self : DslistlockfreeFrame) -> DslistlockfreeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_frame_fill(s : DslistlockfreeFrame, v : Double) -> DslistlockfreeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeFrame::fill(self : DslistlockfreeFrame, v : Double) -> DslistlockfreeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_frame_min(s : DslistlockfreeFrame) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeFrame::min(self : DslistlockfreeFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_frame_max(s : DslistlockfreeFrame) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeFrame::max(self : DslistlockfreeFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_frame_to_string(s : DslistlockfreeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeFrame::to_string(self : DslistlockfreeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeTable {
@@ -402,45 +402,45 @@ pub fn ds_list_lockfree_table_make(size : Int) -> DslistlockfreeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_table_len(s : DslistlockfreeTable) -> Int { s.size }
+pub fn DslistlockfreeTable::len(self : DslistlockfreeTable) -> Int { self.size }
 
-pub fn ds_list_lockfree_table_get(s : DslistlockfreeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeTable::get(self : DslistlockfreeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_table_set(s : DslistlockfreeTable, i : Int, v : Double) -> DslistlockfreeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeTable::set(self : DslistlockfreeTable, i : Int, v : Double) -> DslistlockfreeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_table_sum(s : DslistlockfreeTable) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeTable::sum(self : DslistlockfreeTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_table_mean(s : DslistlockfreeTable) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeTable::mean(self : DslistlockfreeTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_table_scale(s : DslistlockfreeTable, f : Double) -> DslistlockfreeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeTable::scale(self : DslistlockfreeTable, f : Double) -> DslistlockfreeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_table_add(a : DslistlockfreeTable, b : DslistlockfreeTable) -> DslistlockfreeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeTable::add(self : DslistlockfreeTable, other : DslistlockfreeTable) -> DslistlockfreeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_table_copy(s : DslistlockfreeTable) -> DslistlockfreeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeTable::copy(self : DslistlockfreeTable) -> DslistlockfreeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_table_fill(s : DslistlockfreeTable, v : Double) -> DslistlockfreeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeTable::fill(self : DslistlockfreeTable, v : Double) -> DslistlockfreeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_table_min(s : DslistlockfreeTable) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeTable::min(self : DslistlockfreeTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_table_max(s : DslistlockfreeTable) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeTable::max(self : DslistlockfreeTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_table_to_string(s : DslistlockfreeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeTable::to_string(self : DslistlockfreeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeGraphN {
@@ -453,45 +453,45 @@ pub fn ds_list_lockfree_graphn_make(size : Int) -> DslistlockfreeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_graphn_len(s : DslistlockfreeGraphN) -> Int { s.size }
+pub fn DslistlockfreeGraphN::len(self : DslistlockfreeGraphN) -> Int { self.size }
 
-pub fn ds_list_lockfree_graphn_get(s : DslistlockfreeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeGraphN::get(self : DslistlockfreeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_graphn_set(s : DslistlockfreeGraphN, i : Int, v : Double) -> DslistlockfreeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeGraphN::set(self : DslistlockfreeGraphN, i : Int, v : Double) -> DslistlockfreeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_graphn_sum(s : DslistlockfreeGraphN) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeGraphN::sum(self : DslistlockfreeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_graphn_mean(s : DslistlockfreeGraphN) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeGraphN::mean(self : DslistlockfreeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_graphn_scale(s : DslistlockfreeGraphN, f : Double) -> DslistlockfreeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeGraphN::scale(self : DslistlockfreeGraphN, f : Double) -> DslistlockfreeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_graphn_add(a : DslistlockfreeGraphN, b : DslistlockfreeGraphN) -> DslistlockfreeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeGraphN::add(self : DslistlockfreeGraphN, other : DslistlockfreeGraphN) -> DslistlockfreeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_graphn_copy(s : DslistlockfreeGraphN) -> DslistlockfreeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeGraphN::copy(self : DslistlockfreeGraphN) -> DslistlockfreeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_graphn_fill(s : DslistlockfreeGraphN, v : Double) -> DslistlockfreeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeGraphN::fill(self : DslistlockfreeGraphN, v : Double) -> DslistlockfreeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_graphn_min(s : DslistlockfreeGraphN) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeGraphN::min(self : DslistlockfreeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_graphn_max(s : DslistlockfreeGraphN) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeGraphN::max(self : DslistlockfreeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_graphn_to_string(s : DslistlockfreeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeGraphN::to_string(self : DslistlockfreeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeNode {
@@ -504,45 +504,45 @@ pub fn ds_list_lockfree_node_make(size : Int) -> DslistlockfreeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_node_len(s : DslistlockfreeNode) -> Int { s.size }
+pub fn DslistlockfreeNode::len(self : DslistlockfreeNode) -> Int { self.size }
 
-pub fn ds_list_lockfree_node_get(s : DslistlockfreeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeNode::get(self : DslistlockfreeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_node_set(s : DslistlockfreeNode, i : Int, v : Double) -> DslistlockfreeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeNode::set(self : DslistlockfreeNode, i : Int, v : Double) -> DslistlockfreeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_node_sum(s : DslistlockfreeNode) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeNode::sum(self : DslistlockfreeNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_node_mean(s : DslistlockfreeNode) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeNode::mean(self : DslistlockfreeNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_node_scale(s : DslistlockfreeNode, f : Double) -> DslistlockfreeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeNode::scale(self : DslistlockfreeNode, f : Double) -> DslistlockfreeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_node_add(a : DslistlockfreeNode, b : DslistlockfreeNode) -> DslistlockfreeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeNode::add(self : DslistlockfreeNode, other : DslistlockfreeNode) -> DslistlockfreeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_node_copy(s : DslistlockfreeNode) -> DslistlockfreeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeNode::copy(self : DslistlockfreeNode) -> DslistlockfreeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_node_fill(s : DslistlockfreeNode, v : Double) -> DslistlockfreeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeNode::fill(self : DslistlockfreeNode, v : Double) -> DslistlockfreeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_node_min(s : DslistlockfreeNode) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeNode::min(self : DslistlockfreeNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_node_max(s : DslistlockfreeNode) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeNode::max(self : DslistlockfreeNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_node_to_string(s : DslistlockfreeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeNode::to_string(self : DslistlockfreeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeEdge {
@@ -555,45 +555,45 @@ pub fn ds_list_lockfree_edge_make(size : Int) -> DslistlockfreeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_edge_len(s : DslistlockfreeEdge) -> Int { s.size }
+pub fn DslistlockfreeEdge::len(self : DslistlockfreeEdge) -> Int { self.size }
 
-pub fn ds_list_lockfree_edge_get(s : DslistlockfreeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeEdge::get(self : DslistlockfreeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_edge_set(s : DslistlockfreeEdge, i : Int, v : Double) -> DslistlockfreeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeEdge::set(self : DslistlockfreeEdge, i : Int, v : Double) -> DslistlockfreeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_edge_sum(s : DslistlockfreeEdge) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeEdge::sum(self : DslistlockfreeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_edge_mean(s : DslistlockfreeEdge) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeEdge::mean(self : DslistlockfreeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_edge_scale(s : DslistlockfreeEdge, f : Double) -> DslistlockfreeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeEdge::scale(self : DslistlockfreeEdge, f : Double) -> DslistlockfreeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_edge_add(a : DslistlockfreeEdge, b : DslistlockfreeEdge) -> DslistlockfreeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeEdge::add(self : DslistlockfreeEdge, other : DslistlockfreeEdge) -> DslistlockfreeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_edge_copy(s : DslistlockfreeEdge) -> DslistlockfreeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeEdge::copy(self : DslistlockfreeEdge) -> DslistlockfreeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_edge_fill(s : DslistlockfreeEdge, v : Double) -> DslistlockfreeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeEdge::fill(self : DslistlockfreeEdge, v : Double) -> DslistlockfreeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_edge_min(s : DslistlockfreeEdge) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeEdge::min(self : DslistlockfreeEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_edge_max(s : DslistlockfreeEdge) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeEdge::max(self : DslistlockfreeEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_edge_to_string(s : DslistlockfreeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeEdge::to_string(self : DslistlockfreeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreePath {
@@ -606,45 +606,45 @@ pub fn ds_list_lockfree_path_make(size : Int) -> DslistlockfreePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_path_len(s : DslistlockfreePath) -> Int { s.size }
+pub fn DslistlockfreePath::len(self : DslistlockfreePath) -> Int { self.size }
 
-pub fn ds_list_lockfree_path_get(s : DslistlockfreePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreePath::get(self : DslistlockfreePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_path_set(s : DslistlockfreePath, i : Int, v : Double) -> DslistlockfreePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreePath::set(self : DslistlockfreePath, i : Int, v : Double) -> DslistlockfreePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_path_sum(s : DslistlockfreePath) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreePath::sum(self : DslistlockfreePath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_path_mean(s : DslistlockfreePath) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreePath::mean(self : DslistlockfreePath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_path_scale(s : DslistlockfreePath, f : Double) -> DslistlockfreePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreePath::scale(self : DslistlockfreePath, f : Double) -> DslistlockfreePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_path_add(a : DslistlockfreePath, b : DslistlockfreePath) -> DslistlockfreePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreePath::add(self : DslistlockfreePath, other : DslistlockfreePath) -> DslistlockfreePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_path_copy(s : DslistlockfreePath) -> DslistlockfreePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreePath::copy(self : DslistlockfreePath) -> DslistlockfreePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_path_fill(s : DslistlockfreePath, v : Double) -> DslistlockfreePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreePath::fill(self : DslistlockfreePath, v : Double) -> DslistlockfreePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_path_min(s : DslistlockfreePath) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreePath::min(self : DslistlockfreePath) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_path_max(s : DslistlockfreePath) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreePath::max(self : DslistlockfreePath) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_path_to_string(s : DslistlockfreePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreePath::to_string(self : DslistlockfreePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeCluster {
@@ -657,45 +657,45 @@ pub fn ds_list_lockfree_cluster_make(size : Int) -> DslistlockfreeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_cluster_len(s : DslistlockfreeCluster) -> Int { s.size }
+pub fn DslistlockfreeCluster::len(self : DslistlockfreeCluster) -> Int { self.size }
 
-pub fn ds_list_lockfree_cluster_get(s : DslistlockfreeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeCluster::get(self : DslistlockfreeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_cluster_set(s : DslistlockfreeCluster, i : Int, v : Double) -> DslistlockfreeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeCluster::set(self : DslistlockfreeCluster, i : Int, v : Double) -> DslistlockfreeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cluster_sum(s : DslistlockfreeCluster) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeCluster::sum(self : DslistlockfreeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_cluster_mean(s : DslistlockfreeCluster) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeCluster::mean(self : DslistlockfreeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_cluster_scale(s : DslistlockfreeCluster, f : Double) -> DslistlockfreeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeCluster::scale(self : DslistlockfreeCluster, f : Double) -> DslistlockfreeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cluster_add(a : DslistlockfreeCluster, b : DslistlockfreeCluster) -> DslistlockfreeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeCluster::add(self : DslistlockfreeCluster, other : DslistlockfreeCluster) -> DslistlockfreeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cluster_copy(s : DslistlockfreeCluster) -> DslistlockfreeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeCluster::copy(self : DslistlockfreeCluster) -> DslistlockfreeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cluster_fill(s : DslistlockfreeCluster, v : Double) -> DslistlockfreeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeCluster::fill(self : DslistlockfreeCluster, v : Double) -> DslistlockfreeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cluster_min(s : DslistlockfreeCluster) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeCluster::min(self : DslistlockfreeCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_cluster_max(s : DslistlockfreeCluster) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeCluster::max(self : DslistlockfreeCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_cluster_to_string(s : DslistlockfreeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeCluster::to_string(self : DslistlockfreeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeModel {
@@ -708,45 +708,45 @@ pub fn ds_list_lockfree_model_make(size : Int) -> DslistlockfreeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_model_len(s : DslistlockfreeModel) -> Int { s.size }
+pub fn DslistlockfreeModel::len(self : DslistlockfreeModel) -> Int { self.size }
 
-pub fn ds_list_lockfree_model_get(s : DslistlockfreeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeModel::get(self : DslistlockfreeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_model_set(s : DslistlockfreeModel, i : Int, v : Double) -> DslistlockfreeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeModel::set(self : DslistlockfreeModel, i : Int, v : Double) -> DslistlockfreeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_model_sum(s : DslistlockfreeModel) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeModel::sum(self : DslistlockfreeModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_model_mean(s : DslistlockfreeModel) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeModel::mean(self : DslistlockfreeModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_model_scale(s : DslistlockfreeModel, f : Double) -> DslistlockfreeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeModel::scale(self : DslistlockfreeModel, f : Double) -> DslistlockfreeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_model_add(a : DslistlockfreeModel, b : DslistlockfreeModel) -> DslistlockfreeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeModel::add(self : DslistlockfreeModel, other : DslistlockfreeModel) -> DslistlockfreeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_model_copy(s : DslistlockfreeModel) -> DslistlockfreeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeModel::copy(self : DslistlockfreeModel) -> DslistlockfreeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_model_fill(s : DslistlockfreeModel, v : Double) -> DslistlockfreeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeModel::fill(self : DslistlockfreeModel, v : Double) -> DslistlockfreeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_model_min(s : DslistlockfreeModel) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeModel::min(self : DslistlockfreeModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_model_max(s : DslistlockfreeModel) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeModel::max(self : DslistlockfreeModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_model_to_string(s : DslistlockfreeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeModel::to_string(self : DslistlockfreeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeLayer {
@@ -759,45 +759,45 @@ pub fn ds_list_lockfree_layer_make(size : Int) -> DslistlockfreeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_layer_len(s : DslistlockfreeLayer) -> Int { s.size }
+pub fn DslistlockfreeLayer::len(self : DslistlockfreeLayer) -> Int { self.size }
 
-pub fn ds_list_lockfree_layer_get(s : DslistlockfreeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeLayer::get(self : DslistlockfreeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_layer_set(s : DslistlockfreeLayer, i : Int, v : Double) -> DslistlockfreeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeLayer::set(self : DslistlockfreeLayer, i : Int, v : Double) -> DslistlockfreeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_layer_sum(s : DslistlockfreeLayer) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeLayer::sum(self : DslistlockfreeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_layer_mean(s : DslistlockfreeLayer) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeLayer::mean(self : DslistlockfreeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_layer_scale(s : DslistlockfreeLayer, f : Double) -> DslistlockfreeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeLayer::scale(self : DslistlockfreeLayer, f : Double) -> DslistlockfreeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_layer_add(a : DslistlockfreeLayer, b : DslistlockfreeLayer) -> DslistlockfreeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeLayer::add(self : DslistlockfreeLayer, other : DslistlockfreeLayer) -> DslistlockfreeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_layer_copy(s : DslistlockfreeLayer) -> DslistlockfreeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeLayer::copy(self : DslistlockfreeLayer) -> DslistlockfreeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_layer_fill(s : DslistlockfreeLayer, v : Double) -> DslistlockfreeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeLayer::fill(self : DslistlockfreeLayer, v : Double) -> DslistlockfreeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_layer_min(s : DslistlockfreeLayer) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeLayer::min(self : DslistlockfreeLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_layer_max(s : DslistlockfreeLayer) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeLayer::max(self : DslistlockfreeLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_layer_to_string(s : DslistlockfreeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeLayer::to_string(self : DslistlockfreeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeBuffer {
@@ -810,45 +810,45 @@ pub fn ds_list_lockfree_buffer_make(size : Int) -> DslistlockfreeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_buffer_len(s : DslistlockfreeBuffer) -> Int { s.size }
+pub fn DslistlockfreeBuffer::len(self : DslistlockfreeBuffer) -> Int { self.size }
 
-pub fn ds_list_lockfree_buffer_get(s : DslistlockfreeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeBuffer::get(self : DslistlockfreeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_buffer_set(s : DslistlockfreeBuffer, i : Int, v : Double) -> DslistlockfreeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeBuffer::set(self : DslistlockfreeBuffer, i : Int, v : Double) -> DslistlockfreeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_buffer_sum(s : DslistlockfreeBuffer) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeBuffer::sum(self : DslistlockfreeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_buffer_mean(s : DslistlockfreeBuffer) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeBuffer::mean(self : DslistlockfreeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_buffer_scale(s : DslistlockfreeBuffer, f : Double) -> DslistlockfreeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeBuffer::scale(self : DslistlockfreeBuffer, f : Double) -> DslistlockfreeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_buffer_add(a : DslistlockfreeBuffer, b : DslistlockfreeBuffer) -> DslistlockfreeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeBuffer::add(self : DslistlockfreeBuffer, other : DslistlockfreeBuffer) -> DslistlockfreeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_buffer_copy(s : DslistlockfreeBuffer) -> DslistlockfreeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeBuffer::copy(self : DslistlockfreeBuffer) -> DslistlockfreeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_buffer_fill(s : DslistlockfreeBuffer, v : Double) -> DslistlockfreeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeBuffer::fill(self : DslistlockfreeBuffer, v : Double) -> DslistlockfreeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_buffer_min(s : DslistlockfreeBuffer) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeBuffer::min(self : DslistlockfreeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_buffer_max(s : DslistlockfreeBuffer) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeBuffer::max(self : DslistlockfreeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_buffer_to_string(s : DslistlockfreeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeBuffer::to_string(self : DslistlockfreeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeCursor {
@@ -861,45 +861,45 @@ pub fn ds_list_lockfree_cursor_make(size : Int) -> DslistlockfreeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_cursor_len(s : DslistlockfreeCursor) -> Int { s.size }
+pub fn DslistlockfreeCursor::len(self : DslistlockfreeCursor) -> Int { self.size }
 
-pub fn ds_list_lockfree_cursor_get(s : DslistlockfreeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeCursor::get(self : DslistlockfreeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_cursor_set(s : DslistlockfreeCursor, i : Int, v : Double) -> DslistlockfreeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeCursor::set(self : DslistlockfreeCursor, i : Int, v : Double) -> DslistlockfreeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cursor_sum(s : DslistlockfreeCursor) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeCursor::sum(self : DslistlockfreeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_cursor_mean(s : DslistlockfreeCursor) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeCursor::mean(self : DslistlockfreeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_cursor_scale(s : DslistlockfreeCursor, f : Double) -> DslistlockfreeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeCursor::scale(self : DslistlockfreeCursor, f : Double) -> DslistlockfreeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cursor_add(a : DslistlockfreeCursor, b : DslistlockfreeCursor) -> DslistlockfreeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeCursor::add(self : DslistlockfreeCursor, other : DslistlockfreeCursor) -> DslistlockfreeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cursor_copy(s : DslistlockfreeCursor) -> DslistlockfreeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeCursor::copy(self : DslistlockfreeCursor) -> DslistlockfreeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cursor_fill(s : DslistlockfreeCursor, v : Double) -> DslistlockfreeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeCursor::fill(self : DslistlockfreeCursor, v : Double) -> DslistlockfreeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_cursor_min(s : DslistlockfreeCursor) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeCursor::min(self : DslistlockfreeCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_cursor_max(s : DslistlockfreeCursor) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeCursor::max(self : DslistlockfreeCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_cursor_to_string(s : DslistlockfreeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeCursor::to_string(self : DslistlockfreeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeView {
@@ -912,45 +912,45 @@ pub fn ds_list_lockfree_view_make(size : Int) -> DslistlockfreeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_view_len(s : DslistlockfreeView) -> Int { s.size }
+pub fn DslistlockfreeView::len(self : DslistlockfreeView) -> Int { self.size }
 
-pub fn ds_list_lockfree_view_get(s : DslistlockfreeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeView::get(self : DslistlockfreeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_view_set(s : DslistlockfreeView, i : Int, v : Double) -> DslistlockfreeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeView::set(self : DslistlockfreeView, i : Int, v : Double) -> DslistlockfreeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_view_sum(s : DslistlockfreeView) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeView::sum(self : DslistlockfreeView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_view_mean(s : DslistlockfreeView) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeView::mean(self : DslistlockfreeView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_view_scale(s : DslistlockfreeView, f : Double) -> DslistlockfreeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeView::scale(self : DslistlockfreeView, f : Double) -> DslistlockfreeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_view_add(a : DslistlockfreeView, b : DslistlockfreeView) -> DslistlockfreeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeView::add(self : DslistlockfreeView, other : DslistlockfreeView) -> DslistlockfreeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_view_copy(s : DslistlockfreeView) -> DslistlockfreeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeView::copy(self : DslistlockfreeView) -> DslistlockfreeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_view_fill(s : DslistlockfreeView, v : Double) -> DslistlockfreeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeView::fill(self : DslistlockfreeView, v : Double) -> DslistlockfreeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_view_min(s : DslistlockfreeView) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeView::min(self : DslistlockfreeView) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_view_max(s : DslistlockfreeView) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeView::max(self : DslistlockfreeView) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_view_to_string(s : DslistlockfreeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeView::to_string(self : DslistlockfreeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeRange {
@@ -963,45 +963,45 @@ pub fn ds_list_lockfree_range_make(size : Int) -> DslistlockfreeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_range_len(s : DslistlockfreeRange) -> Int { s.size }
+pub fn DslistlockfreeRange::len(self : DslistlockfreeRange) -> Int { self.size }
 
-pub fn ds_list_lockfree_range_get(s : DslistlockfreeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeRange::get(self : DslistlockfreeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_range_set(s : DslistlockfreeRange, i : Int, v : Double) -> DslistlockfreeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeRange::set(self : DslistlockfreeRange, i : Int, v : Double) -> DslistlockfreeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_range_sum(s : DslistlockfreeRange) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeRange::sum(self : DslistlockfreeRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_range_mean(s : DslistlockfreeRange) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeRange::mean(self : DslistlockfreeRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_range_scale(s : DslistlockfreeRange, f : Double) -> DslistlockfreeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeRange::scale(self : DslistlockfreeRange, f : Double) -> DslistlockfreeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_range_add(a : DslistlockfreeRange, b : DslistlockfreeRange) -> DslistlockfreeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeRange::add(self : DslistlockfreeRange, other : DslistlockfreeRange) -> DslistlockfreeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_range_copy(s : DslistlockfreeRange) -> DslistlockfreeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeRange::copy(self : DslistlockfreeRange) -> DslistlockfreeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_range_fill(s : DslistlockfreeRange, v : Double) -> DslistlockfreeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeRange::fill(self : DslistlockfreeRange, v : Double) -> DslistlockfreeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_range_min(s : DslistlockfreeRange) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeRange::min(self : DslistlockfreeRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_range_max(s : DslistlockfreeRange) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeRange::max(self : DslistlockfreeRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_range_to_string(s : DslistlockfreeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeRange::to_string(self : DslistlockfreeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DslistlockfreeSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_list_lockfree_slice_make(size : Int) -> DslistlockfreeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_list_lockfree_slice_len(s : DslistlockfreeSlice) -> Int { s.size }
+pub fn DslistlockfreeSlice::len(self : DslistlockfreeSlice) -> Int { self.size }
 
-pub fn ds_list_lockfree_slice_get(s : DslistlockfreeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DslistlockfreeSlice::get(self : DslistlockfreeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_list_lockfree_slice_set(s : DslistlockfreeSlice, i : Int, v : Double) -> DslistlockfreeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DslistlockfreeSlice::set(self : DslistlockfreeSlice, i : Int, v : Double) -> DslistlockfreeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_slice_sum(s : DslistlockfreeSlice) -> Double { @_common.sum(s.data) }
+pub fn DslistlockfreeSlice::sum(self : DslistlockfreeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_list_lockfree_slice_mean(s : DslistlockfreeSlice) -> Double { @_common.mean(s.data) }
+pub fn DslistlockfreeSlice::mean(self : DslistlockfreeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_list_lockfree_slice_scale(s : DslistlockfreeSlice, f : Double) -> DslistlockfreeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DslistlockfreeSlice::scale(self : DslistlockfreeSlice, f : Double) -> DslistlockfreeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_slice_add(a : DslistlockfreeSlice, b : DslistlockfreeSlice) -> DslistlockfreeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DslistlockfreeSlice::add(self : DslistlockfreeSlice, other : DslistlockfreeSlice) -> DslistlockfreeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_slice_copy(s : DslistlockfreeSlice) -> DslistlockfreeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DslistlockfreeSlice::copy(self : DslistlockfreeSlice) -> DslistlockfreeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_slice_fill(s : DslistlockfreeSlice, v : Double) -> DslistlockfreeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DslistlockfreeSlice::fill(self : DslistlockfreeSlice, v : Double) -> DslistlockfreeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_list_lockfree_slice_min(s : DslistlockfreeSlice) -> Double { @_common.min(s.data) }
+pub fn DslistlockfreeSlice::min(self : DslistlockfreeSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_list_lockfree_slice_max(s : DslistlockfreeSlice) -> Double { @_common.max(s.data) }
+pub fn DslistlockfreeSlice::max(self : DslistlockfreeSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_list_lockfree_slice_to_string(s : DslistlockfreeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DslistlockfreeSlice::to_string(self : DslistlockfreeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

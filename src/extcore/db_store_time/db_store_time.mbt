@@ -351,45 +351,45 @@ pub fn db_store_time_frame_make(size : Int) -> DbstoretimeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_frame_len(s : DbstoretimeFrame) -> Int { s.size }
+pub fn DbstoretimeFrame::len(self : DbstoretimeFrame) -> Int { self.size }
 
-pub fn db_store_time_frame_get(s : DbstoretimeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeFrame::get(self : DbstoretimeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_frame_set(s : DbstoretimeFrame, i : Int, v : Double) -> DbstoretimeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeFrame::set(self : DbstoretimeFrame, i : Int, v : Double) -> DbstoretimeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_frame_sum(s : DbstoretimeFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeFrame::sum(self : DbstoretimeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_frame_mean(s : DbstoretimeFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeFrame::mean(self : DbstoretimeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_frame_scale(s : DbstoretimeFrame, f : Double) -> DbstoretimeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeFrame::scale(self : DbstoretimeFrame, f : Double) -> DbstoretimeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_frame_add(a : DbstoretimeFrame, b : DbstoretimeFrame) -> DbstoretimeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeFrame::add(self : DbstoretimeFrame, other : DbstoretimeFrame) -> DbstoretimeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_frame_copy(s : DbstoretimeFrame) -> DbstoretimeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeFrame::copy(self : DbstoretimeFrame) -> DbstoretimeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_frame_fill(s : DbstoretimeFrame, v : Double) -> DbstoretimeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeFrame::fill(self : DbstoretimeFrame, v : Double) -> DbstoretimeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_frame_min(s : DbstoretimeFrame) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeFrame::min(self : DbstoretimeFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_frame_max(s : DbstoretimeFrame) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeFrame::max(self : DbstoretimeFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_frame_to_string(s : DbstoretimeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeFrame::to_string(self : DbstoretimeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeTable {
@@ -402,45 +402,45 @@ pub fn db_store_time_table_make(size : Int) -> DbstoretimeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_table_len(s : DbstoretimeTable) -> Int { s.size }
+pub fn DbstoretimeTable::len(self : DbstoretimeTable) -> Int { self.size }
 
-pub fn db_store_time_table_get(s : DbstoretimeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeTable::get(self : DbstoretimeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_table_set(s : DbstoretimeTable, i : Int, v : Double) -> DbstoretimeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeTable::set(self : DbstoretimeTable, i : Int, v : Double) -> DbstoretimeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_table_sum(s : DbstoretimeTable) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeTable::sum(self : DbstoretimeTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_table_mean(s : DbstoretimeTable) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeTable::mean(self : DbstoretimeTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_table_scale(s : DbstoretimeTable, f : Double) -> DbstoretimeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeTable::scale(self : DbstoretimeTable, f : Double) -> DbstoretimeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_table_add(a : DbstoretimeTable, b : DbstoretimeTable) -> DbstoretimeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeTable::add(self : DbstoretimeTable, other : DbstoretimeTable) -> DbstoretimeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_table_copy(s : DbstoretimeTable) -> DbstoretimeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeTable::copy(self : DbstoretimeTable) -> DbstoretimeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_table_fill(s : DbstoretimeTable, v : Double) -> DbstoretimeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeTable::fill(self : DbstoretimeTable, v : Double) -> DbstoretimeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_table_min(s : DbstoretimeTable) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeTable::min(self : DbstoretimeTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_table_max(s : DbstoretimeTable) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeTable::max(self : DbstoretimeTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_table_to_string(s : DbstoretimeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeTable::to_string(self : DbstoretimeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_time_graphn_make(size : Int) -> DbstoretimeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_graphn_len(s : DbstoretimeGraphN) -> Int { s.size }
+pub fn DbstoretimeGraphN::len(self : DbstoretimeGraphN) -> Int { self.size }
 
-pub fn db_store_time_graphn_get(s : DbstoretimeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeGraphN::get(self : DbstoretimeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_graphn_set(s : DbstoretimeGraphN, i : Int, v : Double) -> DbstoretimeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeGraphN::set(self : DbstoretimeGraphN, i : Int, v : Double) -> DbstoretimeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_graphn_sum(s : DbstoretimeGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeGraphN::sum(self : DbstoretimeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_graphn_mean(s : DbstoretimeGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeGraphN::mean(self : DbstoretimeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_graphn_scale(s : DbstoretimeGraphN, f : Double) -> DbstoretimeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeGraphN::scale(self : DbstoretimeGraphN, f : Double) -> DbstoretimeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_graphn_add(a : DbstoretimeGraphN, b : DbstoretimeGraphN) -> DbstoretimeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeGraphN::add(self : DbstoretimeGraphN, other : DbstoretimeGraphN) -> DbstoretimeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_graphn_copy(s : DbstoretimeGraphN) -> DbstoretimeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeGraphN::copy(self : DbstoretimeGraphN) -> DbstoretimeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_graphn_fill(s : DbstoretimeGraphN, v : Double) -> DbstoretimeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeGraphN::fill(self : DbstoretimeGraphN, v : Double) -> DbstoretimeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_graphn_min(s : DbstoretimeGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeGraphN::min(self : DbstoretimeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_graphn_max(s : DbstoretimeGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeGraphN::max(self : DbstoretimeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_graphn_to_string(s : DbstoretimeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeGraphN::to_string(self : DbstoretimeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeNode {
@@ -504,45 +504,45 @@ pub fn db_store_time_node_make(size : Int) -> DbstoretimeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_node_len(s : DbstoretimeNode) -> Int { s.size }
+pub fn DbstoretimeNode::len(self : DbstoretimeNode) -> Int { self.size }
 
-pub fn db_store_time_node_get(s : DbstoretimeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeNode::get(self : DbstoretimeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_node_set(s : DbstoretimeNode, i : Int, v : Double) -> DbstoretimeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeNode::set(self : DbstoretimeNode, i : Int, v : Double) -> DbstoretimeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_node_sum(s : DbstoretimeNode) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeNode::sum(self : DbstoretimeNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_node_mean(s : DbstoretimeNode) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeNode::mean(self : DbstoretimeNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_node_scale(s : DbstoretimeNode, f : Double) -> DbstoretimeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeNode::scale(self : DbstoretimeNode, f : Double) -> DbstoretimeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_node_add(a : DbstoretimeNode, b : DbstoretimeNode) -> DbstoretimeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeNode::add(self : DbstoretimeNode, other : DbstoretimeNode) -> DbstoretimeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_node_copy(s : DbstoretimeNode) -> DbstoretimeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeNode::copy(self : DbstoretimeNode) -> DbstoretimeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_node_fill(s : DbstoretimeNode, v : Double) -> DbstoretimeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeNode::fill(self : DbstoretimeNode, v : Double) -> DbstoretimeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_node_min(s : DbstoretimeNode) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeNode::min(self : DbstoretimeNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_node_max(s : DbstoretimeNode) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeNode::max(self : DbstoretimeNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_node_to_string(s : DbstoretimeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeNode::to_string(self : DbstoretimeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeEdge {
@@ -555,45 +555,45 @@ pub fn db_store_time_edge_make(size : Int) -> DbstoretimeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_edge_len(s : DbstoretimeEdge) -> Int { s.size }
+pub fn DbstoretimeEdge::len(self : DbstoretimeEdge) -> Int { self.size }
 
-pub fn db_store_time_edge_get(s : DbstoretimeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeEdge::get(self : DbstoretimeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_edge_set(s : DbstoretimeEdge, i : Int, v : Double) -> DbstoretimeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeEdge::set(self : DbstoretimeEdge, i : Int, v : Double) -> DbstoretimeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_edge_sum(s : DbstoretimeEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeEdge::sum(self : DbstoretimeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_edge_mean(s : DbstoretimeEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeEdge::mean(self : DbstoretimeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_edge_scale(s : DbstoretimeEdge, f : Double) -> DbstoretimeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeEdge::scale(self : DbstoretimeEdge, f : Double) -> DbstoretimeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_edge_add(a : DbstoretimeEdge, b : DbstoretimeEdge) -> DbstoretimeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeEdge::add(self : DbstoretimeEdge, other : DbstoretimeEdge) -> DbstoretimeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_edge_copy(s : DbstoretimeEdge) -> DbstoretimeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeEdge::copy(self : DbstoretimeEdge) -> DbstoretimeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_edge_fill(s : DbstoretimeEdge, v : Double) -> DbstoretimeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeEdge::fill(self : DbstoretimeEdge, v : Double) -> DbstoretimeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_edge_min(s : DbstoretimeEdge) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeEdge::min(self : DbstoretimeEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_edge_max(s : DbstoretimeEdge) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeEdge::max(self : DbstoretimeEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_edge_to_string(s : DbstoretimeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeEdge::to_string(self : DbstoretimeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimePath {
@@ -606,45 +606,45 @@ pub fn db_store_time_path_make(size : Int) -> DbstoretimePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_path_len(s : DbstoretimePath) -> Int { s.size }
+pub fn DbstoretimePath::len(self : DbstoretimePath) -> Int { self.size }
 
-pub fn db_store_time_path_get(s : DbstoretimePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimePath::get(self : DbstoretimePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_path_set(s : DbstoretimePath, i : Int, v : Double) -> DbstoretimePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimePath::set(self : DbstoretimePath, i : Int, v : Double) -> DbstoretimePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_path_sum(s : DbstoretimePath) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimePath::sum(self : DbstoretimePath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_path_mean(s : DbstoretimePath) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimePath::mean(self : DbstoretimePath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_path_scale(s : DbstoretimePath, f : Double) -> DbstoretimePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimePath::scale(self : DbstoretimePath, f : Double) -> DbstoretimePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_path_add(a : DbstoretimePath, b : DbstoretimePath) -> DbstoretimePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimePath::add(self : DbstoretimePath, other : DbstoretimePath) -> DbstoretimePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_path_copy(s : DbstoretimePath) -> DbstoretimePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimePath::copy(self : DbstoretimePath) -> DbstoretimePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_path_fill(s : DbstoretimePath, v : Double) -> DbstoretimePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimePath::fill(self : DbstoretimePath, v : Double) -> DbstoretimePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_path_min(s : DbstoretimePath) -> Double { @_common.min(s.data) }
+pub fn DbstoretimePath::min(self : DbstoretimePath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_path_max(s : DbstoretimePath) -> Double { @_common.max(s.data) }
+pub fn DbstoretimePath::max(self : DbstoretimePath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_path_to_string(s : DbstoretimePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimePath::to_string(self : DbstoretimePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeCluster {
@@ -657,45 +657,45 @@ pub fn db_store_time_cluster_make(size : Int) -> DbstoretimeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_cluster_len(s : DbstoretimeCluster) -> Int { s.size }
+pub fn DbstoretimeCluster::len(self : DbstoretimeCluster) -> Int { self.size }
 
-pub fn db_store_time_cluster_get(s : DbstoretimeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeCluster::get(self : DbstoretimeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_cluster_set(s : DbstoretimeCluster, i : Int, v : Double) -> DbstoretimeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeCluster::set(self : DbstoretimeCluster, i : Int, v : Double) -> DbstoretimeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cluster_sum(s : DbstoretimeCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeCluster::sum(self : DbstoretimeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_cluster_mean(s : DbstoretimeCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeCluster::mean(self : DbstoretimeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_cluster_scale(s : DbstoretimeCluster, f : Double) -> DbstoretimeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeCluster::scale(self : DbstoretimeCluster, f : Double) -> DbstoretimeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cluster_add(a : DbstoretimeCluster, b : DbstoretimeCluster) -> DbstoretimeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeCluster::add(self : DbstoretimeCluster, other : DbstoretimeCluster) -> DbstoretimeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_cluster_copy(s : DbstoretimeCluster) -> DbstoretimeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeCluster::copy(self : DbstoretimeCluster) -> DbstoretimeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cluster_fill(s : DbstoretimeCluster, v : Double) -> DbstoretimeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeCluster::fill(self : DbstoretimeCluster, v : Double) -> DbstoretimeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cluster_min(s : DbstoretimeCluster) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeCluster::min(self : DbstoretimeCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_cluster_max(s : DbstoretimeCluster) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeCluster::max(self : DbstoretimeCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_cluster_to_string(s : DbstoretimeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeCluster::to_string(self : DbstoretimeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeModel {
@@ -708,45 +708,45 @@ pub fn db_store_time_model_make(size : Int) -> DbstoretimeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_model_len(s : DbstoretimeModel) -> Int { s.size }
+pub fn DbstoretimeModel::len(self : DbstoretimeModel) -> Int { self.size }
 
-pub fn db_store_time_model_get(s : DbstoretimeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeModel::get(self : DbstoretimeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_model_set(s : DbstoretimeModel, i : Int, v : Double) -> DbstoretimeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeModel::set(self : DbstoretimeModel, i : Int, v : Double) -> DbstoretimeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_model_sum(s : DbstoretimeModel) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeModel::sum(self : DbstoretimeModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_model_mean(s : DbstoretimeModel) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeModel::mean(self : DbstoretimeModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_model_scale(s : DbstoretimeModel, f : Double) -> DbstoretimeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeModel::scale(self : DbstoretimeModel, f : Double) -> DbstoretimeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_model_add(a : DbstoretimeModel, b : DbstoretimeModel) -> DbstoretimeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeModel::add(self : DbstoretimeModel, other : DbstoretimeModel) -> DbstoretimeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_model_copy(s : DbstoretimeModel) -> DbstoretimeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeModel::copy(self : DbstoretimeModel) -> DbstoretimeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_model_fill(s : DbstoretimeModel, v : Double) -> DbstoretimeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeModel::fill(self : DbstoretimeModel, v : Double) -> DbstoretimeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_model_min(s : DbstoretimeModel) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeModel::min(self : DbstoretimeModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_model_max(s : DbstoretimeModel) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeModel::max(self : DbstoretimeModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_model_to_string(s : DbstoretimeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeModel::to_string(self : DbstoretimeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeLayer {
@@ -759,45 +759,45 @@ pub fn db_store_time_layer_make(size : Int) -> DbstoretimeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_layer_len(s : DbstoretimeLayer) -> Int { s.size }
+pub fn DbstoretimeLayer::len(self : DbstoretimeLayer) -> Int { self.size }
 
-pub fn db_store_time_layer_get(s : DbstoretimeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeLayer::get(self : DbstoretimeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_layer_set(s : DbstoretimeLayer, i : Int, v : Double) -> DbstoretimeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeLayer::set(self : DbstoretimeLayer, i : Int, v : Double) -> DbstoretimeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_layer_sum(s : DbstoretimeLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeLayer::sum(self : DbstoretimeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_layer_mean(s : DbstoretimeLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeLayer::mean(self : DbstoretimeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_layer_scale(s : DbstoretimeLayer, f : Double) -> DbstoretimeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeLayer::scale(self : DbstoretimeLayer, f : Double) -> DbstoretimeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_layer_add(a : DbstoretimeLayer, b : DbstoretimeLayer) -> DbstoretimeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeLayer::add(self : DbstoretimeLayer, other : DbstoretimeLayer) -> DbstoretimeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_layer_copy(s : DbstoretimeLayer) -> DbstoretimeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeLayer::copy(self : DbstoretimeLayer) -> DbstoretimeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_layer_fill(s : DbstoretimeLayer, v : Double) -> DbstoretimeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeLayer::fill(self : DbstoretimeLayer, v : Double) -> DbstoretimeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_layer_min(s : DbstoretimeLayer) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeLayer::min(self : DbstoretimeLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_layer_max(s : DbstoretimeLayer) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeLayer::max(self : DbstoretimeLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_layer_to_string(s : DbstoretimeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeLayer::to_string(self : DbstoretimeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_time_buffer_make(size : Int) -> DbstoretimeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_buffer_len(s : DbstoretimeBuffer) -> Int { s.size }
+pub fn DbstoretimeBuffer::len(self : DbstoretimeBuffer) -> Int { self.size }
 
-pub fn db_store_time_buffer_get(s : DbstoretimeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeBuffer::get(self : DbstoretimeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_buffer_set(s : DbstoretimeBuffer, i : Int, v : Double) -> DbstoretimeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeBuffer::set(self : DbstoretimeBuffer, i : Int, v : Double) -> DbstoretimeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_buffer_sum(s : DbstoretimeBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeBuffer::sum(self : DbstoretimeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_buffer_mean(s : DbstoretimeBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeBuffer::mean(self : DbstoretimeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_buffer_scale(s : DbstoretimeBuffer, f : Double) -> DbstoretimeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeBuffer::scale(self : DbstoretimeBuffer, f : Double) -> DbstoretimeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_buffer_add(a : DbstoretimeBuffer, b : DbstoretimeBuffer) -> DbstoretimeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeBuffer::add(self : DbstoretimeBuffer, other : DbstoretimeBuffer) -> DbstoretimeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_buffer_copy(s : DbstoretimeBuffer) -> DbstoretimeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeBuffer::copy(self : DbstoretimeBuffer) -> DbstoretimeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_buffer_fill(s : DbstoretimeBuffer, v : Double) -> DbstoretimeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeBuffer::fill(self : DbstoretimeBuffer, v : Double) -> DbstoretimeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_buffer_min(s : DbstoretimeBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeBuffer::min(self : DbstoretimeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_buffer_max(s : DbstoretimeBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeBuffer::max(self : DbstoretimeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_buffer_to_string(s : DbstoretimeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeBuffer::to_string(self : DbstoretimeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeCursor {
@@ -861,45 +861,45 @@ pub fn db_store_time_cursor_make(size : Int) -> DbstoretimeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_cursor_len(s : DbstoretimeCursor) -> Int { s.size }
+pub fn DbstoretimeCursor::len(self : DbstoretimeCursor) -> Int { self.size }
 
-pub fn db_store_time_cursor_get(s : DbstoretimeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeCursor::get(self : DbstoretimeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_cursor_set(s : DbstoretimeCursor, i : Int, v : Double) -> DbstoretimeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeCursor::set(self : DbstoretimeCursor, i : Int, v : Double) -> DbstoretimeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cursor_sum(s : DbstoretimeCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeCursor::sum(self : DbstoretimeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_cursor_mean(s : DbstoretimeCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeCursor::mean(self : DbstoretimeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_cursor_scale(s : DbstoretimeCursor, f : Double) -> DbstoretimeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeCursor::scale(self : DbstoretimeCursor, f : Double) -> DbstoretimeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cursor_add(a : DbstoretimeCursor, b : DbstoretimeCursor) -> DbstoretimeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeCursor::add(self : DbstoretimeCursor, other : DbstoretimeCursor) -> DbstoretimeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_cursor_copy(s : DbstoretimeCursor) -> DbstoretimeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeCursor::copy(self : DbstoretimeCursor) -> DbstoretimeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cursor_fill(s : DbstoretimeCursor, v : Double) -> DbstoretimeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeCursor::fill(self : DbstoretimeCursor, v : Double) -> DbstoretimeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_cursor_min(s : DbstoretimeCursor) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeCursor::min(self : DbstoretimeCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_cursor_max(s : DbstoretimeCursor) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeCursor::max(self : DbstoretimeCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_cursor_to_string(s : DbstoretimeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeCursor::to_string(self : DbstoretimeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeView {
@@ -912,45 +912,45 @@ pub fn db_store_time_view_make(size : Int) -> DbstoretimeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_view_len(s : DbstoretimeView) -> Int { s.size }
+pub fn DbstoretimeView::len(self : DbstoretimeView) -> Int { self.size }
 
-pub fn db_store_time_view_get(s : DbstoretimeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeView::get(self : DbstoretimeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_view_set(s : DbstoretimeView, i : Int, v : Double) -> DbstoretimeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeView::set(self : DbstoretimeView, i : Int, v : Double) -> DbstoretimeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_view_sum(s : DbstoretimeView) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeView::sum(self : DbstoretimeView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_view_mean(s : DbstoretimeView) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeView::mean(self : DbstoretimeView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_view_scale(s : DbstoretimeView, f : Double) -> DbstoretimeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeView::scale(self : DbstoretimeView, f : Double) -> DbstoretimeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_view_add(a : DbstoretimeView, b : DbstoretimeView) -> DbstoretimeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeView::add(self : DbstoretimeView, other : DbstoretimeView) -> DbstoretimeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_view_copy(s : DbstoretimeView) -> DbstoretimeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeView::copy(self : DbstoretimeView) -> DbstoretimeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_view_fill(s : DbstoretimeView, v : Double) -> DbstoretimeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeView::fill(self : DbstoretimeView, v : Double) -> DbstoretimeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_view_min(s : DbstoretimeView) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeView::min(self : DbstoretimeView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_view_max(s : DbstoretimeView) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeView::max(self : DbstoretimeView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_view_to_string(s : DbstoretimeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeView::to_string(self : DbstoretimeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeRange {
@@ -963,45 +963,45 @@ pub fn db_store_time_range_make(size : Int) -> DbstoretimeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_range_len(s : DbstoretimeRange) -> Int { s.size }
+pub fn DbstoretimeRange::len(self : DbstoretimeRange) -> Int { self.size }
 
-pub fn db_store_time_range_get(s : DbstoretimeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeRange::get(self : DbstoretimeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_range_set(s : DbstoretimeRange, i : Int, v : Double) -> DbstoretimeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeRange::set(self : DbstoretimeRange, i : Int, v : Double) -> DbstoretimeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_range_sum(s : DbstoretimeRange) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeRange::sum(self : DbstoretimeRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_range_mean(s : DbstoretimeRange) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeRange::mean(self : DbstoretimeRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_range_scale(s : DbstoretimeRange, f : Double) -> DbstoretimeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeRange::scale(self : DbstoretimeRange, f : Double) -> DbstoretimeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_range_add(a : DbstoretimeRange, b : DbstoretimeRange) -> DbstoretimeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeRange::add(self : DbstoretimeRange, other : DbstoretimeRange) -> DbstoretimeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_range_copy(s : DbstoretimeRange) -> DbstoretimeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeRange::copy(self : DbstoretimeRange) -> DbstoretimeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_range_fill(s : DbstoretimeRange, v : Double) -> DbstoretimeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeRange::fill(self : DbstoretimeRange, v : Double) -> DbstoretimeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_range_min(s : DbstoretimeRange) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeRange::min(self : DbstoretimeRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_range_max(s : DbstoretimeRange) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeRange::max(self : DbstoretimeRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_range_to_string(s : DbstoretimeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeRange::to_string(self : DbstoretimeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstoretimeSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_time_slice_make(size : Int) -> DbstoretimeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_time_slice_len(s : DbstoretimeSlice) -> Int { s.size }
+pub fn DbstoretimeSlice::len(self : DbstoretimeSlice) -> Int { self.size }
 
-pub fn db_store_time_slice_get(s : DbstoretimeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstoretimeSlice::get(self : DbstoretimeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_time_slice_set(s : DbstoretimeSlice, i : Int, v : Double) -> DbstoretimeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstoretimeSlice::set(self : DbstoretimeSlice, i : Int, v : Double) -> DbstoretimeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_slice_sum(s : DbstoretimeSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstoretimeSlice::sum(self : DbstoretimeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_time_slice_mean(s : DbstoretimeSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstoretimeSlice::mean(self : DbstoretimeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_time_slice_scale(s : DbstoretimeSlice, f : Double) -> DbstoretimeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstoretimeSlice::scale(self : DbstoretimeSlice, f : Double) -> DbstoretimeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_slice_add(a : DbstoretimeSlice, b : DbstoretimeSlice) -> DbstoretimeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstoretimeSlice::add(self : DbstoretimeSlice, other : DbstoretimeSlice) -> DbstoretimeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_time_slice_copy(s : DbstoretimeSlice) -> DbstoretimeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstoretimeSlice::copy(self : DbstoretimeSlice) -> DbstoretimeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_slice_fill(s : DbstoretimeSlice, v : Double) -> DbstoretimeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstoretimeSlice::fill(self : DbstoretimeSlice, v : Double) -> DbstoretimeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_time_slice_min(s : DbstoretimeSlice) -> Double { @_common.min(s.data) }
+pub fn DbstoretimeSlice::min(self : DbstoretimeSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_time_slice_max(s : DbstoretimeSlice) -> Double { @_common.max(s.data) }
+pub fn DbstoretimeSlice::max(self : DbstoretimeSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_time_slice_to_string(s : DbstoretimeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstoretimeSlice::to_string(self : DbstoretimeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

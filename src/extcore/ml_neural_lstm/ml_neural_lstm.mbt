@@ -351,45 +351,45 @@ pub fn ml_neural_lstm_frame_make(size : Int) -> MlneurallstmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_frame_len(s : MlneurallstmFrame) -> Int { s.size }
+pub fn MlneurallstmFrame::len(self : MlneurallstmFrame) -> Int { self.size }
 
-pub fn ml_neural_lstm_frame_get(s : MlneurallstmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmFrame::get(self : MlneurallstmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_frame_set(s : MlneurallstmFrame, i : Int, v : Double) -> MlneurallstmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmFrame::set(self : MlneurallstmFrame, i : Int, v : Double) -> MlneurallstmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_frame_sum(s : MlneurallstmFrame) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmFrame::sum(self : MlneurallstmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_frame_mean(s : MlneurallstmFrame) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmFrame::mean(self : MlneurallstmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_frame_scale(s : MlneurallstmFrame, f : Double) -> MlneurallstmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmFrame::scale(self : MlneurallstmFrame, f : Double) -> MlneurallstmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_frame_add(a : MlneurallstmFrame, b : MlneurallstmFrame) -> MlneurallstmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmFrame::add(self : MlneurallstmFrame, other : MlneurallstmFrame) -> MlneurallstmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_frame_copy(s : MlneurallstmFrame) -> MlneurallstmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmFrame::copy(self : MlneurallstmFrame) -> MlneurallstmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_frame_fill(s : MlneurallstmFrame, v : Double) -> MlneurallstmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmFrame::fill(self : MlneurallstmFrame, v : Double) -> MlneurallstmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_frame_min(s : MlneurallstmFrame) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmFrame::min(self : MlneurallstmFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_frame_max(s : MlneurallstmFrame) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmFrame::max(self : MlneurallstmFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_frame_to_string(s : MlneurallstmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmFrame::to_string(self : MlneurallstmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmTable {
@@ -402,45 +402,45 @@ pub fn ml_neural_lstm_table_make(size : Int) -> MlneurallstmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_table_len(s : MlneurallstmTable) -> Int { s.size }
+pub fn MlneurallstmTable::len(self : MlneurallstmTable) -> Int { self.size }
 
-pub fn ml_neural_lstm_table_get(s : MlneurallstmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmTable::get(self : MlneurallstmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_table_set(s : MlneurallstmTable, i : Int, v : Double) -> MlneurallstmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmTable::set(self : MlneurallstmTable, i : Int, v : Double) -> MlneurallstmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_table_sum(s : MlneurallstmTable) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmTable::sum(self : MlneurallstmTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_table_mean(s : MlneurallstmTable) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmTable::mean(self : MlneurallstmTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_table_scale(s : MlneurallstmTable, f : Double) -> MlneurallstmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmTable::scale(self : MlneurallstmTable, f : Double) -> MlneurallstmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_table_add(a : MlneurallstmTable, b : MlneurallstmTable) -> MlneurallstmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmTable::add(self : MlneurallstmTable, other : MlneurallstmTable) -> MlneurallstmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_table_copy(s : MlneurallstmTable) -> MlneurallstmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmTable::copy(self : MlneurallstmTable) -> MlneurallstmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_table_fill(s : MlneurallstmTable, v : Double) -> MlneurallstmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmTable::fill(self : MlneurallstmTable, v : Double) -> MlneurallstmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_table_min(s : MlneurallstmTable) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmTable::min(self : MlneurallstmTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_table_max(s : MlneurallstmTable) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmTable::max(self : MlneurallstmTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_table_to_string(s : MlneurallstmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmTable::to_string(self : MlneurallstmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmGraphN {
@@ -453,45 +453,45 @@ pub fn ml_neural_lstm_graphn_make(size : Int) -> MlneurallstmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_graphn_len(s : MlneurallstmGraphN) -> Int { s.size }
+pub fn MlneurallstmGraphN::len(self : MlneurallstmGraphN) -> Int { self.size }
 
-pub fn ml_neural_lstm_graphn_get(s : MlneurallstmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmGraphN::get(self : MlneurallstmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_graphn_set(s : MlneurallstmGraphN, i : Int, v : Double) -> MlneurallstmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmGraphN::set(self : MlneurallstmGraphN, i : Int, v : Double) -> MlneurallstmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_graphn_sum(s : MlneurallstmGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmGraphN::sum(self : MlneurallstmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_graphn_mean(s : MlneurallstmGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmGraphN::mean(self : MlneurallstmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_graphn_scale(s : MlneurallstmGraphN, f : Double) -> MlneurallstmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmGraphN::scale(self : MlneurallstmGraphN, f : Double) -> MlneurallstmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_graphn_add(a : MlneurallstmGraphN, b : MlneurallstmGraphN) -> MlneurallstmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmGraphN::add(self : MlneurallstmGraphN, other : MlneurallstmGraphN) -> MlneurallstmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_graphn_copy(s : MlneurallstmGraphN) -> MlneurallstmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmGraphN::copy(self : MlneurallstmGraphN) -> MlneurallstmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_graphn_fill(s : MlneurallstmGraphN, v : Double) -> MlneurallstmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmGraphN::fill(self : MlneurallstmGraphN, v : Double) -> MlneurallstmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_graphn_min(s : MlneurallstmGraphN) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmGraphN::min(self : MlneurallstmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_graphn_max(s : MlneurallstmGraphN) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmGraphN::max(self : MlneurallstmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_graphn_to_string(s : MlneurallstmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmGraphN::to_string(self : MlneurallstmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmNode {
@@ -504,45 +504,45 @@ pub fn ml_neural_lstm_node_make(size : Int) -> MlneurallstmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_node_len(s : MlneurallstmNode) -> Int { s.size }
+pub fn MlneurallstmNode::len(self : MlneurallstmNode) -> Int { self.size }
 
-pub fn ml_neural_lstm_node_get(s : MlneurallstmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmNode::get(self : MlneurallstmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_node_set(s : MlneurallstmNode, i : Int, v : Double) -> MlneurallstmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmNode::set(self : MlneurallstmNode, i : Int, v : Double) -> MlneurallstmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_node_sum(s : MlneurallstmNode) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmNode::sum(self : MlneurallstmNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_node_mean(s : MlneurallstmNode) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmNode::mean(self : MlneurallstmNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_node_scale(s : MlneurallstmNode, f : Double) -> MlneurallstmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmNode::scale(self : MlneurallstmNode, f : Double) -> MlneurallstmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_node_add(a : MlneurallstmNode, b : MlneurallstmNode) -> MlneurallstmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmNode::add(self : MlneurallstmNode, other : MlneurallstmNode) -> MlneurallstmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_node_copy(s : MlneurallstmNode) -> MlneurallstmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmNode::copy(self : MlneurallstmNode) -> MlneurallstmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_node_fill(s : MlneurallstmNode, v : Double) -> MlneurallstmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmNode::fill(self : MlneurallstmNode, v : Double) -> MlneurallstmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_node_min(s : MlneurallstmNode) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmNode::min(self : MlneurallstmNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_node_max(s : MlneurallstmNode) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmNode::max(self : MlneurallstmNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_node_to_string(s : MlneurallstmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmNode::to_string(self : MlneurallstmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmEdge {
@@ -555,45 +555,45 @@ pub fn ml_neural_lstm_edge_make(size : Int) -> MlneurallstmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_edge_len(s : MlneurallstmEdge) -> Int { s.size }
+pub fn MlneurallstmEdge::len(self : MlneurallstmEdge) -> Int { self.size }
 
-pub fn ml_neural_lstm_edge_get(s : MlneurallstmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmEdge::get(self : MlneurallstmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_edge_set(s : MlneurallstmEdge, i : Int, v : Double) -> MlneurallstmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmEdge::set(self : MlneurallstmEdge, i : Int, v : Double) -> MlneurallstmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_edge_sum(s : MlneurallstmEdge) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmEdge::sum(self : MlneurallstmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_edge_mean(s : MlneurallstmEdge) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmEdge::mean(self : MlneurallstmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_edge_scale(s : MlneurallstmEdge, f : Double) -> MlneurallstmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmEdge::scale(self : MlneurallstmEdge, f : Double) -> MlneurallstmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_edge_add(a : MlneurallstmEdge, b : MlneurallstmEdge) -> MlneurallstmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmEdge::add(self : MlneurallstmEdge, other : MlneurallstmEdge) -> MlneurallstmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_edge_copy(s : MlneurallstmEdge) -> MlneurallstmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmEdge::copy(self : MlneurallstmEdge) -> MlneurallstmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_edge_fill(s : MlneurallstmEdge, v : Double) -> MlneurallstmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmEdge::fill(self : MlneurallstmEdge, v : Double) -> MlneurallstmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_edge_min(s : MlneurallstmEdge) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmEdge::min(self : MlneurallstmEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_edge_max(s : MlneurallstmEdge) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmEdge::max(self : MlneurallstmEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_edge_to_string(s : MlneurallstmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmEdge::to_string(self : MlneurallstmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmPath {
@@ -606,45 +606,45 @@ pub fn ml_neural_lstm_path_make(size : Int) -> MlneurallstmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_path_len(s : MlneurallstmPath) -> Int { s.size }
+pub fn MlneurallstmPath::len(self : MlneurallstmPath) -> Int { self.size }
 
-pub fn ml_neural_lstm_path_get(s : MlneurallstmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmPath::get(self : MlneurallstmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_path_set(s : MlneurallstmPath, i : Int, v : Double) -> MlneurallstmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmPath::set(self : MlneurallstmPath, i : Int, v : Double) -> MlneurallstmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_path_sum(s : MlneurallstmPath) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmPath::sum(self : MlneurallstmPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_path_mean(s : MlneurallstmPath) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmPath::mean(self : MlneurallstmPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_path_scale(s : MlneurallstmPath, f : Double) -> MlneurallstmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmPath::scale(self : MlneurallstmPath, f : Double) -> MlneurallstmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_path_add(a : MlneurallstmPath, b : MlneurallstmPath) -> MlneurallstmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmPath::add(self : MlneurallstmPath, other : MlneurallstmPath) -> MlneurallstmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_path_copy(s : MlneurallstmPath) -> MlneurallstmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmPath::copy(self : MlneurallstmPath) -> MlneurallstmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_path_fill(s : MlneurallstmPath, v : Double) -> MlneurallstmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmPath::fill(self : MlneurallstmPath, v : Double) -> MlneurallstmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_path_min(s : MlneurallstmPath) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmPath::min(self : MlneurallstmPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_path_max(s : MlneurallstmPath) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmPath::max(self : MlneurallstmPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_path_to_string(s : MlneurallstmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmPath::to_string(self : MlneurallstmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmCluster {
@@ -657,45 +657,45 @@ pub fn ml_neural_lstm_cluster_make(size : Int) -> MlneurallstmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_cluster_len(s : MlneurallstmCluster) -> Int { s.size }
+pub fn MlneurallstmCluster::len(self : MlneurallstmCluster) -> Int { self.size }
 
-pub fn ml_neural_lstm_cluster_get(s : MlneurallstmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmCluster::get(self : MlneurallstmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_cluster_set(s : MlneurallstmCluster, i : Int, v : Double) -> MlneurallstmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmCluster::set(self : MlneurallstmCluster, i : Int, v : Double) -> MlneurallstmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cluster_sum(s : MlneurallstmCluster) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmCluster::sum(self : MlneurallstmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_cluster_mean(s : MlneurallstmCluster) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmCluster::mean(self : MlneurallstmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_cluster_scale(s : MlneurallstmCluster, f : Double) -> MlneurallstmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmCluster::scale(self : MlneurallstmCluster, f : Double) -> MlneurallstmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cluster_add(a : MlneurallstmCluster, b : MlneurallstmCluster) -> MlneurallstmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmCluster::add(self : MlneurallstmCluster, other : MlneurallstmCluster) -> MlneurallstmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cluster_copy(s : MlneurallstmCluster) -> MlneurallstmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmCluster::copy(self : MlneurallstmCluster) -> MlneurallstmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cluster_fill(s : MlneurallstmCluster, v : Double) -> MlneurallstmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmCluster::fill(self : MlneurallstmCluster, v : Double) -> MlneurallstmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cluster_min(s : MlneurallstmCluster) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmCluster::min(self : MlneurallstmCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_cluster_max(s : MlneurallstmCluster) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmCluster::max(self : MlneurallstmCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_cluster_to_string(s : MlneurallstmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmCluster::to_string(self : MlneurallstmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmModel {
@@ -708,45 +708,45 @@ pub fn ml_neural_lstm_model_make(size : Int) -> MlneurallstmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_model_len(s : MlneurallstmModel) -> Int { s.size }
+pub fn MlneurallstmModel::len(self : MlneurallstmModel) -> Int { self.size }
 
-pub fn ml_neural_lstm_model_get(s : MlneurallstmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmModel::get(self : MlneurallstmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_model_set(s : MlneurallstmModel, i : Int, v : Double) -> MlneurallstmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmModel::set(self : MlneurallstmModel, i : Int, v : Double) -> MlneurallstmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_model_sum(s : MlneurallstmModel) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmModel::sum(self : MlneurallstmModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_model_mean(s : MlneurallstmModel) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmModel::mean(self : MlneurallstmModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_model_scale(s : MlneurallstmModel, f : Double) -> MlneurallstmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmModel::scale(self : MlneurallstmModel, f : Double) -> MlneurallstmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_model_add(a : MlneurallstmModel, b : MlneurallstmModel) -> MlneurallstmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmModel::add(self : MlneurallstmModel, other : MlneurallstmModel) -> MlneurallstmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_model_copy(s : MlneurallstmModel) -> MlneurallstmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmModel::copy(self : MlneurallstmModel) -> MlneurallstmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_model_fill(s : MlneurallstmModel, v : Double) -> MlneurallstmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmModel::fill(self : MlneurallstmModel, v : Double) -> MlneurallstmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_model_min(s : MlneurallstmModel) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmModel::min(self : MlneurallstmModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_model_max(s : MlneurallstmModel) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmModel::max(self : MlneurallstmModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_model_to_string(s : MlneurallstmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmModel::to_string(self : MlneurallstmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmLayer {
@@ -759,45 +759,45 @@ pub fn ml_neural_lstm_layer_make(size : Int) -> MlneurallstmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_layer_len(s : MlneurallstmLayer) -> Int { s.size }
+pub fn MlneurallstmLayer::len(self : MlneurallstmLayer) -> Int { self.size }
 
-pub fn ml_neural_lstm_layer_get(s : MlneurallstmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmLayer::get(self : MlneurallstmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_layer_set(s : MlneurallstmLayer, i : Int, v : Double) -> MlneurallstmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmLayer::set(self : MlneurallstmLayer, i : Int, v : Double) -> MlneurallstmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_layer_sum(s : MlneurallstmLayer) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmLayer::sum(self : MlneurallstmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_layer_mean(s : MlneurallstmLayer) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmLayer::mean(self : MlneurallstmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_layer_scale(s : MlneurallstmLayer, f : Double) -> MlneurallstmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmLayer::scale(self : MlneurallstmLayer, f : Double) -> MlneurallstmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_layer_add(a : MlneurallstmLayer, b : MlneurallstmLayer) -> MlneurallstmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmLayer::add(self : MlneurallstmLayer, other : MlneurallstmLayer) -> MlneurallstmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_layer_copy(s : MlneurallstmLayer) -> MlneurallstmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmLayer::copy(self : MlneurallstmLayer) -> MlneurallstmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_layer_fill(s : MlneurallstmLayer, v : Double) -> MlneurallstmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmLayer::fill(self : MlneurallstmLayer, v : Double) -> MlneurallstmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_layer_min(s : MlneurallstmLayer) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmLayer::min(self : MlneurallstmLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_layer_max(s : MlneurallstmLayer) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmLayer::max(self : MlneurallstmLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_layer_to_string(s : MlneurallstmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmLayer::to_string(self : MlneurallstmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmBuffer {
@@ -810,45 +810,45 @@ pub fn ml_neural_lstm_buffer_make(size : Int) -> MlneurallstmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_buffer_len(s : MlneurallstmBuffer) -> Int { s.size }
+pub fn MlneurallstmBuffer::len(self : MlneurallstmBuffer) -> Int { self.size }
 
-pub fn ml_neural_lstm_buffer_get(s : MlneurallstmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmBuffer::get(self : MlneurallstmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_buffer_set(s : MlneurallstmBuffer, i : Int, v : Double) -> MlneurallstmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmBuffer::set(self : MlneurallstmBuffer, i : Int, v : Double) -> MlneurallstmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_buffer_sum(s : MlneurallstmBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmBuffer::sum(self : MlneurallstmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_buffer_mean(s : MlneurallstmBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmBuffer::mean(self : MlneurallstmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_buffer_scale(s : MlneurallstmBuffer, f : Double) -> MlneurallstmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmBuffer::scale(self : MlneurallstmBuffer, f : Double) -> MlneurallstmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_buffer_add(a : MlneurallstmBuffer, b : MlneurallstmBuffer) -> MlneurallstmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmBuffer::add(self : MlneurallstmBuffer, other : MlneurallstmBuffer) -> MlneurallstmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_buffer_copy(s : MlneurallstmBuffer) -> MlneurallstmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmBuffer::copy(self : MlneurallstmBuffer) -> MlneurallstmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_buffer_fill(s : MlneurallstmBuffer, v : Double) -> MlneurallstmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmBuffer::fill(self : MlneurallstmBuffer, v : Double) -> MlneurallstmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_buffer_min(s : MlneurallstmBuffer) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmBuffer::min(self : MlneurallstmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_buffer_max(s : MlneurallstmBuffer) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmBuffer::max(self : MlneurallstmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_buffer_to_string(s : MlneurallstmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmBuffer::to_string(self : MlneurallstmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmCursor {
@@ -861,45 +861,45 @@ pub fn ml_neural_lstm_cursor_make(size : Int) -> MlneurallstmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_cursor_len(s : MlneurallstmCursor) -> Int { s.size }
+pub fn MlneurallstmCursor::len(self : MlneurallstmCursor) -> Int { self.size }
 
-pub fn ml_neural_lstm_cursor_get(s : MlneurallstmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmCursor::get(self : MlneurallstmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_cursor_set(s : MlneurallstmCursor, i : Int, v : Double) -> MlneurallstmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmCursor::set(self : MlneurallstmCursor, i : Int, v : Double) -> MlneurallstmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cursor_sum(s : MlneurallstmCursor) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmCursor::sum(self : MlneurallstmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_cursor_mean(s : MlneurallstmCursor) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmCursor::mean(self : MlneurallstmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_cursor_scale(s : MlneurallstmCursor, f : Double) -> MlneurallstmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmCursor::scale(self : MlneurallstmCursor, f : Double) -> MlneurallstmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cursor_add(a : MlneurallstmCursor, b : MlneurallstmCursor) -> MlneurallstmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmCursor::add(self : MlneurallstmCursor, other : MlneurallstmCursor) -> MlneurallstmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cursor_copy(s : MlneurallstmCursor) -> MlneurallstmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmCursor::copy(self : MlneurallstmCursor) -> MlneurallstmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cursor_fill(s : MlneurallstmCursor, v : Double) -> MlneurallstmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmCursor::fill(self : MlneurallstmCursor, v : Double) -> MlneurallstmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_cursor_min(s : MlneurallstmCursor) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmCursor::min(self : MlneurallstmCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_cursor_max(s : MlneurallstmCursor) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmCursor::max(self : MlneurallstmCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_cursor_to_string(s : MlneurallstmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmCursor::to_string(self : MlneurallstmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmView {
@@ -912,45 +912,45 @@ pub fn ml_neural_lstm_view_make(size : Int) -> MlneurallstmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_view_len(s : MlneurallstmView) -> Int { s.size }
+pub fn MlneurallstmView::len(self : MlneurallstmView) -> Int { self.size }
 
-pub fn ml_neural_lstm_view_get(s : MlneurallstmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmView::get(self : MlneurallstmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_view_set(s : MlneurallstmView, i : Int, v : Double) -> MlneurallstmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmView::set(self : MlneurallstmView, i : Int, v : Double) -> MlneurallstmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_view_sum(s : MlneurallstmView) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmView::sum(self : MlneurallstmView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_view_mean(s : MlneurallstmView) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmView::mean(self : MlneurallstmView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_view_scale(s : MlneurallstmView, f : Double) -> MlneurallstmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmView::scale(self : MlneurallstmView, f : Double) -> MlneurallstmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_view_add(a : MlneurallstmView, b : MlneurallstmView) -> MlneurallstmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmView::add(self : MlneurallstmView, other : MlneurallstmView) -> MlneurallstmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_view_copy(s : MlneurallstmView) -> MlneurallstmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmView::copy(self : MlneurallstmView) -> MlneurallstmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_view_fill(s : MlneurallstmView, v : Double) -> MlneurallstmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmView::fill(self : MlneurallstmView, v : Double) -> MlneurallstmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_view_min(s : MlneurallstmView) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmView::min(self : MlneurallstmView) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_view_max(s : MlneurallstmView) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmView::max(self : MlneurallstmView) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_view_to_string(s : MlneurallstmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmView::to_string(self : MlneurallstmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmRange {
@@ -963,45 +963,45 @@ pub fn ml_neural_lstm_range_make(size : Int) -> MlneurallstmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_range_len(s : MlneurallstmRange) -> Int { s.size }
+pub fn MlneurallstmRange::len(self : MlneurallstmRange) -> Int { self.size }
 
-pub fn ml_neural_lstm_range_get(s : MlneurallstmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmRange::get(self : MlneurallstmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_range_set(s : MlneurallstmRange, i : Int, v : Double) -> MlneurallstmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmRange::set(self : MlneurallstmRange, i : Int, v : Double) -> MlneurallstmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_range_sum(s : MlneurallstmRange) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmRange::sum(self : MlneurallstmRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_range_mean(s : MlneurallstmRange) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmRange::mean(self : MlneurallstmRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_range_scale(s : MlneurallstmRange, f : Double) -> MlneurallstmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmRange::scale(self : MlneurallstmRange, f : Double) -> MlneurallstmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_range_add(a : MlneurallstmRange, b : MlneurallstmRange) -> MlneurallstmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmRange::add(self : MlneurallstmRange, other : MlneurallstmRange) -> MlneurallstmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_range_copy(s : MlneurallstmRange) -> MlneurallstmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmRange::copy(self : MlneurallstmRange) -> MlneurallstmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_range_fill(s : MlneurallstmRange, v : Double) -> MlneurallstmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmRange::fill(self : MlneurallstmRange, v : Double) -> MlneurallstmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_range_min(s : MlneurallstmRange) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmRange::min(self : MlneurallstmRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_range_max(s : MlneurallstmRange) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmRange::max(self : MlneurallstmRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_range_to_string(s : MlneurallstmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmRange::to_string(self : MlneurallstmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneurallstmSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_neural_lstm_slice_make(size : Int) -> MlneurallstmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_lstm_slice_len(s : MlneurallstmSlice) -> Int { s.size }
+pub fn MlneurallstmSlice::len(self : MlneurallstmSlice) -> Int { self.size }
 
-pub fn ml_neural_lstm_slice_get(s : MlneurallstmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneurallstmSlice::get(self : MlneurallstmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_lstm_slice_set(s : MlneurallstmSlice, i : Int, v : Double) -> MlneurallstmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneurallstmSlice::set(self : MlneurallstmSlice, i : Int, v : Double) -> MlneurallstmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_slice_sum(s : MlneurallstmSlice) -> Double { @_common.sum(s.data) }
+pub fn MlneurallstmSlice::sum(self : MlneurallstmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_lstm_slice_mean(s : MlneurallstmSlice) -> Double { @_common.mean(s.data) }
+pub fn MlneurallstmSlice::mean(self : MlneurallstmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_lstm_slice_scale(s : MlneurallstmSlice, f : Double) -> MlneurallstmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneurallstmSlice::scale(self : MlneurallstmSlice, f : Double) -> MlneurallstmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_slice_add(a : MlneurallstmSlice, b : MlneurallstmSlice) -> MlneurallstmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneurallstmSlice::add(self : MlneurallstmSlice, other : MlneurallstmSlice) -> MlneurallstmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_slice_copy(s : MlneurallstmSlice) -> MlneurallstmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneurallstmSlice::copy(self : MlneurallstmSlice) -> MlneurallstmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_slice_fill(s : MlneurallstmSlice, v : Double) -> MlneurallstmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneurallstmSlice::fill(self : MlneurallstmSlice, v : Double) -> MlneurallstmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_lstm_slice_min(s : MlneurallstmSlice) -> Double { @_common.min(s.data) }
+pub fn MlneurallstmSlice::min(self : MlneurallstmSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_lstm_slice_max(s : MlneurallstmSlice) -> Double { @_common.max(s.data) }
+pub fn MlneurallstmSlice::max(self : MlneurallstmSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_lstm_slice_to_string(s : MlneurallstmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneurallstmSlice::to_string(self : MlneurallstmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

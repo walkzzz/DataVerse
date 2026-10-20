@@ -351,45 +351,45 @@ pub fn image_filter_gaussian_frame_make(size : Int) -> ImagefiltergaussianFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_frame_len(s : ImagefiltergaussianFrame) -> Int { s.size }
+pub fn ImagefiltergaussianFrame::len(self : ImagefiltergaussianFrame) -> Int { self.size }
 
-pub fn image_filter_gaussian_frame_get(s : ImagefiltergaussianFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianFrame::get(self : ImagefiltergaussianFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_frame_set(s : ImagefiltergaussianFrame, i : Int, v : Double) -> ImagefiltergaussianFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianFrame::set(self : ImagefiltergaussianFrame, i : Int, v : Double) -> ImagefiltergaussianFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_frame_sum(s : ImagefiltergaussianFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianFrame::sum(self : ImagefiltergaussianFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_frame_mean(s : ImagefiltergaussianFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianFrame::mean(self : ImagefiltergaussianFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_frame_scale(s : ImagefiltergaussianFrame, f : Double) -> ImagefiltergaussianFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianFrame::scale(self : ImagefiltergaussianFrame, f : Double) -> ImagefiltergaussianFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_frame_add(a : ImagefiltergaussianFrame, b : ImagefiltergaussianFrame) -> ImagefiltergaussianFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianFrame::add(self : ImagefiltergaussianFrame, other : ImagefiltergaussianFrame) -> ImagefiltergaussianFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_frame_copy(s : ImagefiltergaussianFrame) -> ImagefiltergaussianFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianFrame::copy(self : ImagefiltergaussianFrame) -> ImagefiltergaussianFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_frame_fill(s : ImagefiltergaussianFrame, v : Double) -> ImagefiltergaussianFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianFrame::fill(self : ImagefiltergaussianFrame, v : Double) -> ImagefiltergaussianFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_frame_min(s : ImagefiltergaussianFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianFrame::min(self : ImagefiltergaussianFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_frame_max(s : ImagefiltergaussianFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianFrame::max(self : ImagefiltergaussianFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_frame_to_string(s : ImagefiltergaussianFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianFrame::to_string(self : ImagefiltergaussianFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianTable {
@@ -402,45 +402,45 @@ pub fn image_filter_gaussian_table_make(size : Int) -> ImagefiltergaussianTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_table_len(s : ImagefiltergaussianTable) -> Int { s.size }
+pub fn ImagefiltergaussianTable::len(self : ImagefiltergaussianTable) -> Int { self.size }
 
-pub fn image_filter_gaussian_table_get(s : ImagefiltergaussianTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianTable::get(self : ImagefiltergaussianTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_table_set(s : ImagefiltergaussianTable, i : Int, v : Double) -> ImagefiltergaussianTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianTable::set(self : ImagefiltergaussianTable, i : Int, v : Double) -> ImagefiltergaussianTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_table_sum(s : ImagefiltergaussianTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianTable::sum(self : ImagefiltergaussianTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_table_mean(s : ImagefiltergaussianTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianTable::mean(self : ImagefiltergaussianTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_table_scale(s : ImagefiltergaussianTable, f : Double) -> ImagefiltergaussianTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianTable::scale(self : ImagefiltergaussianTable, f : Double) -> ImagefiltergaussianTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_table_add(a : ImagefiltergaussianTable, b : ImagefiltergaussianTable) -> ImagefiltergaussianTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianTable::add(self : ImagefiltergaussianTable, other : ImagefiltergaussianTable) -> ImagefiltergaussianTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_table_copy(s : ImagefiltergaussianTable) -> ImagefiltergaussianTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianTable::copy(self : ImagefiltergaussianTable) -> ImagefiltergaussianTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_table_fill(s : ImagefiltergaussianTable, v : Double) -> ImagefiltergaussianTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianTable::fill(self : ImagefiltergaussianTable, v : Double) -> ImagefiltergaussianTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_table_min(s : ImagefiltergaussianTable) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianTable::min(self : ImagefiltergaussianTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_table_max(s : ImagefiltergaussianTable) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianTable::max(self : ImagefiltergaussianTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_table_to_string(s : ImagefiltergaussianTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianTable::to_string(self : ImagefiltergaussianTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_gaussian_graphn_make(size : Int) -> ImagefiltergaussianGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_graphn_len(s : ImagefiltergaussianGraphN) -> Int { s.size }
+pub fn ImagefiltergaussianGraphN::len(self : ImagefiltergaussianGraphN) -> Int { self.size }
 
-pub fn image_filter_gaussian_graphn_get(s : ImagefiltergaussianGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianGraphN::get(self : ImagefiltergaussianGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_graphn_set(s : ImagefiltergaussianGraphN, i : Int, v : Double) -> ImagefiltergaussianGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianGraphN::set(self : ImagefiltergaussianGraphN, i : Int, v : Double) -> ImagefiltergaussianGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_graphn_sum(s : ImagefiltergaussianGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianGraphN::sum(self : ImagefiltergaussianGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_graphn_mean(s : ImagefiltergaussianGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianGraphN::mean(self : ImagefiltergaussianGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_graphn_scale(s : ImagefiltergaussianGraphN, f : Double) -> ImagefiltergaussianGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianGraphN::scale(self : ImagefiltergaussianGraphN, f : Double) -> ImagefiltergaussianGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_graphn_add(a : ImagefiltergaussianGraphN, b : ImagefiltergaussianGraphN) -> ImagefiltergaussianGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianGraphN::add(self : ImagefiltergaussianGraphN, other : ImagefiltergaussianGraphN) -> ImagefiltergaussianGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_graphn_copy(s : ImagefiltergaussianGraphN) -> ImagefiltergaussianGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianGraphN::copy(self : ImagefiltergaussianGraphN) -> ImagefiltergaussianGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_graphn_fill(s : ImagefiltergaussianGraphN, v : Double) -> ImagefiltergaussianGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianGraphN::fill(self : ImagefiltergaussianGraphN, v : Double) -> ImagefiltergaussianGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_graphn_min(s : ImagefiltergaussianGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianGraphN::min(self : ImagefiltergaussianGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_graphn_max(s : ImagefiltergaussianGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianGraphN::max(self : ImagefiltergaussianGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_graphn_to_string(s : ImagefiltergaussianGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianGraphN::to_string(self : ImagefiltergaussianGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianNode {
@@ -504,45 +504,45 @@ pub fn image_filter_gaussian_node_make(size : Int) -> ImagefiltergaussianNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_node_len(s : ImagefiltergaussianNode) -> Int { s.size }
+pub fn ImagefiltergaussianNode::len(self : ImagefiltergaussianNode) -> Int { self.size }
 
-pub fn image_filter_gaussian_node_get(s : ImagefiltergaussianNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianNode::get(self : ImagefiltergaussianNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_node_set(s : ImagefiltergaussianNode, i : Int, v : Double) -> ImagefiltergaussianNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianNode::set(self : ImagefiltergaussianNode, i : Int, v : Double) -> ImagefiltergaussianNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_node_sum(s : ImagefiltergaussianNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianNode::sum(self : ImagefiltergaussianNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_node_mean(s : ImagefiltergaussianNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianNode::mean(self : ImagefiltergaussianNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_node_scale(s : ImagefiltergaussianNode, f : Double) -> ImagefiltergaussianNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianNode::scale(self : ImagefiltergaussianNode, f : Double) -> ImagefiltergaussianNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_node_add(a : ImagefiltergaussianNode, b : ImagefiltergaussianNode) -> ImagefiltergaussianNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianNode::add(self : ImagefiltergaussianNode, other : ImagefiltergaussianNode) -> ImagefiltergaussianNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_node_copy(s : ImagefiltergaussianNode) -> ImagefiltergaussianNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianNode::copy(self : ImagefiltergaussianNode) -> ImagefiltergaussianNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_node_fill(s : ImagefiltergaussianNode, v : Double) -> ImagefiltergaussianNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianNode::fill(self : ImagefiltergaussianNode, v : Double) -> ImagefiltergaussianNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_node_min(s : ImagefiltergaussianNode) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianNode::min(self : ImagefiltergaussianNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_node_max(s : ImagefiltergaussianNode) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianNode::max(self : ImagefiltergaussianNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_node_to_string(s : ImagefiltergaussianNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianNode::to_string(self : ImagefiltergaussianNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_gaussian_edge_make(size : Int) -> ImagefiltergaussianEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_edge_len(s : ImagefiltergaussianEdge) -> Int { s.size }
+pub fn ImagefiltergaussianEdge::len(self : ImagefiltergaussianEdge) -> Int { self.size }
 
-pub fn image_filter_gaussian_edge_get(s : ImagefiltergaussianEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianEdge::get(self : ImagefiltergaussianEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_edge_set(s : ImagefiltergaussianEdge, i : Int, v : Double) -> ImagefiltergaussianEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianEdge::set(self : ImagefiltergaussianEdge, i : Int, v : Double) -> ImagefiltergaussianEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_edge_sum(s : ImagefiltergaussianEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianEdge::sum(self : ImagefiltergaussianEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_edge_mean(s : ImagefiltergaussianEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianEdge::mean(self : ImagefiltergaussianEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_edge_scale(s : ImagefiltergaussianEdge, f : Double) -> ImagefiltergaussianEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianEdge::scale(self : ImagefiltergaussianEdge, f : Double) -> ImagefiltergaussianEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_edge_add(a : ImagefiltergaussianEdge, b : ImagefiltergaussianEdge) -> ImagefiltergaussianEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianEdge::add(self : ImagefiltergaussianEdge, other : ImagefiltergaussianEdge) -> ImagefiltergaussianEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_edge_copy(s : ImagefiltergaussianEdge) -> ImagefiltergaussianEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianEdge::copy(self : ImagefiltergaussianEdge) -> ImagefiltergaussianEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_edge_fill(s : ImagefiltergaussianEdge, v : Double) -> ImagefiltergaussianEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianEdge::fill(self : ImagefiltergaussianEdge, v : Double) -> ImagefiltergaussianEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_edge_min(s : ImagefiltergaussianEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianEdge::min(self : ImagefiltergaussianEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_edge_max(s : ImagefiltergaussianEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianEdge::max(self : ImagefiltergaussianEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_edge_to_string(s : ImagefiltergaussianEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianEdge::to_string(self : ImagefiltergaussianEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianPath {
@@ -606,45 +606,45 @@ pub fn image_filter_gaussian_path_make(size : Int) -> ImagefiltergaussianPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_path_len(s : ImagefiltergaussianPath) -> Int { s.size }
+pub fn ImagefiltergaussianPath::len(self : ImagefiltergaussianPath) -> Int { self.size }
 
-pub fn image_filter_gaussian_path_get(s : ImagefiltergaussianPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianPath::get(self : ImagefiltergaussianPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_path_set(s : ImagefiltergaussianPath, i : Int, v : Double) -> ImagefiltergaussianPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianPath::set(self : ImagefiltergaussianPath, i : Int, v : Double) -> ImagefiltergaussianPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_path_sum(s : ImagefiltergaussianPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianPath::sum(self : ImagefiltergaussianPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_path_mean(s : ImagefiltergaussianPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianPath::mean(self : ImagefiltergaussianPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_path_scale(s : ImagefiltergaussianPath, f : Double) -> ImagefiltergaussianPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianPath::scale(self : ImagefiltergaussianPath, f : Double) -> ImagefiltergaussianPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_path_add(a : ImagefiltergaussianPath, b : ImagefiltergaussianPath) -> ImagefiltergaussianPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianPath::add(self : ImagefiltergaussianPath, other : ImagefiltergaussianPath) -> ImagefiltergaussianPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_path_copy(s : ImagefiltergaussianPath) -> ImagefiltergaussianPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianPath::copy(self : ImagefiltergaussianPath) -> ImagefiltergaussianPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_path_fill(s : ImagefiltergaussianPath, v : Double) -> ImagefiltergaussianPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianPath::fill(self : ImagefiltergaussianPath, v : Double) -> ImagefiltergaussianPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_path_min(s : ImagefiltergaussianPath) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianPath::min(self : ImagefiltergaussianPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_path_max(s : ImagefiltergaussianPath) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianPath::max(self : ImagefiltergaussianPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_path_to_string(s : ImagefiltergaussianPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianPath::to_string(self : ImagefiltergaussianPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_gaussian_cluster_make(size : Int) -> ImagefiltergaussianClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_cluster_len(s : ImagefiltergaussianCluster) -> Int { s.size }
+pub fn ImagefiltergaussianCluster::len(self : ImagefiltergaussianCluster) -> Int { self.size }
 
-pub fn image_filter_gaussian_cluster_get(s : ImagefiltergaussianCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianCluster::get(self : ImagefiltergaussianCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_cluster_set(s : ImagefiltergaussianCluster, i : Int, v : Double) -> ImagefiltergaussianCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCluster::set(self : ImagefiltergaussianCluster, i : Int, v : Double) -> ImagefiltergaussianCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cluster_sum(s : ImagefiltergaussianCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianCluster::sum(self : ImagefiltergaussianCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_cluster_mean(s : ImagefiltergaussianCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianCluster::mean(self : ImagefiltergaussianCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_cluster_scale(s : ImagefiltergaussianCluster, f : Double) -> ImagefiltergaussianCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCluster::scale(self : ImagefiltergaussianCluster, f : Double) -> ImagefiltergaussianCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cluster_add(a : ImagefiltergaussianCluster, b : ImagefiltergaussianCluster) -> ImagefiltergaussianCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianCluster::add(self : ImagefiltergaussianCluster, other : ImagefiltergaussianCluster) -> ImagefiltergaussianCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cluster_copy(s : ImagefiltergaussianCluster) -> ImagefiltergaussianCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCluster::copy(self : ImagefiltergaussianCluster) -> ImagefiltergaussianCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cluster_fill(s : ImagefiltergaussianCluster, v : Double) -> ImagefiltergaussianCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCluster::fill(self : ImagefiltergaussianCluster, v : Double) -> ImagefiltergaussianCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cluster_min(s : ImagefiltergaussianCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianCluster::min(self : ImagefiltergaussianCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_cluster_max(s : ImagefiltergaussianCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianCluster::max(self : ImagefiltergaussianCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_cluster_to_string(s : ImagefiltergaussianCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianCluster::to_string(self : ImagefiltergaussianCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianModel {
@@ -708,45 +708,45 @@ pub fn image_filter_gaussian_model_make(size : Int) -> ImagefiltergaussianModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_model_len(s : ImagefiltergaussianModel) -> Int { s.size }
+pub fn ImagefiltergaussianModel::len(self : ImagefiltergaussianModel) -> Int { self.size }
 
-pub fn image_filter_gaussian_model_get(s : ImagefiltergaussianModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianModel::get(self : ImagefiltergaussianModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_model_set(s : ImagefiltergaussianModel, i : Int, v : Double) -> ImagefiltergaussianModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianModel::set(self : ImagefiltergaussianModel, i : Int, v : Double) -> ImagefiltergaussianModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_model_sum(s : ImagefiltergaussianModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianModel::sum(self : ImagefiltergaussianModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_model_mean(s : ImagefiltergaussianModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianModel::mean(self : ImagefiltergaussianModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_model_scale(s : ImagefiltergaussianModel, f : Double) -> ImagefiltergaussianModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianModel::scale(self : ImagefiltergaussianModel, f : Double) -> ImagefiltergaussianModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_model_add(a : ImagefiltergaussianModel, b : ImagefiltergaussianModel) -> ImagefiltergaussianModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianModel::add(self : ImagefiltergaussianModel, other : ImagefiltergaussianModel) -> ImagefiltergaussianModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_model_copy(s : ImagefiltergaussianModel) -> ImagefiltergaussianModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianModel::copy(self : ImagefiltergaussianModel) -> ImagefiltergaussianModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_model_fill(s : ImagefiltergaussianModel, v : Double) -> ImagefiltergaussianModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianModel::fill(self : ImagefiltergaussianModel, v : Double) -> ImagefiltergaussianModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_model_min(s : ImagefiltergaussianModel) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianModel::min(self : ImagefiltergaussianModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_model_max(s : ImagefiltergaussianModel) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianModel::max(self : ImagefiltergaussianModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_model_to_string(s : ImagefiltergaussianModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianModel::to_string(self : ImagefiltergaussianModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_gaussian_layer_make(size : Int) -> ImagefiltergaussianLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_layer_len(s : ImagefiltergaussianLayer) -> Int { s.size }
+pub fn ImagefiltergaussianLayer::len(self : ImagefiltergaussianLayer) -> Int { self.size }
 
-pub fn image_filter_gaussian_layer_get(s : ImagefiltergaussianLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianLayer::get(self : ImagefiltergaussianLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_layer_set(s : ImagefiltergaussianLayer, i : Int, v : Double) -> ImagefiltergaussianLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianLayer::set(self : ImagefiltergaussianLayer, i : Int, v : Double) -> ImagefiltergaussianLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_layer_sum(s : ImagefiltergaussianLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianLayer::sum(self : ImagefiltergaussianLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_layer_mean(s : ImagefiltergaussianLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianLayer::mean(self : ImagefiltergaussianLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_layer_scale(s : ImagefiltergaussianLayer, f : Double) -> ImagefiltergaussianLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianLayer::scale(self : ImagefiltergaussianLayer, f : Double) -> ImagefiltergaussianLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_layer_add(a : ImagefiltergaussianLayer, b : ImagefiltergaussianLayer) -> ImagefiltergaussianLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianLayer::add(self : ImagefiltergaussianLayer, other : ImagefiltergaussianLayer) -> ImagefiltergaussianLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_layer_copy(s : ImagefiltergaussianLayer) -> ImagefiltergaussianLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianLayer::copy(self : ImagefiltergaussianLayer) -> ImagefiltergaussianLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_layer_fill(s : ImagefiltergaussianLayer, v : Double) -> ImagefiltergaussianLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianLayer::fill(self : ImagefiltergaussianLayer, v : Double) -> ImagefiltergaussianLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_layer_min(s : ImagefiltergaussianLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianLayer::min(self : ImagefiltergaussianLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_layer_max(s : ImagefiltergaussianLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianLayer::max(self : ImagefiltergaussianLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_layer_to_string(s : ImagefiltergaussianLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianLayer::to_string(self : ImagefiltergaussianLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_gaussian_buffer_make(size : Int) -> ImagefiltergaussianBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_buffer_len(s : ImagefiltergaussianBuffer) -> Int { s.size }
+pub fn ImagefiltergaussianBuffer::len(self : ImagefiltergaussianBuffer) -> Int { self.size }
 
-pub fn image_filter_gaussian_buffer_get(s : ImagefiltergaussianBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianBuffer::get(self : ImagefiltergaussianBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_buffer_set(s : ImagefiltergaussianBuffer, i : Int, v : Double) -> ImagefiltergaussianBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianBuffer::set(self : ImagefiltergaussianBuffer, i : Int, v : Double) -> ImagefiltergaussianBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_buffer_sum(s : ImagefiltergaussianBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianBuffer::sum(self : ImagefiltergaussianBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_buffer_mean(s : ImagefiltergaussianBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianBuffer::mean(self : ImagefiltergaussianBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_buffer_scale(s : ImagefiltergaussianBuffer, f : Double) -> ImagefiltergaussianBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianBuffer::scale(self : ImagefiltergaussianBuffer, f : Double) -> ImagefiltergaussianBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_buffer_add(a : ImagefiltergaussianBuffer, b : ImagefiltergaussianBuffer) -> ImagefiltergaussianBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianBuffer::add(self : ImagefiltergaussianBuffer, other : ImagefiltergaussianBuffer) -> ImagefiltergaussianBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_buffer_copy(s : ImagefiltergaussianBuffer) -> ImagefiltergaussianBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianBuffer::copy(self : ImagefiltergaussianBuffer) -> ImagefiltergaussianBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_buffer_fill(s : ImagefiltergaussianBuffer, v : Double) -> ImagefiltergaussianBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianBuffer::fill(self : ImagefiltergaussianBuffer, v : Double) -> ImagefiltergaussianBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_buffer_min(s : ImagefiltergaussianBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianBuffer::min(self : ImagefiltergaussianBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_buffer_max(s : ImagefiltergaussianBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianBuffer::max(self : ImagefiltergaussianBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_buffer_to_string(s : ImagefiltergaussianBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianBuffer::to_string(self : ImagefiltergaussianBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_gaussian_cursor_make(size : Int) -> ImagefiltergaussianCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_cursor_len(s : ImagefiltergaussianCursor) -> Int { s.size }
+pub fn ImagefiltergaussianCursor::len(self : ImagefiltergaussianCursor) -> Int { self.size }
 
-pub fn image_filter_gaussian_cursor_get(s : ImagefiltergaussianCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianCursor::get(self : ImagefiltergaussianCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_cursor_set(s : ImagefiltergaussianCursor, i : Int, v : Double) -> ImagefiltergaussianCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCursor::set(self : ImagefiltergaussianCursor, i : Int, v : Double) -> ImagefiltergaussianCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cursor_sum(s : ImagefiltergaussianCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianCursor::sum(self : ImagefiltergaussianCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_cursor_mean(s : ImagefiltergaussianCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianCursor::mean(self : ImagefiltergaussianCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_cursor_scale(s : ImagefiltergaussianCursor, f : Double) -> ImagefiltergaussianCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCursor::scale(self : ImagefiltergaussianCursor, f : Double) -> ImagefiltergaussianCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cursor_add(a : ImagefiltergaussianCursor, b : ImagefiltergaussianCursor) -> ImagefiltergaussianCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianCursor::add(self : ImagefiltergaussianCursor, other : ImagefiltergaussianCursor) -> ImagefiltergaussianCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cursor_copy(s : ImagefiltergaussianCursor) -> ImagefiltergaussianCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCursor::copy(self : ImagefiltergaussianCursor) -> ImagefiltergaussianCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cursor_fill(s : ImagefiltergaussianCursor, v : Double) -> ImagefiltergaussianCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianCursor::fill(self : ImagefiltergaussianCursor, v : Double) -> ImagefiltergaussianCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_cursor_min(s : ImagefiltergaussianCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianCursor::min(self : ImagefiltergaussianCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_cursor_max(s : ImagefiltergaussianCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianCursor::max(self : ImagefiltergaussianCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_cursor_to_string(s : ImagefiltergaussianCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianCursor::to_string(self : ImagefiltergaussianCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianView {
@@ -912,45 +912,45 @@ pub fn image_filter_gaussian_view_make(size : Int) -> ImagefiltergaussianView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_view_len(s : ImagefiltergaussianView) -> Int { s.size }
+pub fn ImagefiltergaussianView::len(self : ImagefiltergaussianView) -> Int { self.size }
 
-pub fn image_filter_gaussian_view_get(s : ImagefiltergaussianView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianView::get(self : ImagefiltergaussianView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_view_set(s : ImagefiltergaussianView, i : Int, v : Double) -> ImagefiltergaussianView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianView::set(self : ImagefiltergaussianView, i : Int, v : Double) -> ImagefiltergaussianView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_view_sum(s : ImagefiltergaussianView) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianView::sum(self : ImagefiltergaussianView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_view_mean(s : ImagefiltergaussianView) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianView::mean(self : ImagefiltergaussianView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_view_scale(s : ImagefiltergaussianView, f : Double) -> ImagefiltergaussianView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianView::scale(self : ImagefiltergaussianView, f : Double) -> ImagefiltergaussianView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_view_add(a : ImagefiltergaussianView, b : ImagefiltergaussianView) -> ImagefiltergaussianView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianView::add(self : ImagefiltergaussianView, other : ImagefiltergaussianView) -> ImagefiltergaussianView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_view_copy(s : ImagefiltergaussianView) -> ImagefiltergaussianView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianView::copy(self : ImagefiltergaussianView) -> ImagefiltergaussianView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_view_fill(s : ImagefiltergaussianView, v : Double) -> ImagefiltergaussianView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianView::fill(self : ImagefiltergaussianView, v : Double) -> ImagefiltergaussianView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_view_min(s : ImagefiltergaussianView) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianView::min(self : ImagefiltergaussianView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_view_max(s : ImagefiltergaussianView) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianView::max(self : ImagefiltergaussianView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_view_to_string(s : ImagefiltergaussianView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianView::to_string(self : ImagefiltergaussianView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianRange {
@@ -963,45 +963,45 @@ pub fn image_filter_gaussian_range_make(size : Int) -> ImagefiltergaussianRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_range_len(s : ImagefiltergaussianRange) -> Int { s.size }
+pub fn ImagefiltergaussianRange::len(self : ImagefiltergaussianRange) -> Int { self.size }
 
-pub fn image_filter_gaussian_range_get(s : ImagefiltergaussianRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianRange::get(self : ImagefiltergaussianRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_range_set(s : ImagefiltergaussianRange, i : Int, v : Double) -> ImagefiltergaussianRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianRange::set(self : ImagefiltergaussianRange, i : Int, v : Double) -> ImagefiltergaussianRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_range_sum(s : ImagefiltergaussianRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianRange::sum(self : ImagefiltergaussianRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_range_mean(s : ImagefiltergaussianRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianRange::mean(self : ImagefiltergaussianRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_range_scale(s : ImagefiltergaussianRange, f : Double) -> ImagefiltergaussianRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianRange::scale(self : ImagefiltergaussianRange, f : Double) -> ImagefiltergaussianRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_range_add(a : ImagefiltergaussianRange, b : ImagefiltergaussianRange) -> ImagefiltergaussianRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianRange::add(self : ImagefiltergaussianRange, other : ImagefiltergaussianRange) -> ImagefiltergaussianRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_range_copy(s : ImagefiltergaussianRange) -> ImagefiltergaussianRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianRange::copy(self : ImagefiltergaussianRange) -> ImagefiltergaussianRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_range_fill(s : ImagefiltergaussianRange, v : Double) -> ImagefiltergaussianRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianRange::fill(self : ImagefiltergaussianRange, v : Double) -> ImagefiltergaussianRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_range_min(s : ImagefiltergaussianRange) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianRange::min(self : ImagefiltergaussianRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_range_max(s : ImagefiltergaussianRange) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianRange::max(self : ImagefiltergaussianRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_range_to_string(s : ImagefiltergaussianRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianRange::to_string(self : ImagefiltergaussianRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltergaussianSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_gaussian_slice_make(size : Int) -> ImagefiltergaussianSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_gaussian_slice_len(s : ImagefiltergaussianSlice) -> Int { s.size }
+pub fn ImagefiltergaussianSlice::len(self : ImagefiltergaussianSlice) -> Int { self.size }
 
-pub fn image_filter_gaussian_slice_get(s : ImagefiltergaussianSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltergaussianSlice::get(self : ImagefiltergaussianSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_gaussian_slice_set(s : ImagefiltergaussianSlice, i : Int, v : Double) -> ImagefiltergaussianSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianSlice::set(self : ImagefiltergaussianSlice, i : Int, v : Double) -> ImagefiltergaussianSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_slice_sum(s : ImagefiltergaussianSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltergaussianSlice::sum(self : ImagefiltergaussianSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_gaussian_slice_mean(s : ImagefiltergaussianSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltergaussianSlice::mean(self : ImagefiltergaussianSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_gaussian_slice_scale(s : ImagefiltergaussianSlice, f : Double) -> ImagefiltergaussianSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianSlice::scale(self : ImagefiltergaussianSlice, f : Double) -> ImagefiltergaussianSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_slice_add(a : ImagefiltergaussianSlice, b : ImagefiltergaussianSlice) -> ImagefiltergaussianSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltergaussianSlice::add(self : ImagefiltergaussianSlice, other : ImagefiltergaussianSlice) -> ImagefiltergaussianSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_slice_copy(s : ImagefiltergaussianSlice) -> ImagefiltergaussianSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianSlice::copy(self : ImagefiltergaussianSlice) -> ImagefiltergaussianSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_slice_fill(s : ImagefiltergaussianSlice, v : Double) -> ImagefiltergaussianSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltergaussianSlice::fill(self : ImagefiltergaussianSlice, v : Double) -> ImagefiltergaussianSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_gaussian_slice_min(s : ImagefiltergaussianSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefiltergaussianSlice::min(self : ImagefiltergaussianSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_gaussian_slice_max(s : ImagefiltergaussianSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefiltergaussianSlice::max(self : ImagefiltergaussianSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_gaussian_slice_to_string(s : ImagefiltergaussianSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltergaussianSlice::to_string(self : ImagefiltergaussianSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

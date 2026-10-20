@@ -351,45 +351,45 @@ pub fn stats_desc_univariate_frame_make(size : Int) -> StatsdescunivariateFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_frame_len(s : StatsdescunivariateFrame) -> Int { s.size }
+pub fn StatsdescunivariateFrame::len(self : StatsdescunivariateFrame) -> Int { self.size }
 
-pub fn stats_desc_univariate_frame_get(s : StatsdescunivariateFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateFrame::get(self : StatsdescunivariateFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_frame_set(s : StatsdescunivariateFrame, i : Int, v : Double) -> StatsdescunivariateFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateFrame::set(self : StatsdescunivariateFrame, i : Int, v : Double) -> StatsdescunivariateFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_frame_sum(s : StatsdescunivariateFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateFrame::sum(self : StatsdescunivariateFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_frame_mean(s : StatsdescunivariateFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateFrame::mean(self : StatsdescunivariateFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_frame_scale(s : StatsdescunivariateFrame, f : Double) -> StatsdescunivariateFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateFrame::scale(self : StatsdescunivariateFrame, f : Double) -> StatsdescunivariateFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_frame_add(a : StatsdescunivariateFrame, b : StatsdescunivariateFrame) -> StatsdescunivariateFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateFrame::add(self : StatsdescunivariateFrame, other : StatsdescunivariateFrame) -> StatsdescunivariateFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_frame_copy(s : StatsdescunivariateFrame) -> StatsdescunivariateFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateFrame::copy(self : StatsdescunivariateFrame) -> StatsdescunivariateFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_frame_fill(s : StatsdescunivariateFrame, v : Double) -> StatsdescunivariateFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateFrame::fill(self : StatsdescunivariateFrame, v : Double) -> StatsdescunivariateFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_frame_min(s : StatsdescunivariateFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateFrame::min(self : StatsdescunivariateFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_frame_max(s : StatsdescunivariateFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateFrame::max(self : StatsdescunivariateFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_frame_to_string(s : StatsdescunivariateFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateFrame::to_string(self : StatsdescunivariateFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateTable {
@@ -402,45 +402,45 @@ pub fn stats_desc_univariate_table_make(size : Int) -> StatsdescunivariateTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_table_len(s : StatsdescunivariateTable) -> Int { s.size }
+pub fn StatsdescunivariateTable::len(self : StatsdescunivariateTable) -> Int { self.size }
 
-pub fn stats_desc_univariate_table_get(s : StatsdescunivariateTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateTable::get(self : StatsdescunivariateTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_table_set(s : StatsdescunivariateTable, i : Int, v : Double) -> StatsdescunivariateTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateTable::set(self : StatsdescunivariateTable, i : Int, v : Double) -> StatsdescunivariateTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_table_sum(s : StatsdescunivariateTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateTable::sum(self : StatsdescunivariateTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_table_mean(s : StatsdescunivariateTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateTable::mean(self : StatsdescunivariateTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_table_scale(s : StatsdescunivariateTable, f : Double) -> StatsdescunivariateTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateTable::scale(self : StatsdescunivariateTable, f : Double) -> StatsdescunivariateTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_table_add(a : StatsdescunivariateTable, b : StatsdescunivariateTable) -> StatsdescunivariateTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateTable::add(self : StatsdescunivariateTable, other : StatsdescunivariateTable) -> StatsdescunivariateTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_table_copy(s : StatsdescunivariateTable) -> StatsdescunivariateTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateTable::copy(self : StatsdescunivariateTable) -> StatsdescunivariateTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_table_fill(s : StatsdescunivariateTable, v : Double) -> StatsdescunivariateTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateTable::fill(self : StatsdescunivariateTable, v : Double) -> StatsdescunivariateTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_table_min(s : StatsdescunivariateTable) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateTable::min(self : StatsdescunivariateTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_table_max(s : StatsdescunivariateTable) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateTable::max(self : StatsdescunivariateTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_table_to_string(s : StatsdescunivariateTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateTable::to_string(self : StatsdescunivariateTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateGraphN {
@@ -453,45 +453,45 @@ pub fn stats_desc_univariate_graphn_make(size : Int) -> StatsdescunivariateGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_graphn_len(s : StatsdescunivariateGraphN) -> Int { s.size }
+pub fn StatsdescunivariateGraphN::len(self : StatsdescunivariateGraphN) -> Int { self.size }
 
-pub fn stats_desc_univariate_graphn_get(s : StatsdescunivariateGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateGraphN::get(self : StatsdescunivariateGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_graphn_set(s : StatsdescunivariateGraphN, i : Int, v : Double) -> StatsdescunivariateGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateGraphN::set(self : StatsdescunivariateGraphN, i : Int, v : Double) -> StatsdescunivariateGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_graphn_sum(s : StatsdescunivariateGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateGraphN::sum(self : StatsdescunivariateGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_graphn_mean(s : StatsdescunivariateGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateGraphN::mean(self : StatsdescunivariateGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_graphn_scale(s : StatsdescunivariateGraphN, f : Double) -> StatsdescunivariateGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateGraphN::scale(self : StatsdescunivariateGraphN, f : Double) -> StatsdescunivariateGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_graphn_add(a : StatsdescunivariateGraphN, b : StatsdescunivariateGraphN) -> StatsdescunivariateGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateGraphN::add(self : StatsdescunivariateGraphN, other : StatsdescunivariateGraphN) -> StatsdescunivariateGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_graphn_copy(s : StatsdescunivariateGraphN) -> StatsdescunivariateGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateGraphN::copy(self : StatsdescunivariateGraphN) -> StatsdescunivariateGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_graphn_fill(s : StatsdescunivariateGraphN, v : Double) -> StatsdescunivariateGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateGraphN::fill(self : StatsdescunivariateGraphN, v : Double) -> StatsdescunivariateGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_graphn_min(s : StatsdescunivariateGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateGraphN::min(self : StatsdescunivariateGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_graphn_max(s : StatsdescunivariateGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateGraphN::max(self : StatsdescunivariateGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_graphn_to_string(s : StatsdescunivariateGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateGraphN::to_string(self : StatsdescunivariateGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateNode {
@@ -504,45 +504,45 @@ pub fn stats_desc_univariate_node_make(size : Int) -> StatsdescunivariateNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_node_len(s : StatsdescunivariateNode) -> Int { s.size }
+pub fn StatsdescunivariateNode::len(self : StatsdescunivariateNode) -> Int { self.size }
 
-pub fn stats_desc_univariate_node_get(s : StatsdescunivariateNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateNode::get(self : StatsdescunivariateNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_node_set(s : StatsdescunivariateNode, i : Int, v : Double) -> StatsdescunivariateNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateNode::set(self : StatsdescunivariateNode, i : Int, v : Double) -> StatsdescunivariateNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_node_sum(s : StatsdescunivariateNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateNode::sum(self : StatsdescunivariateNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_node_mean(s : StatsdescunivariateNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateNode::mean(self : StatsdescunivariateNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_node_scale(s : StatsdescunivariateNode, f : Double) -> StatsdescunivariateNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateNode::scale(self : StatsdescunivariateNode, f : Double) -> StatsdescunivariateNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_node_add(a : StatsdescunivariateNode, b : StatsdescunivariateNode) -> StatsdescunivariateNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateNode::add(self : StatsdescunivariateNode, other : StatsdescunivariateNode) -> StatsdescunivariateNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_node_copy(s : StatsdescunivariateNode) -> StatsdescunivariateNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateNode::copy(self : StatsdescunivariateNode) -> StatsdescunivariateNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_node_fill(s : StatsdescunivariateNode, v : Double) -> StatsdescunivariateNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateNode::fill(self : StatsdescunivariateNode, v : Double) -> StatsdescunivariateNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_node_min(s : StatsdescunivariateNode) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateNode::min(self : StatsdescunivariateNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_node_max(s : StatsdescunivariateNode) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateNode::max(self : StatsdescunivariateNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_node_to_string(s : StatsdescunivariateNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateNode::to_string(self : StatsdescunivariateNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateEdge {
@@ -555,45 +555,45 @@ pub fn stats_desc_univariate_edge_make(size : Int) -> StatsdescunivariateEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_edge_len(s : StatsdescunivariateEdge) -> Int { s.size }
+pub fn StatsdescunivariateEdge::len(self : StatsdescunivariateEdge) -> Int { self.size }
 
-pub fn stats_desc_univariate_edge_get(s : StatsdescunivariateEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateEdge::get(self : StatsdescunivariateEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_edge_set(s : StatsdescunivariateEdge, i : Int, v : Double) -> StatsdescunivariateEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateEdge::set(self : StatsdescunivariateEdge, i : Int, v : Double) -> StatsdescunivariateEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_edge_sum(s : StatsdescunivariateEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateEdge::sum(self : StatsdescunivariateEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_edge_mean(s : StatsdescunivariateEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateEdge::mean(self : StatsdescunivariateEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_edge_scale(s : StatsdescunivariateEdge, f : Double) -> StatsdescunivariateEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateEdge::scale(self : StatsdescunivariateEdge, f : Double) -> StatsdescunivariateEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_edge_add(a : StatsdescunivariateEdge, b : StatsdescunivariateEdge) -> StatsdescunivariateEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateEdge::add(self : StatsdescunivariateEdge, other : StatsdescunivariateEdge) -> StatsdescunivariateEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_edge_copy(s : StatsdescunivariateEdge) -> StatsdescunivariateEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateEdge::copy(self : StatsdescunivariateEdge) -> StatsdescunivariateEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_edge_fill(s : StatsdescunivariateEdge, v : Double) -> StatsdescunivariateEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateEdge::fill(self : StatsdescunivariateEdge, v : Double) -> StatsdescunivariateEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_edge_min(s : StatsdescunivariateEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateEdge::min(self : StatsdescunivariateEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_edge_max(s : StatsdescunivariateEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateEdge::max(self : StatsdescunivariateEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_edge_to_string(s : StatsdescunivariateEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateEdge::to_string(self : StatsdescunivariateEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariatePath {
@@ -606,45 +606,45 @@ pub fn stats_desc_univariate_path_make(size : Int) -> StatsdescunivariatePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_path_len(s : StatsdescunivariatePath) -> Int { s.size }
+pub fn StatsdescunivariatePath::len(self : StatsdescunivariatePath) -> Int { self.size }
 
-pub fn stats_desc_univariate_path_get(s : StatsdescunivariatePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariatePath::get(self : StatsdescunivariatePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_path_set(s : StatsdescunivariatePath, i : Int, v : Double) -> StatsdescunivariatePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariatePath::set(self : StatsdescunivariatePath, i : Int, v : Double) -> StatsdescunivariatePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_path_sum(s : StatsdescunivariatePath) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariatePath::sum(self : StatsdescunivariatePath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_path_mean(s : StatsdescunivariatePath) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariatePath::mean(self : StatsdescunivariatePath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_path_scale(s : StatsdescunivariatePath, f : Double) -> StatsdescunivariatePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariatePath::scale(self : StatsdescunivariatePath, f : Double) -> StatsdescunivariatePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_path_add(a : StatsdescunivariatePath, b : StatsdescunivariatePath) -> StatsdescunivariatePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariatePath::add(self : StatsdescunivariatePath, other : StatsdescunivariatePath) -> StatsdescunivariatePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_path_copy(s : StatsdescunivariatePath) -> StatsdescunivariatePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariatePath::copy(self : StatsdescunivariatePath) -> StatsdescunivariatePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_path_fill(s : StatsdescunivariatePath, v : Double) -> StatsdescunivariatePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariatePath::fill(self : StatsdescunivariatePath, v : Double) -> StatsdescunivariatePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_path_min(s : StatsdescunivariatePath) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariatePath::min(self : StatsdescunivariatePath) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_path_max(s : StatsdescunivariatePath) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariatePath::max(self : StatsdescunivariatePath) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_path_to_string(s : StatsdescunivariatePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariatePath::to_string(self : StatsdescunivariatePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateCluster {
@@ -657,45 +657,45 @@ pub fn stats_desc_univariate_cluster_make(size : Int) -> StatsdescunivariateClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_cluster_len(s : StatsdescunivariateCluster) -> Int { s.size }
+pub fn StatsdescunivariateCluster::len(self : StatsdescunivariateCluster) -> Int { self.size }
 
-pub fn stats_desc_univariate_cluster_get(s : StatsdescunivariateCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateCluster::get(self : StatsdescunivariateCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_cluster_set(s : StatsdescunivariateCluster, i : Int, v : Double) -> StatsdescunivariateCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCluster::set(self : StatsdescunivariateCluster, i : Int, v : Double) -> StatsdescunivariateCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cluster_sum(s : StatsdescunivariateCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateCluster::sum(self : StatsdescunivariateCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_cluster_mean(s : StatsdescunivariateCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateCluster::mean(self : StatsdescunivariateCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_cluster_scale(s : StatsdescunivariateCluster, f : Double) -> StatsdescunivariateCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCluster::scale(self : StatsdescunivariateCluster, f : Double) -> StatsdescunivariateCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cluster_add(a : StatsdescunivariateCluster, b : StatsdescunivariateCluster) -> StatsdescunivariateCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateCluster::add(self : StatsdescunivariateCluster, other : StatsdescunivariateCluster) -> StatsdescunivariateCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cluster_copy(s : StatsdescunivariateCluster) -> StatsdescunivariateCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCluster::copy(self : StatsdescunivariateCluster) -> StatsdescunivariateCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cluster_fill(s : StatsdescunivariateCluster, v : Double) -> StatsdescunivariateCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCluster::fill(self : StatsdescunivariateCluster, v : Double) -> StatsdescunivariateCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cluster_min(s : StatsdescunivariateCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateCluster::min(self : StatsdescunivariateCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_cluster_max(s : StatsdescunivariateCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateCluster::max(self : StatsdescunivariateCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_cluster_to_string(s : StatsdescunivariateCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateCluster::to_string(self : StatsdescunivariateCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateModel {
@@ -708,45 +708,45 @@ pub fn stats_desc_univariate_model_make(size : Int) -> StatsdescunivariateModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_model_len(s : StatsdescunivariateModel) -> Int { s.size }
+pub fn StatsdescunivariateModel::len(self : StatsdescunivariateModel) -> Int { self.size }
 
-pub fn stats_desc_univariate_model_get(s : StatsdescunivariateModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateModel::get(self : StatsdescunivariateModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_model_set(s : StatsdescunivariateModel, i : Int, v : Double) -> StatsdescunivariateModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateModel::set(self : StatsdescunivariateModel, i : Int, v : Double) -> StatsdescunivariateModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_model_sum(s : StatsdescunivariateModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateModel::sum(self : StatsdescunivariateModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_model_mean(s : StatsdescunivariateModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateModel::mean(self : StatsdescunivariateModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_model_scale(s : StatsdescunivariateModel, f : Double) -> StatsdescunivariateModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateModel::scale(self : StatsdescunivariateModel, f : Double) -> StatsdescunivariateModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_model_add(a : StatsdescunivariateModel, b : StatsdescunivariateModel) -> StatsdescunivariateModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateModel::add(self : StatsdescunivariateModel, other : StatsdescunivariateModel) -> StatsdescunivariateModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_model_copy(s : StatsdescunivariateModel) -> StatsdescunivariateModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateModel::copy(self : StatsdescunivariateModel) -> StatsdescunivariateModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_model_fill(s : StatsdescunivariateModel, v : Double) -> StatsdescunivariateModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateModel::fill(self : StatsdescunivariateModel, v : Double) -> StatsdescunivariateModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_model_min(s : StatsdescunivariateModel) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateModel::min(self : StatsdescunivariateModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_model_max(s : StatsdescunivariateModel) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateModel::max(self : StatsdescunivariateModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_model_to_string(s : StatsdescunivariateModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateModel::to_string(self : StatsdescunivariateModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateLayer {
@@ -759,45 +759,45 @@ pub fn stats_desc_univariate_layer_make(size : Int) -> StatsdescunivariateLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_layer_len(s : StatsdescunivariateLayer) -> Int { s.size }
+pub fn StatsdescunivariateLayer::len(self : StatsdescunivariateLayer) -> Int { self.size }
 
-pub fn stats_desc_univariate_layer_get(s : StatsdescunivariateLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateLayer::get(self : StatsdescunivariateLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_layer_set(s : StatsdescunivariateLayer, i : Int, v : Double) -> StatsdescunivariateLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateLayer::set(self : StatsdescunivariateLayer, i : Int, v : Double) -> StatsdescunivariateLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_layer_sum(s : StatsdescunivariateLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateLayer::sum(self : StatsdescunivariateLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_layer_mean(s : StatsdescunivariateLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateLayer::mean(self : StatsdescunivariateLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_layer_scale(s : StatsdescunivariateLayer, f : Double) -> StatsdescunivariateLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateLayer::scale(self : StatsdescunivariateLayer, f : Double) -> StatsdescunivariateLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_layer_add(a : StatsdescunivariateLayer, b : StatsdescunivariateLayer) -> StatsdescunivariateLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateLayer::add(self : StatsdescunivariateLayer, other : StatsdescunivariateLayer) -> StatsdescunivariateLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_layer_copy(s : StatsdescunivariateLayer) -> StatsdescunivariateLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateLayer::copy(self : StatsdescunivariateLayer) -> StatsdescunivariateLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_layer_fill(s : StatsdescunivariateLayer, v : Double) -> StatsdescunivariateLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateLayer::fill(self : StatsdescunivariateLayer, v : Double) -> StatsdescunivariateLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_layer_min(s : StatsdescunivariateLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateLayer::min(self : StatsdescunivariateLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_layer_max(s : StatsdescunivariateLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateLayer::max(self : StatsdescunivariateLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_layer_to_string(s : StatsdescunivariateLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateLayer::to_string(self : StatsdescunivariateLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateBuffer {
@@ -810,45 +810,45 @@ pub fn stats_desc_univariate_buffer_make(size : Int) -> StatsdescunivariateBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_buffer_len(s : StatsdescunivariateBuffer) -> Int { s.size }
+pub fn StatsdescunivariateBuffer::len(self : StatsdescunivariateBuffer) -> Int { self.size }
 
-pub fn stats_desc_univariate_buffer_get(s : StatsdescunivariateBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateBuffer::get(self : StatsdescunivariateBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_buffer_set(s : StatsdescunivariateBuffer, i : Int, v : Double) -> StatsdescunivariateBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateBuffer::set(self : StatsdescunivariateBuffer, i : Int, v : Double) -> StatsdescunivariateBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_buffer_sum(s : StatsdescunivariateBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateBuffer::sum(self : StatsdescunivariateBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_buffer_mean(s : StatsdescunivariateBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateBuffer::mean(self : StatsdescunivariateBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_buffer_scale(s : StatsdescunivariateBuffer, f : Double) -> StatsdescunivariateBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateBuffer::scale(self : StatsdescunivariateBuffer, f : Double) -> StatsdescunivariateBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_buffer_add(a : StatsdescunivariateBuffer, b : StatsdescunivariateBuffer) -> StatsdescunivariateBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateBuffer::add(self : StatsdescunivariateBuffer, other : StatsdescunivariateBuffer) -> StatsdescunivariateBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_buffer_copy(s : StatsdescunivariateBuffer) -> StatsdescunivariateBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateBuffer::copy(self : StatsdescunivariateBuffer) -> StatsdescunivariateBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_buffer_fill(s : StatsdescunivariateBuffer, v : Double) -> StatsdescunivariateBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateBuffer::fill(self : StatsdescunivariateBuffer, v : Double) -> StatsdescunivariateBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_buffer_min(s : StatsdescunivariateBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateBuffer::min(self : StatsdescunivariateBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_buffer_max(s : StatsdescunivariateBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateBuffer::max(self : StatsdescunivariateBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_buffer_to_string(s : StatsdescunivariateBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateBuffer::to_string(self : StatsdescunivariateBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateCursor {
@@ -861,45 +861,45 @@ pub fn stats_desc_univariate_cursor_make(size : Int) -> StatsdescunivariateCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_cursor_len(s : StatsdescunivariateCursor) -> Int { s.size }
+pub fn StatsdescunivariateCursor::len(self : StatsdescunivariateCursor) -> Int { self.size }
 
-pub fn stats_desc_univariate_cursor_get(s : StatsdescunivariateCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateCursor::get(self : StatsdescunivariateCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_cursor_set(s : StatsdescunivariateCursor, i : Int, v : Double) -> StatsdescunivariateCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCursor::set(self : StatsdescunivariateCursor, i : Int, v : Double) -> StatsdescunivariateCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cursor_sum(s : StatsdescunivariateCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateCursor::sum(self : StatsdescunivariateCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_cursor_mean(s : StatsdescunivariateCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateCursor::mean(self : StatsdescunivariateCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_cursor_scale(s : StatsdescunivariateCursor, f : Double) -> StatsdescunivariateCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCursor::scale(self : StatsdescunivariateCursor, f : Double) -> StatsdescunivariateCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cursor_add(a : StatsdescunivariateCursor, b : StatsdescunivariateCursor) -> StatsdescunivariateCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateCursor::add(self : StatsdescunivariateCursor, other : StatsdescunivariateCursor) -> StatsdescunivariateCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cursor_copy(s : StatsdescunivariateCursor) -> StatsdescunivariateCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCursor::copy(self : StatsdescunivariateCursor) -> StatsdescunivariateCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cursor_fill(s : StatsdescunivariateCursor, v : Double) -> StatsdescunivariateCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateCursor::fill(self : StatsdescunivariateCursor, v : Double) -> StatsdescunivariateCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_cursor_min(s : StatsdescunivariateCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateCursor::min(self : StatsdescunivariateCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_cursor_max(s : StatsdescunivariateCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateCursor::max(self : StatsdescunivariateCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_cursor_to_string(s : StatsdescunivariateCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateCursor::to_string(self : StatsdescunivariateCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateView {
@@ -912,45 +912,45 @@ pub fn stats_desc_univariate_view_make(size : Int) -> StatsdescunivariateView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_view_len(s : StatsdescunivariateView) -> Int { s.size }
+pub fn StatsdescunivariateView::len(self : StatsdescunivariateView) -> Int { self.size }
 
-pub fn stats_desc_univariate_view_get(s : StatsdescunivariateView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateView::get(self : StatsdescunivariateView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_view_set(s : StatsdescunivariateView, i : Int, v : Double) -> StatsdescunivariateView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateView::set(self : StatsdescunivariateView, i : Int, v : Double) -> StatsdescunivariateView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_view_sum(s : StatsdescunivariateView) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateView::sum(self : StatsdescunivariateView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_view_mean(s : StatsdescunivariateView) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateView::mean(self : StatsdescunivariateView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_view_scale(s : StatsdescunivariateView, f : Double) -> StatsdescunivariateView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateView::scale(self : StatsdescunivariateView, f : Double) -> StatsdescunivariateView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_view_add(a : StatsdescunivariateView, b : StatsdescunivariateView) -> StatsdescunivariateView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateView::add(self : StatsdescunivariateView, other : StatsdescunivariateView) -> StatsdescunivariateView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_view_copy(s : StatsdescunivariateView) -> StatsdescunivariateView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateView::copy(self : StatsdescunivariateView) -> StatsdescunivariateView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_view_fill(s : StatsdescunivariateView, v : Double) -> StatsdescunivariateView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateView::fill(self : StatsdescunivariateView, v : Double) -> StatsdescunivariateView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_view_min(s : StatsdescunivariateView) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateView::min(self : StatsdescunivariateView) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_view_max(s : StatsdescunivariateView) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateView::max(self : StatsdescunivariateView) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_view_to_string(s : StatsdescunivariateView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateView::to_string(self : StatsdescunivariateView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateRange {
@@ -963,45 +963,45 @@ pub fn stats_desc_univariate_range_make(size : Int) -> StatsdescunivariateRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_range_len(s : StatsdescunivariateRange) -> Int { s.size }
+pub fn StatsdescunivariateRange::len(self : StatsdescunivariateRange) -> Int { self.size }
 
-pub fn stats_desc_univariate_range_get(s : StatsdescunivariateRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateRange::get(self : StatsdescunivariateRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_range_set(s : StatsdescunivariateRange, i : Int, v : Double) -> StatsdescunivariateRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateRange::set(self : StatsdescunivariateRange, i : Int, v : Double) -> StatsdescunivariateRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_range_sum(s : StatsdescunivariateRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateRange::sum(self : StatsdescunivariateRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_range_mean(s : StatsdescunivariateRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateRange::mean(self : StatsdescunivariateRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_range_scale(s : StatsdescunivariateRange, f : Double) -> StatsdescunivariateRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateRange::scale(self : StatsdescunivariateRange, f : Double) -> StatsdescunivariateRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_range_add(a : StatsdescunivariateRange, b : StatsdescunivariateRange) -> StatsdescunivariateRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateRange::add(self : StatsdescunivariateRange, other : StatsdescunivariateRange) -> StatsdescunivariateRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_range_copy(s : StatsdescunivariateRange) -> StatsdescunivariateRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateRange::copy(self : StatsdescunivariateRange) -> StatsdescunivariateRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_range_fill(s : StatsdescunivariateRange, v : Double) -> StatsdescunivariateRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateRange::fill(self : StatsdescunivariateRange, v : Double) -> StatsdescunivariateRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_range_min(s : StatsdescunivariateRange) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateRange::min(self : StatsdescunivariateRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_range_max(s : StatsdescunivariateRange) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateRange::max(self : StatsdescunivariateRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_range_to_string(s : StatsdescunivariateRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateRange::to_string(self : StatsdescunivariateRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescunivariateSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_desc_univariate_slice_make(size : Int) -> StatsdescunivariateSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_univariate_slice_len(s : StatsdescunivariateSlice) -> Int { s.size }
+pub fn StatsdescunivariateSlice::len(self : StatsdescunivariateSlice) -> Int { self.size }
 
-pub fn stats_desc_univariate_slice_get(s : StatsdescunivariateSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescunivariateSlice::get(self : StatsdescunivariateSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_univariate_slice_set(s : StatsdescunivariateSlice, i : Int, v : Double) -> StatsdescunivariateSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescunivariateSlice::set(self : StatsdescunivariateSlice, i : Int, v : Double) -> StatsdescunivariateSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_slice_sum(s : StatsdescunivariateSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdescunivariateSlice::sum(self : StatsdescunivariateSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_univariate_slice_mean(s : StatsdescunivariateSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdescunivariateSlice::mean(self : StatsdescunivariateSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_univariate_slice_scale(s : StatsdescunivariateSlice, f : Double) -> StatsdescunivariateSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateSlice::scale(self : StatsdescunivariateSlice, f : Double) -> StatsdescunivariateSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_slice_add(a : StatsdescunivariateSlice, b : StatsdescunivariateSlice) -> StatsdescunivariateSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescunivariateSlice::add(self : StatsdescunivariateSlice, other : StatsdescunivariateSlice) -> StatsdescunivariateSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_slice_copy(s : StatsdescunivariateSlice) -> StatsdescunivariateSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateSlice::copy(self : StatsdescunivariateSlice) -> StatsdescunivariateSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_slice_fill(s : StatsdescunivariateSlice, v : Double) -> StatsdescunivariateSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescunivariateSlice::fill(self : StatsdescunivariateSlice, v : Double) -> StatsdescunivariateSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_univariate_slice_min(s : StatsdescunivariateSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdescunivariateSlice::min(self : StatsdescunivariateSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_univariate_slice_max(s : StatsdescunivariateSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdescunivariateSlice::max(self : StatsdescunivariateSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_univariate_slice_to_string(s : StatsdescunivariateSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescunivariateSlice::to_string(self : StatsdescunivariateSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

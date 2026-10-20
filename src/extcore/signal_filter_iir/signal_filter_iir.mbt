@@ -351,45 +351,45 @@ pub fn signal_filter_iir_frame_make(size : Int) -> SignalfilteriirFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_frame_len(s : SignalfilteriirFrame) -> Int { s.size }
+pub fn SignalfilteriirFrame::len(self : SignalfilteriirFrame) -> Int { self.size }
 
-pub fn signal_filter_iir_frame_get(s : SignalfilteriirFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirFrame::get(self : SignalfilteriirFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_frame_set(s : SignalfilteriirFrame, i : Int, v : Double) -> SignalfilteriirFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirFrame::set(self : SignalfilteriirFrame, i : Int, v : Double) -> SignalfilteriirFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_frame_sum(s : SignalfilteriirFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirFrame::sum(self : SignalfilteriirFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_frame_mean(s : SignalfilteriirFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirFrame::mean(self : SignalfilteriirFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_frame_scale(s : SignalfilteriirFrame, f : Double) -> SignalfilteriirFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirFrame::scale(self : SignalfilteriirFrame, f : Double) -> SignalfilteriirFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_frame_add(a : SignalfilteriirFrame, b : SignalfilteriirFrame) -> SignalfilteriirFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirFrame::add(self : SignalfilteriirFrame, other : SignalfilteriirFrame) -> SignalfilteriirFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_frame_copy(s : SignalfilteriirFrame) -> SignalfilteriirFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirFrame::copy(self : SignalfilteriirFrame) -> SignalfilteriirFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_frame_fill(s : SignalfilteriirFrame, v : Double) -> SignalfilteriirFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirFrame::fill(self : SignalfilteriirFrame, v : Double) -> SignalfilteriirFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_frame_min(s : SignalfilteriirFrame) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirFrame::min(self : SignalfilteriirFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_frame_max(s : SignalfilteriirFrame) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirFrame::max(self : SignalfilteriirFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_frame_to_string(s : SignalfilteriirFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirFrame::to_string(self : SignalfilteriirFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirTable {
@@ -402,45 +402,45 @@ pub fn signal_filter_iir_table_make(size : Int) -> SignalfilteriirTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_table_len(s : SignalfilteriirTable) -> Int { s.size }
+pub fn SignalfilteriirTable::len(self : SignalfilteriirTable) -> Int { self.size }
 
-pub fn signal_filter_iir_table_get(s : SignalfilteriirTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirTable::get(self : SignalfilteriirTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_table_set(s : SignalfilteriirTable, i : Int, v : Double) -> SignalfilteriirTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirTable::set(self : SignalfilteriirTable, i : Int, v : Double) -> SignalfilteriirTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_table_sum(s : SignalfilteriirTable) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirTable::sum(self : SignalfilteriirTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_table_mean(s : SignalfilteriirTable) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirTable::mean(self : SignalfilteriirTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_table_scale(s : SignalfilteriirTable, f : Double) -> SignalfilteriirTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirTable::scale(self : SignalfilteriirTable, f : Double) -> SignalfilteriirTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_table_add(a : SignalfilteriirTable, b : SignalfilteriirTable) -> SignalfilteriirTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirTable::add(self : SignalfilteriirTable, other : SignalfilteriirTable) -> SignalfilteriirTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_table_copy(s : SignalfilteriirTable) -> SignalfilteriirTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirTable::copy(self : SignalfilteriirTable) -> SignalfilteriirTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_table_fill(s : SignalfilteriirTable, v : Double) -> SignalfilteriirTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirTable::fill(self : SignalfilteriirTable, v : Double) -> SignalfilteriirTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_table_min(s : SignalfilteriirTable) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirTable::min(self : SignalfilteriirTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_table_max(s : SignalfilteriirTable) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirTable::max(self : SignalfilteriirTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_table_to_string(s : SignalfilteriirTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirTable::to_string(self : SignalfilteriirTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirGraphN {
@@ -453,45 +453,45 @@ pub fn signal_filter_iir_graphn_make(size : Int) -> SignalfilteriirGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_graphn_len(s : SignalfilteriirGraphN) -> Int { s.size }
+pub fn SignalfilteriirGraphN::len(self : SignalfilteriirGraphN) -> Int { self.size }
 
-pub fn signal_filter_iir_graphn_get(s : SignalfilteriirGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirGraphN::get(self : SignalfilteriirGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_graphn_set(s : SignalfilteriirGraphN, i : Int, v : Double) -> SignalfilteriirGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirGraphN::set(self : SignalfilteriirGraphN, i : Int, v : Double) -> SignalfilteriirGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_graphn_sum(s : SignalfilteriirGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirGraphN::sum(self : SignalfilteriirGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_graphn_mean(s : SignalfilteriirGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirGraphN::mean(self : SignalfilteriirGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_graphn_scale(s : SignalfilteriirGraphN, f : Double) -> SignalfilteriirGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirGraphN::scale(self : SignalfilteriirGraphN, f : Double) -> SignalfilteriirGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_graphn_add(a : SignalfilteriirGraphN, b : SignalfilteriirGraphN) -> SignalfilteriirGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirGraphN::add(self : SignalfilteriirGraphN, other : SignalfilteriirGraphN) -> SignalfilteriirGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_graphn_copy(s : SignalfilteriirGraphN) -> SignalfilteriirGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirGraphN::copy(self : SignalfilteriirGraphN) -> SignalfilteriirGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_graphn_fill(s : SignalfilteriirGraphN, v : Double) -> SignalfilteriirGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirGraphN::fill(self : SignalfilteriirGraphN, v : Double) -> SignalfilteriirGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_graphn_min(s : SignalfilteriirGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirGraphN::min(self : SignalfilteriirGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_graphn_max(s : SignalfilteriirGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirGraphN::max(self : SignalfilteriirGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_graphn_to_string(s : SignalfilteriirGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirGraphN::to_string(self : SignalfilteriirGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirNode {
@@ -504,45 +504,45 @@ pub fn signal_filter_iir_node_make(size : Int) -> SignalfilteriirNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_node_len(s : SignalfilteriirNode) -> Int { s.size }
+pub fn SignalfilteriirNode::len(self : SignalfilteriirNode) -> Int { self.size }
 
-pub fn signal_filter_iir_node_get(s : SignalfilteriirNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirNode::get(self : SignalfilteriirNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_node_set(s : SignalfilteriirNode, i : Int, v : Double) -> SignalfilteriirNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirNode::set(self : SignalfilteriirNode, i : Int, v : Double) -> SignalfilteriirNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_node_sum(s : SignalfilteriirNode) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirNode::sum(self : SignalfilteriirNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_node_mean(s : SignalfilteriirNode) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirNode::mean(self : SignalfilteriirNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_node_scale(s : SignalfilteriirNode, f : Double) -> SignalfilteriirNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirNode::scale(self : SignalfilteriirNode, f : Double) -> SignalfilteriirNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_node_add(a : SignalfilteriirNode, b : SignalfilteriirNode) -> SignalfilteriirNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirNode::add(self : SignalfilteriirNode, other : SignalfilteriirNode) -> SignalfilteriirNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_node_copy(s : SignalfilteriirNode) -> SignalfilteriirNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirNode::copy(self : SignalfilteriirNode) -> SignalfilteriirNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_node_fill(s : SignalfilteriirNode, v : Double) -> SignalfilteriirNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirNode::fill(self : SignalfilteriirNode, v : Double) -> SignalfilteriirNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_node_min(s : SignalfilteriirNode) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirNode::min(self : SignalfilteriirNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_node_max(s : SignalfilteriirNode) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirNode::max(self : SignalfilteriirNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_node_to_string(s : SignalfilteriirNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirNode::to_string(self : SignalfilteriirNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirEdge {
@@ -555,45 +555,45 @@ pub fn signal_filter_iir_edge_make(size : Int) -> SignalfilteriirEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_edge_len(s : SignalfilteriirEdge) -> Int { s.size }
+pub fn SignalfilteriirEdge::len(self : SignalfilteriirEdge) -> Int { self.size }
 
-pub fn signal_filter_iir_edge_get(s : SignalfilteriirEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirEdge::get(self : SignalfilteriirEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_edge_set(s : SignalfilteriirEdge, i : Int, v : Double) -> SignalfilteriirEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirEdge::set(self : SignalfilteriirEdge, i : Int, v : Double) -> SignalfilteriirEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_edge_sum(s : SignalfilteriirEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirEdge::sum(self : SignalfilteriirEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_edge_mean(s : SignalfilteriirEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirEdge::mean(self : SignalfilteriirEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_edge_scale(s : SignalfilteriirEdge, f : Double) -> SignalfilteriirEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirEdge::scale(self : SignalfilteriirEdge, f : Double) -> SignalfilteriirEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_edge_add(a : SignalfilteriirEdge, b : SignalfilteriirEdge) -> SignalfilteriirEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirEdge::add(self : SignalfilteriirEdge, other : SignalfilteriirEdge) -> SignalfilteriirEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_edge_copy(s : SignalfilteriirEdge) -> SignalfilteriirEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirEdge::copy(self : SignalfilteriirEdge) -> SignalfilteriirEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_edge_fill(s : SignalfilteriirEdge, v : Double) -> SignalfilteriirEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirEdge::fill(self : SignalfilteriirEdge, v : Double) -> SignalfilteriirEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_edge_min(s : SignalfilteriirEdge) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirEdge::min(self : SignalfilteriirEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_edge_max(s : SignalfilteriirEdge) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirEdge::max(self : SignalfilteriirEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_edge_to_string(s : SignalfilteriirEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirEdge::to_string(self : SignalfilteriirEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirPath {
@@ -606,45 +606,45 @@ pub fn signal_filter_iir_path_make(size : Int) -> SignalfilteriirPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_path_len(s : SignalfilteriirPath) -> Int { s.size }
+pub fn SignalfilteriirPath::len(self : SignalfilteriirPath) -> Int { self.size }
 
-pub fn signal_filter_iir_path_get(s : SignalfilteriirPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirPath::get(self : SignalfilteriirPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_path_set(s : SignalfilteriirPath, i : Int, v : Double) -> SignalfilteriirPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirPath::set(self : SignalfilteriirPath, i : Int, v : Double) -> SignalfilteriirPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_path_sum(s : SignalfilteriirPath) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirPath::sum(self : SignalfilteriirPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_path_mean(s : SignalfilteriirPath) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirPath::mean(self : SignalfilteriirPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_path_scale(s : SignalfilteriirPath, f : Double) -> SignalfilteriirPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirPath::scale(self : SignalfilteriirPath, f : Double) -> SignalfilteriirPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_path_add(a : SignalfilteriirPath, b : SignalfilteriirPath) -> SignalfilteriirPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirPath::add(self : SignalfilteriirPath, other : SignalfilteriirPath) -> SignalfilteriirPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_path_copy(s : SignalfilteriirPath) -> SignalfilteriirPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirPath::copy(self : SignalfilteriirPath) -> SignalfilteriirPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_path_fill(s : SignalfilteriirPath, v : Double) -> SignalfilteriirPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirPath::fill(self : SignalfilteriirPath, v : Double) -> SignalfilteriirPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_path_min(s : SignalfilteriirPath) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirPath::min(self : SignalfilteriirPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_path_max(s : SignalfilteriirPath) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirPath::max(self : SignalfilteriirPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_path_to_string(s : SignalfilteriirPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirPath::to_string(self : SignalfilteriirPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirCluster {
@@ -657,45 +657,45 @@ pub fn signal_filter_iir_cluster_make(size : Int) -> SignalfilteriirCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_cluster_len(s : SignalfilteriirCluster) -> Int { s.size }
+pub fn SignalfilteriirCluster::len(self : SignalfilteriirCluster) -> Int { self.size }
 
-pub fn signal_filter_iir_cluster_get(s : SignalfilteriirCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirCluster::get(self : SignalfilteriirCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_cluster_set(s : SignalfilteriirCluster, i : Int, v : Double) -> SignalfilteriirCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirCluster::set(self : SignalfilteriirCluster, i : Int, v : Double) -> SignalfilteriirCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cluster_sum(s : SignalfilteriirCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirCluster::sum(self : SignalfilteriirCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_cluster_mean(s : SignalfilteriirCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirCluster::mean(self : SignalfilteriirCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_cluster_scale(s : SignalfilteriirCluster, f : Double) -> SignalfilteriirCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirCluster::scale(self : SignalfilteriirCluster, f : Double) -> SignalfilteriirCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cluster_add(a : SignalfilteriirCluster, b : SignalfilteriirCluster) -> SignalfilteriirCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirCluster::add(self : SignalfilteriirCluster, other : SignalfilteriirCluster) -> SignalfilteriirCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cluster_copy(s : SignalfilteriirCluster) -> SignalfilteriirCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirCluster::copy(self : SignalfilteriirCluster) -> SignalfilteriirCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cluster_fill(s : SignalfilteriirCluster, v : Double) -> SignalfilteriirCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirCluster::fill(self : SignalfilteriirCluster, v : Double) -> SignalfilteriirCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cluster_min(s : SignalfilteriirCluster) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirCluster::min(self : SignalfilteriirCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_cluster_max(s : SignalfilteriirCluster) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirCluster::max(self : SignalfilteriirCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_cluster_to_string(s : SignalfilteriirCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirCluster::to_string(self : SignalfilteriirCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirModel {
@@ -708,45 +708,45 @@ pub fn signal_filter_iir_model_make(size : Int) -> SignalfilteriirModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_model_len(s : SignalfilteriirModel) -> Int { s.size }
+pub fn SignalfilteriirModel::len(self : SignalfilteriirModel) -> Int { self.size }
 
-pub fn signal_filter_iir_model_get(s : SignalfilteriirModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirModel::get(self : SignalfilteriirModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_model_set(s : SignalfilteriirModel, i : Int, v : Double) -> SignalfilteriirModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirModel::set(self : SignalfilteriirModel, i : Int, v : Double) -> SignalfilteriirModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_model_sum(s : SignalfilteriirModel) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirModel::sum(self : SignalfilteriirModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_model_mean(s : SignalfilteriirModel) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirModel::mean(self : SignalfilteriirModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_model_scale(s : SignalfilteriirModel, f : Double) -> SignalfilteriirModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirModel::scale(self : SignalfilteriirModel, f : Double) -> SignalfilteriirModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_model_add(a : SignalfilteriirModel, b : SignalfilteriirModel) -> SignalfilteriirModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirModel::add(self : SignalfilteriirModel, other : SignalfilteriirModel) -> SignalfilteriirModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_model_copy(s : SignalfilteriirModel) -> SignalfilteriirModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirModel::copy(self : SignalfilteriirModel) -> SignalfilteriirModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_model_fill(s : SignalfilteriirModel, v : Double) -> SignalfilteriirModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirModel::fill(self : SignalfilteriirModel, v : Double) -> SignalfilteriirModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_model_min(s : SignalfilteriirModel) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirModel::min(self : SignalfilteriirModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_model_max(s : SignalfilteriirModel) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirModel::max(self : SignalfilteriirModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_model_to_string(s : SignalfilteriirModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirModel::to_string(self : SignalfilteriirModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirLayer {
@@ -759,45 +759,45 @@ pub fn signal_filter_iir_layer_make(size : Int) -> SignalfilteriirLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_layer_len(s : SignalfilteriirLayer) -> Int { s.size }
+pub fn SignalfilteriirLayer::len(self : SignalfilteriirLayer) -> Int { self.size }
 
-pub fn signal_filter_iir_layer_get(s : SignalfilteriirLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirLayer::get(self : SignalfilteriirLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_layer_set(s : SignalfilteriirLayer, i : Int, v : Double) -> SignalfilteriirLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirLayer::set(self : SignalfilteriirLayer, i : Int, v : Double) -> SignalfilteriirLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_layer_sum(s : SignalfilteriirLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirLayer::sum(self : SignalfilteriirLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_layer_mean(s : SignalfilteriirLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirLayer::mean(self : SignalfilteriirLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_layer_scale(s : SignalfilteriirLayer, f : Double) -> SignalfilteriirLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirLayer::scale(self : SignalfilteriirLayer, f : Double) -> SignalfilteriirLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_layer_add(a : SignalfilteriirLayer, b : SignalfilteriirLayer) -> SignalfilteriirLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirLayer::add(self : SignalfilteriirLayer, other : SignalfilteriirLayer) -> SignalfilteriirLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_layer_copy(s : SignalfilteriirLayer) -> SignalfilteriirLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirLayer::copy(self : SignalfilteriirLayer) -> SignalfilteriirLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_layer_fill(s : SignalfilteriirLayer, v : Double) -> SignalfilteriirLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirLayer::fill(self : SignalfilteriirLayer, v : Double) -> SignalfilteriirLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_layer_min(s : SignalfilteriirLayer) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirLayer::min(self : SignalfilteriirLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_layer_max(s : SignalfilteriirLayer) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirLayer::max(self : SignalfilteriirLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_layer_to_string(s : SignalfilteriirLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirLayer::to_string(self : SignalfilteriirLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirBuffer {
@@ -810,45 +810,45 @@ pub fn signal_filter_iir_buffer_make(size : Int) -> SignalfilteriirBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_buffer_len(s : SignalfilteriirBuffer) -> Int { s.size }
+pub fn SignalfilteriirBuffer::len(self : SignalfilteriirBuffer) -> Int { self.size }
 
-pub fn signal_filter_iir_buffer_get(s : SignalfilteriirBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirBuffer::get(self : SignalfilteriirBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_buffer_set(s : SignalfilteriirBuffer, i : Int, v : Double) -> SignalfilteriirBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirBuffer::set(self : SignalfilteriirBuffer, i : Int, v : Double) -> SignalfilteriirBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_buffer_sum(s : SignalfilteriirBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirBuffer::sum(self : SignalfilteriirBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_buffer_mean(s : SignalfilteriirBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirBuffer::mean(self : SignalfilteriirBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_buffer_scale(s : SignalfilteriirBuffer, f : Double) -> SignalfilteriirBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirBuffer::scale(self : SignalfilteriirBuffer, f : Double) -> SignalfilteriirBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_buffer_add(a : SignalfilteriirBuffer, b : SignalfilteriirBuffer) -> SignalfilteriirBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirBuffer::add(self : SignalfilteriirBuffer, other : SignalfilteriirBuffer) -> SignalfilteriirBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_buffer_copy(s : SignalfilteriirBuffer) -> SignalfilteriirBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirBuffer::copy(self : SignalfilteriirBuffer) -> SignalfilteriirBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_buffer_fill(s : SignalfilteriirBuffer, v : Double) -> SignalfilteriirBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirBuffer::fill(self : SignalfilteriirBuffer, v : Double) -> SignalfilteriirBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_buffer_min(s : SignalfilteriirBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirBuffer::min(self : SignalfilteriirBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_buffer_max(s : SignalfilteriirBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirBuffer::max(self : SignalfilteriirBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_buffer_to_string(s : SignalfilteriirBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirBuffer::to_string(self : SignalfilteriirBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirCursor {
@@ -861,45 +861,45 @@ pub fn signal_filter_iir_cursor_make(size : Int) -> SignalfilteriirCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_cursor_len(s : SignalfilteriirCursor) -> Int { s.size }
+pub fn SignalfilteriirCursor::len(self : SignalfilteriirCursor) -> Int { self.size }
 
-pub fn signal_filter_iir_cursor_get(s : SignalfilteriirCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirCursor::get(self : SignalfilteriirCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_cursor_set(s : SignalfilteriirCursor, i : Int, v : Double) -> SignalfilteriirCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirCursor::set(self : SignalfilteriirCursor, i : Int, v : Double) -> SignalfilteriirCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cursor_sum(s : SignalfilteriirCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirCursor::sum(self : SignalfilteriirCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_cursor_mean(s : SignalfilteriirCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirCursor::mean(self : SignalfilteriirCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_cursor_scale(s : SignalfilteriirCursor, f : Double) -> SignalfilteriirCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirCursor::scale(self : SignalfilteriirCursor, f : Double) -> SignalfilteriirCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cursor_add(a : SignalfilteriirCursor, b : SignalfilteriirCursor) -> SignalfilteriirCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirCursor::add(self : SignalfilteriirCursor, other : SignalfilteriirCursor) -> SignalfilteriirCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cursor_copy(s : SignalfilteriirCursor) -> SignalfilteriirCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirCursor::copy(self : SignalfilteriirCursor) -> SignalfilteriirCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cursor_fill(s : SignalfilteriirCursor, v : Double) -> SignalfilteriirCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirCursor::fill(self : SignalfilteriirCursor, v : Double) -> SignalfilteriirCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_cursor_min(s : SignalfilteriirCursor) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirCursor::min(self : SignalfilteriirCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_cursor_max(s : SignalfilteriirCursor) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirCursor::max(self : SignalfilteriirCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_cursor_to_string(s : SignalfilteriirCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirCursor::to_string(self : SignalfilteriirCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirView {
@@ -912,45 +912,45 @@ pub fn signal_filter_iir_view_make(size : Int) -> SignalfilteriirView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_view_len(s : SignalfilteriirView) -> Int { s.size }
+pub fn SignalfilteriirView::len(self : SignalfilteriirView) -> Int { self.size }
 
-pub fn signal_filter_iir_view_get(s : SignalfilteriirView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirView::get(self : SignalfilteriirView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_view_set(s : SignalfilteriirView, i : Int, v : Double) -> SignalfilteriirView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirView::set(self : SignalfilteriirView, i : Int, v : Double) -> SignalfilteriirView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_view_sum(s : SignalfilteriirView) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirView::sum(self : SignalfilteriirView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_view_mean(s : SignalfilteriirView) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirView::mean(self : SignalfilteriirView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_view_scale(s : SignalfilteriirView, f : Double) -> SignalfilteriirView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirView::scale(self : SignalfilteriirView, f : Double) -> SignalfilteriirView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_view_add(a : SignalfilteriirView, b : SignalfilteriirView) -> SignalfilteriirView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirView::add(self : SignalfilteriirView, other : SignalfilteriirView) -> SignalfilteriirView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_view_copy(s : SignalfilteriirView) -> SignalfilteriirView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirView::copy(self : SignalfilteriirView) -> SignalfilteriirView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_view_fill(s : SignalfilteriirView, v : Double) -> SignalfilteriirView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirView::fill(self : SignalfilteriirView, v : Double) -> SignalfilteriirView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_view_min(s : SignalfilteriirView) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirView::min(self : SignalfilteriirView) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_view_max(s : SignalfilteriirView) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirView::max(self : SignalfilteriirView) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_view_to_string(s : SignalfilteriirView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirView::to_string(self : SignalfilteriirView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirRange {
@@ -963,45 +963,45 @@ pub fn signal_filter_iir_range_make(size : Int) -> SignalfilteriirRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_range_len(s : SignalfilteriirRange) -> Int { s.size }
+pub fn SignalfilteriirRange::len(self : SignalfilteriirRange) -> Int { self.size }
 
-pub fn signal_filter_iir_range_get(s : SignalfilteriirRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirRange::get(self : SignalfilteriirRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_range_set(s : SignalfilteriirRange, i : Int, v : Double) -> SignalfilteriirRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirRange::set(self : SignalfilteriirRange, i : Int, v : Double) -> SignalfilteriirRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_range_sum(s : SignalfilteriirRange) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirRange::sum(self : SignalfilteriirRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_range_mean(s : SignalfilteriirRange) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirRange::mean(self : SignalfilteriirRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_range_scale(s : SignalfilteriirRange, f : Double) -> SignalfilteriirRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirRange::scale(self : SignalfilteriirRange, f : Double) -> SignalfilteriirRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_range_add(a : SignalfilteriirRange, b : SignalfilteriirRange) -> SignalfilteriirRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirRange::add(self : SignalfilteriirRange, other : SignalfilteriirRange) -> SignalfilteriirRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_range_copy(s : SignalfilteriirRange) -> SignalfilteriirRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirRange::copy(self : SignalfilteriirRange) -> SignalfilteriirRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_range_fill(s : SignalfilteriirRange, v : Double) -> SignalfilteriirRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirRange::fill(self : SignalfilteriirRange, v : Double) -> SignalfilteriirRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_range_min(s : SignalfilteriirRange) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirRange::min(self : SignalfilteriirRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_range_max(s : SignalfilteriirRange) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirRange::max(self : SignalfilteriirRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_range_to_string(s : SignalfilteriirRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirRange::to_string(self : SignalfilteriirRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalfilteriirSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_filter_iir_slice_make(size : Int) -> SignalfilteriirSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_iir_slice_len(s : SignalfilteriirSlice) -> Int { s.size }
+pub fn SignalfilteriirSlice::len(self : SignalfilteriirSlice) -> Int { self.size }
 
-pub fn signal_filter_iir_slice_get(s : SignalfilteriirSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalfilteriirSlice::get(self : SignalfilteriirSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_iir_slice_set(s : SignalfilteriirSlice, i : Int, v : Double) -> SignalfilteriirSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalfilteriirSlice::set(self : SignalfilteriirSlice, i : Int, v : Double) -> SignalfilteriirSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_slice_sum(s : SignalfilteriirSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalfilteriirSlice::sum(self : SignalfilteriirSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_iir_slice_mean(s : SignalfilteriirSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalfilteriirSlice::mean(self : SignalfilteriirSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_iir_slice_scale(s : SignalfilteriirSlice, f : Double) -> SignalfilteriirSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalfilteriirSlice::scale(self : SignalfilteriirSlice, f : Double) -> SignalfilteriirSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_slice_add(a : SignalfilteriirSlice, b : SignalfilteriirSlice) -> SignalfilteriirSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalfilteriirSlice::add(self : SignalfilteriirSlice, other : SignalfilteriirSlice) -> SignalfilteriirSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_iir_slice_copy(s : SignalfilteriirSlice) -> SignalfilteriirSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalfilteriirSlice::copy(self : SignalfilteriirSlice) -> SignalfilteriirSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_slice_fill(s : SignalfilteriirSlice, v : Double) -> SignalfilteriirSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalfilteriirSlice::fill(self : SignalfilteriirSlice, v : Double) -> SignalfilteriirSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_iir_slice_min(s : SignalfilteriirSlice) -> Double { @_common.min(s.data) }
+pub fn SignalfilteriirSlice::min(self : SignalfilteriirSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_iir_slice_max(s : SignalfilteriirSlice) -> Double { @_common.max(s.data) }
+pub fn SignalfilteriirSlice::max(self : SignalfilteriirSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_iir_slice_to_string(s : SignalfilteriirSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalfilteriirSlice::to_string(self : SignalfilteriirSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

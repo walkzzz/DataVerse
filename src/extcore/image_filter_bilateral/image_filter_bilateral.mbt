@@ -351,45 +351,45 @@ pub fn image_filter_bilateral_frame_make(size : Int) -> ImagefilterbilateralFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_frame_len(s : ImagefilterbilateralFrame) -> Int { s.size }
+pub fn ImagefilterbilateralFrame::len(self : ImagefilterbilateralFrame) -> Int { self.size }
 
-pub fn image_filter_bilateral_frame_get(s : ImagefilterbilateralFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralFrame::get(self : ImagefilterbilateralFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_frame_set(s : ImagefilterbilateralFrame, i : Int, v : Double) -> ImagefilterbilateralFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralFrame::set(self : ImagefilterbilateralFrame, i : Int, v : Double) -> ImagefilterbilateralFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_frame_sum(s : ImagefilterbilateralFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralFrame::sum(self : ImagefilterbilateralFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_frame_mean(s : ImagefilterbilateralFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralFrame::mean(self : ImagefilterbilateralFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_frame_scale(s : ImagefilterbilateralFrame, f : Double) -> ImagefilterbilateralFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralFrame::scale(self : ImagefilterbilateralFrame, f : Double) -> ImagefilterbilateralFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_frame_add(a : ImagefilterbilateralFrame, b : ImagefilterbilateralFrame) -> ImagefilterbilateralFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralFrame::add(self : ImagefilterbilateralFrame, other : ImagefilterbilateralFrame) -> ImagefilterbilateralFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_frame_copy(s : ImagefilterbilateralFrame) -> ImagefilterbilateralFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralFrame::copy(self : ImagefilterbilateralFrame) -> ImagefilterbilateralFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_frame_fill(s : ImagefilterbilateralFrame, v : Double) -> ImagefilterbilateralFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralFrame::fill(self : ImagefilterbilateralFrame, v : Double) -> ImagefilterbilateralFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_frame_min(s : ImagefilterbilateralFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralFrame::min(self : ImagefilterbilateralFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_frame_max(s : ImagefilterbilateralFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralFrame::max(self : ImagefilterbilateralFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_frame_to_string(s : ImagefilterbilateralFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralFrame::to_string(self : ImagefilterbilateralFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralTable {
@@ -402,45 +402,45 @@ pub fn image_filter_bilateral_table_make(size : Int) -> ImagefilterbilateralTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_table_len(s : ImagefilterbilateralTable) -> Int { s.size }
+pub fn ImagefilterbilateralTable::len(self : ImagefilterbilateralTable) -> Int { self.size }
 
-pub fn image_filter_bilateral_table_get(s : ImagefilterbilateralTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralTable::get(self : ImagefilterbilateralTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_table_set(s : ImagefilterbilateralTable, i : Int, v : Double) -> ImagefilterbilateralTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralTable::set(self : ImagefilterbilateralTable, i : Int, v : Double) -> ImagefilterbilateralTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_table_sum(s : ImagefilterbilateralTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralTable::sum(self : ImagefilterbilateralTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_table_mean(s : ImagefilterbilateralTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralTable::mean(self : ImagefilterbilateralTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_table_scale(s : ImagefilterbilateralTable, f : Double) -> ImagefilterbilateralTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralTable::scale(self : ImagefilterbilateralTable, f : Double) -> ImagefilterbilateralTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_table_add(a : ImagefilterbilateralTable, b : ImagefilterbilateralTable) -> ImagefilterbilateralTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralTable::add(self : ImagefilterbilateralTable, other : ImagefilterbilateralTable) -> ImagefilterbilateralTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_table_copy(s : ImagefilterbilateralTable) -> ImagefilterbilateralTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralTable::copy(self : ImagefilterbilateralTable) -> ImagefilterbilateralTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_table_fill(s : ImagefilterbilateralTable, v : Double) -> ImagefilterbilateralTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralTable::fill(self : ImagefilterbilateralTable, v : Double) -> ImagefilterbilateralTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_table_min(s : ImagefilterbilateralTable) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralTable::min(self : ImagefilterbilateralTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_table_max(s : ImagefilterbilateralTable) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralTable::max(self : ImagefilterbilateralTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_table_to_string(s : ImagefilterbilateralTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralTable::to_string(self : ImagefilterbilateralTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_bilateral_graphn_make(size : Int) -> ImagefilterbilateralGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_graphn_len(s : ImagefilterbilateralGraphN) -> Int { s.size }
+pub fn ImagefilterbilateralGraphN::len(self : ImagefilterbilateralGraphN) -> Int { self.size }
 
-pub fn image_filter_bilateral_graphn_get(s : ImagefilterbilateralGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralGraphN::get(self : ImagefilterbilateralGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_graphn_set(s : ImagefilterbilateralGraphN, i : Int, v : Double) -> ImagefilterbilateralGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralGraphN::set(self : ImagefilterbilateralGraphN, i : Int, v : Double) -> ImagefilterbilateralGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_graphn_sum(s : ImagefilterbilateralGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralGraphN::sum(self : ImagefilterbilateralGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_graphn_mean(s : ImagefilterbilateralGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralGraphN::mean(self : ImagefilterbilateralGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_graphn_scale(s : ImagefilterbilateralGraphN, f : Double) -> ImagefilterbilateralGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralGraphN::scale(self : ImagefilterbilateralGraphN, f : Double) -> ImagefilterbilateralGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_graphn_add(a : ImagefilterbilateralGraphN, b : ImagefilterbilateralGraphN) -> ImagefilterbilateralGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralGraphN::add(self : ImagefilterbilateralGraphN, other : ImagefilterbilateralGraphN) -> ImagefilterbilateralGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_graphn_copy(s : ImagefilterbilateralGraphN) -> ImagefilterbilateralGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralGraphN::copy(self : ImagefilterbilateralGraphN) -> ImagefilterbilateralGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_graphn_fill(s : ImagefilterbilateralGraphN, v : Double) -> ImagefilterbilateralGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralGraphN::fill(self : ImagefilterbilateralGraphN, v : Double) -> ImagefilterbilateralGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_graphn_min(s : ImagefilterbilateralGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralGraphN::min(self : ImagefilterbilateralGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_graphn_max(s : ImagefilterbilateralGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralGraphN::max(self : ImagefilterbilateralGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_graphn_to_string(s : ImagefilterbilateralGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralGraphN::to_string(self : ImagefilterbilateralGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralNode {
@@ -504,45 +504,45 @@ pub fn image_filter_bilateral_node_make(size : Int) -> ImagefilterbilateralNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_node_len(s : ImagefilterbilateralNode) -> Int { s.size }
+pub fn ImagefilterbilateralNode::len(self : ImagefilterbilateralNode) -> Int { self.size }
 
-pub fn image_filter_bilateral_node_get(s : ImagefilterbilateralNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralNode::get(self : ImagefilterbilateralNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_node_set(s : ImagefilterbilateralNode, i : Int, v : Double) -> ImagefilterbilateralNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralNode::set(self : ImagefilterbilateralNode, i : Int, v : Double) -> ImagefilterbilateralNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_node_sum(s : ImagefilterbilateralNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralNode::sum(self : ImagefilterbilateralNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_node_mean(s : ImagefilterbilateralNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralNode::mean(self : ImagefilterbilateralNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_node_scale(s : ImagefilterbilateralNode, f : Double) -> ImagefilterbilateralNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralNode::scale(self : ImagefilterbilateralNode, f : Double) -> ImagefilterbilateralNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_node_add(a : ImagefilterbilateralNode, b : ImagefilterbilateralNode) -> ImagefilterbilateralNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralNode::add(self : ImagefilterbilateralNode, other : ImagefilterbilateralNode) -> ImagefilterbilateralNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_node_copy(s : ImagefilterbilateralNode) -> ImagefilterbilateralNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralNode::copy(self : ImagefilterbilateralNode) -> ImagefilterbilateralNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_node_fill(s : ImagefilterbilateralNode, v : Double) -> ImagefilterbilateralNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralNode::fill(self : ImagefilterbilateralNode, v : Double) -> ImagefilterbilateralNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_node_min(s : ImagefilterbilateralNode) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralNode::min(self : ImagefilterbilateralNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_node_max(s : ImagefilterbilateralNode) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralNode::max(self : ImagefilterbilateralNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_node_to_string(s : ImagefilterbilateralNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralNode::to_string(self : ImagefilterbilateralNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_bilateral_edge_make(size : Int) -> ImagefilterbilateralEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_edge_len(s : ImagefilterbilateralEdge) -> Int { s.size }
+pub fn ImagefilterbilateralEdge::len(self : ImagefilterbilateralEdge) -> Int { self.size }
 
-pub fn image_filter_bilateral_edge_get(s : ImagefilterbilateralEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralEdge::get(self : ImagefilterbilateralEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_edge_set(s : ImagefilterbilateralEdge, i : Int, v : Double) -> ImagefilterbilateralEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralEdge::set(self : ImagefilterbilateralEdge, i : Int, v : Double) -> ImagefilterbilateralEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_edge_sum(s : ImagefilterbilateralEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralEdge::sum(self : ImagefilterbilateralEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_edge_mean(s : ImagefilterbilateralEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralEdge::mean(self : ImagefilterbilateralEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_edge_scale(s : ImagefilterbilateralEdge, f : Double) -> ImagefilterbilateralEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralEdge::scale(self : ImagefilterbilateralEdge, f : Double) -> ImagefilterbilateralEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_edge_add(a : ImagefilterbilateralEdge, b : ImagefilterbilateralEdge) -> ImagefilterbilateralEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralEdge::add(self : ImagefilterbilateralEdge, other : ImagefilterbilateralEdge) -> ImagefilterbilateralEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_edge_copy(s : ImagefilterbilateralEdge) -> ImagefilterbilateralEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralEdge::copy(self : ImagefilterbilateralEdge) -> ImagefilterbilateralEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_edge_fill(s : ImagefilterbilateralEdge, v : Double) -> ImagefilterbilateralEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralEdge::fill(self : ImagefilterbilateralEdge, v : Double) -> ImagefilterbilateralEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_edge_min(s : ImagefilterbilateralEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralEdge::min(self : ImagefilterbilateralEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_edge_max(s : ImagefilterbilateralEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralEdge::max(self : ImagefilterbilateralEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_edge_to_string(s : ImagefilterbilateralEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralEdge::to_string(self : ImagefilterbilateralEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralPath {
@@ -606,45 +606,45 @@ pub fn image_filter_bilateral_path_make(size : Int) -> ImagefilterbilateralPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_path_len(s : ImagefilterbilateralPath) -> Int { s.size }
+pub fn ImagefilterbilateralPath::len(self : ImagefilterbilateralPath) -> Int { self.size }
 
-pub fn image_filter_bilateral_path_get(s : ImagefilterbilateralPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralPath::get(self : ImagefilterbilateralPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_path_set(s : ImagefilterbilateralPath, i : Int, v : Double) -> ImagefilterbilateralPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralPath::set(self : ImagefilterbilateralPath, i : Int, v : Double) -> ImagefilterbilateralPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_path_sum(s : ImagefilterbilateralPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralPath::sum(self : ImagefilterbilateralPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_path_mean(s : ImagefilterbilateralPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralPath::mean(self : ImagefilterbilateralPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_path_scale(s : ImagefilterbilateralPath, f : Double) -> ImagefilterbilateralPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralPath::scale(self : ImagefilterbilateralPath, f : Double) -> ImagefilterbilateralPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_path_add(a : ImagefilterbilateralPath, b : ImagefilterbilateralPath) -> ImagefilterbilateralPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralPath::add(self : ImagefilterbilateralPath, other : ImagefilterbilateralPath) -> ImagefilterbilateralPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_path_copy(s : ImagefilterbilateralPath) -> ImagefilterbilateralPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralPath::copy(self : ImagefilterbilateralPath) -> ImagefilterbilateralPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_path_fill(s : ImagefilterbilateralPath, v : Double) -> ImagefilterbilateralPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralPath::fill(self : ImagefilterbilateralPath, v : Double) -> ImagefilterbilateralPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_path_min(s : ImagefilterbilateralPath) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralPath::min(self : ImagefilterbilateralPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_path_max(s : ImagefilterbilateralPath) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralPath::max(self : ImagefilterbilateralPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_path_to_string(s : ImagefilterbilateralPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralPath::to_string(self : ImagefilterbilateralPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_bilateral_cluster_make(size : Int) -> ImagefilterbilateralCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_cluster_len(s : ImagefilterbilateralCluster) -> Int { s.size }
+pub fn ImagefilterbilateralCluster::len(self : ImagefilterbilateralCluster) -> Int { self.size }
 
-pub fn image_filter_bilateral_cluster_get(s : ImagefilterbilateralCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralCluster::get(self : ImagefilterbilateralCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_cluster_set(s : ImagefilterbilateralCluster, i : Int, v : Double) -> ImagefilterbilateralCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCluster::set(self : ImagefilterbilateralCluster, i : Int, v : Double) -> ImagefilterbilateralCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cluster_sum(s : ImagefilterbilateralCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralCluster::sum(self : ImagefilterbilateralCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_cluster_mean(s : ImagefilterbilateralCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralCluster::mean(self : ImagefilterbilateralCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_cluster_scale(s : ImagefilterbilateralCluster, f : Double) -> ImagefilterbilateralCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCluster::scale(self : ImagefilterbilateralCluster, f : Double) -> ImagefilterbilateralCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cluster_add(a : ImagefilterbilateralCluster, b : ImagefilterbilateralCluster) -> ImagefilterbilateralCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralCluster::add(self : ImagefilterbilateralCluster, other : ImagefilterbilateralCluster) -> ImagefilterbilateralCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cluster_copy(s : ImagefilterbilateralCluster) -> ImagefilterbilateralCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCluster::copy(self : ImagefilterbilateralCluster) -> ImagefilterbilateralCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cluster_fill(s : ImagefilterbilateralCluster, v : Double) -> ImagefilterbilateralCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCluster::fill(self : ImagefilterbilateralCluster, v : Double) -> ImagefilterbilateralCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cluster_min(s : ImagefilterbilateralCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralCluster::min(self : ImagefilterbilateralCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_cluster_max(s : ImagefilterbilateralCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralCluster::max(self : ImagefilterbilateralCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_cluster_to_string(s : ImagefilterbilateralCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralCluster::to_string(self : ImagefilterbilateralCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralModel {
@@ -708,45 +708,45 @@ pub fn image_filter_bilateral_model_make(size : Int) -> ImagefilterbilateralMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_model_len(s : ImagefilterbilateralModel) -> Int { s.size }
+pub fn ImagefilterbilateralModel::len(self : ImagefilterbilateralModel) -> Int { self.size }
 
-pub fn image_filter_bilateral_model_get(s : ImagefilterbilateralModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralModel::get(self : ImagefilterbilateralModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_model_set(s : ImagefilterbilateralModel, i : Int, v : Double) -> ImagefilterbilateralModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralModel::set(self : ImagefilterbilateralModel, i : Int, v : Double) -> ImagefilterbilateralModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_model_sum(s : ImagefilterbilateralModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralModel::sum(self : ImagefilterbilateralModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_model_mean(s : ImagefilterbilateralModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralModel::mean(self : ImagefilterbilateralModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_model_scale(s : ImagefilterbilateralModel, f : Double) -> ImagefilterbilateralModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralModel::scale(self : ImagefilterbilateralModel, f : Double) -> ImagefilterbilateralModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_model_add(a : ImagefilterbilateralModel, b : ImagefilterbilateralModel) -> ImagefilterbilateralModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralModel::add(self : ImagefilterbilateralModel, other : ImagefilterbilateralModel) -> ImagefilterbilateralModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_model_copy(s : ImagefilterbilateralModel) -> ImagefilterbilateralModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralModel::copy(self : ImagefilterbilateralModel) -> ImagefilterbilateralModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_model_fill(s : ImagefilterbilateralModel, v : Double) -> ImagefilterbilateralModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralModel::fill(self : ImagefilterbilateralModel, v : Double) -> ImagefilterbilateralModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_model_min(s : ImagefilterbilateralModel) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralModel::min(self : ImagefilterbilateralModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_model_max(s : ImagefilterbilateralModel) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralModel::max(self : ImagefilterbilateralModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_model_to_string(s : ImagefilterbilateralModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralModel::to_string(self : ImagefilterbilateralModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_bilateral_layer_make(size : Int) -> ImagefilterbilateralLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_layer_len(s : ImagefilterbilateralLayer) -> Int { s.size }
+pub fn ImagefilterbilateralLayer::len(self : ImagefilterbilateralLayer) -> Int { self.size }
 
-pub fn image_filter_bilateral_layer_get(s : ImagefilterbilateralLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralLayer::get(self : ImagefilterbilateralLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_layer_set(s : ImagefilterbilateralLayer, i : Int, v : Double) -> ImagefilterbilateralLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralLayer::set(self : ImagefilterbilateralLayer, i : Int, v : Double) -> ImagefilterbilateralLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_layer_sum(s : ImagefilterbilateralLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralLayer::sum(self : ImagefilterbilateralLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_layer_mean(s : ImagefilterbilateralLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralLayer::mean(self : ImagefilterbilateralLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_layer_scale(s : ImagefilterbilateralLayer, f : Double) -> ImagefilterbilateralLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralLayer::scale(self : ImagefilterbilateralLayer, f : Double) -> ImagefilterbilateralLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_layer_add(a : ImagefilterbilateralLayer, b : ImagefilterbilateralLayer) -> ImagefilterbilateralLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralLayer::add(self : ImagefilterbilateralLayer, other : ImagefilterbilateralLayer) -> ImagefilterbilateralLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_layer_copy(s : ImagefilterbilateralLayer) -> ImagefilterbilateralLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralLayer::copy(self : ImagefilterbilateralLayer) -> ImagefilterbilateralLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_layer_fill(s : ImagefilterbilateralLayer, v : Double) -> ImagefilterbilateralLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralLayer::fill(self : ImagefilterbilateralLayer, v : Double) -> ImagefilterbilateralLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_layer_min(s : ImagefilterbilateralLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralLayer::min(self : ImagefilterbilateralLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_layer_max(s : ImagefilterbilateralLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralLayer::max(self : ImagefilterbilateralLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_layer_to_string(s : ImagefilterbilateralLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralLayer::to_string(self : ImagefilterbilateralLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_bilateral_buffer_make(size : Int) -> ImagefilterbilateralBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_buffer_len(s : ImagefilterbilateralBuffer) -> Int { s.size }
+pub fn ImagefilterbilateralBuffer::len(self : ImagefilterbilateralBuffer) -> Int { self.size }
 
-pub fn image_filter_bilateral_buffer_get(s : ImagefilterbilateralBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralBuffer::get(self : ImagefilterbilateralBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_buffer_set(s : ImagefilterbilateralBuffer, i : Int, v : Double) -> ImagefilterbilateralBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralBuffer::set(self : ImagefilterbilateralBuffer, i : Int, v : Double) -> ImagefilterbilateralBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_buffer_sum(s : ImagefilterbilateralBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralBuffer::sum(self : ImagefilterbilateralBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_buffer_mean(s : ImagefilterbilateralBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralBuffer::mean(self : ImagefilterbilateralBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_buffer_scale(s : ImagefilterbilateralBuffer, f : Double) -> ImagefilterbilateralBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralBuffer::scale(self : ImagefilterbilateralBuffer, f : Double) -> ImagefilterbilateralBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_buffer_add(a : ImagefilterbilateralBuffer, b : ImagefilterbilateralBuffer) -> ImagefilterbilateralBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralBuffer::add(self : ImagefilterbilateralBuffer, other : ImagefilterbilateralBuffer) -> ImagefilterbilateralBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_buffer_copy(s : ImagefilterbilateralBuffer) -> ImagefilterbilateralBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralBuffer::copy(self : ImagefilterbilateralBuffer) -> ImagefilterbilateralBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_buffer_fill(s : ImagefilterbilateralBuffer, v : Double) -> ImagefilterbilateralBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralBuffer::fill(self : ImagefilterbilateralBuffer, v : Double) -> ImagefilterbilateralBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_buffer_min(s : ImagefilterbilateralBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralBuffer::min(self : ImagefilterbilateralBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_buffer_max(s : ImagefilterbilateralBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralBuffer::max(self : ImagefilterbilateralBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_buffer_to_string(s : ImagefilterbilateralBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralBuffer::to_string(self : ImagefilterbilateralBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_bilateral_cursor_make(size : Int) -> ImagefilterbilateralCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_cursor_len(s : ImagefilterbilateralCursor) -> Int { s.size }
+pub fn ImagefilterbilateralCursor::len(self : ImagefilterbilateralCursor) -> Int { self.size }
 
-pub fn image_filter_bilateral_cursor_get(s : ImagefilterbilateralCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralCursor::get(self : ImagefilterbilateralCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_cursor_set(s : ImagefilterbilateralCursor, i : Int, v : Double) -> ImagefilterbilateralCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCursor::set(self : ImagefilterbilateralCursor, i : Int, v : Double) -> ImagefilterbilateralCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cursor_sum(s : ImagefilterbilateralCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralCursor::sum(self : ImagefilterbilateralCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_cursor_mean(s : ImagefilterbilateralCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralCursor::mean(self : ImagefilterbilateralCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_cursor_scale(s : ImagefilterbilateralCursor, f : Double) -> ImagefilterbilateralCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCursor::scale(self : ImagefilterbilateralCursor, f : Double) -> ImagefilterbilateralCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cursor_add(a : ImagefilterbilateralCursor, b : ImagefilterbilateralCursor) -> ImagefilterbilateralCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralCursor::add(self : ImagefilterbilateralCursor, other : ImagefilterbilateralCursor) -> ImagefilterbilateralCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cursor_copy(s : ImagefilterbilateralCursor) -> ImagefilterbilateralCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCursor::copy(self : ImagefilterbilateralCursor) -> ImagefilterbilateralCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cursor_fill(s : ImagefilterbilateralCursor, v : Double) -> ImagefilterbilateralCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralCursor::fill(self : ImagefilterbilateralCursor, v : Double) -> ImagefilterbilateralCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_cursor_min(s : ImagefilterbilateralCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralCursor::min(self : ImagefilterbilateralCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_cursor_max(s : ImagefilterbilateralCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralCursor::max(self : ImagefilterbilateralCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_cursor_to_string(s : ImagefilterbilateralCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralCursor::to_string(self : ImagefilterbilateralCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralView {
@@ -912,45 +912,45 @@ pub fn image_filter_bilateral_view_make(size : Int) -> ImagefilterbilateralView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_view_len(s : ImagefilterbilateralView) -> Int { s.size }
+pub fn ImagefilterbilateralView::len(self : ImagefilterbilateralView) -> Int { self.size }
 
-pub fn image_filter_bilateral_view_get(s : ImagefilterbilateralView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralView::get(self : ImagefilterbilateralView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_view_set(s : ImagefilterbilateralView, i : Int, v : Double) -> ImagefilterbilateralView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralView::set(self : ImagefilterbilateralView, i : Int, v : Double) -> ImagefilterbilateralView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_view_sum(s : ImagefilterbilateralView) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralView::sum(self : ImagefilterbilateralView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_view_mean(s : ImagefilterbilateralView) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralView::mean(self : ImagefilterbilateralView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_view_scale(s : ImagefilterbilateralView, f : Double) -> ImagefilterbilateralView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralView::scale(self : ImagefilterbilateralView, f : Double) -> ImagefilterbilateralView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_view_add(a : ImagefilterbilateralView, b : ImagefilterbilateralView) -> ImagefilterbilateralView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralView::add(self : ImagefilterbilateralView, other : ImagefilterbilateralView) -> ImagefilterbilateralView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_view_copy(s : ImagefilterbilateralView) -> ImagefilterbilateralView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralView::copy(self : ImagefilterbilateralView) -> ImagefilterbilateralView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_view_fill(s : ImagefilterbilateralView, v : Double) -> ImagefilterbilateralView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralView::fill(self : ImagefilterbilateralView, v : Double) -> ImagefilterbilateralView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_view_min(s : ImagefilterbilateralView) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralView::min(self : ImagefilterbilateralView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_view_max(s : ImagefilterbilateralView) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralView::max(self : ImagefilterbilateralView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_view_to_string(s : ImagefilterbilateralView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralView::to_string(self : ImagefilterbilateralView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralRange {
@@ -963,45 +963,45 @@ pub fn image_filter_bilateral_range_make(size : Int) -> ImagefilterbilateralRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_range_len(s : ImagefilterbilateralRange) -> Int { s.size }
+pub fn ImagefilterbilateralRange::len(self : ImagefilterbilateralRange) -> Int { self.size }
 
-pub fn image_filter_bilateral_range_get(s : ImagefilterbilateralRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralRange::get(self : ImagefilterbilateralRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_range_set(s : ImagefilterbilateralRange, i : Int, v : Double) -> ImagefilterbilateralRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralRange::set(self : ImagefilterbilateralRange, i : Int, v : Double) -> ImagefilterbilateralRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_range_sum(s : ImagefilterbilateralRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralRange::sum(self : ImagefilterbilateralRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_range_mean(s : ImagefilterbilateralRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralRange::mean(self : ImagefilterbilateralRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_range_scale(s : ImagefilterbilateralRange, f : Double) -> ImagefilterbilateralRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralRange::scale(self : ImagefilterbilateralRange, f : Double) -> ImagefilterbilateralRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_range_add(a : ImagefilterbilateralRange, b : ImagefilterbilateralRange) -> ImagefilterbilateralRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralRange::add(self : ImagefilterbilateralRange, other : ImagefilterbilateralRange) -> ImagefilterbilateralRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_range_copy(s : ImagefilterbilateralRange) -> ImagefilterbilateralRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralRange::copy(self : ImagefilterbilateralRange) -> ImagefilterbilateralRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_range_fill(s : ImagefilterbilateralRange, v : Double) -> ImagefilterbilateralRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralRange::fill(self : ImagefilterbilateralRange, v : Double) -> ImagefilterbilateralRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_range_min(s : ImagefilterbilateralRange) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralRange::min(self : ImagefilterbilateralRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_range_max(s : ImagefilterbilateralRange) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralRange::max(self : ImagefilterbilateralRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_range_to_string(s : ImagefilterbilateralRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralRange::to_string(self : ImagefilterbilateralRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterbilateralSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_bilateral_slice_make(size : Int) -> ImagefilterbilateralSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_bilateral_slice_len(s : ImagefilterbilateralSlice) -> Int { s.size }
+pub fn ImagefilterbilateralSlice::len(self : ImagefilterbilateralSlice) -> Int { self.size }
 
-pub fn image_filter_bilateral_slice_get(s : ImagefilterbilateralSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterbilateralSlice::get(self : ImagefilterbilateralSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_bilateral_slice_set(s : ImagefilterbilateralSlice, i : Int, v : Double) -> ImagefilterbilateralSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralSlice::set(self : ImagefilterbilateralSlice, i : Int, v : Double) -> ImagefilterbilateralSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_slice_sum(s : ImagefilterbilateralSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterbilateralSlice::sum(self : ImagefilterbilateralSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_bilateral_slice_mean(s : ImagefilterbilateralSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterbilateralSlice::mean(self : ImagefilterbilateralSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_bilateral_slice_scale(s : ImagefilterbilateralSlice, f : Double) -> ImagefilterbilateralSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralSlice::scale(self : ImagefilterbilateralSlice, f : Double) -> ImagefilterbilateralSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_slice_add(a : ImagefilterbilateralSlice, b : ImagefilterbilateralSlice) -> ImagefilterbilateralSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterbilateralSlice::add(self : ImagefilterbilateralSlice, other : ImagefilterbilateralSlice) -> ImagefilterbilateralSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_slice_copy(s : ImagefilterbilateralSlice) -> ImagefilterbilateralSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralSlice::copy(self : ImagefilterbilateralSlice) -> ImagefilterbilateralSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_slice_fill(s : ImagefilterbilateralSlice, v : Double) -> ImagefilterbilateralSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterbilateralSlice::fill(self : ImagefilterbilateralSlice, v : Double) -> ImagefilterbilateralSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_bilateral_slice_min(s : ImagefilterbilateralSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefilterbilateralSlice::min(self : ImagefilterbilateralSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_bilateral_slice_max(s : ImagefilterbilateralSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefilterbilateralSlice::max(self : ImagefilterbilateralSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_bilateral_slice_to_string(s : ImagefilterbilateralSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterbilateralSlice::to_string(self : ImagefilterbilateralSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

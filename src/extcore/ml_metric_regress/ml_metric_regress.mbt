@@ -351,45 +351,45 @@ pub fn ml_metric_regress_frame_make(size : Int) -> MlmetricregressFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_frame_len(s : MlmetricregressFrame) -> Int { s.size }
+pub fn MlmetricregressFrame::len(self : MlmetricregressFrame) -> Int { self.size }
 
-pub fn ml_metric_regress_frame_get(s : MlmetricregressFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressFrame::get(self : MlmetricregressFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_frame_set(s : MlmetricregressFrame, i : Int, v : Double) -> MlmetricregressFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressFrame::set(self : MlmetricregressFrame, i : Int, v : Double) -> MlmetricregressFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_frame_sum(s : MlmetricregressFrame) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressFrame::sum(self : MlmetricregressFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_frame_mean(s : MlmetricregressFrame) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressFrame::mean(self : MlmetricregressFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_frame_scale(s : MlmetricregressFrame, f : Double) -> MlmetricregressFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressFrame::scale(self : MlmetricregressFrame, f : Double) -> MlmetricregressFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_frame_add(a : MlmetricregressFrame, b : MlmetricregressFrame) -> MlmetricregressFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressFrame::add(self : MlmetricregressFrame, other : MlmetricregressFrame) -> MlmetricregressFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_frame_copy(s : MlmetricregressFrame) -> MlmetricregressFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressFrame::copy(self : MlmetricregressFrame) -> MlmetricregressFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_frame_fill(s : MlmetricregressFrame, v : Double) -> MlmetricregressFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressFrame::fill(self : MlmetricregressFrame, v : Double) -> MlmetricregressFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_frame_min(s : MlmetricregressFrame) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressFrame::min(self : MlmetricregressFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_frame_max(s : MlmetricregressFrame) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressFrame::max(self : MlmetricregressFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_frame_to_string(s : MlmetricregressFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressFrame::to_string(self : MlmetricregressFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressTable {
@@ -402,45 +402,45 @@ pub fn ml_metric_regress_table_make(size : Int) -> MlmetricregressTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_table_len(s : MlmetricregressTable) -> Int { s.size }
+pub fn MlmetricregressTable::len(self : MlmetricregressTable) -> Int { self.size }
 
-pub fn ml_metric_regress_table_get(s : MlmetricregressTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressTable::get(self : MlmetricregressTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_table_set(s : MlmetricregressTable, i : Int, v : Double) -> MlmetricregressTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressTable::set(self : MlmetricregressTable, i : Int, v : Double) -> MlmetricregressTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_table_sum(s : MlmetricregressTable) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressTable::sum(self : MlmetricregressTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_table_mean(s : MlmetricregressTable) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressTable::mean(self : MlmetricregressTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_table_scale(s : MlmetricregressTable, f : Double) -> MlmetricregressTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressTable::scale(self : MlmetricregressTable, f : Double) -> MlmetricregressTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_table_add(a : MlmetricregressTable, b : MlmetricregressTable) -> MlmetricregressTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressTable::add(self : MlmetricregressTable, other : MlmetricregressTable) -> MlmetricregressTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_table_copy(s : MlmetricregressTable) -> MlmetricregressTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressTable::copy(self : MlmetricregressTable) -> MlmetricregressTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_table_fill(s : MlmetricregressTable, v : Double) -> MlmetricregressTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressTable::fill(self : MlmetricregressTable, v : Double) -> MlmetricregressTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_table_min(s : MlmetricregressTable) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressTable::min(self : MlmetricregressTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_table_max(s : MlmetricregressTable) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressTable::max(self : MlmetricregressTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_table_to_string(s : MlmetricregressTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressTable::to_string(self : MlmetricregressTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressGraphN {
@@ -453,45 +453,45 @@ pub fn ml_metric_regress_graphn_make(size : Int) -> MlmetricregressGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_graphn_len(s : MlmetricregressGraphN) -> Int { s.size }
+pub fn MlmetricregressGraphN::len(self : MlmetricregressGraphN) -> Int { self.size }
 
-pub fn ml_metric_regress_graphn_get(s : MlmetricregressGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressGraphN::get(self : MlmetricregressGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_graphn_set(s : MlmetricregressGraphN, i : Int, v : Double) -> MlmetricregressGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressGraphN::set(self : MlmetricregressGraphN, i : Int, v : Double) -> MlmetricregressGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_graphn_sum(s : MlmetricregressGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressGraphN::sum(self : MlmetricregressGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_graphn_mean(s : MlmetricregressGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressGraphN::mean(self : MlmetricregressGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_graphn_scale(s : MlmetricregressGraphN, f : Double) -> MlmetricregressGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressGraphN::scale(self : MlmetricregressGraphN, f : Double) -> MlmetricregressGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_graphn_add(a : MlmetricregressGraphN, b : MlmetricregressGraphN) -> MlmetricregressGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressGraphN::add(self : MlmetricregressGraphN, other : MlmetricregressGraphN) -> MlmetricregressGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_graphn_copy(s : MlmetricregressGraphN) -> MlmetricregressGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressGraphN::copy(self : MlmetricregressGraphN) -> MlmetricregressGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_graphn_fill(s : MlmetricregressGraphN, v : Double) -> MlmetricregressGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressGraphN::fill(self : MlmetricregressGraphN, v : Double) -> MlmetricregressGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_graphn_min(s : MlmetricregressGraphN) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressGraphN::min(self : MlmetricregressGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_graphn_max(s : MlmetricregressGraphN) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressGraphN::max(self : MlmetricregressGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_graphn_to_string(s : MlmetricregressGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressGraphN::to_string(self : MlmetricregressGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressNode {
@@ -504,45 +504,45 @@ pub fn ml_metric_regress_node_make(size : Int) -> MlmetricregressNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_node_len(s : MlmetricregressNode) -> Int { s.size }
+pub fn MlmetricregressNode::len(self : MlmetricregressNode) -> Int { self.size }
 
-pub fn ml_metric_regress_node_get(s : MlmetricregressNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressNode::get(self : MlmetricregressNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_node_set(s : MlmetricregressNode, i : Int, v : Double) -> MlmetricregressNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressNode::set(self : MlmetricregressNode, i : Int, v : Double) -> MlmetricregressNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_node_sum(s : MlmetricregressNode) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressNode::sum(self : MlmetricregressNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_node_mean(s : MlmetricregressNode) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressNode::mean(self : MlmetricregressNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_node_scale(s : MlmetricregressNode, f : Double) -> MlmetricregressNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressNode::scale(self : MlmetricregressNode, f : Double) -> MlmetricregressNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_node_add(a : MlmetricregressNode, b : MlmetricregressNode) -> MlmetricregressNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressNode::add(self : MlmetricregressNode, other : MlmetricregressNode) -> MlmetricregressNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_node_copy(s : MlmetricregressNode) -> MlmetricregressNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressNode::copy(self : MlmetricregressNode) -> MlmetricregressNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_node_fill(s : MlmetricregressNode, v : Double) -> MlmetricregressNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressNode::fill(self : MlmetricregressNode, v : Double) -> MlmetricregressNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_node_min(s : MlmetricregressNode) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressNode::min(self : MlmetricregressNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_node_max(s : MlmetricregressNode) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressNode::max(self : MlmetricregressNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_node_to_string(s : MlmetricregressNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressNode::to_string(self : MlmetricregressNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressEdge {
@@ -555,45 +555,45 @@ pub fn ml_metric_regress_edge_make(size : Int) -> MlmetricregressEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_edge_len(s : MlmetricregressEdge) -> Int { s.size }
+pub fn MlmetricregressEdge::len(self : MlmetricregressEdge) -> Int { self.size }
 
-pub fn ml_metric_regress_edge_get(s : MlmetricregressEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressEdge::get(self : MlmetricregressEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_edge_set(s : MlmetricregressEdge, i : Int, v : Double) -> MlmetricregressEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressEdge::set(self : MlmetricregressEdge, i : Int, v : Double) -> MlmetricregressEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_edge_sum(s : MlmetricregressEdge) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressEdge::sum(self : MlmetricregressEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_edge_mean(s : MlmetricregressEdge) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressEdge::mean(self : MlmetricregressEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_edge_scale(s : MlmetricregressEdge, f : Double) -> MlmetricregressEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressEdge::scale(self : MlmetricregressEdge, f : Double) -> MlmetricregressEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_edge_add(a : MlmetricregressEdge, b : MlmetricregressEdge) -> MlmetricregressEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressEdge::add(self : MlmetricregressEdge, other : MlmetricregressEdge) -> MlmetricregressEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_edge_copy(s : MlmetricregressEdge) -> MlmetricregressEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressEdge::copy(self : MlmetricregressEdge) -> MlmetricregressEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_edge_fill(s : MlmetricregressEdge, v : Double) -> MlmetricregressEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressEdge::fill(self : MlmetricregressEdge, v : Double) -> MlmetricregressEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_edge_min(s : MlmetricregressEdge) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressEdge::min(self : MlmetricregressEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_edge_max(s : MlmetricregressEdge) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressEdge::max(self : MlmetricregressEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_edge_to_string(s : MlmetricregressEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressEdge::to_string(self : MlmetricregressEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressPath {
@@ -606,45 +606,45 @@ pub fn ml_metric_regress_path_make(size : Int) -> MlmetricregressPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_path_len(s : MlmetricregressPath) -> Int { s.size }
+pub fn MlmetricregressPath::len(self : MlmetricregressPath) -> Int { self.size }
 
-pub fn ml_metric_regress_path_get(s : MlmetricregressPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressPath::get(self : MlmetricregressPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_path_set(s : MlmetricregressPath, i : Int, v : Double) -> MlmetricregressPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressPath::set(self : MlmetricregressPath, i : Int, v : Double) -> MlmetricregressPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_path_sum(s : MlmetricregressPath) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressPath::sum(self : MlmetricregressPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_path_mean(s : MlmetricregressPath) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressPath::mean(self : MlmetricregressPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_path_scale(s : MlmetricregressPath, f : Double) -> MlmetricregressPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressPath::scale(self : MlmetricregressPath, f : Double) -> MlmetricregressPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_path_add(a : MlmetricregressPath, b : MlmetricregressPath) -> MlmetricregressPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressPath::add(self : MlmetricregressPath, other : MlmetricregressPath) -> MlmetricregressPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_path_copy(s : MlmetricregressPath) -> MlmetricregressPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressPath::copy(self : MlmetricregressPath) -> MlmetricregressPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_path_fill(s : MlmetricregressPath, v : Double) -> MlmetricregressPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressPath::fill(self : MlmetricregressPath, v : Double) -> MlmetricregressPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_path_min(s : MlmetricregressPath) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressPath::min(self : MlmetricregressPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_path_max(s : MlmetricregressPath) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressPath::max(self : MlmetricregressPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_path_to_string(s : MlmetricregressPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressPath::to_string(self : MlmetricregressPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressCluster {
@@ -657,45 +657,45 @@ pub fn ml_metric_regress_cluster_make(size : Int) -> MlmetricregressCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_cluster_len(s : MlmetricregressCluster) -> Int { s.size }
+pub fn MlmetricregressCluster::len(self : MlmetricregressCluster) -> Int { self.size }
 
-pub fn ml_metric_regress_cluster_get(s : MlmetricregressCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressCluster::get(self : MlmetricregressCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_cluster_set(s : MlmetricregressCluster, i : Int, v : Double) -> MlmetricregressCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressCluster::set(self : MlmetricregressCluster, i : Int, v : Double) -> MlmetricregressCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cluster_sum(s : MlmetricregressCluster) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressCluster::sum(self : MlmetricregressCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_cluster_mean(s : MlmetricregressCluster) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressCluster::mean(self : MlmetricregressCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_cluster_scale(s : MlmetricregressCluster, f : Double) -> MlmetricregressCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressCluster::scale(self : MlmetricregressCluster, f : Double) -> MlmetricregressCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cluster_add(a : MlmetricregressCluster, b : MlmetricregressCluster) -> MlmetricregressCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressCluster::add(self : MlmetricregressCluster, other : MlmetricregressCluster) -> MlmetricregressCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cluster_copy(s : MlmetricregressCluster) -> MlmetricregressCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressCluster::copy(self : MlmetricregressCluster) -> MlmetricregressCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cluster_fill(s : MlmetricregressCluster, v : Double) -> MlmetricregressCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressCluster::fill(self : MlmetricregressCluster, v : Double) -> MlmetricregressCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cluster_min(s : MlmetricregressCluster) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressCluster::min(self : MlmetricregressCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_cluster_max(s : MlmetricregressCluster) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressCluster::max(self : MlmetricregressCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_cluster_to_string(s : MlmetricregressCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressCluster::to_string(self : MlmetricregressCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressModel {
@@ -708,45 +708,45 @@ pub fn ml_metric_regress_model_make(size : Int) -> MlmetricregressModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_model_len(s : MlmetricregressModel) -> Int { s.size }
+pub fn MlmetricregressModel::len(self : MlmetricregressModel) -> Int { self.size }
 
-pub fn ml_metric_regress_model_get(s : MlmetricregressModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressModel::get(self : MlmetricregressModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_model_set(s : MlmetricregressModel, i : Int, v : Double) -> MlmetricregressModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressModel::set(self : MlmetricregressModel, i : Int, v : Double) -> MlmetricregressModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_model_sum(s : MlmetricregressModel) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressModel::sum(self : MlmetricregressModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_model_mean(s : MlmetricregressModel) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressModel::mean(self : MlmetricregressModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_model_scale(s : MlmetricregressModel, f : Double) -> MlmetricregressModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressModel::scale(self : MlmetricregressModel, f : Double) -> MlmetricregressModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_model_add(a : MlmetricregressModel, b : MlmetricregressModel) -> MlmetricregressModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressModel::add(self : MlmetricregressModel, other : MlmetricregressModel) -> MlmetricregressModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_model_copy(s : MlmetricregressModel) -> MlmetricregressModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressModel::copy(self : MlmetricregressModel) -> MlmetricregressModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_model_fill(s : MlmetricregressModel, v : Double) -> MlmetricregressModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressModel::fill(self : MlmetricregressModel, v : Double) -> MlmetricregressModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_model_min(s : MlmetricregressModel) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressModel::min(self : MlmetricregressModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_model_max(s : MlmetricregressModel) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressModel::max(self : MlmetricregressModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_model_to_string(s : MlmetricregressModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressModel::to_string(self : MlmetricregressModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressLayer {
@@ -759,45 +759,45 @@ pub fn ml_metric_regress_layer_make(size : Int) -> MlmetricregressLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_layer_len(s : MlmetricregressLayer) -> Int { s.size }
+pub fn MlmetricregressLayer::len(self : MlmetricregressLayer) -> Int { self.size }
 
-pub fn ml_metric_regress_layer_get(s : MlmetricregressLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressLayer::get(self : MlmetricregressLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_layer_set(s : MlmetricregressLayer, i : Int, v : Double) -> MlmetricregressLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressLayer::set(self : MlmetricregressLayer, i : Int, v : Double) -> MlmetricregressLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_layer_sum(s : MlmetricregressLayer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressLayer::sum(self : MlmetricregressLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_layer_mean(s : MlmetricregressLayer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressLayer::mean(self : MlmetricregressLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_layer_scale(s : MlmetricregressLayer, f : Double) -> MlmetricregressLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressLayer::scale(self : MlmetricregressLayer, f : Double) -> MlmetricregressLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_layer_add(a : MlmetricregressLayer, b : MlmetricregressLayer) -> MlmetricregressLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressLayer::add(self : MlmetricregressLayer, other : MlmetricregressLayer) -> MlmetricregressLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_layer_copy(s : MlmetricregressLayer) -> MlmetricregressLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressLayer::copy(self : MlmetricregressLayer) -> MlmetricregressLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_layer_fill(s : MlmetricregressLayer, v : Double) -> MlmetricregressLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressLayer::fill(self : MlmetricregressLayer, v : Double) -> MlmetricregressLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_layer_min(s : MlmetricregressLayer) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressLayer::min(self : MlmetricregressLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_layer_max(s : MlmetricregressLayer) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressLayer::max(self : MlmetricregressLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_layer_to_string(s : MlmetricregressLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressLayer::to_string(self : MlmetricregressLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressBuffer {
@@ -810,45 +810,45 @@ pub fn ml_metric_regress_buffer_make(size : Int) -> MlmetricregressBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_buffer_len(s : MlmetricregressBuffer) -> Int { s.size }
+pub fn MlmetricregressBuffer::len(self : MlmetricregressBuffer) -> Int { self.size }
 
-pub fn ml_metric_regress_buffer_get(s : MlmetricregressBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressBuffer::get(self : MlmetricregressBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_buffer_set(s : MlmetricregressBuffer, i : Int, v : Double) -> MlmetricregressBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressBuffer::set(self : MlmetricregressBuffer, i : Int, v : Double) -> MlmetricregressBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_buffer_sum(s : MlmetricregressBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressBuffer::sum(self : MlmetricregressBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_buffer_mean(s : MlmetricregressBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressBuffer::mean(self : MlmetricregressBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_buffer_scale(s : MlmetricregressBuffer, f : Double) -> MlmetricregressBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressBuffer::scale(self : MlmetricregressBuffer, f : Double) -> MlmetricregressBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_buffer_add(a : MlmetricregressBuffer, b : MlmetricregressBuffer) -> MlmetricregressBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressBuffer::add(self : MlmetricregressBuffer, other : MlmetricregressBuffer) -> MlmetricregressBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_buffer_copy(s : MlmetricregressBuffer) -> MlmetricregressBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressBuffer::copy(self : MlmetricregressBuffer) -> MlmetricregressBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_buffer_fill(s : MlmetricregressBuffer, v : Double) -> MlmetricregressBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressBuffer::fill(self : MlmetricregressBuffer, v : Double) -> MlmetricregressBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_buffer_min(s : MlmetricregressBuffer) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressBuffer::min(self : MlmetricregressBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_buffer_max(s : MlmetricregressBuffer) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressBuffer::max(self : MlmetricregressBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_buffer_to_string(s : MlmetricregressBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressBuffer::to_string(self : MlmetricregressBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressCursor {
@@ -861,45 +861,45 @@ pub fn ml_metric_regress_cursor_make(size : Int) -> MlmetricregressCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_cursor_len(s : MlmetricregressCursor) -> Int { s.size }
+pub fn MlmetricregressCursor::len(self : MlmetricregressCursor) -> Int { self.size }
 
-pub fn ml_metric_regress_cursor_get(s : MlmetricregressCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressCursor::get(self : MlmetricregressCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_cursor_set(s : MlmetricregressCursor, i : Int, v : Double) -> MlmetricregressCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressCursor::set(self : MlmetricregressCursor, i : Int, v : Double) -> MlmetricregressCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cursor_sum(s : MlmetricregressCursor) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressCursor::sum(self : MlmetricregressCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_cursor_mean(s : MlmetricregressCursor) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressCursor::mean(self : MlmetricregressCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_cursor_scale(s : MlmetricregressCursor, f : Double) -> MlmetricregressCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressCursor::scale(self : MlmetricregressCursor, f : Double) -> MlmetricregressCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cursor_add(a : MlmetricregressCursor, b : MlmetricregressCursor) -> MlmetricregressCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressCursor::add(self : MlmetricregressCursor, other : MlmetricregressCursor) -> MlmetricregressCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cursor_copy(s : MlmetricregressCursor) -> MlmetricregressCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressCursor::copy(self : MlmetricregressCursor) -> MlmetricregressCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cursor_fill(s : MlmetricregressCursor, v : Double) -> MlmetricregressCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressCursor::fill(self : MlmetricregressCursor, v : Double) -> MlmetricregressCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_cursor_min(s : MlmetricregressCursor) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressCursor::min(self : MlmetricregressCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_cursor_max(s : MlmetricregressCursor) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressCursor::max(self : MlmetricregressCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_cursor_to_string(s : MlmetricregressCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressCursor::to_string(self : MlmetricregressCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressView {
@@ -912,45 +912,45 @@ pub fn ml_metric_regress_view_make(size : Int) -> MlmetricregressView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_view_len(s : MlmetricregressView) -> Int { s.size }
+pub fn MlmetricregressView::len(self : MlmetricregressView) -> Int { self.size }
 
-pub fn ml_metric_regress_view_get(s : MlmetricregressView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressView::get(self : MlmetricregressView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_view_set(s : MlmetricregressView, i : Int, v : Double) -> MlmetricregressView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressView::set(self : MlmetricregressView, i : Int, v : Double) -> MlmetricregressView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_view_sum(s : MlmetricregressView) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressView::sum(self : MlmetricregressView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_view_mean(s : MlmetricregressView) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressView::mean(self : MlmetricregressView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_view_scale(s : MlmetricregressView, f : Double) -> MlmetricregressView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressView::scale(self : MlmetricregressView, f : Double) -> MlmetricregressView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_view_add(a : MlmetricregressView, b : MlmetricregressView) -> MlmetricregressView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressView::add(self : MlmetricregressView, other : MlmetricregressView) -> MlmetricregressView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_view_copy(s : MlmetricregressView) -> MlmetricregressView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressView::copy(self : MlmetricregressView) -> MlmetricregressView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_view_fill(s : MlmetricregressView, v : Double) -> MlmetricregressView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressView::fill(self : MlmetricregressView, v : Double) -> MlmetricregressView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_view_min(s : MlmetricregressView) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressView::min(self : MlmetricregressView) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_view_max(s : MlmetricregressView) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressView::max(self : MlmetricregressView) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_view_to_string(s : MlmetricregressView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressView::to_string(self : MlmetricregressView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressRange {
@@ -963,45 +963,45 @@ pub fn ml_metric_regress_range_make(size : Int) -> MlmetricregressRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_range_len(s : MlmetricregressRange) -> Int { s.size }
+pub fn MlmetricregressRange::len(self : MlmetricregressRange) -> Int { self.size }
 
-pub fn ml_metric_regress_range_get(s : MlmetricregressRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressRange::get(self : MlmetricregressRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_range_set(s : MlmetricregressRange, i : Int, v : Double) -> MlmetricregressRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressRange::set(self : MlmetricregressRange, i : Int, v : Double) -> MlmetricregressRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_range_sum(s : MlmetricregressRange) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressRange::sum(self : MlmetricregressRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_range_mean(s : MlmetricregressRange) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressRange::mean(self : MlmetricregressRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_range_scale(s : MlmetricregressRange, f : Double) -> MlmetricregressRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressRange::scale(self : MlmetricregressRange, f : Double) -> MlmetricregressRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_range_add(a : MlmetricregressRange, b : MlmetricregressRange) -> MlmetricregressRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressRange::add(self : MlmetricregressRange, other : MlmetricregressRange) -> MlmetricregressRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_range_copy(s : MlmetricregressRange) -> MlmetricregressRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressRange::copy(self : MlmetricregressRange) -> MlmetricregressRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_range_fill(s : MlmetricregressRange, v : Double) -> MlmetricregressRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressRange::fill(self : MlmetricregressRange, v : Double) -> MlmetricregressRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_range_min(s : MlmetricregressRange) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressRange::min(self : MlmetricregressRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_range_max(s : MlmetricregressRange) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressRange::max(self : MlmetricregressRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_range_to_string(s : MlmetricregressRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressRange::to_string(self : MlmetricregressRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlmetricregressSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_metric_regress_slice_make(size : Int) -> MlmetricregressSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_metric_regress_slice_len(s : MlmetricregressSlice) -> Int { s.size }
+pub fn MlmetricregressSlice::len(self : MlmetricregressSlice) -> Int { self.size }
 
-pub fn ml_metric_regress_slice_get(s : MlmetricregressSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlmetricregressSlice::get(self : MlmetricregressSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_metric_regress_slice_set(s : MlmetricregressSlice, i : Int, v : Double) -> MlmetricregressSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlmetricregressSlice::set(self : MlmetricregressSlice, i : Int, v : Double) -> MlmetricregressSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_slice_sum(s : MlmetricregressSlice) -> Double { @_common.sum(s.data) }
+pub fn MlmetricregressSlice::sum(self : MlmetricregressSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_metric_regress_slice_mean(s : MlmetricregressSlice) -> Double { @_common.mean(s.data) }
+pub fn MlmetricregressSlice::mean(self : MlmetricregressSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_metric_regress_slice_scale(s : MlmetricregressSlice, f : Double) -> MlmetricregressSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlmetricregressSlice::scale(self : MlmetricregressSlice, f : Double) -> MlmetricregressSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_slice_add(a : MlmetricregressSlice, b : MlmetricregressSlice) -> MlmetricregressSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlmetricregressSlice::add(self : MlmetricregressSlice, other : MlmetricregressSlice) -> MlmetricregressSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_metric_regress_slice_copy(s : MlmetricregressSlice) -> MlmetricregressSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlmetricregressSlice::copy(self : MlmetricregressSlice) -> MlmetricregressSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_slice_fill(s : MlmetricregressSlice, v : Double) -> MlmetricregressSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlmetricregressSlice::fill(self : MlmetricregressSlice, v : Double) -> MlmetricregressSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_metric_regress_slice_min(s : MlmetricregressSlice) -> Double { @_common.min(s.data) }
+pub fn MlmetricregressSlice::min(self : MlmetricregressSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_metric_regress_slice_max(s : MlmetricregressSlice) -> Double { @_common.max(s.data) }
+pub fn MlmetricregressSlice::max(self : MlmetricregressSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_metric_regress_slice_to_string(s : MlmetricregressSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlmetricregressSlice::to_string(self : MlmetricregressSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn graph_tree_mst_kruskal_frame_make(size : Int) -> GraphtreemstkruskalFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_frame_len(s : GraphtreemstkruskalFrame) -> Int { s.size }
+pub fn GraphtreemstkruskalFrame::len(self : GraphtreemstkruskalFrame) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_frame_get(s : GraphtreemstkruskalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalFrame::get(self : GraphtreemstkruskalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_frame_set(s : GraphtreemstkruskalFrame, i : Int, v : Double) -> GraphtreemstkruskalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalFrame::set(self : GraphtreemstkruskalFrame, i : Int, v : Double) -> GraphtreemstkruskalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_frame_sum(s : GraphtreemstkruskalFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalFrame::sum(self : GraphtreemstkruskalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_frame_mean(s : GraphtreemstkruskalFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalFrame::mean(self : GraphtreemstkruskalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_frame_scale(s : GraphtreemstkruskalFrame, f : Double) -> GraphtreemstkruskalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalFrame::scale(self : GraphtreemstkruskalFrame, f : Double) -> GraphtreemstkruskalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_frame_add(a : GraphtreemstkruskalFrame, b : GraphtreemstkruskalFrame) -> GraphtreemstkruskalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalFrame::add(self : GraphtreemstkruskalFrame, other : GraphtreemstkruskalFrame) -> GraphtreemstkruskalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_frame_copy(s : GraphtreemstkruskalFrame) -> GraphtreemstkruskalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalFrame::copy(self : GraphtreemstkruskalFrame) -> GraphtreemstkruskalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_frame_fill(s : GraphtreemstkruskalFrame, v : Double) -> GraphtreemstkruskalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalFrame::fill(self : GraphtreemstkruskalFrame, v : Double) -> GraphtreemstkruskalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_frame_min(s : GraphtreemstkruskalFrame) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalFrame::min(self : GraphtreemstkruskalFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_frame_max(s : GraphtreemstkruskalFrame) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalFrame::max(self : GraphtreemstkruskalFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_frame_to_string(s : GraphtreemstkruskalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalFrame::to_string(self : GraphtreemstkruskalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalTable {
@@ -402,45 +402,45 @@ pub fn graph_tree_mst_kruskal_table_make(size : Int) -> GraphtreemstkruskalTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_table_len(s : GraphtreemstkruskalTable) -> Int { s.size }
+pub fn GraphtreemstkruskalTable::len(self : GraphtreemstkruskalTable) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_table_get(s : GraphtreemstkruskalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalTable::get(self : GraphtreemstkruskalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_table_set(s : GraphtreemstkruskalTable, i : Int, v : Double) -> GraphtreemstkruskalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalTable::set(self : GraphtreemstkruskalTable, i : Int, v : Double) -> GraphtreemstkruskalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_table_sum(s : GraphtreemstkruskalTable) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalTable::sum(self : GraphtreemstkruskalTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_table_mean(s : GraphtreemstkruskalTable) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalTable::mean(self : GraphtreemstkruskalTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_table_scale(s : GraphtreemstkruskalTable, f : Double) -> GraphtreemstkruskalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalTable::scale(self : GraphtreemstkruskalTable, f : Double) -> GraphtreemstkruskalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_table_add(a : GraphtreemstkruskalTable, b : GraphtreemstkruskalTable) -> GraphtreemstkruskalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalTable::add(self : GraphtreemstkruskalTable, other : GraphtreemstkruskalTable) -> GraphtreemstkruskalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_table_copy(s : GraphtreemstkruskalTable) -> GraphtreemstkruskalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalTable::copy(self : GraphtreemstkruskalTable) -> GraphtreemstkruskalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_table_fill(s : GraphtreemstkruskalTable, v : Double) -> GraphtreemstkruskalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalTable::fill(self : GraphtreemstkruskalTable, v : Double) -> GraphtreemstkruskalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_table_min(s : GraphtreemstkruskalTable) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalTable::min(self : GraphtreemstkruskalTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_table_max(s : GraphtreemstkruskalTable) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalTable::max(self : GraphtreemstkruskalTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_table_to_string(s : GraphtreemstkruskalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalTable::to_string(self : GraphtreemstkruskalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalGraphN {
@@ -453,45 +453,45 @@ pub fn graph_tree_mst_kruskal_graphn_make(size : Int) -> GraphtreemstkruskalGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_len(s : GraphtreemstkruskalGraphN) -> Int { s.size }
+pub fn GraphtreemstkruskalGraphN::len(self : GraphtreemstkruskalGraphN) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_graphn_get(s : GraphtreemstkruskalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalGraphN::get(self : GraphtreemstkruskalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_set(s : GraphtreemstkruskalGraphN, i : Int, v : Double) -> GraphtreemstkruskalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalGraphN::set(self : GraphtreemstkruskalGraphN, i : Int, v : Double) -> GraphtreemstkruskalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_sum(s : GraphtreemstkruskalGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalGraphN::sum(self : GraphtreemstkruskalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_graphn_mean(s : GraphtreemstkruskalGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalGraphN::mean(self : GraphtreemstkruskalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_graphn_scale(s : GraphtreemstkruskalGraphN, f : Double) -> GraphtreemstkruskalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalGraphN::scale(self : GraphtreemstkruskalGraphN, f : Double) -> GraphtreemstkruskalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_add(a : GraphtreemstkruskalGraphN, b : GraphtreemstkruskalGraphN) -> GraphtreemstkruskalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalGraphN::add(self : GraphtreemstkruskalGraphN, other : GraphtreemstkruskalGraphN) -> GraphtreemstkruskalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_copy(s : GraphtreemstkruskalGraphN) -> GraphtreemstkruskalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalGraphN::copy(self : GraphtreemstkruskalGraphN) -> GraphtreemstkruskalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_fill(s : GraphtreemstkruskalGraphN, v : Double) -> GraphtreemstkruskalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalGraphN::fill(self : GraphtreemstkruskalGraphN, v : Double) -> GraphtreemstkruskalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_graphn_min(s : GraphtreemstkruskalGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalGraphN::min(self : GraphtreemstkruskalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_graphn_max(s : GraphtreemstkruskalGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalGraphN::max(self : GraphtreemstkruskalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_graphn_to_string(s : GraphtreemstkruskalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalGraphN::to_string(self : GraphtreemstkruskalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalNode {
@@ -504,45 +504,45 @@ pub fn graph_tree_mst_kruskal_node_make(size : Int) -> GraphtreemstkruskalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_node_len(s : GraphtreemstkruskalNode) -> Int { s.size }
+pub fn GraphtreemstkruskalNode::len(self : GraphtreemstkruskalNode) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_node_get(s : GraphtreemstkruskalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalNode::get(self : GraphtreemstkruskalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_node_set(s : GraphtreemstkruskalNode, i : Int, v : Double) -> GraphtreemstkruskalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalNode::set(self : GraphtreemstkruskalNode, i : Int, v : Double) -> GraphtreemstkruskalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_node_sum(s : GraphtreemstkruskalNode) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalNode::sum(self : GraphtreemstkruskalNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_node_mean(s : GraphtreemstkruskalNode) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalNode::mean(self : GraphtreemstkruskalNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_node_scale(s : GraphtreemstkruskalNode, f : Double) -> GraphtreemstkruskalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalNode::scale(self : GraphtreemstkruskalNode, f : Double) -> GraphtreemstkruskalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_node_add(a : GraphtreemstkruskalNode, b : GraphtreemstkruskalNode) -> GraphtreemstkruskalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalNode::add(self : GraphtreemstkruskalNode, other : GraphtreemstkruskalNode) -> GraphtreemstkruskalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_node_copy(s : GraphtreemstkruskalNode) -> GraphtreemstkruskalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalNode::copy(self : GraphtreemstkruskalNode) -> GraphtreemstkruskalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_node_fill(s : GraphtreemstkruskalNode, v : Double) -> GraphtreemstkruskalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalNode::fill(self : GraphtreemstkruskalNode, v : Double) -> GraphtreemstkruskalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_node_min(s : GraphtreemstkruskalNode) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalNode::min(self : GraphtreemstkruskalNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_node_max(s : GraphtreemstkruskalNode) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalNode::max(self : GraphtreemstkruskalNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_node_to_string(s : GraphtreemstkruskalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalNode::to_string(self : GraphtreemstkruskalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalEdge {
@@ -555,45 +555,45 @@ pub fn graph_tree_mst_kruskal_edge_make(size : Int) -> GraphtreemstkruskalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_edge_len(s : GraphtreemstkruskalEdge) -> Int { s.size }
+pub fn GraphtreemstkruskalEdge::len(self : GraphtreemstkruskalEdge) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_edge_get(s : GraphtreemstkruskalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalEdge::get(self : GraphtreemstkruskalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_edge_set(s : GraphtreemstkruskalEdge, i : Int, v : Double) -> GraphtreemstkruskalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalEdge::set(self : GraphtreemstkruskalEdge, i : Int, v : Double) -> GraphtreemstkruskalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_edge_sum(s : GraphtreemstkruskalEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalEdge::sum(self : GraphtreemstkruskalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_edge_mean(s : GraphtreemstkruskalEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalEdge::mean(self : GraphtreemstkruskalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_edge_scale(s : GraphtreemstkruskalEdge, f : Double) -> GraphtreemstkruskalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalEdge::scale(self : GraphtreemstkruskalEdge, f : Double) -> GraphtreemstkruskalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_edge_add(a : GraphtreemstkruskalEdge, b : GraphtreemstkruskalEdge) -> GraphtreemstkruskalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalEdge::add(self : GraphtreemstkruskalEdge, other : GraphtreemstkruskalEdge) -> GraphtreemstkruskalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_edge_copy(s : GraphtreemstkruskalEdge) -> GraphtreemstkruskalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalEdge::copy(self : GraphtreemstkruskalEdge) -> GraphtreemstkruskalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_edge_fill(s : GraphtreemstkruskalEdge, v : Double) -> GraphtreemstkruskalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalEdge::fill(self : GraphtreemstkruskalEdge, v : Double) -> GraphtreemstkruskalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_edge_min(s : GraphtreemstkruskalEdge) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalEdge::min(self : GraphtreemstkruskalEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_edge_max(s : GraphtreemstkruskalEdge) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalEdge::max(self : GraphtreemstkruskalEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_edge_to_string(s : GraphtreemstkruskalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalEdge::to_string(self : GraphtreemstkruskalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalPath {
@@ -606,45 +606,45 @@ pub fn graph_tree_mst_kruskal_path_make(size : Int) -> GraphtreemstkruskalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_path_len(s : GraphtreemstkruskalPath) -> Int { s.size }
+pub fn GraphtreemstkruskalPath::len(self : GraphtreemstkruskalPath) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_path_get(s : GraphtreemstkruskalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalPath::get(self : GraphtreemstkruskalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_path_set(s : GraphtreemstkruskalPath, i : Int, v : Double) -> GraphtreemstkruskalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalPath::set(self : GraphtreemstkruskalPath, i : Int, v : Double) -> GraphtreemstkruskalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_path_sum(s : GraphtreemstkruskalPath) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalPath::sum(self : GraphtreemstkruskalPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_path_mean(s : GraphtreemstkruskalPath) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalPath::mean(self : GraphtreemstkruskalPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_path_scale(s : GraphtreemstkruskalPath, f : Double) -> GraphtreemstkruskalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalPath::scale(self : GraphtreemstkruskalPath, f : Double) -> GraphtreemstkruskalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_path_add(a : GraphtreemstkruskalPath, b : GraphtreemstkruskalPath) -> GraphtreemstkruskalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalPath::add(self : GraphtreemstkruskalPath, other : GraphtreemstkruskalPath) -> GraphtreemstkruskalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_path_copy(s : GraphtreemstkruskalPath) -> GraphtreemstkruskalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalPath::copy(self : GraphtreemstkruskalPath) -> GraphtreemstkruskalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_path_fill(s : GraphtreemstkruskalPath, v : Double) -> GraphtreemstkruskalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalPath::fill(self : GraphtreemstkruskalPath, v : Double) -> GraphtreemstkruskalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_path_min(s : GraphtreemstkruskalPath) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalPath::min(self : GraphtreemstkruskalPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_path_max(s : GraphtreemstkruskalPath) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalPath::max(self : GraphtreemstkruskalPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_path_to_string(s : GraphtreemstkruskalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalPath::to_string(self : GraphtreemstkruskalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalCluster {
@@ -657,45 +657,45 @@ pub fn graph_tree_mst_kruskal_cluster_make(size : Int) -> GraphtreemstkruskalClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_len(s : GraphtreemstkruskalCluster) -> Int { s.size }
+pub fn GraphtreemstkruskalCluster::len(self : GraphtreemstkruskalCluster) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_cluster_get(s : GraphtreemstkruskalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalCluster::get(self : GraphtreemstkruskalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_set(s : GraphtreemstkruskalCluster, i : Int, v : Double) -> GraphtreemstkruskalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCluster::set(self : GraphtreemstkruskalCluster, i : Int, v : Double) -> GraphtreemstkruskalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_sum(s : GraphtreemstkruskalCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalCluster::sum(self : GraphtreemstkruskalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_cluster_mean(s : GraphtreemstkruskalCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalCluster::mean(self : GraphtreemstkruskalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_cluster_scale(s : GraphtreemstkruskalCluster, f : Double) -> GraphtreemstkruskalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCluster::scale(self : GraphtreemstkruskalCluster, f : Double) -> GraphtreemstkruskalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_add(a : GraphtreemstkruskalCluster, b : GraphtreemstkruskalCluster) -> GraphtreemstkruskalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalCluster::add(self : GraphtreemstkruskalCluster, other : GraphtreemstkruskalCluster) -> GraphtreemstkruskalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_copy(s : GraphtreemstkruskalCluster) -> GraphtreemstkruskalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCluster::copy(self : GraphtreemstkruskalCluster) -> GraphtreemstkruskalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_fill(s : GraphtreemstkruskalCluster, v : Double) -> GraphtreemstkruskalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCluster::fill(self : GraphtreemstkruskalCluster, v : Double) -> GraphtreemstkruskalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cluster_min(s : GraphtreemstkruskalCluster) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalCluster::min(self : GraphtreemstkruskalCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_cluster_max(s : GraphtreemstkruskalCluster) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalCluster::max(self : GraphtreemstkruskalCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_cluster_to_string(s : GraphtreemstkruskalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalCluster::to_string(self : GraphtreemstkruskalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalModel {
@@ -708,45 +708,45 @@ pub fn graph_tree_mst_kruskal_model_make(size : Int) -> GraphtreemstkruskalModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_model_len(s : GraphtreemstkruskalModel) -> Int { s.size }
+pub fn GraphtreemstkruskalModel::len(self : GraphtreemstkruskalModel) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_model_get(s : GraphtreemstkruskalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalModel::get(self : GraphtreemstkruskalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_model_set(s : GraphtreemstkruskalModel, i : Int, v : Double) -> GraphtreemstkruskalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalModel::set(self : GraphtreemstkruskalModel, i : Int, v : Double) -> GraphtreemstkruskalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_model_sum(s : GraphtreemstkruskalModel) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalModel::sum(self : GraphtreemstkruskalModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_model_mean(s : GraphtreemstkruskalModel) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalModel::mean(self : GraphtreemstkruskalModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_model_scale(s : GraphtreemstkruskalModel, f : Double) -> GraphtreemstkruskalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalModel::scale(self : GraphtreemstkruskalModel, f : Double) -> GraphtreemstkruskalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_model_add(a : GraphtreemstkruskalModel, b : GraphtreemstkruskalModel) -> GraphtreemstkruskalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalModel::add(self : GraphtreemstkruskalModel, other : GraphtreemstkruskalModel) -> GraphtreemstkruskalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_model_copy(s : GraphtreemstkruskalModel) -> GraphtreemstkruskalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalModel::copy(self : GraphtreemstkruskalModel) -> GraphtreemstkruskalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_model_fill(s : GraphtreemstkruskalModel, v : Double) -> GraphtreemstkruskalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalModel::fill(self : GraphtreemstkruskalModel, v : Double) -> GraphtreemstkruskalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_model_min(s : GraphtreemstkruskalModel) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalModel::min(self : GraphtreemstkruskalModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_model_max(s : GraphtreemstkruskalModel) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalModel::max(self : GraphtreemstkruskalModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_model_to_string(s : GraphtreemstkruskalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalModel::to_string(self : GraphtreemstkruskalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalLayer {
@@ -759,45 +759,45 @@ pub fn graph_tree_mst_kruskal_layer_make(size : Int) -> GraphtreemstkruskalLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_layer_len(s : GraphtreemstkruskalLayer) -> Int { s.size }
+pub fn GraphtreemstkruskalLayer::len(self : GraphtreemstkruskalLayer) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_layer_get(s : GraphtreemstkruskalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalLayer::get(self : GraphtreemstkruskalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_layer_set(s : GraphtreemstkruskalLayer, i : Int, v : Double) -> GraphtreemstkruskalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalLayer::set(self : GraphtreemstkruskalLayer, i : Int, v : Double) -> GraphtreemstkruskalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_layer_sum(s : GraphtreemstkruskalLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalLayer::sum(self : GraphtreemstkruskalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_layer_mean(s : GraphtreemstkruskalLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalLayer::mean(self : GraphtreemstkruskalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_layer_scale(s : GraphtreemstkruskalLayer, f : Double) -> GraphtreemstkruskalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalLayer::scale(self : GraphtreemstkruskalLayer, f : Double) -> GraphtreemstkruskalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_layer_add(a : GraphtreemstkruskalLayer, b : GraphtreemstkruskalLayer) -> GraphtreemstkruskalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalLayer::add(self : GraphtreemstkruskalLayer, other : GraphtreemstkruskalLayer) -> GraphtreemstkruskalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_layer_copy(s : GraphtreemstkruskalLayer) -> GraphtreemstkruskalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalLayer::copy(self : GraphtreemstkruskalLayer) -> GraphtreemstkruskalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_layer_fill(s : GraphtreemstkruskalLayer, v : Double) -> GraphtreemstkruskalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalLayer::fill(self : GraphtreemstkruskalLayer, v : Double) -> GraphtreemstkruskalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_layer_min(s : GraphtreemstkruskalLayer) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalLayer::min(self : GraphtreemstkruskalLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_layer_max(s : GraphtreemstkruskalLayer) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalLayer::max(self : GraphtreemstkruskalLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_layer_to_string(s : GraphtreemstkruskalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalLayer::to_string(self : GraphtreemstkruskalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalBuffer {
@@ -810,45 +810,45 @@ pub fn graph_tree_mst_kruskal_buffer_make(size : Int) -> GraphtreemstkruskalBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_len(s : GraphtreemstkruskalBuffer) -> Int { s.size }
+pub fn GraphtreemstkruskalBuffer::len(self : GraphtreemstkruskalBuffer) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_buffer_get(s : GraphtreemstkruskalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalBuffer::get(self : GraphtreemstkruskalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_set(s : GraphtreemstkruskalBuffer, i : Int, v : Double) -> GraphtreemstkruskalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalBuffer::set(self : GraphtreemstkruskalBuffer, i : Int, v : Double) -> GraphtreemstkruskalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_sum(s : GraphtreemstkruskalBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalBuffer::sum(self : GraphtreemstkruskalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_buffer_mean(s : GraphtreemstkruskalBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalBuffer::mean(self : GraphtreemstkruskalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_buffer_scale(s : GraphtreemstkruskalBuffer, f : Double) -> GraphtreemstkruskalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalBuffer::scale(self : GraphtreemstkruskalBuffer, f : Double) -> GraphtreemstkruskalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_add(a : GraphtreemstkruskalBuffer, b : GraphtreemstkruskalBuffer) -> GraphtreemstkruskalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalBuffer::add(self : GraphtreemstkruskalBuffer, other : GraphtreemstkruskalBuffer) -> GraphtreemstkruskalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_copy(s : GraphtreemstkruskalBuffer) -> GraphtreemstkruskalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalBuffer::copy(self : GraphtreemstkruskalBuffer) -> GraphtreemstkruskalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_fill(s : GraphtreemstkruskalBuffer, v : Double) -> GraphtreemstkruskalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalBuffer::fill(self : GraphtreemstkruskalBuffer, v : Double) -> GraphtreemstkruskalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_buffer_min(s : GraphtreemstkruskalBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalBuffer::min(self : GraphtreemstkruskalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_buffer_max(s : GraphtreemstkruskalBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalBuffer::max(self : GraphtreemstkruskalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_buffer_to_string(s : GraphtreemstkruskalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalBuffer::to_string(self : GraphtreemstkruskalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalCursor {
@@ -861,45 +861,45 @@ pub fn graph_tree_mst_kruskal_cursor_make(size : Int) -> GraphtreemstkruskalCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_len(s : GraphtreemstkruskalCursor) -> Int { s.size }
+pub fn GraphtreemstkruskalCursor::len(self : GraphtreemstkruskalCursor) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_cursor_get(s : GraphtreemstkruskalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalCursor::get(self : GraphtreemstkruskalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_set(s : GraphtreemstkruskalCursor, i : Int, v : Double) -> GraphtreemstkruskalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCursor::set(self : GraphtreemstkruskalCursor, i : Int, v : Double) -> GraphtreemstkruskalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_sum(s : GraphtreemstkruskalCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalCursor::sum(self : GraphtreemstkruskalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_cursor_mean(s : GraphtreemstkruskalCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalCursor::mean(self : GraphtreemstkruskalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_cursor_scale(s : GraphtreemstkruskalCursor, f : Double) -> GraphtreemstkruskalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCursor::scale(self : GraphtreemstkruskalCursor, f : Double) -> GraphtreemstkruskalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_add(a : GraphtreemstkruskalCursor, b : GraphtreemstkruskalCursor) -> GraphtreemstkruskalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalCursor::add(self : GraphtreemstkruskalCursor, other : GraphtreemstkruskalCursor) -> GraphtreemstkruskalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_copy(s : GraphtreemstkruskalCursor) -> GraphtreemstkruskalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCursor::copy(self : GraphtreemstkruskalCursor) -> GraphtreemstkruskalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_fill(s : GraphtreemstkruskalCursor, v : Double) -> GraphtreemstkruskalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalCursor::fill(self : GraphtreemstkruskalCursor, v : Double) -> GraphtreemstkruskalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_cursor_min(s : GraphtreemstkruskalCursor) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalCursor::min(self : GraphtreemstkruskalCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_cursor_max(s : GraphtreemstkruskalCursor) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalCursor::max(self : GraphtreemstkruskalCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_cursor_to_string(s : GraphtreemstkruskalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalCursor::to_string(self : GraphtreemstkruskalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalView {
@@ -912,45 +912,45 @@ pub fn graph_tree_mst_kruskal_view_make(size : Int) -> GraphtreemstkruskalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_view_len(s : GraphtreemstkruskalView) -> Int { s.size }
+pub fn GraphtreemstkruskalView::len(self : GraphtreemstkruskalView) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_view_get(s : GraphtreemstkruskalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalView::get(self : GraphtreemstkruskalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_view_set(s : GraphtreemstkruskalView, i : Int, v : Double) -> GraphtreemstkruskalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalView::set(self : GraphtreemstkruskalView, i : Int, v : Double) -> GraphtreemstkruskalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_view_sum(s : GraphtreemstkruskalView) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalView::sum(self : GraphtreemstkruskalView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_view_mean(s : GraphtreemstkruskalView) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalView::mean(self : GraphtreemstkruskalView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_view_scale(s : GraphtreemstkruskalView, f : Double) -> GraphtreemstkruskalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalView::scale(self : GraphtreemstkruskalView, f : Double) -> GraphtreemstkruskalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_view_add(a : GraphtreemstkruskalView, b : GraphtreemstkruskalView) -> GraphtreemstkruskalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalView::add(self : GraphtreemstkruskalView, other : GraphtreemstkruskalView) -> GraphtreemstkruskalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_view_copy(s : GraphtreemstkruskalView) -> GraphtreemstkruskalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalView::copy(self : GraphtreemstkruskalView) -> GraphtreemstkruskalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_view_fill(s : GraphtreemstkruskalView, v : Double) -> GraphtreemstkruskalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalView::fill(self : GraphtreemstkruskalView, v : Double) -> GraphtreemstkruskalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_view_min(s : GraphtreemstkruskalView) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalView::min(self : GraphtreemstkruskalView) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_view_max(s : GraphtreemstkruskalView) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalView::max(self : GraphtreemstkruskalView) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_view_to_string(s : GraphtreemstkruskalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalView::to_string(self : GraphtreemstkruskalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalRange {
@@ -963,45 +963,45 @@ pub fn graph_tree_mst_kruskal_range_make(size : Int) -> GraphtreemstkruskalRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_range_len(s : GraphtreemstkruskalRange) -> Int { s.size }
+pub fn GraphtreemstkruskalRange::len(self : GraphtreemstkruskalRange) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_range_get(s : GraphtreemstkruskalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalRange::get(self : GraphtreemstkruskalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_range_set(s : GraphtreemstkruskalRange, i : Int, v : Double) -> GraphtreemstkruskalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalRange::set(self : GraphtreemstkruskalRange, i : Int, v : Double) -> GraphtreemstkruskalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_range_sum(s : GraphtreemstkruskalRange) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalRange::sum(self : GraphtreemstkruskalRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_range_mean(s : GraphtreemstkruskalRange) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalRange::mean(self : GraphtreemstkruskalRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_range_scale(s : GraphtreemstkruskalRange, f : Double) -> GraphtreemstkruskalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalRange::scale(self : GraphtreemstkruskalRange, f : Double) -> GraphtreemstkruskalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_range_add(a : GraphtreemstkruskalRange, b : GraphtreemstkruskalRange) -> GraphtreemstkruskalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalRange::add(self : GraphtreemstkruskalRange, other : GraphtreemstkruskalRange) -> GraphtreemstkruskalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_range_copy(s : GraphtreemstkruskalRange) -> GraphtreemstkruskalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalRange::copy(self : GraphtreemstkruskalRange) -> GraphtreemstkruskalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_range_fill(s : GraphtreemstkruskalRange, v : Double) -> GraphtreemstkruskalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalRange::fill(self : GraphtreemstkruskalRange, v : Double) -> GraphtreemstkruskalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_range_min(s : GraphtreemstkruskalRange) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalRange::min(self : GraphtreemstkruskalRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_range_max(s : GraphtreemstkruskalRange) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalRange::max(self : GraphtreemstkruskalRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_range_to_string(s : GraphtreemstkruskalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalRange::to_string(self : GraphtreemstkruskalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstkruskalSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_tree_mst_kruskal_slice_make(size : Int) -> GraphtreemstkruskalSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_kruskal_slice_len(s : GraphtreemstkruskalSlice) -> Int { s.size }
+pub fn GraphtreemstkruskalSlice::len(self : GraphtreemstkruskalSlice) -> Int { self.size }
 
-pub fn graph_tree_mst_kruskal_slice_get(s : GraphtreemstkruskalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstkruskalSlice::get(self : GraphtreemstkruskalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_kruskal_slice_set(s : GraphtreemstkruskalSlice, i : Int, v : Double) -> GraphtreemstkruskalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalSlice::set(self : GraphtreemstkruskalSlice, i : Int, v : Double) -> GraphtreemstkruskalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_slice_sum(s : GraphtreemstkruskalSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstkruskalSlice::sum(self : GraphtreemstkruskalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_kruskal_slice_mean(s : GraphtreemstkruskalSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstkruskalSlice::mean(self : GraphtreemstkruskalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_kruskal_slice_scale(s : GraphtreemstkruskalSlice, f : Double) -> GraphtreemstkruskalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalSlice::scale(self : GraphtreemstkruskalSlice, f : Double) -> GraphtreemstkruskalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_slice_add(a : GraphtreemstkruskalSlice, b : GraphtreemstkruskalSlice) -> GraphtreemstkruskalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstkruskalSlice::add(self : GraphtreemstkruskalSlice, other : GraphtreemstkruskalSlice) -> GraphtreemstkruskalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_slice_copy(s : GraphtreemstkruskalSlice) -> GraphtreemstkruskalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalSlice::copy(self : GraphtreemstkruskalSlice) -> GraphtreemstkruskalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_slice_fill(s : GraphtreemstkruskalSlice, v : Double) -> GraphtreemstkruskalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstkruskalSlice::fill(self : GraphtreemstkruskalSlice, v : Double) -> GraphtreemstkruskalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_kruskal_slice_min(s : GraphtreemstkruskalSlice) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstkruskalSlice::min(self : GraphtreemstkruskalSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_kruskal_slice_max(s : GraphtreemstkruskalSlice) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstkruskalSlice::max(self : GraphtreemstkruskalSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_kruskal_slice_to_string(s : GraphtreemstkruskalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstkruskalSlice::to_string(self : GraphtreemstkruskalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

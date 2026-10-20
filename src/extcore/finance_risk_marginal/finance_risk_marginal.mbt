@@ -351,45 +351,45 @@ pub fn finance_risk_marginal_frame_make(size : Int) -> FinanceriskmarginalFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_frame_len(s : FinanceriskmarginalFrame) -> Int { s.size }
+pub fn FinanceriskmarginalFrame::len(self : FinanceriskmarginalFrame) -> Int { self.size }
 
-pub fn finance_risk_marginal_frame_get(s : FinanceriskmarginalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalFrame::get(self : FinanceriskmarginalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_frame_set(s : FinanceriskmarginalFrame, i : Int, v : Double) -> FinanceriskmarginalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalFrame::set(self : FinanceriskmarginalFrame, i : Int, v : Double) -> FinanceriskmarginalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_frame_sum(s : FinanceriskmarginalFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalFrame::sum(self : FinanceriskmarginalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_frame_mean(s : FinanceriskmarginalFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalFrame::mean(self : FinanceriskmarginalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_frame_scale(s : FinanceriskmarginalFrame, f : Double) -> FinanceriskmarginalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalFrame::scale(self : FinanceriskmarginalFrame, f : Double) -> FinanceriskmarginalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_frame_add(a : FinanceriskmarginalFrame, b : FinanceriskmarginalFrame) -> FinanceriskmarginalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalFrame::add(self : FinanceriskmarginalFrame, other : FinanceriskmarginalFrame) -> FinanceriskmarginalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_frame_copy(s : FinanceriskmarginalFrame) -> FinanceriskmarginalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalFrame::copy(self : FinanceriskmarginalFrame) -> FinanceriskmarginalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_frame_fill(s : FinanceriskmarginalFrame, v : Double) -> FinanceriskmarginalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalFrame::fill(self : FinanceriskmarginalFrame, v : Double) -> FinanceriskmarginalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_frame_min(s : FinanceriskmarginalFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalFrame::min(self : FinanceriskmarginalFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_frame_max(s : FinanceriskmarginalFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalFrame::max(self : FinanceriskmarginalFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_frame_to_string(s : FinanceriskmarginalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalFrame::to_string(self : FinanceriskmarginalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalTable {
@@ -402,45 +402,45 @@ pub fn finance_risk_marginal_table_make(size : Int) -> FinanceriskmarginalTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_table_len(s : FinanceriskmarginalTable) -> Int { s.size }
+pub fn FinanceriskmarginalTable::len(self : FinanceriskmarginalTable) -> Int { self.size }
 
-pub fn finance_risk_marginal_table_get(s : FinanceriskmarginalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalTable::get(self : FinanceriskmarginalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_table_set(s : FinanceriskmarginalTable, i : Int, v : Double) -> FinanceriskmarginalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalTable::set(self : FinanceriskmarginalTable, i : Int, v : Double) -> FinanceriskmarginalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_table_sum(s : FinanceriskmarginalTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalTable::sum(self : FinanceriskmarginalTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_table_mean(s : FinanceriskmarginalTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalTable::mean(self : FinanceriskmarginalTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_table_scale(s : FinanceriskmarginalTable, f : Double) -> FinanceriskmarginalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalTable::scale(self : FinanceriskmarginalTable, f : Double) -> FinanceriskmarginalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_table_add(a : FinanceriskmarginalTable, b : FinanceriskmarginalTable) -> FinanceriskmarginalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalTable::add(self : FinanceriskmarginalTable, other : FinanceriskmarginalTable) -> FinanceriskmarginalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_table_copy(s : FinanceriskmarginalTable) -> FinanceriskmarginalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalTable::copy(self : FinanceriskmarginalTable) -> FinanceriskmarginalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_table_fill(s : FinanceriskmarginalTable, v : Double) -> FinanceriskmarginalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalTable::fill(self : FinanceriskmarginalTable, v : Double) -> FinanceriskmarginalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_table_min(s : FinanceriskmarginalTable) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalTable::min(self : FinanceriskmarginalTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_table_max(s : FinanceriskmarginalTable) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalTable::max(self : FinanceriskmarginalTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_table_to_string(s : FinanceriskmarginalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalTable::to_string(self : FinanceriskmarginalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalGraphN {
@@ -453,45 +453,45 @@ pub fn finance_risk_marginal_graphn_make(size : Int) -> FinanceriskmarginalGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_graphn_len(s : FinanceriskmarginalGraphN) -> Int { s.size }
+pub fn FinanceriskmarginalGraphN::len(self : FinanceriskmarginalGraphN) -> Int { self.size }
 
-pub fn finance_risk_marginal_graphn_get(s : FinanceriskmarginalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalGraphN::get(self : FinanceriskmarginalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_graphn_set(s : FinanceriskmarginalGraphN, i : Int, v : Double) -> FinanceriskmarginalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalGraphN::set(self : FinanceriskmarginalGraphN, i : Int, v : Double) -> FinanceriskmarginalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_graphn_sum(s : FinanceriskmarginalGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalGraphN::sum(self : FinanceriskmarginalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_graphn_mean(s : FinanceriskmarginalGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalGraphN::mean(self : FinanceriskmarginalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_graphn_scale(s : FinanceriskmarginalGraphN, f : Double) -> FinanceriskmarginalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalGraphN::scale(self : FinanceriskmarginalGraphN, f : Double) -> FinanceriskmarginalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_graphn_add(a : FinanceriskmarginalGraphN, b : FinanceriskmarginalGraphN) -> FinanceriskmarginalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalGraphN::add(self : FinanceriskmarginalGraphN, other : FinanceriskmarginalGraphN) -> FinanceriskmarginalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_graphn_copy(s : FinanceriskmarginalGraphN) -> FinanceriskmarginalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalGraphN::copy(self : FinanceriskmarginalGraphN) -> FinanceriskmarginalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_graphn_fill(s : FinanceriskmarginalGraphN, v : Double) -> FinanceriskmarginalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalGraphN::fill(self : FinanceriskmarginalGraphN, v : Double) -> FinanceriskmarginalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_graphn_min(s : FinanceriskmarginalGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalGraphN::min(self : FinanceriskmarginalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_graphn_max(s : FinanceriskmarginalGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalGraphN::max(self : FinanceriskmarginalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_graphn_to_string(s : FinanceriskmarginalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalGraphN::to_string(self : FinanceriskmarginalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalNode {
@@ -504,45 +504,45 @@ pub fn finance_risk_marginal_node_make(size : Int) -> FinanceriskmarginalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_node_len(s : FinanceriskmarginalNode) -> Int { s.size }
+pub fn FinanceriskmarginalNode::len(self : FinanceriskmarginalNode) -> Int { self.size }
 
-pub fn finance_risk_marginal_node_get(s : FinanceriskmarginalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalNode::get(self : FinanceriskmarginalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_node_set(s : FinanceriskmarginalNode, i : Int, v : Double) -> FinanceriskmarginalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalNode::set(self : FinanceriskmarginalNode, i : Int, v : Double) -> FinanceriskmarginalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_node_sum(s : FinanceriskmarginalNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalNode::sum(self : FinanceriskmarginalNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_node_mean(s : FinanceriskmarginalNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalNode::mean(self : FinanceriskmarginalNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_node_scale(s : FinanceriskmarginalNode, f : Double) -> FinanceriskmarginalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalNode::scale(self : FinanceriskmarginalNode, f : Double) -> FinanceriskmarginalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_node_add(a : FinanceriskmarginalNode, b : FinanceriskmarginalNode) -> FinanceriskmarginalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalNode::add(self : FinanceriskmarginalNode, other : FinanceriskmarginalNode) -> FinanceriskmarginalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_node_copy(s : FinanceriskmarginalNode) -> FinanceriskmarginalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalNode::copy(self : FinanceriskmarginalNode) -> FinanceriskmarginalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_node_fill(s : FinanceriskmarginalNode, v : Double) -> FinanceriskmarginalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalNode::fill(self : FinanceriskmarginalNode, v : Double) -> FinanceriskmarginalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_node_min(s : FinanceriskmarginalNode) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalNode::min(self : FinanceriskmarginalNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_node_max(s : FinanceriskmarginalNode) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalNode::max(self : FinanceriskmarginalNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_node_to_string(s : FinanceriskmarginalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalNode::to_string(self : FinanceriskmarginalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalEdge {
@@ -555,45 +555,45 @@ pub fn finance_risk_marginal_edge_make(size : Int) -> FinanceriskmarginalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_edge_len(s : FinanceriskmarginalEdge) -> Int { s.size }
+pub fn FinanceriskmarginalEdge::len(self : FinanceriskmarginalEdge) -> Int { self.size }
 
-pub fn finance_risk_marginal_edge_get(s : FinanceriskmarginalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalEdge::get(self : FinanceriskmarginalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_edge_set(s : FinanceriskmarginalEdge, i : Int, v : Double) -> FinanceriskmarginalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalEdge::set(self : FinanceriskmarginalEdge, i : Int, v : Double) -> FinanceriskmarginalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_edge_sum(s : FinanceriskmarginalEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalEdge::sum(self : FinanceriskmarginalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_edge_mean(s : FinanceriskmarginalEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalEdge::mean(self : FinanceriskmarginalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_edge_scale(s : FinanceriskmarginalEdge, f : Double) -> FinanceriskmarginalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalEdge::scale(self : FinanceriskmarginalEdge, f : Double) -> FinanceriskmarginalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_edge_add(a : FinanceriskmarginalEdge, b : FinanceriskmarginalEdge) -> FinanceriskmarginalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalEdge::add(self : FinanceriskmarginalEdge, other : FinanceriskmarginalEdge) -> FinanceriskmarginalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_edge_copy(s : FinanceriskmarginalEdge) -> FinanceriskmarginalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalEdge::copy(self : FinanceriskmarginalEdge) -> FinanceriskmarginalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_edge_fill(s : FinanceriskmarginalEdge, v : Double) -> FinanceriskmarginalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalEdge::fill(self : FinanceriskmarginalEdge, v : Double) -> FinanceriskmarginalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_edge_min(s : FinanceriskmarginalEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalEdge::min(self : FinanceriskmarginalEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_edge_max(s : FinanceriskmarginalEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalEdge::max(self : FinanceriskmarginalEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_edge_to_string(s : FinanceriskmarginalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalEdge::to_string(self : FinanceriskmarginalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalPath {
@@ -606,45 +606,45 @@ pub fn finance_risk_marginal_path_make(size : Int) -> FinanceriskmarginalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_path_len(s : FinanceriskmarginalPath) -> Int { s.size }
+pub fn FinanceriskmarginalPath::len(self : FinanceriskmarginalPath) -> Int { self.size }
 
-pub fn finance_risk_marginal_path_get(s : FinanceriskmarginalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalPath::get(self : FinanceriskmarginalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_path_set(s : FinanceriskmarginalPath, i : Int, v : Double) -> FinanceriskmarginalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalPath::set(self : FinanceriskmarginalPath, i : Int, v : Double) -> FinanceriskmarginalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_path_sum(s : FinanceriskmarginalPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalPath::sum(self : FinanceriskmarginalPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_path_mean(s : FinanceriskmarginalPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalPath::mean(self : FinanceriskmarginalPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_path_scale(s : FinanceriskmarginalPath, f : Double) -> FinanceriskmarginalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalPath::scale(self : FinanceriskmarginalPath, f : Double) -> FinanceriskmarginalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_path_add(a : FinanceriskmarginalPath, b : FinanceriskmarginalPath) -> FinanceriskmarginalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalPath::add(self : FinanceriskmarginalPath, other : FinanceriskmarginalPath) -> FinanceriskmarginalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_path_copy(s : FinanceriskmarginalPath) -> FinanceriskmarginalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalPath::copy(self : FinanceriskmarginalPath) -> FinanceriskmarginalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_path_fill(s : FinanceriskmarginalPath, v : Double) -> FinanceriskmarginalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalPath::fill(self : FinanceriskmarginalPath, v : Double) -> FinanceriskmarginalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_path_min(s : FinanceriskmarginalPath) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalPath::min(self : FinanceriskmarginalPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_path_max(s : FinanceriskmarginalPath) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalPath::max(self : FinanceriskmarginalPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_path_to_string(s : FinanceriskmarginalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalPath::to_string(self : FinanceriskmarginalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalCluster {
@@ -657,45 +657,45 @@ pub fn finance_risk_marginal_cluster_make(size : Int) -> FinanceriskmarginalClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_cluster_len(s : FinanceriskmarginalCluster) -> Int { s.size }
+pub fn FinanceriskmarginalCluster::len(self : FinanceriskmarginalCluster) -> Int { self.size }
 
-pub fn finance_risk_marginal_cluster_get(s : FinanceriskmarginalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalCluster::get(self : FinanceriskmarginalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_cluster_set(s : FinanceriskmarginalCluster, i : Int, v : Double) -> FinanceriskmarginalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCluster::set(self : FinanceriskmarginalCluster, i : Int, v : Double) -> FinanceriskmarginalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cluster_sum(s : FinanceriskmarginalCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalCluster::sum(self : FinanceriskmarginalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_cluster_mean(s : FinanceriskmarginalCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalCluster::mean(self : FinanceriskmarginalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_cluster_scale(s : FinanceriskmarginalCluster, f : Double) -> FinanceriskmarginalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCluster::scale(self : FinanceriskmarginalCluster, f : Double) -> FinanceriskmarginalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cluster_add(a : FinanceriskmarginalCluster, b : FinanceriskmarginalCluster) -> FinanceriskmarginalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalCluster::add(self : FinanceriskmarginalCluster, other : FinanceriskmarginalCluster) -> FinanceriskmarginalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cluster_copy(s : FinanceriskmarginalCluster) -> FinanceriskmarginalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCluster::copy(self : FinanceriskmarginalCluster) -> FinanceriskmarginalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cluster_fill(s : FinanceriskmarginalCluster, v : Double) -> FinanceriskmarginalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCluster::fill(self : FinanceriskmarginalCluster, v : Double) -> FinanceriskmarginalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cluster_min(s : FinanceriskmarginalCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalCluster::min(self : FinanceriskmarginalCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_cluster_max(s : FinanceriskmarginalCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalCluster::max(self : FinanceriskmarginalCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_cluster_to_string(s : FinanceriskmarginalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalCluster::to_string(self : FinanceriskmarginalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalModel {
@@ -708,45 +708,45 @@ pub fn finance_risk_marginal_model_make(size : Int) -> FinanceriskmarginalModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_model_len(s : FinanceriskmarginalModel) -> Int { s.size }
+pub fn FinanceriskmarginalModel::len(self : FinanceriskmarginalModel) -> Int { self.size }
 
-pub fn finance_risk_marginal_model_get(s : FinanceriskmarginalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalModel::get(self : FinanceriskmarginalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_model_set(s : FinanceriskmarginalModel, i : Int, v : Double) -> FinanceriskmarginalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalModel::set(self : FinanceriskmarginalModel, i : Int, v : Double) -> FinanceriskmarginalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_model_sum(s : FinanceriskmarginalModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalModel::sum(self : FinanceriskmarginalModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_model_mean(s : FinanceriskmarginalModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalModel::mean(self : FinanceriskmarginalModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_model_scale(s : FinanceriskmarginalModel, f : Double) -> FinanceriskmarginalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalModel::scale(self : FinanceriskmarginalModel, f : Double) -> FinanceriskmarginalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_model_add(a : FinanceriskmarginalModel, b : FinanceriskmarginalModel) -> FinanceriskmarginalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalModel::add(self : FinanceriskmarginalModel, other : FinanceriskmarginalModel) -> FinanceriskmarginalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_model_copy(s : FinanceriskmarginalModel) -> FinanceriskmarginalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalModel::copy(self : FinanceriskmarginalModel) -> FinanceriskmarginalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_model_fill(s : FinanceriskmarginalModel, v : Double) -> FinanceriskmarginalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalModel::fill(self : FinanceriskmarginalModel, v : Double) -> FinanceriskmarginalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_model_min(s : FinanceriskmarginalModel) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalModel::min(self : FinanceriskmarginalModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_model_max(s : FinanceriskmarginalModel) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalModel::max(self : FinanceriskmarginalModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_model_to_string(s : FinanceriskmarginalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalModel::to_string(self : FinanceriskmarginalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalLayer {
@@ -759,45 +759,45 @@ pub fn finance_risk_marginal_layer_make(size : Int) -> FinanceriskmarginalLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_layer_len(s : FinanceriskmarginalLayer) -> Int { s.size }
+pub fn FinanceriskmarginalLayer::len(self : FinanceriskmarginalLayer) -> Int { self.size }
 
-pub fn finance_risk_marginal_layer_get(s : FinanceriskmarginalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalLayer::get(self : FinanceriskmarginalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_layer_set(s : FinanceriskmarginalLayer, i : Int, v : Double) -> FinanceriskmarginalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalLayer::set(self : FinanceriskmarginalLayer, i : Int, v : Double) -> FinanceriskmarginalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_layer_sum(s : FinanceriskmarginalLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalLayer::sum(self : FinanceriskmarginalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_layer_mean(s : FinanceriskmarginalLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalLayer::mean(self : FinanceriskmarginalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_layer_scale(s : FinanceriskmarginalLayer, f : Double) -> FinanceriskmarginalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalLayer::scale(self : FinanceriskmarginalLayer, f : Double) -> FinanceriskmarginalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_layer_add(a : FinanceriskmarginalLayer, b : FinanceriskmarginalLayer) -> FinanceriskmarginalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalLayer::add(self : FinanceriskmarginalLayer, other : FinanceriskmarginalLayer) -> FinanceriskmarginalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_layer_copy(s : FinanceriskmarginalLayer) -> FinanceriskmarginalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalLayer::copy(self : FinanceriskmarginalLayer) -> FinanceriskmarginalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_layer_fill(s : FinanceriskmarginalLayer, v : Double) -> FinanceriskmarginalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalLayer::fill(self : FinanceriskmarginalLayer, v : Double) -> FinanceriskmarginalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_layer_min(s : FinanceriskmarginalLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalLayer::min(self : FinanceriskmarginalLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_layer_max(s : FinanceriskmarginalLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalLayer::max(self : FinanceriskmarginalLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_layer_to_string(s : FinanceriskmarginalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalLayer::to_string(self : FinanceriskmarginalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalBuffer {
@@ -810,45 +810,45 @@ pub fn finance_risk_marginal_buffer_make(size : Int) -> FinanceriskmarginalBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_buffer_len(s : FinanceriskmarginalBuffer) -> Int { s.size }
+pub fn FinanceriskmarginalBuffer::len(self : FinanceriskmarginalBuffer) -> Int { self.size }
 
-pub fn finance_risk_marginal_buffer_get(s : FinanceriskmarginalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalBuffer::get(self : FinanceriskmarginalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_buffer_set(s : FinanceriskmarginalBuffer, i : Int, v : Double) -> FinanceriskmarginalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalBuffer::set(self : FinanceriskmarginalBuffer, i : Int, v : Double) -> FinanceriskmarginalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_buffer_sum(s : FinanceriskmarginalBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalBuffer::sum(self : FinanceriskmarginalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_buffer_mean(s : FinanceriskmarginalBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalBuffer::mean(self : FinanceriskmarginalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_buffer_scale(s : FinanceriskmarginalBuffer, f : Double) -> FinanceriskmarginalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalBuffer::scale(self : FinanceriskmarginalBuffer, f : Double) -> FinanceriskmarginalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_buffer_add(a : FinanceriskmarginalBuffer, b : FinanceriskmarginalBuffer) -> FinanceriskmarginalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalBuffer::add(self : FinanceriskmarginalBuffer, other : FinanceriskmarginalBuffer) -> FinanceriskmarginalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_buffer_copy(s : FinanceriskmarginalBuffer) -> FinanceriskmarginalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalBuffer::copy(self : FinanceriskmarginalBuffer) -> FinanceriskmarginalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_buffer_fill(s : FinanceriskmarginalBuffer, v : Double) -> FinanceriskmarginalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalBuffer::fill(self : FinanceriskmarginalBuffer, v : Double) -> FinanceriskmarginalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_buffer_min(s : FinanceriskmarginalBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalBuffer::min(self : FinanceriskmarginalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_buffer_max(s : FinanceriskmarginalBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalBuffer::max(self : FinanceriskmarginalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_buffer_to_string(s : FinanceriskmarginalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalBuffer::to_string(self : FinanceriskmarginalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalCursor {
@@ -861,45 +861,45 @@ pub fn finance_risk_marginal_cursor_make(size : Int) -> FinanceriskmarginalCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_cursor_len(s : FinanceriskmarginalCursor) -> Int { s.size }
+pub fn FinanceriskmarginalCursor::len(self : FinanceriskmarginalCursor) -> Int { self.size }
 
-pub fn finance_risk_marginal_cursor_get(s : FinanceriskmarginalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalCursor::get(self : FinanceriskmarginalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_cursor_set(s : FinanceriskmarginalCursor, i : Int, v : Double) -> FinanceriskmarginalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCursor::set(self : FinanceriskmarginalCursor, i : Int, v : Double) -> FinanceriskmarginalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cursor_sum(s : FinanceriskmarginalCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalCursor::sum(self : FinanceriskmarginalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_cursor_mean(s : FinanceriskmarginalCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalCursor::mean(self : FinanceriskmarginalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_cursor_scale(s : FinanceriskmarginalCursor, f : Double) -> FinanceriskmarginalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCursor::scale(self : FinanceriskmarginalCursor, f : Double) -> FinanceriskmarginalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cursor_add(a : FinanceriskmarginalCursor, b : FinanceriskmarginalCursor) -> FinanceriskmarginalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalCursor::add(self : FinanceriskmarginalCursor, other : FinanceriskmarginalCursor) -> FinanceriskmarginalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cursor_copy(s : FinanceriskmarginalCursor) -> FinanceriskmarginalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCursor::copy(self : FinanceriskmarginalCursor) -> FinanceriskmarginalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cursor_fill(s : FinanceriskmarginalCursor, v : Double) -> FinanceriskmarginalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalCursor::fill(self : FinanceriskmarginalCursor, v : Double) -> FinanceriskmarginalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_cursor_min(s : FinanceriskmarginalCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalCursor::min(self : FinanceriskmarginalCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_cursor_max(s : FinanceriskmarginalCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalCursor::max(self : FinanceriskmarginalCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_cursor_to_string(s : FinanceriskmarginalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalCursor::to_string(self : FinanceriskmarginalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalView {
@@ -912,45 +912,45 @@ pub fn finance_risk_marginal_view_make(size : Int) -> FinanceriskmarginalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_view_len(s : FinanceriskmarginalView) -> Int { s.size }
+pub fn FinanceriskmarginalView::len(self : FinanceriskmarginalView) -> Int { self.size }
 
-pub fn finance_risk_marginal_view_get(s : FinanceriskmarginalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalView::get(self : FinanceriskmarginalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_view_set(s : FinanceriskmarginalView, i : Int, v : Double) -> FinanceriskmarginalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalView::set(self : FinanceriskmarginalView, i : Int, v : Double) -> FinanceriskmarginalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_view_sum(s : FinanceriskmarginalView) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalView::sum(self : FinanceriskmarginalView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_view_mean(s : FinanceriskmarginalView) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalView::mean(self : FinanceriskmarginalView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_view_scale(s : FinanceriskmarginalView, f : Double) -> FinanceriskmarginalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalView::scale(self : FinanceriskmarginalView, f : Double) -> FinanceriskmarginalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_view_add(a : FinanceriskmarginalView, b : FinanceriskmarginalView) -> FinanceriskmarginalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalView::add(self : FinanceriskmarginalView, other : FinanceriskmarginalView) -> FinanceriskmarginalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_view_copy(s : FinanceriskmarginalView) -> FinanceriskmarginalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalView::copy(self : FinanceriskmarginalView) -> FinanceriskmarginalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_view_fill(s : FinanceriskmarginalView, v : Double) -> FinanceriskmarginalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalView::fill(self : FinanceriskmarginalView, v : Double) -> FinanceriskmarginalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_view_min(s : FinanceriskmarginalView) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalView::min(self : FinanceriskmarginalView) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_view_max(s : FinanceriskmarginalView) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalView::max(self : FinanceriskmarginalView) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_view_to_string(s : FinanceriskmarginalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalView::to_string(self : FinanceriskmarginalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalRange {
@@ -963,45 +963,45 @@ pub fn finance_risk_marginal_range_make(size : Int) -> FinanceriskmarginalRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_range_len(s : FinanceriskmarginalRange) -> Int { s.size }
+pub fn FinanceriskmarginalRange::len(self : FinanceriskmarginalRange) -> Int { self.size }
 
-pub fn finance_risk_marginal_range_get(s : FinanceriskmarginalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalRange::get(self : FinanceriskmarginalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_range_set(s : FinanceriskmarginalRange, i : Int, v : Double) -> FinanceriskmarginalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalRange::set(self : FinanceriskmarginalRange, i : Int, v : Double) -> FinanceriskmarginalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_range_sum(s : FinanceriskmarginalRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalRange::sum(self : FinanceriskmarginalRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_range_mean(s : FinanceriskmarginalRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalRange::mean(self : FinanceriskmarginalRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_range_scale(s : FinanceriskmarginalRange, f : Double) -> FinanceriskmarginalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalRange::scale(self : FinanceriskmarginalRange, f : Double) -> FinanceriskmarginalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_range_add(a : FinanceriskmarginalRange, b : FinanceriskmarginalRange) -> FinanceriskmarginalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalRange::add(self : FinanceriskmarginalRange, other : FinanceriskmarginalRange) -> FinanceriskmarginalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_range_copy(s : FinanceriskmarginalRange) -> FinanceriskmarginalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalRange::copy(self : FinanceriskmarginalRange) -> FinanceriskmarginalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_range_fill(s : FinanceriskmarginalRange, v : Double) -> FinanceriskmarginalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalRange::fill(self : FinanceriskmarginalRange, v : Double) -> FinanceriskmarginalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_range_min(s : FinanceriskmarginalRange) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalRange::min(self : FinanceriskmarginalRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_range_max(s : FinanceriskmarginalRange) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalRange::max(self : FinanceriskmarginalRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_range_to_string(s : FinanceriskmarginalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalRange::to_string(self : FinanceriskmarginalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskmarginalSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_risk_marginal_slice_make(size : Int) -> FinanceriskmarginalSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_marginal_slice_len(s : FinanceriskmarginalSlice) -> Int { s.size }
+pub fn FinanceriskmarginalSlice::len(self : FinanceriskmarginalSlice) -> Int { self.size }
 
-pub fn finance_risk_marginal_slice_get(s : FinanceriskmarginalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskmarginalSlice::get(self : FinanceriskmarginalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_marginal_slice_set(s : FinanceriskmarginalSlice, i : Int, v : Double) -> FinanceriskmarginalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalSlice::set(self : FinanceriskmarginalSlice, i : Int, v : Double) -> FinanceriskmarginalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_slice_sum(s : FinanceriskmarginalSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskmarginalSlice::sum(self : FinanceriskmarginalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_marginal_slice_mean(s : FinanceriskmarginalSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskmarginalSlice::mean(self : FinanceriskmarginalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_marginal_slice_scale(s : FinanceriskmarginalSlice, f : Double) -> FinanceriskmarginalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalSlice::scale(self : FinanceriskmarginalSlice, f : Double) -> FinanceriskmarginalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_slice_add(a : FinanceriskmarginalSlice, b : FinanceriskmarginalSlice) -> FinanceriskmarginalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskmarginalSlice::add(self : FinanceriskmarginalSlice, other : FinanceriskmarginalSlice) -> FinanceriskmarginalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_slice_copy(s : FinanceriskmarginalSlice) -> FinanceriskmarginalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalSlice::copy(self : FinanceriskmarginalSlice) -> FinanceriskmarginalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_slice_fill(s : FinanceriskmarginalSlice, v : Double) -> FinanceriskmarginalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskmarginalSlice::fill(self : FinanceriskmarginalSlice, v : Double) -> FinanceriskmarginalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_marginal_slice_min(s : FinanceriskmarginalSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceriskmarginalSlice::min(self : FinanceriskmarginalSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_marginal_slice_max(s : FinanceriskmarginalSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceriskmarginalSlice::max(self : FinanceriskmarginalSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_marginal_slice_to_string(s : FinanceriskmarginalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskmarginalSlice::to_string(self : FinanceriskmarginalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

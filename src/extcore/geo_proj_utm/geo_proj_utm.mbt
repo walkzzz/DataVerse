@@ -351,45 +351,45 @@ pub fn geo_proj_utm_frame_make(size : Int) -> GeoprojutmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_frame_len(s : GeoprojutmFrame) -> Int { s.size }
+pub fn GeoprojutmFrame::len(self : GeoprojutmFrame) -> Int { self.size }
 
-pub fn geo_proj_utm_frame_get(s : GeoprojutmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmFrame::get(self : GeoprojutmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_frame_set(s : GeoprojutmFrame, i : Int, v : Double) -> GeoprojutmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmFrame::set(self : GeoprojutmFrame, i : Int, v : Double) -> GeoprojutmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_frame_sum(s : GeoprojutmFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmFrame::sum(self : GeoprojutmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_frame_mean(s : GeoprojutmFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmFrame::mean(self : GeoprojutmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_frame_scale(s : GeoprojutmFrame, f : Double) -> GeoprojutmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmFrame::scale(self : GeoprojutmFrame, f : Double) -> GeoprojutmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_frame_add(a : GeoprojutmFrame, b : GeoprojutmFrame) -> GeoprojutmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmFrame::add(self : GeoprojutmFrame, other : GeoprojutmFrame) -> GeoprojutmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_frame_copy(s : GeoprojutmFrame) -> GeoprojutmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmFrame::copy(self : GeoprojutmFrame) -> GeoprojutmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_frame_fill(s : GeoprojutmFrame, v : Double) -> GeoprojutmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmFrame::fill(self : GeoprojutmFrame, v : Double) -> GeoprojutmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_frame_min(s : GeoprojutmFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmFrame::min(self : GeoprojutmFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_frame_max(s : GeoprojutmFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmFrame::max(self : GeoprojutmFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_frame_to_string(s : GeoprojutmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmFrame::to_string(self : GeoprojutmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_utm_table_make(size : Int) -> GeoprojutmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_table_len(s : GeoprojutmTable) -> Int { s.size }
+pub fn GeoprojutmTable::len(self : GeoprojutmTable) -> Int { self.size }
 
-pub fn geo_proj_utm_table_get(s : GeoprojutmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmTable::get(self : GeoprojutmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_table_set(s : GeoprojutmTable, i : Int, v : Double) -> GeoprojutmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmTable::set(self : GeoprojutmTable, i : Int, v : Double) -> GeoprojutmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_table_sum(s : GeoprojutmTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmTable::sum(self : GeoprojutmTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_table_mean(s : GeoprojutmTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmTable::mean(self : GeoprojutmTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_table_scale(s : GeoprojutmTable, f : Double) -> GeoprojutmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmTable::scale(self : GeoprojutmTable, f : Double) -> GeoprojutmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_table_add(a : GeoprojutmTable, b : GeoprojutmTable) -> GeoprojutmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmTable::add(self : GeoprojutmTable, other : GeoprojutmTable) -> GeoprojutmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_table_copy(s : GeoprojutmTable) -> GeoprojutmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmTable::copy(self : GeoprojutmTable) -> GeoprojutmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_table_fill(s : GeoprojutmTable, v : Double) -> GeoprojutmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmTable::fill(self : GeoprojutmTable, v : Double) -> GeoprojutmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_table_min(s : GeoprojutmTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmTable::min(self : GeoprojutmTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_table_max(s : GeoprojutmTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmTable::max(self : GeoprojutmTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_table_to_string(s : GeoprojutmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmTable::to_string(self : GeoprojutmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_utm_graphn_make(size : Int) -> GeoprojutmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_graphn_len(s : GeoprojutmGraphN) -> Int { s.size }
+pub fn GeoprojutmGraphN::len(self : GeoprojutmGraphN) -> Int { self.size }
 
-pub fn geo_proj_utm_graphn_get(s : GeoprojutmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmGraphN::get(self : GeoprojutmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_graphn_set(s : GeoprojutmGraphN, i : Int, v : Double) -> GeoprojutmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmGraphN::set(self : GeoprojutmGraphN, i : Int, v : Double) -> GeoprojutmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_graphn_sum(s : GeoprojutmGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmGraphN::sum(self : GeoprojutmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_graphn_mean(s : GeoprojutmGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmGraphN::mean(self : GeoprojutmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_graphn_scale(s : GeoprojutmGraphN, f : Double) -> GeoprojutmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmGraphN::scale(self : GeoprojutmGraphN, f : Double) -> GeoprojutmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_graphn_add(a : GeoprojutmGraphN, b : GeoprojutmGraphN) -> GeoprojutmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmGraphN::add(self : GeoprojutmGraphN, other : GeoprojutmGraphN) -> GeoprojutmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_graphn_copy(s : GeoprojutmGraphN) -> GeoprojutmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmGraphN::copy(self : GeoprojutmGraphN) -> GeoprojutmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_graphn_fill(s : GeoprojutmGraphN, v : Double) -> GeoprojutmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmGraphN::fill(self : GeoprojutmGraphN, v : Double) -> GeoprojutmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_graphn_min(s : GeoprojutmGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmGraphN::min(self : GeoprojutmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_graphn_max(s : GeoprojutmGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmGraphN::max(self : GeoprojutmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_graphn_to_string(s : GeoprojutmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmGraphN::to_string(self : GeoprojutmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_utm_node_make(size : Int) -> GeoprojutmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_node_len(s : GeoprojutmNode) -> Int { s.size }
+pub fn GeoprojutmNode::len(self : GeoprojutmNode) -> Int { self.size }
 
-pub fn geo_proj_utm_node_get(s : GeoprojutmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmNode::get(self : GeoprojutmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_node_set(s : GeoprojutmNode, i : Int, v : Double) -> GeoprojutmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmNode::set(self : GeoprojutmNode, i : Int, v : Double) -> GeoprojutmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_node_sum(s : GeoprojutmNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmNode::sum(self : GeoprojutmNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_node_mean(s : GeoprojutmNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmNode::mean(self : GeoprojutmNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_node_scale(s : GeoprojutmNode, f : Double) -> GeoprojutmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmNode::scale(self : GeoprojutmNode, f : Double) -> GeoprojutmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_node_add(a : GeoprojutmNode, b : GeoprojutmNode) -> GeoprojutmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmNode::add(self : GeoprojutmNode, other : GeoprojutmNode) -> GeoprojutmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_node_copy(s : GeoprojutmNode) -> GeoprojutmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmNode::copy(self : GeoprojutmNode) -> GeoprojutmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_node_fill(s : GeoprojutmNode, v : Double) -> GeoprojutmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmNode::fill(self : GeoprojutmNode, v : Double) -> GeoprojutmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_node_min(s : GeoprojutmNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmNode::min(self : GeoprojutmNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_node_max(s : GeoprojutmNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmNode::max(self : GeoprojutmNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_node_to_string(s : GeoprojutmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmNode::to_string(self : GeoprojutmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_utm_edge_make(size : Int) -> GeoprojutmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_edge_len(s : GeoprojutmEdge) -> Int { s.size }
+pub fn GeoprojutmEdge::len(self : GeoprojutmEdge) -> Int { self.size }
 
-pub fn geo_proj_utm_edge_get(s : GeoprojutmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmEdge::get(self : GeoprojutmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_edge_set(s : GeoprojutmEdge, i : Int, v : Double) -> GeoprojutmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmEdge::set(self : GeoprojutmEdge, i : Int, v : Double) -> GeoprojutmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_edge_sum(s : GeoprojutmEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmEdge::sum(self : GeoprojutmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_edge_mean(s : GeoprojutmEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmEdge::mean(self : GeoprojutmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_edge_scale(s : GeoprojutmEdge, f : Double) -> GeoprojutmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmEdge::scale(self : GeoprojutmEdge, f : Double) -> GeoprojutmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_edge_add(a : GeoprojutmEdge, b : GeoprojutmEdge) -> GeoprojutmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmEdge::add(self : GeoprojutmEdge, other : GeoprojutmEdge) -> GeoprojutmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_edge_copy(s : GeoprojutmEdge) -> GeoprojutmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmEdge::copy(self : GeoprojutmEdge) -> GeoprojutmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_edge_fill(s : GeoprojutmEdge, v : Double) -> GeoprojutmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmEdge::fill(self : GeoprojutmEdge, v : Double) -> GeoprojutmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_edge_min(s : GeoprojutmEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmEdge::min(self : GeoprojutmEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_edge_max(s : GeoprojutmEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmEdge::max(self : GeoprojutmEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_edge_to_string(s : GeoprojutmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmEdge::to_string(self : GeoprojutmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_utm_path_make(size : Int) -> GeoprojutmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_path_len(s : GeoprojutmPath) -> Int { s.size }
+pub fn GeoprojutmPath::len(self : GeoprojutmPath) -> Int { self.size }
 
-pub fn geo_proj_utm_path_get(s : GeoprojutmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmPath::get(self : GeoprojutmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_path_set(s : GeoprojutmPath, i : Int, v : Double) -> GeoprojutmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmPath::set(self : GeoprojutmPath, i : Int, v : Double) -> GeoprojutmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_path_sum(s : GeoprojutmPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmPath::sum(self : GeoprojutmPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_path_mean(s : GeoprojutmPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmPath::mean(self : GeoprojutmPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_path_scale(s : GeoprojutmPath, f : Double) -> GeoprojutmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmPath::scale(self : GeoprojutmPath, f : Double) -> GeoprojutmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_path_add(a : GeoprojutmPath, b : GeoprojutmPath) -> GeoprojutmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmPath::add(self : GeoprojutmPath, other : GeoprojutmPath) -> GeoprojutmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_path_copy(s : GeoprojutmPath) -> GeoprojutmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmPath::copy(self : GeoprojutmPath) -> GeoprojutmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_path_fill(s : GeoprojutmPath, v : Double) -> GeoprojutmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmPath::fill(self : GeoprojutmPath, v : Double) -> GeoprojutmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_path_min(s : GeoprojutmPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmPath::min(self : GeoprojutmPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_path_max(s : GeoprojutmPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmPath::max(self : GeoprojutmPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_path_to_string(s : GeoprojutmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmPath::to_string(self : GeoprojutmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_utm_cluster_make(size : Int) -> GeoprojutmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_cluster_len(s : GeoprojutmCluster) -> Int { s.size }
+pub fn GeoprojutmCluster::len(self : GeoprojutmCluster) -> Int { self.size }
 
-pub fn geo_proj_utm_cluster_get(s : GeoprojutmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmCluster::get(self : GeoprojutmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_cluster_set(s : GeoprojutmCluster, i : Int, v : Double) -> GeoprojutmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmCluster::set(self : GeoprojutmCluster, i : Int, v : Double) -> GeoprojutmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cluster_sum(s : GeoprojutmCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmCluster::sum(self : GeoprojutmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_cluster_mean(s : GeoprojutmCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmCluster::mean(self : GeoprojutmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_cluster_scale(s : GeoprojutmCluster, f : Double) -> GeoprojutmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmCluster::scale(self : GeoprojutmCluster, f : Double) -> GeoprojutmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cluster_add(a : GeoprojutmCluster, b : GeoprojutmCluster) -> GeoprojutmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmCluster::add(self : GeoprojutmCluster, other : GeoprojutmCluster) -> GeoprojutmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cluster_copy(s : GeoprojutmCluster) -> GeoprojutmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmCluster::copy(self : GeoprojutmCluster) -> GeoprojutmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cluster_fill(s : GeoprojutmCluster, v : Double) -> GeoprojutmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmCluster::fill(self : GeoprojutmCluster, v : Double) -> GeoprojutmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cluster_min(s : GeoprojutmCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmCluster::min(self : GeoprojutmCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_cluster_max(s : GeoprojutmCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmCluster::max(self : GeoprojutmCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_cluster_to_string(s : GeoprojutmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmCluster::to_string(self : GeoprojutmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_utm_model_make(size : Int) -> GeoprojutmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_model_len(s : GeoprojutmModel) -> Int { s.size }
+pub fn GeoprojutmModel::len(self : GeoprojutmModel) -> Int { self.size }
 
-pub fn geo_proj_utm_model_get(s : GeoprojutmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmModel::get(self : GeoprojutmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_model_set(s : GeoprojutmModel, i : Int, v : Double) -> GeoprojutmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmModel::set(self : GeoprojutmModel, i : Int, v : Double) -> GeoprojutmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_model_sum(s : GeoprojutmModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmModel::sum(self : GeoprojutmModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_model_mean(s : GeoprojutmModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmModel::mean(self : GeoprojutmModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_model_scale(s : GeoprojutmModel, f : Double) -> GeoprojutmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmModel::scale(self : GeoprojutmModel, f : Double) -> GeoprojutmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_model_add(a : GeoprojutmModel, b : GeoprojutmModel) -> GeoprojutmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmModel::add(self : GeoprojutmModel, other : GeoprojutmModel) -> GeoprojutmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_model_copy(s : GeoprojutmModel) -> GeoprojutmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmModel::copy(self : GeoprojutmModel) -> GeoprojutmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_model_fill(s : GeoprojutmModel, v : Double) -> GeoprojutmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmModel::fill(self : GeoprojutmModel, v : Double) -> GeoprojutmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_model_min(s : GeoprojutmModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmModel::min(self : GeoprojutmModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_model_max(s : GeoprojutmModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmModel::max(self : GeoprojutmModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_model_to_string(s : GeoprojutmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmModel::to_string(self : GeoprojutmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_utm_layer_make(size : Int) -> GeoprojutmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_layer_len(s : GeoprojutmLayer) -> Int { s.size }
+pub fn GeoprojutmLayer::len(self : GeoprojutmLayer) -> Int { self.size }
 
-pub fn geo_proj_utm_layer_get(s : GeoprojutmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmLayer::get(self : GeoprojutmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_layer_set(s : GeoprojutmLayer, i : Int, v : Double) -> GeoprojutmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmLayer::set(self : GeoprojutmLayer, i : Int, v : Double) -> GeoprojutmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_layer_sum(s : GeoprojutmLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmLayer::sum(self : GeoprojutmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_layer_mean(s : GeoprojutmLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmLayer::mean(self : GeoprojutmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_layer_scale(s : GeoprojutmLayer, f : Double) -> GeoprojutmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmLayer::scale(self : GeoprojutmLayer, f : Double) -> GeoprojutmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_layer_add(a : GeoprojutmLayer, b : GeoprojutmLayer) -> GeoprojutmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmLayer::add(self : GeoprojutmLayer, other : GeoprojutmLayer) -> GeoprojutmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_layer_copy(s : GeoprojutmLayer) -> GeoprojutmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmLayer::copy(self : GeoprojutmLayer) -> GeoprojutmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_layer_fill(s : GeoprojutmLayer, v : Double) -> GeoprojutmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmLayer::fill(self : GeoprojutmLayer, v : Double) -> GeoprojutmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_layer_min(s : GeoprojutmLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmLayer::min(self : GeoprojutmLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_layer_max(s : GeoprojutmLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmLayer::max(self : GeoprojutmLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_layer_to_string(s : GeoprojutmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmLayer::to_string(self : GeoprojutmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_utm_buffer_make(size : Int) -> GeoprojutmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_buffer_len(s : GeoprojutmBuffer) -> Int { s.size }
+pub fn GeoprojutmBuffer::len(self : GeoprojutmBuffer) -> Int { self.size }
 
-pub fn geo_proj_utm_buffer_get(s : GeoprojutmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmBuffer::get(self : GeoprojutmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_buffer_set(s : GeoprojutmBuffer, i : Int, v : Double) -> GeoprojutmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmBuffer::set(self : GeoprojutmBuffer, i : Int, v : Double) -> GeoprojutmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_buffer_sum(s : GeoprojutmBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmBuffer::sum(self : GeoprojutmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_buffer_mean(s : GeoprojutmBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmBuffer::mean(self : GeoprojutmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_buffer_scale(s : GeoprojutmBuffer, f : Double) -> GeoprojutmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmBuffer::scale(self : GeoprojutmBuffer, f : Double) -> GeoprojutmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_buffer_add(a : GeoprojutmBuffer, b : GeoprojutmBuffer) -> GeoprojutmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmBuffer::add(self : GeoprojutmBuffer, other : GeoprojutmBuffer) -> GeoprojutmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_buffer_copy(s : GeoprojutmBuffer) -> GeoprojutmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmBuffer::copy(self : GeoprojutmBuffer) -> GeoprojutmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_buffer_fill(s : GeoprojutmBuffer, v : Double) -> GeoprojutmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmBuffer::fill(self : GeoprojutmBuffer, v : Double) -> GeoprojutmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_buffer_min(s : GeoprojutmBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmBuffer::min(self : GeoprojutmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_buffer_max(s : GeoprojutmBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmBuffer::max(self : GeoprojutmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_buffer_to_string(s : GeoprojutmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmBuffer::to_string(self : GeoprojutmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_utm_cursor_make(size : Int) -> GeoprojutmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_cursor_len(s : GeoprojutmCursor) -> Int { s.size }
+pub fn GeoprojutmCursor::len(self : GeoprojutmCursor) -> Int { self.size }
 
-pub fn geo_proj_utm_cursor_get(s : GeoprojutmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmCursor::get(self : GeoprojutmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_cursor_set(s : GeoprojutmCursor, i : Int, v : Double) -> GeoprojutmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmCursor::set(self : GeoprojutmCursor, i : Int, v : Double) -> GeoprojutmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cursor_sum(s : GeoprojutmCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmCursor::sum(self : GeoprojutmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_cursor_mean(s : GeoprojutmCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmCursor::mean(self : GeoprojutmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_cursor_scale(s : GeoprojutmCursor, f : Double) -> GeoprojutmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmCursor::scale(self : GeoprojutmCursor, f : Double) -> GeoprojutmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cursor_add(a : GeoprojutmCursor, b : GeoprojutmCursor) -> GeoprojutmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmCursor::add(self : GeoprojutmCursor, other : GeoprojutmCursor) -> GeoprojutmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cursor_copy(s : GeoprojutmCursor) -> GeoprojutmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmCursor::copy(self : GeoprojutmCursor) -> GeoprojutmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cursor_fill(s : GeoprojutmCursor, v : Double) -> GeoprojutmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmCursor::fill(self : GeoprojutmCursor, v : Double) -> GeoprojutmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_cursor_min(s : GeoprojutmCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmCursor::min(self : GeoprojutmCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_cursor_max(s : GeoprojutmCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmCursor::max(self : GeoprojutmCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_cursor_to_string(s : GeoprojutmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmCursor::to_string(self : GeoprojutmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmView {
@@ -912,45 +912,45 @@ pub fn geo_proj_utm_view_make(size : Int) -> GeoprojutmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_view_len(s : GeoprojutmView) -> Int { s.size }
+pub fn GeoprojutmView::len(self : GeoprojutmView) -> Int { self.size }
 
-pub fn geo_proj_utm_view_get(s : GeoprojutmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmView::get(self : GeoprojutmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_view_set(s : GeoprojutmView, i : Int, v : Double) -> GeoprojutmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmView::set(self : GeoprojutmView, i : Int, v : Double) -> GeoprojutmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_view_sum(s : GeoprojutmView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmView::sum(self : GeoprojutmView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_view_mean(s : GeoprojutmView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmView::mean(self : GeoprojutmView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_view_scale(s : GeoprojutmView, f : Double) -> GeoprojutmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmView::scale(self : GeoprojutmView, f : Double) -> GeoprojutmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_view_add(a : GeoprojutmView, b : GeoprojutmView) -> GeoprojutmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmView::add(self : GeoprojutmView, other : GeoprojutmView) -> GeoprojutmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_view_copy(s : GeoprojutmView) -> GeoprojutmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmView::copy(self : GeoprojutmView) -> GeoprojutmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_view_fill(s : GeoprojutmView, v : Double) -> GeoprojutmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmView::fill(self : GeoprojutmView, v : Double) -> GeoprojutmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_view_min(s : GeoprojutmView) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmView::min(self : GeoprojutmView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_view_max(s : GeoprojutmView) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmView::max(self : GeoprojutmView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_view_to_string(s : GeoprojutmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmView::to_string(self : GeoprojutmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_utm_range_make(size : Int) -> GeoprojutmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_range_len(s : GeoprojutmRange) -> Int { s.size }
+pub fn GeoprojutmRange::len(self : GeoprojutmRange) -> Int { self.size }
 
-pub fn geo_proj_utm_range_get(s : GeoprojutmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmRange::get(self : GeoprojutmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_range_set(s : GeoprojutmRange, i : Int, v : Double) -> GeoprojutmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmRange::set(self : GeoprojutmRange, i : Int, v : Double) -> GeoprojutmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_range_sum(s : GeoprojutmRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmRange::sum(self : GeoprojutmRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_range_mean(s : GeoprojutmRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmRange::mean(self : GeoprojutmRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_range_scale(s : GeoprojutmRange, f : Double) -> GeoprojutmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmRange::scale(self : GeoprojutmRange, f : Double) -> GeoprojutmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_range_add(a : GeoprojutmRange, b : GeoprojutmRange) -> GeoprojutmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmRange::add(self : GeoprojutmRange, other : GeoprojutmRange) -> GeoprojutmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_range_copy(s : GeoprojutmRange) -> GeoprojutmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmRange::copy(self : GeoprojutmRange) -> GeoprojutmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_range_fill(s : GeoprojutmRange, v : Double) -> GeoprojutmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmRange::fill(self : GeoprojutmRange, v : Double) -> GeoprojutmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_range_min(s : GeoprojutmRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmRange::min(self : GeoprojutmRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_range_max(s : GeoprojutmRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmRange::max(self : GeoprojutmRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_range_to_string(s : GeoprojutmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmRange::to_string(self : GeoprojutmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojutmSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_utm_slice_make(size : Int) -> GeoprojutmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_utm_slice_len(s : GeoprojutmSlice) -> Int { s.size }
+pub fn GeoprojutmSlice::len(self : GeoprojutmSlice) -> Int { self.size }
 
-pub fn geo_proj_utm_slice_get(s : GeoprojutmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojutmSlice::get(self : GeoprojutmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_utm_slice_set(s : GeoprojutmSlice, i : Int, v : Double) -> GeoprojutmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojutmSlice::set(self : GeoprojutmSlice, i : Int, v : Double) -> GeoprojutmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_slice_sum(s : GeoprojutmSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojutmSlice::sum(self : GeoprojutmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_utm_slice_mean(s : GeoprojutmSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojutmSlice::mean(self : GeoprojutmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_utm_slice_scale(s : GeoprojutmSlice, f : Double) -> GeoprojutmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojutmSlice::scale(self : GeoprojutmSlice, f : Double) -> GeoprojutmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_slice_add(a : GeoprojutmSlice, b : GeoprojutmSlice) -> GeoprojutmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojutmSlice::add(self : GeoprojutmSlice, other : GeoprojutmSlice) -> GeoprojutmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_utm_slice_copy(s : GeoprojutmSlice) -> GeoprojutmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojutmSlice::copy(self : GeoprojutmSlice) -> GeoprojutmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_slice_fill(s : GeoprojutmSlice, v : Double) -> GeoprojutmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojutmSlice::fill(self : GeoprojutmSlice, v : Double) -> GeoprojutmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_utm_slice_min(s : GeoprojutmSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojutmSlice::min(self : GeoprojutmSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_utm_slice_max(s : GeoprojutmSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojutmSlice::max(self : GeoprojutmSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_utm_slice_to_string(s : GeoprojutmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojutmSlice::to_string(self : GeoprojutmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn signal_filter_chebyshev2_frame_make(size : Int) -> Signalfilterchebyshev2
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_frame_len(s : Signalfilterchebyshev2Frame) -> Int { s.size }
+pub fn Signalfilterchebyshev2Frame::len(self : Signalfilterchebyshev2Frame) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_frame_get(s : Signalfilterchebyshev2Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Frame::get(self : Signalfilterchebyshev2Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_frame_set(s : Signalfilterchebyshev2Frame, i : Int, v : Double) -> Signalfilterchebyshev2Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Frame::set(self : Signalfilterchebyshev2Frame, i : Int, v : Double) -> Signalfilterchebyshev2Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_frame_sum(s : Signalfilterchebyshev2Frame) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Frame::sum(self : Signalfilterchebyshev2Frame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_frame_mean(s : Signalfilterchebyshev2Frame) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Frame::mean(self : Signalfilterchebyshev2Frame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_frame_scale(s : Signalfilterchebyshev2Frame, f : Double) -> Signalfilterchebyshev2Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Frame::scale(self : Signalfilterchebyshev2Frame, f : Double) -> Signalfilterchebyshev2Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_frame_add(a : Signalfilterchebyshev2Frame, b : Signalfilterchebyshev2Frame) -> Signalfilterchebyshev2Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Frame::add(self : Signalfilterchebyshev2Frame, other : Signalfilterchebyshev2Frame) -> Signalfilterchebyshev2Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_frame_copy(s : Signalfilterchebyshev2Frame) -> Signalfilterchebyshev2Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Frame::copy(self : Signalfilterchebyshev2Frame) -> Signalfilterchebyshev2Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_frame_fill(s : Signalfilterchebyshev2Frame, v : Double) -> Signalfilterchebyshev2Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Frame::fill(self : Signalfilterchebyshev2Frame, v : Double) -> Signalfilterchebyshev2Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_frame_min(s : Signalfilterchebyshev2Frame) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Frame::min(self : Signalfilterchebyshev2Frame) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_frame_max(s : Signalfilterchebyshev2Frame) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Frame::max(self : Signalfilterchebyshev2Frame) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_frame_to_string(s : Signalfilterchebyshev2Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Frame::to_string(self : Signalfilterchebyshev2Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Table {
@@ -402,45 +402,45 @@ pub fn signal_filter_chebyshev2_table_make(size : Int) -> Signalfilterchebyshev2
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_table_len(s : Signalfilterchebyshev2Table) -> Int { s.size }
+pub fn Signalfilterchebyshev2Table::len(self : Signalfilterchebyshev2Table) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_table_get(s : Signalfilterchebyshev2Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Table::get(self : Signalfilterchebyshev2Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_table_set(s : Signalfilterchebyshev2Table, i : Int, v : Double) -> Signalfilterchebyshev2Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Table::set(self : Signalfilterchebyshev2Table, i : Int, v : Double) -> Signalfilterchebyshev2Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_table_sum(s : Signalfilterchebyshev2Table) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Table::sum(self : Signalfilterchebyshev2Table) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_table_mean(s : Signalfilterchebyshev2Table) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Table::mean(self : Signalfilterchebyshev2Table) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_table_scale(s : Signalfilterchebyshev2Table, f : Double) -> Signalfilterchebyshev2Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Table::scale(self : Signalfilterchebyshev2Table, f : Double) -> Signalfilterchebyshev2Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_table_add(a : Signalfilterchebyshev2Table, b : Signalfilterchebyshev2Table) -> Signalfilterchebyshev2Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Table::add(self : Signalfilterchebyshev2Table, other : Signalfilterchebyshev2Table) -> Signalfilterchebyshev2Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_table_copy(s : Signalfilterchebyshev2Table) -> Signalfilterchebyshev2Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Table::copy(self : Signalfilterchebyshev2Table) -> Signalfilterchebyshev2Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_table_fill(s : Signalfilterchebyshev2Table, v : Double) -> Signalfilterchebyshev2Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Table::fill(self : Signalfilterchebyshev2Table, v : Double) -> Signalfilterchebyshev2Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_table_min(s : Signalfilterchebyshev2Table) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Table::min(self : Signalfilterchebyshev2Table) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_table_max(s : Signalfilterchebyshev2Table) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Table::max(self : Signalfilterchebyshev2Table) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_table_to_string(s : Signalfilterchebyshev2Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Table::to_string(self : Signalfilterchebyshev2Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2GraphN {
@@ -453,45 +453,45 @@ pub fn signal_filter_chebyshev2_graphn_make(size : Int) -> Signalfilterchebyshev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_graphn_len(s : Signalfilterchebyshev2GraphN) -> Int { s.size }
+pub fn Signalfilterchebyshev2GraphN::len(self : Signalfilterchebyshev2GraphN) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_graphn_get(s : Signalfilterchebyshev2GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2GraphN::get(self : Signalfilterchebyshev2GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_graphn_set(s : Signalfilterchebyshev2GraphN, i : Int, v : Double) -> Signalfilterchebyshev2GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2GraphN::set(self : Signalfilterchebyshev2GraphN, i : Int, v : Double) -> Signalfilterchebyshev2GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_graphn_sum(s : Signalfilterchebyshev2GraphN) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2GraphN::sum(self : Signalfilterchebyshev2GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_graphn_mean(s : Signalfilterchebyshev2GraphN) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2GraphN::mean(self : Signalfilterchebyshev2GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_graphn_scale(s : Signalfilterchebyshev2GraphN, f : Double) -> Signalfilterchebyshev2GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2GraphN::scale(self : Signalfilterchebyshev2GraphN, f : Double) -> Signalfilterchebyshev2GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_graphn_add(a : Signalfilterchebyshev2GraphN, b : Signalfilterchebyshev2GraphN) -> Signalfilterchebyshev2GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2GraphN::add(self : Signalfilterchebyshev2GraphN, other : Signalfilterchebyshev2GraphN) -> Signalfilterchebyshev2GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_graphn_copy(s : Signalfilterchebyshev2GraphN) -> Signalfilterchebyshev2GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2GraphN::copy(self : Signalfilterchebyshev2GraphN) -> Signalfilterchebyshev2GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_graphn_fill(s : Signalfilterchebyshev2GraphN, v : Double) -> Signalfilterchebyshev2GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2GraphN::fill(self : Signalfilterchebyshev2GraphN, v : Double) -> Signalfilterchebyshev2GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_graphn_min(s : Signalfilterchebyshev2GraphN) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2GraphN::min(self : Signalfilterchebyshev2GraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_graphn_max(s : Signalfilterchebyshev2GraphN) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2GraphN::max(self : Signalfilterchebyshev2GraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_graphn_to_string(s : Signalfilterchebyshev2GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2GraphN::to_string(self : Signalfilterchebyshev2GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Node {
@@ -504,45 +504,45 @@ pub fn signal_filter_chebyshev2_node_make(size : Int) -> Signalfilterchebyshev2N
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_node_len(s : Signalfilterchebyshev2Node) -> Int { s.size }
+pub fn Signalfilterchebyshev2Node::len(self : Signalfilterchebyshev2Node) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_node_get(s : Signalfilterchebyshev2Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Node::get(self : Signalfilterchebyshev2Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_node_set(s : Signalfilterchebyshev2Node, i : Int, v : Double) -> Signalfilterchebyshev2Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Node::set(self : Signalfilterchebyshev2Node, i : Int, v : Double) -> Signalfilterchebyshev2Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_node_sum(s : Signalfilterchebyshev2Node) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Node::sum(self : Signalfilterchebyshev2Node) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_node_mean(s : Signalfilterchebyshev2Node) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Node::mean(self : Signalfilterchebyshev2Node) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_node_scale(s : Signalfilterchebyshev2Node, f : Double) -> Signalfilterchebyshev2Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Node::scale(self : Signalfilterchebyshev2Node, f : Double) -> Signalfilterchebyshev2Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_node_add(a : Signalfilterchebyshev2Node, b : Signalfilterchebyshev2Node) -> Signalfilterchebyshev2Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Node::add(self : Signalfilterchebyshev2Node, other : Signalfilterchebyshev2Node) -> Signalfilterchebyshev2Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_node_copy(s : Signalfilterchebyshev2Node) -> Signalfilterchebyshev2Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Node::copy(self : Signalfilterchebyshev2Node) -> Signalfilterchebyshev2Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_node_fill(s : Signalfilterchebyshev2Node, v : Double) -> Signalfilterchebyshev2Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Node::fill(self : Signalfilterchebyshev2Node, v : Double) -> Signalfilterchebyshev2Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_node_min(s : Signalfilterchebyshev2Node) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Node::min(self : Signalfilterchebyshev2Node) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_node_max(s : Signalfilterchebyshev2Node) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Node::max(self : Signalfilterchebyshev2Node) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_node_to_string(s : Signalfilterchebyshev2Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Node::to_string(self : Signalfilterchebyshev2Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Edge {
@@ -555,45 +555,45 @@ pub fn signal_filter_chebyshev2_edge_make(size : Int) -> Signalfilterchebyshev2E
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_edge_len(s : Signalfilterchebyshev2Edge) -> Int { s.size }
+pub fn Signalfilterchebyshev2Edge::len(self : Signalfilterchebyshev2Edge) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_edge_get(s : Signalfilterchebyshev2Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Edge::get(self : Signalfilterchebyshev2Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_edge_set(s : Signalfilterchebyshev2Edge, i : Int, v : Double) -> Signalfilterchebyshev2Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Edge::set(self : Signalfilterchebyshev2Edge, i : Int, v : Double) -> Signalfilterchebyshev2Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_edge_sum(s : Signalfilterchebyshev2Edge) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Edge::sum(self : Signalfilterchebyshev2Edge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_edge_mean(s : Signalfilterchebyshev2Edge) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Edge::mean(self : Signalfilterchebyshev2Edge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_edge_scale(s : Signalfilterchebyshev2Edge, f : Double) -> Signalfilterchebyshev2Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Edge::scale(self : Signalfilterchebyshev2Edge, f : Double) -> Signalfilterchebyshev2Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_edge_add(a : Signalfilterchebyshev2Edge, b : Signalfilterchebyshev2Edge) -> Signalfilterchebyshev2Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Edge::add(self : Signalfilterchebyshev2Edge, other : Signalfilterchebyshev2Edge) -> Signalfilterchebyshev2Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_edge_copy(s : Signalfilterchebyshev2Edge) -> Signalfilterchebyshev2Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Edge::copy(self : Signalfilterchebyshev2Edge) -> Signalfilterchebyshev2Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_edge_fill(s : Signalfilterchebyshev2Edge, v : Double) -> Signalfilterchebyshev2Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Edge::fill(self : Signalfilterchebyshev2Edge, v : Double) -> Signalfilterchebyshev2Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_edge_min(s : Signalfilterchebyshev2Edge) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Edge::min(self : Signalfilterchebyshev2Edge) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_edge_max(s : Signalfilterchebyshev2Edge) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Edge::max(self : Signalfilterchebyshev2Edge) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_edge_to_string(s : Signalfilterchebyshev2Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Edge::to_string(self : Signalfilterchebyshev2Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Path {
@@ -606,45 +606,45 @@ pub fn signal_filter_chebyshev2_path_make(size : Int) -> Signalfilterchebyshev2P
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_path_len(s : Signalfilterchebyshev2Path) -> Int { s.size }
+pub fn Signalfilterchebyshev2Path::len(self : Signalfilterchebyshev2Path) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_path_get(s : Signalfilterchebyshev2Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Path::get(self : Signalfilterchebyshev2Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_path_set(s : Signalfilterchebyshev2Path, i : Int, v : Double) -> Signalfilterchebyshev2Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Path::set(self : Signalfilterchebyshev2Path, i : Int, v : Double) -> Signalfilterchebyshev2Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_path_sum(s : Signalfilterchebyshev2Path) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Path::sum(self : Signalfilterchebyshev2Path) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_path_mean(s : Signalfilterchebyshev2Path) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Path::mean(self : Signalfilterchebyshev2Path) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_path_scale(s : Signalfilterchebyshev2Path, f : Double) -> Signalfilterchebyshev2Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Path::scale(self : Signalfilterchebyshev2Path, f : Double) -> Signalfilterchebyshev2Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_path_add(a : Signalfilterchebyshev2Path, b : Signalfilterchebyshev2Path) -> Signalfilterchebyshev2Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Path::add(self : Signalfilterchebyshev2Path, other : Signalfilterchebyshev2Path) -> Signalfilterchebyshev2Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_path_copy(s : Signalfilterchebyshev2Path) -> Signalfilterchebyshev2Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Path::copy(self : Signalfilterchebyshev2Path) -> Signalfilterchebyshev2Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_path_fill(s : Signalfilterchebyshev2Path, v : Double) -> Signalfilterchebyshev2Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Path::fill(self : Signalfilterchebyshev2Path, v : Double) -> Signalfilterchebyshev2Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_path_min(s : Signalfilterchebyshev2Path) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Path::min(self : Signalfilterchebyshev2Path) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_path_max(s : Signalfilterchebyshev2Path) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Path::max(self : Signalfilterchebyshev2Path) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_path_to_string(s : Signalfilterchebyshev2Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Path::to_string(self : Signalfilterchebyshev2Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Cluster {
@@ -657,45 +657,45 @@ pub fn signal_filter_chebyshev2_cluster_make(size : Int) -> Signalfilterchebyshe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_cluster_len(s : Signalfilterchebyshev2Cluster) -> Int { s.size }
+pub fn Signalfilterchebyshev2Cluster::len(self : Signalfilterchebyshev2Cluster) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_cluster_get(s : Signalfilterchebyshev2Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Cluster::get(self : Signalfilterchebyshev2Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_cluster_set(s : Signalfilterchebyshev2Cluster, i : Int, v : Double) -> Signalfilterchebyshev2Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cluster::set(self : Signalfilterchebyshev2Cluster, i : Int, v : Double) -> Signalfilterchebyshev2Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cluster_sum(s : Signalfilterchebyshev2Cluster) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Cluster::sum(self : Signalfilterchebyshev2Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_cluster_mean(s : Signalfilterchebyshev2Cluster) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Cluster::mean(self : Signalfilterchebyshev2Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_cluster_scale(s : Signalfilterchebyshev2Cluster, f : Double) -> Signalfilterchebyshev2Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cluster::scale(self : Signalfilterchebyshev2Cluster, f : Double) -> Signalfilterchebyshev2Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cluster_add(a : Signalfilterchebyshev2Cluster, b : Signalfilterchebyshev2Cluster) -> Signalfilterchebyshev2Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Cluster::add(self : Signalfilterchebyshev2Cluster, other : Signalfilterchebyshev2Cluster) -> Signalfilterchebyshev2Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cluster_copy(s : Signalfilterchebyshev2Cluster) -> Signalfilterchebyshev2Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cluster::copy(self : Signalfilterchebyshev2Cluster) -> Signalfilterchebyshev2Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cluster_fill(s : Signalfilterchebyshev2Cluster, v : Double) -> Signalfilterchebyshev2Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cluster::fill(self : Signalfilterchebyshev2Cluster, v : Double) -> Signalfilterchebyshev2Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cluster_min(s : Signalfilterchebyshev2Cluster) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Cluster::min(self : Signalfilterchebyshev2Cluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_cluster_max(s : Signalfilterchebyshev2Cluster) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Cluster::max(self : Signalfilterchebyshev2Cluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_cluster_to_string(s : Signalfilterchebyshev2Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Cluster::to_string(self : Signalfilterchebyshev2Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Model {
@@ -708,45 +708,45 @@ pub fn signal_filter_chebyshev2_model_make(size : Int) -> Signalfilterchebyshev2
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_model_len(s : Signalfilterchebyshev2Model) -> Int { s.size }
+pub fn Signalfilterchebyshev2Model::len(self : Signalfilterchebyshev2Model) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_model_get(s : Signalfilterchebyshev2Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Model::get(self : Signalfilterchebyshev2Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_model_set(s : Signalfilterchebyshev2Model, i : Int, v : Double) -> Signalfilterchebyshev2Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Model::set(self : Signalfilterchebyshev2Model, i : Int, v : Double) -> Signalfilterchebyshev2Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_model_sum(s : Signalfilterchebyshev2Model) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Model::sum(self : Signalfilterchebyshev2Model) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_model_mean(s : Signalfilterchebyshev2Model) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Model::mean(self : Signalfilterchebyshev2Model) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_model_scale(s : Signalfilterchebyshev2Model, f : Double) -> Signalfilterchebyshev2Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Model::scale(self : Signalfilterchebyshev2Model, f : Double) -> Signalfilterchebyshev2Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_model_add(a : Signalfilterchebyshev2Model, b : Signalfilterchebyshev2Model) -> Signalfilterchebyshev2Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Model::add(self : Signalfilterchebyshev2Model, other : Signalfilterchebyshev2Model) -> Signalfilterchebyshev2Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_model_copy(s : Signalfilterchebyshev2Model) -> Signalfilterchebyshev2Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Model::copy(self : Signalfilterchebyshev2Model) -> Signalfilterchebyshev2Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_model_fill(s : Signalfilterchebyshev2Model, v : Double) -> Signalfilterchebyshev2Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Model::fill(self : Signalfilterchebyshev2Model, v : Double) -> Signalfilterchebyshev2Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_model_min(s : Signalfilterchebyshev2Model) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Model::min(self : Signalfilterchebyshev2Model) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_model_max(s : Signalfilterchebyshev2Model) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Model::max(self : Signalfilterchebyshev2Model) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_model_to_string(s : Signalfilterchebyshev2Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Model::to_string(self : Signalfilterchebyshev2Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Layer {
@@ -759,45 +759,45 @@ pub fn signal_filter_chebyshev2_layer_make(size : Int) -> Signalfilterchebyshev2
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_layer_len(s : Signalfilterchebyshev2Layer) -> Int { s.size }
+pub fn Signalfilterchebyshev2Layer::len(self : Signalfilterchebyshev2Layer) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_layer_get(s : Signalfilterchebyshev2Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Layer::get(self : Signalfilterchebyshev2Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_layer_set(s : Signalfilterchebyshev2Layer, i : Int, v : Double) -> Signalfilterchebyshev2Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Layer::set(self : Signalfilterchebyshev2Layer, i : Int, v : Double) -> Signalfilterchebyshev2Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_layer_sum(s : Signalfilterchebyshev2Layer) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Layer::sum(self : Signalfilterchebyshev2Layer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_layer_mean(s : Signalfilterchebyshev2Layer) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Layer::mean(self : Signalfilterchebyshev2Layer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_layer_scale(s : Signalfilterchebyshev2Layer, f : Double) -> Signalfilterchebyshev2Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Layer::scale(self : Signalfilterchebyshev2Layer, f : Double) -> Signalfilterchebyshev2Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_layer_add(a : Signalfilterchebyshev2Layer, b : Signalfilterchebyshev2Layer) -> Signalfilterchebyshev2Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Layer::add(self : Signalfilterchebyshev2Layer, other : Signalfilterchebyshev2Layer) -> Signalfilterchebyshev2Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_layer_copy(s : Signalfilterchebyshev2Layer) -> Signalfilterchebyshev2Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Layer::copy(self : Signalfilterchebyshev2Layer) -> Signalfilterchebyshev2Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_layer_fill(s : Signalfilterchebyshev2Layer, v : Double) -> Signalfilterchebyshev2Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Layer::fill(self : Signalfilterchebyshev2Layer, v : Double) -> Signalfilterchebyshev2Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_layer_min(s : Signalfilterchebyshev2Layer) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Layer::min(self : Signalfilterchebyshev2Layer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_layer_max(s : Signalfilterchebyshev2Layer) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Layer::max(self : Signalfilterchebyshev2Layer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_layer_to_string(s : Signalfilterchebyshev2Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Layer::to_string(self : Signalfilterchebyshev2Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Buffer {
@@ -810,45 +810,45 @@ pub fn signal_filter_chebyshev2_buffer_make(size : Int) -> Signalfilterchebyshev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_buffer_len(s : Signalfilterchebyshev2Buffer) -> Int { s.size }
+pub fn Signalfilterchebyshev2Buffer::len(self : Signalfilterchebyshev2Buffer) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_buffer_get(s : Signalfilterchebyshev2Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Buffer::get(self : Signalfilterchebyshev2Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_buffer_set(s : Signalfilterchebyshev2Buffer, i : Int, v : Double) -> Signalfilterchebyshev2Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Buffer::set(self : Signalfilterchebyshev2Buffer, i : Int, v : Double) -> Signalfilterchebyshev2Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_buffer_sum(s : Signalfilterchebyshev2Buffer) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Buffer::sum(self : Signalfilterchebyshev2Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_buffer_mean(s : Signalfilterchebyshev2Buffer) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Buffer::mean(self : Signalfilterchebyshev2Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_buffer_scale(s : Signalfilterchebyshev2Buffer, f : Double) -> Signalfilterchebyshev2Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Buffer::scale(self : Signalfilterchebyshev2Buffer, f : Double) -> Signalfilterchebyshev2Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_buffer_add(a : Signalfilterchebyshev2Buffer, b : Signalfilterchebyshev2Buffer) -> Signalfilterchebyshev2Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Buffer::add(self : Signalfilterchebyshev2Buffer, other : Signalfilterchebyshev2Buffer) -> Signalfilterchebyshev2Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_buffer_copy(s : Signalfilterchebyshev2Buffer) -> Signalfilterchebyshev2Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Buffer::copy(self : Signalfilterchebyshev2Buffer) -> Signalfilterchebyshev2Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_buffer_fill(s : Signalfilterchebyshev2Buffer, v : Double) -> Signalfilterchebyshev2Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Buffer::fill(self : Signalfilterchebyshev2Buffer, v : Double) -> Signalfilterchebyshev2Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_buffer_min(s : Signalfilterchebyshev2Buffer) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Buffer::min(self : Signalfilterchebyshev2Buffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_buffer_max(s : Signalfilterchebyshev2Buffer) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Buffer::max(self : Signalfilterchebyshev2Buffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_buffer_to_string(s : Signalfilterchebyshev2Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Buffer::to_string(self : Signalfilterchebyshev2Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Cursor {
@@ -861,45 +861,45 @@ pub fn signal_filter_chebyshev2_cursor_make(size : Int) -> Signalfilterchebyshev
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_cursor_len(s : Signalfilterchebyshev2Cursor) -> Int { s.size }
+pub fn Signalfilterchebyshev2Cursor::len(self : Signalfilterchebyshev2Cursor) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_cursor_get(s : Signalfilterchebyshev2Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Cursor::get(self : Signalfilterchebyshev2Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_cursor_set(s : Signalfilterchebyshev2Cursor, i : Int, v : Double) -> Signalfilterchebyshev2Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cursor::set(self : Signalfilterchebyshev2Cursor, i : Int, v : Double) -> Signalfilterchebyshev2Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cursor_sum(s : Signalfilterchebyshev2Cursor) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Cursor::sum(self : Signalfilterchebyshev2Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_cursor_mean(s : Signalfilterchebyshev2Cursor) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Cursor::mean(self : Signalfilterchebyshev2Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_cursor_scale(s : Signalfilterchebyshev2Cursor, f : Double) -> Signalfilterchebyshev2Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cursor::scale(self : Signalfilterchebyshev2Cursor, f : Double) -> Signalfilterchebyshev2Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cursor_add(a : Signalfilterchebyshev2Cursor, b : Signalfilterchebyshev2Cursor) -> Signalfilterchebyshev2Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Cursor::add(self : Signalfilterchebyshev2Cursor, other : Signalfilterchebyshev2Cursor) -> Signalfilterchebyshev2Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cursor_copy(s : Signalfilterchebyshev2Cursor) -> Signalfilterchebyshev2Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cursor::copy(self : Signalfilterchebyshev2Cursor) -> Signalfilterchebyshev2Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cursor_fill(s : Signalfilterchebyshev2Cursor, v : Double) -> Signalfilterchebyshev2Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Cursor::fill(self : Signalfilterchebyshev2Cursor, v : Double) -> Signalfilterchebyshev2Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_cursor_min(s : Signalfilterchebyshev2Cursor) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Cursor::min(self : Signalfilterchebyshev2Cursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_cursor_max(s : Signalfilterchebyshev2Cursor) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Cursor::max(self : Signalfilterchebyshev2Cursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_cursor_to_string(s : Signalfilterchebyshev2Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Cursor::to_string(self : Signalfilterchebyshev2Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2View {
@@ -912,45 +912,45 @@ pub fn signal_filter_chebyshev2_view_make(size : Int) -> Signalfilterchebyshev2V
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_view_len(s : Signalfilterchebyshev2View) -> Int { s.size }
+pub fn Signalfilterchebyshev2View::len(self : Signalfilterchebyshev2View) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_view_get(s : Signalfilterchebyshev2View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2View::get(self : Signalfilterchebyshev2View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_view_set(s : Signalfilterchebyshev2View, i : Int, v : Double) -> Signalfilterchebyshev2View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2View::set(self : Signalfilterchebyshev2View, i : Int, v : Double) -> Signalfilterchebyshev2View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_view_sum(s : Signalfilterchebyshev2View) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2View::sum(self : Signalfilterchebyshev2View) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_view_mean(s : Signalfilterchebyshev2View) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2View::mean(self : Signalfilterchebyshev2View) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_view_scale(s : Signalfilterchebyshev2View, f : Double) -> Signalfilterchebyshev2View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2View::scale(self : Signalfilterchebyshev2View, f : Double) -> Signalfilterchebyshev2View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_view_add(a : Signalfilterchebyshev2View, b : Signalfilterchebyshev2View) -> Signalfilterchebyshev2View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2View::add(self : Signalfilterchebyshev2View, other : Signalfilterchebyshev2View) -> Signalfilterchebyshev2View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_view_copy(s : Signalfilterchebyshev2View) -> Signalfilterchebyshev2View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2View::copy(self : Signalfilterchebyshev2View) -> Signalfilterchebyshev2View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_view_fill(s : Signalfilterchebyshev2View, v : Double) -> Signalfilterchebyshev2View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2View::fill(self : Signalfilterchebyshev2View, v : Double) -> Signalfilterchebyshev2View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_view_min(s : Signalfilterchebyshev2View) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2View::min(self : Signalfilterchebyshev2View) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_view_max(s : Signalfilterchebyshev2View) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2View::max(self : Signalfilterchebyshev2View) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_view_to_string(s : Signalfilterchebyshev2View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2View::to_string(self : Signalfilterchebyshev2View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Range {
@@ -963,45 +963,45 @@ pub fn signal_filter_chebyshev2_range_make(size : Int) -> Signalfilterchebyshev2
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_range_len(s : Signalfilterchebyshev2Range) -> Int { s.size }
+pub fn Signalfilterchebyshev2Range::len(self : Signalfilterchebyshev2Range) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_range_get(s : Signalfilterchebyshev2Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Range::get(self : Signalfilterchebyshev2Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_range_set(s : Signalfilterchebyshev2Range, i : Int, v : Double) -> Signalfilterchebyshev2Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Range::set(self : Signalfilterchebyshev2Range, i : Int, v : Double) -> Signalfilterchebyshev2Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_range_sum(s : Signalfilterchebyshev2Range) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Range::sum(self : Signalfilterchebyshev2Range) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_range_mean(s : Signalfilterchebyshev2Range) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Range::mean(self : Signalfilterchebyshev2Range) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_range_scale(s : Signalfilterchebyshev2Range, f : Double) -> Signalfilterchebyshev2Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Range::scale(self : Signalfilterchebyshev2Range, f : Double) -> Signalfilterchebyshev2Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_range_add(a : Signalfilterchebyshev2Range, b : Signalfilterchebyshev2Range) -> Signalfilterchebyshev2Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Range::add(self : Signalfilterchebyshev2Range, other : Signalfilterchebyshev2Range) -> Signalfilterchebyshev2Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_range_copy(s : Signalfilterchebyshev2Range) -> Signalfilterchebyshev2Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Range::copy(self : Signalfilterchebyshev2Range) -> Signalfilterchebyshev2Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_range_fill(s : Signalfilterchebyshev2Range, v : Double) -> Signalfilterchebyshev2Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Range::fill(self : Signalfilterchebyshev2Range, v : Double) -> Signalfilterchebyshev2Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_range_min(s : Signalfilterchebyshev2Range) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Range::min(self : Signalfilterchebyshev2Range) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_range_max(s : Signalfilterchebyshev2Range) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Range::max(self : Signalfilterchebyshev2Range) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_range_to_string(s : Signalfilterchebyshev2Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Range::to_string(self : Signalfilterchebyshev2Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Signalfilterchebyshev2Slice {
@@ -1014,44 +1014,44 @@ pub fn signal_filter_chebyshev2_slice_make(size : Int) -> Signalfilterchebyshev2
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_filter_chebyshev2_slice_len(s : Signalfilterchebyshev2Slice) -> Int { s.size }
+pub fn Signalfilterchebyshev2Slice::len(self : Signalfilterchebyshev2Slice) -> Int { self.size }
 
-pub fn signal_filter_chebyshev2_slice_get(s : Signalfilterchebyshev2Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Signalfilterchebyshev2Slice::get(self : Signalfilterchebyshev2Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_filter_chebyshev2_slice_set(s : Signalfilterchebyshev2Slice, i : Int, v : Double) -> Signalfilterchebyshev2Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Slice::set(self : Signalfilterchebyshev2Slice, i : Int, v : Double) -> Signalfilterchebyshev2Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_slice_sum(s : Signalfilterchebyshev2Slice) -> Double { @_common.sum(s.data) }
+pub fn Signalfilterchebyshev2Slice::sum(self : Signalfilterchebyshev2Slice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_filter_chebyshev2_slice_mean(s : Signalfilterchebyshev2Slice) -> Double { @_common.mean(s.data) }
+pub fn Signalfilterchebyshev2Slice::mean(self : Signalfilterchebyshev2Slice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_filter_chebyshev2_slice_scale(s : Signalfilterchebyshev2Slice, f : Double) -> Signalfilterchebyshev2Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Slice::scale(self : Signalfilterchebyshev2Slice, f : Double) -> Signalfilterchebyshev2Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_slice_add(a : Signalfilterchebyshev2Slice, b : Signalfilterchebyshev2Slice) -> Signalfilterchebyshev2Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Signalfilterchebyshev2Slice::add(self : Signalfilterchebyshev2Slice, other : Signalfilterchebyshev2Slice) -> Signalfilterchebyshev2Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_slice_copy(s : Signalfilterchebyshev2Slice) -> Signalfilterchebyshev2Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Slice::copy(self : Signalfilterchebyshev2Slice) -> Signalfilterchebyshev2Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_slice_fill(s : Signalfilterchebyshev2Slice, v : Double) -> Signalfilterchebyshev2Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Signalfilterchebyshev2Slice::fill(self : Signalfilterchebyshev2Slice, v : Double) -> Signalfilterchebyshev2Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_filter_chebyshev2_slice_min(s : Signalfilterchebyshev2Slice) -> Double { @_common.min(s.data) }
+pub fn Signalfilterchebyshev2Slice::min(self : Signalfilterchebyshev2Slice) -> Double { @_common.min(self.data) }
 
-pub fn signal_filter_chebyshev2_slice_max(s : Signalfilterchebyshev2Slice) -> Double { @_common.max(s.data) }
+pub fn Signalfilterchebyshev2Slice::max(self : Signalfilterchebyshev2Slice) -> Double { @_common.max(self.data) }
 
-pub fn signal_filter_chebyshev2_slice_to_string(s : Signalfilterchebyshev2Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Signalfilterchebyshev2Slice::to_string(self : Signalfilterchebyshev2Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

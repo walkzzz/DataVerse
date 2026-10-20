@@ -351,45 +351,45 @@ pub fn opt_convex_gd_frame_make(size : Int) -> OptconvexgdFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_frame_len(s : OptconvexgdFrame) -> Int { s.size }
+pub fn OptconvexgdFrame::len(self : OptconvexgdFrame) -> Int { self.size }
 
-pub fn opt_convex_gd_frame_get(s : OptconvexgdFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdFrame::get(self : OptconvexgdFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_frame_set(s : OptconvexgdFrame, i : Int, v : Double) -> OptconvexgdFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdFrame::set(self : OptconvexgdFrame, i : Int, v : Double) -> OptconvexgdFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_frame_sum(s : OptconvexgdFrame) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdFrame::sum(self : OptconvexgdFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_frame_mean(s : OptconvexgdFrame) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdFrame::mean(self : OptconvexgdFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_frame_scale(s : OptconvexgdFrame, f : Double) -> OptconvexgdFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdFrame::scale(self : OptconvexgdFrame, f : Double) -> OptconvexgdFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_frame_add(a : OptconvexgdFrame, b : OptconvexgdFrame) -> OptconvexgdFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdFrame::add(self : OptconvexgdFrame, other : OptconvexgdFrame) -> OptconvexgdFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_frame_copy(s : OptconvexgdFrame) -> OptconvexgdFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdFrame::copy(self : OptconvexgdFrame) -> OptconvexgdFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_frame_fill(s : OptconvexgdFrame, v : Double) -> OptconvexgdFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdFrame::fill(self : OptconvexgdFrame, v : Double) -> OptconvexgdFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_frame_min(s : OptconvexgdFrame) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdFrame::min(self : OptconvexgdFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_frame_max(s : OptconvexgdFrame) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdFrame::max(self : OptconvexgdFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_frame_to_string(s : OptconvexgdFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdFrame::to_string(self : OptconvexgdFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdTable {
@@ -402,45 +402,45 @@ pub fn opt_convex_gd_table_make(size : Int) -> OptconvexgdTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_table_len(s : OptconvexgdTable) -> Int { s.size }
+pub fn OptconvexgdTable::len(self : OptconvexgdTable) -> Int { self.size }
 
-pub fn opt_convex_gd_table_get(s : OptconvexgdTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdTable::get(self : OptconvexgdTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_table_set(s : OptconvexgdTable, i : Int, v : Double) -> OptconvexgdTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdTable::set(self : OptconvexgdTable, i : Int, v : Double) -> OptconvexgdTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_table_sum(s : OptconvexgdTable) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdTable::sum(self : OptconvexgdTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_table_mean(s : OptconvexgdTable) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdTable::mean(self : OptconvexgdTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_table_scale(s : OptconvexgdTable, f : Double) -> OptconvexgdTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdTable::scale(self : OptconvexgdTable, f : Double) -> OptconvexgdTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_table_add(a : OptconvexgdTable, b : OptconvexgdTable) -> OptconvexgdTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdTable::add(self : OptconvexgdTable, other : OptconvexgdTable) -> OptconvexgdTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_table_copy(s : OptconvexgdTable) -> OptconvexgdTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdTable::copy(self : OptconvexgdTable) -> OptconvexgdTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_table_fill(s : OptconvexgdTable, v : Double) -> OptconvexgdTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdTable::fill(self : OptconvexgdTable, v : Double) -> OptconvexgdTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_table_min(s : OptconvexgdTable) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdTable::min(self : OptconvexgdTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_table_max(s : OptconvexgdTable) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdTable::max(self : OptconvexgdTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_table_to_string(s : OptconvexgdTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdTable::to_string(self : OptconvexgdTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdGraphN {
@@ -453,45 +453,45 @@ pub fn opt_convex_gd_graphn_make(size : Int) -> OptconvexgdGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_graphn_len(s : OptconvexgdGraphN) -> Int { s.size }
+pub fn OptconvexgdGraphN::len(self : OptconvexgdGraphN) -> Int { self.size }
 
-pub fn opt_convex_gd_graphn_get(s : OptconvexgdGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdGraphN::get(self : OptconvexgdGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_graphn_set(s : OptconvexgdGraphN, i : Int, v : Double) -> OptconvexgdGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdGraphN::set(self : OptconvexgdGraphN, i : Int, v : Double) -> OptconvexgdGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_graphn_sum(s : OptconvexgdGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdGraphN::sum(self : OptconvexgdGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_graphn_mean(s : OptconvexgdGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdGraphN::mean(self : OptconvexgdGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_graphn_scale(s : OptconvexgdGraphN, f : Double) -> OptconvexgdGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdGraphN::scale(self : OptconvexgdGraphN, f : Double) -> OptconvexgdGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_graphn_add(a : OptconvexgdGraphN, b : OptconvexgdGraphN) -> OptconvexgdGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdGraphN::add(self : OptconvexgdGraphN, other : OptconvexgdGraphN) -> OptconvexgdGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_graphn_copy(s : OptconvexgdGraphN) -> OptconvexgdGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdGraphN::copy(self : OptconvexgdGraphN) -> OptconvexgdGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_graphn_fill(s : OptconvexgdGraphN, v : Double) -> OptconvexgdGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdGraphN::fill(self : OptconvexgdGraphN, v : Double) -> OptconvexgdGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_graphn_min(s : OptconvexgdGraphN) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdGraphN::min(self : OptconvexgdGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_graphn_max(s : OptconvexgdGraphN) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdGraphN::max(self : OptconvexgdGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_graphn_to_string(s : OptconvexgdGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdGraphN::to_string(self : OptconvexgdGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdNode {
@@ -504,45 +504,45 @@ pub fn opt_convex_gd_node_make(size : Int) -> OptconvexgdNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_node_len(s : OptconvexgdNode) -> Int { s.size }
+pub fn OptconvexgdNode::len(self : OptconvexgdNode) -> Int { self.size }
 
-pub fn opt_convex_gd_node_get(s : OptconvexgdNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdNode::get(self : OptconvexgdNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_node_set(s : OptconvexgdNode, i : Int, v : Double) -> OptconvexgdNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdNode::set(self : OptconvexgdNode, i : Int, v : Double) -> OptconvexgdNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_node_sum(s : OptconvexgdNode) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdNode::sum(self : OptconvexgdNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_node_mean(s : OptconvexgdNode) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdNode::mean(self : OptconvexgdNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_node_scale(s : OptconvexgdNode, f : Double) -> OptconvexgdNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdNode::scale(self : OptconvexgdNode, f : Double) -> OptconvexgdNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_node_add(a : OptconvexgdNode, b : OptconvexgdNode) -> OptconvexgdNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdNode::add(self : OptconvexgdNode, other : OptconvexgdNode) -> OptconvexgdNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_node_copy(s : OptconvexgdNode) -> OptconvexgdNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdNode::copy(self : OptconvexgdNode) -> OptconvexgdNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_node_fill(s : OptconvexgdNode, v : Double) -> OptconvexgdNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdNode::fill(self : OptconvexgdNode, v : Double) -> OptconvexgdNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_node_min(s : OptconvexgdNode) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdNode::min(self : OptconvexgdNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_node_max(s : OptconvexgdNode) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdNode::max(self : OptconvexgdNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_node_to_string(s : OptconvexgdNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdNode::to_string(self : OptconvexgdNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdEdge {
@@ -555,45 +555,45 @@ pub fn opt_convex_gd_edge_make(size : Int) -> OptconvexgdEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_edge_len(s : OptconvexgdEdge) -> Int { s.size }
+pub fn OptconvexgdEdge::len(self : OptconvexgdEdge) -> Int { self.size }
 
-pub fn opt_convex_gd_edge_get(s : OptconvexgdEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdEdge::get(self : OptconvexgdEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_edge_set(s : OptconvexgdEdge, i : Int, v : Double) -> OptconvexgdEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdEdge::set(self : OptconvexgdEdge, i : Int, v : Double) -> OptconvexgdEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_edge_sum(s : OptconvexgdEdge) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdEdge::sum(self : OptconvexgdEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_edge_mean(s : OptconvexgdEdge) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdEdge::mean(self : OptconvexgdEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_edge_scale(s : OptconvexgdEdge, f : Double) -> OptconvexgdEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdEdge::scale(self : OptconvexgdEdge, f : Double) -> OptconvexgdEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_edge_add(a : OptconvexgdEdge, b : OptconvexgdEdge) -> OptconvexgdEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdEdge::add(self : OptconvexgdEdge, other : OptconvexgdEdge) -> OptconvexgdEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_edge_copy(s : OptconvexgdEdge) -> OptconvexgdEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdEdge::copy(self : OptconvexgdEdge) -> OptconvexgdEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_edge_fill(s : OptconvexgdEdge, v : Double) -> OptconvexgdEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdEdge::fill(self : OptconvexgdEdge, v : Double) -> OptconvexgdEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_edge_min(s : OptconvexgdEdge) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdEdge::min(self : OptconvexgdEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_edge_max(s : OptconvexgdEdge) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdEdge::max(self : OptconvexgdEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_edge_to_string(s : OptconvexgdEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdEdge::to_string(self : OptconvexgdEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdPath {
@@ -606,45 +606,45 @@ pub fn opt_convex_gd_path_make(size : Int) -> OptconvexgdPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_path_len(s : OptconvexgdPath) -> Int { s.size }
+pub fn OptconvexgdPath::len(self : OptconvexgdPath) -> Int { self.size }
 
-pub fn opt_convex_gd_path_get(s : OptconvexgdPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdPath::get(self : OptconvexgdPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_path_set(s : OptconvexgdPath, i : Int, v : Double) -> OptconvexgdPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdPath::set(self : OptconvexgdPath, i : Int, v : Double) -> OptconvexgdPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_path_sum(s : OptconvexgdPath) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdPath::sum(self : OptconvexgdPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_path_mean(s : OptconvexgdPath) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdPath::mean(self : OptconvexgdPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_path_scale(s : OptconvexgdPath, f : Double) -> OptconvexgdPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdPath::scale(self : OptconvexgdPath, f : Double) -> OptconvexgdPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_path_add(a : OptconvexgdPath, b : OptconvexgdPath) -> OptconvexgdPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdPath::add(self : OptconvexgdPath, other : OptconvexgdPath) -> OptconvexgdPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_path_copy(s : OptconvexgdPath) -> OptconvexgdPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdPath::copy(self : OptconvexgdPath) -> OptconvexgdPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_path_fill(s : OptconvexgdPath, v : Double) -> OptconvexgdPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdPath::fill(self : OptconvexgdPath, v : Double) -> OptconvexgdPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_path_min(s : OptconvexgdPath) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdPath::min(self : OptconvexgdPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_path_max(s : OptconvexgdPath) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdPath::max(self : OptconvexgdPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_path_to_string(s : OptconvexgdPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdPath::to_string(self : OptconvexgdPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdCluster {
@@ -657,45 +657,45 @@ pub fn opt_convex_gd_cluster_make(size : Int) -> OptconvexgdCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_cluster_len(s : OptconvexgdCluster) -> Int { s.size }
+pub fn OptconvexgdCluster::len(self : OptconvexgdCluster) -> Int { self.size }
 
-pub fn opt_convex_gd_cluster_get(s : OptconvexgdCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdCluster::get(self : OptconvexgdCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_cluster_set(s : OptconvexgdCluster, i : Int, v : Double) -> OptconvexgdCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdCluster::set(self : OptconvexgdCluster, i : Int, v : Double) -> OptconvexgdCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cluster_sum(s : OptconvexgdCluster) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdCluster::sum(self : OptconvexgdCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_cluster_mean(s : OptconvexgdCluster) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdCluster::mean(self : OptconvexgdCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_cluster_scale(s : OptconvexgdCluster, f : Double) -> OptconvexgdCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdCluster::scale(self : OptconvexgdCluster, f : Double) -> OptconvexgdCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cluster_add(a : OptconvexgdCluster, b : OptconvexgdCluster) -> OptconvexgdCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdCluster::add(self : OptconvexgdCluster, other : OptconvexgdCluster) -> OptconvexgdCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cluster_copy(s : OptconvexgdCluster) -> OptconvexgdCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdCluster::copy(self : OptconvexgdCluster) -> OptconvexgdCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cluster_fill(s : OptconvexgdCluster, v : Double) -> OptconvexgdCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdCluster::fill(self : OptconvexgdCluster, v : Double) -> OptconvexgdCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cluster_min(s : OptconvexgdCluster) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdCluster::min(self : OptconvexgdCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_cluster_max(s : OptconvexgdCluster) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdCluster::max(self : OptconvexgdCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_cluster_to_string(s : OptconvexgdCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdCluster::to_string(self : OptconvexgdCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdModel {
@@ -708,45 +708,45 @@ pub fn opt_convex_gd_model_make(size : Int) -> OptconvexgdModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_model_len(s : OptconvexgdModel) -> Int { s.size }
+pub fn OptconvexgdModel::len(self : OptconvexgdModel) -> Int { self.size }
 
-pub fn opt_convex_gd_model_get(s : OptconvexgdModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdModel::get(self : OptconvexgdModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_model_set(s : OptconvexgdModel, i : Int, v : Double) -> OptconvexgdModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdModel::set(self : OptconvexgdModel, i : Int, v : Double) -> OptconvexgdModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_model_sum(s : OptconvexgdModel) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdModel::sum(self : OptconvexgdModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_model_mean(s : OptconvexgdModel) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdModel::mean(self : OptconvexgdModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_model_scale(s : OptconvexgdModel, f : Double) -> OptconvexgdModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdModel::scale(self : OptconvexgdModel, f : Double) -> OptconvexgdModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_model_add(a : OptconvexgdModel, b : OptconvexgdModel) -> OptconvexgdModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdModel::add(self : OptconvexgdModel, other : OptconvexgdModel) -> OptconvexgdModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_model_copy(s : OptconvexgdModel) -> OptconvexgdModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdModel::copy(self : OptconvexgdModel) -> OptconvexgdModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_model_fill(s : OptconvexgdModel, v : Double) -> OptconvexgdModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdModel::fill(self : OptconvexgdModel, v : Double) -> OptconvexgdModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_model_min(s : OptconvexgdModel) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdModel::min(self : OptconvexgdModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_model_max(s : OptconvexgdModel) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdModel::max(self : OptconvexgdModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_model_to_string(s : OptconvexgdModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdModel::to_string(self : OptconvexgdModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdLayer {
@@ -759,45 +759,45 @@ pub fn opt_convex_gd_layer_make(size : Int) -> OptconvexgdLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_layer_len(s : OptconvexgdLayer) -> Int { s.size }
+pub fn OptconvexgdLayer::len(self : OptconvexgdLayer) -> Int { self.size }
 
-pub fn opt_convex_gd_layer_get(s : OptconvexgdLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdLayer::get(self : OptconvexgdLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_layer_set(s : OptconvexgdLayer, i : Int, v : Double) -> OptconvexgdLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdLayer::set(self : OptconvexgdLayer, i : Int, v : Double) -> OptconvexgdLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_layer_sum(s : OptconvexgdLayer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdLayer::sum(self : OptconvexgdLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_layer_mean(s : OptconvexgdLayer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdLayer::mean(self : OptconvexgdLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_layer_scale(s : OptconvexgdLayer, f : Double) -> OptconvexgdLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdLayer::scale(self : OptconvexgdLayer, f : Double) -> OptconvexgdLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_layer_add(a : OptconvexgdLayer, b : OptconvexgdLayer) -> OptconvexgdLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdLayer::add(self : OptconvexgdLayer, other : OptconvexgdLayer) -> OptconvexgdLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_layer_copy(s : OptconvexgdLayer) -> OptconvexgdLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdLayer::copy(self : OptconvexgdLayer) -> OptconvexgdLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_layer_fill(s : OptconvexgdLayer, v : Double) -> OptconvexgdLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdLayer::fill(self : OptconvexgdLayer, v : Double) -> OptconvexgdLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_layer_min(s : OptconvexgdLayer) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdLayer::min(self : OptconvexgdLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_layer_max(s : OptconvexgdLayer) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdLayer::max(self : OptconvexgdLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_layer_to_string(s : OptconvexgdLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdLayer::to_string(self : OptconvexgdLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdBuffer {
@@ -810,45 +810,45 @@ pub fn opt_convex_gd_buffer_make(size : Int) -> OptconvexgdBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_buffer_len(s : OptconvexgdBuffer) -> Int { s.size }
+pub fn OptconvexgdBuffer::len(self : OptconvexgdBuffer) -> Int { self.size }
 
-pub fn opt_convex_gd_buffer_get(s : OptconvexgdBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdBuffer::get(self : OptconvexgdBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_buffer_set(s : OptconvexgdBuffer, i : Int, v : Double) -> OptconvexgdBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdBuffer::set(self : OptconvexgdBuffer, i : Int, v : Double) -> OptconvexgdBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_buffer_sum(s : OptconvexgdBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdBuffer::sum(self : OptconvexgdBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_buffer_mean(s : OptconvexgdBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdBuffer::mean(self : OptconvexgdBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_buffer_scale(s : OptconvexgdBuffer, f : Double) -> OptconvexgdBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdBuffer::scale(self : OptconvexgdBuffer, f : Double) -> OptconvexgdBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_buffer_add(a : OptconvexgdBuffer, b : OptconvexgdBuffer) -> OptconvexgdBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdBuffer::add(self : OptconvexgdBuffer, other : OptconvexgdBuffer) -> OptconvexgdBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_buffer_copy(s : OptconvexgdBuffer) -> OptconvexgdBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdBuffer::copy(self : OptconvexgdBuffer) -> OptconvexgdBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_buffer_fill(s : OptconvexgdBuffer, v : Double) -> OptconvexgdBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdBuffer::fill(self : OptconvexgdBuffer, v : Double) -> OptconvexgdBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_buffer_min(s : OptconvexgdBuffer) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdBuffer::min(self : OptconvexgdBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_buffer_max(s : OptconvexgdBuffer) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdBuffer::max(self : OptconvexgdBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_buffer_to_string(s : OptconvexgdBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdBuffer::to_string(self : OptconvexgdBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdCursor {
@@ -861,45 +861,45 @@ pub fn opt_convex_gd_cursor_make(size : Int) -> OptconvexgdCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_cursor_len(s : OptconvexgdCursor) -> Int { s.size }
+pub fn OptconvexgdCursor::len(self : OptconvexgdCursor) -> Int { self.size }
 
-pub fn opt_convex_gd_cursor_get(s : OptconvexgdCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdCursor::get(self : OptconvexgdCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_cursor_set(s : OptconvexgdCursor, i : Int, v : Double) -> OptconvexgdCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdCursor::set(self : OptconvexgdCursor, i : Int, v : Double) -> OptconvexgdCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cursor_sum(s : OptconvexgdCursor) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdCursor::sum(self : OptconvexgdCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_cursor_mean(s : OptconvexgdCursor) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdCursor::mean(self : OptconvexgdCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_cursor_scale(s : OptconvexgdCursor, f : Double) -> OptconvexgdCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdCursor::scale(self : OptconvexgdCursor, f : Double) -> OptconvexgdCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cursor_add(a : OptconvexgdCursor, b : OptconvexgdCursor) -> OptconvexgdCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdCursor::add(self : OptconvexgdCursor, other : OptconvexgdCursor) -> OptconvexgdCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cursor_copy(s : OptconvexgdCursor) -> OptconvexgdCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdCursor::copy(self : OptconvexgdCursor) -> OptconvexgdCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cursor_fill(s : OptconvexgdCursor, v : Double) -> OptconvexgdCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdCursor::fill(self : OptconvexgdCursor, v : Double) -> OptconvexgdCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_cursor_min(s : OptconvexgdCursor) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdCursor::min(self : OptconvexgdCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_cursor_max(s : OptconvexgdCursor) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdCursor::max(self : OptconvexgdCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_cursor_to_string(s : OptconvexgdCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdCursor::to_string(self : OptconvexgdCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdView {
@@ -912,45 +912,45 @@ pub fn opt_convex_gd_view_make(size : Int) -> OptconvexgdView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_view_len(s : OptconvexgdView) -> Int { s.size }
+pub fn OptconvexgdView::len(self : OptconvexgdView) -> Int { self.size }
 
-pub fn opt_convex_gd_view_get(s : OptconvexgdView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdView::get(self : OptconvexgdView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_view_set(s : OptconvexgdView, i : Int, v : Double) -> OptconvexgdView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdView::set(self : OptconvexgdView, i : Int, v : Double) -> OptconvexgdView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_view_sum(s : OptconvexgdView) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdView::sum(self : OptconvexgdView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_view_mean(s : OptconvexgdView) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdView::mean(self : OptconvexgdView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_view_scale(s : OptconvexgdView, f : Double) -> OptconvexgdView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdView::scale(self : OptconvexgdView, f : Double) -> OptconvexgdView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_view_add(a : OptconvexgdView, b : OptconvexgdView) -> OptconvexgdView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdView::add(self : OptconvexgdView, other : OptconvexgdView) -> OptconvexgdView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_view_copy(s : OptconvexgdView) -> OptconvexgdView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdView::copy(self : OptconvexgdView) -> OptconvexgdView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_view_fill(s : OptconvexgdView, v : Double) -> OptconvexgdView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdView::fill(self : OptconvexgdView, v : Double) -> OptconvexgdView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_view_min(s : OptconvexgdView) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdView::min(self : OptconvexgdView) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_view_max(s : OptconvexgdView) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdView::max(self : OptconvexgdView) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_view_to_string(s : OptconvexgdView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdView::to_string(self : OptconvexgdView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdRange {
@@ -963,45 +963,45 @@ pub fn opt_convex_gd_range_make(size : Int) -> OptconvexgdRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_range_len(s : OptconvexgdRange) -> Int { s.size }
+pub fn OptconvexgdRange::len(self : OptconvexgdRange) -> Int { self.size }
 
-pub fn opt_convex_gd_range_get(s : OptconvexgdRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdRange::get(self : OptconvexgdRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_range_set(s : OptconvexgdRange, i : Int, v : Double) -> OptconvexgdRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdRange::set(self : OptconvexgdRange, i : Int, v : Double) -> OptconvexgdRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_range_sum(s : OptconvexgdRange) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdRange::sum(self : OptconvexgdRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_range_mean(s : OptconvexgdRange) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdRange::mean(self : OptconvexgdRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_range_scale(s : OptconvexgdRange, f : Double) -> OptconvexgdRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdRange::scale(self : OptconvexgdRange, f : Double) -> OptconvexgdRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_range_add(a : OptconvexgdRange, b : OptconvexgdRange) -> OptconvexgdRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdRange::add(self : OptconvexgdRange, other : OptconvexgdRange) -> OptconvexgdRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_range_copy(s : OptconvexgdRange) -> OptconvexgdRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdRange::copy(self : OptconvexgdRange) -> OptconvexgdRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_range_fill(s : OptconvexgdRange, v : Double) -> OptconvexgdRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdRange::fill(self : OptconvexgdRange, v : Double) -> OptconvexgdRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_range_min(s : OptconvexgdRange) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdRange::min(self : OptconvexgdRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_range_max(s : OptconvexgdRange) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdRange::max(self : OptconvexgdRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_range_to_string(s : OptconvexgdRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdRange::to_string(self : OptconvexgdRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_convex_gd_slice_make(size : Int) -> OptconvexgdSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_convex_gd_slice_len(s : OptconvexgdSlice) -> Int { s.size }
+pub fn OptconvexgdSlice::len(self : OptconvexgdSlice) -> Int { self.size }
 
-pub fn opt_convex_gd_slice_get(s : OptconvexgdSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptconvexgdSlice::get(self : OptconvexgdSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_convex_gd_slice_set(s : OptconvexgdSlice, i : Int, v : Double) -> OptconvexgdSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptconvexgdSlice::set(self : OptconvexgdSlice, i : Int, v : Double) -> OptconvexgdSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_slice_sum(s : OptconvexgdSlice) -> Double { @_common.sum(s.data) }
+pub fn OptconvexgdSlice::sum(self : OptconvexgdSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_convex_gd_slice_mean(s : OptconvexgdSlice) -> Double { @_common.mean(s.data) }
+pub fn OptconvexgdSlice::mean(self : OptconvexgdSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_convex_gd_slice_scale(s : OptconvexgdSlice, f : Double) -> OptconvexgdSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptconvexgdSlice::scale(self : OptconvexgdSlice, f : Double) -> OptconvexgdSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_slice_add(a : OptconvexgdSlice, b : OptconvexgdSlice) -> OptconvexgdSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptconvexgdSlice::add(self : OptconvexgdSlice, other : OptconvexgdSlice) -> OptconvexgdSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_convex_gd_slice_copy(s : OptconvexgdSlice) -> OptconvexgdSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptconvexgdSlice::copy(self : OptconvexgdSlice) -> OptconvexgdSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_slice_fill(s : OptconvexgdSlice, v : Double) -> OptconvexgdSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptconvexgdSlice::fill(self : OptconvexgdSlice, v : Double) -> OptconvexgdSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_convex_gd_slice_min(s : OptconvexgdSlice) -> Double { @_common.min(s.data) }
+pub fn OptconvexgdSlice::min(self : OptconvexgdSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_convex_gd_slice_max(s : OptconvexgdSlice) -> Double { @_common.max(s.data) }
+pub fn OptconvexgdSlice::max(self : OptconvexgdSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_convex_gd_slice_to_string(s : OptconvexgdSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptconvexgdSlice::to_string(self : OptconvexgdSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

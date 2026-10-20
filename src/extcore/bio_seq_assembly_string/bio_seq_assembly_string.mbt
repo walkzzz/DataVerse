@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_string_frame_make(size : Int) -> BioseqassemblystringFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_frame_len(s : BioseqassemblystringFrame) -> Int { s.size }
+pub fn BioseqassemblystringFrame::len(self : BioseqassemblystringFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_frame_get(s : BioseqassemblystringFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringFrame::get(self : BioseqassemblystringFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_frame_set(s : BioseqassemblystringFrame, i : Int, v : Double) -> BioseqassemblystringFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringFrame::set(self : BioseqassemblystringFrame, i : Int, v : Double) -> BioseqassemblystringFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_frame_sum(s : BioseqassemblystringFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringFrame::sum(self : BioseqassemblystringFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_frame_mean(s : BioseqassemblystringFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringFrame::mean(self : BioseqassemblystringFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_frame_scale(s : BioseqassemblystringFrame, f : Double) -> BioseqassemblystringFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringFrame::scale(self : BioseqassemblystringFrame, f : Double) -> BioseqassemblystringFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_frame_add(a : BioseqassemblystringFrame, b : BioseqassemblystringFrame) -> BioseqassemblystringFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringFrame::add(self : BioseqassemblystringFrame, other : BioseqassemblystringFrame) -> BioseqassemblystringFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_frame_copy(s : BioseqassemblystringFrame) -> BioseqassemblystringFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringFrame::copy(self : BioseqassemblystringFrame) -> BioseqassemblystringFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_frame_fill(s : BioseqassemblystringFrame, v : Double) -> BioseqassemblystringFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringFrame::fill(self : BioseqassemblystringFrame, v : Double) -> BioseqassemblystringFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_frame_min(s : BioseqassemblystringFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringFrame::min(self : BioseqassemblystringFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_frame_max(s : BioseqassemblystringFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringFrame::max(self : BioseqassemblystringFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_frame_to_string(s : BioseqassemblystringFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringFrame::to_string(self : BioseqassemblystringFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_string_table_make(size : Int) -> BioseqassemblystringTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_table_len(s : BioseqassemblystringTable) -> Int { s.size }
+pub fn BioseqassemblystringTable::len(self : BioseqassemblystringTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_table_get(s : BioseqassemblystringTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringTable::get(self : BioseqassemblystringTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_table_set(s : BioseqassemblystringTable, i : Int, v : Double) -> BioseqassemblystringTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringTable::set(self : BioseqassemblystringTable, i : Int, v : Double) -> BioseqassemblystringTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_table_sum(s : BioseqassemblystringTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringTable::sum(self : BioseqassemblystringTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_table_mean(s : BioseqassemblystringTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringTable::mean(self : BioseqassemblystringTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_table_scale(s : BioseqassemblystringTable, f : Double) -> BioseqassemblystringTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringTable::scale(self : BioseqassemblystringTable, f : Double) -> BioseqassemblystringTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_table_add(a : BioseqassemblystringTable, b : BioseqassemblystringTable) -> BioseqassemblystringTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringTable::add(self : BioseqassemblystringTable, other : BioseqassemblystringTable) -> BioseqassemblystringTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_table_copy(s : BioseqassemblystringTable) -> BioseqassemblystringTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringTable::copy(self : BioseqassemblystringTable) -> BioseqassemblystringTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_table_fill(s : BioseqassemblystringTable, v : Double) -> BioseqassemblystringTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringTable::fill(self : BioseqassemblystringTable, v : Double) -> BioseqassemblystringTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_table_min(s : BioseqassemblystringTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringTable::min(self : BioseqassemblystringTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_table_max(s : BioseqassemblystringTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringTable::max(self : BioseqassemblystringTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_table_to_string(s : BioseqassemblystringTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringTable::to_string(self : BioseqassemblystringTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_string_graphn_make(size : Int) -> BioseqassemblystringGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_graphn_len(s : BioseqassemblystringGraphN) -> Int { s.size }
+pub fn BioseqassemblystringGraphN::len(self : BioseqassemblystringGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_graphn_get(s : BioseqassemblystringGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringGraphN::get(self : BioseqassemblystringGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_graphn_set(s : BioseqassemblystringGraphN, i : Int, v : Double) -> BioseqassemblystringGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringGraphN::set(self : BioseqassemblystringGraphN, i : Int, v : Double) -> BioseqassemblystringGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_graphn_sum(s : BioseqassemblystringGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringGraphN::sum(self : BioseqassemblystringGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_graphn_mean(s : BioseqassemblystringGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringGraphN::mean(self : BioseqassemblystringGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_graphn_scale(s : BioseqassemblystringGraphN, f : Double) -> BioseqassemblystringGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringGraphN::scale(self : BioseqassemblystringGraphN, f : Double) -> BioseqassemblystringGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_graphn_add(a : BioseqassemblystringGraphN, b : BioseqassemblystringGraphN) -> BioseqassemblystringGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringGraphN::add(self : BioseqassemblystringGraphN, other : BioseqassemblystringGraphN) -> BioseqassemblystringGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_graphn_copy(s : BioseqassemblystringGraphN) -> BioseqassemblystringGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringGraphN::copy(self : BioseqassemblystringGraphN) -> BioseqassemblystringGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_graphn_fill(s : BioseqassemblystringGraphN, v : Double) -> BioseqassemblystringGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringGraphN::fill(self : BioseqassemblystringGraphN, v : Double) -> BioseqassemblystringGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_graphn_min(s : BioseqassemblystringGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringGraphN::min(self : BioseqassemblystringGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_graphn_max(s : BioseqassemblystringGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringGraphN::max(self : BioseqassemblystringGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_graphn_to_string(s : BioseqassemblystringGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringGraphN::to_string(self : BioseqassemblystringGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_string_node_make(size : Int) -> BioseqassemblystringNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_node_len(s : BioseqassemblystringNode) -> Int { s.size }
+pub fn BioseqassemblystringNode::len(self : BioseqassemblystringNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_node_get(s : BioseqassemblystringNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringNode::get(self : BioseqassemblystringNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_node_set(s : BioseqassemblystringNode, i : Int, v : Double) -> BioseqassemblystringNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringNode::set(self : BioseqassemblystringNode, i : Int, v : Double) -> BioseqassemblystringNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_node_sum(s : BioseqassemblystringNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringNode::sum(self : BioseqassemblystringNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_node_mean(s : BioseqassemblystringNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringNode::mean(self : BioseqassemblystringNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_node_scale(s : BioseqassemblystringNode, f : Double) -> BioseqassemblystringNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringNode::scale(self : BioseqassemblystringNode, f : Double) -> BioseqassemblystringNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_node_add(a : BioseqassemblystringNode, b : BioseqassemblystringNode) -> BioseqassemblystringNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringNode::add(self : BioseqassemblystringNode, other : BioseqassemblystringNode) -> BioseqassemblystringNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_node_copy(s : BioseqassemblystringNode) -> BioseqassemblystringNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringNode::copy(self : BioseqassemblystringNode) -> BioseqassemblystringNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_node_fill(s : BioseqassemblystringNode, v : Double) -> BioseqassemblystringNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringNode::fill(self : BioseqassemblystringNode, v : Double) -> BioseqassemblystringNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_node_min(s : BioseqassemblystringNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringNode::min(self : BioseqassemblystringNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_node_max(s : BioseqassemblystringNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringNode::max(self : BioseqassemblystringNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_node_to_string(s : BioseqassemblystringNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringNode::to_string(self : BioseqassemblystringNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_string_edge_make(size : Int) -> BioseqassemblystringEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_edge_len(s : BioseqassemblystringEdge) -> Int { s.size }
+pub fn BioseqassemblystringEdge::len(self : BioseqassemblystringEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_edge_get(s : BioseqassemblystringEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringEdge::get(self : BioseqassemblystringEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_edge_set(s : BioseqassemblystringEdge, i : Int, v : Double) -> BioseqassemblystringEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringEdge::set(self : BioseqassemblystringEdge, i : Int, v : Double) -> BioseqassemblystringEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_edge_sum(s : BioseqassemblystringEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringEdge::sum(self : BioseqassemblystringEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_edge_mean(s : BioseqassemblystringEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringEdge::mean(self : BioseqassemblystringEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_edge_scale(s : BioseqassemblystringEdge, f : Double) -> BioseqassemblystringEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringEdge::scale(self : BioseqassemblystringEdge, f : Double) -> BioseqassemblystringEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_edge_add(a : BioseqassemblystringEdge, b : BioseqassemblystringEdge) -> BioseqassemblystringEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringEdge::add(self : BioseqassemblystringEdge, other : BioseqassemblystringEdge) -> BioseqassemblystringEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_edge_copy(s : BioseqassemblystringEdge) -> BioseqassemblystringEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringEdge::copy(self : BioseqassemblystringEdge) -> BioseqassemblystringEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_edge_fill(s : BioseqassemblystringEdge, v : Double) -> BioseqassemblystringEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringEdge::fill(self : BioseqassemblystringEdge, v : Double) -> BioseqassemblystringEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_edge_min(s : BioseqassemblystringEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringEdge::min(self : BioseqassemblystringEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_edge_max(s : BioseqassemblystringEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringEdge::max(self : BioseqassemblystringEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_edge_to_string(s : BioseqassemblystringEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringEdge::to_string(self : BioseqassemblystringEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_string_path_make(size : Int) -> BioseqassemblystringPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_path_len(s : BioseqassemblystringPath) -> Int { s.size }
+pub fn BioseqassemblystringPath::len(self : BioseqassemblystringPath) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_path_get(s : BioseqassemblystringPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringPath::get(self : BioseqassemblystringPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_path_set(s : BioseqassemblystringPath, i : Int, v : Double) -> BioseqassemblystringPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringPath::set(self : BioseqassemblystringPath, i : Int, v : Double) -> BioseqassemblystringPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_path_sum(s : BioseqassemblystringPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringPath::sum(self : BioseqassemblystringPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_path_mean(s : BioseqassemblystringPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringPath::mean(self : BioseqassemblystringPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_path_scale(s : BioseqassemblystringPath, f : Double) -> BioseqassemblystringPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringPath::scale(self : BioseqassemblystringPath, f : Double) -> BioseqassemblystringPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_path_add(a : BioseqassemblystringPath, b : BioseqassemblystringPath) -> BioseqassemblystringPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringPath::add(self : BioseqassemblystringPath, other : BioseqassemblystringPath) -> BioseqassemblystringPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_path_copy(s : BioseqassemblystringPath) -> BioseqassemblystringPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringPath::copy(self : BioseqassemblystringPath) -> BioseqassemblystringPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_path_fill(s : BioseqassemblystringPath, v : Double) -> BioseqassemblystringPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringPath::fill(self : BioseqassemblystringPath, v : Double) -> BioseqassemblystringPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_path_min(s : BioseqassemblystringPath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringPath::min(self : BioseqassemblystringPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_path_max(s : BioseqassemblystringPath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringPath::max(self : BioseqassemblystringPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_path_to_string(s : BioseqassemblystringPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringPath::to_string(self : BioseqassemblystringPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_string_cluster_make(size : Int) -> BioseqassemblystringC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_cluster_len(s : BioseqassemblystringCluster) -> Int { s.size }
+pub fn BioseqassemblystringCluster::len(self : BioseqassemblystringCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_cluster_get(s : BioseqassemblystringCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringCluster::get(self : BioseqassemblystringCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_cluster_set(s : BioseqassemblystringCluster, i : Int, v : Double) -> BioseqassemblystringCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCluster::set(self : BioseqassemblystringCluster, i : Int, v : Double) -> BioseqassemblystringCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cluster_sum(s : BioseqassemblystringCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringCluster::sum(self : BioseqassemblystringCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_cluster_mean(s : BioseqassemblystringCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringCluster::mean(self : BioseqassemblystringCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_cluster_scale(s : BioseqassemblystringCluster, f : Double) -> BioseqassemblystringCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCluster::scale(self : BioseqassemblystringCluster, f : Double) -> BioseqassemblystringCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cluster_add(a : BioseqassemblystringCluster, b : BioseqassemblystringCluster) -> BioseqassemblystringCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringCluster::add(self : BioseqassemblystringCluster, other : BioseqassemblystringCluster) -> BioseqassemblystringCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cluster_copy(s : BioseqassemblystringCluster) -> BioseqassemblystringCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCluster::copy(self : BioseqassemblystringCluster) -> BioseqassemblystringCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cluster_fill(s : BioseqassemblystringCluster, v : Double) -> BioseqassemblystringCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCluster::fill(self : BioseqassemblystringCluster, v : Double) -> BioseqassemblystringCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cluster_min(s : BioseqassemblystringCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringCluster::min(self : BioseqassemblystringCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_cluster_max(s : BioseqassemblystringCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringCluster::max(self : BioseqassemblystringCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_cluster_to_string(s : BioseqassemblystringCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringCluster::to_string(self : BioseqassemblystringCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_string_model_make(size : Int) -> BioseqassemblystringMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_model_len(s : BioseqassemblystringModel) -> Int { s.size }
+pub fn BioseqassemblystringModel::len(self : BioseqassemblystringModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_model_get(s : BioseqassemblystringModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringModel::get(self : BioseqassemblystringModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_model_set(s : BioseqassemblystringModel, i : Int, v : Double) -> BioseqassemblystringModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringModel::set(self : BioseqassemblystringModel, i : Int, v : Double) -> BioseqassemblystringModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_model_sum(s : BioseqassemblystringModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringModel::sum(self : BioseqassemblystringModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_model_mean(s : BioseqassemblystringModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringModel::mean(self : BioseqassemblystringModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_model_scale(s : BioseqassemblystringModel, f : Double) -> BioseqassemblystringModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringModel::scale(self : BioseqassemblystringModel, f : Double) -> BioseqassemblystringModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_model_add(a : BioseqassemblystringModel, b : BioseqassemblystringModel) -> BioseqassemblystringModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringModel::add(self : BioseqassemblystringModel, other : BioseqassemblystringModel) -> BioseqassemblystringModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_model_copy(s : BioseqassemblystringModel) -> BioseqassemblystringModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringModel::copy(self : BioseqassemblystringModel) -> BioseqassemblystringModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_model_fill(s : BioseqassemblystringModel, v : Double) -> BioseqassemblystringModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringModel::fill(self : BioseqassemblystringModel, v : Double) -> BioseqassemblystringModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_model_min(s : BioseqassemblystringModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringModel::min(self : BioseqassemblystringModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_model_max(s : BioseqassemblystringModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringModel::max(self : BioseqassemblystringModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_model_to_string(s : BioseqassemblystringModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringModel::to_string(self : BioseqassemblystringModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_string_layer_make(size : Int) -> BioseqassemblystringLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_layer_len(s : BioseqassemblystringLayer) -> Int { s.size }
+pub fn BioseqassemblystringLayer::len(self : BioseqassemblystringLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_layer_get(s : BioseqassemblystringLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringLayer::get(self : BioseqassemblystringLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_layer_set(s : BioseqassemblystringLayer, i : Int, v : Double) -> BioseqassemblystringLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringLayer::set(self : BioseqassemblystringLayer, i : Int, v : Double) -> BioseqassemblystringLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_layer_sum(s : BioseqassemblystringLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringLayer::sum(self : BioseqassemblystringLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_layer_mean(s : BioseqassemblystringLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringLayer::mean(self : BioseqassemblystringLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_layer_scale(s : BioseqassemblystringLayer, f : Double) -> BioseqassemblystringLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringLayer::scale(self : BioseqassemblystringLayer, f : Double) -> BioseqassemblystringLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_layer_add(a : BioseqassemblystringLayer, b : BioseqassemblystringLayer) -> BioseqassemblystringLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringLayer::add(self : BioseqassemblystringLayer, other : BioseqassemblystringLayer) -> BioseqassemblystringLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_layer_copy(s : BioseqassemblystringLayer) -> BioseqassemblystringLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringLayer::copy(self : BioseqassemblystringLayer) -> BioseqassemblystringLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_layer_fill(s : BioseqassemblystringLayer, v : Double) -> BioseqassemblystringLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringLayer::fill(self : BioseqassemblystringLayer, v : Double) -> BioseqassemblystringLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_layer_min(s : BioseqassemblystringLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringLayer::min(self : BioseqassemblystringLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_layer_max(s : BioseqassemblystringLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringLayer::max(self : BioseqassemblystringLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_layer_to_string(s : BioseqassemblystringLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringLayer::to_string(self : BioseqassemblystringLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_string_buffer_make(size : Int) -> BioseqassemblystringBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_buffer_len(s : BioseqassemblystringBuffer) -> Int { s.size }
+pub fn BioseqassemblystringBuffer::len(self : BioseqassemblystringBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_buffer_get(s : BioseqassemblystringBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringBuffer::get(self : BioseqassemblystringBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_buffer_set(s : BioseqassemblystringBuffer, i : Int, v : Double) -> BioseqassemblystringBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringBuffer::set(self : BioseqassemblystringBuffer, i : Int, v : Double) -> BioseqassemblystringBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_buffer_sum(s : BioseqassemblystringBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringBuffer::sum(self : BioseqassemblystringBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_buffer_mean(s : BioseqassemblystringBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringBuffer::mean(self : BioseqassemblystringBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_buffer_scale(s : BioseqassemblystringBuffer, f : Double) -> BioseqassemblystringBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringBuffer::scale(self : BioseqassemblystringBuffer, f : Double) -> BioseqassemblystringBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_buffer_add(a : BioseqassemblystringBuffer, b : BioseqassemblystringBuffer) -> BioseqassemblystringBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringBuffer::add(self : BioseqassemblystringBuffer, other : BioseqassemblystringBuffer) -> BioseqassemblystringBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_buffer_copy(s : BioseqassemblystringBuffer) -> BioseqassemblystringBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringBuffer::copy(self : BioseqassemblystringBuffer) -> BioseqassemblystringBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_buffer_fill(s : BioseqassemblystringBuffer, v : Double) -> BioseqassemblystringBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringBuffer::fill(self : BioseqassemblystringBuffer, v : Double) -> BioseqassemblystringBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_buffer_min(s : BioseqassemblystringBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringBuffer::min(self : BioseqassemblystringBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_buffer_max(s : BioseqassemblystringBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringBuffer::max(self : BioseqassemblystringBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_buffer_to_string(s : BioseqassemblystringBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringBuffer::to_string(self : BioseqassemblystringBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_string_cursor_make(size : Int) -> BioseqassemblystringCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_cursor_len(s : BioseqassemblystringCursor) -> Int { s.size }
+pub fn BioseqassemblystringCursor::len(self : BioseqassemblystringCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_cursor_get(s : BioseqassemblystringCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringCursor::get(self : BioseqassemblystringCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_cursor_set(s : BioseqassemblystringCursor, i : Int, v : Double) -> BioseqassemblystringCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCursor::set(self : BioseqassemblystringCursor, i : Int, v : Double) -> BioseqassemblystringCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cursor_sum(s : BioseqassemblystringCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringCursor::sum(self : BioseqassemblystringCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_cursor_mean(s : BioseqassemblystringCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringCursor::mean(self : BioseqassemblystringCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_cursor_scale(s : BioseqassemblystringCursor, f : Double) -> BioseqassemblystringCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCursor::scale(self : BioseqassemblystringCursor, f : Double) -> BioseqassemblystringCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cursor_add(a : BioseqassemblystringCursor, b : BioseqassemblystringCursor) -> BioseqassemblystringCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringCursor::add(self : BioseqassemblystringCursor, other : BioseqassemblystringCursor) -> BioseqassemblystringCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cursor_copy(s : BioseqassemblystringCursor) -> BioseqassemblystringCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCursor::copy(self : BioseqassemblystringCursor) -> BioseqassemblystringCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cursor_fill(s : BioseqassemblystringCursor, v : Double) -> BioseqassemblystringCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringCursor::fill(self : BioseqassemblystringCursor, v : Double) -> BioseqassemblystringCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_cursor_min(s : BioseqassemblystringCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringCursor::min(self : BioseqassemblystringCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_cursor_max(s : BioseqassemblystringCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringCursor::max(self : BioseqassemblystringCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_cursor_to_string(s : BioseqassemblystringCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringCursor::to_string(self : BioseqassemblystringCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_string_view_make(size : Int) -> BioseqassemblystringView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_view_len(s : BioseqassemblystringView) -> Int { s.size }
+pub fn BioseqassemblystringView::len(self : BioseqassemblystringView) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_view_get(s : BioseqassemblystringView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringView::get(self : BioseqassemblystringView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_view_set(s : BioseqassemblystringView, i : Int, v : Double) -> BioseqassemblystringView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringView::set(self : BioseqassemblystringView, i : Int, v : Double) -> BioseqassemblystringView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_view_sum(s : BioseqassemblystringView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringView::sum(self : BioseqassemblystringView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_view_mean(s : BioseqassemblystringView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringView::mean(self : BioseqassemblystringView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_view_scale(s : BioseqassemblystringView, f : Double) -> BioseqassemblystringView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringView::scale(self : BioseqassemblystringView, f : Double) -> BioseqassemblystringView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_view_add(a : BioseqassemblystringView, b : BioseqassemblystringView) -> BioseqassemblystringView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringView::add(self : BioseqassemblystringView, other : BioseqassemblystringView) -> BioseqassemblystringView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_view_copy(s : BioseqassemblystringView) -> BioseqassemblystringView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringView::copy(self : BioseqassemblystringView) -> BioseqassemblystringView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_view_fill(s : BioseqassemblystringView, v : Double) -> BioseqassemblystringView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringView::fill(self : BioseqassemblystringView, v : Double) -> BioseqassemblystringView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_view_min(s : BioseqassemblystringView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringView::min(self : BioseqassemblystringView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_view_max(s : BioseqassemblystringView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringView::max(self : BioseqassemblystringView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_view_to_string(s : BioseqassemblystringView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringView::to_string(self : BioseqassemblystringView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_string_range_make(size : Int) -> BioseqassemblystringRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_range_len(s : BioseqassemblystringRange) -> Int { s.size }
+pub fn BioseqassemblystringRange::len(self : BioseqassemblystringRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_range_get(s : BioseqassemblystringRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringRange::get(self : BioseqassemblystringRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_range_set(s : BioseqassemblystringRange, i : Int, v : Double) -> BioseqassemblystringRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringRange::set(self : BioseqassemblystringRange, i : Int, v : Double) -> BioseqassemblystringRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_range_sum(s : BioseqassemblystringRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringRange::sum(self : BioseqassemblystringRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_range_mean(s : BioseqassemblystringRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringRange::mean(self : BioseqassemblystringRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_range_scale(s : BioseqassemblystringRange, f : Double) -> BioseqassemblystringRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringRange::scale(self : BioseqassemblystringRange, f : Double) -> BioseqassemblystringRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_range_add(a : BioseqassemblystringRange, b : BioseqassemblystringRange) -> BioseqassemblystringRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringRange::add(self : BioseqassemblystringRange, other : BioseqassemblystringRange) -> BioseqassemblystringRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_range_copy(s : BioseqassemblystringRange) -> BioseqassemblystringRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringRange::copy(self : BioseqassemblystringRange) -> BioseqassemblystringRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_range_fill(s : BioseqassemblystringRange, v : Double) -> BioseqassemblystringRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringRange::fill(self : BioseqassemblystringRange, v : Double) -> BioseqassemblystringRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_range_min(s : BioseqassemblystringRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringRange::min(self : BioseqassemblystringRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_range_max(s : BioseqassemblystringRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringRange::max(self : BioseqassemblystringRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_range_to_string(s : BioseqassemblystringRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringRange::to_string(self : BioseqassemblystringRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblystringSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_string_slice_make(size : Int) -> BioseqassemblystringSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_string_slice_len(s : BioseqassemblystringSlice) -> Int { s.size }
+pub fn BioseqassemblystringSlice::len(self : BioseqassemblystringSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_string_slice_get(s : BioseqassemblystringSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblystringSlice::get(self : BioseqassemblystringSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_string_slice_set(s : BioseqassemblystringSlice, i : Int, v : Double) -> BioseqassemblystringSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblystringSlice::set(self : BioseqassemblystringSlice, i : Int, v : Double) -> BioseqassemblystringSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_slice_sum(s : BioseqassemblystringSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblystringSlice::sum(self : BioseqassemblystringSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_string_slice_mean(s : BioseqassemblystringSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblystringSlice::mean(self : BioseqassemblystringSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_string_slice_scale(s : BioseqassemblystringSlice, f : Double) -> BioseqassemblystringSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringSlice::scale(self : BioseqassemblystringSlice, f : Double) -> BioseqassemblystringSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_slice_add(a : BioseqassemblystringSlice, b : BioseqassemblystringSlice) -> BioseqassemblystringSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblystringSlice::add(self : BioseqassemblystringSlice, other : BioseqassemblystringSlice) -> BioseqassemblystringSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_slice_copy(s : BioseqassemblystringSlice) -> BioseqassemblystringSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringSlice::copy(self : BioseqassemblystringSlice) -> BioseqassemblystringSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_slice_fill(s : BioseqassemblystringSlice, v : Double) -> BioseqassemblystringSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblystringSlice::fill(self : BioseqassemblystringSlice, v : Double) -> BioseqassemblystringSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_string_slice_min(s : BioseqassemblystringSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblystringSlice::min(self : BioseqassemblystringSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_string_slice_max(s : BioseqassemblystringSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblystringSlice::max(self : BioseqassemblystringSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_string_slice_to_string(s : BioseqassemblystringSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblystringSlice::to_string(self : BioseqassemblystringSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

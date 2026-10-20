@@ -351,45 +351,45 @@ pub fn crypto_hash_sha256_frame_make(size : Int) -> Cryptohashsha256Frame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_frame_len(s : Cryptohashsha256Frame) -> Int { s.size }
+pub fn Cryptohashsha256Frame::len(self : Cryptohashsha256Frame) -> Int { self.size }
 
-pub fn crypto_hash_sha256_frame_get(s : Cryptohashsha256Frame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Frame::get(self : Cryptohashsha256Frame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_frame_set(s : Cryptohashsha256Frame, i : Int, v : Double) -> Cryptohashsha256Frame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Frame::set(self : Cryptohashsha256Frame, i : Int, v : Double) -> Cryptohashsha256Frame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_frame_sum(s : Cryptohashsha256Frame) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Frame::sum(self : Cryptohashsha256Frame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_frame_mean(s : Cryptohashsha256Frame) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Frame::mean(self : Cryptohashsha256Frame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_frame_scale(s : Cryptohashsha256Frame, f : Double) -> Cryptohashsha256Frame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Frame::scale(self : Cryptohashsha256Frame, f : Double) -> Cryptohashsha256Frame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_frame_add(a : Cryptohashsha256Frame, b : Cryptohashsha256Frame) -> Cryptohashsha256Frame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Frame::add(self : Cryptohashsha256Frame, other : Cryptohashsha256Frame) -> Cryptohashsha256Frame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_frame_copy(s : Cryptohashsha256Frame) -> Cryptohashsha256Frame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Frame::copy(self : Cryptohashsha256Frame) -> Cryptohashsha256Frame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_frame_fill(s : Cryptohashsha256Frame, v : Double) -> Cryptohashsha256Frame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Frame::fill(self : Cryptohashsha256Frame, v : Double) -> Cryptohashsha256Frame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_frame_min(s : Cryptohashsha256Frame) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Frame::min(self : Cryptohashsha256Frame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_frame_max(s : Cryptohashsha256Frame) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Frame::max(self : Cryptohashsha256Frame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_frame_to_string(s : Cryptohashsha256Frame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Frame::to_string(self : Cryptohashsha256Frame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Table {
@@ -402,45 +402,45 @@ pub fn crypto_hash_sha256_table_make(size : Int) -> Cryptohashsha256Table {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_table_len(s : Cryptohashsha256Table) -> Int { s.size }
+pub fn Cryptohashsha256Table::len(self : Cryptohashsha256Table) -> Int { self.size }
 
-pub fn crypto_hash_sha256_table_get(s : Cryptohashsha256Table, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Table::get(self : Cryptohashsha256Table, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_table_set(s : Cryptohashsha256Table, i : Int, v : Double) -> Cryptohashsha256Table {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Table::set(self : Cryptohashsha256Table, i : Int, v : Double) -> Cryptohashsha256Table {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_table_sum(s : Cryptohashsha256Table) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Table::sum(self : Cryptohashsha256Table) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_table_mean(s : Cryptohashsha256Table) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Table::mean(self : Cryptohashsha256Table) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_table_scale(s : Cryptohashsha256Table, f : Double) -> Cryptohashsha256Table {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Table::scale(self : Cryptohashsha256Table, f : Double) -> Cryptohashsha256Table {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_table_add(a : Cryptohashsha256Table, b : Cryptohashsha256Table) -> Cryptohashsha256Table {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Table::add(self : Cryptohashsha256Table, other : Cryptohashsha256Table) -> Cryptohashsha256Table {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_table_copy(s : Cryptohashsha256Table) -> Cryptohashsha256Table {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Table::copy(self : Cryptohashsha256Table) -> Cryptohashsha256Table {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_table_fill(s : Cryptohashsha256Table, v : Double) -> Cryptohashsha256Table {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Table::fill(self : Cryptohashsha256Table, v : Double) -> Cryptohashsha256Table {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_table_min(s : Cryptohashsha256Table) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Table::min(self : Cryptohashsha256Table) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_table_max(s : Cryptohashsha256Table) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Table::max(self : Cryptohashsha256Table) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_table_to_string(s : Cryptohashsha256Table) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Table::to_string(self : Cryptohashsha256Table) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256GraphN {
@@ -453,45 +453,45 @@ pub fn crypto_hash_sha256_graphn_make(size : Int) -> Cryptohashsha256GraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_graphn_len(s : Cryptohashsha256GraphN) -> Int { s.size }
+pub fn Cryptohashsha256GraphN::len(self : Cryptohashsha256GraphN) -> Int { self.size }
 
-pub fn crypto_hash_sha256_graphn_get(s : Cryptohashsha256GraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256GraphN::get(self : Cryptohashsha256GraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_graphn_set(s : Cryptohashsha256GraphN, i : Int, v : Double) -> Cryptohashsha256GraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256GraphN::set(self : Cryptohashsha256GraphN, i : Int, v : Double) -> Cryptohashsha256GraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_graphn_sum(s : Cryptohashsha256GraphN) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256GraphN::sum(self : Cryptohashsha256GraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_graphn_mean(s : Cryptohashsha256GraphN) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256GraphN::mean(self : Cryptohashsha256GraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_graphn_scale(s : Cryptohashsha256GraphN, f : Double) -> Cryptohashsha256GraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256GraphN::scale(self : Cryptohashsha256GraphN, f : Double) -> Cryptohashsha256GraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_graphn_add(a : Cryptohashsha256GraphN, b : Cryptohashsha256GraphN) -> Cryptohashsha256GraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256GraphN::add(self : Cryptohashsha256GraphN, other : Cryptohashsha256GraphN) -> Cryptohashsha256GraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_graphn_copy(s : Cryptohashsha256GraphN) -> Cryptohashsha256GraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256GraphN::copy(self : Cryptohashsha256GraphN) -> Cryptohashsha256GraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_graphn_fill(s : Cryptohashsha256GraphN, v : Double) -> Cryptohashsha256GraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256GraphN::fill(self : Cryptohashsha256GraphN, v : Double) -> Cryptohashsha256GraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_graphn_min(s : Cryptohashsha256GraphN) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256GraphN::min(self : Cryptohashsha256GraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_graphn_max(s : Cryptohashsha256GraphN) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256GraphN::max(self : Cryptohashsha256GraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_graphn_to_string(s : Cryptohashsha256GraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256GraphN::to_string(self : Cryptohashsha256GraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Node {
@@ -504,45 +504,45 @@ pub fn crypto_hash_sha256_node_make(size : Int) -> Cryptohashsha256Node {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_node_len(s : Cryptohashsha256Node) -> Int { s.size }
+pub fn Cryptohashsha256Node::len(self : Cryptohashsha256Node) -> Int { self.size }
 
-pub fn crypto_hash_sha256_node_get(s : Cryptohashsha256Node, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Node::get(self : Cryptohashsha256Node, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_node_set(s : Cryptohashsha256Node, i : Int, v : Double) -> Cryptohashsha256Node {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Node::set(self : Cryptohashsha256Node, i : Int, v : Double) -> Cryptohashsha256Node {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_node_sum(s : Cryptohashsha256Node) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Node::sum(self : Cryptohashsha256Node) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_node_mean(s : Cryptohashsha256Node) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Node::mean(self : Cryptohashsha256Node) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_node_scale(s : Cryptohashsha256Node, f : Double) -> Cryptohashsha256Node {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Node::scale(self : Cryptohashsha256Node, f : Double) -> Cryptohashsha256Node {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_node_add(a : Cryptohashsha256Node, b : Cryptohashsha256Node) -> Cryptohashsha256Node {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Node::add(self : Cryptohashsha256Node, other : Cryptohashsha256Node) -> Cryptohashsha256Node {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_node_copy(s : Cryptohashsha256Node) -> Cryptohashsha256Node {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Node::copy(self : Cryptohashsha256Node) -> Cryptohashsha256Node {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_node_fill(s : Cryptohashsha256Node, v : Double) -> Cryptohashsha256Node {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Node::fill(self : Cryptohashsha256Node, v : Double) -> Cryptohashsha256Node {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_node_min(s : Cryptohashsha256Node) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Node::min(self : Cryptohashsha256Node) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_node_max(s : Cryptohashsha256Node) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Node::max(self : Cryptohashsha256Node) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_node_to_string(s : Cryptohashsha256Node) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Node::to_string(self : Cryptohashsha256Node) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Edge {
@@ -555,45 +555,45 @@ pub fn crypto_hash_sha256_edge_make(size : Int) -> Cryptohashsha256Edge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_edge_len(s : Cryptohashsha256Edge) -> Int { s.size }
+pub fn Cryptohashsha256Edge::len(self : Cryptohashsha256Edge) -> Int { self.size }
 
-pub fn crypto_hash_sha256_edge_get(s : Cryptohashsha256Edge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Edge::get(self : Cryptohashsha256Edge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_edge_set(s : Cryptohashsha256Edge, i : Int, v : Double) -> Cryptohashsha256Edge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Edge::set(self : Cryptohashsha256Edge, i : Int, v : Double) -> Cryptohashsha256Edge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_edge_sum(s : Cryptohashsha256Edge) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Edge::sum(self : Cryptohashsha256Edge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_edge_mean(s : Cryptohashsha256Edge) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Edge::mean(self : Cryptohashsha256Edge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_edge_scale(s : Cryptohashsha256Edge, f : Double) -> Cryptohashsha256Edge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Edge::scale(self : Cryptohashsha256Edge, f : Double) -> Cryptohashsha256Edge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_edge_add(a : Cryptohashsha256Edge, b : Cryptohashsha256Edge) -> Cryptohashsha256Edge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Edge::add(self : Cryptohashsha256Edge, other : Cryptohashsha256Edge) -> Cryptohashsha256Edge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_edge_copy(s : Cryptohashsha256Edge) -> Cryptohashsha256Edge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Edge::copy(self : Cryptohashsha256Edge) -> Cryptohashsha256Edge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_edge_fill(s : Cryptohashsha256Edge, v : Double) -> Cryptohashsha256Edge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Edge::fill(self : Cryptohashsha256Edge, v : Double) -> Cryptohashsha256Edge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_edge_min(s : Cryptohashsha256Edge) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Edge::min(self : Cryptohashsha256Edge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_edge_max(s : Cryptohashsha256Edge) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Edge::max(self : Cryptohashsha256Edge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_edge_to_string(s : Cryptohashsha256Edge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Edge::to_string(self : Cryptohashsha256Edge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Path {
@@ -606,45 +606,45 @@ pub fn crypto_hash_sha256_path_make(size : Int) -> Cryptohashsha256Path {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_path_len(s : Cryptohashsha256Path) -> Int { s.size }
+pub fn Cryptohashsha256Path::len(self : Cryptohashsha256Path) -> Int { self.size }
 
-pub fn crypto_hash_sha256_path_get(s : Cryptohashsha256Path, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Path::get(self : Cryptohashsha256Path, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_path_set(s : Cryptohashsha256Path, i : Int, v : Double) -> Cryptohashsha256Path {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Path::set(self : Cryptohashsha256Path, i : Int, v : Double) -> Cryptohashsha256Path {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_path_sum(s : Cryptohashsha256Path) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Path::sum(self : Cryptohashsha256Path) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_path_mean(s : Cryptohashsha256Path) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Path::mean(self : Cryptohashsha256Path) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_path_scale(s : Cryptohashsha256Path, f : Double) -> Cryptohashsha256Path {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Path::scale(self : Cryptohashsha256Path, f : Double) -> Cryptohashsha256Path {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_path_add(a : Cryptohashsha256Path, b : Cryptohashsha256Path) -> Cryptohashsha256Path {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Path::add(self : Cryptohashsha256Path, other : Cryptohashsha256Path) -> Cryptohashsha256Path {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_path_copy(s : Cryptohashsha256Path) -> Cryptohashsha256Path {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Path::copy(self : Cryptohashsha256Path) -> Cryptohashsha256Path {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_path_fill(s : Cryptohashsha256Path, v : Double) -> Cryptohashsha256Path {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Path::fill(self : Cryptohashsha256Path, v : Double) -> Cryptohashsha256Path {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_path_min(s : Cryptohashsha256Path) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Path::min(self : Cryptohashsha256Path) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_path_max(s : Cryptohashsha256Path) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Path::max(self : Cryptohashsha256Path) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_path_to_string(s : Cryptohashsha256Path) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Path::to_string(self : Cryptohashsha256Path) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Cluster {
@@ -657,45 +657,45 @@ pub fn crypto_hash_sha256_cluster_make(size : Int) -> Cryptohashsha256Cluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_cluster_len(s : Cryptohashsha256Cluster) -> Int { s.size }
+pub fn Cryptohashsha256Cluster::len(self : Cryptohashsha256Cluster) -> Int { self.size }
 
-pub fn crypto_hash_sha256_cluster_get(s : Cryptohashsha256Cluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Cluster::get(self : Cryptohashsha256Cluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_cluster_set(s : Cryptohashsha256Cluster, i : Int, v : Double) -> Cryptohashsha256Cluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cluster::set(self : Cryptohashsha256Cluster, i : Int, v : Double) -> Cryptohashsha256Cluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cluster_sum(s : Cryptohashsha256Cluster) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Cluster::sum(self : Cryptohashsha256Cluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_cluster_mean(s : Cryptohashsha256Cluster) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Cluster::mean(self : Cryptohashsha256Cluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_cluster_scale(s : Cryptohashsha256Cluster, f : Double) -> Cryptohashsha256Cluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cluster::scale(self : Cryptohashsha256Cluster, f : Double) -> Cryptohashsha256Cluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cluster_add(a : Cryptohashsha256Cluster, b : Cryptohashsha256Cluster) -> Cryptohashsha256Cluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Cluster::add(self : Cryptohashsha256Cluster, other : Cryptohashsha256Cluster) -> Cryptohashsha256Cluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cluster_copy(s : Cryptohashsha256Cluster) -> Cryptohashsha256Cluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cluster::copy(self : Cryptohashsha256Cluster) -> Cryptohashsha256Cluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cluster_fill(s : Cryptohashsha256Cluster, v : Double) -> Cryptohashsha256Cluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cluster::fill(self : Cryptohashsha256Cluster, v : Double) -> Cryptohashsha256Cluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cluster_min(s : Cryptohashsha256Cluster) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Cluster::min(self : Cryptohashsha256Cluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_cluster_max(s : Cryptohashsha256Cluster) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Cluster::max(self : Cryptohashsha256Cluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_cluster_to_string(s : Cryptohashsha256Cluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Cluster::to_string(self : Cryptohashsha256Cluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Model {
@@ -708,45 +708,45 @@ pub fn crypto_hash_sha256_model_make(size : Int) -> Cryptohashsha256Model {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_model_len(s : Cryptohashsha256Model) -> Int { s.size }
+pub fn Cryptohashsha256Model::len(self : Cryptohashsha256Model) -> Int { self.size }
 
-pub fn crypto_hash_sha256_model_get(s : Cryptohashsha256Model, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Model::get(self : Cryptohashsha256Model, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_model_set(s : Cryptohashsha256Model, i : Int, v : Double) -> Cryptohashsha256Model {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Model::set(self : Cryptohashsha256Model, i : Int, v : Double) -> Cryptohashsha256Model {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_model_sum(s : Cryptohashsha256Model) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Model::sum(self : Cryptohashsha256Model) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_model_mean(s : Cryptohashsha256Model) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Model::mean(self : Cryptohashsha256Model) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_model_scale(s : Cryptohashsha256Model, f : Double) -> Cryptohashsha256Model {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Model::scale(self : Cryptohashsha256Model, f : Double) -> Cryptohashsha256Model {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_model_add(a : Cryptohashsha256Model, b : Cryptohashsha256Model) -> Cryptohashsha256Model {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Model::add(self : Cryptohashsha256Model, other : Cryptohashsha256Model) -> Cryptohashsha256Model {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_model_copy(s : Cryptohashsha256Model) -> Cryptohashsha256Model {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Model::copy(self : Cryptohashsha256Model) -> Cryptohashsha256Model {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_model_fill(s : Cryptohashsha256Model, v : Double) -> Cryptohashsha256Model {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Model::fill(self : Cryptohashsha256Model, v : Double) -> Cryptohashsha256Model {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_model_min(s : Cryptohashsha256Model) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Model::min(self : Cryptohashsha256Model) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_model_max(s : Cryptohashsha256Model) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Model::max(self : Cryptohashsha256Model) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_model_to_string(s : Cryptohashsha256Model) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Model::to_string(self : Cryptohashsha256Model) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Layer {
@@ -759,45 +759,45 @@ pub fn crypto_hash_sha256_layer_make(size : Int) -> Cryptohashsha256Layer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_layer_len(s : Cryptohashsha256Layer) -> Int { s.size }
+pub fn Cryptohashsha256Layer::len(self : Cryptohashsha256Layer) -> Int { self.size }
 
-pub fn crypto_hash_sha256_layer_get(s : Cryptohashsha256Layer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Layer::get(self : Cryptohashsha256Layer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_layer_set(s : Cryptohashsha256Layer, i : Int, v : Double) -> Cryptohashsha256Layer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Layer::set(self : Cryptohashsha256Layer, i : Int, v : Double) -> Cryptohashsha256Layer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_layer_sum(s : Cryptohashsha256Layer) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Layer::sum(self : Cryptohashsha256Layer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_layer_mean(s : Cryptohashsha256Layer) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Layer::mean(self : Cryptohashsha256Layer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_layer_scale(s : Cryptohashsha256Layer, f : Double) -> Cryptohashsha256Layer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Layer::scale(self : Cryptohashsha256Layer, f : Double) -> Cryptohashsha256Layer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_layer_add(a : Cryptohashsha256Layer, b : Cryptohashsha256Layer) -> Cryptohashsha256Layer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Layer::add(self : Cryptohashsha256Layer, other : Cryptohashsha256Layer) -> Cryptohashsha256Layer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_layer_copy(s : Cryptohashsha256Layer) -> Cryptohashsha256Layer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Layer::copy(self : Cryptohashsha256Layer) -> Cryptohashsha256Layer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_layer_fill(s : Cryptohashsha256Layer, v : Double) -> Cryptohashsha256Layer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Layer::fill(self : Cryptohashsha256Layer, v : Double) -> Cryptohashsha256Layer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_layer_min(s : Cryptohashsha256Layer) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Layer::min(self : Cryptohashsha256Layer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_layer_max(s : Cryptohashsha256Layer) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Layer::max(self : Cryptohashsha256Layer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_layer_to_string(s : Cryptohashsha256Layer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Layer::to_string(self : Cryptohashsha256Layer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Buffer {
@@ -810,45 +810,45 @@ pub fn crypto_hash_sha256_buffer_make(size : Int) -> Cryptohashsha256Buffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_buffer_len(s : Cryptohashsha256Buffer) -> Int { s.size }
+pub fn Cryptohashsha256Buffer::len(self : Cryptohashsha256Buffer) -> Int { self.size }
 
-pub fn crypto_hash_sha256_buffer_get(s : Cryptohashsha256Buffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Buffer::get(self : Cryptohashsha256Buffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_buffer_set(s : Cryptohashsha256Buffer, i : Int, v : Double) -> Cryptohashsha256Buffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Buffer::set(self : Cryptohashsha256Buffer, i : Int, v : Double) -> Cryptohashsha256Buffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_buffer_sum(s : Cryptohashsha256Buffer) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Buffer::sum(self : Cryptohashsha256Buffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_buffer_mean(s : Cryptohashsha256Buffer) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Buffer::mean(self : Cryptohashsha256Buffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_buffer_scale(s : Cryptohashsha256Buffer, f : Double) -> Cryptohashsha256Buffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Buffer::scale(self : Cryptohashsha256Buffer, f : Double) -> Cryptohashsha256Buffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_buffer_add(a : Cryptohashsha256Buffer, b : Cryptohashsha256Buffer) -> Cryptohashsha256Buffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Buffer::add(self : Cryptohashsha256Buffer, other : Cryptohashsha256Buffer) -> Cryptohashsha256Buffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_buffer_copy(s : Cryptohashsha256Buffer) -> Cryptohashsha256Buffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Buffer::copy(self : Cryptohashsha256Buffer) -> Cryptohashsha256Buffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_buffer_fill(s : Cryptohashsha256Buffer, v : Double) -> Cryptohashsha256Buffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Buffer::fill(self : Cryptohashsha256Buffer, v : Double) -> Cryptohashsha256Buffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_buffer_min(s : Cryptohashsha256Buffer) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Buffer::min(self : Cryptohashsha256Buffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_buffer_max(s : Cryptohashsha256Buffer) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Buffer::max(self : Cryptohashsha256Buffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_buffer_to_string(s : Cryptohashsha256Buffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Buffer::to_string(self : Cryptohashsha256Buffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Cursor {
@@ -861,45 +861,45 @@ pub fn crypto_hash_sha256_cursor_make(size : Int) -> Cryptohashsha256Cursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_cursor_len(s : Cryptohashsha256Cursor) -> Int { s.size }
+pub fn Cryptohashsha256Cursor::len(self : Cryptohashsha256Cursor) -> Int { self.size }
 
-pub fn crypto_hash_sha256_cursor_get(s : Cryptohashsha256Cursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Cursor::get(self : Cryptohashsha256Cursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_cursor_set(s : Cryptohashsha256Cursor, i : Int, v : Double) -> Cryptohashsha256Cursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cursor::set(self : Cryptohashsha256Cursor, i : Int, v : Double) -> Cryptohashsha256Cursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cursor_sum(s : Cryptohashsha256Cursor) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Cursor::sum(self : Cryptohashsha256Cursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_cursor_mean(s : Cryptohashsha256Cursor) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Cursor::mean(self : Cryptohashsha256Cursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_cursor_scale(s : Cryptohashsha256Cursor, f : Double) -> Cryptohashsha256Cursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cursor::scale(self : Cryptohashsha256Cursor, f : Double) -> Cryptohashsha256Cursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cursor_add(a : Cryptohashsha256Cursor, b : Cryptohashsha256Cursor) -> Cryptohashsha256Cursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Cursor::add(self : Cryptohashsha256Cursor, other : Cryptohashsha256Cursor) -> Cryptohashsha256Cursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cursor_copy(s : Cryptohashsha256Cursor) -> Cryptohashsha256Cursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cursor::copy(self : Cryptohashsha256Cursor) -> Cryptohashsha256Cursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cursor_fill(s : Cryptohashsha256Cursor, v : Double) -> Cryptohashsha256Cursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Cursor::fill(self : Cryptohashsha256Cursor, v : Double) -> Cryptohashsha256Cursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_cursor_min(s : Cryptohashsha256Cursor) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Cursor::min(self : Cryptohashsha256Cursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_cursor_max(s : Cryptohashsha256Cursor) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Cursor::max(self : Cryptohashsha256Cursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_cursor_to_string(s : Cryptohashsha256Cursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Cursor::to_string(self : Cryptohashsha256Cursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256View {
@@ -912,45 +912,45 @@ pub fn crypto_hash_sha256_view_make(size : Int) -> Cryptohashsha256View {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_view_len(s : Cryptohashsha256View) -> Int { s.size }
+pub fn Cryptohashsha256View::len(self : Cryptohashsha256View) -> Int { self.size }
 
-pub fn crypto_hash_sha256_view_get(s : Cryptohashsha256View, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256View::get(self : Cryptohashsha256View, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_view_set(s : Cryptohashsha256View, i : Int, v : Double) -> Cryptohashsha256View {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256View::set(self : Cryptohashsha256View, i : Int, v : Double) -> Cryptohashsha256View {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_view_sum(s : Cryptohashsha256View) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256View::sum(self : Cryptohashsha256View) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_view_mean(s : Cryptohashsha256View) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256View::mean(self : Cryptohashsha256View) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_view_scale(s : Cryptohashsha256View, f : Double) -> Cryptohashsha256View {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256View::scale(self : Cryptohashsha256View, f : Double) -> Cryptohashsha256View {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_view_add(a : Cryptohashsha256View, b : Cryptohashsha256View) -> Cryptohashsha256View {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256View::add(self : Cryptohashsha256View, other : Cryptohashsha256View) -> Cryptohashsha256View {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_view_copy(s : Cryptohashsha256View) -> Cryptohashsha256View {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256View::copy(self : Cryptohashsha256View) -> Cryptohashsha256View {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_view_fill(s : Cryptohashsha256View, v : Double) -> Cryptohashsha256View {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256View::fill(self : Cryptohashsha256View, v : Double) -> Cryptohashsha256View {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_view_min(s : Cryptohashsha256View) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256View::min(self : Cryptohashsha256View) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_view_max(s : Cryptohashsha256View) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256View::max(self : Cryptohashsha256View) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_view_to_string(s : Cryptohashsha256View) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256View::to_string(self : Cryptohashsha256View) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Range {
@@ -963,45 +963,45 @@ pub fn crypto_hash_sha256_range_make(size : Int) -> Cryptohashsha256Range {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_range_len(s : Cryptohashsha256Range) -> Int { s.size }
+pub fn Cryptohashsha256Range::len(self : Cryptohashsha256Range) -> Int { self.size }
 
-pub fn crypto_hash_sha256_range_get(s : Cryptohashsha256Range, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Range::get(self : Cryptohashsha256Range, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_range_set(s : Cryptohashsha256Range, i : Int, v : Double) -> Cryptohashsha256Range {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Range::set(self : Cryptohashsha256Range, i : Int, v : Double) -> Cryptohashsha256Range {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_range_sum(s : Cryptohashsha256Range) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Range::sum(self : Cryptohashsha256Range) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_range_mean(s : Cryptohashsha256Range) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Range::mean(self : Cryptohashsha256Range) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_range_scale(s : Cryptohashsha256Range, f : Double) -> Cryptohashsha256Range {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Range::scale(self : Cryptohashsha256Range, f : Double) -> Cryptohashsha256Range {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_range_add(a : Cryptohashsha256Range, b : Cryptohashsha256Range) -> Cryptohashsha256Range {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Range::add(self : Cryptohashsha256Range, other : Cryptohashsha256Range) -> Cryptohashsha256Range {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_range_copy(s : Cryptohashsha256Range) -> Cryptohashsha256Range {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Range::copy(self : Cryptohashsha256Range) -> Cryptohashsha256Range {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_range_fill(s : Cryptohashsha256Range, v : Double) -> Cryptohashsha256Range {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Range::fill(self : Cryptohashsha256Range, v : Double) -> Cryptohashsha256Range {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_range_min(s : Cryptohashsha256Range) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Range::min(self : Cryptohashsha256Range) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_range_max(s : Cryptohashsha256Range) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Range::max(self : Cryptohashsha256Range) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_range_to_string(s : Cryptohashsha256Range) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Range::to_string(self : Cryptohashsha256Range) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct Cryptohashsha256Slice {
@@ -1014,44 +1014,44 @@ pub fn crypto_hash_sha256_slice_make(size : Int) -> Cryptohashsha256Slice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_hash_sha256_slice_len(s : Cryptohashsha256Slice) -> Int { s.size }
+pub fn Cryptohashsha256Slice::len(self : Cryptohashsha256Slice) -> Int { self.size }
 
-pub fn crypto_hash_sha256_slice_get(s : Cryptohashsha256Slice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn Cryptohashsha256Slice::get(self : Cryptohashsha256Slice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_hash_sha256_slice_set(s : Cryptohashsha256Slice, i : Int, v : Double) -> Cryptohashsha256Slice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Slice::set(self : Cryptohashsha256Slice, i : Int, v : Double) -> Cryptohashsha256Slice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_slice_sum(s : Cryptohashsha256Slice) -> Double { @_common.sum(s.data) }
+pub fn Cryptohashsha256Slice::sum(self : Cryptohashsha256Slice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_hash_sha256_slice_mean(s : Cryptohashsha256Slice) -> Double { @_common.mean(s.data) }
+pub fn Cryptohashsha256Slice::mean(self : Cryptohashsha256Slice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_hash_sha256_slice_scale(s : Cryptohashsha256Slice, f : Double) -> Cryptohashsha256Slice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Slice::scale(self : Cryptohashsha256Slice, f : Double) -> Cryptohashsha256Slice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_slice_add(a : Cryptohashsha256Slice, b : Cryptohashsha256Slice) -> Cryptohashsha256Slice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn Cryptohashsha256Slice::add(self : Cryptohashsha256Slice, other : Cryptohashsha256Slice) -> Cryptohashsha256Slice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_slice_copy(s : Cryptohashsha256Slice) -> Cryptohashsha256Slice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Slice::copy(self : Cryptohashsha256Slice) -> Cryptohashsha256Slice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_slice_fill(s : Cryptohashsha256Slice, v : Double) -> Cryptohashsha256Slice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn Cryptohashsha256Slice::fill(self : Cryptohashsha256Slice, v : Double) -> Cryptohashsha256Slice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_hash_sha256_slice_min(s : Cryptohashsha256Slice) -> Double { @_common.min(s.data) }
+pub fn Cryptohashsha256Slice::min(self : Cryptohashsha256Slice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_hash_sha256_slice_max(s : Cryptohashsha256Slice) -> Double { @_common.max(s.data) }
+pub fn Cryptohashsha256Slice::max(self : Cryptohashsha256Slice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_hash_sha256_slice_to_string(s : Cryptohashsha256Slice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn Cryptohashsha256Slice::to_string(self : Cryptohashsha256Slice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn db_index_bitmap_frame_make(size : Int) -> DbindexbitmapFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_frame_len(s : DbindexbitmapFrame) -> Int { s.size }
+pub fn DbindexbitmapFrame::len(self : DbindexbitmapFrame) -> Int { self.size }
 
-pub fn db_index_bitmap_frame_get(s : DbindexbitmapFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapFrame::get(self : DbindexbitmapFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_frame_set(s : DbindexbitmapFrame, i : Int, v : Double) -> DbindexbitmapFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapFrame::set(self : DbindexbitmapFrame, i : Int, v : Double) -> DbindexbitmapFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_frame_sum(s : DbindexbitmapFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapFrame::sum(self : DbindexbitmapFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_frame_mean(s : DbindexbitmapFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapFrame::mean(self : DbindexbitmapFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_frame_scale(s : DbindexbitmapFrame, f : Double) -> DbindexbitmapFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapFrame::scale(self : DbindexbitmapFrame, f : Double) -> DbindexbitmapFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_frame_add(a : DbindexbitmapFrame, b : DbindexbitmapFrame) -> DbindexbitmapFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapFrame::add(self : DbindexbitmapFrame, other : DbindexbitmapFrame) -> DbindexbitmapFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_frame_copy(s : DbindexbitmapFrame) -> DbindexbitmapFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapFrame::copy(self : DbindexbitmapFrame) -> DbindexbitmapFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_frame_fill(s : DbindexbitmapFrame, v : Double) -> DbindexbitmapFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapFrame::fill(self : DbindexbitmapFrame, v : Double) -> DbindexbitmapFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_frame_min(s : DbindexbitmapFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapFrame::min(self : DbindexbitmapFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_frame_max(s : DbindexbitmapFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapFrame::max(self : DbindexbitmapFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_frame_to_string(s : DbindexbitmapFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapFrame::to_string(self : DbindexbitmapFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapTable {
@@ -402,45 +402,45 @@ pub fn db_index_bitmap_table_make(size : Int) -> DbindexbitmapTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_table_len(s : DbindexbitmapTable) -> Int { s.size }
+pub fn DbindexbitmapTable::len(self : DbindexbitmapTable) -> Int { self.size }
 
-pub fn db_index_bitmap_table_get(s : DbindexbitmapTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapTable::get(self : DbindexbitmapTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_table_set(s : DbindexbitmapTable, i : Int, v : Double) -> DbindexbitmapTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapTable::set(self : DbindexbitmapTable, i : Int, v : Double) -> DbindexbitmapTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_table_sum(s : DbindexbitmapTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapTable::sum(self : DbindexbitmapTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_table_mean(s : DbindexbitmapTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapTable::mean(self : DbindexbitmapTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_table_scale(s : DbindexbitmapTable, f : Double) -> DbindexbitmapTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapTable::scale(self : DbindexbitmapTable, f : Double) -> DbindexbitmapTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_table_add(a : DbindexbitmapTable, b : DbindexbitmapTable) -> DbindexbitmapTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapTable::add(self : DbindexbitmapTable, other : DbindexbitmapTable) -> DbindexbitmapTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_table_copy(s : DbindexbitmapTable) -> DbindexbitmapTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapTable::copy(self : DbindexbitmapTable) -> DbindexbitmapTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_table_fill(s : DbindexbitmapTable, v : Double) -> DbindexbitmapTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapTable::fill(self : DbindexbitmapTable, v : Double) -> DbindexbitmapTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_table_min(s : DbindexbitmapTable) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapTable::min(self : DbindexbitmapTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_table_max(s : DbindexbitmapTable) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapTable::max(self : DbindexbitmapTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_table_to_string(s : DbindexbitmapTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapTable::to_string(self : DbindexbitmapTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_bitmap_graphn_make(size : Int) -> DbindexbitmapGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_graphn_len(s : DbindexbitmapGraphN) -> Int { s.size }
+pub fn DbindexbitmapGraphN::len(self : DbindexbitmapGraphN) -> Int { self.size }
 
-pub fn db_index_bitmap_graphn_get(s : DbindexbitmapGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapGraphN::get(self : DbindexbitmapGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_graphn_set(s : DbindexbitmapGraphN, i : Int, v : Double) -> DbindexbitmapGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapGraphN::set(self : DbindexbitmapGraphN, i : Int, v : Double) -> DbindexbitmapGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_graphn_sum(s : DbindexbitmapGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapGraphN::sum(self : DbindexbitmapGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_graphn_mean(s : DbindexbitmapGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapGraphN::mean(self : DbindexbitmapGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_graphn_scale(s : DbindexbitmapGraphN, f : Double) -> DbindexbitmapGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapGraphN::scale(self : DbindexbitmapGraphN, f : Double) -> DbindexbitmapGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_graphn_add(a : DbindexbitmapGraphN, b : DbindexbitmapGraphN) -> DbindexbitmapGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapGraphN::add(self : DbindexbitmapGraphN, other : DbindexbitmapGraphN) -> DbindexbitmapGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_graphn_copy(s : DbindexbitmapGraphN) -> DbindexbitmapGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapGraphN::copy(self : DbindexbitmapGraphN) -> DbindexbitmapGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_graphn_fill(s : DbindexbitmapGraphN, v : Double) -> DbindexbitmapGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapGraphN::fill(self : DbindexbitmapGraphN, v : Double) -> DbindexbitmapGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_graphn_min(s : DbindexbitmapGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapGraphN::min(self : DbindexbitmapGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_graphn_max(s : DbindexbitmapGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapGraphN::max(self : DbindexbitmapGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_graphn_to_string(s : DbindexbitmapGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapGraphN::to_string(self : DbindexbitmapGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapNode {
@@ -504,45 +504,45 @@ pub fn db_index_bitmap_node_make(size : Int) -> DbindexbitmapNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_node_len(s : DbindexbitmapNode) -> Int { s.size }
+pub fn DbindexbitmapNode::len(self : DbindexbitmapNode) -> Int { self.size }
 
-pub fn db_index_bitmap_node_get(s : DbindexbitmapNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapNode::get(self : DbindexbitmapNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_node_set(s : DbindexbitmapNode, i : Int, v : Double) -> DbindexbitmapNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapNode::set(self : DbindexbitmapNode, i : Int, v : Double) -> DbindexbitmapNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_node_sum(s : DbindexbitmapNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapNode::sum(self : DbindexbitmapNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_node_mean(s : DbindexbitmapNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapNode::mean(self : DbindexbitmapNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_node_scale(s : DbindexbitmapNode, f : Double) -> DbindexbitmapNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapNode::scale(self : DbindexbitmapNode, f : Double) -> DbindexbitmapNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_node_add(a : DbindexbitmapNode, b : DbindexbitmapNode) -> DbindexbitmapNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapNode::add(self : DbindexbitmapNode, other : DbindexbitmapNode) -> DbindexbitmapNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_node_copy(s : DbindexbitmapNode) -> DbindexbitmapNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapNode::copy(self : DbindexbitmapNode) -> DbindexbitmapNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_node_fill(s : DbindexbitmapNode, v : Double) -> DbindexbitmapNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapNode::fill(self : DbindexbitmapNode, v : Double) -> DbindexbitmapNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_node_min(s : DbindexbitmapNode) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapNode::min(self : DbindexbitmapNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_node_max(s : DbindexbitmapNode) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapNode::max(self : DbindexbitmapNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_node_to_string(s : DbindexbitmapNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapNode::to_string(self : DbindexbitmapNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapEdge {
@@ -555,45 +555,45 @@ pub fn db_index_bitmap_edge_make(size : Int) -> DbindexbitmapEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_edge_len(s : DbindexbitmapEdge) -> Int { s.size }
+pub fn DbindexbitmapEdge::len(self : DbindexbitmapEdge) -> Int { self.size }
 
-pub fn db_index_bitmap_edge_get(s : DbindexbitmapEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapEdge::get(self : DbindexbitmapEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_edge_set(s : DbindexbitmapEdge, i : Int, v : Double) -> DbindexbitmapEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapEdge::set(self : DbindexbitmapEdge, i : Int, v : Double) -> DbindexbitmapEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_edge_sum(s : DbindexbitmapEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapEdge::sum(self : DbindexbitmapEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_edge_mean(s : DbindexbitmapEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapEdge::mean(self : DbindexbitmapEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_edge_scale(s : DbindexbitmapEdge, f : Double) -> DbindexbitmapEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapEdge::scale(self : DbindexbitmapEdge, f : Double) -> DbindexbitmapEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_edge_add(a : DbindexbitmapEdge, b : DbindexbitmapEdge) -> DbindexbitmapEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapEdge::add(self : DbindexbitmapEdge, other : DbindexbitmapEdge) -> DbindexbitmapEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_edge_copy(s : DbindexbitmapEdge) -> DbindexbitmapEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapEdge::copy(self : DbindexbitmapEdge) -> DbindexbitmapEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_edge_fill(s : DbindexbitmapEdge, v : Double) -> DbindexbitmapEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapEdge::fill(self : DbindexbitmapEdge, v : Double) -> DbindexbitmapEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_edge_min(s : DbindexbitmapEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapEdge::min(self : DbindexbitmapEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_edge_max(s : DbindexbitmapEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapEdge::max(self : DbindexbitmapEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_edge_to_string(s : DbindexbitmapEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapEdge::to_string(self : DbindexbitmapEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapPath {
@@ -606,45 +606,45 @@ pub fn db_index_bitmap_path_make(size : Int) -> DbindexbitmapPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_path_len(s : DbindexbitmapPath) -> Int { s.size }
+pub fn DbindexbitmapPath::len(self : DbindexbitmapPath) -> Int { self.size }
 
-pub fn db_index_bitmap_path_get(s : DbindexbitmapPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapPath::get(self : DbindexbitmapPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_path_set(s : DbindexbitmapPath, i : Int, v : Double) -> DbindexbitmapPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapPath::set(self : DbindexbitmapPath, i : Int, v : Double) -> DbindexbitmapPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_path_sum(s : DbindexbitmapPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapPath::sum(self : DbindexbitmapPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_path_mean(s : DbindexbitmapPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapPath::mean(self : DbindexbitmapPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_path_scale(s : DbindexbitmapPath, f : Double) -> DbindexbitmapPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapPath::scale(self : DbindexbitmapPath, f : Double) -> DbindexbitmapPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_path_add(a : DbindexbitmapPath, b : DbindexbitmapPath) -> DbindexbitmapPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapPath::add(self : DbindexbitmapPath, other : DbindexbitmapPath) -> DbindexbitmapPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_path_copy(s : DbindexbitmapPath) -> DbindexbitmapPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapPath::copy(self : DbindexbitmapPath) -> DbindexbitmapPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_path_fill(s : DbindexbitmapPath, v : Double) -> DbindexbitmapPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapPath::fill(self : DbindexbitmapPath, v : Double) -> DbindexbitmapPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_path_min(s : DbindexbitmapPath) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapPath::min(self : DbindexbitmapPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_path_max(s : DbindexbitmapPath) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapPath::max(self : DbindexbitmapPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_path_to_string(s : DbindexbitmapPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapPath::to_string(self : DbindexbitmapPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapCluster {
@@ -657,45 +657,45 @@ pub fn db_index_bitmap_cluster_make(size : Int) -> DbindexbitmapCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_cluster_len(s : DbindexbitmapCluster) -> Int { s.size }
+pub fn DbindexbitmapCluster::len(self : DbindexbitmapCluster) -> Int { self.size }
 
-pub fn db_index_bitmap_cluster_get(s : DbindexbitmapCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapCluster::get(self : DbindexbitmapCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_cluster_set(s : DbindexbitmapCluster, i : Int, v : Double) -> DbindexbitmapCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapCluster::set(self : DbindexbitmapCluster, i : Int, v : Double) -> DbindexbitmapCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cluster_sum(s : DbindexbitmapCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapCluster::sum(self : DbindexbitmapCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_cluster_mean(s : DbindexbitmapCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapCluster::mean(self : DbindexbitmapCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_cluster_scale(s : DbindexbitmapCluster, f : Double) -> DbindexbitmapCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapCluster::scale(self : DbindexbitmapCluster, f : Double) -> DbindexbitmapCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cluster_add(a : DbindexbitmapCluster, b : DbindexbitmapCluster) -> DbindexbitmapCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapCluster::add(self : DbindexbitmapCluster, other : DbindexbitmapCluster) -> DbindexbitmapCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cluster_copy(s : DbindexbitmapCluster) -> DbindexbitmapCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapCluster::copy(self : DbindexbitmapCluster) -> DbindexbitmapCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cluster_fill(s : DbindexbitmapCluster, v : Double) -> DbindexbitmapCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapCluster::fill(self : DbindexbitmapCluster, v : Double) -> DbindexbitmapCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cluster_min(s : DbindexbitmapCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapCluster::min(self : DbindexbitmapCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_cluster_max(s : DbindexbitmapCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapCluster::max(self : DbindexbitmapCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_cluster_to_string(s : DbindexbitmapCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapCluster::to_string(self : DbindexbitmapCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapModel {
@@ -708,45 +708,45 @@ pub fn db_index_bitmap_model_make(size : Int) -> DbindexbitmapModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_model_len(s : DbindexbitmapModel) -> Int { s.size }
+pub fn DbindexbitmapModel::len(self : DbindexbitmapModel) -> Int { self.size }
 
-pub fn db_index_bitmap_model_get(s : DbindexbitmapModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapModel::get(self : DbindexbitmapModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_model_set(s : DbindexbitmapModel, i : Int, v : Double) -> DbindexbitmapModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapModel::set(self : DbindexbitmapModel, i : Int, v : Double) -> DbindexbitmapModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_model_sum(s : DbindexbitmapModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapModel::sum(self : DbindexbitmapModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_model_mean(s : DbindexbitmapModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapModel::mean(self : DbindexbitmapModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_model_scale(s : DbindexbitmapModel, f : Double) -> DbindexbitmapModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapModel::scale(self : DbindexbitmapModel, f : Double) -> DbindexbitmapModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_model_add(a : DbindexbitmapModel, b : DbindexbitmapModel) -> DbindexbitmapModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapModel::add(self : DbindexbitmapModel, other : DbindexbitmapModel) -> DbindexbitmapModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_model_copy(s : DbindexbitmapModel) -> DbindexbitmapModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapModel::copy(self : DbindexbitmapModel) -> DbindexbitmapModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_model_fill(s : DbindexbitmapModel, v : Double) -> DbindexbitmapModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapModel::fill(self : DbindexbitmapModel, v : Double) -> DbindexbitmapModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_model_min(s : DbindexbitmapModel) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapModel::min(self : DbindexbitmapModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_model_max(s : DbindexbitmapModel) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapModel::max(self : DbindexbitmapModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_model_to_string(s : DbindexbitmapModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapModel::to_string(self : DbindexbitmapModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapLayer {
@@ -759,45 +759,45 @@ pub fn db_index_bitmap_layer_make(size : Int) -> DbindexbitmapLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_layer_len(s : DbindexbitmapLayer) -> Int { s.size }
+pub fn DbindexbitmapLayer::len(self : DbindexbitmapLayer) -> Int { self.size }
 
-pub fn db_index_bitmap_layer_get(s : DbindexbitmapLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapLayer::get(self : DbindexbitmapLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_layer_set(s : DbindexbitmapLayer, i : Int, v : Double) -> DbindexbitmapLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapLayer::set(self : DbindexbitmapLayer, i : Int, v : Double) -> DbindexbitmapLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_layer_sum(s : DbindexbitmapLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapLayer::sum(self : DbindexbitmapLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_layer_mean(s : DbindexbitmapLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapLayer::mean(self : DbindexbitmapLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_layer_scale(s : DbindexbitmapLayer, f : Double) -> DbindexbitmapLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapLayer::scale(self : DbindexbitmapLayer, f : Double) -> DbindexbitmapLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_layer_add(a : DbindexbitmapLayer, b : DbindexbitmapLayer) -> DbindexbitmapLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapLayer::add(self : DbindexbitmapLayer, other : DbindexbitmapLayer) -> DbindexbitmapLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_layer_copy(s : DbindexbitmapLayer) -> DbindexbitmapLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapLayer::copy(self : DbindexbitmapLayer) -> DbindexbitmapLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_layer_fill(s : DbindexbitmapLayer, v : Double) -> DbindexbitmapLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapLayer::fill(self : DbindexbitmapLayer, v : Double) -> DbindexbitmapLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_layer_min(s : DbindexbitmapLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapLayer::min(self : DbindexbitmapLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_layer_max(s : DbindexbitmapLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapLayer::max(self : DbindexbitmapLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_layer_to_string(s : DbindexbitmapLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapLayer::to_string(self : DbindexbitmapLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_bitmap_buffer_make(size : Int) -> DbindexbitmapBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_buffer_len(s : DbindexbitmapBuffer) -> Int { s.size }
+pub fn DbindexbitmapBuffer::len(self : DbindexbitmapBuffer) -> Int { self.size }
 
-pub fn db_index_bitmap_buffer_get(s : DbindexbitmapBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapBuffer::get(self : DbindexbitmapBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_buffer_set(s : DbindexbitmapBuffer, i : Int, v : Double) -> DbindexbitmapBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapBuffer::set(self : DbindexbitmapBuffer, i : Int, v : Double) -> DbindexbitmapBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_buffer_sum(s : DbindexbitmapBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapBuffer::sum(self : DbindexbitmapBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_buffer_mean(s : DbindexbitmapBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapBuffer::mean(self : DbindexbitmapBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_buffer_scale(s : DbindexbitmapBuffer, f : Double) -> DbindexbitmapBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapBuffer::scale(self : DbindexbitmapBuffer, f : Double) -> DbindexbitmapBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_buffer_add(a : DbindexbitmapBuffer, b : DbindexbitmapBuffer) -> DbindexbitmapBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapBuffer::add(self : DbindexbitmapBuffer, other : DbindexbitmapBuffer) -> DbindexbitmapBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_buffer_copy(s : DbindexbitmapBuffer) -> DbindexbitmapBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapBuffer::copy(self : DbindexbitmapBuffer) -> DbindexbitmapBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_buffer_fill(s : DbindexbitmapBuffer, v : Double) -> DbindexbitmapBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapBuffer::fill(self : DbindexbitmapBuffer, v : Double) -> DbindexbitmapBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_buffer_min(s : DbindexbitmapBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapBuffer::min(self : DbindexbitmapBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_buffer_max(s : DbindexbitmapBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapBuffer::max(self : DbindexbitmapBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_buffer_to_string(s : DbindexbitmapBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapBuffer::to_string(self : DbindexbitmapBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapCursor {
@@ -861,45 +861,45 @@ pub fn db_index_bitmap_cursor_make(size : Int) -> DbindexbitmapCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_cursor_len(s : DbindexbitmapCursor) -> Int { s.size }
+pub fn DbindexbitmapCursor::len(self : DbindexbitmapCursor) -> Int { self.size }
 
-pub fn db_index_bitmap_cursor_get(s : DbindexbitmapCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapCursor::get(self : DbindexbitmapCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_cursor_set(s : DbindexbitmapCursor, i : Int, v : Double) -> DbindexbitmapCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapCursor::set(self : DbindexbitmapCursor, i : Int, v : Double) -> DbindexbitmapCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cursor_sum(s : DbindexbitmapCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapCursor::sum(self : DbindexbitmapCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_cursor_mean(s : DbindexbitmapCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapCursor::mean(self : DbindexbitmapCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_cursor_scale(s : DbindexbitmapCursor, f : Double) -> DbindexbitmapCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapCursor::scale(self : DbindexbitmapCursor, f : Double) -> DbindexbitmapCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cursor_add(a : DbindexbitmapCursor, b : DbindexbitmapCursor) -> DbindexbitmapCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapCursor::add(self : DbindexbitmapCursor, other : DbindexbitmapCursor) -> DbindexbitmapCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cursor_copy(s : DbindexbitmapCursor) -> DbindexbitmapCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapCursor::copy(self : DbindexbitmapCursor) -> DbindexbitmapCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cursor_fill(s : DbindexbitmapCursor, v : Double) -> DbindexbitmapCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapCursor::fill(self : DbindexbitmapCursor, v : Double) -> DbindexbitmapCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_cursor_min(s : DbindexbitmapCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapCursor::min(self : DbindexbitmapCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_cursor_max(s : DbindexbitmapCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapCursor::max(self : DbindexbitmapCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_cursor_to_string(s : DbindexbitmapCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapCursor::to_string(self : DbindexbitmapCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapView {
@@ -912,45 +912,45 @@ pub fn db_index_bitmap_view_make(size : Int) -> DbindexbitmapView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_view_len(s : DbindexbitmapView) -> Int { s.size }
+pub fn DbindexbitmapView::len(self : DbindexbitmapView) -> Int { self.size }
 
-pub fn db_index_bitmap_view_get(s : DbindexbitmapView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapView::get(self : DbindexbitmapView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_view_set(s : DbindexbitmapView, i : Int, v : Double) -> DbindexbitmapView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapView::set(self : DbindexbitmapView, i : Int, v : Double) -> DbindexbitmapView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_view_sum(s : DbindexbitmapView) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapView::sum(self : DbindexbitmapView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_view_mean(s : DbindexbitmapView) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapView::mean(self : DbindexbitmapView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_view_scale(s : DbindexbitmapView, f : Double) -> DbindexbitmapView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapView::scale(self : DbindexbitmapView, f : Double) -> DbindexbitmapView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_view_add(a : DbindexbitmapView, b : DbindexbitmapView) -> DbindexbitmapView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapView::add(self : DbindexbitmapView, other : DbindexbitmapView) -> DbindexbitmapView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_view_copy(s : DbindexbitmapView) -> DbindexbitmapView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapView::copy(self : DbindexbitmapView) -> DbindexbitmapView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_view_fill(s : DbindexbitmapView, v : Double) -> DbindexbitmapView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapView::fill(self : DbindexbitmapView, v : Double) -> DbindexbitmapView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_view_min(s : DbindexbitmapView) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapView::min(self : DbindexbitmapView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_view_max(s : DbindexbitmapView) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapView::max(self : DbindexbitmapView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_view_to_string(s : DbindexbitmapView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapView::to_string(self : DbindexbitmapView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapRange {
@@ -963,45 +963,45 @@ pub fn db_index_bitmap_range_make(size : Int) -> DbindexbitmapRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_range_len(s : DbindexbitmapRange) -> Int { s.size }
+pub fn DbindexbitmapRange::len(self : DbindexbitmapRange) -> Int { self.size }
 
-pub fn db_index_bitmap_range_get(s : DbindexbitmapRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapRange::get(self : DbindexbitmapRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_range_set(s : DbindexbitmapRange, i : Int, v : Double) -> DbindexbitmapRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapRange::set(self : DbindexbitmapRange, i : Int, v : Double) -> DbindexbitmapRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_range_sum(s : DbindexbitmapRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapRange::sum(self : DbindexbitmapRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_range_mean(s : DbindexbitmapRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapRange::mean(self : DbindexbitmapRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_range_scale(s : DbindexbitmapRange, f : Double) -> DbindexbitmapRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapRange::scale(self : DbindexbitmapRange, f : Double) -> DbindexbitmapRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_range_add(a : DbindexbitmapRange, b : DbindexbitmapRange) -> DbindexbitmapRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapRange::add(self : DbindexbitmapRange, other : DbindexbitmapRange) -> DbindexbitmapRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_range_copy(s : DbindexbitmapRange) -> DbindexbitmapRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapRange::copy(self : DbindexbitmapRange) -> DbindexbitmapRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_range_fill(s : DbindexbitmapRange, v : Double) -> DbindexbitmapRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapRange::fill(self : DbindexbitmapRange, v : Double) -> DbindexbitmapRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_range_min(s : DbindexbitmapRange) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapRange::min(self : DbindexbitmapRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_range_max(s : DbindexbitmapRange) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapRange::max(self : DbindexbitmapRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_range_to_string(s : DbindexbitmapRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapRange::to_string(self : DbindexbitmapRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexbitmapSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_bitmap_slice_make(size : Int) -> DbindexbitmapSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_bitmap_slice_len(s : DbindexbitmapSlice) -> Int { s.size }
+pub fn DbindexbitmapSlice::len(self : DbindexbitmapSlice) -> Int { self.size }
 
-pub fn db_index_bitmap_slice_get(s : DbindexbitmapSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexbitmapSlice::get(self : DbindexbitmapSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_bitmap_slice_set(s : DbindexbitmapSlice, i : Int, v : Double) -> DbindexbitmapSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexbitmapSlice::set(self : DbindexbitmapSlice, i : Int, v : Double) -> DbindexbitmapSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_slice_sum(s : DbindexbitmapSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexbitmapSlice::sum(self : DbindexbitmapSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_bitmap_slice_mean(s : DbindexbitmapSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexbitmapSlice::mean(self : DbindexbitmapSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_bitmap_slice_scale(s : DbindexbitmapSlice, f : Double) -> DbindexbitmapSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexbitmapSlice::scale(self : DbindexbitmapSlice, f : Double) -> DbindexbitmapSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_slice_add(a : DbindexbitmapSlice, b : DbindexbitmapSlice) -> DbindexbitmapSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexbitmapSlice::add(self : DbindexbitmapSlice, other : DbindexbitmapSlice) -> DbindexbitmapSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_bitmap_slice_copy(s : DbindexbitmapSlice) -> DbindexbitmapSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexbitmapSlice::copy(self : DbindexbitmapSlice) -> DbindexbitmapSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_slice_fill(s : DbindexbitmapSlice, v : Double) -> DbindexbitmapSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexbitmapSlice::fill(self : DbindexbitmapSlice, v : Double) -> DbindexbitmapSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_bitmap_slice_min(s : DbindexbitmapSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexbitmapSlice::min(self : DbindexbitmapSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_bitmap_slice_max(s : DbindexbitmapSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexbitmapSlice::max(self : DbindexbitmapSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_bitmap_slice_to_string(s : DbindexbitmapSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexbitmapSlice::to_string(self : DbindexbitmapSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

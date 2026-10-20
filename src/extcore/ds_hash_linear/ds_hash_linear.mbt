@@ -351,45 +351,45 @@ pub fn ds_hash_linear_frame_make(size : Int) -> DshashlinearFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_frame_len(s : DshashlinearFrame) -> Int { s.size }
+pub fn DshashlinearFrame::len(self : DshashlinearFrame) -> Int { self.size }
 
-pub fn ds_hash_linear_frame_get(s : DshashlinearFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearFrame::get(self : DshashlinearFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_frame_set(s : DshashlinearFrame, i : Int, v : Double) -> DshashlinearFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearFrame::set(self : DshashlinearFrame, i : Int, v : Double) -> DshashlinearFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_frame_sum(s : DshashlinearFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearFrame::sum(self : DshashlinearFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_frame_mean(s : DshashlinearFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearFrame::mean(self : DshashlinearFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_frame_scale(s : DshashlinearFrame, f : Double) -> DshashlinearFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearFrame::scale(self : DshashlinearFrame, f : Double) -> DshashlinearFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_frame_add(a : DshashlinearFrame, b : DshashlinearFrame) -> DshashlinearFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearFrame::add(self : DshashlinearFrame, other : DshashlinearFrame) -> DshashlinearFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_frame_copy(s : DshashlinearFrame) -> DshashlinearFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearFrame::copy(self : DshashlinearFrame) -> DshashlinearFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_frame_fill(s : DshashlinearFrame, v : Double) -> DshashlinearFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearFrame::fill(self : DshashlinearFrame, v : Double) -> DshashlinearFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_frame_min(s : DshashlinearFrame) -> Double { @_common.min(s.data) }
+pub fn DshashlinearFrame::min(self : DshashlinearFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_frame_max(s : DshashlinearFrame) -> Double { @_common.max(s.data) }
+pub fn DshashlinearFrame::max(self : DshashlinearFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_frame_to_string(s : DshashlinearFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearFrame::to_string(self : DshashlinearFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_linear_table_make(size : Int) -> DshashlinearTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_table_len(s : DshashlinearTable) -> Int { s.size }
+pub fn DshashlinearTable::len(self : DshashlinearTable) -> Int { self.size }
 
-pub fn ds_hash_linear_table_get(s : DshashlinearTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearTable::get(self : DshashlinearTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_table_set(s : DshashlinearTable, i : Int, v : Double) -> DshashlinearTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearTable::set(self : DshashlinearTable, i : Int, v : Double) -> DshashlinearTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_table_sum(s : DshashlinearTable) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearTable::sum(self : DshashlinearTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_table_mean(s : DshashlinearTable) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearTable::mean(self : DshashlinearTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_table_scale(s : DshashlinearTable, f : Double) -> DshashlinearTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearTable::scale(self : DshashlinearTable, f : Double) -> DshashlinearTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_table_add(a : DshashlinearTable, b : DshashlinearTable) -> DshashlinearTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearTable::add(self : DshashlinearTable, other : DshashlinearTable) -> DshashlinearTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_table_copy(s : DshashlinearTable) -> DshashlinearTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearTable::copy(self : DshashlinearTable) -> DshashlinearTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_table_fill(s : DshashlinearTable, v : Double) -> DshashlinearTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearTable::fill(self : DshashlinearTable, v : Double) -> DshashlinearTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_table_min(s : DshashlinearTable) -> Double { @_common.min(s.data) }
+pub fn DshashlinearTable::min(self : DshashlinearTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_table_max(s : DshashlinearTable) -> Double { @_common.max(s.data) }
+pub fn DshashlinearTable::max(self : DshashlinearTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_table_to_string(s : DshashlinearTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearTable::to_string(self : DshashlinearTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_linear_graphn_make(size : Int) -> DshashlinearGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_graphn_len(s : DshashlinearGraphN) -> Int { s.size }
+pub fn DshashlinearGraphN::len(self : DshashlinearGraphN) -> Int { self.size }
 
-pub fn ds_hash_linear_graphn_get(s : DshashlinearGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearGraphN::get(self : DshashlinearGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_graphn_set(s : DshashlinearGraphN, i : Int, v : Double) -> DshashlinearGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearGraphN::set(self : DshashlinearGraphN, i : Int, v : Double) -> DshashlinearGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_graphn_sum(s : DshashlinearGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearGraphN::sum(self : DshashlinearGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_graphn_mean(s : DshashlinearGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearGraphN::mean(self : DshashlinearGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_graphn_scale(s : DshashlinearGraphN, f : Double) -> DshashlinearGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearGraphN::scale(self : DshashlinearGraphN, f : Double) -> DshashlinearGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_graphn_add(a : DshashlinearGraphN, b : DshashlinearGraphN) -> DshashlinearGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearGraphN::add(self : DshashlinearGraphN, other : DshashlinearGraphN) -> DshashlinearGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_graphn_copy(s : DshashlinearGraphN) -> DshashlinearGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearGraphN::copy(self : DshashlinearGraphN) -> DshashlinearGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_graphn_fill(s : DshashlinearGraphN, v : Double) -> DshashlinearGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearGraphN::fill(self : DshashlinearGraphN, v : Double) -> DshashlinearGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_graphn_min(s : DshashlinearGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashlinearGraphN::min(self : DshashlinearGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_graphn_max(s : DshashlinearGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashlinearGraphN::max(self : DshashlinearGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_graphn_to_string(s : DshashlinearGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearGraphN::to_string(self : DshashlinearGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_linear_node_make(size : Int) -> DshashlinearNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_node_len(s : DshashlinearNode) -> Int { s.size }
+pub fn DshashlinearNode::len(self : DshashlinearNode) -> Int { self.size }
 
-pub fn ds_hash_linear_node_get(s : DshashlinearNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearNode::get(self : DshashlinearNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_node_set(s : DshashlinearNode, i : Int, v : Double) -> DshashlinearNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearNode::set(self : DshashlinearNode, i : Int, v : Double) -> DshashlinearNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_node_sum(s : DshashlinearNode) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearNode::sum(self : DshashlinearNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_node_mean(s : DshashlinearNode) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearNode::mean(self : DshashlinearNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_node_scale(s : DshashlinearNode, f : Double) -> DshashlinearNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearNode::scale(self : DshashlinearNode, f : Double) -> DshashlinearNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_node_add(a : DshashlinearNode, b : DshashlinearNode) -> DshashlinearNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearNode::add(self : DshashlinearNode, other : DshashlinearNode) -> DshashlinearNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_node_copy(s : DshashlinearNode) -> DshashlinearNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearNode::copy(self : DshashlinearNode) -> DshashlinearNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_node_fill(s : DshashlinearNode, v : Double) -> DshashlinearNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearNode::fill(self : DshashlinearNode, v : Double) -> DshashlinearNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_node_min(s : DshashlinearNode) -> Double { @_common.min(s.data) }
+pub fn DshashlinearNode::min(self : DshashlinearNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_node_max(s : DshashlinearNode) -> Double { @_common.max(s.data) }
+pub fn DshashlinearNode::max(self : DshashlinearNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_node_to_string(s : DshashlinearNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearNode::to_string(self : DshashlinearNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_linear_edge_make(size : Int) -> DshashlinearEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_edge_len(s : DshashlinearEdge) -> Int { s.size }
+pub fn DshashlinearEdge::len(self : DshashlinearEdge) -> Int { self.size }
 
-pub fn ds_hash_linear_edge_get(s : DshashlinearEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearEdge::get(self : DshashlinearEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_edge_set(s : DshashlinearEdge, i : Int, v : Double) -> DshashlinearEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearEdge::set(self : DshashlinearEdge, i : Int, v : Double) -> DshashlinearEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_edge_sum(s : DshashlinearEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearEdge::sum(self : DshashlinearEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_edge_mean(s : DshashlinearEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearEdge::mean(self : DshashlinearEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_edge_scale(s : DshashlinearEdge, f : Double) -> DshashlinearEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearEdge::scale(self : DshashlinearEdge, f : Double) -> DshashlinearEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_edge_add(a : DshashlinearEdge, b : DshashlinearEdge) -> DshashlinearEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearEdge::add(self : DshashlinearEdge, other : DshashlinearEdge) -> DshashlinearEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_edge_copy(s : DshashlinearEdge) -> DshashlinearEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearEdge::copy(self : DshashlinearEdge) -> DshashlinearEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_edge_fill(s : DshashlinearEdge, v : Double) -> DshashlinearEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearEdge::fill(self : DshashlinearEdge, v : Double) -> DshashlinearEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_edge_min(s : DshashlinearEdge) -> Double { @_common.min(s.data) }
+pub fn DshashlinearEdge::min(self : DshashlinearEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_edge_max(s : DshashlinearEdge) -> Double { @_common.max(s.data) }
+pub fn DshashlinearEdge::max(self : DshashlinearEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_edge_to_string(s : DshashlinearEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearEdge::to_string(self : DshashlinearEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearPath {
@@ -606,45 +606,45 @@ pub fn ds_hash_linear_path_make(size : Int) -> DshashlinearPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_path_len(s : DshashlinearPath) -> Int { s.size }
+pub fn DshashlinearPath::len(self : DshashlinearPath) -> Int { self.size }
 
-pub fn ds_hash_linear_path_get(s : DshashlinearPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearPath::get(self : DshashlinearPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_path_set(s : DshashlinearPath, i : Int, v : Double) -> DshashlinearPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearPath::set(self : DshashlinearPath, i : Int, v : Double) -> DshashlinearPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_path_sum(s : DshashlinearPath) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearPath::sum(self : DshashlinearPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_path_mean(s : DshashlinearPath) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearPath::mean(self : DshashlinearPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_path_scale(s : DshashlinearPath, f : Double) -> DshashlinearPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearPath::scale(self : DshashlinearPath, f : Double) -> DshashlinearPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_path_add(a : DshashlinearPath, b : DshashlinearPath) -> DshashlinearPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearPath::add(self : DshashlinearPath, other : DshashlinearPath) -> DshashlinearPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_path_copy(s : DshashlinearPath) -> DshashlinearPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearPath::copy(self : DshashlinearPath) -> DshashlinearPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_path_fill(s : DshashlinearPath, v : Double) -> DshashlinearPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearPath::fill(self : DshashlinearPath, v : Double) -> DshashlinearPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_path_min(s : DshashlinearPath) -> Double { @_common.min(s.data) }
+pub fn DshashlinearPath::min(self : DshashlinearPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_path_max(s : DshashlinearPath) -> Double { @_common.max(s.data) }
+pub fn DshashlinearPath::max(self : DshashlinearPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_path_to_string(s : DshashlinearPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearPath::to_string(self : DshashlinearPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_linear_cluster_make(size : Int) -> DshashlinearCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_cluster_len(s : DshashlinearCluster) -> Int { s.size }
+pub fn DshashlinearCluster::len(self : DshashlinearCluster) -> Int { self.size }
 
-pub fn ds_hash_linear_cluster_get(s : DshashlinearCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearCluster::get(self : DshashlinearCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_cluster_set(s : DshashlinearCluster, i : Int, v : Double) -> DshashlinearCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearCluster::set(self : DshashlinearCluster, i : Int, v : Double) -> DshashlinearCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cluster_sum(s : DshashlinearCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearCluster::sum(self : DshashlinearCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_cluster_mean(s : DshashlinearCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearCluster::mean(self : DshashlinearCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_cluster_scale(s : DshashlinearCluster, f : Double) -> DshashlinearCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearCluster::scale(self : DshashlinearCluster, f : Double) -> DshashlinearCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cluster_add(a : DshashlinearCluster, b : DshashlinearCluster) -> DshashlinearCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearCluster::add(self : DshashlinearCluster, other : DshashlinearCluster) -> DshashlinearCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cluster_copy(s : DshashlinearCluster) -> DshashlinearCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearCluster::copy(self : DshashlinearCluster) -> DshashlinearCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cluster_fill(s : DshashlinearCluster, v : Double) -> DshashlinearCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearCluster::fill(self : DshashlinearCluster, v : Double) -> DshashlinearCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cluster_min(s : DshashlinearCluster) -> Double { @_common.min(s.data) }
+pub fn DshashlinearCluster::min(self : DshashlinearCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_cluster_max(s : DshashlinearCluster) -> Double { @_common.max(s.data) }
+pub fn DshashlinearCluster::max(self : DshashlinearCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_cluster_to_string(s : DshashlinearCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearCluster::to_string(self : DshashlinearCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_linear_model_make(size : Int) -> DshashlinearModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_model_len(s : DshashlinearModel) -> Int { s.size }
+pub fn DshashlinearModel::len(self : DshashlinearModel) -> Int { self.size }
 
-pub fn ds_hash_linear_model_get(s : DshashlinearModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearModel::get(self : DshashlinearModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_model_set(s : DshashlinearModel, i : Int, v : Double) -> DshashlinearModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearModel::set(self : DshashlinearModel, i : Int, v : Double) -> DshashlinearModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_model_sum(s : DshashlinearModel) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearModel::sum(self : DshashlinearModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_model_mean(s : DshashlinearModel) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearModel::mean(self : DshashlinearModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_model_scale(s : DshashlinearModel, f : Double) -> DshashlinearModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearModel::scale(self : DshashlinearModel, f : Double) -> DshashlinearModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_model_add(a : DshashlinearModel, b : DshashlinearModel) -> DshashlinearModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearModel::add(self : DshashlinearModel, other : DshashlinearModel) -> DshashlinearModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_model_copy(s : DshashlinearModel) -> DshashlinearModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearModel::copy(self : DshashlinearModel) -> DshashlinearModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_model_fill(s : DshashlinearModel, v : Double) -> DshashlinearModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearModel::fill(self : DshashlinearModel, v : Double) -> DshashlinearModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_model_min(s : DshashlinearModel) -> Double { @_common.min(s.data) }
+pub fn DshashlinearModel::min(self : DshashlinearModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_model_max(s : DshashlinearModel) -> Double { @_common.max(s.data) }
+pub fn DshashlinearModel::max(self : DshashlinearModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_model_to_string(s : DshashlinearModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearModel::to_string(self : DshashlinearModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_linear_layer_make(size : Int) -> DshashlinearLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_layer_len(s : DshashlinearLayer) -> Int { s.size }
+pub fn DshashlinearLayer::len(self : DshashlinearLayer) -> Int { self.size }
 
-pub fn ds_hash_linear_layer_get(s : DshashlinearLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearLayer::get(self : DshashlinearLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_layer_set(s : DshashlinearLayer, i : Int, v : Double) -> DshashlinearLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearLayer::set(self : DshashlinearLayer, i : Int, v : Double) -> DshashlinearLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_layer_sum(s : DshashlinearLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearLayer::sum(self : DshashlinearLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_layer_mean(s : DshashlinearLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearLayer::mean(self : DshashlinearLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_layer_scale(s : DshashlinearLayer, f : Double) -> DshashlinearLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearLayer::scale(self : DshashlinearLayer, f : Double) -> DshashlinearLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_layer_add(a : DshashlinearLayer, b : DshashlinearLayer) -> DshashlinearLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearLayer::add(self : DshashlinearLayer, other : DshashlinearLayer) -> DshashlinearLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_layer_copy(s : DshashlinearLayer) -> DshashlinearLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearLayer::copy(self : DshashlinearLayer) -> DshashlinearLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_layer_fill(s : DshashlinearLayer, v : Double) -> DshashlinearLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearLayer::fill(self : DshashlinearLayer, v : Double) -> DshashlinearLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_layer_min(s : DshashlinearLayer) -> Double { @_common.min(s.data) }
+pub fn DshashlinearLayer::min(self : DshashlinearLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_layer_max(s : DshashlinearLayer) -> Double { @_common.max(s.data) }
+pub fn DshashlinearLayer::max(self : DshashlinearLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_layer_to_string(s : DshashlinearLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearLayer::to_string(self : DshashlinearLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_linear_buffer_make(size : Int) -> DshashlinearBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_buffer_len(s : DshashlinearBuffer) -> Int { s.size }
+pub fn DshashlinearBuffer::len(self : DshashlinearBuffer) -> Int { self.size }
 
-pub fn ds_hash_linear_buffer_get(s : DshashlinearBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearBuffer::get(self : DshashlinearBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_buffer_set(s : DshashlinearBuffer, i : Int, v : Double) -> DshashlinearBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearBuffer::set(self : DshashlinearBuffer, i : Int, v : Double) -> DshashlinearBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_buffer_sum(s : DshashlinearBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearBuffer::sum(self : DshashlinearBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_buffer_mean(s : DshashlinearBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearBuffer::mean(self : DshashlinearBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_buffer_scale(s : DshashlinearBuffer, f : Double) -> DshashlinearBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearBuffer::scale(self : DshashlinearBuffer, f : Double) -> DshashlinearBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_buffer_add(a : DshashlinearBuffer, b : DshashlinearBuffer) -> DshashlinearBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearBuffer::add(self : DshashlinearBuffer, other : DshashlinearBuffer) -> DshashlinearBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_buffer_copy(s : DshashlinearBuffer) -> DshashlinearBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearBuffer::copy(self : DshashlinearBuffer) -> DshashlinearBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_buffer_fill(s : DshashlinearBuffer, v : Double) -> DshashlinearBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearBuffer::fill(self : DshashlinearBuffer, v : Double) -> DshashlinearBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_buffer_min(s : DshashlinearBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashlinearBuffer::min(self : DshashlinearBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_buffer_max(s : DshashlinearBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashlinearBuffer::max(self : DshashlinearBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_buffer_to_string(s : DshashlinearBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearBuffer::to_string(self : DshashlinearBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_linear_cursor_make(size : Int) -> DshashlinearCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_cursor_len(s : DshashlinearCursor) -> Int { s.size }
+pub fn DshashlinearCursor::len(self : DshashlinearCursor) -> Int { self.size }
 
-pub fn ds_hash_linear_cursor_get(s : DshashlinearCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearCursor::get(self : DshashlinearCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_cursor_set(s : DshashlinearCursor, i : Int, v : Double) -> DshashlinearCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearCursor::set(self : DshashlinearCursor, i : Int, v : Double) -> DshashlinearCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cursor_sum(s : DshashlinearCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearCursor::sum(self : DshashlinearCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_cursor_mean(s : DshashlinearCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearCursor::mean(self : DshashlinearCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_cursor_scale(s : DshashlinearCursor, f : Double) -> DshashlinearCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearCursor::scale(self : DshashlinearCursor, f : Double) -> DshashlinearCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cursor_add(a : DshashlinearCursor, b : DshashlinearCursor) -> DshashlinearCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearCursor::add(self : DshashlinearCursor, other : DshashlinearCursor) -> DshashlinearCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cursor_copy(s : DshashlinearCursor) -> DshashlinearCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearCursor::copy(self : DshashlinearCursor) -> DshashlinearCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cursor_fill(s : DshashlinearCursor, v : Double) -> DshashlinearCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearCursor::fill(self : DshashlinearCursor, v : Double) -> DshashlinearCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_cursor_min(s : DshashlinearCursor) -> Double { @_common.min(s.data) }
+pub fn DshashlinearCursor::min(self : DshashlinearCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_cursor_max(s : DshashlinearCursor) -> Double { @_common.max(s.data) }
+pub fn DshashlinearCursor::max(self : DshashlinearCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_cursor_to_string(s : DshashlinearCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearCursor::to_string(self : DshashlinearCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearView {
@@ -912,45 +912,45 @@ pub fn ds_hash_linear_view_make(size : Int) -> DshashlinearView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_view_len(s : DshashlinearView) -> Int { s.size }
+pub fn DshashlinearView::len(self : DshashlinearView) -> Int { self.size }
 
-pub fn ds_hash_linear_view_get(s : DshashlinearView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearView::get(self : DshashlinearView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_view_set(s : DshashlinearView, i : Int, v : Double) -> DshashlinearView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearView::set(self : DshashlinearView, i : Int, v : Double) -> DshashlinearView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_view_sum(s : DshashlinearView) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearView::sum(self : DshashlinearView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_view_mean(s : DshashlinearView) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearView::mean(self : DshashlinearView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_view_scale(s : DshashlinearView, f : Double) -> DshashlinearView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearView::scale(self : DshashlinearView, f : Double) -> DshashlinearView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_view_add(a : DshashlinearView, b : DshashlinearView) -> DshashlinearView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearView::add(self : DshashlinearView, other : DshashlinearView) -> DshashlinearView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_view_copy(s : DshashlinearView) -> DshashlinearView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearView::copy(self : DshashlinearView) -> DshashlinearView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_view_fill(s : DshashlinearView, v : Double) -> DshashlinearView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearView::fill(self : DshashlinearView, v : Double) -> DshashlinearView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_view_min(s : DshashlinearView) -> Double { @_common.min(s.data) }
+pub fn DshashlinearView::min(self : DshashlinearView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_view_max(s : DshashlinearView) -> Double { @_common.max(s.data) }
+pub fn DshashlinearView::max(self : DshashlinearView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_view_to_string(s : DshashlinearView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearView::to_string(self : DshashlinearView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_linear_range_make(size : Int) -> DshashlinearRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_range_len(s : DshashlinearRange) -> Int { s.size }
+pub fn DshashlinearRange::len(self : DshashlinearRange) -> Int { self.size }
 
-pub fn ds_hash_linear_range_get(s : DshashlinearRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearRange::get(self : DshashlinearRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_range_set(s : DshashlinearRange, i : Int, v : Double) -> DshashlinearRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearRange::set(self : DshashlinearRange, i : Int, v : Double) -> DshashlinearRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_range_sum(s : DshashlinearRange) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearRange::sum(self : DshashlinearRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_range_mean(s : DshashlinearRange) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearRange::mean(self : DshashlinearRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_range_scale(s : DshashlinearRange, f : Double) -> DshashlinearRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearRange::scale(self : DshashlinearRange, f : Double) -> DshashlinearRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_range_add(a : DshashlinearRange, b : DshashlinearRange) -> DshashlinearRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearRange::add(self : DshashlinearRange, other : DshashlinearRange) -> DshashlinearRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_range_copy(s : DshashlinearRange) -> DshashlinearRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearRange::copy(self : DshashlinearRange) -> DshashlinearRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_range_fill(s : DshashlinearRange, v : Double) -> DshashlinearRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearRange::fill(self : DshashlinearRange, v : Double) -> DshashlinearRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_range_min(s : DshashlinearRange) -> Double { @_common.min(s.data) }
+pub fn DshashlinearRange::min(self : DshashlinearRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_range_max(s : DshashlinearRange) -> Double { @_common.max(s.data) }
+pub fn DshashlinearRange::max(self : DshashlinearRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_range_to_string(s : DshashlinearRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearRange::to_string(self : DshashlinearRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashlinearSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_linear_slice_make(size : Int) -> DshashlinearSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_linear_slice_len(s : DshashlinearSlice) -> Int { s.size }
+pub fn DshashlinearSlice::len(self : DshashlinearSlice) -> Int { self.size }
 
-pub fn ds_hash_linear_slice_get(s : DshashlinearSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashlinearSlice::get(self : DshashlinearSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_linear_slice_set(s : DshashlinearSlice, i : Int, v : Double) -> DshashlinearSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashlinearSlice::set(self : DshashlinearSlice, i : Int, v : Double) -> DshashlinearSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_slice_sum(s : DshashlinearSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashlinearSlice::sum(self : DshashlinearSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_linear_slice_mean(s : DshashlinearSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashlinearSlice::mean(self : DshashlinearSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_linear_slice_scale(s : DshashlinearSlice, f : Double) -> DshashlinearSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashlinearSlice::scale(self : DshashlinearSlice, f : Double) -> DshashlinearSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_slice_add(a : DshashlinearSlice, b : DshashlinearSlice) -> DshashlinearSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashlinearSlice::add(self : DshashlinearSlice, other : DshashlinearSlice) -> DshashlinearSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_linear_slice_copy(s : DshashlinearSlice) -> DshashlinearSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashlinearSlice::copy(self : DshashlinearSlice) -> DshashlinearSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_slice_fill(s : DshashlinearSlice, v : Double) -> DshashlinearSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashlinearSlice::fill(self : DshashlinearSlice, v : Double) -> DshashlinearSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_linear_slice_min(s : DshashlinearSlice) -> Double { @_common.min(s.data) }
+pub fn DshashlinearSlice::min(self : DshashlinearSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_linear_slice_max(s : DshashlinearSlice) -> Double { @_common.max(s.data) }
+pub fn DshashlinearSlice::max(self : DshashlinearSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_linear_slice_to_string(s : DshashlinearSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashlinearSlice::to_string(self : DshashlinearSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

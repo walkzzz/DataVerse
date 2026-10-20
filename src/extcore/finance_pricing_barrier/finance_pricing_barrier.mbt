@@ -351,45 +351,45 @@ pub fn finance_pricing_barrier_frame_make(size : Int) -> FinancepricingbarrierFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_frame_len(s : FinancepricingbarrierFrame) -> Int { s.size }
+pub fn FinancepricingbarrierFrame::len(self : FinancepricingbarrierFrame) -> Int { self.size }
 
-pub fn finance_pricing_barrier_frame_get(s : FinancepricingbarrierFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierFrame::get(self : FinancepricingbarrierFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_frame_set(s : FinancepricingbarrierFrame, i : Int, v : Double) -> FinancepricingbarrierFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierFrame::set(self : FinancepricingbarrierFrame, i : Int, v : Double) -> FinancepricingbarrierFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_frame_sum(s : FinancepricingbarrierFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierFrame::sum(self : FinancepricingbarrierFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_frame_mean(s : FinancepricingbarrierFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierFrame::mean(self : FinancepricingbarrierFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_frame_scale(s : FinancepricingbarrierFrame, f : Double) -> FinancepricingbarrierFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierFrame::scale(self : FinancepricingbarrierFrame, f : Double) -> FinancepricingbarrierFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_frame_add(a : FinancepricingbarrierFrame, b : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierFrame::add(self : FinancepricingbarrierFrame, other : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_frame_copy(s : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierFrame::copy(self : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_frame_fill(s : FinancepricingbarrierFrame, v : Double) -> FinancepricingbarrierFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierFrame::fill(self : FinancepricingbarrierFrame, v : Double) -> FinancepricingbarrierFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_frame_min(s : FinancepricingbarrierFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierFrame::min(self : FinancepricingbarrierFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_frame_max(s : FinancepricingbarrierFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierFrame::max(self : FinancepricingbarrierFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_frame_to_string(s : FinancepricingbarrierFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierFrame::to_string(self : FinancepricingbarrierFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_barrier_table_make(size : Int) -> FinancepricingbarrierTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_table_len(s : FinancepricingbarrierTable) -> Int { s.size }
+pub fn FinancepricingbarrierTable::len(self : FinancepricingbarrierTable) -> Int { self.size }
 
-pub fn finance_pricing_barrier_table_get(s : FinancepricingbarrierTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierTable::get(self : FinancepricingbarrierTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_table_set(s : FinancepricingbarrierTable, i : Int, v : Double) -> FinancepricingbarrierTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierTable::set(self : FinancepricingbarrierTable, i : Int, v : Double) -> FinancepricingbarrierTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_table_sum(s : FinancepricingbarrierTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierTable::sum(self : FinancepricingbarrierTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_table_mean(s : FinancepricingbarrierTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierTable::mean(self : FinancepricingbarrierTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_table_scale(s : FinancepricingbarrierTable, f : Double) -> FinancepricingbarrierTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierTable::scale(self : FinancepricingbarrierTable, f : Double) -> FinancepricingbarrierTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_table_add(a : FinancepricingbarrierTable, b : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierTable::add(self : FinancepricingbarrierTable, other : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_table_copy(s : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierTable::copy(self : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_table_fill(s : FinancepricingbarrierTable, v : Double) -> FinancepricingbarrierTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierTable::fill(self : FinancepricingbarrierTable, v : Double) -> FinancepricingbarrierTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_table_min(s : FinancepricingbarrierTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierTable::min(self : FinancepricingbarrierTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_table_max(s : FinancepricingbarrierTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierTable::max(self : FinancepricingbarrierTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_table_to_string(s : FinancepricingbarrierTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierTable::to_string(self : FinancepricingbarrierTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_barrier_graphn_make(size : Int) -> FinancepricingbarrierG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_graphn_len(s : FinancepricingbarrierGraphN) -> Int { s.size }
+pub fn FinancepricingbarrierGraphN::len(self : FinancepricingbarrierGraphN) -> Int { self.size }
 
-pub fn finance_pricing_barrier_graphn_get(s : FinancepricingbarrierGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierGraphN::get(self : FinancepricingbarrierGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_graphn_set(s : FinancepricingbarrierGraphN, i : Int, v : Double) -> FinancepricingbarrierGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierGraphN::set(self : FinancepricingbarrierGraphN, i : Int, v : Double) -> FinancepricingbarrierGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_graphn_sum(s : FinancepricingbarrierGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierGraphN::sum(self : FinancepricingbarrierGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_graphn_mean(s : FinancepricingbarrierGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierGraphN::mean(self : FinancepricingbarrierGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_graphn_scale(s : FinancepricingbarrierGraphN, f : Double) -> FinancepricingbarrierGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierGraphN::scale(self : FinancepricingbarrierGraphN, f : Double) -> FinancepricingbarrierGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_graphn_add(a : FinancepricingbarrierGraphN, b : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierGraphN::add(self : FinancepricingbarrierGraphN, other : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_graphn_copy(s : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierGraphN::copy(self : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_graphn_fill(s : FinancepricingbarrierGraphN, v : Double) -> FinancepricingbarrierGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierGraphN::fill(self : FinancepricingbarrierGraphN, v : Double) -> FinancepricingbarrierGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_graphn_min(s : FinancepricingbarrierGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierGraphN::min(self : FinancepricingbarrierGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_graphn_max(s : FinancepricingbarrierGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierGraphN::max(self : FinancepricingbarrierGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_graphn_to_string(s : FinancepricingbarrierGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierGraphN::to_string(self : FinancepricingbarrierGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_barrier_node_make(size : Int) -> FinancepricingbarrierNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_node_len(s : FinancepricingbarrierNode) -> Int { s.size }
+pub fn FinancepricingbarrierNode::len(self : FinancepricingbarrierNode) -> Int { self.size }
 
-pub fn finance_pricing_barrier_node_get(s : FinancepricingbarrierNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierNode::get(self : FinancepricingbarrierNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_node_set(s : FinancepricingbarrierNode, i : Int, v : Double) -> FinancepricingbarrierNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierNode::set(self : FinancepricingbarrierNode, i : Int, v : Double) -> FinancepricingbarrierNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_node_sum(s : FinancepricingbarrierNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierNode::sum(self : FinancepricingbarrierNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_node_mean(s : FinancepricingbarrierNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierNode::mean(self : FinancepricingbarrierNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_node_scale(s : FinancepricingbarrierNode, f : Double) -> FinancepricingbarrierNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierNode::scale(self : FinancepricingbarrierNode, f : Double) -> FinancepricingbarrierNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_node_add(a : FinancepricingbarrierNode, b : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierNode::add(self : FinancepricingbarrierNode, other : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_node_copy(s : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierNode::copy(self : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_node_fill(s : FinancepricingbarrierNode, v : Double) -> FinancepricingbarrierNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierNode::fill(self : FinancepricingbarrierNode, v : Double) -> FinancepricingbarrierNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_node_min(s : FinancepricingbarrierNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierNode::min(self : FinancepricingbarrierNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_node_max(s : FinancepricingbarrierNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierNode::max(self : FinancepricingbarrierNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_node_to_string(s : FinancepricingbarrierNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierNode::to_string(self : FinancepricingbarrierNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_barrier_edge_make(size : Int) -> FinancepricingbarrierEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_edge_len(s : FinancepricingbarrierEdge) -> Int { s.size }
+pub fn FinancepricingbarrierEdge::len(self : FinancepricingbarrierEdge) -> Int { self.size }
 
-pub fn finance_pricing_barrier_edge_get(s : FinancepricingbarrierEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierEdge::get(self : FinancepricingbarrierEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_edge_set(s : FinancepricingbarrierEdge, i : Int, v : Double) -> FinancepricingbarrierEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierEdge::set(self : FinancepricingbarrierEdge, i : Int, v : Double) -> FinancepricingbarrierEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_edge_sum(s : FinancepricingbarrierEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierEdge::sum(self : FinancepricingbarrierEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_edge_mean(s : FinancepricingbarrierEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierEdge::mean(self : FinancepricingbarrierEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_edge_scale(s : FinancepricingbarrierEdge, f : Double) -> FinancepricingbarrierEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierEdge::scale(self : FinancepricingbarrierEdge, f : Double) -> FinancepricingbarrierEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_edge_add(a : FinancepricingbarrierEdge, b : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierEdge::add(self : FinancepricingbarrierEdge, other : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_edge_copy(s : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierEdge::copy(self : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_edge_fill(s : FinancepricingbarrierEdge, v : Double) -> FinancepricingbarrierEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierEdge::fill(self : FinancepricingbarrierEdge, v : Double) -> FinancepricingbarrierEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_edge_min(s : FinancepricingbarrierEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierEdge::min(self : FinancepricingbarrierEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_edge_max(s : FinancepricingbarrierEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierEdge::max(self : FinancepricingbarrierEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_edge_to_string(s : FinancepricingbarrierEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierEdge::to_string(self : FinancepricingbarrierEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_barrier_path_make(size : Int) -> FinancepricingbarrierPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_path_len(s : FinancepricingbarrierPath) -> Int { s.size }
+pub fn FinancepricingbarrierPath::len(self : FinancepricingbarrierPath) -> Int { self.size }
 
-pub fn finance_pricing_barrier_path_get(s : FinancepricingbarrierPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierPath::get(self : FinancepricingbarrierPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_path_set(s : FinancepricingbarrierPath, i : Int, v : Double) -> FinancepricingbarrierPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierPath::set(self : FinancepricingbarrierPath, i : Int, v : Double) -> FinancepricingbarrierPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_path_sum(s : FinancepricingbarrierPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierPath::sum(self : FinancepricingbarrierPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_path_mean(s : FinancepricingbarrierPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierPath::mean(self : FinancepricingbarrierPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_path_scale(s : FinancepricingbarrierPath, f : Double) -> FinancepricingbarrierPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierPath::scale(self : FinancepricingbarrierPath, f : Double) -> FinancepricingbarrierPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_path_add(a : FinancepricingbarrierPath, b : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierPath::add(self : FinancepricingbarrierPath, other : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_path_copy(s : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierPath::copy(self : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_path_fill(s : FinancepricingbarrierPath, v : Double) -> FinancepricingbarrierPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierPath::fill(self : FinancepricingbarrierPath, v : Double) -> FinancepricingbarrierPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_path_min(s : FinancepricingbarrierPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierPath::min(self : FinancepricingbarrierPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_path_max(s : FinancepricingbarrierPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierPath::max(self : FinancepricingbarrierPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_path_to_string(s : FinancepricingbarrierPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierPath::to_string(self : FinancepricingbarrierPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_barrier_cluster_make(size : Int) -> Financepricingbarrier
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_cluster_len(s : FinancepricingbarrierCluster) -> Int { s.size }
+pub fn FinancepricingbarrierCluster::len(self : FinancepricingbarrierCluster) -> Int { self.size }
 
-pub fn finance_pricing_barrier_cluster_get(s : FinancepricingbarrierCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierCluster::get(self : FinancepricingbarrierCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_cluster_set(s : FinancepricingbarrierCluster, i : Int, v : Double) -> FinancepricingbarrierCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCluster::set(self : FinancepricingbarrierCluster, i : Int, v : Double) -> FinancepricingbarrierCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cluster_sum(s : FinancepricingbarrierCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierCluster::sum(self : FinancepricingbarrierCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_cluster_mean(s : FinancepricingbarrierCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierCluster::mean(self : FinancepricingbarrierCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_cluster_scale(s : FinancepricingbarrierCluster, f : Double) -> FinancepricingbarrierCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCluster::scale(self : FinancepricingbarrierCluster, f : Double) -> FinancepricingbarrierCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cluster_add(a : FinancepricingbarrierCluster, b : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierCluster::add(self : FinancepricingbarrierCluster, other : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cluster_copy(s : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCluster::copy(self : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cluster_fill(s : FinancepricingbarrierCluster, v : Double) -> FinancepricingbarrierCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCluster::fill(self : FinancepricingbarrierCluster, v : Double) -> FinancepricingbarrierCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cluster_min(s : FinancepricingbarrierCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierCluster::min(self : FinancepricingbarrierCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_cluster_max(s : FinancepricingbarrierCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierCluster::max(self : FinancepricingbarrierCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_cluster_to_string(s : FinancepricingbarrierCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierCluster::to_string(self : FinancepricingbarrierCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_barrier_model_make(size : Int) -> FinancepricingbarrierMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_model_len(s : FinancepricingbarrierModel) -> Int { s.size }
+pub fn FinancepricingbarrierModel::len(self : FinancepricingbarrierModel) -> Int { self.size }
 
-pub fn finance_pricing_barrier_model_get(s : FinancepricingbarrierModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierModel::get(self : FinancepricingbarrierModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_model_set(s : FinancepricingbarrierModel, i : Int, v : Double) -> FinancepricingbarrierModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierModel::set(self : FinancepricingbarrierModel, i : Int, v : Double) -> FinancepricingbarrierModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_model_sum(s : FinancepricingbarrierModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierModel::sum(self : FinancepricingbarrierModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_model_mean(s : FinancepricingbarrierModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierModel::mean(self : FinancepricingbarrierModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_model_scale(s : FinancepricingbarrierModel, f : Double) -> FinancepricingbarrierModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierModel::scale(self : FinancepricingbarrierModel, f : Double) -> FinancepricingbarrierModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_model_add(a : FinancepricingbarrierModel, b : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierModel::add(self : FinancepricingbarrierModel, other : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_model_copy(s : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierModel::copy(self : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_model_fill(s : FinancepricingbarrierModel, v : Double) -> FinancepricingbarrierModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierModel::fill(self : FinancepricingbarrierModel, v : Double) -> FinancepricingbarrierModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_model_min(s : FinancepricingbarrierModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierModel::min(self : FinancepricingbarrierModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_model_max(s : FinancepricingbarrierModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierModel::max(self : FinancepricingbarrierModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_model_to_string(s : FinancepricingbarrierModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierModel::to_string(self : FinancepricingbarrierModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_barrier_layer_make(size : Int) -> FinancepricingbarrierLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_layer_len(s : FinancepricingbarrierLayer) -> Int { s.size }
+pub fn FinancepricingbarrierLayer::len(self : FinancepricingbarrierLayer) -> Int { self.size }
 
-pub fn finance_pricing_barrier_layer_get(s : FinancepricingbarrierLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierLayer::get(self : FinancepricingbarrierLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_layer_set(s : FinancepricingbarrierLayer, i : Int, v : Double) -> FinancepricingbarrierLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierLayer::set(self : FinancepricingbarrierLayer, i : Int, v : Double) -> FinancepricingbarrierLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_layer_sum(s : FinancepricingbarrierLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierLayer::sum(self : FinancepricingbarrierLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_layer_mean(s : FinancepricingbarrierLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierLayer::mean(self : FinancepricingbarrierLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_layer_scale(s : FinancepricingbarrierLayer, f : Double) -> FinancepricingbarrierLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierLayer::scale(self : FinancepricingbarrierLayer, f : Double) -> FinancepricingbarrierLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_layer_add(a : FinancepricingbarrierLayer, b : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierLayer::add(self : FinancepricingbarrierLayer, other : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_layer_copy(s : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierLayer::copy(self : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_layer_fill(s : FinancepricingbarrierLayer, v : Double) -> FinancepricingbarrierLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierLayer::fill(self : FinancepricingbarrierLayer, v : Double) -> FinancepricingbarrierLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_layer_min(s : FinancepricingbarrierLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierLayer::min(self : FinancepricingbarrierLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_layer_max(s : FinancepricingbarrierLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierLayer::max(self : FinancepricingbarrierLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_layer_to_string(s : FinancepricingbarrierLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierLayer::to_string(self : FinancepricingbarrierLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_barrier_buffer_make(size : Int) -> FinancepricingbarrierB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_buffer_len(s : FinancepricingbarrierBuffer) -> Int { s.size }
+pub fn FinancepricingbarrierBuffer::len(self : FinancepricingbarrierBuffer) -> Int { self.size }
 
-pub fn finance_pricing_barrier_buffer_get(s : FinancepricingbarrierBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierBuffer::get(self : FinancepricingbarrierBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_buffer_set(s : FinancepricingbarrierBuffer, i : Int, v : Double) -> FinancepricingbarrierBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierBuffer::set(self : FinancepricingbarrierBuffer, i : Int, v : Double) -> FinancepricingbarrierBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_buffer_sum(s : FinancepricingbarrierBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierBuffer::sum(self : FinancepricingbarrierBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_buffer_mean(s : FinancepricingbarrierBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierBuffer::mean(self : FinancepricingbarrierBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_buffer_scale(s : FinancepricingbarrierBuffer, f : Double) -> FinancepricingbarrierBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierBuffer::scale(self : FinancepricingbarrierBuffer, f : Double) -> FinancepricingbarrierBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_buffer_add(a : FinancepricingbarrierBuffer, b : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierBuffer::add(self : FinancepricingbarrierBuffer, other : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_buffer_copy(s : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierBuffer::copy(self : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_buffer_fill(s : FinancepricingbarrierBuffer, v : Double) -> FinancepricingbarrierBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierBuffer::fill(self : FinancepricingbarrierBuffer, v : Double) -> FinancepricingbarrierBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_buffer_min(s : FinancepricingbarrierBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierBuffer::min(self : FinancepricingbarrierBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_buffer_max(s : FinancepricingbarrierBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierBuffer::max(self : FinancepricingbarrierBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_buffer_to_string(s : FinancepricingbarrierBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierBuffer::to_string(self : FinancepricingbarrierBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_barrier_cursor_make(size : Int) -> FinancepricingbarrierC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_cursor_len(s : FinancepricingbarrierCursor) -> Int { s.size }
+pub fn FinancepricingbarrierCursor::len(self : FinancepricingbarrierCursor) -> Int { self.size }
 
-pub fn finance_pricing_barrier_cursor_get(s : FinancepricingbarrierCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierCursor::get(self : FinancepricingbarrierCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_cursor_set(s : FinancepricingbarrierCursor, i : Int, v : Double) -> FinancepricingbarrierCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCursor::set(self : FinancepricingbarrierCursor, i : Int, v : Double) -> FinancepricingbarrierCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cursor_sum(s : FinancepricingbarrierCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierCursor::sum(self : FinancepricingbarrierCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_cursor_mean(s : FinancepricingbarrierCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierCursor::mean(self : FinancepricingbarrierCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_cursor_scale(s : FinancepricingbarrierCursor, f : Double) -> FinancepricingbarrierCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCursor::scale(self : FinancepricingbarrierCursor, f : Double) -> FinancepricingbarrierCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cursor_add(a : FinancepricingbarrierCursor, b : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierCursor::add(self : FinancepricingbarrierCursor, other : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cursor_copy(s : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCursor::copy(self : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cursor_fill(s : FinancepricingbarrierCursor, v : Double) -> FinancepricingbarrierCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierCursor::fill(self : FinancepricingbarrierCursor, v : Double) -> FinancepricingbarrierCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_cursor_min(s : FinancepricingbarrierCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierCursor::min(self : FinancepricingbarrierCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_cursor_max(s : FinancepricingbarrierCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierCursor::max(self : FinancepricingbarrierCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_cursor_to_string(s : FinancepricingbarrierCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierCursor::to_string(self : FinancepricingbarrierCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_barrier_view_make(size : Int) -> FinancepricingbarrierVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_view_len(s : FinancepricingbarrierView) -> Int { s.size }
+pub fn FinancepricingbarrierView::len(self : FinancepricingbarrierView) -> Int { self.size }
 
-pub fn finance_pricing_barrier_view_get(s : FinancepricingbarrierView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierView::get(self : FinancepricingbarrierView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_view_set(s : FinancepricingbarrierView, i : Int, v : Double) -> FinancepricingbarrierView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierView::set(self : FinancepricingbarrierView, i : Int, v : Double) -> FinancepricingbarrierView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_view_sum(s : FinancepricingbarrierView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierView::sum(self : FinancepricingbarrierView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_view_mean(s : FinancepricingbarrierView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierView::mean(self : FinancepricingbarrierView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_view_scale(s : FinancepricingbarrierView, f : Double) -> FinancepricingbarrierView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierView::scale(self : FinancepricingbarrierView, f : Double) -> FinancepricingbarrierView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_view_add(a : FinancepricingbarrierView, b : FinancepricingbarrierView) -> FinancepricingbarrierView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierView::add(self : FinancepricingbarrierView, other : FinancepricingbarrierView) -> FinancepricingbarrierView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_view_copy(s : FinancepricingbarrierView) -> FinancepricingbarrierView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierView::copy(self : FinancepricingbarrierView) -> FinancepricingbarrierView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_view_fill(s : FinancepricingbarrierView, v : Double) -> FinancepricingbarrierView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierView::fill(self : FinancepricingbarrierView, v : Double) -> FinancepricingbarrierView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_view_min(s : FinancepricingbarrierView) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierView::min(self : FinancepricingbarrierView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_view_max(s : FinancepricingbarrierView) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierView::max(self : FinancepricingbarrierView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_view_to_string(s : FinancepricingbarrierView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierView::to_string(self : FinancepricingbarrierView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_barrier_range_make(size : Int) -> FinancepricingbarrierRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_range_len(s : FinancepricingbarrierRange) -> Int { s.size }
+pub fn FinancepricingbarrierRange::len(self : FinancepricingbarrierRange) -> Int { self.size }
 
-pub fn finance_pricing_barrier_range_get(s : FinancepricingbarrierRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierRange::get(self : FinancepricingbarrierRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_range_set(s : FinancepricingbarrierRange, i : Int, v : Double) -> FinancepricingbarrierRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierRange::set(self : FinancepricingbarrierRange, i : Int, v : Double) -> FinancepricingbarrierRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_range_sum(s : FinancepricingbarrierRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierRange::sum(self : FinancepricingbarrierRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_range_mean(s : FinancepricingbarrierRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierRange::mean(self : FinancepricingbarrierRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_range_scale(s : FinancepricingbarrierRange, f : Double) -> FinancepricingbarrierRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierRange::scale(self : FinancepricingbarrierRange, f : Double) -> FinancepricingbarrierRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_range_add(a : FinancepricingbarrierRange, b : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierRange::add(self : FinancepricingbarrierRange, other : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_range_copy(s : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierRange::copy(self : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_range_fill(s : FinancepricingbarrierRange, v : Double) -> FinancepricingbarrierRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierRange::fill(self : FinancepricingbarrierRange, v : Double) -> FinancepricingbarrierRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_range_min(s : FinancepricingbarrierRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierRange::min(self : FinancepricingbarrierRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_range_max(s : FinancepricingbarrierRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierRange::max(self : FinancepricingbarrierRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_range_to_string(s : FinancepricingbarrierRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierRange::to_string(self : FinancepricingbarrierRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingbarrierSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_barrier_slice_make(size : Int) -> FinancepricingbarrierSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_barrier_slice_len(s : FinancepricingbarrierSlice) -> Int { s.size }
+pub fn FinancepricingbarrierSlice::len(self : FinancepricingbarrierSlice) -> Int { self.size }
 
-pub fn finance_pricing_barrier_slice_get(s : FinancepricingbarrierSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingbarrierSlice::get(self : FinancepricingbarrierSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_barrier_slice_set(s : FinancepricingbarrierSlice, i : Int, v : Double) -> FinancepricingbarrierSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierSlice::set(self : FinancepricingbarrierSlice, i : Int, v : Double) -> FinancepricingbarrierSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_slice_sum(s : FinancepricingbarrierSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingbarrierSlice::sum(self : FinancepricingbarrierSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_barrier_slice_mean(s : FinancepricingbarrierSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingbarrierSlice::mean(self : FinancepricingbarrierSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_barrier_slice_scale(s : FinancepricingbarrierSlice, f : Double) -> FinancepricingbarrierSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierSlice::scale(self : FinancepricingbarrierSlice, f : Double) -> FinancepricingbarrierSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_slice_add(a : FinancepricingbarrierSlice, b : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingbarrierSlice::add(self : FinancepricingbarrierSlice, other : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_slice_copy(s : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierSlice::copy(self : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_slice_fill(s : FinancepricingbarrierSlice, v : Double) -> FinancepricingbarrierSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingbarrierSlice::fill(self : FinancepricingbarrierSlice, v : Double) -> FinancepricingbarrierSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_barrier_slice_min(s : FinancepricingbarrierSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricingbarrierSlice::min(self : FinancepricingbarrierSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_barrier_slice_max(s : FinancepricingbarrierSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricingbarrierSlice::max(self : FinancepricingbarrierSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_barrier_slice_to_string(s : FinancepricingbarrierSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingbarrierSlice::to_string(self : FinancepricingbarrierSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_rl_sac_frame_make(size : Int) -> MlrlsacFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_frame_len(s : MlrlsacFrame) -> Int { s.size }
+pub fn MlrlsacFrame::len(self : MlrlsacFrame) -> Int { self.size }
 
-pub fn ml_rl_sac_frame_get(s : MlrlsacFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacFrame::get(self : MlrlsacFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_frame_set(s : MlrlsacFrame, i : Int, v : Double) -> MlrlsacFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacFrame::set(self : MlrlsacFrame, i : Int, v : Double) -> MlrlsacFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_frame_sum(s : MlrlsacFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacFrame::sum(self : MlrlsacFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_frame_mean(s : MlrlsacFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacFrame::mean(self : MlrlsacFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_frame_scale(s : MlrlsacFrame, f : Double) -> MlrlsacFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacFrame::scale(self : MlrlsacFrame, f : Double) -> MlrlsacFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_frame_add(a : MlrlsacFrame, b : MlrlsacFrame) -> MlrlsacFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacFrame::add(self : MlrlsacFrame, other : MlrlsacFrame) -> MlrlsacFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_frame_copy(s : MlrlsacFrame) -> MlrlsacFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacFrame::copy(self : MlrlsacFrame) -> MlrlsacFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_frame_fill(s : MlrlsacFrame, v : Double) -> MlrlsacFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacFrame::fill(self : MlrlsacFrame, v : Double) -> MlrlsacFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_frame_min(s : MlrlsacFrame) -> Double { @_common.min(s.data) }
+pub fn MlrlsacFrame::min(self : MlrlsacFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_frame_max(s : MlrlsacFrame) -> Double { @_common.max(s.data) }
+pub fn MlrlsacFrame::max(self : MlrlsacFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_frame_to_string(s : MlrlsacFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacFrame::to_string(self : MlrlsacFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_sac_table_make(size : Int) -> MlrlsacTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_table_len(s : MlrlsacTable) -> Int { s.size }
+pub fn MlrlsacTable::len(self : MlrlsacTable) -> Int { self.size }
 
-pub fn ml_rl_sac_table_get(s : MlrlsacTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacTable::get(self : MlrlsacTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_table_set(s : MlrlsacTable, i : Int, v : Double) -> MlrlsacTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacTable::set(self : MlrlsacTable, i : Int, v : Double) -> MlrlsacTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_table_sum(s : MlrlsacTable) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacTable::sum(self : MlrlsacTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_table_mean(s : MlrlsacTable) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacTable::mean(self : MlrlsacTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_table_scale(s : MlrlsacTable, f : Double) -> MlrlsacTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacTable::scale(self : MlrlsacTable, f : Double) -> MlrlsacTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_table_add(a : MlrlsacTable, b : MlrlsacTable) -> MlrlsacTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacTable::add(self : MlrlsacTable, other : MlrlsacTable) -> MlrlsacTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_table_copy(s : MlrlsacTable) -> MlrlsacTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacTable::copy(self : MlrlsacTable) -> MlrlsacTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_table_fill(s : MlrlsacTable, v : Double) -> MlrlsacTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacTable::fill(self : MlrlsacTable, v : Double) -> MlrlsacTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_table_min(s : MlrlsacTable) -> Double { @_common.min(s.data) }
+pub fn MlrlsacTable::min(self : MlrlsacTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_table_max(s : MlrlsacTable) -> Double { @_common.max(s.data) }
+pub fn MlrlsacTable::max(self : MlrlsacTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_table_to_string(s : MlrlsacTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacTable::to_string(self : MlrlsacTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_sac_graphn_make(size : Int) -> MlrlsacGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_graphn_len(s : MlrlsacGraphN) -> Int { s.size }
+pub fn MlrlsacGraphN::len(self : MlrlsacGraphN) -> Int { self.size }
 
-pub fn ml_rl_sac_graphn_get(s : MlrlsacGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacGraphN::get(self : MlrlsacGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_graphn_set(s : MlrlsacGraphN, i : Int, v : Double) -> MlrlsacGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacGraphN::set(self : MlrlsacGraphN, i : Int, v : Double) -> MlrlsacGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_graphn_sum(s : MlrlsacGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacGraphN::sum(self : MlrlsacGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_graphn_mean(s : MlrlsacGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacGraphN::mean(self : MlrlsacGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_graphn_scale(s : MlrlsacGraphN, f : Double) -> MlrlsacGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacGraphN::scale(self : MlrlsacGraphN, f : Double) -> MlrlsacGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_graphn_add(a : MlrlsacGraphN, b : MlrlsacGraphN) -> MlrlsacGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacGraphN::add(self : MlrlsacGraphN, other : MlrlsacGraphN) -> MlrlsacGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_graphn_copy(s : MlrlsacGraphN) -> MlrlsacGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacGraphN::copy(self : MlrlsacGraphN) -> MlrlsacGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_graphn_fill(s : MlrlsacGraphN, v : Double) -> MlrlsacGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacGraphN::fill(self : MlrlsacGraphN, v : Double) -> MlrlsacGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_graphn_min(s : MlrlsacGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrlsacGraphN::min(self : MlrlsacGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_graphn_max(s : MlrlsacGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrlsacGraphN::max(self : MlrlsacGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_graphn_to_string(s : MlrlsacGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacGraphN::to_string(self : MlrlsacGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_sac_node_make(size : Int) -> MlrlsacNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_node_len(s : MlrlsacNode) -> Int { s.size }
+pub fn MlrlsacNode::len(self : MlrlsacNode) -> Int { self.size }
 
-pub fn ml_rl_sac_node_get(s : MlrlsacNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacNode::get(self : MlrlsacNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_node_set(s : MlrlsacNode, i : Int, v : Double) -> MlrlsacNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacNode::set(self : MlrlsacNode, i : Int, v : Double) -> MlrlsacNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_node_sum(s : MlrlsacNode) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacNode::sum(self : MlrlsacNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_node_mean(s : MlrlsacNode) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacNode::mean(self : MlrlsacNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_node_scale(s : MlrlsacNode, f : Double) -> MlrlsacNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacNode::scale(self : MlrlsacNode, f : Double) -> MlrlsacNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_node_add(a : MlrlsacNode, b : MlrlsacNode) -> MlrlsacNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacNode::add(self : MlrlsacNode, other : MlrlsacNode) -> MlrlsacNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_node_copy(s : MlrlsacNode) -> MlrlsacNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacNode::copy(self : MlrlsacNode) -> MlrlsacNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_node_fill(s : MlrlsacNode, v : Double) -> MlrlsacNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacNode::fill(self : MlrlsacNode, v : Double) -> MlrlsacNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_node_min(s : MlrlsacNode) -> Double { @_common.min(s.data) }
+pub fn MlrlsacNode::min(self : MlrlsacNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_node_max(s : MlrlsacNode) -> Double { @_common.max(s.data) }
+pub fn MlrlsacNode::max(self : MlrlsacNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_node_to_string(s : MlrlsacNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacNode::to_string(self : MlrlsacNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_sac_edge_make(size : Int) -> MlrlsacEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_edge_len(s : MlrlsacEdge) -> Int { s.size }
+pub fn MlrlsacEdge::len(self : MlrlsacEdge) -> Int { self.size }
 
-pub fn ml_rl_sac_edge_get(s : MlrlsacEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacEdge::get(self : MlrlsacEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_edge_set(s : MlrlsacEdge, i : Int, v : Double) -> MlrlsacEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacEdge::set(self : MlrlsacEdge, i : Int, v : Double) -> MlrlsacEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_edge_sum(s : MlrlsacEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacEdge::sum(self : MlrlsacEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_edge_mean(s : MlrlsacEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacEdge::mean(self : MlrlsacEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_edge_scale(s : MlrlsacEdge, f : Double) -> MlrlsacEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacEdge::scale(self : MlrlsacEdge, f : Double) -> MlrlsacEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_edge_add(a : MlrlsacEdge, b : MlrlsacEdge) -> MlrlsacEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacEdge::add(self : MlrlsacEdge, other : MlrlsacEdge) -> MlrlsacEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_edge_copy(s : MlrlsacEdge) -> MlrlsacEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacEdge::copy(self : MlrlsacEdge) -> MlrlsacEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_edge_fill(s : MlrlsacEdge, v : Double) -> MlrlsacEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacEdge::fill(self : MlrlsacEdge, v : Double) -> MlrlsacEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_edge_min(s : MlrlsacEdge) -> Double { @_common.min(s.data) }
+pub fn MlrlsacEdge::min(self : MlrlsacEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_edge_max(s : MlrlsacEdge) -> Double { @_common.max(s.data) }
+pub fn MlrlsacEdge::max(self : MlrlsacEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_edge_to_string(s : MlrlsacEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacEdge::to_string(self : MlrlsacEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_sac_path_make(size : Int) -> MlrlsacPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_path_len(s : MlrlsacPath) -> Int { s.size }
+pub fn MlrlsacPath::len(self : MlrlsacPath) -> Int { self.size }
 
-pub fn ml_rl_sac_path_get(s : MlrlsacPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacPath::get(self : MlrlsacPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_path_set(s : MlrlsacPath, i : Int, v : Double) -> MlrlsacPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacPath::set(self : MlrlsacPath, i : Int, v : Double) -> MlrlsacPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_path_sum(s : MlrlsacPath) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacPath::sum(self : MlrlsacPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_path_mean(s : MlrlsacPath) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacPath::mean(self : MlrlsacPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_path_scale(s : MlrlsacPath, f : Double) -> MlrlsacPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacPath::scale(self : MlrlsacPath, f : Double) -> MlrlsacPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_path_add(a : MlrlsacPath, b : MlrlsacPath) -> MlrlsacPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacPath::add(self : MlrlsacPath, other : MlrlsacPath) -> MlrlsacPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_path_copy(s : MlrlsacPath) -> MlrlsacPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacPath::copy(self : MlrlsacPath) -> MlrlsacPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_path_fill(s : MlrlsacPath, v : Double) -> MlrlsacPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacPath::fill(self : MlrlsacPath, v : Double) -> MlrlsacPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_path_min(s : MlrlsacPath) -> Double { @_common.min(s.data) }
+pub fn MlrlsacPath::min(self : MlrlsacPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_path_max(s : MlrlsacPath) -> Double { @_common.max(s.data) }
+pub fn MlrlsacPath::max(self : MlrlsacPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_path_to_string(s : MlrlsacPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacPath::to_string(self : MlrlsacPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_sac_cluster_make(size : Int) -> MlrlsacCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_cluster_len(s : MlrlsacCluster) -> Int { s.size }
+pub fn MlrlsacCluster::len(self : MlrlsacCluster) -> Int { self.size }
 
-pub fn ml_rl_sac_cluster_get(s : MlrlsacCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacCluster::get(self : MlrlsacCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_cluster_set(s : MlrlsacCluster, i : Int, v : Double) -> MlrlsacCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacCluster::set(self : MlrlsacCluster, i : Int, v : Double) -> MlrlsacCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cluster_sum(s : MlrlsacCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacCluster::sum(self : MlrlsacCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_cluster_mean(s : MlrlsacCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacCluster::mean(self : MlrlsacCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_cluster_scale(s : MlrlsacCluster, f : Double) -> MlrlsacCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacCluster::scale(self : MlrlsacCluster, f : Double) -> MlrlsacCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cluster_add(a : MlrlsacCluster, b : MlrlsacCluster) -> MlrlsacCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacCluster::add(self : MlrlsacCluster, other : MlrlsacCluster) -> MlrlsacCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cluster_copy(s : MlrlsacCluster) -> MlrlsacCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacCluster::copy(self : MlrlsacCluster) -> MlrlsacCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cluster_fill(s : MlrlsacCluster, v : Double) -> MlrlsacCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacCluster::fill(self : MlrlsacCluster, v : Double) -> MlrlsacCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cluster_min(s : MlrlsacCluster) -> Double { @_common.min(s.data) }
+pub fn MlrlsacCluster::min(self : MlrlsacCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_cluster_max(s : MlrlsacCluster) -> Double { @_common.max(s.data) }
+pub fn MlrlsacCluster::max(self : MlrlsacCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_cluster_to_string(s : MlrlsacCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacCluster::to_string(self : MlrlsacCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_sac_model_make(size : Int) -> MlrlsacModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_model_len(s : MlrlsacModel) -> Int { s.size }
+pub fn MlrlsacModel::len(self : MlrlsacModel) -> Int { self.size }
 
-pub fn ml_rl_sac_model_get(s : MlrlsacModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacModel::get(self : MlrlsacModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_model_set(s : MlrlsacModel, i : Int, v : Double) -> MlrlsacModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacModel::set(self : MlrlsacModel, i : Int, v : Double) -> MlrlsacModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_model_sum(s : MlrlsacModel) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacModel::sum(self : MlrlsacModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_model_mean(s : MlrlsacModel) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacModel::mean(self : MlrlsacModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_model_scale(s : MlrlsacModel, f : Double) -> MlrlsacModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacModel::scale(self : MlrlsacModel, f : Double) -> MlrlsacModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_model_add(a : MlrlsacModel, b : MlrlsacModel) -> MlrlsacModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacModel::add(self : MlrlsacModel, other : MlrlsacModel) -> MlrlsacModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_model_copy(s : MlrlsacModel) -> MlrlsacModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacModel::copy(self : MlrlsacModel) -> MlrlsacModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_model_fill(s : MlrlsacModel, v : Double) -> MlrlsacModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacModel::fill(self : MlrlsacModel, v : Double) -> MlrlsacModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_model_min(s : MlrlsacModel) -> Double { @_common.min(s.data) }
+pub fn MlrlsacModel::min(self : MlrlsacModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_model_max(s : MlrlsacModel) -> Double { @_common.max(s.data) }
+pub fn MlrlsacModel::max(self : MlrlsacModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_model_to_string(s : MlrlsacModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacModel::to_string(self : MlrlsacModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_sac_layer_make(size : Int) -> MlrlsacLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_layer_len(s : MlrlsacLayer) -> Int { s.size }
+pub fn MlrlsacLayer::len(self : MlrlsacLayer) -> Int { self.size }
 
-pub fn ml_rl_sac_layer_get(s : MlrlsacLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacLayer::get(self : MlrlsacLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_layer_set(s : MlrlsacLayer, i : Int, v : Double) -> MlrlsacLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacLayer::set(self : MlrlsacLayer, i : Int, v : Double) -> MlrlsacLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_layer_sum(s : MlrlsacLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacLayer::sum(self : MlrlsacLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_layer_mean(s : MlrlsacLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacLayer::mean(self : MlrlsacLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_layer_scale(s : MlrlsacLayer, f : Double) -> MlrlsacLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacLayer::scale(self : MlrlsacLayer, f : Double) -> MlrlsacLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_layer_add(a : MlrlsacLayer, b : MlrlsacLayer) -> MlrlsacLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacLayer::add(self : MlrlsacLayer, other : MlrlsacLayer) -> MlrlsacLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_layer_copy(s : MlrlsacLayer) -> MlrlsacLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacLayer::copy(self : MlrlsacLayer) -> MlrlsacLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_layer_fill(s : MlrlsacLayer, v : Double) -> MlrlsacLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacLayer::fill(self : MlrlsacLayer, v : Double) -> MlrlsacLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_layer_min(s : MlrlsacLayer) -> Double { @_common.min(s.data) }
+pub fn MlrlsacLayer::min(self : MlrlsacLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_layer_max(s : MlrlsacLayer) -> Double { @_common.max(s.data) }
+pub fn MlrlsacLayer::max(self : MlrlsacLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_layer_to_string(s : MlrlsacLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacLayer::to_string(self : MlrlsacLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_sac_buffer_make(size : Int) -> MlrlsacBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_buffer_len(s : MlrlsacBuffer) -> Int { s.size }
+pub fn MlrlsacBuffer::len(self : MlrlsacBuffer) -> Int { self.size }
 
-pub fn ml_rl_sac_buffer_get(s : MlrlsacBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacBuffer::get(self : MlrlsacBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_buffer_set(s : MlrlsacBuffer, i : Int, v : Double) -> MlrlsacBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacBuffer::set(self : MlrlsacBuffer, i : Int, v : Double) -> MlrlsacBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_buffer_sum(s : MlrlsacBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacBuffer::sum(self : MlrlsacBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_buffer_mean(s : MlrlsacBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacBuffer::mean(self : MlrlsacBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_buffer_scale(s : MlrlsacBuffer, f : Double) -> MlrlsacBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacBuffer::scale(self : MlrlsacBuffer, f : Double) -> MlrlsacBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_buffer_add(a : MlrlsacBuffer, b : MlrlsacBuffer) -> MlrlsacBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacBuffer::add(self : MlrlsacBuffer, other : MlrlsacBuffer) -> MlrlsacBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_buffer_copy(s : MlrlsacBuffer) -> MlrlsacBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacBuffer::copy(self : MlrlsacBuffer) -> MlrlsacBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_buffer_fill(s : MlrlsacBuffer, v : Double) -> MlrlsacBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacBuffer::fill(self : MlrlsacBuffer, v : Double) -> MlrlsacBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_buffer_min(s : MlrlsacBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrlsacBuffer::min(self : MlrlsacBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_buffer_max(s : MlrlsacBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrlsacBuffer::max(self : MlrlsacBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_buffer_to_string(s : MlrlsacBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacBuffer::to_string(self : MlrlsacBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_sac_cursor_make(size : Int) -> MlrlsacCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_cursor_len(s : MlrlsacCursor) -> Int { s.size }
+pub fn MlrlsacCursor::len(self : MlrlsacCursor) -> Int { self.size }
 
-pub fn ml_rl_sac_cursor_get(s : MlrlsacCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacCursor::get(self : MlrlsacCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_cursor_set(s : MlrlsacCursor, i : Int, v : Double) -> MlrlsacCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacCursor::set(self : MlrlsacCursor, i : Int, v : Double) -> MlrlsacCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cursor_sum(s : MlrlsacCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacCursor::sum(self : MlrlsacCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_cursor_mean(s : MlrlsacCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacCursor::mean(self : MlrlsacCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_cursor_scale(s : MlrlsacCursor, f : Double) -> MlrlsacCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacCursor::scale(self : MlrlsacCursor, f : Double) -> MlrlsacCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cursor_add(a : MlrlsacCursor, b : MlrlsacCursor) -> MlrlsacCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacCursor::add(self : MlrlsacCursor, other : MlrlsacCursor) -> MlrlsacCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cursor_copy(s : MlrlsacCursor) -> MlrlsacCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacCursor::copy(self : MlrlsacCursor) -> MlrlsacCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cursor_fill(s : MlrlsacCursor, v : Double) -> MlrlsacCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacCursor::fill(self : MlrlsacCursor, v : Double) -> MlrlsacCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_cursor_min(s : MlrlsacCursor) -> Double { @_common.min(s.data) }
+pub fn MlrlsacCursor::min(self : MlrlsacCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_cursor_max(s : MlrlsacCursor) -> Double { @_common.max(s.data) }
+pub fn MlrlsacCursor::max(self : MlrlsacCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_cursor_to_string(s : MlrlsacCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacCursor::to_string(self : MlrlsacCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacView {
@@ -912,45 +912,45 @@ pub fn ml_rl_sac_view_make(size : Int) -> MlrlsacView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_view_len(s : MlrlsacView) -> Int { s.size }
+pub fn MlrlsacView::len(self : MlrlsacView) -> Int { self.size }
 
-pub fn ml_rl_sac_view_get(s : MlrlsacView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacView::get(self : MlrlsacView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_view_set(s : MlrlsacView, i : Int, v : Double) -> MlrlsacView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacView::set(self : MlrlsacView, i : Int, v : Double) -> MlrlsacView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_view_sum(s : MlrlsacView) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacView::sum(self : MlrlsacView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_view_mean(s : MlrlsacView) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacView::mean(self : MlrlsacView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_view_scale(s : MlrlsacView, f : Double) -> MlrlsacView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacView::scale(self : MlrlsacView, f : Double) -> MlrlsacView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_view_add(a : MlrlsacView, b : MlrlsacView) -> MlrlsacView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacView::add(self : MlrlsacView, other : MlrlsacView) -> MlrlsacView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_view_copy(s : MlrlsacView) -> MlrlsacView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacView::copy(self : MlrlsacView) -> MlrlsacView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_view_fill(s : MlrlsacView, v : Double) -> MlrlsacView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacView::fill(self : MlrlsacView, v : Double) -> MlrlsacView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_view_min(s : MlrlsacView) -> Double { @_common.min(s.data) }
+pub fn MlrlsacView::min(self : MlrlsacView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_view_max(s : MlrlsacView) -> Double { @_common.max(s.data) }
+pub fn MlrlsacView::max(self : MlrlsacView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_view_to_string(s : MlrlsacView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacView::to_string(self : MlrlsacView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_sac_range_make(size : Int) -> MlrlsacRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_range_len(s : MlrlsacRange) -> Int { s.size }
+pub fn MlrlsacRange::len(self : MlrlsacRange) -> Int { self.size }
 
-pub fn ml_rl_sac_range_get(s : MlrlsacRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacRange::get(self : MlrlsacRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_range_set(s : MlrlsacRange, i : Int, v : Double) -> MlrlsacRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacRange::set(self : MlrlsacRange, i : Int, v : Double) -> MlrlsacRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_range_sum(s : MlrlsacRange) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacRange::sum(self : MlrlsacRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_range_mean(s : MlrlsacRange) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacRange::mean(self : MlrlsacRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_range_scale(s : MlrlsacRange, f : Double) -> MlrlsacRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacRange::scale(self : MlrlsacRange, f : Double) -> MlrlsacRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_range_add(a : MlrlsacRange, b : MlrlsacRange) -> MlrlsacRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacRange::add(self : MlrlsacRange, other : MlrlsacRange) -> MlrlsacRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_range_copy(s : MlrlsacRange) -> MlrlsacRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacRange::copy(self : MlrlsacRange) -> MlrlsacRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_range_fill(s : MlrlsacRange, v : Double) -> MlrlsacRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacRange::fill(self : MlrlsacRange, v : Double) -> MlrlsacRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_range_min(s : MlrlsacRange) -> Double { @_common.min(s.data) }
+pub fn MlrlsacRange::min(self : MlrlsacRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_range_max(s : MlrlsacRange) -> Double { @_common.max(s.data) }
+pub fn MlrlsacRange::max(self : MlrlsacRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_range_to_string(s : MlrlsacRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacRange::to_string(self : MlrlsacRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlsacSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_sac_slice_make(size : Int) -> MlrlsacSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_sac_slice_len(s : MlrlsacSlice) -> Int { s.size }
+pub fn MlrlsacSlice::len(self : MlrlsacSlice) -> Int { self.size }
 
-pub fn ml_rl_sac_slice_get(s : MlrlsacSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlsacSlice::get(self : MlrlsacSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_sac_slice_set(s : MlrlsacSlice, i : Int, v : Double) -> MlrlsacSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlsacSlice::set(self : MlrlsacSlice, i : Int, v : Double) -> MlrlsacSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_slice_sum(s : MlrlsacSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrlsacSlice::sum(self : MlrlsacSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_sac_slice_mean(s : MlrlsacSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrlsacSlice::mean(self : MlrlsacSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_sac_slice_scale(s : MlrlsacSlice, f : Double) -> MlrlsacSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlsacSlice::scale(self : MlrlsacSlice, f : Double) -> MlrlsacSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_slice_add(a : MlrlsacSlice, b : MlrlsacSlice) -> MlrlsacSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlsacSlice::add(self : MlrlsacSlice, other : MlrlsacSlice) -> MlrlsacSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_sac_slice_copy(s : MlrlsacSlice) -> MlrlsacSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlsacSlice::copy(self : MlrlsacSlice) -> MlrlsacSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_slice_fill(s : MlrlsacSlice, v : Double) -> MlrlsacSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlsacSlice::fill(self : MlrlsacSlice, v : Double) -> MlrlsacSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_sac_slice_min(s : MlrlsacSlice) -> Double { @_common.min(s.data) }
+pub fn MlrlsacSlice::min(self : MlrlsacSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_sac_slice_max(s : MlrlsacSlice) -> Double { @_common.max(s.data) }
+pub fn MlrlsacSlice::max(self : MlrlsacSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_sac_slice_to_string(s : MlrlsacSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlsacSlice::to_string(self : MlrlsacSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

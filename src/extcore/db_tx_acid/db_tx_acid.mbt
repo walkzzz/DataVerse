@@ -351,45 +351,45 @@ pub fn db_tx_acid_frame_make(size : Int) -> DbtxacidFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_frame_len(s : DbtxacidFrame) -> Int { s.size }
+pub fn DbtxacidFrame::len(self : DbtxacidFrame) -> Int { self.size }
 
-pub fn db_tx_acid_frame_get(s : DbtxacidFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidFrame::get(self : DbtxacidFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_frame_set(s : DbtxacidFrame, i : Int, v : Double) -> DbtxacidFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidFrame::set(self : DbtxacidFrame, i : Int, v : Double) -> DbtxacidFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_frame_sum(s : DbtxacidFrame) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidFrame::sum(self : DbtxacidFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_frame_mean(s : DbtxacidFrame) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidFrame::mean(self : DbtxacidFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_frame_scale(s : DbtxacidFrame, f : Double) -> DbtxacidFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidFrame::scale(self : DbtxacidFrame, f : Double) -> DbtxacidFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_frame_add(a : DbtxacidFrame, b : DbtxacidFrame) -> DbtxacidFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidFrame::add(self : DbtxacidFrame, other : DbtxacidFrame) -> DbtxacidFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_frame_copy(s : DbtxacidFrame) -> DbtxacidFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidFrame::copy(self : DbtxacidFrame) -> DbtxacidFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_frame_fill(s : DbtxacidFrame, v : Double) -> DbtxacidFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidFrame::fill(self : DbtxacidFrame, v : Double) -> DbtxacidFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_frame_min(s : DbtxacidFrame) -> Double { @_common.min(s.data) }
+pub fn DbtxacidFrame::min(self : DbtxacidFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_frame_max(s : DbtxacidFrame) -> Double { @_common.max(s.data) }
+pub fn DbtxacidFrame::max(self : DbtxacidFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_frame_to_string(s : DbtxacidFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidFrame::to_string(self : DbtxacidFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidTable {
@@ -402,45 +402,45 @@ pub fn db_tx_acid_table_make(size : Int) -> DbtxacidTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_table_len(s : DbtxacidTable) -> Int { s.size }
+pub fn DbtxacidTable::len(self : DbtxacidTable) -> Int { self.size }
 
-pub fn db_tx_acid_table_get(s : DbtxacidTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidTable::get(self : DbtxacidTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_table_set(s : DbtxacidTable, i : Int, v : Double) -> DbtxacidTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidTable::set(self : DbtxacidTable, i : Int, v : Double) -> DbtxacidTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_table_sum(s : DbtxacidTable) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidTable::sum(self : DbtxacidTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_table_mean(s : DbtxacidTable) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidTable::mean(self : DbtxacidTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_table_scale(s : DbtxacidTable, f : Double) -> DbtxacidTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidTable::scale(self : DbtxacidTable, f : Double) -> DbtxacidTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_table_add(a : DbtxacidTable, b : DbtxacidTable) -> DbtxacidTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidTable::add(self : DbtxacidTable, other : DbtxacidTable) -> DbtxacidTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_table_copy(s : DbtxacidTable) -> DbtxacidTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidTable::copy(self : DbtxacidTable) -> DbtxacidTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_table_fill(s : DbtxacidTable, v : Double) -> DbtxacidTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidTable::fill(self : DbtxacidTable, v : Double) -> DbtxacidTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_table_min(s : DbtxacidTable) -> Double { @_common.min(s.data) }
+pub fn DbtxacidTable::min(self : DbtxacidTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_table_max(s : DbtxacidTable) -> Double { @_common.max(s.data) }
+pub fn DbtxacidTable::max(self : DbtxacidTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_table_to_string(s : DbtxacidTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidTable::to_string(self : DbtxacidTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_acid_graphn_make(size : Int) -> DbtxacidGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_graphn_len(s : DbtxacidGraphN) -> Int { s.size }
+pub fn DbtxacidGraphN::len(self : DbtxacidGraphN) -> Int { self.size }
 
-pub fn db_tx_acid_graphn_get(s : DbtxacidGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidGraphN::get(self : DbtxacidGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_graphn_set(s : DbtxacidGraphN, i : Int, v : Double) -> DbtxacidGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidGraphN::set(self : DbtxacidGraphN, i : Int, v : Double) -> DbtxacidGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_graphn_sum(s : DbtxacidGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidGraphN::sum(self : DbtxacidGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_graphn_mean(s : DbtxacidGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidGraphN::mean(self : DbtxacidGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_graphn_scale(s : DbtxacidGraphN, f : Double) -> DbtxacidGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidGraphN::scale(self : DbtxacidGraphN, f : Double) -> DbtxacidGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_graphn_add(a : DbtxacidGraphN, b : DbtxacidGraphN) -> DbtxacidGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidGraphN::add(self : DbtxacidGraphN, other : DbtxacidGraphN) -> DbtxacidGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_graphn_copy(s : DbtxacidGraphN) -> DbtxacidGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidGraphN::copy(self : DbtxacidGraphN) -> DbtxacidGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_graphn_fill(s : DbtxacidGraphN, v : Double) -> DbtxacidGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidGraphN::fill(self : DbtxacidGraphN, v : Double) -> DbtxacidGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_graphn_min(s : DbtxacidGraphN) -> Double { @_common.min(s.data) }
+pub fn DbtxacidGraphN::min(self : DbtxacidGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_graphn_max(s : DbtxacidGraphN) -> Double { @_common.max(s.data) }
+pub fn DbtxacidGraphN::max(self : DbtxacidGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_graphn_to_string(s : DbtxacidGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidGraphN::to_string(self : DbtxacidGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidNode {
@@ -504,45 +504,45 @@ pub fn db_tx_acid_node_make(size : Int) -> DbtxacidNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_node_len(s : DbtxacidNode) -> Int { s.size }
+pub fn DbtxacidNode::len(self : DbtxacidNode) -> Int { self.size }
 
-pub fn db_tx_acid_node_get(s : DbtxacidNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidNode::get(self : DbtxacidNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_node_set(s : DbtxacidNode, i : Int, v : Double) -> DbtxacidNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidNode::set(self : DbtxacidNode, i : Int, v : Double) -> DbtxacidNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_node_sum(s : DbtxacidNode) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidNode::sum(self : DbtxacidNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_node_mean(s : DbtxacidNode) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidNode::mean(self : DbtxacidNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_node_scale(s : DbtxacidNode, f : Double) -> DbtxacidNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidNode::scale(self : DbtxacidNode, f : Double) -> DbtxacidNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_node_add(a : DbtxacidNode, b : DbtxacidNode) -> DbtxacidNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidNode::add(self : DbtxacidNode, other : DbtxacidNode) -> DbtxacidNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_node_copy(s : DbtxacidNode) -> DbtxacidNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidNode::copy(self : DbtxacidNode) -> DbtxacidNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_node_fill(s : DbtxacidNode, v : Double) -> DbtxacidNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidNode::fill(self : DbtxacidNode, v : Double) -> DbtxacidNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_node_min(s : DbtxacidNode) -> Double { @_common.min(s.data) }
+pub fn DbtxacidNode::min(self : DbtxacidNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_node_max(s : DbtxacidNode) -> Double { @_common.max(s.data) }
+pub fn DbtxacidNode::max(self : DbtxacidNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_node_to_string(s : DbtxacidNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidNode::to_string(self : DbtxacidNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_acid_edge_make(size : Int) -> DbtxacidEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_edge_len(s : DbtxacidEdge) -> Int { s.size }
+pub fn DbtxacidEdge::len(self : DbtxacidEdge) -> Int { self.size }
 
-pub fn db_tx_acid_edge_get(s : DbtxacidEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidEdge::get(self : DbtxacidEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_edge_set(s : DbtxacidEdge, i : Int, v : Double) -> DbtxacidEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidEdge::set(self : DbtxacidEdge, i : Int, v : Double) -> DbtxacidEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_edge_sum(s : DbtxacidEdge) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidEdge::sum(self : DbtxacidEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_edge_mean(s : DbtxacidEdge) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidEdge::mean(self : DbtxacidEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_edge_scale(s : DbtxacidEdge, f : Double) -> DbtxacidEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidEdge::scale(self : DbtxacidEdge, f : Double) -> DbtxacidEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_edge_add(a : DbtxacidEdge, b : DbtxacidEdge) -> DbtxacidEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidEdge::add(self : DbtxacidEdge, other : DbtxacidEdge) -> DbtxacidEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_edge_copy(s : DbtxacidEdge) -> DbtxacidEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidEdge::copy(self : DbtxacidEdge) -> DbtxacidEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_edge_fill(s : DbtxacidEdge, v : Double) -> DbtxacidEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidEdge::fill(self : DbtxacidEdge, v : Double) -> DbtxacidEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_edge_min(s : DbtxacidEdge) -> Double { @_common.min(s.data) }
+pub fn DbtxacidEdge::min(self : DbtxacidEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_edge_max(s : DbtxacidEdge) -> Double { @_common.max(s.data) }
+pub fn DbtxacidEdge::max(self : DbtxacidEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_edge_to_string(s : DbtxacidEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidEdge::to_string(self : DbtxacidEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidPath {
@@ -606,45 +606,45 @@ pub fn db_tx_acid_path_make(size : Int) -> DbtxacidPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_path_len(s : DbtxacidPath) -> Int { s.size }
+pub fn DbtxacidPath::len(self : DbtxacidPath) -> Int { self.size }
 
-pub fn db_tx_acid_path_get(s : DbtxacidPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidPath::get(self : DbtxacidPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_path_set(s : DbtxacidPath, i : Int, v : Double) -> DbtxacidPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidPath::set(self : DbtxacidPath, i : Int, v : Double) -> DbtxacidPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_path_sum(s : DbtxacidPath) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidPath::sum(self : DbtxacidPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_path_mean(s : DbtxacidPath) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidPath::mean(self : DbtxacidPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_path_scale(s : DbtxacidPath, f : Double) -> DbtxacidPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidPath::scale(self : DbtxacidPath, f : Double) -> DbtxacidPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_path_add(a : DbtxacidPath, b : DbtxacidPath) -> DbtxacidPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidPath::add(self : DbtxacidPath, other : DbtxacidPath) -> DbtxacidPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_path_copy(s : DbtxacidPath) -> DbtxacidPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidPath::copy(self : DbtxacidPath) -> DbtxacidPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_path_fill(s : DbtxacidPath, v : Double) -> DbtxacidPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidPath::fill(self : DbtxacidPath, v : Double) -> DbtxacidPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_path_min(s : DbtxacidPath) -> Double { @_common.min(s.data) }
+pub fn DbtxacidPath::min(self : DbtxacidPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_path_max(s : DbtxacidPath) -> Double { @_common.max(s.data) }
+pub fn DbtxacidPath::max(self : DbtxacidPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_path_to_string(s : DbtxacidPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidPath::to_string(self : DbtxacidPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_acid_cluster_make(size : Int) -> DbtxacidCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_cluster_len(s : DbtxacidCluster) -> Int { s.size }
+pub fn DbtxacidCluster::len(self : DbtxacidCluster) -> Int { self.size }
 
-pub fn db_tx_acid_cluster_get(s : DbtxacidCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidCluster::get(self : DbtxacidCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_cluster_set(s : DbtxacidCluster, i : Int, v : Double) -> DbtxacidCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidCluster::set(self : DbtxacidCluster, i : Int, v : Double) -> DbtxacidCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cluster_sum(s : DbtxacidCluster) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidCluster::sum(self : DbtxacidCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_cluster_mean(s : DbtxacidCluster) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidCluster::mean(self : DbtxacidCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_cluster_scale(s : DbtxacidCluster, f : Double) -> DbtxacidCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidCluster::scale(self : DbtxacidCluster, f : Double) -> DbtxacidCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cluster_add(a : DbtxacidCluster, b : DbtxacidCluster) -> DbtxacidCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidCluster::add(self : DbtxacidCluster, other : DbtxacidCluster) -> DbtxacidCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_cluster_copy(s : DbtxacidCluster) -> DbtxacidCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidCluster::copy(self : DbtxacidCluster) -> DbtxacidCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cluster_fill(s : DbtxacidCluster, v : Double) -> DbtxacidCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidCluster::fill(self : DbtxacidCluster, v : Double) -> DbtxacidCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cluster_min(s : DbtxacidCluster) -> Double { @_common.min(s.data) }
+pub fn DbtxacidCluster::min(self : DbtxacidCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_cluster_max(s : DbtxacidCluster) -> Double { @_common.max(s.data) }
+pub fn DbtxacidCluster::max(self : DbtxacidCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_cluster_to_string(s : DbtxacidCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidCluster::to_string(self : DbtxacidCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidModel {
@@ -708,45 +708,45 @@ pub fn db_tx_acid_model_make(size : Int) -> DbtxacidModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_model_len(s : DbtxacidModel) -> Int { s.size }
+pub fn DbtxacidModel::len(self : DbtxacidModel) -> Int { self.size }
 
-pub fn db_tx_acid_model_get(s : DbtxacidModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidModel::get(self : DbtxacidModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_model_set(s : DbtxacidModel, i : Int, v : Double) -> DbtxacidModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidModel::set(self : DbtxacidModel, i : Int, v : Double) -> DbtxacidModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_model_sum(s : DbtxacidModel) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidModel::sum(self : DbtxacidModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_model_mean(s : DbtxacidModel) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidModel::mean(self : DbtxacidModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_model_scale(s : DbtxacidModel, f : Double) -> DbtxacidModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidModel::scale(self : DbtxacidModel, f : Double) -> DbtxacidModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_model_add(a : DbtxacidModel, b : DbtxacidModel) -> DbtxacidModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidModel::add(self : DbtxacidModel, other : DbtxacidModel) -> DbtxacidModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_model_copy(s : DbtxacidModel) -> DbtxacidModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidModel::copy(self : DbtxacidModel) -> DbtxacidModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_model_fill(s : DbtxacidModel, v : Double) -> DbtxacidModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidModel::fill(self : DbtxacidModel, v : Double) -> DbtxacidModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_model_min(s : DbtxacidModel) -> Double { @_common.min(s.data) }
+pub fn DbtxacidModel::min(self : DbtxacidModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_model_max(s : DbtxacidModel) -> Double { @_common.max(s.data) }
+pub fn DbtxacidModel::max(self : DbtxacidModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_model_to_string(s : DbtxacidModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidModel::to_string(self : DbtxacidModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_acid_layer_make(size : Int) -> DbtxacidLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_layer_len(s : DbtxacidLayer) -> Int { s.size }
+pub fn DbtxacidLayer::len(self : DbtxacidLayer) -> Int { self.size }
 
-pub fn db_tx_acid_layer_get(s : DbtxacidLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidLayer::get(self : DbtxacidLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_layer_set(s : DbtxacidLayer, i : Int, v : Double) -> DbtxacidLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidLayer::set(self : DbtxacidLayer, i : Int, v : Double) -> DbtxacidLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_layer_sum(s : DbtxacidLayer) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidLayer::sum(self : DbtxacidLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_layer_mean(s : DbtxacidLayer) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidLayer::mean(self : DbtxacidLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_layer_scale(s : DbtxacidLayer, f : Double) -> DbtxacidLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidLayer::scale(self : DbtxacidLayer, f : Double) -> DbtxacidLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_layer_add(a : DbtxacidLayer, b : DbtxacidLayer) -> DbtxacidLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidLayer::add(self : DbtxacidLayer, other : DbtxacidLayer) -> DbtxacidLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_layer_copy(s : DbtxacidLayer) -> DbtxacidLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidLayer::copy(self : DbtxacidLayer) -> DbtxacidLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_layer_fill(s : DbtxacidLayer, v : Double) -> DbtxacidLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidLayer::fill(self : DbtxacidLayer, v : Double) -> DbtxacidLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_layer_min(s : DbtxacidLayer) -> Double { @_common.min(s.data) }
+pub fn DbtxacidLayer::min(self : DbtxacidLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_layer_max(s : DbtxacidLayer) -> Double { @_common.max(s.data) }
+pub fn DbtxacidLayer::max(self : DbtxacidLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_layer_to_string(s : DbtxacidLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidLayer::to_string(self : DbtxacidLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_acid_buffer_make(size : Int) -> DbtxacidBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_buffer_len(s : DbtxacidBuffer) -> Int { s.size }
+pub fn DbtxacidBuffer::len(self : DbtxacidBuffer) -> Int { self.size }
 
-pub fn db_tx_acid_buffer_get(s : DbtxacidBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidBuffer::get(self : DbtxacidBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_buffer_set(s : DbtxacidBuffer, i : Int, v : Double) -> DbtxacidBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidBuffer::set(self : DbtxacidBuffer, i : Int, v : Double) -> DbtxacidBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_buffer_sum(s : DbtxacidBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidBuffer::sum(self : DbtxacidBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_buffer_mean(s : DbtxacidBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidBuffer::mean(self : DbtxacidBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_buffer_scale(s : DbtxacidBuffer, f : Double) -> DbtxacidBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidBuffer::scale(self : DbtxacidBuffer, f : Double) -> DbtxacidBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_buffer_add(a : DbtxacidBuffer, b : DbtxacidBuffer) -> DbtxacidBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidBuffer::add(self : DbtxacidBuffer, other : DbtxacidBuffer) -> DbtxacidBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_buffer_copy(s : DbtxacidBuffer) -> DbtxacidBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidBuffer::copy(self : DbtxacidBuffer) -> DbtxacidBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_buffer_fill(s : DbtxacidBuffer, v : Double) -> DbtxacidBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidBuffer::fill(self : DbtxacidBuffer, v : Double) -> DbtxacidBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_buffer_min(s : DbtxacidBuffer) -> Double { @_common.min(s.data) }
+pub fn DbtxacidBuffer::min(self : DbtxacidBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_buffer_max(s : DbtxacidBuffer) -> Double { @_common.max(s.data) }
+pub fn DbtxacidBuffer::max(self : DbtxacidBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_buffer_to_string(s : DbtxacidBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidBuffer::to_string(self : DbtxacidBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_acid_cursor_make(size : Int) -> DbtxacidCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_cursor_len(s : DbtxacidCursor) -> Int { s.size }
+pub fn DbtxacidCursor::len(self : DbtxacidCursor) -> Int { self.size }
 
-pub fn db_tx_acid_cursor_get(s : DbtxacidCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidCursor::get(self : DbtxacidCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_cursor_set(s : DbtxacidCursor, i : Int, v : Double) -> DbtxacidCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidCursor::set(self : DbtxacidCursor, i : Int, v : Double) -> DbtxacidCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cursor_sum(s : DbtxacidCursor) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidCursor::sum(self : DbtxacidCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_cursor_mean(s : DbtxacidCursor) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidCursor::mean(self : DbtxacidCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_cursor_scale(s : DbtxacidCursor, f : Double) -> DbtxacidCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidCursor::scale(self : DbtxacidCursor, f : Double) -> DbtxacidCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cursor_add(a : DbtxacidCursor, b : DbtxacidCursor) -> DbtxacidCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidCursor::add(self : DbtxacidCursor, other : DbtxacidCursor) -> DbtxacidCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_cursor_copy(s : DbtxacidCursor) -> DbtxacidCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidCursor::copy(self : DbtxacidCursor) -> DbtxacidCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cursor_fill(s : DbtxacidCursor, v : Double) -> DbtxacidCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidCursor::fill(self : DbtxacidCursor, v : Double) -> DbtxacidCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_cursor_min(s : DbtxacidCursor) -> Double { @_common.min(s.data) }
+pub fn DbtxacidCursor::min(self : DbtxacidCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_cursor_max(s : DbtxacidCursor) -> Double { @_common.max(s.data) }
+pub fn DbtxacidCursor::max(self : DbtxacidCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_cursor_to_string(s : DbtxacidCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidCursor::to_string(self : DbtxacidCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidView {
@@ -912,45 +912,45 @@ pub fn db_tx_acid_view_make(size : Int) -> DbtxacidView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_view_len(s : DbtxacidView) -> Int { s.size }
+pub fn DbtxacidView::len(self : DbtxacidView) -> Int { self.size }
 
-pub fn db_tx_acid_view_get(s : DbtxacidView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidView::get(self : DbtxacidView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_view_set(s : DbtxacidView, i : Int, v : Double) -> DbtxacidView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidView::set(self : DbtxacidView, i : Int, v : Double) -> DbtxacidView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_view_sum(s : DbtxacidView) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidView::sum(self : DbtxacidView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_view_mean(s : DbtxacidView) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidView::mean(self : DbtxacidView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_view_scale(s : DbtxacidView, f : Double) -> DbtxacidView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidView::scale(self : DbtxacidView, f : Double) -> DbtxacidView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_view_add(a : DbtxacidView, b : DbtxacidView) -> DbtxacidView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidView::add(self : DbtxacidView, other : DbtxacidView) -> DbtxacidView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_view_copy(s : DbtxacidView) -> DbtxacidView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidView::copy(self : DbtxacidView) -> DbtxacidView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_view_fill(s : DbtxacidView, v : Double) -> DbtxacidView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidView::fill(self : DbtxacidView, v : Double) -> DbtxacidView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_view_min(s : DbtxacidView) -> Double { @_common.min(s.data) }
+pub fn DbtxacidView::min(self : DbtxacidView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_view_max(s : DbtxacidView) -> Double { @_common.max(s.data) }
+pub fn DbtxacidView::max(self : DbtxacidView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_view_to_string(s : DbtxacidView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidView::to_string(self : DbtxacidView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidRange {
@@ -963,45 +963,45 @@ pub fn db_tx_acid_range_make(size : Int) -> DbtxacidRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_range_len(s : DbtxacidRange) -> Int { s.size }
+pub fn DbtxacidRange::len(self : DbtxacidRange) -> Int { self.size }
 
-pub fn db_tx_acid_range_get(s : DbtxacidRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidRange::get(self : DbtxacidRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_range_set(s : DbtxacidRange, i : Int, v : Double) -> DbtxacidRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidRange::set(self : DbtxacidRange, i : Int, v : Double) -> DbtxacidRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_range_sum(s : DbtxacidRange) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidRange::sum(self : DbtxacidRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_range_mean(s : DbtxacidRange) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidRange::mean(self : DbtxacidRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_range_scale(s : DbtxacidRange, f : Double) -> DbtxacidRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidRange::scale(self : DbtxacidRange, f : Double) -> DbtxacidRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_range_add(a : DbtxacidRange, b : DbtxacidRange) -> DbtxacidRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidRange::add(self : DbtxacidRange, other : DbtxacidRange) -> DbtxacidRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_range_copy(s : DbtxacidRange) -> DbtxacidRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidRange::copy(self : DbtxacidRange) -> DbtxacidRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_range_fill(s : DbtxacidRange, v : Double) -> DbtxacidRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidRange::fill(self : DbtxacidRange, v : Double) -> DbtxacidRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_range_min(s : DbtxacidRange) -> Double { @_common.min(s.data) }
+pub fn DbtxacidRange::min(self : DbtxacidRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_range_max(s : DbtxacidRange) -> Double { @_common.max(s.data) }
+pub fn DbtxacidRange::max(self : DbtxacidRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_range_to_string(s : DbtxacidRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidRange::to_string(self : DbtxacidRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxacidSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_acid_slice_make(size : Int) -> DbtxacidSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_acid_slice_len(s : DbtxacidSlice) -> Int { s.size }
+pub fn DbtxacidSlice::len(self : DbtxacidSlice) -> Int { self.size }
 
-pub fn db_tx_acid_slice_get(s : DbtxacidSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxacidSlice::get(self : DbtxacidSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_acid_slice_set(s : DbtxacidSlice, i : Int, v : Double) -> DbtxacidSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxacidSlice::set(self : DbtxacidSlice, i : Int, v : Double) -> DbtxacidSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_slice_sum(s : DbtxacidSlice) -> Double { @_common.sum(s.data) }
+pub fn DbtxacidSlice::sum(self : DbtxacidSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_acid_slice_mean(s : DbtxacidSlice) -> Double { @_common.mean(s.data) }
+pub fn DbtxacidSlice::mean(self : DbtxacidSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_acid_slice_scale(s : DbtxacidSlice, f : Double) -> DbtxacidSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxacidSlice::scale(self : DbtxacidSlice, f : Double) -> DbtxacidSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_slice_add(a : DbtxacidSlice, b : DbtxacidSlice) -> DbtxacidSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxacidSlice::add(self : DbtxacidSlice, other : DbtxacidSlice) -> DbtxacidSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_acid_slice_copy(s : DbtxacidSlice) -> DbtxacidSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxacidSlice::copy(self : DbtxacidSlice) -> DbtxacidSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_slice_fill(s : DbtxacidSlice, v : Double) -> DbtxacidSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxacidSlice::fill(self : DbtxacidSlice, v : Double) -> DbtxacidSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_acid_slice_min(s : DbtxacidSlice) -> Double { @_common.min(s.data) }
+pub fn DbtxacidSlice::min(self : DbtxacidSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_acid_slice_max(s : DbtxacidSlice) -> Double { @_common.max(s.data) }
+pub fn DbtxacidSlice::max(self : DbtxacidSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_acid_slice_to_string(s : DbtxacidSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxacidSlice::to_string(self : DbtxacidSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

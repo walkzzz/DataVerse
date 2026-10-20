@@ -351,45 +351,45 @@ pub fn ds_tree_avl_frame_make(size : Int) -> DstreeavlFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_frame_len(s : DstreeavlFrame) -> Int { s.size }
+pub fn DstreeavlFrame::len(self : DstreeavlFrame) -> Int { self.size }
 
-pub fn ds_tree_avl_frame_get(s : DstreeavlFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlFrame::get(self : DstreeavlFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_frame_set(s : DstreeavlFrame, i : Int, v : Double) -> DstreeavlFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlFrame::set(self : DstreeavlFrame, i : Int, v : Double) -> DstreeavlFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_frame_sum(s : DstreeavlFrame) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlFrame::sum(self : DstreeavlFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_frame_mean(s : DstreeavlFrame) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlFrame::mean(self : DstreeavlFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_frame_scale(s : DstreeavlFrame, f : Double) -> DstreeavlFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlFrame::scale(self : DstreeavlFrame, f : Double) -> DstreeavlFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_frame_add(a : DstreeavlFrame, b : DstreeavlFrame) -> DstreeavlFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlFrame::add(self : DstreeavlFrame, other : DstreeavlFrame) -> DstreeavlFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_frame_copy(s : DstreeavlFrame) -> DstreeavlFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlFrame::copy(self : DstreeavlFrame) -> DstreeavlFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_frame_fill(s : DstreeavlFrame, v : Double) -> DstreeavlFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlFrame::fill(self : DstreeavlFrame, v : Double) -> DstreeavlFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_frame_min(s : DstreeavlFrame) -> Double { @_common.min(s.data) }
+pub fn DstreeavlFrame::min(self : DstreeavlFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_frame_max(s : DstreeavlFrame) -> Double { @_common.max(s.data) }
+pub fn DstreeavlFrame::max(self : DstreeavlFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_frame_to_string(s : DstreeavlFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlFrame::to_string(self : DstreeavlFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlTable {
@@ -402,45 +402,45 @@ pub fn ds_tree_avl_table_make(size : Int) -> DstreeavlTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_table_len(s : DstreeavlTable) -> Int { s.size }
+pub fn DstreeavlTable::len(self : DstreeavlTable) -> Int { self.size }
 
-pub fn ds_tree_avl_table_get(s : DstreeavlTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlTable::get(self : DstreeavlTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_table_set(s : DstreeavlTable, i : Int, v : Double) -> DstreeavlTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlTable::set(self : DstreeavlTable, i : Int, v : Double) -> DstreeavlTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_table_sum(s : DstreeavlTable) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlTable::sum(self : DstreeavlTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_table_mean(s : DstreeavlTable) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlTable::mean(self : DstreeavlTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_table_scale(s : DstreeavlTable, f : Double) -> DstreeavlTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlTable::scale(self : DstreeavlTable, f : Double) -> DstreeavlTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_table_add(a : DstreeavlTable, b : DstreeavlTable) -> DstreeavlTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlTable::add(self : DstreeavlTable, other : DstreeavlTable) -> DstreeavlTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_table_copy(s : DstreeavlTable) -> DstreeavlTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlTable::copy(self : DstreeavlTable) -> DstreeavlTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_table_fill(s : DstreeavlTable, v : Double) -> DstreeavlTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlTable::fill(self : DstreeavlTable, v : Double) -> DstreeavlTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_table_min(s : DstreeavlTable) -> Double { @_common.min(s.data) }
+pub fn DstreeavlTable::min(self : DstreeavlTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_table_max(s : DstreeavlTable) -> Double { @_common.max(s.data) }
+pub fn DstreeavlTable::max(self : DstreeavlTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_table_to_string(s : DstreeavlTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlTable::to_string(self : DstreeavlTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlGraphN {
@@ -453,45 +453,45 @@ pub fn ds_tree_avl_graphn_make(size : Int) -> DstreeavlGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_graphn_len(s : DstreeavlGraphN) -> Int { s.size }
+pub fn DstreeavlGraphN::len(self : DstreeavlGraphN) -> Int { self.size }
 
-pub fn ds_tree_avl_graphn_get(s : DstreeavlGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlGraphN::get(self : DstreeavlGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_graphn_set(s : DstreeavlGraphN, i : Int, v : Double) -> DstreeavlGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlGraphN::set(self : DstreeavlGraphN, i : Int, v : Double) -> DstreeavlGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_graphn_sum(s : DstreeavlGraphN) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlGraphN::sum(self : DstreeavlGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_graphn_mean(s : DstreeavlGraphN) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlGraphN::mean(self : DstreeavlGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_graphn_scale(s : DstreeavlGraphN, f : Double) -> DstreeavlGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlGraphN::scale(self : DstreeavlGraphN, f : Double) -> DstreeavlGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_graphn_add(a : DstreeavlGraphN, b : DstreeavlGraphN) -> DstreeavlGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlGraphN::add(self : DstreeavlGraphN, other : DstreeavlGraphN) -> DstreeavlGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_graphn_copy(s : DstreeavlGraphN) -> DstreeavlGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlGraphN::copy(self : DstreeavlGraphN) -> DstreeavlGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_graphn_fill(s : DstreeavlGraphN, v : Double) -> DstreeavlGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlGraphN::fill(self : DstreeavlGraphN, v : Double) -> DstreeavlGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_graphn_min(s : DstreeavlGraphN) -> Double { @_common.min(s.data) }
+pub fn DstreeavlGraphN::min(self : DstreeavlGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_graphn_max(s : DstreeavlGraphN) -> Double { @_common.max(s.data) }
+pub fn DstreeavlGraphN::max(self : DstreeavlGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_graphn_to_string(s : DstreeavlGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlGraphN::to_string(self : DstreeavlGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlNode {
@@ -504,45 +504,45 @@ pub fn ds_tree_avl_node_make(size : Int) -> DstreeavlNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_node_len(s : DstreeavlNode) -> Int { s.size }
+pub fn DstreeavlNode::len(self : DstreeavlNode) -> Int { self.size }
 
-pub fn ds_tree_avl_node_get(s : DstreeavlNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlNode::get(self : DstreeavlNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_node_set(s : DstreeavlNode, i : Int, v : Double) -> DstreeavlNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlNode::set(self : DstreeavlNode, i : Int, v : Double) -> DstreeavlNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_node_sum(s : DstreeavlNode) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlNode::sum(self : DstreeavlNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_node_mean(s : DstreeavlNode) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlNode::mean(self : DstreeavlNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_node_scale(s : DstreeavlNode, f : Double) -> DstreeavlNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlNode::scale(self : DstreeavlNode, f : Double) -> DstreeavlNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_node_add(a : DstreeavlNode, b : DstreeavlNode) -> DstreeavlNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlNode::add(self : DstreeavlNode, other : DstreeavlNode) -> DstreeavlNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_node_copy(s : DstreeavlNode) -> DstreeavlNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlNode::copy(self : DstreeavlNode) -> DstreeavlNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_node_fill(s : DstreeavlNode, v : Double) -> DstreeavlNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlNode::fill(self : DstreeavlNode, v : Double) -> DstreeavlNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_node_min(s : DstreeavlNode) -> Double { @_common.min(s.data) }
+pub fn DstreeavlNode::min(self : DstreeavlNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_node_max(s : DstreeavlNode) -> Double { @_common.max(s.data) }
+pub fn DstreeavlNode::max(self : DstreeavlNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_node_to_string(s : DstreeavlNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlNode::to_string(self : DstreeavlNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlEdge {
@@ -555,45 +555,45 @@ pub fn ds_tree_avl_edge_make(size : Int) -> DstreeavlEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_edge_len(s : DstreeavlEdge) -> Int { s.size }
+pub fn DstreeavlEdge::len(self : DstreeavlEdge) -> Int { self.size }
 
-pub fn ds_tree_avl_edge_get(s : DstreeavlEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlEdge::get(self : DstreeavlEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_edge_set(s : DstreeavlEdge, i : Int, v : Double) -> DstreeavlEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlEdge::set(self : DstreeavlEdge, i : Int, v : Double) -> DstreeavlEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_edge_sum(s : DstreeavlEdge) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlEdge::sum(self : DstreeavlEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_edge_mean(s : DstreeavlEdge) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlEdge::mean(self : DstreeavlEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_edge_scale(s : DstreeavlEdge, f : Double) -> DstreeavlEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlEdge::scale(self : DstreeavlEdge, f : Double) -> DstreeavlEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_edge_add(a : DstreeavlEdge, b : DstreeavlEdge) -> DstreeavlEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlEdge::add(self : DstreeavlEdge, other : DstreeavlEdge) -> DstreeavlEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_edge_copy(s : DstreeavlEdge) -> DstreeavlEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlEdge::copy(self : DstreeavlEdge) -> DstreeavlEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_edge_fill(s : DstreeavlEdge, v : Double) -> DstreeavlEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlEdge::fill(self : DstreeavlEdge, v : Double) -> DstreeavlEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_edge_min(s : DstreeavlEdge) -> Double { @_common.min(s.data) }
+pub fn DstreeavlEdge::min(self : DstreeavlEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_edge_max(s : DstreeavlEdge) -> Double { @_common.max(s.data) }
+pub fn DstreeavlEdge::max(self : DstreeavlEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_edge_to_string(s : DstreeavlEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlEdge::to_string(self : DstreeavlEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlPath {
@@ -606,45 +606,45 @@ pub fn ds_tree_avl_path_make(size : Int) -> DstreeavlPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_path_len(s : DstreeavlPath) -> Int { s.size }
+pub fn DstreeavlPath::len(self : DstreeavlPath) -> Int { self.size }
 
-pub fn ds_tree_avl_path_get(s : DstreeavlPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlPath::get(self : DstreeavlPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_path_set(s : DstreeavlPath, i : Int, v : Double) -> DstreeavlPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlPath::set(self : DstreeavlPath, i : Int, v : Double) -> DstreeavlPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_path_sum(s : DstreeavlPath) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlPath::sum(self : DstreeavlPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_path_mean(s : DstreeavlPath) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlPath::mean(self : DstreeavlPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_path_scale(s : DstreeavlPath, f : Double) -> DstreeavlPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlPath::scale(self : DstreeavlPath, f : Double) -> DstreeavlPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_path_add(a : DstreeavlPath, b : DstreeavlPath) -> DstreeavlPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlPath::add(self : DstreeavlPath, other : DstreeavlPath) -> DstreeavlPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_path_copy(s : DstreeavlPath) -> DstreeavlPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlPath::copy(self : DstreeavlPath) -> DstreeavlPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_path_fill(s : DstreeavlPath, v : Double) -> DstreeavlPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlPath::fill(self : DstreeavlPath, v : Double) -> DstreeavlPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_path_min(s : DstreeavlPath) -> Double { @_common.min(s.data) }
+pub fn DstreeavlPath::min(self : DstreeavlPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_path_max(s : DstreeavlPath) -> Double { @_common.max(s.data) }
+pub fn DstreeavlPath::max(self : DstreeavlPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_path_to_string(s : DstreeavlPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlPath::to_string(self : DstreeavlPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlCluster {
@@ -657,45 +657,45 @@ pub fn ds_tree_avl_cluster_make(size : Int) -> DstreeavlCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_cluster_len(s : DstreeavlCluster) -> Int { s.size }
+pub fn DstreeavlCluster::len(self : DstreeavlCluster) -> Int { self.size }
 
-pub fn ds_tree_avl_cluster_get(s : DstreeavlCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlCluster::get(self : DstreeavlCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_cluster_set(s : DstreeavlCluster, i : Int, v : Double) -> DstreeavlCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlCluster::set(self : DstreeavlCluster, i : Int, v : Double) -> DstreeavlCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cluster_sum(s : DstreeavlCluster) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlCluster::sum(self : DstreeavlCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_cluster_mean(s : DstreeavlCluster) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlCluster::mean(self : DstreeavlCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_cluster_scale(s : DstreeavlCluster, f : Double) -> DstreeavlCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlCluster::scale(self : DstreeavlCluster, f : Double) -> DstreeavlCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cluster_add(a : DstreeavlCluster, b : DstreeavlCluster) -> DstreeavlCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlCluster::add(self : DstreeavlCluster, other : DstreeavlCluster) -> DstreeavlCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cluster_copy(s : DstreeavlCluster) -> DstreeavlCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlCluster::copy(self : DstreeavlCluster) -> DstreeavlCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cluster_fill(s : DstreeavlCluster, v : Double) -> DstreeavlCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlCluster::fill(self : DstreeavlCluster, v : Double) -> DstreeavlCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cluster_min(s : DstreeavlCluster) -> Double { @_common.min(s.data) }
+pub fn DstreeavlCluster::min(self : DstreeavlCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_cluster_max(s : DstreeavlCluster) -> Double { @_common.max(s.data) }
+pub fn DstreeavlCluster::max(self : DstreeavlCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_cluster_to_string(s : DstreeavlCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlCluster::to_string(self : DstreeavlCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlModel {
@@ -708,45 +708,45 @@ pub fn ds_tree_avl_model_make(size : Int) -> DstreeavlModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_model_len(s : DstreeavlModel) -> Int { s.size }
+pub fn DstreeavlModel::len(self : DstreeavlModel) -> Int { self.size }
 
-pub fn ds_tree_avl_model_get(s : DstreeavlModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlModel::get(self : DstreeavlModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_model_set(s : DstreeavlModel, i : Int, v : Double) -> DstreeavlModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlModel::set(self : DstreeavlModel, i : Int, v : Double) -> DstreeavlModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_model_sum(s : DstreeavlModel) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlModel::sum(self : DstreeavlModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_model_mean(s : DstreeavlModel) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlModel::mean(self : DstreeavlModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_model_scale(s : DstreeavlModel, f : Double) -> DstreeavlModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlModel::scale(self : DstreeavlModel, f : Double) -> DstreeavlModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_model_add(a : DstreeavlModel, b : DstreeavlModel) -> DstreeavlModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlModel::add(self : DstreeavlModel, other : DstreeavlModel) -> DstreeavlModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_model_copy(s : DstreeavlModel) -> DstreeavlModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlModel::copy(self : DstreeavlModel) -> DstreeavlModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_model_fill(s : DstreeavlModel, v : Double) -> DstreeavlModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlModel::fill(self : DstreeavlModel, v : Double) -> DstreeavlModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_model_min(s : DstreeavlModel) -> Double { @_common.min(s.data) }
+pub fn DstreeavlModel::min(self : DstreeavlModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_model_max(s : DstreeavlModel) -> Double { @_common.max(s.data) }
+pub fn DstreeavlModel::max(self : DstreeavlModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_model_to_string(s : DstreeavlModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlModel::to_string(self : DstreeavlModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlLayer {
@@ -759,45 +759,45 @@ pub fn ds_tree_avl_layer_make(size : Int) -> DstreeavlLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_layer_len(s : DstreeavlLayer) -> Int { s.size }
+pub fn DstreeavlLayer::len(self : DstreeavlLayer) -> Int { self.size }
 
-pub fn ds_tree_avl_layer_get(s : DstreeavlLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlLayer::get(self : DstreeavlLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_layer_set(s : DstreeavlLayer, i : Int, v : Double) -> DstreeavlLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlLayer::set(self : DstreeavlLayer, i : Int, v : Double) -> DstreeavlLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_layer_sum(s : DstreeavlLayer) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlLayer::sum(self : DstreeavlLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_layer_mean(s : DstreeavlLayer) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlLayer::mean(self : DstreeavlLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_layer_scale(s : DstreeavlLayer, f : Double) -> DstreeavlLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlLayer::scale(self : DstreeavlLayer, f : Double) -> DstreeavlLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_layer_add(a : DstreeavlLayer, b : DstreeavlLayer) -> DstreeavlLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlLayer::add(self : DstreeavlLayer, other : DstreeavlLayer) -> DstreeavlLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_layer_copy(s : DstreeavlLayer) -> DstreeavlLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlLayer::copy(self : DstreeavlLayer) -> DstreeavlLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_layer_fill(s : DstreeavlLayer, v : Double) -> DstreeavlLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlLayer::fill(self : DstreeavlLayer, v : Double) -> DstreeavlLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_layer_min(s : DstreeavlLayer) -> Double { @_common.min(s.data) }
+pub fn DstreeavlLayer::min(self : DstreeavlLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_layer_max(s : DstreeavlLayer) -> Double { @_common.max(s.data) }
+pub fn DstreeavlLayer::max(self : DstreeavlLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_layer_to_string(s : DstreeavlLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlLayer::to_string(self : DstreeavlLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlBuffer {
@@ -810,45 +810,45 @@ pub fn ds_tree_avl_buffer_make(size : Int) -> DstreeavlBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_buffer_len(s : DstreeavlBuffer) -> Int { s.size }
+pub fn DstreeavlBuffer::len(self : DstreeavlBuffer) -> Int { self.size }
 
-pub fn ds_tree_avl_buffer_get(s : DstreeavlBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlBuffer::get(self : DstreeavlBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_buffer_set(s : DstreeavlBuffer, i : Int, v : Double) -> DstreeavlBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlBuffer::set(self : DstreeavlBuffer, i : Int, v : Double) -> DstreeavlBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_buffer_sum(s : DstreeavlBuffer) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlBuffer::sum(self : DstreeavlBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_buffer_mean(s : DstreeavlBuffer) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlBuffer::mean(self : DstreeavlBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_buffer_scale(s : DstreeavlBuffer, f : Double) -> DstreeavlBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlBuffer::scale(self : DstreeavlBuffer, f : Double) -> DstreeavlBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_buffer_add(a : DstreeavlBuffer, b : DstreeavlBuffer) -> DstreeavlBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlBuffer::add(self : DstreeavlBuffer, other : DstreeavlBuffer) -> DstreeavlBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_buffer_copy(s : DstreeavlBuffer) -> DstreeavlBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlBuffer::copy(self : DstreeavlBuffer) -> DstreeavlBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_buffer_fill(s : DstreeavlBuffer, v : Double) -> DstreeavlBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlBuffer::fill(self : DstreeavlBuffer, v : Double) -> DstreeavlBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_buffer_min(s : DstreeavlBuffer) -> Double { @_common.min(s.data) }
+pub fn DstreeavlBuffer::min(self : DstreeavlBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_buffer_max(s : DstreeavlBuffer) -> Double { @_common.max(s.data) }
+pub fn DstreeavlBuffer::max(self : DstreeavlBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_buffer_to_string(s : DstreeavlBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlBuffer::to_string(self : DstreeavlBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlCursor {
@@ -861,45 +861,45 @@ pub fn ds_tree_avl_cursor_make(size : Int) -> DstreeavlCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_cursor_len(s : DstreeavlCursor) -> Int { s.size }
+pub fn DstreeavlCursor::len(self : DstreeavlCursor) -> Int { self.size }
 
-pub fn ds_tree_avl_cursor_get(s : DstreeavlCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlCursor::get(self : DstreeavlCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_cursor_set(s : DstreeavlCursor, i : Int, v : Double) -> DstreeavlCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlCursor::set(self : DstreeavlCursor, i : Int, v : Double) -> DstreeavlCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cursor_sum(s : DstreeavlCursor) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlCursor::sum(self : DstreeavlCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_cursor_mean(s : DstreeavlCursor) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlCursor::mean(self : DstreeavlCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_cursor_scale(s : DstreeavlCursor, f : Double) -> DstreeavlCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlCursor::scale(self : DstreeavlCursor, f : Double) -> DstreeavlCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cursor_add(a : DstreeavlCursor, b : DstreeavlCursor) -> DstreeavlCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlCursor::add(self : DstreeavlCursor, other : DstreeavlCursor) -> DstreeavlCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cursor_copy(s : DstreeavlCursor) -> DstreeavlCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlCursor::copy(self : DstreeavlCursor) -> DstreeavlCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cursor_fill(s : DstreeavlCursor, v : Double) -> DstreeavlCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlCursor::fill(self : DstreeavlCursor, v : Double) -> DstreeavlCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_cursor_min(s : DstreeavlCursor) -> Double { @_common.min(s.data) }
+pub fn DstreeavlCursor::min(self : DstreeavlCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_cursor_max(s : DstreeavlCursor) -> Double { @_common.max(s.data) }
+pub fn DstreeavlCursor::max(self : DstreeavlCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_cursor_to_string(s : DstreeavlCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlCursor::to_string(self : DstreeavlCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlView {
@@ -912,45 +912,45 @@ pub fn ds_tree_avl_view_make(size : Int) -> DstreeavlView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_view_len(s : DstreeavlView) -> Int { s.size }
+pub fn DstreeavlView::len(self : DstreeavlView) -> Int { self.size }
 
-pub fn ds_tree_avl_view_get(s : DstreeavlView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlView::get(self : DstreeavlView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_view_set(s : DstreeavlView, i : Int, v : Double) -> DstreeavlView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlView::set(self : DstreeavlView, i : Int, v : Double) -> DstreeavlView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_view_sum(s : DstreeavlView) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlView::sum(self : DstreeavlView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_view_mean(s : DstreeavlView) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlView::mean(self : DstreeavlView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_view_scale(s : DstreeavlView, f : Double) -> DstreeavlView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlView::scale(self : DstreeavlView, f : Double) -> DstreeavlView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_view_add(a : DstreeavlView, b : DstreeavlView) -> DstreeavlView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlView::add(self : DstreeavlView, other : DstreeavlView) -> DstreeavlView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_view_copy(s : DstreeavlView) -> DstreeavlView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlView::copy(self : DstreeavlView) -> DstreeavlView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_view_fill(s : DstreeavlView, v : Double) -> DstreeavlView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlView::fill(self : DstreeavlView, v : Double) -> DstreeavlView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_view_min(s : DstreeavlView) -> Double { @_common.min(s.data) }
+pub fn DstreeavlView::min(self : DstreeavlView) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_view_max(s : DstreeavlView) -> Double { @_common.max(s.data) }
+pub fn DstreeavlView::max(self : DstreeavlView) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_view_to_string(s : DstreeavlView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlView::to_string(self : DstreeavlView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlRange {
@@ -963,45 +963,45 @@ pub fn ds_tree_avl_range_make(size : Int) -> DstreeavlRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_range_len(s : DstreeavlRange) -> Int { s.size }
+pub fn DstreeavlRange::len(self : DstreeavlRange) -> Int { self.size }
 
-pub fn ds_tree_avl_range_get(s : DstreeavlRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlRange::get(self : DstreeavlRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_range_set(s : DstreeavlRange, i : Int, v : Double) -> DstreeavlRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlRange::set(self : DstreeavlRange, i : Int, v : Double) -> DstreeavlRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_range_sum(s : DstreeavlRange) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlRange::sum(self : DstreeavlRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_range_mean(s : DstreeavlRange) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlRange::mean(self : DstreeavlRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_range_scale(s : DstreeavlRange, f : Double) -> DstreeavlRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlRange::scale(self : DstreeavlRange, f : Double) -> DstreeavlRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_range_add(a : DstreeavlRange, b : DstreeavlRange) -> DstreeavlRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlRange::add(self : DstreeavlRange, other : DstreeavlRange) -> DstreeavlRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_range_copy(s : DstreeavlRange) -> DstreeavlRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlRange::copy(self : DstreeavlRange) -> DstreeavlRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_range_fill(s : DstreeavlRange, v : Double) -> DstreeavlRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlRange::fill(self : DstreeavlRange, v : Double) -> DstreeavlRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_range_min(s : DstreeavlRange) -> Double { @_common.min(s.data) }
+pub fn DstreeavlRange::min(self : DstreeavlRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_range_max(s : DstreeavlRange) -> Double { @_common.max(s.data) }
+pub fn DstreeavlRange::max(self : DstreeavlRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_range_to_string(s : DstreeavlRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlRange::to_string(self : DstreeavlRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DstreeavlSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_tree_avl_slice_make(size : Int) -> DstreeavlSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_tree_avl_slice_len(s : DstreeavlSlice) -> Int { s.size }
+pub fn DstreeavlSlice::len(self : DstreeavlSlice) -> Int { self.size }
 
-pub fn ds_tree_avl_slice_get(s : DstreeavlSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DstreeavlSlice::get(self : DstreeavlSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_tree_avl_slice_set(s : DstreeavlSlice, i : Int, v : Double) -> DstreeavlSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DstreeavlSlice::set(self : DstreeavlSlice, i : Int, v : Double) -> DstreeavlSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_slice_sum(s : DstreeavlSlice) -> Double { @_common.sum(s.data) }
+pub fn DstreeavlSlice::sum(self : DstreeavlSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_tree_avl_slice_mean(s : DstreeavlSlice) -> Double { @_common.mean(s.data) }
+pub fn DstreeavlSlice::mean(self : DstreeavlSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_tree_avl_slice_scale(s : DstreeavlSlice, f : Double) -> DstreeavlSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DstreeavlSlice::scale(self : DstreeavlSlice, f : Double) -> DstreeavlSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_slice_add(a : DstreeavlSlice, b : DstreeavlSlice) -> DstreeavlSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DstreeavlSlice::add(self : DstreeavlSlice, other : DstreeavlSlice) -> DstreeavlSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_tree_avl_slice_copy(s : DstreeavlSlice) -> DstreeavlSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DstreeavlSlice::copy(self : DstreeavlSlice) -> DstreeavlSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_slice_fill(s : DstreeavlSlice, v : Double) -> DstreeavlSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DstreeavlSlice::fill(self : DstreeavlSlice, v : Double) -> DstreeavlSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_tree_avl_slice_min(s : DstreeavlSlice) -> Double { @_common.min(s.data) }
+pub fn DstreeavlSlice::min(self : DstreeavlSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_tree_avl_slice_max(s : DstreeavlSlice) -> Double { @_common.max(s.data) }
+pub fn DstreeavlSlice::max(self : DstreeavlSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_tree_avl_slice_to_string(s : DstreeavlSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DstreeavlSlice::to_string(self : DstreeavlSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

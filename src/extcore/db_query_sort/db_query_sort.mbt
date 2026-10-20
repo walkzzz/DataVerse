@@ -351,45 +351,45 @@ pub fn db_query_sort_frame_make(size : Int) -> DbquerysortFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_frame_len(s : DbquerysortFrame) -> Int { s.size }
+pub fn DbquerysortFrame::len(self : DbquerysortFrame) -> Int { self.size }
 
-pub fn db_query_sort_frame_get(s : DbquerysortFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortFrame::get(self : DbquerysortFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_frame_set(s : DbquerysortFrame, i : Int, v : Double) -> DbquerysortFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortFrame::set(self : DbquerysortFrame, i : Int, v : Double) -> DbquerysortFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_frame_sum(s : DbquerysortFrame) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortFrame::sum(self : DbquerysortFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_frame_mean(s : DbquerysortFrame) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortFrame::mean(self : DbquerysortFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_frame_scale(s : DbquerysortFrame, f : Double) -> DbquerysortFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortFrame::scale(self : DbquerysortFrame, f : Double) -> DbquerysortFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_frame_add(a : DbquerysortFrame, b : DbquerysortFrame) -> DbquerysortFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortFrame::add(self : DbquerysortFrame, other : DbquerysortFrame) -> DbquerysortFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_frame_copy(s : DbquerysortFrame) -> DbquerysortFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortFrame::copy(self : DbquerysortFrame) -> DbquerysortFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_frame_fill(s : DbquerysortFrame, v : Double) -> DbquerysortFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortFrame::fill(self : DbquerysortFrame, v : Double) -> DbquerysortFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_frame_min(s : DbquerysortFrame) -> Double { @_common.min(s.data) }
+pub fn DbquerysortFrame::min(self : DbquerysortFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_frame_max(s : DbquerysortFrame) -> Double { @_common.max(s.data) }
+pub fn DbquerysortFrame::max(self : DbquerysortFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_frame_to_string(s : DbquerysortFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortFrame::to_string(self : DbquerysortFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortTable {
@@ -402,45 +402,45 @@ pub fn db_query_sort_table_make(size : Int) -> DbquerysortTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_table_len(s : DbquerysortTable) -> Int { s.size }
+pub fn DbquerysortTable::len(self : DbquerysortTable) -> Int { self.size }
 
-pub fn db_query_sort_table_get(s : DbquerysortTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortTable::get(self : DbquerysortTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_table_set(s : DbquerysortTable, i : Int, v : Double) -> DbquerysortTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortTable::set(self : DbquerysortTable, i : Int, v : Double) -> DbquerysortTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_table_sum(s : DbquerysortTable) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortTable::sum(self : DbquerysortTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_table_mean(s : DbquerysortTable) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortTable::mean(self : DbquerysortTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_table_scale(s : DbquerysortTable, f : Double) -> DbquerysortTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortTable::scale(self : DbquerysortTable, f : Double) -> DbquerysortTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_table_add(a : DbquerysortTable, b : DbquerysortTable) -> DbquerysortTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortTable::add(self : DbquerysortTable, other : DbquerysortTable) -> DbquerysortTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_table_copy(s : DbquerysortTable) -> DbquerysortTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortTable::copy(self : DbquerysortTable) -> DbquerysortTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_table_fill(s : DbquerysortTable, v : Double) -> DbquerysortTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortTable::fill(self : DbquerysortTable, v : Double) -> DbquerysortTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_table_min(s : DbquerysortTable) -> Double { @_common.min(s.data) }
+pub fn DbquerysortTable::min(self : DbquerysortTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_table_max(s : DbquerysortTable) -> Double { @_common.max(s.data) }
+pub fn DbquerysortTable::max(self : DbquerysortTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_table_to_string(s : DbquerysortTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortTable::to_string(self : DbquerysortTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_sort_graphn_make(size : Int) -> DbquerysortGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_graphn_len(s : DbquerysortGraphN) -> Int { s.size }
+pub fn DbquerysortGraphN::len(self : DbquerysortGraphN) -> Int { self.size }
 
-pub fn db_query_sort_graphn_get(s : DbquerysortGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortGraphN::get(self : DbquerysortGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_graphn_set(s : DbquerysortGraphN, i : Int, v : Double) -> DbquerysortGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortGraphN::set(self : DbquerysortGraphN, i : Int, v : Double) -> DbquerysortGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_graphn_sum(s : DbquerysortGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortGraphN::sum(self : DbquerysortGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_graphn_mean(s : DbquerysortGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortGraphN::mean(self : DbquerysortGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_graphn_scale(s : DbquerysortGraphN, f : Double) -> DbquerysortGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortGraphN::scale(self : DbquerysortGraphN, f : Double) -> DbquerysortGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_graphn_add(a : DbquerysortGraphN, b : DbquerysortGraphN) -> DbquerysortGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortGraphN::add(self : DbquerysortGraphN, other : DbquerysortGraphN) -> DbquerysortGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_graphn_copy(s : DbquerysortGraphN) -> DbquerysortGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortGraphN::copy(self : DbquerysortGraphN) -> DbquerysortGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_graphn_fill(s : DbquerysortGraphN, v : Double) -> DbquerysortGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortGraphN::fill(self : DbquerysortGraphN, v : Double) -> DbquerysortGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_graphn_min(s : DbquerysortGraphN) -> Double { @_common.min(s.data) }
+pub fn DbquerysortGraphN::min(self : DbquerysortGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_graphn_max(s : DbquerysortGraphN) -> Double { @_common.max(s.data) }
+pub fn DbquerysortGraphN::max(self : DbquerysortGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_graphn_to_string(s : DbquerysortGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortGraphN::to_string(self : DbquerysortGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortNode {
@@ -504,45 +504,45 @@ pub fn db_query_sort_node_make(size : Int) -> DbquerysortNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_node_len(s : DbquerysortNode) -> Int { s.size }
+pub fn DbquerysortNode::len(self : DbquerysortNode) -> Int { self.size }
 
-pub fn db_query_sort_node_get(s : DbquerysortNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortNode::get(self : DbquerysortNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_node_set(s : DbquerysortNode, i : Int, v : Double) -> DbquerysortNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortNode::set(self : DbquerysortNode, i : Int, v : Double) -> DbquerysortNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_node_sum(s : DbquerysortNode) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortNode::sum(self : DbquerysortNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_node_mean(s : DbquerysortNode) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortNode::mean(self : DbquerysortNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_node_scale(s : DbquerysortNode, f : Double) -> DbquerysortNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortNode::scale(self : DbquerysortNode, f : Double) -> DbquerysortNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_node_add(a : DbquerysortNode, b : DbquerysortNode) -> DbquerysortNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortNode::add(self : DbquerysortNode, other : DbquerysortNode) -> DbquerysortNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_node_copy(s : DbquerysortNode) -> DbquerysortNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortNode::copy(self : DbquerysortNode) -> DbquerysortNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_node_fill(s : DbquerysortNode, v : Double) -> DbquerysortNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortNode::fill(self : DbquerysortNode, v : Double) -> DbquerysortNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_node_min(s : DbquerysortNode) -> Double { @_common.min(s.data) }
+pub fn DbquerysortNode::min(self : DbquerysortNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_node_max(s : DbquerysortNode) -> Double { @_common.max(s.data) }
+pub fn DbquerysortNode::max(self : DbquerysortNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_node_to_string(s : DbquerysortNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortNode::to_string(self : DbquerysortNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortEdge {
@@ -555,45 +555,45 @@ pub fn db_query_sort_edge_make(size : Int) -> DbquerysortEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_edge_len(s : DbquerysortEdge) -> Int { s.size }
+pub fn DbquerysortEdge::len(self : DbquerysortEdge) -> Int { self.size }
 
-pub fn db_query_sort_edge_get(s : DbquerysortEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortEdge::get(self : DbquerysortEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_edge_set(s : DbquerysortEdge, i : Int, v : Double) -> DbquerysortEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortEdge::set(self : DbquerysortEdge, i : Int, v : Double) -> DbquerysortEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_edge_sum(s : DbquerysortEdge) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortEdge::sum(self : DbquerysortEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_edge_mean(s : DbquerysortEdge) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortEdge::mean(self : DbquerysortEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_edge_scale(s : DbquerysortEdge, f : Double) -> DbquerysortEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortEdge::scale(self : DbquerysortEdge, f : Double) -> DbquerysortEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_edge_add(a : DbquerysortEdge, b : DbquerysortEdge) -> DbquerysortEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortEdge::add(self : DbquerysortEdge, other : DbquerysortEdge) -> DbquerysortEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_edge_copy(s : DbquerysortEdge) -> DbquerysortEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortEdge::copy(self : DbquerysortEdge) -> DbquerysortEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_edge_fill(s : DbquerysortEdge, v : Double) -> DbquerysortEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortEdge::fill(self : DbquerysortEdge, v : Double) -> DbquerysortEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_edge_min(s : DbquerysortEdge) -> Double { @_common.min(s.data) }
+pub fn DbquerysortEdge::min(self : DbquerysortEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_edge_max(s : DbquerysortEdge) -> Double { @_common.max(s.data) }
+pub fn DbquerysortEdge::max(self : DbquerysortEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_edge_to_string(s : DbquerysortEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortEdge::to_string(self : DbquerysortEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortPath {
@@ -606,45 +606,45 @@ pub fn db_query_sort_path_make(size : Int) -> DbquerysortPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_path_len(s : DbquerysortPath) -> Int { s.size }
+pub fn DbquerysortPath::len(self : DbquerysortPath) -> Int { self.size }
 
-pub fn db_query_sort_path_get(s : DbquerysortPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortPath::get(self : DbquerysortPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_path_set(s : DbquerysortPath, i : Int, v : Double) -> DbquerysortPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortPath::set(self : DbquerysortPath, i : Int, v : Double) -> DbquerysortPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_path_sum(s : DbquerysortPath) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortPath::sum(self : DbquerysortPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_path_mean(s : DbquerysortPath) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortPath::mean(self : DbquerysortPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_path_scale(s : DbquerysortPath, f : Double) -> DbquerysortPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortPath::scale(self : DbquerysortPath, f : Double) -> DbquerysortPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_path_add(a : DbquerysortPath, b : DbquerysortPath) -> DbquerysortPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortPath::add(self : DbquerysortPath, other : DbquerysortPath) -> DbquerysortPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_path_copy(s : DbquerysortPath) -> DbquerysortPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortPath::copy(self : DbquerysortPath) -> DbquerysortPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_path_fill(s : DbquerysortPath, v : Double) -> DbquerysortPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortPath::fill(self : DbquerysortPath, v : Double) -> DbquerysortPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_path_min(s : DbquerysortPath) -> Double { @_common.min(s.data) }
+pub fn DbquerysortPath::min(self : DbquerysortPath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_path_max(s : DbquerysortPath) -> Double { @_common.max(s.data) }
+pub fn DbquerysortPath::max(self : DbquerysortPath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_path_to_string(s : DbquerysortPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortPath::to_string(self : DbquerysortPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortCluster {
@@ -657,45 +657,45 @@ pub fn db_query_sort_cluster_make(size : Int) -> DbquerysortCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_cluster_len(s : DbquerysortCluster) -> Int { s.size }
+pub fn DbquerysortCluster::len(self : DbquerysortCluster) -> Int { self.size }
 
-pub fn db_query_sort_cluster_get(s : DbquerysortCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortCluster::get(self : DbquerysortCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_cluster_set(s : DbquerysortCluster, i : Int, v : Double) -> DbquerysortCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortCluster::set(self : DbquerysortCluster, i : Int, v : Double) -> DbquerysortCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cluster_sum(s : DbquerysortCluster) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortCluster::sum(self : DbquerysortCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_cluster_mean(s : DbquerysortCluster) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortCluster::mean(self : DbquerysortCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_cluster_scale(s : DbquerysortCluster, f : Double) -> DbquerysortCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortCluster::scale(self : DbquerysortCluster, f : Double) -> DbquerysortCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cluster_add(a : DbquerysortCluster, b : DbquerysortCluster) -> DbquerysortCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortCluster::add(self : DbquerysortCluster, other : DbquerysortCluster) -> DbquerysortCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_cluster_copy(s : DbquerysortCluster) -> DbquerysortCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortCluster::copy(self : DbquerysortCluster) -> DbquerysortCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cluster_fill(s : DbquerysortCluster, v : Double) -> DbquerysortCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortCluster::fill(self : DbquerysortCluster, v : Double) -> DbquerysortCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cluster_min(s : DbquerysortCluster) -> Double { @_common.min(s.data) }
+pub fn DbquerysortCluster::min(self : DbquerysortCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_cluster_max(s : DbquerysortCluster) -> Double { @_common.max(s.data) }
+pub fn DbquerysortCluster::max(self : DbquerysortCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_cluster_to_string(s : DbquerysortCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortCluster::to_string(self : DbquerysortCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortModel {
@@ -708,45 +708,45 @@ pub fn db_query_sort_model_make(size : Int) -> DbquerysortModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_model_len(s : DbquerysortModel) -> Int { s.size }
+pub fn DbquerysortModel::len(self : DbquerysortModel) -> Int { self.size }
 
-pub fn db_query_sort_model_get(s : DbquerysortModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortModel::get(self : DbquerysortModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_model_set(s : DbquerysortModel, i : Int, v : Double) -> DbquerysortModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortModel::set(self : DbquerysortModel, i : Int, v : Double) -> DbquerysortModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_model_sum(s : DbquerysortModel) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortModel::sum(self : DbquerysortModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_model_mean(s : DbquerysortModel) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortModel::mean(self : DbquerysortModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_model_scale(s : DbquerysortModel, f : Double) -> DbquerysortModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortModel::scale(self : DbquerysortModel, f : Double) -> DbquerysortModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_model_add(a : DbquerysortModel, b : DbquerysortModel) -> DbquerysortModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortModel::add(self : DbquerysortModel, other : DbquerysortModel) -> DbquerysortModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_model_copy(s : DbquerysortModel) -> DbquerysortModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortModel::copy(self : DbquerysortModel) -> DbquerysortModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_model_fill(s : DbquerysortModel, v : Double) -> DbquerysortModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortModel::fill(self : DbquerysortModel, v : Double) -> DbquerysortModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_model_min(s : DbquerysortModel) -> Double { @_common.min(s.data) }
+pub fn DbquerysortModel::min(self : DbquerysortModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_model_max(s : DbquerysortModel) -> Double { @_common.max(s.data) }
+pub fn DbquerysortModel::max(self : DbquerysortModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_model_to_string(s : DbquerysortModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortModel::to_string(self : DbquerysortModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortLayer {
@@ -759,45 +759,45 @@ pub fn db_query_sort_layer_make(size : Int) -> DbquerysortLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_layer_len(s : DbquerysortLayer) -> Int { s.size }
+pub fn DbquerysortLayer::len(self : DbquerysortLayer) -> Int { self.size }
 
-pub fn db_query_sort_layer_get(s : DbquerysortLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortLayer::get(self : DbquerysortLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_layer_set(s : DbquerysortLayer, i : Int, v : Double) -> DbquerysortLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortLayer::set(self : DbquerysortLayer, i : Int, v : Double) -> DbquerysortLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_layer_sum(s : DbquerysortLayer) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortLayer::sum(self : DbquerysortLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_layer_mean(s : DbquerysortLayer) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortLayer::mean(self : DbquerysortLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_layer_scale(s : DbquerysortLayer, f : Double) -> DbquerysortLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortLayer::scale(self : DbquerysortLayer, f : Double) -> DbquerysortLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_layer_add(a : DbquerysortLayer, b : DbquerysortLayer) -> DbquerysortLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortLayer::add(self : DbquerysortLayer, other : DbquerysortLayer) -> DbquerysortLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_layer_copy(s : DbquerysortLayer) -> DbquerysortLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortLayer::copy(self : DbquerysortLayer) -> DbquerysortLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_layer_fill(s : DbquerysortLayer, v : Double) -> DbquerysortLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortLayer::fill(self : DbquerysortLayer, v : Double) -> DbquerysortLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_layer_min(s : DbquerysortLayer) -> Double { @_common.min(s.data) }
+pub fn DbquerysortLayer::min(self : DbquerysortLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_layer_max(s : DbquerysortLayer) -> Double { @_common.max(s.data) }
+pub fn DbquerysortLayer::max(self : DbquerysortLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_layer_to_string(s : DbquerysortLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortLayer::to_string(self : DbquerysortLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_sort_buffer_make(size : Int) -> DbquerysortBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_buffer_len(s : DbquerysortBuffer) -> Int { s.size }
+pub fn DbquerysortBuffer::len(self : DbquerysortBuffer) -> Int { self.size }
 
-pub fn db_query_sort_buffer_get(s : DbquerysortBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortBuffer::get(self : DbquerysortBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_buffer_set(s : DbquerysortBuffer, i : Int, v : Double) -> DbquerysortBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortBuffer::set(self : DbquerysortBuffer, i : Int, v : Double) -> DbquerysortBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_buffer_sum(s : DbquerysortBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortBuffer::sum(self : DbquerysortBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_buffer_mean(s : DbquerysortBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortBuffer::mean(self : DbquerysortBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_buffer_scale(s : DbquerysortBuffer, f : Double) -> DbquerysortBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortBuffer::scale(self : DbquerysortBuffer, f : Double) -> DbquerysortBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_buffer_add(a : DbquerysortBuffer, b : DbquerysortBuffer) -> DbquerysortBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortBuffer::add(self : DbquerysortBuffer, other : DbquerysortBuffer) -> DbquerysortBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_buffer_copy(s : DbquerysortBuffer) -> DbquerysortBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortBuffer::copy(self : DbquerysortBuffer) -> DbquerysortBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_buffer_fill(s : DbquerysortBuffer, v : Double) -> DbquerysortBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortBuffer::fill(self : DbquerysortBuffer, v : Double) -> DbquerysortBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_buffer_min(s : DbquerysortBuffer) -> Double { @_common.min(s.data) }
+pub fn DbquerysortBuffer::min(self : DbquerysortBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_buffer_max(s : DbquerysortBuffer) -> Double { @_common.max(s.data) }
+pub fn DbquerysortBuffer::max(self : DbquerysortBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_buffer_to_string(s : DbquerysortBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortBuffer::to_string(self : DbquerysortBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortCursor {
@@ -861,45 +861,45 @@ pub fn db_query_sort_cursor_make(size : Int) -> DbquerysortCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_cursor_len(s : DbquerysortCursor) -> Int { s.size }
+pub fn DbquerysortCursor::len(self : DbquerysortCursor) -> Int { self.size }
 
-pub fn db_query_sort_cursor_get(s : DbquerysortCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortCursor::get(self : DbquerysortCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_cursor_set(s : DbquerysortCursor, i : Int, v : Double) -> DbquerysortCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortCursor::set(self : DbquerysortCursor, i : Int, v : Double) -> DbquerysortCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cursor_sum(s : DbquerysortCursor) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortCursor::sum(self : DbquerysortCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_cursor_mean(s : DbquerysortCursor) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortCursor::mean(self : DbquerysortCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_cursor_scale(s : DbquerysortCursor, f : Double) -> DbquerysortCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortCursor::scale(self : DbquerysortCursor, f : Double) -> DbquerysortCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cursor_add(a : DbquerysortCursor, b : DbquerysortCursor) -> DbquerysortCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortCursor::add(self : DbquerysortCursor, other : DbquerysortCursor) -> DbquerysortCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_cursor_copy(s : DbquerysortCursor) -> DbquerysortCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortCursor::copy(self : DbquerysortCursor) -> DbquerysortCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cursor_fill(s : DbquerysortCursor, v : Double) -> DbquerysortCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortCursor::fill(self : DbquerysortCursor, v : Double) -> DbquerysortCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_cursor_min(s : DbquerysortCursor) -> Double { @_common.min(s.data) }
+pub fn DbquerysortCursor::min(self : DbquerysortCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_cursor_max(s : DbquerysortCursor) -> Double { @_common.max(s.data) }
+pub fn DbquerysortCursor::max(self : DbquerysortCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_cursor_to_string(s : DbquerysortCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortCursor::to_string(self : DbquerysortCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortView {
@@ -912,45 +912,45 @@ pub fn db_query_sort_view_make(size : Int) -> DbquerysortView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_view_len(s : DbquerysortView) -> Int { s.size }
+pub fn DbquerysortView::len(self : DbquerysortView) -> Int { self.size }
 
-pub fn db_query_sort_view_get(s : DbquerysortView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortView::get(self : DbquerysortView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_view_set(s : DbquerysortView, i : Int, v : Double) -> DbquerysortView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortView::set(self : DbquerysortView, i : Int, v : Double) -> DbquerysortView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_view_sum(s : DbquerysortView) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortView::sum(self : DbquerysortView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_view_mean(s : DbquerysortView) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortView::mean(self : DbquerysortView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_view_scale(s : DbquerysortView, f : Double) -> DbquerysortView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortView::scale(self : DbquerysortView, f : Double) -> DbquerysortView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_view_add(a : DbquerysortView, b : DbquerysortView) -> DbquerysortView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortView::add(self : DbquerysortView, other : DbquerysortView) -> DbquerysortView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_view_copy(s : DbquerysortView) -> DbquerysortView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortView::copy(self : DbquerysortView) -> DbquerysortView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_view_fill(s : DbquerysortView, v : Double) -> DbquerysortView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortView::fill(self : DbquerysortView, v : Double) -> DbquerysortView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_view_min(s : DbquerysortView) -> Double { @_common.min(s.data) }
+pub fn DbquerysortView::min(self : DbquerysortView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_view_max(s : DbquerysortView) -> Double { @_common.max(s.data) }
+pub fn DbquerysortView::max(self : DbquerysortView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_view_to_string(s : DbquerysortView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortView::to_string(self : DbquerysortView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortRange {
@@ -963,45 +963,45 @@ pub fn db_query_sort_range_make(size : Int) -> DbquerysortRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_range_len(s : DbquerysortRange) -> Int { s.size }
+pub fn DbquerysortRange::len(self : DbquerysortRange) -> Int { self.size }
 
-pub fn db_query_sort_range_get(s : DbquerysortRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortRange::get(self : DbquerysortRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_range_set(s : DbquerysortRange, i : Int, v : Double) -> DbquerysortRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortRange::set(self : DbquerysortRange, i : Int, v : Double) -> DbquerysortRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_range_sum(s : DbquerysortRange) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortRange::sum(self : DbquerysortRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_range_mean(s : DbquerysortRange) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortRange::mean(self : DbquerysortRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_range_scale(s : DbquerysortRange, f : Double) -> DbquerysortRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortRange::scale(self : DbquerysortRange, f : Double) -> DbquerysortRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_range_add(a : DbquerysortRange, b : DbquerysortRange) -> DbquerysortRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortRange::add(self : DbquerysortRange, other : DbquerysortRange) -> DbquerysortRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_range_copy(s : DbquerysortRange) -> DbquerysortRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortRange::copy(self : DbquerysortRange) -> DbquerysortRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_range_fill(s : DbquerysortRange, v : Double) -> DbquerysortRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortRange::fill(self : DbquerysortRange, v : Double) -> DbquerysortRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_range_min(s : DbquerysortRange) -> Double { @_common.min(s.data) }
+pub fn DbquerysortRange::min(self : DbquerysortRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_range_max(s : DbquerysortRange) -> Double { @_common.max(s.data) }
+pub fn DbquerysortRange::max(self : DbquerysortRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_range_to_string(s : DbquerysortRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortRange::to_string(self : DbquerysortRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerysortSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_sort_slice_make(size : Int) -> DbquerysortSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_sort_slice_len(s : DbquerysortSlice) -> Int { s.size }
+pub fn DbquerysortSlice::len(self : DbquerysortSlice) -> Int { self.size }
 
-pub fn db_query_sort_slice_get(s : DbquerysortSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerysortSlice::get(self : DbquerysortSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_sort_slice_set(s : DbquerysortSlice, i : Int, v : Double) -> DbquerysortSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerysortSlice::set(self : DbquerysortSlice, i : Int, v : Double) -> DbquerysortSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_slice_sum(s : DbquerysortSlice) -> Double { @_common.sum(s.data) }
+pub fn DbquerysortSlice::sum(self : DbquerysortSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_sort_slice_mean(s : DbquerysortSlice) -> Double { @_common.mean(s.data) }
+pub fn DbquerysortSlice::mean(self : DbquerysortSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_sort_slice_scale(s : DbquerysortSlice, f : Double) -> DbquerysortSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerysortSlice::scale(self : DbquerysortSlice, f : Double) -> DbquerysortSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_slice_add(a : DbquerysortSlice, b : DbquerysortSlice) -> DbquerysortSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerysortSlice::add(self : DbquerysortSlice, other : DbquerysortSlice) -> DbquerysortSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_sort_slice_copy(s : DbquerysortSlice) -> DbquerysortSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerysortSlice::copy(self : DbquerysortSlice) -> DbquerysortSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_slice_fill(s : DbquerysortSlice, v : Double) -> DbquerysortSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerysortSlice::fill(self : DbquerysortSlice, v : Double) -> DbquerysortSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_sort_slice_min(s : DbquerysortSlice) -> Double { @_common.min(s.data) }
+pub fn DbquerysortSlice::min(self : DbquerysortSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_sort_slice_max(s : DbquerysortSlice) -> Double { @_common.max(s.data) }
+pub fn DbquerysortSlice::max(self : DbquerysortSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_sort_slice_to_string(s : DbquerysortSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerysortSlice::to_string(self : DbquerysortSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

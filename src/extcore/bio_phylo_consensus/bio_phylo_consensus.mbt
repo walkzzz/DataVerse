@@ -351,45 +351,45 @@ pub fn bio_phylo_consensus_frame_make(size : Int) -> BiophyloconsensusFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_frame_len(s : BiophyloconsensusFrame) -> Int { s.size }
+pub fn BiophyloconsensusFrame::len(self : BiophyloconsensusFrame) -> Int { self.size }
 
-pub fn bio_phylo_consensus_frame_get(s : BiophyloconsensusFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusFrame::get(self : BiophyloconsensusFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_frame_set(s : BiophyloconsensusFrame, i : Int, v : Double) -> BiophyloconsensusFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusFrame::set(self : BiophyloconsensusFrame, i : Int, v : Double) -> BiophyloconsensusFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_frame_sum(s : BiophyloconsensusFrame) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusFrame::sum(self : BiophyloconsensusFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_frame_mean(s : BiophyloconsensusFrame) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusFrame::mean(self : BiophyloconsensusFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_frame_scale(s : BiophyloconsensusFrame, f : Double) -> BiophyloconsensusFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusFrame::scale(self : BiophyloconsensusFrame, f : Double) -> BiophyloconsensusFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_frame_add(a : BiophyloconsensusFrame, b : BiophyloconsensusFrame) -> BiophyloconsensusFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusFrame::add(self : BiophyloconsensusFrame, other : BiophyloconsensusFrame) -> BiophyloconsensusFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_frame_copy(s : BiophyloconsensusFrame) -> BiophyloconsensusFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusFrame::copy(self : BiophyloconsensusFrame) -> BiophyloconsensusFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_frame_fill(s : BiophyloconsensusFrame, v : Double) -> BiophyloconsensusFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusFrame::fill(self : BiophyloconsensusFrame, v : Double) -> BiophyloconsensusFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_frame_min(s : BiophyloconsensusFrame) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusFrame::min(self : BiophyloconsensusFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_frame_max(s : BiophyloconsensusFrame) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusFrame::max(self : BiophyloconsensusFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_frame_to_string(s : BiophyloconsensusFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusFrame::to_string(self : BiophyloconsensusFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusTable {
@@ -402,45 +402,45 @@ pub fn bio_phylo_consensus_table_make(size : Int) -> BiophyloconsensusTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_table_len(s : BiophyloconsensusTable) -> Int { s.size }
+pub fn BiophyloconsensusTable::len(self : BiophyloconsensusTable) -> Int { self.size }
 
-pub fn bio_phylo_consensus_table_get(s : BiophyloconsensusTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusTable::get(self : BiophyloconsensusTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_table_set(s : BiophyloconsensusTable, i : Int, v : Double) -> BiophyloconsensusTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusTable::set(self : BiophyloconsensusTable, i : Int, v : Double) -> BiophyloconsensusTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_table_sum(s : BiophyloconsensusTable) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusTable::sum(self : BiophyloconsensusTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_table_mean(s : BiophyloconsensusTable) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusTable::mean(self : BiophyloconsensusTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_table_scale(s : BiophyloconsensusTable, f : Double) -> BiophyloconsensusTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusTable::scale(self : BiophyloconsensusTable, f : Double) -> BiophyloconsensusTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_table_add(a : BiophyloconsensusTable, b : BiophyloconsensusTable) -> BiophyloconsensusTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusTable::add(self : BiophyloconsensusTable, other : BiophyloconsensusTable) -> BiophyloconsensusTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_table_copy(s : BiophyloconsensusTable) -> BiophyloconsensusTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusTable::copy(self : BiophyloconsensusTable) -> BiophyloconsensusTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_table_fill(s : BiophyloconsensusTable, v : Double) -> BiophyloconsensusTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusTable::fill(self : BiophyloconsensusTable, v : Double) -> BiophyloconsensusTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_table_min(s : BiophyloconsensusTable) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusTable::min(self : BiophyloconsensusTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_table_max(s : BiophyloconsensusTable) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusTable::max(self : BiophyloconsensusTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_table_to_string(s : BiophyloconsensusTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusTable::to_string(self : BiophyloconsensusTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusGraphN {
@@ -453,45 +453,45 @@ pub fn bio_phylo_consensus_graphn_make(size : Int) -> BiophyloconsensusGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_graphn_len(s : BiophyloconsensusGraphN) -> Int { s.size }
+pub fn BiophyloconsensusGraphN::len(self : BiophyloconsensusGraphN) -> Int { self.size }
 
-pub fn bio_phylo_consensus_graphn_get(s : BiophyloconsensusGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusGraphN::get(self : BiophyloconsensusGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_graphn_set(s : BiophyloconsensusGraphN, i : Int, v : Double) -> BiophyloconsensusGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusGraphN::set(self : BiophyloconsensusGraphN, i : Int, v : Double) -> BiophyloconsensusGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_graphn_sum(s : BiophyloconsensusGraphN) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusGraphN::sum(self : BiophyloconsensusGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_graphn_mean(s : BiophyloconsensusGraphN) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusGraphN::mean(self : BiophyloconsensusGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_graphn_scale(s : BiophyloconsensusGraphN, f : Double) -> BiophyloconsensusGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusGraphN::scale(self : BiophyloconsensusGraphN, f : Double) -> BiophyloconsensusGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_graphn_add(a : BiophyloconsensusGraphN, b : BiophyloconsensusGraphN) -> BiophyloconsensusGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusGraphN::add(self : BiophyloconsensusGraphN, other : BiophyloconsensusGraphN) -> BiophyloconsensusGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_graphn_copy(s : BiophyloconsensusGraphN) -> BiophyloconsensusGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusGraphN::copy(self : BiophyloconsensusGraphN) -> BiophyloconsensusGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_graphn_fill(s : BiophyloconsensusGraphN, v : Double) -> BiophyloconsensusGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusGraphN::fill(self : BiophyloconsensusGraphN, v : Double) -> BiophyloconsensusGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_graphn_min(s : BiophyloconsensusGraphN) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusGraphN::min(self : BiophyloconsensusGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_graphn_max(s : BiophyloconsensusGraphN) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusGraphN::max(self : BiophyloconsensusGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_graphn_to_string(s : BiophyloconsensusGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusGraphN::to_string(self : BiophyloconsensusGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusNode {
@@ -504,45 +504,45 @@ pub fn bio_phylo_consensus_node_make(size : Int) -> BiophyloconsensusNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_node_len(s : BiophyloconsensusNode) -> Int { s.size }
+pub fn BiophyloconsensusNode::len(self : BiophyloconsensusNode) -> Int { self.size }
 
-pub fn bio_phylo_consensus_node_get(s : BiophyloconsensusNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusNode::get(self : BiophyloconsensusNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_node_set(s : BiophyloconsensusNode, i : Int, v : Double) -> BiophyloconsensusNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusNode::set(self : BiophyloconsensusNode, i : Int, v : Double) -> BiophyloconsensusNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_node_sum(s : BiophyloconsensusNode) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusNode::sum(self : BiophyloconsensusNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_node_mean(s : BiophyloconsensusNode) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusNode::mean(self : BiophyloconsensusNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_node_scale(s : BiophyloconsensusNode, f : Double) -> BiophyloconsensusNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusNode::scale(self : BiophyloconsensusNode, f : Double) -> BiophyloconsensusNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_node_add(a : BiophyloconsensusNode, b : BiophyloconsensusNode) -> BiophyloconsensusNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusNode::add(self : BiophyloconsensusNode, other : BiophyloconsensusNode) -> BiophyloconsensusNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_node_copy(s : BiophyloconsensusNode) -> BiophyloconsensusNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusNode::copy(self : BiophyloconsensusNode) -> BiophyloconsensusNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_node_fill(s : BiophyloconsensusNode, v : Double) -> BiophyloconsensusNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusNode::fill(self : BiophyloconsensusNode, v : Double) -> BiophyloconsensusNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_node_min(s : BiophyloconsensusNode) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusNode::min(self : BiophyloconsensusNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_node_max(s : BiophyloconsensusNode) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusNode::max(self : BiophyloconsensusNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_node_to_string(s : BiophyloconsensusNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusNode::to_string(self : BiophyloconsensusNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusEdge {
@@ -555,45 +555,45 @@ pub fn bio_phylo_consensus_edge_make(size : Int) -> BiophyloconsensusEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_edge_len(s : BiophyloconsensusEdge) -> Int { s.size }
+pub fn BiophyloconsensusEdge::len(self : BiophyloconsensusEdge) -> Int { self.size }
 
-pub fn bio_phylo_consensus_edge_get(s : BiophyloconsensusEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusEdge::get(self : BiophyloconsensusEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_edge_set(s : BiophyloconsensusEdge, i : Int, v : Double) -> BiophyloconsensusEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusEdge::set(self : BiophyloconsensusEdge, i : Int, v : Double) -> BiophyloconsensusEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_edge_sum(s : BiophyloconsensusEdge) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusEdge::sum(self : BiophyloconsensusEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_edge_mean(s : BiophyloconsensusEdge) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusEdge::mean(self : BiophyloconsensusEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_edge_scale(s : BiophyloconsensusEdge, f : Double) -> BiophyloconsensusEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusEdge::scale(self : BiophyloconsensusEdge, f : Double) -> BiophyloconsensusEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_edge_add(a : BiophyloconsensusEdge, b : BiophyloconsensusEdge) -> BiophyloconsensusEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusEdge::add(self : BiophyloconsensusEdge, other : BiophyloconsensusEdge) -> BiophyloconsensusEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_edge_copy(s : BiophyloconsensusEdge) -> BiophyloconsensusEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusEdge::copy(self : BiophyloconsensusEdge) -> BiophyloconsensusEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_edge_fill(s : BiophyloconsensusEdge, v : Double) -> BiophyloconsensusEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusEdge::fill(self : BiophyloconsensusEdge, v : Double) -> BiophyloconsensusEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_edge_min(s : BiophyloconsensusEdge) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusEdge::min(self : BiophyloconsensusEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_edge_max(s : BiophyloconsensusEdge) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusEdge::max(self : BiophyloconsensusEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_edge_to_string(s : BiophyloconsensusEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusEdge::to_string(self : BiophyloconsensusEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusPath {
@@ -606,45 +606,45 @@ pub fn bio_phylo_consensus_path_make(size : Int) -> BiophyloconsensusPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_path_len(s : BiophyloconsensusPath) -> Int { s.size }
+pub fn BiophyloconsensusPath::len(self : BiophyloconsensusPath) -> Int { self.size }
 
-pub fn bio_phylo_consensus_path_get(s : BiophyloconsensusPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusPath::get(self : BiophyloconsensusPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_path_set(s : BiophyloconsensusPath, i : Int, v : Double) -> BiophyloconsensusPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusPath::set(self : BiophyloconsensusPath, i : Int, v : Double) -> BiophyloconsensusPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_path_sum(s : BiophyloconsensusPath) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusPath::sum(self : BiophyloconsensusPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_path_mean(s : BiophyloconsensusPath) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusPath::mean(self : BiophyloconsensusPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_path_scale(s : BiophyloconsensusPath, f : Double) -> BiophyloconsensusPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusPath::scale(self : BiophyloconsensusPath, f : Double) -> BiophyloconsensusPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_path_add(a : BiophyloconsensusPath, b : BiophyloconsensusPath) -> BiophyloconsensusPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusPath::add(self : BiophyloconsensusPath, other : BiophyloconsensusPath) -> BiophyloconsensusPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_path_copy(s : BiophyloconsensusPath) -> BiophyloconsensusPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusPath::copy(self : BiophyloconsensusPath) -> BiophyloconsensusPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_path_fill(s : BiophyloconsensusPath, v : Double) -> BiophyloconsensusPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusPath::fill(self : BiophyloconsensusPath, v : Double) -> BiophyloconsensusPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_path_min(s : BiophyloconsensusPath) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusPath::min(self : BiophyloconsensusPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_path_max(s : BiophyloconsensusPath) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusPath::max(self : BiophyloconsensusPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_path_to_string(s : BiophyloconsensusPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusPath::to_string(self : BiophyloconsensusPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusCluster {
@@ -657,45 +657,45 @@ pub fn bio_phylo_consensus_cluster_make(size : Int) -> BiophyloconsensusCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_cluster_len(s : BiophyloconsensusCluster) -> Int { s.size }
+pub fn BiophyloconsensusCluster::len(self : BiophyloconsensusCluster) -> Int { self.size }
 
-pub fn bio_phylo_consensus_cluster_get(s : BiophyloconsensusCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusCluster::get(self : BiophyloconsensusCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_cluster_set(s : BiophyloconsensusCluster, i : Int, v : Double) -> BiophyloconsensusCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCluster::set(self : BiophyloconsensusCluster, i : Int, v : Double) -> BiophyloconsensusCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cluster_sum(s : BiophyloconsensusCluster) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusCluster::sum(self : BiophyloconsensusCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_cluster_mean(s : BiophyloconsensusCluster) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusCluster::mean(self : BiophyloconsensusCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_cluster_scale(s : BiophyloconsensusCluster, f : Double) -> BiophyloconsensusCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCluster::scale(self : BiophyloconsensusCluster, f : Double) -> BiophyloconsensusCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cluster_add(a : BiophyloconsensusCluster, b : BiophyloconsensusCluster) -> BiophyloconsensusCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusCluster::add(self : BiophyloconsensusCluster, other : BiophyloconsensusCluster) -> BiophyloconsensusCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cluster_copy(s : BiophyloconsensusCluster) -> BiophyloconsensusCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCluster::copy(self : BiophyloconsensusCluster) -> BiophyloconsensusCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cluster_fill(s : BiophyloconsensusCluster, v : Double) -> BiophyloconsensusCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCluster::fill(self : BiophyloconsensusCluster, v : Double) -> BiophyloconsensusCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cluster_min(s : BiophyloconsensusCluster) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusCluster::min(self : BiophyloconsensusCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_cluster_max(s : BiophyloconsensusCluster) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusCluster::max(self : BiophyloconsensusCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_cluster_to_string(s : BiophyloconsensusCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusCluster::to_string(self : BiophyloconsensusCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusModel {
@@ -708,45 +708,45 @@ pub fn bio_phylo_consensus_model_make(size : Int) -> BiophyloconsensusModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_model_len(s : BiophyloconsensusModel) -> Int { s.size }
+pub fn BiophyloconsensusModel::len(self : BiophyloconsensusModel) -> Int { self.size }
 
-pub fn bio_phylo_consensus_model_get(s : BiophyloconsensusModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusModel::get(self : BiophyloconsensusModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_model_set(s : BiophyloconsensusModel, i : Int, v : Double) -> BiophyloconsensusModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusModel::set(self : BiophyloconsensusModel, i : Int, v : Double) -> BiophyloconsensusModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_model_sum(s : BiophyloconsensusModel) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusModel::sum(self : BiophyloconsensusModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_model_mean(s : BiophyloconsensusModel) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusModel::mean(self : BiophyloconsensusModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_model_scale(s : BiophyloconsensusModel, f : Double) -> BiophyloconsensusModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusModel::scale(self : BiophyloconsensusModel, f : Double) -> BiophyloconsensusModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_model_add(a : BiophyloconsensusModel, b : BiophyloconsensusModel) -> BiophyloconsensusModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusModel::add(self : BiophyloconsensusModel, other : BiophyloconsensusModel) -> BiophyloconsensusModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_model_copy(s : BiophyloconsensusModel) -> BiophyloconsensusModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusModel::copy(self : BiophyloconsensusModel) -> BiophyloconsensusModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_model_fill(s : BiophyloconsensusModel, v : Double) -> BiophyloconsensusModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusModel::fill(self : BiophyloconsensusModel, v : Double) -> BiophyloconsensusModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_model_min(s : BiophyloconsensusModel) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusModel::min(self : BiophyloconsensusModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_model_max(s : BiophyloconsensusModel) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusModel::max(self : BiophyloconsensusModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_model_to_string(s : BiophyloconsensusModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusModel::to_string(self : BiophyloconsensusModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusLayer {
@@ -759,45 +759,45 @@ pub fn bio_phylo_consensus_layer_make(size : Int) -> BiophyloconsensusLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_layer_len(s : BiophyloconsensusLayer) -> Int { s.size }
+pub fn BiophyloconsensusLayer::len(self : BiophyloconsensusLayer) -> Int { self.size }
 
-pub fn bio_phylo_consensus_layer_get(s : BiophyloconsensusLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusLayer::get(self : BiophyloconsensusLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_layer_set(s : BiophyloconsensusLayer, i : Int, v : Double) -> BiophyloconsensusLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusLayer::set(self : BiophyloconsensusLayer, i : Int, v : Double) -> BiophyloconsensusLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_layer_sum(s : BiophyloconsensusLayer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusLayer::sum(self : BiophyloconsensusLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_layer_mean(s : BiophyloconsensusLayer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusLayer::mean(self : BiophyloconsensusLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_layer_scale(s : BiophyloconsensusLayer, f : Double) -> BiophyloconsensusLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusLayer::scale(self : BiophyloconsensusLayer, f : Double) -> BiophyloconsensusLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_layer_add(a : BiophyloconsensusLayer, b : BiophyloconsensusLayer) -> BiophyloconsensusLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusLayer::add(self : BiophyloconsensusLayer, other : BiophyloconsensusLayer) -> BiophyloconsensusLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_layer_copy(s : BiophyloconsensusLayer) -> BiophyloconsensusLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusLayer::copy(self : BiophyloconsensusLayer) -> BiophyloconsensusLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_layer_fill(s : BiophyloconsensusLayer, v : Double) -> BiophyloconsensusLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusLayer::fill(self : BiophyloconsensusLayer, v : Double) -> BiophyloconsensusLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_layer_min(s : BiophyloconsensusLayer) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusLayer::min(self : BiophyloconsensusLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_layer_max(s : BiophyloconsensusLayer) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusLayer::max(self : BiophyloconsensusLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_layer_to_string(s : BiophyloconsensusLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusLayer::to_string(self : BiophyloconsensusLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusBuffer {
@@ -810,45 +810,45 @@ pub fn bio_phylo_consensus_buffer_make(size : Int) -> BiophyloconsensusBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_buffer_len(s : BiophyloconsensusBuffer) -> Int { s.size }
+pub fn BiophyloconsensusBuffer::len(self : BiophyloconsensusBuffer) -> Int { self.size }
 
-pub fn bio_phylo_consensus_buffer_get(s : BiophyloconsensusBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusBuffer::get(self : BiophyloconsensusBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_buffer_set(s : BiophyloconsensusBuffer, i : Int, v : Double) -> BiophyloconsensusBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusBuffer::set(self : BiophyloconsensusBuffer, i : Int, v : Double) -> BiophyloconsensusBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_buffer_sum(s : BiophyloconsensusBuffer) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusBuffer::sum(self : BiophyloconsensusBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_buffer_mean(s : BiophyloconsensusBuffer) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusBuffer::mean(self : BiophyloconsensusBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_buffer_scale(s : BiophyloconsensusBuffer, f : Double) -> BiophyloconsensusBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusBuffer::scale(self : BiophyloconsensusBuffer, f : Double) -> BiophyloconsensusBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_buffer_add(a : BiophyloconsensusBuffer, b : BiophyloconsensusBuffer) -> BiophyloconsensusBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusBuffer::add(self : BiophyloconsensusBuffer, other : BiophyloconsensusBuffer) -> BiophyloconsensusBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_buffer_copy(s : BiophyloconsensusBuffer) -> BiophyloconsensusBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusBuffer::copy(self : BiophyloconsensusBuffer) -> BiophyloconsensusBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_buffer_fill(s : BiophyloconsensusBuffer, v : Double) -> BiophyloconsensusBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusBuffer::fill(self : BiophyloconsensusBuffer, v : Double) -> BiophyloconsensusBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_buffer_min(s : BiophyloconsensusBuffer) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusBuffer::min(self : BiophyloconsensusBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_buffer_max(s : BiophyloconsensusBuffer) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusBuffer::max(self : BiophyloconsensusBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_buffer_to_string(s : BiophyloconsensusBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusBuffer::to_string(self : BiophyloconsensusBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusCursor {
@@ -861,45 +861,45 @@ pub fn bio_phylo_consensus_cursor_make(size : Int) -> BiophyloconsensusCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_cursor_len(s : BiophyloconsensusCursor) -> Int { s.size }
+pub fn BiophyloconsensusCursor::len(self : BiophyloconsensusCursor) -> Int { self.size }
 
-pub fn bio_phylo_consensus_cursor_get(s : BiophyloconsensusCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusCursor::get(self : BiophyloconsensusCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_cursor_set(s : BiophyloconsensusCursor, i : Int, v : Double) -> BiophyloconsensusCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCursor::set(self : BiophyloconsensusCursor, i : Int, v : Double) -> BiophyloconsensusCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cursor_sum(s : BiophyloconsensusCursor) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusCursor::sum(self : BiophyloconsensusCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_cursor_mean(s : BiophyloconsensusCursor) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusCursor::mean(self : BiophyloconsensusCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_cursor_scale(s : BiophyloconsensusCursor, f : Double) -> BiophyloconsensusCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCursor::scale(self : BiophyloconsensusCursor, f : Double) -> BiophyloconsensusCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cursor_add(a : BiophyloconsensusCursor, b : BiophyloconsensusCursor) -> BiophyloconsensusCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusCursor::add(self : BiophyloconsensusCursor, other : BiophyloconsensusCursor) -> BiophyloconsensusCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cursor_copy(s : BiophyloconsensusCursor) -> BiophyloconsensusCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCursor::copy(self : BiophyloconsensusCursor) -> BiophyloconsensusCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cursor_fill(s : BiophyloconsensusCursor, v : Double) -> BiophyloconsensusCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusCursor::fill(self : BiophyloconsensusCursor, v : Double) -> BiophyloconsensusCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_cursor_min(s : BiophyloconsensusCursor) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusCursor::min(self : BiophyloconsensusCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_cursor_max(s : BiophyloconsensusCursor) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusCursor::max(self : BiophyloconsensusCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_cursor_to_string(s : BiophyloconsensusCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusCursor::to_string(self : BiophyloconsensusCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusView {
@@ -912,45 +912,45 @@ pub fn bio_phylo_consensus_view_make(size : Int) -> BiophyloconsensusView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_view_len(s : BiophyloconsensusView) -> Int { s.size }
+pub fn BiophyloconsensusView::len(self : BiophyloconsensusView) -> Int { self.size }
 
-pub fn bio_phylo_consensus_view_get(s : BiophyloconsensusView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusView::get(self : BiophyloconsensusView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_view_set(s : BiophyloconsensusView, i : Int, v : Double) -> BiophyloconsensusView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusView::set(self : BiophyloconsensusView, i : Int, v : Double) -> BiophyloconsensusView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_view_sum(s : BiophyloconsensusView) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusView::sum(self : BiophyloconsensusView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_view_mean(s : BiophyloconsensusView) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusView::mean(self : BiophyloconsensusView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_view_scale(s : BiophyloconsensusView, f : Double) -> BiophyloconsensusView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusView::scale(self : BiophyloconsensusView, f : Double) -> BiophyloconsensusView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_view_add(a : BiophyloconsensusView, b : BiophyloconsensusView) -> BiophyloconsensusView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusView::add(self : BiophyloconsensusView, other : BiophyloconsensusView) -> BiophyloconsensusView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_view_copy(s : BiophyloconsensusView) -> BiophyloconsensusView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusView::copy(self : BiophyloconsensusView) -> BiophyloconsensusView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_view_fill(s : BiophyloconsensusView, v : Double) -> BiophyloconsensusView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusView::fill(self : BiophyloconsensusView, v : Double) -> BiophyloconsensusView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_view_min(s : BiophyloconsensusView) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusView::min(self : BiophyloconsensusView) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_view_max(s : BiophyloconsensusView) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusView::max(self : BiophyloconsensusView) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_view_to_string(s : BiophyloconsensusView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusView::to_string(self : BiophyloconsensusView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusRange {
@@ -963,45 +963,45 @@ pub fn bio_phylo_consensus_range_make(size : Int) -> BiophyloconsensusRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_range_len(s : BiophyloconsensusRange) -> Int { s.size }
+pub fn BiophyloconsensusRange::len(self : BiophyloconsensusRange) -> Int { self.size }
 
-pub fn bio_phylo_consensus_range_get(s : BiophyloconsensusRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusRange::get(self : BiophyloconsensusRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_range_set(s : BiophyloconsensusRange, i : Int, v : Double) -> BiophyloconsensusRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusRange::set(self : BiophyloconsensusRange, i : Int, v : Double) -> BiophyloconsensusRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_range_sum(s : BiophyloconsensusRange) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusRange::sum(self : BiophyloconsensusRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_range_mean(s : BiophyloconsensusRange) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusRange::mean(self : BiophyloconsensusRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_range_scale(s : BiophyloconsensusRange, f : Double) -> BiophyloconsensusRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusRange::scale(self : BiophyloconsensusRange, f : Double) -> BiophyloconsensusRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_range_add(a : BiophyloconsensusRange, b : BiophyloconsensusRange) -> BiophyloconsensusRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusRange::add(self : BiophyloconsensusRange, other : BiophyloconsensusRange) -> BiophyloconsensusRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_range_copy(s : BiophyloconsensusRange) -> BiophyloconsensusRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusRange::copy(self : BiophyloconsensusRange) -> BiophyloconsensusRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_range_fill(s : BiophyloconsensusRange, v : Double) -> BiophyloconsensusRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusRange::fill(self : BiophyloconsensusRange, v : Double) -> BiophyloconsensusRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_range_min(s : BiophyloconsensusRange) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusRange::min(self : BiophyloconsensusRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_range_max(s : BiophyloconsensusRange) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusRange::max(self : BiophyloconsensusRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_range_to_string(s : BiophyloconsensusRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusRange::to_string(self : BiophyloconsensusRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BiophyloconsensusSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_phylo_consensus_slice_make(size : Int) -> BiophyloconsensusSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_phylo_consensus_slice_len(s : BiophyloconsensusSlice) -> Int { s.size }
+pub fn BiophyloconsensusSlice::len(self : BiophyloconsensusSlice) -> Int { self.size }
 
-pub fn bio_phylo_consensus_slice_get(s : BiophyloconsensusSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BiophyloconsensusSlice::get(self : BiophyloconsensusSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_phylo_consensus_slice_set(s : BiophyloconsensusSlice, i : Int, v : Double) -> BiophyloconsensusSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BiophyloconsensusSlice::set(self : BiophyloconsensusSlice, i : Int, v : Double) -> BiophyloconsensusSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_slice_sum(s : BiophyloconsensusSlice) -> Double { @_common.sum(s.data) }
+pub fn BiophyloconsensusSlice::sum(self : BiophyloconsensusSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_phylo_consensus_slice_mean(s : BiophyloconsensusSlice) -> Double { @_common.mean(s.data) }
+pub fn BiophyloconsensusSlice::mean(self : BiophyloconsensusSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_phylo_consensus_slice_scale(s : BiophyloconsensusSlice, f : Double) -> BiophyloconsensusSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusSlice::scale(self : BiophyloconsensusSlice, f : Double) -> BiophyloconsensusSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_slice_add(a : BiophyloconsensusSlice, b : BiophyloconsensusSlice) -> BiophyloconsensusSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BiophyloconsensusSlice::add(self : BiophyloconsensusSlice, other : BiophyloconsensusSlice) -> BiophyloconsensusSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_slice_copy(s : BiophyloconsensusSlice) -> BiophyloconsensusSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusSlice::copy(self : BiophyloconsensusSlice) -> BiophyloconsensusSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_slice_fill(s : BiophyloconsensusSlice, v : Double) -> BiophyloconsensusSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BiophyloconsensusSlice::fill(self : BiophyloconsensusSlice, v : Double) -> BiophyloconsensusSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_phylo_consensus_slice_min(s : BiophyloconsensusSlice) -> Double { @_common.min(s.data) }
+pub fn BiophyloconsensusSlice::min(self : BiophyloconsensusSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_phylo_consensus_slice_max(s : BiophyloconsensusSlice) -> Double { @_common.max(s.data) }
+pub fn BiophyloconsensusSlice::max(self : BiophyloconsensusSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_phylo_consensus_slice_to_string(s : BiophyloconsensusSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BiophyloconsensusSlice::to_string(self : BiophyloconsensusSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

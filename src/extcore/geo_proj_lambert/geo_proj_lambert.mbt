@@ -351,45 +351,45 @@ pub fn geo_proj_lambert_frame_make(size : Int) -> GeoprojlambertFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_frame_len(s : GeoprojlambertFrame) -> Int { s.size }
+pub fn GeoprojlambertFrame::len(self : GeoprojlambertFrame) -> Int { self.size }
 
-pub fn geo_proj_lambert_frame_get(s : GeoprojlambertFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertFrame::get(self : GeoprojlambertFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_frame_set(s : GeoprojlambertFrame, i : Int, v : Double) -> GeoprojlambertFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertFrame::set(self : GeoprojlambertFrame, i : Int, v : Double) -> GeoprojlambertFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_frame_sum(s : GeoprojlambertFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertFrame::sum(self : GeoprojlambertFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_frame_mean(s : GeoprojlambertFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertFrame::mean(self : GeoprojlambertFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_frame_scale(s : GeoprojlambertFrame, f : Double) -> GeoprojlambertFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertFrame::scale(self : GeoprojlambertFrame, f : Double) -> GeoprojlambertFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_frame_add(a : GeoprojlambertFrame, b : GeoprojlambertFrame) -> GeoprojlambertFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertFrame::add(self : GeoprojlambertFrame, other : GeoprojlambertFrame) -> GeoprojlambertFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_frame_copy(s : GeoprojlambertFrame) -> GeoprojlambertFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertFrame::copy(self : GeoprojlambertFrame) -> GeoprojlambertFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_frame_fill(s : GeoprojlambertFrame, v : Double) -> GeoprojlambertFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertFrame::fill(self : GeoprojlambertFrame, v : Double) -> GeoprojlambertFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_frame_min(s : GeoprojlambertFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertFrame::min(self : GeoprojlambertFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_frame_max(s : GeoprojlambertFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertFrame::max(self : GeoprojlambertFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_frame_to_string(s : GeoprojlambertFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertFrame::to_string(self : GeoprojlambertFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_lambert_table_make(size : Int) -> GeoprojlambertTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_table_len(s : GeoprojlambertTable) -> Int { s.size }
+pub fn GeoprojlambertTable::len(self : GeoprojlambertTable) -> Int { self.size }
 
-pub fn geo_proj_lambert_table_get(s : GeoprojlambertTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertTable::get(self : GeoprojlambertTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_table_set(s : GeoprojlambertTable, i : Int, v : Double) -> GeoprojlambertTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertTable::set(self : GeoprojlambertTable, i : Int, v : Double) -> GeoprojlambertTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_table_sum(s : GeoprojlambertTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertTable::sum(self : GeoprojlambertTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_table_mean(s : GeoprojlambertTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertTable::mean(self : GeoprojlambertTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_table_scale(s : GeoprojlambertTable, f : Double) -> GeoprojlambertTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertTable::scale(self : GeoprojlambertTable, f : Double) -> GeoprojlambertTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_table_add(a : GeoprojlambertTable, b : GeoprojlambertTable) -> GeoprojlambertTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertTable::add(self : GeoprojlambertTable, other : GeoprojlambertTable) -> GeoprojlambertTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_table_copy(s : GeoprojlambertTable) -> GeoprojlambertTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertTable::copy(self : GeoprojlambertTable) -> GeoprojlambertTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_table_fill(s : GeoprojlambertTable, v : Double) -> GeoprojlambertTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertTable::fill(self : GeoprojlambertTable, v : Double) -> GeoprojlambertTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_table_min(s : GeoprojlambertTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertTable::min(self : GeoprojlambertTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_table_max(s : GeoprojlambertTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertTable::max(self : GeoprojlambertTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_table_to_string(s : GeoprojlambertTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertTable::to_string(self : GeoprojlambertTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_lambert_graphn_make(size : Int) -> GeoprojlambertGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_graphn_len(s : GeoprojlambertGraphN) -> Int { s.size }
+pub fn GeoprojlambertGraphN::len(self : GeoprojlambertGraphN) -> Int { self.size }
 
-pub fn geo_proj_lambert_graphn_get(s : GeoprojlambertGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertGraphN::get(self : GeoprojlambertGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_graphn_set(s : GeoprojlambertGraphN, i : Int, v : Double) -> GeoprojlambertGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertGraphN::set(self : GeoprojlambertGraphN, i : Int, v : Double) -> GeoprojlambertGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_graphn_sum(s : GeoprojlambertGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertGraphN::sum(self : GeoprojlambertGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_graphn_mean(s : GeoprojlambertGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertGraphN::mean(self : GeoprojlambertGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_graphn_scale(s : GeoprojlambertGraphN, f : Double) -> GeoprojlambertGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertGraphN::scale(self : GeoprojlambertGraphN, f : Double) -> GeoprojlambertGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_graphn_add(a : GeoprojlambertGraphN, b : GeoprojlambertGraphN) -> GeoprojlambertGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertGraphN::add(self : GeoprojlambertGraphN, other : GeoprojlambertGraphN) -> GeoprojlambertGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_graphn_copy(s : GeoprojlambertGraphN) -> GeoprojlambertGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertGraphN::copy(self : GeoprojlambertGraphN) -> GeoprojlambertGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_graphn_fill(s : GeoprojlambertGraphN, v : Double) -> GeoprojlambertGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertGraphN::fill(self : GeoprojlambertGraphN, v : Double) -> GeoprojlambertGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_graphn_min(s : GeoprojlambertGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertGraphN::min(self : GeoprojlambertGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_graphn_max(s : GeoprojlambertGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertGraphN::max(self : GeoprojlambertGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_graphn_to_string(s : GeoprojlambertGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertGraphN::to_string(self : GeoprojlambertGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_lambert_node_make(size : Int) -> GeoprojlambertNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_node_len(s : GeoprojlambertNode) -> Int { s.size }
+pub fn GeoprojlambertNode::len(self : GeoprojlambertNode) -> Int { self.size }
 
-pub fn geo_proj_lambert_node_get(s : GeoprojlambertNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertNode::get(self : GeoprojlambertNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_node_set(s : GeoprojlambertNode, i : Int, v : Double) -> GeoprojlambertNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertNode::set(self : GeoprojlambertNode, i : Int, v : Double) -> GeoprojlambertNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_node_sum(s : GeoprojlambertNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertNode::sum(self : GeoprojlambertNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_node_mean(s : GeoprojlambertNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertNode::mean(self : GeoprojlambertNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_node_scale(s : GeoprojlambertNode, f : Double) -> GeoprojlambertNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertNode::scale(self : GeoprojlambertNode, f : Double) -> GeoprojlambertNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_node_add(a : GeoprojlambertNode, b : GeoprojlambertNode) -> GeoprojlambertNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertNode::add(self : GeoprojlambertNode, other : GeoprojlambertNode) -> GeoprojlambertNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_node_copy(s : GeoprojlambertNode) -> GeoprojlambertNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertNode::copy(self : GeoprojlambertNode) -> GeoprojlambertNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_node_fill(s : GeoprojlambertNode, v : Double) -> GeoprojlambertNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertNode::fill(self : GeoprojlambertNode, v : Double) -> GeoprojlambertNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_node_min(s : GeoprojlambertNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertNode::min(self : GeoprojlambertNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_node_max(s : GeoprojlambertNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertNode::max(self : GeoprojlambertNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_node_to_string(s : GeoprojlambertNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertNode::to_string(self : GeoprojlambertNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_lambert_edge_make(size : Int) -> GeoprojlambertEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_edge_len(s : GeoprojlambertEdge) -> Int { s.size }
+pub fn GeoprojlambertEdge::len(self : GeoprojlambertEdge) -> Int { self.size }
 
-pub fn geo_proj_lambert_edge_get(s : GeoprojlambertEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertEdge::get(self : GeoprojlambertEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_edge_set(s : GeoprojlambertEdge, i : Int, v : Double) -> GeoprojlambertEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertEdge::set(self : GeoprojlambertEdge, i : Int, v : Double) -> GeoprojlambertEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_edge_sum(s : GeoprojlambertEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertEdge::sum(self : GeoprojlambertEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_edge_mean(s : GeoprojlambertEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertEdge::mean(self : GeoprojlambertEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_edge_scale(s : GeoprojlambertEdge, f : Double) -> GeoprojlambertEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertEdge::scale(self : GeoprojlambertEdge, f : Double) -> GeoprojlambertEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_edge_add(a : GeoprojlambertEdge, b : GeoprojlambertEdge) -> GeoprojlambertEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertEdge::add(self : GeoprojlambertEdge, other : GeoprojlambertEdge) -> GeoprojlambertEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_edge_copy(s : GeoprojlambertEdge) -> GeoprojlambertEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertEdge::copy(self : GeoprojlambertEdge) -> GeoprojlambertEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_edge_fill(s : GeoprojlambertEdge, v : Double) -> GeoprojlambertEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertEdge::fill(self : GeoprojlambertEdge, v : Double) -> GeoprojlambertEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_edge_min(s : GeoprojlambertEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertEdge::min(self : GeoprojlambertEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_edge_max(s : GeoprojlambertEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertEdge::max(self : GeoprojlambertEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_edge_to_string(s : GeoprojlambertEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertEdge::to_string(self : GeoprojlambertEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_lambert_path_make(size : Int) -> GeoprojlambertPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_path_len(s : GeoprojlambertPath) -> Int { s.size }
+pub fn GeoprojlambertPath::len(self : GeoprojlambertPath) -> Int { self.size }
 
-pub fn geo_proj_lambert_path_get(s : GeoprojlambertPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertPath::get(self : GeoprojlambertPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_path_set(s : GeoprojlambertPath, i : Int, v : Double) -> GeoprojlambertPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertPath::set(self : GeoprojlambertPath, i : Int, v : Double) -> GeoprojlambertPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_path_sum(s : GeoprojlambertPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertPath::sum(self : GeoprojlambertPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_path_mean(s : GeoprojlambertPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertPath::mean(self : GeoprojlambertPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_path_scale(s : GeoprojlambertPath, f : Double) -> GeoprojlambertPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertPath::scale(self : GeoprojlambertPath, f : Double) -> GeoprojlambertPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_path_add(a : GeoprojlambertPath, b : GeoprojlambertPath) -> GeoprojlambertPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertPath::add(self : GeoprojlambertPath, other : GeoprojlambertPath) -> GeoprojlambertPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_path_copy(s : GeoprojlambertPath) -> GeoprojlambertPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertPath::copy(self : GeoprojlambertPath) -> GeoprojlambertPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_path_fill(s : GeoprojlambertPath, v : Double) -> GeoprojlambertPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertPath::fill(self : GeoprojlambertPath, v : Double) -> GeoprojlambertPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_path_min(s : GeoprojlambertPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertPath::min(self : GeoprojlambertPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_path_max(s : GeoprojlambertPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertPath::max(self : GeoprojlambertPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_path_to_string(s : GeoprojlambertPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertPath::to_string(self : GeoprojlambertPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_lambert_cluster_make(size : Int) -> GeoprojlambertCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_cluster_len(s : GeoprojlambertCluster) -> Int { s.size }
+pub fn GeoprojlambertCluster::len(self : GeoprojlambertCluster) -> Int { self.size }
 
-pub fn geo_proj_lambert_cluster_get(s : GeoprojlambertCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertCluster::get(self : GeoprojlambertCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_cluster_set(s : GeoprojlambertCluster, i : Int, v : Double) -> GeoprojlambertCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertCluster::set(self : GeoprojlambertCluster, i : Int, v : Double) -> GeoprojlambertCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cluster_sum(s : GeoprojlambertCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertCluster::sum(self : GeoprojlambertCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_cluster_mean(s : GeoprojlambertCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertCluster::mean(self : GeoprojlambertCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_cluster_scale(s : GeoprojlambertCluster, f : Double) -> GeoprojlambertCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertCluster::scale(self : GeoprojlambertCluster, f : Double) -> GeoprojlambertCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cluster_add(a : GeoprojlambertCluster, b : GeoprojlambertCluster) -> GeoprojlambertCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertCluster::add(self : GeoprojlambertCluster, other : GeoprojlambertCluster) -> GeoprojlambertCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cluster_copy(s : GeoprojlambertCluster) -> GeoprojlambertCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertCluster::copy(self : GeoprojlambertCluster) -> GeoprojlambertCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cluster_fill(s : GeoprojlambertCluster, v : Double) -> GeoprojlambertCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertCluster::fill(self : GeoprojlambertCluster, v : Double) -> GeoprojlambertCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cluster_min(s : GeoprojlambertCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertCluster::min(self : GeoprojlambertCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_cluster_max(s : GeoprojlambertCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertCluster::max(self : GeoprojlambertCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_cluster_to_string(s : GeoprojlambertCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertCluster::to_string(self : GeoprojlambertCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_lambert_model_make(size : Int) -> GeoprojlambertModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_model_len(s : GeoprojlambertModel) -> Int { s.size }
+pub fn GeoprojlambertModel::len(self : GeoprojlambertModel) -> Int { self.size }
 
-pub fn geo_proj_lambert_model_get(s : GeoprojlambertModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertModel::get(self : GeoprojlambertModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_model_set(s : GeoprojlambertModel, i : Int, v : Double) -> GeoprojlambertModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertModel::set(self : GeoprojlambertModel, i : Int, v : Double) -> GeoprojlambertModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_model_sum(s : GeoprojlambertModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertModel::sum(self : GeoprojlambertModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_model_mean(s : GeoprojlambertModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertModel::mean(self : GeoprojlambertModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_model_scale(s : GeoprojlambertModel, f : Double) -> GeoprojlambertModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertModel::scale(self : GeoprojlambertModel, f : Double) -> GeoprojlambertModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_model_add(a : GeoprojlambertModel, b : GeoprojlambertModel) -> GeoprojlambertModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertModel::add(self : GeoprojlambertModel, other : GeoprojlambertModel) -> GeoprojlambertModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_model_copy(s : GeoprojlambertModel) -> GeoprojlambertModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertModel::copy(self : GeoprojlambertModel) -> GeoprojlambertModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_model_fill(s : GeoprojlambertModel, v : Double) -> GeoprojlambertModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertModel::fill(self : GeoprojlambertModel, v : Double) -> GeoprojlambertModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_model_min(s : GeoprojlambertModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertModel::min(self : GeoprojlambertModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_model_max(s : GeoprojlambertModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertModel::max(self : GeoprojlambertModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_model_to_string(s : GeoprojlambertModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertModel::to_string(self : GeoprojlambertModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_lambert_layer_make(size : Int) -> GeoprojlambertLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_layer_len(s : GeoprojlambertLayer) -> Int { s.size }
+pub fn GeoprojlambertLayer::len(self : GeoprojlambertLayer) -> Int { self.size }
 
-pub fn geo_proj_lambert_layer_get(s : GeoprojlambertLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertLayer::get(self : GeoprojlambertLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_layer_set(s : GeoprojlambertLayer, i : Int, v : Double) -> GeoprojlambertLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertLayer::set(self : GeoprojlambertLayer, i : Int, v : Double) -> GeoprojlambertLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_layer_sum(s : GeoprojlambertLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertLayer::sum(self : GeoprojlambertLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_layer_mean(s : GeoprojlambertLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertLayer::mean(self : GeoprojlambertLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_layer_scale(s : GeoprojlambertLayer, f : Double) -> GeoprojlambertLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertLayer::scale(self : GeoprojlambertLayer, f : Double) -> GeoprojlambertLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_layer_add(a : GeoprojlambertLayer, b : GeoprojlambertLayer) -> GeoprojlambertLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertLayer::add(self : GeoprojlambertLayer, other : GeoprojlambertLayer) -> GeoprojlambertLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_layer_copy(s : GeoprojlambertLayer) -> GeoprojlambertLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertLayer::copy(self : GeoprojlambertLayer) -> GeoprojlambertLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_layer_fill(s : GeoprojlambertLayer, v : Double) -> GeoprojlambertLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertLayer::fill(self : GeoprojlambertLayer, v : Double) -> GeoprojlambertLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_layer_min(s : GeoprojlambertLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertLayer::min(self : GeoprojlambertLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_layer_max(s : GeoprojlambertLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertLayer::max(self : GeoprojlambertLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_layer_to_string(s : GeoprojlambertLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertLayer::to_string(self : GeoprojlambertLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_lambert_buffer_make(size : Int) -> GeoprojlambertBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_buffer_len(s : GeoprojlambertBuffer) -> Int { s.size }
+pub fn GeoprojlambertBuffer::len(self : GeoprojlambertBuffer) -> Int { self.size }
 
-pub fn geo_proj_lambert_buffer_get(s : GeoprojlambertBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertBuffer::get(self : GeoprojlambertBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_buffer_set(s : GeoprojlambertBuffer, i : Int, v : Double) -> GeoprojlambertBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertBuffer::set(self : GeoprojlambertBuffer, i : Int, v : Double) -> GeoprojlambertBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_buffer_sum(s : GeoprojlambertBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertBuffer::sum(self : GeoprojlambertBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_buffer_mean(s : GeoprojlambertBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertBuffer::mean(self : GeoprojlambertBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_buffer_scale(s : GeoprojlambertBuffer, f : Double) -> GeoprojlambertBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertBuffer::scale(self : GeoprojlambertBuffer, f : Double) -> GeoprojlambertBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_buffer_add(a : GeoprojlambertBuffer, b : GeoprojlambertBuffer) -> GeoprojlambertBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertBuffer::add(self : GeoprojlambertBuffer, other : GeoprojlambertBuffer) -> GeoprojlambertBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_buffer_copy(s : GeoprojlambertBuffer) -> GeoprojlambertBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertBuffer::copy(self : GeoprojlambertBuffer) -> GeoprojlambertBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_buffer_fill(s : GeoprojlambertBuffer, v : Double) -> GeoprojlambertBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertBuffer::fill(self : GeoprojlambertBuffer, v : Double) -> GeoprojlambertBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_buffer_min(s : GeoprojlambertBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertBuffer::min(self : GeoprojlambertBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_buffer_max(s : GeoprojlambertBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertBuffer::max(self : GeoprojlambertBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_buffer_to_string(s : GeoprojlambertBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertBuffer::to_string(self : GeoprojlambertBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_lambert_cursor_make(size : Int) -> GeoprojlambertCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_cursor_len(s : GeoprojlambertCursor) -> Int { s.size }
+pub fn GeoprojlambertCursor::len(self : GeoprojlambertCursor) -> Int { self.size }
 
-pub fn geo_proj_lambert_cursor_get(s : GeoprojlambertCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertCursor::get(self : GeoprojlambertCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_cursor_set(s : GeoprojlambertCursor, i : Int, v : Double) -> GeoprojlambertCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertCursor::set(self : GeoprojlambertCursor, i : Int, v : Double) -> GeoprojlambertCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cursor_sum(s : GeoprojlambertCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertCursor::sum(self : GeoprojlambertCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_cursor_mean(s : GeoprojlambertCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertCursor::mean(self : GeoprojlambertCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_cursor_scale(s : GeoprojlambertCursor, f : Double) -> GeoprojlambertCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertCursor::scale(self : GeoprojlambertCursor, f : Double) -> GeoprojlambertCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cursor_add(a : GeoprojlambertCursor, b : GeoprojlambertCursor) -> GeoprojlambertCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertCursor::add(self : GeoprojlambertCursor, other : GeoprojlambertCursor) -> GeoprojlambertCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cursor_copy(s : GeoprojlambertCursor) -> GeoprojlambertCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertCursor::copy(self : GeoprojlambertCursor) -> GeoprojlambertCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cursor_fill(s : GeoprojlambertCursor, v : Double) -> GeoprojlambertCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertCursor::fill(self : GeoprojlambertCursor, v : Double) -> GeoprojlambertCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_cursor_min(s : GeoprojlambertCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertCursor::min(self : GeoprojlambertCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_cursor_max(s : GeoprojlambertCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertCursor::max(self : GeoprojlambertCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_cursor_to_string(s : GeoprojlambertCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertCursor::to_string(self : GeoprojlambertCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertView {
@@ -912,45 +912,45 @@ pub fn geo_proj_lambert_view_make(size : Int) -> GeoprojlambertView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_view_len(s : GeoprojlambertView) -> Int { s.size }
+pub fn GeoprojlambertView::len(self : GeoprojlambertView) -> Int { self.size }
 
-pub fn geo_proj_lambert_view_get(s : GeoprojlambertView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertView::get(self : GeoprojlambertView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_view_set(s : GeoprojlambertView, i : Int, v : Double) -> GeoprojlambertView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertView::set(self : GeoprojlambertView, i : Int, v : Double) -> GeoprojlambertView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_view_sum(s : GeoprojlambertView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertView::sum(self : GeoprojlambertView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_view_mean(s : GeoprojlambertView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertView::mean(self : GeoprojlambertView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_view_scale(s : GeoprojlambertView, f : Double) -> GeoprojlambertView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertView::scale(self : GeoprojlambertView, f : Double) -> GeoprojlambertView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_view_add(a : GeoprojlambertView, b : GeoprojlambertView) -> GeoprojlambertView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertView::add(self : GeoprojlambertView, other : GeoprojlambertView) -> GeoprojlambertView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_view_copy(s : GeoprojlambertView) -> GeoprojlambertView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertView::copy(self : GeoprojlambertView) -> GeoprojlambertView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_view_fill(s : GeoprojlambertView, v : Double) -> GeoprojlambertView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertView::fill(self : GeoprojlambertView, v : Double) -> GeoprojlambertView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_view_min(s : GeoprojlambertView) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertView::min(self : GeoprojlambertView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_view_max(s : GeoprojlambertView) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertView::max(self : GeoprojlambertView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_view_to_string(s : GeoprojlambertView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertView::to_string(self : GeoprojlambertView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_lambert_range_make(size : Int) -> GeoprojlambertRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_range_len(s : GeoprojlambertRange) -> Int { s.size }
+pub fn GeoprojlambertRange::len(self : GeoprojlambertRange) -> Int { self.size }
 
-pub fn geo_proj_lambert_range_get(s : GeoprojlambertRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertRange::get(self : GeoprojlambertRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_range_set(s : GeoprojlambertRange, i : Int, v : Double) -> GeoprojlambertRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertRange::set(self : GeoprojlambertRange, i : Int, v : Double) -> GeoprojlambertRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_range_sum(s : GeoprojlambertRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertRange::sum(self : GeoprojlambertRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_range_mean(s : GeoprojlambertRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertRange::mean(self : GeoprojlambertRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_range_scale(s : GeoprojlambertRange, f : Double) -> GeoprojlambertRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertRange::scale(self : GeoprojlambertRange, f : Double) -> GeoprojlambertRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_range_add(a : GeoprojlambertRange, b : GeoprojlambertRange) -> GeoprojlambertRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertRange::add(self : GeoprojlambertRange, other : GeoprojlambertRange) -> GeoprojlambertRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_range_copy(s : GeoprojlambertRange) -> GeoprojlambertRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertRange::copy(self : GeoprojlambertRange) -> GeoprojlambertRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_range_fill(s : GeoprojlambertRange, v : Double) -> GeoprojlambertRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertRange::fill(self : GeoprojlambertRange, v : Double) -> GeoprojlambertRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_range_min(s : GeoprojlambertRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertRange::min(self : GeoprojlambertRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_range_max(s : GeoprojlambertRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertRange::max(self : GeoprojlambertRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_range_to_string(s : GeoprojlambertRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertRange::to_string(self : GeoprojlambertRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojlambertSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_lambert_slice_make(size : Int) -> GeoprojlambertSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_lambert_slice_len(s : GeoprojlambertSlice) -> Int { s.size }
+pub fn GeoprojlambertSlice::len(self : GeoprojlambertSlice) -> Int { self.size }
 
-pub fn geo_proj_lambert_slice_get(s : GeoprojlambertSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojlambertSlice::get(self : GeoprojlambertSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_lambert_slice_set(s : GeoprojlambertSlice, i : Int, v : Double) -> GeoprojlambertSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojlambertSlice::set(self : GeoprojlambertSlice, i : Int, v : Double) -> GeoprojlambertSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_slice_sum(s : GeoprojlambertSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojlambertSlice::sum(self : GeoprojlambertSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_lambert_slice_mean(s : GeoprojlambertSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojlambertSlice::mean(self : GeoprojlambertSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_lambert_slice_scale(s : GeoprojlambertSlice, f : Double) -> GeoprojlambertSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojlambertSlice::scale(self : GeoprojlambertSlice, f : Double) -> GeoprojlambertSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_slice_add(a : GeoprojlambertSlice, b : GeoprojlambertSlice) -> GeoprojlambertSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojlambertSlice::add(self : GeoprojlambertSlice, other : GeoprojlambertSlice) -> GeoprojlambertSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_slice_copy(s : GeoprojlambertSlice) -> GeoprojlambertSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojlambertSlice::copy(self : GeoprojlambertSlice) -> GeoprojlambertSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_slice_fill(s : GeoprojlambertSlice, v : Double) -> GeoprojlambertSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojlambertSlice::fill(self : GeoprojlambertSlice, v : Double) -> GeoprojlambertSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_lambert_slice_min(s : GeoprojlambertSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojlambertSlice::min(self : GeoprojlambertSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_lambert_slice_max(s : GeoprojlambertSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojlambertSlice::max(self : GeoprojlambertSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_lambert_slice_to_string(s : GeoprojlambertSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojlambertSlice::to_string(self : GeoprojlambertSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

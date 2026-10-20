@@ -351,45 +351,45 @@ pub fn math_approx_poly_frame_make(size : Int) -> MathapproxpolyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_frame_len(s : MathapproxpolyFrame) -> Int { s.size }
+pub fn MathapproxpolyFrame::len(self : MathapproxpolyFrame) -> Int { self.size }
 
-pub fn math_approx_poly_frame_get(s : MathapproxpolyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyFrame::get(self : MathapproxpolyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_frame_set(s : MathapproxpolyFrame, i : Int, v : Double) -> MathapproxpolyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyFrame::set(self : MathapproxpolyFrame, i : Int, v : Double) -> MathapproxpolyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_frame_sum(s : MathapproxpolyFrame) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyFrame::sum(self : MathapproxpolyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_frame_mean(s : MathapproxpolyFrame) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyFrame::mean(self : MathapproxpolyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_frame_scale(s : MathapproxpolyFrame, f : Double) -> MathapproxpolyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyFrame::scale(self : MathapproxpolyFrame, f : Double) -> MathapproxpolyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_frame_add(a : MathapproxpolyFrame, b : MathapproxpolyFrame) -> MathapproxpolyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyFrame::add(self : MathapproxpolyFrame, other : MathapproxpolyFrame) -> MathapproxpolyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_frame_copy(s : MathapproxpolyFrame) -> MathapproxpolyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyFrame::copy(self : MathapproxpolyFrame) -> MathapproxpolyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_frame_fill(s : MathapproxpolyFrame, v : Double) -> MathapproxpolyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyFrame::fill(self : MathapproxpolyFrame, v : Double) -> MathapproxpolyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_frame_min(s : MathapproxpolyFrame) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyFrame::min(self : MathapproxpolyFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_frame_max(s : MathapproxpolyFrame) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyFrame::max(self : MathapproxpolyFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_frame_to_string(s : MathapproxpolyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyFrame::to_string(self : MathapproxpolyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyTable {
@@ -402,45 +402,45 @@ pub fn math_approx_poly_table_make(size : Int) -> MathapproxpolyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_table_len(s : MathapproxpolyTable) -> Int { s.size }
+pub fn MathapproxpolyTable::len(self : MathapproxpolyTable) -> Int { self.size }
 
-pub fn math_approx_poly_table_get(s : MathapproxpolyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyTable::get(self : MathapproxpolyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_table_set(s : MathapproxpolyTable, i : Int, v : Double) -> MathapproxpolyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyTable::set(self : MathapproxpolyTable, i : Int, v : Double) -> MathapproxpolyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_table_sum(s : MathapproxpolyTable) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyTable::sum(self : MathapproxpolyTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_table_mean(s : MathapproxpolyTable) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyTable::mean(self : MathapproxpolyTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_table_scale(s : MathapproxpolyTable, f : Double) -> MathapproxpolyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyTable::scale(self : MathapproxpolyTable, f : Double) -> MathapproxpolyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_table_add(a : MathapproxpolyTable, b : MathapproxpolyTable) -> MathapproxpolyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyTable::add(self : MathapproxpolyTable, other : MathapproxpolyTable) -> MathapproxpolyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_table_copy(s : MathapproxpolyTable) -> MathapproxpolyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyTable::copy(self : MathapproxpolyTable) -> MathapproxpolyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_table_fill(s : MathapproxpolyTable, v : Double) -> MathapproxpolyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyTable::fill(self : MathapproxpolyTable, v : Double) -> MathapproxpolyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_table_min(s : MathapproxpolyTable) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyTable::min(self : MathapproxpolyTable) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_table_max(s : MathapproxpolyTable) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyTable::max(self : MathapproxpolyTable) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_table_to_string(s : MathapproxpolyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyTable::to_string(self : MathapproxpolyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyGraphN {
@@ -453,45 +453,45 @@ pub fn math_approx_poly_graphn_make(size : Int) -> MathapproxpolyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_graphn_len(s : MathapproxpolyGraphN) -> Int { s.size }
+pub fn MathapproxpolyGraphN::len(self : MathapproxpolyGraphN) -> Int { self.size }
 
-pub fn math_approx_poly_graphn_get(s : MathapproxpolyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyGraphN::get(self : MathapproxpolyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_graphn_set(s : MathapproxpolyGraphN, i : Int, v : Double) -> MathapproxpolyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyGraphN::set(self : MathapproxpolyGraphN, i : Int, v : Double) -> MathapproxpolyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_graphn_sum(s : MathapproxpolyGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyGraphN::sum(self : MathapproxpolyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_graphn_mean(s : MathapproxpolyGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyGraphN::mean(self : MathapproxpolyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_graphn_scale(s : MathapproxpolyGraphN, f : Double) -> MathapproxpolyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyGraphN::scale(self : MathapproxpolyGraphN, f : Double) -> MathapproxpolyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_graphn_add(a : MathapproxpolyGraphN, b : MathapproxpolyGraphN) -> MathapproxpolyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyGraphN::add(self : MathapproxpolyGraphN, other : MathapproxpolyGraphN) -> MathapproxpolyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_graphn_copy(s : MathapproxpolyGraphN) -> MathapproxpolyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyGraphN::copy(self : MathapproxpolyGraphN) -> MathapproxpolyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_graphn_fill(s : MathapproxpolyGraphN, v : Double) -> MathapproxpolyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyGraphN::fill(self : MathapproxpolyGraphN, v : Double) -> MathapproxpolyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_graphn_min(s : MathapproxpolyGraphN) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyGraphN::min(self : MathapproxpolyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_graphn_max(s : MathapproxpolyGraphN) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyGraphN::max(self : MathapproxpolyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_graphn_to_string(s : MathapproxpolyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyGraphN::to_string(self : MathapproxpolyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyNode {
@@ -504,45 +504,45 @@ pub fn math_approx_poly_node_make(size : Int) -> MathapproxpolyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_node_len(s : MathapproxpolyNode) -> Int { s.size }
+pub fn MathapproxpolyNode::len(self : MathapproxpolyNode) -> Int { self.size }
 
-pub fn math_approx_poly_node_get(s : MathapproxpolyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyNode::get(self : MathapproxpolyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_node_set(s : MathapproxpolyNode, i : Int, v : Double) -> MathapproxpolyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyNode::set(self : MathapproxpolyNode, i : Int, v : Double) -> MathapproxpolyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_node_sum(s : MathapproxpolyNode) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyNode::sum(self : MathapproxpolyNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_node_mean(s : MathapproxpolyNode) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyNode::mean(self : MathapproxpolyNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_node_scale(s : MathapproxpolyNode, f : Double) -> MathapproxpolyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyNode::scale(self : MathapproxpolyNode, f : Double) -> MathapproxpolyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_node_add(a : MathapproxpolyNode, b : MathapproxpolyNode) -> MathapproxpolyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyNode::add(self : MathapproxpolyNode, other : MathapproxpolyNode) -> MathapproxpolyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_node_copy(s : MathapproxpolyNode) -> MathapproxpolyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyNode::copy(self : MathapproxpolyNode) -> MathapproxpolyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_node_fill(s : MathapproxpolyNode, v : Double) -> MathapproxpolyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyNode::fill(self : MathapproxpolyNode, v : Double) -> MathapproxpolyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_node_min(s : MathapproxpolyNode) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyNode::min(self : MathapproxpolyNode) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_node_max(s : MathapproxpolyNode) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyNode::max(self : MathapproxpolyNode) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_node_to_string(s : MathapproxpolyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyNode::to_string(self : MathapproxpolyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyEdge {
@@ -555,45 +555,45 @@ pub fn math_approx_poly_edge_make(size : Int) -> MathapproxpolyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_edge_len(s : MathapproxpolyEdge) -> Int { s.size }
+pub fn MathapproxpolyEdge::len(self : MathapproxpolyEdge) -> Int { self.size }
 
-pub fn math_approx_poly_edge_get(s : MathapproxpolyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyEdge::get(self : MathapproxpolyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_edge_set(s : MathapproxpolyEdge, i : Int, v : Double) -> MathapproxpolyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyEdge::set(self : MathapproxpolyEdge, i : Int, v : Double) -> MathapproxpolyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_edge_sum(s : MathapproxpolyEdge) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyEdge::sum(self : MathapproxpolyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_edge_mean(s : MathapproxpolyEdge) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyEdge::mean(self : MathapproxpolyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_edge_scale(s : MathapproxpolyEdge, f : Double) -> MathapproxpolyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyEdge::scale(self : MathapproxpolyEdge, f : Double) -> MathapproxpolyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_edge_add(a : MathapproxpolyEdge, b : MathapproxpolyEdge) -> MathapproxpolyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyEdge::add(self : MathapproxpolyEdge, other : MathapproxpolyEdge) -> MathapproxpolyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_edge_copy(s : MathapproxpolyEdge) -> MathapproxpolyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyEdge::copy(self : MathapproxpolyEdge) -> MathapproxpolyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_edge_fill(s : MathapproxpolyEdge, v : Double) -> MathapproxpolyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyEdge::fill(self : MathapproxpolyEdge, v : Double) -> MathapproxpolyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_edge_min(s : MathapproxpolyEdge) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyEdge::min(self : MathapproxpolyEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_edge_max(s : MathapproxpolyEdge) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyEdge::max(self : MathapproxpolyEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_edge_to_string(s : MathapproxpolyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyEdge::to_string(self : MathapproxpolyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyPath {
@@ -606,45 +606,45 @@ pub fn math_approx_poly_path_make(size : Int) -> MathapproxpolyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_path_len(s : MathapproxpolyPath) -> Int { s.size }
+pub fn MathapproxpolyPath::len(self : MathapproxpolyPath) -> Int { self.size }
 
-pub fn math_approx_poly_path_get(s : MathapproxpolyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyPath::get(self : MathapproxpolyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_path_set(s : MathapproxpolyPath, i : Int, v : Double) -> MathapproxpolyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyPath::set(self : MathapproxpolyPath, i : Int, v : Double) -> MathapproxpolyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_path_sum(s : MathapproxpolyPath) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyPath::sum(self : MathapproxpolyPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_path_mean(s : MathapproxpolyPath) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyPath::mean(self : MathapproxpolyPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_path_scale(s : MathapproxpolyPath, f : Double) -> MathapproxpolyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyPath::scale(self : MathapproxpolyPath, f : Double) -> MathapproxpolyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_path_add(a : MathapproxpolyPath, b : MathapproxpolyPath) -> MathapproxpolyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyPath::add(self : MathapproxpolyPath, other : MathapproxpolyPath) -> MathapproxpolyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_path_copy(s : MathapproxpolyPath) -> MathapproxpolyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyPath::copy(self : MathapproxpolyPath) -> MathapproxpolyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_path_fill(s : MathapproxpolyPath, v : Double) -> MathapproxpolyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyPath::fill(self : MathapproxpolyPath, v : Double) -> MathapproxpolyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_path_min(s : MathapproxpolyPath) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyPath::min(self : MathapproxpolyPath) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_path_max(s : MathapproxpolyPath) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyPath::max(self : MathapproxpolyPath) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_path_to_string(s : MathapproxpolyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyPath::to_string(self : MathapproxpolyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyCluster {
@@ -657,45 +657,45 @@ pub fn math_approx_poly_cluster_make(size : Int) -> MathapproxpolyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_cluster_len(s : MathapproxpolyCluster) -> Int { s.size }
+pub fn MathapproxpolyCluster::len(self : MathapproxpolyCluster) -> Int { self.size }
 
-pub fn math_approx_poly_cluster_get(s : MathapproxpolyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyCluster::get(self : MathapproxpolyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_cluster_set(s : MathapproxpolyCluster, i : Int, v : Double) -> MathapproxpolyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyCluster::set(self : MathapproxpolyCluster, i : Int, v : Double) -> MathapproxpolyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cluster_sum(s : MathapproxpolyCluster) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyCluster::sum(self : MathapproxpolyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_cluster_mean(s : MathapproxpolyCluster) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyCluster::mean(self : MathapproxpolyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_cluster_scale(s : MathapproxpolyCluster, f : Double) -> MathapproxpolyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyCluster::scale(self : MathapproxpolyCluster, f : Double) -> MathapproxpolyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cluster_add(a : MathapproxpolyCluster, b : MathapproxpolyCluster) -> MathapproxpolyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyCluster::add(self : MathapproxpolyCluster, other : MathapproxpolyCluster) -> MathapproxpolyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_cluster_copy(s : MathapproxpolyCluster) -> MathapproxpolyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyCluster::copy(self : MathapproxpolyCluster) -> MathapproxpolyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cluster_fill(s : MathapproxpolyCluster, v : Double) -> MathapproxpolyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyCluster::fill(self : MathapproxpolyCluster, v : Double) -> MathapproxpolyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cluster_min(s : MathapproxpolyCluster) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyCluster::min(self : MathapproxpolyCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_cluster_max(s : MathapproxpolyCluster) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyCluster::max(self : MathapproxpolyCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_cluster_to_string(s : MathapproxpolyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyCluster::to_string(self : MathapproxpolyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyModel {
@@ -708,45 +708,45 @@ pub fn math_approx_poly_model_make(size : Int) -> MathapproxpolyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_model_len(s : MathapproxpolyModel) -> Int { s.size }
+pub fn MathapproxpolyModel::len(self : MathapproxpolyModel) -> Int { self.size }
 
-pub fn math_approx_poly_model_get(s : MathapproxpolyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyModel::get(self : MathapproxpolyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_model_set(s : MathapproxpolyModel, i : Int, v : Double) -> MathapproxpolyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyModel::set(self : MathapproxpolyModel, i : Int, v : Double) -> MathapproxpolyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_model_sum(s : MathapproxpolyModel) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyModel::sum(self : MathapproxpolyModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_model_mean(s : MathapproxpolyModel) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyModel::mean(self : MathapproxpolyModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_model_scale(s : MathapproxpolyModel, f : Double) -> MathapproxpolyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyModel::scale(self : MathapproxpolyModel, f : Double) -> MathapproxpolyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_model_add(a : MathapproxpolyModel, b : MathapproxpolyModel) -> MathapproxpolyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyModel::add(self : MathapproxpolyModel, other : MathapproxpolyModel) -> MathapproxpolyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_model_copy(s : MathapproxpolyModel) -> MathapproxpolyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyModel::copy(self : MathapproxpolyModel) -> MathapproxpolyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_model_fill(s : MathapproxpolyModel, v : Double) -> MathapproxpolyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyModel::fill(self : MathapproxpolyModel, v : Double) -> MathapproxpolyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_model_min(s : MathapproxpolyModel) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyModel::min(self : MathapproxpolyModel) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_model_max(s : MathapproxpolyModel) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyModel::max(self : MathapproxpolyModel) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_model_to_string(s : MathapproxpolyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyModel::to_string(self : MathapproxpolyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyLayer {
@@ -759,45 +759,45 @@ pub fn math_approx_poly_layer_make(size : Int) -> MathapproxpolyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_layer_len(s : MathapproxpolyLayer) -> Int { s.size }
+pub fn MathapproxpolyLayer::len(self : MathapproxpolyLayer) -> Int { self.size }
 
-pub fn math_approx_poly_layer_get(s : MathapproxpolyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyLayer::get(self : MathapproxpolyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_layer_set(s : MathapproxpolyLayer, i : Int, v : Double) -> MathapproxpolyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyLayer::set(self : MathapproxpolyLayer, i : Int, v : Double) -> MathapproxpolyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_layer_sum(s : MathapproxpolyLayer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyLayer::sum(self : MathapproxpolyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_layer_mean(s : MathapproxpolyLayer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyLayer::mean(self : MathapproxpolyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_layer_scale(s : MathapproxpolyLayer, f : Double) -> MathapproxpolyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyLayer::scale(self : MathapproxpolyLayer, f : Double) -> MathapproxpolyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_layer_add(a : MathapproxpolyLayer, b : MathapproxpolyLayer) -> MathapproxpolyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyLayer::add(self : MathapproxpolyLayer, other : MathapproxpolyLayer) -> MathapproxpolyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_layer_copy(s : MathapproxpolyLayer) -> MathapproxpolyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyLayer::copy(self : MathapproxpolyLayer) -> MathapproxpolyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_layer_fill(s : MathapproxpolyLayer, v : Double) -> MathapproxpolyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyLayer::fill(self : MathapproxpolyLayer, v : Double) -> MathapproxpolyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_layer_min(s : MathapproxpolyLayer) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyLayer::min(self : MathapproxpolyLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_layer_max(s : MathapproxpolyLayer) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyLayer::max(self : MathapproxpolyLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_layer_to_string(s : MathapproxpolyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyLayer::to_string(self : MathapproxpolyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyBuffer {
@@ -810,45 +810,45 @@ pub fn math_approx_poly_buffer_make(size : Int) -> MathapproxpolyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_buffer_len(s : MathapproxpolyBuffer) -> Int { s.size }
+pub fn MathapproxpolyBuffer::len(self : MathapproxpolyBuffer) -> Int { self.size }
 
-pub fn math_approx_poly_buffer_get(s : MathapproxpolyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyBuffer::get(self : MathapproxpolyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_buffer_set(s : MathapproxpolyBuffer, i : Int, v : Double) -> MathapproxpolyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyBuffer::set(self : MathapproxpolyBuffer, i : Int, v : Double) -> MathapproxpolyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_buffer_sum(s : MathapproxpolyBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyBuffer::sum(self : MathapproxpolyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_buffer_mean(s : MathapproxpolyBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyBuffer::mean(self : MathapproxpolyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_buffer_scale(s : MathapproxpolyBuffer, f : Double) -> MathapproxpolyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyBuffer::scale(self : MathapproxpolyBuffer, f : Double) -> MathapproxpolyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_buffer_add(a : MathapproxpolyBuffer, b : MathapproxpolyBuffer) -> MathapproxpolyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyBuffer::add(self : MathapproxpolyBuffer, other : MathapproxpolyBuffer) -> MathapproxpolyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_buffer_copy(s : MathapproxpolyBuffer) -> MathapproxpolyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyBuffer::copy(self : MathapproxpolyBuffer) -> MathapproxpolyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_buffer_fill(s : MathapproxpolyBuffer, v : Double) -> MathapproxpolyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyBuffer::fill(self : MathapproxpolyBuffer, v : Double) -> MathapproxpolyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_buffer_min(s : MathapproxpolyBuffer) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyBuffer::min(self : MathapproxpolyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_buffer_max(s : MathapproxpolyBuffer) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyBuffer::max(self : MathapproxpolyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_buffer_to_string(s : MathapproxpolyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyBuffer::to_string(self : MathapproxpolyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyCursor {
@@ -861,45 +861,45 @@ pub fn math_approx_poly_cursor_make(size : Int) -> MathapproxpolyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_cursor_len(s : MathapproxpolyCursor) -> Int { s.size }
+pub fn MathapproxpolyCursor::len(self : MathapproxpolyCursor) -> Int { self.size }
 
-pub fn math_approx_poly_cursor_get(s : MathapproxpolyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyCursor::get(self : MathapproxpolyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_cursor_set(s : MathapproxpolyCursor, i : Int, v : Double) -> MathapproxpolyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyCursor::set(self : MathapproxpolyCursor, i : Int, v : Double) -> MathapproxpolyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cursor_sum(s : MathapproxpolyCursor) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyCursor::sum(self : MathapproxpolyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_cursor_mean(s : MathapproxpolyCursor) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyCursor::mean(self : MathapproxpolyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_cursor_scale(s : MathapproxpolyCursor, f : Double) -> MathapproxpolyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyCursor::scale(self : MathapproxpolyCursor, f : Double) -> MathapproxpolyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cursor_add(a : MathapproxpolyCursor, b : MathapproxpolyCursor) -> MathapproxpolyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyCursor::add(self : MathapproxpolyCursor, other : MathapproxpolyCursor) -> MathapproxpolyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_cursor_copy(s : MathapproxpolyCursor) -> MathapproxpolyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyCursor::copy(self : MathapproxpolyCursor) -> MathapproxpolyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cursor_fill(s : MathapproxpolyCursor, v : Double) -> MathapproxpolyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyCursor::fill(self : MathapproxpolyCursor, v : Double) -> MathapproxpolyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_cursor_min(s : MathapproxpolyCursor) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyCursor::min(self : MathapproxpolyCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_cursor_max(s : MathapproxpolyCursor) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyCursor::max(self : MathapproxpolyCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_cursor_to_string(s : MathapproxpolyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyCursor::to_string(self : MathapproxpolyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyView {
@@ -912,45 +912,45 @@ pub fn math_approx_poly_view_make(size : Int) -> MathapproxpolyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_view_len(s : MathapproxpolyView) -> Int { s.size }
+pub fn MathapproxpolyView::len(self : MathapproxpolyView) -> Int { self.size }
 
-pub fn math_approx_poly_view_get(s : MathapproxpolyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyView::get(self : MathapproxpolyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_view_set(s : MathapproxpolyView, i : Int, v : Double) -> MathapproxpolyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyView::set(self : MathapproxpolyView, i : Int, v : Double) -> MathapproxpolyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_view_sum(s : MathapproxpolyView) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyView::sum(self : MathapproxpolyView) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_view_mean(s : MathapproxpolyView) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyView::mean(self : MathapproxpolyView) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_view_scale(s : MathapproxpolyView, f : Double) -> MathapproxpolyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyView::scale(self : MathapproxpolyView, f : Double) -> MathapproxpolyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_view_add(a : MathapproxpolyView, b : MathapproxpolyView) -> MathapproxpolyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyView::add(self : MathapproxpolyView, other : MathapproxpolyView) -> MathapproxpolyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_view_copy(s : MathapproxpolyView) -> MathapproxpolyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyView::copy(self : MathapproxpolyView) -> MathapproxpolyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_view_fill(s : MathapproxpolyView, v : Double) -> MathapproxpolyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyView::fill(self : MathapproxpolyView, v : Double) -> MathapproxpolyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_view_min(s : MathapproxpolyView) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyView::min(self : MathapproxpolyView) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_view_max(s : MathapproxpolyView) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyView::max(self : MathapproxpolyView) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_view_to_string(s : MathapproxpolyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyView::to_string(self : MathapproxpolyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolyRange {
@@ -963,45 +963,45 @@ pub fn math_approx_poly_range_make(size : Int) -> MathapproxpolyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_range_len(s : MathapproxpolyRange) -> Int { s.size }
+pub fn MathapproxpolyRange::len(self : MathapproxpolyRange) -> Int { self.size }
 
-pub fn math_approx_poly_range_get(s : MathapproxpolyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolyRange::get(self : MathapproxpolyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_range_set(s : MathapproxpolyRange, i : Int, v : Double) -> MathapproxpolyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolyRange::set(self : MathapproxpolyRange, i : Int, v : Double) -> MathapproxpolyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_range_sum(s : MathapproxpolyRange) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolyRange::sum(self : MathapproxpolyRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_range_mean(s : MathapproxpolyRange) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolyRange::mean(self : MathapproxpolyRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_range_scale(s : MathapproxpolyRange, f : Double) -> MathapproxpolyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolyRange::scale(self : MathapproxpolyRange, f : Double) -> MathapproxpolyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_range_add(a : MathapproxpolyRange, b : MathapproxpolyRange) -> MathapproxpolyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolyRange::add(self : MathapproxpolyRange, other : MathapproxpolyRange) -> MathapproxpolyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_range_copy(s : MathapproxpolyRange) -> MathapproxpolyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolyRange::copy(self : MathapproxpolyRange) -> MathapproxpolyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_range_fill(s : MathapproxpolyRange, v : Double) -> MathapproxpolyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolyRange::fill(self : MathapproxpolyRange, v : Double) -> MathapproxpolyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_range_min(s : MathapproxpolyRange) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolyRange::min(self : MathapproxpolyRange) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_range_max(s : MathapproxpolyRange) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolyRange::max(self : MathapproxpolyRange) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_range_to_string(s : MathapproxpolyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolyRange::to_string(self : MathapproxpolyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathapproxpolySlice {
@@ -1014,44 +1014,44 @@ pub fn math_approx_poly_slice_make(size : Int) -> MathapproxpolySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_approx_poly_slice_len(s : MathapproxpolySlice) -> Int { s.size }
+pub fn MathapproxpolySlice::len(self : MathapproxpolySlice) -> Int { self.size }
 
-pub fn math_approx_poly_slice_get(s : MathapproxpolySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathapproxpolySlice::get(self : MathapproxpolySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_approx_poly_slice_set(s : MathapproxpolySlice, i : Int, v : Double) -> MathapproxpolySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathapproxpolySlice::set(self : MathapproxpolySlice, i : Int, v : Double) -> MathapproxpolySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_slice_sum(s : MathapproxpolySlice) -> Double { @_common.sum(s.data) }
+pub fn MathapproxpolySlice::sum(self : MathapproxpolySlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_approx_poly_slice_mean(s : MathapproxpolySlice) -> Double { @_common.mean(s.data) }
+pub fn MathapproxpolySlice::mean(self : MathapproxpolySlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_approx_poly_slice_scale(s : MathapproxpolySlice, f : Double) -> MathapproxpolySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathapproxpolySlice::scale(self : MathapproxpolySlice, f : Double) -> MathapproxpolySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_slice_add(a : MathapproxpolySlice, b : MathapproxpolySlice) -> MathapproxpolySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathapproxpolySlice::add(self : MathapproxpolySlice, other : MathapproxpolySlice) -> MathapproxpolySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_approx_poly_slice_copy(s : MathapproxpolySlice) -> MathapproxpolySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathapproxpolySlice::copy(self : MathapproxpolySlice) -> MathapproxpolySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_slice_fill(s : MathapproxpolySlice, v : Double) -> MathapproxpolySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathapproxpolySlice::fill(self : MathapproxpolySlice, v : Double) -> MathapproxpolySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_approx_poly_slice_min(s : MathapproxpolySlice) -> Double { @_common.min(s.data) }
+pub fn MathapproxpolySlice::min(self : MathapproxpolySlice) -> Double { @_common.min(self.data) }
 
-pub fn math_approx_poly_slice_max(s : MathapproxpolySlice) -> Double { @_common.max(s.data) }
+pub fn MathapproxpolySlice::max(self : MathapproxpolySlice) -> Double { @_common.max(self.data) }
 
-pub fn math_approx_poly_slice_to_string(s : MathapproxpolySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathapproxpolySlice::to_string(self : MathapproxpolySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

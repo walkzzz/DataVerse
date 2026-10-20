@@ -351,45 +351,45 @@ pub fn math_quaternion_frame_make(size : Int) -> MathquaternionFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_frame_len(s : MathquaternionFrame) -> Int { s.size }
+pub fn MathquaternionFrame::len(self : MathquaternionFrame) -> Int { self.size }
 
-pub fn math_quaternion_frame_get(s : MathquaternionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionFrame::get(self : MathquaternionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_frame_set(s : MathquaternionFrame, i : Int, v : Double) -> MathquaternionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionFrame::set(self : MathquaternionFrame, i : Int, v : Double) -> MathquaternionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_frame_sum(s : MathquaternionFrame) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionFrame::sum(self : MathquaternionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_frame_mean(s : MathquaternionFrame) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionFrame::mean(self : MathquaternionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_frame_scale(s : MathquaternionFrame, f : Double) -> MathquaternionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionFrame::scale(self : MathquaternionFrame, f : Double) -> MathquaternionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_frame_add(a : MathquaternionFrame, b : MathquaternionFrame) -> MathquaternionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionFrame::add(self : MathquaternionFrame, other : MathquaternionFrame) -> MathquaternionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_frame_copy(s : MathquaternionFrame) -> MathquaternionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionFrame::copy(self : MathquaternionFrame) -> MathquaternionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_frame_fill(s : MathquaternionFrame, v : Double) -> MathquaternionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionFrame::fill(self : MathquaternionFrame, v : Double) -> MathquaternionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_frame_min(s : MathquaternionFrame) -> Double { @_common.min(s.data) }
+pub fn MathquaternionFrame::min(self : MathquaternionFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_frame_max(s : MathquaternionFrame) -> Double { @_common.max(s.data) }
+pub fn MathquaternionFrame::max(self : MathquaternionFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_frame_to_string(s : MathquaternionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionFrame::to_string(self : MathquaternionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionTable {
@@ -402,45 +402,45 @@ pub fn math_quaternion_table_make(size : Int) -> MathquaternionTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_table_len(s : MathquaternionTable) -> Int { s.size }
+pub fn MathquaternionTable::len(self : MathquaternionTable) -> Int { self.size }
 
-pub fn math_quaternion_table_get(s : MathquaternionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionTable::get(self : MathquaternionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_table_set(s : MathquaternionTable, i : Int, v : Double) -> MathquaternionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionTable::set(self : MathquaternionTable, i : Int, v : Double) -> MathquaternionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_table_sum(s : MathquaternionTable) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionTable::sum(self : MathquaternionTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_table_mean(s : MathquaternionTable) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionTable::mean(self : MathquaternionTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_table_scale(s : MathquaternionTable, f : Double) -> MathquaternionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionTable::scale(self : MathquaternionTable, f : Double) -> MathquaternionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_table_add(a : MathquaternionTable, b : MathquaternionTable) -> MathquaternionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionTable::add(self : MathquaternionTable, other : MathquaternionTable) -> MathquaternionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_table_copy(s : MathquaternionTable) -> MathquaternionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionTable::copy(self : MathquaternionTable) -> MathquaternionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_table_fill(s : MathquaternionTable, v : Double) -> MathquaternionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionTable::fill(self : MathquaternionTable, v : Double) -> MathquaternionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_table_min(s : MathquaternionTable) -> Double { @_common.min(s.data) }
+pub fn MathquaternionTable::min(self : MathquaternionTable) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_table_max(s : MathquaternionTable) -> Double { @_common.max(s.data) }
+pub fn MathquaternionTable::max(self : MathquaternionTable) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_table_to_string(s : MathquaternionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionTable::to_string(self : MathquaternionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionGraphN {
@@ -453,45 +453,45 @@ pub fn math_quaternion_graphn_make(size : Int) -> MathquaternionGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_graphn_len(s : MathquaternionGraphN) -> Int { s.size }
+pub fn MathquaternionGraphN::len(self : MathquaternionGraphN) -> Int { self.size }
 
-pub fn math_quaternion_graphn_get(s : MathquaternionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionGraphN::get(self : MathquaternionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_graphn_set(s : MathquaternionGraphN, i : Int, v : Double) -> MathquaternionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionGraphN::set(self : MathquaternionGraphN, i : Int, v : Double) -> MathquaternionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_graphn_sum(s : MathquaternionGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionGraphN::sum(self : MathquaternionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_graphn_mean(s : MathquaternionGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionGraphN::mean(self : MathquaternionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_graphn_scale(s : MathquaternionGraphN, f : Double) -> MathquaternionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionGraphN::scale(self : MathquaternionGraphN, f : Double) -> MathquaternionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_graphn_add(a : MathquaternionGraphN, b : MathquaternionGraphN) -> MathquaternionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionGraphN::add(self : MathquaternionGraphN, other : MathquaternionGraphN) -> MathquaternionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_graphn_copy(s : MathquaternionGraphN) -> MathquaternionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionGraphN::copy(self : MathquaternionGraphN) -> MathquaternionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_graphn_fill(s : MathquaternionGraphN, v : Double) -> MathquaternionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionGraphN::fill(self : MathquaternionGraphN, v : Double) -> MathquaternionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_graphn_min(s : MathquaternionGraphN) -> Double { @_common.min(s.data) }
+pub fn MathquaternionGraphN::min(self : MathquaternionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_graphn_max(s : MathquaternionGraphN) -> Double { @_common.max(s.data) }
+pub fn MathquaternionGraphN::max(self : MathquaternionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_graphn_to_string(s : MathquaternionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionGraphN::to_string(self : MathquaternionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionNode {
@@ -504,45 +504,45 @@ pub fn math_quaternion_node_make(size : Int) -> MathquaternionNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_node_len(s : MathquaternionNode) -> Int { s.size }
+pub fn MathquaternionNode::len(self : MathquaternionNode) -> Int { self.size }
 
-pub fn math_quaternion_node_get(s : MathquaternionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionNode::get(self : MathquaternionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_node_set(s : MathquaternionNode, i : Int, v : Double) -> MathquaternionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionNode::set(self : MathquaternionNode, i : Int, v : Double) -> MathquaternionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_node_sum(s : MathquaternionNode) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionNode::sum(self : MathquaternionNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_node_mean(s : MathquaternionNode) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionNode::mean(self : MathquaternionNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_node_scale(s : MathquaternionNode, f : Double) -> MathquaternionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionNode::scale(self : MathquaternionNode, f : Double) -> MathquaternionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_node_add(a : MathquaternionNode, b : MathquaternionNode) -> MathquaternionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionNode::add(self : MathquaternionNode, other : MathquaternionNode) -> MathquaternionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_node_copy(s : MathquaternionNode) -> MathquaternionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionNode::copy(self : MathquaternionNode) -> MathquaternionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_node_fill(s : MathquaternionNode, v : Double) -> MathquaternionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionNode::fill(self : MathquaternionNode, v : Double) -> MathquaternionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_node_min(s : MathquaternionNode) -> Double { @_common.min(s.data) }
+pub fn MathquaternionNode::min(self : MathquaternionNode) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_node_max(s : MathquaternionNode) -> Double { @_common.max(s.data) }
+pub fn MathquaternionNode::max(self : MathquaternionNode) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_node_to_string(s : MathquaternionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionNode::to_string(self : MathquaternionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionEdge {
@@ -555,45 +555,45 @@ pub fn math_quaternion_edge_make(size : Int) -> MathquaternionEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_edge_len(s : MathquaternionEdge) -> Int { s.size }
+pub fn MathquaternionEdge::len(self : MathquaternionEdge) -> Int { self.size }
 
-pub fn math_quaternion_edge_get(s : MathquaternionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionEdge::get(self : MathquaternionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_edge_set(s : MathquaternionEdge, i : Int, v : Double) -> MathquaternionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionEdge::set(self : MathquaternionEdge, i : Int, v : Double) -> MathquaternionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_edge_sum(s : MathquaternionEdge) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionEdge::sum(self : MathquaternionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_edge_mean(s : MathquaternionEdge) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionEdge::mean(self : MathquaternionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_edge_scale(s : MathquaternionEdge, f : Double) -> MathquaternionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionEdge::scale(self : MathquaternionEdge, f : Double) -> MathquaternionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_edge_add(a : MathquaternionEdge, b : MathquaternionEdge) -> MathquaternionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionEdge::add(self : MathquaternionEdge, other : MathquaternionEdge) -> MathquaternionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_edge_copy(s : MathquaternionEdge) -> MathquaternionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionEdge::copy(self : MathquaternionEdge) -> MathquaternionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_edge_fill(s : MathquaternionEdge, v : Double) -> MathquaternionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionEdge::fill(self : MathquaternionEdge, v : Double) -> MathquaternionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_edge_min(s : MathquaternionEdge) -> Double { @_common.min(s.data) }
+pub fn MathquaternionEdge::min(self : MathquaternionEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_edge_max(s : MathquaternionEdge) -> Double { @_common.max(s.data) }
+pub fn MathquaternionEdge::max(self : MathquaternionEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_edge_to_string(s : MathquaternionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionEdge::to_string(self : MathquaternionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionPath {
@@ -606,45 +606,45 @@ pub fn math_quaternion_path_make(size : Int) -> MathquaternionPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_path_len(s : MathquaternionPath) -> Int { s.size }
+pub fn MathquaternionPath::len(self : MathquaternionPath) -> Int { self.size }
 
-pub fn math_quaternion_path_get(s : MathquaternionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionPath::get(self : MathquaternionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_path_set(s : MathquaternionPath, i : Int, v : Double) -> MathquaternionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionPath::set(self : MathquaternionPath, i : Int, v : Double) -> MathquaternionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_path_sum(s : MathquaternionPath) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionPath::sum(self : MathquaternionPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_path_mean(s : MathquaternionPath) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionPath::mean(self : MathquaternionPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_path_scale(s : MathquaternionPath, f : Double) -> MathquaternionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionPath::scale(self : MathquaternionPath, f : Double) -> MathquaternionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_path_add(a : MathquaternionPath, b : MathquaternionPath) -> MathquaternionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionPath::add(self : MathquaternionPath, other : MathquaternionPath) -> MathquaternionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_path_copy(s : MathquaternionPath) -> MathquaternionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionPath::copy(self : MathquaternionPath) -> MathquaternionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_path_fill(s : MathquaternionPath, v : Double) -> MathquaternionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionPath::fill(self : MathquaternionPath, v : Double) -> MathquaternionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_path_min(s : MathquaternionPath) -> Double { @_common.min(s.data) }
+pub fn MathquaternionPath::min(self : MathquaternionPath) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_path_max(s : MathquaternionPath) -> Double { @_common.max(s.data) }
+pub fn MathquaternionPath::max(self : MathquaternionPath) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_path_to_string(s : MathquaternionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionPath::to_string(self : MathquaternionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionCluster {
@@ -657,45 +657,45 @@ pub fn math_quaternion_cluster_make(size : Int) -> MathquaternionCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_cluster_len(s : MathquaternionCluster) -> Int { s.size }
+pub fn MathquaternionCluster::len(self : MathquaternionCluster) -> Int { self.size }
 
-pub fn math_quaternion_cluster_get(s : MathquaternionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionCluster::get(self : MathquaternionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_cluster_set(s : MathquaternionCluster, i : Int, v : Double) -> MathquaternionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionCluster::set(self : MathquaternionCluster, i : Int, v : Double) -> MathquaternionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cluster_sum(s : MathquaternionCluster) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionCluster::sum(self : MathquaternionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_cluster_mean(s : MathquaternionCluster) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionCluster::mean(self : MathquaternionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_cluster_scale(s : MathquaternionCluster, f : Double) -> MathquaternionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionCluster::scale(self : MathquaternionCluster, f : Double) -> MathquaternionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cluster_add(a : MathquaternionCluster, b : MathquaternionCluster) -> MathquaternionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionCluster::add(self : MathquaternionCluster, other : MathquaternionCluster) -> MathquaternionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_cluster_copy(s : MathquaternionCluster) -> MathquaternionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionCluster::copy(self : MathquaternionCluster) -> MathquaternionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cluster_fill(s : MathquaternionCluster, v : Double) -> MathquaternionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionCluster::fill(self : MathquaternionCluster, v : Double) -> MathquaternionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cluster_min(s : MathquaternionCluster) -> Double { @_common.min(s.data) }
+pub fn MathquaternionCluster::min(self : MathquaternionCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_cluster_max(s : MathquaternionCluster) -> Double { @_common.max(s.data) }
+pub fn MathquaternionCluster::max(self : MathquaternionCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_cluster_to_string(s : MathquaternionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionCluster::to_string(self : MathquaternionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionModel {
@@ -708,45 +708,45 @@ pub fn math_quaternion_model_make(size : Int) -> MathquaternionModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_model_len(s : MathquaternionModel) -> Int { s.size }
+pub fn MathquaternionModel::len(self : MathquaternionModel) -> Int { self.size }
 
-pub fn math_quaternion_model_get(s : MathquaternionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionModel::get(self : MathquaternionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_model_set(s : MathquaternionModel, i : Int, v : Double) -> MathquaternionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionModel::set(self : MathquaternionModel, i : Int, v : Double) -> MathquaternionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_model_sum(s : MathquaternionModel) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionModel::sum(self : MathquaternionModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_model_mean(s : MathquaternionModel) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionModel::mean(self : MathquaternionModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_model_scale(s : MathquaternionModel, f : Double) -> MathquaternionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionModel::scale(self : MathquaternionModel, f : Double) -> MathquaternionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_model_add(a : MathquaternionModel, b : MathquaternionModel) -> MathquaternionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionModel::add(self : MathquaternionModel, other : MathquaternionModel) -> MathquaternionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_model_copy(s : MathquaternionModel) -> MathquaternionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionModel::copy(self : MathquaternionModel) -> MathquaternionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_model_fill(s : MathquaternionModel, v : Double) -> MathquaternionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionModel::fill(self : MathquaternionModel, v : Double) -> MathquaternionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_model_min(s : MathquaternionModel) -> Double { @_common.min(s.data) }
+pub fn MathquaternionModel::min(self : MathquaternionModel) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_model_max(s : MathquaternionModel) -> Double { @_common.max(s.data) }
+pub fn MathquaternionModel::max(self : MathquaternionModel) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_model_to_string(s : MathquaternionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionModel::to_string(self : MathquaternionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionLayer {
@@ -759,45 +759,45 @@ pub fn math_quaternion_layer_make(size : Int) -> MathquaternionLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_layer_len(s : MathquaternionLayer) -> Int { s.size }
+pub fn MathquaternionLayer::len(self : MathquaternionLayer) -> Int { self.size }
 
-pub fn math_quaternion_layer_get(s : MathquaternionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionLayer::get(self : MathquaternionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_layer_set(s : MathquaternionLayer, i : Int, v : Double) -> MathquaternionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionLayer::set(self : MathquaternionLayer, i : Int, v : Double) -> MathquaternionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_layer_sum(s : MathquaternionLayer) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionLayer::sum(self : MathquaternionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_layer_mean(s : MathquaternionLayer) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionLayer::mean(self : MathquaternionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_layer_scale(s : MathquaternionLayer, f : Double) -> MathquaternionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionLayer::scale(self : MathquaternionLayer, f : Double) -> MathquaternionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_layer_add(a : MathquaternionLayer, b : MathquaternionLayer) -> MathquaternionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionLayer::add(self : MathquaternionLayer, other : MathquaternionLayer) -> MathquaternionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_layer_copy(s : MathquaternionLayer) -> MathquaternionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionLayer::copy(self : MathquaternionLayer) -> MathquaternionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_layer_fill(s : MathquaternionLayer, v : Double) -> MathquaternionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionLayer::fill(self : MathquaternionLayer, v : Double) -> MathquaternionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_layer_min(s : MathquaternionLayer) -> Double { @_common.min(s.data) }
+pub fn MathquaternionLayer::min(self : MathquaternionLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_layer_max(s : MathquaternionLayer) -> Double { @_common.max(s.data) }
+pub fn MathquaternionLayer::max(self : MathquaternionLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_layer_to_string(s : MathquaternionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionLayer::to_string(self : MathquaternionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionBuffer {
@@ -810,45 +810,45 @@ pub fn math_quaternion_buffer_make(size : Int) -> MathquaternionBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_buffer_len(s : MathquaternionBuffer) -> Int { s.size }
+pub fn MathquaternionBuffer::len(self : MathquaternionBuffer) -> Int { self.size }
 
-pub fn math_quaternion_buffer_get(s : MathquaternionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionBuffer::get(self : MathquaternionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_buffer_set(s : MathquaternionBuffer, i : Int, v : Double) -> MathquaternionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionBuffer::set(self : MathquaternionBuffer, i : Int, v : Double) -> MathquaternionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_buffer_sum(s : MathquaternionBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionBuffer::sum(self : MathquaternionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_buffer_mean(s : MathquaternionBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionBuffer::mean(self : MathquaternionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_buffer_scale(s : MathquaternionBuffer, f : Double) -> MathquaternionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionBuffer::scale(self : MathquaternionBuffer, f : Double) -> MathquaternionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_buffer_add(a : MathquaternionBuffer, b : MathquaternionBuffer) -> MathquaternionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionBuffer::add(self : MathquaternionBuffer, other : MathquaternionBuffer) -> MathquaternionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_buffer_copy(s : MathquaternionBuffer) -> MathquaternionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionBuffer::copy(self : MathquaternionBuffer) -> MathquaternionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_buffer_fill(s : MathquaternionBuffer, v : Double) -> MathquaternionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionBuffer::fill(self : MathquaternionBuffer, v : Double) -> MathquaternionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_buffer_min(s : MathquaternionBuffer) -> Double { @_common.min(s.data) }
+pub fn MathquaternionBuffer::min(self : MathquaternionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_buffer_max(s : MathquaternionBuffer) -> Double { @_common.max(s.data) }
+pub fn MathquaternionBuffer::max(self : MathquaternionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_buffer_to_string(s : MathquaternionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionBuffer::to_string(self : MathquaternionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionCursor {
@@ -861,45 +861,45 @@ pub fn math_quaternion_cursor_make(size : Int) -> MathquaternionCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_cursor_len(s : MathquaternionCursor) -> Int { s.size }
+pub fn MathquaternionCursor::len(self : MathquaternionCursor) -> Int { self.size }
 
-pub fn math_quaternion_cursor_get(s : MathquaternionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionCursor::get(self : MathquaternionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_cursor_set(s : MathquaternionCursor, i : Int, v : Double) -> MathquaternionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionCursor::set(self : MathquaternionCursor, i : Int, v : Double) -> MathquaternionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cursor_sum(s : MathquaternionCursor) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionCursor::sum(self : MathquaternionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_cursor_mean(s : MathquaternionCursor) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionCursor::mean(self : MathquaternionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_cursor_scale(s : MathquaternionCursor, f : Double) -> MathquaternionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionCursor::scale(self : MathquaternionCursor, f : Double) -> MathquaternionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cursor_add(a : MathquaternionCursor, b : MathquaternionCursor) -> MathquaternionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionCursor::add(self : MathquaternionCursor, other : MathquaternionCursor) -> MathquaternionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_cursor_copy(s : MathquaternionCursor) -> MathquaternionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionCursor::copy(self : MathquaternionCursor) -> MathquaternionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cursor_fill(s : MathquaternionCursor, v : Double) -> MathquaternionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionCursor::fill(self : MathquaternionCursor, v : Double) -> MathquaternionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_cursor_min(s : MathquaternionCursor) -> Double { @_common.min(s.data) }
+pub fn MathquaternionCursor::min(self : MathquaternionCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_cursor_max(s : MathquaternionCursor) -> Double { @_common.max(s.data) }
+pub fn MathquaternionCursor::max(self : MathquaternionCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_cursor_to_string(s : MathquaternionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionCursor::to_string(self : MathquaternionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionView {
@@ -912,45 +912,45 @@ pub fn math_quaternion_view_make(size : Int) -> MathquaternionView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_view_len(s : MathquaternionView) -> Int { s.size }
+pub fn MathquaternionView::len(self : MathquaternionView) -> Int { self.size }
 
-pub fn math_quaternion_view_get(s : MathquaternionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionView::get(self : MathquaternionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_view_set(s : MathquaternionView, i : Int, v : Double) -> MathquaternionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionView::set(self : MathquaternionView, i : Int, v : Double) -> MathquaternionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_view_sum(s : MathquaternionView) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionView::sum(self : MathquaternionView) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_view_mean(s : MathquaternionView) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionView::mean(self : MathquaternionView) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_view_scale(s : MathquaternionView, f : Double) -> MathquaternionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionView::scale(self : MathquaternionView, f : Double) -> MathquaternionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_view_add(a : MathquaternionView, b : MathquaternionView) -> MathquaternionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionView::add(self : MathquaternionView, other : MathquaternionView) -> MathquaternionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_view_copy(s : MathquaternionView) -> MathquaternionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionView::copy(self : MathquaternionView) -> MathquaternionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_view_fill(s : MathquaternionView, v : Double) -> MathquaternionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionView::fill(self : MathquaternionView, v : Double) -> MathquaternionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_view_min(s : MathquaternionView) -> Double { @_common.min(s.data) }
+pub fn MathquaternionView::min(self : MathquaternionView) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_view_max(s : MathquaternionView) -> Double { @_common.max(s.data) }
+pub fn MathquaternionView::max(self : MathquaternionView) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_view_to_string(s : MathquaternionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionView::to_string(self : MathquaternionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionRange {
@@ -963,45 +963,45 @@ pub fn math_quaternion_range_make(size : Int) -> MathquaternionRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_range_len(s : MathquaternionRange) -> Int { s.size }
+pub fn MathquaternionRange::len(self : MathquaternionRange) -> Int { self.size }
 
-pub fn math_quaternion_range_get(s : MathquaternionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionRange::get(self : MathquaternionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_range_set(s : MathquaternionRange, i : Int, v : Double) -> MathquaternionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionRange::set(self : MathquaternionRange, i : Int, v : Double) -> MathquaternionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_range_sum(s : MathquaternionRange) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionRange::sum(self : MathquaternionRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_range_mean(s : MathquaternionRange) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionRange::mean(self : MathquaternionRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_range_scale(s : MathquaternionRange, f : Double) -> MathquaternionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionRange::scale(self : MathquaternionRange, f : Double) -> MathquaternionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_range_add(a : MathquaternionRange, b : MathquaternionRange) -> MathquaternionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionRange::add(self : MathquaternionRange, other : MathquaternionRange) -> MathquaternionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_range_copy(s : MathquaternionRange) -> MathquaternionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionRange::copy(self : MathquaternionRange) -> MathquaternionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_range_fill(s : MathquaternionRange, v : Double) -> MathquaternionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionRange::fill(self : MathquaternionRange, v : Double) -> MathquaternionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_range_min(s : MathquaternionRange) -> Double { @_common.min(s.data) }
+pub fn MathquaternionRange::min(self : MathquaternionRange) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_range_max(s : MathquaternionRange) -> Double { @_common.max(s.data) }
+pub fn MathquaternionRange::max(self : MathquaternionRange) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_range_to_string(s : MathquaternionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionRange::to_string(self : MathquaternionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathquaternionSlice {
@@ -1014,44 +1014,44 @@ pub fn math_quaternion_slice_make(size : Int) -> MathquaternionSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_quaternion_slice_len(s : MathquaternionSlice) -> Int { s.size }
+pub fn MathquaternionSlice::len(self : MathquaternionSlice) -> Int { self.size }
 
-pub fn math_quaternion_slice_get(s : MathquaternionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathquaternionSlice::get(self : MathquaternionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_quaternion_slice_set(s : MathquaternionSlice, i : Int, v : Double) -> MathquaternionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathquaternionSlice::set(self : MathquaternionSlice, i : Int, v : Double) -> MathquaternionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_slice_sum(s : MathquaternionSlice) -> Double { @_common.sum(s.data) }
+pub fn MathquaternionSlice::sum(self : MathquaternionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_quaternion_slice_mean(s : MathquaternionSlice) -> Double { @_common.mean(s.data) }
+pub fn MathquaternionSlice::mean(self : MathquaternionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_quaternion_slice_scale(s : MathquaternionSlice, f : Double) -> MathquaternionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathquaternionSlice::scale(self : MathquaternionSlice, f : Double) -> MathquaternionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_slice_add(a : MathquaternionSlice, b : MathquaternionSlice) -> MathquaternionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathquaternionSlice::add(self : MathquaternionSlice, other : MathquaternionSlice) -> MathquaternionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_quaternion_slice_copy(s : MathquaternionSlice) -> MathquaternionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathquaternionSlice::copy(self : MathquaternionSlice) -> MathquaternionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_slice_fill(s : MathquaternionSlice, v : Double) -> MathquaternionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathquaternionSlice::fill(self : MathquaternionSlice, v : Double) -> MathquaternionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_quaternion_slice_min(s : MathquaternionSlice) -> Double { @_common.min(s.data) }
+pub fn MathquaternionSlice::min(self : MathquaternionSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_quaternion_slice_max(s : MathquaternionSlice) -> Double { @_common.max(s.data) }
+pub fn MathquaternionSlice::max(self : MathquaternionSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_quaternion_slice_to_string(s : MathquaternionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathquaternionSlice::to_string(self : MathquaternionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_hash_closed_frame_make(size : Int) -> DshashclosedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_frame_len(s : DshashclosedFrame) -> Int { s.size }
+pub fn DshashclosedFrame::len(self : DshashclosedFrame) -> Int { self.size }
 
-pub fn ds_hash_closed_frame_get(s : DshashclosedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedFrame::get(self : DshashclosedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_frame_set(s : DshashclosedFrame, i : Int, v : Double) -> DshashclosedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedFrame::set(self : DshashclosedFrame, i : Int, v : Double) -> DshashclosedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_frame_sum(s : DshashclosedFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedFrame::sum(self : DshashclosedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_frame_mean(s : DshashclosedFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedFrame::mean(self : DshashclosedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_frame_scale(s : DshashclosedFrame, f : Double) -> DshashclosedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedFrame::scale(self : DshashclosedFrame, f : Double) -> DshashclosedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_frame_add(a : DshashclosedFrame, b : DshashclosedFrame) -> DshashclosedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedFrame::add(self : DshashclosedFrame, other : DshashclosedFrame) -> DshashclosedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_frame_copy(s : DshashclosedFrame) -> DshashclosedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedFrame::copy(self : DshashclosedFrame) -> DshashclosedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_frame_fill(s : DshashclosedFrame, v : Double) -> DshashclosedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedFrame::fill(self : DshashclosedFrame, v : Double) -> DshashclosedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_frame_min(s : DshashclosedFrame) -> Double { @_common.min(s.data) }
+pub fn DshashclosedFrame::min(self : DshashclosedFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_frame_max(s : DshashclosedFrame) -> Double { @_common.max(s.data) }
+pub fn DshashclosedFrame::max(self : DshashclosedFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_frame_to_string(s : DshashclosedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedFrame::to_string(self : DshashclosedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_closed_table_make(size : Int) -> DshashclosedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_table_len(s : DshashclosedTable) -> Int { s.size }
+pub fn DshashclosedTable::len(self : DshashclosedTable) -> Int { self.size }
 
-pub fn ds_hash_closed_table_get(s : DshashclosedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedTable::get(self : DshashclosedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_table_set(s : DshashclosedTable, i : Int, v : Double) -> DshashclosedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedTable::set(self : DshashclosedTable, i : Int, v : Double) -> DshashclosedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_table_sum(s : DshashclosedTable) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedTable::sum(self : DshashclosedTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_table_mean(s : DshashclosedTable) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedTable::mean(self : DshashclosedTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_table_scale(s : DshashclosedTable, f : Double) -> DshashclosedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedTable::scale(self : DshashclosedTable, f : Double) -> DshashclosedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_table_add(a : DshashclosedTable, b : DshashclosedTable) -> DshashclosedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedTable::add(self : DshashclosedTable, other : DshashclosedTable) -> DshashclosedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_table_copy(s : DshashclosedTable) -> DshashclosedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedTable::copy(self : DshashclosedTable) -> DshashclosedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_table_fill(s : DshashclosedTable, v : Double) -> DshashclosedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedTable::fill(self : DshashclosedTable, v : Double) -> DshashclosedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_table_min(s : DshashclosedTable) -> Double { @_common.min(s.data) }
+pub fn DshashclosedTable::min(self : DshashclosedTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_table_max(s : DshashclosedTable) -> Double { @_common.max(s.data) }
+pub fn DshashclosedTable::max(self : DshashclosedTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_table_to_string(s : DshashclosedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedTable::to_string(self : DshashclosedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_closed_graphn_make(size : Int) -> DshashclosedGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_graphn_len(s : DshashclosedGraphN) -> Int { s.size }
+pub fn DshashclosedGraphN::len(self : DshashclosedGraphN) -> Int { self.size }
 
-pub fn ds_hash_closed_graphn_get(s : DshashclosedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedGraphN::get(self : DshashclosedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_graphn_set(s : DshashclosedGraphN, i : Int, v : Double) -> DshashclosedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedGraphN::set(self : DshashclosedGraphN, i : Int, v : Double) -> DshashclosedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_graphn_sum(s : DshashclosedGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedGraphN::sum(self : DshashclosedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_graphn_mean(s : DshashclosedGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedGraphN::mean(self : DshashclosedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_graphn_scale(s : DshashclosedGraphN, f : Double) -> DshashclosedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedGraphN::scale(self : DshashclosedGraphN, f : Double) -> DshashclosedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_graphn_add(a : DshashclosedGraphN, b : DshashclosedGraphN) -> DshashclosedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedGraphN::add(self : DshashclosedGraphN, other : DshashclosedGraphN) -> DshashclosedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_graphn_copy(s : DshashclosedGraphN) -> DshashclosedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedGraphN::copy(self : DshashclosedGraphN) -> DshashclosedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_graphn_fill(s : DshashclosedGraphN, v : Double) -> DshashclosedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedGraphN::fill(self : DshashclosedGraphN, v : Double) -> DshashclosedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_graphn_min(s : DshashclosedGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashclosedGraphN::min(self : DshashclosedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_graphn_max(s : DshashclosedGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashclosedGraphN::max(self : DshashclosedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_graphn_to_string(s : DshashclosedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedGraphN::to_string(self : DshashclosedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_closed_node_make(size : Int) -> DshashclosedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_node_len(s : DshashclosedNode) -> Int { s.size }
+pub fn DshashclosedNode::len(self : DshashclosedNode) -> Int { self.size }
 
-pub fn ds_hash_closed_node_get(s : DshashclosedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedNode::get(self : DshashclosedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_node_set(s : DshashclosedNode, i : Int, v : Double) -> DshashclosedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedNode::set(self : DshashclosedNode, i : Int, v : Double) -> DshashclosedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_node_sum(s : DshashclosedNode) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedNode::sum(self : DshashclosedNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_node_mean(s : DshashclosedNode) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedNode::mean(self : DshashclosedNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_node_scale(s : DshashclosedNode, f : Double) -> DshashclosedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedNode::scale(self : DshashclosedNode, f : Double) -> DshashclosedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_node_add(a : DshashclosedNode, b : DshashclosedNode) -> DshashclosedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedNode::add(self : DshashclosedNode, other : DshashclosedNode) -> DshashclosedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_node_copy(s : DshashclosedNode) -> DshashclosedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedNode::copy(self : DshashclosedNode) -> DshashclosedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_node_fill(s : DshashclosedNode, v : Double) -> DshashclosedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedNode::fill(self : DshashclosedNode, v : Double) -> DshashclosedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_node_min(s : DshashclosedNode) -> Double { @_common.min(s.data) }
+pub fn DshashclosedNode::min(self : DshashclosedNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_node_max(s : DshashclosedNode) -> Double { @_common.max(s.data) }
+pub fn DshashclosedNode::max(self : DshashclosedNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_node_to_string(s : DshashclosedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedNode::to_string(self : DshashclosedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_closed_edge_make(size : Int) -> DshashclosedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_edge_len(s : DshashclosedEdge) -> Int { s.size }
+pub fn DshashclosedEdge::len(self : DshashclosedEdge) -> Int { self.size }
 
-pub fn ds_hash_closed_edge_get(s : DshashclosedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedEdge::get(self : DshashclosedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_edge_set(s : DshashclosedEdge, i : Int, v : Double) -> DshashclosedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedEdge::set(self : DshashclosedEdge, i : Int, v : Double) -> DshashclosedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_edge_sum(s : DshashclosedEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedEdge::sum(self : DshashclosedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_edge_mean(s : DshashclosedEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedEdge::mean(self : DshashclosedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_edge_scale(s : DshashclosedEdge, f : Double) -> DshashclosedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedEdge::scale(self : DshashclosedEdge, f : Double) -> DshashclosedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_edge_add(a : DshashclosedEdge, b : DshashclosedEdge) -> DshashclosedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedEdge::add(self : DshashclosedEdge, other : DshashclosedEdge) -> DshashclosedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_edge_copy(s : DshashclosedEdge) -> DshashclosedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedEdge::copy(self : DshashclosedEdge) -> DshashclosedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_edge_fill(s : DshashclosedEdge, v : Double) -> DshashclosedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedEdge::fill(self : DshashclosedEdge, v : Double) -> DshashclosedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_edge_min(s : DshashclosedEdge) -> Double { @_common.min(s.data) }
+pub fn DshashclosedEdge::min(self : DshashclosedEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_edge_max(s : DshashclosedEdge) -> Double { @_common.max(s.data) }
+pub fn DshashclosedEdge::max(self : DshashclosedEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_edge_to_string(s : DshashclosedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedEdge::to_string(self : DshashclosedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedPath {
@@ -606,45 +606,45 @@ pub fn ds_hash_closed_path_make(size : Int) -> DshashclosedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_path_len(s : DshashclosedPath) -> Int { s.size }
+pub fn DshashclosedPath::len(self : DshashclosedPath) -> Int { self.size }
 
-pub fn ds_hash_closed_path_get(s : DshashclosedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedPath::get(self : DshashclosedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_path_set(s : DshashclosedPath, i : Int, v : Double) -> DshashclosedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedPath::set(self : DshashclosedPath, i : Int, v : Double) -> DshashclosedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_path_sum(s : DshashclosedPath) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedPath::sum(self : DshashclosedPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_path_mean(s : DshashclosedPath) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedPath::mean(self : DshashclosedPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_path_scale(s : DshashclosedPath, f : Double) -> DshashclosedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedPath::scale(self : DshashclosedPath, f : Double) -> DshashclosedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_path_add(a : DshashclosedPath, b : DshashclosedPath) -> DshashclosedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedPath::add(self : DshashclosedPath, other : DshashclosedPath) -> DshashclosedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_path_copy(s : DshashclosedPath) -> DshashclosedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedPath::copy(self : DshashclosedPath) -> DshashclosedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_path_fill(s : DshashclosedPath, v : Double) -> DshashclosedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedPath::fill(self : DshashclosedPath, v : Double) -> DshashclosedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_path_min(s : DshashclosedPath) -> Double { @_common.min(s.data) }
+pub fn DshashclosedPath::min(self : DshashclosedPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_path_max(s : DshashclosedPath) -> Double { @_common.max(s.data) }
+pub fn DshashclosedPath::max(self : DshashclosedPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_path_to_string(s : DshashclosedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedPath::to_string(self : DshashclosedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_closed_cluster_make(size : Int) -> DshashclosedCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_cluster_len(s : DshashclosedCluster) -> Int { s.size }
+pub fn DshashclosedCluster::len(self : DshashclosedCluster) -> Int { self.size }
 
-pub fn ds_hash_closed_cluster_get(s : DshashclosedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedCluster::get(self : DshashclosedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_cluster_set(s : DshashclosedCluster, i : Int, v : Double) -> DshashclosedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedCluster::set(self : DshashclosedCluster, i : Int, v : Double) -> DshashclosedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cluster_sum(s : DshashclosedCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedCluster::sum(self : DshashclosedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_cluster_mean(s : DshashclosedCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedCluster::mean(self : DshashclosedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_cluster_scale(s : DshashclosedCluster, f : Double) -> DshashclosedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedCluster::scale(self : DshashclosedCluster, f : Double) -> DshashclosedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cluster_add(a : DshashclosedCluster, b : DshashclosedCluster) -> DshashclosedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedCluster::add(self : DshashclosedCluster, other : DshashclosedCluster) -> DshashclosedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cluster_copy(s : DshashclosedCluster) -> DshashclosedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedCluster::copy(self : DshashclosedCluster) -> DshashclosedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cluster_fill(s : DshashclosedCluster, v : Double) -> DshashclosedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedCluster::fill(self : DshashclosedCluster, v : Double) -> DshashclosedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cluster_min(s : DshashclosedCluster) -> Double { @_common.min(s.data) }
+pub fn DshashclosedCluster::min(self : DshashclosedCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_cluster_max(s : DshashclosedCluster) -> Double { @_common.max(s.data) }
+pub fn DshashclosedCluster::max(self : DshashclosedCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_cluster_to_string(s : DshashclosedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedCluster::to_string(self : DshashclosedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_closed_model_make(size : Int) -> DshashclosedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_model_len(s : DshashclosedModel) -> Int { s.size }
+pub fn DshashclosedModel::len(self : DshashclosedModel) -> Int { self.size }
 
-pub fn ds_hash_closed_model_get(s : DshashclosedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedModel::get(self : DshashclosedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_model_set(s : DshashclosedModel, i : Int, v : Double) -> DshashclosedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedModel::set(self : DshashclosedModel, i : Int, v : Double) -> DshashclosedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_model_sum(s : DshashclosedModel) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedModel::sum(self : DshashclosedModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_model_mean(s : DshashclosedModel) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedModel::mean(self : DshashclosedModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_model_scale(s : DshashclosedModel, f : Double) -> DshashclosedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedModel::scale(self : DshashclosedModel, f : Double) -> DshashclosedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_model_add(a : DshashclosedModel, b : DshashclosedModel) -> DshashclosedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedModel::add(self : DshashclosedModel, other : DshashclosedModel) -> DshashclosedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_model_copy(s : DshashclosedModel) -> DshashclosedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedModel::copy(self : DshashclosedModel) -> DshashclosedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_model_fill(s : DshashclosedModel, v : Double) -> DshashclosedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedModel::fill(self : DshashclosedModel, v : Double) -> DshashclosedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_model_min(s : DshashclosedModel) -> Double { @_common.min(s.data) }
+pub fn DshashclosedModel::min(self : DshashclosedModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_model_max(s : DshashclosedModel) -> Double { @_common.max(s.data) }
+pub fn DshashclosedModel::max(self : DshashclosedModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_model_to_string(s : DshashclosedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedModel::to_string(self : DshashclosedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_closed_layer_make(size : Int) -> DshashclosedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_layer_len(s : DshashclosedLayer) -> Int { s.size }
+pub fn DshashclosedLayer::len(self : DshashclosedLayer) -> Int { self.size }
 
-pub fn ds_hash_closed_layer_get(s : DshashclosedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedLayer::get(self : DshashclosedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_layer_set(s : DshashclosedLayer, i : Int, v : Double) -> DshashclosedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedLayer::set(self : DshashclosedLayer, i : Int, v : Double) -> DshashclosedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_layer_sum(s : DshashclosedLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedLayer::sum(self : DshashclosedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_layer_mean(s : DshashclosedLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedLayer::mean(self : DshashclosedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_layer_scale(s : DshashclosedLayer, f : Double) -> DshashclosedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedLayer::scale(self : DshashclosedLayer, f : Double) -> DshashclosedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_layer_add(a : DshashclosedLayer, b : DshashclosedLayer) -> DshashclosedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedLayer::add(self : DshashclosedLayer, other : DshashclosedLayer) -> DshashclosedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_layer_copy(s : DshashclosedLayer) -> DshashclosedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedLayer::copy(self : DshashclosedLayer) -> DshashclosedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_layer_fill(s : DshashclosedLayer, v : Double) -> DshashclosedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedLayer::fill(self : DshashclosedLayer, v : Double) -> DshashclosedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_layer_min(s : DshashclosedLayer) -> Double { @_common.min(s.data) }
+pub fn DshashclosedLayer::min(self : DshashclosedLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_layer_max(s : DshashclosedLayer) -> Double { @_common.max(s.data) }
+pub fn DshashclosedLayer::max(self : DshashclosedLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_layer_to_string(s : DshashclosedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedLayer::to_string(self : DshashclosedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_closed_buffer_make(size : Int) -> DshashclosedBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_buffer_len(s : DshashclosedBuffer) -> Int { s.size }
+pub fn DshashclosedBuffer::len(self : DshashclosedBuffer) -> Int { self.size }
 
-pub fn ds_hash_closed_buffer_get(s : DshashclosedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedBuffer::get(self : DshashclosedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_buffer_set(s : DshashclosedBuffer, i : Int, v : Double) -> DshashclosedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedBuffer::set(self : DshashclosedBuffer, i : Int, v : Double) -> DshashclosedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_buffer_sum(s : DshashclosedBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedBuffer::sum(self : DshashclosedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_buffer_mean(s : DshashclosedBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedBuffer::mean(self : DshashclosedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_buffer_scale(s : DshashclosedBuffer, f : Double) -> DshashclosedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedBuffer::scale(self : DshashclosedBuffer, f : Double) -> DshashclosedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_buffer_add(a : DshashclosedBuffer, b : DshashclosedBuffer) -> DshashclosedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedBuffer::add(self : DshashclosedBuffer, other : DshashclosedBuffer) -> DshashclosedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_buffer_copy(s : DshashclosedBuffer) -> DshashclosedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedBuffer::copy(self : DshashclosedBuffer) -> DshashclosedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_buffer_fill(s : DshashclosedBuffer, v : Double) -> DshashclosedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedBuffer::fill(self : DshashclosedBuffer, v : Double) -> DshashclosedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_buffer_min(s : DshashclosedBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashclosedBuffer::min(self : DshashclosedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_buffer_max(s : DshashclosedBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashclosedBuffer::max(self : DshashclosedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_buffer_to_string(s : DshashclosedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedBuffer::to_string(self : DshashclosedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_closed_cursor_make(size : Int) -> DshashclosedCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_cursor_len(s : DshashclosedCursor) -> Int { s.size }
+pub fn DshashclosedCursor::len(self : DshashclosedCursor) -> Int { self.size }
 
-pub fn ds_hash_closed_cursor_get(s : DshashclosedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedCursor::get(self : DshashclosedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_cursor_set(s : DshashclosedCursor, i : Int, v : Double) -> DshashclosedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedCursor::set(self : DshashclosedCursor, i : Int, v : Double) -> DshashclosedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cursor_sum(s : DshashclosedCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedCursor::sum(self : DshashclosedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_cursor_mean(s : DshashclosedCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedCursor::mean(self : DshashclosedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_cursor_scale(s : DshashclosedCursor, f : Double) -> DshashclosedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedCursor::scale(self : DshashclosedCursor, f : Double) -> DshashclosedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cursor_add(a : DshashclosedCursor, b : DshashclosedCursor) -> DshashclosedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedCursor::add(self : DshashclosedCursor, other : DshashclosedCursor) -> DshashclosedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cursor_copy(s : DshashclosedCursor) -> DshashclosedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedCursor::copy(self : DshashclosedCursor) -> DshashclosedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cursor_fill(s : DshashclosedCursor, v : Double) -> DshashclosedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedCursor::fill(self : DshashclosedCursor, v : Double) -> DshashclosedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_cursor_min(s : DshashclosedCursor) -> Double { @_common.min(s.data) }
+pub fn DshashclosedCursor::min(self : DshashclosedCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_cursor_max(s : DshashclosedCursor) -> Double { @_common.max(s.data) }
+pub fn DshashclosedCursor::max(self : DshashclosedCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_cursor_to_string(s : DshashclosedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedCursor::to_string(self : DshashclosedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedView {
@@ -912,45 +912,45 @@ pub fn ds_hash_closed_view_make(size : Int) -> DshashclosedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_view_len(s : DshashclosedView) -> Int { s.size }
+pub fn DshashclosedView::len(self : DshashclosedView) -> Int { self.size }
 
-pub fn ds_hash_closed_view_get(s : DshashclosedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedView::get(self : DshashclosedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_view_set(s : DshashclosedView, i : Int, v : Double) -> DshashclosedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedView::set(self : DshashclosedView, i : Int, v : Double) -> DshashclosedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_view_sum(s : DshashclosedView) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedView::sum(self : DshashclosedView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_view_mean(s : DshashclosedView) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedView::mean(self : DshashclosedView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_view_scale(s : DshashclosedView, f : Double) -> DshashclosedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedView::scale(self : DshashclosedView, f : Double) -> DshashclosedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_view_add(a : DshashclosedView, b : DshashclosedView) -> DshashclosedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedView::add(self : DshashclosedView, other : DshashclosedView) -> DshashclosedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_view_copy(s : DshashclosedView) -> DshashclosedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedView::copy(self : DshashclosedView) -> DshashclosedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_view_fill(s : DshashclosedView, v : Double) -> DshashclosedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedView::fill(self : DshashclosedView, v : Double) -> DshashclosedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_view_min(s : DshashclosedView) -> Double { @_common.min(s.data) }
+pub fn DshashclosedView::min(self : DshashclosedView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_view_max(s : DshashclosedView) -> Double { @_common.max(s.data) }
+pub fn DshashclosedView::max(self : DshashclosedView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_view_to_string(s : DshashclosedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedView::to_string(self : DshashclosedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_closed_range_make(size : Int) -> DshashclosedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_range_len(s : DshashclosedRange) -> Int { s.size }
+pub fn DshashclosedRange::len(self : DshashclosedRange) -> Int { self.size }
 
-pub fn ds_hash_closed_range_get(s : DshashclosedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedRange::get(self : DshashclosedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_range_set(s : DshashclosedRange, i : Int, v : Double) -> DshashclosedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedRange::set(self : DshashclosedRange, i : Int, v : Double) -> DshashclosedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_range_sum(s : DshashclosedRange) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedRange::sum(self : DshashclosedRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_range_mean(s : DshashclosedRange) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedRange::mean(self : DshashclosedRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_range_scale(s : DshashclosedRange, f : Double) -> DshashclosedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedRange::scale(self : DshashclosedRange, f : Double) -> DshashclosedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_range_add(a : DshashclosedRange, b : DshashclosedRange) -> DshashclosedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedRange::add(self : DshashclosedRange, other : DshashclosedRange) -> DshashclosedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_range_copy(s : DshashclosedRange) -> DshashclosedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedRange::copy(self : DshashclosedRange) -> DshashclosedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_range_fill(s : DshashclosedRange, v : Double) -> DshashclosedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedRange::fill(self : DshashclosedRange, v : Double) -> DshashclosedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_range_min(s : DshashclosedRange) -> Double { @_common.min(s.data) }
+pub fn DshashclosedRange::min(self : DshashclosedRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_range_max(s : DshashclosedRange) -> Double { @_common.max(s.data) }
+pub fn DshashclosedRange::max(self : DshashclosedRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_range_to_string(s : DshashclosedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedRange::to_string(self : DshashclosedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashclosedSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_closed_slice_make(size : Int) -> DshashclosedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_closed_slice_len(s : DshashclosedSlice) -> Int { s.size }
+pub fn DshashclosedSlice::len(self : DshashclosedSlice) -> Int { self.size }
 
-pub fn ds_hash_closed_slice_get(s : DshashclosedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashclosedSlice::get(self : DshashclosedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_closed_slice_set(s : DshashclosedSlice, i : Int, v : Double) -> DshashclosedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashclosedSlice::set(self : DshashclosedSlice, i : Int, v : Double) -> DshashclosedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_slice_sum(s : DshashclosedSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashclosedSlice::sum(self : DshashclosedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_closed_slice_mean(s : DshashclosedSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashclosedSlice::mean(self : DshashclosedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_closed_slice_scale(s : DshashclosedSlice, f : Double) -> DshashclosedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashclosedSlice::scale(self : DshashclosedSlice, f : Double) -> DshashclosedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_slice_add(a : DshashclosedSlice, b : DshashclosedSlice) -> DshashclosedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashclosedSlice::add(self : DshashclosedSlice, other : DshashclosedSlice) -> DshashclosedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_closed_slice_copy(s : DshashclosedSlice) -> DshashclosedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashclosedSlice::copy(self : DshashclosedSlice) -> DshashclosedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_slice_fill(s : DshashclosedSlice, v : Double) -> DshashclosedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashclosedSlice::fill(self : DshashclosedSlice, v : Double) -> DshashclosedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_closed_slice_min(s : DshashclosedSlice) -> Double { @_common.min(s.data) }
+pub fn DshashclosedSlice::min(self : DshashclosedSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_closed_slice_max(s : DshashclosedSlice) -> Double { @_common.max(s.data) }
+pub fn DshashclosedSlice::max(self : DshashclosedSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_closed_slice_to_string(s : DshashclosedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashclosedSlice::to_string(self : DshashclosedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

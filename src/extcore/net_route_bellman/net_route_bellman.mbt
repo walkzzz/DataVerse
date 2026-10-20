@@ -351,45 +351,45 @@ pub fn net_route_bellman_frame_make(size : Int) -> NetroutebellmanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_frame_len(s : NetroutebellmanFrame) -> Int { s.size }
+pub fn NetroutebellmanFrame::len(self : NetroutebellmanFrame) -> Int { self.size }
 
-pub fn net_route_bellman_frame_get(s : NetroutebellmanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanFrame::get(self : NetroutebellmanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_frame_set(s : NetroutebellmanFrame, i : Int, v : Double) -> NetroutebellmanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanFrame::set(self : NetroutebellmanFrame, i : Int, v : Double) -> NetroutebellmanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_frame_sum(s : NetroutebellmanFrame) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanFrame::sum(self : NetroutebellmanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_frame_mean(s : NetroutebellmanFrame) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanFrame::mean(self : NetroutebellmanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_frame_scale(s : NetroutebellmanFrame, f : Double) -> NetroutebellmanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanFrame::scale(self : NetroutebellmanFrame, f : Double) -> NetroutebellmanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_frame_add(a : NetroutebellmanFrame, b : NetroutebellmanFrame) -> NetroutebellmanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanFrame::add(self : NetroutebellmanFrame, other : NetroutebellmanFrame) -> NetroutebellmanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_frame_copy(s : NetroutebellmanFrame) -> NetroutebellmanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanFrame::copy(self : NetroutebellmanFrame) -> NetroutebellmanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_frame_fill(s : NetroutebellmanFrame, v : Double) -> NetroutebellmanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanFrame::fill(self : NetroutebellmanFrame, v : Double) -> NetroutebellmanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_frame_min(s : NetroutebellmanFrame) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanFrame::min(self : NetroutebellmanFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_frame_max(s : NetroutebellmanFrame) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanFrame::max(self : NetroutebellmanFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_frame_to_string(s : NetroutebellmanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanFrame::to_string(self : NetroutebellmanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanTable {
@@ -402,45 +402,45 @@ pub fn net_route_bellman_table_make(size : Int) -> NetroutebellmanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_table_len(s : NetroutebellmanTable) -> Int { s.size }
+pub fn NetroutebellmanTable::len(self : NetroutebellmanTable) -> Int { self.size }
 
-pub fn net_route_bellman_table_get(s : NetroutebellmanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanTable::get(self : NetroutebellmanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_table_set(s : NetroutebellmanTable, i : Int, v : Double) -> NetroutebellmanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanTable::set(self : NetroutebellmanTable, i : Int, v : Double) -> NetroutebellmanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_table_sum(s : NetroutebellmanTable) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanTable::sum(self : NetroutebellmanTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_table_mean(s : NetroutebellmanTable) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanTable::mean(self : NetroutebellmanTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_table_scale(s : NetroutebellmanTable, f : Double) -> NetroutebellmanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanTable::scale(self : NetroutebellmanTable, f : Double) -> NetroutebellmanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_table_add(a : NetroutebellmanTable, b : NetroutebellmanTable) -> NetroutebellmanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanTable::add(self : NetroutebellmanTable, other : NetroutebellmanTable) -> NetroutebellmanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_table_copy(s : NetroutebellmanTable) -> NetroutebellmanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanTable::copy(self : NetroutebellmanTable) -> NetroutebellmanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_table_fill(s : NetroutebellmanTable, v : Double) -> NetroutebellmanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanTable::fill(self : NetroutebellmanTable, v : Double) -> NetroutebellmanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_table_min(s : NetroutebellmanTable) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanTable::min(self : NetroutebellmanTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_table_max(s : NetroutebellmanTable) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanTable::max(self : NetroutebellmanTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_table_to_string(s : NetroutebellmanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanTable::to_string(self : NetroutebellmanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_bellman_graphn_make(size : Int) -> NetroutebellmanGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_graphn_len(s : NetroutebellmanGraphN) -> Int { s.size }
+pub fn NetroutebellmanGraphN::len(self : NetroutebellmanGraphN) -> Int { self.size }
 
-pub fn net_route_bellman_graphn_get(s : NetroutebellmanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanGraphN::get(self : NetroutebellmanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_graphn_set(s : NetroutebellmanGraphN, i : Int, v : Double) -> NetroutebellmanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanGraphN::set(self : NetroutebellmanGraphN, i : Int, v : Double) -> NetroutebellmanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_graphn_sum(s : NetroutebellmanGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanGraphN::sum(self : NetroutebellmanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_graphn_mean(s : NetroutebellmanGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanGraphN::mean(self : NetroutebellmanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_graphn_scale(s : NetroutebellmanGraphN, f : Double) -> NetroutebellmanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanGraphN::scale(self : NetroutebellmanGraphN, f : Double) -> NetroutebellmanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_graphn_add(a : NetroutebellmanGraphN, b : NetroutebellmanGraphN) -> NetroutebellmanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanGraphN::add(self : NetroutebellmanGraphN, other : NetroutebellmanGraphN) -> NetroutebellmanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_graphn_copy(s : NetroutebellmanGraphN) -> NetroutebellmanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanGraphN::copy(self : NetroutebellmanGraphN) -> NetroutebellmanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_graphn_fill(s : NetroutebellmanGraphN, v : Double) -> NetroutebellmanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanGraphN::fill(self : NetroutebellmanGraphN, v : Double) -> NetroutebellmanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_graphn_min(s : NetroutebellmanGraphN) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanGraphN::min(self : NetroutebellmanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_graphn_max(s : NetroutebellmanGraphN) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanGraphN::max(self : NetroutebellmanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_graphn_to_string(s : NetroutebellmanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanGraphN::to_string(self : NetroutebellmanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanNode {
@@ -504,45 +504,45 @@ pub fn net_route_bellman_node_make(size : Int) -> NetroutebellmanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_node_len(s : NetroutebellmanNode) -> Int { s.size }
+pub fn NetroutebellmanNode::len(self : NetroutebellmanNode) -> Int { self.size }
 
-pub fn net_route_bellman_node_get(s : NetroutebellmanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanNode::get(self : NetroutebellmanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_node_set(s : NetroutebellmanNode, i : Int, v : Double) -> NetroutebellmanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanNode::set(self : NetroutebellmanNode, i : Int, v : Double) -> NetroutebellmanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_node_sum(s : NetroutebellmanNode) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanNode::sum(self : NetroutebellmanNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_node_mean(s : NetroutebellmanNode) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanNode::mean(self : NetroutebellmanNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_node_scale(s : NetroutebellmanNode, f : Double) -> NetroutebellmanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanNode::scale(self : NetroutebellmanNode, f : Double) -> NetroutebellmanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_node_add(a : NetroutebellmanNode, b : NetroutebellmanNode) -> NetroutebellmanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanNode::add(self : NetroutebellmanNode, other : NetroutebellmanNode) -> NetroutebellmanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_node_copy(s : NetroutebellmanNode) -> NetroutebellmanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanNode::copy(self : NetroutebellmanNode) -> NetroutebellmanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_node_fill(s : NetroutebellmanNode, v : Double) -> NetroutebellmanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanNode::fill(self : NetroutebellmanNode, v : Double) -> NetroutebellmanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_node_min(s : NetroutebellmanNode) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanNode::min(self : NetroutebellmanNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_node_max(s : NetroutebellmanNode) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanNode::max(self : NetroutebellmanNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_node_to_string(s : NetroutebellmanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanNode::to_string(self : NetroutebellmanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanEdge {
@@ -555,45 +555,45 @@ pub fn net_route_bellman_edge_make(size : Int) -> NetroutebellmanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_edge_len(s : NetroutebellmanEdge) -> Int { s.size }
+pub fn NetroutebellmanEdge::len(self : NetroutebellmanEdge) -> Int { self.size }
 
-pub fn net_route_bellman_edge_get(s : NetroutebellmanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanEdge::get(self : NetroutebellmanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_edge_set(s : NetroutebellmanEdge, i : Int, v : Double) -> NetroutebellmanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanEdge::set(self : NetroutebellmanEdge, i : Int, v : Double) -> NetroutebellmanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_edge_sum(s : NetroutebellmanEdge) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanEdge::sum(self : NetroutebellmanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_edge_mean(s : NetroutebellmanEdge) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanEdge::mean(self : NetroutebellmanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_edge_scale(s : NetroutebellmanEdge, f : Double) -> NetroutebellmanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanEdge::scale(self : NetroutebellmanEdge, f : Double) -> NetroutebellmanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_edge_add(a : NetroutebellmanEdge, b : NetroutebellmanEdge) -> NetroutebellmanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanEdge::add(self : NetroutebellmanEdge, other : NetroutebellmanEdge) -> NetroutebellmanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_edge_copy(s : NetroutebellmanEdge) -> NetroutebellmanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanEdge::copy(self : NetroutebellmanEdge) -> NetroutebellmanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_edge_fill(s : NetroutebellmanEdge, v : Double) -> NetroutebellmanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanEdge::fill(self : NetroutebellmanEdge, v : Double) -> NetroutebellmanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_edge_min(s : NetroutebellmanEdge) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanEdge::min(self : NetroutebellmanEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_edge_max(s : NetroutebellmanEdge) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanEdge::max(self : NetroutebellmanEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_edge_to_string(s : NetroutebellmanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanEdge::to_string(self : NetroutebellmanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanPath {
@@ -606,45 +606,45 @@ pub fn net_route_bellman_path_make(size : Int) -> NetroutebellmanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_path_len(s : NetroutebellmanPath) -> Int { s.size }
+pub fn NetroutebellmanPath::len(self : NetroutebellmanPath) -> Int { self.size }
 
-pub fn net_route_bellman_path_get(s : NetroutebellmanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanPath::get(self : NetroutebellmanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_path_set(s : NetroutebellmanPath, i : Int, v : Double) -> NetroutebellmanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanPath::set(self : NetroutebellmanPath, i : Int, v : Double) -> NetroutebellmanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_path_sum(s : NetroutebellmanPath) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanPath::sum(self : NetroutebellmanPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_path_mean(s : NetroutebellmanPath) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanPath::mean(self : NetroutebellmanPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_path_scale(s : NetroutebellmanPath, f : Double) -> NetroutebellmanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanPath::scale(self : NetroutebellmanPath, f : Double) -> NetroutebellmanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_path_add(a : NetroutebellmanPath, b : NetroutebellmanPath) -> NetroutebellmanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanPath::add(self : NetroutebellmanPath, other : NetroutebellmanPath) -> NetroutebellmanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_path_copy(s : NetroutebellmanPath) -> NetroutebellmanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanPath::copy(self : NetroutebellmanPath) -> NetroutebellmanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_path_fill(s : NetroutebellmanPath, v : Double) -> NetroutebellmanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanPath::fill(self : NetroutebellmanPath, v : Double) -> NetroutebellmanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_path_min(s : NetroutebellmanPath) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanPath::min(self : NetroutebellmanPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_path_max(s : NetroutebellmanPath) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanPath::max(self : NetroutebellmanPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_path_to_string(s : NetroutebellmanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanPath::to_string(self : NetroutebellmanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanCluster {
@@ -657,45 +657,45 @@ pub fn net_route_bellman_cluster_make(size : Int) -> NetroutebellmanCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_cluster_len(s : NetroutebellmanCluster) -> Int { s.size }
+pub fn NetroutebellmanCluster::len(self : NetroutebellmanCluster) -> Int { self.size }
 
-pub fn net_route_bellman_cluster_get(s : NetroutebellmanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanCluster::get(self : NetroutebellmanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_cluster_set(s : NetroutebellmanCluster, i : Int, v : Double) -> NetroutebellmanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanCluster::set(self : NetroutebellmanCluster, i : Int, v : Double) -> NetroutebellmanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cluster_sum(s : NetroutebellmanCluster) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanCluster::sum(self : NetroutebellmanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_cluster_mean(s : NetroutebellmanCluster) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanCluster::mean(self : NetroutebellmanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_cluster_scale(s : NetroutebellmanCluster, f : Double) -> NetroutebellmanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanCluster::scale(self : NetroutebellmanCluster, f : Double) -> NetroutebellmanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cluster_add(a : NetroutebellmanCluster, b : NetroutebellmanCluster) -> NetroutebellmanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanCluster::add(self : NetroutebellmanCluster, other : NetroutebellmanCluster) -> NetroutebellmanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_cluster_copy(s : NetroutebellmanCluster) -> NetroutebellmanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanCluster::copy(self : NetroutebellmanCluster) -> NetroutebellmanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cluster_fill(s : NetroutebellmanCluster, v : Double) -> NetroutebellmanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanCluster::fill(self : NetroutebellmanCluster, v : Double) -> NetroutebellmanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cluster_min(s : NetroutebellmanCluster) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanCluster::min(self : NetroutebellmanCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_cluster_max(s : NetroutebellmanCluster) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanCluster::max(self : NetroutebellmanCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_cluster_to_string(s : NetroutebellmanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanCluster::to_string(self : NetroutebellmanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanModel {
@@ -708,45 +708,45 @@ pub fn net_route_bellman_model_make(size : Int) -> NetroutebellmanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_model_len(s : NetroutebellmanModel) -> Int { s.size }
+pub fn NetroutebellmanModel::len(self : NetroutebellmanModel) -> Int { self.size }
 
-pub fn net_route_bellman_model_get(s : NetroutebellmanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanModel::get(self : NetroutebellmanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_model_set(s : NetroutebellmanModel, i : Int, v : Double) -> NetroutebellmanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanModel::set(self : NetroutebellmanModel, i : Int, v : Double) -> NetroutebellmanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_model_sum(s : NetroutebellmanModel) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanModel::sum(self : NetroutebellmanModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_model_mean(s : NetroutebellmanModel) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanModel::mean(self : NetroutebellmanModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_model_scale(s : NetroutebellmanModel, f : Double) -> NetroutebellmanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanModel::scale(self : NetroutebellmanModel, f : Double) -> NetroutebellmanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_model_add(a : NetroutebellmanModel, b : NetroutebellmanModel) -> NetroutebellmanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanModel::add(self : NetroutebellmanModel, other : NetroutebellmanModel) -> NetroutebellmanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_model_copy(s : NetroutebellmanModel) -> NetroutebellmanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanModel::copy(self : NetroutebellmanModel) -> NetroutebellmanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_model_fill(s : NetroutebellmanModel, v : Double) -> NetroutebellmanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanModel::fill(self : NetroutebellmanModel, v : Double) -> NetroutebellmanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_model_min(s : NetroutebellmanModel) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanModel::min(self : NetroutebellmanModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_model_max(s : NetroutebellmanModel) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanModel::max(self : NetroutebellmanModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_model_to_string(s : NetroutebellmanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanModel::to_string(self : NetroutebellmanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanLayer {
@@ -759,45 +759,45 @@ pub fn net_route_bellman_layer_make(size : Int) -> NetroutebellmanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_layer_len(s : NetroutebellmanLayer) -> Int { s.size }
+pub fn NetroutebellmanLayer::len(self : NetroutebellmanLayer) -> Int { self.size }
 
-pub fn net_route_bellman_layer_get(s : NetroutebellmanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanLayer::get(self : NetroutebellmanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_layer_set(s : NetroutebellmanLayer, i : Int, v : Double) -> NetroutebellmanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanLayer::set(self : NetroutebellmanLayer, i : Int, v : Double) -> NetroutebellmanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_layer_sum(s : NetroutebellmanLayer) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanLayer::sum(self : NetroutebellmanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_layer_mean(s : NetroutebellmanLayer) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanLayer::mean(self : NetroutebellmanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_layer_scale(s : NetroutebellmanLayer, f : Double) -> NetroutebellmanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanLayer::scale(self : NetroutebellmanLayer, f : Double) -> NetroutebellmanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_layer_add(a : NetroutebellmanLayer, b : NetroutebellmanLayer) -> NetroutebellmanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanLayer::add(self : NetroutebellmanLayer, other : NetroutebellmanLayer) -> NetroutebellmanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_layer_copy(s : NetroutebellmanLayer) -> NetroutebellmanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanLayer::copy(self : NetroutebellmanLayer) -> NetroutebellmanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_layer_fill(s : NetroutebellmanLayer, v : Double) -> NetroutebellmanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanLayer::fill(self : NetroutebellmanLayer, v : Double) -> NetroutebellmanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_layer_min(s : NetroutebellmanLayer) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanLayer::min(self : NetroutebellmanLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_layer_max(s : NetroutebellmanLayer) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanLayer::max(self : NetroutebellmanLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_layer_to_string(s : NetroutebellmanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanLayer::to_string(self : NetroutebellmanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_bellman_buffer_make(size : Int) -> NetroutebellmanBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_buffer_len(s : NetroutebellmanBuffer) -> Int { s.size }
+pub fn NetroutebellmanBuffer::len(self : NetroutebellmanBuffer) -> Int { self.size }
 
-pub fn net_route_bellman_buffer_get(s : NetroutebellmanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanBuffer::get(self : NetroutebellmanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_buffer_set(s : NetroutebellmanBuffer, i : Int, v : Double) -> NetroutebellmanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanBuffer::set(self : NetroutebellmanBuffer, i : Int, v : Double) -> NetroutebellmanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_buffer_sum(s : NetroutebellmanBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanBuffer::sum(self : NetroutebellmanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_buffer_mean(s : NetroutebellmanBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanBuffer::mean(self : NetroutebellmanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_buffer_scale(s : NetroutebellmanBuffer, f : Double) -> NetroutebellmanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanBuffer::scale(self : NetroutebellmanBuffer, f : Double) -> NetroutebellmanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_buffer_add(a : NetroutebellmanBuffer, b : NetroutebellmanBuffer) -> NetroutebellmanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanBuffer::add(self : NetroutebellmanBuffer, other : NetroutebellmanBuffer) -> NetroutebellmanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_buffer_copy(s : NetroutebellmanBuffer) -> NetroutebellmanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanBuffer::copy(self : NetroutebellmanBuffer) -> NetroutebellmanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_buffer_fill(s : NetroutebellmanBuffer, v : Double) -> NetroutebellmanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanBuffer::fill(self : NetroutebellmanBuffer, v : Double) -> NetroutebellmanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_buffer_min(s : NetroutebellmanBuffer) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanBuffer::min(self : NetroutebellmanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_buffer_max(s : NetroutebellmanBuffer) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanBuffer::max(self : NetroutebellmanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_buffer_to_string(s : NetroutebellmanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanBuffer::to_string(self : NetroutebellmanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanCursor {
@@ -861,45 +861,45 @@ pub fn net_route_bellman_cursor_make(size : Int) -> NetroutebellmanCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_cursor_len(s : NetroutebellmanCursor) -> Int { s.size }
+pub fn NetroutebellmanCursor::len(self : NetroutebellmanCursor) -> Int { self.size }
 
-pub fn net_route_bellman_cursor_get(s : NetroutebellmanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanCursor::get(self : NetroutebellmanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_cursor_set(s : NetroutebellmanCursor, i : Int, v : Double) -> NetroutebellmanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanCursor::set(self : NetroutebellmanCursor, i : Int, v : Double) -> NetroutebellmanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cursor_sum(s : NetroutebellmanCursor) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanCursor::sum(self : NetroutebellmanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_cursor_mean(s : NetroutebellmanCursor) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanCursor::mean(self : NetroutebellmanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_cursor_scale(s : NetroutebellmanCursor, f : Double) -> NetroutebellmanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanCursor::scale(self : NetroutebellmanCursor, f : Double) -> NetroutebellmanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cursor_add(a : NetroutebellmanCursor, b : NetroutebellmanCursor) -> NetroutebellmanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanCursor::add(self : NetroutebellmanCursor, other : NetroutebellmanCursor) -> NetroutebellmanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_cursor_copy(s : NetroutebellmanCursor) -> NetroutebellmanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanCursor::copy(self : NetroutebellmanCursor) -> NetroutebellmanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cursor_fill(s : NetroutebellmanCursor, v : Double) -> NetroutebellmanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanCursor::fill(self : NetroutebellmanCursor, v : Double) -> NetroutebellmanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_cursor_min(s : NetroutebellmanCursor) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanCursor::min(self : NetroutebellmanCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_cursor_max(s : NetroutebellmanCursor) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanCursor::max(self : NetroutebellmanCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_cursor_to_string(s : NetroutebellmanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanCursor::to_string(self : NetroutebellmanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanView {
@@ -912,45 +912,45 @@ pub fn net_route_bellman_view_make(size : Int) -> NetroutebellmanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_view_len(s : NetroutebellmanView) -> Int { s.size }
+pub fn NetroutebellmanView::len(self : NetroutebellmanView) -> Int { self.size }
 
-pub fn net_route_bellman_view_get(s : NetroutebellmanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanView::get(self : NetroutebellmanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_view_set(s : NetroutebellmanView, i : Int, v : Double) -> NetroutebellmanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanView::set(self : NetroutebellmanView, i : Int, v : Double) -> NetroutebellmanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_view_sum(s : NetroutebellmanView) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanView::sum(self : NetroutebellmanView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_view_mean(s : NetroutebellmanView) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanView::mean(self : NetroutebellmanView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_view_scale(s : NetroutebellmanView, f : Double) -> NetroutebellmanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanView::scale(self : NetroutebellmanView, f : Double) -> NetroutebellmanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_view_add(a : NetroutebellmanView, b : NetroutebellmanView) -> NetroutebellmanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanView::add(self : NetroutebellmanView, other : NetroutebellmanView) -> NetroutebellmanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_view_copy(s : NetroutebellmanView) -> NetroutebellmanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanView::copy(self : NetroutebellmanView) -> NetroutebellmanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_view_fill(s : NetroutebellmanView, v : Double) -> NetroutebellmanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanView::fill(self : NetroutebellmanView, v : Double) -> NetroutebellmanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_view_min(s : NetroutebellmanView) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanView::min(self : NetroutebellmanView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_view_max(s : NetroutebellmanView) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanView::max(self : NetroutebellmanView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_view_to_string(s : NetroutebellmanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanView::to_string(self : NetroutebellmanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanRange {
@@ -963,45 +963,45 @@ pub fn net_route_bellman_range_make(size : Int) -> NetroutebellmanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_range_len(s : NetroutebellmanRange) -> Int { s.size }
+pub fn NetroutebellmanRange::len(self : NetroutebellmanRange) -> Int { self.size }
 
-pub fn net_route_bellman_range_get(s : NetroutebellmanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanRange::get(self : NetroutebellmanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_range_set(s : NetroutebellmanRange, i : Int, v : Double) -> NetroutebellmanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanRange::set(self : NetroutebellmanRange, i : Int, v : Double) -> NetroutebellmanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_range_sum(s : NetroutebellmanRange) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanRange::sum(self : NetroutebellmanRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_range_mean(s : NetroutebellmanRange) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanRange::mean(self : NetroutebellmanRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_range_scale(s : NetroutebellmanRange, f : Double) -> NetroutebellmanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanRange::scale(self : NetroutebellmanRange, f : Double) -> NetroutebellmanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_range_add(a : NetroutebellmanRange, b : NetroutebellmanRange) -> NetroutebellmanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanRange::add(self : NetroutebellmanRange, other : NetroutebellmanRange) -> NetroutebellmanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_range_copy(s : NetroutebellmanRange) -> NetroutebellmanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanRange::copy(self : NetroutebellmanRange) -> NetroutebellmanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_range_fill(s : NetroutebellmanRange, v : Double) -> NetroutebellmanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanRange::fill(self : NetroutebellmanRange, v : Double) -> NetroutebellmanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_range_min(s : NetroutebellmanRange) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanRange::min(self : NetroutebellmanRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_range_max(s : NetroutebellmanRange) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanRange::max(self : NetroutebellmanRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_range_to_string(s : NetroutebellmanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanRange::to_string(self : NetroutebellmanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetroutebellmanSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_bellman_slice_make(size : Int) -> NetroutebellmanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_bellman_slice_len(s : NetroutebellmanSlice) -> Int { s.size }
+pub fn NetroutebellmanSlice::len(self : NetroutebellmanSlice) -> Int { self.size }
 
-pub fn net_route_bellman_slice_get(s : NetroutebellmanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetroutebellmanSlice::get(self : NetroutebellmanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_bellman_slice_set(s : NetroutebellmanSlice, i : Int, v : Double) -> NetroutebellmanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetroutebellmanSlice::set(self : NetroutebellmanSlice, i : Int, v : Double) -> NetroutebellmanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_slice_sum(s : NetroutebellmanSlice) -> Double { @_common.sum(s.data) }
+pub fn NetroutebellmanSlice::sum(self : NetroutebellmanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_bellman_slice_mean(s : NetroutebellmanSlice) -> Double { @_common.mean(s.data) }
+pub fn NetroutebellmanSlice::mean(self : NetroutebellmanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_bellman_slice_scale(s : NetroutebellmanSlice, f : Double) -> NetroutebellmanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetroutebellmanSlice::scale(self : NetroutebellmanSlice, f : Double) -> NetroutebellmanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_slice_add(a : NetroutebellmanSlice, b : NetroutebellmanSlice) -> NetroutebellmanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetroutebellmanSlice::add(self : NetroutebellmanSlice, other : NetroutebellmanSlice) -> NetroutebellmanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_bellman_slice_copy(s : NetroutebellmanSlice) -> NetroutebellmanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetroutebellmanSlice::copy(self : NetroutebellmanSlice) -> NetroutebellmanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_slice_fill(s : NetroutebellmanSlice, v : Double) -> NetroutebellmanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetroutebellmanSlice::fill(self : NetroutebellmanSlice, v : Double) -> NetroutebellmanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_bellman_slice_min(s : NetroutebellmanSlice) -> Double { @_common.min(s.data) }
+pub fn NetroutebellmanSlice::min(self : NetroutebellmanSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_bellman_slice_max(s : NetroutebellmanSlice) -> Double { @_common.max(s.data) }
+pub fn NetroutebellmanSlice::max(self : NetroutebellmanSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_bellman_slice_to_string(s : NetroutebellmanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetroutebellmanSlice::to_string(self : NetroutebellmanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn geo_buffer_polygon_frame_make(size : Int) -> GeobufferpolygonFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_frame_len(s : GeobufferpolygonFrame) -> Int { s.size }
+pub fn GeobufferpolygonFrame::len(self : GeobufferpolygonFrame) -> Int { self.size }
 
-pub fn geo_buffer_polygon_frame_get(s : GeobufferpolygonFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonFrame::get(self : GeobufferpolygonFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_frame_set(s : GeobufferpolygonFrame, i : Int, v : Double) -> GeobufferpolygonFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonFrame::set(self : GeobufferpolygonFrame, i : Int, v : Double) -> GeobufferpolygonFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_frame_sum(s : GeobufferpolygonFrame) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonFrame::sum(self : GeobufferpolygonFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_frame_mean(s : GeobufferpolygonFrame) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonFrame::mean(self : GeobufferpolygonFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_frame_scale(s : GeobufferpolygonFrame, f : Double) -> GeobufferpolygonFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonFrame::scale(self : GeobufferpolygonFrame, f : Double) -> GeobufferpolygonFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_frame_add(a : GeobufferpolygonFrame, b : GeobufferpolygonFrame) -> GeobufferpolygonFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonFrame::add(self : GeobufferpolygonFrame, other : GeobufferpolygonFrame) -> GeobufferpolygonFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_frame_copy(s : GeobufferpolygonFrame) -> GeobufferpolygonFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonFrame::copy(self : GeobufferpolygonFrame) -> GeobufferpolygonFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_frame_fill(s : GeobufferpolygonFrame, v : Double) -> GeobufferpolygonFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonFrame::fill(self : GeobufferpolygonFrame, v : Double) -> GeobufferpolygonFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_frame_min(s : GeobufferpolygonFrame) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonFrame::min(self : GeobufferpolygonFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_frame_max(s : GeobufferpolygonFrame) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonFrame::max(self : GeobufferpolygonFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_frame_to_string(s : GeobufferpolygonFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonFrame::to_string(self : GeobufferpolygonFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonTable {
@@ -402,45 +402,45 @@ pub fn geo_buffer_polygon_table_make(size : Int) -> GeobufferpolygonTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_table_len(s : GeobufferpolygonTable) -> Int { s.size }
+pub fn GeobufferpolygonTable::len(self : GeobufferpolygonTable) -> Int { self.size }
 
-pub fn geo_buffer_polygon_table_get(s : GeobufferpolygonTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonTable::get(self : GeobufferpolygonTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_table_set(s : GeobufferpolygonTable, i : Int, v : Double) -> GeobufferpolygonTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonTable::set(self : GeobufferpolygonTable, i : Int, v : Double) -> GeobufferpolygonTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_table_sum(s : GeobufferpolygonTable) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonTable::sum(self : GeobufferpolygonTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_table_mean(s : GeobufferpolygonTable) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonTable::mean(self : GeobufferpolygonTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_table_scale(s : GeobufferpolygonTable, f : Double) -> GeobufferpolygonTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonTable::scale(self : GeobufferpolygonTable, f : Double) -> GeobufferpolygonTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_table_add(a : GeobufferpolygonTable, b : GeobufferpolygonTable) -> GeobufferpolygonTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonTable::add(self : GeobufferpolygonTable, other : GeobufferpolygonTable) -> GeobufferpolygonTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_table_copy(s : GeobufferpolygonTable) -> GeobufferpolygonTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonTable::copy(self : GeobufferpolygonTable) -> GeobufferpolygonTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_table_fill(s : GeobufferpolygonTable, v : Double) -> GeobufferpolygonTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonTable::fill(self : GeobufferpolygonTable, v : Double) -> GeobufferpolygonTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_table_min(s : GeobufferpolygonTable) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonTable::min(self : GeobufferpolygonTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_table_max(s : GeobufferpolygonTable) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonTable::max(self : GeobufferpolygonTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_table_to_string(s : GeobufferpolygonTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonTable::to_string(self : GeobufferpolygonTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonGraphN {
@@ -453,45 +453,45 @@ pub fn geo_buffer_polygon_graphn_make(size : Int) -> GeobufferpolygonGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_graphn_len(s : GeobufferpolygonGraphN) -> Int { s.size }
+pub fn GeobufferpolygonGraphN::len(self : GeobufferpolygonGraphN) -> Int { self.size }
 
-pub fn geo_buffer_polygon_graphn_get(s : GeobufferpolygonGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonGraphN::get(self : GeobufferpolygonGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_graphn_set(s : GeobufferpolygonGraphN, i : Int, v : Double) -> GeobufferpolygonGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonGraphN::set(self : GeobufferpolygonGraphN, i : Int, v : Double) -> GeobufferpolygonGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_graphn_sum(s : GeobufferpolygonGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonGraphN::sum(self : GeobufferpolygonGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_graphn_mean(s : GeobufferpolygonGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonGraphN::mean(self : GeobufferpolygonGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_graphn_scale(s : GeobufferpolygonGraphN, f : Double) -> GeobufferpolygonGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonGraphN::scale(self : GeobufferpolygonGraphN, f : Double) -> GeobufferpolygonGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_graphn_add(a : GeobufferpolygonGraphN, b : GeobufferpolygonGraphN) -> GeobufferpolygonGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonGraphN::add(self : GeobufferpolygonGraphN, other : GeobufferpolygonGraphN) -> GeobufferpolygonGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_graphn_copy(s : GeobufferpolygonGraphN) -> GeobufferpolygonGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonGraphN::copy(self : GeobufferpolygonGraphN) -> GeobufferpolygonGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_graphn_fill(s : GeobufferpolygonGraphN, v : Double) -> GeobufferpolygonGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonGraphN::fill(self : GeobufferpolygonGraphN, v : Double) -> GeobufferpolygonGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_graphn_min(s : GeobufferpolygonGraphN) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonGraphN::min(self : GeobufferpolygonGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_graphn_max(s : GeobufferpolygonGraphN) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonGraphN::max(self : GeobufferpolygonGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_graphn_to_string(s : GeobufferpolygonGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonGraphN::to_string(self : GeobufferpolygonGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonNode {
@@ -504,45 +504,45 @@ pub fn geo_buffer_polygon_node_make(size : Int) -> GeobufferpolygonNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_node_len(s : GeobufferpolygonNode) -> Int { s.size }
+pub fn GeobufferpolygonNode::len(self : GeobufferpolygonNode) -> Int { self.size }
 
-pub fn geo_buffer_polygon_node_get(s : GeobufferpolygonNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonNode::get(self : GeobufferpolygonNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_node_set(s : GeobufferpolygonNode, i : Int, v : Double) -> GeobufferpolygonNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonNode::set(self : GeobufferpolygonNode, i : Int, v : Double) -> GeobufferpolygonNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_node_sum(s : GeobufferpolygonNode) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonNode::sum(self : GeobufferpolygonNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_node_mean(s : GeobufferpolygonNode) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonNode::mean(self : GeobufferpolygonNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_node_scale(s : GeobufferpolygonNode, f : Double) -> GeobufferpolygonNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonNode::scale(self : GeobufferpolygonNode, f : Double) -> GeobufferpolygonNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_node_add(a : GeobufferpolygonNode, b : GeobufferpolygonNode) -> GeobufferpolygonNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonNode::add(self : GeobufferpolygonNode, other : GeobufferpolygonNode) -> GeobufferpolygonNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_node_copy(s : GeobufferpolygonNode) -> GeobufferpolygonNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonNode::copy(self : GeobufferpolygonNode) -> GeobufferpolygonNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_node_fill(s : GeobufferpolygonNode, v : Double) -> GeobufferpolygonNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonNode::fill(self : GeobufferpolygonNode, v : Double) -> GeobufferpolygonNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_node_min(s : GeobufferpolygonNode) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonNode::min(self : GeobufferpolygonNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_node_max(s : GeobufferpolygonNode) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonNode::max(self : GeobufferpolygonNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_node_to_string(s : GeobufferpolygonNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonNode::to_string(self : GeobufferpolygonNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonEdge {
@@ -555,45 +555,45 @@ pub fn geo_buffer_polygon_edge_make(size : Int) -> GeobufferpolygonEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_edge_len(s : GeobufferpolygonEdge) -> Int { s.size }
+pub fn GeobufferpolygonEdge::len(self : GeobufferpolygonEdge) -> Int { self.size }
 
-pub fn geo_buffer_polygon_edge_get(s : GeobufferpolygonEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonEdge::get(self : GeobufferpolygonEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_edge_set(s : GeobufferpolygonEdge, i : Int, v : Double) -> GeobufferpolygonEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonEdge::set(self : GeobufferpolygonEdge, i : Int, v : Double) -> GeobufferpolygonEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_edge_sum(s : GeobufferpolygonEdge) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonEdge::sum(self : GeobufferpolygonEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_edge_mean(s : GeobufferpolygonEdge) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonEdge::mean(self : GeobufferpolygonEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_edge_scale(s : GeobufferpolygonEdge, f : Double) -> GeobufferpolygonEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonEdge::scale(self : GeobufferpolygonEdge, f : Double) -> GeobufferpolygonEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_edge_add(a : GeobufferpolygonEdge, b : GeobufferpolygonEdge) -> GeobufferpolygonEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonEdge::add(self : GeobufferpolygonEdge, other : GeobufferpolygonEdge) -> GeobufferpolygonEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_edge_copy(s : GeobufferpolygonEdge) -> GeobufferpolygonEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonEdge::copy(self : GeobufferpolygonEdge) -> GeobufferpolygonEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_edge_fill(s : GeobufferpolygonEdge, v : Double) -> GeobufferpolygonEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonEdge::fill(self : GeobufferpolygonEdge, v : Double) -> GeobufferpolygonEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_edge_min(s : GeobufferpolygonEdge) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonEdge::min(self : GeobufferpolygonEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_edge_max(s : GeobufferpolygonEdge) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonEdge::max(self : GeobufferpolygonEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_edge_to_string(s : GeobufferpolygonEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonEdge::to_string(self : GeobufferpolygonEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonPath {
@@ -606,45 +606,45 @@ pub fn geo_buffer_polygon_path_make(size : Int) -> GeobufferpolygonPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_path_len(s : GeobufferpolygonPath) -> Int { s.size }
+pub fn GeobufferpolygonPath::len(self : GeobufferpolygonPath) -> Int { self.size }
 
-pub fn geo_buffer_polygon_path_get(s : GeobufferpolygonPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonPath::get(self : GeobufferpolygonPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_path_set(s : GeobufferpolygonPath, i : Int, v : Double) -> GeobufferpolygonPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonPath::set(self : GeobufferpolygonPath, i : Int, v : Double) -> GeobufferpolygonPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_path_sum(s : GeobufferpolygonPath) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonPath::sum(self : GeobufferpolygonPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_path_mean(s : GeobufferpolygonPath) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonPath::mean(self : GeobufferpolygonPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_path_scale(s : GeobufferpolygonPath, f : Double) -> GeobufferpolygonPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonPath::scale(self : GeobufferpolygonPath, f : Double) -> GeobufferpolygonPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_path_add(a : GeobufferpolygonPath, b : GeobufferpolygonPath) -> GeobufferpolygonPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonPath::add(self : GeobufferpolygonPath, other : GeobufferpolygonPath) -> GeobufferpolygonPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_path_copy(s : GeobufferpolygonPath) -> GeobufferpolygonPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonPath::copy(self : GeobufferpolygonPath) -> GeobufferpolygonPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_path_fill(s : GeobufferpolygonPath, v : Double) -> GeobufferpolygonPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonPath::fill(self : GeobufferpolygonPath, v : Double) -> GeobufferpolygonPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_path_min(s : GeobufferpolygonPath) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonPath::min(self : GeobufferpolygonPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_path_max(s : GeobufferpolygonPath) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonPath::max(self : GeobufferpolygonPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_path_to_string(s : GeobufferpolygonPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonPath::to_string(self : GeobufferpolygonPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonCluster {
@@ -657,45 +657,45 @@ pub fn geo_buffer_polygon_cluster_make(size : Int) -> GeobufferpolygonCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_cluster_len(s : GeobufferpolygonCluster) -> Int { s.size }
+pub fn GeobufferpolygonCluster::len(self : GeobufferpolygonCluster) -> Int { self.size }
 
-pub fn geo_buffer_polygon_cluster_get(s : GeobufferpolygonCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonCluster::get(self : GeobufferpolygonCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_cluster_set(s : GeobufferpolygonCluster, i : Int, v : Double) -> GeobufferpolygonCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCluster::set(self : GeobufferpolygonCluster, i : Int, v : Double) -> GeobufferpolygonCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cluster_sum(s : GeobufferpolygonCluster) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonCluster::sum(self : GeobufferpolygonCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_cluster_mean(s : GeobufferpolygonCluster) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonCluster::mean(self : GeobufferpolygonCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_cluster_scale(s : GeobufferpolygonCluster, f : Double) -> GeobufferpolygonCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCluster::scale(self : GeobufferpolygonCluster, f : Double) -> GeobufferpolygonCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cluster_add(a : GeobufferpolygonCluster, b : GeobufferpolygonCluster) -> GeobufferpolygonCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonCluster::add(self : GeobufferpolygonCluster, other : GeobufferpolygonCluster) -> GeobufferpolygonCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cluster_copy(s : GeobufferpolygonCluster) -> GeobufferpolygonCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCluster::copy(self : GeobufferpolygonCluster) -> GeobufferpolygonCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cluster_fill(s : GeobufferpolygonCluster, v : Double) -> GeobufferpolygonCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCluster::fill(self : GeobufferpolygonCluster, v : Double) -> GeobufferpolygonCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cluster_min(s : GeobufferpolygonCluster) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonCluster::min(self : GeobufferpolygonCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_cluster_max(s : GeobufferpolygonCluster) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonCluster::max(self : GeobufferpolygonCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_cluster_to_string(s : GeobufferpolygonCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonCluster::to_string(self : GeobufferpolygonCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonModel {
@@ -708,45 +708,45 @@ pub fn geo_buffer_polygon_model_make(size : Int) -> GeobufferpolygonModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_model_len(s : GeobufferpolygonModel) -> Int { s.size }
+pub fn GeobufferpolygonModel::len(self : GeobufferpolygonModel) -> Int { self.size }
 
-pub fn geo_buffer_polygon_model_get(s : GeobufferpolygonModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonModel::get(self : GeobufferpolygonModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_model_set(s : GeobufferpolygonModel, i : Int, v : Double) -> GeobufferpolygonModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonModel::set(self : GeobufferpolygonModel, i : Int, v : Double) -> GeobufferpolygonModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_model_sum(s : GeobufferpolygonModel) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonModel::sum(self : GeobufferpolygonModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_model_mean(s : GeobufferpolygonModel) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonModel::mean(self : GeobufferpolygonModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_model_scale(s : GeobufferpolygonModel, f : Double) -> GeobufferpolygonModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonModel::scale(self : GeobufferpolygonModel, f : Double) -> GeobufferpolygonModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_model_add(a : GeobufferpolygonModel, b : GeobufferpolygonModel) -> GeobufferpolygonModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonModel::add(self : GeobufferpolygonModel, other : GeobufferpolygonModel) -> GeobufferpolygonModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_model_copy(s : GeobufferpolygonModel) -> GeobufferpolygonModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonModel::copy(self : GeobufferpolygonModel) -> GeobufferpolygonModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_model_fill(s : GeobufferpolygonModel, v : Double) -> GeobufferpolygonModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonModel::fill(self : GeobufferpolygonModel, v : Double) -> GeobufferpolygonModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_model_min(s : GeobufferpolygonModel) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonModel::min(self : GeobufferpolygonModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_model_max(s : GeobufferpolygonModel) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonModel::max(self : GeobufferpolygonModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_model_to_string(s : GeobufferpolygonModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonModel::to_string(self : GeobufferpolygonModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonLayer {
@@ -759,45 +759,45 @@ pub fn geo_buffer_polygon_layer_make(size : Int) -> GeobufferpolygonLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_layer_len(s : GeobufferpolygonLayer) -> Int { s.size }
+pub fn GeobufferpolygonLayer::len(self : GeobufferpolygonLayer) -> Int { self.size }
 
-pub fn geo_buffer_polygon_layer_get(s : GeobufferpolygonLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonLayer::get(self : GeobufferpolygonLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_layer_set(s : GeobufferpolygonLayer, i : Int, v : Double) -> GeobufferpolygonLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonLayer::set(self : GeobufferpolygonLayer, i : Int, v : Double) -> GeobufferpolygonLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_layer_sum(s : GeobufferpolygonLayer) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonLayer::sum(self : GeobufferpolygonLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_layer_mean(s : GeobufferpolygonLayer) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonLayer::mean(self : GeobufferpolygonLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_layer_scale(s : GeobufferpolygonLayer, f : Double) -> GeobufferpolygonLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonLayer::scale(self : GeobufferpolygonLayer, f : Double) -> GeobufferpolygonLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_layer_add(a : GeobufferpolygonLayer, b : GeobufferpolygonLayer) -> GeobufferpolygonLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonLayer::add(self : GeobufferpolygonLayer, other : GeobufferpolygonLayer) -> GeobufferpolygonLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_layer_copy(s : GeobufferpolygonLayer) -> GeobufferpolygonLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonLayer::copy(self : GeobufferpolygonLayer) -> GeobufferpolygonLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_layer_fill(s : GeobufferpolygonLayer, v : Double) -> GeobufferpolygonLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonLayer::fill(self : GeobufferpolygonLayer, v : Double) -> GeobufferpolygonLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_layer_min(s : GeobufferpolygonLayer) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonLayer::min(self : GeobufferpolygonLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_layer_max(s : GeobufferpolygonLayer) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonLayer::max(self : GeobufferpolygonLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_layer_to_string(s : GeobufferpolygonLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonLayer::to_string(self : GeobufferpolygonLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonBuffer {
@@ -810,45 +810,45 @@ pub fn geo_buffer_polygon_buffer_make(size : Int) -> GeobufferpolygonBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_buffer_len(s : GeobufferpolygonBuffer) -> Int { s.size }
+pub fn GeobufferpolygonBuffer::len(self : GeobufferpolygonBuffer) -> Int { self.size }
 
-pub fn geo_buffer_polygon_buffer_get(s : GeobufferpolygonBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonBuffer::get(self : GeobufferpolygonBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_buffer_set(s : GeobufferpolygonBuffer, i : Int, v : Double) -> GeobufferpolygonBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonBuffer::set(self : GeobufferpolygonBuffer, i : Int, v : Double) -> GeobufferpolygonBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_buffer_sum(s : GeobufferpolygonBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonBuffer::sum(self : GeobufferpolygonBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_buffer_mean(s : GeobufferpolygonBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonBuffer::mean(self : GeobufferpolygonBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_buffer_scale(s : GeobufferpolygonBuffer, f : Double) -> GeobufferpolygonBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonBuffer::scale(self : GeobufferpolygonBuffer, f : Double) -> GeobufferpolygonBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_buffer_add(a : GeobufferpolygonBuffer, b : GeobufferpolygonBuffer) -> GeobufferpolygonBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonBuffer::add(self : GeobufferpolygonBuffer, other : GeobufferpolygonBuffer) -> GeobufferpolygonBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_buffer_copy(s : GeobufferpolygonBuffer) -> GeobufferpolygonBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonBuffer::copy(self : GeobufferpolygonBuffer) -> GeobufferpolygonBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_buffer_fill(s : GeobufferpolygonBuffer, v : Double) -> GeobufferpolygonBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonBuffer::fill(self : GeobufferpolygonBuffer, v : Double) -> GeobufferpolygonBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_buffer_min(s : GeobufferpolygonBuffer) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonBuffer::min(self : GeobufferpolygonBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_buffer_max(s : GeobufferpolygonBuffer) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonBuffer::max(self : GeobufferpolygonBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_buffer_to_string(s : GeobufferpolygonBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonBuffer::to_string(self : GeobufferpolygonBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonCursor {
@@ -861,45 +861,45 @@ pub fn geo_buffer_polygon_cursor_make(size : Int) -> GeobufferpolygonCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_cursor_len(s : GeobufferpolygonCursor) -> Int { s.size }
+pub fn GeobufferpolygonCursor::len(self : GeobufferpolygonCursor) -> Int { self.size }
 
-pub fn geo_buffer_polygon_cursor_get(s : GeobufferpolygonCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonCursor::get(self : GeobufferpolygonCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_cursor_set(s : GeobufferpolygonCursor, i : Int, v : Double) -> GeobufferpolygonCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCursor::set(self : GeobufferpolygonCursor, i : Int, v : Double) -> GeobufferpolygonCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cursor_sum(s : GeobufferpolygonCursor) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonCursor::sum(self : GeobufferpolygonCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_cursor_mean(s : GeobufferpolygonCursor) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonCursor::mean(self : GeobufferpolygonCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_cursor_scale(s : GeobufferpolygonCursor, f : Double) -> GeobufferpolygonCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCursor::scale(self : GeobufferpolygonCursor, f : Double) -> GeobufferpolygonCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cursor_add(a : GeobufferpolygonCursor, b : GeobufferpolygonCursor) -> GeobufferpolygonCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonCursor::add(self : GeobufferpolygonCursor, other : GeobufferpolygonCursor) -> GeobufferpolygonCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cursor_copy(s : GeobufferpolygonCursor) -> GeobufferpolygonCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCursor::copy(self : GeobufferpolygonCursor) -> GeobufferpolygonCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cursor_fill(s : GeobufferpolygonCursor, v : Double) -> GeobufferpolygonCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonCursor::fill(self : GeobufferpolygonCursor, v : Double) -> GeobufferpolygonCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_cursor_min(s : GeobufferpolygonCursor) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonCursor::min(self : GeobufferpolygonCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_cursor_max(s : GeobufferpolygonCursor) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonCursor::max(self : GeobufferpolygonCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_cursor_to_string(s : GeobufferpolygonCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonCursor::to_string(self : GeobufferpolygonCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonView {
@@ -912,45 +912,45 @@ pub fn geo_buffer_polygon_view_make(size : Int) -> GeobufferpolygonView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_view_len(s : GeobufferpolygonView) -> Int { s.size }
+pub fn GeobufferpolygonView::len(self : GeobufferpolygonView) -> Int { self.size }
 
-pub fn geo_buffer_polygon_view_get(s : GeobufferpolygonView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonView::get(self : GeobufferpolygonView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_view_set(s : GeobufferpolygonView, i : Int, v : Double) -> GeobufferpolygonView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonView::set(self : GeobufferpolygonView, i : Int, v : Double) -> GeobufferpolygonView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_view_sum(s : GeobufferpolygonView) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonView::sum(self : GeobufferpolygonView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_view_mean(s : GeobufferpolygonView) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonView::mean(self : GeobufferpolygonView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_view_scale(s : GeobufferpolygonView, f : Double) -> GeobufferpolygonView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonView::scale(self : GeobufferpolygonView, f : Double) -> GeobufferpolygonView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_view_add(a : GeobufferpolygonView, b : GeobufferpolygonView) -> GeobufferpolygonView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonView::add(self : GeobufferpolygonView, other : GeobufferpolygonView) -> GeobufferpolygonView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_view_copy(s : GeobufferpolygonView) -> GeobufferpolygonView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonView::copy(self : GeobufferpolygonView) -> GeobufferpolygonView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_view_fill(s : GeobufferpolygonView, v : Double) -> GeobufferpolygonView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonView::fill(self : GeobufferpolygonView, v : Double) -> GeobufferpolygonView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_view_min(s : GeobufferpolygonView) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonView::min(self : GeobufferpolygonView) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_view_max(s : GeobufferpolygonView) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonView::max(self : GeobufferpolygonView) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_view_to_string(s : GeobufferpolygonView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonView::to_string(self : GeobufferpolygonView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonRange {
@@ -963,45 +963,45 @@ pub fn geo_buffer_polygon_range_make(size : Int) -> GeobufferpolygonRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_range_len(s : GeobufferpolygonRange) -> Int { s.size }
+pub fn GeobufferpolygonRange::len(self : GeobufferpolygonRange) -> Int { self.size }
 
-pub fn geo_buffer_polygon_range_get(s : GeobufferpolygonRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonRange::get(self : GeobufferpolygonRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_range_set(s : GeobufferpolygonRange, i : Int, v : Double) -> GeobufferpolygonRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonRange::set(self : GeobufferpolygonRange, i : Int, v : Double) -> GeobufferpolygonRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_range_sum(s : GeobufferpolygonRange) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonRange::sum(self : GeobufferpolygonRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_range_mean(s : GeobufferpolygonRange) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonRange::mean(self : GeobufferpolygonRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_range_scale(s : GeobufferpolygonRange, f : Double) -> GeobufferpolygonRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonRange::scale(self : GeobufferpolygonRange, f : Double) -> GeobufferpolygonRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_range_add(a : GeobufferpolygonRange, b : GeobufferpolygonRange) -> GeobufferpolygonRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonRange::add(self : GeobufferpolygonRange, other : GeobufferpolygonRange) -> GeobufferpolygonRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_range_copy(s : GeobufferpolygonRange) -> GeobufferpolygonRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonRange::copy(self : GeobufferpolygonRange) -> GeobufferpolygonRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_range_fill(s : GeobufferpolygonRange, v : Double) -> GeobufferpolygonRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonRange::fill(self : GeobufferpolygonRange, v : Double) -> GeobufferpolygonRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_range_min(s : GeobufferpolygonRange) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonRange::min(self : GeobufferpolygonRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_range_max(s : GeobufferpolygonRange) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonRange::max(self : GeobufferpolygonRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_range_to_string(s : GeobufferpolygonRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonRange::to_string(self : GeobufferpolygonRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferpolygonSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_buffer_polygon_slice_make(size : Int) -> GeobufferpolygonSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_polygon_slice_len(s : GeobufferpolygonSlice) -> Int { s.size }
+pub fn GeobufferpolygonSlice::len(self : GeobufferpolygonSlice) -> Int { self.size }
 
-pub fn geo_buffer_polygon_slice_get(s : GeobufferpolygonSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferpolygonSlice::get(self : GeobufferpolygonSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_polygon_slice_set(s : GeobufferpolygonSlice, i : Int, v : Double) -> GeobufferpolygonSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferpolygonSlice::set(self : GeobufferpolygonSlice, i : Int, v : Double) -> GeobufferpolygonSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_slice_sum(s : GeobufferpolygonSlice) -> Double { @_common.sum(s.data) }
+pub fn GeobufferpolygonSlice::sum(self : GeobufferpolygonSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_polygon_slice_mean(s : GeobufferpolygonSlice) -> Double { @_common.mean(s.data) }
+pub fn GeobufferpolygonSlice::mean(self : GeobufferpolygonSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_polygon_slice_scale(s : GeobufferpolygonSlice, f : Double) -> GeobufferpolygonSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonSlice::scale(self : GeobufferpolygonSlice, f : Double) -> GeobufferpolygonSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_slice_add(a : GeobufferpolygonSlice, b : GeobufferpolygonSlice) -> GeobufferpolygonSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferpolygonSlice::add(self : GeobufferpolygonSlice, other : GeobufferpolygonSlice) -> GeobufferpolygonSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_slice_copy(s : GeobufferpolygonSlice) -> GeobufferpolygonSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonSlice::copy(self : GeobufferpolygonSlice) -> GeobufferpolygonSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_slice_fill(s : GeobufferpolygonSlice, v : Double) -> GeobufferpolygonSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferpolygonSlice::fill(self : GeobufferpolygonSlice, v : Double) -> GeobufferpolygonSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_polygon_slice_min(s : GeobufferpolygonSlice) -> Double { @_common.min(s.data) }
+pub fn GeobufferpolygonSlice::min(self : GeobufferpolygonSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_polygon_slice_max(s : GeobufferpolygonSlice) -> Double { @_common.max(s.data) }
+pub fn GeobufferpolygonSlice::max(self : GeobufferpolygonSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_polygon_slice_to_string(s : GeobufferpolygonSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferpolygonSlice::to_string(self : GeobufferpolygonSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

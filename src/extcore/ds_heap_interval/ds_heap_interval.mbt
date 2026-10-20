@@ -351,45 +351,45 @@ pub fn ds_heap_interval_frame_make(size : Int) -> DsheapintervalFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_frame_len(s : DsheapintervalFrame) -> Int { s.size }
+pub fn DsheapintervalFrame::len(self : DsheapintervalFrame) -> Int { self.size }
 
-pub fn ds_heap_interval_frame_get(s : DsheapintervalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalFrame::get(self : DsheapintervalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_frame_set(s : DsheapintervalFrame, i : Int, v : Double) -> DsheapintervalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalFrame::set(self : DsheapintervalFrame, i : Int, v : Double) -> DsheapintervalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_frame_sum(s : DsheapintervalFrame) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalFrame::sum(self : DsheapintervalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_frame_mean(s : DsheapintervalFrame) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalFrame::mean(self : DsheapintervalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_frame_scale(s : DsheapintervalFrame, f : Double) -> DsheapintervalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalFrame::scale(self : DsheapintervalFrame, f : Double) -> DsheapintervalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_frame_add(a : DsheapintervalFrame, b : DsheapintervalFrame) -> DsheapintervalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalFrame::add(self : DsheapintervalFrame, other : DsheapintervalFrame) -> DsheapintervalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_frame_copy(s : DsheapintervalFrame) -> DsheapintervalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalFrame::copy(self : DsheapintervalFrame) -> DsheapintervalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_frame_fill(s : DsheapintervalFrame, v : Double) -> DsheapintervalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalFrame::fill(self : DsheapintervalFrame, v : Double) -> DsheapintervalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_frame_min(s : DsheapintervalFrame) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalFrame::min(self : DsheapintervalFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_frame_max(s : DsheapintervalFrame) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalFrame::max(self : DsheapintervalFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_frame_to_string(s : DsheapintervalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalFrame::to_string(self : DsheapintervalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalTable {
@@ -402,45 +402,45 @@ pub fn ds_heap_interval_table_make(size : Int) -> DsheapintervalTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_table_len(s : DsheapintervalTable) -> Int { s.size }
+pub fn DsheapintervalTable::len(self : DsheapintervalTable) -> Int { self.size }
 
-pub fn ds_heap_interval_table_get(s : DsheapintervalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalTable::get(self : DsheapintervalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_table_set(s : DsheapintervalTable, i : Int, v : Double) -> DsheapintervalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalTable::set(self : DsheapintervalTable, i : Int, v : Double) -> DsheapintervalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_table_sum(s : DsheapintervalTable) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalTable::sum(self : DsheapintervalTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_table_mean(s : DsheapintervalTable) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalTable::mean(self : DsheapintervalTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_table_scale(s : DsheapintervalTable, f : Double) -> DsheapintervalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalTable::scale(self : DsheapintervalTable, f : Double) -> DsheapintervalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_table_add(a : DsheapintervalTable, b : DsheapintervalTable) -> DsheapintervalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalTable::add(self : DsheapintervalTable, other : DsheapintervalTable) -> DsheapintervalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_table_copy(s : DsheapintervalTable) -> DsheapintervalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalTable::copy(self : DsheapintervalTable) -> DsheapintervalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_table_fill(s : DsheapintervalTable, v : Double) -> DsheapintervalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalTable::fill(self : DsheapintervalTable, v : Double) -> DsheapintervalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_table_min(s : DsheapintervalTable) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalTable::min(self : DsheapintervalTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_table_max(s : DsheapintervalTable) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalTable::max(self : DsheapintervalTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_table_to_string(s : DsheapintervalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalTable::to_string(self : DsheapintervalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalGraphN {
@@ -453,45 +453,45 @@ pub fn ds_heap_interval_graphn_make(size : Int) -> DsheapintervalGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_graphn_len(s : DsheapintervalGraphN) -> Int { s.size }
+pub fn DsheapintervalGraphN::len(self : DsheapintervalGraphN) -> Int { self.size }
 
-pub fn ds_heap_interval_graphn_get(s : DsheapintervalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalGraphN::get(self : DsheapintervalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_graphn_set(s : DsheapintervalGraphN, i : Int, v : Double) -> DsheapintervalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalGraphN::set(self : DsheapintervalGraphN, i : Int, v : Double) -> DsheapintervalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_graphn_sum(s : DsheapintervalGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalGraphN::sum(self : DsheapintervalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_graphn_mean(s : DsheapintervalGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalGraphN::mean(self : DsheapintervalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_graphn_scale(s : DsheapintervalGraphN, f : Double) -> DsheapintervalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalGraphN::scale(self : DsheapintervalGraphN, f : Double) -> DsheapintervalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_graphn_add(a : DsheapintervalGraphN, b : DsheapintervalGraphN) -> DsheapintervalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalGraphN::add(self : DsheapintervalGraphN, other : DsheapintervalGraphN) -> DsheapintervalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_graphn_copy(s : DsheapintervalGraphN) -> DsheapintervalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalGraphN::copy(self : DsheapintervalGraphN) -> DsheapintervalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_graphn_fill(s : DsheapintervalGraphN, v : Double) -> DsheapintervalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalGraphN::fill(self : DsheapintervalGraphN, v : Double) -> DsheapintervalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_graphn_min(s : DsheapintervalGraphN) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalGraphN::min(self : DsheapintervalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_graphn_max(s : DsheapintervalGraphN) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalGraphN::max(self : DsheapintervalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_graphn_to_string(s : DsheapintervalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalGraphN::to_string(self : DsheapintervalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalNode {
@@ -504,45 +504,45 @@ pub fn ds_heap_interval_node_make(size : Int) -> DsheapintervalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_node_len(s : DsheapintervalNode) -> Int { s.size }
+pub fn DsheapintervalNode::len(self : DsheapintervalNode) -> Int { self.size }
 
-pub fn ds_heap_interval_node_get(s : DsheapintervalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalNode::get(self : DsheapintervalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_node_set(s : DsheapintervalNode, i : Int, v : Double) -> DsheapintervalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalNode::set(self : DsheapintervalNode, i : Int, v : Double) -> DsheapintervalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_node_sum(s : DsheapintervalNode) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalNode::sum(self : DsheapintervalNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_node_mean(s : DsheapintervalNode) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalNode::mean(self : DsheapintervalNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_node_scale(s : DsheapintervalNode, f : Double) -> DsheapintervalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalNode::scale(self : DsheapintervalNode, f : Double) -> DsheapintervalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_node_add(a : DsheapintervalNode, b : DsheapintervalNode) -> DsheapintervalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalNode::add(self : DsheapintervalNode, other : DsheapintervalNode) -> DsheapintervalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_node_copy(s : DsheapintervalNode) -> DsheapintervalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalNode::copy(self : DsheapintervalNode) -> DsheapintervalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_node_fill(s : DsheapintervalNode, v : Double) -> DsheapintervalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalNode::fill(self : DsheapintervalNode, v : Double) -> DsheapintervalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_node_min(s : DsheapintervalNode) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalNode::min(self : DsheapintervalNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_node_max(s : DsheapintervalNode) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalNode::max(self : DsheapintervalNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_node_to_string(s : DsheapintervalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalNode::to_string(self : DsheapintervalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalEdge {
@@ -555,45 +555,45 @@ pub fn ds_heap_interval_edge_make(size : Int) -> DsheapintervalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_edge_len(s : DsheapintervalEdge) -> Int { s.size }
+pub fn DsheapintervalEdge::len(self : DsheapintervalEdge) -> Int { self.size }
 
-pub fn ds_heap_interval_edge_get(s : DsheapintervalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalEdge::get(self : DsheapintervalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_edge_set(s : DsheapintervalEdge, i : Int, v : Double) -> DsheapintervalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalEdge::set(self : DsheapintervalEdge, i : Int, v : Double) -> DsheapintervalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_edge_sum(s : DsheapintervalEdge) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalEdge::sum(self : DsheapintervalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_edge_mean(s : DsheapintervalEdge) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalEdge::mean(self : DsheapintervalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_edge_scale(s : DsheapintervalEdge, f : Double) -> DsheapintervalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalEdge::scale(self : DsheapintervalEdge, f : Double) -> DsheapintervalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_edge_add(a : DsheapintervalEdge, b : DsheapintervalEdge) -> DsheapintervalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalEdge::add(self : DsheapintervalEdge, other : DsheapintervalEdge) -> DsheapintervalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_edge_copy(s : DsheapintervalEdge) -> DsheapintervalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalEdge::copy(self : DsheapintervalEdge) -> DsheapintervalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_edge_fill(s : DsheapintervalEdge, v : Double) -> DsheapintervalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalEdge::fill(self : DsheapintervalEdge, v : Double) -> DsheapintervalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_edge_min(s : DsheapintervalEdge) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalEdge::min(self : DsheapintervalEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_edge_max(s : DsheapintervalEdge) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalEdge::max(self : DsheapintervalEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_edge_to_string(s : DsheapintervalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalEdge::to_string(self : DsheapintervalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalPath {
@@ -606,45 +606,45 @@ pub fn ds_heap_interval_path_make(size : Int) -> DsheapintervalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_path_len(s : DsheapintervalPath) -> Int { s.size }
+pub fn DsheapintervalPath::len(self : DsheapintervalPath) -> Int { self.size }
 
-pub fn ds_heap_interval_path_get(s : DsheapintervalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalPath::get(self : DsheapintervalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_path_set(s : DsheapintervalPath, i : Int, v : Double) -> DsheapintervalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalPath::set(self : DsheapintervalPath, i : Int, v : Double) -> DsheapintervalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_path_sum(s : DsheapintervalPath) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalPath::sum(self : DsheapintervalPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_path_mean(s : DsheapintervalPath) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalPath::mean(self : DsheapintervalPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_path_scale(s : DsheapintervalPath, f : Double) -> DsheapintervalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalPath::scale(self : DsheapintervalPath, f : Double) -> DsheapintervalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_path_add(a : DsheapintervalPath, b : DsheapintervalPath) -> DsheapintervalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalPath::add(self : DsheapintervalPath, other : DsheapintervalPath) -> DsheapintervalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_path_copy(s : DsheapintervalPath) -> DsheapintervalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalPath::copy(self : DsheapintervalPath) -> DsheapintervalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_path_fill(s : DsheapintervalPath, v : Double) -> DsheapintervalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalPath::fill(self : DsheapintervalPath, v : Double) -> DsheapintervalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_path_min(s : DsheapintervalPath) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalPath::min(self : DsheapintervalPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_path_max(s : DsheapintervalPath) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalPath::max(self : DsheapintervalPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_path_to_string(s : DsheapintervalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalPath::to_string(self : DsheapintervalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalCluster {
@@ -657,45 +657,45 @@ pub fn ds_heap_interval_cluster_make(size : Int) -> DsheapintervalCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_cluster_len(s : DsheapintervalCluster) -> Int { s.size }
+pub fn DsheapintervalCluster::len(self : DsheapintervalCluster) -> Int { self.size }
 
-pub fn ds_heap_interval_cluster_get(s : DsheapintervalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalCluster::get(self : DsheapintervalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_cluster_set(s : DsheapintervalCluster, i : Int, v : Double) -> DsheapintervalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalCluster::set(self : DsheapintervalCluster, i : Int, v : Double) -> DsheapintervalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cluster_sum(s : DsheapintervalCluster) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalCluster::sum(self : DsheapintervalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_cluster_mean(s : DsheapintervalCluster) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalCluster::mean(self : DsheapintervalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_cluster_scale(s : DsheapintervalCluster, f : Double) -> DsheapintervalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalCluster::scale(self : DsheapintervalCluster, f : Double) -> DsheapintervalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cluster_add(a : DsheapintervalCluster, b : DsheapintervalCluster) -> DsheapintervalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalCluster::add(self : DsheapintervalCluster, other : DsheapintervalCluster) -> DsheapintervalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cluster_copy(s : DsheapintervalCluster) -> DsheapintervalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalCluster::copy(self : DsheapintervalCluster) -> DsheapintervalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cluster_fill(s : DsheapintervalCluster, v : Double) -> DsheapintervalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalCluster::fill(self : DsheapintervalCluster, v : Double) -> DsheapintervalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cluster_min(s : DsheapintervalCluster) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalCluster::min(self : DsheapintervalCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_cluster_max(s : DsheapintervalCluster) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalCluster::max(self : DsheapintervalCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_cluster_to_string(s : DsheapintervalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalCluster::to_string(self : DsheapintervalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalModel {
@@ -708,45 +708,45 @@ pub fn ds_heap_interval_model_make(size : Int) -> DsheapintervalModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_model_len(s : DsheapintervalModel) -> Int { s.size }
+pub fn DsheapintervalModel::len(self : DsheapintervalModel) -> Int { self.size }
 
-pub fn ds_heap_interval_model_get(s : DsheapintervalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalModel::get(self : DsheapintervalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_model_set(s : DsheapintervalModel, i : Int, v : Double) -> DsheapintervalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalModel::set(self : DsheapintervalModel, i : Int, v : Double) -> DsheapintervalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_model_sum(s : DsheapintervalModel) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalModel::sum(self : DsheapintervalModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_model_mean(s : DsheapintervalModel) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalModel::mean(self : DsheapintervalModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_model_scale(s : DsheapintervalModel, f : Double) -> DsheapintervalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalModel::scale(self : DsheapintervalModel, f : Double) -> DsheapintervalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_model_add(a : DsheapintervalModel, b : DsheapintervalModel) -> DsheapintervalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalModel::add(self : DsheapintervalModel, other : DsheapintervalModel) -> DsheapintervalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_model_copy(s : DsheapintervalModel) -> DsheapintervalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalModel::copy(self : DsheapintervalModel) -> DsheapintervalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_model_fill(s : DsheapintervalModel, v : Double) -> DsheapintervalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalModel::fill(self : DsheapintervalModel, v : Double) -> DsheapintervalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_model_min(s : DsheapintervalModel) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalModel::min(self : DsheapintervalModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_model_max(s : DsheapintervalModel) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalModel::max(self : DsheapintervalModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_model_to_string(s : DsheapintervalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalModel::to_string(self : DsheapintervalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalLayer {
@@ -759,45 +759,45 @@ pub fn ds_heap_interval_layer_make(size : Int) -> DsheapintervalLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_layer_len(s : DsheapintervalLayer) -> Int { s.size }
+pub fn DsheapintervalLayer::len(self : DsheapintervalLayer) -> Int { self.size }
 
-pub fn ds_heap_interval_layer_get(s : DsheapintervalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalLayer::get(self : DsheapintervalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_layer_set(s : DsheapintervalLayer, i : Int, v : Double) -> DsheapintervalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalLayer::set(self : DsheapintervalLayer, i : Int, v : Double) -> DsheapintervalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_layer_sum(s : DsheapintervalLayer) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalLayer::sum(self : DsheapintervalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_layer_mean(s : DsheapintervalLayer) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalLayer::mean(self : DsheapintervalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_layer_scale(s : DsheapintervalLayer, f : Double) -> DsheapintervalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalLayer::scale(self : DsheapintervalLayer, f : Double) -> DsheapintervalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_layer_add(a : DsheapintervalLayer, b : DsheapintervalLayer) -> DsheapintervalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalLayer::add(self : DsheapintervalLayer, other : DsheapintervalLayer) -> DsheapintervalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_layer_copy(s : DsheapintervalLayer) -> DsheapintervalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalLayer::copy(self : DsheapintervalLayer) -> DsheapintervalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_layer_fill(s : DsheapintervalLayer, v : Double) -> DsheapintervalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalLayer::fill(self : DsheapintervalLayer, v : Double) -> DsheapintervalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_layer_min(s : DsheapintervalLayer) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalLayer::min(self : DsheapintervalLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_layer_max(s : DsheapintervalLayer) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalLayer::max(self : DsheapintervalLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_layer_to_string(s : DsheapintervalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalLayer::to_string(self : DsheapintervalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalBuffer {
@@ -810,45 +810,45 @@ pub fn ds_heap_interval_buffer_make(size : Int) -> DsheapintervalBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_buffer_len(s : DsheapintervalBuffer) -> Int { s.size }
+pub fn DsheapintervalBuffer::len(self : DsheapintervalBuffer) -> Int { self.size }
 
-pub fn ds_heap_interval_buffer_get(s : DsheapintervalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalBuffer::get(self : DsheapintervalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_buffer_set(s : DsheapintervalBuffer, i : Int, v : Double) -> DsheapintervalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalBuffer::set(self : DsheapintervalBuffer, i : Int, v : Double) -> DsheapintervalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_buffer_sum(s : DsheapintervalBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalBuffer::sum(self : DsheapintervalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_buffer_mean(s : DsheapintervalBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalBuffer::mean(self : DsheapintervalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_buffer_scale(s : DsheapintervalBuffer, f : Double) -> DsheapintervalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalBuffer::scale(self : DsheapintervalBuffer, f : Double) -> DsheapintervalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_buffer_add(a : DsheapintervalBuffer, b : DsheapintervalBuffer) -> DsheapintervalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalBuffer::add(self : DsheapintervalBuffer, other : DsheapintervalBuffer) -> DsheapintervalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_buffer_copy(s : DsheapintervalBuffer) -> DsheapintervalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalBuffer::copy(self : DsheapintervalBuffer) -> DsheapintervalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_buffer_fill(s : DsheapintervalBuffer, v : Double) -> DsheapintervalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalBuffer::fill(self : DsheapintervalBuffer, v : Double) -> DsheapintervalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_buffer_min(s : DsheapintervalBuffer) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalBuffer::min(self : DsheapintervalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_buffer_max(s : DsheapintervalBuffer) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalBuffer::max(self : DsheapintervalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_buffer_to_string(s : DsheapintervalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalBuffer::to_string(self : DsheapintervalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalCursor {
@@ -861,45 +861,45 @@ pub fn ds_heap_interval_cursor_make(size : Int) -> DsheapintervalCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_cursor_len(s : DsheapintervalCursor) -> Int { s.size }
+pub fn DsheapintervalCursor::len(self : DsheapintervalCursor) -> Int { self.size }
 
-pub fn ds_heap_interval_cursor_get(s : DsheapintervalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalCursor::get(self : DsheapintervalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_cursor_set(s : DsheapintervalCursor, i : Int, v : Double) -> DsheapintervalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalCursor::set(self : DsheapintervalCursor, i : Int, v : Double) -> DsheapintervalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cursor_sum(s : DsheapintervalCursor) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalCursor::sum(self : DsheapintervalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_cursor_mean(s : DsheapintervalCursor) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalCursor::mean(self : DsheapintervalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_cursor_scale(s : DsheapintervalCursor, f : Double) -> DsheapintervalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalCursor::scale(self : DsheapintervalCursor, f : Double) -> DsheapintervalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cursor_add(a : DsheapintervalCursor, b : DsheapintervalCursor) -> DsheapintervalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalCursor::add(self : DsheapintervalCursor, other : DsheapintervalCursor) -> DsheapintervalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cursor_copy(s : DsheapintervalCursor) -> DsheapintervalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalCursor::copy(self : DsheapintervalCursor) -> DsheapintervalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cursor_fill(s : DsheapintervalCursor, v : Double) -> DsheapintervalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalCursor::fill(self : DsheapintervalCursor, v : Double) -> DsheapintervalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_cursor_min(s : DsheapintervalCursor) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalCursor::min(self : DsheapintervalCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_cursor_max(s : DsheapintervalCursor) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalCursor::max(self : DsheapintervalCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_cursor_to_string(s : DsheapintervalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalCursor::to_string(self : DsheapintervalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalView {
@@ -912,45 +912,45 @@ pub fn ds_heap_interval_view_make(size : Int) -> DsheapintervalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_view_len(s : DsheapintervalView) -> Int { s.size }
+pub fn DsheapintervalView::len(self : DsheapintervalView) -> Int { self.size }
 
-pub fn ds_heap_interval_view_get(s : DsheapintervalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalView::get(self : DsheapintervalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_view_set(s : DsheapintervalView, i : Int, v : Double) -> DsheapintervalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalView::set(self : DsheapintervalView, i : Int, v : Double) -> DsheapintervalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_view_sum(s : DsheapintervalView) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalView::sum(self : DsheapintervalView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_view_mean(s : DsheapintervalView) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalView::mean(self : DsheapintervalView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_view_scale(s : DsheapintervalView, f : Double) -> DsheapintervalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalView::scale(self : DsheapintervalView, f : Double) -> DsheapintervalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_view_add(a : DsheapintervalView, b : DsheapintervalView) -> DsheapintervalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalView::add(self : DsheapintervalView, other : DsheapintervalView) -> DsheapintervalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_view_copy(s : DsheapintervalView) -> DsheapintervalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalView::copy(self : DsheapintervalView) -> DsheapintervalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_view_fill(s : DsheapintervalView, v : Double) -> DsheapintervalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalView::fill(self : DsheapintervalView, v : Double) -> DsheapintervalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_view_min(s : DsheapintervalView) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalView::min(self : DsheapintervalView) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_view_max(s : DsheapintervalView) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalView::max(self : DsheapintervalView) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_view_to_string(s : DsheapintervalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalView::to_string(self : DsheapintervalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalRange {
@@ -963,45 +963,45 @@ pub fn ds_heap_interval_range_make(size : Int) -> DsheapintervalRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_range_len(s : DsheapintervalRange) -> Int { s.size }
+pub fn DsheapintervalRange::len(self : DsheapintervalRange) -> Int { self.size }
 
-pub fn ds_heap_interval_range_get(s : DsheapintervalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalRange::get(self : DsheapintervalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_range_set(s : DsheapintervalRange, i : Int, v : Double) -> DsheapintervalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalRange::set(self : DsheapintervalRange, i : Int, v : Double) -> DsheapintervalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_range_sum(s : DsheapintervalRange) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalRange::sum(self : DsheapintervalRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_range_mean(s : DsheapintervalRange) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalRange::mean(self : DsheapintervalRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_range_scale(s : DsheapintervalRange, f : Double) -> DsheapintervalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalRange::scale(self : DsheapintervalRange, f : Double) -> DsheapintervalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_range_add(a : DsheapintervalRange, b : DsheapintervalRange) -> DsheapintervalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalRange::add(self : DsheapintervalRange, other : DsheapintervalRange) -> DsheapintervalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_range_copy(s : DsheapintervalRange) -> DsheapintervalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalRange::copy(self : DsheapintervalRange) -> DsheapintervalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_range_fill(s : DsheapintervalRange, v : Double) -> DsheapintervalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalRange::fill(self : DsheapintervalRange, v : Double) -> DsheapintervalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_range_min(s : DsheapintervalRange) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalRange::min(self : DsheapintervalRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_range_max(s : DsheapintervalRange) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalRange::max(self : DsheapintervalRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_range_to_string(s : DsheapintervalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalRange::to_string(self : DsheapintervalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsheapintervalSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_heap_interval_slice_make(size : Int) -> DsheapintervalSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_heap_interval_slice_len(s : DsheapintervalSlice) -> Int { s.size }
+pub fn DsheapintervalSlice::len(self : DsheapintervalSlice) -> Int { self.size }
 
-pub fn ds_heap_interval_slice_get(s : DsheapintervalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsheapintervalSlice::get(self : DsheapintervalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_heap_interval_slice_set(s : DsheapintervalSlice, i : Int, v : Double) -> DsheapintervalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsheapintervalSlice::set(self : DsheapintervalSlice, i : Int, v : Double) -> DsheapintervalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_slice_sum(s : DsheapintervalSlice) -> Double { @_common.sum(s.data) }
+pub fn DsheapintervalSlice::sum(self : DsheapintervalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_heap_interval_slice_mean(s : DsheapintervalSlice) -> Double { @_common.mean(s.data) }
+pub fn DsheapintervalSlice::mean(self : DsheapintervalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_heap_interval_slice_scale(s : DsheapintervalSlice, f : Double) -> DsheapintervalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsheapintervalSlice::scale(self : DsheapintervalSlice, f : Double) -> DsheapintervalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_slice_add(a : DsheapintervalSlice, b : DsheapintervalSlice) -> DsheapintervalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsheapintervalSlice::add(self : DsheapintervalSlice, other : DsheapintervalSlice) -> DsheapintervalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_heap_interval_slice_copy(s : DsheapintervalSlice) -> DsheapintervalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsheapintervalSlice::copy(self : DsheapintervalSlice) -> DsheapintervalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_slice_fill(s : DsheapintervalSlice, v : Double) -> DsheapintervalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsheapintervalSlice::fill(self : DsheapintervalSlice, v : Double) -> DsheapintervalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_heap_interval_slice_min(s : DsheapintervalSlice) -> Double { @_common.min(s.data) }
+pub fn DsheapintervalSlice::min(self : DsheapintervalSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_heap_interval_slice_max(s : DsheapintervalSlice) -> Double { @_common.max(s.data) }
+pub fn DsheapintervalSlice::max(self : DsheapintervalSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_heap_interval_slice_to_string(s : DsheapintervalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsheapintervalSlice::to_string(self : DsheapintervalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

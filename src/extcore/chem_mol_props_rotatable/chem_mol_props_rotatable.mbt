@@ -351,45 +351,45 @@ pub fn chem_mol_props_rotatable_frame_make(size : Int) -> ChemmolpropsrotatableF
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_frame_len(s : ChemmolpropsrotatableFrame) -> Int { s.size }
+pub fn ChemmolpropsrotatableFrame::len(self : ChemmolpropsrotatableFrame) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_frame_get(s : ChemmolpropsrotatableFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableFrame::get(self : ChemmolpropsrotatableFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_frame_set(s : ChemmolpropsrotatableFrame, i : Int, v : Double) -> ChemmolpropsrotatableFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableFrame::set(self : ChemmolpropsrotatableFrame, i : Int, v : Double) -> ChemmolpropsrotatableFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_frame_sum(s : ChemmolpropsrotatableFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableFrame::sum(self : ChemmolpropsrotatableFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_frame_mean(s : ChemmolpropsrotatableFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableFrame::mean(self : ChemmolpropsrotatableFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_frame_scale(s : ChemmolpropsrotatableFrame, f : Double) -> ChemmolpropsrotatableFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableFrame::scale(self : ChemmolpropsrotatableFrame, f : Double) -> ChemmolpropsrotatableFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_frame_add(a : ChemmolpropsrotatableFrame, b : ChemmolpropsrotatableFrame) -> ChemmolpropsrotatableFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableFrame::add(self : ChemmolpropsrotatableFrame, other : ChemmolpropsrotatableFrame) -> ChemmolpropsrotatableFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_frame_copy(s : ChemmolpropsrotatableFrame) -> ChemmolpropsrotatableFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableFrame::copy(self : ChemmolpropsrotatableFrame) -> ChemmolpropsrotatableFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_frame_fill(s : ChemmolpropsrotatableFrame, v : Double) -> ChemmolpropsrotatableFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableFrame::fill(self : ChemmolpropsrotatableFrame, v : Double) -> ChemmolpropsrotatableFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_frame_min(s : ChemmolpropsrotatableFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableFrame::min(self : ChemmolpropsrotatableFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_frame_max(s : ChemmolpropsrotatableFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableFrame::max(self : ChemmolpropsrotatableFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_frame_to_string(s : ChemmolpropsrotatableFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableFrame::to_string(self : ChemmolpropsrotatableFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_props_rotatable_table_make(size : Int) -> ChemmolpropsrotatableT
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_table_len(s : ChemmolpropsrotatableTable) -> Int { s.size }
+pub fn ChemmolpropsrotatableTable::len(self : ChemmolpropsrotatableTable) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_table_get(s : ChemmolpropsrotatableTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableTable::get(self : ChemmolpropsrotatableTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_table_set(s : ChemmolpropsrotatableTable, i : Int, v : Double) -> ChemmolpropsrotatableTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableTable::set(self : ChemmolpropsrotatableTable, i : Int, v : Double) -> ChemmolpropsrotatableTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_table_sum(s : ChemmolpropsrotatableTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableTable::sum(self : ChemmolpropsrotatableTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_table_mean(s : ChemmolpropsrotatableTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableTable::mean(self : ChemmolpropsrotatableTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_table_scale(s : ChemmolpropsrotatableTable, f : Double) -> ChemmolpropsrotatableTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableTable::scale(self : ChemmolpropsrotatableTable, f : Double) -> ChemmolpropsrotatableTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_table_add(a : ChemmolpropsrotatableTable, b : ChemmolpropsrotatableTable) -> ChemmolpropsrotatableTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableTable::add(self : ChemmolpropsrotatableTable, other : ChemmolpropsrotatableTable) -> ChemmolpropsrotatableTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_table_copy(s : ChemmolpropsrotatableTable) -> ChemmolpropsrotatableTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableTable::copy(self : ChemmolpropsrotatableTable) -> ChemmolpropsrotatableTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_table_fill(s : ChemmolpropsrotatableTable, v : Double) -> ChemmolpropsrotatableTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableTable::fill(self : ChemmolpropsrotatableTable, v : Double) -> ChemmolpropsrotatableTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_table_min(s : ChemmolpropsrotatableTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableTable::min(self : ChemmolpropsrotatableTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_table_max(s : ChemmolpropsrotatableTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableTable::max(self : ChemmolpropsrotatableTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_table_to_string(s : ChemmolpropsrotatableTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableTable::to_string(self : ChemmolpropsrotatableTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_props_rotatable_graphn_make(size : Int) -> Chemmolpropsrotatable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_graphn_len(s : ChemmolpropsrotatableGraphN) -> Int { s.size }
+pub fn ChemmolpropsrotatableGraphN::len(self : ChemmolpropsrotatableGraphN) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_graphn_get(s : ChemmolpropsrotatableGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableGraphN::get(self : ChemmolpropsrotatableGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_graphn_set(s : ChemmolpropsrotatableGraphN, i : Int, v : Double) -> ChemmolpropsrotatableGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableGraphN::set(self : ChemmolpropsrotatableGraphN, i : Int, v : Double) -> ChemmolpropsrotatableGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_graphn_sum(s : ChemmolpropsrotatableGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableGraphN::sum(self : ChemmolpropsrotatableGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_graphn_mean(s : ChemmolpropsrotatableGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableGraphN::mean(self : ChemmolpropsrotatableGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_graphn_scale(s : ChemmolpropsrotatableGraphN, f : Double) -> ChemmolpropsrotatableGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableGraphN::scale(self : ChemmolpropsrotatableGraphN, f : Double) -> ChemmolpropsrotatableGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_graphn_add(a : ChemmolpropsrotatableGraphN, b : ChemmolpropsrotatableGraphN) -> ChemmolpropsrotatableGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableGraphN::add(self : ChemmolpropsrotatableGraphN, other : ChemmolpropsrotatableGraphN) -> ChemmolpropsrotatableGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_graphn_copy(s : ChemmolpropsrotatableGraphN) -> ChemmolpropsrotatableGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableGraphN::copy(self : ChemmolpropsrotatableGraphN) -> ChemmolpropsrotatableGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_graphn_fill(s : ChemmolpropsrotatableGraphN, v : Double) -> ChemmolpropsrotatableGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableGraphN::fill(self : ChemmolpropsrotatableGraphN, v : Double) -> ChemmolpropsrotatableGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_graphn_min(s : ChemmolpropsrotatableGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableGraphN::min(self : ChemmolpropsrotatableGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_graphn_max(s : ChemmolpropsrotatableGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableGraphN::max(self : ChemmolpropsrotatableGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_graphn_to_string(s : ChemmolpropsrotatableGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableGraphN::to_string(self : ChemmolpropsrotatableGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_props_rotatable_node_make(size : Int) -> ChemmolpropsrotatableNo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_node_len(s : ChemmolpropsrotatableNode) -> Int { s.size }
+pub fn ChemmolpropsrotatableNode::len(self : ChemmolpropsrotatableNode) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_node_get(s : ChemmolpropsrotatableNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableNode::get(self : ChemmolpropsrotatableNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_node_set(s : ChemmolpropsrotatableNode, i : Int, v : Double) -> ChemmolpropsrotatableNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableNode::set(self : ChemmolpropsrotatableNode, i : Int, v : Double) -> ChemmolpropsrotatableNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_node_sum(s : ChemmolpropsrotatableNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableNode::sum(self : ChemmolpropsrotatableNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_node_mean(s : ChemmolpropsrotatableNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableNode::mean(self : ChemmolpropsrotatableNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_node_scale(s : ChemmolpropsrotatableNode, f : Double) -> ChemmolpropsrotatableNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableNode::scale(self : ChemmolpropsrotatableNode, f : Double) -> ChemmolpropsrotatableNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_node_add(a : ChemmolpropsrotatableNode, b : ChemmolpropsrotatableNode) -> ChemmolpropsrotatableNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableNode::add(self : ChemmolpropsrotatableNode, other : ChemmolpropsrotatableNode) -> ChemmolpropsrotatableNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_node_copy(s : ChemmolpropsrotatableNode) -> ChemmolpropsrotatableNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableNode::copy(self : ChemmolpropsrotatableNode) -> ChemmolpropsrotatableNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_node_fill(s : ChemmolpropsrotatableNode, v : Double) -> ChemmolpropsrotatableNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableNode::fill(self : ChemmolpropsrotatableNode, v : Double) -> ChemmolpropsrotatableNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_node_min(s : ChemmolpropsrotatableNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableNode::min(self : ChemmolpropsrotatableNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_node_max(s : ChemmolpropsrotatableNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableNode::max(self : ChemmolpropsrotatableNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_node_to_string(s : ChemmolpropsrotatableNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableNode::to_string(self : ChemmolpropsrotatableNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_props_rotatable_edge_make(size : Int) -> ChemmolpropsrotatableEd
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_edge_len(s : ChemmolpropsrotatableEdge) -> Int { s.size }
+pub fn ChemmolpropsrotatableEdge::len(self : ChemmolpropsrotatableEdge) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_edge_get(s : ChemmolpropsrotatableEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableEdge::get(self : ChemmolpropsrotatableEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_edge_set(s : ChemmolpropsrotatableEdge, i : Int, v : Double) -> ChemmolpropsrotatableEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableEdge::set(self : ChemmolpropsrotatableEdge, i : Int, v : Double) -> ChemmolpropsrotatableEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_edge_sum(s : ChemmolpropsrotatableEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableEdge::sum(self : ChemmolpropsrotatableEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_edge_mean(s : ChemmolpropsrotatableEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableEdge::mean(self : ChemmolpropsrotatableEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_edge_scale(s : ChemmolpropsrotatableEdge, f : Double) -> ChemmolpropsrotatableEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableEdge::scale(self : ChemmolpropsrotatableEdge, f : Double) -> ChemmolpropsrotatableEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_edge_add(a : ChemmolpropsrotatableEdge, b : ChemmolpropsrotatableEdge) -> ChemmolpropsrotatableEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableEdge::add(self : ChemmolpropsrotatableEdge, other : ChemmolpropsrotatableEdge) -> ChemmolpropsrotatableEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_edge_copy(s : ChemmolpropsrotatableEdge) -> ChemmolpropsrotatableEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableEdge::copy(self : ChemmolpropsrotatableEdge) -> ChemmolpropsrotatableEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_edge_fill(s : ChemmolpropsrotatableEdge, v : Double) -> ChemmolpropsrotatableEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableEdge::fill(self : ChemmolpropsrotatableEdge, v : Double) -> ChemmolpropsrotatableEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_edge_min(s : ChemmolpropsrotatableEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableEdge::min(self : ChemmolpropsrotatableEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_edge_max(s : ChemmolpropsrotatableEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableEdge::max(self : ChemmolpropsrotatableEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_edge_to_string(s : ChemmolpropsrotatableEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableEdge::to_string(self : ChemmolpropsrotatableEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatablePath {
@@ -606,45 +606,45 @@ pub fn chem_mol_props_rotatable_path_make(size : Int) -> ChemmolpropsrotatablePa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_path_len(s : ChemmolpropsrotatablePath) -> Int { s.size }
+pub fn ChemmolpropsrotatablePath::len(self : ChemmolpropsrotatablePath) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_path_get(s : ChemmolpropsrotatablePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatablePath::get(self : ChemmolpropsrotatablePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_path_set(s : ChemmolpropsrotatablePath, i : Int, v : Double) -> ChemmolpropsrotatablePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatablePath::set(self : ChemmolpropsrotatablePath, i : Int, v : Double) -> ChemmolpropsrotatablePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_path_sum(s : ChemmolpropsrotatablePath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatablePath::sum(self : ChemmolpropsrotatablePath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_path_mean(s : ChemmolpropsrotatablePath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatablePath::mean(self : ChemmolpropsrotatablePath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_path_scale(s : ChemmolpropsrotatablePath, f : Double) -> ChemmolpropsrotatablePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatablePath::scale(self : ChemmolpropsrotatablePath, f : Double) -> ChemmolpropsrotatablePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_path_add(a : ChemmolpropsrotatablePath, b : ChemmolpropsrotatablePath) -> ChemmolpropsrotatablePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatablePath::add(self : ChemmolpropsrotatablePath, other : ChemmolpropsrotatablePath) -> ChemmolpropsrotatablePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_path_copy(s : ChemmolpropsrotatablePath) -> ChemmolpropsrotatablePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatablePath::copy(self : ChemmolpropsrotatablePath) -> ChemmolpropsrotatablePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_path_fill(s : ChemmolpropsrotatablePath, v : Double) -> ChemmolpropsrotatablePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatablePath::fill(self : ChemmolpropsrotatablePath, v : Double) -> ChemmolpropsrotatablePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_path_min(s : ChemmolpropsrotatablePath) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatablePath::min(self : ChemmolpropsrotatablePath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_path_max(s : ChemmolpropsrotatablePath) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatablePath::max(self : ChemmolpropsrotatablePath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_path_to_string(s : ChemmolpropsrotatablePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatablePath::to_string(self : ChemmolpropsrotatablePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_props_rotatable_cluster_make(size : Int) -> Chemmolpropsrotatabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_cluster_len(s : ChemmolpropsrotatableCluster) -> Int { s.size }
+pub fn ChemmolpropsrotatableCluster::len(self : ChemmolpropsrotatableCluster) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_cluster_get(s : ChemmolpropsrotatableCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableCluster::get(self : ChemmolpropsrotatableCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_cluster_set(s : ChemmolpropsrotatableCluster, i : Int, v : Double) -> ChemmolpropsrotatableCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCluster::set(self : ChemmolpropsrotatableCluster, i : Int, v : Double) -> ChemmolpropsrotatableCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cluster_sum(s : ChemmolpropsrotatableCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableCluster::sum(self : ChemmolpropsrotatableCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_cluster_mean(s : ChemmolpropsrotatableCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableCluster::mean(self : ChemmolpropsrotatableCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_cluster_scale(s : ChemmolpropsrotatableCluster, f : Double) -> ChemmolpropsrotatableCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCluster::scale(self : ChemmolpropsrotatableCluster, f : Double) -> ChemmolpropsrotatableCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cluster_add(a : ChemmolpropsrotatableCluster, b : ChemmolpropsrotatableCluster) -> ChemmolpropsrotatableCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableCluster::add(self : ChemmolpropsrotatableCluster, other : ChemmolpropsrotatableCluster) -> ChemmolpropsrotatableCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cluster_copy(s : ChemmolpropsrotatableCluster) -> ChemmolpropsrotatableCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCluster::copy(self : ChemmolpropsrotatableCluster) -> ChemmolpropsrotatableCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cluster_fill(s : ChemmolpropsrotatableCluster, v : Double) -> ChemmolpropsrotatableCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCluster::fill(self : ChemmolpropsrotatableCluster, v : Double) -> ChemmolpropsrotatableCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cluster_min(s : ChemmolpropsrotatableCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableCluster::min(self : ChemmolpropsrotatableCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_cluster_max(s : ChemmolpropsrotatableCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableCluster::max(self : ChemmolpropsrotatableCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_cluster_to_string(s : ChemmolpropsrotatableCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableCluster::to_string(self : ChemmolpropsrotatableCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_props_rotatable_model_make(size : Int) -> ChemmolpropsrotatableM
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_model_len(s : ChemmolpropsrotatableModel) -> Int { s.size }
+pub fn ChemmolpropsrotatableModel::len(self : ChemmolpropsrotatableModel) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_model_get(s : ChemmolpropsrotatableModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableModel::get(self : ChemmolpropsrotatableModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_model_set(s : ChemmolpropsrotatableModel, i : Int, v : Double) -> ChemmolpropsrotatableModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableModel::set(self : ChemmolpropsrotatableModel, i : Int, v : Double) -> ChemmolpropsrotatableModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_model_sum(s : ChemmolpropsrotatableModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableModel::sum(self : ChemmolpropsrotatableModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_model_mean(s : ChemmolpropsrotatableModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableModel::mean(self : ChemmolpropsrotatableModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_model_scale(s : ChemmolpropsrotatableModel, f : Double) -> ChemmolpropsrotatableModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableModel::scale(self : ChemmolpropsrotatableModel, f : Double) -> ChemmolpropsrotatableModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_model_add(a : ChemmolpropsrotatableModel, b : ChemmolpropsrotatableModel) -> ChemmolpropsrotatableModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableModel::add(self : ChemmolpropsrotatableModel, other : ChemmolpropsrotatableModel) -> ChemmolpropsrotatableModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_model_copy(s : ChemmolpropsrotatableModel) -> ChemmolpropsrotatableModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableModel::copy(self : ChemmolpropsrotatableModel) -> ChemmolpropsrotatableModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_model_fill(s : ChemmolpropsrotatableModel, v : Double) -> ChemmolpropsrotatableModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableModel::fill(self : ChemmolpropsrotatableModel, v : Double) -> ChemmolpropsrotatableModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_model_min(s : ChemmolpropsrotatableModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableModel::min(self : ChemmolpropsrotatableModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_model_max(s : ChemmolpropsrotatableModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableModel::max(self : ChemmolpropsrotatableModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_model_to_string(s : ChemmolpropsrotatableModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableModel::to_string(self : ChemmolpropsrotatableModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_props_rotatable_layer_make(size : Int) -> ChemmolpropsrotatableL
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_layer_len(s : ChemmolpropsrotatableLayer) -> Int { s.size }
+pub fn ChemmolpropsrotatableLayer::len(self : ChemmolpropsrotatableLayer) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_layer_get(s : ChemmolpropsrotatableLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableLayer::get(self : ChemmolpropsrotatableLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_layer_set(s : ChemmolpropsrotatableLayer, i : Int, v : Double) -> ChemmolpropsrotatableLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableLayer::set(self : ChemmolpropsrotatableLayer, i : Int, v : Double) -> ChemmolpropsrotatableLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_layer_sum(s : ChemmolpropsrotatableLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableLayer::sum(self : ChemmolpropsrotatableLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_layer_mean(s : ChemmolpropsrotatableLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableLayer::mean(self : ChemmolpropsrotatableLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_layer_scale(s : ChemmolpropsrotatableLayer, f : Double) -> ChemmolpropsrotatableLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableLayer::scale(self : ChemmolpropsrotatableLayer, f : Double) -> ChemmolpropsrotatableLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_layer_add(a : ChemmolpropsrotatableLayer, b : ChemmolpropsrotatableLayer) -> ChemmolpropsrotatableLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableLayer::add(self : ChemmolpropsrotatableLayer, other : ChemmolpropsrotatableLayer) -> ChemmolpropsrotatableLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_layer_copy(s : ChemmolpropsrotatableLayer) -> ChemmolpropsrotatableLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableLayer::copy(self : ChemmolpropsrotatableLayer) -> ChemmolpropsrotatableLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_layer_fill(s : ChemmolpropsrotatableLayer, v : Double) -> ChemmolpropsrotatableLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableLayer::fill(self : ChemmolpropsrotatableLayer, v : Double) -> ChemmolpropsrotatableLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_layer_min(s : ChemmolpropsrotatableLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableLayer::min(self : ChemmolpropsrotatableLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_layer_max(s : ChemmolpropsrotatableLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableLayer::max(self : ChemmolpropsrotatableLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_layer_to_string(s : ChemmolpropsrotatableLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableLayer::to_string(self : ChemmolpropsrotatableLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_props_rotatable_buffer_make(size : Int) -> Chemmolpropsrotatable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_buffer_len(s : ChemmolpropsrotatableBuffer) -> Int { s.size }
+pub fn ChemmolpropsrotatableBuffer::len(self : ChemmolpropsrotatableBuffer) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_buffer_get(s : ChemmolpropsrotatableBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableBuffer::get(self : ChemmolpropsrotatableBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_buffer_set(s : ChemmolpropsrotatableBuffer, i : Int, v : Double) -> ChemmolpropsrotatableBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableBuffer::set(self : ChemmolpropsrotatableBuffer, i : Int, v : Double) -> ChemmolpropsrotatableBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_buffer_sum(s : ChemmolpropsrotatableBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableBuffer::sum(self : ChemmolpropsrotatableBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_buffer_mean(s : ChemmolpropsrotatableBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableBuffer::mean(self : ChemmolpropsrotatableBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_buffer_scale(s : ChemmolpropsrotatableBuffer, f : Double) -> ChemmolpropsrotatableBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableBuffer::scale(self : ChemmolpropsrotatableBuffer, f : Double) -> ChemmolpropsrotatableBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_buffer_add(a : ChemmolpropsrotatableBuffer, b : ChemmolpropsrotatableBuffer) -> ChemmolpropsrotatableBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableBuffer::add(self : ChemmolpropsrotatableBuffer, other : ChemmolpropsrotatableBuffer) -> ChemmolpropsrotatableBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_buffer_copy(s : ChemmolpropsrotatableBuffer) -> ChemmolpropsrotatableBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableBuffer::copy(self : ChemmolpropsrotatableBuffer) -> ChemmolpropsrotatableBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_buffer_fill(s : ChemmolpropsrotatableBuffer, v : Double) -> ChemmolpropsrotatableBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableBuffer::fill(self : ChemmolpropsrotatableBuffer, v : Double) -> ChemmolpropsrotatableBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_buffer_min(s : ChemmolpropsrotatableBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableBuffer::min(self : ChemmolpropsrotatableBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_buffer_max(s : ChemmolpropsrotatableBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableBuffer::max(self : ChemmolpropsrotatableBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_buffer_to_string(s : ChemmolpropsrotatableBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableBuffer::to_string(self : ChemmolpropsrotatableBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_props_rotatable_cursor_make(size : Int) -> Chemmolpropsrotatable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_cursor_len(s : ChemmolpropsrotatableCursor) -> Int { s.size }
+pub fn ChemmolpropsrotatableCursor::len(self : ChemmolpropsrotatableCursor) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_cursor_get(s : ChemmolpropsrotatableCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableCursor::get(self : ChemmolpropsrotatableCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_cursor_set(s : ChemmolpropsrotatableCursor, i : Int, v : Double) -> ChemmolpropsrotatableCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCursor::set(self : ChemmolpropsrotatableCursor, i : Int, v : Double) -> ChemmolpropsrotatableCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cursor_sum(s : ChemmolpropsrotatableCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableCursor::sum(self : ChemmolpropsrotatableCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_cursor_mean(s : ChemmolpropsrotatableCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableCursor::mean(self : ChemmolpropsrotatableCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_cursor_scale(s : ChemmolpropsrotatableCursor, f : Double) -> ChemmolpropsrotatableCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCursor::scale(self : ChemmolpropsrotatableCursor, f : Double) -> ChemmolpropsrotatableCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cursor_add(a : ChemmolpropsrotatableCursor, b : ChemmolpropsrotatableCursor) -> ChemmolpropsrotatableCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableCursor::add(self : ChemmolpropsrotatableCursor, other : ChemmolpropsrotatableCursor) -> ChemmolpropsrotatableCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cursor_copy(s : ChemmolpropsrotatableCursor) -> ChemmolpropsrotatableCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCursor::copy(self : ChemmolpropsrotatableCursor) -> ChemmolpropsrotatableCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cursor_fill(s : ChemmolpropsrotatableCursor, v : Double) -> ChemmolpropsrotatableCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableCursor::fill(self : ChemmolpropsrotatableCursor, v : Double) -> ChemmolpropsrotatableCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_cursor_min(s : ChemmolpropsrotatableCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableCursor::min(self : ChemmolpropsrotatableCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_cursor_max(s : ChemmolpropsrotatableCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableCursor::max(self : ChemmolpropsrotatableCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_cursor_to_string(s : ChemmolpropsrotatableCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableCursor::to_string(self : ChemmolpropsrotatableCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableView {
@@ -912,45 +912,45 @@ pub fn chem_mol_props_rotatable_view_make(size : Int) -> ChemmolpropsrotatableVi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_view_len(s : ChemmolpropsrotatableView) -> Int { s.size }
+pub fn ChemmolpropsrotatableView::len(self : ChemmolpropsrotatableView) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_view_get(s : ChemmolpropsrotatableView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableView::get(self : ChemmolpropsrotatableView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_view_set(s : ChemmolpropsrotatableView, i : Int, v : Double) -> ChemmolpropsrotatableView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableView::set(self : ChemmolpropsrotatableView, i : Int, v : Double) -> ChemmolpropsrotatableView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_view_sum(s : ChemmolpropsrotatableView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableView::sum(self : ChemmolpropsrotatableView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_view_mean(s : ChemmolpropsrotatableView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableView::mean(self : ChemmolpropsrotatableView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_view_scale(s : ChemmolpropsrotatableView, f : Double) -> ChemmolpropsrotatableView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableView::scale(self : ChemmolpropsrotatableView, f : Double) -> ChemmolpropsrotatableView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_view_add(a : ChemmolpropsrotatableView, b : ChemmolpropsrotatableView) -> ChemmolpropsrotatableView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableView::add(self : ChemmolpropsrotatableView, other : ChemmolpropsrotatableView) -> ChemmolpropsrotatableView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_view_copy(s : ChemmolpropsrotatableView) -> ChemmolpropsrotatableView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableView::copy(self : ChemmolpropsrotatableView) -> ChemmolpropsrotatableView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_view_fill(s : ChemmolpropsrotatableView, v : Double) -> ChemmolpropsrotatableView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableView::fill(self : ChemmolpropsrotatableView, v : Double) -> ChemmolpropsrotatableView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_view_min(s : ChemmolpropsrotatableView) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableView::min(self : ChemmolpropsrotatableView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_view_max(s : ChemmolpropsrotatableView) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableView::max(self : ChemmolpropsrotatableView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_view_to_string(s : ChemmolpropsrotatableView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableView::to_string(self : ChemmolpropsrotatableView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_props_rotatable_range_make(size : Int) -> ChemmolpropsrotatableR
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_range_len(s : ChemmolpropsrotatableRange) -> Int { s.size }
+pub fn ChemmolpropsrotatableRange::len(self : ChemmolpropsrotatableRange) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_range_get(s : ChemmolpropsrotatableRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableRange::get(self : ChemmolpropsrotatableRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_range_set(s : ChemmolpropsrotatableRange, i : Int, v : Double) -> ChemmolpropsrotatableRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableRange::set(self : ChemmolpropsrotatableRange, i : Int, v : Double) -> ChemmolpropsrotatableRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_range_sum(s : ChemmolpropsrotatableRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableRange::sum(self : ChemmolpropsrotatableRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_range_mean(s : ChemmolpropsrotatableRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableRange::mean(self : ChemmolpropsrotatableRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_range_scale(s : ChemmolpropsrotatableRange, f : Double) -> ChemmolpropsrotatableRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableRange::scale(self : ChemmolpropsrotatableRange, f : Double) -> ChemmolpropsrotatableRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_range_add(a : ChemmolpropsrotatableRange, b : ChemmolpropsrotatableRange) -> ChemmolpropsrotatableRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableRange::add(self : ChemmolpropsrotatableRange, other : ChemmolpropsrotatableRange) -> ChemmolpropsrotatableRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_range_copy(s : ChemmolpropsrotatableRange) -> ChemmolpropsrotatableRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableRange::copy(self : ChemmolpropsrotatableRange) -> ChemmolpropsrotatableRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_range_fill(s : ChemmolpropsrotatableRange, v : Double) -> ChemmolpropsrotatableRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableRange::fill(self : ChemmolpropsrotatableRange, v : Double) -> ChemmolpropsrotatableRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_range_min(s : ChemmolpropsrotatableRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableRange::min(self : ChemmolpropsrotatableRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_range_max(s : ChemmolpropsrotatableRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableRange::max(self : ChemmolpropsrotatableRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_range_to_string(s : ChemmolpropsrotatableRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableRange::to_string(self : ChemmolpropsrotatableRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolpropsrotatableSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_props_rotatable_slice_make(size : Int) -> ChemmolpropsrotatableS
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_props_rotatable_slice_len(s : ChemmolpropsrotatableSlice) -> Int { s.size }
+pub fn ChemmolpropsrotatableSlice::len(self : ChemmolpropsrotatableSlice) -> Int { self.size }
 
-pub fn chem_mol_props_rotatable_slice_get(s : ChemmolpropsrotatableSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolpropsrotatableSlice::get(self : ChemmolpropsrotatableSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_props_rotatable_slice_set(s : ChemmolpropsrotatableSlice, i : Int, v : Double) -> ChemmolpropsrotatableSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableSlice::set(self : ChemmolpropsrotatableSlice, i : Int, v : Double) -> ChemmolpropsrotatableSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_slice_sum(s : ChemmolpropsrotatableSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolpropsrotatableSlice::sum(self : ChemmolpropsrotatableSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_props_rotatable_slice_mean(s : ChemmolpropsrotatableSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolpropsrotatableSlice::mean(self : ChemmolpropsrotatableSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_props_rotatable_slice_scale(s : ChemmolpropsrotatableSlice, f : Double) -> ChemmolpropsrotatableSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableSlice::scale(self : ChemmolpropsrotatableSlice, f : Double) -> ChemmolpropsrotatableSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_slice_add(a : ChemmolpropsrotatableSlice, b : ChemmolpropsrotatableSlice) -> ChemmolpropsrotatableSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolpropsrotatableSlice::add(self : ChemmolpropsrotatableSlice, other : ChemmolpropsrotatableSlice) -> ChemmolpropsrotatableSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_slice_copy(s : ChemmolpropsrotatableSlice) -> ChemmolpropsrotatableSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableSlice::copy(self : ChemmolpropsrotatableSlice) -> ChemmolpropsrotatableSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_slice_fill(s : ChemmolpropsrotatableSlice, v : Double) -> ChemmolpropsrotatableSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolpropsrotatableSlice::fill(self : ChemmolpropsrotatableSlice, v : Double) -> ChemmolpropsrotatableSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_props_rotatable_slice_min(s : ChemmolpropsrotatableSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolpropsrotatableSlice::min(self : ChemmolpropsrotatableSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_props_rotatable_slice_max(s : ChemmolpropsrotatableSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolpropsrotatableSlice::max(self : ChemmolpropsrotatableSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_props_rotatable_slice_to_string(s : ChemmolpropsrotatableSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolpropsrotatableSlice::to_string(self : ChemmolpropsrotatableSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

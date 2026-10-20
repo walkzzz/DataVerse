@@ -351,45 +351,45 @@ pub fn math_lu_decomp_frame_make(size : Int) -> MathludecompFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_frame_len(s : MathludecompFrame) -> Int { s.size }
+pub fn MathludecompFrame::len(self : MathludecompFrame) -> Int { self.size }
 
-pub fn math_lu_decomp_frame_get(s : MathludecompFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompFrame::get(self : MathludecompFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_frame_set(s : MathludecompFrame, i : Int, v : Double) -> MathludecompFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompFrame::set(self : MathludecompFrame, i : Int, v : Double) -> MathludecompFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_frame_sum(s : MathludecompFrame) -> Double { @_common.sum(s.data) }
+pub fn MathludecompFrame::sum(self : MathludecompFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_frame_mean(s : MathludecompFrame) -> Double { @_common.mean(s.data) }
+pub fn MathludecompFrame::mean(self : MathludecompFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_frame_scale(s : MathludecompFrame, f : Double) -> MathludecompFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompFrame::scale(self : MathludecompFrame, f : Double) -> MathludecompFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_frame_add(a : MathludecompFrame, b : MathludecompFrame) -> MathludecompFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompFrame::add(self : MathludecompFrame, other : MathludecompFrame) -> MathludecompFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_frame_copy(s : MathludecompFrame) -> MathludecompFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompFrame::copy(self : MathludecompFrame) -> MathludecompFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_frame_fill(s : MathludecompFrame, v : Double) -> MathludecompFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompFrame::fill(self : MathludecompFrame, v : Double) -> MathludecompFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_frame_min(s : MathludecompFrame) -> Double { @_common.min(s.data) }
+pub fn MathludecompFrame::min(self : MathludecompFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_frame_max(s : MathludecompFrame) -> Double { @_common.max(s.data) }
+pub fn MathludecompFrame::max(self : MathludecompFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_frame_to_string(s : MathludecompFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompFrame::to_string(self : MathludecompFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompTable {
@@ -402,45 +402,45 @@ pub fn math_lu_decomp_table_make(size : Int) -> MathludecompTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_table_len(s : MathludecompTable) -> Int { s.size }
+pub fn MathludecompTable::len(self : MathludecompTable) -> Int { self.size }
 
-pub fn math_lu_decomp_table_get(s : MathludecompTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompTable::get(self : MathludecompTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_table_set(s : MathludecompTable, i : Int, v : Double) -> MathludecompTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompTable::set(self : MathludecompTable, i : Int, v : Double) -> MathludecompTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_table_sum(s : MathludecompTable) -> Double { @_common.sum(s.data) }
+pub fn MathludecompTable::sum(self : MathludecompTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_table_mean(s : MathludecompTable) -> Double { @_common.mean(s.data) }
+pub fn MathludecompTable::mean(self : MathludecompTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_table_scale(s : MathludecompTable, f : Double) -> MathludecompTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompTable::scale(self : MathludecompTable, f : Double) -> MathludecompTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_table_add(a : MathludecompTable, b : MathludecompTable) -> MathludecompTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompTable::add(self : MathludecompTable, other : MathludecompTable) -> MathludecompTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_table_copy(s : MathludecompTable) -> MathludecompTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompTable::copy(self : MathludecompTable) -> MathludecompTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_table_fill(s : MathludecompTable, v : Double) -> MathludecompTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompTable::fill(self : MathludecompTable, v : Double) -> MathludecompTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_table_min(s : MathludecompTable) -> Double { @_common.min(s.data) }
+pub fn MathludecompTable::min(self : MathludecompTable) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_table_max(s : MathludecompTable) -> Double { @_common.max(s.data) }
+pub fn MathludecompTable::max(self : MathludecompTable) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_table_to_string(s : MathludecompTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompTable::to_string(self : MathludecompTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompGraphN {
@@ -453,45 +453,45 @@ pub fn math_lu_decomp_graphn_make(size : Int) -> MathludecompGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_graphn_len(s : MathludecompGraphN) -> Int { s.size }
+pub fn MathludecompGraphN::len(self : MathludecompGraphN) -> Int { self.size }
 
-pub fn math_lu_decomp_graphn_get(s : MathludecompGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompGraphN::get(self : MathludecompGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_graphn_set(s : MathludecompGraphN, i : Int, v : Double) -> MathludecompGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompGraphN::set(self : MathludecompGraphN, i : Int, v : Double) -> MathludecompGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_graphn_sum(s : MathludecompGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathludecompGraphN::sum(self : MathludecompGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_graphn_mean(s : MathludecompGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathludecompGraphN::mean(self : MathludecompGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_graphn_scale(s : MathludecompGraphN, f : Double) -> MathludecompGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompGraphN::scale(self : MathludecompGraphN, f : Double) -> MathludecompGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_graphn_add(a : MathludecompGraphN, b : MathludecompGraphN) -> MathludecompGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompGraphN::add(self : MathludecompGraphN, other : MathludecompGraphN) -> MathludecompGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_graphn_copy(s : MathludecompGraphN) -> MathludecompGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompGraphN::copy(self : MathludecompGraphN) -> MathludecompGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_graphn_fill(s : MathludecompGraphN, v : Double) -> MathludecompGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompGraphN::fill(self : MathludecompGraphN, v : Double) -> MathludecompGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_graphn_min(s : MathludecompGraphN) -> Double { @_common.min(s.data) }
+pub fn MathludecompGraphN::min(self : MathludecompGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_graphn_max(s : MathludecompGraphN) -> Double { @_common.max(s.data) }
+pub fn MathludecompGraphN::max(self : MathludecompGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_graphn_to_string(s : MathludecompGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompGraphN::to_string(self : MathludecompGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompNode {
@@ -504,45 +504,45 @@ pub fn math_lu_decomp_node_make(size : Int) -> MathludecompNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_node_len(s : MathludecompNode) -> Int { s.size }
+pub fn MathludecompNode::len(self : MathludecompNode) -> Int { self.size }
 
-pub fn math_lu_decomp_node_get(s : MathludecompNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompNode::get(self : MathludecompNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_node_set(s : MathludecompNode, i : Int, v : Double) -> MathludecompNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompNode::set(self : MathludecompNode, i : Int, v : Double) -> MathludecompNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_node_sum(s : MathludecompNode) -> Double { @_common.sum(s.data) }
+pub fn MathludecompNode::sum(self : MathludecompNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_node_mean(s : MathludecompNode) -> Double { @_common.mean(s.data) }
+pub fn MathludecompNode::mean(self : MathludecompNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_node_scale(s : MathludecompNode, f : Double) -> MathludecompNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompNode::scale(self : MathludecompNode, f : Double) -> MathludecompNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_node_add(a : MathludecompNode, b : MathludecompNode) -> MathludecompNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompNode::add(self : MathludecompNode, other : MathludecompNode) -> MathludecompNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_node_copy(s : MathludecompNode) -> MathludecompNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompNode::copy(self : MathludecompNode) -> MathludecompNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_node_fill(s : MathludecompNode, v : Double) -> MathludecompNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompNode::fill(self : MathludecompNode, v : Double) -> MathludecompNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_node_min(s : MathludecompNode) -> Double { @_common.min(s.data) }
+pub fn MathludecompNode::min(self : MathludecompNode) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_node_max(s : MathludecompNode) -> Double { @_common.max(s.data) }
+pub fn MathludecompNode::max(self : MathludecompNode) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_node_to_string(s : MathludecompNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompNode::to_string(self : MathludecompNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompEdge {
@@ -555,45 +555,45 @@ pub fn math_lu_decomp_edge_make(size : Int) -> MathludecompEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_edge_len(s : MathludecompEdge) -> Int { s.size }
+pub fn MathludecompEdge::len(self : MathludecompEdge) -> Int { self.size }
 
-pub fn math_lu_decomp_edge_get(s : MathludecompEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompEdge::get(self : MathludecompEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_edge_set(s : MathludecompEdge, i : Int, v : Double) -> MathludecompEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompEdge::set(self : MathludecompEdge, i : Int, v : Double) -> MathludecompEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_edge_sum(s : MathludecompEdge) -> Double { @_common.sum(s.data) }
+pub fn MathludecompEdge::sum(self : MathludecompEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_edge_mean(s : MathludecompEdge) -> Double { @_common.mean(s.data) }
+pub fn MathludecompEdge::mean(self : MathludecompEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_edge_scale(s : MathludecompEdge, f : Double) -> MathludecompEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompEdge::scale(self : MathludecompEdge, f : Double) -> MathludecompEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_edge_add(a : MathludecompEdge, b : MathludecompEdge) -> MathludecompEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompEdge::add(self : MathludecompEdge, other : MathludecompEdge) -> MathludecompEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_edge_copy(s : MathludecompEdge) -> MathludecompEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompEdge::copy(self : MathludecompEdge) -> MathludecompEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_edge_fill(s : MathludecompEdge, v : Double) -> MathludecompEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompEdge::fill(self : MathludecompEdge, v : Double) -> MathludecompEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_edge_min(s : MathludecompEdge) -> Double { @_common.min(s.data) }
+pub fn MathludecompEdge::min(self : MathludecompEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_edge_max(s : MathludecompEdge) -> Double { @_common.max(s.data) }
+pub fn MathludecompEdge::max(self : MathludecompEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_edge_to_string(s : MathludecompEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompEdge::to_string(self : MathludecompEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompPath {
@@ -606,45 +606,45 @@ pub fn math_lu_decomp_path_make(size : Int) -> MathludecompPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_path_len(s : MathludecompPath) -> Int { s.size }
+pub fn MathludecompPath::len(self : MathludecompPath) -> Int { self.size }
 
-pub fn math_lu_decomp_path_get(s : MathludecompPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompPath::get(self : MathludecompPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_path_set(s : MathludecompPath, i : Int, v : Double) -> MathludecompPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompPath::set(self : MathludecompPath, i : Int, v : Double) -> MathludecompPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_path_sum(s : MathludecompPath) -> Double { @_common.sum(s.data) }
+pub fn MathludecompPath::sum(self : MathludecompPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_path_mean(s : MathludecompPath) -> Double { @_common.mean(s.data) }
+pub fn MathludecompPath::mean(self : MathludecompPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_path_scale(s : MathludecompPath, f : Double) -> MathludecompPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompPath::scale(self : MathludecompPath, f : Double) -> MathludecompPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_path_add(a : MathludecompPath, b : MathludecompPath) -> MathludecompPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompPath::add(self : MathludecompPath, other : MathludecompPath) -> MathludecompPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_path_copy(s : MathludecompPath) -> MathludecompPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompPath::copy(self : MathludecompPath) -> MathludecompPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_path_fill(s : MathludecompPath, v : Double) -> MathludecompPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompPath::fill(self : MathludecompPath, v : Double) -> MathludecompPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_path_min(s : MathludecompPath) -> Double { @_common.min(s.data) }
+pub fn MathludecompPath::min(self : MathludecompPath) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_path_max(s : MathludecompPath) -> Double { @_common.max(s.data) }
+pub fn MathludecompPath::max(self : MathludecompPath) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_path_to_string(s : MathludecompPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompPath::to_string(self : MathludecompPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompCluster {
@@ -657,45 +657,45 @@ pub fn math_lu_decomp_cluster_make(size : Int) -> MathludecompCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_cluster_len(s : MathludecompCluster) -> Int { s.size }
+pub fn MathludecompCluster::len(self : MathludecompCluster) -> Int { self.size }
 
-pub fn math_lu_decomp_cluster_get(s : MathludecompCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompCluster::get(self : MathludecompCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_cluster_set(s : MathludecompCluster, i : Int, v : Double) -> MathludecompCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompCluster::set(self : MathludecompCluster, i : Int, v : Double) -> MathludecompCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cluster_sum(s : MathludecompCluster) -> Double { @_common.sum(s.data) }
+pub fn MathludecompCluster::sum(self : MathludecompCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_cluster_mean(s : MathludecompCluster) -> Double { @_common.mean(s.data) }
+pub fn MathludecompCluster::mean(self : MathludecompCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_cluster_scale(s : MathludecompCluster, f : Double) -> MathludecompCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompCluster::scale(self : MathludecompCluster, f : Double) -> MathludecompCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cluster_add(a : MathludecompCluster, b : MathludecompCluster) -> MathludecompCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompCluster::add(self : MathludecompCluster, other : MathludecompCluster) -> MathludecompCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cluster_copy(s : MathludecompCluster) -> MathludecompCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompCluster::copy(self : MathludecompCluster) -> MathludecompCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cluster_fill(s : MathludecompCluster, v : Double) -> MathludecompCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompCluster::fill(self : MathludecompCluster, v : Double) -> MathludecompCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cluster_min(s : MathludecompCluster) -> Double { @_common.min(s.data) }
+pub fn MathludecompCluster::min(self : MathludecompCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_cluster_max(s : MathludecompCluster) -> Double { @_common.max(s.data) }
+pub fn MathludecompCluster::max(self : MathludecompCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_cluster_to_string(s : MathludecompCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompCluster::to_string(self : MathludecompCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompModel {
@@ -708,45 +708,45 @@ pub fn math_lu_decomp_model_make(size : Int) -> MathludecompModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_model_len(s : MathludecompModel) -> Int { s.size }
+pub fn MathludecompModel::len(self : MathludecompModel) -> Int { self.size }
 
-pub fn math_lu_decomp_model_get(s : MathludecompModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompModel::get(self : MathludecompModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_model_set(s : MathludecompModel, i : Int, v : Double) -> MathludecompModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompModel::set(self : MathludecompModel, i : Int, v : Double) -> MathludecompModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_model_sum(s : MathludecompModel) -> Double { @_common.sum(s.data) }
+pub fn MathludecompModel::sum(self : MathludecompModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_model_mean(s : MathludecompModel) -> Double { @_common.mean(s.data) }
+pub fn MathludecompModel::mean(self : MathludecompModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_model_scale(s : MathludecompModel, f : Double) -> MathludecompModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompModel::scale(self : MathludecompModel, f : Double) -> MathludecompModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_model_add(a : MathludecompModel, b : MathludecompModel) -> MathludecompModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompModel::add(self : MathludecompModel, other : MathludecompModel) -> MathludecompModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_model_copy(s : MathludecompModel) -> MathludecompModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompModel::copy(self : MathludecompModel) -> MathludecompModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_model_fill(s : MathludecompModel, v : Double) -> MathludecompModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompModel::fill(self : MathludecompModel, v : Double) -> MathludecompModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_model_min(s : MathludecompModel) -> Double { @_common.min(s.data) }
+pub fn MathludecompModel::min(self : MathludecompModel) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_model_max(s : MathludecompModel) -> Double { @_common.max(s.data) }
+pub fn MathludecompModel::max(self : MathludecompModel) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_model_to_string(s : MathludecompModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompModel::to_string(self : MathludecompModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompLayer {
@@ -759,45 +759,45 @@ pub fn math_lu_decomp_layer_make(size : Int) -> MathludecompLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_layer_len(s : MathludecompLayer) -> Int { s.size }
+pub fn MathludecompLayer::len(self : MathludecompLayer) -> Int { self.size }
 
-pub fn math_lu_decomp_layer_get(s : MathludecompLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompLayer::get(self : MathludecompLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_layer_set(s : MathludecompLayer, i : Int, v : Double) -> MathludecompLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompLayer::set(self : MathludecompLayer, i : Int, v : Double) -> MathludecompLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_layer_sum(s : MathludecompLayer) -> Double { @_common.sum(s.data) }
+pub fn MathludecompLayer::sum(self : MathludecompLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_layer_mean(s : MathludecompLayer) -> Double { @_common.mean(s.data) }
+pub fn MathludecompLayer::mean(self : MathludecompLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_layer_scale(s : MathludecompLayer, f : Double) -> MathludecompLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompLayer::scale(self : MathludecompLayer, f : Double) -> MathludecompLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_layer_add(a : MathludecompLayer, b : MathludecompLayer) -> MathludecompLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompLayer::add(self : MathludecompLayer, other : MathludecompLayer) -> MathludecompLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_layer_copy(s : MathludecompLayer) -> MathludecompLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompLayer::copy(self : MathludecompLayer) -> MathludecompLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_layer_fill(s : MathludecompLayer, v : Double) -> MathludecompLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompLayer::fill(self : MathludecompLayer, v : Double) -> MathludecompLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_layer_min(s : MathludecompLayer) -> Double { @_common.min(s.data) }
+pub fn MathludecompLayer::min(self : MathludecompLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_layer_max(s : MathludecompLayer) -> Double { @_common.max(s.data) }
+pub fn MathludecompLayer::max(self : MathludecompLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_layer_to_string(s : MathludecompLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompLayer::to_string(self : MathludecompLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompBuffer {
@@ -810,45 +810,45 @@ pub fn math_lu_decomp_buffer_make(size : Int) -> MathludecompBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_buffer_len(s : MathludecompBuffer) -> Int { s.size }
+pub fn MathludecompBuffer::len(self : MathludecompBuffer) -> Int { self.size }
 
-pub fn math_lu_decomp_buffer_get(s : MathludecompBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompBuffer::get(self : MathludecompBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_buffer_set(s : MathludecompBuffer, i : Int, v : Double) -> MathludecompBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompBuffer::set(self : MathludecompBuffer, i : Int, v : Double) -> MathludecompBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_buffer_sum(s : MathludecompBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathludecompBuffer::sum(self : MathludecompBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_buffer_mean(s : MathludecompBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathludecompBuffer::mean(self : MathludecompBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_buffer_scale(s : MathludecompBuffer, f : Double) -> MathludecompBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompBuffer::scale(self : MathludecompBuffer, f : Double) -> MathludecompBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_buffer_add(a : MathludecompBuffer, b : MathludecompBuffer) -> MathludecompBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompBuffer::add(self : MathludecompBuffer, other : MathludecompBuffer) -> MathludecompBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_buffer_copy(s : MathludecompBuffer) -> MathludecompBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompBuffer::copy(self : MathludecompBuffer) -> MathludecompBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_buffer_fill(s : MathludecompBuffer, v : Double) -> MathludecompBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompBuffer::fill(self : MathludecompBuffer, v : Double) -> MathludecompBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_buffer_min(s : MathludecompBuffer) -> Double { @_common.min(s.data) }
+pub fn MathludecompBuffer::min(self : MathludecompBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_buffer_max(s : MathludecompBuffer) -> Double { @_common.max(s.data) }
+pub fn MathludecompBuffer::max(self : MathludecompBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_buffer_to_string(s : MathludecompBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompBuffer::to_string(self : MathludecompBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompCursor {
@@ -861,45 +861,45 @@ pub fn math_lu_decomp_cursor_make(size : Int) -> MathludecompCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_cursor_len(s : MathludecompCursor) -> Int { s.size }
+pub fn MathludecompCursor::len(self : MathludecompCursor) -> Int { self.size }
 
-pub fn math_lu_decomp_cursor_get(s : MathludecompCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompCursor::get(self : MathludecompCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_cursor_set(s : MathludecompCursor, i : Int, v : Double) -> MathludecompCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompCursor::set(self : MathludecompCursor, i : Int, v : Double) -> MathludecompCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cursor_sum(s : MathludecompCursor) -> Double { @_common.sum(s.data) }
+pub fn MathludecompCursor::sum(self : MathludecompCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_cursor_mean(s : MathludecompCursor) -> Double { @_common.mean(s.data) }
+pub fn MathludecompCursor::mean(self : MathludecompCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_cursor_scale(s : MathludecompCursor, f : Double) -> MathludecompCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompCursor::scale(self : MathludecompCursor, f : Double) -> MathludecompCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cursor_add(a : MathludecompCursor, b : MathludecompCursor) -> MathludecompCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompCursor::add(self : MathludecompCursor, other : MathludecompCursor) -> MathludecompCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cursor_copy(s : MathludecompCursor) -> MathludecompCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompCursor::copy(self : MathludecompCursor) -> MathludecompCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cursor_fill(s : MathludecompCursor, v : Double) -> MathludecompCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompCursor::fill(self : MathludecompCursor, v : Double) -> MathludecompCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_cursor_min(s : MathludecompCursor) -> Double { @_common.min(s.data) }
+pub fn MathludecompCursor::min(self : MathludecompCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_cursor_max(s : MathludecompCursor) -> Double { @_common.max(s.data) }
+pub fn MathludecompCursor::max(self : MathludecompCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_cursor_to_string(s : MathludecompCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompCursor::to_string(self : MathludecompCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompView {
@@ -912,45 +912,45 @@ pub fn math_lu_decomp_view_make(size : Int) -> MathludecompView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_view_len(s : MathludecompView) -> Int { s.size }
+pub fn MathludecompView::len(self : MathludecompView) -> Int { self.size }
 
-pub fn math_lu_decomp_view_get(s : MathludecompView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompView::get(self : MathludecompView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_view_set(s : MathludecompView, i : Int, v : Double) -> MathludecompView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompView::set(self : MathludecompView, i : Int, v : Double) -> MathludecompView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_view_sum(s : MathludecompView) -> Double { @_common.sum(s.data) }
+pub fn MathludecompView::sum(self : MathludecompView) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_view_mean(s : MathludecompView) -> Double { @_common.mean(s.data) }
+pub fn MathludecompView::mean(self : MathludecompView) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_view_scale(s : MathludecompView, f : Double) -> MathludecompView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompView::scale(self : MathludecompView, f : Double) -> MathludecompView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_view_add(a : MathludecompView, b : MathludecompView) -> MathludecompView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompView::add(self : MathludecompView, other : MathludecompView) -> MathludecompView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_view_copy(s : MathludecompView) -> MathludecompView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompView::copy(self : MathludecompView) -> MathludecompView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_view_fill(s : MathludecompView, v : Double) -> MathludecompView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompView::fill(self : MathludecompView, v : Double) -> MathludecompView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_view_min(s : MathludecompView) -> Double { @_common.min(s.data) }
+pub fn MathludecompView::min(self : MathludecompView) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_view_max(s : MathludecompView) -> Double { @_common.max(s.data) }
+pub fn MathludecompView::max(self : MathludecompView) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_view_to_string(s : MathludecompView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompView::to_string(self : MathludecompView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompRange {
@@ -963,45 +963,45 @@ pub fn math_lu_decomp_range_make(size : Int) -> MathludecompRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_range_len(s : MathludecompRange) -> Int { s.size }
+pub fn MathludecompRange::len(self : MathludecompRange) -> Int { self.size }
 
-pub fn math_lu_decomp_range_get(s : MathludecompRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompRange::get(self : MathludecompRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_range_set(s : MathludecompRange, i : Int, v : Double) -> MathludecompRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompRange::set(self : MathludecompRange, i : Int, v : Double) -> MathludecompRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_range_sum(s : MathludecompRange) -> Double { @_common.sum(s.data) }
+pub fn MathludecompRange::sum(self : MathludecompRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_range_mean(s : MathludecompRange) -> Double { @_common.mean(s.data) }
+pub fn MathludecompRange::mean(self : MathludecompRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_range_scale(s : MathludecompRange, f : Double) -> MathludecompRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompRange::scale(self : MathludecompRange, f : Double) -> MathludecompRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_range_add(a : MathludecompRange, b : MathludecompRange) -> MathludecompRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompRange::add(self : MathludecompRange, other : MathludecompRange) -> MathludecompRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_range_copy(s : MathludecompRange) -> MathludecompRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompRange::copy(self : MathludecompRange) -> MathludecompRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_range_fill(s : MathludecompRange, v : Double) -> MathludecompRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompRange::fill(self : MathludecompRange, v : Double) -> MathludecompRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_range_min(s : MathludecompRange) -> Double { @_common.min(s.data) }
+pub fn MathludecompRange::min(self : MathludecompRange) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_range_max(s : MathludecompRange) -> Double { @_common.max(s.data) }
+pub fn MathludecompRange::max(self : MathludecompRange) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_range_to_string(s : MathludecompRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompRange::to_string(self : MathludecompRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathludecompSlice {
@@ -1014,44 +1014,44 @@ pub fn math_lu_decomp_slice_make(size : Int) -> MathludecompSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_lu_decomp_slice_len(s : MathludecompSlice) -> Int { s.size }
+pub fn MathludecompSlice::len(self : MathludecompSlice) -> Int { self.size }
 
-pub fn math_lu_decomp_slice_get(s : MathludecompSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathludecompSlice::get(self : MathludecompSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_lu_decomp_slice_set(s : MathludecompSlice, i : Int, v : Double) -> MathludecompSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathludecompSlice::set(self : MathludecompSlice, i : Int, v : Double) -> MathludecompSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_slice_sum(s : MathludecompSlice) -> Double { @_common.sum(s.data) }
+pub fn MathludecompSlice::sum(self : MathludecompSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_lu_decomp_slice_mean(s : MathludecompSlice) -> Double { @_common.mean(s.data) }
+pub fn MathludecompSlice::mean(self : MathludecompSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_lu_decomp_slice_scale(s : MathludecompSlice, f : Double) -> MathludecompSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathludecompSlice::scale(self : MathludecompSlice, f : Double) -> MathludecompSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_slice_add(a : MathludecompSlice, b : MathludecompSlice) -> MathludecompSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathludecompSlice::add(self : MathludecompSlice, other : MathludecompSlice) -> MathludecompSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_lu_decomp_slice_copy(s : MathludecompSlice) -> MathludecompSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathludecompSlice::copy(self : MathludecompSlice) -> MathludecompSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_slice_fill(s : MathludecompSlice, v : Double) -> MathludecompSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathludecompSlice::fill(self : MathludecompSlice, v : Double) -> MathludecompSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_lu_decomp_slice_min(s : MathludecompSlice) -> Double { @_common.min(s.data) }
+pub fn MathludecompSlice::min(self : MathludecompSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_lu_decomp_slice_max(s : MathludecompSlice) -> Double { @_common.max(s.data) }
+pub fn MathludecompSlice::max(self : MathludecompSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_lu_decomp_slice_to_string(s : MathludecompSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathludecompSlice::to_string(self : MathludecompSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

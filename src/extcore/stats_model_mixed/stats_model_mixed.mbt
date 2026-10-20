@@ -351,45 +351,45 @@ pub fn stats_model_mixed_frame_make(size : Int) -> StatsmodelmixedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_frame_len(s : StatsmodelmixedFrame) -> Int { s.size }
+pub fn StatsmodelmixedFrame::len(self : StatsmodelmixedFrame) -> Int { self.size }
 
-pub fn stats_model_mixed_frame_get(s : StatsmodelmixedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedFrame::get(self : StatsmodelmixedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_frame_set(s : StatsmodelmixedFrame, i : Int, v : Double) -> StatsmodelmixedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedFrame::set(self : StatsmodelmixedFrame, i : Int, v : Double) -> StatsmodelmixedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_frame_sum(s : StatsmodelmixedFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedFrame::sum(self : StatsmodelmixedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_frame_mean(s : StatsmodelmixedFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedFrame::mean(self : StatsmodelmixedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_frame_scale(s : StatsmodelmixedFrame, f : Double) -> StatsmodelmixedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedFrame::scale(self : StatsmodelmixedFrame, f : Double) -> StatsmodelmixedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_frame_add(a : StatsmodelmixedFrame, b : StatsmodelmixedFrame) -> StatsmodelmixedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedFrame::add(self : StatsmodelmixedFrame, other : StatsmodelmixedFrame) -> StatsmodelmixedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_frame_copy(s : StatsmodelmixedFrame) -> StatsmodelmixedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedFrame::copy(self : StatsmodelmixedFrame) -> StatsmodelmixedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_frame_fill(s : StatsmodelmixedFrame, v : Double) -> StatsmodelmixedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedFrame::fill(self : StatsmodelmixedFrame, v : Double) -> StatsmodelmixedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_frame_min(s : StatsmodelmixedFrame) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedFrame::min(self : StatsmodelmixedFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_frame_max(s : StatsmodelmixedFrame) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedFrame::max(self : StatsmodelmixedFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_frame_to_string(s : StatsmodelmixedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedFrame::to_string(self : StatsmodelmixedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedTable {
@@ -402,45 +402,45 @@ pub fn stats_model_mixed_table_make(size : Int) -> StatsmodelmixedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_table_len(s : StatsmodelmixedTable) -> Int { s.size }
+pub fn StatsmodelmixedTable::len(self : StatsmodelmixedTable) -> Int { self.size }
 
-pub fn stats_model_mixed_table_get(s : StatsmodelmixedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedTable::get(self : StatsmodelmixedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_table_set(s : StatsmodelmixedTable, i : Int, v : Double) -> StatsmodelmixedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedTable::set(self : StatsmodelmixedTable, i : Int, v : Double) -> StatsmodelmixedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_table_sum(s : StatsmodelmixedTable) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedTable::sum(self : StatsmodelmixedTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_table_mean(s : StatsmodelmixedTable) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedTable::mean(self : StatsmodelmixedTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_table_scale(s : StatsmodelmixedTable, f : Double) -> StatsmodelmixedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedTable::scale(self : StatsmodelmixedTable, f : Double) -> StatsmodelmixedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_table_add(a : StatsmodelmixedTable, b : StatsmodelmixedTable) -> StatsmodelmixedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedTable::add(self : StatsmodelmixedTable, other : StatsmodelmixedTable) -> StatsmodelmixedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_table_copy(s : StatsmodelmixedTable) -> StatsmodelmixedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedTable::copy(self : StatsmodelmixedTable) -> StatsmodelmixedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_table_fill(s : StatsmodelmixedTable, v : Double) -> StatsmodelmixedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedTable::fill(self : StatsmodelmixedTable, v : Double) -> StatsmodelmixedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_table_min(s : StatsmodelmixedTable) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedTable::min(self : StatsmodelmixedTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_table_max(s : StatsmodelmixedTable) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedTable::max(self : StatsmodelmixedTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_table_to_string(s : StatsmodelmixedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedTable::to_string(self : StatsmodelmixedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedGraphN {
@@ -453,45 +453,45 @@ pub fn stats_model_mixed_graphn_make(size : Int) -> StatsmodelmixedGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_graphn_len(s : StatsmodelmixedGraphN) -> Int { s.size }
+pub fn StatsmodelmixedGraphN::len(self : StatsmodelmixedGraphN) -> Int { self.size }
 
-pub fn stats_model_mixed_graphn_get(s : StatsmodelmixedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedGraphN::get(self : StatsmodelmixedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_graphn_set(s : StatsmodelmixedGraphN, i : Int, v : Double) -> StatsmodelmixedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedGraphN::set(self : StatsmodelmixedGraphN, i : Int, v : Double) -> StatsmodelmixedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_graphn_sum(s : StatsmodelmixedGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedGraphN::sum(self : StatsmodelmixedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_graphn_mean(s : StatsmodelmixedGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedGraphN::mean(self : StatsmodelmixedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_graphn_scale(s : StatsmodelmixedGraphN, f : Double) -> StatsmodelmixedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedGraphN::scale(self : StatsmodelmixedGraphN, f : Double) -> StatsmodelmixedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_graphn_add(a : StatsmodelmixedGraphN, b : StatsmodelmixedGraphN) -> StatsmodelmixedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedGraphN::add(self : StatsmodelmixedGraphN, other : StatsmodelmixedGraphN) -> StatsmodelmixedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_graphn_copy(s : StatsmodelmixedGraphN) -> StatsmodelmixedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedGraphN::copy(self : StatsmodelmixedGraphN) -> StatsmodelmixedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_graphn_fill(s : StatsmodelmixedGraphN, v : Double) -> StatsmodelmixedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedGraphN::fill(self : StatsmodelmixedGraphN, v : Double) -> StatsmodelmixedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_graphn_min(s : StatsmodelmixedGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedGraphN::min(self : StatsmodelmixedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_graphn_max(s : StatsmodelmixedGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedGraphN::max(self : StatsmodelmixedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_graphn_to_string(s : StatsmodelmixedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedGraphN::to_string(self : StatsmodelmixedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedNode {
@@ -504,45 +504,45 @@ pub fn stats_model_mixed_node_make(size : Int) -> StatsmodelmixedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_node_len(s : StatsmodelmixedNode) -> Int { s.size }
+pub fn StatsmodelmixedNode::len(self : StatsmodelmixedNode) -> Int { self.size }
 
-pub fn stats_model_mixed_node_get(s : StatsmodelmixedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedNode::get(self : StatsmodelmixedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_node_set(s : StatsmodelmixedNode, i : Int, v : Double) -> StatsmodelmixedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedNode::set(self : StatsmodelmixedNode, i : Int, v : Double) -> StatsmodelmixedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_node_sum(s : StatsmodelmixedNode) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedNode::sum(self : StatsmodelmixedNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_node_mean(s : StatsmodelmixedNode) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedNode::mean(self : StatsmodelmixedNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_node_scale(s : StatsmodelmixedNode, f : Double) -> StatsmodelmixedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedNode::scale(self : StatsmodelmixedNode, f : Double) -> StatsmodelmixedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_node_add(a : StatsmodelmixedNode, b : StatsmodelmixedNode) -> StatsmodelmixedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedNode::add(self : StatsmodelmixedNode, other : StatsmodelmixedNode) -> StatsmodelmixedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_node_copy(s : StatsmodelmixedNode) -> StatsmodelmixedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedNode::copy(self : StatsmodelmixedNode) -> StatsmodelmixedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_node_fill(s : StatsmodelmixedNode, v : Double) -> StatsmodelmixedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedNode::fill(self : StatsmodelmixedNode, v : Double) -> StatsmodelmixedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_node_min(s : StatsmodelmixedNode) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedNode::min(self : StatsmodelmixedNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_node_max(s : StatsmodelmixedNode) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedNode::max(self : StatsmodelmixedNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_node_to_string(s : StatsmodelmixedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedNode::to_string(self : StatsmodelmixedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedEdge {
@@ -555,45 +555,45 @@ pub fn stats_model_mixed_edge_make(size : Int) -> StatsmodelmixedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_edge_len(s : StatsmodelmixedEdge) -> Int { s.size }
+pub fn StatsmodelmixedEdge::len(self : StatsmodelmixedEdge) -> Int { self.size }
 
-pub fn stats_model_mixed_edge_get(s : StatsmodelmixedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedEdge::get(self : StatsmodelmixedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_edge_set(s : StatsmodelmixedEdge, i : Int, v : Double) -> StatsmodelmixedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedEdge::set(self : StatsmodelmixedEdge, i : Int, v : Double) -> StatsmodelmixedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_edge_sum(s : StatsmodelmixedEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedEdge::sum(self : StatsmodelmixedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_edge_mean(s : StatsmodelmixedEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedEdge::mean(self : StatsmodelmixedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_edge_scale(s : StatsmodelmixedEdge, f : Double) -> StatsmodelmixedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedEdge::scale(self : StatsmodelmixedEdge, f : Double) -> StatsmodelmixedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_edge_add(a : StatsmodelmixedEdge, b : StatsmodelmixedEdge) -> StatsmodelmixedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedEdge::add(self : StatsmodelmixedEdge, other : StatsmodelmixedEdge) -> StatsmodelmixedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_edge_copy(s : StatsmodelmixedEdge) -> StatsmodelmixedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedEdge::copy(self : StatsmodelmixedEdge) -> StatsmodelmixedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_edge_fill(s : StatsmodelmixedEdge, v : Double) -> StatsmodelmixedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedEdge::fill(self : StatsmodelmixedEdge, v : Double) -> StatsmodelmixedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_edge_min(s : StatsmodelmixedEdge) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedEdge::min(self : StatsmodelmixedEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_edge_max(s : StatsmodelmixedEdge) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedEdge::max(self : StatsmodelmixedEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_edge_to_string(s : StatsmodelmixedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedEdge::to_string(self : StatsmodelmixedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedPath {
@@ -606,45 +606,45 @@ pub fn stats_model_mixed_path_make(size : Int) -> StatsmodelmixedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_path_len(s : StatsmodelmixedPath) -> Int { s.size }
+pub fn StatsmodelmixedPath::len(self : StatsmodelmixedPath) -> Int { self.size }
 
-pub fn stats_model_mixed_path_get(s : StatsmodelmixedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedPath::get(self : StatsmodelmixedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_path_set(s : StatsmodelmixedPath, i : Int, v : Double) -> StatsmodelmixedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedPath::set(self : StatsmodelmixedPath, i : Int, v : Double) -> StatsmodelmixedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_path_sum(s : StatsmodelmixedPath) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedPath::sum(self : StatsmodelmixedPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_path_mean(s : StatsmodelmixedPath) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedPath::mean(self : StatsmodelmixedPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_path_scale(s : StatsmodelmixedPath, f : Double) -> StatsmodelmixedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedPath::scale(self : StatsmodelmixedPath, f : Double) -> StatsmodelmixedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_path_add(a : StatsmodelmixedPath, b : StatsmodelmixedPath) -> StatsmodelmixedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedPath::add(self : StatsmodelmixedPath, other : StatsmodelmixedPath) -> StatsmodelmixedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_path_copy(s : StatsmodelmixedPath) -> StatsmodelmixedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedPath::copy(self : StatsmodelmixedPath) -> StatsmodelmixedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_path_fill(s : StatsmodelmixedPath, v : Double) -> StatsmodelmixedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedPath::fill(self : StatsmodelmixedPath, v : Double) -> StatsmodelmixedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_path_min(s : StatsmodelmixedPath) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedPath::min(self : StatsmodelmixedPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_path_max(s : StatsmodelmixedPath) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedPath::max(self : StatsmodelmixedPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_path_to_string(s : StatsmodelmixedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedPath::to_string(self : StatsmodelmixedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedCluster {
@@ -657,45 +657,45 @@ pub fn stats_model_mixed_cluster_make(size : Int) -> StatsmodelmixedCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_cluster_len(s : StatsmodelmixedCluster) -> Int { s.size }
+pub fn StatsmodelmixedCluster::len(self : StatsmodelmixedCluster) -> Int { self.size }
 
-pub fn stats_model_mixed_cluster_get(s : StatsmodelmixedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedCluster::get(self : StatsmodelmixedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_cluster_set(s : StatsmodelmixedCluster, i : Int, v : Double) -> StatsmodelmixedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCluster::set(self : StatsmodelmixedCluster, i : Int, v : Double) -> StatsmodelmixedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cluster_sum(s : StatsmodelmixedCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedCluster::sum(self : StatsmodelmixedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_cluster_mean(s : StatsmodelmixedCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedCluster::mean(self : StatsmodelmixedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_cluster_scale(s : StatsmodelmixedCluster, f : Double) -> StatsmodelmixedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCluster::scale(self : StatsmodelmixedCluster, f : Double) -> StatsmodelmixedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cluster_add(a : StatsmodelmixedCluster, b : StatsmodelmixedCluster) -> StatsmodelmixedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedCluster::add(self : StatsmodelmixedCluster, other : StatsmodelmixedCluster) -> StatsmodelmixedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cluster_copy(s : StatsmodelmixedCluster) -> StatsmodelmixedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCluster::copy(self : StatsmodelmixedCluster) -> StatsmodelmixedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cluster_fill(s : StatsmodelmixedCluster, v : Double) -> StatsmodelmixedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCluster::fill(self : StatsmodelmixedCluster, v : Double) -> StatsmodelmixedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cluster_min(s : StatsmodelmixedCluster) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedCluster::min(self : StatsmodelmixedCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_cluster_max(s : StatsmodelmixedCluster) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedCluster::max(self : StatsmodelmixedCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_cluster_to_string(s : StatsmodelmixedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedCluster::to_string(self : StatsmodelmixedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedModel {
@@ -708,45 +708,45 @@ pub fn stats_model_mixed_model_make(size : Int) -> StatsmodelmixedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_model_len(s : StatsmodelmixedModel) -> Int { s.size }
+pub fn StatsmodelmixedModel::len(self : StatsmodelmixedModel) -> Int { self.size }
 
-pub fn stats_model_mixed_model_get(s : StatsmodelmixedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedModel::get(self : StatsmodelmixedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_model_set(s : StatsmodelmixedModel, i : Int, v : Double) -> StatsmodelmixedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedModel::set(self : StatsmodelmixedModel, i : Int, v : Double) -> StatsmodelmixedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_model_sum(s : StatsmodelmixedModel) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedModel::sum(self : StatsmodelmixedModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_model_mean(s : StatsmodelmixedModel) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedModel::mean(self : StatsmodelmixedModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_model_scale(s : StatsmodelmixedModel, f : Double) -> StatsmodelmixedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedModel::scale(self : StatsmodelmixedModel, f : Double) -> StatsmodelmixedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_model_add(a : StatsmodelmixedModel, b : StatsmodelmixedModel) -> StatsmodelmixedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedModel::add(self : StatsmodelmixedModel, other : StatsmodelmixedModel) -> StatsmodelmixedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_model_copy(s : StatsmodelmixedModel) -> StatsmodelmixedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedModel::copy(self : StatsmodelmixedModel) -> StatsmodelmixedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_model_fill(s : StatsmodelmixedModel, v : Double) -> StatsmodelmixedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedModel::fill(self : StatsmodelmixedModel, v : Double) -> StatsmodelmixedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_model_min(s : StatsmodelmixedModel) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedModel::min(self : StatsmodelmixedModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_model_max(s : StatsmodelmixedModel) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedModel::max(self : StatsmodelmixedModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_model_to_string(s : StatsmodelmixedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedModel::to_string(self : StatsmodelmixedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedLayer {
@@ -759,45 +759,45 @@ pub fn stats_model_mixed_layer_make(size : Int) -> StatsmodelmixedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_layer_len(s : StatsmodelmixedLayer) -> Int { s.size }
+pub fn StatsmodelmixedLayer::len(self : StatsmodelmixedLayer) -> Int { self.size }
 
-pub fn stats_model_mixed_layer_get(s : StatsmodelmixedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedLayer::get(self : StatsmodelmixedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_layer_set(s : StatsmodelmixedLayer, i : Int, v : Double) -> StatsmodelmixedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedLayer::set(self : StatsmodelmixedLayer, i : Int, v : Double) -> StatsmodelmixedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_layer_sum(s : StatsmodelmixedLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedLayer::sum(self : StatsmodelmixedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_layer_mean(s : StatsmodelmixedLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedLayer::mean(self : StatsmodelmixedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_layer_scale(s : StatsmodelmixedLayer, f : Double) -> StatsmodelmixedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedLayer::scale(self : StatsmodelmixedLayer, f : Double) -> StatsmodelmixedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_layer_add(a : StatsmodelmixedLayer, b : StatsmodelmixedLayer) -> StatsmodelmixedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedLayer::add(self : StatsmodelmixedLayer, other : StatsmodelmixedLayer) -> StatsmodelmixedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_layer_copy(s : StatsmodelmixedLayer) -> StatsmodelmixedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedLayer::copy(self : StatsmodelmixedLayer) -> StatsmodelmixedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_layer_fill(s : StatsmodelmixedLayer, v : Double) -> StatsmodelmixedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedLayer::fill(self : StatsmodelmixedLayer, v : Double) -> StatsmodelmixedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_layer_min(s : StatsmodelmixedLayer) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedLayer::min(self : StatsmodelmixedLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_layer_max(s : StatsmodelmixedLayer) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedLayer::max(self : StatsmodelmixedLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_layer_to_string(s : StatsmodelmixedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedLayer::to_string(self : StatsmodelmixedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedBuffer {
@@ -810,45 +810,45 @@ pub fn stats_model_mixed_buffer_make(size : Int) -> StatsmodelmixedBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_buffer_len(s : StatsmodelmixedBuffer) -> Int { s.size }
+pub fn StatsmodelmixedBuffer::len(self : StatsmodelmixedBuffer) -> Int { self.size }
 
-pub fn stats_model_mixed_buffer_get(s : StatsmodelmixedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedBuffer::get(self : StatsmodelmixedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_buffer_set(s : StatsmodelmixedBuffer, i : Int, v : Double) -> StatsmodelmixedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedBuffer::set(self : StatsmodelmixedBuffer, i : Int, v : Double) -> StatsmodelmixedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_buffer_sum(s : StatsmodelmixedBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedBuffer::sum(self : StatsmodelmixedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_buffer_mean(s : StatsmodelmixedBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedBuffer::mean(self : StatsmodelmixedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_buffer_scale(s : StatsmodelmixedBuffer, f : Double) -> StatsmodelmixedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedBuffer::scale(self : StatsmodelmixedBuffer, f : Double) -> StatsmodelmixedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_buffer_add(a : StatsmodelmixedBuffer, b : StatsmodelmixedBuffer) -> StatsmodelmixedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedBuffer::add(self : StatsmodelmixedBuffer, other : StatsmodelmixedBuffer) -> StatsmodelmixedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_buffer_copy(s : StatsmodelmixedBuffer) -> StatsmodelmixedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedBuffer::copy(self : StatsmodelmixedBuffer) -> StatsmodelmixedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_buffer_fill(s : StatsmodelmixedBuffer, v : Double) -> StatsmodelmixedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedBuffer::fill(self : StatsmodelmixedBuffer, v : Double) -> StatsmodelmixedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_buffer_min(s : StatsmodelmixedBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedBuffer::min(self : StatsmodelmixedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_buffer_max(s : StatsmodelmixedBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedBuffer::max(self : StatsmodelmixedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_buffer_to_string(s : StatsmodelmixedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedBuffer::to_string(self : StatsmodelmixedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedCursor {
@@ -861,45 +861,45 @@ pub fn stats_model_mixed_cursor_make(size : Int) -> StatsmodelmixedCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_cursor_len(s : StatsmodelmixedCursor) -> Int { s.size }
+pub fn StatsmodelmixedCursor::len(self : StatsmodelmixedCursor) -> Int { self.size }
 
-pub fn stats_model_mixed_cursor_get(s : StatsmodelmixedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedCursor::get(self : StatsmodelmixedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_cursor_set(s : StatsmodelmixedCursor, i : Int, v : Double) -> StatsmodelmixedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCursor::set(self : StatsmodelmixedCursor, i : Int, v : Double) -> StatsmodelmixedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cursor_sum(s : StatsmodelmixedCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedCursor::sum(self : StatsmodelmixedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_cursor_mean(s : StatsmodelmixedCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedCursor::mean(self : StatsmodelmixedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_cursor_scale(s : StatsmodelmixedCursor, f : Double) -> StatsmodelmixedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCursor::scale(self : StatsmodelmixedCursor, f : Double) -> StatsmodelmixedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cursor_add(a : StatsmodelmixedCursor, b : StatsmodelmixedCursor) -> StatsmodelmixedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedCursor::add(self : StatsmodelmixedCursor, other : StatsmodelmixedCursor) -> StatsmodelmixedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cursor_copy(s : StatsmodelmixedCursor) -> StatsmodelmixedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCursor::copy(self : StatsmodelmixedCursor) -> StatsmodelmixedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cursor_fill(s : StatsmodelmixedCursor, v : Double) -> StatsmodelmixedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedCursor::fill(self : StatsmodelmixedCursor, v : Double) -> StatsmodelmixedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_cursor_min(s : StatsmodelmixedCursor) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedCursor::min(self : StatsmodelmixedCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_cursor_max(s : StatsmodelmixedCursor) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedCursor::max(self : StatsmodelmixedCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_cursor_to_string(s : StatsmodelmixedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedCursor::to_string(self : StatsmodelmixedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedView {
@@ -912,45 +912,45 @@ pub fn stats_model_mixed_view_make(size : Int) -> StatsmodelmixedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_view_len(s : StatsmodelmixedView) -> Int { s.size }
+pub fn StatsmodelmixedView::len(self : StatsmodelmixedView) -> Int { self.size }
 
-pub fn stats_model_mixed_view_get(s : StatsmodelmixedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedView::get(self : StatsmodelmixedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_view_set(s : StatsmodelmixedView, i : Int, v : Double) -> StatsmodelmixedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedView::set(self : StatsmodelmixedView, i : Int, v : Double) -> StatsmodelmixedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_view_sum(s : StatsmodelmixedView) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedView::sum(self : StatsmodelmixedView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_view_mean(s : StatsmodelmixedView) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedView::mean(self : StatsmodelmixedView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_view_scale(s : StatsmodelmixedView, f : Double) -> StatsmodelmixedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedView::scale(self : StatsmodelmixedView, f : Double) -> StatsmodelmixedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_view_add(a : StatsmodelmixedView, b : StatsmodelmixedView) -> StatsmodelmixedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedView::add(self : StatsmodelmixedView, other : StatsmodelmixedView) -> StatsmodelmixedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_view_copy(s : StatsmodelmixedView) -> StatsmodelmixedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedView::copy(self : StatsmodelmixedView) -> StatsmodelmixedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_view_fill(s : StatsmodelmixedView, v : Double) -> StatsmodelmixedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedView::fill(self : StatsmodelmixedView, v : Double) -> StatsmodelmixedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_view_min(s : StatsmodelmixedView) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedView::min(self : StatsmodelmixedView) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_view_max(s : StatsmodelmixedView) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedView::max(self : StatsmodelmixedView) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_view_to_string(s : StatsmodelmixedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedView::to_string(self : StatsmodelmixedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedRange {
@@ -963,45 +963,45 @@ pub fn stats_model_mixed_range_make(size : Int) -> StatsmodelmixedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_range_len(s : StatsmodelmixedRange) -> Int { s.size }
+pub fn StatsmodelmixedRange::len(self : StatsmodelmixedRange) -> Int { self.size }
 
-pub fn stats_model_mixed_range_get(s : StatsmodelmixedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedRange::get(self : StatsmodelmixedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_range_set(s : StatsmodelmixedRange, i : Int, v : Double) -> StatsmodelmixedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedRange::set(self : StatsmodelmixedRange, i : Int, v : Double) -> StatsmodelmixedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_range_sum(s : StatsmodelmixedRange) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedRange::sum(self : StatsmodelmixedRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_range_mean(s : StatsmodelmixedRange) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedRange::mean(self : StatsmodelmixedRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_range_scale(s : StatsmodelmixedRange, f : Double) -> StatsmodelmixedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedRange::scale(self : StatsmodelmixedRange, f : Double) -> StatsmodelmixedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_range_add(a : StatsmodelmixedRange, b : StatsmodelmixedRange) -> StatsmodelmixedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedRange::add(self : StatsmodelmixedRange, other : StatsmodelmixedRange) -> StatsmodelmixedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_range_copy(s : StatsmodelmixedRange) -> StatsmodelmixedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedRange::copy(self : StatsmodelmixedRange) -> StatsmodelmixedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_range_fill(s : StatsmodelmixedRange, v : Double) -> StatsmodelmixedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedRange::fill(self : StatsmodelmixedRange, v : Double) -> StatsmodelmixedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_range_min(s : StatsmodelmixedRange) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedRange::min(self : StatsmodelmixedRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_range_max(s : StatsmodelmixedRange) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedRange::max(self : StatsmodelmixedRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_range_to_string(s : StatsmodelmixedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedRange::to_string(self : StatsmodelmixedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelmixedSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_model_mixed_slice_make(size : Int) -> StatsmodelmixedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_mixed_slice_len(s : StatsmodelmixedSlice) -> Int { s.size }
+pub fn StatsmodelmixedSlice::len(self : StatsmodelmixedSlice) -> Int { self.size }
 
-pub fn stats_model_mixed_slice_get(s : StatsmodelmixedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelmixedSlice::get(self : StatsmodelmixedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_mixed_slice_set(s : StatsmodelmixedSlice, i : Int, v : Double) -> StatsmodelmixedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelmixedSlice::set(self : StatsmodelmixedSlice, i : Int, v : Double) -> StatsmodelmixedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_slice_sum(s : StatsmodelmixedSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelmixedSlice::sum(self : StatsmodelmixedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_mixed_slice_mean(s : StatsmodelmixedSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelmixedSlice::mean(self : StatsmodelmixedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_mixed_slice_scale(s : StatsmodelmixedSlice, f : Double) -> StatsmodelmixedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedSlice::scale(self : StatsmodelmixedSlice, f : Double) -> StatsmodelmixedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_slice_add(a : StatsmodelmixedSlice, b : StatsmodelmixedSlice) -> StatsmodelmixedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelmixedSlice::add(self : StatsmodelmixedSlice, other : StatsmodelmixedSlice) -> StatsmodelmixedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_mixed_slice_copy(s : StatsmodelmixedSlice) -> StatsmodelmixedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedSlice::copy(self : StatsmodelmixedSlice) -> StatsmodelmixedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_slice_fill(s : StatsmodelmixedSlice, v : Double) -> StatsmodelmixedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelmixedSlice::fill(self : StatsmodelmixedSlice, v : Double) -> StatsmodelmixedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_mixed_slice_min(s : StatsmodelmixedSlice) -> Double { @_common.min(s.data) }
+pub fn StatsmodelmixedSlice::min(self : StatsmodelmixedSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_mixed_slice_max(s : StatsmodelmixedSlice) -> Double { @_common.max(s.data) }
+pub fn StatsmodelmixedSlice::max(self : StatsmodelmixedSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_mixed_slice_to_string(s : StatsmodelmixedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelmixedSlice::to_string(self : StatsmodelmixedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ml_neural_gan_frame_make(size : Int) -> MlneuralganFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_frame_len(s : MlneuralganFrame) -> Int { s.size }
+pub fn MlneuralganFrame::len(self : MlneuralganFrame) -> Int { self.size }
 
-pub fn ml_neural_gan_frame_get(s : MlneuralganFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganFrame::get(self : MlneuralganFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_frame_set(s : MlneuralganFrame, i : Int, v : Double) -> MlneuralganFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganFrame::set(self : MlneuralganFrame, i : Int, v : Double) -> MlneuralganFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_frame_sum(s : MlneuralganFrame) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganFrame::sum(self : MlneuralganFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_frame_mean(s : MlneuralganFrame) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganFrame::mean(self : MlneuralganFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_frame_scale(s : MlneuralganFrame, f : Double) -> MlneuralganFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganFrame::scale(self : MlneuralganFrame, f : Double) -> MlneuralganFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_frame_add(a : MlneuralganFrame, b : MlneuralganFrame) -> MlneuralganFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganFrame::add(self : MlneuralganFrame, other : MlneuralganFrame) -> MlneuralganFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_frame_copy(s : MlneuralganFrame) -> MlneuralganFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganFrame::copy(self : MlneuralganFrame) -> MlneuralganFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_frame_fill(s : MlneuralganFrame, v : Double) -> MlneuralganFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganFrame::fill(self : MlneuralganFrame, v : Double) -> MlneuralganFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_frame_min(s : MlneuralganFrame) -> Double { @_common.min(s.data) }
+pub fn MlneuralganFrame::min(self : MlneuralganFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_frame_max(s : MlneuralganFrame) -> Double { @_common.max(s.data) }
+pub fn MlneuralganFrame::max(self : MlneuralganFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_frame_to_string(s : MlneuralganFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganFrame::to_string(self : MlneuralganFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganTable {
@@ -402,45 +402,45 @@ pub fn ml_neural_gan_table_make(size : Int) -> MlneuralganTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_table_len(s : MlneuralganTable) -> Int { s.size }
+pub fn MlneuralganTable::len(self : MlneuralganTable) -> Int { self.size }
 
-pub fn ml_neural_gan_table_get(s : MlneuralganTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganTable::get(self : MlneuralganTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_table_set(s : MlneuralganTable, i : Int, v : Double) -> MlneuralganTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganTable::set(self : MlneuralganTable, i : Int, v : Double) -> MlneuralganTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_table_sum(s : MlneuralganTable) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganTable::sum(self : MlneuralganTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_table_mean(s : MlneuralganTable) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganTable::mean(self : MlneuralganTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_table_scale(s : MlneuralganTable, f : Double) -> MlneuralganTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganTable::scale(self : MlneuralganTable, f : Double) -> MlneuralganTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_table_add(a : MlneuralganTable, b : MlneuralganTable) -> MlneuralganTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganTable::add(self : MlneuralganTable, other : MlneuralganTable) -> MlneuralganTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_table_copy(s : MlneuralganTable) -> MlneuralganTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganTable::copy(self : MlneuralganTable) -> MlneuralganTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_table_fill(s : MlneuralganTable, v : Double) -> MlneuralganTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganTable::fill(self : MlneuralganTable, v : Double) -> MlneuralganTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_table_min(s : MlneuralganTable) -> Double { @_common.min(s.data) }
+pub fn MlneuralganTable::min(self : MlneuralganTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_table_max(s : MlneuralganTable) -> Double { @_common.max(s.data) }
+pub fn MlneuralganTable::max(self : MlneuralganTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_table_to_string(s : MlneuralganTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganTable::to_string(self : MlneuralganTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganGraphN {
@@ -453,45 +453,45 @@ pub fn ml_neural_gan_graphn_make(size : Int) -> MlneuralganGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_graphn_len(s : MlneuralganGraphN) -> Int { s.size }
+pub fn MlneuralganGraphN::len(self : MlneuralganGraphN) -> Int { self.size }
 
-pub fn ml_neural_gan_graphn_get(s : MlneuralganGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganGraphN::get(self : MlneuralganGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_graphn_set(s : MlneuralganGraphN, i : Int, v : Double) -> MlneuralganGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganGraphN::set(self : MlneuralganGraphN, i : Int, v : Double) -> MlneuralganGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_graphn_sum(s : MlneuralganGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganGraphN::sum(self : MlneuralganGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_graphn_mean(s : MlneuralganGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganGraphN::mean(self : MlneuralganGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_graphn_scale(s : MlneuralganGraphN, f : Double) -> MlneuralganGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganGraphN::scale(self : MlneuralganGraphN, f : Double) -> MlneuralganGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_graphn_add(a : MlneuralganGraphN, b : MlneuralganGraphN) -> MlneuralganGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganGraphN::add(self : MlneuralganGraphN, other : MlneuralganGraphN) -> MlneuralganGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_graphn_copy(s : MlneuralganGraphN) -> MlneuralganGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganGraphN::copy(self : MlneuralganGraphN) -> MlneuralganGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_graphn_fill(s : MlneuralganGraphN, v : Double) -> MlneuralganGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganGraphN::fill(self : MlneuralganGraphN, v : Double) -> MlneuralganGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_graphn_min(s : MlneuralganGraphN) -> Double { @_common.min(s.data) }
+pub fn MlneuralganGraphN::min(self : MlneuralganGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_graphn_max(s : MlneuralganGraphN) -> Double { @_common.max(s.data) }
+pub fn MlneuralganGraphN::max(self : MlneuralganGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_graphn_to_string(s : MlneuralganGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganGraphN::to_string(self : MlneuralganGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganNode {
@@ -504,45 +504,45 @@ pub fn ml_neural_gan_node_make(size : Int) -> MlneuralganNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_node_len(s : MlneuralganNode) -> Int { s.size }
+pub fn MlneuralganNode::len(self : MlneuralganNode) -> Int { self.size }
 
-pub fn ml_neural_gan_node_get(s : MlneuralganNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganNode::get(self : MlneuralganNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_node_set(s : MlneuralganNode, i : Int, v : Double) -> MlneuralganNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganNode::set(self : MlneuralganNode, i : Int, v : Double) -> MlneuralganNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_node_sum(s : MlneuralganNode) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganNode::sum(self : MlneuralganNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_node_mean(s : MlneuralganNode) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganNode::mean(self : MlneuralganNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_node_scale(s : MlneuralganNode, f : Double) -> MlneuralganNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganNode::scale(self : MlneuralganNode, f : Double) -> MlneuralganNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_node_add(a : MlneuralganNode, b : MlneuralganNode) -> MlneuralganNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganNode::add(self : MlneuralganNode, other : MlneuralganNode) -> MlneuralganNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_node_copy(s : MlneuralganNode) -> MlneuralganNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganNode::copy(self : MlneuralganNode) -> MlneuralganNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_node_fill(s : MlneuralganNode, v : Double) -> MlneuralganNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganNode::fill(self : MlneuralganNode, v : Double) -> MlneuralganNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_node_min(s : MlneuralganNode) -> Double { @_common.min(s.data) }
+pub fn MlneuralganNode::min(self : MlneuralganNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_node_max(s : MlneuralganNode) -> Double { @_common.max(s.data) }
+pub fn MlneuralganNode::max(self : MlneuralganNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_node_to_string(s : MlneuralganNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganNode::to_string(self : MlneuralganNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganEdge {
@@ -555,45 +555,45 @@ pub fn ml_neural_gan_edge_make(size : Int) -> MlneuralganEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_edge_len(s : MlneuralganEdge) -> Int { s.size }
+pub fn MlneuralganEdge::len(self : MlneuralganEdge) -> Int { self.size }
 
-pub fn ml_neural_gan_edge_get(s : MlneuralganEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganEdge::get(self : MlneuralganEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_edge_set(s : MlneuralganEdge, i : Int, v : Double) -> MlneuralganEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganEdge::set(self : MlneuralganEdge, i : Int, v : Double) -> MlneuralganEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_edge_sum(s : MlneuralganEdge) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganEdge::sum(self : MlneuralganEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_edge_mean(s : MlneuralganEdge) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganEdge::mean(self : MlneuralganEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_edge_scale(s : MlneuralganEdge, f : Double) -> MlneuralganEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganEdge::scale(self : MlneuralganEdge, f : Double) -> MlneuralganEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_edge_add(a : MlneuralganEdge, b : MlneuralganEdge) -> MlneuralganEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganEdge::add(self : MlneuralganEdge, other : MlneuralganEdge) -> MlneuralganEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_edge_copy(s : MlneuralganEdge) -> MlneuralganEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganEdge::copy(self : MlneuralganEdge) -> MlneuralganEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_edge_fill(s : MlneuralganEdge, v : Double) -> MlneuralganEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganEdge::fill(self : MlneuralganEdge, v : Double) -> MlneuralganEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_edge_min(s : MlneuralganEdge) -> Double { @_common.min(s.data) }
+pub fn MlneuralganEdge::min(self : MlneuralganEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_edge_max(s : MlneuralganEdge) -> Double { @_common.max(s.data) }
+pub fn MlneuralganEdge::max(self : MlneuralganEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_edge_to_string(s : MlneuralganEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganEdge::to_string(self : MlneuralganEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganPath {
@@ -606,45 +606,45 @@ pub fn ml_neural_gan_path_make(size : Int) -> MlneuralganPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_path_len(s : MlneuralganPath) -> Int { s.size }
+pub fn MlneuralganPath::len(self : MlneuralganPath) -> Int { self.size }
 
-pub fn ml_neural_gan_path_get(s : MlneuralganPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganPath::get(self : MlneuralganPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_path_set(s : MlneuralganPath, i : Int, v : Double) -> MlneuralganPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganPath::set(self : MlneuralganPath, i : Int, v : Double) -> MlneuralganPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_path_sum(s : MlneuralganPath) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganPath::sum(self : MlneuralganPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_path_mean(s : MlneuralganPath) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganPath::mean(self : MlneuralganPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_path_scale(s : MlneuralganPath, f : Double) -> MlneuralganPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganPath::scale(self : MlneuralganPath, f : Double) -> MlneuralganPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_path_add(a : MlneuralganPath, b : MlneuralganPath) -> MlneuralganPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganPath::add(self : MlneuralganPath, other : MlneuralganPath) -> MlneuralganPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_path_copy(s : MlneuralganPath) -> MlneuralganPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganPath::copy(self : MlneuralganPath) -> MlneuralganPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_path_fill(s : MlneuralganPath, v : Double) -> MlneuralganPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganPath::fill(self : MlneuralganPath, v : Double) -> MlneuralganPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_path_min(s : MlneuralganPath) -> Double { @_common.min(s.data) }
+pub fn MlneuralganPath::min(self : MlneuralganPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_path_max(s : MlneuralganPath) -> Double { @_common.max(s.data) }
+pub fn MlneuralganPath::max(self : MlneuralganPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_path_to_string(s : MlneuralganPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganPath::to_string(self : MlneuralganPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganCluster {
@@ -657,45 +657,45 @@ pub fn ml_neural_gan_cluster_make(size : Int) -> MlneuralganCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_cluster_len(s : MlneuralganCluster) -> Int { s.size }
+pub fn MlneuralganCluster::len(self : MlneuralganCluster) -> Int { self.size }
 
-pub fn ml_neural_gan_cluster_get(s : MlneuralganCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganCluster::get(self : MlneuralganCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_cluster_set(s : MlneuralganCluster, i : Int, v : Double) -> MlneuralganCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganCluster::set(self : MlneuralganCluster, i : Int, v : Double) -> MlneuralganCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cluster_sum(s : MlneuralganCluster) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganCluster::sum(self : MlneuralganCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_cluster_mean(s : MlneuralganCluster) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganCluster::mean(self : MlneuralganCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_cluster_scale(s : MlneuralganCluster, f : Double) -> MlneuralganCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganCluster::scale(self : MlneuralganCluster, f : Double) -> MlneuralganCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cluster_add(a : MlneuralganCluster, b : MlneuralganCluster) -> MlneuralganCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganCluster::add(self : MlneuralganCluster, other : MlneuralganCluster) -> MlneuralganCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cluster_copy(s : MlneuralganCluster) -> MlneuralganCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganCluster::copy(self : MlneuralganCluster) -> MlneuralganCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cluster_fill(s : MlneuralganCluster, v : Double) -> MlneuralganCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganCluster::fill(self : MlneuralganCluster, v : Double) -> MlneuralganCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cluster_min(s : MlneuralganCluster) -> Double { @_common.min(s.data) }
+pub fn MlneuralganCluster::min(self : MlneuralganCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_cluster_max(s : MlneuralganCluster) -> Double { @_common.max(s.data) }
+pub fn MlneuralganCluster::max(self : MlneuralganCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_cluster_to_string(s : MlneuralganCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganCluster::to_string(self : MlneuralganCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganModel {
@@ -708,45 +708,45 @@ pub fn ml_neural_gan_model_make(size : Int) -> MlneuralganModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_model_len(s : MlneuralganModel) -> Int { s.size }
+pub fn MlneuralganModel::len(self : MlneuralganModel) -> Int { self.size }
 
-pub fn ml_neural_gan_model_get(s : MlneuralganModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganModel::get(self : MlneuralganModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_model_set(s : MlneuralganModel, i : Int, v : Double) -> MlneuralganModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganModel::set(self : MlneuralganModel, i : Int, v : Double) -> MlneuralganModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_model_sum(s : MlneuralganModel) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganModel::sum(self : MlneuralganModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_model_mean(s : MlneuralganModel) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganModel::mean(self : MlneuralganModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_model_scale(s : MlneuralganModel, f : Double) -> MlneuralganModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganModel::scale(self : MlneuralganModel, f : Double) -> MlneuralganModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_model_add(a : MlneuralganModel, b : MlneuralganModel) -> MlneuralganModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganModel::add(self : MlneuralganModel, other : MlneuralganModel) -> MlneuralganModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_model_copy(s : MlneuralganModel) -> MlneuralganModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganModel::copy(self : MlneuralganModel) -> MlneuralganModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_model_fill(s : MlneuralganModel, v : Double) -> MlneuralganModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganModel::fill(self : MlneuralganModel, v : Double) -> MlneuralganModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_model_min(s : MlneuralganModel) -> Double { @_common.min(s.data) }
+pub fn MlneuralganModel::min(self : MlneuralganModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_model_max(s : MlneuralganModel) -> Double { @_common.max(s.data) }
+pub fn MlneuralganModel::max(self : MlneuralganModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_model_to_string(s : MlneuralganModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganModel::to_string(self : MlneuralganModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganLayer {
@@ -759,45 +759,45 @@ pub fn ml_neural_gan_layer_make(size : Int) -> MlneuralganLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_layer_len(s : MlneuralganLayer) -> Int { s.size }
+pub fn MlneuralganLayer::len(self : MlneuralganLayer) -> Int { self.size }
 
-pub fn ml_neural_gan_layer_get(s : MlneuralganLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganLayer::get(self : MlneuralganLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_layer_set(s : MlneuralganLayer, i : Int, v : Double) -> MlneuralganLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganLayer::set(self : MlneuralganLayer, i : Int, v : Double) -> MlneuralganLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_layer_sum(s : MlneuralganLayer) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganLayer::sum(self : MlneuralganLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_layer_mean(s : MlneuralganLayer) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganLayer::mean(self : MlneuralganLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_layer_scale(s : MlneuralganLayer, f : Double) -> MlneuralganLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganLayer::scale(self : MlneuralganLayer, f : Double) -> MlneuralganLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_layer_add(a : MlneuralganLayer, b : MlneuralganLayer) -> MlneuralganLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganLayer::add(self : MlneuralganLayer, other : MlneuralganLayer) -> MlneuralganLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_layer_copy(s : MlneuralganLayer) -> MlneuralganLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganLayer::copy(self : MlneuralganLayer) -> MlneuralganLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_layer_fill(s : MlneuralganLayer, v : Double) -> MlneuralganLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganLayer::fill(self : MlneuralganLayer, v : Double) -> MlneuralganLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_layer_min(s : MlneuralganLayer) -> Double { @_common.min(s.data) }
+pub fn MlneuralganLayer::min(self : MlneuralganLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_layer_max(s : MlneuralganLayer) -> Double { @_common.max(s.data) }
+pub fn MlneuralganLayer::max(self : MlneuralganLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_layer_to_string(s : MlneuralganLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganLayer::to_string(self : MlneuralganLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganBuffer {
@@ -810,45 +810,45 @@ pub fn ml_neural_gan_buffer_make(size : Int) -> MlneuralganBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_buffer_len(s : MlneuralganBuffer) -> Int { s.size }
+pub fn MlneuralganBuffer::len(self : MlneuralganBuffer) -> Int { self.size }
 
-pub fn ml_neural_gan_buffer_get(s : MlneuralganBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganBuffer::get(self : MlneuralganBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_buffer_set(s : MlneuralganBuffer, i : Int, v : Double) -> MlneuralganBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganBuffer::set(self : MlneuralganBuffer, i : Int, v : Double) -> MlneuralganBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_buffer_sum(s : MlneuralganBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganBuffer::sum(self : MlneuralganBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_buffer_mean(s : MlneuralganBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganBuffer::mean(self : MlneuralganBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_buffer_scale(s : MlneuralganBuffer, f : Double) -> MlneuralganBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganBuffer::scale(self : MlneuralganBuffer, f : Double) -> MlneuralganBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_buffer_add(a : MlneuralganBuffer, b : MlneuralganBuffer) -> MlneuralganBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganBuffer::add(self : MlneuralganBuffer, other : MlneuralganBuffer) -> MlneuralganBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_buffer_copy(s : MlneuralganBuffer) -> MlneuralganBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganBuffer::copy(self : MlneuralganBuffer) -> MlneuralganBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_buffer_fill(s : MlneuralganBuffer, v : Double) -> MlneuralganBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganBuffer::fill(self : MlneuralganBuffer, v : Double) -> MlneuralganBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_buffer_min(s : MlneuralganBuffer) -> Double { @_common.min(s.data) }
+pub fn MlneuralganBuffer::min(self : MlneuralganBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_buffer_max(s : MlneuralganBuffer) -> Double { @_common.max(s.data) }
+pub fn MlneuralganBuffer::max(self : MlneuralganBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_buffer_to_string(s : MlneuralganBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganBuffer::to_string(self : MlneuralganBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganCursor {
@@ -861,45 +861,45 @@ pub fn ml_neural_gan_cursor_make(size : Int) -> MlneuralganCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_cursor_len(s : MlneuralganCursor) -> Int { s.size }
+pub fn MlneuralganCursor::len(self : MlneuralganCursor) -> Int { self.size }
 
-pub fn ml_neural_gan_cursor_get(s : MlneuralganCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganCursor::get(self : MlneuralganCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_cursor_set(s : MlneuralganCursor, i : Int, v : Double) -> MlneuralganCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganCursor::set(self : MlneuralganCursor, i : Int, v : Double) -> MlneuralganCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cursor_sum(s : MlneuralganCursor) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganCursor::sum(self : MlneuralganCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_cursor_mean(s : MlneuralganCursor) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganCursor::mean(self : MlneuralganCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_cursor_scale(s : MlneuralganCursor, f : Double) -> MlneuralganCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganCursor::scale(self : MlneuralganCursor, f : Double) -> MlneuralganCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cursor_add(a : MlneuralganCursor, b : MlneuralganCursor) -> MlneuralganCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganCursor::add(self : MlneuralganCursor, other : MlneuralganCursor) -> MlneuralganCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cursor_copy(s : MlneuralganCursor) -> MlneuralganCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganCursor::copy(self : MlneuralganCursor) -> MlneuralganCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cursor_fill(s : MlneuralganCursor, v : Double) -> MlneuralganCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganCursor::fill(self : MlneuralganCursor, v : Double) -> MlneuralganCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_cursor_min(s : MlneuralganCursor) -> Double { @_common.min(s.data) }
+pub fn MlneuralganCursor::min(self : MlneuralganCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_cursor_max(s : MlneuralganCursor) -> Double { @_common.max(s.data) }
+pub fn MlneuralganCursor::max(self : MlneuralganCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_cursor_to_string(s : MlneuralganCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganCursor::to_string(self : MlneuralganCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganView {
@@ -912,45 +912,45 @@ pub fn ml_neural_gan_view_make(size : Int) -> MlneuralganView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_view_len(s : MlneuralganView) -> Int { s.size }
+pub fn MlneuralganView::len(self : MlneuralganView) -> Int { self.size }
 
-pub fn ml_neural_gan_view_get(s : MlneuralganView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganView::get(self : MlneuralganView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_view_set(s : MlneuralganView, i : Int, v : Double) -> MlneuralganView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganView::set(self : MlneuralganView, i : Int, v : Double) -> MlneuralganView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_view_sum(s : MlneuralganView) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganView::sum(self : MlneuralganView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_view_mean(s : MlneuralganView) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganView::mean(self : MlneuralganView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_view_scale(s : MlneuralganView, f : Double) -> MlneuralganView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganView::scale(self : MlneuralganView, f : Double) -> MlneuralganView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_view_add(a : MlneuralganView, b : MlneuralganView) -> MlneuralganView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganView::add(self : MlneuralganView, other : MlneuralganView) -> MlneuralganView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_view_copy(s : MlneuralganView) -> MlneuralganView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganView::copy(self : MlneuralganView) -> MlneuralganView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_view_fill(s : MlneuralganView, v : Double) -> MlneuralganView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganView::fill(self : MlneuralganView, v : Double) -> MlneuralganView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_view_min(s : MlneuralganView) -> Double { @_common.min(s.data) }
+pub fn MlneuralganView::min(self : MlneuralganView) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_view_max(s : MlneuralganView) -> Double { @_common.max(s.data) }
+pub fn MlneuralganView::max(self : MlneuralganView) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_view_to_string(s : MlneuralganView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganView::to_string(self : MlneuralganView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganRange {
@@ -963,45 +963,45 @@ pub fn ml_neural_gan_range_make(size : Int) -> MlneuralganRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_range_len(s : MlneuralganRange) -> Int { s.size }
+pub fn MlneuralganRange::len(self : MlneuralganRange) -> Int { self.size }
 
-pub fn ml_neural_gan_range_get(s : MlneuralganRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganRange::get(self : MlneuralganRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_range_set(s : MlneuralganRange, i : Int, v : Double) -> MlneuralganRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganRange::set(self : MlneuralganRange, i : Int, v : Double) -> MlneuralganRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_range_sum(s : MlneuralganRange) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganRange::sum(self : MlneuralganRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_range_mean(s : MlneuralganRange) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganRange::mean(self : MlneuralganRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_range_scale(s : MlneuralganRange, f : Double) -> MlneuralganRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganRange::scale(self : MlneuralganRange, f : Double) -> MlneuralganRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_range_add(a : MlneuralganRange, b : MlneuralganRange) -> MlneuralganRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganRange::add(self : MlneuralganRange, other : MlneuralganRange) -> MlneuralganRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_range_copy(s : MlneuralganRange) -> MlneuralganRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganRange::copy(self : MlneuralganRange) -> MlneuralganRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_range_fill(s : MlneuralganRange, v : Double) -> MlneuralganRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganRange::fill(self : MlneuralganRange, v : Double) -> MlneuralganRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_range_min(s : MlneuralganRange) -> Double { @_common.min(s.data) }
+pub fn MlneuralganRange::min(self : MlneuralganRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_range_max(s : MlneuralganRange) -> Double { @_common.max(s.data) }
+pub fn MlneuralganRange::max(self : MlneuralganRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_range_to_string(s : MlneuralganRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganRange::to_string(self : MlneuralganRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlneuralganSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_neural_gan_slice_make(size : Int) -> MlneuralganSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_neural_gan_slice_len(s : MlneuralganSlice) -> Int { s.size }
+pub fn MlneuralganSlice::len(self : MlneuralganSlice) -> Int { self.size }
 
-pub fn ml_neural_gan_slice_get(s : MlneuralganSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlneuralganSlice::get(self : MlneuralganSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_neural_gan_slice_set(s : MlneuralganSlice, i : Int, v : Double) -> MlneuralganSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlneuralganSlice::set(self : MlneuralganSlice, i : Int, v : Double) -> MlneuralganSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_slice_sum(s : MlneuralganSlice) -> Double { @_common.sum(s.data) }
+pub fn MlneuralganSlice::sum(self : MlneuralganSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_neural_gan_slice_mean(s : MlneuralganSlice) -> Double { @_common.mean(s.data) }
+pub fn MlneuralganSlice::mean(self : MlneuralganSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_neural_gan_slice_scale(s : MlneuralganSlice, f : Double) -> MlneuralganSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlneuralganSlice::scale(self : MlneuralganSlice, f : Double) -> MlneuralganSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_slice_add(a : MlneuralganSlice, b : MlneuralganSlice) -> MlneuralganSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlneuralganSlice::add(self : MlneuralganSlice, other : MlneuralganSlice) -> MlneuralganSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_neural_gan_slice_copy(s : MlneuralganSlice) -> MlneuralganSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlneuralganSlice::copy(self : MlneuralganSlice) -> MlneuralganSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_slice_fill(s : MlneuralganSlice, v : Double) -> MlneuralganSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlneuralganSlice::fill(self : MlneuralganSlice, v : Double) -> MlneuralganSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_neural_gan_slice_min(s : MlneuralganSlice) -> Double { @_common.min(s.data) }
+pub fn MlneuralganSlice::min(self : MlneuralganSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_neural_gan_slice_max(s : MlneuralganSlice) -> Double { @_common.max(s.data) }
+pub fn MlneuralganSlice::max(self : MlneuralganSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_neural_gan_slice_to_string(s : MlneuralganSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlneuralganSlice::to_string(self : MlneuralganSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

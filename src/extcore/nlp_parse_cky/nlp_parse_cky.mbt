@@ -351,45 +351,45 @@ pub fn nlp_parse_cky_frame_make(size : Int) -> NlpparseckyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_frame_len(s : NlpparseckyFrame) -> Int { s.size }
+pub fn NlpparseckyFrame::len(self : NlpparseckyFrame) -> Int { self.size }
 
-pub fn nlp_parse_cky_frame_get(s : NlpparseckyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyFrame::get(self : NlpparseckyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_frame_set(s : NlpparseckyFrame, i : Int, v : Double) -> NlpparseckyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyFrame::set(self : NlpparseckyFrame, i : Int, v : Double) -> NlpparseckyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_frame_sum(s : NlpparseckyFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyFrame::sum(self : NlpparseckyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_frame_mean(s : NlpparseckyFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyFrame::mean(self : NlpparseckyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_frame_scale(s : NlpparseckyFrame, f : Double) -> NlpparseckyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyFrame::scale(self : NlpparseckyFrame, f : Double) -> NlpparseckyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_frame_add(a : NlpparseckyFrame, b : NlpparseckyFrame) -> NlpparseckyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyFrame::add(self : NlpparseckyFrame, other : NlpparseckyFrame) -> NlpparseckyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_frame_copy(s : NlpparseckyFrame) -> NlpparseckyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyFrame::copy(self : NlpparseckyFrame) -> NlpparseckyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_frame_fill(s : NlpparseckyFrame, v : Double) -> NlpparseckyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyFrame::fill(self : NlpparseckyFrame, v : Double) -> NlpparseckyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_frame_min(s : NlpparseckyFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyFrame::min(self : NlpparseckyFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_frame_max(s : NlpparseckyFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyFrame::max(self : NlpparseckyFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_frame_to_string(s : NlpparseckyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyFrame::to_string(self : NlpparseckyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_cky_table_make(size : Int) -> NlpparseckyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_table_len(s : NlpparseckyTable) -> Int { s.size }
+pub fn NlpparseckyTable::len(self : NlpparseckyTable) -> Int { self.size }
 
-pub fn nlp_parse_cky_table_get(s : NlpparseckyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyTable::get(self : NlpparseckyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_table_set(s : NlpparseckyTable, i : Int, v : Double) -> NlpparseckyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyTable::set(self : NlpparseckyTable, i : Int, v : Double) -> NlpparseckyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_table_sum(s : NlpparseckyTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyTable::sum(self : NlpparseckyTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_table_mean(s : NlpparseckyTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyTable::mean(self : NlpparseckyTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_table_scale(s : NlpparseckyTable, f : Double) -> NlpparseckyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyTable::scale(self : NlpparseckyTable, f : Double) -> NlpparseckyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_table_add(a : NlpparseckyTable, b : NlpparseckyTable) -> NlpparseckyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyTable::add(self : NlpparseckyTable, other : NlpparseckyTable) -> NlpparseckyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_table_copy(s : NlpparseckyTable) -> NlpparseckyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyTable::copy(self : NlpparseckyTable) -> NlpparseckyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_table_fill(s : NlpparseckyTable, v : Double) -> NlpparseckyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyTable::fill(self : NlpparseckyTable, v : Double) -> NlpparseckyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_table_min(s : NlpparseckyTable) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyTable::min(self : NlpparseckyTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_table_max(s : NlpparseckyTable) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyTable::max(self : NlpparseckyTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_table_to_string(s : NlpparseckyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyTable::to_string(self : NlpparseckyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_cky_graphn_make(size : Int) -> NlpparseckyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_graphn_len(s : NlpparseckyGraphN) -> Int { s.size }
+pub fn NlpparseckyGraphN::len(self : NlpparseckyGraphN) -> Int { self.size }
 
-pub fn nlp_parse_cky_graphn_get(s : NlpparseckyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyGraphN::get(self : NlpparseckyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_graphn_set(s : NlpparseckyGraphN, i : Int, v : Double) -> NlpparseckyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyGraphN::set(self : NlpparseckyGraphN, i : Int, v : Double) -> NlpparseckyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_graphn_sum(s : NlpparseckyGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyGraphN::sum(self : NlpparseckyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_graphn_mean(s : NlpparseckyGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyGraphN::mean(self : NlpparseckyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_graphn_scale(s : NlpparseckyGraphN, f : Double) -> NlpparseckyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyGraphN::scale(self : NlpparseckyGraphN, f : Double) -> NlpparseckyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_graphn_add(a : NlpparseckyGraphN, b : NlpparseckyGraphN) -> NlpparseckyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyGraphN::add(self : NlpparseckyGraphN, other : NlpparseckyGraphN) -> NlpparseckyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_graphn_copy(s : NlpparseckyGraphN) -> NlpparseckyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyGraphN::copy(self : NlpparseckyGraphN) -> NlpparseckyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_graphn_fill(s : NlpparseckyGraphN, v : Double) -> NlpparseckyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyGraphN::fill(self : NlpparseckyGraphN, v : Double) -> NlpparseckyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_graphn_min(s : NlpparseckyGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyGraphN::min(self : NlpparseckyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_graphn_max(s : NlpparseckyGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyGraphN::max(self : NlpparseckyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_graphn_to_string(s : NlpparseckyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyGraphN::to_string(self : NlpparseckyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_cky_node_make(size : Int) -> NlpparseckyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_node_len(s : NlpparseckyNode) -> Int { s.size }
+pub fn NlpparseckyNode::len(self : NlpparseckyNode) -> Int { self.size }
 
-pub fn nlp_parse_cky_node_get(s : NlpparseckyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyNode::get(self : NlpparseckyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_node_set(s : NlpparseckyNode, i : Int, v : Double) -> NlpparseckyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyNode::set(self : NlpparseckyNode, i : Int, v : Double) -> NlpparseckyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_node_sum(s : NlpparseckyNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyNode::sum(self : NlpparseckyNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_node_mean(s : NlpparseckyNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyNode::mean(self : NlpparseckyNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_node_scale(s : NlpparseckyNode, f : Double) -> NlpparseckyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyNode::scale(self : NlpparseckyNode, f : Double) -> NlpparseckyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_node_add(a : NlpparseckyNode, b : NlpparseckyNode) -> NlpparseckyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyNode::add(self : NlpparseckyNode, other : NlpparseckyNode) -> NlpparseckyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_node_copy(s : NlpparseckyNode) -> NlpparseckyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyNode::copy(self : NlpparseckyNode) -> NlpparseckyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_node_fill(s : NlpparseckyNode, v : Double) -> NlpparseckyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyNode::fill(self : NlpparseckyNode, v : Double) -> NlpparseckyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_node_min(s : NlpparseckyNode) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyNode::min(self : NlpparseckyNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_node_max(s : NlpparseckyNode) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyNode::max(self : NlpparseckyNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_node_to_string(s : NlpparseckyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyNode::to_string(self : NlpparseckyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_cky_edge_make(size : Int) -> NlpparseckyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_edge_len(s : NlpparseckyEdge) -> Int { s.size }
+pub fn NlpparseckyEdge::len(self : NlpparseckyEdge) -> Int { self.size }
 
-pub fn nlp_parse_cky_edge_get(s : NlpparseckyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyEdge::get(self : NlpparseckyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_edge_set(s : NlpparseckyEdge, i : Int, v : Double) -> NlpparseckyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyEdge::set(self : NlpparseckyEdge, i : Int, v : Double) -> NlpparseckyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_edge_sum(s : NlpparseckyEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyEdge::sum(self : NlpparseckyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_edge_mean(s : NlpparseckyEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyEdge::mean(self : NlpparseckyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_edge_scale(s : NlpparseckyEdge, f : Double) -> NlpparseckyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyEdge::scale(self : NlpparseckyEdge, f : Double) -> NlpparseckyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_edge_add(a : NlpparseckyEdge, b : NlpparseckyEdge) -> NlpparseckyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyEdge::add(self : NlpparseckyEdge, other : NlpparseckyEdge) -> NlpparseckyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_edge_copy(s : NlpparseckyEdge) -> NlpparseckyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyEdge::copy(self : NlpparseckyEdge) -> NlpparseckyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_edge_fill(s : NlpparseckyEdge, v : Double) -> NlpparseckyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyEdge::fill(self : NlpparseckyEdge, v : Double) -> NlpparseckyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_edge_min(s : NlpparseckyEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyEdge::min(self : NlpparseckyEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_edge_max(s : NlpparseckyEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyEdge::max(self : NlpparseckyEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_edge_to_string(s : NlpparseckyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyEdge::to_string(self : NlpparseckyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_cky_path_make(size : Int) -> NlpparseckyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_path_len(s : NlpparseckyPath) -> Int { s.size }
+pub fn NlpparseckyPath::len(self : NlpparseckyPath) -> Int { self.size }
 
-pub fn nlp_parse_cky_path_get(s : NlpparseckyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyPath::get(self : NlpparseckyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_path_set(s : NlpparseckyPath, i : Int, v : Double) -> NlpparseckyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyPath::set(self : NlpparseckyPath, i : Int, v : Double) -> NlpparseckyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_path_sum(s : NlpparseckyPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyPath::sum(self : NlpparseckyPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_path_mean(s : NlpparseckyPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyPath::mean(self : NlpparseckyPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_path_scale(s : NlpparseckyPath, f : Double) -> NlpparseckyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyPath::scale(self : NlpparseckyPath, f : Double) -> NlpparseckyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_path_add(a : NlpparseckyPath, b : NlpparseckyPath) -> NlpparseckyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyPath::add(self : NlpparseckyPath, other : NlpparseckyPath) -> NlpparseckyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_path_copy(s : NlpparseckyPath) -> NlpparseckyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyPath::copy(self : NlpparseckyPath) -> NlpparseckyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_path_fill(s : NlpparseckyPath, v : Double) -> NlpparseckyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyPath::fill(self : NlpparseckyPath, v : Double) -> NlpparseckyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_path_min(s : NlpparseckyPath) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyPath::min(self : NlpparseckyPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_path_max(s : NlpparseckyPath) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyPath::max(self : NlpparseckyPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_path_to_string(s : NlpparseckyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyPath::to_string(self : NlpparseckyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_cky_cluster_make(size : Int) -> NlpparseckyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_cluster_len(s : NlpparseckyCluster) -> Int { s.size }
+pub fn NlpparseckyCluster::len(self : NlpparseckyCluster) -> Int { self.size }
 
-pub fn nlp_parse_cky_cluster_get(s : NlpparseckyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyCluster::get(self : NlpparseckyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_cluster_set(s : NlpparseckyCluster, i : Int, v : Double) -> NlpparseckyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyCluster::set(self : NlpparseckyCluster, i : Int, v : Double) -> NlpparseckyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cluster_sum(s : NlpparseckyCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyCluster::sum(self : NlpparseckyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_cluster_mean(s : NlpparseckyCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyCluster::mean(self : NlpparseckyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_cluster_scale(s : NlpparseckyCluster, f : Double) -> NlpparseckyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyCluster::scale(self : NlpparseckyCluster, f : Double) -> NlpparseckyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cluster_add(a : NlpparseckyCluster, b : NlpparseckyCluster) -> NlpparseckyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyCluster::add(self : NlpparseckyCluster, other : NlpparseckyCluster) -> NlpparseckyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cluster_copy(s : NlpparseckyCluster) -> NlpparseckyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyCluster::copy(self : NlpparseckyCluster) -> NlpparseckyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cluster_fill(s : NlpparseckyCluster, v : Double) -> NlpparseckyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyCluster::fill(self : NlpparseckyCluster, v : Double) -> NlpparseckyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cluster_min(s : NlpparseckyCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyCluster::min(self : NlpparseckyCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_cluster_max(s : NlpparseckyCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyCluster::max(self : NlpparseckyCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_cluster_to_string(s : NlpparseckyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyCluster::to_string(self : NlpparseckyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_cky_model_make(size : Int) -> NlpparseckyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_model_len(s : NlpparseckyModel) -> Int { s.size }
+pub fn NlpparseckyModel::len(self : NlpparseckyModel) -> Int { self.size }
 
-pub fn nlp_parse_cky_model_get(s : NlpparseckyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyModel::get(self : NlpparseckyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_model_set(s : NlpparseckyModel, i : Int, v : Double) -> NlpparseckyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyModel::set(self : NlpparseckyModel, i : Int, v : Double) -> NlpparseckyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_model_sum(s : NlpparseckyModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyModel::sum(self : NlpparseckyModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_model_mean(s : NlpparseckyModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyModel::mean(self : NlpparseckyModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_model_scale(s : NlpparseckyModel, f : Double) -> NlpparseckyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyModel::scale(self : NlpparseckyModel, f : Double) -> NlpparseckyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_model_add(a : NlpparseckyModel, b : NlpparseckyModel) -> NlpparseckyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyModel::add(self : NlpparseckyModel, other : NlpparseckyModel) -> NlpparseckyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_model_copy(s : NlpparseckyModel) -> NlpparseckyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyModel::copy(self : NlpparseckyModel) -> NlpparseckyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_model_fill(s : NlpparseckyModel, v : Double) -> NlpparseckyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyModel::fill(self : NlpparseckyModel, v : Double) -> NlpparseckyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_model_min(s : NlpparseckyModel) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyModel::min(self : NlpparseckyModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_model_max(s : NlpparseckyModel) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyModel::max(self : NlpparseckyModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_model_to_string(s : NlpparseckyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyModel::to_string(self : NlpparseckyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_cky_layer_make(size : Int) -> NlpparseckyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_layer_len(s : NlpparseckyLayer) -> Int { s.size }
+pub fn NlpparseckyLayer::len(self : NlpparseckyLayer) -> Int { self.size }
 
-pub fn nlp_parse_cky_layer_get(s : NlpparseckyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyLayer::get(self : NlpparseckyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_layer_set(s : NlpparseckyLayer, i : Int, v : Double) -> NlpparseckyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyLayer::set(self : NlpparseckyLayer, i : Int, v : Double) -> NlpparseckyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_layer_sum(s : NlpparseckyLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyLayer::sum(self : NlpparseckyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_layer_mean(s : NlpparseckyLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyLayer::mean(self : NlpparseckyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_layer_scale(s : NlpparseckyLayer, f : Double) -> NlpparseckyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyLayer::scale(self : NlpparseckyLayer, f : Double) -> NlpparseckyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_layer_add(a : NlpparseckyLayer, b : NlpparseckyLayer) -> NlpparseckyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyLayer::add(self : NlpparseckyLayer, other : NlpparseckyLayer) -> NlpparseckyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_layer_copy(s : NlpparseckyLayer) -> NlpparseckyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyLayer::copy(self : NlpparseckyLayer) -> NlpparseckyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_layer_fill(s : NlpparseckyLayer, v : Double) -> NlpparseckyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyLayer::fill(self : NlpparseckyLayer, v : Double) -> NlpparseckyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_layer_min(s : NlpparseckyLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyLayer::min(self : NlpparseckyLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_layer_max(s : NlpparseckyLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyLayer::max(self : NlpparseckyLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_layer_to_string(s : NlpparseckyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyLayer::to_string(self : NlpparseckyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_cky_buffer_make(size : Int) -> NlpparseckyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_buffer_len(s : NlpparseckyBuffer) -> Int { s.size }
+pub fn NlpparseckyBuffer::len(self : NlpparseckyBuffer) -> Int { self.size }
 
-pub fn nlp_parse_cky_buffer_get(s : NlpparseckyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyBuffer::get(self : NlpparseckyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_buffer_set(s : NlpparseckyBuffer, i : Int, v : Double) -> NlpparseckyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyBuffer::set(self : NlpparseckyBuffer, i : Int, v : Double) -> NlpparseckyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_buffer_sum(s : NlpparseckyBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyBuffer::sum(self : NlpparseckyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_buffer_mean(s : NlpparseckyBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyBuffer::mean(self : NlpparseckyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_buffer_scale(s : NlpparseckyBuffer, f : Double) -> NlpparseckyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyBuffer::scale(self : NlpparseckyBuffer, f : Double) -> NlpparseckyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_buffer_add(a : NlpparseckyBuffer, b : NlpparseckyBuffer) -> NlpparseckyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyBuffer::add(self : NlpparseckyBuffer, other : NlpparseckyBuffer) -> NlpparseckyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_buffer_copy(s : NlpparseckyBuffer) -> NlpparseckyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyBuffer::copy(self : NlpparseckyBuffer) -> NlpparseckyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_buffer_fill(s : NlpparseckyBuffer, v : Double) -> NlpparseckyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyBuffer::fill(self : NlpparseckyBuffer, v : Double) -> NlpparseckyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_buffer_min(s : NlpparseckyBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyBuffer::min(self : NlpparseckyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_buffer_max(s : NlpparseckyBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyBuffer::max(self : NlpparseckyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_buffer_to_string(s : NlpparseckyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyBuffer::to_string(self : NlpparseckyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_cky_cursor_make(size : Int) -> NlpparseckyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_cursor_len(s : NlpparseckyCursor) -> Int { s.size }
+pub fn NlpparseckyCursor::len(self : NlpparseckyCursor) -> Int { self.size }
 
-pub fn nlp_parse_cky_cursor_get(s : NlpparseckyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyCursor::get(self : NlpparseckyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_cursor_set(s : NlpparseckyCursor, i : Int, v : Double) -> NlpparseckyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyCursor::set(self : NlpparseckyCursor, i : Int, v : Double) -> NlpparseckyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cursor_sum(s : NlpparseckyCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyCursor::sum(self : NlpparseckyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_cursor_mean(s : NlpparseckyCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyCursor::mean(self : NlpparseckyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_cursor_scale(s : NlpparseckyCursor, f : Double) -> NlpparseckyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyCursor::scale(self : NlpparseckyCursor, f : Double) -> NlpparseckyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cursor_add(a : NlpparseckyCursor, b : NlpparseckyCursor) -> NlpparseckyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyCursor::add(self : NlpparseckyCursor, other : NlpparseckyCursor) -> NlpparseckyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cursor_copy(s : NlpparseckyCursor) -> NlpparseckyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyCursor::copy(self : NlpparseckyCursor) -> NlpparseckyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cursor_fill(s : NlpparseckyCursor, v : Double) -> NlpparseckyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyCursor::fill(self : NlpparseckyCursor, v : Double) -> NlpparseckyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_cursor_min(s : NlpparseckyCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyCursor::min(self : NlpparseckyCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_cursor_max(s : NlpparseckyCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyCursor::max(self : NlpparseckyCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_cursor_to_string(s : NlpparseckyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyCursor::to_string(self : NlpparseckyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_cky_view_make(size : Int) -> NlpparseckyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_view_len(s : NlpparseckyView) -> Int { s.size }
+pub fn NlpparseckyView::len(self : NlpparseckyView) -> Int { self.size }
 
-pub fn nlp_parse_cky_view_get(s : NlpparseckyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyView::get(self : NlpparseckyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_view_set(s : NlpparseckyView, i : Int, v : Double) -> NlpparseckyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyView::set(self : NlpparseckyView, i : Int, v : Double) -> NlpparseckyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_view_sum(s : NlpparseckyView) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyView::sum(self : NlpparseckyView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_view_mean(s : NlpparseckyView) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyView::mean(self : NlpparseckyView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_view_scale(s : NlpparseckyView, f : Double) -> NlpparseckyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyView::scale(self : NlpparseckyView, f : Double) -> NlpparseckyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_view_add(a : NlpparseckyView, b : NlpparseckyView) -> NlpparseckyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyView::add(self : NlpparseckyView, other : NlpparseckyView) -> NlpparseckyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_view_copy(s : NlpparseckyView) -> NlpparseckyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyView::copy(self : NlpparseckyView) -> NlpparseckyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_view_fill(s : NlpparseckyView, v : Double) -> NlpparseckyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyView::fill(self : NlpparseckyView, v : Double) -> NlpparseckyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_view_min(s : NlpparseckyView) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyView::min(self : NlpparseckyView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_view_max(s : NlpparseckyView) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyView::max(self : NlpparseckyView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_view_to_string(s : NlpparseckyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyView::to_string(self : NlpparseckyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckyRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_cky_range_make(size : Int) -> NlpparseckyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_range_len(s : NlpparseckyRange) -> Int { s.size }
+pub fn NlpparseckyRange::len(self : NlpparseckyRange) -> Int { self.size }
 
-pub fn nlp_parse_cky_range_get(s : NlpparseckyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckyRange::get(self : NlpparseckyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_range_set(s : NlpparseckyRange, i : Int, v : Double) -> NlpparseckyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckyRange::set(self : NlpparseckyRange, i : Int, v : Double) -> NlpparseckyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_range_sum(s : NlpparseckyRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckyRange::sum(self : NlpparseckyRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_range_mean(s : NlpparseckyRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckyRange::mean(self : NlpparseckyRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_range_scale(s : NlpparseckyRange, f : Double) -> NlpparseckyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckyRange::scale(self : NlpparseckyRange, f : Double) -> NlpparseckyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_range_add(a : NlpparseckyRange, b : NlpparseckyRange) -> NlpparseckyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckyRange::add(self : NlpparseckyRange, other : NlpparseckyRange) -> NlpparseckyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_range_copy(s : NlpparseckyRange) -> NlpparseckyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckyRange::copy(self : NlpparseckyRange) -> NlpparseckyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_range_fill(s : NlpparseckyRange, v : Double) -> NlpparseckyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckyRange::fill(self : NlpparseckyRange, v : Double) -> NlpparseckyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_range_min(s : NlpparseckyRange) -> Double { @_common.min(s.data) }
+pub fn NlpparseckyRange::min(self : NlpparseckyRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_range_max(s : NlpparseckyRange) -> Double { @_common.max(s.data) }
+pub fn NlpparseckyRange::max(self : NlpparseckyRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_range_to_string(s : NlpparseckyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckyRange::to_string(self : NlpparseckyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparseckySlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_cky_slice_make(size : Int) -> NlpparseckySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_cky_slice_len(s : NlpparseckySlice) -> Int { s.size }
+pub fn NlpparseckySlice::len(self : NlpparseckySlice) -> Int { self.size }
 
-pub fn nlp_parse_cky_slice_get(s : NlpparseckySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparseckySlice::get(self : NlpparseckySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_cky_slice_set(s : NlpparseckySlice, i : Int, v : Double) -> NlpparseckySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparseckySlice::set(self : NlpparseckySlice, i : Int, v : Double) -> NlpparseckySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_slice_sum(s : NlpparseckySlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparseckySlice::sum(self : NlpparseckySlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_cky_slice_mean(s : NlpparseckySlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparseckySlice::mean(self : NlpparseckySlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_cky_slice_scale(s : NlpparseckySlice, f : Double) -> NlpparseckySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparseckySlice::scale(self : NlpparseckySlice, f : Double) -> NlpparseckySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_slice_add(a : NlpparseckySlice, b : NlpparseckySlice) -> NlpparseckySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparseckySlice::add(self : NlpparseckySlice, other : NlpparseckySlice) -> NlpparseckySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_slice_copy(s : NlpparseckySlice) -> NlpparseckySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparseckySlice::copy(self : NlpparseckySlice) -> NlpparseckySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_slice_fill(s : NlpparseckySlice, v : Double) -> NlpparseckySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparseckySlice::fill(self : NlpparseckySlice, v : Double) -> NlpparseckySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_cky_slice_min(s : NlpparseckySlice) -> Double { @_common.min(s.data) }
+pub fn NlpparseckySlice::min(self : NlpparseckySlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_cky_slice_max(s : NlpparseckySlice) -> Double { @_common.max(s.data) }
+pub fn NlpparseckySlice::max(self : NlpparseckySlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_cky_slice_to_string(s : NlpparseckySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparseckySlice::to_string(self : NlpparseckySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn finance_risk_stress_frame_make(size : Int) -> FinanceriskstressFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_frame_len(s : FinanceriskstressFrame) -> Int { s.size }
+pub fn FinanceriskstressFrame::len(self : FinanceriskstressFrame) -> Int { self.size }
 
-pub fn finance_risk_stress_frame_get(s : FinanceriskstressFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressFrame::get(self : FinanceriskstressFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_frame_set(s : FinanceriskstressFrame, i : Int, v : Double) -> FinanceriskstressFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressFrame::set(self : FinanceriskstressFrame, i : Int, v : Double) -> FinanceriskstressFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_frame_sum(s : FinanceriskstressFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressFrame::sum(self : FinanceriskstressFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_frame_mean(s : FinanceriskstressFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressFrame::mean(self : FinanceriskstressFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_frame_scale(s : FinanceriskstressFrame, f : Double) -> FinanceriskstressFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressFrame::scale(self : FinanceriskstressFrame, f : Double) -> FinanceriskstressFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_frame_add(a : FinanceriskstressFrame, b : FinanceriskstressFrame) -> FinanceriskstressFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressFrame::add(self : FinanceriskstressFrame, other : FinanceriskstressFrame) -> FinanceriskstressFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_frame_copy(s : FinanceriskstressFrame) -> FinanceriskstressFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressFrame::copy(self : FinanceriskstressFrame) -> FinanceriskstressFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_frame_fill(s : FinanceriskstressFrame, v : Double) -> FinanceriskstressFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressFrame::fill(self : FinanceriskstressFrame, v : Double) -> FinanceriskstressFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_frame_min(s : FinanceriskstressFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressFrame::min(self : FinanceriskstressFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_frame_max(s : FinanceriskstressFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressFrame::max(self : FinanceriskstressFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_frame_to_string(s : FinanceriskstressFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressFrame::to_string(self : FinanceriskstressFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressTable {
@@ -402,45 +402,45 @@ pub fn finance_risk_stress_table_make(size : Int) -> FinanceriskstressTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_table_len(s : FinanceriskstressTable) -> Int { s.size }
+pub fn FinanceriskstressTable::len(self : FinanceriskstressTable) -> Int { self.size }
 
-pub fn finance_risk_stress_table_get(s : FinanceriskstressTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressTable::get(self : FinanceriskstressTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_table_set(s : FinanceriskstressTable, i : Int, v : Double) -> FinanceriskstressTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressTable::set(self : FinanceriskstressTable, i : Int, v : Double) -> FinanceriskstressTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_table_sum(s : FinanceriskstressTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressTable::sum(self : FinanceriskstressTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_table_mean(s : FinanceriskstressTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressTable::mean(self : FinanceriskstressTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_table_scale(s : FinanceriskstressTable, f : Double) -> FinanceriskstressTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressTable::scale(self : FinanceriskstressTable, f : Double) -> FinanceriskstressTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_table_add(a : FinanceriskstressTable, b : FinanceriskstressTable) -> FinanceriskstressTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressTable::add(self : FinanceriskstressTable, other : FinanceriskstressTable) -> FinanceriskstressTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_table_copy(s : FinanceriskstressTable) -> FinanceriskstressTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressTable::copy(self : FinanceriskstressTable) -> FinanceriskstressTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_table_fill(s : FinanceriskstressTable, v : Double) -> FinanceriskstressTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressTable::fill(self : FinanceriskstressTable, v : Double) -> FinanceriskstressTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_table_min(s : FinanceriskstressTable) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressTable::min(self : FinanceriskstressTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_table_max(s : FinanceriskstressTable) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressTable::max(self : FinanceriskstressTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_table_to_string(s : FinanceriskstressTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressTable::to_string(self : FinanceriskstressTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressGraphN {
@@ -453,45 +453,45 @@ pub fn finance_risk_stress_graphn_make(size : Int) -> FinanceriskstressGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_graphn_len(s : FinanceriskstressGraphN) -> Int { s.size }
+pub fn FinanceriskstressGraphN::len(self : FinanceriskstressGraphN) -> Int { self.size }
 
-pub fn finance_risk_stress_graphn_get(s : FinanceriskstressGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressGraphN::get(self : FinanceriskstressGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_graphn_set(s : FinanceriskstressGraphN, i : Int, v : Double) -> FinanceriskstressGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressGraphN::set(self : FinanceriskstressGraphN, i : Int, v : Double) -> FinanceriskstressGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_graphn_sum(s : FinanceriskstressGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressGraphN::sum(self : FinanceriskstressGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_graphn_mean(s : FinanceriskstressGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressGraphN::mean(self : FinanceriskstressGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_graphn_scale(s : FinanceriskstressGraphN, f : Double) -> FinanceriskstressGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressGraphN::scale(self : FinanceriskstressGraphN, f : Double) -> FinanceriskstressGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_graphn_add(a : FinanceriskstressGraphN, b : FinanceriskstressGraphN) -> FinanceriskstressGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressGraphN::add(self : FinanceriskstressGraphN, other : FinanceriskstressGraphN) -> FinanceriskstressGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_graphn_copy(s : FinanceriskstressGraphN) -> FinanceriskstressGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressGraphN::copy(self : FinanceriskstressGraphN) -> FinanceriskstressGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_graphn_fill(s : FinanceriskstressGraphN, v : Double) -> FinanceriskstressGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressGraphN::fill(self : FinanceriskstressGraphN, v : Double) -> FinanceriskstressGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_graphn_min(s : FinanceriskstressGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressGraphN::min(self : FinanceriskstressGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_graphn_max(s : FinanceriskstressGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressGraphN::max(self : FinanceriskstressGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_graphn_to_string(s : FinanceriskstressGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressGraphN::to_string(self : FinanceriskstressGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressNode {
@@ -504,45 +504,45 @@ pub fn finance_risk_stress_node_make(size : Int) -> FinanceriskstressNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_node_len(s : FinanceriskstressNode) -> Int { s.size }
+pub fn FinanceriskstressNode::len(self : FinanceriskstressNode) -> Int { self.size }
 
-pub fn finance_risk_stress_node_get(s : FinanceriskstressNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressNode::get(self : FinanceriskstressNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_node_set(s : FinanceriskstressNode, i : Int, v : Double) -> FinanceriskstressNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressNode::set(self : FinanceriskstressNode, i : Int, v : Double) -> FinanceriskstressNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_node_sum(s : FinanceriskstressNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressNode::sum(self : FinanceriskstressNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_node_mean(s : FinanceriskstressNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressNode::mean(self : FinanceriskstressNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_node_scale(s : FinanceriskstressNode, f : Double) -> FinanceriskstressNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressNode::scale(self : FinanceriskstressNode, f : Double) -> FinanceriskstressNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_node_add(a : FinanceriskstressNode, b : FinanceriskstressNode) -> FinanceriskstressNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressNode::add(self : FinanceriskstressNode, other : FinanceriskstressNode) -> FinanceriskstressNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_node_copy(s : FinanceriskstressNode) -> FinanceriskstressNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressNode::copy(self : FinanceriskstressNode) -> FinanceriskstressNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_node_fill(s : FinanceriskstressNode, v : Double) -> FinanceriskstressNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressNode::fill(self : FinanceriskstressNode, v : Double) -> FinanceriskstressNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_node_min(s : FinanceriskstressNode) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressNode::min(self : FinanceriskstressNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_node_max(s : FinanceriskstressNode) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressNode::max(self : FinanceriskstressNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_node_to_string(s : FinanceriskstressNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressNode::to_string(self : FinanceriskstressNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressEdge {
@@ -555,45 +555,45 @@ pub fn finance_risk_stress_edge_make(size : Int) -> FinanceriskstressEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_edge_len(s : FinanceriskstressEdge) -> Int { s.size }
+pub fn FinanceriskstressEdge::len(self : FinanceriskstressEdge) -> Int { self.size }
 
-pub fn finance_risk_stress_edge_get(s : FinanceriskstressEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressEdge::get(self : FinanceriskstressEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_edge_set(s : FinanceriskstressEdge, i : Int, v : Double) -> FinanceriskstressEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressEdge::set(self : FinanceriskstressEdge, i : Int, v : Double) -> FinanceriskstressEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_edge_sum(s : FinanceriskstressEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressEdge::sum(self : FinanceriskstressEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_edge_mean(s : FinanceriskstressEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressEdge::mean(self : FinanceriskstressEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_edge_scale(s : FinanceriskstressEdge, f : Double) -> FinanceriskstressEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressEdge::scale(self : FinanceriskstressEdge, f : Double) -> FinanceriskstressEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_edge_add(a : FinanceriskstressEdge, b : FinanceriskstressEdge) -> FinanceriskstressEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressEdge::add(self : FinanceriskstressEdge, other : FinanceriskstressEdge) -> FinanceriskstressEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_edge_copy(s : FinanceriskstressEdge) -> FinanceriskstressEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressEdge::copy(self : FinanceriskstressEdge) -> FinanceriskstressEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_edge_fill(s : FinanceriskstressEdge, v : Double) -> FinanceriskstressEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressEdge::fill(self : FinanceriskstressEdge, v : Double) -> FinanceriskstressEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_edge_min(s : FinanceriskstressEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressEdge::min(self : FinanceriskstressEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_edge_max(s : FinanceriskstressEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressEdge::max(self : FinanceriskstressEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_edge_to_string(s : FinanceriskstressEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressEdge::to_string(self : FinanceriskstressEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressPath {
@@ -606,45 +606,45 @@ pub fn finance_risk_stress_path_make(size : Int) -> FinanceriskstressPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_path_len(s : FinanceriskstressPath) -> Int { s.size }
+pub fn FinanceriskstressPath::len(self : FinanceriskstressPath) -> Int { self.size }
 
-pub fn finance_risk_stress_path_get(s : FinanceriskstressPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressPath::get(self : FinanceriskstressPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_path_set(s : FinanceriskstressPath, i : Int, v : Double) -> FinanceriskstressPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressPath::set(self : FinanceriskstressPath, i : Int, v : Double) -> FinanceriskstressPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_path_sum(s : FinanceriskstressPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressPath::sum(self : FinanceriskstressPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_path_mean(s : FinanceriskstressPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressPath::mean(self : FinanceriskstressPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_path_scale(s : FinanceriskstressPath, f : Double) -> FinanceriskstressPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressPath::scale(self : FinanceriskstressPath, f : Double) -> FinanceriskstressPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_path_add(a : FinanceriskstressPath, b : FinanceriskstressPath) -> FinanceriskstressPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressPath::add(self : FinanceriskstressPath, other : FinanceriskstressPath) -> FinanceriskstressPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_path_copy(s : FinanceriskstressPath) -> FinanceriskstressPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressPath::copy(self : FinanceriskstressPath) -> FinanceriskstressPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_path_fill(s : FinanceriskstressPath, v : Double) -> FinanceriskstressPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressPath::fill(self : FinanceriskstressPath, v : Double) -> FinanceriskstressPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_path_min(s : FinanceriskstressPath) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressPath::min(self : FinanceriskstressPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_path_max(s : FinanceriskstressPath) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressPath::max(self : FinanceriskstressPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_path_to_string(s : FinanceriskstressPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressPath::to_string(self : FinanceriskstressPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressCluster {
@@ -657,45 +657,45 @@ pub fn finance_risk_stress_cluster_make(size : Int) -> FinanceriskstressCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_cluster_len(s : FinanceriskstressCluster) -> Int { s.size }
+pub fn FinanceriskstressCluster::len(self : FinanceriskstressCluster) -> Int { self.size }
 
-pub fn finance_risk_stress_cluster_get(s : FinanceriskstressCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressCluster::get(self : FinanceriskstressCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_cluster_set(s : FinanceriskstressCluster, i : Int, v : Double) -> FinanceriskstressCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressCluster::set(self : FinanceriskstressCluster, i : Int, v : Double) -> FinanceriskstressCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cluster_sum(s : FinanceriskstressCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressCluster::sum(self : FinanceriskstressCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_cluster_mean(s : FinanceriskstressCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressCluster::mean(self : FinanceriskstressCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_cluster_scale(s : FinanceriskstressCluster, f : Double) -> FinanceriskstressCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressCluster::scale(self : FinanceriskstressCluster, f : Double) -> FinanceriskstressCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cluster_add(a : FinanceriskstressCluster, b : FinanceriskstressCluster) -> FinanceriskstressCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressCluster::add(self : FinanceriskstressCluster, other : FinanceriskstressCluster) -> FinanceriskstressCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cluster_copy(s : FinanceriskstressCluster) -> FinanceriskstressCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressCluster::copy(self : FinanceriskstressCluster) -> FinanceriskstressCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cluster_fill(s : FinanceriskstressCluster, v : Double) -> FinanceriskstressCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressCluster::fill(self : FinanceriskstressCluster, v : Double) -> FinanceriskstressCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cluster_min(s : FinanceriskstressCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressCluster::min(self : FinanceriskstressCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_cluster_max(s : FinanceriskstressCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressCluster::max(self : FinanceriskstressCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_cluster_to_string(s : FinanceriskstressCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressCluster::to_string(self : FinanceriskstressCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressModel {
@@ -708,45 +708,45 @@ pub fn finance_risk_stress_model_make(size : Int) -> FinanceriskstressModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_model_len(s : FinanceriskstressModel) -> Int { s.size }
+pub fn FinanceriskstressModel::len(self : FinanceriskstressModel) -> Int { self.size }
 
-pub fn finance_risk_stress_model_get(s : FinanceriskstressModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressModel::get(self : FinanceriskstressModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_model_set(s : FinanceriskstressModel, i : Int, v : Double) -> FinanceriskstressModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressModel::set(self : FinanceriskstressModel, i : Int, v : Double) -> FinanceriskstressModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_model_sum(s : FinanceriskstressModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressModel::sum(self : FinanceriskstressModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_model_mean(s : FinanceriskstressModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressModel::mean(self : FinanceriskstressModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_model_scale(s : FinanceriskstressModel, f : Double) -> FinanceriskstressModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressModel::scale(self : FinanceriskstressModel, f : Double) -> FinanceriskstressModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_model_add(a : FinanceriskstressModel, b : FinanceriskstressModel) -> FinanceriskstressModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressModel::add(self : FinanceriskstressModel, other : FinanceriskstressModel) -> FinanceriskstressModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_model_copy(s : FinanceriskstressModel) -> FinanceriskstressModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressModel::copy(self : FinanceriskstressModel) -> FinanceriskstressModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_model_fill(s : FinanceriskstressModel, v : Double) -> FinanceriskstressModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressModel::fill(self : FinanceriskstressModel, v : Double) -> FinanceriskstressModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_model_min(s : FinanceriskstressModel) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressModel::min(self : FinanceriskstressModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_model_max(s : FinanceriskstressModel) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressModel::max(self : FinanceriskstressModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_model_to_string(s : FinanceriskstressModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressModel::to_string(self : FinanceriskstressModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressLayer {
@@ -759,45 +759,45 @@ pub fn finance_risk_stress_layer_make(size : Int) -> FinanceriskstressLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_layer_len(s : FinanceriskstressLayer) -> Int { s.size }
+pub fn FinanceriskstressLayer::len(self : FinanceriskstressLayer) -> Int { self.size }
 
-pub fn finance_risk_stress_layer_get(s : FinanceriskstressLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressLayer::get(self : FinanceriskstressLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_layer_set(s : FinanceriskstressLayer, i : Int, v : Double) -> FinanceriskstressLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressLayer::set(self : FinanceriskstressLayer, i : Int, v : Double) -> FinanceriskstressLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_layer_sum(s : FinanceriskstressLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressLayer::sum(self : FinanceriskstressLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_layer_mean(s : FinanceriskstressLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressLayer::mean(self : FinanceriskstressLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_layer_scale(s : FinanceriskstressLayer, f : Double) -> FinanceriskstressLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressLayer::scale(self : FinanceriskstressLayer, f : Double) -> FinanceriskstressLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_layer_add(a : FinanceriskstressLayer, b : FinanceriskstressLayer) -> FinanceriskstressLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressLayer::add(self : FinanceriskstressLayer, other : FinanceriskstressLayer) -> FinanceriskstressLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_layer_copy(s : FinanceriskstressLayer) -> FinanceriskstressLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressLayer::copy(self : FinanceriskstressLayer) -> FinanceriskstressLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_layer_fill(s : FinanceriskstressLayer, v : Double) -> FinanceriskstressLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressLayer::fill(self : FinanceriskstressLayer, v : Double) -> FinanceriskstressLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_layer_min(s : FinanceriskstressLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressLayer::min(self : FinanceriskstressLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_layer_max(s : FinanceriskstressLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressLayer::max(self : FinanceriskstressLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_layer_to_string(s : FinanceriskstressLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressLayer::to_string(self : FinanceriskstressLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressBuffer {
@@ -810,45 +810,45 @@ pub fn finance_risk_stress_buffer_make(size : Int) -> FinanceriskstressBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_buffer_len(s : FinanceriskstressBuffer) -> Int { s.size }
+pub fn FinanceriskstressBuffer::len(self : FinanceriskstressBuffer) -> Int { self.size }
 
-pub fn finance_risk_stress_buffer_get(s : FinanceriskstressBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressBuffer::get(self : FinanceriskstressBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_buffer_set(s : FinanceriskstressBuffer, i : Int, v : Double) -> FinanceriskstressBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressBuffer::set(self : FinanceriskstressBuffer, i : Int, v : Double) -> FinanceriskstressBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_buffer_sum(s : FinanceriskstressBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressBuffer::sum(self : FinanceriskstressBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_buffer_mean(s : FinanceriskstressBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressBuffer::mean(self : FinanceriskstressBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_buffer_scale(s : FinanceriskstressBuffer, f : Double) -> FinanceriskstressBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressBuffer::scale(self : FinanceriskstressBuffer, f : Double) -> FinanceriskstressBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_buffer_add(a : FinanceriskstressBuffer, b : FinanceriskstressBuffer) -> FinanceriskstressBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressBuffer::add(self : FinanceriskstressBuffer, other : FinanceriskstressBuffer) -> FinanceriskstressBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_buffer_copy(s : FinanceriskstressBuffer) -> FinanceriskstressBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressBuffer::copy(self : FinanceriskstressBuffer) -> FinanceriskstressBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_buffer_fill(s : FinanceriskstressBuffer, v : Double) -> FinanceriskstressBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressBuffer::fill(self : FinanceriskstressBuffer, v : Double) -> FinanceriskstressBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_buffer_min(s : FinanceriskstressBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressBuffer::min(self : FinanceriskstressBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_buffer_max(s : FinanceriskstressBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressBuffer::max(self : FinanceriskstressBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_buffer_to_string(s : FinanceriskstressBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressBuffer::to_string(self : FinanceriskstressBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressCursor {
@@ -861,45 +861,45 @@ pub fn finance_risk_stress_cursor_make(size : Int) -> FinanceriskstressCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_cursor_len(s : FinanceriskstressCursor) -> Int { s.size }
+pub fn FinanceriskstressCursor::len(self : FinanceriskstressCursor) -> Int { self.size }
 
-pub fn finance_risk_stress_cursor_get(s : FinanceriskstressCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressCursor::get(self : FinanceriskstressCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_cursor_set(s : FinanceriskstressCursor, i : Int, v : Double) -> FinanceriskstressCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressCursor::set(self : FinanceriskstressCursor, i : Int, v : Double) -> FinanceriskstressCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cursor_sum(s : FinanceriskstressCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressCursor::sum(self : FinanceriskstressCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_cursor_mean(s : FinanceriskstressCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressCursor::mean(self : FinanceriskstressCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_cursor_scale(s : FinanceriskstressCursor, f : Double) -> FinanceriskstressCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressCursor::scale(self : FinanceriskstressCursor, f : Double) -> FinanceriskstressCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cursor_add(a : FinanceriskstressCursor, b : FinanceriskstressCursor) -> FinanceriskstressCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressCursor::add(self : FinanceriskstressCursor, other : FinanceriskstressCursor) -> FinanceriskstressCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cursor_copy(s : FinanceriskstressCursor) -> FinanceriskstressCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressCursor::copy(self : FinanceriskstressCursor) -> FinanceriskstressCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cursor_fill(s : FinanceriskstressCursor, v : Double) -> FinanceriskstressCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressCursor::fill(self : FinanceriskstressCursor, v : Double) -> FinanceriskstressCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_cursor_min(s : FinanceriskstressCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressCursor::min(self : FinanceriskstressCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_cursor_max(s : FinanceriskstressCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressCursor::max(self : FinanceriskstressCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_cursor_to_string(s : FinanceriskstressCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressCursor::to_string(self : FinanceriskstressCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressView {
@@ -912,45 +912,45 @@ pub fn finance_risk_stress_view_make(size : Int) -> FinanceriskstressView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_view_len(s : FinanceriskstressView) -> Int { s.size }
+pub fn FinanceriskstressView::len(self : FinanceriskstressView) -> Int { self.size }
 
-pub fn finance_risk_stress_view_get(s : FinanceriskstressView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressView::get(self : FinanceriskstressView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_view_set(s : FinanceriskstressView, i : Int, v : Double) -> FinanceriskstressView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressView::set(self : FinanceriskstressView, i : Int, v : Double) -> FinanceriskstressView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_view_sum(s : FinanceriskstressView) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressView::sum(self : FinanceriskstressView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_view_mean(s : FinanceriskstressView) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressView::mean(self : FinanceriskstressView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_view_scale(s : FinanceriskstressView, f : Double) -> FinanceriskstressView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressView::scale(self : FinanceriskstressView, f : Double) -> FinanceriskstressView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_view_add(a : FinanceriskstressView, b : FinanceriskstressView) -> FinanceriskstressView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressView::add(self : FinanceriskstressView, other : FinanceriskstressView) -> FinanceriskstressView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_view_copy(s : FinanceriskstressView) -> FinanceriskstressView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressView::copy(self : FinanceriskstressView) -> FinanceriskstressView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_view_fill(s : FinanceriskstressView, v : Double) -> FinanceriskstressView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressView::fill(self : FinanceriskstressView, v : Double) -> FinanceriskstressView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_view_min(s : FinanceriskstressView) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressView::min(self : FinanceriskstressView) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_view_max(s : FinanceriskstressView) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressView::max(self : FinanceriskstressView) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_view_to_string(s : FinanceriskstressView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressView::to_string(self : FinanceriskstressView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressRange {
@@ -963,45 +963,45 @@ pub fn finance_risk_stress_range_make(size : Int) -> FinanceriskstressRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_range_len(s : FinanceriskstressRange) -> Int { s.size }
+pub fn FinanceriskstressRange::len(self : FinanceriskstressRange) -> Int { self.size }
 
-pub fn finance_risk_stress_range_get(s : FinanceriskstressRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressRange::get(self : FinanceriskstressRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_range_set(s : FinanceriskstressRange, i : Int, v : Double) -> FinanceriskstressRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressRange::set(self : FinanceriskstressRange, i : Int, v : Double) -> FinanceriskstressRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_range_sum(s : FinanceriskstressRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressRange::sum(self : FinanceriskstressRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_range_mean(s : FinanceriskstressRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressRange::mean(self : FinanceriskstressRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_range_scale(s : FinanceriskstressRange, f : Double) -> FinanceriskstressRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressRange::scale(self : FinanceriskstressRange, f : Double) -> FinanceriskstressRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_range_add(a : FinanceriskstressRange, b : FinanceriskstressRange) -> FinanceriskstressRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressRange::add(self : FinanceriskstressRange, other : FinanceriskstressRange) -> FinanceriskstressRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_range_copy(s : FinanceriskstressRange) -> FinanceriskstressRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressRange::copy(self : FinanceriskstressRange) -> FinanceriskstressRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_range_fill(s : FinanceriskstressRange, v : Double) -> FinanceriskstressRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressRange::fill(self : FinanceriskstressRange, v : Double) -> FinanceriskstressRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_range_min(s : FinanceriskstressRange) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressRange::min(self : FinanceriskstressRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_range_max(s : FinanceriskstressRange) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressRange::max(self : FinanceriskstressRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_range_to_string(s : FinanceriskstressRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressRange::to_string(self : FinanceriskstressRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceriskstressSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_risk_stress_slice_make(size : Int) -> FinanceriskstressSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_risk_stress_slice_len(s : FinanceriskstressSlice) -> Int { s.size }
+pub fn FinanceriskstressSlice::len(self : FinanceriskstressSlice) -> Int { self.size }
 
-pub fn finance_risk_stress_slice_get(s : FinanceriskstressSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceriskstressSlice::get(self : FinanceriskstressSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_risk_stress_slice_set(s : FinanceriskstressSlice, i : Int, v : Double) -> FinanceriskstressSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceriskstressSlice::set(self : FinanceriskstressSlice, i : Int, v : Double) -> FinanceriskstressSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_slice_sum(s : FinanceriskstressSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceriskstressSlice::sum(self : FinanceriskstressSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_risk_stress_slice_mean(s : FinanceriskstressSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceriskstressSlice::mean(self : FinanceriskstressSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_risk_stress_slice_scale(s : FinanceriskstressSlice, f : Double) -> FinanceriskstressSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceriskstressSlice::scale(self : FinanceriskstressSlice, f : Double) -> FinanceriskstressSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_slice_add(a : FinanceriskstressSlice, b : FinanceriskstressSlice) -> FinanceriskstressSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceriskstressSlice::add(self : FinanceriskstressSlice, other : FinanceriskstressSlice) -> FinanceriskstressSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_risk_stress_slice_copy(s : FinanceriskstressSlice) -> FinanceriskstressSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceriskstressSlice::copy(self : FinanceriskstressSlice) -> FinanceriskstressSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_slice_fill(s : FinanceriskstressSlice, v : Double) -> FinanceriskstressSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceriskstressSlice::fill(self : FinanceriskstressSlice, v : Double) -> FinanceriskstressSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_risk_stress_slice_min(s : FinanceriskstressSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceriskstressSlice::min(self : FinanceriskstressSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_risk_stress_slice_max(s : FinanceriskstressSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceriskstressSlice::max(self : FinanceriskstressSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_risk_stress_slice_to_string(s : FinanceriskstressSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceriskstressSlice::to_string(self : FinanceriskstressSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn chem_rxn_retro_frame_make(size : Int) -> ChemrxnretroFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_frame_len(s : ChemrxnretroFrame) -> Int { s.size }
+pub fn ChemrxnretroFrame::len(self : ChemrxnretroFrame) -> Int { self.size }
 
-pub fn chem_rxn_retro_frame_get(s : ChemrxnretroFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroFrame::get(self : ChemrxnretroFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_frame_set(s : ChemrxnretroFrame, i : Int, v : Double) -> ChemrxnretroFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroFrame::set(self : ChemrxnretroFrame, i : Int, v : Double) -> ChemrxnretroFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_frame_sum(s : ChemrxnretroFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroFrame::sum(self : ChemrxnretroFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_frame_mean(s : ChemrxnretroFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroFrame::mean(self : ChemrxnretroFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_frame_scale(s : ChemrxnretroFrame, f : Double) -> ChemrxnretroFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroFrame::scale(self : ChemrxnretroFrame, f : Double) -> ChemrxnretroFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_frame_add(a : ChemrxnretroFrame, b : ChemrxnretroFrame) -> ChemrxnretroFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroFrame::add(self : ChemrxnretroFrame, other : ChemrxnretroFrame) -> ChemrxnretroFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_frame_copy(s : ChemrxnretroFrame) -> ChemrxnretroFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroFrame::copy(self : ChemrxnretroFrame) -> ChemrxnretroFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_frame_fill(s : ChemrxnretroFrame, v : Double) -> ChemrxnretroFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroFrame::fill(self : ChemrxnretroFrame, v : Double) -> ChemrxnretroFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_frame_min(s : ChemrxnretroFrame) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroFrame::min(self : ChemrxnretroFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_frame_max(s : ChemrxnretroFrame) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroFrame::max(self : ChemrxnretroFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_frame_to_string(s : ChemrxnretroFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroFrame::to_string(self : ChemrxnretroFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroTable {
@@ -402,45 +402,45 @@ pub fn chem_rxn_retro_table_make(size : Int) -> ChemrxnretroTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_table_len(s : ChemrxnretroTable) -> Int { s.size }
+pub fn ChemrxnretroTable::len(self : ChemrxnretroTable) -> Int { self.size }
 
-pub fn chem_rxn_retro_table_get(s : ChemrxnretroTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroTable::get(self : ChemrxnretroTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_table_set(s : ChemrxnretroTable, i : Int, v : Double) -> ChemrxnretroTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroTable::set(self : ChemrxnretroTable, i : Int, v : Double) -> ChemrxnretroTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_table_sum(s : ChemrxnretroTable) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroTable::sum(self : ChemrxnretroTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_table_mean(s : ChemrxnretroTable) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroTable::mean(self : ChemrxnretroTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_table_scale(s : ChemrxnretroTable, f : Double) -> ChemrxnretroTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroTable::scale(self : ChemrxnretroTable, f : Double) -> ChemrxnretroTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_table_add(a : ChemrxnretroTable, b : ChemrxnretroTable) -> ChemrxnretroTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroTable::add(self : ChemrxnretroTable, other : ChemrxnretroTable) -> ChemrxnretroTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_table_copy(s : ChemrxnretroTable) -> ChemrxnretroTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroTable::copy(self : ChemrxnretroTable) -> ChemrxnretroTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_table_fill(s : ChemrxnretroTable, v : Double) -> ChemrxnretroTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroTable::fill(self : ChemrxnretroTable, v : Double) -> ChemrxnretroTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_table_min(s : ChemrxnretroTable) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroTable::min(self : ChemrxnretroTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_table_max(s : ChemrxnretroTable) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroTable::max(self : ChemrxnretroTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_table_to_string(s : ChemrxnretroTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroTable::to_string(self : ChemrxnretroTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroGraphN {
@@ -453,45 +453,45 @@ pub fn chem_rxn_retro_graphn_make(size : Int) -> ChemrxnretroGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_graphn_len(s : ChemrxnretroGraphN) -> Int { s.size }
+pub fn ChemrxnretroGraphN::len(self : ChemrxnretroGraphN) -> Int { self.size }
 
-pub fn chem_rxn_retro_graphn_get(s : ChemrxnretroGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroGraphN::get(self : ChemrxnretroGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_graphn_set(s : ChemrxnretroGraphN, i : Int, v : Double) -> ChemrxnretroGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroGraphN::set(self : ChemrxnretroGraphN, i : Int, v : Double) -> ChemrxnretroGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_graphn_sum(s : ChemrxnretroGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroGraphN::sum(self : ChemrxnretroGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_graphn_mean(s : ChemrxnretroGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroGraphN::mean(self : ChemrxnretroGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_graphn_scale(s : ChemrxnretroGraphN, f : Double) -> ChemrxnretroGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroGraphN::scale(self : ChemrxnretroGraphN, f : Double) -> ChemrxnretroGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_graphn_add(a : ChemrxnretroGraphN, b : ChemrxnretroGraphN) -> ChemrxnretroGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroGraphN::add(self : ChemrxnretroGraphN, other : ChemrxnretroGraphN) -> ChemrxnretroGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_graphn_copy(s : ChemrxnretroGraphN) -> ChemrxnretroGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroGraphN::copy(self : ChemrxnretroGraphN) -> ChemrxnretroGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_graphn_fill(s : ChemrxnretroGraphN, v : Double) -> ChemrxnretroGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroGraphN::fill(self : ChemrxnretroGraphN, v : Double) -> ChemrxnretroGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_graphn_min(s : ChemrxnretroGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroGraphN::min(self : ChemrxnretroGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_graphn_max(s : ChemrxnretroGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroGraphN::max(self : ChemrxnretroGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_graphn_to_string(s : ChemrxnretroGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroGraphN::to_string(self : ChemrxnretroGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroNode {
@@ -504,45 +504,45 @@ pub fn chem_rxn_retro_node_make(size : Int) -> ChemrxnretroNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_node_len(s : ChemrxnretroNode) -> Int { s.size }
+pub fn ChemrxnretroNode::len(self : ChemrxnretroNode) -> Int { self.size }
 
-pub fn chem_rxn_retro_node_get(s : ChemrxnretroNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroNode::get(self : ChemrxnretroNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_node_set(s : ChemrxnretroNode, i : Int, v : Double) -> ChemrxnretroNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroNode::set(self : ChemrxnretroNode, i : Int, v : Double) -> ChemrxnretroNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_node_sum(s : ChemrxnretroNode) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroNode::sum(self : ChemrxnretroNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_node_mean(s : ChemrxnretroNode) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroNode::mean(self : ChemrxnretroNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_node_scale(s : ChemrxnretroNode, f : Double) -> ChemrxnretroNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroNode::scale(self : ChemrxnretroNode, f : Double) -> ChemrxnretroNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_node_add(a : ChemrxnretroNode, b : ChemrxnretroNode) -> ChemrxnretroNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroNode::add(self : ChemrxnretroNode, other : ChemrxnretroNode) -> ChemrxnretroNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_node_copy(s : ChemrxnretroNode) -> ChemrxnretroNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroNode::copy(self : ChemrxnretroNode) -> ChemrxnretroNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_node_fill(s : ChemrxnretroNode, v : Double) -> ChemrxnretroNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroNode::fill(self : ChemrxnretroNode, v : Double) -> ChemrxnretroNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_node_min(s : ChemrxnretroNode) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroNode::min(self : ChemrxnretroNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_node_max(s : ChemrxnretroNode) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroNode::max(self : ChemrxnretroNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_node_to_string(s : ChemrxnretroNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroNode::to_string(self : ChemrxnretroNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroEdge {
@@ -555,45 +555,45 @@ pub fn chem_rxn_retro_edge_make(size : Int) -> ChemrxnretroEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_edge_len(s : ChemrxnretroEdge) -> Int { s.size }
+pub fn ChemrxnretroEdge::len(self : ChemrxnretroEdge) -> Int { self.size }
 
-pub fn chem_rxn_retro_edge_get(s : ChemrxnretroEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroEdge::get(self : ChemrxnretroEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_edge_set(s : ChemrxnretroEdge, i : Int, v : Double) -> ChemrxnretroEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroEdge::set(self : ChemrxnretroEdge, i : Int, v : Double) -> ChemrxnretroEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_edge_sum(s : ChemrxnretroEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroEdge::sum(self : ChemrxnretroEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_edge_mean(s : ChemrxnretroEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroEdge::mean(self : ChemrxnretroEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_edge_scale(s : ChemrxnretroEdge, f : Double) -> ChemrxnretroEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroEdge::scale(self : ChemrxnretroEdge, f : Double) -> ChemrxnretroEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_edge_add(a : ChemrxnretroEdge, b : ChemrxnretroEdge) -> ChemrxnretroEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroEdge::add(self : ChemrxnretroEdge, other : ChemrxnretroEdge) -> ChemrxnretroEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_edge_copy(s : ChemrxnretroEdge) -> ChemrxnretroEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroEdge::copy(self : ChemrxnretroEdge) -> ChemrxnretroEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_edge_fill(s : ChemrxnretroEdge, v : Double) -> ChemrxnretroEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroEdge::fill(self : ChemrxnretroEdge, v : Double) -> ChemrxnretroEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_edge_min(s : ChemrxnretroEdge) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroEdge::min(self : ChemrxnretroEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_edge_max(s : ChemrxnretroEdge) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroEdge::max(self : ChemrxnretroEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_edge_to_string(s : ChemrxnretroEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroEdge::to_string(self : ChemrxnretroEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroPath {
@@ -606,45 +606,45 @@ pub fn chem_rxn_retro_path_make(size : Int) -> ChemrxnretroPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_path_len(s : ChemrxnretroPath) -> Int { s.size }
+pub fn ChemrxnretroPath::len(self : ChemrxnretroPath) -> Int { self.size }
 
-pub fn chem_rxn_retro_path_get(s : ChemrxnretroPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroPath::get(self : ChemrxnretroPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_path_set(s : ChemrxnretroPath, i : Int, v : Double) -> ChemrxnretroPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroPath::set(self : ChemrxnretroPath, i : Int, v : Double) -> ChemrxnretroPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_path_sum(s : ChemrxnretroPath) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroPath::sum(self : ChemrxnretroPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_path_mean(s : ChemrxnretroPath) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroPath::mean(self : ChemrxnretroPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_path_scale(s : ChemrxnretroPath, f : Double) -> ChemrxnretroPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroPath::scale(self : ChemrxnretroPath, f : Double) -> ChemrxnretroPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_path_add(a : ChemrxnretroPath, b : ChemrxnretroPath) -> ChemrxnretroPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroPath::add(self : ChemrxnretroPath, other : ChemrxnretroPath) -> ChemrxnretroPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_path_copy(s : ChemrxnretroPath) -> ChemrxnretroPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroPath::copy(self : ChemrxnretroPath) -> ChemrxnretroPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_path_fill(s : ChemrxnretroPath, v : Double) -> ChemrxnretroPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroPath::fill(self : ChemrxnretroPath, v : Double) -> ChemrxnretroPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_path_min(s : ChemrxnretroPath) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroPath::min(self : ChemrxnretroPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_path_max(s : ChemrxnretroPath) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroPath::max(self : ChemrxnretroPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_path_to_string(s : ChemrxnretroPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroPath::to_string(self : ChemrxnretroPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroCluster {
@@ -657,45 +657,45 @@ pub fn chem_rxn_retro_cluster_make(size : Int) -> ChemrxnretroCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_cluster_len(s : ChemrxnretroCluster) -> Int { s.size }
+pub fn ChemrxnretroCluster::len(self : ChemrxnretroCluster) -> Int { self.size }
 
-pub fn chem_rxn_retro_cluster_get(s : ChemrxnretroCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroCluster::get(self : ChemrxnretroCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_cluster_set(s : ChemrxnretroCluster, i : Int, v : Double) -> ChemrxnretroCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroCluster::set(self : ChemrxnretroCluster, i : Int, v : Double) -> ChemrxnretroCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cluster_sum(s : ChemrxnretroCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroCluster::sum(self : ChemrxnretroCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_cluster_mean(s : ChemrxnretroCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroCluster::mean(self : ChemrxnretroCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_cluster_scale(s : ChemrxnretroCluster, f : Double) -> ChemrxnretroCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroCluster::scale(self : ChemrxnretroCluster, f : Double) -> ChemrxnretroCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cluster_add(a : ChemrxnretroCluster, b : ChemrxnretroCluster) -> ChemrxnretroCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroCluster::add(self : ChemrxnretroCluster, other : ChemrxnretroCluster) -> ChemrxnretroCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cluster_copy(s : ChemrxnretroCluster) -> ChemrxnretroCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroCluster::copy(self : ChemrxnretroCluster) -> ChemrxnretroCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cluster_fill(s : ChemrxnretroCluster, v : Double) -> ChemrxnretroCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroCluster::fill(self : ChemrxnretroCluster, v : Double) -> ChemrxnretroCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cluster_min(s : ChemrxnretroCluster) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroCluster::min(self : ChemrxnretroCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_cluster_max(s : ChemrxnretroCluster) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroCluster::max(self : ChemrxnretroCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_cluster_to_string(s : ChemrxnretroCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroCluster::to_string(self : ChemrxnretroCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroModel {
@@ -708,45 +708,45 @@ pub fn chem_rxn_retro_model_make(size : Int) -> ChemrxnretroModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_model_len(s : ChemrxnretroModel) -> Int { s.size }
+pub fn ChemrxnretroModel::len(self : ChemrxnretroModel) -> Int { self.size }
 
-pub fn chem_rxn_retro_model_get(s : ChemrxnretroModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroModel::get(self : ChemrxnretroModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_model_set(s : ChemrxnretroModel, i : Int, v : Double) -> ChemrxnretroModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroModel::set(self : ChemrxnretroModel, i : Int, v : Double) -> ChemrxnretroModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_model_sum(s : ChemrxnretroModel) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroModel::sum(self : ChemrxnretroModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_model_mean(s : ChemrxnretroModel) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroModel::mean(self : ChemrxnretroModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_model_scale(s : ChemrxnretroModel, f : Double) -> ChemrxnretroModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroModel::scale(self : ChemrxnretroModel, f : Double) -> ChemrxnretroModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_model_add(a : ChemrxnretroModel, b : ChemrxnretroModel) -> ChemrxnretroModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroModel::add(self : ChemrxnretroModel, other : ChemrxnretroModel) -> ChemrxnretroModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_model_copy(s : ChemrxnretroModel) -> ChemrxnretroModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroModel::copy(self : ChemrxnretroModel) -> ChemrxnretroModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_model_fill(s : ChemrxnretroModel, v : Double) -> ChemrxnretroModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroModel::fill(self : ChemrxnretroModel, v : Double) -> ChemrxnretroModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_model_min(s : ChemrxnretroModel) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroModel::min(self : ChemrxnretroModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_model_max(s : ChemrxnretroModel) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroModel::max(self : ChemrxnretroModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_model_to_string(s : ChemrxnretroModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroModel::to_string(self : ChemrxnretroModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroLayer {
@@ -759,45 +759,45 @@ pub fn chem_rxn_retro_layer_make(size : Int) -> ChemrxnretroLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_layer_len(s : ChemrxnretroLayer) -> Int { s.size }
+pub fn ChemrxnretroLayer::len(self : ChemrxnretroLayer) -> Int { self.size }
 
-pub fn chem_rxn_retro_layer_get(s : ChemrxnretroLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroLayer::get(self : ChemrxnretroLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_layer_set(s : ChemrxnretroLayer, i : Int, v : Double) -> ChemrxnretroLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroLayer::set(self : ChemrxnretroLayer, i : Int, v : Double) -> ChemrxnretroLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_layer_sum(s : ChemrxnretroLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroLayer::sum(self : ChemrxnretroLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_layer_mean(s : ChemrxnretroLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroLayer::mean(self : ChemrxnretroLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_layer_scale(s : ChemrxnretroLayer, f : Double) -> ChemrxnretroLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroLayer::scale(self : ChemrxnretroLayer, f : Double) -> ChemrxnretroLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_layer_add(a : ChemrxnretroLayer, b : ChemrxnretroLayer) -> ChemrxnretroLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroLayer::add(self : ChemrxnretroLayer, other : ChemrxnretroLayer) -> ChemrxnretroLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_layer_copy(s : ChemrxnretroLayer) -> ChemrxnretroLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroLayer::copy(self : ChemrxnretroLayer) -> ChemrxnretroLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_layer_fill(s : ChemrxnretroLayer, v : Double) -> ChemrxnretroLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroLayer::fill(self : ChemrxnretroLayer, v : Double) -> ChemrxnretroLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_layer_min(s : ChemrxnretroLayer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroLayer::min(self : ChemrxnretroLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_layer_max(s : ChemrxnretroLayer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroLayer::max(self : ChemrxnretroLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_layer_to_string(s : ChemrxnretroLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroLayer::to_string(self : ChemrxnretroLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroBuffer {
@@ -810,45 +810,45 @@ pub fn chem_rxn_retro_buffer_make(size : Int) -> ChemrxnretroBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_buffer_len(s : ChemrxnretroBuffer) -> Int { s.size }
+pub fn ChemrxnretroBuffer::len(self : ChemrxnretroBuffer) -> Int { self.size }
 
-pub fn chem_rxn_retro_buffer_get(s : ChemrxnretroBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroBuffer::get(self : ChemrxnretroBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_buffer_set(s : ChemrxnretroBuffer, i : Int, v : Double) -> ChemrxnretroBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroBuffer::set(self : ChemrxnretroBuffer, i : Int, v : Double) -> ChemrxnretroBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_buffer_sum(s : ChemrxnretroBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroBuffer::sum(self : ChemrxnretroBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_buffer_mean(s : ChemrxnretroBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroBuffer::mean(self : ChemrxnretroBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_buffer_scale(s : ChemrxnretroBuffer, f : Double) -> ChemrxnretroBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroBuffer::scale(self : ChemrxnretroBuffer, f : Double) -> ChemrxnretroBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_buffer_add(a : ChemrxnretroBuffer, b : ChemrxnretroBuffer) -> ChemrxnretroBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroBuffer::add(self : ChemrxnretroBuffer, other : ChemrxnretroBuffer) -> ChemrxnretroBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_buffer_copy(s : ChemrxnretroBuffer) -> ChemrxnretroBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroBuffer::copy(self : ChemrxnretroBuffer) -> ChemrxnretroBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_buffer_fill(s : ChemrxnretroBuffer, v : Double) -> ChemrxnretroBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroBuffer::fill(self : ChemrxnretroBuffer, v : Double) -> ChemrxnretroBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_buffer_min(s : ChemrxnretroBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroBuffer::min(self : ChemrxnretroBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_buffer_max(s : ChemrxnretroBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroBuffer::max(self : ChemrxnretroBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_buffer_to_string(s : ChemrxnretroBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroBuffer::to_string(self : ChemrxnretroBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroCursor {
@@ -861,45 +861,45 @@ pub fn chem_rxn_retro_cursor_make(size : Int) -> ChemrxnretroCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_cursor_len(s : ChemrxnretroCursor) -> Int { s.size }
+pub fn ChemrxnretroCursor::len(self : ChemrxnretroCursor) -> Int { self.size }
 
-pub fn chem_rxn_retro_cursor_get(s : ChemrxnretroCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroCursor::get(self : ChemrxnretroCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_cursor_set(s : ChemrxnretroCursor, i : Int, v : Double) -> ChemrxnretroCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroCursor::set(self : ChemrxnretroCursor, i : Int, v : Double) -> ChemrxnretroCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cursor_sum(s : ChemrxnretroCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroCursor::sum(self : ChemrxnretroCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_cursor_mean(s : ChemrxnretroCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroCursor::mean(self : ChemrxnretroCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_cursor_scale(s : ChemrxnretroCursor, f : Double) -> ChemrxnretroCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroCursor::scale(self : ChemrxnretroCursor, f : Double) -> ChemrxnretroCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cursor_add(a : ChemrxnretroCursor, b : ChemrxnretroCursor) -> ChemrxnretroCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroCursor::add(self : ChemrxnretroCursor, other : ChemrxnretroCursor) -> ChemrxnretroCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cursor_copy(s : ChemrxnretroCursor) -> ChemrxnretroCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroCursor::copy(self : ChemrxnretroCursor) -> ChemrxnretroCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cursor_fill(s : ChemrxnretroCursor, v : Double) -> ChemrxnretroCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroCursor::fill(self : ChemrxnretroCursor, v : Double) -> ChemrxnretroCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_cursor_min(s : ChemrxnretroCursor) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroCursor::min(self : ChemrxnretroCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_cursor_max(s : ChemrxnretroCursor) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroCursor::max(self : ChemrxnretroCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_cursor_to_string(s : ChemrxnretroCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroCursor::to_string(self : ChemrxnretroCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroView {
@@ -912,45 +912,45 @@ pub fn chem_rxn_retro_view_make(size : Int) -> ChemrxnretroView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_view_len(s : ChemrxnretroView) -> Int { s.size }
+pub fn ChemrxnretroView::len(self : ChemrxnretroView) -> Int { self.size }
 
-pub fn chem_rxn_retro_view_get(s : ChemrxnretroView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroView::get(self : ChemrxnretroView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_view_set(s : ChemrxnretroView, i : Int, v : Double) -> ChemrxnretroView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroView::set(self : ChemrxnretroView, i : Int, v : Double) -> ChemrxnretroView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_view_sum(s : ChemrxnretroView) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroView::sum(self : ChemrxnretroView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_view_mean(s : ChemrxnretroView) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroView::mean(self : ChemrxnretroView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_view_scale(s : ChemrxnretroView, f : Double) -> ChemrxnretroView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroView::scale(self : ChemrxnretroView, f : Double) -> ChemrxnretroView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_view_add(a : ChemrxnretroView, b : ChemrxnretroView) -> ChemrxnretroView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroView::add(self : ChemrxnretroView, other : ChemrxnretroView) -> ChemrxnretroView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_view_copy(s : ChemrxnretroView) -> ChemrxnretroView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroView::copy(self : ChemrxnretroView) -> ChemrxnretroView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_view_fill(s : ChemrxnretroView, v : Double) -> ChemrxnretroView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroView::fill(self : ChemrxnretroView, v : Double) -> ChemrxnretroView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_view_min(s : ChemrxnretroView) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroView::min(self : ChemrxnretroView) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_view_max(s : ChemrxnretroView) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroView::max(self : ChemrxnretroView) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_view_to_string(s : ChemrxnretroView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroView::to_string(self : ChemrxnretroView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroRange {
@@ -963,45 +963,45 @@ pub fn chem_rxn_retro_range_make(size : Int) -> ChemrxnretroRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_range_len(s : ChemrxnretroRange) -> Int { s.size }
+pub fn ChemrxnretroRange::len(self : ChemrxnretroRange) -> Int { self.size }
 
-pub fn chem_rxn_retro_range_get(s : ChemrxnretroRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroRange::get(self : ChemrxnretroRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_range_set(s : ChemrxnretroRange, i : Int, v : Double) -> ChemrxnretroRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroRange::set(self : ChemrxnretroRange, i : Int, v : Double) -> ChemrxnretroRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_range_sum(s : ChemrxnretroRange) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroRange::sum(self : ChemrxnretroRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_range_mean(s : ChemrxnretroRange) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroRange::mean(self : ChemrxnretroRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_range_scale(s : ChemrxnretroRange, f : Double) -> ChemrxnretroRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroRange::scale(self : ChemrxnretroRange, f : Double) -> ChemrxnretroRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_range_add(a : ChemrxnretroRange, b : ChemrxnretroRange) -> ChemrxnretroRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroRange::add(self : ChemrxnretroRange, other : ChemrxnretroRange) -> ChemrxnretroRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_range_copy(s : ChemrxnretroRange) -> ChemrxnretroRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroRange::copy(self : ChemrxnretroRange) -> ChemrxnretroRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_range_fill(s : ChemrxnretroRange, v : Double) -> ChemrxnretroRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroRange::fill(self : ChemrxnretroRange, v : Double) -> ChemrxnretroRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_range_min(s : ChemrxnretroRange) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroRange::min(self : ChemrxnretroRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_range_max(s : ChemrxnretroRange) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroRange::max(self : ChemrxnretroRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_range_to_string(s : ChemrxnretroRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroRange::to_string(self : ChemrxnretroRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemrxnretroSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_rxn_retro_slice_make(size : Int) -> ChemrxnretroSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_rxn_retro_slice_len(s : ChemrxnretroSlice) -> Int { s.size }
+pub fn ChemrxnretroSlice::len(self : ChemrxnretroSlice) -> Int { self.size }
 
-pub fn chem_rxn_retro_slice_get(s : ChemrxnretroSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemrxnretroSlice::get(self : ChemrxnretroSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_rxn_retro_slice_set(s : ChemrxnretroSlice, i : Int, v : Double) -> ChemrxnretroSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemrxnretroSlice::set(self : ChemrxnretroSlice, i : Int, v : Double) -> ChemrxnretroSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_slice_sum(s : ChemrxnretroSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemrxnretroSlice::sum(self : ChemrxnretroSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_rxn_retro_slice_mean(s : ChemrxnretroSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemrxnretroSlice::mean(self : ChemrxnretroSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_rxn_retro_slice_scale(s : ChemrxnretroSlice, f : Double) -> ChemrxnretroSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemrxnretroSlice::scale(self : ChemrxnretroSlice, f : Double) -> ChemrxnretroSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_slice_add(a : ChemrxnretroSlice, b : ChemrxnretroSlice) -> ChemrxnretroSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemrxnretroSlice::add(self : ChemrxnretroSlice, other : ChemrxnretroSlice) -> ChemrxnretroSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_slice_copy(s : ChemrxnretroSlice) -> ChemrxnretroSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemrxnretroSlice::copy(self : ChemrxnretroSlice) -> ChemrxnretroSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_slice_fill(s : ChemrxnretroSlice, v : Double) -> ChemrxnretroSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemrxnretroSlice::fill(self : ChemrxnretroSlice, v : Double) -> ChemrxnretroSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_rxn_retro_slice_min(s : ChemrxnretroSlice) -> Double { @_common.min(s.data) }
+pub fn ChemrxnretroSlice::min(self : ChemrxnretroSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_rxn_retro_slice_max(s : ChemrxnretroSlice) -> Double { @_common.max(s.data) }
+pub fn ChemrxnretroSlice::max(self : ChemrxnretroSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_rxn_retro_slice_to_string(s : ChemrxnretroSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemrxnretroSlice::to_string(self : ChemrxnretroSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

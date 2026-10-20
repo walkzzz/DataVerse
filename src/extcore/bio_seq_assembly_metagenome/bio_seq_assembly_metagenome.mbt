@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_metagenome_frame_make(size : Int) -> Bioseqassemblymetag
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_len(s : BioseqassemblymetagenomeFrame) -> Int { s.size }
+pub fn BioseqassemblymetagenomeFrame::len(self : BioseqassemblymetagenomeFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_frame_get(s : BioseqassemblymetagenomeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeFrame::get(self : BioseqassemblymetagenomeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_set(s : BioseqassemblymetagenomeFrame, i : Int, v : Double) -> BioseqassemblymetagenomeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeFrame::set(self : BioseqassemblymetagenomeFrame, i : Int, v : Double) -> BioseqassemblymetagenomeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_sum(s : BioseqassemblymetagenomeFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeFrame::sum(self : BioseqassemblymetagenomeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_frame_mean(s : BioseqassemblymetagenomeFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeFrame::mean(self : BioseqassemblymetagenomeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_frame_scale(s : BioseqassemblymetagenomeFrame, f : Double) -> BioseqassemblymetagenomeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeFrame::scale(self : BioseqassemblymetagenomeFrame, f : Double) -> BioseqassemblymetagenomeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_add(a : BioseqassemblymetagenomeFrame, b : BioseqassemblymetagenomeFrame) -> BioseqassemblymetagenomeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeFrame::add(self : BioseqassemblymetagenomeFrame, other : BioseqassemblymetagenomeFrame) -> BioseqassemblymetagenomeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_copy(s : BioseqassemblymetagenomeFrame) -> BioseqassemblymetagenomeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeFrame::copy(self : BioseqassemblymetagenomeFrame) -> BioseqassemblymetagenomeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_fill(s : BioseqassemblymetagenomeFrame, v : Double) -> BioseqassemblymetagenomeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeFrame::fill(self : BioseqassemblymetagenomeFrame, v : Double) -> BioseqassemblymetagenomeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_frame_min(s : BioseqassemblymetagenomeFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeFrame::min(self : BioseqassemblymetagenomeFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_frame_max(s : BioseqassemblymetagenomeFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeFrame::max(self : BioseqassemblymetagenomeFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_frame_to_string(s : BioseqassemblymetagenomeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeFrame::to_string(self : BioseqassemblymetagenomeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_metagenome_table_make(size : Int) -> Bioseqassemblymetag
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_table_len(s : BioseqassemblymetagenomeTable) -> Int { s.size }
+pub fn BioseqassemblymetagenomeTable::len(self : BioseqassemblymetagenomeTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_table_get(s : BioseqassemblymetagenomeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeTable::get(self : BioseqassemblymetagenomeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_table_set(s : BioseqassemblymetagenomeTable, i : Int, v : Double) -> BioseqassemblymetagenomeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeTable::set(self : BioseqassemblymetagenomeTable, i : Int, v : Double) -> BioseqassemblymetagenomeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_table_sum(s : BioseqassemblymetagenomeTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeTable::sum(self : BioseqassemblymetagenomeTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_table_mean(s : BioseqassemblymetagenomeTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeTable::mean(self : BioseqassemblymetagenomeTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_table_scale(s : BioseqassemblymetagenomeTable, f : Double) -> BioseqassemblymetagenomeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeTable::scale(self : BioseqassemblymetagenomeTable, f : Double) -> BioseqassemblymetagenomeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_table_add(a : BioseqassemblymetagenomeTable, b : BioseqassemblymetagenomeTable) -> BioseqassemblymetagenomeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeTable::add(self : BioseqassemblymetagenomeTable, other : BioseqassemblymetagenomeTable) -> BioseqassemblymetagenomeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_table_copy(s : BioseqassemblymetagenomeTable) -> BioseqassemblymetagenomeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeTable::copy(self : BioseqassemblymetagenomeTable) -> BioseqassemblymetagenomeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_table_fill(s : BioseqassemblymetagenomeTable, v : Double) -> BioseqassemblymetagenomeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeTable::fill(self : BioseqassemblymetagenomeTable, v : Double) -> BioseqassemblymetagenomeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_table_min(s : BioseqassemblymetagenomeTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeTable::min(self : BioseqassemblymetagenomeTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_table_max(s : BioseqassemblymetagenomeTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeTable::max(self : BioseqassemblymetagenomeTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_table_to_string(s : BioseqassemblymetagenomeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeTable::to_string(self : BioseqassemblymetagenomeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_metagenome_graphn_make(size : Int) -> Bioseqassemblymeta
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_len(s : BioseqassemblymetagenomeGraphN) -> Int { s.size }
+pub fn BioseqassemblymetagenomeGraphN::len(self : BioseqassemblymetagenomeGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_graphn_get(s : BioseqassemblymetagenomeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeGraphN::get(self : BioseqassemblymetagenomeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_set(s : BioseqassemblymetagenomeGraphN, i : Int, v : Double) -> BioseqassemblymetagenomeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeGraphN::set(self : BioseqassemblymetagenomeGraphN, i : Int, v : Double) -> BioseqassemblymetagenomeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_sum(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeGraphN::sum(self : BioseqassemblymetagenomeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_graphn_mean(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeGraphN::mean(self : BioseqassemblymetagenomeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_graphn_scale(s : BioseqassemblymetagenomeGraphN, f : Double) -> BioseqassemblymetagenomeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeGraphN::scale(self : BioseqassemblymetagenomeGraphN, f : Double) -> BioseqassemblymetagenomeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_add(a : BioseqassemblymetagenomeGraphN, b : BioseqassemblymetagenomeGraphN) -> BioseqassemblymetagenomeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeGraphN::add(self : BioseqassemblymetagenomeGraphN, other : BioseqassemblymetagenomeGraphN) -> BioseqassemblymetagenomeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_copy(s : BioseqassemblymetagenomeGraphN) -> BioseqassemblymetagenomeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeGraphN::copy(self : BioseqassemblymetagenomeGraphN) -> BioseqassemblymetagenomeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_fill(s : BioseqassemblymetagenomeGraphN, v : Double) -> BioseqassemblymetagenomeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeGraphN::fill(self : BioseqassemblymetagenomeGraphN, v : Double) -> BioseqassemblymetagenomeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_min(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeGraphN::min(self : BioseqassemblymetagenomeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_graphn_max(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeGraphN::max(self : BioseqassemblymetagenomeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_graphn_to_string(s : BioseqassemblymetagenomeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeGraphN::to_string(self : BioseqassemblymetagenomeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_metagenome_node_make(size : Int) -> Bioseqassemblymetage
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_node_len(s : BioseqassemblymetagenomeNode) -> Int { s.size }
+pub fn BioseqassemblymetagenomeNode::len(self : BioseqassemblymetagenomeNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_node_get(s : BioseqassemblymetagenomeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeNode::get(self : BioseqassemblymetagenomeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_node_set(s : BioseqassemblymetagenomeNode, i : Int, v : Double) -> BioseqassemblymetagenomeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeNode::set(self : BioseqassemblymetagenomeNode, i : Int, v : Double) -> BioseqassemblymetagenomeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_node_sum(s : BioseqassemblymetagenomeNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeNode::sum(self : BioseqassemblymetagenomeNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_node_mean(s : BioseqassemblymetagenomeNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeNode::mean(self : BioseqassemblymetagenomeNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_node_scale(s : BioseqassemblymetagenomeNode, f : Double) -> BioseqassemblymetagenomeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeNode::scale(self : BioseqassemblymetagenomeNode, f : Double) -> BioseqassemblymetagenomeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_node_add(a : BioseqassemblymetagenomeNode, b : BioseqassemblymetagenomeNode) -> BioseqassemblymetagenomeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeNode::add(self : BioseqassemblymetagenomeNode, other : BioseqassemblymetagenomeNode) -> BioseqassemblymetagenomeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_node_copy(s : BioseqassemblymetagenomeNode) -> BioseqassemblymetagenomeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeNode::copy(self : BioseqassemblymetagenomeNode) -> BioseqassemblymetagenomeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_node_fill(s : BioseqassemblymetagenomeNode, v : Double) -> BioseqassemblymetagenomeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeNode::fill(self : BioseqassemblymetagenomeNode, v : Double) -> BioseqassemblymetagenomeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_node_min(s : BioseqassemblymetagenomeNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeNode::min(self : BioseqassemblymetagenomeNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_node_max(s : BioseqassemblymetagenomeNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeNode::max(self : BioseqassemblymetagenomeNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_node_to_string(s : BioseqassemblymetagenomeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeNode::to_string(self : BioseqassemblymetagenomeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_metagenome_edge_make(size : Int) -> Bioseqassemblymetage
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_len(s : BioseqassemblymetagenomeEdge) -> Int { s.size }
+pub fn BioseqassemblymetagenomeEdge::len(self : BioseqassemblymetagenomeEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_edge_get(s : BioseqassemblymetagenomeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeEdge::get(self : BioseqassemblymetagenomeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_set(s : BioseqassemblymetagenomeEdge, i : Int, v : Double) -> BioseqassemblymetagenomeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeEdge::set(self : BioseqassemblymetagenomeEdge, i : Int, v : Double) -> BioseqassemblymetagenomeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_sum(s : BioseqassemblymetagenomeEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeEdge::sum(self : BioseqassemblymetagenomeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_edge_mean(s : BioseqassemblymetagenomeEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeEdge::mean(self : BioseqassemblymetagenomeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_edge_scale(s : BioseqassemblymetagenomeEdge, f : Double) -> BioseqassemblymetagenomeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeEdge::scale(self : BioseqassemblymetagenomeEdge, f : Double) -> BioseqassemblymetagenomeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_add(a : BioseqassemblymetagenomeEdge, b : BioseqassemblymetagenomeEdge) -> BioseqassemblymetagenomeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeEdge::add(self : BioseqassemblymetagenomeEdge, other : BioseqassemblymetagenomeEdge) -> BioseqassemblymetagenomeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_copy(s : BioseqassemblymetagenomeEdge) -> BioseqassemblymetagenomeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeEdge::copy(self : BioseqassemblymetagenomeEdge) -> BioseqassemblymetagenomeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_fill(s : BioseqassemblymetagenomeEdge, v : Double) -> BioseqassemblymetagenomeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeEdge::fill(self : BioseqassemblymetagenomeEdge, v : Double) -> BioseqassemblymetagenomeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_edge_min(s : BioseqassemblymetagenomeEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeEdge::min(self : BioseqassemblymetagenomeEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_edge_max(s : BioseqassemblymetagenomeEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeEdge::max(self : BioseqassemblymetagenomeEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_edge_to_string(s : BioseqassemblymetagenomeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeEdge::to_string(self : BioseqassemblymetagenomeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomePath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_metagenome_path_make(size : Int) -> Bioseqassemblymetage
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_path_len(s : BioseqassemblymetagenomePath) -> Int { s.size }
+pub fn BioseqassemblymetagenomePath::len(self : BioseqassemblymetagenomePath) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_path_get(s : BioseqassemblymetagenomePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomePath::get(self : BioseqassemblymetagenomePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_path_set(s : BioseqassemblymetagenomePath, i : Int, v : Double) -> BioseqassemblymetagenomePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomePath::set(self : BioseqassemblymetagenomePath, i : Int, v : Double) -> BioseqassemblymetagenomePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_path_sum(s : BioseqassemblymetagenomePath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomePath::sum(self : BioseqassemblymetagenomePath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_path_mean(s : BioseqassemblymetagenomePath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomePath::mean(self : BioseqassemblymetagenomePath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_path_scale(s : BioseqassemblymetagenomePath, f : Double) -> BioseqassemblymetagenomePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomePath::scale(self : BioseqassemblymetagenomePath, f : Double) -> BioseqassemblymetagenomePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_path_add(a : BioseqassemblymetagenomePath, b : BioseqassemblymetagenomePath) -> BioseqassemblymetagenomePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomePath::add(self : BioseqassemblymetagenomePath, other : BioseqassemblymetagenomePath) -> BioseqassemblymetagenomePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_path_copy(s : BioseqassemblymetagenomePath) -> BioseqassemblymetagenomePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomePath::copy(self : BioseqassemblymetagenomePath) -> BioseqassemblymetagenomePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_path_fill(s : BioseqassemblymetagenomePath, v : Double) -> BioseqassemblymetagenomePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomePath::fill(self : BioseqassemblymetagenomePath, v : Double) -> BioseqassemblymetagenomePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_path_min(s : BioseqassemblymetagenomePath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomePath::min(self : BioseqassemblymetagenomePath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_path_max(s : BioseqassemblymetagenomePath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomePath::max(self : BioseqassemblymetagenomePath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_path_to_string(s : BioseqassemblymetagenomePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomePath::to_string(self : BioseqassemblymetagenomePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_metagenome_cluster_make(size : Int) -> Bioseqassemblymet
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_len(s : BioseqassemblymetagenomeCluster) -> Int { s.size }
+pub fn BioseqassemblymetagenomeCluster::len(self : BioseqassemblymetagenomeCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_cluster_get(s : BioseqassemblymetagenomeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeCluster::get(self : BioseqassemblymetagenomeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_set(s : BioseqassemblymetagenomeCluster, i : Int, v : Double) -> BioseqassemblymetagenomeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCluster::set(self : BioseqassemblymetagenomeCluster, i : Int, v : Double) -> BioseqassemblymetagenomeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_sum(s : BioseqassemblymetagenomeCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeCluster::sum(self : BioseqassemblymetagenomeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cluster_mean(s : BioseqassemblymetagenomeCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeCluster::mean(self : BioseqassemblymetagenomeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cluster_scale(s : BioseqassemblymetagenomeCluster, f : Double) -> BioseqassemblymetagenomeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCluster::scale(self : BioseqassemblymetagenomeCluster, f : Double) -> BioseqassemblymetagenomeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_add(a : BioseqassemblymetagenomeCluster, b : BioseqassemblymetagenomeCluster) -> BioseqassemblymetagenomeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeCluster::add(self : BioseqassemblymetagenomeCluster, other : BioseqassemblymetagenomeCluster) -> BioseqassemblymetagenomeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_copy(s : BioseqassemblymetagenomeCluster) -> BioseqassemblymetagenomeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCluster::copy(self : BioseqassemblymetagenomeCluster) -> BioseqassemblymetagenomeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_fill(s : BioseqassemblymetagenomeCluster, v : Double) -> BioseqassemblymetagenomeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCluster::fill(self : BioseqassemblymetagenomeCluster, v : Double) -> BioseqassemblymetagenomeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_min(s : BioseqassemblymetagenomeCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeCluster::min(self : BioseqassemblymetagenomeCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cluster_max(s : BioseqassemblymetagenomeCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeCluster::max(self : BioseqassemblymetagenomeCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cluster_to_string(s : BioseqassemblymetagenomeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeCluster::to_string(self : BioseqassemblymetagenomeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_metagenome_model_make(size : Int) -> Bioseqassemblymetag
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_model_len(s : BioseqassemblymetagenomeModel) -> Int { s.size }
+pub fn BioseqassemblymetagenomeModel::len(self : BioseqassemblymetagenomeModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_model_get(s : BioseqassemblymetagenomeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeModel::get(self : BioseqassemblymetagenomeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_model_set(s : BioseqassemblymetagenomeModel, i : Int, v : Double) -> BioseqassemblymetagenomeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeModel::set(self : BioseqassemblymetagenomeModel, i : Int, v : Double) -> BioseqassemblymetagenomeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_model_sum(s : BioseqassemblymetagenomeModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeModel::sum(self : BioseqassemblymetagenomeModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_model_mean(s : BioseqassemblymetagenomeModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeModel::mean(self : BioseqassemblymetagenomeModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_model_scale(s : BioseqassemblymetagenomeModel, f : Double) -> BioseqassemblymetagenomeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeModel::scale(self : BioseqassemblymetagenomeModel, f : Double) -> BioseqassemblymetagenomeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_model_add(a : BioseqassemblymetagenomeModel, b : BioseqassemblymetagenomeModel) -> BioseqassemblymetagenomeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeModel::add(self : BioseqassemblymetagenomeModel, other : BioseqassemblymetagenomeModel) -> BioseqassemblymetagenomeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_model_copy(s : BioseqassemblymetagenomeModel) -> BioseqassemblymetagenomeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeModel::copy(self : BioseqassemblymetagenomeModel) -> BioseqassemblymetagenomeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_model_fill(s : BioseqassemblymetagenomeModel, v : Double) -> BioseqassemblymetagenomeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeModel::fill(self : BioseqassemblymetagenomeModel, v : Double) -> BioseqassemblymetagenomeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_model_min(s : BioseqassemblymetagenomeModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeModel::min(self : BioseqassemblymetagenomeModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_model_max(s : BioseqassemblymetagenomeModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeModel::max(self : BioseqassemblymetagenomeModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_model_to_string(s : BioseqassemblymetagenomeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeModel::to_string(self : BioseqassemblymetagenomeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_metagenome_layer_make(size : Int) -> Bioseqassemblymetag
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_len(s : BioseqassemblymetagenomeLayer) -> Int { s.size }
+pub fn BioseqassemblymetagenomeLayer::len(self : BioseqassemblymetagenomeLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_layer_get(s : BioseqassemblymetagenomeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeLayer::get(self : BioseqassemblymetagenomeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_set(s : BioseqassemblymetagenomeLayer, i : Int, v : Double) -> BioseqassemblymetagenomeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeLayer::set(self : BioseqassemblymetagenomeLayer, i : Int, v : Double) -> BioseqassemblymetagenomeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_sum(s : BioseqassemblymetagenomeLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeLayer::sum(self : BioseqassemblymetagenomeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_layer_mean(s : BioseqassemblymetagenomeLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeLayer::mean(self : BioseqassemblymetagenomeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_layer_scale(s : BioseqassemblymetagenomeLayer, f : Double) -> BioseqassemblymetagenomeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeLayer::scale(self : BioseqassemblymetagenomeLayer, f : Double) -> BioseqassemblymetagenomeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_add(a : BioseqassemblymetagenomeLayer, b : BioseqassemblymetagenomeLayer) -> BioseqassemblymetagenomeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeLayer::add(self : BioseqassemblymetagenomeLayer, other : BioseqassemblymetagenomeLayer) -> BioseqassemblymetagenomeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_copy(s : BioseqassemblymetagenomeLayer) -> BioseqassemblymetagenomeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeLayer::copy(self : BioseqassemblymetagenomeLayer) -> BioseqassemblymetagenomeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_fill(s : BioseqassemblymetagenomeLayer, v : Double) -> BioseqassemblymetagenomeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeLayer::fill(self : BioseqassemblymetagenomeLayer, v : Double) -> BioseqassemblymetagenomeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_layer_min(s : BioseqassemblymetagenomeLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeLayer::min(self : BioseqassemblymetagenomeLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_layer_max(s : BioseqassemblymetagenomeLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeLayer::max(self : BioseqassemblymetagenomeLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_layer_to_string(s : BioseqassemblymetagenomeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeLayer::to_string(self : BioseqassemblymetagenomeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_metagenome_buffer_make(size : Int) -> Bioseqassemblymeta
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_len(s : BioseqassemblymetagenomeBuffer) -> Int { s.size }
+pub fn BioseqassemblymetagenomeBuffer::len(self : BioseqassemblymetagenomeBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_buffer_get(s : BioseqassemblymetagenomeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeBuffer::get(self : BioseqassemblymetagenomeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_set(s : BioseqassemblymetagenomeBuffer, i : Int, v : Double) -> BioseqassemblymetagenomeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeBuffer::set(self : BioseqassemblymetagenomeBuffer, i : Int, v : Double) -> BioseqassemblymetagenomeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_sum(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeBuffer::sum(self : BioseqassemblymetagenomeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_buffer_mean(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeBuffer::mean(self : BioseqassemblymetagenomeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_buffer_scale(s : BioseqassemblymetagenomeBuffer, f : Double) -> BioseqassemblymetagenomeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeBuffer::scale(self : BioseqassemblymetagenomeBuffer, f : Double) -> BioseqassemblymetagenomeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_add(a : BioseqassemblymetagenomeBuffer, b : BioseqassemblymetagenomeBuffer) -> BioseqassemblymetagenomeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeBuffer::add(self : BioseqassemblymetagenomeBuffer, other : BioseqassemblymetagenomeBuffer) -> BioseqassemblymetagenomeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_copy(s : BioseqassemblymetagenomeBuffer) -> BioseqassemblymetagenomeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeBuffer::copy(self : BioseqassemblymetagenomeBuffer) -> BioseqassemblymetagenomeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_fill(s : BioseqassemblymetagenomeBuffer, v : Double) -> BioseqassemblymetagenomeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeBuffer::fill(self : BioseqassemblymetagenomeBuffer, v : Double) -> BioseqassemblymetagenomeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_min(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeBuffer::min(self : BioseqassemblymetagenomeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_buffer_max(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeBuffer::max(self : BioseqassemblymetagenomeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_buffer_to_string(s : BioseqassemblymetagenomeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeBuffer::to_string(self : BioseqassemblymetagenomeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_metagenome_cursor_make(size : Int) -> Bioseqassemblymeta
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_len(s : BioseqassemblymetagenomeCursor) -> Int { s.size }
+pub fn BioseqassemblymetagenomeCursor::len(self : BioseqassemblymetagenomeCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_cursor_get(s : BioseqassemblymetagenomeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeCursor::get(self : BioseqassemblymetagenomeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_set(s : BioseqassemblymetagenomeCursor, i : Int, v : Double) -> BioseqassemblymetagenomeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCursor::set(self : BioseqassemblymetagenomeCursor, i : Int, v : Double) -> BioseqassemblymetagenomeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_sum(s : BioseqassemblymetagenomeCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeCursor::sum(self : BioseqassemblymetagenomeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cursor_mean(s : BioseqassemblymetagenomeCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeCursor::mean(self : BioseqassemblymetagenomeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cursor_scale(s : BioseqassemblymetagenomeCursor, f : Double) -> BioseqassemblymetagenomeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCursor::scale(self : BioseqassemblymetagenomeCursor, f : Double) -> BioseqassemblymetagenomeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_add(a : BioseqassemblymetagenomeCursor, b : BioseqassemblymetagenomeCursor) -> BioseqassemblymetagenomeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeCursor::add(self : BioseqassemblymetagenomeCursor, other : BioseqassemblymetagenomeCursor) -> BioseqassemblymetagenomeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_copy(s : BioseqassemblymetagenomeCursor) -> BioseqassemblymetagenomeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCursor::copy(self : BioseqassemblymetagenomeCursor) -> BioseqassemblymetagenomeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_fill(s : BioseqassemblymetagenomeCursor, v : Double) -> BioseqassemblymetagenomeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeCursor::fill(self : BioseqassemblymetagenomeCursor, v : Double) -> BioseqassemblymetagenomeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_min(s : BioseqassemblymetagenomeCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeCursor::min(self : BioseqassemblymetagenomeCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cursor_max(s : BioseqassemblymetagenomeCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeCursor::max(self : BioseqassemblymetagenomeCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_cursor_to_string(s : BioseqassemblymetagenomeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeCursor::to_string(self : BioseqassemblymetagenomeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_metagenome_view_make(size : Int) -> Bioseqassemblymetage
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_view_len(s : BioseqassemblymetagenomeView) -> Int { s.size }
+pub fn BioseqassemblymetagenomeView::len(self : BioseqassemblymetagenomeView) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_view_get(s : BioseqassemblymetagenomeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeView::get(self : BioseqassemblymetagenomeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_view_set(s : BioseqassemblymetagenomeView, i : Int, v : Double) -> BioseqassemblymetagenomeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeView::set(self : BioseqassemblymetagenomeView, i : Int, v : Double) -> BioseqassemblymetagenomeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_view_sum(s : BioseqassemblymetagenomeView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeView::sum(self : BioseqassemblymetagenomeView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_view_mean(s : BioseqassemblymetagenomeView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeView::mean(self : BioseqassemblymetagenomeView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_view_scale(s : BioseqassemblymetagenomeView, f : Double) -> BioseqassemblymetagenomeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeView::scale(self : BioseqassemblymetagenomeView, f : Double) -> BioseqassemblymetagenomeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_view_add(a : BioseqassemblymetagenomeView, b : BioseqassemblymetagenomeView) -> BioseqassemblymetagenomeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeView::add(self : BioseqassemblymetagenomeView, other : BioseqassemblymetagenomeView) -> BioseqassemblymetagenomeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_view_copy(s : BioseqassemblymetagenomeView) -> BioseqassemblymetagenomeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeView::copy(self : BioseqassemblymetagenomeView) -> BioseqassemblymetagenomeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_view_fill(s : BioseqassemblymetagenomeView, v : Double) -> BioseqassemblymetagenomeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeView::fill(self : BioseqassemblymetagenomeView, v : Double) -> BioseqassemblymetagenomeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_view_min(s : BioseqassemblymetagenomeView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeView::min(self : BioseqassemblymetagenomeView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_view_max(s : BioseqassemblymetagenomeView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeView::max(self : BioseqassemblymetagenomeView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_view_to_string(s : BioseqassemblymetagenomeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeView::to_string(self : BioseqassemblymetagenomeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_metagenome_range_make(size : Int) -> Bioseqassemblymetag
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_range_len(s : BioseqassemblymetagenomeRange) -> Int { s.size }
+pub fn BioseqassemblymetagenomeRange::len(self : BioseqassemblymetagenomeRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_range_get(s : BioseqassemblymetagenomeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeRange::get(self : BioseqassemblymetagenomeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_range_set(s : BioseqassemblymetagenomeRange, i : Int, v : Double) -> BioseqassemblymetagenomeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeRange::set(self : BioseqassemblymetagenomeRange, i : Int, v : Double) -> BioseqassemblymetagenomeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_range_sum(s : BioseqassemblymetagenomeRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeRange::sum(self : BioseqassemblymetagenomeRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_range_mean(s : BioseqassemblymetagenomeRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeRange::mean(self : BioseqassemblymetagenomeRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_range_scale(s : BioseqassemblymetagenomeRange, f : Double) -> BioseqassemblymetagenomeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeRange::scale(self : BioseqassemblymetagenomeRange, f : Double) -> BioseqassemblymetagenomeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_range_add(a : BioseqassemblymetagenomeRange, b : BioseqassemblymetagenomeRange) -> BioseqassemblymetagenomeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeRange::add(self : BioseqassemblymetagenomeRange, other : BioseqassemblymetagenomeRange) -> BioseqassemblymetagenomeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_range_copy(s : BioseqassemblymetagenomeRange) -> BioseqassemblymetagenomeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeRange::copy(self : BioseqassemblymetagenomeRange) -> BioseqassemblymetagenomeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_range_fill(s : BioseqassemblymetagenomeRange, v : Double) -> BioseqassemblymetagenomeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeRange::fill(self : BioseqassemblymetagenomeRange, v : Double) -> BioseqassemblymetagenomeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_range_min(s : BioseqassemblymetagenomeRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeRange::min(self : BioseqassemblymetagenomeRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_range_max(s : BioseqassemblymetagenomeRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeRange::max(self : BioseqassemblymetagenomeRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_range_to_string(s : BioseqassemblymetagenomeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeRange::to_string(self : BioseqassemblymetagenomeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblymetagenomeSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_metagenome_slice_make(size : Int) -> Bioseqassemblymetag
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_len(s : BioseqassemblymetagenomeSlice) -> Int { s.size }
+pub fn BioseqassemblymetagenomeSlice::len(self : BioseqassemblymetagenomeSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_metagenome_slice_get(s : BioseqassemblymetagenomeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblymetagenomeSlice::get(self : BioseqassemblymetagenomeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_set(s : BioseqassemblymetagenomeSlice, i : Int, v : Double) -> BioseqassemblymetagenomeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeSlice::set(self : BioseqassemblymetagenomeSlice, i : Int, v : Double) -> BioseqassemblymetagenomeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_sum(s : BioseqassemblymetagenomeSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblymetagenomeSlice::sum(self : BioseqassemblymetagenomeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_metagenome_slice_mean(s : BioseqassemblymetagenomeSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblymetagenomeSlice::mean(self : BioseqassemblymetagenomeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_metagenome_slice_scale(s : BioseqassemblymetagenomeSlice, f : Double) -> BioseqassemblymetagenomeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeSlice::scale(self : BioseqassemblymetagenomeSlice, f : Double) -> BioseqassemblymetagenomeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_add(a : BioseqassemblymetagenomeSlice, b : BioseqassemblymetagenomeSlice) -> BioseqassemblymetagenomeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblymetagenomeSlice::add(self : BioseqassemblymetagenomeSlice, other : BioseqassemblymetagenomeSlice) -> BioseqassemblymetagenomeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_copy(s : BioseqassemblymetagenomeSlice) -> BioseqassemblymetagenomeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeSlice::copy(self : BioseqassemblymetagenomeSlice) -> BioseqassemblymetagenomeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_fill(s : BioseqassemblymetagenomeSlice, v : Double) -> BioseqassemblymetagenomeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblymetagenomeSlice::fill(self : BioseqassemblymetagenomeSlice, v : Double) -> BioseqassemblymetagenomeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_metagenome_slice_min(s : BioseqassemblymetagenomeSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblymetagenomeSlice::min(self : BioseqassemblymetagenomeSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_metagenome_slice_max(s : BioseqassemblymetagenomeSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblymetagenomeSlice::max(self : BioseqassemblymetagenomeSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_metagenome_slice_to_string(s : BioseqassemblymetagenomeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblymetagenomeSlice::to_string(self : BioseqassemblymetagenomeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

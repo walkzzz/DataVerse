@@ -351,45 +351,45 @@ pub fn image_filter_canny_frame_make(size : Int) -> ImagefiltercannyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_frame_len(s : ImagefiltercannyFrame) -> Int { s.size }
+pub fn ImagefiltercannyFrame::len(self : ImagefiltercannyFrame) -> Int { self.size }
 
-pub fn image_filter_canny_frame_get(s : ImagefiltercannyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyFrame::get(self : ImagefiltercannyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_frame_set(s : ImagefiltercannyFrame, i : Int, v : Double) -> ImagefiltercannyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyFrame::set(self : ImagefiltercannyFrame, i : Int, v : Double) -> ImagefiltercannyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_frame_sum(s : ImagefiltercannyFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyFrame::sum(self : ImagefiltercannyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_frame_mean(s : ImagefiltercannyFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyFrame::mean(self : ImagefiltercannyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_frame_scale(s : ImagefiltercannyFrame, f : Double) -> ImagefiltercannyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyFrame::scale(self : ImagefiltercannyFrame, f : Double) -> ImagefiltercannyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_frame_add(a : ImagefiltercannyFrame, b : ImagefiltercannyFrame) -> ImagefiltercannyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyFrame::add(self : ImagefiltercannyFrame, other : ImagefiltercannyFrame) -> ImagefiltercannyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_frame_copy(s : ImagefiltercannyFrame) -> ImagefiltercannyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyFrame::copy(self : ImagefiltercannyFrame) -> ImagefiltercannyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_frame_fill(s : ImagefiltercannyFrame, v : Double) -> ImagefiltercannyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyFrame::fill(self : ImagefiltercannyFrame, v : Double) -> ImagefiltercannyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_frame_min(s : ImagefiltercannyFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyFrame::min(self : ImagefiltercannyFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_frame_max(s : ImagefiltercannyFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyFrame::max(self : ImagefiltercannyFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_frame_to_string(s : ImagefiltercannyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyFrame::to_string(self : ImagefiltercannyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyTable {
@@ -402,45 +402,45 @@ pub fn image_filter_canny_table_make(size : Int) -> ImagefiltercannyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_table_len(s : ImagefiltercannyTable) -> Int { s.size }
+pub fn ImagefiltercannyTable::len(self : ImagefiltercannyTable) -> Int { self.size }
 
-pub fn image_filter_canny_table_get(s : ImagefiltercannyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyTable::get(self : ImagefiltercannyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_table_set(s : ImagefiltercannyTable, i : Int, v : Double) -> ImagefiltercannyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyTable::set(self : ImagefiltercannyTable, i : Int, v : Double) -> ImagefiltercannyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_table_sum(s : ImagefiltercannyTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyTable::sum(self : ImagefiltercannyTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_table_mean(s : ImagefiltercannyTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyTable::mean(self : ImagefiltercannyTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_table_scale(s : ImagefiltercannyTable, f : Double) -> ImagefiltercannyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyTable::scale(self : ImagefiltercannyTable, f : Double) -> ImagefiltercannyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_table_add(a : ImagefiltercannyTable, b : ImagefiltercannyTable) -> ImagefiltercannyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyTable::add(self : ImagefiltercannyTable, other : ImagefiltercannyTable) -> ImagefiltercannyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_table_copy(s : ImagefiltercannyTable) -> ImagefiltercannyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyTable::copy(self : ImagefiltercannyTable) -> ImagefiltercannyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_table_fill(s : ImagefiltercannyTable, v : Double) -> ImagefiltercannyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyTable::fill(self : ImagefiltercannyTable, v : Double) -> ImagefiltercannyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_table_min(s : ImagefiltercannyTable) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyTable::min(self : ImagefiltercannyTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_table_max(s : ImagefiltercannyTable) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyTable::max(self : ImagefiltercannyTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_table_to_string(s : ImagefiltercannyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyTable::to_string(self : ImagefiltercannyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_canny_graphn_make(size : Int) -> ImagefiltercannyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_graphn_len(s : ImagefiltercannyGraphN) -> Int { s.size }
+pub fn ImagefiltercannyGraphN::len(self : ImagefiltercannyGraphN) -> Int { self.size }
 
-pub fn image_filter_canny_graphn_get(s : ImagefiltercannyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyGraphN::get(self : ImagefiltercannyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_graphn_set(s : ImagefiltercannyGraphN, i : Int, v : Double) -> ImagefiltercannyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyGraphN::set(self : ImagefiltercannyGraphN, i : Int, v : Double) -> ImagefiltercannyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_graphn_sum(s : ImagefiltercannyGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyGraphN::sum(self : ImagefiltercannyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_graphn_mean(s : ImagefiltercannyGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyGraphN::mean(self : ImagefiltercannyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_graphn_scale(s : ImagefiltercannyGraphN, f : Double) -> ImagefiltercannyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyGraphN::scale(self : ImagefiltercannyGraphN, f : Double) -> ImagefiltercannyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_graphn_add(a : ImagefiltercannyGraphN, b : ImagefiltercannyGraphN) -> ImagefiltercannyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyGraphN::add(self : ImagefiltercannyGraphN, other : ImagefiltercannyGraphN) -> ImagefiltercannyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_graphn_copy(s : ImagefiltercannyGraphN) -> ImagefiltercannyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyGraphN::copy(self : ImagefiltercannyGraphN) -> ImagefiltercannyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_graphn_fill(s : ImagefiltercannyGraphN, v : Double) -> ImagefiltercannyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyGraphN::fill(self : ImagefiltercannyGraphN, v : Double) -> ImagefiltercannyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_graphn_min(s : ImagefiltercannyGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyGraphN::min(self : ImagefiltercannyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_graphn_max(s : ImagefiltercannyGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyGraphN::max(self : ImagefiltercannyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_graphn_to_string(s : ImagefiltercannyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyGraphN::to_string(self : ImagefiltercannyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyNode {
@@ -504,45 +504,45 @@ pub fn image_filter_canny_node_make(size : Int) -> ImagefiltercannyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_node_len(s : ImagefiltercannyNode) -> Int { s.size }
+pub fn ImagefiltercannyNode::len(self : ImagefiltercannyNode) -> Int { self.size }
 
-pub fn image_filter_canny_node_get(s : ImagefiltercannyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyNode::get(self : ImagefiltercannyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_node_set(s : ImagefiltercannyNode, i : Int, v : Double) -> ImagefiltercannyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyNode::set(self : ImagefiltercannyNode, i : Int, v : Double) -> ImagefiltercannyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_node_sum(s : ImagefiltercannyNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyNode::sum(self : ImagefiltercannyNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_node_mean(s : ImagefiltercannyNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyNode::mean(self : ImagefiltercannyNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_node_scale(s : ImagefiltercannyNode, f : Double) -> ImagefiltercannyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyNode::scale(self : ImagefiltercannyNode, f : Double) -> ImagefiltercannyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_node_add(a : ImagefiltercannyNode, b : ImagefiltercannyNode) -> ImagefiltercannyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyNode::add(self : ImagefiltercannyNode, other : ImagefiltercannyNode) -> ImagefiltercannyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_node_copy(s : ImagefiltercannyNode) -> ImagefiltercannyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyNode::copy(self : ImagefiltercannyNode) -> ImagefiltercannyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_node_fill(s : ImagefiltercannyNode, v : Double) -> ImagefiltercannyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyNode::fill(self : ImagefiltercannyNode, v : Double) -> ImagefiltercannyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_node_min(s : ImagefiltercannyNode) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyNode::min(self : ImagefiltercannyNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_node_max(s : ImagefiltercannyNode) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyNode::max(self : ImagefiltercannyNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_node_to_string(s : ImagefiltercannyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyNode::to_string(self : ImagefiltercannyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_canny_edge_make(size : Int) -> ImagefiltercannyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_edge_len(s : ImagefiltercannyEdge) -> Int { s.size }
+pub fn ImagefiltercannyEdge::len(self : ImagefiltercannyEdge) -> Int { self.size }
 
-pub fn image_filter_canny_edge_get(s : ImagefiltercannyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyEdge::get(self : ImagefiltercannyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_edge_set(s : ImagefiltercannyEdge, i : Int, v : Double) -> ImagefiltercannyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyEdge::set(self : ImagefiltercannyEdge, i : Int, v : Double) -> ImagefiltercannyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_edge_sum(s : ImagefiltercannyEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyEdge::sum(self : ImagefiltercannyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_edge_mean(s : ImagefiltercannyEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyEdge::mean(self : ImagefiltercannyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_edge_scale(s : ImagefiltercannyEdge, f : Double) -> ImagefiltercannyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyEdge::scale(self : ImagefiltercannyEdge, f : Double) -> ImagefiltercannyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_edge_add(a : ImagefiltercannyEdge, b : ImagefiltercannyEdge) -> ImagefiltercannyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyEdge::add(self : ImagefiltercannyEdge, other : ImagefiltercannyEdge) -> ImagefiltercannyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_edge_copy(s : ImagefiltercannyEdge) -> ImagefiltercannyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyEdge::copy(self : ImagefiltercannyEdge) -> ImagefiltercannyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_edge_fill(s : ImagefiltercannyEdge, v : Double) -> ImagefiltercannyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyEdge::fill(self : ImagefiltercannyEdge, v : Double) -> ImagefiltercannyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_edge_min(s : ImagefiltercannyEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyEdge::min(self : ImagefiltercannyEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_edge_max(s : ImagefiltercannyEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyEdge::max(self : ImagefiltercannyEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_edge_to_string(s : ImagefiltercannyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyEdge::to_string(self : ImagefiltercannyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyPath {
@@ -606,45 +606,45 @@ pub fn image_filter_canny_path_make(size : Int) -> ImagefiltercannyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_path_len(s : ImagefiltercannyPath) -> Int { s.size }
+pub fn ImagefiltercannyPath::len(self : ImagefiltercannyPath) -> Int { self.size }
 
-pub fn image_filter_canny_path_get(s : ImagefiltercannyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyPath::get(self : ImagefiltercannyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_path_set(s : ImagefiltercannyPath, i : Int, v : Double) -> ImagefiltercannyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyPath::set(self : ImagefiltercannyPath, i : Int, v : Double) -> ImagefiltercannyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_path_sum(s : ImagefiltercannyPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyPath::sum(self : ImagefiltercannyPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_path_mean(s : ImagefiltercannyPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyPath::mean(self : ImagefiltercannyPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_path_scale(s : ImagefiltercannyPath, f : Double) -> ImagefiltercannyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyPath::scale(self : ImagefiltercannyPath, f : Double) -> ImagefiltercannyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_path_add(a : ImagefiltercannyPath, b : ImagefiltercannyPath) -> ImagefiltercannyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyPath::add(self : ImagefiltercannyPath, other : ImagefiltercannyPath) -> ImagefiltercannyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_path_copy(s : ImagefiltercannyPath) -> ImagefiltercannyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyPath::copy(self : ImagefiltercannyPath) -> ImagefiltercannyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_path_fill(s : ImagefiltercannyPath, v : Double) -> ImagefiltercannyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyPath::fill(self : ImagefiltercannyPath, v : Double) -> ImagefiltercannyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_path_min(s : ImagefiltercannyPath) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyPath::min(self : ImagefiltercannyPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_path_max(s : ImagefiltercannyPath) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyPath::max(self : ImagefiltercannyPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_path_to_string(s : ImagefiltercannyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyPath::to_string(self : ImagefiltercannyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_canny_cluster_make(size : Int) -> ImagefiltercannyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_cluster_len(s : ImagefiltercannyCluster) -> Int { s.size }
+pub fn ImagefiltercannyCluster::len(self : ImagefiltercannyCluster) -> Int { self.size }
 
-pub fn image_filter_canny_cluster_get(s : ImagefiltercannyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyCluster::get(self : ImagefiltercannyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_cluster_set(s : ImagefiltercannyCluster, i : Int, v : Double) -> ImagefiltercannyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCluster::set(self : ImagefiltercannyCluster, i : Int, v : Double) -> ImagefiltercannyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cluster_sum(s : ImagefiltercannyCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyCluster::sum(self : ImagefiltercannyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_cluster_mean(s : ImagefiltercannyCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyCluster::mean(self : ImagefiltercannyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_cluster_scale(s : ImagefiltercannyCluster, f : Double) -> ImagefiltercannyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCluster::scale(self : ImagefiltercannyCluster, f : Double) -> ImagefiltercannyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cluster_add(a : ImagefiltercannyCluster, b : ImagefiltercannyCluster) -> ImagefiltercannyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyCluster::add(self : ImagefiltercannyCluster, other : ImagefiltercannyCluster) -> ImagefiltercannyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_cluster_copy(s : ImagefiltercannyCluster) -> ImagefiltercannyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCluster::copy(self : ImagefiltercannyCluster) -> ImagefiltercannyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cluster_fill(s : ImagefiltercannyCluster, v : Double) -> ImagefiltercannyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCluster::fill(self : ImagefiltercannyCluster, v : Double) -> ImagefiltercannyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cluster_min(s : ImagefiltercannyCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyCluster::min(self : ImagefiltercannyCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_cluster_max(s : ImagefiltercannyCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyCluster::max(self : ImagefiltercannyCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_cluster_to_string(s : ImagefiltercannyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyCluster::to_string(self : ImagefiltercannyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyModel {
@@ -708,45 +708,45 @@ pub fn image_filter_canny_model_make(size : Int) -> ImagefiltercannyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_model_len(s : ImagefiltercannyModel) -> Int { s.size }
+pub fn ImagefiltercannyModel::len(self : ImagefiltercannyModel) -> Int { self.size }
 
-pub fn image_filter_canny_model_get(s : ImagefiltercannyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyModel::get(self : ImagefiltercannyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_model_set(s : ImagefiltercannyModel, i : Int, v : Double) -> ImagefiltercannyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyModel::set(self : ImagefiltercannyModel, i : Int, v : Double) -> ImagefiltercannyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_model_sum(s : ImagefiltercannyModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyModel::sum(self : ImagefiltercannyModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_model_mean(s : ImagefiltercannyModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyModel::mean(self : ImagefiltercannyModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_model_scale(s : ImagefiltercannyModel, f : Double) -> ImagefiltercannyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyModel::scale(self : ImagefiltercannyModel, f : Double) -> ImagefiltercannyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_model_add(a : ImagefiltercannyModel, b : ImagefiltercannyModel) -> ImagefiltercannyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyModel::add(self : ImagefiltercannyModel, other : ImagefiltercannyModel) -> ImagefiltercannyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_model_copy(s : ImagefiltercannyModel) -> ImagefiltercannyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyModel::copy(self : ImagefiltercannyModel) -> ImagefiltercannyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_model_fill(s : ImagefiltercannyModel, v : Double) -> ImagefiltercannyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyModel::fill(self : ImagefiltercannyModel, v : Double) -> ImagefiltercannyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_model_min(s : ImagefiltercannyModel) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyModel::min(self : ImagefiltercannyModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_model_max(s : ImagefiltercannyModel) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyModel::max(self : ImagefiltercannyModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_model_to_string(s : ImagefiltercannyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyModel::to_string(self : ImagefiltercannyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_canny_layer_make(size : Int) -> ImagefiltercannyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_layer_len(s : ImagefiltercannyLayer) -> Int { s.size }
+pub fn ImagefiltercannyLayer::len(self : ImagefiltercannyLayer) -> Int { self.size }
 
-pub fn image_filter_canny_layer_get(s : ImagefiltercannyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyLayer::get(self : ImagefiltercannyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_layer_set(s : ImagefiltercannyLayer, i : Int, v : Double) -> ImagefiltercannyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyLayer::set(self : ImagefiltercannyLayer, i : Int, v : Double) -> ImagefiltercannyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_layer_sum(s : ImagefiltercannyLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyLayer::sum(self : ImagefiltercannyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_layer_mean(s : ImagefiltercannyLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyLayer::mean(self : ImagefiltercannyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_layer_scale(s : ImagefiltercannyLayer, f : Double) -> ImagefiltercannyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyLayer::scale(self : ImagefiltercannyLayer, f : Double) -> ImagefiltercannyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_layer_add(a : ImagefiltercannyLayer, b : ImagefiltercannyLayer) -> ImagefiltercannyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyLayer::add(self : ImagefiltercannyLayer, other : ImagefiltercannyLayer) -> ImagefiltercannyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_layer_copy(s : ImagefiltercannyLayer) -> ImagefiltercannyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyLayer::copy(self : ImagefiltercannyLayer) -> ImagefiltercannyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_layer_fill(s : ImagefiltercannyLayer, v : Double) -> ImagefiltercannyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyLayer::fill(self : ImagefiltercannyLayer, v : Double) -> ImagefiltercannyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_layer_min(s : ImagefiltercannyLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyLayer::min(self : ImagefiltercannyLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_layer_max(s : ImagefiltercannyLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyLayer::max(self : ImagefiltercannyLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_layer_to_string(s : ImagefiltercannyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyLayer::to_string(self : ImagefiltercannyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_canny_buffer_make(size : Int) -> ImagefiltercannyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_buffer_len(s : ImagefiltercannyBuffer) -> Int { s.size }
+pub fn ImagefiltercannyBuffer::len(self : ImagefiltercannyBuffer) -> Int { self.size }
 
-pub fn image_filter_canny_buffer_get(s : ImagefiltercannyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyBuffer::get(self : ImagefiltercannyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_buffer_set(s : ImagefiltercannyBuffer, i : Int, v : Double) -> ImagefiltercannyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyBuffer::set(self : ImagefiltercannyBuffer, i : Int, v : Double) -> ImagefiltercannyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_buffer_sum(s : ImagefiltercannyBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyBuffer::sum(self : ImagefiltercannyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_buffer_mean(s : ImagefiltercannyBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyBuffer::mean(self : ImagefiltercannyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_buffer_scale(s : ImagefiltercannyBuffer, f : Double) -> ImagefiltercannyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyBuffer::scale(self : ImagefiltercannyBuffer, f : Double) -> ImagefiltercannyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_buffer_add(a : ImagefiltercannyBuffer, b : ImagefiltercannyBuffer) -> ImagefiltercannyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyBuffer::add(self : ImagefiltercannyBuffer, other : ImagefiltercannyBuffer) -> ImagefiltercannyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_buffer_copy(s : ImagefiltercannyBuffer) -> ImagefiltercannyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyBuffer::copy(self : ImagefiltercannyBuffer) -> ImagefiltercannyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_buffer_fill(s : ImagefiltercannyBuffer, v : Double) -> ImagefiltercannyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyBuffer::fill(self : ImagefiltercannyBuffer, v : Double) -> ImagefiltercannyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_buffer_min(s : ImagefiltercannyBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyBuffer::min(self : ImagefiltercannyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_buffer_max(s : ImagefiltercannyBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyBuffer::max(self : ImagefiltercannyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_buffer_to_string(s : ImagefiltercannyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyBuffer::to_string(self : ImagefiltercannyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_canny_cursor_make(size : Int) -> ImagefiltercannyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_cursor_len(s : ImagefiltercannyCursor) -> Int { s.size }
+pub fn ImagefiltercannyCursor::len(self : ImagefiltercannyCursor) -> Int { self.size }
 
-pub fn image_filter_canny_cursor_get(s : ImagefiltercannyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyCursor::get(self : ImagefiltercannyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_cursor_set(s : ImagefiltercannyCursor, i : Int, v : Double) -> ImagefiltercannyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCursor::set(self : ImagefiltercannyCursor, i : Int, v : Double) -> ImagefiltercannyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cursor_sum(s : ImagefiltercannyCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyCursor::sum(self : ImagefiltercannyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_cursor_mean(s : ImagefiltercannyCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyCursor::mean(self : ImagefiltercannyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_cursor_scale(s : ImagefiltercannyCursor, f : Double) -> ImagefiltercannyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCursor::scale(self : ImagefiltercannyCursor, f : Double) -> ImagefiltercannyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cursor_add(a : ImagefiltercannyCursor, b : ImagefiltercannyCursor) -> ImagefiltercannyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyCursor::add(self : ImagefiltercannyCursor, other : ImagefiltercannyCursor) -> ImagefiltercannyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_cursor_copy(s : ImagefiltercannyCursor) -> ImagefiltercannyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCursor::copy(self : ImagefiltercannyCursor) -> ImagefiltercannyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cursor_fill(s : ImagefiltercannyCursor, v : Double) -> ImagefiltercannyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyCursor::fill(self : ImagefiltercannyCursor, v : Double) -> ImagefiltercannyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_cursor_min(s : ImagefiltercannyCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyCursor::min(self : ImagefiltercannyCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_cursor_max(s : ImagefiltercannyCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyCursor::max(self : ImagefiltercannyCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_cursor_to_string(s : ImagefiltercannyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyCursor::to_string(self : ImagefiltercannyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyView {
@@ -912,45 +912,45 @@ pub fn image_filter_canny_view_make(size : Int) -> ImagefiltercannyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_view_len(s : ImagefiltercannyView) -> Int { s.size }
+pub fn ImagefiltercannyView::len(self : ImagefiltercannyView) -> Int { self.size }
 
-pub fn image_filter_canny_view_get(s : ImagefiltercannyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyView::get(self : ImagefiltercannyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_view_set(s : ImagefiltercannyView, i : Int, v : Double) -> ImagefiltercannyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyView::set(self : ImagefiltercannyView, i : Int, v : Double) -> ImagefiltercannyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_view_sum(s : ImagefiltercannyView) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyView::sum(self : ImagefiltercannyView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_view_mean(s : ImagefiltercannyView) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyView::mean(self : ImagefiltercannyView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_view_scale(s : ImagefiltercannyView, f : Double) -> ImagefiltercannyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyView::scale(self : ImagefiltercannyView, f : Double) -> ImagefiltercannyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_view_add(a : ImagefiltercannyView, b : ImagefiltercannyView) -> ImagefiltercannyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyView::add(self : ImagefiltercannyView, other : ImagefiltercannyView) -> ImagefiltercannyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_view_copy(s : ImagefiltercannyView) -> ImagefiltercannyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyView::copy(self : ImagefiltercannyView) -> ImagefiltercannyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_view_fill(s : ImagefiltercannyView, v : Double) -> ImagefiltercannyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyView::fill(self : ImagefiltercannyView, v : Double) -> ImagefiltercannyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_view_min(s : ImagefiltercannyView) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyView::min(self : ImagefiltercannyView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_view_max(s : ImagefiltercannyView) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyView::max(self : ImagefiltercannyView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_view_to_string(s : ImagefiltercannyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyView::to_string(self : ImagefiltercannyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannyRange {
@@ -963,45 +963,45 @@ pub fn image_filter_canny_range_make(size : Int) -> ImagefiltercannyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_range_len(s : ImagefiltercannyRange) -> Int { s.size }
+pub fn ImagefiltercannyRange::len(self : ImagefiltercannyRange) -> Int { self.size }
 
-pub fn image_filter_canny_range_get(s : ImagefiltercannyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannyRange::get(self : ImagefiltercannyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_range_set(s : ImagefiltercannyRange, i : Int, v : Double) -> ImagefiltercannyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannyRange::set(self : ImagefiltercannyRange, i : Int, v : Double) -> ImagefiltercannyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_range_sum(s : ImagefiltercannyRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannyRange::sum(self : ImagefiltercannyRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_range_mean(s : ImagefiltercannyRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannyRange::mean(self : ImagefiltercannyRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_range_scale(s : ImagefiltercannyRange, f : Double) -> ImagefiltercannyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyRange::scale(self : ImagefiltercannyRange, f : Double) -> ImagefiltercannyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_range_add(a : ImagefiltercannyRange, b : ImagefiltercannyRange) -> ImagefiltercannyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannyRange::add(self : ImagefiltercannyRange, other : ImagefiltercannyRange) -> ImagefiltercannyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_range_copy(s : ImagefiltercannyRange) -> ImagefiltercannyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyRange::copy(self : ImagefiltercannyRange) -> ImagefiltercannyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_range_fill(s : ImagefiltercannyRange, v : Double) -> ImagefiltercannyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannyRange::fill(self : ImagefiltercannyRange, v : Double) -> ImagefiltercannyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_range_min(s : ImagefiltercannyRange) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannyRange::min(self : ImagefiltercannyRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_range_max(s : ImagefiltercannyRange) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannyRange::max(self : ImagefiltercannyRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_range_to_string(s : ImagefiltercannyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannyRange::to_string(self : ImagefiltercannyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltercannySlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_canny_slice_make(size : Int) -> ImagefiltercannySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_canny_slice_len(s : ImagefiltercannySlice) -> Int { s.size }
+pub fn ImagefiltercannySlice::len(self : ImagefiltercannySlice) -> Int { self.size }
 
-pub fn image_filter_canny_slice_get(s : ImagefiltercannySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltercannySlice::get(self : ImagefiltercannySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_canny_slice_set(s : ImagefiltercannySlice, i : Int, v : Double) -> ImagefiltercannySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltercannySlice::set(self : ImagefiltercannySlice, i : Int, v : Double) -> ImagefiltercannySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_slice_sum(s : ImagefiltercannySlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltercannySlice::sum(self : ImagefiltercannySlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_canny_slice_mean(s : ImagefiltercannySlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltercannySlice::mean(self : ImagefiltercannySlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_canny_slice_scale(s : ImagefiltercannySlice, f : Double) -> ImagefiltercannySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltercannySlice::scale(self : ImagefiltercannySlice, f : Double) -> ImagefiltercannySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_slice_add(a : ImagefiltercannySlice, b : ImagefiltercannySlice) -> ImagefiltercannySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltercannySlice::add(self : ImagefiltercannySlice, other : ImagefiltercannySlice) -> ImagefiltercannySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_canny_slice_copy(s : ImagefiltercannySlice) -> ImagefiltercannySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltercannySlice::copy(self : ImagefiltercannySlice) -> ImagefiltercannySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_slice_fill(s : ImagefiltercannySlice, v : Double) -> ImagefiltercannySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltercannySlice::fill(self : ImagefiltercannySlice, v : Double) -> ImagefiltercannySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_canny_slice_min(s : ImagefiltercannySlice) -> Double { @_common.min(s.data) }
+pub fn ImagefiltercannySlice::min(self : ImagefiltercannySlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_canny_slice_max(s : ImagefiltercannySlice) -> Double { @_common.max(s.data) }
+pub fn ImagefiltercannySlice::max(self : ImagefiltercannySlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_canny_slice_to_string(s : ImagefiltercannySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltercannySlice::to_string(self : ImagefiltercannySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

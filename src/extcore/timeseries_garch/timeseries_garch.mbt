@@ -351,45 +351,45 @@ pub fn timeseries_garch_frame_make(size : Int) -> TimeseriesgarchFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_frame_len(s : TimeseriesgarchFrame) -> Int { s.size }
+pub fn TimeseriesgarchFrame::len(self : TimeseriesgarchFrame) -> Int { self.size }
 
-pub fn timeseries_garch_frame_get(s : TimeseriesgarchFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchFrame::get(self : TimeseriesgarchFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_frame_set(s : TimeseriesgarchFrame, i : Int, v : Double) -> TimeseriesgarchFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchFrame::set(self : TimeseriesgarchFrame, i : Int, v : Double) -> TimeseriesgarchFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_frame_sum(s : TimeseriesgarchFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchFrame::sum(self : TimeseriesgarchFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_frame_mean(s : TimeseriesgarchFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchFrame::mean(self : TimeseriesgarchFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_frame_scale(s : TimeseriesgarchFrame, f : Double) -> TimeseriesgarchFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchFrame::scale(self : TimeseriesgarchFrame, f : Double) -> TimeseriesgarchFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_frame_add(a : TimeseriesgarchFrame, b : TimeseriesgarchFrame) -> TimeseriesgarchFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchFrame::add(self : TimeseriesgarchFrame, other : TimeseriesgarchFrame) -> TimeseriesgarchFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_frame_copy(s : TimeseriesgarchFrame) -> TimeseriesgarchFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchFrame::copy(self : TimeseriesgarchFrame) -> TimeseriesgarchFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_frame_fill(s : TimeseriesgarchFrame, v : Double) -> TimeseriesgarchFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchFrame::fill(self : TimeseriesgarchFrame, v : Double) -> TimeseriesgarchFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_frame_min(s : TimeseriesgarchFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchFrame::min(self : TimeseriesgarchFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_frame_max(s : TimeseriesgarchFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchFrame::max(self : TimeseriesgarchFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_frame_to_string(s : TimeseriesgarchFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchFrame::to_string(self : TimeseriesgarchFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchTable {
@@ -402,45 +402,45 @@ pub fn timeseries_garch_table_make(size : Int) -> TimeseriesgarchTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_table_len(s : TimeseriesgarchTable) -> Int { s.size }
+pub fn TimeseriesgarchTable::len(self : TimeseriesgarchTable) -> Int { self.size }
 
-pub fn timeseries_garch_table_get(s : TimeseriesgarchTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchTable::get(self : TimeseriesgarchTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_table_set(s : TimeseriesgarchTable, i : Int, v : Double) -> TimeseriesgarchTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchTable::set(self : TimeseriesgarchTable, i : Int, v : Double) -> TimeseriesgarchTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_table_sum(s : TimeseriesgarchTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchTable::sum(self : TimeseriesgarchTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_table_mean(s : TimeseriesgarchTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchTable::mean(self : TimeseriesgarchTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_table_scale(s : TimeseriesgarchTable, f : Double) -> TimeseriesgarchTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchTable::scale(self : TimeseriesgarchTable, f : Double) -> TimeseriesgarchTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_table_add(a : TimeseriesgarchTable, b : TimeseriesgarchTable) -> TimeseriesgarchTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchTable::add(self : TimeseriesgarchTable, other : TimeseriesgarchTable) -> TimeseriesgarchTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_table_copy(s : TimeseriesgarchTable) -> TimeseriesgarchTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchTable::copy(self : TimeseriesgarchTable) -> TimeseriesgarchTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_table_fill(s : TimeseriesgarchTable, v : Double) -> TimeseriesgarchTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchTable::fill(self : TimeseriesgarchTable, v : Double) -> TimeseriesgarchTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_table_min(s : TimeseriesgarchTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchTable::min(self : TimeseriesgarchTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_table_max(s : TimeseriesgarchTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchTable::max(self : TimeseriesgarchTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_table_to_string(s : TimeseriesgarchTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchTable::to_string(self : TimeseriesgarchTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_garch_graphn_make(size : Int) -> TimeseriesgarchGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_graphn_len(s : TimeseriesgarchGraphN) -> Int { s.size }
+pub fn TimeseriesgarchGraphN::len(self : TimeseriesgarchGraphN) -> Int { self.size }
 
-pub fn timeseries_garch_graphn_get(s : TimeseriesgarchGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchGraphN::get(self : TimeseriesgarchGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_graphn_set(s : TimeseriesgarchGraphN, i : Int, v : Double) -> TimeseriesgarchGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchGraphN::set(self : TimeseriesgarchGraphN, i : Int, v : Double) -> TimeseriesgarchGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_graphn_sum(s : TimeseriesgarchGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchGraphN::sum(self : TimeseriesgarchGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_graphn_mean(s : TimeseriesgarchGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchGraphN::mean(self : TimeseriesgarchGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_graphn_scale(s : TimeseriesgarchGraphN, f : Double) -> TimeseriesgarchGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchGraphN::scale(self : TimeseriesgarchGraphN, f : Double) -> TimeseriesgarchGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_graphn_add(a : TimeseriesgarchGraphN, b : TimeseriesgarchGraphN) -> TimeseriesgarchGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchGraphN::add(self : TimeseriesgarchGraphN, other : TimeseriesgarchGraphN) -> TimeseriesgarchGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_graphn_copy(s : TimeseriesgarchGraphN) -> TimeseriesgarchGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchGraphN::copy(self : TimeseriesgarchGraphN) -> TimeseriesgarchGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_graphn_fill(s : TimeseriesgarchGraphN, v : Double) -> TimeseriesgarchGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchGraphN::fill(self : TimeseriesgarchGraphN, v : Double) -> TimeseriesgarchGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_graphn_min(s : TimeseriesgarchGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchGraphN::min(self : TimeseriesgarchGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_graphn_max(s : TimeseriesgarchGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchGraphN::max(self : TimeseriesgarchGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_graphn_to_string(s : TimeseriesgarchGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchGraphN::to_string(self : TimeseriesgarchGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchNode {
@@ -504,45 +504,45 @@ pub fn timeseries_garch_node_make(size : Int) -> TimeseriesgarchNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_node_len(s : TimeseriesgarchNode) -> Int { s.size }
+pub fn TimeseriesgarchNode::len(self : TimeseriesgarchNode) -> Int { self.size }
 
-pub fn timeseries_garch_node_get(s : TimeseriesgarchNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchNode::get(self : TimeseriesgarchNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_node_set(s : TimeseriesgarchNode, i : Int, v : Double) -> TimeseriesgarchNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchNode::set(self : TimeseriesgarchNode, i : Int, v : Double) -> TimeseriesgarchNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_node_sum(s : TimeseriesgarchNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchNode::sum(self : TimeseriesgarchNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_node_mean(s : TimeseriesgarchNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchNode::mean(self : TimeseriesgarchNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_node_scale(s : TimeseriesgarchNode, f : Double) -> TimeseriesgarchNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchNode::scale(self : TimeseriesgarchNode, f : Double) -> TimeseriesgarchNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_node_add(a : TimeseriesgarchNode, b : TimeseriesgarchNode) -> TimeseriesgarchNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchNode::add(self : TimeseriesgarchNode, other : TimeseriesgarchNode) -> TimeseriesgarchNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_node_copy(s : TimeseriesgarchNode) -> TimeseriesgarchNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchNode::copy(self : TimeseriesgarchNode) -> TimeseriesgarchNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_node_fill(s : TimeseriesgarchNode, v : Double) -> TimeseriesgarchNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchNode::fill(self : TimeseriesgarchNode, v : Double) -> TimeseriesgarchNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_node_min(s : TimeseriesgarchNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchNode::min(self : TimeseriesgarchNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_node_max(s : TimeseriesgarchNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchNode::max(self : TimeseriesgarchNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_node_to_string(s : TimeseriesgarchNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchNode::to_string(self : TimeseriesgarchNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_garch_edge_make(size : Int) -> TimeseriesgarchEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_edge_len(s : TimeseriesgarchEdge) -> Int { s.size }
+pub fn TimeseriesgarchEdge::len(self : TimeseriesgarchEdge) -> Int { self.size }
 
-pub fn timeseries_garch_edge_get(s : TimeseriesgarchEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchEdge::get(self : TimeseriesgarchEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_edge_set(s : TimeseriesgarchEdge, i : Int, v : Double) -> TimeseriesgarchEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchEdge::set(self : TimeseriesgarchEdge, i : Int, v : Double) -> TimeseriesgarchEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_edge_sum(s : TimeseriesgarchEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchEdge::sum(self : TimeseriesgarchEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_edge_mean(s : TimeseriesgarchEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchEdge::mean(self : TimeseriesgarchEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_edge_scale(s : TimeseriesgarchEdge, f : Double) -> TimeseriesgarchEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchEdge::scale(self : TimeseriesgarchEdge, f : Double) -> TimeseriesgarchEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_edge_add(a : TimeseriesgarchEdge, b : TimeseriesgarchEdge) -> TimeseriesgarchEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchEdge::add(self : TimeseriesgarchEdge, other : TimeseriesgarchEdge) -> TimeseriesgarchEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_edge_copy(s : TimeseriesgarchEdge) -> TimeseriesgarchEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchEdge::copy(self : TimeseriesgarchEdge) -> TimeseriesgarchEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_edge_fill(s : TimeseriesgarchEdge, v : Double) -> TimeseriesgarchEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchEdge::fill(self : TimeseriesgarchEdge, v : Double) -> TimeseriesgarchEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_edge_min(s : TimeseriesgarchEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchEdge::min(self : TimeseriesgarchEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_edge_max(s : TimeseriesgarchEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchEdge::max(self : TimeseriesgarchEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_edge_to_string(s : TimeseriesgarchEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchEdge::to_string(self : TimeseriesgarchEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchPath {
@@ -606,45 +606,45 @@ pub fn timeseries_garch_path_make(size : Int) -> TimeseriesgarchPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_path_len(s : TimeseriesgarchPath) -> Int { s.size }
+pub fn TimeseriesgarchPath::len(self : TimeseriesgarchPath) -> Int { self.size }
 
-pub fn timeseries_garch_path_get(s : TimeseriesgarchPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchPath::get(self : TimeseriesgarchPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_path_set(s : TimeseriesgarchPath, i : Int, v : Double) -> TimeseriesgarchPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchPath::set(self : TimeseriesgarchPath, i : Int, v : Double) -> TimeseriesgarchPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_path_sum(s : TimeseriesgarchPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchPath::sum(self : TimeseriesgarchPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_path_mean(s : TimeseriesgarchPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchPath::mean(self : TimeseriesgarchPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_path_scale(s : TimeseriesgarchPath, f : Double) -> TimeseriesgarchPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchPath::scale(self : TimeseriesgarchPath, f : Double) -> TimeseriesgarchPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_path_add(a : TimeseriesgarchPath, b : TimeseriesgarchPath) -> TimeseriesgarchPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchPath::add(self : TimeseriesgarchPath, other : TimeseriesgarchPath) -> TimeseriesgarchPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_path_copy(s : TimeseriesgarchPath) -> TimeseriesgarchPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchPath::copy(self : TimeseriesgarchPath) -> TimeseriesgarchPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_path_fill(s : TimeseriesgarchPath, v : Double) -> TimeseriesgarchPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchPath::fill(self : TimeseriesgarchPath, v : Double) -> TimeseriesgarchPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_path_min(s : TimeseriesgarchPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchPath::min(self : TimeseriesgarchPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_path_max(s : TimeseriesgarchPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchPath::max(self : TimeseriesgarchPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_path_to_string(s : TimeseriesgarchPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchPath::to_string(self : TimeseriesgarchPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_garch_cluster_make(size : Int) -> TimeseriesgarchCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_cluster_len(s : TimeseriesgarchCluster) -> Int { s.size }
+pub fn TimeseriesgarchCluster::len(self : TimeseriesgarchCluster) -> Int { self.size }
 
-pub fn timeseries_garch_cluster_get(s : TimeseriesgarchCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchCluster::get(self : TimeseriesgarchCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_cluster_set(s : TimeseriesgarchCluster, i : Int, v : Double) -> TimeseriesgarchCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCluster::set(self : TimeseriesgarchCluster, i : Int, v : Double) -> TimeseriesgarchCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cluster_sum(s : TimeseriesgarchCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchCluster::sum(self : TimeseriesgarchCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_cluster_mean(s : TimeseriesgarchCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchCluster::mean(self : TimeseriesgarchCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_cluster_scale(s : TimeseriesgarchCluster, f : Double) -> TimeseriesgarchCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCluster::scale(self : TimeseriesgarchCluster, f : Double) -> TimeseriesgarchCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cluster_add(a : TimeseriesgarchCluster, b : TimeseriesgarchCluster) -> TimeseriesgarchCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchCluster::add(self : TimeseriesgarchCluster, other : TimeseriesgarchCluster) -> TimeseriesgarchCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_cluster_copy(s : TimeseriesgarchCluster) -> TimeseriesgarchCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCluster::copy(self : TimeseriesgarchCluster) -> TimeseriesgarchCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cluster_fill(s : TimeseriesgarchCluster, v : Double) -> TimeseriesgarchCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCluster::fill(self : TimeseriesgarchCluster, v : Double) -> TimeseriesgarchCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cluster_min(s : TimeseriesgarchCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchCluster::min(self : TimeseriesgarchCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_cluster_max(s : TimeseriesgarchCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchCluster::max(self : TimeseriesgarchCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_cluster_to_string(s : TimeseriesgarchCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchCluster::to_string(self : TimeseriesgarchCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchModel {
@@ -708,45 +708,45 @@ pub fn timeseries_garch_model_make(size : Int) -> TimeseriesgarchModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_model_len(s : TimeseriesgarchModel) -> Int { s.size }
+pub fn TimeseriesgarchModel::len(self : TimeseriesgarchModel) -> Int { self.size }
 
-pub fn timeseries_garch_model_get(s : TimeseriesgarchModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchModel::get(self : TimeseriesgarchModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_model_set(s : TimeseriesgarchModel, i : Int, v : Double) -> TimeseriesgarchModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchModel::set(self : TimeseriesgarchModel, i : Int, v : Double) -> TimeseriesgarchModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_model_sum(s : TimeseriesgarchModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchModel::sum(self : TimeseriesgarchModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_model_mean(s : TimeseriesgarchModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchModel::mean(self : TimeseriesgarchModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_model_scale(s : TimeseriesgarchModel, f : Double) -> TimeseriesgarchModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchModel::scale(self : TimeseriesgarchModel, f : Double) -> TimeseriesgarchModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_model_add(a : TimeseriesgarchModel, b : TimeseriesgarchModel) -> TimeseriesgarchModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchModel::add(self : TimeseriesgarchModel, other : TimeseriesgarchModel) -> TimeseriesgarchModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_model_copy(s : TimeseriesgarchModel) -> TimeseriesgarchModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchModel::copy(self : TimeseriesgarchModel) -> TimeseriesgarchModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_model_fill(s : TimeseriesgarchModel, v : Double) -> TimeseriesgarchModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchModel::fill(self : TimeseriesgarchModel, v : Double) -> TimeseriesgarchModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_model_min(s : TimeseriesgarchModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchModel::min(self : TimeseriesgarchModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_model_max(s : TimeseriesgarchModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchModel::max(self : TimeseriesgarchModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_model_to_string(s : TimeseriesgarchModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchModel::to_string(self : TimeseriesgarchModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_garch_layer_make(size : Int) -> TimeseriesgarchLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_layer_len(s : TimeseriesgarchLayer) -> Int { s.size }
+pub fn TimeseriesgarchLayer::len(self : TimeseriesgarchLayer) -> Int { self.size }
 
-pub fn timeseries_garch_layer_get(s : TimeseriesgarchLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchLayer::get(self : TimeseriesgarchLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_layer_set(s : TimeseriesgarchLayer, i : Int, v : Double) -> TimeseriesgarchLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchLayer::set(self : TimeseriesgarchLayer, i : Int, v : Double) -> TimeseriesgarchLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_layer_sum(s : TimeseriesgarchLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchLayer::sum(self : TimeseriesgarchLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_layer_mean(s : TimeseriesgarchLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchLayer::mean(self : TimeseriesgarchLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_layer_scale(s : TimeseriesgarchLayer, f : Double) -> TimeseriesgarchLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchLayer::scale(self : TimeseriesgarchLayer, f : Double) -> TimeseriesgarchLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_layer_add(a : TimeseriesgarchLayer, b : TimeseriesgarchLayer) -> TimeseriesgarchLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchLayer::add(self : TimeseriesgarchLayer, other : TimeseriesgarchLayer) -> TimeseriesgarchLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_layer_copy(s : TimeseriesgarchLayer) -> TimeseriesgarchLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchLayer::copy(self : TimeseriesgarchLayer) -> TimeseriesgarchLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_layer_fill(s : TimeseriesgarchLayer, v : Double) -> TimeseriesgarchLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchLayer::fill(self : TimeseriesgarchLayer, v : Double) -> TimeseriesgarchLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_layer_min(s : TimeseriesgarchLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchLayer::min(self : TimeseriesgarchLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_layer_max(s : TimeseriesgarchLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchLayer::max(self : TimeseriesgarchLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_layer_to_string(s : TimeseriesgarchLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchLayer::to_string(self : TimeseriesgarchLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_garch_buffer_make(size : Int) -> TimeseriesgarchBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_buffer_len(s : TimeseriesgarchBuffer) -> Int { s.size }
+pub fn TimeseriesgarchBuffer::len(self : TimeseriesgarchBuffer) -> Int { self.size }
 
-pub fn timeseries_garch_buffer_get(s : TimeseriesgarchBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchBuffer::get(self : TimeseriesgarchBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_buffer_set(s : TimeseriesgarchBuffer, i : Int, v : Double) -> TimeseriesgarchBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchBuffer::set(self : TimeseriesgarchBuffer, i : Int, v : Double) -> TimeseriesgarchBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_buffer_sum(s : TimeseriesgarchBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchBuffer::sum(self : TimeseriesgarchBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_buffer_mean(s : TimeseriesgarchBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchBuffer::mean(self : TimeseriesgarchBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_buffer_scale(s : TimeseriesgarchBuffer, f : Double) -> TimeseriesgarchBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchBuffer::scale(self : TimeseriesgarchBuffer, f : Double) -> TimeseriesgarchBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_buffer_add(a : TimeseriesgarchBuffer, b : TimeseriesgarchBuffer) -> TimeseriesgarchBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchBuffer::add(self : TimeseriesgarchBuffer, other : TimeseriesgarchBuffer) -> TimeseriesgarchBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_buffer_copy(s : TimeseriesgarchBuffer) -> TimeseriesgarchBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchBuffer::copy(self : TimeseriesgarchBuffer) -> TimeseriesgarchBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_buffer_fill(s : TimeseriesgarchBuffer, v : Double) -> TimeseriesgarchBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchBuffer::fill(self : TimeseriesgarchBuffer, v : Double) -> TimeseriesgarchBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_buffer_min(s : TimeseriesgarchBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchBuffer::min(self : TimeseriesgarchBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_buffer_max(s : TimeseriesgarchBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchBuffer::max(self : TimeseriesgarchBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_buffer_to_string(s : TimeseriesgarchBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchBuffer::to_string(self : TimeseriesgarchBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_garch_cursor_make(size : Int) -> TimeseriesgarchCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_cursor_len(s : TimeseriesgarchCursor) -> Int { s.size }
+pub fn TimeseriesgarchCursor::len(self : TimeseriesgarchCursor) -> Int { self.size }
 
-pub fn timeseries_garch_cursor_get(s : TimeseriesgarchCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchCursor::get(self : TimeseriesgarchCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_cursor_set(s : TimeseriesgarchCursor, i : Int, v : Double) -> TimeseriesgarchCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCursor::set(self : TimeseriesgarchCursor, i : Int, v : Double) -> TimeseriesgarchCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cursor_sum(s : TimeseriesgarchCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchCursor::sum(self : TimeseriesgarchCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_cursor_mean(s : TimeseriesgarchCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchCursor::mean(self : TimeseriesgarchCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_cursor_scale(s : TimeseriesgarchCursor, f : Double) -> TimeseriesgarchCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCursor::scale(self : TimeseriesgarchCursor, f : Double) -> TimeseriesgarchCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cursor_add(a : TimeseriesgarchCursor, b : TimeseriesgarchCursor) -> TimeseriesgarchCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchCursor::add(self : TimeseriesgarchCursor, other : TimeseriesgarchCursor) -> TimeseriesgarchCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_cursor_copy(s : TimeseriesgarchCursor) -> TimeseriesgarchCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCursor::copy(self : TimeseriesgarchCursor) -> TimeseriesgarchCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cursor_fill(s : TimeseriesgarchCursor, v : Double) -> TimeseriesgarchCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchCursor::fill(self : TimeseriesgarchCursor, v : Double) -> TimeseriesgarchCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_cursor_min(s : TimeseriesgarchCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchCursor::min(self : TimeseriesgarchCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_cursor_max(s : TimeseriesgarchCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchCursor::max(self : TimeseriesgarchCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_cursor_to_string(s : TimeseriesgarchCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchCursor::to_string(self : TimeseriesgarchCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchView {
@@ -912,45 +912,45 @@ pub fn timeseries_garch_view_make(size : Int) -> TimeseriesgarchView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_view_len(s : TimeseriesgarchView) -> Int { s.size }
+pub fn TimeseriesgarchView::len(self : TimeseriesgarchView) -> Int { self.size }
 
-pub fn timeseries_garch_view_get(s : TimeseriesgarchView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchView::get(self : TimeseriesgarchView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_view_set(s : TimeseriesgarchView, i : Int, v : Double) -> TimeseriesgarchView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchView::set(self : TimeseriesgarchView, i : Int, v : Double) -> TimeseriesgarchView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_view_sum(s : TimeseriesgarchView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchView::sum(self : TimeseriesgarchView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_view_mean(s : TimeseriesgarchView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchView::mean(self : TimeseriesgarchView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_view_scale(s : TimeseriesgarchView, f : Double) -> TimeseriesgarchView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchView::scale(self : TimeseriesgarchView, f : Double) -> TimeseriesgarchView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_view_add(a : TimeseriesgarchView, b : TimeseriesgarchView) -> TimeseriesgarchView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchView::add(self : TimeseriesgarchView, other : TimeseriesgarchView) -> TimeseriesgarchView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_view_copy(s : TimeseriesgarchView) -> TimeseriesgarchView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchView::copy(self : TimeseriesgarchView) -> TimeseriesgarchView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_view_fill(s : TimeseriesgarchView, v : Double) -> TimeseriesgarchView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchView::fill(self : TimeseriesgarchView, v : Double) -> TimeseriesgarchView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_view_min(s : TimeseriesgarchView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchView::min(self : TimeseriesgarchView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_view_max(s : TimeseriesgarchView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchView::max(self : TimeseriesgarchView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_view_to_string(s : TimeseriesgarchView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchView::to_string(self : TimeseriesgarchView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchRange {
@@ -963,45 +963,45 @@ pub fn timeseries_garch_range_make(size : Int) -> TimeseriesgarchRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_range_len(s : TimeseriesgarchRange) -> Int { s.size }
+pub fn TimeseriesgarchRange::len(self : TimeseriesgarchRange) -> Int { self.size }
 
-pub fn timeseries_garch_range_get(s : TimeseriesgarchRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchRange::get(self : TimeseriesgarchRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_range_set(s : TimeseriesgarchRange, i : Int, v : Double) -> TimeseriesgarchRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchRange::set(self : TimeseriesgarchRange, i : Int, v : Double) -> TimeseriesgarchRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_range_sum(s : TimeseriesgarchRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchRange::sum(self : TimeseriesgarchRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_range_mean(s : TimeseriesgarchRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchRange::mean(self : TimeseriesgarchRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_range_scale(s : TimeseriesgarchRange, f : Double) -> TimeseriesgarchRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchRange::scale(self : TimeseriesgarchRange, f : Double) -> TimeseriesgarchRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_range_add(a : TimeseriesgarchRange, b : TimeseriesgarchRange) -> TimeseriesgarchRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchRange::add(self : TimeseriesgarchRange, other : TimeseriesgarchRange) -> TimeseriesgarchRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_range_copy(s : TimeseriesgarchRange) -> TimeseriesgarchRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchRange::copy(self : TimeseriesgarchRange) -> TimeseriesgarchRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_range_fill(s : TimeseriesgarchRange, v : Double) -> TimeseriesgarchRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchRange::fill(self : TimeseriesgarchRange, v : Double) -> TimeseriesgarchRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_range_min(s : TimeseriesgarchRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchRange::min(self : TimeseriesgarchRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_range_max(s : TimeseriesgarchRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchRange::max(self : TimeseriesgarchRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_range_to_string(s : TimeseriesgarchRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchRange::to_string(self : TimeseriesgarchRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesgarchSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_garch_slice_make(size : Int) -> TimeseriesgarchSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_garch_slice_len(s : TimeseriesgarchSlice) -> Int { s.size }
+pub fn TimeseriesgarchSlice::len(self : TimeseriesgarchSlice) -> Int { self.size }
 
-pub fn timeseries_garch_slice_get(s : TimeseriesgarchSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesgarchSlice::get(self : TimeseriesgarchSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_garch_slice_set(s : TimeseriesgarchSlice, i : Int, v : Double) -> TimeseriesgarchSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesgarchSlice::set(self : TimeseriesgarchSlice, i : Int, v : Double) -> TimeseriesgarchSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_slice_sum(s : TimeseriesgarchSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesgarchSlice::sum(self : TimeseriesgarchSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_garch_slice_mean(s : TimeseriesgarchSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesgarchSlice::mean(self : TimeseriesgarchSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_garch_slice_scale(s : TimeseriesgarchSlice, f : Double) -> TimeseriesgarchSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchSlice::scale(self : TimeseriesgarchSlice, f : Double) -> TimeseriesgarchSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_slice_add(a : TimeseriesgarchSlice, b : TimeseriesgarchSlice) -> TimeseriesgarchSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesgarchSlice::add(self : TimeseriesgarchSlice, other : TimeseriesgarchSlice) -> TimeseriesgarchSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_garch_slice_copy(s : TimeseriesgarchSlice) -> TimeseriesgarchSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchSlice::copy(self : TimeseriesgarchSlice) -> TimeseriesgarchSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_slice_fill(s : TimeseriesgarchSlice, v : Double) -> TimeseriesgarchSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesgarchSlice::fill(self : TimeseriesgarchSlice, v : Double) -> TimeseriesgarchSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_garch_slice_min(s : TimeseriesgarchSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesgarchSlice::min(self : TimeseriesgarchSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_garch_slice_max(s : TimeseriesgarchSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesgarchSlice::max(self : TimeseriesgarchSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_garch_slice_to_string(s : TimeseriesgarchSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesgarchSlice::to_string(self : TimeseriesgarchSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

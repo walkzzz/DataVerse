@@ -351,45 +351,45 @@ pub fn signal_transform_chirp_frame_make(size : Int) -> SignaltransformchirpFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_frame_len(s : SignaltransformchirpFrame) -> Int { s.size }
+pub fn SignaltransformchirpFrame::len(self : SignaltransformchirpFrame) -> Int { self.size }
 
-pub fn signal_transform_chirp_frame_get(s : SignaltransformchirpFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpFrame::get(self : SignaltransformchirpFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_frame_set(s : SignaltransformchirpFrame, i : Int, v : Double) -> SignaltransformchirpFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpFrame::set(self : SignaltransformchirpFrame, i : Int, v : Double) -> SignaltransformchirpFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_frame_sum(s : SignaltransformchirpFrame) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpFrame::sum(self : SignaltransformchirpFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_frame_mean(s : SignaltransformchirpFrame) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpFrame::mean(self : SignaltransformchirpFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_frame_scale(s : SignaltransformchirpFrame, f : Double) -> SignaltransformchirpFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpFrame::scale(self : SignaltransformchirpFrame, f : Double) -> SignaltransformchirpFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_frame_add(a : SignaltransformchirpFrame, b : SignaltransformchirpFrame) -> SignaltransformchirpFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpFrame::add(self : SignaltransformchirpFrame, other : SignaltransformchirpFrame) -> SignaltransformchirpFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_frame_copy(s : SignaltransformchirpFrame) -> SignaltransformchirpFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpFrame::copy(self : SignaltransformchirpFrame) -> SignaltransformchirpFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_frame_fill(s : SignaltransformchirpFrame, v : Double) -> SignaltransformchirpFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpFrame::fill(self : SignaltransformchirpFrame, v : Double) -> SignaltransformchirpFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_frame_min(s : SignaltransformchirpFrame) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpFrame::min(self : SignaltransformchirpFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_frame_max(s : SignaltransformchirpFrame) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpFrame::max(self : SignaltransformchirpFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_frame_to_string(s : SignaltransformchirpFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpFrame::to_string(self : SignaltransformchirpFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpTable {
@@ -402,45 +402,45 @@ pub fn signal_transform_chirp_table_make(size : Int) -> SignaltransformchirpTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_table_len(s : SignaltransformchirpTable) -> Int { s.size }
+pub fn SignaltransformchirpTable::len(self : SignaltransformchirpTable) -> Int { self.size }
 
-pub fn signal_transform_chirp_table_get(s : SignaltransformchirpTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpTable::get(self : SignaltransformchirpTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_table_set(s : SignaltransformchirpTable, i : Int, v : Double) -> SignaltransformchirpTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpTable::set(self : SignaltransformchirpTable, i : Int, v : Double) -> SignaltransformchirpTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_table_sum(s : SignaltransformchirpTable) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpTable::sum(self : SignaltransformchirpTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_table_mean(s : SignaltransformchirpTable) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpTable::mean(self : SignaltransformchirpTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_table_scale(s : SignaltransformchirpTable, f : Double) -> SignaltransformchirpTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpTable::scale(self : SignaltransformchirpTable, f : Double) -> SignaltransformchirpTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_table_add(a : SignaltransformchirpTable, b : SignaltransformchirpTable) -> SignaltransformchirpTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpTable::add(self : SignaltransformchirpTable, other : SignaltransformchirpTable) -> SignaltransformchirpTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_table_copy(s : SignaltransformchirpTable) -> SignaltransformchirpTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpTable::copy(self : SignaltransformchirpTable) -> SignaltransformchirpTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_table_fill(s : SignaltransformchirpTable, v : Double) -> SignaltransformchirpTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpTable::fill(self : SignaltransformchirpTable, v : Double) -> SignaltransformchirpTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_table_min(s : SignaltransformchirpTable) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpTable::min(self : SignaltransformchirpTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_table_max(s : SignaltransformchirpTable) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpTable::max(self : SignaltransformchirpTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_table_to_string(s : SignaltransformchirpTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpTable::to_string(self : SignaltransformchirpTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpGraphN {
@@ -453,45 +453,45 @@ pub fn signal_transform_chirp_graphn_make(size : Int) -> SignaltransformchirpGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_graphn_len(s : SignaltransformchirpGraphN) -> Int { s.size }
+pub fn SignaltransformchirpGraphN::len(self : SignaltransformchirpGraphN) -> Int { self.size }
 
-pub fn signal_transform_chirp_graphn_get(s : SignaltransformchirpGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpGraphN::get(self : SignaltransformchirpGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_graphn_set(s : SignaltransformchirpGraphN, i : Int, v : Double) -> SignaltransformchirpGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpGraphN::set(self : SignaltransformchirpGraphN, i : Int, v : Double) -> SignaltransformchirpGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_graphn_sum(s : SignaltransformchirpGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpGraphN::sum(self : SignaltransformchirpGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_graphn_mean(s : SignaltransformchirpGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpGraphN::mean(self : SignaltransformchirpGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_graphn_scale(s : SignaltransformchirpGraphN, f : Double) -> SignaltransformchirpGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpGraphN::scale(self : SignaltransformchirpGraphN, f : Double) -> SignaltransformchirpGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_graphn_add(a : SignaltransformchirpGraphN, b : SignaltransformchirpGraphN) -> SignaltransformchirpGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpGraphN::add(self : SignaltransformchirpGraphN, other : SignaltransformchirpGraphN) -> SignaltransformchirpGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_graphn_copy(s : SignaltransformchirpGraphN) -> SignaltransformchirpGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpGraphN::copy(self : SignaltransformchirpGraphN) -> SignaltransformchirpGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_graphn_fill(s : SignaltransformchirpGraphN, v : Double) -> SignaltransformchirpGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpGraphN::fill(self : SignaltransformchirpGraphN, v : Double) -> SignaltransformchirpGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_graphn_min(s : SignaltransformchirpGraphN) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpGraphN::min(self : SignaltransformchirpGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_graphn_max(s : SignaltransformchirpGraphN) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpGraphN::max(self : SignaltransformchirpGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_graphn_to_string(s : SignaltransformchirpGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpGraphN::to_string(self : SignaltransformchirpGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpNode {
@@ -504,45 +504,45 @@ pub fn signal_transform_chirp_node_make(size : Int) -> SignaltransformchirpNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_node_len(s : SignaltransformchirpNode) -> Int { s.size }
+pub fn SignaltransformchirpNode::len(self : SignaltransformchirpNode) -> Int { self.size }
 
-pub fn signal_transform_chirp_node_get(s : SignaltransformchirpNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpNode::get(self : SignaltransformchirpNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_node_set(s : SignaltransformchirpNode, i : Int, v : Double) -> SignaltransformchirpNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpNode::set(self : SignaltransformchirpNode, i : Int, v : Double) -> SignaltransformchirpNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_node_sum(s : SignaltransformchirpNode) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpNode::sum(self : SignaltransformchirpNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_node_mean(s : SignaltransformchirpNode) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpNode::mean(self : SignaltransformchirpNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_node_scale(s : SignaltransformchirpNode, f : Double) -> SignaltransformchirpNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpNode::scale(self : SignaltransformchirpNode, f : Double) -> SignaltransformchirpNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_node_add(a : SignaltransformchirpNode, b : SignaltransformchirpNode) -> SignaltransformchirpNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpNode::add(self : SignaltransformchirpNode, other : SignaltransformchirpNode) -> SignaltransformchirpNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_node_copy(s : SignaltransformchirpNode) -> SignaltransformchirpNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpNode::copy(self : SignaltransformchirpNode) -> SignaltransformchirpNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_node_fill(s : SignaltransformchirpNode, v : Double) -> SignaltransformchirpNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpNode::fill(self : SignaltransformchirpNode, v : Double) -> SignaltransformchirpNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_node_min(s : SignaltransformchirpNode) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpNode::min(self : SignaltransformchirpNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_node_max(s : SignaltransformchirpNode) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpNode::max(self : SignaltransformchirpNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_node_to_string(s : SignaltransformchirpNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpNode::to_string(self : SignaltransformchirpNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpEdge {
@@ -555,45 +555,45 @@ pub fn signal_transform_chirp_edge_make(size : Int) -> SignaltransformchirpEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_edge_len(s : SignaltransformchirpEdge) -> Int { s.size }
+pub fn SignaltransformchirpEdge::len(self : SignaltransformchirpEdge) -> Int { self.size }
 
-pub fn signal_transform_chirp_edge_get(s : SignaltransformchirpEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpEdge::get(self : SignaltransformchirpEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_edge_set(s : SignaltransformchirpEdge, i : Int, v : Double) -> SignaltransformchirpEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpEdge::set(self : SignaltransformchirpEdge, i : Int, v : Double) -> SignaltransformchirpEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_edge_sum(s : SignaltransformchirpEdge) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpEdge::sum(self : SignaltransformchirpEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_edge_mean(s : SignaltransformchirpEdge) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpEdge::mean(self : SignaltransformchirpEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_edge_scale(s : SignaltransformchirpEdge, f : Double) -> SignaltransformchirpEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpEdge::scale(self : SignaltransformchirpEdge, f : Double) -> SignaltransformchirpEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_edge_add(a : SignaltransformchirpEdge, b : SignaltransformchirpEdge) -> SignaltransformchirpEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpEdge::add(self : SignaltransformchirpEdge, other : SignaltransformchirpEdge) -> SignaltransformchirpEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_edge_copy(s : SignaltransformchirpEdge) -> SignaltransformchirpEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpEdge::copy(self : SignaltransformchirpEdge) -> SignaltransformchirpEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_edge_fill(s : SignaltransformchirpEdge, v : Double) -> SignaltransformchirpEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpEdge::fill(self : SignaltransformchirpEdge, v : Double) -> SignaltransformchirpEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_edge_min(s : SignaltransformchirpEdge) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpEdge::min(self : SignaltransformchirpEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_edge_max(s : SignaltransformchirpEdge) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpEdge::max(self : SignaltransformchirpEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_edge_to_string(s : SignaltransformchirpEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpEdge::to_string(self : SignaltransformchirpEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpPath {
@@ -606,45 +606,45 @@ pub fn signal_transform_chirp_path_make(size : Int) -> SignaltransformchirpPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_path_len(s : SignaltransformchirpPath) -> Int { s.size }
+pub fn SignaltransformchirpPath::len(self : SignaltransformchirpPath) -> Int { self.size }
 
-pub fn signal_transform_chirp_path_get(s : SignaltransformchirpPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpPath::get(self : SignaltransformchirpPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_path_set(s : SignaltransformchirpPath, i : Int, v : Double) -> SignaltransformchirpPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpPath::set(self : SignaltransformchirpPath, i : Int, v : Double) -> SignaltransformchirpPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_path_sum(s : SignaltransformchirpPath) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpPath::sum(self : SignaltransformchirpPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_path_mean(s : SignaltransformchirpPath) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpPath::mean(self : SignaltransformchirpPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_path_scale(s : SignaltransformchirpPath, f : Double) -> SignaltransformchirpPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpPath::scale(self : SignaltransformchirpPath, f : Double) -> SignaltransformchirpPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_path_add(a : SignaltransformchirpPath, b : SignaltransformchirpPath) -> SignaltransformchirpPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpPath::add(self : SignaltransformchirpPath, other : SignaltransformchirpPath) -> SignaltransformchirpPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_path_copy(s : SignaltransformchirpPath) -> SignaltransformchirpPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpPath::copy(self : SignaltransformchirpPath) -> SignaltransformchirpPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_path_fill(s : SignaltransformchirpPath, v : Double) -> SignaltransformchirpPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpPath::fill(self : SignaltransformchirpPath, v : Double) -> SignaltransformchirpPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_path_min(s : SignaltransformchirpPath) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpPath::min(self : SignaltransformchirpPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_path_max(s : SignaltransformchirpPath) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpPath::max(self : SignaltransformchirpPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_path_to_string(s : SignaltransformchirpPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpPath::to_string(self : SignaltransformchirpPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpCluster {
@@ -657,45 +657,45 @@ pub fn signal_transform_chirp_cluster_make(size : Int) -> SignaltransformchirpCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_cluster_len(s : SignaltransformchirpCluster) -> Int { s.size }
+pub fn SignaltransformchirpCluster::len(self : SignaltransformchirpCluster) -> Int { self.size }
 
-pub fn signal_transform_chirp_cluster_get(s : SignaltransformchirpCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpCluster::get(self : SignaltransformchirpCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_cluster_set(s : SignaltransformchirpCluster, i : Int, v : Double) -> SignaltransformchirpCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCluster::set(self : SignaltransformchirpCluster, i : Int, v : Double) -> SignaltransformchirpCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cluster_sum(s : SignaltransformchirpCluster) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpCluster::sum(self : SignaltransformchirpCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_cluster_mean(s : SignaltransformchirpCluster) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpCluster::mean(self : SignaltransformchirpCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_cluster_scale(s : SignaltransformchirpCluster, f : Double) -> SignaltransformchirpCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCluster::scale(self : SignaltransformchirpCluster, f : Double) -> SignaltransformchirpCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cluster_add(a : SignaltransformchirpCluster, b : SignaltransformchirpCluster) -> SignaltransformchirpCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpCluster::add(self : SignaltransformchirpCluster, other : SignaltransformchirpCluster) -> SignaltransformchirpCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cluster_copy(s : SignaltransformchirpCluster) -> SignaltransformchirpCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCluster::copy(self : SignaltransformchirpCluster) -> SignaltransformchirpCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cluster_fill(s : SignaltransformchirpCluster, v : Double) -> SignaltransformchirpCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCluster::fill(self : SignaltransformchirpCluster, v : Double) -> SignaltransformchirpCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cluster_min(s : SignaltransformchirpCluster) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpCluster::min(self : SignaltransformchirpCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_cluster_max(s : SignaltransformchirpCluster) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpCluster::max(self : SignaltransformchirpCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_cluster_to_string(s : SignaltransformchirpCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpCluster::to_string(self : SignaltransformchirpCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpModel {
@@ -708,45 +708,45 @@ pub fn signal_transform_chirp_model_make(size : Int) -> SignaltransformchirpMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_model_len(s : SignaltransformchirpModel) -> Int { s.size }
+pub fn SignaltransformchirpModel::len(self : SignaltransformchirpModel) -> Int { self.size }
 
-pub fn signal_transform_chirp_model_get(s : SignaltransformchirpModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpModel::get(self : SignaltransformchirpModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_model_set(s : SignaltransformchirpModel, i : Int, v : Double) -> SignaltransformchirpModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpModel::set(self : SignaltransformchirpModel, i : Int, v : Double) -> SignaltransformchirpModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_model_sum(s : SignaltransformchirpModel) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpModel::sum(self : SignaltransformchirpModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_model_mean(s : SignaltransformchirpModel) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpModel::mean(self : SignaltransformchirpModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_model_scale(s : SignaltransformchirpModel, f : Double) -> SignaltransformchirpModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpModel::scale(self : SignaltransformchirpModel, f : Double) -> SignaltransformchirpModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_model_add(a : SignaltransformchirpModel, b : SignaltransformchirpModel) -> SignaltransformchirpModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpModel::add(self : SignaltransformchirpModel, other : SignaltransformchirpModel) -> SignaltransformchirpModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_model_copy(s : SignaltransformchirpModel) -> SignaltransformchirpModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpModel::copy(self : SignaltransformchirpModel) -> SignaltransformchirpModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_model_fill(s : SignaltransformchirpModel, v : Double) -> SignaltransformchirpModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpModel::fill(self : SignaltransformchirpModel, v : Double) -> SignaltransformchirpModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_model_min(s : SignaltransformchirpModel) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpModel::min(self : SignaltransformchirpModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_model_max(s : SignaltransformchirpModel) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpModel::max(self : SignaltransformchirpModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_model_to_string(s : SignaltransformchirpModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpModel::to_string(self : SignaltransformchirpModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpLayer {
@@ -759,45 +759,45 @@ pub fn signal_transform_chirp_layer_make(size : Int) -> SignaltransformchirpLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_layer_len(s : SignaltransformchirpLayer) -> Int { s.size }
+pub fn SignaltransformchirpLayer::len(self : SignaltransformchirpLayer) -> Int { self.size }
 
-pub fn signal_transform_chirp_layer_get(s : SignaltransformchirpLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpLayer::get(self : SignaltransformchirpLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_layer_set(s : SignaltransformchirpLayer, i : Int, v : Double) -> SignaltransformchirpLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpLayer::set(self : SignaltransformchirpLayer, i : Int, v : Double) -> SignaltransformchirpLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_layer_sum(s : SignaltransformchirpLayer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpLayer::sum(self : SignaltransformchirpLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_layer_mean(s : SignaltransformchirpLayer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpLayer::mean(self : SignaltransformchirpLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_layer_scale(s : SignaltransformchirpLayer, f : Double) -> SignaltransformchirpLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpLayer::scale(self : SignaltransformchirpLayer, f : Double) -> SignaltransformchirpLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_layer_add(a : SignaltransformchirpLayer, b : SignaltransformchirpLayer) -> SignaltransformchirpLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpLayer::add(self : SignaltransformchirpLayer, other : SignaltransformchirpLayer) -> SignaltransformchirpLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_layer_copy(s : SignaltransformchirpLayer) -> SignaltransformchirpLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpLayer::copy(self : SignaltransformchirpLayer) -> SignaltransformchirpLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_layer_fill(s : SignaltransformchirpLayer, v : Double) -> SignaltransformchirpLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpLayer::fill(self : SignaltransformchirpLayer, v : Double) -> SignaltransformchirpLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_layer_min(s : SignaltransformchirpLayer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpLayer::min(self : SignaltransformchirpLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_layer_max(s : SignaltransformchirpLayer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpLayer::max(self : SignaltransformchirpLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_layer_to_string(s : SignaltransformchirpLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpLayer::to_string(self : SignaltransformchirpLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpBuffer {
@@ -810,45 +810,45 @@ pub fn signal_transform_chirp_buffer_make(size : Int) -> SignaltransformchirpBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_buffer_len(s : SignaltransformchirpBuffer) -> Int { s.size }
+pub fn SignaltransformchirpBuffer::len(self : SignaltransformchirpBuffer) -> Int { self.size }
 
-pub fn signal_transform_chirp_buffer_get(s : SignaltransformchirpBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpBuffer::get(self : SignaltransformchirpBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_buffer_set(s : SignaltransformchirpBuffer, i : Int, v : Double) -> SignaltransformchirpBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpBuffer::set(self : SignaltransformchirpBuffer, i : Int, v : Double) -> SignaltransformchirpBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_buffer_sum(s : SignaltransformchirpBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpBuffer::sum(self : SignaltransformchirpBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_buffer_mean(s : SignaltransformchirpBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpBuffer::mean(self : SignaltransformchirpBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_buffer_scale(s : SignaltransformchirpBuffer, f : Double) -> SignaltransformchirpBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpBuffer::scale(self : SignaltransformchirpBuffer, f : Double) -> SignaltransformchirpBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_buffer_add(a : SignaltransformchirpBuffer, b : SignaltransformchirpBuffer) -> SignaltransformchirpBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpBuffer::add(self : SignaltransformchirpBuffer, other : SignaltransformchirpBuffer) -> SignaltransformchirpBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_buffer_copy(s : SignaltransformchirpBuffer) -> SignaltransformchirpBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpBuffer::copy(self : SignaltransformchirpBuffer) -> SignaltransformchirpBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_buffer_fill(s : SignaltransformchirpBuffer, v : Double) -> SignaltransformchirpBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpBuffer::fill(self : SignaltransformchirpBuffer, v : Double) -> SignaltransformchirpBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_buffer_min(s : SignaltransformchirpBuffer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpBuffer::min(self : SignaltransformchirpBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_buffer_max(s : SignaltransformchirpBuffer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpBuffer::max(self : SignaltransformchirpBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_buffer_to_string(s : SignaltransformchirpBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpBuffer::to_string(self : SignaltransformchirpBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpCursor {
@@ -861,45 +861,45 @@ pub fn signal_transform_chirp_cursor_make(size : Int) -> SignaltransformchirpCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_cursor_len(s : SignaltransformchirpCursor) -> Int { s.size }
+pub fn SignaltransformchirpCursor::len(self : SignaltransformchirpCursor) -> Int { self.size }
 
-pub fn signal_transform_chirp_cursor_get(s : SignaltransformchirpCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpCursor::get(self : SignaltransformchirpCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_cursor_set(s : SignaltransformchirpCursor, i : Int, v : Double) -> SignaltransformchirpCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCursor::set(self : SignaltransformchirpCursor, i : Int, v : Double) -> SignaltransformchirpCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cursor_sum(s : SignaltransformchirpCursor) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpCursor::sum(self : SignaltransformchirpCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_cursor_mean(s : SignaltransformchirpCursor) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpCursor::mean(self : SignaltransformchirpCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_cursor_scale(s : SignaltransformchirpCursor, f : Double) -> SignaltransformchirpCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCursor::scale(self : SignaltransformchirpCursor, f : Double) -> SignaltransformchirpCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cursor_add(a : SignaltransformchirpCursor, b : SignaltransformchirpCursor) -> SignaltransformchirpCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpCursor::add(self : SignaltransformchirpCursor, other : SignaltransformchirpCursor) -> SignaltransformchirpCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cursor_copy(s : SignaltransformchirpCursor) -> SignaltransformchirpCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCursor::copy(self : SignaltransformchirpCursor) -> SignaltransformchirpCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cursor_fill(s : SignaltransformchirpCursor, v : Double) -> SignaltransformchirpCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpCursor::fill(self : SignaltransformchirpCursor, v : Double) -> SignaltransformchirpCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_cursor_min(s : SignaltransformchirpCursor) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpCursor::min(self : SignaltransformchirpCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_cursor_max(s : SignaltransformchirpCursor) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpCursor::max(self : SignaltransformchirpCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_cursor_to_string(s : SignaltransformchirpCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpCursor::to_string(self : SignaltransformchirpCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpView {
@@ -912,45 +912,45 @@ pub fn signal_transform_chirp_view_make(size : Int) -> SignaltransformchirpView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_view_len(s : SignaltransformchirpView) -> Int { s.size }
+pub fn SignaltransformchirpView::len(self : SignaltransformchirpView) -> Int { self.size }
 
-pub fn signal_transform_chirp_view_get(s : SignaltransformchirpView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpView::get(self : SignaltransformchirpView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_view_set(s : SignaltransformchirpView, i : Int, v : Double) -> SignaltransformchirpView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpView::set(self : SignaltransformchirpView, i : Int, v : Double) -> SignaltransformchirpView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_view_sum(s : SignaltransformchirpView) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpView::sum(self : SignaltransformchirpView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_view_mean(s : SignaltransformchirpView) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpView::mean(self : SignaltransformchirpView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_view_scale(s : SignaltransformchirpView, f : Double) -> SignaltransformchirpView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpView::scale(self : SignaltransformchirpView, f : Double) -> SignaltransformchirpView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_view_add(a : SignaltransformchirpView, b : SignaltransformchirpView) -> SignaltransformchirpView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpView::add(self : SignaltransformchirpView, other : SignaltransformchirpView) -> SignaltransformchirpView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_view_copy(s : SignaltransformchirpView) -> SignaltransformchirpView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpView::copy(self : SignaltransformchirpView) -> SignaltransformchirpView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_view_fill(s : SignaltransformchirpView, v : Double) -> SignaltransformchirpView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpView::fill(self : SignaltransformchirpView, v : Double) -> SignaltransformchirpView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_view_min(s : SignaltransformchirpView) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpView::min(self : SignaltransformchirpView) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_view_max(s : SignaltransformchirpView) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpView::max(self : SignaltransformchirpView) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_view_to_string(s : SignaltransformchirpView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpView::to_string(self : SignaltransformchirpView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpRange {
@@ -963,45 +963,45 @@ pub fn signal_transform_chirp_range_make(size : Int) -> SignaltransformchirpRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_range_len(s : SignaltransformchirpRange) -> Int { s.size }
+pub fn SignaltransformchirpRange::len(self : SignaltransformchirpRange) -> Int { self.size }
 
-pub fn signal_transform_chirp_range_get(s : SignaltransformchirpRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpRange::get(self : SignaltransformchirpRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_range_set(s : SignaltransformchirpRange, i : Int, v : Double) -> SignaltransformchirpRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpRange::set(self : SignaltransformchirpRange, i : Int, v : Double) -> SignaltransformchirpRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_range_sum(s : SignaltransformchirpRange) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpRange::sum(self : SignaltransformchirpRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_range_mean(s : SignaltransformchirpRange) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpRange::mean(self : SignaltransformchirpRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_range_scale(s : SignaltransformchirpRange, f : Double) -> SignaltransformchirpRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpRange::scale(self : SignaltransformchirpRange, f : Double) -> SignaltransformchirpRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_range_add(a : SignaltransformchirpRange, b : SignaltransformchirpRange) -> SignaltransformchirpRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpRange::add(self : SignaltransformchirpRange, other : SignaltransformchirpRange) -> SignaltransformchirpRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_range_copy(s : SignaltransformchirpRange) -> SignaltransformchirpRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpRange::copy(self : SignaltransformchirpRange) -> SignaltransformchirpRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_range_fill(s : SignaltransformchirpRange, v : Double) -> SignaltransformchirpRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpRange::fill(self : SignaltransformchirpRange, v : Double) -> SignaltransformchirpRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_range_min(s : SignaltransformchirpRange) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpRange::min(self : SignaltransformchirpRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_range_max(s : SignaltransformchirpRange) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpRange::max(self : SignaltransformchirpRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_range_to_string(s : SignaltransformchirpRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpRange::to_string(self : SignaltransformchirpRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_transform_chirp_slice_make(size : Int) -> SignaltransformchirpSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_chirp_slice_len(s : SignaltransformchirpSlice) -> Int { s.size }
+pub fn SignaltransformchirpSlice::len(self : SignaltransformchirpSlice) -> Int { self.size }
 
-pub fn signal_transform_chirp_slice_get(s : SignaltransformchirpSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformchirpSlice::get(self : SignaltransformchirpSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_chirp_slice_set(s : SignaltransformchirpSlice, i : Int, v : Double) -> SignaltransformchirpSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformchirpSlice::set(self : SignaltransformchirpSlice, i : Int, v : Double) -> SignaltransformchirpSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_slice_sum(s : SignaltransformchirpSlice) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformchirpSlice::sum(self : SignaltransformchirpSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_chirp_slice_mean(s : SignaltransformchirpSlice) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformchirpSlice::mean(self : SignaltransformchirpSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_chirp_slice_scale(s : SignaltransformchirpSlice, f : Double) -> SignaltransformchirpSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpSlice::scale(self : SignaltransformchirpSlice, f : Double) -> SignaltransformchirpSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_slice_add(a : SignaltransformchirpSlice, b : SignaltransformchirpSlice) -> SignaltransformchirpSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformchirpSlice::add(self : SignaltransformchirpSlice, other : SignaltransformchirpSlice) -> SignaltransformchirpSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_slice_copy(s : SignaltransformchirpSlice) -> SignaltransformchirpSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpSlice::copy(self : SignaltransformchirpSlice) -> SignaltransformchirpSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_slice_fill(s : SignaltransformchirpSlice, v : Double) -> SignaltransformchirpSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformchirpSlice::fill(self : SignaltransformchirpSlice, v : Double) -> SignaltransformchirpSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_chirp_slice_min(s : SignaltransformchirpSlice) -> Double { @_common.min(s.data) }
+pub fn SignaltransformchirpSlice::min(self : SignaltransformchirpSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_chirp_slice_max(s : SignaltransformchirpSlice) -> Double { @_common.max(s.data) }
+pub fn SignaltransformchirpSlice::max(self : SignaltransformchirpSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_chirp_slice_to_string(s : SignaltransformchirpSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformchirpSlice::to_string(self : SignaltransformchirpSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

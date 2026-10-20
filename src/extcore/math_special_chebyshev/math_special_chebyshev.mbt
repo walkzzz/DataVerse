@@ -351,45 +351,45 @@ pub fn math_special_chebyshev_frame_make(size : Int) -> MathspecialchebyshevFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_frame_len(s : MathspecialchebyshevFrame) -> Int { s.size }
+pub fn MathspecialchebyshevFrame::len(self : MathspecialchebyshevFrame) -> Int { self.size }
 
-pub fn math_special_chebyshev_frame_get(s : MathspecialchebyshevFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevFrame::get(self : MathspecialchebyshevFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_frame_set(s : MathspecialchebyshevFrame, i : Int, v : Double) -> MathspecialchebyshevFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevFrame::set(self : MathspecialchebyshevFrame, i : Int, v : Double) -> MathspecialchebyshevFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_frame_sum(s : MathspecialchebyshevFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevFrame::sum(self : MathspecialchebyshevFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_frame_mean(s : MathspecialchebyshevFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevFrame::mean(self : MathspecialchebyshevFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_frame_scale(s : MathspecialchebyshevFrame, f : Double) -> MathspecialchebyshevFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevFrame::scale(self : MathspecialchebyshevFrame, f : Double) -> MathspecialchebyshevFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_frame_add(a : MathspecialchebyshevFrame, b : MathspecialchebyshevFrame) -> MathspecialchebyshevFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevFrame::add(self : MathspecialchebyshevFrame, other : MathspecialchebyshevFrame) -> MathspecialchebyshevFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_frame_copy(s : MathspecialchebyshevFrame) -> MathspecialchebyshevFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevFrame::copy(self : MathspecialchebyshevFrame) -> MathspecialchebyshevFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_frame_fill(s : MathspecialchebyshevFrame, v : Double) -> MathspecialchebyshevFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevFrame::fill(self : MathspecialchebyshevFrame, v : Double) -> MathspecialchebyshevFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_frame_min(s : MathspecialchebyshevFrame) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevFrame::min(self : MathspecialchebyshevFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_frame_max(s : MathspecialchebyshevFrame) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevFrame::max(self : MathspecialchebyshevFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_frame_to_string(s : MathspecialchebyshevFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevFrame::to_string(self : MathspecialchebyshevFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevTable {
@@ -402,45 +402,45 @@ pub fn math_special_chebyshev_table_make(size : Int) -> MathspecialchebyshevTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_table_len(s : MathspecialchebyshevTable) -> Int { s.size }
+pub fn MathspecialchebyshevTable::len(self : MathspecialchebyshevTable) -> Int { self.size }
 
-pub fn math_special_chebyshev_table_get(s : MathspecialchebyshevTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevTable::get(self : MathspecialchebyshevTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_table_set(s : MathspecialchebyshevTable, i : Int, v : Double) -> MathspecialchebyshevTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevTable::set(self : MathspecialchebyshevTable, i : Int, v : Double) -> MathspecialchebyshevTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_table_sum(s : MathspecialchebyshevTable) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevTable::sum(self : MathspecialchebyshevTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_table_mean(s : MathspecialchebyshevTable) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevTable::mean(self : MathspecialchebyshevTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_table_scale(s : MathspecialchebyshevTable, f : Double) -> MathspecialchebyshevTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevTable::scale(self : MathspecialchebyshevTable, f : Double) -> MathspecialchebyshevTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_table_add(a : MathspecialchebyshevTable, b : MathspecialchebyshevTable) -> MathspecialchebyshevTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevTable::add(self : MathspecialchebyshevTable, other : MathspecialchebyshevTable) -> MathspecialchebyshevTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_table_copy(s : MathspecialchebyshevTable) -> MathspecialchebyshevTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevTable::copy(self : MathspecialchebyshevTable) -> MathspecialchebyshevTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_table_fill(s : MathspecialchebyshevTable, v : Double) -> MathspecialchebyshevTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevTable::fill(self : MathspecialchebyshevTable, v : Double) -> MathspecialchebyshevTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_table_min(s : MathspecialchebyshevTable) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevTable::min(self : MathspecialchebyshevTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_table_max(s : MathspecialchebyshevTable) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevTable::max(self : MathspecialchebyshevTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_table_to_string(s : MathspecialchebyshevTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevTable::to_string(self : MathspecialchebyshevTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_chebyshev_graphn_make(size : Int) -> MathspecialchebyshevGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_graphn_len(s : MathspecialchebyshevGraphN) -> Int { s.size }
+pub fn MathspecialchebyshevGraphN::len(self : MathspecialchebyshevGraphN) -> Int { self.size }
 
-pub fn math_special_chebyshev_graphn_get(s : MathspecialchebyshevGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevGraphN::get(self : MathspecialchebyshevGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_graphn_set(s : MathspecialchebyshevGraphN, i : Int, v : Double) -> MathspecialchebyshevGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevGraphN::set(self : MathspecialchebyshevGraphN, i : Int, v : Double) -> MathspecialchebyshevGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_graphn_sum(s : MathspecialchebyshevGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevGraphN::sum(self : MathspecialchebyshevGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_graphn_mean(s : MathspecialchebyshevGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevGraphN::mean(self : MathspecialchebyshevGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_graphn_scale(s : MathspecialchebyshevGraphN, f : Double) -> MathspecialchebyshevGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevGraphN::scale(self : MathspecialchebyshevGraphN, f : Double) -> MathspecialchebyshevGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_graphn_add(a : MathspecialchebyshevGraphN, b : MathspecialchebyshevGraphN) -> MathspecialchebyshevGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevGraphN::add(self : MathspecialchebyshevGraphN, other : MathspecialchebyshevGraphN) -> MathspecialchebyshevGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_graphn_copy(s : MathspecialchebyshevGraphN) -> MathspecialchebyshevGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevGraphN::copy(self : MathspecialchebyshevGraphN) -> MathspecialchebyshevGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_graphn_fill(s : MathspecialchebyshevGraphN, v : Double) -> MathspecialchebyshevGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevGraphN::fill(self : MathspecialchebyshevGraphN, v : Double) -> MathspecialchebyshevGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_graphn_min(s : MathspecialchebyshevGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevGraphN::min(self : MathspecialchebyshevGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_graphn_max(s : MathspecialchebyshevGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevGraphN::max(self : MathspecialchebyshevGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_graphn_to_string(s : MathspecialchebyshevGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevGraphN::to_string(self : MathspecialchebyshevGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevNode {
@@ -504,45 +504,45 @@ pub fn math_special_chebyshev_node_make(size : Int) -> MathspecialchebyshevNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_node_len(s : MathspecialchebyshevNode) -> Int { s.size }
+pub fn MathspecialchebyshevNode::len(self : MathspecialchebyshevNode) -> Int { self.size }
 
-pub fn math_special_chebyshev_node_get(s : MathspecialchebyshevNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevNode::get(self : MathspecialchebyshevNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_node_set(s : MathspecialchebyshevNode, i : Int, v : Double) -> MathspecialchebyshevNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevNode::set(self : MathspecialchebyshevNode, i : Int, v : Double) -> MathspecialchebyshevNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_node_sum(s : MathspecialchebyshevNode) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevNode::sum(self : MathspecialchebyshevNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_node_mean(s : MathspecialchebyshevNode) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevNode::mean(self : MathspecialchebyshevNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_node_scale(s : MathspecialchebyshevNode, f : Double) -> MathspecialchebyshevNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevNode::scale(self : MathspecialchebyshevNode, f : Double) -> MathspecialchebyshevNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_node_add(a : MathspecialchebyshevNode, b : MathspecialchebyshevNode) -> MathspecialchebyshevNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevNode::add(self : MathspecialchebyshevNode, other : MathspecialchebyshevNode) -> MathspecialchebyshevNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_node_copy(s : MathspecialchebyshevNode) -> MathspecialchebyshevNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevNode::copy(self : MathspecialchebyshevNode) -> MathspecialchebyshevNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_node_fill(s : MathspecialchebyshevNode, v : Double) -> MathspecialchebyshevNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevNode::fill(self : MathspecialchebyshevNode, v : Double) -> MathspecialchebyshevNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_node_min(s : MathspecialchebyshevNode) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevNode::min(self : MathspecialchebyshevNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_node_max(s : MathspecialchebyshevNode) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevNode::max(self : MathspecialchebyshevNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_node_to_string(s : MathspecialchebyshevNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevNode::to_string(self : MathspecialchebyshevNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevEdge {
@@ -555,45 +555,45 @@ pub fn math_special_chebyshev_edge_make(size : Int) -> MathspecialchebyshevEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_edge_len(s : MathspecialchebyshevEdge) -> Int { s.size }
+pub fn MathspecialchebyshevEdge::len(self : MathspecialchebyshevEdge) -> Int { self.size }
 
-pub fn math_special_chebyshev_edge_get(s : MathspecialchebyshevEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevEdge::get(self : MathspecialchebyshevEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_edge_set(s : MathspecialchebyshevEdge, i : Int, v : Double) -> MathspecialchebyshevEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevEdge::set(self : MathspecialchebyshevEdge, i : Int, v : Double) -> MathspecialchebyshevEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_edge_sum(s : MathspecialchebyshevEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevEdge::sum(self : MathspecialchebyshevEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_edge_mean(s : MathspecialchebyshevEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevEdge::mean(self : MathspecialchebyshevEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_edge_scale(s : MathspecialchebyshevEdge, f : Double) -> MathspecialchebyshevEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevEdge::scale(self : MathspecialchebyshevEdge, f : Double) -> MathspecialchebyshevEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_edge_add(a : MathspecialchebyshevEdge, b : MathspecialchebyshevEdge) -> MathspecialchebyshevEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevEdge::add(self : MathspecialchebyshevEdge, other : MathspecialchebyshevEdge) -> MathspecialchebyshevEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_edge_copy(s : MathspecialchebyshevEdge) -> MathspecialchebyshevEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevEdge::copy(self : MathspecialchebyshevEdge) -> MathspecialchebyshevEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_edge_fill(s : MathspecialchebyshevEdge, v : Double) -> MathspecialchebyshevEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevEdge::fill(self : MathspecialchebyshevEdge, v : Double) -> MathspecialchebyshevEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_edge_min(s : MathspecialchebyshevEdge) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevEdge::min(self : MathspecialchebyshevEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_edge_max(s : MathspecialchebyshevEdge) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevEdge::max(self : MathspecialchebyshevEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_edge_to_string(s : MathspecialchebyshevEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevEdge::to_string(self : MathspecialchebyshevEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevPath {
@@ -606,45 +606,45 @@ pub fn math_special_chebyshev_path_make(size : Int) -> MathspecialchebyshevPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_path_len(s : MathspecialchebyshevPath) -> Int { s.size }
+pub fn MathspecialchebyshevPath::len(self : MathspecialchebyshevPath) -> Int { self.size }
 
-pub fn math_special_chebyshev_path_get(s : MathspecialchebyshevPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevPath::get(self : MathspecialchebyshevPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_path_set(s : MathspecialchebyshevPath, i : Int, v : Double) -> MathspecialchebyshevPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevPath::set(self : MathspecialchebyshevPath, i : Int, v : Double) -> MathspecialchebyshevPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_path_sum(s : MathspecialchebyshevPath) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevPath::sum(self : MathspecialchebyshevPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_path_mean(s : MathspecialchebyshevPath) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevPath::mean(self : MathspecialchebyshevPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_path_scale(s : MathspecialchebyshevPath, f : Double) -> MathspecialchebyshevPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevPath::scale(self : MathspecialchebyshevPath, f : Double) -> MathspecialchebyshevPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_path_add(a : MathspecialchebyshevPath, b : MathspecialchebyshevPath) -> MathspecialchebyshevPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevPath::add(self : MathspecialchebyshevPath, other : MathspecialchebyshevPath) -> MathspecialchebyshevPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_path_copy(s : MathspecialchebyshevPath) -> MathspecialchebyshevPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevPath::copy(self : MathspecialchebyshevPath) -> MathspecialchebyshevPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_path_fill(s : MathspecialchebyshevPath, v : Double) -> MathspecialchebyshevPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevPath::fill(self : MathspecialchebyshevPath, v : Double) -> MathspecialchebyshevPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_path_min(s : MathspecialchebyshevPath) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevPath::min(self : MathspecialchebyshevPath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_path_max(s : MathspecialchebyshevPath) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevPath::max(self : MathspecialchebyshevPath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_path_to_string(s : MathspecialchebyshevPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevPath::to_string(self : MathspecialchebyshevPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevCluster {
@@ -657,45 +657,45 @@ pub fn math_special_chebyshev_cluster_make(size : Int) -> MathspecialchebyshevCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_cluster_len(s : MathspecialchebyshevCluster) -> Int { s.size }
+pub fn MathspecialchebyshevCluster::len(self : MathspecialchebyshevCluster) -> Int { self.size }
 
-pub fn math_special_chebyshev_cluster_get(s : MathspecialchebyshevCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevCluster::get(self : MathspecialchebyshevCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_cluster_set(s : MathspecialchebyshevCluster, i : Int, v : Double) -> MathspecialchebyshevCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCluster::set(self : MathspecialchebyshevCluster, i : Int, v : Double) -> MathspecialchebyshevCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cluster_sum(s : MathspecialchebyshevCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevCluster::sum(self : MathspecialchebyshevCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_cluster_mean(s : MathspecialchebyshevCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevCluster::mean(self : MathspecialchebyshevCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_cluster_scale(s : MathspecialchebyshevCluster, f : Double) -> MathspecialchebyshevCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCluster::scale(self : MathspecialchebyshevCluster, f : Double) -> MathspecialchebyshevCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cluster_add(a : MathspecialchebyshevCluster, b : MathspecialchebyshevCluster) -> MathspecialchebyshevCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevCluster::add(self : MathspecialchebyshevCluster, other : MathspecialchebyshevCluster) -> MathspecialchebyshevCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cluster_copy(s : MathspecialchebyshevCluster) -> MathspecialchebyshevCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCluster::copy(self : MathspecialchebyshevCluster) -> MathspecialchebyshevCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cluster_fill(s : MathspecialchebyshevCluster, v : Double) -> MathspecialchebyshevCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCluster::fill(self : MathspecialchebyshevCluster, v : Double) -> MathspecialchebyshevCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cluster_min(s : MathspecialchebyshevCluster) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevCluster::min(self : MathspecialchebyshevCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_cluster_max(s : MathspecialchebyshevCluster) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevCluster::max(self : MathspecialchebyshevCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_cluster_to_string(s : MathspecialchebyshevCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevCluster::to_string(self : MathspecialchebyshevCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevModel {
@@ -708,45 +708,45 @@ pub fn math_special_chebyshev_model_make(size : Int) -> MathspecialchebyshevMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_model_len(s : MathspecialchebyshevModel) -> Int { s.size }
+pub fn MathspecialchebyshevModel::len(self : MathspecialchebyshevModel) -> Int { self.size }
 
-pub fn math_special_chebyshev_model_get(s : MathspecialchebyshevModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevModel::get(self : MathspecialchebyshevModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_model_set(s : MathspecialchebyshevModel, i : Int, v : Double) -> MathspecialchebyshevModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevModel::set(self : MathspecialchebyshevModel, i : Int, v : Double) -> MathspecialchebyshevModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_model_sum(s : MathspecialchebyshevModel) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevModel::sum(self : MathspecialchebyshevModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_model_mean(s : MathspecialchebyshevModel) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevModel::mean(self : MathspecialchebyshevModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_model_scale(s : MathspecialchebyshevModel, f : Double) -> MathspecialchebyshevModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevModel::scale(self : MathspecialchebyshevModel, f : Double) -> MathspecialchebyshevModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_model_add(a : MathspecialchebyshevModel, b : MathspecialchebyshevModel) -> MathspecialchebyshevModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevModel::add(self : MathspecialchebyshevModel, other : MathspecialchebyshevModel) -> MathspecialchebyshevModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_model_copy(s : MathspecialchebyshevModel) -> MathspecialchebyshevModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevModel::copy(self : MathspecialchebyshevModel) -> MathspecialchebyshevModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_model_fill(s : MathspecialchebyshevModel, v : Double) -> MathspecialchebyshevModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevModel::fill(self : MathspecialchebyshevModel, v : Double) -> MathspecialchebyshevModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_model_min(s : MathspecialchebyshevModel) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevModel::min(self : MathspecialchebyshevModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_model_max(s : MathspecialchebyshevModel) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevModel::max(self : MathspecialchebyshevModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_model_to_string(s : MathspecialchebyshevModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevModel::to_string(self : MathspecialchebyshevModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevLayer {
@@ -759,45 +759,45 @@ pub fn math_special_chebyshev_layer_make(size : Int) -> MathspecialchebyshevLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_layer_len(s : MathspecialchebyshevLayer) -> Int { s.size }
+pub fn MathspecialchebyshevLayer::len(self : MathspecialchebyshevLayer) -> Int { self.size }
 
-pub fn math_special_chebyshev_layer_get(s : MathspecialchebyshevLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevLayer::get(self : MathspecialchebyshevLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_layer_set(s : MathspecialchebyshevLayer, i : Int, v : Double) -> MathspecialchebyshevLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevLayer::set(self : MathspecialchebyshevLayer, i : Int, v : Double) -> MathspecialchebyshevLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_layer_sum(s : MathspecialchebyshevLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevLayer::sum(self : MathspecialchebyshevLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_layer_mean(s : MathspecialchebyshevLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevLayer::mean(self : MathspecialchebyshevLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_layer_scale(s : MathspecialchebyshevLayer, f : Double) -> MathspecialchebyshevLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevLayer::scale(self : MathspecialchebyshevLayer, f : Double) -> MathspecialchebyshevLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_layer_add(a : MathspecialchebyshevLayer, b : MathspecialchebyshevLayer) -> MathspecialchebyshevLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevLayer::add(self : MathspecialchebyshevLayer, other : MathspecialchebyshevLayer) -> MathspecialchebyshevLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_layer_copy(s : MathspecialchebyshevLayer) -> MathspecialchebyshevLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevLayer::copy(self : MathspecialchebyshevLayer) -> MathspecialchebyshevLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_layer_fill(s : MathspecialchebyshevLayer, v : Double) -> MathspecialchebyshevLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevLayer::fill(self : MathspecialchebyshevLayer, v : Double) -> MathspecialchebyshevLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_layer_min(s : MathspecialchebyshevLayer) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevLayer::min(self : MathspecialchebyshevLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_layer_max(s : MathspecialchebyshevLayer) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevLayer::max(self : MathspecialchebyshevLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_layer_to_string(s : MathspecialchebyshevLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevLayer::to_string(self : MathspecialchebyshevLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_chebyshev_buffer_make(size : Int) -> MathspecialchebyshevBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_buffer_len(s : MathspecialchebyshevBuffer) -> Int { s.size }
+pub fn MathspecialchebyshevBuffer::len(self : MathspecialchebyshevBuffer) -> Int { self.size }
 
-pub fn math_special_chebyshev_buffer_get(s : MathspecialchebyshevBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevBuffer::get(self : MathspecialchebyshevBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_buffer_set(s : MathspecialchebyshevBuffer, i : Int, v : Double) -> MathspecialchebyshevBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevBuffer::set(self : MathspecialchebyshevBuffer, i : Int, v : Double) -> MathspecialchebyshevBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_buffer_sum(s : MathspecialchebyshevBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevBuffer::sum(self : MathspecialchebyshevBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_buffer_mean(s : MathspecialchebyshevBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevBuffer::mean(self : MathspecialchebyshevBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_buffer_scale(s : MathspecialchebyshevBuffer, f : Double) -> MathspecialchebyshevBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevBuffer::scale(self : MathspecialchebyshevBuffer, f : Double) -> MathspecialchebyshevBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_buffer_add(a : MathspecialchebyshevBuffer, b : MathspecialchebyshevBuffer) -> MathspecialchebyshevBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevBuffer::add(self : MathspecialchebyshevBuffer, other : MathspecialchebyshevBuffer) -> MathspecialchebyshevBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_buffer_copy(s : MathspecialchebyshevBuffer) -> MathspecialchebyshevBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevBuffer::copy(self : MathspecialchebyshevBuffer) -> MathspecialchebyshevBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_buffer_fill(s : MathspecialchebyshevBuffer, v : Double) -> MathspecialchebyshevBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevBuffer::fill(self : MathspecialchebyshevBuffer, v : Double) -> MathspecialchebyshevBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_buffer_min(s : MathspecialchebyshevBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevBuffer::min(self : MathspecialchebyshevBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_buffer_max(s : MathspecialchebyshevBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevBuffer::max(self : MathspecialchebyshevBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_buffer_to_string(s : MathspecialchebyshevBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevBuffer::to_string(self : MathspecialchebyshevBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevCursor {
@@ -861,45 +861,45 @@ pub fn math_special_chebyshev_cursor_make(size : Int) -> MathspecialchebyshevCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_cursor_len(s : MathspecialchebyshevCursor) -> Int { s.size }
+pub fn MathspecialchebyshevCursor::len(self : MathspecialchebyshevCursor) -> Int { self.size }
 
-pub fn math_special_chebyshev_cursor_get(s : MathspecialchebyshevCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevCursor::get(self : MathspecialchebyshevCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_cursor_set(s : MathspecialchebyshevCursor, i : Int, v : Double) -> MathspecialchebyshevCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCursor::set(self : MathspecialchebyshevCursor, i : Int, v : Double) -> MathspecialchebyshevCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cursor_sum(s : MathspecialchebyshevCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevCursor::sum(self : MathspecialchebyshevCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_cursor_mean(s : MathspecialchebyshevCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevCursor::mean(self : MathspecialchebyshevCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_cursor_scale(s : MathspecialchebyshevCursor, f : Double) -> MathspecialchebyshevCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCursor::scale(self : MathspecialchebyshevCursor, f : Double) -> MathspecialchebyshevCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cursor_add(a : MathspecialchebyshevCursor, b : MathspecialchebyshevCursor) -> MathspecialchebyshevCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevCursor::add(self : MathspecialchebyshevCursor, other : MathspecialchebyshevCursor) -> MathspecialchebyshevCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cursor_copy(s : MathspecialchebyshevCursor) -> MathspecialchebyshevCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCursor::copy(self : MathspecialchebyshevCursor) -> MathspecialchebyshevCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cursor_fill(s : MathspecialchebyshevCursor, v : Double) -> MathspecialchebyshevCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevCursor::fill(self : MathspecialchebyshevCursor, v : Double) -> MathspecialchebyshevCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_cursor_min(s : MathspecialchebyshevCursor) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevCursor::min(self : MathspecialchebyshevCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_cursor_max(s : MathspecialchebyshevCursor) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevCursor::max(self : MathspecialchebyshevCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_cursor_to_string(s : MathspecialchebyshevCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevCursor::to_string(self : MathspecialchebyshevCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevView {
@@ -912,45 +912,45 @@ pub fn math_special_chebyshev_view_make(size : Int) -> MathspecialchebyshevView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_view_len(s : MathspecialchebyshevView) -> Int { s.size }
+pub fn MathspecialchebyshevView::len(self : MathspecialchebyshevView) -> Int { self.size }
 
-pub fn math_special_chebyshev_view_get(s : MathspecialchebyshevView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevView::get(self : MathspecialchebyshevView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_view_set(s : MathspecialchebyshevView, i : Int, v : Double) -> MathspecialchebyshevView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevView::set(self : MathspecialchebyshevView, i : Int, v : Double) -> MathspecialchebyshevView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_view_sum(s : MathspecialchebyshevView) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevView::sum(self : MathspecialchebyshevView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_view_mean(s : MathspecialchebyshevView) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevView::mean(self : MathspecialchebyshevView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_view_scale(s : MathspecialchebyshevView, f : Double) -> MathspecialchebyshevView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevView::scale(self : MathspecialchebyshevView, f : Double) -> MathspecialchebyshevView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_view_add(a : MathspecialchebyshevView, b : MathspecialchebyshevView) -> MathspecialchebyshevView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevView::add(self : MathspecialchebyshevView, other : MathspecialchebyshevView) -> MathspecialchebyshevView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_view_copy(s : MathspecialchebyshevView) -> MathspecialchebyshevView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevView::copy(self : MathspecialchebyshevView) -> MathspecialchebyshevView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_view_fill(s : MathspecialchebyshevView, v : Double) -> MathspecialchebyshevView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevView::fill(self : MathspecialchebyshevView, v : Double) -> MathspecialchebyshevView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_view_min(s : MathspecialchebyshevView) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevView::min(self : MathspecialchebyshevView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_view_max(s : MathspecialchebyshevView) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevView::max(self : MathspecialchebyshevView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_view_to_string(s : MathspecialchebyshevView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevView::to_string(self : MathspecialchebyshevView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevRange {
@@ -963,45 +963,45 @@ pub fn math_special_chebyshev_range_make(size : Int) -> MathspecialchebyshevRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_range_len(s : MathspecialchebyshevRange) -> Int { s.size }
+pub fn MathspecialchebyshevRange::len(self : MathspecialchebyshevRange) -> Int { self.size }
 
-pub fn math_special_chebyshev_range_get(s : MathspecialchebyshevRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevRange::get(self : MathspecialchebyshevRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_range_set(s : MathspecialchebyshevRange, i : Int, v : Double) -> MathspecialchebyshevRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevRange::set(self : MathspecialchebyshevRange, i : Int, v : Double) -> MathspecialchebyshevRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_range_sum(s : MathspecialchebyshevRange) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevRange::sum(self : MathspecialchebyshevRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_range_mean(s : MathspecialchebyshevRange) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevRange::mean(self : MathspecialchebyshevRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_range_scale(s : MathspecialchebyshevRange, f : Double) -> MathspecialchebyshevRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevRange::scale(self : MathspecialchebyshevRange, f : Double) -> MathspecialchebyshevRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_range_add(a : MathspecialchebyshevRange, b : MathspecialchebyshevRange) -> MathspecialchebyshevRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevRange::add(self : MathspecialchebyshevRange, other : MathspecialchebyshevRange) -> MathspecialchebyshevRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_range_copy(s : MathspecialchebyshevRange) -> MathspecialchebyshevRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevRange::copy(self : MathspecialchebyshevRange) -> MathspecialchebyshevRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_range_fill(s : MathspecialchebyshevRange, v : Double) -> MathspecialchebyshevRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevRange::fill(self : MathspecialchebyshevRange, v : Double) -> MathspecialchebyshevRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_range_min(s : MathspecialchebyshevRange) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevRange::min(self : MathspecialchebyshevRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_range_max(s : MathspecialchebyshevRange) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevRange::max(self : MathspecialchebyshevRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_range_to_string(s : MathspecialchebyshevRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevRange::to_string(self : MathspecialchebyshevRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialchebyshevSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_chebyshev_slice_make(size : Int) -> MathspecialchebyshevSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_chebyshev_slice_len(s : MathspecialchebyshevSlice) -> Int { s.size }
+pub fn MathspecialchebyshevSlice::len(self : MathspecialchebyshevSlice) -> Int { self.size }
 
-pub fn math_special_chebyshev_slice_get(s : MathspecialchebyshevSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialchebyshevSlice::get(self : MathspecialchebyshevSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_chebyshev_slice_set(s : MathspecialchebyshevSlice, i : Int, v : Double) -> MathspecialchebyshevSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevSlice::set(self : MathspecialchebyshevSlice, i : Int, v : Double) -> MathspecialchebyshevSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_slice_sum(s : MathspecialchebyshevSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspecialchebyshevSlice::sum(self : MathspecialchebyshevSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_chebyshev_slice_mean(s : MathspecialchebyshevSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspecialchebyshevSlice::mean(self : MathspecialchebyshevSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_chebyshev_slice_scale(s : MathspecialchebyshevSlice, f : Double) -> MathspecialchebyshevSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevSlice::scale(self : MathspecialchebyshevSlice, f : Double) -> MathspecialchebyshevSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_slice_add(a : MathspecialchebyshevSlice, b : MathspecialchebyshevSlice) -> MathspecialchebyshevSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialchebyshevSlice::add(self : MathspecialchebyshevSlice, other : MathspecialchebyshevSlice) -> MathspecialchebyshevSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_slice_copy(s : MathspecialchebyshevSlice) -> MathspecialchebyshevSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevSlice::copy(self : MathspecialchebyshevSlice) -> MathspecialchebyshevSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_slice_fill(s : MathspecialchebyshevSlice, v : Double) -> MathspecialchebyshevSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialchebyshevSlice::fill(self : MathspecialchebyshevSlice, v : Double) -> MathspecialchebyshevSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_chebyshev_slice_min(s : MathspecialchebyshevSlice) -> Double { @_common.min(s.data) }
+pub fn MathspecialchebyshevSlice::min(self : MathspecialchebyshevSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_chebyshev_slice_max(s : MathspecialchebyshevSlice) -> Double { @_common.max(s.data) }
+pub fn MathspecialchebyshevSlice::max(self : MathspecialchebyshevSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_chebyshev_slice_to_string(s : MathspecialchebyshevSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialchebyshevSlice::to_string(self : MathspecialchebyshevSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

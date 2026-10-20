@@ -351,45 +351,45 @@ pub fn nlp_embed_fasttext_frame_make(size : Int) -> NlpembedfasttextFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_frame_len(s : NlpembedfasttextFrame) -> Int { s.size }
+pub fn NlpembedfasttextFrame::len(self : NlpembedfasttextFrame) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_frame_get(s : NlpembedfasttextFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextFrame::get(self : NlpembedfasttextFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_frame_set(s : NlpembedfasttextFrame, i : Int, v : Double) -> NlpembedfasttextFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextFrame::set(self : NlpembedfasttextFrame, i : Int, v : Double) -> NlpembedfasttextFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_frame_sum(s : NlpembedfasttextFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextFrame::sum(self : NlpembedfasttextFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_frame_mean(s : NlpembedfasttextFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextFrame::mean(self : NlpembedfasttextFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_frame_scale(s : NlpembedfasttextFrame, f : Double) -> NlpembedfasttextFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextFrame::scale(self : NlpembedfasttextFrame, f : Double) -> NlpembedfasttextFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_frame_add(a : NlpembedfasttextFrame, b : NlpembedfasttextFrame) -> NlpembedfasttextFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextFrame::add(self : NlpembedfasttextFrame, other : NlpembedfasttextFrame) -> NlpembedfasttextFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_frame_copy(s : NlpembedfasttextFrame) -> NlpembedfasttextFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextFrame::copy(self : NlpembedfasttextFrame) -> NlpembedfasttextFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_frame_fill(s : NlpembedfasttextFrame, v : Double) -> NlpembedfasttextFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextFrame::fill(self : NlpembedfasttextFrame, v : Double) -> NlpembedfasttextFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_frame_min(s : NlpembedfasttextFrame) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextFrame::min(self : NlpembedfasttextFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_frame_max(s : NlpembedfasttextFrame) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextFrame::max(self : NlpembedfasttextFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_frame_to_string(s : NlpembedfasttextFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextFrame::to_string(self : NlpembedfasttextFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_fasttext_table_make(size : Int) -> NlpembedfasttextTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_table_len(s : NlpembedfasttextTable) -> Int { s.size }
+pub fn NlpembedfasttextTable::len(self : NlpembedfasttextTable) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_table_get(s : NlpembedfasttextTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextTable::get(self : NlpembedfasttextTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_table_set(s : NlpembedfasttextTable, i : Int, v : Double) -> NlpembedfasttextTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextTable::set(self : NlpembedfasttextTable, i : Int, v : Double) -> NlpembedfasttextTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_table_sum(s : NlpembedfasttextTable) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextTable::sum(self : NlpembedfasttextTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_table_mean(s : NlpembedfasttextTable) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextTable::mean(self : NlpembedfasttextTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_table_scale(s : NlpembedfasttextTable, f : Double) -> NlpembedfasttextTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextTable::scale(self : NlpembedfasttextTable, f : Double) -> NlpembedfasttextTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_table_add(a : NlpembedfasttextTable, b : NlpembedfasttextTable) -> NlpembedfasttextTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextTable::add(self : NlpembedfasttextTable, other : NlpembedfasttextTable) -> NlpembedfasttextTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_table_copy(s : NlpembedfasttextTable) -> NlpembedfasttextTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextTable::copy(self : NlpembedfasttextTable) -> NlpembedfasttextTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_table_fill(s : NlpembedfasttextTable, v : Double) -> NlpembedfasttextTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextTable::fill(self : NlpembedfasttextTable, v : Double) -> NlpembedfasttextTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_table_min(s : NlpembedfasttextTable) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextTable::min(self : NlpembedfasttextTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_table_max(s : NlpembedfasttextTable) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextTable::max(self : NlpembedfasttextTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_table_to_string(s : NlpembedfasttextTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextTable::to_string(self : NlpembedfasttextTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_fasttext_graphn_make(size : Int) -> NlpembedfasttextGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_graphn_len(s : NlpembedfasttextGraphN) -> Int { s.size }
+pub fn NlpembedfasttextGraphN::len(self : NlpembedfasttextGraphN) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_graphn_get(s : NlpembedfasttextGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextGraphN::get(self : NlpembedfasttextGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_graphn_set(s : NlpembedfasttextGraphN, i : Int, v : Double) -> NlpembedfasttextGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextGraphN::set(self : NlpembedfasttextGraphN, i : Int, v : Double) -> NlpembedfasttextGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_graphn_sum(s : NlpembedfasttextGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextGraphN::sum(self : NlpembedfasttextGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_graphn_mean(s : NlpembedfasttextGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextGraphN::mean(self : NlpembedfasttextGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_graphn_scale(s : NlpembedfasttextGraphN, f : Double) -> NlpembedfasttextGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextGraphN::scale(self : NlpembedfasttextGraphN, f : Double) -> NlpembedfasttextGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_graphn_add(a : NlpembedfasttextGraphN, b : NlpembedfasttextGraphN) -> NlpembedfasttextGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextGraphN::add(self : NlpembedfasttextGraphN, other : NlpembedfasttextGraphN) -> NlpembedfasttextGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_graphn_copy(s : NlpembedfasttextGraphN) -> NlpembedfasttextGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextGraphN::copy(self : NlpembedfasttextGraphN) -> NlpembedfasttextGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_graphn_fill(s : NlpembedfasttextGraphN, v : Double) -> NlpembedfasttextGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextGraphN::fill(self : NlpembedfasttextGraphN, v : Double) -> NlpembedfasttextGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_graphn_min(s : NlpembedfasttextGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextGraphN::min(self : NlpembedfasttextGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_graphn_max(s : NlpembedfasttextGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextGraphN::max(self : NlpembedfasttextGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_graphn_to_string(s : NlpembedfasttextGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextGraphN::to_string(self : NlpembedfasttextGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_fasttext_node_make(size : Int) -> NlpembedfasttextNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_node_len(s : NlpembedfasttextNode) -> Int { s.size }
+pub fn NlpembedfasttextNode::len(self : NlpembedfasttextNode) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_node_get(s : NlpembedfasttextNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextNode::get(self : NlpembedfasttextNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_node_set(s : NlpembedfasttextNode, i : Int, v : Double) -> NlpembedfasttextNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextNode::set(self : NlpembedfasttextNode, i : Int, v : Double) -> NlpembedfasttextNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_node_sum(s : NlpembedfasttextNode) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextNode::sum(self : NlpembedfasttextNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_node_mean(s : NlpembedfasttextNode) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextNode::mean(self : NlpembedfasttextNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_node_scale(s : NlpembedfasttextNode, f : Double) -> NlpembedfasttextNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextNode::scale(self : NlpembedfasttextNode, f : Double) -> NlpembedfasttextNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_node_add(a : NlpembedfasttextNode, b : NlpembedfasttextNode) -> NlpembedfasttextNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextNode::add(self : NlpembedfasttextNode, other : NlpembedfasttextNode) -> NlpembedfasttextNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_node_copy(s : NlpembedfasttextNode) -> NlpembedfasttextNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextNode::copy(self : NlpembedfasttextNode) -> NlpembedfasttextNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_node_fill(s : NlpembedfasttextNode, v : Double) -> NlpembedfasttextNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextNode::fill(self : NlpembedfasttextNode, v : Double) -> NlpembedfasttextNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_node_min(s : NlpembedfasttextNode) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextNode::min(self : NlpembedfasttextNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_node_max(s : NlpembedfasttextNode) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextNode::max(self : NlpembedfasttextNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_node_to_string(s : NlpembedfasttextNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextNode::to_string(self : NlpembedfasttextNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_fasttext_edge_make(size : Int) -> NlpembedfasttextEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_edge_len(s : NlpembedfasttextEdge) -> Int { s.size }
+pub fn NlpembedfasttextEdge::len(self : NlpembedfasttextEdge) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_edge_get(s : NlpembedfasttextEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextEdge::get(self : NlpembedfasttextEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_edge_set(s : NlpembedfasttextEdge, i : Int, v : Double) -> NlpembedfasttextEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextEdge::set(self : NlpembedfasttextEdge, i : Int, v : Double) -> NlpembedfasttextEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_edge_sum(s : NlpembedfasttextEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextEdge::sum(self : NlpembedfasttextEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_edge_mean(s : NlpembedfasttextEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextEdge::mean(self : NlpembedfasttextEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_edge_scale(s : NlpembedfasttextEdge, f : Double) -> NlpembedfasttextEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextEdge::scale(self : NlpembedfasttextEdge, f : Double) -> NlpembedfasttextEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_edge_add(a : NlpembedfasttextEdge, b : NlpembedfasttextEdge) -> NlpembedfasttextEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextEdge::add(self : NlpembedfasttextEdge, other : NlpembedfasttextEdge) -> NlpembedfasttextEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_edge_copy(s : NlpembedfasttextEdge) -> NlpembedfasttextEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextEdge::copy(self : NlpembedfasttextEdge) -> NlpembedfasttextEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_edge_fill(s : NlpembedfasttextEdge, v : Double) -> NlpembedfasttextEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextEdge::fill(self : NlpembedfasttextEdge, v : Double) -> NlpembedfasttextEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_edge_min(s : NlpembedfasttextEdge) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextEdge::min(self : NlpembedfasttextEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_edge_max(s : NlpembedfasttextEdge) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextEdge::max(self : NlpembedfasttextEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_edge_to_string(s : NlpembedfasttextEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextEdge::to_string(self : NlpembedfasttextEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextPath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_fasttext_path_make(size : Int) -> NlpembedfasttextPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_path_len(s : NlpembedfasttextPath) -> Int { s.size }
+pub fn NlpembedfasttextPath::len(self : NlpembedfasttextPath) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_path_get(s : NlpembedfasttextPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextPath::get(self : NlpembedfasttextPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_path_set(s : NlpembedfasttextPath, i : Int, v : Double) -> NlpembedfasttextPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextPath::set(self : NlpembedfasttextPath, i : Int, v : Double) -> NlpembedfasttextPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_path_sum(s : NlpembedfasttextPath) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextPath::sum(self : NlpembedfasttextPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_path_mean(s : NlpembedfasttextPath) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextPath::mean(self : NlpembedfasttextPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_path_scale(s : NlpembedfasttextPath, f : Double) -> NlpembedfasttextPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextPath::scale(self : NlpembedfasttextPath, f : Double) -> NlpembedfasttextPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_path_add(a : NlpembedfasttextPath, b : NlpembedfasttextPath) -> NlpembedfasttextPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextPath::add(self : NlpembedfasttextPath, other : NlpembedfasttextPath) -> NlpembedfasttextPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_path_copy(s : NlpembedfasttextPath) -> NlpembedfasttextPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextPath::copy(self : NlpembedfasttextPath) -> NlpembedfasttextPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_path_fill(s : NlpembedfasttextPath, v : Double) -> NlpembedfasttextPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextPath::fill(self : NlpembedfasttextPath, v : Double) -> NlpembedfasttextPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_path_min(s : NlpembedfasttextPath) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextPath::min(self : NlpembedfasttextPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_path_max(s : NlpembedfasttextPath) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextPath::max(self : NlpembedfasttextPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_path_to_string(s : NlpembedfasttextPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextPath::to_string(self : NlpembedfasttextPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_fasttext_cluster_make(size : Int) -> NlpembedfasttextCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_cluster_len(s : NlpembedfasttextCluster) -> Int { s.size }
+pub fn NlpembedfasttextCluster::len(self : NlpembedfasttextCluster) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_cluster_get(s : NlpembedfasttextCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextCluster::get(self : NlpembedfasttextCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_cluster_set(s : NlpembedfasttextCluster, i : Int, v : Double) -> NlpembedfasttextCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCluster::set(self : NlpembedfasttextCluster, i : Int, v : Double) -> NlpembedfasttextCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cluster_sum(s : NlpembedfasttextCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextCluster::sum(self : NlpembedfasttextCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_cluster_mean(s : NlpembedfasttextCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextCluster::mean(self : NlpembedfasttextCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_cluster_scale(s : NlpembedfasttextCluster, f : Double) -> NlpembedfasttextCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCluster::scale(self : NlpembedfasttextCluster, f : Double) -> NlpembedfasttextCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cluster_add(a : NlpembedfasttextCluster, b : NlpembedfasttextCluster) -> NlpembedfasttextCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextCluster::add(self : NlpembedfasttextCluster, other : NlpembedfasttextCluster) -> NlpembedfasttextCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cluster_copy(s : NlpembedfasttextCluster) -> NlpembedfasttextCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCluster::copy(self : NlpembedfasttextCluster) -> NlpembedfasttextCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cluster_fill(s : NlpembedfasttextCluster, v : Double) -> NlpembedfasttextCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCluster::fill(self : NlpembedfasttextCluster, v : Double) -> NlpembedfasttextCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cluster_min(s : NlpembedfasttextCluster) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextCluster::min(self : NlpembedfasttextCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_cluster_max(s : NlpembedfasttextCluster) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextCluster::max(self : NlpembedfasttextCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_cluster_to_string(s : NlpembedfasttextCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextCluster::to_string(self : NlpembedfasttextCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_fasttext_model_make(size : Int) -> NlpembedfasttextModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_model_len(s : NlpembedfasttextModel) -> Int { s.size }
+pub fn NlpembedfasttextModel::len(self : NlpembedfasttextModel) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_model_get(s : NlpembedfasttextModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextModel::get(self : NlpembedfasttextModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_model_set(s : NlpembedfasttextModel, i : Int, v : Double) -> NlpembedfasttextModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextModel::set(self : NlpembedfasttextModel, i : Int, v : Double) -> NlpembedfasttextModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_model_sum(s : NlpembedfasttextModel) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextModel::sum(self : NlpembedfasttextModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_model_mean(s : NlpembedfasttextModel) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextModel::mean(self : NlpembedfasttextModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_model_scale(s : NlpembedfasttextModel, f : Double) -> NlpembedfasttextModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextModel::scale(self : NlpembedfasttextModel, f : Double) -> NlpembedfasttextModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_model_add(a : NlpembedfasttextModel, b : NlpembedfasttextModel) -> NlpembedfasttextModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextModel::add(self : NlpembedfasttextModel, other : NlpembedfasttextModel) -> NlpembedfasttextModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_model_copy(s : NlpembedfasttextModel) -> NlpembedfasttextModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextModel::copy(self : NlpembedfasttextModel) -> NlpembedfasttextModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_model_fill(s : NlpembedfasttextModel, v : Double) -> NlpembedfasttextModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextModel::fill(self : NlpembedfasttextModel, v : Double) -> NlpembedfasttextModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_model_min(s : NlpembedfasttextModel) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextModel::min(self : NlpembedfasttextModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_model_max(s : NlpembedfasttextModel) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextModel::max(self : NlpembedfasttextModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_model_to_string(s : NlpembedfasttextModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextModel::to_string(self : NlpembedfasttextModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_fasttext_layer_make(size : Int) -> NlpembedfasttextLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_layer_len(s : NlpembedfasttextLayer) -> Int { s.size }
+pub fn NlpembedfasttextLayer::len(self : NlpembedfasttextLayer) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_layer_get(s : NlpembedfasttextLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextLayer::get(self : NlpembedfasttextLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_layer_set(s : NlpembedfasttextLayer, i : Int, v : Double) -> NlpembedfasttextLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextLayer::set(self : NlpembedfasttextLayer, i : Int, v : Double) -> NlpembedfasttextLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_layer_sum(s : NlpembedfasttextLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextLayer::sum(self : NlpembedfasttextLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_layer_mean(s : NlpembedfasttextLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextLayer::mean(self : NlpembedfasttextLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_layer_scale(s : NlpembedfasttextLayer, f : Double) -> NlpembedfasttextLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextLayer::scale(self : NlpembedfasttextLayer, f : Double) -> NlpembedfasttextLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_layer_add(a : NlpembedfasttextLayer, b : NlpembedfasttextLayer) -> NlpembedfasttextLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextLayer::add(self : NlpembedfasttextLayer, other : NlpembedfasttextLayer) -> NlpembedfasttextLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_layer_copy(s : NlpembedfasttextLayer) -> NlpembedfasttextLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextLayer::copy(self : NlpembedfasttextLayer) -> NlpembedfasttextLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_layer_fill(s : NlpembedfasttextLayer, v : Double) -> NlpembedfasttextLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextLayer::fill(self : NlpembedfasttextLayer, v : Double) -> NlpembedfasttextLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_layer_min(s : NlpembedfasttextLayer) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextLayer::min(self : NlpembedfasttextLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_layer_max(s : NlpembedfasttextLayer) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextLayer::max(self : NlpembedfasttextLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_layer_to_string(s : NlpembedfasttextLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextLayer::to_string(self : NlpembedfasttextLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_fasttext_buffer_make(size : Int) -> NlpembedfasttextBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_buffer_len(s : NlpembedfasttextBuffer) -> Int { s.size }
+pub fn NlpembedfasttextBuffer::len(self : NlpembedfasttextBuffer) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_buffer_get(s : NlpembedfasttextBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextBuffer::get(self : NlpembedfasttextBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_buffer_set(s : NlpembedfasttextBuffer, i : Int, v : Double) -> NlpembedfasttextBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextBuffer::set(self : NlpembedfasttextBuffer, i : Int, v : Double) -> NlpembedfasttextBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_buffer_sum(s : NlpembedfasttextBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextBuffer::sum(self : NlpembedfasttextBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_buffer_mean(s : NlpembedfasttextBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextBuffer::mean(self : NlpembedfasttextBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_buffer_scale(s : NlpembedfasttextBuffer, f : Double) -> NlpembedfasttextBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextBuffer::scale(self : NlpembedfasttextBuffer, f : Double) -> NlpembedfasttextBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_buffer_add(a : NlpembedfasttextBuffer, b : NlpembedfasttextBuffer) -> NlpembedfasttextBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextBuffer::add(self : NlpembedfasttextBuffer, other : NlpembedfasttextBuffer) -> NlpembedfasttextBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_buffer_copy(s : NlpembedfasttextBuffer) -> NlpembedfasttextBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextBuffer::copy(self : NlpembedfasttextBuffer) -> NlpembedfasttextBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_buffer_fill(s : NlpembedfasttextBuffer, v : Double) -> NlpembedfasttextBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextBuffer::fill(self : NlpembedfasttextBuffer, v : Double) -> NlpembedfasttextBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_buffer_min(s : NlpembedfasttextBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextBuffer::min(self : NlpembedfasttextBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_buffer_max(s : NlpembedfasttextBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextBuffer::max(self : NlpembedfasttextBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_buffer_to_string(s : NlpembedfasttextBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextBuffer::to_string(self : NlpembedfasttextBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_fasttext_cursor_make(size : Int) -> NlpembedfasttextCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_cursor_len(s : NlpembedfasttextCursor) -> Int { s.size }
+pub fn NlpembedfasttextCursor::len(self : NlpembedfasttextCursor) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_cursor_get(s : NlpembedfasttextCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextCursor::get(self : NlpembedfasttextCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_cursor_set(s : NlpembedfasttextCursor, i : Int, v : Double) -> NlpembedfasttextCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCursor::set(self : NlpembedfasttextCursor, i : Int, v : Double) -> NlpembedfasttextCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cursor_sum(s : NlpembedfasttextCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextCursor::sum(self : NlpembedfasttextCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_cursor_mean(s : NlpembedfasttextCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextCursor::mean(self : NlpembedfasttextCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_cursor_scale(s : NlpembedfasttextCursor, f : Double) -> NlpembedfasttextCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCursor::scale(self : NlpembedfasttextCursor, f : Double) -> NlpembedfasttextCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cursor_add(a : NlpembedfasttextCursor, b : NlpembedfasttextCursor) -> NlpembedfasttextCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextCursor::add(self : NlpembedfasttextCursor, other : NlpembedfasttextCursor) -> NlpembedfasttextCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cursor_copy(s : NlpembedfasttextCursor) -> NlpembedfasttextCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCursor::copy(self : NlpembedfasttextCursor) -> NlpembedfasttextCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cursor_fill(s : NlpembedfasttextCursor, v : Double) -> NlpembedfasttextCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextCursor::fill(self : NlpembedfasttextCursor, v : Double) -> NlpembedfasttextCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_cursor_min(s : NlpembedfasttextCursor) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextCursor::min(self : NlpembedfasttextCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_cursor_max(s : NlpembedfasttextCursor) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextCursor::max(self : NlpembedfasttextCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_cursor_to_string(s : NlpembedfasttextCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextCursor::to_string(self : NlpembedfasttextCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_fasttext_view_make(size : Int) -> NlpembedfasttextView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_view_len(s : NlpembedfasttextView) -> Int { s.size }
+pub fn NlpembedfasttextView::len(self : NlpembedfasttextView) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_view_get(s : NlpembedfasttextView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextView::get(self : NlpembedfasttextView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_view_set(s : NlpembedfasttextView, i : Int, v : Double) -> NlpembedfasttextView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextView::set(self : NlpembedfasttextView, i : Int, v : Double) -> NlpembedfasttextView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_view_sum(s : NlpembedfasttextView) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextView::sum(self : NlpembedfasttextView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_view_mean(s : NlpembedfasttextView) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextView::mean(self : NlpembedfasttextView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_view_scale(s : NlpembedfasttextView, f : Double) -> NlpembedfasttextView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextView::scale(self : NlpembedfasttextView, f : Double) -> NlpembedfasttextView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_view_add(a : NlpembedfasttextView, b : NlpembedfasttextView) -> NlpembedfasttextView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextView::add(self : NlpembedfasttextView, other : NlpembedfasttextView) -> NlpembedfasttextView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_view_copy(s : NlpembedfasttextView) -> NlpembedfasttextView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextView::copy(self : NlpembedfasttextView) -> NlpembedfasttextView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_view_fill(s : NlpembedfasttextView, v : Double) -> NlpembedfasttextView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextView::fill(self : NlpembedfasttextView, v : Double) -> NlpembedfasttextView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_view_min(s : NlpembedfasttextView) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextView::min(self : NlpembedfasttextView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_view_max(s : NlpembedfasttextView) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextView::max(self : NlpembedfasttextView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_view_to_string(s : NlpembedfasttextView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextView::to_string(self : NlpembedfasttextView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_fasttext_range_make(size : Int) -> NlpembedfasttextRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_range_len(s : NlpembedfasttextRange) -> Int { s.size }
+pub fn NlpembedfasttextRange::len(self : NlpembedfasttextRange) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_range_get(s : NlpembedfasttextRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextRange::get(self : NlpembedfasttextRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_range_set(s : NlpembedfasttextRange, i : Int, v : Double) -> NlpembedfasttextRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextRange::set(self : NlpembedfasttextRange, i : Int, v : Double) -> NlpembedfasttextRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_range_sum(s : NlpembedfasttextRange) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextRange::sum(self : NlpembedfasttextRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_range_mean(s : NlpembedfasttextRange) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextRange::mean(self : NlpembedfasttextRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_range_scale(s : NlpembedfasttextRange, f : Double) -> NlpembedfasttextRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextRange::scale(self : NlpembedfasttextRange, f : Double) -> NlpembedfasttextRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_range_add(a : NlpembedfasttextRange, b : NlpembedfasttextRange) -> NlpembedfasttextRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextRange::add(self : NlpembedfasttextRange, other : NlpembedfasttextRange) -> NlpembedfasttextRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_range_copy(s : NlpembedfasttextRange) -> NlpembedfasttextRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextRange::copy(self : NlpembedfasttextRange) -> NlpembedfasttextRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_range_fill(s : NlpembedfasttextRange, v : Double) -> NlpembedfasttextRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextRange::fill(self : NlpembedfasttextRange, v : Double) -> NlpembedfasttextRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_range_min(s : NlpembedfasttextRange) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextRange::min(self : NlpembedfasttextRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_range_max(s : NlpembedfasttextRange) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextRange::max(self : NlpembedfasttextRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_range_to_string(s : NlpembedfasttextRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextRange::to_string(self : NlpembedfasttextRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedfasttextSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_fasttext_slice_make(size : Int) -> NlpembedfasttextSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_fasttext_slice_len(s : NlpembedfasttextSlice) -> Int { s.size }
+pub fn NlpembedfasttextSlice::len(self : NlpembedfasttextSlice) -> Int { self.size }
 
-pub fn nlp_embed_fasttext_slice_get(s : NlpembedfasttextSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedfasttextSlice::get(self : NlpembedfasttextSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_fasttext_slice_set(s : NlpembedfasttextSlice, i : Int, v : Double) -> NlpembedfasttextSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedfasttextSlice::set(self : NlpembedfasttextSlice, i : Int, v : Double) -> NlpembedfasttextSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_slice_sum(s : NlpembedfasttextSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpembedfasttextSlice::sum(self : NlpembedfasttextSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_fasttext_slice_mean(s : NlpembedfasttextSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpembedfasttextSlice::mean(self : NlpembedfasttextSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_fasttext_slice_scale(s : NlpembedfasttextSlice, f : Double) -> NlpembedfasttextSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextSlice::scale(self : NlpembedfasttextSlice, f : Double) -> NlpembedfasttextSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_slice_add(a : NlpembedfasttextSlice, b : NlpembedfasttextSlice) -> NlpembedfasttextSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedfasttextSlice::add(self : NlpembedfasttextSlice, other : NlpembedfasttextSlice) -> NlpembedfasttextSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_slice_copy(s : NlpembedfasttextSlice) -> NlpembedfasttextSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextSlice::copy(self : NlpembedfasttextSlice) -> NlpembedfasttextSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_slice_fill(s : NlpembedfasttextSlice, v : Double) -> NlpembedfasttextSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedfasttextSlice::fill(self : NlpembedfasttextSlice, v : Double) -> NlpembedfasttextSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_fasttext_slice_min(s : NlpembedfasttextSlice) -> Double { @_common.min(s.data) }
+pub fn NlpembedfasttextSlice::min(self : NlpembedfasttextSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_fasttext_slice_max(s : NlpembedfasttextSlice) -> Double { @_common.max(s.data) }
+pub fn NlpembedfasttextSlice::max(self : NlpembedfasttextSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_fasttext_slice_to_string(s : NlpembedfasttextSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedfasttextSlice::to_string(self : NlpembedfasttextSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

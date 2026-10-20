@@ -351,45 +351,45 @@ pub fn db_index_hash_frame_make(size : Int) -> DbindexhashFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_frame_len(s : DbindexhashFrame) -> Int { s.size }
+pub fn DbindexhashFrame::len(self : DbindexhashFrame) -> Int { self.size }
 
-pub fn db_index_hash_frame_get(s : DbindexhashFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashFrame::get(self : DbindexhashFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_frame_set(s : DbindexhashFrame, i : Int, v : Double) -> DbindexhashFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashFrame::set(self : DbindexhashFrame, i : Int, v : Double) -> DbindexhashFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_frame_sum(s : DbindexhashFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashFrame::sum(self : DbindexhashFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_frame_mean(s : DbindexhashFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashFrame::mean(self : DbindexhashFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_frame_scale(s : DbindexhashFrame, f : Double) -> DbindexhashFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashFrame::scale(self : DbindexhashFrame, f : Double) -> DbindexhashFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_frame_add(a : DbindexhashFrame, b : DbindexhashFrame) -> DbindexhashFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashFrame::add(self : DbindexhashFrame, other : DbindexhashFrame) -> DbindexhashFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_frame_copy(s : DbindexhashFrame) -> DbindexhashFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashFrame::copy(self : DbindexhashFrame) -> DbindexhashFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_frame_fill(s : DbindexhashFrame, v : Double) -> DbindexhashFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashFrame::fill(self : DbindexhashFrame, v : Double) -> DbindexhashFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_frame_min(s : DbindexhashFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexhashFrame::min(self : DbindexhashFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_frame_max(s : DbindexhashFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexhashFrame::max(self : DbindexhashFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_frame_to_string(s : DbindexhashFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashFrame::to_string(self : DbindexhashFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashTable {
@@ -402,45 +402,45 @@ pub fn db_index_hash_table_make(size : Int) -> DbindexhashTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_table_len(s : DbindexhashTable) -> Int { s.size }
+pub fn DbindexhashTable::len(self : DbindexhashTable) -> Int { self.size }
 
-pub fn db_index_hash_table_get(s : DbindexhashTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashTable::get(self : DbindexhashTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_table_set(s : DbindexhashTable, i : Int, v : Double) -> DbindexhashTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashTable::set(self : DbindexhashTable, i : Int, v : Double) -> DbindexhashTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_table_sum(s : DbindexhashTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashTable::sum(self : DbindexhashTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_table_mean(s : DbindexhashTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashTable::mean(self : DbindexhashTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_table_scale(s : DbindexhashTable, f : Double) -> DbindexhashTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashTable::scale(self : DbindexhashTable, f : Double) -> DbindexhashTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_table_add(a : DbindexhashTable, b : DbindexhashTable) -> DbindexhashTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashTable::add(self : DbindexhashTable, other : DbindexhashTable) -> DbindexhashTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_table_copy(s : DbindexhashTable) -> DbindexhashTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashTable::copy(self : DbindexhashTable) -> DbindexhashTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_table_fill(s : DbindexhashTable, v : Double) -> DbindexhashTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashTable::fill(self : DbindexhashTable, v : Double) -> DbindexhashTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_table_min(s : DbindexhashTable) -> Double { @_common.min(s.data) }
+pub fn DbindexhashTable::min(self : DbindexhashTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_table_max(s : DbindexhashTable) -> Double { @_common.max(s.data) }
+pub fn DbindexhashTable::max(self : DbindexhashTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_table_to_string(s : DbindexhashTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashTable::to_string(self : DbindexhashTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_hash_graphn_make(size : Int) -> DbindexhashGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_graphn_len(s : DbindexhashGraphN) -> Int { s.size }
+pub fn DbindexhashGraphN::len(self : DbindexhashGraphN) -> Int { self.size }
 
-pub fn db_index_hash_graphn_get(s : DbindexhashGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashGraphN::get(self : DbindexhashGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_graphn_set(s : DbindexhashGraphN, i : Int, v : Double) -> DbindexhashGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashGraphN::set(self : DbindexhashGraphN, i : Int, v : Double) -> DbindexhashGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_graphn_sum(s : DbindexhashGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashGraphN::sum(self : DbindexhashGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_graphn_mean(s : DbindexhashGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashGraphN::mean(self : DbindexhashGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_graphn_scale(s : DbindexhashGraphN, f : Double) -> DbindexhashGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashGraphN::scale(self : DbindexhashGraphN, f : Double) -> DbindexhashGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_graphn_add(a : DbindexhashGraphN, b : DbindexhashGraphN) -> DbindexhashGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashGraphN::add(self : DbindexhashGraphN, other : DbindexhashGraphN) -> DbindexhashGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_graphn_copy(s : DbindexhashGraphN) -> DbindexhashGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashGraphN::copy(self : DbindexhashGraphN) -> DbindexhashGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_graphn_fill(s : DbindexhashGraphN, v : Double) -> DbindexhashGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashGraphN::fill(self : DbindexhashGraphN, v : Double) -> DbindexhashGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_graphn_min(s : DbindexhashGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexhashGraphN::min(self : DbindexhashGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_graphn_max(s : DbindexhashGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexhashGraphN::max(self : DbindexhashGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_graphn_to_string(s : DbindexhashGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashGraphN::to_string(self : DbindexhashGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashNode {
@@ -504,45 +504,45 @@ pub fn db_index_hash_node_make(size : Int) -> DbindexhashNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_node_len(s : DbindexhashNode) -> Int { s.size }
+pub fn DbindexhashNode::len(self : DbindexhashNode) -> Int { self.size }
 
-pub fn db_index_hash_node_get(s : DbindexhashNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashNode::get(self : DbindexhashNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_node_set(s : DbindexhashNode, i : Int, v : Double) -> DbindexhashNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashNode::set(self : DbindexhashNode, i : Int, v : Double) -> DbindexhashNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_node_sum(s : DbindexhashNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashNode::sum(self : DbindexhashNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_node_mean(s : DbindexhashNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashNode::mean(self : DbindexhashNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_node_scale(s : DbindexhashNode, f : Double) -> DbindexhashNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashNode::scale(self : DbindexhashNode, f : Double) -> DbindexhashNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_node_add(a : DbindexhashNode, b : DbindexhashNode) -> DbindexhashNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashNode::add(self : DbindexhashNode, other : DbindexhashNode) -> DbindexhashNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_node_copy(s : DbindexhashNode) -> DbindexhashNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashNode::copy(self : DbindexhashNode) -> DbindexhashNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_node_fill(s : DbindexhashNode, v : Double) -> DbindexhashNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashNode::fill(self : DbindexhashNode, v : Double) -> DbindexhashNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_node_min(s : DbindexhashNode) -> Double { @_common.min(s.data) }
+pub fn DbindexhashNode::min(self : DbindexhashNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_node_max(s : DbindexhashNode) -> Double { @_common.max(s.data) }
+pub fn DbindexhashNode::max(self : DbindexhashNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_node_to_string(s : DbindexhashNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashNode::to_string(self : DbindexhashNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashEdge {
@@ -555,45 +555,45 @@ pub fn db_index_hash_edge_make(size : Int) -> DbindexhashEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_edge_len(s : DbindexhashEdge) -> Int { s.size }
+pub fn DbindexhashEdge::len(self : DbindexhashEdge) -> Int { self.size }
 
-pub fn db_index_hash_edge_get(s : DbindexhashEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashEdge::get(self : DbindexhashEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_edge_set(s : DbindexhashEdge, i : Int, v : Double) -> DbindexhashEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashEdge::set(self : DbindexhashEdge, i : Int, v : Double) -> DbindexhashEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_edge_sum(s : DbindexhashEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashEdge::sum(self : DbindexhashEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_edge_mean(s : DbindexhashEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashEdge::mean(self : DbindexhashEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_edge_scale(s : DbindexhashEdge, f : Double) -> DbindexhashEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashEdge::scale(self : DbindexhashEdge, f : Double) -> DbindexhashEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_edge_add(a : DbindexhashEdge, b : DbindexhashEdge) -> DbindexhashEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashEdge::add(self : DbindexhashEdge, other : DbindexhashEdge) -> DbindexhashEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_edge_copy(s : DbindexhashEdge) -> DbindexhashEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashEdge::copy(self : DbindexhashEdge) -> DbindexhashEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_edge_fill(s : DbindexhashEdge, v : Double) -> DbindexhashEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashEdge::fill(self : DbindexhashEdge, v : Double) -> DbindexhashEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_edge_min(s : DbindexhashEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexhashEdge::min(self : DbindexhashEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_edge_max(s : DbindexhashEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexhashEdge::max(self : DbindexhashEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_edge_to_string(s : DbindexhashEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashEdge::to_string(self : DbindexhashEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashPath {
@@ -606,45 +606,45 @@ pub fn db_index_hash_path_make(size : Int) -> DbindexhashPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_path_len(s : DbindexhashPath) -> Int { s.size }
+pub fn DbindexhashPath::len(self : DbindexhashPath) -> Int { self.size }
 
-pub fn db_index_hash_path_get(s : DbindexhashPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashPath::get(self : DbindexhashPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_path_set(s : DbindexhashPath, i : Int, v : Double) -> DbindexhashPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashPath::set(self : DbindexhashPath, i : Int, v : Double) -> DbindexhashPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_path_sum(s : DbindexhashPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashPath::sum(self : DbindexhashPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_path_mean(s : DbindexhashPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashPath::mean(self : DbindexhashPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_path_scale(s : DbindexhashPath, f : Double) -> DbindexhashPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashPath::scale(self : DbindexhashPath, f : Double) -> DbindexhashPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_path_add(a : DbindexhashPath, b : DbindexhashPath) -> DbindexhashPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashPath::add(self : DbindexhashPath, other : DbindexhashPath) -> DbindexhashPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_path_copy(s : DbindexhashPath) -> DbindexhashPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashPath::copy(self : DbindexhashPath) -> DbindexhashPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_path_fill(s : DbindexhashPath, v : Double) -> DbindexhashPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashPath::fill(self : DbindexhashPath, v : Double) -> DbindexhashPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_path_min(s : DbindexhashPath) -> Double { @_common.min(s.data) }
+pub fn DbindexhashPath::min(self : DbindexhashPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_path_max(s : DbindexhashPath) -> Double { @_common.max(s.data) }
+pub fn DbindexhashPath::max(self : DbindexhashPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_path_to_string(s : DbindexhashPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashPath::to_string(self : DbindexhashPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashCluster {
@@ -657,45 +657,45 @@ pub fn db_index_hash_cluster_make(size : Int) -> DbindexhashCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_cluster_len(s : DbindexhashCluster) -> Int { s.size }
+pub fn DbindexhashCluster::len(self : DbindexhashCluster) -> Int { self.size }
 
-pub fn db_index_hash_cluster_get(s : DbindexhashCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashCluster::get(self : DbindexhashCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_cluster_set(s : DbindexhashCluster, i : Int, v : Double) -> DbindexhashCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashCluster::set(self : DbindexhashCluster, i : Int, v : Double) -> DbindexhashCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cluster_sum(s : DbindexhashCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashCluster::sum(self : DbindexhashCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_cluster_mean(s : DbindexhashCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashCluster::mean(self : DbindexhashCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_cluster_scale(s : DbindexhashCluster, f : Double) -> DbindexhashCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashCluster::scale(self : DbindexhashCluster, f : Double) -> DbindexhashCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cluster_add(a : DbindexhashCluster, b : DbindexhashCluster) -> DbindexhashCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashCluster::add(self : DbindexhashCluster, other : DbindexhashCluster) -> DbindexhashCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_cluster_copy(s : DbindexhashCluster) -> DbindexhashCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashCluster::copy(self : DbindexhashCluster) -> DbindexhashCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cluster_fill(s : DbindexhashCluster, v : Double) -> DbindexhashCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashCluster::fill(self : DbindexhashCluster, v : Double) -> DbindexhashCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cluster_min(s : DbindexhashCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexhashCluster::min(self : DbindexhashCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_cluster_max(s : DbindexhashCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexhashCluster::max(self : DbindexhashCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_cluster_to_string(s : DbindexhashCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashCluster::to_string(self : DbindexhashCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashModel {
@@ -708,45 +708,45 @@ pub fn db_index_hash_model_make(size : Int) -> DbindexhashModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_model_len(s : DbindexhashModel) -> Int { s.size }
+pub fn DbindexhashModel::len(self : DbindexhashModel) -> Int { self.size }
 
-pub fn db_index_hash_model_get(s : DbindexhashModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashModel::get(self : DbindexhashModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_model_set(s : DbindexhashModel, i : Int, v : Double) -> DbindexhashModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashModel::set(self : DbindexhashModel, i : Int, v : Double) -> DbindexhashModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_model_sum(s : DbindexhashModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashModel::sum(self : DbindexhashModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_model_mean(s : DbindexhashModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashModel::mean(self : DbindexhashModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_model_scale(s : DbindexhashModel, f : Double) -> DbindexhashModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashModel::scale(self : DbindexhashModel, f : Double) -> DbindexhashModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_model_add(a : DbindexhashModel, b : DbindexhashModel) -> DbindexhashModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashModel::add(self : DbindexhashModel, other : DbindexhashModel) -> DbindexhashModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_model_copy(s : DbindexhashModel) -> DbindexhashModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashModel::copy(self : DbindexhashModel) -> DbindexhashModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_model_fill(s : DbindexhashModel, v : Double) -> DbindexhashModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashModel::fill(self : DbindexhashModel, v : Double) -> DbindexhashModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_model_min(s : DbindexhashModel) -> Double { @_common.min(s.data) }
+pub fn DbindexhashModel::min(self : DbindexhashModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_model_max(s : DbindexhashModel) -> Double { @_common.max(s.data) }
+pub fn DbindexhashModel::max(self : DbindexhashModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_model_to_string(s : DbindexhashModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashModel::to_string(self : DbindexhashModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashLayer {
@@ -759,45 +759,45 @@ pub fn db_index_hash_layer_make(size : Int) -> DbindexhashLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_layer_len(s : DbindexhashLayer) -> Int { s.size }
+pub fn DbindexhashLayer::len(self : DbindexhashLayer) -> Int { self.size }
 
-pub fn db_index_hash_layer_get(s : DbindexhashLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashLayer::get(self : DbindexhashLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_layer_set(s : DbindexhashLayer, i : Int, v : Double) -> DbindexhashLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashLayer::set(self : DbindexhashLayer, i : Int, v : Double) -> DbindexhashLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_layer_sum(s : DbindexhashLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashLayer::sum(self : DbindexhashLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_layer_mean(s : DbindexhashLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashLayer::mean(self : DbindexhashLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_layer_scale(s : DbindexhashLayer, f : Double) -> DbindexhashLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashLayer::scale(self : DbindexhashLayer, f : Double) -> DbindexhashLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_layer_add(a : DbindexhashLayer, b : DbindexhashLayer) -> DbindexhashLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashLayer::add(self : DbindexhashLayer, other : DbindexhashLayer) -> DbindexhashLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_layer_copy(s : DbindexhashLayer) -> DbindexhashLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashLayer::copy(self : DbindexhashLayer) -> DbindexhashLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_layer_fill(s : DbindexhashLayer, v : Double) -> DbindexhashLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashLayer::fill(self : DbindexhashLayer, v : Double) -> DbindexhashLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_layer_min(s : DbindexhashLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexhashLayer::min(self : DbindexhashLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_layer_max(s : DbindexhashLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexhashLayer::max(self : DbindexhashLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_layer_to_string(s : DbindexhashLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashLayer::to_string(self : DbindexhashLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_hash_buffer_make(size : Int) -> DbindexhashBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_buffer_len(s : DbindexhashBuffer) -> Int { s.size }
+pub fn DbindexhashBuffer::len(self : DbindexhashBuffer) -> Int { self.size }
 
-pub fn db_index_hash_buffer_get(s : DbindexhashBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashBuffer::get(self : DbindexhashBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_buffer_set(s : DbindexhashBuffer, i : Int, v : Double) -> DbindexhashBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashBuffer::set(self : DbindexhashBuffer, i : Int, v : Double) -> DbindexhashBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_buffer_sum(s : DbindexhashBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashBuffer::sum(self : DbindexhashBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_buffer_mean(s : DbindexhashBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashBuffer::mean(self : DbindexhashBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_buffer_scale(s : DbindexhashBuffer, f : Double) -> DbindexhashBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashBuffer::scale(self : DbindexhashBuffer, f : Double) -> DbindexhashBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_buffer_add(a : DbindexhashBuffer, b : DbindexhashBuffer) -> DbindexhashBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashBuffer::add(self : DbindexhashBuffer, other : DbindexhashBuffer) -> DbindexhashBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_buffer_copy(s : DbindexhashBuffer) -> DbindexhashBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashBuffer::copy(self : DbindexhashBuffer) -> DbindexhashBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_buffer_fill(s : DbindexhashBuffer, v : Double) -> DbindexhashBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashBuffer::fill(self : DbindexhashBuffer, v : Double) -> DbindexhashBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_buffer_min(s : DbindexhashBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexhashBuffer::min(self : DbindexhashBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_buffer_max(s : DbindexhashBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexhashBuffer::max(self : DbindexhashBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_buffer_to_string(s : DbindexhashBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashBuffer::to_string(self : DbindexhashBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashCursor {
@@ -861,45 +861,45 @@ pub fn db_index_hash_cursor_make(size : Int) -> DbindexhashCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_cursor_len(s : DbindexhashCursor) -> Int { s.size }
+pub fn DbindexhashCursor::len(self : DbindexhashCursor) -> Int { self.size }
 
-pub fn db_index_hash_cursor_get(s : DbindexhashCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashCursor::get(self : DbindexhashCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_cursor_set(s : DbindexhashCursor, i : Int, v : Double) -> DbindexhashCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashCursor::set(self : DbindexhashCursor, i : Int, v : Double) -> DbindexhashCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cursor_sum(s : DbindexhashCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashCursor::sum(self : DbindexhashCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_cursor_mean(s : DbindexhashCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashCursor::mean(self : DbindexhashCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_cursor_scale(s : DbindexhashCursor, f : Double) -> DbindexhashCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashCursor::scale(self : DbindexhashCursor, f : Double) -> DbindexhashCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cursor_add(a : DbindexhashCursor, b : DbindexhashCursor) -> DbindexhashCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashCursor::add(self : DbindexhashCursor, other : DbindexhashCursor) -> DbindexhashCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_cursor_copy(s : DbindexhashCursor) -> DbindexhashCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashCursor::copy(self : DbindexhashCursor) -> DbindexhashCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cursor_fill(s : DbindexhashCursor, v : Double) -> DbindexhashCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashCursor::fill(self : DbindexhashCursor, v : Double) -> DbindexhashCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_cursor_min(s : DbindexhashCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexhashCursor::min(self : DbindexhashCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_cursor_max(s : DbindexhashCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexhashCursor::max(self : DbindexhashCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_cursor_to_string(s : DbindexhashCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashCursor::to_string(self : DbindexhashCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashView {
@@ -912,45 +912,45 @@ pub fn db_index_hash_view_make(size : Int) -> DbindexhashView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_view_len(s : DbindexhashView) -> Int { s.size }
+pub fn DbindexhashView::len(self : DbindexhashView) -> Int { self.size }
 
-pub fn db_index_hash_view_get(s : DbindexhashView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashView::get(self : DbindexhashView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_view_set(s : DbindexhashView, i : Int, v : Double) -> DbindexhashView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashView::set(self : DbindexhashView, i : Int, v : Double) -> DbindexhashView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_view_sum(s : DbindexhashView) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashView::sum(self : DbindexhashView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_view_mean(s : DbindexhashView) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashView::mean(self : DbindexhashView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_view_scale(s : DbindexhashView, f : Double) -> DbindexhashView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashView::scale(self : DbindexhashView, f : Double) -> DbindexhashView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_view_add(a : DbindexhashView, b : DbindexhashView) -> DbindexhashView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashView::add(self : DbindexhashView, other : DbindexhashView) -> DbindexhashView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_view_copy(s : DbindexhashView) -> DbindexhashView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashView::copy(self : DbindexhashView) -> DbindexhashView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_view_fill(s : DbindexhashView, v : Double) -> DbindexhashView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashView::fill(self : DbindexhashView, v : Double) -> DbindexhashView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_view_min(s : DbindexhashView) -> Double { @_common.min(s.data) }
+pub fn DbindexhashView::min(self : DbindexhashView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_view_max(s : DbindexhashView) -> Double { @_common.max(s.data) }
+pub fn DbindexhashView::max(self : DbindexhashView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_view_to_string(s : DbindexhashView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashView::to_string(self : DbindexhashView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashRange {
@@ -963,45 +963,45 @@ pub fn db_index_hash_range_make(size : Int) -> DbindexhashRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_range_len(s : DbindexhashRange) -> Int { s.size }
+pub fn DbindexhashRange::len(self : DbindexhashRange) -> Int { self.size }
 
-pub fn db_index_hash_range_get(s : DbindexhashRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashRange::get(self : DbindexhashRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_range_set(s : DbindexhashRange, i : Int, v : Double) -> DbindexhashRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashRange::set(self : DbindexhashRange, i : Int, v : Double) -> DbindexhashRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_range_sum(s : DbindexhashRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashRange::sum(self : DbindexhashRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_range_mean(s : DbindexhashRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashRange::mean(self : DbindexhashRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_range_scale(s : DbindexhashRange, f : Double) -> DbindexhashRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashRange::scale(self : DbindexhashRange, f : Double) -> DbindexhashRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_range_add(a : DbindexhashRange, b : DbindexhashRange) -> DbindexhashRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashRange::add(self : DbindexhashRange, other : DbindexhashRange) -> DbindexhashRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_range_copy(s : DbindexhashRange) -> DbindexhashRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashRange::copy(self : DbindexhashRange) -> DbindexhashRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_range_fill(s : DbindexhashRange, v : Double) -> DbindexhashRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashRange::fill(self : DbindexhashRange, v : Double) -> DbindexhashRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_range_min(s : DbindexhashRange) -> Double { @_common.min(s.data) }
+pub fn DbindexhashRange::min(self : DbindexhashRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_range_max(s : DbindexhashRange) -> Double { @_common.max(s.data) }
+pub fn DbindexhashRange::max(self : DbindexhashRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_range_to_string(s : DbindexhashRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashRange::to_string(self : DbindexhashRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexhashSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_hash_slice_make(size : Int) -> DbindexhashSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_hash_slice_len(s : DbindexhashSlice) -> Int { s.size }
+pub fn DbindexhashSlice::len(self : DbindexhashSlice) -> Int { self.size }
 
-pub fn db_index_hash_slice_get(s : DbindexhashSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexhashSlice::get(self : DbindexhashSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_hash_slice_set(s : DbindexhashSlice, i : Int, v : Double) -> DbindexhashSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexhashSlice::set(self : DbindexhashSlice, i : Int, v : Double) -> DbindexhashSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_slice_sum(s : DbindexhashSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexhashSlice::sum(self : DbindexhashSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_hash_slice_mean(s : DbindexhashSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexhashSlice::mean(self : DbindexhashSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_hash_slice_scale(s : DbindexhashSlice, f : Double) -> DbindexhashSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexhashSlice::scale(self : DbindexhashSlice, f : Double) -> DbindexhashSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_slice_add(a : DbindexhashSlice, b : DbindexhashSlice) -> DbindexhashSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexhashSlice::add(self : DbindexhashSlice, other : DbindexhashSlice) -> DbindexhashSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_hash_slice_copy(s : DbindexhashSlice) -> DbindexhashSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexhashSlice::copy(self : DbindexhashSlice) -> DbindexhashSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_slice_fill(s : DbindexhashSlice, v : Double) -> DbindexhashSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexhashSlice::fill(self : DbindexhashSlice, v : Double) -> DbindexhashSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_hash_slice_min(s : DbindexhashSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexhashSlice::min(self : DbindexhashSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_hash_slice_max(s : DbindexhashSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexhashSlice::max(self : DbindexhashSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_hash_slice_to_string(s : DbindexhashSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexhashSlice::to_string(self : DbindexhashSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

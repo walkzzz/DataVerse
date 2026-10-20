@@ -351,45 +351,45 @@ pub fn ml_regress_poly_frame_make(size : Int) -> MlregresspolyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_frame_len(s : MlregresspolyFrame) -> Int { s.size }
+pub fn MlregresspolyFrame::len(self : MlregresspolyFrame) -> Int { self.size }
 
-pub fn ml_regress_poly_frame_get(s : MlregresspolyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyFrame::get(self : MlregresspolyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_frame_set(s : MlregresspolyFrame, i : Int, v : Double) -> MlregresspolyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyFrame::set(self : MlregresspolyFrame, i : Int, v : Double) -> MlregresspolyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_frame_sum(s : MlregresspolyFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyFrame::sum(self : MlregresspolyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_frame_mean(s : MlregresspolyFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyFrame::mean(self : MlregresspolyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_frame_scale(s : MlregresspolyFrame, f : Double) -> MlregresspolyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyFrame::scale(self : MlregresspolyFrame, f : Double) -> MlregresspolyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_frame_add(a : MlregresspolyFrame, b : MlregresspolyFrame) -> MlregresspolyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyFrame::add(self : MlregresspolyFrame, other : MlregresspolyFrame) -> MlregresspolyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_frame_copy(s : MlregresspolyFrame) -> MlregresspolyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyFrame::copy(self : MlregresspolyFrame) -> MlregresspolyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_frame_fill(s : MlregresspolyFrame, v : Double) -> MlregresspolyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyFrame::fill(self : MlregresspolyFrame, v : Double) -> MlregresspolyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_frame_min(s : MlregresspolyFrame) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyFrame::min(self : MlregresspolyFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_frame_max(s : MlregresspolyFrame) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyFrame::max(self : MlregresspolyFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_frame_to_string(s : MlregresspolyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyFrame::to_string(self : MlregresspolyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_poly_table_make(size : Int) -> MlregresspolyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_table_len(s : MlregresspolyTable) -> Int { s.size }
+pub fn MlregresspolyTable::len(self : MlregresspolyTable) -> Int { self.size }
 
-pub fn ml_regress_poly_table_get(s : MlregresspolyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyTable::get(self : MlregresspolyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_table_set(s : MlregresspolyTable, i : Int, v : Double) -> MlregresspolyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyTable::set(self : MlregresspolyTable, i : Int, v : Double) -> MlregresspolyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_table_sum(s : MlregresspolyTable) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyTable::sum(self : MlregresspolyTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_table_mean(s : MlregresspolyTable) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyTable::mean(self : MlregresspolyTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_table_scale(s : MlregresspolyTable, f : Double) -> MlregresspolyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyTable::scale(self : MlregresspolyTable, f : Double) -> MlregresspolyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_table_add(a : MlregresspolyTable, b : MlregresspolyTable) -> MlregresspolyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyTable::add(self : MlregresspolyTable, other : MlregresspolyTable) -> MlregresspolyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_table_copy(s : MlregresspolyTable) -> MlregresspolyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyTable::copy(self : MlregresspolyTable) -> MlregresspolyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_table_fill(s : MlregresspolyTable, v : Double) -> MlregresspolyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyTable::fill(self : MlregresspolyTable, v : Double) -> MlregresspolyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_table_min(s : MlregresspolyTable) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyTable::min(self : MlregresspolyTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_table_max(s : MlregresspolyTable) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyTable::max(self : MlregresspolyTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_table_to_string(s : MlregresspolyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyTable::to_string(self : MlregresspolyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_poly_graphn_make(size : Int) -> MlregresspolyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_graphn_len(s : MlregresspolyGraphN) -> Int { s.size }
+pub fn MlregresspolyGraphN::len(self : MlregresspolyGraphN) -> Int { self.size }
 
-pub fn ml_regress_poly_graphn_get(s : MlregresspolyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyGraphN::get(self : MlregresspolyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_graphn_set(s : MlregresspolyGraphN, i : Int, v : Double) -> MlregresspolyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyGraphN::set(self : MlregresspolyGraphN, i : Int, v : Double) -> MlregresspolyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_graphn_sum(s : MlregresspolyGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyGraphN::sum(self : MlregresspolyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_graphn_mean(s : MlregresspolyGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyGraphN::mean(self : MlregresspolyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_graphn_scale(s : MlregresspolyGraphN, f : Double) -> MlregresspolyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyGraphN::scale(self : MlregresspolyGraphN, f : Double) -> MlregresspolyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_graphn_add(a : MlregresspolyGraphN, b : MlregresspolyGraphN) -> MlregresspolyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyGraphN::add(self : MlregresspolyGraphN, other : MlregresspolyGraphN) -> MlregresspolyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_graphn_copy(s : MlregresspolyGraphN) -> MlregresspolyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyGraphN::copy(self : MlregresspolyGraphN) -> MlregresspolyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_graphn_fill(s : MlregresspolyGraphN, v : Double) -> MlregresspolyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyGraphN::fill(self : MlregresspolyGraphN, v : Double) -> MlregresspolyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_graphn_min(s : MlregresspolyGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyGraphN::min(self : MlregresspolyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_graphn_max(s : MlregresspolyGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyGraphN::max(self : MlregresspolyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_graphn_to_string(s : MlregresspolyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyGraphN::to_string(self : MlregresspolyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_poly_node_make(size : Int) -> MlregresspolyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_node_len(s : MlregresspolyNode) -> Int { s.size }
+pub fn MlregresspolyNode::len(self : MlregresspolyNode) -> Int { self.size }
 
-pub fn ml_regress_poly_node_get(s : MlregresspolyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyNode::get(self : MlregresspolyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_node_set(s : MlregresspolyNode, i : Int, v : Double) -> MlregresspolyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyNode::set(self : MlregresspolyNode, i : Int, v : Double) -> MlregresspolyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_node_sum(s : MlregresspolyNode) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyNode::sum(self : MlregresspolyNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_node_mean(s : MlregresspolyNode) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyNode::mean(self : MlregresspolyNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_node_scale(s : MlregresspolyNode, f : Double) -> MlregresspolyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyNode::scale(self : MlregresspolyNode, f : Double) -> MlregresspolyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_node_add(a : MlregresspolyNode, b : MlregresspolyNode) -> MlregresspolyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyNode::add(self : MlregresspolyNode, other : MlregresspolyNode) -> MlregresspolyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_node_copy(s : MlregresspolyNode) -> MlregresspolyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyNode::copy(self : MlregresspolyNode) -> MlregresspolyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_node_fill(s : MlregresspolyNode, v : Double) -> MlregresspolyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyNode::fill(self : MlregresspolyNode, v : Double) -> MlregresspolyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_node_min(s : MlregresspolyNode) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyNode::min(self : MlregresspolyNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_node_max(s : MlregresspolyNode) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyNode::max(self : MlregresspolyNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_node_to_string(s : MlregresspolyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyNode::to_string(self : MlregresspolyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_poly_edge_make(size : Int) -> MlregresspolyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_edge_len(s : MlregresspolyEdge) -> Int { s.size }
+pub fn MlregresspolyEdge::len(self : MlregresspolyEdge) -> Int { self.size }
 
-pub fn ml_regress_poly_edge_get(s : MlregresspolyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyEdge::get(self : MlregresspolyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_edge_set(s : MlregresspolyEdge, i : Int, v : Double) -> MlregresspolyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyEdge::set(self : MlregresspolyEdge, i : Int, v : Double) -> MlregresspolyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_edge_sum(s : MlregresspolyEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyEdge::sum(self : MlregresspolyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_edge_mean(s : MlregresspolyEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyEdge::mean(self : MlregresspolyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_edge_scale(s : MlregresspolyEdge, f : Double) -> MlregresspolyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyEdge::scale(self : MlregresspolyEdge, f : Double) -> MlregresspolyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_edge_add(a : MlregresspolyEdge, b : MlregresspolyEdge) -> MlregresspolyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyEdge::add(self : MlregresspolyEdge, other : MlregresspolyEdge) -> MlregresspolyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_edge_copy(s : MlregresspolyEdge) -> MlregresspolyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyEdge::copy(self : MlregresspolyEdge) -> MlregresspolyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_edge_fill(s : MlregresspolyEdge, v : Double) -> MlregresspolyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyEdge::fill(self : MlregresspolyEdge, v : Double) -> MlregresspolyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_edge_min(s : MlregresspolyEdge) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyEdge::min(self : MlregresspolyEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_edge_max(s : MlregresspolyEdge) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyEdge::max(self : MlregresspolyEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_edge_to_string(s : MlregresspolyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyEdge::to_string(self : MlregresspolyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_poly_path_make(size : Int) -> MlregresspolyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_path_len(s : MlregresspolyPath) -> Int { s.size }
+pub fn MlregresspolyPath::len(self : MlregresspolyPath) -> Int { self.size }
 
-pub fn ml_regress_poly_path_get(s : MlregresspolyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyPath::get(self : MlregresspolyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_path_set(s : MlregresspolyPath, i : Int, v : Double) -> MlregresspolyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyPath::set(self : MlregresspolyPath, i : Int, v : Double) -> MlregresspolyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_path_sum(s : MlregresspolyPath) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyPath::sum(self : MlregresspolyPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_path_mean(s : MlregresspolyPath) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyPath::mean(self : MlregresspolyPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_path_scale(s : MlregresspolyPath, f : Double) -> MlregresspolyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyPath::scale(self : MlregresspolyPath, f : Double) -> MlregresspolyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_path_add(a : MlregresspolyPath, b : MlregresspolyPath) -> MlregresspolyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyPath::add(self : MlregresspolyPath, other : MlregresspolyPath) -> MlregresspolyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_path_copy(s : MlregresspolyPath) -> MlregresspolyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyPath::copy(self : MlregresspolyPath) -> MlregresspolyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_path_fill(s : MlregresspolyPath, v : Double) -> MlregresspolyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyPath::fill(self : MlregresspolyPath, v : Double) -> MlregresspolyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_path_min(s : MlregresspolyPath) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyPath::min(self : MlregresspolyPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_path_max(s : MlregresspolyPath) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyPath::max(self : MlregresspolyPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_path_to_string(s : MlregresspolyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyPath::to_string(self : MlregresspolyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_poly_cluster_make(size : Int) -> MlregresspolyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_cluster_len(s : MlregresspolyCluster) -> Int { s.size }
+pub fn MlregresspolyCluster::len(self : MlregresspolyCluster) -> Int { self.size }
 
-pub fn ml_regress_poly_cluster_get(s : MlregresspolyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyCluster::get(self : MlregresspolyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_cluster_set(s : MlregresspolyCluster, i : Int, v : Double) -> MlregresspolyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyCluster::set(self : MlregresspolyCluster, i : Int, v : Double) -> MlregresspolyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cluster_sum(s : MlregresspolyCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyCluster::sum(self : MlregresspolyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_cluster_mean(s : MlregresspolyCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyCluster::mean(self : MlregresspolyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_cluster_scale(s : MlregresspolyCluster, f : Double) -> MlregresspolyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyCluster::scale(self : MlregresspolyCluster, f : Double) -> MlregresspolyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cluster_add(a : MlregresspolyCluster, b : MlregresspolyCluster) -> MlregresspolyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyCluster::add(self : MlregresspolyCluster, other : MlregresspolyCluster) -> MlregresspolyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cluster_copy(s : MlregresspolyCluster) -> MlregresspolyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyCluster::copy(self : MlregresspolyCluster) -> MlregresspolyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cluster_fill(s : MlregresspolyCluster, v : Double) -> MlregresspolyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyCluster::fill(self : MlregresspolyCluster, v : Double) -> MlregresspolyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cluster_min(s : MlregresspolyCluster) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyCluster::min(self : MlregresspolyCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_cluster_max(s : MlregresspolyCluster) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyCluster::max(self : MlregresspolyCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_cluster_to_string(s : MlregresspolyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyCluster::to_string(self : MlregresspolyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_poly_model_make(size : Int) -> MlregresspolyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_model_len(s : MlregresspolyModel) -> Int { s.size }
+pub fn MlregresspolyModel::len(self : MlregresspolyModel) -> Int { self.size }
 
-pub fn ml_regress_poly_model_get(s : MlregresspolyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyModel::get(self : MlregresspolyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_model_set(s : MlregresspolyModel, i : Int, v : Double) -> MlregresspolyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyModel::set(self : MlregresspolyModel, i : Int, v : Double) -> MlregresspolyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_model_sum(s : MlregresspolyModel) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyModel::sum(self : MlregresspolyModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_model_mean(s : MlregresspolyModel) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyModel::mean(self : MlregresspolyModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_model_scale(s : MlregresspolyModel, f : Double) -> MlregresspolyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyModel::scale(self : MlregresspolyModel, f : Double) -> MlregresspolyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_model_add(a : MlregresspolyModel, b : MlregresspolyModel) -> MlregresspolyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyModel::add(self : MlregresspolyModel, other : MlregresspolyModel) -> MlregresspolyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_model_copy(s : MlregresspolyModel) -> MlregresspolyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyModel::copy(self : MlregresspolyModel) -> MlregresspolyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_model_fill(s : MlregresspolyModel, v : Double) -> MlregresspolyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyModel::fill(self : MlregresspolyModel, v : Double) -> MlregresspolyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_model_min(s : MlregresspolyModel) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyModel::min(self : MlregresspolyModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_model_max(s : MlregresspolyModel) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyModel::max(self : MlregresspolyModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_model_to_string(s : MlregresspolyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyModel::to_string(self : MlregresspolyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_poly_layer_make(size : Int) -> MlregresspolyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_layer_len(s : MlregresspolyLayer) -> Int { s.size }
+pub fn MlregresspolyLayer::len(self : MlregresspolyLayer) -> Int { self.size }
 
-pub fn ml_regress_poly_layer_get(s : MlregresspolyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyLayer::get(self : MlregresspolyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_layer_set(s : MlregresspolyLayer, i : Int, v : Double) -> MlregresspolyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyLayer::set(self : MlregresspolyLayer, i : Int, v : Double) -> MlregresspolyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_layer_sum(s : MlregresspolyLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyLayer::sum(self : MlregresspolyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_layer_mean(s : MlregresspolyLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyLayer::mean(self : MlregresspolyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_layer_scale(s : MlregresspolyLayer, f : Double) -> MlregresspolyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyLayer::scale(self : MlregresspolyLayer, f : Double) -> MlregresspolyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_layer_add(a : MlregresspolyLayer, b : MlregresspolyLayer) -> MlregresspolyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyLayer::add(self : MlregresspolyLayer, other : MlregresspolyLayer) -> MlregresspolyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_layer_copy(s : MlregresspolyLayer) -> MlregresspolyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyLayer::copy(self : MlregresspolyLayer) -> MlregresspolyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_layer_fill(s : MlregresspolyLayer, v : Double) -> MlregresspolyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyLayer::fill(self : MlregresspolyLayer, v : Double) -> MlregresspolyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_layer_min(s : MlregresspolyLayer) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyLayer::min(self : MlregresspolyLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_layer_max(s : MlregresspolyLayer) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyLayer::max(self : MlregresspolyLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_layer_to_string(s : MlregresspolyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyLayer::to_string(self : MlregresspolyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_poly_buffer_make(size : Int) -> MlregresspolyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_buffer_len(s : MlregresspolyBuffer) -> Int { s.size }
+pub fn MlregresspolyBuffer::len(self : MlregresspolyBuffer) -> Int { self.size }
 
-pub fn ml_regress_poly_buffer_get(s : MlregresspolyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyBuffer::get(self : MlregresspolyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_buffer_set(s : MlregresspolyBuffer, i : Int, v : Double) -> MlregresspolyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyBuffer::set(self : MlregresspolyBuffer, i : Int, v : Double) -> MlregresspolyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_buffer_sum(s : MlregresspolyBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyBuffer::sum(self : MlregresspolyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_buffer_mean(s : MlregresspolyBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyBuffer::mean(self : MlregresspolyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_buffer_scale(s : MlregresspolyBuffer, f : Double) -> MlregresspolyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyBuffer::scale(self : MlregresspolyBuffer, f : Double) -> MlregresspolyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_buffer_add(a : MlregresspolyBuffer, b : MlregresspolyBuffer) -> MlregresspolyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyBuffer::add(self : MlregresspolyBuffer, other : MlregresspolyBuffer) -> MlregresspolyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_buffer_copy(s : MlregresspolyBuffer) -> MlregresspolyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyBuffer::copy(self : MlregresspolyBuffer) -> MlregresspolyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_buffer_fill(s : MlregresspolyBuffer, v : Double) -> MlregresspolyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyBuffer::fill(self : MlregresspolyBuffer, v : Double) -> MlregresspolyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_buffer_min(s : MlregresspolyBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyBuffer::min(self : MlregresspolyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_buffer_max(s : MlregresspolyBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyBuffer::max(self : MlregresspolyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_buffer_to_string(s : MlregresspolyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyBuffer::to_string(self : MlregresspolyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_poly_cursor_make(size : Int) -> MlregresspolyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_cursor_len(s : MlregresspolyCursor) -> Int { s.size }
+pub fn MlregresspolyCursor::len(self : MlregresspolyCursor) -> Int { self.size }
 
-pub fn ml_regress_poly_cursor_get(s : MlregresspolyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyCursor::get(self : MlregresspolyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_cursor_set(s : MlregresspolyCursor, i : Int, v : Double) -> MlregresspolyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyCursor::set(self : MlregresspolyCursor, i : Int, v : Double) -> MlregresspolyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cursor_sum(s : MlregresspolyCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyCursor::sum(self : MlregresspolyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_cursor_mean(s : MlregresspolyCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyCursor::mean(self : MlregresspolyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_cursor_scale(s : MlregresspolyCursor, f : Double) -> MlregresspolyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyCursor::scale(self : MlregresspolyCursor, f : Double) -> MlregresspolyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cursor_add(a : MlregresspolyCursor, b : MlregresspolyCursor) -> MlregresspolyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyCursor::add(self : MlregresspolyCursor, other : MlregresspolyCursor) -> MlregresspolyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cursor_copy(s : MlregresspolyCursor) -> MlregresspolyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyCursor::copy(self : MlregresspolyCursor) -> MlregresspolyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cursor_fill(s : MlregresspolyCursor, v : Double) -> MlregresspolyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyCursor::fill(self : MlregresspolyCursor, v : Double) -> MlregresspolyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_cursor_min(s : MlregresspolyCursor) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyCursor::min(self : MlregresspolyCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_cursor_max(s : MlregresspolyCursor) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyCursor::max(self : MlregresspolyCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_cursor_to_string(s : MlregresspolyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyCursor::to_string(self : MlregresspolyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyView {
@@ -912,45 +912,45 @@ pub fn ml_regress_poly_view_make(size : Int) -> MlregresspolyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_view_len(s : MlregresspolyView) -> Int { s.size }
+pub fn MlregresspolyView::len(self : MlregresspolyView) -> Int { self.size }
 
-pub fn ml_regress_poly_view_get(s : MlregresspolyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyView::get(self : MlregresspolyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_view_set(s : MlregresspolyView, i : Int, v : Double) -> MlregresspolyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyView::set(self : MlregresspolyView, i : Int, v : Double) -> MlregresspolyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_view_sum(s : MlregresspolyView) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyView::sum(self : MlregresspolyView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_view_mean(s : MlregresspolyView) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyView::mean(self : MlregresspolyView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_view_scale(s : MlregresspolyView, f : Double) -> MlregresspolyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyView::scale(self : MlregresspolyView, f : Double) -> MlregresspolyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_view_add(a : MlregresspolyView, b : MlregresspolyView) -> MlregresspolyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyView::add(self : MlregresspolyView, other : MlregresspolyView) -> MlregresspolyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_view_copy(s : MlregresspolyView) -> MlregresspolyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyView::copy(self : MlregresspolyView) -> MlregresspolyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_view_fill(s : MlregresspolyView, v : Double) -> MlregresspolyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyView::fill(self : MlregresspolyView, v : Double) -> MlregresspolyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_view_min(s : MlregresspolyView) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyView::min(self : MlregresspolyView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_view_max(s : MlregresspolyView) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyView::max(self : MlregresspolyView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_view_to_string(s : MlregresspolyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyView::to_string(self : MlregresspolyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolyRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_poly_range_make(size : Int) -> MlregresspolyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_range_len(s : MlregresspolyRange) -> Int { s.size }
+pub fn MlregresspolyRange::len(self : MlregresspolyRange) -> Int { self.size }
 
-pub fn ml_regress_poly_range_get(s : MlregresspolyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolyRange::get(self : MlregresspolyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_range_set(s : MlregresspolyRange, i : Int, v : Double) -> MlregresspolyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolyRange::set(self : MlregresspolyRange, i : Int, v : Double) -> MlregresspolyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_range_sum(s : MlregresspolyRange) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolyRange::sum(self : MlregresspolyRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_range_mean(s : MlregresspolyRange) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolyRange::mean(self : MlregresspolyRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_range_scale(s : MlregresspolyRange, f : Double) -> MlregresspolyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolyRange::scale(self : MlregresspolyRange, f : Double) -> MlregresspolyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_range_add(a : MlregresspolyRange, b : MlregresspolyRange) -> MlregresspolyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolyRange::add(self : MlregresspolyRange, other : MlregresspolyRange) -> MlregresspolyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_range_copy(s : MlregresspolyRange) -> MlregresspolyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolyRange::copy(self : MlregresspolyRange) -> MlregresspolyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_range_fill(s : MlregresspolyRange, v : Double) -> MlregresspolyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolyRange::fill(self : MlregresspolyRange, v : Double) -> MlregresspolyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_range_min(s : MlregresspolyRange) -> Double { @_common.min(s.data) }
+pub fn MlregresspolyRange::min(self : MlregresspolyRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_range_max(s : MlregresspolyRange) -> Double { @_common.max(s.data) }
+pub fn MlregresspolyRange::max(self : MlregresspolyRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_range_to_string(s : MlregresspolyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolyRange::to_string(self : MlregresspolyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresspolySlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_poly_slice_make(size : Int) -> MlregresspolySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_poly_slice_len(s : MlregresspolySlice) -> Int { s.size }
+pub fn MlregresspolySlice::len(self : MlregresspolySlice) -> Int { self.size }
 
-pub fn ml_regress_poly_slice_get(s : MlregresspolySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresspolySlice::get(self : MlregresspolySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_poly_slice_set(s : MlregresspolySlice, i : Int, v : Double) -> MlregresspolySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresspolySlice::set(self : MlregresspolySlice, i : Int, v : Double) -> MlregresspolySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_slice_sum(s : MlregresspolySlice) -> Double { @_common.sum(s.data) }
+pub fn MlregresspolySlice::sum(self : MlregresspolySlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_poly_slice_mean(s : MlregresspolySlice) -> Double { @_common.mean(s.data) }
+pub fn MlregresspolySlice::mean(self : MlregresspolySlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_poly_slice_scale(s : MlregresspolySlice, f : Double) -> MlregresspolySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresspolySlice::scale(self : MlregresspolySlice, f : Double) -> MlregresspolySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_slice_add(a : MlregresspolySlice, b : MlregresspolySlice) -> MlregresspolySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresspolySlice::add(self : MlregresspolySlice, other : MlregresspolySlice) -> MlregresspolySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_poly_slice_copy(s : MlregresspolySlice) -> MlregresspolySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresspolySlice::copy(self : MlregresspolySlice) -> MlregresspolySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_slice_fill(s : MlregresspolySlice, v : Double) -> MlregresspolySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresspolySlice::fill(self : MlregresspolySlice, v : Double) -> MlregresspolySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_poly_slice_min(s : MlregresspolySlice) -> Double { @_common.min(s.data) }
+pub fn MlregresspolySlice::min(self : MlregresspolySlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_poly_slice_max(s : MlregresspolySlice) -> Double { @_common.max(s.data) }
+pub fn MlregresspolySlice::max(self : MlregresspolySlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_poly_slice_to_string(s : MlregresspolySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresspolySlice::to_string(self : MlregresspolySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

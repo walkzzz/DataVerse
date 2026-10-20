@@ -351,45 +351,45 @@ pub fn physics_fluid_stokes_frame_make(size : Int) -> PhysicsfluidstokesFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_frame_len(s : PhysicsfluidstokesFrame) -> Int { s.size }
+pub fn PhysicsfluidstokesFrame::len(self : PhysicsfluidstokesFrame) -> Int { self.size }
 
-pub fn physics_fluid_stokes_frame_get(s : PhysicsfluidstokesFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesFrame::get(self : PhysicsfluidstokesFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_frame_set(s : PhysicsfluidstokesFrame, i : Int, v : Double) -> PhysicsfluidstokesFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesFrame::set(self : PhysicsfluidstokesFrame, i : Int, v : Double) -> PhysicsfluidstokesFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_frame_sum(s : PhysicsfluidstokesFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesFrame::sum(self : PhysicsfluidstokesFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_frame_mean(s : PhysicsfluidstokesFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesFrame::mean(self : PhysicsfluidstokesFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_frame_scale(s : PhysicsfluidstokesFrame, f : Double) -> PhysicsfluidstokesFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesFrame::scale(self : PhysicsfluidstokesFrame, f : Double) -> PhysicsfluidstokesFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_frame_add(a : PhysicsfluidstokesFrame, b : PhysicsfluidstokesFrame) -> PhysicsfluidstokesFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesFrame::add(self : PhysicsfluidstokesFrame, other : PhysicsfluidstokesFrame) -> PhysicsfluidstokesFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_frame_copy(s : PhysicsfluidstokesFrame) -> PhysicsfluidstokesFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesFrame::copy(self : PhysicsfluidstokesFrame) -> PhysicsfluidstokesFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_frame_fill(s : PhysicsfluidstokesFrame, v : Double) -> PhysicsfluidstokesFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesFrame::fill(self : PhysicsfluidstokesFrame, v : Double) -> PhysicsfluidstokesFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_frame_min(s : PhysicsfluidstokesFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesFrame::min(self : PhysicsfluidstokesFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_frame_max(s : PhysicsfluidstokesFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesFrame::max(self : PhysicsfluidstokesFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_frame_to_string(s : PhysicsfluidstokesFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesFrame::to_string(self : PhysicsfluidstokesFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesTable {
@@ -402,45 +402,45 @@ pub fn physics_fluid_stokes_table_make(size : Int) -> PhysicsfluidstokesTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_table_len(s : PhysicsfluidstokesTable) -> Int { s.size }
+pub fn PhysicsfluidstokesTable::len(self : PhysicsfluidstokesTable) -> Int { self.size }
 
-pub fn physics_fluid_stokes_table_get(s : PhysicsfluidstokesTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesTable::get(self : PhysicsfluidstokesTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_table_set(s : PhysicsfluidstokesTable, i : Int, v : Double) -> PhysicsfluidstokesTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesTable::set(self : PhysicsfluidstokesTable, i : Int, v : Double) -> PhysicsfluidstokesTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_table_sum(s : PhysicsfluidstokesTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesTable::sum(self : PhysicsfluidstokesTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_table_mean(s : PhysicsfluidstokesTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesTable::mean(self : PhysicsfluidstokesTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_table_scale(s : PhysicsfluidstokesTable, f : Double) -> PhysicsfluidstokesTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesTable::scale(self : PhysicsfluidstokesTable, f : Double) -> PhysicsfluidstokesTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_table_add(a : PhysicsfluidstokesTable, b : PhysicsfluidstokesTable) -> PhysicsfluidstokesTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesTable::add(self : PhysicsfluidstokesTable, other : PhysicsfluidstokesTable) -> PhysicsfluidstokesTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_table_copy(s : PhysicsfluidstokesTable) -> PhysicsfluidstokesTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesTable::copy(self : PhysicsfluidstokesTable) -> PhysicsfluidstokesTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_table_fill(s : PhysicsfluidstokesTable, v : Double) -> PhysicsfluidstokesTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesTable::fill(self : PhysicsfluidstokesTable, v : Double) -> PhysicsfluidstokesTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_table_min(s : PhysicsfluidstokesTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesTable::min(self : PhysicsfluidstokesTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_table_max(s : PhysicsfluidstokesTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesTable::max(self : PhysicsfluidstokesTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_table_to_string(s : PhysicsfluidstokesTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesTable::to_string(self : PhysicsfluidstokesTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesGraphN {
@@ -453,45 +453,45 @@ pub fn physics_fluid_stokes_graphn_make(size : Int) -> PhysicsfluidstokesGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_graphn_len(s : PhysicsfluidstokesGraphN) -> Int { s.size }
+pub fn PhysicsfluidstokesGraphN::len(self : PhysicsfluidstokesGraphN) -> Int { self.size }
 
-pub fn physics_fluid_stokes_graphn_get(s : PhysicsfluidstokesGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesGraphN::get(self : PhysicsfluidstokesGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_graphn_set(s : PhysicsfluidstokesGraphN, i : Int, v : Double) -> PhysicsfluidstokesGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesGraphN::set(self : PhysicsfluidstokesGraphN, i : Int, v : Double) -> PhysicsfluidstokesGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_graphn_sum(s : PhysicsfluidstokesGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesGraphN::sum(self : PhysicsfluidstokesGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_graphn_mean(s : PhysicsfluidstokesGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesGraphN::mean(self : PhysicsfluidstokesGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_graphn_scale(s : PhysicsfluidstokesGraphN, f : Double) -> PhysicsfluidstokesGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesGraphN::scale(self : PhysicsfluidstokesGraphN, f : Double) -> PhysicsfluidstokesGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_graphn_add(a : PhysicsfluidstokesGraphN, b : PhysicsfluidstokesGraphN) -> PhysicsfluidstokesGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesGraphN::add(self : PhysicsfluidstokesGraphN, other : PhysicsfluidstokesGraphN) -> PhysicsfluidstokesGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_graphn_copy(s : PhysicsfluidstokesGraphN) -> PhysicsfluidstokesGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesGraphN::copy(self : PhysicsfluidstokesGraphN) -> PhysicsfluidstokesGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_graphn_fill(s : PhysicsfluidstokesGraphN, v : Double) -> PhysicsfluidstokesGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesGraphN::fill(self : PhysicsfluidstokesGraphN, v : Double) -> PhysicsfluidstokesGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_graphn_min(s : PhysicsfluidstokesGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesGraphN::min(self : PhysicsfluidstokesGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_graphn_max(s : PhysicsfluidstokesGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesGraphN::max(self : PhysicsfluidstokesGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_graphn_to_string(s : PhysicsfluidstokesGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesGraphN::to_string(self : PhysicsfluidstokesGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesNode {
@@ -504,45 +504,45 @@ pub fn physics_fluid_stokes_node_make(size : Int) -> PhysicsfluidstokesNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_node_len(s : PhysicsfluidstokesNode) -> Int { s.size }
+pub fn PhysicsfluidstokesNode::len(self : PhysicsfluidstokesNode) -> Int { self.size }
 
-pub fn physics_fluid_stokes_node_get(s : PhysicsfluidstokesNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesNode::get(self : PhysicsfluidstokesNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_node_set(s : PhysicsfluidstokesNode, i : Int, v : Double) -> PhysicsfluidstokesNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesNode::set(self : PhysicsfluidstokesNode, i : Int, v : Double) -> PhysicsfluidstokesNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_node_sum(s : PhysicsfluidstokesNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesNode::sum(self : PhysicsfluidstokesNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_node_mean(s : PhysicsfluidstokesNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesNode::mean(self : PhysicsfluidstokesNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_node_scale(s : PhysicsfluidstokesNode, f : Double) -> PhysicsfluidstokesNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesNode::scale(self : PhysicsfluidstokesNode, f : Double) -> PhysicsfluidstokesNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_node_add(a : PhysicsfluidstokesNode, b : PhysicsfluidstokesNode) -> PhysicsfluidstokesNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesNode::add(self : PhysicsfluidstokesNode, other : PhysicsfluidstokesNode) -> PhysicsfluidstokesNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_node_copy(s : PhysicsfluidstokesNode) -> PhysicsfluidstokesNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesNode::copy(self : PhysicsfluidstokesNode) -> PhysicsfluidstokesNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_node_fill(s : PhysicsfluidstokesNode, v : Double) -> PhysicsfluidstokesNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesNode::fill(self : PhysicsfluidstokesNode, v : Double) -> PhysicsfluidstokesNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_node_min(s : PhysicsfluidstokesNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesNode::min(self : PhysicsfluidstokesNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_node_max(s : PhysicsfluidstokesNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesNode::max(self : PhysicsfluidstokesNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_node_to_string(s : PhysicsfluidstokesNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesNode::to_string(self : PhysicsfluidstokesNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesEdge {
@@ -555,45 +555,45 @@ pub fn physics_fluid_stokes_edge_make(size : Int) -> PhysicsfluidstokesEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_edge_len(s : PhysicsfluidstokesEdge) -> Int { s.size }
+pub fn PhysicsfluidstokesEdge::len(self : PhysicsfluidstokesEdge) -> Int { self.size }
 
-pub fn physics_fluid_stokes_edge_get(s : PhysicsfluidstokesEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesEdge::get(self : PhysicsfluidstokesEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_edge_set(s : PhysicsfluidstokesEdge, i : Int, v : Double) -> PhysicsfluidstokesEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesEdge::set(self : PhysicsfluidstokesEdge, i : Int, v : Double) -> PhysicsfluidstokesEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_edge_sum(s : PhysicsfluidstokesEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesEdge::sum(self : PhysicsfluidstokesEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_edge_mean(s : PhysicsfluidstokesEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesEdge::mean(self : PhysicsfluidstokesEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_edge_scale(s : PhysicsfluidstokesEdge, f : Double) -> PhysicsfluidstokesEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesEdge::scale(self : PhysicsfluidstokesEdge, f : Double) -> PhysicsfluidstokesEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_edge_add(a : PhysicsfluidstokesEdge, b : PhysicsfluidstokesEdge) -> PhysicsfluidstokesEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesEdge::add(self : PhysicsfluidstokesEdge, other : PhysicsfluidstokesEdge) -> PhysicsfluidstokesEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_edge_copy(s : PhysicsfluidstokesEdge) -> PhysicsfluidstokesEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesEdge::copy(self : PhysicsfluidstokesEdge) -> PhysicsfluidstokesEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_edge_fill(s : PhysicsfluidstokesEdge, v : Double) -> PhysicsfluidstokesEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesEdge::fill(self : PhysicsfluidstokesEdge, v : Double) -> PhysicsfluidstokesEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_edge_min(s : PhysicsfluidstokesEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesEdge::min(self : PhysicsfluidstokesEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_edge_max(s : PhysicsfluidstokesEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesEdge::max(self : PhysicsfluidstokesEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_edge_to_string(s : PhysicsfluidstokesEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesEdge::to_string(self : PhysicsfluidstokesEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesPath {
@@ -606,45 +606,45 @@ pub fn physics_fluid_stokes_path_make(size : Int) -> PhysicsfluidstokesPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_path_len(s : PhysicsfluidstokesPath) -> Int { s.size }
+pub fn PhysicsfluidstokesPath::len(self : PhysicsfluidstokesPath) -> Int { self.size }
 
-pub fn physics_fluid_stokes_path_get(s : PhysicsfluidstokesPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesPath::get(self : PhysicsfluidstokesPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_path_set(s : PhysicsfluidstokesPath, i : Int, v : Double) -> PhysicsfluidstokesPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesPath::set(self : PhysicsfluidstokesPath, i : Int, v : Double) -> PhysicsfluidstokesPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_path_sum(s : PhysicsfluidstokesPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesPath::sum(self : PhysicsfluidstokesPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_path_mean(s : PhysicsfluidstokesPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesPath::mean(self : PhysicsfluidstokesPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_path_scale(s : PhysicsfluidstokesPath, f : Double) -> PhysicsfluidstokesPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesPath::scale(self : PhysicsfluidstokesPath, f : Double) -> PhysicsfluidstokesPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_path_add(a : PhysicsfluidstokesPath, b : PhysicsfluidstokesPath) -> PhysicsfluidstokesPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesPath::add(self : PhysicsfluidstokesPath, other : PhysicsfluidstokesPath) -> PhysicsfluidstokesPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_path_copy(s : PhysicsfluidstokesPath) -> PhysicsfluidstokesPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesPath::copy(self : PhysicsfluidstokesPath) -> PhysicsfluidstokesPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_path_fill(s : PhysicsfluidstokesPath, v : Double) -> PhysicsfluidstokesPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesPath::fill(self : PhysicsfluidstokesPath, v : Double) -> PhysicsfluidstokesPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_path_min(s : PhysicsfluidstokesPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesPath::min(self : PhysicsfluidstokesPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_path_max(s : PhysicsfluidstokesPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesPath::max(self : PhysicsfluidstokesPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_path_to_string(s : PhysicsfluidstokesPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesPath::to_string(self : PhysicsfluidstokesPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesCluster {
@@ -657,45 +657,45 @@ pub fn physics_fluid_stokes_cluster_make(size : Int) -> PhysicsfluidstokesCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_cluster_len(s : PhysicsfluidstokesCluster) -> Int { s.size }
+pub fn PhysicsfluidstokesCluster::len(self : PhysicsfluidstokesCluster) -> Int { self.size }
 
-pub fn physics_fluid_stokes_cluster_get(s : PhysicsfluidstokesCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesCluster::get(self : PhysicsfluidstokesCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_cluster_set(s : PhysicsfluidstokesCluster, i : Int, v : Double) -> PhysicsfluidstokesCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCluster::set(self : PhysicsfluidstokesCluster, i : Int, v : Double) -> PhysicsfluidstokesCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cluster_sum(s : PhysicsfluidstokesCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesCluster::sum(self : PhysicsfluidstokesCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_cluster_mean(s : PhysicsfluidstokesCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesCluster::mean(self : PhysicsfluidstokesCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_cluster_scale(s : PhysicsfluidstokesCluster, f : Double) -> PhysicsfluidstokesCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCluster::scale(self : PhysicsfluidstokesCluster, f : Double) -> PhysicsfluidstokesCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cluster_add(a : PhysicsfluidstokesCluster, b : PhysicsfluidstokesCluster) -> PhysicsfluidstokesCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesCluster::add(self : PhysicsfluidstokesCluster, other : PhysicsfluidstokesCluster) -> PhysicsfluidstokesCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cluster_copy(s : PhysicsfluidstokesCluster) -> PhysicsfluidstokesCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCluster::copy(self : PhysicsfluidstokesCluster) -> PhysicsfluidstokesCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cluster_fill(s : PhysicsfluidstokesCluster, v : Double) -> PhysicsfluidstokesCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCluster::fill(self : PhysicsfluidstokesCluster, v : Double) -> PhysicsfluidstokesCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cluster_min(s : PhysicsfluidstokesCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesCluster::min(self : PhysicsfluidstokesCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_cluster_max(s : PhysicsfluidstokesCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesCluster::max(self : PhysicsfluidstokesCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_cluster_to_string(s : PhysicsfluidstokesCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesCluster::to_string(self : PhysicsfluidstokesCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesModel {
@@ -708,45 +708,45 @@ pub fn physics_fluid_stokes_model_make(size : Int) -> PhysicsfluidstokesModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_model_len(s : PhysicsfluidstokesModel) -> Int { s.size }
+pub fn PhysicsfluidstokesModel::len(self : PhysicsfluidstokesModel) -> Int { self.size }
 
-pub fn physics_fluid_stokes_model_get(s : PhysicsfluidstokesModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesModel::get(self : PhysicsfluidstokesModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_model_set(s : PhysicsfluidstokesModel, i : Int, v : Double) -> PhysicsfluidstokesModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesModel::set(self : PhysicsfluidstokesModel, i : Int, v : Double) -> PhysicsfluidstokesModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_model_sum(s : PhysicsfluidstokesModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesModel::sum(self : PhysicsfluidstokesModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_model_mean(s : PhysicsfluidstokesModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesModel::mean(self : PhysicsfluidstokesModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_model_scale(s : PhysicsfluidstokesModel, f : Double) -> PhysicsfluidstokesModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesModel::scale(self : PhysicsfluidstokesModel, f : Double) -> PhysicsfluidstokesModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_model_add(a : PhysicsfluidstokesModel, b : PhysicsfluidstokesModel) -> PhysicsfluidstokesModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesModel::add(self : PhysicsfluidstokesModel, other : PhysicsfluidstokesModel) -> PhysicsfluidstokesModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_model_copy(s : PhysicsfluidstokesModel) -> PhysicsfluidstokesModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesModel::copy(self : PhysicsfluidstokesModel) -> PhysicsfluidstokesModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_model_fill(s : PhysicsfluidstokesModel, v : Double) -> PhysicsfluidstokesModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesModel::fill(self : PhysicsfluidstokesModel, v : Double) -> PhysicsfluidstokesModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_model_min(s : PhysicsfluidstokesModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesModel::min(self : PhysicsfluidstokesModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_model_max(s : PhysicsfluidstokesModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesModel::max(self : PhysicsfluidstokesModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_model_to_string(s : PhysicsfluidstokesModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesModel::to_string(self : PhysicsfluidstokesModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesLayer {
@@ -759,45 +759,45 @@ pub fn physics_fluid_stokes_layer_make(size : Int) -> PhysicsfluidstokesLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_layer_len(s : PhysicsfluidstokesLayer) -> Int { s.size }
+pub fn PhysicsfluidstokesLayer::len(self : PhysicsfluidstokesLayer) -> Int { self.size }
 
-pub fn physics_fluid_stokes_layer_get(s : PhysicsfluidstokesLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesLayer::get(self : PhysicsfluidstokesLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_layer_set(s : PhysicsfluidstokesLayer, i : Int, v : Double) -> PhysicsfluidstokesLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesLayer::set(self : PhysicsfluidstokesLayer, i : Int, v : Double) -> PhysicsfluidstokesLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_layer_sum(s : PhysicsfluidstokesLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesLayer::sum(self : PhysicsfluidstokesLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_layer_mean(s : PhysicsfluidstokesLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesLayer::mean(self : PhysicsfluidstokesLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_layer_scale(s : PhysicsfluidstokesLayer, f : Double) -> PhysicsfluidstokesLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesLayer::scale(self : PhysicsfluidstokesLayer, f : Double) -> PhysicsfluidstokesLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_layer_add(a : PhysicsfluidstokesLayer, b : PhysicsfluidstokesLayer) -> PhysicsfluidstokesLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesLayer::add(self : PhysicsfluidstokesLayer, other : PhysicsfluidstokesLayer) -> PhysicsfluidstokesLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_layer_copy(s : PhysicsfluidstokesLayer) -> PhysicsfluidstokesLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesLayer::copy(self : PhysicsfluidstokesLayer) -> PhysicsfluidstokesLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_layer_fill(s : PhysicsfluidstokesLayer, v : Double) -> PhysicsfluidstokesLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesLayer::fill(self : PhysicsfluidstokesLayer, v : Double) -> PhysicsfluidstokesLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_layer_min(s : PhysicsfluidstokesLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesLayer::min(self : PhysicsfluidstokesLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_layer_max(s : PhysicsfluidstokesLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesLayer::max(self : PhysicsfluidstokesLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_layer_to_string(s : PhysicsfluidstokesLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesLayer::to_string(self : PhysicsfluidstokesLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesBuffer {
@@ -810,45 +810,45 @@ pub fn physics_fluid_stokes_buffer_make(size : Int) -> PhysicsfluidstokesBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_buffer_len(s : PhysicsfluidstokesBuffer) -> Int { s.size }
+pub fn PhysicsfluidstokesBuffer::len(self : PhysicsfluidstokesBuffer) -> Int { self.size }
 
-pub fn physics_fluid_stokes_buffer_get(s : PhysicsfluidstokesBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesBuffer::get(self : PhysicsfluidstokesBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_buffer_set(s : PhysicsfluidstokesBuffer, i : Int, v : Double) -> PhysicsfluidstokesBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesBuffer::set(self : PhysicsfluidstokesBuffer, i : Int, v : Double) -> PhysicsfluidstokesBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_buffer_sum(s : PhysicsfluidstokesBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesBuffer::sum(self : PhysicsfluidstokesBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_buffer_mean(s : PhysicsfluidstokesBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesBuffer::mean(self : PhysicsfluidstokesBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_buffer_scale(s : PhysicsfluidstokesBuffer, f : Double) -> PhysicsfluidstokesBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesBuffer::scale(self : PhysicsfluidstokesBuffer, f : Double) -> PhysicsfluidstokesBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_buffer_add(a : PhysicsfluidstokesBuffer, b : PhysicsfluidstokesBuffer) -> PhysicsfluidstokesBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesBuffer::add(self : PhysicsfluidstokesBuffer, other : PhysicsfluidstokesBuffer) -> PhysicsfluidstokesBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_buffer_copy(s : PhysicsfluidstokesBuffer) -> PhysicsfluidstokesBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesBuffer::copy(self : PhysicsfluidstokesBuffer) -> PhysicsfluidstokesBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_buffer_fill(s : PhysicsfluidstokesBuffer, v : Double) -> PhysicsfluidstokesBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesBuffer::fill(self : PhysicsfluidstokesBuffer, v : Double) -> PhysicsfluidstokesBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_buffer_min(s : PhysicsfluidstokesBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesBuffer::min(self : PhysicsfluidstokesBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_buffer_max(s : PhysicsfluidstokesBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesBuffer::max(self : PhysicsfluidstokesBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_buffer_to_string(s : PhysicsfluidstokesBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesBuffer::to_string(self : PhysicsfluidstokesBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesCursor {
@@ -861,45 +861,45 @@ pub fn physics_fluid_stokes_cursor_make(size : Int) -> PhysicsfluidstokesCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_cursor_len(s : PhysicsfluidstokesCursor) -> Int { s.size }
+pub fn PhysicsfluidstokesCursor::len(self : PhysicsfluidstokesCursor) -> Int { self.size }
 
-pub fn physics_fluid_stokes_cursor_get(s : PhysicsfluidstokesCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesCursor::get(self : PhysicsfluidstokesCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_cursor_set(s : PhysicsfluidstokesCursor, i : Int, v : Double) -> PhysicsfluidstokesCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCursor::set(self : PhysicsfluidstokesCursor, i : Int, v : Double) -> PhysicsfluidstokesCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cursor_sum(s : PhysicsfluidstokesCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesCursor::sum(self : PhysicsfluidstokesCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_cursor_mean(s : PhysicsfluidstokesCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesCursor::mean(self : PhysicsfluidstokesCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_cursor_scale(s : PhysicsfluidstokesCursor, f : Double) -> PhysicsfluidstokesCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCursor::scale(self : PhysicsfluidstokesCursor, f : Double) -> PhysicsfluidstokesCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cursor_add(a : PhysicsfluidstokesCursor, b : PhysicsfluidstokesCursor) -> PhysicsfluidstokesCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesCursor::add(self : PhysicsfluidstokesCursor, other : PhysicsfluidstokesCursor) -> PhysicsfluidstokesCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cursor_copy(s : PhysicsfluidstokesCursor) -> PhysicsfluidstokesCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCursor::copy(self : PhysicsfluidstokesCursor) -> PhysicsfluidstokesCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cursor_fill(s : PhysicsfluidstokesCursor, v : Double) -> PhysicsfluidstokesCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesCursor::fill(self : PhysicsfluidstokesCursor, v : Double) -> PhysicsfluidstokesCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_cursor_min(s : PhysicsfluidstokesCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesCursor::min(self : PhysicsfluidstokesCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_cursor_max(s : PhysicsfluidstokesCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesCursor::max(self : PhysicsfluidstokesCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_cursor_to_string(s : PhysicsfluidstokesCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesCursor::to_string(self : PhysicsfluidstokesCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesView {
@@ -912,45 +912,45 @@ pub fn physics_fluid_stokes_view_make(size : Int) -> PhysicsfluidstokesView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_view_len(s : PhysicsfluidstokesView) -> Int { s.size }
+pub fn PhysicsfluidstokesView::len(self : PhysicsfluidstokesView) -> Int { self.size }
 
-pub fn physics_fluid_stokes_view_get(s : PhysicsfluidstokesView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesView::get(self : PhysicsfluidstokesView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_view_set(s : PhysicsfluidstokesView, i : Int, v : Double) -> PhysicsfluidstokesView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesView::set(self : PhysicsfluidstokesView, i : Int, v : Double) -> PhysicsfluidstokesView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_view_sum(s : PhysicsfluidstokesView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesView::sum(self : PhysicsfluidstokesView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_view_mean(s : PhysicsfluidstokesView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesView::mean(self : PhysicsfluidstokesView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_view_scale(s : PhysicsfluidstokesView, f : Double) -> PhysicsfluidstokesView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesView::scale(self : PhysicsfluidstokesView, f : Double) -> PhysicsfluidstokesView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_view_add(a : PhysicsfluidstokesView, b : PhysicsfluidstokesView) -> PhysicsfluidstokesView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesView::add(self : PhysicsfluidstokesView, other : PhysicsfluidstokesView) -> PhysicsfluidstokesView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_view_copy(s : PhysicsfluidstokesView) -> PhysicsfluidstokesView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesView::copy(self : PhysicsfluidstokesView) -> PhysicsfluidstokesView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_view_fill(s : PhysicsfluidstokesView, v : Double) -> PhysicsfluidstokesView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesView::fill(self : PhysicsfluidstokesView, v : Double) -> PhysicsfluidstokesView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_view_min(s : PhysicsfluidstokesView) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesView::min(self : PhysicsfluidstokesView) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_view_max(s : PhysicsfluidstokesView) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesView::max(self : PhysicsfluidstokesView) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_view_to_string(s : PhysicsfluidstokesView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesView::to_string(self : PhysicsfluidstokesView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesRange {
@@ -963,45 +963,45 @@ pub fn physics_fluid_stokes_range_make(size : Int) -> PhysicsfluidstokesRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_range_len(s : PhysicsfluidstokesRange) -> Int { s.size }
+pub fn PhysicsfluidstokesRange::len(self : PhysicsfluidstokesRange) -> Int { self.size }
 
-pub fn physics_fluid_stokes_range_get(s : PhysicsfluidstokesRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesRange::get(self : PhysicsfluidstokesRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_range_set(s : PhysicsfluidstokesRange, i : Int, v : Double) -> PhysicsfluidstokesRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesRange::set(self : PhysicsfluidstokesRange, i : Int, v : Double) -> PhysicsfluidstokesRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_range_sum(s : PhysicsfluidstokesRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesRange::sum(self : PhysicsfluidstokesRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_range_mean(s : PhysicsfluidstokesRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesRange::mean(self : PhysicsfluidstokesRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_range_scale(s : PhysicsfluidstokesRange, f : Double) -> PhysicsfluidstokesRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesRange::scale(self : PhysicsfluidstokesRange, f : Double) -> PhysicsfluidstokesRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_range_add(a : PhysicsfluidstokesRange, b : PhysicsfluidstokesRange) -> PhysicsfluidstokesRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesRange::add(self : PhysicsfluidstokesRange, other : PhysicsfluidstokesRange) -> PhysicsfluidstokesRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_range_copy(s : PhysicsfluidstokesRange) -> PhysicsfluidstokesRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesRange::copy(self : PhysicsfluidstokesRange) -> PhysicsfluidstokesRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_range_fill(s : PhysicsfluidstokesRange, v : Double) -> PhysicsfluidstokesRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesRange::fill(self : PhysicsfluidstokesRange, v : Double) -> PhysicsfluidstokesRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_range_min(s : PhysicsfluidstokesRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesRange::min(self : PhysicsfluidstokesRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_range_max(s : PhysicsfluidstokesRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesRange::max(self : PhysicsfluidstokesRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_range_to_string(s : PhysicsfluidstokesRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesRange::to_string(self : PhysicsfluidstokesRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsfluidstokesSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_fluid_stokes_slice_make(size : Int) -> PhysicsfluidstokesSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_fluid_stokes_slice_len(s : PhysicsfluidstokesSlice) -> Int { s.size }
+pub fn PhysicsfluidstokesSlice::len(self : PhysicsfluidstokesSlice) -> Int { self.size }
 
-pub fn physics_fluid_stokes_slice_get(s : PhysicsfluidstokesSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsfluidstokesSlice::get(self : PhysicsfluidstokesSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_fluid_stokes_slice_set(s : PhysicsfluidstokesSlice, i : Int, v : Double) -> PhysicsfluidstokesSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesSlice::set(self : PhysicsfluidstokesSlice, i : Int, v : Double) -> PhysicsfluidstokesSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_slice_sum(s : PhysicsfluidstokesSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsfluidstokesSlice::sum(self : PhysicsfluidstokesSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_fluid_stokes_slice_mean(s : PhysicsfluidstokesSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsfluidstokesSlice::mean(self : PhysicsfluidstokesSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_fluid_stokes_slice_scale(s : PhysicsfluidstokesSlice, f : Double) -> PhysicsfluidstokesSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesSlice::scale(self : PhysicsfluidstokesSlice, f : Double) -> PhysicsfluidstokesSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_slice_add(a : PhysicsfluidstokesSlice, b : PhysicsfluidstokesSlice) -> PhysicsfluidstokesSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsfluidstokesSlice::add(self : PhysicsfluidstokesSlice, other : PhysicsfluidstokesSlice) -> PhysicsfluidstokesSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_slice_copy(s : PhysicsfluidstokesSlice) -> PhysicsfluidstokesSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesSlice::copy(self : PhysicsfluidstokesSlice) -> PhysicsfluidstokesSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_slice_fill(s : PhysicsfluidstokesSlice, v : Double) -> PhysicsfluidstokesSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsfluidstokesSlice::fill(self : PhysicsfluidstokesSlice, v : Double) -> PhysicsfluidstokesSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_fluid_stokes_slice_min(s : PhysicsfluidstokesSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsfluidstokesSlice::min(self : PhysicsfluidstokesSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_fluid_stokes_slice_max(s : PhysicsfluidstokesSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsfluidstokesSlice::max(self : PhysicsfluidstokesSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_fluid_stokes_slice_to_string(s : PhysicsfluidstokesSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsfluidstokesSlice::to_string(self : PhysicsfluidstokesSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

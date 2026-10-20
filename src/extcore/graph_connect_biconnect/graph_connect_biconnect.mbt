@@ -351,45 +351,45 @@ pub fn graph_connect_biconnect_frame_make(size : Int) -> GraphconnectbiconnectFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_frame_len(s : GraphconnectbiconnectFrame) -> Int { s.size }
+pub fn GraphconnectbiconnectFrame::len(self : GraphconnectbiconnectFrame) -> Int { self.size }
 
-pub fn graph_connect_biconnect_frame_get(s : GraphconnectbiconnectFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectFrame::get(self : GraphconnectbiconnectFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_frame_set(s : GraphconnectbiconnectFrame, i : Int, v : Double) -> GraphconnectbiconnectFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectFrame::set(self : GraphconnectbiconnectFrame, i : Int, v : Double) -> GraphconnectbiconnectFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_frame_sum(s : GraphconnectbiconnectFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectFrame::sum(self : GraphconnectbiconnectFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_frame_mean(s : GraphconnectbiconnectFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectFrame::mean(self : GraphconnectbiconnectFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_frame_scale(s : GraphconnectbiconnectFrame, f : Double) -> GraphconnectbiconnectFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectFrame::scale(self : GraphconnectbiconnectFrame, f : Double) -> GraphconnectbiconnectFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_frame_add(a : GraphconnectbiconnectFrame, b : GraphconnectbiconnectFrame) -> GraphconnectbiconnectFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectFrame::add(self : GraphconnectbiconnectFrame, other : GraphconnectbiconnectFrame) -> GraphconnectbiconnectFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_frame_copy(s : GraphconnectbiconnectFrame) -> GraphconnectbiconnectFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectFrame::copy(self : GraphconnectbiconnectFrame) -> GraphconnectbiconnectFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_frame_fill(s : GraphconnectbiconnectFrame, v : Double) -> GraphconnectbiconnectFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectFrame::fill(self : GraphconnectbiconnectFrame, v : Double) -> GraphconnectbiconnectFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_frame_min(s : GraphconnectbiconnectFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectFrame::min(self : GraphconnectbiconnectFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_frame_max(s : GraphconnectbiconnectFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectFrame::max(self : GraphconnectbiconnectFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_frame_to_string(s : GraphconnectbiconnectFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectFrame::to_string(self : GraphconnectbiconnectFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_biconnect_table_make(size : Int) -> GraphconnectbiconnectTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_table_len(s : GraphconnectbiconnectTable) -> Int { s.size }
+pub fn GraphconnectbiconnectTable::len(self : GraphconnectbiconnectTable) -> Int { self.size }
 
-pub fn graph_connect_biconnect_table_get(s : GraphconnectbiconnectTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectTable::get(self : GraphconnectbiconnectTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_table_set(s : GraphconnectbiconnectTable, i : Int, v : Double) -> GraphconnectbiconnectTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectTable::set(self : GraphconnectbiconnectTable, i : Int, v : Double) -> GraphconnectbiconnectTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_table_sum(s : GraphconnectbiconnectTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectTable::sum(self : GraphconnectbiconnectTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_table_mean(s : GraphconnectbiconnectTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectTable::mean(self : GraphconnectbiconnectTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_table_scale(s : GraphconnectbiconnectTable, f : Double) -> GraphconnectbiconnectTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectTable::scale(self : GraphconnectbiconnectTable, f : Double) -> GraphconnectbiconnectTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_table_add(a : GraphconnectbiconnectTable, b : GraphconnectbiconnectTable) -> GraphconnectbiconnectTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectTable::add(self : GraphconnectbiconnectTable, other : GraphconnectbiconnectTable) -> GraphconnectbiconnectTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_table_copy(s : GraphconnectbiconnectTable) -> GraphconnectbiconnectTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectTable::copy(self : GraphconnectbiconnectTable) -> GraphconnectbiconnectTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_table_fill(s : GraphconnectbiconnectTable, v : Double) -> GraphconnectbiconnectTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectTable::fill(self : GraphconnectbiconnectTable, v : Double) -> GraphconnectbiconnectTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_table_min(s : GraphconnectbiconnectTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectTable::min(self : GraphconnectbiconnectTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_table_max(s : GraphconnectbiconnectTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectTable::max(self : GraphconnectbiconnectTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_table_to_string(s : GraphconnectbiconnectTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectTable::to_string(self : GraphconnectbiconnectTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_biconnect_graphn_make(size : Int) -> GraphconnectbiconnectG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_graphn_len(s : GraphconnectbiconnectGraphN) -> Int { s.size }
+pub fn GraphconnectbiconnectGraphN::len(self : GraphconnectbiconnectGraphN) -> Int { self.size }
 
-pub fn graph_connect_biconnect_graphn_get(s : GraphconnectbiconnectGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectGraphN::get(self : GraphconnectbiconnectGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_graphn_set(s : GraphconnectbiconnectGraphN, i : Int, v : Double) -> GraphconnectbiconnectGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectGraphN::set(self : GraphconnectbiconnectGraphN, i : Int, v : Double) -> GraphconnectbiconnectGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_graphn_sum(s : GraphconnectbiconnectGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectGraphN::sum(self : GraphconnectbiconnectGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_graphn_mean(s : GraphconnectbiconnectGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectGraphN::mean(self : GraphconnectbiconnectGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_graphn_scale(s : GraphconnectbiconnectGraphN, f : Double) -> GraphconnectbiconnectGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectGraphN::scale(self : GraphconnectbiconnectGraphN, f : Double) -> GraphconnectbiconnectGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_graphn_add(a : GraphconnectbiconnectGraphN, b : GraphconnectbiconnectGraphN) -> GraphconnectbiconnectGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectGraphN::add(self : GraphconnectbiconnectGraphN, other : GraphconnectbiconnectGraphN) -> GraphconnectbiconnectGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_graphn_copy(s : GraphconnectbiconnectGraphN) -> GraphconnectbiconnectGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectGraphN::copy(self : GraphconnectbiconnectGraphN) -> GraphconnectbiconnectGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_graphn_fill(s : GraphconnectbiconnectGraphN, v : Double) -> GraphconnectbiconnectGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectGraphN::fill(self : GraphconnectbiconnectGraphN, v : Double) -> GraphconnectbiconnectGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_graphn_min(s : GraphconnectbiconnectGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectGraphN::min(self : GraphconnectbiconnectGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_graphn_max(s : GraphconnectbiconnectGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectGraphN::max(self : GraphconnectbiconnectGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_graphn_to_string(s : GraphconnectbiconnectGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectGraphN::to_string(self : GraphconnectbiconnectGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_biconnect_node_make(size : Int) -> GraphconnectbiconnectNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_node_len(s : GraphconnectbiconnectNode) -> Int { s.size }
+pub fn GraphconnectbiconnectNode::len(self : GraphconnectbiconnectNode) -> Int { self.size }
 
-pub fn graph_connect_biconnect_node_get(s : GraphconnectbiconnectNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectNode::get(self : GraphconnectbiconnectNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_node_set(s : GraphconnectbiconnectNode, i : Int, v : Double) -> GraphconnectbiconnectNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectNode::set(self : GraphconnectbiconnectNode, i : Int, v : Double) -> GraphconnectbiconnectNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_node_sum(s : GraphconnectbiconnectNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectNode::sum(self : GraphconnectbiconnectNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_node_mean(s : GraphconnectbiconnectNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectNode::mean(self : GraphconnectbiconnectNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_node_scale(s : GraphconnectbiconnectNode, f : Double) -> GraphconnectbiconnectNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectNode::scale(self : GraphconnectbiconnectNode, f : Double) -> GraphconnectbiconnectNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_node_add(a : GraphconnectbiconnectNode, b : GraphconnectbiconnectNode) -> GraphconnectbiconnectNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectNode::add(self : GraphconnectbiconnectNode, other : GraphconnectbiconnectNode) -> GraphconnectbiconnectNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_node_copy(s : GraphconnectbiconnectNode) -> GraphconnectbiconnectNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectNode::copy(self : GraphconnectbiconnectNode) -> GraphconnectbiconnectNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_node_fill(s : GraphconnectbiconnectNode, v : Double) -> GraphconnectbiconnectNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectNode::fill(self : GraphconnectbiconnectNode, v : Double) -> GraphconnectbiconnectNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_node_min(s : GraphconnectbiconnectNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectNode::min(self : GraphconnectbiconnectNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_node_max(s : GraphconnectbiconnectNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectNode::max(self : GraphconnectbiconnectNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_node_to_string(s : GraphconnectbiconnectNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectNode::to_string(self : GraphconnectbiconnectNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_biconnect_edge_make(size : Int) -> GraphconnectbiconnectEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_edge_len(s : GraphconnectbiconnectEdge) -> Int { s.size }
+pub fn GraphconnectbiconnectEdge::len(self : GraphconnectbiconnectEdge) -> Int { self.size }
 
-pub fn graph_connect_biconnect_edge_get(s : GraphconnectbiconnectEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectEdge::get(self : GraphconnectbiconnectEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_edge_set(s : GraphconnectbiconnectEdge, i : Int, v : Double) -> GraphconnectbiconnectEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectEdge::set(self : GraphconnectbiconnectEdge, i : Int, v : Double) -> GraphconnectbiconnectEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_edge_sum(s : GraphconnectbiconnectEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectEdge::sum(self : GraphconnectbiconnectEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_edge_mean(s : GraphconnectbiconnectEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectEdge::mean(self : GraphconnectbiconnectEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_edge_scale(s : GraphconnectbiconnectEdge, f : Double) -> GraphconnectbiconnectEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectEdge::scale(self : GraphconnectbiconnectEdge, f : Double) -> GraphconnectbiconnectEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_edge_add(a : GraphconnectbiconnectEdge, b : GraphconnectbiconnectEdge) -> GraphconnectbiconnectEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectEdge::add(self : GraphconnectbiconnectEdge, other : GraphconnectbiconnectEdge) -> GraphconnectbiconnectEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_edge_copy(s : GraphconnectbiconnectEdge) -> GraphconnectbiconnectEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectEdge::copy(self : GraphconnectbiconnectEdge) -> GraphconnectbiconnectEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_edge_fill(s : GraphconnectbiconnectEdge, v : Double) -> GraphconnectbiconnectEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectEdge::fill(self : GraphconnectbiconnectEdge, v : Double) -> GraphconnectbiconnectEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_edge_min(s : GraphconnectbiconnectEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectEdge::min(self : GraphconnectbiconnectEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_edge_max(s : GraphconnectbiconnectEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectEdge::max(self : GraphconnectbiconnectEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_edge_to_string(s : GraphconnectbiconnectEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectEdge::to_string(self : GraphconnectbiconnectEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_biconnect_path_make(size : Int) -> GraphconnectbiconnectPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_path_len(s : GraphconnectbiconnectPath) -> Int { s.size }
+pub fn GraphconnectbiconnectPath::len(self : GraphconnectbiconnectPath) -> Int { self.size }
 
-pub fn graph_connect_biconnect_path_get(s : GraphconnectbiconnectPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectPath::get(self : GraphconnectbiconnectPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_path_set(s : GraphconnectbiconnectPath, i : Int, v : Double) -> GraphconnectbiconnectPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectPath::set(self : GraphconnectbiconnectPath, i : Int, v : Double) -> GraphconnectbiconnectPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_path_sum(s : GraphconnectbiconnectPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectPath::sum(self : GraphconnectbiconnectPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_path_mean(s : GraphconnectbiconnectPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectPath::mean(self : GraphconnectbiconnectPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_path_scale(s : GraphconnectbiconnectPath, f : Double) -> GraphconnectbiconnectPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectPath::scale(self : GraphconnectbiconnectPath, f : Double) -> GraphconnectbiconnectPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_path_add(a : GraphconnectbiconnectPath, b : GraphconnectbiconnectPath) -> GraphconnectbiconnectPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectPath::add(self : GraphconnectbiconnectPath, other : GraphconnectbiconnectPath) -> GraphconnectbiconnectPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_path_copy(s : GraphconnectbiconnectPath) -> GraphconnectbiconnectPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectPath::copy(self : GraphconnectbiconnectPath) -> GraphconnectbiconnectPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_path_fill(s : GraphconnectbiconnectPath, v : Double) -> GraphconnectbiconnectPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectPath::fill(self : GraphconnectbiconnectPath, v : Double) -> GraphconnectbiconnectPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_path_min(s : GraphconnectbiconnectPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectPath::min(self : GraphconnectbiconnectPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_path_max(s : GraphconnectbiconnectPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectPath::max(self : GraphconnectbiconnectPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_path_to_string(s : GraphconnectbiconnectPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectPath::to_string(self : GraphconnectbiconnectPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_biconnect_cluster_make(size : Int) -> Graphconnectbiconnect
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_cluster_len(s : GraphconnectbiconnectCluster) -> Int { s.size }
+pub fn GraphconnectbiconnectCluster::len(self : GraphconnectbiconnectCluster) -> Int { self.size }
 
-pub fn graph_connect_biconnect_cluster_get(s : GraphconnectbiconnectCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectCluster::get(self : GraphconnectbiconnectCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_cluster_set(s : GraphconnectbiconnectCluster, i : Int, v : Double) -> GraphconnectbiconnectCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCluster::set(self : GraphconnectbiconnectCluster, i : Int, v : Double) -> GraphconnectbiconnectCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cluster_sum(s : GraphconnectbiconnectCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectCluster::sum(self : GraphconnectbiconnectCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_cluster_mean(s : GraphconnectbiconnectCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectCluster::mean(self : GraphconnectbiconnectCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_cluster_scale(s : GraphconnectbiconnectCluster, f : Double) -> GraphconnectbiconnectCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCluster::scale(self : GraphconnectbiconnectCluster, f : Double) -> GraphconnectbiconnectCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cluster_add(a : GraphconnectbiconnectCluster, b : GraphconnectbiconnectCluster) -> GraphconnectbiconnectCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectCluster::add(self : GraphconnectbiconnectCluster, other : GraphconnectbiconnectCluster) -> GraphconnectbiconnectCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cluster_copy(s : GraphconnectbiconnectCluster) -> GraphconnectbiconnectCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCluster::copy(self : GraphconnectbiconnectCluster) -> GraphconnectbiconnectCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cluster_fill(s : GraphconnectbiconnectCluster, v : Double) -> GraphconnectbiconnectCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCluster::fill(self : GraphconnectbiconnectCluster, v : Double) -> GraphconnectbiconnectCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cluster_min(s : GraphconnectbiconnectCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectCluster::min(self : GraphconnectbiconnectCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_cluster_max(s : GraphconnectbiconnectCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectCluster::max(self : GraphconnectbiconnectCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_cluster_to_string(s : GraphconnectbiconnectCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectCluster::to_string(self : GraphconnectbiconnectCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_biconnect_model_make(size : Int) -> GraphconnectbiconnectMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_model_len(s : GraphconnectbiconnectModel) -> Int { s.size }
+pub fn GraphconnectbiconnectModel::len(self : GraphconnectbiconnectModel) -> Int { self.size }
 
-pub fn graph_connect_biconnect_model_get(s : GraphconnectbiconnectModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectModel::get(self : GraphconnectbiconnectModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_model_set(s : GraphconnectbiconnectModel, i : Int, v : Double) -> GraphconnectbiconnectModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectModel::set(self : GraphconnectbiconnectModel, i : Int, v : Double) -> GraphconnectbiconnectModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_model_sum(s : GraphconnectbiconnectModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectModel::sum(self : GraphconnectbiconnectModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_model_mean(s : GraphconnectbiconnectModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectModel::mean(self : GraphconnectbiconnectModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_model_scale(s : GraphconnectbiconnectModel, f : Double) -> GraphconnectbiconnectModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectModel::scale(self : GraphconnectbiconnectModel, f : Double) -> GraphconnectbiconnectModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_model_add(a : GraphconnectbiconnectModel, b : GraphconnectbiconnectModel) -> GraphconnectbiconnectModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectModel::add(self : GraphconnectbiconnectModel, other : GraphconnectbiconnectModel) -> GraphconnectbiconnectModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_model_copy(s : GraphconnectbiconnectModel) -> GraphconnectbiconnectModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectModel::copy(self : GraphconnectbiconnectModel) -> GraphconnectbiconnectModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_model_fill(s : GraphconnectbiconnectModel, v : Double) -> GraphconnectbiconnectModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectModel::fill(self : GraphconnectbiconnectModel, v : Double) -> GraphconnectbiconnectModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_model_min(s : GraphconnectbiconnectModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectModel::min(self : GraphconnectbiconnectModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_model_max(s : GraphconnectbiconnectModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectModel::max(self : GraphconnectbiconnectModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_model_to_string(s : GraphconnectbiconnectModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectModel::to_string(self : GraphconnectbiconnectModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_biconnect_layer_make(size : Int) -> GraphconnectbiconnectLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_layer_len(s : GraphconnectbiconnectLayer) -> Int { s.size }
+pub fn GraphconnectbiconnectLayer::len(self : GraphconnectbiconnectLayer) -> Int { self.size }
 
-pub fn graph_connect_biconnect_layer_get(s : GraphconnectbiconnectLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectLayer::get(self : GraphconnectbiconnectLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_layer_set(s : GraphconnectbiconnectLayer, i : Int, v : Double) -> GraphconnectbiconnectLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectLayer::set(self : GraphconnectbiconnectLayer, i : Int, v : Double) -> GraphconnectbiconnectLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_layer_sum(s : GraphconnectbiconnectLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectLayer::sum(self : GraphconnectbiconnectLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_layer_mean(s : GraphconnectbiconnectLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectLayer::mean(self : GraphconnectbiconnectLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_layer_scale(s : GraphconnectbiconnectLayer, f : Double) -> GraphconnectbiconnectLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectLayer::scale(self : GraphconnectbiconnectLayer, f : Double) -> GraphconnectbiconnectLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_layer_add(a : GraphconnectbiconnectLayer, b : GraphconnectbiconnectLayer) -> GraphconnectbiconnectLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectLayer::add(self : GraphconnectbiconnectLayer, other : GraphconnectbiconnectLayer) -> GraphconnectbiconnectLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_layer_copy(s : GraphconnectbiconnectLayer) -> GraphconnectbiconnectLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectLayer::copy(self : GraphconnectbiconnectLayer) -> GraphconnectbiconnectLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_layer_fill(s : GraphconnectbiconnectLayer, v : Double) -> GraphconnectbiconnectLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectLayer::fill(self : GraphconnectbiconnectLayer, v : Double) -> GraphconnectbiconnectLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_layer_min(s : GraphconnectbiconnectLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectLayer::min(self : GraphconnectbiconnectLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_layer_max(s : GraphconnectbiconnectLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectLayer::max(self : GraphconnectbiconnectLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_layer_to_string(s : GraphconnectbiconnectLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectLayer::to_string(self : GraphconnectbiconnectLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_biconnect_buffer_make(size : Int) -> GraphconnectbiconnectB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_buffer_len(s : GraphconnectbiconnectBuffer) -> Int { s.size }
+pub fn GraphconnectbiconnectBuffer::len(self : GraphconnectbiconnectBuffer) -> Int { self.size }
 
-pub fn graph_connect_biconnect_buffer_get(s : GraphconnectbiconnectBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectBuffer::get(self : GraphconnectbiconnectBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_buffer_set(s : GraphconnectbiconnectBuffer, i : Int, v : Double) -> GraphconnectbiconnectBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectBuffer::set(self : GraphconnectbiconnectBuffer, i : Int, v : Double) -> GraphconnectbiconnectBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_buffer_sum(s : GraphconnectbiconnectBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectBuffer::sum(self : GraphconnectbiconnectBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_buffer_mean(s : GraphconnectbiconnectBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectBuffer::mean(self : GraphconnectbiconnectBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_buffer_scale(s : GraphconnectbiconnectBuffer, f : Double) -> GraphconnectbiconnectBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectBuffer::scale(self : GraphconnectbiconnectBuffer, f : Double) -> GraphconnectbiconnectBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_buffer_add(a : GraphconnectbiconnectBuffer, b : GraphconnectbiconnectBuffer) -> GraphconnectbiconnectBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectBuffer::add(self : GraphconnectbiconnectBuffer, other : GraphconnectbiconnectBuffer) -> GraphconnectbiconnectBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_buffer_copy(s : GraphconnectbiconnectBuffer) -> GraphconnectbiconnectBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectBuffer::copy(self : GraphconnectbiconnectBuffer) -> GraphconnectbiconnectBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_buffer_fill(s : GraphconnectbiconnectBuffer, v : Double) -> GraphconnectbiconnectBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectBuffer::fill(self : GraphconnectbiconnectBuffer, v : Double) -> GraphconnectbiconnectBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_buffer_min(s : GraphconnectbiconnectBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectBuffer::min(self : GraphconnectbiconnectBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_buffer_max(s : GraphconnectbiconnectBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectBuffer::max(self : GraphconnectbiconnectBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_buffer_to_string(s : GraphconnectbiconnectBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectBuffer::to_string(self : GraphconnectbiconnectBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_biconnect_cursor_make(size : Int) -> GraphconnectbiconnectC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_cursor_len(s : GraphconnectbiconnectCursor) -> Int { s.size }
+pub fn GraphconnectbiconnectCursor::len(self : GraphconnectbiconnectCursor) -> Int { self.size }
 
-pub fn graph_connect_biconnect_cursor_get(s : GraphconnectbiconnectCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectCursor::get(self : GraphconnectbiconnectCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_cursor_set(s : GraphconnectbiconnectCursor, i : Int, v : Double) -> GraphconnectbiconnectCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCursor::set(self : GraphconnectbiconnectCursor, i : Int, v : Double) -> GraphconnectbiconnectCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cursor_sum(s : GraphconnectbiconnectCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectCursor::sum(self : GraphconnectbiconnectCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_cursor_mean(s : GraphconnectbiconnectCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectCursor::mean(self : GraphconnectbiconnectCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_cursor_scale(s : GraphconnectbiconnectCursor, f : Double) -> GraphconnectbiconnectCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCursor::scale(self : GraphconnectbiconnectCursor, f : Double) -> GraphconnectbiconnectCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cursor_add(a : GraphconnectbiconnectCursor, b : GraphconnectbiconnectCursor) -> GraphconnectbiconnectCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectCursor::add(self : GraphconnectbiconnectCursor, other : GraphconnectbiconnectCursor) -> GraphconnectbiconnectCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cursor_copy(s : GraphconnectbiconnectCursor) -> GraphconnectbiconnectCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCursor::copy(self : GraphconnectbiconnectCursor) -> GraphconnectbiconnectCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cursor_fill(s : GraphconnectbiconnectCursor, v : Double) -> GraphconnectbiconnectCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectCursor::fill(self : GraphconnectbiconnectCursor, v : Double) -> GraphconnectbiconnectCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_cursor_min(s : GraphconnectbiconnectCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectCursor::min(self : GraphconnectbiconnectCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_cursor_max(s : GraphconnectbiconnectCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectCursor::max(self : GraphconnectbiconnectCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_cursor_to_string(s : GraphconnectbiconnectCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectCursor::to_string(self : GraphconnectbiconnectCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectView {
@@ -912,45 +912,45 @@ pub fn graph_connect_biconnect_view_make(size : Int) -> GraphconnectbiconnectVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_view_len(s : GraphconnectbiconnectView) -> Int { s.size }
+pub fn GraphconnectbiconnectView::len(self : GraphconnectbiconnectView) -> Int { self.size }
 
-pub fn graph_connect_biconnect_view_get(s : GraphconnectbiconnectView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectView::get(self : GraphconnectbiconnectView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_view_set(s : GraphconnectbiconnectView, i : Int, v : Double) -> GraphconnectbiconnectView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectView::set(self : GraphconnectbiconnectView, i : Int, v : Double) -> GraphconnectbiconnectView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_view_sum(s : GraphconnectbiconnectView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectView::sum(self : GraphconnectbiconnectView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_view_mean(s : GraphconnectbiconnectView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectView::mean(self : GraphconnectbiconnectView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_view_scale(s : GraphconnectbiconnectView, f : Double) -> GraphconnectbiconnectView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectView::scale(self : GraphconnectbiconnectView, f : Double) -> GraphconnectbiconnectView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_view_add(a : GraphconnectbiconnectView, b : GraphconnectbiconnectView) -> GraphconnectbiconnectView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectView::add(self : GraphconnectbiconnectView, other : GraphconnectbiconnectView) -> GraphconnectbiconnectView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_view_copy(s : GraphconnectbiconnectView) -> GraphconnectbiconnectView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectView::copy(self : GraphconnectbiconnectView) -> GraphconnectbiconnectView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_view_fill(s : GraphconnectbiconnectView, v : Double) -> GraphconnectbiconnectView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectView::fill(self : GraphconnectbiconnectView, v : Double) -> GraphconnectbiconnectView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_view_min(s : GraphconnectbiconnectView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectView::min(self : GraphconnectbiconnectView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_view_max(s : GraphconnectbiconnectView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectView::max(self : GraphconnectbiconnectView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_view_to_string(s : GraphconnectbiconnectView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectView::to_string(self : GraphconnectbiconnectView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_biconnect_range_make(size : Int) -> GraphconnectbiconnectRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_range_len(s : GraphconnectbiconnectRange) -> Int { s.size }
+pub fn GraphconnectbiconnectRange::len(self : GraphconnectbiconnectRange) -> Int { self.size }
 
-pub fn graph_connect_biconnect_range_get(s : GraphconnectbiconnectRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectRange::get(self : GraphconnectbiconnectRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_range_set(s : GraphconnectbiconnectRange, i : Int, v : Double) -> GraphconnectbiconnectRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectRange::set(self : GraphconnectbiconnectRange, i : Int, v : Double) -> GraphconnectbiconnectRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_range_sum(s : GraphconnectbiconnectRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectRange::sum(self : GraphconnectbiconnectRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_range_mean(s : GraphconnectbiconnectRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectRange::mean(self : GraphconnectbiconnectRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_range_scale(s : GraphconnectbiconnectRange, f : Double) -> GraphconnectbiconnectRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectRange::scale(self : GraphconnectbiconnectRange, f : Double) -> GraphconnectbiconnectRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_range_add(a : GraphconnectbiconnectRange, b : GraphconnectbiconnectRange) -> GraphconnectbiconnectRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectRange::add(self : GraphconnectbiconnectRange, other : GraphconnectbiconnectRange) -> GraphconnectbiconnectRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_range_copy(s : GraphconnectbiconnectRange) -> GraphconnectbiconnectRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectRange::copy(self : GraphconnectbiconnectRange) -> GraphconnectbiconnectRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_range_fill(s : GraphconnectbiconnectRange, v : Double) -> GraphconnectbiconnectRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectRange::fill(self : GraphconnectbiconnectRange, v : Double) -> GraphconnectbiconnectRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_range_min(s : GraphconnectbiconnectRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectRange::min(self : GraphconnectbiconnectRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_range_max(s : GraphconnectbiconnectRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectRange::max(self : GraphconnectbiconnectRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_range_to_string(s : GraphconnectbiconnectRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectRange::to_string(self : GraphconnectbiconnectRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectbiconnectSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_biconnect_slice_make(size : Int) -> GraphconnectbiconnectSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_biconnect_slice_len(s : GraphconnectbiconnectSlice) -> Int { s.size }
+pub fn GraphconnectbiconnectSlice::len(self : GraphconnectbiconnectSlice) -> Int { self.size }
 
-pub fn graph_connect_biconnect_slice_get(s : GraphconnectbiconnectSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectbiconnectSlice::get(self : GraphconnectbiconnectSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_biconnect_slice_set(s : GraphconnectbiconnectSlice, i : Int, v : Double) -> GraphconnectbiconnectSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectSlice::set(self : GraphconnectbiconnectSlice, i : Int, v : Double) -> GraphconnectbiconnectSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_slice_sum(s : GraphconnectbiconnectSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectbiconnectSlice::sum(self : GraphconnectbiconnectSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_biconnect_slice_mean(s : GraphconnectbiconnectSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectbiconnectSlice::mean(self : GraphconnectbiconnectSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_biconnect_slice_scale(s : GraphconnectbiconnectSlice, f : Double) -> GraphconnectbiconnectSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectSlice::scale(self : GraphconnectbiconnectSlice, f : Double) -> GraphconnectbiconnectSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_slice_add(a : GraphconnectbiconnectSlice, b : GraphconnectbiconnectSlice) -> GraphconnectbiconnectSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectbiconnectSlice::add(self : GraphconnectbiconnectSlice, other : GraphconnectbiconnectSlice) -> GraphconnectbiconnectSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_slice_copy(s : GraphconnectbiconnectSlice) -> GraphconnectbiconnectSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectSlice::copy(self : GraphconnectbiconnectSlice) -> GraphconnectbiconnectSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_slice_fill(s : GraphconnectbiconnectSlice, v : Double) -> GraphconnectbiconnectSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectbiconnectSlice::fill(self : GraphconnectbiconnectSlice, v : Double) -> GraphconnectbiconnectSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_biconnect_slice_min(s : GraphconnectbiconnectSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectbiconnectSlice::min(self : GraphconnectbiconnectSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_biconnect_slice_max(s : GraphconnectbiconnectSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectbiconnectSlice::max(self : GraphconnectbiconnectSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_biconnect_slice_to_string(s : GraphconnectbiconnectSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectbiconnectSlice::to_string(self : GraphconnectbiconnectSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

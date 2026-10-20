@@ -351,45 +351,45 @@ pub fn image_transform_remap_frame_make(size : Int) -> ImagetransformremapFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_frame_len(s : ImagetransformremapFrame) -> Int { s.size }
+pub fn ImagetransformremapFrame::len(self : ImagetransformremapFrame) -> Int { self.size }
 
-pub fn image_transform_remap_frame_get(s : ImagetransformremapFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapFrame::get(self : ImagetransformremapFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_frame_set(s : ImagetransformremapFrame, i : Int, v : Double) -> ImagetransformremapFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapFrame::set(self : ImagetransformremapFrame, i : Int, v : Double) -> ImagetransformremapFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_frame_sum(s : ImagetransformremapFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapFrame::sum(self : ImagetransformremapFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_frame_mean(s : ImagetransformremapFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapFrame::mean(self : ImagetransformremapFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_frame_scale(s : ImagetransformremapFrame, f : Double) -> ImagetransformremapFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapFrame::scale(self : ImagetransformremapFrame, f : Double) -> ImagetransformremapFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_frame_add(a : ImagetransformremapFrame, b : ImagetransformremapFrame) -> ImagetransformremapFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapFrame::add(self : ImagetransformremapFrame, other : ImagetransformremapFrame) -> ImagetransformremapFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_frame_copy(s : ImagetransformremapFrame) -> ImagetransformremapFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapFrame::copy(self : ImagetransformremapFrame) -> ImagetransformremapFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_frame_fill(s : ImagetransformremapFrame, v : Double) -> ImagetransformremapFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapFrame::fill(self : ImagetransformremapFrame, v : Double) -> ImagetransformremapFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_frame_min(s : ImagetransformremapFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapFrame::min(self : ImagetransformremapFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_frame_max(s : ImagetransformremapFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapFrame::max(self : ImagetransformremapFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_frame_to_string(s : ImagetransformremapFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapFrame::to_string(self : ImagetransformremapFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapTable {
@@ -402,45 +402,45 @@ pub fn image_transform_remap_table_make(size : Int) -> ImagetransformremapTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_table_len(s : ImagetransformremapTable) -> Int { s.size }
+pub fn ImagetransformremapTable::len(self : ImagetransformremapTable) -> Int { self.size }
 
-pub fn image_transform_remap_table_get(s : ImagetransformremapTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapTable::get(self : ImagetransformremapTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_table_set(s : ImagetransformremapTable, i : Int, v : Double) -> ImagetransformremapTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapTable::set(self : ImagetransformremapTable, i : Int, v : Double) -> ImagetransformremapTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_table_sum(s : ImagetransformremapTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapTable::sum(self : ImagetransformremapTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_table_mean(s : ImagetransformremapTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapTable::mean(self : ImagetransformremapTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_table_scale(s : ImagetransformremapTable, f : Double) -> ImagetransformremapTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapTable::scale(self : ImagetransformremapTable, f : Double) -> ImagetransformremapTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_table_add(a : ImagetransformremapTable, b : ImagetransformremapTable) -> ImagetransformremapTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapTable::add(self : ImagetransformremapTable, other : ImagetransformremapTable) -> ImagetransformremapTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_table_copy(s : ImagetransformremapTable) -> ImagetransformremapTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapTable::copy(self : ImagetransformremapTable) -> ImagetransformremapTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_table_fill(s : ImagetransformremapTable, v : Double) -> ImagetransformremapTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapTable::fill(self : ImagetransformremapTable, v : Double) -> ImagetransformremapTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_table_min(s : ImagetransformremapTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapTable::min(self : ImagetransformremapTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_table_max(s : ImagetransformremapTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapTable::max(self : ImagetransformremapTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_table_to_string(s : ImagetransformremapTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapTable::to_string(self : ImagetransformremapTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_remap_graphn_make(size : Int) -> ImagetransformremapGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_graphn_len(s : ImagetransformremapGraphN) -> Int { s.size }
+pub fn ImagetransformremapGraphN::len(self : ImagetransformremapGraphN) -> Int { self.size }
 
-pub fn image_transform_remap_graphn_get(s : ImagetransformremapGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapGraphN::get(self : ImagetransformremapGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_graphn_set(s : ImagetransformremapGraphN, i : Int, v : Double) -> ImagetransformremapGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapGraphN::set(self : ImagetransformremapGraphN, i : Int, v : Double) -> ImagetransformremapGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_graphn_sum(s : ImagetransformremapGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapGraphN::sum(self : ImagetransformremapGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_graphn_mean(s : ImagetransformremapGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapGraphN::mean(self : ImagetransformremapGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_graphn_scale(s : ImagetransformremapGraphN, f : Double) -> ImagetransformremapGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapGraphN::scale(self : ImagetransformremapGraphN, f : Double) -> ImagetransformremapGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_graphn_add(a : ImagetransformremapGraphN, b : ImagetransformremapGraphN) -> ImagetransformremapGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapGraphN::add(self : ImagetransformremapGraphN, other : ImagetransformremapGraphN) -> ImagetransformremapGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_graphn_copy(s : ImagetransformremapGraphN) -> ImagetransformremapGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapGraphN::copy(self : ImagetransformremapGraphN) -> ImagetransformremapGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_graphn_fill(s : ImagetransformremapGraphN, v : Double) -> ImagetransformremapGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapGraphN::fill(self : ImagetransformremapGraphN, v : Double) -> ImagetransformremapGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_graphn_min(s : ImagetransformremapGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapGraphN::min(self : ImagetransformremapGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_graphn_max(s : ImagetransformremapGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapGraphN::max(self : ImagetransformremapGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_graphn_to_string(s : ImagetransformremapGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapGraphN::to_string(self : ImagetransformremapGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapNode {
@@ -504,45 +504,45 @@ pub fn image_transform_remap_node_make(size : Int) -> ImagetransformremapNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_node_len(s : ImagetransformremapNode) -> Int { s.size }
+pub fn ImagetransformremapNode::len(self : ImagetransformremapNode) -> Int { self.size }
 
-pub fn image_transform_remap_node_get(s : ImagetransformremapNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapNode::get(self : ImagetransformremapNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_node_set(s : ImagetransformremapNode, i : Int, v : Double) -> ImagetransformremapNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapNode::set(self : ImagetransformremapNode, i : Int, v : Double) -> ImagetransformremapNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_node_sum(s : ImagetransformremapNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapNode::sum(self : ImagetransformremapNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_node_mean(s : ImagetransformremapNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapNode::mean(self : ImagetransformremapNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_node_scale(s : ImagetransformremapNode, f : Double) -> ImagetransformremapNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapNode::scale(self : ImagetransformremapNode, f : Double) -> ImagetransformremapNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_node_add(a : ImagetransformremapNode, b : ImagetransformremapNode) -> ImagetransformremapNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapNode::add(self : ImagetransformremapNode, other : ImagetransformremapNode) -> ImagetransformremapNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_node_copy(s : ImagetransformremapNode) -> ImagetransformremapNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapNode::copy(self : ImagetransformremapNode) -> ImagetransformremapNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_node_fill(s : ImagetransformremapNode, v : Double) -> ImagetransformremapNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapNode::fill(self : ImagetransformremapNode, v : Double) -> ImagetransformremapNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_node_min(s : ImagetransformremapNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapNode::min(self : ImagetransformremapNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_node_max(s : ImagetransformremapNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapNode::max(self : ImagetransformremapNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_node_to_string(s : ImagetransformremapNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapNode::to_string(self : ImagetransformremapNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_remap_edge_make(size : Int) -> ImagetransformremapEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_edge_len(s : ImagetransformremapEdge) -> Int { s.size }
+pub fn ImagetransformremapEdge::len(self : ImagetransformremapEdge) -> Int { self.size }
 
-pub fn image_transform_remap_edge_get(s : ImagetransformremapEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapEdge::get(self : ImagetransformremapEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_edge_set(s : ImagetransformremapEdge, i : Int, v : Double) -> ImagetransformremapEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapEdge::set(self : ImagetransformremapEdge, i : Int, v : Double) -> ImagetransformremapEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_edge_sum(s : ImagetransformremapEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapEdge::sum(self : ImagetransformremapEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_edge_mean(s : ImagetransformremapEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapEdge::mean(self : ImagetransformremapEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_edge_scale(s : ImagetransformremapEdge, f : Double) -> ImagetransformremapEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapEdge::scale(self : ImagetransformremapEdge, f : Double) -> ImagetransformremapEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_edge_add(a : ImagetransformremapEdge, b : ImagetransformremapEdge) -> ImagetransformremapEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapEdge::add(self : ImagetransformremapEdge, other : ImagetransformremapEdge) -> ImagetransformremapEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_edge_copy(s : ImagetransformremapEdge) -> ImagetransformremapEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapEdge::copy(self : ImagetransformremapEdge) -> ImagetransformremapEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_edge_fill(s : ImagetransformremapEdge, v : Double) -> ImagetransformremapEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapEdge::fill(self : ImagetransformremapEdge, v : Double) -> ImagetransformremapEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_edge_min(s : ImagetransformremapEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapEdge::min(self : ImagetransformremapEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_edge_max(s : ImagetransformremapEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapEdge::max(self : ImagetransformremapEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_edge_to_string(s : ImagetransformremapEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapEdge::to_string(self : ImagetransformremapEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapPath {
@@ -606,45 +606,45 @@ pub fn image_transform_remap_path_make(size : Int) -> ImagetransformremapPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_path_len(s : ImagetransformremapPath) -> Int { s.size }
+pub fn ImagetransformremapPath::len(self : ImagetransformremapPath) -> Int { self.size }
 
-pub fn image_transform_remap_path_get(s : ImagetransformremapPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapPath::get(self : ImagetransformremapPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_path_set(s : ImagetransformremapPath, i : Int, v : Double) -> ImagetransformremapPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapPath::set(self : ImagetransformremapPath, i : Int, v : Double) -> ImagetransformremapPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_path_sum(s : ImagetransformremapPath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapPath::sum(self : ImagetransformremapPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_path_mean(s : ImagetransformremapPath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapPath::mean(self : ImagetransformremapPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_path_scale(s : ImagetransformremapPath, f : Double) -> ImagetransformremapPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapPath::scale(self : ImagetransformremapPath, f : Double) -> ImagetransformremapPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_path_add(a : ImagetransformremapPath, b : ImagetransformremapPath) -> ImagetransformremapPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapPath::add(self : ImagetransformremapPath, other : ImagetransformremapPath) -> ImagetransformremapPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_path_copy(s : ImagetransformremapPath) -> ImagetransformremapPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapPath::copy(self : ImagetransformremapPath) -> ImagetransformremapPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_path_fill(s : ImagetransformremapPath, v : Double) -> ImagetransformremapPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapPath::fill(self : ImagetransformremapPath, v : Double) -> ImagetransformremapPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_path_min(s : ImagetransformremapPath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapPath::min(self : ImagetransformremapPath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_path_max(s : ImagetransformremapPath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapPath::max(self : ImagetransformremapPath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_path_to_string(s : ImagetransformremapPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapPath::to_string(self : ImagetransformremapPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_remap_cluster_make(size : Int) -> ImagetransformremapClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_cluster_len(s : ImagetransformremapCluster) -> Int { s.size }
+pub fn ImagetransformremapCluster::len(self : ImagetransformremapCluster) -> Int { self.size }
 
-pub fn image_transform_remap_cluster_get(s : ImagetransformremapCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapCluster::get(self : ImagetransformremapCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_cluster_set(s : ImagetransformremapCluster, i : Int, v : Double) -> ImagetransformremapCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapCluster::set(self : ImagetransformremapCluster, i : Int, v : Double) -> ImagetransformremapCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cluster_sum(s : ImagetransformremapCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapCluster::sum(self : ImagetransformremapCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_cluster_mean(s : ImagetransformremapCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapCluster::mean(self : ImagetransformremapCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_cluster_scale(s : ImagetransformremapCluster, f : Double) -> ImagetransformremapCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapCluster::scale(self : ImagetransformremapCluster, f : Double) -> ImagetransformremapCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cluster_add(a : ImagetransformremapCluster, b : ImagetransformremapCluster) -> ImagetransformremapCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapCluster::add(self : ImagetransformremapCluster, other : ImagetransformremapCluster) -> ImagetransformremapCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_cluster_copy(s : ImagetransformremapCluster) -> ImagetransformremapCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapCluster::copy(self : ImagetransformremapCluster) -> ImagetransformremapCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cluster_fill(s : ImagetransformremapCluster, v : Double) -> ImagetransformremapCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapCluster::fill(self : ImagetransformremapCluster, v : Double) -> ImagetransformremapCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cluster_min(s : ImagetransformremapCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapCluster::min(self : ImagetransformremapCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_cluster_max(s : ImagetransformremapCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapCluster::max(self : ImagetransformremapCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_cluster_to_string(s : ImagetransformremapCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapCluster::to_string(self : ImagetransformremapCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapModel {
@@ -708,45 +708,45 @@ pub fn image_transform_remap_model_make(size : Int) -> ImagetransformremapModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_model_len(s : ImagetransformremapModel) -> Int { s.size }
+pub fn ImagetransformremapModel::len(self : ImagetransformremapModel) -> Int { self.size }
 
-pub fn image_transform_remap_model_get(s : ImagetransformremapModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapModel::get(self : ImagetransformremapModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_model_set(s : ImagetransformremapModel, i : Int, v : Double) -> ImagetransformremapModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapModel::set(self : ImagetransformremapModel, i : Int, v : Double) -> ImagetransformremapModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_model_sum(s : ImagetransformremapModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapModel::sum(self : ImagetransformremapModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_model_mean(s : ImagetransformremapModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapModel::mean(self : ImagetransformremapModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_model_scale(s : ImagetransformremapModel, f : Double) -> ImagetransformremapModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapModel::scale(self : ImagetransformremapModel, f : Double) -> ImagetransformremapModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_model_add(a : ImagetransformremapModel, b : ImagetransformremapModel) -> ImagetransformremapModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapModel::add(self : ImagetransformremapModel, other : ImagetransformremapModel) -> ImagetransformremapModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_model_copy(s : ImagetransformremapModel) -> ImagetransformremapModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapModel::copy(self : ImagetransformremapModel) -> ImagetransformremapModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_model_fill(s : ImagetransformremapModel, v : Double) -> ImagetransformremapModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapModel::fill(self : ImagetransformremapModel, v : Double) -> ImagetransformremapModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_model_min(s : ImagetransformremapModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapModel::min(self : ImagetransformremapModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_model_max(s : ImagetransformremapModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapModel::max(self : ImagetransformremapModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_model_to_string(s : ImagetransformremapModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapModel::to_string(self : ImagetransformremapModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_remap_layer_make(size : Int) -> ImagetransformremapLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_layer_len(s : ImagetransformremapLayer) -> Int { s.size }
+pub fn ImagetransformremapLayer::len(self : ImagetransformremapLayer) -> Int { self.size }
 
-pub fn image_transform_remap_layer_get(s : ImagetransformremapLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapLayer::get(self : ImagetransformremapLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_layer_set(s : ImagetransformremapLayer, i : Int, v : Double) -> ImagetransformremapLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapLayer::set(self : ImagetransformremapLayer, i : Int, v : Double) -> ImagetransformremapLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_layer_sum(s : ImagetransformremapLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapLayer::sum(self : ImagetransformremapLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_layer_mean(s : ImagetransformremapLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapLayer::mean(self : ImagetransformremapLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_layer_scale(s : ImagetransformremapLayer, f : Double) -> ImagetransformremapLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapLayer::scale(self : ImagetransformremapLayer, f : Double) -> ImagetransformremapLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_layer_add(a : ImagetransformremapLayer, b : ImagetransformremapLayer) -> ImagetransformremapLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapLayer::add(self : ImagetransformremapLayer, other : ImagetransformremapLayer) -> ImagetransformremapLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_layer_copy(s : ImagetransformremapLayer) -> ImagetransformremapLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapLayer::copy(self : ImagetransformremapLayer) -> ImagetransformremapLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_layer_fill(s : ImagetransformremapLayer, v : Double) -> ImagetransformremapLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapLayer::fill(self : ImagetransformremapLayer, v : Double) -> ImagetransformremapLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_layer_min(s : ImagetransformremapLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapLayer::min(self : ImagetransformremapLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_layer_max(s : ImagetransformremapLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapLayer::max(self : ImagetransformremapLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_layer_to_string(s : ImagetransformremapLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapLayer::to_string(self : ImagetransformremapLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_remap_buffer_make(size : Int) -> ImagetransformremapBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_buffer_len(s : ImagetransformremapBuffer) -> Int { s.size }
+pub fn ImagetransformremapBuffer::len(self : ImagetransformremapBuffer) -> Int { self.size }
 
-pub fn image_transform_remap_buffer_get(s : ImagetransformremapBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapBuffer::get(self : ImagetransformremapBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_buffer_set(s : ImagetransformremapBuffer, i : Int, v : Double) -> ImagetransformremapBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapBuffer::set(self : ImagetransformremapBuffer, i : Int, v : Double) -> ImagetransformremapBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_buffer_sum(s : ImagetransformremapBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapBuffer::sum(self : ImagetransformremapBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_buffer_mean(s : ImagetransformremapBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapBuffer::mean(self : ImagetransformremapBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_buffer_scale(s : ImagetransformremapBuffer, f : Double) -> ImagetransformremapBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapBuffer::scale(self : ImagetransformremapBuffer, f : Double) -> ImagetransformremapBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_buffer_add(a : ImagetransformremapBuffer, b : ImagetransformremapBuffer) -> ImagetransformremapBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapBuffer::add(self : ImagetransformremapBuffer, other : ImagetransformremapBuffer) -> ImagetransformremapBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_buffer_copy(s : ImagetransformremapBuffer) -> ImagetransformremapBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapBuffer::copy(self : ImagetransformremapBuffer) -> ImagetransformremapBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_buffer_fill(s : ImagetransformremapBuffer, v : Double) -> ImagetransformremapBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapBuffer::fill(self : ImagetransformremapBuffer, v : Double) -> ImagetransformremapBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_buffer_min(s : ImagetransformremapBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapBuffer::min(self : ImagetransformremapBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_buffer_max(s : ImagetransformremapBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapBuffer::max(self : ImagetransformremapBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_buffer_to_string(s : ImagetransformremapBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapBuffer::to_string(self : ImagetransformremapBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_remap_cursor_make(size : Int) -> ImagetransformremapCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_cursor_len(s : ImagetransformremapCursor) -> Int { s.size }
+pub fn ImagetransformremapCursor::len(self : ImagetransformremapCursor) -> Int { self.size }
 
-pub fn image_transform_remap_cursor_get(s : ImagetransformremapCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapCursor::get(self : ImagetransformremapCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_cursor_set(s : ImagetransformremapCursor, i : Int, v : Double) -> ImagetransformremapCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapCursor::set(self : ImagetransformremapCursor, i : Int, v : Double) -> ImagetransformremapCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cursor_sum(s : ImagetransformremapCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapCursor::sum(self : ImagetransformremapCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_cursor_mean(s : ImagetransformremapCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapCursor::mean(self : ImagetransformremapCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_cursor_scale(s : ImagetransformremapCursor, f : Double) -> ImagetransformremapCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapCursor::scale(self : ImagetransformremapCursor, f : Double) -> ImagetransformremapCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cursor_add(a : ImagetransformremapCursor, b : ImagetransformremapCursor) -> ImagetransformremapCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapCursor::add(self : ImagetransformremapCursor, other : ImagetransformremapCursor) -> ImagetransformremapCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_cursor_copy(s : ImagetransformremapCursor) -> ImagetransformremapCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapCursor::copy(self : ImagetransformremapCursor) -> ImagetransformremapCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cursor_fill(s : ImagetransformremapCursor, v : Double) -> ImagetransformremapCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapCursor::fill(self : ImagetransformremapCursor, v : Double) -> ImagetransformremapCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_cursor_min(s : ImagetransformremapCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapCursor::min(self : ImagetransformremapCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_cursor_max(s : ImagetransformremapCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapCursor::max(self : ImagetransformremapCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_cursor_to_string(s : ImagetransformremapCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapCursor::to_string(self : ImagetransformremapCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapView {
@@ -912,45 +912,45 @@ pub fn image_transform_remap_view_make(size : Int) -> ImagetransformremapView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_view_len(s : ImagetransformremapView) -> Int { s.size }
+pub fn ImagetransformremapView::len(self : ImagetransformremapView) -> Int { self.size }
 
-pub fn image_transform_remap_view_get(s : ImagetransformremapView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapView::get(self : ImagetransformremapView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_view_set(s : ImagetransformremapView, i : Int, v : Double) -> ImagetransformremapView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapView::set(self : ImagetransformremapView, i : Int, v : Double) -> ImagetransformremapView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_view_sum(s : ImagetransformremapView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapView::sum(self : ImagetransformremapView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_view_mean(s : ImagetransformremapView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapView::mean(self : ImagetransformremapView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_view_scale(s : ImagetransformremapView, f : Double) -> ImagetransformremapView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapView::scale(self : ImagetransformremapView, f : Double) -> ImagetransformremapView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_view_add(a : ImagetransformremapView, b : ImagetransformremapView) -> ImagetransformremapView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapView::add(self : ImagetransformremapView, other : ImagetransformremapView) -> ImagetransformremapView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_view_copy(s : ImagetransformremapView) -> ImagetransformremapView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapView::copy(self : ImagetransformremapView) -> ImagetransformremapView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_view_fill(s : ImagetransformremapView, v : Double) -> ImagetransformremapView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapView::fill(self : ImagetransformremapView, v : Double) -> ImagetransformremapView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_view_min(s : ImagetransformremapView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapView::min(self : ImagetransformremapView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_view_max(s : ImagetransformremapView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapView::max(self : ImagetransformremapView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_view_to_string(s : ImagetransformremapView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapView::to_string(self : ImagetransformremapView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapRange {
@@ -963,45 +963,45 @@ pub fn image_transform_remap_range_make(size : Int) -> ImagetransformremapRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_range_len(s : ImagetransformremapRange) -> Int { s.size }
+pub fn ImagetransformremapRange::len(self : ImagetransformremapRange) -> Int { self.size }
 
-pub fn image_transform_remap_range_get(s : ImagetransformremapRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapRange::get(self : ImagetransformremapRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_range_set(s : ImagetransformremapRange, i : Int, v : Double) -> ImagetransformremapRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapRange::set(self : ImagetransformremapRange, i : Int, v : Double) -> ImagetransformremapRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_range_sum(s : ImagetransformremapRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapRange::sum(self : ImagetransformremapRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_range_mean(s : ImagetransformremapRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapRange::mean(self : ImagetransformremapRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_range_scale(s : ImagetransformremapRange, f : Double) -> ImagetransformremapRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapRange::scale(self : ImagetransformremapRange, f : Double) -> ImagetransformremapRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_range_add(a : ImagetransformremapRange, b : ImagetransformremapRange) -> ImagetransformremapRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapRange::add(self : ImagetransformremapRange, other : ImagetransformremapRange) -> ImagetransformremapRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_range_copy(s : ImagetransformremapRange) -> ImagetransformremapRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapRange::copy(self : ImagetransformremapRange) -> ImagetransformremapRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_range_fill(s : ImagetransformremapRange, v : Double) -> ImagetransformremapRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapRange::fill(self : ImagetransformremapRange, v : Double) -> ImagetransformremapRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_range_min(s : ImagetransformremapRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapRange::min(self : ImagetransformremapRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_range_max(s : ImagetransformremapRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapRange::max(self : ImagetransformremapRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_range_to_string(s : ImagetransformremapRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapRange::to_string(self : ImagetransformremapRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformremapSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_remap_slice_make(size : Int) -> ImagetransformremapSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_remap_slice_len(s : ImagetransformremapSlice) -> Int { s.size }
+pub fn ImagetransformremapSlice::len(self : ImagetransformremapSlice) -> Int { self.size }
 
-pub fn image_transform_remap_slice_get(s : ImagetransformremapSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformremapSlice::get(self : ImagetransformremapSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_remap_slice_set(s : ImagetransformremapSlice, i : Int, v : Double) -> ImagetransformremapSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformremapSlice::set(self : ImagetransformremapSlice, i : Int, v : Double) -> ImagetransformremapSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_slice_sum(s : ImagetransformremapSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformremapSlice::sum(self : ImagetransformremapSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_remap_slice_mean(s : ImagetransformremapSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformremapSlice::mean(self : ImagetransformremapSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_remap_slice_scale(s : ImagetransformremapSlice, f : Double) -> ImagetransformremapSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformremapSlice::scale(self : ImagetransformremapSlice, f : Double) -> ImagetransformremapSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_slice_add(a : ImagetransformremapSlice, b : ImagetransformremapSlice) -> ImagetransformremapSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformremapSlice::add(self : ImagetransformremapSlice, other : ImagetransformremapSlice) -> ImagetransformremapSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_remap_slice_copy(s : ImagetransformremapSlice) -> ImagetransformremapSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformremapSlice::copy(self : ImagetransformremapSlice) -> ImagetransformremapSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_slice_fill(s : ImagetransformremapSlice, v : Double) -> ImagetransformremapSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformremapSlice::fill(self : ImagetransformremapSlice, v : Double) -> ImagetransformremapSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_remap_slice_min(s : ImagetransformremapSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformremapSlice::min(self : ImagetransformremapSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_remap_slice_max(s : ImagetransformremapSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformremapSlice::max(self : ImagetransformremapSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_remap_slice_to_string(s : ImagetransformremapSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformremapSlice::to_string(self : ImagetransformremapSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

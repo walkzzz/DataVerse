@@ -351,45 +351,45 @@ pub fn opt_meta_sa_frame_make(size : Int) -> OptmetasaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_frame_len(s : OptmetasaFrame) -> Int { s.size }
+pub fn OptmetasaFrame::len(self : OptmetasaFrame) -> Int { self.size }
 
-pub fn opt_meta_sa_frame_get(s : OptmetasaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaFrame::get(self : OptmetasaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_frame_set(s : OptmetasaFrame, i : Int, v : Double) -> OptmetasaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaFrame::set(self : OptmetasaFrame, i : Int, v : Double) -> OptmetasaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_frame_sum(s : OptmetasaFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaFrame::sum(self : OptmetasaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_frame_mean(s : OptmetasaFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaFrame::mean(self : OptmetasaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_frame_scale(s : OptmetasaFrame, f : Double) -> OptmetasaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaFrame::scale(self : OptmetasaFrame, f : Double) -> OptmetasaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_frame_add(a : OptmetasaFrame, b : OptmetasaFrame) -> OptmetasaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaFrame::add(self : OptmetasaFrame, other : OptmetasaFrame) -> OptmetasaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_frame_copy(s : OptmetasaFrame) -> OptmetasaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaFrame::copy(self : OptmetasaFrame) -> OptmetasaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_frame_fill(s : OptmetasaFrame, v : Double) -> OptmetasaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaFrame::fill(self : OptmetasaFrame, v : Double) -> OptmetasaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_frame_min(s : OptmetasaFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetasaFrame::min(self : OptmetasaFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_frame_max(s : OptmetasaFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetasaFrame::max(self : OptmetasaFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_frame_to_string(s : OptmetasaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaFrame::to_string(self : OptmetasaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_sa_table_make(size : Int) -> OptmetasaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_table_len(s : OptmetasaTable) -> Int { s.size }
+pub fn OptmetasaTable::len(self : OptmetasaTable) -> Int { self.size }
 
-pub fn opt_meta_sa_table_get(s : OptmetasaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaTable::get(self : OptmetasaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_table_set(s : OptmetasaTable, i : Int, v : Double) -> OptmetasaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaTable::set(self : OptmetasaTable, i : Int, v : Double) -> OptmetasaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_table_sum(s : OptmetasaTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaTable::sum(self : OptmetasaTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_table_mean(s : OptmetasaTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaTable::mean(self : OptmetasaTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_table_scale(s : OptmetasaTable, f : Double) -> OptmetasaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaTable::scale(self : OptmetasaTable, f : Double) -> OptmetasaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_table_add(a : OptmetasaTable, b : OptmetasaTable) -> OptmetasaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaTable::add(self : OptmetasaTable, other : OptmetasaTable) -> OptmetasaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_table_copy(s : OptmetasaTable) -> OptmetasaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaTable::copy(self : OptmetasaTable) -> OptmetasaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_table_fill(s : OptmetasaTable, v : Double) -> OptmetasaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaTable::fill(self : OptmetasaTable, v : Double) -> OptmetasaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_table_min(s : OptmetasaTable) -> Double { @_common.min(s.data) }
+pub fn OptmetasaTable::min(self : OptmetasaTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_table_max(s : OptmetasaTable) -> Double { @_common.max(s.data) }
+pub fn OptmetasaTable::max(self : OptmetasaTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_table_to_string(s : OptmetasaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaTable::to_string(self : OptmetasaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_sa_graphn_make(size : Int) -> OptmetasaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_graphn_len(s : OptmetasaGraphN) -> Int { s.size }
+pub fn OptmetasaGraphN::len(self : OptmetasaGraphN) -> Int { self.size }
 
-pub fn opt_meta_sa_graphn_get(s : OptmetasaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaGraphN::get(self : OptmetasaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_graphn_set(s : OptmetasaGraphN, i : Int, v : Double) -> OptmetasaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaGraphN::set(self : OptmetasaGraphN, i : Int, v : Double) -> OptmetasaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_graphn_sum(s : OptmetasaGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaGraphN::sum(self : OptmetasaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_graphn_mean(s : OptmetasaGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaGraphN::mean(self : OptmetasaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_graphn_scale(s : OptmetasaGraphN, f : Double) -> OptmetasaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaGraphN::scale(self : OptmetasaGraphN, f : Double) -> OptmetasaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_graphn_add(a : OptmetasaGraphN, b : OptmetasaGraphN) -> OptmetasaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaGraphN::add(self : OptmetasaGraphN, other : OptmetasaGraphN) -> OptmetasaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_graphn_copy(s : OptmetasaGraphN) -> OptmetasaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaGraphN::copy(self : OptmetasaGraphN) -> OptmetasaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_graphn_fill(s : OptmetasaGraphN, v : Double) -> OptmetasaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaGraphN::fill(self : OptmetasaGraphN, v : Double) -> OptmetasaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_graphn_min(s : OptmetasaGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetasaGraphN::min(self : OptmetasaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_graphn_max(s : OptmetasaGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetasaGraphN::max(self : OptmetasaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_graphn_to_string(s : OptmetasaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaGraphN::to_string(self : OptmetasaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_sa_node_make(size : Int) -> OptmetasaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_node_len(s : OptmetasaNode) -> Int { s.size }
+pub fn OptmetasaNode::len(self : OptmetasaNode) -> Int { self.size }
 
-pub fn opt_meta_sa_node_get(s : OptmetasaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaNode::get(self : OptmetasaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_node_set(s : OptmetasaNode, i : Int, v : Double) -> OptmetasaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaNode::set(self : OptmetasaNode, i : Int, v : Double) -> OptmetasaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_node_sum(s : OptmetasaNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaNode::sum(self : OptmetasaNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_node_mean(s : OptmetasaNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaNode::mean(self : OptmetasaNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_node_scale(s : OptmetasaNode, f : Double) -> OptmetasaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaNode::scale(self : OptmetasaNode, f : Double) -> OptmetasaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_node_add(a : OptmetasaNode, b : OptmetasaNode) -> OptmetasaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaNode::add(self : OptmetasaNode, other : OptmetasaNode) -> OptmetasaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_node_copy(s : OptmetasaNode) -> OptmetasaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaNode::copy(self : OptmetasaNode) -> OptmetasaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_node_fill(s : OptmetasaNode, v : Double) -> OptmetasaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaNode::fill(self : OptmetasaNode, v : Double) -> OptmetasaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_node_min(s : OptmetasaNode) -> Double { @_common.min(s.data) }
+pub fn OptmetasaNode::min(self : OptmetasaNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_node_max(s : OptmetasaNode) -> Double { @_common.max(s.data) }
+pub fn OptmetasaNode::max(self : OptmetasaNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_node_to_string(s : OptmetasaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaNode::to_string(self : OptmetasaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_sa_edge_make(size : Int) -> OptmetasaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_edge_len(s : OptmetasaEdge) -> Int { s.size }
+pub fn OptmetasaEdge::len(self : OptmetasaEdge) -> Int { self.size }
 
-pub fn opt_meta_sa_edge_get(s : OptmetasaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaEdge::get(self : OptmetasaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_edge_set(s : OptmetasaEdge, i : Int, v : Double) -> OptmetasaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaEdge::set(self : OptmetasaEdge, i : Int, v : Double) -> OptmetasaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_edge_sum(s : OptmetasaEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaEdge::sum(self : OptmetasaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_edge_mean(s : OptmetasaEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaEdge::mean(self : OptmetasaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_edge_scale(s : OptmetasaEdge, f : Double) -> OptmetasaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaEdge::scale(self : OptmetasaEdge, f : Double) -> OptmetasaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_edge_add(a : OptmetasaEdge, b : OptmetasaEdge) -> OptmetasaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaEdge::add(self : OptmetasaEdge, other : OptmetasaEdge) -> OptmetasaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_edge_copy(s : OptmetasaEdge) -> OptmetasaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaEdge::copy(self : OptmetasaEdge) -> OptmetasaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_edge_fill(s : OptmetasaEdge, v : Double) -> OptmetasaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaEdge::fill(self : OptmetasaEdge, v : Double) -> OptmetasaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_edge_min(s : OptmetasaEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetasaEdge::min(self : OptmetasaEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_edge_max(s : OptmetasaEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetasaEdge::max(self : OptmetasaEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_edge_to_string(s : OptmetasaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaEdge::to_string(self : OptmetasaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_sa_path_make(size : Int) -> OptmetasaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_path_len(s : OptmetasaPath) -> Int { s.size }
+pub fn OptmetasaPath::len(self : OptmetasaPath) -> Int { self.size }
 
-pub fn opt_meta_sa_path_get(s : OptmetasaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaPath::get(self : OptmetasaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_path_set(s : OptmetasaPath, i : Int, v : Double) -> OptmetasaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaPath::set(self : OptmetasaPath, i : Int, v : Double) -> OptmetasaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_path_sum(s : OptmetasaPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaPath::sum(self : OptmetasaPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_path_mean(s : OptmetasaPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaPath::mean(self : OptmetasaPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_path_scale(s : OptmetasaPath, f : Double) -> OptmetasaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaPath::scale(self : OptmetasaPath, f : Double) -> OptmetasaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_path_add(a : OptmetasaPath, b : OptmetasaPath) -> OptmetasaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaPath::add(self : OptmetasaPath, other : OptmetasaPath) -> OptmetasaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_path_copy(s : OptmetasaPath) -> OptmetasaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaPath::copy(self : OptmetasaPath) -> OptmetasaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_path_fill(s : OptmetasaPath, v : Double) -> OptmetasaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaPath::fill(self : OptmetasaPath, v : Double) -> OptmetasaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_path_min(s : OptmetasaPath) -> Double { @_common.min(s.data) }
+pub fn OptmetasaPath::min(self : OptmetasaPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_path_max(s : OptmetasaPath) -> Double { @_common.max(s.data) }
+pub fn OptmetasaPath::max(self : OptmetasaPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_path_to_string(s : OptmetasaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaPath::to_string(self : OptmetasaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_sa_cluster_make(size : Int) -> OptmetasaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_cluster_len(s : OptmetasaCluster) -> Int { s.size }
+pub fn OptmetasaCluster::len(self : OptmetasaCluster) -> Int { self.size }
 
-pub fn opt_meta_sa_cluster_get(s : OptmetasaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaCluster::get(self : OptmetasaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_cluster_set(s : OptmetasaCluster, i : Int, v : Double) -> OptmetasaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaCluster::set(self : OptmetasaCluster, i : Int, v : Double) -> OptmetasaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cluster_sum(s : OptmetasaCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaCluster::sum(self : OptmetasaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_cluster_mean(s : OptmetasaCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaCluster::mean(self : OptmetasaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_cluster_scale(s : OptmetasaCluster, f : Double) -> OptmetasaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaCluster::scale(self : OptmetasaCluster, f : Double) -> OptmetasaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cluster_add(a : OptmetasaCluster, b : OptmetasaCluster) -> OptmetasaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaCluster::add(self : OptmetasaCluster, other : OptmetasaCluster) -> OptmetasaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cluster_copy(s : OptmetasaCluster) -> OptmetasaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaCluster::copy(self : OptmetasaCluster) -> OptmetasaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cluster_fill(s : OptmetasaCluster, v : Double) -> OptmetasaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaCluster::fill(self : OptmetasaCluster, v : Double) -> OptmetasaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cluster_min(s : OptmetasaCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetasaCluster::min(self : OptmetasaCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_cluster_max(s : OptmetasaCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetasaCluster::max(self : OptmetasaCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_cluster_to_string(s : OptmetasaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaCluster::to_string(self : OptmetasaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_sa_model_make(size : Int) -> OptmetasaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_model_len(s : OptmetasaModel) -> Int { s.size }
+pub fn OptmetasaModel::len(self : OptmetasaModel) -> Int { self.size }
 
-pub fn opt_meta_sa_model_get(s : OptmetasaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaModel::get(self : OptmetasaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_model_set(s : OptmetasaModel, i : Int, v : Double) -> OptmetasaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaModel::set(self : OptmetasaModel, i : Int, v : Double) -> OptmetasaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_model_sum(s : OptmetasaModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaModel::sum(self : OptmetasaModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_model_mean(s : OptmetasaModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaModel::mean(self : OptmetasaModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_model_scale(s : OptmetasaModel, f : Double) -> OptmetasaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaModel::scale(self : OptmetasaModel, f : Double) -> OptmetasaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_model_add(a : OptmetasaModel, b : OptmetasaModel) -> OptmetasaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaModel::add(self : OptmetasaModel, other : OptmetasaModel) -> OptmetasaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_model_copy(s : OptmetasaModel) -> OptmetasaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaModel::copy(self : OptmetasaModel) -> OptmetasaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_model_fill(s : OptmetasaModel, v : Double) -> OptmetasaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaModel::fill(self : OptmetasaModel, v : Double) -> OptmetasaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_model_min(s : OptmetasaModel) -> Double { @_common.min(s.data) }
+pub fn OptmetasaModel::min(self : OptmetasaModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_model_max(s : OptmetasaModel) -> Double { @_common.max(s.data) }
+pub fn OptmetasaModel::max(self : OptmetasaModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_model_to_string(s : OptmetasaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaModel::to_string(self : OptmetasaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_sa_layer_make(size : Int) -> OptmetasaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_layer_len(s : OptmetasaLayer) -> Int { s.size }
+pub fn OptmetasaLayer::len(self : OptmetasaLayer) -> Int { self.size }
 
-pub fn opt_meta_sa_layer_get(s : OptmetasaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaLayer::get(self : OptmetasaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_layer_set(s : OptmetasaLayer, i : Int, v : Double) -> OptmetasaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaLayer::set(self : OptmetasaLayer, i : Int, v : Double) -> OptmetasaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_layer_sum(s : OptmetasaLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaLayer::sum(self : OptmetasaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_layer_mean(s : OptmetasaLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaLayer::mean(self : OptmetasaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_layer_scale(s : OptmetasaLayer, f : Double) -> OptmetasaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaLayer::scale(self : OptmetasaLayer, f : Double) -> OptmetasaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_layer_add(a : OptmetasaLayer, b : OptmetasaLayer) -> OptmetasaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaLayer::add(self : OptmetasaLayer, other : OptmetasaLayer) -> OptmetasaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_layer_copy(s : OptmetasaLayer) -> OptmetasaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaLayer::copy(self : OptmetasaLayer) -> OptmetasaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_layer_fill(s : OptmetasaLayer, v : Double) -> OptmetasaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaLayer::fill(self : OptmetasaLayer, v : Double) -> OptmetasaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_layer_min(s : OptmetasaLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetasaLayer::min(self : OptmetasaLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_layer_max(s : OptmetasaLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetasaLayer::max(self : OptmetasaLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_layer_to_string(s : OptmetasaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaLayer::to_string(self : OptmetasaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_sa_buffer_make(size : Int) -> OptmetasaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_buffer_len(s : OptmetasaBuffer) -> Int { s.size }
+pub fn OptmetasaBuffer::len(self : OptmetasaBuffer) -> Int { self.size }
 
-pub fn opt_meta_sa_buffer_get(s : OptmetasaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaBuffer::get(self : OptmetasaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_buffer_set(s : OptmetasaBuffer, i : Int, v : Double) -> OptmetasaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaBuffer::set(self : OptmetasaBuffer, i : Int, v : Double) -> OptmetasaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_buffer_sum(s : OptmetasaBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaBuffer::sum(self : OptmetasaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_buffer_mean(s : OptmetasaBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaBuffer::mean(self : OptmetasaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_buffer_scale(s : OptmetasaBuffer, f : Double) -> OptmetasaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaBuffer::scale(self : OptmetasaBuffer, f : Double) -> OptmetasaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_buffer_add(a : OptmetasaBuffer, b : OptmetasaBuffer) -> OptmetasaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaBuffer::add(self : OptmetasaBuffer, other : OptmetasaBuffer) -> OptmetasaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_buffer_copy(s : OptmetasaBuffer) -> OptmetasaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaBuffer::copy(self : OptmetasaBuffer) -> OptmetasaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_buffer_fill(s : OptmetasaBuffer, v : Double) -> OptmetasaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaBuffer::fill(self : OptmetasaBuffer, v : Double) -> OptmetasaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_buffer_min(s : OptmetasaBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetasaBuffer::min(self : OptmetasaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_buffer_max(s : OptmetasaBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetasaBuffer::max(self : OptmetasaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_buffer_to_string(s : OptmetasaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaBuffer::to_string(self : OptmetasaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_sa_cursor_make(size : Int) -> OptmetasaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_cursor_len(s : OptmetasaCursor) -> Int { s.size }
+pub fn OptmetasaCursor::len(self : OptmetasaCursor) -> Int { self.size }
 
-pub fn opt_meta_sa_cursor_get(s : OptmetasaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaCursor::get(self : OptmetasaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_cursor_set(s : OptmetasaCursor, i : Int, v : Double) -> OptmetasaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaCursor::set(self : OptmetasaCursor, i : Int, v : Double) -> OptmetasaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cursor_sum(s : OptmetasaCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaCursor::sum(self : OptmetasaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_cursor_mean(s : OptmetasaCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaCursor::mean(self : OptmetasaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_cursor_scale(s : OptmetasaCursor, f : Double) -> OptmetasaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaCursor::scale(self : OptmetasaCursor, f : Double) -> OptmetasaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cursor_add(a : OptmetasaCursor, b : OptmetasaCursor) -> OptmetasaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaCursor::add(self : OptmetasaCursor, other : OptmetasaCursor) -> OptmetasaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cursor_copy(s : OptmetasaCursor) -> OptmetasaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaCursor::copy(self : OptmetasaCursor) -> OptmetasaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cursor_fill(s : OptmetasaCursor, v : Double) -> OptmetasaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaCursor::fill(self : OptmetasaCursor, v : Double) -> OptmetasaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_cursor_min(s : OptmetasaCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetasaCursor::min(self : OptmetasaCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_cursor_max(s : OptmetasaCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetasaCursor::max(self : OptmetasaCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_cursor_to_string(s : OptmetasaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaCursor::to_string(self : OptmetasaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaView {
@@ -912,45 +912,45 @@ pub fn opt_meta_sa_view_make(size : Int) -> OptmetasaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_view_len(s : OptmetasaView) -> Int { s.size }
+pub fn OptmetasaView::len(self : OptmetasaView) -> Int { self.size }
 
-pub fn opt_meta_sa_view_get(s : OptmetasaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaView::get(self : OptmetasaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_view_set(s : OptmetasaView, i : Int, v : Double) -> OptmetasaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaView::set(self : OptmetasaView, i : Int, v : Double) -> OptmetasaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_view_sum(s : OptmetasaView) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaView::sum(self : OptmetasaView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_view_mean(s : OptmetasaView) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaView::mean(self : OptmetasaView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_view_scale(s : OptmetasaView, f : Double) -> OptmetasaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaView::scale(self : OptmetasaView, f : Double) -> OptmetasaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_view_add(a : OptmetasaView, b : OptmetasaView) -> OptmetasaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaView::add(self : OptmetasaView, other : OptmetasaView) -> OptmetasaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_view_copy(s : OptmetasaView) -> OptmetasaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaView::copy(self : OptmetasaView) -> OptmetasaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_view_fill(s : OptmetasaView, v : Double) -> OptmetasaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaView::fill(self : OptmetasaView, v : Double) -> OptmetasaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_view_min(s : OptmetasaView) -> Double { @_common.min(s.data) }
+pub fn OptmetasaView::min(self : OptmetasaView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_view_max(s : OptmetasaView) -> Double { @_common.max(s.data) }
+pub fn OptmetasaView::max(self : OptmetasaView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_view_to_string(s : OptmetasaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaView::to_string(self : OptmetasaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_sa_range_make(size : Int) -> OptmetasaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_range_len(s : OptmetasaRange) -> Int { s.size }
+pub fn OptmetasaRange::len(self : OptmetasaRange) -> Int { self.size }
 
-pub fn opt_meta_sa_range_get(s : OptmetasaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaRange::get(self : OptmetasaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_range_set(s : OptmetasaRange, i : Int, v : Double) -> OptmetasaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaRange::set(self : OptmetasaRange, i : Int, v : Double) -> OptmetasaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_range_sum(s : OptmetasaRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaRange::sum(self : OptmetasaRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_range_mean(s : OptmetasaRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaRange::mean(self : OptmetasaRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_range_scale(s : OptmetasaRange, f : Double) -> OptmetasaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaRange::scale(self : OptmetasaRange, f : Double) -> OptmetasaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_range_add(a : OptmetasaRange, b : OptmetasaRange) -> OptmetasaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaRange::add(self : OptmetasaRange, other : OptmetasaRange) -> OptmetasaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_range_copy(s : OptmetasaRange) -> OptmetasaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaRange::copy(self : OptmetasaRange) -> OptmetasaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_range_fill(s : OptmetasaRange, v : Double) -> OptmetasaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaRange::fill(self : OptmetasaRange, v : Double) -> OptmetasaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_range_min(s : OptmetasaRange) -> Double { @_common.min(s.data) }
+pub fn OptmetasaRange::min(self : OptmetasaRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_range_max(s : OptmetasaRange) -> Double { @_common.max(s.data) }
+pub fn OptmetasaRange::max(self : OptmetasaRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_range_to_string(s : OptmetasaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaRange::to_string(self : OptmetasaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetasaSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_sa_slice_make(size : Int) -> OptmetasaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_sa_slice_len(s : OptmetasaSlice) -> Int { s.size }
+pub fn OptmetasaSlice::len(self : OptmetasaSlice) -> Int { self.size }
 
-pub fn opt_meta_sa_slice_get(s : OptmetasaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetasaSlice::get(self : OptmetasaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_sa_slice_set(s : OptmetasaSlice, i : Int, v : Double) -> OptmetasaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetasaSlice::set(self : OptmetasaSlice, i : Int, v : Double) -> OptmetasaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_slice_sum(s : OptmetasaSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetasaSlice::sum(self : OptmetasaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_sa_slice_mean(s : OptmetasaSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetasaSlice::mean(self : OptmetasaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_sa_slice_scale(s : OptmetasaSlice, f : Double) -> OptmetasaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetasaSlice::scale(self : OptmetasaSlice, f : Double) -> OptmetasaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_slice_add(a : OptmetasaSlice, b : OptmetasaSlice) -> OptmetasaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetasaSlice::add(self : OptmetasaSlice, other : OptmetasaSlice) -> OptmetasaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_sa_slice_copy(s : OptmetasaSlice) -> OptmetasaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetasaSlice::copy(self : OptmetasaSlice) -> OptmetasaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_slice_fill(s : OptmetasaSlice, v : Double) -> OptmetasaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetasaSlice::fill(self : OptmetasaSlice, v : Double) -> OptmetasaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_sa_slice_min(s : OptmetasaSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetasaSlice::min(self : OptmetasaSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_sa_slice_max(s : OptmetasaSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetasaSlice::max(self : OptmetasaSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_sa_slice_to_string(s : OptmetasaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetasaSlice::to_string(self : OptmetasaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

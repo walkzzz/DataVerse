@@ -351,45 +351,45 @@ pub fn geo_dist_vincenty_frame_make(size : Int) -> GeodistvincentyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_frame_len(s : GeodistvincentyFrame) -> Int { s.size }
+pub fn GeodistvincentyFrame::len(self : GeodistvincentyFrame) -> Int { self.size }
 
-pub fn geo_dist_vincenty_frame_get(s : GeodistvincentyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyFrame::get(self : GeodistvincentyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_frame_set(s : GeodistvincentyFrame, i : Int, v : Double) -> GeodistvincentyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyFrame::set(self : GeodistvincentyFrame, i : Int, v : Double) -> GeodistvincentyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_frame_sum(s : GeodistvincentyFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyFrame::sum(self : GeodistvincentyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_frame_mean(s : GeodistvincentyFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyFrame::mean(self : GeodistvincentyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_frame_scale(s : GeodistvincentyFrame, f : Double) -> GeodistvincentyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyFrame::scale(self : GeodistvincentyFrame, f : Double) -> GeodistvincentyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_frame_add(a : GeodistvincentyFrame, b : GeodistvincentyFrame) -> GeodistvincentyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyFrame::add(self : GeodistvincentyFrame, other : GeodistvincentyFrame) -> GeodistvincentyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_frame_copy(s : GeodistvincentyFrame) -> GeodistvincentyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyFrame::copy(self : GeodistvincentyFrame) -> GeodistvincentyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_frame_fill(s : GeodistvincentyFrame, v : Double) -> GeodistvincentyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyFrame::fill(self : GeodistvincentyFrame, v : Double) -> GeodistvincentyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_frame_min(s : GeodistvincentyFrame) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyFrame::min(self : GeodistvincentyFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_frame_max(s : GeodistvincentyFrame) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyFrame::max(self : GeodistvincentyFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_frame_to_string(s : GeodistvincentyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyFrame::to_string(self : GeodistvincentyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_vincenty_table_make(size : Int) -> GeodistvincentyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_table_len(s : GeodistvincentyTable) -> Int { s.size }
+pub fn GeodistvincentyTable::len(self : GeodistvincentyTable) -> Int { self.size }
 
-pub fn geo_dist_vincenty_table_get(s : GeodistvincentyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyTable::get(self : GeodistvincentyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_table_set(s : GeodistvincentyTable, i : Int, v : Double) -> GeodistvincentyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyTable::set(self : GeodistvincentyTable, i : Int, v : Double) -> GeodistvincentyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_table_sum(s : GeodistvincentyTable) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyTable::sum(self : GeodistvincentyTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_table_mean(s : GeodistvincentyTable) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyTable::mean(self : GeodistvincentyTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_table_scale(s : GeodistvincentyTable, f : Double) -> GeodistvincentyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyTable::scale(self : GeodistvincentyTable, f : Double) -> GeodistvincentyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_table_add(a : GeodistvincentyTable, b : GeodistvincentyTable) -> GeodistvincentyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyTable::add(self : GeodistvincentyTable, other : GeodistvincentyTable) -> GeodistvincentyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_table_copy(s : GeodistvincentyTable) -> GeodistvincentyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyTable::copy(self : GeodistvincentyTable) -> GeodistvincentyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_table_fill(s : GeodistvincentyTable, v : Double) -> GeodistvincentyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyTable::fill(self : GeodistvincentyTable, v : Double) -> GeodistvincentyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_table_min(s : GeodistvincentyTable) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyTable::min(self : GeodistvincentyTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_table_max(s : GeodistvincentyTable) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyTable::max(self : GeodistvincentyTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_table_to_string(s : GeodistvincentyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyTable::to_string(self : GeodistvincentyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_vincenty_graphn_make(size : Int) -> GeodistvincentyGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_graphn_len(s : GeodistvincentyGraphN) -> Int { s.size }
+pub fn GeodistvincentyGraphN::len(self : GeodistvincentyGraphN) -> Int { self.size }
 
-pub fn geo_dist_vincenty_graphn_get(s : GeodistvincentyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyGraphN::get(self : GeodistvincentyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_graphn_set(s : GeodistvincentyGraphN, i : Int, v : Double) -> GeodistvincentyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyGraphN::set(self : GeodistvincentyGraphN, i : Int, v : Double) -> GeodistvincentyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_graphn_sum(s : GeodistvincentyGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyGraphN::sum(self : GeodistvincentyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_graphn_mean(s : GeodistvincentyGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyGraphN::mean(self : GeodistvincentyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_graphn_scale(s : GeodistvincentyGraphN, f : Double) -> GeodistvincentyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyGraphN::scale(self : GeodistvincentyGraphN, f : Double) -> GeodistvincentyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_graphn_add(a : GeodistvincentyGraphN, b : GeodistvincentyGraphN) -> GeodistvincentyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyGraphN::add(self : GeodistvincentyGraphN, other : GeodistvincentyGraphN) -> GeodistvincentyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_graphn_copy(s : GeodistvincentyGraphN) -> GeodistvincentyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyGraphN::copy(self : GeodistvincentyGraphN) -> GeodistvincentyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_graphn_fill(s : GeodistvincentyGraphN, v : Double) -> GeodistvincentyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyGraphN::fill(self : GeodistvincentyGraphN, v : Double) -> GeodistvincentyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_graphn_min(s : GeodistvincentyGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyGraphN::min(self : GeodistvincentyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_graphn_max(s : GeodistvincentyGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyGraphN::max(self : GeodistvincentyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_graphn_to_string(s : GeodistvincentyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyGraphN::to_string(self : GeodistvincentyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_vincenty_node_make(size : Int) -> GeodistvincentyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_node_len(s : GeodistvincentyNode) -> Int { s.size }
+pub fn GeodistvincentyNode::len(self : GeodistvincentyNode) -> Int { self.size }
 
-pub fn geo_dist_vincenty_node_get(s : GeodistvincentyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyNode::get(self : GeodistvincentyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_node_set(s : GeodistvincentyNode, i : Int, v : Double) -> GeodistvincentyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyNode::set(self : GeodistvincentyNode, i : Int, v : Double) -> GeodistvincentyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_node_sum(s : GeodistvincentyNode) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyNode::sum(self : GeodistvincentyNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_node_mean(s : GeodistvincentyNode) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyNode::mean(self : GeodistvincentyNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_node_scale(s : GeodistvincentyNode, f : Double) -> GeodistvincentyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyNode::scale(self : GeodistvincentyNode, f : Double) -> GeodistvincentyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_node_add(a : GeodistvincentyNode, b : GeodistvincentyNode) -> GeodistvincentyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyNode::add(self : GeodistvincentyNode, other : GeodistvincentyNode) -> GeodistvincentyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_node_copy(s : GeodistvincentyNode) -> GeodistvincentyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyNode::copy(self : GeodistvincentyNode) -> GeodistvincentyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_node_fill(s : GeodistvincentyNode, v : Double) -> GeodistvincentyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyNode::fill(self : GeodistvincentyNode, v : Double) -> GeodistvincentyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_node_min(s : GeodistvincentyNode) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyNode::min(self : GeodistvincentyNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_node_max(s : GeodistvincentyNode) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyNode::max(self : GeodistvincentyNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_node_to_string(s : GeodistvincentyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyNode::to_string(self : GeodistvincentyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_vincenty_edge_make(size : Int) -> GeodistvincentyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_edge_len(s : GeodistvincentyEdge) -> Int { s.size }
+pub fn GeodistvincentyEdge::len(self : GeodistvincentyEdge) -> Int { self.size }
 
-pub fn geo_dist_vincenty_edge_get(s : GeodistvincentyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyEdge::get(self : GeodistvincentyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_edge_set(s : GeodistvincentyEdge, i : Int, v : Double) -> GeodistvincentyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyEdge::set(self : GeodistvincentyEdge, i : Int, v : Double) -> GeodistvincentyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_edge_sum(s : GeodistvincentyEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyEdge::sum(self : GeodistvincentyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_edge_mean(s : GeodistvincentyEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyEdge::mean(self : GeodistvincentyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_edge_scale(s : GeodistvincentyEdge, f : Double) -> GeodistvincentyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyEdge::scale(self : GeodistvincentyEdge, f : Double) -> GeodistvincentyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_edge_add(a : GeodistvincentyEdge, b : GeodistvincentyEdge) -> GeodistvincentyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyEdge::add(self : GeodistvincentyEdge, other : GeodistvincentyEdge) -> GeodistvincentyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_edge_copy(s : GeodistvincentyEdge) -> GeodistvincentyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyEdge::copy(self : GeodistvincentyEdge) -> GeodistvincentyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_edge_fill(s : GeodistvincentyEdge, v : Double) -> GeodistvincentyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyEdge::fill(self : GeodistvincentyEdge, v : Double) -> GeodistvincentyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_edge_min(s : GeodistvincentyEdge) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyEdge::min(self : GeodistvincentyEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_edge_max(s : GeodistvincentyEdge) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyEdge::max(self : GeodistvincentyEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_edge_to_string(s : GeodistvincentyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyEdge::to_string(self : GeodistvincentyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyPath {
@@ -606,45 +606,45 @@ pub fn geo_dist_vincenty_path_make(size : Int) -> GeodistvincentyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_path_len(s : GeodistvincentyPath) -> Int { s.size }
+pub fn GeodistvincentyPath::len(self : GeodistvincentyPath) -> Int { self.size }
 
-pub fn geo_dist_vincenty_path_get(s : GeodistvincentyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyPath::get(self : GeodistvincentyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_path_set(s : GeodistvincentyPath, i : Int, v : Double) -> GeodistvincentyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyPath::set(self : GeodistvincentyPath, i : Int, v : Double) -> GeodistvincentyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_path_sum(s : GeodistvincentyPath) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyPath::sum(self : GeodistvincentyPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_path_mean(s : GeodistvincentyPath) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyPath::mean(self : GeodistvincentyPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_path_scale(s : GeodistvincentyPath, f : Double) -> GeodistvincentyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyPath::scale(self : GeodistvincentyPath, f : Double) -> GeodistvincentyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_path_add(a : GeodistvincentyPath, b : GeodistvincentyPath) -> GeodistvincentyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyPath::add(self : GeodistvincentyPath, other : GeodistvincentyPath) -> GeodistvincentyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_path_copy(s : GeodistvincentyPath) -> GeodistvincentyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyPath::copy(self : GeodistvincentyPath) -> GeodistvincentyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_path_fill(s : GeodistvincentyPath, v : Double) -> GeodistvincentyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyPath::fill(self : GeodistvincentyPath, v : Double) -> GeodistvincentyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_path_min(s : GeodistvincentyPath) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyPath::min(self : GeodistvincentyPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_path_max(s : GeodistvincentyPath) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyPath::max(self : GeodistvincentyPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_path_to_string(s : GeodistvincentyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyPath::to_string(self : GeodistvincentyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_vincenty_cluster_make(size : Int) -> GeodistvincentyCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_cluster_len(s : GeodistvincentyCluster) -> Int { s.size }
+pub fn GeodistvincentyCluster::len(self : GeodistvincentyCluster) -> Int { self.size }
 
-pub fn geo_dist_vincenty_cluster_get(s : GeodistvincentyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyCluster::get(self : GeodistvincentyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_cluster_set(s : GeodistvincentyCluster, i : Int, v : Double) -> GeodistvincentyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyCluster::set(self : GeodistvincentyCluster, i : Int, v : Double) -> GeodistvincentyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cluster_sum(s : GeodistvincentyCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyCluster::sum(self : GeodistvincentyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_cluster_mean(s : GeodistvincentyCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyCluster::mean(self : GeodistvincentyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_cluster_scale(s : GeodistvincentyCluster, f : Double) -> GeodistvincentyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyCluster::scale(self : GeodistvincentyCluster, f : Double) -> GeodistvincentyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cluster_add(a : GeodistvincentyCluster, b : GeodistvincentyCluster) -> GeodistvincentyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyCluster::add(self : GeodistvincentyCluster, other : GeodistvincentyCluster) -> GeodistvincentyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cluster_copy(s : GeodistvincentyCluster) -> GeodistvincentyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyCluster::copy(self : GeodistvincentyCluster) -> GeodistvincentyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cluster_fill(s : GeodistvincentyCluster, v : Double) -> GeodistvincentyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyCluster::fill(self : GeodistvincentyCluster, v : Double) -> GeodistvincentyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cluster_min(s : GeodistvincentyCluster) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyCluster::min(self : GeodistvincentyCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_cluster_max(s : GeodistvincentyCluster) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyCluster::max(self : GeodistvincentyCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_cluster_to_string(s : GeodistvincentyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyCluster::to_string(self : GeodistvincentyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_vincenty_model_make(size : Int) -> GeodistvincentyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_model_len(s : GeodistvincentyModel) -> Int { s.size }
+pub fn GeodistvincentyModel::len(self : GeodistvincentyModel) -> Int { self.size }
 
-pub fn geo_dist_vincenty_model_get(s : GeodistvincentyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyModel::get(self : GeodistvincentyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_model_set(s : GeodistvincentyModel, i : Int, v : Double) -> GeodistvincentyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyModel::set(self : GeodistvincentyModel, i : Int, v : Double) -> GeodistvincentyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_model_sum(s : GeodistvincentyModel) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyModel::sum(self : GeodistvincentyModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_model_mean(s : GeodistvincentyModel) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyModel::mean(self : GeodistvincentyModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_model_scale(s : GeodistvincentyModel, f : Double) -> GeodistvincentyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyModel::scale(self : GeodistvincentyModel, f : Double) -> GeodistvincentyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_model_add(a : GeodistvincentyModel, b : GeodistvincentyModel) -> GeodistvincentyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyModel::add(self : GeodistvincentyModel, other : GeodistvincentyModel) -> GeodistvincentyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_model_copy(s : GeodistvincentyModel) -> GeodistvincentyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyModel::copy(self : GeodistvincentyModel) -> GeodistvincentyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_model_fill(s : GeodistvincentyModel, v : Double) -> GeodistvincentyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyModel::fill(self : GeodistvincentyModel, v : Double) -> GeodistvincentyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_model_min(s : GeodistvincentyModel) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyModel::min(self : GeodistvincentyModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_model_max(s : GeodistvincentyModel) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyModel::max(self : GeodistvincentyModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_model_to_string(s : GeodistvincentyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyModel::to_string(self : GeodistvincentyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_vincenty_layer_make(size : Int) -> GeodistvincentyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_layer_len(s : GeodistvincentyLayer) -> Int { s.size }
+pub fn GeodistvincentyLayer::len(self : GeodistvincentyLayer) -> Int { self.size }
 
-pub fn geo_dist_vincenty_layer_get(s : GeodistvincentyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyLayer::get(self : GeodistvincentyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_layer_set(s : GeodistvincentyLayer, i : Int, v : Double) -> GeodistvincentyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyLayer::set(self : GeodistvincentyLayer, i : Int, v : Double) -> GeodistvincentyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_layer_sum(s : GeodistvincentyLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyLayer::sum(self : GeodistvincentyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_layer_mean(s : GeodistvincentyLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyLayer::mean(self : GeodistvincentyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_layer_scale(s : GeodistvincentyLayer, f : Double) -> GeodistvincentyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyLayer::scale(self : GeodistvincentyLayer, f : Double) -> GeodistvincentyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_layer_add(a : GeodistvincentyLayer, b : GeodistvincentyLayer) -> GeodistvincentyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyLayer::add(self : GeodistvincentyLayer, other : GeodistvincentyLayer) -> GeodistvincentyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_layer_copy(s : GeodistvincentyLayer) -> GeodistvincentyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyLayer::copy(self : GeodistvincentyLayer) -> GeodistvincentyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_layer_fill(s : GeodistvincentyLayer, v : Double) -> GeodistvincentyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyLayer::fill(self : GeodistvincentyLayer, v : Double) -> GeodistvincentyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_layer_min(s : GeodistvincentyLayer) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyLayer::min(self : GeodistvincentyLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_layer_max(s : GeodistvincentyLayer) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyLayer::max(self : GeodistvincentyLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_layer_to_string(s : GeodistvincentyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyLayer::to_string(self : GeodistvincentyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_vincenty_buffer_make(size : Int) -> GeodistvincentyBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_buffer_len(s : GeodistvincentyBuffer) -> Int { s.size }
+pub fn GeodistvincentyBuffer::len(self : GeodistvincentyBuffer) -> Int { self.size }
 
-pub fn geo_dist_vincenty_buffer_get(s : GeodistvincentyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyBuffer::get(self : GeodistvincentyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_buffer_set(s : GeodistvincentyBuffer, i : Int, v : Double) -> GeodistvincentyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyBuffer::set(self : GeodistvincentyBuffer, i : Int, v : Double) -> GeodistvincentyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_buffer_sum(s : GeodistvincentyBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyBuffer::sum(self : GeodistvincentyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_buffer_mean(s : GeodistvincentyBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyBuffer::mean(self : GeodistvincentyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_buffer_scale(s : GeodistvincentyBuffer, f : Double) -> GeodistvincentyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyBuffer::scale(self : GeodistvincentyBuffer, f : Double) -> GeodistvincentyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_buffer_add(a : GeodistvincentyBuffer, b : GeodistvincentyBuffer) -> GeodistvincentyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyBuffer::add(self : GeodistvincentyBuffer, other : GeodistvincentyBuffer) -> GeodistvincentyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_buffer_copy(s : GeodistvincentyBuffer) -> GeodistvincentyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyBuffer::copy(self : GeodistvincentyBuffer) -> GeodistvincentyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_buffer_fill(s : GeodistvincentyBuffer, v : Double) -> GeodistvincentyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyBuffer::fill(self : GeodistvincentyBuffer, v : Double) -> GeodistvincentyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_buffer_min(s : GeodistvincentyBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyBuffer::min(self : GeodistvincentyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_buffer_max(s : GeodistvincentyBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyBuffer::max(self : GeodistvincentyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_buffer_to_string(s : GeodistvincentyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyBuffer::to_string(self : GeodistvincentyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_vincenty_cursor_make(size : Int) -> GeodistvincentyCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_cursor_len(s : GeodistvincentyCursor) -> Int { s.size }
+pub fn GeodistvincentyCursor::len(self : GeodistvincentyCursor) -> Int { self.size }
 
-pub fn geo_dist_vincenty_cursor_get(s : GeodistvincentyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyCursor::get(self : GeodistvincentyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_cursor_set(s : GeodistvincentyCursor, i : Int, v : Double) -> GeodistvincentyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyCursor::set(self : GeodistvincentyCursor, i : Int, v : Double) -> GeodistvincentyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cursor_sum(s : GeodistvincentyCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyCursor::sum(self : GeodistvincentyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_cursor_mean(s : GeodistvincentyCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyCursor::mean(self : GeodistvincentyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_cursor_scale(s : GeodistvincentyCursor, f : Double) -> GeodistvincentyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyCursor::scale(self : GeodistvincentyCursor, f : Double) -> GeodistvincentyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cursor_add(a : GeodistvincentyCursor, b : GeodistvincentyCursor) -> GeodistvincentyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyCursor::add(self : GeodistvincentyCursor, other : GeodistvincentyCursor) -> GeodistvincentyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cursor_copy(s : GeodistvincentyCursor) -> GeodistvincentyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyCursor::copy(self : GeodistvincentyCursor) -> GeodistvincentyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cursor_fill(s : GeodistvincentyCursor, v : Double) -> GeodistvincentyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyCursor::fill(self : GeodistvincentyCursor, v : Double) -> GeodistvincentyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_cursor_min(s : GeodistvincentyCursor) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyCursor::min(self : GeodistvincentyCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_cursor_max(s : GeodistvincentyCursor) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyCursor::max(self : GeodistvincentyCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_cursor_to_string(s : GeodistvincentyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyCursor::to_string(self : GeodistvincentyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyView {
@@ -912,45 +912,45 @@ pub fn geo_dist_vincenty_view_make(size : Int) -> GeodistvincentyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_view_len(s : GeodistvincentyView) -> Int { s.size }
+pub fn GeodistvincentyView::len(self : GeodistvincentyView) -> Int { self.size }
 
-pub fn geo_dist_vincenty_view_get(s : GeodistvincentyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyView::get(self : GeodistvincentyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_view_set(s : GeodistvincentyView, i : Int, v : Double) -> GeodistvincentyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyView::set(self : GeodistvincentyView, i : Int, v : Double) -> GeodistvincentyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_view_sum(s : GeodistvincentyView) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyView::sum(self : GeodistvincentyView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_view_mean(s : GeodistvincentyView) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyView::mean(self : GeodistvincentyView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_view_scale(s : GeodistvincentyView, f : Double) -> GeodistvincentyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyView::scale(self : GeodistvincentyView, f : Double) -> GeodistvincentyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_view_add(a : GeodistvincentyView, b : GeodistvincentyView) -> GeodistvincentyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyView::add(self : GeodistvincentyView, other : GeodistvincentyView) -> GeodistvincentyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_view_copy(s : GeodistvincentyView) -> GeodistvincentyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyView::copy(self : GeodistvincentyView) -> GeodistvincentyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_view_fill(s : GeodistvincentyView, v : Double) -> GeodistvincentyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyView::fill(self : GeodistvincentyView, v : Double) -> GeodistvincentyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_view_min(s : GeodistvincentyView) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyView::min(self : GeodistvincentyView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_view_max(s : GeodistvincentyView) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyView::max(self : GeodistvincentyView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_view_to_string(s : GeodistvincentyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyView::to_string(self : GeodistvincentyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentyRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_vincenty_range_make(size : Int) -> GeodistvincentyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_range_len(s : GeodistvincentyRange) -> Int { s.size }
+pub fn GeodistvincentyRange::len(self : GeodistvincentyRange) -> Int { self.size }
 
-pub fn geo_dist_vincenty_range_get(s : GeodistvincentyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentyRange::get(self : GeodistvincentyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_range_set(s : GeodistvincentyRange, i : Int, v : Double) -> GeodistvincentyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentyRange::set(self : GeodistvincentyRange, i : Int, v : Double) -> GeodistvincentyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_range_sum(s : GeodistvincentyRange) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentyRange::sum(self : GeodistvincentyRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_range_mean(s : GeodistvincentyRange) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentyRange::mean(self : GeodistvincentyRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_range_scale(s : GeodistvincentyRange, f : Double) -> GeodistvincentyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentyRange::scale(self : GeodistvincentyRange, f : Double) -> GeodistvincentyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_range_add(a : GeodistvincentyRange, b : GeodistvincentyRange) -> GeodistvincentyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentyRange::add(self : GeodistvincentyRange, other : GeodistvincentyRange) -> GeodistvincentyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_range_copy(s : GeodistvincentyRange) -> GeodistvincentyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentyRange::copy(self : GeodistvincentyRange) -> GeodistvincentyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_range_fill(s : GeodistvincentyRange, v : Double) -> GeodistvincentyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentyRange::fill(self : GeodistvincentyRange, v : Double) -> GeodistvincentyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_range_min(s : GeodistvincentyRange) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentyRange::min(self : GeodistvincentyRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_range_max(s : GeodistvincentyRange) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentyRange::max(self : GeodistvincentyRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_range_to_string(s : GeodistvincentyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentyRange::to_string(self : GeodistvincentyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistvincentySlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_vincenty_slice_make(size : Int) -> GeodistvincentySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_vincenty_slice_len(s : GeodistvincentySlice) -> Int { s.size }
+pub fn GeodistvincentySlice::len(self : GeodistvincentySlice) -> Int { self.size }
 
-pub fn geo_dist_vincenty_slice_get(s : GeodistvincentySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistvincentySlice::get(self : GeodistvincentySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_vincenty_slice_set(s : GeodistvincentySlice, i : Int, v : Double) -> GeodistvincentySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistvincentySlice::set(self : GeodistvincentySlice, i : Int, v : Double) -> GeodistvincentySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_slice_sum(s : GeodistvincentySlice) -> Double { @_common.sum(s.data) }
+pub fn GeodistvincentySlice::sum(self : GeodistvincentySlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_vincenty_slice_mean(s : GeodistvincentySlice) -> Double { @_common.mean(s.data) }
+pub fn GeodistvincentySlice::mean(self : GeodistvincentySlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_vincenty_slice_scale(s : GeodistvincentySlice, f : Double) -> GeodistvincentySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistvincentySlice::scale(self : GeodistvincentySlice, f : Double) -> GeodistvincentySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_slice_add(a : GeodistvincentySlice, b : GeodistvincentySlice) -> GeodistvincentySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistvincentySlice::add(self : GeodistvincentySlice, other : GeodistvincentySlice) -> GeodistvincentySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_slice_copy(s : GeodistvincentySlice) -> GeodistvincentySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistvincentySlice::copy(self : GeodistvincentySlice) -> GeodistvincentySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_slice_fill(s : GeodistvincentySlice, v : Double) -> GeodistvincentySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistvincentySlice::fill(self : GeodistvincentySlice, v : Double) -> GeodistvincentySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_vincenty_slice_min(s : GeodistvincentySlice) -> Double { @_common.min(s.data) }
+pub fn GeodistvincentySlice::min(self : GeodistvincentySlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_vincenty_slice_max(s : GeodistvincentySlice) -> Double { @_common.max(s.data) }
+pub fn GeodistvincentySlice::max(self : GeodistvincentySlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_vincenty_slice_to_string(s : GeodistvincentySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistvincentySlice::to_string(self : GeodistvincentySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

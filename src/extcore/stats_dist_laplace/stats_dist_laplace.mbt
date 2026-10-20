@@ -351,45 +351,45 @@ pub fn stats_dist_laplace_frame_make(size : Int) -> StatsdistlaplaceFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_frame_len(s : StatsdistlaplaceFrame) -> Int { s.size }
+pub fn StatsdistlaplaceFrame::len(self : StatsdistlaplaceFrame) -> Int { self.size }
 
-pub fn stats_dist_laplace_frame_get(s : StatsdistlaplaceFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceFrame::get(self : StatsdistlaplaceFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_frame_set(s : StatsdistlaplaceFrame, i : Int, v : Double) -> StatsdistlaplaceFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceFrame::set(self : StatsdistlaplaceFrame, i : Int, v : Double) -> StatsdistlaplaceFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_frame_sum(s : StatsdistlaplaceFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceFrame::sum(self : StatsdistlaplaceFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_frame_mean(s : StatsdistlaplaceFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceFrame::mean(self : StatsdistlaplaceFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_frame_scale(s : StatsdistlaplaceFrame, f : Double) -> StatsdistlaplaceFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceFrame::scale(self : StatsdistlaplaceFrame, f : Double) -> StatsdistlaplaceFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_frame_add(a : StatsdistlaplaceFrame, b : StatsdistlaplaceFrame) -> StatsdistlaplaceFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceFrame::add(self : StatsdistlaplaceFrame, other : StatsdistlaplaceFrame) -> StatsdistlaplaceFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_frame_copy(s : StatsdistlaplaceFrame) -> StatsdistlaplaceFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceFrame::copy(self : StatsdistlaplaceFrame) -> StatsdistlaplaceFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_frame_fill(s : StatsdistlaplaceFrame, v : Double) -> StatsdistlaplaceFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceFrame::fill(self : StatsdistlaplaceFrame, v : Double) -> StatsdistlaplaceFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_frame_min(s : StatsdistlaplaceFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceFrame::min(self : StatsdistlaplaceFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_frame_max(s : StatsdistlaplaceFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceFrame::max(self : StatsdistlaplaceFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_frame_to_string(s : StatsdistlaplaceFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceFrame::to_string(self : StatsdistlaplaceFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_laplace_table_make(size : Int) -> StatsdistlaplaceTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_table_len(s : StatsdistlaplaceTable) -> Int { s.size }
+pub fn StatsdistlaplaceTable::len(self : StatsdistlaplaceTable) -> Int { self.size }
 
-pub fn stats_dist_laplace_table_get(s : StatsdistlaplaceTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceTable::get(self : StatsdistlaplaceTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_table_set(s : StatsdistlaplaceTable, i : Int, v : Double) -> StatsdistlaplaceTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceTable::set(self : StatsdistlaplaceTable, i : Int, v : Double) -> StatsdistlaplaceTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_table_sum(s : StatsdistlaplaceTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceTable::sum(self : StatsdistlaplaceTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_table_mean(s : StatsdistlaplaceTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceTable::mean(self : StatsdistlaplaceTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_table_scale(s : StatsdistlaplaceTable, f : Double) -> StatsdistlaplaceTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceTable::scale(self : StatsdistlaplaceTable, f : Double) -> StatsdistlaplaceTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_table_add(a : StatsdistlaplaceTable, b : StatsdistlaplaceTable) -> StatsdistlaplaceTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceTable::add(self : StatsdistlaplaceTable, other : StatsdistlaplaceTable) -> StatsdistlaplaceTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_table_copy(s : StatsdistlaplaceTable) -> StatsdistlaplaceTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceTable::copy(self : StatsdistlaplaceTable) -> StatsdistlaplaceTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_table_fill(s : StatsdistlaplaceTable, v : Double) -> StatsdistlaplaceTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceTable::fill(self : StatsdistlaplaceTable, v : Double) -> StatsdistlaplaceTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_table_min(s : StatsdistlaplaceTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceTable::min(self : StatsdistlaplaceTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_table_max(s : StatsdistlaplaceTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceTable::max(self : StatsdistlaplaceTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_table_to_string(s : StatsdistlaplaceTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceTable::to_string(self : StatsdistlaplaceTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_laplace_graphn_make(size : Int) -> StatsdistlaplaceGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_graphn_len(s : StatsdistlaplaceGraphN) -> Int { s.size }
+pub fn StatsdistlaplaceGraphN::len(self : StatsdistlaplaceGraphN) -> Int { self.size }
 
-pub fn stats_dist_laplace_graphn_get(s : StatsdistlaplaceGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceGraphN::get(self : StatsdistlaplaceGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_graphn_set(s : StatsdistlaplaceGraphN, i : Int, v : Double) -> StatsdistlaplaceGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceGraphN::set(self : StatsdistlaplaceGraphN, i : Int, v : Double) -> StatsdistlaplaceGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_graphn_sum(s : StatsdistlaplaceGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceGraphN::sum(self : StatsdistlaplaceGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_graphn_mean(s : StatsdistlaplaceGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceGraphN::mean(self : StatsdistlaplaceGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_graphn_scale(s : StatsdistlaplaceGraphN, f : Double) -> StatsdistlaplaceGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceGraphN::scale(self : StatsdistlaplaceGraphN, f : Double) -> StatsdistlaplaceGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_graphn_add(a : StatsdistlaplaceGraphN, b : StatsdistlaplaceGraphN) -> StatsdistlaplaceGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceGraphN::add(self : StatsdistlaplaceGraphN, other : StatsdistlaplaceGraphN) -> StatsdistlaplaceGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_graphn_copy(s : StatsdistlaplaceGraphN) -> StatsdistlaplaceGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceGraphN::copy(self : StatsdistlaplaceGraphN) -> StatsdistlaplaceGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_graphn_fill(s : StatsdistlaplaceGraphN, v : Double) -> StatsdistlaplaceGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceGraphN::fill(self : StatsdistlaplaceGraphN, v : Double) -> StatsdistlaplaceGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_graphn_min(s : StatsdistlaplaceGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceGraphN::min(self : StatsdistlaplaceGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_graphn_max(s : StatsdistlaplaceGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceGraphN::max(self : StatsdistlaplaceGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_graphn_to_string(s : StatsdistlaplaceGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceGraphN::to_string(self : StatsdistlaplaceGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_laplace_node_make(size : Int) -> StatsdistlaplaceNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_node_len(s : StatsdistlaplaceNode) -> Int { s.size }
+pub fn StatsdistlaplaceNode::len(self : StatsdistlaplaceNode) -> Int { self.size }
 
-pub fn stats_dist_laplace_node_get(s : StatsdistlaplaceNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceNode::get(self : StatsdistlaplaceNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_node_set(s : StatsdistlaplaceNode, i : Int, v : Double) -> StatsdistlaplaceNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceNode::set(self : StatsdistlaplaceNode, i : Int, v : Double) -> StatsdistlaplaceNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_node_sum(s : StatsdistlaplaceNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceNode::sum(self : StatsdistlaplaceNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_node_mean(s : StatsdistlaplaceNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceNode::mean(self : StatsdistlaplaceNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_node_scale(s : StatsdistlaplaceNode, f : Double) -> StatsdistlaplaceNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceNode::scale(self : StatsdistlaplaceNode, f : Double) -> StatsdistlaplaceNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_node_add(a : StatsdistlaplaceNode, b : StatsdistlaplaceNode) -> StatsdistlaplaceNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceNode::add(self : StatsdistlaplaceNode, other : StatsdistlaplaceNode) -> StatsdistlaplaceNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_node_copy(s : StatsdistlaplaceNode) -> StatsdistlaplaceNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceNode::copy(self : StatsdistlaplaceNode) -> StatsdistlaplaceNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_node_fill(s : StatsdistlaplaceNode, v : Double) -> StatsdistlaplaceNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceNode::fill(self : StatsdistlaplaceNode, v : Double) -> StatsdistlaplaceNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_node_min(s : StatsdistlaplaceNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceNode::min(self : StatsdistlaplaceNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_node_max(s : StatsdistlaplaceNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceNode::max(self : StatsdistlaplaceNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_node_to_string(s : StatsdistlaplaceNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceNode::to_string(self : StatsdistlaplaceNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_laplace_edge_make(size : Int) -> StatsdistlaplaceEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_edge_len(s : StatsdistlaplaceEdge) -> Int { s.size }
+pub fn StatsdistlaplaceEdge::len(self : StatsdistlaplaceEdge) -> Int { self.size }
 
-pub fn stats_dist_laplace_edge_get(s : StatsdistlaplaceEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceEdge::get(self : StatsdistlaplaceEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_edge_set(s : StatsdistlaplaceEdge, i : Int, v : Double) -> StatsdistlaplaceEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceEdge::set(self : StatsdistlaplaceEdge, i : Int, v : Double) -> StatsdistlaplaceEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_edge_sum(s : StatsdistlaplaceEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceEdge::sum(self : StatsdistlaplaceEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_edge_mean(s : StatsdistlaplaceEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceEdge::mean(self : StatsdistlaplaceEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_edge_scale(s : StatsdistlaplaceEdge, f : Double) -> StatsdistlaplaceEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceEdge::scale(self : StatsdistlaplaceEdge, f : Double) -> StatsdistlaplaceEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_edge_add(a : StatsdistlaplaceEdge, b : StatsdistlaplaceEdge) -> StatsdistlaplaceEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceEdge::add(self : StatsdistlaplaceEdge, other : StatsdistlaplaceEdge) -> StatsdistlaplaceEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_edge_copy(s : StatsdistlaplaceEdge) -> StatsdistlaplaceEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceEdge::copy(self : StatsdistlaplaceEdge) -> StatsdistlaplaceEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_edge_fill(s : StatsdistlaplaceEdge, v : Double) -> StatsdistlaplaceEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceEdge::fill(self : StatsdistlaplaceEdge, v : Double) -> StatsdistlaplaceEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_edge_min(s : StatsdistlaplaceEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceEdge::min(self : StatsdistlaplaceEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_edge_max(s : StatsdistlaplaceEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceEdge::max(self : StatsdistlaplaceEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_edge_to_string(s : StatsdistlaplaceEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceEdge::to_string(self : StatsdistlaplaceEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplacePath {
@@ -606,45 +606,45 @@ pub fn stats_dist_laplace_path_make(size : Int) -> StatsdistlaplacePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_path_len(s : StatsdistlaplacePath) -> Int { s.size }
+pub fn StatsdistlaplacePath::len(self : StatsdistlaplacePath) -> Int { self.size }
 
-pub fn stats_dist_laplace_path_get(s : StatsdistlaplacePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplacePath::get(self : StatsdistlaplacePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_path_set(s : StatsdistlaplacePath, i : Int, v : Double) -> StatsdistlaplacePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplacePath::set(self : StatsdistlaplacePath, i : Int, v : Double) -> StatsdistlaplacePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_path_sum(s : StatsdistlaplacePath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplacePath::sum(self : StatsdistlaplacePath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_path_mean(s : StatsdistlaplacePath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplacePath::mean(self : StatsdistlaplacePath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_path_scale(s : StatsdistlaplacePath, f : Double) -> StatsdistlaplacePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplacePath::scale(self : StatsdistlaplacePath, f : Double) -> StatsdistlaplacePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_path_add(a : StatsdistlaplacePath, b : StatsdistlaplacePath) -> StatsdistlaplacePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplacePath::add(self : StatsdistlaplacePath, other : StatsdistlaplacePath) -> StatsdistlaplacePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_path_copy(s : StatsdistlaplacePath) -> StatsdistlaplacePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplacePath::copy(self : StatsdistlaplacePath) -> StatsdistlaplacePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_path_fill(s : StatsdistlaplacePath, v : Double) -> StatsdistlaplacePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplacePath::fill(self : StatsdistlaplacePath, v : Double) -> StatsdistlaplacePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_path_min(s : StatsdistlaplacePath) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplacePath::min(self : StatsdistlaplacePath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_path_max(s : StatsdistlaplacePath) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplacePath::max(self : StatsdistlaplacePath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_path_to_string(s : StatsdistlaplacePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplacePath::to_string(self : StatsdistlaplacePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_laplace_cluster_make(size : Int) -> StatsdistlaplaceCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_cluster_len(s : StatsdistlaplaceCluster) -> Int { s.size }
+pub fn StatsdistlaplaceCluster::len(self : StatsdistlaplaceCluster) -> Int { self.size }
 
-pub fn stats_dist_laplace_cluster_get(s : StatsdistlaplaceCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceCluster::get(self : StatsdistlaplaceCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_cluster_set(s : StatsdistlaplaceCluster, i : Int, v : Double) -> StatsdistlaplaceCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCluster::set(self : StatsdistlaplaceCluster, i : Int, v : Double) -> StatsdistlaplaceCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cluster_sum(s : StatsdistlaplaceCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceCluster::sum(self : StatsdistlaplaceCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_cluster_mean(s : StatsdistlaplaceCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceCluster::mean(self : StatsdistlaplaceCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_cluster_scale(s : StatsdistlaplaceCluster, f : Double) -> StatsdistlaplaceCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCluster::scale(self : StatsdistlaplaceCluster, f : Double) -> StatsdistlaplaceCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cluster_add(a : StatsdistlaplaceCluster, b : StatsdistlaplaceCluster) -> StatsdistlaplaceCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceCluster::add(self : StatsdistlaplaceCluster, other : StatsdistlaplaceCluster) -> StatsdistlaplaceCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cluster_copy(s : StatsdistlaplaceCluster) -> StatsdistlaplaceCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCluster::copy(self : StatsdistlaplaceCluster) -> StatsdistlaplaceCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cluster_fill(s : StatsdistlaplaceCluster, v : Double) -> StatsdistlaplaceCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCluster::fill(self : StatsdistlaplaceCluster, v : Double) -> StatsdistlaplaceCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cluster_min(s : StatsdistlaplaceCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceCluster::min(self : StatsdistlaplaceCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_cluster_max(s : StatsdistlaplaceCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceCluster::max(self : StatsdistlaplaceCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_cluster_to_string(s : StatsdistlaplaceCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceCluster::to_string(self : StatsdistlaplaceCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_laplace_model_make(size : Int) -> StatsdistlaplaceModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_model_len(s : StatsdistlaplaceModel) -> Int { s.size }
+pub fn StatsdistlaplaceModel::len(self : StatsdistlaplaceModel) -> Int { self.size }
 
-pub fn stats_dist_laplace_model_get(s : StatsdistlaplaceModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceModel::get(self : StatsdistlaplaceModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_model_set(s : StatsdistlaplaceModel, i : Int, v : Double) -> StatsdistlaplaceModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceModel::set(self : StatsdistlaplaceModel, i : Int, v : Double) -> StatsdistlaplaceModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_model_sum(s : StatsdistlaplaceModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceModel::sum(self : StatsdistlaplaceModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_model_mean(s : StatsdistlaplaceModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceModel::mean(self : StatsdistlaplaceModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_model_scale(s : StatsdistlaplaceModel, f : Double) -> StatsdistlaplaceModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceModel::scale(self : StatsdistlaplaceModel, f : Double) -> StatsdistlaplaceModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_model_add(a : StatsdistlaplaceModel, b : StatsdistlaplaceModel) -> StatsdistlaplaceModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceModel::add(self : StatsdistlaplaceModel, other : StatsdistlaplaceModel) -> StatsdistlaplaceModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_model_copy(s : StatsdistlaplaceModel) -> StatsdistlaplaceModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceModel::copy(self : StatsdistlaplaceModel) -> StatsdistlaplaceModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_model_fill(s : StatsdistlaplaceModel, v : Double) -> StatsdistlaplaceModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceModel::fill(self : StatsdistlaplaceModel, v : Double) -> StatsdistlaplaceModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_model_min(s : StatsdistlaplaceModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceModel::min(self : StatsdistlaplaceModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_model_max(s : StatsdistlaplaceModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceModel::max(self : StatsdistlaplaceModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_model_to_string(s : StatsdistlaplaceModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceModel::to_string(self : StatsdistlaplaceModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_laplace_layer_make(size : Int) -> StatsdistlaplaceLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_layer_len(s : StatsdistlaplaceLayer) -> Int { s.size }
+pub fn StatsdistlaplaceLayer::len(self : StatsdistlaplaceLayer) -> Int { self.size }
 
-pub fn stats_dist_laplace_layer_get(s : StatsdistlaplaceLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceLayer::get(self : StatsdistlaplaceLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_layer_set(s : StatsdistlaplaceLayer, i : Int, v : Double) -> StatsdistlaplaceLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceLayer::set(self : StatsdistlaplaceLayer, i : Int, v : Double) -> StatsdistlaplaceLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_layer_sum(s : StatsdistlaplaceLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceLayer::sum(self : StatsdistlaplaceLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_layer_mean(s : StatsdistlaplaceLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceLayer::mean(self : StatsdistlaplaceLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_layer_scale(s : StatsdistlaplaceLayer, f : Double) -> StatsdistlaplaceLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceLayer::scale(self : StatsdistlaplaceLayer, f : Double) -> StatsdistlaplaceLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_layer_add(a : StatsdistlaplaceLayer, b : StatsdistlaplaceLayer) -> StatsdistlaplaceLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceLayer::add(self : StatsdistlaplaceLayer, other : StatsdistlaplaceLayer) -> StatsdistlaplaceLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_layer_copy(s : StatsdistlaplaceLayer) -> StatsdistlaplaceLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceLayer::copy(self : StatsdistlaplaceLayer) -> StatsdistlaplaceLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_layer_fill(s : StatsdistlaplaceLayer, v : Double) -> StatsdistlaplaceLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceLayer::fill(self : StatsdistlaplaceLayer, v : Double) -> StatsdistlaplaceLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_layer_min(s : StatsdistlaplaceLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceLayer::min(self : StatsdistlaplaceLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_layer_max(s : StatsdistlaplaceLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceLayer::max(self : StatsdistlaplaceLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_layer_to_string(s : StatsdistlaplaceLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceLayer::to_string(self : StatsdistlaplaceLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_laplace_buffer_make(size : Int) -> StatsdistlaplaceBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_buffer_len(s : StatsdistlaplaceBuffer) -> Int { s.size }
+pub fn StatsdistlaplaceBuffer::len(self : StatsdistlaplaceBuffer) -> Int { self.size }
 
-pub fn stats_dist_laplace_buffer_get(s : StatsdistlaplaceBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceBuffer::get(self : StatsdistlaplaceBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_buffer_set(s : StatsdistlaplaceBuffer, i : Int, v : Double) -> StatsdistlaplaceBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceBuffer::set(self : StatsdistlaplaceBuffer, i : Int, v : Double) -> StatsdistlaplaceBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_buffer_sum(s : StatsdistlaplaceBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceBuffer::sum(self : StatsdistlaplaceBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_buffer_mean(s : StatsdistlaplaceBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceBuffer::mean(self : StatsdistlaplaceBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_buffer_scale(s : StatsdistlaplaceBuffer, f : Double) -> StatsdistlaplaceBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceBuffer::scale(self : StatsdistlaplaceBuffer, f : Double) -> StatsdistlaplaceBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_buffer_add(a : StatsdistlaplaceBuffer, b : StatsdistlaplaceBuffer) -> StatsdistlaplaceBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceBuffer::add(self : StatsdistlaplaceBuffer, other : StatsdistlaplaceBuffer) -> StatsdistlaplaceBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_buffer_copy(s : StatsdistlaplaceBuffer) -> StatsdistlaplaceBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceBuffer::copy(self : StatsdistlaplaceBuffer) -> StatsdistlaplaceBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_buffer_fill(s : StatsdistlaplaceBuffer, v : Double) -> StatsdistlaplaceBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceBuffer::fill(self : StatsdistlaplaceBuffer, v : Double) -> StatsdistlaplaceBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_buffer_min(s : StatsdistlaplaceBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceBuffer::min(self : StatsdistlaplaceBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_buffer_max(s : StatsdistlaplaceBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceBuffer::max(self : StatsdistlaplaceBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_buffer_to_string(s : StatsdistlaplaceBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceBuffer::to_string(self : StatsdistlaplaceBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_laplace_cursor_make(size : Int) -> StatsdistlaplaceCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_cursor_len(s : StatsdistlaplaceCursor) -> Int { s.size }
+pub fn StatsdistlaplaceCursor::len(self : StatsdistlaplaceCursor) -> Int { self.size }
 
-pub fn stats_dist_laplace_cursor_get(s : StatsdistlaplaceCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceCursor::get(self : StatsdistlaplaceCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_cursor_set(s : StatsdistlaplaceCursor, i : Int, v : Double) -> StatsdistlaplaceCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCursor::set(self : StatsdistlaplaceCursor, i : Int, v : Double) -> StatsdistlaplaceCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cursor_sum(s : StatsdistlaplaceCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceCursor::sum(self : StatsdistlaplaceCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_cursor_mean(s : StatsdistlaplaceCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceCursor::mean(self : StatsdistlaplaceCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_cursor_scale(s : StatsdistlaplaceCursor, f : Double) -> StatsdistlaplaceCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCursor::scale(self : StatsdistlaplaceCursor, f : Double) -> StatsdistlaplaceCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cursor_add(a : StatsdistlaplaceCursor, b : StatsdistlaplaceCursor) -> StatsdistlaplaceCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceCursor::add(self : StatsdistlaplaceCursor, other : StatsdistlaplaceCursor) -> StatsdistlaplaceCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cursor_copy(s : StatsdistlaplaceCursor) -> StatsdistlaplaceCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCursor::copy(self : StatsdistlaplaceCursor) -> StatsdistlaplaceCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cursor_fill(s : StatsdistlaplaceCursor, v : Double) -> StatsdistlaplaceCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceCursor::fill(self : StatsdistlaplaceCursor, v : Double) -> StatsdistlaplaceCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_cursor_min(s : StatsdistlaplaceCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceCursor::min(self : StatsdistlaplaceCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_cursor_max(s : StatsdistlaplaceCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceCursor::max(self : StatsdistlaplaceCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_cursor_to_string(s : StatsdistlaplaceCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceCursor::to_string(self : StatsdistlaplaceCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceView {
@@ -912,45 +912,45 @@ pub fn stats_dist_laplace_view_make(size : Int) -> StatsdistlaplaceView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_view_len(s : StatsdistlaplaceView) -> Int { s.size }
+pub fn StatsdistlaplaceView::len(self : StatsdistlaplaceView) -> Int { self.size }
 
-pub fn stats_dist_laplace_view_get(s : StatsdistlaplaceView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceView::get(self : StatsdistlaplaceView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_view_set(s : StatsdistlaplaceView, i : Int, v : Double) -> StatsdistlaplaceView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceView::set(self : StatsdistlaplaceView, i : Int, v : Double) -> StatsdistlaplaceView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_view_sum(s : StatsdistlaplaceView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceView::sum(self : StatsdistlaplaceView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_view_mean(s : StatsdistlaplaceView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceView::mean(self : StatsdistlaplaceView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_view_scale(s : StatsdistlaplaceView, f : Double) -> StatsdistlaplaceView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceView::scale(self : StatsdistlaplaceView, f : Double) -> StatsdistlaplaceView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_view_add(a : StatsdistlaplaceView, b : StatsdistlaplaceView) -> StatsdistlaplaceView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceView::add(self : StatsdistlaplaceView, other : StatsdistlaplaceView) -> StatsdistlaplaceView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_view_copy(s : StatsdistlaplaceView) -> StatsdistlaplaceView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceView::copy(self : StatsdistlaplaceView) -> StatsdistlaplaceView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_view_fill(s : StatsdistlaplaceView, v : Double) -> StatsdistlaplaceView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceView::fill(self : StatsdistlaplaceView, v : Double) -> StatsdistlaplaceView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_view_min(s : StatsdistlaplaceView) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceView::min(self : StatsdistlaplaceView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_view_max(s : StatsdistlaplaceView) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceView::max(self : StatsdistlaplaceView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_view_to_string(s : StatsdistlaplaceView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceView::to_string(self : StatsdistlaplaceView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_laplace_range_make(size : Int) -> StatsdistlaplaceRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_range_len(s : StatsdistlaplaceRange) -> Int { s.size }
+pub fn StatsdistlaplaceRange::len(self : StatsdistlaplaceRange) -> Int { self.size }
 
-pub fn stats_dist_laplace_range_get(s : StatsdistlaplaceRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceRange::get(self : StatsdistlaplaceRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_range_set(s : StatsdistlaplaceRange, i : Int, v : Double) -> StatsdistlaplaceRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceRange::set(self : StatsdistlaplaceRange, i : Int, v : Double) -> StatsdistlaplaceRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_range_sum(s : StatsdistlaplaceRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceRange::sum(self : StatsdistlaplaceRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_range_mean(s : StatsdistlaplaceRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceRange::mean(self : StatsdistlaplaceRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_range_scale(s : StatsdistlaplaceRange, f : Double) -> StatsdistlaplaceRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceRange::scale(self : StatsdistlaplaceRange, f : Double) -> StatsdistlaplaceRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_range_add(a : StatsdistlaplaceRange, b : StatsdistlaplaceRange) -> StatsdistlaplaceRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceRange::add(self : StatsdistlaplaceRange, other : StatsdistlaplaceRange) -> StatsdistlaplaceRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_range_copy(s : StatsdistlaplaceRange) -> StatsdistlaplaceRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceRange::copy(self : StatsdistlaplaceRange) -> StatsdistlaplaceRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_range_fill(s : StatsdistlaplaceRange, v : Double) -> StatsdistlaplaceRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceRange::fill(self : StatsdistlaplaceRange, v : Double) -> StatsdistlaplaceRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_range_min(s : StatsdistlaplaceRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceRange::min(self : StatsdistlaplaceRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_range_max(s : StatsdistlaplaceRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceRange::max(self : StatsdistlaplaceRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_range_to_string(s : StatsdistlaplaceRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceRange::to_string(self : StatsdistlaplaceRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistlaplaceSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_laplace_slice_make(size : Int) -> StatsdistlaplaceSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_laplace_slice_len(s : StatsdistlaplaceSlice) -> Int { s.size }
+pub fn StatsdistlaplaceSlice::len(self : StatsdistlaplaceSlice) -> Int { self.size }
 
-pub fn stats_dist_laplace_slice_get(s : StatsdistlaplaceSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistlaplaceSlice::get(self : StatsdistlaplaceSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_laplace_slice_set(s : StatsdistlaplaceSlice, i : Int, v : Double) -> StatsdistlaplaceSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceSlice::set(self : StatsdistlaplaceSlice, i : Int, v : Double) -> StatsdistlaplaceSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_slice_sum(s : StatsdistlaplaceSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistlaplaceSlice::sum(self : StatsdistlaplaceSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_laplace_slice_mean(s : StatsdistlaplaceSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistlaplaceSlice::mean(self : StatsdistlaplaceSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_laplace_slice_scale(s : StatsdistlaplaceSlice, f : Double) -> StatsdistlaplaceSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceSlice::scale(self : StatsdistlaplaceSlice, f : Double) -> StatsdistlaplaceSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_slice_add(a : StatsdistlaplaceSlice, b : StatsdistlaplaceSlice) -> StatsdistlaplaceSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistlaplaceSlice::add(self : StatsdistlaplaceSlice, other : StatsdistlaplaceSlice) -> StatsdistlaplaceSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_slice_copy(s : StatsdistlaplaceSlice) -> StatsdistlaplaceSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceSlice::copy(self : StatsdistlaplaceSlice) -> StatsdistlaplaceSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_slice_fill(s : StatsdistlaplaceSlice, v : Double) -> StatsdistlaplaceSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistlaplaceSlice::fill(self : StatsdistlaplaceSlice, v : Double) -> StatsdistlaplaceSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_laplace_slice_min(s : StatsdistlaplaceSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistlaplaceSlice::min(self : StatsdistlaplaceSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_laplace_slice_max(s : StatsdistlaplaceSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistlaplaceSlice::max(self : StatsdistlaplaceSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_laplace_slice_to_string(s : StatsdistlaplaceSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistlaplaceSlice::to_string(self : StatsdistlaplaceSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn opt_meta_de_frame_make(size : Int) -> OptmetadeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_frame_len(s : OptmetadeFrame) -> Int { s.size }
+pub fn OptmetadeFrame::len(self : OptmetadeFrame) -> Int { self.size }
 
-pub fn opt_meta_de_frame_get(s : OptmetadeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeFrame::get(self : OptmetadeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_frame_set(s : OptmetadeFrame, i : Int, v : Double) -> OptmetadeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeFrame::set(self : OptmetadeFrame, i : Int, v : Double) -> OptmetadeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_frame_sum(s : OptmetadeFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeFrame::sum(self : OptmetadeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_frame_mean(s : OptmetadeFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeFrame::mean(self : OptmetadeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_frame_scale(s : OptmetadeFrame, f : Double) -> OptmetadeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeFrame::scale(self : OptmetadeFrame, f : Double) -> OptmetadeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_frame_add(a : OptmetadeFrame, b : OptmetadeFrame) -> OptmetadeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeFrame::add(self : OptmetadeFrame, other : OptmetadeFrame) -> OptmetadeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_frame_copy(s : OptmetadeFrame) -> OptmetadeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeFrame::copy(self : OptmetadeFrame) -> OptmetadeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_frame_fill(s : OptmetadeFrame, v : Double) -> OptmetadeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeFrame::fill(self : OptmetadeFrame, v : Double) -> OptmetadeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_frame_min(s : OptmetadeFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetadeFrame::min(self : OptmetadeFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_frame_max(s : OptmetadeFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetadeFrame::max(self : OptmetadeFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_frame_to_string(s : OptmetadeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeFrame::to_string(self : OptmetadeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_de_table_make(size : Int) -> OptmetadeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_table_len(s : OptmetadeTable) -> Int { s.size }
+pub fn OptmetadeTable::len(self : OptmetadeTable) -> Int { self.size }
 
-pub fn opt_meta_de_table_get(s : OptmetadeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeTable::get(self : OptmetadeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_table_set(s : OptmetadeTable, i : Int, v : Double) -> OptmetadeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeTable::set(self : OptmetadeTable, i : Int, v : Double) -> OptmetadeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_table_sum(s : OptmetadeTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeTable::sum(self : OptmetadeTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_table_mean(s : OptmetadeTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeTable::mean(self : OptmetadeTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_table_scale(s : OptmetadeTable, f : Double) -> OptmetadeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeTable::scale(self : OptmetadeTable, f : Double) -> OptmetadeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_table_add(a : OptmetadeTable, b : OptmetadeTable) -> OptmetadeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeTable::add(self : OptmetadeTable, other : OptmetadeTable) -> OptmetadeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_table_copy(s : OptmetadeTable) -> OptmetadeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeTable::copy(self : OptmetadeTable) -> OptmetadeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_table_fill(s : OptmetadeTable, v : Double) -> OptmetadeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeTable::fill(self : OptmetadeTable, v : Double) -> OptmetadeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_table_min(s : OptmetadeTable) -> Double { @_common.min(s.data) }
+pub fn OptmetadeTable::min(self : OptmetadeTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_table_max(s : OptmetadeTable) -> Double { @_common.max(s.data) }
+pub fn OptmetadeTable::max(self : OptmetadeTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_table_to_string(s : OptmetadeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeTable::to_string(self : OptmetadeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_de_graphn_make(size : Int) -> OptmetadeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_graphn_len(s : OptmetadeGraphN) -> Int { s.size }
+pub fn OptmetadeGraphN::len(self : OptmetadeGraphN) -> Int { self.size }
 
-pub fn opt_meta_de_graphn_get(s : OptmetadeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeGraphN::get(self : OptmetadeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_graphn_set(s : OptmetadeGraphN, i : Int, v : Double) -> OptmetadeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeGraphN::set(self : OptmetadeGraphN, i : Int, v : Double) -> OptmetadeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_graphn_sum(s : OptmetadeGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeGraphN::sum(self : OptmetadeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_graphn_mean(s : OptmetadeGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeGraphN::mean(self : OptmetadeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_graphn_scale(s : OptmetadeGraphN, f : Double) -> OptmetadeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeGraphN::scale(self : OptmetadeGraphN, f : Double) -> OptmetadeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_graphn_add(a : OptmetadeGraphN, b : OptmetadeGraphN) -> OptmetadeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeGraphN::add(self : OptmetadeGraphN, other : OptmetadeGraphN) -> OptmetadeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_graphn_copy(s : OptmetadeGraphN) -> OptmetadeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeGraphN::copy(self : OptmetadeGraphN) -> OptmetadeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_graphn_fill(s : OptmetadeGraphN, v : Double) -> OptmetadeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeGraphN::fill(self : OptmetadeGraphN, v : Double) -> OptmetadeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_graphn_min(s : OptmetadeGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetadeGraphN::min(self : OptmetadeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_graphn_max(s : OptmetadeGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetadeGraphN::max(self : OptmetadeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_graphn_to_string(s : OptmetadeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeGraphN::to_string(self : OptmetadeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_de_node_make(size : Int) -> OptmetadeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_node_len(s : OptmetadeNode) -> Int { s.size }
+pub fn OptmetadeNode::len(self : OptmetadeNode) -> Int { self.size }
 
-pub fn opt_meta_de_node_get(s : OptmetadeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeNode::get(self : OptmetadeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_node_set(s : OptmetadeNode, i : Int, v : Double) -> OptmetadeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeNode::set(self : OptmetadeNode, i : Int, v : Double) -> OptmetadeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_node_sum(s : OptmetadeNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeNode::sum(self : OptmetadeNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_node_mean(s : OptmetadeNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeNode::mean(self : OptmetadeNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_node_scale(s : OptmetadeNode, f : Double) -> OptmetadeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeNode::scale(self : OptmetadeNode, f : Double) -> OptmetadeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_node_add(a : OptmetadeNode, b : OptmetadeNode) -> OptmetadeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeNode::add(self : OptmetadeNode, other : OptmetadeNode) -> OptmetadeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_node_copy(s : OptmetadeNode) -> OptmetadeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeNode::copy(self : OptmetadeNode) -> OptmetadeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_node_fill(s : OptmetadeNode, v : Double) -> OptmetadeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeNode::fill(self : OptmetadeNode, v : Double) -> OptmetadeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_node_min(s : OptmetadeNode) -> Double { @_common.min(s.data) }
+pub fn OptmetadeNode::min(self : OptmetadeNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_node_max(s : OptmetadeNode) -> Double { @_common.max(s.data) }
+pub fn OptmetadeNode::max(self : OptmetadeNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_node_to_string(s : OptmetadeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeNode::to_string(self : OptmetadeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_de_edge_make(size : Int) -> OptmetadeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_edge_len(s : OptmetadeEdge) -> Int { s.size }
+pub fn OptmetadeEdge::len(self : OptmetadeEdge) -> Int { self.size }
 
-pub fn opt_meta_de_edge_get(s : OptmetadeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeEdge::get(self : OptmetadeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_edge_set(s : OptmetadeEdge, i : Int, v : Double) -> OptmetadeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeEdge::set(self : OptmetadeEdge, i : Int, v : Double) -> OptmetadeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_edge_sum(s : OptmetadeEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeEdge::sum(self : OptmetadeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_edge_mean(s : OptmetadeEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeEdge::mean(self : OptmetadeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_edge_scale(s : OptmetadeEdge, f : Double) -> OptmetadeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeEdge::scale(self : OptmetadeEdge, f : Double) -> OptmetadeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_edge_add(a : OptmetadeEdge, b : OptmetadeEdge) -> OptmetadeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeEdge::add(self : OptmetadeEdge, other : OptmetadeEdge) -> OptmetadeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_edge_copy(s : OptmetadeEdge) -> OptmetadeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeEdge::copy(self : OptmetadeEdge) -> OptmetadeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_edge_fill(s : OptmetadeEdge, v : Double) -> OptmetadeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeEdge::fill(self : OptmetadeEdge, v : Double) -> OptmetadeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_edge_min(s : OptmetadeEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetadeEdge::min(self : OptmetadeEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_edge_max(s : OptmetadeEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetadeEdge::max(self : OptmetadeEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_edge_to_string(s : OptmetadeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeEdge::to_string(self : OptmetadeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadePath {
@@ -606,45 +606,45 @@ pub fn opt_meta_de_path_make(size : Int) -> OptmetadePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_path_len(s : OptmetadePath) -> Int { s.size }
+pub fn OptmetadePath::len(self : OptmetadePath) -> Int { self.size }
 
-pub fn opt_meta_de_path_get(s : OptmetadePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadePath::get(self : OptmetadePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_path_set(s : OptmetadePath, i : Int, v : Double) -> OptmetadePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadePath::set(self : OptmetadePath, i : Int, v : Double) -> OptmetadePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_path_sum(s : OptmetadePath) -> Double { @_common.sum(s.data) }
+pub fn OptmetadePath::sum(self : OptmetadePath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_path_mean(s : OptmetadePath) -> Double { @_common.mean(s.data) }
+pub fn OptmetadePath::mean(self : OptmetadePath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_path_scale(s : OptmetadePath, f : Double) -> OptmetadePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadePath::scale(self : OptmetadePath, f : Double) -> OptmetadePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_path_add(a : OptmetadePath, b : OptmetadePath) -> OptmetadePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadePath::add(self : OptmetadePath, other : OptmetadePath) -> OptmetadePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_path_copy(s : OptmetadePath) -> OptmetadePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadePath::copy(self : OptmetadePath) -> OptmetadePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_path_fill(s : OptmetadePath, v : Double) -> OptmetadePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadePath::fill(self : OptmetadePath, v : Double) -> OptmetadePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_path_min(s : OptmetadePath) -> Double { @_common.min(s.data) }
+pub fn OptmetadePath::min(self : OptmetadePath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_path_max(s : OptmetadePath) -> Double { @_common.max(s.data) }
+pub fn OptmetadePath::max(self : OptmetadePath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_path_to_string(s : OptmetadePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadePath::to_string(self : OptmetadePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_de_cluster_make(size : Int) -> OptmetadeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_cluster_len(s : OptmetadeCluster) -> Int { s.size }
+pub fn OptmetadeCluster::len(self : OptmetadeCluster) -> Int { self.size }
 
-pub fn opt_meta_de_cluster_get(s : OptmetadeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeCluster::get(self : OptmetadeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_cluster_set(s : OptmetadeCluster, i : Int, v : Double) -> OptmetadeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeCluster::set(self : OptmetadeCluster, i : Int, v : Double) -> OptmetadeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cluster_sum(s : OptmetadeCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeCluster::sum(self : OptmetadeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_cluster_mean(s : OptmetadeCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeCluster::mean(self : OptmetadeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_cluster_scale(s : OptmetadeCluster, f : Double) -> OptmetadeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeCluster::scale(self : OptmetadeCluster, f : Double) -> OptmetadeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cluster_add(a : OptmetadeCluster, b : OptmetadeCluster) -> OptmetadeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeCluster::add(self : OptmetadeCluster, other : OptmetadeCluster) -> OptmetadeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_cluster_copy(s : OptmetadeCluster) -> OptmetadeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeCluster::copy(self : OptmetadeCluster) -> OptmetadeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cluster_fill(s : OptmetadeCluster, v : Double) -> OptmetadeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeCluster::fill(self : OptmetadeCluster, v : Double) -> OptmetadeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cluster_min(s : OptmetadeCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetadeCluster::min(self : OptmetadeCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_cluster_max(s : OptmetadeCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetadeCluster::max(self : OptmetadeCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_cluster_to_string(s : OptmetadeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeCluster::to_string(self : OptmetadeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_de_model_make(size : Int) -> OptmetadeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_model_len(s : OptmetadeModel) -> Int { s.size }
+pub fn OptmetadeModel::len(self : OptmetadeModel) -> Int { self.size }
 
-pub fn opt_meta_de_model_get(s : OptmetadeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeModel::get(self : OptmetadeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_model_set(s : OptmetadeModel, i : Int, v : Double) -> OptmetadeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeModel::set(self : OptmetadeModel, i : Int, v : Double) -> OptmetadeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_model_sum(s : OptmetadeModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeModel::sum(self : OptmetadeModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_model_mean(s : OptmetadeModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeModel::mean(self : OptmetadeModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_model_scale(s : OptmetadeModel, f : Double) -> OptmetadeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeModel::scale(self : OptmetadeModel, f : Double) -> OptmetadeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_model_add(a : OptmetadeModel, b : OptmetadeModel) -> OptmetadeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeModel::add(self : OptmetadeModel, other : OptmetadeModel) -> OptmetadeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_model_copy(s : OptmetadeModel) -> OptmetadeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeModel::copy(self : OptmetadeModel) -> OptmetadeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_model_fill(s : OptmetadeModel, v : Double) -> OptmetadeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeModel::fill(self : OptmetadeModel, v : Double) -> OptmetadeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_model_min(s : OptmetadeModel) -> Double { @_common.min(s.data) }
+pub fn OptmetadeModel::min(self : OptmetadeModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_model_max(s : OptmetadeModel) -> Double { @_common.max(s.data) }
+pub fn OptmetadeModel::max(self : OptmetadeModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_model_to_string(s : OptmetadeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeModel::to_string(self : OptmetadeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_de_layer_make(size : Int) -> OptmetadeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_layer_len(s : OptmetadeLayer) -> Int { s.size }
+pub fn OptmetadeLayer::len(self : OptmetadeLayer) -> Int { self.size }
 
-pub fn opt_meta_de_layer_get(s : OptmetadeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeLayer::get(self : OptmetadeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_layer_set(s : OptmetadeLayer, i : Int, v : Double) -> OptmetadeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeLayer::set(self : OptmetadeLayer, i : Int, v : Double) -> OptmetadeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_layer_sum(s : OptmetadeLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeLayer::sum(self : OptmetadeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_layer_mean(s : OptmetadeLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeLayer::mean(self : OptmetadeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_layer_scale(s : OptmetadeLayer, f : Double) -> OptmetadeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeLayer::scale(self : OptmetadeLayer, f : Double) -> OptmetadeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_layer_add(a : OptmetadeLayer, b : OptmetadeLayer) -> OptmetadeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeLayer::add(self : OptmetadeLayer, other : OptmetadeLayer) -> OptmetadeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_layer_copy(s : OptmetadeLayer) -> OptmetadeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeLayer::copy(self : OptmetadeLayer) -> OptmetadeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_layer_fill(s : OptmetadeLayer, v : Double) -> OptmetadeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeLayer::fill(self : OptmetadeLayer, v : Double) -> OptmetadeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_layer_min(s : OptmetadeLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetadeLayer::min(self : OptmetadeLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_layer_max(s : OptmetadeLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetadeLayer::max(self : OptmetadeLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_layer_to_string(s : OptmetadeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeLayer::to_string(self : OptmetadeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_de_buffer_make(size : Int) -> OptmetadeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_buffer_len(s : OptmetadeBuffer) -> Int { s.size }
+pub fn OptmetadeBuffer::len(self : OptmetadeBuffer) -> Int { self.size }
 
-pub fn opt_meta_de_buffer_get(s : OptmetadeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeBuffer::get(self : OptmetadeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_buffer_set(s : OptmetadeBuffer, i : Int, v : Double) -> OptmetadeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeBuffer::set(self : OptmetadeBuffer, i : Int, v : Double) -> OptmetadeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_buffer_sum(s : OptmetadeBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeBuffer::sum(self : OptmetadeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_buffer_mean(s : OptmetadeBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeBuffer::mean(self : OptmetadeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_buffer_scale(s : OptmetadeBuffer, f : Double) -> OptmetadeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeBuffer::scale(self : OptmetadeBuffer, f : Double) -> OptmetadeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_buffer_add(a : OptmetadeBuffer, b : OptmetadeBuffer) -> OptmetadeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeBuffer::add(self : OptmetadeBuffer, other : OptmetadeBuffer) -> OptmetadeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_buffer_copy(s : OptmetadeBuffer) -> OptmetadeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeBuffer::copy(self : OptmetadeBuffer) -> OptmetadeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_buffer_fill(s : OptmetadeBuffer, v : Double) -> OptmetadeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeBuffer::fill(self : OptmetadeBuffer, v : Double) -> OptmetadeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_buffer_min(s : OptmetadeBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetadeBuffer::min(self : OptmetadeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_buffer_max(s : OptmetadeBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetadeBuffer::max(self : OptmetadeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_buffer_to_string(s : OptmetadeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeBuffer::to_string(self : OptmetadeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_de_cursor_make(size : Int) -> OptmetadeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_cursor_len(s : OptmetadeCursor) -> Int { s.size }
+pub fn OptmetadeCursor::len(self : OptmetadeCursor) -> Int { self.size }
 
-pub fn opt_meta_de_cursor_get(s : OptmetadeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeCursor::get(self : OptmetadeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_cursor_set(s : OptmetadeCursor, i : Int, v : Double) -> OptmetadeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeCursor::set(self : OptmetadeCursor, i : Int, v : Double) -> OptmetadeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cursor_sum(s : OptmetadeCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeCursor::sum(self : OptmetadeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_cursor_mean(s : OptmetadeCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeCursor::mean(self : OptmetadeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_cursor_scale(s : OptmetadeCursor, f : Double) -> OptmetadeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeCursor::scale(self : OptmetadeCursor, f : Double) -> OptmetadeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cursor_add(a : OptmetadeCursor, b : OptmetadeCursor) -> OptmetadeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeCursor::add(self : OptmetadeCursor, other : OptmetadeCursor) -> OptmetadeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_cursor_copy(s : OptmetadeCursor) -> OptmetadeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeCursor::copy(self : OptmetadeCursor) -> OptmetadeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cursor_fill(s : OptmetadeCursor, v : Double) -> OptmetadeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeCursor::fill(self : OptmetadeCursor, v : Double) -> OptmetadeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_cursor_min(s : OptmetadeCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetadeCursor::min(self : OptmetadeCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_cursor_max(s : OptmetadeCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetadeCursor::max(self : OptmetadeCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_cursor_to_string(s : OptmetadeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeCursor::to_string(self : OptmetadeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeView {
@@ -912,45 +912,45 @@ pub fn opt_meta_de_view_make(size : Int) -> OptmetadeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_view_len(s : OptmetadeView) -> Int { s.size }
+pub fn OptmetadeView::len(self : OptmetadeView) -> Int { self.size }
 
-pub fn opt_meta_de_view_get(s : OptmetadeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeView::get(self : OptmetadeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_view_set(s : OptmetadeView, i : Int, v : Double) -> OptmetadeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeView::set(self : OptmetadeView, i : Int, v : Double) -> OptmetadeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_view_sum(s : OptmetadeView) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeView::sum(self : OptmetadeView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_view_mean(s : OptmetadeView) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeView::mean(self : OptmetadeView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_view_scale(s : OptmetadeView, f : Double) -> OptmetadeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeView::scale(self : OptmetadeView, f : Double) -> OptmetadeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_view_add(a : OptmetadeView, b : OptmetadeView) -> OptmetadeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeView::add(self : OptmetadeView, other : OptmetadeView) -> OptmetadeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_view_copy(s : OptmetadeView) -> OptmetadeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeView::copy(self : OptmetadeView) -> OptmetadeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_view_fill(s : OptmetadeView, v : Double) -> OptmetadeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeView::fill(self : OptmetadeView, v : Double) -> OptmetadeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_view_min(s : OptmetadeView) -> Double { @_common.min(s.data) }
+pub fn OptmetadeView::min(self : OptmetadeView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_view_max(s : OptmetadeView) -> Double { @_common.max(s.data) }
+pub fn OptmetadeView::max(self : OptmetadeView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_view_to_string(s : OptmetadeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeView::to_string(self : OptmetadeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_de_range_make(size : Int) -> OptmetadeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_range_len(s : OptmetadeRange) -> Int { s.size }
+pub fn OptmetadeRange::len(self : OptmetadeRange) -> Int { self.size }
 
-pub fn opt_meta_de_range_get(s : OptmetadeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeRange::get(self : OptmetadeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_range_set(s : OptmetadeRange, i : Int, v : Double) -> OptmetadeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeRange::set(self : OptmetadeRange, i : Int, v : Double) -> OptmetadeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_range_sum(s : OptmetadeRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeRange::sum(self : OptmetadeRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_range_mean(s : OptmetadeRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeRange::mean(self : OptmetadeRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_range_scale(s : OptmetadeRange, f : Double) -> OptmetadeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeRange::scale(self : OptmetadeRange, f : Double) -> OptmetadeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_range_add(a : OptmetadeRange, b : OptmetadeRange) -> OptmetadeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeRange::add(self : OptmetadeRange, other : OptmetadeRange) -> OptmetadeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_range_copy(s : OptmetadeRange) -> OptmetadeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeRange::copy(self : OptmetadeRange) -> OptmetadeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_range_fill(s : OptmetadeRange, v : Double) -> OptmetadeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeRange::fill(self : OptmetadeRange, v : Double) -> OptmetadeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_range_min(s : OptmetadeRange) -> Double { @_common.min(s.data) }
+pub fn OptmetadeRange::min(self : OptmetadeRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_range_max(s : OptmetadeRange) -> Double { @_common.max(s.data) }
+pub fn OptmetadeRange::max(self : OptmetadeRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_range_to_string(s : OptmetadeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeRange::to_string(self : OptmetadeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetadeSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_de_slice_make(size : Int) -> OptmetadeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_de_slice_len(s : OptmetadeSlice) -> Int { s.size }
+pub fn OptmetadeSlice::len(self : OptmetadeSlice) -> Int { self.size }
 
-pub fn opt_meta_de_slice_get(s : OptmetadeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetadeSlice::get(self : OptmetadeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_de_slice_set(s : OptmetadeSlice, i : Int, v : Double) -> OptmetadeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetadeSlice::set(self : OptmetadeSlice, i : Int, v : Double) -> OptmetadeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_slice_sum(s : OptmetadeSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetadeSlice::sum(self : OptmetadeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_de_slice_mean(s : OptmetadeSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetadeSlice::mean(self : OptmetadeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_de_slice_scale(s : OptmetadeSlice, f : Double) -> OptmetadeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetadeSlice::scale(self : OptmetadeSlice, f : Double) -> OptmetadeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_slice_add(a : OptmetadeSlice, b : OptmetadeSlice) -> OptmetadeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetadeSlice::add(self : OptmetadeSlice, other : OptmetadeSlice) -> OptmetadeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_de_slice_copy(s : OptmetadeSlice) -> OptmetadeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetadeSlice::copy(self : OptmetadeSlice) -> OptmetadeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_slice_fill(s : OptmetadeSlice, v : Double) -> OptmetadeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetadeSlice::fill(self : OptmetadeSlice, v : Double) -> OptmetadeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_de_slice_min(s : OptmetadeSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetadeSlice::min(self : OptmetadeSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_de_slice_max(s : OptmetadeSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetadeSlice::max(self : OptmetadeSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_de_slice_to_string(s : OptmetadeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetadeSlice::to_string(self : OptmetadeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn finance_pricing_american_frame_make(size : Int) -> Financepricingamerican
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_frame_len(s : FinancepricingamericanFrame) -> Int { s.size }
+pub fn FinancepricingamericanFrame::len(self : FinancepricingamericanFrame) -> Int { self.size }
 
-pub fn finance_pricing_american_frame_get(s : FinancepricingamericanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanFrame::get(self : FinancepricingamericanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_frame_set(s : FinancepricingamericanFrame, i : Int, v : Double) -> FinancepricingamericanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanFrame::set(self : FinancepricingamericanFrame, i : Int, v : Double) -> FinancepricingamericanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_frame_sum(s : FinancepricingamericanFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanFrame::sum(self : FinancepricingamericanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_frame_mean(s : FinancepricingamericanFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanFrame::mean(self : FinancepricingamericanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_frame_scale(s : FinancepricingamericanFrame, f : Double) -> FinancepricingamericanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanFrame::scale(self : FinancepricingamericanFrame, f : Double) -> FinancepricingamericanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_frame_add(a : FinancepricingamericanFrame, b : FinancepricingamericanFrame) -> FinancepricingamericanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanFrame::add(self : FinancepricingamericanFrame, other : FinancepricingamericanFrame) -> FinancepricingamericanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_frame_copy(s : FinancepricingamericanFrame) -> FinancepricingamericanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanFrame::copy(self : FinancepricingamericanFrame) -> FinancepricingamericanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_frame_fill(s : FinancepricingamericanFrame, v : Double) -> FinancepricingamericanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanFrame::fill(self : FinancepricingamericanFrame, v : Double) -> FinancepricingamericanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_frame_min(s : FinancepricingamericanFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanFrame::min(self : FinancepricingamericanFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_frame_max(s : FinancepricingamericanFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanFrame::max(self : FinancepricingamericanFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_frame_to_string(s : FinancepricingamericanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanFrame::to_string(self : FinancepricingamericanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_american_table_make(size : Int) -> Financepricingamerican
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_table_len(s : FinancepricingamericanTable) -> Int { s.size }
+pub fn FinancepricingamericanTable::len(self : FinancepricingamericanTable) -> Int { self.size }
 
-pub fn finance_pricing_american_table_get(s : FinancepricingamericanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanTable::get(self : FinancepricingamericanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_table_set(s : FinancepricingamericanTable, i : Int, v : Double) -> FinancepricingamericanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanTable::set(self : FinancepricingamericanTable, i : Int, v : Double) -> FinancepricingamericanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_table_sum(s : FinancepricingamericanTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanTable::sum(self : FinancepricingamericanTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_table_mean(s : FinancepricingamericanTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanTable::mean(self : FinancepricingamericanTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_table_scale(s : FinancepricingamericanTable, f : Double) -> FinancepricingamericanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanTable::scale(self : FinancepricingamericanTable, f : Double) -> FinancepricingamericanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_table_add(a : FinancepricingamericanTable, b : FinancepricingamericanTable) -> FinancepricingamericanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanTable::add(self : FinancepricingamericanTable, other : FinancepricingamericanTable) -> FinancepricingamericanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_table_copy(s : FinancepricingamericanTable) -> FinancepricingamericanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanTable::copy(self : FinancepricingamericanTable) -> FinancepricingamericanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_table_fill(s : FinancepricingamericanTable, v : Double) -> FinancepricingamericanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanTable::fill(self : FinancepricingamericanTable, v : Double) -> FinancepricingamericanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_table_min(s : FinancepricingamericanTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanTable::min(self : FinancepricingamericanTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_table_max(s : FinancepricingamericanTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanTable::max(self : FinancepricingamericanTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_table_to_string(s : FinancepricingamericanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanTable::to_string(self : FinancepricingamericanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_american_graphn_make(size : Int) -> Financepricingamerica
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_graphn_len(s : FinancepricingamericanGraphN) -> Int { s.size }
+pub fn FinancepricingamericanGraphN::len(self : FinancepricingamericanGraphN) -> Int { self.size }
 
-pub fn finance_pricing_american_graphn_get(s : FinancepricingamericanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanGraphN::get(self : FinancepricingamericanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_graphn_set(s : FinancepricingamericanGraphN, i : Int, v : Double) -> FinancepricingamericanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanGraphN::set(self : FinancepricingamericanGraphN, i : Int, v : Double) -> FinancepricingamericanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_graphn_sum(s : FinancepricingamericanGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanGraphN::sum(self : FinancepricingamericanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_graphn_mean(s : FinancepricingamericanGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanGraphN::mean(self : FinancepricingamericanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_graphn_scale(s : FinancepricingamericanGraphN, f : Double) -> FinancepricingamericanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanGraphN::scale(self : FinancepricingamericanGraphN, f : Double) -> FinancepricingamericanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_graphn_add(a : FinancepricingamericanGraphN, b : FinancepricingamericanGraphN) -> FinancepricingamericanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanGraphN::add(self : FinancepricingamericanGraphN, other : FinancepricingamericanGraphN) -> FinancepricingamericanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_graphn_copy(s : FinancepricingamericanGraphN) -> FinancepricingamericanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanGraphN::copy(self : FinancepricingamericanGraphN) -> FinancepricingamericanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_graphn_fill(s : FinancepricingamericanGraphN, v : Double) -> FinancepricingamericanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanGraphN::fill(self : FinancepricingamericanGraphN, v : Double) -> FinancepricingamericanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_graphn_min(s : FinancepricingamericanGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanGraphN::min(self : FinancepricingamericanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_graphn_max(s : FinancepricingamericanGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanGraphN::max(self : FinancepricingamericanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_graphn_to_string(s : FinancepricingamericanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanGraphN::to_string(self : FinancepricingamericanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_american_node_make(size : Int) -> FinancepricingamericanN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_node_len(s : FinancepricingamericanNode) -> Int { s.size }
+pub fn FinancepricingamericanNode::len(self : FinancepricingamericanNode) -> Int { self.size }
 
-pub fn finance_pricing_american_node_get(s : FinancepricingamericanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanNode::get(self : FinancepricingamericanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_node_set(s : FinancepricingamericanNode, i : Int, v : Double) -> FinancepricingamericanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanNode::set(self : FinancepricingamericanNode, i : Int, v : Double) -> FinancepricingamericanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_node_sum(s : FinancepricingamericanNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanNode::sum(self : FinancepricingamericanNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_node_mean(s : FinancepricingamericanNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanNode::mean(self : FinancepricingamericanNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_node_scale(s : FinancepricingamericanNode, f : Double) -> FinancepricingamericanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanNode::scale(self : FinancepricingamericanNode, f : Double) -> FinancepricingamericanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_node_add(a : FinancepricingamericanNode, b : FinancepricingamericanNode) -> FinancepricingamericanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanNode::add(self : FinancepricingamericanNode, other : FinancepricingamericanNode) -> FinancepricingamericanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_node_copy(s : FinancepricingamericanNode) -> FinancepricingamericanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanNode::copy(self : FinancepricingamericanNode) -> FinancepricingamericanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_node_fill(s : FinancepricingamericanNode, v : Double) -> FinancepricingamericanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanNode::fill(self : FinancepricingamericanNode, v : Double) -> FinancepricingamericanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_node_min(s : FinancepricingamericanNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanNode::min(self : FinancepricingamericanNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_node_max(s : FinancepricingamericanNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanNode::max(self : FinancepricingamericanNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_node_to_string(s : FinancepricingamericanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanNode::to_string(self : FinancepricingamericanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_american_edge_make(size : Int) -> FinancepricingamericanE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_edge_len(s : FinancepricingamericanEdge) -> Int { s.size }
+pub fn FinancepricingamericanEdge::len(self : FinancepricingamericanEdge) -> Int { self.size }
 
-pub fn finance_pricing_american_edge_get(s : FinancepricingamericanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanEdge::get(self : FinancepricingamericanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_edge_set(s : FinancepricingamericanEdge, i : Int, v : Double) -> FinancepricingamericanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanEdge::set(self : FinancepricingamericanEdge, i : Int, v : Double) -> FinancepricingamericanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_edge_sum(s : FinancepricingamericanEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanEdge::sum(self : FinancepricingamericanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_edge_mean(s : FinancepricingamericanEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanEdge::mean(self : FinancepricingamericanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_edge_scale(s : FinancepricingamericanEdge, f : Double) -> FinancepricingamericanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanEdge::scale(self : FinancepricingamericanEdge, f : Double) -> FinancepricingamericanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_edge_add(a : FinancepricingamericanEdge, b : FinancepricingamericanEdge) -> FinancepricingamericanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanEdge::add(self : FinancepricingamericanEdge, other : FinancepricingamericanEdge) -> FinancepricingamericanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_edge_copy(s : FinancepricingamericanEdge) -> FinancepricingamericanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanEdge::copy(self : FinancepricingamericanEdge) -> FinancepricingamericanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_edge_fill(s : FinancepricingamericanEdge, v : Double) -> FinancepricingamericanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanEdge::fill(self : FinancepricingamericanEdge, v : Double) -> FinancepricingamericanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_edge_min(s : FinancepricingamericanEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanEdge::min(self : FinancepricingamericanEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_edge_max(s : FinancepricingamericanEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanEdge::max(self : FinancepricingamericanEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_edge_to_string(s : FinancepricingamericanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanEdge::to_string(self : FinancepricingamericanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_american_path_make(size : Int) -> FinancepricingamericanP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_path_len(s : FinancepricingamericanPath) -> Int { s.size }
+pub fn FinancepricingamericanPath::len(self : FinancepricingamericanPath) -> Int { self.size }
 
-pub fn finance_pricing_american_path_get(s : FinancepricingamericanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanPath::get(self : FinancepricingamericanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_path_set(s : FinancepricingamericanPath, i : Int, v : Double) -> FinancepricingamericanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanPath::set(self : FinancepricingamericanPath, i : Int, v : Double) -> FinancepricingamericanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_path_sum(s : FinancepricingamericanPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanPath::sum(self : FinancepricingamericanPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_path_mean(s : FinancepricingamericanPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanPath::mean(self : FinancepricingamericanPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_path_scale(s : FinancepricingamericanPath, f : Double) -> FinancepricingamericanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanPath::scale(self : FinancepricingamericanPath, f : Double) -> FinancepricingamericanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_path_add(a : FinancepricingamericanPath, b : FinancepricingamericanPath) -> FinancepricingamericanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanPath::add(self : FinancepricingamericanPath, other : FinancepricingamericanPath) -> FinancepricingamericanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_path_copy(s : FinancepricingamericanPath) -> FinancepricingamericanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanPath::copy(self : FinancepricingamericanPath) -> FinancepricingamericanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_path_fill(s : FinancepricingamericanPath, v : Double) -> FinancepricingamericanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanPath::fill(self : FinancepricingamericanPath, v : Double) -> FinancepricingamericanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_path_min(s : FinancepricingamericanPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanPath::min(self : FinancepricingamericanPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_path_max(s : FinancepricingamericanPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanPath::max(self : FinancepricingamericanPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_path_to_string(s : FinancepricingamericanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanPath::to_string(self : FinancepricingamericanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_american_cluster_make(size : Int) -> Financepricingameric
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_cluster_len(s : FinancepricingamericanCluster) -> Int { s.size }
+pub fn FinancepricingamericanCluster::len(self : FinancepricingamericanCluster) -> Int { self.size }
 
-pub fn finance_pricing_american_cluster_get(s : FinancepricingamericanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanCluster::get(self : FinancepricingamericanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_cluster_set(s : FinancepricingamericanCluster, i : Int, v : Double) -> FinancepricingamericanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCluster::set(self : FinancepricingamericanCluster, i : Int, v : Double) -> FinancepricingamericanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cluster_sum(s : FinancepricingamericanCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanCluster::sum(self : FinancepricingamericanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_cluster_mean(s : FinancepricingamericanCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanCluster::mean(self : FinancepricingamericanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_cluster_scale(s : FinancepricingamericanCluster, f : Double) -> FinancepricingamericanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCluster::scale(self : FinancepricingamericanCluster, f : Double) -> FinancepricingamericanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cluster_add(a : FinancepricingamericanCluster, b : FinancepricingamericanCluster) -> FinancepricingamericanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanCluster::add(self : FinancepricingamericanCluster, other : FinancepricingamericanCluster) -> FinancepricingamericanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cluster_copy(s : FinancepricingamericanCluster) -> FinancepricingamericanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCluster::copy(self : FinancepricingamericanCluster) -> FinancepricingamericanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cluster_fill(s : FinancepricingamericanCluster, v : Double) -> FinancepricingamericanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCluster::fill(self : FinancepricingamericanCluster, v : Double) -> FinancepricingamericanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cluster_min(s : FinancepricingamericanCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanCluster::min(self : FinancepricingamericanCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_cluster_max(s : FinancepricingamericanCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanCluster::max(self : FinancepricingamericanCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_cluster_to_string(s : FinancepricingamericanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanCluster::to_string(self : FinancepricingamericanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_american_model_make(size : Int) -> Financepricingamerican
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_model_len(s : FinancepricingamericanModel) -> Int { s.size }
+pub fn FinancepricingamericanModel::len(self : FinancepricingamericanModel) -> Int { self.size }
 
-pub fn finance_pricing_american_model_get(s : FinancepricingamericanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanModel::get(self : FinancepricingamericanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_model_set(s : FinancepricingamericanModel, i : Int, v : Double) -> FinancepricingamericanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanModel::set(self : FinancepricingamericanModel, i : Int, v : Double) -> FinancepricingamericanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_model_sum(s : FinancepricingamericanModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanModel::sum(self : FinancepricingamericanModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_model_mean(s : FinancepricingamericanModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanModel::mean(self : FinancepricingamericanModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_model_scale(s : FinancepricingamericanModel, f : Double) -> FinancepricingamericanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanModel::scale(self : FinancepricingamericanModel, f : Double) -> FinancepricingamericanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_model_add(a : FinancepricingamericanModel, b : FinancepricingamericanModel) -> FinancepricingamericanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanModel::add(self : FinancepricingamericanModel, other : FinancepricingamericanModel) -> FinancepricingamericanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_model_copy(s : FinancepricingamericanModel) -> FinancepricingamericanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanModel::copy(self : FinancepricingamericanModel) -> FinancepricingamericanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_model_fill(s : FinancepricingamericanModel, v : Double) -> FinancepricingamericanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanModel::fill(self : FinancepricingamericanModel, v : Double) -> FinancepricingamericanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_model_min(s : FinancepricingamericanModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanModel::min(self : FinancepricingamericanModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_model_max(s : FinancepricingamericanModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanModel::max(self : FinancepricingamericanModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_model_to_string(s : FinancepricingamericanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanModel::to_string(self : FinancepricingamericanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_american_layer_make(size : Int) -> Financepricingamerican
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_layer_len(s : FinancepricingamericanLayer) -> Int { s.size }
+pub fn FinancepricingamericanLayer::len(self : FinancepricingamericanLayer) -> Int { self.size }
 
-pub fn finance_pricing_american_layer_get(s : FinancepricingamericanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanLayer::get(self : FinancepricingamericanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_layer_set(s : FinancepricingamericanLayer, i : Int, v : Double) -> FinancepricingamericanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanLayer::set(self : FinancepricingamericanLayer, i : Int, v : Double) -> FinancepricingamericanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_layer_sum(s : FinancepricingamericanLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanLayer::sum(self : FinancepricingamericanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_layer_mean(s : FinancepricingamericanLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanLayer::mean(self : FinancepricingamericanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_layer_scale(s : FinancepricingamericanLayer, f : Double) -> FinancepricingamericanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanLayer::scale(self : FinancepricingamericanLayer, f : Double) -> FinancepricingamericanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_layer_add(a : FinancepricingamericanLayer, b : FinancepricingamericanLayer) -> FinancepricingamericanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanLayer::add(self : FinancepricingamericanLayer, other : FinancepricingamericanLayer) -> FinancepricingamericanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_layer_copy(s : FinancepricingamericanLayer) -> FinancepricingamericanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanLayer::copy(self : FinancepricingamericanLayer) -> FinancepricingamericanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_layer_fill(s : FinancepricingamericanLayer, v : Double) -> FinancepricingamericanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanLayer::fill(self : FinancepricingamericanLayer, v : Double) -> FinancepricingamericanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_layer_min(s : FinancepricingamericanLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanLayer::min(self : FinancepricingamericanLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_layer_max(s : FinancepricingamericanLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanLayer::max(self : FinancepricingamericanLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_layer_to_string(s : FinancepricingamericanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanLayer::to_string(self : FinancepricingamericanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_american_buffer_make(size : Int) -> Financepricingamerica
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_buffer_len(s : FinancepricingamericanBuffer) -> Int { s.size }
+pub fn FinancepricingamericanBuffer::len(self : FinancepricingamericanBuffer) -> Int { self.size }
 
-pub fn finance_pricing_american_buffer_get(s : FinancepricingamericanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanBuffer::get(self : FinancepricingamericanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_buffer_set(s : FinancepricingamericanBuffer, i : Int, v : Double) -> FinancepricingamericanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanBuffer::set(self : FinancepricingamericanBuffer, i : Int, v : Double) -> FinancepricingamericanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_buffer_sum(s : FinancepricingamericanBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanBuffer::sum(self : FinancepricingamericanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_buffer_mean(s : FinancepricingamericanBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanBuffer::mean(self : FinancepricingamericanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_buffer_scale(s : FinancepricingamericanBuffer, f : Double) -> FinancepricingamericanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanBuffer::scale(self : FinancepricingamericanBuffer, f : Double) -> FinancepricingamericanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_buffer_add(a : FinancepricingamericanBuffer, b : FinancepricingamericanBuffer) -> FinancepricingamericanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanBuffer::add(self : FinancepricingamericanBuffer, other : FinancepricingamericanBuffer) -> FinancepricingamericanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_buffer_copy(s : FinancepricingamericanBuffer) -> FinancepricingamericanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanBuffer::copy(self : FinancepricingamericanBuffer) -> FinancepricingamericanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_buffer_fill(s : FinancepricingamericanBuffer, v : Double) -> FinancepricingamericanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanBuffer::fill(self : FinancepricingamericanBuffer, v : Double) -> FinancepricingamericanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_buffer_min(s : FinancepricingamericanBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanBuffer::min(self : FinancepricingamericanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_buffer_max(s : FinancepricingamericanBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanBuffer::max(self : FinancepricingamericanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_buffer_to_string(s : FinancepricingamericanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanBuffer::to_string(self : FinancepricingamericanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_american_cursor_make(size : Int) -> Financepricingamerica
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_cursor_len(s : FinancepricingamericanCursor) -> Int { s.size }
+pub fn FinancepricingamericanCursor::len(self : FinancepricingamericanCursor) -> Int { self.size }
 
-pub fn finance_pricing_american_cursor_get(s : FinancepricingamericanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanCursor::get(self : FinancepricingamericanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_cursor_set(s : FinancepricingamericanCursor, i : Int, v : Double) -> FinancepricingamericanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCursor::set(self : FinancepricingamericanCursor, i : Int, v : Double) -> FinancepricingamericanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cursor_sum(s : FinancepricingamericanCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanCursor::sum(self : FinancepricingamericanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_cursor_mean(s : FinancepricingamericanCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanCursor::mean(self : FinancepricingamericanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_cursor_scale(s : FinancepricingamericanCursor, f : Double) -> FinancepricingamericanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCursor::scale(self : FinancepricingamericanCursor, f : Double) -> FinancepricingamericanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cursor_add(a : FinancepricingamericanCursor, b : FinancepricingamericanCursor) -> FinancepricingamericanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanCursor::add(self : FinancepricingamericanCursor, other : FinancepricingamericanCursor) -> FinancepricingamericanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cursor_copy(s : FinancepricingamericanCursor) -> FinancepricingamericanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCursor::copy(self : FinancepricingamericanCursor) -> FinancepricingamericanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cursor_fill(s : FinancepricingamericanCursor, v : Double) -> FinancepricingamericanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanCursor::fill(self : FinancepricingamericanCursor, v : Double) -> FinancepricingamericanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_cursor_min(s : FinancepricingamericanCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanCursor::min(self : FinancepricingamericanCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_cursor_max(s : FinancepricingamericanCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanCursor::max(self : FinancepricingamericanCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_cursor_to_string(s : FinancepricingamericanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanCursor::to_string(self : FinancepricingamericanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_american_view_make(size : Int) -> FinancepricingamericanV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_view_len(s : FinancepricingamericanView) -> Int { s.size }
+pub fn FinancepricingamericanView::len(self : FinancepricingamericanView) -> Int { self.size }
 
-pub fn finance_pricing_american_view_get(s : FinancepricingamericanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanView::get(self : FinancepricingamericanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_view_set(s : FinancepricingamericanView, i : Int, v : Double) -> FinancepricingamericanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanView::set(self : FinancepricingamericanView, i : Int, v : Double) -> FinancepricingamericanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_view_sum(s : FinancepricingamericanView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanView::sum(self : FinancepricingamericanView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_view_mean(s : FinancepricingamericanView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanView::mean(self : FinancepricingamericanView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_view_scale(s : FinancepricingamericanView, f : Double) -> FinancepricingamericanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanView::scale(self : FinancepricingamericanView, f : Double) -> FinancepricingamericanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_view_add(a : FinancepricingamericanView, b : FinancepricingamericanView) -> FinancepricingamericanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanView::add(self : FinancepricingamericanView, other : FinancepricingamericanView) -> FinancepricingamericanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_view_copy(s : FinancepricingamericanView) -> FinancepricingamericanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanView::copy(self : FinancepricingamericanView) -> FinancepricingamericanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_view_fill(s : FinancepricingamericanView, v : Double) -> FinancepricingamericanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanView::fill(self : FinancepricingamericanView, v : Double) -> FinancepricingamericanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_view_min(s : FinancepricingamericanView) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanView::min(self : FinancepricingamericanView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_view_max(s : FinancepricingamericanView) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanView::max(self : FinancepricingamericanView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_view_to_string(s : FinancepricingamericanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanView::to_string(self : FinancepricingamericanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_american_range_make(size : Int) -> Financepricingamerican
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_range_len(s : FinancepricingamericanRange) -> Int { s.size }
+pub fn FinancepricingamericanRange::len(self : FinancepricingamericanRange) -> Int { self.size }
 
-pub fn finance_pricing_american_range_get(s : FinancepricingamericanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanRange::get(self : FinancepricingamericanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_range_set(s : FinancepricingamericanRange, i : Int, v : Double) -> FinancepricingamericanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanRange::set(self : FinancepricingamericanRange, i : Int, v : Double) -> FinancepricingamericanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_range_sum(s : FinancepricingamericanRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanRange::sum(self : FinancepricingamericanRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_range_mean(s : FinancepricingamericanRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanRange::mean(self : FinancepricingamericanRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_range_scale(s : FinancepricingamericanRange, f : Double) -> FinancepricingamericanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanRange::scale(self : FinancepricingamericanRange, f : Double) -> FinancepricingamericanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_range_add(a : FinancepricingamericanRange, b : FinancepricingamericanRange) -> FinancepricingamericanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanRange::add(self : FinancepricingamericanRange, other : FinancepricingamericanRange) -> FinancepricingamericanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_range_copy(s : FinancepricingamericanRange) -> FinancepricingamericanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanRange::copy(self : FinancepricingamericanRange) -> FinancepricingamericanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_range_fill(s : FinancepricingamericanRange, v : Double) -> FinancepricingamericanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanRange::fill(self : FinancepricingamericanRange, v : Double) -> FinancepricingamericanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_range_min(s : FinancepricingamericanRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanRange::min(self : FinancepricingamericanRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_range_max(s : FinancepricingamericanRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanRange::max(self : FinancepricingamericanRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_range_to_string(s : FinancepricingamericanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanRange::to_string(self : FinancepricingamericanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingamericanSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_american_slice_make(size : Int) -> Financepricingamerican
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_american_slice_len(s : FinancepricingamericanSlice) -> Int { s.size }
+pub fn FinancepricingamericanSlice::len(self : FinancepricingamericanSlice) -> Int { self.size }
 
-pub fn finance_pricing_american_slice_get(s : FinancepricingamericanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingamericanSlice::get(self : FinancepricingamericanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_american_slice_set(s : FinancepricingamericanSlice, i : Int, v : Double) -> FinancepricingamericanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingamericanSlice::set(self : FinancepricingamericanSlice, i : Int, v : Double) -> FinancepricingamericanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_slice_sum(s : FinancepricingamericanSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingamericanSlice::sum(self : FinancepricingamericanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_american_slice_mean(s : FinancepricingamericanSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingamericanSlice::mean(self : FinancepricingamericanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_american_slice_scale(s : FinancepricingamericanSlice, f : Double) -> FinancepricingamericanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanSlice::scale(self : FinancepricingamericanSlice, f : Double) -> FinancepricingamericanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_slice_add(a : FinancepricingamericanSlice, b : FinancepricingamericanSlice) -> FinancepricingamericanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingamericanSlice::add(self : FinancepricingamericanSlice, other : FinancepricingamericanSlice) -> FinancepricingamericanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_american_slice_copy(s : FinancepricingamericanSlice) -> FinancepricingamericanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanSlice::copy(self : FinancepricingamericanSlice) -> FinancepricingamericanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_slice_fill(s : FinancepricingamericanSlice, v : Double) -> FinancepricingamericanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingamericanSlice::fill(self : FinancepricingamericanSlice, v : Double) -> FinancepricingamericanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_american_slice_min(s : FinancepricingamericanSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricingamericanSlice::min(self : FinancepricingamericanSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_american_slice_max(s : FinancepricingamericanSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricingamericanSlice::max(self : FinancepricingamericanSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_american_slice_to_string(s : FinancepricingamericanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingamericanSlice::to_string(self : FinancepricingamericanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn math_boundary_value_frame_make(size : Int) -> MathboundaryvalueFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_frame_len(s : MathboundaryvalueFrame) -> Int { s.size }
+pub fn MathboundaryvalueFrame::len(self : MathboundaryvalueFrame) -> Int { self.size }
 
-pub fn math_boundary_value_frame_get(s : MathboundaryvalueFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueFrame::get(self : MathboundaryvalueFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_frame_set(s : MathboundaryvalueFrame, i : Int, v : Double) -> MathboundaryvalueFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueFrame::set(self : MathboundaryvalueFrame, i : Int, v : Double) -> MathboundaryvalueFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_frame_sum(s : MathboundaryvalueFrame) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueFrame::sum(self : MathboundaryvalueFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_frame_mean(s : MathboundaryvalueFrame) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueFrame::mean(self : MathboundaryvalueFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_frame_scale(s : MathboundaryvalueFrame, f : Double) -> MathboundaryvalueFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueFrame::scale(self : MathboundaryvalueFrame, f : Double) -> MathboundaryvalueFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_frame_add(a : MathboundaryvalueFrame, b : MathboundaryvalueFrame) -> MathboundaryvalueFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueFrame::add(self : MathboundaryvalueFrame, other : MathboundaryvalueFrame) -> MathboundaryvalueFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_frame_copy(s : MathboundaryvalueFrame) -> MathboundaryvalueFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueFrame::copy(self : MathboundaryvalueFrame) -> MathboundaryvalueFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_frame_fill(s : MathboundaryvalueFrame, v : Double) -> MathboundaryvalueFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueFrame::fill(self : MathboundaryvalueFrame, v : Double) -> MathboundaryvalueFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_frame_min(s : MathboundaryvalueFrame) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueFrame::min(self : MathboundaryvalueFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_frame_max(s : MathboundaryvalueFrame) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueFrame::max(self : MathboundaryvalueFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_frame_to_string(s : MathboundaryvalueFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueFrame::to_string(self : MathboundaryvalueFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueTable {
@@ -402,45 +402,45 @@ pub fn math_boundary_value_table_make(size : Int) -> MathboundaryvalueTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_table_len(s : MathboundaryvalueTable) -> Int { s.size }
+pub fn MathboundaryvalueTable::len(self : MathboundaryvalueTable) -> Int { self.size }
 
-pub fn math_boundary_value_table_get(s : MathboundaryvalueTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueTable::get(self : MathboundaryvalueTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_table_set(s : MathboundaryvalueTable, i : Int, v : Double) -> MathboundaryvalueTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueTable::set(self : MathboundaryvalueTable, i : Int, v : Double) -> MathboundaryvalueTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_table_sum(s : MathboundaryvalueTable) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueTable::sum(self : MathboundaryvalueTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_table_mean(s : MathboundaryvalueTable) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueTable::mean(self : MathboundaryvalueTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_table_scale(s : MathboundaryvalueTable, f : Double) -> MathboundaryvalueTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueTable::scale(self : MathboundaryvalueTable, f : Double) -> MathboundaryvalueTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_table_add(a : MathboundaryvalueTable, b : MathboundaryvalueTable) -> MathboundaryvalueTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueTable::add(self : MathboundaryvalueTable, other : MathboundaryvalueTable) -> MathboundaryvalueTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_table_copy(s : MathboundaryvalueTable) -> MathboundaryvalueTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueTable::copy(self : MathboundaryvalueTable) -> MathboundaryvalueTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_table_fill(s : MathboundaryvalueTable, v : Double) -> MathboundaryvalueTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueTable::fill(self : MathboundaryvalueTable, v : Double) -> MathboundaryvalueTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_table_min(s : MathboundaryvalueTable) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueTable::min(self : MathboundaryvalueTable) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_table_max(s : MathboundaryvalueTable) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueTable::max(self : MathboundaryvalueTable) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_table_to_string(s : MathboundaryvalueTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueTable::to_string(self : MathboundaryvalueTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueGraphN {
@@ -453,45 +453,45 @@ pub fn math_boundary_value_graphn_make(size : Int) -> MathboundaryvalueGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_graphn_len(s : MathboundaryvalueGraphN) -> Int { s.size }
+pub fn MathboundaryvalueGraphN::len(self : MathboundaryvalueGraphN) -> Int { self.size }
 
-pub fn math_boundary_value_graphn_get(s : MathboundaryvalueGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueGraphN::get(self : MathboundaryvalueGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_graphn_set(s : MathboundaryvalueGraphN, i : Int, v : Double) -> MathboundaryvalueGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueGraphN::set(self : MathboundaryvalueGraphN, i : Int, v : Double) -> MathboundaryvalueGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_graphn_sum(s : MathboundaryvalueGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueGraphN::sum(self : MathboundaryvalueGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_graphn_mean(s : MathboundaryvalueGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueGraphN::mean(self : MathboundaryvalueGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_graphn_scale(s : MathboundaryvalueGraphN, f : Double) -> MathboundaryvalueGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueGraphN::scale(self : MathboundaryvalueGraphN, f : Double) -> MathboundaryvalueGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_graphn_add(a : MathboundaryvalueGraphN, b : MathboundaryvalueGraphN) -> MathboundaryvalueGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueGraphN::add(self : MathboundaryvalueGraphN, other : MathboundaryvalueGraphN) -> MathboundaryvalueGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_graphn_copy(s : MathboundaryvalueGraphN) -> MathboundaryvalueGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueGraphN::copy(self : MathboundaryvalueGraphN) -> MathboundaryvalueGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_graphn_fill(s : MathboundaryvalueGraphN, v : Double) -> MathboundaryvalueGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueGraphN::fill(self : MathboundaryvalueGraphN, v : Double) -> MathboundaryvalueGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_graphn_min(s : MathboundaryvalueGraphN) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueGraphN::min(self : MathboundaryvalueGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_graphn_max(s : MathboundaryvalueGraphN) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueGraphN::max(self : MathboundaryvalueGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_graphn_to_string(s : MathboundaryvalueGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueGraphN::to_string(self : MathboundaryvalueGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueNode {
@@ -504,45 +504,45 @@ pub fn math_boundary_value_node_make(size : Int) -> MathboundaryvalueNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_node_len(s : MathboundaryvalueNode) -> Int { s.size }
+pub fn MathboundaryvalueNode::len(self : MathboundaryvalueNode) -> Int { self.size }
 
-pub fn math_boundary_value_node_get(s : MathboundaryvalueNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueNode::get(self : MathboundaryvalueNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_node_set(s : MathboundaryvalueNode, i : Int, v : Double) -> MathboundaryvalueNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueNode::set(self : MathboundaryvalueNode, i : Int, v : Double) -> MathboundaryvalueNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_node_sum(s : MathboundaryvalueNode) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueNode::sum(self : MathboundaryvalueNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_node_mean(s : MathboundaryvalueNode) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueNode::mean(self : MathboundaryvalueNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_node_scale(s : MathboundaryvalueNode, f : Double) -> MathboundaryvalueNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueNode::scale(self : MathboundaryvalueNode, f : Double) -> MathboundaryvalueNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_node_add(a : MathboundaryvalueNode, b : MathboundaryvalueNode) -> MathboundaryvalueNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueNode::add(self : MathboundaryvalueNode, other : MathboundaryvalueNode) -> MathboundaryvalueNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_node_copy(s : MathboundaryvalueNode) -> MathboundaryvalueNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueNode::copy(self : MathboundaryvalueNode) -> MathboundaryvalueNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_node_fill(s : MathboundaryvalueNode, v : Double) -> MathboundaryvalueNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueNode::fill(self : MathboundaryvalueNode, v : Double) -> MathboundaryvalueNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_node_min(s : MathboundaryvalueNode) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueNode::min(self : MathboundaryvalueNode) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_node_max(s : MathboundaryvalueNode) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueNode::max(self : MathboundaryvalueNode) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_node_to_string(s : MathboundaryvalueNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueNode::to_string(self : MathboundaryvalueNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueEdge {
@@ -555,45 +555,45 @@ pub fn math_boundary_value_edge_make(size : Int) -> MathboundaryvalueEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_edge_len(s : MathboundaryvalueEdge) -> Int { s.size }
+pub fn MathboundaryvalueEdge::len(self : MathboundaryvalueEdge) -> Int { self.size }
 
-pub fn math_boundary_value_edge_get(s : MathboundaryvalueEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueEdge::get(self : MathboundaryvalueEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_edge_set(s : MathboundaryvalueEdge, i : Int, v : Double) -> MathboundaryvalueEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueEdge::set(self : MathboundaryvalueEdge, i : Int, v : Double) -> MathboundaryvalueEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_edge_sum(s : MathboundaryvalueEdge) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueEdge::sum(self : MathboundaryvalueEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_edge_mean(s : MathboundaryvalueEdge) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueEdge::mean(self : MathboundaryvalueEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_edge_scale(s : MathboundaryvalueEdge, f : Double) -> MathboundaryvalueEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueEdge::scale(self : MathboundaryvalueEdge, f : Double) -> MathboundaryvalueEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_edge_add(a : MathboundaryvalueEdge, b : MathboundaryvalueEdge) -> MathboundaryvalueEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueEdge::add(self : MathboundaryvalueEdge, other : MathboundaryvalueEdge) -> MathboundaryvalueEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_edge_copy(s : MathboundaryvalueEdge) -> MathboundaryvalueEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueEdge::copy(self : MathboundaryvalueEdge) -> MathboundaryvalueEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_edge_fill(s : MathboundaryvalueEdge, v : Double) -> MathboundaryvalueEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueEdge::fill(self : MathboundaryvalueEdge, v : Double) -> MathboundaryvalueEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_edge_min(s : MathboundaryvalueEdge) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueEdge::min(self : MathboundaryvalueEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_edge_max(s : MathboundaryvalueEdge) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueEdge::max(self : MathboundaryvalueEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_edge_to_string(s : MathboundaryvalueEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueEdge::to_string(self : MathboundaryvalueEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvaluePath {
@@ -606,45 +606,45 @@ pub fn math_boundary_value_path_make(size : Int) -> MathboundaryvaluePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_path_len(s : MathboundaryvaluePath) -> Int { s.size }
+pub fn MathboundaryvaluePath::len(self : MathboundaryvaluePath) -> Int { self.size }
 
-pub fn math_boundary_value_path_get(s : MathboundaryvaluePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvaluePath::get(self : MathboundaryvaluePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_path_set(s : MathboundaryvaluePath, i : Int, v : Double) -> MathboundaryvaluePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvaluePath::set(self : MathboundaryvaluePath, i : Int, v : Double) -> MathboundaryvaluePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_path_sum(s : MathboundaryvaluePath) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvaluePath::sum(self : MathboundaryvaluePath) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_path_mean(s : MathboundaryvaluePath) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvaluePath::mean(self : MathboundaryvaluePath) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_path_scale(s : MathboundaryvaluePath, f : Double) -> MathboundaryvaluePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvaluePath::scale(self : MathboundaryvaluePath, f : Double) -> MathboundaryvaluePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_path_add(a : MathboundaryvaluePath, b : MathboundaryvaluePath) -> MathboundaryvaluePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvaluePath::add(self : MathboundaryvaluePath, other : MathboundaryvaluePath) -> MathboundaryvaluePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_path_copy(s : MathboundaryvaluePath) -> MathboundaryvaluePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvaluePath::copy(self : MathboundaryvaluePath) -> MathboundaryvaluePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_path_fill(s : MathboundaryvaluePath, v : Double) -> MathboundaryvaluePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvaluePath::fill(self : MathboundaryvaluePath, v : Double) -> MathboundaryvaluePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_path_min(s : MathboundaryvaluePath) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvaluePath::min(self : MathboundaryvaluePath) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_path_max(s : MathboundaryvaluePath) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvaluePath::max(self : MathboundaryvaluePath) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_path_to_string(s : MathboundaryvaluePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvaluePath::to_string(self : MathboundaryvaluePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueCluster {
@@ -657,45 +657,45 @@ pub fn math_boundary_value_cluster_make(size : Int) -> MathboundaryvalueCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_cluster_len(s : MathboundaryvalueCluster) -> Int { s.size }
+pub fn MathboundaryvalueCluster::len(self : MathboundaryvalueCluster) -> Int { self.size }
 
-pub fn math_boundary_value_cluster_get(s : MathboundaryvalueCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueCluster::get(self : MathboundaryvalueCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_cluster_set(s : MathboundaryvalueCluster, i : Int, v : Double) -> MathboundaryvalueCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCluster::set(self : MathboundaryvalueCluster, i : Int, v : Double) -> MathboundaryvalueCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cluster_sum(s : MathboundaryvalueCluster) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueCluster::sum(self : MathboundaryvalueCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_cluster_mean(s : MathboundaryvalueCluster) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueCluster::mean(self : MathboundaryvalueCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_cluster_scale(s : MathboundaryvalueCluster, f : Double) -> MathboundaryvalueCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCluster::scale(self : MathboundaryvalueCluster, f : Double) -> MathboundaryvalueCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cluster_add(a : MathboundaryvalueCluster, b : MathboundaryvalueCluster) -> MathboundaryvalueCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueCluster::add(self : MathboundaryvalueCluster, other : MathboundaryvalueCluster) -> MathboundaryvalueCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_cluster_copy(s : MathboundaryvalueCluster) -> MathboundaryvalueCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCluster::copy(self : MathboundaryvalueCluster) -> MathboundaryvalueCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cluster_fill(s : MathboundaryvalueCluster, v : Double) -> MathboundaryvalueCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCluster::fill(self : MathboundaryvalueCluster, v : Double) -> MathboundaryvalueCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cluster_min(s : MathboundaryvalueCluster) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueCluster::min(self : MathboundaryvalueCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_cluster_max(s : MathboundaryvalueCluster) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueCluster::max(self : MathboundaryvalueCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_cluster_to_string(s : MathboundaryvalueCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueCluster::to_string(self : MathboundaryvalueCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueModel {
@@ -708,45 +708,45 @@ pub fn math_boundary_value_model_make(size : Int) -> MathboundaryvalueModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_model_len(s : MathboundaryvalueModel) -> Int { s.size }
+pub fn MathboundaryvalueModel::len(self : MathboundaryvalueModel) -> Int { self.size }
 
-pub fn math_boundary_value_model_get(s : MathboundaryvalueModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueModel::get(self : MathboundaryvalueModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_model_set(s : MathboundaryvalueModel, i : Int, v : Double) -> MathboundaryvalueModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueModel::set(self : MathboundaryvalueModel, i : Int, v : Double) -> MathboundaryvalueModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_model_sum(s : MathboundaryvalueModel) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueModel::sum(self : MathboundaryvalueModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_model_mean(s : MathboundaryvalueModel) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueModel::mean(self : MathboundaryvalueModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_model_scale(s : MathboundaryvalueModel, f : Double) -> MathboundaryvalueModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueModel::scale(self : MathboundaryvalueModel, f : Double) -> MathboundaryvalueModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_model_add(a : MathboundaryvalueModel, b : MathboundaryvalueModel) -> MathboundaryvalueModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueModel::add(self : MathboundaryvalueModel, other : MathboundaryvalueModel) -> MathboundaryvalueModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_model_copy(s : MathboundaryvalueModel) -> MathboundaryvalueModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueModel::copy(self : MathboundaryvalueModel) -> MathboundaryvalueModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_model_fill(s : MathboundaryvalueModel, v : Double) -> MathboundaryvalueModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueModel::fill(self : MathboundaryvalueModel, v : Double) -> MathboundaryvalueModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_model_min(s : MathboundaryvalueModel) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueModel::min(self : MathboundaryvalueModel) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_model_max(s : MathboundaryvalueModel) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueModel::max(self : MathboundaryvalueModel) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_model_to_string(s : MathboundaryvalueModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueModel::to_string(self : MathboundaryvalueModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueLayer {
@@ -759,45 +759,45 @@ pub fn math_boundary_value_layer_make(size : Int) -> MathboundaryvalueLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_layer_len(s : MathboundaryvalueLayer) -> Int { s.size }
+pub fn MathboundaryvalueLayer::len(self : MathboundaryvalueLayer) -> Int { self.size }
 
-pub fn math_boundary_value_layer_get(s : MathboundaryvalueLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueLayer::get(self : MathboundaryvalueLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_layer_set(s : MathboundaryvalueLayer, i : Int, v : Double) -> MathboundaryvalueLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueLayer::set(self : MathboundaryvalueLayer, i : Int, v : Double) -> MathboundaryvalueLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_layer_sum(s : MathboundaryvalueLayer) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueLayer::sum(self : MathboundaryvalueLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_layer_mean(s : MathboundaryvalueLayer) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueLayer::mean(self : MathboundaryvalueLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_layer_scale(s : MathboundaryvalueLayer, f : Double) -> MathboundaryvalueLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueLayer::scale(self : MathboundaryvalueLayer, f : Double) -> MathboundaryvalueLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_layer_add(a : MathboundaryvalueLayer, b : MathboundaryvalueLayer) -> MathboundaryvalueLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueLayer::add(self : MathboundaryvalueLayer, other : MathboundaryvalueLayer) -> MathboundaryvalueLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_layer_copy(s : MathboundaryvalueLayer) -> MathboundaryvalueLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueLayer::copy(self : MathboundaryvalueLayer) -> MathboundaryvalueLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_layer_fill(s : MathboundaryvalueLayer, v : Double) -> MathboundaryvalueLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueLayer::fill(self : MathboundaryvalueLayer, v : Double) -> MathboundaryvalueLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_layer_min(s : MathboundaryvalueLayer) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueLayer::min(self : MathboundaryvalueLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_layer_max(s : MathboundaryvalueLayer) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueLayer::max(self : MathboundaryvalueLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_layer_to_string(s : MathboundaryvalueLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueLayer::to_string(self : MathboundaryvalueLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueBuffer {
@@ -810,45 +810,45 @@ pub fn math_boundary_value_buffer_make(size : Int) -> MathboundaryvalueBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_buffer_len(s : MathboundaryvalueBuffer) -> Int { s.size }
+pub fn MathboundaryvalueBuffer::len(self : MathboundaryvalueBuffer) -> Int { self.size }
 
-pub fn math_boundary_value_buffer_get(s : MathboundaryvalueBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueBuffer::get(self : MathboundaryvalueBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_buffer_set(s : MathboundaryvalueBuffer, i : Int, v : Double) -> MathboundaryvalueBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueBuffer::set(self : MathboundaryvalueBuffer, i : Int, v : Double) -> MathboundaryvalueBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_buffer_sum(s : MathboundaryvalueBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueBuffer::sum(self : MathboundaryvalueBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_buffer_mean(s : MathboundaryvalueBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueBuffer::mean(self : MathboundaryvalueBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_buffer_scale(s : MathboundaryvalueBuffer, f : Double) -> MathboundaryvalueBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueBuffer::scale(self : MathboundaryvalueBuffer, f : Double) -> MathboundaryvalueBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_buffer_add(a : MathboundaryvalueBuffer, b : MathboundaryvalueBuffer) -> MathboundaryvalueBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueBuffer::add(self : MathboundaryvalueBuffer, other : MathboundaryvalueBuffer) -> MathboundaryvalueBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_buffer_copy(s : MathboundaryvalueBuffer) -> MathboundaryvalueBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueBuffer::copy(self : MathboundaryvalueBuffer) -> MathboundaryvalueBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_buffer_fill(s : MathboundaryvalueBuffer, v : Double) -> MathboundaryvalueBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueBuffer::fill(self : MathboundaryvalueBuffer, v : Double) -> MathboundaryvalueBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_buffer_min(s : MathboundaryvalueBuffer) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueBuffer::min(self : MathboundaryvalueBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_buffer_max(s : MathboundaryvalueBuffer) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueBuffer::max(self : MathboundaryvalueBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_buffer_to_string(s : MathboundaryvalueBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueBuffer::to_string(self : MathboundaryvalueBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueCursor {
@@ -861,45 +861,45 @@ pub fn math_boundary_value_cursor_make(size : Int) -> MathboundaryvalueCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_cursor_len(s : MathboundaryvalueCursor) -> Int { s.size }
+pub fn MathboundaryvalueCursor::len(self : MathboundaryvalueCursor) -> Int { self.size }
 
-pub fn math_boundary_value_cursor_get(s : MathboundaryvalueCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueCursor::get(self : MathboundaryvalueCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_cursor_set(s : MathboundaryvalueCursor, i : Int, v : Double) -> MathboundaryvalueCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCursor::set(self : MathboundaryvalueCursor, i : Int, v : Double) -> MathboundaryvalueCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cursor_sum(s : MathboundaryvalueCursor) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueCursor::sum(self : MathboundaryvalueCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_cursor_mean(s : MathboundaryvalueCursor) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueCursor::mean(self : MathboundaryvalueCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_cursor_scale(s : MathboundaryvalueCursor, f : Double) -> MathboundaryvalueCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCursor::scale(self : MathboundaryvalueCursor, f : Double) -> MathboundaryvalueCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cursor_add(a : MathboundaryvalueCursor, b : MathboundaryvalueCursor) -> MathboundaryvalueCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueCursor::add(self : MathboundaryvalueCursor, other : MathboundaryvalueCursor) -> MathboundaryvalueCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_cursor_copy(s : MathboundaryvalueCursor) -> MathboundaryvalueCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCursor::copy(self : MathboundaryvalueCursor) -> MathboundaryvalueCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cursor_fill(s : MathboundaryvalueCursor, v : Double) -> MathboundaryvalueCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueCursor::fill(self : MathboundaryvalueCursor, v : Double) -> MathboundaryvalueCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_cursor_min(s : MathboundaryvalueCursor) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueCursor::min(self : MathboundaryvalueCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_cursor_max(s : MathboundaryvalueCursor) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueCursor::max(self : MathboundaryvalueCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_cursor_to_string(s : MathboundaryvalueCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueCursor::to_string(self : MathboundaryvalueCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueView {
@@ -912,45 +912,45 @@ pub fn math_boundary_value_view_make(size : Int) -> MathboundaryvalueView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_view_len(s : MathboundaryvalueView) -> Int { s.size }
+pub fn MathboundaryvalueView::len(self : MathboundaryvalueView) -> Int { self.size }
 
-pub fn math_boundary_value_view_get(s : MathboundaryvalueView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueView::get(self : MathboundaryvalueView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_view_set(s : MathboundaryvalueView, i : Int, v : Double) -> MathboundaryvalueView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueView::set(self : MathboundaryvalueView, i : Int, v : Double) -> MathboundaryvalueView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_view_sum(s : MathboundaryvalueView) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueView::sum(self : MathboundaryvalueView) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_view_mean(s : MathboundaryvalueView) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueView::mean(self : MathboundaryvalueView) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_view_scale(s : MathboundaryvalueView, f : Double) -> MathboundaryvalueView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueView::scale(self : MathboundaryvalueView, f : Double) -> MathboundaryvalueView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_view_add(a : MathboundaryvalueView, b : MathboundaryvalueView) -> MathboundaryvalueView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueView::add(self : MathboundaryvalueView, other : MathboundaryvalueView) -> MathboundaryvalueView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_view_copy(s : MathboundaryvalueView) -> MathboundaryvalueView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueView::copy(self : MathboundaryvalueView) -> MathboundaryvalueView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_view_fill(s : MathboundaryvalueView, v : Double) -> MathboundaryvalueView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueView::fill(self : MathboundaryvalueView, v : Double) -> MathboundaryvalueView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_view_min(s : MathboundaryvalueView) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueView::min(self : MathboundaryvalueView) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_view_max(s : MathboundaryvalueView) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueView::max(self : MathboundaryvalueView) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_view_to_string(s : MathboundaryvalueView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueView::to_string(self : MathboundaryvalueView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueRange {
@@ -963,45 +963,45 @@ pub fn math_boundary_value_range_make(size : Int) -> MathboundaryvalueRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_range_len(s : MathboundaryvalueRange) -> Int { s.size }
+pub fn MathboundaryvalueRange::len(self : MathboundaryvalueRange) -> Int { self.size }
 
-pub fn math_boundary_value_range_get(s : MathboundaryvalueRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueRange::get(self : MathboundaryvalueRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_range_set(s : MathboundaryvalueRange, i : Int, v : Double) -> MathboundaryvalueRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueRange::set(self : MathboundaryvalueRange, i : Int, v : Double) -> MathboundaryvalueRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_range_sum(s : MathboundaryvalueRange) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueRange::sum(self : MathboundaryvalueRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_range_mean(s : MathboundaryvalueRange) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueRange::mean(self : MathboundaryvalueRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_range_scale(s : MathboundaryvalueRange, f : Double) -> MathboundaryvalueRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueRange::scale(self : MathboundaryvalueRange, f : Double) -> MathboundaryvalueRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_range_add(a : MathboundaryvalueRange, b : MathboundaryvalueRange) -> MathboundaryvalueRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueRange::add(self : MathboundaryvalueRange, other : MathboundaryvalueRange) -> MathboundaryvalueRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_range_copy(s : MathboundaryvalueRange) -> MathboundaryvalueRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueRange::copy(self : MathboundaryvalueRange) -> MathboundaryvalueRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_range_fill(s : MathboundaryvalueRange, v : Double) -> MathboundaryvalueRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueRange::fill(self : MathboundaryvalueRange, v : Double) -> MathboundaryvalueRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_range_min(s : MathboundaryvalueRange) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueRange::min(self : MathboundaryvalueRange) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_range_max(s : MathboundaryvalueRange) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueRange::max(self : MathboundaryvalueRange) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_range_to_string(s : MathboundaryvalueRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueRange::to_string(self : MathboundaryvalueRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathboundaryvalueSlice {
@@ -1014,44 +1014,44 @@ pub fn math_boundary_value_slice_make(size : Int) -> MathboundaryvalueSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_boundary_value_slice_len(s : MathboundaryvalueSlice) -> Int { s.size }
+pub fn MathboundaryvalueSlice::len(self : MathboundaryvalueSlice) -> Int { self.size }
 
-pub fn math_boundary_value_slice_get(s : MathboundaryvalueSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathboundaryvalueSlice::get(self : MathboundaryvalueSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_boundary_value_slice_set(s : MathboundaryvalueSlice, i : Int, v : Double) -> MathboundaryvalueSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathboundaryvalueSlice::set(self : MathboundaryvalueSlice, i : Int, v : Double) -> MathboundaryvalueSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_slice_sum(s : MathboundaryvalueSlice) -> Double { @_common.sum(s.data) }
+pub fn MathboundaryvalueSlice::sum(self : MathboundaryvalueSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_boundary_value_slice_mean(s : MathboundaryvalueSlice) -> Double { @_common.mean(s.data) }
+pub fn MathboundaryvalueSlice::mean(self : MathboundaryvalueSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_boundary_value_slice_scale(s : MathboundaryvalueSlice, f : Double) -> MathboundaryvalueSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueSlice::scale(self : MathboundaryvalueSlice, f : Double) -> MathboundaryvalueSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_slice_add(a : MathboundaryvalueSlice, b : MathboundaryvalueSlice) -> MathboundaryvalueSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathboundaryvalueSlice::add(self : MathboundaryvalueSlice, other : MathboundaryvalueSlice) -> MathboundaryvalueSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_boundary_value_slice_copy(s : MathboundaryvalueSlice) -> MathboundaryvalueSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueSlice::copy(self : MathboundaryvalueSlice) -> MathboundaryvalueSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_slice_fill(s : MathboundaryvalueSlice, v : Double) -> MathboundaryvalueSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathboundaryvalueSlice::fill(self : MathboundaryvalueSlice, v : Double) -> MathboundaryvalueSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_boundary_value_slice_min(s : MathboundaryvalueSlice) -> Double { @_common.min(s.data) }
+pub fn MathboundaryvalueSlice::min(self : MathboundaryvalueSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_boundary_value_slice_max(s : MathboundaryvalueSlice) -> Double { @_common.max(s.data) }
+pub fn MathboundaryvalueSlice::max(self : MathboundaryvalueSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_boundary_value_slice_to_string(s : MathboundaryvalueSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathboundaryvalueSlice::to_string(self : MathboundaryvalueSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

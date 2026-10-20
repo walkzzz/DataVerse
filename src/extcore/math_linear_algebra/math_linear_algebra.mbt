@@ -351,45 +351,45 @@ pub fn math_linear_algebra_frame_make(size : Int) -> MathlinearalgebraFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_frame_len(s : MathlinearalgebraFrame) -> Int { s.size }
+pub fn MathlinearalgebraFrame::len(self : MathlinearalgebraFrame) -> Int { self.size }
 
-pub fn math_linear_algebra_frame_get(s : MathlinearalgebraFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraFrame::get(self : MathlinearalgebraFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_frame_set(s : MathlinearalgebraFrame, i : Int, v : Double) -> MathlinearalgebraFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraFrame::set(self : MathlinearalgebraFrame, i : Int, v : Double) -> MathlinearalgebraFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_frame_sum(s : MathlinearalgebraFrame) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraFrame::sum(self : MathlinearalgebraFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_frame_mean(s : MathlinearalgebraFrame) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraFrame::mean(self : MathlinearalgebraFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_frame_scale(s : MathlinearalgebraFrame, f : Double) -> MathlinearalgebraFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraFrame::scale(self : MathlinearalgebraFrame, f : Double) -> MathlinearalgebraFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_frame_add(a : MathlinearalgebraFrame, b : MathlinearalgebraFrame) -> MathlinearalgebraFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraFrame::add(self : MathlinearalgebraFrame, other : MathlinearalgebraFrame) -> MathlinearalgebraFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_frame_copy(s : MathlinearalgebraFrame) -> MathlinearalgebraFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraFrame::copy(self : MathlinearalgebraFrame) -> MathlinearalgebraFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_frame_fill(s : MathlinearalgebraFrame, v : Double) -> MathlinearalgebraFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraFrame::fill(self : MathlinearalgebraFrame, v : Double) -> MathlinearalgebraFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_frame_min(s : MathlinearalgebraFrame) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraFrame::min(self : MathlinearalgebraFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_frame_max(s : MathlinearalgebraFrame) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraFrame::max(self : MathlinearalgebraFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_frame_to_string(s : MathlinearalgebraFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraFrame::to_string(self : MathlinearalgebraFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraTable {
@@ -402,45 +402,45 @@ pub fn math_linear_algebra_table_make(size : Int) -> MathlinearalgebraTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_table_len(s : MathlinearalgebraTable) -> Int { s.size }
+pub fn MathlinearalgebraTable::len(self : MathlinearalgebraTable) -> Int { self.size }
 
-pub fn math_linear_algebra_table_get(s : MathlinearalgebraTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraTable::get(self : MathlinearalgebraTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_table_set(s : MathlinearalgebraTable, i : Int, v : Double) -> MathlinearalgebraTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraTable::set(self : MathlinearalgebraTable, i : Int, v : Double) -> MathlinearalgebraTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_table_sum(s : MathlinearalgebraTable) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraTable::sum(self : MathlinearalgebraTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_table_mean(s : MathlinearalgebraTable) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraTable::mean(self : MathlinearalgebraTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_table_scale(s : MathlinearalgebraTable, f : Double) -> MathlinearalgebraTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraTable::scale(self : MathlinearalgebraTable, f : Double) -> MathlinearalgebraTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_table_add(a : MathlinearalgebraTable, b : MathlinearalgebraTable) -> MathlinearalgebraTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraTable::add(self : MathlinearalgebraTable, other : MathlinearalgebraTable) -> MathlinearalgebraTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_table_copy(s : MathlinearalgebraTable) -> MathlinearalgebraTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraTable::copy(self : MathlinearalgebraTable) -> MathlinearalgebraTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_table_fill(s : MathlinearalgebraTable, v : Double) -> MathlinearalgebraTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraTable::fill(self : MathlinearalgebraTable, v : Double) -> MathlinearalgebraTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_table_min(s : MathlinearalgebraTable) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraTable::min(self : MathlinearalgebraTable) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_table_max(s : MathlinearalgebraTable) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraTable::max(self : MathlinearalgebraTable) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_table_to_string(s : MathlinearalgebraTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraTable::to_string(self : MathlinearalgebraTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraGraphN {
@@ -453,45 +453,45 @@ pub fn math_linear_algebra_graphn_make(size : Int) -> MathlinearalgebraGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_graphn_len(s : MathlinearalgebraGraphN) -> Int { s.size }
+pub fn MathlinearalgebraGraphN::len(self : MathlinearalgebraGraphN) -> Int { self.size }
 
-pub fn math_linear_algebra_graphn_get(s : MathlinearalgebraGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraGraphN::get(self : MathlinearalgebraGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_graphn_set(s : MathlinearalgebraGraphN, i : Int, v : Double) -> MathlinearalgebraGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraGraphN::set(self : MathlinearalgebraGraphN, i : Int, v : Double) -> MathlinearalgebraGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_graphn_sum(s : MathlinearalgebraGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraGraphN::sum(self : MathlinearalgebraGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_graphn_mean(s : MathlinearalgebraGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraGraphN::mean(self : MathlinearalgebraGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_graphn_scale(s : MathlinearalgebraGraphN, f : Double) -> MathlinearalgebraGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraGraphN::scale(self : MathlinearalgebraGraphN, f : Double) -> MathlinearalgebraGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_graphn_add(a : MathlinearalgebraGraphN, b : MathlinearalgebraGraphN) -> MathlinearalgebraGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraGraphN::add(self : MathlinearalgebraGraphN, other : MathlinearalgebraGraphN) -> MathlinearalgebraGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_graphn_copy(s : MathlinearalgebraGraphN) -> MathlinearalgebraGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraGraphN::copy(self : MathlinearalgebraGraphN) -> MathlinearalgebraGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_graphn_fill(s : MathlinearalgebraGraphN, v : Double) -> MathlinearalgebraGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraGraphN::fill(self : MathlinearalgebraGraphN, v : Double) -> MathlinearalgebraGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_graphn_min(s : MathlinearalgebraGraphN) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraGraphN::min(self : MathlinearalgebraGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_graphn_max(s : MathlinearalgebraGraphN) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraGraphN::max(self : MathlinearalgebraGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_graphn_to_string(s : MathlinearalgebraGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraGraphN::to_string(self : MathlinearalgebraGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraNode {
@@ -504,45 +504,45 @@ pub fn math_linear_algebra_node_make(size : Int) -> MathlinearalgebraNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_node_len(s : MathlinearalgebraNode) -> Int { s.size }
+pub fn MathlinearalgebraNode::len(self : MathlinearalgebraNode) -> Int { self.size }
 
-pub fn math_linear_algebra_node_get(s : MathlinearalgebraNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraNode::get(self : MathlinearalgebraNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_node_set(s : MathlinearalgebraNode, i : Int, v : Double) -> MathlinearalgebraNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraNode::set(self : MathlinearalgebraNode, i : Int, v : Double) -> MathlinearalgebraNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_node_sum(s : MathlinearalgebraNode) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraNode::sum(self : MathlinearalgebraNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_node_mean(s : MathlinearalgebraNode) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraNode::mean(self : MathlinearalgebraNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_node_scale(s : MathlinearalgebraNode, f : Double) -> MathlinearalgebraNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraNode::scale(self : MathlinearalgebraNode, f : Double) -> MathlinearalgebraNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_node_add(a : MathlinearalgebraNode, b : MathlinearalgebraNode) -> MathlinearalgebraNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraNode::add(self : MathlinearalgebraNode, other : MathlinearalgebraNode) -> MathlinearalgebraNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_node_copy(s : MathlinearalgebraNode) -> MathlinearalgebraNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraNode::copy(self : MathlinearalgebraNode) -> MathlinearalgebraNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_node_fill(s : MathlinearalgebraNode, v : Double) -> MathlinearalgebraNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraNode::fill(self : MathlinearalgebraNode, v : Double) -> MathlinearalgebraNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_node_min(s : MathlinearalgebraNode) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraNode::min(self : MathlinearalgebraNode) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_node_max(s : MathlinearalgebraNode) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraNode::max(self : MathlinearalgebraNode) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_node_to_string(s : MathlinearalgebraNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraNode::to_string(self : MathlinearalgebraNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraEdge {
@@ -555,45 +555,45 @@ pub fn math_linear_algebra_edge_make(size : Int) -> MathlinearalgebraEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_edge_len(s : MathlinearalgebraEdge) -> Int { s.size }
+pub fn MathlinearalgebraEdge::len(self : MathlinearalgebraEdge) -> Int { self.size }
 
-pub fn math_linear_algebra_edge_get(s : MathlinearalgebraEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraEdge::get(self : MathlinearalgebraEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_edge_set(s : MathlinearalgebraEdge, i : Int, v : Double) -> MathlinearalgebraEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraEdge::set(self : MathlinearalgebraEdge, i : Int, v : Double) -> MathlinearalgebraEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_edge_sum(s : MathlinearalgebraEdge) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraEdge::sum(self : MathlinearalgebraEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_edge_mean(s : MathlinearalgebraEdge) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraEdge::mean(self : MathlinearalgebraEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_edge_scale(s : MathlinearalgebraEdge, f : Double) -> MathlinearalgebraEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraEdge::scale(self : MathlinearalgebraEdge, f : Double) -> MathlinearalgebraEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_edge_add(a : MathlinearalgebraEdge, b : MathlinearalgebraEdge) -> MathlinearalgebraEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraEdge::add(self : MathlinearalgebraEdge, other : MathlinearalgebraEdge) -> MathlinearalgebraEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_edge_copy(s : MathlinearalgebraEdge) -> MathlinearalgebraEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraEdge::copy(self : MathlinearalgebraEdge) -> MathlinearalgebraEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_edge_fill(s : MathlinearalgebraEdge, v : Double) -> MathlinearalgebraEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraEdge::fill(self : MathlinearalgebraEdge, v : Double) -> MathlinearalgebraEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_edge_min(s : MathlinearalgebraEdge) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraEdge::min(self : MathlinearalgebraEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_edge_max(s : MathlinearalgebraEdge) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraEdge::max(self : MathlinearalgebraEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_edge_to_string(s : MathlinearalgebraEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraEdge::to_string(self : MathlinearalgebraEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraPath {
@@ -606,45 +606,45 @@ pub fn math_linear_algebra_path_make(size : Int) -> MathlinearalgebraPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_path_len(s : MathlinearalgebraPath) -> Int { s.size }
+pub fn MathlinearalgebraPath::len(self : MathlinearalgebraPath) -> Int { self.size }
 
-pub fn math_linear_algebra_path_get(s : MathlinearalgebraPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraPath::get(self : MathlinearalgebraPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_path_set(s : MathlinearalgebraPath, i : Int, v : Double) -> MathlinearalgebraPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraPath::set(self : MathlinearalgebraPath, i : Int, v : Double) -> MathlinearalgebraPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_path_sum(s : MathlinearalgebraPath) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraPath::sum(self : MathlinearalgebraPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_path_mean(s : MathlinearalgebraPath) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraPath::mean(self : MathlinearalgebraPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_path_scale(s : MathlinearalgebraPath, f : Double) -> MathlinearalgebraPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraPath::scale(self : MathlinearalgebraPath, f : Double) -> MathlinearalgebraPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_path_add(a : MathlinearalgebraPath, b : MathlinearalgebraPath) -> MathlinearalgebraPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraPath::add(self : MathlinearalgebraPath, other : MathlinearalgebraPath) -> MathlinearalgebraPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_path_copy(s : MathlinearalgebraPath) -> MathlinearalgebraPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraPath::copy(self : MathlinearalgebraPath) -> MathlinearalgebraPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_path_fill(s : MathlinearalgebraPath, v : Double) -> MathlinearalgebraPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraPath::fill(self : MathlinearalgebraPath, v : Double) -> MathlinearalgebraPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_path_min(s : MathlinearalgebraPath) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraPath::min(self : MathlinearalgebraPath) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_path_max(s : MathlinearalgebraPath) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraPath::max(self : MathlinearalgebraPath) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_path_to_string(s : MathlinearalgebraPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraPath::to_string(self : MathlinearalgebraPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraCluster {
@@ -657,45 +657,45 @@ pub fn math_linear_algebra_cluster_make(size : Int) -> MathlinearalgebraCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_cluster_len(s : MathlinearalgebraCluster) -> Int { s.size }
+pub fn MathlinearalgebraCluster::len(self : MathlinearalgebraCluster) -> Int { self.size }
 
-pub fn math_linear_algebra_cluster_get(s : MathlinearalgebraCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraCluster::get(self : MathlinearalgebraCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_cluster_set(s : MathlinearalgebraCluster, i : Int, v : Double) -> MathlinearalgebraCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCluster::set(self : MathlinearalgebraCluster, i : Int, v : Double) -> MathlinearalgebraCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cluster_sum(s : MathlinearalgebraCluster) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraCluster::sum(self : MathlinearalgebraCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_cluster_mean(s : MathlinearalgebraCluster) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraCluster::mean(self : MathlinearalgebraCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_cluster_scale(s : MathlinearalgebraCluster, f : Double) -> MathlinearalgebraCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCluster::scale(self : MathlinearalgebraCluster, f : Double) -> MathlinearalgebraCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cluster_add(a : MathlinearalgebraCluster, b : MathlinearalgebraCluster) -> MathlinearalgebraCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraCluster::add(self : MathlinearalgebraCluster, other : MathlinearalgebraCluster) -> MathlinearalgebraCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cluster_copy(s : MathlinearalgebraCluster) -> MathlinearalgebraCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCluster::copy(self : MathlinearalgebraCluster) -> MathlinearalgebraCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cluster_fill(s : MathlinearalgebraCluster, v : Double) -> MathlinearalgebraCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCluster::fill(self : MathlinearalgebraCluster, v : Double) -> MathlinearalgebraCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cluster_min(s : MathlinearalgebraCluster) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraCluster::min(self : MathlinearalgebraCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_cluster_max(s : MathlinearalgebraCluster) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraCluster::max(self : MathlinearalgebraCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_cluster_to_string(s : MathlinearalgebraCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraCluster::to_string(self : MathlinearalgebraCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraModel {
@@ -708,45 +708,45 @@ pub fn math_linear_algebra_model_make(size : Int) -> MathlinearalgebraModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_model_len(s : MathlinearalgebraModel) -> Int { s.size }
+pub fn MathlinearalgebraModel::len(self : MathlinearalgebraModel) -> Int { self.size }
 
-pub fn math_linear_algebra_model_get(s : MathlinearalgebraModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraModel::get(self : MathlinearalgebraModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_model_set(s : MathlinearalgebraModel, i : Int, v : Double) -> MathlinearalgebraModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraModel::set(self : MathlinearalgebraModel, i : Int, v : Double) -> MathlinearalgebraModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_model_sum(s : MathlinearalgebraModel) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraModel::sum(self : MathlinearalgebraModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_model_mean(s : MathlinearalgebraModel) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraModel::mean(self : MathlinearalgebraModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_model_scale(s : MathlinearalgebraModel, f : Double) -> MathlinearalgebraModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraModel::scale(self : MathlinearalgebraModel, f : Double) -> MathlinearalgebraModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_model_add(a : MathlinearalgebraModel, b : MathlinearalgebraModel) -> MathlinearalgebraModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraModel::add(self : MathlinearalgebraModel, other : MathlinearalgebraModel) -> MathlinearalgebraModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_model_copy(s : MathlinearalgebraModel) -> MathlinearalgebraModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraModel::copy(self : MathlinearalgebraModel) -> MathlinearalgebraModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_model_fill(s : MathlinearalgebraModel, v : Double) -> MathlinearalgebraModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraModel::fill(self : MathlinearalgebraModel, v : Double) -> MathlinearalgebraModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_model_min(s : MathlinearalgebraModel) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraModel::min(self : MathlinearalgebraModel) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_model_max(s : MathlinearalgebraModel) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraModel::max(self : MathlinearalgebraModel) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_model_to_string(s : MathlinearalgebraModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraModel::to_string(self : MathlinearalgebraModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraLayer {
@@ -759,45 +759,45 @@ pub fn math_linear_algebra_layer_make(size : Int) -> MathlinearalgebraLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_layer_len(s : MathlinearalgebraLayer) -> Int { s.size }
+pub fn MathlinearalgebraLayer::len(self : MathlinearalgebraLayer) -> Int { self.size }
 
-pub fn math_linear_algebra_layer_get(s : MathlinearalgebraLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraLayer::get(self : MathlinearalgebraLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_layer_set(s : MathlinearalgebraLayer, i : Int, v : Double) -> MathlinearalgebraLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraLayer::set(self : MathlinearalgebraLayer, i : Int, v : Double) -> MathlinearalgebraLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_layer_sum(s : MathlinearalgebraLayer) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraLayer::sum(self : MathlinearalgebraLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_layer_mean(s : MathlinearalgebraLayer) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraLayer::mean(self : MathlinearalgebraLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_layer_scale(s : MathlinearalgebraLayer, f : Double) -> MathlinearalgebraLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraLayer::scale(self : MathlinearalgebraLayer, f : Double) -> MathlinearalgebraLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_layer_add(a : MathlinearalgebraLayer, b : MathlinearalgebraLayer) -> MathlinearalgebraLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraLayer::add(self : MathlinearalgebraLayer, other : MathlinearalgebraLayer) -> MathlinearalgebraLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_layer_copy(s : MathlinearalgebraLayer) -> MathlinearalgebraLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraLayer::copy(self : MathlinearalgebraLayer) -> MathlinearalgebraLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_layer_fill(s : MathlinearalgebraLayer, v : Double) -> MathlinearalgebraLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraLayer::fill(self : MathlinearalgebraLayer, v : Double) -> MathlinearalgebraLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_layer_min(s : MathlinearalgebraLayer) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraLayer::min(self : MathlinearalgebraLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_layer_max(s : MathlinearalgebraLayer) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraLayer::max(self : MathlinearalgebraLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_layer_to_string(s : MathlinearalgebraLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraLayer::to_string(self : MathlinearalgebraLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraBuffer {
@@ -810,45 +810,45 @@ pub fn math_linear_algebra_buffer_make(size : Int) -> MathlinearalgebraBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_buffer_len(s : MathlinearalgebraBuffer) -> Int { s.size }
+pub fn MathlinearalgebraBuffer::len(self : MathlinearalgebraBuffer) -> Int { self.size }
 
-pub fn math_linear_algebra_buffer_get(s : MathlinearalgebraBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraBuffer::get(self : MathlinearalgebraBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_buffer_set(s : MathlinearalgebraBuffer, i : Int, v : Double) -> MathlinearalgebraBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraBuffer::set(self : MathlinearalgebraBuffer, i : Int, v : Double) -> MathlinearalgebraBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_buffer_sum(s : MathlinearalgebraBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraBuffer::sum(self : MathlinearalgebraBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_buffer_mean(s : MathlinearalgebraBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraBuffer::mean(self : MathlinearalgebraBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_buffer_scale(s : MathlinearalgebraBuffer, f : Double) -> MathlinearalgebraBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraBuffer::scale(self : MathlinearalgebraBuffer, f : Double) -> MathlinearalgebraBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_buffer_add(a : MathlinearalgebraBuffer, b : MathlinearalgebraBuffer) -> MathlinearalgebraBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraBuffer::add(self : MathlinearalgebraBuffer, other : MathlinearalgebraBuffer) -> MathlinearalgebraBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_buffer_copy(s : MathlinearalgebraBuffer) -> MathlinearalgebraBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraBuffer::copy(self : MathlinearalgebraBuffer) -> MathlinearalgebraBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_buffer_fill(s : MathlinearalgebraBuffer, v : Double) -> MathlinearalgebraBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraBuffer::fill(self : MathlinearalgebraBuffer, v : Double) -> MathlinearalgebraBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_buffer_min(s : MathlinearalgebraBuffer) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraBuffer::min(self : MathlinearalgebraBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_buffer_max(s : MathlinearalgebraBuffer) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraBuffer::max(self : MathlinearalgebraBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_buffer_to_string(s : MathlinearalgebraBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraBuffer::to_string(self : MathlinearalgebraBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraCursor {
@@ -861,45 +861,45 @@ pub fn math_linear_algebra_cursor_make(size : Int) -> MathlinearalgebraCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_cursor_len(s : MathlinearalgebraCursor) -> Int { s.size }
+pub fn MathlinearalgebraCursor::len(self : MathlinearalgebraCursor) -> Int { self.size }
 
-pub fn math_linear_algebra_cursor_get(s : MathlinearalgebraCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraCursor::get(self : MathlinearalgebraCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_cursor_set(s : MathlinearalgebraCursor, i : Int, v : Double) -> MathlinearalgebraCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCursor::set(self : MathlinearalgebraCursor, i : Int, v : Double) -> MathlinearalgebraCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cursor_sum(s : MathlinearalgebraCursor) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraCursor::sum(self : MathlinearalgebraCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_cursor_mean(s : MathlinearalgebraCursor) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraCursor::mean(self : MathlinearalgebraCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_cursor_scale(s : MathlinearalgebraCursor, f : Double) -> MathlinearalgebraCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCursor::scale(self : MathlinearalgebraCursor, f : Double) -> MathlinearalgebraCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cursor_add(a : MathlinearalgebraCursor, b : MathlinearalgebraCursor) -> MathlinearalgebraCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraCursor::add(self : MathlinearalgebraCursor, other : MathlinearalgebraCursor) -> MathlinearalgebraCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cursor_copy(s : MathlinearalgebraCursor) -> MathlinearalgebraCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCursor::copy(self : MathlinearalgebraCursor) -> MathlinearalgebraCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cursor_fill(s : MathlinearalgebraCursor, v : Double) -> MathlinearalgebraCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraCursor::fill(self : MathlinearalgebraCursor, v : Double) -> MathlinearalgebraCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_cursor_min(s : MathlinearalgebraCursor) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraCursor::min(self : MathlinearalgebraCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_cursor_max(s : MathlinearalgebraCursor) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraCursor::max(self : MathlinearalgebraCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_cursor_to_string(s : MathlinearalgebraCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraCursor::to_string(self : MathlinearalgebraCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraView {
@@ -912,45 +912,45 @@ pub fn math_linear_algebra_view_make(size : Int) -> MathlinearalgebraView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_view_len(s : MathlinearalgebraView) -> Int { s.size }
+pub fn MathlinearalgebraView::len(self : MathlinearalgebraView) -> Int { self.size }
 
-pub fn math_linear_algebra_view_get(s : MathlinearalgebraView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraView::get(self : MathlinearalgebraView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_view_set(s : MathlinearalgebraView, i : Int, v : Double) -> MathlinearalgebraView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraView::set(self : MathlinearalgebraView, i : Int, v : Double) -> MathlinearalgebraView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_view_sum(s : MathlinearalgebraView) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraView::sum(self : MathlinearalgebraView) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_view_mean(s : MathlinearalgebraView) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraView::mean(self : MathlinearalgebraView) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_view_scale(s : MathlinearalgebraView, f : Double) -> MathlinearalgebraView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraView::scale(self : MathlinearalgebraView, f : Double) -> MathlinearalgebraView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_view_add(a : MathlinearalgebraView, b : MathlinearalgebraView) -> MathlinearalgebraView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraView::add(self : MathlinearalgebraView, other : MathlinearalgebraView) -> MathlinearalgebraView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_view_copy(s : MathlinearalgebraView) -> MathlinearalgebraView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraView::copy(self : MathlinearalgebraView) -> MathlinearalgebraView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_view_fill(s : MathlinearalgebraView, v : Double) -> MathlinearalgebraView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraView::fill(self : MathlinearalgebraView, v : Double) -> MathlinearalgebraView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_view_min(s : MathlinearalgebraView) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraView::min(self : MathlinearalgebraView) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_view_max(s : MathlinearalgebraView) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraView::max(self : MathlinearalgebraView) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_view_to_string(s : MathlinearalgebraView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraView::to_string(self : MathlinearalgebraView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraRange {
@@ -963,45 +963,45 @@ pub fn math_linear_algebra_range_make(size : Int) -> MathlinearalgebraRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_range_len(s : MathlinearalgebraRange) -> Int { s.size }
+pub fn MathlinearalgebraRange::len(self : MathlinearalgebraRange) -> Int { self.size }
 
-pub fn math_linear_algebra_range_get(s : MathlinearalgebraRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraRange::get(self : MathlinearalgebraRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_range_set(s : MathlinearalgebraRange, i : Int, v : Double) -> MathlinearalgebraRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraRange::set(self : MathlinearalgebraRange, i : Int, v : Double) -> MathlinearalgebraRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_range_sum(s : MathlinearalgebraRange) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraRange::sum(self : MathlinearalgebraRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_range_mean(s : MathlinearalgebraRange) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraRange::mean(self : MathlinearalgebraRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_range_scale(s : MathlinearalgebraRange, f : Double) -> MathlinearalgebraRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraRange::scale(self : MathlinearalgebraRange, f : Double) -> MathlinearalgebraRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_range_add(a : MathlinearalgebraRange, b : MathlinearalgebraRange) -> MathlinearalgebraRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraRange::add(self : MathlinearalgebraRange, other : MathlinearalgebraRange) -> MathlinearalgebraRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_range_copy(s : MathlinearalgebraRange) -> MathlinearalgebraRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraRange::copy(self : MathlinearalgebraRange) -> MathlinearalgebraRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_range_fill(s : MathlinearalgebraRange, v : Double) -> MathlinearalgebraRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraRange::fill(self : MathlinearalgebraRange, v : Double) -> MathlinearalgebraRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_range_min(s : MathlinearalgebraRange) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraRange::min(self : MathlinearalgebraRange) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_range_max(s : MathlinearalgebraRange) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraRange::max(self : MathlinearalgebraRange) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_range_to_string(s : MathlinearalgebraRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraRange::to_string(self : MathlinearalgebraRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathlinearalgebraSlice {
@@ -1014,44 +1014,44 @@ pub fn math_linear_algebra_slice_make(size : Int) -> MathlinearalgebraSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_linear_algebra_slice_len(s : MathlinearalgebraSlice) -> Int { s.size }
+pub fn MathlinearalgebraSlice::len(self : MathlinearalgebraSlice) -> Int { self.size }
 
-pub fn math_linear_algebra_slice_get(s : MathlinearalgebraSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathlinearalgebraSlice::get(self : MathlinearalgebraSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_linear_algebra_slice_set(s : MathlinearalgebraSlice, i : Int, v : Double) -> MathlinearalgebraSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathlinearalgebraSlice::set(self : MathlinearalgebraSlice, i : Int, v : Double) -> MathlinearalgebraSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_slice_sum(s : MathlinearalgebraSlice) -> Double { @_common.sum(s.data) }
+pub fn MathlinearalgebraSlice::sum(self : MathlinearalgebraSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_linear_algebra_slice_mean(s : MathlinearalgebraSlice) -> Double { @_common.mean(s.data) }
+pub fn MathlinearalgebraSlice::mean(self : MathlinearalgebraSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_linear_algebra_slice_scale(s : MathlinearalgebraSlice, f : Double) -> MathlinearalgebraSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraSlice::scale(self : MathlinearalgebraSlice, f : Double) -> MathlinearalgebraSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_slice_add(a : MathlinearalgebraSlice, b : MathlinearalgebraSlice) -> MathlinearalgebraSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathlinearalgebraSlice::add(self : MathlinearalgebraSlice, other : MathlinearalgebraSlice) -> MathlinearalgebraSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_linear_algebra_slice_copy(s : MathlinearalgebraSlice) -> MathlinearalgebraSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraSlice::copy(self : MathlinearalgebraSlice) -> MathlinearalgebraSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_slice_fill(s : MathlinearalgebraSlice, v : Double) -> MathlinearalgebraSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathlinearalgebraSlice::fill(self : MathlinearalgebraSlice, v : Double) -> MathlinearalgebraSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_linear_algebra_slice_min(s : MathlinearalgebraSlice) -> Double { @_common.min(s.data) }
+pub fn MathlinearalgebraSlice::min(self : MathlinearalgebraSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_linear_algebra_slice_max(s : MathlinearalgebraSlice) -> Double { @_common.max(s.data) }
+pub fn MathlinearalgebraSlice::max(self : MathlinearalgebraSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_linear_algebra_slice_to_string(s : MathlinearalgebraSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathlinearalgebraSlice::to_string(self : MathlinearalgebraSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

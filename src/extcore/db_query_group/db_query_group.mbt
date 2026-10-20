@@ -351,45 +351,45 @@ pub fn db_query_group_frame_make(size : Int) -> DbquerygroupFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_frame_len(s : DbquerygroupFrame) -> Int { s.size }
+pub fn DbquerygroupFrame::len(self : DbquerygroupFrame) -> Int { self.size }
 
-pub fn db_query_group_frame_get(s : DbquerygroupFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupFrame::get(self : DbquerygroupFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_frame_set(s : DbquerygroupFrame, i : Int, v : Double) -> DbquerygroupFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupFrame::set(self : DbquerygroupFrame, i : Int, v : Double) -> DbquerygroupFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_frame_sum(s : DbquerygroupFrame) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupFrame::sum(self : DbquerygroupFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_frame_mean(s : DbquerygroupFrame) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupFrame::mean(self : DbquerygroupFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_frame_scale(s : DbquerygroupFrame, f : Double) -> DbquerygroupFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupFrame::scale(self : DbquerygroupFrame, f : Double) -> DbquerygroupFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_frame_add(a : DbquerygroupFrame, b : DbquerygroupFrame) -> DbquerygroupFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupFrame::add(self : DbquerygroupFrame, other : DbquerygroupFrame) -> DbquerygroupFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_frame_copy(s : DbquerygroupFrame) -> DbquerygroupFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupFrame::copy(self : DbquerygroupFrame) -> DbquerygroupFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_frame_fill(s : DbquerygroupFrame, v : Double) -> DbquerygroupFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupFrame::fill(self : DbquerygroupFrame, v : Double) -> DbquerygroupFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_frame_min(s : DbquerygroupFrame) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupFrame::min(self : DbquerygroupFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_frame_max(s : DbquerygroupFrame) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupFrame::max(self : DbquerygroupFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_frame_to_string(s : DbquerygroupFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupFrame::to_string(self : DbquerygroupFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupTable {
@@ -402,45 +402,45 @@ pub fn db_query_group_table_make(size : Int) -> DbquerygroupTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_table_len(s : DbquerygroupTable) -> Int { s.size }
+pub fn DbquerygroupTable::len(self : DbquerygroupTable) -> Int { self.size }
 
-pub fn db_query_group_table_get(s : DbquerygroupTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupTable::get(self : DbquerygroupTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_table_set(s : DbquerygroupTable, i : Int, v : Double) -> DbquerygroupTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupTable::set(self : DbquerygroupTable, i : Int, v : Double) -> DbquerygroupTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_table_sum(s : DbquerygroupTable) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupTable::sum(self : DbquerygroupTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_table_mean(s : DbquerygroupTable) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupTable::mean(self : DbquerygroupTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_table_scale(s : DbquerygroupTable, f : Double) -> DbquerygroupTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupTable::scale(self : DbquerygroupTable, f : Double) -> DbquerygroupTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_table_add(a : DbquerygroupTable, b : DbquerygroupTable) -> DbquerygroupTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupTable::add(self : DbquerygroupTable, other : DbquerygroupTable) -> DbquerygroupTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_table_copy(s : DbquerygroupTable) -> DbquerygroupTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupTable::copy(self : DbquerygroupTable) -> DbquerygroupTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_table_fill(s : DbquerygroupTable, v : Double) -> DbquerygroupTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupTable::fill(self : DbquerygroupTable, v : Double) -> DbquerygroupTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_table_min(s : DbquerygroupTable) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupTable::min(self : DbquerygroupTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_table_max(s : DbquerygroupTable) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupTable::max(self : DbquerygroupTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_table_to_string(s : DbquerygroupTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupTable::to_string(self : DbquerygroupTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_group_graphn_make(size : Int) -> DbquerygroupGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_graphn_len(s : DbquerygroupGraphN) -> Int { s.size }
+pub fn DbquerygroupGraphN::len(self : DbquerygroupGraphN) -> Int { self.size }
 
-pub fn db_query_group_graphn_get(s : DbquerygroupGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupGraphN::get(self : DbquerygroupGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_graphn_set(s : DbquerygroupGraphN, i : Int, v : Double) -> DbquerygroupGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupGraphN::set(self : DbquerygroupGraphN, i : Int, v : Double) -> DbquerygroupGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_graphn_sum(s : DbquerygroupGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupGraphN::sum(self : DbquerygroupGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_graphn_mean(s : DbquerygroupGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupGraphN::mean(self : DbquerygroupGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_graphn_scale(s : DbquerygroupGraphN, f : Double) -> DbquerygroupGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupGraphN::scale(self : DbquerygroupGraphN, f : Double) -> DbquerygroupGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_graphn_add(a : DbquerygroupGraphN, b : DbquerygroupGraphN) -> DbquerygroupGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupGraphN::add(self : DbquerygroupGraphN, other : DbquerygroupGraphN) -> DbquerygroupGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_graphn_copy(s : DbquerygroupGraphN) -> DbquerygroupGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupGraphN::copy(self : DbquerygroupGraphN) -> DbquerygroupGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_graphn_fill(s : DbquerygroupGraphN, v : Double) -> DbquerygroupGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupGraphN::fill(self : DbquerygroupGraphN, v : Double) -> DbquerygroupGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_graphn_min(s : DbquerygroupGraphN) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupGraphN::min(self : DbquerygroupGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_graphn_max(s : DbquerygroupGraphN) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupGraphN::max(self : DbquerygroupGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_graphn_to_string(s : DbquerygroupGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupGraphN::to_string(self : DbquerygroupGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupNode {
@@ -504,45 +504,45 @@ pub fn db_query_group_node_make(size : Int) -> DbquerygroupNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_node_len(s : DbquerygroupNode) -> Int { s.size }
+pub fn DbquerygroupNode::len(self : DbquerygroupNode) -> Int { self.size }
 
-pub fn db_query_group_node_get(s : DbquerygroupNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupNode::get(self : DbquerygroupNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_node_set(s : DbquerygroupNode, i : Int, v : Double) -> DbquerygroupNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupNode::set(self : DbquerygroupNode, i : Int, v : Double) -> DbquerygroupNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_node_sum(s : DbquerygroupNode) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupNode::sum(self : DbquerygroupNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_node_mean(s : DbquerygroupNode) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupNode::mean(self : DbquerygroupNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_node_scale(s : DbquerygroupNode, f : Double) -> DbquerygroupNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupNode::scale(self : DbquerygroupNode, f : Double) -> DbquerygroupNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_node_add(a : DbquerygroupNode, b : DbquerygroupNode) -> DbquerygroupNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupNode::add(self : DbquerygroupNode, other : DbquerygroupNode) -> DbquerygroupNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_node_copy(s : DbquerygroupNode) -> DbquerygroupNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupNode::copy(self : DbquerygroupNode) -> DbquerygroupNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_node_fill(s : DbquerygroupNode, v : Double) -> DbquerygroupNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupNode::fill(self : DbquerygroupNode, v : Double) -> DbquerygroupNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_node_min(s : DbquerygroupNode) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupNode::min(self : DbquerygroupNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_node_max(s : DbquerygroupNode) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupNode::max(self : DbquerygroupNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_node_to_string(s : DbquerygroupNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupNode::to_string(self : DbquerygroupNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupEdge {
@@ -555,45 +555,45 @@ pub fn db_query_group_edge_make(size : Int) -> DbquerygroupEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_edge_len(s : DbquerygroupEdge) -> Int { s.size }
+pub fn DbquerygroupEdge::len(self : DbquerygroupEdge) -> Int { self.size }
 
-pub fn db_query_group_edge_get(s : DbquerygroupEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupEdge::get(self : DbquerygroupEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_edge_set(s : DbquerygroupEdge, i : Int, v : Double) -> DbquerygroupEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupEdge::set(self : DbquerygroupEdge, i : Int, v : Double) -> DbquerygroupEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_edge_sum(s : DbquerygroupEdge) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupEdge::sum(self : DbquerygroupEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_edge_mean(s : DbquerygroupEdge) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupEdge::mean(self : DbquerygroupEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_edge_scale(s : DbquerygroupEdge, f : Double) -> DbquerygroupEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupEdge::scale(self : DbquerygroupEdge, f : Double) -> DbquerygroupEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_edge_add(a : DbquerygroupEdge, b : DbquerygroupEdge) -> DbquerygroupEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupEdge::add(self : DbquerygroupEdge, other : DbquerygroupEdge) -> DbquerygroupEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_edge_copy(s : DbquerygroupEdge) -> DbquerygroupEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupEdge::copy(self : DbquerygroupEdge) -> DbquerygroupEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_edge_fill(s : DbquerygroupEdge, v : Double) -> DbquerygroupEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupEdge::fill(self : DbquerygroupEdge, v : Double) -> DbquerygroupEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_edge_min(s : DbquerygroupEdge) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupEdge::min(self : DbquerygroupEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_edge_max(s : DbquerygroupEdge) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupEdge::max(self : DbquerygroupEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_edge_to_string(s : DbquerygroupEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupEdge::to_string(self : DbquerygroupEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupPath {
@@ -606,45 +606,45 @@ pub fn db_query_group_path_make(size : Int) -> DbquerygroupPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_path_len(s : DbquerygroupPath) -> Int { s.size }
+pub fn DbquerygroupPath::len(self : DbquerygroupPath) -> Int { self.size }
 
-pub fn db_query_group_path_get(s : DbquerygroupPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupPath::get(self : DbquerygroupPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_path_set(s : DbquerygroupPath, i : Int, v : Double) -> DbquerygroupPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupPath::set(self : DbquerygroupPath, i : Int, v : Double) -> DbquerygroupPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_path_sum(s : DbquerygroupPath) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupPath::sum(self : DbquerygroupPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_path_mean(s : DbquerygroupPath) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupPath::mean(self : DbquerygroupPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_path_scale(s : DbquerygroupPath, f : Double) -> DbquerygroupPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupPath::scale(self : DbquerygroupPath, f : Double) -> DbquerygroupPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_path_add(a : DbquerygroupPath, b : DbquerygroupPath) -> DbquerygroupPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupPath::add(self : DbquerygroupPath, other : DbquerygroupPath) -> DbquerygroupPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_path_copy(s : DbquerygroupPath) -> DbquerygroupPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupPath::copy(self : DbquerygroupPath) -> DbquerygroupPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_path_fill(s : DbquerygroupPath, v : Double) -> DbquerygroupPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupPath::fill(self : DbquerygroupPath, v : Double) -> DbquerygroupPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_path_min(s : DbquerygroupPath) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupPath::min(self : DbquerygroupPath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_path_max(s : DbquerygroupPath) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupPath::max(self : DbquerygroupPath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_path_to_string(s : DbquerygroupPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupPath::to_string(self : DbquerygroupPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupCluster {
@@ -657,45 +657,45 @@ pub fn db_query_group_cluster_make(size : Int) -> DbquerygroupCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_cluster_len(s : DbquerygroupCluster) -> Int { s.size }
+pub fn DbquerygroupCluster::len(self : DbquerygroupCluster) -> Int { self.size }
 
-pub fn db_query_group_cluster_get(s : DbquerygroupCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupCluster::get(self : DbquerygroupCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_cluster_set(s : DbquerygroupCluster, i : Int, v : Double) -> DbquerygroupCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupCluster::set(self : DbquerygroupCluster, i : Int, v : Double) -> DbquerygroupCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cluster_sum(s : DbquerygroupCluster) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupCluster::sum(self : DbquerygroupCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_cluster_mean(s : DbquerygroupCluster) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupCluster::mean(self : DbquerygroupCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_cluster_scale(s : DbquerygroupCluster, f : Double) -> DbquerygroupCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupCluster::scale(self : DbquerygroupCluster, f : Double) -> DbquerygroupCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cluster_add(a : DbquerygroupCluster, b : DbquerygroupCluster) -> DbquerygroupCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupCluster::add(self : DbquerygroupCluster, other : DbquerygroupCluster) -> DbquerygroupCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_cluster_copy(s : DbquerygroupCluster) -> DbquerygroupCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupCluster::copy(self : DbquerygroupCluster) -> DbquerygroupCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cluster_fill(s : DbquerygroupCluster, v : Double) -> DbquerygroupCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupCluster::fill(self : DbquerygroupCluster, v : Double) -> DbquerygroupCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cluster_min(s : DbquerygroupCluster) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupCluster::min(self : DbquerygroupCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_cluster_max(s : DbquerygroupCluster) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupCluster::max(self : DbquerygroupCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_cluster_to_string(s : DbquerygroupCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupCluster::to_string(self : DbquerygroupCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupModel {
@@ -708,45 +708,45 @@ pub fn db_query_group_model_make(size : Int) -> DbquerygroupModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_model_len(s : DbquerygroupModel) -> Int { s.size }
+pub fn DbquerygroupModel::len(self : DbquerygroupModel) -> Int { self.size }
 
-pub fn db_query_group_model_get(s : DbquerygroupModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupModel::get(self : DbquerygroupModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_model_set(s : DbquerygroupModel, i : Int, v : Double) -> DbquerygroupModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupModel::set(self : DbquerygroupModel, i : Int, v : Double) -> DbquerygroupModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_model_sum(s : DbquerygroupModel) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupModel::sum(self : DbquerygroupModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_model_mean(s : DbquerygroupModel) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupModel::mean(self : DbquerygroupModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_model_scale(s : DbquerygroupModel, f : Double) -> DbquerygroupModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupModel::scale(self : DbquerygroupModel, f : Double) -> DbquerygroupModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_model_add(a : DbquerygroupModel, b : DbquerygroupModel) -> DbquerygroupModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupModel::add(self : DbquerygroupModel, other : DbquerygroupModel) -> DbquerygroupModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_model_copy(s : DbquerygroupModel) -> DbquerygroupModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupModel::copy(self : DbquerygroupModel) -> DbquerygroupModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_model_fill(s : DbquerygroupModel, v : Double) -> DbquerygroupModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupModel::fill(self : DbquerygroupModel, v : Double) -> DbquerygroupModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_model_min(s : DbquerygroupModel) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupModel::min(self : DbquerygroupModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_model_max(s : DbquerygroupModel) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupModel::max(self : DbquerygroupModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_model_to_string(s : DbquerygroupModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupModel::to_string(self : DbquerygroupModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupLayer {
@@ -759,45 +759,45 @@ pub fn db_query_group_layer_make(size : Int) -> DbquerygroupLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_layer_len(s : DbquerygroupLayer) -> Int { s.size }
+pub fn DbquerygroupLayer::len(self : DbquerygroupLayer) -> Int { self.size }
 
-pub fn db_query_group_layer_get(s : DbquerygroupLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupLayer::get(self : DbquerygroupLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_layer_set(s : DbquerygroupLayer, i : Int, v : Double) -> DbquerygroupLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupLayer::set(self : DbquerygroupLayer, i : Int, v : Double) -> DbquerygroupLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_layer_sum(s : DbquerygroupLayer) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupLayer::sum(self : DbquerygroupLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_layer_mean(s : DbquerygroupLayer) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupLayer::mean(self : DbquerygroupLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_layer_scale(s : DbquerygroupLayer, f : Double) -> DbquerygroupLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupLayer::scale(self : DbquerygroupLayer, f : Double) -> DbquerygroupLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_layer_add(a : DbquerygroupLayer, b : DbquerygroupLayer) -> DbquerygroupLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupLayer::add(self : DbquerygroupLayer, other : DbquerygroupLayer) -> DbquerygroupLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_layer_copy(s : DbquerygroupLayer) -> DbquerygroupLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupLayer::copy(self : DbquerygroupLayer) -> DbquerygroupLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_layer_fill(s : DbquerygroupLayer, v : Double) -> DbquerygroupLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupLayer::fill(self : DbquerygroupLayer, v : Double) -> DbquerygroupLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_layer_min(s : DbquerygroupLayer) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupLayer::min(self : DbquerygroupLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_layer_max(s : DbquerygroupLayer) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupLayer::max(self : DbquerygroupLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_layer_to_string(s : DbquerygroupLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupLayer::to_string(self : DbquerygroupLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_group_buffer_make(size : Int) -> DbquerygroupBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_buffer_len(s : DbquerygroupBuffer) -> Int { s.size }
+pub fn DbquerygroupBuffer::len(self : DbquerygroupBuffer) -> Int { self.size }
 
-pub fn db_query_group_buffer_get(s : DbquerygroupBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupBuffer::get(self : DbquerygroupBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_buffer_set(s : DbquerygroupBuffer, i : Int, v : Double) -> DbquerygroupBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupBuffer::set(self : DbquerygroupBuffer, i : Int, v : Double) -> DbquerygroupBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_buffer_sum(s : DbquerygroupBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupBuffer::sum(self : DbquerygroupBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_buffer_mean(s : DbquerygroupBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupBuffer::mean(self : DbquerygroupBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_buffer_scale(s : DbquerygroupBuffer, f : Double) -> DbquerygroupBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupBuffer::scale(self : DbquerygroupBuffer, f : Double) -> DbquerygroupBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_buffer_add(a : DbquerygroupBuffer, b : DbquerygroupBuffer) -> DbquerygroupBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupBuffer::add(self : DbquerygroupBuffer, other : DbquerygroupBuffer) -> DbquerygroupBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_buffer_copy(s : DbquerygroupBuffer) -> DbquerygroupBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupBuffer::copy(self : DbquerygroupBuffer) -> DbquerygroupBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_buffer_fill(s : DbquerygroupBuffer, v : Double) -> DbquerygroupBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupBuffer::fill(self : DbquerygroupBuffer, v : Double) -> DbquerygroupBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_buffer_min(s : DbquerygroupBuffer) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupBuffer::min(self : DbquerygroupBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_buffer_max(s : DbquerygroupBuffer) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupBuffer::max(self : DbquerygroupBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_buffer_to_string(s : DbquerygroupBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupBuffer::to_string(self : DbquerygroupBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupCursor {
@@ -861,45 +861,45 @@ pub fn db_query_group_cursor_make(size : Int) -> DbquerygroupCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_cursor_len(s : DbquerygroupCursor) -> Int { s.size }
+pub fn DbquerygroupCursor::len(self : DbquerygroupCursor) -> Int { self.size }
 
-pub fn db_query_group_cursor_get(s : DbquerygroupCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupCursor::get(self : DbquerygroupCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_cursor_set(s : DbquerygroupCursor, i : Int, v : Double) -> DbquerygroupCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupCursor::set(self : DbquerygroupCursor, i : Int, v : Double) -> DbquerygroupCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cursor_sum(s : DbquerygroupCursor) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupCursor::sum(self : DbquerygroupCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_cursor_mean(s : DbquerygroupCursor) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupCursor::mean(self : DbquerygroupCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_cursor_scale(s : DbquerygroupCursor, f : Double) -> DbquerygroupCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupCursor::scale(self : DbquerygroupCursor, f : Double) -> DbquerygroupCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cursor_add(a : DbquerygroupCursor, b : DbquerygroupCursor) -> DbquerygroupCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupCursor::add(self : DbquerygroupCursor, other : DbquerygroupCursor) -> DbquerygroupCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_cursor_copy(s : DbquerygroupCursor) -> DbquerygroupCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupCursor::copy(self : DbquerygroupCursor) -> DbquerygroupCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cursor_fill(s : DbquerygroupCursor, v : Double) -> DbquerygroupCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupCursor::fill(self : DbquerygroupCursor, v : Double) -> DbquerygroupCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_cursor_min(s : DbquerygroupCursor) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupCursor::min(self : DbquerygroupCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_cursor_max(s : DbquerygroupCursor) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupCursor::max(self : DbquerygroupCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_cursor_to_string(s : DbquerygroupCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupCursor::to_string(self : DbquerygroupCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupView {
@@ -912,45 +912,45 @@ pub fn db_query_group_view_make(size : Int) -> DbquerygroupView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_view_len(s : DbquerygroupView) -> Int { s.size }
+pub fn DbquerygroupView::len(self : DbquerygroupView) -> Int { self.size }
 
-pub fn db_query_group_view_get(s : DbquerygroupView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupView::get(self : DbquerygroupView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_view_set(s : DbquerygroupView, i : Int, v : Double) -> DbquerygroupView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupView::set(self : DbquerygroupView, i : Int, v : Double) -> DbquerygroupView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_view_sum(s : DbquerygroupView) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupView::sum(self : DbquerygroupView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_view_mean(s : DbquerygroupView) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupView::mean(self : DbquerygroupView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_view_scale(s : DbquerygroupView, f : Double) -> DbquerygroupView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupView::scale(self : DbquerygroupView, f : Double) -> DbquerygroupView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_view_add(a : DbquerygroupView, b : DbquerygroupView) -> DbquerygroupView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupView::add(self : DbquerygroupView, other : DbquerygroupView) -> DbquerygroupView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_view_copy(s : DbquerygroupView) -> DbquerygroupView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupView::copy(self : DbquerygroupView) -> DbquerygroupView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_view_fill(s : DbquerygroupView, v : Double) -> DbquerygroupView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupView::fill(self : DbquerygroupView, v : Double) -> DbquerygroupView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_view_min(s : DbquerygroupView) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupView::min(self : DbquerygroupView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_view_max(s : DbquerygroupView) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupView::max(self : DbquerygroupView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_view_to_string(s : DbquerygroupView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupView::to_string(self : DbquerygroupView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupRange {
@@ -963,45 +963,45 @@ pub fn db_query_group_range_make(size : Int) -> DbquerygroupRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_range_len(s : DbquerygroupRange) -> Int { s.size }
+pub fn DbquerygroupRange::len(self : DbquerygroupRange) -> Int { self.size }
 
-pub fn db_query_group_range_get(s : DbquerygroupRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupRange::get(self : DbquerygroupRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_range_set(s : DbquerygroupRange, i : Int, v : Double) -> DbquerygroupRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupRange::set(self : DbquerygroupRange, i : Int, v : Double) -> DbquerygroupRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_range_sum(s : DbquerygroupRange) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupRange::sum(self : DbquerygroupRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_range_mean(s : DbquerygroupRange) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupRange::mean(self : DbquerygroupRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_range_scale(s : DbquerygroupRange, f : Double) -> DbquerygroupRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupRange::scale(self : DbquerygroupRange, f : Double) -> DbquerygroupRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_range_add(a : DbquerygroupRange, b : DbquerygroupRange) -> DbquerygroupRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupRange::add(self : DbquerygroupRange, other : DbquerygroupRange) -> DbquerygroupRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_range_copy(s : DbquerygroupRange) -> DbquerygroupRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupRange::copy(self : DbquerygroupRange) -> DbquerygroupRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_range_fill(s : DbquerygroupRange, v : Double) -> DbquerygroupRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupRange::fill(self : DbquerygroupRange, v : Double) -> DbquerygroupRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_range_min(s : DbquerygroupRange) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupRange::min(self : DbquerygroupRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_range_max(s : DbquerygroupRange) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupRange::max(self : DbquerygroupRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_range_to_string(s : DbquerygroupRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupRange::to_string(self : DbquerygroupRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerygroupSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_group_slice_make(size : Int) -> DbquerygroupSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_group_slice_len(s : DbquerygroupSlice) -> Int { s.size }
+pub fn DbquerygroupSlice::len(self : DbquerygroupSlice) -> Int { self.size }
 
-pub fn db_query_group_slice_get(s : DbquerygroupSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerygroupSlice::get(self : DbquerygroupSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_group_slice_set(s : DbquerygroupSlice, i : Int, v : Double) -> DbquerygroupSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerygroupSlice::set(self : DbquerygroupSlice, i : Int, v : Double) -> DbquerygroupSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_slice_sum(s : DbquerygroupSlice) -> Double { @_common.sum(s.data) }
+pub fn DbquerygroupSlice::sum(self : DbquerygroupSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_group_slice_mean(s : DbquerygroupSlice) -> Double { @_common.mean(s.data) }
+pub fn DbquerygroupSlice::mean(self : DbquerygroupSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_group_slice_scale(s : DbquerygroupSlice, f : Double) -> DbquerygroupSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerygroupSlice::scale(self : DbquerygroupSlice, f : Double) -> DbquerygroupSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_slice_add(a : DbquerygroupSlice, b : DbquerygroupSlice) -> DbquerygroupSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerygroupSlice::add(self : DbquerygroupSlice, other : DbquerygroupSlice) -> DbquerygroupSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_group_slice_copy(s : DbquerygroupSlice) -> DbquerygroupSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerygroupSlice::copy(self : DbquerygroupSlice) -> DbquerygroupSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_slice_fill(s : DbquerygroupSlice, v : Double) -> DbquerygroupSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerygroupSlice::fill(self : DbquerygroupSlice, v : Double) -> DbquerygroupSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_group_slice_min(s : DbquerygroupSlice) -> Double { @_common.min(s.data) }
+pub fn DbquerygroupSlice::min(self : DbquerygroupSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_group_slice_max(s : DbquerygroupSlice) -> Double { @_common.max(s.data) }
+pub fn DbquerygroupSlice::max(self : DbquerygroupSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_group_slice_to_string(s : DbquerygroupSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerygroupSlice::to_string(self : DbquerygroupSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

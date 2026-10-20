@@ -351,45 +351,45 @@ pub fn db_index_gist_frame_make(size : Int) -> DbindexgistFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_frame_len(s : DbindexgistFrame) -> Int { s.size }
+pub fn DbindexgistFrame::len(self : DbindexgistFrame) -> Int { self.size }
 
-pub fn db_index_gist_frame_get(s : DbindexgistFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistFrame::get(self : DbindexgistFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_frame_set(s : DbindexgistFrame, i : Int, v : Double) -> DbindexgistFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistFrame::set(self : DbindexgistFrame, i : Int, v : Double) -> DbindexgistFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_frame_sum(s : DbindexgistFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistFrame::sum(self : DbindexgistFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_frame_mean(s : DbindexgistFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistFrame::mean(self : DbindexgistFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_frame_scale(s : DbindexgistFrame, f : Double) -> DbindexgistFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistFrame::scale(self : DbindexgistFrame, f : Double) -> DbindexgistFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_frame_add(a : DbindexgistFrame, b : DbindexgistFrame) -> DbindexgistFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistFrame::add(self : DbindexgistFrame, other : DbindexgistFrame) -> DbindexgistFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_frame_copy(s : DbindexgistFrame) -> DbindexgistFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistFrame::copy(self : DbindexgistFrame) -> DbindexgistFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_frame_fill(s : DbindexgistFrame, v : Double) -> DbindexgistFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistFrame::fill(self : DbindexgistFrame, v : Double) -> DbindexgistFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_frame_min(s : DbindexgistFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexgistFrame::min(self : DbindexgistFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_frame_max(s : DbindexgistFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexgistFrame::max(self : DbindexgistFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_frame_to_string(s : DbindexgistFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistFrame::to_string(self : DbindexgistFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistTable {
@@ -402,45 +402,45 @@ pub fn db_index_gist_table_make(size : Int) -> DbindexgistTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_table_len(s : DbindexgistTable) -> Int { s.size }
+pub fn DbindexgistTable::len(self : DbindexgistTable) -> Int { self.size }
 
-pub fn db_index_gist_table_get(s : DbindexgistTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistTable::get(self : DbindexgistTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_table_set(s : DbindexgistTable, i : Int, v : Double) -> DbindexgistTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistTable::set(self : DbindexgistTable, i : Int, v : Double) -> DbindexgistTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_table_sum(s : DbindexgistTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistTable::sum(self : DbindexgistTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_table_mean(s : DbindexgistTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistTable::mean(self : DbindexgistTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_table_scale(s : DbindexgistTable, f : Double) -> DbindexgistTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistTable::scale(self : DbindexgistTable, f : Double) -> DbindexgistTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_table_add(a : DbindexgistTable, b : DbindexgistTable) -> DbindexgistTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistTable::add(self : DbindexgistTable, other : DbindexgistTable) -> DbindexgistTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_table_copy(s : DbindexgistTable) -> DbindexgistTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistTable::copy(self : DbindexgistTable) -> DbindexgistTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_table_fill(s : DbindexgistTable, v : Double) -> DbindexgistTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistTable::fill(self : DbindexgistTable, v : Double) -> DbindexgistTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_table_min(s : DbindexgistTable) -> Double { @_common.min(s.data) }
+pub fn DbindexgistTable::min(self : DbindexgistTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_table_max(s : DbindexgistTable) -> Double { @_common.max(s.data) }
+pub fn DbindexgistTable::max(self : DbindexgistTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_table_to_string(s : DbindexgistTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistTable::to_string(self : DbindexgistTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_gist_graphn_make(size : Int) -> DbindexgistGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_graphn_len(s : DbindexgistGraphN) -> Int { s.size }
+pub fn DbindexgistGraphN::len(self : DbindexgistGraphN) -> Int { self.size }
 
-pub fn db_index_gist_graphn_get(s : DbindexgistGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistGraphN::get(self : DbindexgistGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_graphn_set(s : DbindexgistGraphN, i : Int, v : Double) -> DbindexgistGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistGraphN::set(self : DbindexgistGraphN, i : Int, v : Double) -> DbindexgistGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_graphn_sum(s : DbindexgistGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistGraphN::sum(self : DbindexgistGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_graphn_mean(s : DbindexgistGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistGraphN::mean(self : DbindexgistGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_graphn_scale(s : DbindexgistGraphN, f : Double) -> DbindexgistGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistGraphN::scale(self : DbindexgistGraphN, f : Double) -> DbindexgistGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_graphn_add(a : DbindexgistGraphN, b : DbindexgistGraphN) -> DbindexgistGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistGraphN::add(self : DbindexgistGraphN, other : DbindexgistGraphN) -> DbindexgistGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_graphn_copy(s : DbindexgistGraphN) -> DbindexgistGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistGraphN::copy(self : DbindexgistGraphN) -> DbindexgistGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_graphn_fill(s : DbindexgistGraphN, v : Double) -> DbindexgistGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistGraphN::fill(self : DbindexgistGraphN, v : Double) -> DbindexgistGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_graphn_min(s : DbindexgistGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexgistGraphN::min(self : DbindexgistGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_graphn_max(s : DbindexgistGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexgistGraphN::max(self : DbindexgistGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_graphn_to_string(s : DbindexgistGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistGraphN::to_string(self : DbindexgistGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistNode {
@@ -504,45 +504,45 @@ pub fn db_index_gist_node_make(size : Int) -> DbindexgistNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_node_len(s : DbindexgistNode) -> Int { s.size }
+pub fn DbindexgistNode::len(self : DbindexgistNode) -> Int { self.size }
 
-pub fn db_index_gist_node_get(s : DbindexgistNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistNode::get(self : DbindexgistNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_node_set(s : DbindexgistNode, i : Int, v : Double) -> DbindexgistNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistNode::set(self : DbindexgistNode, i : Int, v : Double) -> DbindexgistNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_node_sum(s : DbindexgistNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistNode::sum(self : DbindexgistNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_node_mean(s : DbindexgistNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistNode::mean(self : DbindexgistNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_node_scale(s : DbindexgistNode, f : Double) -> DbindexgistNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistNode::scale(self : DbindexgistNode, f : Double) -> DbindexgistNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_node_add(a : DbindexgistNode, b : DbindexgistNode) -> DbindexgistNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistNode::add(self : DbindexgistNode, other : DbindexgistNode) -> DbindexgistNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_node_copy(s : DbindexgistNode) -> DbindexgistNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistNode::copy(self : DbindexgistNode) -> DbindexgistNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_node_fill(s : DbindexgistNode, v : Double) -> DbindexgistNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistNode::fill(self : DbindexgistNode, v : Double) -> DbindexgistNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_node_min(s : DbindexgistNode) -> Double { @_common.min(s.data) }
+pub fn DbindexgistNode::min(self : DbindexgistNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_node_max(s : DbindexgistNode) -> Double { @_common.max(s.data) }
+pub fn DbindexgistNode::max(self : DbindexgistNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_node_to_string(s : DbindexgistNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistNode::to_string(self : DbindexgistNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistEdge {
@@ -555,45 +555,45 @@ pub fn db_index_gist_edge_make(size : Int) -> DbindexgistEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_edge_len(s : DbindexgistEdge) -> Int { s.size }
+pub fn DbindexgistEdge::len(self : DbindexgistEdge) -> Int { self.size }
 
-pub fn db_index_gist_edge_get(s : DbindexgistEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistEdge::get(self : DbindexgistEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_edge_set(s : DbindexgistEdge, i : Int, v : Double) -> DbindexgistEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistEdge::set(self : DbindexgistEdge, i : Int, v : Double) -> DbindexgistEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_edge_sum(s : DbindexgistEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistEdge::sum(self : DbindexgistEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_edge_mean(s : DbindexgistEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistEdge::mean(self : DbindexgistEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_edge_scale(s : DbindexgistEdge, f : Double) -> DbindexgistEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistEdge::scale(self : DbindexgistEdge, f : Double) -> DbindexgistEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_edge_add(a : DbindexgistEdge, b : DbindexgistEdge) -> DbindexgistEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistEdge::add(self : DbindexgistEdge, other : DbindexgistEdge) -> DbindexgistEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_edge_copy(s : DbindexgistEdge) -> DbindexgistEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistEdge::copy(self : DbindexgistEdge) -> DbindexgistEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_edge_fill(s : DbindexgistEdge, v : Double) -> DbindexgistEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistEdge::fill(self : DbindexgistEdge, v : Double) -> DbindexgistEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_edge_min(s : DbindexgistEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexgistEdge::min(self : DbindexgistEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_edge_max(s : DbindexgistEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexgistEdge::max(self : DbindexgistEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_edge_to_string(s : DbindexgistEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistEdge::to_string(self : DbindexgistEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistPath {
@@ -606,45 +606,45 @@ pub fn db_index_gist_path_make(size : Int) -> DbindexgistPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_path_len(s : DbindexgistPath) -> Int { s.size }
+pub fn DbindexgistPath::len(self : DbindexgistPath) -> Int { self.size }
 
-pub fn db_index_gist_path_get(s : DbindexgistPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistPath::get(self : DbindexgistPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_path_set(s : DbindexgistPath, i : Int, v : Double) -> DbindexgistPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistPath::set(self : DbindexgistPath, i : Int, v : Double) -> DbindexgistPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_path_sum(s : DbindexgistPath) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistPath::sum(self : DbindexgistPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_path_mean(s : DbindexgistPath) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistPath::mean(self : DbindexgistPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_path_scale(s : DbindexgistPath, f : Double) -> DbindexgistPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistPath::scale(self : DbindexgistPath, f : Double) -> DbindexgistPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_path_add(a : DbindexgistPath, b : DbindexgistPath) -> DbindexgistPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistPath::add(self : DbindexgistPath, other : DbindexgistPath) -> DbindexgistPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_path_copy(s : DbindexgistPath) -> DbindexgistPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistPath::copy(self : DbindexgistPath) -> DbindexgistPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_path_fill(s : DbindexgistPath, v : Double) -> DbindexgistPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistPath::fill(self : DbindexgistPath, v : Double) -> DbindexgistPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_path_min(s : DbindexgistPath) -> Double { @_common.min(s.data) }
+pub fn DbindexgistPath::min(self : DbindexgistPath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_path_max(s : DbindexgistPath) -> Double { @_common.max(s.data) }
+pub fn DbindexgistPath::max(self : DbindexgistPath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_path_to_string(s : DbindexgistPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistPath::to_string(self : DbindexgistPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistCluster {
@@ -657,45 +657,45 @@ pub fn db_index_gist_cluster_make(size : Int) -> DbindexgistCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_cluster_len(s : DbindexgistCluster) -> Int { s.size }
+pub fn DbindexgistCluster::len(self : DbindexgistCluster) -> Int { self.size }
 
-pub fn db_index_gist_cluster_get(s : DbindexgistCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistCluster::get(self : DbindexgistCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_cluster_set(s : DbindexgistCluster, i : Int, v : Double) -> DbindexgistCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistCluster::set(self : DbindexgistCluster, i : Int, v : Double) -> DbindexgistCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cluster_sum(s : DbindexgistCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistCluster::sum(self : DbindexgistCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_cluster_mean(s : DbindexgistCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistCluster::mean(self : DbindexgistCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_cluster_scale(s : DbindexgistCluster, f : Double) -> DbindexgistCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistCluster::scale(self : DbindexgistCluster, f : Double) -> DbindexgistCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cluster_add(a : DbindexgistCluster, b : DbindexgistCluster) -> DbindexgistCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistCluster::add(self : DbindexgistCluster, other : DbindexgistCluster) -> DbindexgistCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_cluster_copy(s : DbindexgistCluster) -> DbindexgistCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistCluster::copy(self : DbindexgistCluster) -> DbindexgistCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cluster_fill(s : DbindexgistCluster, v : Double) -> DbindexgistCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistCluster::fill(self : DbindexgistCluster, v : Double) -> DbindexgistCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cluster_min(s : DbindexgistCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexgistCluster::min(self : DbindexgistCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_cluster_max(s : DbindexgistCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexgistCluster::max(self : DbindexgistCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_cluster_to_string(s : DbindexgistCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistCluster::to_string(self : DbindexgistCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistModel {
@@ -708,45 +708,45 @@ pub fn db_index_gist_model_make(size : Int) -> DbindexgistModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_model_len(s : DbindexgistModel) -> Int { s.size }
+pub fn DbindexgistModel::len(self : DbindexgistModel) -> Int { self.size }
 
-pub fn db_index_gist_model_get(s : DbindexgistModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistModel::get(self : DbindexgistModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_model_set(s : DbindexgistModel, i : Int, v : Double) -> DbindexgistModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistModel::set(self : DbindexgistModel, i : Int, v : Double) -> DbindexgistModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_model_sum(s : DbindexgistModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistModel::sum(self : DbindexgistModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_model_mean(s : DbindexgistModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistModel::mean(self : DbindexgistModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_model_scale(s : DbindexgistModel, f : Double) -> DbindexgistModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistModel::scale(self : DbindexgistModel, f : Double) -> DbindexgistModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_model_add(a : DbindexgistModel, b : DbindexgistModel) -> DbindexgistModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistModel::add(self : DbindexgistModel, other : DbindexgistModel) -> DbindexgistModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_model_copy(s : DbindexgistModel) -> DbindexgistModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistModel::copy(self : DbindexgistModel) -> DbindexgistModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_model_fill(s : DbindexgistModel, v : Double) -> DbindexgistModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistModel::fill(self : DbindexgistModel, v : Double) -> DbindexgistModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_model_min(s : DbindexgistModel) -> Double { @_common.min(s.data) }
+pub fn DbindexgistModel::min(self : DbindexgistModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_model_max(s : DbindexgistModel) -> Double { @_common.max(s.data) }
+pub fn DbindexgistModel::max(self : DbindexgistModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_model_to_string(s : DbindexgistModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistModel::to_string(self : DbindexgistModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistLayer {
@@ -759,45 +759,45 @@ pub fn db_index_gist_layer_make(size : Int) -> DbindexgistLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_layer_len(s : DbindexgistLayer) -> Int { s.size }
+pub fn DbindexgistLayer::len(self : DbindexgistLayer) -> Int { self.size }
 
-pub fn db_index_gist_layer_get(s : DbindexgistLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistLayer::get(self : DbindexgistLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_layer_set(s : DbindexgistLayer, i : Int, v : Double) -> DbindexgistLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistLayer::set(self : DbindexgistLayer, i : Int, v : Double) -> DbindexgistLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_layer_sum(s : DbindexgistLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistLayer::sum(self : DbindexgistLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_layer_mean(s : DbindexgistLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistLayer::mean(self : DbindexgistLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_layer_scale(s : DbindexgistLayer, f : Double) -> DbindexgistLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistLayer::scale(self : DbindexgistLayer, f : Double) -> DbindexgistLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_layer_add(a : DbindexgistLayer, b : DbindexgistLayer) -> DbindexgistLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistLayer::add(self : DbindexgistLayer, other : DbindexgistLayer) -> DbindexgistLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_layer_copy(s : DbindexgistLayer) -> DbindexgistLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistLayer::copy(self : DbindexgistLayer) -> DbindexgistLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_layer_fill(s : DbindexgistLayer, v : Double) -> DbindexgistLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistLayer::fill(self : DbindexgistLayer, v : Double) -> DbindexgistLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_layer_min(s : DbindexgistLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexgistLayer::min(self : DbindexgistLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_layer_max(s : DbindexgistLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexgistLayer::max(self : DbindexgistLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_layer_to_string(s : DbindexgistLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistLayer::to_string(self : DbindexgistLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_gist_buffer_make(size : Int) -> DbindexgistBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_buffer_len(s : DbindexgistBuffer) -> Int { s.size }
+pub fn DbindexgistBuffer::len(self : DbindexgistBuffer) -> Int { self.size }
 
-pub fn db_index_gist_buffer_get(s : DbindexgistBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistBuffer::get(self : DbindexgistBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_buffer_set(s : DbindexgistBuffer, i : Int, v : Double) -> DbindexgistBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistBuffer::set(self : DbindexgistBuffer, i : Int, v : Double) -> DbindexgistBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_buffer_sum(s : DbindexgistBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistBuffer::sum(self : DbindexgistBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_buffer_mean(s : DbindexgistBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistBuffer::mean(self : DbindexgistBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_buffer_scale(s : DbindexgistBuffer, f : Double) -> DbindexgistBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistBuffer::scale(self : DbindexgistBuffer, f : Double) -> DbindexgistBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_buffer_add(a : DbindexgistBuffer, b : DbindexgistBuffer) -> DbindexgistBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistBuffer::add(self : DbindexgistBuffer, other : DbindexgistBuffer) -> DbindexgistBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_buffer_copy(s : DbindexgistBuffer) -> DbindexgistBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistBuffer::copy(self : DbindexgistBuffer) -> DbindexgistBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_buffer_fill(s : DbindexgistBuffer, v : Double) -> DbindexgistBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistBuffer::fill(self : DbindexgistBuffer, v : Double) -> DbindexgistBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_buffer_min(s : DbindexgistBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexgistBuffer::min(self : DbindexgistBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_buffer_max(s : DbindexgistBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexgistBuffer::max(self : DbindexgistBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_buffer_to_string(s : DbindexgistBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistBuffer::to_string(self : DbindexgistBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistCursor {
@@ -861,45 +861,45 @@ pub fn db_index_gist_cursor_make(size : Int) -> DbindexgistCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_cursor_len(s : DbindexgistCursor) -> Int { s.size }
+pub fn DbindexgistCursor::len(self : DbindexgistCursor) -> Int { self.size }
 
-pub fn db_index_gist_cursor_get(s : DbindexgistCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistCursor::get(self : DbindexgistCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_cursor_set(s : DbindexgistCursor, i : Int, v : Double) -> DbindexgistCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistCursor::set(self : DbindexgistCursor, i : Int, v : Double) -> DbindexgistCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cursor_sum(s : DbindexgistCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistCursor::sum(self : DbindexgistCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_cursor_mean(s : DbindexgistCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistCursor::mean(self : DbindexgistCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_cursor_scale(s : DbindexgistCursor, f : Double) -> DbindexgistCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistCursor::scale(self : DbindexgistCursor, f : Double) -> DbindexgistCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cursor_add(a : DbindexgistCursor, b : DbindexgistCursor) -> DbindexgistCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistCursor::add(self : DbindexgistCursor, other : DbindexgistCursor) -> DbindexgistCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_cursor_copy(s : DbindexgistCursor) -> DbindexgistCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistCursor::copy(self : DbindexgistCursor) -> DbindexgistCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cursor_fill(s : DbindexgistCursor, v : Double) -> DbindexgistCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistCursor::fill(self : DbindexgistCursor, v : Double) -> DbindexgistCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_cursor_min(s : DbindexgistCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexgistCursor::min(self : DbindexgistCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_cursor_max(s : DbindexgistCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexgistCursor::max(self : DbindexgistCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_cursor_to_string(s : DbindexgistCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistCursor::to_string(self : DbindexgistCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistView {
@@ -912,45 +912,45 @@ pub fn db_index_gist_view_make(size : Int) -> DbindexgistView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_view_len(s : DbindexgistView) -> Int { s.size }
+pub fn DbindexgistView::len(self : DbindexgistView) -> Int { self.size }
 
-pub fn db_index_gist_view_get(s : DbindexgistView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistView::get(self : DbindexgistView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_view_set(s : DbindexgistView, i : Int, v : Double) -> DbindexgistView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistView::set(self : DbindexgistView, i : Int, v : Double) -> DbindexgistView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_view_sum(s : DbindexgistView) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistView::sum(self : DbindexgistView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_view_mean(s : DbindexgistView) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistView::mean(self : DbindexgistView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_view_scale(s : DbindexgistView, f : Double) -> DbindexgistView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistView::scale(self : DbindexgistView, f : Double) -> DbindexgistView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_view_add(a : DbindexgistView, b : DbindexgistView) -> DbindexgistView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistView::add(self : DbindexgistView, other : DbindexgistView) -> DbindexgistView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_view_copy(s : DbindexgistView) -> DbindexgistView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistView::copy(self : DbindexgistView) -> DbindexgistView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_view_fill(s : DbindexgistView, v : Double) -> DbindexgistView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistView::fill(self : DbindexgistView, v : Double) -> DbindexgistView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_view_min(s : DbindexgistView) -> Double { @_common.min(s.data) }
+pub fn DbindexgistView::min(self : DbindexgistView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_view_max(s : DbindexgistView) -> Double { @_common.max(s.data) }
+pub fn DbindexgistView::max(self : DbindexgistView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_view_to_string(s : DbindexgistView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistView::to_string(self : DbindexgistView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistRange {
@@ -963,45 +963,45 @@ pub fn db_index_gist_range_make(size : Int) -> DbindexgistRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_range_len(s : DbindexgistRange) -> Int { s.size }
+pub fn DbindexgistRange::len(self : DbindexgistRange) -> Int { self.size }
 
-pub fn db_index_gist_range_get(s : DbindexgistRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistRange::get(self : DbindexgistRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_range_set(s : DbindexgistRange, i : Int, v : Double) -> DbindexgistRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistRange::set(self : DbindexgistRange, i : Int, v : Double) -> DbindexgistRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_range_sum(s : DbindexgistRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistRange::sum(self : DbindexgistRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_range_mean(s : DbindexgistRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistRange::mean(self : DbindexgistRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_range_scale(s : DbindexgistRange, f : Double) -> DbindexgistRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistRange::scale(self : DbindexgistRange, f : Double) -> DbindexgistRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_range_add(a : DbindexgistRange, b : DbindexgistRange) -> DbindexgistRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistRange::add(self : DbindexgistRange, other : DbindexgistRange) -> DbindexgistRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_range_copy(s : DbindexgistRange) -> DbindexgistRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistRange::copy(self : DbindexgistRange) -> DbindexgistRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_range_fill(s : DbindexgistRange, v : Double) -> DbindexgistRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistRange::fill(self : DbindexgistRange, v : Double) -> DbindexgistRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_range_min(s : DbindexgistRange) -> Double { @_common.min(s.data) }
+pub fn DbindexgistRange::min(self : DbindexgistRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_range_max(s : DbindexgistRange) -> Double { @_common.max(s.data) }
+pub fn DbindexgistRange::max(self : DbindexgistRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_range_to_string(s : DbindexgistRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistRange::to_string(self : DbindexgistRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexgistSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_gist_slice_make(size : Int) -> DbindexgistSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_gist_slice_len(s : DbindexgistSlice) -> Int { s.size }
+pub fn DbindexgistSlice::len(self : DbindexgistSlice) -> Int { self.size }
 
-pub fn db_index_gist_slice_get(s : DbindexgistSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexgistSlice::get(self : DbindexgistSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_gist_slice_set(s : DbindexgistSlice, i : Int, v : Double) -> DbindexgistSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexgistSlice::set(self : DbindexgistSlice, i : Int, v : Double) -> DbindexgistSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_slice_sum(s : DbindexgistSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexgistSlice::sum(self : DbindexgistSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_gist_slice_mean(s : DbindexgistSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexgistSlice::mean(self : DbindexgistSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_gist_slice_scale(s : DbindexgistSlice, f : Double) -> DbindexgistSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexgistSlice::scale(self : DbindexgistSlice, f : Double) -> DbindexgistSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_slice_add(a : DbindexgistSlice, b : DbindexgistSlice) -> DbindexgistSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexgistSlice::add(self : DbindexgistSlice, other : DbindexgistSlice) -> DbindexgistSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_gist_slice_copy(s : DbindexgistSlice) -> DbindexgistSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexgistSlice::copy(self : DbindexgistSlice) -> DbindexgistSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_slice_fill(s : DbindexgistSlice, v : Double) -> DbindexgistSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexgistSlice::fill(self : DbindexgistSlice, v : Double) -> DbindexgistSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_gist_slice_min(s : DbindexgistSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexgistSlice::min(self : DbindexgistSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_gist_slice_max(s : DbindexgistSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexgistSlice::max(self : DbindexgistSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_gist_slice_to_string(s : DbindexgistSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexgistSlice::to_string(self : DbindexgistSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

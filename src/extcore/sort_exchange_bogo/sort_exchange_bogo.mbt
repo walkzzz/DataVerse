@@ -351,45 +351,45 @@ pub fn sort_exchange_bogo_frame_make(size : Int) -> SortexchangebogoFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_frame_len(s : SortexchangebogoFrame) -> Int { s.size }
+pub fn SortexchangebogoFrame::len(self : SortexchangebogoFrame) -> Int { self.size }
 
-pub fn sort_exchange_bogo_frame_get(s : SortexchangebogoFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoFrame::get(self : SortexchangebogoFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_frame_set(s : SortexchangebogoFrame, i : Int, v : Double) -> SortexchangebogoFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoFrame::set(self : SortexchangebogoFrame, i : Int, v : Double) -> SortexchangebogoFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_frame_sum(s : SortexchangebogoFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoFrame::sum(self : SortexchangebogoFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_frame_mean(s : SortexchangebogoFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoFrame::mean(self : SortexchangebogoFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_frame_scale(s : SortexchangebogoFrame, f : Double) -> SortexchangebogoFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoFrame::scale(self : SortexchangebogoFrame, f : Double) -> SortexchangebogoFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_frame_add(a : SortexchangebogoFrame, b : SortexchangebogoFrame) -> SortexchangebogoFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoFrame::add(self : SortexchangebogoFrame, other : SortexchangebogoFrame) -> SortexchangebogoFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_frame_copy(s : SortexchangebogoFrame) -> SortexchangebogoFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoFrame::copy(self : SortexchangebogoFrame) -> SortexchangebogoFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_frame_fill(s : SortexchangebogoFrame, v : Double) -> SortexchangebogoFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoFrame::fill(self : SortexchangebogoFrame, v : Double) -> SortexchangebogoFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_frame_min(s : SortexchangebogoFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoFrame::min(self : SortexchangebogoFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_frame_max(s : SortexchangebogoFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoFrame::max(self : SortexchangebogoFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_frame_to_string(s : SortexchangebogoFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoFrame::to_string(self : SortexchangebogoFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_bogo_table_make(size : Int) -> SortexchangebogoTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_table_len(s : SortexchangebogoTable) -> Int { s.size }
+pub fn SortexchangebogoTable::len(self : SortexchangebogoTable) -> Int { self.size }
 
-pub fn sort_exchange_bogo_table_get(s : SortexchangebogoTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoTable::get(self : SortexchangebogoTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_table_set(s : SortexchangebogoTable, i : Int, v : Double) -> SortexchangebogoTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoTable::set(self : SortexchangebogoTable, i : Int, v : Double) -> SortexchangebogoTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_table_sum(s : SortexchangebogoTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoTable::sum(self : SortexchangebogoTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_table_mean(s : SortexchangebogoTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoTable::mean(self : SortexchangebogoTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_table_scale(s : SortexchangebogoTable, f : Double) -> SortexchangebogoTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoTable::scale(self : SortexchangebogoTable, f : Double) -> SortexchangebogoTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_table_add(a : SortexchangebogoTable, b : SortexchangebogoTable) -> SortexchangebogoTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoTable::add(self : SortexchangebogoTable, other : SortexchangebogoTable) -> SortexchangebogoTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_table_copy(s : SortexchangebogoTable) -> SortexchangebogoTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoTable::copy(self : SortexchangebogoTable) -> SortexchangebogoTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_table_fill(s : SortexchangebogoTable, v : Double) -> SortexchangebogoTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoTable::fill(self : SortexchangebogoTable, v : Double) -> SortexchangebogoTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_table_min(s : SortexchangebogoTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoTable::min(self : SortexchangebogoTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_table_max(s : SortexchangebogoTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoTable::max(self : SortexchangebogoTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_table_to_string(s : SortexchangebogoTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoTable::to_string(self : SortexchangebogoTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_bogo_graphn_make(size : Int) -> SortexchangebogoGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_graphn_len(s : SortexchangebogoGraphN) -> Int { s.size }
+pub fn SortexchangebogoGraphN::len(self : SortexchangebogoGraphN) -> Int { self.size }
 
-pub fn sort_exchange_bogo_graphn_get(s : SortexchangebogoGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoGraphN::get(self : SortexchangebogoGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_graphn_set(s : SortexchangebogoGraphN, i : Int, v : Double) -> SortexchangebogoGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoGraphN::set(self : SortexchangebogoGraphN, i : Int, v : Double) -> SortexchangebogoGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_graphn_sum(s : SortexchangebogoGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoGraphN::sum(self : SortexchangebogoGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_graphn_mean(s : SortexchangebogoGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoGraphN::mean(self : SortexchangebogoGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_graphn_scale(s : SortexchangebogoGraphN, f : Double) -> SortexchangebogoGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoGraphN::scale(self : SortexchangebogoGraphN, f : Double) -> SortexchangebogoGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_graphn_add(a : SortexchangebogoGraphN, b : SortexchangebogoGraphN) -> SortexchangebogoGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoGraphN::add(self : SortexchangebogoGraphN, other : SortexchangebogoGraphN) -> SortexchangebogoGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_graphn_copy(s : SortexchangebogoGraphN) -> SortexchangebogoGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoGraphN::copy(self : SortexchangebogoGraphN) -> SortexchangebogoGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_graphn_fill(s : SortexchangebogoGraphN, v : Double) -> SortexchangebogoGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoGraphN::fill(self : SortexchangebogoGraphN, v : Double) -> SortexchangebogoGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_graphn_min(s : SortexchangebogoGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoGraphN::min(self : SortexchangebogoGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_graphn_max(s : SortexchangebogoGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoGraphN::max(self : SortexchangebogoGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_graphn_to_string(s : SortexchangebogoGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoGraphN::to_string(self : SortexchangebogoGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_bogo_node_make(size : Int) -> SortexchangebogoNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_node_len(s : SortexchangebogoNode) -> Int { s.size }
+pub fn SortexchangebogoNode::len(self : SortexchangebogoNode) -> Int { self.size }
 
-pub fn sort_exchange_bogo_node_get(s : SortexchangebogoNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoNode::get(self : SortexchangebogoNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_node_set(s : SortexchangebogoNode, i : Int, v : Double) -> SortexchangebogoNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoNode::set(self : SortexchangebogoNode, i : Int, v : Double) -> SortexchangebogoNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_node_sum(s : SortexchangebogoNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoNode::sum(self : SortexchangebogoNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_node_mean(s : SortexchangebogoNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoNode::mean(self : SortexchangebogoNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_node_scale(s : SortexchangebogoNode, f : Double) -> SortexchangebogoNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoNode::scale(self : SortexchangebogoNode, f : Double) -> SortexchangebogoNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_node_add(a : SortexchangebogoNode, b : SortexchangebogoNode) -> SortexchangebogoNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoNode::add(self : SortexchangebogoNode, other : SortexchangebogoNode) -> SortexchangebogoNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_node_copy(s : SortexchangebogoNode) -> SortexchangebogoNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoNode::copy(self : SortexchangebogoNode) -> SortexchangebogoNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_node_fill(s : SortexchangebogoNode, v : Double) -> SortexchangebogoNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoNode::fill(self : SortexchangebogoNode, v : Double) -> SortexchangebogoNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_node_min(s : SortexchangebogoNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoNode::min(self : SortexchangebogoNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_node_max(s : SortexchangebogoNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoNode::max(self : SortexchangebogoNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_node_to_string(s : SortexchangebogoNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoNode::to_string(self : SortexchangebogoNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_bogo_edge_make(size : Int) -> SortexchangebogoEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_edge_len(s : SortexchangebogoEdge) -> Int { s.size }
+pub fn SortexchangebogoEdge::len(self : SortexchangebogoEdge) -> Int { self.size }
 
-pub fn sort_exchange_bogo_edge_get(s : SortexchangebogoEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoEdge::get(self : SortexchangebogoEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_edge_set(s : SortexchangebogoEdge, i : Int, v : Double) -> SortexchangebogoEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoEdge::set(self : SortexchangebogoEdge, i : Int, v : Double) -> SortexchangebogoEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_edge_sum(s : SortexchangebogoEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoEdge::sum(self : SortexchangebogoEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_edge_mean(s : SortexchangebogoEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoEdge::mean(self : SortexchangebogoEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_edge_scale(s : SortexchangebogoEdge, f : Double) -> SortexchangebogoEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoEdge::scale(self : SortexchangebogoEdge, f : Double) -> SortexchangebogoEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_edge_add(a : SortexchangebogoEdge, b : SortexchangebogoEdge) -> SortexchangebogoEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoEdge::add(self : SortexchangebogoEdge, other : SortexchangebogoEdge) -> SortexchangebogoEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_edge_copy(s : SortexchangebogoEdge) -> SortexchangebogoEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoEdge::copy(self : SortexchangebogoEdge) -> SortexchangebogoEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_edge_fill(s : SortexchangebogoEdge, v : Double) -> SortexchangebogoEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoEdge::fill(self : SortexchangebogoEdge, v : Double) -> SortexchangebogoEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_edge_min(s : SortexchangebogoEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoEdge::min(self : SortexchangebogoEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_edge_max(s : SortexchangebogoEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoEdge::max(self : SortexchangebogoEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_edge_to_string(s : SortexchangebogoEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoEdge::to_string(self : SortexchangebogoEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoPath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_bogo_path_make(size : Int) -> SortexchangebogoPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_path_len(s : SortexchangebogoPath) -> Int { s.size }
+pub fn SortexchangebogoPath::len(self : SortexchangebogoPath) -> Int { self.size }
 
-pub fn sort_exchange_bogo_path_get(s : SortexchangebogoPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoPath::get(self : SortexchangebogoPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_path_set(s : SortexchangebogoPath, i : Int, v : Double) -> SortexchangebogoPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoPath::set(self : SortexchangebogoPath, i : Int, v : Double) -> SortexchangebogoPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_path_sum(s : SortexchangebogoPath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoPath::sum(self : SortexchangebogoPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_path_mean(s : SortexchangebogoPath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoPath::mean(self : SortexchangebogoPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_path_scale(s : SortexchangebogoPath, f : Double) -> SortexchangebogoPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoPath::scale(self : SortexchangebogoPath, f : Double) -> SortexchangebogoPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_path_add(a : SortexchangebogoPath, b : SortexchangebogoPath) -> SortexchangebogoPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoPath::add(self : SortexchangebogoPath, other : SortexchangebogoPath) -> SortexchangebogoPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_path_copy(s : SortexchangebogoPath) -> SortexchangebogoPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoPath::copy(self : SortexchangebogoPath) -> SortexchangebogoPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_path_fill(s : SortexchangebogoPath, v : Double) -> SortexchangebogoPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoPath::fill(self : SortexchangebogoPath, v : Double) -> SortexchangebogoPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_path_min(s : SortexchangebogoPath) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoPath::min(self : SortexchangebogoPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_path_max(s : SortexchangebogoPath) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoPath::max(self : SortexchangebogoPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_path_to_string(s : SortexchangebogoPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoPath::to_string(self : SortexchangebogoPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_bogo_cluster_make(size : Int) -> SortexchangebogoCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_cluster_len(s : SortexchangebogoCluster) -> Int { s.size }
+pub fn SortexchangebogoCluster::len(self : SortexchangebogoCluster) -> Int { self.size }
 
-pub fn sort_exchange_bogo_cluster_get(s : SortexchangebogoCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoCluster::get(self : SortexchangebogoCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_cluster_set(s : SortexchangebogoCluster, i : Int, v : Double) -> SortexchangebogoCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoCluster::set(self : SortexchangebogoCluster, i : Int, v : Double) -> SortexchangebogoCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cluster_sum(s : SortexchangebogoCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoCluster::sum(self : SortexchangebogoCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_cluster_mean(s : SortexchangebogoCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoCluster::mean(self : SortexchangebogoCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_cluster_scale(s : SortexchangebogoCluster, f : Double) -> SortexchangebogoCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoCluster::scale(self : SortexchangebogoCluster, f : Double) -> SortexchangebogoCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cluster_add(a : SortexchangebogoCluster, b : SortexchangebogoCluster) -> SortexchangebogoCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoCluster::add(self : SortexchangebogoCluster, other : SortexchangebogoCluster) -> SortexchangebogoCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cluster_copy(s : SortexchangebogoCluster) -> SortexchangebogoCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoCluster::copy(self : SortexchangebogoCluster) -> SortexchangebogoCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cluster_fill(s : SortexchangebogoCluster, v : Double) -> SortexchangebogoCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoCluster::fill(self : SortexchangebogoCluster, v : Double) -> SortexchangebogoCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cluster_min(s : SortexchangebogoCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoCluster::min(self : SortexchangebogoCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_cluster_max(s : SortexchangebogoCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoCluster::max(self : SortexchangebogoCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_cluster_to_string(s : SortexchangebogoCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoCluster::to_string(self : SortexchangebogoCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_bogo_model_make(size : Int) -> SortexchangebogoModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_model_len(s : SortexchangebogoModel) -> Int { s.size }
+pub fn SortexchangebogoModel::len(self : SortexchangebogoModel) -> Int { self.size }
 
-pub fn sort_exchange_bogo_model_get(s : SortexchangebogoModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoModel::get(self : SortexchangebogoModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_model_set(s : SortexchangebogoModel, i : Int, v : Double) -> SortexchangebogoModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoModel::set(self : SortexchangebogoModel, i : Int, v : Double) -> SortexchangebogoModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_model_sum(s : SortexchangebogoModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoModel::sum(self : SortexchangebogoModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_model_mean(s : SortexchangebogoModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoModel::mean(self : SortexchangebogoModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_model_scale(s : SortexchangebogoModel, f : Double) -> SortexchangebogoModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoModel::scale(self : SortexchangebogoModel, f : Double) -> SortexchangebogoModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_model_add(a : SortexchangebogoModel, b : SortexchangebogoModel) -> SortexchangebogoModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoModel::add(self : SortexchangebogoModel, other : SortexchangebogoModel) -> SortexchangebogoModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_model_copy(s : SortexchangebogoModel) -> SortexchangebogoModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoModel::copy(self : SortexchangebogoModel) -> SortexchangebogoModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_model_fill(s : SortexchangebogoModel, v : Double) -> SortexchangebogoModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoModel::fill(self : SortexchangebogoModel, v : Double) -> SortexchangebogoModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_model_min(s : SortexchangebogoModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoModel::min(self : SortexchangebogoModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_model_max(s : SortexchangebogoModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoModel::max(self : SortexchangebogoModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_model_to_string(s : SortexchangebogoModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoModel::to_string(self : SortexchangebogoModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_bogo_layer_make(size : Int) -> SortexchangebogoLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_layer_len(s : SortexchangebogoLayer) -> Int { s.size }
+pub fn SortexchangebogoLayer::len(self : SortexchangebogoLayer) -> Int { self.size }
 
-pub fn sort_exchange_bogo_layer_get(s : SortexchangebogoLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoLayer::get(self : SortexchangebogoLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_layer_set(s : SortexchangebogoLayer, i : Int, v : Double) -> SortexchangebogoLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoLayer::set(self : SortexchangebogoLayer, i : Int, v : Double) -> SortexchangebogoLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_layer_sum(s : SortexchangebogoLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoLayer::sum(self : SortexchangebogoLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_layer_mean(s : SortexchangebogoLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoLayer::mean(self : SortexchangebogoLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_layer_scale(s : SortexchangebogoLayer, f : Double) -> SortexchangebogoLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoLayer::scale(self : SortexchangebogoLayer, f : Double) -> SortexchangebogoLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_layer_add(a : SortexchangebogoLayer, b : SortexchangebogoLayer) -> SortexchangebogoLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoLayer::add(self : SortexchangebogoLayer, other : SortexchangebogoLayer) -> SortexchangebogoLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_layer_copy(s : SortexchangebogoLayer) -> SortexchangebogoLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoLayer::copy(self : SortexchangebogoLayer) -> SortexchangebogoLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_layer_fill(s : SortexchangebogoLayer, v : Double) -> SortexchangebogoLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoLayer::fill(self : SortexchangebogoLayer, v : Double) -> SortexchangebogoLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_layer_min(s : SortexchangebogoLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoLayer::min(self : SortexchangebogoLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_layer_max(s : SortexchangebogoLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoLayer::max(self : SortexchangebogoLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_layer_to_string(s : SortexchangebogoLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoLayer::to_string(self : SortexchangebogoLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_bogo_buffer_make(size : Int) -> SortexchangebogoBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_buffer_len(s : SortexchangebogoBuffer) -> Int { s.size }
+pub fn SortexchangebogoBuffer::len(self : SortexchangebogoBuffer) -> Int { self.size }
 
-pub fn sort_exchange_bogo_buffer_get(s : SortexchangebogoBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoBuffer::get(self : SortexchangebogoBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_buffer_set(s : SortexchangebogoBuffer, i : Int, v : Double) -> SortexchangebogoBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoBuffer::set(self : SortexchangebogoBuffer, i : Int, v : Double) -> SortexchangebogoBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_buffer_sum(s : SortexchangebogoBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoBuffer::sum(self : SortexchangebogoBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_buffer_mean(s : SortexchangebogoBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoBuffer::mean(self : SortexchangebogoBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_buffer_scale(s : SortexchangebogoBuffer, f : Double) -> SortexchangebogoBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoBuffer::scale(self : SortexchangebogoBuffer, f : Double) -> SortexchangebogoBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_buffer_add(a : SortexchangebogoBuffer, b : SortexchangebogoBuffer) -> SortexchangebogoBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoBuffer::add(self : SortexchangebogoBuffer, other : SortexchangebogoBuffer) -> SortexchangebogoBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_buffer_copy(s : SortexchangebogoBuffer) -> SortexchangebogoBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoBuffer::copy(self : SortexchangebogoBuffer) -> SortexchangebogoBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_buffer_fill(s : SortexchangebogoBuffer, v : Double) -> SortexchangebogoBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoBuffer::fill(self : SortexchangebogoBuffer, v : Double) -> SortexchangebogoBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_buffer_min(s : SortexchangebogoBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoBuffer::min(self : SortexchangebogoBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_buffer_max(s : SortexchangebogoBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoBuffer::max(self : SortexchangebogoBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_buffer_to_string(s : SortexchangebogoBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoBuffer::to_string(self : SortexchangebogoBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_bogo_cursor_make(size : Int) -> SortexchangebogoCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_cursor_len(s : SortexchangebogoCursor) -> Int { s.size }
+pub fn SortexchangebogoCursor::len(self : SortexchangebogoCursor) -> Int { self.size }
 
-pub fn sort_exchange_bogo_cursor_get(s : SortexchangebogoCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoCursor::get(self : SortexchangebogoCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_cursor_set(s : SortexchangebogoCursor, i : Int, v : Double) -> SortexchangebogoCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoCursor::set(self : SortexchangebogoCursor, i : Int, v : Double) -> SortexchangebogoCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cursor_sum(s : SortexchangebogoCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoCursor::sum(self : SortexchangebogoCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_cursor_mean(s : SortexchangebogoCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoCursor::mean(self : SortexchangebogoCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_cursor_scale(s : SortexchangebogoCursor, f : Double) -> SortexchangebogoCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoCursor::scale(self : SortexchangebogoCursor, f : Double) -> SortexchangebogoCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cursor_add(a : SortexchangebogoCursor, b : SortexchangebogoCursor) -> SortexchangebogoCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoCursor::add(self : SortexchangebogoCursor, other : SortexchangebogoCursor) -> SortexchangebogoCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cursor_copy(s : SortexchangebogoCursor) -> SortexchangebogoCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoCursor::copy(self : SortexchangebogoCursor) -> SortexchangebogoCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cursor_fill(s : SortexchangebogoCursor, v : Double) -> SortexchangebogoCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoCursor::fill(self : SortexchangebogoCursor, v : Double) -> SortexchangebogoCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_cursor_min(s : SortexchangebogoCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoCursor::min(self : SortexchangebogoCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_cursor_max(s : SortexchangebogoCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoCursor::max(self : SortexchangebogoCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_cursor_to_string(s : SortexchangebogoCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoCursor::to_string(self : SortexchangebogoCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_bogo_view_make(size : Int) -> SortexchangebogoView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_view_len(s : SortexchangebogoView) -> Int { s.size }
+pub fn SortexchangebogoView::len(self : SortexchangebogoView) -> Int { self.size }
 
-pub fn sort_exchange_bogo_view_get(s : SortexchangebogoView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoView::get(self : SortexchangebogoView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_view_set(s : SortexchangebogoView, i : Int, v : Double) -> SortexchangebogoView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoView::set(self : SortexchangebogoView, i : Int, v : Double) -> SortexchangebogoView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_view_sum(s : SortexchangebogoView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoView::sum(self : SortexchangebogoView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_view_mean(s : SortexchangebogoView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoView::mean(self : SortexchangebogoView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_view_scale(s : SortexchangebogoView, f : Double) -> SortexchangebogoView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoView::scale(self : SortexchangebogoView, f : Double) -> SortexchangebogoView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_view_add(a : SortexchangebogoView, b : SortexchangebogoView) -> SortexchangebogoView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoView::add(self : SortexchangebogoView, other : SortexchangebogoView) -> SortexchangebogoView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_view_copy(s : SortexchangebogoView) -> SortexchangebogoView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoView::copy(self : SortexchangebogoView) -> SortexchangebogoView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_view_fill(s : SortexchangebogoView, v : Double) -> SortexchangebogoView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoView::fill(self : SortexchangebogoView, v : Double) -> SortexchangebogoView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_view_min(s : SortexchangebogoView) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoView::min(self : SortexchangebogoView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_view_max(s : SortexchangebogoView) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoView::max(self : SortexchangebogoView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_view_to_string(s : SortexchangebogoView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoView::to_string(self : SortexchangebogoView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_bogo_range_make(size : Int) -> SortexchangebogoRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_range_len(s : SortexchangebogoRange) -> Int { s.size }
+pub fn SortexchangebogoRange::len(self : SortexchangebogoRange) -> Int { self.size }
 
-pub fn sort_exchange_bogo_range_get(s : SortexchangebogoRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoRange::get(self : SortexchangebogoRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_range_set(s : SortexchangebogoRange, i : Int, v : Double) -> SortexchangebogoRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoRange::set(self : SortexchangebogoRange, i : Int, v : Double) -> SortexchangebogoRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_range_sum(s : SortexchangebogoRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoRange::sum(self : SortexchangebogoRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_range_mean(s : SortexchangebogoRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoRange::mean(self : SortexchangebogoRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_range_scale(s : SortexchangebogoRange, f : Double) -> SortexchangebogoRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoRange::scale(self : SortexchangebogoRange, f : Double) -> SortexchangebogoRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_range_add(a : SortexchangebogoRange, b : SortexchangebogoRange) -> SortexchangebogoRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoRange::add(self : SortexchangebogoRange, other : SortexchangebogoRange) -> SortexchangebogoRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_range_copy(s : SortexchangebogoRange) -> SortexchangebogoRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoRange::copy(self : SortexchangebogoRange) -> SortexchangebogoRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_range_fill(s : SortexchangebogoRange, v : Double) -> SortexchangebogoRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoRange::fill(self : SortexchangebogoRange, v : Double) -> SortexchangebogoRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_range_min(s : SortexchangebogoRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoRange::min(self : SortexchangebogoRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_range_max(s : SortexchangebogoRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoRange::max(self : SortexchangebogoRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_range_to_string(s : SortexchangebogoRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoRange::to_string(self : SortexchangebogoRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangebogoSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_bogo_slice_make(size : Int) -> SortexchangebogoSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_bogo_slice_len(s : SortexchangebogoSlice) -> Int { s.size }
+pub fn SortexchangebogoSlice::len(self : SortexchangebogoSlice) -> Int { self.size }
 
-pub fn sort_exchange_bogo_slice_get(s : SortexchangebogoSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangebogoSlice::get(self : SortexchangebogoSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_bogo_slice_set(s : SortexchangebogoSlice, i : Int, v : Double) -> SortexchangebogoSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangebogoSlice::set(self : SortexchangebogoSlice, i : Int, v : Double) -> SortexchangebogoSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_slice_sum(s : SortexchangebogoSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangebogoSlice::sum(self : SortexchangebogoSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_bogo_slice_mean(s : SortexchangebogoSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangebogoSlice::mean(self : SortexchangebogoSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_bogo_slice_scale(s : SortexchangebogoSlice, f : Double) -> SortexchangebogoSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangebogoSlice::scale(self : SortexchangebogoSlice, f : Double) -> SortexchangebogoSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_slice_add(a : SortexchangebogoSlice, b : SortexchangebogoSlice) -> SortexchangebogoSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangebogoSlice::add(self : SortexchangebogoSlice, other : SortexchangebogoSlice) -> SortexchangebogoSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_slice_copy(s : SortexchangebogoSlice) -> SortexchangebogoSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangebogoSlice::copy(self : SortexchangebogoSlice) -> SortexchangebogoSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_slice_fill(s : SortexchangebogoSlice, v : Double) -> SortexchangebogoSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangebogoSlice::fill(self : SortexchangebogoSlice, v : Double) -> SortexchangebogoSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_bogo_slice_min(s : SortexchangebogoSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangebogoSlice::min(self : SortexchangebogoSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_bogo_slice_max(s : SortexchangebogoSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangebogoSlice::max(self : SortexchangebogoSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_bogo_slice_to_string(s : SortexchangebogoSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangebogoSlice::to_string(self : SortexchangebogoSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

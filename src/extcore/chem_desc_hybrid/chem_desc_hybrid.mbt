@@ -351,45 +351,45 @@ pub fn chem_desc_hybrid_frame_make(size : Int) -> ChemdeschybridFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_frame_len(s : ChemdeschybridFrame) -> Int { s.size }
+pub fn ChemdeschybridFrame::len(self : ChemdeschybridFrame) -> Int { self.size }
 
-pub fn chem_desc_hybrid_frame_get(s : ChemdeschybridFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridFrame::get(self : ChemdeschybridFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_frame_set(s : ChemdeschybridFrame, i : Int, v : Double) -> ChemdeschybridFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridFrame::set(self : ChemdeschybridFrame, i : Int, v : Double) -> ChemdeschybridFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_frame_sum(s : ChemdeschybridFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridFrame::sum(self : ChemdeschybridFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_frame_mean(s : ChemdeschybridFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridFrame::mean(self : ChemdeschybridFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_frame_scale(s : ChemdeschybridFrame, f : Double) -> ChemdeschybridFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridFrame::scale(self : ChemdeschybridFrame, f : Double) -> ChemdeschybridFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_frame_add(a : ChemdeschybridFrame, b : ChemdeschybridFrame) -> ChemdeschybridFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridFrame::add(self : ChemdeschybridFrame, other : ChemdeschybridFrame) -> ChemdeschybridFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_frame_copy(s : ChemdeschybridFrame) -> ChemdeschybridFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridFrame::copy(self : ChemdeschybridFrame) -> ChemdeschybridFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_frame_fill(s : ChemdeschybridFrame, v : Double) -> ChemdeschybridFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridFrame::fill(self : ChemdeschybridFrame, v : Double) -> ChemdeschybridFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_frame_min(s : ChemdeschybridFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridFrame::min(self : ChemdeschybridFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_frame_max(s : ChemdeschybridFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridFrame::max(self : ChemdeschybridFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_frame_to_string(s : ChemdeschybridFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridFrame::to_string(self : ChemdeschybridFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_hybrid_table_make(size : Int) -> ChemdeschybridTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_table_len(s : ChemdeschybridTable) -> Int { s.size }
+pub fn ChemdeschybridTable::len(self : ChemdeschybridTable) -> Int { self.size }
 
-pub fn chem_desc_hybrid_table_get(s : ChemdeschybridTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridTable::get(self : ChemdeschybridTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_table_set(s : ChemdeschybridTable, i : Int, v : Double) -> ChemdeschybridTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridTable::set(self : ChemdeschybridTable, i : Int, v : Double) -> ChemdeschybridTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_table_sum(s : ChemdeschybridTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridTable::sum(self : ChemdeschybridTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_table_mean(s : ChemdeschybridTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridTable::mean(self : ChemdeschybridTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_table_scale(s : ChemdeschybridTable, f : Double) -> ChemdeschybridTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridTable::scale(self : ChemdeschybridTable, f : Double) -> ChemdeschybridTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_table_add(a : ChemdeschybridTable, b : ChemdeschybridTable) -> ChemdeschybridTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridTable::add(self : ChemdeschybridTable, other : ChemdeschybridTable) -> ChemdeschybridTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_table_copy(s : ChemdeschybridTable) -> ChemdeschybridTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridTable::copy(self : ChemdeschybridTable) -> ChemdeschybridTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_table_fill(s : ChemdeschybridTable, v : Double) -> ChemdeschybridTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridTable::fill(self : ChemdeschybridTable, v : Double) -> ChemdeschybridTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_table_min(s : ChemdeschybridTable) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridTable::min(self : ChemdeschybridTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_table_max(s : ChemdeschybridTable) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridTable::max(self : ChemdeschybridTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_table_to_string(s : ChemdeschybridTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridTable::to_string(self : ChemdeschybridTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_hybrid_graphn_make(size : Int) -> ChemdeschybridGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_graphn_len(s : ChemdeschybridGraphN) -> Int { s.size }
+pub fn ChemdeschybridGraphN::len(self : ChemdeschybridGraphN) -> Int { self.size }
 
-pub fn chem_desc_hybrid_graphn_get(s : ChemdeschybridGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridGraphN::get(self : ChemdeschybridGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_graphn_set(s : ChemdeschybridGraphN, i : Int, v : Double) -> ChemdeschybridGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridGraphN::set(self : ChemdeschybridGraphN, i : Int, v : Double) -> ChemdeschybridGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_graphn_sum(s : ChemdeschybridGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridGraphN::sum(self : ChemdeschybridGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_graphn_mean(s : ChemdeschybridGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridGraphN::mean(self : ChemdeschybridGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_graphn_scale(s : ChemdeschybridGraphN, f : Double) -> ChemdeschybridGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridGraphN::scale(self : ChemdeschybridGraphN, f : Double) -> ChemdeschybridGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_graphn_add(a : ChemdeschybridGraphN, b : ChemdeschybridGraphN) -> ChemdeschybridGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridGraphN::add(self : ChemdeschybridGraphN, other : ChemdeschybridGraphN) -> ChemdeschybridGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_graphn_copy(s : ChemdeschybridGraphN) -> ChemdeschybridGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridGraphN::copy(self : ChemdeschybridGraphN) -> ChemdeschybridGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_graphn_fill(s : ChemdeschybridGraphN, v : Double) -> ChemdeschybridGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridGraphN::fill(self : ChemdeschybridGraphN, v : Double) -> ChemdeschybridGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_graphn_min(s : ChemdeschybridGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridGraphN::min(self : ChemdeschybridGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_graphn_max(s : ChemdeschybridGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridGraphN::max(self : ChemdeschybridGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_graphn_to_string(s : ChemdeschybridGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridGraphN::to_string(self : ChemdeschybridGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_hybrid_node_make(size : Int) -> ChemdeschybridNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_node_len(s : ChemdeschybridNode) -> Int { s.size }
+pub fn ChemdeschybridNode::len(self : ChemdeschybridNode) -> Int { self.size }
 
-pub fn chem_desc_hybrid_node_get(s : ChemdeschybridNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridNode::get(self : ChemdeschybridNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_node_set(s : ChemdeschybridNode, i : Int, v : Double) -> ChemdeschybridNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridNode::set(self : ChemdeschybridNode, i : Int, v : Double) -> ChemdeschybridNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_node_sum(s : ChemdeschybridNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridNode::sum(self : ChemdeschybridNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_node_mean(s : ChemdeschybridNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridNode::mean(self : ChemdeschybridNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_node_scale(s : ChemdeschybridNode, f : Double) -> ChemdeschybridNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridNode::scale(self : ChemdeschybridNode, f : Double) -> ChemdeschybridNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_node_add(a : ChemdeschybridNode, b : ChemdeschybridNode) -> ChemdeschybridNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridNode::add(self : ChemdeschybridNode, other : ChemdeschybridNode) -> ChemdeschybridNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_node_copy(s : ChemdeschybridNode) -> ChemdeschybridNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridNode::copy(self : ChemdeschybridNode) -> ChemdeschybridNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_node_fill(s : ChemdeschybridNode, v : Double) -> ChemdeschybridNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridNode::fill(self : ChemdeschybridNode, v : Double) -> ChemdeschybridNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_node_min(s : ChemdeschybridNode) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridNode::min(self : ChemdeschybridNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_node_max(s : ChemdeschybridNode) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridNode::max(self : ChemdeschybridNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_node_to_string(s : ChemdeschybridNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridNode::to_string(self : ChemdeschybridNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_hybrid_edge_make(size : Int) -> ChemdeschybridEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_edge_len(s : ChemdeschybridEdge) -> Int { s.size }
+pub fn ChemdeschybridEdge::len(self : ChemdeschybridEdge) -> Int { self.size }
 
-pub fn chem_desc_hybrid_edge_get(s : ChemdeschybridEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridEdge::get(self : ChemdeschybridEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_edge_set(s : ChemdeschybridEdge, i : Int, v : Double) -> ChemdeschybridEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridEdge::set(self : ChemdeschybridEdge, i : Int, v : Double) -> ChemdeschybridEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_edge_sum(s : ChemdeschybridEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridEdge::sum(self : ChemdeschybridEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_edge_mean(s : ChemdeschybridEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridEdge::mean(self : ChemdeschybridEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_edge_scale(s : ChemdeschybridEdge, f : Double) -> ChemdeschybridEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridEdge::scale(self : ChemdeschybridEdge, f : Double) -> ChemdeschybridEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_edge_add(a : ChemdeschybridEdge, b : ChemdeschybridEdge) -> ChemdeschybridEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridEdge::add(self : ChemdeschybridEdge, other : ChemdeschybridEdge) -> ChemdeschybridEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_edge_copy(s : ChemdeschybridEdge) -> ChemdeschybridEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridEdge::copy(self : ChemdeschybridEdge) -> ChemdeschybridEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_edge_fill(s : ChemdeschybridEdge, v : Double) -> ChemdeschybridEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridEdge::fill(self : ChemdeschybridEdge, v : Double) -> ChemdeschybridEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_edge_min(s : ChemdeschybridEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridEdge::min(self : ChemdeschybridEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_edge_max(s : ChemdeschybridEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridEdge::max(self : ChemdeschybridEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_edge_to_string(s : ChemdeschybridEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridEdge::to_string(self : ChemdeschybridEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_hybrid_path_make(size : Int) -> ChemdeschybridPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_path_len(s : ChemdeschybridPath) -> Int { s.size }
+pub fn ChemdeschybridPath::len(self : ChemdeschybridPath) -> Int { self.size }
 
-pub fn chem_desc_hybrid_path_get(s : ChemdeschybridPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridPath::get(self : ChemdeschybridPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_path_set(s : ChemdeschybridPath, i : Int, v : Double) -> ChemdeschybridPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridPath::set(self : ChemdeschybridPath, i : Int, v : Double) -> ChemdeschybridPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_path_sum(s : ChemdeschybridPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridPath::sum(self : ChemdeschybridPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_path_mean(s : ChemdeschybridPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridPath::mean(self : ChemdeschybridPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_path_scale(s : ChemdeschybridPath, f : Double) -> ChemdeschybridPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridPath::scale(self : ChemdeschybridPath, f : Double) -> ChemdeschybridPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_path_add(a : ChemdeschybridPath, b : ChemdeschybridPath) -> ChemdeschybridPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridPath::add(self : ChemdeschybridPath, other : ChemdeschybridPath) -> ChemdeschybridPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_path_copy(s : ChemdeschybridPath) -> ChemdeschybridPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridPath::copy(self : ChemdeschybridPath) -> ChemdeschybridPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_path_fill(s : ChemdeschybridPath, v : Double) -> ChemdeschybridPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridPath::fill(self : ChemdeschybridPath, v : Double) -> ChemdeschybridPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_path_min(s : ChemdeschybridPath) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridPath::min(self : ChemdeschybridPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_path_max(s : ChemdeschybridPath) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridPath::max(self : ChemdeschybridPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_path_to_string(s : ChemdeschybridPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridPath::to_string(self : ChemdeschybridPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_hybrid_cluster_make(size : Int) -> ChemdeschybridCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_cluster_len(s : ChemdeschybridCluster) -> Int { s.size }
+pub fn ChemdeschybridCluster::len(self : ChemdeschybridCluster) -> Int { self.size }
 
-pub fn chem_desc_hybrid_cluster_get(s : ChemdeschybridCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridCluster::get(self : ChemdeschybridCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_cluster_set(s : ChemdeschybridCluster, i : Int, v : Double) -> ChemdeschybridCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridCluster::set(self : ChemdeschybridCluster, i : Int, v : Double) -> ChemdeschybridCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cluster_sum(s : ChemdeschybridCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridCluster::sum(self : ChemdeschybridCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_cluster_mean(s : ChemdeschybridCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridCluster::mean(self : ChemdeschybridCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_cluster_scale(s : ChemdeschybridCluster, f : Double) -> ChemdeschybridCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridCluster::scale(self : ChemdeschybridCluster, f : Double) -> ChemdeschybridCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cluster_add(a : ChemdeschybridCluster, b : ChemdeschybridCluster) -> ChemdeschybridCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridCluster::add(self : ChemdeschybridCluster, other : ChemdeschybridCluster) -> ChemdeschybridCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cluster_copy(s : ChemdeschybridCluster) -> ChemdeschybridCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridCluster::copy(self : ChemdeschybridCluster) -> ChemdeschybridCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cluster_fill(s : ChemdeschybridCluster, v : Double) -> ChemdeschybridCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridCluster::fill(self : ChemdeschybridCluster, v : Double) -> ChemdeschybridCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cluster_min(s : ChemdeschybridCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridCluster::min(self : ChemdeschybridCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_cluster_max(s : ChemdeschybridCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridCluster::max(self : ChemdeschybridCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_cluster_to_string(s : ChemdeschybridCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridCluster::to_string(self : ChemdeschybridCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_hybrid_model_make(size : Int) -> ChemdeschybridModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_model_len(s : ChemdeschybridModel) -> Int { s.size }
+pub fn ChemdeschybridModel::len(self : ChemdeschybridModel) -> Int { self.size }
 
-pub fn chem_desc_hybrid_model_get(s : ChemdeschybridModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridModel::get(self : ChemdeschybridModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_model_set(s : ChemdeschybridModel, i : Int, v : Double) -> ChemdeschybridModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridModel::set(self : ChemdeschybridModel, i : Int, v : Double) -> ChemdeschybridModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_model_sum(s : ChemdeschybridModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridModel::sum(self : ChemdeschybridModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_model_mean(s : ChemdeschybridModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridModel::mean(self : ChemdeschybridModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_model_scale(s : ChemdeschybridModel, f : Double) -> ChemdeschybridModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridModel::scale(self : ChemdeschybridModel, f : Double) -> ChemdeschybridModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_model_add(a : ChemdeschybridModel, b : ChemdeschybridModel) -> ChemdeschybridModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridModel::add(self : ChemdeschybridModel, other : ChemdeschybridModel) -> ChemdeschybridModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_model_copy(s : ChemdeschybridModel) -> ChemdeschybridModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridModel::copy(self : ChemdeschybridModel) -> ChemdeschybridModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_model_fill(s : ChemdeschybridModel, v : Double) -> ChemdeschybridModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridModel::fill(self : ChemdeschybridModel, v : Double) -> ChemdeschybridModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_model_min(s : ChemdeschybridModel) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridModel::min(self : ChemdeschybridModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_model_max(s : ChemdeschybridModel) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridModel::max(self : ChemdeschybridModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_model_to_string(s : ChemdeschybridModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridModel::to_string(self : ChemdeschybridModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_hybrid_layer_make(size : Int) -> ChemdeschybridLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_layer_len(s : ChemdeschybridLayer) -> Int { s.size }
+pub fn ChemdeschybridLayer::len(self : ChemdeschybridLayer) -> Int { self.size }
 
-pub fn chem_desc_hybrid_layer_get(s : ChemdeschybridLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridLayer::get(self : ChemdeschybridLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_layer_set(s : ChemdeschybridLayer, i : Int, v : Double) -> ChemdeschybridLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridLayer::set(self : ChemdeschybridLayer, i : Int, v : Double) -> ChemdeschybridLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_layer_sum(s : ChemdeschybridLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridLayer::sum(self : ChemdeschybridLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_layer_mean(s : ChemdeschybridLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridLayer::mean(self : ChemdeschybridLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_layer_scale(s : ChemdeschybridLayer, f : Double) -> ChemdeschybridLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridLayer::scale(self : ChemdeschybridLayer, f : Double) -> ChemdeschybridLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_layer_add(a : ChemdeschybridLayer, b : ChemdeschybridLayer) -> ChemdeschybridLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridLayer::add(self : ChemdeschybridLayer, other : ChemdeschybridLayer) -> ChemdeschybridLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_layer_copy(s : ChemdeschybridLayer) -> ChemdeschybridLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridLayer::copy(self : ChemdeschybridLayer) -> ChemdeschybridLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_layer_fill(s : ChemdeschybridLayer, v : Double) -> ChemdeschybridLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridLayer::fill(self : ChemdeschybridLayer, v : Double) -> ChemdeschybridLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_layer_min(s : ChemdeschybridLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridLayer::min(self : ChemdeschybridLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_layer_max(s : ChemdeschybridLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridLayer::max(self : ChemdeschybridLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_layer_to_string(s : ChemdeschybridLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridLayer::to_string(self : ChemdeschybridLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_hybrid_buffer_make(size : Int) -> ChemdeschybridBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_buffer_len(s : ChemdeschybridBuffer) -> Int { s.size }
+pub fn ChemdeschybridBuffer::len(self : ChemdeschybridBuffer) -> Int { self.size }
 
-pub fn chem_desc_hybrid_buffer_get(s : ChemdeschybridBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridBuffer::get(self : ChemdeschybridBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_buffer_set(s : ChemdeschybridBuffer, i : Int, v : Double) -> ChemdeschybridBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridBuffer::set(self : ChemdeschybridBuffer, i : Int, v : Double) -> ChemdeschybridBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_buffer_sum(s : ChemdeschybridBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridBuffer::sum(self : ChemdeschybridBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_buffer_mean(s : ChemdeschybridBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridBuffer::mean(self : ChemdeschybridBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_buffer_scale(s : ChemdeschybridBuffer, f : Double) -> ChemdeschybridBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridBuffer::scale(self : ChemdeschybridBuffer, f : Double) -> ChemdeschybridBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_buffer_add(a : ChemdeschybridBuffer, b : ChemdeschybridBuffer) -> ChemdeschybridBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridBuffer::add(self : ChemdeschybridBuffer, other : ChemdeschybridBuffer) -> ChemdeschybridBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_buffer_copy(s : ChemdeschybridBuffer) -> ChemdeschybridBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridBuffer::copy(self : ChemdeschybridBuffer) -> ChemdeschybridBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_buffer_fill(s : ChemdeschybridBuffer, v : Double) -> ChemdeschybridBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridBuffer::fill(self : ChemdeschybridBuffer, v : Double) -> ChemdeschybridBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_buffer_min(s : ChemdeschybridBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridBuffer::min(self : ChemdeschybridBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_buffer_max(s : ChemdeschybridBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridBuffer::max(self : ChemdeschybridBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_buffer_to_string(s : ChemdeschybridBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridBuffer::to_string(self : ChemdeschybridBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_hybrid_cursor_make(size : Int) -> ChemdeschybridCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_cursor_len(s : ChemdeschybridCursor) -> Int { s.size }
+pub fn ChemdeschybridCursor::len(self : ChemdeschybridCursor) -> Int { self.size }
 
-pub fn chem_desc_hybrid_cursor_get(s : ChemdeschybridCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridCursor::get(self : ChemdeschybridCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_cursor_set(s : ChemdeschybridCursor, i : Int, v : Double) -> ChemdeschybridCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridCursor::set(self : ChemdeschybridCursor, i : Int, v : Double) -> ChemdeschybridCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cursor_sum(s : ChemdeschybridCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridCursor::sum(self : ChemdeschybridCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_cursor_mean(s : ChemdeschybridCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridCursor::mean(self : ChemdeschybridCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_cursor_scale(s : ChemdeschybridCursor, f : Double) -> ChemdeschybridCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridCursor::scale(self : ChemdeschybridCursor, f : Double) -> ChemdeschybridCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cursor_add(a : ChemdeschybridCursor, b : ChemdeschybridCursor) -> ChemdeschybridCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridCursor::add(self : ChemdeschybridCursor, other : ChemdeschybridCursor) -> ChemdeschybridCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cursor_copy(s : ChemdeschybridCursor) -> ChemdeschybridCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridCursor::copy(self : ChemdeschybridCursor) -> ChemdeschybridCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cursor_fill(s : ChemdeschybridCursor, v : Double) -> ChemdeschybridCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridCursor::fill(self : ChemdeschybridCursor, v : Double) -> ChemdeschybridCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_cursor_min(s : ChemdeschybridCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridCursor::min(self : ChemdeschybridCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_cursor_max(s : ChemdeschybridCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridCursor::max(self : ChemdeschybridCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_cursor_to_string(s : ChemdeschybridCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridCursor::to_string(self : ChemdeschybridCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridView {
@@ -912,45 +912,45 @@ pub fn chem_desc_hybrid_view_make(size : Int) -> ChemdeschybridView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_view_len(s : ChemdeschybridView) -> Int { s.size }
+pub fn ChemdeschybridView::len(self : ChemdeschybridView) -> Int { self.size }
 
-pub fn chem_desc_hybrid_view_get(s : ChemdeschybridView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridView::get(self : ChemdeschybridView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_view_set(s : ChemdeschybridView, i : Int, v : Double) -> ChemdeschybridView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridView::set(self : ChemdeschybridView, i : Int, v : Double) -> ChemdeschybridView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_view_sum(s : ChemdeschybridView) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridView::sum(self : ChemdeschybridView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_view_mean(s : ChemdeschybridView) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridView::mean(self : ChemdeschybridView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_view_scale(s : ChemdeschybridView, f : Double) -> ChemdeschybridView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridView::scale(self : ChemdeschybridView, f : Double) -> ChemdeschybridView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_view_add(a : ChemdeschybridView, b : ChemdeschybridView) -> ChemdeschybridView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridView::add(self : ChemdeschybridView, other : ChemdeschybridView) -> ChemdeschybridView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_view_copy(s : ChemdeschybridView) -> ChemdeschybridView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridView::copy(self : ChemdeschybridView) -> ChemdeschybridView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_view_fill(s : ChemdeschybridView, v : Double) -> ChemdeschybridView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridView::fill(self : ChemdeschybridView, v : Double) -> ChemdeschybridView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_view_min(s : ChemdeschybridView) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridView::min(self : ChemdeschybridView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_view_max(s : ChemdeschybridView) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridView::max(self : ChemdeschybridView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_view_to_string(s : ChemdeschybridView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridView::to_string(self : ChemdeschybridView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_hybrid_range_make(size : Int) -> ChemdeschybridRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_range_len(s : ChemdeschybridRange) -> Int { s.size }
+pub fn ChemdeschybridRange::len(self : ChemdeschybridRange) -> Int { self.size }
 
-pub fn chem_desc_hybrid_range_get(s : ChemdeschybridRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridRange::get(self : ChemdeschybridRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_range_set(s : ChemdeschybridRange, i : Int, v : Double) -> ChemdeschybridRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridRange::set(self : ChemdeschybridRange, i : Int, v : Double) -> ChemdeschybridRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_range_sum(s : ChemdeschybridRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridRange::sum(self : ChemdeschybridRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_range_mean(s : ChemdeschybridRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridRange::mean(self : ChemdeschybridRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_range_scale(s : ChemdeschybridRange, f : Double) -> ChemdeschybridRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridRange::scale(self : ChemdeschybridRange, f : Double) -> ChemdeschybridRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_range_add(a : ChemdeschybridRange, b : ChemdeschybridRange) -> ChemdeschybridRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridRange::add(self : ChemdeschybridRange, other : ChemdeschybridRange) -> ChemdeschybridRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_range_copy(s : ChemdeschybridRange) -> ChemdeschybridRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridRange::copy(self : ChemdeschybridRange) -> ChemdeschybridRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_range_fill(s : ChemdeschybridRange, v : Double) -> ChemdeschybridRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridRange::fill(self : ChemdeschybridRange, v : Double) -> ChemdeschybridRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_range_min(s : ChemdeschybridRange) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridRange::min(self : ChemdeschybridRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_range_max(s : ChemdeschybridRange) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridRange::max(self : ChemdeschybridRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_range_to_string(s : ChemdeschybridRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridRange::to_string(self : ChemdeschybridRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdeschybridSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_hybrid_slice_make(size : Int) -> ChemdeschybridSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_hybrid_slice_len(s : ChemdeschybridSlice) -> Int { s.size }
+pub fn ChemdeschybridSlice::len(self : ChemdeschybridSlice) -> Int { self.size }
 
-pub fn chem_desc_hybrid_slice_get(s : ChemdeschybridSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdeschybridSlice::get(self : ChemdeschybridSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_hybrid_slice_set(s : ChemdeschybridSlice, i : Int, v : Double) -> ChemdeschybridSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdeschybridSlice::set(self : ChemdeschybridSlice, i : Int, v : Double) -> ChemdeschybridSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_slice_sum(s : ChemdeschybridSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdeschybridSlice::sum(self : ChemdeschybridSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_hybrid_slice_mean(s : ChemdeschybridSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdeschybridSlice::mean(self : ChemdeschybridSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_hybrid_slice_scale(s : ChemdeschybridSlice, f : Double) -> ChemdeschybridSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdeschybridSlice::scale(self : ChemdeschybridSlice, f : Double) -> ChemdeschybridSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_slice_add(a : ChemdeschybridSlice, b : ChemdeschybridSlice) -> ChemdeschybridSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdeschybridSlice::add(self : ChemdeschybridSlice, other : ChemdeschybridSlice) -> ChemdeschybridSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_slice_copy(s : ChemdeschybridSlice) -> ChemdeschybridSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdeschybridSlice::copy(self : ChemdeschybridSlice) -> ChemdeschybridSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_slice_fill(s : ChemdeschybridSlice, v : Double) -> ChemdeschybridSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdeschybridSlice::fill(self : ChemdeschybridSlice, v : Double) -> ChemdeschybridSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_hybrid_slice_min(s : ChemdeschybridSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdeschybridSlice::min(self : ChemdeschybridSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_hybrid_slice_max(s : ChemdeschybridSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdeschybridSlice::max(self : ChemdeschybridSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_hybrid_slice_to_string(s : ChemdeschybridSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdeschybridSlice::to_string(self : ChemdeschybridSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

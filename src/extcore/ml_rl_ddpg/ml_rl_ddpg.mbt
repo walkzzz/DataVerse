@@ -351,45 +351,45 @@ pub fn ml_rl_ddpg_frame_make(size : Int) -> MlrlddpgFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_frame_len(s : MlrlddpgFrame) -> Int { s.size }
+pub fn MlrlddpgFrame::len(self : MlrlddpgFrame) -> Int { self.size }
 
-pub fn ml_rl_ddpg_frame_get(s : MlrlddpgFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgFrame::get(self : MlrlddpgFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_frame_set(s : MlrlddpgFrame, i : Int, v : Double) -> MlrlddpgFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgFrame::set(self : MlrlddpgFrame, i : Int, v : Double) -> MlrlddpgFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_frame_sum(s : MlrlddpgFrame) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgFrame::sum(self : MlrlddpgFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_frame_mean(s : MlrlddpgFrame) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgFrame::mean(self : MlrlddpgFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_frame_scale(s : MlrlddpgFrame, f : Double) -> MlrlddpgFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgFrame::scale(self : MlrlddpgFrame, f : Double) -> MlrlddpgFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_frame_add(a : MlrlddpgFrame, b : MlrlddpgFrame) -> MlrlddpgFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgFrame::add(self : MlrlddpgFrame, other : MlrlddpgFrame) -> MlrlddpgFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_frame_copy(s : MlrlddpgFrame) -> MlrlddpgFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgFrame::copy(self : MlrlddpgFrame) -> MlrlddpgFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_frame_fill(s : MlrlddpgFrame, v : Double) -> MlrlddpgFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgFrame::fill(self : MlrlddpgFrame, v : Double) -> MlrlddpgFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_frame_min(s : MlrlddpgFrame) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgFrame::min(self : MlrlddpgFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_frame_max(s : MlrlddpgFrame) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgFrame::max(self : MlrlddpgFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_frame_to_string(s : MlrlddpgFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgFrame::to_string(self : MlrlddpgFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgTable {
@@ -402,45 +402,45 @@ pub fn ml_rl_ddpg_table_make(size : Int) -> MlrlddpgTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_table_len(s : MlrlddpgTable) -> Int { s.size }
+pub fn MlrlddpgTable::len(self : MlrlddpgTable) -> Int { self.size }
 
-pub fn ml_rl_ddpg_table_get(s : MlrlddpgTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgTable::get(self : MlrlddpgTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_table_set(s : MlrlddpgTable, i : Int, v : Double) -> MlrlddpgTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgTable::set(self : MlrlddpgTable, i : Int, v : Double) -> MlrlddpgTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_table_sum(s : MlrlddpgTable) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgTable::sum(self : MlrlddpgTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_table_mean(s : MlrlddpgTable) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgTable::mean(self : MlrlddpgTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_table_scale(s : MlrlddpgTable, f : Double) -> MlrlddpgTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgTable::scale(self : MlrlddpgTable, f : Double) -> MlrlddpgTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_table_add(a : MlrlddpgTable, b : MlrlddpgTable) -> MlrlddpgTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgTable::add(self : MlrlddpgTable, other : MlrlddpgTable) -> MlrlddpgTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_table_copy(s : MlrlddpgTable) -> MlrlddpgTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgTable::copy(self : MlrlddpgTable) -> MlrlddpgTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_table_fill(s : MlrlddpgTable, v : Double) -> MlrlddpgTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgTable::fill(self : MlrlddpgTable, v : Double) -> MlrlddpgTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_table_min(s : MlrlddpgTable) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgTable::min(self : MlrlddpgTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_table_max(s : MlrlddpgTable) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgTable::max(self : MlrlddpgTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_table_to_string(s : MlrlddpgTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgTable::to_string(self : MlrlddpgTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgGraphN {
@@ -453,45 +453,45 @@ pub fn ml_rl_ddpg_graphn_make(size : Int) -> MlrlddpgGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_graphn_len(s : MlrlddpgGraphN) -> Int { s.size }
+pub fn MlrlddpgGraphN::len(self : MlrlddpgGraphN) -> Int { self.size }
 
-pub fn ml_rl_ddpg_graphn_get(s : MlrlddpgGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgGraphN::get(self : MlrlddpgGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_graphn_set(s : MlrlddpgGraphN, i : Int, v : Double) -> MlrlddpgGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgGraphN::set(self : MlrlddpgGraphN, i : Int, v : Double) -> MlrlddpgGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_graphn_sum(s : MlrlddpgGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgGraphN::sum(self : MlrlddpgGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_graphn_mean(s : MlrlddpgGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgGraphN::mean(self : MlrlddpgGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_graphn_scale(s : MlrlddpgGraphN, f : Double) -> MlrlddpgGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgGraphN::scale(self : MlrlddpgGraphN, f : Double) -> MlrlddpgGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_graphn_add(a : MlrlddpgGraphN, b : MlrlddpgGraphN) -> MlrlddpgGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgGraphN::add(self : MlrlddpgGraphN, other : MlrlddpgGraphN) -> MlrlddpgGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_graphn_copy(s : MlrlddpgGraphN) -> MlrlddpgGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgGraphN::copy(self : MlrlddpgGraphN) -> MlrlddpgGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_graphn_fill(s : MlrlddpgGraphN, v : Double) -> MlrlddpgGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgGraphN::fill(self : MlrlddpgGraphN, v : Double) -> MlrlddpgGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_graphn_min(s : MlrlddpgGraphN) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgGraphN::min(self : MlrlddpgGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_graphn_max(s : MlrlddpgGraphN) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgGraphN::max(self : MlrlddpgGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_graphn_to_string(s : MlrlddpgGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgGraphN::to_string(self : MlrlddpgGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgNode {
@@ -504,45 +504,45 @@ pub fn ml_rl_ddpg_node_make(size : Int) -> MlrlddpgNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_node_len(s : MlrlddpgNode) -> Int { s.size }
+pub fn MlrlddpgNode::len(self : MlrlddpgNode) -> Int { self.size }
 
-pub fn ml_rl_ddpg_node_get(s : MlrlddpgNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgNode::get(self : MlrlddpgNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_node_set(s : MlrlddpgNode, i : Int, v : Double) -> MlrlddpgNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgNode::set(self : MlrlddpgNode, i : Int, v : Double) -> MlrlddpgNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_node_sum(s : MlrlddpgNode) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgNode::sum(self : MlrlddpgNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_node_mean(s : MlrlddpgNode) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgNode::mean(self : MlrlddpgNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_node_scale(s : MlrlddpgNode, f : Double) -> MlrlddpgNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgNode::scale(self : MlrlddpgNode, f : Double) -> MlrlddpgNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_node_add(a : MlrlddpgNode, b : MlrlddpgNode) -> MlrlddpgNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgNode::add(self : MlrlddpgNode, other : MlrlddpgNode) -> MlrlddpgNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_node_copy(s : MlrlddpgNode) -> MlrlddpgNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgNode::copy(self : MlrlddpgNode) -> MlrlddpgNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_node_fill(s : MlrlddpgNode, v : Double) -> MlrlddpgNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgNode::fill(self : MlrlddpgNode, v : Double) -> MlrlddpgNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_node_min(s : MlrlddpgNode) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgNode::min(self : MlrlddpgNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_node_max(s : MlrlddpgNode) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgNode::max(self : MlrlddpgNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_node_to_string(s : MlrlddpgNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgNode::to_string(self : MlrlddpgNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgEdge {
@@ -555,45 +555,45 @@ pub fn ml_rl_ddpg_edge_make(size : Int) -> MlrlddpgEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_edge_len(s : MlrlddpgEdge) -> Int { s.size }
+pub fn MlrlddpgEdge::len(self : MlrlddpgEdge) -> Int { self.size }
 
-pub fn ml_rl_ddpg_edge_get(s : MlrlddpgEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgEdge::get(self : MlrlddpgEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_edge_set(s : MlrlddpgEdge, i : Int, v : Double) -> MlrlddpgEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgEdge::set(self : MlrlddpgEdge, i : Int, v : Double) -> MlrlddpgEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_edge_sum(s : MlrlddpgEdge) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgEdge::sum(self : MlrlddpgEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_edge_mean(s : MlrlddpgEdge) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgEdge::mean(self : MlrlddpgEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_edge_scale(s : MlrlddpgEdge, f : Double) -> MlrlddpgEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgEdge::scale(self : MlrlddpgEdge, f : Double) -> MlrlddpgEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_edge_add(a : MlrlddpgEdge, b : MlrlddpgEdge) -> MlrlddpgEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgEdge::add(self : MlrlddpgEdge, other : MlrlddpgEdge) -> MlrlddpgEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_edge_copy(s : MlrlddpgEdge) -> MlrlddpgEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgEdge::copy(self : MlrlddpgEdge) -> MlrlddpgEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_edge_fill(s : MlrlddpgEdge, v : Double) -> MlrlddpgEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgEdge::fill(self : MlrlddpgEdge, v : Double) -> MlrlddpgEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_edge_min(s : MlrlddpgEdge) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgEdge::min(self : MlrlddpgEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_edge_max(s : MlrlddpgEdge) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgEdge::max(self : MlrlddpgEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_edge_to_string(s : MlrlddpgEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgEdge::to_string(self : MlrlddpgEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgPath {
@@ -606,45 +606,45 @@ pub fn ml_rl_ddpg_path_make(size : Int) -> MlrlddpgPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_path_len(s : MlrlddpgPath) -> Int { s.size }
+pub fn MlrlddpgPath::len(self : MlrlddpgPath) -> Int { self.size }
 
-pub fn ml_rl_ddpg_path_get(s : MlrlddpgPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgPath::get(self : MlrlddpgPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_path_set(s : MlrlddpgPath, i : Int, v : Double) -> MlrlddpgPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgPath::set(self : MlrlddpgPath, i : Int, v : Double) -> MlrlddpgPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_path_sum(s : MlrlddpgPath) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgPath::sum(self : MlrlddpgPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_path_mean(s : MlrlddpgPath) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgPath::mean(self : MlrlddpgPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_path_scale(s : MlrlddpgPath, f : Double) -> MlrlddpgPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgPath::scale(self : MlrlddpgPath, f : Double) -> MlrlddpgPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_path_add(a : MlrlddpgPath, b : MlrlddpgPath) -> MlrlddpgPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgPath::add(self : MlrlddpgPath, other : MlrlddpgPath) -> MlrlddpgPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_path_copy(s : MlrlddpgPath) -> MlrlddpgPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgPath::copy(self : MlrlddpgPath) -> MlrlddpgPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_path_fill(s : MlrlddpgPath, v : Double) -> MlrlddpgPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgPath::fill(self : MlrlddpgPath, v : Double) -> MlrlddpgPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_path_min(s : MlrlddpgPath) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgPath::min(self : MlrlddpgPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_path_max(s : MlrlddpgPath) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgPath::max(self : MlrlddpgPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_path_to_string(s : MlrlddpgPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgPath::to_string(self : MlrlddpgPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgCluster {
@@ -657,45 +657,45 @@ pub fn ml_rl_ddpg_cluster_make(size : Int) -> MlrlddpgCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_cluster_len(s : MlrlddpgCluster) -> Int { s.size }
+pub fn MlrlddpgCluster::len(self : MlrlddpgCluster) -> Int { self.size }
 
-pub fn ml_rl_ddpg_cluster_get(s : MlrlddpgCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgCluster::get(self : MlrlddpgCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_cluster_set(s : MlrlddpgCluster, i : Int, v : Double) -> MlrlddpgCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgCluster::set(self : MlrlddpgCluster, i : Int, v : Double) -> MlrlddpgCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cluster_sum(s : MlrlddpgCluster) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgCluster::sum(self : MlrlddpgCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_cluster_mean(s : MlrlddpgCluster) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgCluster::mean(self : MlrlddpgCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_cluster_scale(s : MlrlddpgCluster, f : Double) -> MlrlddpgCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgCluster::scale(self : MlrlddpgCluster, f : Double) -> MlrlddpgCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cluster_add(a : MlrlddpgCluster, b : MlrlddpgCluster) -> MlrlddpgCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgCluster::add(self : MlrlddpgCluster, other : MlrlddpgCluster) -> MlrlddpgCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cluster_copy(s : MlrlddpgCluster) -> MlrlddpgCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgCluster::copy(self : MlrlddpgCluster) -> MlrlddpgCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cluster_fill(s : MlrlddpgCluster, v : Double) -> MlrlddpgCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgCluster::fill(self : MlrlddpgCluster, v : Double) -> MlrlddpgCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cluster_min(s : MlrlddpgCluster) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgCluster::min(self : MlrlddpgCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_cluster_max(s : MlrlddpgCluster) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgCluster::max(self : MlrlddpgCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_cluster_to_string(s : MlrlddpgCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgCluster::to_string(self : MlrlddpgCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgModel {
@@ -708,45 +708,45 @@ pub fn ml_rl_ddpg_model_make(size : Int) -> MlrlddpgModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_model_len(s : MlrlddpgModel) -> Int { s.size }
+pub fn MlrlddpgModel::len(self : MlrlddpgModel) -> Int { self.size }
 
-pub fn ml_rl_ddpg_model_get(s : MlrlddpgModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgModel::get(self : MlrlddpgModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_model_set(s : MlrlddpgModel, i : Int, v : Double) -> MlrlddpgModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgModel::set(self : MlrlddpgModel, i : Int, v : Double) -> MlrlddpgModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_model_sum(s : MlrlddpgModel) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgModel::sum(self : MlrlddpgModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_model_mean(s : MlrlddpgModel) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgModel::mean(self : MlrlddpgModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_model_scale(s : MlrlddpgModel, f : Double) -> MlrlddpgModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgModel::scale(self : MlrlddpgModel, f : Double) -> MlrlddpgModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_model_add(a : MlrlddpgModel, b : MlrlddpgModel) -> MlrlddpgModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgModel::add(self : MlrlddpgModel, other : MlrlddpgModel) -> MlrlddpgModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_model_copy(s : MlrlddpgModel) -> MlrlddpgModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgModel::copy(self : MlrlddpgModel) -> MlrlddpgModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_model_fill(s : MlrlddpgModel, v : Double) -> MlrlddpgModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgModel::fill(self : MlrlddpgModel, v : Double) -> MlrlddpgModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_model_min(s : MlrlddpgModel) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgModel::min(self : MlrlddpgModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_model_max(s : MlrlddpgModel) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgModel::max(self : MlrlddpgModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_model_to_string(s : MlrlddpgModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgModel::to_string(self : MlrlddpgModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgLayer {
@@ -759,45 +759,45 @@ pub fn ml_rl_ddpg_layer_make(size : Int) -> MlrlddpgLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_layer_len(s : MlrlddpgLayer) -> Int { s.size }
+pub fn MlrlddpgLayer::len(self : MlrlddpgLayer) -> Int { self.size }
 
-pub fn ml_rl_ddpg_layer_get(s : MlrlddpgLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgLayer::get(self : MlrlddpgLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_layer_set(s : MlrlddpgLayer, i : Int, v : Double) -> MlrlddpgLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgLayer::set(self : MlrlddpgLayer, i : Int, v : Double) -> MlrlddpgLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_layer_sum(s : MlrlddpgLayer) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgLayer::sum(self : MlrlddpgLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_layer_mean(s : MlrlddpgLayer) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgLayer::mean(self : MlrlddpgLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_layer_scale(s : MlrlddpgLayer, f : Double) -> MlrlddpgLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgLayer::scale(self : MlrlddpgLayer, f : Double) -> MlrlddpgLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_layer_add(a : MlrlddpgLayer, b : MlrlddpgLayer) -> MlrlddpgLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgLayer::add(self : MlrlddpgLayer, other : MlrlddpgLayer) -> MlrlddpgLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_layer_copy(s : MlrlddpgLayer) -> MlrlddpgLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgLayer::copy(self : MlrlddpgLayer) -> MlrlddpgLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_layer_fill(s : MlrlddpgLayer, v : Double) -> MlrlddpgLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgLayer::fill(self : MlrlddpgLayer, v : Double) -> MlrlddpgLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_layer_min(s : MlrlddpgLayer) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgLayer::min(self : MlrlddpgLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_layer_max(s : MlrlddpgLayer) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgLayer::max(self : MlrlddpgLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_layer_to_string(s : MlrlddpgLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgLayer::to_string(self : MlrlddpgLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgBuffer {
@@ -810,45 +810,45 @@ pub fn ml_rl_ddpg_buffer_make(size : Int) -> MlrlddpgBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_buffer_len(s : MlrlddpgBuffer) -> Int { s.size }
+pub fn MlrlddpgBuffer::len(self : MlrlddpgBuffer) -> Int { self.size }
 
-pub fn ml_rl_ddpg_buffer_get(s : MlrlddpgBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgBuffer::get(self : MlrlddpgBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_buffer_set(s : MlrlddpgBuffer, i : Int, v : Double) -> MlrlddpgBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgBuffer::set(self : MlrlddpgBuffer, i : Int, v : Double) -> MlrlddpgBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_buffer_sum(s : MlrlddpgBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgBuffer::sum(self : MlrlddpgBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_buffer_mean(s : MlrlddpgBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgBuffer::mean(self : MlrlddpgBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_buffer_scale(s : MlrlddpgBuffer, f : Double) -> MlrlddpgBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgBuffer::scale(self : MlrlddpgBuffer, f : Double) -> MlrlddpgBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_buffer_add(a : MlrlddpgBuffer, b : MlrlddpgBuffer) -> MlrlddpgBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgBuffer::add(self : MlrlddpgBuffer, other : MlrlddpgBuffer) -> MlrlddpgBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_buffer_copy(s : MlrlddpgBuffer) -> MlrlddpgBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgBuffer::copy(self : MlrlddpgBuffer) -> MlrlddpgBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_buffer_fill(s : MlrlddpgBuffer, v : Double) -> MlrlddpgBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgBuffer::fill(self : MlrlddpgBuffer, v : Double) -> MlrlddpgBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_buffer_min(s : MlrlddpgBuffer) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgBuffer::min(self : MlrlddpgBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_buffer_max(s : MlrlddpgBuffer) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgBuffer::max(self : MlrlddpgBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_buffer_to_string(s : MlrlddpgBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgBuffer::to_string(self : MlrlddpgBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgCursor {
@@ -861,45 +861,45 @@ pub fn ml_rl_ddpg_cursor_make(size : Int) -> MlrlddpgCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_cursor_len(s : MlrlddpgCursor) -> Int { s.size }
+pub fn MlrlddpgCursor::len(self : MlrlddpgCursor) -> Int { self.size }
 
-pub fn ml_rl_ddpg_cursor_get(s : MlrlddpgCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgCursor::get(self : MlrlddpgCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_cursor_set(s : MlrlddpgCursor, i : Int, v : Double) -> MlrlddpgCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgCursor::set(self : MlrlddpgCursor, i : Int, v : Double) -> MlrlddpgCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cursor_sum(s : MlrlddpgCursor) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgCursor::sum(self : MlrlddpgCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_cursor_mean(s : MlrlddpgCursor) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgCursor::mean(self : MlrlddpgCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_cursor_scale(s : MlrlddpgCursor, f : Double) -> MlrlddpgCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgCursor::scale(self : MlrlddpgCursor, f : Double) -> MlrlddpgCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cursor_add(a : MlrlddpgCursor, b : MlrlddpgCursor) -> MlrlddpgCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgCursor::add(self : MlrlddpgCursor, other : MlrlddpgCursor) -> MlrlddpgCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cursor_copy(s : MlrlddpgCursor) -> MlrlddpgCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgCursor::copy(self : MlrlddpgCursor) -> MlrlddpgCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cursor_fill(s : MlrlddpgCursor, v : Double) -> MlrlddpgCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgCursor::fill(self : MlrlddpgCursor, v : Double) -> MlrlddpgCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_cursor_min(s : MlrlddpgCursor) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgCursor::min(self : MlrlddpgCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_cursor_max(s : MlrlddpgCursor) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgCursor::max(self : MlrlddpgCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_cursor_to_string(s : MlrlddpgCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgCursor::to_string(self : MlrlddpgCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgView {
@@ -912,45 +912,45 @@ pub fn ml_rl_ddpg_view_make(size : Int) -> MlrlddpgView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_view_len(s : MlrlddpgView) -> Int { s.size }
+pub fn MlrlddpgView::len(self : MlrlddpgView) -> Int { self.size }
 
-pub fn ml_rl_ddpg_view_get(s : MlrlddpgView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgView::get(self : MlrlddpgView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_view_set(s : MlrlddpgView, i : Int, v : Double) -> MlrlddpgView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgView::set(self : MlrlddpgView, i : Int, v : Double) -> MlrlddpgView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_view_sum(s : MlrlddpgView) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgView::sum(self : MlrlddpgView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_view_mean(s : MlrlddpgView) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgView::mean(self : MlrlddpgView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_view_scale(s : MlrlddpgView, f : Double) -> MlrlddpgView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgView::scale(self : MlrlddpgView, f : Double) -> MlrlddpgView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_view_add(a : MlrlddpgView, b : MlrlddpgView) -> MlrlddpgView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgView::add(self : MlrlddpgView, other : MlrlddpgView) -> MlrlddpgView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_view_copy(s : MlrlddpgView) -> MlrlddpgView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgView::copy(self : MlrlddpgView) -> MlrlddpgView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_view_fill(s : MlrlddpgView, v : Double) -> MlrlddpgView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgView::fill(self : MlrlddpgView, v : Double) -> MlrlddpgView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_view_min(s : MlrlddpgView) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgView::min(self : MlrlddpgView) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_view_max(s : MlrlddpgView) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgView::max(self : MlrlddpgView) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_view_to_string(s : MlrlddpgView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgView::to_string(self : MlrlddpgView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgRange {
@@ -963,45 +963,45 @@ pub fn ml_rl_ddpg_range_make(size : Int) -> MlrlddpgRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_range_len(s : MlrlddpgRange) -> Int { s.size }
+pub fn MlrlddpgRange::len(self : MlrlddpgRange) -> Int { self.size }
 
-pub fn ml_rl_ddpg_range_get(s : MlrlddpgRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgRange::get(self : MlrlddpgRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_range_set(s : MlrlddpgRange, i : Int, v : Double) -> MlrlddpgRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgRange::set(self : MlrlddpgRange, i : Int, v : Double) -> MlrlddpgRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_range_sum(s : MlrlddpgRange) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgRange::sum(self : MlrlddpgRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_range_mean(s : MlrlddpgRange) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgRange::mean(self : MlrlddpgRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_range_scale(s : MlrlddpgRange, f : Double) -> MlrlddpgRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgRange::scale(self : MlrlddpgRange, f : Double) -> MlrlddpgRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_range_add(a : MlrlddpgRange, b : MlrlddpgRange) -> MlrlddpgRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgRange::add(self : MlrlddpgRange, other : MlrlddpgRange) -> MlrlddpgRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_range_copy(s : MlrlddpgRange) -> MlrlddpgRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgRange::copy(self : MlrlddpgRange) -> MlrlddpgRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_range_fill(s : MlrlddpgRange, v : Double) -> MlrlddpgRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgRange::fill(self : MlrlddpgRange, v : Double) -> MlrlddpgRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_range_min(s : MlrlddpgRange) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgRange::min(self : MlrlddpgRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_range_max(s : MlrlddpgRange) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgRange::max(self : MlrlddpgRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_range_to_string(s : MlrlddpgRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgRange::to_string(self : MlrlddpgRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlrlddpgSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_rl_ddpg_slice_make(size : Int) -> MlrlddpgSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_rl_ddpg_slice_len(s : MlrlddpgSlice) -> Int { s.size }
+pub fn MlrlddpgSlice::len(self : MlrlddpgSlice) -> Int { self.size }
 
-pub fn ml_rl_ddpg_slice_get(s : MlrlddpgSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlrlddpgSlice::get(self : MlrlddpgSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_rl_ddpg_slice_set(s : MlrlddpgSlice, i : Int, v : Double) -> MlrlddpgSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlrlddpgSlice::set(self : MlrlddpgSlice, i : Int, v : Double) -> MlrlddpgSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_slice_sum(s : MlrlddpgSlice) -> Double { @_common.sum(s.data) }
+pub fn MlrlddpgSlice::sum(self : MlrlddpgSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_rl_ddpg_slice_mean(s : MlrlddpgSlice) -> Double { @_common.mean(s.data) }
+pub fn MlrlddpgSlice::mean(self : MlrlddpgSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_rl_ddpg_slice_scale(s : MlrlddpgSlice, f : Double) -> MlrlddpgSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlrlddpgSlice::scale(self : MlrlddpgSlice, f : Double) -> MlrlddpgSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_slice_add(a : MlrlddpgSlice, b : MlrlddpgSlice) -> MlrlddpgSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlrlddpgSlice::add(self : MlrlddpgSlice, other : MlrlddpgSlice) -> MlrlddpgSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_slice_copy(s : MlrlddpgSlice) -> MlrlddpgSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlrlddpgSlice::copy(self : MlrlddpgSlice) -> MlrlddpgSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_slice_fill(s : MlrlddpgSlice, v : Double) -> MlrlddpgSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlrlddpgSlice::fill(self : MlrlddpgSlice, v : Double) -> MlrlddpgSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_rl_ddpg_slice_min(s : MlrlddpgSlice) -> Double { @_common.min(s.data) }
+pub fn MlrlddpgSlice::min(self : MlrlddpgSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_rl_ddpg_slice_max(s : MlrlddpgSlice) -> Double { @_common.max(s.data) }
+pub fn MlrlddpgSlice::max(self : MlrlddpgSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_rl_ddpg_slice_to_string(s : MlrlddpgSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlrlddpgSlice::to_string(self : MlrlddpgSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

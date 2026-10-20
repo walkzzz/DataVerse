@@ -351,45 +351,45 @@ pub fn ds_graph_adj_matrix_frame_make(size : Int) -> DsgraphadjmatrixFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_frame_len(s : DsgraphadjmatrixFrame) -> Int { s.size }
+pub fn DsgraphadjmatrixFrame::len(self : DsgraphadjmatrixFrame) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_frame_get(s : DsgraphadjmatrixFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixFrame::get(self : DsgraphadjmatrixFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_frame_set(s : DsgraphadjmatrixFrame, i : Int, v : Double) -> DsgraphadjmatrixFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixFrame::set(self : DsgraphadjmatrixFrame, i : Int, v : Double) -> DsgraphadjmatrixFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_frame_sum(s : DsgraphadjmatrixFrame) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixFrame::sum(self : DsgraphadjmatrixFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_frame_mean(s : DsgraphadjmatrixFrame) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixFrame::mean(self : DsgraphadjmatrixFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_frame_scale(s : DsgraphadjmatrixFrame, f : Double) -> DsgraphadjmatrixFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixFrame::scale(self : DsgraphadjmatrixFrame, f : Double) -> DsgraphadjmatrixFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_frame_add(a : DsgraphadjmatrixFrame, b : DsgraphadjmatrixFrame) -> DsgraphadjmatrixFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixFrame::add(self : DsgraphadjmatrixFrame, other : DsgraphadjmatrixFrame) -> DsgraphadjmatrixFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_frame_copy(s : DsgraphadjmatrixFrame) -> DsgraphadjmatrixFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixFrame::copy(self : DsgraphadjmatrixFrame) -> DsgraphadjmatrixFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_frame_fill(s : DsgraphadjmatrixFrame, v : Double) -> DsgraphadjmatrixFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixFrame::fill(self : DsgraphadjmatrixFrame, v : Double) -> DsgraphadjmatrixFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_frame_min(s : DsgraphadjmatrixFrame) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixFrame::min(self : DsgraphadjmatrixFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_frame_max(s : DsgraphadjmatrixFrame) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixFrame::max(self : DsgraphadjmatrixFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_frame_to_string(s : DsgraphadjmatrixFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixFrame::to_string(self : DsgraphadjmatrixFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixTable {
@@ -402,45 +402,45 @@ pub fn ds_graph_adj_matrix_table_make(size : Int) -> DsgraphadjmatrixTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_table_len(s : DsgraphadjmatrixTable) -> Int { s.size }
+pub fn DsgraphadjmatrixTable::len(self : DsgraphadjmatrixTable) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_table_get(s : DsgraphadjmatrixTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixTable::get(self : DsgraphadjmatrixTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_table_set(s : DsgraphadjmatrixTable, i : Int, v : Double) -> DsgraphadjmatrixTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixTable::set(self : DsgraphadjmatrixTable, i : Int, v : Double) -> DsgraphadjmatrixTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_table_sum(s : DsgraphadjmatrixTable) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixTable::sum(self : DsgraphadjmatrixTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_table_mean(s : DsgraphadjmatrixTable) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixTable::mean(self : DsgraphadjmatrixTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_table_scale(s : DsgraphadjmatrixTable, f : Double) -> DsgraphadjmatrixTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixTable::scale(self : DsgraphadjmatrixTable, f : Double) -> DsgraphadjmatrixTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_table_add(a : DsgraphadjmatrixTable, b : DsgraphadjmatrixTable) -> DsgraphadjmatrixTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixTable::add(self : DsgraphadjmatrixTable, other : DsgraphadjmatrixTable) -> DsgraphadjmatrixTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_table_copy(s : DsgraphadjmatrixTable) -> DsgraphadjmatrixTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixTable::copy(self : DsgraphadjmatrixTable) -> DsgraphadjmatrixTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_table_fill(s : DsgraphadjmatrixTable, v : Double) -> DsgraphadjmatrixTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixTable::fill(self : DsgraphadjmatrixTable, v : Double) -> DsgraphadjmatrixTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_table_min(s : DsgraphadjmatrixTable) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixTable::min(self : DsgraphadjmatrixTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_table_max(s : DsgraphadjmatrixTable) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixTable::max(self : DsgraphadjmatrixTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_table_to_string(s : DsgraphadjmatrixTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixTable::to_string(self : DsgraphadjmatrixTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixGraphN {
@@ -453,45 +453,45 @@ pub fn ds_graph_adj_matrix_graphn_make(size : Int) -> DsgraphadjmatrixGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_graphn_len(s : DsgraphadjmatrixGraphN) -> Int { s.size }
+pub fn DsgraphadjmatrixGraphN::len(self : DsgraphadjmatrixGraphN) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_graphn_get(s : DsgraphadjmatrixGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixGraphN::get(self : DsgraphadjmatrixGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_graphn_set(s : DsgraphadjmatrixGraphN, i : Int, v : Double) -> DsgraphadjmatrixGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixGraphN::set(self : DsgraphadjmatrixGraphN, i : Int, v : Double) -> DsgraphadjmatrixGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_graphn_sum(s : DsgraphadjmatrixGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixGraphN::sum(self : DsgraphadjmatrixGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_graphn_mean(s : DsgraphadjmatrixGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixGraphN::mean(self : DsgraphadjmatrixGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_graphn_scale(s : DsgraphadjmatrixGraphN, f : Double) -> DsgraphadjmatrixGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixGraphN::scale(self : DsgraphadjmatrixGraphN, f : Double) -> DsgraphadjmatrixGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_graphn_add(a : DsgraphadjmatrixGraphN, b : DsgraphadjmatrixGraphN) -> DsgraphadjmatrixGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixGraphN::add(self : DsgraphadjmatrixGraphN, other : DsgraphadjmatrixGraphN) -> DsgraphadjmatrixGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_graphn_copy(s : DsgraphadjmatrixGraphN) -> DsgraphadjmatrixGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixGraphN::copy(self : DsgraphadjmatrixGraphN) -> DsgraphadjmatrixGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_graphn_fill(s : DsgraphadjmatrixGraphN, v : Double) -> DsgraphadjmatrixGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixGraphN::fill(self : DsgraphadjmatrixGraphN, v : Double) -> DsgraphadjmatrixGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_graphn_min(s : DsgraphadjmatrixGraphN) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixGraphN::min(self : DsgraphadjmatrixGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_graphn_max(s : DsgraphadjmatrixGraphN) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixGraphN::max(self : DsgraphadjmatrixGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_graphn_to_string(s : DsgraphadjmatrixGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixGraphN::to_string(self : DsgraphadjmatrixGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixNode {
@@ -504,45 +504,45 @@ pub fn ds_graph_adj_matrix_node_make(size : Int) -> DsgraphadjmatrixNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_node_len(s : DsgraphadjmatrixNode) -> Int { s.size }
+pub fn DsgraphadjmatrixNode::len(self : DsgraphadjmatrixNode) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_node_get(s : DsgraphadjmatrixNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixNode::get(self : DsgraphadjmatrixNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_node_set(s : DsgraphadjmatrixNode, i : Int, v : Double) -> DsgraphadjmatrixNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixNode::set(self : DsgraphadjmatrixNode, i : Int, v : Double) -> DsgraphadjmatrixNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_node_sum(s : DsgraphadjmatrixNode) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixNode::sum(self : DsgraphadjmatrixNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_node_mean(s : DsgraphadjmatrixNode) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixNode::mean(self : DsgraphadjmatrixNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_node_scale(s : DsgraphadjmatrixNode, f : Double) -> DsgraphadjmatrixNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixNode::scale(self : DsgraphadjmatrixNode, f : Double) -> DsgraphadjmatrixNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_node_add(a : DsgraphadjmatrixNode, b : DsgraphadjmatrixNode) -> DsgraphadjmatrixNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixNode::add(self : DsgraphadjmatrixNode, other : DsgraphadjmatrixNode) -> DsgraphadjmatrixNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_node_copy(s : DsgraphadjmatrixNode) -> DsgraphadjmatrixNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixNode::copy(self : DsgraphadjmatrixNode) -> DsgraphadjmatrixNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_node_fill(s : DsgraphadjmatrixNode, v : Double) -> DsgraphadjmatrixNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixNode::fill(self : DsgraphadjmatrixNode, v : Double) -> DsgraphadjmatrixNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_node_min(s : DsgraphadjmatrixNode) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixNode::min(self : DsgraphadjmatrixNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_node_max(s : DsgraphadjmatrixNode) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixNode::max(self : DsgraphadjmatrixNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_node_to_string(s : DsgraphadjmatrixNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixNode::to_string(self : DsgraphadjmatrixNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixEdge {
@@ -555,45 +555,45 @@ pub fn ds_graph_adj_matrix_edge_make(size : Int) -> DsgraphadjmatrixEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_edge_len(s : DsgraphadjmatrixEdge) -> Int { s.size }
+pub fn DsgraphadjmatrixEdge::len(self : DsgraphadjmatrixEdge) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_edge_get(s : DsgraphadjmatrixEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixEdge::get(self : DsgraphadjmatrixEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_edge_set(s : DsgraphadjmatrixEdge, i : Int, v : Double) -> DsgraphadjmatrixEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixEdge::set(self : DsgraphadjmatrixEdge, i : Int, v : Double) -> DsgraphadjmatrixEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_edge_sum(s : DsgraphadjmatrixEdge) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixEdge::sum(self : DsgraphadjmatrixEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_edge_mean(s : DsgraphadjmatrixEdge) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixEdge::mean(self : DsgraphadjmatrixEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_edge_scale(s : DsgraphadjmatrixEdge, f : Double) -> DsgraphadjmatrixEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixEdge::scale(self : DsgraphadjmatrixEdge, f : Double) -> DsgraphadjmatrixEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_edge_add(a : DsgraphadjmatrixEdge, b : DsgraphadjmatrixEdge) -> DsgraphadjmatrixEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixEdge::add(self : DsgraphadjmatrixEdge, other : DsgraphadjmatrixEdge) -> DsgraphadjmatrixEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_edge_copy(s : DsgraphadjmatrixEdge) -> DsgraphadjmatrixEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixEdge::copy(self : DsgraphadjmatrixEdge) -> DsgraphadjmatrixEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_edge_fill(s : DsgraphadjmatrixEdge, v : Double) -> DsgraphadjmatrixEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixEdge::fill(self : DsgraphadjmatrixEdge, v : Double) -> DsgraphadjmatrixEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_edge_min(s : DsgraphadjmatrixEdge) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixEdge::min(self : DsgraphadjmatrixEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_edge_max(s : DsgraphadjmatrixEdge) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixEdge::max(self : DsgraphadjmatrixEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_edge_to_string(s : DsgraphadjmatrixEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixEdge::to_string(self : DsgraphadjmatrixEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixPath {
@@ -606,45 +606,45 @@ pub fn ds_graph_adj_matrix_path_make(size : Int) -> DsgraphadjmatrixPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_path_len(s : DsgraphadjmatrixPath) -> Int { s.size }
+pub fn DsgraphadjmatrixPath::len(self : DsgraphadjmatrixPath) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_path_get(s : DsgraphadjmatrixPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixPath::get(self : DsgraphadjmatrixPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_path_set(s : DsgraphadjmatrixPath, i : Int, v : Double) -> DsgraphadjmatrixPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixPath::set(self : DsgraphadjmatrixPath, i : Int, v : Double) -> DsgraphadjmatrixPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_path_sum(s : DsgraphadjmatrixPath) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixPath::sum(self : DsgraphadjmatrixPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_path_mean(s : DsgraphadjmatrixPath) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixPath::mean(self : DsgraphadjmatrixPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_path_scale(s : DsgraphadjmatrixPath, f : Double) -> DsgraphadjmatrixPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixPath::scale(self : DsgraphadjmatrixPath, f : Double) -> DsgraphadjmatrixPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_path_add(a : DsgraphadjmatrixPath, b : DsgraphadjmatrixPath) -> DsgraphadjmatrixPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixPath::add(self : DsgraphadjmatrixPath, other : DsgraphadjmatrixPath) -> DsgraphadjmatrixPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_path_copy(s : DsgraphadjmatrixPath) -> DsgraphadjmatrixPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixPath::copy(self : DsgraphadjmatrixPath) -> DsgraphadjmatrixPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_path_fill(s : DsgraphadjmatrixPath, v : Double) -> DsgraphadjmatrixPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixPath::fill(self : DsgraphadjmatrixPath, v : Double) -> DsgraphadjmatrixPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_path_min(s : DsgraphadjmatrixPath) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixPath::min(self : DsgraphadjmatrixPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_path_max(s : DsgraphadjmatrixPath) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixPath::max(self : DsgraphadjmatrixPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_path_to_string(s : DsgraphadjmatrixPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixPath::to_string(self : DsgraphadjmatrixPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixCluster {
@@ -657,45 +657,45 @@ pub fn ds_graph_adj_matrix_cluster_make(size : Int) -> DsgraphadjmatrixCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_cluster_len(s : DsgraphadjmatrixCluster) -> Int { s.size }
+pub fn DsgraphadjmatrixCluster::len(self : DsgraphadjmatrixCluster) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_cluster_get(s : DsgraphadjmatrixCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixCluster::get(self : DsgraphadjmatrixCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_cluster_set(s : DsgraphadjmatrixCluster, i : Int, v : Double) -> DsgraphadjmatrixCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCluster::set(self : DsgraphadjmatrixCluster, i : Int, v : Double) -> DsgraphadjmatrixCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cluster_sum(s : DsgraphadjmatrixCluster) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixCluster::sum(self : DsgraphadjmatrixCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_cluster_mean(s : DsgraphadjmatrixCluster) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixCluster::mean(self : DsgraphadjmatrixCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_cluster_scale(s : DsgraphadjmatrixCluster, f : Double) -> DsgraphadjmatrixCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCluster::scale(self : DsgraphadjmatrixCluster, f : Double) -> DsgraphadjmatrixCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cluster_add(a : DsgraphadjmatrixCluster, b : DsgraphadjmatrixCluster) -> DsgraphadjmatrixCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixCluster::add(self : DsgraphadjmatrixCluster, other : DsgraphadjmatrixCluster) -> DsgraphadjmatrixCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cluster_copy(s : DsgraphadjmatrixCluster) -> DsgraphadjmatrixCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCluster::copy(self : DsgraphadjmatrixCluster) -> DsgraphadjmatrixCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cluster_fill(s : DsgraphadjmatrixCluster, v : Double) -> DsgraphadjmatrixCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCluster::fill(self : DsgraphadjmatrixCluster, v : Double) -> DsgraphadjmatrixCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cluster_min(s : DsgraphadjmatrixCluster) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixCluster::min(self : DsgraphadjmatrixCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_cluster_max(s : DsgraphadjmatrixCluster) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixCluster::max(self : DsgraphadjmatrixCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_cluster_to_string(s : DsgraphadjmatrixCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixCluster::to_string(self : DsgraphadjmatrixCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixModel {
@@ -708,45 +708,45 @@ pub fn ds_graph_adj_matrix_model_make(size : Int) -> DsgraphadjmatrixModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_model_len(s : DsgraphadjmatrixModel) -> Int { s.size }
+pub fn DsgraphadjmatrixModel::len(self : DsgraphadjmatrixModel) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_model_get(s : DsgraphadjmatrixModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixModel::get(self : DsgraphadjmatrixModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_model_set(s : DsgraphadjmatrixModel, i : Int, v : Double) -> DsgraphadjmatrixModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixModel::set(self : DsgraphadjmatrixModel, i : Int, v : Double) -> DsgraphadjmatrixModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_model_sum(s : DsgraphadjmatrixModel) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixModel::sum(self : DsgraphadjmatrixModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_model_mean(s : DsgraphadjmatrixModel) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixModel::mean(self : DsgraphadjmatrixModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_model_scale(s : DsgraphadjmatrixModel, f : Double) -> DsgraphadjmatrixModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixModel::scale(self : DsgraphadjmatrixModel, f : Double) -> DsgraphadjmatrixModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_model_add(a : DsgraphadjmatrixModel, b : DsgraphadjmatrixModel) -> DsgraphadjmatrixModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixModel::add(self : DsgraphadjmatrixModel, other : DsgraphadjmatrixModel) -> DsgraphadjmatrixModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_model_copy(s : DsgraphadjmatrixModel) -> DsgraphadjmatrixModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixModel::copy(self : DsgraphadjmatrixModel) -> DsgraphadjmatrixModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_model_fill(s : DsgraphadjmatrixModel, v : Double) -> DsgraphadjmatrixModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixModel::fill(self : DsgraphadjmatrixModel, v : Double) -> DsgraphadjmatrixModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_model_min(s : DsgraphadjmatrixModel) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixModel::min(self : DsgraphadjmatrixModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_model_max(s : DsgraphadjmatrixModel) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixModel::max(self : DsgraphadjmatrixModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_model_to_string(s : DsgraphadjmatrixModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixModel::to_string(self : DsgraphadjmatrixModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixLayer {
@@ -759,45 +759,45 @@ pub fn ds_graph_adj_matrix_layer_make(size : Int) -> DsgraphadjmatrixLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_layer_len(s : DsgraphadjmatrixLayer) -> Int { s.size }
+pub fn DsgraphadjmatrixLayer::len(self : DsgraphadjmatrixLayer) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_layer_get(s : DsgraphadjmatrixLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixLayer::get(self : DsgraphadjmatrixLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_layer_set(s : DsgraphadjmatrixLayer, i : Int, v : Double) -> DsgraphadjmatrixLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixLayer::set(self : DsgraphadjmatrixLayer, i : Int, v : Double) -> DsgraphadjmatrixLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_layer_sum(s : DsgraphadjmatrixLayer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixLayer::sum(self : DsgraphadjmatrixLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_layer_mean(s : DsgraphadjmatrixLayer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixLayer::mean(self : DsgraphadjmatrixLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_layer_scale(s : DsgraphadjmatrixLayer, f : Double) -> DsgraphadjmatrixLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixLayer::scale(self : DsgraphadjmatrixLayer, f : Double) -> DsgraphadjmatrixLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_layer_add(a : DsgraphadjmatrixLayer, b : DsgraphadjmatrixLayer) -> DsgraphadjmatrixLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixLayer::add(self : DsgraphadjmatrixLayer, other : DsgraphadjmatrixLayer) -> DsgraphadjmatrixLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_layer_copy(s : DsgraphadjmatrixLayer) -> DsgraphadjmatrixLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixLayer::copy(self : DsgraphadjmatrixLayer) -> DsgraphadjmatrixLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_layer_fill(s : DsgraphadjmatrixLayer, v : Double) -> DsgraphadjmatrixLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixLayer::fill(self : DsgraphadjmatrixLayer, v : Double) -> DsgraphadjmatrixLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_layer_min(s : DsgraphadjmatrixLayer) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixLayer::min(self : DsgraphadjmatrixLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_layer_max(s : DsgraphadjmatrixLayer) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixLayer::max(self : DsgraphadjmatrixLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_layer_to_string(s : DsgraphadjmatrixLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixLayer::to_string(self : DsgraphadjmatrixLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixBuffer {
@@ -810,45 +810,45 @@ pub fn ds_graph_adj_matrix_buffer_make(size : Int) -> DsgraphadjmatrixBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_buffer_len(s : DsgraphadjmatrixBuffer) -> Int { s.size }
+pub fn DsgraphadjmatrixBuffer::len(self : DsgraphadjmatrixBuffer) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_buffer_get(s : DsgraphadjmatrixBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixBuffer::get(self : DsgraphadjmatrixBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_buffer_set(s : DsgraphadjmatrixBuffer, i : Int, v : Double) -> DsgraphadjmatrixBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixBuffer::set(self : DsgraphadjmatrixBuffer, i : Int, v : Double) -> DsgraphadjmatrixBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_buffer_sum(s : DsgraphadjmatrixBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixBuffer::sum(self : DsgraphadjmatrixBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_buffer_mean(s : DsgraphadjmatrixBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixBuffer::mean(self : DsgraphadjmatrixBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_buffer_scale(s : DsgraphadjmatrixBuffer, f : Double) -> DsgraphadjmatrixBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixBuffer::scale(self : DsgraphadjmatrixBuffer, f : Double) -> DsgraphadjmatrixBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_buffer_add(a : DsgraphadjmatrixBuffer, b : DsgraphadjmatrixBuffer) -> DsgraphadjmatrixBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixBuffer::add(self : DsgraphadjmatrixBuffer, other : DsgraphadjmatrixBuffer) -> DsgraphadjmatrixBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_buffer_copy(s : DsgraphadjmatrixBuffer) -> DsgraphadjmatrixBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixBuffer::copy(self : DsgraphadjmatrixBuffer) -> DsgraphadjmatrixBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_buffer_fill(s : DsgraphadjmatrixBuffer, v : Double) -> DsgraphadjmatrixBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixBuffer::fill(self : DsgraphadjmatrixBuffer, v : Double) -> DsgraphadjmatrixBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_buffer_min(s : DsgraphadjmatrixBuffer) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixBuffer::min(self : DsgraphadjmatrixBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_buffer_max(s : DsgraphadjmatrixBuffer) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixBuffer::max(self : DsgraphadjmatrixBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_buffer_to_string(s : DsgraphadjmatrixBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixBuffer::to_string(self : DsgraphadjmatrixBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixCursor {
@@ -861,45 +861,45 @@ pub fn ds_graph_adj_matrix_cursor_make(size : Int) -> DsgraphadjmatrixCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_cursor_len(s : DsgraphadjmatrixCursor) -> Int { s.size }
+pub fn DsgraphadjmatrixCursor::len(self : DsgraphadjmatrixCursor) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_cursor_get(s : DsgraphadjmatrixCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixCursor::get(self : DsgraphadjmatrixCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_cursor_set(s : DsgraphadjmatrixCursor, i : Int, v : Double) -> DsgraphadjmatrixCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCursor::set(self : DsgraphadjmatrixCursor, i : Int, v : Double) -> DsgraphadjmatrixCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cursor_sum(s : DsgraphadjmatrixCursor) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixCursor::sum(self : DsgraphadjmatrixCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_cursor_mean(s : DsgraphadjmatrixCursor) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixCursor::mean(self : DsgraphadjmatrixCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_cursor_scale(s : DsgraphadjmatrixCursor, f : Double) -> DsgraphadjmatrixCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCursor::scale(self : DsgraphadjmatrixCursor, f : Double) -> DsgraphadjmatrixCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cursor_add(a : DsgraphadjmatrixCursor, b : DsgraphadjmatrixCursor) -> DsgraphadjmatrixCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixCursor::add(self : DsgraphadjmatrixCursor, other : DsgraphadjmatrixCursor) -> DsgraphadjmatrixCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cursor_copy(s : DsgraphadjmatrixCursor) -> DsgraphadjmatrixCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCursor::copy(self : DsgraphadjmatrixCursor) -> DsgraphadjmatrixCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cursor_fill(s : DsgraphadjmatrixCursor, v : Double) -> DsgraphadjmatrixCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixCursor::fill(self : DsgraphadjmatrixCursor, v : Double) -> DsgraphadjmatrixCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_cursor_min(s : DsgraphadjmatrixCursor) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixCursor::min(self : DsgraphadjmatrixCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_cursor_max(s : DsgraphadjmatrixCursor) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixCursor::max(self : DsgraphadjmatrixCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_cursor_to_string(s : DsgraphadjmatrixCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixCursor::to_string(self : DsgraphadjmatrixCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixView {
@@ -912,45 +912,45 @@ pub fn ds_graph_adj_matrix_view_make(size : Int) -> DsgraphadjmatrixView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_view_len(s : DsgraphadjmatrixView) -> Int { s.size }
+pub fn DsgraphadjmatrixView::len(self : DsgraphadjmatrixView) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_view_get(s : DsgraphadjmatrixView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixView::get(self : DsgraphadjmatrixView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_view_set(s : DsgraphadjmatrixView, i : Int, v : Double) -> DsgraphadjmatrixView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixView::set(self : DsgraphadjmatrixView, i : Int, v : Double) -> DsgraphadjmatrixView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_view_sum(s : DsgraphadjmatrixView) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixView::sum(self : DsgraphadjmatrixView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_view_mean(s : DsgraphadjmatrixView) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixView::mean(self : DsgraphadjmatrixView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_view_scale(s : DsgraphadjmatrixView, f : Double) -> DsgraphadjmatrixView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixView::scale(self : DsgraphadjmatrixView, f : Double) -> DsgraphadjmatrixView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_view_add(a : DsgraphadjmatrixView, b : DsgraphadjmatrixView) -> DsgraphadjmatrixView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixView::add(self : DsgraphadjmatrixView, other : DsgraphadjmatrixView) -> DsgraphadjmatrixView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_view_copy(s : DsgraphadjmatrixView) -> DsgraphadjmatrixView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixView::copy(self : DsgraphadjmatrixView) -> DsgraphadjmatrixView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_view_fill(s : DsgraphadjmatrixView, v : Double) -> DsgraphadjmatrixView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixView::fill(self : DsgraphadjmatrixView, v : Double) -> DsgraphadjmatrixView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_view_min(s : DsgraphadjmatrixView) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixView::min(self : DsgraphadjmatrixView) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_view_max(s : DsgraphadjmatrixView) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixView::max(self : DsgraphadjmatrixView) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_view_to_string(s : DsgraphadjmatrixView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixView::to_string(self : DsgraphadjmatrixView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixRange {
@@ -963,45 +963,45 @@ pub fn ds_graph_adj_matrix_range_make(size : Int) -> DsgraphadjmatrixRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_range_len(s : DsgraphadjmatrixRange) -> Int { s.size }
+pub fn DsgraphadjmatrixRange::len(self : DsgraphadjmatrixRange) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_range_get(s : DsgraphadjmatrixRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixRange::get(self : DsgraphadjmatrixRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_range_set(s : DsgraphadjmatrixRange, i : Int, v : Double) -> DsgraphadjmatrixRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixRange::set(self : DsgraphadjmatrixRange, i : Int, v : Double) -> DsgraphadjmatrixRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_range_sum(s : DsgraphadjmatrixRange) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixRange::sum(self : DsgraphadjmatrixRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_range_mean(s : DsgraphadjmatrixRange) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixRange::mean(self : DsgraphadjmatrixRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_range_scale(s : DsgraphadjmatrixRange, f : Double) -> DsgraphadjmatrixRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixRange::scale(self : DsgraphadjmatrixRange, f : Double) -> DsgraphadjmatrixRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_range_add(a : DsgraphadjmatrixRange, b : DsgraphadjmatrixRange) -> DsgraphadjmatrixRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixRange::add(self : DsgraphadjmatrixRange, other : DsgraphadjmatrixRange) -> DsgraphadjmatrixRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_range_copy(s : DsgraphadjmatrixRange) -> DsgraphadjmatrixRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixRange::copy(self : DsgraphadjmatrixRange) -> DsgraphadjmatrixRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_range_fill(s : DsgraphadjmatrixRange, v : Double) -> DsgraphadjmatrixRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixRange::fill(self : DsgraphadjmatrixRange, v : Double) -> DsgraphadjmatrixRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_range_min(s : DsgraphadjmatrixRange) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixRange::min(self : DsgraphadjmatrixRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_range_max(s : DsgraphadjmatrixRange) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixRange::max(self : DsgraphadjmatrixRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_range_to_string(s : DsgraphadjmatrixRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixRange::to_string(self : DsgraphadjmatrixRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_graph_adj_matrix_slice_make(size : Int) -> DsgraphadjmatrixSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_adj_matrix_slice_len(s : DsgraphadjmatrixSlice) -> Int { s.size }
+pub fn DsgraphadjmatrixSlice::len(self : DsgraphadjmatrixSlice) -> Int { self.size }
 
-pub fn ds_graph_adj_matrix_slice_get(s : DsgraphadjmatrixSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphadjmatrixSlice::get(self : DsgraphadjmatrixSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_adj_matrix_slice_set(s : DsgraphadjmatrixSlice, i : Int, v : Double) -> DsgraphadjmatrixSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixSlice::set(self : DsgraphadjmatrixSlice, i : Int, v : Double) -> DsgraphadjmatrixSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_slice_sum(s : DsgraphadjmatrixSlice) -> Double { @_common.sum(s.data) }
+pub fn DsgraphadjmatrixSlice::sum(self : DsgraphadjmatrixSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_adj_matrix_slice_mean(s : DsgraphadjmatrixSlice) -> Double { @_common.mean(s.data) }
+pub fn DsgraphadjmatrixSlice::mean(self : DsgraphadjmatrixSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_adj_matrix_slice_scale(s : DsgraphadjmatrixSlice, f : Double) -> DsgraphadjmatrixSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixSlice::scale(self : DsgraphadjmatrixSlice, f : Double) -> DsgraphadjmatrixSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_slice_add(a : DsgraphadjmatrixSlice, b : DsgraphadjmatrixSlice) -> DsgraphadjmatrixSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphadjmatrixSlice::add(self : DsgraphadjmatrixSlice, other : DsgraphadjmatrixSlice) -> DsgraphadjmatrixSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_slice_copy(s : DsgraphadjmatrixSlice) -> DsgraphadjmatrixSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixSlice::copy(self : DsgraphadjmatrixSlice) -> DsgraphadjmatrixSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_slice_fill(s : DsgraphadjmatrixSlice, v : Double) -> DsgraphadjmatrixSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphadjmatrixSlice::fill(self : DsgraphadjmatrixSlice, v : Double) -> DsgraphadjmatrixSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_adj_matrix_slice_min(s : DsgraphadjmatrixSlice) -> Double { @_common.min(s.data) }
+pub fn DsgraphadjmatrixSlice::min(self : DsgraphadjmatrixSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_adj_matrix_slice_max(s : DsgraphadjmatrixSlice) -> Double { @_common.max(s.data) }
+pub fn DsgraphadjmatrixSlice::max(self : DsgraphadjmatrixSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_adj_matrix_slice_to_string(s : DsgraphadjmatrixSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphadjmatrixSlice::to_string(self : DsgraphadjmatrixSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

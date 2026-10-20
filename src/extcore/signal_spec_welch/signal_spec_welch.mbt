@@ -351,45 +351,45 @@ pub fn signal_spec_welch_frame_make(size : Int) -> SignalspecwelchFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_frame_len(s : SignalspecwelchFrame) -> Int { s.size }
+pub fn SignalspecwelchFrame::len(self : SignalspecwelchFrame) -> Int { self.size }
 
-pub fn signal_spec_welch_frame_get(s : SignalspecwelchFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchFrame::get(self : SignalspecwelchFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_frame_set(s : SignalspecwelchFrame, i : Int, v : Double) -> SignalspecwelchFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchFrame::set(self : SignalspecwelchFrame, i : Int, v : Double) -> SignalspecwelchFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_frame_sum(s : SignalspecwelchFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchFrame::sum(self : SignalspecwelchFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_frame_mean(s : SignalspecwelchFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchFrame::mean(self : SignalspecwelchFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_frame_scale(s : SignalspecwelchFrame, f : Double) -> SignalspecwelchFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchFrame::scale(self : SignalspecwelchFrame, f : Double) -> SignalspecwelchFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_frame_add(a : SignalspecwelchFrame, b : SignalspecwelchFrame) -> SignalspecwelchFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchFrame::add(self : SignalspecwelchFrame, other : SignalspecwelchFrame) -> SignalspecwelchFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_frame_copy(s : SignalspecwelchFrame) -> SignalspecwelchFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchFrame::copy(self : SignalspecwelchFrame) -> SignalspecwelchFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_frame_fill(s : SignalspecwelchFrame, v : Double) -> SignalspecwelchFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchFrame::fill(self : SignalspecwelchFrame, v : Double) -> SignalspecwelchFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_frame_min(s : SignalspecwelchFrame) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchFrame::min(self : SignalspecwelchFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_frame_max(s : SignalspecwelchFrame) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchFrame::max(self : SignalspecwelchFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_frame_to_string(s : SignalspecwelchFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchFrame::to_string(self : SignalspecwelchFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchTable {
@@ -402,45 +402,45 @@ pub fn signal_spec_welch_table_make(size : Int) -> SignalspecwelchTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_table_len(s : SignalspecwelchTable) -> Int { s.size }
+pub fn SignalspecwelchTable::len(self : SignalspecwelchTable) -> Int { self.size }
 
-pub fn signal_spec_welch_table_get(s : SignalspecwelchTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchTable::get(self : SignalspecwelchTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_table_set(s : SignalspecwelchTable, i : Int, v : Double) -> SignalspecwelchTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchTable::set(self : SignalspecwelchTable, i : Int, v : Double) -> SignalspecwelchTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_table_sum(s : SignalspecwelchTable) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchTable::sum(self : SignalspecwelchTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_table_mean(s : SignalspecwelchTable) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchTable::mean(self : SignalspecwelchTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_table_scale(s : SignalspecwelchTable, f : Double) -> SignalspecwelchTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchTable::scale(self : SignalspecwelchTable, f : Double) -> SignalspecwelchTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_table_add(a : SignalspecwelchTable, b : SignalspecwelchTable) -> SignalspecwelchTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchTable::add(self : SignalspecwelchTable, other : SignalspecwelchTable) -> SignalspecwelchTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_table_copy(s : SignalspecwelchTable) -> SignalspecwelchTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchTable::copy(self : SignalspecwelchTable) -> SignalspecwelchTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_table_fill(s : SignalspecwelchTable, v : Double) -> SignalspecwelchTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchTable::fill(self : SignalspecwelchTable, v : Double) -> SignalspecwelchTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_table_min(s : SignalspecwelchTable) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchTable::min(self : SignalspecwelchTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_table_max(s : SignalspecwelchTable) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchTable::max(self : SignalspecwelchTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_table_to_string(s : SignalspecwelchTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchTable::to_string(self : SignalspecwelchTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchGraphN {
@@ -453,45 +453,45 @@ pub fn signal_spec_welch_graphn_make(size : Int) -> SignalspecwelchGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_graphn_len(s : SignalspecwelchGraphN) -> Int { s.size }
+pub fn SignalspecwelchGraphN::len(self : SignalspecwelchGraphN) -> Int { self.size }
 
-pub fn signal_spec_welch_graphn_get(s : SignalspecwelchGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchGraphN::get(self : SignalspecwelchGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_graphn_set(s : SignalspecwelchGraphN, i : Int, v : Double) -> SignalspecwelchGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchGraphN::set(self : SignalspecwelchGraphN, i : Int, v : Double) -> SignalspecwelchGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_graphn_sum(s : SignalspecwelchGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchGraphN::sum(self : SignalspecwelchGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_graphn_mean(s : SignalspecwelchGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchGraphN::mean(self : SignalspecwelchGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_graphn_scale(s : SignalspecwelchGraphN, f : Double) -> SignalspecwelchGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchGraphN::scale(self : SignalspecwelchGraphN, f : Double) -> SignalspecwelchGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_graphn_add(a : SignalspecwelchGraphN, b : SignalspecwelchGraphN) -> SignalspecwelchGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchGraphN::add(self : SignalspecwelchGraphN, other : SignalspecwelchGraphN) -> SignalspecwelchGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_graphn_copy(s : SignalspecwelchGraphN) -> SignalspecwelchGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchGraphN::copy(self : SignalspecwelchGraphN) -> SignalspecwelchGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_graphn_fill(s : SignalspecwelchGraphN, v : Double) -> SignalspecwelchGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchGraphN::fill(self : SignalspecwelchGraphN, v : Double) -> SignalspecwelchGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_graphn_min(s : SignalspecwelchGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchGraphN::min(self : SignalspecwelchGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_graphn_max(s : SignalspecwelchGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchGraphN::max(self : SignalspecwelchGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_graphn_to_string(s : SignalspecwelchGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchGraphN::to_string(self : SignalspecwelchGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchNode {
@@ -504,45 +504,45 @@ pub fn signal_spec_welch_node_make(size : Int) -> SignalspecwelchNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_node_len(s : SignalspecwelchNode) -> Int { s.size }
+pub fn SignalspecwelchNode::len(self : SignalspecwelchNode) -> Int { self.size }
 
-pub fn signal_spec_welch_node_get(s : SignalspecwelchNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchNode::get(self : SignalspecwelchNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_node_set(s : SignalspecwelchNode, i : Int, v : Double) -> SignalspecwelchNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchNode::set(self : SignalspecwelchNode, i : Int, v : Double) -> SignalspecwelchNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_node_sum(s : SignalspecwelchNode) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchNode::sum(self : SignalspecwelchNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_node_mean(s : SignalspecwelchNode) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchNode::mean(self : SignalspecwelchNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_node_scale(s : SignalspecwelchNode, f : Double) -> SignalspecwelchNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchNode::scale(self : SignalspecwelchNode, f : Double) -> SignalspecwelchNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_node_add(a : SignalspecwelchNode, b : SignalspecwelchNode) -> SignalspecwelchNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchNode::add(self : SignalspecwelchNode, other : SignalspecwelchNode) -> SignalspecwelchNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_node_copy(s : SignalspecwelchNode) -> SignalspecwelchNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchNode::copy(self : SignalspecwelchNode) -> SignalspecwelchNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_node_fill(s : SignalspecwelchNode, v : Double) -> SignalspecwelchNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchNode::fill(self : SignalspecwelchNode, v : Double) -> SignalspecwelchNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_node_min(s : SignalspecwelchNode) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchNode::min(self : SignalspecwelchNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_node_max(s : SignalspecwelchNode) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchNode::max(self : SignalspecwelchNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_node_to_string(s : SignalspecwelchNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchNode::to_string(self : SignalspecwelchNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchEdge {
@@ -555,45 +555,45 @@ pub fn signal_spec_welch_edge_make(size : Int) -> SignalspecwelchEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_edge_len(s : SignalspecwelchEdge) -> Int { s.size }
+pub fn SignalspecwelchEdge::len(self : SignalspecwelchEdge) -> Int { self.size }
 
-pub fn signal_spec_welch_edge_get(s : SignalspecwelchEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchEdge::get(self : SignalspecwelchEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_edge_set(s : SignalspecwelchEdge, i : Int, v : Double) -> SignalspecwelchEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchEdge::set(self : SignalspecwelchEdge, i : Int, v : Double) -> SignalspecwelchEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_edge_sum(s : SignalspecwelchEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchEdge::sum(self : SignalspecwelchEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_edge_mean(s : SignalspecwelchEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchEdge::mean(self : SignalspecwelchEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_edge_scale(s : SignalspecwelchEdge, f : Double) -> SignalspecwelchEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchEdge::scale(self : SignalspecwelchEdge, f : Double) -> SignalspecwelchEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_edge_add(a : SignalspecwelchEdge, b : SignalspecwelchEdge) -> SignalspecwelchEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchEdge::add(self : SignalspecwelchEdge, other : SignalspecwelchEdge) -> SignalspecwelchEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_edge_copy(s : SignalspecwelchEdge) -> SignalspecwelchEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchEdge::copy(self : SignalspecwelchEdge) -> SignalspecwelchEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_edge_fill(s : SignalspecwelchEdge, v : Double) -> SignalspecwelchEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchEdge::fill(self : SignalspecwelchEdge, v : Double) -> SignalspecwelchEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_edge_min(s : SignalspecwelchEdge) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchEdge::min(self : SignalspecwelchEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_edge_max(s : SignalspecwelchEdge) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchEdge::max(self : SignalspecwelchEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_edge_to_string(s : SignalspecwelchEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchEdge::to_string(self : SignalspecwelchEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchPath {
@@ -606,45 +606,45 @@ pub fn signal_spec_welch_path_make(size : Int) -> SignalspecwelchPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_path_len(s : SignalspecwelchPath) -> Int { s.size }
+pub fn SignalspecwelchPath::len(self : SignalspecwelchPath) -> Int { self.size }
 
-pub fn signal_spec_welch_path_get(s : SignalspecwelchPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchPath::get(self : SignalspecwelchPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_path_set(s : SignalspecwelchPath, i : Int, v : Double) -> SignalspecwelchPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchPath::set(self : SignalspecwelchPath, i : Int, v : Double) -> SignalspecwelchPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_path_sum(s : SignalspecwelchPath) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchPath::sum(self : SignalspecwelchPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_path_mean(s : SignalspecwelchPath) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchPath::mean(self : SignalspecwelchPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_path_scale(s : SignalspecwelchPath, f : Double) -> SignalspecwelchPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchPath::scale(self : SignalspecwelchPath, f : Double) -> SignalspecwelchPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_path_add(a : SignalspecwelchPath, b : SignalspecwelchPath) -> SignalspecwelchPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchPath::add(self : SignalspecwelchPath, other : SignalspecwelchPath) -> SignalspecwelchPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_path_copy(s : SignalspecwelchPath) -> SignalspecwelchPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchPath::copy(self : SignalspecwelchPath) -> SignalspecwelchPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_path_fill(s : SignalspecwelchPath, v : Double) -> SignalspecwelchPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchPath::fill(self : SignalspecwelchPath, v : Double) -> SignalspecwelchPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_path_min(s : SignalspecwelchPath) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchPath::min(self : SignalspecwelchPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_path_max(s : SignalspecwelchPath) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchPath::max(self : SignalspecwelchPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_path_to_string(s : SignalspecwelchPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchPath::to_string(self : SignalspecwelchPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchCluster {
@@ -657,45 +657,45 @@ pub fn signal_spec_welch_cluster_make(size : Int) -> SignalspecwelchCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_cluster_len(s : SignalspecwelchCluster) -> Int { s.size }
+pub fn SignalspecwelchCluster::len(self : SignalspecwelchCluster) -> Int { self.size }
 
-pub fn signal_spec_welch_cluster_get(s : SignalspecwelchCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchCluster::get(self : SignalspecwelchCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_cluster_set(s : SignalspecwelchCluster, i : Int, v : Double) -> SignalspecwelchCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchCluster::set(self : SignalspecwelchCluster, i : Int, v : Double) -> SignalspecwelchCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cluster_sum(s : SignalspecwelchCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchCluster::sum(self : SignalspecwelchCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_cluster_mean(s : SignalspecwelchCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchCluster::mean(self : SignalspecwelchCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_cluster_scale(s : SignalspecwelchCluster, f : Double) -> SignalspecwelchCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchCluster::scale(self : SignalspecwelchCluster, f : Double) -> SignalspecwelchCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cluster_add(a : SignalspecwelchCluster, b : SignalspecwelchCluster) -> SignalspecwelchCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchCluster::add(self : SignalspecwelchCluster, other : SignalspecwelchCluster) -> SignalspecwelchCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cluster_copy(s : SignalspecwelchCluster) -> SignalspecwelchCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchCluster::copy(self : SignalspecwelchCluster) -> SignalspecwelchCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cluster_fill(s : SignalspecwelchCluster, v : Double) -> SignalspecwelchCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchCluster::fill(self : SignalspecwelchCluster, v : Double) -> SignalspecwelchCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cluster_min(s : SignalspecwelchCluster) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchCluster::min(self : SignalspecwelchCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_cluster_max(s : SignalspecwelchCluster) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchCluster::max(self : SignalspecwelchCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_cluster_to_string(s : SignalspecwelchCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchCluster::to_string(self : SignalspecwelchCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchModel {
@@ -708,45 +708,45 @@ pub fn signal_spec_welch_model_make(size : Int) -> SignalspecwelchModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_model_len(s : SignalspecwelchModel) -> Int { s.size }
+pub fn SignalspecwelchModel::len(self : SignalspecwelchModel) -> Int { self.size }
 
-pub fn signal_spec_welch_model_get(s : SignalspecwelchModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchModel::get(self : SignalspecwelchModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_model_set(s : SignalspecwelchModel, i : Int, v : Double) -> SignalspecwelchModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchModel::set(self : SignalspecwelchModel, i : Int, v : Double) -> SignalspecwelchModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_model_sum(s : SignalspecwelchModel) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchModel::sum(self : SignalspecwelchModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_model_mean(s : SignalspecwelchModel) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchModel::mean(self : SignalspecwelchModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_model_scale(s : SignalspecwelchModel, f : Double) -> SignalspecwelchModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchModel::scale(self : SignalspecwelchModel, f : Double) -> SignalspecwelchModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_model_add(a : SignalspecwelchModel, b : SignalspecwelchModel) -> SignalspecwelchModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchModel::add(self : SignalspecwelchModel, other : SignalspecwelchModel) -> SignalspecwelchModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_model_copy(s : SignalspecwelchModel) -> SignalspecwelchModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchModel::copy(self : SignalspecwelchModel) -> SignalspecwelchModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_model_fill(s : SignalspecwelchModel, v : Double) -> SignalspecwelchModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchModel::fill(self : SignalspecwelchModel, v : Double) -> SignalspecwelchModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_model_min(s : SignalspecwelchModel) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchModel::min(self : SignalspecwelchModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_model_max(s : SignalspecwelchModel) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchModel::max(self : SignalspecwelchModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_model_to_string(s : SignalspecwelchModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchModel::to_string(self : SignalspecwelchModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchLayer {
@@ -759,45 +759,45 @@ pub fn signal_spec_welch_layer_make(size : Int) -> SignalspecwelchLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_layer_len(s : SignalspecwelchLayer) -> Int { s.size }
+pub fn SignalspecwelchLayer::len(self : SignalspecwelchLayer) -> Int { self.size }
 
-pub fn signal_spec_welch_layer_get(s : SignalspecwelchLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchLayer::get(self : SignalspecwelchLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_layer_set(s : SignalspecwelchLayer, i : Int, v : Double) -> SignalspecwelchLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchLayer::set(self : SignalspecwelchLayer, i : Int, v : Double) -> SignalspecwelchLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_layer_sum(s : SignalspecwelchLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchLayer::sum(self : SignalspecwelchLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_layer_mean(s : SignalspecwelchLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchLayer::mean(self : SignalspecwelchLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_layer_scale(s : SignalspecwelchLayer, f : Double) -> SignalspecwelchLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchLayer::scale(self : SignalspecwelchLayer, f : Double) -> SignalspecwelchLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_layer_add(a : SignalspecwelchLayer, b : SignalspecwelchLayer) -> SignalspecwelchLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchLayer::add(self : SignalspecwelchLayer, other : SignalspecwelchLayer) -> SignalspecwelchLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_layer_copy(s : SignalspecwelchLayer) -> SignalspecwelchLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchLayer::copy(self : SignalspecwelchLayer) -> SignalspecwelchLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_layer_fill(s : SignalspecwelchLayer, v : Double) -> SignalspecwelchLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchLayer::fill(self : SignalspecwelchLayer, v : Double) -> SignalspecwelchLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_layer_min(s : SignalspecwelchLayer) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchLayer::min(self : SignalspecwelchLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_layer_max(s : SignalspecwelchLayer) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchLayer::max(self : SignalspecwelchLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_layer_to_string(s : SignalspecwelchLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchLayer::to_string(self : SignalspecwelchLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchBuffer {
@@ -810,45 +810,45 @@ pub fn signal_spec_welch_buffer_make(size : Int) -> SignalspecwelchBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_buffer_len(s : SignalspecwelchBuffer) -> Int { s.size }
+pub fn SignalspecwelchBuffer::len(self : SignalspecwelchBuffer) -> Int { self.size }
 
-pub fn signal_spec_welch_buffer_get(s : SignalspecwelchBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchBuffer::get(self : SignalspecwelchBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_buffer_set(s : SignalspecwelchBuffer, i : Int, v : Double) -> SignalspecwelchBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchBuffer::set(self : SignalspecwelchBuffer, i : Int, v : Double) -> SignalspecwelchBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_buffer_sum(s : SignalspecwelchBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchBuffer::sum(self : SignalspecwelchBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_buffer_mean(s : SignalspecwelchBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchBuffer::mean(self : SignalspecwelchBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_buffer_scale(s : SignalspecwelchBuffer, f : Double) -> SignalspecwelchBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchBuffer::scale(self : SignalspecwelchBuffer, f : Double) -> SignalspecwelchBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_buffer_add(a : SignalspecwelchBuffer, b : SignalspecwelchBuffer) -> SignalspecwelchBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchBuffer::add(self : SignalspecwelchBuffer, other : SignalspecwelchBuffer) -> SignalspecwelchBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_buffer_copy(s : SignalspecwelchBuffer) -> SignalspecwelchBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchBuffer::copy(self : SignalspecwelchBuffer) -> SignalspecwelchBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_buffer_fill(s : SignalspecwelchBuffer, v : Double) -> SignalspecwelchBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchBuffer::fill(self : SignalspecwelchBuffer, v : Double) -> SignalspecwelchBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_buffer_min(s : SignalspecwelchBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchBuffer::min(self : SignalspecwelchBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_buffer_max(s : SignalspecwelchBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchBuffer::max(self : SignalspecwelchBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_buffer_to_string(s : SignalspecwelchBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchBuffer::to_string(self : SignalspecwelchBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchCursor {
@@ -861,45 +861,45 @@ pub fn signal_spec_welch_cursor_make(size : Int) -> SignalspecwelchCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_cursor_len(s : SignalspecwelchCursor) -> Int { s.size }
+pub fn SignalspecwelchCursor::len(self : SignalspecwelchCursor) -> Int { self.size }
 
-pub fn signal_spec_welch_cursor_get(s : SignalspecwelchCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchCursor::get(self : SignalspecwelchCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_cursor_set(s : SignalspecwelchCursor, i : Int, v : Double) -> SignalspecwelchCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchCursor::set(self : SignalspecwelchCursor, i : Int, v : Double) -> SignalspecwelchCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cursor_sum(s : SignalspecwelchCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchCursor::sum(self : SignalspecwelchCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_cursor_mean(s : SignalspecwelchCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchCursor::mean(self : SignalspecwelchCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_cursor_scale(s : SignalspecwelchCursor, f : Double) -> SignalspecwelchCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchCursor::scale(self : SignalspecwelchCursor, f : Double) -> SignalspecwelchCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cursor_add(a : SignalspecwelchCursor, b : SignalspecwelchCursor) -> SignalspecwelchCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchCursor::add(self : SignalspecwelchCursor, other : SignalspecwelchCursor) -> SignalspecwelchCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cursor_copy(s : SignalspecwelchCursor) -> SignalspecwelchCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchCursor::copy(self : SignalspecwelchCursor) -> SignalspecwelchCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cursor_fill(s : SignalspecwelchCursor, v : Double) -> SignalspecwelchCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchCursor::fill(self : SignalspecwelchCursor, v : Double) -> SignalspecwelchCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_cursor_min(s : SignalspecwelchCursor) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchCursor::min(self : SignalspecwelchCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_cursor_max(s : SignalspecwelchCursor) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchCursor::max(self : SignalspecwelchCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_cursor_to_string(s : SignalspecwelchCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchCursor::to_string(self : SignalspecwelchCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchView {
@@ -912,45 +912,45 @@ pub fn signal_spec_welch_view_make(size : Int) -> SignalspecwelchView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_view_len(s : SignalspecwelchView) -> Int { s.size }
+pub fn SignalspecwelchView::len(self : SignalspecwelchView) -> Int { self.size }
 
-pub fn signal_spec_welch_view_get(s : SignalspecwelchView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchView::get(self : SignalspecwelchView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_view_set(s : SignalspecwelchView, i : Int, v : Double) -> SignalspecwelchView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchView::set(self : SignalspecwelchView, i : Int, v : Double) -> SignalspecwelchView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_view_sum(s : SignalspecwelchView) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchView::sum(self : SignalspecwelchView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_view_mean(s : SignalspecwelchView) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchView::mean(self : SignalspecwelchView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_view_scale(s : SignalspecwelchView, f : Double) -> SignalspecwelchView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchView::scale(self : SignalspecwelchView, f : Double) -> SignalspecwelchView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_view_add(a : SignalspecwelchView, b : SignalspecwelchView) -> SignalspecwelchView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchView::add(self : SignalspecwelchView, other : SignalspecwelchView) -> SignalspecwelchView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_view_copy(s : SignalspecwelchView) -> SignalspecwelchView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchView::copy(self : SignalspecwelchView) -> SignalspecwelchView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_view_fill(s : SignalspecwelchView, v : Double) -> SignalspecwelchView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchView::fill(self : SignalspecwelchView, v : Double) -> SignalspecwelchView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_view_min(s : SignalspecwelchView) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchView::min(self : SignalspecwelchView) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_view_max(s : SignalspecwelchView) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchView::max(self : SignalspecwelchView) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_view_to_string(s : SignalspecwelchView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchView::to_string(self : SignalspecwelchView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchRange {
@@ -963,45 +963,45 @@ pub fn signal_spec_welch_range_make(size : Int) -> SignalspecwelchRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_range_len(s : SignalspecwelchRange) -> Int { s.size }
+pub fn SignalspecwelchRange::len(self : SignalspecwelchRange) -> Int { self.size }
 
-pub fn signal_spec_welch_range_get(s : SignalspecwelchRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchRange::get(self : SignalspecwelchRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_range_set(s : SignalspecwelchRange, i : Int, v : Double) -> SignalspecwelchRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchRange::set(self : SignalspecwelchRange, i : Int, v : Double) -> SignalspecwelchRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_range_sum(s : SignalspecwelchRange) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchRange::sum(self : SignalspecwelchRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_range_mean(s : SignalspecwelchRange) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchRange::mean(self : SignalspecwelchRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_range_scale(s : SignalspecwelchRange, f : Double) -> SignalspecwelchRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchRange::scale(self : SignalspecwelchRange, f : Double) -> SignalspecwelchRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_range_add(a : SignalspecwelchRange, b : SignalspecwelchRange) -> SignalspecwelchRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchRange::add(self : SignalspecwelchRange, other : SignalspecwelchRange) -> SignalspecwelchRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_range_copy(s : SignalspecwelchRange) -> SignalspecwelchRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchRange::copy(self : SignalspecwelchRange) -> SignalspecwelchRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_range_fill(s : SignalspecwelchRange, v : Double) -> SignalspecwelchRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchRange::fill(self : SignalspecwelchRange, v : Double) -> SignalspecwelchRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_range_min(s : SignalspecwelchRange) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchRange::min(self : SignalspecwelchRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_range_max(s : SignalspecwelchRange) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchRange::max(self : SignalspecwelchRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_range_to_string(s : SignalspecwelchRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchRange::to_string(self : SignalspecwelchRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecwelchSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_spec_welch_slice_make(size : Int) -> SignalspecwelchSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_welch_slice_len(s : SignalspecwelchSlice) -> Int { s.size }
+pub fn SignalspecwelchSlice::len(self : SignalspecwelchSlice) -> Int { self.size }
 
-pub fn signal_spec_welch_slice_get(s : SignalspecwelchSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecwelchSlice::get(self : SignalspecwelchSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_welch_slice_set(s : SignalspecwelchSlice, i : Int, v : Double) -> SignalspecwelchSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecwelchSlice::set(self : SignalspecwelchSlice, i : Int, v : Double) -> SignalspecwelchSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_slice_sum(s : SignalspecwelchSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalspecwelchSlice::sum(self : SignalspecwelchSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_welch_slice_mean(s : SignalspecwelchSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalspecwelchSlice::mean(self : SignalspecwelchSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_welch_slice_scale(s : SignalspecwelchSlice, f : Double) -> SignalspecwelchSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecwelchSlice::scale(self : SignalspecwelchSlice, f : Double) -> SignalspecwelchSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_slice_add(a : SignalspecwelchSlice, b : SignalspecwelchSlice) -> SignalspecwelchSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecwelchSlice::add(self : SignalspecwelchSlice, other : SignalspecwelchSlice) -> SignalspecwelchSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_welch_slice_copy(s : SignalspecwelchSlice) -> SignalspecwelchSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecwelchSlice::copy(self : SignalspecwelchSlice) -> SignalspecwelchSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_slice_fill(s : SignalspecwelchSlice, v : Double) -> SignalspecwelchSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecwelchSlice::fill(self : SignalspecwelchSlice, v : Double) -> SignalspecwelchSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_welch_slice_min(s : SignalspecwelchSlice) -> Double { @_common.min(s.data) }
+pub fn SignalspecwelchSlice::min(self : SignalspecwelchSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_welch_slice_max(s : SignalspecwelchSlice) -> Double { @_common.max(s.data) }
+pub fn SignalspecwelchSlice::max(self : SignalspecwelchSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_welch_slice_to_string(s : SignalspecwelchSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecwelchSlice::to_string(self : SignalspecwelchSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

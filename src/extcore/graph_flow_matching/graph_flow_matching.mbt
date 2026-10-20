@@ -351,45 +351,45 @@ pub fn graph_flow_matching_frame_make(size : Int) -> GraphflowmatchingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_frame_len(s : GraphflowmatchingFrame) -> Int { s.size }
+pub fn GraphflowmatchingFrame::len(self : GraphflowmatchingFrame) -> Int { self.size }
 
-pub fn graph_flow_matching_frame_get(s : GraphflowmatchingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingFrame::get(self : GraphflowmatchingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_frame_set(s : GraphflowmatchingFrame, i : Int, v : Double) -> GraphflowmatchingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingFrame::set(self : GraphflowmatchingFrame, i : Int, v : Double) -> GraphflowmatchingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_frame_sum(s : GraphflowmatchingFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingFrame::sum(self : GraphflowmatchingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_frame_mean(s : GraphflowmatchingFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingFrame::mean(self : GraphflowmatchingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_frame_scale(s : GraphflowmatchingFrame, f : Double) -> GraphflowmatchingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingFrame::scale(self : GraphflowmatchingFrame, f : Double) -> GraphflowmatchingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_frame_add(a : GraphflowmatchingFrame, b : GraphflowmatchingFrame) -> GraphflowmatchingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingFrame::add(self : GraphflowmatchingFrame, other : GraphflowmatchingFrame) -> GraphflowmatchingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_frame_copy(s : GraphflowmatchingFrame) -> GraphflowmatchingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingFrame::copy(self : GraphflowmatchingFrame) -> GraphflowmatchingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_frame_fill(s : GraphflowmatchingFrame, v : Double) -> GraphflowmatchingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingFrame::fill(self : GraphflowmatchingFrame, v : Double) -> GraphflowmatchingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_frame_min(s : GraphflowmatchingFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingFrame::min(self : GraphflowmatchingFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_frame_max(s : GraphflowmatchingFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingFrame::max(self : GraphflowmatchingFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_frame_to_string(s : GraphflowmatchingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingFrame::to_string(self : GraphflowmatchingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_matching_table_make(size : Int) -> GraphflowmatchingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_table_len(s : GraphflowmatchingTable) -> Int { s.size }
+pub fn GraphflowmatchingTable::len(self : GraphflowmatchingTable) -> Int { self.size }
 
-pub fn graph_flow_matching_table_get(s : GraphflowmatchingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingTable::get(self : GraphflowmatchingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_table_set(s : GraphflowmatchingTable, i : Int, v : Double) -> GraphflowmatchingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingTable::set(self : GraphflowmatchingTable, i : Int, v : Double) -> GraphflowmatchingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_table_sum(s : GraphflowmatchingTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingTable::sum(self : GraphflowmatchingTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_table_mean(s : GraphflowmatchingTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingTable::mean(self : GraphflowmatchingTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_table_scale(s : GraphflowmatchingTable, f : Double) -> GraphflowmatchingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingTable::scale(self : GraphflowmatchingTable, f : Double) -> GraphflowmatchingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_table_add(a : GraphflowmatchingTable, b : GraphflowmatchingTable) -> GraphflowmatchingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingTable::add(self : GraphflowmatchingTable, other : GraphflowmatchingTable) -> GraphflowmatchingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_table_copy(s : GraphflowmatchingTable) -> GraphflowmatchingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingTable::copy(self : GraphflowmatchingTable) -> GraphflowmatchingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_table_fill(s : GraphflowmatchingTable, v : Double) -> GraphflowmatchingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingTable::fill(self : GraphflowmatchingTable, v : Double) -> GraphflowmatchingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_table_min(s : GraphflowmatchingTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingTable::min(self : GraphflowmatchingTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_table_max(s : GraphflowmatchingTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingTable::max(self : GraphflowmatchingTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_table_to_string(s : GraphflowmatchingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingTable::to_string(self : GraphflowmatchingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_matching_graphn_make(size : Int) -> GraphflowmatchingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_graphn_len(s : GraphflowmatchingGraphN) -> Int { s.size }
+pub fn GraphflowmatchingGraphN::len(self : GraphflowmatchingGraphN) -> Int { self.size }
 
-pub fn graph_flow_matching_graphn_get(s : GraphflowmatchingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingGraphN::get(self : GraphflowmatchingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_graphn_set(s : GraphflowmatchingGraphN, i : Int, v : Double) -> GraphflowmatchingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingGraphN::set(self : GraphflowmatchingGraphN, i : Int, v : Double) -> GraphflowmatchingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_graphn_sum(s : GraphflowmatchingGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingGraphN::sum(self : GraphflowmatchingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_graphn_mean(s : GraphflowmatchingGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingGraphN::mean(self : GraphflowmatchingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_graphn_scale(s : GraphflowmatchingGraphN, f : Double) -> GraphflowmatchingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingGraphN::scale(self : GraphflowmatchingGraphN, f : Double) -> GraphflowmatchingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_graphn_add(a : GraphflowmatchingGraphN, b : GraphflowmatchingGraphN) -> GraphflowmatchingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingGraphN::add(self : GraphflowmatchingGraphN, other : GraphflowmatchingGraphN) -> GraphflowmatchingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_graphn_copy(s : GraphflowmatchingGraphN) -> GraphflowmatchingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingGraphN::copy(self : GraphflowmatchingGraphN) -> GraphflowmatchingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_graphn_fill(s : GraphflowmatchingGraphN, v : Double) -> GraphflowmatchingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingGraphN::fill(self : GraphflowmatchingGraphN, v : Double) -> GraphflowmatchingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_graphn_min(s : GraphflowmatchingGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingGraphN::min(self : GraphflowmatchingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_graphn_max(s : GraphflowmatchingGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingGraphN::max(self : GraphflowmatchingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_graphn_to_string(s : GraphflowmatchingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingGraphN::to_string(self : GraphflowmatchingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_matching_node_make(size : Int) -> GraphflowmatchingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_node_len(s : GraphflowmatchingNode) -> Int { s.size }
+pub fn GraphflowmatchingNode::len(self : GraphflowmatchingNode) -> Int { self.size }
 
-pub fn graph_flow_matching_node_get(s : GraphflowmatchingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingNode::get(self : GraphflowmatchingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_node_set(s : GraphflowmatchingNode, i : Int, v : Double) -> GraphflowmatchingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingNode::set(self : GraphflowmatchingNode, i : Int, v : Double) -> GraphflowmatchingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_node_sum(s : GraphflowmatchingNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingNode::sum(self : GraphflowmatchingNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_node_mean(s : GraphflowmatchingNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingNode::mean(self : GraphflowmatchingNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_node_scale(s : GraphflowmatchingNode, f : Double) -> GraphflowmatchingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingNode::scale(self : GraphflowmatchingNode, f : Double) -> GraphflowmatchingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_node_add(a : GraphflowmatchingNode, b : GraphflowmatchingNode) -> GraphflowmatchingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingNode::add(self : GraphflowmatchingNode, other : GraphflowmatchingNode) -> GraphflowmatchingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_node_copy(s : GraphflowmatchingNode) -> GraphflowmatchingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingNode::copy(self : GraphflowmatchingNode) -> GraphflowmatchingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_node_fill(s : GraphflowmatchingNode, v : Double) -> GraphflowmatchingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingNode::fill(self : GraphflowmatchingNode, v : Double) -> GraphflowmatchingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_node_min(s : GraphflowmatchingNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingNode::min(self : GraphflowmatchingNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_node_max(s : GraphflowmatchingNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingNode::max(self : GraphflowmatchingNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_node_to_string(s : GraphflowmatchingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingNode::to_string(self : GraphflowmatchingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_matching_edge_make(size : Int) -> GraphflowmatchingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_edge_len(s : GraphflowmatchingEdge) -> Int { s.size }
+pub fn GraphflowmatchingEdge::len(self : GraphflowmatchingEdge) -> Int { self.size }
 
-pub fn graph_flow_matching_edge_get(s : GraphflowmatchingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingEdge::get(self : GraphflowmatchingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_edge_set(s : GraphflowmatchingEdge, i : Int, v : Double) -> GraphflowmatchingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingEdge::set(self : GraphflowmatchingEdge, i : Int, v : Double) -> GraphflowmatchingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_edge_sum(s : GraphflowmatchingEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingEdge::sum(self : GraphflowmatchingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_edge_mean(s : GraphflowmatchingEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingEdge::mean(self : GraphflowmatchingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_edge_scale(s : GraphflowmatchingEdge, f : Double) -> GraphflowmatchingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingEdge::scale(self : GraphflowmatchingEdge, f : Double) -> GraphflowmatchingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_edge_add(a : GraphflowmatchingEdge, b : GraphflowmatchingEdge) -> GraphflowmatchingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingEdge::add(self : GraphflowmatchingEdge, other : GraphflowmatchingEdge) -> GraphflowmatchingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_edge_copy(s : GraphflowmatchingEdge) -> GraphflowmatchingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingEdge::copy(self : GraphflowmatchingEdge) -> GraphflowmatchingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_edge_fill(s : GraphflowmatchingEdge, v : Double) -> GraphflowmatchingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingEdge::fill(self : GraphflowmatchingEdge, v : Double) -> GraphflowmatchingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_edge_min(s : GraphflowmatchingEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingEdge::min(self : GraphflowmatchingEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_edge_max(s : GraphflowmatchingEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingEdge::max(self : GraphflowmatchingEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_edge_to_string(s : GraphflowmatchingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingEdge::to_string(self : GraphflowmatchingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingPath {
@@ -606,45 +606,45 @@ pub fn graph_flow_matching_path_make(size : Int) -> GraphflowmatchingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_path_len(s : GraphflowmatchingPath) -> Int { s.size }
+pub fn GraphflowmatchingPath::len(self : GraphflowmatchingPath) -> Int { self.size }
 
-pub fn graph_flow_matching_path_get(s : GraphflowmatchingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingPath::get(self : GraphflowmatchingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_path_set(s : GraphflowmatchingPath, i : Int, v : Double) -> GraphflowmatchingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingPath::set(self : GraphflowmatchingPath, i : Int, v : Double) -> GraphflowmatchingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_path_sum(s : GraphflowmatchingPath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingPath::sum(self : GraphflowmatchingPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_path_mean(s : GraphflowmatchingPath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingPath::mean(self : GraphflowmatchingPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_path_scale(s : GraphflowmatchingPath, f : Double) -> GraphflowmatchingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingPath::scale(self : GraphflowmatchingPath, f : Double) -> GraphflowmatchingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_path_add(a : GraphflowmatchingPath, b : GraphflowmatchingPath) -> GraphflowmatchingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingPath::add(self : GraphflowmatchingPath, other : GraphflowmatchingPath) -> GraphflowmatchingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_path_copy(s : GraphflowmatchingPath) -> GraphflowmatchingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingPath::copy(self : GraphflowmatchingPath) -> GraphflowmatchingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_path_fill(s : GraphflowmatchingPath, v : Double) -> GraphflowmatchingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingPath::fill(self : GraphflowmatchingPath, v : Double) -> GraphflowmatchingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_path_min(s : GraphflowmatchingPath) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingPath::min(self : GraphflowmatchingPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_path_max(s : GraphflowmatchingPath) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingPath::max(self : GraphflowmatchingPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_path_to_string(s : GraphflowmatchingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingPath::to_string(self : GraphflowmatchingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_matching_cluster_make(size : Int) -> GraphflowmatchingCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_cluster_len(s : GraphflowmatchingCluster) -> Int { s.size }
+pub fn GraphflowmatchingCluster::len(self : GraphflowmatchingCluster) -> Int { self.size }
 
-pub fn graph_flow_matching_cluster_get(s : GraphflowmatchingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingCluster::get(self : GraphflowmatchingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_cluster_set(s : GraphflowmatchingCluster, i : Int, v : Double) -> GraphflowmatchingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCluster::set(self : GraphflowmatchingCluster, i : Int, v : Double) -> GraphflowmatchingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cluster_sum(s : GraphflowmatchingCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingCluster::sum(self : GraphflowmatchingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_cluster_mean(s : GraphflowmatchingCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingCluster::mean(self : GraphflowmatchingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_cluster_scale(s : GraphflowmatchingCluster, f : Double) -> GraphflowmatchingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCluster::scale(self : GraphflowmatchingCluster, f : Double) -> GraphflowmatchingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cluster_add(a : GraphflowmatchingCluster, b : GraphflowmatchingCluster) -> GraphflowmatchingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingCluster::add(self : GraphflowmatchingCluster, other : GraphflowmatchingCluster) -> GraphflowmatchingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cluster_copy(s : GraphflowmatchingCluster) -> GraphflowmatchingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCluster::copy(self : GraphflowmatchingCluster) -> GraphflowmatchingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cluster_fill(s : GraphflowmatchingCluster, v : Double) -> GraphflowmatchingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCluster::fill(self : GraphflowmatchingCluster, v : Double) -> GraphflowmatchingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cluster_min(s : GraphflowmatchingCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingCluster::min(self : GraphflowmatchingCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_cluster_max(s : GraphflowmatchingCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingCluster::max(self : GraphflowmatchingCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_cluster_to_string(s : GraphflowmatchingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingCluster::to_string(self : GraphflowmatchingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_matching_model_make(size : Int) -> GraphflowmatchingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_model_len(s : GraphflowmatchingModel) -> Int { s.size }
+pub fn GraphflowmatchingModel::len(self : GraphflowmatchingModel) -> Int { self.size }
 
-pub fn graph_flow_matching_model_get(s : GraphflowmatchingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingModel::get(self : GraphflowmatchingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_model_set(s : GraphflowmatchingModel, i : Int, v : Double) -> GraphflowmatchingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingModel::set(self : GraphflowmatchingModel, i : Int, v : Double) -> GraphflowmatchingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_model_sum(s : GraphflowmatchingModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingModel::sum(self : GraphflowmatchingModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_model_mean(s : GraphflowmatchingModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingModel::mean(self : GraphflowmatchingModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_model_scale(s : GraphflowmatchingModel, f : Double) -> GraphflowmatchingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingModel::scale(self : GraphflowmatchingModel, f : Double) -> GraphflowmatchingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_model_add(a : GraphflowmatchingModel, b : GraphflowmatchingModel) -> GraphflowmatchingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingModel::add(self : GraphflowmatchingModel, other : GraphflowmatchingModel) -> GraphflowmatchingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_model_copy(s : GraphflowmatchingModel) -> GraphflowmatchingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingModel::copy(self : GraphflowmatchingModel) -> GraphflowmatchingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_model_fill(s : GraphflowmatchingModel, v : Double) -> GraphflowmatchingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingModel::fill(self : GraphflowmatchingModel, v : Double) -> GraphflowmatchingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_model_min(s : GraphflowmatchingModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingModel::min(self : GraphflowmatchingModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_model_max(s : GraphflowmatchingModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingModel::max(self : GraphflowmatchingModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_model_to_string(s : GraphflowmatchingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingModel::to_string(self : GraphflowmatchingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_matching_layer_make(size : Int) -> GraphflowmatchingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_layer_len(s : GraphflowmatchingLayer) -> Int { s.size }
+pub fn GraphflowmatchingLayer::len(self : GraphflowmatchingLayer) -> Int { self.size }
 
-pub fn graph_flow_matching_layer_get(s : GraphflowmatchingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingLayer::get(self : GraphflowmatchingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_layer_set(s : GraphflowmatchingLayer, i : Int, v : Double) -> GraphflowmatchingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingLayer::set(self : GraphflowmatchingLayer, i : Int, v : Double) -> GraphflowmatchingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_layer_sum(s : GraphflowmatchingLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingLayer::sum(self : GraphflowmatchingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_layer_mean(s : GraphflowmatchingLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingLayer::mean(self : GraphflowmatchingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_layer_scale(s : GraphflowmatchingLayer, f : Double) -> GraphflowmatchingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingLayer::scale(self : GraphflowmatchingLayer, f : Double) -> GraphflowmatchingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_layer_add(a : GraphflowmatchingLayer, b : GraphflowmatchingLayer) -> GraphflowmatchingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingLayer::add(self : GraphflowmatchingLayer, other : GraphflowmatchingLayer) -> GraphflowmatchingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_layer_copy(s : GraphflowmatchingLayer) -> GraphflowmatchingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingLayer::copy(self : GraphflowmatchingLayer) -> GraphflowmatchingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_layer_fill(s : GraphflowmatchingLayer, v : Double) -> GraphflowmatchingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingLayer::fill(self : GraphflowmatchingLayer, v : Double) -> GraphflowmatchingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_layer_min(s : GraphflowmatchingLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingLayer::min(self : GraphflowmatchingLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_layer_max(s : GraphflowmatchingLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingLayer::max(self : GraphflowmatchingLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_layer_to_string(s : GraphflowmatchingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingLayer::to_string(self : GraphflowmatchingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_matching_buffer_make(size : Int) -> GraphflowmatchingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_buffer_len(s : GraphflowmatchingBuffer) -> Int { s.size }
+pub fn GraphflowmatchingBuffer::len(self : GraphflowmatchingBuffer) -> Int { self.size }
 
-pub fn graph_flow_matching_buffer_get(s : GraphflowmatchingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingBuffer::get(self : GraphflowmatchingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_buffer_set(s : GraphflowmatchingBuffer, i : Int, v : Double) -> GraphflowmatchingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingBuffer::set(self : GraphflowmatchingBuffer, i : Int, v : Double) -> GraphflowmatchingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_buffer_sum(s : GraphflowmatchingBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingBuffer::sum(self : GraphflowmatchingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_buffer_mean(s : GraphflowmatchingBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingBuffer::mean(self : GraphflowmatchingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_buffer_scale(s : GraphflowmatchingBuffer, f : Double) -> GraphflowmatchingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingBuffer::scale(self : GraphflowmatchingBuffer, f : Double) -> GraphflowmatchingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_buffer_add(a : GraphflowmatchingBuffer, b : GraphflowmatchingBuffer) -> GraphflowmatchingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingBuffer::add(self : GraphflowmatchingBuffer, other : GraphflowmatchingBuffer) -> GraphflowmatchingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_buffer_copy(s : GraphflowmatchingBuffer) -> GraphflowmatchingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingBuffer::copy(self : GraphflowmatchingBuffer) -> GraphflowmatchingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_buffer_fill(s : GraphflowmatchingBuffer, v : Double) -> GraphflowmatchingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingBuffer::fill(self : GraphflowmatchingBuffer, v : Double) -> GraphflowmatchingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_buffer_min(s : GraphflowmatchingBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingBuffer::min(self : GraphflowmatchingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_buffer_max(s : GraphflowmatchingBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingBuffer::max(self : GraphflowmatchingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_buffer_to_string(s : GraphflowmatchingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingBuffer::to_string(self : GraphflowmatchingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_matching_cursor_make(size : Int) -> GraphflowmatchingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_cursor_len(s : GraphflowmatchingCursor) -> Int { s.size }
+pub fn GraphflowmatchingCursor::len(self : GraphflowmatchingCursor) -> Int { self.size }
 
-pub fn graph_flow_matching_cursor_get(s : GraphflowmatchingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingCursor::get(self : GraphflowmatchingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_cursor_set(s : GraphflowmatchingCursor, i : Int, v : Double) -> GraphflowmatchingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCursor::set(self : GraphflowmatchingCursor, i : Int, v : Double) -> GraphflowmatchingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cursor_sum(s : GraphflowmatchingCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingCursor::sum(self : GraphflowmatchingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_cursor_mean(s : GraphflowmatchingCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingCursor::mean(self : GraphflowmatchingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_cursor_scale(s : GraphflowmatchingCursor, f : Double) -> GraphflowmatchingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCursor::scale(self : GraphflowmatchingCursor, f : Double) -> GraphflowmatchingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cursor_add(a : GraphflowmatchingCursor, b : GraphflowmatchingCursor) -> GraphflowmatchingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingCursor::add(self : GraphflowmatchingCursor, other : GraphflowmatchingCursor) -> GraphflowmatchingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cursor_copy(s : GraphflowmatchingCursor) -> GraphflowmatchingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCursor::copy(self : GraphflowmatchingCursor) -> GraphflowmatchingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cursor_fill(s : GraphflowmatchingCursor, v : Double) -> GraphflowmatchingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingCursor::fill(self : GraphflowmatchingCursor, v : Double) -> GraphflowmatchingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_cursor_min(s : GraphflowmatchingCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingCursor::min(self : GraphflowmatchingCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_cursor_max(s : GraphflowmatchingCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingCursor::max(self : GraphflowmatchingCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_cursor_to_string(s : GraphflowmatchingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingCursor::to_string(self : GraphflowmatchingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingView {
@@ -912,45 +912,45 @@ pub fn graph_flow_matching_view_make(size : Int) -> GraphflowmatchingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_view_len(s : GraphflowmatchingView) -> Int { s.size }
+pub fn GraphflowmatchingView::len(self : GraphflowmatchingView) -> Int { self.size }
 
-pub fn graph_flow_matching_view_get(s : GraphflowmatchingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingView::get(self : GraphflowmatchingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_view_set(s : GraphflowmatchingView, i : Int, v : Double) -> GraphflowmatchingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingView::set(self : GraphflowmatchingView, i : Int, v : Double) -> GraphflowmatchingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_view_sum(s : GraphflowmatchingView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingView::sum(self : GraphflowmatchingView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_view_mean(s : GraphflowmatchingView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingView::mean(self : GraphflowmatchingView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_view_scale(s : GraphflowmatchingView, f : Double) -> GraphflowmatchingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingView::scale(self : GraphflowmatchingView, f : Double) -> GraphflowmatchingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_view_add(a : GraphflowmatchingView, b : GraphflowmatchingView) -> GraphflowmatchingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingView::add(self : GraphflowmatchingView, other : GraphflowmatchingView) -> GraphflowmatchingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_view_copy(s : GraphflowmatchingView) -> GraphflowmatchingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingView::copy(self : GraphflowmatchingView) -> GraphflowmatchingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_view_fill(s : GraphflowmatchingView, v : Double) -> GraphflowmatchingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingView::fill(self : GraphflowmatchingView, v : Double) -> GraphflowmatchingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_view_min(s : GraphflowmatchingView) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingView::min(self : GraphflowmatchingView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_view_max(s : GraphflowmatchingView) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingView::max(self : GraphflowmatchingView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_view_to_string(s : GraphflowmatchingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingView::to_string(self : GraphflowmatchingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_matching_range_make(size : Int) -> GraphflowmatchingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_range_len(s : GraphflowmatchingRange) -> Int { s.size }
+pub fn GraphflowmatchingRange::len(self : GraphflowmatchingRange) -> Int { self.size }
 
-pub fn graph_flow_matching_range_get(s : GraphflowmatchingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingRange::get(self : GraphflowmatchingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_range_set(s : GraphflowmatchingRange, i : Int, v : Double) -> GraphflowmatchingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingRange::set(self : GraphflowmatchingRange, i : Int, v : Double) -> GraphflowmatchingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_range_sum(s : GraphflowmatchingRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingRange::sum(self : GraphflowmatchingRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_range_mean(s : GraphflowmatchingRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingRange::mean(self : GraphflowmatchingRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_range_scale(s : GraphflowmatchingRange, f : Double) -> GraphflowmatchingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingRange::scale(self : GraphflowmatchingRange, f : Double) -> GraphflowmatchingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_range_add(a : GraphflowmatchingRange, b : GraphflowmatchingRange) -> GraphflowmatchingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingRange::add(self : GraphflowmatchingRange, other : GraphflowmatchingRange) -> GraphflowmatchingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_range_copy(s : GraphflowmatchingRange) -> GraphflowmatchingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingRange::copy(self : GraphflowmatchingRange) -> GraphflowmatchingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_range_fill(s : GraphflowmatchingRange, v : Double) -> GraphflowmatchingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingRange::fill(self : GraphflowmatchingRange, v : Double) -> GraphflowmatchingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_range_min(s : GraphflowmatchingRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingRange::min(self : GraphflowmatchingRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_range_max(s : GraphflowmatchingRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingRange::max(self : GraphflowmatchingRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_range_to_string(s : GraphflowmatchingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingRange::to_string(self : GraphflowmatchingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowmatchingSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_matching_slice_make(size : Int) -> GraphflowmatchingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_matching_slice_len(s : GraphflowmatchingSlice) -> Int { s.size }
+pub fn GraphflowmatchingSlice::len(self : GraphflowmatchingSlice) -> Int { self.size }
 
-pub fn graph_flow_matching_slice_get(s : GraphflowmatchingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowmatchingSlice::get(self : GraphflowmatchingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_matching_slice_set(s : GraphflowmatchingSlice, i : Int, v : Double) -> GraphflowmatchingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowmatchingSlice::set(self : GraphflowmatchingSlice, i : Int, v : Double) -> GraphflowmatchingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_slice_sum(s : GraphflowmatchingSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowmatchingSlice::sum(self : GraphflowmatchingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_matching_slice_mean(s : GraphflowmatchingSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowmatchingSlice::mean(self : GraphflowmatchingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_matching_slice_scale(s : GraphflowmatchingSlice, f : Double) -> GraphflowmatchingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingSlice::scale(self : GraphflowmatchingSlice, f : Double) -> GraphflowmatchingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_slice_add(a : GraphflowmatchingSlice, b : GraphflowmatchingSlice) -> GraphflowmatchingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowmatchingSlice::add(self : GraphflowmatchingSlice, other : GraphflowmatchingSlice) -> GraphflowmatchingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_matching_slice_copy(s : GraphflowmatchingSlice) -> GraphflowmatchingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingSlice::copy(self : GraphflowmatchingSlice) -> GraphflowmatchingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_slice_fill(s : GraphflowmatchingSlice, v : Double) -> GraphflowmatchingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowmatchingSlice::fill(self : GraphflowmatchingSlice, v : Double) -> GraphflowmatchingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_matching_slice_min(s : GraphflowmatchingSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowmatchingSlice::min(self : GraphflowmatchingSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_matching_slice_max(s : GraphflowmatchingSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowmatchingSlice::max(self : GraphflowmatchingSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_matching_slice_to_string(s : GraphflowmatchingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowmatchingSlice::to_string(self : GraphflowmatchingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

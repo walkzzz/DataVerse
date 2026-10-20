@@ -351,45 +351,45 @@ pub fn stats_test_homogeneity_frame_make(size : Int) -> StatstesthomogeneityFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_frame_len(s : StatstesthomogeneityFrame) -> Int { s.size }
+pub fn StatstesthomogeneityFrame::len(self : StatstesthomogeneityFrame) -> Int { self.size }
 
-pub fn stats_test_homogeneity_frame_get(s : StatstesthomogeneityFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityFrame::get(self : StatstesthomogeneityFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_frame_set(s : StatstesthomogeneityFrame, i : Int, v : Double) -> StatstesthomogeneityFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityFrame::set(self : StatstesthomogeneityFrame, i : Int, v : Double) -> StatstesthomogeneityFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_frame_sum(s : StatstesthomogeneityFrame) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityFrame::sum(self : StatstesthomogeneityFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_frame_mean(s : StatstesthomogeneityFrame) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityFrame::mean(self : StatstesthomogeneityFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_frame_scale(s : StatstesthomogeneityFrame, f : Double) -> StatstesthomogeneityFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityFrame::scale(self : StatstesthomogeneityFrame, f : Double) -> StatstesthomogeneityFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_frame_add(a : StatstesthomogeneityFrame, b : StatstesthomogeneityFrame) -> StatstesthomogeneityFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityFrame::add(self : StatstesthomogeneityFrame, other : StatstesthomogeneityFrame) -> StatstesthomogeneityFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_frame_copy(s : StatstesthomogeneityFrame) -> StatstesthomogeneityFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityFrame::copy(self : StatstesthomogeneityFrame) -> StatstesthomogeneityFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_frame_fill(s : StatstesthomogeneityFrame, v : Double) -> StatstesthomogeneityFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityFrame::fill(self : StatstesthomogeneityFrame, v : Double) -> StatstesthomogeneityFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_frame_min(s : StatstesthomogeneityFrame) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityFrame::min(self : StatstesthomogeneityFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_frame_max(s : StatstesthomogeneityFrame) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityFrame::max(self : StatstesthomogeneityFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_frame_to_string(s : StatstesthomogeneityFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityFrame::to_string(self : StatstesthomogeneityFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityTable {
@@ -402,45 +402,45 @@ pub fn stats_test_homogeneity_table_make(size : Int) -> StatstesthomogeneityTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_table_len(s : StatstesthomogeneityTable) -> Int { s.size }
+pub fn StatstesthomogeneityTable::len(self : StatstesthomogeneityTable) -> Int { self.size }
 
-pub fn stats_test_homogeneity_table_get(s : StatstesthomogeneityTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityTable::get(self : StatstesthomogeneityTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_table_set(s : StatstesthomogeneityTable, i : Int, v : Double) -> StatstesthomogeneityTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityTable::set(self : StatstesthomogeneityTable, i : Int, v : Double) -> StatstesthomogeneityTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_table_sum(s : StatstesthomogeneityTable) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityTable::sum(self : StatstesthomogeneityTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_table_mean(s : StatstesthomogeneityTable) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityTable::mean(self : StatstesthomogeneityTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_table_scale(s : StatstesthomogeneityTable, f : Double) -> StatstesthomogeneityTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityTable::scale(self : StatstesthomogeneityTable, f : Double) -> StatstesthomogeneityTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_table_add(a : StatstesthomogeneityTable, b : StatstesthomogeneityTable) -> StatstesthomogeneityTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityTable::add(self : StatstesthomogeneityTable, other : StatstesthomogeneityTable) -> StatstesthomogeneityTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_table_copy(s : StatstesthomogeneityTable) -> StatstesthomogeneityTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityTable::copy(self : StatstesthomogeneityTable) -> StatstesthomogeneityTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_table_fill(s : StatstesthomogeneityTable, v : Double) -> StatstesthomogeneityTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityTable::fill(self : StatstesthomogeneityTable, v : Double) -> StatstesthomogeneityTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_table_min(s : StatstesthomogeneityTable) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityTable::min(self : StatstesthomogeneityTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_table_max(s : StatstesthomogeneityTable) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityTable::max(self : StatstesthomogeneityTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_table_to_string(s : StatstesthomogeneityTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityTable::to_string(self : StatstesthomogeneityTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityGraphN {
@@ -453,45 +453,45 @@ pub fn stats_test_homogeneity_graphn_make(size : Int) -> StatstesthomogeneityGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_graphn_len(s : StatstesthomogeneityGraphN) -> Int { s.size }
+pub fn StatstesthomogeneityGraphN::len(self : StatstesthomogeneityGraphN) -> Int { self.size }
 
-pub fn stats_test_homogeneity_graphn_get(s : StatstesthomogeneityGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityGraphN::get(self : StatstesthomogeneityGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_graphn_set(s : StatstesthomogeneityGraphN, i : Int, v : Double) -> StatstesthomogeneityGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityGraphN::set(self : StatstesthomogeneityGraphN, i : Int, v : Double) -> StatstesthomogeneityGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_graphn_sum(s : StatstesthomogeneityGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityGraphN::sum(self : StatstesthomogeneityGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_graphn_mean(s : StatstesthomogeneityGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityGraphN::mean(self : StatstesthomogeneityGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_graphn_scale(s : StatstesthomogeneityGraphN, f : Double) -> StatstesthomogeneityGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityGraphN::scale(self : StatstesthomogeneityGraphN, f : Double) -> StatstesthomogeneityGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_graphn_add(a : StatstesthomogeneityGraphN, b : StatstesthomogeneityGraphN) -> StatstesthomogeneityGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityGraphN::add(self : StatstesthomogeneityGraphN, other : StatstesthomogeneityGraphN) -> StatstesthomogeneityGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_graphn_copy(s : StatstesthomogeneityGraphN) -> StatstesthomogeneityGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityGraphN::copy(self : StatstesthomogeneityGraphN) -> StatstesthomogeneityGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_graphn_fill(s : StatstesthomogeneityGraphN, v : Double) -> StatstesthomogeneityGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityGraphN::fill(self : StatstesthomogeneityGraphN, v : Double) -> StatstesthomogeneityGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_graphn_min(s : StatstesthomogeneityGraphN) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityGraphN::min(self : StatstesthomogeneityGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_graphn_max(s : StatstesthomogeneityGraphN) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityGraphN::max(self : StatstesthomogeneityGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_graphn_to_string(s : StatstesthomogeneityGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityGraphN::to_string(self : StatstesthomogeneityGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityNode {
@@ -504,45 +504,45 @@ pub fn stats_test_homogeneity_node_make(size : Int) -> StatstesthomogeneityNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_node_len(s : StatstesthomogeneityNode) -> Int { s.size }
+pub fn StatstesthomogeneityNode::len(self : StatstesthomogeneityNode) -> Int { self.size }
 
-pub fn stats_test_homogeneity_node_get(s : StatstesthomogeneityNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityNode::get(self : StatstesthomogeneityNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_node_set(s : StatstesthomogeneityNode, i : Int, v : Double) -> StatstesthomogeneityNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityNode::set(self : StatstesthomogeneityNode, i : Int, v : Double) -> StatstesthomogeneityNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_node_sum(s : StatstesthomogeneityNode) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityNode::sum(self : StatstesthomogeneityNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_node_mean(s : StatstesthomogeneityNode) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityNode::mean(self : StatstesthomogeneityNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_node_scale(s : StatstesthomogeneityNode, f : Double) -> StatstesthomogeneityNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityNode::scale(self : StatstesthomogeneityNode, f : Double) -> StatstesthomogeneityNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_node_add(a : StatstesthomogeneityNode, b : StatstesthomogeneityNode) -> StatstesthomogeneityNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityNode::add(self : StatstesthomogeneityNode, other : StatstesthomogeneityNode) -> StatstesthomogeneityNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_node_copy(s : StatstesthomogeneityNode) -> StatstesthomogeneityNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityNode::copy(self : StatstesthomogeneityNode) -> StatstesthomogeneityNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_node_fill(s : StatstesthomogeneityNode, v : Double) -> StatstesthomogeneityNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityNode::fill(self : StatstesthomogeneityNode, v : Double) -> StatstesthomogeneityNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_node_min(s : StatstesthomogeneityNode) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityNode::min(self : StatstesthomogeneityNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_node_max(s : StatstesthomogeneityNode) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityNode::max(self : StatstesthomogeneityNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_node_to_string(s : StatstesthomogeneityNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityNode::to_string(self : StatstesthomogeneityNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityEdge {
@@ -555,45 +555,45 @@ pub fn stats_test_homogeneity_edge_make(size : Int) -> StatstesthomogeneityEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_edge_len(s : StatstesthomogeneityEdge) -> Int { s.size }
+pub fn StatstesthomogeneityEdge::len(self : StatstesthomogeneityEdge) -> Int { self.size }
 
-pub fn stats_test_homogeneity_edge_get(s : StatstesthomogeneityEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityEdge::get(self : StatstesthomogeneityEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_edge_set(s : StatstesthomogeneityEdge, i : Int, v : Double) -> StatstesthomogeneityEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityEdge::set(self : StatstesthomogeneityEdge, i : Int, v : Double) -> StatstesthomogeneityEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_edge_sum(s : StatstesthomogeneityEdge) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityEdge::sum(self : StatstesthomogeneityEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_edge_mean(s : StatstesthomogeneityEdge) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityEdge::mean(self : StatstesthomogeneityEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_edge_scale(s : StatstesthomogeneityEdge, f : Double) -> StatstesthomogeneityEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityEdge::scale(self : StatstesthomogeneityEdge, f : Double) -> StatstesthomogeneityEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_edge_add(a : StatstesthomogeneityEdge, b : StatstesthomogeneityEdge) -> StatstesthomogeneityEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityEdge::add(self : StatstesthomogeneityEdge, other : StatstesthomogeneityEdge) -> StatstesthomogeneityEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_edge_copy(s : StatstesthomogeneityEdge) -> StatstesthomogeneityEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityEdge::copy(self : StatstesthomogeneityEdge) -> StatstesthomogeneityEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_edge_fill(s : StatstesthomogeneityEdge, v : Double) -> StatstesthomogeneityEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityEdge::fill(self : StatstesthomogeneityEdge, v : Double) -> StatstesthomogeneityEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_edge_min(s : StatstesthomogeneityEdge) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityEdge::min(self : StatstesthomogeneityEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_edge_max(s : StatstesthomogeneityEdge) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityEdge::max(self : StatstesthomogeneityEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_edge_to_string(s : StatstesthomogeneityEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityEdge::to_string(self : StatstesthomogeneityEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityPath {
@@ -606,45 +606,45 @@ pub fn stats_test_homogeneity_path_make(size : Int) -> StatstesthomogeneityPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_path_len(s : StatstesthomogeneityPath) -> Int { s.size }
+pub fn StatstesthomogeneityPath::len(self : StatstesthomogeneityPath) -> Int { self.size }
 
-pub fn stats_test_homogeneity_path_get(s : StatstesthomogeneityPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityPath::get(self : StatstesthomogeneityPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_path_set(s : StatstesthomogeneityPath, i : Int, v : Double) -> StatstesthomogeneityPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityPath::set(self : StatstesthomogeneityPath, i : Int, v : Double) -> StatstesthomogeneityPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_path_sum(s : StatstesthomogeneityPath) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityPath::sum(self : StatstesthomogeneityPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_path_mean(s : StatstesthomogeneityPath) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityPath::mean(self : StatstesthomogeneityPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_path_scale(s : StatstesthomogeneityPath, f : Double) -> StatstesthomogeneityPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityPath::scale(self : StatstesthomogeneityPath, f : Double) -> StatstesthomogeneityPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_path_add(a : StatstesthomogeneityPath, b : StatstesthomogeneityPath) -> StatstesthomogeneityPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityPath::add(self : StatstesthomogeneityPath, other : StatstesthomogeneityPath) -> StatstesthomogeneityPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_path_copy(s : StatstesthomogeneityPath) -> StatstesthomogeneityPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityPath::copy(self : StatstesthomogeneityPath) -> StatstesthomogeneityPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_path_fill(s : StatstesthomogeneityPath, v : Double) -> StatstesthomogeneityPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityPath::fill(self : StatstesthomogeneityPath, v : Double) -> StatstesthomogeneityPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_path_min(s : StatstesthomogeneityPath) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityPath::min(self : StatstesthomogeneityPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_path_max(s : StatstesthomogeneityPath) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityPath::max(self : StatstesthomogeneityPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_path_to_string(s : StatstesthomogeneityPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityPath::to_string(self : StatstesthomogeneityPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityCluster {
@@ -657,45 +657,45 @@ pub fn stats_test_homogeneity_cluster_make(size : Int) -> StatstesthomogeneityCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_cluster_len(s : StatstesthomogeneityCluster) -> Int { s.size }
+pub fn StatstesthomogeneityCluster::len(self : StatstesthomogeneityCluster) -> Int { self.size }
 
-pub fn stats_test_homogeneity_cluster_get(s : StatstesthomogeneityCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityCluster::get(self : StatstesthomogeneityCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_cluster_set(s : StatstesthomogeneityCluster, i : Int, v : Double) -> StatstesthomogeneityCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCluster::set(self : StatstesthomogeneityCluster, i : Int, v : Double) -> StatstesthomogeneityCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cluster_sum(s : StatstesthomogeneityCluster) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityCluster::sum(self : StatstesthomogeneityCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_cluster_mean(s : StatstesthomogeneityCluster) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityCluster::mean(self : StatstesthomogeneityCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_cluster_scale(s : StatstesthomogeneityCluster, f : Double) -> StatstesthomogeneityCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCluster::scale(self : StatstesthomogeneityCluster, f : Double) -> StatstesthomogeneityCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cluster_add(a : StatstesthomogeneityCluster, b : StatstesthomogeneityCluster) -> StatstesthomogeneityCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityCluster::add(self : StatstesthomogeneityCluster, other : StatstesthomogeneityCluster) -> StatstesthomogeneityCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cluster_copy(s : StatstesthomogeneityCluster) -> StatstesthomogeneityCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCluster::copy(self : StatstesthomogeneityCluster) -> StatstesthomogeneityCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cluster_fill(s : StatstesthomogeneityCluster, v : Double) -> StatstesthomogeneityCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCluster::fill(self : StatstesthomogeneityCluster, v : Double) -> StatstesthomogeneityCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cluster_min(s : StatstesthomogeneityCluster) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityCluster::min(self : StatstesthomogeneityCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_cluster_max(s : StatstesthomogeneityCluster) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityCluster::max(self : StatstesthomogeneityCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_cluster_to_string(s : StatstesthomogeneityCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityCluster::to_string(self : StatstesthomogeneityCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityModel {
@@ -708,45 +708,45 @@ pub fn stats_test_homogeneity_model_make(size : Int) -> StatstesthomogeneityMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_model_len(s : StatstesthomogeneityModel) -> Int { s.size }
+pub fn StatstesthomogeneityModel::len(self : StatstesthomogeneityModel) -> Int { self.size }
 
-pub fn stats_test_homogeneity_model_get(s : StatstesthomogeneityModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityModel::get(self : StatstesthomogeneityModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_model_set(s : StatstesthomogeneityModel, i : Int, v : Double) -> StatstesthomogeneityModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityModel::set(self : StatstesthomogeneityModel, i : Int, v : Double) -> StatstesthomogeneityModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_model_sum(s : StatstesthomogeneityModel) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityModel::sum(self : StatstesthomogeneityModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_model_mean(s : StatstesthomogeneityModel) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityModel::mean(self : StatstesthomogeneityModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_model_scale(s : StatstesthomogeneityModel, f : Double) -> StatstesthomogeneityModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityModel::scale(self : StatstesthomogeneityModel, f : Double) -> StatstesthomogeneityModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_model_add(a : StatstesthomogeneityModel, b : StatstesthomogeneityModel) -> StatstesthomogeneityModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityModel::add(self : StatstesthomogeneityModel, other : StatstesthomogeneityModel) -> StatstesthomogeneityModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_model_copy(s : StatstesthomogeneityModel) -> StatstesthomogeneityModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityModel::copy(self : StatstesthomogeneityModel) -> StatstesthomogeneityModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_model_fill(s : StatstesthomogeneityModel, v : Double) -> StatstesthomogeneityModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityModel::fill(self : StatstesthomogeneityModel, v : Double) -> StatstesthomogeneityModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_model_min(s : StatstesthomogeneityModel) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityModel::min(self : StatstesthomogeneityModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_model_max(s : StatstesthomogeneityModel) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityModel::max(self : StatstesthomogeneityModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_model_to_string(s : StatstesthomogeneityModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityModel::to_string(self : StatstesthomogeneityModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityLayer {
@@ -759,45 +759,45 @@ pub fn stats_test_homogeneity_layer_make(size : Int) -> StatstesthomogeneityLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_layer_len(s : StatstesthomogeneityLayer) -> Int { s.size }
+pub fn StatstesthomogeneityLayer::len(self : StatstesthomogeneityLayer) -> Int { self.size }
 
-pub fn stats_test_homogeneity_layer_get(s : StatstesthomogeneityLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityLayer::get(self : StatstesthomogeneityLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_layer_set(s : StatstesthomogeneityLayer, i : Int, v : Double) -> StatstesthomogeneityLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityLayer::set(self : StatstesthomogeneityLayer, i : Int, v : Double) -> StatstesthomogeneityLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_layer_sum(s : StatstesthomogeneityLayer) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityLayer::sum(self : StatstesthomogeneityLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_layer_mean(s : StatstesthomogeneityLayer) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityLayer::mean(self : StatstesthomogeneityLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_layer_scale(s : StatstesthomogeneityLayer, f : Double) -> StatstesthomogeneityLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityLayer::scale(self : StatstesthomogeneityLayer, f : Double) -> StatstesthomogeneityLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_layer_add(a : StatstesthomogeneityLayer, b : StatstesthomogeneityLayer) -> StatstesthomogeneityLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityLayer::add(self : StatstesthomogeneityLayer, other : StatstesthomogeneityLayer) -> StatstesthomogeneityLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_layer_copy(s : StatstesthomogeneityLayer) -> StatstesthomogeneityLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityLayer::copy(self : StatstesthomogeneityLayer) -> StatstesthomogeneityLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_layer_fill(s : StatstesthomogeneityLayer, v : Double) -> StatstesthomogeneityLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityLayer::fill(self : StatstesthomogeneityLayer, v : Double) -> StatstesthomogeneityLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_layer_min(s : StatstesthomogeneityLayer) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityLayer::min(self : StatstesthomogeneityLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_layer_max(s : StatstesthomogeneityLayer) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityLayer::max(self : StatstesthomogeneityLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_layer_to_string(s : StatstesthomogeneityLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityLayer::to_string(self : StatstesthomogeneityLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityBuffer {
@@ -810,45 +810,45 @@ pub fn stats_test_homogeneity_buffer_make(size : Int) -> StatstesthomogeneityBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_buffer_len(s : StatstesthomogeneityBuffer) -> Int { s.size }
+pub fn StatstesthomogeneityBuffer::len(self : StatstesthomogeneityBuffer) -> Int { self.size }
 
-pub fn stats_test_homogeneity_buffer_get(s : StatstesthomogeneityBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityBuffer::get(self : StatstesthomogeneityBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_buffer_set(s : StatstesthomogeneityBuffer, i : Int, v : Double) -> StatstesthomogeneityBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityBuffer::set(self : StatstesthomogeneityBuffer, i : Int, v : Double) -> StatstesthomogeneityBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_buffer_sum(s : StatstesthomogeneityBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityBuffer::sum(self : StatstesthomogeneityBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_buffer_mean(s : StatstesthomogeneityBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityBuffer::mean(self : StatstesthomogeneityBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_buffer_scale(s : StatstesthomogeneityBuffer, f : Double) -> StatstesthomogeneityBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityBuffer::scale(self : StatstesthomogeneityBuffer, f : Double) -> StatstesthomogeneityBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_buffer_add(a : StatstesthomogeneityBuffer, b : StatstesthomogeneityBuffer) -> StatstesthomogeneityBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityBuffer::add(self : StatstesthomogeneityBuffer, other : StatstesthomogeneityBuffer) -> StatstesthomogeneityBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_buffer_copy(s : StatstesthomogeneityBuffer) -> StatstesthomogeneityBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityBuffer::copy(self : StatstesthomogeneityBuffer) -> StatstesthomogeneityBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_buffer_fill(s : StatstesthomogeneityBuffer, v : Double) -> StatstesthomogeneityBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityBuffer::fill(self : StatstesthomogeneityBuffer, v : Double) -> StatstesthomogeneityBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_buffer_min(s : StatstesthomogeneityBuffer) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityBuffer::min(self : StatstesthomogeneityBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_buffer_max(s : StatstesthomogeneityBuffer) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityBuffer::max(self : StatstesthomogeneityBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_buffer_to_string(s : StatstesthomogeneityBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityBuffer::to_string(self : StatstesthomogeneityBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityCursor {
@@ -861,45 +861,45 @@ pub fn stats_test_homogeneity_cursor_make(size : Int) -> StatstesthomogeneityCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_cursor_len(s : StatstesthomogeneityCursor) -> Int { s.size }
+pub fn StatstesthomogeneityCursor::len(self : StatstesthomogeneityCursor) -> Int { self.size }
 
-pub fn stats_test_homogeneity_cursor_get(s : StatstesthomogeneityCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityCursor::get(self : StatstesthomogeneityCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_cursor_set(s : StatstesthomogeneityCursor, i : Int, v : Double) -> StatstesthomogeneityCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCursor::set(self : StatstesthomogeneityCursor, i : Int, v : Double) -> StatstesthomogeneityCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cursor_sum(s : StatstesthomogeneityCursor) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityCursor::sum(self : StatstesthomogeneityCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_cursor_mean(s : StatstesthomogeneityCursor) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityCursor::mean(self : StatstesthomogeneityCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_cursor_scale(s : StatstesthomogeneityCursor, f : Double) -> StatstesthomogeneityCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCursor::scale(self : StatstesthomogeneityCursor, f : Double) -> StatstesthomogeneityCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cursor_add(a : StatstesthomogeneityCursor, b : StatstesthomogeneityCursor) -> StatstesthomogeneityCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityCursor::add(self : StatstesthomogeneityCursor, other : StatstesthomogeneityCursor) -> StatstesthomogeneityCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cursor_copy(s : StatstesthomogeneityCursor) -> StatstesthomogeneityCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCursor::copy(self : StatstesthomogeneityCursor) -> StatstesthomogeneityCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cursor_fill(s : StatstesthomogeneityCursor, v : Double) -> StatstesthomogeneityCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityCursor::fill(self : StatstesthomogeneityCursor, v : Double) -> StatstesthomogeneityCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_cursor_min(s : StatstesthomogeneityCursor) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityCursor::min(self : StatstesthomogeneityCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_cursor_max(s : StatstesthomogeneityCursor) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityCursor::max(self : StatstesthomogeneityCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_cursor_to_string(s : StatstesthomogeneityCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityCursor::to_string(self : StatstesthomogeneityCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityView {
@@ -912,45 +912,45 @@ pub fn stats_test_homogeneity_view_make(size : Int) -> StatstesthomogeneityView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_view_len(s : StatstesthomogeneityView) -> Int { s.size }
+pub fn StatstesthomogeneityView::len(self : StatstesthomogeneityView) -> Int { self.size }
 
-pub fn stats_test_homogeneity_view_get(s : StatstesthomogeneityView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityView::get(self : StatstesthomogeneityView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_view_set(s : StatstesthomogeneityView, i : Int, v : Double) -> StatstesthomogeneityView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityView::set(self : StatstesthomogeneityView, i : Int, v : Double) -> StatstesthomogeneityView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_view_sum(s : StatstesthomogeneityView) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityView::sum(self : StatstesthomogeneityView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_view_mean(s : StatstesthomogeneityView) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityView::mean(self : StatstesthomogeneityView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_view_scale(s : StatstesthomogeneityView, f : Double) -> StatstesthomogeneityView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityView::scale(self : StatstesthomogeneityView, f : Double) -> StatstesthomogeneityView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_view_add(a : StatstesthomogeneityView, b : StatstesthomogeneityView) -> StatstesthomogeneityView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityView::add(self : StatstesthomogeneityView, other : StatstesthomogeneityView) -> StatstesthomogeneityView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_view_copy(s : StatstesthomogeneityView) -> StatstesthomogeneityView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityView::copy(self : StatstesthomogeneityView) -> StatstesthomogeneityView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_view_fill(s : StatstesthomogeneityView, v : Double) -> StatstesthomogeneityView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityView::fill(self : StatstesthomogeneityView, v : Double) -> StatstesthomogeneityView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_view_min(s : StatstesthomogeneityView) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityView::min(self : StatstesthomogeneityView) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_view_max(s : StatstesthomogeneityView) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityView::max(self : StatstesthomogeneityView) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_view_to_string(s : StatstesthomogeneityView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityView::to_string(self : StatstesthomogeneityView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneityRange {
@@ -963,45 +963,45 @@ pub fn stats_test_homogeneity_range_make(size : Int) -> StatstesthomogeneityRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_range_len(s : StatstesthomogeneityRange) -> Int { s.size }
+pub fn StatstesthomogeneityRange::len(self : StatstesthomogeneityRange) -> Int { self.size }
 
-pub fn stats_test_homogeneity_range_get(s : StatstesthomogeneityRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneityRange::get(self : StatstesthomogeneityRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_range_set(s : StatstesthomogeneityRange, i : Int, v : Double) -> StatstesthomogeneityRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityRange::set(self : StatstesthomogeneityRange, i : Int, v : Double) -> StatstesthomogeneityRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_range_sum(s : StatstesthomogeneityRange) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneityRange::sum(self : StatstesthomogeneityRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_range_mean(s : StatstesthomogeneityRange) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneityRange::mean(self : StatstesthomogeneityRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_range_scale(s : StatstesthomogeneityRange, f : Double) -> StatstesthomogeneityRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityRange::scale(self : StatstesthomogeneityRange, f : Double) -> StatstesthomogeneityRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_range_add(a : StatstesthomogeneityRange, b : StatstesthomogeneityRange) -> StatstesthomogeneityRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneityRange::add(self : StatstesthomogeneityRange, other : StatstesthomogeneityRange) -> StatstesthomogeneityRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_range_copy(s : StatstesthomogeneityRange) -> StatstesthomogeneityRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityRange::copy(self : StatstesthomogeneityRange) -> StatstesthomogeneityRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_range_fill(s : StatstesthomogeneityRange, v : Double) -> StatstesthomogeneityRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneityRange::fill(self : StatstesthomogeneityRange, v : Double) -> StatstesthomogeneityRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_range_min(s : StatstesthomogeneityRange) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneityRange::min(self : StatstesthomogeneityRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_range_max(s : StatstesthomogeneityRange) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneityRange::max(self : StatstesthomogeneityRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_range_to_string(s : StatstesthomogeneityRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneityRange::to_string(self : StatstesthomogeneityRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstesthomogeneitySlice {
@@ -1014,44 +1014,44 @@ pub fn stats_test_homogeneity_slice_make(size : Int) -> StatstesthomogeneitySlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_homogeneity_slice_len(s : StatstesthomogeneitySlice) -> Int { s.size }
+pub fn StatstesthomogeneitySlice::len(self : StatstesthomogeneitySlice) -> Int { self.size }
 
-pub fn stats_test_homogeneity_slice_get(s : StatstesthomogeneitySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstesthomogeneitySlice::get(self : StatstesthomogeneitySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_homogeneity_slice_set(s : StatstesthomogeneitySlice, i : Int, v : Double) -> StatstesthomogeneitySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstesthomogeneitySlice::set(self : StatstesthomogeneitySlice, i : Int, v : Double) -> StatstesthomogeneitySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_slice_sum(s : StatstesthomogeneitySlice) -> Double { @_common.sum(s.data) }
+pub fn StatstesthomogeneitySlice::sum(self : StatstesthomogeneitySlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_homogeneity_slice_mean(s : StatstesthomogeneitySlice) -> Double { @_common.mean(s.data) }
+pub fn StatstesthomogeneitySlice::mean(self : StatstesthomogeneitySlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_homogeneity_slice_scale(s : StatstesthomogeneitySlice, f : Double) -> StatstesthomogeneitySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneitySlice::scale(self : StatstesthomogeneitySlice, f : Double) -> StatstesthomogeneitySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_slice_add(a : StatstesthomogeneitySlice, b : StatstesthomogeneitySlice) -> StatstesthomogeneitySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstesthomogeneitySlice::add(self : StatstesthomogeneitySlice, other : StatstesthomogeneitySlice) -> StatstesthomogeneitySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_slice_copy(s : StatstesthomogeneitySlice) -> StatstesthomogeneitySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneitySlice::copy(self : StatstesthomogeneitySlice) -> StatstesthomogeneitySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_slice_fill(s : StatstesthomogeneitySlice, v : Double) -> StatstesthomogeneitySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstesthomogeneitySlice::fill(self : StatstesthomogeneitySlice, v : Double) -> StatstesthomogeneitySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_homogeneity_slice_min(s : StatstesthomogeneitySlice) -> Double { @_common.min(s.data) }
+pub fn StatstesthomogeneitySlice::min(self : StatstesthomogeneitySlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_homogeneity_slice_max(s : StatstesthomogeneitySlice) -> Double { @_common.max(s.data) }
+pub fn StatstesthomogeneitySlice::max(self : StatstesthomogeneitySlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_homogeneity_slice_to_string(s : StatstesthomogeneitySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstesthomogeneitySlice::to_string(self : StatstesthomogeneitySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

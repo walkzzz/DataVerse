@@ -351,45 +351,45 @@ pub fn signal_transform_wigner_frame_make(size : Int) -> SignaltransformwignerFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_frame_len(s : SignaltransformwignerFrame) -> Int { s.size }
+pub fn SignaltransformwignerFrame::len(self : SignaltransformwignerFrame) -> Int { self.size }
 
-pub fn signal_transform_wigner_frame_get(s : SignaltransformwignerFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerFrame::get(self : SignaltransformwignerFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_frame_set(s : SignaltransformwignerFrame, i : Int, v : Double) -> SignaltransformwignerFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerFrame::set(self : SignaltransformwignerFrame, i : Int, v : Double) -> SignaltransformwignerFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_frame_sum(s : SignaltransformwignerFrame) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerFrame::sum(self : SignaltransformwignerFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_frame_mean(s : SignaltransformwignerFrame) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerFrame::mean(self : SignaltransformwignerFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_frame_scale(s : SignaltransformwignerFrame, f : Double) -> SignaltransformwignerFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerFrame::scale(self : SignaltransformwignerFrame, f : Double) -> SignaltransformwignerFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_frame_add(a : SignaltransformwignerFrame, b : SignaltransformwignerFrame) -> SignaltransformwignerFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerFrame::add(self : SignaltransformwignerFrame, other : SignaltransformwignerFrame) -> SignaltransformwignerFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_frame_copy(s : SignaltransformwignerFrame) -> SignaltransformwignerFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerFrame::copy(self : SignaltransformwignerFrame) -> SignaltransformwignerFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_frame_fill(s : SignaltransformwignerFrame, v : Double) -> SignaltransformwignerFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerFrame::fill(self : SignaltransformwignerFrame, v : Double) -> SignaltransformwignerFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_frame_min(s : SignaltransformwignerFrame) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerFrame::min(self : SignaltransformwignerFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_frame_max(s : SignaltransformwignerFrame) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerFrame::max(self : SignaltransformwignerFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_frame_to_string(s : SignaltransformwignerFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerFrame::to_string(self : SignaltransformwignerFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerTable {
@@ -402,45 +402,45 @@ pub fn signal_transform_wigner_table_make(size : Int) -> SignaltransformwignerTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_table_len(s : SignaltransformwignerTable) -> Int { s.size }
+pub fn SignaltransformwignerTable::len(self : SignaltransformwignerTable) -> Int { self.size }
 
-pub fn signal_transform_wigner_table_get(s : SignaltransformwignerTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerTable::get(self : SignaltransformwignerTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_table_set(s : SignaltransformwignerTable, i : Int, v : Double) -> SignaltransformwignerTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerTable::set(self : SignaltransformwignerTable, i : Int, v : Double) -> SignaltransformwignerTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_table_sum(s : SignaltransformwignerTable) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerTable::sum(self : SignaltransformwignerTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_table_mean(s : SignaltransformwignerTable) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerTable::mean(self : SignaltransformwignerTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_table_scale(s : SignaltransformwignerTable, f : Double) -> SignaltransformwignerTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerTable::scale(self : SignaltransformwignerTable, f : Double) -> SignaltransformwignerTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_table_add(a : SignaltransformwignerTable, b : SignaltransformwignerTable) -> SignaltransformwignerTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerTable::add(self : SignaltransformwignerTable, other : SignaltransformwignerTable) -> SignaltransformwignerTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_table_copy(s : SignaltransformwignerTable) -> SignaltransformwignerTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerTable::copy(self : SignaltransformwignerTable) -> SignaltransformwignerTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_table_fill(s : SignaltransformwignerTable, v : Double) -> SignaltransformwignerTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerTable::fill(self : SignaltransformwignerTable, v : Double) -> SignaltransformwignerTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_table_min(s : SignaltransformwignerTable) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerTable::min(self : SignaltransformwignerTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_table_max(s : SignaltransformwignerTable) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerTable::max(self : SignaltransformwignerTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_table_to_string(s : SignaltransformwignerTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerTable::to_string(self : SignaltransformwignerTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerGraphN {
@@ -453,45 +453,45 @@ pub fn signal_transform_wigner_graphn_make(size : Int) -> SignaltransformwignerG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_graphn_len(s : SignaltransformwignerGraphN) -> Int { s.size }
+pub fn SignaltransformwignerGraphN::len(self : SignaltransformwignerGraphN) -> Int { self.size }
 
-pub fn signal_transform_wigner_graphn_get(s : SignaltransformwignerGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerGraphN::get(self : SignaltransformwignerGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_graphn_set(s : SignaltransformwignerGraphN, i : Int, v : Double) -> SignaltransformwignerGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerGraphN::set(self : SignaltransformwignerGraphN, i : Int, v : Double) -> SignaltransformwignerGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_graphn_sum(s : SignaltransformwignerGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerGraphN::sum(self : SignaltransformwignerGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_graphn_mean(s : SignaltransformwignerGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerGraphN::mean(self : SignaltransformwignerGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_graphn_scale(s : SignaltransformwignerGraphN, f : Double) -> SignaltransformwignerGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerGraphN::scale(self : SignaltransformwignerGraphN, f : Double) -> SignaltransformwignerGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_graphn_add(a : SignaltransformwignerGraphN, b : SignaltransformwignerGraphN) -> SignaltransformwignerGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerGraphN::add(self : SignaltransformwignerGraphN, other : SignaltransformwignerGraphN) -> SignaltransformwignerGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_graphn_copy(s : SignaltransformwignerGraphN) -> SignaltransformwignerGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerGraphN::copy(self : SignaltransformwignerGraphN) -> SignaltransformwignerGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_graphn_fill(s : SignaltransformwignerGraphN, v : Double) -> SignaltransformwignerGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerGraphN::fill(self : SignaltransformwignerGraphN, v : Double) -> SignaltransformwignerGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_graphn_min(s : SignaltransformwignerGraphN) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerGraphN::min(self : SignaltransformwignerGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_graphn_max(s : SignaltransformwignerGraphN) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerGraphN::max(self : SignaltransformwignerGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_graphn_to_string(s : SignaltransformwignerGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerGraphN::to_string(self : SignaltransformwignerGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerNode {
@@ -504,45 +504,45 @@ pub fn signal_transform_wigner_node_make(size : Int) -> SignaltransformwignerNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_node_len(s : SignaltransformwignerNode) -> Int { s.size }
+pub fn SignaltransformwignerNode::len(self : SignaltransformwignerNode) -> Int { self.size }
 
-pub fn signal_transform_wigner_node_get(s : SignaltransformwignerNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerNode::get(self : SignaltransformwignerNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_node_set(s : SignaltransformwignerNode, i : Int, v : Double) -> SignaltransformwignerNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerNode::set(self : SignaltransformwignerNode, i : Int, v : Double) -> SignaltransformwignerNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_node_sum(s : SignaltransformwignerNode) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerNode::sum(self : SignaltransformwignerNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_node_mean(s : SignaltransformwignerNode) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerNode::mean(self : SignaltransformwignerNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_node_scale(s : SignaltransformwignerNode, f : Double) -> SignaltransformwignerNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerNode::scale(self : SignaltransformwignerNode, f : Double) -> SignaltransformwignerNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_node_add(a : SignaltransformwignerNode, b : SignaltransformwignerNode) -> SignaltransformwignerNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerNode::add(self : SignaltransformwignerNode, other : SignaltransformwignerNode) -> SignaltransformwignerNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_node_copy(s : SignaltransformwignerNode) -> SignaltransformwignerNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerNode::copy(self : SignaltransformwignerNode) -> SignaltransformwignerNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_node_fill(s : SignaltransformwignerNode, v : Double) -> SignaltransformwignerNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerNode::fill(self : SignaltransformwignerNode, v : Double) -> SignaltransformwignerNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_node_min(s : SignaltransformwignerNode) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerNode::min(self : SignaltransformwignerNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_node_max(s : SignaltransformwignerNode) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerNode::max(self : SignaltransformwignerNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_node_to_string(s : SignaltransformwignerNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerNode::to_string(self : SignaltransformwignerNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerEdge {
@@ -555,45 +555,45 @@ pub fn signal_transform_wigner_edge_make(size : Int) -> SignaltransformwignerEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_edge_len(s : SignaltransformwignerEdge) -> Int { s.size }
+pub fn SignaltransformwignerEdge::len(self : SignaltransformwignerEdge) -> Int { self.size }
 
-pub fn signal_transform_wigner_edge_get(s : SignaltransformwignerEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerEdge::get(self : SignaltransformwignerEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_edge_set(s : SignaltransformwignerEdge, i : Int, v : Double) -> SignaltransformwignerEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerEdge::set(self : SignaltransformwignerEdge, i : Int, v : Double) -> SignaltransformwignerEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_edge_sum(s : SignaltransformwignerEdge) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerEdge::sum(self : SignaltransformwignerEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_edge_mean(s : SignaltransformwignerEdge) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerEdge::mean(self : SignaltransformwignerEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_edge_scale(s : SignaltransformwignerEdge, f : Double) -> SignaltransformwignerEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerEdge::scale(self : SignaltransformwignerEdge, f : Double) -> SignaltransformwignerEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_edge_add(a : SignaltransformwignerEdge, b : SignaltransformwignerEdge) -> SignaltransformwignerEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerEdge::add(self : SignaltransformwignerEdge, other : SignaltransformwignerEdge) -> SignaltransformwignerEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_edge_copy(s : SignaltransformwignerEdge) -> SignaltransformwignerEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerEdge::copy(self : SignaltransformwignerEdge) -> SignaltransformwignerEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_edge_fill(s : SignaltransformwignerEdge, v : Double) -> SignaltransformwignerEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerEdge::fill(self : SignaltransformwignerEdge, v : Double) -> SignaltransformwignerEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_edge_min(s : SignaltransformwignerEdge) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerEdge::min(self : SignaltransformwignerEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_edge_max(s : SignaltransformwignerEdge) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerEdge::max(self : SignaltransformwignerEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_edge_to_string(s : SignaltransformwignerEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerEdge::to_string(self : SignaltransformwignerEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerPath {
@@ -606,45 +606,45 @@ pub fn signal_transform_wigner_path_make(size : Int) -> SignaltransformwignerPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_path_len(s : SignaltransformwignerPath) -> Int { s.size }
+pub fn SignaltransformwignerPath::len(self : SignaltransformwignerPath) -> Int { self.size }
 
-pub fn signal_transform_wigner_path_get(s : SignaltransformwignerPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerPath::get(self : SignaltransformwignerPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_path_set(s : SignaltransformwignerPath, i : Int, v : Double) -> SignaltransformwignerPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerPath::set(self : SignaltransformwignerPath, i : Int, v : Double) -> SignaltransformwignerPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_path_sum(s : SignaltransformwignerPath) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerPath::sum(self : SignaltransformwignerPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_path_mean(s : SignaltransformwignerPath) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerPath::mean(self : SignaltransformwignerPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_path_scale(s : SignaltransformwignerPath, f : Double) -> SignaltransformwignerPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerPath::scale(self : SignaltransformwignerPath, f : Double) -> SignaltransformwignerPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_path_add(a : SignaltransformwignerPath, b : SignaltransformwignerPath) -> SignaltransformwignerPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerPath::add(self : SignaltransformwignerPath, other : SignaltransformwignerPath) -> SignaltransformwignerPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_path_copy(s : SignaltransformwignerPath) -> SignaltransformwignerPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerPath::copy(self : SignaltransformwignerPath) -> SignaltransformwignerPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_path_fill(s : SignaltransformwignerPath, v : Double) -> SignaltransformwignerPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerPath::fill(self : SignaltransformwignerPath, v : Double) -> SignaltransformwignerPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_path_min(s : SignaltransformwignerPath) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerPath::min(self : SignaltransformwignerPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_path_max(s : SignaltransformwignerPath) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerPath::max(self : SignaltransformwignerPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_path_to_string(s : SignaltransformwignerPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerPath::to_string(self : SignaltransformwignerPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerCluster {
@@ -657,45 +657,45 @@ pub fn signal_transform_wigner_cluster_make(size : Int) -> Signaltransformwigner
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_cluster_len(s : SignaltransformwignerCluster) -> Int { s.size }
+pub fn SignaltransformwignerCluster::len(self : SignaltransformwignerCluster) -> Int { self.size }
 
-pub fn signal_transform_wigner_cluster_get(s : SignaltransformwignerCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerCluster::get(self : SignaltransformwignerCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_cluster_set(s : SignaltransformwignerCluster, i : Int, v : Double) -> SignaltransformwignerCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCluster::set(self : SignaltransformwignerCluster, i : Int, v : Double) -> SignaltransformwignerCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cluster_sum(s : SignaltransformwignerCluster) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerCluster::sum(self : SignaltransformwignerCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_cluster_mean(s : SignaltransformwignerCluster) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerCluster::mean(self : SignaltransformwignerCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_cluster_scale(s : SignaltransformwignerCluster, f : Double) -> SignaltransformwignerCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCluster::scale(self : SignaltransformwignerCluster, f : Double) -> SignaltransformwignerCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cluster_add(a : SignaltransformwignerCluster, b : SignaltransformwignerCluster) -> SignaltransformwignerCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerCluster::add(self : SignaltransformwignerCluster, other : SignaltransformwignerCluster) -> SignaltransformwignerCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cluster_copy(s : SignaltransformwignerCluster) -> SignaltransformwignerCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCluster::copy(self : SignaltransformwignerCluster) -> SignaltransformwignerCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cluster_fill(s : SignaltransformwignerCluster, v : Double) -> SignaltransformwignerCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCluster::fill(self : SignaltransformwignerCluster, v : Double) -> SignaltransformwignerCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cluster_min(s : SignaltransformwignerCluster) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerCluster::min(self : SignaltransformwignerCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_cluster_max(s : SignaltransformwignerCluster) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerCluster::max(self : SignaltransformwignerCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_cluster_to_string(s : SignaltransformwignerCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerCluster::to_string(self : SignaltransformwignerCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerModel {
@@ -708,45 +708,45 @@ pub fn signal_transform_wigner_model_make(size : Int) -> SignaltransformwignerMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_model_len(s : SignaltransformwignerModel) -> Int { s.size }
+pub fn SignaltransformwignerModel::len(self : SignaltransformwignerModel) -> Int { self.size }
 
-pub fn signal_transform_wigner_model_get(s : SignaltransformwignerModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerModel::get(self : SignaltransformwignerModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_model_set(s : SignaltransformwignerModel, i : Int, v : Double) -> SignaltransformwignerModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerModel::set(self : SignaltransformwignerModel, i : Int, v : Double) -> SignaltransformwignerModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_model_sum(s : SignaltransformwignerModel) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerModel::sum(self : SignaltransformwignerModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_model_mean(s : SignaltransformwignerModel) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerModel::mean(self : SignaltransformwignerModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_model_scale(s : SignaltransformwignerModel, f : Double) -> SignaltransformwignerModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerModel::scale(self : SignaltransformwignerModel, f : Double) -> SignaltransformwignerModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_model_add(a : SignaltransformwignerModel, b : SignaltransformwignerModel) -> SignaltransformwignerModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerModel::add(self : SignaltransformwignerModel, other : SignaltransformwignerModel) -> SignaltransformwignerModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_model_copy(s : SignaltransformwignerModel) -> SignaltransformwignerModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerModel::copy(self : SignaltransformwignerModel) -> SignaltransformwignerModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_model_fill(s : SignaltransformwignerModel, v : Double) -> SignaltransformwignerModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerModel::fill(self : SignaltransformwignerModel, v : Double) -> SignaltransformwignerModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_model_min(s : SignaltransformwignerModel) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerModel::min(self : SignaltransformwignerModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_model_max(s : SignaltransformwignerModel) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerModel::max(self : SignaltransformwignerModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_model_to_string(s : SignaltransformwignerModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerModel::to_string(self : SignaltransformwignerModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerLayer {
@@ -759,45 +759,45 @@ pub fn signal_transform_wigner_layer_make(size : Int) -> SignaltransformwignerLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_layer_len(s : SignaltransformwignerLayer) -> Int { s.size }
+pub fn SignaltransformwignerLayer::len(self : SignaltransformwignerLayer) -> Int { self.size }
 
-pub fn signal_transform_wigner_layer_get(s : SignaltransformwignerLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerLayer::get(self : SignaltransformwignerLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_layer_set(s : SignaltransformwignerLayer, i : Int, v : Double) -> SignaltransformwignerLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerLayer::set(self : SignaltransformwignerLayer, i : Int, v : Double) -> SignaltransformwignerLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_layer_sum(s : SignaltransformwignerLayer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerLayer::sum(self : SignaltransformwignerLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_layer_mean(s : SignaltransformwignerLayer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerLayer::mean(self : SignaltransformwignerLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_layer_scale(s : SignaltransformwignerLayer, f : Double) -> SignaltransformwignerLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerLayer::scale(self : SignaltransformwignerLayer, f : Double) -> SignaltransformwignerLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_layer_add(a : SignaltransformwignerLayer, b : SignaltransformwignerLayer) -> SignaltransformwignerLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerLayer::add(self : SignaltransformwignerLayer, other : SignaltransformwignerLayer) -> SignaltransformwignerLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_layer_copy(s : SignaltransformwignerLayer) -> SignaltransformwignerLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerLayer::copy(self : SignaltransformwignerLayer) -> SignaltransformwignerLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_layer_fill(s : SignaltransformwignerLayer, v : Double) -> SignaltransformwignerLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerLayer::fill(self : SignaltransformwignerLayer, v : Double) -> SignaltransformwignerLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_layer_min(s : SignaltransformwignerLayer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerLayer::min(self : SignaltransformwignerLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_layer_max(s : SignaltransformwignerLayer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerLayer::max(self : SignaltransformwignerLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_layer_to_string(s : SignaltransformwignerLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerLayer::to_string(self : SignaltransformwignerLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerBuffer {
@@ -810,45 +810,45 @@ pub fn signal_transform_wigner_buffer_make(size : Int) -> SignaltransformwignerB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_buffer_len(s : SignaltransformwignerBuffer) -> Int { s.size }
+pub fn SignaltransformwignerBuffer::len(self : SignaltransformwignerBuffer) -> Int { self.size }
 
-pub fn signal_transform_wigner_buffer_get(s : SignaltransformwignerBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerBuffer::get(self : SignaltransformwignerBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_buffer_set(s : SignaltransformwignerBuffer, i : Int, v : Double) -> SignaltransformwignerBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerBuffer::set(self : SignaltransformwignerBuffer, i : Int, v : Double) -> SignaltransformwignerBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_buffer_sum(s : SignaltransformwignerBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerBuffer::sum(self : SignaltransformwignerBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_buffer_mean(s : SignaltransformwignerBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerBuffer::mean(self : SignaltransformwignerBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_buffer_scale(s : SignaltransformwignerBuffer, f : Double) -> SignaltransformwignerBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerBuffer::scale(self : SignaltransformwignerBuffer, f : Double) -> SignaltransformwignerBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_buffer_add(a : SignaltransformwignerBuffer, b : SignaltransformwignerBuffer) -> SignaltransformwignerBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerBuffer::add(self : SignaltransformwignerBuffer, other : SignaltransformwignerBuffer) -> SignaltransformwignerBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_buffer_copy(s : SignaltransformwignerBuffer) -> SignaltransformwignerBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerBuffer::copy(self : SignaltransformwignerBuffer) -> SignaltransformwignerBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_buffer_fill(s : SignaltransformwignerBuffer, v : Double) -> SignaltransformwignerBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerBuffer::fill(self : SignaltransformwignerBuffer, v : Double) -> SignaltransformwignerBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_buffer_min(s : SignaltransformwignerBuffer) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerBuffer::min(self : SignaltransformwignerBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_buffer_max(s : SignaltransformwignerBuffer) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerBuffer::max(self : SignaltransformwignerBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_buffer_to_string(s : SignaltransformwignerBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerBuffer::to_string(self : SignaltransformwignerBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerCursor {
@@ -861,45 +861,45 @@ pub fn signal_transform_wigner_cursor_make(size : Int) -> SignaltransformwignerC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_cursor_len(s : SignaltransformwignerCursor) -> Int { s.size }
+pub fn SignaltransformwignerCursor::len(self : SignaltransformwignerCursor) -> Int { self.size }
 
-pub fn signal_transform_wigner_cursor_get(s : SignaltransformwignerCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerCursor::get(self : SignaltransformwignerCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_cursor_set(s : SignaltransformwignerCursor, i : Int, v : Double) -> SignaltransformwignerCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCursor::set(self : SignaltransformwignerCursor, i : Int, v : Double) -> SignaltransformwignerCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cursor_sum(s : SignaltransformwignerCursor) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerCursor::sum(self : SignaltransformwignerCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_cursor_mean(s : SignaltransformwignerCursor) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerCursor::mean(self : SignaltransformwignerCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_cursor_scale(s : SignaltransformwignerCursor, f : Double) -> SignaltransformwignerCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCursor::scale(self : SignaltransformwignerCursor, f : Double) -> SignaltransformwignerCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cursor_add(a : SignaltransformwignerCursor, b : SignaltransformwignerCursor) -> SignaltransformwignerCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerCursor::add(self : SignaltransformwignerCursor, other : SignaltransformwignerCursor) -> SignaltransformwignerCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cursor_copy(s : SignaltransformwignerCursor) -> SignaltransformwignerCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCursor::copy(self : SignaltransformwignerCursor) -> SignaltransformwignerCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cursor_fill(s : SignaltransformwignerCursor, v : Double) -> SignaltransformwignerCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerCursor::fill(self : SignaltransformwignerCursor, v : Double) -> SignaltransformwignerCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_cursor_min(s : SignaltransformwignerCursor) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerCursor::min(self : SignaltransformwignerCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_cursor_max(s : SignaltransformwignerCursor) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerCursor::max(self : SignaltransformwignerCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_cursor_to_string(s : SignaltransformwignerCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerCursor::to_string(self : SignaltransformwignerCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerView {
@@ -912,45 +912,45 @@ pub fn signal_transform_wigner_view_make(size : Int) -> SignaltransformwignerVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_view_len(s : SignaltransformwignerView) -> Int { s.size }
+pub fn SignaltransformwignerView::len(self : SignaltransformwignerView) -> Int { self.size }
 
-pub fn signal_transform_wigner_view_get(s : SignaltransformwignerView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerView::get(self : SignaltransformwignerView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_view_set(s : SignaltransformwignerView, i : Int, v : Double) -> SignaltransformwignerView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerView::set(self : SignaltransformwignerView, i : Int, v : Double) -> SignaltransformwignerView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_view_sum(s : SignaltransformwignerView) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerView::sum(self : SignaltransformwignerView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_view_mean(s : SignaltransformwignerView) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerView::mean(self : SignaltransformwignerView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_view_scale(s : SignaltransformwignerView, f : Double) -> SignaltransformwignerView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerView::scale(self : SignaltransformwignerView, f : Double) -> SignaltransformwignerView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_view_add(a : SignaltransformwignerView, b : SignaltransformwignerView) -> SignaltransformwignerView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerView::add(self : SignaltransformwignerView, other : SignaltransformwignerView) -> SignaltransformwignerView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_view_copy(s : SignaltransformwignerView) -> SignaltransformwignerView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerView::copy(self : SignaltransformwignerView) -> SignaltransformwignerView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_view_fill(s : SignaltransformwignerView, v : Double) -> SignaltransformwignerView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerView::fill(self : SignaltransformwignerView, v : Double) -> SignaltransformwignerView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_view_min(s : SignaltransformwignerView) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerView::min(self : SignaltransformwignerView) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_view_max(s : SignaltransformwignerView) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerView::max(self : SignaltransformwignerView) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_view_to_string(s : SignaltransformwignerView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerView::to_string(self : SignaltransformwignerView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerRange {
@@ -963,45 +963,45 @@ pub fn signal_transform_wigner_range_make(size : Int) -> SignaltransformwignerRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_range_len(s : SignaltransformwignerRange) -> Int { s.size }
+pub fn SignaltransformwignerRange::len(self : SignaltransformwignerRange) -> Int { self.size }
 
-pub fn signal_transform_wigner_range_get(s : SignaltransformwignerRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerRange::get(self : SignaltransformwignerRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_range_set(s : SignaltransformwignerRange, i : Int, v : Double) -> SignaltransformwignerRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerRange::set(self : SignaltransformwignerRange, i : Int, v : Double) -> SignaltransformwignerRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_range_sum(s : SignaltransformwignerRange) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerRange::sum(self : SignaltransformwignerRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_range_mean(s : SignaltransformwignerRange) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerRange::mean(self : SignaltransformwignerRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_range_scale(s : SignaltransformwignerRange, f : Double) -> SignaltransformwignerRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerRange::scale(self : SignaltransformwignerRange, f : Double) -> SignaltransformwignerRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_range_add(a : SignaltransformwignerRange, b : SignaltransformwignerRange) -> SignaltransformwignerRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerRange::add(self : SignaltransformwignerRange, other : SignaltransformwignerRange) -> SignaltransformwignerRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_range_copy(s : SignaltransformwignerRange) -> SignaltransformwignerRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerRange::copy(self : SignaltransformwignerRange) -> SignaltransformwignerRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_range_fill(s : SignaltransformwignerRange, v : Double) -> SignaltransformwignerRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerRange::fill(self : SignaltransformwignerRange, v : Double) -> SignaltransformwignerRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_range_min(s : SignaltransformwignerRange) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerRange::min(self : SignaltransformwignerRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_range_max(s : SignaltransformwignerRange) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerRange::max(self : SignaltransformwignerRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_range_to_string(s : SignaltransformwignerRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerRange::to_string(self : SignaltransformwignerRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignaltransformwignerSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_transform_wigner_slice_make(size : Int) -> SignaltransformwignerSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_transform_wigner_slice_len(s : SignaltransformwignerSlice) -> Int { s.size }
+pub fn SignaltransformwignerSlice::len(self : SignaltransformwignerSlice) -> Int { self.size }
 
-pub fn signal_transform_wigner_slice_get(s : SignaltransformwignerSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignaltransformwignerSlice::get(self : SignaltransformwignerSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_transform_wigner_slice_set(s : SignaltransformwignerSlice, i : Int, v : Double) -> SignaltransformwignerSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignaltransformwignerSlice::set(self : SignaltransformwignerSlice, i : Int, v : Double) -> SignaltransformwignerSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_slice_sum(s : SignaltransformwignerSlice) -> Double { @_common.sum(s.data) }
+pub fn SignaltransformwignerSlice::sum(self : SignaltransformwignerSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_transform_wigner_slice_mean(s : SignaltransformwignerSlice) -> Double { @_common.mean(s.data) }
+pub fn SignaltransformwignerSlice::mean(self : SignaltransformwignerSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_transform_wigner_slice_scale(s : SignaltransformwignerSlice, f : Double) -> SignaltransformwignerSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerSlice::scale(self : SignaltransformwignerSlice, f : Double) -> SignaltransformwignerSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_slice_add(a : SignaltransformwignerSlice, b : SignaltransformwignerSlice) -> SignaltransformwignerSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignaltransformwignerSlice::add(self : SignaltransformwignerSlice, other : SignaltransformwignerSlice) -> SignaltransformwignerSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_slice_copy(s : SignaltransformwignerSlice) -> SignaltransformwignerSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerSlice::copy(self : SignaltransformwignerSlice) -> SignaltransformwignerSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_slice_fill(s : SignaltransformwignerSlice, v : Double) -> SignaltransformwignerSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignaltransformwignerSlice::fill(self : SignaltransformwignerSlice, v : Double) -> SignaltransformwignerSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_transform_wigner_slice_min(s : SignaltransformwignerSlice) -> Double { @_common.min(s.data) }
+pub fn SignaltransformwignerSlice::min(self : SignaltransformwignerSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_transform_wigner_slice_max(s : SignaltransformwignerSlice) -> Double { @_common.max(s.data) }
+pub fn SignaltransformwignerSlice::max(self : SignaltransformwignerSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_transform_wigner_slice_to_string(s : SignaltransformwignerSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignaltransformwignerSlice::to_string(self : SignaltransformwignerSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

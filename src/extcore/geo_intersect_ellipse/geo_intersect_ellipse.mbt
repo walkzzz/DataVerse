@@ -351,45 +351,45 @@ pub fn geo_intersect_ellipse_frame_make(size : Int) -> GeointersectellipseFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_frame_len(s : GeointersectellipseFrame) -> Int { s.size }
+pub fn GeointersectellipseFrame::len(self : GeointersectellipseFrame) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_frame_get(s : GeointersectellipseFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseFrame::get(self : GeointersectellipseFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_frame_set(s : GeointersectellipseFrame, i : Int, v : Double) -> GeointersectellipseFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseFrame::set(self : GeointersectellipseFrame, i : Int, v : Double) -> GeointersectellipseFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_frame_sum(s : GeointersectellipseFrame) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseFrame::sum(self : GeointersectellipseFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_frame_mean(s : GeointersectellipseFrame) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseFrame::mean(self : GeointersectellipseFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_frame_scale(s : GeointersectellipseFrame, f : Double) -> GeointersectellipseFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseFrame::scale(self : GeointersectellipseFrame, f : Double) -> GeointersectellipseFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_frame_add(a : GeointersectellipseFrame, b : GeointersectellipseFrame) -> GeointersectellipseFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseFrame::add(self : GeointersectellipseFrame, other : GeointersectellipseFrame) -> GeointersectellipseFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_frame_copy(s : GeointersectellipseFrame) -> GeointersectellipseFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseFrame::copy(self : GeointersectellipseFrame) -> GeointersectellipseFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_frame_fill(s : GeointersectellipseFrame, v : Double) -> GeointersectellipseFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseFrame::fill(self : GeointersectellipseFrame, v : Double) -> GeointersectellipseFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_frame_min(s : GeointersectellipseFrame) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseFrame::min(self : GeointersectellipseFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_frame_max(s : GeointersectellipseFrame) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseFrame::max(self : GeointersectellipseFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_frame_to_string(s : GeointersectellipseFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseFrame::to_string(self : GeointersectellipseFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseTable {
@@ -402,45 +402,45 @@ pub fn geo_intersect_ellipse_table_make(size : Int) -> GeointersectellipseTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_table_len(s : GeointersectellipseTable) -> Int { s.size }
+pub fn GeointersectellipseTable::len(self : GeointersectellipseTable) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_table_get(s : GeointersectellipseTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseTable::get(self : GeointersectellipseTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_table_set(s : GeointersectellipseTable, i : Int, v : Double) -> GeointersectellipseTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseTable::set(self : GeointersectellipseTable, i : Int, v : Double) -> GeointersectellipseTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_table_sum(s : GeointersectellipseTable) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseTable::sum(self : GeointersectellipseTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_table_mean(s : GeointersectellipseTable) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseTable::mean(self : GeointersectellipseTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_table_scale(s : GeointersectellipseTable, f : Double) -> GeointersectellipseTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseTable::scale(self : GeointersectellipseTable, f : Double) -> GeointersectellipseTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_table_add(a : GeointersectellipseTable, b : GeointersectellipseTable) -> GeointersectellipseTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseTable::add(self : GeointersectellipseTable, other : GeointersectellipseTable) -> GeointersectellipseTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_table_copy(s : GeointersectellipseTable) -> GeointersectellipseTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseTable::copy(self : GeointersectellipseTable) -> GeointersectellipseTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_table_fill(s : GeointersectellipseTable, v : Double) -> GeointersectellipseTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseTable::fill(self : GeointersectellipseTable, v : Double) -> GeointersectellipseTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_table_min(s : GeointersectellipseTable) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseTable::min(self : GeointersectellipseTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_table_max(s : GeointersectellipseTable) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseTable::max(self : GeointersectellipseTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_table_to_string(s : GeointersectellipseTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseTable::to_string(self : GeointersectellipseTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseGraphN {
@@ -453,45 +453,45 @@ pub fn geo_intersect_ellipse_graphn_make(size : Int) -> GeointersectellipseGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_graphn_len(s : GeointersectellipseGraphN) -> Int { s.size }
+pub fn GeointersectellipseGraphN::len(self : GeointersectellipseGraphN) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_graphn_get(s : GeointersectellipseGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseGraphN::get(self : GeointersectellipseGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_graphn_set(s : GeointersectellipseGraphN, i : Int, v : Double) -> GeointersectellipseGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseGraphN::set(self : GeointersectellipseGraphN, i : Int, v : Double) -> GeointersectellipseGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_graphn_sum(s : GeointersectellipseGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseGraphN::sum(self : GeointersectellipseGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_graphn_mean(s : GeointersectellipseGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseGraphN::mean(self : GeointersectellipseGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_graphn_scale(s : GeointersectellipseGraphN, f : Double) -> GeointersectellipseGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseGraphN::scale(self : GeointersectellipseGraphN, f : Double) -> GeointersectellipseGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_graphn_add(a : GeointersectellipseGraphN, b : GeointersectellipseGraphN) -> GeointersectellipseGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseGraphN::add(self : GeointersectellipseGraphN, other : GeointersectellipseGraphN) -> GeointersectellipseGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_graphn_copy(s : GeointersectellipseGraphN) -> GeointersectellipseGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseGraphN::copy(self : GeointersectellipseGraphN) -> GeointersectellipseGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_graphn_fill(s : GeointersectellipseGraphN, v : Double) -> GeointersectellipseGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseGraphN::fill(self : GeointersectellipseGraphN, v : Double) -> GeointersectellipseGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_graphn_min(s : GeointersectellipseGraphN) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseGraphN::min(self : GeointersectellipseGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_graphn_max(s : GeointersectellipseGraphN) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseGraphN::max(self : GeointersectellipseGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_graphn_to_string(s : GeointersectellipseGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseGraphN::to_string(self : GeointersectellipseGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseNode {
@@ -504,45 +504,45 @@ pub fn geo_intersect_ellipse_node_make(size : Int) -> GeointersectellipseNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_node_len(s : GeointersectellipseNode) -> Int { s.size }
+pub fn GeointersectellipseNode::len(self : GeointersectellipseNode) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_node_get(s : GeointersectellipseNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseNode::get(self : GeointersectellipseNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_node_set(s : GeointersectellipseNode, i : Int, v : Double) -> GeointersectellipseNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseNode::set(self : GeointersectellipseNode, i : Int, v : Double) -> GeointersectellipseNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_node_sum(s : GeointersectellipseNode) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseNode::sum(self : GeointersectellipseNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_node_mean(s : GeointersectellipseNode) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseNode::mean(self : GeointersectellipseNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_node_scale(s : GeointersectellipseNode, f : Double) -> GeointersectellipseNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseNode::scale(self : GeointersectellipseNode, f : Double) -> GeointersectellipseNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_node_add(a : GeointersectellipseNode, b : GeointersectellipseNode) -> GeointersectellipseNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseNode::add(self : GeointersectellipseNode, other : GeointersectellipseNode) -> GeointersectellipseNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_node_copy(s : GeointersectellipseNode) -> GeointersectellipseNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseNode::copy(self : GeointersectellipseNode) -> GeointersectellipseNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_node_fill(s : GeointersectellipseNode, v : Double) -> GeointersectellipseNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseNode::fill(self : GeointersectellipseNode, v : Double) -> GeointersectellipseNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_node_min(s : GeointersectellipseNode) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseNode::min(self : GeointersectellipseNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_node_max(s : GeointersectellipseNode) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseNode::max(self : GeointersectellipseNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_node_to_string(s : GeointersectellipseNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseNode::to_string(self : GeointersectellipseNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseEdge {
@@ -555,45 +555,45 @@ pub fn geo_intersect_ellipse_edge_make(size : Int) -> GeointersectellipseEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_edge_len(s : GeointersectellipseEdge) -> Int { s.size }
+pub fn GeointersectellipseEdge::len(self : GeointersectellipseEdge) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_edge_get(s : GeointersectellipseEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseEdge::get(self : GeointersectellipseEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_edge_set(s : GeointersectellipseEdge, i : Int, v : Double) -> GeointersectellipseEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseEdge::set(self : GeointersectellipseEdge, i : Int, v : Double) -> GeointersectellipseEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_edge_sum(s : GeointersectellipseEdge) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseEdge::sum(self : GeointersectellipseEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_edge_mean(s : GeointersectellipseEdge) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseEdge::mean(self : GeointersectellipseEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_edge_scale(s : GeointersectellipseEdge, f : Double) -> GeointersectellipseEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseEdge::scale(self : GeointersectellipseEdge, f : Double) -> GeointersectellipseEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_edge_add(a : GeointersectellipseEdge, b : GeointersectellipseEdge) -> GeointersectellipseEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseEdge::add(self : GeointersectellipseEdge, other : GeointersectellipseEdge) -> GeointersectellipseEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_edge_copy(s : GeointersectellipseEdge) -> GeointersectellipseEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseEdge::copy(self : GeointersectellipseEdge) -> GeointersectellipseEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_edge_fill(s : GeointersectellipseEdge, v : Double) -> GeointersectellipseEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseEdge::fill(self : GeointersectellipseEdge, v : Double) -> GeointersectellipseEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_edge_min(s : GeointersectellipseEdge) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseEdge::min(self : GeointersectellipseEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_edge_max(s : GeointersectellipseEdge) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseEdge::max(self : GeointersectellipseEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_edge_to_string(s : GeointersectellipseEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseEdge::to_string(self : GeointersectellipseEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipsePath {
@@ -606,45 +606,45 @@ pub fn geo_intersect_ellipse_path_make(size : Int) -> GeointersectellipsePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_path_len(s : GeointersectellipsePath) -> Int { s.size }
+pub fn GeointersectellipsePath::len(self : GeointersectellipsePath) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_path_get(s : GeointersectellipsePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipsePath::get(self : GeointersectellipsePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_path_set(s : GeointersectellipsePath, i : Int, v : Double) -> GeointersectellipsePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipsePath::set(self : GeointersectellipsePath, i : Int, v : Double) -> GeointersectellipsePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_path_sum(s : GeointersectellipsePath) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipsePath::sum(self : GeointersectellipsePath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_path_mean(s : GeointersectellipsePath) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipsePath::mean(self : GeointersectellipsePath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_path_scale(s : GeointersectellipsePath, f : Double) -> GeointersectellipsePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipsePath::scale(self : GeointersectellipsePath, f : Double) -> GeointersectellipsePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_path_add(a : GeointersectellipsePath, b : GeointersectellipsePath) -> GeointersectellipsePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipsePath::add(self : GeointersectellipsePath, other : GeointersectellipsePath) -> GeointersectellipsePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_path_copy(s : GeointersectellipsePath) -> GeointersectellipsePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipsePath::copy(self : GeointersectellipsePath) -> GeointersectellipsePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_path_fill(s : GeointersectellipsePath, v : Double) -> GeointersectellipsePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipsePath::fill(self : GeointersectellipsePath, v : Double) -> GeointersectellipsePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_path_min(s : GeointersectellipsePath) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipsePath::min(self : GeointersectellipsePath) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_path_max(s : GeointersectellipsePath) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipsePath::max(self : GeointersectellipsePath) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_path_to_string(s : GeointersectellipsePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipsePath::to_string(self : GeointersectellipsePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseCluster {
@@ -657,45 +657,45 @@ pub fn geo_intersect_ellipse_cluster_make(size : Int) -> GeointersectellipseClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_cluster_len(s : GeointersectellipseCluster) -> Int { s.size }
+pub fn GeointersectellipseCluster::len(self : GeointersectellipseCluster) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_cluster_get(s : GeointersectellipseCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseCluster::get(self : GeointersectellipseCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_cluster_set(s : GeointersectellipseCluster, i : Int, v : Double) -> GeointersectellipseCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseCluster::set(self : GeointersectellipseCluster, i : Int, v : Double) -> GeointersectellipseCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cluster_sum(s : GeointersectellipseCluster) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseCluster::sum(self : GeointersectellipseCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_cluster_mean(s : GeointersectellipseCluster) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseCluster::mean(self : GeointersectellipseCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_cluster_scale(s : GeointersectellipseCluster, f : Double) -> GeointersectellipseCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseCluster::scale(self : GeointersectellipseCluster, f : Double) -> GeointersectellipseCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cluster_add(a : GeointersectellipseCluster, b : GeointersectellipseCluster) -> GeointersectellipseCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseCluster::add(self : GeointersectellipseCluster, other : GeointersectellipseCluster) -> GeointersectellipseCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cluster_copy(s : GeointersectellipseCluster) -> GeointersectellipseCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseCluster::copy(self : GeointersectellipseCluster) -> GeointersectellipseCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cluster_fill(s : GeointersectellipseCluster, v : Double) -> GeointersectellipseCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseCluster::fill(self : GeointersectellipseCluster, v : Double) -> GeointersectellipseCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cluster_min(s : GeointersectellipseCluster) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseCluster::min(self : GeointersectellipseCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_cluster_max(s : GeointersectellipseCluster) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseCluster::max(self : GeointersectellipseCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_cluster_to_string(s : GeointersectellipseCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseCluster::to_string(self : GeointersectellipseCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseModel {
@@ -708,45 +708,45 @@ pub fn geo_intersect_ellipse_model_make(size : Int) -> GeointersectellipseModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_model_len(s : GeointersectellipseModel) -> Int { s.size }
+pub fn GeointersectellipseModel::len(self : GeointersectellipseModel) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_model_get(s : GeointersectellipseModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseModel::get(self : GeointersectellipseModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_model_set(s : GeointersectellipseModel, i : Int, v : Double) -> GeointersectellipseModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseModel::set(self : GeointersectellipseModel, i : Int, v : Double) -> GeointersectellipseModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_model_sum(s : GeointersectellipseModel) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseModel::sum(self : GeointersectellipseModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_model_mean(s : GeointersectellipseModel) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseModel::mean(self : GeointersectellipseModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_model_scale(s : GeointersectellipseModel, f : Double) -> GeointersectellipseModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseModel::scale(self : GeointersectellipseModel, f : Double) -> GeointersectellipseModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_model_add(a : GeointersectellipseModel, b : GeointersectellipseModel) -> GeointersectellipseModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseModel::add(self : GeointersectellipseModel, other : GeointersectellipseModel) -> GeointersectellipseModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_model_copy(s : GeointersectellipseModel) -> GeointersectellipseModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseModel::copy(self : GeointersectellipseModel) -> GeointersectellipseModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_model_fill(s : GeointersectellipseModel, v : Double) -> GeointersectellipseModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseModel::fill(self : GeointersectellipseModel, v : Double) -> GeointersectellipseModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_model_min(s : GeointersectellipseModel) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseModel::min(self : GeointersectellipseModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_model_max(s : GeointersectellipseModel) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseModel::max(self : GeointersectellipseModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_model_to_string(s : GeointersectellipseModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseModel::to_string(self : GeointersectellipseModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseLayer {
@@ -759,45 +759,45 @@ pub fn geo_intersect_ellipse_layer_make(size : Int) -> GeointersectellipseLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_layer_len(s : GeointersectellipseLayer) -> Int { s.size }
+pub fn GeointersectellipseLayer::len(self : GeointersectellipseLayer) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_layer_get(s : GeointersectellipseLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseLayer::get(self : GeointersectellipseLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_layer_set(s : GeointersectellipseLayer, i : Int, v : Double) -> GeointersectellipseLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseLayer::set(self : GeointersectellipseLayer, i : Int, v : Double) -> GeointersectellipseLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_layer_sum(s : GeointersectellipseLayer) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseLayer::sum(self : GeointersectellipseLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_layer_mean(s : GeointersectellipseLayer) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseLayer::mean(self : GeointersectellipseLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_layer_scale(s : GeointersectellipseLayer, f : Double) -> GeointersectellipseLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseLayer::scale(self : GeointersectellipseLayer, f : Double) -> GeointersectellipseLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_layer_add(a : GeointersectellipseLayer, b : GeointersectellipseLayer) -> GeointersectellipseLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseLayer::add(self : GeointersectellipseLayer, other : GeointersectellipseLayer) -> GeointersectellipseLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_layer_copy(s : GeointersectellipseLayer) -> GeointersectellipseLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseLayer::copy(self : GeointersectellipseLayer) -> GeointersectellipseLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_layer_fill(s : GeointersectellipseLayer, v : Double) -> GeointersectellipseLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseLayer::fill(self : GeointersectellipseLayer, v : Double) -> GeointersectellipseLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_layer_min(s : GeointersectellipseLayer) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseLayer::min(self : GeointersectellipseLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_layer_max(s : GeointersectellipseLayer) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseLayer::max(self : GeointersectellipseLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_layer_to_string(s : GeointersectellipseLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseLayer::to_string(self : GeointersectellipseLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseBuffer {
@@ -810,45 +810,45 @@ pub fn geo_intersect_ellipse_buffer_make(size : Int) -> GeointersectellipseBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_buffer_len(s : GeointersectellipseBuffer) -> Int { s.size }
+pub fn GeointersectellipseBuffer::len(self : GeointersectellipseBuffer) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_buffer_get(s : GeointersectellipseBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseBuffer::get(self : GeointersectellipseBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_buffer_set(s : GeointersectellipseBuffer, i : Int, v : Double) -> GeointersectellipseBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseBuffer::set(self : GeointersectellipseBuffer, i : Int, v : Double) -> GeointersectellipseBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_buffer_sum(s : GeointersectellipseBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseBuffer::sum(self : GeointersectellipseBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_buffer_mean(s : GeointersectellipseBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseBuffer::mean(self : GeointersectellipseBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_buffer_scale(s : GeointersectellipseBuffer, f : Double) -> GeointersectellipseBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseBuffer::scale(self : GeointersectellipseBuffer, f : Double) -> GeointersectellipseBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_buffer_add(a : GeointersectellipseBuffer, b : GeointersectellipseBuffer) -> GeointersectellipseBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseBuffer::add(self : GeointersectellipseBuffer, other : GeointersectellipseBuffer) -> GeointersectellipseBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_buffer_copy(s : GeointersectellipseBuffer) -> GeointersectellipseBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseBuffer::copy(self : GeointersectellipseBuffer) -> GeointersectellipseBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_buffer_fill(s : GeointersectellipseBuffer, v : Double) -> GeointersectellipseBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseBuffer::fill(self : GeointersectellipseBuffer, v : Double) -> GeointersectellipseBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_buffer_min(s : GeointersectellipseBuffer) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseBuffer::min(self : GeointersectellipseBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_buffer_max(s : GeointersectellipseBuffer) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseBuffer::max(self : GeointersectellipseBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_buffer_to_string(s : GeointersectellipseBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseBuffer::to_string(self : GeointersectellipseBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseCursor {
@@ -861,45 +861,45 @@ pub fn geo_intersect_ellipse_cursor_make(size : Int) -> GeointersectellipseCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_cursor_len(s : GeointersectellipseCursor) -> Int { s.size }
+pub fn GeointersectellipseCursor::len(self : GeointersectellipseCursor) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_cursor_get(s : GeointersectellipseCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseCursor::get(self : GeointersectellipseCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_cursor_set(s : GeointersectellipseCursor, i : Int, v : Double) -> GeointersectellipseCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseCursor::set(self : GeointersectellipseCursor, i : Int, v : Double) -> GeointersectellipseCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cursor_sum(s : GeointersectellipseCursor) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseCursor::sum(self : GeointersectellipseCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_cursor_mean(s : GeointersectellipseCursor) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseCursor::mean(self : GeointersectellipseCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_cursor_scale(s : GeointersectellipseCursor, f : Double) -> GeointersectellipseCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseCursor::scale(self : GeointersectellipseCursor, f : Double) -> GeointersectellipseCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cursor_add(a : GeointersectellipseCursor, b : GeointersectellipseCursor) -> GeointersectellipseCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseCursor::add(self : GeointersectellipseCursor, other : GeointersectellipseCursor) -> GeointersectellipseCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cursor_copy(s : GeointersectellipseCursor) -> GeointersectellipseCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseCursor::copy(self : GeointersectellipseCursor) -> GeointersectellipseCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cursor_fill(s : GeointersectellipseCursor, v : Double) -> GeointersectellipseCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseCursor::fill(self : GeointersectellipseCursor, v : Double) -> GeointersectellipseCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_cursor_min(s : GeointersectellipseCursor) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseCursor::min(self : GeointersectellipseCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_cursor_max(s : GeointersectellipseCursor) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseCursor::max(self : GeointersectellipseCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_cursor_to_string(s : GeointersectellipseCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseCursor::to_string(self : GeointersectellipseCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseView {
@@ -912,45 +912,45 @@ pub fn geo_intersect_ellipse_view_make(size : Int) -> GeointersectellipseView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_view_len(s : GeointersectellipseView) -> Int { s.size }
+pub fn GeointersectellipseView::len(self : GeointersectellipseView) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_view_get(s : GeointersectellipseView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseView::get(self : GeointersectellipseView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_view_set(s : GeointersectellipseView, i : Int, v : Double) -> GeointersectellipseView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseView::set(self : GeointersectellipseView, i : Int, v : Double) -> GeointersectellipseView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_view_sum(s : GeointersectellipseView) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseView::sum(self : GeointersectellipseView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_view_mean(s : GeointersectellipseView) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseView::mean(self : GeointersectellipseView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_view_scale(s : GeointersectellipseView, f : Double) -> GeointersectellipseView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseView::scale(self : GeointersectellipseView, f : Double) -> GeointersectellipseView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_view_add(a : GeointersectellipseView, b : GeointersectellipseView) -> GeointersectellipseView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseView::add(self : GeointersectellipseView, other : GeointersectellipseView) -> GeointersectellipseView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_view_copy(s : GeointersectellipseView) -> GeointersectellipseView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseView::copy(self : GeointersectellipseView) -> GeointersectellipseView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_view_fill(s : GeointersectellipseView, v : Double) -> GeointersectellipseView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseView::fill(self : GeointersectellipseView, v : Double) -> GeointersectellipseView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_view_min(s : GeointersectellipseView) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseView::min(self : GeointersectellipseView) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_view_max(s : GeointersectellipseView) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseView::max(self : GeointersectellipseView) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_view_to_string(s : GeointersectellipseView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseView::to_string(self : GeointersectellipseView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseRange {
@@ -963,45 +963,45 @@ pub fn geo_intersect_ellipse_range_make(size : Int) -> GeointersectellipseRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_range_len(s : GeointersectellipseRange) -> Int { s.size }
+pub fn GeointersectellipseRange::len(self : GeointersectellipseRange) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_range_get(s : GeointersectellipseRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseRange::get(self : GeointersectellipseRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_range_set(s : GeointersectellipseRange, i : Int, v : Double) -> GeointersectellipseRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseRange::set(self : GeointersectellipseRange, i : Int, v : Double) -> GeointersectellipseRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_range_sum(s : GeointersectellipseRange) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseRange::sum(self : GeointersectellipseRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_range_mean(s : GeointersectellipseRange) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseRange::mean(self : GeointersectellipseRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_range_scale(s : GeointersectellipseRange, f : Double) -> GeointersectellipseRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseRange::scale(self : GeointersectellipseRange, f : Double) -> GeointersectellipseRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_range_add(a : GeointersectellipseRange, b : GeointersectellipseRange) -> GeointersectellipseRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseRange::add(self : GeointersectellipseRange, other : GeointersectellipseRange) -> GeointersectellipseRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_range_copy(s : GeointersectellipseRange) -> GeointersectellipseRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseRange::copy(self : GeointersectellipseRange) -> GeointersectellipseRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_range_fill(s : GeointersectellipseRange, v : Double) -> GeointersectellipseRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseRange::fill(self : GeointersectellipseRange, v : Double) -> GeointersectellipseRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_range_min(s : GeointersectellipseRange) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseRange::min(self : GeointersectellipseRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_range_max(s : GeointersectellipseRange) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseRange::max(self : GeointersectellipseRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_range_to_string(s : GeointersectellipseRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseRange::to_string(self : GeointersectellipseRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeointersectellipseSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_intersect_ellipse_slice_make(size : Int) -> GeointersectellipseSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_intersect_ellipse_slice_len(s : GeointersectellipseSlice) -> Int { s.size }
+pub fn GeointersectellipseSlice::len(self : GeointersectellipseSlice) -> Int { self.size }
 
-pub fn geo_intersect_ellipse_slice_get(s : GeointersectellipseSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeointersectellipseSlice::get(self : GeointersectellipseSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_intersect_ellipse_slice_set(s : GeointersectellipseSlice, i : Int, v : Double) -> GeointersectellipseSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeointersectellipseSlice::set(self : GeointersectellipseSlice, i : Int, v : Double) -> GeointersectellipseSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_slice_sum(s : GeointersectellipseSlice) -> Double { @_common.sum(s.data) }
+pub fn GeointersectellipseSlice::sum(self : GeointersectellipseSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_intersect_ellipse_slice_mean(s : GeointersectellipseSlice) -> Double { @_common.mean(s.data) }
+pub fn GeointersectellipseSlice::mean(self : GeointersectellipseSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_intersect_ellipse_slice_scale(s : GeointersectellipseSlice, f : Double) -> GeointersectellipseSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeointersectellipseSlice::scale(self : GeointersectellipseSlice, f : Double) -> GeointersectellipseSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_slice_add(a : GeointersectellipseSlice, b : GeointersectellipseSlice) -> GeointersectellipseSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeointersectellipseSlice::add(self : GeointersectellipseSlice, other : GeointersectellipseSlice) -> GeointersectellipseSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_slice_copy(s : GeointersectellipseSlice) -> GeointersectellipseSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeointersectellipseSlice::copy(self : GeointersectellipseSlice) -> GeointersectellipseSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_slice_fill(s : GeointersectellipseSlice, v : Double) -> GeointersectellipseSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeointersectellipseSlice::fill(self : GeointersectellipseSlice, v : Double) -> GeointersectellipseSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_intersect_ellipse_slice_min(s : GeointersectellipseSlice) -> Double { @_common.min(s.data) }
+pub fn GeointersectellipseSlice::min(self : GeointersectellipseSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_intersect_ellipse_slice_max(s : GeointersectellipseSlice) -> Double { @_common.max(s.data) }
+pub fn GeointersectellipseSlice::max(self : GeointersectellipseSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_intersect_ellipse_slice_to_string(s : GeointersectellipseSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeointersectellipseSlice::to_string(self : GeointersectellipseSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

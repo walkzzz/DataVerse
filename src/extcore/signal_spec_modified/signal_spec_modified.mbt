@@ -351,45 +351,45 @@ pub fn signal_spec_modified_frame_make(size : Int) -> SignalspecmodifiedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_frame_len(s : SignalspecmodifiedFrame) -> Int { s.size }
+pub fn SignalspecmodifiedFrame::len(self : SignalspecmodifiedFrame) -> Int { self.size }
 
-pub fn signal_spec_modified_frame_get(s : SignalspecmodifiedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedFrame::get(self : SignalspecmodifiedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_frame_set(s : SignalspecmodifiedFrame, i : Int, v : Double) -> SignalspecmodifiedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedFrame::set(self : SignalspecmodifiedFrame, i : Int, v : Double) -> SignalspecmodifiedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_frame_sum(s : SignalspecmodifiedFrame) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedFrame::sum(self : SignalspecmodifiedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_frame_mean(s : SignalspecmodifiedFrame) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedFrame::mean(self : SignalspecmodifiedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_frame_scale(s : SignalspecmodifiedFrame, f : Double) -> SignalspecmodifiedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedFrame::scale(self : SignalspecmodifiedFrame, f : Double) -> SignalspecmodifiedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_frame_add(a : SignalspecmodifiedFrame, b : SignalspecmodifiedFrame) -> SignalspecmodifiedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedFrame::add(self : SignalspecmodifiedFrame, other : SignalspecmodifiedFrame) -> SignalspecmodifiedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_frame_copy(s : SignalspecmodifiedFrame) -> SignalspecmodifiedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedFrame::copy(self : SignalspecmodifiedFrame) -> SignalspecmodifiedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_frame_fill(s : SignalspecmodifiedFrame, v : Double) -> SignalspecmodifiedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedFrame::fill(self : SignalspecmodifiedFrame, v : Double) -> SignalspecmodifiedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_frame_min(s : SignalspecmodifiedFrame) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedFrame::min(self : SignalspecmodifiedFrame) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_frame_max(s : SignalspecmodifiedFrame) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedFrame::max(self : SignalspecmodifiedFrame) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_frame_to_string(s : SignalspecmodifiedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedFrame::to_string(self : SignalspecmodifiedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedTable {
@@ -402,45 +402,45 @@ pub fn signal_spec_modified_table_make(size : Int) -> SignalspecmodifiedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_table_len(s : SignalspecmodifiedTable) -> Int { s.size }
+pub fn SignalspecmodifiedTable::len(self : SignalspecmodifiedTable) -> Int { self.size }
 
-pub fn signal_spec_modified_table_get(s : SignalspecmodifiedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedTable::get(self : SignalspecmodifiedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_table_set(s : SignalspecmodifiedTable, i : Int, v : Double) -> SignalspecmodifiedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedTable::set(self : SignalspecmodifiedTable, i : Int, v : Double) -> SignalspecmodifiedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_table_sum(s : SignalspecmodifiedTable) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedTable::sum(self : SignalspecmodifiedTable) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_table_mean(s : SignalspecmodifiedTable) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedTable::mean(self : SignalspecmodifiedTable) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_table_scale(s : SignalspecmodifiedTable, f : Double) -> SignalspecmodifiedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedTable::scale(self : SignalspecmodifiedTable, f : Double) -> SignalspecmodifiedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_table_add(a : SignalspecmodifiedTable, b : SignalspecmodifiedTable) -> SignalspecmodifiedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedTable::add(self : SignalspecmodifiedTable, other : SignalspecmodifiedTable) -> SignalspecmodifiedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_table_copy(s : SignalspecmodifiedTable) -> SignalspecmodifiedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedTable::copy(self : SignalspecmodifiedTable) -> SignalspecmodifiedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_table_fill(s : SignalspecmodifiedTable, v : Double) -> SignalspecmodifiedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedTable::fill(self : SignalspecmodifiedTable, v : Double) -> SignalspecmodifiedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_table_min(s : SignalspecmodifiedTable) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedTable::min(self : SignalspecmodifiedTable) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_table_max(s : SignalspecmodifiedTable) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedTable::max(self : SignalspecmodifiedTable) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_table_to_string(s : SignalspecmodifiedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedTable::to_string(self : SignalspecmodifiedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedGraphN {
@@ -453,45 +453,45 @@ pub fn signal_spec_modified_graphn_make(size : Int) -> SignalspecmodifiedGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_graphn_len(s : SignalspecmodifiedGraphN) -> Int { s.size }
+pub fn SignalspecmodifiedGraphN::len(self : SignalspecmodifiedGraphN) -> Int { self.size }
 
-pub fn signal_spec_modified_graphn_get(s : SignalspecmodifiedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedGraphN::get(self : SignalspecmodifiedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_graphn_set(s : SignalspecmodifiedGraphN, i : Int, v : Double) -> SignalspecmodifiedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedGraphN::set(self : SignalspecmodifiedGraphN, i : Int, v : Double) -> SignalspecmodifiedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_graphn_sum(s : SignalspecmodifiedGraphN) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedGraphN::sum(self : SignalspecmodifiedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_graphn_mean(s : SignalspecmodifiedGraphN) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedGraphN::mean(self : SignalspecmodifiedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_graphn_scale(s : SignalspecmodifiedGraphN, f : Double) -> SignalspecmodifiedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedGraphN::scale(self : SignalspecmodifiedGraphN, f : Double) -> SignalspecmodifiedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_graphn_add(a : SignalspecmodifiedGraphN, b : SignalspecmodifiedGraphN) -> SignalspecmodifiedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedGraphN::add(self : SignalspecmodifiedGraphN, other : SignalspecmodifiedGraphN) -> SignalspecmodifiedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_graphn_copy(s : SignalspecmodifiedGraphN) -> SignalspecmodifiedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedGraphN::copy(self : SignalspecmodifiedGraphN) -> SignalspecmodifiedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_graphn_fill(s : SignalspecmodifiedGraphN, v : Double) -> SignalspecmodifiedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedGraphN::fill(self : SignalspecmodifiedGraphN, v : Double) -> SignalspecmodifiedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_graphn_min(s : SignalspecmodifiedGraphN) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedGraphN::min(self : SignalspecmodifiedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_graphn_max(s : SignalspecmodifiedGraphN) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedGraphN::max(self : SignalspecmodifiedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_graphn_to_string(s : SignalspecmodifiedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedGraphN::to_string(self : SignalspecmodifiedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedNode {
@@ -504,45 +504,45 @@ pub fn signal_spec_modified_node_make(size : Int) -> SignalspecmodifiedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_node_len(s : SignalspecmodifiedNode) -> Int { s.size }
+pub fn SignalspecmodifiedNode::len(self : SignalspecmodifiedNode) -> Int { self.size }
 
-pub fn signal_spec_modified_node_get(s : SignalspecmodifiedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedNode::get(self : SignalspecmodifiedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_node_set(s : SignalspecmodifiedNode, i : Int, v : Double) -> SignalspecmodifiedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedNode::set(self : SignalspecmodifiedNode, i : Int, v : Double) -> SignalspecmodifiedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_node_sum(s : SignalspecmodifiedNode) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedNode::sum(self : SignalspecmodifiedNode) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_node_mean(s : SignalspecmodifiedNode) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedNode::mean(self : SignalspecmodifiedNode) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_node_scale(s : SignalspecmodifiedNode, f : Double) -> SignalspecmodifiedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedNode::scale(self : SignalspecmodifiedNode, f : Double) -> SignalspecmodifiedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_node_add(a : SignalspecmodifiedNode, b : SignalspecmodifiedNode) -> SignalspecmodifiedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedNode::add(self : SignalspecmodifiedNode, other : SignalspecmodifiedNode) -> SignalspecmodifiedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_node_copy(s : SignalspecmodifiedNode) -> SignalspecmodifiedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedNode::copy(self : SignalspecmodifiedNode) -> SignalspecmodifiedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_node_fill(s : SignalspecmodifiedNode, v : Double) -> SignalspecmodifiedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedNode::fill(self : SignalspecmodifiedNode, v : Double) -> SignalspecmodifiedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_node_min(s : SignalspecmodifiedNode) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedNode::min(self : SignalspecmodifiedNode) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_node_max(s : SignalspecmodifiedNode) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedNode::max(self : SignalspecmodifiedNode) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_node_to_string(s : SignalspecmodifiedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedNode::to_string(self : SignalspecmodifiedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedEdge {
@@ -555,45 +555,45 @@ pub fn signal_spec_modified_edge_make(size : Int) -> SignalspecmodifiedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_edge_len(s : SignalspecmodifiedEdge) -> Int { s.size }
+pub fn SignalspecmodifiedEdge::len(self : SignalspecmodifiedEdge) -> Int { self.size }
 
-pub fn signal_spec_modified_edge_get(s : SignalspecmodifiedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedEdge::get(self : SignalspecmodifiedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_edge_set(s : SignalspecmodifiedEdge, i : Int, v : Double) -> SignalspecmodifiedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedEdge::set(self : SignalspecmodifiedEdge, i : Int, v : Double) -> SignalspecmodifiedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_edge_sum(s : SignalspecmodifiedEdge) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedEdge::sum(self : SignalspecmodifiedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_edge_mean(s : SignalspecmodifiedEdge) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedEdge::mean(self : SignalspecmodifiedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_edge_scale(s : SignalspecmodifiedEdge, f : Double) -> SignalspecmodifiedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedEdge::scale(self : SignalspecmodifiedEdge, f : Double) -> SignalspecmodifiedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_edge_add(a : SignalspecmodifiedEdge, b : SignalspecmodifiedEdge) -> SignalspecmodifiedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedEdge::add(self : SignalspecmodifiedEdge, other : SignalspecmodifiedEdge) -> SignalspecmodifiedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_edge_copy(s : SignalspecmodifiedEdge) -> SignalspecmodifiedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedEdge::copy(self : SignalspecmodifiedEdge) -> SignalspecmodifiedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_edge_fill(s : SignalspecmodifiedEdge, v : Double) -> SignalspecmodifiedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedEdge::fill(self : SignalspecmodifiedEdge, v : Double) -> SignalspecmodifiedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_edge_min(s : SignalspecmodifiedEdge) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedEdge::min(self : SignalspecmodifiedEdge) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_edge_max(s : SignalspecmodifiedEdge) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedEdge::max(self : SignalspecmodifiedEdge) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_edge_to_string(s : SignalspecmodifiedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedEdge::to_string(self : SignalspecmodifiedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedPath {
@@ -606,45 +606,45 @@ pub fn signal_spec_modified_path_make(size : Int) -> SignalspecmodifiedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_path_len(s : SignalspecmodifiedPath) -> Int { s.size }
+pub fn SignalspecmodifiedPath::len(self : SignalspecmodifiedPath) -> Int { self.size }
 
-pub fn signal_spec_modified_path_get(s : SignalspecmodifiedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedPath::get(self : SignalspecmodifiedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_path_set(s : SignalspecmodifiedPath, i : Int, v : Double) -> SignalspecmodifiedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedPath::set(self : SignalspecmodifiedPath, i : Int, v : Double) -> SignalspecmodifiedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_path_sum(s : SignalspecmodifiedPath) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedPath::sum(self : SignalspecmodifiedPath) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_path_mean(s : SignalspecmodifiedPath) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedPath::mean(self : SignalspecmodifiedPath) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_path_scale(s : SignalspecmodifiedPath, f : Double) -> SignalspecmodifiedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedPath::scale(self : SignalspecmodifiedPath, f : Double) -> SignalspecmodifiedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_path_add(a : SignalspecmodifiedPath, b : SignalspecmodifiedPath) -> SignalspecmodifiedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedPath::add(self : SignalspecmodifiedPath, other : SignalspecmodifiedPath) -> SignalspecmodifiedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_path_copy(s : SignalspecmodifiedPath) -> SignalspecmodifiedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedPath::copy(self : SignalspecmodifiedPath) -> SignalspecmodifiedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_path_fill(s : SignalspecmodifiedPath, v : Double) -> SignalspecmodifiedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedPath::fill(self : SignalspecmodifiedPath, v : Double) -> SignalspecmodifiedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_path_min(s : SignalspecmodifiedPath) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedPath::min(self : SignalspecmodifiedPath) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_path_max(s : SignalspecmodifiedPath) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedPath::max(self : SignalspecmodifiedPath) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_path_to_string(s : SignalspecmodifiedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedPath::to_string(self : SignalspecmodifiedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedCluster {
@@ -657,45 +657,45 @@ pub fn signal_spec_modified_cluster_make(size : Int) -> SignalspecmodifiedCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_cluster_len(s : SignalspecmodifiedCluster) -> Int { s.size }
+pub fn SignalspecmodifiedCluster::len(self : SignalspecmodifiedCluster) -> Int { self.size }
 
-pub fn signal_spec_modified_cluster_get(s : SignalspecmodifiedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedCluster::get(self : SignalspecmodifiedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_cluster_set(s : SignalspecmodifiedCluster, i : Int, v : Double) -> SignalspecmodifiedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCluster::set(self : SignalspecmodifiedCluster, i : Int, v : Double) -> SignalspecmodifiedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cluster_sum(s : SignalspecmodifiedCluster) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedCluster::sum(self : SignalspecmodifiedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_cluster_mean(s : SignalspecmodifiedCluster) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedCluster::mean(self : SignalspecmodifiedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_cluster_scale(s : SignalspecmodifiedCluster, f : Double) -> SignalspecmodifiedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCluster::scale(self : SignalspecmodifiedCluster, f : Double) -> SignalspecmodifiedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cluster_add(a : SignalspecmodifiedCluster, b : SignalspecmodifiedCluster) -> SignalspecmodifiedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedCluster::add(self : SignalspecmodifiedCluster, other : SignalspecmodifiedCluster) -> SignalspecmodifiedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cluster_copy(s : SignalspecmodifiedCluster) -> SignalspecmodifiedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCluster::copy(self : SignalspecmodifiedCluster) -> SignalspecmodifiedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cluster_fill(s : SignalspecmodifiedCluster, v : Double) -> SignalspecmodifiedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCluster::fill(self : SignalspecmodifiedCluster, v : Double) -> SignalspecmodifiedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cluster_min(s : SignalspecmodifiedCluster) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedCluster::min(self : SignalspecmodifiedCluster) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_cluster_max(s : SignalspecmodifiedCluster) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedCluster::max(self : SignalspecmodifiedCluster) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_cluster_to_string(s : SignalspecmodifiedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedCluster::to_string(self : SignalspecmodifiedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedModel {
@@ -708,45 +708,45 @@ pub fn signal_spec_modified_model_make(size : Int) -> SignalspecmodifiedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_model_len(s : SignalspecmodifiedModel) -> Int { s.size }
+pub fn SignalspecmodifiedModel::len(self : SignalspecmodifiedModel) -> Int { self.size }
 
-pub fn signal_spec_modified_model_get(s : SignalspecmodifiedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedModel::get(self : SignalspecmodifiedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_model_set(s : SignalspecmodifiedModel, i : Int, v : Double) -> SignalspecmodifiedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedModel::set(self : SignalspecmodifiedModel, i : Int, v : Double) -> SignalspecmodifiedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_model_sum(s : SignalspecmodifiedModel) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedModel::sum(self : SignalspecmodifiedModel) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_model_mean(s : SignalspecmodifiedModel) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedModel::mean(self : SignalspecmodifiedModel) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_model_scale(s : SignalspecmodifiedModel, f : Double) -> SignalspecmodifiedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedModel::scale(self : SignalspecmodifiedModel, f : Double) -> SignalspecmodifiedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_model_add(a : SignalspecmodifiedModel, b : SignalspecmodifiedModel) -> SignalspecmodifiedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedModel::add(self : SignalspecmodifiedModel, other : SignalspecmodifiedModel) -> SignalspecmodifiedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_model_copy(s : SignalspecmodifiedModel) -> SignalspecmodifiedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedModel::copy(self : SignalspecmodifiedModel) -> SignalspecmodifiedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_model_fill(s : SignalspecmodifiedModel, v : Double) -> SignalspecmodifiedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedModel::fill(self : SignalspecmodifiedModel, v : Double) -> SignalspecmodifiedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_model_min(s : SignalspecmodifiedModel) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedModel::min(self : SignalspecmodifiedModel) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_model_max(s : SignalspecmodifiedModel) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedModel::max(self : SignalspecmodifiedModel) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_model_to_string(s : SignalspecmodifiedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedModel::to_string(self : SignalspecmodifiedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedLayer {
@@ -759,45 +759,45 @@ pub fn signal_spec_modified_layer_make(size : Int) -> SignalspecmodifiedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_layer_len(s : SignalspecmodifiedLayer) -> Int { s.size }
+pub fn SignalspecmodifiedLayer::len(self : SignalspecmodifiedLayer) -> Int { self.size }
 
-pub fn signal_spec_modified_layer_get(s : SignalspecmodifiedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedLayer::get(self : SignalspecmodifiedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_layer_set(s : SignalspecmodifiedLayer, i : Int, v : Double) -> SignalspecmodifiedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedLayer::set(self : SignalspecmodifiedLayer, i : Int, v : Double) -> SignalspecmodifiedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_layer_sum(s : SignalspecmodifiedLayer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedLayer::sum(self : SignalspecmodifiedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_layer_mean(s : SignalspecmodifiedLayer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedLayer::mean(self : SignalspecmodifiedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_layer_scale(s : SignalspecmodifiedLayer, f : Double) -> SignalspecmodifiedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedLayer::scale(self : SignalspecmodifiedLayer, f : Double) -> SignalspecmodifiedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_layer_add(a : SignalspecmodifiedLayer, b : SignalspecmodifiedLayer) -> SignalspecmodifiedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedLayer::add(self : SignalspecmodifiedLayer, other : SignalspecmodifiedLayer) -> SignalspecmodifiedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_layer_copy(s : SignalspecmodifiedLayer) -> SignalspecmodifiedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedLayer::copy(self : SignalspecmodifiedLayer) -> SignalspecmodifiedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_layer_fill(s : SignalspecmodifiedLayer, v : Double) -> SignalspecmodifiedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedLayer::fill(self : SignalspecmodifiedLayer, v : Double) -> SignalspecmodifiedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_layer_min(s : SignalspecmodifiedLayer) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedLayer::min(self : SignalspecmodifiedLayer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_layer_max(s : SignalspecmodifiedLayer) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedLayer::max(self : SignalspecmodifiedLayer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_layer_to_string(s : SignalspecmodifiedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedLayer::to_string(self : SignalspecmodifiedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedBuffer {
@@ -810,45 +810,45 @@ pub fn signal_spec_modified_buffer_make(size : Int) -> SignalspecmodifiedBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_buffer_len(s : SignalspecmodifiedBuffer) -> Int { s.size }
+pub fn SignalspecmodifiedBuffer::len(self : SignalspecmodifiedBuffer) -> Int { self.size }
 
-pub fn signal_spec_modified_buffer_get(s : SignalspecmodifiedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedBuffer::get(self : SignalspecmodifiedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_buffer_set(s : SignalspecmodifiedBuffer, i : Int, v : Double) -> SignalspecmodifiedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedBuffer::set(self : SignalspecmodifiedBuffer, i : Int, v : Double) -> SignalspecmodifiedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_buffer_sum(s : SignalspecmodifiedBuffer) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedBuffer::sum(self : SignalspecmodifiedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_buffer_mean(s : SignalspecmodifiedBuffer) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedBuffer::mean(self : SignalspecmodifiedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_buffer_scale(s : SignalspecmodifiedBuffer, f : Double) -> SignalspecmodifiedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedBuffer::scale(self : SignalspecmodifiedBuffer, f : Double) -> SignalspecmodifiedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_buffer_add(a : SignalspecmodifiedBuffer, b : SignalspecmodifiedBuffer) -> SignalspecmodifiedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedBuffer::add(self : SignalspecmodifiedBuffer, other : SignalspecmodifiedBuffer) -> SignalspecmodifiedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_buffer_copy(s : SignalspecmodifiedBuffer) -> SignalspecmodifiedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedBuffer::copy(self : SignalspecmodifiedBuffer) -> SignalspecmodifiedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_buffer_fill(s : SignalspecmodifiedBuffer, v : Double) -> SignalspecmodifiedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedBuffer::fill(self : SignalspecmodifiedBuffer, v : Double) -> SignalspecmodifiedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_buffer_min(s : SignalspecmodifiedBuffer) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedBuffer::min(self : SignalspecmodifiedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_buffer_max(s : SignalspecmodifiedBuffer) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedBuffer::max(self : SignalspecmodifiedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_buffer_to_string(s : SignalspecmodifiedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedBuffer::to_string(self : SignalspecmodifiedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedCursor {
@@ -861,45 +861,45 @@ pub fn signal_spec_modified_cursor_make(size : Int) -> SignalspecmodifiedCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_cursor_len(s : SignalspecmodifiedCursor) -> Int { s.size }
+pub fn SignalspecmodifiedCursor::len(self : SignalspecmodifiedCursor) -> Int { self.size }
 
-pub fn signal_spec_modified_cursor_get(s : SignalspecmodifiedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedCursor::get(self : SignalspecmodifiedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_cursor_set(s : SignalspecmodifiedCursor, i : Int, v : Double) -> SignalspecmodifiedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCursor::set(self : SignalspecmodifiedCursor, i : Int, v : Double) -> SignalspecmodifiedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cursor_sum(s : SignalspecmodifiedCursor) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedCursor::sum(self : SignalspecmodifiedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_cursor_mean(s : SignalspecmodifiedCursor) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedCursor::mean(self : SignalspecmodifiedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_cursor_scale(s : SignalspecmodifiedCursor, f : Double) -> SignalspecmodifiedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCursor::scale(self : SignalspecmodifiedCursor, f : Double) -> SignalspecmodifiedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cursor_add(a : SignalspecmodifiedCursor, b : SignalspecmodifiedCursor) -> SignalspecmodifiedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedCursor::add(self : SignalspecmodifiedCursor, other : SignalspecmodifiedCursor) -> SignalspecmodifiedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cursor_copy(s : SignalspecmodifiedCursor) -> SignalspecmodifiedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCursor::copy(self : SignalspecmodifiedCursor) -> SignalspecmodifiedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cursor_fill(s : SignalspecmodifiedCursor, v : Double) -> SignalspecmodifiedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedCursor::fill(self : SignalspecmodifiedCursor, v : Double) -> SignalspecmodifiedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_cursor_min(s : SignalspecmodifiedCursor) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedCursor::min(self : SignalspecmodifiedCursor) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_cursor_max(s : SignalspecmodifiedCursor) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedCursor::max(self : SignalspecmodifiedCursor) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_cursor_to_string(s : SignalspecmodifiedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedCursor::to_string(self : SignalspecmodifiedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedView {
@@ -912,45 +912,45 @@ pub fn signal_spec_modified_view_make(size : Int) -> SignalspecmodifiedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_view_len(s : SignalspecmodifiedView) -> Int { s.size }
+pub fn SignalspecmodifiedView::len(self : SignalspecmodifiedView) -> Int { self.size }
 
-pub fn signal_spec_modified_view_get(s : SignalspecmodifiedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedView::get(self : SignalspecmodifiedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_view_set(s : SignalspecmodifiedView, i : Int, v : Double) -> SignalspecmodifiedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedView::set(self : SignalspecmodifiedView, i : Int, v : Double) -> SignalspecmodifiedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_view_sum(s : SignalspecmodifiedView) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedView::sum(self : SignalspecmodifiedView) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_view_mean(s : SignalspecmodifiedView) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedView::mean(self : SignalspecmodifiedView) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_view_scale(s : SignalspecmodifiedView, f : Double) -> SignalspecmodifiedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedView::scale(self : SignalspecmodifiedView, f : Double) -> SignalspecmodifiedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_view_add(a : SignalspecmodifiedView, b : SignalspecmodifiedView) -> SignalspecmodifiedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedView::add(self : SignalspecmodifiedView, other : SignalspecmodifiedView) -> SignalspecmodifiedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_view_copy(s : SignalspecmodifiedView) -> SignalspecmodifiedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedView::copy(self : SignalspecmodifiedView) -> SignalspecmodifiedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_view_fill(s : SignalspecmodifiedView, v : Double) -> SignalspecmodifiedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedView::fill(self : SignalspecmodifiedView, v : Double) -> SignalspecmodifiedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_view_min(s : SignalspecmodifiedView) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedView::min(self : SignalspecmodifiedView) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_view_max(s : SignalspecmodifiedView) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedView::max(self : SignalspecmodifiedView) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_view_to_string(s : SignalspecmodifiedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedView::to_string(self : SignalspecmodifiedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedRange {
@@ -963,45 +963,45 @@ pub fn signal_spec_modified_range_make(size : Int) -> SignalspecmodifiedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_range_len(s : SignalspecmodifiedRange) -> Int { s.size }
+pub fn SignalspecmodifiedRange::len(self : SignalspecmodifiedRange) -> Int { self.size }
 
-pub fn signal_spec_modified_range_get(s : SignalspecmodifiedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedRange::get(self : SignalspecmodifiedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_range_set(s : SignalspecmodifiedRange, i : Int, v : Double) -> SignalspecmodifiedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedRange::set(self : SignalspecmodifiedRange, i : Int, v : Double) -> SignalspecmodifiedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_range_sum(s : SignalspecmodifiedRange) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedRange::sum(self : SignalspecmodifiedRange) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_range_mean(s : SignalspecmodifiedRange) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedRange::mean(self : SignalspecmodifiedRange) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_range_scale(s : SignalspecmodifiedRange, f : Double) -> SignalspecmodifiedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedRange::scale(self : SignalspecmodifiedRange, f : Double) -> SignalspecmodifiedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_range_add(a : SignalspecmodifiedRange, b : SignalspecmodifiedRange) -> SignalspecmodifiedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedRange::add(self : SignalspecmodifiedRange, other : SignalspecmodifiedRange) -> SignalspecmodifiedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_range_copy(s : SignalspecmodifiedRange) -> SignalspecmodifiedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedRange::copy(self : SignalspecmodifiedRange) -> SignalspecmodifiedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_range_fill(s : SignalspecmodifiedRange, v : Double) -> SignalspecmodifiedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedRange::fill(self : SignalspecmodifiedRange, v : Double) -> SignalspecmodifiedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_range_min(s : SignalspecmodifiedRange) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedRange::min(self : SignalspecmodifiedRange) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_range_max(s : SignalspecmodifiedRange) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedRange::max(self : SignalspecmodifiedRange) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_range_to_string(s : SignalspecmodifiedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedRange::to_string(self : SignalspecmodifiedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SignalspecmodifiedSlice {
@@ -1014,44 +1014,44 @@ pub fn signal_spec_modified_slice_make(size : Int) -> SignalspecmodifiedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn signal_spec_modified_slice_len(s : SignalspecmodifiedSlice) -> Int { s.size }
+pub fn SignalspecmodifiedSlice::len(self : SignalspecmodifiedSlice) -> Int { self.size }
 
-pub fn signal_spec_modified_slice_get(s : SignalspecmodifiedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SignalspecmodifiedSlice::get(self : SignalspecmodifiedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn signal_spec_modified_slice_set(s : SignalspecmodifiedSlice, i : Int, v : Double) -> SignalspecmodifiedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedSlice::set(self : SignalspecmodifiedSlice, i : Int, v : Double) -> SignalspecmodifiedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_slice_sum(s : SignalspecmodifiedSlice) -> Double { @_common.sum(s.data) }
+pub fn SignalspecmodifiedSlice::sum(self : SignalspecmodifiedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn signal_spec_modified_slice_mean(s : SignalspecmodifiedSlice) -> Double { @_common.mean(s.data) }
+pub fn SignalspecmodifiedSlice::mean(self : SignalspecmodifiedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn signal_spec_modified_slice_scale(s : SignalspecmodifiedSlice, f : Double) -> SignalspecmodifiedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedSlice::scale(self : SignalspecmodifiedSlice, f : Double) -> SignalspecmodifiedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_slice_add(a : SignalspecmodifiedSlice, b : SignalspecmodifiedSlice) -> SignalspecmodifiedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SignalspecmodifiedSlice::add(self : SignalspecmodifiedSlice, other : SignalspecmodifiedSlice) -> SignalspecmodifiedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn signal_spec_modified_slice_copy(s : SignalspecmodifiedSlice) -> SignalspecmodifiedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedSlice::copy(self : SignalspecmodifiedSlice) -> SignalspecmodifiedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_slice_fill(s : SignalspecmodifiedSlice, v : Double) -> SignalspecmodifiedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SignalspecmodifiedSlice::fill(self : SignalspecmodifiedSlice, v : Double) -> SignalspecmodifiedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn signal_spec_modified_slice_min(s : SignalspecmodifiedSlice) -> Double { @_common.min(s.data) }
+pub fn SignalspecmodifiedSlice::min(self : SignalspecmodifiedSlice) -> Double { @_common.min(self.data) }
 
-pub fn signal_spec_modified_slice_max(s : SignalspecmodifiedSlice) -> Double { @_common.max(s.data) }
+pub fn SignalspecmodifiedSlice::max(self : SignalspecmodifiedSlice) -> Double { @_common.max(self.data) }
 
-pub fn signal_spec_modified_slice_to_string(s : SignalspecmodifiedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SignalspecmodifiedSlice::to_string(self : SignalspecmodifiedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

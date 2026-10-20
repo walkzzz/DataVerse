@@ -351,45 +351,45 @@ pub fn math_special_hermite_frame_make(size : Int) -> MathspecialhermiteFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_frame_len(s : MathspecialhermiteFrame) -> Int { s.size }
+pub fn MathspecialhermiteFrame::len(self : MathspecialhermiteFrame) -> Int { self.size }
 
-pub fn math_special_hermite_frame_get(s : MathspecialhermiteFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteFrame::get(self : MathspecialhermiteFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_frame_set(s : MathspecialhermiteFrame, i : Int, v : Double) -> MathspecialhermiteFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteFrame::set(self : MathspecialhermiteFrame, i : Int, v : Double) -> MathspecialhermiteFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_frame_sum(s : MathspecialhermiteFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteFrame::sum(self : MathspecialhermiteFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_frame_mean(s : MathspecialhermiteFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteFrame::mean(self : MathspecialhermiteFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_frame_scale(s : MathspecialhermiteFrame, f : Double) -> MathspecialhermiteFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteFrame::scale(self : MathspecialhermiteFrame, f : Double) -> MathspecialhermiteFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_frame_add(a : MathspecialhermiteFrame, b : MathspecialhermiteFrame) -> MathspecialhermiteFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteFrame::add(self : MathspecialhermiteFrame, other : MathspecialhermiteFrame) -> MathspecialhermiteFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_frame_copy(s : MathspecialhermiteFrame) -> MathspecialhermiteFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteFrame::copy(self : MathspecialhermiteFrame) -> MathspecialhermiteFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_frame_fill(s : MathspecialhermiteFrame, v : Double) -> MathspecialhermiteFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteFrame::fill(self : MathspecialhermiteFrame, v : Double) -> MathspecialhermiteFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_frame_min(s : MathspecialhermiteFrame) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteFrame::min(self : MathspecialhermiteFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_frame_max(s : MathspecialhermiteFrame) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteFrame::max(self : MathspecialhermiteFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_frame_to_string(s : MathspecialhermiteFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteFrame::to_string(self : MathspecialhermiteFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteTable {
@@ -402,45 +402,45 @@ pub fn math_special_hermite_table_make(size : Int) -> MathspecialhermiteTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_table_len(s : MathspecialhermiteTable) -> Int { s.size }
+pub fn MathspecialhermiteTable::len(self : MathspecialhermiteTable) -> Int { self.size }
 
-pub fn math_special_hermite_table_get(s : MathspecialhermiteTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteTable::get(self : MathspecialhermiteTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_table_set(s : MathspecialhermiteTable, i : Int, v : Double) -> MathspecialhermiteTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteTable::set(self : MathspecialhermiteTable, i : Int, v : Double) -> MathspecialhermiteTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_table_sum(s : MathspecialhermiteTable) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteTable::sum(self : MathspecialhermiteTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_table_mean(s : MathspecialhermiteTable) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteTable::mean(self : MathspecialhermiteTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_table_scale(s : MathspecialhermiteTable, f : Double) -> MathspecialhermiteTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteTable::scale(self : MathspecialhermiteTable, f : Double) -> MathspecialhermiteTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_table_add(a : MathspecialhermiteTable, b : MathspecialhermiteTable) -> MathspecialhermiteTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteTable::add(self : MathspecialhermiteTable, other : MathspecialhermiteTable) -> MathspecialhermiteTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_table_copy(s : MathspecialhermiteTable) -> MathspecialhermiteTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteTable::copy(self : MathspecialhermiteTable) -> MathspecialhermiteTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_table_fill(s : MathspecialhermiteTable, v : Double) -> MathspecialhermiteTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteTable::fill(self : MathspecialhermiteTable, v : Double) -> MathspecialhermiteTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_table_min(s : MathspecialhermiteTable) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteTable::min(self : MathspecialhermiteTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_table_max(s : MathspecialhermiteTable) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteTable::max(self : MathspecialhermiteTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_table_to_string(s : MathspecialhermiteTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteTable::to_string(self : MathspecialhermiteTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_hermite_graphn_make(size : Int) -> MathspecialhermiteGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_graphn_len(s : MathspecialhermiteGraphN) -> Int { s.size }
+pub fn MathspecialhermiteGraphN::len(self : MathspecialhermiteGraphN) -> Int { self.size }
 
-pub fn math_special_hermite_graphn_get(s : MathspecialhermiteGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteGraphN::get(self : MathspecialhermiteGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_graphn_set(s : MathspecialhermiteGraphN, i : Int, v : Double) -> MathspecialhermiteGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteGraphN::set(self : MathspecialhermiteGraphN, i : Int, v : Double) -> MathspecialhermiteGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_graphn_sum(s : MathspecialhermiteGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteGraphN::sum(self : MathspecialhermiteGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_graphn_mean(s : MathspecialhermiteGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteGraphN::mean(self : MathspecialhermiteGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_graphn_scale(s : MathspecialhermiteGraphN, f : Double) -> MathspecialhermiteGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteGraphN::scale(self : MathspecialhermiteGraphN, f : Double) -> MathspecialhermiteGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_graphn_add(a : MathspecialhermiteGraphN, b : MathspecialhermiteGraphN) -> MathspecialhermiteGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteGraphN::add(self : MathspecialhermiteGraphN, other : MathspecialhermiteGraphN) -> MathspecialhermiteGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_graphn_copy(s : MathspecialhermiteGraphN) -> MathspecialhermiteGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteGraphN::copy(self : MathspecialhermiteGraphN) -> MathspecialhermiteGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_graphn_fill(s : MathspecialhermiteGraphN, v : Double) -> MathspecialhermiteGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteGraphN::fill(self : MathspecialhermiteGraphN, v : Double) -> MathspecialhermiteGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_graphn_min(s : MathspecialhermiteGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteGraphN::min(self : MathspecialhermiteGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_graphn_max(s : MathspecialhermiteGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteGraphN::max(self : MathspecialhermiteGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_graphn_to_string(s : MathspecialhermiteGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteGraphN::to_string(self : MathspecialhermiteGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteNode {
@@ -504,45 +504,45 @@ pub fn math_special_hermite_node_make(size : Int) -> MathspecialhermiteNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_node_len(s : MathspecialhermiteNode) -> Int { s.size }
+pub fn MathspecialhermiteNode::len(self : MathspecialhermiteNode) -> Int { self.size }
 
-pub fn math_special_hermite_node_get(s : MathspecialhermiteNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteNode::get(self : MathspecialhermiteNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_node_set(s : MathspecialhermiteNode, i : Int, v : Double) -> MathspecialhermiteNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteNode::set(self : MathspecialhermiteNode, i : Int, v : Double) -> MathspecialhermiteNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_node_sum(s : MathspecialhermiteNode) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteNode::sum(self : MathspecialhermiteNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_node_mean(s : MathspecialhermiteNode) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteNode::mean(self : MathspecialhermiteNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_node_scale(s : MathspecialhermiteNode, f : Double) -> MathspecialhermiteNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteNode::scale(self : MathspecialhermiteNode, f : Double) -> MathspecialhermiteNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_node_add(a : MathspecialhermiteNode, b : MathspecialhermiteNode) -> MathspecialhermiteNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteNode::add(self : MathspecialhermiteNode, other : MathspecialhermiteNode) -> MathspecialhermiteNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_node_copy(s : MathspecialhermiteNode) -> MathspecialhermiteNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteNode::copy(self : MathspecialhermiteNode) -> MathspecialhermiteNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_node_fill(s : MathspecialhermiteNode, v : Double) -> MathspecialhermiteNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteNode::fill(self : MathspecialhermiteNode, v : Double) -> MathspecialhermiteNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_node_min(s : MathspecialhermiteNode) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteNode::min(self : MathspecialhermiteNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_node_max(s : MathspecialhermiteNode) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteNode::max(self : MathspecialhermiteNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_node_to_string(s : MathspecialhermiteNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteNode::to_string(self : MathspecialhermiteNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteEdge {
@@ -555,45 +555,45 @@ pub fn math_special_hermite_edge_make(size : Int) -> MathspecialhermiteEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_edge_len(s : MathspecialhermiteEdge) -> Int { s.size }
+pub fn MathspecialhermiteEdge::len(self : MathspecialhermiteEdge) -> Int { self.size }
 
-pub fn math_special_hermite_edge_get(s : MathspecialhermiteEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteEdge::get(self : MathspecialhermiteEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_edge_set(s : MathspecialhermiteEdge, i : Int, v : Double) -> MathspecialhermiteEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteEdge::set(self : MathspecialhermiteEdge, i : Int, v : Double) -> MathspecialhermiteEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_edge_sum(s : MathspecialhermiteEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteEdge::sum(self : MathspecialhermiteEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_edge_mean(s : MathspecialhermiteEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteEdge::mean(self : MathspecialhermiteEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_edge_scale(s : MathspecialhermiteEdge, f : Double) -> MathspecialhermiteEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteEdge::scale(self : MathspecialhermiteEdge, f : Double) -> MathspecialhermiteEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_edge_add(a : MathspecialhermiteEdge, b : MathspecialhermiteEdge) -> MathspecialhermiteEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteEdge::add(self : MathspecialhermiteEdge, other : MathspecialhermiteEdge) -> MathspecialhermiteEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_edge_copy(s : MathspecialhermiteEdge) -> MathspecialhermiteEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteEdge::copy(self : MathspecialhermiteEdge) -> MathspecialhermiteEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_edge_fill(s : MathspecialhermiteEdge, v : Double) -> MathspecialhermiteEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteEdge::fill(self : MathspecialhermiteEdge, v : Double) -> MathspecialhermiteEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_edge_min(s : MathspecialhermiteEdge) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteEdge::min(self : MathspecialhermiteEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_edge_max(s : MathspecialhermiteEdge) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteEdge::max(self : MathspecialhermiteEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_edge_to_string(s : MathspecialhermiteEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteEdge::to_string(self : MathspecialhermiteEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermitePath {
@@ -606,45 +606,45 @@ pub fn math_special_hermite_path_make(size : Int) -> MathspecialhermitePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_path_len(s : MathspecialhermitePath) -> Int { s.size }
+pub fn MathspecialhermitePath::len(self : MathspecialhermitePath) -> Int { self.size }
 
-pub fn math_special_hermite_path_get(s : MathspecialhermitePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermitePath::get(self : MathspecialhermitePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_path_set(s : MathspecialhermitePath, i : Int, v : Double) -> MathspecialhermitePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermitePath::set(self : MathspecialhermitePath, i : Int, v : Double) -> MathspecialhermitePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_path_sum(s : MathspecialhermitePath) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermitePath::sum(self : MathspecialhermitePath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_path_mean(s : MathspecialhermitePath) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermitePath::mean(self : MathspecialhermitePath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_path_scale(s : MathspecialhermitePath, f : Double) -> MathspecialhermitePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermitePath::scale(self : MathspecialhermitePath, f : Double) -> MathspecialhermitePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_path_add(a : MathspecialhermitePath, b : MathspecialhermitePath) -> MathspecialhermitePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermitePath::add(self : MathspecialhermitePath, other : MathspecialhermitePath) -> MathspecialhermitePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_path_copy(s : MathspecialhermitePath) -> MathspecialhermitePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermitePath::copy(self : MathspecialhermitePath) -> MathspecialhermitePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_path_fill(s : MathspecialhermitePath, v : Double) -> MathspecialhermitePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermitePath::fill(self : MathspecialhermitePath, v : Double) -> MathspecialhermitePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_path_min(s : MathspecialhermitePath) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermitePath::min(self : MathspecialhermitePath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_path_max(s : MathspecialhermitePath) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermitePath::max(self : MathspecialhermitePath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_path_to_string(s : MathspecialhermitePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermitePath::to_string(self : MathspecialhermitePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteCluster {
@@ -657,45 +657,45 @@ pub fn math_special_hermite_cluster_make(size : Int) -> MathspecialhermiteCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_cluster_len(s : MathspecialhermiteCluster) -> Int { s.size }
+pub fn MathspecialhermiteCluster::len(self : MathspecialhermiteCluster) -> Int { self.size }
 
-pub fn math_special_hermite_cluster_get(s : MathspecialhermiteCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteCluster::get(self : MathspecialhermiteCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_cluster_set(s : MathspecialhermiteCluster, i : Int, v : Double) -> MathspecialhermiteCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCluster::set(self : MathspecialhermiteCluster, i : Int, v : Double) -> MathspecialhermiteCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cluster_sum(s : MathspecialhermiteCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteCluster::sum(self : MathspecialhermiteCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_cluster_mean(s : MathspecialhermiteCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteCluster::mean(self : MathspecialhermiteCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_cluster_scale(s : MathspecialhermiteCluster, f : Double) -> MathspecialhermiteCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCluster::scale(self : MathspecialhermiteCluster, f : Double) -> MathspecialhermiteCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cluster_add(a : MathspecialhermiteCluster, b : MathspecialhermiteCluster) -> MathspecialhermiteCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteCluster::add(self : MathspecialhermiteCluster, other : MathspecialhermiteCluster) -> MathspecialhermiteCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_cluster_copy(s : MathspecialhermiteCluster) -> MathspecialhermiteCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCluster::copy(self : MathspecialhermiteCluster) -> MathspecialhermiteCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cluster_fill(s : MathspecialhermiteCluster, v : Double) -> MathspecialhermiteCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCluster::fill(self : MathspecialhermiteCluster, v : Double) -> MathspecialhermiteCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cluster_min(s : MathspecialhermiteCluster) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteCluster::min(self : MathspecialhermiteCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_cluster_max(s : MathspecialhermiteCluster) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteCluster::max(self : MathspecialhermiteCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_cluster_to_string(s : MathspecialhermiteCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteCluster::to_string(self : MathspecialhermiteCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteModel {
@@ -708,45 +708,45 @@ pub fn math_special_hermite_model_make(size : Int) -> MathspecialhermiteModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_model_len(s : MathspecialhermiteModel) -> Int { s.size }
+pub fn MathspecialhermiteModel::len(self : MathspecialhermiteModel) -> Int { self.size }
 
-pub fn math_special_hermite_model_get(s : MathspecialhermiteModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteModel::get(self : MathspecialhermiteModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_model_set(s : MathspecialhermiteModel, i : Int, v : Double) -> MathspecialhermiteModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteModel::set(self : MathspecialhermiteModel, i : Int, v : Double) -> MathspecialhermiteModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_model_sum(s : MathspecialhermiteModel) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteModel::sum(self : MathspecialhermiteModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_model_mean(s : MathspecialhermiteModel) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteModel::mean(self : MathspecialhermiteModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_model_scale(s : MathspecialhermiteModel, f : Double) -> MathspecialhermiteModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteModel::scale(self : MathspecialhermiteModel, f : Double) -> MathspecialhermiteModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_model_add(a : MathspecialhermiteModel, b : MathspecialhermiteModel) -> MathspecialhermiteModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteModel::add(self : MathspecialhermiteModel, other : MathspecialhermiteModel) -> MathspecialhermiteModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_model_copy(s : MathspecialhermiteModel) -> MathspecialhermiteModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteModel::copy(self : MathspecialhermiteModel) -> MathspecialhermiteModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_model_fill(s : MathspecialhermiteModel, v : Double) -> MathspecialhermiteModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteModel::fill(self : MathspecialhermiteModel, v : Double) -> MathspecialhermiteModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_model_min(s : MathspecialhermiteModel) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteModel::min(self : MathspecialhermiteModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_model_max(s : MathspecialhermiteModel) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteModel::max(self : MathspecialhermiteModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_model_to_string(s : MathspecialhermiteModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteModel::to_string(self : MathspecialhermiteModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteLayer {
@@ -759,45 +759,45 @@ pub fn math_special_hermite_layer_make(size : Int) -> MathspecialhermiteLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_layer_len(s : MathspecialhermiteLayer) -> Int { s.size }
+pub fn MathspecialhermiteLayer::len(self : MathspecialhermiteLayer) -> Int { self.size }
 
-pub fn math_special_hermite_layer_get(s : MathspecialhermiteLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteLayer::get(self : MathspecialhermiteLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_layer_set(s : MathspecialhermiteLayer, i : Int, v : Double) -> MathspecialhermiteLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteLayer::set(self : MathspecialhermiteLayer, i : Int, v : Double) -> MathspecialhermiteLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_layer_sum(s : MathspecialhermiteLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteLayer::sum(self : MathspecialhermiteLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_layer_mean(s : MathspecialhermiteLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteLayer::mean(self : MathspecialhermiteLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_layer_scale(s : MathspecialhermiteLayer, f : Double) -> MathspecialhermiteLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteLayer::scale(self : MathspecialhermiteLayer, f : Double) -> MathspecialhermiteLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_layer_add(a : MathspecialhermiteLayer, b : MathspecialhermiteLayer) -> MathspecialhermiteLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteLayer::add(self : MathspecialhermiteLayer, other : MathspecialhermiteLayer) -> MathspecialhermiteLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_layer_copy(s : MathspecialhermiteLayer) -> MathspecialhermiteLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteLayer::copy(self : MathspecialhermiteLayer) -> MathspecialhermiteLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_layer_fill(s : MathspecialhermiteLayer, v : Double) -> MathspecialhermiteLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteLayer::fill(self : MathspecialhermiteLayer, v : Double) -> MathspecialhermiteLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_layer_min(s : MathspecialhermiteLayer) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteLayer::min(self : MathspecialhermiteLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_layer_max(s : MathspecialhermiteLayer) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteLayer::max(self : MathspecialhermiteLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_layer_to_string(s : MathspecialhermiteLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteLayer::to_string(self : MathspecialhermiteLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_hermite_buffer_make(size : Int) -> MathspecialhermiteBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_buffer_len(s : MathspecialhermiteBuffer) -> Int { s.size }
+pub fn MathspecialhermiteBuffer::len(self : MathspecialhermiteBuffer) -> Int { self.size }
 
-pub fn math_special_hermite_buffer_get(s : MathspecialhermiteBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteBuffer::get(self : MathspecialhermiteBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_buffer_set(s : MathspecialhermiteBuffer, i : Int, v : Double) -> MathspecialhermiteBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteBuffer::set(self : MathspecialhermiteBuffer, i : Int, v : Double) -> MathspecialhermiteBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_buffer_sum(s : MathspecialhermiteBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteBuffer::sum(self : MathspecialhermiteBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_buffer_mean(s : MathspecialhermiteBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteBuffer::mean(self : MathspecialhermiteBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_buffer_scale(s : MathspecialhermiteBuffer, f : Double) -> MathspecialhermiteBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteBuffer::scale(self : MathspecialhermiteBuffer, f : Double) -> MathspecialhermiteBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_buffer_add(a : MathspecialhermiteBuffer, b : MathspecialhermiteBuffer) -> MathspecialhermiteBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteBuffer::add(self : MathspecialhermiteBuffer, other : MathspecialhermiteBuffer) -> MathspecialhermiteBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_buffer_copy(s : MathspecialhermiteBuffer) -> MathspecialhermiteBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteBuffer::copy(self : MathspecialhermiteBuffer) -> MathspecialhermiteBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_buffer_fill(s : MathspecialhermiteBuffer, v : Double) -> MathspecialhermiteBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteBuffer::fill(self : MathspecialhermiteBuffer, v : Double) -> MathspecialhermiteBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_buffer_min(s : MathspecialhermiteBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteBuffer::min(self : MathspecialhermiteBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_buffer_max(s : MathspecialhermiteBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteBuffer::max(self : MathspecialhermiteBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_buffer_to_string(s : MathspecialhermiteBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteBuffer::to_string(self : MathspecialhermiteBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteCursor {
@@ -861,45 +861,45 @@ pub fn math_special_hermite_cursor_make(size : Int) -> MathspecialhermiteCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_cursor_len(s : MathspecialhermiteCursor) -> Int { s.size }
+pub fn MathspecialhermiteCursor::len(self : MathspecialhermiteCursor) -> Int { self.size }
 
-pub fn math_special_hermite_cursor_get(s : MathspecialhermiteCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteCursor::get(self : MathspecialhermiteCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_cursor_set(s : MathspecialhermiteCursor, i : Int, v : Double) -> MathspecialhermiteCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCursor::set(self : MathspecialhermiteCursor, i : Int, v : Double) -> MathspecialhermiteCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cursor_sum(s : MathspecialhermiteCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteCursor::sum(self : MathspecialhermiteCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_cursor_mean(s : MathspecialhermiteCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteCursor::mean(self : MathspecialhermiteCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_cursor_scale(s : MathspecialhermiteCursor, f : Double) -> MathspecialhermiteCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCursor::scale(self : MathspecialhermiteCursor, f : Double) -> MathspecialhermiteCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cursor_add(a : MathspecialhermiteCursor, b : MathspecialhermiteCursor) -> MathspecialhermiteCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteCursor::add(self : MathspecialhermiteCursor, other : MathspecialhermiteCursor) -> MathspecialhermiteCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_cursor_copy(s : MathspecialhermiteCursor) -> MathspecialhermiteCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCursor::copy(self : MathspecialhermiteCursor) -> MathspecialhermiteCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cursor_fill(s : MathspecialhermiteCursor, v : Double) -> MathspecialhermiteCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteCursor::fill(self : MathspecialhermiteCursor, v : Double) -> MathspecialhermiteCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_cursor_min(s : MathspecialhermiteCursor) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteCursor::min(self : MathspecialhermiteCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_cursor_max(s : MathspecialhermiteCursor) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteCursor::max(self : MathspecialhermiteCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_cursor_to_string(s : MathspecialhermiteCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteCursor::to_string(self : MathspecialhermiteCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteView {
@@ -912,45 +912,45 @@ pub fn math_special_hermite_view_make(size : Int) -> MathspecialhermiteView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_view_len(s : MathspecialhermiteView) -> Int { s.size }
+pub fn MathspecialhermiteView::len(self : MathspecialhermiteView) -> Int { self.size }
 
-pub fn math_special_hermite_view_get(s : MathspecialhermiteView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteView::get(self : MathspecialhermiteView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_view_set(s : MathspecialhermiteView, i : Int, v : Double) -> MathspecialhermiteView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteView::set(self : MathspecialhermiteView, i : Int, v : Double) -> MathspecialhermiteView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_view_sum(s : MathspecialhermiteView) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteView::sum(self : MathspecialhermiteView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_view_mean(s : MathspecialhermiteView) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteView::mean(self : MathspecialhermiteView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_view_scale(s : MathspecialhermiteView, f : Double) -> MathspecialhermiteView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteView::scale(self : MathspecialhermiteView, f : Double) -> MathspecialhermiteView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_view_add(a : MathspecialhermiteView, b : MathspecialhermiteView) -> MathspecialhermiteView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteView::add(self : MathspecialhermiteView, other : MathspecialhermiteView) -> MathspecialhermiteView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_view_copy(s : MathspecialhermiteView) -> MathspecialhermiteView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteView::copy(self : MathspecialhermiteView) -> MathspecialhermiteView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_view_fill(s : MathspecialhermiteView, v : Double) -> MathspecialhermiteView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteView::fill(self : MathspecialhermiteView, v : Double) -> MathspecialhermiteView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_view_min(s : MathspecialhermiteView) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteView::min(self : MathspecialhermiteView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_view_max(s : MathspecialhermiteView) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteView::max(self : MathspecialhermiteView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_view_to_string(s : MathspecialhermiteView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteView::to_string(self : MathspecialhermiteView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteRange {
@@ -963,45 +963,45 @@ pub fn math_special_hermite_range_make(size : Int) -> MathspecialhermiteRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_range_len(s : MathspecialhermiteRange) -> Int { s.size }
+pub fn MathspecialhermiteRange::len(self : MathspecialhermiteRange) -> Int { self.size }
 
-pub fn math_special_hermite_range_get(s : MathspecialhermiteRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteRange::get(self : MathspecialhermiteRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_range_set(s : MathspecialhermiteRange, i : Int, v : Double) -> MathspecialhermiteRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteRange::set(self : MathspecialhermiteRange, i : Int, v : Double) -> MathspecialhermiteRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_range_sum(s : MathspecialhermiteRange) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteRange::sum(self : MathspecialhermiteRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_range_mean(s : MathspecialhermiteRange) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteRange::mean(self : MathspecialhermiteRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_range_scale(s : MathspecialhermiteRange, f : Double) -> MathspecialhermiteRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteRange::scale(self : MathspecialhermiteRange, f : Double) -> MathspecialhermiteRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_range_add(a : MathspecialhermiteRange, b : MathspecialhermiteRange) -> MathspecialhermiteRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteRange::add(self : MathspecialhermiteRange, other : MathspecialhermiteRange) -> MathspecialhermiteRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_range_copy(s : MathspecialhermiteRange) -> MathspecialhermiteRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteRange::copy(self : MathspecialhermiteRange) -> MathspecialhermiteRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_range_fill(s : MathspecialhermiteRange, v : Double) -> MathspecialhermiteRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteRange::fill(self : MathspecialhermiteRange, v : Double) -> MathspecialhermiteRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_range_min(s : MathspecialhermiteRange) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteRange::min(self : MathspecialhermiteRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_range_max(s : MathspecialhermiteRange) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteRange::max(self : MathspecialhermiteRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_range_to_string(s : MathspecialhermiteRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteRange::to_string(self : MathspecialhermiteRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialhermiteSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_hermite_slice_make(size : Int) -> MathspecialhermiteSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_hermite_slice_len(s : MathspecialhermiteSlice) -> Int { s.size }
+pub fn MathspecialhermiteSlice::len(self : MathspecialhermiteSlice) -> Int { self.size }
 
-pub fn math_special_hermite_slice_get(s : MathspecialhermiteSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialhermiteSlice::get(self : MathspecialhermiteSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_hermite_slice_set(s : MathspecialhermiteSlice, i : Int, v : Double) -> MathspecialhermiteSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialhermiteSlice::set(self : MathspecialhermiteSlice, i : Int, v : Double) -> MathspecialhermiteSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_slice_sum(s : MathspecialhermiteSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspecialhermiteSlice::sum(self : MathspecialhermiteSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_hermite_slice_mean(s : MathspecialhermiteSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspecialhermiteSlice::mean(self : MathspecialhermiteSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_hermite_slice_scale(s : MathspecialhermiteSlice, f : Double) -> MathspecialhermiteSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteSlice::scale(self : MathspecialhermiteSlice, f : Double) -> MathspecialhermiteSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_slice_add(a : MathspecialhermiteSlice, b : MathspecialhermiteSlice) -> MathspecialhermiteSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialhermiteSlice::add(self : MathspecialhermiteSlice, other : MathspecialhermiteSlice) -> MathspecialhermiteSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_hermite_slice_copy(s : MathspecialhermiteSlice) -> MathspecialhermiteSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteSlice::copy(self : MathspecialhermiteSlice) -> MathspecialhermiteSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_slice_fill(s : MathspecialhermiteSlice, v : Double) -> MathspecialhermiteSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialhermiteSlice::fill(self : MathspecialhermiteSlice, v : Double) -> MathspecialhermiteSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_hermite_slice_min(s : MathspecialhermiteSlice) -> Double { @_common.min(s.data) }
+pub fn MathspecialhermiteSlice::min(self : MathspecialhermiteSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_hermite_slice_max(s : MathspecialhermiteSlice) -> Double { @_common.max(s.data) }
+pub fn MathspecialhermiteSlice::max(self : MathspecialhermiteSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_hermite_slice_to_string(s : MathspecialhermiteSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialhermiteSlice::to_string(self : MathspecialhermiteSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

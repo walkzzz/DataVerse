@@ -351,45 +351,45 @@ pub fn geo_proj_orthographic_frame_make(size : Int) -> GeoprojorthographicFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_frame_len(s : GeoprojorthographicFrame) -> Int { s.size }
+pub fn GeoprojorthographicFrame::len(self : GeoprojorthographicFrame) -> Int { self.size }
 
-pub fn geo_proj_orthographic_frame_get(s : GeoprojorthographicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicFrame::get(self : GeoprojorthographicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_frame_set(s : GeoprojorthographicFrame, i : Int, v : Double) -> GeoprojorthographicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicFrame::set(self : GeoprojorthographicFrame, i : Int, v : Double) -> GeoprojorthographicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_frame_sum(s : GeoprojorthographicFrame) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicFrame::sum(self : GeoprojorthographicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_frame_mean(s : GeoprojorthographicFrame) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicFrame::mean(self : GeoprojorthographicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_frame_scale(s : GeoprojorthographicFrame, f : Double) -> GeoprojorthographicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicFrame::scale(self : GeoprojorthographicFrame, f : Double) -> GeoprojorthographicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_frame_add(a : GeoprojorthographicFrame, b : GeoprojorthographicFrame) -> GeoprojorthographicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicFrame::add(self : GeoprojorthographicFrame, other : GeoprojorthographicFrame) -> GeoprojorthographicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_frame_copy(s : GeoprojorthographicFrame) -> GeoprojorthographicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicFrame::copy(self : GeoprojorthographicFrame) -> GeoprojorthographicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_frame_fill(s : GeoprojorthographicFrame, v : Double) -> GeoprojorthographicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicFrame::fill(self : GeoprojorthographicFrame, v : Double) -> GeoprojorthographicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_frame_min(s : GeoprojorthographicFrame) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicFrame::min(self : GeoprojorthographicFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_frame_max(s : GeoprojorthographicFrame) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicFrame::max(self : GeoprojorthographicFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_frame_to_string(s : GeoprojorthographicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicFrame::to_string(self : GeoprojorthographicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicTable {
@@ -402,45 +402,45 @@ pub fn geo_proj_orthographic_table_make(size : Int) -> GeoprojorthographicTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_table_len(s : GeoprojorthographicTable) -> Int { s.size }
+pub fn GeoprojorthographicTable::len(self : GeoprojorthographicTable) -> Int { self.size }
 
-pub fn geo_proj_orthographic_table_get(s : GeoprojorthographicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicTable::get(self : GeoprojorthographicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_table_set(s : GeoprojorthographicTable, i : Int, v : Double) -> GeoprojorthographicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicTable::set(self : GeoprojorthographicTable, i : Int, v : Double) -> GeoprojorthographicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_table_sum(s : GeoprojorthographicTable) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicTable::sum(self : GeoprojorthographicTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_table_mean(s : GeoprojorthographicTable) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicTable::mean(self : GeoprojorthographicTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_table_scale(s : GeoprojorthographicTable, f : Double) -> GeoprojorthographicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicTable::scale(self : GeoprojorthographicTable, f : Double) -> GeoprojorthographicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_table_add(a : GeoprojorthographicTable, b : GeoprojorthographicTable) -> GeoprojorthographicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicTable::add(self : GeoprojorthographicTable, other : GeoprojorthographicTable) -> GeoprojorthographicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_table_copy(s : GeoprojorthographicTable) -> GeoprojorthographicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicTable::copy(self : GeoprojorthographicTable) -> GeoprojorthographicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_table_fill(s : GeoprojorthographicTable, v : Double) -> GeoprojorthographicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicTable::fill(self : GeoprojorthographicTable, v : Double) -> GeoprojorthographicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_table_min(s : GeoprojorthographicTable) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicTable::min(self : GeoprojorthographicTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_table_max(s : GeoprojorthographicTable) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicTable::max(self : GeoprojorthographicTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_table_to_string(s : GeoprojorthographicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicTable::to_string(self : GeoprojorthographicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicGraphN {
@@ -453,45 +453,45 @@ pub fn geo_proj_orthographic_graphn_make(size : Int) -> GeoprojorthographicGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_graphn_len(s : GeoprojorthographicGraphN) -> Int { s.size }
+pub fn GeoprojorthographicGraphN::len(self : GeoprojorthographicGraphN) -> Int { self.size }
 
-pub fn geo_proj_orthographic_graphn_get(s : GeoprojorthographicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicGraphN::get(self : GeoprojorthographicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_graphn_set(s : GeoprojorthographicGraphN, i : Int, v : Double) -> GeoprojorthographicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicGraphN::set(self : GeoprojorthographicGraphN, i : Int, v : Double) -> GeoprojorthographicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_graphn_sum(s : GeoprojorthographicGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicGraphN::sum(self : GeoprojorthographicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_graphn_mean(s : GeoprojorthographicGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicGraphN::mean(self : GeoprojorthographicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_graphn_scale(s : GeoprojorthographicGraphN, f : Double) -> GeoprojorthographicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicGraphN::scale(self : GeoprojorthographicGraphN, f : Double) -> GeoprojorthographicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_graphn_add(a : GeoprojorthographicGraphN, b : GeoprojorthographicGraphN) -> GeoprojorthographicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicGraphN::add(self : GeoprojorthographicGraphN, other : GeoprojorthographicGraphN) -> GeoprojorthographicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_graphn_copy(s : GeoprojorthographicGraphN) -> GeoprojorthographicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicGraphN::copy(self : GeoprojorthographicGraphN) -> GeoprojorthographicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_graphn_fill(s : GeoprojorthographicGraphN, v : Double) -> GeoprojorthographicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicGraphN::fill(self : GeoprojorthographicGraphN, v : Double) -> GeoprojorthographicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_graphn_min(s : GeoprojorthographicGraphN) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicGraphN::min(self : GeoprojorthographicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_graphn_max(s : GeoprojorthographicGraphN) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicGraphN::max(self : GeoprojorthographicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_graphn_to_string(s : GeoprojorthographicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicGraphN::to_string(self : GeoprojorthographicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicNode {
@@ -504,45 +504,45 @@ pub fn geo_proj_orthographic_node_make(size : Int) -> GeoprojorthographicNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_node_len(s : GeoprojorthographicNode) -> Int { s.size }
+pub fn GeoprojorthographicNode::len(self : GeoprojorthographicNode) -> Int { self.size }
 
-pub fn geo_proj_orthographic_node_get(s : GeoprojorthographicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicNode::get(self : GeoprojorthographicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_node_set(s : GeoprojorthographicNode, i : Int, v : Double) -> GeoprojorthographicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicNode::set(self : GeoprojorthographicNode, i : Int, v : Double) -> GeoprojorthographicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_node_sum(s : GeoprojorthographicNode) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicNode::sum(self : GeoprojorthographicNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_node_mean(s : GeoprojorthographicNode) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicNode::mean(self : GeoprojorthographicNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_node_scale(s : GeoprojorthographicNode, f : Double) -> GeoprojorthographicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicNode::scale(self : GeoprojorthographicNode, f : Double) -> GeoprojorthographicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_node_add(a : GeoprojorthographicNode, b : GeoprojorthographicNode) -> GeoprojorthographicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicNode::add(self : GeoprojorthographicNode, other : GeoprojorthographicNode) -> GeoprojorthographicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_node_copy(s : GeoprojorthographicNode) -> GeoprojorthographicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicNode::copy(self : GeoprojorthographicNode) -> GeoprojorthographicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_node_fill(s : GeoprojorthographicNode, v : Double) -> GeoprojorthographicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicNode::fill(self : GeoprojorthographicNode, v : Double) -> GeoprojorthographicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_node_min(s : GeoprojorthographicNode) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicNode::min(self : GeoprojorthographicNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_node_max(s : GeoprojorthographicNode) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicNode::max(self : GeoprojorthographicNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_node_to_string(s : GeoprojorthographicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicNode::to_string(self : GeoprojorthographicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicEdge {
@@ -555,45 +555,45 @@ pub fn geo_proj_orthographic_edge_make(size : Int) -> GeoprojorthographicEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_edge_len(s : GeoprojorthographicEdge) -> Int { s.size }
+pub fn GeoprojorthographicEdge::len(self : GeoprojorthographicEdge) -> Int { self.size }
 
-pub fn geo_proj_orthographic_edge_get(s : GeoprojorthographicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicEdge::get(self : GeoprojorthographicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_edge_set(s : GeoprojorthographicEdge, i : Int, v : Double) -> GeoprojorthographicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicEdge::set(self : GeoprojorthographicEdge, i : Int, v : Double) -> GeoprojorthographicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_edge_sum(s : GeoprojorthographicEdge) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicEdge::sum(self : GeoprojorthographicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_edge_mean(s : GeoprojorthographicEdge) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicEdge::mean(self : GeoprojorthographicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_edge_scale(s : GeoprojorthographicEdge, f : Double) -> GeoprojorthographicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicEdge::scale(self : GeoprojorthographicEdge, f : Double) -> GeoprojorthographicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_edge_add(a : GeoprojorthographicEdge, b : GeoprojorthographicEdge) -> GeoprojorthographicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicEdge::add(self : GeoprojorthographicEdge, other : GeoprojorthographicEdge) -> GeoprojorthographicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_edge_copy(s : GeoprojorthographicEdge) -> GeoprojorthographicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicEdge::copy(self : GeoprojorthographicEdge) -> GeoprojorthographicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_edge_fill(s : GeoprojorthographicEdge, v : Double) -> GeoprojorthographicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicEdge::fill(self : GeoprojorthographicEdge, v : Double) -> GeoprojorthographicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_edge_min(s : GeoprojorthographicEdge) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicEdge::min(self : GeoprojorthographicEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_edge_max(s : GeoprojorthographicEdge) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicEdge::max(self : GeoprojorthographicEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_edge_to_string(s : GeoprojorthographicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicEdge::to_string(self : GeoprojorthographicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicPath {
@@ -606,45 +606,45 @@ pub fn geo_proj_orthographic_path_make(size : Int) -> GeoprojorthographicPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_path_len(s : GeoprojorthographicPath) -> Int { s.size }
+pub fn GeoprojorthographicPath::len(self : GeoprojorthographicPath) -> Int { self.size }
 
-pub fn geo_proj_orthographic_path_get(s : GeoprojorthographicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicPath::get(self : GeoprojorthographicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_path_set(s : GeoprojorthographicPath, i : Int, v : Double) -> GeoprojorthographicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicPath::set(self : GeoprojorthographicPath, i : Int, v : Double) -> GeoprojorthographicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_path_sum(s : GeoprojorthographicPath) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicPath::sum(self : GeoprojorthographicPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_path_mean(s : GeoprojorthographicPath) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicPath::mean(self : GeoprojorthographicPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_path_scale(s : GeoprojorthographicPath, f : Double) -> GeoprojorthographicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicPath::scale(self : GeoprojorthographicPath, f : Double) -> GeoprojorthographicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_path_add(a : GeoprojorthographicPath, b : GeoprojorthographicPath) -> GeoprojorthographicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicPath::add(self : GeoprojorthographicPath, other : GeoprojorthographicPath) -> GeoprojorthographicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_path_copy(s : GeoprojorthographicPath) -> GeoprojorthographicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicPath::copy(self : GeoprojorthographicPath) -> GeoprojorthographicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_path_fill(s : GeoprojorthographicPath, v : Double) -> GeoprojorthographicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicPath::fill(self : GeoprojorthographicPath, v : Double) -> GeoprojorthographicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_path_min(s : GeoprojorthographicPath) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicPath::min(self : GeoprojorthographicPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_path_max(s : GeoprojorthographicPath) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicPath::max(self : GeoprojorthographicPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_path_to_string(s : GeoprojorthographicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicPath::to_string(self : GeoprojorthographicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicCluster {
@@ -657,45 +657,45 @@ pub fn geo_proj_orthographic_cluster_make(size : Int) -> GeoprojorthographicClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_cluster_len(s : GeoprojorthographicCluster) -> Int { s.size }
+pub fn GeoprojorthographicCluster::len(self : GeoprojorthographicCluster) -> Int { self.size }
 
-pub fn geo_proj_orthographic_cluster_get(s : GeoprojorthographicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicCluster::get(self : GeoprojorthographicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_cluster_set(s : GeoprojorthographicCluster, i : Int, v : Double) -> GeoprojorthographicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCluster::set(self : GeoprojorthographicCluster, i : Int, v : Double) -> GeoprojorthographicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cluster_sum(s : GeoprojorthographicCluster) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicCluster::sum(self : GeoprojorthographicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_cluster_mean(s : GeoprojorthographicCluster) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicCluster::mean(self : GeoprojorthographicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_cluster_scale(s : GeoprojorthographicCluster, f : Double) -> GeoprojorthographicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCluster::scale(self : GeoprojorthographicCluster, f : Double) -> GeoprojorthographicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cluster_add(a : GeoprojorthographicCluster, b : GeoprojorthographicCluster) -> GeoprojorthographicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicCluster::add(self : GeoprojorthographicCluster, other : GeoprojorthographicCluster) -> GeoprojorthographicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cluster_copy(s : GeoprojorthographicCluster) -> GeoprojorthographicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCluster::copy(self : GeoprojorthographicCluster) -> GeoprojorthographicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cluster_fill(s : GeoprojorthographicCluster, v : Double) -> GeoprojorthographicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCluster::fill(self : GeoprojorthographicCluster, v : Double) -> GeoprojorthographicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cluster_min(s : GeoprojorthographicCluster) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicCluster::min(self : GeoprojorthographicCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_cluster_max(s : GeoprojorthographicCluster) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicCluster::max(self : GeoprojorthographicCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_cluster_to_string(s : GeoprojorthographicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicCluster::to_string(self : GeoprojorthographicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicModel {
@@ -708,45 +708,45 @@ pub fn geo_proj_orthographic_model_make(size : Int) -> GeoprojorthographicModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_model_len(s : GeoprojorthographicModel) -> Int { s.size }
+pub fn GeoprojorthographicModel::len(self : GeoprojorthographicModel) -> Int { self.size }
 
-pub fn geo_proj_orthographic_model_get(s : GeoprojorthographicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicModel::get(self : GeoprojorthographicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_model_set(s : GeoprojorthographicModel, i : Int, v : Double) -> GeoprojorthographicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicModel::set(self : GeoprojorthographicModel, i : Int, v : Double) -> GeoprojorthographicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_model_sum(s : GeoprojorthographicModel) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicModel::sum(self : GeoprojorthographicModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_model_mean(s : GeoprojorthographicModel) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicModel::mean(self : GeoprojorthographicModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_model_scale(s : GeoprojorthographicModel, f : Double) -> GeoprojorthographicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicModel::scale(self : GeoprojorthographicModel, f : Double) -> GeoprojorthographicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_model_add(a : GeoprojorthographicModel, b : GeoprojorthographicModel) -> GeoprojorthographicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicModel::add(self : GeoprojorthographicModel, other : GeoprojorthographicModel) -> GeoprojorthographicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_model_copy(s : GeoprojorthographicModel) -> GeoprojorthographicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicModel::copy(self : GeoprojorthographicModel) -> GeoprojorthographicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_model_fill(s : GeoprojorthographicModel, v : Double) -> GeoprojorthographicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicModel::fill(self : GeoprojorthographicModel, v : Double) -> GeoprojorthographicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_model_min(s : GeoprojorthographicModel) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicModel::min(self : GeoprojorthographicModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_model_max(s : GeoprojorthographicModel) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicModel::max(self : GeoprojorthographicModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_model_to_string(s : GeoprojorthographicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicModel::to_string(self : GeoprojorthographicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicLayer {
@@ -759,45 +759,45 @@ pub fn geo_proj_orthographic_layer_make(size : Int) -> GeoprojorthographicLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_layer_len(s : GeoprojorthographicLayer) -> Int { s.size }
+pub fn GeoprojorthographicLayer::len(self : GeoprojorthographicLayer) -> Int { self.size }
 
-pub fn geo_proj_orthographic_layer_get(s : GeoprojorthographicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicLayer::get(self : GeoprojorthographicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_layer_set(s : GeoprojorthographicLayer, i : Int, v : Double) -> GeoprojorthographicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicLayer::set(self : GeoprojorthographicLayer, i : Int, v : Double) -> GeoprojorthographicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_layer_sum(s : GeoprojorthographicLayer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicLayer::sum(self : GeoprojorthographicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_layer_mean(s : GeoprojorthographicLayer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicLayer::mean(self : GeoprojorthographicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_layer_scale(s : GeoprojorthographicLayer, f : Double) -> GeoprojorthographicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicLayer::scale(self : GeoprojorthographicLayer, f : Double) -> GeoprojorthographicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_layer_add(a : GeoprojorthographicLayer, b : GeoprojorthographicLayer) -> GeoprojorthographicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicLayer::add(self : GeoprojorthographicLayer, other : GeoprojorthographicLayer) -> GeoprojorthographicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_layer_copy(s : GeoprojorthographicLayer) -> GeoprojorthographicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicLayer::copy(self : GeoprojorthographicLayer) -> GeoprojorthographicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_layer_fill(s : GeoprojorthographicLayer, v : Double) -> GeoprojorthographicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicLayer::fill(self : GeoprojorthographicLayer, v : Double) -> GeoprojorthographicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_layer_min(s : GeoprojorthographicLayer) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicLayer::min(self : GeoprojorthographicLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_layer_max(s : GeoprojorthographicLayer) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicLayer::max(self : GeoprojorthographicLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_layer_to_string(s : GeoprojorthographicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicLayer::to_string(self : GeoprojorthographicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicBuffer {
@@ -810,45 +810,45 @@ pub fn geo_proj_orthographic_buffer_make(size : Int) -> GeoprojorthographicBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_buffer_len(s : GeoprojorthographicBuffer) -> Int { s.size }
+pub fn GeoprojorthographicBuffer::len(self : GeoprojorthographicBuffer) -> Int { self.size }
 
-pub fn geo_proj_orthographic_buffer_get(s : GeoprojorthographicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicBuffer::get(self : GeoprojorthographicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_buffer_set(s : GeoprojorthographicBuffer, i : Int, v : Double) -> GeoprojorthographicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicBuffer::set(self : GeoprojorthographicBuffer, i : Int, v : Double) -> GeoprojorthographicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_buffer_sum(s : GeoprojorthographicBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicBuffer::sum(self : GeoprojorthographicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_buffer_mean(s : GeoprojorthographicBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicBuffer::mean(self : GeoprojorthographicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_buffer_scale(s : GeoprojorthographicBuffer, f : Double) -> GeoprojorthographicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicBuffer::scale(self : GeoprojorthographicBuffer, f : Double) -> GeoprojorthographicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_buffer_add(a : GeoprojorthographicBuffer, b : GeoprojorthographicBuffer) -> GeoprojorthographicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicBuffer::add(self : GeoprojorthographicBuffer, other : GeoprojorthographicBuffer) -> GeoprojorthographicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_buffer_copy(s : GeoprojorthographicBuffer) -> GeoprojorthographicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicBuffer::copy(self : GeoprojorthographicBuffer) -> GeoprojorthographicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_buffer_fill(s : GeoprojorthographicBuffer, v : Double) -> GeoprojorthographicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicBuffer::fill(self : GeoprojorthographicBuffer, v : Double) -> GeoprojorthographicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_buffer_min(s : GeoprojorthographicBuffer) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicBuffer::min(self : GeoprojorthographicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_buffer_max(s : GeoprojorthographicBuffer) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicBuffer::max(self : GeoprojorthographicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_buffer_to_string(s : GeoprojorthographicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicBuffer::to_string(self : GeoprojorthographicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicCursor {
@@ -861,45 +861,45 @@ pub fn geo_proj_orthographic_cursor_make(size : Int) -> GeoprojorthographicCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_cursor_len(s : GeoprojorthographicCursor) -> Int { s.size }
+pub fn GeoprojorthographicCursor::len(self : GeoprojorthographicCursor) -> Int { self.size }
 
-pub fn geo_proj_orthographic_cursor_get(s : GeoprojorthographicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicCursor::get(self : GeoprojorthographicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_cursor_set(s : GeoprojorthographicCursor, i : Int, v : Double) -> GeoprojorthographicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCursor::set(self : GeoprojorthographicCursor, i : Int, v : Double) -> GeoprojorthographicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cursor_sum(s : GeoprojorthographicCursor) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicCursor::sum(self : GeoprojorthographicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_cursor_mean(s : GeoprojorthographicCursor) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicCursor::mean(self : GeoprojorthographicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_cursor_scale(s : GeoprojorthographicCursor, f : Double) -> GeoprojorthographicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCursor::scale(self : GeoprojorthographicCursor, f : Double) -> GeoprojorthographicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cursor_add(a : GeoprojorthographicCursor, b : GeoprojorthographicCursor) -> GeoprojorthographicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicCursor::add(self : GeoprojorthographicCursor, other : GeoprojorthographicCursor) -> GeoprojorthographicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cursor_copy(s : GeoprojorthographicCursor) -> GeoprojorthographicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCursor::copy(self : GeoprojorthographicCursor) -> GeoprojorthographicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cursor_fill(s : GeoprojorthographicCursor, v : Double) -> GeoprojorthographicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicCursor::fill(self : GeoprojorthographicCursor, v : Double) -> GeoprojorthographicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_cursor_min(s : GeoprojorthographicCursor) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicCursor::min(self : GeoprojorthographicCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_cursor_max(s : GeoprojorthographicCursor) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicCursor::max(self : GeoprojorthographicCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_cursor_to_string(s : GeoprojorthographicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicCursor::to_string(self : GeoprojorthographicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicView {
@@ -912,45 +912,45 @@ pub fn geo_proj_orthographic_view_make(size : Int) -> GeoprojorthographicView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_view_len(s : GeoprojorthographicView) -> Int { s.size }
+pub fn GeoprojorthographicView::len(self : GeoprojorthographicView) -> Int { self.size }
 
-pub fn geo_proj_orthographic_view_get(s : GeoprojorthographicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicView::get(self : GeoprojorthographicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_view_set(s : GeoprojorthographicView, i : Int, v : Double) -> GeoprojorthographicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicView::set(self : GeoprojorthographicView, i : Int, v : Double) -> GeoprojorthographicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_view_sum(s : GeoprojorthographicView) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicView::sum(self : GeoprojorthographicView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_view_mean(s : GeoprojorthographicView) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicView::mean(self : GeoprojorthographicView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_view_scale(s : GeoprojorthographicView, f : Double) -> GeoprojorthographicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicView::scale(self : GeoprojorthographicView, f : Double) -> GeoprojorthographicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_view_add(a : GeoprojorthographicView, b : GeoprojorthographicView) -> GeoprojorthographicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicView::add(self : GeoprojorthographicView, other : GeoprojorthographicView) -> GeoprojorthographicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_view_copy(s : GeoprojorthographicView) -> GeoprojorthographicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicView::copy(self : GeoprojorthographicView) -> GeoprojorthographicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_view_fill(s : GeoprojorthographicView, v : Double) -> GeoprojorthographicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicView::fill(self : GeoprojorthographicView, v : Double) -> GeoprojorthographicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_view_min(s : GeoprojorthographicView) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicView::min(self : GeoprojorthographicView) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_view_max(s : GeoprojorthographicView) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicView::max(self : GeoprojorthographicView) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_view_to_string(s : GeoprojorthographicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicView::to_string(self : GeoprojorthographicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicRange {
@@ -963,45 +963,45 @@ pub fn geo_proj_orthographic_range_make(size : Int) -> GeoprojorthographicRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_range_len(s : GeoprojorthographicRange) -> Int { s.size }
+pub fn GeoprojorthographicRange::len(self : GeoprojorthographicRange) -> Int { self.size }
 
-pub fn geo_proj_orthographic_range_get(s : GeoprojorthographicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicRange::get(self : GeoprojorthographicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_range_set(s : GeoprojorthographicRange, i : Int, v : Double) -> GeoprojorthographicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicRange::set(self : GeoprojorthographicRange, i : Int, v : Double) -> GeoprojorthographicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_range_sum(s : GeoprojorthographicRange) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicRange::sum(self : GeoprojorthographicRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_range_mean(s : GeoprojorthographicRange) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicRange::mean(self : GeoprojorthographicRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_range_scale(s : GeoprojorthographicRange, f : Double) -> GeoprojorthographicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicRange::scale(self : GeoprojorthographicRange, f : Double) -> GeoprojorthographicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_range_add(a : GeoprojorthographicRange, b : GeoprojorthographicRange) -> GeoprojorthographicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicRange::add(self : GeoprojorthographicRange, other : GeoprojorthographicRange) -> GeoprojorthographicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_range_copy(s : GeoprojorthographicRange) -> GeoprojorthographicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicRange::copy(self : GeoprojorthographicRange) -> GeoprojorthographicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_range_fill(s : GeoprojorthographicRange, v : Double) -> GeoprojorthographicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicRange::fill(self : GeoprojorthographicRange, v : Double) -> GeoprojorthographicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_range_min(s : GeoprojorthographicRange) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicRange::min(self : GeoprojorthographicRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_range_max(s : GeoprojorthographicRange) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicRange::max(self : GeoprojorthographicRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_range_to_string(s : GeoprojorthographicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicRange::to_string(self : GeoprojorthographicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeoprojorthographicSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_proj_orthographic_slice_make(size : Int) -> GeoprojorthographicSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_proj_orthographic_slice_len(s : GeoprojorthographicSlice) -> Int { s.size }
+pub fn GeoprojorthographicSlice::len(self : GeoprojorthographicSlice) -> Int { self.size }
 
-pub fn geo_proj_orthographic_slice_get(s : GeoprojorthographicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeoprojorthographicSlice::get(self : GeoprojorthographicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_proj_orthographic_slice_set(s : GeoprojorthographicSlice, i : Int, v : Double) -> GeoprojorthographicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeoprojorthographicSlice::set(self : GeoprojorthographicSlice, i : Int, v : Double) -> GeoprojorthographicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_slice_sum(s : GeoprojorthographicSlice) -> Double { @_common.sum(s.data) }
+pub fn GeoprojorthographicSlice::sum(self : GeoprojorthographicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_proj_orthographic_slice_mean(s : GeoprojorthographicSlice) -> Double { @_common.mean(s.data) }
+pub fn GeoprojorthographicSlice::mean(self : GeoprojorthographicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_proj_orthographic_slice_scale(s : GeoprojorthographicSlice, f : Double) -> GeoprojorthographicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicSlice::scale(self : GeoprojorthographicSlice, f : Double) -> GeoprojorthographicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_slice_add(a : GeoprojorthographicSlice, b : GeoprojorthographicSlice) -> GeoprojorthographicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeoprojorthographicSlice::add(self : GeoprojorthographicSlice, other : GeoprojorthographicSlice) -> GeoprojorthographicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_slice_copy(s : GeoprojorthographicSlice) -> GeoprojorthographicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicSlice::copy(self : GeoprojorthographicSlice) -> GeoprojorthographicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_slice_fill(s : GeoprojorthographicSlice, v : Double) -> GeoprojorthographicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeoprojorthographicSlice::fill(self : GeoprojorthographicSlice, v : Double) -> GeoprojorthographicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_proj_orthographic_slice_min(s : GeoprojorthographicSlice) -> Double { @_common.min(s.data) }
+pub fn GeoprojorthographicSlice::min(self : GeoprojorthographicSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_proj_orthographic_slice_max(s : GeoprojorthographicSlice) -> Double { @_common.max(s.data) }
+pub fn GeoprojorthographicSlice::max(self : GeoprojorthographicSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_proj_orthographic_slice_to_string(s : GeoprojorthographicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeoprojorthographicSlice::to_string(self : GeoprojorthographicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

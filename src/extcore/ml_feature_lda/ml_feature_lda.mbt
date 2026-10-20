@@ -351,45 +351,45 @@ pub fn ml_feature_lda_frame_make(size : Int) -> MlfeatureldaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_frame_len(s : MlfeatureldaFrame) -> Int { s.size }
+pub fn MlfeatureldaFrame::len(self : MlfeatureldaFrame) -> Int { self.size }
 
-pub fn ml_feature_lda_frame_get(s : MlfeatureldaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaFrame::get(self : MlfeatureldaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_frame_set(s : MlfeatureldaFrame, i : Int, v : Double) -> MlfeatureldaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaFrame::set(self : MlfeatureldaFrame, i : Int, v : Double) -> MlfeatureldaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_frame_sum(s : MlfeatureldaFrame) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaFrame::sum(self : MlfeatureldaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_frame_mean(s : MlfeatureldaFrame) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaFrame::mean(self : MlfeatureldaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_frame_scale(s : MlfeatureldaFrame, f : Double) -> MlfeatureldaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaFrame::scale(self : MlfeatureldaFrame, f : Double) -> MlfeatureldaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_frame_add(a : MlfeatureldaFrame, b : MlfeatureldaFrame) -> MlfeatureldaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaFrame::add(self : MlfeatureldaFrame, other : MlfeatureldaFrame) -> MlfeatureldaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_frame_copy(s : MlfeatureldaFrame) -> MlfeatureldaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaFrame::copy(self : MlfeatureldaFrame) -> MlfeatureldaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_frame_fill(s : MlfeatureldaFrame, v : Double) -> MlfeatureldaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaFrame::fill(self : MlfeatureldaFrame, v : Double) -> MlfeatureldaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_frame_min(s : MlfeatureldaFrame) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaFrame::min(self : MlfeatureldaFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_frame_max(s : MlfeatureldaFrame) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaFrame::max(self : MlfeatureldaFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_frame_to_string(s : MlfeatureldaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaFrame::to_string(self : MlfeatureldaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaTable {
@@ -402,45 +402,45 @@ pub fn ml_feature_lda_table_make(size : Int) -> MlfeatureldaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_table_len(s : MlfeatureldaTable) -> Int { s.size }
+pub fn MlfeatureldaTable::len(self : MlfeatureldaTable) -> Int { self.size }
 
-pub fn ml_feature_lda_table_get(s : MlfeatureldaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaTable::get(self : MlfeatureldaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_table_set(s : MlfeatureldaTable, i : Int, v : Double) -> MlfeatureldaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaTable::set(self : MlfeatureldaTable, i : Int, v : Double) -> MlfeatureldaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_table_sum(s : MlfeatureldaTable) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaTable::sum(self : MlfeatureldaTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_table_mean(s : MlfeatureldaTable) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaTable::mean(self : MlfeatureldaTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_table_scale(s : MlfeatureldaTable, f : Double) -> MlfeatureldaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaTable::scale(self : MlfeatureldaTable, f : Double) -> MlfeatureldaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_table_add(a : MlfeatureldaTable, b : MlfeatureldaTable) -> MlfeatureldaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaTable::add(self : MlfeatureldaTable, other : MlfeatureldaTable) -> MlfeatureldaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_table_copy(s : MlfeatureldaTable) -> MlfeatureldaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaTable::copy(self : MlfeatureldaTable) -> MlfeatureldaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_table_fill(s : MlfeatureldaTable, v : Double) -> MlfeatureldaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaTable::fill(self : MlfeatureldaTable, v : Double) -> MlfeatureldaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_table_min(s : MlfeatureldaTable) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaTable::min(self : MlfeatureldaTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_table_max(s : MlfeatureldaTable) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaTable::max(self : MlfeatureldaTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_table_to_string(s : MlfeatureldaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaTable::to_string(self : MlfeatureldaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaGraphN {
@@ -453,45 +453,45 @@ pub fn ml_feature_lda_graphn_make(size : Int) -> MlfeatureldaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_graphn_len(s : MlfeatureldaGraphN) -> Int { s.size }
+pub fn MlfeatureldaGraphN::len(self : MlfeatureldaGraphN) -> Int { self.size }
 
-pub fn ml_feature_lda_graphn_get(s : MlfeatureldaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaGraphN::get(self : MlfeatureldaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_graphn_set(s : MlfeatureldaGraphN, i : Int, v : Double) -> MlfeatureldaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaGraphN::set(self : MlfeatureldaGraphN, i : Int, v : Double) -> MlfeatureldaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_graphn_sum(s : MlfeatureldaGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaGraphN::sum(self : MlfeatureldaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_graphn_mean(s : MlfeatureldaGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaGraphN::mean(self : MlfeatureldaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_graphn_scale(s : MlfeatureldaGraphN, f : Double) -> MlfeatureldaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaGraphN::scale(self : MlfeatureldaGraphN, f : Double) -> MlfeatureldaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_graphn_add(a : MlfeatureldaGraphN, b : MlfeatureldaGraphN) -> MlfeatureldaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaGraphN::add(self : MlfeatureldaGraphN, other : MlfeatureldaGraphN) -> MlfeatureldaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_graphn_copy(s : MlfeatureldaGraphN) -> MlfeatureldaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaGraphN::copy(self : MlfeatureldaGraphN) -> MlfeatureldaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_graphn_fill(s : MlfeatureldaGraphN, v : Double) -> MlfeatureldaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaGraphN::fill(self : MlfeatureldaGraphN, v : Double) -> MlfeatureldaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_graphn_min(s : MlfeatureldaGraphN) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaGraphN::min(self : MlfeatureldaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_graphn_max(s : MlfeatureldaGraphN) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaGraphN::max(self : MlfeatureldaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_graphn_to_string(s : MlfeatureldaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaGraphN::to_string(self : MlfeatureldaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaNode {
@@ -504,45 +504,45 @@ pub fn ml_feature_lda_node_make(size : Int) -> MlfeatureldaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_node_len(s : MlfeatureldaNode) -> Int { s.size }
+pub fn MlfeatureldaNode::len(self : MlfeatureldaNode) -> Int { self.size }
 
-pub fn ml_feature_lda_node_get(s : MlfeatureldaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaNode::get(self : MlfeatureldaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_node_set(s : MlfeatureldaNode, i : Int, v : Double) -> MlfeatureldaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaNode::set(self : MlfeatureldaNode, i : Int, v : Double) -> MlfeatureldaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_node_sum(s : MlfeatureldaNode) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaNode::sum(self : MlfeatureldaNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_node_mean(s : MlfeatureldaNode) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaNode::mean(self : MlfeatureldaNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_node_scale(s : MlfeatureldaNode, f : Double) -> MlfeatureldaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaNode::scale(self : MlfeatureldaNode, f : Double) -> MlfeatureldaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_node_add(a : MlfeatureldaNode, b : MlfeatureldaNode) -> MlfeatureldaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaNode::add(self : MlfeatureldaNode, other : MlfeatureldaNode) -> MlfeatureldaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_node_copy(s : MlfeatureldaNode) -> MlfeatureldaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaNode::copy(self : MlfeatureldaNode) -> MlfeatureldaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_node_fill(s : MlfeatureldaNode, v : Double) -> MlfeatureldaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaNode::fill(self : MlfeatureldaNode, v : Double) -> MlfeatureldaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_node_min(s : MlfeatureldaNode) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaNode::min(self : MlfeatureldaNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_node_max(s : MlfeatureldaNode) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaNode::max(self : MlfeatureldaNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_node_to_string(s : MlfeatureldaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaNode::to_string(self : MlfeatureldaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaEdge {
@@ -555,45 +555,45 @@ pub fn ml_feature_lda_edge_make(size : Int) -> MlfeatureldaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_edge_len(s : MlfeatureldaEdge) -> Int { s.size }
+pub fn MlfeatureldaEdge::len(self : MlfeatureldaEdge) -> Int { self.size }
 
-pub fn ml_feature_lda_edge_get(s : MlfeatureldaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaEdge::get(self : MlfeatureldaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_edge_set(s : MlfeatureldaEdge, i : Int, v : Double) -> MlfeatureldaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaEdge::set(self : MlfeatureldaEdge, i : Int, v : Double) -> MlfeatureldaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_edge_sum(s : MlfeatureldaEdge) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaEdge::sum(self : MlfeatureldaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_edge_mean(s : MlfeatureldaEdge) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaEdge::mean(self : MlfeatureldaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_edge_scale(s : MlfeatureldaEdge, f : Double) -> MlfeatureldaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaEdge::scale(self : MlfeatureldaEdge, f : Double) -> MlfeatureldaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_edge_add(a : MlfeatureldaEdge, b : MlfeatureldaEdge) -> MlfeatureldaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaEdge::add(self : MlfeatureldaEdge, other : MlfeatureldaEdge) -> MlfeatureldaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_edge_copy(s : MlfeatureldaEdge) -> MlfeatureldaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaEdge::copy(self : MlfeatureldaEdge) -> MlfeatureldaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_edge_fill(s : MlfeatureldaEdge, v : Double) -> MlfeatureldaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaEdge::fill(self : MlfeatureldaEdge, v : Double) -> MlfeatureldaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_edge_min(s : MlfeatureldaEdge) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaEdge::min(self : MlfeatureldaEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_edge_max(s : MlfeatureldaEdge) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaEdge::max(self : MlfeatureldaEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_edge_to_string(s : MlfeatureldaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaEdge::to_string(self : MlfeatureldaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaPath {
@@ -606,45 +606,45 @@ pub fn ml_feature_lda_path_make(size : Int) -> MlfeatureldaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_path_len(s : MlfeatureldaPath) -> Int { s.size }
+pub fn MlfeatureldaPath::len(self : MlfeatureldaPath) -> Int { self.size }
 
-pub fn ml_feature_lda_path_get(s : MlfeatureldaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaPath::get(self : MlfeatureldaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_path_set(s : MlfeatureldaPath, i : Int, v : Double) -> MlfeatureldaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaPath::set(self : MlfeatureldaPath, i : Int, v : Double) -> MlfeatureldaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_path_sum(s : MlfeatureldaPath) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaPath::sum(self : MlfeatureldaPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_path_mean(s : MlfeatureldaPath) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaPath::mean(self : MlfeatureldaPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_path_scale(s : MlfeatureldaPath, f : Double) -> MlfeatureldaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaPath::scale(self : MlfeatureldaPath, f : Double) -> MlfeatureldaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_path_add(a : MlfeatureldaPath, b : MlfeatureldaPath) -> MlfeatureldaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaPath::add(self : MlfeatureldaPath, other : MlfeatureldaPath) -> MlfeatureldaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_path_copy(s : MlfeatureldaPath) -> MlfeatureldaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaPath::copy(self : MlfeatureldaPath) -> MlfeatureldaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_path_fill(s : MlfeatureldaPath, v : Double) -> MlfeatureldaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaPath::fill(self : MlfeatureldaPath, v : Double) -> MlfeatureldaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_path_min(s : MlfeatureldaPath) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaPath::min(self : MlfeatureldaPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_path_max(s : MlfeatureldaPath) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaPath::max(self : MlfeatureldaPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_path_to_string(s : MlfeatureldaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaPath::to_string(self : MlfeatureldaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaCluster {
@@ -657,45 +657,45 @@ pub fn ml_feature_lda_cluster_make(size : Int) -> MlfeatureldaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_cluster_len(s : MlfeatureldaCluster) -> Int { s.size }
+pub fn MlfeatureldaCluster::len(self : MlfeatureldaCluster) -> Int { self.size }
 
-pub fn ml_feature_lda_cluster_get(s : MlfeatureldaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaCluster::get(self : MlfeatureldaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_cluster_set(s : MlfeatureldaCluster, i : Int, v : Double) -> MlfeatureldaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaCluster::set(self : MlfeatureldaCluster, i : Int, v : Double) -> MlfeatureldaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cluster_sum(s : MlfeatureldaCluster) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaCluster::sum(self : MlfeatureldaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_cluster_mean(s : MlfeatureldaCluster) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaCluster::mean(self : MlfeatureldaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_cluster_scale(s : MlfeatureldaCluster, f : Double) -> MlfeatureldaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaCluster::scale(self : MlfeatureldaCluster, f : Double) -> MlfeatureldaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cluster_add(a : MlfeatureldaCluster, b : MlfeatureldaCluster) -> MlfeatureldaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaCluster::add(self : MlfeatureldaCluster, other : MlfeatureldaCluster) -> MlfeatureldaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cluster_copy(s : MlfeatureldaCluster) -> MlfeatureldaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaCluster::copy(self : MlfeatureldaCluster) -> MlfeatureldaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cluster_fill(s : MlfeatureldaCluster, v : Double) -> MlfeatureldaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaCluster::fill(self : MlfeatureldaCluster, v : Double) -> MlfeatureldaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cluster_min(s : MlfeatureldaCluster) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaCluster::min(self : MlfeatureldaCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_cluster_max(s : MlfeatureldaCluster) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaCluster::max(self : MlfeatureldaCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_cluster_to_string(s : MlfeatureldaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaCluster::to_string(self : MlfeatureldaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaModel {
@@ -708,45 +708,45 @@ pub fn ml_feature_lda_model_make(size : Int) -> MlfeatureldaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_model_len(s : MlfeatureldaModel) -> Int { s.size }
+pub fn MlfeatureldaModel::len(self : MlfeatureldaModel) -> Int { self.size }
 
-pub fn ml_feature_lda_model_get(s : MlfeatureldaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaModel::get(self : MlfeatureldaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_model_set(s : MlfeatureldaModel, i : Int, v : Double) -> MlfeatureldaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaModel::set(self : MlfeatureldaModel, i : Int, v : Double) -> MlfeatureldaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_model_sum(s : MlfeatureldaModel) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaModel::sum(self : MlfeatureldaModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_model_mean(s : MlfeatureldaModel) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaModel::mean(self : MlfeatureldaModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_model_scale(s : MlfeatureldaModel, f : Double) -> MlfeatureldaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaModel::scale(self : MlfeatureldaModel, f : Double) -> MlfeatureldaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_model_add(a : MlfeatureldaModel, b : MlfeatureldaModel) -> MlfeatureldaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaModel::add(self : MlfeatureldaModel, other : MlfeatureldaModel) -> MlfeatureldaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_model_copy(s : MlfeatureldaModel) -> MlfeatureldaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaModel::copy(self : MlfeatureldaModel) -> MlfeatureldaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_model_fill(s : MlfeatureldaModel, v : Double) -> MlfeatureldaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaModel::fill(self : MlfeatureldaModel, v : Double) -> MlfeatureldaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_model_min(s : MlfeatureldaModel) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaModel::min(self : MlfeatureldaModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_model_max(s : MlfeatureldaModel) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaModel::max(self : MlfeatureldaModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_model_to_string(s : MlfeatureldaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaModel::to_string(self : MlfeatureldaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaLayer {
@@ -759,45 +759,45 @@ pub fn ml_feature_lda_layer_make(size : Int) -> MlfeatureldaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_layer_len(s : MlfeatureldaLayer) -> Int { s.size }
+pub fn MlfeatureldaLayer::len(self : MlfeatureldaLayer) -> Int { self.size }
 
-pub fn ml_feature_lda_layer_get(s : MlfeatureldaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaLayer::get(self : MlfeatureldaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_layer_set(s : MlfeatureldaLayer, i : Int, v : Double) -> MlfeatureldaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaLayer::set(self : MlfeatureldaLayer, i : Int, v : Double) -> MlfeatureldaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_layer_sum(s : MlfeatureldaLayer) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaLayer::sum(self : MlfeatureldaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_layer_mean(s : MlfeatureldaLayer) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaLayer::mean(self : MlfeatureldaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_layer_scale(s : MlfeatureldaLayer, f : Double) -> MlfeatureldaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaLayer::scale(self : MlfeatureldaLayer, f : Double) -> MlfeatureldaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_layer_add(a : MlfeatureldaLayer, b : MlfeatureldaLayer) -> MlfeatureldaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaLayer::add(self : MlfeatureldaLayer, other : MlfeatureldaLayer) -> MlfeatureldaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_layer_copy(s : MlfeatureldaLayer) -> MlfeatureldaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaLayer::copy(self : MlfeatureldaLayer) -> MlfeatureldaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_layer_fill(s : MlfeatureldaLayer, v : Double) -> MlfeatureldaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaLayer::fill(self : MlfeatureldaLayer, v : Double) -> MlfeatureldaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_layer_min(s : MlfeatureldaLayer) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaLayer::min(self : MlfeatureldaLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_layer_max(s : MlfeatureldaLayer) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaLayer::max(self : MlfeatureldaLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_layer_to_string(s : MlfeatureldaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaLayer::to_string(self : MlfeatureldaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaBuffer {
@@ -810,45 +810,45 @@ pub fn ml_feature_lda_buffer_make(size : Int) -> MlfeatureldaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_buffer_len(s : MlfeatureldaBuffer) -> Int { s.size }
+pub fn MlfeatureldaBuffer::len(self : MlfeatureldaBuffer) -> Int { self.size }
 
-pub fn ml_feature_lda_buffer_get(s : MlfeatureldaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaBuffer::get(self : MlfeatureldaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_buffer_set(s : MlfeatureldaBuffer, i : Int, v : Double) -> MlfeatureldaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaBuffer::set(self : MlfeatureldaBuffer, i : Int, v : Double) -> MlfeatureldaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_buffer_sum(s : MlfeatureldaBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaBuffer::sum(self : MlfeatureldaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_buffer_mean(s : MlfeatureldaBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaBuffer::mean(self : MlfeatureldaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_buffer_scale(s : MlfeatureldaBuffer, f : Double) -> MlfeatureldaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaBuffer::scale(self : MlfeatureldaBuffer, f : Double) -> MlfeatureldaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_buffer_add(a : MlfeatureldaBuffer, b : MlfeatureldaBuffer) -> MlfeatureldaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaBuffer::add(self : MlfeatureldaBuffer, other : MlfeatureldaBuffer) -> MlfeatureldaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_buffer_copy(s : MlfeatureldaBuffer) -> MlfeatureldaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaBuffer::copy(self : MlfeatureldaBuffer) -> MlfeatureldaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_buffer_fill(s : MlfeatureldaBuffer, v : Double) -> MlfeatureldaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaBuffer::fill(self : MlfeatureldaBuffer, v : Double) -> MlfeatureldaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_buffer_min(s : MlfeatureldaBuffer) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaBuffer::min(self : MlfeatureldaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_buffer_max(s : MlfeatureldaBuffer) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaBuffer::max(self : MlfeatureldaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_buffer_to_string(s : MlfeatureldaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaBuffer::to_string(self : MlfeatureldaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaCursor {
@@ -861,45 +861,45 @@ pub fn ml_feature_lda_cursor_make(size : Int) -> MlfeatureldaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_cursor_len(s : MlfeatureldaCursor) -> Int { s.size }
+pub fn MlfeatureldaCursor::len(self : MlfeatureldaCursor) -> Int { self.size }
 
-pub fn ml_feature_lda_cursor_get(s : MlfeatureldaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaCursor::get(self : MlfeatureldaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_cursor_set(s : MlfeatureldaCursor, i : Int, v : Double) -> MlfeatureldaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaCursor::set(self : MlfeatureldaCursor, i : Int, v : Double) -> MlfeatureldaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cursor_sum(s : MlfeatureldaCursor) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaCursor::sum(self : MlfeatureldaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_cursor_mean(s : MlfeatureldaCursor) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaCursor::mean(self : MlfeatureldaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_cursor_scale(s : MlfeatureldaCursor, f : Double) -> MlfeatureldaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaCursor::scale(self : MlfeatureldaCursor, f : Double) -> MlfeatureldaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cursor_add(a : MlfeatureldaCursor, b : MlfeatureldaCursor) -> MlfeatureldaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaCursor::add(self : MlfeatureldaCursor, other : MlfeatureldaCursor) -> MlfeatureldaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cursor_copy(s : MlfeatureldaCursor) -> MlfeatureldaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaCursor::copy(self : MlfeatureldaCursor) -> MlfeatureldaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cursor_fill(s : MlfeatureldaCursor, v : Double) -> MlfeatureldaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaCursor::fill(self : MlfeatureldaCursor, v : Double) -> MlfeatureldaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_cursor_min(s : MlfeatureldaCursor) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaCursor::min(self : MlfeatureldaCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_cursor_max(s : MlfeatureldaCursor) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaCursor::max(self : MlfeatureldaCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_cursor_to_string(s : MlfeatureldaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaCursor::to_string(self : MlfeatureldaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaView {
@@ -912,45 +912,45 @@ pub fn ml_feature_lda_view_make(size : Int) -> MlfeatureldaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_view_len(s : MlfeatureldaView) -> Int { s.size }
+pub fn MlfeatureldaView::len(self : MlfeatureldaView) -> Int { self.size }
 
-pub fn ml_feature_lda_view_get(s : MlfeatureldaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaView::get(self : MlfeatureldaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_view_set(s : MlfeatureldaView, i : Int, v : Double) -> MlfeatureldaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaView::set(self : MlfeatureldaView, i : Int, v : Double) -> MlfeatureldaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_view_sum(s : MlfeatureldaView) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaView::sum(self : MlfeatureldaView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_view_mean(s : MlfeatureldaView) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaView::mean(self : MlfeatureldaView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_view_scale(s : MlfeatureldaView, f : Double) -> MlfeatureldaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaView::scale(self : MlfeatureldaView, f : Double) -> MlfeatureldaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_view_add(a : MlfeatureldaView, b : MlfeatureldaView) -> MlfeatureldaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaView::add(self : MlfeatureldaView, other : MlfeatureldaView) -> MlfeatureldaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_view_copy(s : MlfeatureldaView) -> MlfeatureldaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaView::copy(self : MlfeatureldaView) -> MlfeatureldaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_view_fill(s : MlfeatureldaView, v : Double) -> MlfeatureldaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaView::fill(self : MlfeatureldaView, v : Double) -> MlfeatureldaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_view_min(s : MlfeatureldaView) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaView::min(self : MlfeatureldaView) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_view_max(s : MlfeatureldaView) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaView::max(self : MlfeatureldaView) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_view_to_string(s : MlfeatureldaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaView::to_string(self : MlfeatureldaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaRange {
@@ -963,45 +963,45 @@ pub fn ml_feature_lda_range_make(size : Int) -> MlfeatureldaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_range_len(s : MlfeatureldaRange) -> Int { s.size }
+pub fn MlfeatureldaRange::len(self : MlfeatureldaRange) -> Int { self.size }
 
-pub fn ml_feature_lda_range_get(s : MlfeatureldaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaRange::get(self : MlfeatureldaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_range_set(s : MlfeatureldaRange, i : Int, v : Double) -> MlfeatureldaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaRange::set(self : MlfeatureldaRange, i : Int, v : Double) -> MlfeatureldaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_range_sum(s : MlfeatureldaRange) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaRange::sum(self : MlfeatureldaRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_range_mean(s : MlfeatureldaRange) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaRange::mean(self : MlfeatureldaRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_range_scale(s : MlfeatureldaRange, f : Double) -> MlfeatureldaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaRange::scale(self : MlfeatureldaRange, f : Double) -> MlfeatureldaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_range_add(a : MlfeatureldaRange, b : MlfeatureldaRange) -> MlfeatureldaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaRange::add(self : MlfeatureldaRange, other : MlfeatureldaRange) -> MlfeatureldaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_range_copy(s : MlfeatureldaRange) -> MlfeatureldaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaRange::copy(self : MlfeatureldaRange) -> MlfeatureldaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_range_fill(s : MlfeatureldaRange, v : Double) -> MlfeatureldaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaRange::fill(self : MlfeatureldaRange, v : Double) -> MlfeatureldaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_range_min(s : MlfeatureldaRange) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaRange::min(self : MlfeatureldaRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_range_max(s : MlfeatureldaRange) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaRange::max(self : MlfeatureldaRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_range_to_string(s : MlfeatureldaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaRange::to_string(self : MlfeatureldaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlfeatureldaSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_feature_lda_slice_make(size : Int) -> MlfeatureldaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_feature_lda_slice_len(s : MlfeatureldaSlice) -> Int { s.size }
+pub fn MlfeatureldaSlice::len(self : MlfeatureldaSlice) -> Int { self.size }
 
-pub fn ml_feature_lda_slice_get(s : MlfeatureldaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlfeatureldaSlice::get(self : MlfeatureldaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_feature_lda_slice_set(s : MlfeatureldaSlice, i : Int, v : Double) -> MlfeatureldaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlfeatureldaSlice::set(self : MlfeatureldaSlice, i : Int, v : Double) -> MlfeatureldaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_slice_sum(s : MlfeatureldaSlice) -> Double { @_common.sum(s.data) }
+pub fn MlfeatureldaSlice::sum(self : MlfeatureldaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_feature_lda_slice_mean(s : MlfeatureldaSlice) -> Double { @_common.mean(s.data) }
+pub fn MlfeatureldaSlice::mean(self : MlfeatureldaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_feature_lda_slice_scale(s : MlfeatureldaSlice, f : Double) -> MlfeatureldaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlfeatureldaSlice::scale(self : MlfeatureldaSlice, f : Double) -> MlfeatureldaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_slice_add(a : MlfeatureldaSlice, b : MlfeatureldaSlice) -> MlfeatureldaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlfeatureldaSlice::add(self : MlfeatureldaSlice, other : MlfeatureldaSlice) -> MlfeatureldaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_feature_lda_slice_copy(s : MlfeatureldaSlice) -> MlfeatureldaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlfeatureldaSlice::copy(self : MlfeatureldaSlice) -> MlfeatureldaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_slice_fill(s : MlfeatureldaSlice, v : Double) -> MlfeatureldaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlfeatureldaSlice::fill(self : MlfeatureldaSlice, v : Double) -> MlfeatureldaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_feature_lda_slice_min(s : MlfeatureldaSlice) -> Double { @_common.min(s.data) }
+pub fn MlfeatureldaSlice::min(self : MlfeatureldaSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_feature_lda_slice_max(s : MlfeatureldaSlice) -> Double { @_common.max(s.data) }
+pub fn MlfeatureldaSlice::max(self : MlfeatureldaSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_feature_lda_slice_to_string(s : MlfeatureldaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlfeatureldaSlice::to_string(self : MlfeatureldaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

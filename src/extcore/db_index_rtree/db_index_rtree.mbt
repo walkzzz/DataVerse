@@ -351,45 +351,45 @@ pub fn db_index_rtree_frame_make(size : Int) -> DbindexrtreeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_frame_len(s : DbindexrtreeFrame) -> Int { s.size }
+pub fn DbindexrtreeFrame::len(self : DbindexrtreeFrame) -> Int { self.size }
 
-pub fn db_index_rtree_frame_get(s : DbindexrtreeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeFrame::get(self : DbindexrtreeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_frame_set(s : DbindexrtreeFrame, i : Int, v : Double) -> DbindexrtreeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeFrame::set(self : DbindexrtreeFrame, i : Int, v : Double) -> DbindexrtreeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_frame_sum(s : DbindexrtreeFrame) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeFrame::sum(self : DbindexrtreeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_frame_mean(s : DbindexrtreeFrame) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeFrame::mean(self : DbindexrtreeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_frame_scale(s : DbindexrtreeFrame, f : Double) -> DbindexrtreeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeFrame::scale(self : DbindexrtreeFrame, f : Double) -> DbindexrtreeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_frame_add(a : DbindexrtreeFrame, b : DbindexrtreeFrame) -> DbindexrtreeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeFrame::add(self : DbindexrtreeFrame, other : DbindexrtreeFrame) -> DbindexrtreeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_frame_copy(s : DbindexrtreeFrame) -> DbindexrtreeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeFrame::copy(self : DbindexrtreeFrame) -> DbindexrtreeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_frame_fill(s : DbindexrtreeFrame, v : Double) -> DbindexrtreeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeFrame::fill(self : DbindexrtreeFrame, v : Double) -> DbindexrtreeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_frame_min(s : DbindexrtreeFrame) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeFrame::min(self : DbindexrtreeFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_frame_max(s : DbindexrtreeFrame) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeFrame::max(self : DbindexrtreeFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_frame_to_string(s : DbindexrtreeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeFrame::to_string(self : DbindexrtreeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeTable {
@@ -402,45 +402,45 @@ pub fn db_index_rtree_table_make(size : Int) -> DbindexrtreeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_table_len(s : DbindexrtreeTable) -> Int { s.size }
+pub fn DbindexrtreeTable::len(self : DbindexrtreeTable) -> Int { self.size }
 
-pub fn db_index_rtree_table_get(s : DbindexrtreeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeTable::get(self : DbindexrtreeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_table_set(s : DbindexrtreeTable, i : Int, v : Double) -> DbindexrtreeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeTable::set(self : DbindexrtreeTable, i : Int, v : Double) -> DbindexrtreeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_table_sum(s : DbindexrtreeTable) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeTable::sum(self : DbindexrtreeTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_table_mean(s : DbindexrtreeTable) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeTable::mean(self : DbindexrtreeTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_table_scale(s : DbindexrtreeTable, f : Double) -> DbindexrtreeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeTable::scale(self : DbindexrtreeTable, f : Double) -> DbindexrtreeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_table_add(a : DbindexrtreeTable, b : DbindexrtreeTable) -> DbindexrtreeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeTable::add(self : DbindexrtreeTable, other : DbindexrtreeTable) -> DbindexrtreeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_table_copy(s : DbindexrtreeTable) -> DbindexrtreeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeTable::copy(self : DbindexrtreeTable) -> DbindexrtreeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_table_fill(s : DbindexrtreeTable, v : Double) -> DbindexrtreeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeTable::fill(self : DbindexrtreeTable, v : Double) -> DbindexrtreeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_table_min(s : DbindexrtreeTable) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeTable::min(self : DbindexrtreeTable) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_table_max(s : DbindexrtreeTable) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeTable::max(self : DbindexrtreeTable) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_table_to_string(s : DbindexrtreeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeTable::to_string(self : DbindexrtreeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeGraphN {
@@ -453,45 +453,45 @@ pub fn db_index_rtree_graphn_make(size : Int) -> DbindexrtreeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_graphn_len(s : DbindexrtreeGraphN) -> Int { s.size }
+pub fn DbindexrtreeGraphN::len(self : DbindexrtreeGraphN) -> Int { self.size }
 
-pub fn db_index_rtree_graphn_get(s : DbindexrtreeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeGraphN::get(self : DbindexrtreeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_graphn_set(s : DbindexrtreeGraphN, i : Int, v : Double) -> DbindexrtreeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeGraphN::set(self : DbindexrtreeGraphN, i : Int, v : Double) -> DbindexrtreeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_graphn_sum(s : DbindexrtreeGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeGraphN::sum(self : DbindexrtreeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_graphn_mean(s : DbindexrtreeGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeGraphN::mean(self : DbindexrtreeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_graphn_scale(s : DbindexrtreeGraphN, f : Double) -> DbindexrtreeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeGraphN::scale(self : DbindexrtreeGraphN, f : Double) -> DbindexrtreeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_graphn_add(a : DbindexrtreeGraphN, b : DbindexrtreeGraphN) -> DbindexrtreeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeGraphN::add(self : DbindexrtreeGraphN, other : DbindexrtreeGraphN) -> DbindexrtreeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_graphn_copy(s : DbindexrtreeGraphN) -> DbindexrtreeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeGraphN::copy(self : DbindexrtreeGraphN) -> DbindexrtreeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_graphn_fill(s : DbindexrtreeGraphN, v : Double) -> DbindexrtreeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeGraphN::fill(self : DbindexrtreeGraphN, v : Double) -> DbindexrtreeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_graphn_min(s : DbindexrtreeGraphN) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeGraphN::min(self : DbindexrtreeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_graphn_max(s : DbindexrtreeGraphN) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeGraphN::max(self : DbindexrtreeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_graphn_to_string(s : DbindexrtreeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeGraphN::to_string(self : DbindexrtreeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeNode {
@@ -504,45 +504,45 @@ pub fn db_index_rtree_node_make(size : Int) -> DbindexrtreeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_node_len(s : DbindexrtreeNode) -> Int { s.size }
+pub fn DbindexrtreeNode::len(self : DbindexrtreeNode) -> Int { self.size }
 
-pub fn db_index_rtree_node_get(s : DbindexrtreeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeNode::get(self : DbindexrtreeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_node_set(s : DbindexrtreeNode, i : Int, v : Double) -> DbindexrtreeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeNode::set(self : DbindexrtreeNode, i : Int, v : Double) -> DbindexrtreeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_node_sum(s : DbindexrtreeNode) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeNode::sum(self : DbindexrtreeNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_node_mean(s : DbindexrtreeNode) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeNode::mean(self : DbindexrtreeNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_node_scale(s : DbindexrtreeNode, f : Double) -> DbindexrtreeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeNode::scale(self : DbindexrtreeNode, f : Double) -> DbindexrtreeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_node_add(a : DbindexrtreeNode, b : DbindexrtreeNode) -> DbindexrtreeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeNode::add(self : DbindexrtreeNode, other : DbindexrtreeNode) -> DbindexrtreeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_node_copy(s : DbindexrtreeNode) -> DbindexrtreeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeNode::copy(self : DbindexrtreeNode) -> DbindexrtreeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_node_fill(s : DbindexrtreeNode, v : Double) -> DbindexrtreeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeNode::fill(self : DbindexrtreeNode, v : Double) -> DbindexrtreeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_node_min(s : DbindexrtreeNode) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeNode::min(self : DbindexrtreeNode) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_node_max(s : DbindexrtreeNode) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeNode::max(self : DbindexrtreeNode) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_node_to_string(s : DbindexrtreeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeNode::to_string(self : DbindexrtreeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeEdge {
@@ -555,45 +555,45 @@ pub fn db_index_rtree_edge_make(size : Int) -> DbindexrtreeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_edge_len(s : DbindexrtreeEdge) -> Int { s.size }
+pub fn DbindexrtreeEdge::len(self : DbindexrtreeEdge) -> Int { self.size }
 
-pub fn db_index_rtree_edge_get(s : DbindexrtreeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeEdge::get(self : DbindexrtreeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_edge_set(s : DbindexrtreeEdge, i : Int, v : Double) -> DbindexrtreeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeEdge::set(self : DbindexrtreeEdge, i : Int, v : Double) -> DbindexrtreeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_edge_sum(s : DbindexrtreeEdge) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeEdge::sum(self : DbindexrtreeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_edge_mean(s : DbindexrtreeEdge) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeEdge::mean(self : DbindexrtreeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_edge_scale(s : DbindexrtreeEdge, f : Double) -> DbindexrtreeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeEdge::scale(self : DbindexrtreeEdge, f : Double) -> DbindexrtreeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_edge_add(a : DbindexrtreeEdge, b : DbindexrtreeEdge) -> DbindexrtreeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeEdge::add(self : DbindexrtreeEdge, other : DbindexrtreeEdge) -> DbindexrtreeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_edge_copy(s : DbindexrtreeEdge) -> DbindexrtreeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeEdge::copy(self : DbindexrtreeEdge) -> DbindexrtreeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_edge_fill(s : DbindexrtreeEdge, v : Double) -> DbindexrtreeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeEdge::fill(self : DbindexrtreeEdge, v : Double) -> DbindexrtreeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_edge_min(s : DbindexrtreeEdge) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeEdge::min(self : DbindexrtreeEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_edge_max(s : DbindexrtreeEdge) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeEdge::max(self : DbindexrtreeEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_edge_to_string(s : DbindexrtreeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeEdge::to_string(self : DbindexrtreeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreePath {
@@ -606,45 +606,45 @@ pub fn db_index_rtree_path_make(size : Int) -> DbindexrtreePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_path_len(s : DbindexrtreePath) -> Int { s.size }
+pub fn DbindexrtreePath::len(self : DbindexrtreePath) -> Int { self.size }
 
-pub fn db_index_rtree_path_get(s : DbindexrtreePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreePath::get(self : DbindexrtreePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_path_set(s : DbindexrtreePath, i : Int, v : Double) -> DbindexrtreePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreePath::set(self : DbindexrtreePath, i : Int, v : Double) -> DbindexrtreePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_path_sum(s : DbindexrtreePath) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreePath::sum(self : DbindexrtreePath) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_path_mean(s : DbindexrtreePath) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreePath::mean(self : DbindexrtreePath) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_path_scale(s : DbindexrtreePath, f : Double) -> DbindexrtreePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreePath::scale(self : DbindexrtreePath, f : Double) -> DbindexrtreePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_path_add(a : DbindexrtreePath, b : DbindexrtreePath) -> DbindexrtreePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreePath::add(self : DbindexrtreePath, other : DbindexrtreePath) -> DbindexrtreePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_path_copy(s : DbindexrtreePath) -> DbindexrtreePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreePath::copy(self : DbindexrtreePath) -> DbindexrtreePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_path_fill(s : DbindexrtreePath, v : Double) -> DbindexrtreePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreePath::fill(self : DbindexrtreePath, v : Double) -> DbindexrtreePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_path_min(s : DbindexrtreePath) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreePath::min(self : DbindexrtreePath) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_path_max(s : DbindexrtreePath) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreePath::max(self : DbindexrtreePath) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_path_to_string(s : DbindexrtreePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreePath::to_string(self : DbindexrtreePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeCluster {
@@ -657,45 +657,45 @@ pub fn db_index_rtree_cluster_make(size : Int) -> DbindexrtreeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_cluster_len(s : DbindexrtreeCluster) -> Int { s.size }
+pub fn DbindexrtreeCluster::len(self : DbindexrtreeCluster) -> Int { self.size }
 
-pub fn db_index_rtree_cluster_get(s : DbindexrtreeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeCluster::get(self : DbindexrtreeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_cluster_set(s : DbindexrtreeCluster, i : Int, v : Double) -> DbindexrtreeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeCluster::set(self : DbindexrtreeCluster, i : Int, v : Double) -> DbindexrtreeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cluster_sum(s : DbindexrtreeCluster) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeCluster::sum(self : DbindexrtreeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_cluster_mean(s : DbindexrtreeCluster) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeCluster::mean(self : DbindexrtreeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_cluster_scale(s : DbindexrtreeCluster, f : Double) -> DbindexrtreeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeCluster::scale(self : DbindexrtreeCluster, f : Double) -> DbindexrtreeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cluster_add(a : DbindexrtreeCluster, b : DbindexrtreeCluster) -> DbindexrtreeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeCluster::add(self : DbindexrtreeCluster, other : DbindexrtreeCluster) -> DbindexrtreeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_cluster_copy(s : DbindexrtreeCluster) -> DbindexrtreeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeCluster::copy(self : DbindexrtreeCluster) -> DbindexrtreeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cluster_fill(s : DbindexrtreeCluster, v : Double) -> DbindexrtreeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeCluster::fill(self : DbindexrtreeCluster, v : Double) -> DbindexrtreeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cluster_min(s : DbindexrtreeCluster) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeCluster::min(self : DbindexrtreeCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_cluster_max(s : DbindexrtreeCluster) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeCluster::max(self : DbindexrtreeCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_cluster_to_string(s : DbindexrtreeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeCluster::to_string(self : DbindexrtreeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeModel {
@@ -708,45 +708,45 @@ pub fn db_index_rtree_model_make(size : Int) -> DbindexrtreeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_model_len(s : DbindexrtreeModel) -> Int { s.size }
+pub fn DbindexrtreeModel::len(self : DbindexrtreeModel) -> Int { self.size }
 
-pub fn db_index_rtree_model_get(s : DbindexrtreeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeModel::get(self : DbindexrtreeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_model_set(s : DbindexrtreeModel, i : Int, v : Double) -> DbindexrtreeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeModel::set(self : DbindexrtreeModel, i : Int, v : Double) -> DbindexrtreeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_model_sum(s : DbindexrtreeModel) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeModel::sum(self : DbindexrtreeModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_model_mean(s : DbindexrtreeModel) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeModel::mean(self : DbindexrtreeModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_model_scale(s : DbindexrtreeModel, f : Double) -> DbindexrtreeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeModel::scale(self : DbindexrtreeModel, f : Double) -> DbindexrtreeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_model_add(a : DbindexrtreeModel, b : DbindexrtreeModel) -> DbindexrtreeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeModel::add(self : DbindexrtreeModel, other : DbindexrtreeModel) -> DbindexrtreeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_model_copy(s : DbindexrtreeModel) -> DbindexrtreeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeModel::copy(self : DbindexrtreeModel) -> DbindexrtreeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_model_fill(s : DbindexrtreeModel, v : Double) -> DbindexrtreeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeModel::fill(self : DbindexrtreeModel, v : Double) -> DbindexrtreeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_model_min(s : DbindexrtreeModel) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeModel::min(self : DbindexrtreeModel) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_model_max(s : DbindexrtreeModel) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeModel::max(self : DbindexrtreeModel) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_model_to_string(s : DbindexrtreeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeModel::to_string(self : DbindexrtreeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeLayer {
@@ -759,45 +759,45 @@ pub fn db_index_rtree_layer_make(size : Int) -> DbindexrtreeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_layer_len(s : DbindexrtreeLayer) -> Int { s.size }
+pub fn DbindexrtreeLayer::len(self : DbindexrtreeLayer) -> Int { self.size }
 
-pub fn db_index_rtree_layer_get(s : DbindexrtreeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeLayer::get(self : DbindexrtreeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_layer_set(s : DbindexrtreeLayer, i : Int, v : Double) -> DbindexrtreeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeLayer::set(self : DbindexrtreeLayer, i : Int, v : Double) -> DbindexrtreeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_layer_sum(s : DbindexrtreeLayer) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeLayer::sum(self : DbindexrtreeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_layer_mean(s : DbindexrtreeLayer) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeLayer::mean(self : DbindexrtreeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_layer_scale(s : DbindexrtreeLayer, f : Double) -> DbindexrtreeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeLayer::scale(self : DbindexrtreeLayer, f : Double) -> DbindexrtreeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_layer_add(a : DbindexrtreeLayer, b : DbindexrtreeLayer) -> DbindexrtreeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeLayer::add(self : DbindexrtreeLayer, other : DbindexrtreeLayer) -> DbindexrtreeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_layer_copy(s : DbindexrtreeLayer) -> DbindexrtreeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeLayer::copy(self : DbindexrtreeLayer) -> DbindexrtreeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_layer_fill(s : DbindexrtreeLayer, v : Double) -> DbindexrtreeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeLayer::fill(self : DbindexrtreeLayer, v : Double) -> DbindexrtreeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_layer_min(s : DbindexrtreeLayer) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeLayer::min(self : DbindexrtreeLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_layer_max(s : DbindexrtreeLayer) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeLayer::max(self : DbindexrtreeLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_layer_to_string(s : DbindexrtreeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeLayer::to_string(self : DbindexrtreeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeBuffer {
@@ -810,45 +810,45 @@ pub fn db_index_rtree_buffer_make(size : Int) -> DbindexrtreeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_buffer_len(s : DbindexrtreeBuffer) -> Int { s.size }
+pub fn DbindexrtreeBuffer::len(self : DbindexrtreeBuffer) -> Int { self.size }
 
-pub fn db_index_rtree_buffer_get(s : DbindexrtreeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeBuffer::get(self : DbindexrtreeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_buffer_set(s : DbindexrtreeBuffer, i : Int, v : Double) -> DbindexrtreeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeBuffer::set(self : DbindexrtreeBuffer, i : Int, v : Double) -> DbindexrtreeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_buffer_sum(s : DbindexrtreeBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeBuffer::sum(self : DbindexrtreeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_buffer_mean(s : DbindexrtreeBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeBuffer::mean(self : DbindexrtreeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_buffer_scale(s : DbindexrtreeBuffer, f : Double) -> DbindexrtreeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeBuffer::scale(self : DbindexrtreeBuffer, f : Double) -> DbindexrtreeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_buffer_add(a : DbindexrtreeBuffer, b : DbindexrtreeBuffer) -> DbindexrtreeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeBuffer::add(self : DbindexrtreeBuffer, other : DbindexrtreeBuffer) -> DbindexrtreeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_buffer_copy(s : DbindexrtreeBuffer) -> DbindexrtreeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeBuffer::copy(self : DbindexrtreeBuffer) -> DbindexrtreeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_buffer_fill(s : DbindexrtreeBuffer, v : Double) -> DbindexrtreeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeBuffer::fill(self : DbindexrtreeBuffer, v : Double) -> DbindexrtreeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_buffer_min(s : DbindexrtreeBuffer) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeBuffer::min(self : DbindexrtreeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_buffer_max(s : DbindexrtreeBuffer) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeBuffer::max(self : DbindexrtreeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_buffer_to_string(s : DbindexrtreeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeBuffer::to_string(self : DbindexrtreeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeCursor {
@@ -861,45 +861,45 @@ pub fn db_index_rtree_cursor_make(size : Int) -> DbindexrtreeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_cursor_len(s : DbindexrtreeCursor) -> Int { s.size }
+pub fn DbindexrtreeCursor::len(self : DbindexrtreeCursor) -> Int { self.size }
 
-pub fn db_index_rtree_cursor_get(s : DbindexrtreeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeCursor::get(self : DbindexrtreeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_cursor_set(s : DbindexrtreeCursor, i : Int, v : Double) -> DbindexrtreeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeCursor::set(self : DbindexrtreeCursor, i : Int, v : Double) -> DbindexrtreeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cursor_sum(s : DbindexrtreeCursor) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeCursor::sum(self : DbindexrtreeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_cursor_mean(s : DbindexrtreeCursor) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeCursor::mean(self : DbindexrtreeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_cursor_scale(s : DbindexrtreeCursor, f : Double) -> DbindexrtreeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeCursor::scale(self : DbindexrtreeCursor, f : Double) -> DbindexrtreeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cursor_add(a : DbindexrtreeCursor, b : DbindexrtreeCursor) -> DbindexrtreeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeCursor::add(self : DbindexrtreeCursor, other : DbindexrtreeCursor) -> DbindexrtreeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_cursor_copy(s : DbindexrtreeCursor) -> DbindexrtreeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeCursor::copy(self : DbindexrtreeCursor) -> DbindexrtreeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cursor_fill(s : DbindexrtreeCursor, v : Double) -> DbindexrtreeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeCursor::fill(self : DbindexrtreeCursor, v : Double) -> DbindexrtreeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_cursor_min(s : DbindexrtreeCursor) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeCursor::min(self : DbindexrtreeCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_cursor_max(s : DbindexrtreeCursor) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeCursor::max(self : DbindexrtreeCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_cursor_to_string(s : DbindexrtreeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeCursor::to_string(self : DbindexrtreeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeView {
@@ -912,45 +912,45 @@ pub fn db_index_rtree_view_make(size : Int) -> DbindexrtreeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_view_len(s : DbindexrtreeView) -> Int { s.size }
+pub fn DbindexrtreeView::len(self : DbindexrtreeView) -> Int { self.size }
 
-pub fn db_index_rtree_view_get(s : DbindexrtreeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeView::get(self : DbindexrtreeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_view_set(s : DbindexrtreeView, i : Int, v : Double) -> DbindexrtreeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeView::set(self : DbindexrtreeView, i : Int, v : Double) -> DbindexrtreeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_view_sum(s : DbindexrtreeView) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeView::sum(self : DbindexrtreeView) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_view_mean(s : DbindexrtreeView) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeView::mean(self : DbindexrtreeView) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_view_scale(s : DbindexrtreeView, f : Double) -> DbindexrtreeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeView::scale(self : DbindexrtreeView, f : Double) -> DbindexrtreeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_view_add(a : DbindexrtreeView, b : DbindexrtreeView) -> DbindexrtreeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeView::add(self : DbindexrtreeView, other : DbindexrtreeView) -> DbindexrtreeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_view_copy(s : DbindexrtreeView) -> DbindexrtreeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeView::copy(self : DbindexrtreeView) -> DbindexrtreeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_view_fill(s : DbindexrtreeView, v : Double) -> DbindexrtreeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeView::fill(self : DbindexrtreeView, v : Double) -> DbindexrtreeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_view_min(s : DbindexrtreeView) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeView::min(self : DbindexrtreeView) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_view_max(s : DbindexrtreeView) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeView::max(self : DbindexrtreeView) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_view_to_string(s : DbindexrtreeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeView::to_string(self : DbindexrtreeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeRange {
@@ -963,45 +963,45 @@ pub fn db_index_rtree_range_make(size : Int) -> DbindexrtreeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_range_len(s : DbindexrtreeRange) -> Int { s.size }
+pub fn DbindexrtreeRange::len(self : DbindexrtreeRange) -> Int { self.size }
 
-pub fn db_index_rtree_range_get(s : DbindexrtreeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeRange::get(self : DbindexrtreeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_range_set(s : DbindexrtreeRange, i : Int, v : Double) -> DbindexrtreeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeRange::set(self : DbindexrtreeRange, i : Int, v : Double) -> DbindexrtreeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_range_sum(s : DbindexrtreeRange) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeRange::sum(self : DbindexrtreeRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_range_mean(s : DbindexrtreeRange) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeRange::mean(self : DbindexrtreeRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_range_scale(s : DbindexrtreeRange, f : Double) -> DbindexrtreeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeRange::scale(self : DbindexrtreeRange, f : Double) -> DbindexrtreeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_range_add(a : DbindexrtreeRange, b : DbindexrtreeRange) -> DbindexrtreeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeRange::add(self : DbindexrtreeRange, other : DbindexrtreeRange) -> DbindexrtreeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_range_copy(s : DbindexrtreeRange) -> DbindexrtreeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeRange::copy(self : DbindexrtreeRange) -> DbindexrtreeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_range_fill(s : DbindexrtreeRange, v : Double) -> DbindexrtreeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeRange::fill(self : DbindexrtreeRange, v : Double) -> DbindexrtreeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_range_min(s : DbindexrtreeRange) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeRange::min(self : DbindexrtreeRange) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_range_max(s : DbindexrtreeRange) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeRange::max(self : DbindexrtreeRange) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_range_to_string(s : DbindexrtreeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeRange::to_string(self : DbindexrtreeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbindexrtreeSlice {
@@ -1014,44 +1014,44 @@ pub fn db_index_rtree_slice_make(size : Int) -> DbindexrtreeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_index_rtree_slice_len(s : DbindexrtreeSlice) -> Int { s.size }
+pub fn DbindexrtreeSlice::len(self : DbindexrtreeSlice) -> Int { self.size }
 
-pub fn db_index_rtree_slice_get(s : DbindexrtreeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbindexrtreeSlice::get(self : DbindexrtreeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_index_rtree_slice_set(s : DbindexrtreeSlice, i : Int, v : Double) -> DbindexrtreeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbindexrtreeSlice::set(self : DbindexrtreeSlice, i : Int, v : Double) -> DbindexrtreeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_slice_sum(s : DbindexrtreeSlice) -> Double { @_common.sum(s.data) }
+pub fn DbindexrtreeSlice::sum(self : DbindexrtreeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_index_rtree_slice_mean(s : DbindexrtreeSlice) -> Double { @_common.mean(s.data) }
+pub fn DbindexrtreeSlice::mean(self : DbindexrtreeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_index_rtree_slice_scale(s : DbindexrtreeSlice, f : Double) -> DbindexrtreeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbindexrtreeSlice::scale(self : DbindexrtreeSlice, f : Double) -> DbindexrtreeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_slice_add(a : DbindexrtreeSlice, b : DbindexrtreeSlice) -> DbindexrtreeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbindexrtreeSlice::add(self : DbindexrtreeSlice, other : DbindexrtreeSlice) -> DbindexrtreeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_index_rtree_slice_copy(s : DbindexrtreeSlice) -> DbindexrtreeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbindexrtreeSlice::copy(self : DbindexrtreeSlice) -> DbindexrtreeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_slice_fill(s : DbindexrtreeSlice, v : Double) -> DbindexrtreeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbindexrtreeSlice::fill(self : DbindexrtreeSlice, v : Double) -> DbindexrtreeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_index_rtree_slice_min(s : DbindexrtreeSlice) -> Double { @_common.min(s.data) }
+pub fn DbindexrtreeSlice::min(self : DbindexrtreeSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_index_rtree_slice_max(s : DbindexrtreeSlice) -> Double { @_common.max(s.data) }
+pub fn DbindexrtreeSlice::max(self : DbindexrtreeSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_index_rtree_slice_to_string(s : DbindexrtreeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbindexrtreeSlice::to_string(self : DbindexrtreeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

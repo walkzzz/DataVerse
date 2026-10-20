@@ -351,45 +351,45 @@ pub fn nlp_tokenize_word_frame_make(size : Int) -> NlptokenizewordFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_frame_len(s : NlptokenizewordFrame) -> Int { s.size }
+pub fn NlptokenizewordFrame::len(self : NlptokenizewordFrame) -> Int { self.size }
 
-pub fn nlp_tokenize_word_frame_get(s : NlptokenizewordFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordFrame::get(self : NlptokenizewordFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_frame_set(s : NlptokenizewordFrame, i : Int, v : Double) -> NlptokenizewordFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordFrame::set(self : NlptokenizewordFrame, i : Int, v : Double) -> NlptokenizewordFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_frame_sum(s : NlptokenizewordFrame) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordFrame::sum(self : NlptokenizewordFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_frame_mean(s : NlptokenizewordFrame) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordFrame::mean(self : NlptokenizewordFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_frame_scale(s : NlptokenizewordFrame, f : Double) -> NlptokenizewordFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordFrame::scale(self : NlptokenizewordFrame, f : Double) -> NlptokenizewordFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_frame_add(a : NlptokenizewordFrame, b : NlptokenizewordFrame) -> NlptokenizewordFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordFrame::add(self : NlptokenizewordFrame, other : NlptokenizewordFrame) -> NlptokenizewordFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_frame_copy(s : NlptokenizewordFrame) -> NlptokenizewordFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordFrame::copy(self : NlptokenizewordFrame) -> NlptokenizewordFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_frame_fill(s : NlptokenizewordFrame, v : Double) -> NlptokenizewordFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordFrame::fill(self : NlptokenizewordFrame, v : Double) -> NlptokenizewordFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_frame_min(s : NlptokenizewordFrame) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordFrame::min(self : NlptokenizewordFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_frame_max(s : NlptokenizewordFrame) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordFrame::max(self : NlptokenizewordFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_frame_to_string(s : NlptokenizewordFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordFrame::to_string(self : NlptokenizewordFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordTable {
@@ -402,45 +402,45 @@ pub fn nlp_tokenize_word_table_make(size : Int) -> NlptokenizewordTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_table_len(s : NlptokenizewordTable) -> Int { s.size }
+pub fn NlptokenizewordTable::len(self : NlptokenizewordTable) -> Int { self.size }
 
-pub fn nlp_tokenize_word_table_get(s : NlptokenizewordTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordTable::get(self : NlptokenizewordTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_table_set(s : NlptokenizewordTable, i : Int, v : Double) -> NlptokenizewordTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordTable::set(self : NlptokenizewordTable, i : Int, v : Double) -> NlptokenizewordTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_table_sum(s : NlptokenizewordTable) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordTable::sum(self : NlptokenizewordTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_table_mean(s : NlptokenizewordTable) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordTable::mean(self : NlptokenizewordTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_table_scale(s : NlptokenizewordTable, f : Double) -> NlptokenizewordTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordTable::scale(self : NlptokenizewordTable, f : Double) -> NlptokenizewordTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_table_add(a : NlptokenizewordTable, b : NlptokenizewordTable) -> NlptokenizewordTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordTable::add(self : NlptokenizewordTable, other : NlptokenizewordTable) -> NlptokenizewordTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_table_copy(s : NlptokenizewordTable) -> NlptokenizewordTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordTable::copy(self : NlptokenizewordTable) -> NlptokenizewordTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_table_fill(s : NlptokenizewordTable, v : Double) -> NlptokenizewordTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordTable::fill(self : NlptokenizewordTable, v : Double) -> NlptokenizewordTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_table_min(s : NlptokenizewordTable) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordTable::min(self : NlptokenizewordTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_table_max(s : NlptokenizewordTable) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordTable::max(self : NlptokenizewordTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_table_to_string(s : NlptokenizewordTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordTable::to_string(self : NlptokenizewordTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_tokenize_word_graphn_make(size : Int) -> NlptokenizewordGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_graphn_len(s : NlptokenizewordGraphN) -> Int { s.size }
+pub fn NlptokenizewordGraphN::len(self : NlptokenizewordGraphN) -> Int { self.size }
 
-pub fn nlp_tokenize_word_graphn_get(s : NlptokenizewordGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordGraphN::get(self : NlptokenizewordGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_graphn_set(s : NlptokenizewordGraphN, i : Int, v : Double) -> NlptokenizewordGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordGraphN::set(self : NlptokenizewordGraphN, i : Int, v : Double) -> NlptokenizewordGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_graphn_sum(s : NlptokenizewordGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordGraphN::sum(self : NlptokenizewordGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_graphn_mean(s : NlptokenizewordGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordGraphN::mean(self : NlptokenizewordGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_graphn_scale(s : NlptokenizewordGraphN, f : Double) -> NlptokenizewordGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordGraphN::scale(self : NlptokenizewordGraphN, f : Double) -> NlptokenizewordGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_graphn_add(a : NlptokenizewordGraphN, b : NlptokenizewordGraphN) -> NlptokenizewordGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordGraphN::add(self : NlptokenizewordGraphN, other : NlptokenizewordGraphN) -> NlptokenizewordGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_graphn_copy(s : NlptokenizewordGraphN) -> NlptokenizewordGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordGraphN::copy(self : NlptokenizewordGraphN) -> NlptokenizewordGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_graphn_fill(s : NlptokenizewordGraphN, v : Double) -> NlptokenizewordGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordGraphN::fill(self : NlptokenizewordGraphN, v : Double) -> NlptokenizewordGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_graphn_min(s : NlptokenizewordGraphN) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordGraphN::min(self : NlptokenizewordGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_graphn_max(s : NlptokenizewordGraphN) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordGraphN::max(self : NlptokenizewordGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_graphn_to_string(s : NlptokenizewordGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordGraphN::to_string(self : NlptokenizewordGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordNode {
@@ -504,45 +504,45 @@ pub fn nlp_tokenize_word_node_make(size : Int) -> NlptokenizewordNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_node_len(s : NlptokenizewordNode) -> Int { s.size }
+pub fn NlptokenizewordNode::len(self : NlptokenizewordNode) -> Int { self.size }
 
-pub fn nlp_tokenize_word_node_get(s : NlptokenizewordNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordNode::get(self : NlptokenizewordNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_node_set(s : NlptokenizewordNode, i : Int, v : Double) -> NlptokenizewordNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordNode::set(self : NlptokenizewordNode, i : Int, v : Double) -> NlptokenizewordNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_node_sum(s : NlptokenizewordNode) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordNode::sum(self : NlptokenizewordNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_node_mean(s : NlptokenizewordNode) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordNode::mean(self : NlptokenizewordNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_node_scale(s : NlptokenizewordNode, f : Double) -> NlptokenizewordNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordNode::scale(self : NlptokenizewordNode, f : Double) -> NlptokenizewordNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_node_add(a : NlptokenizewordNode, b : NlptokenizewordNode) -> NlptokenizewordNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordNode::add(self : NlptokenizewordNode, other : NlptokenizewordNode) -> NlptokenizewordNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_node_copy(s : NlptokenizewordNode) -> NlptokenizewordNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordNode::copy(self : NlptokenizewordNode) -> NlptokenizewordNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_node_fill(s : NlptokenizewordNode, v : Double) -> NlptokenizewordNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordNode::fill(self : NlptokenizewordNode, v : Double) -> NlptokenizewordNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_node_min(s : NlptokenizewordNode) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordNode::min(self : NlptokenizewordNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_node_max(s : NlptokenizewordNode) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordNode::max(self : NlptokenizewordNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_node_to_string(s : NlptokenizewordNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordNode::to_string(self : NlptokenizewordNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordEdge {
@@ -555,45 +555,45 @@ pub fn nlp_tokenize_word_edge_make(size : Int) -> NlptokenizewordEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_edge_len(s : NlptokenizewordEdge) -> Int { s.size }
+pub fn NlptokenizewordEdge::len(self : NlptokenizewordEdge) -> Int { self.size }
 
-pub fn nlp_tokenize_word_edge_get(s : NlptokenizewordEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordEdge::get(self : NlptokenizewordEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_edge_set(s : NlptokenizewordEdge, i : Int, v : Double) -> NlptokenizewordEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordEdge::set(self : NlptokenizewordEdge, i : Int, v : Double) -> NlptokenizewordEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_edge_sum(s : NlptokenizewordEdge) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordEdge::sum(self : NlptokenizewordEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_edge_mean(s : NlptokenizewordEdge) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordEdge::mean(self : NlptokenizewordEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_edge_scale(s : NlptokenizewordEdge, f : Double) -> NlptokenizewordEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordEdge::scale(self : NlptokenizewordEdge, f : Double) -> NlptokenizewordEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_edge_add(a : NlptokenizewordEdge, b : NlptokenizewordEdge) -> NlptokenizewordEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordEdge::add(self : NlptokenizewordEdge, other : NlptokenizewordEdge) -> NlptokenizewordEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_edge_copy(s : NlptokenizewordEdge) -> NlptokenizewordEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordEdge::copy(self : NlptokenizewordEdge) -> NlptokenizewordEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_edge_fill(s : NlptokenizewordEdge, v : Double) -> NlptokenizewordEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordEdge::fill(self : NlptokenizewordEdge, v : Double) -> NlptokenizewordEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_edge_min(s : NlptokenizewordEdge) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordEdge::min(self : NlptokenizewordEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_edge_max(s : NlptokenizewordEdge) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordEdge::max(self : NlptokenizewordEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_edge_to_string(s : NlptokenizewordEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordEdge::to_string(self : NlptokenizewordEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordPath {
@@ -606,45 +606,45 @@ pub fn nlp_tokenize_word_path_make(size : Int) -> NlptokenizewordPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_path_len(s : NlptokenizewordPath) -> Int { s.size }
+pub fn NlptokenizewordPath::len(self : NlptokenizewordPath) -> Int { self.size }
 
-pub fn nlp_tokenize_word_path_get(s : NlptokenizewordPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordPath::get(self : NlptokenizewordPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_path_set(s : NlptokenizewordPath, i : Int, v : Double) -> NlptokenizewordPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordPath::set(self : NlptokenizewordPath, i : Int, v : Double) -> NlptokenizewordPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_path_sum(s : NlptokenizewordPath) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordPath::sum(self : NlptokenizewordPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_path_mean(s : NlptokenizewordPath) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordPath::mean(self : NlptokenizewordPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_path_scale(s : NlptokenizewordPath, f : Double) -> NlptokenizewordPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordPath::scale(self : NlptokenizewordPath, f : Double) -> NlptokenizewordPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_path_add(a : NlptokenizewordPath, b : NlptokenizewordPath) -> NlptokenizewordPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordPath::add(self : NlptokenizewordPath, other : NlptokenizewordPath) -> NlptokenizewordPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_path_copy(s : NlptokenizewordPath) -> NlptokenizewordPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordPath::copy(self : NlptokenizewordPath) -> NlptokenizewordPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_path_fill(s : NlptokenizewordPath, v : Double) -> NlptokenizewordPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordPath::fill(self : NlptokenizewordPath, v : Double) -> NlptokenizewordPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_path_min(s : NlptokenizewordPath) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordPath::min(self : NlptokenizewordPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_path_max(s : NlptokenizewordPath) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordPath::max(self : NlptokenizewordPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_path_to_string(s : NlptokenizewordPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordPath::to_string(self : NlptokenizewordPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordCluster {
@@ -657,45 +657,45 @@ pub fn nlp_tokenize_word_cluster_make(size : Int) -> NlptokenizewordCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_cluster_len(s : NlptokenizewordCluster) -> Int { s.size }
+pub fn NlptokenizewordCluster::len(self : NlptokenizewordCluster) -> Int { self.size }
 
-pub fn nlp_tokenize_word_cluster_get(s : NlptokenizewordCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordCluster::get(self : NlptokenizewordCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_cluster_set(s : NlptokenizewordCluster, i : Int, v : Double) -> NlptokenizewordCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordCluster::set(self : NlptokenizewordCluster, i : Int, v : Double) -> NlptokenizewordCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cluster_sum(s : NlptokenizewordCluster) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordCluster::sum(self : NlptokenizewordCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_cluster_mean(s : NlptokenizewordCluster) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordCluster::mean(self : NlptokenizewordCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_cluster_scale(s : NlptokenizewordCluster, f : Double) -> NlptokenizewordCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordCluster::scale(self : NlptokenizewordCluster, f : Double) -> NlptokenizewordCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cluster_add(a : NlptokenizewordCluster, b : NlptokenizewordCluster) -> NlptokenizewordCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordCluster::add(self : NlptokenizewordCluster, other : NlptokenizewordCluster) -> NlptokenizewordCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cluster_copy(s : NlptokenizewordCluster) -> NlptokenizewordCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordCluster::copy(self : NlptokenizewordCluster) -> NlptokenizewordCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cluster_fill(s : NlptokenizewordCluster, v : Double) -> NlptokenizewordCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordCluster::fill(self : NlptokenizewordCluster, v : Double) -> NlptokenizewordCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cluster_min(s : NlptokenizewordCluster) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordCluster::min(self : NlptokenizewordCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_cluster_max(s : NlptokenizewordCluster) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordCluster::max(self : NlptokenizewordCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_cluster_to_string(s : NlptokenizewordCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordCluster::to_string(self : NlptokenizewordCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordModel {
@@ -708,45 +708,45 @@ pub fn nlp_tokenize_word_model_make(size : Int) -> NlptokenizewordModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_model_len(s : NlptokenizewordModel) -> Int { s.size }
+pub fn NlptokenizewordModel::len(self : NlptokenizewordModel) -> Int { self.size }
 
-pub fn nlp_tokenize_word_model_get(s : NlptokenizewordModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordModel::get(self : NlptokenizewordModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_model_set(s : NlptokenizewordModel, i : Int, v : Double) -> NlptokenizewordModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordModel::set(self : NlptokenizewordModel, i : Int, v : Double) -> NlptokenizewordModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_model_sum(s : NlptokenizewordModel) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordModel::sum(self : NlptokenizewordModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_model_mean(s : NlptokenizewordModel) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordModel::mean(self : NlptokenizewordModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_model_scale(s : NlptokenizewordModel, f : Double) -> NlptokenizewordModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordModel::scale(self : NlptokenizewordModel, f : Double) -> NlptokenizewordModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_model_add(a : NlptokenizewordModel, b : NlptokenizewordModel) -> NlptokenizewordModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordModel::add(self : NlptokenizewordModel, other : NlptokenizewordModel) -> NlptokenizewordModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_model_copy(s : NlptokenizewordModel) -> NlptokenizewordModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordModel::copy(self : NlptokenizewordModel) -> NlptokenizewordModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_model_fill(s : NlptokenizewordModel, v : Double) -> NlptokenizewordModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordModel::fill(self : NlptokenizewordModel, v : Double) -> NlptokenizewordModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_model_min(s : NlptokenizewordModel) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordModel::min(self : NlptokenizewordModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_model_max(s : NlptokenizewordModel) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordModel::max(self : NlptokenizewordModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_model_to_string(s : NlptokenizewordModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordModel::to_string(self : NlptokenizewordModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordLayer {
@@ -759,45 +759,45 @@ pub fn nlp_tokenize_word_layer_make(size : Int) -> NlptokenizewordLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_layer_len(s : NlptokenizewordLayer) -> Int { s.size }
+pub fn NlptokenizewordLayer::len(self : NlptokenizewordLayer) -> Int { self.size }
 
-pub fn nlp_tokenize_word_layer_get(s : NlptokenizewordLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordLayer::get(self : NlptokenizewordLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_layer_set(s : NlptokenizewordLayer, i : Int, v : Double) -> NlptokenizewordLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordLayer::set(self : NlptokenizewordLayer, i : Int, v : Double) -> NlptokenizewordLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_layer_sum(s : NlptokenizewordLayer) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordLayer::sum(self : NlptokenizewordLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_layer_mean(s : NlptokenizewordLayer) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordLayer::mean(self : NlptokenizewordLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_layer_scale(s : NlptokenizewordLayer, f : Double) -> NlptokenizewordLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordLayer::scale(self : NlptokenizewordLayer, f : Double) -> NlptokenizewordLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_layer_add(a : NlptokenizewordLayer, b : NlptokenizewordLayer) -> NlptokenizewordLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordLayer::add(self : NlptokenizewordLayer, other : NlptokenizewordLayer) -> NlptokenizewordLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_layer_copy(s : NlptokenizewordLayer) -> NlptokenizewordLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordLayer::copy(self : NlptokenizewordLayer) -> NlptokenizewordLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_layer_fill(s : NlptokenizewordLayer, v : Double) -> NlptokenizewordLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordLayer::fill(self : NlptokenizewordLayer, v : Double) -> NlptokenizewordLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_layer_min(s : NlptokenizewordLayer) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordLayer::min(self : NlptokenizewordLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_layer_max(s : NlptokenizewordLayer) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordLayer::max(self : NlptokenizewordLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_layer_to_string(s : NlptokenizewordLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordLayer::to_string(self : NlptokenizewordLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_tokenize_word_buffer_make(size : Int) -> NlptokenizewordBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_buffer_len(s : NlptokenizewordBuffer) -> Int { s.size }
+pub fn NlptokenizewordBuffer::len(self : NlptokenizewordBuffer) -> Int { self.size }
 
-pub fn nlp_tokenize_word_buffer_get(s : NlptokenizewordBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordBuffer::get(self : NlptokenizewordBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_buffer_set(s : NlptokenizewordBuffer, i : Int, v : Double) -> NlptokenizewordBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordBuffer::set(self : NlptokenizewordBuffer, i : Int, v : Double) -> NlptokenizewordBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_buffer_sum(s : NlptokenizewordBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordBuffer::sum(self : NlptokenizewordBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_buffer_mean(s : NlptokenizewordBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordBuffer::mean(self : NlptokenizewordBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_buffer_scale(s : NlptokenizewordBuffer, f : Double) -> NlptokenizewordBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordBuffer::scale(self : NlptokenizewordBuffer, f : Double) -> NlptokenizewordBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_buffer_add(a : NlptokenizewordBuffer, b : NlptokenizewordBuffer) -> NlptokenizewordBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordBuffer::add(self : NlptokenizewordBuffer, other : NlptokenizewordBuffer) -> NlptokenizewordBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_buffer_copy(s : NlptokenizewordBuffer) -> NlptokenizewordBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordBuffer::copy(self : NlptokenizewordBuffer) -> NlptokenizewordBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_buffer_fill(s : NlptokenizewordBuffer, v : Double) -> NlptokenizewordBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordBuffer::fill(self : NlptokenizewordBuffer, v : Double) -> NlptokenizewordBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_buffer_min(s : NlptokenizewordBuffer) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordBuffer::min(self : NlptokenizewordBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_buffer_max(s : NlptokenizewordBuffer) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordBuffer::max(self : NlptokenizewordBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_buffer_to_string(s : NlptokenizewordBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordBuffer::to_string(self : NlptokenizewordBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordCursor {
@@ -861,45 +861,45 @@ pub fn nlp_tokenize_word_cursor_make(size : Int) -> NlptokenizewordCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_cursor_len(s : NlptokenizewordCursor) -> Int { s.size }
+pub fn NlptokenizewordCursor::len(self : NlptokenizewordCursor) -> Int { self.size }
 
-pub fn nlp_tokenize_word_cursor_get(s : NlptokenizewordCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordCursor::get(self : NlptokenizewordCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_cursor_set(s : NlptokenizewordCursor, i : Int, v : Double) -> NlptokenizewordCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordCursor::set(self : NlptokenizewordCursor, i : Int, v : Double) -> NlptokenizewordCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cursor_sum(s : NlptokenizewordCursor) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordCursor::sum(self : NlptokenizewordCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_cursor_mean(s : NlptokenizewordCursor) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordCursor::mean(self : NlptokenizewordCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_cursor_scale(s : NlptokenizewordCursor, f : Double) -> NlptokenizewordCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordCursor::scale(self : NlptokenizewordCursor, f : Double) -> NlptokenizewordCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cursor_add(a : NlptokenizewordCursor, b : NlptokenizewordCursor) -> NlptokenizewordCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordCursor::add(self : NlptokenizewordCursor, other : NlptokenizewordCursor) -> NlptokenizewordCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cursor_copy(s : NlptokenizewordCursor) -> NlptokenizewordCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordCursor::copy(self : NlptokenizewordCursor) -> NlptokenizewordCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cursor_fill(s : NlptokenizewordCursor, v : Double) -> NlptokenizewordCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordCursor::fill(self : NlptokenizewordCursor, v : Double) -> NlptokenizewordCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_cursor_min(s : NlptokenizewordCursor) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordCursor::min(self : NlptokenizewordCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_cursor_max(s : NlptokenizewordCursor) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordCursor::max(self : NlptokenizewordCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_cursor_to_string(s : NlptokenizewordCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordCursor::to_string(self : NlptokenizewordCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordView {
@@ -912,45 +912,45 @@ pub fn nlp_tokenize_word_view_make(size : Int) -> NlptokenizewordView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_view_len(s : NlptokenizewordView) -> Int { s.size }
+pub fn NlptokenizewordView::len(self : NlptokenizewordView) -> Int { self.size }
 
-pub fn nlp_tokenize_word_view_get(s : NlptokenizewordView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordView::get(self : NlptokenizewordView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_view_set(s : NlptokenizewordView, i : Int, v : Double) -> NlptokenizewordView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordView::set(self : NlptokenizewordView, i : Int, v : Double) -> NlptokenizewordView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_view_sum(s : NlptokenizewordView) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordView::sum(self : NlptokenizewordView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_view_mean(s : NlptokenizewordView) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordView::mean(self : NlptokenizewordView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_view_scale(s : NlptokenizewordView, f : Double) -> NlptokenizewordView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordView::scale(self : NlptokenizewordView, f : Double) -> NlptokenizewordView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_view_add(a : NlptokenizewordView, b : NlptokenizewordView) -> NlptokenizewordView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordView::add(self : NlptokenizewordView, other : NlptokenizewordView) -> NlptokenizewordView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_view_copy(s : NlptokenizewordView) -> NlptokenizewordView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordView::copy(self : NlptokenizewordView) -> NlptokenizewordView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_view_fill(s : NlptokenizewordView, v : Double) -> NlptokenizewordView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordView::fill(self : NlptokenizewordView, v : Double) -> NlptokenizewordView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_view_min(s : NlptokenizewordView) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordView::min(self : NlptokenizewordView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_view_max(s : NlptokenizewordView) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordView::max(self : NlptokenizewordView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_view_to_string(s : NlptokenizewordView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordView::to_string(self : NlptokenizewordView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordRange {
@@ -963,45 +963,45 @@ pub fn nlp_tokenize_word_range_make(size : Int) -> NlptokenizewordRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_range_len(s : NlptokenizewordRange) -> Int { s.size }
+pub fn NlptokenizewordRange::len(self : NlptokenizewordRange) -> Int { self.size }
 
-pub fn nlp_tokenize_word_range_get(s : NlptokenizewordRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordRange::get(self : NlptokenizewordRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_range_set(s : NlptokenizewordRange, i : Int, v : Double) -> NlptokenizewordRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordRange::set(self : NlptokenizewordRange, i : Int, v : Double) -> NlptokenizewordRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_range_sum(s : NlptokenizewordRange) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordRange::sum(self : NlptokenizewordRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_range_mean(s : NlptokenizewordRange) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordRange::mean(self : NlptokenizewordRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_range_scale(s : NlptokenizewordRange, f : Double) -> NlptokenizewordRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordRange::scale(self : NlptokenizewordRange, f : Double) -> NlptokenizewordRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_range_add(a : NlptokenizewordRange, b : NlptokenizewordRange) -> NlptokenizewordRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordRange::add(self : NlptokenizewordRange, other : NlptokenizewordRange) -> NlptokenizewordRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_range_copy(s : NlptokenizewordRange) -> NlptokenizewordRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordRange::copy(self : NlptokenizewordRange) -> NlptokenizewordRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_range_fill(s : NlptokenizewordRange, v : Double) -> NlptokenizewordRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordRange::fill(self : NlptokenizewordRange, v : Double) -> NlptokenizewordRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_range_min(s : NlptokenizewordRange) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordRange::min(self : NlptokenizewordRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_range_max(s : NlptokenizewordRange) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordRange::max(self : NlptokenizewordRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_range_to_string(s : NlptokenizewordRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordRange::to_string(self : NlptokenizewordRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlptokenizewordSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_tokenize_word_slice_make(size : Int) -> NlptokenizewordSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_tokenize_word_slice_len(s : NlptokenizewordSlice) -> Int { s.size }
+pub fn NlptokenizewordSlice::len(self : NlptokenizewordSlice) -> Int { self.size }
 
-pub fn nlp_tokenize_word_slice_get(s : NlptokenizewordSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlptokenizewordSlice::get(self : NlptokenizewordSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_tokenize_word_slice_set(s : NlptokenizewordSlice, i : Int, v : Double) -> NlptokenizewordSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlptokenizewordSlice::set(self : NlptokenizewordSlice, i : Int, v : Double) -> NlptokenizewordSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_slice_sum(s : NlptokenizewordSlice) -> Double { @_common.sum(s.data) }
+pub fn NlptokenizewordSlice::sum(self : NlptokenizewordSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_tokenize_word_slice_mean(s : NlptokenizewordSlice) -> Double { @_common.mean(s.data) }
+pub fn NlptokenizewordSlice::mean(self : NlptokenizewordSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_tokenize_word_slice_scale(s : NlptokenizewordSlice, f : Double) -> NlptokenizewordSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlptokenizewordSlice::scale(self : NlptokenizewordSlice, f : Double) -> NlptokenizewordSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_slice_add(a : NlptokenizewordSlice, b : NlptokenizewordSlice) -> NlptokenizewordSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlptokenizewordSlice::add(self : NlptokenizewordSlice, other : NlptokenizewordSlice) -> NlptokenizewordSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_slice_copy(s : NlptokenizewordSlice) -> NlptokenizewordSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlptokenizewordSlice::copy(self : NlptokenizewordSlice) -> NlptokenizewordSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_slice_fill(s : NlptokenizewordSlice, v : Double) -> NlptokenizewordSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlptokenizewordSlice::fill(self : NlptokenizewordSlice, v : Double) -> NlptokenizewordSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_tokenize_word_slice_min(s : NlptokenizewordSlice) -> Double { @_common.min(s.data) }
+pub fn NlptokenizewordSlice::min(self : NlptokenizewordSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_tokenize_word_slice_max(s : NlptokenizewordSlice) -> Double { @_common.max(s.data) }
+pub fn NlptokenizewordSlice::max(self : NlptokenizewordSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_tokenize_word_slice_to_string(s : NlptokenizewordSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlptokenizewordSlice::to_string(self : NlptokenizewordSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

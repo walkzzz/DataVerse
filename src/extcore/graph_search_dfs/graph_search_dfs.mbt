@@ -351,45 +351,45 @@ pub fn graph_search_dfs_frame_make(size : Int) -> GraphsearchdfsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_frame_len(s : GraphsearchdfsFrame) -> Int { s.size }
+pub fn GraphsearchdfsFrame::len(self : GraphsearchdfsFrame) -> Int { self.size }
 
-pub fn graph_search_dfs_frame_get(s : GraphsearchdfsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsFrame::get(self : GraphsearchdfsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_frame_set(s : GraphsearchdfsFrame, i : Int, v : Double) -> GraphsearchdfsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsFrame::set(self : GraphsearchdfsFrame, i : Int, v : Double) -> GraphsearchdfsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_frame_sum(s : GraphsearchdfsFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsFrame::sum(self : GraphsearchdfsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_frame_mean(s : GraphsearchdfsFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsFrame::mean(self : GraphsearchdfsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_frame_scale(s : GraphsearchdfsFrame, f : Double) -> GraphsearchdfsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsFrame::scale(self : GraphsearchdfsFrame, f : Double) -> GraphsearchdfsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_frame_add(a : GraphsearchdfsFrame, b : GraphsearchdfsFrame) -> GraphsearchdfsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsFrame::add(self : GraphsearchdfsFrame, other : GraphsearchdfsFrame) -> GraphsearchdfsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_frame_copy(s : GraphsearchdfsFrame) -> GraphsearchdfsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsFrame::copy(self : GraphsearchdfsFrame) -> GraphsearchdfsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_frame_fill(s : GraphsearchdfsFrame, v : Double) -> GraphsearchdfsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsFrame::fill(self : GraphsearchdfsFrame, v : Double) -> GraphsearchdfsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_frame_min(s : GraphsearchdfsFrame) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsFrame::min(self : GraphsearchdfsFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_frame_max(s : GraphsearchdfsFrame) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsFrame::max(self : GraphsearchdfsFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_frame_to_string(s : GraphsearchdfsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsFrame::to_string(self : GraphsearchdfsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsTable {
@@ -402,45 +402,45 @@ pub fn graph_search_dfs_table_make(size : Int) -> GraphsearchdfsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_table_len(s : GraphsearchdfsTable) -> Int { s.size }
+pub fn GraphsearchdfsTable::len(self : GraphsearchdfsTable) -> Int { self.size }
 
-pub fn graph_search_dfs_table_get(s : GraphsearchdfsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsTable::get(self : GraphsearchdfsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_table_set(s : GraphsearchdfsTable, i : Int, v : Double) -> GraphsearchdfsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsTable::set(self : GraphsearchdfsTable, i : Int, v : Double) -> GraphsearchdfsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_table_sum(s : GraphsearchdfsTable) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsTable::sum(self : GraphsearchdfsTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_table_mean(s : GraphsearchdfsTable) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsTable::mean(self : GraphsearchdfsTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_table_scale(s : GraphsearchdfsTable, f : Double) -> GraphsearchdfsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsTable::scale(self : GraphsearchdfsTable, f : Double) -> GraphsearchdfsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_table_add(a : GraphsearchdfsTable, b : GraphsearchdfsTable) -> GraphsearchdfsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsTable::add(self : GraphsearchdfsTable, other : GraphsearchdfsTable) -> GraphsearchdfsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_table_copy(s : GraphsearchdfsTable) -> GraphsearchdfsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsTable::copy(self : GraphsearchdfsTable) -> GraphsearchdfsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_table_fill(s : GraphsearchdfsTable, v : Double) -> GraphsearchdfsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsTable::fill(self : GraphsearchdfsTable, v : Double) -> GraphsearchdfsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_table_min(s : GraphsearchdfsTable) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsTable::min(self : GraphsearchdfsTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_table_max(s : GraphsearchdfsTable) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsTable::max(self : GraphsearchdfsTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_table_to_string(s : GraphsearchdfsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsTable::to_string(self : GraphsearchdfsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsGraphN {
@@ -453,45 +453,45 @@ pub fn graph_search_dfs_graphn_make(size : Int) -> GraphsearchdfsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_graphn_len(s : GraphsearchdfsGraphN) -> Int { s.size }
+pub fn GraphsearchdfsGraphN::len(self : GraphsearchdfsGraphN) -> Int { self.size }
 
-pub fn graph_search_dfs_graphn_get(s : GraphsearchdfsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsGraphN::get(self : GraphsearchdfsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_graphn_set(s : GraphsearchdfsGraphN, i : Int, v : Double) -> GraphsearchdfsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsGraphN::set(self : GraphsearchdfsGraphN, i : Int, v : Double) -> GraphsearchdfsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_graphn_sum(s : GraphsearchdfsGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsGraphN::sum(self : GraphsearchdfsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_graphn_mean(s : GraphsearchdfsGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsGraphN::mean(self : GraphsearchdfsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_graphn_scale(s : GraphsearchdfsGraphN, f : Double) -> GraphsearchdfsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsGraphN::scale(self : GraphsearchdfsGraphN, f : Double) -> GraphsearchdfsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_graphn_add(a : GraphsearchdfsGraphN, b : GraphsearchdfsGraphN) -> GraphsearchdfsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsGraphN::add(self : GraphsearchdfsGraphN, other : GraphsearchdfsGraphN) -> GraphsearchdfsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_graphn_copy(s : GraphsearchdfsGraphN) -> GraphsearchdfsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsGraphN::copy(self : GraphsearchdfsGraphN) -> GraphsearchdfsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_graphn_fill(s : GraphsearchdfsGraphN, v : Double) -> GraphsearchdfsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsGraphN::fill(self : GraphsearchdfsGraphN, v : Double) -> GraphsearchdfsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_graphn_min(s : GraphsearchdfsGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsGraphN::min(self : GraphsearchdfsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_graphn_max(s : GraphsearchdfsGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsGraphN::max(self : GraphsearchdfsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_graphn_to_string(s : GraphsearchdfsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsGraphN::to_string(self : GraphsearchdfsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsNode {
@@ -504,45 +504,45 @@ pub fn graph_search_dfs_node_make(size : Int) -> GraphsearchdfsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_node_len(s : GraphsearchdfsNode) -> Int { s.size }
+pub fn GraphsearchdfsNode::len(self : GraphsearchdfsNode) -> Int { self.size }
 
-pub fn graph_search_dfs_node_get(s : GraphsearchdfsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsNode::get(self : GraphsearchdfsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_node_set(s : GraphsearchdfsNode, i : Int, v : Double) -> GraphsearchdfsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsNode::set(self : GraphsearchdfsNode, i : Int, v : Double) -> GraphsearchdfsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_node_sum(s : GraphsearchdfsNode) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsNode::sum(self : GraphsearchdfsNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_node_mean(s : GraphsearchdfsNode) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsNode::mean(self : GraphsearchdfsNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_node_scale(s : GraphsearchdfsNode, f : Double) -> GraphsearchdfsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsNode::scale(self : GraphsearchdfsNode, f : Double) -> GraphsearchdfsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_node_add(a : GraphsearchdfsNode, b : GraphsearchdfsNode) -> GraphsearchdfsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsNode::add(self : GraphsearchdfsNode, other : GraphsearchdfsNode) -> GraphsearchdfsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_node_copy(s : GraphsearchdfsNode) -> GraphsearchdfsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsNode::copy(self : GraphsearchdfsNode) -> GraphsearchdfsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_node_fill(s : GraphsearchdfsNode, v : Double) -> GraphsearchdfsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsNode::fill(self : GraphsearchdfsNode, v : Double) -> GraphsearchdfsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_node_min(s : GraphsearchdfsNode) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsNode::min(self : GraphsearchdfsNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_node_max(s : GraphsearchdfsNode) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsNode::max(self : GraphsearchdfsNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_node_to_string(s : GraphsearchdfsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsNode::to_string(self : GraphsearchdfsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsEdge {
@@ -555,45 +555,45 @@ pub fn graph_search_dfs_edge_make(size : Int) -> GraphsearchdfsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_edge_len(s : GraphsearchdfsEdge) -> Int { s.size }
+pub fn GraphsearchdfsEdge::len(self : GraphsearchdfsEdge) -> Int { self.size }
 
-pub fn graph_search_dfs_edge_get(s : GraphsearchdfsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsEdge::get(self : GraphsearchdfsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_edge_set(s : GraphsearchdfsEdge, i : Int, v : Double) -> GraphsearchdfsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsEdge::set(self : GraphsearchdfsEdge, i : Int, v : Double) -> GraphsearchdfsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_edge_sum(s : GraphsearchdfsEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsEdge::sum(self : GraphsearchdfsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_edge_mean(s : GraphsearchdfsEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsEdge::mean(self : GraphsearchdfsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_edge_scale(s : GraphsearchdfsEdge, f : Double) -> GraphsearchdfsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsEdge::scale(self : GraphsearchdfsEdge, f : Double) -> GraphsearchdfsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_edge_add(a : GraphsearchdfsEdge, b : GraphsearchdfsEdge) -> GraphsearchdfsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsEdge::add(self : GraphsearchdfsEdge, other : GraphsearchdfsEdge) -> GraphsearchdfsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_edge_copy(s : GraphsearchdfsEdge) -> GraphsearchdfsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsEdge::copy(self : GraphsearchdfsEdge) -> GraphsearchdfsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_edge_fill(s : GraphsearchdfsEdge, v : Double) -> GraphsearchdfsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsEdge::fill(self : GraphsearchdfsEdge, v : Double) -> GraphsearchdfsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_edge_min(s : GraphsearchdfsEdge) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsEdge::min(self : GraphsearchdfsEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_edge_max(s : GraphsearchdfsEdge) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsEdge::max(self : GraphsearchdfsEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_edge_to_string(s : GraphsearchdfsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsEdge::to_string(self : GraphsearchdfsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsPath {
@@ -606,45 +606,45 @@ pub fn graph_search_dfs_path_make(size : Int) -> GraphsearchdfsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_path_len(s : GraphsearchdfsPath) -> Int { s.size }
+pub fn GraphsearchdfsPath::len(self : GraphsearchdfsPath) -> Int { self.size }
 
-pub fn graph_search_dfs_path_get(s : GraphsearchdfsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsPath::get(self : GraphsearchdfsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_path_set(s : GraphsearchdfsPath, i : Int, v : Double) -> GraphsearchdfsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsPath::set(self : GraphsearchdfsPath, i : Int, v : Double) -> GraphsearchdfsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_path_sum(s : GraphsearchdfsPath) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsPath::sum(self : GraphsearchdfsPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_path_mean(s : GraphsearchdfsPath) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsPath::mean(self : GraphsearchdfsPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_path_scale(s : GraphsearchdfsPath, f : Double) -> GraphsearchdfsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsPath::scale(self : GraphsearchdfsPath, f : Double) -> GraphsearchdfsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_path_add(a : GraphsearchdfsPath, b : GraphsearchdfsPath) -> GraphsearchdfsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsPath::add(self : GraphsearchdfsPath, other : GraphsearchdfsPath) -> GraphsearchdfsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_path_copy(s : GraphsearchdfsPath) -> GraphsearchdfsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsPath::copy(self : GraphsearchdfsPath) -> GraphsearchdfsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_path_fill(s : GraphsearchdfsPath, v : Double) -> GraphsearchdfsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsPath::fill(self : GraphsearchdfsPath, v : Double) -> GraphsearchdfsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_path_min(s : GraphsearchdfsPath) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsPath::min(self : GraphsearchdfsPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_path_max(s : GraphsearchdfsPath) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsPath::max(self : GraphsearchdfsPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_path_to_string(s : GraphsearchdfsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsPath::to_string(self : GraphsearchdfsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsCluster {
@@ -657,45 +657,45 @@ pub fn graph_search_dfs_cluster_make(size : Int) -> GraphsearchdfsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_cluster_len(s : GraphsearchdfsCluster) -> Int { s.size }
+pub fn GraphsearchdfsCluster::len(self : GraphsearchdfsCluster) -> Int { self.size }
 
-pub fn graph_search_dfs_cluster_get(s : GraphsearchdfsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsCluster::get(self : GraphsearchdfsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_cluster_set(s : GraphsearchdfsCluster, i : Int, v : Double) -> GraphsearchdfsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCluster::set(self : GraphsearchdfsCluster, i : Int, v : Double) -> GraphsearchdfsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cluster_sum(s : GraphsearchdfsCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsCluster::sum(self : GraphsearchdfsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_cluster_mean(s : GraphsearchdfsCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsCluster::mean(self : GraphsearchdfsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_cluster_scale(s : GraphsearchdfsCluster, f : Double) -> GraphsearchdfsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCluster::scale(self : GraphsearchdfsCluster, f : Double) -> GraphsearchdfsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cluster_add(a : GraphsearchdfsCluster, b : GraphsearchdfsCluster) -> GraphsearchdfsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsCluster::add(self : GraphsearchdfsCluster, other : GraphsearchdfsCluster) -> GraphsearchdfsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cluster_copy(s : GraphsearchdfsCluster) -> GraphsearchdfsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCluster::copy(self : GraphsearchdfsCluster) -> GraphsearchdfsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cluster_fill(s : GraphsearchdfsCluster, v : Double) -> GraphsearchdfsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCluster::fill(self : GraphsearchdfsCluster, v : Double) -> GraphsearchdfsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cluster_min(s : GraphsearchdfsCluster) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsCluster::min(self : GraphsearchdfsCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_cluster_max(s : GraphsearchdfsCluster) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsCluster::max(self : GraphsearchdfsCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_cluster_to_string(s : GraphsearchdfsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsCluster::to_string(self : GraphsearchdfsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsModel {
@@ -708,45 +708,45 @@ pub fn graph_search_dfs_model_make(size : Int) -> GraphsearchdfsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_model_len(s : GraphsearchdfsModel) -> Int { s.size }
+pub fn GraphsearchdfsModel::len(self : GraphsearchdfsModel) -> Int { self.size }
 
-pub fn graph_search_dfs_model_get(s : GraphsearchdfsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsModel::get(self : GraphsearchdfsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_model_set(s : GraphsearchdfsModel, i : Int, v : Double) -> GraphsearchdfsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsModel::set(self : GraphsearchdfsModel, i : Int, v : Double) -> GraphsearchdfsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_model_sum(s : GraphsearchdfsModel) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsModel::sum(self : GraphsearchdfsModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_model_mean(s : GraphsearchdfsModel) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsModel::mean(self : GraphsearchdfsModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_model_scale(s : GraphsearchdfsModel, f : Double) -> GraphsearchdfsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsModel::scale(self : GraphsearchdfsModel, f : Double) -> GraphsearchdfsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_model_add(a : GraphsearchdfsModel, b : GraphsearchdfsModel) -> GraphsearchdfsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsModel::add(self : GraphsearchdfsModel, other : GraphsearchdfsModel) -> GraphsearchdfsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_model_copy(s : GraphsearchdfsModel) -> GraphsearchdfsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsModel::copy(self : GraphsearchdfsModel) -> GraphsearchdfsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_model_fill(s : GraphsearchdfsModel, v : Double) -> GraphsearchdfsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsModel::fill(self : GraphsearchdfsModel, v : Double) -> GraphsearchdfsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_model_min(s : GraphsearchdfsModel) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsModel::min(self : GraphsearchdfsModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_model_max(s : GraphsearchdfsModel) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsModel::max(self : GraphsearchdfsModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_model_to_string(s : GraphsearchdfsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsModel::to_string(self : GraphsearchdfsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsLayer {
@@ -759,45 +759,45 @@ pub fn graph_search_dfs_layer_make(size : Int) -> GraphsearchdfsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_layer_len(s : GraphsearchdfsLayer) -> Int { s.size }
+pub fn GraphsearchdfsLayer::len(self : GraphsearchdfsLayer) -> Int { self.size }
 
-pub fn graph_search_dfs_layer_get(s : GraphsearchdfsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsLayer::get(self : GraphsearchdfsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_layer_set(s : GraphsearchdfsLayer, i : Int, v : Double) -> GraphsearchdfsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsLayer::set(self : GraphsearchdfsLayer, i : Int, v : Double) -> GraphsearchdfsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_layer_sum(s : GraphsearchdfsLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsLayer::sum(self : GraphsearchdfsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_layer_mean(s : GraphsearchdfsLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsLayer::mean(self : GraphsearchdfsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_layer_scale(s : GraphsearchdfsLayer, f : Double) -> GraphsearchdfsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsLayer::scale(self : GraphsearchdfsLayer, f : Double) -> GraphsearchdfsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_layer_add(a : GraphsearchdfsLayer, b : GraphsearchdfsLayer) -> GraphsearchdfsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsLayer::add(self : GraphsearchdfsLayer, other : GraphsearchdfsLayer) -> GraphsearchdfsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_layer_copy(s : GraphsearchdfsLayer) -> GraphsearchdfsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsLayer::copy(self : GraphsearchdfsLayer) -> GraphsearchdfsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_layer_fill(s : GraphsearchdfsLayer, v : Double) -> GraphsearchdfsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsLayer::fill(self : GraphsearchdfsLayer, v : Double) -> GraphsearchdfsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_layer_min(s : GraphsearchdfsLayer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsLayer::min(self : GraphsearchdfsLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_layer_max(s : GraphsearchdfsLayer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsLayer::max(self : GraphsearchdfsLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_layer_to_string(s : GraphsearchdfsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsLayer::to_string(self : GraphsearchdfsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsBuffer {
@@ -810,45 +810,45 @@ pub fn graph_search_dfs_buffer_make(size : Int) -> GraphsearchdfsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_buffer_len(s : GraphsearchdfsBuffer) -> Int { s.size }
+pub fn GraphsearchdfsBuffer::len(self : GraphsearchdfsBuffer) -> Int { self.size }
 
-pub fn graph_search_dfs_buffer_get(s : GraphsearchdfsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsBuffer::get(self : GraphsearchdfsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_buffer_set(s : GraphsearchdfsBuffer, i : Int, v : Double) -> GraphsearchdfsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsBuffer::set(self : GraphsearchdfsBuffer, i : Int, v : Double) -> GraphsearchdfsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_buffer_sum(s : GraphsearchdfsBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsBuffer::sum(self : GraphsearchdfsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_buffer_mean(s : GraphsearchdfsBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsBuffer::mean(self : GraphsearchdfsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_buffer_scale(s : GraphsearchdfsBuffer, f : Double) -> GraphsearchdfsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsBuffer::scale(self : GraphsearchdfsBuffer, f : Double) -> GraphsearchdfsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_buffer_add(a : GraphsearchdfsBuffer, b : GraphsearchdfsBuffer) -> GraphsearchdfsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsBuffer::add(self : GraphsearchdfsBuffer, other : GraphsearchdfsBuffer) -> GraphsearchdfsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_buffer_copy(s : GraphsearchdfsBuffer) -> GraphsearchdfsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsBuffer::copy(self : GraphsearchdfsBuffer) -> GraphsearchdfsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_buffer_fill(s : GraphsearchdfsBuffer, v : Double) -> GraphsearchdfsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsBuffer::fill(self : GraphsearchdfsBuffer, v : Double) -> GraphsearchdfsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_buffer_min(s : GraphsearchdfsBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsBuffer::min(self : GraphsearchdfsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_buffer_max(s : GraphsearchdfsBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsBuffer::max(self : GraphsearchdfsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_buffer_to_string(s : GraphsearchdfsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsBuffer::to_string(self : GraphsearchdfsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsCursor {
@@ -861,45 +861,45 @@ pub fn graph_search_dfs_cursor_make(size : Int) -> GraphsearchdfsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_cursor_len(s : GraphsearchdfsCursor) -> Int { s.size }
+pub fn GraphsearchdfsCursor::len(self : GraphsearchdfsCursor) -> Int { self.size }
 
-pub fn graph_search_dfs_cursor_get(s : GraphsearchdfsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsCursor::get(self : GraphsearchdfsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_cursor_set(s : GraphsearchdfsCursor, i : Int, v : Double) -> GraphsearchdfsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCursor::set(self : GraphsearchdfsCursor, i : Int, v : Double) -> GraphsearchdfsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cursor_sum(s : GraphsearchdfsCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsCursor::sum(self : GraphsearchdfsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_cursor_mean(s : GraphsearchdfsCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsCursor::mean(self : GraphsearchdfsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_cursor_scale(s : GraphsearchdfsCursor, f : Double) -> GraphsearchdfsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCursor::scale(self : GraphsearchdfsCursor, f : Double) -> GraphsearchdfsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cursor_add(a : GraphsearchdfsCursor, b : GraphsearchdfsCursor) -> GraphsearchdfsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsCursor::add(self : GraphsearchdfsCursor, other : GraphsearchdfsCursor) -> GraphsearchdfsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cursor_copy(s : GraphsearchdfsCursor) -> GraphsearchdfsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCursor::copy(self : GraphsearchdfsCursor) -> GraphsearchdfsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cursor_fill(s : GraphsearchdfsCursor, v : Double) -> GraphsearchdfsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsCursor::fill(self : GraphsearchdfsCursor, v : Double) -> GraphsearchdfsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_cursor_min(s : GraphsearchdfsCursor) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsCursor::min(self : GraphsearchdfsCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_cursor_max(s : GraphsearchdfsCursor) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsCursor::max(self : GraphsearchdfsCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_cursor_to_string(s : GraphsearchdfsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsCursor::to_string(self : GraphsearchdfsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsView {
@@ -912,45 +912,45 @@ pub fn graph_search_dfs_view_make(size : Int) -> GraphsearchdfsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_view_len(s : GraphsearchdfsView) -> Int { s.size }
+pub fn GraphsearchdfsView::len(self : GraphsearchdfsView) -> Int { self.size }
 
-pub fn graph_search_dfs_view_get(s : GraphsearchdfsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsView::get(self : GraphsearchdfsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_view_set(s : GraphsearchdfsView, i : Int, v : Double) -> GraphsearchdfsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsView::set(self : GraphsearchdfsView, i : Int, v : Double) -> GraphsearchdfsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_view_sum(s : GraphsearchdfsView) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsView::sum(self : GraphsearchdfsView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_view_mean(s : GraphsearchdfsView) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsView::mean(self : GraphsearchdfsView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_view_scale(s : GraphsearchdfsView, f : Double) -> GraphsearchdfsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsView::scale(self : GraphsearchdfsView, f : Double) -> GraphsearchdfsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_view_add(a : GraphsearchdfsView, b : GraphsearchdfsView) -> GraphsearchdfsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsView::add(self : GraphsearchdfsView, other : GraphsearchdfsView) -> GraphsearchdfsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_view_copy(s : GraphsearchdfsView) -> GraphsearchdfsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsView::copy(self : GraphsearchdfsView) -> GraphsearchdfsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_view_fill(s : GraphsearchdfsView, v : Double) -> GraphsearchdfsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsView::fill(self : GraphsearchdfsView, v : Double) -> GraphsearchdfsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_view_min(s : GraphsearchdfsView) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsView::min(self : GraphsearchdfsView) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_view_max(s : GraphsearchdfsView) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsView::max(self : GraphsearchdfsView) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_view_to_string(s : GraphsearchdfsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsView::to_string(self : GraphsearchdfsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsRange {
@@ -963,45 +963,45 @@ pub fn graph_search_dfs_range_make(size : Int) -> GraphsearchdfsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_range_len(s : GraphsearchdfsRange) -> Int { s.size }
+pub fn GraphsearchdfsRange::len(self : GraphsearchdfsRange) -> Int { self.size }
 
-pub fn graph_search_dfs_range_get(s : GraphsearchdfsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsRange::get(self : GraphsearchdfsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_range_set(s : GraphsearchdfsRange, i : Int, v : Double) -> GraphsearchdfsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsRange::set(self : GraphsearchdfsRange, i : Int, v : Double) -> GraphsearchdfsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_range_sum(s : GraphsearchdfsRange) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsRange::sum(self : GraphsearchdfsRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_range_mean(s : GraphsearchdfsRange) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsRange::mean(self : GraphsearchdfsRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_range_scale(s : GraphsearchdfsRange, f : Double) -> GraphsearchdfsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsRange::scale(self : GraphsearchdfsRange, f : Double) -> GraphsearchdfsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_range_add(a : GraphsearchdfsRange, b : GraphsearchdfsRange) -> GraphsearchdfsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsRange::add(self : GraphsearchdfsRange, other : GraphsearchdfsRange) -> GraphsearchdfsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_range_copy(s : GraphsearchdfsRange) -> GraphsearchdfsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsRange::copy(self : GraphsearchdfsRange) -> GraphsearchdfsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_range_fill(s : GraphsearchdfsRange, v : Double) -> GraphsearchdfsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsRange::fill(self : GraphsearchdfsRange, v : Double) -> GraphsearchdfsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_range_min(s : GraphsearchdfsRange) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsRange::min(self : GraphsearchdfsRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_range_max(s : GraphsearchdfsRange) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsRange::max(self : GraphsearchdfsRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_range_to_string(s : GraphsearchdfsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsRange::to_string(self : GraphsearchdfsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchdfsSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_search_dfs_slice_make(size : Int) -> GraphsearchdfsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_dfs_slice_len(s : GraphsearchdfsSlice) -> Int { s.size }
+pub fn GraphsearchdfsSlice::len(self : GraphsearchdfsSlice) -> Int { self.size }
 
-pub fn graph_search_dfs_slice_get(s : GraphsearchdfsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchdfsSlice::get(self : GraphsearchdfsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_dfs_slice_set(s : GraphsearchdfsSlice, i : Int, v : Double) -> GraphsearchdfsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchdfsSlice::set(self : GraphsearchdfsSlice, i : Int, v : Double) -> GraphsearchdfsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_slice_sum(s : GraphsearchdfsSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchdfsSlice::sum(self : GraphsearchdfsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_dfs_slice_mean(s : GraphsearchdfsSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchdfsSlice::mean(self : GraphsearchdfsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_dfs_slice_scale(s : GraphsearchdfsSlice, f : Double) -> GraphsearchdfsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsSlice::scale(self : GraphsearchdfsSlice, f : Double) -> GraphsearchdfsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_slice_add(a : GraphsearchdfsSlice, b : GraphsearchdfsSlice) -> GraphsearchdfsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchdfsSlice::add(self : GraphsearchdfsSlice, other : GraphsearchdfsSlice) -> GraphsearchdfsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_dfs_slice_copy(s : GraphsearchdfsSlice) -> GraphsearchdfsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsSlice::copy(self : GraphsearchdfsSlice) -> GraphsearchdfsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_slice_fill(s : GraphsearchdfsSlice, v : Double) -> GraphsearchdfsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchdfsSlice::fill(self : GraphsearchdfsSlice, v : Double) -> GraphsearchdfsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_dfs_slice_min(s : GraphsearchdfsSlice) -> Double { @_common.min(s.data) }
+pub fn GraphsearchdfsSlice::min(self : GraphsearchdfsSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_dfs_slice_max(s : GraphsearchdfsSlice) -> Double { @_common.max(s.data) }
+pub fn GraphsearchdfsSlice::max(self : GraphsearchdfsSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_dfs_slice_to_string(s : GraphsearchdfsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchdfsSlice::to_string(self : GraphsearchdfsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

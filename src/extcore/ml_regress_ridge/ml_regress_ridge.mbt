@@ -351,45 +351,45 @@ pub fn ml_regress_ridge_frame_make(size : Int) -> MlregressridgeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_frame_len(s : MlregressridgeFrame) -> Int { s.size }
+pub fn MlregressridgeFrame::len(self : MlregressridgeFrame) -> Int { self.size }
 
-pub fn ml_regress_ridge_frame_get(s : MlregressridgeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeFrame::get(self : MlregressridgeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_frame_set(s : MlregressridgeFrame, i : Int, v : Double) -> MlregressridgeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeFrame::set(self : MlregressridgeFrame, i : Int, v : Double) -> MlregressridgeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_frame_sum(s : MlregressridgeFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeFrame::sum(self : MlregressridgeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_frame_mean(s : MlregressridgeFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeFrame::mean(self : MlregressridgeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_frame_scale(s : MlregressridgeFrame, f : Double) -> MlregressridgeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeFrame::scale(self : MlregressridgeFrame, f : Double) -> MlregressridgeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_frame_add(a : MlregressridgeFrame, b : MlregressridgeFrame) -> MlregressridgeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeFrame::add(self : MlregressridgeFrame, other : MlregressridgeFrame) -> MlregressridgeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_frame_copy(s : MlregressridgeFrame) -> MlregressridgeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeFrame::copy(self : MlregressridgeFrame) -> MlregressridgeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_frame_fill(s : MlregressridgeFrame, v : Double) -> MlregressridgeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeFrame::fill(self : MlregressridgeFrame, v : Double) -> MlregressridgeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_frame_min(s : MlregressridgeFrame) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeFrame::min(self : MlregressridgeFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_frame_max(s : MlregressridgeFrame) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeFrame::max(self : MlregressridgeFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_frame_to_string(s : MlregressridgeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeFrame::to_string(self : MlregressridgeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_ridge_table_make(size : Int) -> MlregressridgeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_table_len(s : MlregressridgeTable) -> Int { s.size }
+pub fn MlregressridgeTable::len(self : MlregressridgeTable) -> Int { self.size }
 
-pub fn ml_regress_ridge_table_get(s : MlregressridgeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeTable::get(self : MlregressridgeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_table_set(s : MlregressridgeTable, i : Int, v : Double) -> MlregressridgeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeTable::set(self : MlregressridgeTable, i : Int, v : Double) -> MlregressridgeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_table_sum(s : MlregressridgeTable) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeTable::sum(self : MlregressridgeTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_table_mean(s : MlregressridgeTable) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeTable::mean(self : MlregressridgeTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_table_scale(s : MlregressridgeTable, f : Double) -> MlregressridgeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeTable::scale(self : MlregressridgeTable, f : Double) -> MlregressridgeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_table_add(a : MlregressridgeTable, b : MlregressridgeTable) -> MlregressridgeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeTable::add(self : MlregressridgeTable, other : MlregressridgeTable) -> MlregressridgeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_table_copy(s : MlregressridgeTable) -> MlregressridgeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeTable::copy(self : MlregressridgeTable) -> MlregressridgeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_table_fill(s : MlregressridgeTable, v : Double) -> MlregressridgeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeTable::fill(self : MlregressridgeTable, v : Double) -> MlregressridgeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_table_min(s : MlregressridgeTable) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeTable::min(self : MlregressridgeTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_table_max(s : MlregressridgeTable) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeTable::max(self : MlregressridgeTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_table_to_string(s : MlregressridgeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeTable::to_string(self : MlregressridgeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_ridge_graphn_make(size : Int) -> MlregressridgeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_graphn_len(s : MlregressridgeGraphN) -> Int { s.size }
+pub fn MlregressridgeGraphN::len(self : MlregressridgeGraphN) -> Int { self.size }
 
-pub fn ml_regress_ridge_graphn_get(s : MlregressridgeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeGraphN::get(self : MlregressridgeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_graphn_set(s : MlregressridgeGraphN, i : Int, v : Double) -> MlregressridgeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeGraphN::set(self : MlregressridgeGraphN, i : Int, v : Double) -> MlregressridgeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_graphn_sum(s : MlregressridgeGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeGraphN::sum(self : MlregressridgeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_graphn_mean(s : MlregressridgeGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeGraphN::mean(self : MlregressridgeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_graphn_scale(s : MlregressridgeGraphN, f : Double) -> MlregressridgeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeGraphN::scale(self : MlregressridgeGraphN, f : Double) -> MlregressridgeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_graphn_add(a : MlregressridgeGraphN, b : MlregressridgeGraphN) -> MlregressridgeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeGraphN::add(self : MlregressridgeGraphN, other : MlregressridgeGraphN) -> MlregressridgeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_graphn_copy(s : MlregressridgeGraphN) -> MlregressridgeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeGraphN::copy(self : MlregressridgeGraphN) -> MlregressridgeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_graphn_fill(s : MlregressridgeGraphN, v : Double) -> MlregressridgeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeGraphN::fill(self : MlregressridgeGraphN, v : Double) -> MlregressridgeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_graphn_min(s : MlregressridgeGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeGraphN::min(self : MlregressridgeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_graphn_max(s : MlregressridgeGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeGraphN::max(self : MlregressridgeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_graphn_to_string(s : MlregressridgeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeGraphN::to_string(self : MlregressridgeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_ridge_node_make(size : Int) -> MlregressridgeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_node_len(s : MlregressridgeNode) -> Int { s.size }
+pub fn MlregressridgeNode::len(self : MlregressridgeNode) -> Int { self.size }
 
-pub fn ml_regress_ridge_node_get(s : MlregressridgeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeNode::get(self : MlregressridgeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_node_set(s : MlregressridgeNode, i : Int, v : Double) -> MlregressridgeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeNode::set(self : MlregressridgeNode, i : Int, v : Double) -> MlregressridgeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_node_sum(s : MlregressridgeNode) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeNode::sum(self : MlregressridgeNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_node_mean(s : MlregressridgeNode) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeNode::mean(self : MlregressridgeNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_node_scale(s : MlregressridgeNode, f : Double) -> MlregressridgeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeNode::scale(self : MlregressridgeNode, f : Double) -> MlregressridgeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_node_add(a : MlregressridgeNode, b : MlregressridgeNode) -> MlregressridgeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeNode::add(self : MlregressridgeNode, other : MlregressridgeNode) -> MlregressridgeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_node_copy(s : MlregressridgeNode) -> MlregressridgeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeNode::copy(self : MlregressridgeNode) -> MlregressridgeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_node_fill(s : MlregressridgeNode, v : Double) -> MlregressridgeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeNode::fill(self : MlregressridgeNode, v : Double) -> MlregressridgeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_node_min(s : MlregressridgeNode) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeNode::min(self : MlregressridgeNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_node_max(s : MlregressridgeNode) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeNode::max(self : MlregressridgeNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_node_to_string(s : MlregressridgeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeNode::to_string(self : MlregressridgeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_ridge_edge_make(size : Int) -> MlregressridgeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_edge_len(s : MlregressridgeEdge) -> Int { s.size }
+pub fn MlregressridgeEdge::len(self : MlregressridgeEdge) -> Int { self.size }
 
-pub fn ml_regress_ridge_edge_get(s : MlregressridgeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeEdge::get(self : MlregressridgeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_edge_set(s : MlregressridgeEdge, i : Int, v : Double) -> MlregressridgeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeEdge::set(self : MlregressridgeEdge, i : Int, v : Double) -> MlregressridgeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_edge_sum(s : MlregressridgeEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeEdge::sum(self : MlregressridgeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_edge_mean(s : MlregressridgeEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeEdge::mean(self : MlregressridgeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_edge_scale(s : MlregressridgeEdge, f : Double) -> MlregressridgeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeEdge::scale(self : MlregressridgeEdge, f : Double) -> MlregressridgeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_edge_add(a : MlregressridgeEdge, b : MlregressridgeEdge) -> MlregressridgeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeEdge::add(self : MlregressridgeEdge, other : MlregressridgeEdge) -> MlregressridgeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_edge_copy(s : MlregressridgeEdge) -> MlregressridgeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeEdge::copy(self : MlregressridgeEdge) -> MlregressridgeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_edge_fill(s : MlregressridgeEdge, v : Double) -> MlregressridgeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeEdge::fill(self : MlregressridgeEdge, v : Double) -> MlregressridgeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_edge_min(s : MlregressridgeEdge) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeEdge::min(self : MlregressridgeEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_edge_max(s : MlregressridgeEdge) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeEdge::max(self : MlregressridgeEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_edge_to_string(s : MlregressridgeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeEdge::to_string(self : MlregressridgeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgePath {
@@ -606,45 +606,45 @@ pub fn ml_regress_ridge_path_make(size : Int) -> MlregressridgePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_path_len(s : MlregressridgePath) -> Int { s.size }
+pub fn MlregressridgePath::len(self : MlregressridgePath) -> Int { self.size }
 
-pub fn ml_regress_ridge_path_get(s : MlregressridgePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgePath::get(self : MlregressridgePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_path_set(s : MlregressridgePath, i : Int, v : Double) -> MlregressridgePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgePath::set(self : MlregressridgePath, i : Int, v : Double) -> MlregressridgePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_path_sum(s : MlregressridgePath) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgePath::sum(self : MlregressridgePath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_path_mean(s : MlregressridgePath) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgePath::mean(self : MlregressridgePath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_path_scale(s : MlregressridgePath, f : Double) -> MlregressridgePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgePath::scale(self : MlregressridgePath, f : Double) -> MlregressridgePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_path_add(a : MlregressridgePath, b : MlregressridgePath) -> MlregressridgePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgePath::add(self : MlregressridgePath, other : MlregressridgePath) -> MlregressridgePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_path_copy(s : MlregressridgePath) -> MlregressridgePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgePath::copy(self : MlregressridgePath) -> MlregressridgePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_path_fill(s : MlregressridgePath, v : Double) -> MlregressridgePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgePath::fill(self : MlregressridgePath, v : Double) -> MlregressridgePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_path_min(s : MlregressridgePath) -> Double { @_common.min(s.data) }
+pub fn MlregressridgePath::min(self : MlregressridgePath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_path_max(s : MlregressridgePath) -> Double { @_common.max(s.data) }
+pub fn MlregressridgePath::max(self : MlregressridgePath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_path_to_string(s : MlregressridgePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgePath::to_string(self : MlregressridgePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_ridge_cluster_make(size : Int) -> MlregressridgeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_cluster_len(s : MlregressridgeCluster) -> Int { s.size }
+pub fn MlregressridgeCluster::len(self : MlregressridgeCluster) -> Int { self.size }
 
-pub fn ml_regress_ridge_cluster_get(s : MlregressridgeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeCluster::get(self : MlregressridgeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_cluster_set(s : MlregressridgeCluster, i : Int, v : Double) -> MlregressridgeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeCluster::set(self : MlregressridgeCluster, i : Int, v : Double) -> MlregressridgeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cluster_sum(s : MlregressridgeCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeCluster::sum(self : MlregressridgeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_cluster_mean(s : MlregressridgeCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeCluster::mean(self : MlregressridgeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_cluster_scale(s : MlregressridgeCluster, f : Double) -> MlregressridgeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeCluster::scale(self : MlregressridgeCluster, f : Double) -> MlregressridgeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cluster_add(a : MlregressridgeCluster, b : MlregressridgeCluster) -> MlregressridgeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeCluster::add(self : MlregressridgeCluster, other : MlregressridgeCluster) -> MlregressridgeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cluster_copy(s : MlregressridgeCluster) -> MlregressridgeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeCluster::copy(self : MlregressridgeCluster) -> MlregressridgeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cluster_fill(s : MlregressridgeCluster, v : Double) -> MlregressridgeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeCluster::fill(self : MlregressridgeCluster, v : Double) -> MlregressridgeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cluster_min(s : MlregressridgeCluster) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeCluster::min(self : MlregressridgeCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_cluster_max(s : MlregressridgeCluster) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeCluster::max(self : MlregressridgeCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_cluster_to_string(s : MlregressridgeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeCluster::to_string(self : MlregressridgeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_ridge_model_make(size : Int) -> MlregressridgeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_model_len(s : MlregressridgeModel) -> Int { s.size }
+pub fn MlregressridgeModel::len(self : MlregressridgeModel) -> Int { self.size }
 
-pub fn ml_regress_ridge_model_get(s : MlregressridgeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeModel::get(self : MlregressridgeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_model_set(s : MlregressridgeModel, i : Int, v : Double) -> MlregressridgeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeModel::set(self : MlregressridgeModel, i : Int, v : Double) -> MlregressridgeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_model_sum(s : MlregressridgeModel) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeModel::sum(self : MlregressridgeModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_model_mean(s : MlregressridgeModel) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeModel::mean(self : MlregressridgeModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_model_scale(s : MlregressridgeModel, f : Double) -> MlregressridgeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeModel::scale(self : MlregressridgeModel, f : Double) -> MlregressridgeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_model_add(a : MlregressridgeModel, b : MlregressridgeModel) -> MlregressridgeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeModel::add(self : MlregressridgeModel, other : MlregressridgeModel) -> MlregressridgeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_model_copy(s : MlregressridgeModel) -> MlregressridgeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeModel::copy(self : MlregressridgeModel) -> MlregressridgeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_model_fill(s : MlregressridgeModel, v : Double) -> MlregressridgeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeModel::fill(self : MlregressridgeModel, v : Double) -> MlregressridgeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_model_min(s : MlregressridgeModel) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeModel::min(self : MlregressridgeModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_model_max(s : MlregressridgeModel) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeModel::max(self : MlregressridgeModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_model_to_string(s : MlregressridgeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeModel::to_string(self : MlregressridgeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_ridge_layer_make(size : Int) -> MlregressridgeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_layer_len(s : MlregressridgeLayer) -> Int { s.size }
+pub fn MlregressridgeLayer::len(self : MlregressridgeLayer) -> Int { self.size }
 
-pub fn ml_regress_ridge_layer_get(s : MlregressridgeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeLayer::get(self : MlregressridgeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_layer_set(s : MlregressridgeLayer, i : Int, v : Double) -> MlregressridgeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeLayer::set(self : MlregressridgeLayer, i : Int, v : Double) -> MlregressridgeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_layer_sum(s : MlregressridgeLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeLayer::sum(self : MlregressridgeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_layer_mean(s : MlregressridgeLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeLayer::mean(self : MlregressridgeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_layer_scale(s : MlregressridgeLayer, f : Double) -> MlregressridgeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeLayer::scale(self : MlregressridgeLayer, f : Double) -> MlregressridgeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_layer_add(a : MlregressridgeLayer, b : MlregressridgeLayer) -> MlregressridgeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeLayer::add(self : MlregressridgeLayer, other : MlregressridgeLayer) -> MlregressridgeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_layer_copy(s : MlregressridgeLayer) -> MlregressridgeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeLayer::copy(self : MlregressridgeLayer) -> MlregressridgeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_layer_fill(s : MlregressridgeLayer, v : Double) -> MlregressridgeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeLayer::fill(self : MlregressridgeLayer, v : Double) -> MlregressridgeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_layer_min(s : MlregressridgeLayer) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeLayer::min(self : MlregressridgeLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_layer_max(s : MlregressridgeLayer) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeLayer::max(self : MlregressridgeLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_layer_to_string(s : MlregressridgeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeLayer::to_string(self : MlregressridgeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_ridge_buffer_make(size : Int) -> MlregressridgeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_buffer_len(s : MlregressridgeBuffer) -> Int { s.size }
+pub fn MlregressridgeBuffer::len(self : MlregressridgeBuffer) -> Int { self.size }
 
-pub fn ml_regress_ridge_buffer_get(s : MlregressridgeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeBuffer::get(self : MlregressridgeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_buffer_set(s : MlregressridgeBuffer, i : Int, v : Double) -> MlregressridgeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeBuffer::set(self : MlregressridgeBuffer, i : Int, v : Double) -> MlregressridgeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_buffer_sum(s : MlregressridgeBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeBuffer::sum(self : MlregressridgeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_buffer_mean(s : MlregressridgeBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeBuffer::mean(self : MlregressridgeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_buffer_scale(s : MlregressridgeBuffer, f : Double) -> MlregressridgeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeBuffer::scale(self : MlregressridgeBuffer, f : Double) -> MlregressridgeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_buffer_add(a : MlregressridgeBuffer, b : MlregressridgeBuffer) -> MlregressridgeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeBuffer::add(self : MlregressridgeBuffer, other : MlregressridgeBuffer) -> MlregressridgeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_buffer_copy(s : MlregressridgeBuffer) -> MlregressridgeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeBuffer::copy(self : MlregressridgeBuffer) -> MlregressridgeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_buffer_fill(s : MlregressridgeBuffer, v : Double) -> MlregressridgeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeBuffer::fill(self : MlregressridgeBuffer, v : Double) -> MlregressridgeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_buffer_min(s : MlregressridgeBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeBuffer::min(self : MlregressridgeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_buffer_max(s : MlregressridgeBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeBuffer::max(self : MlregressridgeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_buffer_to_string(s : MlregressridgeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeBuffer::to_string(self : MlregressridgeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_ridge_cursor_make(size : Int) -> MlregressridgeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_cursor_len(s : MlregressridgeCursor) -> Int { s.size }
+pub fn MlregressridgeCursor::len(self : MlregressridgeCursor) -> Int { self.size }
 
-pub fn ml_regress_ridge_cursor_get(s : MlregressridgeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeCursor::get(self : MlregressridgeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_cursor_set(s : MlregressridgeCursor, i : Int, v : Double) -> MlregressridgeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeCursor::set(self : MlregressridgeCursor, i : Int, v : Double) -> MlregressridgeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cursor_sum(s : MlregressridgeCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeCursor::sum(self : MlregressridgeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_cursor_mean(s : MlregressridgeCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeCursor::mean(self : MlregressridgeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_cursor_scale(s : MlregressridgeCursor, f : Double) -> MlregressridgeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeCursor::scale(self : MlregressridgeCursor, f : Double) -> MlregressridgeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cursor_add(a : MlregressridgeCursor, b : MlregressridgeCursor) -> MlregressridgeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeCursor::add(self : MlregressridgeCursor, other : MlregressridgeCursor) -> MlregressridgeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cursor_copy(s : MlregressridgeCursor) -> MlregressridgeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeCursor::copy(self : MlregressridgeCursor) -> MlregressridgeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cursor_fill(s : MlregressridgeCursor, v : Double) -> MlregressridgeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeCursor::fill(self : MlregressridgeCursor, v : Double) -> MlregressridgeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_cursor_min(s : MlregressridgeCursor) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeCursor::min(self : MlregressridgeCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_cursor_max(s : MlregressridgeCursor) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeCursor::max(self : MlregressridgeCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_cursor_to_string(s : MlregressridgeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeCursor::to_string(self : MlregressridgeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeView {
@@ -912,45 +912,45 @@ pub fn ml_regress_ridge_view_make(size : Int) -> MlregressridgeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_view_len(s : MlregressridgeView) -> Int { s.size }
+pub fn MlregressridgeView::len(self : MlregressridgeView) -> Int { self.size }
 
-pub fn ml_regress_ridge_view_get(s : MlregressridgeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeView::get(self : MlregressridgeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_view_set(s : MlregressridgeView, i : Int, v : Double) -> MlregressridgeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeView::set(self : MlregressridgeView, i : Int, v : Double) -> MlregressridgeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_view_sum(s : MlregressridgeView) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeView::sum(self : MlregressridgeView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_view_mean(s : MlregressridgeView) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeView::mean(self : MlregressridgeView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_view_scale(s : MlregressridgeView, f : Double) -> MlregressridgeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeView::scale(self : MlregressridgeView, f : Double) -> MlregressridgeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_view_add(a : MlregressridgeView, b : MlregressridgeView) -> MlregressridgeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeView::add(self : MlregressridgeView, other : MlregressridgeView) -> MlregressridgeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_view_copy(s : MlregressridgeView) -> MlregressridgeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeView::copy(self : MlregressridgeView) -> MlregressridgeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_view_fill(s : MlregressridgeView, v : Double) -> MlregressridgeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeView::fill(self : MlregressridgeView, v : Double) -> MlregressridgeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_view_min(s : MlregressridgeView) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeView::min(self : MlregressridgeView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_view_max(s : MlregressridgeView) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeView::max(self : MlregressridgeView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_view_to_string(s : MlregressridgeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeView::to_string(self : MlregressridgeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_ridge_range_make(size : Int) -> MlregressridgeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_range_len(s : MlregressridgeRange) -> Int { s.size }
+pub fn MlregressridgeRange::len(self : MlregressridgeRange) -> Int { self.size }
 
-pub fn ml_regress_ridge_range_get(s : MlregressridgeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeRange::get(self : MlregressridgeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_range_set(s : MlregressridgeRange, i : Int, v : Double) -> MlregressridgeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeRange::set(self : MlregressridgeRange, i : Int, v : Double) -> MlregressridgeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_range_sum(s : MlregressridgeRange) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeRange::sum(self : MlregressridgeRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_range_mean(s : MlregressridgeRange) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeRange::mean(self : MlregressridgeRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_range_scale(s : MlregressridgeRange, f : Double) -> MlregressridgeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeRange::scale(self : MlregressridgeRange, f : Double) -> MlregressridgeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_range_add(a : MlregressridgeRange, b : MlregressridgeRange) -> MlregressridgeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeRange::add(self : MlregressridgeRange, other : MlregressridgeRange) -> MlregressridgeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_range_copy(s : MlregressridgeRange) -> MlregressridgeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeRange::copy(self : MlregressridgeRange) -> MlregressridgeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_range_fill(s : MlregressridgeRange, v : Double) -> MlregressridgeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeRange::fill(self : MlregressridgeRange, v : Double) -> MlregressridgeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_range_min(s : MlregressridgeRange) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeRange::min(self : MlregressridgeRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_range_max(s : MlregressridgeRange) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeRange::max(self : MlregressridgeRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_range_to_string(s : MlregressridgeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeRange::to_string(self : MlregressridgeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressridgeSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_ridge_slice_make(size : Int) -> MlregressridgeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_ridge_slice_len(s : MlregressridgeSlice) -> Int { s.size }
+pub fn MlregressridgeSlice::len(self : MlregressridgeSlice) -> Int { self.size }
 
-pub fn ml_regress_ridge_slice_get(s : MlregressridgeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressridgeSlice::get(self : MlregressridgeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_ridge_slice_set(s : MlregressridgeSlice, i : Int, v : Double) -> MlregressridgeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressridgeSlice::set(self : MlregressridgeSlice, i : Int, v : Double) -> MlregressridgeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_slice_sum(s : MlregressridgeSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregressridgeSlice::sum(self : MlregressridgeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_ridge_slice_mean(s : MlregressridgeSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregressridgeSlice::mean(self : MlregressridgeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_ridge_slice_scale(s : MlregressridgeSlice, f : Double) -> MlregressridgeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressridgeSlice::scale(self : MlregressridgeSlice, f : Double) -> MlregressridgeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_slice_add(a : MlregressridgeSlice, b : MlregressridgeSlice) -> MlregressridgeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressridgeSlice::add(self : MlregressridgeSlice, other : MlregressridgeSlice) -> MlregressridgeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_slice_copy(s : MlregressridgeSlice) -> MlregressridgeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressridgeSlice::copy(self : MlregressridgeSlice) -> MlregressridgeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_slice_fill(s : MlregressridgeSlice, v : Double) -> MlregressridgeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressridgeSlice::fill(self : MlregressridgeSlice, v : Double) -> MlregressridgeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_ridge_slice_min(s : MlregressridgeSlice) -> Double { @_common.min(s.data) }
+pub fn MlregressridgeSlice::min(self : MlregressridgeSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_ridge_slice_max(s : MlregressridgeSlice) -> Double { @_common.max(s.data) }
+pub fn MlregressridgeSlice::max(self : MlregressridgeSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_ridge_slice_to_string(s : MlregressridgeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressridgeSlice::to_string(self : MlregressridgeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

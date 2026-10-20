@@ -351,45 +351,45 @@ pub fn physics_em_wave_frame_make(size : Int) -> PhysicsemwaveFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_frame_len(s : PhysicsemwaveFrame) -> Int { s.size }
+pub fn PhysicsemwaveFrame::len(self : PhysicsemwaveFrame) -> Int { self.size }
 
-pub fn physics_em_wave_frame_get(s : PhysicsemwaveFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveFrame::get(self : PhysicsemwaveFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_frame_set(s : PhysicsemwaveFrame, i : Int, v : Double) -> PhysicsemwaveFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveFrame::set(self : PhysicsemwaveFrame, i : Int, v : Double) -> PhysicsemwaveFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_frame_sum(s : PhysicsemwaveFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveFrame::sum(self : PhysicsemwaveFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_frame_mean(s : PhysicsemwaveFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveFrame::mean(self : PhysicsemwaveFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_frame_scale(s : PhysicsemwaveFrame, f : Double) -> PhysicsemwaveFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveFrame::scale(self : PhysicsemwaveFrame, f : Double) -> PhysicsemwaveFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_frame_add(a : PhysicsemwaveFrame, b : PhysicsemwaveFrame) -> PhysicsemwaveFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveFrame::add(self : PhysicsemwaveFrame, other : PhysicsemwaveFrame) -> PhysicsemwaveFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_frame_copy(s : PhysicsemwaveFrame) -> PhysicsemwaveFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveFrame::copy(self : PhysicsemwaveFrame) -> PhysicsemwaveFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_frame_fill(s : PhysicsemwaveFrame, v : Double) -> PhysicsemwaveFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveFrame::fill(self : PhysicsemwaveFrame, v : Double) -> PhysicsemwaveFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_frame_min(s : PhysicsemwaveFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveFrame::min(self : PhysicsemwaveFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_frame_max(s : PhysicsemwaveFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveFrame::max(self : PhysicsemwaveFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_frame_to_string(s : PhysicsemwaveFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveFrame::to_string(self : PhysicsemwaveFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveTable {
@@ -402,45 +402,45 @@ pub fn physics_em_wave_table_make(size : Int) -> PhysicsemwaveTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_table_len(s : PhysicsemwaveTable) -> Int { s.size }
+pub fn PhysicsemwaveTable::len(self : PhysicsemwaveTable) -> Int { self.size }
 
-pub fn physics_em_wave_table_get(s : PhysicsemwaveTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveTable::get(self : PhysicsemwaveTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_table_set(s : PhysicsemwaveTable, i : Int, v : Double) -> PhysicsemwaveTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveTable::set(self : PhysicsemwaveTable, i : Int, v : Double) -> PhysicsemwaveTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_table_sum(s : PhysicsemwaveTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveTable::sum(self : PhysicsemwaveTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_table_mean(s : PhysicsemwaveTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveTable::mean(self : PhysicsemwaveTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_table_scale(s : PhysicsemwaveTable, f : Double) -> PhysicsemwaveTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveTable::scale(self : PhysicsemwaveTable, f : Double) -> PhysicsemwaveTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_table_add(a : PhysicsemwaveTable, b : PhysicsemwaveTable) -> PhysicsemwaveTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveTable::add(self : PhysicsemwaveTable, other : PhysicsemwaveTable) -> PhysicsemwaveTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_table_copy(s : PhysicsemwaveTable) -> PhysicsemwaveTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveTable::copy(self : PhysicsemwaveTable) -> PhysicsemwaveTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_table_fill(s : PhysicsemwaveTable, v : Double) -> PhysicsemwaveTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveTable::fill(self : PhysicsemwaveTable, v : Double) -> PhysicsemwaveTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_table_min(s : PhysicsemwaveTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveTable::min(self : PhysicsemwaveTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_table_max(s : PhysicsemwaveTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveTable::max(self : PhysicsemwaveTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_table_to_string(s : PhysicsemwaveTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveTable::to_string(self : PhysicsemwaveTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveGraphN {
@@ -453,45 +453,45 @@ pub fn physics_em_wave_graphn_make(size : Int) -> PhysicsemwaveGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_graphn_len(s : PhysicsemwaveGraphN) -> Int { s.size }
+pub fn PhysicsemwaveGraphN::len(self : PhysicsemwaveGraphN) -> Int { self.size }
 
-pub fn physics_em_wave_graphn_get(s : PhysicsemwaveGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveGraphN::get(self : PhysicsemwaveGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_graphn_set(s : PhysicsemwaveGraphN, i : Int, v : Double) -> PhysicsemwaveGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveGraphN::set(self : PhysicsemwaveGraphN, i : Int, v : Double) -> PhysicsemwaveGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_graphn_sum(s : PhysicsemwaveGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveGraphN::sum(self : PhysicsemwaveGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_graphn_mean(s : PhysicsemwaveGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveGraphN::mean(self : PhysicsemwaveGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_graphn_scale(s : PhysicsemwaveGraphN, f : Double) -> PhysicsemwaveGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveGraphN::scale(self : PhysicsemwaveGraphN, f : Double) -> PhysicsemwaveGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_graphn_add(a : PhysicsemwaveGraphN, b : PhysicsemwaveGraphN) -> PhysicsemwaveGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveGraphN::add(self : PhysicsemwaveGraphN, other : PhysicsemwaveGraphN) -> PhysicsemwaveGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_graphn_copy(s : PhysicsemwaveGraphN) -> PhysicsemwaveGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveGraphN::copy(self : PhysicsemwaveGraphN) -> PhysicsemwaveGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_graphn_fill(s : PhysicsemwaveGraphN, v : Double) -> PhysicsemwaveGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveGraphN::fill(self : PhysicsemwaveGraphN, v : Double) -> PhysicsemwaveGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_graphn_min(s : PhysicsemwaveGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveGraphN::min(self : PhysicsemwaveGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_graphn_max(s : PhysicsemwaveGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveGraphN::max(self : PhysicsemwaveGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_graphn_to_string(s : PhysicsemwaveGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveGraphN::to_string(self : PhysicsemwaveGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveNode {
@@ -504,45 +504,45 @@ pub fn physics_em_wave_node_make(size : Int) -> PhysicsemwaveNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_node_len(s : PhysicsemwaveNode) -> Int { s.size }
+pub fn PhysicsemwaveNode::len(self : PhysicsemwaveNode) -> Int { self.size }
 
-pub fn physics_em_wave_node_get(s : PhysicsemwaveNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveNode::get(self : PhysicsemwaveNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_node_set(s : PhysicsemwaveNode, i : Int, v : Double) -> PhysicsemwaveNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveNode::set(self : PhysicsemwaveNode, i : Int, v : Double) -> PhysicsemwaveNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_node_sum(s : PhysicsemwaveNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveNode::sum(self : PhysicsemwaveNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_node_mean(s : PhysicsemwaveNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveNode::mean(self : PhysicsemwaveNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_node_scale(s : PhysicsemwaveNode, f : Double) -> PhysicsemwaveNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveNode::scale(self : PhysicsemwaveNode, f : Double) -> PhysicsemwaveNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_node_add(a : PhysicsemwaveNode, b : PhysicsemwaveNode) -> PhysicsemwaveNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveNode::add(self : PhysicsemwaveNode, other : PhysicsemwaveNode) -> PhysicsemwaveNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_node_copy(s : PhysicsemwaveNode) -> PhysicsemwaveNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveNode::copy(self : PhysicsemwaveNode) -> PhysicsemwaveNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_node_fill(s : PhysicsemwaveNode, v : Double) -> PhysicsemwaveNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveNode::fill(self : PhysicsemwaveNode, v : Double) -> PhysicsemwaveNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_node_min(s : PhysicsemwaveNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveNode::min(self : PhysicsemwaveNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_node_max(s : PhysicsemwaveNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveNode::max(self : PhysicsemwaveNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_node_to_string(s : PhysicsemwaveNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveNode::to_string(self : PhysicsemwaveNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveEdge {
@@ -555,45 +555,45 @@ pub fn physics_em_wave_edge_make(size : Int) -> PhysicsemwaveEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_edge_len(s : PhysicsemwaveEdge) -> Int { s.size }
+pub fn PhysicsemwaveEdge::len(self : PhysicsemwaveEdge) -> Int { self.size }
 
-pub fn physics_em_wave_edge_get(s : PhysicsemwaveEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveEdge::get(self : PhysicsemwaveEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_edge_set(s : PhysicsemwaveEdge, i : Int, v : Double) -> PhysicsemwaveEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveEdge::set(self : PhysicsemwaveEdge, i : Int, v : Double) -> PhysicsemwaveEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_edge_sum(s : PhysicsemwaveEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveEdge::sum(self : PhysicsemwaveEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_edge_mean(s : PhysicsemwaveEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveEdge::mean(self : PhysicsemwaveEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_edge_scale(s : PhysicsemwaveEdge, f : Double) -> PhysicsemwaveEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveEdge::scale(self : PhysicsemwaveEdge, f : Double) -> PhysicsemwaveEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_edge_add(a : PhysicsemwaveEdge, b : PhysicsemwaveEdge) -> PhysicsemwaveEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveEdge::add(self : PhysicsemwaveEdge, other : PhysicsemwaveEdge) -> PhysicsemwaveEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_edge_copy(s : PhysicsemwaveEdge) -> PhysicsemwaveEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveEdge::copy(self : PhysicsemwaveEdge) -> PhysicsemwaveEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_edge_fill(s : PhysicsemwaveEdge, v : Double) -> PhysicsemwaveEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveEdge::fill(self : PhysicsemwaveEdge, v : Double) -> PhysicsemwaveEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_edge_min(s : PhysicsemwaveEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveEdge::min(self : PhysicsemwaveEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_edge_max(s : PhysicsemwaveEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveEdge::max(self : PhysicsemwaveEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_edge_to_string(s : PhysicsemwaveEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveEdge::to_string(self : PhysicsemwaveEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwavePath {
@@ -606,45 +606,45 @@ pub fn physics_em_wave_path_make(size : Int) -> PhysicsemwavePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_path_len(s : PhysicsemwavePath) -> Int { s.size }
+pub fn PhysicsemwavePath::len(self : PhysicsemwavePath) -> Int { self.size }
 
-pub fn physics_em_wave_path_get(s : PhysicsemwavePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwavePath::get(self : PhysicsemwavePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_path_set(s : PhysicsemwavePath, i : Int, v : Double) -> PhysicsemwavePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwavePath::set(self : PhysicsemwavePath, i : Int, v : Double) -> PhysicsemwavePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_path_sum(s : PhysicsemwavePath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwavePath::sum(self : PhysicsemwavePath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_path_mean(s : PhysicsemwavePath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwavePath::mean(self : PhysicsemwavePath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_path_scale(s : PhysicsemwavePath, f : Double) -> PhysicsemwavePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwavePath::scale(self : PhysicsemwavePath, f : Double) -> PhysicsemwavePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_path_add(a : PhysicsemwavePath, b : PhysicsemwavePath) -> PhysicsemwavePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwavePath::add(self : PhysicsemwavePath, other : PhysicsemwavePath) -> PhysicsemwavePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_path_copy(s : PhysicsemwavePath) -> PhysicsemwavePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwavePath::copy(self : PhysicsemwavePath) -> PhysicsemwavePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_path_fill(s : PhysicsemwavePath, v : Double) -> PhysicsemwavePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwavePath::fill(self : PhysicsemwavePath, v : Double) -> PhysicsemwavePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_path_min(s : PhysicsemwavePath) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwavePath::min(self : PhysicsemwavePath) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_path_max(s : PhysicsemwavePath) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwavePath::max(self : PhysicsemwavePath) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_path_to_string(s : PhysicsemwavePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwavePath::to_string(self : PhysicsemwavePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveCluster {
@@ -657,45 +657,45 @@ pub fn physics_em_wave_cluster_make(size : Int) -> PhysicsemwaveCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_cluster_len(s : PhysicsemwaveCluster) -> Int { s.size }
+pub fn PhysicsemwaveCluster::len(self : PhysicsemwaveCluster) -> Int { self.size }
 
-pub fn physics_em_wave_cluster_get(s : PhysicsemwaveCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveCluster::get(self : PhysicsemwaveCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_cluster_set(s : PhysicsemwaveCluster, i : Int, v : Double) -> PhysicsemwaveCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCluster::set(self : PhysicsemwaveCluster, i : Int, v : Double) -> PhysicsemwaveCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cluster_sum(s : PhysicsemwaveCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveCluster::sum(self : PhysicsemwaveCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_cluster_mean(s : PhysicsemwaveCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveCluster::mean(self : PhysicsemwaveCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_cluster_scale(s : PhysicsemwaveCluster, f : Double) -> PhysicsemwaveCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCluster::scale(self : PhysicsemwaveCluster, f : Double) -> PhysicsemwaveCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cluster_add(a : PhysicsemwaveCluster, b : PhysicsemwaveCluster) -> PhysicsemwaveCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveCluster::add(self : PhysicsemwaveCluster, other : PhysicsemwaveCluster) -> PhysicsemwaveCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_cluster_copy(s : PhysicsemwaveCluster) -> PhysicsemwaveCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCluster::copy(self : PhysicsemwaveCluster) -> PhysicsemwaveCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cluster_fill(s : PhysicsemwaveCluster, v : Double) -> PhysicsemwaveCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCluster::fill(self : PhysicsemwaveCluster, v : Double) -> PhysicsemwaveCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cluster_min(s : PhysicsemwaveCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveCluster::min(self : PhysicsemwaveCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_cluster_max(s : PhysicsemwaveCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveCluster::max(self : PhysicsemwaveCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_cluster_to_string(s : PhysicsemwaveCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveCluster::to_string(self : PhysicsemwaveCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveModel {
@@ -708,45 +708,45 @@ pub fn physics_em_wave_model_make(size : Int) -> PhysicsemwaveModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_model_len(s : PhysicsemwaveModel) -> Int { s.size }
+pub fn PhysicsemwaveModel::len(self : PhysicsemwaveModel) -> Int { self.size }
 
-pub fn physics_em_wave_model_get(s : PhysicsemwaveModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveModel::get(self : PhysicsemwaveModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_model_set(s : PhysicsemwaveModel, i : Int, v : Double) -> PhysicsemwaveModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveModel::set(self : PhysicsemwaveModel, i : Int, v : Double) -> PhysicsemwaveModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_model_sum(s : PhysicsemwaveModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveModel::sum(self : PhysicsemwaveModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_model_mean(s : PhysicsemwaveModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveModel::mean(self : PhysicsemwaveModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_model_scale(s : PhysicsemwaveModel, f : Double) -> PhysicsemwaveModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveModel::scale(self : PhysicsemwaveModel, f : Double) -> PhysicsemwaveModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_model_add(a : PhysicsemwaveModel, b : PhysicsemwaveModel) -> PhysicsemwaveModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveModel::add(self : PhysicsemwaveModel, other : PhysicsemwaveModel) -> PhysicsemwaveModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_model_copy(s : PhysicsemwaveModel) -> PhysicsemwaveModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveModel::copy(self : PhysicsemwaveModel) -> PhysicsemwaveModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_model_fill(s : PhysicsemwaveModel, v : Double) -> PhysicsemwaveModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveModel::fill(self : PhysicsemwaveModel, v : Double) -> PhysicsemwaveModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_model_min(s : PhysicsemwaveModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveModel::min(self : PhysicsemwaveModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_model_max(s : PhysicsemwaveModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveModel::max(self : PhysicsemwaveModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_model_to_string(s : PhysicsemwaveModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveModel::to_string(self : PhysicsemwaveModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveLayer {
@@ -759,45 +759,45 @@ pub fn physics_em_wave_layer_make(size : Int) -> PhysicsemwaveLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_layer_len(s : PhysicsemwaveLayer) -> Int { s.size }
+pub fn PhysicsemwaveLayer::len(self : PhysicsemwaveLayer) -> Int { self.size }
 
-pub fn physics_em_wave_layer_get(s : PhysicsemwaveLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveLayer::get(self : PhysicsemwaveLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_layer_set(s : PhysicsemwaveLayer, i : Int, v : Double) -> PhysicsemwaveLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveLayer::set(self : PhysicsemwaveLayer, i : Int, v : Double) -> PhysicsemwaveLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_layer_sum(s : PhysicsemwaveLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveLayer::sum(self : PhysicsemwaveLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_layer_mean(s : PhysicsemwaveLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveLayer::mean(self : PhysicsemwaveLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_layer_scale(s : PhysicsemwaveLayer, f : Double) -> PhysicsemwaveLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveLayer::scale(self : PhysicsemwaveLayer, f : Double) -> PhysicsemwaveLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_layer_add(a : PhysicsemwaveLayer, b : PhysicsemwaveLayer) -> PhysicsemwaveLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveLayer::add(self : PhysicsemwaveLayer, other : PhysicsemwaveLayer) -> PhysicsemwaveLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_layer_copy(s : PhysicsemwaveLayer) -> PhysicsemwaveLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveLayer::copy(self : PhysicsemwaveLayer) -> PhysicsemwaveLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_layer_fill(s : PhysicsemwaveLayer, v : Double) -> PhysicsemwaveLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveLayer::fill(self : PhysicsemwaveLayer, v : Double) -> PhysicsemwaveLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_layer_min(s : PhysicsemwaveLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveLayer::min(self : PhysicsemwaveLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_layer_max(s : PhysicsemwaveLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveLayer::max(self : PhysicsemwaveLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_layer_to_string(s : PhysicsemwaveLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveLayer::to_string(self : PhysicsemwaveLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveBuffer {
@@ -810,45 +810,45 @@ pub fn physics_em_wave_buffer_make(size : Int) -> PhysicsemwaveBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_buffer_len(s : PhysicsemwaveBuffer) -> Int { s.size }
+pub fn PhysicsemwaveBuffer::len(self : PhysicsemwaveBuffer) -> Int { self.size }
 
-pub fn physics_em_wave_buffer_get(s : PhysicsemwaveBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveBuffer::get(self : PhysicsemwaveBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_buffer_set(s : PhysicsemwaveBuffer, i : Int, v : Double) -> PhysicsemwaveBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveBuffer::set(self : PhysicsemwaveBuffer, i : Int, v : Double) -> PhysicsemwaveBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_buffer_sum(s : PhysicsemwaveBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveBuffer::sum(self : PhysicsemwaveBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_buffer_mean(s : PhysicsemwaveBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveBuffer::mean(self : PhysicsemwaveBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_buffer_scale(s : PhysicsemwaveBuffer, f : Double) -> PhysicsemwaveBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveBuffer::scale(self : PhysicsemwaveBuffer, f : Double) -> PhysicsemwaveBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_buffer_add(a : PhysicsemwaveBuffer, b : PhysicsemwaveBuffer) -> PhysicsemwaveBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveBuffer::add(self : PhysicsemwaveBuffer, other : PhysicsemwaveBuffer) -> PhysicsemwaveBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_buffer_copy(s : PhysicsemwaveBuffer) -> PhysicsemwaveBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveBuffer::copy(self : PhysicsemwaveBuffer) -> PhysicsemwaveBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_buffer_fill(s : PhysicsemwaveBuffer, v : Double) -> PhysicsemwaveBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveBuffer::fill(self : PhysicsemwaveBuffer, v : Double) -> PhysicsemwaveBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_buffer_min(s : PhysicsemwaveBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveBuffer::min(self : PhysicsemwaveBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_buffer_max(s : PhysicsemwaveBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveBuffer::max(self : PhysicsemwaveBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_buffer_to_string(s : PhysicsemwaveBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveBuffer::to_string(self : PhysicsemwaveBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveCursor {
@@ -861,45 +861,45 @@ pub fn physics_em_wave_cursor_make(size : Int) -> PhysicsemwaveCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_cursor_len(s : PhysicsemwaveCursor) -> Int { s.size }
+pub fn PhysicsemwaveCursor::len(self : PhysicsemwaveCursor) -> Int { self.size }
 
-pub fn physics_em_wave_cursor_get(s : PhysicsemwaveCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveCursor::get(self : PhysicsemwaveCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_cursor_set(s : PhysicsemwaveCursor, i : Int, v : Double) -> PhysicsemwaveCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCursor::set(self : PhysicsemwaveCursor, i : Int, v : Double) -> PhysicsemwaveCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cursor_sum(s : PhysicsemwaveCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveCursor::sum(self : PhysicsemwaveCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_cursor_mean(s : PhysicsemwaveCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveCursor::mean(self : PhysicsemwaveCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_cursor_scale(s : PhysicsemwaveCursor, f : Double) -> PhysicsemwaveCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCursor::scale(self : PhysicsemwaveCursor, f : Double) -> PhysicsemwaveCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cursor_add(a : PhysicsemwaveCursor, b : PhysicsemwaveCursor) -> PhysicsemwaveCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveCursor::add(self : PhysicsemwaveCursor, other : PhysicsemwaveCursor) -> PhysicsemwaveCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_cursor_copy(s : PhysicsemwaveCursor) -> PhysicsemwaveCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCursor::copy(self : PhysicsemwaveCursor) -> PhysicsemwaveCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cursor_fill(s : PhysicsemwaveCursor, v : Double) -> PhysicsemwaveCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveCursor::fill(self : PhysicsemwaveCursor, v : Double) -> PhysicsemwaveCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_cursor_min(s : PhysicsemwaveCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveCursor::min(self : PhysicsemwaveCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_cursor_max(s : PhysicsemwaveCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveCursor::max(self : PhysicsemwaveCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_cursor_to_string(s : PhysicsemwaveCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveCursor::to_string(self : PhysicsemwaveCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveView {
@@ -912,45 +912,45 @@ pub fn physics_em_wave_view_make(size : Int) -> PhysicsemwaveView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_view_len(s : PhysicsemwaveView) -> Int { s.size }
+pub fn PhysicsemwaveView::len(self : PhysicsemwaveView) -> Int { self.size }
 
-pub fn physics_em_wave_view_get(s : PhysicsemwaveView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveView::get(self : PhysicsemwaveView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_view_set(s : PhysicsemwaveView, i : Int, v : Double) -> PhysicsemwaveView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveView::set(self : PhysicsemwaveView, i : Int, v : Double) -> PhysicsemwaveView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_view_sum(s : PhysicsemwaveView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveView::sum(self : PhysicsemwaveView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_view_mean(s : PhysicsemwaveView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveView::mean(self : PhysicsemwaveView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_view_scale(s : PhysicsemwaveView, f : Double) -> PhysicsemwaveView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveView::scale(self : PhysicsemwaveView, f : Double) -> PhysicsemwaveView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_view_add(a : PhysicsemwaveView, b : PhysicsemwaveView) -> PhysicsemwaveView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveView::add(self : PhysicsemwaveView, other : PhysicsemwaveView) -> PhysicsemwaveView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_view_copy(s : PhysicsemwaveView) -> PhysicsemwaveView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveView::copy(self : PhysicsemwaveView) -> PhysicsemwaveView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_view_fill(s : PhysicsemwaveView, v : Double) -> PhysicsemwaveView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveView::fill(self : PhysicsemwaveView, v : Double) -> PhysicsemwaveView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_view_min(s : PhysicsemwaveView) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveView::min(self : PhysicsemwaveView) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_view_max(s : PhysicsemwaveView) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveView::max(self : PhysicsemwaveView) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_view_to_string(s : PhysicsemwaveView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveView::to_string(self : PhysicsemwaveView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveRange {
@@ -963,45 +963,45 @@ pub fn physics_em_wave_range_make(size : Int) -> PhysicsemwaveRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_range_len(s : PhysicsemwaveRange) -> Int { s.size }
+pub fn PhysicsemwaveRange::len(self : PhysicsemwaveRange) -> Int { self.size }
 
-pub fn physics_em_wave_range_get(s : PhysicsemwaveRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveRange::get(self : PhysicsemwaveRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_range_set(s : PhysicsemwaveRange, i : Int, v : Double) -> PhysicsemwaveRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveRange::set(self : PhysicsemwaveRange, i : Int, v : Double) -> PhysicsemwaveRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_range_sum(s : PhysicsemwaveRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveRange::sum(self : PhysicsemwaveRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_range_mean(s : PhysicsemwaveRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveRange::mean(self : PhysicsemwaveRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_range_scale(s : PhysicsemwaveRange, f : Double) -> PhysicsemwaveRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveRange::scale(self : PhysicsemwaveRange, f : Double) -> PhysicsemwaveRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_range_add(a : PhysicsemwaveRange, b : PhysicsemwaveRange) -> PhysicsemwaveRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveRange::add(self : PhysicsemwaveRange, other : PhysicsemwaveRange) -> PhysicsemwaveRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_range_copy(s : PhysicsemwaveRange) -> PhysicsemwaveRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveRange::copy(self : PhysicsemwaveRange) -> PhysicsemwaveRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_range_fill(s : PhysicsemwaveRange, v : Double) -> PhysicsemwaveRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveRange::fill(self : PhysicsemwaveRange, v : Double) -> PhysicsemwaveRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_range_min(s : PhysicsemwaveRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveRange::min(self : PhysicsemwaveRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_range_max(s : PhysicsemwaveRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveRange::max(self : PhysicsemwaveRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_range_to_string(s : PhysicsemwaveRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveRange::to_string(self : PhysicsemwaveRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsemwaveSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_em_wave_slice_make(size : Int) -> PhysicsemwaveSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_em_wave_slice_len(s : PhysicsemwaveSlice) -> Int { s.size }
+pub fn PhysicsemwaveSlice::len(self : PhysicsemwaveSlice) -> Int { self.size }
 
-pub fn physics_em_wave_slice_get(s : PhysicsemwaveSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsemwaveSlice::get(self : PhysicsemwaveSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_em_wave_slice_set(s : PhysicsemwaveSlice, i : Int, v : Double) -> PhysicsemwaveSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsemwaveSlice::set(self : PhysicsemwaveSlice, i : Int, v : Double) -> PhysicsemwaveSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_slice_sum(s : PhysicsemwaveSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsemwaveSlice::sum(self : PhysicsemwaveSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_em_wave_slice_mean(s : PhysicsemwaveSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsemwaveSlice::mean(self : PhysicsemwaveSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_em_wave_slice_scale(s : PhysicsemwaveSlice, f : Double) -> PhysicsemwaveSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveSlice::scale(self : PhysicsemwaveSlice, f : Double) -> PhysicsemwaveSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_slice_add(a : PhysicsemwaveSlice, b : PhysicsemwaveSlice) -> PhysicsemwaveSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsemwaveSlice::add(self : PhysicsemwaveSlice, other : PhysicsemwaveSlice) -> PhysicsemwaveSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_em_wave_slice_copy(s : PhysicsemwaveSlice) -> PhysicsemwaveSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveSlice::copy(self : PhysicsemwaveSlice) -> PhysicsemwaveSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_slice_fill(s : PhysicsemwaveSlice, v : Double) -> PhysicsemwaveSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsemwaveSlice::fill(self : PhysicsemwaveSlice, v : Double) -> PhysicsemwaveSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_em_wave_slice_min(s : PhysicsemwaveSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsemwaveSlice::min(self : PhysicsemwaveSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_em_wave_slice_max(s : PhysicsemwaveSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsemwaveSlice::max(self : PhysicsemwaveSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_em_wave_slice_to_string(s : PhysicsemwaveSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsemwaveSlice::to_string(self : PhysicsemwaveSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

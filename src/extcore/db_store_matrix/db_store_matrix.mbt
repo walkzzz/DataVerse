@@ -351,45 +351,45 @@ pub fn db_store_matrix_frame_make(size : Int) -> DbstorematrixFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_frame_len(s : DbstorematrixFrame) -> Int { s.size }
+pub fn DbstorematrixFrame::len(self : DbstorematrixFrame) -> Int { self.size }
 
-pub fn db_store_matrix_frame_get(s : DbstorematrixFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixFrame::get(self : DbstorematrixFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_frame_set(s : DbstorematrixFrame, i : Int, v : Double) -> DbstorematrixFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixFrame::set(self : DbstorematrixFrame, i : Int, v : Double) -> DbstorematrixFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_frame_sum(s : DbstorematrixFrame) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixFrame::sum(self : DbstorematrixFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_frame_mean(s : DbstorematrixFrame) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixFrame::mean(self : DbstorematrixFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_frame_scale(s : DbstorematrixFrame, f : Double) -> DbstorematrixFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixFrame::scale(self : DbstorematrixFrame, f : Double) -> DbstorematrixFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_frame_add(a : DbstorematrixFrame, b : DbstorematrixFrame) -> DbstorematrixFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixFrame::add(self : DbstorematrixFrame, other : DbstorematrixFrame) -> DbstorematrixFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_frame_copy(s : DbstorematrixFrame) -> DbstorematrixFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixFrame::copy(self : DbstorematrixFrame) -> DbstorematrixFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_frame_fill(s : DbstorematrixFrame, v : Double) -> DbstorematrixFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixFrame::fill(self : DbstorematrixFrame, v : Double) -> DbstorematrixFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_frame_min(s : DbstorematrixFrame) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixFrame::min(self : DbstorematrixFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_frame_max(s : DbstorematrixFrame) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixFrame::max(self : DbstorematrixFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_frame_to_string(s : DbstorematrixFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixFrame::to_string(self : DbstorematrixFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixTable {
@@ -402,45 +402,45 @@ pub fn db_store_matrix_table_make(size : Int) -> DbstorematrixTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_table_len(s : DbstorematrixTable) -> Int { s.size }
+pub fn DbstorematrixTable::len(self : DbstorematrixTable) -> Int { self.size }
 
-pub fn db_store_matrix_table_get(s : DbstorematrixTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixTable::get(self : DbstorematrixTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_table_set(s : DbstorematrixTable, i : Int, v : Double) -> DbstorematrixTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixTable::set(self : DbstorematrixTable, i : Int, v : Double) -> DbstorematrixTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_table_sum(s : DbstorematrixTable) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixTable::sum(self : DbstorematrixTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_table_mean(s : DbstorematrixTable) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixTable::mean(self : DbstorematrixTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_table_scale(s : DbstorematrixTable, f : Double) -> DbstorematrixTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixTable::scale(self : DbstorematrixTable, f : Double) -> DbstorematrixTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_table_add(a : DbstorematrixTable, b : DbstorematrixTable) -> DbstorematrixTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixTable::add(self : DbstorematrixTable, other : DbstorematrixTable) -> DbstorematrixTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_table_copy(s : DbstorematrixTable) -> DbstorematrixTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixTable::copy(self : DbstorematrixTable) -> DbstorematrixTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_table_fill(s : DbstorematrixTable, v : Double) -> DbstorematrixTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixTable::fill(self : DbstorematrixTable, v : Double) -> DbstorematrixTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_table_min(s : DbstorematrixTable) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixTable::min(self : DbstorematrixTable) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_table_max(s : DbstorematrixTable) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixTable::max(self : DbstorematrixTable) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_table_to_string(s : DbstorematrixTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixTable::to_string(self : DbstorematrixTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixGraphN {
@@ -453,45 +453,45 @@ pub fn db_store_matrix_graphn_make(size : Int) -> DbstorematrixGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_graphn_len(s : DbstorematrixGraphN) -> Int { s.size }
+pub fn DbstorematrixGraphN::len(self : DbstorematrixGraphN) -> Int { self.size }
 
-pub fn db_store_matrix_graphn_get(s : DbstorematrixGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixGraphN::get(self : DbstorematrixGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_graphn_set(s : DbstorematrixGraphN, i : Int, v : Double) -> DbstorematrixGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixGraphN::set(self : DbstorematrixGraphN, i : Int, v : Double) -> DbstorematrixGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_graphn_sum(s : DbstorematrixGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixGraphN::sum(self : DbstorematrixGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_graphn_mean(s : DbstorematrixGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixGraphN::mean(self : DbstorematrixGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_graphn_scale(s : DbstorematrixGraphN, f : Double) -> DbstorematrixGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixGraphN::scale(self : DbstorematrixGraphN, f : Double) -> DbstorematrixGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_graphn_add(a : DbstorematrixGraphN, b : DbstorematrixGraphN) -> DbstorematrixGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixGraphN::add(self : DbstorematrixGraphN, other : DbstorematrixGraphN) -> DbstorematrixGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_graphn_copy(s : DbstorematrixGraphN) -> DbstorematrixGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixGraphN::copy(self : DbstorematrixGraphN) -> DbstorematrixGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_graphn_fill(s : DbstorematrixGraphN, v : Double) -> DbstorematrixGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixGraphN::fill(self : DbstorematrixGraphN, v : Double) -> DbstorematrixGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_graphn_min(s : DbstorematrixGraphN) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixGraphN::min(self : DbstorematrixGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_graphn_max(s : DbstorematrixGraphN) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixGraphN::max(self : DbstorematrixGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_graphn_to_string(s : DbstorematrixGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixGraphN::to_string(self : DbstorematrixGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixNode {
@@ -504,45 +504,45 @@ pub fn db_store_matrix_node_make(size : Int) -> DbstorematrixNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_node_len(s : DbstorematrixNode) -> Int { s.size }
+pub fn DbstorematrixNode::len(self : DbstorematrixNode) -> Int { self.size }
 
-pub fn db_store_matrix_node_get(s : DbstorematrixNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixNode::get(self : DbstorematrixNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_node_set(s : DbstorematrixNode, i : Int, v : Double) -> DbstorematrixNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixNode::set(self : DbstorematrixNode, i : Int, v : Double) -> DbstorematrixNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_node_sum(s : DbstorematrixNode) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixNode::sum(self : DbstorematrixNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_node_mean(s : DbstorematrixNode) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixNode::mean(self : DbstorematrixNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_node_scale(s : DbstorematrixNode, f : Double) -> DbstorematrixNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixNode::scale(self : DbstorematrixNode, f : Double) -> DbstorematrixNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_node_add(a : DbstorematrixNode, b : DbstorematrixNode) -> DbstorematrixNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixNode::add(self : DbstorematrixNode, other : DbstorematrixNode) -> DbstorematrixNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_node_copy(s : DbstorematrixNode) -> DbstorematrixNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixNode::copy(self : DbstorematrixNode) -> DbstorematrixNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_node_fill(s : DbstorematrixNode, v : Double) -> DbstorematrixNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixNode::fill(self : DbstorematrixNode, v : Double) -> DbstorematrixNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_node_min(s : DbstorematrixNode) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixNode::min(self : DbstorematrixNode) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_node_max(s : DbstorematrixNode) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixNode::max(self : DbstorematrixNode) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_node_to_string(s : DbstorematrixNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixNode::to_string(self : DbstorematrixNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixEdge {
@@ -555,45 +555,45 @@ pub fn db_store_matrix_edge_make(size : Int) -> DbstorematrixEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_edge_len(s : DbstorematrixEdge) -> Int { s.size }
+pub fn DbstorematrixEdge::len(self : DbstorematrixEdge) -> Int { self.size }
 
-pub fn db_store_matrix_edge_get(s : DbstorematrixEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixEdge::get(self : DbstorematrixEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_edge_set(s : DbstorematrixEdge, i : Int, v : Double) -> DbstorematrixEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixEdge::set(self : DbstorematrixEdge, i : Int, v : Double) -> DbstorematrixEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_edge_sum(s : DbstorematrixEdge) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixEdge::sum(self : DbstorematrixEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_edge_mean(s : DbstorematrixEdge) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixEdge::mean(self : DbstorematrixEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_edge_scale(s : DbstorematrixEdge, f : Double) -> DbstorematrixEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixEdge::scale(self : DbstorematrixEdge, f : Double) -> DbstorematrixEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_edge_add(a : DbstorematrixEdge, b : DbstorematrixEdge) -> DbstorematrixEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixEdge::add(self : DbstorematrixEdge, other : DbstorematrixEdge) -> DbstorematrixEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_edge_copy(s : DbstorematrixEdge) -> DbstorematrixEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixEdge::copy(self : DbstorematrixEdge) -> DbstorematrixEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_edge_fill(s : DbstorematrixEdge, v : Double) -> DbstorematrixEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixEdge::fill(self : DbstorematrixEdge, v : Double) -> DbstorematrixEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_edge_min(s : DbstorematrixEdge) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixEdge::min(self : DbstorematrixEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_edge_max(s : DbstorematrixEdge) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixEdge::max(self : DbstorematrixEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_edge_to_string(s : DbstorematrixEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixEdge::to_string(self : DbstorematrixEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixPath {
@@ -606,45 +606,45 @@ pub fn db_store_matrix_path_make(size : Int) -> DbstorematrixPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_path_len(s : DbstorematrixPath) -> Int { s.size }
+pub fn DbstorematrixPath::len(self : DbstorematrixPath) -> Int { self.size }
 
-pub fn db_store_matrix_path_get(s : DbstorematrixPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixPath::get(self : DbstorematrixPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_path_set(s : DbstorematrixPath, i : Int, v : Double) -> DbstorematrixPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixPath::set(self : DbstorematrixPath, i : Int, v : Double) -> DbstorematrixPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_path_sum(s : DbstorematrixPath) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixPath::sum(self : DbstorematrixPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_path_mean(s : DbstorematrixPath) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixPath::mean(self : DbstorematrixPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_path_scale(s : DbstorematrixPath, f : Double) -> DbstorematrixPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixPath::scale(self : DbstorematrixPath, f : Double) -> DbstorematrixPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_path_add(a : DbstorematrixPath, b : DbstorematrixPath) -> DbstorematrixPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixPath::add(self : DbstorematrixPath, other : DbstorematrixPath) -> DbstorematrixPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_path_copy(s : DbstorematrixPath) -> DbstorematrixPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixPath::copy(self : DbstorematrixPath) -> DbstorematrixPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_path_fill(s : DbstorematrixPath, v : Double) -> DbstorematrixPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixPath::fill(self : DbstorematrixPath, v : Double) -> DbstorematrixPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_path_min(s : DbstorematrixPath) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixPath::min(self : DbstorematrixPath) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_path_max(s : DbstorematrixPath) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixPath::max(self : DbstorematrixPath) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_path_to_string(s : DbstorematrixPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixPath::to_string(self : DbstorematrixPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixCluster {
@@ -657,45 +657,45 @@ pub fn db_store_matrix_cluster_make(size : Int) -> DbstorematrixCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_cluster_len(s : DbstorematrixCluster) -> Int { s.size }
+pub fn DbstorematrixCluster::len(self : DbstorematrixCluster) -> Int { self.size }
 
-pub fn db_store_matrix_cluster_get(s : DbstorematrixCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixCluster::get(self : DbstorematrixCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_cluster_set(s : DbstorematrixCluster, i : Int, v : Double) -> DbstorematrixCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixCluster::set(self : DbstorematrixCluster, i : Int, v : Double) -> DbstorematrixCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cluster_sum(s : DbstorematrixCluster) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixCluster::sum(self : DbstorematrixCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_cluster_mean(s : DbstorematrixCluster) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixCluster::mean(self : DbstorematrixCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_cluster_scale(s : DbstorematrixCluster, f : Double) -> DbstorematrixCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixCluster::scale(self : DbstorematrixCluster, f : Double) -> DbstorematrixCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cluster_add(a : DbstorematrixCluster, b : DbstorematrixCluster) -> DbstorematrixCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixCluster::add(self : DbstorematrixCluster, other : DbstorematrixCluster) -> DbstorematrixCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_cluster_copy(s : DbstorematrixCluster) -> DbstorematrixCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixCluster::copy(self : DbstorematrixCluster) -> DbstorematrixCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cluster_fill(s : DbstorematrixCluster, v : Double) -> DbstorematrixCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixCluster::fill(self : DbstorematrixCluster, v : Double) -> DbstorematrixCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cluster_min(s : DbstorematrixCluster) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixCluster::min(self : DbstorematrixCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_cluster_max(s : DbstorematrixCluster) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixCluster::max(self : DbstorematrixCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_cluster_to_string(s : DbstorematrixCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixCluster::to_string(self : DbstorematrixCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixModel {
@@ -708,45 +708,45 @@ pub fn db_store_matrix_model_make(size : Int) -> DbstorematrixModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_model_len(s : DbstorematrixModel) -> Int { s.size }
+pub fn DbstorematrixModel::len(self : DbstorematrixModel) -> Int { self.size }
 
-pub fn db_store_matrix_model_get(s : DbstorematrixModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixModel::get(self : DbstorematrixModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_model_set(s : DbstorematrixModel, i : Int, v : Double) -> DbstorematrixModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixModel::set(self : DbstorematrixModel, i : Int, v : Double) -> DbstorematrixModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_model_sum(s : DbstorematrixModel) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixModel::sum(self : DbstorematrixModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_model_mean(s : DbstorematrixModel) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixModel::mean(self : DbstorematrixModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_model_scale(s : DbstorematrixModel, f : Double) -> DbstorematrixModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixModel::scale(self : DbstorematrixModel, f : Double) -> DbstorematrixModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_model_add(a : DbstorematrixModel, b : DbstorematrixModel) -> DbstorematrixModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixModel::add(self : DbstorematrixModel, other : DbstorematrixModel) -> DbstorematrixModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_model_copy(s : DbstorematrixModel) -> DbstorematrixModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixModel::copy(self : DbstorematrixModel) -> DbstorematrixModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_model_fill(s : DbstorematrixModel, v : Double) -> DbstorematrixModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixModel::fill(self : DbstorematrixModel, v : Double) -> DbstorematrixModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_model_min(s : DbstorematrixModel) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixModel::min(self : DbstorematrixModel) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_model_max(s : DbstorematrixModel) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixModel::max(self : DbstorematrixModel) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_model_to_string(s : DbstorematrixModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixModel::to_string(self : DbstorematrixModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixLayer {
@@ -759,45 +759,45 @@ pub fn db_store_matrix_layer_make(size : Int) -> DbstorematrixLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_layer_len(s : DbstorematrixLayer) -> Int { s.size }
+pub fn DbstorematrixLayer::len(self : DbstorematrixLayer) -> Int { self.size }
 
-pub fn db_store_matrix_layer_get(s : DbstorematrixLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixLayer::get(self : DbstorematrixLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_layer_set(s : DbstorematrixLayer, i : Int, v : Double) -> DbstorematrixLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixLayer::set(self : DbstorematrixLayer, i : Int, v : Double) -> DbstorematrixLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_layer_sum(s : DbstorematrixLayer) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixLayer::sum(self : DbstorematrixLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_layer_mean(s : DbstorematrixLayer) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixLayer::mean(self : DbstorematrixLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_layer_scale(s : DbstorematrixLayer, f : Double) -> DbstorematrixLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixLayer::scale(self : DbstorematrixLayer, f : Double) -> DbstorematrixLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_layer_add(a : DbstorematrixLayer, b : DbstorematrixLayer) -> DbstorematrixLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixLayer::add(self : DbstorematrixLayer, other : DbstorematrixLayer) -> DbstorematrixLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_layer_copy(s : DbstorematrixLayer) -> DbstorematrixLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixLayer::copy(self : DbstorematrixLayer) -> DbstorematrixLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_layer_fill(s : DbstorematrixLayer, v : Double) -> DbstorematrixLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixLayer::fill(self : DbstorematrixLayer, v : Double) -> DbstorematrixLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_layer_min(s : DbstorematrixLayer) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixLayer::min(self : DbstorematrixLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_layer_max(s : DbstorematrixLayer) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixLayer::max(self : DbstorematrixLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_layer_to_string(s : DbstorematrixLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixLayer::to_string(self : DbstorematrixLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixBuffer {
@@ -810,45 +810,45 @@ pub fn db_store_matrix_buffer_make(size : Int) -> DbstorematrixBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_buffer_len(s : DbstorematrixBuffer) -> Int { s.size }
+pub fn DbstorematrixBuffer::len(self : DbstorematrixBuffer) -> Int { self.size }
 
-pub fn db_store_matrix_buffer_get(s : DbstorematrixBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixBuffer::get(self : DbstorematrixBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_buffer_set(s : DbstorematrixBuffer, i : Int, v : Double) -> DbstorematrixBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixBuffer::set(self : DbstorematrixBuffer, i : Int, v : Double) -> DbstorematrixBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_buffer_sum(s : DbstorematrixBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixBuffer::sum(self : DbstorematrixBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_buffer_mean(s : DbstorematrixBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixBuffer::mean(self : DbstorematrixBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_buffer_scale(s : DbstorematrixBuffer, f : Double) -> DbstorematrixBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixBuffer::scale(self : DbstorematrixBuffer, f : Double) -> DbstorematrixBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_buffer_add(a : DbstorematrixBuffer, b : DbstorematrixBuffer) -> DbstorematrixBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixBuffer::add(self : DbstorematrixBuffer, other : DbstorematrixBuffer) -> DbstorematrixBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_buffer_copy(s : DbstorematrixBuffer) -> DbstorematrixBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixBuffer::copy(self : DbstorematrixBuffer) -> DbstorematrixBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_buffer_fill(s : DbstorematrixBuffer, v : Double) -> DbstorematrixBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixBuffer::fill(self : DbstorematrixBuffer, v : Double) -> DbstorematrixBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_buffer_min(s : DbstorematrixBuffer) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixBuffer::min(self : DbstorematrixBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_buffer_max(s : DbstorematrixBuffer) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixBuffer::max(self : DbstorematrixBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_buffer_to_string(s : DbstorematrixBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixBuffer::to_string(self : DbstorematrixBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixCursor {
@@ -861,45 +861,45 @@ pub fn db_store_matrix_cursor_make(size : Int) -> DbstorematrixCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_cursor_len(s : DbstorematrixCursor) -> Int { s.size }
+pub fn DbstorematrixCursor::len(self : DbstorematrixCursor) -> Int { self.size }
 
-pub fn db_store_matrix_cursor_get(s : DbstorematrixCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixCursor::get(self : DbstorematrixCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_cursor_set(s : DbstorematrixCursor, i : Int, v : Double) -> DbstorematrixCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixCursor::set(self : DbstorematrixCursor, i : Int, v : Double) -> DbstorematrixCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cursor_sum(s : DbstorematrixCursor) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixCursor::sum(self : DbstorematrixCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_cursor_mean(s : DbstorematrixCursor) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixCursor::mean(self : DbstorematrixCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_cursor_scale(s : DbstorematrixCursor, f : Double) -> DbstorematrixCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixCursor::scale(self : DbstorematrixCursor, f : Double) -> DbstorematrixCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cursor_add(a : DbstorematrixCursor, b : DbstorematrixCursor) -> DbstorematrixCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixCursor::add(self : DbstorematrixCursor, other : DbstorematrixCursor) -> DbstorematrixCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_cursor_copy(s : DbstorematrixCursor) -> DbstorematrixCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixCursor::copy(self : DbstorematrixCursor) -> DbstorematrixCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cursor_fill(s : DbstorematrixCursor, v : Double) -> DbstorematrixCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixCursor::fill(self : DbstorematrixCursor, v : Double) -> DbstorematrixCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_cursor_min(s : DbstorematrixCursor) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixCursor::min(self : DbstorematrixCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_cursor_max(s : DbstorematrixCursor) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixCursor::max(self : DbstorematrixCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_cursor_to_string(s : DbstorematrixCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixCursor::to_string(self : DbstorematrixCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixView {
@@ -912,45 +912,45 @@ pub fn db_store_matrix_view_make(size : Int) -> DbstorematrixView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_view_len(s : DbstorematrixView) -> Int { s.size }
+pub fn DbstorematrixView::len(self : DbstorematrixView) -> Int { self.size }
 
-pub fn db_store_matrix_view_get(s : DbstorematrixView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixView::get(self : DbstorematrixView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_view_set(s : DbstorematrixView, i : Int, v : Double) -> DbstorematrixView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixView::set(self : DbstorematrixView, i : Int, v : Double) -> DbstorematrixView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_view_sum(s : DbstorematrixView) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixView::sum(self : DbstorematrixView) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_view_mean(s : DbstorematrixView) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixView::mean(self : DbstorematrixView) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_view_scale(s : DbstorematrixView, f : Double) -> DbstorematrixView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixView::scale(self : DbstorematrixView, f : Double) -> DbstorematrixView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_view_add(a : DbstorematrixView, b : DbstorematrixView) -> DbstorematrixView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixView::add(self : DbstorematrixView, other : DbstorematrixView) -> DbstorematrixView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_view_copy(s : DbstorematrixView) -> DbstorematrixView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixView::copy(self : DbstorematrixView) -> DbstorematrixView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_view_fill(s : DbstorematrixView, v : Double) -> DbstorematrixView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixView::fill(self : DbstorematrixView, v : Double) -> DbstorematrixView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_view_min(s : DbstorematrixView) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixView::min(self : DbstorematrixView) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_view_max(s : DbstorematrixView) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixView::max(self : DbstorematrixView) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_view_to_string(s : DbstorematrixView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixView::to_string(self : DbstorematrixView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixRange {
@@ -963,45 +963,45 @@ pub fn db_store_matrix_range_make(size : Int) -> DbstorematrixRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_range_len(s : DbstorematrixRange) -> Int { s.size }
+pub fn DbstorematrixRange::len(self : DbstorematrixRange) -> Int { self.size }
 
-pub fn db_store_matrix_range_get(s : DbstorematrixRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixRange::get(self : DbstorematrixRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_range_set(s : DbstorematrixRange, i : Int, v : Double) -> DbstorematrixRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixRange::set(self : DbstorematrixRange, i : Int, v : Double) -> DbstorematrixRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_range_sum(s : DbstorematrixRange) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixRange::sum(self : DbstorematrixRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_range_mean(s : DbstorematrixRange) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixRange::mean(self : DbstorematrixRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_range_scale(s : DbstorematrixRange, f : Double) -> DbstorematrixRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixRange::scale(self : DbstorematrixRange, f : Double) -> DbstorematrixRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_range_add(a : DbstorematrixRange, b : DbstorematrixRange) -> DbstorematrixRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixRange::add(self : DbstorematrixRange, other : DbstorematrixRange) -> DbstorematrixRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_range_copy(s : DbstorematrixRange) -> DbstorematrixRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixRange::copy(self : DbstorematrixRange) -> DbstorematrixRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_range_fill(s : DbstorematrixRange, v : Double) -> DbstorematrixRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixRange::fill(self : DbstorematrixRange, v : Double) -> DbstorematrixRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_range_min(s : DbstorematrixRange) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixRange::min(self : DbstorematrixRange) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_range_max(s : DbstorematrixRange) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixRange::max(self : DbstorematrixRange) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_range_to_string(s : DbstorematrixRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixRange::to_string(self : DbstorematrixRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbstorematrixSlice {
@@ -1014,44 +1014,44 @@ pub fn db_store_matrix_slice_make(size : Int) -> DbstorematrixSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_store_matrix_slice_len(s : DbstorematrixSlice) -> Int { s.size }
+pub fn DbstorematrixSlice::len(self : DbstorematrixSlice) -> Int { self.size }
 
-pub fn db_store_matrix_slice_get(s : DbstorematrixSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbstorematrixSlice::get(self : DbstorematrixSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_store_matrix_slice_set(s : DbstorematrixSlice, i : Int, v : Double) -> DbstorematrixSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbstorematrixSlice::set(self : DbstorematrixSlice, i : Int, v : Double) -> DbstorematrixSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_slice_sum(s : DbstorematrixSlice) -> Double { @_common.sum(s.data) }
+pub fn DbstorematrixSlice::sum(self : DbstorematrixSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_store_matrix_slice_mean(s : DbstorematrixSlice) -> Double { @_common.mean(s.data) }
+pub fn DbstorematrixSlice::mean(self : DbstorematrixSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_store_matrix_slice_scale(s : DbstorematrixSlice, f : Double) -> DbstorematrixSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbstorematrixSlice::scale(self : DbstorematrixSlice, f : Double) -> DbstorematrixSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_slice_add(a : DbstorematrixSlice, b : DbstorematrixSlice) -> DbstorematrixSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbstorematrixSlice::add(self : DbstorematrixSlice, other : DbstorematrixSlice) -> DbstorematrixSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_store_matrix_slice_copy(s : DbstorematrixSlice) -> DbstorematrixSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbstorematrixSlice::copy(self : DbstorematrixSlice) -> DbstorematrixSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_slice_fill(s : DbstorematrixSlice, v : Double) -> DbstorematrixSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbstorematrixSlice::fill(self : DbstorematrixSlice, v : Double) -> DbstorematrixSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_store_matrix_slice_min(s : DbstorematrixSlice) -> Double { @_common.min(s.data) }
+pub fn DbstorematrixSlice::min(self : DbstorematrixSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_store_matrix_slice_max(s : DbstorematrixSlice) -> Double { @_common.max(s.data) }
+pub fn DbstorematrixSlice::max(self : DbstorematrixSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_store_matrix_slice_to_string(s : DbstorematrixSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbstorematrixSlice::to_string(self : DbstorematrixSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

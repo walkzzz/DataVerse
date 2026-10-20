@@ -351,45 +351,45 @@ pub fn geo_buffer_bbox_frame_make(size : Int) -> GeobufferbboxFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_frame_len(s : GeobufferbboxFrame) -> Int { s.size }
+pub fn GeobufferbboxFrame::len(self : GeobufferbboxFrame) -> Int { self.size }
 
-pub fn geo_buffer_bbox_frame_get(s : GeobufferbboxFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxFrame::get(self : GeobufferbboxFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_frame_set(s : GeobufferbboxFrame, i : Int, v : Double) -> GeobufferbboxFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxFrame::set(self : GeobufferbboxFrame, i : Int, v : Double) -> GeobufferbboxFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_frame_sum(s : GeobufferbboxFrame) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxFrame::sum(self : GeobufferbboxFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_frame_mean(s : GeobufferbboxFrame) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxFrame::mean(self : GeobufferbboxFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_frame_scale(s : GeobufferbboxFrame, f : Double) -> GeobufferbboxFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxFrame::scale(self : GeobufferbboxFrame, f : Double) -> GeobufferbboxFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_frame_add(a : GeobufferbboxFrame, b : GeobufferbboxFrame) -> GeobufferbboxFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxFrame::add(self : GeobufferbboxFrame, other : GeobufferbboxFrame) -> GeobufferbboxFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_frame_copy(s : GeobufferbboxFrame) -> GeobufferbboxFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxFrame::copy(self : GeobufferbboxFrame) -> GeobufferbboxFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_frame_fill(s : GeobufferbboxFrame, v : Double) -> GeobufferbboxFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxFrame::fill(self : GeobufferbboxFrame, v : Double) -> GeobufferbboxFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_frame_min(s : GeobufferbboxFrame) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxFrame::min(self : GeobufferbboxFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_frame_max(s : GeobufferbboxFrame) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxFrame::max(self : GeobufferbboxFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_frame_to_string(s : GeobufferbboxFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxFrame::to_string(self : GeobufferbboxFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxTable {
@@ -402,45 +402,45 @@ pub fn geo_buffer_bbox_table_make(size : Int) -> GeobufferbboxTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_table_len(s : GeobufferbboxTable) -> Int { s.size }
+pub fn GeobufferbboxTable::len(self : GeobufferbboxTable) -> Int { self.size }
 
-pub fn geo_buffer_bbox_table_get(s : GeobufferbboxTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxTable::get(self : GeobufferbboxTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_table_set(s : GeobufferbboxTable, i : Int, v : Double) -> GeobufferbboxTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxTable::set(self : GeobufferbboxTable, i : Int, v : Double) -> GeobufferbboxTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_table_sum(s : GeobufferbboxTable) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxTable::sum(self : GeobufferbboxTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_table_mean(s : GeobufferbboxTable) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxTable::mean(self : GeobufferbboxTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_table_scale(s : GeobufferbboxTable, f : Double) -> GeobufferbboxTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxTable::scale(self : GeobufferbboxTable, f : Double) -> GeobufferbboxTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_table_add(a : GeobufferbboxTable, b : GeobufferbboxTable) -> GeobufferbboxTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxTable::add(self : GeobufferbboxTable, other : GeobufferbboxTable) -> GeobufferbboxTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_table_copy(s : GeobufferbboxTable) -> GeobufferbboxTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxTable::copy(self : GeobufferbboxTable) -> GeobufferbboxTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_table_fill(s : GeobufferbboxTable, v : Double) -> GeobufferbboxTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxTable::fill(self : GeobufferbboxTable, v : Double) -> GeobufferbboxTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_table_min(s : GeobufferbboxTable) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxTable::min(self : GeobufferbboxTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_table_max(s : GeobufferbboxTable) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxTable::max(self : GeobufferbboxTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_table_to_string(s : GeobufferbboxTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxTable::to_string(self : GeobufferbboxTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxGraphN {
@@ -453,45 +453,45 @@ pub fn geo_buffer_bbox_graphn_make(size : Int) -> GeobufferbboxGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_graphn_len(s : GeobufferbboxGraphN) -> Int { s.size }
+pub fn GeobufferbboxGraphN::len(self : GeobufferbboxGraphN) -> Int { self.size }
 
-pub fn geo_buffer_bbox_graphn_get(s : GeobufferbboxGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxGraphN::get(self : GeobufferbboxGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_graphn_set(s : GeobufferbboxGraphN, i : Int, v : Double) -> GeobufferbboxGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxGraphN::set(self : GeobufferbboxGraphN, i : Int, v : Double) -> GeobufferbboxGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_graphn_sum(s : GeobufferbboxGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxGraphN::sum(self : GeobufferbboxGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_graphn_mean(s : GeobufferbboxGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxGraphN::mean(self : GeobufferbboxGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_graphn_scale(s : GeobufferbboxGraphN, f : Double) -> GeobufferbboxGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxGraphN::scale(self : GeobufferbboxGraphN, f : Double) -> GeobufferbboxGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_graphn_add(a : GeobufferbboxGraphN, b : GeobufferbboxGraphN) -> GeobufferbboxGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxGraphN::add(self : GeobufferbboxGraphN, other : GeobufferbboxGraphN) -> GeobufferbboxGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_graphn_copy(s : GeobufferbboxGraphN) -> GeobufferbboxGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxGraphN::copy(self : GeobufferbboxGraphN) -> GeobufferbboxGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_graphn_fill(s : GeobufferbboxGraphN, v : Double) -> GeobufferbboxGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxGraphN::fill(self : GeobufferbboxGraphN, v : Double) -> GeobufferbboxGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_graphn_min(s : GeobufferbboxGraphN) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxGraphN::min(self : GeobufferbboxGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_graphn_max(s : GeobufferbboxGraphN) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxGraphN::max(self : GeobufferbboxGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_graphn_to_string(s : GeobufferbboxGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxGraphN::to_string(self : GeobufferbboxGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxNode {
@@ -504,45 +504,45 @@ pub fn geo_buffer_bbox_node_make(size : Int) -> GeobufferbboxNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_node_len(s : GeobufferbboxNode) -> Int { s.size }
+pub fn GeobufferbboxNode::len(self : GeobufferbboxNode) -> Int { self.size }
 
-pub fn geo_buffer_bbox_node_get(s : GeobufferbboxNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxNode::get(self : GeobufferbboxNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_node_set(s : GeobufferbboxNode, i : Int, v : Double) -> GeobufferbboxNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxNode::set(self : GeobufferbboxNode, i : Int, v : Double) -> GeobufferbboxNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_node_sum(s : GeobufferbboxNode) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxNode::sum(self : GeobufferbboxNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_node_mean(s : GeobufferbboxNode) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxNode::mean(self : GeobufferbboxNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_node_scale(s : GeobufferbboxNode, f : Double) -> GeobufferbboxNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxNode::scale(self : GeobufferbboxNode, f : Double) -> GeobufferbboxNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_node_add(a : GeobufferbboxNode, b : GeobufferbboxNode) -> GeobufferbboxNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxNode::add(self : GeobufferbboxNode, other : GeobufferbboxNode) -> GeobufferbboxNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_node_copy(s : GeobufferbboxNode) -> GeobufferbboxNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxNode::copy(self : GeobufferbboxNode) -> GeobufferbboxNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_node_fill(s : GeobufferbboxNode, v : Double) -> GeobufferbboxNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxNode::fill(self : GeobufferbboxNode, v : Double) -> GeobufferbboxNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_node_min(s : GeobufferbboxNode) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxNode::min(self : GeobufferbboxNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_node_max(s : GeobufferbboxNode) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxNode::max(self : GeobufferbboxNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_node_to_string(s : GeobufferbboxNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxNode::to_string(self : GeobufferbboxNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxEdge {
@@ -555,45 +555,45 @@ pub fn geo_buffer_bbox_edge_make(size : Int) -> GeobufferbboxEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_edge_len(s : GeobufferbboxEdge) -> Int { s.size }
+pub fn GeobufferbboxEdge::len(self : GeobufferbboxEdge) -> Int { self.size }
 
-pub fn geo_buffer_bbox_edge_get(s : GeobufferbboxEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxEdge::get(self : GeobufferbboxEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_edge_set(s : GeobufferbboxEdge, i : Int, v : Double) -> GeobufferbboxEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxEdge::set(self : GeobufferbboxEdge, i : Int, v : Double) -> GeobufferbboxEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_edge_sum(s : GeobufferbboxEdge) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxEdge::sum(self : GeobufferbboxEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_edge_mean(s : GeobufferbboxEdge) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxEdge::mean(self : GeobufferbboxEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_edge_scale(s : GeobufferbboxEdge, f : Double) -> GeobufferbboxEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxEdge::scale(self : GeobufferbboxEdge, f : Double) -> GeobufferbboxEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_edge_add(a : GeobufferbboxEdge, b : GeobufferbboxEdge) -> GeobufferbboxEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxEdge::add(self : GeobufferbboxEdge, other : GeobufferbboxEdge) -> GeobufferbboxEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_edge_copy(s : GeobufferbboxEdge) -> GeobufferbboxEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxEdge::copy(self : GeobufferbboxEdge) -> GeobufferbboxEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_edge_fill(s : GeobufferbboxEdge, v : Double) -> GeobufferbboxEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxEdge::fill(self : GeobufferbboxEdge, v : Double) -> GeobufferbboxEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_edge_min(s : GeobufferbboxEdge) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxEdge::min(self : GeobufferbboxEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_edge_max(s : GeobufferbboxEdge) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxEdge::max(self : GeobufferbboxEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_edge_to_string(s : GeobufferbboxEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxEdge::to_string(self : GeobufferbboxEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxPath {
@@ -606,45 +606,45 @@ pub fn geo_buffer_bbox_path_make(size : Int) -> GeobufferbboxPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_path_len(s : GeobufferbboxPath) -> Int { s.size }
+pub fn GeobufferbboxPath::len(self : GeobufferbboxPath) -> Int { self.size }
 
-pub fn geo_buffer_bbox_path_get(s : GeobufferbboxPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxPath::get(self : GeobufferbboxPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_path_set(s : GeobufferbboxPath, i : Int, v : Double) -> GeobufferbboxPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxPath::set(self : GeobufferbboxPath, i : Int, v : Double) -> GeobufferbboxPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_path_sum(s : GeobufferbboxPath) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxPath::sum(self : GeobufferbboxPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_path_mean(s : GeobufferbboxPath) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxPath::mean(self : GeobufferbboxPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_path_scale(s : GeobufferbboxPath, f : Double) -> GeobufferbboxPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxPath::scale(self : GeobufferbboxPath, f : Double) -> GeobufferbboxPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_path_add(a : GeobufferbboxPath, b : GeobufferbboxPath) -> GeobufferbboxPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxPath::add(self : GeobufferbboxPath, other : GeobufferbboxPath) -> GeobufferbboxPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_path_copy(s : GeobufferbboxPath) -> GeobufferbboxPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxPath::copy(self : GeobufferbboxPath) -> GeobufferbboxPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_path_fill(s : GeobufferbboxPath, v : Double) -> GeobufferbboxPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxPath::fill(self : GeobufferbboxPath, v : Double) -> GeobufferbboxPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_path_min(s : GeobufferbboxPath) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxPath::min(self : GeobufferbboxPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_path_max(s : GeobufferbboxPath) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxPath::max(self : GeobufferbboxPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_path_to_string(s : GeobufferbboxPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxPath::to_string(self : GeobufferbboxPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxCluster {
@@ -657,45 +657,45 @@ pub fn geo_buffer_bbox_cluster_make(size : Int) -> GeobufferbboxCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_cluster_len(s : GeobufferbboxCluster) -> Int { s.size }
+pub fn GeobufferbboxCluster::len(self : GeobufferbboxCluster) -> Int { self.size }
 
-pub fn geo_buffer_bbox_cluster_get(s : GeobufferbboxCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxCluster::get(self : GeobufferbboxCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_cluster_set(s : GeobufferbboxCluster, i : Int, v : Double) -> GeobufferbboxCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxCluster::set(self : GeobufferbboxCluster, i : Int, v : Double) -> GeobufferbboxCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cluster_sum(s : GeobufferbboxCluster) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxCluster::sum(self : GeobufferbboxCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_cluster_mean(s : GeobufferbboxCluster) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxCluster::mean(self : GeobufferbboxCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_cluster_scale(s : GeobufferbboxCluster, f : Double) -> GeobufferbboxCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxCluster::scale(self : GeobufferbboxCluster, f : Double) -> GeobufferbboxCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cluster_add(a : GeobufferbboxCluster, b : GeobufferbboxCluster) -> GeobufferbboxCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxCluster::add(self : GeobufferbboxCluster, other : GeobufferbboxCluster) -> GeobufferbboxCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cluster_copy(s : GeobufferbboxCluster) -> GeobufferbboxCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxCluster::copy(self : GeobufferbboxCluster) -> GeobufferbboxCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cluster_fill(s : GeobufferbboxCluster, v : Double) -> GeobufferbboxCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxCluster::fill(self : GeobufferbboxCluster, v : Double) -> GeobufferbboxCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cluster_min(s : GeobufferbboxCluster) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxCluster::min(self : GeobufferbboxCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_cluster_max(s : GeobufferbboxCluster) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxCluster::max(self : GeobufferbboxCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_cluster_to_string(s : GeobufferbboxCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxCluster::to_string(self : GeobufferbboxCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxModel {
@@ -708,45 +708,45 @@ pub fn geo_buffer_bbox_model_make(size : Int) -> GeobufferbboxModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_model_len(s : GeobufferbboxModel) -> Int { s.size }
+pub fn GeobufferbboxModel::len(self : GeobufferbboxModel) -> Int { self.size }
 
-pub fn geo_buffer_bbox_model_get(s : GeobufferbboxModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxModel::get(self : GeobufferbboxModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_model_set(s : GeobufferbboxModel, i : Int, v : Double) -> GeobufferbboxModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxModel::set(self : GeobufferbboxModel, i : Int, v : Double) -> GeobufferbboxModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_model_sum(s : GeobufferbboxModel) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxModel::sum(self : GeobufferbboxModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_model_mean(s : GeobufferbboxModel) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxModel::mean(self : GeobufferbboxModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_model_scale(s : GeobufferbboxModel, f : Double) -> GeobufferbboxModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxModel::scale(self : GeobufferbboxModel, f : Double) -> GeobufferbboxModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_model_add(a : GeobufferbboxModel, b : GeobufferbboxModel) -> GeobufferbboxModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxModel::add(self : GeobufferbboxModel, other : GeobufferbboxModel) -> GeobufferbboxModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_model_copy(s : GeobufferbboxModel) -> GeobufferbboxModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxModel::copy(self : GeobufferbboxModel) -> GeobufferbboxModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_model_fill(s : GeobufferbboxModel, v : Double) -> GeobufferbboxModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxModel::fill(self : GeobufferbboxModel, v : Double) -> GeobufferbboxModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_model_min(s : GeobufferbboxModel) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxModel::min(self : GeobufferbboxModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_model_max(s : GeobufferbboxModel) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxModel::max(self : GeobufferbboxModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_model_to_string(s : GeobufferbboxModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxModel::to_string(self : GeobufferbboxModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxLayer {
@@ -759,45 +759,45 @@ pub fn geo_buffer_bbox_layer_make(size : Int) -> GeobufferbboxLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_layer_len(s : GeobufferbboxLayer) -> Int { s.size }
+pub fn GeobufferbboxLayer::len(self : GeobufferbboxLayer) -> Int { self.size }
 
-pub fn geo_buffer_bbox_layer_get(s : GeobufferbboxLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxLayer::get(self : GeobufferbboxLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_layer_set(s : GeobufferbboxLayer, i : Int, v : Double) -> GeobufferbboxLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxLayer::set(self : GeobufferbboxLayer, i : Int, v : Double) -> GeobufferbboxLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_layer_sum(s : GeobufferbboxLayer) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxLayer::sum(self : GeobufferbboxLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_layer_mean(s : GeobufferbboxLayer) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxLayer::mean(self : GeobufferbboxLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_layer_scale(s : GeobufferbboxLayer, f : Double) -> GeobufferbboxLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxLayer::scale(self : GeobufferbboxLayer, f : Double) -> GeobufferbboxLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_layer_add(a : GeobufferbboxLayer, b : GeobufferbboxLayer) -> GeobufferbboxLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxLayer::add(self : GeobufferbboxLayer, other : GeobufferbboxLayer) -> GeobufferbboxLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_layer_copy(s : GeobufferbboxLayer) -> GeobufferbboxLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxLayer::copy(self : GeobufferbboxLayer) -> GeobufferbboxLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_layer_fill(s : GeobufferbboxLayer, v : Double) -> GeobufferbboxLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxLayer::fill(self : GeobufferbboxLayer, v : Double) -> GeobufferbboxLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_layer_min(s : GeobufferbboxLayer) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxLayer::min(self : GeobufferbboxLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_layer_max(s : GeobufferbboxLayer) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxLayer::max(self : GeobufferbboxLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_layer_to_string(s : GeobufferbboxLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxLayer::to_string(self : GeobufferbboxLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxBuffer {
@@ -810,45 +810,45 @@ pub fn geo_buffer_bbox_buffer_make(size : Int) -> GeobufferbboxBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_buffer_len(s : GeobufferbboxBuffer) -> Int { s.size }
+pub fn GeobufferbboxBuffer::len(self : GeobufferbboxBuffer) -> Int { self.size }
 
-pub fn geo_buffer_bbox_buffer_get(s : GeobufferbboxBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxBuffer::get(self : GeobufferbboxBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_buffer_set(s : GeobufferbboxBuffer, i : Int, v : Double) -> GeobufferbboxBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxBuffer::set(self : GeobufferbboxBuffer, i : Int, v : Double) -> GeobufferbboxBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_buffer_sum(s : GeobufferbboxBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxBuffer::sum(self : GeobufferbboxBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_buffer_mean(s : GeobufferbboxBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxBuffer::mean(self : GeobufferbboxBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_buffer_scale(s : GeobufferbboxBuffer, f : Double) -> GeobufferbboxBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxBuffer::scale(self : GeobufferbboxBuffer, f : Double) -> GeobufferbboxBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_buffer_add(a : GeobufferbboxBuffer, b : GeobufferbboxBuffer) -> GeobufferbboxBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxBuffer::add(self : GeobufferbboxBuffer, other : GeobufferbboxBuffer) -> GeobufferbboxBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_buffer_copy(s : GeobufferbboxBuffer) -> GeobufferbboxBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxBuffer::copy(self : GeobufferbboxBuffer) -> GeobufferbboxBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_buffer_fill(s : GeobufferbboxBuffer, v : Double) -> GeobufferbboxBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxBuffer::fill(self : GeobufferbboxBuffer, v : Double) -> GeobufferbboxBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_buffer_min(s : GeobufferbboxBuffer) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxBuffer::min(self : GeobufferbboxBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_buffer_max(s : GeobufferbboxBuffer) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxBuffer::max(self : GeobufferbboxBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_buffer_to_string(s : GeobufferbboxBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxBuffer::to_string(self : GeobufferbboxBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxCursor {
@@ -861,45 +861,45 @@ pub fn geo_buffer_bbox_cursor_make(size : Int) -> GeobufferbboxCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_cursor_len(s : GeobufferbboxCursor) -> Int { s.size }
+pub fn GeobufferbboxCursor::len(self : GeobufferbboxCursor) -> Int { self.size }
 
-pub fn geo_buffer_bbox_cursor_get(s : GeobufferbboxCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxCursor::get(self : GeobufferbboxCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_cursor_set(s : GeobufferbboxCursor, i : Int, v : Double) -> GeobufferbboxCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxCursor::set(self : GeobufferbboxCursor, i : Int, v : Double) -> GeobufferbboxCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cursor_sum(s : GeobufferbboxCursor) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxCursor::sum(self : GeobufferbboxCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_cursor_mean(s : GeobufferbboxCursor) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxCursor::mean(self : GeobufferbboxCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_cursor_scale(s : GeobufferbboxCursor, f : Double) -> GeobufferbboxCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxCursor::scale(self : GeobufferbboxCursor, f : Double) -> GeobufferbboxCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cursor_add(a : GeobufferbboxCursor, b : GeobufferbboxCursor) -> GeobufferbboxCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxCursor::add(self : GeobufferbboxCursor, other : GeobufferbboxCursor) -> GeobufferbboxCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cursor_copy(s : GeobufferbboxCursor) -> GeobufferbboxCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxCursor::copy(self : GeobufferbboxCursor) -> GeobufferbboxCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cursor_fill(s : GeobufferbboxCursor, v : Double) -> GeobufferbboxCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxCursor::fill(self : GeobufferbboxCursor, v : Double) -> GeobufferbboxCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_cursor_min(s : GeobufferbboxCursor) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxCursor::min(self : GeobufferbboxCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_cursor_max(s : GeobufferbboxCursor) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxCursor::max(self : GeobufferbboxCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_cursor_to_string(s : GeobufferbboxCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxCursor::to_string(self : GeobufferbboxCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxView {
@@ -912,45 +912,45 @@ pub fn geo_buffer_bbox_view_make(size : Int) -> GeobufferbboxView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_view_len(s : GeobufferbboxView) -> Int { s.size }
+pub fn GeobufferbboxView::len(self : GeobufferbboxView) -> Int { self.size }
 
-pub fn geo_buffer_bbox_view_get(s : GeobufferbboxView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxView::get(self : GeobufferbboxView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_view_set(s : GeobufferbboxView, i : Int, v : Double) -> GeobufferbboxView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxView::set(self : GeobufferbboxView, i : Int, v : Double) -> GeobufferbboxView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_view_sum(s : GeobufferbboxView) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxView::sum(self : GeobufferbboxView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_view_mean(s : GeobufferbboxView) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxView::mean(self : GeobufferbboxView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_view_scale(s : GeobufferbboxView, f : Double) -> GeobufferbboxView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxView::scale(self : GeobufferbboxView, f : Double) -> GeobufferbboxView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_view_add(a : GeobufferbboxView, b : GeobufferbboxView) -> GeobufferbboxView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxView::add(self : GeobufferbboxView, other : GeobufferbboxView) -> GeobufferbboxView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_view_copy(s : GeobufferbboxView) -> GeobufferbboxView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxView::copy(self : GeobufferbboxView) -> GeobufferbboxView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_view_fill(s : GeobufferbboxView, v : Double) -> GeobufferbboxView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxView::fill(self : GeobufferbboxView, v : Double) -> GeobufferbboxView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_view_min(s : GeobufferbboxView) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxView::min(self : GeobufferbboxView) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_view_max(s : GeobufferbboxView) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxView::max(self : GeobufferbboxView) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_view_to_string(s : GeobufferbboxView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxView::to_string(self : GeobufferbboxView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxRange {
@@ -963,45 +963,45 @@ pub fn geo_buffer_bbox_range_make(size : Int) -> GeobufferbboxRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_range_len(s : GeobufferbboxRange) -> Int { s.size }
+pub fn GeobufferbboxRange::len(self : GeobufferbboxRange) -> Int { self.size }
 
-pub fn geo_buffer_bbox_range_get(s : GeobufferbboxRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxRange::get(self : GeobufferbboxRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_range_set(s : GeobufferbboxRange, i : Int, v : Double) -> GeobufferbboxRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxRange::set(self : GeobufferbboxRange, i : Int, v : Double) -> GeobufferbboxRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_range_sum(s : GeobufferbboxRange) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxRange::sum(self : GeobufferbboxRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_range_mean(s : GeobufferbboxRange) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxRange::mean(self : GeobufferbboxRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_range_scale(s : GeobufferbboxRange, f : Double) -> GeobufferbboxRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxRange::scale(self : GeobufferbboxRange, f : Double) -> GeobufferbboxRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_range_add(a : GeobufferbboxRange, b : GeobufferbboxRange) -> GeobufferbboxRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxRange::add(self : GeobufferbboxRange, other : GeobufferbboxRange) -> GeobufferbboxRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_range_copy(s : GeobufferbboxRange) -> GeobufferbboxRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxRange::copy(self : GeobufferbboxRange) -> GeobufferbboxRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_range_fill(s : GeobufferbboxRange, v : Double) -> GeobufferbboxRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxRange::fill(self : GeobufferbboxRange, v : Double) -> GeobufferbboxRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_range_min(s : GeobufferbboxRange) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxRange::min(self : GeobufferbboxRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_range_max(s : GeobufferbboxRange) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxRange::max(self : GeobufferbboxRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_range_to_string(s : GeobufferbboxRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxRange::to_string(self : GeobufferbboxRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_buffer_bbox_slice_make(size : Int) -> GeobufferbboxSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_bbox_slice_len(s : GeobufferbboxSlice) -> Int { s.size }
+pub fn GeobufferbboxSlice::len(self : GeobufferbboxSlice) -> Int { self.size }
 
-pub fn geo_buffer_bbox_slice_get(s : GeobufferbboxSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobufferbboxSlice::get(self : GeobufferbboxSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_bbox_slice_set(s : GeobufferbboxSlice, i : Int, v : Double) -> GeobufferbboxSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobufferbboxSlice::set(self : GeobufferbboxSlice, i : Int, v : Double) -> GeobufferbboxSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_slice_sum(s : GeobufferbboxSlice) -> Double { @_common.sum(s.data) }
+pub fn GeobufferbboxSlice::sum(self : GeobufferbboxSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_bbox_slice_mean(s : GeobufferbboxSlice) -> Double { @_common.mean(s.data) }
+pub fn GeobufferbboxSlice::mean(self : GeobufferbboxSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_bbox_slice_scale(s : GeobufferbboxSlice, f : Double) -> GeobufferbboxSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobufferbboxSlice::scale(self : GeobufferbboxSlice, f : Double) -> GeobufferbboxSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_slice_add(a : GeobufferbboxSlice, b : GeobufferbboxSlice) -> GeobufferbboxSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobufferbboxSlice::add(self : GeobufferbboxSlice, other : GeobufferbboxSlice) -> GeobufferbboxSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_slice_copy(s : GeobufferbboxSlice) -> GeobufferbboxSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobufferbboxSlice::copy(self : GeobufferbboxSlice) -> GeobufferbboxSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_slice_fill(s : GeobufferbboxSlice, v : Double) -> GeobufferbboxSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobufferbboxSlice::fill(self : GeobufferbboxSlice, v : Double) -> GeobufferbboxSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_bbox_slice_min(s : GeobufferbboxSlice) -> Double { @_common.min(s.data) }
+pub fn GeobufferbboxSlice::min(self : GeobufferbboxSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_bbox_slice_max(s : GeobufferbboxSlice) -> Double { @_common.max(s.data) }
+pub fn GeobufferbboxSlice::max(self : GeobufferbboxSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_bbox_slice_to_string(s : GeobufferbboxSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobufferbboxSlice::to_string(self : GeobufferbboxSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

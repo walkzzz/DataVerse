@@ -351,45 +351,45 @@ pub fn image_morph_open_frame_make(size : Int) -> ImagemorphopenFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_frame_len(s : ImagemorphopenFrame) -> Int { s.size }
+pub fn ImagemorphopenFrame::len(self : ImagemorphopenFrame) -> Int { self.size }
 
-pub fn image_morph_open_frame_get(s : ImagemorphopenFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenFrame::get(self : ImagemorphopenFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_frame_set(s : ImagemorphopenFrame, i : Int, v : Double) -> ImagemorphopenFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenFrame::set(self : ImagemorphopenFrame, i : Int, v : Double) -> ImagemorphopenFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_frame_sum(s : ImagemorphopenFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenFrame::sum(self : ImagemorphopenFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_frame_mean(s : ImagemorphopenFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenFrame::mean(self : ImagemorphopenFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_frame_scale(s : ImagemorphopenFrame, f : Double) -> ImagemorphopenFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenFrame::scale(self : ImagemorphopenFrame, f : Double) -> ImagemorphopenFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_frame_add(a : ImagemorphopenFrame, b : ImagemorphopenFrame) -> ImagemorphopenFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenFrame::add(self : ImagemorphopenFrame, other : ImagemorphopenFrame) -> ImagemorphopenFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_frame_copy(s : ImagemorphopenFrame) -> ImagemorphopenFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenFrame::copy(self : ImagemorphopenFrame) -> ImagemorphopenFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_frame_fill(s : ImagemorphopenFrame, v : Double) -> ImagemorphopenFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenFrame::fill(self : ImagemorphopenFrame, v : Double) -> ImagemorphopenFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_frame_min(s : ImagemorphopenFrame) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenFrame::min(self : ImagemorphopenFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_frame_max(s : ImagemorphopenFrame) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenFrame::max(self : ImagemorphopenFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_frame_to_string(s : ImagemorphopenFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenFrame::to_string(self : ImagemorphopenFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenTable {
@@ -402,45 +402,45 @@ pub fn image_morph_open_table_make(size : Int) -> ImagemorphopenTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_table_len(s : ImagemorphopenTable) -> Int { s.size }
+pub fn ImagemorphopenTable::len(self : ImagemorphopenTable) -> Int { self.size }
 
-pub fn image_morph_open_table_get(s : ImagemorphopenTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenTable::get(self : ImagemorphopenTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_table_set(s : ImagemorphopenTable, i : Int, v : Double) -> ImagemorphopenTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenTable::set(self : ImagemorphopenTable, i : Int, v : Double) -> ImagemorphopenTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_table_sum(s : ImagemorphopenTable) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenTable::sum(self : ImagemorphopenTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_table_mean(s : ImagemorphopenTable) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenTable::mean(self : ImagemorphopenTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_table_scale(s : ImagemorphopenTable, f : Double) -> ImagemorphopenTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenTable::scale(self : ImagemorphopenTable, f : Double) -> ImagemorphopenTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_table_add(a : ImagemorphopenTable, b : ImagemorphopenTable) -> ImagemorphopenTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenTable::add(self : ImagemorphopenTable, other : ImagemorphopenTable) -> ImagemorphopenTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_table_copy(s : ImagemorphopenTable) -> ImagemorphopenTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenTable::copy(self : ImagemorphopenTable) -> ImagemorphopenTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_table_fill(s : ImagemorphopenTable, v : Double) -> ImagemorphopenTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenTable::fill(self : ImagemorphopenTable, v : Double) -> ImagemorphopenTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_table_min(s : ImagemorphopenTable) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenTable::min(self : ImagemorphopenTable) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_table_max(s : ImagemorphopenTable) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenTable::max(self : ImagemorphopenTable) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_table_to_string(s : ImagemorphopenTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenTable::to_string(self : ImagemorphopenTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenGraphN {
@@ -453,45 +453,45 @@ pub fn image_morph_open_graphn_make(size : Int) -> ImagemorphopenGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_graphn_len(s : ImagemorphopenGraphN) -> Int { s.size }
+pub fn ImagemorphopenGraphN::len(self : ImagemorphopenGraphN) -> Int { self.size }
 
-pub fn image_morph_open_graphn_get(s : ImagemorphopenGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenGraphN::get(self : ImagemorphopenGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_graphn_set(s : ImagemorphopenGraphN, i : Int, v : Double) -> ImagemorphopenGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenGraphN::set(self : ImagemorphopenGraphN, i : Int, v : Double) -> ImagemorphopenGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_graphn_sum(s : ImagemorphopenGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenGraphN::sum(self : ImagemorphopenGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_graphn_mean(s : ImagemorphopenGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenGraphN::mean(self : ImagemorphopenGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_graphn_scale(s : ImagemorphopenGraphN, f : Double) -> ImagemorphopenGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenGraphN::scale(self : ImagemorphopenGraphN, f : Double) -> ImagemorphopenGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_graphn_add(a : ImagemorphopenGraphN, b : ImagemorphopenGraphN) -> ImagemorphopenGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenGraphN::add(self : ImagemorphopenGraphN, other : ImagemorphopenGraphN) -> ImagemorphopenGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_graphn_copy(s : ImagemorphopenGraphN) -> ImagemorphopenGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenGraphN::copy(self : ImagemorphopenGraphN) -> ImagemorphopenGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_graphn_fill(s : ImagemorphopenGraphN, v : Double) -> ImagemorphopenGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenGraphN::fill(self : ImagemorphopenGraphN, v : Double) -> ImagemorphopenGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_graphn_min(s : ImagemorphopenGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenGraphN::min(self : ImagemorphopenGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_graphn_max(s : ImagemorphopenGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenGraphN::max(self : ImagemorphopenGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_graphn_to_string(s : ImagemorphopenGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenGraphN::to_string(self : ImagemorphopenGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenNode {
@@ -504,45 +504,45 @@ pub fn image_morph_open_node_make(size : Int) -> ImagemorphopenNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_node_len(s : ImagemorphopenNode) -> Int { s.size }
+pub fn ImagemorphopenNode::len(self : ImagemorphopenNode) -> Int { self.size }
 
-pub fn image_morph_open_node_get(s : ImagemorphopenNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenNode::get(self : ImagemorphopenNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_node_set(s : ImagemorphopenNode, i : Int, v : Double) -> ImagemorphopenNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenNode::set(self : ImagemorphopenNode, i : Int, v : Double) -> ImagemorphopenNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_node_sum(s : ImagemorphopenNode) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenNode::sum(self : ImagemorphopenNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_node_mean(s : ImagemorphopenNode) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenNode::mean(self : ImagemorphopenNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_node_scale(s : ImagemorphopenNode, f : Double) -> ImagemorphopenNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenNode::scale(self : ImagemorphopenNode, f : Double) -> ImagemorphopenNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_node_add(a : ImagemorphopenNode, b : ImagemorphopenNode) -> ImagemorphopenNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenNode::add(self : ImagemorphopenNode, other : ImagemorphopenNode) -> ImagemorphopenNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_node_copy(s : ImagemorphopenNode) -> ImagemorphopenNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenNode::copy(self : ImagemorphopenNode) -> ImagemorphopenNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_node_fill(s : ImagemorphopenNode, v : Double) -> ImagemorphopenNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenNode::fill(self : ImagemorphopenNode, v : Double) -> ImagemorphopenNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_node_min(s : ImagemorphopenNode) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenNode::min(self : ImagemorphopenNode) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_node_max(s : ImagemorphopenNode) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenNode::max(self : ImagemorphopenNode) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_node_to_string(s : ImagemorphopenNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenNode::to_string(self : ImagemorphopenNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenEdge {
@@ -555,45 +555,45 @@ pub fn image_morph_open_edge_make(size : Int) -> ImagemorphopenEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_edge_len(s : ImagemorphopenEdge) -> Int { s.size }
+pub fn ImagemorphopenEdge::len(self : ImagemorphopenEdge) -> Int { self.size }
 
-pub fn image_morph_open_edge_get(s : ImagemorphopenEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenEdge::get(self : ImagemorphopenEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_edge_set(s : ImagemorphopenEdge, i : Int, v : Double) -> ImagemorphopenEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenEdge::set(self : ImagemorphopenEdge, i : Int, v : Double) -> ImagemorphopenEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_edge_sum(s : ImagemorphopenEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenEdge::sum(self : ImagemorphopenEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_edge_mean(s : ImagemorphopenEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenEdge::mean(self : ImagemorphopenEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_edge_scale(s : ImagemorphopenEdge, f : Double) -> ImagemorphopenEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenEdge::scale(self : ImagemorphopenEdge, f : Double) -> ImagemorphopenEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_edge_add(a : ImagemorphopenEdge, b : ImagemorphopenEdge) -> ImagemorphopenEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenEdge::add(self : ImagemorphopenEdge, other : ImagemorphopenEdge) -> ImagemorphopenEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_edge_copy(s : ImagemorphopenEdge) -> ImagemorphopenEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenEdge::copy(self : ImagemorphopenEdge) -> ImagemorphopenEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_edge_fill(s : ImagemorphopenEdge, v : Double) -> ImagemorphopenEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenEdge::fill(self : ImagemorphopenEdge, v : Double) -> ImagemorphopenEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_edge_min(s : ImagemorphopenEdge) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenEdge::min(self : ImagemorphopenEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_edge_max(s : ImagemorphopenEdge) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenEdge::max(self : ImagemorphopenEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_edge_to_string(s : ImagemorphopenEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenEdge::to_string(self : ImagemorphopenEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenPath {
@@ -606,45 +606,45 @@ pub fn image_morph_open_path_make(size : Int) -> ImagemorphopenPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_path_len(s : ImagemorphopenPath) -> Int { s.size }
+pub fn ImagemorphopenPath::len(self : ImagemorphopenPath) -> Int { self.size }
 
-pub fn image_morph_open_path_get(s : ImagemorphopenPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenPath::get(self : ImagemorphopenPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_path_set(s : ImagemorphopenPath, i : Int, v : Double) -> ImagemorphopenPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenPath::set(self : ImagemorphopenPath, i : Int, v : Double) -> ImagemorphopenPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_path_sum(s : ImagemorphopenPath) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenPath::sum(self : ImagemorphopenPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_path_mean(s : ImagemorphopenPath) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenPath::mean(self : ImagemorphopenPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_path_scale(s : ImagemorphopenPath, f : Double) -> ImagemorphopenPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenPath::scale(self : ImagemorphopenPath, f : Double) -> ImagemorphopenPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_path_add(a : ImagemorphopenPath, b : ImagemorphopenPath) -> ImagemorphopenPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenPath::add(self : ImagemorphopenPath, other : ImagemorphopenPath) -> ImagemorphopenPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_path_copy(s : ImagemorphopenPath) -> ImagemorphopenPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenPath::copy(self : ImagemorphopenPath) -> ImagemorphopenPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_path_fill(s : ImagemorphopenPath, v : Double) -> ImagemorphopenPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenPath::fill(self : ImagemorphopenPath, v : Double) -> ImagemorphopenPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_path_min(s : ImagemorphopenPath) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenPath::min(self : ImagemorphopenPath) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_path_max(s : ImagemorphopenPath) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenPath::max(self : ImagemorphopenPath) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_path_to_string(s : ImagemorphopenPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenPath::to_string(self : ImagemorphopenPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenCluster {
@@ -657,45 +657,45 @@ pub fn image_morph_open_cluster_make(size : Int) -> ImagemorphopenCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_cluster_len(s : ImagemorphopenCluster) -> Int { s.size }
+pub fn ImagemorphopenCluster::len(self : ImagemorphopenCluster) -> Int { self.size }
 
-pub fn image_morph_open_cluster_get(s : ImagemorphopenCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenCluster::get(self : ImagemorphopenCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_cluster_set(s : ImagemorphopenCluster, i : Int, v : Double) -> ImagemorphopenCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenCluster::set(self : ImagemorphopenCluster, i : Int, v : Double) -> ImagemorphopenCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cluster_sum(s : ImagemorphopenCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenCluster::sum(self : ImagemorphopenCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_cluster_mean(s : ImagemorphopenCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenCluster::mean(self : ImagemorphopenCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_cluster_scale(s : ImagemorphopenCluster, f : Double) -> ImagemorphopenCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenCluster::scale(self : ImagemorphopenCluster, f : Double) -> ImagemorphopenCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cluster_add(a : ImagemorphopenCluster, b : ImagemorphopenCluster) -> ImagemorphopenCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenCluster::add(self : ImagemorphopenCluster, other : ImagemorphopenCluster) -> ImagemorphopenCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_cluster_copy(s : ImagemorphopenCluster) -> ImagemorphopenCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenCluster::copy(self : ImagemorphopenCluster) -> ImagemorphopenCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cluster_fill(s : ImagemorphopenCluster, v : Double) -> ImagemorphopenCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenCluster::fill(self : ImagemorphopenCluster, v : Double) -> ImagemorphopenCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cluster_min(s : ImagemorphopenCluster) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenCluster::min(self : ImagemorphopenCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_cluster_max(s : ImagemorphopenCluster) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenCluster::max(self : ImagemorphopenCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_cluster_to_string(s : ImagemorphopenCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenCluster::to_string(self : ImagemorphopenCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenModel {
@@ -708,45 +708,45 @@ pub fn image_morph_open_model_make(size : Int) -> ImagemorphopenModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_model_len(s : ImagemorphopenModel) -> Int { s.size }
+pub fn ImagemorphopenModel::len(self : ImagemorphopenModel) -> Int { self.size }
 
-pub fn image_morph_open_model_get(s : ImagemorphopenModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenModel::get(self : ImagemorphopenModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_model_set(s : ImagemorphopenModel, i : Int, v : Double) -> ImagemorphopenModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenModel::set(self : ImagemorphopenModel, i : Int, v : Double) -> ImagemorphopenModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_model_sum(s : ImagemorphopenModel) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenModel::sum(self : ImagemorphopenModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_model_mean(s : ImagemorphopenModel) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenModel::mean(self : ImagemorphopenModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_model_scale(s : ImagemorphopenModel, f : Double) -> ImagemorphopenModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenModel::scale(self : ImagemorphopenModel, f : Double) -> ImagemorphopenModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_model_add(a : ImagemorphopenModel, b : ImagemorphopenModel) -> ImagemorphopenModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenModel::add(self : ImagemorphopenModel, other : ImagemorphopenModel) -> ImagemorphopenModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_model_copy(s : ImagemorphopenModel) -> ImagemorphopenModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenModel::copy(self : ImagemorphopenModel) -> ImagemorphopenModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_model_fill(s : ImagemorphopenModel, v : Double) -> ImagemorphopenModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenModel::fill(self : ImagemorphopenModel, v : Double) -> ImagemorphopenModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_model_min(s : ImagemorphopenModel) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenModel::min(self : ImagemorphopenModel) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_model_max(s : ImagemorphopenModel) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenModel::max(self : ImagemorphopenModel) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_model_to_string(s : ImagemorphopenModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenModel::to_string(self : ImagemorphopenModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenLayer {
@@ -759,45 +759,45 @@ pub fn image_morph_open_layer_make(size : Int) -> ImagemorphopenLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_layer_len(s : ImagemorphopenLayer) -> Int { s.size }
+pub fn ImagemorphopenLayer::len(self : ImagemorphopenLayer) -> Int { self.size }
 
-pub fn image_morph_open_layer_get(s : ImagemorphopenLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenLayer::get(self : ImagemorphopenLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_layer_set(s : ImagemorphopenLayer, i : Int, v : Double) -> ImagemorphopenLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenLayer::set(self : ImagemorphopenLayer, i : Int, v : Double) -> ImagemorphopenLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_layer_sum(s : ImagemorphopenLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenLayer::sum(self : ImagemorphopenLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_layer_mean(s : ImagemorphopenLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenLayer::mean(self : ImagemorphopenLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_layer_scale(s : ImagemorphopenLayer, f : Double) -> ImagemorphopenLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenLayer::scale(self : ImagemorphopenLayer, f : Double) -> ImagemorphopenLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_layer_add(a : ImagemorphopenLayer, b : ImagemorphopenLayer) -> ImagemorphopenLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenLayer::add(self : ImagemorphopenLayer, other : ImagemorphopenLayer) -> ImagemorphopenLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_layer_copy(s : ImagemorphopenLayer) -> ImagemorphopenLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenLayer::copy(self : ImagemorphopenLayer) -> ImagemorphopenLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_layer_fill(s : ImagemorphopenLayer, v : Double) -> ImagemorphopenLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenLayer::fill(self : ImagemorphopenLayer, v : Double) -> ImagemorphopenLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_layer_min(s : ImagemorphopenLayer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenLayer::min(self : ImagemorphopenLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_layer_max(s : ImagemorphopenLayer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenLayer::max(self : ImagemorphopenLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_layer_to_string(s : ImagemorphopenLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenLayer::to_string(self : ImagemorphopenLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenBuffer {
@@ -810,45 +810,45 @@ pub fn image_morph_open_buffer_make(size : Int) -> ImagemorphopenBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_buffer_len(s : ImagemorphopenBuffer) -> Int { s.size }
+pub fn ImagemorphopenBuffer::len(self : ImagemorphopenBuffer) -> Int { self.size }
 
-pub fn image_morph_open_buffer_get(s : ImagemorphopenBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenBuffer::get(self : ImagemorphopenBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_buffer_set(s : ImagemorphopenBuffer, i : Int, v : Double) -> ImagemorphopenBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenBuffer::set(self : ImagemorphopenBuffer, i : Int, v : Double) -> ImagemorphopenBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_buffer_sum(s : ImagemorphopenBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenBuffer::sum(self : ImagemorphopenBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_buffer_mean(s : ImagemorphopenBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenBuffer::mean(self : ImagemorphopenBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_buffer_scale(s : ImagemorphopenBuffer, f : Double) -> ImagemorphopenBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenBuffer::scale(self : ImagemorphopenBuffer, f : Double) -> ImagemorphopenBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_buffer_add(a : ImagemorphopenBuffer, b : ImagemorphopenBuffer) -> ImagemorphopenBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenBuffer::add(self : ImagemorphopenBuffer, other : ImagemorphopenBuffer) -> ImagemorphopenBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_buffer_copy(s : ImagemorphopenBuffer) -> ImagemorphopenBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenBuffer::copy(self : ImagemorphopenBuffer) -> ImagemorphopenBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_buffer_fill(s : ImagemorphopenBuffer, v : Double) -> ImagemorphopenBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenBuffer::fill(self : ImagemorphopenBuffer, v : Double) -> ImagemorphopenBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_buffer_min(s : ImagemorphopenBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenBuffer::min(self : ImagemorphopenBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_buffer_max(s : ImagemorphopenBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenBuffer::max(self : ImagemorphopenBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_buffer_to_string(s : ImagemorphopenBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenBuffer::to_string(self : ImagemorphopenBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenCursor {
@@ -861,45 +861,45 @@ pub fn image_morph_open_cursor_make(size : Int) -> ImagemorphopenCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_cursor_len(s : ImagemorphopenCursor) -> Int { s.size }
+pub fn ImagemorphopenCursor::len(self : ImagemorphopenCursor) -> Int { self.size }
 
-pub fn image_morph_open_cursor_get(s : ImagemorphopenCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenCursor::get(self : ImagemorphopenCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_cursor_set(s : ImagemorphopenCursor, i : Int, v : Double) -> ImagemorphopenCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenCursor::set(self : ImagemorphopenCursor, i : Int, v : Double) -> ImagemorphopenCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cursor_sum(s : ImagemorphopenCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenCursor::sum(self : ImagemorphopenCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_cursor_mean(s : ImagemorphopenCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenCursor::mean(self : ImagemorphopenCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_cursor_scale(s : ImagemorphopenCursor, f : Double) -> ImagemorphopenCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenCursor::scale(self : ImagemorphopenCursor, f : Double) -> ImagemorphopenCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cursor_add(a : ImagemorphopenCursor, b : ImagemorphopenCursor) -> ImagemorphopenCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenCursor::add(self : ImagemorphopenCursor, other : ImagemorphopenCursor) -> ImagemorphopenCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_cursor_copy(s : ImagemorphopenCursor) -> ImagemorphopenCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenCursor::copy(self : ImagemorphopenCursor) -> ImagemorphopenCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cursor_fill(s : ImagemorphopenCursor, v : Double) -> ImagemorphopenCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenCursor::fill(self : ImagemorphopenCursor, v : Double) -> ImagemorphopenCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_cursor_min(s : ImagemorphopenCursor) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenCursor::min(self : ImagemorphopenCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_cursor_max(s : ImagemorphopenCursor) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenCursor::max(self : ImagemorphopenCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_cursor_to_string(s : ImagemorphopenCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenCursor::to_string(self : ImagemorphopenCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenView {
@@ -912,45 +912,45 @@ pub fn image_morph_open_view_make(size : Int) -> ImagemorphopenView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_view_len(s : ImagemorphopenView) -> Int { s.size }
+pub fn ImagemorphopenView::len(self : ImagemorphopenView) -> Int { self.size }
 
-pub fn image_morph_open_view_get(s : ImagemorphopenView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenView::get(self : ImagemorphopenView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_view_set(s : ImagemorphopenView, i : Int, v : Double) -> ImagemorphopenView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenView::set(self : ImagemorphopenView, i : Int, v : Double) -> ImagemorphopenView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_view_sum(s : ImagemorphopenView) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenView::sum(self : ImagemorphopenView) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_view_mean(s : ImagemorphopenView) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenView::mean(self : ImagemorphopenView) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_view_scale(s : ImagemorphopenView, f : Double) -> ImagemorphopenView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenView::scale(self : ImagemorphopenView, f : Double) -> ImagemorphopenView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_view_add(a : ImagemorphopenView, b : ImagemorphopenView) -> ImagemorphopenView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenView::add(self : ImagemorphopenView, other : ImagemorphopenView) -> ImagemorphopenView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_view_copy(s : ImagemorphopenView) -> ImagemorphopenView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenView::copy(self : ImagemorphopenView) -> ImagemorphopenView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_view_fill(s : ImagemorphopenView, v : Double) -> ImagemorphopenView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenView::fill(self : ImagemorphopenView, v : Double) -> ImagemorphopenView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_view_min(s : ImagemorphopenView) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenView::min(self : ImagemorphopenView) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_view_max(s : ImagemorphopenView) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenView::max(self : ImagemorphopenView) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_view_to_string(s : ImagemorphopenView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenView::to_string(self : ImagemorphopenView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenRange {
@@ -963,45 +963,45 @@ pub fn image_morph_open_range_make(size : Int) -> ImagemorphopenRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_range_len(s : ImagemorphopenRange) -> Int { s.size }
+pub fn ImagemorphopenRange::len(self : ImagemorphopenRange) -> Int { self.size }
 
-pub fn image_morph_open_range_get(s : ImagemorphopenRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenRange::get(self : ImagemorphopenRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_range_set(s : ImagemorphopenRange, i : Int, v : Double) -> ImagemorphopenRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenRange::set(self : ImagemorphopenRange, i : Int, v : Double) -> ImagemorphopenRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_range_sum(s : ImagemorphopenRange) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenRange::sum(self : ImagemorphopenRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_range_mean(s : ImagemorphopenRange) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenRange::mean(self : ImagemorphopenRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_range_scale(s : ImagemorphopenRange, f : Double) -> ImagemorphopenRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenRange::scale(self : ImagemorphopenRange, f : Double) -> ImagemorphopenRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_range_add(a : ImagemorphopenRange, b : ImagemorphopenRange) -> ImagemorphopenRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenRange::add(self : ImagemorphopenRange, other : ImagemorphopenRange) -> ImagemorphopenRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_range_copy(s : ImagemorphopenRange) -> ImagemorphopenRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenRange::copy(self : ImagemorphopenRange) -> ImagemorphopenRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_range_fill(s : ImagemorphopenRange, v : Double) -> ImagemorphopenRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenRange::fill(self : ImagemorphopenRange, v : Double) -> ImagemorphopenRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_range_min(s : ImagemorphopenRange) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenRange::min(self : ImagemorphopenRange) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_range_max(s : ImagemorphopenRange) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenRange::max(self : ImagemorphopenRange) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_range_to_string(s : ImagemorphopenRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenRange::to_string(self : ImagemorphopenRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagemorphopenSlice {
@@ -1014,44 +1014,44 @@ pub fn image_morph_open_slice_make(size : Int) -> ImagemorphopenSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_morph_open_slice_len(s : ImagemorphopenSlice) -> Int { s.size }
+pub fn ImagemorphopenSlice::len(self : ImagemorphopenSlice) -> Int { self.size }
 
-pub fn image_morph_open_slice_get(s : ImagemorphopenSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagemorphopenSlice::get(self : ImagemorphopenSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_morph_open_slice_set(s : ImagemorphopenSlice, i : Int, v : Double) -> ImagemorphopenSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagemorphopenSlice::set(self : ImagemorphopenSlice, i : Int, v : Double) -> ImagemorphopenSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_slice_sum(s : ImagemorphopenSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagemorphopenSlice::sum(self : ImagemorphopenSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_morph_open_slice_mean(s : ImagemorphopenSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagemorphopenSlice::mean(self : ImagemorphopenSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_morph_open_slice_scale(s : ImagemorphopenSlice, f : Double) -> ImagemorphopenSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagemorphopenSlice::scale(self : ImagemorphopenSlice, f : Double) -> ImagemorphopenSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_slice_add(a : ImagemorphopenSlice, b : ImagemorphopenSlice) -> ImagemorphopenSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagemorphopenSlice::add(self : ImagemorphopenSlice, other : ImagemorphopenSlice) -> ImagemorphopenSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_morph_open_slice_copy(s : ImagemorphopenSlice) -> ImagemorphopenSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagemorphopenSlice::copy(self : ImagemorphopenSlice) -> ImagemorphopenSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_slice_fill(s : ImagemorphopenSlice, v : Double) -> ImagemorphopenSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagemorphopenSlice::fill(self : ImagemorphopenSlice, v : Double) -> ImagemorphopenSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_morph_open_slice_min(s : ImagemorphopenSlice) -> Double { @_common.min(s.data) }
+pub fn ImagemorphopenSlice::min(self : ImagemorphopenSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_morph_open_slice_max(s : ImagemorphopenSlice) -> Double { @_common.max(s.data) }
+pub fn ImagemorphopenSlice::max(self : ImagemorphopenSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_morph_open_slice_to_string(s : ImagemorphopenSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagemorphopenSlice::to_string(self : ImagemorphopenSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

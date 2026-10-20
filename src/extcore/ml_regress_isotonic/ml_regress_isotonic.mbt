@@ -351,45 +351,45 @@ pub fn ml_regress_isotonic_frame_make(size : Int) -> MlregressisotonicFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_frame_len(s : MlregressisotonicFrame) -> Int { s.size }
+pub fn MlregressisotonicFrame::len(self : MlregressisotonicFrame) -> Int { self.size }
 
-pub fn ml_regress_isotonic_frame_get(s : MlregressisotonicFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicFrame::get(self : MlregressisotonicFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_frame_set(s : MlregressisotonicFrame, i : Int, v : Double) -> MlregressisotonicFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicFrame::set(self : MlregressisotonicFrame, i : Int, v : Double) -> MlregressisotonicFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_frame_sum(s : MlregressisotonicFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicFrame::sum(self : MlregressisotonicFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_frame_mean(s : MlregressisotonicFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicFrame::mean(self : MlregressisotonicFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_frame_scale(s : MlregressisotonicFrame, f : Double) -> MlregressisotonicFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicFrame::scale(self : MlregressisotonicFrame, f : Double) -> MlregressisotonicFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_frame_add(a : MlregressisotonicFrame, b : MlregressisotonicFrame) -> MlregressisotonicFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicFrame::add(self : MlregressisotonicFrame, other : MlregressisotonicFrame) -> MlregressisotonicFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_frame_copy(s : MlregressisotonicFrame) -> MlregressisotonicFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicFrame::copy(self : MlregressisotonicFrame) -> MlregressisotonicFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_frame_fill(s : MlregressisotonicFrame, v : Double) -> MlregressisotonicFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicFrame::fill(self : MlregressisotonicFrame, v : Double) -> MlregressisotonicFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_frame_min(s : MlregressisotonicFrame) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicFrame::min(self : MlregressisotonicFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_frame_max(s : MlregressisotonicFrame) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicFrame::max(self : MlregressisotonicFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_frame_to_string(s : MlregressisotonicFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicFrame::to_string(self : MlregressisotonicFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_isotonic_table_make(size : Int) -> MlregressisotonicTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_table_len(s : MlregressisotonicTable) -> Int { s.size }
+pub fn MlregressisotonicTable::len(self : MlregressisotonicTable) -> Int { self.size }
 
-pub fn ml_regress_isotonic_table_get(s : MlregressisotonicTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicTable::get(self : MlregressisotonicTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_table_set(s : MlregressisotonicTable, i : Int, v : Double) -> MlregressisotonicTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicTable::set(self : MlregressisotonicTable, i : Int, v : Double) -> MlregressisotonicTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_table_sum(s : MlregressisotonicTable) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicTable::sum(self : MlregressisotonicTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_table_mean(s : MlregressisotonicTable) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicTable::mean(self : MlregressisotonicTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_table_scale(s : MlregressisotonicTable, f : Double) -> MlregressisotonicTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicTable::scale(self : MlregressisotonicTable, f : Double) -> MlregressisotonicTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_table_add(a : MlregressisotonicTable, b : MlregressisotonicTable) -> MlregressisotonicTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicTable::add(self : MlregressisotonicTable, other : MlregressisotonicTable) -> MlregressisotonicTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_table_copy(s : MlregressisotonicTable) -> MlregressisotonicTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicTable::copy(self : MlregressisotonicTable) -> MlregressisotonicTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_table_fill(s : MlregressisotonicTable, v : Double) -> MlregressisotonicTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicTable::fill(self : MlregressisotonicTable, v : Double) -> MlregressisotonicTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_table_min(s : MlregressisotonicTable) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicTable::min(self : MlregressisotonicTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_table_max(s : MlregressisotonicTable) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicTable::max(self : MlregressisotonicTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_table_to_string(s : MlregressisotonicTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicTable::to_string(self : MlregressisotonicTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_isotonic_graphn_make(size : Int) -> MlregressisotonicGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_graphn_len(s : MlregressisotonicGraphN) -> Int { s.size }
+pub fn MlregressisotonicGraphN::len(self : MlregressisotonicGraphN) -> Int { self.size }
 
-pub fn ml_regress_isotonic_graphn_get(s : MlregressisotonicGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicGraphN::get(self : MlregressisotonicGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_graphn_set(s : MlregressisotonicGraphN, i : Int, v : Double) -> MlregressisotonicGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicGraphN::set(self : MlregressisotonicGraphN, i : Int, v : Double) -> MlregressisotonicGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_graphn_sum(s : MlregressisotonicGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicGraphN::sum(self : MlregressisotonicGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_graphn_mean(s : MlregressisotonicGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicGraphN::mean(self : MlregressisotonicGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_graphn_scale(s : MlregressisotonicGraphN, f : Double) -> MlregressisotonicGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicGraphN::scale(self : MlregressisotonicGraphN, f : Double) -> MlregressisotonicGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_graphn_add(a : MlregressisotonicGraphN, b : MlregressisotonicGraphN) -> MlregressisotonicGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicGraphN::add(self : MlregressisotonicGraphN, other : MlregressisotonicGraphN) -> MlregressisotonicGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_graphn_copy(s : MlregressisotonicGraphN) -> MlregressisotonicGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicGraphN::copy(self : MlregressisotonicGraphN) -> MlregressisotonicGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_graphn_fill(s : MlregressisotonicGraphN, v : Double) -> MlregressisotonicGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicGraphN::fill(self : MlregressisotonicGraphN, v : Double) -> MlregressisotonicGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_graphn_min(s : MlregressisotonicGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicGraphN::min(self : MlregressisotonicGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_graphn_max(s : MlregressisotonicGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicGraphN::max(self : MlregressisotonicGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_graphn_to_string(s : MlregressisotonicGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicGraphN::to_string(self : MlregressisotonicGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_isotonic_node_make(size : Int) -> MlregressisotonicNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_node_len(s : MlregressisotonicNode) -> Int { s.size }
+pub fn MlregressisotonicNode::len(self : MlregressisotonicNode) -> Int { self.size }
 
-pub fn ml_regress_isotonic_node_get(s : MlregressisotonicNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicNode::get(self : MlregressisotonicNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_node_set(s : MlregressisotonicNode, i : Int, v : Double) -> MlregressisotonicNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicNode::set(self : MlregressisotonicNode, i : Int, v : Double) -> MlregressisotonicNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_node_sum(s : MlregressisotonicNode) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicNode::sum(self : MlregressisotonicNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_node_mean(s : MlregressisotonicNode) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicNode::mean(self : MlregressisotonicNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_node_scale(s : MlregressisotonicNode, f : Double) -> MlregressisotonicNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicNode::scale(self : MlregressisotonicNode, f : Double) -> MlregressisotonicNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_node_add(a : MlregressisotonicNode, b : MlregressisotonicNode) -> MlregressisotonicNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicNode::add(self : MlregressisotonicNode, other : MlregressisotonicNode) -> MlregressisotonicNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_node_copy(s : MlregressisotonicNode) -> MlregressisotonicNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicNode::copy(self : MlregressisotonicNode) -> MlregressisotonicNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_node_fill(s : MlregressisotonicNode, v : Double) -> MlregressisotonicNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicNode::fill(self : MlregressisotonicNode, v : Double) -> MlregressisotonicNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_node_min(s : MlregressisotonicNode) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicNode::min(self : MlregressisotonicNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_node_max(s : MlregressisotonicNode) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicNode::max(self : MlregressisotonicNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_node_to_string(s : MlregressisotonicNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicNode::to_string(self : MlregressisotonicNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_isotonic_edge_make(size : Int) -> MlregressisotonicEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_edge_len(s : MlregressisotonicEdge) -> Int { s.size }
+pub fn MlregressisotonicEdge::len(self : MlregressisotonicEdge) -> Int { self.size }
 
-pub fn ml_regress_isotonic_edge_get(s : MlregressisotonicEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicEdge::get(self : MlregressisotonicEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_edge_set(s : MlregressisotonicEdge, i : Int, v : Double) -> MlregressisotonicEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicEdge::set(self : MlregressisotonicEdge, i : Int, v : Double) -> MlregressisotonicEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_edge_sum(s : MlregressisotonicEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicEdge::sum(self : MlregressisotonicEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_edge_mean(s : MlregressisotonicEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicEdge::mean(self : MlregressisotonicEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_edge_scale(s : MlregressisotonicEdge, f : Double) -> MlregressisotonicEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicEdge::scale(self : MlregressisotonicEdge, f : Double) -> MlregressisotonicEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_edge_add(a : MlregressisotonicEdge, b : MlregressisotonicEdge) -> MlregressisotonicEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicEdge::add(self : MlregressisotonicEdge, other : MlregressisotonicEdge) -> MlregressisotonicEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_edge_copy(s : MlregressisotonicEdge) -> MlregressisotonicEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicEdge::copy(self : MlregressisotonicEdge) -> MlregressisotonicEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_edge_fill(s : MlregressisotonicEdge, v : Double) -> MlregressisotonicEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicEdge::fill(self : MlregressisotonicEdge, v : Double) -> MlregressisotonicEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_edge_min(s : MlregressisotonicEdge) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicEdge::min(self : MlregressisotonicEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_edge_max(s : MlregressisotonicEdge) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicEdge::max(self : MlregressisotonicEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_edge_to_string(s : MlregressisotonicEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicEdge::to_string(self : MlregressisotonicEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_isotonic_path_make(size : Int) -> MlregressisotonicPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_path_len(s : MlregressisotonicPath) -> Int { s.size }
+pub fn MlregressisotonicPath::len(self : MlregressisotonicPath) -> Int { self.size }
 
-pub fn ml_regress_isotonic_path_get(s : MlregressisotonicPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicPath::get(self : MlregressisotonicPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_path_set(s : MlregressisotonicPath, i : Int, v : Double) -> MlregressisotonicPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicPath::set(self : MlregressisotonicPath, i : Int, v : Double) -> MlregressisotonicPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_path_sum(s : MlregressisotonicPath) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicPath::sum(self : MlregressisotonicPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_path_mean(s : MlregressisotonicPath) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicPath::mean(self : MlregressisotonicPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_path_scale(s : MlregressisotonicPath, f : Double) -> MlregressisotonicPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicPath::scale(self : MlregressisotonicPath, f : Double) -> MlregressisotonicPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_path_add(a : MlregressisotonicPath, b : MlregressisotonicPath) -> MlregressisotonicPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicPath::add(self : MlregressisotonicPath, other : MlregressisotonicPath) -> MlregressisotonicPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_path_copy(s : MlregressisotonicPath) -> MlregressisotonicPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicPath::copy(self : MlregressisotonicPath) -> MlregressisotonicPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_path_fill(s : MlregressisotonicPath, v : Double) -> MlregressisotonicPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicPath::fill(self : MlregressisotonicPath, v : Double) -> MlregressisotonicPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_path_min(s : MlregressisotonicPath) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicPath::min(self : MlregressisotonicPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_path_max(s : MlregressisotonicPath) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicPath::max(self : MlregressisotonicPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_path_to_string(s : MlregressisotonicPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicPath::to_string(self : MlregressisotonicPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_isotonic_cluster_make(size : Int) -> MlregressisotonicCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_cluster_len(s : MlregressisotonicCluster) -> Int { s.size }
+pub fn MlregressisotonicCluster::len(self : MlregressisotonicCluster) -> Int { self.size }
 
-pub fn ml_regress_isotonic_cluster_get(s : MlregressisotonicCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicCluster::get(self : MlregressisotonicCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_cluster_set(s : MlregressisotonicCluster, i : Int, v : Double) -> MlregressisotonicCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicCluster::set(self : MlregressisotonicCluster, i : Int, v : Double) -> MlregressisotonicCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cluster_sum(s : MlregressisotonicCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicCluster::sum(self : MlregressisotonicCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_cluster_mean(s : MlregressisotonicCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicCluster::mean(self : MlregressisotonicCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_cluster_scale(s : MlregressisotonicCluster, f : Double) -> MlregressisotonicCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicCluster::scale(self : MlregressisotonicCluster, f : Double) -> MlregressisotonicCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cluster_add(a : MlregressisotonicCluster, b : MlregressisotonicCluster) -> MlregressisotonicCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicCluster::add(self : MlregressisotonicCluster, other : MlregressisotonicCluster) -> MlregressisotonicCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cluster_copy(s : MlregressisotonicCluster) -> MlregressisotonicCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicCluster::copy(self : MlregressisotonicCluster) -> MlregressisotonicCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cluster_fill(s : MlregressisotonicCluster, v : Double) -> MlregressisotonicCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicCluster::fill(self : MlregressisotonicCluster, v : Double) -> MlregressisotonicCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cluster_min(s : MlregressisotonicCluster) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicCluster::min(self : MlregressisotonicCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_cluster_max(s : MlregressisotonicCluster) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicCluster::max(self : MlregressisotonicCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_cluster_to_string(s : MlregressisotonicCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicCluster::to_string(self : MlregressisotonicCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_isotonic_model_make(size : Int) -> MlregressisotonicModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_model_len(s : MlregressisotonicModel) -> Int { s.size }
+pub fn MlregressisotonicModel::len(self : MlregressisotonicModel) -> Int { self.size }
 
-pub fn ml_regress_isotonic_model_get(s : MlregressisotonicModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicModel::get(self : MlregressisotonicModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_model_set(s : MlregressisotonicModel, i : Int, v : Double) -> MlregressisotonicModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicModel::set(self : MlregressisotonicModel, i : Int, v : Double) -> MlregressisotonicModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_model_sum(s : MlregressisotonicModel) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicModel::sum(self : MlregressisotonicModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_model_mean(s : MlregressisotonicModel) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicModel::mean(self : MlregressisotonicModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_model_scale(s : MlregressisotonicModel, f : Double) -> MlregressisotonicModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicModel::scale(self : MlregressisotonicModel, f : Double) -> MlregressisotonicModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_model_add(a : MlregressisotonicModel, b : MlregressisotonicModel) -> MlregressisotonicModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicModel::add(self : MlregressisotonicModel, other : MlregressisotonicModel) -> MlregressisotonicModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_model_copy(s : MlregressisotonicModel) -> MlregressisotonicModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicModel::copy(self : MlregressisotonicModel) -> MlregressisotonicModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_model_fill(s : MlregressisotonicModel, v : Double) -> MlregressisotonicModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicModel::fill(self : MlregressisotonicModel, v : Double) -> MlregressisotonicModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_model_min(s : MlregressisotonicModel) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicModel::min(self : MlregressisotonicModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_model_max(s : MlregressisotonicModel) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicModel::max(self : MlregressisotonicModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_model_to_string(s : MlregressisotonicModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicModel::to_string(self : MlregressisotonicModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_isotonic_layer_make(size : Int) -> MlregressisotonicLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_layer_len(s : MlregressisotonicLayer) -> Int { s.size }
+pub fn MlregressisotonicLayer::len(self : MlregressisotonicLayer) -> Int { self.size }
 
-pub fn ml_regress_isotonic_layer_get(s : MlregressisotonicLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicLayer::get(self : MlregressisotonicLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_layer_set(s : MlregressisotonicLayer, i : Int, v : Double) -> MlregressisotonicLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicLayer::set(self : MlregressisotonicLayer, i : Int, v : Double) -> MlregressisotonicLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_layer_sum(s : MlregressisotonicLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicLayer::sum(self : MlregressisotonicLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_layer_mean(s : MlregressisotonicLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicLayer::mean(self : MlregressisotonicLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_layer_scale(s : MlregressisotonicLayer, f : Double) -> MlregressisotonicLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicLayer::scale(self : MlregressisotonicLayer, f : Double) -> MlregressisotonicLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_layer_add(a : MlregressisotonicLayer, b : MlregressisotonicLayer) -> MlregressisotonicLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicLayer::add(self : MlregressisotonicLayer, other : MlregressisotonicLayer) -> MlregressisotonicLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_layer_copy(s : MlregressisotonicLayer) -> MlregressisotonicLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicLayer::copy(self : MlregressisotonicLayer) -> MlregressisotonicLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_layer_fill(s : MlregressisotonicLayer, v : Double) -> MlregressisotonicLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicLayer::fill(self : MlregressisotonicLayer, v : Double) -> MlregressisotonicLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_layer_min(s : MlregressisotonicLayer) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicLayer::min(self : MlregressisotonicLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_layer_max(s : MlregressisotonicLayer) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicLayer::max(self : MlregressisotonicLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_layer_to_string(s : MlregressisotonicLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicLayer::to_string(self : MlregressisotonicLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_isotonic_buffer_make(size : Int) -> MlregressisotonicBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_buffer_len(s : MlregressisotonicBuffer) -> Int { s.size }
+pub fn MlregressisotonicBuffer::len(self : MlregressisotonicBuffer) -> Int { self.size }
 
-pub fn ml_regress_isotonic_buffer_get(s : MlregressisotonicBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicBuffer::get(self : MlregressisotonicBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_buffer_set(s : MlregressisotonicBuffer, i : Int, v : Double) -> MlregressisotonicBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicBuffer::set(self : MlregressisotonicBuffer, i : Int, v : Double) -> MlregressisotonicBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_buffer_sum(s : MlregressisotonicBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicBuffer::sum(self : MlregressisotonicBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_buffer_mean(s : MlregressisotonicBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicBuffer::mean(self : MlregressisotonicBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_buffer_scale(s : MlregressisotonicBuffer, f : Double) -> MlregressisotonicBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicBuffer::scale(self : MlregressisotonicBuffer, f : Double) -> MlregressisotonicBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_buffer_add(a : MlregressisotonicBuffer, b : MlregressisotonicBuffer) -> MlregressisotonicBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicBuffer::add(self : MlregressisotonicBuffer, other : MlregressisotonicBuffer) -> MlregressisotonicBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_buffer_copy(s : MlregressisotonicBuffer) -> MlregressisotonicBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicBuffer::copy(self : MlregressisotonicBuffer) -> MlregressisotonicBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_buffer_fill(s : MlregressisotonicBuffer, v : Double) -> MlregressisotonicBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicBuffer::fill(self : MlregressisotonicBuffer, v : Double) -> MlregressisotonicBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_buffer_min(s : MlregressisotonicBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicBuffer::min(self : MlregressisotonicBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_buffer_max(s : MlregressisotonicBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicBuffer::max(self : MlregressisotonicBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_buffer_to_string(s : MlregressisotonicBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicBuffer::to_string(self : MlregressisotonicBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_isotonic_cursor_make(size : Int) -> MlregressisotonicCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_cursor_len(s : MlregressisotonicCursor) -> Int { s.size }
+pub fn MlregressisotonicCursor::len(self : MlregressisotonicCursor) -> Int { self.size }
 
-pub fn ml_regress_isotonic_cursor_get(s : MlregressisotonicCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicCursor::get(self : MlregressisotonicCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_cursor_set(s : MlregressisotonicCursor, i : Int, v : Double) -> MlregressisotonicCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicCursor::set(self : MlregressisotonicCursor, i : Int, v : Double) -> MlregressisotonicCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cursor_sum(s : MlregressisotonicCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicCursor::sum(self : MlregressisotonicCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_cursor_mean(s : MlregressisotonicCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicCursor::mean(self : MlregressisotonicCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_cursor_scale(s : MlregressisotonicCursor, f : Double) -> MlregressisotonicCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicCursor::scale(self : MlregressisotonicCursor, f : Double) -> MlregressisotonicCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cursor_add(a : MlregressisotonicCursor, b : MlregressisotonicCursor) -> MlregressisotonicCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicCursor::add(self : MlregressisotonicCursor, other : MlregressisotonicCursor) -> MlregressisotonicCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cursor_copy(s : MlregressisotonicCursor) -> MlregressisotonicCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicCursor::copy(self : MlregressisotonicCursor) -> MlregressisotonicCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cursor_fill(s : MlregressisotonicCursor, v : Double) -> MlregressisotonicCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicCursor::fill(self : MlregressisotonicCursor, v : Double) -> MlregressisotonicCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_cursor_min(s : MlregressisotonicCursor) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicCursor::min(self : MlregressisotonicCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_cursor_max(s : MlregressisotonicCursor) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicCursor::max(self : MlregressisotonicCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_cursor_to_string(s : MlregressisotonicCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicCursor::to_string(self : MlregressisotonicCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicView {
@@ -912,45 +912,45 @@ pub fn ml_regress_isotonic_view_make(size : Int) -> MlregressisotonicView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_view_len(s : MlregressisotonicView) -> Int { s.size }
+pub fn MlregressisotonicView::len(self : MlregressisotonicView) -> Int { self.size }
 
-pub fn ml_regress_isotonic_view_get(s : MlregressisotonicView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicView::get(self : MlregressisotonicView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_view_set(s : MlregressisotonicView, i : Int, v : Double) -> MlregressisotonicView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicView::set(self : MlregressisotonicView, i : Int, v : Double) -> MlregressisotonicView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_view_sum(s : MlregressisotonicView) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicView::sum(self : MlregressisotonicView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_view_mean(s : MlregressisotonicView) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicView::mean(self : MlregressisotonicView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_view_scale(s : MlregressisotonicView, f : Double) -> MlregressisotonicView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicView::scale(self : MlregressisotonicView, f : Double) -> MlregressisotonicView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_view_add(a : MlregressisotonicView, b : MlregressisotonicView) -> MlregressisotonicView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicView::add(self : MlregressisotonicView, other : MlregressisotonicView) -> MlregressisotonicView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_view_copy(s : MlregressisotonicView) -> MlregressisotonicView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicView::copy(self : MlregressisotonicView) -> MlregressisotonicView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_view_fill(s : MlregressisotonicView, v : Double) -> MlregressisotonicView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicView::fill(self : MlregressisotonicView, v : Double) -> MlregressisotonicView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_view_min(s : MlregressisotonicView) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicView::min(self : MlregressisotonicView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_view_max(s : MlregressisotonicView) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicView::max(self : MlregressisotonicView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_view_to_string(s : MlregressisotonicView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicView::to_string(self : MlregressisotonicView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_isotonic_range_make(size : Int) -> MlregressisotonicRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_range_len(s : MlregressisotonicRange) -> Int { s.size }
+pub fn MlregressisotonicRange::len(self : MlregressisotonicRange) -> Int { self.size }
 
-pub fn ml_regress_isotonic_range_get(s : MlregressisotonicRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicRange::get(self : MlregressisotonicRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_range_set(s : MlregressisotonicRange, i : Int, v : Double) -> MlregressisotonicRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicRange::set(self : MlregressisotonicRange, i : Int, v : Double) -> MlregressisotonicRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_range_sum(s : MlregressisotonicRange) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicRange::sum(self : MlregressisotonicRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_range_mean(s : MlregressisotonicRange) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicRange::mean(self : MlregressisotonicRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_range_scale(s : MlregressisotonicRange, f : Double) -> MlregressisotonicRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicRange::scale(self : MlregressisotonicRange, f : Double) -> MlregressisotonicRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_range_add(a : MlregressisotonicRange, b : MlregressisotonicRange) -> MlregressisotonicRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicRange::add(self : MlregressisotonicRange, other : MlregressisotonicRange) -> MlregressisotonicRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_range_copy(s : MlregressisotonicRange) -> MlregressisotonicRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicRange::copy(self : MlregressisotonicRange) -> MlregressisotonicRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_range_fill(s : MlregressisotonicRange, v : Double) -> MlregressisotonicRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicRange::fill(self : MlregressisotonicRange, v : Double) -> MlregressisotonicRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_range_min(s : MlregressisotonicRange) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicRange::min(self : MlregressisotonicRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_range_max(s : MlregressisotonicRange) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicRange::max(self : MlregressisotonicRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_range_to_string(s : MlregressisotonicRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicRange::to_string(self : MlregressisotonicRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregressisotonicSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_isotonic_slice_make(size : Int) -> MlregressisotonicSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_isotonic_slice_len(s : MlregressisotonicSlice) -> Int { s.size }
+pub fn MlregressisotonicSlice::len(self : MlregressisotonicSlice) -> Int { self.size }
 
-pub fn ml_regress_isotonic_slice_get(s : MlregressisotonicSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregressisotonicSlice::get(self : MlregressisotonicSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_isotonic_slice_set(s : MlregressisotonicSlice, i : Int, v : Double) -> MlregressisotonicSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregressisotonicSlice::set(self : MlregressisotonicSlice, i : Int, v : Double) -> MlregressisotonicSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_slice_sum(s : MlregressisotonicSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregressisotonicSlice::sum(self : MlregressisotonicSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_isotonic_slice_mean(s : MlregressisotonicSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregressisotonicSlice::mean(self : MlregressisotonicSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_isotonic_slice_scale(s : MlregressisotonicSlice, f : Double) -> MlregressisotonicSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregressisotonicSlice::scale(self : MlregressisotonicSlice, f : Double) -> MlregressisotonicSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_slice_add(a : MlregressisotonicSlice, b : MlregressisotonicSlice) -> MlregressisotonicSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregressisotonicSlice::add(self : MlregressisotonicSlice, other : MlregressisotonicSlice) -> MlregressisotonicSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_slice_copy(s : MlregressisotonicSlice) -> MlregressisotonicSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregressisotonicSlice::copy(self : MlregressisotonicSlice) -> MlregressisotonicSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_slice_fill(s : MlregressisotonicSlice, v : Double) -> MlregressisotonicSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregressisotonicSlice::fill(self : MlregressisotonicSlice, v : Double) -> MlregressisotonicSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_isotonic_slice_min(s : MlregressisotonicSlice) -> Double { @_common.min(s.data) }
+pub fn MlregressisotonicSlice::min(self : MlregressisotonicSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_isotonic_slice_max(s : MlregressisotonicSlice) -> Double { @_common.max(s.data) }
+pub fn MlregressisotonicSlice::max(self : MlregressisotonicSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_isotonic_slice_to_string(s : MlregressisotonicSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregressisotonicSlice::to_string(self : MlregressisotonicSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

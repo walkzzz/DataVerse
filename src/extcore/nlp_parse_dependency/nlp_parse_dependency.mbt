@@ -351,45 +351,45 @@ pub fn nlp_parse_dependency_frame_make(size : Int) -> NlpparsedependencyFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_frame_len(s : NlpparsedependencyFrame) -> Int { s.size }
+pub fn NlpparsedependencyFrame::len(self : NlpparsedependencyFrame) -> Int { self.size }
 
-pub fn nlp_parse_dependency_frame_get(s : NlpparsedependencyFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyFrame::get(self : NlpparsedependencyFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_frame_set(s : NlpparsedependencyFrame, i : Int, v : Double) -> NlpparsedependencyFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyFrame::set(self : NlpparsedependencyFrame, i : Int, v : Double) -> NlpparsedependencyFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_frame_sum(s : NlpparsedependencyFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyFrame::sum(self : NlpparsedependencyFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_frame_mean(s : NlpparsedependencyFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyFrame::mean(self : NlpparsedependencyFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_frame_scale(s : NlpparsedependencyFrame, f : Double) -> NlpparsedependencyFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyFrame::scale(self : NlpparsedependencyFrame, f : Double) -> NlpparsedependencyFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_frame_add(a : NlpparsedependencyFrame, b : NlpparsedependencyFrame) -> NlpparsedependencyFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyFrame::add(self : NlpparsedependencyFrame, other : NlpparsedependencyFrame) -> NlpparsedependencyFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_frame_copy(s : NlpparsedependencyFrame) -> NlpparsedependencyFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyFrame::copy(self : NlpparsedependencyFrame) -> NlpparsedependencyFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_frame_fill(s : NlpparsedependencyFrame, v : Double) -> NlpparsedependencyFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyFrame::fill(self : NlpparsedependencyFrame, v : Double) -> NlpparsedependencyFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_frame_min(s : NlpparsedependencyFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyFrame::min(self : NlpparsedependencyFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_frame_max(s : NlpparsedependencyFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyFrame::max(self : NlpparsedependencyFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_frame_to_string(s : NlpparsedependencyFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyFrame::to_string(self : NlpparsedependencyFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_dependency_table_make(size : Int) -> NlpparsedependencyTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_table_len(s : NlpparsedependencyTable) -> Int { s.size }
+pub fn NlpparsedependencyTable::len(self : NlpparsedependencyTable) -> Int { self.size }
 
-pub fn nlp_parse_dependency_table_get(s : NlpparsedependencyTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyTable::get(self : NlpparsedependencyTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_table_set(s : NlpparsedependencyTable, i : Int, v : Double) -> NlpparsedependencyTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyTable::set(self : NlpparsedependencyTable, i : Int, v : Double) -> NlpparsedependencyTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_table_sum(s : NlpparsedependencyTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyTable::sum(self : NlpparsedependencyTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_table_mean(s : NlpparsedependencyTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyTable::mean(self : NlpparsedependencyTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_table_scale(s : NlpparsedependencyTable, f : Double) -> NlpparsedependencyTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyTable::scale(self : NlpparsedependencyTable, f : Double) -> NlpparsedependencyTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_table_add(a : NlpparsedependencyTable, b : NlpparsedependencyTable) -> NlpparsedependencyTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyTable::add(self : NlpparsedependencyTable, other : NlpparsedependencyTable) -> NlpparsedependencyTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_table_copy(s : NlpparsedependencyTable) -> NlpparsedependencyTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyTable::copy(self : NlpparsedependencyTable) -> NlpparsedependencyTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_table_fill(s : NlpparsedependencyTable, v : Double) -> NlpparsedependencyTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyTable::fill(self : NlpparsedependencyTable, v : Double) -> NlpparsedependencyTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_table_min(s : NlpparsedependencyTable) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyTable::min(self : NlpparsedependencyTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_table_max(s : NlpparsedependencyTable) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyTable::max(self : NlpparsedependencyTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_table_to_string(s : NlpparsedependencyTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyTable::to_string(self : NlpparsedependencyTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_dependency_graphn_make(size : Int) -> NlpparsedependencyGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_graphn_len(s : NlpparsedependencyGraphN) -> Int { s.size }
+pub fn NlpparsedependencyGraphN::len(self : NlpparsedependencyGraphN) -> Int { self.size }
 
-pub fn nlp_parse_dependency_graphn_get(s : NlpparsedependencyGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyGraphN::get(self : NlpparsedependencyGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_graphn_set(s : NlpparsedependencyGraphN, i : Int, v : Double) -> NlpparsedependencyGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyGraphN::set(self : NlpparsedependencyGraphN, i : Int, v : Double) -> NlpparsedependencyGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_graphn_sum(s : NlpparsedependencyGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyGraphN::sum(self : NlpparsedependencyGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_graphn_mean(s : NlpparsedependencyGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyGraphN::mean(self : NlpparsedependencyGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_graphn_scale(s : NlpparsedependencyGraphN, f : Double) -> NlpparsedependencyGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyGraphN::scale(self : NlpparsedependencyGraphN, f : Double) -> NlpparsedependencyGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_graphn_add(a : NlpparsedependencyGraphN, b : NlpparsedependencyGraphN) -> NlpparsedependencyGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyGraphN::add(self : NlpparsedependencyGraphN, other : NlpparsedependencyGraphN) -> NlpparsedependencyGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_graphn_copy(s : NlpparsedependencyGraphN) -> NlpparsedependencyGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyGraphN::copy(self : NlpparsedependencyGraphN) -> NlpparsedependencyGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_graphn_fill(s : NlpparsedependencyGraphN, v : Double) -> NlpparsedependencyGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyGraphN::fill(self : NlpparsedependencyGraphN, v : Double) -> NlpparsedependencyGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_graphn_min(s : NlpparsedependencyGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyGraphN::min(self : NlpparsedependencyGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_graphn_max(s : NlpparsedependencyGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyGraphN::max(self : NlpparsedependencyGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_graphn_to_string(s : NlpparsedependencyGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyGraphN::to_string(self : NlpparsedependencyGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_dependency_node_make(size : Int) -> NlpparsedependencyNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_node_len(s : NlpparsedependencyNode) -> Int { s.size }
+pub fn NlpparsedependencyNode::len(self : NlpparsedependencyNode) -> Int { self.size }
 
-pub fn nlp_parse_dependency_node_get(s : NlpparsedependencyNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyNode::get(self : NlpparsedependencyNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_node_set(s : NlpparsedependencyNode, i : Int, v : Double) -> NlpparsedependencyNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyNode::set(self : NlpparsedependencyNode, i : Int, v : Double) -> NlpparsedependencyNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_node_sum(s : NlpparsedependencyNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyNode::sum(self : NlpparsedependencyNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_node_mean(s : NlpparsedependencyNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyNode::mean(self : NlpparsedependencyNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_node_scale(s : NlpparsedependencyNode, f : Double) -> NlpparsedependencyNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyNode::scale(self : NlpparsedependencyNode, f : Double) -> NlpparsedependencyNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_node_add(a : NlpparsedependencyNode, b : NlpparsedependencyNode) -> NlpparsedependencyNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyNode::add(self : NlpparsedependencyNode, other : NlpparsedependencyNode) -> NlpparsedependencyNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_node_copy(s : NlpparsedependencyNode) -> NlpparsedependencyNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyNode::copy(self : NlpparsedependencyNode) -> NlpparsedependencyNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_node_fill(s : NlpparsedependencyNode, v : Double) -> NlpparsedependencyNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyNode::fill(self : NlpparsedependencyNode, v : Double) -> NlpparsedependencyNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_node_min(s : NlpparsedependencyNode) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyNode::min(self : NlpparsedependencyNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_node_max(s : NlpparsedependencyNode) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyNode::max(self : NlpparsedependencyNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_node_to_string(s : NlpparsedependencyNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyNode::to_string(self : NlpparsedependencyNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_dependency_edge_make(size : Int) -> NlpparsedependencyEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_edge_len(s : NlpparsedependencyEdge) -> Int { s.size }
+pub fn NlpparsedependencyEdge::len(self : NlpparsedependencyEdge) -> Int { self.size }
 
-pub fn nlp_parse_dependency_edge_get(s : NlpparsedependencyEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyEdge::get(self : NlpparsedependencyEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_edge_set(s : NlpparsedependencyEdge, i : Int, v : Double) -> NlpparsedependencyEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyEdge::set(self : NlpparsedependencyEdge, i : Int, v : Double) -> NlpparsedependencyEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_edge_sum(s : NlpparsedependencyEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyEdge::sum(self : NlpparsedependencyEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_edge_mean(s : NlpparsedependencyEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyEdge::mean(self : NlpparsedependencyEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_edge_scale(s : NlpparsedependencyEdge, f : Double) -> NlpparsedependencyEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyEdge::scale(self : NlpparsedependencyEdge, f : Double) -> NlpparsedependencyEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_edge_add(a : NlpparsedependencyEdge, b : NlpparsedependencyEdge) -> NlpparsedependencyEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyEdge::add(self : NlpparsedependencyEdge, other : NlpparsedependencyEdge) -> NlpparsedependencyEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_edge_copy(s : NlpparsedependencyEdge) -> NlpparsedependencyEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyEdge::copy(self : NlpparsedependencyEdge) -> NlpparsedependencyEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_edge_fill(s : NlpparsedependencyEdge, v : Double) -> NlpparsedependencyEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyEdge::fill(self : NlpparsedependencyEdge, v : Double) -> NlpparsedependencyEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_edge_min(s : NlpparsedependencyEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyEdge::min(self : NlpparsedependencyEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_edge_max(s : NlpparsedependencyEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyEdge::max(self : NlpparsedependencyEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_edge_to_string(s : NlpparsedependencyEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyEdge::to_string(self : NlpparsedependencyEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_dependency_path_make(size : Int) -> NlpparsedependencyPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_path_len(s : NlpparsedependencyPath) -> Int { s.size }
+pub fn NlpparsedependencyPath::len(self : NlpparsedependencyPath) -> Int { self.size }
 
-pub fn nlp_parse_dependency_path_get(s : NlpparsedependencyPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyPath::get(self : NlpparsedependencyPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_path_set(s : NlpparsedependencyPath, i : Int, v : Double) -> NlpparsedependencyPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyPath::set(self : NlpparsedependencyPath, i : Int, v : Double) -> NlpparsedependencyPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_path_sum(s : NlpparsedependencyPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyPath::sum(self : NlpparsedependencyPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_path_mean(s : NlpparsedependencyPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyPath::mean(self : NlpparsedependencyPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_path_scale(s : NlpparsedependencyPath, f : Double) -> NlpparsedependencyPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyPath::scale(self : NlpparsedependencyPath, f : Double) -> NlpparsedependencyPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_path_add(a : NlpparsedependencyPath, b : NlpparsedependencyPath) -> NlpparsedependencyPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyPath::add(self : NlpparsedependencyPath, other : NlpparsedependencyPath) -> NlpparsedependencyPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_path_copy(s : NlpparsedependencyPath) -> NlpparsedependencyPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyPath::copy(self : NlpparsedependencyPath) -> NlpparsedependencyPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_path_fill(s : NlpparsedependencyPath, v : Double) -> NlpparsedependencyPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyPath::fill(self : NlpparsedependencyPath, v : Double) -> NlpparsedependencyPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_path_min(s : NlpparsedependencyPath) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyPath::min(self : NlpparsedependencyPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_path_max(s : NlpparsedependencyPath) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyPath::max(self : NlpparsedependencyPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_path_to_string(s : NlpparsedependencyPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyPath::to_string(self : NlpparsedependencyPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_dependency_cluster_make(size : Int) -> NlpparsedependencyCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_cluster_len(s : NlpparsedependencyCluster) -> Int { s.size }
+pub fn NlpparsedependencyCluster::len(self : NlpparsedependencyCluster) -> Int { self.size }
 
-pub fn nlp_parse_dependency_cluster_get(s : NlpparsedependencyCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyCluster::get(self : NlpparsedependencyCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_cluster_set(s : NlpparsedependencyCluster, i : Int, v : Double) -> NlpparsedependencyCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCluster::set(self : NlpparsedependencyCluster, i : Int, v : Double) -> NlpparsedependencyCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cluster_sum(s : NlpparsedependencyCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyCluster::sum(self : NlpparsedependencyCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_cluster_mean(s : NlpparsedependencyCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyCluster::mean(self : NlpparsedependencyCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_cluster_scale(s : NlpparsedependencyCluster, f : Double) -> NlpparsedependencyCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCluster::scale(self : NlpparsedependencyCluster, f : Double) -> NlpparsedependencyCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cluster_add(a : NlpparsedependencyCluster, b : NlpparsedependencyCluster) -> NlpparsedependencyCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyCluster::add(self : NlpparsedependencyCluster, other : NlpparsedependencyCluster) -> NlpparsedependencyCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cluster_copy(s : NlpparsedependencyCluster) -> NlpparsedependencyCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCluster::copy(self : NlpparsedependencyCluster) -> NlpparsedependencyCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cluster_fill(s : NlpparsedependencyCluster, v : Double) -> NlpparsedependencyCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCluster::fill(self : NlpparsedependencyCluster, v : Double) -> NlpparsedependencyCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cluster_min(s : NlpparsedependencyCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyCluster::min(self : NlpparsedependencyCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_cluster_max(s : NlpparsedependencyCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyCluster::max(self : NlpparsedependencyCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_cluster_to_string(s : NlpparsedependencyCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyCluster::to_string(self : NlpparsedependencyCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_dependency_model_make(size : Int) -> NlpparsedependencyModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_model_len(s : NlpparsedependencyModel) -> Int { s.size }
+pub fn NlpparsedependencyModel::len(self : NlpparsedependencyModel) -> Int { self.size }
 
-pub fn nlp_parse_dependency_model_get(s : NlpparsedependencyModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyModel::get(self : NlpparsedependencyModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_model_set(s : NlpparsedependencyModel, i : Int, v : Double) -> NlpparsedependencyModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyModel::set(self : NlpparsedependencyModel, i : Int, v : Double) -> NlpparsedependencyModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_model_sum(s : NlpparsedependencyModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyModel::sum(self : NlpparsedependencyModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_model_mean(s : NlpparsedependencyModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyModel::mean(self : NlpparsedependencyModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_model_scale(s : NlpparsedependencyModel, f : Double) -> NlpparsedependencyModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyModel::scale(self : NlpparsedependencyModel, f : Double) -> NlpparsedependencyModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_model_add(a : NlpparsedependencyModel, b : NlpparsedependencyModel) -> NlpparsedependencyModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyModel::add(self : NlpparsedependencyModel, other : NlpparsedependencyModel) -> NlpparsedependencyModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_model_copy(s : NlpparsedependencyModel) -> NlpparsedependencyModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyModel::copy(self : NlpparsedependencyModel) -> NlpparsedependencyModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_model_fill(s : NlpparsedependencyModel, v : Double) -> NlpparsedependencyModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyModel::fill(self : NlpparsedependencyModel, v : Double) -> NlpparsedependencyModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_model_min(s : NlpparsedependencyModel) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyModel::min(self : NlpparsedependencyModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_model_max(s : NlpparsedependencyModel) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyModel::max(self : NlpparsedependencyModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_model_to_string(s : NlpparsedependencyModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyModel::to_string(self : NlpparsedependencyModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_dependency_layer_make(size : Int) -> NlpparsedependencyLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_layer_len(s : NlpparsedependencyLayer) -> Int { s.size }
+pub fn NlpparsedependencyLayer::len(self : NlpparsedependencyLayer) -> Int { self.size }
 
-pub fn nlp_parse_dependency_layer_get(s : NlpparsedependencyLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyLayer::get(self : NlpparsedependencyLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_layer_set(s : NlpparsedependencyLayer, i : Int, v : Double) -> NlpparsedependencyLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyLayer::set(self : NlpparsedependencyLayer, i : Int, v : Double) -> NlpparsedependencyLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_layer_sum(s : NlpparsedependencyLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyLayer::sum(self : NlpparsedependencyLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_layer_mean(s : NlpparsedependencyLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyLayer::mean(self : NlpparsedependencyLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_layer_scale(s : NlpparsedependencyLayer, f : Double) -> NlpparsedependencyLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyLayer::scale(self : NlpparsedependencyLayer, f : Double) -> NlpparsedependencyLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_layer_add(a : NlpparsedependencyLayer, b : NlpparsedependencyLayer) -> NlpparsedependencyLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyLayer::add(self : NlpparsedependencyLayer, other : NlpparsedependencyLayer) -> NlpparsedependencyLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_layer_copy(s : NlpparsedependencyLayer) -> NlpparsedependencyLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyLayer::copy(self : NlpparsedependencyLayer) -> NlpparsedependencyLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_layer_fill(s : NlpparsedependencyLayer, v : Double) -> NlpparsedependencyLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyLayer::fill(self : NlpparsedependencyLayer, v : Double) -> NlpparsedependencyLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_layer_min(s : NlpparsedependencyLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyLayer::min(self : NlpparsedependencyLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_layer_max(s : NlpparsedependencyLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyLayer::max(self : NlpparsedependencyLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_layer_to_string(s : NlpparsedependencyLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyLayer::to_string(self : NlpparsedependencyLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_dependency_buffer_make(size : Int) -> NlpparsedependencyBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_buffer_len(s : NlpparsedependencyBuffer) -> Int { s.size }
+pub fn NlpparsedependencyBuffer::len(self : NlpparsedependencyBuffer) -> Int { self.size }
 
-pub fn nlp_parse_dependency_buffer_get(s : NlpparsedependencyBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyBuffer::get(self : NlpparsedependencyBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_buffer_set(s : NlpparsedependencyBuffer, i : Int, v : Double) -> NlpparsedependencyBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyBuffer::set(self : NlpparsedependencyBuffer, i : Int, v : Double) -> NlpparsedependencyBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_buffer_sum(s : NlpparsedependencyBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyBuffer::sum(self : NlpparsedependencyBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_buffer_mean(s : NlpparsedependencyBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyBuffer::mean(self : NlpparsedependencyBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_buffer_scale(s : NlpparsedependencyBuffer, f : Double) -> NlpparsedependencyBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyBuffer::scale(self : NlpparsedependencyBuffer, f : Double) -> NlpparsedependencyBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_buffer_add(a : NlpparsedependencyBuffer, b : NlpparsedependencyBuffer) -> NlpparsedependencyBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyBuffer::add(self : NlpparsedependencyBuffer, other : NlpparsedependencyBuffer) -> NlpparsedependencyBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_buffer_copy(s : NlpparsedependencyBuffer) -> NlpparsedependencyBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyBuffer::copy(self : NlpparsedependencyBuffer) -> NlpparsedependencyBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_buffer_fill(s : NlpparsedependencyBuffer, v : Double) -> NlpparsedependencyBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyBuffer::fill(self : NlpparsedependencyBuffer, v : Double) -> NlpparsedependencyBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_buffer_min(s : NlpparsedependencyBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyBuffer::min(self : NlpparsedependencyBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_buffer_max(s : NlpparsedependencyBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyBuffer::max(self : NlpparsedependencyBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_buffer_to_string(s : NlpparsedependencyBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyBuffer::to_string(self : NlpparsedependencyBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_dependency_cursor_make(size : Int) -> NlpparsedependencyCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_cursor_len(s : NlpparsedependencyCursor) -> Int { s.size }
+pub fn NlpparsedependencyCursor::len(self : NlpparsedependencyCursor) -> Int { self.size }
 
-pub fn nlp_parse_dependency_cursor_get(s : NlpparsedependencyCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyCursor::get(self : NlpparsedependencyCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_cursor_set(s : NlpparsedependencyCursor, i : Int, v : Double) -> NlpparsedependencyCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCursor::set(self : NlpparsedependencyCursor, i : Int, v : Double) -> NlpparsedependencyCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cursor_sum(s : NlpparsedependencyCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyCursor::sum(self : NlpparsedependencyCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_cursor_mean(s : NlpparsedependencyCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyCursor::mean(self : NlpparsedependencyCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_cursor_scale(s : NlpparsedependencyCursor, f : Double) -> NlpparsedependencyCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCursor::scale(self : NlpparsedependencyCursor, f : Double) -> NlpparsedependencyCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cursor_add(a : NlpparsedependencyCursor, b : NlpparsedependencyCursor) -> NlpparsedependencyCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyCursor::add(self : NlpparsedependencyCursor, other : NlpparsedependencyCursor) -> NlpparsedependencyCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cursor_copy(s : NlpparsedependencyCursor) -> NlpparsedependencyCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCursor::copy(self : NlpparsedependencyCursor) -> NlpparsedependencyCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cursor_fill(s : NlpparsedependencyCursor, v : Double) -> NlpparsedependencyCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyCursor::fill(self : NlpparsedependencyCursor, v : Double) -> NlpparsedependencyCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_cursor_min(s : NlpparsedependencyCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyCursor::min(self : NlpparsedependencyCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_cursor_max(s : NlpparsedependencyCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyCursor::max(self : NlpparsedependencyCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_cursor_to_string(s : NlpparsedependencyCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyCursor::to_string(self : NlpparsedependencyCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_dependency_view_make(size : Int) -> NlpparsedependencyView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_view_len(s : NlpparsedependencyView) -> Int { s.size }
+pub fn NlpparsedependencyView::len(self : NlpparsedependencyView) -> Int { self.size }
 
-pub fn nlp_parse_dependency_view_get(s : NlpparsedependencyView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyView::get(self : NlpparsedependencyView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_view_set(s : NlpparsedependencyView, i : Int, v : Double) -> NlpparsedependencyView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyView::set(self : NlpparsedependencyView, i : Int, v : Double) -> NlpparsedependencyView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_view_sum(s : NlpparsedependencyView) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyView::sum(self : NlpparsedependencyView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_view_mean(s : NlpparsedependencyView) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyView::mean(self : NlpparsedependencyView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_view_scale(s : NlpparsedependencyView, f : Double) -> NlpparsedependencyView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyView::scale(self : NlpparsedependencyView, f : Double) -> NlpparsedependencyView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_view_add(a : NlpparsedependencyView, b : NlpparsedependencyView) -> NlpparsedependencyView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyView::add(self : NlpparsedependencyView, other : NlpparsedependencyView) -> NlpparsedependencyView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_view_copy(s : NlpparsedependencyView) -> NlpparsedependencyView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyView::copy(self : NlpparsedependencyView) -> NlpparsedependencyView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_view_fill(s : NlpparsedependencyView, v : Double) -> NlpparsedependencyView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyView::fill(self : NlpparsedependencyView, v : Double) -> NlpparsedependencyView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_view_min(s : NlpparsedependencyView) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyView::min(self : NlpparsedependencyView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_view_max(s : NlpparsedependencyView) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyView::max(self : NlpparsedependencyView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_view_to_string(s : NlpparsedependencyView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyView::to_string(self : NlpparsedependencyView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencyRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_dependency_range_make(size : Int) -> NlpparsedependencyRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_range_len(s : NlpparsedependencyRange) -> Int { s.size }
+pub fn NlpparsedependencyRange::len(self : NlpparsedependencyRange) -> Int { self.size }
 
-pub fn nlp_parse_dependency_range_get(s : NlpparsedependencyRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencyRange::get(self : NlpparsedependencyRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_range_set(s : NlpparsedependencyRange, i : Int, v : Double) -> NlpparsedependencyRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencyRange::set(self : NlpparsedependencyRange, i : Int, v : Double) -> NlpparsedependencyRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_range_sum(s : NlpparsedependencyRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencyRange::sum(self : NlpparsedependencyRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_range_mean(s : NlpparsedependencyRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencyRange::mean(self : NlpparsedependencyRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_range_scale(s : NlpparsedependencyRange, f : Double) -> NlpparsedependencyRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyRange::scale(self : NlpparsedependencyRange, f : Double) -> NlpparsedependencyRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_range_add(a : NlpparsedependencyRange, b : NlpparsedependencyRange) -> NlpparsedependencyRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencyRange::add(self : NlpparsedependencyRange, other : NlpparsedependencyRange) -> NlpparsedependencyRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_range_copy(s : NlpparsedependencyRange) -> NlpparsedependencyRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyRange::copy(self : NlpparsedependencyRange) -> NlpparsedependencyRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_range_fill(s : NlpparsedependencyRange, v : Double) -> NlpparsedependencyRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencyRange::fill(self : NlpparsedependencyRange, v : Double) -> NlpparsedependencyRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_range_min(s : NlpparsedependencyRange) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencyRange::min(self : NlpparsedependencyRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_range_max(s : NlpparsedependencyRange) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencyRange::max(self : NlpparsedependencyRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_range_to_string(s : NlpparsedependencyRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencyRange::to_string(self : NlpparsedependencyRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencySlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_dependency_slice_make(size : Int) -> NlpparsedependencySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_dependency_slice_len(s : NlpparsedependencySlice) -> Int { s.size }
+pub fn NlpparsedependencySlice::len(self : NlpparsedependencySlice) -> Int { self.size }
 
-pub fn nlp_parse_dependency_slice_get(s : NlpparsedependencySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsedependencySlice::get(self : NlpparsedependencySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_dependency_slice_set(s : NlpparsedependencySlice, i : Int, v : Double) -> NlpparsedependencySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsedependencySlice::set(self : NlpparsedependencySlice, i : Int, v : Double) -> NlpparsedependencySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_slice_sum(s : NlpparsedependencySlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparsedependencySlice::sum(self : NlpparsedependencySlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_dependency_slice_mean(s : NlpparsedependencySlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparsedependencySlice::mean(self : NlpparsedependencySlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_dependency_slice_scale(s : NlpparsedependencySlice, f : Double) -> NlpparsedependencySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsedependencySlice::scale(self : NlpparsedependencySlice, f : Double) -> NlpparsedependencySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_slice_add(a : NlpparsedependencySlice, b : NlpparsedependencySlice) -> NlpparsedependencySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsedependencySlice::add(self : NlpparsedependencySlice, other : NlpparsedependencySlice) -> NlpparsedependencySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_slice_copy(s : NlpparsedependencySlice) -> NlpparsedependencySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsedependencySlice::copy(self : NlpparsedependencySlice) -> NlpparsedependencySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_slice_fill(s : NlpparsedependencySlice, v : Double) -> NlpparsedependencySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsedependencySlice::fill(self : NlpparsedependencySlice, v : Double) -> NlpparsedependencySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_dependency_slice_min(s : NlpparsedependencySlice) -> Double { @_common.min(s.data) }
+pub fn NlpparsedependencySlice::min(self : NlpparsedependencySlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_dependency_slice_max(s : NlpparsedependencySlice) -> Double { @_common.max(s.data) }
+pub fn NlpparsedependencySlice::max(self : NlpparsedependencySlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_dependency_slice_to_string(s : NlpparsedependencySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsedependencySlice::to_string(self : NlpparsedependencySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

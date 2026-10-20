@@ -351,45 +351,45 @@ pub fn image_transform_affine_frame_make(size : Int) -> ImagetransformaffineFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_frame_len(s : ImagetransformaffineFrame) -> Int { s.size }
+pub fn ImagetransformaffineFrame::len(self : ImagetransformaffineFrame) -> Int { self.size }
 
-pub fn image_transform_affine_frame_get(s : ImagetransformaffineFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineFrame::get(self : ImagetransformaffineFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_frame_set(s : ImagetransformaffineFrame, i : Int, v : Double) -> ImagetransformaffineFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineFrame::set(self : ImagetransformaffineFrame, i : Int, v : Double) -> ImagetransformaffineFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_frame_sum(s : ImagetransformaffineFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineFrame::sum(self : ImagetransformaffineFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_frame_mean(s : ImagetransformaffineFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineFrame::mean(self : ImagetransformaffineFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_frame_scale(s : ImagetransformaffineFrame, f : Double) -> ImagetransformaffineFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineFrame::scale(self : ImagetransformaffineFrame, f : Double) -> ImagetransformaffineFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_frame_add(a : ImagetransformaffineFrame, b : ImagetransformaffineFrame) -> ImagetransformaffineFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineFrame::add(self : ImagetransformaffineFrame, other : ImagetransformaffineFrame) -> ImagetransformaffineFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_frame_copy(s : ImagetransformaffineFrame) -> ImagetransformaffineFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineFrame::copy(self : ImagetransformaffineFrame) -> ImagetransformaffineFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_frame_fill(s : ImagetransformaffineFrame, v : Double) -> ImagetransformaffineFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineFrame::fill(self : ImagetransformaffineFrame, v : Double) -> ImagetransformaffineFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_frame_min(s : ImagetransformaffineFrame) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineFrame::min(self : ImagetransformaffineFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_frame_max(s : ImagetransformaffineFrame) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineFrame::max(self : ImagetransformaffineFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_frame_to_string(s : ImagetransformaffineFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineFrame::to_string(self : ImagetransformaffineFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineTable {
@@ -402,45 +402,45 @@ pub fn image_transform_affine_table_make(size : Int) -> ImagetransformaffineTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_table_len(s : ImagetransformaffineTable) -> Int { s.size }
+pub fn ImagetransformaffineTable::len(self : ImagetransformaffineTable) -> Int { self.size }
 
-pub fn image_transform_affine_table_get(s : ImagetransformaffineTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineTable::get(self : ImagetransformaffineTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_table_set(s : ImagetransformaffineTable, i : Int, v : Double) -> ImagetransformaffineTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineTable::set(self : ImagetransformaffineTable, i : Int, v : Double) -> ImagetransformaffineTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_table_sum(s : ImagetransformaffineTable) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineTable::sum(self : ImagetransformaffineTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_table_mean(s : ImagetransformaffineTable) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineTable::mean(self : ImagetransformaffineTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_table_scale(s : ImagetransformaffineTable, f : Double) -> ImagetransformaffineTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineTable::scale(self : ImagetransformaffineTable, f : Double) -> ImagetransformaffineTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_table_add(a : ImagetransformaffineTable, b : ImagetransformaffineTable) -> ImagetransformaffineTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineTable::add(self : ImagetransformaffineTable, other : ImagetransformaffineTable) -> ImagetransformaffineTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_table_copy(s : ImagetransformaffineTable) -> ImagetransformaffineTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineTable::copy(self : ImagetransformaffineTable) -> ImagetransformaffineTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_table_fill(s : ImagetransformaffineTable, v : Double) -> ImagetransformaffineTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineTable::fill(self : ImagetransformaffineTable, v : Double) -> ImagetransformaffineTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_table_min(s : ImagetransformaffineTable) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineTable::min(self : ImagetransformaffineTable) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_table_max(s : ImagetransformaffineTable) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineTable::max(self : ImagetransformaffineTable) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_table_to_string(s : ImagetransformaffineTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineTable::to_string(self : ImagetransformaffineTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineGraphN {
@@ -453,45 +453,45 @@ pub fn image_transform_affine_graphn_make(size : Int) -> ImagetransformaffineGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_graphn_len(s : ImagetransformaffineGraphN) -> Int { s.size }
+pub fn ImagetransformaffineGraphN::len(self : ImagetransformaffineGraphN) -> Int { self.size }
 
-pub fn image_transform_affine_graphn_get(s : ImagetransformaffineGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineGraphN::get(self : ImagetransformaffineGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_graphn_set(s : ImagetransformaffineGraphN, i : Int, v : Double) -> ImagetransformaffineGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineGraphN::set(self : ImagetransformaffineGraphN, i : Int, v : Double) -> ImagetransformaffineGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_graphn_sum(s : ImagetransformaffineGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineGraphN::sum(self : ImagetransformaffineGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_graphn_mean(s : ImagetransformaffineGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineGraphN::mean(self : ImagetransformaffineGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_graphn_scale(s : ImagetransformaffineGraphN, f : Double) -> ImagetransformaffineGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineGraphN::scale(self : ImagetransformaffineGraphN, f : Double) -> ImagetransformaffineGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_graphn_add(a : ImagetransformaffineGraphN, b : ImagetransformaffineGraphN) -> ImagetransformaffineGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineGraphN::add(self : ImagetransformaffineGraphN, other : ImagetransformaffineGraphN) -> ImagetransformaffineGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_graphn_copy(s : ImagetransformaffineGraphN) -> ImagetransformaffineGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineGraphN::copy(self : ImagetransformaffineGraphN) -> ImagetransformaffineGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_graphn_fill(s : ImagetransformaffineGraphN, v : Double) -> ImagetransformaffineGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineGraphN::fill(self : ImagetransformaffineGraphN, v : Double) -> ImagetransformaffineGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_graphn_min(s : ImagetransformaffineGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineGraphN::min(self : ImagetransformaffineGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_graphn_max(s : ImagetransformaffineGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineGraphN::max(self : ImagetransformaffineGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_graphn_to_string(s : ImagetransformaffineGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineGraphN::to_string(self : ImagetransformaffineGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineNode {
@@ -504,45 +504,45 @@ pub fn image_transform_affine_node_make(size : Int) -> ImagetransformaffineNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_node_len(s : ImagetransformaffineNode) -> Int { s.size }
+pub fn ImagetransformaffineNode::len(self : ImagetransformaffineNode) -> Int { self.size }
 
-pub fn image_transform_affine_node_get(s : ImagetransformaffineNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineNode::get(self : ImagetransformaffineNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_node_set(s : ImagetransformaffineNode, i : Int, v : Double) -> ImagetransformaffineNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineNode::set(self : ImagetransformaffineNode, i : Int, v : Double) -> ImagetransformaffineNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_node_sum(s : ImagetransformaffineNode) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineNode::sum(self : ImagetransformaffineNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_node_mean(s : ImagetransformaffineNode) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineNode::mean(self : ImagetransformaffineNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_node_scale(s : ImagetransformaffineNode, f : Double) -> ImagetransformaffineNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineNode::scale(self : ImagetransformaffineNode, f : Double) -> ImagetransformaffineNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_node_add(a : ImagetransformaffineNode, b : ImagetransformaffineNode) -> ImagetransformaffineNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineNode::add(self : ImagetransformaffineNode, other : ImagetransformaffineNode) -> ImagetransformaffineNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_node_copy(s : ImagetransformaffineNode) -> ImagetransformaffineNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineNode::copy(self : ImagetransformaffineNode) -> ImagetransformaffineNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_node_fill(s : ImagetransformaffineNode, v : Double) -> ImagetransformaffineNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineNode::fill(self : ImagetransformaffineNode, v : Double) -> ImagetransformaffineNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_node_min(s : ImagetransformaffineNode) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineNode::min(self : ImagetransformaffineNode) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_node_max(s : ImagetransformaffineNode) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineNode::max(self : ImagetransformaffineNode) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_node_to_string(s : ImagetransformaffineNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineNode::to_string(self : ImagetransformaffineNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineEdge {
@@ -555,45 +555,45 @@ pub fn image_transform_affine_edge_make(size : Int) -> ImagetransformaffineEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_edge_len(s : ImagetransformaffineEdge) -> Int { s.size }
+pub fn ImagetransformaffineEdge::len(self : ImagetransformaffineEdge) -> Int { self.size }
 
-pub fn image_transform_affine_edge_get(s : ImagetransformaffineEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineEdge::get(self : ImagetransformaffineEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_edge_set(s : ImagetransformaffineEdge, i : Int, v : Double) -> ImagetransformaffineEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineEdge::set(self : ImagetransformaffineEdge, i : Int, v : Double) -> ImagetransformaffineEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_edge_sum(s : ImagetransformaffineEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineEdge::sum(self : ImagetransformaffineEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_edge_mean(s : ImagetransformaffineEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineEdge::mean(self : ImagetransformaffineEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_edge_scale(s : ImagetransformaffineEdge, f : Double) -> ImagetransformaffineEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineEdge::scale(self : ImagetransformaffineEdge, f : Double) -> ImagetransformaffineEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_edge_add(a : ImagetransformaffineEdge, b : ImagetransformaffineEdge) -> ImagetransformaffineEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineEdge::add(self : ImagetransformaffineEdge, other : ImagetransformaffineEdge) -> ImagetransformaffineEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_edge_copy(s : ImagetransformaffineEdge) -> ImagetransformaffineEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineEdge::copy(self : ImagetransformaffineEdge) -> ImagetransformaffineEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_edge_fill(s : ImagetransformaffineEdge, v : Double) -> ImagetransformaffineEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineEdge::fill(self : ImagetransformaffineEdge, v : Double) -> ImagetransformaffineEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_edge_min(s : ImagetransformaffineEdge) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineEdge::min(self : ImagetransformaffineEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_edge_max(s : ImagetransformaffineEdge) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineEdge::max(self : ImagetransformaffineEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_edge_to_string(s : ImagetransformaffineEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineEdge::to_string(self : ImagetransformaffineEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffinePath {
@@ -606,45 +606,45 @@ pub fn image_transform_affine_path_make(size : Int) -> ImagetransformaffinePath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_path_len(s : ImagetransformaffinePath) -> Int { s.size }
+pub fn ImagetransformaffinePath::len(self : ImagetransformaffinePath) -> Int { self.size }
 
-pub fn image_transform_affine_path_get(s : ImagetransformaffinePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffinePath::get(self : ImagetransformaffinePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_path_set(s : ImagetransformaffinePath, i : Int, v : Double) -> ImagetransformaffinePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffinePath::set(self : ImagetransformaffinePath, i : Int, v : Double) -> ImagetransformaffinePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_path_sum(s : ImagetransformaffinePath) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffinePath::sum(self : ImagetransformaffinePath) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_path_mean(s : ImagetransformaffinePath) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffinePath::mean(self : ImagetransformaffinePath) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_path_scale(s : ImagetransformaffinePath, f : Double) -> ImagetransformaffinePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffinePath::scale(self : ImagetransformaffinePath, f : Double) -> ImagetransformaffinePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_path_add(a : ImagetransformaffinePath, b : ImagetransformaffinePath) -> ImagetransformaffinePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffinePath::add(self : ImagetransformaffinePath, other : ImagetransformaffinePath) -> ImagetransformaffinePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_path_copy(s : ImagetransformaffinePath) -> ImagetransformaffinePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffinePath::copy(self : ImagetransformaffinePath) -> ImagetransformaffinePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_path_fill(s : ImagetransformaffinePath, v : Double) -> ImagetransformaffinePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffinePath::fill(self : ImagetransformaffinePath, v : Double) -> ImagetransformaffinePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_path_min(s : ImagetransformaffinePath) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffinePath::min(self : ImagetransformaffinePath) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_path_max(s : ImagetransformaffinePath) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffinePath::max(self : ImagetransformaffinePath) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_path_to_string(s : ImagetransformaffinePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffinePath::to_string(self : ImagetransformaffinePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineCluster {
@@ -657,45 +657,45 @@ pub fn image_transform_affine_cluster_make(size : Int) -> ImagetransformaffineCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_cluster_len(s : ImagetransformaffineCluster) -> Int { s.size }
+pub fn ImagetransformaffineCluster::len(self : ImagetransformaffineCluster) -> Int { self.size }
 
-pub fn image_transform_affine_cluster_get(s : ImagetransformaffineCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineCluster::get(self : ImagetransformaffineCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_cluster_set(s : ImagetransformaffineCluster, i : Int, v : Double) -> ImagetransformaffineCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCluster::set(self : ImagetransformaffineCluster, i : Int, v : Double) -> ImagetransformaffineCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cluster_sum(s : ImagetransformaffineCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineCluster::sum(self : ImagetransformaffineCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_cluster_mean(s : ImagetransformaffineCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineCluster::mean(self : ImagetransformaffineCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_cluster_scale(s : ImagetransformaffineCluster, f : Double) -> ImagetransformaffineCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCluster::scale(self : ImagetransformaffineCluster, f : Double) -> ImagetransformaffineCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cluster_add(a : ImagetransformaffineCluster, b : ImagetransformaffineCluster) -> ImagetransformaffineCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineCluster::add(self : ImagetransformaffineCluster, other : ImagetransformaffineCluster) -> ImagetransformaffineCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_cluster_copy(s : ImagetransformaffineCluster) -> ImagetransformaffineCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCluster::copy(self : ImagetransformaffineCluster) -> ImagetransformaffineCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cluster_fill(s : ImagetransformaffineCluster, v : Double) -> ImagetransformaffineCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCluster::fill(self : ImagetransformaffineCluster, v : Double) -> ImagetransformaffineCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cluster_min(s : ImagetransformaffineCluster) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineCluster::min(self : ImagetransformaffineCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_cluster_max(s : ImagetransformaffineCluster) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineCluster::max(self : ImagetransformaffineCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_cluster_to_string(s : ImagetransformaffineCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineCluster::to_string(self : ImagetransformaffineCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineModel {
@@ -708,45 +708,45 @@ pub fn image_transform_affine_model_make(size : Int) -> ImagetransformaffineMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_model_len(s : ImagetransformaffineModel) -> Int { s.size }
+pub fn ImagetransformaffineModel::len(self : ImagetransformaffineModel) -> Int { self.size }
 
-pub fn image_transform_affine_model_get(s : ImagetransformaffineModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineModel::get(self : ImagetransformaffineModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_model_set(s : ImagetransformaffineModel, i : Int, v : Double) -> ImagetransformaffineModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineModel::set(self : ImagetransformaffineModel, i : Int, v : Double) -> ImagetransformaffineModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_model_sum(s : ImagetransformaffineModel) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineModel::sum(self : ImagetransformaffineModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_model_mean(s : ImagetransformaffineModel) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineModel::mean(self : ImagetransformaffineModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_model_scale(s : ImagetransformaffineModel, f : Double) -> ImagetransformaffineModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineModel::scale(self : ImagetransformaffineModel, f : Double) -> ImagetransformaffineModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_model_add(a : ImagetransformaffineModel, b : ImagetransformaffineModel) -> ImagetransformaffineModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineModel::add(self : ImagetransformaffineModel, other : ImagetransformaffineModel) -> ImagetransformaffineModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_model_copy(s : ImagetransformaffineModel) -> ImagetransformaffineModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineModel::copy(self : ImagetransformaffineModel) -> ImagetransformaffineModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_model_fill(s : ImagetransformaffineModel, v : Double) -> ImagetransformaffineModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineModel::fill(self : ImagetransformaffineModel, v : Double) -> ImagetransformaffineModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_model_min(s : ImagetransformaffineModel) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineModel::min(self : ImagetransformaffineModel) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_model_max(s : ImagetransformaffineModel) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineModel::max(self : ImagetransformaffineModel) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_model_to_string(s : ImagetransformaffineModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineModel::to_string(self : ImagetransformaffineModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineLayer {
@@ -759,45 +759,45 @@ pub fn image_transform_affine_layer_make(size : Int) -> ImagetransformaffineLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_layer_len(s : ImagetransformaffineLayer) -> Int { s.size }
+pub fn ImagetransformaffineLayer::len(self : ImagetransformaffineLayer) -> Int { self.size }
 
-pub fn image_transform_affine_layer_get(s : ImagetransformaffineLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineLayer::get(self : ImagetransformaffineLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_layer_set(s : ImagetransformaffineLayer, i : Int, v : Double) -> ImagetransformaffineLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineLayer::set(self : ImagetransformaffineLayer, i : Int, v : Double) -> ImagetransformaffineLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_layer_sum(s : ImagetransformaffineLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineLayer::sum(self : ImagetransformaffineLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_layer_mean(s : ImagetransformaffineLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineLayer::mean(self : ImagetransformaffineLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_layer_scale(s : ImagetransformaffineLayer, f : Double) -> ImagetransformaffineLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineLayer::scale(self : ImagetransformaffineLayer, f : Double) -> ImagetransformaffineLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_layer_add(a : ImagetransformaffineLayer, b : ImagetransformaffineLayer) -> ImagetransformaffineLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineLayer::add(self : ImagetransformaffineLayer, other : ImagetransformaffineLayer) -> ImagetransformaffineLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_layer_copy(s : ImagetransformaffineLayer) -> ImagetransformaffineLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineLayer::copy(self : ImagetransformaffineLayer) -> ImagetransformaffineLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_layer_fill(s : ImagetransformaffineLayer, v : Double) -> ImagetransformaffineLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineLayer::fill(self : ImagetransformaffineLayer, v : Double) -> ImagetransformaffineLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_layer_min(s : ImagetransformaffineLayer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineLayer::min(self : ImagetransformaffineLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_layer_max(s : ImagetransformaffineLayer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineLayer::max(self : ImagetransformaffineLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_layer_to_string(s : ImagetransformaffineLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineLayer::to_string(self : ImagetransformaffineLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineBuffer {
@@ -810,45 +810,45 @@ pub fn image_transform_affine_buffer_make(size : Int) -> ImagetransformaffineBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_buffer_len(s : ImagetransformaffineBuffer) -> Int { s.size }
+pub fn ImagetransformaffineBuffer::len(self : ImagetransformaffineBuffer) -> Int { self.size }
 
-pub fn image_transform_affine_buffer_get(s : ImagetransformaffineBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineBuffer::get(self : ImagetransformaffineBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_buffer_set(s : ImagetransformaffineBuffer, i : Int, v : Double) -> ImagetransformaffineBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineBuffer::set(self : ImagetransformaffineBuffer, i : Int, v : Double) -> ImagetransformaffineBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_buffer_sum(s : ImagetransformaffineBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineBuffer::sum(self : ImagetransformaffineBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_buffer_mean(s : ImagetransformaffineBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineBuffer::mean(self : ImagetransformaffineBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_buffer_scale(s : ImagetransformaffineBuffer, f : Double) -> ImagetransformaffineBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineBuffer::scale(self : ImagetransformaffineBuffer, f : Double) -> ImagetransformaffineBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_buffer_add(a : ImagetransformaffineBuffer, b : ImagetransformaffineBuffer) -> ImagetransformaffineBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineBuffer::add(self : ImagetransformaffineBuffer, other : ImagetransformaffineBuffer) -> ImagetransformaffineBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_buffer_copy(s : ImagetransformaffineBuffer) -> ImagetransformaffineBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineBuffer::copy(self : ImagetransformaffineBuffer) -> ImagetransformaffineBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_buffer_fill(s : ImagetransformaffineBuffer, v : Double) -> ImagetransformaffineBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineBuffer::fill(self : ImagetransformaffineBuffer, v : Double) -> ImagetransformaffineBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_buffer_min(s : ImagetransformaffineBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineBuffer::min(self : ImagetransformaffineBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_buffer_max(s : ImagetransformaffineBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineBuffer::max(self : ImagetransformaffineBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_buffer_to_string(s : ImagetransformaffineBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineBuffer::to_string(self : ImagetransformaffineBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineCursor {
@@ -861,45 +861,45 @@ pub fn image_transform_affine_cursor_make(size : Int) -> ImagetransformaffineCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_cursor_len(s : ImagetransformaffineCursor) -> Int { s.size }
+pub fn ImagetransformaffineCursor::len(self : ImagetransformaffineCursor) -> Int { self.size }
 
-pub fn image_transform_affine_cursor_get(s : ImagetransformaffineCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineCursor::get(self : ImagetransformaffineCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_cursor_set(s : ImagetransformaffineCursor, i : Int, v : Double) -> ImagetransformaffineCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCursor::set(self : ImagetransformaffineCursor, i : Int, v : Double) -> ImagetransformaffineCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cursor_sum(s : ImagetransformaffineCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineCursor::sum(self : ImagetransformaffineCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_cursor_mean(s : ImagetransformaffineCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineCursor::mean(self : ImagetransformaffineCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_cursor_scale(s : ImagetransformaffineCursor, f : Double) -> ImagetransformaffineCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCursor::scale(self : ImagetransformaffineCursor, f : Double) -> ImagetransformaffineCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cursor_add(a : ImagetransformaffineCursor, b : ImagetransformaffineCursor) -> ImagetransformaffineCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineCursor::add(self : ImagetransformaffineCursor, other : ImagetransformaffineCursor) -> ImagetransformaffineCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_cursor_copy(s : ImagetransformaffineCursor) -> ImagetransformaffineCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCursor::copy(self : ImagetransformaffineCursor) -> ImagetransformaffineCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cursor_fill(s : ImagetransformaffineCursor, v : Double) -> ImagetransformaffineCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineCursor::fill(self : ImagetransformaffineCursor, v : Double) -> ImagetransformaffineCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_cursor_min(s : ImagetransformaffineCursor) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineCursor::min(self : ImagetransformaffineCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_cursor_max(s : ImagetransformaffineCursor) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineCursor::max(self : ImagetransformaffineCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_cursor_to_string(s : ImagetransformaffineCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineCursor::to_string(self : ImagetransformaffineCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineView {
@@ -912,45 +912,45 @@ pub fn image_transform_affine_view_make(size : Int) -> ImagetransformaffineView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_view_len(s : ImagetransformaffineView) -> Int { s.size }
+pub fn ImagetransformaffineView::len(self : ImagetransformaffineView) -> Int { self.size }
 
-pub fn image_transform_affine_view_get(s : ImagetransformaffineView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineView::get(self : ImagetransformaffineView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_view_set(s : ImagetransformaffineView, i : Int, v : Double) -> ImagetransformaffineView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineView::set(self : ImagetransformaffineView, i : Int, v : Double) -> ImagetransformaffineView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_view_sum(s : ImagetransformaffineView) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineView::sum(self : ImagetransformaffineView) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_view_mean(s : ImagetransformaffineView) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineView::mean(self : ImagetransformaffineView) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_view_scale(s : ImagetransformaffineView, f : Double) -> ImagetransformaffineView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineView::scale(self : ImagetransformaffineView, f : Double) -> ImagetransformaffineView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_view_add(a : ImagetransformaffineView, b : ImagetransformaffineView) -> ImagetransformaffineView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineView::add(self : ImagetransformaffineView, other : ImagetransformaffineView) -> ImagetransformaffineView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_view_copy(s : ImagetransformaffineView) -> ImagetransformaffineView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineView::copy(self : ImagetransformaffineView) -> ImagetransformaffineView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_view_fill(s : ImagetransformaffineView, v : Double) -> ImagetransformaffineView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineView::fill(self : ImagetransformaffineView, v : Double) -> ImagetransformaffineView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_view_min(s : ImagetransformaffineView) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineView::min(self : ImagetransformaffineView) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_view_max(s : ImagetransformaffineView) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineView::max(self : ImagetransformaffineView) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_view_to_string(s : ImagetransformaffineView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineView::to_string(self : ImagetransformaffineView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineRange {
@@ -963,45 +963,45 @@ pub fn image_transform_affine_range_make(size : Int) -> ImagetransformaffineRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_range_len(s : ImagetransformaffineRange) -> Int { s.size }
+pub fn ImagetransformaffineRange::len(self : ImagetransformaffineRange) -> Int { self.size }
 
-pub fn image_transform_affine_range_get(s : ImagetransformaffineRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineRange::get(self : ImagetransformaffineRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_range_set(s : ImagetransformaffineRange, i : Int, v : Double) -> ImagetransformaffineRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineRange::set(self : ImagetransformaffineRange, i : Int, v : Double) -> ImagetransformaffineRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_range_sum(s : ImagetransformaffineRange) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineRange::sum(self : ImagetransformaffineRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_range_mean(s : ImagetransformaffineRange) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineRange::mean(self : ImagetransformaffineRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_range_scale(s : ImagetransformaffineRange, f : Double) -> ImagetransformaffineRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineRange::scale(self : ImagetransformaffineRange, f : Double) -> ImagetransformaffineRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_range_add(a : ImagetransformaffineRange, b : ImagetransformaffineRange) -> ImagetransformaffineRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineRange::add(self : ImagetransformaffineRange, other : ImagetransformaffineRange) -> ImagetransformaffineRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_range_copy(s : ImagetransformaffineRange) -> ImagetransformaffineRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineRange::copy(self : ImagetransformaffineRange) -> ImagetransformaffineRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_range_fill(s : ImagetransformaffineRange, v : Double) -> ImagetransformaffineRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineRange::fill(self : ImagetransformaffineRange, v : Double) -> ImagetransformaffineRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_range_min(s : ImagetransformaffineRange) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineRange::min(self : ImagetransformaffineRange) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_range_max(s : ImagetransformaffineRange) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineRange::max(self : ImagetransformaffineRange) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_range_to_string(s : ImagetransformaffineRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineRange::to_string(self : ImagetransformaffineRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagetransformaffineSlice {
@@ -1014,44 +1014,44 @@ pub fn image_transform_affine_slice_make(size : Int) -> ImagetransformaffineSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_transform_affine_slice_len(s : ImagetransformaffineSlice) -> Int { s.size }
+pub fn ImagetransformaffineSlice::len(self : ImagetransformaffineSlice) -> Int { self.size }
 
-pub fn image_transform_affine_slice_get(s : ImagetransformaffineSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagetransformaffineSlice::get(self : ImagetransformaffineSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_transform_affine_slice_set(s : ImagetransformaffineSlice, i : Int, v : Double) -> ImagetransformaffineSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagetransformaffineSlice::set(self : ImagetransformaffineSlice, i : Int, v : Double) -> ImagetransformaffineSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_slice_sum(s : ImagetransformaffineSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagetransformaffineSlice::sum(self : ImagetransformaffineSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_transform_affine_slice_mean(s : ImagetransformaffineSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagetransformaffineSlice::mean(self : ImagetransformaffineSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_transform_affine_slice_scale(s : ImagetransformaffineSlice, f : Double) -> ImagetransformaffineSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineSlice::scale(self : ImagetransformaffineSlice, f : Double) -> ImagetransformaffineSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_slice_add(a : ImagetransformaffineSlice, b : ImagetransformaffineSlice) -> ImagetransformaffineSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagetransformaffineSlice::add(self : ImagetransformaffineSlice, other : ImagetransformaffineSlice) -> ImagetransformaffineSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_transform_affine_slice_copy(s : ImagetransformaffineSlice) -> ImagetransformaffineSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineSlice::copy(self : ImagetransformaffineSlice) -> ImagetransformaffineSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_slice_fill(s : ImagetransformaffineSlice, v : Double) -> ImagetransformaffineSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagetransformaffineSlice::fill(self : ImagetransformaffineSlice, v : Double) -> ImagetransformaffineSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_transform_affine_slice_min(s : ImagetransformaffineSlice) -> Double { @_common.min(s.data) }
+pub fn ImagetransformaffineSlice::min(self : ImagetransformaffineSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_transform_affine_slice_max(s : ImagetransformaffineSlice) -> Double { @_common.max(s.data) }
+pub fn ImagetransformaffineSlice::max(self : ImagetransformaffineSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_transform_affine_slice_to_string(s : ImagetransformaffineSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagetransformaffineSlice::to_string(self : ImagetransformaffineSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

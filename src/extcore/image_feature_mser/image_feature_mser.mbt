@@ -351,45 +351,45 @@ pub fn image_feature_mser_frame_make(size : Int) -> ImagefeaturemserFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_frame_len(s : ImagefeaturemserFrame) -> Int { s.size }
+pub fn ImagefeaturemserFrame::len(self : ImagefeaturemserFrame) -> Int { self.size }
 
-pub fn image_feature_mser_frame_get(s : ImagefeaturemserFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserFrame::get(self : ImagefeaturemserFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_frame_set(s : ImagefeaturemserFrame, i : Int, v : Double) -> ImagefeaturemserFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserFrame::set(self : ImagefeaturemserFrame, i : Int, v : Double) -> ImagefeaturemserFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_frame_sum(s : ImagefeaturemserFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserFrame::sum(self : ImagefeaturemserFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_frame_mean(s : ImagefeaturemserFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserFrame::mean(self : ImagefeaturemserFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_frame_scale(s : ImagefeaturemserFrame, f : Double) -> ImagefeaturemserFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserFrame::scale(self : ImagefeaturemserFrame, f : Double) -> ImagefeaturemserFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_frame_add(a : ImagefeaturemserFrame, b : ImagefeaturemserFrame) -> ImagefeaturemserFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserFrame::add(self : ImagefeaturemserFrame, other : ImagefeaturemserFrame) -> ImagefeaturemserFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_frame_copy(s : ImagefeaturemserFrame) -> ImagefeaturemserFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserFrame::copy(self : ImagefeaturemserFrame) -> ImagefeaturemserFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_frame_fill(s : ImagefeaturemserFrame, v : Double) -> ImagefeaturemserFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserFrame::fill(self : ImagefeaturemserFrame, v : Double) -> ImagefeaturemserFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_frame_min(s : ImagefeaturemserFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserFrame::min(self : ImagefeaturemserFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_frame_max(s : ImagefeaturemserFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserFrame::max(self : ImagefeaturemserFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_frame_to_string(s : ImagefeaturemserFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserFrame::to_string(self : ImagefeaturemserFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserTable {
@@ -402,45 +402,45 @@ pub fn image_feature_mser_table_make(size : Int) -> ImagefeaturemserTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_table_len(s : ImagefeaturemserTable) -> Int { s.size }
+pub fn ImagefeaturemserTable::len(self : ImagefeaturemserTable) -> Int { self.size }
 
-pub fn image_feature_mser_table_get(s : ImagefeaturemserTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserTable::get(self : ImagefeaturemserTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_table_set(s : ImagefeaturemserTable, i : Int, v : Double) -> ImagefeaturemserTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserTable::set(self : ImagefeaturemserTable, i : Int, v : Double) -> ImagefeaturemserTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_table_sum(s : ImagefeaturemserTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserTable::sum(self : ImagefeaturemserTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_table_mean(s : ImagefeaturemserTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserTable::mean(self : ImagefeaturemserTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_table_scale(s : ImagefeaturemserTable, f : Double) -> ImagefeaturemserTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserTable::scale(self : ImagefeaturemserTable, f : Double) -> ImagefeaturemserTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_table_add(a : ImagefeaturemserTable, b : ImagefeaturemserTable) -> ImagefeaturemserTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserTable::add(self : ImagefeaturemserTable, other : ImagefeaturemserTable) -> ImagefeaturemserTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_table_copy(s : ImagefeaturemserTable) -> ImagefeaturemserTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserTable::copy(self : ImagefeaturemserTable) -> ImagefeaturemserTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_table_fill(s : ImagefeaturemserTable, v : Double) -> ImagefeaturemserTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserTable::fill(self : ImagefeaturemserTable, v : Double) -> ImagefeaturemserTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_table_min(s : ImagefeaturemserTable) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserTable::min(self : ImagefeaturemserTable) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_table_max(s : ImagefeaturemserTable) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserTable::max(self : ImagefeaturemserTable) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_table_to_string(s : ImagefeaturemserTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserTable::to_string(self : ImagefeaturemserTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserGraphN {
@@ -453,45 +453,45 @@ pub fn image_feature_mser_graphn_make(size : Int) -> ImagefeaturemserGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_graphn_len(s : ImagefeaturemserGraphN) -> Int { s.size }
+pub fn ImagefeaturemserGraphN::len(self : ImagefeaturemserGraphN) -> Int { self.size }
 
-pub fn image_feature_mser_graphn_get(s : ImagefeaturemserGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserGraphN::get(self : ImagefeaturemserGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_graphn_set(s : ImagefeaturemserGraphN, i : Int, v : Double) -> ImagefeaturemserGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserGraphN::set(self : ImagefeaturemserGraphN, i : Int, v : Double) -> ImagefeaturemserGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_graphn_sum(s : ImagefeaturemserGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserGraphN::sum(self : ImagefeaturemserGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_graphn_mean(s : ImagefeaturemserGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserGraphN::mean(self : ImagefeaturemserGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_graphn_scale(s : ImagefeaturemserGraphN, f : Double) -> ImagefeaturemserGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserGraphN::scale(self : ImagefeaturemserGraphN, f : Double) -> ImagefeaturemserGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_graphn_add(a : ImagefeaturemserGraphN, b : ImagefeaturemserGraphN) -> ImagefeaturemserGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserGraphN::add(self : ImagefeaturemserGraphN, other : ImagefeaturemserGraphN) -> ImagefeaturemserGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_graphn_copy(s : ImagefeaturemserGraphN) -> ImagefeaturemserGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserGraphN::copy(self : ImagefeaturemserGraphN) -> ImagefeaturemserGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_graphn_fill(s : ImagefeaturemserGraphN, v : Double) -> ImagefeaturemserGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserGraphN::fill(self : ImagefeaturemserGraphN, v : Double) -> ImagefeaturemserGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_graphn_min(s : ImagefeaturemserGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserGraphN::min(self : ImagefeaturemserGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_graphn_max(s : ImagefeaturemserGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserGraphN::max(self : ImagefeaturemserGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_graphn_to_string(s : ImagefeaturemserGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserGraphN::to_string(self : ImagefeaturemserGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserNode {
@@ -504,45 +504,45 @@ pub fn image_feature_mser_node_make(size : Int) -> ImagefeaturemserNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_node_len(s : ImagefeaturemserNode) -> Int { s.size }
+pub fn ImagefeaturemserNode::len(self : ImagefeaturemserNode) -> Int { self.size }
 
-pub fn image_feature_mser_node_get(s : ImagefeaturemserNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserNode::get(self : ImagefeaturemserNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_node_set(s : ImagefeaturemserNode, i : Int, v : Double) -> ImagefeaturemserNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserNode::set(self : ImagefeaturemserNode, i : Int, v : Double) -> ImagefeaturemserNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_node_sum(s : ImagefeaturemserNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserNode::sum(self : ImagefeaturemserNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_node_mean(s : ImagefeaturemserNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserNode::mean(self : ImagefeaturemserNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_node_scale(s : ImagefeaturemserNode, f : Double) -> ImagefeaturemserNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserNode::scale(self : ImagefeaturemserNode, f : Double) -> ImagefeaturemserNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_node_add(a : ImagefeaturemserNode, b : ImagefeaturemserNode) -> ImagefeaturemserNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserNode::add(self : ImagefeaturemserNode, other : ImagefeaturemserNode) -> ImagefeaturemserNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_node_copy(s : ImagefeaturemserNode) -> ImagefeaturemserNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserNode::copy(self : ImagefeaturemserNode) -> ImagefeaturemserNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_node_fill(s : ImagefeaturemserNode, v : Double) -> ImagefeaturemserNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserNode::fill(self : ImagefeaturemserNode, v : Double) -> ImagefeaturemserNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_node_min(s : ImagefeaturemserNode) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserNode::min(self : ImagefeaturemserNode) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_node_max(s : ImagefeaturemserNode) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserNode::max(self : ImagefeaturemserNode) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_node_to_string(s : ImagefeaturemserNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserNode::to_string(self : ImagefeaturemserNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserEdge {
@@ -555,45 +555,45 @@ pub fn image_feature_mser_edge_make(size : Int) -> ImagefeaturemserEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_edge_len(s : ImagefeaturemserEdge) -> Int { s.size }
+pub fn ImagefeaturemserEdge::len(self : ImagefeaturemserEdge) -> Int { self.size }
 
-pub fn image_feature_mser_edge_get(s : ImagefeaturemserEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserEdge::get(self : ImagefeaturemserEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_edge_set(s : ImagefeaturemserEdge, i : Int, v : Double) -> ImagefeaturemserEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserEdge::set(self : ImagefeaturemserEdge, i : Int, v : Double) -> ImagefeaturemserEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_edge_sum(s : ImagefeaturemserEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserEdge::sum(self : ImagefeaturemserEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_edge_mean(s : ImagefeaturemserEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserEdge::mean(self : ImagefeaturemserEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_edge_scale(s : ImagefeaturemserEdge, f : Double) -> ImagefeaturemserEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserEdge::scale(self : ImagefeaturemserEdge, f : Double) -> ImagefeaturemserEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_edge_add(a : ImagefeaturemserEdge, b : ImagefeaturemserEdge) -> ImagefeaturemserEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserEdge::add(self : ImagefeaturemserEdge, other : ImagefeaturemserEdge) -> ImagefeaturemserEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_edge_copy(s : ImagefeaturemserEdge) -> ImagefeaturemserEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserEdge::copy(self : ImagefeaturemserEdge) -> ImagefeaturemserEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_edge_fill(s : ImagefeaturemserEdge, v : Double) -> ImagefeaturemserEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserEdge::fill(self : ImagefeaturemserEdge, v : Double) -> ImagefeaturemserEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_edge_min(s : ImagefeaturemserEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserEdge::min(self : ImagefeaturemserEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_edge_max(s : ImagefeaturemserEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserEdge::max(self : ImagefeaturemserEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_edge_to_string(s : ImagefeaturemserEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserEdge::to_string(self : ImagefeaturemserEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserPath {
@@ -606,45 +606,45 @@ pub fn image_feature_mser_path_make(size : Int) -> ImagefeaturemserPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_path_len(s : ImagefeaturemserPath) -> Int { s.size }
+pub fn ImagefeaturemserPath::len(self : ImagefeaturemserPath) -> Int { self.size }
 
-pub fn image_feature_mser_path_get(s : ImagefeaturemserPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserPath::get(self : ImagefeaturemserPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_path_set(s : ImagefeaturemserPath, i : Int, v : Double) -> ImagefeaturemserPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserPath::set(self : ImagefeaturemserPath, i : Int, v : Double) -> ImagefeaturemserPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_path_sum(s : ImagefeaturemserPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserPath::sum(self : ImagefeaturemserPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_path_mean(s : ImagefeaturemserPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserPath::mean(self : ImagefeaturemserPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_path_scale(s : ImagefeaturemserPath, f : Double) -> ImagefeaturemserPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserPath::scale(self : ImagefeaturemserPath, f : Double) -> ImagefeaturemserPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_path_add(a : ImagefeaturemserPath, b : ImagefeaturemserPath) -> ImagefeaturemserPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserPath::add(self : ImagefeaturemserPath, other : ImagefeaturemserPath) -> ImagefeaturemserPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_path_copy(s : ImagefeaturemserPath) -> ImagefeaturemserPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserPath::copy(self : ImagefeaturemserPath) -> ImagefeaturemserPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_path_fill(s : ImagefeaturemserPath, v : Double) -> ImagefeaturemserPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserPath::fill(self : ImagefeaturemserPath, v : Double) -> ImagefeaturemserPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_path_min(s : ImagefeaturemserPath) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserPath::min(self : ImagefeaturemserPath) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_path_max(s : ImagefeaturemserPath) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserPath::max(self : ImagefeaturemserPath) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_path_to_string(s : ImagefeaturemserPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserPath::to_string(self : ImagefeaturemserPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserCluster {
@@ -657,45 +657,45 @@ pub fn image_feature_mser_cluster_make(size : Int) -> ImagefeaturemserCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_cluster_len(s : ImagefeaturemserCluster) -> Int { s.size }
+pub fn ImagefeaturemserCluster::len(self : ImagefeaturemserCluster) -> Int { self.size }
 
-pub fn image_feature_mser_cluster_get(s : ImagefeaturemserCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserCluster::get(self : ImagefeaturemserCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_cluster_set(s : ImagefeaturemserCluster, i : Int, v : Double) -> ImagefeaturemserCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCluster::set(self : ImagefeaturemserCluster, i : Int, v : Double) -> ImagefeaturemserCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cluster_sum(s : ImagefeaturemserCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserCluster::sum(self : ImagefeaturemserCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_cluster_mean(s : ImagefeaturemserCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserCluster::mean(self : ImagefeaturemserCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_cluster_scale(s : ImagefeaturemserCluster, f : Double) -> ImagefeaturemserCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCluster::scale(self : ImagefeaturemserCluster, f : Double) -> ImagefeaturemserCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cluster_add(a : ImagefeaturemserCluster, b : ImagefeaturemserCluster) -> ImagefeaturemserCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserCluster::add(self : ImagefeaturemserCluster, other : ImagefeaturemserCluster) -> ImagefeaturemserCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_cluster_copy(s : ImagefeaturemserCluster) -> ImagefeaturemserCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCluster::copy(self : ImagefeaturemserCluster) -> ImagefeaturemserCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cluster_fill(s : ImagefeaturemserCluster, v : Double) -> ImagefeaturemserCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCluster::fill(self : ImagefeaturemserCluster, v : Double) -> ImagefeaturemserCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cluster_min(s : ImagefeaturemserCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserCluster::min(self : ImagefeaturemserCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_cluster_max(s : ImagefeaturemserCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserCluster::max(self : ImagefeaturemserCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_cluster_to_string(s : ImagefeaturemserCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserCluster::to_string(self : ImagefeaturemserCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserModel {
@@ -708,45 +708,45 @@ pub fn image_feature_mser_model_make(size : Int) -> ImagefeaturemserModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_model_len(s : ImagefeaturemserModel) -> Int { s.size }
+pub fn ImagefeaturemserModel::len(self : ImagefeaturemserModel) -> Int { self.size }
 
-pub fn image_feature_mser_model_get(s : ImagefeaturemserModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserModel::get(self : ImagefeaturemserModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_model_set(s : ImagefeaturemserModel, i : Int, v : Double) -> ImagefeaturemserModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserModel::set(self : ImagefeaturemserModel, i : Int, v : Double) -> ImagefeaturemserModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_model_sum(s : ImagefeaturemserModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserModel::sum(self : ImagefeaturemserModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_model_mean(s : ImagefeaturemserModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserModel::mean(self : ImagefeaturemserModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_model_scale(s : ImagefeaturemserModel, f : Double) -> ImagefeaturemserModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserModel::scale(self : ImagefeaturemserModel, f : Double) -> ImagefeaturemserModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_model_add(a : ImagefeaturemserModel, b : ImagefeaturemserModel) -> ImagefeaturemserModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserModel::add(self : ImagefeaturemserModel, other : ImagefeaturemserModel) -> ImagefeaturemserModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_model_copy(s : ImagefeaturemserModel) -> ImagefeaturemserModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserModel::copy(self : ImagefeaturemserModel) -> ImagefeaturemserModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_model_fill(s : ImagefeaturemserModel, v : Double) -> ImagefeaturemserModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserModel::fill(self : ImagefeaturemserModel, v : Double) -> ImagefeaturemserModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_model_min(s : ImagefeaturemserModel) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserModel::min(self : ImagefeaturemserModel) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_model_max(s : ImagefeaturemserModel) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserModel::max(self : ImagefeaturemserModel) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_model_to_string(s : ImagefeaturemserModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserModel::to_string(self : ImagefeaturemserModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserLayer {
@@ -759,45 +759,45 @@ pub fn image_feature_mser_layer_make(size : Int) -> ImagefeaturemserLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_layer_len(s : ImagefeaturemserLayer) -> Int { s.size }
+pub fn ImagefeaturemserLayer::len(self : ImagefeaturemserLayer) -> Int { self.size }
 
-pub fn image_feature_mser_layer_get(s : ImagefeaturemserLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserLayer::get(self : ImagefeaturemserLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_layer_set(s : ImagefeaturemserLayer, i : Int, v : Double) -> ImagefeaturemserLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserLayer::set(self : ImagefeaturemserLayer, i : Int, v : Double) -> ImagefeaturemserLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_layer_sum(s : ImagefeaturemserLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserLayer::sum(self : ImagefeaturemserLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_layer_mean(s : ImagefeaturemserLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserLayer::mean(self : ImagefeaturemserLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_layer_scale(s : ImagefeaturemserLayer, f : Double) -> ImagefeaturemserLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserLayer::scale(self : ImagefeaturemserLayer, f : Double) -> ImagefeaturemserLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_layer_add(a : ImagefeaturemserLayer, b : ImagefeaturemserLayer) -> ImagefeaturemserLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserLayer::add(self : ImagefeaturemserLayer, other : ImagefeaturemserLayer) -> ImagefeaturemserLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_layer_copy(s : ImagefeaturemserLayer) -> ImagefeaturemserLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserLayer::copy(self : ImagefeaturemserLayer) -> ImagefeaturemserLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_layer_fill(s : ImagefeaturemserLayer, v : Double) -> ImagefeaturemserLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserLayer::fill(self : ImagefeaturemserLayer, v : Double) -> ImagefeaturemserLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_layer_min(s : ImagefeaturemserLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserLayer::min(self : ImagefeaturemserLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_layer_max(s : ImagefeaturemserLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserLayer::max(self : ImagefeaturemserLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_layer_to_string(s : ImagefeaturemserLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserLayer::to_string(self : ImagefeaturemserLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserBuffer {
@@ -810,45 +810,45 @@ pub fn image_feature_mser_buffer_make(size : Int) -> ImagefeaturemserBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_buffer_len(s : ImagefeaturemserBuffer) -> Int { s.size }
+pub fn ImagefeaturemserBuffer::len(self : ImagefeaturemserBuffer) -> Int { self.size }
 
-pub fn image_feature_mser_buffer_get(s : ImagefeaturemserBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserBuffer::get(self : ImagefeaturemserBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_buffer_set(s : ImagefeaturemserBuffer, i : Int, v : Double) -> ImagefeaturemserBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserBuffer::set(self : ImagefeaturemserBuffer, i : Int, v : Double) -> ImagefeaturemserBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_buffer_sum(s : ImagefeaturemserBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserBuffer::sum(self : ImagefeaturemserBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_buffer_mean(s : ImagefeaturemserBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserBuffer::mean(self : ImagefeaturemserBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_buffer_scale(s : ImagefeaturemserBuffer, f : Double) -> ImagefeaturemserBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserBuffer::scale(self : ImagefeaturemserBuffer, f : Double) -> ImagefeaturemserBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_buffer_add(a : ImagefeaturemserBuffer, b : ImagefeaturemserBuffer) -> ImagefeaturemserBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserBuffer::add(self : ImagefeaturemserBuffer, other : ImagefeaturemserBuffer) -> ImagefeaturemserBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_buffer_copy(s : ImagefeaturemserBuffer) -> ImagefeaturemserBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserBuffer::copy(self : ImagefeaturemserBuffer) -> ImagefeaturemserBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_buffer_fill(s : ImagefeaturemserBuffer, v : Double) -> ImagefeaturemserBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserBuffer::fill(self : ImagefeaturemserBuffer, v : Double) -> ImagefeaturemserBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_buffer_min(s : ImagefeaturemserBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserBuffer::min(self : ImagefeaturemserBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_buffer_max(s : ImagefeaturemserBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserBuffer::max(self : ImagefeaturemserBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_buffer_to_string(s : ImagefeaturemserBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserBuffer::to_string(self : ImagefeaturemserBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserCursor {
@@ -861,45 +861,45 @@ pub fn image_feature_mser_cursor_make(size : Int) -> ImagefeaturemserCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_cursor_len(s : ImagefeaturemserCursor) -> Int { s.size }
+pub fn ImagefeaturemserCursor::len(self : ImagefeaturemserCursor) -> Int { self.size }
 
-pub fn image_feature_mser_cursor_get(s : ImagefeaturemserCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserCursor::get(self : ImagefeaturemserCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_cursor_set(s : ImagefeaturemserCursor, i : Int, v : Double) -> ImagefeaturemserCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCursor::set(self : ImagefeaturemserCursor, i : Int, v : Double) -> ImagefeaturemserCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cursor_sum(s : ImagefeaturemserCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserCursor::sum(self : ImagefeaturemserCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_cursor_mean(s : ImagefeaturemserCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserCursor::mean(self : ImagefeaturemserCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_cursor_scale(s : ImagefeaturemserCursor, f : Double) -> ImagefeaturemserCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCursor::scale(self : ImagefeaturemserCursor, f : Double) -> ImagefeaturemserCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cursor_add(a : ImagefeaturemserCursor, b : ImagefeaturemserCursor) -> ImagefeaturemserCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserCursor::add(self : ImagefeaturemserCursor, other : ImagefeaturemserCursor) -> ImagefeaturemserCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_cursor_copy(s : ImagefeaturemserCursor) -> ImagefeaturemserCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCursor::copy(self : ImagefeaturemserCursor) -> ImagefeaturemserCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cursor_fill(s : ImagefeaturemserCursor, v : Double) -> ImagefeaturemserCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserCursor::fill(self : ImagefeaturemserCursor, v : Double) -> ImagefeaturemserCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_cursor_min(s : ImagefeaturemserCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserCursor::min(self : ImagefeaturemserCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_cursor_max(s : ImagefeaturemserCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserCursor::max(self : ImagefeaturemserCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_cursor_to_string(s : ImagefeaturemserCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserCursor::to_string(self : ImagefeaturemserCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserView {
@@ -912,45 +912,45 @@ pub fn image_feature_mser_view_make(size : Int) -> ImagefeaturemserView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_view_len(s : ImagefeaturemserView) -> Int { s.size }
+pub fn ImagefeaturemserView::len(self : ImagefeaturemserView) -> Int { self.size }
 
-pub fn image_feature_mser_view_get(s : ImagefeaturemserView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserView::get(self : ImagefeaturemserView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_view_set(s : ImagefeaturemserView, i : Int, v : Double) -> ImagefeaturemserView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserView::set(self : ImagefeaturemserView, i : Int, v : Double) -> ImagefeaturemserView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_view_sum(s : ImagefeaturemserView) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserView::sum(self : ImagefeaturemserView) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_view_mean(s : ImagefeaturemserView) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserView::mean(self : ImagefeaturemserView) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_view_scale(s : ImagefeaturemserView, f : Double) -> ImagefeaturemserView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserView::scale(self : ImagefeaturemserView, f : Double) -> ImagefeaturemserView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_view_add(a : ImagefeaturemserView, b : ImagefeaturemserView) -> ImagefeaturemserView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserView::add(self : ImagefeaturemserView, other : ImagefeaturemserView) -> ImagefeaturemserView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_view_copy(s : ImagefeaturemserView) -> ImagefeaturemserView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserView::copy(self : ImagefeaturemserView) -> ImagefeaturemserView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_view_fill(s : ImagefeaturemserView, v : Double) -> ImagefeaturemserView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserView::fill(self : ImagefeaturemserView, v : Double) -> ImagefeaturemserView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_view_min(s : ImagefeaturemserView) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserView::min(self : ImagefeaturemserView) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_view_max(s : ImagefeaturemserView) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserView::max(self : ImagefeaturemserView) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_view_to_string(s : ImagefeaturemserView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserView::to_string(self : ImagefeaturemserView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserRange {
@@ -963,45 +963,45 @@ pub fn image_feature_mser_range_make(size : Int) -> ImagefeaturemserRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_range_len(s : ImagefeaturemserRange) -> Int { s.size }
+pub fn ImagefeaturemserRange::len(self : ImagefeaturemserRange) -> Int { self.size }
 
-pub fn image_feature_mser_range_get(s : ImagefeaturemserRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserRange::get(self : ImagefeaturemserRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_range_set(s : ImagefeaturemserRange, i : Int, v : Double) -> ImagefeaturemserRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserRange::set(self : ImagefeaturemserRange, i : Int, v : Double) -> ImagefeaturemserRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_range_sum(s : ImagefeaturemserRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserRange::sum(self : ImagefeaturemserRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_range_mean(s : ImagefeaturemserRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserRange::mean(self : ImagefeaturemserRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_range_scale(s : ImagefeaturemserRange, f : Double) -> ImagefeaturemserRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserRange::scale(self : ImagefeaturemserRange, f : Double) -> ImagefeaturemserRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_range_add(a : ImagefeaturemserRange, b : ImagefeaturemserRange) -> ImagefeaturemserRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserRange::add(self : ImagefeaturemserRange, other : ImagefeaturemserRange) -> ImagefeaturemserRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_range_copy(s : ImagefeaturemserRange) -> ImagefeaturemserRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserRange::copy(self : ImagefeaturemserRange) -> ImagefeaturemserRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_range_fill(s : ImagefeaturemserRange, v : Double) -> ImagefeaturemserRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserRange::fill(self : ImagefeaturemserRange, v : Double) -> ImagefeaturemserRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_range_min(s : ImagefeaturemserRange) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserRange::min(self : ImagefeaturemserRange) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_range_max(s : ImagefeaturemserRange) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserRange::max(self : ImagefeaturemserRange) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_range_to_string(s : ImagefeaturemserRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserRange::to_string(self : ImagefeaturemserRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturemserSlice {
@@ -1014,44 +1014,44 @@ pub fn image_feature_mser_slice_make(size : Int) -> ImagefeaturemserSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_feature_mser_slice_len(s : ImagefeaturemserSlice) -> Int { s.size }
+pub fn ImagefeaturemserSlice::len(self : ImagefeaturemserSlice) -> Int { self.size }
 
-pub fn image_feature_mser_slice_get(s : ImagefeaturemserSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefeaturemserSlice::get(self : ImagefeaturemserSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_feature_mser_slice_set(s : ImagefeaturemserSlice, i : Int, v : Double) -> ImagefeaturemserSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefeaturemserSlice::set(self : ImagefeaturemserSlice, i : Int, v : Double) -> ImagefeaturemserSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_slice_sum(s : ImagefeaturemserSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefeaturemserSlice::sum(self : ImagefeaturemserSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_feature_mser_slice_mean(s : ImagefeaturemserSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefeaturemserSlice::mean(self : ImagefeaturemserSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_feature_mser_slice_scale(s : ImagefeaturemserSlice, f : Double) -> ImagefeaturemserSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserSlice::scale(self : ImagefeaturemserSlice, f : Double) -> ImagefeaturemserSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_slice_add(a : ImagefeaturemserSlice, b : ImagefeaturemserSlice) -> ImagefeaturemserSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefeaturemserSlice::add(self : ImagefeaturemserSlice, other : ImagefeaturemserSlice) -> ImagefeaturemserSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_feature_mser_slice_copy(s : ImagefeaturemserSlice) -> ImagefeaturemserSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserSlice::copy(self : ImagefeaturemserSlice) -> ImagefeaturemserSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_slice_fill(s : ImagefeaturemserSlice, v : Double) -> ImagefeaturemserSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefeaturemserSlice::fill(self : ImagefeaturemserSlice, v : Double) -> ImagefeaturemserSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_feature_mser_slice_min(s : ImagefeaturemserSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefeaturemserSlice::min(self : ImagefeaturemserSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_feature_mser_slice_max(s : ImagefeaturemserSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefeaturemserSlice::max(self : ImagefeaturemserSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_feature_mser_slice_to_string(s : ImagefeaturemserSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefeaturemserSlice::to_string(self : ImagefeaturemserSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

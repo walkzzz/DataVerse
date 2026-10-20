@@ -351,45 +351,45 @@ pub fn graph_search_bidirectional_frame_make(size : Int) -> Graphsearchbidirecti
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_frame_len(s : GraphsearchbidirectionalFrame) -> Int { s.size }
+pub fn GraphsearchbidirectionalFrame::len(self : GraphsearchbidirectionalFrame) -> Int { self.size }
 
-pub fn graph_search_bidirectional_frame_get(s : GraphsearchbidirectionalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalFrame::get(self : GraphsearchbidirectionalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_frame_set(s : GraphsearchbidirectionalFrame, i : Int, v : Double) -> GraphsearchbidirectionalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalFrame::set(self : GraphsearchbidirectionalFrame, i : Int, v : Double) -> GraphsearchbidirectionalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_frame_sum(s : GraphsearchbidirectionalFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalFrame::sum(self : GraphsearchbidirectionalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_frame_mean(s : GraphsearchbidirectionalFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalFrame::mean(self : GraphsearchbidirectionalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_frame_scale(s : GraphsearchbidirectionalFrame, f : Double) -> GraphsearchbidirectionalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalFrame::scale(self : GraphsearchbidirectionalFrame, f : Double) -> GraphsearchbidirectionalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_frame_add(a : GraphsearchbidirectionalFrame, b : GraphsearchbidirectionalFrame) -> GraphsearchbidirectionalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalFrame::add(self : GraphsearchbidirectionalFrame, other : GraphsearchbidirectionalFrame) -> GraphsearchbidirectionalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_frame_copy(s : GraphsearchbidirectionalFrame) -> GraphsearchbidirectionalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalFrame::copy(self : GraphsearchbidirectionalFrame) -> GraphsearchbidirectionalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_frame_fill(s : GraphsearchbidirectionalFrame, v : Double) -> GraphsearchbidirectionalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalFrame::fill(self : GraphsearchbidirectionalFrame, v : Double) -> GraphsearchbidirectionalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_frame_min(s : GraphsearchbidirectionalFrame) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalFrame::min(self : GraphsearchbidirectionalFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_frame_max(s : GraphsearchbidirectionalFrame) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalFrame::max(self : GraphsearchbidirectionalFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_frame_to_string(s : GraphsearchbidirectionalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalFrame::to_string(self : GraphsearchbidirectionalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalTable {
@@ -402,45 +402,45 @@ pub fn graph_search_bidirectional_table_make(size : Int) -> Graphsearchbidirecti
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_table_len(s : GraphsearchbidirectionalTable) -> Int { s.size }
+pub fn GraphsearchbidirectionalTable::len(self : GraphsearchbidirectionalTable) -> Int { self.size }
 
-pub fn graph_search_bidirectional_table_get(s : GraphsearchbidirectionalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalTable::get(self : GraphsearchbidirectionalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_table_set(s : GraphsearchbidirectionalTable, i : Int, v : Double) -> GraphsearchbidirectionalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalTable::set(self : GraphsearchbidirectionalTable, i : Int, v : Double) -> GraphsearchbidirectionalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_table_sum(s : GraphsearchbidirectionalTable) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalTable::sum(self : GraphsearchbidirectionalTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_table_mean(s : GraphsearchbidirectionalTable) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalTable::mean(self : GraphsearchbidirectionalTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_table_scale(s : GraphsearchbidirectionalTable, f : Double) -> GraphsearchbidirectionalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalTable::scale(self : GraphsearchbidirectionalTable, f : Double) -> GraphsearchbidirectionalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_table_add(a : GraphsearchbidirectionalTable, b : GraphsearchbidirectionalTable) -> GraphsearchbidirectionalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalTable::add(self : GraphsearchbidirectionalTable, other : GraphsearchbidirectionalTable) -> GraphsearchbidirectionalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_table_copy(s : GraphsearchbidirectionalTable) -> GraphsearchbidirectionalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalTable::copy(self : GraphsearchbidirectionalTable) -> GraphsearchbidirectionalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_table_fill(s : GraphsearchbidirectionalTable, v : Double) -> GraphsearchbidirectionalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalTable::fill(self : GraphsearchbidirectionalTable, v : Double) -> GraphsearchbidirectionalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_table_min(s : GraphsearchbidirectionalTable) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalTable::min(self : GraphsearchbidirectionalTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_table_max(s : GraphsearchbidirectionalTable) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalTable::max(self : GraphsearchbidirectionalTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_table_to_string(s : GraphsearchbidirectionalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalTable::to_string(self : GraphsearchbidirectionalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalGraphN {
@@ -453,45 +453,45 @@ pub fn graph_search_bidirectional_graphn_make(size : Int) -> Graphsearchbidirect
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_graphn_len(s : GraphsearchbidirectionalGraphN) -> Int { s.size }
+pub fn GraphsearchbidirectionalGraphN::len(self : GraphsearchbidirectionalGraphN) -> Int { self.size }
 
-pub fn graph_search_bidirectional_graphn_get(s : GraphsearchbidirectionalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalGraphN::get(self : GraphsearchbidirectionalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_graphn_set(s : GraphsearchbidirectionalGraphN, i : Int, v : Double) -> GraphsearchbidirectionalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalGraphN::set(self : GraphsearchbidirectionalGraphN, i : Int, v : Double) -> GraphsearchbidirectionalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_graphn_sum(s : GraphsearchbidirectionalGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalGraphN::sum(self : GraphsearchbidirectionalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_graphn_mean(s : GraphsearchbidirectionalGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalGraphN::mean(self : GraphsearchbidirectionalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_graphn_scale(s : GraphsearchbidirectionalGraphN, f : Double) -> GraphsearchbidirectionalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalGraphN::scale(self : GraphsearchbidirectionalGraphN, f : Double) -> GraphsearchbidirectionalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_graphn_add(a : GraphsearchbidirectionalGraphN, b : GraphsearchbidirectionalGraphN) -> GraphsearchbidirectionalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalGraphN::add(self : GraphsearchbidirectionalGraphN, other : GraphsearchbidirectionalGraphN) -> GraphsearchbidirectionalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_graphn_copy(s : GraphsearchbidirectionalGraphN) -> GraphsearchbidirectionalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalGraphN::copy(self : GraphsearchbidirectionalGraphN) -> GraphsearchbidirectionalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_graphn_fill(s : GraphsearchbidirectionalGraphN, v : Double) -> GraphsearchbidirectionalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalGraphN::fill(self : GraphsearchbidirectionalGraphN, v : Double) -> GraphsearchbidirectionalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_graphn_min(s : GraphsearchbidirectionalGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalGraphN::min(self : GraphsearchbidirectionalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_graphn_max(s : GraphsearchbidirectionalGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalGraphN::max(self : GraphsearchbidirectionalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_graphn_to_string(s : GraphsearchbidirectionalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalGraphN::to_string(self : GraphsearchbidirectionalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalNode {
@@ -504,45 +504,45 @@ pub fn graph_search_bidirectional_node_make(size : Int) -> Graphsearchbidirectio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_node_len(s : GraphsearchbidirectionalNode) -> Int { s.size }
+pub fn GraphsearchbidirectionalNode::len(self : GraphsearchbidirectionalNode) -> Int { self.size }
 
-pub fn graph_search_bidirectional_node_get(s : GraphsearchbidirectionalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalNode::get(self : GraphsearchbidirectionalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_node_set(s : GraphsearchbidirectionalNode, i : Int, v : Double) -> GraphsearchbidirectionalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalNode::set(self : GraphsearchbidirectionalNode, i : Int, v : Double) -> GraphsearchbidirectionalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_node_sum(s : GraphsearchbidirectionalNode) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalNode::sum(self : GraphsearchbidirectionalNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_node_mean(s : GraphsearchbidirectionalNode) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalNode::mean(self : GraphsearchbidirectionalNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_node_scale(s : GraphsearchbidirectionalNode, f : Double) -> GraphsearchbidirectionalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalNode::scale(self : GraphsearchbidirectionalNode, f : Double) -> GraphsearchbidirectionalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_node_add(a : GraphsearchbidirectionalNode, b : GraphsearchbidirectionalNode) -> GraphsearchbidirectionalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalNode::add(self : GraphsearchbidirectionalNode, other : GraphsearchbidirectionalNode) -> GraphsearchbidirectionalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_node_copy(s : GraphsearchbidirectionalNode) -> GraphsearchbidirectionalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalNode::copy(self : GraphsearchbidirectionalNode) -> GraphsearchbidirectionalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_node_fill(s : GraphsearchbidirectionalNode, v : Double) -> GraphsearchbidirectionalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalNode::fill(self : GraphsearchbidirectionalNode, v : Double) -> GraphsearchbidirectionalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_node_min(s : GraphsearchbidirectionalNode) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalNode::min(self : GraphsearchbidirectionalNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_node_max(s : GraphsearchbidirectionalNode) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalNode::max(self : GraphsearchbidirectionalNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_node_to_string(s : GraphsearchbidirectionalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalNode::to_string(self : GraphsearchbidirectionalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalEdge {
@@ -555,45 +555,45 @@ pub fn graph_search_bidirectional_edge_make(size : Int) -> Graphsearchbidirectio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_edge_len(s : GraphsearchbidirectionalEdge) -> Int { s.size }
+pub fn GraphsearchbidirectionalEdge::len(self : GraphsearchbidirectionalEdge) -> Int { self.size }
 
-pub fn graph_search_bidirectional_edge_get(s : GraphsearchbidirectionalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalEdge::get(self : GraphsearchbidirectionalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_edge_set(s : GraphsearchbidirectionalEdge, i : Int, v : Double) -> GraphsearchbidirectionalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalEdge::set(self : GraphsearchbidirectionalEdge, i : Int, v : Double) -> GraphsearchbidirectionalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_edge_sum(s : GraphsearchbidirectionalEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalEdge::sum(self : GraphsearchbidirectionalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_edge_mean(s : GraphsearchbidirectionalEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalEdge::mean(self : GraphsearchbidirectionalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_edge_scale(s : GraphsearchbidirectionalEdge, f : Double) -> GraphsearchbidirectionalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalEdge::scale(self : GraphsearchbidirectionalEdge, f : Double) -> GraphsearchbidirectionalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_edge_add(a : GraphsearchbidirectionalEdge, b : GraphsearchbidirectionalEdge) -> GraphsearchbidirectionalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalEdge::add(self : GraphsearchbidirectionalEdge, other : GraphsearchbidirectionalEdge) -> GraphsearchbidirectionalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_edge_copy(s : GraphsearchbidirectionalEdge) -> GraphsearchbidirectionalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalEdge::copy(self : GraphsearchbidirectionalEdge) -> GraphsearchbidirectionalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_edge_fill(s : GraphsearchbidirectionalEdge, v : Double) -> GraphsearchbidirectionalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalEdge::fill(self : GraphsearchbidirectionalEdge, v : Double) -> GraphsearchbidirectionalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_edge_min(s : GraphsearchbidirectionalEdge) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalEdge::min(self : GraphsearchbidirectionalEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_edge_max(s : GraphsearchbidirectionalEdge) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalEdge::max(self : GraphsearchbidirectionalEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_edge_to_string(s : GraphsearchbidirectionalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalEdge::to_string(self : GraphsearchbidirectionalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalPath {
@@ -606,45 +606,45 @@ pub fn graph_search_bidirectional_path_make(size : Int) -> Graphsearchbidirectio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_path_len(s : GraphsearchbidirectionalPath) -> Int { s.size }
+pub fn GraphsearchbidirectionalPath::len(self : GraphsearchbidirectionalPath) -> Int { self.size }
 
-pub fn graph_search_bidirectional_path_get(s : GraphsearchbidirectionalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalPath::get(self : GraphsearchbidirectionalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_path_set(s : GraphsearchbidirectionalPath, i : Int, v : Double) -> GraphsearchbidirectionalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalPath::set(self : GraphsearchbidirectionalPath, i : Int, v : Double) -> GraphsearchbidirectionalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_path_sum(s : GraphsearchbidirectionalPath) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalPath::sum(self : GraphsearchbidirectionalPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_path_mean(s : GraphsearchbidirectionalPath) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalPath::mean(self : GraphsearchbidirectionalPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_path_scale(s : GraphsearchbidirectionalPath, f : Double) -> GraphsearchbidirectionalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalPath::scale(self : GraphsearchbidirectionalPath, f : Double) -> GraphsearchbidirectionalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_path_add(a : GraphsearchbidirectionalPath, b : GraphsearchbidirectionalPath) -> GraphsearchbidirectionalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalPath::add(self : GraphsearchbidirectionalPath, other : GraphsearchbidirectionalPath) -> GraphsearchbidirectionalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_path_copy(s : GraphsearchbidirectionalPath) -> GraphsearchbidirectionalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalPath::copy(self : GraphsearchbidirectionalPath) -> GraphsearchbidirectionalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_path_fill(s : GraphsearchbidirectionalPath, v : Double) -> GraphsearchbidirectionalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalPath::fill(self : GraphsearchbidirectionalPath, v : Double) -> GraphsearchbidirectionalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_path_min(s : GraphsearchbidirectionalPath) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalPath::min(self : GraphsearchbidirectionalPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_path_max(s : GraphsearchbidirectionalPath) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalPath::max(self : GraphsearchbidirectionalPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_path_to_string(s : GraphsearchbidirectionalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalPath::to_string(self : GraphsearchbidirectionalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalCluster {
@@ -657,45 +657,45 @@ pub fn graph_search_bidirectional_cluster_make(size : Int) -> Graphsearchbidirec
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_cluster_len(s : GraphsearchbidirectionalCluster) -> Int { s.size }
+pub fn GraphsearchbidirectionalCluster::len(self : GraphsearchbidirectionalCluster) -> Int { self.size }
 
-pub fn graph_search_bidirectional_cluster_get(s : GraphsearchbidirectionalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalCluster::get(self : GraphsearchbidirectionalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_cluster_set(s : GraphsearchbidirectionalCluster, i : Int, v : Double) -> GraphsearchbidirectionalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCluster::set(self : GraphsearchbidirectionalCluster, i : Int, v : Double) -> GraphsearchbidirectionalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cluster_sum(s : GraphsearchbidirectionalCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalCluster::sum(self : GraphsearchbidirectionalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_cluster_mean(s : GraphsearchbidirectionalCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalCluster::mean(self : GraphsearchbidirectionalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_cluster_scale(s : GraphsearchbidirectionalCluster, f : Double) -> GraphsearchbidirectionalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCluster::scale(self : GraphsearchbidirectionalCluster, f : Double) -> GraphsearchbidirectionalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cluster_add(a : GraphsearchbidirectionalCluster, b : GraphsearchbidirectionalCluster) -> GraphsearchbidirectionalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalCluster::add(self : GraphsearchbidirectionalCluster, other : GraphsearchbidirectionalCluster) -> GraphsearchbidirectionalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cluster_copy(s : GraphsearchbidirectionalCluster) -> GraphsearchbidirectionalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCluster::copy(self : GraphsearchbidirectionalCluster) -> GraphsearchbidirectionalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cluster_fill(s : GraphsearchbidirectionalCluster, v : Double) -> GraphsearchbidirectionalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCluster::fill(self : GraphsearchbidirectionalCluster, v : Double) -> GraphsearchbidirectionalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cluster_min(s : GraphsearchbidirectionalCluster) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalCluster::min(self : GraphsearchbidirectionalCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_cluster_max(s : GraphsearchbidirectionalCluster) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalCluster::max(self : GraphsearchbidirectionalCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_cluster_to_string(s : GraphsearchbidirectionalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalCluster::to_string(self : GraphsearchbidirectionalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalModel {
@@ -708,45 +708,45 @@ pub fn graph_search_bidirectional_model_make(size : Int) -> Graphsearchbidirecti
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_model_len(s : GraphsearchbidirectionalModel) -> Int { s.size }
+pub fn GraphsearchbidirectionalModel::len(self : GraphsearchbidirectionalModel) -> Int { self.size }
 
-pub fn graph_search_bidirectional_model_get(s : GraphsearchbidirectionalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalModel::get(self : GraphsearchbidirectionalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_model_set(s : GraphsearchbidirectionalModel, i : Int, v : Double) -> GraphsearchbidirectionalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalModel::set(self : GraphsearchbidirectionalModel, i : Int, v : Double) -> GraphsearchbidirectionalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_model_sum(s : GraphsearchbidirectionalModel) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalModel::sum(self : GraphsearchbidirectionalModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_model_mean(s : GraphsearchbidirectionalModel) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalModel::mean(self : GraphsearchbidirectionalModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_model_scale(s : GraphsearchbidirectionalModel, f : Double) -> GraphsearchbidirectionalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalModel::scale(self : GraphsearchbidirectionalModel, f : Double) -> GraphsearchbidirectionalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_model_add(a : GraphsearchbidirectionalModel, b : GraphsearchbidirectionalModel) -> GraphsearchbidirectionalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalModel::add(self : GraphsearchbidirectionalModel, other : GraphsearchbidirectionalModel) -> GraphsearchbidirectionalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_model_copy(s : GraphsearchbidirectionalModel) -> GraphsearchbidirectionalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalModel::copy(self : GraphsearchbidirectionalModel) -> GraphsearchbidirectionalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_model_fill(s : GraphsearchbidirectionalModel, v : Double) -> GraphsearchbidirectionalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalModel::fill(self : GraphsearchbidirectionalModel, v : Double) -> GraphsearchbidirectionalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_model_min(s : GraphsearchbidirectionalModel) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalModel::min(self : GraphsearchbidirectionalModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_model_max(s : GraphsearchbidirectionalModel) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalModel::max(self : GraphsearchbidirectionalModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_model_to_string(s : GraphsearchbidirectionalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalModel::to_string(self : GraphsearchbidirectionalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalLayer {
@@ -759,45 +759,45 @@ pub fn graph_search_bidirectional_layer_make(size : Int) -> Graphsearchbidirecti
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_layer_len(s : GraphsearchbidirectionalLayer) -> Int { s.size }
+pub fn GraphsearchbidirectionalLayer::len(self : GraphsearchbidirectionalLayer) -> Int { self.size }
 
-pub fn graph_search_bidirectional_layer_get(s : GraphsearchbidirectionalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalLayer::get(self : GraphsearchbidirectionalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_layer_set(s : GraphsearchbidirectionalLayer, i : Int, v : Double) -> GraphsearchbidirectionalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalLayer::set(self : GraphsearchbidirectionalLayer, i : Int, v : Double) -> GraphsearchbidirectionalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_layer_sum(s : GraphsearchbidirectionalLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalLayer::sum(self : GraphsearchbidirectionalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_layer_mean(s : GraphsearchbidirectionalLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalLayer::mean(self : GraphsearchbidirectionalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_layer_scale(s : GraphsearchbidirectionalLayer, f : Double) -> GraphsearchbidirectionalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalLayer::scale(self : GraphsearchbidirectionalLayer, f : Double) -> GraphsearchbidirectionalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_layer_add(a : GraphsearchbidirectionalLayer, b : GraphsearchbidirectionalLayer) -> GraphsearchbidirectionalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalLayer::add(self : GraphsearchbidirectionalLayer, other : GraphsearchbidirectionalLayer) -> GraphsearchbidirectionalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_layer_copy(s : GraphsearchbidirectionalLayer) -> GraphsearchbidirectionalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalLayer::copy(self : GraphsearchbidirectionalLayer) -> GraphsearchbidirectionalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_layer_fill(s : GraphsearchbidirectionalLayer, v : Double) -> GraphsearchbidirectionalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalLayer::fill(self : GraphsearchbidirectionalLayer, v : Double) -> GraphsearchbidirectionalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_layer_min(s : GraphsearchbidirectionalLayer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalLayer::min(self : GraphsearchbidirectionalLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_layer_max(s : GraphsearchbidirectionalLayer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalLayer::max(self : GraphsearchbidirectionalLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_layer_to_string(s : GraphsearchbidirectionalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalLayer::to_string(self : GraphsearchbidirectionalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalBuffer {
@@ -810,45 +810,45 @@ pub fn graph_search_bidirectional_buffer_make(size : Int) -> Graphsearchbidirect
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_buffer_len(s : GraphsearchbidirectionalBuffer) -> Int { s.size }
+pub fn GraphsearchbidirectionalBuffer::len(self : GraphsearchbidirectionalBuffer) -> Int { self.size }
 
-pub fn graph_search_bidirectional_buffer_get(s : GraphsearchbidirectionalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalBuffer::get(self : GraphsearchbidirectionalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_buffer_set(s : GraphsearchbidirectionalBuffer, i : Int, v : Double) -> GraphsearchbidirectionalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalBuffer::set(self : GraphsearchbidirectionalBuffer, i : Int, v : Double) -> GraphsearchbidirectionalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_buffer_sum(s : GraphsearchbidirectionalBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalBuffer::sum(self : GraphsearchbidirectionalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_buffer_mean(s : GraphsearchbidirectionalBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalBuffer::mean(self : GraphsearchbidirectionalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_buffer_scale(s : GraphsearchbidirectionalBuffer, f : Double) -> GraphsearchbidirectionalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalBuffer::scale(self : GraphsearchbidirectionalBuffer, f : Double) -> GraphsearchbidirectionalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_buffer_add(a : GraphsearchbidirectionalBuffer, b : GraphsearchbidirectionalBuffer) -> GraphsearchbidirectionalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalBuffer::add(self : GraphsearchbidirectionalBuffer, other : GraphsearchbidirectionalBuffer) -> GraphsearchbidirectionalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_buffer_copy(s : GraphsearchbidirectionalBuffer) -> GraphsearchbidirectionalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalBuffer::copy(self : GraphsearchbidirectionalBuffer) -> GraphsearchbidirectionalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_buffer_fill(s : GraphsearchbidirectionalBuffer, v : Double) -> GraphsearchbidirectionalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalBuffer::fill(self : GraphsearchbidirectionalBuffer, v : Double) -> GraphsearchbidirectionalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_buffer_min(s : GraphsearchbidirectionalBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalBuffer::min(self : GraphsearchbidirectionalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_buffer_max(s : GraphsearchbidirectionalBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalBuffer::max(self : GraphsearchbidirectionalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_buffer_to_string(s : GraphsearchbidirectionalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalBuffer::to_string(self : GraphsearchbidirectionalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalCursor {
@@ -861,45 +861,45 @@ pub fn graph_search_bidirectional_cursor_make(size : Int) -> Graphsearchbidirect
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_cursor_len(s : GraphsearchbidirectionalCursor) -> Int { s.size }
+pub fn GraphsearchbidirectionalCursor::len(self : GraphsearchbidirectionalCursor) -> Int { self.size }
 
-pub fn graph_search_bidirectional_cursor_get(s : GraphsearchbidirectionalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalCursor::get(self : GraphsearchbidirectionalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_cursor_set(s : GraphsearchbidirectionalCursor, i : Int, v : Double) -> GraphsearchbidirectionalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCursor::set(self : GraphsearchbidirectionalCursor, i : Int, v : Double) -> GraphsearchbidirectionalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cursor_sum(s : GraphsearchbidirectionalCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalCursor::sum(self : GraphsearchbidirectionalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_cursor_mean(s : GraphsearchbidirectionalCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalCursor::mean(self : GraphsearchbidirectionalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_cursor_scale(s : GraphsearchbidirectionalCursor, f : Double) -> GraphsearchbidirectionalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCursor::scale(self : GraphsearchbidirectionalCursor, f : Double) -> GraphsearchbidirectionalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cursor_add(a : GraphsearchbidirectionalCursor, b : GraphsearchbidirectionalCursor) -> GraphsearchbidirectionalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalCursor::add(self : GraphsearchbidirectionalCursor, other : GraphsearchbidirectionalCursor) -> GraphsearchbidirectionalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cursor_copy(s : GraphsearchbidirectionalCursor) -> GraphsearchbidirectionalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCursor::copy(self : GraphsearchbidirectionalCursor) -> GraphsearchbidirectionalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cursor_fill(s : GraphsearchbidirectionalCursor, v : Double) -> GraphsearchbidirectionalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalCursor::fill(self : GraphsearchbidirectionalCursor, v : Double) -> GraphsearchbidirectionalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_cursor_min(s : GraphsearchbidirectionalCursor) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalCursor::min(self : GraphsearchbidirectionalCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_cursor_max(s : GraphsearchbidirectionalCursor) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalCursor::max(self : GraphsearchbidirectionalCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_cursor_to_string(s : GraphsearchbidirectionalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalCursor::to_string(self : GraphsearchbidirectionalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalView {
@@ -912,45 +912,45 @@ pub fn graph_search_bidirectional_view_make(size : Int) -> Graphsearchbidirectio
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_view_len(s : GraphsearchbidirectionalView) -> Int { s.size }
+pub fn GraphsearchbidirectionalView::len(self : GraphsearchbidirectionalView) -> Int { self.size }
 
-pub fn graph_search_bidirectional_view_get(s : GraphsearchbidirectionalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalView::get(self : GraphsearchbidirectionalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_view_set(s : GraphsearchbidirectionalView, i : Int, v : Double) -> GraphsearchbidirectionalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalView::set(self : GraphsearchbidirectionalView, i : Int, v : Double) -> GraphsearchbidirectionalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_view_sum(s : GraphsearchbidirectionalView) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalView::sum(self : GraphsearchbidirectionalView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_view_mean(s : GraphsearchbidirectionalView) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalView::mean(self : GraphsearchbidirectionalView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_view_scale(s : GraphsearchbidirectionalView, f : Double) -> GraphsearchbidirectionalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalView::scale(self : GraphsearchbidirectionalView, f : Double) -> GraphsearchbidirectionalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_view_add(a : GraphsearchbidirectionalView, b : GraphsearchbidirectionalView) -> GraphsearchbidirectionalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalView::add(self : GraphsearchbidirectionalView, other : GraphsearchbidirectionalView) -> GraphsearchbidirectionalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_view_copy(s : GraphsearchbidirectionalView) -> GraphsearchbidirectionalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalView::copy(self : GraphsearchbidirectionalView) -> GraphsearchbidirectionalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_view_fill(s : GraphsearchbidirectionalView, v : Double) -> GraphsearchbidirectionalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalView::fill(self : GraphsearchbidirectionalView, v : Double) -> GraphsearchbidirectionalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_view_min(s : GraphsearchbidirectionalView) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalView::min(self : GraphsearchbidirectionalView) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_view_max(s : GraphsearchbidirectionalView) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalView::max(self : GraphsearchbidirectionalView) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_view_to_string(s : GraphsearchbidirectionalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalView::to_string(self : GraphsearchbidirectionalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalRange {
@@ -963,45 +963,45 @@ pub fn graph_search_bidirectional_range_make(size : Int) -> Graphsearchbidirecti
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_range_len(s : GraphsearchbidirectionalRange) -> Int { s.size }
+pub fn GraphsearchbidirectionalRange::len(self : GraphsearchbidirectionalRange) -> Int { self.size }
 
-pub fn graph_search_bidirectional_range_get(s : GraphsearchbidirectionalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalRange::get(self : GraphsearchbidirectionalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_range_set(s : GraphsearchbidirectionalRange, i : Int, v : Double) -> GraphsearchbidirectionalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalRange::set(self : GraphsearchbidirectionalRange, i : Int, v : Double) -> GraphsearchbidirectionalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_range_sum(s : GraphsearchbidirectionalRange) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalRange::sum(self : GraphsearchbidirectionalRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_range_mean(s : GraphsearchbidirectionalRange) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalRange::mean(self : GraphsearchbidirectionalRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_range_scale(s : GraphsearchbidirectionalRange, f : Double) -> GraphsearchbidirectionalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalRange::scale(self : GraphsearchbidirectionalRange, f : Double) -> GraphsearchbidirectionalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_range_add(a : GraphsearchbidirectionalRange, b : GraphsearchbidirectionalRange) -> GraphsearchbidirectionalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalRange::add(self : GraphsearchbidirectionalRange, other : GraphsearchbidirectionalRange) -> GraphsearchbidirectionalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_range_copy(s : GraphsearchbidirectionalRange) -> GraphsearchbidirectionalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalRange::copy(self : GraphsearchbidirectionalRange) -> GraphsearchbidirectionalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_range_fill(s : GraphsearchbidirectionalRange, v : Double) -> GraphsearchbidirectionalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalRange::fill(self : GraphsearchbidirectionalRange, v : Double) -> GraphsearchbidirectionalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_range_min(s : GraphsearchbidirectionalRange) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalRange::min(self : GraphsearchbidirectionalRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_range_max(s : GraphsearchbidirectionalRange) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalRange::max(self : GraphsearchbidirectionalRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_range_to_string(s : GraphsearchbidirectionalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalRange::to_string(self : GraphsearchbidirectionalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchbidirectionalSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_search_bidirectional_slice_make(size : Int) -> Graphsearchbidirecti
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_bidirectional_slice_len(s : GraphsearchbidirectionalSlice) -> Int { s.size }
+pub fn GraphsearchbidirectionalSlice::len(self : GraphsearchbidirectionalSlice) -> Int { self.size }
 
-pub fn graph_search_bidirectional_slice_get(s : GraphsearchbidirectionalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchbidirectionalSlice::get(self : GraphsearchbidirectionalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_bidirectional_slice_set(s : GraphsearchbidirectionalSlice, i : Int, v : Double) -> GraphsearchbidirectionalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalSlice::set(self : GraphsearchbidirectionalSlice, i : Int, v : Double) -> GraphsearchbidirectionalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_slice_sum(s : GraphsearchbidirectionalSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchbidirectionalSlice::sum(self : GraphsearchbidirectionalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_bidirectional_slice_mean(s : GraphsearchbidirectionalSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchbidirectionalSlice::mean(self : GraphsearchbidirectionalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_bidirectional_slice_scale(s : GraphsearchbidirectionalSlice, f : Double) -> GraphsearchbidirectionalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalSlice::scale(self : GraphsearchbidirectionalSlice, f : Double) -> GraphsearchbidirectionalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_slice_add(a : GraphsearchbidirectionalSlice, b : GraphsearchbidirectionalSlice) -> GraphsearchbidirectionalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchbidirectionalSlice::add(self : GraphsearchbidirectionalSlice, other : GraphsearchbidirectionalSlice) -> GraphsearchbidirectionalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_slice_copy(s : GraphsearchbidirectionalSlice) -> GraphsearchbidirectionalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalSlice::copy(self : GraphsearchbidirectionalSlice) -> GraphsearchbidirectionalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_slice_fill(s : GraphsearchbidirectionalSlice, v : Double) -> GraphsearchbidirectionalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchbidirectionalSlice::fill(self : GraphsearchbidirectionalSlice, v : Double) -> GraphsearchbidirectionalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_bidirectional_slice_min(s : GraphsearchbidirectionalSlice) -> Double { @_common.min(s.data) }
+pub fn GraphsearchbidirectionalSlice::min(self : GraphsearchbidirectionalSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_bidirectional_slice_max(s : GraphsearchbidirectionalSlice) -> Double { @_common.max(s.data) }
+pub fn GraphsearchbidirectionalSlice::max(self : GraphsearchbidirectionalSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_bidirectional_slice_to_string(s : GraphsearchbidirectionalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchbidirectionalSlice::to_string(self : GraphsearchbidirectionalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

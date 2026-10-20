@@ -351,45 +351,45 @@ pub fn nlp_embed_bert_frame_make(size : Int) -> NlpembedbertFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_frame_len(s : NlpembedbertFrame) -> Int { s.size }
+pub fn NlpembedbertFrame::len(self : NlpembedbertFrame) -> Int { self.size }
 
-pub fn nlp_embed_bert_frame_get(s : NlpembedbertFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertFrame::get(self : NlpembedbertFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_frame_set(s : NlpembedbertFrame, i : Int, v : Double) -> NlpembedbertFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertFrame::set(self : NlpembedbertFrame, i : Int, v : Double) -> NlpembedbertFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_frame_sum(s : NlpembedbertFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertFrame::sum(self : NlpembedbertFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_frame_mean(s : NlpembedbertFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertFrame::mean(self : NlpembedbertFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_frame_scale(s : NlpembedbertFrame, f : Double) -> NlpembedbertFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertFrame::scale(self : NlpembedbertFrame, f : Double) -> NlpembedbertFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_frame_add(a : NlpembedbertFrame, b : NlpembedbertFrame) -> NlpembedbertFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertFrame::add(self : NlpembedbertFrame, other : NlpembedbertFrame) -> NlpembedbertFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_frame_copy(s : NlpembedbertFrame) -> NlpembedbertFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertFrame::copy(self : NlpembedbertFrame) -> NlpembedbertFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_frame_fill(s : NlpembedbertFrame, v : Double) -> NlpembedbertFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertFrame::fill(self : NlpembedbertFrame, v : Double) -> NlpembedbertFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_frame_min(s : NlpembedbertFrame) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertFrame::min(self : NlpembedbertFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_frame_max(s : NlpembedbertFrame) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertFrame::max(self : NlpembedbertFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_frame_to_string(s : NlpembedbertFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertFrame::to_string(self : NlpembedbertFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_bert_table_make(size : Int) -> NlpembedbertTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_table_len(s : NlpembedbertTable) -> Int { s.size }
+pub fn NlpembedbertTable::len(self : NlpembedbertTable) -> Int { self.size }
 
-pub fn nlp_embed_bert_table_get(s : NlpembedbertTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertTable::get(self : NlpembedbertTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_table_set(s : NlpembedbertTable, i : Int, v : Double) -> NlpembedbertTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertTable::set(self : NlpembedbertTable, i : Int, v : Double) -> NlpembedbertTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_table_sum(s : NlpembedbertTable) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertTable::sum(self : NlpembedbertTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_table_mean(s : NlpembedbertTable) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertTable::mean(self : NlpembedbertTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_table_scale(s : NlpembedbertTable, f : Double) -> NlpembedbertTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertTable::scale(self : NlpembedbertTable, f : Double) -> NlpembedbertTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_table_add(a : NlpembedbertTable, b : NlpembedbertTable) -> NlpembedbertTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertTable::add(self : NlpembedbertTable, other : NlpembedbertTable) -> NlpembedbertTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_table_copy(s : NlpembedbertTable) -> NlpembedbertTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertTable::copy(self : NlpembedbertTable) -> NlpembedbertTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_table_fill(s : NlpembedbertTable, v : Double) -> NlpembedbertTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertTable::fill(self : NlpembedbertTable, v : Double) -> NlpembedbertTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_table_min(s : NlpembedbertTable) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertTable::min(self : NlpembedbertTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_table_max(s : NlpembedbertTable) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertTable::max(self : NlpembedbertTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_table_to_string(s : NlpembedbertTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertTable::to_string(self : NlpembedbertTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_bert_graphn_make(size : Int) -> NlpembedbertGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_graphn_len(s : NlpembedbertGraphN) -> Int { s.size }
+pub fn NlpembedbertGraphN::len(self : NlpembedbertGraphN) -> Int { self.size }
 
-pub fn nlp_embed_bert_graphn_get(s : NlpembedbertGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertGraphN::get(self : NlpembedbertGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_graphn_set(s : NlpembedbertGraphN, i : Int, v : Double) -> NlpembedbertGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertGraphN::set(self : NlpembedbertGraphN, i : Int, v : Double) -> NlpembedbertGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_graphn_sum(s : NlpembedbertGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertGraphN::sum(self : NlpembedbertGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_graphn_mean(s : NlpembedbertGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertGraphN::mean(self : NlpembedbertGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_graphn_scale(s : NlpembedbertGraphN, f : Double) -> NlpembedbertGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertGraphN::scale(self : NlpembedbertGraphN, f : Double) -> NlpembedbertGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_graphn_add(a : NlpembedbertGraphN, b : NlpembedbertGraphN) -> NlpembedbertGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertGraphN::add(self : NlpembedbertGraphN, other : NlpembedbertGraphN) -> NlpembedbertGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_graphn_copy(s : NlpembedbertGraphN) -> NlpembedbertGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertGraphN::copy(self : NlpembedbertGraphN) -> NlpembedbertGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_graphn_fill(s : NlpembedbertGraphN, v : Double) -> NlpembedbertGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertGraphN::fill(self : NlpembedbertGraphN, v : Double) -> NlpembedbertGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_graphn_min(s : NlpembedbertGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertGraphN::min(self : NlpembedbertGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_graphn_max(s : NlpembedbertGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertGraphN::max(self : NlpembedbertGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_graphn_to_string(s : NlpembedbertGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertGraphN::to_string(self : NlpembedbertGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_bert_node_make(size : Int) -> NlpembedbertNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_node_len(s : NlpembedbertNode) -> Int { s.size }
+pub fn NlpembedbertNode::len(self : NlpembedbertNode) -> Int { self.size }
 
-pub fn nlp_embed_bert_node_get(s : NlpembedbertNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertNode::get(self : NlpembedbertNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_node_set(s : NlpembedbertNode, i : Int, v : Double) -> NlpembedbertNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertNode::set(self : NlpembedbertNode, i : Int, v : Double) -> NlpembedbertNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_node_sum(s : NlpembedbertNode) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertNode::sum(self : NlpembedbertNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_node_mean(s : NlpembedbertNode) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertNode::mean(self : NlpembedbertNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_node_scale(s : NlpembedbertNode, f : Double) -> NlpembedbertNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertNode::scale(self : NlpembedbertNode, f : Double) -> NlpembedbertNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_node_add(a : NlpembedbertNode, b : NlpembedbertNode) -> NlpembedbertNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertNode::add(self : NlpembedbertNode, other : NlpembedbertNode) -> NlpembedbertNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_node_copy(s : NlpembedbertNode) -> NlpembedbertNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertNode::copy(self : NlpembedbertNode) -> NlpembedbertNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_node_fill(s : NlpembedbertNode, v : Double) -> NlpembedbertNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertNode::fill(self : NlpembedbertNode, v : Double) -> NlpembedbertNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_node_min(s : NlpembedbertNode) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertNode::min(self : NlpembedbertNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_node_max(s : NlpembedbertNode) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertNode::max(self : NlpembedbertNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_node_to_string(s : NlpembedbertNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertNode::to_string(self : NlpembedbertNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_bert_edge_make(size : Int) -> NlpembedbertEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_edge_len(s : NlpembedbertEdge) -> Int { s.size }
+pub fn NlpembedbertEdge::len(self : NlpembedbertEdge) -> Int { self.size }
 
-pub fn nlp_embed_bert_edge_get(s : NlpembedbertEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertEdge::get(self : NlpembedbertEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_edge_set(s : NlpembedbertEdge, i : Int, v : Double) -> NlpembedbertEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertEdge::set(self : NlpembedbertEdge, i : Int, v : Double) -> NlpembedbertEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_edge_sum(s : NlpembedbertEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertEdge::sum(self : NlpembedbertEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_edge_mean(s : NlpembedbertEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertEdge::mean(self : NlpembedbertEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_edge_scale(s : NlpembedbertEdge, f : Double) -> NlpembedbertEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertEdge::scale(self : NlpembedbertEdge, f : Double) -> NlpembedbertEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_edge_add(a : NlpembedbertEdge, b : NlpembedbertEdge) -> NlpembedbertEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertEdge::add(self : NlpembedbertEdge, other : NlpembedbertEdge) -> NlpembedbertEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_edge_copy(s : NlpembedbertEdge) -> NlpembedbertEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertEdge::copy(self : NlpembedbertEdge) -> NlpembedbertEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_edge_fill(s : NlpembedbertEdge, v : Double) -> NlpembedbertEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertEdge::fill(self : NlpembedbertEdge, v : Double) -> NlpembedbertEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_edge_min(s : NlpembedbertEdge) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertEdge::min(self : NlpembedbertEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_edge_max(s : NlpembedbertEdge) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertEdge::max(self : NlpembedbertEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_edge_to_string(s : NlpembedbertEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertEdge::to_string(self : NlpembedbertEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertPath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_bert_path_make(size : Int) -> NlpembedbertPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_path_len(s : NlpembedbertPath) -> Int { s.size }
+pub fn NlpembedbertPath::len(self : NlpembedbertPath) -> Int { self.size }
 
-pub fn nlp_embed_bert_path_get(s : NlpembedbertPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertPath::get(self : NlpembedbertPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_path_set(s : NlpembedbertPath, i : Int, v : Double) -> NlpembedbertPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertPath::set(self : NlpembedbertPath, i : Int, v : Double) -> NlpembedbertPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_path_sum(s : NlpembedbertPath) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertPath::sum(self : NlpembedbertPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_path_mean(s : NlpembedbertPath) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertPath::mean(self : NlpembedbertPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_path_scale(s : NlpembedbertPath, f : Double) -> NlpembedbertPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertPath::scale(self : NlpembedbertPath, f : Double) -> NlpembedbertPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_path_add(a : NlpembedbertPath, b : NlpembedbertPath) -> NlpembedbertPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertPath::add(self : NlpembedbertPath, other : NlpembedbertPath) -> NlpembedbertPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_path_copy(s : NlpembedbertPath) -> NlpembedbertPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertPath::copy(self : NlpembedbertPath) -> NlpembedbertPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_path_fill(s : NlpembedbertPath, v : Double) -> NlpembedbertPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertPath::fill(self : NlpembedbertPath, v : Double) -> NlpembedbertPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_path_min(s : NlpembedbertPath) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertPath::min(self : NlpembedbertPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_path_max(s : NlpembedbertPath) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertPath::max(self : NlpembedbertPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_path_to_string(s : NlpembedbertPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertPath::to_string(self : NlpembedbertPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_bert_cluster_make(size : Int) -> NlpembedbertCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_cluster_len(s : NlpembedbertCluster) -> Int { s.size }
+pub fn NlpembedbertCluster::len(self : NlpembedbertCluster) -> Int { self.size }
 
-pub fn nlp_embed_bert_cluster_get(s : NlpembedbertCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertCluster::get(self : NlpembedbertCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_cluster_set(s : NlpembedbertCluster, i : Int, v : Double) -> NlpembedbertCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertCluster::set(self : NlpembedbertCluster, i : Int, v : Double) -> NlpembedbertCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cluster_sum(s : NlpembedbertCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertCluster::sum(self : NlpembedbertCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_cluster_mean(s : NlpembedbertCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertCluster::mean(self : NlpembedbertCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_cluster_scale(s : NlpembedbertCluster, f : Double) -> NlpembedbertCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertCluster::scale(self : NlpembedbertCluster, f : Double) -> NlpembedbertCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cluster_add(a : NlpembedbertCluster, b : NlpembedbertCluster) -> NlpembedbertCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertCluster::add(self : NlpembedbertCluster, other : NlpembedbertCluster) -> NlpembedbertCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cluster_copy(s : NlpembedbertCluster) -> NlpembedbertCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertCluster::copy(self : NlpembedbertCluster) -> NlpembedbertCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cluster_fill(s : NlpembedbertCluster, v : Double) -> NlpembedbertCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertCluster::fill(self : NlpembedbertCluster, v : Double) -> NlpembedbertCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cluster_min(s : NlpembedbertCluster) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertCluster::min(self : NlpembedbertCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_cluster_max(s : NlpembedbertCluster) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertCluster::max(self : NlpembedbertCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_cluster_to_string(s : NlpembedbertCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertCluster::to_string(self : NlpembedbertCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_bert_model_make(size : Int) -> NlpembedbertModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_model_len(s : NlpembedbertModel) -> Int { s.size }
+pub fn NlpembedbertModel::len(self : NlpembedbertModel) -> Int { self.size }
 
-pub fn nlp_embed_bert_model_get(s : NlpembedbertModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertModel::get(self : NlpembedbertModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_model_set(s : NlpembedbertModel, i : Int, v : Double) -> NlpembedbertModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertModel::set(self : NlpembedbertModel, i : Int, v : Double) -> NlpembedbertModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_model_sum(s : NlpembedbertModel) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertModel::sum(self : NlpembedbertModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_model_mean(s : NlpembedbertModel) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertModel::mean(self : NlpembedbertModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_model_scale(s : NlpembedbertModel, f : Double) -> NlpembedbertModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertModel::scale(self : NlpembedbertModel, f : Double) -> NlpembedbertModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_model_add(a : NlpembedbertModel, b : NlpembedbertModel) -> NlpembedbertModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertModel::add(self : NlpembedbertModel, other : NlpembedbertModel) -> NlpembedbertModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_model_copy(s : NlpembedbertModel) -> NlpembedbertModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertModel::copy(self : NlpembedbertModel) -> NlpembedbertModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_model_fill(s : NlpembedbertModel, v : Double) -> NlpembedbertModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertModel::fill(self : NlpembedbertModel, v : Double) -> NlpembedbertModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_model_min(s : NlpembedbertModel) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertModel::min(self : NlpembedbertModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_model_max(s : NlpembedbertModel) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertModel::max(self : NlpembedbertModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_model_to_string(s : NlpembedbertModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertModel::to_string(self : NlpembedbertModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_bert_layer_make(size : Int) -> NlpembedbertLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_layer_len(s : NlpembedbertLayer) -> Int { s.size }
+pub fn NlpembedbertLayer::len(self : NlpembedbertLayer) -> Int { self.size }
 
-pub fn nlp_embed_bert_layer_get(s : NlpembedbertLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertLayer::get(self : NlpembedbertLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_layer_set(s : NlpembedbertLayer, i : Int, v : Double) -> NlpembedbertLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertLayer::set(self : NlpembedbertLayer, i : Int, v : Double) -> NlpembedbertLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_layer_sum(s : NlpembedbertLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertLayer::sum(self : NlpembedbertLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_layer_mean(s : NlpembedbertLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertLayer::mean(self : NlpembedbertLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_layer_scale(s : NlpembedbertLayer, f : Double) -> NlpembedbertLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertLayer::scale(self : NlpembedbertLayer, f : Double) -> NlpembedbertLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_layer_add(a : NlpembedbertLayer, b : NlpembedbertLayer) -> NlpembedbertLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertLayer::add(self : NlpembedbertLayer, other : NlpembedbertLayer) -> NlpembedbertLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_layer_copy(s : NlpembedbertLayer) -> NlpembedbertLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertLayer::copy(self : NlpembedbertLayer) -> NlpembedbertLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_layer_fill(s : NlpembedbertLayer, v : Double) -> NlpembedbertLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertLayer::fill(self : NlpembedbertLayer, v : Double) -> NlpembedbertLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_layer_min(s : NlpembedbertLayer) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertLayer::min(self : NlpembedbertLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_layer_max(s : NlpembedbertLayer) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertLayer::max(self : NlpembedbertLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_layer_to_string(s : NlpembedbertLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertLayer::to_string(self : NlpembedbertLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_bert_buffer_make(size : Int) -> NlpembedbertBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_buffer_len(s : NlpembedbertBuffer) -> Int { s.size }
+pub fn NlpembedbertBuffer::len(self : NlpembedbertBuffer) -> Int { self.size }
 
-pub fn nlp_embed_bert_buffer_get(s : NlpembedbertBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertBuffer::get(self : NlpembedbertBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_buffer_set(s : NlpembedbertBuffer, i : Int, v : Double) -> NlpembedbertBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertBuffer::set(self : NlpembedbertBuffer, i : Int, v : Double) -> NlpembedbertBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_buffer_sum(s : NlpembedbertBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertBuffer::sum(self : NlpembedbertBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_buffer_mean(s : NlpembedbertBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertBuffer::mean(self : NlpembedbertBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_buffer_scale(s : NlpembedbertBuffer, f : Double) -> NlpembedbertBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertBuffer::scale(self : NlpembedbertBuffer, f : Double) -> NlpembedbertBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_buffer_add(a : NlpembedbertBuffer, b : NlpembedbertBuffer) -> NlpembedbertBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertBuffer::add(self : NlpembedbertBuffer, other : NlpembedbertBuffer) -> NlpembedbertBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_buffer_copy(s : NlpembedbertBuffer) -> NlpembedbertBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertBuffer::copy(self : NlpembedbertBuffer) -> NlpembedbertBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_buffer_fill(s : NlpembedbertBuffer, v : Double) -> NlpembedbertBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertBuffer::fill(self : NlpembedbertBuffer, v : Double) -> NlpembedbertBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_buffer_min(s : NlpembedbertBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertBuffer::min(self : NlpembedbertBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_buffer_max(s : NlpembedbertBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertBuffer::max(self : NlpembedbertBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_buffer_to_string(s : NlpembedbertBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertBuffer::to_string(self : NlpembedbertBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_bert_cursor_make(size : Int) -> NlpembedbertCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_cursor_len(s : NlpembedbertCursor) -> Int { s.size }
+pub fn NlpembedbertCursor::len(self : NlpembedbertCursor) -> Int { self.size }
 
-pub fn nlp_embed_bert_cursor_get(s : NlpembedbertCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertCursor::get(self : NlpembedbertCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_cursor_set(s : NlpembedbertCursor, i : Int, v : Double) -> NlpembedbertCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertCursor::set(self : NlpembedbertCursor, i : Int, v : Double) -> NlpembedbertCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cursor_sum(s : NlpembedbertCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertCursor::sum(self : NlpembedbertCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_cursor_mean(s : NlpembedbertCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertCursor::mean(self : NlpembedbertCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_cursor_scale(s : NlpembedbertCursor, f : Double) -> NlpembedbertCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertCursor::scale(self : NlpembedbertCursor, f : Double) -> NlpembedbertCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cursor_add(a : NlpembedbertCursor, b : NlpembedbertCursor) -> NlpembedbertCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertCursor::add(self : NlpembedbertCursor, other : NlpembedbertCursor) -> NlpembedbertCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cursor_copy(s : NlpembedbertCursor) -> NlpembedbertCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertCursor::copy(self : NlpembedbertCursor) -> NlpembedbertCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cursor_fill(s : NlpembedbertCursor, v : Double) -> NlpembedbertCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertCursor::fill(self : NlpembedbertCursor, v : Double) -> NlpembedbertCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_cursor_min(s : NlpembedbertCursor) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertCursor::min(self : NlpembedbertCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_cursor_max(s : NlpembedbertCursor) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertCursor::max(self : NlpembedbertCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_cursor_to_string(s : NlpembedbertCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertCursor::to_string(self : NlpembedbertCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_bert_view_make(size : Int) -> NlpembedbertView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_view_len(s : NlpembedbertView) -> Int { s.size }
+pub fn NlpembedbertView::len(self : NlpembedbertView) -> Int { self.size }
 
-pub fn nlp_embed_bert_view_get(s : NlpembedbertView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertView::get(self : NlpembedbertView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_view_set(s : NlpembedbertView, i : Int, v : Double) -> NlpembedbertView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertView::set(self : NlpembedbertView, i : Int, v : Double) -> NlpembedbertView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_view_sum(s : NlpembedbertView) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertView::sum(self : NlpembedbertView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_view_mean(s : NlpembedbertView) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertView::mean(self : NlpembedbertView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_view_scale(s : NlpembedbertView, f : Double) -> NlpembedbertView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertView::scale(self : NlpembedbertView, f : Double) -> NlpembedbertView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_view_add(a : NlpembedbertView, b : NlpembedbertView) -> NlpembedbertView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertView::add(self : NlpembedbertView, other : NlpembedbertView) -> NlpembedbertView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_view_copy(s : NlpembedbertView) -> NlpembedbertView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertView::copy(self : NlpembedbertView) -> NlpembedbertView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_view_fill(s : NlpembedbertView, v : Double) -> NlpembedbertView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertView::fill(self : NlpembedbertView, v : Double) -> NlpembedbertView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_view_min(s : NlpembedbertView) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertView::min(self : NlpembedbertView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_view_max(s : NlpembedbertView) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertView::max(self : NlpembedbertView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_view_to_string(s : NlpembedbertView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertView::to_string(self : NlpembedbertView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_bert_range_make(size : Int) -> NlpembedbertRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_range_len(s : NlpembedbertRange) -> Int { s.size }
+pub fn NlpembedbertRange::len(self : NlpembedbertRange) -> Int { self.size }
 
-pub fn nlp_embed_bert_range_get(s : NlpembedbertRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertRange::get(self : NlpembedbertRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_range_set(s : NlpembedbertRange, i : Int, v : Double) -> NlpembedbertRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertRange::set(self : NlpembedbertRange, i : Int, v : Double) -> NlpembedbertRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_range_sum(s : NlpembedbertRange) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertRange::sum(self : NlpembedbertRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_range_mean(s : NlpembedbertRange) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertRange::mean(self : NlpembedbertRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_range_scale(s : NlpembedbertRange, f : Double) -> NlpembedbertRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertRange::scale(self : NlpembedbertRange, f : Double) -> NlpembedbertRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_range_add(a : NlpembedbertRange, b : NlpembedbertRange) -> NlpembedbertRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertRange::add(self : NlpembedbertRange, other : NlpembedbertRange) -> NlpembedbertRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_range_copy(s : NlpembedbertRange) -> NlpembedbertRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertRange::copy(self : NlpembedbertRange) -> NlpembedbertRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_range_fill(s : NlpembedbertRange, v : Double) -> NlpembedbertRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertRange::fill(self : NlpembedbertRange, v : Double) -> NlpembedbertRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_range_min(s : NlpembedbertRange) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertRange::min(self : NlpembedbertRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_range_max(s : NlpembedbertRange) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertRange::max(self : NlpembedbertRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_range_to_string(s : NlpembedbertRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertRange::to_string(self : NlpembedbertRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedbertSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_bert_slice_make(size : Int) -> NlpembedbertSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_bert_slice_len(s : NlpembedbertSlice) -> Int { s.size }
+pub fn NlpembedbertSlice::len(self : NlpembedbertSlice) -> Int { self.size }
 
-pub fn nlp_embed_bert_slice_get(s : NlpembedbertSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedbertSlice::get(self : NlpembedbertSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_bert_slice_set(s : NlpembedbertSlice, i : Int, v : Double) -> NlpembedbertSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedbertSlice::set(self : NlpembedbertSlice, i : Int, v : Double) -> NlpembedbertSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_slice_sum(s : NlpembedbertSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpembedbertSlice::sum(self : NlpembedbertSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_bert_slice_mean(s : NlpembedbertSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpembedbertSlice::mean(self : NlpembedbertSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_bert_slice_scale(s : NlpembedbertSlice, f : Double) -> NlpembedbertSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedbertSlice::scale(self : NlpembedbertSlice, f : Double) -> NlpembedbertSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_slice_add(a : NlpembedbertSlice, b : NlpembedbertSlice) -> NlpembedbertSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedbertSlice::add(self : NlpembedbertSlice, other : NlpembedbertSlice) -> NlpembedbertSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_slice_copy(s : NlpembedbertSlice) -> NlpembedbertSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedbertSlice::copy(self : NlpembedbertSlice) -> NlpembedbertSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_slice_fill(s : NlpembedbertSlice, v : Double) -> NlpembedbertSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedbertSlice::fill(self : NlpembedbertSlice, v : Double) -> NlpembedbertSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_bert_slice_min(s : NlpembedbertSlice) -> Double { @_common.min(s.data) }
+pub fn NlpembedbertSlice::min(self : NlpembedbertSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_bert_slice_max(s : NlpembedbertSlice) -> Double { @_common.max(s.data) }
+pub fn NlpembedbertSlice::max(self : NlpembedbertSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_bert_slice_to_string(s : NlpembedbertSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedbertSlice::to_string(self : NlpembedbertSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn bio_seq_assembly_polish_frame_make(size : Int) -> BioseqassemblypolishFra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_frame_len(s : BioseqassemblypolishFrame) -> Int { s.size }
+pub fn BioseqassemblypolishFrame::len(self : BioseqassemblypolishFrame) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_frame_get(s : BioseqassemblypolishFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishFrame::get(self : BioseqassemblypolishFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_frame_set(s : BioseqassemblypolishFrame, i : Int, v : Double) -> BioseqassemblypolishFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishFrame::set(self : BioseqassemblypolishFrame, i : Int, v : Double) -> BioseqassemblypolishFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_frame_sum(s : BioseqassemblypolishFrame) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishFrame::sum(self : BioseqassemblypolishFrame) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_frame_mean(s : BioseqassemblypolishFrame) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishFrame::mean(self : BioseqassemblypolishFrame) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_frame_scale(s : BioseqassemblypolishFrame, f : Double) -> BioseqassemblypolishFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishFrame::scale(self : BioseqassemblypolishFrame, f : Double) -> BioseqassemblypolishFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_frame_add(a : BioseqassemblypolishFrame, b : BioseqassemblypolishFrame) -> BioseqassemblypolishFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishFrame::add(self : BioseqassemblypolishFrame, other : BioseqassemblypolishFrame) -> BioseqassemblypolishFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_frame_copy(s : BioseqassemblypolishFrame) -> BioseqassemblypolishFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishFrame::copy(self : BioseqassemblypolishFrame) -> BioseqassemblypolishFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_frame_fill(s : BioseqassemblypolishFrame, v : Double) -> BioseqassemblypolishFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishFrame::fill(self : BioseqassemblypolishFrame, v : Double) -> BioseqassemblypolishFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_frame_min(s : BioseqassemblypolishFrame) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishFrame::min(self : BioseqassemblypolishFrame) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_frame_max(s : BioseqassemblypolishFrame) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishFrame::max(self : BioseqassemblypolishFrame) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_frame_to_string(s : BioseqassemblypolishFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishFrame::to_string(self : BioseqassemblypolishFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishTable {
@@ -402,45 +402,45 @@ pub fn bio_seq_assembly_polish_table_make(size : Int) -> BioseqassemblypolishTab
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_table_len(s : BioseqassemblypolishTable) -> Int { s.size }
+pub fn BioseqassemblypolishTable::len(self : BioseqassemblypolishTable) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_table_get(s : BioseqassemblypolishTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishTable::get(self : BioseqassemblypolishTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_table_set(s : BioseqassemblypolishTable, i : Int, v : Double) -> BioseqassemblypolishTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishTable::set(self : BioseqassemblypolishTable, i : Int, v : Double) -> BioseqassemblypolishTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_table_sum(s : BioseqassemblypolishTable) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishTable::sum(self : BioseqassemblypolishTable) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_table_mean(s : BioseqassemblypolishTable) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishTable::mean(self : BioseqassemblypolishTable) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_table_scale(s : BioseqassemblypolishTable, f : Double) -> BioseqassemblypolishTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishTable::scale(self : BioseqassemblypolishTable, f : Double) -> BioseqassemblypolishTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_table_add(a : BioseqassemblypolishTable, b : BioseqassemblypolishTable) -> BioseqassemblypolishTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishTable::add(self : BioseqassemblypolishTable, other : BioseqassemblypolishTable) -> BioseqassemblypolishTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_table_copy(s : BioseqassemblypolishTable) -> BioseqassemblypolishTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishTable::copy(self : BioseqassemblypolishTable) -> BioseqassemblypolishTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_table_fill(s : BioseqassemblypolishTable, v : Double) -> BioseqassemblypolishTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishTable::fill(self : BioseqassemblypolishTable, v : Double) -> BioseqassemblypolishTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_table_min(s : BioseqassemblypolishTable) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishTable::min(self : BioseqassemblypolishTable) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_table_max(s : BioseqassemblypolishTable) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishTable::max(self : BioseqassemblypolishTable) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_table_to_string(s : BioseqassemblypolishTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishTable::to_string(self : BioseqassemblypolishTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishGraphN {
@@ -453,45 +453,45 @@ pub fn bio_seq_assembly_polish_graphn_make(size : Int) -> BioseqassemblypolishGr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_graphn_len(s : BioseqassemblypolishGraphN) -> Int { s.size }
+pub fn BioseqassemblypolishGraphN::len(self : BioseqassemblypolishGraphN) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_graphn_get(s : BioseqassemblypolishGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishGraphN::get(self : BioseqassemblypolishGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_graphn_set(s : BioseqassemblypolishGraphN, i : Int, v : Double) -> BioseqassemblypolishGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishGraphN::set(self : BioseqassemblypolishGraphN, i : Int, v : Double) -> BioseqassemblypolishGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_graphn_sum(s : BioseqassemblypolishGraphN) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishGraphN::sum(self : BioseqassemblypolishGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_graphn_mean(s : BioseqassemblypolishGraphN) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishGraphN::mean(self : BioseqassemblypolishGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_graphn_scale(s : BioseqassemblypolishGraphN, f : Double) -> BioseqassemblypolishGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishGraphN::scale(self : BioseqassemblypolishGraphN, f : Double) -> BioseqassemblypolishGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_graphn_add(a : BioseqassemblypolishGraphN, b : BioseqassemblypolishGraphN) -> BioseqassemblypolishGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishGraphN::add(self : BioseqassemblypolishGraphN, other : BioseqassemblypolishGraphN) -> BioseqassemblypolishGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_graphn_copy(s : BioseqassemblypolishGraphN) -> BioseqassemblypolishGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishGraphN::copy(self : BioseqassemblypolishGraphN) -> BioseqassemblypolishGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_graphn_fill(s : BioseqassemblypolishGraphN, v : Double) -> BioseqassemblypolishGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishGraphN::fill(self : BioseqassemblypolishGraphN, v : Double) -> BioseqassemblypolishGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_graphn_min(s : BioseqassemblypolishGraphN) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishGraphN::min(self : BioseqassemblypolishGraphN) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_graphn_max(s : BioseqassemblypolishGraphN) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishGraphN::max(self : BioseqassemblypolishGraphN) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_graphn_to_string(s : BioseqassemblypolishGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishGraphN::to_string(self : BioseqassemblypolishGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishNode {
@@ -504,45 +504,45 @@ pub fn bio_seq_assembly_polish_node_make(size : Int) -> BioseqassemblypolishNode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_node_len(s : BioseqassemblypolishNode) -> Int { s.size }
+pub fn BioseqassemblypolishNode::len(self : BioseqassemblypolishNode) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_node_get(s : BioseqassemblypolishNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishNode::get(self : BioseqassemblypolishNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_node_set(s : BioseqassemblypolishNode, i : Int, v : Double) -> BioseqassemblypolishNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishNode::set(self : BioseqassemblypolishNode, i : Int, v : Double) -> BioseqassemblypolishNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_node_sum(s : BioseqassemblypolishNode) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishNode::sum(self : BioseqassemblypolishNode) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_node_mean(s : BioseqassemblypolishNode) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishNode::mean(self : BioseqassemblypolishNode) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_node_scale(s : BioseqassemblypolishNode, f : Double) -> BioseqassemblypolishNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishNode::scale(self : BioseqassemblypolishNode, f : Double) -> BioseqassemblypolishNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_node_add(a : BioseqassemblypolishNode, b : BioseqassemblypolishNode) -> BioseqassemblypolishNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishNode::add(self : BioseqassemblypolishNode, other : BioseqassemblypolishNode) -> BioseqassemblypolishNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_node_copy(s : BioseqassemblypolishNode) -> BioseqassemblypolishNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishNode::copy(self : BioseqassemblypolishNode) -> BioseqassemblypolishNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_node_fill(s : BioseqassemblypolishNode, v : Double) -> BioseqassemblypolishNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishNode::fill(self : BioseqassemblypolishNode, v : Double) -> BioseqassemblypolishNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_node_min(s : BioseqassemblypolishNode) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishNode::min(self : BioseqassemblypolishNode) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_node_max(s : BioseqassemblypolishNode) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishNode::max(self : BioseqassemblypolishNode) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_node_to_string(s : BioseqassemblypolishNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishNode::to_string(self : BioseqassemblypolishNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishEdge {
@@ -555,45 +555,45 @@ pub fn bio_seq_assembly_polish_edge_make(size : Int) -> BioseqassemblypolishEdge
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_edge_len(s : BioseqassemblypolishEdge) -> Int { s.size }
+pub fn BioseqassemblypolishEdge::len(self : BioseqassemblypolishEdge) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_edge_get(s : BioseqassemblypolishEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishEdge::get(self : BioseqassemblypolishEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_edge_set(s : BioseqassemblypolishEdge, i : Int, v : Double) -> BioseqassemblypolishEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishEdge::set(self : BioseqassemblypolishEdge, i : Int, v : Double) -> BioseqassemblypolishEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_edge_sum(s : BioseqassemblypolishEdge) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishEdge::sum(self : BioseqassemblypolishEdge) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_edge_mean(s : BioseqassemblypolishEdge) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishEdge::mean(self : BioseqassemblypolishEdge) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_edge_scale(s : BioseqassemblypolishEdge, f : Double) -> BioseqassemblypolishEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishEdge::scale(self : BioseqassemblypolishEdge, f : Double) -> BioseqassemblypolishEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_edge_add(a : BioseqassemblypolishEdge, b : BioseqassemblypolishEdge) -> BioseqassemblypolishEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishEdge::add(self : BioseqassemblypolishEdge, other : BioseqassemblypolishEdge) -> BioseqassemblypolishEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_edge_copy(s : BioseqassemblypolishEdge) -> BioseqassemblypolishEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishEdge::copy(self : BioseqassemblypolishEdge) -> BioseqassemblypolishEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_edge_fill(s : BioseqassemblypolishEdge, v : Double) -> BioseqassemblypolishEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishEdge::fill(self : BioseqassemblypolishEdge, v : Double) -> BioseqassemblypolishEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_edge_min(s : BioseqassemblypolishEdge) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishEdge::min(self : BioseqassemblypolishEdge) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_edge_max(s : BioseqassemblypolishEdge) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishEdge::max(self : BioseqassemblypolishEdge) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_edge_to_string(s : BioseqassemblypolishEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishEdge::to_string(self : BioseqassemblypolishEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishPath {
@@ -606,45 +606,45 @@ pub fn bio_seq_assembly_polish_path_make(size : Int) -> BioseqassemblypolishPath
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_path_len(s : BioseqassemblypolishPath) -> Int { s.size }
+pub fn BioseqassemblypolishPath::len(self : BioseqassemblypolishPath) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_path_get(s : BioseqassemblypolishPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishPath::get(self : BioseqassemblypolishPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_path_set(s : BioseqassemblypolishPath, i : Int, v : Double) -> BioseqassemblypolishPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishPath::set(self : BioseqassemblypolishPath, i : Int, v : Double) -> BioseqassemblypolishPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_path_sum(s : BioseqassemblypolishPath) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishPath::sum(self : BioseqassemblypolishPath) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_path_mean(s : BioseqassemblypolishPath) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishPath::mean(self : BioseqassemblypolishPath) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_path_scale(s : BioseqassemblypolishPath, f : Double) -> BioseqassemblypolishPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishPath::scale(self : BioseqassemblypolishPath, f : Double) -> BioseqassemblypolishPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_path_add(a : BioseqassemblypolishPath, b : BioseqassemblypolishPath) -> BioseqassemblypolishPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishPath::add(self : BioseqassemblypolishPath, other : BioseqassemblypolishPath) -> BioseqassemblypolishPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_path_copy(s : BioseqassemblypolishPath) -> BioseqassemblypolishPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishPath::copy(self : BioseqassemblypolishPath) -> BioseqassemblypolishPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_path_fill(s : BioseqassemblypolishPath, v : Double) -> BioseqassemblypolishPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishPath::fill(self : BioseqassemblypolishPath, v : Double) -> BioseqassemblypolishPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_path_min(s : BioseqassemblypolishPath) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishPath::min(self : BioseqassemblypolishPath) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_path_max(s : BioseqassemblypolishPath) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishPath::max(self : BioseqassemblypolishPath) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_path_to_string(s : BioseqassemblypolishPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishPath::to_string(self : BioseqassemblypolishPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishCluster {
@@ -657,45 +657,45 @@ pub fn bio_seq_assembly_polish_cluster_make(size : Int) -> BioseqassemblypolishC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_cluster_len(s : BioseqassemblypolishCluster) -> Int { s.size }
+pub fn BioseqassemblypolishCluster::len(self : BioseqassemblypolishCluster) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_cluster_get(s : BioseqassemblypolishCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishCluster::get(self : BioseqassemblypolishCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_cluster_set(s : BioseqassemblypolishCluster, i : Int, v : Double) -> BioseqassemblypolishCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCluster::set(self : BioseqassemblypolishCluster, i : Int, v : Double) -> BioseqassemblypolishCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cluster_sum(s : BioseqassemblypolishCluster) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishCluster::sum(self : BioseqassemblypolishCluster) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_cluster_mean(s : BioseqassemblypolishCluster) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishCluster::mean(self : BioseqassemblypolishCluster) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_cluster_scale(s : BioseqassemblypolishCluster, f : Double) -> BioseqassemblypolishCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCluster::scale(self : BioseqassemblypolishCluster, f : Double) -> BioseqassemblypolishCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cluster_add(a : BioseqassemblypolishCluster, b : BioseqassemblypolishCluster) -> BioseqassemblypolishCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishCluster::add(self : BioseqassemblypolishCluster, other : BioseqassemblypolishCluster) -> BioseqassemblypolishCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cluster_copy(s : BioseqassemblypolishCluster) -> BioseqassemblypolishCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCluster::copy(self : BioseqassemblypolishCluster) -> BioseqassemblypolishCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cluster_fill(s : BioseqassemblypolishCluster, v : Double) -> BioseqassemblypolishCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCluster::fill(self : BioseqassemblypolishCluster, v : Double) -> BioseqassemblypolishCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cluster_min(s : BioseqassemblypolishCluster) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishCluster::min(self : BioseqassemblypolishCluster) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_cluster_max(s : BioseqassemblypolishCluster) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishCluster::max(self : BioseqassemblypolishCluster) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_cluster_to_string(s : BioseqassemblypolishCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishCluster::to_string(self : BioseqassemblypolishCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishModel {
@@ -708,45 +708,45 @@ pub fn bio_seq_assembly_polish_model_make(size : Int) -> BioseqassemblypolishMod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_model_len(s : BioseqassemblypolishModel) -> Int { s.size }
+pub fn BioseqassemblypolishModel::len(self : BioseqassemblypolishModel) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_model_get(s : BioseqassemblypolishModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishModel::get(self : BioseqassemblypolishModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_model_set(s : BioseqassemblypolishModel, i : Int, v : Double) -> BioseqassemblypolishModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishModel::set(self : BioseqassemblypolishModel, i : Int, v : Double) -> BioseqassemblypolishModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_model_sum(s : BioseqassemblypolishModel) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishModel::sum(self : BioseqassemblypolishModel) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_model_mean(s : BioseqassemblypolishModel) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishModel::mean(self : BioseqassemblypolishModel) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_model_scale(s : BioseqassemblypolishModel, f : Double) -> BioseqassemblypolishModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishModel::scale(self : BioseqassemblypolishModel, f : Double) -> BioseqassemblypolishModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_model_add(a : BioseqassemblypolishModel, b : BioseqassemblypolishModel) -> BioseqassemblypolishModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishModel::add(self : BioseqassemblypolishModel, other : BioseqassemblypolishModel) -> BioseqassemblypolishModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_model_copy(s : BioseqassemblypolishModel) -> BioseqassemblypolishModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishModel::copy(self : BioseqassemblypolishModel) -> BioseqassemblypolishModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_model_fill(s : BioseqassemblypolishModel, v : Double) -> BioseqassemblypolishModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishModel::fill(self : BioseqassemblypolishModel, v : Double) -> BioseqassemblypolishModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_model_min(s : BioseqassemblypolishModel) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishModel::min(self : BioseqassemblypolishModel) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_model_max(s : BioseqassemblypolishModel) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishModel::max(self : BioseqassemblypolishModel) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_model_to_string(s : BioseqassemblypolishModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishModel::to_string(self : BioseqassemblypolishModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishLayer {
@@ -759,45 +759,45 @@ pub fn bio_seq_assembly_polish_layer_make(size : Int) -> BioseqassemblypolishLay
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_layer_len(s : BioseqassemblypolishLayer) -> Int { s.size }
+pub fn BioseqassemblypolishLayer::len(self : BioseqassemblypolishLayer) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_layer_get(s : BioseqassemblypolishLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishLayer::get(self : BioseqassemblypolishLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_layer_set(s : BioseqassemblypolishLayer, i : Int, v : Double) -> BioseqassemblypolishLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishLayer::set(self : BioseqassemblypolishLayer, i : Int, v : Double) -> BioseqassemblypolishLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_layer_sum(s : BioseqassemblypolishLayer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishLayer::sum(self : BioseqassemblypolishLayer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_layer_mean(s : BioseqassemblypolishLayer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishLayer::mean(self : BioseqassemblypolishLayer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_layer_scale(s : BioseqassemblypolishLayer, f : Double) -> BioseqassemblypolishLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishLayer::scale(self : BioseqassemblypolishLayer, f : Double) -> BioseqassemblypolishLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_layer_add(a : BioseqassemblypolishLayer, b : BioseqassemblypolishLayer) -> BioseqassemblypolishLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishLayer::add(self : BioseqassemblypolishLayer, other : BioseqassemblypolishLayer) -> BioseqassemblypolishLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_layer_copy(s : BioseqassemblypolishLayer) -> BioseqassemblypolishLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishLayer::copy(self : BioseqassemblypolishLayer) -> BioseqassemblypolishLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_layer_fill(s : BioseqassemblypolishLayer, v : Double) -> BioseqassemblypolishLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishLayer::fill(self : BioseqassemblypolishLayer, v : Double) -> BioseqassemblypolishLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_layer_min(s : BioseqassemblypolishLayer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishLayer::min(self : BioseqassemblypolishLayer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_layer_max(s : BioseqassemblypolishLayer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishLayer::max(self : BioseqassemblypolishLayer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_layer_to_string(s : BioseqassemblypolishLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishLayer::to_string(self : BioseqassemblypolishLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishBuffer {
@@ -810,45 +810,45 @@ pub fn bio_seq_assembly_polish_buffer_make(size : Int) -> BioseqassemblypolishBu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_buffer_len(s : BioseqassemblypolishBuffer) -> Int { s.size }
+pub fn BioseqassemblypolishBuffer::len(self : BioseqassemblypolishBuffer) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_buffer_get(s : BioseqassemblypolishBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishBuffer::get(self : BioseqassemblypolishBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_buffer_set(s : BioseqassemblypolishBuffer, i : Int, v : Double) -> BioseqassemblypolishBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishBuffer::set(self : BioseqassemblypolishBuffer, i : Int, v : Double) -> BioseqassemblypolishBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_buffer_sum(s : BioseqassemblypolishBuffer) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishBuffer::sum(self : BioseqassemblypolishBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_buffer_mean(s : BioseqassemblypolishBuffer) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishBuffer::mean(self : BioseqassemblypolishBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_buffer_scale(s : BioseqassemblypolishBuffer, f : Double) -> BioseqassemblypolishBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishBuffer::scale(self : BioseqassemblypolishBuffer, f : Double) -> BioseqassemblypolishBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_buffer_add(a : BioseqassemblypolishBuffer, b : BioseqassemblypolishBuffer) -> BioseqassemblypolishBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishBuffer::add(self : BioseqassemblypolishBuffer, other : BioseqassemblypolishBuffer) -> BioseqassemblypolishBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_buffer_copy(s : BioseqassemblypolishBuffer) -> BioseqassemblypolishBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishBuffer::copy(self : BioseqassemblypolishBuffer) -> BioseqassemblypolishBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_buffer_fill(s : BioseqassemblypolishBuffer, v : Double) -> BioseqassemblypolishBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishBuffer::fill(self : BioseqassemblypolishBuffer, v : Double) -> BioseqassemblypolishBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_buffer_min(s : BioseqassemblypolishBuffer) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishBuffer::min(self : BioseqassemblypolishBuffer) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_buffer_max(s : BioseqassemblypolishBuffer) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishBuffer::max(self : BioseqassemblypolishBuffer) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_buffer_to_string(s : BioseqassemblypolishBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishBuffer::to_string(self : BioseqassemblypolishBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishCursor {
@@ -861,45 +861,45 @@ pub fn bio_seq_assembly_polish_cursor_make(size : Int) -> BioseqassemblypolishCu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_cursor_len(s : BioseqassemblypolishCursor) -> Int { s.size }
+pub fn BioseqassemblypolishCursor::len(self : BioseqassemblypolishCursor) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_cursor_get(s : BioseqassemblypolishCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishCursor::get(self : BioseqassemblypolishCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_cursor_set(s : BioseqassemblypolishCursor, i : Int, v : Double) -> BioseqassemblypolishCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCursor::set(self : BioseqassemblypolishCursor, i : Int, v : Double) -> BioseqassemblypolishCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cursor_sum(s : BioseqassemblypolishCursor) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishCursor::sum(self : BioseqassemblypolishCursor) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_cursor_mean(s : BioseqassemblypolishCursor) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishCursor::mean(self : BioseqassemblypolishCursor) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_cursor_scale(s : BioseqassemblypolishCursor, f : Double) -> BioseqassemblypolishCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCursor::scale(self : BioseqassemblypolishCursor, f : Double) -> BioseqassemblypolishCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cursor_add(a : BioseqassemblypolishCursor, b : BioseqassemblypolishCursor) -> BioseqassemblypolishCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishCursor::add(self : BioseqassemblypolishCursor, other : BioseqassemblypolishCursor) -> BioseqassemblypolishCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cursor_copy(s : BioseqassemblypolishCursor) -> BioseqassemblypolishCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCursor::copy(self : BioseqassemblypolishCursor) -> BioseqassemblypolishCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cursor_fill(s : BioseqassemblypolishCursor, v : Double) -> BioseqassemblypolishCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishCursor::fill(self : BioseqassemblypolishCursor, v : Double) -> BioseqassemblypolishCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_cursor_min(s : BioseqassemblypolishCursor) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishCursor::min(self : BioseqassemblypolishCursor) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_cursor_max(s : BioseqassemblypolishCursor) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishCursor::max(self : BioseqassemblypolishCursor) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_cursor_to_string(s : BioseqassemblypolishCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishCursor::to_string(self : BioseqassemblypolishCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishView {
@@ -912,45 +912,45 @@ pub fn bio_seq_assembly_polish_view_make(size : Int) -> BioseqassemblypolishView
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_view_len(s : BioseqassemblypolishView) -> Int { s.size }
+pub fn BioseqassemblypolishView::len(self : BioseqassemblypolishView) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_view_get(s : BioseqassemblypolishView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishView::get(self : BioseqassemblypolishView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_view_set(s : BioseqassemblypolishView, i : Int, v : Double) -> BioseqassemblypolishView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishView::set(self : BioseqassemblypolishView, i : Int, v : Double) -> BioseqassemblypolishView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_view_sum(s : BioseqassemblypolishView) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishView::sum(self : BioseqassemblypolishView) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_view_mean(s : BioseqassemblypolishView) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishView::mean(self : BioseqassemblypolishView) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_view_scale(s : BioseqassemblypolishView, f : Double) -> BioseqassemblypolishView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishView::scale(self : BioseqassemblypolishView, f : Double) -> BioseqassemblypolishView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_view_add(a : BioseqassemblypolishView, b : BioseqassemblypolishView) -> BioseqassemblypolishView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishView::add(self : BioseqassemblypolishView, other : BioseqassemblypolishView) -> BioseqassemblypolishView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_view_copy(s : BioseqassemblypolishView) -> BioseqassemblypolishView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishView::copy(self : BioseqassemblypolishView) -> BioseqassemblypolishView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_view_fill(s : BioseqassemblypolishView, v : Double) -> BioseqassemblypolishView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishView::fill(self : BioseqassemblypolishView, v : Double) -> BioseqassemblypolishView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_view_min(s : BioseqassemblypolishView) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishView::min(self : BioseqassemblypolishView) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_view_max(s : BioseqassemblypolishView) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishView::max(self : BioseqassemblypolishView) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_view_to_string(s : BioseqassemblypolishView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishView::to_string(self : BioseqassemblypolishView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishRange {
@@ -963,45 +963,45 @@ pub fn bio_seq_assembly_polish_range_make(size : Int) -> BioseqassemblypolishRan
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_range_len(s : BioseqassemblypolishRange) -> Int { s.size }
+pub fn BioseqassemblypolishRange::len(self : BioseqassemblypolishRange) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_range_get(s : BioseqassemblypolishRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishRange::get(self : BioseqassemblypolishRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_range_set(s : BioseqassemblypolishRange, i : Int, v : Double) -> BioseqassemblypolishRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishRange::set(self : BioseqassemblypolishRange, i : Int, v : Double) -> BioseqassemblypolishRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_range_sum(s : BioseqassemblypolishRange) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishRange::sum(self : BioseqassemblypolishRange) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_range_mean(s : BioseqassemblypolishRange) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishRange::mean(self : BioseqassemblypolishRange) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_range_scale(s : BioseqassemblypolishRange, f : Double) -> BioseqassemblypolishRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishRange::scale(self : BioseqassemblypolishRange, f : Double) -> BioseqassemblypolishRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_range_add(a : BioseqassemblypolishRange, b : BioseqassemblypolishRange) -> BioseqassemblypolishRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishRange::add(self : BioseqassemblypolishRange, other : BioseqassemblypolishRange) -> BioseqassemblypolishRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_range_copy(s : BioseqassemblypolishRange) -> BioseqassemblypolishRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishRange::copy(self : BioseqassemblypolishRange) -> BioseqassemblypolishRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_range_fill(s : BioseqassemblypolishRange, v : Double) -> BioseqassemblypolishRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishRange::fill(self : BioseqassemblypolishRange, v : Double) -> BioseqassemblypolishRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_range_min(s : BioseqassemblypolishRange) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishRange::min(self : BioseqassemblypolishRange) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_range_max(s : BioseqassemblypolishRange) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishRange::max(self : BioseqassemblypolishRange) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_range_to_string(s : BioseqassemblypolishRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishRange::to_string(self : BioseqassemblypolishRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblypolishSlice {
@@ -1014,44 +1014,44 @@ pub fn bio_seq_assembly_polish_slice_make(size : Int) -> BioseqassemblypolishSli
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn bio_seq_assembly_polish_slice_len(s : BioseqassemblypolishSlice) -> Int { s.size }
+pub fn BioseqassemblypolishSlice::len(self : BioseqassemblypolishSlice) -> Int { self.size }
 
-pub fn bio_seq_assembly_polish_slice_get(s : BioseqassemblypolishSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn BioseqassemblypolishSlice::get(self : BioseqassemblypolishSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn bio_seq_assembly_polish_slice_set(s : BioseqassemblypolishSlice, i : Int, v : Double) -> BioseqassemblypolishSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishSlice::set(self : BioseqassemblypolishSlice, i : Int, v : Double) -> BioseqassemblypolishSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_slice_sum(s : BioseqassemblypolishSlice) -> Double { @_common.sum(s.data) }
+pub fn BioseqassemblypolishSlice::sum(self : BioseqassemblypolishSlice) -> Double { @_common.sum(self.data) }
 
-pub fn bio_seq_assembly_polish_slice_mean(s : BioseqassemblypolishSlice) -> Double { @_common.mean(s.data) }
+pub fn BioseqassemblypolishSlice::mean(self : BioseqassemblypolishSlice) -> Double { @_common.mean(self.data) }
 
-pub fn bio_seq_assembly_polish_slice_scale(s : BioseqassemblypolishSlice, f : Double) -> BioseqassemblypolishSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishSlice::scale(self : BioseqassemblypolishSlice, f : Double) -> BioseqassemblypolishSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_slice_add(a : BioseqassemblypolishSlice, b : BioseqassemblypolishSlice) -> BioseqassemblypolishSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn BioseqassemblypolishSlice::add(self : BioseqassemblypolishSlice, other : BioseqassemblypolishSlice) -> BioseqassemblypolishSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_slice_copy(s : BioseqassemblypolishSlice) -> BioseqassemblypolishSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishSlice::copy(self : BioseqassemblypolishSlice) -> BioseqassemblypolishSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_slice_fill(s : BioseqassemblypolishSlice, v : Double) -> BioseqassemblypolishSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn BioseqassemblypolishSlice::fill(self : BioseqassemblypolishSlice, v : Double) -> BioseqassemblypolishSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn bio_seq_assembly_polish_slice_min(s : BioseqassemblypolishSlice) -> Double { @_common.min(s.data) }
+pub fn BioseqassemblypolishSlice::min(self : BioseqassemblypolishSlice) -> Double { @_common.min(self.data) }
 
-pub fn bio_seq_assembly_polish_slice_max(s : BioseqassemblypolishSlice) -> Double { @_common.max(s.data) }
+pub fn BioseqassemblypolishSlice::max(self : BioseqassemblypolishSlice) -> Double { @_common.max(self.data) }
 
-pub fn bio_seq_assembly_polish_slice_to_string(s : BioseqassemblypolishSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn BioseqassemblypolishSlice::to_string(self : BioseqassemblypolishSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

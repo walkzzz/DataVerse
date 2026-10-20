@@ -351,45 +351,45 @@ pub fn db_tx_lock_frame_make(size : Int) -> DbtxlockFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_frame_len(s : DbtxlockFrame) -> Int { s.size }
+pub fn DbtxlockFrame::len(self : DbtxlockFrame) -> Int { self.size }
 
-pub fn db_tx_lock_frame_get(s : DbtxlockFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockFrame::get(self : DbtxlockFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_frame_set(s : DbtxlockFrame, i : Int, v : Double) -> DbtxlockFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockFrame::set(self : DbtxlockFrame, i : Int, v : Double) -> DbtxlockFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_frame_sum(s : DbtxlockFrame) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockFrame::sum(self : DbtxlockFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_frame_mean(s : DbtxlockFrame) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockFrame::mean(self : DbtxlockFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_frame_scale(s : DbtxlockFrame, f : Double) -> DbtxlockFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockFrame::scale(self : DbtxlockFrame, f : Double) -> DbtxlockFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_frame_add(a : DbtxlockFrame, b : DbtxlockFrame) -> DbtxlockFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockFrame::add(self : DbtxlockFrame, other : DbtxlockFrame) -> DbtxlockFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_frame_copy(s : DbtxlockFrame) -> DbtxlockFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockFrame::copy(self : DbtxlockFrame) -> DbtxlockFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_frame_fill(s : DbtxlockFrame, v : Double) -> DbtxlockFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockFrame::fill(self : DbtxlockFrame, v : Double) -> DbtxlockFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_frame_min(s : DbtxlockFrame) -> Double { @_common.min(s.data) }
+pub fn DbtxlockFrame::min(self : DbtxlockFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_frame_max(s : DbtxlockFrame) -> Double { @_common.max(s.data) }
+pub fn DbtxlockFrame::max(self : DbtxlockFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_frame_to_string(s : DbtxlockFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockFrame::to_string(self : DbtxlockFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockTable {
@@ -402,45 +402,45 @@ pub fn db_tx_lock_table_make(size : Int) -> DbtxlockTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_table_len(s : DbtxlockTable) -> Int { s.size }
+pub fn DbtxlockTable::len(self : DbtxlockTable) -> Int { self.size }
 
-pub fn db_tx_lock_table_get(s : DbtxlockTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockTable::get(self : DbtxlockTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_table_set(s : DbtxlockTable, i : Int, v : Double) -> DbtxlockTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockTable::set(self : DbtxlockTable, i : Int, v : Double) -> DbtxlockTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_table_sum(s : DbtxlockTable) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockTable::sum(self : DbtxlockTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_table_mean(s : DbtxlockTable) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockTable::mean(self : DbtxlockTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_table_scale(s : DbtxlockTable, f : Double) -> DbtxlockTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockTable::scale(self : DbtxlockTable, f : Double) -> DbtxlockTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_table_add(a : DbtxlockTable, b : DbtxlockTable) -> DbtxlockTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockTable::add(self : DbtxlockTable, other : DbtxlockTable) -> DbtxlockTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_table_copy(s : DbtxlockTable) -> DbtxlockTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockTable::copy(self : DbtxlockTable) -> DbtxlockTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_table_fill(s : DbtxlockTable, v : Double) -> DbtxlockTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockTable::fill(self : DbtxlockTable, v : Double) -> DbtxlockTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_table_min(s : DbtxlockTable) -> Double { @_common.min(s.data) }
+pub fn DbtxlockTable::min(self : DbtxlockTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_table_max(s : DbtxlockTable) -> Double { @_common.max(s.data) }
+pub fn DbtxlockTable::max(self : DbtxlockTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_table_to_string(s : DbtxlockTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockTable::to_string(self : DbtxlockTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_lock_graphn_make(size : Int) -> DbtxlockGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_graphn_len(s : DbtxlockGraphN) -> Int { s.size }
+pub fn DbtxlockGraphN::len(self : DbtxlockGraphN) -> Int { self.size }
 
-pub fn db_tx_lock_graphn_get(s : DbtxlockGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockGraphN::get(self : DbtxlockGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_graphn_set(s : DbtxlockGraphN, i : Int, v : Double) -> DbtxlockGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockGraphN::set(self : DbtxlockGraphN, i : Int, v : Double) -> DbtxlockGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_graphn_sum(s : DbtxlockGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockGraphN::sum(self : DbtxlockGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_graphn_mean(s : DbtxlockGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockGraphN::mean(self : DbtxlockGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_graphn_scale(s : DbtxlockGraphN, f : Double) -> DbtxlockGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockGraphN::scale(self : DbtxlockGraphN, f : Double) -> DbtxlockGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_graphn_add(a : DbtxlockGraphN, b : DbtxlockGraphN) -> DbtxlockGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockGraphN::add(self : DbtxlockGraphN, other : DbtxlockGraphN) -> DbtxlockGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_graphn_copy(s : DbtxlockGraphN) -> DbtxlockGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockGraphN::copy(self : DbtxlockGraphN) -> DbtxlockGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_graphn_fill(s : DbtxlockGraphN, v : Double) -> DbtxlockGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockGraphN::fill(self : DbtxlockGraphN, v : Double) -> DbtxlockGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_graphn_min(s : DbtxlockGraphN) -> Double { @_common.min(s.data) }
+pub fn DbtxlockGraphN::min(self : DbtxlockGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_graphn_max(s : DbtxlockGraphN) -> Double { @_common.max(s.data) }
+pub fn DbtxlockGraphN::max(self : DbtxlockGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_graphn_to_string(s : DbtxlockGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockGraphN::to_string(self : DbtxlockGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockNode {
@@ -504,45 +504,45 @@ pub fn db_tx_lock_node_make(size : Int) -> DbtxlockNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_node_len(s : DbtxlockNode) -> Int { s.size }
+pub fn DbtxlockNode::len(self : DbtxlockNode) -> Int { self.size }
 
-pub fn db_tx_lock_node_get(s : DbtxlockNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockNode::get(self : DbtxlockNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_node_set(s : DbtxlockNode, i : Int, v : Double) -> DbtxlockNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockNode::set(self : DbtxlockNode, i : Int, v : Double) -> DbtxlockNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_node_sum(s : DbtxlockNode) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockNode::sum(self : DbtxlockNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_node_mean(s : DbtxlockNode) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockNode::mean(self : DbtxlockNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_node_scale(s : DbtxlockNode, f : Double) -> DbtxlockNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockNode::scale(self : DbtxlockNode, f : Double) -> DbtxlockNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_node_add(a : DbtxlockNode, b : DbtxlockNode) -> DbtxlockNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockNode::add(self : DbtxlockNode, other : DbtxlockNode) -> DbtxlockNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_node_copy(s : DbtxlockNode) -> DbtxlockNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockNode::copy(self : DbtxlockNode) -> DbtxlockNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_node_fill(s : DbtxlockNode, v : Double) -> DbtxlockNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockNode::fill(self : DbtxlockNode, v : Double) -> DbtxlockNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_node_min(s : DbtxlockNode) -> Double { @_common.min(s.data) }
+pub fn DbtxlockNode::min(self : DbtxlockNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_node_max(s : DbtxlockNode) -> Double { @_common.max(s.data) }
+pub fn DbtxlockNode::max(self : DbtxlockNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_node_to_string(s : DbtxlockNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockNode::to_string(self : DbtxlockNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_lock_edge_make(size : Int) -> DbtxlockEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_edge_len(s : DbtxlockEdge) -> Int { s.size }
+pub fn DbtxlockEdge::len(self : DbtxlockEdge) -> Int { self.size }
 
-pub fn db_tx_lock_edge_get(s : DbtxlockEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockEdge::get(self : DbtxlockEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_edge_set(s : DbtxlockEdge, i : Int, v : Double) -> DbtxlockEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockEdge::set(self : DbtxlockEdge, i : Int, v : Double) -> DbtxlockEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_edge_sum(s : DbtxlockEdge) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockEdge::sum(self : DbtxlockEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_edge_mean(s : DbtxlockEdge) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockEdge::mean(self : DbtxlockEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_edge_scale(s : DbtxlockEdge, f : Double) -> DbtxlockEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockEdge::scale(self : DbtxlockEdge, f : Double) -> DbtxlockEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_edge_add(a : DbtxlockEdge, b : DbtxlockEdge) -> DbtxlockEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockEdge::add(self : DbtxlockEdge, other : DbtxlockEdge) -> DbtxlockEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_edge_copy(s : DbtxlockEdge) -> DbtxlockEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockEdge::copy(self : DbtxlockEdge) -> DbtxlockEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_edge_fill(s : DbtxlockEdge, v : Double) -> DbtxlockEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockEdge::fill(self : DbtxlockEdge, v : Double) -> DbtxlockEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_edge_min(s : DbtxlockEdge) -> Double { @_common.min(s.data) }
+pub fn DbtxlockEdge::min(self : DbtxlockEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_edge_max(s : DbtxlockEdge) -> Double { @_common.max(s.data) }
+pub fn DbtxlockEdge::max(self : DbtxlockEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_edge_to_string(s : DbtxlockEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockEdge::to_string(self : DbtxlockEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockPath {
@@ -606,45 +606,45 @@ pub fn db_tx_lock_path_make(size : Int) -> DbtxlockPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_path_len(s : DbtxlockPath) -> Int { s.size }
+pub fn DbtxlockPath::len(self : DbtxlockPath) -> Int { self.size }
 
-pub fn db_tx_lock_path_get(s : DbtxlockPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockPath::get(self : DbtxlockPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_path_set(s : DbtxlockPath, i : Int, v : Double) -> DbtxlockPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockPath::set(self : DbtxlockPath, i : Int, v : Double) -> DbtxlockPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_path_sum(s : DbtxlockPath) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockPath::sum(self : DbtxlockPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_path_mean(s : DbtxlockPath) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockPath::mean(self : DbtxlockPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_path_scale(s : DbtxlockPath, f : Double) -> DbtxlockPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockPath::scale(self : DbtxlockPath, f : Double) -> DbtxlockPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_path_add(a : DbtxlockPath, b : DbtxlockPath) -> DbtxlockPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockPath::add(self : DbtxlockPath, other : DbtxlockPath) -> DbtxlockPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_path_copy(s : DbtxlockPath) -> DbtxlockPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockPath::copy(self : DbtxlockPath) -> DbtxlockPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_path_fill(s : DbtxlockPath, v : Double) -> DbtxlockPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockPath::fill(self : DbtxlockPath, v : Double) -> DbtxlockPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_path_min(s : DbtxlockPath) -> Double { @_common.min(s.data) }
+pub fn DbtxlockPath::min(self : DbtxlockPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_path_max(s : DbtxlockPath) -> Double { @_common.max(s.data) }
+pub fn DbtxlockPath::max(self : DbtxlockPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_path_to_string(s : DbtxlockPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockPath::to_string(self : DbtxlockPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_lock_cluster_make(size : Int) -> DbtxlockCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_cluster_len(s : DbtxlockCluster) -> Int { s.size }
+pub fn DbtxlockCluster::len(self : DbtxlockCluster) -> Int { self.size }
 
-pub fn db_tx_lock_cluster_get(s : DbtxlockCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockCluster::get(self : DbtxlockCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_cluster_set(s : DbtxlockCluster, i : Int, v : Double) -> DbtxlockCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockCluster::set(self : DbtxlockCluster, i : Int, v : Double) -> DbtxlockCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cluster_sum(s : DbtxlockCluster) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockCluster::sum(self : DbtxlockCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_cluster_mean(s : DbtxlockCluster) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockCluster::mean(self : DbtxlockCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_cluster_scale(s : DbtxlockCluster, f : Double) -> DbtxlockCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockCluster::scale(self : DbtxlockCluster, f : Double) -> DbtxlockCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cluster_add(a : DbtxlockCluster, b : DbtxlockCluster) -> DbtxlockCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockCluster::add(self : DbtxlockCluster, other : DbtxlockCluster) -> DbtxlockCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_cluster_copy(s : DbtxlockCluster) -> DbtxlockCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockCluster::copy(self : DbtxlockCluster) -> DbtxlockCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cluster_fill(s : DbtxlockCluster, v : Double) -> DbtxlockCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockCluster::fill(self : DbtxlockCluster, v : Double) -> DbtxlockCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cluster_min(s : DbtxlockCluster) -> Double { @_common.min(s.data) }
+pub fn DbtxlockCluster::min(self : DbtxlockCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_cluster_max(s : DbtxlockCluster) -> Double { @_common.max(s.data) }
+pub fn DbtxlockCluster::max(self : DbtxlockCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_cluster_to_string(s : DbtxlockCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockCluster::to_string(self : DbtxlockCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockModel {
@@ -708,45 +708,45 @@ pub fn db_tx_lock_model_make(size : Int) -> DbtxlockModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_model_len(s : DbtxlockModel) -> Int { s.size }
+pub fn DbtxlockModel::len(self : DbtxlockModel) -> Int { self.size }
 
-pub fn db_tx_lock_model_get(s : DbtxlockModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockModel::get(self : DbtxlockModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_model_set(s : DbtxlockModel, i : Int, v : Double) -> DbtxlockModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockModel::set(self : DbtxlockModel, i : Int, v : Double) -> DbtxlockModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_model_sum(s : DbtxlockModel) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockModel::sum(self : DbtxlockModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_model_mean(s : DbtxlockModel) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockModel::mean(self : DbtxlockModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_model_scale(s : DbtxlockModel, f : Double) -> DbtxlockModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockModel::scale(self : DbtxlockModel, f : Double) -> DbtxlockModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_model_add(a : DbtxlockModel, b : DbtxlockModel) -> DbtxlockModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockModel::add(self : DbtxlockModel, other : DbtxlockModel) -> DbtxlockModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_model_copy(s : DbtxlockModel) -> DbtxlockModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockModel::copy(self : DbtxlockModel) -> DbtxlockModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_model_fill(s : DbtxlockModel, v : Double) -> DbtxlockModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockModel::fill(self : DbtxlockModel, v : Double) -> DbtxlockModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_model_min(s : DbtxlockModel) -> Double { @_common.min(s.data) }
+pub fn DbtxlockModel::min(self : DbtxlockModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_model_max(s : DbtxlockModel) -> Double { @_common.max(s.data) }
+pub fn DbtxlockModel::max(self : DbtxlockModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_model_to_string(s : DbtxlockModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockModel::to_string(self : DbtxlockModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_lock_layer_make(size : Int) -> DbtxlockLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_layer_len(s : DbtxlockLayer) -> Int { s.size }
+pub fn DbtxlockLayer::len(self : DbtxlockLayer) -> Int { self.size }
 
-pub fn db_tx_lock_layer_get(s : DbtxlockLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockLayer::get(self : DbtxlockLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_layer_set(s : DbtxlockLayer, i : Int, v : Double) -> DbtxlockLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockLayer::set(self : DbtxlockLayer, i : Int, v : Double) -> DbtxlockLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_layer_sum(s : DbtxlockLayer) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockLayer::sum(self : DbtxlockLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_layer_mean(s : DbtxlockLayer) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockLayer::mean(self : DbtxlockLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_layer_scale(s : DbtxlockLayer, f : Double) -> DbtxlockLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockLayer::scale(self : DbtxlockLayer, f : Double) -> DbtxlockLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_layer_add(a : DbtxlockLayer, b : DbtxlockLayer) -> DbtxlockLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockLayer::add(self : DbtxlockLayer, other : DbtxlockLayer) -> DbtxlockLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_layer_copy(s : DbtxlockLayer) -> DbtxlockLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockLayer::copy(self : DbtxlockLayer) -> DbtxlockLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_layer_fill(s : DbtxlockLayer, v : Double) -> DbtxlockLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockLayer::fill(self : DbtxlockLayer, v : Double) -> DbtxlockLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_layer_min(s : DbtxlockLayer) -> Double { @_common.min(s.data) }
+pub fn DbtxlockLayer::min(self : DbtxlockLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_layer_max(s : DbtxlockLayer) -> Double { @_common.max(s.data) }
+pub fn DbtxlockLayer::max(self : DbtxlockLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_layer_to_string(s : DbtxlockLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockLayer::to_string(self : DbtxlockLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_lock_buffer_make(size : Int) -> DbtxlockBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_buffer_len(s : DbtxlockBuffer) -> Int { s.size }
+pub fn DbtxlockBuffer::len(self : DbtxlockBuffer) -> Int { self.size }
 
-pub fn db_tx_lock_buffer_get(s : DbtxlockBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockBuffer::get(self : DbtxlockBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_buffer_set(s : DbtxlockBuffer, i : Int, v : Double) -> DbtxlockBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockBuffer::set(self : DbtxlockBuffer, i : Int, v : Double) -> DbtxlockBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_buffer_sum(s : DbtxlockBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockBuffer::sum(self : DbtxlockBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_buffer_mean(s : DbtxlockBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockBuffer::mean(self : DbtxlockBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_buffer_scale(s : DbtxlockBuffer, f : Double) -> DbtxlockBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockBuffer::scale(self : DbtxlockBuffer, f : Double) -> DbtxlockBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_buffer_add(a : DbtxlockBuffer, b : DbtxlockBuffer) -> DbtxlockBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockBuffer::add(self : DbtxlockBuffer, other : DbtxlockBuffer) -> DbtxlockBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_buffer_copy(s : DbtxlockBuffer) -> DbtxlockBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockBuffer::copy(self : DbtxlockBuffer) -> DbtxlockBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_buffer_fill(s : DbtxlockBuffer, v : Double) -> DbtxlockBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockBuffer::fill(self : DbtxlockBuffer, v : Double) -> DbtxlockBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_buffer_min(s : DbtxlockBuffer) -> Double { @_common.min(s.data) }
+pub fn DbtxlockBuffer::min(self : DbtxlockBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_buffer_max(s : DbtxlockBuffer) -> Double { @_common.max(s.data) }
+pub fn DbtxlockBuffer::max(self : DbtxlockBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_buffer_to_string(s : DbtxlockBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockBuffer::to_string(self : DbtxlockBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_lock_cursor_make(size : Int) -> DbtxlockCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_cursor_len(s : DbtxlockCursor) -> Int { s.size }
+pub fn DbtxlockCursor::len(self : DbtxlockCursor) -> Int { self.size }
 
-pub fn db_tx_lock_cursor_get(s : DbtxlockCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockCursor::get(self : DbtxlockCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_cursor_set(s : DbtxlockCursor, i : Int, v : Double) -> DbtxlockCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockCursor::set(self : DbtxlockCursor, i : Int, v : Double) -> DbtxlockCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cursor_sum(s : DbtxlockCursor) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockCursor::sum(self : DbtxlockCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_cursor_mean(s : DbtxlockCursor) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockCursor::mean(self : DbtxlockCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_cursor_scale(s : DbtxlockCursor, f : Double) -> DbtxlockCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockCursor::scale(self : DbtxlockCursor, f : Double) -> DbtxlockCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cursor_add(a : DbtxlockCursor, b : DbtxlockCursor) -> DbtxlockCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockCursor::add(self : DbtxlockCursor, other : DbtxlockCursor) -> DbtxlockCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_cursor_copy(s : DbtxlockCursor) -> DbtxlockCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockCursor::copy(self : DbtxlockCursor) -> DbtxlockCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cursor_fill(s : DbtxlockCursor, v : Double) -> DbtxlockCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockCursor::fill(self : DbtxlockCursor, v : Double) -> DbtxlockCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_cursor_min(s : DbtxlockCursor) -> Double { @_common.min(s.data) }
+pub fn DbtxlockCursor::min(self : DbtxlockCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_cursor_max(s : DbtxlockCursor) -> Double { @_common.max(s.data) }
+pub fn DbtxlockCursor::max(self : DbtxlockCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_cursor_to_string(s : DbtxlockCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockCursor::to_string(self : DbtxlockCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockView {
@@ -912,45 +912,45 @@ pub fn db_tx_lock_view_make(size : Int) -> DbtxlockView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_view_len(s : DbtxlockView) -> Int { s.size }
+pub fn DbtxlockView::len(self : DbtxlockView) -> Int { self.size }
 
-pub fn db_tx_lock_view_get(s : DbtxlockView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockView::get(self : DbtxlockView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_view_set(s : DbtxlockView, i : Int, v : Double) -> DbtxlockView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockView::set(self : DbtxlockView, i : Int, v : Double) -> DbtxlockView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_view_sum(s : DbtxlockView) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockView::sum(self : DbtxlockView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_view_mean(s : DbtxlockView) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockView::mean(self : DbtxlockView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_view_scale(s : DbtxlockView, f : Double) -> DbtxlockView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockView::scale(self : DbtxlockView, f : Double) -> DbtxlockView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_view_add(a : DbtxlockView, b : DbtxlockView) -> DbtxlockView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockView::add(self : DbtxlockView, other : DbtxlockView) -> DbtxlockView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_view_copy(s : DbtxlockView) -> DbtxlockView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockView::copy(self : DbtxlockView) -> DbtxlockView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_view_fill(s : DbtxlockView, v : Double) -> DbtxlockView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockView::fill(self : DbtxlockView, v : Double) -> DbtxlockView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_view_min(s : DbtxlockView) -> Double { @_common.min(s.data) }
+pub fn DbtxlockView::min(self : DbtxlockView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_view_max(s : DbtxlockView) -> Double { @_common.max(s.data) }
+pub fn DbtxlockView::max(self : DbtxlockView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_view_to_string(s : DbtxlockView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockView::to_string(self : DbtxlockView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockRange {
@@ -963,45 +963,45 @@ pub fn db_tx_lock_range_make(size : Int) -> DbtxlockRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_range_len(s : DbtxlockRange) -> Int { s.size }
+pub fn DbtxlockRange::len(self : DbtxlockRange) -> Int { self.size }
 
-pub fn db_tx_lock_range_get(s : DbtxlockRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockRange::get(self : DbtxlockRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_range_set(s : DbtxlockRange, i : Int, v : Double) -> DbtxlockRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockRange::set(self : DbtxlockRange, i : Int, v : Double) -> DbtxlockRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_range_sum(s : DbtxlockRange) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockRange::sum(self : DbtxlockRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_range_mean(s : DbtxlockRange) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockRange::mean(self : DbtxlockRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_range_scale(s : DbtxlockRange, f : Double) -> DbtxlockRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockRange::scale(self : DbtxlockRange, f : Double) -> DbtxlockRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_range_add(a : DbtxlockRange, b : DbtxlockRange) -> DbtxlockRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockRange::add(self : DbtxlockRange, other : DbtxlockRange) -> DbtxlockRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_range_copy(s : DbtxlockRange) -> DbtxlockRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockRange::copy(self : DbtxlockRange) -> DbtxlockRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_range_fill(s : DbtxlockRange, v : Double) -> DbtxlockRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockRange::fill(self : DbtxlockRange, v : Double) -> DbtxlockRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_range_min(s : DbtxlockRange) -> Double { @_common.min(s.data) }
+pub fn DbtxlockRange::min(self : DbtxlockRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_range_max(s : DbtxlockRange) -> Double { @_common.max(s.data) }
+pub fn DbtxlockRange::max(self : DbtxlockRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_range_to_string(s : DbtxlockRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockRange::to_string(self : DbtxlockRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxlockSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_lock_slice_make(size : Int) -> DbtxlockSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_lock_slice_len(s : DbtxlockSlice) -> Int { s.size }
+pub fn DbtxlockSlice::len(self : DbtxlockSlice) -> Int { self.size }
 
-pub fn db_tx_lock_slice_get(s : DbtxlockSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxlockSlice::get(self : DbtxlockSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_lock_slice_set(s : DbtxlockSlice, i : Int, v : Double) -> DbtxlockSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxlockSlice::set(self : DbtxlockSlice, i : Int, v : Double) -> DbtxlockSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_slice_sum(s : DbtxlockSlice) -> Double { @_common.sum(s.data) }
+pub fn DbtxlockSlice::sum(self : DbtxlockSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_lock_slice_mean(s : DbtxlockSlice) -> Double { @_common.mean(s.data) }
+pub fn DbtxlockSlice::mean(self : DbtxlockSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_lock_slice_scale(s : DbtxlockSlice, f : Double) -> DbtxlockSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxlockSlice::scale(self : DbtxlockSlice, f : Double) -> DbtxlockSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_slice_add(a : DbtxlockSlice, b : DbtxlockSlice) -> DbtxlockSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxlockSlice::add(self : DbtxlockSlice, other : DbtxlockSlice) -> DbtxlockSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_lock_slice_copy(s : DbtxlockSlice) -> DbtxlockSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxlockSlice::copy(self : DbtxlockSlice) -> DbtxlockSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_slice_fill(s : DbtxlockSlice, v : Double) -> DbtxlockSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxlockSlice::fill(self : DbtxlockSlice, v : Double) -> DbtxlockSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_lock_slice_min(s : DbtxlockSlice) -> Double { @_common.min(s.data) }
+pub fn DbtxlockSlice::min(self : DbtxlockSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_lock_slice_max(s : DbtxlockSlice) -> Double { @_common.max(s.data) }
+pub fn DbtxlockSlice::max(self : DbtxlockSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_lock_slice_to_string(s : DbtxlockSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxlockSlice::to_string(self : DbtxlockSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

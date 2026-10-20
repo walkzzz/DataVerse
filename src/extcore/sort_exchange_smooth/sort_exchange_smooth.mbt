@@ -351,45 +351,45 @@ pub fn sort_exchange_smooth_frame_make(size : Int) -> SortexchangesmoothFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_frame_len(s : SortexchangesmoothFrame) -> Int { s.size }
+pub fn SortexchangesmoothFrame::len(self : SortexchangesmoothFrame) -> Int { self.size }
 
-pub fn sort_exchange_smooth_frame_get(s : SortexchangesmoothFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothFrame::get(self : SortexchangesmoothFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_frame_set(s : SortexchangesmoothFrame, i : Int, v : Double) -> SortexchangesmoothFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothFrame::set(self : SortexchangesmoothFrame, i : Int, v : Double) -> SortexchangesmoothFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_frame_sum(s : SortexchangesmoothFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothFrame::sum(self : SortexchangesmoothFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_frame_mean(s : SortexchangesmoothFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothFrame::mean(self : SortexchangesmoothFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_frame_scale(s : SortexchangesmoothFrame, f : Double) -> SortexchangesmoothFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothFrame::scale(self : SortexchangesmoothFrame, f : Double) -> SortexchangesmoothFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_frame_add(a : SortexchangesmoothFrame, b : SortexchangesmoothFrame) -> SortexchangesmoothFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothFrame::add(self : SortexchangesmoothFrame, other : SortexchangesmoothFrame) -> SortexchangesmoothFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_frame_copy(s : SortexchangesmoothFrame) -> SortexchangesmoothFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothFrame::copy(self : SortexchangesmoothFrame) -> SortexchangesmoothFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_frame_fill(s : SortexchangesmoothFrame, v : Double) -> SortexchangesmoothFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothFrame::fill(self : SortexchangesmoothFrame, v : Double) -> SortexchangesmoothFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_frame_min(s : SortexchangesmoothFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothFrame::min(self : SortexchangesmoothFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_frame_max(s : SortexchangesmoothFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothFrame::max(self : SortexchangesmoothFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_frame_to_string(s : SortexchangesmoothFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothFrame::to_string(self : SortexchangesmoothFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_smooth_table_make(size : Int) -> SortexchangesmoothTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_table_len(s : SortexchangesmoothTable) -> Int { s.size }
+pub fn SortexchangesmoothTable::len(self : SortexchangesmoothTable) -> Int { self.size }
 
-pub fn sort_exchange_smooth_table_get(s : SortexchangesmoothTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothTable::get(self : SortexchangesmoothTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_table_set(s : SortexchangesmoothTable, i : Int, v : Double) -> SortexchangesmoothTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothTable::set(self : SortexchangesmoothTable, i : Int, v : Double) -> SortexchangesmoothTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_table_sum(s : SortexchangesmoothTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothTable::sum(self : SortexchangesmoothTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_table_mean(s : SortexchangesmoothTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothTable::mean(self : SortexchangesmoothTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_table_scale(s : SortexchangesmoothTable, f : Double) -> SortexchangesmoothTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothTable::scale(self : SortexchangesmoothTable, f : Double) -> SortexchangesmoothTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_table_add(a : SortexchangesmoothTable, b : SortexchangesmoothTable) -> SortexchangesmoothTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothTable::add(self : SortexchangesmoothTable, other : SortexchangesmoothTable) -> SortexchangesmoothTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_table_copy(s : SortexchangesmoothTable) -> SortexchangesmoothTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothTable::copy(self : SortexchangesmoothTable) -> SortexchangesmoothTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_table_fill(s : SortexchangesmoothTable, v : Double) -> SortexchangesmoothTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothTable::fill(self : SortexchangesmoothTable, v : Double) -> SortexchangesmoothTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_table_min(s : SortexchangesmoothTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothTable::min(self : SortexchangesmoothTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_table_max(s : SortexchangesmoothTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothTable::max(self : SortexchangesmoothTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_table_to_string(s : SortexchangesmoothTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothTable::to_string(self : SortexchangesmoothTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_smooth_graphn_make(size : Int) -> SortexchangesmoothGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_graphn_len(s : SortexchangesmoothGraphN) -> Int { s.size }
+pub fn SortexchangesmoothGraphN::len(self : SortexchangesmoothGraphN) -> Int { self.size }
 
-pub fn sort_exchange_smooth_graphn_get(s : SortexchangesmoothGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothGraphN::get(self : SortexchangesmoothGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_graphn_set(s : SortexchangesmoothGraphN, i : Int, v : Double) -> SortexchangesmoothGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothGraphN::set(self : SortexchangesmoothGraphN, i : Int, v : Double) -> SortexchangesmoothGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_graphn_sum(s : SortexchangesmoothGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothGraphN::sum(self : SortexchangesmoothGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_graphn_mean(s : SortexchangesmoothGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothGraphN::mean(self : SortexchangesmoothGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_graphn_scale(s : SortexchangesmoothGraphN, f : Double) -> SortexchangesmoothGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothGraphN::scale(self : SortexchangesmoothGraphN, f : Double) -> SortexchangesmoothGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_graphn_add(a : SortexchangesmoothGraphN, b : SortexchangesmoothGraphN) -> SortexchangesmoothGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothGraphN::add(self : SortexchangesmoothGraphN, other : SortexchangesmoothGraphN) -> SortexchangesmoothGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_graphn_copy(s : SortexchangesmoothGraphN) -> SortexchangesmoothGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothGraphN::copy(self : SortexchangesmoothGraphN) -> SortexchangesmoothGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_graphn_fill(s : SortexchangesmoothGraphN, v : Double) -> SortexchangesmoothGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothGraphN::fill(self : SortexchangesmoothGraphN, v : Double) -> SortexchangesmoothGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_graphn_min(s : SortexchangesmoothGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothGraphN::min(self : SortexchangesmoothGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_graphn_max(s : SortexchangesmoothGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothGraphN::max(self : SortexchangesmoothGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_graphn_to_string(s : SortexchangesmoothGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothGraphN::to_string(self : SortexchangesmoothGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_smooth_node_make(size : Int) -> SortexchangesmoothNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_node_len(s : SortexchangesmoothNode) -> Int { s.size }
+pub fn SortexchangesmoothNode::len(self : SortexchangesmoothNode) -> Int { self.size }
 
-pub fn sort_exchange_smooth_node_get(s : SortexchangesmoothNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothNode::get(self : SortexchangesmoothNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_node_set(s : SortexchangesmoothNode, i : Int, v : Double) -> SortexchangesmoothNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothNode::set(self : SortexchangesmoothNode, i : Int, v : Double) -> SortexchangesmoothNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_node_sum(s : SortexchangesmoothNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothNode::sum(self : SortexchangesmoothNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_node_mean(s : SortexchangesmoothNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothNode::mean(self : SortexchangesmoothNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_node_scale(s : SortexchangesmoothNode, f : Double) -> SortexchangesmoothNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothNode::scale(self : SortexchangesmoothNode, f : Double) -> SortexchangesmoothNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_node_add(a : SortexchangesmoothNode, b : SortexchangesmoothNode) -> SortexchangesmoothNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothNode::add(self : SortexchangesmoothNode, other : SortexchangesmoothNode) -> SortexchangesmoothNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_node_copy(s : SortexchangesmoothNode) -> SortexchangesmoothNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothNode::copy(self : SortexchangesmoothNode) -> SortexchangesmoothNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_node_fill(s : SortexchangesmoothNode, v : Double) -> SortexchangesmoothNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothNode::fill(self : SortexchangesmoothNode, v : Double) -> SortexchangesmoothNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_node_min(s : SortexchangesmoothNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothNode::min(self : SortexchangesmoothNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_node_max(s : SortexchangesmoothNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothNode::max(self : SortexchangesmoothNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_node_to_string(s : SortexchangesmoothNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothNode::to_string(self : SortexchangesmoothNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_smooth_edge_make(size : Int) -> SortexchangesmoothEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_edge_len(s : SortexchangesmoothEdge) -> Int { s.size }
+pub fn SortexchangesmoothEdge::len(self : SortexchangesmoothEdge) -> Int { self.size }
 
-pub fn sort_exchange_smooth_edge_get(s : SortexchangesmoothEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothEdge::get(self : SortexchangesmoothEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_edge_set(s : SortexchangesmoothEdge, i : Int, v : Double) -> SortexchangesmoothEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothEdge::set(self : SortexchangesmoothEdge, i : Int, v : Double) -> SortexchangesmoothEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_edge_sum(s : SortexchangesmoothEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothEdge::sum(self : SortexchangesmoothEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_edge_mean(s : SortexchangesmoothEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothEdge::mean(self : SortexchangesmoothEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_edge_scale(s : SortexchangesmoothEdge, f : Double) -> SortexchangesmoothEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothEdge::scale(self : SortexchangesmoothEdge, f : Double) -> SortexchangesmoothEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_edge_add(a : SortexchangesmoothEdge, b : SortexchangesmoothEdge) -> SortexchangesmoothEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothEdge::add(self : SortexchangesmoothEdge, other : SortexchangesmoothEdge) -> SortexchangesmoothEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_edge_copy(s : SortexchangesmoothEdge) -> SortexchangesmoothEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothEdge::copy(self : SortexchangesmoothEdge) -> SortexchangesmoothEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_edge_fill(s : SortexchangesmoothEdge, v : Double) -> SortexchangesmoothEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothEdge::fill(self : SortexchangesmoothEdge, v : Double) -> SortexchangesmoothEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_edge_min(s : SortexchangesmoothEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothEdge::min(self : SortexchangesmoothEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_edge_max(s : SortexchangesmoothEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothEdge::max(self : SortexchangesmoothEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_edge_to_string(s : SortexchangesmoothEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothEdge::to_string(self : SortexchangesmoothEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothPath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_smooth_path_make(size : Int) -> SortexchangesmoothPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_path_len(s : SortexchangesmoothPath) -> Int { s.size }
+pub fn SortexchangesmoothPath::len(self : SortexchangesmoothPath) -> Int { self.size }
 
-pub fn sort_exchange_smooth_path_get(s : SortexchangesmoothPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothPath::get(self : SortexchangesmoothPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_path_set(s : SortexchangesmoothPath, i : Int, v : Double) -> SortexchangesmoothPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothPath::set(self : SortexchangesmoothPath, i : Int, v : Double) -> SortexchangesmoothPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_path_sum(s : SortexchangesmoothPath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothPath::sum(self : SortexchangesmoothPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_path_mean(s : SortexchangesmoothPath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothPath::mean(self : SortexchangesmoothPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_path_scale(s : SortexchangesmoothPath, f : Double) -> SortexchangesmoothPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothPath::scale(self : SortexchangesmoothPath, f : Double) -> SortexchangesmoothPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_path_add(a : SortexchangesmoothPath, b : SortexchangesmoothPath) -> SortexchangesmoothPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothPath::add(self : SortexchangesmoothPath, other : SortexchangesmoothPath) -> SortexchangesmoothPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_path_copy(s : SortexchangesmoothPath) -> SortexchangesmoothPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothPath::copy(self : SortexchangesmoothPath) -> SortexchangesmoothPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_path_fill(s : SortexchangesmoothPath, v : Double) -> SortexchangesmoothPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothPath::fill(self : SortexchangesmoothPath, v : Double) -> SortexchangesmoothPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_path_min(s : SortexchangesmoothPath) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothPath::min(self : SortexchangesmoothPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_path_max(s : SortexchangesmoothPath) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothPath::max(self : SortexchangesmoothPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_path_to_string(s : SortexchangesmoothPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothPath::to_string(self : SortexchangesmoothPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_smooth_cluster_make(size : Int) -> SortexchangesmoothCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_cluster_len(s : SortexchangesmoothCluster) -> Int { s.size }
+pub fn SortexchangesmoothCluster::len(self : SortexchangesmoothCluster) -> Int { self.size }
 
-pub fn sort_exchange_smooth_cluster_get(s : SortexchangesmoothCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothCluster::get(self : SortexchangesmoothCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_cluster_set(s : SortexchangesmoothCluster, i : Int, v : Double) -> SortexchangesmoothCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCluster::set(self : SortexchangesmoothCluster, i : Int, v : Double) -> SortexchangesmoothCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cluster_sum(s : SortexchangesmoothCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothCluster::sum(self : SortexchangesmoothCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_cluster_mean(s : SortexchangesmoothCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothCluster::mean(self : SortexchangesmoothCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_cluster_scale(s : SortexchangesmoothCluster, f : Double) -> SortexchangesmoothCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCluster::scale(self : SortexchangesmoothCluster, f : Double) -> SortexchangesmoothCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cluster_add(a : SortexchangesmoothCluster, b : SortexchangesmoothCluster) -> SortexchangesmoothCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothCluster::add(self : SortexchangesmoothCluster, other : SortexchangesmoothCluster) -> SortexchangesmoothCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cluster_copy(s : SortexchangesmoothCluster) -> SortexchangesmoothCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCluster::copy(self : SortexchangesmoothCluster) -> SortexchangesmoothCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cluster_fill(s : SortexchangesmoothCluster, v : Double) -> SortexchangesmoothCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCluster::fill(self : SortexchangesmoothCluster, v : Double) -> SortexchangesmoothCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cluster_min(s : SortexchangesmoothCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothCluster::min(self : SortexchangesmoothCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_cluster_max(s : SortexchangesmoothCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothCluster::max(self : SortexchangesmoothCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_cluster_to_string(s : SortexchangesmoothCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothCluster::to_string(self : SortexchangesmoothCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_smooth_model_make(size : Int) -> SortexchangesmoothModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_model_len(s : SortexchangesmoothModel) -> Int { s.size }
+pub fn SortexchangesmoothModel::len(self : SortexchangesmoothModel) -> Int { self.size }
 
-pub fn sort_exchange_smooth_model_get(s : SortexchangesmoothModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothModel::get(self : SortexchangesmoothModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_model_set(s : SortexchangesmoothModel, i : Int, v : Double) -> SortexchangesmoothModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothModel::set(self : SortexchangesmoothModel, i : Int, v : Double) -> SortexchangesmoothModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_model_sum(s : SortexchangesmoothModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothModel::sum(self : SortexchangesmoothModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_model_mean(s : SortexchangesmoothModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothModel::mean(self : SortexchangesmoothModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_model_scale(s : SortexchangesmoothModel, f : Double) -> SortexchangesmoothModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothModel::scale(self : SortexchangesmoothModel, f : Double) -> SortexchangesmoothModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_model_add(a : SortexchangesmoothModel, b : SortexchangesmoothModel) -> SortexchangesmoothModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothModel::add(self : SortexchangesmoothModel, other : SortexchangesmoothModel) -> SortexchangesmoothModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_model_copy(s : SortexchangesmoothModel) -> SortexchangesmoothModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothModel::copy(self : SortexchangesmoothModel) -> SortexchangesmoothModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_model_fill(s : SortexchangesmoothModel, v : Double) -> SortexchangesmoothModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothModel::fill(self : SortexchangesmoothModel, v : Double) -> SortexchangesmoothModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_model_min(s : SortexchangesmoothModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothModel::min(self : SortexchangesmoothModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_model_max(s : SortexchangesmoothModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothModel::max(self : SortexchangesmoothModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_model_to_string(s : SortexchangesmoothModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothModel::to_string(self : SortexchangesmoothModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_smooth_layer_make(size : Int) -> SortexchangesmoothLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_layer_len(s : SortexchangesmoothLayer) -> Int { s.size }
+pub fn SortexchangesmoothLayer::len(self : SortexchangesmoothLayer) -> Int { self.size }
 
-pub fn sort_exchange_smooth_layer_get(s : SortexchangesmoothLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothLayer::get(self : SortexchangesmoothLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_layer_set(s : SortexchangesmoothLayer, i : Int, v : Double) -> SortexchangesmoothLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothLayer::set(self : SortexchangesmoothLayer, i : Int, v : Double) -> SortexchangesmoothLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_layer_sum(s : SortexchangesmoothLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothLayer::sum(self : SortexchangesmoothLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_layer_mean(s : SortexchangesmoothLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothLayer::mean(self : SortexchangesmoothLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_layer_scale(s : SortexchangesmoothLayer, f : Double) -> SortexchangesmoothLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothLayer::scale(self : SortexchangesmoothLayer, f : Double) -> SortexchangesmoothLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_layer_add(a : SortexchangesmoothLayer, b : SortexchangesmoothLayer) -> SortexchangesmoothLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothLayer::add(self : SortexchangesmoothLayer, other : SortexchangesmoothLayer) -> SortexchangesmoothLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_layer_copy(s : SortexchangesmoothLayer) -> SortexchangesmoothLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothLayer::copy(self : SortexchangesmoothLayer) -> SortexchangesmoothLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_layer_fill(s : SortexchangesmoothLayer, v : Double) -> SortexchangesmoothLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothLayer::fill(self : SortexchangesmoothLayer, v : Double) -> SortexchangesmoothLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_layer_min(s : SortexchangesmoothLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothLayer::min(self : SortexchangesmoothLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_layer_max(s : SortexchangesmoothLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothLayer::max(self : SortexchangesmoothLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_layer_to_string(s : SortexchangesmoothLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothLayer::to_string(self : SortexchangesmoothLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_smooth_buffer_make(size : Int) -> SortexchangesmoothBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_buffer_len(s : SortexchangesmoothBuffer) -> Int { s.size }
+pub fn SortexchangesmoothBuffer::len(self : SortexchangesmoothBuffer) -> Int { self.size }
 
-pub fn sort_exchange_smooth_buffer_get(s : SortexchangesmoothBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothBuffer::get(self : SortexchangesmoothBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_buffer_set(s : SortexchangesmoothBuffer, i : Int, v : Double) -> SortexchangesmoothBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothBuffer::set(self : SortexchangesmoothBuffer, i : Int, v : Double) -> SortexchangesmoothBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_buffer_sum(s : SortexchangesmoothBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothBuffer::sum(self : SortexchangesmoothBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_buffer_mean(s : SortexchangesmoothBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothBuffer::mean(self : SortexchangesmoothBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_buffer_scale(s : SortexchangesmoothBuffer, f : Double) -> SortexchangesmoothBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothBuffer::scale(self : SortexchangesmoothBuffer, f : Double) -> SortexchangesmoothBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_buffer_add(a : SortexchangesmoothBuffer, b : SortexchangesmoothBuffer) -> SortexchangesmoothBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothBuffer::add(self : SortexchangesmoothBuffer, other : SortexchangesmoothBuffer) -> SortexchangesmoothBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_buffer_copy(s : SortexchangesmoothBuffer) -> SortexchangesmoothBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothBuffer::copy(self : SortexchangesmoothBuffer) -> SortexchangesmoothBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_buffer_fill(s : SortexchangesmoothBuffer, v : Double) -> SortexchangesmoothBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothBuffer::fill(self : SortexchangesmoothBuffer, v : Double) -> SortexchangesmoothBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_buffer_min(s : SortexchangesmoothBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothBuffer::min(self : SortexchangesmoothBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_buffer_max(s : SortexchangesmoothBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothBuffer::max(self : SortexchangesmoothBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_buffer_to_string(s : SortexchangesmoothBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothBuffer::to_string(self : SortexchangesmoothBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_smooth_cursor_make(size : Int) -> SortexchangesmoothCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_cursor_len(s : SortexchangesmoothCursor) -> Int { s.size }
+pub fn SortexchangesmoothCursor::len(self : SortexchangesmoothCursor) -> Int { self.size }
 
-pub fn sort_exchange_smooth_cursor_get(s : SortexchangesmoothCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothCursor::get(self : SortexchangesmoothCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_cursor_set(s : SortexchangesmoothCursor, i : Int, v : Double) -> SortexchangesmoothCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCursor::set(self : SortexchangesmoothCursor, i : Int, v : Double) -> SortexchangesmoothCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cursor_sum(s : SortexchangesmoothCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothCursor::sum(self : SortexchangesmoothCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_cursor_mean(s : SortexchangesmoothCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothCursor::mean(self : SortexchangesmoothCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_cursor_scale(s : SortexchangesmoothCursor, f : Double) -> SortexchangesmoothCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCursor::scale(self : SortexchangesmoothCursor, f : Double) -> SortexchangesmoothCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cursor_add(a : SortexchangesmoothCursor, b : SortexchangesmoothCursor) -> SortexchangesmoothCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothCursor::add(self : SortexchangesmoothCursor, other : SortexchangesmoothCursor) -> SortexchangesmoothCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cursor_copy(s : SortexchangesmoothCursor) -> SortexchangesmoothCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCursor::copy(self : SortexchangesmoothCursor) -> SortexchangesmoothCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cursor_fill(s : SortexchangesmoothCursor, v : Double) -> SortexchangesmoothCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothCursor::fill(self : SortexchangesmoothCursor, v : Double) -> SortexchangesmoothCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_cursor_min(s : SortexchangesmoothCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothCursor::min(self : SortexchangesmoothCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_cursor_max(s : SortexchangesmoothCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothCursor::max(self : SortexchangesmoothCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_cursor_to_string(s : SortexchangesmoothCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothCursor::to_string(self : SortexchangesmoothCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_smooth_view_make(size : Int) -> SortexchangesmoothView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_view_len(s : SortexchangesmoothView) -> Int { s.size }
+pub fn SortexchangesmoothView::len(self : SortexchangesmoothView) -> Int { self.size }
 
-pub fn sort_exchange_smooth_view_get(s : SortexchangesmoothView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothView::get(self : SortexchangesmoothView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_view_set(s : SortexchangesmoothView, i : Int, v : Double) -> SortexchangesmoothView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothView::set(self : SortexchangesmoothView, i : Int, v : Double) -> SortexchangesmoothView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_view_sum(s : SortexchangesmoothView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothView::sum(self : SortexchangesmoothView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_view_mean(s : SortexchangesmoothView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothView::mean(self : SortexchangesmoothView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_view_scale(s : SortexchangesmoothView, f : Double) -> SortexchangesmoothView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothView::scale(self : SortexchangesmoothView, f : Double) -> SortexchangesmoothView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_view_add(a : SortexchangesmoothView, b : SortexchangesmoothView) -> SortexchangesmoothView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothView::add(self : SortexchangesmoothView, other : SortexchangesmoothView) -> SortexchangesmoothView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_view_copy(s : SortexchangesmoothView) -> SortexchangesmoothView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothView::copy(self : SortexchangesmoothView) -> SortexchangesmoothView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_view_fill(s : SortexchangesmoothView, v : Double) -> SortexchangesmoothView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothView::fill(self : SortexchangesmoothView, v : Double) -> SortexchangesmoothView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_view_min(s : SortexchangesmoothView) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothView::min(self : SortexchangesmoothView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_view_max(s : SortexchangesmoothView) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothView::max(self : SortexchangesmoothView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_view_to_string(s : SortexchangesmoothView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothView::to_string(self : SortexchangesmoothView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_smooth_range_make(size : Int) -> SortexchangesmoothRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_range_len(s : SortexchangesmoothRange) -> Int { s.size }
+pub fn SortexchangesmoothRange::len(self : SortexchangesmoothRange) -> Int { self.size }
 
-pub fn sort_exchange_smooth_range_get(s : SortexchangesmoothRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothRange::get(self : SortexchangesmoothRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_range_set(s : SortexchangesmoothRange, i : Int, v : Double) -> SortexchangesmoothRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothRange::set(self : SortexchangesmoothRange, i : Int, v : Double) -> SortexchangesmoothRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_range_sum(s : SortexchangesmoothRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothRange::sum(self : SortexchangesmoothRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_range_mean(s : SortexchangesmoothRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothRange::mean(self : SortexchangesmoothRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_range_scale(s : SortexchangesmoothRange, f : Double) -> SortexchangesmoothRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothRange::scale(self : SortexchangesmoothRange, f : Double) -> SortexchangesmoothRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_range_add(a : SortexchangesmoothRange, b : SortexchangesmoothRange) -> SortexchangesmoothRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothRange::add(self : SortexchangesmoothRange, other : SortexchangesmoothRange) -> SortexchangesmoothRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_range_copy(s : SortexchangesmoothRange) -> SortexchangesmoothRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothRange::copy(self : SortexchangesmoothRange) -> SortexchangesmoothRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_range_fill(s : SortexchangesmoothRange, v : Double) -> SortexchangesmoothRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothRange::fill(self : SortexchangesmoothRange, v : Double) -> SortexchangesmoothRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_range_min(s : SortexchangesmoothRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothRange::min(self : SortexchangesmoothRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_range_max(s : SortexchangesmoothRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothRange::max(self : SortexchangesmoothRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_range_to_string(s : SortexchangesmoothRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothRange::to_string(self : SortexchangesmoothRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangesmoothSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_smooth_slice_make(size : Int) -> SortexchangesmoothSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_smooth_slice_len(s : SortexchangesmoothSlice) -> Int { s.size }
+pub fn SortexchangesmoothSlice::len(self : SortexchangesmoothSlice) -> Int { self.size }
 
-pub fn sort_exchange_smooth_slice_get(s : SortexchangesmoothSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangesmoothSlice::get(self : SortexchangesmoothSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_smooth_slice_set(s : SortexchangesmoothSlice, i : Int, v : Double) -> SortexchangesmoothSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangesmoothSlice::set(self : SortexchangesmoothSlice, i : Int, v : Double) -> SortexchangesmoothSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_slice_sum(s : SortexchangesmoothSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangesmoothSlice::sum(self : SortexchangesmoothSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_smooth_slice_mean(s : SortexchangesmoothSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangesmoothSlice::mean(self : SortexchangesmoothSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_smooth_slice_scale(s : SortexchangesmoothSlice, f : Double) -> SortexchangesmoothSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothSlice::scale(self : SortexchangesmoothSlice, f : Double) -> SortexchangesmoothSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_slice_add(a : SortexchangesmoothSlice, b : SortexchangesmoothSlice) -> SortexchangesmoothSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangesmoothSlice::add(self : SortexchangesmoothSlice, other : SortexchangesmoothSlice) -> SortexchangesmoothSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_slice_copy(s : SortexchangesmoothSlice) -> SortexchangesmoothSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothSlice::copy(self : SortexchangesmoothSlice) -> SortexchangesmoothSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_slice_fill(s : SortexchangesmoothSlice, v : Double) -> SortexchangesmoothSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangesmoothSlice::fill(self : SortexchangesmoothSlice, v : Double) -> SortexchangesmoothSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_smooth_slice_min(s : SortexchangesmoothSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangesmoothSlice::min(self : SortexchangesmoothSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_smooth_slice_max(s : SortexchangesmoothSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangesmoothSlice::max(self : SortexchangesmoothSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_smooth_slice_to_string(s : SortexchangesmoothSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangesmoothSlice::to_string(self : SortexchangesmoothSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

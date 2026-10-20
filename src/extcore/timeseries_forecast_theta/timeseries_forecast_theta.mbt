@@ -351,45 +351,45 @@ pub fn timeseries_forecast_theta_frame_make(size : Int) -> Timeseriesforecastthe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_frame_len(s : TimeseriesforecastthetaFrame) -> Int { s.size }
+pub fn TimeseriesforecastthetaFrame::len(self : TimeseriesforecastthetaFrame) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_frame_get(s : TimeseriesforecastthetaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaFrame::get(self : TimeseriesforecastthetaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_frame_set(s : TimeseriesforecastthetaFrame, i : Int, v : Double) -> TimeseriesforecastthetaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaFrame::set(self : TimeseriesforecastthetaFrame, i : Int, v : Double) -> TimeseriesforecastthetaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_frame_sum(s : TimeseriesforecastthetaFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaFrame::sum(self : TimeseriesforecastthetaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_frame_mean(s : TimeseriesforecastthetaFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaFrame::mean(self : TimeseriesforecastthetaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_frame_scale(s : TimeseriesforecastthetaFrame, f : Double) -> TimeseriesforecastthetaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaFrame::scale(self : TimeseriesforecastthetaFrame, f : Double) -> TimeseriesforecastthetaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_frame_add(a : TimeseriesforecastthetaFrame, b : TimeseriesforecastthetaFrame) -> TimeseriesforecastthetaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaFrame::add(self : TimeseriesforecastthetaFrame, other : TimeseriesforecastthetaFrame) -> TimeseriesforecastthetaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_frame_copy(s : TimeseriesforecastthetaFrame) -> TimeseriesforecastthetaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaFrame::copy(self : TimeseriesforecastthetaFrame) -> TimeseriesforecastthetaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_frame_fill(s : TimeseriesforecastthetaFrame, v : Double) -> TimeseriesforecastthetaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaFrame::fill(self : TimeseriesforecastthetaFrame, v : Double) -> TimeseriesforecastthetaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_frame_min(s : TimeseriesforecastthetaFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaFrame::min(self : TimeseriesforecastthetaFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_frame_max(s : TimeseriesforecastthetaFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaFrame::max(self : TimeseriesforecastthetaFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_frame_to_string(s : TimeseriesforecastthetaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaFrame::to_string(self : TimeseriesforecastthetaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaTable {
@@ -402,45 +402,45 @@ pub fn timeseries_forecast_theta_table_make(size : Int) -> Timeseriesforecastthe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_table_len(s : TimeseriesforecastthetaTable) -> Int { s.size }
+pub fn TimeseriesforecastthetaTable::len(self : TimeseriesforecastthetaTable) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_table_get(s : TimeseriesforecastthetaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaTable::get(self : TimeseriesforecastthetaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_table_set(s : TimeseriesforecastthetaTable, i : Int, v : Double) -> TimeseriesforecastthetaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaTable::set(self : TimeseriesforecastthetaTable, i : Int, v : Double) -> TimeseriesforecastthetaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_table_sum(s : TimeseriesforecastthetaTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaTable::sum(self : TimeseriesforecastthetaTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_table_mean(s : TimeseriesforecastthetaTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaTable::mean(self : TimeseriesforecastthetaTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_table_scale(s : TimeseriesforecastthetaTable, f : Double) -> TimeseriesforecastthetaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaTable::scale(self : TimeseriesforecastthetaTable, f : Double) -> TimeseriesforecastthetaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_table_add(a : TimeseriesforecastthetaTable, b : TimeseriesforecastthetaTable) -> TimeseriesforecastthetaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaTable::add(self : TimeseriesforecastthetaTable, other : TimeseriesforecastthetaTable) -> TimeseriesforecastthetaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_table_copy(s : TimeseriesforecastthetaTable) -> TimeseriesforecastthetaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaTable::copy(self : TimeseriesforecastthetaTable) -> TimeseriesforecastthetaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_table_fill(s : TimeseriesforecastthetaTable, v : Double) -> TimeseriesforecastthetaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaTable::fill(self : TimeseriesforecastthetaTable, v : Double) -> TimeseriesforecastthetaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_table_min(s : TimeseriesforecastthetaTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaTable::min(self : TimeseriesforecastthetaTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_table_max(s : TimeseriesforecastthetaTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaTable::max(self : TimeseriesforecastthetaTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_table_to_string(s : TimeseriesforecastthetaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaTable::to_string(self : TimeseriesforecastthetaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_forecast_theta_graphn_make(size : Int) -> Timeseriesforecastth
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_graphn_len(s : TimeseriesforecastthetaGraphN) -> Int { s.size }
+pub fn TimeseriesforecastthetaGraphN::len(self : TimeseriesforecastthetaGraphN) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_graphn_get(s : TimeseriesforecastthetaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaGraphN::get(self : TimeseriesforecastthetaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_graphn_set(s : TimeseriesforecastthetaGraphN, i : Int, v : Double) -> TimeseriesforecastthetaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaGraphN::set(self : TimeseriesforecastthetaGraphN, i : Int, v : Double) -> TimeseriesforecastthetaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_graphn_sum(s : TimeseriesforecastthetaGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaGraphN::sum(self : TimeseriesforecastthetaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_graphn_mean(s : TimeseriesforecastthetaGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaGraphN::mean(self : TimeseriesforecastthetaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_graphn_scale(s : TimeseriesforecastthetaGraphN, f : Double) -> TimeseriesforecastthetaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaGraphN::scale(self : TimeseriesforecastthetaGraphN, f : Double) -> TimeseriesforecastthetaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_graphn_add(a : TimeseriesforecastthetaGraphN, b : TimeseriesforecastthetaGraphN) -> TimeseriesforecastthetaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaGraphN::add(self : TimeseriesforecastthetaGraphN, other : TimeseriesforecastthetaGraphN) -> TimeseriesforecastthetaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_graphn_copy(s : TimeseriesforecastthetaGraphN) -> TimeseriesforecastthetaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaGraphN::copy(self : TimeseriesforecastthetaGraphN) -> TimeseriesforecastthetaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_graphn_fill(s : TimeseriesforecastthetaGraphN, v : Double) -> TimeseriesforecastthetaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaGraphN::fill(self : TimeseriesforecastthetaGraphN, v : Double) -> TimeseriesforecastthetaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_graphn_min(s : TimeseriesforecastthetaGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaGraphN::min(self : TimeseriesforecastthetaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_graphn_max(s : TimeseriesforecastthetaGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaGraphN::max(self : TimeseriesforecastthetaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_graphn_to_string(s : TimeseriesforecastthetaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaGraphN::to_string(self : TimeseriesforecastthetaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaNode {
@@ -504,45 +504,45 @@ pub fn timeseries_forecast_theta_node_make(size : Int) -> Timeseriesforecastthet
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_node_len(s : TimeseriesforecastthetaNode) -> Int { s.size }
+pub fn TimeseriesforecastthetaNode::len(self : TimeseriesforecastthetaNode) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_node_get(s : TimeseriesforecastthetaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaNode::get(self : TimeseriesforecastthetaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_node_set(s : TimeseriesforecastthetaNode, i : Int, v : Double) -> TimeseriesforecastthetaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaNode::set(self : TimeseriesforecastthetaNode, i : Int, v : Double) -> TimeseriesforecastthetaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_node_sum(s : TimeseriesforecastthetaNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaNode::sum(self : TimeseriesforecastthetaNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_node_mean(s : TimeseriesforecastthetaNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaNode::mean(self : TimeseriesforecastthetaNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_node_scale(s : TimeseriesforecastthetaNode, f : Double) -> TimeseriesforecastthetaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaNode::scale(self : TimeseriesforecastthetaNode, f : Double) -> TimeseriesforecastthetaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_node_add(a : TimeseriesforecastthetaNode, b : TimeseriesforecastthetaNode) -> TimeseriesforecastthetaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaNode::add(self : TimeseriesforecastthetaNode, other : TimeseriesforecastthetaNode) -> TimeseriesforecastthetaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_node_copy(s : TimeseriesforecastthetaNode) -> TimeseriesforecastthetaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaNode::copy(self : TimeseriesforecastthetaNode) -> TimeseriesforecastthetaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_node_fill(s : TimeseriesforecastthetaNode, v : Double) -> TimeseriesforecastthetaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaNode::fill(self : TimeseriesforecastthetaNode, v : Double) -> TimeseriesforecastthetaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_node_min(s : TimeseriesforecastthetaNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaNode::min(self : TimeseriesforecastthetaNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_node_max(s : TimeseriesforecastthetaNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaNode::max(self : TimeseriesforecastthetaNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_node_to_string(s : TimeseriesforecastthetaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaNode::to_string(self : TimeseriesforecastthetaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_forecast_theta_edge_make(size : Int) -> Timeseriesforecastthet
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_edge_len(s : TimeseriesforecastthetaEdge) -> Int { s.size }
+pub fn TimeseriesforecastthetaEdge::len(self : TimeseriesforecastthetaEdge) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_edge_get(s : TimeseriesforecastthetaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaEdge::get(self : TimeseriesforecastthetaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_edge_set(s : TimeseriesforecastthetaEdge, i : Int, v : Double) -> TimeseriesforecastthetaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaEdge::set(self : TimeseriesforecastthetaEdge, i : Int, v : Double) -> TimeseriesforecastthetaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_edge_sum(s : TimeseriesforecastthetaEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaEdge::sum(self : TimeseriesforecastthetaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_edge_mean(s : TimeseriesforecastthetaEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaEdge::mean(self : TimeseriesforecastthetaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_edge_scale(s : TimeseriesforecastthetaEdge, f : Double) -> TimeseriesforecastthetaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaEdge::scale(self : TimeseriesforecastthetaEdge, f : Double) -> TimeseriesforecastthetaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_edge_add(a : TimeseriesforecastthetaEdge, b : TimeseriesforecastthetaEdge) -> TimeseriesforecastthetaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaEdge::add(self : TimeseriesforecastthetaEdge, other : TimeseriesforecastthetaEdge) -> TimeseriesforecastthetaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_edge_copy(s : TimeseriesforecastthetaEdge) -> TimeseriesforecastthetaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaEdge::copy(self : TimeseriesforecastthetaEdge) -> TimeseriesforecastthetaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_edge_fill(s : TimeseriesforecastthetaEdge, v : Double) -> TimeseriesforecastthetaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaEdge::fill(self : TimeseriesforecastthetaEdge, v : Double) -> TimeseriesforecastthetaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_edge_min(s : TimeseriesforecastthetaEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaEdge::min(self : TimeseriesforecastthetaEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_edge_max(s : TimeseriesforecastthetaEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaEdge::max(self : TimeseriesforecastthetaEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_edge_to_string(s : TimeseriesforecastthetaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaEdge::to_string(self : TimeseriesforecastthetaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaPath {
@@ -606,45 +606,45 @@ pub fn timeseries_forecast_theta_path_make(size : Int) -> Timeseriesforecastthet
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_path_len(s : TimeseriesforecastthetaPath) -> Int { s.size }
+pub fn TimeseriesforecastthetaPath::len(self : TimeseriesforecastthetaPath) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_path_get(s : TimeseriesforecastthetaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaPath::get(self : TimeseriesforecastthetaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_path_set(s : TimeseriesforecastthetaPath, i : Int, v : Double) -> TimeseriesforecastthetaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaPath::set(self : TimeseriesforecastthetaPath, i : Int, v : Double) -> TimeseriesforecastthetaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_path_sum(s : TimeseriesforecastthetaPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaPath::sum(self : TimeseriesforecastthetaPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_path_mean(s : TimeseriesforecastthetaPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaPath::mean(self : TimeseriesforecastthetaPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_path_scale(s : TimeseriesforecastthetaPath, f : Double) -> TimeseriesforecastthetaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaPath::scale(self : TimeseriesforecastthetaPath, f : Double) -> TimeseriesforecastthetaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_path_add(a : TimeseriesforecastthetaPath, b : TimeseriesforecastthetaPath) -> TimeseriesforecastthetaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaPath::add(self : TimeseriesforecastthetaPath, other : TimeseriesforecastthetaPath) -> TimeseriesforecastthetaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_path_copy(s : TimeseriesforecastthetaPath) -> TimeseriesforecastthetaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaPath::copy(self : TimeseriesforecastthetaPath) -> TimeseriesforecastthetaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_path_fill(s : TimeseriesforecastthetaPath, v : Double) -> TimeseriesforecastthetaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaPath::fill(self : TimeseriesforecastthetaPath, v : Double) -> TimeseriesforecastthetaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_path_min(s : TimeseriesforecastthetaPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaPath::min(self : TimeseriesforecastthetaPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_path_max(s : TimeseriesforecastthetaPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaPath::max(self : TimeseriesforecastthetaPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_path_to_string(s : TimeseriesforecastthetaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaPath::to_string(self : TimeseriesforecastthetaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_forecast_theta_cluster_make(size : Int) -> Timeseriesforecastt
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_cluster_len(s : TimeseriesforecastthetaCluster) -> Int { s.size }
+pub fn TimeseriesforecastthetaCluster::len(self : TimeseriesforecastthetaCluster) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_cluster_get(s : TimeseriesforecastthetaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaCluster::get(self : TimeseriesforecastthetaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_cluster_set(s : TimeseriesforecastthetaCluster, i : Int, v : Double) -> TimeseriesforecastthetaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCluster::set(self : TimeseriesforecastthetaCluster, i : Int, v : Double) -> TimeseriesforecastthetaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cluster_sum(s : TimeseriesforecastthetaCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaCluster::sum(self : TimeseriesforecastthetaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_cluster_mean(s : TimeseriesforecastthetaCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaCluster::mean(self : TimeseriesforecastthetaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_cluster_scale(s : TimeseriesforecastthetaCluster, f : Double) -> TimeseriesforecastthetaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCluster::scale(self : TimeseriesforecastthetaCluster, f : Double) -> TimeseriesforecastthetaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cluster_add(a : TimeseriesforecastthetaCluster, b : TimeseriesforecastthetaCluster) -> TimeseriesforecastthetaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaCluster::add(self : TimeseriesforecastthetaCluster, other : TimeseriesforecastthetaCluster) -> TimeseriesforecastthetaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cluster_copy(s : TimeseriesforecastthetaCluster) -> TimeseriesforecastthetaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCluster::copy(self : TimeseriesforecastthetaCluster) -> TimeseriesforecastthetaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cluster_fill(s : TimeseriesforecastthetaCluster, v : Double) -> TimeseriesforecastthetaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCluster::fill(self : TimeseriesforecastthetaCluster, v : Double) -> TimeseriesforecastthetaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cluster_min(s : TimeseriesforecastthetaCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaCluster::min(self : TimeseriesforecastthetaCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_cluster_max(s : TimeseriesforecastthetaCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaCluster::max(self : TimeseriesforecastthetaCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_cluster_to_string(s : TimeseriesforecastthetaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaCluster::to_string(self : TimeseriesforecastthetaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaModel {
@@ -708,45 +708,45 @@ pub fn timeseries_forecast_theta_model_make(size : Int) -> Timeseriesforecastthe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_model_len(s : TimeseriesforecastthetaModel) -> Int { s.size }
+pub fn TimeseriesforecastthetaModel::len(self : TimeseriesforecastthetaModel) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_model_get(s : TimeseriesforecastthetaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaModel::get(self : TimeseriesforecastthetaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_model_set(s : TimeseriesforecastthetaModel, i : Int, v : Double) -> TimeseriesforecastthetaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaModel::set(self : TimeseriesforecastthetaModel, i : Int, v : Double) -> TimeseriesforecastthetaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_model_sum(s : TimeseriesforecastthetaModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaModel::sum(self : TimeseriesforecastthetaModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_model_mean(s : TimeseriesforecastthetaModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaModel::mean(self : TimeseriesforecastthetaModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_model_scale(s : TimeseriesforecastthetaModel, f : Double) -> TimeseriesforecastthetaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaModel::scale(self : TimeseriesforecastthetaModel, f : Double) -> TimeseriesforecastthetaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_model_add(a : TimeseriesforecastthetaModel, b : TimeseriesforecastthetaModel) -> TimeseriesforecastthetaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaModel::add(self : TimeseriesforecastthetaModel, other : TimeseriesforecastthetaModel) -> TimeseriesforecastthetaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_model_copy(s : TimeseriesforecastthetaModel) -> TimeseriesforecastthetaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaModel::copy(self : TimeseriesforecastthetaModel) -> TimeseriesforecastthetaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_model_fill(s : TimeseriesforecastthetaModel, v : Double) -> TimeseriesforecastthetaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaModel::fill(self : TimeseriesforecastthetaModel, v : Double) -> TimeseriesforecastthetaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_model_min(s : TimeseriesforecastthetaModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaModel::min(self : TimeseriesforecastthetaModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_model_max(s : TimeseriesforecastthetaModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaModel::max(self : TimeseriesforecastthetaModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_model_to_string(s : TimeseriesforecastthetaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaModel::to_string(self : TimeseriesforecastthetaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_forecast_theta_layer_make(size : Int) -> Timeseriesforecastthe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_layer_len(s : TimeseriesforecastthetaLayer) -> Int { s.size }
+pub fn TimeseriesforecastthetaLayer::len(self : TimeseriesforecastthetaLayer) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_layer_get(s : TimeseriesforecastthetaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaLayer::get(self : TimeseriesforecastthetaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_layer_set(s : TimeseriesforecastthetaLayer, i : Int, v : Double) -> TimeseriesforecastthetaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaLayer::set(self : TimeseriesforecastthetaLayer, i : Int, v : Double) -> TimeseriesforecastthetaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_layer_sum(s : TimeseriesforecastthetaLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaLayer::sum(self : TimeseriesforecastthetaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_layer_mean(s : TimeseriesforecastthetaLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaLayer::mean(self : TimeseriesforecastthetaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_layer_scale(s : TimeseriesforecastthetaLayer, f : Double) -> TimeseriesforecastthetaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaLayer::scale(self : TimeseriesforecastthetaLayer, f : Double) -> TimeseriesforecastthetaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_layer_add(a : TimeseriesforecastthetaLayer, b : TimeseriesforecastthetaLayer) -> TimeseriesforecastthetaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaLayer::add(self : TimeseriesforecastthetaLayer, other : TimeseriesforecastthetaLayer) -> TimeseriesforecastthetaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_layer_copy(s : TimeseriesforecastthetaLayer) -> TimeseriesforecastthetaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaLayer::copy(self : TimeseriesforecastthetaLayer) -> TimeseriesforecastthetaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_layer_fill(s : TimeseriesforecastthetaLayer, v : Double) -> TimeseriesforecastthetaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaLayer::fill(self : TimeseriesforecastthetaLayer, v : Double) -> TimeseriesforecastthetaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_layer_min(s : TimeseriesforecastthetaLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaLayer::min(self : TimeseriesforecastthetaLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_layer_max(s : TimeseriesforecastthetaLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaLayer::max(self : TimeseriesforecastthetaLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_layer_to_string(s : TimeseriesforecastthetaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaLayer::to_string(self : TimeseriesforecastthetaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_forecast_theta_buffer_make(size : Int) -> Timeseriesforecastth
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_buffer_len(s : TimeseriesforecastthetaBuffer) -> Int { s.size }
+pub fn TimeseriesforecastthetaBuffer::len(self : TimeseriesforecastthetaBuffer) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_buffer_get(s : TimeseriesforecastthetaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaBuffer::get(self : TimeseriesforecastthetaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_buffer_set(s : TimeseriesforecastthetaBuffer, i : Int, v : Double) -> TimeseriesforecastthetaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaBuffer::set(self : TimeseriesforecastthetaBuffer, i : Int, v : Double) -> TimeseriesforecastthetaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_buffer_sum(s : TimeseriesforecastthetaBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaBuffer::sum(self : TimeseriesforecastthetaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_buffer_mean(s : TimeseriesforecastthetaBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaBuffer::mean(self : TimeseriesforecastthetaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_buffer_scale(s : TimeseriesforecastthetaBuffer, f : Double) -> TimeseriesforecastthetaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaBuffer::scale(self : TimeseriesforecastthetaBuffer, f : Double) -> TimeseriesforecastthetaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_buffer_add(a : TimeseriesforecastthetaBuffer, b : TimeseriesforecastthetaBuffer) -> TimeseriesforecastthetaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaBuffer::add(self : TimeseriesforecastthetaBuffer, other : TimeseriesforecastthetaBuffer) -> TimeseriesforecastthetaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_buffer_copy(s : TimeseriesforecastthetaBuffer) -> TimeseriesforecastthetaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaBuffer::copy(self : TimeseriesforecastthetaBuffer) -> TimeseriesforecastthetaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_buffer_fill(s : TimeseriesforecastthetaBuffer, v : Double) -> TimeseriesforecastthetaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaBuffer::fill(self : TimeseriesforecastthetaBuffer, v : Double) -> TimeseriesforecastthetaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_buffer_min(s : TimeseriesforecastthetaBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaBuffer::min(self : TimeseriesforecastthetaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_buffer_max(s : TimeseriesforecastthetaBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaBuffer::max(self : TimeseriesforecastthetaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_buffer_to_string(s : TimeseriesforecastthetaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaBuffer::to_string(self : TimeseriesforecastthetaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_forecast_theta_cursor_make(size : Int) -> Timeseriesforecastth
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_cursor_len(s : TimeseriesforecastthetaCursor) -> Int { s.size }
+pub fn TimeseriesforecastthetaCursor::len(self : TimeseriesforecastthetaCursor) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_cursor_get(s : TimeseriesforecastthetaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaCursor::get(self : TimeseriesforecastthetaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_cursor_set(s : TimeseriesforecastthetaCursor, i : Int, v : Double) -> TimeseriesforecastthetaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCursor::set(self : TimeseriesforecastthetaCursor, i : Int, v : Double) -> TimeseriesforecastthetaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cursor_sum(s : TimeseriesforecastthetaCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaCursor::sum(self : TimeseriesforecastthetaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_cursor_mean(s : TimeseriesforecastthetaCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaCursor::mean(self : TimeseriesforecastthetaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_cursor_scale(s : TimeseriesforecastthetaCursor, f : Double) -> TimeseriesforecastthetaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCursor::scale(self : TimeseriesforecastthetaCursor, f : Double) -> TimeseriesforecastthetaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cursor_add(a : TimeseriesforecastthetaCursor, b : TimeseriesforecastthetaCursor) -> TimeseriesforecastthetaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaCursor::add(self : TimeseriesforecastthetaCursor, other : TimeseriesforecastthetaCursor) -> TimeseriesforecastthetaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cursor_copy(s : TimeseriesforecastthetaCursor) -> TimeseriesforecastthetaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCursor::copy(self : TimeseriesforecastthetaCursor) -> TimeseriesforecastthetaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cursor_fill(s : TimeseriesforecastthetaCursor, v : Double) -> TimeseriesforecastthetaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaCursor::fill(self : TimeseriesforecastthetaCursor, v : Double) -> TimeseriesforecastthetaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_cursor_min(s : TimeseriesforecastthetaCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaCursor::min(self : TimeseriesforecastthetaCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_cursor_max(s : TimeseriesforecastthetaCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaCursor::max(self : TimeseriesforecastthetaCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_cursor_to_string(s : TimeseriesforecastthetaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaCursor::to_string(self : TimeseriesforecastthetaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaView {
@@ -912,45 +912,45 @@ pub fn timeseries_forecast_theta_view_make(size : Int) -> Timeseriesforecastthet
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_view_len(s : TimeseriesforecastthetaView) -> Int { s.size }
+pub fn TimeseriesforecastthetaView::len(self : TimeseriesforecastthetaView) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_view_get(s : TimeseriesforecastthetaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaView::get(self : TimeseriesforecastthetaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_view_set(s : TimeseriesforecastthetaView, i : Int, v : Double) -> TimeseriesforecastthetaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaView::set(self : TimeseriesforecastthetaView, i : Int, v : Double) -> TimeseriesforecastthetaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_view_sum(s : TimeseriesforecastthetaView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaView::sum(self : TimeseriesforecastthetaView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_view_mean(s : TimeseriesforecastthetaView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaView::mean(self : TimeseriesforecastthetaView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_view_scale(s : TimeseriesforecastthetaView, f : Double) -> TimeseriesforecastthetaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaView::scale(self : TimeseriesforecastthetaView, f : Double) -> TimeseriesforecastthetaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_view_add(a : TimeseriesforecastthetaView, b : TimeseriesforecastthetaView) -> TimeseriesforecastthetaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaView::add(self : TimeseriesforecastthetaView, other : TimeseriesforecastthetaView) -> TimeseriesforecastthetaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_view_copy(s : TimeseriesforecastthetaView) -> TimeseriesforecastthetaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaView::copy(self : TimeseriesforecastthetaView) -> TimeseriesforecastthetaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_view_fill(s : TimeseriesforecastthetaView, v : Double) -> TimeseriesforecastthetaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaView::fill(self : TimeseriesforecastthetaView, v : Double) -> TimeseriesforecastthetaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_view_min(s : TimeseriesforecastthetaView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaView::min(self : TimeseriesforecastthetaView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_view_max(s : TimeseriesforecastthetaView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaView::max(self : TimeseriesforecastthetaView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_view_to_string(s : TimeseriesforecastthetaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaView::to_string(self : TimeseriesforecastthetaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaRange {
@@ -963,45 +963,45 @@ pub fn timeseries_forecast_theta_range_make(size : Int) -> Timeseriesforecastthe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_range_len(s : TimeseriesforecastthetaRange) -> Int { s.size }
+pub fn TimeseriesforecastthetaRange::len(self : TimeseriesforecastthetaRange) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_range_get(s : TimeseriesforecastthetaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaRange::get(self : TimeseriesforecastthetaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_range_set(s : TimeseriesforecastthetaRange, i : Int, v : Double) -> TimeseriesforecastthetaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaRange::set(self : TimeseriesforecastthetaRange, i : Int, v : Double) -> TimeseriesforecastthetaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_range_sum(s : TimeseriesforecastthetaRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaRange::sum(self : TimeseriesforecastthetaRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_range_mean(s : TimeseriesforecastthetaRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaRange::mean(self : TimeseriesforecastthetaRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_range_scale(s : TimeseriesforecastthetaRange, f : Double) -> TimeseriesforecastthetaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaRange::scale(self : TimeseriesforecastthetaRange, f : Double) -> TimeseriesforecastthetaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_range_add(a : TimeseriesforecastthetaRange, b : TimeseriesforecastthetaRange) -> TimeseriesforecastthetaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaRange::add(self : TimeseriesforecastthetaRange, other : TimeseriesforecastthetaRange) -> TimeseriesforecastthetaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_range_copy(s : TimeseriesforecastthetaRange) -> TimeseriesforecastthetaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaRange::copy(self : TimeseriesforecastthetaRange) -> TimeseriesforecastthetaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_range_fill(s : TimeseriesforecastthetaRange, v : Double) -> TimeseriesforecastthetaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaRange::fill(self : TimeseriesforecastthetaRange, v : Double) -> TimeseriesforecastthetaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_range_min(s : TimeseriesforecastthetaRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaRange::min(self : TimeseriesforecastthetaRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_range_max(s : TimeseriesforecastthetaRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaRange::max(self : TimeseriesforecastthetaRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_range_to_string(s : TimeseriesforecastthetaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaRange::to_string(self : TimeseriesforecastthetaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastthetaSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_forecast_theta_slice_make(size : Int) -> Timeseriesforecastthe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_forecast_theta_slice_len(s : TimeseriesforecastthetaSlice) -> Int { s.size }
+pub fn TimeseriesforecastthetaSlice::len(self : TimeseriesforecastthetaSlice) -> Int { self.size }
 
-pub fn timeseries_forecast_theta_slice_get(s : TimeseriesforecastthetaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesforecastthetaSlice::get(self : TimeseriesforecastthetaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_forecast_theta_slice_set(s : TimeseriesforecastthetaSlice, i : Int, v : Double) -> TimeseriesforecastthetaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaSlice::set(self : TimeseriesforecastthetaSlice, i : Int, v : Double) -> TimeseriesforecastthetaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_slice_sum(s : TimeseriesforecastthetaSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesforecastthetaSlice::sum(self : TimeseriesforecastthetaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_forecast_theta_slice_mean(s : TimeseriesforecastthetaSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesforecastthetaSlice::mean(self : TimeseriesforecastthetaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_forecast_theta_slice_scale(s : TimeseriesforecastthetaSlice, f : Double) -> TimeseriesforecastthetaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaSlice::scale(self : TimeseriesforecastthetaSlice, f : Double) -> TimeseriesforecastthetaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_slice_add(a : TimeseriesforecastthetaSlice, b : TimeseriesforecastthetaSlice) -> TimeseriesforecastthetaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesforecastthetaSlice::add(self : TimeseriesforecastthetaSlice, other : TimeseriesforecastthetaSlice) -> TimeseriesforecastthetaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_slice_copy(s : TimeseriesforecastthetaSlice) -> TimeseriesforecastthetaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaSlice::copy(self : TimeseriesforecastthetaSlice) -> TimeseriesforecastthetaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_slice_fill(s : TimeseriesforecastthetaSlice, v : Double) -> TimeseriesforecastthetaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesforecastthetaSlice::fill(self : TimeseriesforecastthetaSlice, v : Double) -> TimeseriesforecastthetaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_forecast_theta_slice_min(s : TimeseriesforecastthetaSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesforecastthetaSlice::min(self : TimeseriesforecastthetaSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_forecast_theta_slice_max(s : TimeseriesforecastthetaSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesforecastthetaSlice::max(self : TimeseriesforecastthetaSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_forecast_theta_slice_to_string(s : TimeseriesforecastthetaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesforecastthetaSlice::to_string(self : TimeseriesforecastthetaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

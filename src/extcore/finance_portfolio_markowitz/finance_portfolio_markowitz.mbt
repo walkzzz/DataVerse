@@ -351,45 +351,45 @@ pub fn finance_portfolio_markowitz_frame_make(size : Int) -> Financeportfoliomar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_frame_len(s : FinanceportfoliomarkowitzFrame) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzFrame::len(self : FinanceportfoliomarkowitzFrame) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_frame_get(s : FinanceportfoliomarkowitzFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzFrame::get(self : FinanceportfoliomarkowitzFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_frame_set(s : FinanceportfoliomarkowitzFrame, i : Int, v : Double) -> FinanceportfoliomarkowitzFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzFrame::set(self : FinanceportfoliomarkowitzFrame, i : Int, v : Double) -> FinanceportfoliomarkowitzFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_frame_sum(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzFrame::sum(self : FinanceportfoliomarkowitzFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_frame_mean(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzFrame::mean(self : FinanceportfoliomarkowitzFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_frame_scale(s : FinanceportfoliomarkowitzFrame, f : Double) -> FinanceportfoliomarkowitzFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzFrame::scale(self : FinanceportfoliomarkowitzFrame, f : Double) -> FinanceportfoliomarkowitzFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_frame_add(a : FinanceportfoliomarkowitzFrame, b : FinanceportfoliomarkowitzFrame) -> FinanceportfoliomarkowitzFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzFrame::add(self : FinanceportfoliomarkowitzFrame, other : FinanceportfoliomarkowitzFrame) -> FinanceportfoliomarkowitzFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_frame_copy(s : FinanceportfoliomarkowitzFrame) -> FinanceportfoliomarkowitzFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzFrame::copy(self : FinanceportfoliomarkowitzFrame) -> FinanceportfoliomarkowitzFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_frame_fill(s : FinanceportfoliomarkowitzFrame, v : Double) -> FinanceportfoliomarkowitzFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzFrame::fill(self : FinanceportfoliomarkowitzFrame, v : Double) -> FinanceportfoliomarkowitzFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_frame_min(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzFrame::min(self : FinanceportfoliomarkowitzFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_frame_max(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzFrame::max(self : FinanceportfoliomarkowitzFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_frame_to_string(s : FinanceportfoliomarkowitzFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzFrame::to_string(self : FinanceportfoliomarkowitzFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzTable {
@@ -402,45 +402,45 @@ pub fn finance_portfolio_markowitz_table_make(size : Int) -> Financeportfoliomar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_table_len(s : FinanceportfoliomarkowitzTable) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzTable::len(self : FinanceportfoliomarkowitzTable) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_table_get(s : FinanceportfoliomarkowitzTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzTable::get(self : FinanceportfoliomarkowitzTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_table_set(s : FinanceportfoliomarkowitzTable, i : Int, v : Double) -> FinanceportfoliomarkowitzTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzTable::set(self : FinanceportfoliomarkowitzTable, i : Int, v : Double) -> FinanceportfoliomarkowitzTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_table_sum(s : FinanceportfoliomarkowitzTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzTable::sum(self : FinanceportfoliomarkowitzTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_table_mean(s : FinanceportfoliomarkowitzTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzTable::mean(self : FinanceportfoliomarkowitzTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_table_scale(s : FinanceportfoliomarkowitzTable, f : Double) -> FinanceportfoliomarkowitzTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzTable::scale(self : FinanceportfoliomarkowitzTable, f : Double) -> FinanceportfoliomarkowitzTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_table_add(a : FinanceportfoliomarkowitzTable, b : FinanceportfoliomarkowitzTable) -> FinanceportfoliomarkowitzTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzTable::add(self : FinanceportfoliomarkowitzTable, other : FinanceportfoliomarkowitzTable) -> FinanceportfoliomarkowitzTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_table_copy(s : FinanceportfoliomarkowitzTable) -> FinanceportfoliomarkowitzTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzTable::copy(self : FinanceportfoliomarkowitzTable) -> FinanceportfoliomarkowitzTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_table_fill(s : FinanceportfoliomarkowitzTable, v : Double) -> FinanceportfoliomarkowitzTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzTable::fill(self : FinanceportfoliomarkowitzTable, v : Double) -> FinanceportfoliomarkowitzTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_table_min(s : FinanceportfoliomarkowitzTable) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzTable::min(self : FinanceportfoliomarkowitzTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_table_max(s : FinanceportfoliomarkowitzTable) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzTable::max(self : FinanceportfoliomarkowitzTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_table_to_string(s : FinanceportfoliomarkowitzTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzTable::to_string(self : FinanceportfoliomarkowitzTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzGraphN {
@@ -453,45 +453,45 @@ pub fn finance_portfolio_markowitz_graphn_make(size : Int) -> Financeportfolioma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_graphn_len(s : FinanceportfoliomarkowitzGraphN) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzGraphN::len(self : FinanceportfoliomarkowitzGraphN) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_graphn_get(s : FinanceportfoliomarkowitzGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzGraphN::get(self : FinanceportfoliomarkowitzGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_graphn_set(s : FinanceportfoliomarkowitzGraphN, i : Int, v : Double) -> FinanceportfoliomarkowitzGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzGraphN::set(self : FinanceportfoliomarkowitzGraphN, i : Int, v : Double) -> FinanceportfoliomarkowitzGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_graphn_sum(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzGraphN::sum(self : FinanceportfoliomarkowitzGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_graphn_mean(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzGraphN::mean(self : FinanceportfoliomarkowitzGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_graphn_scale(s : FinanceportfoliomarkowitzGraphN, f : Double) -> FinanceportfoliomarkowitzGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzGraphN::scale(self : FinanceportfoliomarkowitzGraphN, f : Double) -> FinanceportfoliomarkowitzGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_graphn_add(a : FinanceportfoliomarkowitzGraphN, b : FinanceportfoliomarkowitzGraphN) -> FinanceportfoliomarkowitzGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzGraphN::add(self : FinanceportfoliomarkowitzGraphN, other : FinanceportfoliomarkowitzGraphN) -> FinanceportfoliomarkowitzGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_graphn_copy(s : FinanceportfoliomarkowitzGraphN) -> FinanceportfoliomarkowitzGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzGraphN::copy(self : FinanceportfoliomarkowitzGraphN) -> FinanceportfoliomarkowitzGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_graphn_fill(s : FinanceportfoliomarkowitzGraphN, v : Double) -> FinanceportfoliomarkowitzGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzGraphN::fill(self : FinanceportfoliomarkowitzGraphN, v : Double) -> FinanceportfoliomarkowitzGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_graphn_min(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzGraphN::min(self : FinanceportfoliomarkowitzGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_graphn_max(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzGraphN::max(self : FinanceportfoliomarkowitzGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_graphn_to_string(s : FinanceportfoliomarkowitzGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzGraphN::to_string(self : FinanceportfoliomarkowitzGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzNode {
@@ -504,45 +504,45 @@ pub fn finance_portfolio_markowitz_node_make(size : Int) -> Financeportfoliomark
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_node_len(s : FinanceportfoliomarkowitzNode) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzNode::len(self : FinanceportfoliomarkowitzNode) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_node_get(s : FinanceportfoliomarkowitzNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzNode::get(self : FinanceportfoliomarkowitzNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_node_set(s : FinanceportfoliomarkowitzNode, i : Int, v : Double) -> FinanceportfoliomarkowitzNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzNode::set(self : FinanceportfoliomarkowitzNode, i : Int, v : Double) -> FinanceportfoliomarkowitzNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_node_sum(s : FinanceportfoliomarkowitzNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzNode::sum(self : FinanceportfoliomarkowitzNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_node_mean(s : FinanceportfoliomarkowitzNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzNode::mean(self : FinanceportfoliomarkowitzNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_node_scale(s : FinanceportfoliomarkowitzNode, f : Double) -> FinanceportfoliomarkowitzNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzNode::scale(self : FinanceportfoliomarkowitzNode, f : Double) -> FinanceportfoliomarkowitzNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_node_add(a : FinanceportfoliomarkowitzNode, b : FinanceportfoliomarkowitzNode) -> FinanceportfoliomarkowitzNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzNode::add(self : FinanceportfoliomarkowitzNode, other : FinanceportfoliomarkowitzNode) -> FinanceportfoliomarkowitzNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_node_copy(s : FinanceportfoliomarkowitzNode) -> FinanceportfoliomarkowitzNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzNode::copy(self : FinanceportfoliomarkowitzNode) -> FinanceportfoliomarkowitzNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_node_fill(s : FinanceportfoliomarkowitzNode, v : Double) -> FinanceportfoliomarkowitzNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzNode::fill(self : FinanceportfoliomarkowitzNode, v : Double) -> FinanceportfoliomarkowitzNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_node_min(s : FinanceportfoliomarkowitzNode) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzNode::min(self : FinanceportfoliomarkowitzNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_node_max(s : FinanceportfoliomarkowitzNode) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzNode::max(self : FinanceportfoliomarkowitzNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_node_to_string(s : FinanceportfoliomarkowitzNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzNode::to_string(self : FinanceportfoliomarkowitzNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzEdge {
@@ -555,45 +555,45 @@ pub fn finance_portfolio_markowitz_edge_make(size : Int) -> Financeportfoliomark
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_edge_len(s : FinanceportfoliomarkowitzEdge) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzEdge::len(self : FinanceportfoliomarkowitzEdge) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_edge_get(s : FinanceportfoliomarkowitzEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzEdge::get(self : FinanceportfoliomarkowitzEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_edge_set(s : FinanceportfoliomarkowitzEdge, i : Int, v : Double) -> FinanceportfoliomarkowitzEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzEdge::set(self : FinanceportfoliomarkowitzEdge, i : Int, v : Double) -> FinanceportfoliomarkowitzEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_edge_sum(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzEdge::sum(self : FinanceportfoliomarkowitzEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_edge_mean(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzEdge::mean(self : FinanceportfoliomarkowitzEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_edge_scale(s : FinanceportfoliomarkowitzEdge, f : Double) -> FinanceportfoliomarkowitzEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzEdge::scale(self : FinanceportfoliomarkowitzEdge, f : Double) -> FinanceportfoliomarkowitzEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_edge_add(a : FinanceportfoliomarkowitzEdge, b : FinanceportfoliomarkowitzEdge) -> FinanceportfoliomarkowitzEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzEdge::add(self : FinanceportfoliomarkowitzEdge, other : FinanceportfoliomarkowitzEdge) -> FinanceportfoliomarkowitzEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_edge_copy(s : FinanceportfoliomarkowitzEdge) -> FinanceportfoliomarkowitzEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzEdge::copy(self : FinanceportfoliomarkowitzEdge) -> FinanceportfoliomarkowitzEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_edge_fill(s : FinanceportfoliomarkowitzEdge, v : Double) -> FinanceportfoliomarkowitzEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzEdge::fill(self : FinanceportfoliomarkowitzEdge, v : Double) -> FinanceportfoliomarkowitzEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_edge_min(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzEdge::min(self : FinanceportfoliomarkowitzEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_edge_max(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzEdge::max(self : FinanceportfoliomarkowitzEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_edge_to_string(s : FinanceportfoliomarkowitzEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzEdge::to_string(self : FinanceportfoliomarkowitzEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzPath {
@@ -606,45 +606,45 @@ pub fn finance_portfolio_markowitz_path_make(size : Int) -> Financeportfoliomark
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_path_len(s : FinanceportfoliomarkowitzPath) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzPath::len(self : FinanceportfoliomarkowitzPath) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_path_get(s : FinanceportfoliomarkowitzPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzPath::get(self : FinanceportfoliomarkowitzPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_path_set(s : FinanceportfoliomarkowitzPath, i : Int, v : Double) -> FinanceportfoliomarkowitzPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzPath::set(self : FinanceportfoliomarkowitzPath, i : Int, v : Double) -> FinanceportfoliomarkowitzPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_path_sum(s : FinanceportfoliomarkowitzPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzPath::sum(self : FinanceportfoliomarkowitzPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_path_mean(s : FinanceportfoliomarkowitzPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzPath::mean(self : FinanceportfoliomarkowitzPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_path_scale(s : FinanceportfoliomarkowitzPath, f : Double) -> FinanceportfoliomarkowitzPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzPath::scale(self : FinanceportfoliomarkowitzPath, f : Double) -> FinanceportfoliomarkowitzPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_path_add(a : FinanceportfoliomarkowitzPath, b : FinanceportfoliomarkowitzPath) -> FinanceportfoliomarkowitzPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzPath::add(self : FinanceportfoliomarkowitzPath, other : FinanceportfoliomarkowitzPath) -> FinanceportfoliomarkowitzPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_path_copy(s : FinanceportfoliomarkowitzPath) -> FinanceportfoliomarkowitzPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzPath::copy(self : FinanceportfoliomarkowitzPath) -> FinanceportfoliomarkowitzPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_path_fill(s : FinanceportfoliomarkowitzPath, v : Double) -> FinanceportfoliomarkowitzPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzPath::fill(self : FinanceportfoliomarkowitzPath, v : Double) -> FinanceportfoliomarkowitzPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_path_min(s : FinanceportfoliomarkowitzPath) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzPath::min(self : FinanceportfoliomarkowitzPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_path_max(s : FinanceportfoliomarkowitzPath) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzPath::max(self : FinanceportfoliomarkowitzPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_path_to_string(s : FinanceportfoliomarkowitzPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzPath::to_string(self : FinanceportfoliomarkowitzPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzCluster {
@@ -657,45 +657,45 @@ pub fn finance_portfolio_markowitz_cluster_make(size : Int) -> Financeportfoliom
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_cluster_len(s : FinanceportfoliomarkowitzCluster) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzCluster::len(self : FinanceportfoliomarkowitzCluster) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_cluster_get(s : FinanceportfoliomarkowitzCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzCluster::get(self : FinanceportfoliomarkowitzCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_cluster_set(s : FinanceportfoliomarkowitzCluster, i : Int, v : Double) -> FinanceportfoliomarkowitzCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCluster::set(self : FinanceportfoliomarkowitzCluster, i : Int, v : Double) -> FinanceportfoliomarkowitzCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cluster_sum(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzCluster::sum(self : FinanceportfoliomarkowitzCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_cluster_mean(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzCluster::mean(self : FinanceportfoliomarkowitzCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_cluster_scale(s : FinanceportfoliomarkowitzCluster, f : Double) -> FinanceportfoliomarkowitzCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCluster::scale(self : FinanceportfoliomarkowitzCluster, f : Double) -> FinanceportfoliomarkowitzCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cluster_add(a : FinanceportfoliomarkowitzCluster, b : FinanceportfoliomarkowitzCluster) -> FinanceportfoliomarkowitzCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzCluster::add(self : FinanceportfoliomarkowitzCluster, other : FinanceportfoliomarkowitzCluster) -> FinanceportfoliomarkowitzCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cluster_copy(s : FinanceportfoliomarkowitzCluster) -> FinanceportfoliomarkowitzCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCluster::copy(self : FinanceportfoliomarkowitzCluster) -> FinanceportfoliomarkowitzCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cluster_fill(s : FinanceportfoliomarkowitzCluster, v : Double) -> FinanceportfoliomarkowitzCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCluster::fill(self : FinanceportfoliomarkowitzCluster, v : Double) -> FinanceportfoliomarkowitzCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cluster_min(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzCluster::min(self : FinanceportfoliomarkowitzCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_cluster_max(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzCluster::max(self : FinanceportfoliomarkowitzCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_cluster_to_string(s : FinanceportfoliomarkowitzCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzCluster::to_string(self : FinanceportfoliomarkowitzCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzModel {
@@ -708,45 +708,45 @@ pub fn finance_portfolio_markowitz_model_make(size : Int) -> Financeportfoliomar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_model_len(s : FinanceportfoliomarkowitzModel) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzModel::len(self : FinanceportfoliomarkowitzModel) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_model_get(s : FinanceportfoliomarkowitzModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzModel::get(self : FinanceportfoliomarkowitzModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_model_set(s : FinanceportfoliomarkowitzModel, i : Int, v : Double) -> FinanceportfoliomarkowitzModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzModel::set(self : FinanceportfoliomarkowitzModel, i : Int, v : Double) -> FinanceportfoliomarkowitzModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_model_sum(s : FinanceportfoliomarkowitzModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzModel::sum(self : FinanceportfoliomarkowitzModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_model_mean(s : FinanceportfoliomarkowitzModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzModel::mean(self : FinanceportfoliomarkowitzModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_model_scale(s : FinanceportfoliomarkowitzModel, f : Double) -> FinanceportfoliomarkowitzModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzModel::scale(self : FinanceportfoliomarkowitzModel, f : Double) -> FinanceportfoliomarkowitzModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_model_add(a : FinanceportfoliomarkowitzModel, b : FinanceportfoliomarkowitzModel) -> FinanceportfoliomarkowitzModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzModel::add(self : FinanceportfoliomarkowitzModel, other : FinanceportfoliomarkowitzModel) -> FinanceportfoliomarkowitzModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_model_copy(s : FinanceportfoliomarkowitzModel) -> FinanceportfoliomarkowitzModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzModel::copy(self : FinanceportfoliomarkowitzModel) -> FinanceportfoliomarkowitzModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_model_fill(s : FinanceportfoliomarkowitzModel, v : Double) -> FinanceportfoliomarkowitzModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzModel::fill(self : FinanceportfoliomarkowitzModel, v : Double) -> FinanceportfoliomarkowitzModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_model_min(s : FinanceportfoliomarkowitzModel) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzModel::min(self : FinanceportfoliomarkowitzModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_model_max(s : FinanceportfoliomarkowitzModel) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzModel::max(self : FinanceportfoliomarkowitzModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_model_to_string(s : FinanceportfoliomarkowitzModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzModel::to_string(self : FinanceportfoliomarkowitzModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzLayer {
@@ -759,45 +759,45 @@ pub fn finance_portfolio_markowitz_layer_make(size : Int) -> Financeportfoliomar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_layer_len(s : FinanceportfoliomarkowitzLayer) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzLayer::len(self : FinanceportfoliomarkowitzLayer) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_layer_get(s : FinanceportfoliomarkowitzLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzLayer::get(self : FinanceportfoliomarkowitzLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_layer_set(s : FinanceportfoliomarkowitzLayer, i : Int, v : Double) -> FinanceportfoliomarkowitzLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzLayer::set(self : FinanceportfoliomarkowitzLayer, i : Int, v : Double) -> FinanceportfoliomarkowitzLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_layer_sum(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzLayer::sum(self : FinanceportfoliomarkowitzLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_layer_mean(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzLayer::mean(self : FinanceportfoliomarkowitzLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_layer_scale(s : FinanceportfoliomarkowitzLayer, f : Double) -> FinanceportfoliomarkowitzLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzLayer::scale(self : FinanceportfoliomarkowitzLayer, f : Double) -> FinanceportfoliomarkowitzLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_layer_add(a : FinanceportfoliomarkowitzLayer, b : FinanceportfoliomarkowitzLayer) -> FinanceportfoliomarkowitzLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzLayer::add(self : FinanceportfoliomarkowitzLayer, other : FinanceportfoliomarkowitzLayer) -> FinanceportfoliomarkowitzLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_layer_copy(s : FinanceportfoliomarkowitzLayer) -> FinanceportfoliomarkowitzLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzLayer::copy(self : FinanceportfoliomarkowitzLayer) -> FinanceportfoliomarkowitzLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_layer_fill(s : FinanceportfoliomarkowitzLayer, v : Double) -> FinanceportfoliomarkowitzLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzLayer::fill(self : FinanceportfoliomarkowitzLayer, v : Double) -> FinanceportfoliomarkowitzLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_layer_min(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzLayer::min(self : FinanceportfoliomarkowitzLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_layer_max(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzLayer::max(self : FinanceportfoliomarkowitzLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_layer_to_string(s : FinanceportfoliomarkowitzLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzLayer::to_string(self : FinanceportfoliomarkowitzLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzBuffer {
@@ -810,45 +810,45 @@ pub fn finance_portfolio_markowitz_buffer_make(size : Int) -> Financeportfolioma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_buffer_len(s : FinanceportfoliomarkowitzBuffer) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzBuffer::len(self : FinanceportfoliomarkowitzBuffer) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_buffer_get(s : FinanceportfoliomarkowitzBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzBuffer::get(self : FinanceportfoliomarkowitzBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_buffer_set(s : FinanceportfoliomarkowitzBuffer, i : Int, v : Double) -> FinanceportfoliomarkowitzBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzBuffer::set(self : FinanceportfoliomarkowitzBuffer, i : Int, v : Double) -> FinanceportfoliomarkowitzBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_buffer_sum(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzBuffer::sum(self : FinanceportfoliomarkowitzBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_buffer_mean(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzBuffer::mean(self : FinanceportfoliomarkowitzBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_buffer_scale(s : FinanceportfoliomarkowitzBuffer, f : Double) -> FinanceportfoliomarkowitzBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzBuffer::scale(self : FinanceportfoliomarkowitzBuffer, f : Double) -> FinanceportfoliomarkowitzBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_buffer_add(a : FinanceportfoliomarkowitzBuffer, b : FinanceportfoliomarkowitzBuffer) -> FinanceportfoliomarkowitzBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzBuffer::add(self : FinanceportfoliomarkowitzBuffer, other : FinanceportfoliomarkowitzBuffer) -> FinanceportfoliomarkowitzBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_buffer_copy(s : FinanceportfoliomarkowitzBuffer) -> FinanceportfoliomarkowitzBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzBuffer::copy(self : FinanceportfoliomarkowitzBuffer) -> FinanceportfoliomarkowitzBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_buffer_fill(s : FinanceportfoliomarkowitzBuffer, v : Double) -> FinanceportfoliomarkowitzBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzBuffer::fill(self : FinanceportfoliomarkowitzBuffer, v : Double) -> FinanceportfoliomarkowitzBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_buffer_min(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzBuffer::min(self : FinanceportfoliomarkowitzBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_buffer_max(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzBuffer::max(self : FinanceportfoliomarkowitzBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_buffer_to_string(s : FinanceportfoliomarkowitzBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzBuffer::to_string(self : FinanceportfoliomarkowitzBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzCursor {
@@ -861,45 +861,45 @@ pub fn finance_portfolio_markowitz_cursor_make(size : Int) -> Financeportfolioma
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_cursor_len(s : FinanceportfoliomarkowitzCursor) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzCursor::len(self : FinanceportfoliomarkowitzCursor) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_cursor_get(s : FinanceportfoliomarkowitzCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzCursor::get(self : FinanceportfoliomarkowitzCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_cursor_set(s : FinanceportfoliomarkowitzCursor, i : Int, v : Double) -> FinanceportfoliomarkowitzCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCursor::set(self : FinanceportfoliomarkowitzCursor, i : Int, v : Double) -> FinanceportfoliomarkowitzCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cursor_sum(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzCursor::sum(self : FinanceportfoliomarkowitzCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_cursor_mean(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzCursor::mean(self : FinanceportfoliomarkowitzCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_cursor_scale(s : FinanceportfoliomarkowitzCursor, f : Double) -> FinanceportfoliomarkowitzCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCursor::scale(self : FinanceportfoliomarkowitzCursor, f : Double) -> FinanceportfoliomarkowitzCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cursor_add(a : FinanceportfoliomarkowitzCursor, b : FinanceportfoliomarkowitzCursor) -> FinanceportfoliomarkowitzCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzCursor::add(self : FinanceportfoliomarkowitzCursor, other : FinanceportfoliomarkowitzCursor) -> FinanceportfoliomarkowitzCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cursor_copy(s : FinanceportfoliomarkowitzCursor) -> FinanceportfoliomarkowitzCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCursor::copy(self : FinanceportfoliomarkowitzCursor) -> FinanceportfoliomarkowitzCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cursor_fill(s : FinanceportfoliomarkowitzCursor, v : Double) -> FinanceportfoliomarkowitzCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzCursor::fill(self : FinanceportfoliomarkowitzCursor, v : Double) -> FinanceportfoliomarkowitzCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_cursor_min(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzCursor::min(self : FinanceportfoliomarkowitzCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_cursor_max(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzCursor::max(self : FinanceportfoliomarkowitzCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_cursor_to_string(s : FinanceportfoliomarkowitzCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzCursor::to_string(self : FinanceportfoliomarkowitzCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzView {
@@ -912,45 +912,45 @@ pub fn finance_portfolio_markowitz_view_make(size : Int) -> Financeportfoliomark
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_view_len(s : FinanceportfoliomarkowitzView) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzView::len(self : FinanceportfoliomarkowitzView) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_view_get(s : FinanceportfoliomarkowitzView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzView::get(self : FinanceportfoliomarkowitzView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_view_set(s : FinanceportfoliomarkowitzView, i : Int, v : Double) -> FinanceportfoliomarkowitzView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzView::set(self : FinanceportfoliomarkowitzView, i : Int, v : Double) -> FinanceportfoliomarkowitzView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_view_sum(s : FinanceportfoliomarkowitzView) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzView::sum(self : FinanceportfoliomarkowitzView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_view_mean(s : FinanceportfoliomarkowitzView) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzView::mean(self : FinanceportfoliomarkowitzView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_view_scale(s : FinanceportfoliomarkowitzView, f : Double) -> FinanceportfoliomarkowitzView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzView::scale(self : FinanceportfoliomarkowitzView, f : Double) -> FinanceportfoliomarkowitzView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_view_add(a : FinanceportfoliomarkowitzView, b : FinanceportfoliomarkowitzView) -> FinanceportfoliomarkowitzView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzView::add(self : FinanceportfoliomarkowitzView, other : FinanceportfoliomarkowitzView) -> FinanceportfoliomarkowitzView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_view_copy(s : FinanceportfoliomarkowitzView) -> FinanceportfoliomarkowitzView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzView::copy(self : FinanceportfoliomarkowitzView) -> FinanceportfoliomarkowitzView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_view_fill(s : FinanceportfoliomarkowitzView, v : Double) -> FinanceportfoliomarkowitzView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzView::fill(self : FinanceportfoliomarkowitzView, v : Double) -> FinanceportfoliomarkowitzView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_view_min(s : FinanceportfoliomarkowitzView) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzView::min(self : FinanceportfoliomarkowitzView) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_view_max(s : FinanceportfoliomarkowitzView) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzView::max(self : FinanceportfoliomarkowitzView) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_view_to_string(s : FinanceportfoliomarkowitzView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzView::to_string(self : FinanceportfoliomarkowitzView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzRange {
@@ -963,45 +963,45 @@ pub fn finance_portfolio_markowitz_range_make(size : Int) -> Financeportfoliomar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_range_len(s : FinanceportfoliomarkowitzRange) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzRange::len(self : FinanceportfoliomarkowitzRange) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_range_get(s : FinanceportfoliomarkowitzRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzRange::get(self : FinanceportfoliomarkowitzRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_range_set(s : FinanceportfoliomarkowitzRange, i : Int, v : Double) -> FinanceportfoliomarkowitzRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzRange::set(self : FinanceportfoliomarkowitzRange, i : Int, v : Double) -> FinanceportfoliomarkowitzRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_range_sum(s : FinanceportfoliomarkowitzRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzRange::sum(self : FinanceportfoliomarkowitzRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_range_mean(s : FinanceportfoliomarkowitzRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzRange::mean(self : FinanceportfoliomarkowitzRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_range_scale(s : FinanceportfoliomarkowitzRange, f : Double) -> FinanceportfoliomarkowitzRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzRange::scale(self : FinanceportfoliomarkowitzRange, f : Double) -> FinanceportfoliomarkowitzRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_range_add(a : FinanceportfoliomarkowitzRange, b : FinanceportfoliomarkowitzRange) -> FinanceportfoliomarkowitzRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzRange::add(self : FinanceportfoliomarkowitzRange, other : FinanceportfoliomarkowitzRange) -> FinanceportfoliomarkowitzRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_range_copy(s : FinanceportfoliomarkowitzRange) -> FinanceportfoliomarkowitzRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzRange::copy(self : FinanceportfoliomarkowitzRange) -> FinanceportfoliomarkowitzRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_range_fill(s : FinanceportfoliomarkowitzRange, v : Double) -> FinanceportfoliomarkowitzRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzRange::fill(self : FinanceportfoliomarkowitzRange, v : Double) -> FinanceportfoliomarkowitzRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_range_min(s : FinanceportfoliomarkowitzRange) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzRange::min(self : FinanceportfoliomarkowitzRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_range_max(s : FinanceportfoliomarkowitzRange) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzRange::max(self : FinanceportfoliomarkowitzRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_range_to_string(s : FinanceportfoliomarkowitzRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzRange::to_string(self : FinanceportfoliomarkowitzRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfoliomarkowitzSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_portfolio_markowitz_slice_make(size : Int) -> Financeportfoliomar
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_markowitz_slice_len(s : FinanceportfoliomarkowitzSlice) -> Int { s.size }
+pub fn FinanceportfoliomarkowitzSlice::len(self : FinanceportfoliomarkowitzSlice) -> Int { self.size }
 
-pub fn finance_portfolio_markowitz_slice_get(s : FinanceportfoliomarkowitzSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfoliomarkowitzSlice::get(self : FinanceportfoliomarkowitzSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_markowitz_slice_set(s : FinanceportfoliomarkowitzSlice, i : Int, v : Double) -> FinanceportfoliomarkowitzSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzSlice::set(self : FinanceportfoliomarkowitzSlice, i : Int, v : Double) -> FinanceportfoliomarkowitzSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_slice_sum(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfoliomarkowitzSlice::sum(self : FinanceportfoliomarkowitzSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_markowitz_slice_mean(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfoliomarkowitzSlice::mean(self : FinanceportfoliomarkowitzSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_markowitz_slice_scale(s : FinanceportfoliomarkowitzSlice, f : Double) -> FinanceportfoliomarkowitzSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzSlice::scale(self : FinanceportfoliomarkowitzSlice, f : Double) -> FinanceportfoliomarkowitzSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_slice_add(a : FinanceportfoliomarkowitzSlice, b : FinanceportfoliomarkowitzSlice) -> FinanceportfoliomarkowitzSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfoliomarkowitzSlice::add(self : FinanceportfoliomarkowitzSlice, other : FinanceportfoliomarkowitzSlice) -> FinanceportfoliomarkowitzSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_slice_copy(s : FinanceportfoliomarkowitzSlice) -> FinanceportfoliomarkowitzSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzSlice::copy(self : FinanceportfoliomarkowitzSlice) -> FinanceportfoliomarkowitzSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_slice_fill(s : FinanceportfoliomarkowitzSlice, v : Double) -> FinanceportfoliomarkowitzSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfoliomarkowitzSlice::fill(self : FinanceportfoliomarkowitzSlice, v : Double) -> FinanceportfoliomarkowitzSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_markowitz_slice_min(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceportfoliomarkowitzSlice::min(self : FinanceportfoliomarkowitzSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_markowitz_slice_max(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceportfoliomarkowitzSlice::max(self : FinanceportfoliomarkowitzSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_markowitz_slice_to_string(s : FinanceportfoliomarkowitzSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfoliomarkowitzSlice::to_string(self : FinanceportfoliomarkowitzSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

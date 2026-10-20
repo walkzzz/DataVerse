@@ -351,45 +351,45 @@ pub fn sort_hybrid_introsort_frame_make(size : Int) -> SorthybridintrosortFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_frame_len(s : SorthybridintrosortFrame) -> Int { s.size }
+pub fn SorthybridintrosortFrame::len(self : SorthybridintrosortFrame) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_frame_get(s : SorthybridintrosortFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortFrame::get(self : SorthybridintrosortFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_frame_set(s : SorthybridintrosortFrame, i : Int, v : Double) -> SorthybridintrosortFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortFrame::set(self : SorthybridintrosortFrame, i : Int, v : Double) -> SorthybridintrosortFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_frame_sum(s : SorthybridintrosortFrame) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortFrame::sum(self : SorthybridintrosortFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_frame_mean(s : SorthybridintrosortFrame) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortFrame::mean(self : SorthybridintrosortFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_frame_scale(s : SorthybridintrosortFrame, f : Double) -> SorthybridintrosortFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortFrame::scale(self : SorthybridintrosortFrame, f : Double) -> SorthybridintrosortFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_frame_add(a : SorthybridintrosortFrame, b : SorthybridintrosortFrame) -> SorthybridintrosortFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortFrame::add(self : SorthybridintrosortFrame, other : SorthybridintrosortFrame) -> SorthybridintrosortFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_frame_copy(s : SorthybridintrosortFrame) -> SorthybridintrosortFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortFrame::copy(self : SorthybridintrosortFrame) -> SorthybridintrosortFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_frame_fill(s : SorthybridintrosortFrame, v : Double) -> SorthybridintrosortFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortFrame::fill(self : SorthybridintrosortFrame, v : Double) -> SorthybridintrosortFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_frame_min(s : SorthybridintrosortFrame) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortFrame::min(self : SorthybridintrosortFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_frame_max(s : SorthybridintrosortFrame) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortFrame::max(self : SorthybridintrosortFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_frame_to_string(s : SorthybridintrosortFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortFrame::to_string(self : SorthybridintrosortFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortTable {
@@ -402,45 +402,45 @@ pub fn sort_hybrid_introsort_table_make(size : Int) -> SorthybridintrosortTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_table_len(s : SorthybridintrosortTable) -> Int { s.size }
+pub fn SorthybridintrosortTable::len(self : SorthybridintrosortTable) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_table_get(s : SorthybridintrosortTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortTable::get(self : SorthybridintrosortTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_table_set(s : SorthybridintrosortTable, i : Int, v : Double) -> SorthybridintrosortTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortTable::set(self : SorthybridintrosortTable, i : Int, v : Double) -> SorthybridintrosortTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_table_sum(s : SorthybridintrosortTable) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortTable::sum(self : SorthybridintrosortTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_table_mean(s : SorthybridintrosortTable) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortTable::mean(self : SorthybridintrosortTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_table_scale(s : SorthybridintrosortTable, f : Double) -> SorthybridintrosortTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortTable::scale(self : SorthybridintrosortTable, f : Double) -> SorthybridintrosortTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_table_add(a : SorthybridintrosortTable, b : SorthybridintrosortTable) -> SorthybridintrosortTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortTable::add(self : SorthybridintrosortTable, other : SorthybridintrosortTable) -> SorthybridintrosortTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_table_copy(s : SorthybridintrosortTable) -> SorthybridintrosortTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortTable::copy(self : SorthybridintrosortTable) -> SorthybridintrosortTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_table_fill(s : SorthybridintrosortTable, v : Double) -> SorthybridintrosortTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortTable::fill(self : SorthybridintrosortTable, v : Double) -> SorthybridintrosortTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_table_min(s : SorthybridintrosortTable) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortTable::min(self : SorthybridintrosortTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_table_max(s : SorthybridintrosortTable) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortTable::max(self : SorthybridintrosortTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_table_to_string(s : SorthybridintrosortTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortTable::to_string(self : SorthybridintrosortTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortGraphN {
@@ -453,45 +453,45 @@ pub fn sort_hybrid_introsort_graphn_make(size : Int) -> SorthybridintrosortGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_graphn_len(s : SorthybridintrosortGraphN) -> Int { s.size }
+pub fn SorthybridintrosortGraphN::len(self : SorthybridintrosortGraphN) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_graphn_get(s : SorthybridintrosortGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortGraphN::get(self : SorthybridintrosortGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_graphn_set(s : SorthybridintrosortGraphN, i : Int, v : Double) -> SorthybridintrosortGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortGraphN::set(self : SorthybridintrosortGraphN, i : Int, v : Double) -> SorthybridintrosortGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_graphn_sum(s : SorthybridintrosortGraphN) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortGraphN::sum(self : SorthybridintrosortGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_graphn_mean(s : SorthybridintrosortGraphN) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortGraphN::mean(self : SorthybridintrosortGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_graphn_scale(s : SorthybridintrosortGraphN, f : Double) -> SorthybridintrosortGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortGraphN::scale(self : SorthybridintrosortGraphN, f : Double) -> SorthybridintrosortGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_graphn_add(a : SorthybridintrosortGraphN, b : SorthybridintrosortGraphN) -> SorthybridintrosortGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortGraphN::add(self : SorthybridintrosortGraphN, other : SorthybridintrosortGraphN) -> SorthybridintrosortGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_graphn_copy(s : SorthybridintrosortGraphN) -> SorthybridintrosortGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortGraphN::copy(self : SorthybridintrosortGraphN) -> SorthybridintrosortGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_graphn_fill(s : SorthybridintrosortGraphN, v : Double) -> SorthybridintrosortGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortGraphN::fill(self : SorthybridintrosortGraphN, v : Double) -> SorthybridintrosortGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_graphn_min(s : SorthybridintrosortGraphN) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortGraphN::min(self : SorthybridintrosortGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_graphn_max(s : SorthybridintrosortGraphN) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortGraphN::max(self : SorthybridintrosortGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_graphn_to_string(s : SorthybridintrosortGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortGraphN::to_string(self : SorthybridintrosortGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortNode {
@@ -504,45 +504,45 @@ pub fn sort_hybrid_introsort_node_make(size : Int) -> SorthybridintrosortNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_node_len(s : SorthybridintrosortNode) -> Int { s.size }
+pub fn SorthybridintrosortNode::len(self : SorthybridintrosortNode) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_node_get(s : SorthybridintrosortNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortNode::get(self : SorthybridintrosortNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_node_set(s : SorthybridintrosortNode, i : Int, v : Double) -> SorthybridintrosortNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortNode::set(self : SorthybridintrosortNode, i : Int, v : Double) -> SorthybridintrosortNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_node_sum(s : SorthybridintrosortNode) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortNode::sum(self : SorthybridintrosortNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_node_mean(s : SorthybridintrosortNode) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortNode::mean(self : SorthybridintrosortNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_node_scale(s : SorthybridintrosortNode, f : Double) -> SorthybridintrosortNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortNode::scale(self : SorthybridintrosortNode, f : Double) -> SorthybridintrosortNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_node_add(a : SorthybridintrosortNode, b : SorthybridintrosortNode) -> SorthybridintrosortNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortNode::add(self : SorthybridintrosortNode, other : SorthybridintrosortNode) -> SorthybridintrosortNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_node_copy(s : SorthybridintrosortNode) -> SorthybridintrosortNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortNode::copy(self : SorthybridintrosortNode) -> SorthybridintrosortNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_node_fill(s : SorthybridintrosortNode, v : Double) -> SorthybridintrosortNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortNode::fill(self : SorthybridintrosortNode, v : Double) -> SorthybridintrosortNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_node_min(s : SorthybridintrosortNode) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortNode::min(self : SorthybridintrosortNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_node_max(s : SorthybridintrosortNode) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortNode::max(self : SorthybridintrosortNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_node_to_string(s : SorthybridintrosortNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortNode::to_string(self : SorthybridintrosortNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortEdge {
@@ -555,45 +555,45 @@ pub fn sort_hybrid_introsort_edge_make(size : Int) -> SorthybridintrosortEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_edge_len(s : SorthybridintrosortEdge) -> Int { s.size }
+pub fn SorthybridintrosortEdge::len(self : SorthybridintrosortEdge) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_edge_get(s : SorthybridintrosortEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortEdge::get(self : SorthybridintrosortEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_edge_set(s : SorthybridintrosortEdge, i : Int, v : Double) -> SorthybridintrosortEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortEdge::set(self : SorthybridintrosortEdge, i : Int, v : Double) -> SorthybridintrosortEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_edge_sum(s : SorthybridintrosortEdge) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortEdge::sum(self : SorthybridintrosortEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_edge_mean(s : SorthybridintrosortEdge) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortEdge::mean(self : SorthybridintrosortEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_edge_scale(s : SorthybridintrosortEdge, f : Double) -> SorthybridintrosortEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortEdge::scale(self : SorthybridintrosortEdge, f : Double) -> SorthybridintrosortEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_edge_add(a : SorthybridintrosortEdge, b : SorthybridintrosortEdge) -> SorthybridintrosortEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortEdge::add(self : SorthybridintrosortEdge, other : SorthybridintrosortEdge) -> SorthybridintrosortEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_edge_copy(s : SorthybridintrosortEdge) -> SorthybridintrosortEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortEdge::copy(self : SorthybridintrosortEdge) -> SorthybridintrosortEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_edge_fill(s : SorthybridintrosortEdge, v : Double) -> SorthybridintrosortEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortEdge::fill(self : SorthybridintrosortEdge, v : Double) -> SorthybridintrosortEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_edge_min(s : SorthybridintrosortEdge) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortEdge::min(self : SorthybridintrosortEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_edge_max(s : SorthybridintrosortEdge) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortEdge::max(self : SorthybridintrosortEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_edge_to_string(s : SorthybridintrosortEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortEdge::to_string(self : SorthybridintrosortEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortPath {
@@ -606,45 +606,45 @@ pub fn sort_hybrid_introsort_path_make(size : Int) -> SorthybridintrosortPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_path_len(s : SorthybridintrosortPath) -> Int { s.size }
+pub fn SorthybridintrosortPath::len(self : SorthybridintrosortPath) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_path_get(s : SorthybridintrosortPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortPath::get(self : SorthybridintrosortPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_path_set(s : SorthybridintrosortPath, i : Int, v : Double) -> SorthybridintrosortPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortPath::set(self : SorthybridintrosortPath, i : Int, v : Double) -> SorthybridintrosortPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_path_sum(s : SorthybridintrosortPath) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortPath::sum(self : SorthybridintrosortPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_path_mean(s : SorthybridintrosortPath) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortPath::mean(self : SorthybridintrosortPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_path_scale(s : SorthybridintrosortPath, f : Double) -> SorthybridintrosortPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortPath::scale(self : SorthybridintrosortPath, f : Double) -> SorthybridintrosortPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_path_add(a : SorthybridintrosortPath, b : SorthybridintrosortPath) -> SorthybridintrosortPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortPath::add(self : SorthybridintrosortPath, other : SorthybridintrosortPath) -> SorthybridintrosortPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_path_copy(s : SorthybridintrosortPath) -> SorthybridintrosortPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortPath::copy(self : SorthybridintrosortPath) -> SorthybridintrosortPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_path_fill(s : SorthybridintrosortPath, v : Double) -> SorthybridintrosortPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortPath::fill(self : SorthybridintrosortPath, v : Double) -> SorthybridintrosortPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_path_min(s : SorthybridintrosortPath) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortPath::min(self : SorthybridintrosortPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_path_max(s : SorthybridintrosortPath) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortPath::max(self : SorthybridintrosortPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_path_to_string(s : SorthybridintrosortPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortPath::to_string(self : SorthybridintrosortPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortCluster {
@@ -657,45 +657,45 @@ pub fn sort_hybrid_introsort_cluster_make(size : Int) -> SorthybridintrosortClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_cluster_len(s : SorthybridintrosortCluster) -> Int { s.size }
+pub fn SorthybridintrosortCluster::len(self : SorthybridintrosortCluster) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_cluster_get(s : SorthybridintrosortCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortCluster::get(self : SorthybridintrosortCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_cluster_set(s : SorthybridintrosortCluster, i : Int, v : Double) -> SorthybridintrosortCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCluster::set(self : SorthybridintrosortCluster, i : Int, v : Double) -> SorthybridintrosortCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cluster_sum(s : SorthybridintrosortCluster) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortCluster::sum(self : SorthybridintrosortCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_cluster_mean(s : SorthybridintrosortCluster) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortCluster::mean(self : SorthybridintrosortCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_cluster_scale(s : SorthybridintrosortCluster, f : Double) -> SorthybridintrosortCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCluster::scale(self : SorthybridintrosortCluster, f : Double) -> SorthybridintrosortCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cluster_add(a : SorthybridintrosortCluster, b : SorthybridintrosortCluster) -> SorthybridintrosortCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortCluster::add(self : SorthybridintrosortCluster, other : SorthybridintrosortCluster) -> SorthybridintrosortCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cluster_copy(s : SorthybridintrosortCluster) -> SorthybridintrosortCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCluster::copy(self : SorthybridintrosortCluster) -> SorthybridintrosortCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cluster_fill(s : SorthybridintrosortCluster, v : Double) -> SorthybridintrosortCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCluster::fill(self : SorthybridintrosortCluster, v : Double) -> SorthybridintrosortCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cluster_min(s : SorthybridintrosortCluster) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortCluster::min(self : SorthybridintrosortCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_cluster_max(s : SorthybridintrosortCluster) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortCluster::max(self : SorthybridintrosortCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_cluster_to_string(s : SorthybridintrosortCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortCluster::to_string(self : SorthybridintrosortCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortModel {
@@ -708,45 +708,45 @@ pub fn sort_hybrid_introsort_model_make(size : Int) -> SorthybridintrosortModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_model_len(s : SorthybridintrosortModel) -> Int { s.size }
+pub fn SorthybridintrosortModel::len(self : SorthybridintrosortModel) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_model_get(s : SorthybridintrosortModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortModel::get(self : SorthybridintrosortModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_model_set(s : SorthybridintrosortModel, i : Int, v : Double) -> SorthybridintrosortModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortModel::set(self : SorthybridintrosortModel, i : Int, v : Double) -> SorthybridintrosortModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_model_sum(s : SorthybridintrosortModel) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortModel::sum(self : SorthybridintrosortModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_model_mean(s : SorthybridintrosortModel) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortModel::mean(self : SorthybridintrosortModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_model_scale(s : SorthybridintrosortModel, f : Double) -> SorthybridintrosortModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortModel::scale(self : SorthybridintrosortModel, f : Double) -> SorthybridintrosortModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_model_add(a : SorthybridintrosortModel, b : SorthybridintrosortModel) -> SorthybridintrosortModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortModel::add(self : SorthybridintrosortModel, other : SorthybridintrosortModel) -> SorthybridintrosortModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_model_copy(s : SorthybridintrosortModel) -> SorthybridintrosortModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortModel::copy(self : SorthybridintrosortModel) -> SorthybridintrosortModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_model_fill(s : SorthybridintrosortModel, v : Double) -> SorthybridintrosortModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortModel::fill(self : SorthybridintrosortModel, v : Double) -> SorthybridintrosortModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_model_min(s : SorthybridintrosortModel) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortModel::min(self : SorthybridintrosortModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_model_max(s : SorthybridintrosortModel) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortModel::max(self : SorthybridintrosortModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_model_to_string(s : SorthybridintrosortModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortModel::to_string(self : SorthybridintrosortModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortLayer {
@@ -759,45 +759,45 @@ pub fn sort_hybrid_introsort_layer_make(size : Int) -> SorthybridintrosortLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_layer_len(s : SorthybridintrosortLayer) -> Int { s.size }
+pub fn SorthybridintrosortLayer::len(self : SorthybridintrosortLayer) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_layer_get(s : SorthybridintrosortLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortLayer::get(self : SorthybridintrosortLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_layer_set(s : SorthybridintrosortLayer, i : Int, v : Double) -> SorthybridintrosortLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortLayer::set(self : SorthybridintrosortLayer, i : Int, v : Double) -> SorthybridintrosortLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_layer_sum(s : SorthybridintrosortLayer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortLayer::sum(self : SorthybridintrosortLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_layer_mean(s : SorthybridintrosortLayer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortLayer::mean(self : SorthybridintrosortLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_layer_scale(s : SorthybridintrosortLayer, f : Double) -> SorthybridintrosortLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortLayer::scale(self : SorthybridintrosortLayer, f : Double) -> SorthybridintrosortLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_layer_add(a : SorthybridintrosortLayer, b : SorthybridintrosortLayer) -> SorthybridintrosortLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortLayer::add(self : SorthybridintrosortLayer, other : SorthybridintrosortLayer) -> SorthybridintrosortLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_layer_copy(s : SorthybridintrosortLayer) -> SorthybridintrosortLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortLayer::copy(self : SorthybridintrosortLayer) -> SorthybridintrosortLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_layer_fill(s : SorthybridintrosortLayer, v : Double) -> SorthybridintrosortLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortLayer::fill(self : SorthybridintrosortLayer, v : Double) -> SorthybridintrosortLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_layer_min(s : SorthybridintrosortLayer) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortLayer::min(self : SorthybridintrosortLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_layer_max(s : SorthybridintrosortLayer) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortLayer::max(self : SorthybridintrosortLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_layer_to_string(s : SorthybridintrosortLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortLayer::to_string(self : SorthybridintrosortLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortBuffer {
@@ -810,45 +810,45 @@ pub fn sort_hybrid_introsort_buffer_make(size : Int) -> SorthybridintrosortBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_buffer_len(s : SorthybridintrosortBuffer) -> Int { s.size }
+pub fn SorthybridintrosortBuffer::len(self : SorthybridintrosortBuffer) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_buffer_get(s : SorthybridintrosortBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortBuffer::get(self : SorthybridintrosortBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_buffer_set(s : SorthybridintrosortBuffer, i : Int, v : Double) -> SorthybridintrosortBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortBuffer::set(self : SorthybridintrosortBuffer, i : Int, v : Double) -> SorthybridintrosortBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_buffer_sum(s : SorthybridintrosortBuffer) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortBuffer::sum(self : SorthybridintrosortBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_buffer_mean(s : SorthybridintrosortBuffer) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortBuffer::mean(self : SorthybridintrosortBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_buffer_scale(s : SorthybridintrosortBuffer, f : Double) -> SorthybridintrosortBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortBuffer::scale(self : SorthybridintrosortBuffer, f : Double) -> SorthybridintrosortBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_buffer_add(a : SorthybridintrosortBuffer, b : SorthybridintrosortBuffer) -> SorthybridintrosortBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortBuffer::add(self : SorthybridintrosortBuffer, other : SorthybridintrosortBuffer) -> SorthybridintrosortBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_buffer_copy(s : SorthybridintrosortBuffer) -> SorthybridintrosortBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortBuffer::copy(self : SorthybridintrosortBuffer) -> SorthybridintrosortBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_buffer_fill(s : SorthybridintrosortBuffer, v : Double) -> SorthybridintrosortBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortBuffer::fill(self : SorthybridintrosortBuffer, v : Double) -> SorthybridintrosortBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_buffer_min(s : SorthybridintrosortBuffer) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortBuffer::min(self : SorthybridintrosortBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_buffer_max(s : SorthybridintrosortBuffer) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortBuffer::max(self : SorthybridintrosortBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_buffer_to_string(s : SorthybridintrosortBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortBuffer::to_string(self : SorthybridintrosortBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortCursor {
@@ -861,45 +861,45 @@ pub fn sort_hybrid_introsort_cursor_make(size : Int) -> SorthybridintrosortCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_cursor_len(s : SorthybridintrosortCursor) -> Int { s.size }
+pub fn SorthybridintrosortCursor::len(self : SorthybridintrosortCursor) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_cursor_get(s : SorthybridintrosortCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortCursor::get(self : SorthybridintrosortCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_cursor_set(s : SorthybridintrosortCursor, i : Int, v : Double) -> SorthybridintrosortCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCursor::set(self : SorthybridintrosortCursor, i : Int, v : Double) -> SorthybridintrosortCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cursor_sum(s : SorthybridintrosortCursor) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortCursor::sum(self : SorthybridintrosortCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_cursor_mean(s : SorthybridintrosortCursor) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortCursor::mean(self : SorthybridintrosortCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_cursor_scale(s : SorthybridintrosortCursor, f : Double) -> SorthybridintrosortCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCursor::scale(self : SorthybridintrosortCursor, f : Double) -> SorthybridintrosortCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cursor_add(a : SorthybridintrosortCursor, b : SorthybridintrosortCursor) -> SorthybridintrosortCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortCursor::add(self : SorthybridintrosortCursor, other : SorthybridintrosortCursor) -> SorthybridintrosortCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cursor_copy(s : SorthybridintrosortCursor) -> SorthybridintrosortCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCursor::copy(self : SorthybridintrosortCursor) -> SorthybridintrosortCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cursor_fill(s : SorthybridintrosortCursor, v : Double) -> SorthybridintrosortCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortCursor::fill(self : SorthybridintrosortCursor, v : Double) -> SorthybridintrosortCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_cursor_min(s : SorthybridintrosortCursor) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortCursor::min(self : SorthybridintrosortCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_cursor_max(s : SorthybridintrosortCursor) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortCursor::max(self : SorthybridintrosortCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_cursor_to_string(s : SorthybridintrosortCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortCursor::to_string(self : SorthybridintrosortCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortView {
@@ -912,45 +912,45 @@ pub fn sort_hybrid_introsort_view_make(size : Int) -> SorthybridintrosortView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_view_len(s : SorthybridintrosortView) -> Int { s.size }
+pub fn SorthybridintrosortView::len(self : SorthybridintrosortView) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_view_get(s : SorthybridintrosortView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortView::get(self : SorthybridintrosortView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_view_set(s : SorthybridintrosortView, i : Int, v : Double) -> SorthybridintrosortView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortView::set(self : SorthybridintrosortView, i : Int, v : Double) -> SorthybridintrosortView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_view_sum(s : SorthybridintrosortView) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortView::sum(self : SorthybridintrosortView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_view_mean(s : SorthybridintrosortView) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortView::mean(self : SorthybridintrosortView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_view_scale(s : SorthybridintrosortView, f : Double) -> SorthybridintrosortView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortView::scale(self : SorthybridintrosortView, f : Double) -> SorthybridintrosortView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_view_add(a : SorthybridintrosortView, b : SorthybridintrosortView) -> SorthybridintrosortView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortView::add(self : SorthybridintrosortView, other : SorthybridintrosortView) -> SorthybridintrosortView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_view_copy(s : SorthybridintrosortView) -> SorthybridintrosortView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortView::copy(self : SorthybridintrosortView) -> SorthybridintrosortView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_view_fill(s : SorthybridintrosortView, v : Double) -> SorthybridintrosortView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortView::fill(self : SorthybridintrosortView, v : Double) -> SorthybridintrosortView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_view_min(s : SorthybridintrosortView) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortView::min(self : SorthybridintrosortView) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_view_max(s : SorthybridintrosortView) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortView::max(self : SorthybridintrosortView) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_view_to_string(s : SorthybridintrosortView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortView::to_string(self : SorthybridintrosortView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortRange {
@@ -963,45 +963,45 @@ pub fn sort_hybrid_introsort_range_make(size : Int) -> SorthybridintrosortRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_range_len(s : SorthybridintrosortRange) -> Int { s.size }
+pub fn SorthybridintrosortRange::len(self : SorthybridintrosortRange) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_range_get(s : SorthybridintrosortRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortRange::get(self : SorthybridintrosortRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_range_set(s : SorthybridintrosortRange, i : Int, v : Double) -> SorthybridintrosortRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortRange::set(self : SorthybridintrosortRange, i : Int, v : Double) -> SorthybridintrosortRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_range_sum(s : SorthybridintrosortRange) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortRange::sum(self : SorthybridintrosortRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_range_mean(s : SorthybridintrosortRange) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortRange::mean(self : SorthybridintrosortRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_range_scale(s : SorthybridintrosortRange, f : Double) -> SorthybridintrosortRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortRange::scale(self : SorthybridintrosortRange, f : Double) -> SorthybridintrosortRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_range_add(a : SorthybridintrosortRange, b : SorthybridintrosortRange) -> SorthybridintrosortRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortRange::add(self : SorthybridintrosortRange, other : SorthybridintrosortRange) -> SorthybridintrosortRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_range_copy(s : SorthybridintrosortRange) -> SorthybridintrosortRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortRange::copy(self : SorthybridintrosortRange) -> SorthybridintrosortRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_range_fill(s : SorthybridintrosortRange, v : Double) -> SorthybridintrosortRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortRange::fill(self : SorthybridintrosortRange, v : Double) -> SorthybridintrosortRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_range_min(s : SorthybridintrosortRange) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortRange::min(self : SorthybridintrosortRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_range_max(s : SorthybridintrosortRange) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortRange::max(self : SorthybridintrosortRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_range_to_string(s : SorthybridintrosortRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortRange::to_string(self : SorthybridintrosortRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SorthybridintrosortSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_hybrid_introsort_slice_make(size : Int) -> SorthybridintrosortSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_hybrid_introsort_slice_len(s : SorthybridintrosortSlice) -> Int { s.size }
+pub fn SorthybridintrosortSlice::len(self : SorthybridintrosortSlice) -> Int { self.size }
 
-pub fn sort_hybrid_introsort_slice_get(s : SorthybridintrosortSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SorthybridintrosortSlice::get(self : SorthybridintrosortSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_hybrid_introsort_slice_set(s : SorthybridintrosortSlice, i : Int, v : Double) -> SorthybridintrosortSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SorthybridintrosortSlice::set(self : SorthybridintrosortSlice, i : Int, v : Double) -> SorthybridintrosortSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_slice_sum(s : SorthybridintrosortSlice) -> Double { @_common.sum(s.data) }
+pub fn SorthybridintrosortSlice::sum(self : SorthybridintrosortSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_hybrid_introsort_slice_mean(s : SorthybridintrosortSlice) -> Double { @_common.mean(s.data) }
+pub fn SorthybridintrosortSlice::mean(self : SorthybridintrosortSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_hybrid_introsort_slice_scale(s : SorthybridintrosortSlice, f : Double) -> SorthybridintrosortSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortSlice::scale(self : SorthybridintrosortSlice, f : Double) -> SorthybridintrosortSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_slice_add(a : SorthybridintrosortSlice, b : SorthybridintrosortSlice) -> SorthybridintrosortSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SorthybridintrosortSlice::add(self : SorthybridintrosortSlice, other : SorthybridintrosortSlice) -> SorthybridintrosortSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_slice_copy(s : SorthybridintrosortSlice) -> SorthybridintrosortSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortSlice::copy(self : SorthybridintrosortSlice) -> SorthybridintrosortSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_slice_fill(s : SorthybridintrosortSlice, v : Double) -> SorthybridintrosortSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SorthybridintrosortSlice::fill(self : SorthybridintrosortSlice, v : Double) -> SorthybridintrosortSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_hybrid_introsort_slice_min(s : SorthybridintrosortSlice) -> Double { @_common.min(s.data) }
+pub fn SorthybridintrosortSlice::min(self : SorthybridintrosortSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_hybrid_introsort_slice_max(s : SorthybridintrosortSlice) -> Double { @_common.max(s.data) }
+pub fn SorthybridintrosortSlice::max(self : SorthybridintrosortSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_hybrid_introsort_slice_to_string(s : SorthybridintrosortSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SorthybridintrosortSlice::to_string(self : SorthybridintrosortSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

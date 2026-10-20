@@ -351,45 +351,45 @@ pub fn graph_tree_isomorphism_frame_make(size : Int) -> GraphtreeisomorphismFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_frame_len(s : GraphtreeisomorphismFrame) -> Int { s.size }
+pub fn GraphtreeisomorphismFrame::len(self : GraphtreeisomorphismFrame) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_frame_get(s : GraphtreeisomorphismFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismFrame::get(self : GraphtreeisomorphismFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_frame_set(s : GraphtreeisomorphismFrame, i : Int, v : Double) -> GraphtreeisomorphismFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismFrame::set(self : GraphtreeisomorphismFrame, i : Int, v : Double) -> GraphtreeisomorphismFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_frame_sum(s : GraphtreeisomorphismFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismFrame::sum(self : GraphtreeisomorphismFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_frame_mean(s : GraphtreeisomorphismFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismFrame::mean(self : GraphtreeisomorphismFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_frame_scale(s : GraphtreeisomorphismFrame, f : Double) -> GraphtreeisomorphismFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismFrame::scale(self : GraphtreeisomorphismFrame, f : Double) -> GraphtreeisomorphismFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_frame_add(a : GraphtreeisomorphismFrame, b : GraphtreeisomorphismFrame) -> GraphtreeisomorphismFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismFrame::add(self : GraphtreeisomorphismFrame, other : GraphtreeisomorphismFrame) -> GraphtreeisomorphismFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_frame_copy(s : GraphtreeisomorphismFrame) -> GraphtreeisomorphismFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismFrame::copy(self : GraphtreeisomorphismFrame) -> GraphtreeisomorphismFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_frame_fill(s : GraphtreeisomorphismFrame, v : Double) -> GraphtreeisomorphismFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismFrame::fill(self : GraphtreeisomorphismFrame, v : Double) -> GraphtreeisomorphismFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_frame_min(s : GraphtreeisomorphismFrame) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismFrame::min(self : GraphtreeisomorphismFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_frame_max(s : GraphtreeisomorphismFrame) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismFrame::max(self : GraphtreeisomorphismFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_frame_to_string(s : GraphtreeisomorphismFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismFrame::to_string(self : GraphtreeisomorphismFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismTable {
@@ -402,45 +402,45 @@ pub fn graph_tree_isomorphism_table_make(size : Int) -> GraphtreeisomorphismTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_table_len(s : GraphtreeisomorphismTable) -> Int { s.size }
+pub fn GraphtreeisomorphismTable::len(self : GraphtreeisomorphismTable) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_table_get(s : GraphtreeisomorphismTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismTable::get(self : GraphtreeisomorphismTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_table_set(s : GraphtreeisomorphismTable, i : Int, v : Double) -> GraphtreeisomorphismTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismTable::set(self : GraphtreeisomorphismTable, i : Int, v : Double) -> GraphtreeisomorphismTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_table_sum(s : GraphtreeisomorphismTable) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismTable::sum(self : GraphtreeisomorphismTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_table_mean(s : GraphtreeisomorphismTable) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismTable::mean(self : GraphtreeisomorphismTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_table_scale(s : GraphtreeisomorphismTable, f : Double) -> GraphtreeisomorphismTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismTable::scale(self : GraphtreeisomorphismTable, f : Double) -> GraphtreeisomorphismTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_table_add(a : GraphtreeisomorphismTable, b : GraphtreeisomorphismTable) -> GraphtreeisomorphismTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismTable::add(self : GraphtreeisomorphismTable, other : GraphtreeisomorphismTable) -> GraphtreeisomorphismTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_table_copy(s : GraphtreeisomorphismTable) -> GraphtreeisomorphismTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismTable::copy(self : GraphtreeisomorphismTable) -> GraphtreeisomorphismTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_table_fill(s : GraphtreeisomorphismTable, v : Double) -> GraphtreeisomorphismTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismTable::fill(self : GraphtreeisomorphismTable, v : Double) -> GraphtreeisomorphismTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_table_min(s : GraphtreeisomorphismTable) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismTable::min(self : GraphtreeisomorphismTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_table_max(s : GraphtreeisomorphismTable) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismTable::max(self : GraphtreeisomorphismTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_table_to_string(s : GraphtreeisomorphismTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismTable::to_string(self : GraphtreeisomorphismTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismGraphN {
@@ -453,45 +453,45 @@ pub fn graph_tree_isomorphism_graphn_make(size : Int) -> GraphtreeisomorphismGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_graphn_len(s : GraphtreeisomorphismGraphN) -> Int { s.size }
+pub fn GraphtreeisomorphismGraphN::len(self : GraphtreeisomorphismGraphN) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_graphn_get(s : GraphtreeisomorphismGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismGraphN::get(self : GraphtreeisomorphismGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_graphn_set(s : GraphtreeisomorphismGraphN, i : Int, v : Double) -> GraphtreeisomorphismGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismGraphN::set(self : GraphtreeisomorphismGraphN, i : Int, v : Double) -> GraphtreeisomorphismGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_graphn_sum(s : GraphtreeisomorphismGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismGraphN::sum(self : GraphtreeisomorphismGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_graphn_mean(s : GraphtreeisomorphismGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismGraphN::mean(self : GraphtreeisomorphismGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_graphn_scale(s : GraphtreeisomorphismGraphN, f : Double) -> GraphtreeisomorphismGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismGraphN::scale(self : GraphtreeisomorphismGraphN, f : Double) -> GraphtreeisomorphismGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_graphn_add(a : GraphtreeisomorphismGraphN, b : GraphtreeisomorphismGraphN) -> GraphtreeisomorphismGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismGraphN::add(self : GraphtreeisomorphismGraphN, other : GraphtreeisomorphismGraphN) -> GraphtreeisomorphismGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_graphn_copy(s : GraphtreeisomorphismGraphN) -> GraphtreeisomorphismGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismGraphN::copy(self : GraphtreeisomorphismGraphN) -> GraphtreeisomorphismGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_graphn_fill(s : GraphtreeisomorphismGraphN, v : Double) -> GraphtreeisomorphismGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismGraphN::fill(self : GraphtreeisomorphismGraphN, v : Double) -> GraphtreeisomorphismGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_graphn_min(s : GraphtreeisomorphismGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismGraphN::min(self : GraphtreeisomorphismGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_graphn_max(s : GraphtreeisomorphismGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismGraphN::max(self : GraphtreeisomorphismGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_graphn_to_string(s : GraphtreeisomorphismGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismGraphN::to_string(self : GraphtreeisomorphismGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismNode {
@@ -504,45 +504,45 @@ pub fn graph_tree_isomorphism_node_make(size : Int) -> GraphtreeisomorphismNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_node_len(s : GraphtreeisomorphismNode) -> Int { s.size }
+pub fn GraphtreeisomorphismNode::len(self : GraphtreeisomorphismNode) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_node_get(s : GraphtreeisomorphismNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismNode::get(self : GraphtreeisomorphismNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_node_set(s : GraphtreeisomorphismNode, i : Int, v : Double) -> GraphtreeisomorphismNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismNode::set(self : GraphtreeisomorphismNode, i : Int, v : Double) -> GraphtreeisomorphismNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_node_sum(s : GraphtreeisomorphismNode) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismNode::sum(self : GraphtreeisomorphismNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_node_mean(s : GraphtreeisomorphismNode) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismNode::mean(self : GraphtreeisomorphismNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_node_scale(s : GraphtreeisomorphismNode, f : Double) -> GraphtreeisomorphismNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismNode::scale(self : GraphtreeisomorphismNode, f : Double) -> GraphtreeisomorphismNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_node_add(a : GraphtreeisomorphismNode, b : GraphtreeisomorphismNode) -> GraphtreeisomorphismNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismNode::add(self : GraphtreeisomorphismNode, other : GraphtreeisomorphismNode) -> GraphtreeisomorphismNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_node_copy(s : GraphtreeisomorphismNode) -> GraphtreeisomorphismNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismNode::copy(self : GraphtreeisomorphismNode) -> GraphtreeisomorphismNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_node_fill(s : GraphtreeisomorphismNode, v : Double) -> GraphtreeisomorphismNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismNode::fill(self : GraphtreeisomorphismNode, v : Double) -> GraphtreeisomorphismNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_node_min(s : GraphtreeisomorphismNode) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismNode::min(self : GraphtreeisomorphismNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_node_max(s : GraphtreeisomorphismNode) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismNode::max(self : GraphtreeisomorphismNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_node_to_string(s : GraphtreeisomorphismNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismNode::to_string(self : GraphtreeisomorphismNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismEdge {
@@ -555,45 +555,45 @@ pub fn graph_tree_isomorphism_edge_make(size : Int) -> GraphtreeisomorphismEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_edge_len(s : GraphtreeisomorphismEdge) -> Int { s.size }
+pub fn GraphtreeisomorphismEdge::len(self : GraphtreeisomorphismEdge) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_edge_get(s : GraphtreeisomorphismEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismEdge::get(self : GraphtreeisomorphismEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_edge_set(s : GraphtreeisomorphismEdge, i : Int, v : Double) -> GraphtreeisomorphismEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismEdge::set(self : GraphtreeisomorphismEdge, i : Int, v : Double) -> GraphtreeisomorphismEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_edge_sum(s : GraphtreeisomorphismEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismEdge::sum(self : GraphtreeisomorphismEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_edge_mean(s : GraphtreeisomorphismEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismEdge::mean(self : GraphtreeisomorphismEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_edge_scale(s : GraphtreeisomorphismEdge, f : Double) -> GraphtreeisomorphismEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismEdge::scale(self : GraphtreeisomorphismEdge, f : Double) -> GraphtreeisomorphismEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_edge_add(a : GraphtreeisomorphismEdge, b : GraphtreeisomorphismEdge) -> GraphtreeisomorphismEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismEdge::add(self : GraphtreeisomorphismEdge, other : GraphtreeisomorphismEdge) -> GraphtreeisomorphismEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_edge_copy(s : GraphtreeisomorphismEdge) -> GraphtreeisomorphismEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismEdge::copy(self : GraphtreeisomorphismEdge) -> GraphtreeisomorphismEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_edge_fill(s : GraphtreeisomorphismEdge, v : Double) -> GraphtreeisomorphismEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismEdge::fill(self : GraphtreeisomorphismEdge, v : Double) -> GraphtreeisomorphismEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_edge_min(s : GraphtreeisomorphismEdge) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismEdge::min(self : GraphtreeisomorphismEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_edge_max(s : GraphtreeisomorphismEdge) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismEdge::max(self : GraphtreeisomorphismEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_edge_to_string(s : GraphtreeisomorphismEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismEdge::to_string(self : GraphtreeisomorphismEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismPath {
@@ -606,45 +606,45 @@ pub fn graph_tree_isomorphism_path_make(size : Int) -> GraphtreeisomorphismPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_path_len(s : GraphtreeisomorphismPath) -> Int { s.size }
+pub fn GraphtreeisomorphismPath::len(self : GraphtreeisomorphismPath) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_path_get(s : GraphtreeisomorphismPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismPath::get(self : GraphtreeisomorphismPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_path_set(s : GraphtreeisomorphismPath, i : Int, v : Double) -> GraphtreeisomorphismPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismPath::set(self : GraphtreeisomorphismPath, i : Int, v : Double) -> GraphtreeisomorphismPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_path_sum(s : GraphtreeisomorphismPath) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismPath::sum(self : GraphtreeisomorphismPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_path_mean(s : GraphtreeisomorphismPath) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismPath::mean(self : GraphtreeisomorphismPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_path_scale(s : GraphtreeisomorphismPath, f : Double) -> GraphtreeisomorphismPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismPath::scale(self : GraphtreeisomorphismPath, f : Double) -> GraphtreeisomorphismPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_path_add(a : GraphtreeisomorphismPath, b : GraphtreeisomorphismPath) -> GraphtreeisomorphismPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismPath::add(self : GraphtreeisomorphismPath, other : GraphtreeisomorphismPath) -> GraphtreeisomorphismPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_path_copy(s : GraphtreeisomorphismPath) -> GraphtreeisomorphismPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismPath::copy(self : GraphtreeisomorphismPath) -> GraphtreeisomorphismPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_path_fill(s : GraphtreeisomorphismPath, v : Double) -> GraphtreeisomorphismPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismPath::fill(self : GraphtreeisomorphismPath, v : Double) -> GraphtreeisomorphismPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_path_min(s : GraphtreeisomorphismPath) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismPath::min(self : GraphtreeisomorphismPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_path_max(s : GraphtreeisomorphismPath) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismPath::max(self : GraphtreeisomorphismPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_path_to_string(s : GraphtreeisomorphismPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismPath::to_string(self : GraphtreeisomorphismPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismCluster {
@@ -657,45 +657,45 @@ pub fn graph_tree_isomorphism_cluster_make(size : Int) -> GraphtreeisomorphismCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_cluster_len(s : GraphtreeisomorphismCluster) -> Int { s.size }
+pub fn GraphtreeisomorphismCluster::len(self : GraphtreeisomorphismCluster) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_cluster_get(s : GraphtreeisomorphismCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismCluster::get(self : GraphtreeisomorphismCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_cluster_set(s : GraphtreeisomorphismCluster, i : Int, v : Double) -> GraphtreeisomorphismCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCluster::set(self : GraphtreeisomorphismCluster, i : Int, v : Double) -> GraphtreeisomorphismCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cluster_sum(s : GraphtreeisomorphismCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismCluster::sum(self : GraphtreeisomorphismCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_cluster_mean(s : GraphtreeisomorphismCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismCluster::mean(self : GraphtreeisomorphismCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_cluster_scale(s : GraphtreeisomorphismCluster, f : Double) -> GraphtreeisomorphismCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCluster::scale(self : GraphtreeisomorphismCluster, f : Double) -> GraphtreeisomorphismCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cluster_add(a : GraphtreeisomorphismCluster, b : GraphtreeisomorphismCluster) -> GraphtreeisomorphismCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismCluster::add(self : GraphtreeisomorphismCluster, other : GraphtreeisomorphismCluster) -> GraphtreeisomorphismCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cluster_copy(s : GraphtreeisomorphismCluster) -> GraphtreeisomorphismCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCluster::copy(self : GraphtreeisomorphismCluster) -> GraphtreeisomorphismCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cluster_fill(s : GraphtreeisomorphismCluster, v : Double) -> GraphtreeisomorphismCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCluster::fill(self : GraphtreeisomorphismCluster, v : Double) -> GraphtreeisomorphismCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cluster_min(s : GraphtreeisomorphismCluster) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismCluster::min(self : GraphtreeisomorphismCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_cluster_max(s : GraphtreeisomorphismCluster) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismCluster::max(self : GraphtreeisomorphismCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_cluster_to_string(s : GraphtreeisomorphismCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismCluster::to_string(self : GraphtreeisomorphismCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismModel {
@@ -708,45 +708,45 @@ pub fn graph_tree_isomorphism_model_make(size : Int) -> GraphtreeisomorphismMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_model_len(s : GraphtreeisomorphismModel) -> Int { s.size }
+pub fn GraphtreeisomorphismModel::len(self : GraphtreeisomorphismModel) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_model_get(s : GraphtreeisomorphismModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismModel::get(self : GraphtreeisomorphismModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_model_set(s : GraphtreeisomorphismModel, i : Int, v : Double) -> GraphtreeisomorphismModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismModel::set(self : GraphtreeisomorphismModel, i : Int, v : Double) -> GraphtreeisomorphismModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_model_sum(s : GraphtreeisomorphismModel) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismModel::sum(self : GraphtreeisomorphismModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_model_mean(s : GraphtreeisomorphismModel) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismModel::mean(self : GraphtreeisomorphismModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_model_scale(s : GraphtreeisomorphismModel, f : Double) -> GraphtreeisomorphismModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismModel::scale(self : GraphtreeisomorphismModel, f : Double) -> GraphtreeisomorphismModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_model_add(a : GraphtreeisomorphismModel, b : GraphtreeisomorphismModel) -> GraphtreeisomorphismModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismModel::add(self : GraphtreeisomorphismModel, other : GraphtreeisomorphismModel) -> GraphtreeisomorphismModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_model_copy(s : GraphtreeisomorphismModel) -> GraphtreeisomorphismModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismModel::copy(self : GraphtreeisomorphismModel) -> GraphtreeisomorphismModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_model_fill(s : GraphtreeisomorphismModel, v : Double) -> GraphtreeisomorphismModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismModel::fill(self : GraphtreeisomorphismModel, v : Double) -> GraphtreeisomorphismModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_model_min(s : GraphtreeisomorphismModel) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismModel::min(self : GraphtreeisomorphismModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_model_max(s : GraphtreeisomorphismModel) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismModel::max(self : GraphtreeisomorphismModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_model_to_string(s : GraphtreeisomorphismModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismModel::to_string(self : GraphtreeisomorphismModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismLayer {
@@ -759,45 +759,45 @@ pub fn graph_tree_isomorphism_layer_make(size : Int) -> GraphtreeisomorphismLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_layer_len(s : GraphtreeisomorphismLayer) -> Int { s.size }
+pub fn GraphtreeisomorphismLayer::len(self : GraphtreeisomorphismLayer) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_layer_get(s : GraphtreeisomorphismLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismLayer::get(self : GraphtreeisomorphismLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_layer_set(s : GraphtreeisomorphismLayer, i : Int, v : Double) -> GraphtreeisomorphismLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismLayer::set(self : GraphtreeisomorphismLayer, i : Int, v : Double) -> GraphtreeisomorphismLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_layer_sum(s : GraphtreeisomorphismLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismLayer::sum(self : GraphtreeisomorphismLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_layer_mean(s : GraphtreeisomorphismLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismLayer::mean(self : GraphtreeisomorphismLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_layer_scale(s : GraphtreeisomorphismLayer, f : Double) -> GraphtreeisomorphismLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismLayer::scale(self : GraphtreeisomorphismLayer, f : Double) -> GraphtreeisomorphismLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_layer_add(a : GraphtreeisomorphismLayer, b : GraphtreeisomorphismLayer) -> GraphtreeisomorphismLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismLayer::add(self : GraphtreeisomorphismLayer, other : GraphtreeisomorphismLayer) -> GraphtreeisomorphismLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_layer_copy(s : GraphtreeisomorphismLayer) -> GraphtreeisomorphismLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismLayer::copy(self : GraphtreeisomorphismLayer) -> GraphtreeisomorphismLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_layer_fill(s : GraphtreeisomorphismLayer, v : Double) -> GraphtreeisomorphismLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismLayer::fill(self : GraphtreeisomorphismLayer, v : Double) -> GraphtreeisomorphismLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_layer_min(s : GraphtreeisomorphismLayer) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismLayer::min(self : GraphtreeisomorphismLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_layer_max(s : GraphtreeisomorphismLayer) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismLayer::max(self : GraphtreeisomorphismLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_layer_to_string(s : GraphtreeisomorphismLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismLayer::to_string(self : GraphtreeisomorphismLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismBuffer {
@@ -810,45 +810,45 @@ pub fn graph_tree_isomorphism_buffer_make(size : Int) -> GraphtreeisomorphismBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_buffer_len(s : GraphtreeisomorphismBuffer) -> Int { s.size }
+pub fn GraphtreeisomorphismBuffer::len(self : GraphtreeisomorphismBuffer) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_buffer_get(s : GraphtreeisomorphismBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismBuffer::get(self : GraphtreeisomorphismBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_buffer_set(s : GraphtreeisomorphismBuffer, i : Int, v : Double) -> GraphtreeisomorphismBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismBuffer::set(self : GraphtreeisomorphismBuffer, i : Int, v : Double) -> GraphtreeisomorphismBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_buffer_sum(s : GraphtreeisomorphismBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismBuffer::sum(self : GraphtreeisomorphismBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_buffer_mean(s : GraphtreeisomorphismBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismBuffer::mean(self : GraphtreeisomorphismBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_buffer_scale(s : GraphtreeisomorphismBuffer, f : Double) -> GraphtreeisomorphismBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismBuffer::scale(self : GraphtreeisomorphismBuffer, f : Double) -> GraphtreeisomorphismBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_buffer_add(a : GraphtreeisomorphismBuffer, b : GraphtreeisomorphismBuffer) -> GraphtreeisomorphismBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismBuffer::add(self : GraphtreeisomorphismBuffer, other : GraphtreeisomorphismBuffer) -> GraphtreeisomorphismBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_buffer_copy(s : GraphtreeisomorphismBuffer) -> GraphtreeisomorphismBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismBuffer::copy(self : GraphtreeisomorphismBuffer) -> GraphtreeisomorphismBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_buffer_fill(s : GraphtreeisomorphismBuffer, v : Double) -> GraphtreeisomorphismBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismBuffer::fill(self : GraphtreeisomorphismBuffer, v : Double) -> GraphtreeisomorphismBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_buffer_min(s : GraphtreeisomorphismBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismBuffer::min(self : GraphtreeisomorphismBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_buffer_max(s : GraphtreeisomorphismBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismBuffer::max(self : GraphtreeisomorphismBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_buffer_to_string(s : GraphtreeisomorphismBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismBuffer::to_string(self : GraphtreeisomorphismBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismCursor {
@@ -861,45 +861,45 @@ pub fn graph_tree_isomorphism_cursor_make(size : Int) -> GraphtreeisomorphismCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_cursor_len(s : GraphtreeisomorphismCursor) -> Int { s.size }
+pub fn GraphtreeisomorphismCursor::len(self : GraphtreeisomorphismCursor) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_cursor_get(s : GraphtreeisomorphismCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismCursor::get(self : GraphtreeisomorphismCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_cursor_set(s : GraphtreeisomorphismCursor, i : Int, v : Double) -> GraphtreeisomorphismCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCursor::set(self : GraphtreeisomorphismCursor, i : Int, v : Double) -> GraphtreeisomorphismCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cursor_sum(s : GraphtreeisomorphismCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismCursor::sum(self : GraphtreeisomorphismCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_cursor_mean(s : GraphtreeisomorphismCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismCursor::mean(self : GraphtreeisomorphismCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_cursor_scale(s : GraphtreeisomorphismCursor, f : Double) -> GraphtreeisomorphismCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCursor::scale(self : GraphtreeisomorphismCursor, f : Double) -> GraphtreeisomorphismCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cursor_add(a : GraphtreeisomorphismCursor, b : GraphtreeisomorphismCursor) -> GraphtreeisomorphismCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismCursor::add(self : GraphtreeisomorphismCursor, other : GraphtreeisomorphismCursor) -> GraphtreeisomorphismCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cursor_copy(s : GraphtreeisomorphismCursor) -> GraphtreeisomorphismCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCursor::copy(self : GraphtreeisomorphismCursor) -> GraphtreeisomorphismCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cursor_fill(s : GraphtreeisomorphismCursor, v : Double) -> GraphtreeisomorphismCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismCursor::fill(self : GraphtreeisomorphismCursor, v : Double) -> GraphtreeisomorphismCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_cursor_min(s : GraphtreeisomorphismCursor) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismCursor::min(self : GraphtreeisomorphismCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_cursor_max(s : GraphtreeisomorphismCursor) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismCursor::max(self : GraphtreeisomorphismCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_cursor_to_string(s : GraphtreeisomorphismCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismCursor::to_string(self : GraphtreeisomorphismCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismView {
@@ -912,45 +912,45 @@ pub fn graph_tree_isomorphism_view_make(size : Int) -> GraphtreeisomorphismView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_view_len(s : GraphtreeisomorphismView) -> Int { s.size }
+pub fn GraphtreeisomorphismView::len(self : GraphtreeisomorphismView) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_view_get(s : GraphtreeisomorphismView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismView::get(self : GraphtreeisomorphismView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_view_set(s : GraphtreeisomorphismView, i : Int, v : Double) -> GraphtreeisomorphismView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismView::set(self : GraphtreeisomorphismView, i : Int, v : Double) -> GraphtreeisomorphismView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_view_sum(s : GraphtreeisomorphismView) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismView::sum(self : GraphtreeisomorphismView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_view_mean(s : GraphtreeisomorphismView) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismView::mean(self : GraphtreeisomorphismView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_view_scale(s : GraphtreeisomorphismView, f : Double) -> GraphtreeisomorphismView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismView::scale(self : GraphtreeisomorphismView, f : Double) -> GraphtreeisomorphismView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_view_add(a : GraphtreeisomorphismView, b : GraphtreeisomorphismView) -> GraphtreeisomorphismView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismView::add(self : GraphtreeisomorphismView, other : GraphtreeisomorphismView) -> GraphtreeisomorphismView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_view_copy(s : GraphtreeisomorphismView) -> GraphtreeisomorphismView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismView::copy(self : GraphtreeisomorphismView) -> GraphtreeisomorphismView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_view_fill(s : GraphtreeisomorphismView, v : Double) -> GraphtreeisomorphismView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismView::fill(self : GraphtreeisomorphismView, v : Double) -> GraphtreeisomorphismView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_view_min(s : GraphtreeisomorphismView) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismView::min(self : GraphtreeisomorphismView) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_view_max(s : GraphtreeisomorphismView) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismView::max(self : GraphtreeisomorphismView) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_view_to_string(s : GraphtreeisomorphismView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismView::to_string(self : GraphtreeisomorphismView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismRange {
@@ -963,45 +963,45 @@ pub fn graph_tree_isomorphism_range_make(size : Int) -> GraphtreeisomorphismRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_range_len(s : GraphtreeisomorphismRange) -> Int { s.size }
+pub fn GraphtreeisomorphismRange::len(self : GraphtreeisomorphismRange) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_range_get(s : GraphtreeisomorphismRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismRange::get(self : GraphtreeisomorphismRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_range_set(s : GraphtreeisomorphismRange, i : Int, v : Double) -> GraphtreeisomorphismRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismRange::set(self : GraphtreeisomorphismRange, i : Int, v : Double) -> GraphtreeisomorphismRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_range_sum(s : GraphtreeisomorphismRange) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismRange::sum(self : GraphtreeisomorphismRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_range_mean(s : GraphtreeisomorphismRange) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismRange::mean(self : GraphtreeisomorphismRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_range_scale(s : GraphtreeisomorphismRange, f : Double) -> GraphtreeisomorphismRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismRange::scale(self : GraphtreeisomorphismRange, f : Double) -> GraphtreeisomorphismRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_range_add(a : GraphtreeisomorphismRange, b : GraphtreeisomorphismRange) -> GraphtreeisomorphismRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismRange::add(self : GraphtreeisomorphismRange, other : GraphtreeisomorphismRange) -> GraphtreeisomorphismRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_range_copy(s : GraphtreeisomorphismRange) -> GraphtreeisomorphismRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismRange::copy(self : GraphtreeisomorphismRange) -> GraphtreeisomorphismRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_range_fill(s : GraphtreeisomorphismRange, v : Double) -> GraphtreeisomorphismRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismRange::fill(self : GraphtreeisomorphismRange, v : Double) -> GraphtreeisomorphismRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_range_min(s : GraphtreeisomorphismRange) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismRange::min(self : GraphtreeisomorphismRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_range_max(s : GraphtreeisomorphismRange) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismRange::max(self : GraphtreeisomorphismRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_range_to_string(s : GraphtreeisomorphismRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismRange::to_string(self : GraphtreeisomorphismRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreeisomorphismSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_tree_isomorphism_slice_make(size : Int) -> GraphtreeisomorphismSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_isomorphism_slice_len(s : GraphtreeisomorphismSlice) -> Int { s.size }
+pub fn GraphtreeisomorphismSlice::len(self : GraphtreeisomorphismSlice) -> Int { self.size }
 
-pub fn graph_tree_isomorphism_slice_get(s : GraphtreeisomorphismSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreeisomorphismSlice::get(self : GraphtreeisomorphismSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_isomorphism_slice_set(s : GraphtreeisomorphismSlice, i : Int, v : Double) -> GraphtreeisomorphismSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismSlice::set(self : GraphtreeisomorphismSlice, i : Int, v : Double) -> GraphtreeisomorphismSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_slice_sum(s : GraphtreeisomorphismSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphtreeisomorphismSlice::sum(self : GraphtreeisomorphismSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_isomorphism_slice_mean(s : GraphtreeisomorphismSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphtreeisomorphismSlice::mean(self : GraphtreeisomorphismSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_isomorphism_slice_scale(s : GraphtreeisomorphismSlice, f : Double) -> GraphtreeisomorphismSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismSlice::scale(self : GraphtreeisomorphismSlice, f : Double) -> GraphtreeisomorphismSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_slice_add(a : GraphtreeisomorphismSlice, b : GraphtreeisomorphismSlice) -> GraphtreeisomorphismSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreeisomorphismSlice::add(self : GraphtreeisomorphismSlice, other : GraphtreeisomorphismSlice) -> GraphtreeisomorphismSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_slice_copy(s : GraphtreeisomorphismSlice) -> GraphtreeisomorphismSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismSlice::copy(self : GraphtreeisomorphismSlice) -> GraphtreeisomorphismSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_slice_fill(s : GraphtreeisomorphismSlice, v : Double) -> GraphtreeisomorphismSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreeisomorphismSlice::fill(self : GraphtreeisomorphismSlice, v : Double) -> GraphtreeisomorphismSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_isomorphism_slice_min(s : GraphtreeisomorphismSlice) -> Double { @_common.min(s.data) }
+pub fn GraphtreeisomorphismSlice::min(self : GraphtreeisomorphismSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_isomorphism_slice_max(s : GraphtreeisomorphismSlice) -> Double { @_common.max(s.data) }
+pub fn GraphtreeisomorphismSlice::max(self : GraphtreeisomorphismSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_isomorphism_slice_to_string(s : GraphtreeisomorphismSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreeisomorphismSlice::to_string(self : GraphtreeisomorphismSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

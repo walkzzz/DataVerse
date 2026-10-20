@@ -351,45 +351,45 @@ pub fn ds_hash_open_frame_make(size : Int) -> DshashopenFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_frame_len(s : DshashopenFrame) -> Int { s.size }
+pub fn DshashopenFrame::len(self : DshashopenFrame) -> Int { self.size }
 
-pub fn ds_hash_open_frame_get(s : DshashopenFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenFrame::get(self : DshashopenFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_frame_set(s : DshashopenFrame, i : Int, v : Double) -> DshashopenFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenFrame::set(self : DshashopenFrame, i : Int, v : Double) -> DshashopenFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_frame_sum(s : DshashopenFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashopenFrame::sum(self : DshashopenFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_frame_mean(s : DshashopenFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashopenFrame::mean(self : DshashopenFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_frame_scale(s : DshashopenFrame, f : Double) -> DshashopenFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenFrame::scale(self : DshashopenFrame, f : Double) -> DshashopenFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_frame_add(a : DshashopenFrame, b : DshashopenFrame) -> DshashopenFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenFrame::add(self : DshashopenFrame, other : DshashopenFrame) -> DshashopenFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_frame_copy(s : DshashopenFrame) -> DshashopenFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenFrame::copy(self : DshashopenFrame) -> DshashopenFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_frame_fill(s : DshashopenFrame, v : Double) -> DshashopenFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenFrame::fill(self : DshashopenFrame, v : Double) -> DshashopenFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_frame_min(s : DshashopenFrame) -> Double { @_common.min(s.data) }
+pub fn DshashopenFrame::min(self : DshashopenFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_frame_max(s : DshashopenFrame) -> Double { @_common.max(s.data) }
+pub fn DshashopenFrame::max(self : DshashopenFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_frame_to_string(s : DshashopenFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenFrame::to_string(self : DshashopenFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_open_table_make(size : Int) -> DshashopenTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_table_len(s : DshashopenTable) -> Int { s.size }
+pub fn DshashopenTable::len(self : DshashopenTable) -> Int { self.size }
 
-pub fn ds_hash_open_table_get(s : DshashopenTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenTable::get(self : DshashopenTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_table_set(s : DshashopenTable, i : Int, v : Double) -> DshashopenTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenTable::set(self : DshashopenTable, i : Int, v : Double) -> DshashopenTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_table_sum(s : DshashopenTable) -> Double { @_common.sum(s.data) }
+pub fn DshashopenTable::sum(self : DshashopenTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_table_mean(s : DshashopenTable) -> Double { @_common.mean(s.data) }
+pub fn DshashopenTable::mean(self : DshashopenTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_table_scale(s : DshashopenTable, f : Double) -> DshashopenTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenTable::scale(self : DshashopenTable, f : Double) -> DshashopenTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_table_add(a : DshashopenTable, b : DshashopenTable) -> DshashopenTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenTable::add(self : DshashopenTable, other : DshashopenTable) -> DshashopenTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_table_copy(s : DshashopenTable) -> DshashopenTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenTable::copy(self : DshashopenTable) -> DshashopenTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_table_fill(s : DshashopenTable, v : Double) -> DshashopenTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenTable::fill(self : DshashopenTable, v : Double) -> DshashopenTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_table_min(s : DshashopenTable) -> Double { @_common.min(s.data) }
+pub fn DshashopenTable::min(self : DshashopenTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_table_max(s : DshashopenTable) -> Double { @_common.max(s.data) }
+pub fn DshashopenTable::max(self : DshashopenTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_table_to_string(s : DshashopenTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenTable::to_string(self : DshashopenTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_open_graphn_make(size : Int) -> DshashopenGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_graphn_len(s : DshashopenGraphN) -> Int { s.size }
+pub fn DshashopenGraphN::len(self : DshashopenGraphN) -> Int { self.size }
 
-pub fn ds_hash_open_graphn_get(s : DshashopenGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenGraphN::get(self : DshashopenGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_graphn_set(s : DshashopenGraphN, i : Int, v : Double) -> DshashopenGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenGraphN::set(self : DshashopenGraphN, i : Int, v : Double) -> DshashopenGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_graphn_sum(s : DshashopenGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashopenGraphN::sum(self : DshashopenGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_graphn_mean(s : DshashopenGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashopenGraphN::mean(self : DshashopenGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_graphn_scale(s : DshashopenGraphN, f : Double) -> DshashopenGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenGraphN::scale(self : DshashopenGraphN, f : Double) -> DshashopenGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_graphn_add(a : DshashopenGraphN, b : DshashopenGraphN) -> DshashopenGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenGraphN::add(self : DshashopenGraphN, other : DshashopenGraphN) -> DshashopenGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_graphn_copy(s : DshashopenGraphN) -> DshashopenGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenGraphN::copy(self : DshashopenGraphN) -> DshashopenGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_graphn_fill(s : DshashopenGraphN, v : Double) -> DshashopenGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenGraphN::fill(self : DshashopenGraphN, v : Double) -> DshashopenGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_graphn_min(s : DshashopenGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashopenGraphN::min(self : DshashopenGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_graphn_max(s : DshashopenGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashopenGraphN::max(self : DshashopenGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_graphn_to_string(s : DshashopenGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenGraphN::to_string(self : DshashopenGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_open_node_make(size : Int) -> DshashopenNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_node_len(s : DshashopenNode) -> Int { s.size }
+pub fn DshashopenNode::len(self : DshashopenNode) -> Int { self.size }
 
-pub fn ds_hash_open_node_get(s : DshashopenNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenNode::get(self : DshashopenNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_node_set(s : DshashopenNode, i : Int, v : Double) -> DshashopenNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenNode::set(self : DshashopenNode, i : Int, v : Double) -> DshashopenNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_node_sum(s : DshashopenNode) -> Double { @_common.sum(s.data) }
+pub fn DshashopenNode::sum(self : DshashopenNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_node_mean(s : DshashopenNode) -> Double { @_common.mean(s.data) }
+pub fn DshashopenNode::mean(self : DshashopenNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_node_scale(s : DshashopenNode, f : Double) -> DshashopenNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenNode::scale(self : DshashopenNode, f : Double) -> DshashopenNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_node_add(a : DshashopenNode, b : DshashopenNode) -> DshashopenNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenNode::add(self : DshashopenNode, other : DshashopenNode) -> DshashopenNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_node_copy(s : DshashopenNode) -> DshashopenNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenNode::copy(self : DshashopenNode) -> DshashopenNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_node_fill(s : DshashopenNode, v : Double) -> DshashopenNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenNode::fill(self : DshashopenNode, v : Double) -> DshashopenNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_node_min(s : DshashopenNode) -> Double { @_common.min(s.data) }
+pub fn DshashopenNode::min(self : DshashopenNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_node_max(s : DshashopenNode) -> Double { @_common.max(s.data) }
+pub fn DshashopenNode::max(self : DshashopenNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_node_to_string(s : DshashopenNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenNode::to_string(self : DshashopenNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_open_edge_make(size : Int) -> DshashopenEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_edge_len(s : DshashopenEdge) -> Int { s.size }
+pub fn DshashopenEdge::len(self : DshashopenEdge) -> Int { self.size }
 
-pub fn ds_hash_open_edge_get(s : DshashopenEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenEdge::get(self : DshashopenEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_edge_set(s : DshashopenEdge, i : Int, v : Double) -> DshashopenEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenEdge::set(self : DshashopenEdge, i : Int, v : Double) -> DshashopenEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_edge_sum(s : DshashopenEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashopenEdge::sum(self : DshashopenEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_edge_mean(s : DshashopenEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashopenEdge::mean(self : DshashopenEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_edge_scale(s : DshashopenEdge, f : Double) -> DshashopenEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenEdge::scale(self : DshashopenEdge, f : Double) -> DshashopenEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_edge_add(a : DshashopenEdge, b : DshashopenEdge) -> DshashopenEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenEdge::add(self : DshashopenEdge, other : DshashopenEdge) -> DshashopenEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_edge_copy(s : DshashopenEdge) -> DshashopenEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenEdge::copy(self : DshashopenEdge) -> DshashopenEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_edge_fill(s : DshashopenEdge, v : Double) -> DshashopenEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenEdge::fill(self : DshashopenEdge, v : Double) -> DshashopenEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_edge_min(s : DshashopenEdge) -> Double { @_common.min(s.data) }
+pub fn DshashopenEdge::min(self : DshashopenEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_edge_max(s : DshashopenEdge) -> Double { @_common.max(s.data) }
+pub fn DshashopenEdge::max(self : DshashopenEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_edge_to_string(s : DshashopenEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenEdge::to_string(self : DshashopenEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenPath {
@@ -606,45 +606,45 @@ pub fn ds_hash_open_path_make(size : Int) -> DshashopenPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_path_len(s : DshashopenPath) -> Int { s.size }
+pub fn DshashopenPath::len(self : DshashopenPath) -> Int { self.size }
 
-pub fn ds_hash_open_path_get(s : DshashopenPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenPath::get(self : DshashopenPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_path_set(s : DshashopenPath, i : Int, v : Double) -> DshashopenPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenPath::set(self : DshashopenPath, i : Int, v : Double) -> DshashopenPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_path_sum(s : DshashopenPath) -> Double { @_common.sum(s.data) }
+pub fn DshashopenPath::sum(self : DshashopenPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_path_mean(s : DshashopenPath) -> Double { @_common.mean(s.data) }
+pub fn DshashopenPath::mean(self : DshashopenPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_path_scale(s : DshashopenPath, f : Double) -> DshashopenPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenPath::scale(self : DshashopenPath, f : Double) -> DshashopenPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_path_add(a : DshashopenPath, b : DshashopenPath) -> DshashopenPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenPath::add(self : DshashopenPath, other : DshashopenPath) -> DshashopenPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_path_copy(s : DshashopenPath) -> DshashopenPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenPath::copy(self : DshashopenPath) -> DshashopenPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_path_fill(s : DshashopenPath, v : Double) -> DshashopenPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenPath::fill(self : DshashopenPath, v : Double) -> DshashopenPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_path_min(s : DshashopenPath) -> Double { @_common.min(s.data) }
+pub fn DshashopenPath::min(self : DshashopenPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_path_max(s : DshashopenPath) -> Double { @_common.max(s.data) }
+pub fn DshashopenPath::max(self : DshashopenPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_path_to_string(s : DshashopenPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenPath::to_string(self : DshashopenPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_open_cluster_make(size : Int) -> DshashopenCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_cluster_len(s : DshashopenCluster) -> Int { s.size }
+pub fn DshashopenCluster::len(self : DshashopenCluster) -> Int { self.size }
 
-pub fn ds_hash_open_cluster_get(s : DshashopenCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenCluster::get(self : DshashopenCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_cluster_set(s : DshashopenCluster, i : Int, v : Double) -> DshashopenCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenCluster::set(self : DshashopenCluster, i : Int, v : Double) -> DshashopenCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cluster_sum(s : DshashopenCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashopenCluster::sum(self : DshashopenCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_cluster_mean(s : DshashopenCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashopenCluster::mean(self : DshashopenCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_cluster_scale(s : DshashopenCluster, f : Double) -> DshashopenCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenCluster::scale(self : DshashopenCluster, f : Double) -> DshashopenCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cluster_add(a : DshashopenCluster, b : DshashopenCluster) -> DshashopenCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenCluster::add(self : DshashopenCluster, other : DshashopenCluster) -> DshashopenCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_cluster_copy(s : DshashopenCluster) -> DshashopenCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenCluster::copy(self : DshashopenCluster) -> DshashopenCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cluster_fill(s : DshashopenCluster, v : Double) -> DshashopenCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenCluster::fill(self : DshashopenCluster, v : Double) -> DshashopenCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cluster_min(s : DshashopenCluster) -> Double { @_common.min(s.data) }
+pub fn DshashopenCluster::min(self : DshashopenCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_cluster_max(s : DshashopenCluster) -> Double { @_common.max(s.data) }
+pub fn DshashopenCluster::max(self : DshashopenCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_cluster_to_string(s : DshashopenCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenCluster::to_string(self : DshashopenCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_open_model_make(size : Int) -> DshashopenModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_model_len(s : DshashopenModel) -> Int { s.size }
+pub fn DshashopenModel::len(self : DshashopenModel) -> Int { self.size }
 
-pub fn ds_hash_open_model_get(s : DshashopenModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenModel::get(self : DshashopenModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_model_set(s : DshashopenModel, i : Int, v : Double) -> DshashopenModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenModel::set(self : DshashopenModel, i : Int, v : Double) -> DshashopenModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_model_sum(s : DshashopenModel) -> Double { @_common.sum(s.data) }
+pub fn DshashopenModel::sum(self : DshashopenModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_model_mean(s : DshashopenModel) -> Double { @_common.mean(s.data) }
+pub fn DshashopenModel::mean(self : DshashopenModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_model_scale(s : DshashopenModel, f : Double) -> DshashopenModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenModel::scale(self : DshashopenModel, f : Double) -> DshashopenModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_model_add(a : DshashopenModel, b : DshashopenModel) -> DshashopenModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenModel::add(self : DshashopenModel, other : DshashopenModel) -> DshashopenModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_model_copy(s : DshashopenModel) -> DshashopenModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenModel::copy(self : DshashopenModel) -> DshashopenModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_model_fill(s : DshashopenModel, v : Double) -> DshashopenModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenModel::fill(self : DshashopenModel, v : Double) -> DshashopenModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_model_min(s : DshashopenModel) -> Double { @_common.min(s.data) }
+pub fn DshashopenModel::min(self : DshashopenModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_model_max(s : DshashopenModel) -> Double { @_common.max(s.data) }
+pub fn DshashopenModel::max(self : DshashopenModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_model_to_string(s : DshashopenModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenModel::to_string(self : DshashopenModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_open_layer_make(size : Int) -> DshashopenLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_layer_len(s : DshashopenLayer) -> Int { s.size }
+pub fn DshashopenLayer::len(self : DshashopenLayer) -> Int { self.size }
 
-pub fn ds_hash_open_layer_get(s : DshashopenLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenLayer::get(self : DshashopenLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_layer_set(s : DshashopenLayer, i : Int, v : Double) -> DshashopenLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenLayer::set(self : DshashopenLayer, i : Int, v : Double) -> DshashopenLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_layer_sum(s : DshashopenLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashopenLayer::sum(self : DshashopenLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_layer_mean(s : DshashopenLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashopenLayer::mean(self : DshashopenLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_layer_scale(s : DshashopenLayer, f : Double) -> DshashopenLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenLayer::scale(self : DshashopenLayer, f : Double) -> DshashopenLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_layer_add(a : DshashopenLayer, b : DshashopenLayer) -> DshashopenLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenLayer::add(self : DshashopenLayer, other : DshashopenLayer) -> DshashopenLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_layer_copy(s : DshashopenLayer) -> DshashopenLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenLayer::copy(self : DshashopenLayer) -> DshashopenLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_layer_fill(s : DshashopenLayer, v : Double) -> DshashopenLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenLayer::fill(self : DshashopenLayer, v : Double) -> DshashopenLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_layer_min(s : DshashopenLayer) -> Double { @_common.min(s.data) }
+pub fn DshashopenLayer::min(self : DshashopenLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_layer_max(s : DshashopenLayer) -> Double { @_common.max(s.data) }
+pub fn DshashopenLayer::max(self : DshashopenLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_layer_to_string(s : DshashopenLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenLayer::to_string(self : DshashopenLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_open_buffer_make(size : Int) -> DshashopenBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_buffer_len(s : DshashopenBuffer) -> Int { s.size }
+pub fn DshashopenBuffer::len(self : DshashopenBuffer) -> Int { self.size }
 
-pub fn ds_hash_open_buffer_get(s : DshashopenBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenBuffer::get(self : DshashopenBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_buffer_set(s : DshashopenBuffer, i : Int, v : Double) -> DshashopenBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenBuffer::set(self : DshashopenBuffer, i : Int, v : Double) -> DshashopenBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_buffer_sum(s : DshashopenBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashopenBuffer::sum(self : DshashopenBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_buffer_mean(s : DshashopenBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashopenBuffer::mean(self : DshashopenBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_buffer_scale(s : DshashopenBuffer, f : Double) -> DshashopenBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenBuffer::scale(self : DshashopenBuffer, f : Double) -> DshashopenBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_buffer_add(a : DshashopenBuffer, b : DshashopenBuffer) -> DshashopenBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenBuffer::add(self : DshashopenBuffer, other : DshashopenBuffer) -> DshashopenBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_buffer_copy(s : DshashopenBuffer) -> DshashopenBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenBuffer::copy(self : DshashopenBuffer) -> DshashopenBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_buffer_fill(s : DshashopenBuffer, v : Double) -> DshashopenBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenBuffer::fill(self : DshashopenBuffer, v : Double) -> DshashopenBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_buffer_min(s : DshashopenBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashopenBuffer::min(self : DshashopenBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_buffer_max(s : DshashopenBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashopenBuffer::max(self : DshashopenBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_buffer_to_string(s : DshashopenBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenBuffer::to_string(self : DshashopenBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_open_cursor_make(size : Int) -> DshashopenCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_cursor_len(s : DshashopenCursor) -> Int { s.size }
+pub fn DshashopenCursor::len(self : DshashopenCursor) -> Int { self.size }
 
-pub fn ds_hash_open_cursor_get(s : DshashopenCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenCursor::get(self : DshashopenCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_cursor_set(s : DshashopenCursor, i : Int, v : Double) -> DshashopenCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenCursor::set(self : DshashopenCursor, i : Int, v : Double) -> DshashopenCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cursor_sum(s : DshashopenCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashopenCursor::sum(self : DshashopenCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_cursor_mean(s : DshashopenCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashopenCursor::mean(self : DshashopenCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_cursor_scale(s : DshashopenCursor, f : Double) -> DshashopenCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenCursor::scale(self : DshashopenCursor, f : Double) -> DshashopenCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cursor_add(a : DshashopenCursor, b : DshashopenCursor) -> DshashopenCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenCursor::add(self : DshashopenCursor, other : DshashopenCursor) -> DshashopenCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_cursor_copy(s : DshashopenCursor) -> DshashopenCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenCursor::copy(self : DshashopenCursor) -> DshashopenCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cursor_fill(s : DshashopenCursor, v : Double) -> DshashopenCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenCursor::fill(self : DshashopenCursor, v : Double) -> DshashopenCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_cursor_min(s : DshashopenCursor) -> Double { @_common.min(s.data) }
+pub fn DshashopenCursor::min(self : DshashopenCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_cursor_max(s : DshashopenCursor) -> Double { @_common.max(s.data) }
+pub fn DshashopenCursor::max(self : DshashopenCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_cursor_to_string(s : DshashopenCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenCursor::to_string(self : DshashopenCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenView {
@@ -912,45 +912,45 @@ pub fn ds_hash_open_view_make(size : Int) -> DshashopenView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_view_len(s : DshashopenView) -> Int { s.size }
+pub fn DshashopenView::len(self : DshashopenView) -> Int { self.size }
 
-pub fn ds_hash_open_view_get(s : DshashopenView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenView::get(self : DshashopenView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_view_set(s : DshashopenView, i : Int, v : Double) -> DshashopenView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenView::set(self : DshashopenView, i : Int, v : Double) -> DshashopenView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_view_sum(s : DshashopenView) -> Double { @_common.sum(s.data) }
+pub fn DshashopenView::sum(self : DshashopenView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_view_mean(s : DshashopenView) -> Double { @_common.mean(s.data) }
+pub fn DshashopenView::mean(self : DshashopenView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_view_scale(s : DshashopenView, f : Double) -> DshashopenView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenView::scale(self : DshashopenView, f : Double) -> DshashopenView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_view_add(a : DshashopenView, b : DshashopenView) -> DshashopenView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenView::add(self : DshashopenView, other : DshashopenView) -> DshashopenView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_view_copy(s : DshashopenView) -> DshashopenView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenView::copy(self : DshashopenView) -> DshashopenView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_view_fill(s : DshashopenView, v : Double) -> DshashopenView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenView::fill(self : DshashopenView, v : Double) -> DshashopenView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_view_min(s : DshashopenView) -> Double { @_common.min(s.data) }
+pub fn DshashopenView::min(self : DshashopenView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_view_max(s : DshashopenView) -> Double { @_common.max(s.data) }
+pub fn DshashopenView::max(self : DshashopenView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_view_to_string(s : DshashopenView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenView::to_string(self : DshashopenView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_open_range_make(size : Int) -> DshashopenRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_range_len(s : DshashopenRange) -> Int { s.size }
+pub fn DshashopenRange::len(self : DshashopenRange) -> Int { self.size }
 
-pub fn ds_hash_open_range_get(s : DshashopenRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenRange::get(self : DshashopenRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_range_set(s : DshashopenRange, i : Int, v : Double) -> DshashopenRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenRange::set(self : DshashopenRange, i : Int, v : Double) -> DshashopenRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_range_sum(s : DshashopenRange) -> Double { @_common.sum(s.data) }
+pub fn DshashopenRange::sum(self : DshashopenRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_range_mean(s : DshashopenRange) -> Double { @_common.mean(s.data) }
+pub fn DshashopenRange::mean(self : DshashopenRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_range_scale(s : DshashopenRange, f : Double) -> DshashopenRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenRange::scale(self : DshashopenRange, f : Double) -> DshashopenRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_range_add(a : DshashopenRange, b : DshashopenRange) -> DshashopenRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenRange::add(self : DshashopenRange, other : DshashopenRange) -> DshashopenRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_range_copy(s : DshashopenRange) -> DshashopenRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenRange::copy(self : DshashopenRange) -> DshashopenRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_range_fill(s : DshashopenRange, v : Double) -> DshashopenRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenRange::fill(self : DshashopenRange, v : Double) -> DshashopenRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_range_min(s : DshashopenRange) -> Double { @_common.min(s.data) }
+pub fn DshashopenRange::min(self : DshashopenRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_range_max(s : DshashopenRange) -> Double { @_common.max(s.data) }
+pub fn DshashopenRange::max(self : DshashopenRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_range_to_string(s : DshashopenRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenRange::to_string(self : DshashopenRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashopenSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_open_slice_make(size : Int) -> DshashopenSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_open_slice_len(s : DshashopenSlice) -> Int { s.size }
+pub fn DshashopenSlice::len(self : DshashopenSlice) -> Int { self.size }
 
-pub fn ds_hash_open_slice_get(s : DshashopenSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashopenSlice::get(self : DshashopenSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_open_slice_set(s : DshashopenSlice, i : Int, v : Double) -> DshashopenSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashopenSlice::set(self : DshashopenSlice, i : Int, v : Double) -> DshashopenSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_slice_sum(s : DshashopenSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashopenSlice::sum(self : DshashopenSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_open_slice_mean(s : DshashopenSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashopenSlice::mean(self : DshashopenSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_open_slice_scale(s : DshashopenSlice, f : Double) -> DshashopenSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashopenSlice::scale(self : DshashopenSlice, f : Double) -> DshashopenSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_slice_add(a : DshashopenSlice, b : DshashopenSlice) -> DshashopenSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashopenSlice::add(self : DshashopenSlice, other : DshashopenSlice) -> DshashopenSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_open_slice_copy(s : DshashopenSlice) -> DshashopenSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashopenSlice::copy(self : DshashopenSlice) -> DshashopenSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_slice_fill(s : DshashopenSlice, v : Double) -> DshashopenSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashopenSlice::fill(self : DshashopenSlice, v : Double) -> DshashopenSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_open_slice_min(s : DshashopenSlice) -> Double { @_common.min(s.data) }
+pub fn DshashopenSlice::min(self : DshashopenSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_open_slice_max(s : DshashopenSlice) -> Double { @_common.max(s.data) }
+pub fn DshashopenSlice::max(self : DshashopenSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_open_slice_to_string(s : DshashopenSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashopenSlice::to_string(self : DshashopenSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn opt_meta_evolution_frame_make(size : Int) -> OptmetaevolutionFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_frame_len(s : OptmetaevolutionFrame) -> Int { s.size }
+pub fn OptmetaevolutionFrame::len(self : OptmetaevolutionFrame) -> Int { self.size }
 
-pub fn opt_meta_evolution_frame_get(s : OptmetaevolutionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionFrame::get(self : OptmetaevolutionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_frame_set(s : OptmetaevolutionFrame, i : Int, v : Double) -> OptmetaevolutionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionFrame::set(self : OptmetaevolutionFrame, i : Int, v : Double) -> OptmetaevolutionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_frame_sum(s : OptmetaevolutionFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionFrame::sum(self : OptmetaevolutionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_frame_mean(s : OptmetaevolutionFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionFrame::mean(self : OptmetaevolutionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_frame_scale(s : OptmetaevolutionFrame, f : Double) -> OptmetaevolutionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionFrame::scale(self : OptmetaevolutionFrame, f : Double) -> OptmetaevolutionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_frame_add(a : OptmetaevolutionFrame, b : OptmetaevolutionFrame) -> OptmetaevolutionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionFrame::add(self : OptmetaevolutionFrame, other : OptmetaevolutionFrame) -> OptmetaevolutionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_frame_copy(s : OptmetaevolutionFrame) -> OptmetaevolutionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionFrame::copy(self : OptmetaevolutionFrame) -> OptmetaevolutionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_frame_fill(s : OptmetaevolutionFrame, v : Double) -> OptmetaevolutionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionFrame::fill(self : OptmetaevolutionFrame, v : Double) -> OptmetaevolutionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_frame_min(s : OptmetaevolutionFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionFrame::min(self : OptmetaevolutionFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_frame_max(s : OptmetaevolutionFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionFrame::max(self : OptmetaevolutionFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_frame_to_string(s : OptmetaevolutionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionFrame::to_string(self : OptmetaevolutionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_evolution_table_make(size : Int) -> OptmetaevolutionTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_table_len(s : OptmetaevolutionTable) -> Int { s.size }
+pub fn OptmetaevolutionTable::len(self : OptmetaevolutionTable) -> Int { self.size }
 
-pub fn opt_meta_evolution_table_get(s : OptmetaevolutionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionTable::get(self : OptmetaevolutionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_table_set(s : OptmetaevolutionTable, i : Int, v : Double) -> OptmetaevolutionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionTable::set(self : OptmetaevolutionTable, i : Int, v : Double) -> OptmetaevolutionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_table_sum(s : OptmetaevolutionTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionTable::sum(self : OptmetaevolutionTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_table_mean(s : OptmetaevolutionTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionTable::mean(self : OptmetaevolutionTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_table_scale(s : OptmetaevolutionTable, f : Double) -> OptmetaevolutionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionTable::scale(self : OptmetaevolutionTable, f : Double) -> OptmetaevolutionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_table_add(a : OptmetaevolutionTable, b : OptmetaevolutionTable) -> OptmetaevolutionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionTable::add(self : OptmetaevolutionTable, other : OptmetaevolutionTable) -> OptmetaevolutionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_table_copy(s : OptmetaevolutionTable) -> OptmetaevolutionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionTable::copy(self : OptmetaevolutionTable) -> OptmetaevolutionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_table_fill(s : OptmetaevolutionTable, v : Double) -> OptmetaevolutionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionTable::fill(self : OptmetaevolutionTable, v : Double) -> OptmetaevolutionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_table_min(s : OptmetaevolutionTable) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionTable::min(self : OptmetaevolutionTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_table_max(s : OptmetaevolutionTable) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionTable::max(self : OptmetaevolutionTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_table_to_string(s : OptmetaevolutionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionTable::to_string(self : OptmetaevolutionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_evolution_graphn_make(size : Int) -> OptmetaevolutionGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_graphn_len(s : OptmetaevolutionGraphN) -> Int { s.size }
+pub fn OptmetaevolutionGraphN::len(self : OptmetaevolutionGraphN) -> Int { self.size }
 
-pub fn opt_meta_evolution_graphn_get(s : OptmetaevolutionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionGraphN::get(self : OptmetaevolutionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_graphn_set(s : OptmetaevolutionGraphN, i : Int, v : Double) -> OptmetaevolutionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionGraphN::set(self : OptmetaevolutionGraphN, i : Int, v : Double) -> OptmetaevolutionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_graphn_sum(s : OptmetaevolutionGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionGraphN::sum(self : OptmetaevolutionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_graphn_mean(s : OptmetaevolutionGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionGraphN::mean(self : OptmetaevolutionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_graphn_scale(s : OptmetaevolutionGraphN, f : Double) -> OptmetaevolutionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionGraphN::scale(self : OptmetaevolutionGraphN, f : Double) -> OptmetaevolutionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_graphn_add(a : OptmetaevolutionGraphN, b : OptmetaevolutionGraphN) -> OptmetaevolutionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionGraphN::add(self : OptmetaevolutionGraphN, other : OptmetaevolutionGraphN) -> OptmetaevolutionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_graphn_copy(s : OptmetaevolutionGraphN) -> OptmetaevolutionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionGraphN::copy(self : OptmetaevolutionGraphN) -> OptmetaevolutionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_graphn_fill(s : OptmetaevolutionGraphN, v : Double) -> OptmetaevolutionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionGraphN::fill(self : OptmetaevolutionGraphN, v : Double) -> OptmetaevolutionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_graphn_min(s : OptmetaevolutionGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionGraphN::min(self : OptmetaevolutionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_graphn_max(s : OptmetaevolutionGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionGraphN::max(self : OptmetaevolutionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_graphn_to_string(s : OptmetaevolutionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionGraphN::to_string(self : OptmetaevolutionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_evolution_node_make(size : Int) -> OptmetaevolutionNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_node_len(s : OptmetaevolutionNode) -> Int { s.size }
+pub fn OptmetaevolutionNode::len(self : OptmetaevolutionNode) -> Int { self.size }
 
-pub fn opt_meta_evolution_node_get(s : OptmetaevolutionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionNode::get(self : OptmetaevolutionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_node_set(s : OptmetaevolutionNode, i : Int, v : Double) -> OptmetaevolutionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionNode::set(self : OptmetaevolutionNode, i : Int, v : Double) -> OptmetaevolutionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_node_sum(s : OptmetaevolutionNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionNode::sum(self : OptmetaevolutionNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_node_mean(s : OptmetaevolutionNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionNode::mean(self : OptmetaevolutionNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_node_scale(s : OptmetaevolutionNode, f : Double) -> OptmetaevolutionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionNode::scale(self : OptmetaevolutionNode, f : Double) -> OptmetaevolutionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_node_add(a : OptmetaevolutionNode, b : OptmetaevolutionNode) -> OptmetaevolutionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionNode::add(self : OptmetaevolutionNode, other : OptmetaevolutionNode) -> OptmetaevolutionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_node_copy(s : OptmetaevolutionNode) -> OptmetaevolutionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionNode::copy(self : OptmetaevolutionNode) -> OptmetaevolutionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_node_fill(s : OptmetaevolutionNode, v : Double) -> OptmetaevolutionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionNode::fill(self : OptmetaevolutionNode, v : Double) -> OptmetaevolutionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_node_min(s : OptmetaevolutionNode) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionNode::min(self : OptmetaevolutionNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_node_max(s : OptmetaevolutionNode) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionNode::max(self : OptmetaevolutionNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_node_to_string(s : OptmetaevolutionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionNode::to_string(self : OptmetaevolutionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_evolution_edge_make(size : Int) -> OptmetaevolutionEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_edge_len(s : OptmetaevolutionEdge) -> Int { s.size }
+pub fn OptmetaevolutionEdge::len(self : OptmetaevolutionEdge) -> Int { self.size }
 
-pub fn opt_meta_evolution_edge_get(s : OptmetaevolutionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionEdge::get(self : OptmetaevolutionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_edge_set(s : OptmetaevolutionEdge, i : Int, v : Double) -> OptmetaevolutionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionEdge::set(self : OptmetaevolutionEdge, i : Int, v : Double) -> OptmetaevolutionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_edge_sum(s : OptmetaevolutionEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionEdge::sum(self : OptmetaevolutionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_edge_mean(s : OptmetaevolutionEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionEdge::mean(self : OptmetaevolutionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_edge_scale(s : OptmetaevolutionEdge, f : Double) -> OptmetaevolutionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionEdge::scale(self : OptmetaevolutionEdge, f : Double) -> OptmetaevolutionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_edge_add(a : OptmetaevolutionEdge, b : OptmetaevolutionEdge) -> OptmetaevolutionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionEdge::add(self : OptmetaevolutionEdge, other : OptmetaevolutionEdge) -> OptmetaevolutionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_edge_copy(s : OptmetaevolutionEdge) -> OptmetaevolutionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionEdge::copy(self : OptmetaevolutionEdge) -> OptmetaevolutionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_edge_fill(s : OptmetaevolutionEdge, v : Double) -> OptmetaevolutionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionEdge::fill(self : OptmetaevolutionEdge, v : Double) -> OptmetaevolutionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_edge_min(s : OptmetaevolutionEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionEdge::min(self : OptmetaevolutionEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_edge_max(s : OptmetaevolutionEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionEdge::max(self : OptmetaevolutionEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_edge_to_string(s : OptmetaevolutionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionEdge::to_string(self : OptmetaevolutionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_evolution_path_make(size : Int) -> OptmetaevolutionPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_path_len(s : OptmetaevolutionPath) -> Int { s.size }
+pub fn OptmetaevolutionPath::len(self : OptmetaevolutionPath) -> Int { self.size }
 
-pub fn opt_meta_evolution_path_get(s : OptmetaevolutionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionPath::get(self : OptmetaevolutionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_path_set(s : OptmetaevolutionPath, i : Int, v : Double) -> OptmetaevolutionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionPath::set(self : OptmetaevolutionPath, i : Int, v : Double) -> OptmetaevolutionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_path_sum(s : OptmetaevolutionPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionPath::sum(self : OptmetaevolutionPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_path_mean(s : OptmetaevolutionPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionPath::mean(self : OptmetaevolutionPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_path_scale(s : OptmetaevolutionPath, f : Double) -> OptmetaevolutionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionPath::scale(self : OptmetaevolutionPath, f : Double) -> OptmetaevolutionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_path_add(a : OptmetaevolutionPath, b : OptmetaevolutionPath) -> OptmetaevolutionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionPath::add(self : OptmetaevolutionPath, other : OptmetaevolutionPath) -> OptmetaevolutionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_path_copy(s : OptmetaevolutionPath) -> OptmetaevolutionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionPath::copy(self : OptmetaevolutionPath) -> OptmetaevolutionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_path_fill(s : OptmetaevolutionPath, v : Double) -> OptmetaevolutionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionPath::fill(self : OptmetaevolutionPath, v : Double) -> OptmetaevolutionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_path_min(s : OptmetaevolutionPath) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionPath::min(self : OptmetaevolutionPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_path_max(s : OptmetaevolutionPath) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionPath::max(self : OptmetaevolutionPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_path_to_string(s : OptmetaevolutionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionPath::to_string(self : OptmetaevolutionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_evolution_cluster_make(size : Int) -> OptmetaevolutionCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_cluster_len(s : OptmetaevolutionCluster) -> Int { s.size }
+pub fn OptmetaevolutionCluster::len(self : OptmetaevolutionCluster) -> Int { self.size }
 
-pub fn opt_meta_evolution_cluster_get(s : OptmetaevolutionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionCluster::get(self : OptmetaevolutionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_cluster_set(s : OptmetaevolutionCluster, i : Int, v : Double) -> OptmetaevolutionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCluster::set(self : OptmetaevolutionCluster, i : Int, v : Double) -> OptmetaevolutionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cluster_sum(s : OptmetaevolutionCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionCluster::sum(self : OptmetaevolutionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_cluster_mean(s : OptmetaevolutionCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionCluster::mean(self : OptmetaevolutionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_cluster_scale(s : OptmetaevolutionCluster, f : Double) -> OptmetaevolutionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCluster::scale(self : OptmetaevolutionCluster, f : Double) -> OptmetaevolutionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cluster_add(a : OptmetaevolutionCluster, b : OptmetaevolutionCluster) -> OptmetaevolutionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionCluster::add(self : OptmetaevolutionCluster, other : OptmetaevolutionCluster) -> OptmetaevolutionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cluster_copy(s : OptmetaevolutionCluster) -> OptmetaevolutionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCluster::copy(self : OptmetaevolutionCluster) -> OptmetaevolutionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cluster_fill(s : OptmetaevolutionCluster, v : Double) -> OptmetaevolutionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCluster::fill(self : OptmetaevolutionCluster, v : Double) -> OptmetaevolutionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cluster_min(s : OptmetaevolutionCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionCluster::min(self : OptmetaevolutionCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_cluster_max(s : OptmetaevolutionCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionCluster::max(self : OptmetaevolutionCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_cluster_to_string(s : OptmetaevolutionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionCluster::to_string(self : OptmetaevolutionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_evolution_model_make(size : Int) -> OptmetaevolutionModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_model_len(s : OptmetaevolutionModel) -> Int { s.size }
+pub fn OptmetaevolutionModel::len(self : OptmetaevolutionModel) -> Int { self.size }
 
-pub fn opt_meta_evolution_model_get(s : OptmetaevolutionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionModel::get(self : OptmetaevolutionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_model_set(s : OptmetaevolutionModel, i : Int, v : Double) -> OptmetaevolutionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionModel::set(self : OptmetaevolutionModel, i : Int, v : Double) -> OptmetaevolutionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_model_sum(s : OptmetaevolutionModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionModel::sum(self : OptmetaevolutionModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_model_mean(s : OptmetaevolutionModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionModel::mean(self : OptmetaevolutionModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_model_scale(s : OptmetaevolutionModel, f : Double) -> OptmetaevolutionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionModel::scale(self : OptmetaevolutionModel, f : Double) -> OptmetaevolutionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_model_add(a : OptmetaevolutionModel, b : OptmetaevolutionModel) -> OptmetaevolutionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionModel::add(self : OptmetaevolutionModel, other : OptmetaevolutionModel) -> OptmetaevolutionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_model_copy(s : OptmetaevolutionModel) -> OptmetaevolutionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionModel::copy(self : OptmetaevolutionModel) -> OptmetaevolutionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_model_fill(s : OptmetaevolutionModel, v : Double) -> OptmetaevolutionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionModel::fill(self : OptmetaevolutionModel, v : Double) -> OptmetaevolutionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_model_min(s : OptmetaevolutionModel) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionModel::min(self : OptmetaevolutionModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_model_max(s : OptmetaevolutionModel) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionModel::max(self : OptmetaevolutionModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_model_to_string(s : OptmetaevolutionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionModel::to_string(self : OptmetaevolutionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_evolution_layer_make(size : Int) -> OptmetaevolutionLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_layer_len(s : OptmetaevolutionLayer) -> Int { s.size }
+pub fn OptmetaevolutionLayer::len(self : OptmetaevolutionLayer) -> Int { self.size }
 
-pub fn opt_meta_evolution_layer_get(s : OptmetaevolutionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionLayer::get(self : OptmetaevolutionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_layer_set(s : OptmetaevolutionLayer, i : Int, v : Double) -> OptmetaevolutionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionLayer::set(self : OptmetaevolutionLayer, i : Int, v : Double) -> OptmetaevolutionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_layer_sum(s : OptmetaevolutionLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionLayer::sum(self : OptmetaevolutionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_layer_mean(s : OptmetaevolutionLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionLayer::mean(self : OptmetaevolutionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_layer_scale(s : OptmetaevolutionLayer, f : Double) -> OptmetaevolutionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionLayer::scale(self : OptmetaevolutionLayer, f : Double) -> OptmetaevolutionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_layer_add(a : OptmetaevolutionLayer, b : OptmetaevolutionLayer) -> OptmetaevolutionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionLayer::add(self : OptmetaevolutionLayer, other : OptmetaevolutionLayer) -> OptmetaevolutionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_layer_copy(s : OptmetaevolutionLayer) -> OptmetaevolutionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionLayer::copy(self : OptmetaevolutionLayer) -> OptmetaevolutionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_layer_fill(s : OptmetaevolutionLayer, v : Double) -> OptmetaevolutionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionLayer::fill(self : OptmetaevolutionLayer, v : Double) -> OptmetaevolutionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_layer_min(s : OptmetaevolutionLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionLayer::min(self : OptmetaevolutionLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_layer_max(s : OptmetaevolutionLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionLayer::max(self : OptmetaevolutionLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_layer_to_string(s : OptmetaevolutionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionLayer::to_string(self : OptmetaevolutionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_evolution_buffer_make(size : Int) -> OptmetaevolutionBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_buffer_len(s : OptmetaevolutionBuffer) -> Int { s.size }
+pub fn OptmetaevolutionBuffer::len(self : OptmetaevolutionBuffer) -> Int { self.size }
 
-pub fn opt_meta_evolution_buffer_get(s : OptmetaevolutionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionBuffer::get(self : OptmetaevolutionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_buffer_set(s : OptmetaevolutionBuffer, i : Int, v : Double) -> OptmetaevolutionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionBuffer::set(self : OptmetaevolutionBuffer, i : Int, v : Double) -> OptmetaevolutionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_buffer_sum(s : OptmetaevolutionBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionBuffer::sum(self : OptmetaevolutionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_buffer_mean(s : OptmetaevolutionBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionBuffer::mean(self : OptmetaevolutionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_buffer_scale(s : OptmetaevolutionBuffer, f : Double) -> OptmetaevolutionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionBuffer::scale(self : OptmetaevolutionBuffer, f : Double) -> OptmetaevolutionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_buffer_add(a : OptmetaevolutionBuffer, b : OptmetaevolutionBuffer) -> OptmetaevolutionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionBuffer::add(self : OptmetaevolutionBuffer, other : OptmetaevolutionBuffer) -> OptmetaevolutionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_buffer_copy(s : OptmetaevolutionBuffer) -> OptmetaevolutionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionBuffer::copy(self : OptmetaevolutionBuffer) -> OptmetaevolutionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_buffer_fill(s : OptmetaevolutionBuffer, v : Double) -> OptmetaevolutionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionBuffer::fill(self : OptmetaevolutionBuffer, v : Double) -> OptmetaevolutionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_buffer_min(s : OptmetaevolutionBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionBuffer::min(self : OptmetaevolutionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_buffer_max(s : OptmetaevolutionBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionBuffer::max(self : OptmetaevolutionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_buffer_to_string(s : OptmetaevolutionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionBuffer::to_string(self : OptmetaevolutionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_evolution_cursor_make(size : Int) -> OptmetaevolutionCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_cursor_len(s : OptmetaevolutionCursor) -> Int { s.size }
+pub fn OptmetaevolutionCursor::len(self : OptmetaevolutionCursor) -> Int { self.size }
 
-pub fn opt_meta_evolution_cursor_get(s : OptmetaevolutionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionCursor::get(self : OptmetaevolutionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_cursor_set(s : OptmetaevolutionCursor, i : Int, v : Double) -> OptmetaevolutionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCursor::set(self : OptmetaevolutionCursor, i : Int, v : Double) -> OptmetaevolutionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cursor_sum(s : OptmetaevolutionCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionCursor::sum(self : OptmetaevolutionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_cursor_mean(s : OptmetaevolutionCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionCursor::mean(self : OptmetaevolutionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_cursor_scale(s : OptmetaevolutionCursor, f : Double) -> OptmetaevolutionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCursor::scale(self : OptmetaevolutionCursor, f : Double) -> OptmetaevolutionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cursor_add(a : OptmetaevolutionCursor, b : OptmetaevolutionCursor) -> OptmetaevolutionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionCursor::add(self : OptmetaevolutionCursor, other : OptmetaevolutionCursor) -> OptmetaevolutionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cursor_copy(s : OptmetaevolutionCursor) -> OptmetaevolutionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCursor::copy(self : OptmetaevolutionCursor) -> OptmetaevolutionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cursor_fill(s : OptmetaevolutionCursor, v : Double) -> OptmetaevolutionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionCursor::fill(self : OptmetaevolutionCursor, v : Double) -> OptmetaevolutionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_cursor_min(s : OptmetaevolutionCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionCursor::min(self : OptmetaevolutionCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_cursor_max(s : OptmetaevolutionCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionCursor::max(self : OptmetaevolutionCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_cursor_to_string(s : OptmetaevolutionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionCursor::to_string(self : OptmetaevolutionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionView {
@@ -912,45 +912,45 @@ pub fn opt_meta_evolution_view_make(size : Int) -> OptmetaevolutionView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_view_len(s : OptmetaevolutionView) -> Int { s.size }
+pub fn OptmetaevolutionView::len(self : OptmetaevolutionView) -> Int { self.size }
 
-pub fn opt_meta_evolution_view_get(s : OptmetaevolutionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionView::get(self : OptmetaevolutionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_view_set(s : OptmetaevolutionView, i : Int, v : Double) -> OptmetaevolutionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionView::set(self : OptmetaevolutionView, i : Int, v : Double) -> OptmetaevolutionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_view_sum(s : OptmetaevolutionView) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionView::sum(self : OptmetaevolutionView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_view_mean(s : OptmetaevolutionView) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionView::mean(self : OptmetaevolutionView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_view_scale(s : OptmetaevolutionView, f : Double) -> OptmetaevolutionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionView::scale(self : OptmetaevolutionView, f : Double) -> OptmetaevolutionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_view_add(a : OptmetaevolutionView, b : OptmetaevolutionView) -> OptmetaevolutionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionView::add(self : OptmetaevolutionView, other : OptmetaevolutionView) -> OptmetaevolutionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_view_copy(s : OptmetaevolutionView) -> OptmetaevolutionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionView::copy(self : OptmetaevolutionView) -> OptmetaevolutionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_view_fill(s : OptmetaevolutionView, v : Double) -> OptmetaevolutionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionView::fill(self : OptmetaevolutionView, v : Double) -> OptmetaevolutionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_view_min(s : OptmetaevolutionView) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionView::min(self : OptmetaevolutionView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_view_max(s : OptmetaevolutionView) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionView::max(self : OptmetaevolutionView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_view_to_string(s : OptmetaevolutionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionView::to_string(self : OptmetaevolutionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_evolution_range_make(size : Int) -> OptmetaevolutionRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_range_len(s : OptmetaevolutionRange) -> Int { s.size }
+pub fn OptmetaevolutionRange::len(self : OptmetaevolutionRange) -> Int { self.size }
 
-pub fn opt_meta_evolution_range_get(s : OptmetaevolutionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionRange::get(self : OptmetaevolutionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_range_set(s : OptmetaevolutionRange, i : Int, v : Double) -> OptmetaevolutionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionRange::set(self : OptmetaevolutionRange, i : Int, v : Double) -> OptmetaevolutionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_range_sum(s : OptmetaevolutionRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionRange::sum(self : OptmetaevolutionRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_range_mean(s : OptmetaevolutionRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionRange::mean(self : OptmetaevolutionRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_range_scale(s : OptmetaevolutionRange, f : Double) -> OptmetaevolutionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionRange::scale(self : OptmetaevolutionRange, f : Double) -> OptmetaevolutionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_range_add(a : OptmetaevolutionRange, b : OptmetaevolutionRange) -> OptmetaevolutionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionRange::add(self : OptmetaevolutionRange, other : OptmetaevolutionRange) -> OptmetaevolutionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_range_copy(s : OptmetaevolutionRange) -> OptmetaevolutionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionRange::copy(self : OptmetaevolutionRange) -> OptmetaevolutionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_range_fill(s : OptmetaevolutionRange, v : Double) -> OptmetaevolutionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionRange::fill(self : OptmetaevolutionRange, v : Double) -> OptmetaevolutionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_range_min(s : OptmetaevolutionRange) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionRange::min(self : OptmetaevolutionRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_range_max(s : OptmetaevolutionRange) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionRange::max(self : OptmetaevolutionRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_range_to_string(s : OptmetaevolutionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionRange::to_string(self : OptmetaevolutionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetaevolutionSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_evolution_slice_make(size : Int) -> OptmetaevolutionSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_evolution_slice_len(s : OptmetaevolutionSlice) -> Int { s.size }
+pub fn OptmetaevolutionSlice::len(self : OptmetaevolutionSlice) -> Int { self.size }
 
-pub fn opt_meta_evolution_slice_get(s : OptmetaevolutionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetaevolutionSlice::get(self : OptmetaevolutionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_evolution_slice_set(s : OptmetaevolutionSlice, i : Int, v : Double) -> OptmetaevolutionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetaevolutionSlice::set(self : OptmetaevolutionSlice, i : Int, v : Double) -> OptmetaevolutionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_slice_sum(s : OptmetaevolutionSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetaevolutionSlice::sum(self : OptmetaevolutionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_evolution_slice_mean(s : OptmetaevolutionSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetaevolutionSlice::mean(self : OptmetaevolutionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_evolution_slice_scale(s : OptmetaevolutionSlice, f : Double) -> OptmetaevolutionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionSlice::scale(self : OptmetaevolutionSlice, f : Double) -> OptmetaevolutionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_slice_add(a : OptmetaevolutionSlice, b : OptmetaevolutionSlice) -> OptmetaevolutionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetaevolutionSlice::add(self : OptmetaevolutionSlice, other : OptmetaevolutionSlice) -> OptmetaevolutionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_slice_copy(s : OptmetaevolutionSlice) -> OptmetaevolutionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionSlice::copy(self : OptmetaevolutionSlice) -> OptmetaevolutionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_slice_fill(s : OptmetaevolutionSlice, v : Double) -> OptmetaevolutionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetaevolutionSlice::fill(self : OptmetaevolutionSlice, v : Double) -> OptmetaevolutionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_evolution_slice_min(s : OptmetaevolutionSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetaevolutionSlice::min(self : OptmetaevolutionSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_evolution_slice_max(s : OptmetaevolutionSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetaevolutionSlice::max(self : OptmetaevolutionSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_evolution_slice_to_string(s : OptmetaevolutionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetaevolutionSlice::to_string(self : OptmetaevolutionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn net_route_rip_frame_make(size : Int) -> NetrouteripFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_frame_len(s : NetrouteripFrame) -> Int { s.size }
+pub fn NetrouteripFrame::len(self : NetrouteripFrame) -> Int { self.size }
 
-pub fn net_route_rip_frame_get(s : NetrouteripFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripFrame::get(self : NetrouteripFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_frame_set(s : NetrouteripFrame, i : Int, v : Double) -> NetrouteripFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripFrame::set(self : NetrouteripFrame, i : Int, v : Double) -> NetrouteripFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_frame_sum(s : NetrouteripFrame) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripFrame::sum(self : NetrouteripFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_frame_mean(s : NetrouteripFrame) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripFrame::mean(self : NetrouteripFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_frame_scale(s : NetrouteripFrame, f : Double) -> NetrouteripFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripFrame::scale(self : NetrouteripFrame, f : Double) -> NetrouteripFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_frame_add(a : NetrouteripFrame, b : NetrouteripFrame) -> NetrouteripFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripFrame::add(self : NetrouteripFrame, other : NetrouteripFrame) -> NetrouteripFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_frame_copy(s : NetrouteripFrame) -> NetrouteripFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripFrame::copy(self : NetrouteripFrame) -> NetrouteripFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_frame_fill(s : NetrouteripFrame, v : Double) -> NetrouteripFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripFrame::fill(self : NetrouteripFrame, v : Double) -> NetrouteripFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_frame_min(s : NetrouteripFrame) -> Double { @_common.min(s.data) }
+pub fn NetrouteripFrame::min(self : NetrouteripFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_frame_max(s : NetrouteripFrame) -> Double { @_common.max(s.data) }
+pub fn NetrouteripFrame::max(self : NetrouteripFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_frame_to_string(s : NetrouteripFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripFrame::to_string(self : NetrouteripFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripTable {
@@ -402,45 +402,45 @@ pub fn net_route_rip_table_make(size : Int) -> NetrouteripTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_table_len(s : NetrouteripTable) -> Int { s.size }
+pub fn NetrouteripTable::len(self : NetrouteripTable) -> Int { self.size }
 
-pub fn net_route_rip_table_get(s : NetrouteripTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripTable::get(self : NetrouteripTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_table_set(s : NetrouteripTable, i : Int, v : Double) -> NetrouteripTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripTable::set(self : NetrouteripTable, i : Int, v : Double) -> NetrouteripTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_table_sum(s : NetrouteripTable) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripTable::sum(self : NetrouteripTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_table_mean(s : NetrouteripTable) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripTable::mean(self : NetrouteripTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_table_scale(s : NetrouteripTable, f : Double) -> NetrouteripTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripTable::scale(self : NetrouteripTable, f : Double) -> NetrouteripTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_table_add(a : NetrouteripTable, b : NetrouteripTable) -> NetrouteripTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripTable::add(self : NetrouteripTable, other : NetrouteripTable) -> NetrouteripTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_table_copy(s : NetrouteripTable) -> NetrouteripTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripTable::copy(self : NetrouteripTable) -> NetrouteripTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_table_fill(s : NetrouteripTable, v : Double) -> NetrouteripTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripTable::fill(self : NetrouteripTable, v : Double) -> NetrouteripTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_table_min(s : NetrouteripTable) -> Double { @_common.min(s.data) }
+pub fn NetrouteripTable::min(self : NetrouteripTable) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_table_max(s : NetrouteripTable) -> Double { @_common.max(s.data) }
+pub fn NetrouteripTable::max(self : NetrouteripTable) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_table_to_string(s : NetrouteripTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripTable::to_string(self : NetrouteripTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripGraphN {
@@ -453,45 +453,45 @@ pub fn net_route_rip_graphn_make(size : Int) -> NetrouteripGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_graphn_len(s : NetrouteripGraphN) -> Int { s.size }
+pub fn NetrouteripGraphN::len(self : NetrouteripGraphN) -> Int { self.size }
 
-pub fn net_route_rip_graphn_get(s : NetrouteripGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripGraphN::get(self : NetrouteripGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_graphn_set(s : NetrouteripGraphN, i : Int, v : Double) -> NetrouteripGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripGraphN::set(self : NetrouteripGraphN, i : Int, v : Double) -> NetrouteripGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_graphn_sum(s : NetrouteripGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripGraphN::sum(self : NetrouteripGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_graphn_mean(s : NetrouteripGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripGraphN::mean(self : NetrouteripGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_graphn_scale(s : NetrouteripGraphN, f : Double) -> NetrouteripGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripGraphN::scale(self : NetrouteripGraphN, f : Double) -> NetrouteripGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_graphn_add(a : NetrouteripGraphN, b : NetrouteripGraphN) -> NetrouteripGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripGraphN::add(self : NetrouteripGraphN, other : NetrouteripGraphN) -> NetrouteripGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_graphn_copy(s : NetrouteripGraphN) -> NetrouteripGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripGraphN::copy(self : NetrouteripGraphN) -> NetrouteripGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_graphn_fill(s : NetrouteripGraphN, v : Double) -> NetrouteripGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripGraphN::fill(self : NetrouteripGraphN, v : Double) -> NetrouteripGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_graphn_min(s : NetrouteripGraphN) -> Double { @_common.min(s.data) }
+pub fn NetrouteripGraphN::min(self : NetrouteripGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_graphn_max(s : NetrouteripGraphN) -> Double { @_common.max(s.data) }
+pub fn NetrouteripGraphN::max(self : NetrouteripGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_graphn_to_string(s : NetrouteripGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripGraphN::to_string(self : NetrouteripGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripNode {
@@ -504,45 +504,45 @@ pub fn net_route_rip_node_make(size : Int) -> NetrouteripNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_node_len(s : NetrouteripNode) -> Int { s.size }
+pub fn NetrouteripNode::len(self : NetrouteripNode) -> Int { self.size }
 
-pub fn net_route_rip_node_get(s : NetrouteripNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripNode::get(self : NetrouteripNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_node_set(s : NetrouteripNode, i : Int, v : Double) -> NetrouteripNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripNode::set(self : NetrouteripNode, i : Int, v : Double) -> NetrouteripNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_node_sum(s : NetrouteripNode) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripNode::sum(self : NetrouteripNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_node_mean(s : NetrouteripNode) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripNode::mean(self : NetrouteripNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_node_scale(s : NetrouteripNode, f : Double) -> NetrouteripNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripNode::scale(self : NetrouteripNode, f : Double) -> NetrouteripNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_node_add(a : NetrouteripNode, b : NetrouteripNode) -> NetrouteripNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripNode::add(self : NetrouteripNode, other : NetrouteripNode) -> NetrouteripNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_node_copy(s : NetrouteripNode) -> NetrouteripNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripNode::copy(self : NetrouteripNode) -> NetrouteripNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_node_fill(s : NetrouteripNode, v : Double) -> NetrouteripNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripNode::fill(self : NetrouteripNode, v : Double) -> NetrouteripNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_node_min(s : NetrouteripNode) -> Double { @_common.min(s.data) }
+pub fn NetrouteripNode::min(self : NetrouteripNode) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_node_max(s : NetrouteripNode) -> Double { @_common.max(s.data) }
+pub fn NetrouteripNode::max(self : NetrouteripNode) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_node_to_string(s : NetrouteripNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripNode::to_string(self : NetrouteripNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripEdge {
@@ -555,45 +555,45 @@ pub fn net_route_rip_edge_make(size : Int) -> NetrouteripEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_edge_len(s : NetrouteripEdge) -> Int { s.size }
+pub fn NetrouteripEdge::len(self : NetrouteripEdge) -> Int { self.size }
 
-pub fn net_route_rip_edge_get(s : NetrouteripEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripEdge::get(self : NetrouteripEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_edge_set(s : NetrouteripEdge, i : Int, v : Double) -> NetrouteripEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripEdge::set(self : NetrouteripEdge, i : Int, v : Double) -> NetrouteripEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_edge_sum(s : NetrouteripEdge) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripEdge::sum(self : NetrouteripEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_edge_mean(s : NetrouteripEdge) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripEdge::mean(self : NetrouteripEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_edge_scale(s : NetrouteripEdge, f : Double) -> NetrouteripEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripEdge::scale(self : NetrouteripEdge, f : Double) -> NetrouteripEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_edge_add(a : NetrouteripEdge, b : NetrouteripEdge) -> NetrouteripEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripEdge::add(self : NetrouteripEdge, other : NetrouteripEdge) -> NetrouteripEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_edge_copy(s : NetrouteripEdge) -> NetrouteripEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripEdge::copy(self : NetrouteripEdge) -> NetrouteripEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_edge_fill(s : NetrouteripEdge, v : Double) -> NetrouteripEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripEdge::fill(self : NetrouteripEdge, v : Double) -> NetrouteripEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_edge_min(s : NetrouteripEdge) -> Double { @_common.min(s.data) }
+pub fn NetrouteripEdge::min(self : NetrouteripEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_edge_max(s : NetrouteripEdge) -> Double { @_common.max(s.data) }
+pub fn NetrouteripEdge::max(self : NetrouteripEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_edge_to_string(s : NetrouteripEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripEdge::to_string(self : NetrouteripEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripPath {
@@ -606,45 +606,45 @@ pub fn net_route_rip_path_make(size : Int) -> NetrouteripPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_path_len(s : NetrouteripPath) -> Int { s.size }
+pub fn NetrouteripPath::len(self : NetrouteripPath) -> Int { self.size }
 
-pub fn net_route_rip_path_get(s : NetrouteripPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripPath::get(self : NetrouteripPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_path_set(s : NetrouteripPath, i : Int, v : Double) -> NetrouteripPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripPath::set(self : NetrouteripPath, i : Int, v : Double) -> NetrouteripPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_path_sum(s : NetrouteripPath) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripPath::sum(self : NetrouteripPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_path_mean(s : NetrouteripPath) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripPath::mean(self : NetrouteripPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_path_scale(s : NetrouteripPath, f : Double) -> NetrouteripPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripPath::scale(self : NetrouteripPath, f : Double) -> NetrouteripPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_path_add(a : NetrouteripPath, b : NetrouteripPath) -> NetrouteripPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripPath::add(self : NetrouteripPath, other : NetrouteripPath) -> NetrouteripPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_path_copy(s : NetrouteripPath) -> NetrouteripPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripPath::copy(self : NetrouteripPath) -> NetrouteripPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_path_fill(s : NetrouteripPath, v : Double) -> NetrouteripPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripPath::fill(self : NetrouteripPath, v : Double) -> NetrouteripPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_path_min(s : NetrouteripPath) -> Double { @_common.min(s.data) }
+pub fn NetrouteripPath::min(self : NetrouteripPath) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_path_max(s : NetrouteripPath) -> Double { @_common.max(s.data) }
+pub fn NetrouteripPath::max(self : NetrouteripPath) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_path_to_string(s : NetrouteripPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripPath::to_string(self : NetrouteripPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripCluster {
@@ -657,45 +657,45 @@ pub fn net_route_rip_cluster_make(size : Int) -> NetrouteripCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_cluster_len(s : NetrouteripCluster) -> Int { s.size }
+pub fn NetrouteripCluster::len(self : NetrouteripCluster) -> Int { self.size }
 
-pub fn net_route_rip_cluster_get(s : NetrouteripCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripCluster::get(self : NetrouteripCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_cluster_set(s : NetrouteripCluster, i : Int, v : Double) -> NetrouteripCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripCluster::set(self : NetrouteripCluster, i : Int, v : Double) -> NetrouteripCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cluster_sum(s : NetrouteripCluster) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripCluster::sum(self : NetrouteripCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_cluster_mean(s : NetrouteripCluster) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripCluster::mean(self : NetrouteripCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_cluster_scale(s : NetrouteripCluster, f : Double) -> NetrouteripCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripCluster::scale(self : NetrouteripCluster, f : Double) -> NetrouteripCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cluster_add(a : NetrouteripCluster, b : NetrouteripCluster) -> NetrouteripCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripCluster::add(self : NetrouteripCluster, other : NetrouteripCluster) -> NetrouteripCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_cluster_copy(s : NetrouteripCluster) -> NetrouteripCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripCluster::copy(self : NetrouteripCluster) -> NetrouteripCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cluster_fill(s : NetrouteripCluster, v : Double) -> NetrouteripCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripCluster::fill(self : NetrouteripCluster, v : Double) -> NetrouteripCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cluster_min(s : NetrouteripCluster) -> Double { @_common.min(s.data) }
+pub fn NetrouteripCluster::min(self : NetrouteripCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_cluster_max(s : NetrouteripCluster) -> Double { @_common.max(s.data) }
+pub fn NetrouteripCluster::max(self : NetrouteripCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_cluster_to_string(s : NetrouteripCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripCluster::to_string(self : NetrouteripCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripModel {
@@ -708,45 +708,45 @@ pub fn net_route_rip_model_make(size : Int) -> NetrouteripModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_model_len(s : NetrouteripModel) -> Int { s.size }
+pub fn NetrouteripModel::len(self : NetrouteripModel) -> Int { self.size }
 
-pub fn net_route_rip_model_get(s : NetrouteripModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripModel::get(self : NetrouteripModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_model_set(s : NetrouteripModel, i : Int, v : Double) -> NetrouteripModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripModel::set(self : NetrouteripModel, i : Int, v : Double) -> NetrouteripModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_model_sum(s : NetrouteripModel) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripModel::sum(self : NetrouteripModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_model_mean(s : NetrouteripModel) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripModel::mean(self : NetrouteripModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_model_scale(s : NetrouteripModel, f : Double) -> NetrouteripModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripModel::scale(self : NetrouteripModel, f : Double) -> NetrouteripModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_model_add(a : NetrouteripModel, b : NetrouteripModel) -> NetrouteripModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripModel::add(self : NetrouteripModel, other : NetrouteripModel) -> NetrouteripModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_model_copy(s : NetrouteripModel) -> NetrouteripModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripModel::copy(self : NetrouteripModel) -> NetrouteripModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_model_fill(s : NetrouteripModel, v : Double) -> NetrouteripModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripModel::fill(self : NetrouteripModel, v : Double) -> NetrouteripModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_model_min(s : NetrouteripModel) -> Double { @_common.min(s.data) }
+pub fn NetrouteripModel::min(self : NetrouteripModel) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_model_max(s : NetrouteripModel) -> Double { @_common.max(s.data) }
+pub fn NetrouteripModel::max(self : NetrouteripModel) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_model_to_string(s : NetrouteripModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripModel::to_string(self : NetrouteripModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripLayer {
@@ -759,45 +759,45 @@ pub fn net_route_rip_layer_make(size : Int) -> NetrouteripLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_layer_len(s : NetrouteripLayer) -> Int { s.size }
+pub fn NetrouteripLayer::len(self : NetrouteripLayer) -> Int { self.size }
 
-pub fn net_route_rip_layer_get(s : NetrouteripLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripLayer::get(self : NetrouteripLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_layer_set(s : NetrouteripLayer, i : Int, v : Double) -> NetrouteripLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripLayer::set(self : NetrouteripLayer, i : Int, v : Double) -> NetrouteripLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_layer_sum(s : NetrouteripLayer) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripLayer::sum(self : NetrouteripLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_layer_mean(s : NetrouteripLayer) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripLayer::mean(self : NetrouteripLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_layer_scale(s : NetrouteripLayer, f : Double) -> NetrouteripLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripLayer::scale(self : NetrouteripLayer, f : Double) -> NetrouteripLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_layer_add(a : NetrouteripLayer, b : NetrouteripLayer) -> NetrouteripLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripLayer::add(self : NetrouteripLayer, other : NetrouteripLayer) -> NetrouteripLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_layer_copy(s : NetrouteripLayer) -> NetrouteripLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripLayer::copy(self : NetrouteripLayer) -> NetrouteripLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_layer_fill(s : NetrouteripLayer, v : Double) -> NetrouteripLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripLayer::fill(self : NetrouteripLayer, v : Double) -> NetrouteripLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_layer_min(s : NetrouteripLayer) -> Double { @_common.min(s.data) }
+pub fn NetrouteripLayer::min(self : NetrouteripLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_layer_max(s : NetrouteripLayer) -> Double { @_common.max(s.data) }
+pub fn NetrouteripLayer::max(self : NetrouteripLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_layer_to_string(s : NetrouteripLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripLayer::to_string(self : NetrouteripLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripBuffer {
@@ -810,45 +810,45 @@ pub fn net_route_rip_buffer_make(size : Int) -> NetrouteripBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_buffer_len(s : NetrouteripBuffer) -> Int { s.size }
+pub fn NetrouteripBuffer::len(self : NetrouteripBuffer) -> Int { self.size }
 
-pub fn net_route_rip_buffer_get(s : NetrouteripBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripBuffer::get(self : NetrouteripBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_buffer_set(s : NetrouteripBuffer, i : Int, v : Double) -> NetrouteripBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripBuffer::set(self : NetrouteripBuffer, i : Int, v : Double) -> NetrouteripBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_buffer_sum(s : NetrouteripBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripBuffer::sum(self : NetrouteripBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_buffer_mean(s : NetrouteripBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripBuffer::mean(self : NetrouteripBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_buffer_scale(s : NetrouteripBuffer, f : Double) -> NetrouteripBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripBuffer::scale(self : NetrouteripBuffer, f : Double) -> NetrouteripBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_buffer_add(a : NetrouteripBuffer, b : NetrouteripBuffer) -> NetrouteripBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripBuffer::add(self : NetrouteripBuffer, other : NetrouteripBuffer) -> NetrouteripBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_buffer_copy(s : NetrouteripBuffer) -> NetrouteripBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripBuffer::copy(self : NetrouteripBuffer) -> NetrouteripBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_buffer_fill(s : NetrouteripBuffer, v : Double) -> NetrouteripBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripBuffer::fill(self : NetrouteripBuffer, v : Double) -> NetrouteripBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_buffer_min(s : NetrouteripBuffer) -> Double { @_common.min(s.data) }
+pub fn NetrouteripBuffer::min(self : NetrouteripBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_buffer_max(s : NetrouteripBuffer) -> Double { @_common.max(s.data) }
+pub fn NetrouteripBuffer::max(self : NetrouteripBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_buffer_to_string(s : NetrouteripBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripBuffer::to_string(self : NetrouteripBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripCursor {
@@ -861,45 +861,45 @@ pub fn net_route_rip_cursor_make(size : Int) -> NetrouteripCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_cursor_len(s : NetrouteripCursor) -> Int { s.size }
+pub fn NetrouteripCursor::len(self : NetrouteripCursor) -> Int { self.size }
 
-pub fn net_route_rip_cursor_get(s : NetrouteripCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripCursor::get(self : NetrouteripCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_cursor_set(s : NetrouteripCursor, i : Int, v : Double) -> NetrouteripCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripCursor::set(self : NetrouteripCursor, i : Int, v : Double) -> NetrouteripCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cursor_sum(s : NetrouteripCursor) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripCursor::sum(self : NetrouteripCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_cursor_mean(s : NetrouteripCursor) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripCursor::mean(self : NetrouteripCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_cursor_scale(s : NetrouteripCursor, f : Double) -> NetrouteripCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripCursor::scale(self : NetrouteripCursor, f : Double) -> NetrouteripCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cursor_add(a : NetrouteripCursor, b : NetrouteripCursor) -> NetrouteripCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripCursor::add(self : NetrouteripCursor, other : NetrouteripCursor) -> NetrouteripCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_cursor_copy(s : NetrouteripCursor) -> NetrouteripCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripCursor::copy(self : NetrouteripCursor) -> NetrouteripCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cursor_fill(s : NetrouteripCursor, v : Double) -> NetrouteripCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripCursor::fill(self : NetrouteripCursor, v : Double) -> NetrouteripCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_cursor_min(s : NetrouteripCursor) -> Double { @_common.min(s.data) }
+pub fn NetrouteripCursor::min(self : NetrouteripCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_cursor_max(s : NetrouteripCursor) -> Double { @_common.max(s.data) }
+pub fn NetrouteripCursor::max(self : NetrouteripCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_cursor_to_string(s : NetrouteripCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripCursor::to_string(self : NetrouteripCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripView {
@@ -912,45 +912,45 @@ pub fn net_route_rip_view_make(size : Int) -> NetrouteripView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_view_len(s : NetrouteripView) -> Int { s.size }
+pub fn NetrouteripView::len(self : NetrouteripView) -> Int { self.size }
 
-pub fn net_route_rip_view_get(s : NetrouteripView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripView::get(self : NetrouteripView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_view_set(s : NetrouteripView, i : Int, v : Double) -> NetrouteripView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripView::set(self : NetrouteripView, i : Int, v : Double) -> NetrouteripView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_view_sum(s : NetrouteripView) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripView::sum(self : NetrouteripView) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_view_mean(s : NetrouteripView) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripView::mean(self : NetrouteripView) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_view_scale(s : NetrouteripView, f : Double) -> NetrouteripView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripView::scale(self : NetrouteripView, f : Double) -> NetrouteripView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_view_add(a : NetrouteripView, b : NetrouteripView) -> NetrouteripView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripView::add(self : NetrouteripView, other : NetrouteripView) -> NetrouteripView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_view_copy(s : NetrouteripView) -> NetrouteripView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripView::copy(self : NetrouteripView) -> NetrouteripView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_view_fill(s : NetrouteripView, v : Double) -> NetrouteripView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripView::fill(self : NetrouteripView, v : Double) -> NetrouteripView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_view_min(s : NetrouteripView) -> Double { @_common.min(s.data) }
+pub fn NetrouteripView::min(self : NetrouteripView) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_view_max(s : NetrouteripView) -> Double { @_common.max(s.data) }
+pub fn NetrouteripView::max(self : NetrouteripView) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_view_to_string(s : NetrouteripView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripView::to_string(self : NetrouteripView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripRange {
@@ -963,45 +963,45 @@ pub fn net_route_rip_range_make(size : Int) -> NetrouteripRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_range_len(s : NetrouteripRange) -> Int { s.size }
+pub fn NetrouteripRange::len(self : NetrouteripRange) -> Int { self.size }
 
-pub fn net_route_rip_range_get(s : NetrouteripRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripRange::get(self : NetrouteripRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_range_set(s : NetrouteripRange, i : Int, v : Double) -> NetrouteripRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripRange::set(self : NetrouteripRange, i : Int, v : Double) -> NetrouteripRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_range_sum(s : NetrouteripRange) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripRange::sum(self : NetrouteripRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_range_mean(s : NetrouteripRange) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripRange::mean(self : NetrouteripRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_range_scale(s : NetrouteripRange, f : Double) -> NetrouteripRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripRange::scale(self : NetrouteripRange, f : Double) -> NetrouteripRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_range_add(a : NetrouteripRange, b : NetrouteripRange) -> NetrouteripRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripRange::add(self : NetrouteripRange, other : NetrouteripRange) -> NetrouteripRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_range_copy(s : NetrouteripRange) -> NetrouteripRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripRange::copy(self : NetrouteripRange) -> NetrouteripRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_range_fill(s : NetrouteripRange, v : Double) -> NetrouteripRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripRange::fill(self : NetrouteripRange, v : Double) -> NetrouteripRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_range_min(s : NetrouteripRange) -> Double { @_common.min(s.data) }
+pub fn NetrouteripRange::min(self : NetrouteripRange) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_range_max(s : NetrouteripRange) -> Double { @_common.max(s.data) }
+pub fn NetrouteripRange::max(self : NetrouteripRange) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_range_to_string(s : NetrouteripRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripRange::to_string(self : NetrouteripRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetrouteripSlice {
@@ -1014,44 +1014,44 @@ pub fn net_route_rip_slice_make(size : Int) -> NetrouteripSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_route_rip_slice_len(s : NetrouteripSlice) -> Int { s.size }
+pub fn NetrouteripSlice::len(self : NetrouteripSlice) -> Int { self.size }
 
-pub fn net_route_rip_slice_get(s : NetrouteripSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetrouteripSlice::get(self : NetrouteripSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_route_rip_slice_set(s : NetrouteripSlice, i : Int, v : Double) -> NetrouteripSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetrouteripSlice::set(self : NetrouteripSlice, i : Int, v : Double) -> NetrouteripSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_slice_sum(s : NetrouteripSlice) -> Double { @_common.sum(s.data) }
+pub fn NetrouteripSlice::sum(self : NetrouteripSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_route_rip_slice_mean(s : NetrouteripSlice) -> Double { @_common.mean(s.data) }
+pub fn NetrouteripSlice::mean(self : NetrouteripSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_route_rip_slice_scale(s : NetrouteripSlice, f : Double) -> NetrouteripSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetrouteripSlice::scale(self : NetrouteripSlice, f : Double) -> NetrouteripSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_slice_add(a : NetrouteripSlice, b : NetrouteripSlice) -> NetrouteripSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetrouteripSlice::add(self : NetrouteripSlice, other : NetrouteripSlice) -> NetrouteripSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_route_rip_slice_copy(s : NetrouteripSlice) -> NetrouteripSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetrouteripSlice::copy(self : NetrouteripSlice) -> NetrouteripSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_slice_fill(s : NetrouteripSlice, v : Double) -> NetrouteripSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetrouteripSlice::fill(self : NetrouteripSlice, v : Double) -> NetrouteripSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_route_rip_slice_min(s : NetrouteripSlice) -> Double { @_common.min(s.data) }
+pub fn NetrouteripSlice::min(self : NetrouteripSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_route_rip_slice_max(s : NetrouteripSlice) -> Double { @_common.max(s.data) }
+pub fn NetrouteripSlice::max(self : NetrouteripSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_route_rip_slice_to_string(s : NetrouteripSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetrouteripSlice::to_string(self : NetrouteripSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

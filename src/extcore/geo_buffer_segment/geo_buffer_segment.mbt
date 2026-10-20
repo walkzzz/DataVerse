@@ -351,45 +351,45 @@ pub fn geo_buffer_segment_frame_make(size : Int) -> GeobuffersegmentFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_frame_len(s : GeobuffersegmentFrame) -> Int { s.size }
+pub fn GeobuffersegmentFrame::len(self : GeobuffersegmentFrame) -> Int { self.size }
 
-pub fn geo_buffer_segment_frame_get(s : GeobuffersegmentFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentFrame::get(self : GeobuffersegmentFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_frame_set(s : GeobuffersegmentFrame, i : Int, v : Double) -> GeobuffersegmentFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentFrame::set(self : GeobuffersegmentFrame, i : Int, v : Double) -> GeobuffersegmentFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_frame_sum(s : GeobuffersegmentFrame) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentFrame::sum(self : GeobuffersegmentFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_frame_mean(s : GeobuffersegmentFrame) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentFrame::mean(self : GeobuffersegmentFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_frame_scale(s : GeobuffersegmentFrame, f : Double) -> GeobuffersegmentFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentFrame::scale(self : GeobuffersegmentFrame, f : Double) -> GeobuffersegmentFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_frame_add(a : GeobuffersegmentFrame, b : GeobuffersegmentFrame) -> GeobuffersegmentFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentFrame::add(self : GeobuffersegmentFrame, other : GeobuffersegmentFrame) -> GeobuffersegmentFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_frame_copy(s : GeobuffersegmentFrame) -> GeobuffersegmentFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentFrame::copy(self : GeobuffersegmentFrame) -> GeobuffersegmentFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_frame_fill(s : GeobuffersegmentFrame, v : Double) -> GeobuffersegmentFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentFrame::fill(self : GeobuffersegmentFrame, v : Double) -> GeobuffersegmentFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_frame_min(s : GeobuffersegmentFrame) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentFrame::min(self : GeobuffersegmentFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_frame_max(s : GeobuffersegmentFrame) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentFrame::max(self : GeobuffersegmentFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_frame_to_string(s : GeobuffersegmentFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentFrame::to_string(self : GeobuffersegmentFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentTable {
@@ -402,45 +402,45 @@ pub fn geo_buffer_segment_table_make(size : Int) -> GeobuffersegmentTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_table_len(s : GeobuffersegmentTable) -> Int { s.size }
+pub fn GeobuffersegmentTable::len(self : GeobuffersegmentTable) -> Int { self.size }
 
-pub fn geo_buffer_segment_table_get(s : GeobuffersegmentTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentTable::get(self : GeobuffersegmentTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_table_set(s : GeobuffersegmentTable, i : Int, v : Double) -> GeobuffersegmentTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentTable::set(self : GeobuffersegmentTable, i : Int, v : Double) -> GeobuffersegmentTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_table_sum(s : GeobuffersegmentTable) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentTable::sum(self : GeobuffersegmentTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_table_mean(s : GeobuffersegmentTable) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentTable::mean(self : GeobuffersegmentTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_table_scale(s : GeobuffersegmentTable, f : Double) -> GeobuffersegmentTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentTable::scale(self : GeobuffersegmentTable, f : Double) -> GeobuffersegmentTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_table_add(a : GeobuffersegmentTable, b : GeobuffersegmentTable) -> GeobuffersegmentTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentTable::add(self : GeobuffersegmentTable, other : GeobuffersegmentTable) -> GeobuffersegmentTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_table_copy(s : GeobuffersegmentTable) -> GeobuffersegmentTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentTable::copy(self : GeobuffersegmentTable) -> GeobuffersegmentTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_table_fill(s : GeobuffersegmentTable, v : Double) -> GeobuffersegmentTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentTable::fill(self : GeobuffersegmentTable, v : Double) -> GeobuffersegmentTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_table_min(s : GeobuffersegmentTable) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentTable::min(self : GeobuffersegmentTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_table_max(s : GeobuffersegmentTable) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentTable::max(self : GeobuffersegmentTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_table_to_string(s : GeobuffersegmentTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentTable::to_string(self : GeobuffersegmentTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentGraphN {
@@ -453,45 +453,45 @@ pub fn geo_buffer_segment_graphn_make(size : Int) -> GeobuffersegmentGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_graphn_len(s : GeobuffersegmentGraphN) -> Int { s.size }
+pub fn GeobuffersegmentGraphN::len(self : GeobuffersegmentGraphN) -> Int { self.size }
 
-pub fn geo_buffer_segment_graphn_get(s : GeobuffersegmentGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentGraphN::get(self : GeobuffersegmentGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_graphn_set(s : GeobuffersegmentGraphN, i : Int, v : Double) -> GeobuffersegmentGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentGraphN::set(self : GeobuffersegmentGraphN, i : Int, v : Double) -> GeobuffersegmentGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_graphn_sum(s : GeobuffersegmentGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentGraphN::sum(self : GeobuffersegmentGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_graphn_mean(s : GeobuffersegmentGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentGraphN::mean(self : GeobuffersegmentGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_graphn_scale(s : GeobuffersegmentGraphN, f : Double) -> GeobuffersegmentGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentGraphN::scale(self : GeobuffersegmentGraphN, f : Double) -> GeobuffersegmentGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_graphn_add(a : GeobuffersegmentGraphN, b : GeobuffersegmentGraphN) -> GeobuffersegmentGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentGraphN::add(self : GeobuffersegmentGraphN, other : GeobuffersegmentGraphN) -> GeobuffersegmentGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_graphn_copy(s : GeobuffersegmentGraphN) -> GeobuffersegmentGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentGraphN::copy(self : GeobuffersegmentGraphN) -> GeobuffersegmentGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_graphn_fill(s : GeobuffersegmentGraphN, v : Double) -> GeobuffersegmentGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentGraphN::fill(self : GeobuffersegmentGraphN, v : Double) -> GeobuffersegmentGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_graphn_min(s : GeobuffersegmentGraphN) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentGraphN::min(self : GeobuffersegmentGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_graphn_max(s : GeobuffersegmentGraphN) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentGraphN::max(self : GeobuffersegmentGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_graphn_to_string(s : GeobuffersegmentGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentGraphN::to_string(self : GeobuffersegmentGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentNode {
@@ -504,45 +504,45 @@ pub fn geo_buffer_segment_node_make(size : Int) -> GeobuffersegmentNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_node_len(s : GeobuffersegmentNode) -> Int { s.size }
+pub fn GeobuffersegmentNode::len(self : GeobuffersegmentNode) -> Int { self.size }
 
-pub fn geo_buffer_segment_node_get(s : GeobuffersegmentNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentNode::get(self : GeobuffersegmentNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_node_set(s : GeobuffersegmentNode, i : Int, v : Double) -> GeobuffersegmentNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentNode::set(self : GeobuffersegmentNode, i : Int, v : Double) -> GeobuffersegmentNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_node_sum(s : GeobuffersegmentNode) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentNode::sum(self : GeobuffersegmentNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_node_mean(s : GeobuffersegmentNode) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentNode::mean(self : GeobuffersegmentNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_node_scale(s : GeobuffersegmentNode, f : Double) -> GeobuffersegmentNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentNode::scale(self : GeobuffersegmentNode, f : Double) -> GeobuffersegmentNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_node_add(a : GeobuffersegmentNode, b : GeobuffersegmentNode) -> GeobuffersegmentNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentNode::add(self : GeobuffersegmentNode, other : GeobuffersegmentNode) -> GeobuffersegmentNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_node_copy(s : GeobuffersegmentNode) -> GeobuffersegmentNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentNode::copy(self : GeobuffersegmentNode) -> GeobuffersegmentNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_node_fill(s : GeobuffersegmentNode, v : Double) -> GeobuffersegmentNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentNode::fill(self : GeobuffersegmentNode, v : Double) -> GeobuffersegmentNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_node_min(s : GeobuffersegmentNode) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentNode::min(self : GeobuffersegmentNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_node_max(s : GeobuffersegmentNode) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentNode::max(self : GeobuffersegmentNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_node_to_string(s : GeobuffersegmentNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentNode::to_string(self : GeobuffersegmentNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentEdge {
@@ -555,45 +555,45 @@ pub fn geo_buffer_segment_edge_make(size : Int) -> GeobuffersegmentEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_edge_len(s : GeobuffersegmentEdge) -> Int { s.size }
+pub fn GeobuffersegmentEdge::len(self : GeobuffersegmentEdge) -> Int { self.size }
 
-pub fn geo_buffer_segment_edge_get(s : GeobuffersegmentEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentEdge::get(self : GeobuffersegmentEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_edge_set(s : GeobuffersegmentEdge, i : Int, v : Double) -> GeobuffersegmentEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentEdge::set(self : GeobuffersegmentEdge, i : Int, v : Double) -> GeobuffersegmentEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_edge_sum(s : GeobuffersegmentEdge) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentEdge::sum(self : GeobuffersegmentEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_edge_mean(s : GeobuffersegmentEdge) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentEdge::mean(self : GeobuffersegmentEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_edge_scale(s : GeobuffersegmentEdge, f : Double) -> GeobuffersegmentEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentEdge::scale(self : GeobuffersegmentEdge, f : Double) -> GeobuffersegmentEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_edge_add(a : GeobuffersegmentEdge, b : GeobuffersegmentEdge) -> GeobuffersegmentEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentEdge::add(self : GeobuffersegmentEdge, other : GeobuffersegmentEdge) -> GeobuffersegmentEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_edge_copy(s : GeobuffersegmentEdge) -> GeobuffersegmentEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentEdge::copy(self : GeobuffersegmentEdge) -> GeobuffersegmentEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_edge_fill(s : GeobuffersegmentEdge, v : Double) -> GeobuffersegmentEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentEdge::fill(self : GeobuffersegmentEdge, v : Double) -> GeobuffersegmentEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_edge_min(s : GeobuffersegmentEdge) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentEdge::min(self : GeobuffersegmentEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_edge_max(s : GeobuffersegmentEdge) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentEdge::max(self : GeobuffersegmentEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_edge_to_string(s : GeobuffersegmentEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentEdge::to_string(self : GeobuffersegmentEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentPath {
@@ -606,45 +606,45 @@ pub fn geo_buffer_segment_path_make(size : Int) -> GeobuffersegmentPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_path_len(s : GeobuffersegmentPath) -> Int { s.size }
+pub fn GeobuffersegmentPath::len(self : GeobuffersegmentPath) -> Int { self.size }
 
-pub fn geo_buffer_segment_path_get(s : GeobuffersegmentPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentPath::get(self : GeobuffersegmentPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_path_set(s : GeobuffersegmentPath, i : Int, v : Double) -> GeobuffersegmentPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentPath::set(self : GeobuffersegmentPath, i : Int, v : Double) -> GeobuffersegmentPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_path_sum(s : GeobuffersegmentPath) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentPath::sum(self : GeobuffersegmentPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_path_mean(s : GeobuffersegmentPath) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentPath::mean(self : GeobuffersegmentPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_path_scale(s : GeobuffersegmentPath, f : Double) -> GeobuffersegmentPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentPath::scale(self : GeobuffersegmentPath, f : Double) -> GeobuffersegmentPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_path_add(a : GeobuffersegmentPath, b : GeobuffersegmentPath) -> GeobuffersegmentPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentPath::add(self : GeobuffersegmentPath, other : GeobuffersegmentPath) -> GeobuffersegmentPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_path_copy(s : GeobuffersegmentPath) -> GeobuffersegmentPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentPath::copy(self : GeobuffersegmentPath) -> GeobuffersegmentPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_path_fill(s : GeobuffersegmentPath, v : Double) -> GeobuffersegmentPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentPath::fill(self : GeobuffersegmentPath, v : Double) -> GeobuffersegmentPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_path_min(s : GeobuffersegmentPath) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentPath::min(self : GeobuffersegmentPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_path_max(s : GeobuffersegmentPath) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentPath::max(self : GeobuffersegmentPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_path_to_string(s : GeobuffersegmentPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentPath::to_string(self : GeobuffersegmentPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentCluster {
@@ -657,45 +657,45 @@ pub fn geo_buffer_segment_cluster_make(size : Int) -> GeobuffersegmentCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_cluster_len(s : GeobuffersegmentCluster) -> Int { s.size }
+pub fn GeobuffersegmentCluster::len(self : GeobuffersegmentCluster) -> Int { self.size }
 
-pub fn geo_buffer_segment_cluster_get(s : GeobuffersegmentCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentCluster::get(self : GeobuffersegmentCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_cluster_set(s : GeobuffersegmentCluster, i : Int, v : Double) -> GeobuffersegmentCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCluster::set(self : GeobuffersegmentCluster, i : Int, v : Double) -> GeobuffersegmentCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cluster_sum(s : GeobuffersegmentCluster) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentCluster::sum(self : GeobuffersegmentCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_cluster_mean(s : GeobuffersegmentCluster) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentCluster::mean(self : GeobuffersegmentCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_cluster_scale(s : GeobuffersegmentCluster, f : Double) -> GeobuffersegmentCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCluster::scale(self : GeobuffersegmentCluster, f : Double) -> GeobuffersegmentCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cluster_add(a : GeobuffersegmentCluster, b : GeobuffersegmentCluster) -> GeobuffersegmentCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentCluster::add(self : GeobuffersegmentCluster, other : GeobuffersegmentCluster) -> GeobuffersegmentCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cluster_copy(s : GeobuffersegmentCluster) -> GeobuffersegmentCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCluster::copy(self : GeobuffersegmentCluster) -> GeobuffersegmentCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cluster_fill(s : GeobuffersegmentCluster, v : Double) -> GeobuffersegmentCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCluster::fill(self : GeobuffersegmentCluster, v : Double) -> GeobuffersegmentCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cluster_min(s : GeobuffersegmentCluster) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentCluster::min(self : GeobuffersegmentCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_cluster_max(s : GeobuffersegmentCluster) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentCluster::max(self : GeobuffersegmentCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_cluster_to_string(s : GeobuffersegmentCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentCluster::to_string(self : GeobuffersegmentCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentModel {
@@ -708,45 +708,45 @@ pub fn geo_buffer_segment_model_make(size : Int) -> GeobuffersegmentModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_model_len(s : GeobuffersegmentModel) -> Int { s.size }
+pub fn GeobuffersegmentModel::len(self : GeobuffersegmentModel) -> Int { self.size }
 
-pub fn geo_buffer_segment_model_get(s : GeobuffersegmentModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentModel::get(self : GeobuffersegmentModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_model_set(s : GeobuffersegmentModel, i : Int, v : Double) -> GeobuffersegmentModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentModel::set(self : GeobuffersegmentModel, i : Int, v : Double) -> GeobuffersegmentModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_model_sum(s : GeobuffersegmentModel) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentModel::sum(self : GeobuffersegmentModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_model_mean(s : GeobuffersegmentModel) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentModel::mean(self : GeobuffersegmentModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_model_scale(s : GeobuffersegmentModel, f : Double) -> GeobuffersegmentModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentModel::scale(self : GeobuffersegmentModel, f : Double) -> GeobuffersegmentModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_model_add(a : GeobuffersegmentModel, b : GeobuffersegmentModel) -> GeobuffersegmentModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentModel::add(self : GeobuffersegmentModel, other : GeobuffersegmentModel) -> GeobuffersegmentModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_model_copy(s : GeobuffersegmentModel) -> GeobuffersegmentModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentModel::copy(self : GeobuffersegmentModel) -> GeobuffersegmentModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_model_fill(s : GeobuffersegmentModel, v : Double) -> GeobuffersegmentModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentModel::fill(self : GeobuffersegmentModel, v : Double) -> GeobuffersegmentModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_model_min(s : GeobuffersegmentModel) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentModel::min(self : GeobuffersegmentModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_model_max(s : GeobuffersegmentModel) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentModel::max(self : GeobuffersegmentModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_model_to_string(s : GeobuffersegmentModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentModel::to_string(self : GeobuffersegmentModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentLayer {
@@ -759,45 +759,45 @@ pub fn geo_buffer_segment_layer_make(size : Int) -> GeobuffersegmentLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_layer_len(s : GeobuffersegmentLayer) -> Int { s.size }
+pub fn GeobuffersegmentLayer::len(self : GeobuffersegmentLayer) -> Int { self.size }
 
-pub fn geo_buffer_segment_layer_get(s : GeobuffersegmentLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentLayer::get(self : GeobuffersegmentLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_layer_set(s : GeobuffersegmentLayer, i : Int, v : Double) -> GeobuffersegmentLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentLayer::set(self : GeobuffersegmentLayer, i : Int, v : Double) -> GeobuffersegmentLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_layer_sum(s : GeobuffersegmentLayer) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentLayer::sum(self : GeobuffersegmentLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_layer_mean(s : GeobuffersegmentLayer) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentLayer::mean(self : GeobuffersegmentLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_layer_scale(s : GeobuffersegmentLayer, f : Double) -> GeobuffersegmentLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentLayer::scale(self : GeobuffersegmentLayer, f : Double) -> GeobuffersegmentLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_layer_add(a : GeobuffersegmentLayer, b : GeobuffersegmentLayer) -> GeobuffersegmentLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentLayer::add(self : GeobuffersegmentLayer, other : GeobuffersegmentLayer) -> GeobuffersegmentLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_layer_copy(s : GeobuffersegmentLayer) -> GeobuffersegmentLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentLayer::copy(self : GeobuffersegmentLayer) -> GeobuffersegmentLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_layer_fill(s : GeobuffersegmentLayer, v : Double) -> GeobuffersegmentLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentLayer::fill(self : GeobuffersegmentLayer, v : Double) -> GeobuffersegmentLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_layer_min(s : GeobuffersegmentLayer) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentLayer::min(self : GeobuffersegmentLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_layer_max(s : GeobuffersegmentLayer) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentLayer::max(self : GeobuffersegmentLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_layer_to_string(s : GeobuffersegmentLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentLayer::to_string(self : GeobuffersegmentLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentBuffer {
@@ -810,45 +810,45 @@ pub fn geo_buffer_segment_buffer_make(size : Int) -> GeobuffersegmentBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_buffer_len(s : GeobuffersegmentBuffer) -> Int { s.size }
+pub fn GeobuffersegmentBuffer::len(self : GeobuffersegmentBuffer) -> Int { self.size }
 
-pub fn geo_buffer_segment_buffer_get(s : GeobuffersegmentBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentBuffer::get(self : GeobuffersegmentBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_buffer_set(s : GeobuffersegmentBuffer, i : Int, v : Double) -> GeobuffersegmentBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentBuffer::set(self : GeobuffersegmentBuffer, i : Int, v : Double) -> GeobuffersegmentBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_buffer_sum(s : GeobuffersegmentBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentBuffer::sum(self : GeobuffersegmentBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_buffer_mean(s : GeobuffersegmentBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentBuffer::mean(self : GeobuffersegmentBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_buffer_scale(s : GeobuffersegmentBuffer, f : Double) -> GeobuffersegmentBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentBuffer::scale(self : GeobuffersegmentBuffer, f : Double) -> GeobuffersegmentBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_buffer_add(a : GeobuffersegmentBuffer, b : GeobuffersegmentBuffer) -> GeobuffersegmentBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentBuffer::add(self : GeobuffersegmentBuffer, other : GeobuffersegmentBuffer) -> GeobuffersegmentBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_buffer_copy(s : GeobuffersegmentBuffer) -> GeobuffersegmentBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentBuffer::copy(self : GeobuffersegmentBuffer) -> GeobuffersegmentBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_buffer_fill(s : GeobuffersegmentBuffer, v : Double) -> GeobuffersegmentBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentBuffer::fill(self : GeobuffersegmentBuffer, v : Double) -> GeobuffersegmentBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_buffer_min(s : GeobuffersegmentBuffer) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentBuffer::min(self : GeobuffersegmentBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_buffer_max(s : GeobuffersegmentBuffer) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentBuffer::max(self : GeobuffersegmentBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_buffer_to_string(s : GeobuffersegmentBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentBuffer::to_string(self : GeobuffersegmentBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentCursor {
@@ -861,45 +861,45 @@ pub fn geo_buffer_segment_cursor_make(size : Int) -> GeobuffersegmentCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_cursor_len(s : GeobuffersegmentCursor) -> Int { s.size }
+pub fn GeobuffersegmentCursor::len(self : GeobuffersegmentCursor) -> Int { self.size }
 
-pub fn geo_buffer_segment_cursor_get(s : GeobuffersegmentCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentCursor::get(self : GeobuffersegmentCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_cursor_set(s : GeobuffersegmentCursor, i : Int, v : Double) -> GeobuffersegmentCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCursor::set(self : GeobuffersegmentCursor, i : Int, v : Double) -> GeobuffersegmentCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cursor_sum(s : GeobuffersegmentCursor) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentCursor::sum(self : GeobuffersegmentCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_cursor_mean(s : GeobuffersegmentCursor) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentCursor::mean(self : GeobuffersegmentCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_cursor_scale(s : GeobuffersegmentCursor, f : Double) -> GeobuffersegmentCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCursor::scale(self : GeobuffersegmentCursor, f : Double) -> GeobuffersegmentCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cursor_add(a : GeobuffersegmentCursor, b : GeobuffersegmentCursor) -> GeobuffersegmentCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentCursor::add(self : GeobuffersegmentCursor, other : GeobuffersegmentCursor) -> GeobuffersegmentCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cursor_copy(s : GeobuffersegmentCursor) -> GeobuffersegmentCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCursor::copy(self : GeobuffersegmentCursor) -> GeobuffersegmentCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cursor_fill(s : GeobuffersegmentCursor, v : Double) -> GeobuffersegmentCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentCursor::fill(self : GeobuffersegmentCursor, v : Double) -> GeobuffersegmentCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_cursor_min(s : GeobuffersegmentCursor) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentCursor::min(self : GeobuffersegmentCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_cursor_max(s : GeobuffersegmentCursor) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentCursor::max(self : GeobuffersegmentCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_cursor_to_string(s : GeobuffersegmentCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentCursor::to_string(self : GeobuffersegmentCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentView {
@@ -912,45 +912,45 @@ pub fn geo_buffer_segment_view_make(size : Int) -> GeobuffersegmentView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_view_len(s : GeobuffersegmentView) -> Int { s.size }
+pub fn GeobuffersegmentView::len(self : GeobuffersegmentView) -> Int { self.size }
 
-pub fn geo_buffer_segment_view_get(s : GeobuffersegmentView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentView::get(self : GeobuffersegmentView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_view_set(s : GeobuffersegmentView, i : Int, v : Double) -> GeobuffersegmentView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentView::set(self : GeobuffersegmentView, i : Int, v : Double) -> GeobuffersegmentView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_view_sum(s : GeobuffersegmentView) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentView::sum(self : GeobuffersegmentView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_view_mean(s : GeobuffersegmentView) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentView::mean(self : GeobuffersegmentView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_view_scale(s : GeobuffersegmentView, f : Double) -> GeobuffersegmentView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentView::scale(self : GeobuffersegmentView, f : Double) -> GeobuffersegmentView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_view_add(a : GeobuffersegmentView, b : GeobuffersegmentView) -> GeobuffersegmentView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentView::add(self : GeobuffersegmentView, other : GeobuffersegmentView) -> GeobuffersegmentView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_view_copy(s : GeobuffersegmentView) -> GeobuffersegmentView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentView::copy(self : GeobuffersegmentView) -> GeobuffersegmentView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_view_fill(s : GeobuffersegmentView, v : Double) -> GeobuffersegmentView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentView::fill(self : GeobuffersegmentView, v : Double) -> GeobuffersegmentView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_view_min(s : GeobuffersegmentView) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentView::min(self : GeobuffersegmentView) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_view_max(s : GeobuffersegmentView) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentView::max(self : GeobuffersegmentView) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_view_to_string(s : GeobuffersegmentView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentView::to_string(self : GeobuffersegmentView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentRange {
@@ -963,45 +963,45 @@ pub fn geo_buffer_segment_range_make(size : Int) -> GeobuffersegmentRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_range_len(s : GeobuffersegmentRange) -> Int { s.size }
+pub fn GeobuffersegmentRange::len(self : GeobuffersegmentRange) -> Int { self.size }
 
-pub fn geo_buffer_segment_range_get(s : GeobuffersegmentRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentRange::get(self : GeobuffersegmentRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_range_set(s : GeobuffersegmentRange, i : Int, v : Double) -> GeobuffersegmentRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentRange::set(self : GeobuffersegmentRange, i : Int, v : Double) -> GeobuffersegmentRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_range_sum(s : GeobuffersegmentRange) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentRange::sum(self : GeobuffersegmentRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_range_mean(s : GeobuffersegmentRange) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentRange::mean(self : GeobuffersegmentRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_range_scale(s : GeobuffersegmentRange, f : Double) -> GeobuffersegmentRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentRange::scale(self : GeobuffersegmentRange, f : Double) -> GeobuffersegmentRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_range_add(a : GeobuffersegmentRange, b : GeobuffersegmentRange) -> GeobuffersegmentRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentRange::add(self : GeobuffersegmentRange, other : GeobuffersegmentRange) -> GeobuffersegmentRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_range_copy(s : GeobuffersegmentRange) -> GeobuffersegmentRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentRange::copy(self : GeobuffersegmentRange) -> GeobuffersegmentRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_range_fill(s : GeobuffersegmentRange, v : Double) -> GeobuffersegmentRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentRange::fill(self : GeobuffersegmentRange, v : Double) -> GeobuffersegmentRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_range_min(s : GeobuffersegmentRange) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentRange::min(self : GeobuffersegmentRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_range_max(s : GeobuffersegmentRange) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentRange::max(self : GeobuffersegmentRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_range_to_string(s : GeobuffersegmentRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentRange::to_string(self : GeobuffersegmentRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeobuffersegmentSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_buffer_segment_slice_make(size : Int) -> GeobuffersegmentSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_buffer_segment_slice_len(s : GeobuffersegmentSlice) -> Int { s.size }
+pub fn GeobuffersegmentSlice::len(self : GeobuffersegmentSlice) -> Int { self.size }
 
-pub fn geo_buffer_segment_slice_get(s : GeobuffersegmentSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeobuffersegmentSlice::get(self : GeobuffersegmentSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_buffer_segment_slice_set(s : GeobuffersegmentSlice, i : Int, v : Double) -> GeobuffersegmentSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeobuffersegmentSlice::set(self : GeobuffersegmentSlice, i : Int, v : Double) -> GeobuffersegmentSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_slice_sum(s : GeobuffersegmentSlice) -> Double { @_common.sum(s.data) }
+pub fn GeobuffersegmentSlice::sum(self : GeobuffersegmentSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_buffer_segment_slice_mean(s : GeobuffersegmentSlice) -> Double { @_common.mean(s.data) }
+pub fn GeobuffersegmentSlice::mean(self : GeobuffersegmentSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_buffer_segment_slice_scale(s : GeobuffersegmentSlice, f : Double) -> GeobuffersegmentSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentSlice::scale(self : GeobuffersegmentSlice, f : Double) -> GeobuffersegmentSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_slice_add(a : GeobuffersegmentSlice, b : GeobuffersegmentSlice) -> GeobuffersegmentSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeobuffersegmentSlice::add(self : GeobuffersegmentSlice, other : GeobuffersegmentSlice) -> GeobuffersegmentSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_slice_copy(s : GeobuffersegmentSlice) -> GeobuffersegmentSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentSlice::copy(self : GeobuffersegmentSlice) -> GeobuffersegmentSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_slice_fill(s : GeobuffersegmentSlice, v : Double) -> GeobuffersegmentSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeobuffersegmentSlice::fill(self : GeobuffersegmentSlice, v : Double) -> GeobuffersegmentSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_buffer_segment_slice_min(s : GeobuffersegmentSlice) -> Double { @_common.min(s.data) }
+pub fn GeobuffersegmentSlice::min(self : GeobuffersegmentSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_buffer_segment_slice_max(s : GeobuffersegmentSlice) -> Double { @_common.max(s.data) }
+pub fn GeobuffersegmentSlice::max(self : GeobuffersegmentSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_buffer_segment_slice_to_string(s : GeobuffersegmentSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeobuffersegmentSlice::to_string(self : GeobuffersegmentSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

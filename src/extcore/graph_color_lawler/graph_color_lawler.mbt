@@ -351,45 +351,45 @@ pub fn graph_color_lawler_frame_make(size : Int) -> GraphcolorlawlerFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_frame_len(s : GraphcolorlawlerFrame) -> Int { s.size }
+pub fn GraphcolorlawlerFrame::len(self : GraphcolorlawlerFrame) -> Int { self.size }
 
-pub fn graph_color_lawler_frame_get(s : GraphcolorlawlerFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerFrame::get(self : GraphcolorlawlerFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_frame_set(s : GraphcolorlawlerFrame, i : Int, v : Double) -> GraphcolorlawlerFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerFrame::set(self : GraphcolorlawlerFrame, i : Int, v : Double) -> GraphcolorlawlerFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_frame_sum(s : GraphcolorlawlerFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerFrame::sum(self : GraphcolorlawlerFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_frame_mean(s : GraphcolorlawlerFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerFrame::mean(self : GraphcolorlawlerFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_frame_scale(s : GraphcolorlawlerFrame, f : Double) -> GraphcolorlawlerFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerFrame::scale(self : GraphcolorlawlerFrame, f : Double) -> GraphcolorlawlerFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_frame_add(a : GraphcolorlawlerFrame, b : GraphcolorlawlerFrame) -> GraphcolorlawlerFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerFrame::add(self : GraphcolorlawlerFrame, other : GraphcolorlawlerFrame) -> GraphcolorlawlerFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_frame_copy(s : GraphcolorlawlerFrame) -> GraphcolorlawlerFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerFrame::copy(self : GraphcolorlawlerFrame) -> GraphcolorlawlerFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_frame_fill(s : GraphcolorlawlerFrame, v : Double) -> GraphcolorlawlerFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerFrame::fill(self : GraphcolorlawlerFrame, v : Double) -> GraphcolorlawlerFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_frame_min(s : GraphcolorlawlerFrame) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerFrame::min(self : GraphcolorlawlerFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_frame_max(s : GraphcolorlawlerFrame) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerFrame::max(self : GraphcolorlawlerFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_frame_to_string(s : GraphcolorlawlerFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerFrame::to_string(self : GraphcolorlawlerFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerTable {
@@ -402,45 +402,45 @@ pub fn graph_color_lawler_table_make(size : Int) -> GraphcolorlawlerTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_table_len(s : GraphcolorlawlerTable) -> Int { s.size }
+pub fn GraphcolorlawlerTable::len(self : GraphcolorlawlerTable) -> Int { self.size }
 
-pub fn graph_color_lawler_table_get(s : GraphcolorlawlerTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerTable::get(self : GraphcolorlawlerTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_table_set(s : GraphcolorlawlerTable, i : Int, v : Double) -> GraphcolorlawlerTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerTable::set(self : GraphcolorlawlerTable, i : Int, v : Double) -> GraphcolorlawlerTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_table_sum(s : GraphcolorlawlerTable) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerTable::sum(self : GraphcolorlawlerTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_table_mean(s : GraphcolorlawlerTable) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerTable::mean(self : GraphcolorlawlerTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_table_scale(s : GraphcolorlawlerTable, f : Double) -> GraphcolorlawlerTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerTable::scale(self : GraphcolorlawlerTable, f : Double) -> GraphcolorlawlerTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_table_add(a : GraphcolorlawlerTable, b : GraphcolorlawlerTable) -> GraphcolorlawlerTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerTable::add(self : GraphcolorlawlerTable, other : GraphcolorlawlerTable) -> GraphcolorlawlerTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_table_copy(s : GraphcolorlawlerTable) -> GraphcolorlawlerTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerTable::copy(self : GraphcolorlawlerTable) -> GraphcolorlawlerTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_table_fill(s : GraphcolorlawlerTable, v : Double) -> GraphcolorlawlerTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerTable::fill(self : GraphcolorlawlerTable, v : Double) -> GraphcolorlawlerTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_table_min(s : GraphcolorlawlerTable) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerTable::min(self : GraphcolorlawlerTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_table_max(s : GraphcolorlawlerTable) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerTable::max(self : GraphcolorlawlerTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_table_to_string(s : GraphcolorlawlerTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerTable::to_string(self : GraphcolorlawlerTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerGraphN {
@@ -453,45 +453,45 @@ pub fn graph_color_lawler_graphn_make(size : Int) -> GraphcolorlawlerGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_graphn_len(s : GraphcolorlawlerGraphN) -> Int { s.size }
+pub fn GraphcolorlawlerGraphN::len(self : GraphcolorlawlerGraphN) -> Int { self.size }
 
-pub fn graph_color_lawler_graphn_get(s : GraphcolorlawlerGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerGraphN::get(self : GraphcolorlawlerGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_graphn_set(s : GraphcolorlawlerGraphN, i : Int, v : Double) -> GraphcolorlawlerGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerGraphN::set(self : GraphcolorlawlerGraphN, i : Int, v : Double) -> GraphcolorlawlerGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_graphn_sum(s : GraphcolorlawlerGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerGraphN::sum(self : GraphcolorlawlerGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_graphn_mean(s : GraphcolorlawlerGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerGraphN::mean(self : GraphcolorlawlerGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_graphn_scale(s : GraphcolorlawlerGraphN, f : Double) -> GraphcolorlawlerGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerGraphN::scale(self : GraphcolorlawlerGraphN, f : Double) -> GraphcolorlawlerGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_graphn_add(a : GraphcolorlawlerGraphN, b : GraphcolorlawlerGraphN) -> GraphcolorlawlerGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerGraphN::add(self : GraphcolorlawlerGraphN, other : GraphcolorlawlerGraphN) -> GraphcolorlawlerGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_graphn_copy(s : GraphcolorlawlerGraphN) -> GraphcolorlawlerGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerGraphN::copy(self : GraphcolorlawlerGraphN) -> GraphcolorlawlerGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_graphn_fill(s : GraphcolorlawlerGraphN, v : Double) -> GraphcolorlawlerGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerGraphN::fill(self : GraphcolorlawlerGraphN, v : Double) -> GraphcolorlawlerGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_graphn_min(s : GraphcolorlawlerGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerGraphN::min(self : GraphcolorlawlerGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_graphn_max(s : GraphcolorlawlerGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerGraphN::max(self : GraphcolorlawlerGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_graphn_to_string(s : GraphcolorlawlerGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerGraphN::to_string(self : GraphcolorlawlerGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerNode {
@@ -504,45 +504,45 @@ pub fn graph_color_lawler_node_make(size : Int) -> GraphcolorlawlerNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_node_len(s : GraphcolorlawlerNode) -> Int { s.size }
+pub fn GraphcolorlawlerNode::len(self : GraphcolorlawlerNode) -> Int { self.size }
 
-pub fn graph_color_lawler_node_get(s : GraphcolorlawlerNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerNode::get(self : GraphcolorlawlerNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_node_set(s : GraphcolorlawlerNode, i : Int, v : Double) -> GraphcolorlawlerNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerNode::set(self : GraphcolorlawlerNode, i : Int, v : Double) -> GraphcolorlawlerNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_node_sum(s : GraphcolorlawlerNode) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerNode::sum(self : GraphcolorlawlerNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_node_mean(s : GraphcolorlawlerNode) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerNode::mean(self : GraphcolorlawlerNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_node_scale(s : GraphcolorlawlerNode, f : Double) -> GraphcolorlawlerNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerNode::scale(self : GraphcolorlawlerNode, f : Double) -> GraphcolorlawlerNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_node_add(a : GraphcolorlawlerNode, b : GraphcolorlawlerNode) -> GraphcolorlawlerNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerNode::add(self : GraphcolorlawlerNode, other : GraphcolorlawlerNode) -> GraphcolorlawlerNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_node_copy(s : GraphcolorlawlerNode) -> GraphcolorlawlerNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerNode::copy(self : GraphcolorlawlerNode) -> GraphcolorlawlerNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_node_fill(s : GraphcolorlawlerNode, v : Double) -> GraphcolorlawlerNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerNode::fill(self : GraphcolorlawlerNode, v : Double) -> GraphcolorlawlerNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_node_min(s : GraphcolorlawlerNode) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerNode::min(self : GraphcolorlawlerNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_node_max(s : GraphcolorlawlerNode) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerNode::max(self : GraphcolorlawlerNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_node_to_string(s : GraphcolorlawlerNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerNode::to_string(self : GraphcolorlawlerNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerEdge {
@@ -555,45 +555,45 @@ pub fn graph_color_lawler_edge_make(size : Int) -> GraphcolorlawlerEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_edge_len(s : GraphcolorlawlerEdge) -> Int { s.size }
+pub fn GraphcolorlawlerEdge::len(self : GraphcolorlawlerEdge) -> Int { self.size }
 
-pub fn graph_color_lawler_edge_get(s : GraphcolorlawlerEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerEdge::get(self : GraphcolorlawlerEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_edge_set(s : GraphcolorlawlerEdge, i : Int, v : Double) -> GraphcolorlawlerEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerEdge::set(self : GraphcolorlawlerEdge, i : Int, v : Double) -> GraphcolorlawlerEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_edge_sum(s : GraphcolorlawlerEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerEdge::sum(self : GraphcolorlawlerEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_edge_mean(s : GraphcolorlawlerEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerEdge::mean(self : GraphcolorlawlerEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_edge_scale(s : GraphcolorlawlerEdge, f : Double) -> GraphcolorlawlerEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerEdge::scale(self : GraphcolorlawlerEdge, f : Double) -> GraphcolorlawlerEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_edge_add(a : GraphcolorlawlerEdge, b : GraphcolorlawlerEdge) -> GraphcolorlawlerEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerEdge::add(self : GraphcolorlawlerEdge, other : GraphcolorlawlerEdge) -> GraphcolorlawlerEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_edge_copy(s : GraphcolorlawlerEdge) -> GraphcolorlawlerEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerEdge::copy(self : GraphcolorlawlerEdge) -> GraphcolorlawlerEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_edge_fill(s : GraphcolorlawlerEdge, v : Double) -> GraphcolorlawlerEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerEdge::fill(self : GraphcolorlawlerEdge, v : Double) -> GraphcolorlawlerEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_edge_min(s : GraphcolorlawlerEdge) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerEdge::min(self : GraphcolorlawlerEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_edge_max(s : GraphcolorlawlerEdge) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerEdge::max(self : GraphcolorlawlerEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_edge_to_string(s : GraphcolorlawlerEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerEdge::to_string(self : GraphcolorlawlerEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerPath {
@@ -606,45 +606,45 @@ pub fn graph_color_lawler_path_make(size : Int) -> GraphcolorlawlerPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_path_len(s : GraphcolorlawlerPath) -> Int { s.size }
+pub fn GraphcolorlawlerPath::len(self : GraphcolorlawlerPath) -> Int { self.size }
 
-pub fn graph_color_lawler_path_get(s : GraphcolorlawlerPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerPath::get(self : GraphcolorlawlerPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_path_set(s : GraphcolorlawlerPath, i : Int, v : Double) -> GraphcolorlawlerPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerPath::set(self : GraphcolorlawlerPath, i : Int, v : Double) -> GraphcolorlawlerPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_path_sum(s : GraphcolorlawlerPath) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerPath::sum(self : GraphcolorlawlerPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_path_mean(s : GraphcolorlawlerPath) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerPath::mean(self : GraphcolorlawlerPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_path_scale(s : GraphcolorlawlerPath, f : Double) -> GraphcolorlawlerPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerPath::scale(self : GraphcolorlawlerPath, f : Double) -> GraphcolorlawlerPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_path_add(a : GraphcolorlawlerPath, b : GraphcolorlawlerPath) -> GraphcolorlawlerPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerPath::add(self : GraphcolorlawlerPath, other : GraphcolorlawlerPath) -> GraphcolorlawlerPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_path_copy(s : GraphcolorlawlerPath) -> GraphcolorlawlerPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerPath::copy(self : GraphcolorlawlerPath) -> GraphcolorlawlerPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_path_fill(s : GraphcolorlawlerPath, v : Double) -> GraphcolorlawlerPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerPath::fill(self : GraphcolorlawlerPath, v : Double) -> GraphcolorlawlerPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_path_min(s : GraphcolorlawlerPath) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerPath::min(self : GraphcolorlawlerPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_path_max(s : GraphcolorlawlerPath) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerPath::max(self : GraphcolorlawlerPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_path_to_string(s : GraphcolorlawlerPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerPath::to_string(self : GraphcolorlawlerPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerCluster {
@@ -657,45 +657,45 @@ pub fn graph_color_lawler_cluster_make(size : Int) -> GraphcolorlawlerCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_cluster_len(s : GraphcolorlawlerCluster) -> Int { s.size }
+pub fn GraphcolorlawlerCluster::len(self : GraphcolorlawlerCluster) -> Int { self.size }
 
-pub fn graph_color_lawler_cluster_get(s : GraphcolorlawlerCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerCluster::get(self : GraphcolorlawlerCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_cluster_set(s : GraphcolorlawlerCluster, i : Int, v : Double) -> GraphcolorlawlerCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCluster::set(self : GraphcolorlawlerCluster, i : Int, v : Double) -> GraphcolorlawlerCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cluster_sum(s : GraphcolorlawlerCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerCluster::sum(self : GraphcolorlawlerCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_cluster_mean(s : GraphcolorlawlerCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerCluster::mean(self : GraphcolorlawlerCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_cluster_scale(s : GraphcolorlawlerCluster, f : Double) -> GraphcolorlawlerCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCluster::scale(self : GraphcolorlawlerCluster, f : Double) -> GraphcolorlawlerCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cluster_add(a : GraphcolorlawlerCluster, b : GraphcolorlawlerCluster) -> GraphcolorlawlerCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerCluster::add(self : GraphcolorlawlerCluster, other : GraphcolorlawlerCluster) -> GraphcolorlawlerCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cluster_copy(s : GraphcolorlawlerCluster) -> GraphcolorlawlerCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCluster::copy(self : GraphcolorlawlerCluster) -> GraphcolorlawlerCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cluster_fill(s : GraphcolorlawlerCluster, v : Double) -> GraphcolorlawlerCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCluster::fill(self : GraphcolorlawlerCluster, v : Double) -> GraphcolorlawlerCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cluster_min(s : GraphcolorlawlerCluster) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerCluster::min(self : GraphcolorlawlerCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_cluster_max(s : GraphcolorlawlerCluster) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerCluster::max(self : GraphcolorlawlerCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_cluster_to_string(s : GraphcolorlawlerCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerCluster::to_string(self : GraphcolorlawlerCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerModel {
@@ -708,45 +708,45 @@ pub fn graph_color_lawler_model_make(size : Int) -> GraphcolorlawlerModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_model_len(s : GraphcolorlawlerModel) -> Int { s.size }
+pub fn GraphcolorlawlerModel::len(self : GraphcolorlawlerModel) -> Int { self.size }
 
-pub fn graph_color_lawler_model_get(s : GraphcolorlawlerModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerModel::get(self : GraphcolorlawlerModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_model_set(s : GraphcolorlawlerModel, i : Int, v : Double) -> GraphcolorlawlerModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerModel::set(self : GraphcolorlawlerModel, i : Int, v : Double) -> GraphcolorlawlerModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_model_sum(s : GraphcolorlawlerModel) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerModel::sum(self : GraphcolorlawlerModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_model_mean(s : GraphcolorlawlerModel) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerModel::mean(self : GraphcolorlawlerModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_model_scale(s : GraphcolorlawlerModel, f : Double) -> GraphcolorlawlerModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerModel::scale(self : GraphcolorlawlerModel, f : Double) -> GraphcolorlawlerModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_model_add(a : GraphcolorlawlerModel, b : GraphcolorlawlerModel) -> GraphcolorlawlerModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerModel::add(self : GraphcolorlawlerModel, other : GraphcolorlawlerModel) -> GraphcolorlawlerModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_model_copy(s : GraphcolorlawlerModel) -> GraphcolorlawlerModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerModel::copy(self : GraphcolorlawlerModel) -> GraphcolorlawlerModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_model_fill(s : GraphcolorlawlerModel, v : Double) -> GraphcolorlawlerModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerModel::fill(self : GraphcolorlawlerModel, v : Double) -> GraphcolorlawlerModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_model_min(s : GraphcolorlawlerModel) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerModel::min(self : GraphcolorlawlerModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_model_max(s : GraphcolorlawlerModel) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerModel::max(self : GraphcolorlawlerModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_model_to_string(s : GraphcolorlawlerModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerModel::to_string(self : GraphcolorlawlerModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerLayer {
@@ -759,45 +759,45 @@ pub fn graph_color_lawler_layer_make(size : Int) -> GraphcolorlawlerLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_layer_len(s : GraphcolorlawlerLayer) -> Int { s.size }
+pub fn GraphcolorlawlerLayer::len(self : GraphcolorlawlerLayer) -> Int { self.size }
 
-pub fn graph_color_lawler_layer_get(s : GraphcolorlawlerLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerLayer::get(self : GraphcolorlawlerLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_layer_set(s : GraphcolorlawlerLayer, i : Int, v : Double) -> GraphcolorlawlerLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerLayer::set(self : GraphcolorlawlerLayer, i : Int, v : Double) -> GraphcolorlawlerLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_layer_sum(s : GraphcolorlawlerLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerLayer::sum(self : GraphcolorlawlerLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_layer_mean(s : GraphcolorlawlerLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerLayer::mean(self : GraphcolorlawlerLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_layer_scale(s : GraphcolorlawlerLayer, f : Double) -> GraphcolorlawlerLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerLayer::scale(self : GraphcolorlawlerLayer, f : Double) -> GraphcolorlawlerLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_layer_add(a : GraphcolorlawlerLayer, b : GraphcolorlawlerLayer) -> GraphcolorlawlerLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerLayer::add(self : GraphcolorlawlerLayer, other : GraphcolorlawlerLayer) -> GraphcolorlawlerLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_layer_copy(s : GraphcolorlawlerLayer) -> GraphcolorlawlerLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerLayer::copy(self : GraphcolorlawlerLayer) -> GraphcolorlawlerLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_layer_fill(s : GraphcolorlawlerLayer, v : Double) -> GraphcolorlawlerLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerLayer::fill(self : GraphcolorlawlerLayer, v : Double) -> GraphcolorlawlerLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_layer_min(s : GraphcolorlawlerLayer) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerLayer::min(self : GraphcolorlawlerLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_layer_max(s : GraphcolorlawlerLayer) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerLayer::max(self : GraphcolorlawlerLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_layer_to_string(s : GraphcolorlawlerLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerLayer::to_string(self : GraphcolorlawlerLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerBuffer {
@@ -810,45 +810,45 @@ pub fn graph_color_lawler_buffer_make(size : Int) -> GraphcolorlawlerBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_buffer_len(s : GraphcolorlawlerBuffer) -> Int { s.size }
+pub fn GraphcolorlawlerBuffer::len(self : GraphcolorlawlerBuffer) -> Int { self.size }
 
-pub fn graph_color_lawler_buffer_get(s : GraphcolorlawlerBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerBuffer::get(self : GraphcolorlawlerBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_buffer_set(s : GraphcolorlawlerBuffer, i : Int, v : Double) -> GraphcolorlawlerBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerBuffer::set(self : GraphcolorlawlerBuffer, i : Int, v : Double) -> GraphcolorlawlerBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_buffer_sum(s : GraphcolorlawlerBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerBuffer::sum(self : GraphcolorlawlerBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_buffer_mean(s : GraphcolorlawlerBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerBuffer::mean(self : GraphcolorlawlerBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_buffer_scale(s : GraphcolorlawlerBuffer, f : Double) -> GraphcolorlawlerBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerBuffer::scale(self : GraphcolorlawlerBuffer, f : Double) -> GraphcolorlawlerBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_buffer_add(a : GraphcolorlawlerBuffer, b : GraphcolorlawlerBuffer) -> GraphcolorlawlerBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerBuffer::add(self : GraphcolorlawlerBuffer, other : GraphcolorlawlerBuffer) -> GraphcolorlawlerBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_buffer_copy(s : GraphcolorlawlerBuffer) -> GraphcolorlawlerBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerBuffer::copy(self : GraphcolorlawlerBuffer) -> GraphcolorlawlerBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_buffer_fill(s : GraphcolorlawlerBuffer, v : Double) -> GraphcolorlawlerBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerBuffer::fill(self : GraphcolorlawlerBuffer, v : Double) -> GraphcolorlawlerBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_buffer_min(s : GraphcolorlawlerBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerBuffer::min(self : GraphcolorlawlerBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_buffer_max(s : GraphcolorlawlerBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerBuffer::max(self : GraphcolorlawlerBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_buffer_to_string(s : GraphcolorlawlerBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerBuffer::to_string(self : GraphcolorlawlerBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerCursor {
@@ -861,45 +861,45 @@ pub fn graph_color_lawler_cursor_make(size : Int) -> GraphcolorlawlerCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_cursor_len(s : GraphcolorlawlerCursor) -> Int { s.size }
+pub fn GraphcolorlawlerCursor::len(self : GraphcolorlawlerCursor) -> Int { self.size }
 
-pub fn graph_color_lawler_cursor_get(s : GraphcolorlawlerCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerCursor::get(self : GraphcolorlawlerCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_cursor_set(s : GraphcolorlawlerCursor, i : Int, v : Double) -> GraphcolorlawlerCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCursor::set(self : GraphcolorlawlerCursor, i : Int, v : Double) -> GraphcolorlawlerCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cursor_sum(s : GraphcolorlawlerCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerCursor::sum(self : GraphcolorlawlerCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_cursor_mean(s : GraphcolorlawlerCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerCursor::mean(self : GraphcolorlawlerCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_cursor_scale(s : GraphcolorlawlerCursor, f : Double) -> GraphcolorlawlerCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCursor::scale(self : GraphcolorlawlerCursor, f : Double) -> GraphcolorlawlerCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cursor_add(a : GraphcolorlawlerCursor, b : GraphcolorlawlerCursor) -> GraphcolorlawlerCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerCursor::add(self : GraphcolorlawlerCursor, other : GraphcolorlawlerCursor) -> GraphcolorlawlerCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cursor_copy(s : GraphcolorlawlerCursor) -> GraphcolorlawlerCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCursor::copy(self : GraphcolorlawlerCursor) -> GraphcolorlawlerCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cursor_fill(s : GraphcolorlawlerCursor, v : Double) -> GraphcolorlawlerCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerCursor::fill(self : GraphcolorlawlerCursor, v : Double) -> GraphcolorlawlerCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_cursor_min(s : GraphcolorlawlerCursor) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerCursor::min(self : GraphcolorlawlerCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_cursor_max(s : GraphcolorlawlerCursor) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerCursor::max(self : GraphcolorlawlerCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_cursor_to_string(s : GraphcolorlawlerCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerCursor::to_string(self : GraphcolorlawlerCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerView {
@@ -912,45 +912,45 @@ pub fn graph_color_lawler_view_make(size : Int) -> GraphcolorlawlerView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_view_len(s : GraphcolorlawlerView) -> Int { s.size }
+pub fn GraphcolorlawlerView::len(self : GraphcolorlawlerView) -> Int { self.size }
 
-pub fn graph_color_lawler_view_get(s : GraphcolorlawlerView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerView::get(self : GraphcolorlawlerView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_view_set(s : GraphcolorlawlerView, i : Int, v : Double) -> GraphcolorlawlerView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerView::set(self : GraphcolorlawlerView, i : Int, v : Double) -> GraphcolorlawlerView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_view_sum(s : GraphcolorlawlerView) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerView::sum(self : GraphcolorlawlerView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_view_mean(s : GraphcolorlawlerView) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerView::mean(self : GraphcolorlawlerView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_view_scale(s : GraphcolorlawlerView, f : Double) -> GraphcolorlawlerView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerView::scale(self : GraphcolorlawlerView, f : Double) -> GraphcolorlawlerView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_view_add(a : GraphcolorlawlerView, b : GraphcolorlawlerView) -> GraphcolorlawlerView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerView::add(self : GraphcolorlawlerView, other : GraphcolorlawlerView) -> GraphcolorlawlerView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_view_copy(s : GraphcolorlawlerView) -> GraphcolorlawlerView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerView::copy(self : GraphcolorlawlerView) -> GraphcolorlawlerView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_view_fill(s : GraphcolorlawlerView, v : Double) -> GraphcolorlawlerView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerView::fill(self : GraphcolorlawlerView, v : Double) -> GraphcolorlawlerView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_view_min(s : GraphcolorlawlerView) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerView::min(self : GraphcolorlawlerView) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_view_max(s : GraphcolorlawlerView) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerView::max(self : GraphcolorlawlerView) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_view_to_string(s : GraphcolorlawlerView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerView::to_string(self : GraphcolorlawlerView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerRange {
@@ -963,45 +963,45 @@ pub fn graph_color_lawler_range_make(size : Int) -> GraphcolorlawlerRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_range_len(s : GraphcolorlawlerRange) -> Int { s.size }
+pub fn GraphcolorlawlerRange::len(self : GraphcolorlawlerRange) -> Int { self.size }
 
-pub fn graph_color_lawler_range_get(s : GraphcolorlawlerRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerRange::get(self : GraphcolorlawlerRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_range_set(s : GraphcolorlawlerRange, i : Int, v : Double) -> GraphcolorlawlerRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerRange::set(self : GraphcolorlawlerRange, i : Int, v : Double) -> GraphcolorlawlerRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_range_sum(s : GraphcolorlawlerRange) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerRange::sum(self : GraphcolorlawlerRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_range_mean(s : GraphcolorlawlerRange) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerRange::mean(self : GraphcolorlawlerRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_range_scale(s : GraphcolorlawlerRange, f : Double) -> GraphcolorlawlerRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerRange::scale(self : GraphcolorlawlerRange, f : Double) -> GraphcolorlawlerRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_range_add(a : GraphcolorlawlerRange, b : GraphcolorlawlerRange) -> GraphcolorlawlerRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerRange::add(self : GraphcolorlawlerRange, other : GraphcolorlawlerRange) -> GraphcolorlawlerRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_range_copy(s : GraphcolorlawlerRange) -> GraphcolorlawlerRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerRange::copy(self : GraphcolorlawlerRange) -> GraphcolorlawlerRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_range_fill(s : GraphcolorlawlerRange, v : Double) -> GraphcolorlawlerRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerRange::fill(self : GraphcolorlawlerRange, v : Double) -> GraphcolorlawlerRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_range_min(s : GraphcolorlawlerRange) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerRange::min(self : GraphcolorlawlerRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_range_max(s : GraphcolorlawlerRange) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerRange::max(self : GraphcolorlawlerRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_range_to_string(s : GraphcolorlawlerRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerRange::to_string(self : GraphcolorlawlerRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphcolorlawlerSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_color_lawler_slice_make(size : Int) -> GraphcolorlawlerSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_color_lawler_slice_len(s : GraphcolorlawlerSlice) -> Int { s.size }
+pub fn GraphcolorlawlerSlice::len(self : GraphcolorlawlerSlice) -> Int { self.size }
 
-pub fn graph_color_lawler_slice_get(s : GraphcolorlawlerSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphcolorlawlerSlice::get(self : GraphcolorlawlerSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_color_lawler_slice_set(s : GraphcolorlawlerSlice, i : Int, v : Double) -> GraphcolorlawlerSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerSlice::set(self : GraphcolorlawlerSlice, i : Int, v : Double) -> GraphcolorlawlerSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_slice_sum(s : GraphcolorlawlerSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphcolorlawlerSlice::sum(self : GraphcolorlawlerSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_color_lawler_slice_mean(s : GraphcolorlawlerSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphcolorlawlerSlice::mean(self : GraphcolorlawlerSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_color_lawler_slice_scale(s : GraphcolorlawlerSlice, f : Double) -> GraphcolorlawlerSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerSlice::scale(self : GraphcolorlawlerSlice, f : Double) -> GraphcolorlawlerSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_slice_add(a : GraphcolorlawlerSlice, b : GraphcolorlawlerSlice) -> GraphcolorlawlerSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphcolorlawlerSlice::add(self : GraphcolorlawlerSlice, other : GraphcolorlawlerSlice) -> GraphcolorlawlerSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_color_lawler_slice_copy(s : GraphcolorlawlerSlice) -> GraphcolorlawlerSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerSlice::copy(self : GraphcolorlawlerSlice) -> GraphcolorlawlerSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_slice_fill(s : GraphcolorlawlerSlice, v : Double) -> GraphcolorlawlerSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphcolorlawlerSlice::fill(self : GraphcolorlawlerSlice, v : Double) -> GraphcolorlawlerSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_color_lawler_slice_min(s : GraphcolorlawlerSlice) -> Double { @_common.min(s.data) }
+pub fn GraphcolorlawlerSlice::min(self : GraphcolorlawlerSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_color_lawler_slice_max(s : GraphcolorlawlerSlice) -> Double { @_common.max(s.data) }
+pub fn GraphcolorlawlerSlice::max(self : GraphcolorlawlerSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_color_lawler_slice_to_string(s : GraphcolorlawlerSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphcolorlawlerSlice::to_string(self : GraphcolorlawlerSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

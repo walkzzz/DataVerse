@@ -351,45 +351,45 @@ pub fn opt_meta_nelder_frame_make(size : Int) -> OptmetanelderFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_frame_len(s : OptmetanelderFrame) -> Int { s.size }
+pub fn OptmetanelderFrame::len(self : OptmetanelderFrame) -> Int { self.size }
 
-pub fn opt_meta_nelder_frame_get(s : OptmetanelderFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderFrame::get(self : OptmetanelderFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_frame_set(s : OptmetanelderFrame, i : Int, v : Double) -> OptmetanelderFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderFrame::set(self : OptmetanelderFrame, i : Int, v : Double) -> OptmetanelderFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_frame_sum(s : OptmetanelderFrame) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderFrame::sum(self : OptmetanelderFrame) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_frame_mean(s : OptmetanelderFrame) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderFrame::mean(self : OptmetanelderFrame) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_frame_scale(s : OptmetanelderFrame, f : Double) -> OptmetanelderFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderFrame::scale(self : OptmetanelderFrame, f : Double) -> OptmetanelderFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_frame_add(a : OptmetanelderFrame, b : OptmetanelderFrame) -> OptmetanelderFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderFrame::add(self : OptmetanelderFrame, other : OptmetanelderFrame) -> OptmetanelderFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_frame_copy(s : OptmetanelderFrame) -> OptmetanelderFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderFrame::copy(self : OptmetanelderFrame) -> OptmetanelderFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_frame_fill(s : OptmetanelderFrame, v : Double) -> OptmetanelderFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderFrame::fill(self : OptmetanelderFrame, v : Double) -> OptmetanelderFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_frame_min(s : OptmetanelderFrame) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderFrame::min(self : OptmetanelderFrame) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_frame_max(s : OptmetanelderFrame) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderFrame::max(self : OptmetanelderFrame) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_frame_to_string(s : OptmetanelderFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderFrame::to_string(self : OptmetanelderFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderTable {
@@ -402,45 +402,45 @@ pub fn opt_meta_nelder_table_make(size : Int) -> OptmetanelderTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_table_len(s : OptmetanelderTable) -> Int { s.size }
+pub fn OptmetanelderTable::len(self : OptmetanelderTable) -> Int { self.size }
 
-pub fn opt_meta_nelder_table_get(s : OptmetanelderTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderTable::get(self : OptmetanelderTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_table_set(s : OptmetanelderTable, i : Int, v : Double) -> OptmetanelderTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderTable::set(self : OptmetanelderTable, i : Int, v : Double) -> OptmetanelderTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_table_sum(s : OptmetanelderTable) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderTable::sum(self : OptmetanelderTable) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_table_mean(s : OptmetanelderTable) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderTable::mean(self : OptmetanelderTable) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_table_scale(s : OptmetanelderTable, f : Double) -> OptmetanelderTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderTable::scale(self : OptmetanelderTable, f : Double) -> OptmetanelderTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_table_add(a : OptmetanelderTable, b : OptmetanelderTable) -> OptmetanelderTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderTable::add(self : OptmetanelderTable, other : OptmetanelderTable) -> OptmetanelderTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_table_copy(s : OptmetanelderTable) -> OptmetanelderTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderTable::copy(self : OptmetanelderTable) -> OptmetanelderTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_table_fill(s : OptmetanelderTable, v : Double) -> OptmetanelderTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderTable::fill(self : OptmetanelderTable, v : Double) -> OptmetanelderTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_table_min(s : OptmetanelderTable) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderTable::min(self : OptmetanelderTable) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_table_max(s : OptmetanelderTable) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderTable::max(self : OptmetanelderTable) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_table_to_string(s : OptmetanelderTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderTable::to_string(self : OptmetanelderTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderGraphN {
@@ -453,45 +453,45 @@ pub fn opt_meta_nelder_graphn_make(size : Int) -> OptmetanelderGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_graphn_len(s : OptmetanelderGraphN) -> Int { s.size }
+pub fn OptmetanelderGraphN::len(self : OptmetanelderGraphN) -> Int { self.size }
 
-pub fn opt_meta_nelder_graphn_get(s : OptmetanelderGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderGraphN::get(self : OptmetanelderGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_graphn_set(s : OptmetanelderGraphN, i : Int, v : Double) -> OptmetanelderGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderGraphN::set(self : OptmetanelderGraphN, i : Int, v : Double) -> OptmetanelderGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_graphn_sum(s : OptmetanelderGraphN) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderGraphN::sum(self : OptmetanelderGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_graphn_mean(s : OptmetanelderGraphN) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderGraphN::mean(self : OptmetanelderGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_graphn_scale(s : OptmetanelderGraphN, f : Double) -> OptmetanelderGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderGraphN::scale(self : OptmetanelderGraphN, f : Double) -> OptmetanelderGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_graphn_add(a : OptmetanelderGraphN, b : OptmetanelderGraphN) -> OptmetanelderGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderGraphN::add(self : OptmetanelderGraphN, other : OptmetanelderGraphN) -> OptmetanelderGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_graphn_copy(s : OptmetanelderGraphN) -> OptmetanelderGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderGraphN::copy(self : OptmetanelderGraphN) -> OptmetanelderGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_graphn_fill(s : OptmetanelderGraphN, v : Double) -> OptmetanelderGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderGraphN::fill(self : OptmetanelderGraphN, v : Double) -> OptmetanelderGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_graphn_min(s : OptmetanelderGraphN) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderGraphN::min(self : OptmetanelderGraphN) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_graphn_max(s : OptmetanelderGraphN) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderGraphN::max(self : OptmetanelderGraphN) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_graphn_to_string(s : OptmetanelderGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderGraphN::to_string(self : OptmetanelderGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderNode {
@@ -504,45 +504,45 @@ pub fn opt_meta_nelder_node_make(size : Int) -> OptmetanelderNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_node_len(s : OptmetanelderNode) -> Int { s.size }
+pub fn OptmetanelderNode::len(self : OptmetanelderNode) -> Int { self.size }
 
-pub fn opt_meta_nelder_node_get(s : OptmetanelderNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderNode::get(self : OptmetanelderNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_node_set(s : OptmetanelderNode, i : Int, v : Double) -> OptmetanelderNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderNode::set(self : OptmetanelderNode, i : Int, v : Double) -> OptmetanelderNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_node_sum(s : OptmetanelderNode) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderNode::sum(self : OptmetanelderNode) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_node_mean(s : OptmetanelderNode) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderNode::mean(self : OptmetanelderNode) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_node_scale(s : OptmetanelderNode, f : Double) -> OptmetanelderNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderNode::scale(self : OptmetanelderNode, f : Double) -> OptmetanelderNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_node_add(a : OptmetanelderNode, b : OptmetanelderNode) -> OptmetanelderNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderNode::add(self : OptmetanelderNode, other : OptmetanelderNode) -> OptmetanelderNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_node_copy(s : OptmetanelderNode) -> OptmetanelderNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderNode::copy(self : OptmetanelderNode) -> OptmetanelderNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_node_fill(s : OptmetanelderNode, v : Double) -> OptmetanelderNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderNode::fill(self : OptmetanelderNode, v : Double) -> OptmetanelderNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_node_min(s : OptmetanelderNode) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderNode::min(self : OptmetanelderNode) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_node_max(s : OptmetanelderNode) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderNode::max(self : OptmetanelderNode) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_node_to_string(s : OptmetanelderNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderNode::to_string(self : OptmetanelderNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderEdge {
@@ -555,45 +555,45 @@ pub fn opt_meta_nelder_edge_make(size : Int) -> OptmetanelderEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_edge_len(s : OptmetanelderEdge) -> Int { s.size }
+pub fn OptmetanelderEdge::len(self : OptmetanelderEdge) -> Int { self.size }
 
-pub fn opt_meta_nelder_edge_get(s : OptmetanelderEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderEdge::get(self : OptmetanelderEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_edge_set(s : OptmetanelderEdge, i : Int, v : Double) -> OptmetanelderEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderEdge::set(self : OptmetanelderEdge, i : Int, v : Double) -> OptmetanelderEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_edge_sum(s : OptmetanelderEdge) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderEdge::sum(self : OptmetanelderEdge) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_edge_mean(s : OptmetanelderEdge) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderEdge::mean(self : OptmetanelderEdge) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_edge_scale(s : OptmetanelderEdge, f : Double) -> OptmetanelderEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderEdge::scale(self : OptmetanelderEdge, f : Double) -> OptmetanelderEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_edge_add(a : OptmetanelderEdge, b : OptmetanelderEdge) -> OptmetanelderEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderEdge::add(self : OptmetanelderEdge, other : OptmetanelderEdge) -> OptmetanelderEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_edge_copy(s : OptmetanelderEdge) -> OptmetanelderEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderEdge::copy(self : OptmetanelderEdge) -> OptmetanelderEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_edge_fill(s : OptmetanelderEdge, v : Double) -> OptmetanelderEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderEdge::fill(self : OptmetanelderEdge, v : Double) -> OptmetanelderEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_edge_min(s : OptmetanelderEdge) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderEdge::min(self : OptmetanelderEdge) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_edge_max(s : OptmetanelderEdge) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderEdge::max(self : OptmetanelderEdge) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_edge_to_string(s : OptmetanelderEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderEdge::to_string(self : OptmetanelderEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderPath {
@@ -606,45 +606,45 @@ pub fn opt_meta_nelder_path_make(size : Int) -> OptmetanelderPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_path_len(s : OptmetanelderPath) -> Int { s.size }
+pub fn OptmetanelderPath::len(self : OptmetanelderPath) -> Int { self.size }
 
-pub fn opt_meta_nelder_path_get(s : OptmetanelderPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderPath::get(self : OptmetanelderPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_path_set(s : OptmetanelderPath, i : Int, v : Double) -> OptmetanelderPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderPath::set(self : OptmetanelderPath, i : Int, v : Double) -> OptmetanelderPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_path_sum(s : OptmetanelderPath) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderPath::sum(self : OptmetanelderPath) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_path_mean(s : OptmetanelderPath) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderPath::mean(self : OptmetanelderPath) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_path_scale(s : OptmetanelderPath, f : Double) -> OptmetanelderPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderPath::scale(self : OptmetanelderPath, f : Double) -> OptmetanelderPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_path_add(a : OptmetanelderPath, b : OptmetanelderPath) -> OptmetanelderPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderPath::add(self : OptmetanelderPath, other : OptmetanelderPath) -> OptmetanelderPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_path_copy(s : OptmetanelderPath) -> OptmetanelderPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderPath::copy(self : OptmetanelderPath) -> OptmetanelderPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_path_fill(s : OptmetanelderPath, v : Double) -> OptmetanelderPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderPath::fill(self : OptmetanelderPath, v : Double) -> OptmetanelderPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_path_min(s : OptmetanelderPath) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderPath::min(self : OptmetanelderPath) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_path_max(s : OptmetanelderPath) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderPath::max(self : OptmetanelderPath) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_path_to_string(s : OptmetanelderPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderPath::to_string(self : OptmetanelderPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderCluster {
@@ -657,45 +657,45 @@ pub fn opt_meta_nelder_cluster_make(size : Int) -> OptmetanelderCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_cluster_len(s : OptmetanelderCluster) -> Int { s.size }
+pub fn OptmetanelderCluster::len(self : OptmetanelderCluster) -> Int { self.size }
 
-pub fn opt_meta_nelder_cluster_get(s : OptmetanelderCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderCluster::get(self : OptmetanelderCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_cluster_set(s : OptmetanelderCluster, i : Int, v : Double) -> OptmetanelderCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderCluster::set(self : OptmetanelderCluster, i : Int, v : Double) -> OptmetanelderCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cluster_sum(s : OptmetanelderCluster) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderCluster::sum(self : OptmetanelderCluster) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_cluster_mean(s : OptmetanelderCluster) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderCluster::mean(self : OptmetanelderCluster) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_cluster_scale(s : OptmetanelderCluster, f : Double) -> OptmetanelderCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderCluster::scale(self : OptmetanelderCluster, f : Double) -> OptmetanelderCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cluster_add(a : OptmetanelderCluster, b : OptmetanelderCluster) -> OptmetanelderCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderCluster::add(self : OptmetanelderCluster, other : OptmetanelderCluster) -> OptmetanelderCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cluster_copy(s : OptmetanelderCluster) -> OptmetanelderCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderCluster::copy(self : OptmetanelderCluster) -> OptmetanelderCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cluster_fill(s : OptmetanelderCluster, v : Double) -> OptmetanelderCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderCluster::fill(self : OptmetanelderCluster, v : Double) -> OptmetanelderCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cluster_min(s : OptmetanelderCluster) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderCluster::min(self : OptmetanelderCluster) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_cluster_max(s : OptmetanelderCluster) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderCluster::max(self : OptmetanelderCluster) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_cluster_to_string(s : OptmetanelderCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderCluster::to_string(self : OptmetanelderCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderModel {
@@ -708,45 +708,45 @@ pub fn opt_meta_nelder_model_make(size : Int) -> OptmetanelderModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_model_len(s : OptmetanelderModel) -> Int { s.size }
+pub fn OptmetanelderModel::len(self : OptmetanelderModel) -> Int { self.size }
 
-pub fn opt_meta_nelder_model_get(s : OptmetanelderModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderModel::get(self : OptmetanelderModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_model_set(s : OptmetanelderModel, i : Int, v : Double) -> OptmetanelderModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderModel::set(self : OptmetanelderModel, i : Int, v : Double) -> OptmetanelderModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_model_sum(s : OptmetanelderModel) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderModel::sum(self : OptmetanelderModel) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_model_mean(s : OptmetanelderModel) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderModel::mean(self : OptmetanelderModel) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_model_scale(s : OptmetanelderModel, f : Double) -> OptmetanelderModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderModel::scale(self : OptmetanelderModel, f : Double) -> OptmetanelderModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_model_add(a : OptmetanelderModel, b : OptmetanelderModel) -> OptmetanelderModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderModel::add(self : OptmetanelderModel, other : OptmetanelderModel) -> OptmetanelderModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_model_copy(s : OptmetanelderModel) -> OptmetanelderModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderModel::copy(self : OptmetanelderModel) -> OptmetanelderModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_model_fill(s : OptmetanelderModel, v : Double) -> OptmetanelderModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderModel::fill(self : OptmetanelderModel, v : Double) -> OptmetanelderModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_model_min(s : OptmetanelderModel) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderModel::min(self : OptmetanelderModel) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_model_max(s : OptmetanelderModel) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderModel::max(self : OptmetanelderModel) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_model_to_string(s : OptmetanelderModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderModel::to_string(self : OptmetanelderModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderLayer {
@@ -759,45 +759,45 @@ pub fn opt_meta_nelder_layer_make(size : Int) -> OptmetanelderLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_layer_len(s : OptmetanelderLayer) -> Int { s.size }
+pub fn OptmetanelderLayer::len(self : OptmetanelderLayer) -> Int { self.size }
 
-pub fn opt_meta_nelder_layer_get(s : OptmetanelderLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderLayer::get(self : OptmetanelderLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_layer_set(s : OptmetanelderLayer, i : Int, v : Double) -> OptmetanelderLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderLayer::set(self : OptmetanelderLayer, i : Int, v : Double) -> OptmetanelderLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_layer_sum(s : OptmetanelderLayer) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderLayer::sum(self : OptmetanelderLayer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_layer_mean(s : OptmetanelderLayer) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderLayer::mean(self : OptmetanelderLayer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_layer_scale(s : OptmetanelderLayer, f : Double) -> OptmetanelderLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderLayer::scale(self : OptmetanelderLayer, f : Double) -> OptmetanelderLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_layer_add(a : OptmetanelderLayer, b : OptmetanelderLayer) -> OptmetanelderLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderLayer::add(self : OptmetanelderLayer, other : OptmetanelderLayer) -> OptmetanelderLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_layer_copy(s : OptmetanelderLayer) -> OptmetanelderLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderLayer::copy(self : OptmetanelderLayer) -> OptmetanelderLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_layer_fill(s : OptmetanelderLayer, v : Double) -> OptmetanelderLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderLayer::fill(self : OptmetanelderLayer, v : Double) -> OptmetanelderLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_layer_min(s : OptmetanelderLayer) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderLayer::min(self : OptmetanelderLayer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_layer_max(s : OptmetanelderLayer) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderLayer::max(self : OptmetanelderLayer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_layer_to_string(s : OptmetanelderLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderLayer::to_string(self : OptmetanelderLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderBuffer {
@@ -810,45 +810,45 @@ pub fn opt_meta_nelder_buffer_make(size : Int) -> OptmetanelderBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_buffer_len(s : OptmetanelderBuffer) -> Int { s.size }
+pub fn OptmetanelderBuffer::len(self : OptmetanelderBuffer) -> Int { self.size }
 
-pub fn opt_meta_nelder_buffer_get(s : OptmetanelderBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderBuffer::get(self : OptmetanelderBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_buffer_set(s : OptmetanelderBuffer, i : Int, v : Double) -> OptmetanelderBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderBuffer::set(self : OptmetanelderBuffer, i : Int, v : Double) -> OptmetanelderBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_buffer_sum(s : OptmetanelderBuffer) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderBuffer::sum(self : OptmetanelderBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_buffer_mean(s : OptmetanelderBuffer) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderBuffer::mean(self : OptmetanelderBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_buffer_scale(s : OptmetanelderBuffer, f : Double) -> OptmetanelderBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderBuffer::scale(self : OptmetanelderBuffer, f : Double) -> OptmetanelderBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_buffer_add(a : OptmetanelderBuffer, b : OptmetanelderBuffer) -> OptmetanelderBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderBuffer::add(self : OptmetanelderBuffer, other : OptmetanelderBuffer) -> OptmetanelderBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_buffer_copy(s : OptmetanelderBuffer) -> OptmetanelderBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderBuffer::copy(self : OptmetanelderBuffer) -> OptmetanelderBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_buffer_fill(s : OptmetanelderBuffer, v : Double) -> OptmetanelderBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderBuffer::fill(self : OptmetanelderBuffer, v : Double) -> OptmetanelderBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_buffer_min(s : OptmetanelderBuffer) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderBuffer::min(self : OptmetanelderBuffer) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_buffer_max(s : OptmetanelderBuffer) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderBuffer::max(self : OptmetanelderBuffer) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_buffer_to_string(s : OptmetanelderBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderBuffer::to_string(self : OptmetanelderBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderCursor {
@@ -861,45 +861,45 @@ pub fn opt_meta_nelder_cursor_make(size : Int) -> OptmetanelderCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_cursor_len(s : OptmetanelderCursor) -> Int { s.size }
+pub fn OptmetanelderCursor::len(self : OptmetanelderCursor) -> Int { self.size }
 
-pub fn opt_meta_nelder_cursor_get(s : OptmetanelderCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderCursor::get(self : OptmetanelderCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_cursor_set(s : OptmetanelderCursor, i : Int, v : Double) -> OptmetanelderCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderCursor::set(self : OptmetanelderCursor, i : Int, v : Double) -> OptmetanelderCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cursor_sum(s : OptmetanelderCursor) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderCursor::sum(self : OptmetanelderCursor) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_cursor_mean(s : OptmetanelderCursor) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderCursor::mean(self : OptmetanelderCursor) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_cursor_scale(s : OptmetanelderCursor, f : Double) -> OptmetanelderCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderCursor::scale(self : OptmetanelderCursor, f : Double) -> OptmetanelderCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cursor_add(a : OptmetanelderCursor, b : OptmetanelderCursor) -> OptmetanelderCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderCursor::add(self : OptmetanelderCursor, other : OptmetanelderCursor) -> OptmetanelderCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cursor_copy(s : OptmetanelderCursor) -> OptmetanelderCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderCursor::copy(self : OptmetanelderCursor) -> OptmetanelderCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cursor_fill(s : OptmetanelderCursor, v : Double) -> OptmetanelderCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderCursor::fill(self : OptmetanelderCursor, v : Double) -> OptmetanelderCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_cursor_min(s : OptmetanelderCursor) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderCursor::min(self : OptmetanelderCursor) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_cursor_max(s : OptmetanelderCursor) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderCursor::max(self : OptmetanelderCursor) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_cursor_to_string(s : OptmetanelderCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderCursor::to_string(self : OptmetanelderCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderView {
@@ -912,45 +912,45 @@ pub fn opt_meta_nelder_view_make(size : Int) -> OptmetanelderView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_view_len(s : OptmetanelderView) -> Int { s.size }
+pub fn OptmetanelderView::len(self : OptmetanelderView) -> Int { self.size }
 
-pub fn opt_meta_nelder_view_get(s : OptmetanelderView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderView::get(self : OptmetanelderView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_view_set(s : OptmetanelderView, i : Int, v : Double) -> OptmetanelderView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderView::set(self : OptmetanelderView, i : Int, v : Double) -> OptmetanelderView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_view_sum(s : OptmetanelderView) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderView::sum(self : OptmetanelderView) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_view_mean(s : OptmetanelderView) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderView::mean(self : OptmetanelderView) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_view_scale(s : OptmetanelderView, f : Double) -> OptmetanelderView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderView::scale(self : OptmetanelderView, f : Double) -> OptmetanelderView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_view_add(a : OptmetanelderView, b : OptmetanelderView) -> OptmetanelderView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderView::add(self : OptmetanelderView, other : OptmetanelderView) -> OptmetanelderView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_view_copy(s : OptmetanelderView) -> OptmetanelderView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderView::copy(self : OptmetanelderView) -> OptmetanelderView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_view_fill(s : OptmetanelderView, v : Double) -> OptmetanelderView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderView::fill(self : OptmetanelderView, v : Double) -> OptmetanelderView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_view_min(s : OptmetanelderView) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderView::min(self : OptmetanelderView) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_view_max(s : OptmetanelderView) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderView::max(self : OptmetanelderView) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_view_to_string(s : OptmetanelderView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderView::to_string(self : OptmetanelderView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderRange {
@@ -963,45 +963,45 @@ pub fn opt_meta_nelder_range_make(size : Int) -> OptmetanelderRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_range_len(s : OptmetanelderRange) -> Int { s.size }
+pub fn OptmetanelderRange::len(self : OptmetanelderRange) -> Int { self.size }
 
-pub fn opt_meta_nelder_range_get(s : OptmetanelderRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderRange::get(self : OptmetanelderRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_range_set(s : OptmetanelderRange, i : Int, v : Double) -> OptmetanelderRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderRange::set(self : OptmetanelderRange, i : Int, v : Double) -> OptmetanelderRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_range_sum(s : OptmetanelderRange) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderRange::sum(self : OptmetanelderRange) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_range_mean(s : OptmetanelderRange) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderRange::mean(self : OptmetanelderRange) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_range_scale(s : OptmetanelderRange, f : Double) -> OptmetanelderRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderRange::scale(self : OptmetanelderRange, f : Double) -> OptmetanelderRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_range_add(a : OptmetanelderRange, b : OptmetanelderRange) -> OptmetanelderRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderRange::add(self : OptmetanelderRange, other : OptmetanelderRange) -> OptmetanelderRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_range_copy(s : OptmetanelderRange) -> OptmetanelderRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderRange::copy(self : OptmetanelderRange) -> OptmetanelderRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_range_fill(s : OptmetanelderRange, v : Double) -> OptmetanelderRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderRange::fill(self : OptmetanelderRange, v : Double) -> OptmetanelderRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_range_min(s : OptmetanelderRange) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderRange::min(self : OptmetanelderRange) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_range_max(s : OptmetanelderRange) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderRange::max(self : OptmetanelderRange) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_range_to_string(s : OptmetanelderRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderRange::to_string(self : OptmetanelderRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct OptmetanelderSlice {
@@ -1014,44 +1014,44 @@ pub fn opt_meta_nelder_slice_make(size : Int) -> OptmetanelderSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn opt_meta_nelder_slice_len(s : OptmetanelderSlice) -> Int { s.size }
+pub fn OptmetanelderSlice::len(self : OptmetanelderSlice) -> Int { self.size }
 
-pub fn opt_meta_nelder_slice_get(s : OptmetanelderSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn OptmetanelderSlice::get(self : OptmetanelderSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn opt_meta_nelder_slice_set(s : OptmetanelderSlice, i : Int, v : Double) -> OptmetanelderSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn OptmetanelderSlice::set(self : OptmetanelderSlice, i : Int, v : Double) -> OptmetanelderSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_slice_sum(s : OptmetanelderSlice) -> Double { @_common.sum(s.data) }
+pub fn OptmetanelderSlice::sum(self : OptmetanelderSlice) -> Double { @_common.sum(self.data) }
 
-pub fn opt_meta_nelder_slice_mean(s : OptmetanelderSlice) -> Double { @_common.mean(s.data) }
+pub fn OptmetanelderSlice::mean(self : OptmetanelderSlice) -> Double { @_common.mean(self.data) }
 
-pub fn opt_meta_nelder_slice_scale(s : OptmetanelderSlice, f : Double) -> OptmetanelderSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn OptmetanelderSlice::scale(self : OptmetanelderSlice, f : Double) -> OptmetanelderSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_slice_add(a : OptmetanelderSlice, b : OptmetanelderSlice) -> OptmetanelderSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn OptmetanelderSlice::add(self : OptmetanelderSlice, other : OptmetanelderSlice) -> OptmetanelderSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_slice_copy(s : OptmetanelderSlice) -> OptmetanelderSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn OptmetanelderSlice::copy(self : OptmetanelderSlice) -> OptmetanelderSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_slice_fill(s : OptmetanelderSlice, v : Double) -> OptmetanelderSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn OptmetanelderSlice::fill(self : OptmetanelderSlice, v : Double) -> OptmetanelderSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn opt_meta_nelder_slice_min(s : OptmetanelderSlice) -> Double { @_common.min(s.data) }
+pub fn OptmetanelderSlice::min(self : OptmetanelderSlice) -> Double { @_common.min(self.data) }
 
-pub fn opt_meta_nelder_slice_max(s : OptmetanelderSlice) -> Double { @_common.max(s.data) }
+pub fn OptmetanelderSlice::max(self : OptmetanelderSlice) -> Double { @_common.max(self.data) }
 
-pub fn opt_meta_nelder_slice_to_string(s : OptmetanelderSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn OptmetanelderSlice::to_string(self : OptmetanelderSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

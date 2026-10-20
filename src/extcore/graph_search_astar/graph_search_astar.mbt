@@ -351,45 +351,45 @@ pub fn graph_search_astar_frame_make(size : Int) -> GraphsearchastarFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_frame_len(s : GraphsearchastarFrame) -> Int { s.size }
+pub fn GraphsearchastarFrame::len(self : GraphsearchastarFrame) -> Int { self.size }
 
-pub fn graph_search_astar_frame_get(s : GraphsearchastarFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarFrame::get(self : GraphsearchastarFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_frame_set(s : GraphsearchastarFrame, i : Int, v : Double) -> GraphsearchastarFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarFrame::set(self : GraphsearchastarFrame, i : Int, v : Double) -> GraphsearchastarFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_frame_sum(s : GraphsearchastarFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarFrame::sum(self : GraphsearchastarFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_frame_mean(s : GraphsearchastarFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarFrame::mean(self : GraphsearchastarFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_frame_scale(s : GraphsearchastarFrame, f : Double) -> GraphsearchastarFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarFrame::scale(self : GraphsearchastarFrame, f : Double) -> GraphsearchastarFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_frame_add(a : GraphsearchastarFrame, b : GraphsearchastarFrame) -> GraphsearchastarFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarFrame::add(self : GraphsearchastarFrame, other : GraphsearchastarFrame) -> GraphsearchastarFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_frame_copy(s : GraphsearchastarFrame) -> GraphsearchastarFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarFrame::copy(self : GraphsearchastarFrame) -> GraphsearchastarFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_frame_fill(s : GraphsearchastarFrame, v : Double) -> GraphsearchastarFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarFrame::fill(self : GraphsearchastarFrame, v : Double) -> GraphsearchastarFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_frame_min(s : GraphsearchastarFrame) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarFrame::min(self : GraphsearchastarFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_frame_max(s : GraphsearchastarFrame) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarFrame::max(self : GraphsearchastarFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_frame_to_string(s : GraphsearchastarFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarFrame::to_string(self : GraphsearchastarFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarTable {
@@ -402,45 +402,45 @@ pub fn graph_search_astar_table_make(size : Int) -> GraphsearchastarTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_table_len(s : GraphsearchastarTable) -> Int { s.size }
+pub fn GraphsearchastarTable::len(self : GraphsearchastarTable) -> Int { self.size }
 
-pub fn graph_search_astar_table_get(s : GraphsearchastarTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarTable::get(self : GraphsearchastarTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_table_set(s : GraphsearchastarTable, i : Int, v : Double) -> GraphsearchastarTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarTable::set(self : GraphsearchastarTable, i : Int, v : Double) -> GraphsearchastarTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_table_sum(s : GraphsearchastarTable) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarTable::sum(self : GraphsearchastarTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_table_mean(s : GraphsearchastarTable) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarTable::mean(self : GraphsearchastarTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_table_scale(s : GraphsearchastarTable, f : Double) -> GraphsearchastarTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarTable::scale(self : GraphsearchastarTable, f : Double) -> GraphsearchastarTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_table_add(a : GraphsearchastarTable, b : GraphsearchastarTable) -> GraphsearchastarTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarTable::add(self : GraphsearchastarTable, other : GraphsearchastarTable) -> GraphsearchastarTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_table_copy(s : GraphsearchastarTable) -> GraphsearchastarTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarTable::copy(self : GraphsearchastarTable) -> GraphsearchastarTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_table_fill(s : GraphsearchastarTable, v : Double) -> GraphsearchastarTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarTable::fill(self : GraphsearchastarTable, v : Double) -> GraphsearchastarTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_table_min(s : GraphsearchastarTable) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarTable::min(self : GraphsearchastarTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_table_max(s : GraphsearchastarTable) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarTable::max(self : GraphsearchastarTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_table_to_string(s : GraphsearchastarTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarTable::to_string(self : GraphsearchastarTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarGraphN {
@@ -453,45 +453,45 @@ pub fn graph_search_astar_graphn_make(size : Int) -> GraphsearchastarGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_graphn_len(s : GraphsearchastarGraphN) -> Int { s.size }
+pub fn GraphsearchastarGraphN::len(self : GraphsearchastarGraphN) -> Int { self.size }
 
-pub fn graph_search_astar_graphn_get(s : GraphsearchastarGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarGraphN::get(self : GraphsearchastarGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_graphn_set(s : GraphsearchastarGraphN, i : Int, v : Double) -> GraphsearchastarGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarGraphN::set(self : GraphsearchastarGraphN, i : Int, v : Double) -> GraphsearchastarGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_graphn_sum(s : GraphsearchastarGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarGraphN::sum(self : GraphsearchastarGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_graphn_mean(s : GraphsearchastarGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarGraphN::mean(self : GraphsearchastarGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_graphn_scale(s : GraphsearchastarGraphN, f : Double) -> GraphsearchastarGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarGraphN::scale(self : GraphsearchastarGraphN, f : Double) -> GraphsearchastarGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_graphn_add(a : GraphsearchastarGraphN, b : GraphsearchastarGraphN) -> GraphsearchastarGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarGraphN::add(self : GraphsearchastarGraphN, other : GraphsearchastarGraphN) -> GraphsearchastarGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_graphn_copy(s : GraphsearchastarGraphN) -> GraphsearchastarGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarGraphN::copy(self : GraphsearchastarGraphN) -> GraphsearchastarGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_graphn_fill(s : GraphsearchastarGraphN, v : Double) -> GraphsearchastarGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarGraphN::fill(self : GraphsearchastarGraphN, v : Double) -> GraphsearchastarGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_graphn_min(s : GraphsearchastarGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarGraphN::min(self : GraphsearchastarGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_graphn_max(s : GraphsearchastarGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarGraphN::max(self : GraphsearchastarGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_graphn_to_string(s : GraphsearchastarGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarGraphN::to_string(self : GraphsearchastarGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarNode {
@@ -504,45 +504,45 @@ pub fn graph_search_astar_node_make(size : Int) -> GraphsearchastarNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_node_len(s : GraphsearchastarNode) -> Int { s.size }
+pub fn GraphsearchastarNode::len(self : GraphsearchastarNode) -> Int { self.size }
 
-pub fn graph_search_astar_node_get(s : GraphsearchastarNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarNode::get(self : GraphsearchastarNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_node_set(s : GraphsearchastarNode, i : Int, v : Double) -> GraphsearchastarNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarNode::set(self : GraphsearchastarNode, i : Int, v : Double) -> GraphsearchastarNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_node_sum(s : GraphsearchastarNode) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarNode::sum(self : GraphsearchastarNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_node_mean(s : GraphsearchastarNode) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarNode::mean(self : GraphsearchastarNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_node_scale(s : GraphsearchastarNode, f : Double) -> GraphsearchastarNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarNode::scale(self : GraphsearchastarNode, f : Double) -> GraphsearchastarNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_node_add(a : GraphsearchastarNode, b : GraphsearchastarNode) -> GraphsearchastarNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarNode::add(self : GraphsearchastarNode, other : GraphsearchastarNode) -> GraphsearchastarNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_node_copy(s : GraphsearchastarNode) -> GraphsearchastarNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarNode::copy(self : GraphsearchastarNode) -> GraphsearchastarNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_node_fill(s : GraphsearchastarNode, v : Double) -> GraphsearchastarNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarNode::fill(self : GraphsearchastarNode, v : Double) -> GraphsearchastarNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_node_min(s : GraphsearchastarNode) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarNode::min(self : GraphsearchastarNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_node_max(s : GraphsearchastarNode) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarNode::max(self : GraphsearchastarNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_node_to_string(s : GraphsearchastarNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarNode::to_string(self : GraphsearchastarNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarEdge {
@@ -555,45 +555,45 @@ pub fn graph_search_astar_edge_make(size : Int) -> GraphsearchastarEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_edge_len(s : GraphsearchastarEdge) -> Int { s.size }
+pub fn GraphsearchastarEdge::len(self : GraphsearchastarEdge) -> Int { self.size }
 
-pub fn graph_search_astar_edge_get(s : GraphsearchastarEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarEdge::get(self : GraphsearchastarEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_edge_set(s : GraphsearchastarEdge, i : Int, v : Double) -> GraphsearchastarEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarEdge::set(self : GraphsearchastarEdge, i : Int, v : Double) -> GraphsearchastarEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_edge_sum(s : GraphsearchastarEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarEdge::sum(self : GraphsearchastarEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_edge_mean(s : GraphsearchastarEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarEdge::mean(self : GraphsearchastarEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_edge_scale(s : GraphsearchastarEdge, f : Double) -> GraphsearchastarEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarEdge::scale(self : GraphsearchastarEdge, f : Double) -> GraphsearchastarEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_edge_add(a : GraphsearchastarEdge, b : GraphsearchastarEdge) -> GraphsearchastarEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarEdge::add(self : GraphsearchastarEdge, other : GraphsearchastarEdge) -> GraphsearchastarEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_edge_copy(s : GraphsearchastarEdge) -> GraphsearchastarEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarEdge::copy(self : GraphsearchastarEdge) -> GraphsearchastarEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_edge_fill(s : GraphsearchastarEdge, v : Double) -> GraphsearchastarEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarEdge::fill(self : GraphsearchastarEdge, v : Double) -> GraphsearchastarEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_edge_min(s : GraphsearchastarEdge) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarEdge::min(self : GraphsearchastarEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_edge_max(s : GraphsearchastarEdge) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarEdge::max(self : GraphsearchastarEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_edge_to_string(s : GraphsearchastarEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarEdge::to_string(self : GraphsearchastarEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarPath {
@@ -606,45 +606,45 @@ pub fn graph_search_astar_path_make(size : Int) -> GraphsearchastarPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_path_len(s : GraphsearchastarPath) -> Int { s.size }
+pub fn GraphsearchastarPath::len(self : GraphsearchastarPath) -> Int { self.size }
 
-pub fn graph_search_astar_path_get(s : GraphsearchastarPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarPath::get(self : GraphsearchastarPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_path_set(s : GraphsearchastarPath, i : Int, v : Double) -> GraphsearchastarPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarPath::set(self : GraphsearchastarPath, i : Int, v : Double) -> GraphsearchastarPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_path_sum(s : GraphsearchastarPath) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarPath::sum(self : GraphsearchastarPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_path_mean(s : GraphsearchastarPath) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarPath::mean(self : GraphsearchastarPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_path_scale(s : GraphsearchastarPath, f : Double) -> GraphsearchastarPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarPath::scale(self : GraphsearchastarPath, f : Double) -> GraphsearchastarPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_path_add(a : GraphsearchastarPath, b : GraphsearchastarPath) -> GraphsearchastarPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarPath::add(self : GraphsearchastarPath, other : GraphsearchastarPath) -> GraphsearchastarPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_path_copy(s : GraphsearchastarPath) -> GraphsearchastarPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarPath::copy(self : GraphsearchastarPath) -> GraphsearchastarPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_path_fill(s : GraphsearchastarPath, v : Double) -> GraphsearchastarPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarPath::fill(self : GraphsearchastarPath, v : Double) -> GraphsearchastarPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_path_min(s : GraphsearchastarPath) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarPath::min(self : GraphsearchastarPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_path_max(s : GraphsearchastarPath) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarPath::max(self : GraphsearchastarPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_path_to_string(s : GraphsearchastarPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarPath::to_string(self : GraphsearchastarPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarCluster {
@@ -657,45 +657,45 @@ pub fn graph_search_astar_cluster_make(size : Int) -> GraphsearchastarCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_cluster_len(s : GraphsearchastarCluster) -> Int { s.size }
+pub fn GraphsearchastarCluster::len(self : GraphsearchastarCluster) -> Int { self.size }
 
-pub fn graph_search_astar_cluster_get(s : GraphsearchastarCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarCluster::get(self : GraphsearchastarCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_cluster_set(s : GraphsearchastarCluster, i : Int, v : Double) -> GraphsearchastarCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarCluster::set(self : GraphsearchastarCluster, i : Int, v : Double) -> GraphsearchastarCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cluster_sum(s : GraphsearchastarCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarCluster::sum(self : GraphsearchastarCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_cluster_mean(s : GraphsearchastarCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarCluster::mean(self : GraphsearchastarCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_cluster_scale(s : GraphsearchastarCluster, f : Double) -> GraphsearchastarCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarCluster::scale(self : GraphsearchastarCluster, f : Double) -> GraphsearchastarCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cluster_add(a : GraphsearchastarCluster, b : GraphsearchastarCluster) -> GraphsearchastarCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarCluster::add(self : GraphsearchastarCluster, other : GraphsearchastarCluster) -> GraphsearchastarCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_cluster_copy(s : GraphsearchastarCluster) -> GraphsearchastarCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarCluster::copy(self : GraphsearchastarCluster) -> GraphsearchastarCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cluster_fill(s : GraphsearchastarCluster, v : Double) -> GraphsearchastarCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarCluster::fill(self : GraphsearchastarCluster, v : Double) -> GraphsearchastarCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cluster_min(s : GraphsearchastarCluster) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarCluster::min(self : GraphsearchastarCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_cluster_max(s : GraphsearchastarCluster) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarCluster::max(self : GraphsearchastarCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_cluster_to_string(s : GraphsearchastarCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarCluster::to_string(self : GraphsearchastarCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarModel {
@@ -708,45 +708,45 @@ pub fn graph_search_astar_model_make(size : Int) -> GraphsearchastarModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_model_len(s : GraphsearchastarModel) -> Int { s.size }
+pub fn GraphsearchastarModel::len(self : GraphsearchastarModel) -> Int { self.size }
 
-pub fn graph_search_astar_model_get(s : GraphsearchastarModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarModel::get(self : GraphsearchastarModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_model_set(s : GraphsearchastarModel, i : Int, v : Double) -> GraphsearchastarModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarModel::set(self : GraphsearchastarModel, i : Int, v : Double) -> GraphsearchastarModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_model_sum(s : GraphsearchastarModel) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarModel::sum(self : GraphsearchastarModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_model_mean(s : GraphsearchastarModel) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarModel::mean(self : GraphsearchastarModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_model_scale(s : GraphsearchastarModel, f : Double) -> GraphsearchastarModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarModel::scale(self : GraphsearchastarModel, f : Double) -> GraphsearchastarModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_model_add(a : GraphsearchastarModel, b : GraphsearchastarModel) -> GraphsearchastarModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarModel::add(self : GraphsearchastarModel, other : GraphsearchastarModel) -> GraphsearchastarModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_model_copy(s : GraphsearchastarModel) -> GraphsearchastarModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarModel::copy(self : GraphsearchastarModel) -> GraphsearchastarModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_model_fill(s : GraphsearchastarModel, v : Double) -> GraphsearchastarModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarModel::fill(self : GraphsearchastarModel, v : Double) -> GraphsearchastarModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_model_min(s : GraphsearchastarModel) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarModel::min(self : GraphsearchastarModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_model_max(s : GraphsearchastarModel) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarModel::max(self : GraphsearchastarModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_model_to_string(s : GraphsearchastarModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarModel::to_string(self : GraphsearchastarModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarLayer {
@@ -759,45 +759,45 @@ pub fn graph_search_astar_layer_make(size : Int) -> GraphsearchastarLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_layer_len(s : GraphsearchastarLayer) -> Int { s.size }
+pub fn GraphsearchastarLayer::len(self : GraphsearchastarLayer) -> Int { self.size }
 
-pub fn graph_search_astar_layer_get(s : GraphsearchastarLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarLayer::get(self : GraphsearchastarLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_layer_set(s : GraphsearchastarLayer, i : Int, v : Double) -> GraphsearchastarLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarLayer::set(self : GraphsearchastarLayer, i : Int, v : Double) -> GraphsearchastarLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_layer_sum(s : GraphsearchastarLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarLayer::sum(self : GraphsearchastarLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_layer_mean(s : GraphsearchastarLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarLayer::mean(self : GraphsearchastarLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_layer_scale(s : GraphsearchastarLayer, f : Double) -> GraphsearchastarLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarLayer::scale(self : GraphsearchastarLayer, f : Double) -> GraphsearchastarLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_layer_add(a : GraphsearchastarLayer, b : GraphsearchastarLayer) -> GraphsearchastarLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarLayer::add(self : GraphsearchastarLayer, other : GraphsearchastarLayer) -> GraphsearchastarLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_layer_copy(s : GraphsearchastarLayer) -> GraphsearchastarLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarLayer::copy(self : GraphsearchastarLayer) -> GraphsearchastarLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_layer_fill(s : GraphsearchastarLayer, v : Double) -> GraphsearchastarLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarLayer::fill(self : GraphsearchastarLayer, v : Double) -> GraphsearchastarLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_layer_min(s : GraphsearchastarLayer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarLayer::min(self : GraphsearchastarLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_layer_max(s : GraphsearchastarLayer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarLayer::max(self : GraphsearchastarLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_layer_to_string(s : GraphsearchastarLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarLayer::to_string(self : GraphsearchastarLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarBuffer {
@@ -810,45 +810,45 @@ pub fn graph_search_astar_buffer_make(size : Int) -> GraphsearchastarBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_buffer_len(s : GraphsearchastarBuffer) -> Int { s.size }
+pub fn GraphsearchastarBuffer::len(self : GraphsearchastarBuffer) -> Int { self.size }
 
-pub fn graph_search_astar_buffer_get(s : GraphsearchastarBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarBuffer::get(self : GraphsearchastarBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_buffer_set(s : GraphsearchastarBuffer, i : Int, v : Double) -> GraphsearchastarBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarBuffer::set(self : GraphsearchastarBuffer, i : Int, v : Double) -> GraphsearchastarBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_buffer_sum(s : GraphsearchastarBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarBuffer::sum(self : GraphsearchastarBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_buffer_mean(s : GraphsearchastarBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarBuffer::mean(self : GraphsearchastarBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_buffer_scale(s : GraphsearchastarBuffer, f : Double) -> GraphsearchastarBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarBuffer::scale(self : GraphsearchastarBuffer, f : Double) -> GraphsearchastarBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_buffer_add(a : GraphsearchastarBuffer, b : GraphsearchastarBuffer) -> GraphsearchastarBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarBuffer::add(self : GraphsearchastarBuffer, other : GraphsearchastarBuffer) -> GraphsearchastarBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_buffer_copy(s : GraphsearchastarBuffer) -> GraphsearchastarBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarBuffer::copy(self : GraphsearchastarBuffer) -> GraphsearchastarBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_buffer_fill(s : GraphsearchastarBuffer, v : Double) -> GraphsearchastarBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarBuffer::fill(self : GraphsearchastarBuffer, v : Double) -> GraphsearchastarBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_buffer_min(s : GraphsearchastarBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarBuffer::min(self : GraphsearchastarBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_buffer_max(s : GraphsearchastarBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarBuffer::max(self : GraphsearchastarBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_buffer_to_string(s : GraphsearchastarBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarBuffer::to_string(self : GraphsearchastarBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarCursor {
@@ -861,45 +861,45 @@ pub fn graph_search_astar_cursor_make(size : Int) -> GraphsearchastarCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_cursor_len(s : GraphsearchastarCursor) -> Int { s.size }
+pub fn GraphsearchastarCursor::len(self : GraphsearchastarCursor) -> Int { self.size }
 
-pub fn graph_search_astar_cursor_get(s : GraphsearchastarCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarCursor::get(self : GraphsearchastarCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_cursor_set(s : GraphsearchastarCursor, i : Int, v : Double) -> GraphsearchastarCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarCursor::set(self : GraphsearchastarCursor, i : Int, v : Double) -> GraphsearchastarCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cursor_sum(s : GraphsearchastarCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarCursor::sum(self : GraphsearchastarCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_cursor_mean(s : GraphsearchastarCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarCursor::mean(self : GraphsearchastarCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_cursor_scale(s : GraphsearchastarCursor, f : Double) -> GraphsearchastarCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarCursor::scale(self : GraphsearchastarCursor, f : Double) -> GraphsearchastarCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cursor_add(a : GraphsearchastarCursor, b : GraphsearchastarCursor) -> GraphsearchastarCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarCursor::add(self : GraphsearchastarCursor, other : GraphsearchastarCursor) -> GraphsearchastarCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_cursor_copy(s : GraphsearchastarCursor) -> GraphsearchastarCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarCursor::copy(self : GraphsearchastarCursor) -> GraphsearchastarCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cursor_fill(s : GraphsearchastarCursor, v : Double) -> GraphsearchastarCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarCursor::fill(self : GraphsearchastarCursor, v : Double) -> GraphsearchastarCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_cursor_min(s : GraphsearchastarCursor) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarCursor::min(self : GraphsearchastarCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_cursor_max(s : GraphsearchastarCursor) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarCursor::max(self : GraphsearchastarCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_cursor_to_string(s : GraphsearchastarCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarCursor::to_string(self : GraphsearchastarCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarView {
@@ -912,45 +912,45 @@ pub fn graph_search_astar_view_make(size : Int) -> GraphsearchastarView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_view_len(s : GraphsearchastarView) -> Int { s.size }
+pub fn GraphsearchastarView::len(self : GraphsearchastarView) -> Int { self.size }
 
-pub fn graph_search_astar_view_get(s : GraphsearchastarView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarView::get(self : GraphsearchastarView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_view_set(s : GraphsearchastarView, i : Int, v : Double) -> GraphsearchastarView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarView::set(self : GraphsearchastarView, i : Int, v : Double) -> GraphsearchastarView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_view_sum(s : GraphsearchastarView) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarView::sum(self : GraphsearchastarView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_view_mean(s : GraphsearchastarView) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarView::mean(self : GraphsearchastarView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_view_scale(s : GraphsearchastarView, f : Double) -> GraphsearchastarView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarView::scale(self : GraphsearchastarView, f : Double) -> GraphsearchastarView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_view_add(a : GraphsearchastarView, b : GraphsearchastarView) -> GraphsearchastarView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarView::add(self : GraphsearchastarView, other : GraphsearchastarView) -> GraphsearchastarView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_view_copy(s : GraphsearchastarView) -> GraphsearchastarView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarView::copy(self : GraphsearchastarView) -> GraphsearchastarView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_view_fill(s : GraphsearchastarView, v : Double) -> GraphsearchastarView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarView::fill(self : GraphsearchastarView, v : Double) -> GraphsearchastarView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_view_min(s : GraphsearchastarView) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarView::min(self : GraphsearchastarView) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_view_max(s : GraphsearchastarView) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarView::max(self : GraphsearchastarView) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_view_to_string(s : GraphsearchastarView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarView::to_string(self : GraphsearchastarView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarRange {
@@ -963,45 +963,45 @@ pub fn graph_search_astar_range_make(size : Int) -> GraphsearchastarRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_range_len(s : GraphsearchastarRange) -> Int { s.size }
+pub fn GraphsearchastarRange::len(self : GraphsearchastarRange) -> Int { self.size }
 
-pub fn graph_search_astar_range_get(s : GraphsearchastarRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarRange::get(self : GraphsearchastarRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_range_set(s : GraphsearchastarRange, i : Int, v : Double) -> GraphsearchastarRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarRange::set(self : GraphsearchastarRange, i : Int, v : Double) -> GraphsearchastarRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_range_sum(s : GraphsearchastarRange) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarRange::sum(self : GraphsearchastarRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_range_mean(s : GraphsearchastarRange) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarRange::mean(self : GraphsearchastarRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_range_scale(s : GraphsearchastarRange, f : Double) -> GraphsearchastarRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarRange::scale(self : GraphsearchastarRange, f : Double) -> GraphsearchastarRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_range_add(a : GraphsearchastarRange, b : GraphsearchastarRange) -> GraphsearchastarRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarRange::add(self : GraphsearchastarRange, other : GraphsearchastarRange) -> GraphsearchastarRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_range_copy(s : GraphsearchastarRange) -> GraphsearchastarRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarRange::copy(self : GraphsearchastarRange) -> GraphsearchastarRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_range_fill(s : GraphsearchastarRange, v : Double) -> GraphsearchastarRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarRange::fill(self : GraphsearchastarRange, v : Double) -> GraphsearchastarRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_range_min(s : GraphsearchastarRange) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarRange::min(self : GraphsearchastarRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_range_max(s : GraphsearchastarRange) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarRange::max(self : GraphsearchastarRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_range_to_string(s : GraphsearchastarRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarRange::to_string(self : GraphsearchastarRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchastarSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_search_astar_slice_make(size : Int) -> GraphsearchastarSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_astar_slice_len(s : GraphsearchastarSlice) -> Int { s.size }
+pub fn GraphsearchastarSlice::len(self : GraphsearchastarSlice) -> Int { self.size }
 
-pub fn graph_search_astar_slice_get(s : GraphsearchastarSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchastarSlice::get(self : GraphsearchastarSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_astar_slice_set(s : GraphsearchastarSlice, i : Int, v : Double) -> GraphsearchastarSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchastarSlice::set(self : GraphsearchastarSlice, i : Int, v : Double) -> GraphsearchastarSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_slice_sum(s : GraphsearchastarSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchastarSlice::sum(self : GraphsearchastarSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_astar_slice_mean(s : GraphsearchastarSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchastarSlice::mean(self : GraphsearchastarSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_astar_slice_scale(s : GraphsearchastarSlice, f : Double) -> GraphsearchastarSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchastarSlice::scale(self : GraphsearchastarSlice, f : Double) -> GraphsearchastarSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_slice_add(a : GraphsearchastarSlice, b : GraphsearchastarSlice) -> GraphsearchastarSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchastarSlice::add(self : GraphsearchastarSlice, other : GraphsearchastarSlice) -> GraphsearchastarSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_astar_slice_copy(s : GraphsearchastarSlice) -> GraphsearchastarSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchastarSlice::copy(self : GraphsearchastarSlice) -> GraphsearchastarSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_slice_fill(s : GraphsearchastarSlice, v : Double) -> GraphsearchastarSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchastarSlice::fill(self : GraphsearchastarSlice, v : Double) -> GraphsearchastarSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_astar_slice_min(s : GraphsearchastarSlice) -> Double { @_common.min(s.data) }
+pub fn GraphsearchastarSlice::min(self : GraphsearchastarSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_astar_slice_max(s : GraphsearchastarSlice) -> Double { @_common.max(s.data) }
+pub fn GraphsearchastarSlice::max(self : GraphsearchastarSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_astar_slice_to_string(s : GraphsearchastarSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchastarSlice::to_string(self : GraphsearchastarSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

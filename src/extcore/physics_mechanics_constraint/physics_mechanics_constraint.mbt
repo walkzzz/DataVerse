@@ -351,45 +351,45 @@ pub fn physics_mechanics_constraint_frame_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_frame_len(s : PhysicsmechanicsconstraintFrame) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintFrame::len(self : PhysicsmechanicsconstraintFrame) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_frame_get(s : PhysicsmechanicsconstraintFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintFrame::get(self : PhysicsmechanicsconstraintFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_frame_set(s : PhysicsmechanicsconstraintFrame, i : Int, v : Double) -> PhysicsmechanicsconstraintFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintFrame::set(self : PhysicsmechanicsconstraintFrame, i : Int, v : Double) -> PhysicsmechanicsconstraintFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_frame_sum(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintFrame::sum(self : PhysicsmechanicsconstraintFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_frame_mean(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintFrame::mean(self : PhysicsmechanicsconstraintFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_frame_scale(s : PhysicsmechanicsconstraintFrame, f : Double) -> PhysicsmechanicsconstraintFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintFrame::scale(self : PhysicsmechanicsconstraintFrame, f : Double) -> PhysicsmechanicsconstraintFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_frame_add(a : PhysicsmechanicsconstraintFrame, b : PhysicsmechanicsconstraintFrame) -> PhysicsmechanicsconstraintFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintFrame::add(self : PhysicsmechanicsconstraintFrame, other : PhysicsmechanicsconstraintFrame) -> PhysicsmechanicsconstraintFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_frame_copy(s : PhysicsmechanicsconstraintFrame) -> PhysicsmechanicsconstraintFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintFrame::copy(self : PhysicsmechanicsconstraintFrame) -> PhysicsmechanicsconstraintFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_frame_fill(s : PhysicsmechanicsconstraintFrame, v : Double) -> PhysicsmechanicsconstraintFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintFrame::fill(self : PhysicsmechanicsconstraintFrame, v : Double) -> PhysicsmechanicsconstraintFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_frame_min(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintFrame::min(self : PhysicsmechanicsconstraintFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_frame_max(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintFrame::max(self : PhysicsmechanicsconstraintFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_frame_to_string(s : PhysicsmechanicsconstraintFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintFrame::to_string(self : PhysicsmechanicsconstraintFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintTable {
@@ -402,45 +402,45 @@ pub fn physics_mechanics_constraint_table_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_table_len(s : PhysicsmechanicsconstraintTable) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintTable::len(self : PhysicsmechanicsconstraintTable) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_table_get(s : PhysicsmechanicsconstraintTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintTable::get(self : PhysicsmechanicsconstraintTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_table_set(s : PhysicsmechanicsconstraintTable, i : Int, v : Double) -> PhysicsmechanicsconstraintTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintTable::set(self : PhysicsmechanicsconstraintTable, i : Int, v : Double) -> PhysicsmechanicsconstraintTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_table_sum(s : PhysicsmechanicsconstraintTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintTable::sum(self : PhysicsmechanicsconstraintTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_table_mean(s : PhysicsmechanicsconstraintTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintTable::mean(self : PhysicsmechanicsconstraintTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_table_scale(s : PhysicsmechanicsconstraintTable, f : Double) -> PhysicsmechanicsconstraintTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintTable::scale(self : PhysicsmechanicsconstraintTable, f : Double) -> PhysicsmechanicsconstraintTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_table_add(a : PhysicsmechanicsconstraintTable, b : PhysicsmechanicsconstraintTable) -> PhysicsmechanicsconstraintTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintTable::add(self : PhysicsmechanicsconstraintTable, other : PhysicsmechanicsconstraintTable) -> PhysicsmechanicsconstraintTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_table_copy(s : PhysicsmechanicsconstraintTable) -> PhysicsmechanicsconstraintTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintTable::copy(self : PhysicsmechanicsconstraintTable) -> PhysicsmechanicsconstraintTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_table_fill(s : PhysicsmechanicsconstraintTable, v : Double) -> PhysicsmechanicsconstraintTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintTable::fill(self : PhysicsmechanicsconstraintTable, v : Double) -> PhysicsmechanicsconstraintTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_table_min(s : PhysicsmechanicsconstraintTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintTable::min(self : PhysicsmechanicsconstraintTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_table_max(s : PhysicsmechanicsconstraintTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintTable::max(self : PhysicsmechanicsconstraintTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_table_to_string(s : PhysicsmechanicsconstraintTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintTable::to_string(self : PhysicsmechanicsconstraintTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintGraphN {
@@ -453,45 +453,45 @@ pub fn physics_mechanics_constraint_graphn_make(size : Int) -> Physicsmechanicsc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_graphn_len(s : PhysicsmechanicsconstraintGraphN) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintGraphN::len(self : PhysicsmechanicsconstraintGraphN) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_graphn_get(s : PhysicsmechanicsconstraintGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintGraphN::get(self : PhysicsmechanicsconstraintGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_graphn_set(s : PhysicsmechanicsconstraintGraphN, i : Int, v : Double) -> PhysicsmechanicsconstraintGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintGraphN::set(self : PhysicsmechanicsconstraintGraphN, i : Int, v : Double) -> PhysicsmechanicsconstraintGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_graphn_sum(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintGraphN::sum(self : PhysicsmechanicsconstraintGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_graphn_mean(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintGraphN::mean(self : PhysicsmechanicsconstraintGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_graphn_scale(s : PhysicsmechanicsconstraintGraphN, f : Double) -> PhysicsmechanicsconstraintGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintGraphN::scale(self : PhysicsmechanicsconstraintGraphN, f : Double) -> PhysicsmechanicsconstraintGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_graphn_add(a : PhysicsmechanicsconstraintGraphN, b : PhysicsmechanicsconstraintGraphN) -> PhysicsmechanicsconstraintGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintGraphN::add(self : PhysicsmechanicsconstraintGraphN, other : PhysicsmechanicsconstraintGraphN) -> PhysicsmechanicsconstraintGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_graphn_copy(s : PhysicsmechanicsconstraintGraphN) -> PhysicsmechanicsconstraintGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintGraphN::copy(self : PhysicsmechanicsconstraintGraphN) -> PhysicsmechanicsconstraintGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_graphn_fill(s : PhysicsmechanicsconstraintGraphN, v : Double) -> PhysicsmechanicsconstraintGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintGraphN::fill(self : PhysicsmechanicsconstraintGraphN, v : Double) -> PhysicsmechanicsconstraintGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_graphn_min(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintGraphN::min(self : PhysicsmechanicsconstraintGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_graphn_max(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintGraphN::max(self : PhysicsmechanicsconstraintGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_graphn_to_string(s : PhysicsmechanicsconstraintGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintGraphN::to_string(self : PhysicsmechanicsconstraintGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintNode {
@@ -504,45 +504,45 @@ pub fn physics_mechanics_constraint_node_make(size : Int) -> Physicsmechanicscon
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_node_len(s : PhysicsmechanicsconstraintNode) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintNode::len(self : PhysicsmechanicsconstraintNode) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_node_get(s : PhysicsmechanicsconstraintNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintNode::get(self : PhysicsmechanicsconstraintNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_node_set(s : PhysicsmechanicsconstraintNode, i : Int, v : Double) -> PhysicsmechanicsconstraintNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintNode::set(self : PhysicsmechanicsconstraintNode, i : Int, v : Double) -> PhysicsmechanicsconstraintNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_node_sum(s : PhysicsmechanicsconstraintNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintNode::sum(self : PhysicsmechanicsconstraintNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_node_mean(s : PhysicsmechanicsconstraintNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintNode::mean(self : PhysicsmechanicsconstraintNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_node_scale(s : PhysicsmechanicsconstraintNode, f : Double) -> PhysicsmechanicsconstraintNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintNode::scale(self : PhysicsmechanicsconstraintNode, f : Double) -> PhysicsmechanicsconstraintNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_node_add(a : PhysicsmechanicsconstraintNode, b : PhysicsmechanicsconstraintNode) -> PhysicsmechanicsconstraintNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintNode::add(self : PhysicsmechanicsconstraintNode, other : PhysicsmechanicsconstraintNode) -> PhysicsmechanicsconstraintNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_node_copy(s : PhysicsmechanicsconstraintNode) -> PhysicsmechanicsconstraintNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintNode::copy(self : PhysicsmechanicsconstraintNode) -> PhysicsmechanicsconstraintNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_node_fill(s : PhysicsmechanicsconstraintNode, v : Double) -> PhysicsmechanicsconstraintNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintNode::fill(self : PhysicsmechanicsconstraintNode, v : Double) -> PhysicsmechanicsconstraintNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_node_min(s : PhysicsmechanicsconstraintNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintNode::min(self : PhysicsmechanicsconstraintNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_node_max(s : PhysicsmechanicsconstraintNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintNode::max(self : PhysicsmechanicsconstraintNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_node_to_string(s : PhysicsmechanicsconstraintNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintNode::to_string(self : PhysicsmechanicsconstraintNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintEdge {
@@ -555,45 +555,45 @@ pub fn physics_mechanics_constraint_edge_make(size : Int) -> Physicsmechanicscon
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_edge_len(s : PhysicsmechanicsconstraintEdge) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintEdge::len(self : PhysicsmechanicsconstraintEdge) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_edge_get(s : PhysicsmechanicsconstraintEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintEdge::get(self : PhysicsmechanicsconstraintEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_edge_set(s : PhysicsmechanicsconstraintEdge, i : Int, v : Double) -> PhysicsmechanicsconstraintEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintEdge::set(self : PhysicsmechanicsconstraintEdge, i : Int, v : Double) -> PhysicsmechanicsconstraintEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_edge_sum(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintEdge::sum(self : PhysicsmechanicsconstraintEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_edge_mean(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintEdge::mean(self : PhysicsmechanicsconstraintEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_edge_scale(s : PhysicsmechanicsconstraintEdge, f : Double) -> PhysicsmechanicsconstraintEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintEdge::scale(self : PhysicsmechanicsconstraintEdge, f : Double) -> PhysicsmechanicsconstraintEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_edge_add(a : PhysicsmechanicsconstraintEdge, b : PhysicsmechanicsconstraintEdge) -> PhysicsmechanicsconstraintEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintEdge::add(self : PhysicsmechanicsconstraintEdge, other : PhysicsmechanicsconstraintEdge) -> PhysicsmechanicsconstraintEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_edge_copy(s : PhysicsmechanicsconstraintEdge) -> PhysicsmechanicsconstraintEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintEdge::copy(self : PhysicsmechanicsconstraintEdge) -> PhysicsmechanicsconstraintEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_edge_fill(s : PhysicsmechanicsconstraintEdge, v : Double) -> PhysicsmechanicsconstraintEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintEdge::fill(self : PhysicsmechanicsconstraintEdge, v : Double) -> PhysicsmechanicsconstraintEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_edge_min(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintEdge::min(self : PhysicsmechanicsconstraintEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_edge_max(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintEdge::max(self : PhysicsmechanicsconstraintEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_edge_to_string(s : PhysicsmechanicsconstraintEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintEdge::to_string(self : PhysicsmechanicsconstraintEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintPath {
@@ -606,45 +606,45 @@ pub fn physics_mechanics_constraint_path_make(size : Int) -> Physicsmechanicscon
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_path_len(s : PhysicsmechanicsconstraintPath) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintPath::len(self : PhysicsmechanicsconstraintPath) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_path_get(s : PhysicsmechanicsconstraintPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintPath::get(self : PhysicsmechanicsconstraintPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_path_set(s : PhysicsmechanicsconstraintPath, i : Int, v : Double) -> PhysicsmechanicsconstraintPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintPath::set(self : PhysicsmechanicsconstraintPath, i : Int, v : Double) -> PhysicsmechanicsconstraintPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_path_sum(s : PhysicsmechanicsconstraintPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintPath::sum(self : PhysicsmechanicsconstraintPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_path_mean(s : PhysicsmechanicsconstraintPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintPath::mean(self : PhysicsmechanicsconstraintPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_path_scale(s : PhysicsmechanicsconstraintPath, f : Double) -> PhysicsmechanicsconstraintPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintPath::scale(self : PhysicsmechanicsconstraintPath, f : Double) -> PhysicsmechanicsconstraintPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_path_add(a : PhysicsmechanicsconstraintPath, b : PhysicsmechanicsconstraintPath) -> PhysicsmechanicsconstraintPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintPath::add(self : PhysicsmechanicsconstraintPath, other : PhysicsmechanicsconstraintPath) -> PhysicsmechanicsconstraintPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_path_copy(s : PhysicsmechanicsconstraintPath) -> PhysicsmechanicsconstraintPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintPath::copy(self : PhysicsmechanicsconstraintPath) -> PhysicsmechanicsconstraintPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_path_fill(s : PhysicsmechanicsconstraintPath, v : Double) -> PhysicsmechanicsconstraintPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintPath::fill(self : PhysicsmechanicsconstraintPath, v : Double) -> PhysicsmechanicsconstraintPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_path_min(s : PhysicsmechanicsconstraintPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintPath::min(self : PhysicsmechanicsconstraintPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_path_max(s : PhysicsmechanicsconstraintPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintPath::max(self : PhysicsmechanicsconstraintPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_path_to_string(s : PhysicsmechanicsconstraintPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintPath::to_string(self : PhysicsmechanicsconstraintPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintCluster {
@@ -657,45 +657,45 @@ pub fn physics_mechanics_constraint_cluster_make(size : Int) -> Physicsmechanics
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_cluster_len(s : PhysicsmechanicsconstraintCluster) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintCluster::len(self : PhysicsmechanicsconstraintCluster) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_cluster_get(s : PhysicsmechanicsconstraintCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintCluster::get(self : PhysicsmechanicsconstraintCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_cluster_set(s : PhysicsmechanicsconstraintCluster, i : Int, v : Double) -> PhysicsmechanicsconstraintCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCluster::set(self : PhysicsmechanicsconstraintCluster, i : Int, v : Double) -> PhysicsmechanicsconstraintCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cluster_sum(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintCluster::sum(self : PhysicsmechanicsconstraintCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_cluster_mean(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintCluster::mean(self : PhysicsmechanicsconstraintCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_cluster_scale(s : PhysicsmechanicsconstraintCluster, f : Double) -> PhysicsmechanicsconstraintCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCluster::scale(self : PhysicsmechanicsconstraintCluster, f : Double) -> PhysicsmechanicsconstraintCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cluster_add(a : PhysicsmechanicsconstraintCluster, b : PhysicsmechanicsconstraintCluster) -> PhysicsmechanicsconstraintCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintCluster::add(self : PhysicsmechanicsconstraintCluster, other : PhysicsmechanicsconstraintCluster) -> PhysicsmechanicsconstraintCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cluster_copy(s : PhysicsmechanicsconstraintCluster) -> PhysicsmechanicsconstraintCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCluster::copy(self : PhysicsmechanicsconstraintCluster) -> PhysicsmechanicsconstraintCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cluster_fill(s : PhysicsmechanicsconstraintCluster, v : Double) -> PhysicsmechanicsconstraintCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCluster::fill(self : PhysicsmechanicsconstraintCluster, v : Double) -> PhysicsmechanicsconstraintCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cluster_min(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintCluster::min(self : PhysicsmechanicsconstraintCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_cluster_max(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintCluster::max(self : PhysicsmechanicsconstraintCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_cluster_to_string(s : PhysicsmechanicsconstraintCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintCluster::to_string(self : PhysicsmechanicsconstraintCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintModel {
@@ -708,45 +708,45 @@ pub fn physics_mechanics_constraint_model_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_model_len(s : PhysicsmechanicsconstraintModel) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintModel::len(self : PhysicsmechanicsconstraintModel) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_model_get(s : PhysicsmechanicsconstraintModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintModel::get(self : PhysicsmechanicsconstraintModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_model_set(s : PhysicsmechanicsconstraintModel, i : Int, v : Double) -> PhysicsmechanicsconstraintModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintModel::set(self : PhysicsmechanicsconstraintModel, i : Int, v : Double) -> PhysicsmechanicsconstraintModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_model_sum(s : PhysicsmechanicsconstraintModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintModel::sum(self : PhysicsmechanicsconstraintModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_model_mean(s : PhysicsmechanicsconstraintModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintModel::mean(self : PhysicsmechanicsconstraintModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_model_scale(s : PhysicsmechanicsconstraintModel, f : Double) -> PhysicsmechanicsconstraintModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintModel::scale(self : PhysicsmechanicsconstraintModel, f : Double) -> PhysicsmechanicsconstraintModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_model_add(a : PhysicsmechanicsconstraintModel, b : PhysicsmechanicsconstraintModel) -> PhysicsmechanicsconstraintModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintModel::add(self : PhysicsmechanicsconstraintModel, other : PhysicsmechanicsconstraintModel) -> PhysicsmechanicsconstraintModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_model_copy(s : PhysicsmechanicsconstraintModel) -> PhysicsmechanicsconstraintModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintModel::copy(self : PhysicsmechanicsconstraintModel) -> PhysicsmechanicsconstraintModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_model_fill(s : PhysicsmechanicsconstraintModel, v : Double) -> PhysicsmechanicsconstraintModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintModel::fill(self : PhysicsmechanicsconstraintModel, v : Double) -> PhysicsmechanicsconstraintModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_model_min(s : PhysicsmechanicsconstraintModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintModel::min(self : PhysicsmechanicsconstraintModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_model_max(s : PhysicsmechanicsconstraintModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintModel::max(self : PhysicsmechanicsconstraintModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_model_to_string(s : PhysicsmechanicsconstraintModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintModel::to_string(self : PhysicsmechanicsconstraintModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintLayer {
@@ -759,45 +759,45 @@ pub fn physics_mechanics_constraint_layer_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_layer_len(s : PhysicsmechanicsconstraintLayer) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintLayer::len(self : PhysicsmechanicsconstraintLayer) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_layer_get(s : PhysicsmechanicsconstraintLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintLayer::get(self : PhysicsmechanicsconstraintLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_layer_set(s : PhysicsmechanicsconstraintLayer, i : Int, v : Double) -> PhysicsmechanicsconstraintLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintLayer::set(self : PhysicsmechanicsconstraintLayer, i : Int, v : Double) -> PhysicsmechanicsconstraintLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_layer_sum(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintLayer::sum(self : PhysicsmechanicsconstraintLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_layer_mean(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintLayer::mean(self : PhysicsmechanicsconstraintLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_layer_scale(s : PhysicsmechanicsconstraintLayer, f : Double) -> PhysicsmechanicsconstraintLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintLayer::scale(self : PhysicsmechanicsconstraintLayer, f : Double) -> PhysicsmechanicsconstraintLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_layer_add(a : PhysicsmechanicsconstraintLayer, b : PhysicsmechanicsconstraintLayer) -> PhysicsmechanicsconstraintLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintLayer::add(self : PhysicsmechanicsconstraintLayer, other : PhysicsmechanicsconstraintLayer) -> PhysicsmechanicsconstraintLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_layer_copy(s : PhysicsmechanicsconstraintLayer) -> PhysicsmechanicsconstraintLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintLayer::copy(self : PhysicsmechanicsconstraintLayer) -> PhysicsmechanicsconstraintLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_layer_fill(s : PhysicsmechanicsconstraintLayer, v : Double) -> PhysicsmechanicsconstraintLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintLayer::fill(self : PhysicsmechanicsconstraintLayer, v : Double) -> PhysicsmechanicsconstraintLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_layer_min(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintLayer::min(self : PhysicsmechanicsconstraintLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_layer_max(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintLayer::max(self : PhysicsmechanicsconstraintLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_layer_to_string(s : PhysicsmechanicsconstraintLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintLayer::to_string(self : PhysicsmechanicsconstraintLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintBuffer {
@@ -810,45 +810,45 @@ pub fn physics_mechanics_constraint_buffer_make(size : Int) -> Physicsmechanicsc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_buffer_len(s : PhysicsmechanicsconstraintBuffer) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintBuffer::len(self : PhysicsmechanicsconstraintBuffer) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_buffer_get(s : PhysicsmechanicsconstraintBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintBuffer::get(self : PhysicsmechanicsconstraintBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_buffer_set(s : PhysicsmechanicsconstraintBuffer, i : Int, v : Double) -> PhysicsmechanicsconstraintBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintBuffer::set(self : PhysicsmechanicsconstraintBuffer, i : Int, v : Double) -> PhysicsmechanicsconstraintBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_buffer_sum(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintBuffer::sum(self : PhysicsmechanicsconstraintBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_buffer_mean(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintBuffer::mean(self : PhysicsmechanicsconstraintBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_buffer_scale(s : PhysicsmechanicsconstraintBuffer, f : Double) -> PhysicsmechanicsconstraintBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintBuffer::scale(self : PhysicsmechanicsconstraintBuffer, f : Double) -> PhysicsmechanicsconstraintBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_buffer_add(a : PhysicsmechanicsconstraintBuffer, b : PhysicsmechanicsconstraintBuffer) -> PhysicsmechanicsconstraintBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintBuffer::add(self : PhysicsmechanicsconstraintBuffer, other : PhysicsmechanicsconstraintBuffer) -> PhysicsmechanicsconstraintBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_buffer_copy(s : PhysicsmechanicsconstraintBuffer) -> PhysicsmechanicsconstraintBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintBuffer::copy(self : PhysicsmechanicsconstraintBuffer) -> PhysicsmechanicsconstraintBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_buffer_fill(s : PhysicsmechanicsconstraintBuffer, v : Double) -> PhysicsmechanicsconstraintBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintBuffer::fill(self : PhysicsmechanicsconstraintBuffer, v : Double) -> PhysicsmechanicsconstraintBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_buffer_min(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintBuffer::min(self : PhysicsmechanicsconstraintBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_buffer_max(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintBuffer::max(self : PhysicsmechanicsconstraintBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_buffer_to_string(s : PhysicsmechanicsconstraintBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintBuffer::to_string(self : PhysicsmechanicsconstraintBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintCursor {
@@ -861,45 +861,45 @@ pub fn physics_mechanics_constraint_cursor_make(size : Int) -> Physicsmechanicsc
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_cursor_len(s : PhysicsmechanicsconstraintCursor) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintCursor::len(self : PhysicsmechanicsconstraintCursor) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_cursor_get(s : PhysicsmechanicsconstraintCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintCursor::get(self : PhysicsmechanicsconstraintCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_cursor_set(s : PhysicsmechanicsconstraintCursor, i : Int, v : Double) -> PhysicsmechanicsconstraintCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCursor::set(self : PhysicsmechanicsconstraintCursor, i : Int, v : Double) -> PhysicsmechanicsconstraintCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cursor_sum(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintCursor::sum(self : PhysicsmechanicsconstraintCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_cursor_mean(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintCursor::mean(self : PhysicsmechanicsconstraintCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_cursor_scale(s : PhysicsmechanicsconstraintCursor, f : Double) -> PhysicsmechanicsconstraintCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCursor::scale(self : PhysicsmechanicsconstraintCursor, f : Double) -> PhysicsmechanicsconstraintCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cursor_add(a : PhysicsmechanicsconstraintCursor, b : PhysicsmechanicsconstraintCursor) -> PhysicsmechanicsconstraintCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintCursor::add(self : PhysicsmechanicsconstraintCursor, other : PhysicsmechanicsconstraintCursor) -> PhysicsmechanicsconstraintCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cursor_copy(s : PhysicsmechanicsconstraintCursor) -> PhysicsmechanicsconstraintCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCursor::copy(self : PhysicsmechanicsconstraintCursor) -> PhysicsmechanicsconstraintCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cursor_fill(s : PhysicsmechanicsconstraintCursor, v : Double) -> PhysicsmechanicsconstraintCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintCursor::fill(self : PhysicsmechanicsconstraintCursor, v : Double) -> PhysicsmechanicsconstraintCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_cursor_min(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintCursor::min(self : PhysicsmechanicsconstraintCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_cursor_max(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintCursor::max(self : PhysicsmechanicsconstraintCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_cursor_to_string(s : PhysicsmechanicsconstraintCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintCursor::to_string(self : PhysicsmechanicsconstraintCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintView {
@@ -912,45 +912,45 @@ pub fn physics_mechanics_constraint_view_make(size : Int) -> Physicsmechanicscon
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_view_len(s : PhysicsmechanicsconstraintView) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintView::len(self : PhysicsmechanicsconstraintView) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_view_get(s : PhysicsmechanicsconstraintView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintView::get(self : PhysicsmechanicsconstraintView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_view_set(s : PhysicsmechanicsconstraintView, i : Int, v : Double) -> PhysicsmechanicsconstraintView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintView::set(self : PhysicsmechanicsconstraintView, i : Int, v : Double) -> PhysicsmechanicsconstraintView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_view_sum(s : PhysicsmechanicsconstraintView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintView::sum(self : PhysicsmechanicsconstraintView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_view_mean(s : PhysicsmechanicsconstraintView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintView::mean(self : PhysicsmechanicsconstraintView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_view_scale(s : PhysicsmechanicsconstraintView, f : Double) -> PhysicsmechanicsconstraintView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintView::scale(self : PhysicsmechanicsconstraintView, f : Double) -> PhysicsmechanicsconstraintView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_view_add(a : PhysicsmechanicsconstraintView, b : PhysicsmechanicsconstraintView) -> PhysicsmechanicsconstraintView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintView::add(self : PhysicsmechanicsconstraintView, other : PhysicsmechanicsconstraintView) -> PhysicsmechanicsconstraintView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_view_copy(s : PhysicsmechanicsconstraintView) -> PhysicsmechanicsconstraintView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintView::copy(self : PhysicsmechanicsconstraintView) -> PhysicsmechanicsconstraintView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_view_fill(s : PhysicsmechanicsconstraintView, v : Double) -> PhysicsmechanicsconstraintView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintView::fill(self : PhysicsmechanicsconstraintView, v : Double) -> PhysicsmechanicsconstraintView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_view_min(s : PhysicsmechanicsconstraintView) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintView::min(self : PhysicsmechanicsconstraintView) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_view_max(s : PhysicsmechanicsconstraintView) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintView::max(self : PhysicsmechanicsconstraintView) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_view_to_string(s : PhysicsmechanicsconstraintView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintView::to_string(self : PhysicsmechanicsconstraintView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintRange {
@@ -963,45 +963,45 @@ pub fn physics_mechanics_constraint_range_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_range_len(s : PhysicsmechanicsconstraintRange) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintRange::len(self : PhysicsmechanicsconstraintRange) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_range_get(s : PhysicsmechanicsconstraintRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintRange::get(self : PhysicsmechanicsconstraintRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_range_set(s : PhysicsmechanicsconstraintRange, i : Int, v : Double) -> PhysicsmechanicsconstraintRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintRange::set(self : PhysicsmechanicsconstraintRange, i : Int, v : Double) -> PhysicsmechanicsconstraintRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_range_sum(s : PhysicsmechanicsconstraintRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintRange::sum(self : PhysicsmechanicsconstraintRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_range_mean(s : PhysicsmechanicsconstraintRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintRange::mean(self : PhysicsmechanicsconstraintRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_range_scale(s : PhysicsmechanicsconstraintRange, f : Double) -> PhysicsmechanicsconstraintRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintRange::scale(self : PhysicsmechanicsconstraintRange, f : Double) -> PhysicsmechanicsconstraintRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_range_add(a : PhysicsmechanicsconstraintRange, b : PhysicsmechanicsconstraintRange) -> PhysicsmechanicsconstraintRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintRange::add(self : PhysicsmechanicsconstraintRange, other : PhysicsmechanicsconstraintRange) -> PhysicsmechanicsconstraintRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_range_copy(s : PhysicsmechanicsconstraintRange) -> PhysicsmechanicsconstraintRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintRange::copy(self : PhysicsmechanicsconstraintRange) -> PhysicsmechanicsconstraintRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_range_fill(s : PhysicsmechanicsconstraintRange, v : Double) -> PhysicsmechanicsconstraintRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintRange::fill(self : PhysicsmechanicsconstraintRange, v : Double) -> PhysicsmechanicsconstraintRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_range_min(s : PhysicsmechanicsconstraintRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintRange::min(self : PhysicsmechanicsconstraintRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_range_max(s : PhysicsmechanicsconstraintRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintRange::max(self : PhysicsmechanicsconstraintRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_range_to_string(s : PhysicsmechanicsconstraintRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintRange::to_string(self : PhysicsmechanicsconstraintRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsconstraintSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_mechanics_constraint_slice_make(size : Int) -> Physicsmechanicsco
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_mechanics_constraint_slice_len(s : PhysicsmechanicsconstraintSlice) -> Int { s.size }
+pub fn PhysicsmechanicsconstraintSlice::len(self : PhysicsmechanicsconstraintSlice) -> Int { self.size }
 
-pub fn physics_mechanics_constraint_slice_get(s : PhysicsmechanicsconstraintSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsmechanicsconstraintSlice::get(self : PhysicsmechanicsconstraintSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_mechanics_constraint_slice_set(s : PhysicsmechanicsconstraintSlice, i : Int, v : Double) -> PhysicsmechanicsconstraintSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintSlice::set(self : PhysicsmechanicsconstraintSlice, i : Int, v : Double) -> PhysicsmechanicsconstraintSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_slice_sum(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsmechanicsconstraintSlice::sum(self : PhysicsmechanicsconstraintSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_mechanics_constraint_slice_mean(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsmechanicsconstraintSlice::mean(self : PhysicsmechanicsconstraintSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_mechanics_constraint_slice_scale(s : PhysicsmechanicsconstraintSlice, f : Double) -> PhysicsmechanicsconstraintSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintSlice::scale(self : PhysicsmechanicsconstraintSlice, f : Double) -> PhysicsmechanicsconstraintSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_slice_add(a : PhysicsmechanicsconstraintSlice, b : PhysicsmechanicsconstraintSlice) -> PhysicsmechanicsconstraintSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsmechanicsconstraintSlice::add(self : PhysicsmechanicsconstraintSlice, other : PhysicsmechanicsconstraintSlice) -> PhysicsmechanicsconstraintSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_slice_copy(s : PhysicsmechanicsconstraintSlice) -> PhysicsmechanicsconstraintSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintSlice::copy(self : PhysicsmechanicsconstraintSlice) -> PhysicsmechanicsconstraintSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_slice_fill(s : PhysicsmechanicsconstraintSlice, v : Double) -> PhysicsmechanicsconstraintSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsmechanicsconstraintSlice::fill(self : PhysicsmechanicsconstraintSlice, v : Double) -> PhysicsmechanicsconstraintSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_mechanics_constraint_slice_min(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsmechanicsconstraintSlice::min(self : PhysicsmechanicsconstraintSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_mechanics_constraint_slice_max(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsmechanicsconstraintSlice::max(self : PhysicsmechanicsconstraintSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_mechanics_constraint_slice_to_string(s : PhysicsmechanicsconstraintSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsmechanicsconstraintSlice::to_string(self : PhysicsmechanicsconstraintSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

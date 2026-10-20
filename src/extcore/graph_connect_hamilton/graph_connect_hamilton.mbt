@@ -351,45 +351,45 @@ pub fn graph_connect_hamilton_frame_make(size : Int) -> GraphconnecthamiltonFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_frame_len(s : GraphconnecthamiltonFrame) -> Int { s.size }
+pub fn GraphconnecthamiltonFrame::len(self : GraphconnecthamiltonFrame) -> Int { self.size }
 
-pub fn graph_connect_hamilton_frame_get(s : GraphconnecthamiltonFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonFrame::get(self : GraphconnecthamiltonFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_frame_set(s : GraphconnecthamiltonFrame, i : Int, v : Double) -> GraphconnecthamiltonFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonFrame::set(self : GraphconnecthamiltonFrame, i : Int, v : Double) -> GraphconnecthamiltonFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_frame_sum(s : GraphconnecthamiltonFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonFrame::sum(self : GraphconnecthamiltonFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_frame_mean(s : GraphconnecthamiltonFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonFrame::mean(self : GraphconnecthamiltonFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_frame_scale(s : GraphconnecthamiltonFrame, f : Double) -> GraphconnecthamiltonFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonFrame::scale(self : GraphconnecthamiltonFrame, f : Double) -> GraphconnecthamiltonFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_frame_add(a : GraphconnecthamiltonFrame, b : GraphconnecthamiltonFrame) -> GraphconnecthamiltonFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonFrame::add(self : GraphconnecthamiltonFrame, other : GraphconnecthamiltonFrame) -> GraphconnecthamiltonFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_frame_copy(s : GraphconnecthamiltonFrame) -> GraphconnecthamiltonFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonFrame::copy(self : GraphconnecthamiltonFrame) -> GraphconnecthamiltonFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_frame_fill(s : GraphconnecthamiltonFrame, v : Double) -> GraphconnecthamiltonFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonFrame::fill(self : GraphconnecthamiltonFrame, v : Double) -> GraphconnecthamiltonFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_frame_min(s : GraphconnecthamiltonFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonFrame::min(self : GraphconnecthamiltonFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_frame_max(s : GraphconnecthamiltonFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonFrame::max(self : GraphconnecthamiltonFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_frame_to_string(s : GraphconnecthamiltonFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonFrame::to_string(self : GraphconnecthamiltonFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_hamilton_table_make(size : Int) -> GraphconnecthamiltonTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_table_len(s : GraphconnecthamiltonTable) -> Int { s.size }
+pub fn GraphconnecthamiltonTable::len(self : GraphconnecthamiltonTable) -> Int { self.size }
 
-pub fn graph_connect_hamilton_table_get(s : GraphconnecthamiltonTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonTable::get(self : GraphconnecthamiltonTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_table_set(s : GraphconnecthamiltonTable, i : Int, v : Double) -> GraphconnecthamiltonTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonTable::set(self : GraphconnecthamiltonTable, i : Int, v : Double) -> GraphconnecthamiltonTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_table_sum(s : GraphconnecthamiltonTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonTable::sum(self : GraphconnecthamiltonTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_table_mean(s : GraphconnecthamiltonTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonTable::mean(self : GraphconnecthamiltonTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_table_scale(s : GraphconnecthamiltonTable, f : Double) -> GraphconnecthamiltonTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonTable::scale(self : GraphconnecthamiltonTable, f : Double) -> GraphconnecthamiltonTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_table_add(a : GraphconnecthamiltonTable, b : GraphconnecthamiltonTable) -> GraphconnecthamiltonTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonTable::add(self : GraphconnecthamiltonTable, other : GraphconnecthamiltonTable) -> GraphconnecthamiltonTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_table_copy(s : GraphconnecthamiltonTable) -> GraphconnecthamiltonTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonTable::copy(self : GraphconnecthamiltonTable) -> GraphconnecthamiltonTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_table_fill(s : GraphconnecthamiltonTable, v : Double) -> GraphconnecthamiltonTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonTable::fill(self : GraphconnecthamiltonTable, v : Double) -> GraphconnecthamiltonTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_table_min(s : GraphconnecthamiltonTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonTable::min(self : GraphconnecthamiltonTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_table_max(s : GraphconnecthamiltonTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonTable::max(self : GraphconnecthamiltonTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_table_to_string(s : GraphconnecthamiltonTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonTable::to_string(self : GraphconnecthamiltonTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_hamilton_graphn_make(size : Int) -> GraphconnecthamiltonGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_graphn_len(s : GraphconnecthamiltonGraphN) -> Int { s.size }
+pub fn GraphconnecthamiltonGraphN::len(self : GraphconnecthamiltonGraphN) -> Int { self.size }
 
-pub fn graph_connect_hamilton_graphn_get(s : GraphconnecthamiltonGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonGraphN::get(self : GraphconnecthamiltonGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_graphn_set(s : GraphconnecthamiltonGraphN, i : Int, v : Double) -> GraphconnecthamiltonGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonGraphN::set(self : GraphconnecthamiltonGraphN, i : Int, v : Double) -> GraphconnecthamiltonGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_graphn_sum(s : GraphconnecthamiltonGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonGraphN::sum(self : GraphconnecthamiltonGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_graphn_mean(s : GraphconnecthamiltonGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonGraphN::mean(self : GraphconnecthamiltonGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_graphn_scale(s : GraphconnecthamiltonGraphN, f : Double) -> GraphconnecthamiltonGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonGraphN::scale(self : GraphconnecthamiltonGraphN, f : Double) -> GraphconnecthamiltonGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_graphn_add(a : GraphconnecthamiltonGraphN, b : GraphconnecthamiltonGraphN) -> GraphconnecthamiltonGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonGraphN::add(self : GraphconnecthamiltonGraphN, other : GraphconnecthamiltonGraphN) -> GraphconnecthamiltonGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_graphn_copy(s : GraphconnecthamiltonGraphN) -> GraphconnecthamiltonGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonGraphN::copy(self : GraphconnecthamiltonGraphN) -> GraphconnecthamiltonGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_graphn_fill(s : GraphconnecthamiltonGraphN, v : Double) -> GraphconnecthamiltonGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonGraphN::fill(self : GraphconnecthamiltonGraphN, v : Double) -> GraphconnecthamiltonGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_graphn_min(s : GraphconnecthamiltonGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonGraphN::min(self : GraphconnecthamiltonGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_graphn_max(s : GraphconnecthamiltonGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonGraphN::max(self : GraphconnecthamiltonGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_graphn_to_string(s : GraphconnecthamiltonGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonGraphN::to_string(self : GraphconnecthamiltonGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_hamilton_node_make(size : Int) -> GraphconnecthamiltonNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_node_len(s : GraphconnecthamiltonNode) -> Int { s.size }
+pub fn GraphconnecthamiltonNode::len(self : GraphconnecthamiltonNode) -> Int { self.size }
 
-pub fn graph_connect_hamilton_node_get(s : GraphconnecthamiltonNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonNode::get(self : GraphconnecthamiltonNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_node_set(s : GraphconnecthamiltonNode, i : Int, v : Double) -> GraphconnecthamiltonNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonNode::set(self : GraphconnecthamiltonNode, i : Int, v : Double) -> GraphconnecthamiltonNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_node_sum(s : GraphconnecthamiltonNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonNode::sum(self : GraphconnecthamiltonNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_node_mean(s : GraphconnecthamiltonNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonNode::mean(self : GraphconnecthamiltonNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_node_scale(s : GraphconnecthamiltonNode, f : Double) -> GraphconnecthamiltonNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonNode::scale(self : GraphconnecthamiltonNode, f : Double) -> GraphconnecthamiltonNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_node_add(a : GraphconnecthamiltonNode, b : GraphconnecthamiltonNode) -> GraphconnecthamiltonNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonNode::add(self : GraphconnecthamiltonNode, other : GraphconnecthamiltonNode) -> GraphconnecthamiltonNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_node_copy(s : GraphconnecthamiltonNode) -> GraphconnecthamiltonNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonNode::copy(self : GraphconnecthamiltonNode) -> GraphconnecthamiltonNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_node_fill(s : GraphconnecthamiltonNode, v : Double) -> GraphconnecthamiltonNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonNode::fill(self : GraphconnecthamiltonNode, v : Double) -> GraphconnecthamiltonNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_node_min(s : GraphconnecthamiltonNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonNode::min(self : GraphconnecthamiltonNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_node_max(s : GraphconnecthamiltonNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonNode::max(self : GraphconnecthamiltonNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_node_to_string(s : GraphconnecthamiltonNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonNode::to_string(self : GraphconnecthamiltonNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_hamilton_edge_make(size : Int) -> GraphconnecthamiltonEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_edge_len(s : GraphconnecthamiltonEdge) -> Int { s.size }
+pub fn GraphconnecthamiltonEdge::len(self : GraphconnecthamiltonEdge) -> Int { self.size }
 
-pub fn graph_connect_hamilton_edge_get(s : GraphconnecthamiltonEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonEdge::get(self : GraphconnecthamiltonEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_edge_set(s : GraphconnecthamiltonEdge, i : Int, v : Double) -> GraphconnecthamiltonEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonEdge::set(self : GraphconnecthamiltonEdge, i : Int, v : Double) -> GraphconnecthamiltonEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_edge_sum(s : GraphconnecthamiltonEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonEdge::sum(self : GraphconnecthamiltonEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_edge_mean(s : GraphconnecthamiltonEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonEdge::mean(self : GraphconnecthamiltonEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_edge_scale(s : GraphconnecthamiltonEdge, f : Double) -> GraphconnecthamiltonEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonEdge::scale(self : GraphconnecthamiltonEdge, f : Double) -> GraphconnecthamiltonEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_edge_add(a : GraphconnecthamiltonEdge, b : GraphconnecthamiltonEdge) -> GraphconnecthamiltonEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonEdge::add(self : GraphconnecthamiltonEdge, other : GraphconnecthamiltonEdge) -> GraphconnecthamiltonEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_edge_copy(s : GraphconnecthamiltonEdge) -> GraphconnecthamiltonEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonEdge::copy(self : GraphconnecthamiltonEdge) -> GraphconnecthamiltonEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_edge_fill(s : GraphconnecthamiltonEdge, v : Double) -> GraphconnecthamiltonEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonEdge::fill(self : GraphconnecthamiltonEdge, v : Double) -> GraphconnecthamiltonEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_edge_min(s : GraphconnecthamiltonEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonEdge::min(self : GraphconnecthamiltonEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_edge_max(s : GraphconnecthamiltonEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonEdge::max(self : GraphconnecthamiltonEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_edge_to_string(s : GraphconnecthamiltonEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonEdge::to_string(self : GraphconnecthamiltonEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_hamilton_path_make(size : Int) -> GraphconnecthamiltonPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_path_len(s : GraphconnecthamiltonPath) -> Int { s.size }
+pub fn GraphconnecthamiltonPath::len(self : GraphconnecthamiltonPath) -> Int { self.size }
 
-pub fn graph_connect_hamilton_path_get(s : GraphconnecthamiltonPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonPath::get(self : GraphconnecthamiltonPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_path_set(s : GraphconnecthamiltonPath, i : Int, v : Double) -> GraphconnecthamiltonPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonPath::set(self : GraphconnecthamiltonPath, i : Int, v : Double) -> GraphconnecthamiltonPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_path_sum(s : GraphconnecthamiltonPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonPath::sum(self : GraphconnecthamiltonPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_path_mean(s : GraphconnecthamiltonPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonPath::mean(self : GraphconnecthamiltonPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_path_scale(s : GraphconnecthamiltonPath, f : Double) -> GraphconnecthamiltonPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonPath::scale(self : GraphconnecthamiltonPath, f : Double) -> GraphconnecthamiltonPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_path_add(a : GraphconnecthamiltonPath, b : GraphconnecthamiltonPath) -> GraphconnecthamiltonPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonPath::add(self : GraphconnecthamiltonPath, other : GraphconnecthamiltonPath) -> GraphconnecthamiltonPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_path_copy(s : GraphconnecthamiltonPath) -> GraphconnecthamiltonPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonPath::copy(self : GraphconnecthamiltonPath) -> GraphconnecthamiltonPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_path_fill(s : GraphconnecthamiltonPath, v : Double) -> GraphconnecthamiltonPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonPath::fill(self : GraphconnecthamiltonPath, v : Double) -> GraphconnecthamiltonPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_path_min(s : GraphconnecthamiltonPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonPath::min(self : GraphconnecthamiltonPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_path_max(s : GraphconnecthamiltonPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonPath::max(self : GraphconnecthamiltonPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_path_to_string(s : GraphconnecthamiltonPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonPath::to_string(self : GraphconnecthamiltonPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_hamilton_cluster_make(size : Int) -> GraphconnecthamiltonCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_cluster_len(s : GraphconnecthamiltonCluster) -> Int { s.size }
+pub fn GraphconnecthamiltonCluster::len(self : GraphconnecthamiltonCluster) -> Int { self.size }
 
-pub fn graph_connect_hamilton_cluster_get(s : GraphconnecthamiltonCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonCluster::get(self : GraphconnecthamiltonCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_cluster_set(s : GraphconnecthamiltonCluster, i : Int, v : Double) -> GraphconnecthamiltonCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCluster::set(self : GraphconnecthamiltonCluster, i : Int, v : Double) -> GraphconnecthamiltonCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cluster_sum(s : GraphconnecthamiltonCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonCluster::sum(self : GraphconnecthamiltonCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_cluster_mean(s : GraphconnecthamiltonCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonCluster::mean(self : GraphconnecthamiltonCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_cluster_scale(s : GraphconnecthamiltonCluster, f : Double) -> GraphconnecthamiltonCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCluster::scale(self : GraphconnecthamiltonCluster, f : Double) -> GraphconnecthamiltonCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cluster_add(a : GraphconnecthamiltonCluster, b : GraphconnecthamiltonCluster) -> GraphconnecthamiltonCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonCluster::add(self : GraphconnecthamiltonCluster, other : GraphconnecthamiltonCluster) -> GraphconnecthamiltonCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cluster_copy(s : GraphconnecthamiltonCluster) -> GraphconnecthamiltonCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCluster::copy(self : GraphconnecthamiltonCluster) -> GraphconnecthamiltonCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cluster_fill(s : GraphconnecthamiltonCluster, v : Double) -> GraphconnecthamiltonCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCluster::fill(self : GraphconnecthamiltonCluster, v : Double) -> GraphconnecthamiltonCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cluster_min(s : GraphconnecthamiltonCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonCluster::min(self : GraphconnecthamiltonCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_cluster_max(s : GraphconnecthamiltonCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonCluster::max(self : GraphconnecthamiltonCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_cluster_to_string(s : GraphconnecthamiltonCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonCluster::to_string(self : GraphconnecthamiltonCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_hamilton_model_make(size : Int) -> GraphconnecthamiltonMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_model_len(s : GraphconnecthamiltonModel) -> Int { s.size }
+pub fn GraphconnecthamiltonModel::len(self : GraphconnecthamiltonModel) -> Int { self.size }
 
-pub fn graph_connect_hamilton_model_get(s : GraphconnecthamiltonModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonModel::get(self : GraphconnecthamiltonModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_model_set(s : GraphconnecthamiltonModel, i : Int, v : Double) -> GraphconnecthamiltonModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonModel::set(self : GraphconnecthamiltonModel, i : Int, v : Double) -> GraphconnecthamiltonModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_model_sum(s : GraphconnecthamiltonModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonModel::sum(self : GraphconnecthamiltonModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_model_mean(s : GraphconnecthamiltonModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonModel::mean(self : GraphconnecthamiltonModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_model_scale(s : GraphconnecthamiltonModel, f : Double) -> GraphconnecthamiltonModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonModel::scale(self : GraphconnecthamiltonModel, f : Double) -> GraphconnecthamiltonModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_model_add(a : GraphconnecthamiltonModel, b : GraphconnecthamiltonModel) -> GraphconnecthamiltonModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonModel::add(self : GraphconnecthamiltonModel, other : GraphconnecthamiltonModel) -> GraphconnecthamiltonModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_model_copy(s : GraphconnecthamiltonModel) -> GraphconnecthamiltonModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonModel::copy(self : GraphconnecthamiltonModel) -> GraphconnecthamiltonModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_model_fill(s : GraphconnecthamiltonModel, v : Double) -> GraphconnecthamiltonModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonModel::fill(self : GraphconnecthamiltonModel, v : Double) -> GraphconnecthamiltonModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_model_min(s : GraphconnecthamiltonModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonModel::min(self : GraphconnecthamiltonModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_model_max(s : GraphconnecthamiltonModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonModel::max(self : GraphconnecthamiltonModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_model_to_string(s : GraphconnecthamiltonModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonModel::to_string(self : GraphconnecthamiltonModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_hamilton_layer_make(size : Int) -> GraphconnecthamiltonLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_layer_len(s : GraphconnecthamiltonLayer) -> Int { s.size }
+pub fn GraphconnecthamiltonLayer::len(self : GraphconnecthamiltonLayer) -> Int { self.size }
 
-pub fn graph_connect_hamilton_layer_get(s : GraphconnecthamiltonLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonLayer::get(self : GraphconnecthamiltonLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_layer_set(s : GraphconnecthamiltonLayer, i : Int, v : Double) -> GraphconnecthamiltonLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonLayer::set(self : GraphconnecthamiltonLayer, i : Int, v : Double) -> GraphconnecthamiltonLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_layer_sum(s : GraphconnecthamiltonLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonLayer::sum(self : GraphconnecthamiltonLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_layer_mean(s : GraphconnecthamiltonLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonLayer::mean(self : GraphconnecthamiltonLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_layer_scale(s : GraphconnecthamiltonLayer, f : Double) -> GraphconnecthamiltonLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonLayer::scale(self : GraphconnecthamiltonLayer, f : Double) -> GraphconnecthamiltonLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_layer_add(a : GraphconnecthamiltonLayer, b : GraphconnecthamiltonLayer) -> GraphconnecthamiltonLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonLayer::add(self : GraphconnecthamiltonLayer, other : GraphconnecthamiltonLayer) -> GraphconnecthamiltonLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_layer_copy(s : GraphconnecthamiltonLayer) -> GraphconnecthamiltonLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonLayer::copy(self : GraphconnecthamiltonLayer) -> GraphconnecthamiltonLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_layer_fill(s : GraphconnecthamiltonLayer, v : Double) -> GraphconnecthamiltonLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonLayer::fill(self : GraphconnecthamiltonLayer, v : Double) -> GraphconnecthamiltonLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_layer_min(s : GraphconnecthamiltonLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonLayer::min(self : GraphconnecthamiltonLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_layer_max(s : GraphconnecthamiltonLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonLayer::max(self : GraphconnecthamiltonLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_layer_to_string(s : GraphconnecthamiltonLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonLayer::to_string(self : GraphconnecthamiltonLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_hamilton_buffer_make(size : Int) -> GraphconnecthamiltonBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_buffer_len(s : GraphconnecthamiltonBuffer) -> Int { s.size }
+pub fn GraphconnecthamiltonBuffer::len(self : GraphconnecthamiltonBuffer) -> Int { self.size }
 
-pub fn graph_connect_hamilton_buffer_get(s : GraphconnecthamiltonBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonBuffer::get(self : GraphconnecthamiltonBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_buffer_set(s : GraphconnecthamiltonBuffer, i : Int, v : Double) -> GraphconnecthamiltonBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonBuffer::set(self : GraphconnecthamiltonBuffer, i : Int, v : Double) -> GraphconnecthamiltonBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_buffer_sum(s : GraphconnecthamiltonBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonBuffer::sum(self : GraphconnecthamiltonBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_buffer_mean(s : GraphconnecthamiltonBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonBuffer::mean(self : GraphconnecthamiltonBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_buffer_scale(s : GraphconnecthamiltonBuffer, f : Double) -> GraphconnecthamiltonBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonBuffer::scale(self : GraphconnecthamiltonBuffer, f : Double) -> GraphconnecthamiltonBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_buffer_add(a : GraphconnecthamiltonBuffer, b : GraphconnecthamiltonBuffer) -> GraphconnecthamiltonBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonBuffer::add(self : GraphconnecthamiltonBuffer, other : GraphconnecthamiltonBuffer) -> GraphconnecthamiltonBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_buffer_copy(s : GraphconnecthamiltonBuffer) -> GraphconnecthamiltonBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonBuffer::copy(self : GraphconnecthamiltonBuffer) -> GraphconnecthamiltonBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_buffer_fill(s : GraphconnecthamiltonBuffer, v : Double) -> GraphconnecthamiltonBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonBuffer::fill(self : GraphconnecthamiltonBuffer, v : Double) -> GraphconnecthamiltonBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_buffer_min(s : GraphconnecthamiltonBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonBuffer::min(self : GraphconnecthamiltonBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_buffer_max(s : GraphconnecthamiltonBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonBuffer::max(self : GraphconnecthamiltonBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_buffer_to_string(s : GraphconnecthamiltonBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonBuffer::to_string(self : GraphconnecthamiltonBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_hamilton_cursor_make(size : Int) -> GraphconnecthamiltonCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_cursor_len(s : GraphconnecthamiltonCursor) -> Int { s.size }
+pub fn GraphconnecthamiltonCursor::len(self : GraphconnecthamiltonCursor) -> Int { self.size }
 
-pub fn graph_connect_hamilton_cursor_get(s : GraphconnecthamiltonCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonCursor::get(self : GraphconnecthamiltonCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_cursor_set(s : GraphconnecthamiltonCursor, i : Int, v : Double) -> GraphconnecthamiltonCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCursor::set(self : GraphconnecthamiltonCursor, i : Int, v : Double) -> GraphconnecthamiltonCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cursor_sum(s : GraphconnecthamiltonCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonCursor::sum(self : GraphconnecthamiltonCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_cursor_mean(s : GraphconnecthamiltonCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonCursor::mean(self : GraphconnecthamiltonCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_cursor_scale(s : GraphconnecthamiltonCursor, f : Double) -> GraphconnecthamiltonCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCursor::scale(self : GraphconnecthamiltonCursor, f : Double) -> GraphconnecthamiltonCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cursor_add(a : GraphconnecthamiltonCursor, b : GraphconnecthamiltonCursor) -> GraphconnecthamiltonCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonCursor::add(self : GraphconnecthamiltonCursor, other : GraphconnecthamiltonCursor) -> GraphconnecthamiltonCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cursor_copy(s : GraphconnecthamiltonCursor) -> GraphconnecthamiltonCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCursor::copy(self : GraphconnecthamiltonCursor) -> GraphconnecthamiltonCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cursor_fill(s : GraphconnecthamiltonCursor, v : Double) -> GraphconnecthamiltonCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonCursor::fill(self : GraphconnecthamiltonCursor, v : Double) -> GraphconnecthamiltonCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_cursor_min(s : GraphconnecthamiltonCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonCursor::min(self : GraphconnecthamiltonCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_cursor_max(s : GraphconnecthamiltonCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonCursor::max(self : GraphconnecthamiltonCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_cursor_to_string(s : GraphconnecthamiltonCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonCursor::to_string(self : GraphconnecthamiltonCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonView {
@@ -912,45 +912,45 @@ pub fn graph_connect_hamilton_view_make(size : Int) -> GraphconnecthamiltonView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_view_len(s : GraphconnecthamiltonView) -> Int { s.size }
+pub fn GraphconnecthamiltonView::len(self : GraphconnecthamiltonView) -> Int { self.size }
 
-pub fn graph_connect_hamilton_view_get(s : GraphconnecthamiltonView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonView::get(self : GraphconnecthamiltonView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_view_set(s : GraphconnecthamiltonView, i : Int, v : Double) -> GraphconnecthamiltonView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonView::set(self : GraphconnecthamiltonView, i : Int, v : Double) -> GraphconnecthamiltonView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_view_sum(s : GraphconnecthamiltonView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonView::sum(self : GraphconnecthamiltonView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_view_mean(s : GraphconnecthamiltonView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonView::mean(self : GraphconnecthamiltonView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_view_scale(s : GraphconnecthamiltonView, f : Double) -> GraphconnecthamiltonView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonView::scale(self : GraphconnecthamiltonView, f : Double) -> GraphconnecthamiltonView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_view_add(a : GraphconnecthamiltonView, b : GraphconnecthamiltonView) -> GraphconnecthamiltonView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonView::add(self : GraphconnecthamiltonView, other : GraphconnecthamiltonView) -> GraphconnecthamiltonView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_view_copy(s : GraphconnecthamiltonView) -> GraphconnecthamiltonView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonView::copy(self : GraphconnecthamiltonView) -> GraphconnecthamiltonView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_view_fill(s : GraphconnecthamiltonView, v : Double) -> GraphconnecthamiltonView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonView::fill(self : GraphconnecthamiltonView, v : Double) -> GraphconnecthamiltonView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_view_min(s : GraphconnecthamiltonView) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonView::min(self : GraphconnecthamiltonView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_view_max(s : GraphconnecthamiltonView) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonView::max(self : GraphconnecthamiltonView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_view_to_string(s : GraphconnecthamiltonView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonView::to_string(self : GraphconnecthamiltonView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_hamilton_range_make(size : Int) -> GraphconnecthamiltonRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_range_len(s : GraphconnecthamiltonRange) -> Int { s.size }
+pub fn GraphconnecthamiltonRange::len(self : GraphconnecthamiltonRange) -> Int { self.size }
 
-pub fn graph_connect_hamilton_range_get(s : GraphconnecthamiltonRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonRange::get(self : GraphconnecthamiltonRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_range_set(s : GraphconnecthamiltonRange, i : Int, v : Double) -> GraphconnecthamiltonRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonRange::set(self : GraphconnecthamiltonRange, i : Int, v : Double) -> GraphconnecthamiltonRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_range_sum(s : GraphconnecthamiltonRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonRange::sum(self : GraphconnecthamiltonRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_range_mean(s : GraphconnecthamiltonRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonRange::mean(self : GraphconnecthamiltonRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_range_scale(s : GraphconnecthamiltonRange, f : Double) -> GraphconnecthamiltonRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonRange::scale(self : GraphconnecthamiltonRange, f : Double) -> GraphconnecthamiltonRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_range_add(a : GraphconnecthamiltonRange, b : GraphconnecthamiltonRange) -> GraphconnecthamiltonRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonRange::add(self : GraphconnecthamiltonRange, other : GraphconnecthamiltonRange) -> GraphconnecthamiltonRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_range_copy(s : GraphconnecthamiltonRange) -> GraphconnecthamiltonRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonRange::copy(self : GraphconnecthamiltonRange) -> GraphconnecthamiltonRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_range_fill(s : GraphconnecthamiltonRange, v : Double) -> GraphconnecthamiltonRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonRange::fill(self : GraphconnecthamiltonRange, v : Double) -> GraphconnecthamiltonRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_range_min(s : GraphconnecthamiltonRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonRange::min(self : GraphconnecthamiltonRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_range_max(s : GraphconnecthamiltonRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonRange::max(self : GraphconnecthamiltonRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_range_to_string(s : GraphconnecthamiltonRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonRange::to_string(self : GraphconnecthamiltonRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnecthamiltonSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_hamilton_slice_make(size : Int) -> GraphconnecthamiltonSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_hamilton_slice_len(s : GraphconnecthamiltonSlice) -> Int { s.size }
+pub fn GraphconnecthamiltonSlice::len(self : GraphconnecthamiltonSlice) -> Int { self.size }
 
-pub fn graph_connect_hamilton_slice_get(s : GraphconnecthamiltonSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnecthamiltonSlice::get(self : GraphconnecthamiltonSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_hamilton_slice_set(s : GraphconnecthamiltonSlice, i : Int, v : Double) -> GraphconnecthamiltonSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonSlice::set(self : GraphconnecthamiltonSlice, i : Int, v : Double) -> GraphconnecthamiltonSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_slice_sum(s : GraphconnecthamiltonSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnecthamiltonSlice::sum(self : GraphconnecthamiltonSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_hamilton_slice_mean(s : GraphconnecthamiltonSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnecthamiltonSlice::mean(self : GraphconnecthamiltonSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_hamilton_slice_scale(s : GraphconnecthamiltonSlice, f : Double) -> GraphconnecthamiltonSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonSlice::scale(self : GraphconnecthamiltonSlice, f : Double) -> GraphconnecthamiltonSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_slice_add(a : GraphconnecthamiltonSlice, b : GraphconnecthamiltonSlice) -> GraphconnecthamiltonSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnecthamiltonSlice::add(self : GraphconnecthamiltonSlice, other : GraphconnecthamiltonSlice) -> GraphconnecthamiltonSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_slice_copy(s : GraphconnecthamiltonSlice) -> GraphconnecthamiltonSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonSlice::copy(self : GraphconnecthamiltonSlice) -> GraphconnecthamiltonSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_slice_fill(s : GraphconnecthamiltonSlice, v : Double) -> GraphconnecthamiltonSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnecthamiltonSlice::fill(self : GraphconnecthamiltonSlice, v : Double) -> GraphconnecthamiltonSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_hamilton_slice_min(s : GraphconnecthamiltonSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnecthamiltonSlice::min(self : GraphconnecthamiltonSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_hamilton_slice_max(s : GraphconnecthamiltonSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnecthamiltonSlice::max(self : GraphconnecthamiltonSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_hamilton_slice_to_string(s : GraphconnecthamiltonSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnecthamiltonSlice::to_string(self : GraphconnecthamiltonSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

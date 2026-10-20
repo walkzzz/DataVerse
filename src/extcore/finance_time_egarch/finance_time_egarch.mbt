@@ -351,45 +351,45 @@ pub fn finance_time_egarch_frame_make(size : Int) -> FinancetimeegarchFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_frame_len(s : FinancetimeegarchFrame) -> Int { s.size }
+pub fn FinancetimeegarchFrame::len(self : FinancetimeegarchFrame) -> Int { self.size }
 
-pub fn finance_time_egarch_frame_get(s : FinancetimeegarchFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchFrame::get(self : FinancetimeegarchFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_frame_set(s : FinancetimeegarchFrame, i : Int, v : Double) -> FinancetimeegarchFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchFrame::set(self : FinancetimeegarchFrame, i : Int, v : Double) -> FinancetimeegarchFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_frame_sum(s : FinancetimeegarchFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchFrame::sum(self : FinancetimeegarchFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_frame_mean(s : FinancetimeegarchFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchFrame::mean(self : FinancetimeegarchFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_frame_scale(s : FinancetimeegarchFrame, f : Double) -> FinancetimeegarchFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchFrame::scale(self : FinancetimeegarchFrame, f : Double) -> FinancetimeegarchFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_frame_add(a : FinancetimeegarchFrame, b : FinancetimeegarchFrame) -> FinancetimeegarchFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchFrame::add(self : FinancetimeegarchFrame, other : FinancetimeegarchFrame) -> FinancetimeegarchFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_frame_copy(s : FinancetimeegarchFrame) -> FinancetimeegarchFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchFrame::copy(self : FinancetimeegarchFrame) -> FinancetimeegarchFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_frame_fill(s : FinancetimeegarchFrame, v : Double) -> FinancetimeegarchFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchFrame::fill(self : FinancetimeegarchFrame, v : Double) -> FinancetimeegarchFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_frame_min(s : FinancetimeegarchFrame) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchFrame::min(self : FinancetimeegarchFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_frame_max(s : FinancetimeegarchFrame) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchFrame::max(self : FinancetimeegarchFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_frame_to_string(s : FinancetimeegarchFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchFrame::to_string(self : FinancetimeegarchFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchTable {
@@ -402,45 +402,45 @@ pub fn finance_time_egarch_table_make(size : Int) -> FinancetimeegarchTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_table_len(s : FinancetimeegarchTable) -> Int { s.size }
+pub fn FinancetimeegarchTable::len(self : FinancetimeegarchTable) -> Int { self.size }
 
-pub fn finance_time_egarch_table_get(s : FinancetimeegarchTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchTable::get(self : FinancetimeegarchTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_table_set(s : FinancetimeegarchTable, i : Int, v : Double) -> FinancetimeegarchTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchTable::set(self : FinancetimeegarchTable, i : Int, v : Double) -> FinancetimeegarchTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_table_sum(s : FinancetimeegarchTable) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchTable::sum(self : FinancetimeegarchTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_table_mean(s : FinancetimeegarchTable) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchTable::mean(self : FinancetimeegarchTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_table_scale(s : FinancetimeegarchTable, f : Double) -> FinancetimeegarchTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchTable::scale(self : FinancetimeegarchTable, f : Double) -> FinancetimeegarchTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_table_add(a : FinancetimeegarchTable, b : FinancetimeegarchTable) -> FinancetimeegarchTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchTable::add(self : FinancetimeegarchTable, other : FinancetimeegarchTable) -> FinancetimeegarchTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_table_copy(s : FinancetimeegarchTable) -> FinancetimeegarchTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchTable::copy(self : FinancetimeegarchTable) -> FinancetimeegarchTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_table_fill(s : FinancetimeegarchTable, v : Double) -> FinancetimeegarchTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchTable::fill(self : FinancetimeegarchTable, v : Double) -> FinancetimeegarchTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_table_min(s : FinancetimeegarchTable) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchTable::min(self : FinancetimeegarchTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_table_max(s : FinancetimeegarchTable) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchTable::max(self : FinancetimeegarchTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_table_to_string(s : FinancetimeegarchTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchTable::to_string(self : FinancetimeegarchTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchGraphN {
@@ -453,45 +453,45 @@ pub fn finance_time_egarch_graphn_make(size : Int) -> FinancetimeegarchGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_graphn_len(s : FinancetimeegarchGraphN) -> Int { s.size }
+pub fn FinancetimeegarchGraphN::len(self : FinancetimeegarchGraphN) -> Int { self.size }
 
-pub fn finance_time_egarch_graphn_get(s : FinancetimeegarchGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchGraphN::get(self : FinancetimeegarchGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_graphn_set(s : FinancetimeegarchGraphN, i : Int, v : Double) -> FinancetimeegarchGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchGraphN::set(self : FinancetimeegarchGraphN, i : Int, v : Double) -> FinancetimeegarchGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_graphn_sum(s : FinancetimeegarchGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchGraphN::sum(self : FinancetimeegarchGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_graphn_mean(s : FinancetimeegarchGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchGraphN::mean(self : FinancetimeegarchGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_graphn_scale(s : FinancetimeegarchGraphN, f : Double) -> FinancetimeegarchGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchGraphN::scale(self : FinancetimeegarchGraphN, f : Double) -> FinancetimeegarchGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_graphn_add(a : FinancetimeegarchGraphN, b : FinancetimeegarchGraphN) -> FinancetimeegarchGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchGraphN::add(self : FinancetimeegarchGraphN, other : FinancetimeegarchGraphN) -> FinancetimeegarchGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_graphn_copy(s : FinancetimeegarchGraphN) -> FinancetimeegarchGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchGraphN::copy(self : FinancetimeegarchGraphN) -> FinancetimeegarchGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_graphn_fill(s : FinancetimeegarchGraphN, v : Double) -> FinancetimeegarchGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchGraphN::fill(self : FinancetimeegarchGraphN, v : Double) -> FinancetimeegarchGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_graphn_min(s : FinancetimeegarchGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchGraphN::min(self : FinancetimeegarchGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_graphn_max(s : FinancetimeegarchGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchGraphN::max(self : FinancetimeegarchGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_graphn_to_string(s : FinancetimeegarchGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchGraphN::to_string(self : FinancetimeegarchGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchNode {
@@ -504,45 +504,45 @@ pub fn finance_time_egarch_node_make(size : Int) -> FinancetimeegarchNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_node_len(s : FinancetimeegarchNode) -> Int { s.size }
+pub fn FinancetimeegarchNode::len(self : FinancetimeegarchNode) -> Int { self.size }
 
-pub fn finance_time_egarch_node_get(s : FinancetimeegarchNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchNode::get(self : FinancetimeegarchNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_node_set(s : FinancetimeegarchNode, i : Int, v : Double) -> FinancetimeegarchNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchNode::set(self : FinancetimeegarchNode, i : Int, v : Double) -> FinancetimeegarchNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_node_sum(s : FinancetimeegarchNode) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchNode::sum(self : FinancetimeegarchNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_node_mean(s : FinancetimeegarchNode) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchNode::mean(self : FinancetimeegarchNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_node_scale(s : FinancetimeegarchNode, f : Double) -> FinancetimeegarchNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchNode::scale(self : FinancetimeegarchNode, f : Double) -> FinancetimeegarchNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_node_add(a : FinancetimeegarchNode, b : FinancetimeegarchNode) -> FinancetimeegarchNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchNode::add(self : FinancetimeegarchNode, other : FinancetimeegarchNode) -> FinancetimeegarchNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_node_copy(s : FinancetimeegarchNode) -> FinancetimeegarchNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchNode::copy(self : FinancetimeegarchNode) -> FinancetimeegarchNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_node_fill(s : FinancetimeegarchNode, v : Double) -> FinancetimeegarchNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchNode::fill(self : FinancetimeegarchNode, v : Double) -> FinancetimeegarchNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_node_min(s : FinancetimeegarchNode) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchNode::min(self : FinancetimeegarchNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_node_max(s : FinancetimeegarchNode) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchNode::max(self : FinancetimeegarchNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_node_to_string(s : FinancetimeegarchNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchNode::to_string(self : FinancetimeegarchNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchEdge {
@@ -555,45 +555,45 @@ pub fn finance_time_egarch_edge_make(size : Int) -> FinancetimeegarchEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_edge_len(s : FinancetimeegarchEdge) -> Int { s.size }
+pub fn FinancetimeegarchEdge::len(self : FinancetimeegarchEdge) -> Int { self.size }
 
-pub fn finance_time_egarch_edge_get(s : FinancetimeegarchEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchEdge::get(self : FinancetimeegarchEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_edge_set(s : FinancetimeegarchEdge, i : Int, v : Double) -> FinancetimeegarchEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchEdge::set(self : FinancetimeegarchEdge, i : Int, v : Double) -> FinancetimeegarchEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_edge_sum(s : FinancetimeegarchEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchEdge::sum(self : FinancetimeegarchEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_edge_mean(s : FinancetimeegarchEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchEdge::mean(self : FinancetimeegarchEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_edge_scale(s : FinancetimeegarchEdge, f : Double) -> FinancetimeegarchEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchEdge::scale(self : FinancetimeegarchEdge, f : Double) -> FinancetimeegarchEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_edge_add(a : FinancetimeegarchEdge, b : FinancetimeegarchEdge) -> FinancetimeegarchEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchEdge::add(self : FinancetimeegarchEdge, other : FinancetimeegarchEdge) -> FinancetimeegarchEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_edge_copy(s : FinancetimeegarchEdge) -> FinancetimeegarchEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchEdge::copy(self : FinancetimeegarchEdge) -> FinancetimeegarchEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_edge_fill(s : FinancetimeegarchEdge, v : Double) -> FinancetimeegarchEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchEdge::fill(self : FinancetimeegarchEdge, v : Double) -> FinancetimeegarchEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_edge_min(s : FinancetimeegarchEdge) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchEdge::min(self : FinancetimeegarchEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_edge_max(s : FinancetimeegarchEdge) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchEdge::max(self : FinancetimeegarchEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_edge_to_string(s : FinancetimeegarchEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchEdge::to_string(self : FinancetimeegarchEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchPath {
@@ -606,45 +606,45 @@ pub fn finance_time_egarch_path_make(size : Int) -> FinancetimeegarchPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_path_len(s : FinancetimeegarchPath) -> Int { s.size }
+pub fn FinancetimeegarchPath::len(self : FinancetimeegarchPath) -> Int { self.size }
 
-pub fn finance_time_egarch_path_get(s : FinancetimeegarchPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchPath::get(self : FinancetimeegarchPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_path_set(s : FinancetimeegarchPath, i : Int, v : Double) -> FinancetimeegarchPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchPath::set(self : FinancetimeegarchPath, i : Int, v : Double) -> FinancetimeegarchPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_path_sum(s : FinancetimeegarchPath) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchPath::sum(self : FinancetimeegarchPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_path_mean(s : FinancetimeegarchPath) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchPath::mean(self : FinancetimeegarchPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_path_scale(s : FinancetimeegarchPath, f : Double) -> FinancetimeegarchPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchPath::scale(self : FinancetimeegarchPath, f : Double) -> FinancetimeegarchPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_path_add(a : FinancetimeegarchPath, b : FinancetimeegarchPath) -> FinancetimeegarchPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchPath::add(self : FinancetimeegarchPath, other : FinancetimeegarchPath) -> FinancetimeegarchPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_path_copy(s : FinancetimeegarchPath) -> FinancetimeegarchPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchPath::copy(self : FinancetimeegarchPath) -> FinancetimeegarchPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_path_fill(s : FinancetimeegarchPath, v : Double) -> FinancetimeegarchPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchPath::fill(self : FinancetimeegarchPath, v : Double) -> FinancetimeegarchPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_path_min(s : FinancetimeegarchPath) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchPath::min(self : FinancetimeegarchPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_path_max(s : FinancetimeegarchPath) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchPath::max(self : FinancetimeegarchPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_path_to_string(s : FinancetimeegarchPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchPath::to_string(self : FinancetimeegarchPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchCluster {
@@ -657,45 +657,45 @@ pub fn finance_time_egarch_cluster_make(size : Int) -> FinancetimeegarchCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_cluster_len(s : FinancetimeegarchCluster) -> Int { s.size }
+pub fn FinancetimeegarchCluster::len(self : FinancetimeegarchCluster) -> Int { self.size }
 
-pub fn finance_time_egarch_cluster_get(s : FinancetimeegarchCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchCluster::get(self : FinancetimeegarchCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_cluster_set(s : FinancetimeegarchCluster, i : Int, v : Double) -> FinancetimeegarchCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCluster::set(self : FinancetimeegarchCluster, i : Int, v : Double) -> FinancetimeegarchCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cluster_sum(s : FinancetimeegarchCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchCluster::sum(self : FinancetimeegarchCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_cluster_mean(s : FinancetimeegarchCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchCluster::mean(self : FinancetimeegarchCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_cluster_scale(s : FinancetimeegarchCluster, f : Double) -> FinancetimeegarchCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCluster::scale(self : FinancetimeegarchCluster, f : Double) -> FinancetimeegarchCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cluster_add(a : FinancetimeegarchCluster, b : FinancetimeegarchCluster) -> FinancetimeegarchCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchCluster::add(self : FinancetimeegarchCluster, other : FinancetimeegarchCluster) -> FinancetimeegarchCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cluster_copy(s : FinancetimeegarchCluster) -> FinancetimeegarchCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCluster::copy(self : FinancetimeegarchCluster) -> FinancetimeegarchCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cluster_fill(s : FinancetimeegarchCluster, v : Double) -> FinancetimeegarchCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCluster::fill(self : FinancetimeegarchCluster, v : Double) -> FinancetimeegarchCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cluster_min(s : FinancetimeegarchCluster) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchCluster::min(self : FinancetimeegarchCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_cluster_max(s : FinancetimeegarchCluster) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchCluster::max(self : FinancetimeegarchCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_cluster_to_string(s : FinancetimeegarchCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchCluster::to_string(self : FinancetimeegarchCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchModel {
@@ -708,45 +708,45 @@ pub fn finance_time_egarch_model_make(size : Int) -> FinancetimeegarchModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_model_len(s : FinancetimeegarchModel) -> Int { s.size }
+pub fn FinancetimeegarchModel::len(self : FinancetimeegarchModel) -> Int { self.size }
 
-pub fn finance_time_egarch_model_get(s : FinancetimeegarchModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchModel::get(self : FinancetimeegarchModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_model_set(s : FinancetimeegarchModel, i : Int, v : Double) -> FinancetimeegarchModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchModel::set(self : FinancetimeegarchModel, i : Int, v : Double) -> FinancetimeegarchModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_model_sum(s : FinancetimeegarchModel) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchModel::sum(self : FinancetimeegarchModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_model_mean(s : FinancetimeegarchModel) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchModel::mean(self : FinancetimeegarchModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_model_scale(s : FinancetimeegarchModel, f : Double) -> FinancetimeegarchModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchModel::scale(self : FinancetimeegarchModel, f : Double) -> FinancetimeegarchModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_model_add(a : FinancetimeegarchModel, b : FinancetimeegarchModel) -> FinancetimeegarchModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchModel::add(self : FinancetimeegarchModel, other : FinancetimeegarchModel) -> FinancetimeegarchModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_model_copy(s : FinancetimeegarchModel) -> FinancetimeegarchModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchModel::copy(self : FinancetimeegarchModel) -> FinancetimeegarchModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_model_fill(s : FinancetimeegarchModel, v : Double) -> FinancetimeegarchModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchModel::fill(self : FinancetimeegarchModel, v : Double) -> FinancetimeegarchModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_model_min(s : FinancetimeegarchModel) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchModel::min(self : FinancetimeegarchModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_model_max(s : FinancetimeegarchModel) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchModel::max(self : FinancetimeegarchModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_model_to_string(s : FinancetimeegarchModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchModel::to_string(self : FinancetimeegarchModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchLayer {
@@ -759,45 +759,45 @@ pub fn finance_time_egarch_layer_make(size : Int) -> FinancetimeegarchLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_layer_len(s : FinancetimeegarchLayer) -> Int { s.size }
+pub fn FinancetimeegarchLayer::len(self : FinancetimeegarchLayer) -> Int { self.size }
 
-pub fn finance_time_egarch_layer_get(s : FinancetimeegarchLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchLayer::get(self : FinancetimeegarchLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_layer_set(s : FinancetimeegarchLayer, i : Int, v : Double) -> FinancetimeegarchLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchLayer::set(self : FinancetimeegarchLayer, i : Int, v : Double) -> FinancetimeegarchLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_layer_sum(s : FinancetimeegarchLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchLayer::sum(self : FinancetimeegarchLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_layer_mean(s : FinancetimeegarchLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchLayer::mean(self : FinancetimeegarchLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_layer_scale(s : FinancetimeegarchLayer, f : Double) -> FinancetimeegarchLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchLayer::scale(self : FinancetimeegarchLayer, f : Double) -> FinancetimeegarchLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_layer_add(a : FinancetimeegarchLayer, b : FinancetimeegarchLayer) -> FinancetimeegarchLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchLayer::add(self : FinancetimeegarchLayer, other : FinancetimeegarchLayer) -> FinancetimeegarchLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_layer_copy(s : FinancetimeegarchLayer) -> FinancetimeegarchLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchLayer::copy(self : FinancetimeegarchLayer) -> FinancetimeegarchLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_layer_fill(s : FinancetimeegarchLayer, v : Double) -> FinancetimeegarchLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchLayer::fill(self : FinancetimeegarchLayer, v : Double) -> FinancetimeegarchLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_layer_min(s : FinancetimeegarchLayer) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchLayer::min(self : FinancetimeegarchLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_layer_max(s : FinancetimeegarchLayer) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchLayer::max(self : FinancetimeegarchLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_layer_to_string(s : FinancetimeegarchLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchLayer::to_string(self : FinancetimeegarchLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchBuffer {
@@ -810,45 +810,45 @@ pub fn finance_time_egarch_buffer_make(size : Int) -> FinancetimeegarchBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_buffer_len(s : FinancetimeegarchBuffer) -> Int { s.size }
+pub fn FinancetimeegarchBuffer::len(self : FinancetimeegarchBuffer) -> Int { self.size }
 
-pub fn finance_time_egarch_buffer_get(s : FinancetimeegarchBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchBuffer::get(self : FinancetimeegarchBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_buffer_set(s : FinancetimeegarchBuffer, i : Int, v : Double) -> FinancetimeegarchBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchBuffer::set(self : FinancetimeegarchBuffer, i : Int, v : Double) -> FinancetimeegarchBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_buffer_sum(s : FinancetimeegarchBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchBuffer::sum(self : FinancetimeegarchBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_buffer_mean(s : FinancetimeegarchBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchBuffer::mean(self : FinancetimeegarchBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_buffer_scale(s : FinancetimeegarchBuffer, f : Double) -> FinancetimeegarchBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchBuffer::scale(self : FinancetimeegarchBuffer, f : Double) -> FinancetimeegarchBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_buffer_add(a : FinancetimeegarchBuffer, b : FinancetimeegarchBuffer) -> FinancetimeegarchBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchBuffer::add(self : FinancetimeegarchBuffer, other : FinancetimeegarchBuffer) -> FinancetimeegarchBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_buffer_copy(s : FinancetimeegarchBuffer) -> FinancetimeegarchBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchBuffer::copy(self : FinancetimeegarchBuffer) -> FinancetimeegarchBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_buffer_fill(s : FinancetimeegarchBuffer, v : Double) -> FinancetimeegarchBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchBuffer::fill(self : FinancetimeegarchBuffer, v : Double) -> FinancetimeegarchBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_buffer_min(s : FinancetimeegarchBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchBuffer::min(self : FinancetimeegarchBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_buffer_max(s : FinancetimeegarchBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchBuffer::max(self : FinancetimeegarchBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_buffer_to_string(s : FinancetimeegarchBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchBuffer::to_string(self : FinancetimeegarchBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchCursor {
@@ -861,45 +861,45 @@ pub fn finance_time_egarch_cursor_make(size : Int) -> FinancetimeegarchCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_cursor_len(s : FinancetimeegarchCursor) -> Int { s.size }
+pub fn FinancetimeegarchCursor::len(self : FinancetimeegarchCursor) -> Int { self.size }
 
-pub fn finance_time_egarch_cursor_get(s : FinancetimeegarchCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchCursor::get(self : FinancetimeegarchCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_cursor_set(s : FinancetimeegarchCursor, i : Int, v : Double) -> FinancetimeegarchCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCursor::set(self : FinancetimeegarchCursor, i : Int, v : Double) -> FinancetimeegarchCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cursor_sum(s : FinancetimeegarchCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchCursor::sum(self : FinancetimeegarchCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_cursor_mean(s : FinancetimeegarchCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchCursor::mean(self : FinancetimeegarchCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_cursor_scale(s : FinancetimeegarchCursor, f : Double) -> FinancetimeegarchCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCursor::scale(self : FinancetimeegarchCursor, f : Double) -> FinancetimeegarchCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cursor_add(a : FinancetimeegarchCursor, b : FinancetimeegarchCursor) -> FinancetimeegarchCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchCursor::add(self : FinancetimeegarchCursor, other : FinancetimeegarchCursor) -> FinancetimeegarchCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cursor_copy(s : FinancetimeegarchCursor) -> FinancetimeegarchCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCursor::copy(self : FinancetimeegarchCursor) -> FinancetimeegarchCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cursor_fill(s : FinancetimeegarchCursor, v : Double) -> FinancetimeegarchCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchCursor::fill(self : FinancetimeegarchCursor, v : Double) -> FinancetimeegarchCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_cursor_min(s : FinancetimeegarchCursor) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchCursor::min(self : FinancetimeegarchCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_cursor_max(s : FinancetimeegarchCursor) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchCursor::max(self : FinancetimeegarchCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_cursor_to_string(s : FinancetimeegarchCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchCursor::to_string(self : FinancetimeegarchCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchView {
@@ -912,45 +912,45 @@ pub fn finance_time_egarch_view_make(size : Int) -> FinancetimeegarchView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_view_len(s : FinancetimeegarchView) -> Int { s.size }
+pub fn FinancetimeegarchView::len(self : FinancetimeegarchView) -> Int { self.size }
 
-pub fn finance_time_egarch_view_get(s : FinancetimeegarchView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchView::get(self : FinancetimeegarchView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_view_set(s : FinancetimeegarchView, i : Int, v : Double) -> FinancetimeegarchView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchView::set(self : FinancetimeegarchView, i : Int, v : Double) -> FinancetimeegarchView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_view_sum(s : FinancetimeegarchView) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchView::sum(self : FinancetimeegarchView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_view_mean(s : FinancetimeegarchView) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchView::mean(self : FinancetimeegarchView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_view_scale(s : FinancetimeegarchView, f : Double) -> FinancetimeegarchView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchView::scale(self : FinancetimeegarchView, f : Double) -> FinancetimeegarchView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_view_add(a : FinancetimeegarchView, b : FinancetimeegarchView) -> FinancetimeegarchView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchView::add(self : FinancetimeegarchView, other : FinancetimeegarchView) -> FinancetimeegarchView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_view_copy(s : FinancetimeegarchView) -> FinancetimeegarchView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchView::copy(self : FinancetimeegarchView) -> FinancetimeegarchView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_view_fill(s : FinancetimeegarchView, v : Double) -> FinancetimeegarchView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchView::fill(self : FinancetimeegarchView, v : Double) -> FinancetimeegarchView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_view_min(s : FinancetimeegarchView) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchView::min(self : FinancetimeegarchView) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_view_max(s : FinancetimeegarchView) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchView::max(self : FinancetimeegarchView) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_view_to_string(s : FinancetimeegarchView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchView::to_string(self : FinancetimeegarchView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchRange {
@@ -963,45 +963,45 @@ pub fn finance_time_egarch_range_make(size : Int) -> FinancetimeegarchRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_range_len(s : FinancetimeegarchRange) -> Int { s.size }
+pub fn FinancetimeegarchRange::len(self : FinancetimeegarchRange) -> Int { self.size }
 
-pub fn finance_time_egarch_range_get(s : FinancetimeegarchRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchRange::get(self : FinancetimeegarchRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_range_set(s : FinancetimeegarchRange, i : Int, v : Double) -> FinancetimeegarchRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchRange::set(self : FinancetimeegarchRange, i : Int, v : Double) -> FinancetimeegarchRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_range_sum(s : FinancetimeegarchRange) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchRange::sum(self : FinancetimeegarchRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_range_mean(s : FinancetimeegarchRange) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchRange::mean(self : FinancetimeegarchRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_range_scale(s : FinancetimeegarchRange, f : Double) -> FinancetimeegarchRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchRange::scale(self : FinancetimeegarchRange, f : Double) -> FinancetimeegarchRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_range_add(a : FinancetimeegarchRange, b : FinancetimeegarchRange) -> FinancetimeegarchRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchRange::add(self : FinancetimeegarchRange, other : FinancetimeegarchRange) -> FinancetimeegarchRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_range_copy(s : FinancetimeegarchRange) -> FinancetimeegarchRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchRange::copy(self : FinancetimeegarchRange) -> FinancetimeegarchRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_range_fill(s : FinancetimeegarchRange, v : Double) -> FinancetimeegarchRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchRange::fill(self : FinancetimeegarchRange, v : Double) -> FinancetimeegarchRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_range_min(s : FinancetimeegarchRange) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchRange::min(self : FinancetimeegarchRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_range_max(s : FinancetimeegarchRange) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchRange::max(self : FinancetimeegarchRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_range_to_string(s : FinancetimeegarchRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchRange::to_string(self : FinancetimeegarchRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimeegarchSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_time_egarch_slice_make(size : Int) -> FinancetimeegarchSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_egarch_slice_len(s : FinancetimeegarchSlice) -> Int { s.size }
+pub fn FinancetimeegarchSlice::len(self : FinancetimeegarchSlice) -> Int { self.size }
 
-pub fn finance_time_egarch_slice_get(s : FinancetimeegarchSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimeegarchSlice::get(self : FinancetimeegarchSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_egarch_slice_set(s : FinancetimeegarchSlice, i : Int, v : Double) -> FinancetimeegarchSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimeegarchSlice::set(self : FinancetimeegarchSlice, i : Int, v : Double) -> FinancetimeegarchSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_slice_sum(s : FinancetimeegarchSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancetimeegarchSlice::sum(self : FinancetimeegarchSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_egarch_slice_mean(s : FinancetimeegarchSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancetimeegarchSlice::mean(self : FinancetimeegarchSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_egarch_slice_scale(s : FinancetimeegarchSlice, f : Double) -> FinancetimeegarchSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchSlice::scale(self : FinancetimeegarchSlice, f : Double) -> FinancetimeegarchSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_slice_add(a : FinancetimeegarchSlice, b : FinancetimeegarchSlice) -> FinancetimeegarchSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimeegarchSlice::add(self : FinancetimeegarchSlice, other : FinancetimeegarchSlice) -> FinancetimeegarchSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_egarch_slice_copy(s : FinancetimeegarchSlice) -> FinancetimeegarchSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchSlice::copy(self : FinancetimeegarchSlice) -> FinancetimeegarchSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_slice_fill(s : FinancetimeegarchSlice, v : Double) -> FinancetimeegarchSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimeegarchSlice::fill(self : FinancetimeegarchSlice, v : Double) -> FinancetimeegarchSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_egarch_slice_min(s : FinancetimeegarchSlice) -> Double { @_common.min(s.data) }
+pub fn FinancetimeegarchSlice::min(self : FinancetimeegarchSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_egarch_slice_max(s : FinancetimeegarchSlice) -> Double { @_common.max(s.data) }
+pub fn FinancetimeegarchSlice::max(self : FinancetimeegarchSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_egarch_slice_to_string(s : FinancetimeegarchSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimeegarchSlice::to_string(self : FinancetimeegarchSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

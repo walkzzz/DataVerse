@@ -351,45 +351,45 @@ pub fn finance_portfolio_black_litterman_frame_make(size : Int) -> Financeportfo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_frame_len(s : FinanceportfolioblacklittermanFrame) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanFrame::len(self : FinanceportfolioblacklittermanFrame) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_frame_get(s : FinanceportfolioblacklittermanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanFrame::get(self : FinanceportfolioblacklittermanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_frame_set(s : FinanceportfolioblacklittermanFrame, i : Int, v : Double) -> FinanceportfolioblacklittermanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanFrame::set(self : FinanceportfolioblacklittermanFrame, i : Int, v : Double) -> FinanceportfolioblacklittermanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_frame_sum(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanFrame::sum(self : FinanceportfolioblacklittermanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_frame_mean(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanFrame::mean(self : FinanceportfolioblacklittermanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_frame_scale(s : FinanceportfolioblacklittermanFrame, f : Double) -> FinanceportfolioblacklittermanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanFrame::scale(self : FinanceportfolioblacklittermanFrame, f : Double) -> FinanceportfolioblacklittermanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_frame_add(a : FinanceportfolioblacklittermanFrame, b : FinanceportfolioblacklittermanFrame) -> FinanceportfolioblacklittermanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanFrame::add(self : FinanceportfolioblacklittermanFrame, other : FinanceportfolioblacklittermanFrame) -> FinanceportfolioblacklittermanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_frame_copy(s : FinanceportfolioblacklittermanFrame) -> FinanceportfolioblacklittermanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanFrame::copy(self : FinanceportfolioblacklittermanFrame) -> FinanceportfolioblacklittermanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_frame_fill(s : FinanceportfolioblacklittermanFrame, v : Double) -> FinanceportfolioblacklittermanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanFrame::fill(self : FinanceportfolioblacklittermanFrame, v : Double) -> FinanceportfolioblacklittermanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_frame_min(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanFrame::min(self : FinanceportfolioblacklittermanFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_frame_max(s : FinanceportfolioblacklittermanFrame) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanFrame::max(self : FinanceportfolioblacklittermanFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_frame_to_string(s : FinanceportfolioblacklittermanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanFrame::to_string(self : FinanceportfolioblacklittermanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanTable {
@@ -402,45 +402,45 @@ pub fn finance_portfolio_black_litterman_table_make(size : Int) -> Financeportfo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_table_len(s : FinanceportfolioblacklittermanTable) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanTable::len(self : FinanceportfolioblacklittermanTable) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_table_get(s : FinanceportfolioblacklittermanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanTable::get(self : FinanceportfolioblacklittermanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_table_set(s : FinanceportfolioblacklittermanTable, i : Int, v : Double) -> FinanceportfolioblacklittermanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanTable::set(self : FinanceportfolioblacklittermanTable, i : Int, v : Double) -> FinanceportfolioblacklittermanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_table_sum(s : FinanceportfolioblacklittermanTable) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanTable::sum(self : FinanceportfolioblacklittermanTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_table_mean(s : FinanceportfolioblacklittermanTable) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanTable::mean(self : FinanceportfolioblacklittermanTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_table_scale(s : FinanceportfolioblacklittermanTable, f : Double) -> FinanceportfolioblacklittermanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanTable::scale(self : FinanceportfolioblacklittermanTable, f : Double) -> FinanceportfolioblacklittermanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_table_add(a : FinanceportfolioblacklittermanTable, b : FinanceportfolioblacklittermanTable) -> FinanceportfolioblacklittermanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanTable::add(self : FinanceportfolioblacklittermanTable, other : FinanceportfolioblacklittermanTable) -> FinanceportfolioblacklittermanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_table_copy(s : FinanceportfolioblacklittermanTable) -> FinanceportfolioblacklittermanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanTable::copy(self : FinanceportfolioblacklittermanTable) -> FinanceportfolioblacklittermanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_table_fill(s : FinanceportfolioblacklittermanTable, v : Double) -> FinanceportfolioblacklittermanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanTable::fill(self : FinanceportfolioblacklittermanTable, v : Double) -> FinanceportfolioblacklittermanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_table_min(s : FinanceportfolioblacklittermanTable) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanTable::min(self : FinanceportfolioblacklittermanTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_table_max(s : FinanceportfolioblacklittermanTable) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanTable::max(self : FinanceportfolioblacklittermanTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_table_to_string(s : FinanceportfolioblacklittermanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanTable::to_string(self : FinanceportfolioblacklittermanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanGraphN {
@@ -453,45 +453,45 @@ pub fn finance_portfolio_black_litterman_graphn_make(size : Int) -> Financeportf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_len(s : FinanceportfolioblacklittermanGraphN) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanGraphN::len(self : FinanceportfolioblacklittermanGraphN) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_graphn_get(s : FinanceportfolioblacklittermanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanGraphN::get(self : FinanceportfolioblacklittermanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_set(s : FinanceportfolioblacklittermanGraphN, i : Int, v : Double) -> FinanceportfolioblacklittermanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanGraphN::set(self : FinanceportfolioblacklittermanGraphN, i : Int, v : Double) -> FinanceportfolioblacklittermanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_sum(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanGraphN::sum(self : FinanceportfolioblacklittermanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_graphn_mean(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanGraphN::mean(self : FinanceportfolioblacklittermanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_graphn_scale(s : FinanceportfolioblacklittermanGraphN, f : Double) -> FinanceportfolioblacklittermanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanGraphN::scale(self : FinanceportfolioblacklittermanGraphN, f : Double) -> FinanceportfolioblacklittermanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_add(a : FinanceportfolioblacklittermanGraphN, b : FinanceportfolioblacklittermanGraphN) -> FinanceportfolioblacklittermanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanGraphN::add(self : FinanceportfolioblacklittermanGraphN, other : FinanceportfolioblacklittermanGraphN) -> FinanceportfolioblacklittermanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_copy(s : FinanceportfolioblacklittermanGraphN) -> FinanceportfolioblacklittermanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanGraphN::copy(self : FinanceportfolioblacklittermanGraphN) -> FinanceportfolioblacklittermanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_fill(s : FinanceportfolioblacklittermanGraphN, v : Double) -> FinanceportfolioblacklittermanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanGraphN::fill(self : FinanceportfolioblacklittermanGraphN, v : Double) -> FinanceportfolioblacklittermanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_graphn_min(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanGraphN::min(self : FinanceportfolioblacklittermanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_graphn_max(s : FinanceportfolioblacklittermanGraphN) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanGraphN::max(self : FinanceportfolioblacklittermanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_graphn_to_string(s : FinanceportfolioblacklittermanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanGraphN::to_string(self : FinanceportfolioblacklittermanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanNode {
@@ -504,45 +504,45 @@ pub fn finance_portfolio_black_litterman_node_make(size : Int) -> Financeportfol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_node_len(s : FinanceportfolioblacklittermanNode) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanNode::len(self : FinanceportfolioblacklittermanNode) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_node_get(s : FinanceportfolioblacklittermanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanNode::get(self : FinanceportfolioblacklittermanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_node_set(s : FinanceportfolioblacklittermanNode, i : Int, v : Double) -> FinanceportfolioblacklittermanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanNode::set(self : FinanceportfolioblacklittermanNode, i : Int, v : Double) -> FinanceportfolioblacklittermanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_node_sum(s : FinanceportfolioblacklittermanNode) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanNode::sum(self : FinanceportfolioblacklittermanNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_node_mean(s : FinanceportfolioblacklittermanNode) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanNode::mean(self : FinanceportfolioblacklittermanNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_node_scale(s : FinanceportfolioblacklittermanNode, f : Double) -> FinanceportfolioblacklittermanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanNode::scale(self : FinanceportfolioblacklittermanNode, f : Double) -> FinanceportfolioblacklittermanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_node_add(a : FinanceportfolioblacklittermanNode, b : FinanceportfolioblacklittermanNode) -> FinanceportfolioblacklittermanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanNode::add(self : FinanceportfolioblacklittermanNode, other : FinanceportfolioblacklittermanNode) -> FinanceportfolioblacklittermanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_node_copy(s : FinanceportfolioblacklittermanNode) -> FinanceportfolioblacklittermanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanNode::copy(self : FinanceportfolioblacklittermanNode) -> FinanceportfolioblacklittermanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_node_fill(s : FinanceportfolioblacklittermanNode, v : Double) -> FinanceportfolioblacklittermanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanNode::fill(self : FinanceportfolioblacklittermanNode, v : Double) -> FinanceportfolioblacklittermanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_node_min(s : FinanceportfolioblacklittermanNode) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanNode::min(self : FinanceportfolioblacklittermanNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_node_max(s : FinanceportfolioblacklittermanNode) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanNode::max(self : FinanceportfolioblacklittermanNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_node_to_string(s : FinanceportfolioblacklittermanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanNode::to_string(self : FinanceportfolioblacklittermanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanEdge {
@@ -555,45 +555,45 @@ pub fn finance_portfolio_black_litterman_edge_make(size : Int) -> Financeportfol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_edge_len(s : FinanceportfolioblacklittermanEdge) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanEdge::len(self : FinanceportfolioblacklittermanEdge) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_edge_get(s : FinanceportfolioblacklittermanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanEdge::get(self : FinanceportfolioblacklittermanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_edge_set(s : FinanceportfolioblacklittermanEdge, i : Int, v : Double) -> FinanceportfolioblacklittermanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanEdge::set(self : FinanceportfolioblacklittermanEdge, i : Int, v : Double) -> FinanceportfolioblacklittermanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_edge_sum(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanEdge::sum(self : FinanceportfolioblacklittermanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_edge_mean(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanEdge::mean(self : FinanceportfolioblacklittermanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_edge_scale(s : FinanceportfolioblacklittermanEdge, f : Double) -> FinanceportfolioblacklittermanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanEdge::scale(self : FinanceportfolioblacklittermanEdge, f : Double) -> FinanceportfolioblacklittermanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_edge_add(a : FinanceportfolioblacklittermanEdge, b : FinanceportfolioblacklittermanEdge) -> FinanceportfolioblacklittermanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanEdge::add(self : FinanceportfolioblacklittermanEdge, other : FinanceportfolioblacklittermanEdge) -> FinanceportfolioblacklittermanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_edge_copy(s : FinanceportfolioblacklittermanEdge) -> FinanceportfolioblacklittermanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanEdge::copy(self : FinanceportfolioblacklittermanEdge) -> FinanceportfolioblacklittermanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_edge_fill(s : FinanceportfolioblacklittermanEdge, v : Double) -> FinanceportfolioblacklittermanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanEdge::fill(self : FinanceportfolioblacklittermanEdge, v : Double) -> FinanceportfolioblacklittermanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_edge_min(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanEdge::min(self : FinanceportfolioblacklittermanEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_edge_max(s : FinanceportfolioblacklittermanEdge) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanEdge::max(self : FinanceportfolioblacklittermanEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_edge_to_string(s : FinanceportfolioblacklittermanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanEdge::to_string(self : FinanceportfolioblacklittermanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanPath {
@@ -606,45 +606,45 @@ pub fn finance_portfolio_black_litterman_path_make(size : Int) -> Financeportfol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_path_len(s : FinanceportfolioblacklittermanPath) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanPath::len(self : FinanceportfolioblacklittermanPath) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_path_get(s : FinanceportfolioblacklittermanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanPath::get(self : FinanceportfolioblacklittermanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_path_set(s : FinanceportfolioblacklittermanPath, i : Int, v : Double) -> FinanceportfolioblacklittermanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanPath::set(self : FinanceportfolioblacklittermanPath, i : Int, v : Double) -> FinanceportfolioblacklittermanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_path_sum(s : FinanceportfolioblacklittermanPath) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanPath::sum(self : FinanceportfolioblacklittermanPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_path_mean(s : FinanceportfolioblacklittermanPath) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanPath::mean(self : FinanceportfolioblacklittermanPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_path_scale(s : FinanceportfolioblacklittermanPath, f : Double) -> FinanceportfolioblacklittermanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanPath::scale(self : FinanceportfolioblacklittermanPath, f : Double) -> FinanceportfolioblacklittermanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_path_add(a : FinanceportfolioblacklittermanPath, b : FinanceportfolioblacklittermanPath) -> FinanceportfolioblacklittermanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanPath::add(self : FinanceportfolioblacklittermanPath, other : FinanceportfolioblacklittermanPath) -> FinanceportfolioblacklittermanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_path_copy(s : FinanceportfolioblacklittermanPath) -> FinanceportfolioblacklittermanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanPath::copy(self : FinanceportfolioblacklittermanPath) -> FinanceportfolioblacklittermanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_path_fill(s : FinanceportfolioblacklittermanPath, v : Double) -> FinanceportfolioblacklittermanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanPath::fill(self : FinanceportfolioblacklittermanPath, v : Double) -> FinanceportfolioblacklittermanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_path_min(s : FinanceportfolioblacklittermanPath) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanPath::min(self : FinanceportfolioblacklittermanPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_path_max(s : FinanceportfolioblacklittermanPath) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanPath::max(self : FinanceportfolioblacklittermanPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_path_to_string(s : FinanceportfolioblacklittermanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanPath::to_string(self : FinanceportfolioblacklittermanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanCluster {
@@ -657,45 +657,45 @@ pub fn finance_portfolio_black_litterman_cluster_make(size : Int) -> Financeport
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_len(s : FinanceportfolioblacklittermanCluster) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanCluster::len(self : FinanceportfolioblacklittermanCluster) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_cluster_get(s : FinanceportfolioblacklittermanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanCluster::get(self : FinanceportfolioblacklittermanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_set(s : FinanceportfolioblacklittermanCluster, i : Int, v : Double) -> FinanceportfolioblacklittermanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCluster::set(self : FinanceportfolioblacklittermanCluster, i : Int, v : Double) -> FinanceportfolioblacklittermanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_sum(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanCluster::sum(self : FinanceportfolioblacklittermanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_cluster_mean(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanCluster::mean(self : FinanceportfolioblacklittermanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_cluster_scale(s : FinanceportfolioblacklittermanCluster, f : Double) -> FinanceportfolioblacklittermanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCluster::scale(self : FinanceportfolioblacklittermanCluster, f : Double) -> FinanceportfolioblacklittermanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_add(a : FinanceportfolioblacklittermanCluster, b : FinanceportfolioblacklittermanCluster) -> FinanceportfolioblacklittermanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanCluster::add(self : FinanceportfolioblacklittermanCluster, other : FinanceportfolioblacklittermanCluster) -> FinanceportfolioblacklittermanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_copy(s : FinanceportfolioblacklittermanCluster) -> FinanceportfolioblacklittermanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCluster::copy(self : FinanceportfolioblacklittermanCluster) -> FinanceportfolioblacklittermanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_fill(s : FinanceportfolioblacklittermanCluster, v : Double) -> FinanceportfolioblacklittermanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCluster::fill(self : FinanceportfolioblacklittermanCluster, v : Double) -> FinanceportfolioblacklittermanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cluster_min(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanCluster::min(self : FinanceportfolioblacklittermanCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_cluster_max(s : FinanceportfolioblacklittermanCluster) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanCluster::max(self : FinanceportfolioblacklittermanCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_cluster_to_string(s : FinanceportfolioblacklittermanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanCluster::to_string(self : FinanceportfolioblacklittermanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanModel {
@@ -708,45 +708,45 @@ pub fn finance_portfolio_black_litterman_model_make(size : Int) -> Financeportfo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_model_len(s : FinanceportfolioblacklittermanModel) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanModel::len(self : FinanceportfolioblacklittermanModel) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_model_get(s : FinanceportfolioblacklittermanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanModel::get(self : FinanceportfolioblacklittermanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_model_set(s : FinanceportfolioblacklittermanModel, i : Int, v : Double) -> FinanceportfolioblacklittermanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanModel::set(self : FinanceportfolioblacklittermanModel, i : Int, v : Double) -> FinanceportfolioblacklittermanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_model_sum(s : FinanceportfolioblacklittermanModel) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanModel::sum(self : FinanceportfolioblacklittermanModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_model_mean(s : FinanceportfolioblacklittermanModel) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanModel::mean(self : FinanceportfolioblacklittermanModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_model_scale(s : FinanceportfolioblacklittermanModel, f : Double) -> FinanceportfolioblacklittermanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanModel::scale(self : FinanceportfolioblacklittermanModel, f : Double) -> FinanceportfolioblacklittermanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_model_add(a : FinanceportfolioblacklittermanModel, b : FinanceportfolioblacklittermanModel) -> FinanceportfolioblacklittermanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanModel::add(self : FinanceportfolioblacklittermanModel, other : FinanceportfolioblacklittermanModel) -> FinanceportfolioblacklittermanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_model_copy(s : FinanceportfolioblacklittermanModel) -> FinanceportfolioblacklittermanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanModel::copy(self : FinanceportfolioblacklittermanModel) -> FinanceportfolioblacklittermanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_model_fill(s : FinanceportfolioblacklittermanModel, v : Double) -> FinanceportfolioblacklittermanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanModel::fill(self : FinanceportfolioblacklittermanModel, v : Double) -> FinanceportfolioblacklittermanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_model_min(s : FinanceportfolioblacklittermanModel) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanModel::min(self : FinanceportfolioblacklittermanModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_model_max(s : FinanceportfolioblacklittermanModel) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanModel::max(self : FinanceportfolioblacklittermanModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_model_to_string(s : FinanceportfolioblacklittermanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanModel::to_string(self : FinanceportfolioblacklittermanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanLayer {
@@ -759,45 +759,45 @@ pub fn finance_portfolio_black_litterman_layer_make(size : Int) -> Financeportfo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_layer_len(s : FinanceportfolioblacklittermanLayer) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanLayer::len(self : FinanceportfolioblacklittermanLayer) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_layer_get(s : FinanceportfolioblacklittermanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanLayer::get(self : FinanceportfolioblacklittermanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_layer_set(s : FinanceportfolioblacklittermanLayer, i : Int, v : Double) -> FinanceportfolioblacklittermanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanLayer::set(self : FinanceportfolioblacklittermanLayer, i : Int, v : Double) -> FinanceportfolioblacklittermanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_layer_sum(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanLayer::sum(self : FinanceportfolioblacklittermanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_layer_mean(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanLayer::mean(self : FinanceportfolioblacklittermanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_layer_scale(s : FinanceportfolioblacklittermanLayer, f : Double) -> FinanceportfolioblacklittermanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanLayer::scale(self : FinanceportfolioblacklittermanLayer, f : Double) -> FinanceportfolioblacklittermanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_layer_add(a : FinanceportfolioblacklittermanLayer, b : FinanceportfolioblacklittermanLayer) -> FinanceportfolioblacklittermanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanLayer::add(self : FinanceportfolioblacklittermanLayer, other : FinanceportfolioblacklittermanLayer) -> FinanceportfolioblacklittermanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_layer_copy(s : FinanceportfolioblacklittermanLayer) -> FinanceportfolioblacklittermanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanLayer::copy(self : FinanceportfolioblacklittermanLayer) -> FinanceportfolioblacklittermanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_layer_fill(s : FinanceportfolioblacklittermanLayer, v : Double) -> FinanceportfolioblacklittermanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanLayer::fill(self : FinanceportfolioblacklittermanLayer, v : Double) -> FinanceportfolioblacklittermanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_layer_min(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanLayer::min(self : FinanceportfolioblacklittermanLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_layer_max(s : FinanceportfolioblacklittermanLayer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanLayer::max(self : FinanceportfolioblacklittermanLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_layer_to_string(s : FinanceportfolioblacklittermanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanLayer::to_string(self : FinanceportfolioblacklittermanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanBuffer {
@@ -810,45 +810,45 @@ pub fn finance_portfolio_black_litterman_buffer_make(size : Int) -> Financeportf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_len(s : FinanceportfolioblacklittermanBuffer) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanBuffer::len(self : FinanceportfolioblacklittermanBuffer) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_buffer_get(s : FinanceportfolioblacklittermanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanBuffer::get(self : FinanceportfolioblacklittermanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_set(s : FinanceportfolioblacklittermanBuffer, i : Int, v : Double) -> FinanceportfolioblacklittermanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanBuffer::set(self : FinanceportfolioblacklittermanBuffer, i : Int, v : Double) -> FinanceportfolioblacklittermanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_sum(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanBuffer::sum(self : FinanceportfolioblacklittermanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_buffer_mean(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanBuffer::mean(self : FinanceportfolioblacklittermanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_buffer_scale(s : FinanceportfolioblacklittermanBuffer, f : Double) -> FinanceportfolioblacklittermanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanBuffer::scale(self : FinanceportfolioblacklittermanBuffer, f : Double) -> FinanceportfolioblacklittermanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_add(a : FinanceportfolioblacklittermanBuffer, b : FinanceportfolioblacklittermanBuffer) -> FinanceportfolioblacklittermanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanBuffer::add(self : FinanceportfolioblacklittermanBuffer, other : FinanceportfolioblacklittermanBuffer) -> FinanceportfolioblacklittermanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_copy(s : FinanceportfolioblacklittermanBuffer) -> FinanceportfolioblacklittermanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanBuffer::copy(self : FinanceportfolioblacklittermanBuffer) -> FinanceportfolioblacklittermanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_fill(s : FinanceportfolioblacklittermanBuffer, v : Double) -> FinanceportfolioblacklittermanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanBuffer::fill(self : FinanceportfolioblacklittermanBuffer, v : Double) -> FinanceportfolioblacklittermanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_buffer_min(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanBuffer::min(self : FinanceportfolioblacklittermanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_buffer_max(s : FinanceportfolioblacklittermanBuffer) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanBuffer::max(self : FinanceportfolioblacklittermanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_buffer_to_string(s : FinanceportfolioblacklittermanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanBuffer::to_string(self : FinanceportfolioblacklittermanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanCursor {
@@ -861,45 +861,45 @@ pub fn finance_portfolio_black_litterman_cursor_make(size : Int) -> Financeportf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_len(s : FinanceportfolioblacklittermanCursor) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanCursor::len(self : FinanceportfolioblacklittermanCursor) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_cursor_get(s : FinanceportfolioblacklittermanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanCursor::get(self : FinanceportfolioblacklittermanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_set(s : FinanceportfolioblacklittermanCursor, i : Int, v : Double) -> FinanceportfolioblacklittermanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCursor::set(self : FinanceportfolioblacklittermanCursor, i : Int, v : Double) -> FinanceportfolioblacklittermanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_sum(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanCursor::sum(self : FinanceportfolioblacklittermanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_cursor_mean(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanCursor::mean(self : FinanceportfolioblacklittermanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_cursor_scale(s : FinanceportfolioblacklittermanCursor, f : Double) -> FinanceportfolioblacklittermanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCursor::scale(self : FinanceportfolioblacklittermanCursor, f : Double) -> FinanceportfolioblacklittermanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_add(a : FinanceportfolioblacklittermanCursor, b : FinanceportfolioblacklittermanCursor) -> FinanceportfolioblacklittermanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanCursor::add(self : FinanceportfolioblacklittermanCursor, other : FinanceportfolioblacklittermanCursor) -> FinanceportfolioblacklittermanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_copy(s : FinanceportfolioblacklittermanCursor) -> FinanceportfolioblacklittermanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCursor::copy(self : FinanceportfolioblacklittermanCursor) -> FinanceportfolioblacklittermanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_fill(s : FinanceportfolioblacklittermanCursor, v : Double) -> FinanceportfolioblacklittermanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanCursor::fill(self : FinanceportfolioblacklittermanCursor, v : Double) -> FinanceportfolioblacklittermanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_cursor_min(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanCursor::min(self : FinanceportfolioblacklittermanCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_cursor_max(s : FinanceportfolioblacklittermanCursor) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanCursor::max(self : FinanceportfolioblacklittermanCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_cursor_to_string(s : FinanceportfolioblacklittermanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanCursor::to_string(self : FinanceportfolioblacklittermanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanView {
@@ -912,45 +912,45 @@ pub fn finance_portfolio_black_litterman_view_make(size : Int) -> Financeportfol
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_view_len(s : FinanceportfolioblacklittermanView) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanView::len(self : FinanceportfolioblacklittermanView) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_view_get(s : FinanceportfolioblacklittermanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanView::get(self : FinanceportfolioblacklittermanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_view_set(s : FinanceportfolioblacklittermanView, i : Int, v : Double) -> FinanceportfolioblacklittermanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanView::set(self : FinanceportfolioblacklittermanView, i : Int, v : Double) -> FinanceportfolioblacklittermanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_view_sum(s : FinanceportfolioblacklittermanView) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanView::sum(self : FinanceportfolioblacklittermanView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_view_mean(s : FinanceportfolioblacklittermanView) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanView::mean(self : FinanceportfolioblacklittermanView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_view_scale(s : FinanceportfolioblacklittermanView, f : Double) -> FinanceportfolioblacklittermanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanView::scale(self : FinanceportfolioblacklittermanView, f : Double) -> FinanceportfolioblacklittermanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_view_add(a : FinanceportfolioblacklittermanView, b : FinanceportfolioblacklittermanView) -> FinanceportfolioblacklittermanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanView::add(self : FinanceportfolioblacklittermanView, other : FinanceportfolioblacklittermanView) -> FinanceportfolioblacklittermanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_view_copy(s : FinanceportfolioblacklittermanView) -> FinanceportfolioblacklittermanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanView::copy(self : FinanceportfolioblacklittermanView) -> FinanceportfolioblacklittermanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_view_fill(s : FinanceportfolioblacklittermanView, v : Double) -> FinanceportfolioblacklittermanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanView::fill(self : FinanceportfolioblacklittermanView, v : Double) -> FinanceportfolioblacklittermanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_view_min(s : FinanceportfolioblacklittermanView) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanView::min(self : FinanceportfolioblacklittermanView) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_view_max(s : FinanceportfolioblacklittermanView) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanView::max(self : FinanceportfolioblacklittermanView) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_view_to_string(s : FinanceportfolioblacklittermanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanView::to_string(self : FinanceportfolioblacklittermanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanRange {
@@ -963,45 +963,45 @@ pub fn finance_portfolio_black_litterman_range_make(size : Int) -> Financeportfo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_range_len(s : FinanceportfolioblacklittermanRange) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanRange::len(self : FinanceportfolioblacklittermanRange) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_range_get(s : FinanceportfolioblacklittermanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanRange::get(self : FinanceportfolioblacklittermanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_range_set(s : FinanceportfolioblacklittermanRange, i : Int, v : Double) -> FinanceportfolioblacklittermanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanRange::set(self : FinanceportfolioblacklittermanRange, i : Int, v : Double) -> FinanceportfolioblacklittermanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_range_sum(s : FinanceportfolioblacklittermanRange) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanRange::sum(self : FinanceportfolioblacklittermanRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_range_mean(s : FinanceportfolioblacklittermanRange) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanRange::mean(self : FinanceportfolioblacklittermanRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_range_scale(s : FinanceportfolioblacklittermanRange, f : Double) -> FinanceportfolioblacklittermanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanRange::scale(self : FinanceportfolioblacklittermanRange, f : Double) -> FinanceportfolioblacklittermanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_range_add(a : FinanceportfolioblacklittermanRange, b : FinanceportfolioblacklittermanRange) -> FinanceportfolioblacklittermanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanRange::add(self : FinanceportfolioblacklittermanRange, other : FinanceportfolioblacklittermanRange) -> FinanceportfolioblacklittermanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_range_copy(s : FinanceportfolioblacklittermanRange) -> FinanceportfolioblacklittermanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanRange::copy(self : FinanceportfolioblacklittermanRange) -> FinanceportfolioblacklittermanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_range_fill(s : FinanceportfolioblacklittermanRange, v : Double) -> FinanceportfolioblacklittermanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanRange::fill(self : FinanceportfolioblacklittermanRange, v : Double) -> FinanceportfolioblacklittermanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_range_min(s : FinanceportfolioblacklittermanRange) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanRange::min(self : FinanceportfolioblacklittermanRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_range_max(s : FinanceportfolioblacklittermanRange) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanRange::max(self : FinanceportfolioblacklittermanRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_range_to_string(s : FinanceportfolioblacklittermanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanRange::to_string(self : FinanceportfolioblacklittermanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinanceportfolioblacklittermanSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_portfolio_black_litterman_slice_make(size : Int) -> Financeportfo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_portfolio_black_litterman_slice_len(s : FinanceportfolioblacklittermanSlice) -> Int { s.size }
+pub fn FinanceportfolioblacklittermanSlice::len(self : FinanceportfolioblacklittermanSlice) -> Int { self.size }
 
-pub fn finance_portfolio_black_litterman_slice_get(s : FinanceportfolioblacklittermanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinanceportfolioblacklittermanSlice::get(self : FinanceportfolioblacklittermanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_portfolio_black_litterman_slice_set(s : FinanceportfolioblacklittermanSlice, i : Int, v : Double) -> FinanceportfolioblacklittermanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanSlice::set(self : FinanceportfolioblacklittermanSlice, i : Int, v : Double) -> FinanceportfolioblacklittermanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_slice_sum(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.sum(s.data) }
+pub fn FinanceportfolioblacklittermanSlice::sum(self : FinanceportfolioblacklittermanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_portfolio_black_litterman_slice_mean(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.mean(s.data) }
+pub fn FinanceportfolioblacklittermanSlice::mean(self : FinanceportfolioblacklittermanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_portfolio_black_litterman_slice_scale(s : FinanceportfolioblacklittermanSlice, f : Double) -> FinanceportfolioblacklittermanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanSlice::scale(self : FinanceportfolioblacklittermanSlice, f : Double) -> FinanceportfolioblacklittermanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_slice_add(a : FinanceportfolioblacklittermanSlice, b : FinanceportfolioblacklittermanSlice) -> FinanceportfolioblacklittermanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinanceportfolioblacklittermanSlice::add(self : FinanceportfolioblacklittermanSlice, other : FinanceportfolioblacklittermanSlice) -> FinanceportfolioblacklittermanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_slice_copy(s : FinanceportfolioblacklittermanSlice) -> FinanceportfolioblacklittermanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanSlice::copy(self : FinanceportfolioblacklittermanSlice) -> FinanceportfolioblacklittermanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_slice_fill(s : FinanceportfolioblacklittermanSlice, v : Double) -> FinanceportfolioblacklittermanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinanceportfolioblacklittermanSlice::fill(self : FinanceportfolioblacklittermanSlice, v : Double) -> FinanceportfolioblacklittermanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_portfolio_black_litterman_slice_min(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.min(s.data) }
+pub fn FinanceportfolioblacklittermanSlice::min(self : FinanceportfolioblacklittermanSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_portfolio_black_litterman_slice_max(s : FinanceportfolioblacklittermanSlice) -> Double { @_common.max(s.data) }
+pub fn FinanceportfolioblacklittermanSlice::max(self : FinanceportfolioblacklittermanSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_portfolio_black_litterman_slice_to_string(s : FinanceportfolioblacklittermanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinanceportfolioblacklittermanSlice::to_string(self : FinanceportfolioblacklittermanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

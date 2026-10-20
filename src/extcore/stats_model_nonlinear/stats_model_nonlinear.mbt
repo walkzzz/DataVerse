@@ -351,45 +351,45 @@ pub fn stats_model_nonlinear_frame_make(size : Int) -> StatsmodelnonlinearFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_frame_len(s : StatsmodelnonlinearFrame) -> Int { s.size }
+pub fn StatsmodelnonlinearFrame::len(self : StatsmodelnonlinearFrame) -> Int { self.size }
 
-pub fn stats_model_nonlinear_frame_get(s : StatsmodelnonlinearFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearFrame::get(self : StatsmodelnonlinearFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_frame_set(s : StatsmodelnonlinearFrame, i : Int, v : Double) -> StatsmodelnonlinearFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearFrame::set(self : StatsmodelnonlinearFrame, i : Int, v : Double) -> StatsmodelnonlinearFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_frame_sum(s : StatsmodelnonlinearFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearFrame::sum(self : StatsmodelnonlinearFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_frame_mean(s : StatsmodelnonlinearFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearFrame::mean(self : StatsmodelnonlinearFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_frame_scale(s : StatsmodelnonlinearFrame, f : Double) -> StatsmodelnonlinearFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearFrame::scale(self : StatsmodelnonlinearFrame, f : Double) -> StatsmodelnonlinearFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_frame_add(a : StatsmodelnonlinearFrame, b : StatsmodelnonlinearFrame) -> StatsmodelnonlinearFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearFrame::add(self : StatsmodelnonlinearFrame, other : StatsmodelnonlinearFrame) -> StatsmodelnonlinearFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_frame_copy(s : StatsmodelnonlinearFrame) -> StatsmodelnonlinearFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearFrame::copy(self : StatsmodelnonlinearFrame) -> StatsmodelnonlinearFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_frame_fill(s : StatsmodelnonlinearFrame, v : Double) -> StatsmodelnonlinearFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearFrame::fill(self : StatsmodelnonlinearFrame, v : Double) -> StatsmodelnonlinearFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_frame_min(s : StatsmodelnonlinearFrame) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearFrame::min(self : StatsmodelnonlinearFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_frame_max(s : StatsmodelnonlinearFrame) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearFrame::max(self : StatsmodelnonlinearFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_frame_to_string(s : StatsmodelnonlinearFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearFrame::to_string(self : StatsmodelnonlinearFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearTable {
@@ -402,45 +402,45 @@ pub fn stats_model_nonlinear_table_make(size : Int) -> StatsmodelnonlinearTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_table_len(s : StatsmodelnonlinearTable) -> Int { s.size }
+pub fn StatsmodelnonlinearTable::len(self : StatsmodelnonlinearTable) -> Int { self.size }
 
-pub fn stats_model_nonlinear_table_get(s : StatsmodelnonlinearTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearTable::get(self : StatsmodelnonlinearTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_table_set(s : StatsmodelnonlinearTable, i : Int, v : Double) -> StatsmodelnonlinearTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearTable::set(self : StatsmodelnonlinearTable, i : Int, v : Double) -> StatsmodelnonlinearTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_table_sum(s : StatsmodelnonlinearTable) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearTable::sum(self : StatsmodelnonlinearTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_table_mean(s : StatsmodelnonlinearTable) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearTable::mean(self : StatsmodelnonlinearTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_table_scale(s : StatsmodelnonlinearTable, f : Double) -> StatsmodelnonlinearTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearTable::scale(self : StatsmodelnonlinearTable, f : Double) -> StatsmodelnonlinearTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_table_add(a : StatsmodelnonlinearTable, b : StatsmodelnonlinearTable) -> StatsmodelnonlinearTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearTable::add(self : StatsmodelnonlinearTable, other : StatsmodelnonlinearTable) -> StatsmodelnonlinearTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_table_copy(s : StatsmodelnonlinearTable) -> StatsmodelnonlinearTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearTable::copy(self : StatsmodelnonlinearTable) -> StatsmodelnonlinearTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_table_fill(s : StatsmodelnonlinearTable, v : Double) -> StatsmodelnonlinearTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearTable::fill(self : StatsmodelnonlinearTable, v : Double) -> StatsmodelnonlinearTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_table_min(s : StatsmodelnonlinearTable) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearTable::min(self : StatsmodelnonlinearTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_table_max(s : StatsmodelnonlinearTable) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearTable::max(self : StatsmodelnonlinearTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_table_to_string(s : StatsmodelnonlinearTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearTable::to_string(self : StatsmodelnonlinearTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearGraphN {
@@ -453,45 +453,45 @@ pub fn stats_model_nonlinear_graphn_make(size : Int) -> StatsmodelnonlinearGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_graphn_len(s : StatsmodelnonlinearGraphN) -> Int { s.size }
+pub fn StatsmodelnonlinearGraphN::len(self : StatsmodelnonlinearGraphN) -> Int { self.size }
 
-pub fn stats_model_nonlinear_graphn_get(s : StatsmodelnonlinearGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearGraphN::get(self : StatsmodelnonlinearGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_graphn_set(s : StatsmodelnonlinearGraphN, i : Int, v : Double) -> StatsmodelnonlinearGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearGraphN::set(self : StatsmodelnonlinearGraphN, i : Int, v : Double) -> StatsmodelnonlinearGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_graphn_sum(s : StatsmodelnonlinearGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearGraphN::sum(self : StatsmodelnonlinearGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_graphn_mean(s : StatsmodelnonlinearGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearGraphN::mean(self : StatsmodelnonlinearGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_graphn_scale(s : StatsmodelnonlinearGraphN, f : Double) -> StatsmodelnonlinearGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearGraphN::scale(self : StatsmodelnonlinearGraphN, f : Double) -> StatsmodelnonlinearGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_graphn_add(a : StatsmodelnonlinearGraphN, b : StatsmodelnonlinearGraphN) -> StatsmodelnonlinearGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearGraphN::add(self : StatsmodelnonlinearGraphN, other : StatsmodelnonlinearGraphN) -> StatsmodelnonlinearGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_graphn_copy(s : StatsmodelnonlinearGraphN) -> StatsmodelnonlinearGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearGraphN::copy(self : StatsmodelnonlinearGraphN) -> StatsmodelnonlinearGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_graphn_fill(s : StatsmodelnonlinearGraphN, v : Double) -> StatsmodelnonlinearGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearGraphN::fill(self : StatsmodelnonlinearGraphN, v : Double) -> StatsmodelnonlinearGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_graphn_min(s : StatsmodelnonlinearGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearGraphN::min(self : StatsmodelnonlinearGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_graphn_max(s : StatsmodelnonlinearGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearGraphN::max(self : StatsmodelnonlinearGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_graphn_to_string(s : StatsmodelnonlinearGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearGraphN::to_string(self : StatsmodelnonlinearGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearNode {
@@ -504,45 +504,45 @@ pub fn stats_model_nonlinear_node_make(size : Int) -> StatsmodelnonlinearNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_node_len(s : StatsmodelnonlinearNode) -> Int { s.size }
+pub fn StatsmodelnonlinearNode::len(self : StatsmodelnonlinearNode) -> Int { self.size }
 
-pub fn stats_model_nonlinear_node_get(s : StatsmodelnonlinearNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearNode::get(self : StatsmodelnonlinearNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_node_set(s : StatsmodelnonlinearNode, i : Int, v : Double) -> StatsmodelnonlinearNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearNode::set(self : StatsmodelnonlinearNode, i : Int, v : Double) -> StatsmodelnonlinearNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_node_sum(s : StatsmodelnonlinearNode) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearNode::sum(self : StatsmodelnonlinearNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_node_mean(s : StatsmodelnonlinearNode) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearNode::mean(self : StatsmodelnonlinearNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_node_scale(s : StatsmodelnonlinearNode, f : Double) -> StatsmodelnonlinearNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearNode::scale(self : StatsmodelnonlinearNode, f : Double) -> StatsmodelnonlinearNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_node_add(a : StatsmodelnonlinearNode, b : StatsmodelnonlinearNode) -> StatsmodelnonlinearNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearNode::add(self : StatsmodelnonlinearNode, other : StatsmodelnonlinearNode) -> StatsmodelnonlinearNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_node_copy(s : StatsmodelnonlinearNode) -> StatsmodelnonlinearNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearNode::copy(self : StatsmodelnonlinearNode) -> StatsmodelnonlinearNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_node_fill(s : StatsmodelnonlinearNode, v : Double) -> StatsmodelnonlinearNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearNode::fill(self : StatsmodelnonlinearNode, v : Double) -> StatsmodelnonlinearNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_node_min(s : StatsmodelnonlinearNode) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearNode::min(self : StatsmodelnonlinearNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_node_max(s : StatsmodelnonlinearNode) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearNode::max(self : StatsmodelnonlinearNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_node_to_string(s : StatsmodelnonlinearNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearNode::to_string(self : StatsmodelnonlinearNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearEdge {
@@ -555,45 +555,45 @@ pub fn stats_model_nonlinear_edge_make(size : Int) -> StatsmodelnonlinearEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_edge_len(s : StatsmodelnonlinearEdge) -> Int { s.size }
+pub fn StatsmodelnonlinearEdge::len(self : StatsmodelnonlinearEdge) -> Int { self.size }
 
-pub fn stats_model_nonlinear_edge_get(s : StatsmodelnonlinearEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearEdge::get(self : StatsmodelnonlinearEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_edge_set(s : StatsmodelnonlinearEdge, i : Int, v : Double) -> StatsmodelnonlinearEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearEdge::set(self : StatsmodelnonlinearEdge, i : Int, v : Double) -> StatsmodelnonlinearEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_edge_sum(s : StatsmodelnonlinearEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearEdge::sum(self : StatsmodelnonlinearEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_edge_mean(s : StatsmodelnonlinearEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearEdge::mean(self : StatsmodelnonlinearEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_edge_scale(s : StatsmodelnonlinearEdge, f : Double) -> StatsmodelnonlinearEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearEdge::scale(self : StatsmodelnonlinearEdge, f : Double) -> StatsmodelnonlinearEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_edge_add(a : StatsmodelnonlinearEdge, b : StatsmodelnonlinearEdge) -> StatsmodelnonlinearEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearEdge::add(self : StatsmodelnonlinearEdge, other : StatsmodelnonlinearEdge) -> StatsmodelnonlinearEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_edge_copy(s : StatsmodelnonlinearEdge) -> StatsmodelnonlinearEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearEdge::copy(self : StatsmodelnonlinearEdge) -> StatsmodelnonlinearEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_edge_fill(s : StatsmodelnonlinearEdge, v : Double) -> StatsmodelnonlinearEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearEdge::fill(self : StatsmodelnonlinearEdge, v : Double) -> StatsmodelnonlinearEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_edge_min(s : StatsmodelnonlinearEdge) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearEdge::min(self : StatsmodelnonlinearEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_edge_max(s : StatsmodelnonlinearEdge) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearEdge::max(self : StatsmodelnonlinearEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_edge_to_string(s : StatsmodelnonlinearEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearEdge::to_string(self : StatsmodelnonlinearEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearPath {
@@ -606,45 +606,45 @@ pub fn stats_model_nonlinear_path_make(size : Int) -> StatsmodelnonlinearPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_path_len(s : StatsmodelnonlinearPath) -> Int { s.size }
+pub fn StatsmodelnonlinearPath::len(self : StatsmodelnonlinearPath) -> Int { self.size }
 
-pub fn stats_model_nonlinear_path_get(s : StatsmodelnonlinearPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearPath::get(self : StatsmodelnonlinearPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_path_set(s : StatsmodelnonlinearPath, i : Int, v : Double) -> StatsmodelnonlinearPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearPath::set(self : StatsmodelnonlinearPath, i : Int, v : Double) -> StatsmodelnonlinearPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_path_sum(s : StatsmodelnonlinearPath) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearPath::sum(self : StatsmodelnonlinearPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_path_mean(s : StatsmodelnonlinearPath) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearPath::mean(self : StatsmodelnonlinearPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_path_scale(s : StatsmodelnonlinearPath, f : Double) -> StatsmodelnonlinearPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearPath::scale(self : StatsmodelnonlinearPath, f : Double) -> StatsmodelnonlinearPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_path_add(a : StatsmodelnonlinearPath, b : StatsmodelnonlinearPath) -> StatsmodelnonlinearPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearPath::add(self : StatsmodelnonlinearPath, other : StatsmodelnonlinearPath) -> StatsmodelnonlinearPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_path_copy(s : StatsmodelnonlinearPath) -> StatsmodelnonlinearPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearPath::copy(self : StatsmodelnonlinearPath) -> StatsmodelnonlinearPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_path_fill(s : StatsmodelnonlinearPath, v : Double) -> StatsmodelnonlinearPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearPath::fill(self : StatsmodelnonlinearPath, v : Double) -> StatsmodelnonlinearPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_path_min(s : StatsmodelnonlinearPath) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearPath::min(self : StatsmodelnonlinearPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_path_max(s : StatsmodelnonlinearPath) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearPath::max(self : StatsmodelnonlinearPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_path_to_string(s : StatsmodelnonlinearPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearPath::to_string(self : StatsmodelnonlinearPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearCluster {
@@ -657,45 +657,45 @@ pub fn stats_model_nonlinear_cluster_make(size : Int) -> StatsmodelnonlinearClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_cluster_len(s : StatsmodelnonlinearCluster) -> Int { s.size }
+pub fn StatsmodelnonlinearCluster::len(self : StatsmodelnonlinearCluster) -> Int { self.size }
 
-pub fn stats_model_nonlinear_cluster_get(s : StatsmodelnonlinearCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearCluster::get(self : StatsmodelnonlinearCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_cluster_set(s : StatsmodelnonlinearCluster, i : Int, v : Double) -> StatsmodelnonlinearCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCluster::set(self : StatsmodelnonlinearCluster, i : Int, v : Double) -> StatsmodelnonlinearCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cluster_sum(s : StatsmodelnonlinearCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearCluster::sum(self : StatsmodelnonlinearCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_cluster_mean(s : StatsmodelnonlinearCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearCluster::mean(self : StatsmodelnonlinearCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_cluster_scale(s : StatsmodelnonlinearCluster, f : Double) -> StatsmodelnonlinearCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCluster::scale(self : StatsmodelnonlinearCluster, f : Double) -> StatsmodelnonlinearCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cluster_add(a : StatsmodelnonlinearCluster, b : StatsmodelnonlinearCluster) -> StatsmodelnonlinearCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearCluster::add(self : StatsmodelnonlinearCluster, other : StatsmodelnonlinearCluster) -> StatsmodelnonlinearCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cluster_copy(s : StatsmodelnonlinearCluster) -> StatsmodelnonlinearCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCluster::copy(self : StatsmodelnonlinearCluster) -> StatsmodelnonlinearCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cluster_fill(s : StatsmodelnonlinearCluster, v : Double) -> StatsmodelnonlinearCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCluster::fill(self : StatsmodelnonlinearCluster, v : Double) -> StatsmodelnonlinearCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cluster_min(s : StatsmodelnonlinearCluster) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearCluster::min(self : StatsmodelnonlinearCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_cluster_max(s : StatsmodelnonlinearCluster) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearCluster::max(self : StatsmodelnonlinearCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_cluster_to_string(s : StatsmodelnonlinearCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearCluster::to_string(self : StatsmodelnonlinearCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearModel {
@@ -708,45 +708,45 @@ pub fn stats_model_nonlinear_model_make(size : Int) -> StatsmodelnonlinearModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_model_len(s : StatsmodelnonlinearModel) -> Int { s.size }
+pub fn StatsmodelnonlinearModel::len(self : StatsmodelnonlinearModel) -> Int { self.size }
 
-pub fn stats_model_nonlinear_model_get(s : StatsmodelnonlinearModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearModel::get(self : StatsmodelnonlinearModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_model_set(s : StatsmodelnonlinearModel, i : Int, v : Double) -> StatsmodelnonlinearModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearModel::set(self : StatsmodelnonlinearModel, i : Int, v : Double) -> StatsmodelnonlinearModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_model_sum(s : StatsmodelnonlinearModel) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearModel::sum(self : StatsmodelnonlinearModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_model_mean(s : StatsmodelnonlinearModel) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearModel::mean(self : StatsmodelnonlinearModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_model_scale(s : StatsmodelnonlinearModel, f : Double) -> StatsmodelnonlinearModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearModel::scale(self : StatsmodelnonlinearModel, f : Double) -> StatsmodelnonlinearModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_model_add(a : StatsmodelnonlinearModel, b : StatsmodelnonlinearModel) -> StatsmodelnonlinearModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearModel::add(self : StatsmodelnonlinearModel, other : StatsmodelnonlinearModel) -> StatsmodelnonlinearModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_model_copy(s : StatsmodelnonlinearModel) -> StatsmodelnonlinearModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearModel::copy(self : StatsmodelnonlinearModel) -> StatsmodelnonlinearModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_model_fill(s : StatsmodelnonlinearModel, v : Double) -> StatsmodelnonlinearModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearModel::fill(self : StatsmodelnonlinearModel, v : Double) -> StatsmodelnonlinearModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_model_min(s : StatsmodelnonlinearModel) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearModel::min(self : StatsmodelnonlinearModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_model_max(s : StatsmodelnonlinearModel) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearModel::max(self : StatsmodelnonlinearModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_model_to_string(s : StatsmodelnonlinearModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearModel::to_string(self : StatsmodelnonlinearModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearLayer {
@@ -759,45 +759,45 @@ pub fn stats_model_nonlinear_layer_make(size : Int) -> StatsmodelnonlinearLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_layer_len(s : StatsmodelnonlinearLayer) -> Int { s.size }
+pub fn StatsmodelnonlinearLayer::len(self : StatsmodelnonlinearLayer) -> Int { self.size }
 
-pub fn stats_model_nonlinear_layer_get(s : StatsmodelnonlinearLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearLayer::get(self : StatsmodelnonlinearLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_layer_set(s : StatsmodelnonlinearLayer, i : Int, v : Double) -> StatsmodelnonlinearLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearLayer::set(self : StatsmodelnonlinearLayer, i : Int, v : Double) -> StatsmodelnonlinearLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_layer_sum(s : StatsmodelnonlinearLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearLayer::sum(self : StatsmodelnonlinearLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_layer_mean(s : StatsmodelnonlinearLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearLayer::mean(self : StatsmodelnonlinearLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_layer_scale(s : StatsmodelnonlinearLayer, f : Double) -> StatsmodelnonlinearLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearLayer::scale(self : StatsmodelnonlinearLayer, f : Double) -> StatsmodelnonlinearLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_layer_add(a : StatsmodelnonlinearLayer, b : StatsmodelnonlinearLayer) -> StatsmodelnonlinearLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearLayer::add(self : StatsmodelnonlinearLayer, other : StatsmodelnonlinearLayer) -> StatsmodelnonlinearLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_layer_copy(s : StatsmodelnonlinearLayer) -> StatsmodelnonlinearLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearLayer::copy(self : StatsmodelnonlinearLayer) -> StatsmodelnonlinearLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_layer_fill(s : StatsmodelnonlinearLayer, v : Double) -> StatsmodelnonlinearLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearLayer::fill(self : StatsmodelnonlinearLayer, v : Double) -> StatsmodelnonlinearLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_layer_min(s : StatsmodelnonlinearLayer) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearLayer::min(self : StatsmodelnonlinearLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_layer_max(s : StatsmodelnonlinearLayer) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearLayer::max(self : StatsmodelnonlinearLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_layer_to_string(s : StatsmodelnonlinearLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearLayer::to_string(self : StatsmodelnonlinearLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearBuffer {
@@ -810,45 +810,45 @@ pub fn stats_model_nonlinear_buffer_make(size : Int) -> StatsmodelnonlinearBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_buffer_len(s : StatsmodelnonlinearBuffer) -> Int { s.size }
+pub fn StatsmodelnonlinearBuffer::len(self : StatsmodelnonlinearBuffer) -> Int { self.size }
 
-pub fn stats_model_nonlinear_buffer_get(s : StatsmodelnonlinearBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearBuffer::get(self : StatsmodelnonlinearBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_buffer_set(s : StatsmodelnonlinearBuffer, i : Int, v : Double) -> StatsmodelnonlinearBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearBuffer::set(self : StatsmodelnonlinearBuffer, i : Int, v : Double) -> StatsmodelnonlinearBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_buffer_sum(s : StatsmodelnonlinearBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearBuffer::sum(self : StatsmodelnonlinearBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_buffer_mean(s : StatsmodelnonlinearBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearBuffer::mean(self : StatsmodelnonlinearBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_buffer_scale(s : StatsmodelnonlinearBuffer, f : Double) -> StatsmodelnonlinearBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearBuffer::scale(self : StatsmodelnonlinearBuffer, f : Double) -> StatsmodelnonlinearBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_buffer_add(a : StatsmodelnonlinearBuffer, b : StatsmodelnonlinearBuffer) -> StatsmodelnonlinearBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearBuffer::add(self : StatsmodelnonlinearBuffer, other : StatsmodelnonlinearBuffer) -> StatsmodelnonlinearBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_buffer_copy(s : StatsmodelnonlinearBuffer) -> StatsmodelnonlinearBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearBuffer::copy(self : StatsmodelnonlinearBuffer) -> StatsmodelnonlinearBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_buffer_fill(s : StatsmodelnonlinearBuffer, v : Double) -> StatsmodelnonlinearBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearBuffer::fill(self : StatsmodelnonlinearBuffer, v : Double) -> StatsmodelnonlinearBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_buffer_min(s : StatsmodelnonlinearBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearBuffer::min(self : StatsmodelnonlinearBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_buffer_max(s : StatsmodelnonlinearBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearBuffer::max(self : StatsmodelnonlinearBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_buffer_to_string(s : StatsmodelnonlinearBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearBuffer::to_string(self : StatsmodelnonlinearBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearCursor {
@@ -861,45 +861,45 @@ pub fn stats_model_nonlinear_cursor_make(size : Int) -> StatsmodelnonlinearCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_cursor_len(s : StatsmodelnonlinearCursor) -> Int { s.size }
+pub fn StatsmodelnonlinearCursor::len(self : StatsmodelnonlinearCursor) -> Int { self.size }
 
-pub fn stats_model_nonlinear_cursor_get(s : StatsmodelnonlinearCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearCursor::get(self : StatsmodelnonlinearCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_cursor_set(s : StatsmodelnonlinearCursor, i : Int, v : Double) -> StatsmodelnonlinearCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCursor::set(self : StatsmodelnonlinearCursor, i : Int, v : Double) -> StatsmodelnonlinearCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cursor_sum(s : StatsmodelnonlinearCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearCursor::sum(self : StatsmodelnonlinearCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_cursor_mean(s : StatsmodelnonlinearCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearCursor::mean(self : StatsmodelnonlinearCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_cursor_scale(s : StatsmodelnonlinearCursor, f : Double) -> StatsmodelnonlinearCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCursor::scale(self : StatsmodelnonlinearCursor, f : Double) -> StatsmodelnonlinearCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cursor_add(a : StatsmodelnonlinearCursor, b : StatsmodelnonlinearCursor) -> StatsmodelnonlinearCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearCursor::add(self : StatsmodelnonlinearCursor, other : StatsmodelnonlinearCursor) -> StatsmodelnonlinearCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cursor_copy(s : StatsmodelnonlinearCursor) -> StatsmodelnonlinearCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCursor::copy(self : StatsmodelnonlinearCursor) -> StatsmodelnonlinearCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cursor_fill(s : StatsmodelnonlinearCursor, v : Double) -> StatsmodelnonlinearCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearCursor::fill(self : StatsmodelnonlinearCursor, v : Double) -> StatsmodelnonlinearCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_cursor_min(s : StatsmodelnonlinearCursor) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearCursor::min(self : StatsmodelnonlinearCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_cursor_max(s : StatsmodelnonlinearCursor) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearCursor::max(self : StatsmodelnonlinearCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_cursor_to_string(s : StatsmodelnonlinearCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearCursor::to_string(self : StatsmodelnonlinearCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearView {
@@ -912,45 +912,45 @@ pub fn stats_model_nonlinear_view_make(size : Int) -> StatsmodelnonlinearView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_view_len(s : StatsmodelnonlinearView) -> Int { s.size }
+pub fn StatsmodelnonlinearView::len(self : StatsmodelnonlinearView) -> Int { self.size }
 
-pub fn stats_model_nonlinear_view_get(s : StatsmodelnonlinearView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearView::get(self : StatsmodelnonlinearView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_view_set(s : StatsmodelnonlinearView, i : Int, v : Double) -> StatsmodelnonlinearView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearView::set(self : StatsmodelnonlinearView, i : Int, v : Double) -> StatsmodelnonlinearView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_view_sum(s : StatsmodelnonlinearView) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearView::sum(self : StatsmodelnonlinearView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_view_mean(s : StatsmodelnonlinearView) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearView::mean(self : StatsmodelnonlinearView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_view_scale(s : StatsmodelnonlinearView, f : Double) -> StatsmodelnonlinearView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearView::scale(self : StatsmodelnonlinearView, f : Double) -> StatsmodelnonlinearView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_view_add(a : StatsmodelnonlinearView, b : StatsmodelnonlinearView) -> StatsmodelnonlinearView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearView::add(self : StatsmodelnonlinearView, other : StatsmodelnonlinearView) -> StatsmodelnonlinearView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_view_copy(s : StatsmodelnonlinearView) -> StatsmodelnonlinearView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearView::copy(self : StatsmodelnonlinearView) -> StatsmodelnonlinearView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_view_fill(s : StatsmodelnonlinearView, v : Double) -> StatsmodelnonlinearView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearView::fill(self : StatsmodelnonlinearView, v : Double) -> StatsmodelnonlinearView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_view_min(s : StatsmodelnonlinearView) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearView::min(self : StatsmodelnonlinearView) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_view_max(s : StatsmodelnonlinearView) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearView::max(self : StatsmodelnonlinearView) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_view_to_string(s : StatsmodelnonlinearView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearView::to_string(self : StatsmodelnonlinearView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearRange {
@@ -963,45 +963,45 @@ pub fn stats_model_nonlinear_range_make(size : Int) -> StatsmodelnonlinearRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_range_len(s : StatsmodelnonlinearRange) -> Int { s.size }
+pub fn StatsmodelnonlinearRange::len(self : StatsmodelnonlinearRange) -> Int { self.size }
 
-pub fn stats_model_nonlinear_range_get(s : StatsmodelnonlinearRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearRange::get(self : StatsmodelnonlinearRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_range_set(s : StatsmodelnonlinearRange, i : Int, v : Double) -> StatsmodelnonlinearRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearRange::set(self : StatsmodelnonlinearRange, i : Int, v : Double) -> StatsmodelnonlinearRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_range_sum(s : StatsmodelnonlinearRange) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearRange::sum(self : StatsmodelnonlinearRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_range_mean(s : StatsmodelnonlinearRange) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearRange::mean(self : StatsmodelnonlinearRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_range_scale(s : StatsmodelnonlinearRange, f : Double) -> StatsmodelnonlinearRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearRange::scale(self : StatsmodelnonlinearRange, f : Double) -> StatsmodelnonlinearRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_range_add(a : StatsmodelnonlinearRange, b : StatsmodelnonlinearRange) -> StatsmodelnonlinearRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearRange::add(self : StatsmodelnonlinearRange, other : StatsmodelnonlinearRange) -> StatsmodelnonlinearRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_range_copy(s : StatsmodelnonlinearRange) -> StatsmodelnonlinearRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearRange::copy(self : StatsmodelnonlinearRange) -> StatsmodelnonlinearRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_range_fill(s : StatsmodelnonlinearRange, v : Double) -> StatsmodelnonlinearRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearRange::fill(self : StatsmodelnonlinearRange, v : Double) -> StatsmodelnonlinearRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_range_min(s : StatsmodelnonlinearRange) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearRange::min(self : StatsmodelnonlinearRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_range_max(s : StatsmodelnonlinearRange) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearRange::max(self : StatsmodelnonlinearRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_range_to_string(s : StatsmodelnonlinearRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearRange::to_string(self : StatsmodelnonlinearRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsmodelnonlinearSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_model_nonlinear_slice_make(size : Int) -> StatsmodelnonlinearSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_model_nonlinear_slice_len(s : StatsmodelnonlinearSlice) -> Int { s.size }
+pub fn StatsmodelnonlinearSlice::len(self : StatsmodelnonlinearSlice) -> Int { self.size }
 
-pub fn stats_model_nonlinear_slice_get(s : StatsmodelnonlinearSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsmodelnonlinearSlice::get(self : StatsmodelnonlinearSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_model_nonlinear_slice_set(s : StatsmodelnonlinearSlice, i : Int, v : Double) -> StatsmodelnonlinearSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearSlice::set(self : StatsmodelnonlinearSlice, i : Int, v : Double) -> StatsmodelnonlinearSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_slice_sum(s : StatsmodelnonlinearSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsmodelnonlinearSlice::sum(self : StatsmodelnonlinearSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_model_nonlinear_slice_mean(s : StatsmodelnonlinearSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsmodelnonlinearSlice::mean(self : StatsmodelnonlinearSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_model_nonlinear_slice_scale(s : StatsmodelnonlinearSlice, f : Double) -> StatsmodelnonlinearSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearSlice::scale(self : StatsmodelnonlinearSlice, f : Double) -> StatsmodelnonlinearSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_slice_add(a : StatsmodelnonlinearSlice, b : StatsmodelnonlinearSlice) -> StatsmodelnonlinearSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsmodelnonlinearSlice::add(self : StatsmodelnonlinearSlice, other : StatsmodelnonlinearSlice) -> StatsmodelnonlinearSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_slice_copy(s : StatsmodelnonlinearSlice) -> StatsmodelnonlinearSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearSlice::copy(self : StatsmodelnonlinearSlice) -> StatsmodelnonlinearSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_slice_fill(s : StatsmodelnonlinearSlice, v : Double) -> StatsmodelnonlinearSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsmodelnonlinearSlice::fill(self : StatsmodelnonlinearSlice, v : Double) -> StatsmodelnonlinearSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_model_nonlinear_slice_min(s : StatsmodelnonlinearSlice) -> Double { @_common.min(s.data) }
+pub fn StatsmodelnonlinearSlice::min(self : StatsmodelnonlinearSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_model_nonlinear_slice_max(s : StatsmodelnonlinearSlice) -> Double { @_common.max(s.data) }
+pub fn StatsmodelnonlinearSlice::max(self : StatsmodelnonlinearSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_model_nonlinear_slice_to_string(s : StatsmodelnonlinearSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsmodelnonlinearSlice::to_string(self : StatsmodelnonlinearSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

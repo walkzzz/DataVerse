@@ -351,45 +351,45 @@ pub fn crypto_sign_dsa_frame_make(size : Int) -> CryptosigndsaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_frame_len(s : CryptosigndsaFrame) -> Int { s.size }
+pub fn CryptosigndsaFrame::len(self : CryptosigndsaFrame) -> Int { self.size }
 
-pub fn crypto_sign_dsa_frame_get(s : CryptosigndsaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaFrame::get(self : CryptosigndsaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_frame_set(s : CryptosigndsaFrame, i : Int, v : Double) -> CryptosigndsaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaFrame::set(self : CryptosigndsaFrame, i : Int, v : Double) -> CryptosigndsaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_frame_sum(s : CryptosigndsaFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaFrame::sum(self : CryptosigndsaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_frame_mean(s : CryptosigndsaFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaFrame::mean(self : CryptosigndsaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_frame_scale(s : CryptosigndsaFrame, f : Double) -> CryptosigndsaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaFrame::scale(self : CryptosigndsaFrame, f : Double) -> CryptosigndsaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_frame_add(a : CryptosigndsaFrame, b : CryptosigndsaFrame) -> CryptosigndsaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaFrame::add(self : CryptosigndsaFrame, other : CryptosigndsaFrame) -> CryptosigndsaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_frame_copy(s : CryptosigndsaFrame) -> CryptosigndsaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaFrame::copy(self : CryptosigndsaFrame) -> CryptosigndsaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_frame_fill(s : CryptosigndsaFrame, v : Double) -> CryptosigndsaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaFrame::fill(self : CryptosigndsaFrame, v : Double) -> CryptosigndsaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_frame_min(s : CryptosigndsaFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaFrame::min(self : CryptosigndsaFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_frame_max(s : CryptosigndsaFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaFrame::max(self : CryptosigndsaFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_frame_to_string(s : CryptosigndsaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaFrame::to_string(self : CryptosigndsaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaTable {
@@ -402,45 +402,45 @@ pub fn crypto_sign_dsa_table_make(size : Int) -> CryptosigndsaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_table_len(s : CryptosigndsaTable) -> Int { s.size }
+pub fn CryptosigndsaTable::len(self : CryptosigndsaTable) -> Int { self.size }
 
-pub fn crypto_sign_dsa_table_get(s : CryptosigndsaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaTable::get(self : CryptosigndsaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_table_set(s : CryptosigndsaTable, i : Int, v : Double) -> CryptosigndsaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaTable::set(self : CryptosigndsaTable, i : Int, v : Double) -> CryptosigndsaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_table_sum(s : CryptosigndsaTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaTable::sum(self : CryptosigndsaTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_table_mean(s : CryptosigndsaTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaTable::mean(self : CryptosigndsaTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_table_scale(s : CryptosigndsaTable, f : Double) -> CryptosigndsaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaTable::scale(self : CryptosigndsaTable, f : Double) -> CryptosigndsaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_table_add(a : CryptosigndsaTable, b : CryptosigndsaTable) -> CryptosigndsaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaTable::add(self : CryptosigndsaTable, other : CryptosigndsaTable) -> CryptosigndsaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_table_copy(s : CryptosigndsaTable) -> CryptosigndsaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaTable::copy(self : CryptosigndsaTable) -> CryptosigndsaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_table_fill(s : CryptosigndsaTable, v : Double) -> CryptosigndsaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaTable::fill(self : CryptosigndsaTable, v : Double) -> CryptosigndsaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_table_min(s : CryptosigndsaTable) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaTable::min(self : CryptosigndsaTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_table_max(s : CryptosigndsaTable) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaTable::max(self : CryptosigndsaTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_table_to_string(s : CryptosigndsaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaTable::to_string(self : CryptosigndsaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sign_dsa_graphn_make(size : Int) -> CryptosigndsaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_graphn_len(s : CryptosigndsaGraphN) -> Int { s.size }
+pub fn CryptosigndsaGraphN::len(self : CryptosigndsaGraphN) -> Int { self.size }
 
-pub fn crypto_sign_dsa_graphn_get(s : CryptosigndsaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaGraphN::get(self : CryptosigndsaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_graphn_set(s : CryptosigndsaGraphN, i : Int, v : Double) -> CryptosigndsaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaGraphN::set(self : CryptosigndsaGraphN, i : Int, v : Double) -> CryptosigndsaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_graphn_sum(s : CryptosigndsaGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaGraphN::sum(self : CryptosigndsaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_graphn_mean(s : CryptosigndsaGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaGraphN::mean(self : CryptosigndsaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_graphn_scale(s : CryptosigndsaGraphN, f : Double) -> CryptosigndsaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaGraphN::scale(self : CryptosigndsaGraphN, f : Double) -> CryptosigndsaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_graphn_add(a : CryptosigndsaGraphN, b : CryptosigndsaGraphN) -> CryptosigndsaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaGraphN::add(self : CryptosigndsaGraphN, other : CryptosigndsaGraphN) -> CryptosigndsaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_graphn_copy(s : CryptosigndsaGraphN) -> CryptosigndsaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaGraphN::copy(self : CryptosigndsaGraphN) -> CryptosigndsaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_graphn_fill(s : CryptosigndsaGraphN, v : Double) -> CryptosigndsaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaGraphN::fill(self : CryptosigndsaGraphN, v : Double) -> CryptosigndsaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_graphn_min(s : CryptosigndsaGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaGraphN::min(self : CryptosigndsaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_graphn_max(s : CryptosigndsaGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaGraphN::max(self : CryptosigndsaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_graphn_to_string(s : CryptosigndsaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaGraphN::to_string(self : CryptosigndsaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaNode {
@@ -504,45 +504,45 @@ pub fn crypto_sign_dsa_node_make(size : Int) -> CryptosigndsaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_node_len(s : CryptosigndsaNode) -> Int { s.size }
+pub fn CryptosigndsaNode::len(self : CryptosigndsaNode) -> Int { self.size }
 
-pub fn crypto_sign_dsa_node_get(s : CryptosigndsaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaNode::get(self : CryptosigndsaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_node_set(s : CryptosigndsaNode, i : Int, v : Double) -> CryptosigndsaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaNode::set(self : CryptosigndsaNode, i : Int, v : Double) -> CryptosigndsaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_node_sum(s : CryptosigndsaNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaNode::sum(self : CryptosigndsaNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_node_mean(s : CryptosigndsaNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaNode::mean(self : CryptosigndsaNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_node_scale(s : CryptosigndsaNode, f : Double) -> CryptosigndsaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaNode::scale(self : CryptosigndsaNode, f : Double) -> CryptosigndsaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_node_add(a : CryptosigndsaNode, b : CryptosigndsaNode) -> CryptosigndsaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaNode::add(self : CryptosigndsaNode, other : CryptosigndsaNode) -> CryptosigndsaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_node_copy(s : CryptosigndsaNode) -> CryptosigndsaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaNode::copy(self : CryptosigndsaNode) -> CryptosigndsaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_node_fill(s : CryptosigndsaNode, v : Double) -> CryptosigndsaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaNode::fill(self : CryptosigndsaNode, v : Double) -> CryptosigndsaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_node_min(s : CryptosigndsaNode) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaNode::min(self : CryptosigndsaNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_node_max(s : CryptosigndsaNode) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaNode::max(self : CryptosigndsaNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_node_to_string(s : CryptosigndsaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaNode::to_string(self : CryptosigndsaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sign_dsa_edge_make(size : Int) -> CryptosigndsaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_edge_len(s : CryptosigndsaEdge) -> Int { s.size }
+pub fn CryptosigndsaEdge::len(self : CryptosigndsaEdge) -> Int { self.size }
 
-pub fn crypto_sign_dsa_edge_get(s : CryptosigndsaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaEdge::get(self : CryptosigndsaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_edge_set(s : CryptosigndsaEdge, i : Int, v : Double) -> CryptosigndsaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaEdge::set(self : CryptosigndsaEdge, i : Int, v : Double) -> CryptosigndsaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_edge_sum(s : CryptosigndsaEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaEdge::sum(self : CryptosigndsaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_edge_mean(s : CryptosigndsaEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaEdge::mean(self : CryptosigndsaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_edge_scale(s : CryptosigndsaEdge, f : Double) -> CryptosigndsaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaEdge::scale(self : CryptosigndsaEdge, f : Double) -> CryptosigndsaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_edge_add(a : CryptosigndsaEdge, b : CryptosigndsaEdge) -> CryptosigndsaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaEdge::add(self : CryptosigndsaEdge, other : CryptosigndsaEdge) -> CryptosigndsaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_edge_copy(s : CryptosigndsaEdge) -> CryptosigndsaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaEdge::copy(self : CryptosigndsaEdge) -> CryptosigndsaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_edge_fill(s : CryptosigndsaEdge, v : Double) -> CryptosigndsaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaEdge::fill(self : CryptosigndsaEdge, v : Double) -> CryptosigndsaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_edge_min(s : CryptosigndsaEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaEdge::min(self : CryptosigndsaEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_edge_max(s : CryptosigndsaEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaEdge::max(self : CryptosigndsaEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_edge_to_string(s : CryptosigndsaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaEdge::to_string(self : CryptosigndsaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaPath {
@@ -606,45 +606,45 @@ pub fn crypto_sign_dsa_path_make(size : Int) -> CryptosigndsaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_path_len(s : CryptosigndsaPath) -> Int { s.size }
+pub fn CryptosigndsaPath::len(self : CryptosigndsaPath) -> Int { self.size }
 
-pub fn crypto_sign_dsa_path_get(s : CryptosigndsaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaPath::get(self : CryptosigndsaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_path_set(s : CryptosigndsaPath, i : Int, v : Double) -> CryptosigndsaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaPath::set(self : CryptosigndsaPath, i : Int, v : Double) -> CryptosigndsaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_path_sum(s : CryptosigndsaPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaPath::sum(self : CryptosigndsaPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_path_mean(s : CryptosigndsaPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaPath::mean(self : CryptosigndsaPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_path_scale(s : CryptosigndsaPath, f : Double) -> CryptosigndsaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaPath::scale(self : CryptosigndsaPath, f : Double) -> CryptosigndsaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_path_add(a : CryptosigndsaPath, b : CryptosigndsaPath) -> CryptosigndsaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaPath::add(self : CryptosigndsaPath, other : CryptosigndsaPath) -> CryptosigndsaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_path_copy(s : CryptosigndsaPath) -> CryptosigndsaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaPath::copy(self : CryptosigndsaPath) -> CryptosigndsaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_path_fill(s : CryptosigndsaPath, v : Double) -> CryptosigndsaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaPath::fill(self : CryptosigndsaPath, v : Double) -> CryptosigndsaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_path_min(s : CryptosigndsaPath) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaPath::min(self : CryptosigndsaPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_path_max(s : CryptosigndsaPath) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaPath::max(self : CryptosigndsaPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_path_to_string(s : CryptosigndsaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaPath::to_string(self : CryptosigndsaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sign_dsa_cluster_make(size : Int) -> CryptosigndsaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_cluster_len(s : CryptosigndsaCluster) -> Int { s.size }
+pub fn CryptosigndsaCluster::len(self : CryptosigndsaCluster) -> Int { self.size }
 
-pub fn crypto_sign_dsa_cluster_get(s : CryptosigndsaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaCluster::get(self : CryptosigndsaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_cluster_set(s : CryptosigndsaCluster, i : Int, v : Double) -> CryptosigndsaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaCluster::set(self : CryptosigndsaCluster, i : Int, v : Double) -> CryptosigndsaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cluster_sum(s : CryptosigndsaCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaCluster::sum(self : CryptosigndsaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_cluster_mean(s : CryptosigndsaCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaCluster::mean(self : CryptosigndsaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_cluster_scale(s : CryptosigndsaCluster, f : Double) -> CryptosigndsaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaCluster::scale(self : CryptosigndsaCluster, f : Double) -> CryptosigndsaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cluster_add(a : CryptosigndsaCluster, b : CryptosigndsaCluster) -> CryptosigndsaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaCluster::add(self : CryptosigndsaCluster, other : CryptosigndsaCluster) -> CryptosigndsaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cluster_copy(s : CryptosigndsaCluster) -> CryptosigndsaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaCluster::copy(self : CryptosigndsaCluster) -> CryptosigndsaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cluster_fill(s : CryptosigndsaCluster, v : Double) -> CryptosigndsaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaCluster::fill(self : CryptosigndsaCluster, v : Double) -> CryptosigndsaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cluster_min(s : CryptosigndsaCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaCluster::min(self : CryptosigndsaCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_cluster_max(s : CryptosigndsaCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaCluster::max(self : CryptosigndsaCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_cluster_to_string(s : CryptosigndsaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaCluster::to_string(self : CryptosigndsaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaModel {
@@ -708,45 +708,45 @@ pub fn crypto_sign_dsa_model_make(size : Int) -> CryptosigndsaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_model_len(s : CryptosigndsaModel) -> Int { s.size }
+pub fn CryptosigndsaModel::len(self : CryptosigndsaModel) -> Int { self.size }
 
-pub fn crypto_sign_dsa_model_get(s : CryptosigndsaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaModel::get(self : CryptosigndsaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_model_set(s : CryptosigndsaModel, i : Int, v : Double) -> CryptosigndsaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaModel::set(self : CryptosigndsaModel, i : Int, v : Double) -> CryptosigndsaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_model_sum(s : CryptosigndsaModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaModel::sum(self : CryptosigndsaModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_model_mean(s : CryptosigndsaModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaModel::mean(self : CryptosigndsaModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_model_scale(s : CryptosigndsaModel, f : Double) -> CryptosigndsaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaModel::scale(self : CryptosigndsaModel, f : Double) -> CryptosigndsaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_model_add(a : CryptosigndsaModel, b : CryptosigndsaModel) -> CryptosigndsaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaModel::add(self : CryptosigndsaModel, other : CryptosigndsaModel) -> CryptosigndsaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_model_copy(s : CryptosigndsaModel) -> CryptosigndsaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaModel::copy(self : CryptosigndsaModel) -> CryptosigndsaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_model_fill(s : CryptosigndsaModel, v : Double) -> CryptosigndsaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaModel::fill(self : CryptosigndsaModel, v : Double) -> CryptosigndsaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_model_min(s : CryptosigndsaModel) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaModel::min(self : CryptosigndsaModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_model_max(s : CryptosigndsaModel) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaModel::max(self : CryptosigndsaModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_model_to_string(s : CryptosigndsaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaModel::to_string(self : CryptosigndsaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sign_dsa_layer_make(size : Int) -> CryptosigndsaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_layer_len(s : CryptosigndsaLayer) -> Int { s.size }
+pub fn CryptosigndsaLayer::len(self : CryptosigndsaLayer) -> Int { self.size }
 
-pub fn crypto_sign_dsa_layer_get(s : CryptosigndsaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaLayer::get(self : CryptosigndsaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_layer_set(s : CryptosigndsaLayer, i : Int, v : Double) -> CryptosigndsaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaLayer::set(self : CryptosigndsaLayer, i : Int, v : Double) -> CryptosigndsaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_layer_sum(s : CryptosigndsaLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaLayer::sum(self : CryptosigndsaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_layer_mean(s : CryptosigndsaLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaLayer::mean(self : CryptosigndsaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_layer_scale(s : CryptosigndsaLayer, f : Double) -> CryptosigndsaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaLayer::scale(self : CryptosigndsaLayer, f : Double) -> CryptosigndsaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_layer_add(a : CryptosigndsaLayer, b : CryptosigndsaLayer) -> CryptosigndsaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaLayer::add(self : CryptosigndsaLayer, other : CryptosigndsaLayer) -> CryptosigndsaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_layer_copy(s : CryptosigndsaLayer) -> CryptosigndsaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaLayer::copy(self : CryptosigndsaLayer) -> CryptosigndsaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_layer_fill(s : CryptosigndsaLayer, v : Double) -> CryptosigndsaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaLayer::fill(self : CryptosigndsaLayer, v : Double) -> CryptosigndsaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_layer_min(s : CryptosigndsaLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaLayer::min(self : CryptosigndsaLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_layer_max(s : CryptosigndsaLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaLayer::max(self : CryptosigndsaLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_layer_to_string(s : CryptosigndsaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaLayer::to_string(self : CryptosigndsaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sign_dsa_buffer_make(size : Int) -> CryptosigndsaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_buffer_len(s : CryptosigndsaBuffer) -> Int { s.size }
+pub fn CryptosigndsaBuffer::len(self : CryptosigndsaBuffer) -> Int { self.size }
 
-pub fn crypto_sign_dsa_buffer_get(s : CryptosigndsaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaBuffer::get(self : CryptosigndsaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_buffer_set(s : CryptosigndsaBuffer, i : Int, v : Double) -> CryptosigndsaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaBuffer::set(self : CryptosigndsaBuffer, i : Int, v : Double) -> CryptosigndsaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_buffer_sum(s : CryptosigndsaBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaBuffer::sum(self : CryptosigndsaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_buffer_mean(s : CryptosigndsaBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaBuffer::mean(self : CryptosigndsaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_buffer_scale(s : CryptosigndsaBuffer, f : Double) -> CryptosigndsaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaBuffer::scale(self : CryptosigndsaBuffer, f : Double) -> CryptosigndsaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_buffer_add(a : CryptosigndsaBuffer, b : CryptosigndsaBuffer) -> CryptosigndsaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaBuffer::add(self : CryptosigndsaBuffer, other : CryptosigndsaBuffer) -> CryptosigndsaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_buffer_copy(s : CryptosigndsaBuffer) -> CryptosigndsaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaBuffer::copy(self : CryptosigndsaBuffer) -> CryptosigndsaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_buffer_fill(s : CryptosigndsaBuffer, v : Double) -> CryptosigndsaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaBuffer::fill(self : CryptosigndsaBuffer, v : Double) -> CryptosigndsaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_buffer_min(s : CryptosigndsaBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaBuffer::min(self : CryptosigndsaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_buffer_max(s : CryptosigndsaBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaBuffer::max(self : CryptosigndsaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_buffer_to_string(s : CryptosigndsaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaBuffer::to_string(self : CryptosigndsaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sign_dsa_cursor_make(size : Int) -> CryptosigndsaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_cursor_len(s : CryptosigndsaCursor) -> Int { s.size }
+pub fn CryptosigndsaCursor::len(self : CryptosigndsaCursor) -> Int { self.size }
 
-pub fn crypto_sign_dsa_cursor_get(s : CryptosigndsaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaCursor::get(self : CryptosigndsaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_cursor_set(s : CryptosigndsaCursor, i : Int, v : Double) -> CryptosigndsaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaCursor::set(self : CryptosigndsaCursor, i : Int, v : Double) -> CryptosigndsaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cursor_sum(s : CryptosigndsaCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaCursor::sum(self : CryptosigndsaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_cursor_mean(s : CryptosigndsaCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaCursor::mean(self : CryptosigndsaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_cursor_scale(s : CryptosigndsaCursor, f : Double) -> CryptosigndsaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaCursor::scale(self : CryptosigndsaCursor, f : Double) -> CryptosigndsaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cursor_add(a : CryptosigndsaCursor, b : CryptosigndsaCursor) -> CryptosigndsaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaCursor::add(self : CryptosigndsaCursor, other : CryptosigndsaCursor) -> CryptosigndsaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cursor_copy(s : CryptosigndsaCursor) -> CryptosigndsaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaCursor::copy(self : CryptosigndsaCursor) -> CryptosigndsaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cursor_fill(s : CryptosigndsaCursor, v : Double) -> CryptosigndsaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaCursor::fill(self : CryptosigndsaCursor, v : Double) -> CryptosigndsaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_cursor_min(s : CryptosigndsaCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaCursor::min(self : CryptosigndsaCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_cursor_max(s : CryptosigndsaCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaCursor::max(self : CryptosigndsaCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_cursor_to_string(s : CryptosigndsaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaCursor::to_string(self : CryptosigndsaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaView {
@@ -912,45 +912,45 @@ pub fn crypto_sign_dsa_view_make(size : Int) -> CryptosigndsaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_view_len(s : CryptosigndsaView) -> Int { s.size }
+pub fn CryptosigndsaView::len(self : CryptosigndsaView) -> Int { self.size }
 
-pub fn crypto_sign_dsa_view_get(s : CryptosigndsaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaView::get(self : CryptosigndsaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_view_set(s : CryptosigndsaView, i : Int, v : Double) -> CryptosigndsaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaView::set(self : CryptosigndsaView, i : Int, v : Double) -> CryptosigndsaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_view_sum(s : CryptosigndsaView) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaView::sum(self : CryptosigndsaView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_view_mean(s : CryptosigndsaView) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaView::mean(self : CryptosigndsaView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_view_scale(s : CryptosigndsaView, f : Double) -> CryptosigndsaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaView::scale(self : CryptosigndsaView, f : Double) -> CryptosigndsaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_view_add(a : CryptosigndsaView, b : CryptosigndsaView) -> CryptosigndsaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaView::add(self : CryptosigndsaView, other : CryptosigndsaView) -> CryptosigndsaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_view_copy(s : CryptosigndsaView) -> CryptosigndsaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaView::copy(self : CryptosigndsaView) -> CryptosigndsaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_view_fill(s : CryptosigndsaView, v : Double) -> CryptosigndsaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaView::fill(self : CryptosigndsaView, v : Double) -> CryptosigndsaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_view_min(s : CryptosigndsaView) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaView::min(self : CryptosigndsaView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_view_max(s : CryptosigndsaView) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaView::max(self : CryptosigndsaView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_view_to_string(s : CryptosigndsaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaView::to_string(self : CryptosigndsaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaRange {
@@ -963,45 +963,45 @@ pub fn crypto_sign_dsa_range_make(size : Int) -> CryptosigndsaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_range_len(s : CryptosigndsaRange) -> Int { s.size }
+pub fn CryptosigndsaRange::len(self : CryptosigndsaRange) -> Int { self.size }
 
-pub fn crypto_sign_dsa_range_get(s : CryptosigndsaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaRange::get(self : CryptosigndsaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_range_set(s : CryptosigndsaRange, i : Int, v : Double) -> CryptosigndsaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaRange::set(self : CryptosigndsaRange, i : Int, v : Double) -> CryptosigndsaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_range_sum(s : CryptosigndsaRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaRange::sum(self : CryptosigndsaRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_range_mean(s : CryptosigndsaRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaRange::mean(self : CryptosigndsaRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_range_scale(s : CryptosigndsaRange, f : Double) -> CryptosigndsaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaRange::scale(self : CryptosigndsaRange, f : Double) -> CryptosigndsaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_range_add(a : CryptosigndsaRange, b : CryptosigndsaRange) -> CryptosigndsaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaRange::add(self : CryptosigndsaRange, other : CryptosigndsaRange) -> CryptosigndsaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_range_copy(s : CryptosigndsaRange) -> CryptosigndsaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaRange::copy(self : CryptosigndsaRange) -> CryptosigndsaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_range_fill(s : CryptosigndsaRange, v : Double) -> CryptosigndsaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaRange::fill(self : CryptosigndsaRange, v : Double) -> CryptosigndsaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_range_min(s : CryptosigndsaRange) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaRange::min(self : CryptosigndsaRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_range_max(s : CryptosigndsaRange) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaRange::max(self : CryptosigndsaRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_range_to_string(s : CryptosigndsaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaRange::to_string(self : CryptosigndsaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigndsaSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sign_dsa_slice_make(size : Int) -> CryptosigndsaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_dsa_slice_len(s : CryptosigndsaSlice) -> Int { s.size }
+pub fn CryptosigndsaSlice::len(self : CryptosigndsaSlice) -> Int { self.size }
 
-pub fn crypto_sign_dsa_slice_get(s : CryptosigndsaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigndsaSlice::get(self : CryptosigndsaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_dsa_slice_set(s : CryptosigndsaSlice, i : Int, v : Double) -> CryptosigndsaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigndsaSlice::set(self : CryptosigndsaSlice, i : Int, v : Double) -> CryptosigndsaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_slice_sum(s : CryptosigndsaSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosigndsaSlice::sum(self : CryptosigndsaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_dsa_slice_mean(s : CryptosigndsaSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosigndsaSlice::mean(self : CryptosigndsaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_dsa_slice_scale(s : CryptosigndsaSlice, f : Double) -> CryptosigndsaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigndsaSlice::scale(self : CryptosigndsaSlice, f : Double) -> CryptosigndsaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_slice_add(a : CryptosigndsaSlice, b : CryptosigndsaSlice) -> CryptosigndsaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigndsaSlice::add(self : CryptosigndsaSlice, other : CryptosigndsaSlice) -> CryptosigndsaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_slice_copy(s : CryptosigndsaSlice) -> CryptosigndsaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigndsaSlice::copy(self : CryptosigndsaSlice) -> CryptosigndsaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_slice_fill(s : CryptosigndsaSlice, v : Double) -> CryptosigndsaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigndsaSlice::fill(self : CryptosigndsaSlice, v : Double) -> CryptosigndsaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_dsa_slice_min(s : CryptosigndsaSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosigndsaSlice::min(self : CryptosigndsaSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_dsa_slice_max(s : CryptosigndsaSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosigndsaSlice::max(self : CryptosigndsaSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_dsa_slice_to_string(s : CryptosigndsaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigndsaSlice::to_string(self : CryptosigndsaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

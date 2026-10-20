@@ -351,45 +351,45 @@ pub fn crypto_sign_group_frame_make(size : Int) -> CryptosigngroupFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_frame_len(s : CryptosigngroupFrame) -> Int { s.size }
+pub fn CryptosigngroupFrame::len(self : CryptosigngroupFrame) -> Int { self.size }
 
-pub fn crypto_sign_group_frame_get(s : CryptosigngroupFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupFrame::get(self : CryptosigngroupFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_frame_set(s : CryptosigngroupFrame, i : Int, v : Double) -> CryptosigngroupFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupFrame::set(self : CryptosigngroupFrame, i : Int, v : Double) -> CryptosigngroupFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_frame_sum(s : CryptosigngroupFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupFrame::sum(self : CryptosigngroupFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_frame_mean(s : CryptosigngroupFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupFrame::mean(self : CryptosigngroupFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_frame_scale(s : CryptosigngroupFrame, f : Double) -> CryptosigngroupFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupFrame::scale(self : CryptosigngroupFrame, f : Double) -> CryptosigngroupFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_frame_add(a : CryptosigngroupFrame, b : CryptosigngroupFrame) -> CryptosigngroupFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupFrame::add(self : CryptosigngroupFrame, other : CryptosigngroupFrame) -> CryptosigngroupFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_frame_copy(s : CryptosigngroupFrame) -> CryptosigngroupFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupFrame::copy(self : CryptosigngroupFrame) -> CryptosigngroupFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_frame_fill(s : CryptosigngroupFrame, v : Double) -> CryptosigngroupFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupFrame::fill(self : CryptosigngroupFrame, v : Double) -> CryptosigngroupFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_frame_min(s : CryptosigngroupFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupFrame::min(self : CryptosigngroupFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_frame_max(s : CryptosigngroupFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupFrame::max(self : CryptosigngroupFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_frame_to_string(s : CryptosigngroupFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupFrame::to_string(self : CryptosigngroupFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupTable {
@@ -402,45 +402,45 @@ pub fn crypto_sign_group_table_make(size : Int) -> CryptosigngroupTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_table_len(s : CryptosigngroupTable) -> Int { s.size }
+pub fn CryptosigngroupTable::len(self : CryptosigngroupTable) -> Int { self.size }
 
-pub fn crypto_sign_group_table_get(s : CryptosigngroupTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupTable::get(self : CryptosigngroupTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_table_set(s : CryptosigngroupTable, i : Int, v : Double) -> CryptosigngroupTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupTable::set(self : CryptosigngroupTable, i : Int, v : Double) -> CryptosigngroupTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_table_sum(s : CryptosigngroupTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupTable::sum(self : CryptosigngroupTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_table_mean(s : CryptosigngroupTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupTable::mean(self : CryptosigngroupTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_table_scale(s : CryptosigngroupTable, f : Double) -> CryptosigngroupTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupTable::scale(self : CryptosigngroupTable, f : Double) -> CryptosigngroupTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_table_add(a : CryptosigngroupTable, b : CryptosigngroupTable) -> CryptosigngroupTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupTable::add(self : CryptosigngroupTable, other : CryptosigngroupTable) -> CryptosigngroupTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_table_copy(s : CryptosigngroupTable) -> CryptosigngroupTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupTable::copy(self : CryptosigngroupTable) -> CryptosigngroupTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_table_fill(s : CryptosigngroupTable, v : Double) -> CryptosigngroupTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupTable::fill(self : CryptosigngroupTable, v : Double) -> CryptosigngroupTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_table_min(s : CryptosigngroupTable) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupTable::min(self : CryptosigngroupTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_table_max(s : CryptosigngroupTable) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupTable::max(self : CryptosigngroupTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_table_to_string(s : CryptosigngroupTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupTable::to_string(self : CryptosigngroupTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sign_group_graphn_make(size : Int) -> CryptosigngroupGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_graphn_len(s : CryptosigngroupGraphN) -> Int { s.size }
+pub fn CryptosigngroupGraphN::len(self : CryptosigngroupGraphN) -> Int { self.size }
 
-pub fn crypto_sign_group_graphn_get(s : CryptosigngroupGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupGraphN::get(self : CryptosigngroupGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_graphn_set(s : CryptosigngroupGraphN, i : Int, v : Double) -> CryptosigngroupGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupGraphN::set(self : CryptosigngroupGraphN, i : Int, v : Double) -> CryptosigngroupGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_graphn_sum(s : CryptosigngroupGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupGraphN::sum(self : CryptosigngroupGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_graphn_mean(s : CryptosigngroupGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupGraphN::mean(self : CryptosigngroupGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_graphn_scale(s : CryptosigngroupGraphN, f : Double) -> CryptosigngroupGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupGraphN::scale(self : CryptosigngroupGraphN, f : Double) -> CryptosigngroupGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_graphn_add(a : CryptosigngroupGraphN, b : CryptosigngroupGraphN) -> CryptosigngroupGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupGraphN::add(self : CryptosigngroupGraphN, other : CryptosigngroupGraphN) -> CryptosigngroupGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_graphn_copy(s : CryptosigngroupGraphN) -> CryptosigngroupGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupGraphN::copy(self : CryptosigngroupGraphN) -> CryptosigngroupGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_graphn_fill(s : CryptosigngroupGraphN, v : Double) -> CryptosigngroupGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupGraphN::fill(self : CryptosigngroupGraphN, v : Double) -> CryptosigngroupGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_graphn_min(s : CryptosigngroupGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupGraphN::min(self : CryptosigngroupGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_graphn_max(s : CryptosigngroupGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupGraphN::max(self : CryptosigngroupGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_graphn_to_string(s : CryptosigngroupGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupGraphN::to_string(self : CryptosigngroupGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupNode {
@@ -504,45 +504,45 @@ pub fn crypto_sign_group_node_make(size : Int) -> CryptosigngroupNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_node_len(s : CryptosigngroupNode) -> Int { s.size }
+pub fn CryptosigngroupNode::len(self : CryptosigngroupNode) -> Int { self.size }
 
-pub fn crypto_sign_group_node_get(s : CryptosigngroupNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupNode::get(self : CryptosigngroupNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_node_set(s : CryptosigngroupNode, i : Int, v : Double) -> CryptosigngroupNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupNode::set(self : CryptosigngroupNode, i : Int, v : Double) -> CryptosigngroupNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_node_sum(s : CryptosigngroupNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupNode::sum(self : CryptosigngroupNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_node_mean(s : CryptosigngroupNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupNode::mean(self : CryptosigngroupNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_node_scale(s : CryptosigngroupNode, f : Double) -> CryptosigngroupNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupNode::scale(self : CryptosigngroupNode, f : Double) -> CryptosigngroupNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_node_add(a : CryptosigngroupNode, b : CryptosigngroupNode) -> CryptosigngroupNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupNode::add(self : CryptosigngroupNode, other : CryptosigngroupNode) -> CryptosigngroupNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_node_copy(s : CryptosigngroupNode) -> CryptosigngroupNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupNode::copy(self : CryptosigngroupNode) -> CryptosigngroupNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_node_fill(s : CryptosigngroupNode, v : Double) -> CryptosigngroupNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupNode::fill(self : CryptosigngroupNode, v : Double) -> CryptosigngroupNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_node_min(s : CryptosigngroupNode) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupNode::min(self : CryptosigngroupNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_node_max(s : CryptosigngroupNode) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupNode::max(self : CryptosigngroupNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_node_to_string(s : CryptosigngroupNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupNode::to_string(self : CryptosigngroupNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sign_group_edge_make(size : Int) -> CryptosigngroupEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_edge_len(s : CryptosigngroupEdge) -> Int { s.size }
+pub fn CryptosigngroupEdge::len(self : CryptosigngroupEdge) -> Int { self.size }
 
-pub fn crypto_sign_group_edge_get(s : CryptosigngroupEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupEdge::get(self : CryptosigngroupEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_edge_set(s : CryptosigngroupEdge, i : Int, v : Double) -> CryptosigngroupEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupEdge::set(self : CryptosigngroupEdge, i : Int, v : Double) -> CryptosigngroupEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_edge_sum(s : CryptosigngroupEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupEdge::sum(self : CryptosigngroupEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_edge_mean(s : CryptosigngroupEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupEdge::mean(self : CryptosigngroupEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_edge_scale(s : CryptosigngroupEdge, f : Double) -> CryptosigngroupEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupEdge::scale(self : CryptosigngroupEdge, f : Double) -> CryptosigngroupEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_edge_add(a : CryptosigngroupEdge, b : CryptosigngroupEdge) -> CryptosigngroupEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupEdge::add(self : CryptosigngroupEdge, other : CryptosigngroupEdge) -> CryptosigngroupEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_edge_copy(s : CryptosigngroupEdge) -> CryptosigngroupEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupEdge::copy(self : CryptosigngroupEdge) -> CryptosigngroupEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_edge_fill(s : CryptosigngroupEdge, v : Double) -> CryptosigngroupEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupEdge::fill(self : CryptosigngroupEdge, v : Double) -> CryptosigngroupEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_edge_min(s : CryptosigngroupEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupEdge::min(self : CryptosigngroupEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_edge_max(s : CryptosigngroupEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupEdge::max(self : CryptosigngroupEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_edge_to_string(s : CryptosigngroupEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupEdge::to_string(self : CryptosigngroupEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupPath {
@@ -606,45 +606,45 @@ pub fn crypto_sign_group_path_make(size : Int) -> CryptosigngroupPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_path_len(s : CryptosigngroupPath) -> Int { s.size }
+pub fn CryptosigngroupPath::len(self : CryptosigngroupPath) -> Int { self.size }
 
-pub fn crypto_sign_group_path_get(s : CryptosigngroupPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupPath::get(self : CryptosigngroupPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_path_set(s : CryptosigngroupPath, i : Int, v : Double) -> CryptosigngroupPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupPath::set(self : CryptosigngroupPath, i : Int, v : Double) -> CryptosigngroupPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_path_sum(s : CryptosigngroupPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupPath::sum(self : CryptosigngroupPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_path_mean(s : CryptosigngroupPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupPath::mean(self : CryptosigngroupPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_path_scale(s : CryptosigngroupPath, f : Double) -> CryptosigngroupPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupPath::scale(self : CryptosigngroupPath, f : Double) -> CryptosigngroupPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_path_add(a : CryptosigngroupPath, b : CryptosigngroupPath) -> CryptosigngroupPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupPath::add(self : CryptosigngroupPath, other : CryptosigngroupPath) -> CryptosigngroupPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_path_copy(s : CryptosigngroupPath) -> CryptosigngroupPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupPath::copy(self : CryptosigngroupPath) -> CryptosigngroupPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_path_fill(s : CryptosigngroupPath, v : Double) -> CryptosigngroupPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupPath::fill(self : CryptosigngroupPath, v : Double) -> CryptosigngroupPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_path_min(s : CryptosigngroupPath) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupPath::min(self : CryptosigngroupPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_path_max(s : CryptosigngroupPath) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupPath::max(self : CryptosigngroupPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_path_to_string(s : CryptosigngroupPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupPath::to_string(self : CryptosigngroupPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sign_group_cluster_make(size : Int) -> CryptosigngroupCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_cluster_len(s : CryptosigngroupCluster) -> Int { s.size }
+pub fn CryptosigngroupCluster::len(self : CryptosigngroupCluster) -> Int { self.size }
 
-pub fn crypto_sign_group_cluster_get(s : CryptosigngroupCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupCluster::get(self : CryptosigngroupCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_cluster_set(s : CryptosigngroupCluster, i : Int, v : Double) -> CryptosigngroupCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupCluster::set(self : CryptosigngroupCluster, i : Int, v : Double) -> CryptosigngroupCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cluster_sum(s : CryptosigngroupCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupCluster::sum(self : CryptosigngroupCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_cluster_mean(s : CryptosigngroupCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupCluster::mean(self : CryptosigngroupCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_cluster_scale(s : CryptosigngroupCluster, f : Double) -> CryptosigngroupCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupCluster::scale(self : CryptosigngroupCluster, f : Double) -> CryptosigngroupCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cluster_add(a : CryptosigngroupCluster, b : CryptosigngroupCluster) -> CryptosigngroupCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupCluster::add(self : CryptosigngroupCluster, other : CryptosigngroupCluster) -> CryptosigngroupCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cluster_copy(s : CryptosigngroupCluster) -> CryptosigngroupCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupCluster::copy(self : CryptosigngroupCluster) -> CryptosigngroupCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cluster_fill(s : CryptosigngroupCluster, v : Double) -> CryptosigngroupCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupCluster::fill(self : CryptosigngroupCluster, v : Double) -> CryptosigngroupCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cluster_min(s : CryptosigngroupCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupCluster::min(self : CryptosigngroupCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_cluster_max(s : CryptosigngroupCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupCluster::max(self : CryptosigngroupCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_cluster_to_string(s : CryptosigngroupCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupCluster::to_string(self : CryptosigngroupCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupModel {
@@ -708,45 +708,45 @@ pub fn crypto_sign_group_model_make(size : Int) -> CryptosigngroupModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_model_len(s : CryptosigngroupModel) -> Int { s.size }
+pub fn CryptosigngroupModel::len(self : CryptosigngroupModel) -> Int { self.size }
 
-pub fn crypto_sign_group_model_get(s : CryptosigngroupModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupModel::get(self : CryptosigngroupModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_model_set(s : CryptosigngroupModel, i : Int, v : Double) -> CryptosigngroupModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupModel::set(self : CryptosigngroupModel, i : Int, v : Double) -> CryptosigngroupModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_model_sum(s : CryptosigngroupModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupModel::sum(self : CryptosigngroupModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_model_mean(s : CryptosigngroupModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupModel::mean(self : CryptosigngroupModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_model_scale(s : CryptosigngroupModel, f : Double) -> CryptosigngroupModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupModel::scale(self : CryptosigngroupModel, f : Double) -> CryptosigngroupModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_model_add(a : CryptosigngroupModel, b : CryptosigngroupModel) -> CryptosigngroupModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupModel::add(self : CryptosigngroupModel, other : CryptosigngroupModel) -> CryptosigngroupModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_model_copy(s : CryptosigngroupModel) -> CryptosigngroupModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupModel::copy(self : CryptosigngroupModel) -> CryptosigngroupModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_model_fill(s : CryptosigngroupModel, v : Double) -> CryptosigngroupModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupModel::fill(self : CryptosigngroupModel, v : Double) -> CryptosigngroupModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_model_min(s : CryptosigngroupModel) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupModel::min(self : CryptosigngroupModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_model_max(s : CryptosigngroupModel) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupModel::max(self : CryptosigngroupModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_model_to_string(s : CryptosigngroupModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupModel::to_string(self : CryptosigngroupModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sign_group_layer_make(size : Int) -> CryptosigngroupLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_layer_len(s : CryptosigngroupLayer) -> Int { s.size }
+pub fn CryptosigngroupLayer::len(self : CryptosigngroupLayer) -> Int { self.size }
 
-pub fn crypto_sign_group_layer_get(s : CryptosigngroupLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupLayer::get(self : CryptosigngroupLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_layer_set(s : CryptosigngroupLayer, i : Int, v : Double) -> CryptosigngroupLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupLayer::set(self : CryptosigngroupLayer, i : Int, v : Double) -> CryptosigngroupLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_layer_sum(s : CryptosigngroupLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupLayer::sum(self : CryptosigngroupLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_layer_mean(s : CryptosigngroupLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupLayer::mean(self : CryptosigngroupLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_layer_scale(s : CryptosigngroupLayer, f : Double) -> CryptosigngroupLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupLayer::scale(self : CryptosigngroupLayer, f : Double) -> CryptosigngroupLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_layer_add(a : CryptosigngroupLayer, b : CryptosigngroupLayer) -> CryptosigngroupLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupLayer::add(self : CryptosigngroupLayer, other : CryptosigngroupLayer) -> CryptosigngroupLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_layer_copy(s : CryptosigngroupLayer) -> CryptosigngroupLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupLayer::copy(self : CryptosigngroupLayer) -> CryptosigngroupLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_layer_fill(s : CryptosigngroupLayer, v : Double) -> CryptosigngroupLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupLayer::fill(self : CryptosigngroupLayer, v : Double) -> CryptosigngroupLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_layer_min(s : CryptosigngroupLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupLayer::min(self : CryptosigngroupLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_layer_max(s : CryptosigngroupLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupLayer::max(self : CryptosigngroupLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_layer_to_string(s : CryptosigngroupLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupLayer::to_string(self : CryptosigngroupLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sign_group_buffer_make(size : Int) -> CryptosigngroupBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_buffer_len(s : CryptosigngroupBuffer) -> Int { s.size }
+pub fn CryptosigngroupBuffer::len(self : CryptosigngroupBuffer) -> Int { self.size }
 
-pub fn crypto_sign_group_buffer_get(s : CryptosigngroupBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupBuffer::get(self : CryptosigngroupBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_buffer_set(s : CryptosigngroupBuffer, i : Int, v : Double) -> CryptosigngroupBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupBuffer::set(self : CryptosigngroupBuffer, i : Int, v : Double) -> CryptosigngroupBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_buffer_sum(s : CryptosigngroupBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupBuffer::sum(self : CryptosigngroupBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_buffer_mean(s : CryptosigngroupBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupBuffer::mean(self : CryptosigngroupBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_buffer_scale(s : CryptosigngroupBuffer, f : Double) -> CryptosigngroupBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupBuffer::scale(self : CryptosigngroupBuffer, f : Double) -> CryptosigngroupBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_buffer_add(a : CryptosigngroupBuffer, b : CryptosigngroupBuffer) -> CryptosigngroupBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupBuffer::add(self : CryptosigngroupBuffer, other : CryptosigngroupBuffer) -> CryptosigngroupBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_buffer_copy(s : CryptosigngroupBuffer) -> CryptosigngroupBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupBuffer::copy(self : CryptosigngroupBuffer) -> CryptosigngroupBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_buffer_fill(s : CryptosigngroupBuffer, v : Double) -> CryptosigngroupBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupBuffer::fill(self : CryptosigngroupBuffer, v : Double) -> CryptosigngroupBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_buffer_min(s : CryptosigngroupBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupBuffer::min(self : CryptosigngroupBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_buffer_max(s : CryptosigngroupBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupBuffer::max(self : CryptosigngroupBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_buffer_to_string(s : CryptosigngroupBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupBuffer::to_string(self : CryptosigngroupBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sign_group_cursor_make(size : Int) -> CryptosigngroupCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_cursor_len(s : CryptosigngroupCursor) -> Int { s.size }
+pub fn CryptosigngroupCursor::len(self : CryptosigngroupCursor) -> Int { self.size }
 
-pub fn crypto_sign_group_cursor_get(s : CryptosigngroupCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupCursor::get(self : CryptosigngroupCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_cursor_set(s : CryptosigngroupCursor, i : Int, v : Double) -> CryptosigngroupCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupCursor::set(self : CryptosigngroupCursor, i : Int, v : Double) -> CryptosigngroupCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cursor_sum(s : CryptosigngroupCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupCursor::sum(self : CryptosigngroupCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_cursor_mean(s : CryptosigngroupCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupCursor::mean(self : CryptosigngroupCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_cursor_scale(s : CryptosigngroupCursor, f : Double) -> CryptosigngroupCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupCursor::scale(self : CryptosigngroupCursor, f : Double) -> CryptosigngroupCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cursor_add(a : CryptosigngroupCursor, b : CryptosigngroupCursor) -> CryptosigngroupCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupCursor::add(self : CryptosigngroupCursor, other : CryptosigngroupCursor) -> CryptosigngroupCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cursor_copy(s : CryptosigngroupCursor) -> CryptosigngroupCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupCursor::copy(self : CryptosigngroupCursor) -> CryptosigngroupCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cursor_fill(s : CryptosigngroupCursor, v : Double) -> CryptosigngroupCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupCursor::fill(self : CryptosigngroupCursor, v : Double) -> CryptosigngroupCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_cursor_min(s : CryptosigngroupCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupCursor::min(self : CryptosigngroupCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_cursor_max(s : CryptosigngroupCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupCursor::max(self : CryptosigngroupCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_cursor_to_string(s : CryptosigngroupCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupCursor::to_string(self : CryptosigngroupCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupView {
@@ -912,45 +912,45 @@ pub fn crypto_sign_group_view_make(size : Int) -> CryptosigngroupView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_view_len(s : CryptosigngroupView) -> Int { s.size }
+pub fn CryptosigngroupView::len(self : CryptosigngroupView) -> Int { self.size }
 
-pub fn crypto_sign_group_view_get(s : CryptosigngroupView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupView::get(self : CryptosigngroupView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_view_set(s : CryptosigngroupView, i : Int, v : Double) -> CryptosigngroupView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupView::set(self : CryptosigngroupView, i : Int, v : Double) -> CryptosigngroupView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_view_sum(s : CryptosigngroupView) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupView::sum(self : CryptosigngroupView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_view_mean(s : CryptosigngroupView) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupView::mean(self : CryptosigngroupView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_view_scale(s : CryptosigngroupView, f : Double) -> CryptosigngroupView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupView::scale(self : CryptosigngroupView, f : Double) -> CryptosigngroupView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_view_add(a : CryptosigngroupView, b : CryptosigngroupView) -> CryptosigngroupView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupView::add(self : CryptosigngroupView, other : CryptosigngroupView) -> CryptosigngroupView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_view_copy(s : CryptosigngroupView) -> CryptosigngroupView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupView::copy(self : CryptosigngroupView) -> CryptosigngroupView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_view_fill(s : CryptosigngroupView, v : Double) -> CryptosigngroupView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupView::fill(self : CryptosigngroupView, v : Double) -> CryptosigngroupView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_view_min(s : CryptosigngroupView) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupView::min(self : CryptosigngroupView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_view_max(s : CryptosigngroupView) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupView::max(self : CryptosigngroupView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_view_to_string(s : CryptosigngroupView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupView::to_string(self : CryptosigngroupView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupRange {
@@ -963,45 +963,45 @@ pub fn crypto_sign_group_range_make(size : Int) -> CryptosigngroupRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_range_len(s : CryptosigngroupRange) -> Int { s.size }
+pub fn CryptosigngroupRange::len(self : CryptosigngroupRange) -> Int { self.size }
 
-pub fn crypto_sign_group_range_get(s : CryptosigngroupRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupRange::get(self : CryptosigngroupRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_range_set(s : CryptosigngroupRange, i : Int, v : Double) -> CryptosigngroupRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupRange::set(self : CryptosigngroupRange, i : Int, v : Double) -> CryptosigngroupRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_range_sum(s : CryptosigngroupRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupRange::sum(self : CryptosigngroupRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_range_mean(s : CryptosigngroupRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupRange::mean(self : CryptosigngroupRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_range_scale(s : CryptosigngroupRange, f : Double) -> CryptosigngroupRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupRange::scale(self : CryptosigngroupRange, f : Double) -> CryptosigngroupRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_range_add(a : CryptosigngroupRange, b : CryptosigngroupRange) -> CryptosigngroupRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupRange::add(self : CryptosigngroupRange, other : CryptosigngroupRange) -> CryptosigngroupRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_range_copy(s : CryptosigngroupRange) -> CryptosigngroupRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupRange::copy(self : CryptosigngroupRange) -> CryptosigngroupRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_range_fill(s : CryptosigngroupRange, v : Double) -> CryptosigngroupRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupRange::fill(self : CryptosigngroupRange, v : Double) -> CryptosigngroupRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_range_min(s : CryptosigngroupRange) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupRange::min(self : CryptosigngroupRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_range_max(s : CryptosigngroupRange) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupRange::max(self : CryptosigngroupRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_range_to_string(s : CryptosigngroupRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupRange::to_string(self : CryptosigngroupRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosigngroupSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sign_group_slice_make(size : Int) -> CryptosigngroupSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sign_group_slice_len(s : CryptosigngroupSlice) -> Int { s.size }
+pub fn CryptosigngroupSlice::len(self : CryptosigngroupSlice) -> Int { self.size }
 
-pub fn crypto_sign_group_slice_get(s : CryptosigngroupSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosigngroupSlice::get(self : CryptosigngroupSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sign_group_slice_set(s : CryptosigngroupSlice, i : Int, v : Double) -> CryptosigngroupSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosigngroupSlice::set(self : CryptosigngroupSlice, i : Int, v : Double) -> CryptosigngroupSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_slice_sum(s : CryptosigngroupSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosigngroupSlice::sum(self : CryptosigngroupSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sign_group_slice_mean(s : CryptosigngroupSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosigngroupSlice::mean(self : CryptosigngroupSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sign_group_slice_scale(s : CryptosigngroupSlice, f : Double) -> CryptosigngroupSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosigngroupSlice::scale(self : CryptosigngroupSlice, f : Double) -> CryptosigngroupSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_slice_add(a : CryptosigngroupSlice, b : CryptosigngroupSlice) -> CryptosigngroupSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosigngroupSlice::add(self : CryptosigngroupSlice, other : CryptosigngroupSlice) -> CryptosigngroupSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sign_group_slice_copy(s : CryptosigngroupSlice) -> CryptosigngroupSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosigngroupSlice::copy(self : CryptosigngroupSlice) -> CryptosigngroupSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_slice_fill(s : CryptosigngroupSlice, v : Double) -> CryptosigngroupSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosigngroupSlice::fill(self : CryptosigngroupSlice, v : Double) -> CryptosigngroupSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sign_group_slice_min(s : CryptosigngroupSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosigngroupSlice::min(self : CryptosigngroupSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sign_group_slice_max(s : CryptosigngroupSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosigngroupSlice::max(self : CryptosigngroupSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sign_group_slice_to_string(s : CryptosigngroupSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosigngroupSlice::to_string(self : CryptosigngroupSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

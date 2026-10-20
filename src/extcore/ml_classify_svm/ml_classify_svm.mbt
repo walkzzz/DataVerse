@@ -351,45 +351,45 @@ pub fn ml_classify_svm_frame_make(size : Int) -> MlclassifysvmFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_frame_len(s : MlclassifysvmFrame) -> Int { s.size }
+pub fn MlclassifysvmFrame::len(self : MlclassifysvmFrame) -> Int { self.size }
 
-pub fn ml_classify_svm_frame_get(s : MlclassifysvmFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmFrame::get(self : MlclassifysvmFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_frame_set(s : MlclassifysvmFrame, i : Int, v : Double) -> MlclassifysvmFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmFrame::set(self : MlclassifysvmFrame, i : Int, v : Double) -> MlclassifysvmFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_frame_sum(s : MlclassifysvmFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmFrame::sum(self : MlclassifysvmFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_frame_mean(s : MlclassifysvmFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmFrame::mean(self : MlclassifysvmFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_frame_scale(s : MlclassifysvmFrame, f : Double) -> MlclassifysvmFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmFrame::scale(self : MlclassifysvmFrame, f : Double) -> MlclassifysvmFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_frame_add(a : MlclassifysvmFrame, b : MlclassifysvmFrame) -> MlclassifysvmFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmFrame::add(self : MlclassifysvmFrame, other : MlclassifysvmFrame) -> MlclassifysvmFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_frame_copy(s : MlclassifysvmFrame) -> MlclassifysvmFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmFrame::copy(self : MlclassifysvmFrame) -> MlclassifysvmFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_frame_fill(s : MlclassifysvmFrame, v : Double) -> MlclassifysvmFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmFrame::fill(self : MlclassifysvmFrame, v : Double) -> MlclassifysvmFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_frame_min(s : MlclassifysvmFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmFrame::min(self : MlclassifysvmFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_frame_max(s : MlclassifysvmFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmFrame::max(self : MlclassifysvmFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_frame_to_string(s : MlclassifysvmFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmFrame::to_string(self : MlclassifysvmFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_svm_table_make(size : Int) -> MlclassifysvmTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_table_len(s : MlclassifysvmTable) -> Int { s.size }
+pub fn MlclassifysvmTable::len(self : MlclassifysvmTable) -> Int { self.size }
 
-pub fn ml_classify_svm_table_get(s : MlclassifysvmTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmTable::get(self : MlclassifysvmTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_table_set(s : MlclassifysvmTable, i : Int, v : Double) -> MlclassifysvmTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmTable::set(self : MlclassifysvmTable, i : Int, v : Double) -> MlclassifysvmTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_table_sum(s : MlclassifysvmTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmTable::sum(self : MlclassifysvmTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_table_mean(s : MlclassifysvmTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmTable::mean(self : MlclassifysvmTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_table_scale(s : MlclassifysvmTable, f : Double) -> MlclassifysvmTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmTable::scale(self : MlclassifysvmTable, f : Double) -> MlclassifysvmTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_table_add(a : MlclassifysvmTable, b : MlclassifysvmTable) -> MlclassifysvmTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmTable::add(self : MlclassifysvmTable, other : MlclassifysvmTable) -> MlclassifysvmTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_table_copy(s : MlclassifysvmTable) -> MlclassifysvmTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmTable::copy(self : MlclassifysvmTable) -> MlclassifysvmTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_table_fill(s : MlclassifysvmTable, v : Double) -> MlclassifysvmTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmTable::fill(self : MlclassifysvmTable, v : Double) -> MlclassifysvmTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_table_min(s : MlclassifysvmTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmTable::min(self : MlclassifysvmTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_table_max(s : MlclassifysvmTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmTable::max(self : MlclassifysvmTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_table_to_string(s : MlclassifysvmTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmTable::to_string(self : MlclassifysvmTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_svm_graphn_make(size : Int) -> MlclassifysvmGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_graphn_len(s : MlclassifysvmGraphN) -> Int { s.size }
+pub fn MlclassifysvmGraphN::len(self : MlclassifysvmGraphN) -> Int { self.size }
 
-pub fn ml_classify_svm_graphn_get(s : MlclassifysvmGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmGraphN::get(self : MlclassifysvmGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_graphn_set(s : MlclassifysvmGraphN, i : Int, v : Double) -> MlclassifysvmGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmGraphN::set(self : MlclassifysvmGraphN, i : Int, v : Double) -> MlclassifysvmGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_graphn_sum(s : MlclassifysvmGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmGraphN::sum(self : MlclassifysvmGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_graphn_mean(s : MlclassifysvmGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmGraphN::mean(self : MlclassifysvmGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_graphn_scale(s : MlclassifysvmGraphN, f : Double) -> MlclassifysvmGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmGraphN::scale(self : MlclassifysvmGraphN, f : Double) -> MlclassifysvmGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_graphn_add(a : MlclassifysvmGraphN, b : MlclassifysvmGraphN) -> MlclassifysvmGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmGraphN::add(self : MlclassifysvmGraphN, other : MlclassifysvmGraphN) -> MlclassifysvmGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_graphn_copy(s : MlclassifysvmGraphN) -> MlclassifysvmGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmGraphN::copy(self : MlclassifysvmGraphN) -> MlclassifysvmGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_graphn_fill(s : MlclassifysvmGraphN, v : Double) -> MlclassifysvmGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmGraphN::fill(self : MlclassifysvmGraphN, v : Double) -> MlclassifysvmGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_graphn_min(s : MlclassifysvmGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmGraphN::min(self : MlclassifysvmGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_graphn_max(s : MlclassifysvmGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmGraphN::max(self : MlclassifysvmGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_graphn_to_string(s : MlclassifysvmGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmGraphN::to_string(self : MlclassifysvmGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_svm_node_make(size : Int) -> MlclassifysvmNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_node_len(s : MlclassifysvmNode) -> Int { s.size }
+pub fn MlclassifysvmNode::len(self : MlclassifysvmNode) -> Int { self.size }
 
-pub fn ml_classify_svm_node_get(s : MlclassifysvmNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmNode::get(self : MlclassifysvmNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_node_set(s : MlclassifysvmNode, i : Int, v : Double) -> MlclassifysvmNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmNode::set(self : MlclassifysvmNode, i : Int, v : Double) -> MlclassifysvmNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_node_sum(s : MlclassifysvmNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmNode::sum(self : MlclassifysvmNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_node_mean(s : MlclassifysvmNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmNode::mean(self : MlclassifysvmNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_node_scale(s : MlclassifysvmNode, f : Double) -> MlclassifysvmNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmNode::scale(self : MlclassifysvmNode, f : Double) -> MlclassifysvmNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_node_add(a : MlclassifysvmNode, b : MlclassifysvmNode) -> MlclassifysvmNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmNode::add(self : MlclassifysvmNode, other : MlclassifysvmNode) -> MlclassifysvmNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_node_copy(s : MlclassifysvmNode) -> MlclassifysvmNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmNode::copy(self : MlclassifysvmNode) -> MlclassifysvmNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_node_fill(s : MlclassifysvmNode, v : Double) -> MlclassifysvmNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmNode::fill(self : MlclassifysvmNode, v : Double) -> MlclassifysvmNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_node_min(s : MlclassifysvmNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmNode::min(self : MlclassifysvmNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_node_max(s : MlclassifysvmNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmNode::max(self : MlclassifysvmNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_node_to_string(s : MlclassifysvmNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmNode::to_string(self : MlclassifysvmNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_svm_edge_make(size : Int) -> MlclassifysvmEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_edge_len(s : MlclassifysvmEdge) -> Int { s.size }
+pub fn MlclassifysvmEdge::len(self : MlclassifysvmEdge) -> Int { self.size }
 
-pub fn ml_classify_svm_edge_get(s : MlclassifysvmEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmEdge::get(self : MlclassifysvmEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_edge_set(s : MlclassifysvmEdge, i : Int, v : Double) -> MlclassifysvmEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmEdge::set(self : MlclassifysvmEdge, i : Int, v : Double) -> MlclassifysvmEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_edge_sum(s : MlclassifysvmEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmEdge::sum(self : MlclassifysvmEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_edge_mean(s : MlclassifysvmEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmEdge::mean(self : MlclassifysvmEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_edge_scale(s : MlclassifysvmEdge, f : Double) -> MlclassifysvmEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmEdge::scale(self : MlclassifysvmEdge, f : Double) -> MlclassifysvmEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_edge_add(a : MlclassifysvmEdge, b : MlclassifysvmEdge) -> MlclassifysvmEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmEdge::add(self : MlclassifysvmEdge, other : MlclassifysvmEdge) -> MlclassifysvmEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_edge_copy(s : MlclassifysvmEdge) -> MlclassifysvmEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmEdge::copy(self : MlclassifysvmEdge) -> MlclassifysvmEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_edge_fill(s : MlclassifysvmEdge, v : Double) -> MlclassifysvmEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmEdge::fill(self : MlclassifysvmEdge, v : Double) -> MlclassifysvmEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_edge_min(s : MlclassifysvmEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmEdge::min(self : MlclassifysvmEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_edge_max(s : MlclassifysvmEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmEdge::max(self : MlclassifysvmEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_edge_to_string(s : MlclassifysvmEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmEdge::to_string(self : MlclassifysvmEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_svm_path_make(size : Int) -> MlclassifysvmPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_path_len(s : MlclassifysvmPath) -> Int { s.size }
+pub fn MlclassifysvmPath::len(self : MlclassifysvmPath) -> Int { self.size }
 
-pub fn ml_classify_svm_path_get(s : MlclassifysvmPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmPath::get(self : MlclassifysvmPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_path_set(s : MlclassifysvmPath, i : Int, v : Double) -> MlclassifysvmPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmPath::set(self : MlclassifysvmPath, i : Int, v : Double) -> MlclassifysvmPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_path_sum(s : MlclassifysvmPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmPath::sum(self : MlclassifysvmPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_path_mean(s : MlclassifysvmPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmPath::mean(self : MlclassifysvmPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_path_scale(s : MlclassifysvmPath, f : Double) -> MlclassifysvmPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmPath::scale(self : MlclassifysvmPath, f : Double) -> MlclassifysvmPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_path_add(a : MlclassifysvmPath, b : MlclassifysvmPath) -> MlclassifysvmPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmPath::add(self : MlclassifysvmPath, other : MlclassifysvmPath) -> MlclassifysvmPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_path_copy(s : MlclassifysvmPath) -> MlclassifysvmPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmPath::copy(self : MlclassifysvmPath) -> MlclassifysvmPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_path_fill(s : MlclassifysvmPath, v : Double) -> MlclassifysvmPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmPath::fill(self : MlclassifysvmPath, v : Double) -> MlclassifysvmPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_path_min(s : MlclassifysvmPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmPath::min(self : MlclassifysvmPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_path_max(s : MlclassifysvmPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmPath::max(self : MlclassifysvmPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_path_to_string(s : MlclassifysvmPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmPath::to_string(self : MlclassifysvmPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_svm_cluster_make(size : Int) -> MlclassifysvmCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_cluster_len(s : MlclassifysvmCluster) -> Int { s.size }
+pub fn MlclassifysvmCluster::len(self : MlclassifysvmCluster) -> Int { self.size }
 
-pub fn ml_classify_svm_cluster_get(s : MlclassifysvmCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmCluster::get(self : MlclassifysvmCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_cluster_set(s : MlclassifysvmCluster, i : Int, v : Double) -> MlclassifysvmCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmCluster::set(self : MlclassifysvmCluster, i : Int, v : Double) -> MlclassifysvmCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cluster_sum(s : MlclassifysvmCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmCluster::sum(self : MlclassifysvmCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_cluster_mean(s : MlclassifysvmCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmCluster::mean(self : MlclassifysvmCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_cluster_scale(s : MlclassifysvmCluster, f : Double) -> MlclassifysvmCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmCluster::scale(self : MlclassifysvmCluster, f : Double) -> MlclassifysvmCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cluster_add(a : MlclassifysvmCluster, b : MlclassifysvmCluster) -> MlclassifysvmCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmCluster::add(self : MlclassifysvmCluster, other : MlclassifysvmCluster) -> MlclassifysvmCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cluster_copy(s : MlclassifysvmCluster) -> MlclassifysvmCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmCluster::copy(self : MlclassifysvmCluster) -> MlclassifysvmCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cluster_fill(s : MlclassifysvmCluster, v : Double) -> MlclassifysvmCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmCluster::fill(self : MlclassifysvmCluster, v : Double) -> MlclassifysvmCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cluster_min(s : MlclassifysvmCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmCluster::min(self : MlclassifysvmCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_cluster_max(s : MlclassifysvmCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmCluster::max(self : MlclassifysvmCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_cluster_to_string(s : MlclassifysvmCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmCluster::to_string(self : MlclassifysvmCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_svm_model_make(size : Int) -> MlclassifysvmModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_model_len(s : MlclassifysvmModel) -> Int { s.size }
+pub fn MlclassifysvmModel::len(self : MlclassifysvmModel) -> Int { self.size }
 
-pub fn ml_classify_svm_model_get(s : MlclassifysvmModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmModel::get(self : MlclassifysvmModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_model_set(s : MlclassifysvmModel, i : Int, v : Double) -> MlclassifysvmModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmModel::set(self : MlclassifysvmModel, i : Int, v : Double) -> MlclassifysvmModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_model_sum(s : MlclassifysvmModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmModel::sum(self : MlclassifysvmModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_model_mean(s : MlclassifysvmModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmModel::mean(self : MlclassifysvmModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_model_scale(s : MlclassifysvmModel, f : Double) -> MlclassifysvmModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmModel::scale(self : MlclassifysvmModel, f : Double) -> MlclassifysvmModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_model_add(a : MlclassifysvmModel, b : MlclassifysvmModel) -> MlclassifysvmModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmModel::add(self : MlclassifysvmModel, other : MlclassifysvmModel) -> MlclassifysvmModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_model_copy(s : MlclassifysvmModel) -> MlclassifysvmModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmModel::copy(self : MlclassifysvmModel) -> MlclassifysvmModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_model_fill(s : MlclassifysvmModel, v : Double) -> MlclassifysvmModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmModel::fill(self : MlclassifysvmModel, v : Double) -> MlclassifysvmModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_model_min(s : MlclassifysvmModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmModel::min(self : MlclassifysvmModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_model_max(s : MlclassifysvmModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmModel::max(self : MlclassifysvmModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_model_to_string(s : MlclassifysvmModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmModel::to_string(self : MlclassifysvmModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_svm_layer_make(size : Int) -> MlclassifysvmLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_layer_len(s : MlclassifysvmLayer) -> Int { s.size }
+pub fn MlclassifysvmLayer::len(self : MlclassifysvmLayer) -> Int { self.size }
 
-pub fn ml_classify_svm_layer_get(s : MlclassifysvmLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmLayer::get(self : MlclassifysvmLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_layer_set(s : MlclassifysvmLayer, i : Int, v : Double) -> MlclassifysvmLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmLayer::set(self : MlclassifysvmLayer, i : Int, v : Double) -> MlclassifysvmLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_layer_sum(s : MlclassifysvmLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmLayer::sum(self : MlclassifysvmLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_layer_mean(s : MlclassifysvmLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmLayer::mean(self : MlclassifysvmLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_layer_scale(s : MlclassifysvmLayer, f : Double) -> MlclassifysvmLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmLayer::scale(self : MlclassifysvmLayer, f : Double) -> MlclassifysvmLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_layer_add(a : MlclassifysvmLayer, b : MlclassifysvmLayer) -> MlclassifysvmLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmLayer::add(self : MlclassifysvmLayer, other : MlclassifysvmLayer) -> MlclassifysvmLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_layer_copy(s : MlclassifysvmLayer) -> MlclassifysvmLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmLayer::copy(self : MlclassifysvmLayer) -> MlclassifysvmLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_layer_fill(s : MlclassifysvmLayer, v : Double) -> MlclassifysvmLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmLayer::fill(self : MlclassifysvmLayer, v : Double) -> MlclassifysvmLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_layer_min(s : MlclassifysvmLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmLayer::min(self : MlclassifysvmLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_layer_max(s : MlclassifysvmLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmLayer::max(self : MlclassifysvmLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_layer_to_string(s : MlclassifysvmLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmLayer::to_string(self : MlclassifysvmLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_svm_buffer_make(size : Int) -> MlclassifysvmBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_buffer_len(s : MlclassifysvmBuffer) -> Int { s.size }
+pub fn MlclassifysvmBuffer::len(self : MlclassifysvmBuffer) -> Int { self.size }
 
-pub fn ml_classify_svm_buffer_get(s : MlclassifysvmBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmBuffer::get(self : MlclassifysvmBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_buffer_set(s : MlclassifysvmBuffer, i : Int, v : Double) -> MlclassifysvmBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmBuffer::set(self : MlclassifysvmBuffer, i : Int, v : Double) -> MlclassifysvmBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_buffer_sum(s : MlclassifysvmBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmBuffer::sum(self : MlclassifysvmBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_buffer_mean(s : MlclassifysvmBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmBuffer::mean(self : MlclassifysvmBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_buffer_scale(s : MlclassifysvmBuffer, f : Double) -> MlclassifysvmBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmBuffer::scale(self : MlclassifysvmBuffer, f : Double) -> MlclassifysvmBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_buffer_add(a : MlclassifysvmBuffer, b : MlclassifysvmBuffer) -> MlclassifysvmBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmBuffer::add(self : MlclassifysvmBuffer, other : MlclassifysvmBuffer) -> MlclassifysvmBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_buffer_copy(s : MlclassifysvmBuffer) -> MlclassifysvmBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmBuffer::copy(self : MlclassifysvmBuffer) -> MlclassifysvmBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_buffer_fill(s : MlclassifysvmBuffer, v : Double) -> MlclassifysvmBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmBuffer::fill(self : MlclassifysvmBuffer, v : Double) -> MlclassifysvmBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_buffer_min(s : MlclassifysvmBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmBuffer::min(self : MlclassifysvmBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_buffer_max(s : MlclassifysvmBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmBuffer::max(self : MlclassifysvmBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_buffer_to_string(s : MlclassifysvmBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmBuffer::to_string(self : MlclassifysvmBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_svm_cursor_make(size : Int) -> MlclassifysvmCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_cursor_len(s : MlclassifysvmCursor) -> Int { s.size }
+pub fn MlclassifysvmCursor::len(self : MlclassifysvmCursor) -> Int { self.size }
 
-pub fn ml_classify_svm_cursor_get(s : MlclassifysvmCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmCursor::get(self : MlclassifysvmCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_cursor_set(s : MlclassifysvmCursor, i : Int, v : Double) -> MlclassifysvmCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmCursor::set(self : MlclassifysvmCursor, i : Int, v : Double) -> MlclassifysvmCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cursor_sum(s : MlclassifysvmCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmCursor::sum(self : MlclassifysvmCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_cursor_mean(s : MlclassifysvmCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmCursor::mean(self : MlclassifysvmCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_cursor_scale(s : MlclassifysvmCursor, f : Double) -> MlclassifysvmCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmCursor::scale(self : MlclassifysvmCursor, f : Double) -> MlclassifysvmCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cursor_add(a : MlclassifysvmCursor, b : MlclassifysvmCursor) -> MlclassifysvmCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmCursor::add(self : MlclassifysvmCursor, other : MlclassifysvmCursor) -> MlclassifysvmCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cursor_copy(s : MlclassifysvmCursor) -> MlclassifysvmCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmCursor::copy(self : MlclassifysvmCursor) -> MlclassifysvmCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cursor_fill(s : MlclassifysvmCursor, v : Double) -> MlclassifysvmCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmCursor::fill(self : MlclassifysvmCursor, v : Double) -> MlclassifysvmCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_cursor_min(s : MlclassifysvmCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmCursor::min(self : MlclassifysvmCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_cursor_max(s : MlclassifysvmCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmCursor::max(self : MlclassifysvmCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_cursor_to_string(s : MlclassifysvmCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmCursor::to_string(self : MlclassifysvmCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmView {
@@ -912,45 +912,45 @@ pub fn ml_classify_svm_view_make(size : Int) -> MlclassifysvmView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_view_len(s : MlclassifysvmView) -> Int { s.size }
+pub fn MlclassifysvmView::len(self : MlclassifysvmView) -> Int { self.size }
 
-pub fn ml_classify_svm_view_get(s : MlclassifysvmView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmView::get(self : MlclassifysvmView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_view_set(s : MlclassifysvmView, i : Int, v : Double) -> MlclassifysvmView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmView::set(self : MlclassifysvmView, i : Int, v : Double) -> MlclassifysvmView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_view_sum(s : MlclassifysvmView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmView::sum(self : MlclassifysvmView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_view_mean(s : MlclassifysvmView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmView::mean(self : MlclassifysvmView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_view_scale(s : MlclassifysvmView, f : Double) -> MlclassifysvmView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmView::scale(self : MlclassifysvmView, f : Double) -> MlclassifysvmView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_view_add(a : MlclassifysvmView, b : MlclassifysvmView) -> MlclassifysvmView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmView::add(self : MlclassifysvmView, other : MlclassifysvmView) -> MlclassifysvmView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_view_copy(s : MlclassifysvmView) -> MlclassifysvmView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmView::copy(self : MlclassifysvmView) -> MlclassifysvmView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_view_fill(s : MlclassifysvmView, v : Double) -> MlclassifysvmView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmView::fill(self : MlclassifysvmView, v : Double) -> MlclassifysvmView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_view_min(s : MlclassifysvmView) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmView::min(self : MlclassifysvmView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_view_max(s : MlclassifysvmView) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmView::max(self : MlclassifysvmView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_view_to_string(s : MlclassifysvmView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmView::to_string(self : MlclassifysvmView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_svm_range_make(size : Int) -> MlclassifysvmRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_range_len(s : MlclassifysvmRange) -> Int { s.size }
+pub fn MlclassifysvmRange::len(self : MlclassifysvmRange) -> Int { self.size }
 
-pub fn ml_classify_svm_range_get(s : MlclassifysvmRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmRange::get(self : MlclassifysvmRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_range_set(s : MlclassifysvmRange, i : Int, v : Double) -> MlclassifysvmRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmRange::set(self : MlclassifysvmRange, i : Int, v : Double) -> MlclassifysvmRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_range_sum(s : MlclassifysvmRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmRange::sum(self : MlclassifysvmRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_range_mean(s : MlclassifysvmRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmRange::mean(self : MlclassifysvmRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_range_scale(s : MlclassifysvmRange, f : Double) -> MlclassifysvmRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmRange::scale(self : MlclassifysvmRange, f : Double) -> MlclassifysvmRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_range_add(a : MlclassifysvmRange, b : MlclassifysvmRange) -> MlclassifysvmRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmRange::add(self : MlclassifysvmRange, other : MlclassifysvmRange) -> MlclassifysvmRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_range_copy(s : MlclassifysvmRange) -> MlclassifysvmRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmRange::copy(self : MlclassifysvmRange) -> MlclassifysvmRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_range_fill(s : MlclassifysvmRange, v : Double) -> MlclassifysvmRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmRange::fill(self : MlclassifysvmRange, v : Double) -> MlclassifysvmRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_range_min(s : MlclassifysvmRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmRange::min(self : MlclassifysvmRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_range_max(s : MlclassifysvmRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmRange::max(self : MlclassifysvmRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_range_to_string(s : MlclassifysvmRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmRange::to_string(self : MlclassifysvmRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifysvmSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_svm_slice_make(size : Int) -> MlclassifysvmSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_svm_slice_len(s : MlclassifysvmSlice) -> Int { s.size }
+pub fn MlclassifysvmSlice::len(self : MlclassifysvmSlice) -> Int { self.size }
 
-pub fn ml_classify_svm_slice_get(s : MlclassifysvmSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifysvmSlice::get(self : MlclassifysvmSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_svm_slice_set(s : MlclassifysvmSlice, i : Int, v : Double) -> MlclassifysvmSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifysvmSlice::set(self : MlclassifysvmSlice, i : Int, v : Double) -> MlclassifysvmSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_slice_sum(s : MlclassifysvmSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifysvmSlice::sum(self : MlclassifysvmSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_svm_slice_mean(s : MlclassifysvmSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifysvmSlice::mean(self : MlclassifysvmSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_svm_slice_scale(s : MlclassifysvmSlice, f : Double) -> MlclassifysvmSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifysvmSlice::scale(self : MlclassifysvmSlice, f : Double) -> MlclassifysvmSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_slice_add(a : MlclassifysvmSlice, b : MlclassifysvmSlice) -> MlclassifysvmSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifysvmSlice::add(self : MlclassifysvmSlice, other : MlclassifysvmSlice) -> MlclassifysvmSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_svm_slice_copy(s : MlclassifysvmSlice) -> MlclassifysvmSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifysvmSlice::copy(self : MlclassifysvmSlice) -> MlclassifysvmSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_slice_fill(s : MlclassifysvmSlice, v : Double) -> MlclassifysvmSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifysvmSlice::fill(self : MlclassifysvmSlice, v : Double) -> MlclassifysvmSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_svm_slice_min(s : MlclassifysvmSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifysvmSlice::min(self : MlclassifysvmSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_svm_slice_max(s : MlclassifysvmSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifysvmSlice::max(self : MlclassifysvmSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_svm_slice_to_string(s : MlclassifysvmSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifysvmSlice::to_string(self : MlclassifysvmSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn image_filter_box_frame_make(size : Int) -> ImagefilterboxFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_frame_len(s : ImagefilterboxFrame) -> Int { s.size }
+pub fn ImagefilterboxFrame::len(self : ImagefilterboxFrame) -> Int { self.size }
 
-pub fn image_filter_box_frame_get(s : ImagefilterboxFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxFrame::get(self : ImagefilterboxFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_frame_set(s : ImagefilterboxFrame, i : Int, v : Double) -> ImagefilterboxFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxFrame::set(self : ImagefilterboxFrame, i : Int, v : Double) -> ImagefilterboxFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_frame_sum(s : ImagefilterboxFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxFrame::sum(self : ImagefilterboxFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_frame_mean(s : ImagefilterboxFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxFrame::mean(self : ImagefilterboxFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_frame_scale(s : ImagefilterboxFrame, f : Double) -> ImagefilterboxFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxFrame::scale(self : ImagefilterboxFrame, f : Double) -> ImagefilterboxFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_frame_add(a : ImagefilterboxFrame, b : ImagefilterboxFrame) -> ImagefilterboxFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxFrame::add(self : ImagefilterboxFrame, other : ImagefilterboxFrame) -> ImagefilterboxFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_frame_copy(s : ImagefilterboxFrame) -> ImagefilterboxFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxFrame::copy(self : ImagefilterboxFrame) -> ImagefilterboxFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_frame_fill(s : ImagefilterboxFrame, v : Double) -> ImagefilterboxFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxFrame::fill(self : ImagefilterboxFrame, v : Double) -> ImagefilterboxFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_frame_min(s : ImagefilterboxFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxFrame::min(self : ImagefilterboxFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_frame_max(s : ImagefilterboxFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxFrame::max(self : ImagefilterboxFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_frame_to_string(s : ImagefilterboxFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxFrame::to_string(self : ImagefilterboxFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxTable {
@@ -402,45 +402,45 @@ pub fn image_filter_box_table_make(size : Int) -> ImagefilterboxTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_table_len(s : ImagefilterboxTable) -> Int { s.size }
+pub fn ImagefilterboxTable::len(self : ImagefilterboxTable) -> Int { self.size }
 
-pub fn image_filter_box_table_get(s : ImagefilterboxTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxTable::get(self : ImagefilterboxTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_table_set(s : ImagefilterboxTable, i : Int, v : Double) -> ImagefilterboxTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxTable::set(self : ImagefilterboxTable, i : Int, v : Double) -> ImagefilterboxTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_table_sum(s : ImagefilterboxTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxTable::sum(self : ImagefilterboxTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_table_mean(s : ImagefilterboxTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxTable::mean(self : ImagefilterboxTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_table_scale(s : ImagefilterboxTable, f : Double) -> ImagefilterboxTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxTable::scale(self : ImagefilterboxTable, f : Double) -> ImagefilterboxTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_table_add(a : ImagefilterboxTable, b : ImagefilterboxTable) -> ImagefilterboxTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxTable::add(self : ImagefilterboxTable, other : ImagefilterboxTable) -> ImagefilterboxTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_table_copy(s : ImagefilterboxTable) -> ImagefilterboxTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxTable::copy(self : ImagefilterboxTable) -> ImagefilterboxTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_table_fill(s : ImagefilterboxTable, v : Double) -> ImagefilterboxTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxTable::fill(self : ImagefilterboxTable, v : Double) -> ImagefilterboxTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_table_min(s : ImagefilterboxTable) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxTable::min(self : ImagefilterboxTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_table_max(s : ImagefilterboxTable) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxTable::max(self : ImagefilterboxTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_table_to_string(s : ImagefilterboxTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxTable::to_string(self : ImagefilterboxTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_box_graphn_make(size : Int) -> ImagefilterboxGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_graphn_len(s : ImagefilterboxGraphN) -> Int { s.size }
+pub fn ImagefilterboxGraphN::len(self : ImagefilterboxGraphN) -> Int { self.size }
 
-pub fn image_filter_box_graphn_get(s : ImagefilterboxGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxGraphN::get(self : ImagefilterboxGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_graphn_set(s : ImagefilterboxGraphN, i : Int, v : Double) -> ImagefilterboxGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxGraphN::set(self : ImagefilterboxGraphN, i : Int, v : Double) -> ImagefilterboxGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_graphn_sum(s : ImagefilterboxGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxGraphN::sum(self : ImagefilterboxGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_graphn_mean(s : ImagefilterboxGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxGraphN::mean(self : ImagefilterboxGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_graphn_scale(s : ImagefilterboxGraphN, f : Double) -> ImagefilterboxGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxGraphN::scale(self : ImagefilterboxGraphN, f : Double) -> ImagefilterboxGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_graphn_add(a : ImagefilterboxGraphN, b : ImagefilterboxGraphN) -> ImagefilterboxGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxGraphN::add(self : ImagefilterboxGraphN, other : ImagefilterboxGraphN) -> ImagefilterboxGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_graphn_copy(s : ImagefilterboxGraphN) -> ImagefilterboxGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxGraphN::copy(self : ImagefilterboxGraphN) -> ImagefilterboxGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_graphn_fill(s : ImagefilterboxGraphN, v : Double) -> ImagefilterboxGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxGraphN::fill(self : ImagefilterboxGraphN, v : Double) -> ImagefilterboxGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_graphn_min(s : ImagefilterboxGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxGraphN::min(self : ImagefilterboxGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_graphn_max(s : ImagefilterboxGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxGraphN::max(self : ImagefilterboxGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_graphn_to_string(s : ImagefilterboxGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxGraphN::to_string(self : ImagefilterboxGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxNode {
@@ -504,45 +504,45 @@ pub fn image_filter_box_node_make(size : Int) -> ImagefilterboxNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_node_len(s : ImagefilterboxNode) -> Int { s.size }
+pub fn ImagefilterboxNode::len(self : ImagefilterboxNode) -> Int { self.size }
 
-pub fn image_filter_box_node_get(s : ImagefilterboxNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxNode::get(self : ImagefilterboxNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_node_set(s : ImagefilterboxNode, i : Int, v : Double) -> ImagefilterboxNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxNode::set(self : ImagefilterboxNode, i : Int, v : Double) -> ImagefilterboxNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_node_sum(s : ImagefilterboxNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxNode::sum(self : ImagefilterboxNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_node_mean(s : ImagefilterboxNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxNode::mean(self : ImagefilterboxNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_node_scale(s : ImagefilterboxNode, f : Double) -> ImagefilterboxNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxNode::scale(self : ImagefilterboxNode, f : Double) -> ImagefilterboxNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_node_add(a : ImagefilterboxNode, b : ImagefilterboxNode) -> ImagefilterboxNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxNode::add(self : ImagefilterboxNode, other : ImagefilterboxNode) -> ImagefilterboxNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_node_copy(s : ImagefilterboxNode) -> ImagefilterboxNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxNode::copy(self : ImagefilterboxNode) -> ImagefilterboxNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_node_fill(s : ImagefilterboxNode, v : Double) -> ImagefilterboxNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxNode::fill(self : ImagefilterboxNode, v : Double) -> ImagefilterboxNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_node_min(s : ImagefilterboxNode) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxNode::min(self : ImagefilterboxNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_node_max(s : ImagefilterboxNode) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxNode::max(self : ImagefilterboxNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_node_to_string(s : ImagefilterboxNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxNode::to_string(self : ImagefilterboxNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_box_edge_make(size : Int) -> ImagefilterboxEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_edge_len(s : ImagefilterboxEdge) -> Int { s.size }
+pub fn ImagefilterboxEdge::len(self : ImagefilterboxEdge) -> Int { self.size }
 
-pub fn image_filter_box_edge_get(s : ImagefilterboxEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxEdge::get(self : ImagefilterboxEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_edge_set(s : ImagefilterboxEdge, i : Int, v : Double) -> ImagefilterboxEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxEdge::set(self : ImagefilterboxEdge, i : Int, v : Double) -> ImagefilterboxEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_edge_sum(s : ImagefilterboxEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxEdge::sum(self : ImagefilterboxEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_edge_mean(s : ImagefilterboxEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxEdge::mean(self : ImagefilterboxEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_edge_scale(s : ImagefilterboxEdge, f : Double) -> ImagefilterboxEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxEdge::scale(self : ImagefilterboxEdge, f : Double) -> ImagefilterboxEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_edge_add(a : ImagefilterboxEdge, b : ImagefilterboxEdge) -> ImagefilterboxEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxEdge::add(self : ImagefilterboxEdge, other : ImagefilterboxEdge) -> ImagefilterboxEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_edge_copy(s : ImagefilterboxEdge) -> ImagefilterboxEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxEdge::copy(self : ImagefilterboxEdge) -> ImagefilterboxEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_edge_fill(s : ImagefilterboxEdge, v : Double) -> ImagefilterboxEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxEdge::fill(self : ImagefilterboxEdge, v : Double) -> ImagefilterboxEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_edge_min(s : ImagefilterboxEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxEdge::min(self : ImagefilterboxEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_edge_max(s : ImagefilterboxEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxEdge::max(self : ImagefilterboxEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_edge_to_string(s : ImagefilterboxEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxEdge::to_string(self : ImagefilterboxEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxPath {
@@ -606,45 +606,45 @@ pub fn image_filter_box_path_make(size : Int) -> ImagefilterboxPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_path_len(s : ImagefilterboxPath) -> Int { s.size }
+pub fn ImagefilterboxPath::len(self : ImagefilterboxPath) -> Int { self.size }
 
-pub fn image_filter_box_path_get(s : ImagefilterboxPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxPath::get(self : ImagefilterboxPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_path_set(s : ImagefilterboxPath, i : Int, v : Double) -> ImagefilterboxPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxPath::set(self : ImagefilterboxPath, i : Int, v : Double) -> ImagefilterboxPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_path_sum(s : ImagefilterboxPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxPath::sum(self : ImagefilterboxPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_path_mean(s : ImagefilterboxPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxPath::mean(self : ImagefilterboxPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_path_scale(s : ImagefilterboxPath, f : Double) -> ImagefilterboxPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxPath::scale(self : ImagefilterboxPath, f : Double) -> ImagefilterboxPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_path_add(a : ImagefilterboxPath, b : ImagefilterboxPath) -> ImagefilterboxPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxPath::add(self : ImagefilterboxPath, other : ImagefilterboxPath) -> ImagefilterboxPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_path_copy(s : ImagefilterboxPath) -> ImagefilterboxPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxPath::copy(self : ImagefilterboxPath) -> ImagefilterboxPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_path_fill(s : ImagefilterboxPath, v : Double) -> ImagefilterboxPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxPath::fill(self : ImagefilterboxPath, v : Double) -> ImagefilterboxPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_path_min(s : ImagefilterboxPath) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxPath::min(self : ImagefilterboxPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_path_max(s : ImagefilterboxPath) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxPath::max(self : ImagefilterboxPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_path_to_string(s : ImagefilterboxPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxPath::to_string(self : ImagefilterboxPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_box_cluster_make(size : Int) -> ImagefilterboxCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_cluster_len(s : ImagefilterboxCluster) -> Int { s.size }
+pub fn ImagefilterboxCluster::len(self : ImagefilterboxCluster) -> Int { self.size }
 
-pub fn image_filter_box_cluster_get(s : ImagefilterboxCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxCluster::get(self : ImagefilterboxCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_cluster_set(s : ImagefilterboxCluster, i : Int, v : Double) -> ImagefilterboxCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxCluster::set(self : ImagefilterboxCluster, i : Int, v : Double) -> ImagefilterboxCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cluster_sum(s : ImagefilterboxCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxCluster::sum(self : ImagefilterboxCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_cluster_mean(s : ImagefilterboxCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxCluster::mean(self : ImagefilterboxCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_cluster_scale(s : ImagefilterboxCluster, f : Double) -> ImagefilterboxCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxCluster::scale(self : ImagefilterboxCluster, f : Double) -> ImagefilterboxCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cluster_add(a : ImagefilterboxCluster, b : ImagefilterboxCluster) -> ImagefilterboxCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxCluster::add(self : ImagefilterboxCluster, other : ImagefilterboxCluster) -> ImagefilterboxCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_cluster_copy(s : ImagefilterboxCluster) -> ImagefilterboxCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxCluster::copy(self : ImagefilterboxCluster) -> ImagefilterboxCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cluster_fill(s : ImagefilterboxCluster, v : Double) -> ImagefilterboxCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxCluster::fill(self : ImagefilterboxCluster, v : Double) -> ImagefilterboxCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cluster_min(s : ImagefilterboxCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxCluster::min(self : ImagefilterboxCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_cluster_max(s : ImagefilterboxCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxCluster::max(self : ImagefilterboxCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_cluster_to_string(s : ImagefilterboxCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxCluster::to_string(self : ImagefilterboxCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxModel {
@@ -708,45 +708,45 @@ pub fn image_filter_box_model_make(size : Int) -> ImagefilterboxModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_model_len(s : ImagefilterboxModel) -> Int { s.size }
+pub fn ImagefilterboxModel::len(self : ImagefilterboxModel) -> Int { self.size }
 
-pub fn image_filter_box_model_get(s : ImagefilterboxModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxModel::get(self : ImagefilterboxModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_model_set(s : ImagefilterboxModel, i : Int, v : Double) -> ImagefilterboxModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxModel::set(self : ImagefilterboxModel, i : Int, v : Double) -> ImagefilterboxModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_model_sum(s : ImagefilterboxModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxModel::sum(self : ImagefilterboxModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_model_mean(s : ImagefilterboxModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxModel::mean(self : ImagefilterboxModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_model_scale(s : ImagefilterboxModel, f : Double) -> ImagefilterboxModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxModel::scale(self : ImagefilterboxModel, f : Double) -> ImagefilterboxModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_model_add(a : ImagefilterboxModel, b : ImagefilterboxModel) -> ImagefilterboxModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxModel::add(self : ImagefilterboxModel, other : ImagefilterboxModel) -> ImagefilterboxModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_model_copy(s : ImagefilterboxModel) -> ImagefilterboxModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxModel::copy(self : ImagefilterboxModel) -> ImagefilterboxModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_model_fill(s : ImagefilterboxModel, v : Double) -> ImagefilterboxModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxModel::fill(self : ImagefilterboxModel, v : Double) -> ImagefilterboxModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_model_min(s : ImagefilterboxModel) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxModel::min(self : ImagefilterboxModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_model_max(s : ImagefilterboxModel) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxModel::max(self : ImagefilterboxModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_model_to_string(s : ImagefilterboxModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxModel::to_string(self : ImagefilterboxModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_box_layer_make(size : Int) -> ImagefilterboxLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_layer_len(s : ImagefilterboxLayer) -> Int { s.size }
+pub fn ImagefilterboxLayer::len(self : ImagefilterboxLayer) -> Int { self.size }
 
-pub fn image_filter_box_layer_get(s : ImagefilterboxLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxLayer::get(self : ImagefilterboxLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_layer_set(s : ImagefilterboxLayer, i : Int, v : Double) -> ImagefilterboxLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxLayer::set(self : ImagefilterboxLayer, i : Int, v : Double) -> ImagefilterboxLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_layer_sum(s : ImagefilterboxLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxLayer::sum(self : ImagefilterboxLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_layer_mean(s : ImagefilterboxLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxLayer::mean(self : ImagefilterboxLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_layer_scale(s : ImagefilterboxLayer, f : Double) -> ImagefilterboxLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxLayer::scale(self : ImagefilterboxLayer, f : Double) -> ImagefilterboxLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_layer_add(a : ImagefilterboxLayer, b : ImagefilterboxLayer) -> ImagefilterboxLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxLayer::add(self : ImagefilterboxLayer, other : ImagefilterboxLayer) -> ImagefilterboxLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_layer_copy(s : ImagefilterboxLayer) -> ImagefilterboxLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxLayer::copy(self : ImagefilterboxLayer) -> ImagefilterboxLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_layer_fill(s : ImagefilterboxLayer, v : Double) -> ImagefilterboxLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxLayer::fill(self : ImagefilterboxLayer, v : Double) -> ImagefilterboxLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_layer_min(s : ImagefilterboxLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxLayer::min(self : ImagefilterboxLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_layer_max(s : ImagefilterboxLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxLayer::max(self : ImagefilterboxLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_layer_to_string(s : ImagefilterboxLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxLayer::to_string(self : ImagefilterboxLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_box_buffer_make(size : Int) -> ImagefilterboxBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_buffer_len(s : ImagefilterboxBuffer) -> Int { s.size }
+pub fn ImagefilterboxBuffer::len(self : ImagefilterboxBuffer) -> Int { self.size }
 
-pub fn image_filter_box_buffer_get(s : ImagefilterboxBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxBuffer::get(self : ImagefilterboxBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_buffer_set(s : ImagefilterboxBuffer, i : Int, v : Double) -> ImagefilterboxBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxBuffer::set(self : ImagefilterboxBuffer, i : Int, v : Double) -> ImagefilterboxBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_buffer_sum(s : ImagefilterboxBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxBuffer::sum(self : ImagefilterboxBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_buffer_mean(s : ImagefilterboxBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxBuffer::mean(self : ImagefilterboxBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_buffer_scale(s : ImagefilterboxBuffer, f : Double) -> ImagefilterboxBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxBuffer::scale(self : ImagefilterboxBuffer, f : Double) -> ImagefilterboxBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_buffer_add(a : ImagefilterboxBuffer, b : ImagefilterboxBuffer) -> ImagefilterboxBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxBuffer::add(self : ImagefilterboxBuffer, other : ImagefilterboxBuffer) -> ImagefilterboxBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_buffer_copy(s : ImagefilterboxBuffer) -> ImagefilterboxBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxBuffer::copy(self : ImagefilterboxBuffer) -> ImagefilterboxBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_buffer_fill(s : ImagefilterboxBuffer, v : Double) -> ImagefilterboxBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxBuffer::fill(self : ImagefilterboxBuffer, v : Double) -> ImagefilterboxBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_buffer_min(s : ImagefilterboxBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxBuffer::min(self : ImagefilterboxBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_buffer_max(s : ImagefilterboxBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxBuffer::max(self : ImagefilterboxBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_buffer_to_string(s : ImagefilterboxBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxBuffer::to_string(self : ImagefilterboxBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_box_cursor_make(size : Int) -> ImagefilterboxCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_cursor_len(s : ImagefilterboxCursor) -> Int { s.size }
+pub fn ImagefilterboxCursor::len(self : ImagefilterboxCursor) -> Int { self.size }
 
-pub fn image_filter_box_cursor_get(s : ImagefilterboxCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxCursor::get(self : ImagefilterboxCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_cursor_set(s : ImagefilterboxCursor, i : Int, v : Double) -> ImagefilterboxCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxCursor::set(self : ImagefilterboxCursor, i : Int, v : Double) -> ImagefilterboxCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cursor_sum(s : ImagefilterboxCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxCursor::sum(self : ImagefilterboxCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_cursor_mean(s : ImagefilterboxCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxCursor::mean(self : ImagefilterboxCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_cursor_scale(s : ImagefilterboxCursor, f : Double) -> ImagefilterboxCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxCursor::scale(self : ImagefilterboxCursor, f : Double) -> ImagefilterboxCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cursor_add(a : ImagefilterboxCursor, b : ImagefilterboxCursor) -> ImagefilterboxCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxCursor::add(self : ImagefilterboxCursor, other : ImagefilterboxCursor) -> ImagefilterboxCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_cursor_copy(s : ImagefilterboxCursor) -> ImagefilterboxCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxCursor::copy(self : ImagefilterboxCursor) -> ImagefilterboxCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cursor_fill(s : ImagefilterboxCursor, v : Double) -> ImagefilterboxCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxCursor::fill(self : ImagefilterboxCursor, v : Double) -> ImagefilterboxCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_cursor_min(s : ImagefilterboxCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxCursor::min(self : ImagefilterboxCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_cursor_max(s : ImagefilterboxCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxCursor::max(self : ImagefilterboxCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_cursor_to_string(s : ImagefilterboxCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxCursor::to_string(self : ImagefilterboxCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxView {
@@ -912,45 +912,45 @@ pub fn image_filter_box_view_make(size : Int) -> ImagefilterboxView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_view_len(s : ImagefilterboxView) -> Int { s.size }
+pub fn ImagefilterboxView::len(self : ImagefilterboxView) -> Int { self.size }
 
-pub fn image_filter_box_view_get(s : ImagefilterboxView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxView::get(self : ImagefilterboxView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_view_set(s : ImagefilterboxView, i : Int, v : Double) -> ImagefilterboxView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxView::set(self : ImagefilterboxView, i : Int, v : Double) -> ImagefilterboxView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_view_sum(s : ImagefilterboxView) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxView::sum(self : ImagefilterboxView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_view_mean(s : ImagefilterboxView) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxView::mean(self : ImagefilterboxView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_view_scale(s : ImagefilterboxView, f : Double) -> ImagefilterboxView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxView::scale(self : ImagefilterboxView, f : Double) -> ImagefilterboxView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_view_add(a : ImagefilterboxView, b : ImagefilterboxView) -> ImagefilterboxView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxView::add(self : ImagefilterboxView, other : ImagefilterboxView) -> ImagefilterboxView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_view_copy(s : ImagefilterboxView) -> ImagefilterboxView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxView::copy(self : ImagefilterboxView) -> ImagefilterboxView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_view_fill(s : ImagefilterboxView, v : Double) -> ImagefilterboxView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxView::fill(self : ImagefilterboxView, v : Double) -> ImagefilterboxView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_view_min(s : ImagefilterboxView) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxView::min(self : ImagefilterboxView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_view_max(s : ImagefilterboxView) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxView::max(self : ImagefilterboxView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_view_to_string(s : ImagefilterboxView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxView::to_string(self : ImagefilterboxView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxRange {
@@ -963,45 +963,45 @@ pub fn image_filter_box_range_make(size : Int) -> ImagefilterboxRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_range_len(s : ImagefilterboxRange) -> Int { s.size }
+pub fn ImagefilterboxRange::len(self : ImagefilterboxRange) -> Int { self.size }
 
-pub fn image_filter_box_range_get(s : ImagefilterboxRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxRange::get(self : ImagefilterboxRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_range_set(s : ImagefilterboxRange, i : Int, v : Double) -> ImagefilterboxRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxRange::set(self : ImagefilterboxRange, i : Int, v : Double) -> ImagefilterboxRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_range_sum(s : ImagefilterboxRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxRange::sum(self : ImagefilterboxRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_range_mean(s : ImagefilterboxRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxRange::mean(self : ImagefilterboxRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_range_scale(s : ImagefilterboxRange, f : Double) -> ImagefilterboxRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxRange::scale(self : ImagefilterboxRange, f : Double) -> ImagefilterboxRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_range_add(a : ImagefilterboxRange, b : ImagefilterboxRange) -> ImagefilterboxRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxRange::add(self : ImagefilterboxRange, other : ImagefilterboxRange) -> ImagefilterboxRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_range_copy(s : ImagefilterboxRange) -> ImagefilterboxRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxRange::copy(self : ImagefilterboxRange) -> ImagefilterboxRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_range_fill(s : ImagefilterboxRange, v : Double) -> ImagefilterboxRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxRange::fill(self : ImagefilterboxRange, v : Double) -> ImagefilterboxRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_range_min(s : ImagefilterboxRange) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxRange::min(self : ImagefilterboxRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_range_max(s : ImagefilterboxRange) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxRange::max(self : ImagefilterboxRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_range_to_string(s : ImagefilterboxRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxRange::to_string(self : ImagefilterboxRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefilterboxSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_box_slice_make(size : Int) -> ImagefilterboxSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_box_slice_len(s : ImagefilterboxSlice) -> Int { s.size }
+pub fn ImagefilterboxSlice::len(self : ImagefilterboxSlice) -> Int { self.size }
 
-pub fn image_filter_box_slice_get(s : ImagefilterboxSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefilterboxSlice::get(self : ImagefilterboxSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_box_slice_set(s : ImagefilterboxSlice, i : Int, v : Double) -> ImagefilterboxSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefilterboxSlice::set(self : ImagefilterboxSlice, i : Int, v : Double) -> ImagefilterboxSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_slice_sum(s : ImagefilterboxSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefilterboxSlice::sum(self : ImagefilterboxSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_box_slice_mean(s : ImagefilterboxSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefilterboxSlice::mean(self : ImagefilterboxSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_box_slice_scale(s : ImagefilterboxSlice, f : Double) -> ImagefilterboxSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefilterboxSlice::scale(self : ImagefilterboxSlice, f : Double) -> ImagefilterboxSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_slice_add(a : ImagefilterboxSlice, b : ImagefilterboxSlice) -> ImagefilterboxSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefilterboxSlice::add(self : ImagefilterboxSlice, other : ImagefilterboxSlice) -> ImagefilterboxSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_box_slice_copy(s : ImagefilterboxSlice) -> ImagefilterboxSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefilterboxSlice::copy(self : ImagefilterboxSlice) -> ImagefilterboxSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_slice_fill(s : ImagefilterboxSlice, v : Double) -> ImagefilterboxSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefilterboxSlice::fill(self : ImagefilterboxSlice, v : Double) -> ImagefilterboxSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_box_slice_min(s : ImagefilterboxSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefilterboxSlice::min(self : ImagefilterboxSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_box_slice_max(s : ImagefilterboxSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefilterboxSlice::max(self : ImagefilterboxSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_box_slice_to_string(s : ImagefilterboxSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefilterboxSlice::to_string(self : ImagefilterboxSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

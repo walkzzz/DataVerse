@@ -351,45 +351,45 @@ pub fn graph_tree_center_frame_make(size : Int) -> GraphtreecenterFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_frame_len(s : GraphtreecenterFrame) -> Int { s.size }
+pub fn GraphtreecenterFrame::len(self : GraphtreecenterFrame) -> Int { self.size }
 
-pub fn graph_tree_center_frame_get(s : GraphtreecenterFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterFrame::get(self : GraphtreecenterFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_frame_set(s : GraphtreecenterFrame, i : Int, v : Double) -> GraphtreecenterFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterFrame::set(self : GraphtreecenterFrame, i : Int, v : Double) -> GraphtreecenterFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_frame_sum(s : GraphtreecenterFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterFrame::sum(self : GraphtreecenterFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_frame_mean(s : GraphtreecenterFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterFrame::mean(self : GraphtreecenterFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_frame_scale(s : GraphtreecenterFrame, f : Double) -> GraphtreecenterFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterFrame::scale(self : GraphtreecenterFrame, f : Double) -> GraphtreecenterFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_frame_add(a : GraphtreecenterFrame, b : GraphtreecenterFrame) -> GraphtreecenterFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterFrame::add(self : GraphtreecenterFrame, other : GraphtreecenterFrame) -> GraphtreecenterFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_frame_copy(s : GraphtreecenterFrame) -> GraphtreecenterFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterFrame::copy(self : GraphtreecenterFrame) -> GraphtreecenterFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_frame_fill(s : GraphtreecenterFrame, v : Double) -> GraphtreecenterFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterFrame::fill(self : GraphtreecenterFrame, v : Double) -> GraphtreecenterFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_frame_min(s : GraphtreecenterFrame) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterFrame::min(self : GraphtreecenterFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_frame_max(s : GraphtreecenterFrame) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterFrame::max(self : GraphtreecenterFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_frame_to_string(s : GraphtreecenterFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterFrame::to_string(self : GraphtreecenterFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterTable {
@@ -402,45 +402,45 @@ pub fn graph_tree_center_table_make(size : Int) -> GraphtreecenterTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_table_len(s : GraphtreecenterTable) -> Int { s.size }
+pub fn GraphtreecenterTable::len(self : GraphtreecenterTable) -> Int { self.size }
 
-pub fn graph_tree_center_table_get(s : GraphtreecenterTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterTable::get(self : GraphtreecenterTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_table_set(s : GraphtreecenterTable, i : Int, v : Double) -> GraphtreecenterTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterTable::set(self : GraphtreecenterTable, i : Int, v : Double) -> GraphtreecenterTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_table_sum(s : GraphtreecenterTable) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterTable::sum(self : GraphtreecenterTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_table_mean(s : GraphtreecenterTable) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterTable::mean(self : GraphtreecenterTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_table_scale(s : GraphtreecenterTable, f : Double) -> GraphtreecenterTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterTable::scale(self : GraphtreecenterTable, f : Double) -> GraphtreecenterTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_table_add(a : GraphtreecenterTable, b : GraphtreecenterTable) -> GraphtreecenterTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterTable::add(self : GraphtreecenterTable, other : GraphtreecenterTable) -> GraphtreecenterTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_table_copy(s : GraphtreecenterTable) -> GraphtreecenterTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterTable::copy(self : GraphtreecenterTable) -> GraphtreecenterTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_table_fill(s : GraphtreecenterTable, v : Double) -> GraphtreecenterTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterTable::fill(self : GraphtreecenterTable, v : Double) -> GraphtreecenterTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_table_min(s : GraphtreecenterTable) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterTable::min(self : GraphtreecenterTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_table_max(s : GraphtreecenterTable) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterTable::max(self : GraphtreecenterTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_table_to_string(s : GraphtreecenterTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterTable::to_string(self : GraphtreecenterTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterGraphN {
@@ -453,45 +453,45 @@ pub fn graph_tree_center_graphn_make(size : Int) -> GraphtreecenterGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_graphn_len(s : GraphtreecenterGraphN) -> Int { s.size }
+pub fn GraphtreecenterGraphN::len(self : GraphtreecenterGraphN) -> Int { self.size }
 
-pub fn graph_tree_center_graphn_get(s : GraphtreecenterGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterGraphN::get(self : GraphtreecenterGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_graphn_set(s : GraphtreecenterGraphN, i : Int, v : Double) -> GraphtreecenterGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterGraphN::set(self : GraphtreecenterGraphN, i : Int, v : Double) -> GraphtreecenterGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_graphn_sum(s : GraphtreecenterGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterGraphN::sum(self : GraphtreecenterGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_graphn_mean(s : GraphtreecenterGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterGraphN::mean(self : GraphtreecenterGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_graphn_scale(s : GraphtreecenterGraphN, f : Double) -> GraphtreecenterGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterGraphN::scale(self : GraphtreecenterGraphN, f : Double) -> GraphtreecenterGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_graphn_add(a : GraphtreecenterGraphN, b : GraphtreecenterGraphN) -> GraphtreecenterGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterGraphN::add(self : GraphtreecenterGraphN, other : GraphtreecenterGraphN) -> GraphtreecenterGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_graphn_copy(s : GraphtreecenterGraphN) -> GraphtreecenterGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterGraphN::copy(self : GraphtreecenterGraphN) -> GraphtreecenterGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_graphn_fill(s : GraphtreecenterGraphN, v : Double) -> GraphtreecenterGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterGraphN::fill(self : GraphtreecenterGraphN, v : Double) -> GraphtreecenterGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_graphn_min(s : GraphtreecenterGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterGraphN::min(self : GraphtreecenterGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_graphn_max(s : GraphtreecenterGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterGraphN::max(self : GraphtreecenterGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_graphn_to_string(s : GraphtreecenterGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterGraphN::to_string(self : GraphtreecenterGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterNode {
@@ -504,45 +504,45 @@ pub fn graph_tree_center_node_make(size : Int) -> GraphtreecenterNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_node_len(s : GraphtreecenterNode) -> Int { s.size }
+pub fn GraphtreecenterNode::len(self : GraphtreecenterNode) -> Int { self.size }
 
-pub fn graph_tree_center_node_get(s : GraphtreecenterNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterNode::get(self : GraphtreecenterNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_node_set(s : GraphtreecenterNode, i : Int, v : Double) -> GraphtreecenterNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterNode::set(self : GraphtreecenterNode, i : Int, v : Double) -> GraphtreecenterNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_node_sum(s : GraphtreecenterNode) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterNode::sum(self : GraphtreecenterNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_node_mean(s : GraphtreecenterNode) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterNode::mean(self : GraphtreecenterNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_node_scale(s : GraphtreecenterNode, f : Double) -> GraphtreecenterNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterNode::scale(self : GraphtreecenterNode, f : Double) -> GraphtreecenterNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_node_add(a : GraphtreecenterNode, b : GraphtreecenterNode) -> GraphtreecenterNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterNode::add(self : GraphtreecenterNode, other : GraphtreecenterNode) -> GraphtreecenterNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_node_copy(s : GraphtreecenterNode) -> GraphtreecenterNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterNode::copy(self : GraphtreecenterNode) -> GraphtreecenterNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_node_fill(s : GraphtreecenterNode, v : Double) -> GraphtreecenterNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterNode::fill(self : GraphtreecenterNode, v : Double) -> GraphtreecenterNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_node_min(s : GraphtreecenterNode) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterNode::min(self : GraphtreecenterNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_node_max(s : GraphtreecenterNode) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterNode::max(self : GraphtreecenterNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_node_to_string(s : GraphtreecenterNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterNode::to_string(self : GraphtreecenterNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterEdge {
@@ -555,45 +555,45 @@ pub fn graph_tree_center_edge_make(size : Int) -> GraphtreecenterEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_edge_len(s : GraphtreecenterEdge) -> Int { s.size }
+pub fn GraphtreecenterEdge::len(self : GraphtreecenterEdge) -> Int { self.size }
 
-pub fn graph_tree_center_edge_get(s : GraphtreecenterEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterEdge::get(self : GraphtreecenterEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_edge_set(s : GraphtreecenterEdge, i : Int, v : Double) -> GraphtreecenterEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterEdge::set(self : GraphtreecenterEdge, i : Int, v : Double) -> GraphtreecenterEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_edge_sum(s : GraphtreecenterEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterEdge::sum(self : GraphtreecenterEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_edge_mean(s : GraphtreecenterEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterEdge::mean(self : GraphtreecenterEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_edge_scale(s : GraphtreecenterEdge, f : Double) -> GraphtreecenterEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterEdge::scale(self : GraphtreecenterEdge, f : Double) -> GraphtreecenterEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_edge_add(a : GraphtreecenterEdge, b : GraphtreecenterEdge) -> GraphtreecenterEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterEdge::add(self : GraphtreecenterEdge, other : GraphtreecenterEdge) -> GraphtreecenterEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_edge_copy(s : GraphtreecenterEdge) -> GraphtreecenterEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterEdge::copy(self : GraphtreecenterEdge) -> GraphtreecenterEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_edge_fill(s : GraphtreecenterEdge, v : Double) -> GraphtreecenterEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterEdge::fill(self : GraphtreecenterEdge, v : Double) -> GraphtreecenterEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_edge_min(s : GraphtreecenterEdge) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterEdge::min(self : GraphtreecenterEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_edge_max(s : GraphtreecenterEdge) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterEdge::max(self : GraphtreecenterEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_edge_to_string(s : GraphtreecenterEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterEdge::to_string(self : GraphtreecenterEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterPath {
@@ -606,45 +606,45 @@ pub fn graph_tree_center_path_make(size : Int) -> GraphtreecenterPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_path_len(s : GraphtreecenterPath) -> Int { s.size }
+pub fn GraphtreecenterPath::len(self : GraphtreecenterPath) -> Int { self.size }
 
-pub fn graph_tree_center_path_get(s : GraphtreecenterPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterPath::get(self : GraphtreecenterPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_path_set(s : GraphtreecenterPath, i : Int, v : Double) -> GraphtreecenterPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterPath::set(self : GraphtreecenterPath, i : Int, v : Double) -> GraphtreecenterPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_path_sum(s : GraphtreecenterPath) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterPath::sum(self : GraphtreecenterPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_path_mean(s : GraphtreecenterPath) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterPath::mean(self : GraphtreecenterPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_path_scale(s : GraphtreecenterPath, f : Double) -> GraphtreecenterPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterPath::scale(self : GraphtreecenterPath, f : Double) -> GraphtreecenterPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_path_add(a : GraphtreecenterPath, b : GraphtreecenterPath) -> GraphtreecenterPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterPath::add(self : GraphtreecenterPath, other : GraphtreecenterPath) -> GraphtreecenterPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_path_copy(s : GraphtreecenterPath) -> GraphtreecenterPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterPath::copy(self : GraphtreecenterPath) -> GraphtreecenterPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_path_fill(s : GraphtreecenterPath, v : Double) -> GraphtreecenterPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterPath::fill(self : GraphtreecenterPath, v : Double) -> GraphtreecenterPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_path_min(s : GraphtreecenterPath) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterPath::min(self : GraphtreecenterPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_path_max(s : GraphtreecenterPath) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterPath::max(self : GraphtreecenterPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_path_to_string(s : GraphtreecenterPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterPath::to_string(self : GraphtreecenterPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterCluster {
@@ -657,45 +657,45 @@ pub fn graph_tree_center_cluster_make(size : Int) -> GraphtreecenterCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_cluster_len(s : GraphtreecenterCluster) -> Int { s.size }
+pub fn GraphtreecenterCluster::len(self : GraphtreecenterCluster) -> Int { self.size }
 
-pub fn graph_tree_center_cluster_get(s : GraphtreecenterCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterCluster::get(self : GraphtreecenterCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_cluster_set(s : GraphtreecenterCluster, i : Int, v : Double) -> GraphtreecenterCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterCluster::set(self : GraphtreecenterCluster, i : Int, v : Double) -> GraphtreecenterCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cluster_sum(s : GraphtreecenterCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterCluster::sum(self : GraphtreecenterCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_cluster_mean(s : GraphtreecenterCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterCluster::mean(self : GraphtreecenterCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_cluster_scale(s : GraphtreecenterCluster, f : Double) -> GraphtreecenterCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterCluster::scale(self : GraphtreecenterCluster, f : Double) -> GraphtreecenterCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cluster_add(a : GraphtreecenterCluster, b : GraphtreecenterCluster) -> GraphtreecenterCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterCluster::add(self : GraphtreecenterCluster, other : GraphtreecenterCluster) -> GraphtreecenterCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_cluster_copy(s : GraphtreecenterCluster) -> GraphtreecenterCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterCluster::copy(self : GraphtreecenterCluster) -> GraphtreecenterCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cluster_fill(s : GraphtreecenterCluster, v : Double) -> GraphtreecenterCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterCluster::fill(self : GraphtreecenterCluster, v : Double) -> GraphtreecenterCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cluster_min(s : GraphtreecenterCluster) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterCluster::min(self : GraphtreecenterCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_cluster_max(s : GraphtreecenterCluster) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterCluster::max(self : GraphtreecenterCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_cluster_to_string(s : GraphtreecenterCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterCluster::to_string(self : GraphtreecenterCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterModel {
@@ -708,45 +708,45 @@ pub fn graph_tree_center_model_make(size : Int) -> GraphtreecenterModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_model_len(s : GraphtreecenterModel) -> Int { s.size }
+pub fn GraphtreecenterModel::len(self : GraphtreecenterModel) -> Int { self.size }
 
-pub fn graph_tree_center_model_get(s : GraphtreecenterModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterModel::get(self : GraphtreecenterModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_model_set(s : GraphtreecenterModel, i : Int, v : Double) -> GraphtreecenterModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterModel::set(self : GraphtreecenterModel, i : Int, v : Double) -> GraphtreecenterModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_model_sum(s : GraphtreecenterModel) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterModel::sum(self : GraphtreecenterModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_model_mean(s : GraphtreecenterModel) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterModel::mean(self : GraphtreecenterModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_model_scale(s : GraphtreecenterModel, f : Double) -> GraphtreecenterModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterModel::scale(self : GraphtreecenterModel, f : Double) -> GraphtreecenterModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_model_add(a : GraphtreecenterModel, b : GraphtreecenterModel) -> GraphtreecenterModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterModel::add(self : GraphtreecenterModel, other : GraphtreecenterModel) -> GraphtreecenterModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_model_copy(s : GraphtreecenterModel) -> GraphtreecenterModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterModel::copy(self : GraphtreecenterModel) -> GraphtreecenterModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_model_fill(s : GraphtreecenterModel, v : Double) -> GraphtreecenterModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterModel::fill(self : GraphtreecenterModel, v : Double) -> GraphtreecenterModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_model_min(s : GraphtreecenterModel) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterModel::min(self : GraphtreecenterModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_model_max(s : GraphtreecenterModel) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterModel::max(self : GraphtreecenterModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_model_to_string(s : GraphtreecenterModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterModel::to_string(self : GraphtreecenterModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterLayer {
@@ -759,45 +759,45 @@ pub fn graph_tree_center_layer_make(size : Int) -> GraphtreecenterLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_layer_len(s : GraphtreecenterLayer) -> Int { s.size }
+pub fn GraphtreecenterLayer::len(self : GraphtreecenterLayer) -> Int { self.size }
 
-pub fn graph_tree_center_layer_get(s : GraphtreecenterLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterLayer::get(self : GraphtreecenterLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_layer_set(s : GraphtreecenterLayer, i : Int, v : Double) -> GraphtreecenterLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterLayer::set(self : GraphtreecenterLayer, i : Int, v : Double) -> GraphtreecenterLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_layer_sum(s : GraphtreecenterLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterLayer::sum(self : GraphtreecenterLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_layer_mean(s : GraphtreecenterLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterLayer::mean(self : GraphtreecenterLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_layer_scale(s : GraphtreecenterLayer, f : Double) -> GraphtreecenterLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterLayer::scale(self : GraphtreecenterLayer, f : Double) -> GraphtreecenterLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_layer_add(a : GraphtreecenterLayer, b : GraphtreecenterLayer) -> GraphtreecenterLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterLayer::add(self : GraphtreecenterLayer, other : GraphtreecenterLayer) -> GraphtreecenterLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_layer_copy(s : GraphtreecenterLayer) -> GraphtreecenterLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterLayer::copy(self : GraphtreecenterLayer) -> GraphtreecenterLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_layer_fill(s : GraphtreecenterLayer, v : Double) -> GraphtreecenterLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterLayer::fill(self : GraphtreecenterLayer, v : Double) -> GraphtreecenterLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_layer_min(s : GraphtreecenterLayer) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterLayer::min(self : GraphtreecenterLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_layer_max(s : GraphtreecenterLayer) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterLayer::max(self : GraphtreecenterLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_layer_to_string(s : GraphtreecenterLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterLayer::to_string(self : GraphtreecenterLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterBuffer {
@@ -810,45 +810,45 @@ pub fn graph_tree_center_buffer_make(size : Int) -> GraphtreecenterBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_buffer_len(s : GraphtreecenterBuffer) -> Int { s.size }
+pub fn GraphtreecenterBuffer::len(self : GraphtreecenterBuffer) -> Int { self.size }
 
-pub fn graph_tree_center_buffer_get(s : GraphtreecenterBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterBuffer::get(self : GraphtreecenterBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_buffer_set(s : GraphtreecenterBuffer, i : Int, v : Double) -> GraphtreecenterBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterBuffer::set(self : GraphtreecenterBuffer, i : Int, v : Double) -> GraphtreecenterBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_buffer_sum(s : GraphtreecenterBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterBuffer::sum(self : GraphtreecenterBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_buffer_mean(s : GraphtreecenterBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterBuffer::mean(self : GraphtreecenterBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_buffer_scale(s : GraphtreecenterBuffer, f : Double) -> GraphtreecenterBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterBuffer::scale(self : GraphtreecenterBuffer, f : Double) -> GraphtreecenterBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_buffer_add(a : GraphtreecenterBuffer, b : GraphtreecenterBuffer) -> GraphtreecenterBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterBuffer::add(self : GraphtreecenterBuffer, other : GraphtreecenterBuffer) -> GraphtreecenterBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_buffer_copy(s : GraphtreecenterBuffer) -> GraphtreecenterBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterBuffer::copy(self : GraphtreecenterBuffer) -> GraphtreecenterBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_buffer_fill(s : GraphtreecenterBuffer, v : Double) -> GraphtreecenterBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterBuffer::fill(self : GraphtreecenterBuffer, v : Double) -> GraphtreecenterBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_buffer_min(s : GraphtreecenterBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterBuffer::min(self : GraphtreecenterBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_buffer_max(s : GraphtreecenterBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterBuffer::max(self : GraphtreecenterBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_buffer_to_string(s : GraphtreecenterBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterBuffer::to_string(self : GraphtreecenterBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterCursor {
@@ -861,45 +861,45 @@ pub fn graph_tree_center_cursor_make(size : Int) -> GraphtreecenterCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_cursor_len(s : GraphtreecenterCursor) -> Int { s.size }
+pub fn GraphtreecenterCursor::len(self : GraphtreecenterCursor) -> Int { self.size }
 
-pub fn graph_tree_center_cursor_get(s : GraphtreecenterCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterCursor::get(self : GraphtreecenterCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_cursor_set(s : GraphtreecenterCursor, i : Int, v : Double) -> GraphtreecenterCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterCursor::set(self : GraphtreecenterCursor, i : Int, v : Double) -> GraphtreecenterCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cursor_sum(s : GraphtreecenterCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterCursor::sum(self : GraphtreecenterCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_cursor_mean(s : GraphtreecenterCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterCursor::mean(self : GraphtreecenterCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_cursor_scale(s : GraphtreecenterCursor, f : Double) -> GraphtreecenterCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterCursor::scale(self : GraphtreecenterCursor, f : Double) -> GraphtreecenterCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cursor_add(a : GraphtreecenterCursor, b : GraphtreecenterCursor) -> GraphtreecenterCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterCursor::add(self : GraphtreecenterCursor, other : GraphtreecenterCursor) -> GraphtreecenterCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_cursor_copy(s : GraphtreecenterCursor) -> GraphtreecenterCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterCursor::copy(self : GraphtreecenterCursor) -> GraphtreecenterCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cursor_fill(s : GraphtreecenterCursor, v : Double) -> GraphtreecenterCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterCursor::fill(self : GraphtreecenterCursor, v : Double) -> GraphtreecenterCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_cursor_min(s : GraphtreecenterCursor) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterCursor::min(self : GraphtreecenterCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_cursor_max(s : GraphtreecenterCursor) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterCursor::max(self : GraphtreecenterCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_cursor_to_string(s : GraphtreecenterCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterCursor::to_string(self : GraphtreecenterCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterView {
@@ -912,45 +912,45 @@ pub fn graph_tree_center_view_make(size : Int) -> GraphtreecenterView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_view_len(s : GraphtreecenterView) -> Int { s.size }
+pub fn GraphtreecenterView::len(self : GraphtreecenterView) -> Int { self.size }
 
-pub fn graph_tree_center_view_get(s : GraphtreecenterView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterView::get(self : GraphtreecenterView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_view_set(s : GraphtreecenterView, i : Int, v : Double) -> GraphtreecenterView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterView::set(self : GraphtreecenterView, i : Int, v : Double) -> GraphtreecenterView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_view_sum(s : GraphtreecenterView) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterView::sum(self : GraphtreecenterView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_view_mean(s : GraphtreecenterView) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterView::mean(self : GraphtreecenterView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_view_scale(s : GraphtreecenterView, f : Double) -> GraphtreecenterView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterView::scale(self : GraphtreecenterView, f : Double) -> GraphtreecenterView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_view_add(a : GraphtreecenterView, b : GraphtreecenterView) -> GraphtreecenterView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterView::add(self : GraphtreecenterView, other : GraphtreecenterView) -> GraphtreecenterView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_view_copy(s : GraphtreecenterView) -> GraphtreecenterView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterView::copy(self : GraphtreecenterView) -> GraphtreecenterView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_view_fill(s : GraphtreecenterView, v : Double) -> GraphtreecenterView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterView::fill(self : GraphtreecenterView, v : Double) -> GraphtreecenterView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_view_min(s : GraphtreecenterView) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterView::min(self : GraphtreecenterView) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_view_max(s : GraphtreecenterView) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterView::max(self : GraphtreecenterView) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_view_to_string(s : GraphtreecenterView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterView::to_string(self : GraphtreecenterView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterRange {
@@ -963,45 +963,45 @@ pub fn graph_tree_center_range_make(size : Int) -> GraphtreecenterRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_range_len(s : GraphtreecenterRange) -> Int { s.size }
+pub fn GraphtreecenterRange::len(self : GraphtreecenterRange) -> Int { self.size }
 
-pub fn graph_tree_center_range_get(s : GraphtreecenterRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterRange::get(self : GraphtreecenterRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_range_set(s : GraphtreecenterRange, i : Int, v : Double) -> GraphtreecenterRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterRange::set(self : GraphtreecenterRange, i : Int, v : Double) -> GraphtreecenterRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_range_sum(s : GraphtreecenterRange) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterRange::sum(self : GraphtreecenterRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_range_mean(s : GraphtreecenterRange) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterRange::mean(self : GraphtreecenterRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_range_scale(s : GraphtreecenterRange, f : Double) -> GraphtreecenterRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterRange::scale(self : GraphtreecenterRange, f : Double) -> GraphtreecenterRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_range_add(a : GraphtreecenterRange, b : GraphtreecenterRange) -> GraphtreecenterRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterRange::add(self : GraphtreecenterRange, other : GraphtreecenterRange) -> GraphtreecenterRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_range_copy(s : GraphtreecenterRange) -> GraphtreecenterRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterRange::copy(self : GraphtreecenterRange) -> GraphtreecenterRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_range_fill(s : GraphtreecenterRange, v : Double) -> GraphtreecenterRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterRange::fill(self : GraphtreecenterRange, v : Double) -> GraphtreecenterRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_range_min(s : GraphtreecenterRange) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterRange::min(self : GraphtreecenterRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_range_max(s : GraphtreecenterRange) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterRange::max(self : GraphtreecenterRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_range_to_string(s : GraphtreecenterRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterRange::to_string(self : GraphtreecenterRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreecenterSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_tree_center_slice_make(size : Int) -> GraphtreecenterSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_center_slice_len(s : GraphtreecenterSlice) -> Int { s.size }
+pub fn GraphtreecenterSlice::len(self : GraphtreecenterSlice) -> Int { self.size }
 
-pub fn graph_tree_center_slice_get(s : GraphtreecenterSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreecenterSlice::get(self : GraphtreecenterSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_center_slice_set(s : GraphtreecenterSlice, i : Int, v : Double) -> GraphtreecenterSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreecenterSlice::set(self : GraphtreecenterSlice, i : Int, v : Double) -> GraphtreecenterSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_slice_sum(s : GraphtreecenterSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphtreecenterSlice::sum(self : GraphtreecenterSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_center_slice_mean(s : GraphtreecenterSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphtreecenterSlice::mean(self : GraphtreecenterSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_center_slice_scale(s : GraphtreecenterSlice, f : Double) -> GraphtreecenterSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreecenterSlice::scale(self : GraphtreecenterSlice, f : Double) -> GraphtreecenterSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_slice_add(a : GraphtreecenterSlice, b : GraphtreecenterSlice) -> GraphtreecenterSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreecenterSlice::add(self : GraphtreecenterSlice, other : GraphtreecenterSlice) -> GraphtreecenterSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_center_slice_copy(s : GraphtreecenterSlice) -> GraphtreecenterSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreecenterSlice::copy(self : GraphtreecenterSlice) -> GraphtreecenterSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_slice_fill(s : GraphtreecenterSlice, v : Double) -> GraphtreecenterSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreecenterSlice::fill(self : GraphtreecenterSlice, v : Double) -> GraphtreecenterSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_center_slice_min(s : GraphtreecenterSlice) -> Double { @_common.min(s.data) }
+pub fn GraphtreecenterSlice::min(self : GraphtreecenterSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_center_slice_max(s : GraphtreecenterSlice) -> Double { @_common.max(s.data) }
+pub fn GraphtreecenterSlice::max(self : GraphtreecenterSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_center_slice_to_string(s : GraphtreecenterSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreecenterSlice::to_string(self : GraphtreecenterSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

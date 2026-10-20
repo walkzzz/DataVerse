@@ -351,45 +351,45 @@ pub fn net_sec_tls_frame_make(size : Int) -> NetsectlsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_frame_len(s : NetsectlsFrame) -> Int { s.size }
+pub fn NetsectlsFrame::len(self : NetsectlsFrame) -> Int { self.size }
 
-pub fn net_sec_tls_frame_get(s : NetsectlsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsFrame::get(self : NetsectlsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_frame_set(s : NetsectlsFrame, i : Int, v : Double) -> NetsectlsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsFrame::set(self : NetsectlsFrame, i : Int, v : Double) -> NetsectlsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_frame_sum(s : NetsectlsFrame) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsFrame::sum(self : NetsectlsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_frame_mean(s : NetsectlsFrame) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsFrame::mean(self : NetsectlsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_frame_scale(s : NetsectlsFrame, f : Double) -> NetsectlsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsFrame::scale(self : NetsectlsFrame, f : Double) -> NetsectlsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_frame_add(a : NetsectlsFrame, b : NetsectlsFrame) -> NetsectlsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsFrame::add(self : NetsectlsFrame, other : NetsectlsFrame) -> NetsectlsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_frame_copy(s : NetsectlsFrame) -> NetsectlsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsFrame::copy(self : NetsectlsFrame) -> NetsectlsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_frame_fill(s : NetsectlsFrame, v : Double) -> NetsectlsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsFrame::fill(self : NetsectlsFrame, v : Double) -> NetsectlsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_frame_min(s : NetsectlsFrame) -> Double { @_common.min(s.data) }
+pub fn NetsectlsFrame::min(self : NetsectlsFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_frame_max(s : NetsectlsFrame) -> Double { @_common.max(s.data) }
+pub fn NetsectlsFrame::max(self : NetsectlsFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_frame_to_string(s : NetsectlsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsFrame::to_string(self : NetsectlsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsTable {
@@ -402,45 +402,45 @@ pub fn net_sec_tls_table_make(size : Int) -> NetsectlsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_table_len(s : NetsectlsTable) -> Int { s.size }
+pub fn NetsectlsTable::len(self : NetsectlsTable) -> Int { self.size }
 
-pub fn net_sec_tls_table_get(s : NetsectlsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsTable::get(self : NetsectlsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_table_set(s : NetsectlsTable, i : Int, v : Double) -> NetsectlsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsTable::set(self : NetsectlsTable, i : Int, v : Double) -> NetsectlsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_table_sum(s : NetsectlsTable) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsTable::sum(self : NetsectlsTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_table_mean(s : NetsectlsTable) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsTable::mean(self : NetsectlsTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_table_scale(s : NetsectlsTable, f : Double) -> NetsectlsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsTable::scale(self : NetsectlsTable, f : Double) -> NetsectlsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_table_add(a : NetsectlsTable, b : NetsectlsTable) -> NetsectlsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsTable::add(self : NetsectlsTable, other : NetsectlsTable) -> NetsectlsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_table_copy(s : NetsectlsTable) -> NetsectlsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsTable::copy(self : NetsectlsTable) -> NetsectlsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_table_fill(s : NetsectlsTable, v : Double) -> NetsectlsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsTable::fill(self : NetsectlsTable, v : Double) -> NetsectlsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_table_min(s : NetsectlsTable) -> Double { @_common.min(s.data) }
+pub fn NetsectlsTable::min(self : NetsectlsTable) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_table_max(s : NetsectlsTable) -> Double { @_common.max(s.data) }
+pub fn NetsectlsTable::max(self : NetsectlsTable) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_table_to_string(s : NetsectlsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsTable::to_string(self : NetsectlsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsGraphN {
@@ -453,45 +453,45 @@ pub fn net_sec_tls_graphn_make(size : Int) -> NetsectlsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_graphn_len(s : NetsectlsGraphN) -> Int { s.size }
+pub fn NetsectlsGraphN::len(self : NetsectlsGraphN) -> Int { self.size }
 
-pub fn net_sec_tls_graphn_get(s : NetsectlsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsGraphN::get(self : NetsectlsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_graphn_set(s : NetsectlsGraphN, i : Int, v : Double) -> NetsectlsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsGraphN::set(self : NetsectlsGraphN, i : Int, v : Double) -> NetsectlsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_graphn_sum(s : NetsectlsGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsGraphN::sum(self : NetsectlsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_graphn_mean(s : NetsectlsGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsGraphN::mean(self : NetsectlsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_graphn_scale(s : NetsectlsGraphN, f : Double) -> NetsectlsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsGraphN::scale(self : NetsectlsGraphN, f : Double) -> NetsectlsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_graphn_add(a : NetsectlsGraphN, b : NetsectlsGraphN) -> NetsectlsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsGraphN::add(self : NetsectlsGraphN, other : NetsectlsGraphN) -> NetsectlsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_graphn_copy(s : NetsectlsGraphN) -> NetsectlsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsGraphN::copy(self : NetsectlsGraphN) -> NetsectlsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_graphn_fill(s : NetsectlsGraphN, v : Double) -> NetsectlsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsGraphN::fill(self : NetsectlsGraphN, v : Double) -> NetsectlsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_graphn_min(s : NetsectlsGraphN) -> Double { @_common.min(s.data) }
+pub fn NetsectlsGraphN::min(self : NetsectlsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_graphn_max(s : NetsectlsGraphN) -> Double { @_common.max(s.data) }
+pub fn NetsectlsGraphN::max(self : NetsectlsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_graphn_to_string(s : NetsectlsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsGraphN::to_string(self : NetsectlsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsNode {
@@ -504,45 +504,45 @@ pub fn net_sec_tls_node_make(size : Int) -> NetsectlsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_node_len(s : NetsectlsNode) -> Int { s.size }
+pub fn NetsectlsNode::len(self : NetsectlsNode) -> Int { self.size }
 
-pub fn net_sec_tls_node_get(s : NetsectlsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsNode::get(self : NetsectlsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_node_set(s : NetsectlsNode, i : Int, v : Double) -> NetsectlsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsNode::set(self : NetsectlsNode, i : Int, v : Double) -> NetsectlsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_node_sum(s : NetsectlsNode) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsNode::sum(self : NetsectlsNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_node_mean(s : NetsectlsNode) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsNode::mean(self : NetsectlsNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_node_scale(s : NetsectlsNode, f : Double) -> NetsectlsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsNode::scale(self : NetsectlsNode, f : Double) -> NetsectlsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_node_add(a : NetsectlsNode, b : NetsectlsNode) -> NetsectlsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsNode::add(self : NetsectlsNode, other : NetsectlsNode) -> NetsectlsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_node_copy(s : NetsectlsNode) -> NetsectlsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsNode::copy(self : NetsectlsNode) -> NetsectlsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_node_fill(s : NetsectlsNode, v : Double) -> NetsectlsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsNode::fill(self : NetsectlsNode, v : Double) -> NetsectlsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_node_min(s : NetsectlsNode) -> Double { @_common.min(s.data) }
+pub fn NetsectlsNode::min(self : NetsectlsNode) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_node_max(s : NetsectlsNode) -> Double { @_common.max(s.data) }
+pub fn NetsectlsNode::max(self : NetsectlsNode) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_node_to_string(s : NetsectlsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsNode::to_string(self : NetsectlsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsEdge {
@@ -555,45 +555,45 @@ pub fn net_sec_tls_edge_make(size : Int) -> NetsectlsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_edge_len(s : NetsectlsEdge) -> Int { s.size }
+pub fn NetsectlsEdge::len(self : NetsectlsEdge) -> Int { self.size }
 
-pub fn net_sec_tls_edge_get(s : NetsectlsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsEdge::get(self : NetsectlsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_edge_set(s : NetsectlsEdge, i : Int, v : Double) -> NetsectlsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsEdge::set(self : NetsectlsEdge, i : Int, v : Double) -> NetsectlsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_edge_sum(s : NetsectlsEdge) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsEdge::sum(self : NetsectlsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_edge_mean(s : NetsectlsEdge) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsEdge::mean(self : NetsectlsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_edge_scale(s : NetsectlsEdge, f : Double) -> NetsectlsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsEdge::scale(self : NetsectlsEdge, f : Double) -> NetsectlsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_edge_add(a : NetsectlsEdge, b : NetsectlsEdge) -> NetsectlsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsEdge::add(self : NetsectlsEdge, other : NetsectlsEdge) -> NetsectlsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_edge_copy(s : NetsectlsEdge) -> NetsectlsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsEdge::copy(self : NetsectlsEdge) -> NetsectlsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_edge_fill(s : NetsectlsEdge, v : Double) -> NetsectlsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsEdge::fill(self : NetsectlsEdge, v : Double) -> NetsectlsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_edge_min(s : NetsectlsEdge) -> Double { @_common.min(s.data) }
+pub fn NetsectlsEdge::min(self : NetsectlsEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_edge_max(s : NetsectlsEdge) -> Double { @_common.max(s.data) }
+pub fn NetsectlsEdge::max(self : NetsectlsEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_edge_to_string(s : NetsectlsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsEdge::to_string(self : NetsectlsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsPath {
@@ -606,45 +606,45 @@ pub fn net_sec_tls_path_make(size : Int) -> NetsectlsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_path_len(s : NetsectlsPath) -> Int { s.size }
+pub fn NetsectlsPath::len(self : NetsectlsPath) -> Int { self.size }
 
-pub fn net_sec_tls_path_get(s : NetsectlsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsPath::get(self : NetsectlsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_path_set(s : NetsectlsPath, i : Int, v : Double) -> NetsectlsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsPath::set(self : NetsectlsPath, i : Int, v : Double) -> NetsectlsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_path_sum(s : NetsectlsPath) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsPath::sum(self : NetsectlsPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_path_mean(s : NetsectlsPath) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsPath::mean(self : NetsectlsPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_path_scale(s : NetsectlsPath, f : Double) -> NetsectlsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsPath::scale(self : NetsectlsPath, f : Double) -> NetsectlsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_path_add(a : NetsectlsPath, b : NetsectlsPath) -> NetsectlsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsPath::add(self : NetsectlsPath, other : NetsectlsPath) -> NetsectlsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_path_copy(s : NetsectlsPath) -> NetsectlsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsPath::copy(self : NetsectlsPath) -> NetsectlsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_path_fill(s : NetsectlsPath, v : Double) -> NetsectlsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsPath::fill(self : NetsectlsPath, v : Double) -> NetsectlsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_path_min(s : NetsectlsPath) -> Double { @_common.min(s.data) }
+pub fn NetsectlsPath::min(self : NetsectlsPath) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_path_max(s : NetsectlsPath) -> Double { @_common.max(s.data) }
+pub fn NetsectlsPath::max(self : NetsectlsPath) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_path_to_string(s : NetsectlsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsPath::to_string(self : NetsectlsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsCluster {
@@ -657,45 +657,45 @@ pub fn net_sec_tls_cluster_make(size : Int) -> NetsectlsCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_cluster_len(s : NetsectlsCluster) -> Int { s.size }
+pub fn NetsectlsCluster::len(self : NetsectlsCluster) -> Int { self.size }
 
-pub fn net_sec_tls_cluster_get(s : NetsectlsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsCluster::get(self : NetsectlsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_cluster_set(s : NetsectlsCluster, i : Int, v : Double) -> NetsectlsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsCluster::set(self : NetsectlsCluster, i : Int, v : Double) -> NetsectlsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cluster_sum(s : NetsectlsCluster) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsCluster::sum(self : NetsectlsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_cluster_mean(s : NetsectlsCluster) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsCluster::mean(self : NetsectlsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_cluster_scale(s : NetsectlsCluster, f : Double) -> NetsectlsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsCluster::scale(self : NetsectlsCluster, f : Double) -> NetsectlsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cluster_add(a : NetsectlsCluster, b : NetsectlsCluster) -> NetsectlsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsCluster::add(self : NetsectlsCluster, other : NetsectlsCluster) -> NetsectlsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_cluster_copy(s : NetsectlsCluster) -> NetsectlsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsCluster::copy(self : NetsectlsCluster) -> NetsectlsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cluster_fill(s : NetsectlsCluster, v : Double) -> NetsectlsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsCluster::fill(self : NetsectlsCluster, v : Double) -> NetsectlsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cluster_min(s : NetsectlsCluster) -> Double { @_common.min(s.data) }
+pub fn NetsectlsCluster::min(self : NetsectlsCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_cluster_max(s : NetsectlsCluster) -> Double { @_common.max(s.data) }
+pub fn NetsectlsCluster::max(self : NetsectlsCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_cluster_to_string(s : NetsectlsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsCluster::to_string(self : NetsectlsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsModel {
@@ -708,45 +708,45 @@ pub fn net_sec_tls_model_make(size : Int) -> NetsectlsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_model_len(s : NetsectlsModel) -> Int { s.size }
+pub fn NetsectlsModel::len(self : NetsectlsModel) -> Int { self.size }
 
-pub fn net_sec_tls_model_get(s : NetsectlsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsModel::get(self : NetsectlsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_model_set(s : NetsectlsModel, i : Int, v : Double) -> NetsectlsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsModel::set(self : NetsectlsModel, i : Int, v : Double) -> NetsectlsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_model_sum(s : NetsectlsModel) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsModel::sum(self : NetsectlsModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_model_mean(s : NetsectlsModel) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsModel::mean(self : NetsectlsModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_model_scale(s : NetsectlsModel, f : Double) -> NetsectlsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsModel::scale(self : NetsectlsModel, f : Double) -> NetsectlsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_model_add(a : NetsectlsModel, b : NetsectlsModel) -> NetsectlsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsModel::add(self : NetsectlsModel, other : NetsectlsModel) -> NetsectlsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_model_copy(s : NetsectlsModel) -> NetsectlsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsModel::copy(self : NetsectlsModel) -> NetsectlsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_model_fill(s : NetsectlsModel, v : Double) -> NetsectlsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsModel::fill(self : NetsectlsModel, v : Double) -> NetsectlsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_model_min(s : NetsectlsModel) -> Double { @_common.min(s.data) }
+pub fn NetsectlsModel::min(self : NetsectlsModel) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_model_max(s : NetsectlsModel) -> Double { @_common.max(s.data) }
+pub fn NetsectlsModel::max(self : NetsectlsModel) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_model_to_string(s : NetsectlsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsModel::to_string(self : NetsectlsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsLayer {
@@ -759,45 +759,45 @@ pub fn net_sec_tls_layer_make(size : Int) -> NetsectlsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_layer_len(s : NetsectlsLayer) -> Int { s.size }
+pub fn NetsectlsLayer::len(self : NetsectlsLayer) -> Int { self.size }
 
-pub fn net_sec_tls_layer_get(s : NetsectlsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsLayer::get(self : NetsectlsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_layer_set(s : NetsectlsLayer, i : Int, v : Double) -> NetsectlsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsLayer::set(self : NetsectlsLayer, i : Int, v : Double) -> NetsectlsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_layer_sum(s : NetsectlsLayer) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsLayer::sum(self : NetsectlsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_layer_mean(s : NetsectlsLayer) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsLayer::mean(self : NetsectlsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_layer_scale(s : NetsectlsLayer, f : Double) -> NetsectlsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsLayer::scale(self : NetsectlsLayer, f : Double) -> NetsectlsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_layer_add(a : NetsectlsLayer, b : NetsectlsLayer) -> NetsectlsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsLayer::add(self : NetsectlsLayer, other : NetsectlsLayer) -> NetsectlsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_layer_copy(s : NetsectlsLayer) -> NetsectlsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsLayer::copy(self : NetsectlsLayer) -> NetsectlsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_layer_fill(s : NetsectlsLayer, v : Double) -> NetsectlsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsLayer::fill(self : NetsectlsLayer, v : Double) -> NetsectlsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_layer_min(s : NetsectlsLayer) -> Double { @_common.min(s.data) }
+pub fn NetsectlsLayer::min(self : NetsectlsLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_layer_max(s : NetsectlsLayer) -> Double { @_common.max(s.data) }
+pub fn NetsectlsLayer::max(self : NetsectlsLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_layer_to_string(s : NetsectlsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsLayer::to_string(self : NetsectlsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsBuffer {
@@ -810,45 +810,45 @@ pub fn net_sec_tls_buffer_make(size : Int) -> NetsectlsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_buffer_len(s : NetsectlsBuffer) -> Int { s.size }
+pub fn NetsectlsBuffer::len(self : NetsectlsBuffer) -> Int { self.size }
 
-pub fn net_sec_tls_buffer_get(s : NetsectlsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsBuffer::get(self : NetsectlsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_buffer_set(s : NetsectlsBuffer, i : Int, v : Double) -> NetsectlsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsBuffer::set(self : NetsectlsBuffer, i : Int, v : Double) -> NetsectlsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_buffer_sum(s : NetsectlsBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsBuffer::sum(self : NetsectlsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_buffer_mean(s : NetsectlsBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsBuffer::mean(self : NetsectlsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_buffer_scale(s : NetsectlsBuffer, f : Double) -> NetsectlsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsBuffer::scale(self : NetsectlsBuffer, f : Double) -> NetsectlsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_buffer_add(a : NetsectlsBuffer, b : NetsectlsBuffer) -> NetsectlsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsBuffer::add(self : NetsectlsBuffer, other : NetsectlsBuffer) -> NetsectlsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_buffer_copy(s : NetsectlsBuffer) -> NetsectlsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsBuffer::copy(self : NetsectlsBuffer) -> NetsectlsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_buffer_fill(s : NetsectlsBuffer, v : Double) -> NetsectlsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsBuffer::fill(self : NetsectlsBuffer, v : Double) -> NetsectlsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_buffer_min(s : NetsectlsBuffer) -> Double { @_common.min(s.data) }
+pub fn NetsectlsBuffer::min(self : NetsectlsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_buffer_max(s : NetsectlsBuffer) -> Double { @_common.max(s.data) }
+pub fn NetsectlsBuffer::max(self : NetsectlsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_buffer_to_string(s : NetsectlsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsBuffer::to_string(self : NetsectlsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsCursor {
@@ -861,45 +861,45 @@ pub fn net_sec_tls_cursor_make(size : Int) -> NetsectlsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_cursor_len(s : NetsectlsCursor) -> Int { s.size }
+pub fn NetsectlsCursor::len(self : NetsectlsCursor) -> Int { self.size }
 
-pub fn net_sec_tls_cursor_get(s : NetsectlsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsCursor::get(self : NetsectlsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_cursor_set(s : NetsectlsCursor, i : Int, v : Double) -> NetsectlsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsCursor::set(self : NetsectlsCursor, i : Int, v : Double) -> NetsectlsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cursor_sum(s : NetsectlsCursor) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsCursor::sum(self : NetsectlsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_cursor_mean(s : NetsectlsCursor) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsCursor::mean(self : NetsectlsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_cursor_scale(s : NetsectlsCursor, f : Double) -> NetsectlsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsCursor::scale(self : NetsectlsCursor, f : Double) -> NetsectlsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cursor_add(a : NetsectlsCursor, b : NetsectlsCursor) -> NetsectlsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsCursor::add(self : NetsectlsCursor, other : NetsectlsCursor) -> NetsectlsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_cursor_copy(s : NetsectlsCursor) -> NetsectlsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsCursor::copy(self : NetsectlsCursor) -> NetsectlsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cursor_fill(s : NetsectlsCursor, v : Double) -> NetsectlsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsCursor::fill(self : NetsectlsCursor, v : Double) -> NetsectlsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_cursor_min(s : NetsectlsCursor) -> Double { @_common.min(s.data) }
+pub fn NetsectlsCursor::min(self : NetsectlsCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_cursor_max(s : NetsectlsCursor) -> Double { @_common.max(s.data) }
+pub fn NetsectlsCursor::max(self : NetsectlsCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_cursor_to_string(s : NetsectlsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsCursor::to_string(self : NetsectlsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsView {
@@ -912,45 +912,45 @@ pub fn net_sec_tls_view_make(size : Int) -> NetsectlsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_view_len(s : NetsectlsView) -> Int { s.size }
+pub fn NetsectlsView::len(self : NetsectlsView) -> Int { self.size }
 
-pub fn net_sec_tls_view_get(s : NetsectlsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsView::get(self : NetsectlsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_view_set(s : NetsectlsView, i : Int, v : Double) -> NetsectlsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsView::set(self : NetsectlsView, i : Int, v : Double) -> NetsectlsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_view_sum(s : NetsectlsView) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsView::sum(self : NetsectlsView) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_view_mean(s : NetsectlsView) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsView::mean(self : NetsectlsView) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_view_scale(s : NetsectlsView, f : Double) -> NetsectlsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsView::scale(self : NetsectlsView, f : Double) -> NetsectlsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_view_add(a : NetsectlsView, b : NetsectlsView) -> NetsectlsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsView::add(self : NetsectlsView, other : NetsectlsView) -> NetsectlsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_view_copy(s : NetsectlsView) -> NetsectlsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsView::copy(self : NetsectlsView) -> NetsectlsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_view_fill(s : NetsectlsView, v : Double) -> NetsectlsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsView::fill(self : NetsectlsView, v : Double) -> NetsectlsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_view_min(s : NetsectlsView) -> Double { @_common.min(s.data) }
+pub fn NetsectlsView::min(self : NetsectlsView) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_view_max(s : NetsectlsView) -> Double { @_common.max(s.data) }
+pub fn NetsectlsView::max(self : NetsectlsView) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_view_to_string(s : NetsectlsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsView::to_string(self : NetsectlsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsRange {
@@ -963,45 +963,45 @@ pub fn net_sec_tls_range_make(size : Int) -> NetsectlsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_range_len(s : NetsectlsRange) -> Int { s.size }
+pub fn NetsectlsRange::len(self : NetsectlsRange) -> Int { self.size }
 
-pub fn net_sec_tls_range_get(s : NetsectlsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsRange::get(self : NetsectlsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_range_set(s : NetsectlsRange, i : Int, v : Double) -> NetsectlsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsRange::set(self : NetsectlsRange, i : Int, v : Double) -> NetsectlsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_range_sum(s : NetsectlsRange) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsRange::sum(self : NetsectlsRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_range_mean(s : NetsectlsRange) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsRange::mean(self : NetsectlsRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_range_scale(s : NetsectlsRange, f : Double) -> NetsectlsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsRange::scale(self : NetsectlsRange, f : Double) -> NetsectlsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_range_add(a : NetsectlsRange, b : NetsectlsRange) -> NetsectlsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsRange::add(self : NetsectlsRange, other : NetsectlsRange) -> NetsectlsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_range_copy(s : NetsectlsRange) -> NetsectlsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsRange::copy(self : NetsectlsRange) -> NetsectlsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_range_fill(s : NetsectlsRange, v : Double) -> NetsectlsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsRange::fill(self : NetsectlsRange, v : Double) -> NetsectlsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_range_min(s : NetsectlsRange) -> Double { @_common.min(s.data) }
+pub fn NetsectlsRange::min(self : NetsectlsRange) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_range_max(s : NetsectlsRange) -> Double { @_common.max(s.data) }
+pub fn NetsectlsRange::max(self : NetsectlsRange) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_range_to_string(s : NetsectlsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsRange::to_string(self : NetsectlsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsectlsSlice {
@@ -1014,44 +1014,44 @@ pub fn net_sec_tls_slice_make(size : Int) -> NetsectlsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_tls_slice_len(s : NetsectlsSlice) -> Int { s.size }
+pub fn NetsectlsSlice::len(self : NetsectlsSlice) -> Int { self.size }
 
-pub fn net_sec_tls_slice_get(s : NetsectlsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsectlsSlice::get(self : NetsectlsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_tls_slice_set(s : NetsectlsSlice, i : Int, v : Double) -> NetsectlsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsectlsSlice::set(self : NetsectlsSlice, i : Int, v : Double) -> NetsectlsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_slice_sum(s : NetsectlsSlice) -> Double { @_common.sum(s.data) }
+pub fn NetsectlsSlice::sum(self : NetsectlsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_tls_slice_mean(s : NetsectlsSlice) -> Double { @_common.mean(s.data) }
+pub fn NetsectlsSlice::mean(self : NetsectlsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_tls_slice_scale(s : NetsectlsSlice, f : Double) -> NetsectlsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsectlsSlice::scale(self : NetsectlsSlice, f : Double) -> NetsectlsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_slice_add(a : NetsectlsSlice, b : NetsectlsSlice) -> NetsectlsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsectlsSlice::add(self : NetsectlsSlice, other : NetsectlsSlice) -> NetsectlsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_tls_slice_copy(s : NetsectlsSlice) -> NetsectlsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsectlsSlice::copy(self : NetsectlsSlice) -> NetsectlsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_slice_fill(s : NetsectlsSlice, v : Double) -> NetsectlsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsectlsSlice::fill(self : NetsectlsSlice, v : Double) -> NetsectlsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_tls_slice_min(s : NetsectlsSlice) -> Double { @_common.min(s.data) }
+pub fn NetsectlsSlice::min(self : NetsectlsSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_tls_slice_max(s : NetsectlsSlice) -> Double { @_common.max(s.data) }
+pub fn NetsectlsSlice::max(self : NetsectlsSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_tls_slice_to_string(s : NetsectlsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsectlsSlice::to_string(self : NetsectlsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

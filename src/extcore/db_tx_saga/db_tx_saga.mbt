@@ -351,45 +351,45 @@ pub fn db_tx_saga_frame_make(size : Int) -> DbtxsagaFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_frame_len(s : DbtxsagaFrame) -> Int { s.size }
+pub fn DbtxsagaFrame::len(self : DbtxsagaFrame) -> Int { self.size }
 
-pub fn db_tx_saga_frame_get(s : DbtxsagaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaFrame::get(self : DbtxsagaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_frame_set(s : DbtxsagaFrame, i : Int, v : Double) -> DbtxsagaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaFrame::set(self : DbtxsagaFrame, i : Int, v : Double) -> DbtxsagaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_frame_sum(s : DbtxsagaFrame) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaFrame::sum(self : DbtxsagaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_frame_mean(s : DbtxsagaFrame) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaFrame::mean(self : DbtxsagaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_frame_scale(s : DbtxsagaFrame, f : Double) -> DbtxsagaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaFrame::scale(self : DbtxsagaFrame, f : Double) -> DbtxsagaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_frame_add(a : DbtxsagaFrame, b : DbtxsagaFrame) -> DbtxsagaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaFrame::add(self : DbtxsagaFrame, other : DbtxsagaFrame) -> DbtxsagaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_frame_copy(s : DbtxsagaFrame) -> DbtxsagaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaFrame::copy(self : DbtxsagaFrame) -> DbtxsagaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_frame_fill(s : DbtxsagaFrame, v : Double) -> DbtxsagaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaFrame::fill(self : DbtxsagaFrame, v : Double) -> DbtxsagaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_frame_min(s : DbtxsagaFrame) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaFrame::min(self : DbtxsagaFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_frame_max(s : DbtxsagaFrame) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaFrame::max(self : DbtxsagaFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_frame_to_string(s : DbtxsagaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaFrame::to_string(self : DbtxsagaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaTable {
@@ -402,45 +402,45 @@ pub fn db_tx_saga_table_make(size : Int) -> DbtxsagaTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_table_len(s : DbtxsagaTable) -> Int { s.size }
+pub fn DbtxsagaTable::len(self : DbtxsagaTable) -> Int { self.size }
 
-pub fn db_tx_saga_table_get(s : DbtxsagaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaTable::get(self : DbtxsagaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_table_set(s : DbtxsagaTable, i : Int, v : Double) -> DbtxsagaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaTable::set(self : DbtxsagaTable, i : Int, v : Double) -> DbtxsagaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_table_sum(s : DbtxsagaTable) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaTable::sum(self : DbtxsagaTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_table_mean(s : DbtxsagaTable) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaTable::mean(self : DbtxsagaTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_table_scale(s : DbtxsagaTable, f : Double) -> DbtxsagaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaTable::scale(self : DbtxsagaTable, f : Double) -> DbtxsagaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_table_add(a : DbtxsagaTable, b : DbtxsagaTable) -> DbtxsagaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaTable::add(self : DbtxsagaTable, other : DbtxsagaTable) -> DbtxsagaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_table_copy(s : DbtxsagaTable) -> DbtxsagaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaTable::copy(self : DbtxsagaTable) -> DbtxsagaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_table_fill(s : DbtxsagaTable, v : Double) -> DbtxsagaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaTable::fill(self : DbtxsagaTable, v : Double) -> DbtxsagaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_table_min(s : DbtxsagaTable) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaTable::min(self : DbtxsagaTable) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_table_max(s : DbtxsagaTable) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaTable::max(self : DbtxsagaTable) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_table_to_string(s : DbtxsagaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaTable::to_string(self : DbtxsagaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaGraphN {
@@ -453,45 +453,45 @@ pub fn db_tx_saga_graphn_make(size : Int) -> DbtxsagaGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_graphn_len(s : DbtxsagaGraphN) -> Int { s.size }
+pub fn DbtxsagaGraphN::len(self : DbtxsagaGraphN) -> Int { self.size }
 
-pub fn db_tx_saga_graphn_get(s : DbtxsagaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaGraphN::get(self : DbtxsagaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_graphn_set(s : DbtxsagaGraphN, i : Int, v : Double) -> DbtxsagaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaGraphN::set(self : DbtxsagaGraphN, i : Int, v : Double) -> DbtxsagaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_graphn_sum(s : DbtxsagaGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaGraphN::sum(self : DbtxsagaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_graphn_mean(s : DbtxsagaGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaGraphN::mean(self : DbtxsagaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_graphn_scale(s : DbtxsagaGraphN, f : Double) -> DbtxsagaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaGraphN::scale(self : DbtxsagaGraphN, f : Double) -> DbtxsagaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_graphn_add(a : DbtxsagaGraphN, b : DbtxsagaGraphN) -> DbtxsagaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaGraphN::add(self : DbtxsagaGraphN, other : DbtxsagaGraphN) -> DbtxsagaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_graphn_copy(s : DbtxsagaGraphN) -> DbtxsagaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaGraphN::copy(self : DbtxsagaGraphN) -> DbtxsagaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_graphn_fill(s : DbtxsagaGraphN, v : Double) -> DbtxsagaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaGraphN::fill(self : DbtxsagaGraphN, v : Double) -> DbtxsagaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_graphn_min(s : DbtxsagaGraphN) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaGraphN::min(self : DbtxsagaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_graphn_max(s : DbtxsagaGraphN) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaGraphN::max(self : DbtxsagaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_graphn_to_string(s : DbtxsagaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaGraphN::to_string(self : DbtxsagaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaNode {
@@ -504,45 +504,45 @@ pub fn db_tx_saga_node_make(size : Int) -> DbtxsagaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_node_len(s : DbtxsagaNode) -> Int { s.size }
+pub fn DbtxsagaNode::len(self : DbtxsagaNode) -> Int { self.size }
 
-pub fn db_tx_saga_node_get(s : DbtxsagaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaNode::get(self : DbtxsagaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_node_set(s : DbtxsagaNode, i : Int, v : Double) -> DbtxsagaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaNode::set(self : DbtxsagaNode, i : Int, v : Double) -> DbtxsagaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_node_sum(s : DbtxsagaNode) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaNode::sum(self : DbtxsagaNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_node_mean(s : DbtxsagaNode) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaNode::mean(self : DbtxsagaNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_node_scale(s : DbtxsagaNode, f : Double) -> DbtxsagaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaNode::scale(self : DbtxsagaNode, f : Double) -> DbtxsagaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_node_add(a : DbtxsagaNode, b : DbtxsagaNode) -> DbtxsagaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaNode::add(self : DbtxsagaNode, other : DbtxsagaNode) -> DbtxsagaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_node_copy(s : DbtxsagaNode) -> DbtxsagaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaNode::copy(self : DbtxsagaNode) -> DbtxsagaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_node_fill(s : DbtxsagaNode, v : Double) -> DbtxsagaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaNode::fill(self : DbtxsagaNode, v : Double) -> DbtxsagaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_node_min(s : DbtxsagaNode) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaNode::min(self : DbtxsagaNode) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_node_max(s : DbtxsagaNode) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaNode::max(self : DbtxsagaNode) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_node_to_string(s : DbtxsagaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaNode::to_string(self : DbtxsagaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaEdge {
@@ -555,45 +555,45 @@ pub fn db_tx_saga_edge_make(size : Int) -> DbtxsagaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_edge_len(s : DbtxsagaEdge) -> Int { s.size }
+pub fn DbtxsagaEdge::len(self : DbtxsagaEdge) -> Int { self.size }
 
-pub fn db_tx_saga_edge_get(s : DbtxsagaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaEdge::get(self : DbtxsagaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_edge_set(s : DbtxsagaEdge, i : Int, v : Double) -> DbtxsagaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaEdge::set(self : DbtxsagaEdge, i : Int, v : Double) -> DbtxsagaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_edge_sum(s : DbtxsagaEdge) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaEdge::sum(self : DbtxsagaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_edge_mean(s : DbtxsagaEdge) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaEdge::mean(self : DbtxsagaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_edge_scale(s : DbtxsagaEdge, f : Double) -> DbtxsagaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaEdge::scale(self : DbtxsagaEdge, f : Double) -> DbtxsagaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_edge_add(a : DbtxsagaEdge, b : DbtxsagaEdge) -> DbtxsagaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaEdge::add(self : DbtxsagaEdge, other : DbtxsagaEdge) -> DbtxsagaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_edge_copy(s : DbtxsagaEdge) -> DbtxsagaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaEdge::copy(self : DbtxsagaEdge) -> DbtxsagaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_edge_fill(s : DbtxsagaEdge, v : Double) -> DbtxsagaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaEdge::fill(self : DbtxsagaEdge, v : Double) -> DbtxsagaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_edge_min(s : DbtxsagaEdge) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaEdge::min(self : DbtxsagaEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_edge_max(s : DbtxsagaEdge) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaEdge::max(self : DbtxsagaEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_edge_to_string(s : DbtxsagaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaEdge::to_string(self : DbtxsagaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaPath {
@@ -606,45 +606,45 @@ pub fn db_tx_saga_path_make(size : Int) -> DbtxsagaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_path_len(s : DbtxsagaPath) -> Int { s.size }
+pub fn DbtxsagaPath::len(self : DbtxsagaPath) -> Int { self.size }
 
-pub fn db_tx_saga_path_get(s : DbtxsagaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaPath::get(self : DbtxsagaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_path_set(s : DbtxsagaPath, i : Int, v : Double) -> DbtxsagaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaPath::set(self : DbtxsagaPath, i : Int, v : Double) -> DbtxsagaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_path_sum(s : DbtxsagaPath) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaPath::sum(self : DbtxsagaPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_path_mean(s : DbtxsagaPath) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaPath::mean(self : DbtxsagaPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_path_scale(s : DbtxsagaPath, f : Double) -> DbtxsagaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaPath::scale(self : DbtxsagaPath, f : Double) -> DbtxsagaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_path_add(a : DbtxsagaPath, b : DbtxsagaPath) -> DbtxsagaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaPath::add(self : DbtxsagaPath, other : DbtxsagaPath) -> DbtxsagaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_path_copy(s : DbtxsagaPath) -> DbtxsagaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaPath::copy(self : DbtxsagaPath) -> DbtxsagaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_path_fill(s : DbtxsagaPath, v : Double) -> DbtxsagaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaPath::fill(self : DbtxsagaPath, v : Double) -> DbtxsagaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_path_min(s : DbtxsagaPath) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaPath::min(self : DbtxsagaPath) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_path_max(s : DbtxsagaPath) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaPath::max(self : DbtxsagaPath) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_path_to_string(s : DbtxsagaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaPath::to_string(self : DbtxsagaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaCluster {
@@ -657,45 +657,45 @@ pub fn db_tx_saga_cluster_make(size : Int) -> DbtxsagaCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_cluster_len(s : DbtxsagaCluster) -> Int { s.size }
+pub fn DbtxsagaCluster::len(self : DbtxsagaCluster) -> Int { self.size }
 
-pub fn db_tx_saga_cluster_get(s : DbtxsagaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaCluster::get(self : DbtxsagaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_cluster_set(s : DbtxsagaCluster, i : Int, v : Double) -> DbtxsagaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaCluster::set(self : DbtxsagaCluster, i : Int, v : Double) -> DbtxsagaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cluster_sum(s : DbtxsagaCluster) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaCluster::sum(self : DbtxsagaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_cluster_mean(s : DbtxsagaCluster) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaCluster::mean(self : DbtxsagaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_cluster_scale(s : DbtxsagaCluster, f : Double) -> DbtxsagaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaCluster::scale(self : DbtxsagaCluster, f : Double) -> DbtxsagaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cluster_add(a : DbtxsagaCluster, b : DbtxsagaCluster) -> DbtxsagaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaCluster::add(self : DbtxsagaCluster, other : DbtxsagaCluster) -> DbtxsagaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_cluster_copy(s : DbtxsagaCluster) -> DbtxsagaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaCluster::copy(self : DbtxsagaCluster) -> DbtxsagaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cluster_fill(s : DbtxsagaCluster, v : Double) -> DbtxsagaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaCluster::fill(self : DbtxsagaCluster, v : Double) -> DbtxsagaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cluster_min(s : DbtxsagaCluster) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaCluster::min(self : DbtxsagaCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_cluster_max(s : DbtxsagaCluster) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaCluster::max(self : DbtxsagaCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_cluster_to_string(s : DbtxsagaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaCluster::to_string(self : DbtxsagaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaModel {
@@ -708,45 +708,45 @@ pub fn db_tx_saga_model_make(size : Int) -> DbtxsagaModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_model_len(s : DbtxsagaModel) -> Int { s.size }
+pub fn DbtxsagaModel::len(self : DbtxsagaModel) -> Int { self.size }
 
-pub fn db_tx_saga_model_get(s : DbtxsagaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaModel::get(self : DbtxsagaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_model_set(s : DbtxsagaModel, i : Int, v : Double) -> DbtxsagaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaModel::set(self : DbtxsagaModel, i : Int, v : Double) -> DbtxsagaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_model_sum(s : DbtxsagaModel) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaModel::sum(self : DbtxsagaModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_model_mean(s : DbtxsagaModel) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaModel::mean(self : DbtxsagaModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_model_scale(s : DbtxsagaModel, f : Double) -> DbtxsagaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaModel::scale(self : DbtxsagaModel, f : Double) -> DbtxsagaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_model_add(a : DbtxsagaModel, b : DbtxsagaModel) -> DbtxsagaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaModel::add(self : DbtxsagaModel, other : DbtxsagaModel) -> DbtxsagaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_model_copy(s : DbtxsagaModel) -> DbtxsagaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaModel::copy(self : DbtxsagaModel) -> DbtxsagaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_model_fill(s : DbtxsagaModel, v : Double) -> DbtxsagaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaModel::fill(self : DbtxsagaModel, v : Double) -> DbtxsagaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_model_min(s : DbtxsagaModel) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaModel::min(self : DbtxsagaModel) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_model_max(s : DbtxsagaModel) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaModel::max(self : DbtxsagaModel) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_model_to_string(s : DbtxsagaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaModel::to_string(self : DbtxsagaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaLayer {
@@ -759,45 +759,45 @@ pub fn db_tx_saga_layer_make(size : Int) -> DbtxsagaLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_layer_len(s : DbtxsagaLayer) -> Int { s.size }
+pub fn DbtxsagaLayer::len(self : DbtxsagaLayer) -> Int { self.size }
 
-pub fn db_tx_saga_layer_get(s : DbtxsagaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaLayer::get(self : DbtxsagaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_layer_set(s : DbtxsagaLayer, i : Int, v : Double) -> DbtxsagaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaLayer::set(self : DbtxsagaLayer, i : Int, v : Double) -> DbtxsagaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_layer_sum(s : DbtxsagaLayer) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaLayer::sum(self : DbtxsagaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_layer_mean(s : DbtxsagaLayer) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaLayer::mean(self : DbtxsagaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_layer_scale(s : DbtxsagaLayer, f : Double) -> DbtxsagaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaLayer::scale(self : DbtxsagaLayer, f : Double) -> DbtxsagaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_layer_add(a : DbtxsagaLayer, b : DbtxsagaLayer) -> DbtxsagaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaLayer::add(self : DbtxsagaLayer, other : DbtxsagaLayer) -> DbtxsagaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_layer_copy(s : DbtxsagaLayer) -> DbtxsagaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaLayer::copy(self : DbtxsagaLayer) -> DbtxsagaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_layer_fill(s : DbtxsagaLayer, v : Double) -> DbtxsagaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaLayer::fill(self : DbtxsagaLayer, v : Double) -> DbtxsagaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_layer_min(s : DbtxsagaLayer) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaLayer::min(self : DbtxsagaLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_layer_max(s : DbtxsagaLayer) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaLayer::max(self : DbtxsagaLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_layer_to_string(s : DbtxsagaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaLayer::to_string(self : DbtxsagaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaBuffer {
@@ -810,45 +810,45 @@ pub fn db_tx_saga_buffer_make(size : Int) -> DbtxsagaBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_buffer_len(s : DbtxsagaBuffer) -> Int { s.size }
+pub fn DbtxsagaBuffer::len(self : DbtxsagaBuffer) -> Int { self.size }
 
-pub fn db_tx_saga_buffer_get(s : DbtxsagaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaBuffer::get(self : DbtxsagaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_buffer_set(s : DbtxsagaBuffer, i : Int, v : Double) -> DbtxsagaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaBuffer::set(self : DbtxsagaBuffer, i : Int, v : Double) -> DbtxsagaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_buffer_sum(s : DbtxsagaBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaBuffer::sum(self : DbtxsagaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_buffer_mean(s : DbtxsagaBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaBuffer::mean(self : DbtxsagaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_buffer_scale(s : DbtxsagaBuffer, f : Double) -> DbtxsagaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaBuffer::scale(self : DbtxsagaBuffer, f : Double) -> DbtxsagaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_buffer_add(a : DbtxsagaBuffer, b : DbtxsagaBuffer) -> DbtxsagaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaBuffer::add(self : DbtxsagaBuffer, other : DbtxsagaBuffer) -> DbtxsagaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_buffer_copy(s : DbtxsagaBuffer) -> DbtxsagaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaBuffer::copy(self : DbtxsagaBuffer) -> DbtxsagaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_buffer_fill(s : DbtxsagaBuffer, v : Double) -> DbtxsagaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaBuffer::fill(self : DbtxsagaBuffer, v : Double) -> DbtxsagaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_buffer_min(s : DbtxsagaBuffer) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaBuffer::min(self : DbtxsagaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_buffer_max(s : DbtxsagaBuffer) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaBuffer::max(self : DbtxsagaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_buffer_to_string(s : DbtxsagaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaBuffer::to_string(self : DbtxsagaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaCursor {
@@ -861,45 +861,45 @@ pub fn db_tx_saga_cursor_make(size : Int) -> DbtxsagaCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_cursor_len(s : DbtxsagaCursor) -> Int { s.size }
+pub fn DbtxsagaCursor::len(self : DbtxsagaCursor) -> Int { self.size }
 
-pub fn db_tx_saga_cursor_get(s : DbtxsagaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaCursor::get(self : DbtxsagaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_cursor_set(s : DbtxsagaCursor, i : Int, v : Double) -> DbtxsagaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaCursor::set(self : DbtxsagaCursor, i : Int, v : Double) -> DbtxsagaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cursor_sum(s : DbtxsagaCursor) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaCursor::sum(self : DbtxsagaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_cursor_mean(s : DbtxsagaCursor) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaCursor::mean(self : DbtxsagaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_cursor_scale(s : DbtxsagaCursor, f : Double) -> DbtxsagaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaCursor::scale(self : DbtxsagaCursor, f : Double) -> DbtxsagaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cursor_add(a : DbtxsagaCursor, b : DbtxsagaCursor) -> DbtxsagaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaCursor::add(self : DbtxsagaCursor, other : DbtxsagaCursor) -> DbtxsagaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_cursor_copy(s : DbtxsagaCursor) -> DbtxsagaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaCursor::copy(self : DbtxsagaCursor) -> DbtxsagaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cursor_fill(s : DbtxsagaCursor, v : Double) -> DbtxsagaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaCursor::fill(self : DbtxsagaCursor, v : Double) -> DbtxsagaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_cursor_min(s : DbtxsagaCursor) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaCursor::min(self : DbtxsagaCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_cursor_max(s : DbtxsagaCursor) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaCursor::max(self : DbtxsagaCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_cursor_to_string(s : DbtxsagaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaCursor::to_string(self : DbtxsagaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaView {
@@ -912,45 +912,45 @@ pub fn db_tx_saga_view_make(size : Int) -> DbtxsagaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_view_len(s : DbtxsagaView) -> Int { s.size }
+pub fn DbtxsagaView::len(self : DbtxsagaView) -> Int { self.size }
 
-pub fn db_tx_saga_view_get(s : DbtxsagaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaView::get(self : DbtxsagaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_view_set(s : DbtxsagaView, i : Int, v : Double) -> DbtxsagaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaView::set(self : DbtxsagaView, i : Int, v : Double) -> DbtxsagaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_view_sum(s : DbtxsagaView) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaView::sum(self : DbtxsagaView) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_view_mean(s : DbtxsagaView) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaView::mean(self : DbtxsagaView) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_view_scale(s : DbtxsagaView, f : Double) -> DbtxsagaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaView::scale(self : DbtxsagaView, f : Double) -> DbtxsagaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_view_add(a : DbtxsagaView, b : DbtxsagaView) -> DbtxsagaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaView::add(self : DbtxsagaView, other : DbtxsagaView) -> DbtxsagaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_view_copy(s : DbtxsagaView) -> DbtxsagaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaView::copy(self : DbtxsagaView) -> DbtxsagaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_view_fill(s : DbtxsagaView, v : Double) -> DbtxsagaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaView::fill(self : DbtxsagaView, v : Double) -> DbtxsagaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_view_min(s : DbtxsagaView) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaView::min(self : DbtxsagaView) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_view_max(s : DbtxsagaView) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaView::max(self : DbtxsagaView) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_view_to_string(s : DbtxsagaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaView::to_string(self : DbtxsagaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaRange {
@@ -963,45 +963,45 @@ pub fn db_tx_saga_range_make(size : Int) -> DbtxsagaRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_range_len(s : DbtxsagaRange) -> Int { s.size }
+pub fn DbtxsagaRange::len(self : DbtxsagaRange) -> Int { self.size }
 
-pub fn db_tx_saga_range_get(s : DbtxsagaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaRange::get(self : DbtxsagaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_range_set(s : DbtxsagaRange, i : Int, v : Double) -> DbtxsagaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaRange::set(self : DbtxsagaRange, i : Int, v : Double) -> DbtxsagaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_range_sum(s : DbtxsagaRange) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaRange::sum(self : DbtxsagaRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_range_mean(s : DbtxsagaRange) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaRange::mean(self : DbtxsagaRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_range_scale(s : DbtxsagaRange, f : Double) -> DbtxsagaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaRange::scale(self : DbtxsagaRange, f : Double) -> DbtxsagaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_range_add(a : DbtxsagaRange, b : DbtxsagaRange) -> DbtxsagaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaRange::add(self : DbtxsagaRange, other : DbtxsagaRange) -> DbtxsagaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_range_copy(s : DbtxsagaRange) -> DbtxsagaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaRange::copy(self : DbtxsagaRange) -> DbtxsagaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_range_fill(s : DbtxsagaRange, v : Double) -> DbtxsagaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaRange::fill(self : DbtxsagaRange, v : Double) -> DbtxsagaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_range_min(s : DbtxsagaRange) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaRange::min(self : DbtxsagaRange) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_range_max(s : DbtxsagaRange) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaRange::max(self : DbtxsagaRange) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_range_to_string(s : DbtxsagaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaRange::to_string(self : DbtxsagaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaSlice {
@@ -1014,44 +1014,44 @@ pub fn db_tx_saga_slice_make(size : Int) -> DbtxsagaSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_tx_saga_slice_len(s : DbtxsagaSlice) -> Int { s.size }
+pub fn DbtxsagaSlice::len(self : DbtxsagaSlice) -> Int { self.size }
 
-pub fn db_tx_saga_slice_get(s : DbtxsagaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbtxsagaSlice::get(self : DbtxsagaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_tx_saga_slice_set(s : DbtxsagaSlice, i : Int, v : Double) -> DbtxsagaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbtxsagaSlice::set(self : DbtxsagaSlice, i : Int, v : Double) -> DbtxsagaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_slice_sum(s : DbtxsagaSlice) -> Double { @_common.sum(s.data) }
+pub fn DbtxsagaSlice::sum(self : DbtxsagaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_tx_saga_slice_mean(s : DbtxsagaSlice) -> Double { @_common.mean(s.data) }
+pub fn DbtxsagaSlice::mean(self : DbtxsagaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_tx_saga_slice_scale(s : DbtxsagaSlice, f : Double) -> DbtxsagaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbtxsagaSlice::scale(self : DbtxsagaSlice, f : Double) -> DbtxsagaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_slice_add(a : DbtxsagaSlice, b : DbtxsagaSlice) -> DbtxsagaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbtxsagaSlice::add(self : DbtxsagaSlice, other : DbtxsagaSlice) -> DbtxsagaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_tx_saga_slice_copy(s : DbtxsagaSlice) -> DbtxsagaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbtxsagaSlice::copy(self : DbtxsagaSlice) -> DbtxsagaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_slice_fill(s : DbtxsagaSlice, v : Double) -> DbtxsagaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbtxsagaSlice::fill(self : DbtxsagaSlice, v : Double) -> DbtxsagaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_tx_saga_slice_min(s : DbtxsagaSlice) -> Double { @_common.min(s.data) }
+pub fn DbtxsagaSlice::min(self : DbtxsagaSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_tx_saga_slice_max(s : DbtxsagaSlice) -> Double { @_common.max(s.data) }
+pub fn DbtxsagaSlice::max(self : DbtxsagaSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_tx_saga_slice_to_string(s : DbtxsagaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbtxsagaSlice::to_string(self : DbtxsagaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

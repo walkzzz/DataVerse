@@ -351,45 +351,45 @@ pub fn finance_time_figarch_frame_make(size : Int) -> FinancetimefigarchFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_frame_len(s : FinancetimefigarchFrame) -> Int { s.size }
+pub fn FinancetimefigarchFrame::len(self : FinancetimefigarchFrame) -> Int { self.size }
 
-pub fn finance_time_figarch_frame_get(s : FinancetimefigarchFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchFrame::get(self : FinancetimefigarchFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_frame_set(s : FinancetimefigarchFrame, i : Int, v : Double) -> FinancetimefigarchFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchFrame::set(self : FinancetimefigarchFrame, i : Int, v : Double) -> FinancetimefigarchFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_frame_sum(s : FinancetimefigarchFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchFrame::sum(self : FinancetimefigarchFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_frame_mean(s : FinancetimefigarchFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchFrame::mean(self : FinancetimefigarchFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_frame_scale(s : FinancetimefigarchFrame, f : Double) -> FinancetimefigarchFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchFrame::scale(self : FinancetimefigarchFrame, f : Double) -> FinancetimefigarchFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_frame_add(a : FinancetimefigarchFrame, b : FinancetimefigarchFrame) -> FinancetimefigarchFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchFrame::add(self : FinancetimefigarchFrame, other : FinancetimefigarchFrame) -> FinancetimefigarchFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_frame_copy(s : FinancetimefigarchFrame) -> FinancetimefigarchFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchFrame::copy(self : FinancetimefigarchFrame) -> FinancetimefigarchFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_frame_fill(s : FinancetimefigarchFrame, v : Double) -> FinancetimefigarchFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchFrame::fill(self : FinancetimefigarchFrame, v : Double) -> FinancetimefigarchFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_frame_min(s : FinancetimefigarchFrame) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchFrame::min(self : FinancetimefigarchFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_frame_max(s : FinancetimefigarchFrame) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchFrame::max(self : FinancetimefigarchFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_frame_to_string(s : FinancetimefigarchFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchFrame::to_string(self : FinancetimefigarchFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchTable {
@@ -402,45 +402,45 @@ pub fn finance_time_figarch_table_make(size : Int) -> FinancetimefigarchTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_table_len(s : FinancetimefigarchTable) -> Int { s.size }
+pub fn FinancetimefigarchTable::len(self : FinancetimefigarchTable) -> Int { self.size }
 
-pub fn finance_time_figarch_table_get(s : FinancetimefigarchTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchTable::get(self : FinancetimefigarchTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_table_set(s : FinancetimefigarchTable, i : Int, v : Double) -> FinancetimefigarchTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchTable::set(self : FinancetimefigarchTable, i : Int, v : Double) -> FinancetimefigarchTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_table_sum(s : FinancetimefigarchTable) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchTable::sum(self : FinancetimefigarchTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_table_mean(s : FinancetimefigarchTable) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchTable::mean(self : FinancetimefigarchTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_table_scale(s : FinancetimefigarchTable, f : Double) -> FinancetimefigarchTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchTable::scale(self : FinancetimefigarchTable, f : Double) -> FinancetimefigarchTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_table_add(a : FinancetimefigarchTable, b : FinancetimefigarchTable) -> FinancetimefigarchTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchTable::add(self : FinancetimefigarchTable, other : FinancetimefigarchTable) -> FinancetimefigarchTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_table_copy(s : FinancetimefigarchTable) -> FinancetimefigarchTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchTable::copy(self : FinancetimefigarchTable) -> FinancetimefigarchTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_table_fill(s : FinancetimefigarchTable, v : Double) -> FinancetimefigarchTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchTable::fill(self : FinancetimefigarchTable, v : Double) -> FinancetimefigarchTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_table_min(s : FinancetimefigarchTable) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchTable::min(self : FinancetimefigarchTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_table_max(s : FinancetimefigarchTable) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchTable::max(self : FinancetimefigarchTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_table_to_string(s : FinancetimefigarchTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchTable::to_string(self : FinancetimefigarchTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchGraphN {
@@ -453,45 +453,45 @@ pub fn finance_time_figarch_graphn_make(size : Int) -> FinancetimefigarchGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_graphn_len(s : FinancetimefigarchGraphN) -> Int { s.size }
+pub fn FinancetimefigarchGraphN::len(self : FinancetimefigarchGraphN) -> Int { self.size }
 
-pub fn finance_time_figarch_graphn_get(s : FinancetimefigarchGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchGraphN::get(self : FinancetimefigarchGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_graphn_set(s : FinancetimefigarchGraphN, i : Int, v : Double) -> FinancetimefigarchGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchGraphN::set(self : FinancetimefigarchGraphN, i : Int, v : Double) -> FinancetimefigarchGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_graphn_sum(s : FinancetimefigarchGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchGraphN::sum(self : FinancetimefigarchGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_graphn_mean(s : FinancetimefigarchGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchGraphN::mean(self : FinancetimefigarchGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_graphn_scale(s : FinancetimefigarchGraphN, f : Double) -> FinancetimefigarchGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchGraphN::scale(self : FinancetimefigarchGraphN, f : Double) -> FinancetimefigarchGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_graphn_add(a : FinancetimefigarchGraphN, b : FinancetimefigarchGraphN) -> FinancetimefigarchGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchGraphN::add(self : FinancetimefigarchGraphN, other : FinancetimefigarchGraphN) -> FinancetimefigarchGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_graphn_copy(s : FinancetimefigarchGraphN) -> FinancetimefigarchGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchGraphN::copy(self : FinancetimefigarchGraphN) -> FinancetimefigarchGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_graphn_fill(s : FinancetimefigarchGraphN, v : Double) -> FinancetimefigarchGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchGraphN::fill(self : FinancetimefigarchGraphN, v : Double) -> FinancetimefigarchGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_graphn_min(s : FinancetimefigarchGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchGraphN::min(self : FinancetimefigarchGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_graphn_max(s : FinancetimefigarchGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchGraphN::max(self : FinancetimefigarchGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_graphn_to_string(s : FinancetimefigarchGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchGraphN::to_string(self : FinancetimefigarchGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchNode {
@@ -504,45 +504,45 @@ pub fn finance_time_figarch_node_make(size : Int) -> FinancetimefigarchNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_node_len(s : FinancetimefigarchNode) -> Int { s.size }
+pub fn FinancetimefigarchNode::len(self : FinancetimefigarchNode) -> Int { self.size }
 
-pub fn finance_time_figarch_node_get(s : FinancetimefigarchNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchNode::get(self : FinancetimefigarchNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_node_set(s : FinancetimefigarchNode, i : Int, v : Double) -> FinancetimefigarchNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchNode::set(self : FinancetimefigarchNode, i : Int, v : Double) -> FinancetimefigarchNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_node_sum(s : FinancetimefigarchNode) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchNode::sum(self : FinancetimefigarchNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_node_mean(s : FinancetimefigarchNode) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchNode::mean(self : FinancetimefigarchNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_node_scale(s : FinancetimefigarchNode, f : Double) -> FinancetimefigarchNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchNode::scale(self : FinancetimefigarchNode, f : Double) -> FinancetimefigarchNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_node_add(a : FinancetimefigarchNode, b : FinancetimefigarchNode) -> FinancetimefigarchNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchNode::add(self : FinancetimefigarchNode, other : FinancetimefigarchNode) -> FinancetimefigarchNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_node_copy(s : FinancetimefigarchNode) -> FinancetimefigarchNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchNode::copy(self : FinancetimefigarchNode) -> FinancetimefigarchNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_node_fill(s : FinancetimefigarchNode, v : Double) -> FinancetimefigarchNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchNode::fill(self : FinancetimefigarchNode, v : Double) -> FinancetimefigarchNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_node_min(s : FinancetimefigarchNode) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchNode::min(self : FinancetimefigarchNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_node_max(s : FinancetimefigarchNode) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchNode::max(self : FinancetimefigarchNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_node_to_string(s : FinancetimefigarchNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchNode::to_string(self : FinancetimefigarchNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchEdge {
@@ -555,45 +555,45 @@ pub fn finance_time_figarch_edge_make(size : Int) -> FinancetimefigarchEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_edge_len(s : FinancetimefigarchEdge) -> Int { s.size }
+pub fn FinancetimefigarchEdge::len(self : FinancetimefigarchEdge) -> Int { self.size }
 
-pub fn finance_time_figarch_edge_get(s : FinancetimefigarchEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchEdge::get(self : FinancetimefigarchEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_edge_set(s : FinancetimefigarchEdge, i : Int, v : Double) -> FinancetimefigarchEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchEdge::set(self : FinancetimefigarchEdge, i : Int, v : Double) -> FinancetimefigarchEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_edge_sum(s : FinancetimefigarchEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchEdge::sum(self : FinancetimefigarchEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_edge_mean(s : FinancetimefigarchEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchEdge::mean(self : FinancetimefigarchEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_edge_scale(s : FinancetimefigarchEdge, f : Double) -> FinancetimefigarchEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchEdge::scale(self : FinancetimefigarchEdge, f : Double) -> FinancetimefigarchEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_edge_add(a : FinancetimefigarchEdge, b : FinancetimefigarchEdge) -> FinancetimefigarchEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchEdge::add(self : FinancetimefigarchEdge, other : FinancetimefigarchEdge) -> FinancetimefigarchEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_edge_copy(s : FinancetimefigarchEdge) -> FinancetimefigarchEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchEdge::copy(self : FinancetimefigarchEdge) -> FinancetimefigarchEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_edge_fill(s : FinancetimefigarchEdge, v : Double) -> FinancetimefigarchEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchEdge::fill(self : FinancetimefigarchEdge, v : Double) -> FinancetimefigarchEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_edge_min(s : FinancetimefigarchEdge) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchEdge::min(self : FinancetimefigarchEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_edge_max(s : FinancetimefigarchEdge) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchEdge::max(self : FinancetimefigarchEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_edge_to_string(s : FinancetimefigarchEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchEdge::to_string(self : FinancetimefigarchEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchPath {
@@ -606,45 +606,45 @@ pub fn finance_time_figarch_path_make(size : Int) -> FinancetimefigarchPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_path_len(s : FinancetimefigarchPath) -> Int { s.size }
+pub fn FinancetimefigarchPath::len(self : FinancetimefigarchPath) -> Int { self.size }
 
-pub fn finance_time_figarch_path_get(s : FinancetimefigarchPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchPath::get(self : FinancetimefigarchPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_path_set(s : FinancetimefigarchPath, i : Int, v : Double) -> FinancetimefigarchPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchPath::set(self : FinancetimefigarchPath, i : Int, v : Double) -> FinancetimefigarchPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_path_sum(s : FinancetimefigarchPath) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchPath::sum(self : FinancetimefigarchPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_path_mean(s : FinancetimefigarchPath) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchPath::mean(self : FinancetimefigarchPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_path_scale(s : FinancetimefigarchPath, f : Double) -> FinancetimefigarchPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchPath::scale(self : FinancetimefigarchPath, f : Double) -> FinancetimefigarchPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_path_add(a : FinancetimefigarchPath, b : FinancetimefigarchPath) -> FinancetimefigarchPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchPath::add(self : FinancetimefigarchPath, other : FinancetimefigarchPath) -> FinancetimefigarchPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_path_copy(s : FinancetimefigarchPath) -> FinancetimefigarchPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchPath::copy(self : FinancetimefigarchPath) -> FinancetimefigarchPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_path_fill(s : FinancetimefigarchPath, v : Double) -> FinancetimefigarchPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchPath::fill(self : FinancetimefigarchPath, v : Double) -> FinancetimefigarchPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_path_min(s : FinancetimefigarchPath) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchPath::min(self : FinancetimefigarchPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_path_max(s : FinancetimefigarchPath) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchPath::max(self : FinancetimefigarchPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_path_to_string(s : FinancetimefigarchPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchPath::to_string(self : FinancetimefigarchPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchCluster {
@@ -657,45 +657,45 @@ pub fn finance_time_figarch_cluster_make(size : Int) -> FinancetimefigarchCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_cluster_len(s : FinancetimefigarchCluster) -> Int { s.size }
+pub fn FinancetimefigarchCluster::len(self : FinancetimefigarchCluster) -> Int { self.size }
 
-pub fn finance_time_figarch_cluster_get(s : FinancetimefigarchCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchCluster::get(self : FinancetimefigarchCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_cluster_set(s : FinancetimefigarchCluster, i : Int, v : Double) -> FinancetimefigarchCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCluster::set(self : FinancetimefigarchCluster, i : Int, v : Double) -> FinancetimefigarchCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cluster_sum(s : FinancetimefigarchCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchCluster::sum(self : FinancetimefigarchCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_cluster_mean(s : FinancetimefigarchCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchCluster::mean(self : FinancetimefigarchCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_cluster_scale(s : FinancetimefigarchCluster, f : Double) -> FinancetimefigarchCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCluster::scale(self : FinancetimefigarchCluster, f : Double) -> FinancetimefigarchCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cluster_add(a : FinancetimefigarchCluster, b : FinancetimefigarchCluster) -> FinancetimefigarchCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchCluster::add(self : FinancetimefigarchCluster, other : FinancetimefigarchCluster) -> FinancetimefigarchCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cluster_copy(s : FinancetimefigarchCluster) -> FinancetimefigarchCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCluster::copy(self : FinancetimefigarchCluster) -> FinancetimefigarchCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cluster_fill(s : FinancetimefigarchCluster, v : Double) -> FinancetimefigarchCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCluster::fill(self : FinancetimefigarchCluster, v : Double) -> FinancetimefigarchCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cluster_min(s : FinancetimefigarchCluster) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchCluster::min(self : FinancetimefigarchCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_cluster_max(s : FinancetimefigarchCluster) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchCluster::max(self : FinancetimefigarchCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_cluster_to_string(s : FinancetimefigarchCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchCluster::to_string(self : FinancetimefigarchCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchModel {
@@ -708,45 +708,45 @@ pub fn finance_time_figarch_model_make(size : Int) -> FinancetimefigarchModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_model_len(s : FinancetimefigarchModel) -> Int { s.size }
+pub fn FinancetimefigarchModel::len(self : FinancetimefigarchModel) -> Int { self.size }
 
-pub fn finance_time_figarch_model_get(s : FinancetimefigarchModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchModel::get(self : FinancetimefigarchModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_model_set(s : FinancetimefigarchModel, i : Int, v : Double) -> FinancetimefigarchModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchModel::set(self : FinancetimefigarchModel, i : Int, v : Double) -> FinancetimefigarchModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_model_sum(s : FinancetimefigarchModel) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchModel::sum(self : FinancetimefigarchModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_model_mean(s : FinancetimefigarchModel) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchModel::mean(self : FinancetimefigarchModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_model_scale(s : FinancetimefigarchModel, f : Double) -> FinancetimefigarchModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchModel::scale(self : FinancetimefigarchModel, f : Double) -> FinancetimefigarchModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_model_add(a : FinancetimefigarchModel, b : FinancetimefigarchModel) -> FinancetimefigarchModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchModel::add(self : FinancetimefigarchModel, other : FinancetimefigarchModel) -> FinancetimefigarchModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_model_copy(s : FinancetimefigarchModel) -> FinancetimefigarchModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchModel::copy(self : FinancetimefigarchModel) -> FinancetimefigarchModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_model_fill(s : FinancetimefigarchModel, v : Double) -> FinancetimefigarchModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchModel::fill(self : FinancetimefigarchModel, v : Double) -> FinancetimefigarchModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_model_min(s : FinancetimefigarchModel) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchModel::min(self : FinancetimefigarchModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_model_max(s : FinancetimefigarchModel) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchModel::max(self : FinancetimefigarchModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_model_to_string(s : FinancetimefigarchModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchModel::to_string(self : FinancetimefigarchModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchLayer {
@@ -759,45 +759,45 @@ pub fn finance_time_figarch_layer_make(size : Int) -> FinancetimefigarchLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_layer_len(s : FinancetimefigarchLayer) -> Int { s.size }
+pub fn FinancetimefigarchLayer::len(self : FinancetimefigarchLayer) -> Int { self.size }
 
-pub fn finance_time_figarch_layer_get(s : FinancetimefigarchLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchLayer::get(self : FinancetimefigarchLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_layer_set(s : FinancetimefigarchLayer, i : Int, v : Double) -> FinancetimefigarchLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchLayer::set(self : FinancetimefigarchLayer, i : Int, v : Double) -> FinancetimefigarchLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_layer_sum(s : FinancetimefigarchLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchLayer::sum(self : FinancetimefigarchLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_layer_mean(s : FinancetimefigarchLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchLayer::mean(self : FinancetimefigarchLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_layer_scale(s : FinancetimefigarchLayer, f : Double) -> FinancetimefigarchLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchLayer::scale(self : FinancetimefigarchLayer, f : Double) -> FinancetimefigarchLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_layer_add(a : FinancetimefigarchLayer, b : FinancetimefigarchLayer) -> FinancetimefigarchLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchLayer::add(self : FinancetimefigarchLayer, other : FinancetimefigarchLayer) -> FinancetimefigarchLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_layer_copy(s : FinancetimefigarchLayer) -> FinancetimefigarchLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchLayer::copy(self : FinancetimefigarchLayer) -> FinancetimefigarchLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_layer_fill(s : FinancetimefigarchLayer, v : Double) -> FinancetimefigarchLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchLayer::fill(self : FinancetimefigarchLayer, v : Double) -> FinancetimefigarchLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_layer_min(s : FinancetimefigarchLayer) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchLayer::min(self : FinancetimefigarchLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_layer_max(s : FinancetimefigarchLayer) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchLayer::max(self : FinancetimefigarchLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_layer_to_string(s : FinancetimefigarchLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchLayer::to_string(self : FinancetimefigarchLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchBuffer {
@@ -810,45 +810,45 @@ pub fn finance_time_figarch_buffer_make(size : Int) -> FinancetimefigarchBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_buffer_len(s : FinancetimefigarchBuffer) -> Int { s.size }
+pub fn FinancetimefigarchBuffer::len(self : FinancetimefigarchBuffer) -> Int { self.size }
 
-pub fn finance_time_figarch_buffer_get(s : FinancetimefigarchBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchBuffer::get(self : FinancetimefigarchBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_buffer_set(s : FinancetimefigarchBuffer, i : Int, v : Double) -> FinancetimefigarchBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchBuffer::set(self : FinancetimefigarchBuffer, i : Int, v : Double) -> FinancetimefigarchBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_buffer_sum(s : FinancetimefigarchBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchBuffer::sum(self : FinancetimefigarchBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_buffer_mean(s : FinancetimefigarchBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchBuffer::mean(self : FinancetimefigarchBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_buffer_scale(s : FinancetimefigarchBuffer, f : Double) -> FinancetimefigarchBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchBuffer::scale(self : FinancetimefigarchBuffer, f : Double) -> FinancetimefigarchBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_buffer_add(a : FinancetimefigarchBuffer, b : FinancetimefigarchBuffer) -> FinancetimefigarchBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchBuffer::add(self : FinancetimefigarchBuffer, other : FinancetimefigarchBuffer) -> FinancetimefigarchBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_buffer_copy(s : FinancetimefigarchBuffer) -> FinancetimefigarchBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchBuffer::copy(self : FinancetimefigarchBuffer) -> FinancetimefigarchBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_buffer_fill(s : FinancetimefigarchBuffer, v : Double) -> FinancetimefigarchBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchBuffer::fill(self : FinancetimefigarchBuffer, v : Double) -> FinancetimefigarchBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_buffer_min(s : FinancetimefigarchBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchBuffer::min(self : FinancetimefigarchBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_buffer_max(s : FinancetimefigarchBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchBuffer::max(self : FinancetimefigarchBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_buffer_to_string(s : FinancetimefigarchBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchBuffer::to_string(self : FinancetimefigarchBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchCursor {
@@ -861,45 +861,45 @@ pub fn finance_time_figarch_cursor_make(size : Int) -> FinancetimefigarchCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_cursor_len(s : FinancetimefigarchCursor) -> Int { s.size }
+pub fn FinancetimefigarchCursor::len(self : FinancetimefigarchCursor) -> Int { self.size }
 
-pub fn finance_time_figarch_cursor_get(s : FinancetimefigarchCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchCursor::get(self : FinancetimefigarchCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_cursor_set(s : FinancetimefigarchCursor, i : Int, v : Double) -> FinancetimefigarchCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCursor::set(self : FinancetimefigarchCursor, i : Int, v : Double) -> FinancetimefigarchCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cursor_sum(s : FinancetimefigarchCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchCursor::sum(self : FinancetimefigarchCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_cursor_mean(s : FinancetimefigarchCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchCursor::mean(self : FinancetimefigarchCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_cursor_scale(s : FinancetimefigarchCursor, f : Double) -> FinancetimefigarchCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCursor::scale(self : FinancetimefigarchCursor, f : Double) -> FinancetimefigarchCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cursor_add(a : FinancetimefigarchCursor, b : FinancetimefigarchCursor) -> FinancetimefigarchCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchCursor::add(self : FinancetimefigarchCursor, other : FinancetimefigarchCursor) -> FinancetimefigarchCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cursor_copy(s : FinancetimefigarchCursor) -> FinancetimefigarchCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCursor::copy(self : FinancetimefigarchCursor) -> FinancetimefigarchCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cursor_fill(s : FinancetimefigarchCursor, v : Double) -> FinancetimefigarchCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchCursor::fill(self : FinancetimefigarchCursor, v : Double) -> FinancetimefigarchCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_cursor_min(s : FinancetimefigarchCursor) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchCursor::min(self : FinancetimefigarchCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_cursor_max(s : FinancetimefigarchCursor) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchCursor::max(self : FinancetimefigarchCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_cursor_to_string(s : FinancetimefigarchCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchCursor::to_string(self : FinancetimefigarchCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchView {
@@ -912,45 +912,45 @@ pub fn finance_time_figarch_view_make(size : Int) -> FinancetimefigarchView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_view_len(s : FinancetimefigarchView) -> Int { s.size }
+pub fn FinancetimefigarchView::len(self : FinancetimefigarchView) -> Int { self.size }
 
-pub fn finance_time_figarch_view_get(s : FinancetimefigarchView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchView::get(self : FinancetimefigarchView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_view_set(s : FinancetimefigarchView, i : Int, v : Double) -> FinancetimefigarchView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchView::set(self : FinancetimefigarchView, i : Int, v : Double) -> FinancetimefigarchView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_view_sum(s : FinancetimefigarchView) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchView::sum(self : FinancetimefigarchView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_view_mean(s : FinancetimefigarchView) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchView::mean(self : FinancetimefigarchView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_view_scale(s : FinancetimefigarchView, f : Double) -> FinancetimefigarchView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchView::scale(self : FinancetimefigarchView, f : Double) -> FinancetimefigarchView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_view_add(a : FinancetimefigarchView, b : FinancetimefigarchView) -> FinancetimefigarchView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchView::add(self : FinancetimefigarchView, other : FinancetimefigarchView) -> FinancetimefigarchView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_view_copy(s : FinancetimefigarchView) -> FinancetimefigarchView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchView::copy(self : FinancetimefigarchView) -> FinancetimefigarchView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_view_fill(s : FinancetimefigarchView, v : Double) -> FinancetimefigarchView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchView::fill(self : FinancetimefigarchView, v : Double) -> FinancetimefigarchView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_view_min(s : FinancetimefigarchView) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchView::min(self : FinancetimefigarchView) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_view_max(s : FinancetimefigarchView) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchView::max(self : FinancetimefigarchView) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_view_to_string(s : FinancetimefigarchView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchView::to_string(self : FinancetimefigarchView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchRange {
@@ -963,45 +963,45 @@ pub fn finance_time_figarch_range_make(size : Int) -> FinancetimefigarchRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_range_len(s : FinancetimefigarchRange) -> Int { s.size }
+pub fn FinancetimefigarchRange::len(self : FinancetimefigarchRange) -> Int { self.size }
 
-pub fn finance_time_figarch_range_get(s : FinancetimefigarchRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchRange::get(self : FinancetimefigarchRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_range_set(s : FinancetimefigarchRange, i : Int, v : Double) -> FinancetimefigarchRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchRange::set(self : FinancetimefigarchRange, i : Int, v : Double) -> FinancetimefigarchRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_range_sum(s : FinancetimefigarchRange) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchRange::sum(self : FinancetimefigarchRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_range_mean(s : FinancetimefigarchRange) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchRange::mean(self : FinancetimefigarchRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_range_scale(s : FinancetimefigarchRange, f : Double) -> FinancetimefigarchRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchRange::scale(self : FinancetimefigarchRange, f : Double) -> FinancetimefigarchRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_range_add(a : FinancetimefigarchRange, b : FinancetimefigarchRange) -> FinancetimefigarchRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchRange::add(self : FinancetimefigarchRange, other : FinancetimefigarchRange) -> FinancetimefigarchRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_range_copy(s : FinancetimefigarchRange) -> FinancetimefigarchRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchRange::copy(self : FinancetimefigarchRange) -> FinancetimefigarchRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_range_fill(s : FinancetimefigarchRange, v : Double) -> FinancetimefigarchRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchRange::fill(self : FinancetimefigarchRange, v : Double) -> FinancetimefigarchRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_range_min(s : FinancetimefigarchRange) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchRange::min(self : FinancetimefigarchRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_range_max(s : FinancetimefigarchRange) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchRange::max(self : FinancetimefigarchRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_range_to_string(s : FinancetimefigarchRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchRange::to_string(self : FinancetimefigarchRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancetimefigarchSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_time_figarch_slice_make(size : Int) -> FinancetimefigarchSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_time_figarch_slice_len(s : FinancetimefigarchSlice) -> Int { s.size }
+pub fn FinancetimefigarchSlice::len(self : FinancetimefigarchSlice) -> Int { self.size }
 
-pub fn finance_time_figarch_slice_get(s : FinancetimefigarchSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancetimefigarchSlice::get(self : FinancetimefigarchSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_time_figarch_slice_set(s : FinancetimefigarchSlice, i : Int, v : Double) -> FinancetimefigarchSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancetimefigarchSlice::set(self : FinancetimefigarchSlice, i : Int, v : Double) -> FinancetimefigarchSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_slice_sum(s : FinancetimefigarchSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancetimefigarchSlice::sum(self : FinancetimefigarchSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_time_figarch_slice_mean(s : FinancetimefigarchSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancetimefigarchSlice::mean(self : FinancetimefigarchSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_time_figarch_slice_scale(s : FinancetimefigarchSlice, f : Double) -> FinancetimefigarchSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchSlice::scale(self : FinancetimefigarchSlice, f : Double) -> FinancetimefigarchSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_slice_add(a : FinancetimefigarchSlice, b : FinancetimefigarchSlice) -> FinancetimefigarchSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancetimefigarchSlice::add(self : FinancetimefigarchSlice, other : FinancetimefigarchSlice) -> FinancetimefigarchSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_time_figarch_slice_copy(s : FinancetimefigarchSlice) -> FinancetimefigarchSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchSlice::copy(self : FinancetimefigarchSlice) -> FinancetimefigarchSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_slice_fill(s : FinancetimefigarchSlice, v : Double) -> FinancetimefigarchSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancetimefigarchSlice::fill(self : FinancetimefigarchSlice, v : Double) -> FinancetimefigarchSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_time_figarch_slice_min(s : FinancetimefigarchSlice) -> Double { @_common.min(s.data) }
+pub fn FinancetimefigarchSlice::min(self : FinancetimefigarchSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_time_figarch_slice_max(s : FinancetimefigarchSlice) -> Double { @_common.max(s.data) }
+pub fn FinancetimefigarchSlice::max(self : FinancetimefigarchSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_time_figarch_slice_to_string(s : FinancetimefigarchSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancetimefigarchSlice::to_string(self : FinancetimefigarchSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

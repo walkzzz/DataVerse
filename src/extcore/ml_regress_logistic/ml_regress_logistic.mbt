@@ -351,45 +351,45 @@ pub fn ml_regress_logistic_frame_make(size : Int) -> MlregresslogisticFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_frame_len(s : MlregresslogisticFrame) -> Int { s.size }
+pub fn MlregresslogisticFrame::len(self : MlregresslogisticFrame) -> Int { self.size }
 
-pub fn ml_regress_logistic_frame_get(s : MlregresslogisticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticFrame::get(self : MlregresslogisticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_frame_set(s : MlregresslogisticFrame, i : Int, v : Double) -> MlregresslogisticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticFrame::set(self : MlregresslogisticFrame, i : Int, v : Double) -> MlregresslogisticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_frame_sum(s : MlregresslogisticFrame) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticFrame::sum(self : MlregresslogisticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_frame_mean(s : MlregresslogisticFrame) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticFrame::mean(self : MlregresslogisticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_frame_scale(s : MlregresslogisticFrame, f : Double) -> MlregresslogisticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticFrame::scale(self : MlregresslogisticFrame, f : Double) -> MlregresslogisticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_frame_add(a : MlregresslogisticFrame, b : MlregresslogisticFrame) -> MlregresslogisticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticFrame::add(self : MlregresslogisticFrame, other : MlregresslogisticFrame) -> MlregresslogisticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_frame_copy(s : MlregresslogisticFrame) -> MlregresslogisticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticFrame::copy(self : MlregresslogisticFrame) -> MlregresslogisticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_frame_fill(s : MlregresslogisticFrame, v : Double) -> MlregresslogisticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticFrame::fill(self : MlregresslogisticFrame, v : Double) -> MlregresslogisticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_frame_min(s : MlregresslogisticFrame) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticFrame::min(self : MlregresslogisticFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_frame_max(s : MlregresslogisticFrame) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticFrame::max(self : MlregresslogisticFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_frame_to_string(s : MlregresslogisticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticFrame::to_string(self : MlregresslogisticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticTable {
@@ -402,45 +402,45 @@ pub fn ml_regress_logistic_table_make(size : Int) -> MlregresslogisticTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_table_len(s : MlregresslogisticTable) -> Int { s.size }
+pub fn MlregresslogisticTable::len(self : MlregresslogisticTable) -> Int { self.size }
 
-pub fn ml_regress_logistic_table_get(s : MlregresslogisticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticTable::get(self : MlregresslogisticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_table_set(s : MlregresslogisticTable, i : Int, v : Double) -> MlregresslogisticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticTable::set(self : MlregresslogisticTable, i : Int, v : Double) -> MlregresslogisticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_table_sum(s : MlregresslogisticTable) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticTable::sum(self : MlregresslogisticTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_table_mean(s : MlregresslogisticTable) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticTable::mean(self : MlregresslogisticTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_table_scale(s : MlregresslogisticTable, f : Double) -> MlregresslogisticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticTable::scale(self : MlregresslogisticTable, f : Double) -> MlregresslogisticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_table_add(a : MlregresslogisticTable, b : MlregresslogisticTable) -> MlregresslogisticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticTable::add(self : MlregresslogisticTable, other : MlregresslogisticTable) -> MlregresslogisticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_table_copy(s : MlregresslogisticTable) -> MlregresslogisticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticTable::copy(self : MlregresslogisticTable) -> MlregresslogisticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_table_fill(s : MlregresslogisticTable, v : Double) -> MlregresslogisticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticTable::fill(self : MlregresslogisticTable, v : Double) -> MlregresslogisticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_table_min(s : MlregresslogisticTable) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticTable::min(self : MlregresslogisticTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_table_max(s : MlregresslogisticTable) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticTable::max(self : MlregresslogisticTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_table_to_string(s : MlregresslogisticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticTable::to_string(self : MlregresslogisticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticGraphN {
@@ -453,45 +453,45 @@ pub fn ml_regress_logistic_graphn_make(size : Int) -> MlregresslogisticGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_graphn_len(s : MlregresslogisticGraphN) -> Int { s.size }
+pub fn MlregresslogisticGraphN::len(self : MlregresslogisticGraphN) -> Int { self.size }
 
-pub fn ml_regress_logistic_graphn_get(s : MlregresslogisticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticGraphN::get(self : MlregresslogisticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_graphn_set(s : MlregresslogisticGraphN, i : Int, v : Double) -> MlregresslogisticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticGraphN::set(self : MlregresslogisticGraphN, i : Int, v : Double) -> MlregresslogisticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_graphn_sum(s : MlregresslogisticGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticGraphN::sum(self : MlregresslogisticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_graphn_mean(s : MlregresslogisticGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticGraphN::mean(self : MlregresslogisticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_graphn_scale(s : MlregresslogisticGraphN, f : Double) -> MlregresslogisticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticGraphN::scale(self : MlregresslogisticGraphN, f : Double) -> MlregresslogisticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_graphn_add(a : MlregresslogisticGraphN, b : MlregresslogisticGraphN) -> MlregresslogisticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticGraphN::add(self : MlregresslogisticGraphN, other : MlregresslogisticGraphN) -> MlregresslogisticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_graphn_copy(s : MlregresslogisticGraphN) -> MlregresslogisticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticGraphN::copy(self : MlregresslogisticGraphN) -> MlregresslogisticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_graphn_fill(s : MlregresslogisticGraphN, v : Double) -> MlregresslogisticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticGraphN::fill(self : MlregresslogisticGraphN, v : Double) -> MlregresslogisticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_graphn_min(s : MlregresslogisticGraphN) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticGraphN::min(self : MlregresslogisticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_graphn_max(s : MlregresslogisticGraphN) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticGraphN::max(self : MlregresslogisticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_graphn_to_string(s : MlregresslogisticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticGraphN::to_string(self : MlregresslogisticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticNode {
@@ -504,45 +504,45 @@ pub fn ml_regress_logistic_node_make(size : Int) -> MlregresslogisticNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_node_len(s : MlregresslogisticNode) -> Int { s.size }
+pub fn MlregresslogisticNode::len(self : MlregresslogisticNode) -> Int { self.size }
 
-pub fn ml_regress_logistic_node_get(s : MlregresslogisticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticNode::get(self : MlregresslogisticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_node_set(s : MlregresslogisticNode, i : Int, v : Double) -> MlregresslogisticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticNode::set(self : MlregresslogisticNode, i : Int, v : Double) -> MlregresslogisticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_node_sum(s : MlregresslogisticNode) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticNode::sum(self : MlregresslogisticNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_node_mean(s : MlregresslogisticNode) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticNode::mean(self : MlregresslogisticNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_node_scale(s : MlregresslogisticNode, f : Double) -> MlregresslogisticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticNode::scale(self : MlregresslogisticNode, f : Double) -> MlregresslogisticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_node_add(a : MlregresslogisticNode, b : MlregresslogisticNode) -> MlregresslogisticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticNode::add(self : MlregresslogisticNode, other : MlregresslogisticNode) -> MlregresslogisticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_node_copy(s : MlregresslogisticNode) -> MlregresslogisticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticNode::copy(self : MlregresslogisticNode) -> MlregresslogisticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_node_fill(s : MlregresslogisticNode, v : Double) -> MlregresslogisticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticNode::fill(self : MlregresslogisticNode, v : Double) -> MlregresslogisticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_node_min(s : MlregresslogisticNode) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticNode::min(self : MlregresslogisticNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_node_max(s : MlregresslogisticNode) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticNode::max(self : MlregresslogisticNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_node_to_string(s : MlregresslogisticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticNode::to_string(self : MlregresslogisticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticEdge {
@@ -555,45 +555,45 @@ pub fn ml_regress_logistic_edge_make(size : Int) -> MlregresslogisticEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_edge_len(s : MlregresslogisticEdge) -> Int { s.size }
+pub fn MlregresslogisticEdge::len(self : MlregresslogisticEdge) -> Int { self.size }
 
-pub fn ml_regress_logistic_edge_get(s : MlregresslogisticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticEdge::get(self : MlregresslogisticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_edge_set(s : MlregresslogisticEdge, i : Int, v : Double) -> MlregresslogisticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticEdge::set(self : MlregresslogisticEdge, i : Int, v : Double) -> MlregresslogisticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_edge_sum(s : MlregresslogisticEdge) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticEdge::sum(self : MlregresslogisticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_edge_mean(s : MlregresslogisticEdge) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticEdge::mean(self : MlregresslogisticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_edge_scale(s : MlregresslogisticEdge, f : Double) -> MlregresslogisticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticEdge::scale(self : MlregresslogisticEdge, f : Double) -> MlregresslogisticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_edge_add(a : MlregresslogisticEdge, b : MlregresslogisticEdge) -> MlregresslogisticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticEdge::add(self : MlregresslogisticEdge, other : MlregresslogisticEdge) -> MlregresslogisticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_edge_copy(s : MlregresslogisticEdge) -> MlregresslogisticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticEdge::copy(self : MlregresslogisticEdge) -> MlregresslogisticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_edge_fill(s : MlregresslogisticEdge, v : Double) -> MlregresslogisticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticEdge::fill(self : MlregresslogisticEdge, v : Double) -> MlregresslogisticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_edge_min(s : MlregresslogisticEdge) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticEdge::min(self : MlregresslogisticEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_edge_max(s : MlregresslogisticEdge) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticEdge::max(self : MlregresslogisticEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_edge_to_string(s : MlregresslogisticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticEdge::to_string(self : MlregresslogisticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticPath {
@@ -606,45 +606,45 @@ pub fn ml_regress_logistic_path_make(size : Int) -> MlregresslogisticPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_path_len(s : MlregresslogisticPath) -> Int { s.size }
+pub fn MlregresslogisticPath::len(self : MlregresslogisticPath) -> Int { self.size }
 
-pub fn ml_regress_logistic_path_get(s : MlregresslogisticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticPath::get(self : MlregresslogisticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_path_set(s : MlregresslogisticPath, i : Int, v : Double) -> MlregresslogisticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticPath::set(self : MlregresslogisticPath, i : Int, v : Double) -> MlregresslogisticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_path_sum(s : MlregresslogisticPath) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticPath::sum(self : MlregresslogisticPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_path_mean(s : MlregresslogisticPath) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticPath::mean(self : MlregresslogisticPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_path_scale(s : MlregresslogisticPath, f : Double) -> MlregresslogisticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticPath::scale(self : MlregresslogisticPath, f : Double) -> MlregresslogisticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_path_add(a : MlregresslogisticPath, b : MlregresslogisticPath) -> MlregresslogisticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticPath::add(self : MlregresslogisticPath, other : MlregresslogisticPath) -> MlregresslogisticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_path_copy(s : MlregresslogisticPath) -> MlregresslogisticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticPath::copy(self : MlregresslogisticPath) -> MlregresslogisticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_path_fill(s : MlregresslogisticPath, v : Double) -> MlregresslogisticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticPath::fill(self : MlregresslogisticPath, v : Double) -> MlregresslogisticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_path_min(s : MlregresslogisticPath) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticPath::min(self : MlregresslogisticPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_path_max(s : MlregresslogisticPath) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticPath::max(self : MlregresslogisticPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_path_to_string(s : MlregresslogisticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticPath::to_string(self : MlregresslogisticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticCluster {
@@ -657,45 +657,45 @@ pub fn ml_regress_logistic_cluster_make(size : Int) -> MlregresslogisticCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_cluster_len(s : MlregresslogisticCluster) -> Int { s.size }
+pub fn MlregresslogisticCluster::len(self : MlregresslogisticCluster) -> Int { self.size }
 
-pub fn ml_regress_logistic_cluster_get(s : MlregresslogisticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticCluster::get(self : MlregresslogisticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_cluster_set(s : MlregresslogisticCluster, i : Int, v : Double) -> MlregresslogisticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticCluster::set(self : MlregresslogisticCluster, i : Int, v : Double) -> MlregresslogisticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cluster_sum(s : MlregresslogisticCluster) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticCluster::sum(self : MlregresslogisticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_cluster_mean(s : MlregresslogisticCluster) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticCluster::mean(self : MlregresslogisticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_cluster_scale(s : MlregresslogisticCluster, f : Double) -> MlregresslogisticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticCluster::scale(self : MlregresslogisticCluster, f : Double) -> MlregresslogisticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cluster_add(a : MlregresslogisticCluster, b : MlregresslogisticCluster) -> MlregresslogisticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticCluster::add(self : MlregresslogisticCluster, other : MlregresslogisticCluster) -> MlregresslogisticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cluster_copy(s : MlregresslogisticCluster) -> MlregresslogisticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticCluster::copy(self : MlregresslogisticCluster) -> MlregresslogisticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cluster_fill(s : MlregresslogisticCluster, v : Double) -> MlregresslogisticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticCluster::fill(self : MlregresslogisticCluster, v : Double) -> MlregresslogisticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cluster_min(s : MlregresslogisticCluster) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticCluster::min(self : MlregresslogisticCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_cluster_max(s : MlregresslogisticCluster) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticCluster::max(self : MlregresslogisticCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_cluster_to_string(s : MlregresslogisticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticCluster::to_string(self : MlregresslogisticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticModel {
@@ -708,45 +708,45 @@ pub fn ml_regress_logistic_model_make(size : Int) -> MlregresslogisticModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_model_len(s : MlregresslogisticModel) -> Int { s.size }
+pub fn MlregresslogisticModel::len(self : MlregresslogisticModel) -> Int { self.size }
 
-pub fn ml_regress_logistic_model_get(s : MlregresslogisticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticModel::get(self : MlregresslogisticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_model_set(s : MlregresslogisticModel, i : Int, v : Double) -> MlregresslogisticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticModel::set(self : MlregresslogisticModel, i : Int, v : Double) -> MlregresslogisticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_model_sum(s : MlregresslogisticModel) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticModel::sum(self : MlregresslogisticModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_model_mean(s : MlregresslogisticModel) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticModel::mean(self : MlregresslogisticModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_model_scale(s : MlregresslogisticModel, f : Double) -> MlregresslogisticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticModel::scale(self : MlregresslogisticModel, f : Double) -> MlregresslogisticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_model_add(a : MlregresslogisticModel, b : MlregresslogisticModel) -> MlregresslogisticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticModel::add(self : MlregresslogisticModel, other : MlregresslogisticModel) -> MlregresslogisticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_model_copy(s : MlregresslogisticModel) -> MlregresslogisticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticModel::copy(self : MlregresslogisticModel) -> MlregresslogisticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_model_fill(s : MlregresslogisticModel, v : Double) -> MlregresslogisticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticModel::fill(self : MlregresslogisticModel, v : Double) -> MlregresslogisticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_model_min(s : MlregresslogisticModel) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticModel::min(self : MlregresslogisticModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_model_max(s : MlregresslogisticModel) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticModel::max(self : MlregresslogisticModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_model_to_string(s : MlregresslogisticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticModel::to_string(self : MlregresslogisticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticLayer {
@@ -759,45 +759,45 @@ pub fn ml_regress_logistic_layer_make(size : Int) -> MlregresslogisticLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_layer_len(s : MlregresslogisticLayer) -> Int { s.size }
+pub fn MlregresslogisticLayer::len(self : MlregresslogisticLayer) -> Int { self.size }
 
-pub fn ml_regress_logistic_layer_get(s : MlregresslogisticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticLayer::get(self : MlregresslogisticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_layer_set(s : MlregresslogisticLayer, i : Int, v : Double) -> MlregresslogisticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticLayer::set(self : MlregresslogisticLayer, i : Int, v : Double) -> MlregresslogisticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_layer_sum(s : MlregresslogisticLayer) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticLayer::sum(self : MlregresslogisticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_layer_mean(s : MlregresslogisticLayer) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticLayer::mean(self : MlregresslogisticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_layer_scale(s : MlregresslogisticLayer, f : Double) -> MlregresslogisticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticLayer::scale(self : MlregresslogisticLayer, f : Double) -> MlregresslogisticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_layer_add(a : MlregresslogisticLayer, b : MlregresslogisticLayer) -> MlregresslogisticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticLayer::add(self : MlregresslogisticLayer, other : MlregresslogisticLayer) -> MlregresslogisticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_layer_copy(s : MlregresslogisticLayer) -> MlregresslogisticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticLayer::copy(self : MlregresslogisticLayer) -> MlregresslogisticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_layer_fill(s : MlregresslogisticLayer, v : Double) -> MlregresslogisticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticLayer::fill(self : MlregresslogisticLayer, v : Double) -> MlregresslogisticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_layer_min(s : MlregresslogisticLayer) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticLayer::min(self : MlregresslogisticLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_layer_max(s : MlregresslogisticLayer) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticLayer::max(self : MlregresslogisticLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_layer_to_string(s : MlregresslogisticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticLayer::to_string(self : MlregresslogisticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticBuffer {
@@ -810,45 +810,45 @@ pub fn ml_regress_logistic_buffer_make(size : Int) -> MlregresslogisticBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_buffer_len(s : MlregresslogisticBuffer) -> Int { s.size }
+pub fn MlregresslogisticBuffer::len(self : MlregresslogisticBuffer) -> Int { self.size }
 
-pub fn ml_regress_logistic_buffer_get(s : MlregresslogisticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticBuffer::get(self : MlregresslogisticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_buffer_set(s : MlregresslogisticBuffer, i : Int, v : Double) -> MlregresslogisticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticBuffer::set(self : MlregresslogisticBuffer, i : Int, v : Double) -> MlregresslogisticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_buffer_sum(s : MlregresslogisticBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticBuffer::sum(self : MlregresslogisticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_buffer_mean(s : MlregresslogisticBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticBuffer::mean(self : MlregresslogisticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_buffer_scale(s : MlregresslogisticBuffer, f : Double) -> MlregresslogisticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticBuffer::scale(self : MlregresslogisticBuffer, f : Double) -> MlregresslogisticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_buffer_add(a : MlregresslogisticBuffer, b : MlregresslogisticBuffer) -> MlregresslogisticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticBuffer::add(self : MlregresslogisticBuffer, other : MlregresslogisticBuffer) -> MlregresslogisticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_buffer_copy(s : MlregresslogisticBuffer) -> MlregresslogisticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticBuffer::copy(self : MlregresslogisticBuffer) -> MlregresslogisticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_buffer_fill(s : MlregresslogisticBuffer, v : Double) -> MlregresslogisticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticBuffer::fill(self : MlregresslogisticBuffer, v : Double) -> MlregresslogisticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_buffer_min(s : MlregresslogisticBuffer) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticBuffer::min(self : MlregresslogisticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_buffer_max(s : MlregresslogisticBuffer) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticBuffer::max(self : MlregresslogisticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_buffer_to_string(s : MlregresslogisticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticBuffer::to_string(self : MlregresslogisticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticCursor {
@@ -861,45 +861,45 @@ pub fn ml_regress_logistic_cursor_make(size : Int) -> MlregresslogisticCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_cursor_len(s : MlregresslogisticCursor) -> Int { s.size }
+pub fn MlregresslogisticCursor::len(self : MlregresslogisticCursor) -> Int { self.size }
 
-pub fn ml_regress_logistic_cursor_get(s : MlregresslogisticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticCursor::get(self : MlregresslogisticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_cursor_set(s : MlregresslogisticCursor, i : Int, v : Double) -> MlregresslogisticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticCursor::set(self : MlregresslogisticCursor, i : Int, v : Double) -> MlregresslogisticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cursor_sum(s : MlregresslogisticCursor) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticCursor::sum(self : MlregresslogisticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_cursor_mean(s : MlregresslogisticCursor) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticCursor::mean(self : MlregresslogisticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_cursor_scale(s : MlregresslogisticCursor, f : Double) -> MlregresslogisticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticCursor::scale(self : MlregresslogisticCursor, f : Double) -> MlregresslogisticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cursor_add(a : MlregresslogisticCursor, b : MlregresslogisticCursor) -> MlregresslogisticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticCursor::add(self : MlregresslogisticCursor, other : MlregresslogisticCursor) -> MlregresslogisticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cursor_copy(s : MlregresslogisticCursor) -> MlregresslogisticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticCursor::copy(self : MlregresslogisticCursor) -> MlregresslogisticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cursor_fill(s : MlregresslogisticCursor, v : Double) -> MlregresslogisticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticCursor::fill(self : MlregresslogisticCursor, v : Double) -> MlregresslogisticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_cursor_min(s : MlregresslogisticCursor) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticCursor::min(self : MlregresslogisticCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_cursor_max(s : MlregresslogisticCursor) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticCursor::max(self : MlregresslogisticCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_cursor_to_string(s : MlregresslogisticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticCursor::to_string(self : MlregresslogisticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticView {
@@ -912,45 +912,45 @@ pub fn ml_regress_logistic_view_make(size : Int) -> MlregresslogisticView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_view_len(s : MlregresslogisticView) -> Int { s.size }
+pub fn MlregresslogisticView::len(self : MlregresslogisticView) -> Int { self.size }
 
-pub fn ml_regress_logistic_view_get(s : MlregresslogisticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticView::get(self : MlregresslogisticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_view_set(s : MlregresslogisticView, i : Int, v : Double) -> MlregresslogisticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticView::set(self : MlregresslogisticView, i : Int, v : Double) -> MlregresslogisticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_view_sum(s : MlregresslogisticView) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticView::sum(self : MlregresslogisticView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_view_mean(s : MlregresslogisticView) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticView::mean(self : MlregresslogisticView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_view_scale(s : MlregresslogisticView, f : Double) -> MlregresslogisticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticView::scale(self : MlregresslogisticView, f : Double) -> MlregresslogisticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_view_add(a : MlregresslogisticView, b : MlregresslogisticView) -> MlregresslogisticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticView::add(self : MlregresslogisticView, other : MlregresslogisticView) -> MlregresslogisticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_view_copy(s : MlregresslogisticView) -> MlregresslogisticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticView::copy(self : MlregresslogisticView) -> MlregresslogisticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_view_fill(s : MlregresslogisticView, v : Double) -> MlregresslogisticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticView::fill(self : MlregresslogisticView, v : Double) -> MlregresslogisticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_view_min(s : MlregresslogisticView) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticView::min(self : MlregresslogisticView) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_view_max(s : MlregresslogisticView) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticView::max(self : MlregresslogisticView) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_view_to_string(s : MlregresslogisticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticView::to_string(self : MlregresslogisticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticRange {
@@ -963,45 +963,45 @@ pub fn ml_regress_logistic_range_make(size : Int) -> MlregresslogisticRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_range_len(s : MlregresslogisticRange) -> Int { s.size }
+pub fn MlregresslogisticRange::len(self : MlregresslogisticRange) -> Int { self.size }
 
-pub fn ml_regress_logistic_range_get(s : MlregresslogisticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticRange::get(self : MlregresslogisticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_range_set(s : MlregresslogisticRange, i : Int, v : Double) -> MlregresslogisticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticRange::set(self : MlregresslogisticRange, i : Int, v : Double) -> MlregresslogisticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_range_sum(s : MlregresslogisticRange) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticRange::sum(self : MlregresslogisticRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_range_mean(s : MlregresslogisticRange) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticRange::mean(self : MlregresslogisticRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_range_scale(s : MlregresslogisticRange, f : Double) -> MlregresslogisticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticRange::scale(self : MlregresslogisticRange, f : Double) -> MlregresslogisticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_range_add(a : MlregresslogisticRange, b : MlregresslogisticRange) -> MlregresslogisticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticRange::add(self : MlregresslogisticRange, other : MlregresslogisticRange) -> MlregresslogisticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_range_copy(s : MlregresslogisticRange) -> MlregresslogisticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticRange::copy(self : MlregresslogisticRange) -> MlregresslogisticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_range_fill(s : MlregresslogisticRange, v : Double) -> MlregresslogisticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticRange::fill(self : MlregresslogisticRange, v : Double) -> MlregresslogisticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_range_min(s : MlregresslogisticRange) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticRange::min(self : MlregresslogisticRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_range_max(s : MlregresslogisticRange) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticRange::max(self : MlregresslogisticRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_range_to_string(s : MlregresslogisticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticRange::to_string(self : MlregresslogisticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlregresslogisticSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_regress_logistic_slice_make(size : Int) -> MlregresslogisticSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_regress_logistic_slice_len(s : MlregresslogisticSlice) -> Int { s.size }
+pub fn MlregresslogisticSlice::len(self : MlregresslogisticSlice) -> Int { self.size }
 
-pub fn ml_regress_logistic_slice_get(s : MlregresslogisticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlregresslogisticSlice::get(self : MlregresslogisticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_regress_logistic_slice_set(s : MlregresslogisticSlice, i : Int, v : Double) -> MlregresslogisticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlregresslogisticSlice::set(self : MlregresslogisticSlice, i : Int, v : Double) -> MlregresslogisticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_slice_sum(s : MlregresslogisticSlice) -> Double { @_common.sum(s.data) }
+pub fn MlregresslogisticSlice::sum(self : MlregresslogisticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_regress_logistic_slice_mean(s : MlregresslogisticSlice) -> Double { @_common.mean(s.data) }
+pub fn MlregresslogisticSlice::mean(self : MlregresslogisticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_regress_logistic_slice_scale(s : MlregresslogisticSlice, f : Double) -> MlregresslogisticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlregresslogisticSlice::scale(self : MlregresslogisticSlice, f : Double) -> MlregresslogisticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_slice_add(a : MlregresslogisticSlice, b : MlregresslogisticSlice) -> MlregresslogisticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlregresslogisticSlice::add(self : MlregresslogisticSlice, other : MlregresslogisticSlice) -> MlregresslogisticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_slice_copy(s : MlregresslogisticSlice) -> MlregresslogisticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlregresslogisticSlice::copy(self : MlregresslogisticSlice) -> MlregresslogisticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_slice_fill(s : MlregresslogisticSlice, v : Double) -> MlregresslogisticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlregresslogisticSlice::fill(self : MlregresslogisticSlice, v : Double) -> MlregresslogisticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_regress_logistic_slice_min(s : MlregresslogisticSlice) -> Double { @_common.min(s.data) }
+pub fn MlregresslogisticSlice::min(self : MlregresslogisticSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_regress_logistic_slice_max(s : MlregresslogisticSlice) -> Double { @_common.max(s.data) }
+pub fn MlregresslogisticSlice::max(self : MlregresslogisticSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_regress_logistic_slice_to_string(s : MlregresslogisticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlregresslogisticSlice::to_string(self : MlregresslogisticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

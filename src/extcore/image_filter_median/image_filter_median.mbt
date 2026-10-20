@@ -351,45 +351,45 @@ pub fn image_filter_median_frame_make(size : Int) -> ImagefiltermedianFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_frame_len(s : ImagefiltermedianFrame) -> Int { s.size }
+pub fn ImagefiltermedianFrame::len(self : ImagefiltermedianFrame) -> Int { self.size }
 
-pub fn image_filter_median_frame_get(s : ImagefiltermedianFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianFrame::get(self : ImagefiltermedianFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_frame_set(s : ImagefiltermedianFrame, i : Int, v : Double) -> ImagefiltermedianFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianFrame::set(self : ImagefiltermedianFrame, i : Int, v : Double) -> ImagefiltermedianFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_frame_sum(s : ImagefiltermedianFrame) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianFrame::sum(self : ImagefiltermedianFrame) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_frame_mean(s : ImagefiltermedianFrame) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianFrame::mean(self : ImagefiltermedianFrame) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_frame_scale(s : ImagefiltermedianFrame, f : Double) -> ImagefiltermedianFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianFrame::scale(self : ImagefiltermedianFrame, f : Double) -> ImagefiltermedianFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_frame_add(a : ImagefiltermedianFrame, b : ImagefiltermedianFrame) -> ImagefiltermedianFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianFrame::add(self : ImagefiltermedianFrame, other : ImagefiltermedianFrame) -> ImagefiltermedianFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_frame_copy(s : ImagefiltermedianFrame) -> ImagefiltermedianFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianFrame::copy(self : ImagefiltermedianFrame) -> ImagefiltermedianFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_frame_fill(s : ImagefiltermedianFrame, v : Double) -> ImagefiltermedianFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianFrame::fill(self : ImagefiltermedianFrame, v : Double) -> ImagefiltermedianFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_frame_min(s : ImagefiltermedianFrame) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianFrame::min(self : ImagefiltermedianFrame) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_frame_max(s : ImagefiltermedianFrame) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianFrame::max(self : ImagefiltermedianFrame) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_frame_to_string(s : ImagefiltermedianFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianFrame::to_string(self : ImagefiltermedianFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianTable {
@@ -402,45 +402,45 @@ pub fn image_filter_median_table_make(size : Int) -> ImagefiltermedianTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_table_len(s : ImagefiltermedianTable) -> Int { s.size }
+pub fn ImagefiltermedianTable::len(self : ImagefiltermedianTable) -> Int { self.size }
 
-pub fn image_filter_median_table_get(s : ImagefiltermedianTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianTable::get(self : ImagefiltermedianTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_table_set(s : ImagefiltermedianTable, i : Int, v : Double) -> ImagefiltermedianTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianTable::set(self : ImagefiltermedianTable, i : Int, v : Double) -> ImagefiltermedianTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_table_sum(s : ImagefiltermedianTable) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianTable::sum(self : ImagefiltermedianTable) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_table_mean(s : ImagefiltermedianTable) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianTable::mean(self : ImagefiltermedianTable) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_table_scale(s : ImagefiltermedianTable, f : Double) -> ImagefiltermedianTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianTable::scale(self : ImagefiltermedianTable, f : Double) -> ImagefiltermedianTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_table_add(a : ImagefiltermedianTable, b : ImagefiltermedianTable) -> ImagefiltermedianTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianTable::add(self : ImagefiltermedianTable, other : ImagefiltermedianTable) -> ImagefiltermedianTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_table_copy(s : ImagefiltermedianTable) -> ImagefiltermedianTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianTable::copy(self : ImagefiltermedianTable) -> ImagefiltermedianTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_table_fill(s : ImagefiltermedianTable, v : Double) -> ImagefiltermedianTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianTable::fill(self : ImagefiltermedianTable, v : Double) -> ImagefiltermedianTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_table_min(s : ImagefiltermedianTable) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianTable::min(self : ImagefiltermedianTable) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_table_max(s : ImagefiltermedianTable) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianTable::max(self : ImagefiltermedianTable) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_table_to_string(s : ImagefiltermedianTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianTable::to_string(self : ImagefiltermedianTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianGraphN {
@@ -453,45 +453,45 @@ pub fn image_filter_median_graphn_make(size : Int) -> ImagefiltermedianGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_graphn_len(s : ImagefiltermedianGraphN) -> Int { s.size }
+pub fn ImagefiltermedianGraphN::len(self : ImagefiltermedianGraphN) -> Int { self.size }
 
-pub fn image_filter_median_graphn_get(s : ImagefiltermedianGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianGraphN::get(self : ImagefiltermedianGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_graphn_set(s : ImagefiltermedianGraphN, i : Int, v : Double) -> ImagefiltermedianGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianGraphN::set(self : ImagefiltermedianGraphN, i : Int, v : Double) -> ImagefiltermedianGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_graphn_sum(s : ImagefiltermedianGraphN) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianGraphN::sum(self : ImagefiltermedianGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_graphn_mean(s : ImagefiltermedianGraphN) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianGraphN::mean(self : ImagefiltermedianGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_graphn_scale(s : ImagefiltermedianGraphN, f : Double) -> ImagefiltermedianGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianGraphN::scale(self : ImagefiltermedianGraphN, f : Double) -> ImagefiltermedianGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_graphn_add(a : ImagefiltermedianGraphN, b : ImagefiltermedianGraphN) -> ImagefiltermedianGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianGraphN::add(self : ImagefiltermedianGraphN, other : ImagefiltermedianGraphN) -> ImagefiltermedianGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_graphn_copy(s : ImagefiltermedianGraphN) -> ImagefiltermedianGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianGraphN::copy(self : ImagefiltermedianGraphN) -> ImagefiltermedianGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_graphn_fill(s : ImagefiltermedianGraphN, v : Double) -> ImagefiltermedianGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianGraphN::fill(self : ImagefiltermedianGraphN, v : Double) -> ImagefiltermedianGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_graphn_min(s : ImagefiltermedianGraphN) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianGraphN::min(self : ImagefiltermedianGraphN) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_graphn_max(s : ImagefiltermedianGraphN) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianGraphN::max(self : ImagefiltermedianGraphN) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_graphn_to_string(s : ImagefiltermedianGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianGraphN::to_string(self : ImagefiltermedianGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianNode {
@@ -504,45 +504,45 @@ pub fn image_filter_median_node_make(size : Int) -> ImagefiltermedianNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_node_len(s : ImagefiltermedianNode) -> Int { s.size }
+pub fn ImagefiltermedianNode::len(self : ImagefiltermedianNode) -> Int { self.size }
 
-pub fn image_filter_median_node_get(s : ImagefiltermedianNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianNode::get(self : ImagefiltermedianNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_node_set(s : ImagefiltermedianNode, i : Int, v : Double) -> ImagefiltermedianNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianNode::set(self : ImagefiltermedianNode, i : Int, v : Double) -> ImagefiltermedianNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_node_sum(s : ImagefiltermedianNode) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianNode::sum(self : ImagefiltermedianNode) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_node_mean(s : ImagefiltermedianNode) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianNode::mean(self : ImagefiltermedianNode) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_node_scale(s : ImagefiltermedianNode, f : Double) -> ImagefiltermedianNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianNode::scale(self : ImagefiltermedianNode, f : Double) -> ImagefiltermedianNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_node_add(a : ImagefiltermedianNode, b : ImagefiltermedianNode) -> ImagefiltermedianNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianNode::add(self : ImagefiltermedianNode, other : ImagefiltermedianNode) -> ImagefiltermedianNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_node_copy(s : ImagefiltermedianNode) -> ImagefiltermedianNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianNode::copy(self : ImagefiltermedianNode) -> ImagefiltermedianNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_node_fill(s : ImagefiltermedianNode, v : Double) -> ImagefiltermedianNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianNode::fill(self : ImagefiltermedianNode, v : Double) -> ImagefiltermedianNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_node_min(s : ImagefiltermedianNode) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianNode::min(self : ImagefiltermedianNode) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_node_max(s : ImagefiltermedianNode) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianNode::max(self : ImagefiltermedianNode) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_node_to_string(s : ImagefiltermedianNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianNode::to_string(self : ImagefiltermedianNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianEdge {
@@ -555,45 +555,45 @@ pub fn image_filter_median_edge_make(size : Int) -> ImagefiltermedianEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_edge_len(s : ImagefiltermedianEdge) -> Int { s.size }
+pub fn ImagefiltermedianEdge::len(self : ImagefiltermedianEdge) -> Int { self.size }
 
-pub fn image_filter_median_edge_get(s : ImagefiltermedianEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianEdge::get(self : ImagefiltermedianEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_edge_set(s : ImagefiltermedianEdge, i : Int, v : Double) -> ImagefiltermedianEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianEdge::set(self : ImagefiltermedianEdge, i : Int, v : Double) -> ImagefiltermedianEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_edge_sum(s : ImagefiltermedianEdge) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianEdge::sum(self : ImagefiltermedianEdge) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_edge_mean(s : ImagefiltermedianEdge) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianEdge::mean(self : ImagefiltermedianEdge) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_edge_scale(s : ImagefiltermedianEdge, f : Double) -> ImagefiltermedianEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianEdge::scale(self : ImagefiltermedianEdge, f : Double) -> ImagefiltermedianEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_edge_add(a : ImagefiltermedianEdge, b : ImagefiltermedianEdge) -> ImagefiltermedianEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianEdge::add(self : ImagefiltermedianEdge, other : ImagefiltermedianEdge) -> ImagefiltermedianEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_edge_copy(s : ImagefiltermedianEdge) -> ImagefiltermedianEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianEdge::copy(self : ImagefiltermedianEdge) -> ImagefiltermedianEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_edge_fill(s : ImagefiltermedianEdge, v : Double) -> ImagefiltermedianEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianEdge::fill(self : ImagefiltermedianEdge, v : Double) -> ImagefiltermedianEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_edge_min(s : ImagefiltermedianEdge) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianEdge::min(self : ImagefiltermedianEdge) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_edge_max(s : ImagefiltermedianEdge) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianEdge::max(self : ImagefiltermedianEdge) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_edge_to_string(s : ImagefiltermedianEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianEdge::to_string(self : ImagefiltermedianEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianPath {
@@ -606,45 +606,45 @@ pub fn image_filter_median_path_make(size : Int) -> ImagefiltermedianPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_path_len(s : ImagefiltermedianPath) -> Int { s.size }
+pub fn ImagefiltermedianPath::len(self : ImagefiltermedianPath) -> Int { self.size }
 
-pub fn image_filter_median_path_get(s : ImagefiltermedianPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianPath::get(self : ImagefiltermedianPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_path_set(s : ImagefiltermedianPath, i : Int, v : Double) -> ImagefiltermedianPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianPath::set(self : ImagefiltermedianPath, i : Int, v : Double) -> ImagefiltermedianPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_path_sum(s : ImagefiltermedianPath) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianPath::sum(self : ImagefiltermedianPath) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_path_mean(s : ImagefiltermedianPath) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianPath::mean(self : ImagefiltermedianPath) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_path_scale(s : ImagefiltermedianPath, f : Double) -> ImagefiltermedianPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianPath::scale(self : ImagefiltermedianPath, f : Double) -> ImagefiltermedianPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_path_add(a : ImagefiltermedianPath, b : ImagefiltermedianPath) -> ImagefiltermedianPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianPath::add(self : ImagefiltermedianPath, other : ImagefiltermedianPath) -> ImagefiltermedianPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_path_copy(s : ImagefiltermedianPath) -> ImagefiltermedianPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianPath::copy(self : ImagefiltermedianPath) -> ImagefiltermedianPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_path_fill(s : ImagefiltermedianPath, v : Double) -> ImagefiltermedianPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianPath::fill(self : ImagefiltermedianPath, v : Double) -> ImagefiltermedianPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_path_min(s : ImagefiltermedianPath) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianPath::min(self : ImagefiltermedianPath) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_path_max(s : ImagefiltermedianPath) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianPath::max(self : ImagefiltermedianPath) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_path_to_string(s : ImagefiltermedianPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianPath::to_string(self : ImagefiltermedianPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianCluster {
@@ -657,45 +657,45 @@ pub fn image_filter_median_cluster_make(size : Int) -> ImagefiltermedianCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_cluster_len(s : ImagefiltermedianCluster) -> Int { s.size }
+pub fn ImagefiltermedianCluster::len(self : ImagefiltermedianCluster) -> Int { self.size }
 
-pub fn image_filter_median_cluster_get(s : ImagefiltermedianCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianCluster::get(self : ImagefiltermedianCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_cluster_set(s : ImagefiltermedianCluster, i : Int, v : Double) -> ImagefiltermedianCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCluster::set(self : ImagefiltermedianCluster, i : Int, v : Double) -> ImagefiltermedianCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cluster_sum(s : ImagefiltermedianCluster) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianCluster::sum(self : ImagefiltermedianCluster) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_cluster_mean(s : ImagefiltermedianCluster) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianCluster::mean(self : ImagefiltermedianCluster) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_cluster_scale(s : ImagefiltermedianCluster, f : Double) -> ImagefiltermedianCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCluster::scale(self : ImagefiltermedianCluster, f : Double) -> ImagefiltermedianCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cluster_add(a : ImagefiltermedianCluster, b : ImagefiltermedianCluster) -> ImagefiltermedianCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianCluster::add(self : ImagefiltermedianCluster, other : ImagefiltermedianCluster) -> ImagefiltermedianCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_cluster_copy(s : ImagefiltermedianCluster) -> ImagefiltermedianCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCluster::copy(self : ImagefiltermedianCluster) -> ImagefiltermedianCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cluster_fill(s : ImagefiltermedianCluster, v : Double) -> ImagefiltermedianCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCluster::fill(self : ImagefiltermedianCluster, v : Double) -> ImagefiltermedianCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cluster_min(s : ImagefiltermedianCluster) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianCluster::min(self : ImagefiltermedianCluster) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_cluster_max(s : ImagefiltermedianCluster) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianCluster::max(self : ImagefiltermedianCluster) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_cluster_to_string(s : ImagefiltermedianCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianCluster::to_string(self : ImagefiltermedianCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianModel {
@@ -708,45 +708,45 @@ pub fn image_filter_median_model_make(size : Int) -> ImagefiltermedianModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_model_len(s : ImagefiltermedianModel) -> Int { s.size }
+pub fn ImagefiltermedianModel::len(self : ImagefiltermedianModel) -> Int { self.size }
 
-pub fn image_filter_median_model_get(s : ImagefiltermedianModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianModel::get(self : ImagefiltermedianModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_model_set(s : ImagefiltermedianModel, i : Int, v : Double) -> ImagefiltermedianModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianModel::set(self : ImagefiltermedianModel, i : Int, v : Double) -> ImagefiltermedianModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_model_sum(s : ImagefiltermedianModel) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianModel::sum(self : ImagefiltermedianModel) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_model_mean(s : ImagefiltermedianModel) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianModel::mean(self : ImagefiltermedianModel) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_model_scale(s : ImagefiltermedianModel, f : Double) -> ImagefiltermedianModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianModel::scale(self : ImagefiltermedianModel, f : Double) -> ImagefiltermedianModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_model_add(a : ImagefiltermedianModel, b : ImagefiltermedianModel) -> ImagefiltermedianModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianModel::add(self : ImagefiltermedianModel, other : ImagefiltermedianModel) -> ImagefiltermedianModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_model_copy(s : ImagefiltermedianModel) -> ImagefiltermedianModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianModel::copy(self : ImagefiltermedianModel) -> ImagefiltermedianModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_model_fill(s : ImagefiltermedianModel, v : Double) -> ImagefiltermedianModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianModel::fill(self : ImagefiltermedianModel, v : Double) -> ImagefiltermedianModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_model_min(s : ImagefiltermedianModel) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianModel::min(self : ImagefiltermedianModel) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_model_max(s : ImagefiltermedianModel) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianModel::max(self : ImagefiltermedianModel) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_model_to_string(s : ImagefiltermedianModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianModel::to_string(self : ImagefiltermedianModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianLayer {
@@ -759,45 +759,45 @@ pub fn image_filter_median_layer_make(size : Int) -> ImagefiltermedianLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_layer_len(s : ImagefiltermedianLayer) -> Int { s.size }
+pub fn ImagefiltermedianLayer::len(self : ImagefiltermedianLayer) -> Int { self.size }
 
-pub fn image_filter_median_layer_get(s : ImagefiltermedianLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianLayer::get(self : ImagefiltermedianLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_layer_set(s : ImagefiltermedianLayer, i : Int, v : Double) -> ImagefiltermedianLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianLayer::set(self : ImagefiltermedianLayer, i : Int, v : Double) -> ImagefiltermedianLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_layer_sum(s : ImagefiltermedianLayer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianLayer::sum(self : ImagefiltermedianLayer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_layer_mean(s : ImagefiltermedianLayer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianLayer::mean(self : ImagefiltermedianLayer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_layer_scale(s : ImagefiltermedianLayer, f : Double) -> ImagefiltermedianLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianLayer::scale(self : ImagefiltermedianLayer, f : Double) -> ImagefiltermedianLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_layer_add(a : ImagefiltermedianLayer, b : ImagefiltermedianLayer) -> ImagefiltermedianLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianLayer::add(self : ImagefiltermedianLayer, other : ImagefiltermedianLayer) -> ImagefiltermedianLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_layer_copy(s : ImagefiltermedianLayer) -> ImagefiltermedianLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianLayer::copy(self : ImagefiltermedianLayer) -> ImagefiltermedianLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_layer_fill(s : ImagefiltermedianLayer, v : Double) -> ImagefiltermedianLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianLayer::fill(self : ImagefiltermedianLayer, v : Double) -> ImagefiltermedianLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_layer_min(s : ImagefiltermedianLayer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianLayer::min(self : ImagefiltermedianLayer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_layer_max(s : ImagefiltermedianLayer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianLayer::max(self : ImagefiltermedianLayer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_layer_to_string(s : ImagefiltermedianLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianLayer::to_string(self : ImagefiltermedianLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianBuffer {
@@ -810,45 +810,45 @@ pub fn image_filter_median_buffer_make(size : Int) -> ImagefiltermedianBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_buffer_len(s : ImagefiltermedianBuffer) -> Int { s.size }
+pub fn ImagefiltermedianBuffer::len(self : ImagefiltermedianBuffer) -> Int { self.size }
 
-pub fn image_filter_median_buffer_get(s : ImagefiltermedianBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianBuffer::get(self : ImagefiltermedianBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_buffer_set(s : ImagefiltermedianBuffer, i : Int, v : Double) -> ImagefiltermedianBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianBuffer::set(self : ImagefiltermedianBuffer, i : Int, v : Double) -> ImagefiltermedianBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_buffer_sum(s : ImagefiltermedianBuffer) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianBuffer::sum(self : ImagefiltermedianBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_buffer_mean(s : ImagefiltermedianBuffer) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianBuffer::mean(self : ImagefiltermedianBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_buffer_scale(s : ImagefiltermedianBuffer, f : Double) -> ImagefiltermedianBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianBuffer::scale(self : ImagefiltermedianBuffer, f : Double) -> ImagefiltermedianBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_buffer_add(a : ImagefiltermedianBuffer, b : ImagefiltermedianBuffer) -> ImagefiltermedianBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianBuffer::add(self : ImagefiltermedianBuffer, other : ImagefiltermedianBuffer) -> ImagefiltermedianBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_buffer_copy(s : ImagefiltermedianBuffer) -> ImagefiltermedianBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianBuffer::copy(self : ImagefiltermedianBuffer) -> ImagefiltermedianBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_buffer_fill(s : ImagefiltermedianBuffer, v : Double) -> ImagefiltermedianBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianBuffer::fill(self : ImagefiltermedianBuffer, v : Double) -> ImagefiltermedianBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_buffer_min(s : ImagefiltermedianBuffer) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianBuffer::min(self : ImagefiltermedianBuffer) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_buffer_max(s : ImagefiltermedianBuffer) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianBuffer::max(self : ImagefiltermedianBuffer) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_buffer_to_string(s : ImagefiltermedianBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianBuffer::to_string(self : ImagefiltermedianBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianCursor {
@@ -861,45 +861,45 @@ pub fn image_filter_median_cursor_make(size : Int) -> ImagefiltermedianCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_cursor_len(s : ImagefiltermedianCursor) -> Int { s.size }
+pub fn ImagefiltermedianCursor::len(self : ImagefiltermedianCursor) -> Int { self.size }
 
-pub fn image_filter_median_cursor_get(s : ImagefiltermedianCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianCursor::get(self : ImagefiltermedianCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_cursor_set(s : ImagefiltermedianCursor, i : Int, v : Double) -> ImagefiltermedianCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCursor::set(self : ImagefiltermedianCursor, i : Int, v : Double) -> ImagefiltermedianCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cursor_sum(s : ImagefiltermedianCursor) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianCursor::sum(self : ImagefiltermedianCursor) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_cursor_mean(s : ImagefiltermedianCursor) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianCursor::mean(self : ImagefiltermedianCursor) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_cursor_scale(s : ImagefiltermedianCursor, f : Double) -> ImagefiltermedianCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCursor::scale(self : ImagefiltermedianCursor, f : Double) -> ImagefiltermedianCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cursor_add(a : ImagefiltermedianCursor, b : ImagefiltermedianCursor) -> ImagefiltermedianCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianCursor::add(self : ImagefiltermedianCursor, other : ImagefiltermedianCursor) -> ImagefiltermedianCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_cursor_copy(s : ImagefiltermedianCursor) -> ImagefiltermedianCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCursor::copy(self : ImagefiltermedianCursor) -> ImagefiltermedianCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cursor_fill(s : ImagefiltermedianCursor, v : Double) -> ImagefiltermedianCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianCursor::fill(self : ImagefiltermedianCursor, v : Double) -> ImagefiltermedianCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_cursor_min(s : ImagefiltermedianCursor) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianCursor::min(self : ImagefiltermedianCursor) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_cursor_max(s : ImagefiltermedianCursor) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianCursor::max(self : ImagefiltermedianCursor) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_cursor_to_string(s : ImagefiltermedianCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianCursor::to_string(self : ImagefiltermedianCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianView {
@@ -912,45 +912,45 @@ pub fn image_filter_median_view_make(size : Int) -> ImagefiltermedianView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_view_len(s : ImagefiltermedianView) -> Int { s.size }
+pub fn ImagefiltermedianView::len(self : ImagefiltermedianView) -> Int { self.size }
 
-pub fn image_filter_median_view_get(s : ImagefiltermedianView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianView::get(self : ImagefiltermedianView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_view_set(s : ImagefiltermedianView, i : Int, v : Double) -> ImagefiltermedianView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianView::set(self : ImagefiltermedianView, i : Int, v : Double) -> ImagefiltermedianView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_view_sum(s : ImagefiltermedianView) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianView::sum(self : ImagefiltermedianView) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_view_mean(s : ImagefiltermedianView) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianView::mean(self : ImagefiltermedianView) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_view_scale(s : ImagefiltermedianView, f : Double) -> ImagefiltermedianView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianView::scale(self : ImagefiltermedianView, f : Double) -> ImagefiltermedianView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_view_add(a : ImagefiltermedianView, b : ImagefiltermedianView) -> ImagefiltermedianView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianView::add(self : ImagefiltermedianView, other : ImagefiltermedianView) -> ImagefiltermedianView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_view_copy(s : ImagefiltermedianView) -> ImagefiltermedianView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianView::copy(self : ImagefiltermedianView) -> ImagefiltermedianView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_view_fill(s : ImagefiltermedianView, v : Double) -> ImagefiltermedianView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianView::fill(self : ImagefiltermedianView, v : Double) -> ImagefiltermedianView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_view_min(s : ImagefiltermedianView) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianView::min(self : ImagefiltermedianView) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_view_max(s : ImagefiltermedianView) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianView::max(self : ImagefiltermedianView) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_view_to_string(s : ImagefiltermedianView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianView::to_string(self : ImagefiltermedianView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianRange {
@@ -963,45 +963,45 @@ pub fn image_filter_median_range_make(size : Int) -> ImagefiltermedianRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_range_len(s : ImagefiltermedianRange) -> Int { s.size }
+pub fn ImagefiltermedianRange::len(self : ImagefiltermedianRange) -> Int { self.size }
 
-pub fn image_filter_median_range_get(s : ImagefiltermedianRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianRange::get(self : ImagefiltermedianRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_range_set(s : ImagefiltermedianRange, i : Int, v : Double) -> ImagefiltermedianRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianRange::set(self : ImagefiltermedianRange, i : Int, v : Double) -> ImagefiltermedianRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_range_sum(s : ImagefiltermedianRange) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianRange::sum(self : ImagefiltermedianRange) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_range_mean(s : ImagefiltermedianRange) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianRange::mean(self : ImagefiltermedianRange) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_range_scale(s : ImagefiltermedianRange, f : Double) -> ImagefiltermedianRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianRange::scale(self : ImagefiltermedianRange, f : Double) -> ImagefiltermedianRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_range_add(a : ImagefiltermedianRange, b : ImagefiltermedianRange) -> ImagefiltermedianRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianRange::add(self : ImagefiltermedianRange, other : ImagefiltermedianRange) -> ImagefiltermedianRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_range_copy(s : ImagefiltermedianRange) -> ImagefiltermedianRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianRange::copy(self : ImagefiltermedianRange) -> ImagefiltermedianRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_range_fill(s : ImagefiltermedianRange, v : Double) -> ImagefiltermedianRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianRange::fill(self : ImagefiltermedianRange, v : Double) -> ImagefiltermedianRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_range_min(s : ImagefiltermedianRange) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianRange::min(self : ImagefiltermedianRange) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_range_max(s : ImagefiltermedianRange) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianRange::max(self : ImagefiltermedianRange) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_range_to_string(s : ImagefiltermedianRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianRange::to_string(self : ImagefiltermedianRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ImagefiltermedianSlice {
@@ -1014,44 +1014,44 @@ pub fn image_filter_median_slice_make(size : Int) -> ImagefiltermedianSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn image_filter_median_slice_len(s : ImagefiltermedianSlice) -> Int { s.size }
+pub fn ImagefiltermedianSlice::len(self : ImagefiltermedianSlice) -> Int { self.size }
 
-pub fn image_filter_median_slice_get(s : ImagefiltermedianSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ImagefiltermedianSlice::get(self : ImagefiltermedianSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn image_filter_median_slice_set(s : ImagefiltermedianSlice, i : Int, v : Double) -> ImagefiltermedianSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ImagefiltermedianSlice::set(self : ImagefiltermedianSlice, i : Int, v : Double) -> ImagefiltermedianSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_slice_sum(s : ImagefiltermedianSlice) -> Double { @_common.sum(s.data) }
+pub fn ImagefiltermedianSlice::sum(self : ImagefiltermedianSlice) -> Double { @_common.sum(self.data) }
 
-pub fn image_filter_median_slice_mean(s : ImagefiltermedianSlice) -> Double { @_common.mean(s.data) }
+pub fn ImagefiltermedianSlice::mean(self : ImagefiltermedianSlice) -> Double { @_common.mean(self.data) }
 
-pub fn image_filter_median_slice_scale(s : ImagefiltermedianSlice, f : Double) -> ImagefiltermedianSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianSlice::scale(self : ImagefiltermedianSlice, f : Double) -> ImagefiltermedianSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_slice_add(a : ImagefiltermedianSlice, b : ImagefiltermedianSlice) -> ImagefiltermedianSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ImagefiltermedianSlice::add(self : ImagefiltermedianSlice, other : ImagefiltermedianSlice) -> ImagefiltermedianSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn image_filter_median_slice_copy(s : ImagefiltermedianSlice) -> ImagefiltermedianSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianSlice::copy(self : ImagefiltermedianSlice) -> ImagefiltermedianSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_slice_fill(s : ImagefiltermedianSlice, v : Double) -> ImagefiltermedianSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ImagefiltermedianSlice::fill(self : ImagefiltermedianSlice, v : Double) -> ImagefiltermedianSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn image_filter_median_slice_min(s : ImagefiltermedianSlice) -> Double { @_common.min(s.data) }
+pub fn ImagefiltermedianSlice::min(self : ImagefiltermedianSlice) -> Double { @_common.min(self.data) }
 
-pub fn image_filter_median_slice_max(s : ImagefiltermedianSlice) -> Double { @_common.max(s.data) }
+pub fn ImagefiltermedianSlice::max(self : ImagefiltermedianSlice) -> Double { @_common.max(self.data) }
 
-pub fn image_filter_median_slice_to_string(s : ImagefiltermedianSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ImagefiltermedianSlice::to_string(self : ImagefiltermedianSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

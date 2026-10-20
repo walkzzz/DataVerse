@@ -351,45 +351,45 @@ pub fn math_integer_prog_frame_make(size : Int) -> MathintegerprogFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_frame_len(s : MathintegerprogFrame) -> Int { s.size }
+pub fn MathintegerprogFrame::len(self : MathintegerprogFrame) -> Int { self.size }
 
-pub fn math_integer_prog_frame_get(s : MathintegerprogFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogFrame::get(self : MathintegerprogFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_frame_set(s : MathintegerprogFrame, i : Int, v : Double) -> MathintegerprogFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogFrame::set(self : MathintegerprogFrame, i : Int, v : Double) -> MathintegerprogFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_frame_sum(s : MathintegerprogFrame) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogFrame::sum(self : MathintegerprogFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_frame_mean(s : MathintegerprogFrame) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogFrame::mean(self : MathintegerprogFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_frame_scale(s : MathintegerprogFrame, f : Double) -> MathintegerprogFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogFrame::scale(self : MathintegerprogFrame, f : Double) -> MathintegerprogFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_frame_add(a : MathintegerprogFrame, b : MathintegerprogFrame) -> MathintegerprogFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogFrame::add(self : MathintegerprogFrame, other : MathintegerprogFrame) -> MathintegerprogFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_frame_copy(s : MathintegerprogFrame) -> MathintegerprogFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogFrame::copy(self : MathintegerprogFrame) -> MathintegerprogFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_frame_fill(s : MathintegerprogFrame, v : Double) -> MathintegerprogFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogFrame::fill(self : MathintegerprogFrame, v : Double) -> MathintegerprogFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_frame_min(s : MathintegerprogFrame) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogFrame::min(self : MathintegerprogFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_frame_max(s : MathintegerprogFrame) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogFrame::max(self : MathintegerprogFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_frame_to_string(s : MathintegerprogFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogFrame::to_string(self : MathintegerprogFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogTable {
@@ -402,45 +402,45 @@ pub fn math_integer_prog_table_make(size : Int) -> MathintegerprogTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_table_len(s : MathintegerprogTable) -> Int { s.size }
+pub fn MathintegerprogTable::len(self : MathintegerprogTable) -> Int { self.size }
 
-pub fn math_integer_prog_table_get(s : MathintegerprogTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogTable::get(self : MathintegerprogTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_table_set(s : MathintegerprogTable, i : Int, v : Double) -> MathintegerprogTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogTable::set(self : MathintegerprogTable, i : Int, v : Double) -> MathintegerprogTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_table_sum(s : MathintegerprogTable) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogTable::sum(self : MathintegerprogTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_table_mean(s : MathintegerprogTable) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogTable::mean(self : MathintegerprogTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_table_scale(s : MathintegerprogTable, f : Double) -> MathintegerprogTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogTable::scale(self : MathintegerprogTable, f : Double) -> MathintegerprogTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_table_add(a : MathintegerprogTable, b : MathintegerprogTable) -> MathintegerprogTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogTable::add(self : MathintegerprogTable, other : MathintegerprogTable) -> MathintegerprogTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_table_copy(s : MathintegerprogTable) -> MathintegerprogTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogTable::copy(self : MathintegerprogTable) -> MathintegerprogTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_table_fill(s : MathintegerprogTable, v : Double) -> MathintegerprogTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogTable::fill(self : MathintegerprogTable, v : Double) -> MathintegerprogTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_table_min(s : MathintegerprogTable) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogTable::min(self : MathintegerprogTable) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_table_max(s : MathintegerprogTable) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogTable::max(self : MathintegerprogTable) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_table_to_string(s : MathintegerprogTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogTable::to_string(self : MathintegerprogTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogGraphN {
@@ -453,45 +453,45 @@ pub fn math_integer_prog_graphn_make(size : Int) -> MathintegerprogGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_graphn_len(s : MathintegerprogGraphN) -> Int { s.size }
+pub fn MathintegerprogGraphN::len(self : MathintegerprogGraphN) -> Int { self.size }
 
-pub fn math_integer_prog_graphn_get(s : MathintegerprogGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogGraphN::get(self : MathintegerprogGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_graphn_set(s : MathintegerprogGraphN, i : Int, v : Double) -> MathintegerprogGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogGraphN::set(self : MathintegerprogGraphN, i : Int, v : Double) -> MathintegerprogGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_graphn_sum(s : MathintegerprogGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogGraphN::sum(self : MathintegerprogGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_graphn_mean(s : MathintegerprogGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogGraphN::mean(self : MathintegerprogGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_graphn_scale(s : MathintegerprogGraphN, f : Double) -> MathintegerprogGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogGraphN::scale(self : MathintegerprogGraphN, f : Double) -> MathintegerprogGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_graphn_add(a : MathintegerprogGraphN, b : MathintegerprogGraphN) -> MathintegerprogGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogGraphN::add(self : MathintegerprogGraphN, other : MathintegerprogGraphN) -> MathintegerprogGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_graphn_copy(s : MathintegerprogGraphN) -> MathintegerprogGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogGraphN::copy(self : MathintegerprogGraphN) -> MathintegerprogGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_graphn_fill(s : MathintegerprogGraphN, v : Double) -> MathintegerprogGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogGraphN::fill(self : MathintegerprogGraphN, v : Double) -> MathintegerprogGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_graphn_min(s : MathintegerprogGraphN) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogGraphN::min(self : MathintegerprogGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_graphn_max(s : MathintegerprogGraphN) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogGraphN::max(self : MathintegerprogGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_graphn_to_string(s : MathintegerprogGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogGraphN::to_string(self : MathintegerprogGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogNode {
@@ -504,45 +504,45 @@ pub fn math_integer_prog_node_make(size : Int) -> MathintegerprogNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_node_len(s : MathintegerprogNode) -> Int { s.size }
+pub fn MathintegerprogNode::len(self : MathintegerprogNode) -> Int { self.size }
 
-pub fn math_integer_prog_node_get(s : MathintegerprogNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogNode::get(self : MathintegerprogNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_node_set(s : MathintegerprogNode, i : Int, v : Double) -> MathintegerprogNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogNode::set(self : MathintegerprogNode, i : Int, v : Double) -> MathintegerprogNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_node_sum(s : MathintegerprogNode) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogNode::sum(self : MathintegerprogNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_node_mean(s : MathintegerprogNode) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogNode::mean(self : MathintegerprogNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_node_scale(s : MathintegerprogNode, f : Double) -> MathintegerprogNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogNode::scale(self : MathintegerprogNode, f : Double) -> MathintegerprogNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_node_add(a : MathintegerprogNode, b : MathintegerprogNode) -> MathintegerprogNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogNode::add(self : MathintegerprogNode, other : MathintegerprogNode) -> MathintegerprogNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_node_copy(s : MathintegerprogNode) -> MathintegerprogNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogNode::copy(self : MathintegerprogNode) -> MathintegerprogNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_node_fill(s : MathintegerprogNode, v : Double) -> MathintegerprogNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogNode::fill(self : MathintegerprogNode, v : Double) -> MathintegerprogNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_node_min(s : MathintegerprogNode) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogNode::min(self : MathintegerprogNode) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_node_max(s : MathintegerprogNode) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogNode::max(self : MathintegerprogNode) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_node_to_string(s : MathintegerprogNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogNode::to_string(self : MathintegerprogNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogEdge {
@@ -555,45 +555,45 @@ pub fn math_integer_prog_edge_make(size : Int) -> MathintegerprogEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_edge_len(s : MathintegerprogEdge) -> Int { s.size }
+pub fn MathintegerprogEdge::len(self : MathintegerprogEdge) -> Int { self.size }
 
-pub fn math_integer_prog_edge_get(s : MathintegerprogEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogEdge::get(self : MathintegerprogEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_edge_set(s : MathintegerprogEdge, i : Int, v : Double) -> MathintegerprogEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogEdge::set(self : MathintegerprogEdge, i : Int, v : Double) -> MathintegerprogEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_edge_sum(s : MathintegerprogEdge) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogEdge::sum(self : MathintegerprogEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_edge_mean(s : MathintegerprogEdge) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogEdge::mean(self : MathintegerprogEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_edge_scale(s : MathintegerprogEdge, f : Double) -> MathintegerprogEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogEdge::scale(self : MathintegerprogEdge, f : Double) -> MathintegerprogEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_edge_add(a : MathintegerprogEdge, b : MathintegerprogEdge) -> MathintegerprogEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogEdge::add(self : MathintegerprogEdge, other : MathintegerprogEdge) -> MathintegerprogEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_edge_copy(s : MathintegerprogEdge) -> MathintegerprogEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogEdge::copy(self : MathintegerprogEdge) -> MathintegerprogEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_edge_fill(s : MathintegerprogEdge, v : Double) -> MathintegerprogEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogEdge::fill(self : MathintegerprogEdge, v : Double) -> MathintegerprogEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_edge_min(s : MathintegerprogEdge) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogEdge::min(self : MathintegerprogEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_edge_max(s : MathintegerprogEdge) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogEdge::max(self : MathintegerprogEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_edge_to_string(s : MathintegerprogEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogEdge::to_string(self : MathintegerprogEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogPath {
@@ -606,45 +606,45 @@ pub fn math_integer_prog_path_make(size : Int) -> MathintegerprogPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_path_len(s : MathintegerprogPath) -> Int { s.size }
+pub fn MathintegerprogPath::len(self : MathintegerprogPath) -> Int { self.size }
 
-pub fn math_integer_prog_path_get(s : MathintegerprogPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogPath::get(self : MathintegerprogPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_path_set(s : MathintegerprogPath, i : Int, v : Double) -> MathintegerprogPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogPath::set(self : MathintegerprogPath, i : Int, v : Double) -> MathintegerprogPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_path_sum(s : MathintegerprogPath) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogPath::sum(self : MathintegerprogPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_path_mean(s : MathintegerprogPath) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogPath::mean(self : MathintegerprogPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_path_scale(s : MathintegerprogPath, f : Double) -> MathintegerprogPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogPath::scale(self : MathintegerprogPath, f : Double) -> MathintegerprogPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_path_add(a : MathintegerprogPath, b : MathintegerprogPath) -> MathintegerprogPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogPath::add(self : MathintegerprogPath, other : MathintegerprogPath) -> MathintegerprogPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_path_copy(s : MathintegerprogPath) -> MathintegerprogPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogPath::copy(self : MathintegerprogPath) -> MathintegerprogPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_path_fill(s : MathintegerprogPath, v : Double) -> MathintegerprogPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogPath::fill(self : MathintegerprogPath, v : Double) -> MathintegerprogPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_path_min(s : MathintegerprogPath) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogPath::min(self : MathintegerprogPath) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_path_max(s : MathintegerprogPath) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogPath::max(self : MathintegerprogPath) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_path_to_string(s : MathintegerprogPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogPath::to_string(self : MathintegerprogPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogCluster {
@@ -657,45 +657,45 @@ pub fn math_integer_prog_cluster_make(size : Int) -> MathintegerprogCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_cluster_len(s : MathintegerprogCluster) -> Int { s.size }
+pub fn MathintegerprogCluster::len(self : MathintegerprogCluster) -> Int { self.size }
 
-pub fn math_integer_prog_cluster_get(s : MathintegerprogCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogCluster::get(self : MathintegerprogCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_cluster_set(s : MathintegerprogCluster, i : Int, v : Double) -> MathintegerprogCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogCluster::set(self : MathintegerprogCluster, i : Int, v : Double) -> MathintegerprogCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cluster_sum(s : MathintegerprogCluster) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogCluster::sum(self : MathintegerprogCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_cluster_mean(s : MathintegerprogCluster) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogCluster::mean(self : MathintegerprogCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_cluster_scale(s : MathintegerprogCluster, f : Double) -> MathintegerprogCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogCluster::scale(self : MathintegerprogCluster, f : Double) -> MathintegerprogCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cluster_add(a : MathintegerprogCluster, b : MathintegerprogCluster) -> MathintegerprogCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogCluster::add(self : MathintegerprogCluster, other : MathintegerprogCluster) -> MathintegerprogCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_cluster_copy(s : MathintegerprogCluster) -> MathintegerprogCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogCluster::copy(self : MathintegerprogCluster) -> MathintegerprogCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cluster_fill(s : MathintegerprogCluster, v : Double) -> MathintegerprogCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogCluster::fill(self : MathintegerprogCluster, v : Double) -> MathintegerprogCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cluster_min(s : MathintegerprogCluster) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogCluster::min(self : MathintegerprogCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_cluster_max(s : MathintegerprogCluster) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogCluster::max(self : MathintegerprogCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_cluster_to_string(s : MathintegerprogCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogCluster::to_string(self : MathintegerprogCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogModel {
@@ -708,45 +708,45 @@ pub fn math_integer_prog_model_make(size : Int) -> MathintegerprogModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_model_len(s : MathintegerprogModel) -> Int { s.size }
+pub fn MathintegerprogModel::len(self : MathintegerprogModel) -> Int { self.size }
 
-pub fn math_integer_prog_model_get(s : MathintegerprogModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogModel::get(self : MathintegerprogModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_model_set(s : MathintegerprogModel, i : Int, v : Double) -> MathintegerprogModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogModel::set(self : MathintegerprogModel, i : Int, v : Double) -> MathintegerprogModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_model_sum(s : MathintegerprogModel) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogModel::sum(self : MathintegerprogModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_model_mean(s : MathintegerprogModel) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogModel::mean(self : MathintegerprogModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_model_scale(s : MathintegerprogModel, f : Double) -> MathintegerprogModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogModel::scale(self : MathintegerprogModel, f : Double) -> MathintegerprogModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_model_add(a : MathintegerprogModel, b : MathintegerprogModel) -> MathintegerprogModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogModel::add(self : MathintegerprogModel, other : MathintegerprogModel) -> MathintegerprogModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_model_copy(s : MathintegerprogModel) -> MathintegerprogModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogModel::copy(self : MathintegerprogModel) -> MathintegerprogModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_model_fill(s : MathintegerprogModel, v : Double) -> MathintegerprogModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogModel::fill(self : MathintegerprogModel, v : Double) -> MathintegerprogModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_model_min(s : MathintegerprogModel) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogModel::min(self : MathintegerprogModel) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_model_max(s : MathintegerprogModel) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogModel::max(self : MathintegerprogModel) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_model_to_string(s : MathintegerprogModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogModel::to_string(self : MathintegerprogModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogLayer {
@@ -759,45 +759,45 @@ pub fn math_integer_prog_layer_make(size : Int) -> MathintegerprogLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_layer_len(s : MathintegerprogLayer) -> Int { s.size }
+pub fn MathintegerprogLayer::len(self : MathintegerprogLayer) -> Int { self.size }
 
-pub fn math_integer_prog_layer_get(s : MathintegerprogLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogLayer::get(self : MathintegerprogLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_layer_set(s : MathintegerprogLayer, i : Int, v : Double) -> MathintegerprogLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogLayer::set(self : MathintegerprogLayer, i : Int, v : Double) -> MathintegerprogLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_layer_sum(s : MathintegerprogLayer) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogLayer::sum(self : MathintegerprogLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_layer_mean(s : MathintegerprogLayer) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogLayer::mean(self : MathintegerprogLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_layer_scale(s : MathintegerprogLayer, f : Double) -> MathintegerprogLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogLayer::scale(self : MathintegerprogLayer, f : Double) -> MathintegerprogLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_layer_add(a : MathintegerprogLayer, b : MathintegerprogLayer) -> MathintegerprogLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogLayer::add(self : MathintegerprogLayer, other : MathintegerprogLayer) -> MathintegerprogLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_layer_copy(s : MathintegerprogLayer) -> MathintegerprogLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogLayer::copy(self : MathintegerprogLayer) -> MathintegerprogLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_layer_fill(s : MathintegerprogLayer, v : Double) -> MathintegerprogLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogLayer::fill(self : MathintegerprogLayer, v : Double) -> MathintegerprogLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_layer_min(s : MathintegerprogLayer) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogLayer::min(self : MathintegerprogLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_layer_max(s : MathintegerprogLayer) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogLayer::max(self : MathintegerprogLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_layer_to_string(s : MathintegerprogLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogLayer::to_string(self : MathintegerprogLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogBuffer {
@@ -810,45 +810,45 @@ pub fn math_integer_prog_buffer_make(size : Int) -> MathintegerprogBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_buffer_len(s : MathintegerprogBuffer) -> Int { s.size }
+pub fn MathintegerprogBuffer::len(self : MathintegerprogBuffer) -> Int { self.size }
 
-pub fn math_integer_prog_buffer_get(s : MathintegerprogBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogBuffer::get(self : MathintegerprogBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_buffer_set(s : MathintegerprogBuffer, i : Int, v : Double) -> MathintegerprogBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogBuffer::set(self : MathintegerprogBuffer, i : Int, v : Double) -> MathintegerprogBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_buffer_sum(s : MathintegerprogBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogBuffer::sum(self : MathintegerprogBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_buffer_mean(s : MathintegerprogBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogBuffer::mean(self : MathintegerprogBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_buffer_scale(s : MathintegerprogBuffer, f : Double) -> MathintegerprogBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogBuffer::scale(self : MathintegerprogBuffer, f : Double) -> MathintegerprogBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_buffer_add(a : MathintegerprogBuffer, b : MathintegerprogBuffer) -> MathintegerprogBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogBuffer::add(self : MathintegerprogBuffer, other : MathintegerprogBuffer) -> MathintegerprogBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_buffer_copy(s : MathintegerprogBuffer) -> MathintegerprogBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogBuffer::copy(self : MathintegerprogBuffer) -> MathintegerprogBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_buffer_fill(s : MathintegerprogBuffer, v : Double) -> MathintegerprogBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogBuffer::fill(self : MathintegerprogBuffer, v : Double) -> MathintegerprogBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_buffer_min(s : MathintegerprogBuffer) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogBuffer::min(self : MathintegerprogBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_buffer_max(s : MathintegerprogBuffer) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogBuffer::max(self : MathintegerprogBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_buffer_to_string(s : MathintegerprogBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogBuffer::to_string(self : MathintegerprogBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogCursor {
@@ -861,45 +861,45 @@ pub fn math_integer_prog_cursor_make(size : Int) -> MathintegerprogCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_cursor_len(s : MathintegerprogCursor) -> Int { s.size }
+pub fn MathintegerprogCursor::len(self : MathintegerprogCursor) -> Int { self.size }
 
-pub fn math_integer_prog_cursor_get(s : MathintegerprogCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogCursor::get(self : MathintegerprogCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_cursor_set(s : MathintegerprogCursor, i : Int, v : Double) -> MathintegerprogCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogCursor::set(self : MathintegerprogCursor, i : Int, v : Double) -> MathintegerprogCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cursor_sum(s : MathintegerprogCursor) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogCursor::sum(self : MathintegerprogCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_cursor_mean(s : MathintegerprogCursor) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogCursor::mean(self : MathintegerprogCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_cursor_scale(s : MathintegerprogCursor, f : Double) -> MathintegerprogCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogCursor::scale(self : MathintegerprogCursor, f : Double) -> MathintegerprogCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cursor_add(a : MathintegerprogCursor, b : MathintegerprogCursor) -> MathintegerprogCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogCursor::add(self : MathintegerprogCursor, other : MathintegerprogCursor) -> MathintegerprogCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_cursor_copy(s : MathintegerprogCursor) -> MathintegerprogCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogCursor::copy(self : MathintegerprogCursor) -> MathintegerprogCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cursor_fill(s : MathintegerprogCursor, v : Double) -> MathintegerprogCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogCursor::fill(self : MathintegerprogCursor, v : Double) -> MathintegerprogCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_cursor_min(s : MathintegerprogCursor) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogCursor::min(self : MathintegerprogCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_cursor_max(s : MathintegerprogCursor) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogCursor::max(self : MathintegerprogCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_cursor_to_string(s : MathintegerprogCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogCursor::to_string(self : MathintegerprogCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogView {
@@ -912,45 +912,45 @@ pub fn math_integer_prog_view_make(size : Int) -> MathintegerprogView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_view_len(s : MathintegerprogView) -> Int { s.size }
+pub fn MathintegerprogView::len(self : MathintegerprogView) -> Int { self.size }
 
-pub fn math_integer_prog_view_get(s : MathintegerprogView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogView::get(self : MathintegerprogView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_view_set(s : MathintegerprogView, i : Int, v : Double) -> MathintegerprogView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogView::set(self : MathintegerprogView, i : Int, v : Double) -> MathintegerprogView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_view_sum(s : MathintegerprogView) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogView::sum(self : MathintegerprogView) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_view_mean(s : MathintegerprogView) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogView::mean(self : MathintegerprogView) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_view_scale(s : MathintegerprogView, f : Double) -> MathintegerprogView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogView::scale(self : MathintegerprogView, f : Double) -> MathintegerprogView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_view_add(a : MathintegerprogView, b : MathintegerprogView) -> MathintegerprogView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogView::add(self : MathintegerprogView, other : MathintegerprogView) -> MathintegerprogView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_view_copy(s : MathintegerprogView) -> MathintegerprogView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogView::copy(self : MathintegerprogView) -> MathintegerprogView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_view_fill(s : MathintegerprogView, v : Double) -> MathintegerprogView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogView::fill(self : MathintegerprogView, v : Double) -> MathintegerprogView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_view_min(s : MathintegerprogView) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogView::min(self : MathintegerprogView) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_view_max(s : MathintegerprogView) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogView::max(self : MathintegerprogView) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_view_to_string(s : MathintegerprogView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogView::to_string(self : MathintegerprogView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogRange {
@@ -963,45 +963,45 @@ pub fn math_integer_prog_range_make(size : Int) -> MathintegerprogRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_range_len(s : MathintegerprogRange) -> Int { s.size }
+pub fn MathintegerprogRange::len(self : MathintegerprogRange) -> Int { self.size }
 
-pub fn math_integer_prog_range_get(s : MathintegerprogRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogRange::get(self : MathintegerprogRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_range_set(s : MathintegerprogRange, i : Int, v : Double) -> MathintegerprogRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogRange::set(self : MathintegerprogRange, i : Int, v : Double) -> MathintegerprogRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_range_sum(s : MathintegerprogRange) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogRange::sum(self : MathintegerprogRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_range_mean(s : MathintegerprogRange) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogRange::mean(self : MathintegerprogRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_range_scale(s : MathintegerprogRange, f : Double) -> MathintegerprogRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogRange::scale(self : MathintegerprogRange, f : Double) -> MathintegerprogRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_range_add(a : MathintegerprogRange, b : MathintegerprogRange) -> MathintegerprogRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogRange::add(self : MathintegerprogRange, other : MathintegerprogRange) -> MathintegerprogRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_range_copy(s : MathintegerprogRange) -> MathintegerprogRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogRange::copy(self : MathintegerprogRange) -> MathintegerprogRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_range_fill(s : MathintegerprogRange, v : Double) -> MathintegerprogRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogRange::fill(self : MathintegerprogRange, v : Double) -> MathintegerprogRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_range_min(s : MathintegerprogRange) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogRange::min(self : MathintegerprogRange) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_range_max(s : MathintegerprogRange) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogRange::max(self : MathintegerprogRange) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_range_to_string(s : MathintegerprogRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogRange::to_string(self : MathintegerprogRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathintegerprogSlice {
@@ -1014,44 +1014,44 @@ pub fn math_integer_prog_slice_make(size : Int) -> MathintegerprogSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_integer_prog_slice_len(s : MathintegerprogSlice) -> Int { s.size }
+pub fn MathintegerprogSlice::len(self : MathintegerprogSlice) -> Int { self.size }
 
-pub fn math_integer_prog_slice_get(s : MathintegerprogSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathintegerprogSlice::get(self : MathintegerprogSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_integer_prog_slice_set(s : MathintegerprogSlice, i : Int, v : Double) -> MathintegerprogSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathintegerprogSlice::set(self : MathintegerprogSlice, i : Int, v : Double) -> MathintegerprogSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_slice_sum(s : MathintegerprogSlice) -> Double { @_common.sum(s.data) }
+pub fn MathintegerprogSlice::sum(self : MathintegerprogSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_integer_prog_slice_mean(s : MathintegerprogSlice) -> Double { @_common.mean(s.data) }
+pub fn MathintegerprogSlice::mean(self : MathintegerprogSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_integer_prog_slice_scale(s : MathintegerprogSlice, f : Double) -> MathintegerprogSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathintegerprogSlice::scale(self : MathintegerprogSlice, f : Double) -> MathintegerprogSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_slice_add(a : MathintegerprogSlice, b : MathintegerprogSlice) -> MathintegerprogSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathintegerprogSlice::add(self : MathintegerprogSlice, other : MathintegerprogSlice) -> MathintegerprogSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_integer_prog_slice_copy(s : MathintegerprogSlice) -> MathintegerprogSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathintegerprogSlice::copy(self : MathintegerprogSlice) -> MathintegerprogSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_slice_fill(s : MathintegerprogSlice, v : Double) -> MathintegerprogSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathintegerprogSlice::fill(self : MathintegerprogSlice, v : Double) -> MathintegerprogSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_integer_prog_slice_min(s : MathintegerprogSlice) -> Double { @_common.min(s.data) }
+pub fn MathintegerprogSlice::min(self : MathintegerprogSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_integer_prog_slice_max(s : MathintegerprogSlice) -> Double { @_common.max(s.data) }
+pub fn MathintegerprogSlice::max(self : MathintegerprogSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_integer_prog_slice_to_string(s : MathintegerprogSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathintegerprogSlice::to_string(self : MathintegerprogSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

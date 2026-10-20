@@ -351,45 +351,45 @@ pub fn graph_connect_articulation_frame_make(size : Int) -> Graphconnectarticula
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_frame_len(s : GraphconnectarticulationFrame) -> Int { s.size }
+pub fn GraphconnectarticulationFrame::len(self : GraphconnectarticulationFrame) -> Int { self.size }
 
-pub fn graph_connect_articulation_frame_get(s : GraphconnectarticulationFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationFrame::get(self : GraphconnectarticulationFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_frame_set(s : GraphconnectarticulationFrame, i : Int, v : Double) -> GraphconnectarticulationFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationFrame::set(self : GraphconnectarticulationFrame, i : Int, v : Double) -> GraphconnectarticulationFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_frame_sum(s : GraphconnectarticulationFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationFrame::sum(self : GraphconnectarticulationFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_frame_mean(s : GraphconnectarticulationFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationFrame::mean(self : GraphconnectarticulationFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_frame_scale(s : GraphconnectarticulationFrame, f : Double) -> GraphconnectarticulationFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationFrame::scale(self : GraphconnectarticulationFrame, f : Double) -> GraphconnectarticulationFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_frame_add(a : GraphconnectarticulationFrame, b : GraphconnectarticulationFrame) -> GraphconnectarticulationFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationFrame::add(self : GraphconnectarticulationFrame, other : GraphconnectarticulationFrame) -> GraphconnectarticulationFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_frame_copy(s : GraphconnectarticulationFrame) -> GraphconnectarticulationFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationFrame::copy(self : GraphconnectarticulationFrame) -> GraphconnectarticulationFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_frame_fill(s : GraphconnectarticulationFrame, v : Double) -> GraphconnectarticulationFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationFrame::fill(self : GraphconnectarticulationFrame, v : Double) -> GraphconnectarticulationFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_frame_min(s : GraphconnectarticulationFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationFrame::min(self : GraphconnectarticulationFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_frame_max(s : GraphconnectarticulationFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationFrame::max(self : GraphconnectarticulationFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_frame_to_string(s : GraphconnectarticulationFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationFrame::to_string(self : GraphconnectarticulationFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_articulation_table_make(size : Int) -> Graphconnectarticula
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_table_len(s : GraphconnectarticulationTable) -> Int { s.size }
+pub fn GraphconnectarticulationTable::len(self : GraphconnectarticulationTable) -> Int { self.size }
 
-pub fn graph_connect_articulation_table_get(s : GraphconnectarticulationTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationTable::get(self : GraphconnectarticulationTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_table_set(s : GraphconnectarticulationTable, i : Int, v : Double) -> GraphconnectarticulationTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationTable::set(self : GraphconnectarticulationTable, i : Int, v : Double) -> GraphconnectarticulationTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_table_sum(s : GraphconnectarticulationTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationTable::sum(self : GraphconnectarticulationTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_table_mean(s : GraphconnectarticulationTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationTable::mean(self : GraphconnectarticulationTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_table_scale(s : GraphconnectarticulationTable, f : Double) -> GraphconnectarticulationTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationTable::scale(self : GraphconnectarticulationTable, f : Double) -> GraphconnectarticulationTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_table_add(a : GraphconnectarticulationTable, b : GraphconnectarticulationTable) -> GraphconnectarticulationTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationTable::add(self : GraphconnectarticulationTable, other : GraphconnectarticulationTable) -> GraphconnectarticulationTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_table_copy(s : GraphconnectarticulationTable) -> GraphconnectarticulationTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationTable::copy(self : GraphconnectarticulationTable) -> GraphconnectarticulationTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_table_fill(s : GraphconnectarticulationTable, v : Double) -> GraphconnectarticulationTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationTable::fill(self : GraphconnectarticulationTable, v : Double) -> GraphconnectarticulationTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_table_min(s : GraphconnectarticulationTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationTable::min(self : GraphconnectarticulationTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_table_max(s : GraphconnectarticulationTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationTable::max(self : GraphconnectarticulationTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_table_to_string(s : GraphconnectarticulationTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationTable::to_string(self : GraphconnectarticulationTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_articulation_graphn_make(size : Int) -> Graphconnectarticul
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_graphn_len(s : GraphconnectarticulationGraphN) -> Int { s.size }
+pub fn GraphconnectarticulationGraphN::len(self : GraphconnectarticulationGraphN) -> Int { self.size }
 
-pub fn graph_connect_articulation_graphn_get(s : GraphconnectarticulationGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationGraphN::get(self : GraphconnectarticulationGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_graphn_set(s : GraphconnectarticulationGraphN, i : Int, v : Double) -> GraphconnectarticulationGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationGraphN::set(self : GraphconnectarticulationGraphN, i : Int, v : Double) -> GraphconnectarticulationGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_graphn_sum(s : GraphconnectarticulationGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationGraphN::sum(self : GraphconnectarticulationGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_graphn_mean(s : GraphconnectarticulationGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationGraphN::mean(self : GraphconnectarticulationGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_graphn_scale(s : GraphconnectarticulationGraphN, f : Double) -> GraphconnectarticulationGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationGraphN::scale(self : GraphconnectarticulationGraphN, f : Double) -> GraphconnectarticulationGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_graphn_add(a : GraphconnectarticulationGraphN, b : GraphconnectarticulationGraphN) -> GraphconnectarticulationGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationGraphN::add(self : GraphconnectarticulationGraphN, other : GraphconnectarticulationGraphN) -> GraphconnectarticulationGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_graphn_copy(s : GraphconnectarticulationGraphN) -> GraphconnectarticulationGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationGraphN::copy(self : GraphconnectarticulationGraphN) -> GraphconnectarticulationGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_graphn_fill(s : GraphconnectarticulationGraphN, v : Double) -> GraphconnectarticulationGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationGraphN::fill(self : GraphconnectarticulationGraphN, v : Double) -> GraphconnectarticulationGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_graphn_min(s : GraphconnectarticulationGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationGraphN::min(self : GraphconnectarticulationGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_graphn_max(s : GraphconnectarticulationGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationGraphN::max(self : GraphconnectarticulationGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_graphn_to_string(s : GraphconnectarticulationGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationGraphN::to_string(self : GraphconnectarticulationGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_articulation_node_make(size : Int) -> Graphconnectarticulat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_node_len(s : GraphconnectarticulationNode) -> Int { s.size }
+pub fn GraphconnectarticulationNode::len(self : GraphconnectarticulationNode) -> Int { self.size }
 
-pub fn graph_connect_articulation_node_get(s : GraphconnectarticulationNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationNode::get(self : GraphconnectarticulationNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_node_set(s : GraphconnectarticulationNode, i : Int, v : Double) -> GraphconnectarticulationNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationNode::set(self : GraphconnectarticulationNode, i : Int, v : Double) -> GraphconnectarticulationNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_node_sum(s : GraphconnectarticulationNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationNode::sum(self : GraphconnectarticulationNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_node_mean(s : GraphconnectarticulationNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationNode::mean(self : GraphconnectarticulationNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_node_scale(s : GraphconnectarticulationNode, f : Double) -> GraphconnectarticulationNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationNode::scale(self : GraphconnectarticulationNode, f : Double) -> GraphconnectarticulationNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_node_add(a : GraphconnectarticulationNode, b : GraphconnectarticulationNode) -> GraphconnectarticulationNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationNode::add(self : GraphconnectarticulationNode, other : GraphconnectarticulationNode) -> GraphconnectarticulationNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_node_copy(s : GraphconnectarticulationNode) -> GraphconnectarticulationNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationNode::copy(self : GraphconnectarticulationNode) -> GraphconnectarticulationNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_node_fill(s : GraphconnectarticulationNode, v : Double) -> GraphconnectarticulationNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationNode::fill(self : GraphconnectarticulationNode, v : Double) -> GraphconnectarticulationNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_node_min(s : GraphconnectarticulationNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationNode::min(self : GraphconnectarticulationNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_node_max(s : GraphconnectarticulationNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationNode::max(self : GraphconnectarticulationNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_node_to_string(s : GraphconnectarticulationNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationNode::to_string(self : GraphconnectarticulationNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_articulation_edge_make(size : Int) -> Graphconnectarticulat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_edge_len(s : GraphconnectarticulationEdge) -> Int { s.size }
+pub fn GraphconnectarticulationEdge::len(self : GraphconnectarticulationEdge) -> Int { self.size }
 
-pub fn graph_connect_articulation_edge_get(s : GraphconnectarticulationEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationEdge::get(self : GraphconnectarticulationEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_edge_set(s : GraphconnectarticulationEdge, i : Int, v : Double) -> GraphconnectarticulationEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationEdge::set(self : GraphconnectarticulationEdge, i : Int, v : Double) -> GraphconnectarticulationEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_edge_sum(s : GraphconnectarticulationEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationEdge::sum(self : GraphconnectarticulationEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_edge_mean(s : GraphconnectarticulationEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationEdge::mean(self : GraphconnectarticulationEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_edge_scale(s : GraphconnectarticulationEdge, f : Double) -> GraphconnectarticulationEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationEdge::scale(self : GraphconnectarticulationEdge, f : Double) -> GraphconnectarticulationEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_edge_add(a : GraphconnectarticulationEdge, b : GraphconnectarticulationEdge) -> GraphconnectarticulationEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationEdge::add(self : GraphconnectarticulationEdge, other : GraphconnectarticulationEdge) -> GraphconnectarticulationEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_edge_copy(s : GraphconnectarticulationEdge) -> GraphconnectarticulationEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationEdge::copy(self : GraphconnectarticulationEdge) -> GraphconnectarticulationEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_edge_fill(s : GraphconnectarticulationEdge, v : Double) -> GraphconnectarticulationEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationEdge::fill(self : GraphconnectarticulationEdge, v : Double) -> GraphconnectarticulationEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_edge_min(s : GraphconnectarticulationEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationEdge::min(self : GraphconnectarticulationEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_edge_max(s : GraphconnectarticulationEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationEdge::max(self : GraphconnectarticulationEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_edge_to_string(s : GraphconnectarticulationEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationEdge::to_string(self : GraphconnectarticulationEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_articulation_path_make(size : Int) -> Graphconnectarticulat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_path_len(s : GraphconnectarticulationPath) -> Int { s.size }
+pub fn GraphconnectarticulationPath::len(self : GraphconnectarticulationPath) -> Int { self.size }
 
-pub fn graph_connect_articulation_path_get(s : GraphconnectarticulationPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationPath::get(self : GraphconnectarticulationPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_path_set(s : GraphconnectarticulationPath, i : Int, v : Double) -> GraphconnectarticulationPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationPath::set(self : GraphconnectarticulationPath, i : Int, v : Double) -> GraphconnectarticulationPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_path_sum(s : GraphconnectarticulationPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationPath::sum(self : GraphconnectarticulationPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_path_mean(s : GraphconnectarticulationPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationPath::mean(self : GraphconnectarticulationPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_path_scale(s : GraphconnectarticulationPath, f : Double) -> GraphconnectarticulationPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationPath::scale(self : GraphconnectarticulationPath, f : Double) -> GraphconnectarticulationPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_path_add(a : GraphconnectarticulationPath, b : GraphconnectarticulationPath) -> GraphconnectarticulationPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationPath::add(self : GraphconnectarticulationPath, other : GraphconnectarticulationPath) -> GraphconnectarticulationPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_path_copy(s : GraphconnectarticulationPath) -> GraphconnectarticulationPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationPath::copy(self : GraphconnectarticulationPath) -> GraphconnectarticulationPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_path_fill(s : GraphconnectarticulationPath, v : Double) -> GraphconnectarticulationPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationPath::fill(self : GraphconnectarticulationPath, v : Double) -> GraphconnectarticulationPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_path_min(s : GraphconnectarticulationPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationPath::min(self : GraphconnectarticulationPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_path_max(s : GraphconnectarticulationPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationPath::max(self : GraphconnectarticulationPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_path_to_string(s : GraphconnectarticulationPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationPath::to_string(self : GraphconnectarticulationPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_articulation_cluster_make(size : Int) -> Graphconnectarticu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_cluster_len(s : GraphconnectarticulationCluster) -> Int { s.size }
+pub fn GraphconnectarticulationCluster::len(self : GraphconnectarticulationCluster) -> Int { self.size }
 
-pub fn graph_connect_articulation_cluster_get(s : GraphconnectarticulationCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationCluster::get(self : GraphconnectarticulationCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_cluster_set(s : GraphconnectarticulationCluster, i : Int, v : Double) -> GraphconnectarticulationCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCluster::set(self : GraphconnectarticulationCluster, i : Int, v : Double) -> GraphconnectarticulationCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cluster_sum(s : GraphconnectarticulationCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationCluster::sum(self : GraphconnectarticulationCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_cluster_mean(s : GraphconnectarticulationCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationCluster::mean(self : GraphconnectarticulationCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_cluster_scale(s : GraphconnectarticulationCluster, f : Double) -> GraphconnectarticulationCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCluster::scale(self : GraphconnectarticulationCluster, f : Double) -> GraphconnectarticulationCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cluster_add(a : GraphconnectarticulationCluster, b : GraphconnectarticulationCluster) -> GraphconnectarticulationCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationCluster::add(self : GraphconnectarticulationCluster, other : GraphconnectarticulationCluster) -> GraphconnectarticulationCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cluster_copy(s : GraphconnectarticulationCluster) -> GraphconnectarticulationCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCluster::copy(self : GraphconnectarticulationCluster) -> GraphconnectarticulationCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cluster_fill(s : GraphconnectarticulationCluster, v : Double) -> GraphconnectarticulationCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCluster::fill(self : GraphconnectarticulationCluster, v : Double) -> GraphconnectarticulationCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cluster_min(s : GraphconnectarticulationCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationCluster::min(self : GraphconnectarticulationCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_cluster_max(s : GraphconnectarticulationCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationCluster::max(self : GraphconnectarticulationCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_cluster_to_string(s : GraphconnectarticulationCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationCluster::to_string(self : GraphconnectarticulationCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_articulation_model_make(size : Int) -> Graphconnectarticula
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_model_len(s : GraphconnectarticulationModel) -> Int { s.size }
+pub fn GraphconnectarticulationModel::len(self : GraphconnectarticulationModel) -> Int { self.size }
 
-pub fn graph_connect_articulation_model_get(s : GraphconnectarticulationModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationModel::get(self : GraphconnectarticulationModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_model_set(s : GraphconnectarticulationModel, i : Int, v : Double) -> GraphconnectarticulationModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationModel::set(self : GraphconnectarticulationModel, i : Int, v : Double) -> GraphconnectarticulationModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_model_sum(s : GraphconnectarticulationModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationModel::sum(self : GraphconnectarticulationModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_model_mean(s : GraphconnectarticulationModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationModel::mean(self : GraphconnectarticulationModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_model_scale(s : GraphconnectarticulationModel, f : Double) -> GraphconnectarticulationModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationModel::scale(self : GraphconnectarticulationModel, f : Double) -> GraphconnectarticulationModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_model_add(a : GraphconnectarticulationModel, b : GraphconnectarticulationModel) -> GraphconnectarticulationModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationModel::add(self : GraphconnectarticulationModel, other : GraphconnectarticulationModel) -> GraphconnectarticulationModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_model_copy(s : GraphconnectarticulationModel) -> GraphconnectarticulationModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationModel::copy(self : GraphconnectarticulationModel) -> GraphconnectarticulationModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_model_fill(s : GraphconnectarticulationModel, v : Double) -> GraphconnectarticulationModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationModel::fill(self : GraphconnectarticulationModel, v : Double) -> GraphconnectarticulationModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_model_min(s : GraphconnectarticulationModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationModel::min(self : GraphconnectarticulationModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_model_max(s : GraphconnectarticulationModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationModel::max(self : GraphconnectarticulationModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_model_to_string(s : GraphconnectarticulationModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationModel::to_string(self : GraphconnectarticulationModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_articulation_layer_make(size : Int) -> Graphconnectarticula
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_layer_len(s : GraphconnectarticulationLayer) -> Int { s.size }
+pub fn GraphconnectarticulationLayer::len(self : GraphconnectarticulationLayer) -> Int { self.size }
 
-pub fn graph_connect_articulation_layer_get(s : GraphconnectarticulationLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationLayer::get(self : GraphconnectarticulationLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_layer_set(s : GraphconnectarticulationLayer, i : Int, v : Double) -> GraphconnectarticulationLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationLayer::set(self : GraphconnectarticulationLayer, i : Int, v : Double) -> GraphconnectarticulationLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_layer_sum(s : GraphconnectarticulationLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationLayer::sum(self : GraphconnectarticulationLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_layer_mean(s : GraphconnectarticulationLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationLayer::mean(self : GraphconnectarticulationLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_layer_scale(s : GraphconnectarticulationLayer, f : Double) -> GraphconnectarticulationLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationLayer::scale(self : GraphconnectarticulationLayer, f : Double) -> GraphconnectarticulationLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_layer_add(a : GraphconnectarticulationLayer, b : GraphconnectarticulationLayer) -> GraphconnectarticulationLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationLayer::add(self : GraphconnectarticulationLayer, other : GraphconnectarticulationLayer) -> GraphconnectarticulationLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_layer_copy(s : GraphconnectarticulationLayer) -> GraphconnectarticulationLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationLayer::copy(self : GraphconnectarticulationLayer) -> GraphconnectarticulationLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_layer_fill(s : GraphconnectarticulationLayer, v : Double) -> GraphconnectarticulationLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationLayer::fill(self : GraphconnectarticulationLayer, v : Double) -> GraphconnectarticulationLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_layer_min(s : GraphconnectarticulationLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationLayer::min(self : GraphconnectarticulationLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_layer_max(s : GraphconnectarticulationLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationLayer::max(self : GraphconnectarticulationLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_layer_to_string(s : GraphconnectarticulationLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationLayer::to_string(self : GraphconnectarticulationLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_articulation_buffer_make(size : Int) -> Graphconnectarticul
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_buffer_len(s : GraphconnectarticulationBuffer) -> Int { s.size }
+pub fn GraphconnectarticulationBuffer::len(self : GraphconnectarticulationBuffer) -> Int { self.size }
 
-pub fn graph_connect_articulation_buffer_get(s : GraphconnectarticulationBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationBuffer::get(self : GraphconnectarticulationBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_buffer_set(s : GraphconnectarticulationBuffer, i : Int, v : Double) -> GraphconnectarticulationBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationBuffer::set(self : GraphconnectarticulationBuffer, i : Int, v : Double) -> GraphconnectarticulationBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_buffer_sum(s : GraphconnectarticulationBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationBuffer::sum(self : GraphconnectarticulationBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_buffer_mean(s : GraphconnectarticulationBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationBuffer::mean(self : GraphconnectarticulationBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_buffer_scale(s : GraphconnectarticulationBuffer, f : Double) -> GraphconnectarticulationBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationBuffer::scale(self : GraphconnectarticulationBuffer, f : Double) -> GraphconnectarticulationBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_buffer_add(a : GraphconnectarticulationBuffer, b : GraphconnectarticulationBuffer) -> GraphconnectarticulationBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationBuffer::add(self : GraphconnectarticulationBuffer, other : GraphconnectarticulationBuffer) -> GraphconnectarticulationBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_buffer_copy(s : GraphconnectarticulationBuffer) -> GraphconnectarticulationBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationBuffer::copy(self : GraphconnectarticulationBuffer) -> GraphconnectarticulationBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_buffer_fill(s : GraphconnectarticulationBuffer, v : Double) -> GraphconnectarticulationBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationBuffer::fill(self : GraphconnectarticulationBuffer, v : Double) -> GraphconnectarticulationBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_buffer_min(s : GraphconnectarticulationBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationBuffer::min(self : GraphconnectarticulationBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_buffer_max(s : GraphconnectarticulationBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationBuffer::max(self : GraphconnectarticulationBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_buffer_to_string(s : GraphconnectarticulationBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationBuffer::to_string(self : GraphconnectarticulationBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_articulation_cursor_make(size : Int) -> Graphconnectarticul
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_cursor_len(s : GraphconnectarticulationCursor) -> Int { s.size }
+pub fn GraphconnectarticulationCursor::len(self : GraphconnectarticulationCursor) -> Int { self.size }
 
-pub fn graph_connect_articulation_cursor_get(s : GraphconnectarticulationCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationCursor::get(self : GraphconnectarticulationCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_cursor_set(s : GraphconnectarticulationCursor, i : Int, v : Double) -> GraphconnectarticulationCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCursor::set(self : GraphconnectarticulationCursor, i : Int, v : Double) -> GraphconnectarticulationCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cursor_sum(s : GraphconnectarticulationCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationCursor::sum(self : GraphconnectarticulationCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_cursor_mean(s : GraphconnectarticulationCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationCursor::mean(self : GraphconnectarticulationCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_cursor_scale(s : GraphconnectarticulationCursor, f : Double) -> GraphconnectarticulationCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCursor::scale(self : GraphconnectarticulationCursor, f : Double) -> GraphconnectarticulationCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cursor_add(a : GraphconnectarticulationCursor, b : GraphconnectarticulationCursor) -> GraphconnectarticulationCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationCursor::add(self : GraphconnectarticulationCursor, other : GraphconnectarticulationCursor) -> GraphconnectarticulationCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cursor_copy(s : GraphconnectarticulationCursor) -> GraphconnectarticulationCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCursor::copy(self : GraphconnectarticulationCursor) -> GraphconnectarticulationCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cursor_fill(s : GraphconnectarticulationCursor, v : Double) -> GraphconnectarticulationCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationCursor::fill(self : GraphconnectarticulationCursor, v : Double) -> GraphconnectarticulationCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_cursor_min(s : GraphconnectarticulationCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationCursor::min(self : GraphconnectarticulationCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_cursor_max(s : GraphconnectarticulationCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationCursor::max(self : GraphconnectarticulationCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_cursor_to_string(s : GraphconnectarticulationCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationCursor::to_string(self : GraphconnectarticulationCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationView {
@@ -912,45 +912,45 @@ pub fn graph_connect_articulation_view_make(size : Int) -> Graphconnectarticulat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_view_len(s : GraphconnectarticulationView) -> Int { s.size }
+pub fn GraphconnectarticulationView::len(self : GraphconnectarticulationView) -> Int { self.size }
 
-pub fn graph_connect_articulation_view_get(s : GraphconnectarticulationView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationView::get(self : GraphconnectarticulationView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_view_set(s : GraphconnectarticulationView, i : Int, v : Double) -> GraphconnectarticulationView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationView::set(self : GraphconnectarticulationView, i : Int, v : Double) -> GraphconnectarticulationView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_view_sum(s : GraphconnectarticulationView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationView::sum(self : GraphconnectarticulationView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_view_mean(s : GraphconnectarticulationView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationView::mean(self : GraphconnectarticulationView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_view_scale(s : GraphconnectarticulationView, f : Double) -> GraphconnectarticulationView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationView::scale(self : GraphconnectarticulationView, f : Double) -> GraphconnectarticulationView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_view_add(a : GraphconnectarticulationView, b : GraphconnectarticulationView) -> GraphconnectarticulationView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationView::add(self : GraphconnectarticulationView, other : GraphconnectarticulationView) -> GraphconnectarticulationView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_view_copy(s : GraphconnectarticulationView) -> GraphconnectarticulationView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationView::copy(self : GraphconnectarticulationView) -> GraphconnectarticulationView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_view_fill(s : GraphconnectarticulationView, v : Double) -> GraphconnectarticulationView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationView::fill(self : GraphconnectarticulationView, v : Double) -> GraphconnectarticulationView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_view_min(s : GraphconnectarticulationView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationView::min(self : GraphconnectarticulationView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_view_max(s : GraphconnectarticulationView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationView::max(self : GraphconnectarticulationView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_view_to_string(s : GraphconnectarticulationView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationView::to_string(self : GraphconnectarticulationView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_articulation_range_make(size : Int) -> Graphconnectarticula
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_range_len(s : GraphconnectarticulationRange) -> Int { s.size }
+pub fn GraphconnectarticulationRange::len(self : GraphconnectarticulationRange) -> Int { self.size }
 
-pub fn graph_connect_articulation_range_get(s : GraphconnectarticulationRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationRange::get(self : GraphconnectarticulationRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_range_set(s : GraphconnectarticulationRange, i : Int, v : Double) -> GraphconnectarticulationRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationRange::set(self : GraphconnectarticulationRange, i : Int, v : Double) -> GraphconnectarticulationRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_range_sum(s : GraphconnectarticulationRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationRange::sum(self : GraphconnectarticulationRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_range_mean(s : GraphconnectarticulationRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationRange::mean(self : GraphconnectarticulationRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_range_scale(s : GraphconnectarticulationRange, f : Double) -> GraphconnectarticulationRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationRange::scale(self : GraphconnectarticulationRange, f : Double) -> GraphconnectarticulationRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_range_add(a : GraphconnectarticulationRange, b : GraphconnectarticulationRange) -> GraphconnectarticulationRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationRange::add(self : GraphconnectarticulationRange, other : GraphconnectarticulationRange) -> GraphconnectarticulationRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_range_copy(s : GraphconnectarticulationRange) -> GraphconnectarticulationRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationRange::copy(self : GraphconnectarticulationRange) -> GraphconnectarticulationRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_range_fill(s : GraphconnectarticulationRange, v : Double) -> GraphconnectarticulationRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationRange::fill(self : GraphconnectarticulationRange, v : Double) -> GraphconnectarticulationRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_range_min(s : GraphconnectarticulationRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationRange::min(self : GraphconnectarticulationRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_range_max(s : GraphconnectarticulationRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationRange::max(self : GraphconnectarticulationRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_range_to_string(s : GraphconnectarticulationRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationRange::to_string(self : GraphconnectarticulationRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectarticulationSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_articulation_slice_make(size : Int) -> Graphconnectarticula
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_articulation_slice_len(s : GraphconnectarticulationSlice) -> Int { s.size }
+pub fn GraphconnectarticulationSlice::len(self : GraphconnectarticulationSlice) -> Int { self.size }
 
-pub fn graph_connect_articulation_slice_get(s : GraphconnectarticulationSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectarticulationSlice::get(self : GraphconnectarticulationSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_articulation_slice_set(s : GraphconnectarticulationSlice, i : Int, v : Double) -> GraphconnectarticulationSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationSlice::set(self : GraphconnectarticulationSlice, i : Int, v : Double) -> GraphconnectarticulationSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_slice_sum(s : GraphconnectarticulationSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectarticulationSlice::sum(self : GraphconnectarticulationSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_articulation_slice_mean(s : GraphconnectarticulationSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectarticulationSlice::mean(self : GraphconnectarticulationSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_articulation_slice_scale(s : GraphconnectarticulationSlice, f : Double) -> GraphconnectarticulationSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationSlice::scale(self : GraphconnectarticulationSlice, f : Double) -> GraphconnectarticulationSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_slice_add(a : GraphconnectarticulationSlice, b : GraphconnectarticulationSlice) -> GraphconnectarticulationSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectarticulationSlice::add(self : GraphconnectarticulationSlice, other : GraphconnectarticulationSlice) -> GraphconnectarticulationSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_slice_copy(s : GraphconnectarticulationSlice) -> GraphconnectarticulationSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationSlice::copy(self : GraphconnectarticulationSlice) -> GraphconnectarticulationSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_slice_fill(s : GraphconnectarticulationSlice, v : Double) -> GraphconnectarticulationSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectarticulationSlice::fill(self : GraphconnectarticulationSlice, v : Double) -> GraphconnectarticulationSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_articulation_slice_min(s : GraphconnectarticulationSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectarticulationSlice::min(self : GraphconnectarticulationSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_articulation_slice_max(s : GraphconnectarticulationSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectarticulationSlice::max(self : GraphconnectarticulationSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_articulation_slice_to_string(s : GraphconnectarticulationSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectarticulationSlice::to_string(self : GraphconnectarticulationSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

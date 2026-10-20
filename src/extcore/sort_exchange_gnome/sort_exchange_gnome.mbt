@@ -351,45 +351,45 @@ pub fn sort_exchange_gnome_frame_make(size : Int) -> SortexchangegnomeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_frame_len(s : SortexchangegnomeFrame) -> Int { s.size }
+pub fn SortexchangegnomeFrame::len(self : SortexchangegnomeFrame) -> Int { self.size }
 
-pub fn sort_exchange_gnome_frame_get(s : SortexchangegnomeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeFrame::get(self : SortexchangegnomeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_frame_set(s : SortexchangegnomeFrame, i : Int, v : Double) -> SortexchangegnomeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeFrame::set(self : SortexchangegnomeFrame, i : Int, v : Double) -> SortexchangegnomeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_frame_sum(s : SortexchangegnomeFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeFrame::sum(self : SortexchangegnomeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_frame_mean(s : SortexchangegnomeFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeFrame::mean(self : SortexchangegnomeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_frame_scale(s : SortexchangegnomeFrame, f : Double) -> SortexchangegnomeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeFrame::scale(self : SortexchangegnomeFrame, f : Double) -> SortexchangegnomeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_frame_add(a : SortexchangegnomeFrame, b : SortexchangegnomeFrame) -> SortexchangegnomeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeFrame::add(self : SortexchangegnomeFrame, other : SortexchangegnomeFrame) -> SortexchangegnomeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_frame_copy(s : SortexchangegnomeFrame) -> SortexchangegnomeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeFrame::copy(self : SortexchangegnomeFrame) -> SortexchangegnomeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_frame_fill(s : SortexchangegnomeFrame, v : Double) -> SortexchangegnomeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeFrame::fill(self : SortexchangegnomeFrame, v : Double) -> SortexchangegnomeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_frame_min(s : SortexchangegnomeFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeFrame::min(self : SortexchangegnomeFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_frame_max(s : SortexchangegnomeFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeFrame::max(self : SortexchangegnomeFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_frame_to_string(s : SortexchangegnomeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeFrame::to_string(self : SortexchangegnomeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_gnome_table_make(size : Int) -> SortexchangegnomeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_table_len(s : SortexchangegnomeTable) -> Int { s.size }
+pub fn SortexchangegnomeTable::len(self : SortexchangegnomeTable) -> Int { self.size }
 
-pub fn sort_exchange_gnome_table_get(s : SortexchangegnomeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeTable::get(self : SortexchangegnomeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_table_set(s : SortexchangegnomeTable, i : Int, v : Double) -> SortexchangegnomeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeTable::set(self : SortexchangegnomeTable, i : Int, v : Double) -> SortexchangegnomeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_table_sum(s : SortexchangegnomeTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeTable::sum(self : SortexchangegnomeTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_table_mean(s : SortexchangegnomeTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeTable::mean(self : SortexchangegnomeTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_table_scale(s : SortexchangegnomeTable, f : Double) -> SortexchangegnomeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeTable::scale(self : SortexchangegnomeTable, f : Double) -> SortexchangegnomeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_table_add(a : SortexchangegnomeTable, b : SortexchangegnomeTable) -> SortexchangegnomeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeTable::add(self : SortexchangegnomeTable, other : SortexchangegnomeTable) -> SortexchangegnomeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_table_copy(s : SortexchangegnomeTable) -> SortexchangegnomeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeTable::copy(self : SortexchangegnomeTable) -> SortexchangegnomeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_table_fill(s : SortexchangegnomeTable, v : Double) -> SortexchangegnomeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeTable::fill(self : SortexchangegnomeTable, v : Double) -> SortexchangegnomeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_table_min(s : SortexchangegnomeTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeTable::min(self : SortexchangegnomeTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_table_max(s : SortexchangegnomeTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeTable::max(self : SortexchangegnomeTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_table_to_string(s : SortexchangegnomeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeTable::to_string(self : SortexchangegnomeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_gnome_graphn_make(size : Int) -> SortexchangegnomeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_graphn_len(s : SortexchangegnomeGraphN) -> Int { s.size }
+pub fn SortexchangegnomeGraphN::len(self : SortexchangegnomeGraphN) -> Int { self.size }
 
-pub fn sort_exchange_gnome_graphn_get(s : SortexchangegnomeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeGraphN::get(self : SortexchangegnomeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_graphn_set(s : SortexchangegnomeGraphN, i : Int, v : Double) -> SortexchangegnomeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeGraphN::set(self : SortexchangegnomeGraphN, i : Int, v : Double) -> SortexchangegnomeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_graphn_sum(s : SortexchangegnomeGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeGraphN::sum(self : SortexchangegnomeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_graphn_mean(s : SortexchangegnomeGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeGraphN::mean(self : SortexchangegnomeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_graphn_scale(s : SortexchangegnomeGraphN, f : Double) -> SortexchangegnomeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeGraphN::scale(self : SortexchangegnomeGraphN, f : Double) -> SortexchangegnomeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_graphn_add(a : SortexchangegnomeGraphN, b : SortexchangegnomeGraphN) -> SortexchangegnomeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeGraphN::add(self : SortexchangegnomeGraphN, other : SortexchangegnomeGraphN) -> SortexchangegnomeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_graphn_copy(s : SortexchangegnomeGraphN) -> SortexchangegnomeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeGraphN::copy(self : SortexchangegnomeGraphN) -> SortexchangegnomeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_graphn_fill(s : SortexchangegnomeGraphN, v : Double) -> SortexchangegnomeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeGraphN::fill(self : SortexchangegnomeGraphN, v : Double) -> SortexchangegnomeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_graphn_min(s : SortexchangegnomeGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeGraphN::min(self : SortexchangegnomeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_graphn_max(s : SortexchangegnomeGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeGraphN::max(self : SortexchangegnomeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_graphn_to_string(s : SortexchangegnomeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeGraphN::to_string(self : SortexchangegnomeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_gnome_node_make(size : Int) -> SortexchangegnomeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_node_len(s : SortexchangegnomeNode) -> Int { s.size }
+pub fn SortexchangegnomeNode::len(self : SortexchangegnomeNode) -> Int { self.size }
 
-pub fn sort_exchange_gnome_node_get(s : SortexchangegnomeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeNode::get(self : SortexchangegnomeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_node_set(s : SortexchangegnomeNode, i : Int, v : Double) -> SortexchangegnomeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeNode::set(self : SortexchangegnomeNode, i : Int, v : Double) -> SortexchangegnomeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_node_sum(s : SortexchangegnomeNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeNode::sum(self : SortexchangegnomeNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_node_mean(s : SortexchangegnomeNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeNode::mean(self : SortexchangegnomeNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_node_scale(s : SortexchangegnomeNode, f : Double) -> SortexchangegnomeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeNode::scale(self : SortexchangegnomeNode, f : Double) -> SortexchangegnomeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_node_add(a : SortexchangegnomeNode, b : SortexchangegnomeNode) -> SortexchangegnomeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeNode::add(self : SortexchangegnomeNode, other : SortexchangegnomeNode) -> SortexchangegnomeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_node_copy(s : SortexchangegnomeNode) -> SortexchangegnomeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeNode::copy(self : SortexchangegnomeNode) -> SortexchangegnomeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_node_fill(s : SortexchangegnomeNode, v : Double) -> SortexchangegnomeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeNode::fill(self : SortexchangegnomeNode, v : Double) -> SortexchangegnomeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_node_min(s : SortexchangegnomeNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeNode::min(self : SortexchangegnomeNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_node_max(s : SortexchangegnomeNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeNode::max(self : SortexchangegnomeNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_node_to_string(s : SortexchangegnomeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeNode::to_string(self : SortexchangegnomeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_gnome_edge_make(size : Int) -> SortexchangegnomeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_edge_len(s : SortexchangegnomeEdge) -> Int { s.size }
+pub fn SortexchangegnomeEdge::len(self : SortexchangegnomeEdge) -> Int { self.size }
 
-pub fn sort_exchange_gnome_edge_get(s : SortexchangegnomeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeEdge::get(self : SortexchangegnomeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_edge_set(s : SortexchangegnomeEdge, i : Int, v : Double) -> SortexchangegnomeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeEdge::set(self : SortexchangegnomeEdge, i : Int, v : Double) -> SortexchangegnomeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_edge_sum(s : SortexchangegnomeEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeEdge::sum(self : SortexchangegnomeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_edge_mean(s : SortexchangegnomeEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeEdge::mean(self : SortexchangegnomeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_edge_scale(s : SortexchangegnomeEdge, f : Double) -> SortexchangegnomeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeEdge::scale(self : SortexchangegnomeEdge, f : Double) -> SortexchangegnomeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_edge_add(a : SortexchangegnomeEdge, b : SortexchangegnomeEdge) -> SortexchangegnomeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeEdge::add(self : SortexchangegnomeEdge, other : SortexchangegnomeEdge) -> SortexchangegnomeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_edge_copy(s : SortexchangegnomeEdge) -> SortexchangegnomeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeEdge::copy(self : SortexchangegnomeEdge) -> SortexchangegnomeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_edge_fill(s : SortexchangegnomeEdge, v : Double) -> SortexchangegnomeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeEdge::fill(self : SortexchangegnomeEdge, v : Double) -> SortexchangegnomeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_edge_min(s : SortexchangegnomeEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeEdge::min(self : SortexchangegnomeEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_edge_max(s : SortexchangegnomeEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeEdge::max(self : SortexchangegnomeEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_edge_to_string(s : SortexchangegnomeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeEdge::to_string(self : SortexchangegnomeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomePath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_gnome_path_make(size : Int) -> SortexchangegnomePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_path_len(s : SortexchangegnomePath) -> Int { s.size }
+pub fn SortexchangegnomePath::len(self : SortexchangegnomePath) -> Int { self.size }
 
-pub fn sort_exchange_gnome_path_get(s : SortexchangegnomePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomePath::get(self : SortexchangegnomePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_path_set(s : SortexchangegnomePath, i : Int, v : Double) -> SortexchangegnomePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomePath::set(self : SortexchangegnomePath, i : Int, v : Double) -> SortexchangegnomePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_path_sum(s : SortexchangegnomePath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomePath::sum(self : SortexchangegnomePath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_path_mean(s : SortexchangegnomePath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomePath::mean(self : SortexchangegnomePath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_path_scale(s : SortexchangegnomePath, f : Double) -> SortexchangegnomePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomePath::scale(self : SortexchangegnomePath, f : Double) -> SortexchangegnomePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_path_add(a : SortexchangegnomePath, b : SortexchangegnomePath) -> SortexchangegnomePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomePath::add(self : SortexchangegnomePath, other : SortexchangegnomePath) -> SortexchangegnomePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_path_copy(s : SortexchangegnomePath) -> SortexchangegnomePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomePath::copy(self : SortexchangegnomePath) -> SortexchangegnomePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_path_fill(s : SortexchangegnomePath, v : Double) -> SortexchangegnomePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomePath::fill(self : SortexchangegnomePath, v : Double) -> SortexchangegnomePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_path_min(s : SortexchangegnomePath) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomePath::min(self : SortexchangegnomePath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_path_max(s : SortexchangegnomePath) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomePath::max(self : SortexchangegnomePath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_path_to_string(s : SortexchangegnomePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomePath::to_string(self : SortexchangegnomePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_gnome_cluster_make(size : Int) -> SortexchangegnomeCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_cluster_len(s : SortexchangegnomeCluster) -> Int { s.size }
+pub fn SortexchangegnomeCluster::len(self : SortexchangegnomeCluster) -> Int { self.size }
 
-pub fn sort_exchange_gnome_cluster_get(s : SortexchangegnomeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeCluster::get(self : SortexchangegnomeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_cluster_set(s : SortexchangegnomeCluster, i : Int, v : Double) -> SortexchangegnomeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCluster::set(self : SortexchangegnomeCluster, i : Int, v : Double) -> SortexchangegnomeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cluster_sum(s : SortexchangegnomeCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeCluster::sum(self : SortexchangegnomeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_cluster_mean(s : SortexchangegnomeCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeCluster::mean(self : SortexchangegnomeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_cluster_scale(s : SortexchangegnomeCluster, f : Double) -> SortexchangegnomeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCluster::scale(self : SortexchangegnomeCluster, f : Double) -> SortexchangegnomeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cluster_add(a : SortexchangegnomeCluster, b : SortexchangegnomeCluster) -> SortexchangegnomeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeCluster::add(self : SortexchangegnomeCluster, other : SortexchangegnomeCluster) -> SortexchangegnomeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cluster_copy(s : SortexchangegnomeCluster) -> SortexchangegnomeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCluster::copy(self : SortexchangegnomeCluster) -> SortexchangegnomeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cluster_fill(s : SortexchangegnomeCluster, v : Double) -> SortexchangegnomeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCluster::fill(self : SortexchangegnomeCluster, v : Double) -> SortexchangegnomeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cluster_min(s : SortexchangegnomeCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeCluster::min(self : SortexchangegnomeCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_cluster_max(s : SortexchangegnomeCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeCluster::max(self : SortexchangegnomeCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_cluster_to_string(s : SortexchangegnomeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeCluster::to_string(self : SortexchangegnomeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_gnome_model_make(size : Int) -> SortexchangegnomeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_model_len(s : SortexchangegnomeModel) -> Int { s.size }
+pub fn SortexchangegnomeModel::len(self : SortexchangegnomeModel) -> Int { self.size }
 
-pub fn sort_exchange_gnome_model_get(s : SortexchangegnomeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeModel::get(self : SortexchangegnomeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_model_set(s : SortexchangegnomeModel, i : Int, v : Double) -> SortexchangegnomeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeModel::set(self : SortexchangegnomeModel, i : Int, v : Double) -> SortexchangegnomeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_model_sum(s : SortexchangegnomeModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeModel::sum(self : SortexchangegnomeModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_model_mean(s : SortexchangegnomeModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeModel::mean(self : SortexchangegnomeModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_model_scale(s : SortexchangegnomeModel, f : Double) -> SortexchangegnomeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeModel::scale(self : SortexchangegnomeModel, f : Double) -> SortexchangegnomeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_model_add(a : SortexchangegnomeModel, b : SortexchangegnomeModel) -> SortexchangegnomeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeModel::add(self : SortexchangegnomeModel, other : SortexchangegnomeModel) -> SortexchangegnomeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_model_copy(s : SortexchangegnomeModel) -> SortexchangegnomeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeModel::copy(self : SortexchangegnomeModel) -> SortexchangegnomeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_model_fill(s : SortexchangegnomeModel, v : Double) -> SortexchangegnomeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeModel::fill(self : SortexchangegnomeModel, v : Double) -> SortexchangegnomeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_model_min(s : SortexchangegnomeModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeModel::min(self : SortexchangegnomeModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_model_max(s : SortexchangegnomeModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeModel::max(self : SortexchangegnomeModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_model_to_string(s : SortexchangegnomeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeModel::to_string(self : SortexchangegnomeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_gnome_layer_make(size : Int) -> SortexchangegnomeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_layer_len(s : SortexchangegnomeLayer) -> Int { s.size }
+pub fn SortexchangegnomeLayer::len(self : SortexchangegnomeLayer) -> Int { self.size }
 
-pub fn sort_exchange_gnome_layer_get(s : SortexchangegnomeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeLayer::get(self : SortexchangegnomeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_layer_set(s : SortexchangegnomeLayer, i : Int, v : Double) -> SortexchangegnomeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeLayer::set(self : SortexchangegnomeLayer, i : Int, v : Double) -> SortexchangegnomeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_layer_sum(s : SortexchangegnomeLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeLayer::sum(self : SortexchangegnomeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_layer_mean(s : SortexchangegnomeLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeLayer::mean(self : SortexchangegnomeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_layer_scale(s : SortexchangegnomeLayer, f : Double) -> SortexchangegnomeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeLayer::scale(self : SortexchangegnomeLayer, f : Double) -> SortexchangegnomeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_layer_add(a : SortexchangegnomeLayer, b : SortexchangegnomeLayer) -> SortexchangegnomeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeLayer::add(self : SortexchangegnomeLayer, other : SortexchangegnomeLayer) -> SortexchangegnomeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_layer_copy(s : SortexchangegnomeLayer) -> SortexchangegnomeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeLayer::copy(self : SortexchangegnomeLayer) -> SortexchangegnomeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_layer_fill(s : SortexchangegnomeLayer, v : Double) -> SortexchangegnomeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeLayer::fill(self : SortexchangegnomeLayer, v : Double) -> SortexchangegnomeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_layer_min(s : SortexchangegnomeLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeLayer::min(self : SortexchangegnomeLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_layer_max(s : SortexchangegnomeLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeLayer::max(self : SortexchangegnomeLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_layer_to_string(s : SortexchangegnomeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeLayer::to_string(self : SortexchangegnomeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_gnome_buffer_make(size : Int) -> SortexchangegnomeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_buffer_len(s : SortexchangegnomeBuffer) -> Int { s.size }
+pub fn SortexchangegnomeBuffer::len(self : SortexchangegnomeBuffer) -> Int { self.size }
 
-pub fn sort_exchange_gnome_buffer_get(s : SortexchangegnomeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeBuffer::get(self : SortexchangegnomeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_buffer_set(s : SortexchangegnomeBuffer, i : Int, v : Double) -> SortexchangegnomeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeBuffer::set(self : SortexchangegnomeBuffer, i : Int, v : Double) -> SortexchangegnomeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_buffer_sum(s : SortexchangegnomeBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeBuffer::sum(self : SortexchangegnomeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_buffer_mean(s : SortexchangegnomeBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeBuffer::mean(self : SortexchangegnomeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_buffer_scale(s : SortexchangegnomeBuffer, f : Double) -> SortexchangegnomeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeBuffer::scale(self : SortexchangegnomeBuffer, f : Double) -> SortexchangegnomeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_buffer_add(a : SortexchangegnomeBuffer, b : SortexchangegnomeBuffer) -> SortexchangegnomeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeBuffer::add(self : SortexchangegnomeBuffer, other : SortexchangegnomeBuffer) -> SortexchangegnomeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_buffer_copy(s : SortexchangegnomeBuffer) -> SortexchangegnomeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeBuffer::copy(self : SortexchangegnomeBuffer) -> SortexchangegnomeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_buffer_fill(s : SortexchangegnomeBuffer, v : Double) -> SortexchangegnomeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeBuffer::fill(self : SortexchangegnomeBuffer, v : Double) -> SortexchangegnomeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_buffer_min(s : SortexchangegnomeBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeBuffer::min(self : SortexchangegnomeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_buffer_max(s : SortexchangegnomeBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeBuffer::max(self : SortexchangegnomeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_buffer_to_string(s : SortexchangegnomeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeBuffer::to_string(self : SortexchangegnomeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_gnome_cursor_make(size : Int) -> SortexchangegnomeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_cursor_len(s : SortexchangegnomeCursor) -> Int { s.size }
+pub fn SortexchangegnomeCursor::len(self : SortexchangegnomeCursor) -> Int { self.size }
 
-pub fn sort_exchange_gnome_cursor_get(s : SortexchangegnomeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeCursor::get(self : SortexchangegnomeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_cursor_set(s : SortexchangegnomeCursor, i : Int, v : Double) -> SortexchangegnomeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCursor::set(self : SortexchangegnomeCursor, i : Int, v : Double) -> SortexchangegnomeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cursor_sum(s : SortexchangegnomeCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeCursor::sum(self : SortexchangegnomeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_cursor_mean(s : SortexchangegnomeCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeCursor::mean(self : SortexchangegnomeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_cursor_scale(s : SortexchangegnomeCursor, f : Double) -> SortexchangegnomeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCursor::scale(self : SortexchangegnomeCursor, f : Double) -> SortexchangegnomeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cursor_add(a : SortexchangegnomeCursor, b : SortexchangegnomeCursor) -> SortexchangegnomeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeCursor::add(self : SortexchangegnomeCursor, other : SortexchangegnomeCursor) -> SortexchangegnomeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cursor_copy(s : SortexchangegnomeCursor) -> SortexchangegnomeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCursor::copy(self : SortexchangegnomeCursor) -> SortexchangegnomeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cursor_fill(s : SortexchangegnomeCursor, v : Double) -> SortexchangegnomeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeCursor::fill(self : SortexchangegnomeCursor, v : Double) -> SortexchangegnomeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_cursor_min(s : SortexchangegnomeCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeCursor::min(self : SortexchangegnomeCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_cursor_max(s : SortexchangegnomeCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeCursor::max(self : SortexchangegnomeCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_cursor_to_string(s : SortexchangegnomeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeCursor::to_string(self : SortexchangegnomeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_gnome_view_make(size : Int) -> SortexchangegnomeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_view_len(s : SortexchangegnomeView) -> Int { s.size }
+pub fn SortexchangegnomeView::len(self : SortexchangegnomeView) -> Int { self.size }
 
-pub fn sort_exchange_gnome_view_get(s : SortexchangegnomeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeView::get(self : SortexchangegnomeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_view_set(s : SortexchangegnomeView, i : Int, v : Double) -> SortexchangegnomeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeView::set(self : SortexchangegnomeView, i : Int, v : Double) -> SortexchangegnomeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_view_sum(s : SortexchangegnomeView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeView::sum(self : SortexchangegnomeView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_view_mean(s : SortexchangegnomeView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeView::mean(self : SortexchangegnomeView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_view_scale(s : SortexchangegnomeView, f : Double) -> SortexchangegnomeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeView::scale(self : SortexchangegnomeView, f : Double) -> SortexchangegnomeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_view_add(a : SortexchangegnomeView, b : SortexchangegnomeView) -> SortexchangegnomeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeView::add(self : SortexchangegnomeView, other : SortexchangegnomeView) -> SortexchangegnomeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_view_copy(s : SortexchangegnomeView) -> SortexchangegnomeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeView::copy(self : SortexchangegnomeView) -> SortexchangegnomeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_view_fill(s : SortexchangegnomeView, v : Double) -> SortexchangegnomeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeView::fill(self : SortexchangegnomeView, v : Double) -> SortexchangegnomeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_view_min(s : SortexchangegnomeView) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeView::min(self : SortexchangegnomeView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_view_max(s : SortexchangegnomeView) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeView::max(self : SortexchangegnomeView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_view_to_string(s : SortexchangegnomeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeView::to_string(self : SortexchangegnomeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_gnome_range_make(size : Int) -> SortexchangegnomeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_range_len(s : SortexchangegnomeRange) -> Int { s.size }
+pub fn SortexchangegnomeRange::len(self : SortexchangegnomeRange) -> Int { self.size }
 
-pub fn sort_exchange_gnome_range_get(s : SortexchangegnomeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeRange::get(self : SortexchangegnomeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_range_set(s : SortexchangegnomeRange, i : Int, v : Double) -> SortexchangegnomeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeRange::set(self : SortexchangegnomeRange, i : Int, v : Double) -> SortexchangegnomeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_range_sum(s : SortexchangegnomeRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeRange::sum(self : SortexchangegnomeRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_range_mean(s : SortexchangegnomeRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeRange::mean(self : SortexchangegnomeRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_range_scale(s : SortexchangegnomeRange, f : Double) -> SortexchangegnomeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeRange::scale(self : SortexchangegnomeRange, f : Double) -> SortexchangegnomeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_range_add(a : SortexchangegnomeRange, b : SortexchangegnomeRange) -> SortexchangegnomeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeRange::add(self : SortexchangegnomeRange, other : SortexchangegnomeRange) -> SortexchangegnomeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_range_copy(s : SortexchangegnomeRange) -> SortexchangegnomeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeRange::copy(self : SortexchangegnomeRange) -> SortexchangegnomeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_range_fill(s : SortexchangegnomeRange, v : Double) -> SortexchangegnomeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeRange::fill(self : SortexchangegnomeRange, v : Double) -> SortexchangegnomeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_range_min(s : SortexchangegnomeRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeRange::min(self : SortexchangegnomeRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_range_max(s : SortexchangegnomeRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeRange::max(self : SortexchangegnomeRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_range_to_string(s : SortexchangegnomeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeRange::to_string(self : SortexchangegnomeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangegnomeSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_gnome_slice_make(size : Int) -> SortexchangegnomeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_gnome_slice_len(s : SortexchangegnomeSlice) -> Int { s.size }
+pub fn SortexchangegnomeSlice::len(self : SortexchangegnomeSlice) -> Int { self.size }
 
-pub fn sort_exchange_gnome_slice_get(s : SortexchangegnomeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangegnomeSlice::get(self : SortexchangegnomeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_gnome_slice_set(s : SortexchangegnomeSlice, i : Int, v : Double) -> SortexchangegnomeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangegnomeSlice::set(self : SortexchangegnomeSlice, i : Int, v : Double) -> SortexchangegnomeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_slice_sum(s : SortexchangegnomeSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangegnomeSlice::sum(self : SortexchangegnomeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_gnome_slice_mean(s : SortexchangegnomeSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangegnomeSlice::mean(self : SortexchangegnomeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_gnome_slice_scale(s : SortexchangegnomeSlice, f : Double) -> SortexchangegnomeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeSlice::scale(self : SortexchangegnomeSlice, f : Double) -> SortexchangegnomeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_slice_add(a : SortexchangegnomeSlice, b : SortexchangegnomeSlice) -> SortexchangegnomeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangegnomeSlice::add(self : SortexchangegnomeSlice, other : SortexchangegnomeSlice) -> SortexchangegnomeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_slice_copy(s : SortexchangegnomeSlice) -> SortexchangegnomeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeSlice::copy(self : SortexchangegnomeSlice) -> SortexchangegnomeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_slice_fill(s : SortexchangegnomeSlice, v : Double) -> SortexchangegnomeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangegnomeSlice::fill(self : SortexchangegnomeSlice, v : Double) -> SortexchangegnomeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_gnome_slice_min(s : SortexchangegnomeSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangegnomeSlice::min(self : SortexchangegnomeSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_gnome_slice_max(s : SortexchangegnomeSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangegnomeSlice::max(self : SortexchangegnomeSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_gnome_slice_to_string(s : SortexchangegnomeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangegnomeSlice::to_string(self : SortexchangegnomeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

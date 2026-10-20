@@ -351,45 +351,45 @@ pub fn math_special_elliptic_frame_make(size : Int) -> MathspecialellipticFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_frame_len(s : MathspecialellipticFrame) -> Int { s.size }
+pub fn MathspecialellipticFrame::len(self : MathspecialellipticFrame) -> Int { self.size }
 
-pub fn math_special_elliptic_frame_get(s : MathspecialellipticFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticFrame::get(self : MathspecialellipticFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_frame_set(s : MathspecialellipticFrame, i : Int, v : Double) -> MathspecialellipticFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticFrame::set(self : MathspecialellipticFrame, i : Int, v : Double) -> MathspecialellipticFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_frame_sum(s : MathspecialellipticFrame) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticFrame::sum(self : MathspecialellipticFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_frame_mean(s : MathspecialellipticFrame) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticFrame::mean(self : MathspecialellipticFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_frame_scale(s : MathspecialellipticFrame, f : Double) -> MathspecialellipticFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticFrame::scale(self : MathspecialellipticFrame, f : Double) -> MathspecialellipticFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_frame_add(a : MathspecialellipticFrame, b : MathspecialellipticFrame) -> MathspecialellipticFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticFrame::add(self : MathspecialellipticFrame, other : MathspecialellipticFrame) -> MathspecialellipticFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_frame_copy(s : MathspecialellipticFrame) -> MathspecialellipticFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticFrame::copy(self : MathspecialellipticFrame) -> MathspecialellipticFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_frame_fill(s : MathspecialellipticFrame, v : Double) -> MathspecialellipticFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticFrame::fill(self : MathspecialellipticFrame, v : Double) -> MathspecialellipticFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_frame_min(s : MathspecialellipticFrame) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticFrame::min(self : MathspecialellipticFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_frame_max(s : MathspecialellipticFrame) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticFrame::max(self : MathspecialellipticFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_frame_to_string(s : MathspecialellipticFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticFrame::to_string(self : MathspecialellipticFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticTable {
@@ -402,45 +402,45 @@ pub fn math_special_elliptic_table_make(size : Int) -> MathspecialellipticTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_table_len(s : MathspecialellipticTable) -> Int { s.size }
+pub fn MathspecialellipticTable::len(self : MathspecialellipticTable) -> Int { self.size }
 
-pub fn math_special_elliptic_table_get(s : MathspecialellipticTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticTable::get(self : MathspecialellipticTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_table_set(s : MathspecialellipticTable, i : Int, v : Double) -> MathspecialellipticTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticTable::set(self : MathspecialellipticTable, i : Int, v : Double) -> MathspecialellipticTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_table_sum(s : MathspecialellipticTable) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticTable::sum(self : MathspecialellipticTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_table_mean(s : MathspecialellipticTable) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticTable::mean(self : MathspecialellipticTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_table_scale(s : MathspecialellipticTable, f : Double) -> MathspecialellipticTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticTable::scale(self : MathspecialellipticTable, f : Double) -> MathspecialellipticTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_table_add(a : MathspecialellipticTable, b : MathspecialellipticTable) -> MathspecialellipticTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticTable::add(self : MathspecialellipticTable, other : MathspecialellipticTable) -> MathspecialellipticTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_table_copy(s : MathspecialellipticTable) -> MathspecialellipticTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticTable::copy(self : MathspecialellipticTable) -> MathspecialellipticTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_table_fill(s : MathspecialellipticTable, v : Double) -> MathspecialellipticTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticTable::fill(self : MathspecialellipticTable, v : Double) -> MathspecialellipticTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_table_min(s : MathspecialellipticTable) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticTable::min(self : MathspecialellipticTable) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_table_max(s : MathspecialellipticTable) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticTable::max(self : MathspecialellipticTable) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_table_to_string(s : MathspecialellipticTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticTable::to_string(self : MathspecialellipticTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticGraphN {
@@ -453,45 +453,45 @@ pub fn math_special_elliptic_graphn_make(size : Int) -> MathspecialellipticGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_graphn_len(s : MathspecialellipticGraphN) -> Int { s.size }
+pub fn MathspecialellipticGraphN::len(self : MathspecialellipticGraphN) -> Int { self.size }
 
-pub fn math_special_elliptic_graphn_get(s : MathspecialellipticGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticGraphN::get(self : MathspecialellipticGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_graphn_set(s : MathspecialellipticGraphN, i : Int, v : Double) -> MathspecialellipticGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticGraphN::set(self : MathspecialellipticGraphN, i : Int, v : Double) -> MathspecialellipticGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_graphn_sum(s : MathspecialellipticGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticGraphN::sum(self : MathspecialellipticGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_graphn_mean(s : MathspecialellipticGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticGraphN::mean(self : MathspecialellipticGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_graphn_scale(s : MathspecialellipticGraphN, f : Double) -> MathspecialellipticGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticGraphN::scale(self : MathspecialellipticGraphN, f : Double) -> MathspecialellipticGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_graphn_add(a : MathspecialellipticGraphN, b : MathspecialellipticGraphN) -> MathspecialellipticGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticGraphN::add(self : MathspecialellipticGraphN, other : MathspecialellipticGraphN) -> MathspecialellipticGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_graphn_copy(s : MathspecialellipticGraphN) -> MathspecialellipticGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticGraphN::copy(self : MathspecialellipticGraphN) -> MathspecialellipticGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_graphn_fill(s : MathspecialellipticGraphN, v : Double) -> MathspecialellipticGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticGraphN::fill(self : MathspecialellipticGraphN, v : Double) -> MathspecialellipticGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_graphn_min(s : MathspecialellipticGraphN) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticGraphN::min(self : MathspecialellipticGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_graphn_max(s : MathspecialellipticGraphN) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticGraphN::max(self : MathspecialellipticGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_graphn_to_string(s : MathspecialellipticGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticGraphN::to_string(self : MathspecialellipticGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticNode {
@@ -504,45 +504,45 @@ pub fn math_special_elliptic_node_make(size : Int) -> MathspecialellipticNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_node_len(s : MathspecialellipticNode) -> Int { s.size }
+pub fn MathspecialellipticNode::len(self : MathspecialellipticNode) -> Int { self.size }
 
-pub fn math_special_elliptic_node_get(s : MathspecialellipticNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticNode::get(self : MathspecialellipticNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_node_set(s : MathspecialellipticNode, i : Int, v : Double) -> MathspecialellipticNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticNode::set(self : MathspecialellipticNode, i : Int, v : Double) -> MathspecialellipticNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_node_sum(s : MathspecialellipticNode) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticNode::sum(self : MathspecialellipticNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_node_mean(s : MathspecialellipticNode) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticNode::mean(self : MathspecialellipticNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_node_scale(s : MathspecialellipticNode, f : Double) -> MathspecialellipticNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticNode::scale(self : MathspecialellipticNode, f : Double) -> MathspecialellipticNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_node_add(a : MathspecialellipticNode, b : MathspecialellipticNode) -> MathspecialellipticNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticNode::add(self : MathspecialellipticNode, other : MathspecialellipticNode) -> MathspecialellipticNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_node_copy(s : MathspecialellipticNode) -> MathspecialellipticNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticNode::copy(self : MathspecialellipticNode) -> MathspecialellipticNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_node_fill(s : MathspecialellipticNode, v : Double) -> MathspecialellipticNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticNode::fill(self : MathspecialellipticNode, v : Double) -> MathspecialellipticNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_node_min(s : MathspecialellipticNode) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticNode::min(self : MathspecialellipticNode) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_node_max(s : MathspecialellipticNode) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticNode::max(self : MathspecialellipticNode) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_node_to_string(s : MathspecialellipticNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticNode::to_string(self : MathspecialellipticNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticEdge {
@@ -555,45 +555,45 @@ pub fn math_special_elliptic_edge_make(size : Int) -> MathspecialellipticEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_edge_len(s : MathspecialellipticEdge) -> Int { s.size }
+pub fn MathspecialellipticEdge::len(self : MathspecialellipticEdge) -> Int { self.size }
 
-pub fn math_special_elliptic_edge_get(s : MathspecialellipticEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticEdge::get(self : MathspecialellipticEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_edge_set(s : MathspecialellipticEdge, i : Int, v : Double) -> MathspecialellipticEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticEdge::set(self : MathspecialellipticEdge, i : Int, v : Double) -> MathspecialellipticEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_edge_sum(s : MathspecialellipticEdge) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticEdge::sum(self : MathspecialellipticEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_edge_mean(s : MathspecialellipticEdge) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticEdge::mean(self : MathspecialellipticEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_edge_scale(s : MathspecialellipticEdge, f : Double) -> MathspecialellipticEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticEdge::scale(self : MathspecialellipticEdge, f : Double) -> MathspecialellipticEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_edge_add(a : MathspecialellipticEdge, b : MathspecialellipticEdge) -> MathspecialellipticEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticEdge::add(self : MathspecialellipticEdge, other : MathspecialellipticEdge) -> MathspecialellipticEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_edge_copy(s : MathspecialellipticEdge) -> MathspecialellipticEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticEdge::copy(self : MathspecialellipticEdge) -> MathspecialellipticEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_edge_fill(s : MathspecialellipticEdge, v : Double) -> MathspecialellipticEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticEdge::fill(self : MathspecialellipticEdge, v : Double) -> MathspecialellipticEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_edge_min(s : MathspecialellipticEdge) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticEdge::min(self : MathspecialellipticEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_edge_max(s : MathspecialellipticEdge) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticEdge::max(self : MathspecialellipticEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_edge_to_string(s : MathspecialellipticEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticEdge::to_string(self : MathspecialellipticEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticPath {
@@ -606,45 +606,45 @@ pub fn math_special_elliptic_path_make(size : Int) -> MathspecialellipticPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_path_len(s : MathspecialellipticPath) -> Int { s.size }
+pub fn MathspecialellipticPath::len(self : MathspecialellipticPath) -> Int { self.size }
 
-pub fn math_special_elliptic_path_get(s : MathspecialellipticPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticPath::get(self : MathspecialellipticPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_path_set(s : MathspecialellipticPath, i : Int, v : Double) -> MathspecialellipticPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticPath::set(self : MathspecialellipticPath, i : Int, v : Double) -> MathspecialellipticPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_path_sum(s : MathspecialellipticPath) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticPath::sum(self : MathspecialellipticPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_path_mean(s : MathspecialellipticPath) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticPath::mean(self : MathspecialellipticPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_path_scale(s : MathspecialellipticPath, f : Double) -> MathspecialellipticPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticPath::scale(self : MathspecialellipticPath, f : Double) -> MathspecialellipticPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_path_add(a : MathspecialellipticPath, b : MathspecialellipticPath) -> MathspecialellipticPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticPath::add(self : MathspecialellipticPath, other : MathspecialellipticPath) -> MathspecialellipticPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_path_copy(s : MathspecialellipticPath) -> MathspecialellipticPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticPath::copy(self : MathspecialellipticPath) -> MathspecialellipticPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_path_fill(s : MathspecialellipticPath, v : Double) -> MathspecialellipticPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticPath::fill(self : MathspecialellipticPath, v : Double) -> MathspecialellipticPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_path_min(s : MathspecialellipticPath) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticPath::min(self : MathspecialellipticPath) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_path_max(s : MathspecialellipticPath) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticPath::max(self : MathspecialellipticPath) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_path_to_string(s : MathspecialellipticPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticPath::to_string(self : MathspecialellipticPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticCluster {
@@ -657,45 +657,45 @@ pub fn math_special_elliptic_cluster_make(size : Int) -> MathspecialellipticClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_cluster_len(s : MathspecialellipticCluster) -> Int { s.size }
+pub fn MathspecialellipticCluster::len(self : MathspecialellipticCluster) -> Int { self.size }
 
-pub fn math_special_elliptic_cluster_get(s : MathspecialellipticCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticCluster::get(self : MathspecialellipticCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_cluster_set(s : MathspecialellipticCluster, i : Int, v : Double) -> MathspecialellipticCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticCluster::set(self : MathspecialellipticCluster, i : Int, v : Double) -> MathspecialellipticCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cluster_sum(s : MathspecialellipticCluster) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticCluster::sum(self : MathspecialellipticCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_cluster_mean(s : MathspecialellipticCluster) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticCluster::mean(self : MathspecialellipticCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_cluster_scale(s : MathspecialellipticCluster, f : Double) -> MathspecialellipticCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticCluster::scale(self : MathspecialellipticCluster, f : Double) -> MathspecialellipticCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cluster_add(a : MathspecialellipticCluster, b : MathspecialellipticCluster) -> MathspecialellipticCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticCluster::add(self : MathspecialellipticCluster, other : MathspecialellipticCluster) -> MathspecialellipticCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cluster_copy(s : MathspecialellipticCluster) -> MathspecialellipticCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticCluster::copy(self : MathspecialellipticCluster) -> MathspecialellipticCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cluster_fill(s : MathspecialellipticCluster, v : Double) -> MathspecialellipticCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticCluster::fill(self : MathspecialellipticCluster, v : Double) -> MathspecialellipticCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cluster_min(s : MathspecialellipticCluster) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticCluster::min(self : MathspecialellipticCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_cluster_max(s : MathspecialellipticCluster) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticCluster::max(self : MathspecialellipticCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_cluster_to_string(s : MathspecialellipticCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticCluster::to_string(self : MathspecialellipticCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticModel {
@@ -708,45 +708,45 @@ pub fn math_special_elliptic_model_make(size : Int) -> MathspecialellipticModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_model_len(s : MathspecialellipticModel) -> Int { s.size }
+pub fn MathspecialellipticModel::len(self : MathspecialellipticModel) -> Int { self.size }
 
-pub fn math_special_elliptic_model_get(s : MathspecialellipticModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticModel::get(self : MathspecialellipticModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_model_set(s : MathspecialellipticModel, i : Int, v : Double) -> MathspecialellipticModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticModel::set(self : MathspecialellipticModel, i : Int, v : Double) -> MathspecialellipticModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_model_sum(s : MathspecialellipticModel) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticModel::sum(self : MathspecialellipticModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_model_mean(s : MathspecialellipticModel) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticModel::mean(self : MathspecialellipticModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_model_scale(s : MathspecialellipticModel, f : Double) -> MathspecialellipticModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticModel::scale(self : MathspecialellipticModel, f : Double) -> MathspecialellipticModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_model_add(a : MathspecialellipticModel, b : MathspecialellipticModel) -> MathspecialellipticModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticModel::add(self : MathspecialellipticModel, other : MathspecialellipticModel) -> MathspecialellipticModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_model_copy(s : MathspecialellipticModel) -> MathspecialellipticModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticModel::copy(self : MathspecialellipticModel) -> MathspecialellipticModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_model_fill(s : MathspecialellipticModel, v : Double) -> MathspecialellipticModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticModel::fill(self : MathspecialellipticModel, v : Double) -> MathspecialellipticModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_model_min(s : MathspecialellipticModel) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticModel::min(self : MathspecialellipticModel) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_model_max(s : MathspecialellipticModel) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticModel::max(self : MathspecialellipticModel) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_model_to_string(s : MathspecialellipticModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticModel::to_string(self : MathspecialellipticModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticLayer {
@@ -759,45 +759,45 @@ pub fn math_special_elliptic_layer_make(size : Int) -> MathspecialellipticLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_layer_len(s : MathspecialellipticLayer) -> Int { s.size }
+pub fn MathspecialellipticLayer::len(self : MathspecialellipticLayer) -> Int { self.size }
 
-pub fn math_special_elliptic_layer_get(s : MathspecialellipticLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticLayer::get(self : MathspecialellipticLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_layer_set(s : MathspecialellipticLayer, i : Int, v : Double) -> MathspecialellipticLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticLayer::set(self : MathspecialellipticLayer, i : Int, v : Double) -> MathspecialellipticLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_layer_sum(s : MathspecialellipticLayer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticLayer::sum(self : MathspecialellipticLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_layer_mean(s : MathspecialellipticLayer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticLayer::mean(self : MathspecialellipticLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_layer_scale(s : MathspecialellipticLayer, f : Double) -> MathspecialellipticLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticLayer::scale(self : MathspecialellipticLayer, f : Double) -> MathspecialellipticLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_layer_add(a : MathspecialellipticLayer, b : MathspecialellipticLayer) -> MathspecialellipticLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticLayer::add(self : MathspecialellipticLayer, other : MathspecialellipticLayer) -> MathspecialellipticLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_layer_copy(s : MathspecialellipticLayer) -> MathspecialellipticLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticLayer::copy(self : MathspecialellipticLayer) -> MathspecialellipticLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_layer_fill(s : MathspecialellipticLayer, v : Double) -> MathspecialellipticLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticLayer::fill(self : MathspecialellipticLayer, v : Double) -> MathspecialellipticLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_layer_min(s : MathspecialellipticLayer) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticLayer::min(self : MathspecialellipticLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_layer_max(s : MathspecialellipticLayer) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticLayer::max(self : MathspecialellipticLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_layer_to_string(s : MathspecialellipticLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticLayer::to_string(self : MathspecialellipticLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticBuffer {
@@ -810,45 +810,45 @@ pub fn math_special_elliptic_buffer_make(size : Int) -> MathspecialellipticBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_buffer_len(s : MathspecialellipticBuffer) -> Int { s.size }
+pub fn MathspecialellipticBuffer::len(self : MathspecialellipticBuffer) -> Int { self.size }
 
-pub fn math_special_elliptic_buffer_get(s : MathspecialellipticBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticBuffer::get(self : MathspecialellipticBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_buffer_set(s : MathspecialellipticBuffer, i : Int, v : Double) -> MathspecialellipticBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticBuffer::set(self : MathspecialellipticBuffer, i : Int, v : Double) -> MathspecialellipticBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_buffer_sum(s : MathspecialellipticBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticBuffer::sum(self : MathspecialellipticBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_buffer_mean(s : MathspecialellipticBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticBuffer::mean(self : MathspecialellipticBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_buffer_scale(s : MathspecialellipticBuffer, f : Double) -> MathspecialellipticBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticBuffer::scale(self : MathspecialellipticBuffer, f : Double) -> MathspecialellipticBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_buffer_add(a : MathspecialellipticBuffer, b : MathspecialellipticBuffer) -> MathspecialellipticBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticBuffer::add(self : MathspecialellipticBuffer, other : MathspecialellipticBuffer) -> MathspecialellipticBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_buffer_copy(s : MathspecialellipticBuffer) -> MathspecialellipticBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticBuffer::copy(self : MathspecialellipticBuffer) -> MathspecialellipticBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_buffer_fill(s : MathspecialellipticBuffer, v : Double) -> MathspecialellipticBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticBuffer::fill(self : MathspecialellipticBuffer, v : Double) -> MathspecialellipticBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_buffer_min(s : MathspecialellipticBuffer) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticBuffer::min(self : MathspecialellipticBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_buffer_max(s : MathspecialellipticBuffer) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticBuffer::max(self : MathspecialellipticBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_buffer_to_string(s : MathspecialellipticBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticBuffer::to_string(self : MathspecialellipticBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticCursor {
@@ -861,45 +861,45 @@ pub fn math_special_elliptic_cursor_make(size : Int) -> MathspecialellipticCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_cursor_len(s : MathspecialellipticCursor) -> Int { s.size }
+pub fn MathspecialellipticCursor::len(self : MathspecialellipticCursor) -> Int { self.size }
 
-pub fn math_special_elliptic_cursor_get(s : MathspecialellipticCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticCursor::get(self : MathspecialellipticCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_cursor_set(s : MathspecialellipticCursor, i : Int, v : Double) -> MathspecialellipticCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticCursor::set(self : MathspecialellipticCursor, i : Int, v : Double) -> MathspecialellipticCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cursor_sum(s : MathspecialellipticCursor) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticCursor::sum(self : MathspecialellipticCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_cursor_mean(s : MathspecialellipticCursor) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticCursor::mean(self : MathspecialellipticCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_cursor_scale(s : MathspecialellipticCursor, f : Double) -> MathspecialellipticCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticCursor::scale(self : MathspecialellipticCursor, f : Double) -> MathspecialellipticCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cursor_add(a : MathspecialellipticCursor, b : MathspecialellipticCursor) -> MathspecialellipticCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticCursor::add(self : MathspecialellipticCursor, other : MathspecialellipticCursor) -> MathspecialellipticCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cursor_copy(s : MathspecialellipticCursor) -> MathspecialellipticCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticCursor::copy(self : MathspecialellipticCursor) -> MathspecialellipticCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cursor_fill(s : MathspecialellipticCursor, v : Double) -> MathspecialellipticCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticCursor::fill(self : MathspecialellipticCursor, v : Double) -> MathspecialellipticCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_cursor_min(s : MathspecialellipticCursor) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticCursor::min(self : MathspecialellipticCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_cursor_max(s : MathspecialellipticCursor) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticCursor::max(self : MathspecialellipticCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_cursor_to_string(s : MathspecialellipticCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticCursor::to_string(self : MathspecialellipticCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticView {
@@ -912,45 +912,45 @@ pub fn math_special_elliptic_view_make(size : Int) -> MathspecialellipticView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_view_len(s : MathspecialellipticView) -> Int { s.size }
+pub fn MathspecialellipticView::len(self : MathspecialellipticView) -> Int { self.size }
 
-pub fn math_special_elliptic_view_get(s : MathspecialellipticView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticView::get(self : MathspecialellipticView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_view_set(s : MathspecialellipticView, i : Int, v : Double) -> MathspecialellipticView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticView::set(self : MathspecialellipticView, i : Int, v : Double) -> MathspecialellipticView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_view_sum(s : MathspecialellipticView) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticView::sum(self : MathspecialellipticView) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_view_mean(s : MathspecialellipticView) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticView::mean(self : MathspecialellipticView) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_view_scale(s : MathspecialellipticView, f : Double) -> MathspecialellipticView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticView::scale(self : MathspecialellipticView, f : Double) -> MathspecialellipticView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_view_add(a : MathspecialellipticView, b : MathspecialellipticView) -> MathspecialellipticView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticView::add(self : MathspecialellipticView, other : MathspecialellipticView) -> MathspecialellipticView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_view_copy(s : MathspecialellipticView) -> MathspecialellipticView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticView::copy(self : MathspecialellipticView) -> MathspecialellipticView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_view_fill(s : MathspecialellipticView, v : Double) -> MathspecialellipticView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticView::fill(self : MathspecialellipticView, v : Double) -> MathspecialellipticView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_view_min(s : MathspecialellipticView) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticView::min(self : MathspecialellipticView) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_view_max(s : MathspecialellipticView) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticView::max(self : MathspecialellipticView) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_view_to_string(s : MathspecialellipticView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticView::to_string(self : MathspecialellipticView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticRange {
@@ -963,45 +963,45 @@ pub fn math_special_elliptic_range_make(size : Int) -> MathspecialellipticRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_range_len(s : MathspecialellipticRange) -> Int { s.size }
+pub fn MathspecialellipticRange::len(self : MathspecialellipticRange) -> Int { self.size }
 
-pub fn math_special_elliptic_range_get(s : MathspecialellipticRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticRange::get(self : MathspecialellipticRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_range_set(s : MathspecialellipticRange, i : Int, v : Double) -> MathspecialellipticRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticRange::set(self : MathspecialellipticRange, i : Int, v : Double) -> MathspecialellipticRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_range_sum(s : MathspecialellipticRange) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticRange::sum(self : MathspecialellipticRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_range_mean(s : MathspecialellipticRange) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticRange::mean(self : MathspecialellipticRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_range_scale(s : MathspecialellipticRange, f : Double) -> MathspecialellipticRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticRange::scale(self : MathspecialellipticRange, f : Double) -> MathspecialellipticRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_range_add(a : MathspecialellipticRange, b : MathspecialellipticRange) -> MathspecialellipticRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticRange::add(self : MathspecialellipticRange, other : MathspecialellipticRange) -> MathspecialellipticRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_range_copy(s : MathspecialellipticRange) -> MathspecialellipticRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticRange::copy(self : MathspecialellipticRange) -> MathspecialellipticRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_range_fill(s : MathspecialellipticRange, v : Double) -> MathspecialellipticRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticRange::fill(self : MathspecialellipticRange, v : Double) -> MathspecialellipticRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_range_min(s : MathspecialellipticRange) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticRange::min(self : MathspecialellipticRange) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_range_max(s : MathspecialellipticRange) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticRange::max(self : MathspecialellipticRange) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_range_to_string(s : MathspecialellipticRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticRange::to_string(self : MathspecialellipticRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathspecialellipticSlice {
@@ -1014,44 +1014,44 @@ pub fn math_special_elliptic_slice_make(size : Int) -> MathspecialellipticSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_special_elliptic_slice_len(s : MathspecialellipticSlice) -> Int { s.size }
+pub fn MathspecialellipticSlice::len(self : MathspecialellipticSlice) -> Int { self.size }
 
-pub fn math_special_elliptic_slice_get(s : MathspecialellipticSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathspecialellipticSlice::get(self : MathspecialellipticSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_special_elliptic_slice_set(s : MathspecialellipticSlice, i : Int, v : Double) -> MathspecialellipticSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathspecialellipticSlice::set(self : MathspecialellipticSlice, i : Int, v : Double) -> MathspecialellipticSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_slice_sum(s : MathspecialellipticSlice) -> Double { @_common.sum(s.data) }
+pub fn MathspecialellipticSlice::sum(self : MathspecialellipticSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_special_elliptic_slice_mean(s : MathspecialellipticSlice) -> Double { @_common.mean(s.data) }
+pub fn MathspecialellipticSlice::mean(self : MathspecialellipticSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_special_elliptic_slice_scale(s : MathspecialellipticSlice, f : Double) -> MathspecialellipticSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathspecialellipticSlice::scale(self : MathspecialellipticSlice, f : Double) -> MathspecialellipticSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_slice_add(a : MathspecialellipticSlice, b : MathspecialellipticSlice) -> MathspecialellipticSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathspecialellipticSlice::add(self : MathspecialellipticSlice, other : MathspecialellipticSlice) -> MathspecialellipticSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_special_elliptic_slice_copy(s : MathspecialellipticSlice) -> MathspecialellipticSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathspecialellipticSlice::copy(self : MathspecialellipticSlice) -> MathspecialellipticSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_slice_fill(s : MathspecialellipticSlice, v : Double) -> MathspecialellipticSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathspecialellipticSlice::fill(self : MathspecialellipticSlice, v : Double) -> MathspecialellipticSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_special_elliptic_slice_min(s : MathspecialellipticSlice) -> Double { @_common.min(s.data) }
+pub fn MathspecialellipticSlice::min(self : MathspecialellipticSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_special_elliptic_slice_max(s : MathspecialellipticSlice) -> Double { @_common.max(s.data) }
+pub fn MathspecialellipticSlice::max(self : MathspecialellipticSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_special_elliptic_slice_to_string(s : MathspecialellipticSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathspecialellipticSlice::to_string(self : MathspecialellipticSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

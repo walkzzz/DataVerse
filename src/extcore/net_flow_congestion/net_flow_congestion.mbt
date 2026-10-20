@@ -351,45 +351,45 @@ pub fn net_flow_congestion_frame_make(size : Int) -> NetflowcongestionFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_frame_len(s : NetflowcongestionFrame) -> Int { s.size }
+pub fn NetflowcongestionFrame::len(self : NetflowcongestionFrame) -> Int { self.size }
 
-pub fn net_flow_congestion_frame_get(s : NetflowcongestionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionFrame::get(self : NetflowcongestionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_frame_set(s : NetflowcongestionFrame, i : Int, v : Double) -> NetflowcongestionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionFrame::set(self : NetflowcongestionFrame, i : Int, v : Double) -> NetflowcongestionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_frame_sum(s : NetflowcongestionFrame) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionFrame::sum(self : NetflowcongestionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_frame_mean(s : NetflowcongestionFrame) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionFrame::mean(self : NetflowcongestionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_frame_scale(s : NetflowcongestionFrame, f : Double) -> NetflowcongestionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionFrame::scale(self : NetflowcongestionFrame, f : Double) -> NetflowcongestionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_frame_add(a : NetflowcongestionFrame, b : NetflowcongestionFrame) -> NetflowcongestionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionFrame::add(self : NetflowcongestionFrame, other : NetflowcongestionFrame) -> NetflowcongestionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_frame_copy(s : NetflowcongestionFrame) -> NetflowcongestionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionFrame::copy(self : NetflowcongestionFrame) -> NetflowcongestionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_frame_fill(s : NetflowcongestionFrame, v : Double) -> NetflowcongestionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionFrame::fill(self : NetflowcongestionFrame, v : Double) -> NetflowcongestionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_frame_min(s : NetflowcongestionFrame) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionFrame::min(self : NetflowcongestionFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_frame_max(s : NetflowcongestionFrame) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionFrame::max(self : NetflowcongestionFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_frame_to_string(s : NetflowcongestionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionFrame::to_string(self : NetflowcongestionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionTable {
@@ -402,45 +402,45 @@ pub fn net_flow_congestion_table_make(size : Int) -> NetflowcongestionTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_table_len(s : NetflowcongestionTable) -> Int { s.size }
+pub fn NetflowcongestionTable::len(self : NetflowcongestionTable) -> Int { self.size }
 
-pub fn net_flow_congestion_table_get(s : NetflowcongestionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionTable::get(self : NetflowcongestionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_table_set(s : NetflowcongestionTable, i : Int, v : Double) -> NetflowcongestionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionTable::set(self : NetflowcongestionTable, i : Int, v : Double) -> NetflowcongestionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_table_sum(s : NetflowcongestionTable) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionTable::sum(self : NetflowcongestionTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_table_mean(s : NetflowcongestionTable) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionTable::mean(self : NetflowcongestionTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_table_scale(s : NetflowcongestionTable, f : Double) -> NetflowcongestionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionTable::scale(self : NetflowcongestionTable, f : Double) -> NetflowcongestionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_table_add(a : NetflowcongestionTable, b : NetflowcongestionTable) -> NetflowcongestionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionTable::add(self : NetflowcongestionTable, other : NetflowcongestionTable) -> NetflowcongestionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_table_copy(s : NetflowcongestionTable) -> NetflowcongestionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionTable::copy(self : NetflowcongestionTable) -> NetflowcongestionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_table_fill(s : NetflowcongestionTable, v : Double) -> NetflowcongestionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionTable::fill(self : NetflowcongestionTable, v : Double) -> NetflowcongestionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_table_min(s : NetflowcongestionTable) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionTable::min(self : NetflowcongestionTable) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_table_max(s : NetflowcongestionTable) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionTable::max(self : NetflowcongestionTable) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_table_to_string(s : NetflowcongestionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionTable::to_string(self : NetflowcongestionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionGraphN {
@@ -453,45 +453,45 @@ pub fn net_flow_congestion_graphn_make(size : Int) -> NetflowcongestionGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_graphn_len(s : NetflowcongestionGraphN) -> Int { s.size }
+pub fn NetflowcongestionGraphN::len(self : NetflowcongestionGraphN) -> Int { self.size }
 
-pub fn net_flow_congestion_graphn_get(s : NetflowcongestionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionGraphN::get(self : NetflowcongestionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_graphn_set(s : NetflowcongestionGraphN, i : Int, v : Double) -> NetflowcongestionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionGraphN::set(self : NetflowcongestionGraphN, i : Int, v : Double) -> NetflowcongestionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_graphn_sum(s : NetflowcongestionGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionGraphN::sum(self : NetflowcongestionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_graphn_mean(s : NetflowcongestionGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionGraphN::mean(self : NetflowcongestionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_graphn_scale(s : NetflowcongestionGraphN, f : Double) -> NetflowcongestionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionGraphN::scale(self : NetflowcongestionGraphN, f : Double) -> NetflowcongestionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_graphn_add(a : NetflowcongestionGraphN, b : NetflowcongestionGraphN) -> NetflowcongestionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionGraphN::add(self : NetflowcongestionGraphN, other : NetflowcongestionGraphN) -> NetflowcongestionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_graphn_copy(s : NetflowcongestionGraphN) -> NetflowcongestionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionGraphN::copy(self : NetflowcongestionGraphN) -> NetflowcongestionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_graphn_fill(s : NetflowcongestionGraphN, v : Double) -> NetflowcongestionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionGraphN::fill(self : NetflowcongestionGraphN, v : Double) -> NetflowcongestionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_graphn_min(s : NetflowcongestionGraphN) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionGraphN::min(self : NetflowcongestionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_graphn_max(s : NetflowcongestionGraphN) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionGraphN::max(self : NetflowcongestionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_graphn_to_string(s : NetflowcongestionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionGraphN::to_string(self : NetflowcongestionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionNode {
@@ -504,45 +504,45 @@ pub fn net_flow_congestion_node_make(size : Int) -> NetflowcongestionNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_node_len(s : NetflowcongestionNode) -> Int { s.size }
+pub fn NetflowcongestionNode::len(self : NetflowcongestionNode) -> Int { self.size }
 
-pub fn net_flow_congestion_node_get(s : NetflowcongestionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionNode::get(self : NetflowcongestionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_node_set(s : NetflowcongestionNode, i : Int, v : Double) -> NetflowcongestionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionNode::set(self : NetflowcongestionNode, i : Int, v : Double) -> NetflowcongestionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_node_sum(s : NetflowcongestionNode) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionNode::sum(self : NetflowcongestionNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_node_mean(s : NetflowcongestionNode) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionNode::mean(self : NetflowcongestionNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_node_scale(s : NetflowcongestionNode, f : Double) -> NetflowcongestionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionNode::scale(self : NetflowcongestionNode, f : Double) -> NetflowcongestionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_node_add(a : NetflowcongestionNode, b : NetflowcongestionNode) -> NetflowcongestionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionNode::add(self : NetflowcongestionNode, other : NetflowcongestionNode) -> NetflowcongestionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_node_copy(s : NetflowcongestionNode) -> NetflowcongestionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionNode::copy(self : NetflowcongestionNode) -> NetflowcongestionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_node_fill(s : NetflowcongestionNode, v : Double) -> NetflowcongestionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionNode::fill(self : NetflowcongestionNode, v : Double) -> NetflowcongestionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_node_min(s : NetflowcongestionNode) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionNode::min(self : NetflowcongestionNode) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_node_max(s : NetflowcongestionNode) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionNode::max(self : NetflowcongestionNode) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_node_to_string(s : NetflowcongestionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionNode::to_string(self : NetflowcongestionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionEdge {
@@ -555,45 +555,45 @@ pub fn net_flow_congestion_edge_make(size : Int) -> NetflowcongestionEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_edge_len(s : NetflowcongestionEdge) -> Int { s.size }
+pub fn NetflowcongestionEdge::len(self : NetflowcongestionEdge) -> Int { self.size }
 
-pub fn net_flow_congestion_edge_get(s : NetflowcongestionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionEdge::get(self : NetflowcongestionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_edge_set(s : NetflowcongestionEdge, i : Int, v : Double) -> NetflowcongestionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionEdge::set(self : NetflowcongestionEdge, i : Int, v : Double) -> NetflowcongestionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_edge_sum(s : NetflowcongestionEdge) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionEdge::sum(self : NetflowcongestionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_edge_mean(s : NetflowcongestionEdge) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionEdge::mean(self : NetflowcongestionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_edge_scale(s : NetflowcongestionEdge, f : Double) -> NetflowcongestionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionEdge::scale(self : NetflowcongestionEdge, f : Double) -> NetflowcongestionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_edge_add(a : NetflowcongestionEdge, b : NetflowcongestionEdge) -> NetflowcongestionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionEdge::add(self : NetflowcongestionEdge, other : NetflowcongestionEdge) -> NetflowcongestionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_edge_copy(s : NetflowcongestionEdge) -> NetflowcongestionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionEdge::copy(self : NetflowcongestionEdge) -> NetflowcongestionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_edge_fill(s : NetflowcongestionEdge, v : Double) -> NetflowcongestionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionEdge::fill(self : NetflowcongestionEdge, v : Double) -> NetflowcongestionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_edge_min(s : NetflowcongestionEdge) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionEdge::min(self : NetflowcongestionEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_edge_max(s : NetflowcongestionEdge) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionEdge::max(self : NetflowcongestionEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_edge_to_string(s : NetflowcongestionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionEdge::to_string(self : NetflowcongestionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionPath {
@@ -606,45 +606,45 @@ pub fn net_flow_congestion_path_make(size : Int) -> NetflowcongestionPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_path_len(s : NetflowcongestionPath) -> Int { s.size }
+pub fn NetflowcongestionPath::len(self : NetflowcongestionPath) -> Int { self.size }
 
-pub fn net_flow_congestion_path_get(s : NetflowcongestionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionPath::get(self : NetflowcongestionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_path_set(s : NetflowcongestionPath, i : Int, v : Double) -> NetflowcongestionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionPath::set(self : NetflowcongestionPath, i : Int, v : Double) -> NetflowcongestionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_path_sum(s : NetflowcongestionPath) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionPath::sum(self : NetflowcongestionPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_path_mean(s : NetflowcongestionPath) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionPath::mean(self : NetflowcongestionPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_path_scale(s : NetflowcongestionPath, f : Double) -> NetflowcongestionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionPath::scale(self : NetflowcongestionPath, f : Double) -> NetflowcongestionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_path_add(a : NetflowcongestionPath, b : NetflowcongestionPath) -> NetflowcongestionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionPath::add(self : NetflowcongestionPath, other : NetflowcongestionPath) -> NetflowcongestionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_path_copy(s : NetflowcongestionPath) -> NetflowcongestionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionPath::copy(self : NetflowcongestionPath) -> NetflowcongestionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_path_fill(s : NetflowcongestionPath, v : Double) -> NetflowcongestionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionPath::fill(self : NetflowcongestionPath, v : Double) -> NetflowcongestionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_path_min(s : NetflowcongestionPath) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionPath::min(self : NetflowcongestionPath) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_path_max(s : NetflowcongestionPath) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionPath::max(self : NetflowcongestionPath) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_path_to_string(s : NetflowcongestionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionPath::to_string(self : NetflowcongestionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionCluster {
@@ -657,45 +657,45 @@ pub fn net_flow_congestion_cluster_make(size : Int) -> NetflowcongestionCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_cluster_len(s : NetflowcongestionCluster) -> Int { s.size }
+pub fn NetflowcongestionCluster::len(self : NetflowcongestionCluster) -> Int { self.size }
 
-pub fn net_flow_congestion_cluster_get(s : NetflowcongestionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionCluster::get(self : NetflowcongestionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_cluster_set(s : NetflowcongestionCluster, i : Int, v : Double) -> NetflowcongestionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionCluster::set(self : NetflowcongestionCluster, i : Int, v : Double) -> NetflowcongestionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cluster_sum(s : NetflowcongestionCluster) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionCluster::sum(self : NetflowcongestionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_cluster_mean(s : NetflowcongestionCluster) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionCluster::mean(self : NetflowcongestionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_cluster_scale(s : NetflowcongestionCluster, f : Double) -> NetflowcongestionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionCluster::scale(self : NetflowcongestionCluster, f : Double) -> NetflowcongestionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cluster_add(a : NetflowcongestionCluster, b : NetflowcongestionCluster) -> NetflowcongestionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionCluster::add(self : NetflowcongestionCluster, other : NetflowcongestionCluster) -> NetflowcongestionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cluster_copy(s : NetflowcongestionCluster) -> NetflowcongestionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionCluster::copy(self : NetflowcongestionCluster) -> NetflowcongestionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cluster_fill(s : NetflowcongestionCluster, v : Double) -> NetflowcongestionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionCluster::fill(self : NetflowcongestionCluster, v : Double) -> NetflowcongestionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cluster_min(s : NetflowcongestionCluster) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionCluster::min(self : NetflowcongestionCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_cluster_max(s : NetflowcongestionCluster) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionCluster::max(self : NetflowcongestionCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_cluster_to_string(s : NetflowcongestionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionCluster::to_string(self : NetflowcongestionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionModel {
@@ -708,45 +708,45 @@ pub fn net_flow_congestion_model_make(size : Int) -> NetflowcongestionModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_model_len(s : NetflowcongestionModel) -> Int { s.size }
+pub fn NetflowcongestionModel::len(self : NetflowcongestionModel) -> Int { self.size }
 
-pub fn net_flow_congestion_model_get(s : NetflowcongestionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionModel::get(self : NetflowcongestionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_model_set(s : NetflowcongestionModel, i : Int, v : Double) -> NetflowcongestionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionModel::set(self : NetflowcongestionModel, i : Int, v : Double) -> NetflowcongestionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_model_sum(s : NetflowcongestionModel) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionModel::sum(self : NetflowcongestionModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_model_mean(s : NetflowcongestionModel) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionModel::mean(self : NetflowcongestionModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_model_scale(s : NetflowcongestionModel, f : Double) -> NetflowcongestionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionModel::scale(self : NetflowcongestionModel, f : Double) -> NetflowcongestionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_model_add(a : NetflowcongestionModel, b : NetflowcongestionModel) -> NetflowcongestionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionModel::add(self : NetflowcongestionModel, other : NetflowcongestionModel) -> NetflowcongestionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_model_copy(s : NetflowcongestionModel) -> NetflowcongestionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionModel::copy(self : NetflowcongestionModel) -> NetflowcongestionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_model_fill(s : NetflowcongestionModel, v : Double) -> NetflowcongestionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionModel::fill(self : NetflowcongestionModel, v : Double) -> NetflowcongestionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_model_min(s : NetflowcongestionModel) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionModel::min(self : NetflowcongestionModel) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_model_max(s : NetflowcongestionModel) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionModel::max(self : NetflowcongestionModel) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_model_to_string(s : NetflowcongestionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionModel::to_string(self : NetflowcongestionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionLayer {
@@ -759,45 +759,45 @@ pub fn net_flow_congestion_layer_make(size : Int) -> NetflowcongestionLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_layer_len(s : NetflowcongestionLayer) -> Int { s.size }
+pub fn NetflowcongestionLayer::len(self : NetflowcongestionLayer) -> Int { self.size }
 
-pub fn net_flow_congestion_layer_get(s : NetflowcongestionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionLayer::get(self : NetflowcongestionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_layer_set(s : NetflowcongestionLayer, i : Int, v : Double) -> NetflowcongestionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionLayer::set(self : NetflowcongestionLayer, i : Int, v : Double) -> NetflowcongestionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_layer_sum(s : NetflowcongestionLayer) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionLayer::sum(self : NetflowcongestionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_layer_mean(s : NetflowcongestionLayer) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionLayer::mean(self : NetflowcongestionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_layer_scale(s : NetflowcongestionLayer, f : Double) -> NetflowcongestionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionLayer::scale(self : NetflowcongestionLayer, f : Double) -> NetflowcongestionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_layer_add(a : NetflowcongestionLayer, b : NetflowcongestionLayer) -> NetflowcongestionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionLayer::add(self : NetflowcongestionLayer, other : NetflowcongestionLayer) -> NetflowcongestionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_layer_copy(s : NetflowcongestionLayer) -> NetflowcongestionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionLayer::copy(self : NetflowcongestionLayer) -> NetflowcongestionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_layer_fill(s : NetflowcongestionLayer, v : Double) -> NetflowcongestionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionLayer::fill(self : NetflowcongestionLayer, v : Double) -> NetflowcongestionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_layer_min(s : NetflowcongestionLayer) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionLayer::min(self : NetflowcongestionLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_layer_max(s : NetflowcongestionLayer) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionLayer::max(self : NetflowcongestionLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_layer_to_string(s : NetflowcongestionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionLayer::to_string(self : NetflowcongestionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionBuffer {
@@ -810,45 +810,45 @@ pub fn net_flow_congestion_buffer_make(size : Int) -> NetflowcongestionBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_buffer_len(s : NetflowcongestionBuffer) -> Int { s.size }
+pub fn NetflowcongestionBuffer::len(self : NetflowcongestionBuffer) -> Int { self.size }
 
-pub fn net_flow_congestion_buffer_get(s : NetflowcongestionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionBuffer::get(self : NetflowcongestionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_buffer_set(s : NetflowcongestionBuffer, i : Int, v : Double) -> NetflowcongestionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionBuffer::set(self : NetflowcongestionBuffer, i : Int, v : Double) -> NetflowcongestionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_buffer_sum(s : NetflowcongestionBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionBuffer::sum(self : NetflowcongestionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_buffer_mean(s : NetflowcongestionBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionBuffer::mean(self : NetflowcongestionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_buffer_scale(s : NetflowcongestionBuffer, f : Double) -> NetflowcongestionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionBuffer::scale(self : NetflowcongestionBuffer, f : Double) -> NetflowcongestionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_buffer_add(a : NetflowcongestionBuffer, b : NetflowcongestionBuffer) -> NetflowcongestionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionBuffer::add(self : NetflowcongestionBuffer, other : NetflowcongestionBuffer) -> NetflowcongestionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_buffer_copy(s : NetflowcongestionBuffer) -> NetflowcongestionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionBuffer::copy(self : NetflowcongestionBuffer) -> NetflowcongestionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_buffer_fill(s : NetflowcongestionBuffer, v : Double) -> NetflowcongestionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionBuffer::fill(self : NetflowcongestionBuffer, v : Double) -> NetflowcongestionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_buffer_min(s : NetflowcongestionBuffer) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionBuffer::min(self : NetflowcongestionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_buffer_max(s : NetflowcongestionBuffer) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionBuffer::max(self : NetflowcongestionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_buffer_to_string(s : NetflowcongestionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionBuffer::to_string(self : NetflowcongestionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionCursor {
@@ -861,45 +861,45 @@ pub fn net_flow_congestion_cursor_make(size : Int) -> NetflowcongestionCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_cursor_len(s : NetflowcongestionCursor) -> Int { s.size }
+pub fn NetflowcongestionCursor::len(self : NetflowcongestionCursor) -> Int { self.size }
 
-pub fn net_flow_congestion_cursor_get(s : NetflowcongestionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionCursor::get(self : NetflowcongestionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_cursor_set(s : NetflowcongestionCursor, i : Int, v : Double) -> NetflowcongestionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionCursor::set(self : NetflowcongestionCursor, i : Int, v : Double) -> NetflowcongestionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cursor_sum(s : NetflowcongestionCursor) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionCursor::sum(self : NetflowcongestionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_cursor_mean(s : NetflowcongestionCursor) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionCursor::mean(self : NetflowcongestionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_cursor_scale(s : NetflowcongestionCursor, f : Double) -> NetflowcongestionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionCursor::scale(self : NetflowcongestionCursor, f : Double) -> NetflowcongestionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cursor_add(a : NetflowcongestionCursor, b : NetflowcongestionCursor) -> NetflowcongestionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionCursor::add(self : NetflowcongestionCursor, other : NetflowcongestionCursor) -> NetflowcongestionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cursor_copy(s : NetflowcongestionCursor) -> NetflowcongestionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionCursor::copy(self : NetflowcongestionCursor) -> NetflowcongestionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cursor_fill(s : NetflowcongestionCursor, v : Double) -> NetflowcongestionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionCursor::fill(self : NetflowcongestionCursor, v : Double) -> NetflowcongestionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_cursor_min(s : NetflowcongestionCursor) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionCursor::min(self : NetflowcongestionCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_cursor_max(s : NetflowcongestionCursor) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionCursor::max(self : NetflowcongestionCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_cursor_to_string(s : NetflowcongestionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionCursor::to_string(self : NetflowcongestionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionView {
@@ -912,45 +912,45 @@ pub fn net_flow_congestion_view_make(size : Int) -> NetflowcongestionView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_view_len(s : NetflowcongestionView) -> Int { s.size }
+pub fn NetflowcongestionView::len(self : NetflowcongestionView) -> Int { self.size }
 
-pub fn net_flow_congestion_view_get(s : NetflowcongestionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionView::get(self : NetflowcongestionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_view_set(s : NetflowcongestionView, i : Int, v : Double) -> NetflowcongestionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionView::set(self : NetflowcongestionView, i : Int, v : Double) -> NetflowcongestionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_view_sum(s : NetflowcongestionView) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionView::sum(self : NetflowcongestionView) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_view_mean(s : NetflowcongestionView) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionView::mean(self : NetflowcongestionView) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_view_scale(s : NetflowcongestionView, f : Double) -> NetflowcongestionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionView::scale(self : NetflowcongestionView, f : Double) -> NetflowcongestionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_view_add(a : NetflowcongestionView, b : NetflowcongestionView) -> NetflowcongestionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionView::add(self : NetflowcongestionView, other : NetflowcongestionView) -> NetflowcongestionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_view_copy(s : NetflowcongestionView) -> NetflowcongestionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionView::copy(self : NetflowcongestionView) -> NetflowcongestionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_view_fill(s : NetflowcongestionView, v : Double) -> NetflowcongestionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionView::fill(self : NetflowcongestionView, v : Double) -> NetflowcongestionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_view_min(s : NetflowcongestionView) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionView::min(self : NetflowcongestionView) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_view_max(s : NetflowcongestionView) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionView::max(self : NetflowcongestionView) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_view_to_string(s : NetflowcongestionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionView::to_string(self : NetflowcongestionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionRange {
@@ -963,45 +963,45 @@ pub fn net_flow_congestion_range_make(size : Int) -> NetflowcongestionRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_range_len(s : NetflowcongestionRange) -> Int { s.size }
+pub fn NetflowcongestionRange::len(self : NetflowcongestionRange) -> Int { self.size }
 
-pub fn net_flow_congestion_range_get(s : NetflowcongestionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionRange::get(self : NetflowcongestionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_range_set(s : NetflowcongestionRange, i : Int, v : Double) -> NetflowcongestionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionRange::set(self : NetflowcongestionRange, i : Int, v : Double) -> NetflowcongestionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_range_sum(s : NetflowcongestionRange) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionRange::sum(self : NetflowcongestionRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_range_mean(s : NetflowcongestionRange) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionRange::mean(self : NetflowcongestionRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_range_scale(s : NetflowcongestionRange, f : Double) -> NetflowcongestionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionRange::scale(self : NetflowcongestionRange, f : Double) -> NetflowcongestionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_range_add(a : NetflowcongestionRange, b : NetflowcongestionRange) -> NetflowcongestionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionRange::add(self : NetflowcongestionRange, other : NetflowcongestionRange) -> NetflowcongestionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_range_copy(s : NetflowcongestionRange) -> NetflowcongestionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionRange::copy(self : NetflowcongestionRange) -> NetflowcongestionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_range_fill(s : NetflowcongestionRange, v : Double) -> NetflowcongestionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionRange::fill(self : NetflowcongestionRange, v : Double) -> NetflowcongestionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_range_min(s : NetflowcongestionRange) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionRange::min(self : NetflowcongestionRange) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_range_max(s : NetflowcongestionRange) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionRange::max(self : NetflowcongestionRange) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_range_to_string(s : NetflowcongestionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionRange::to_string(self : NetflowcongestionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowcongestionSlice {
@@ -1014,44 +1014,44 @@ pub fn net_flow_congestion_slice_make(size : Int) -> NetflowcongestionSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_congestion_slice_len(s : NetflowcongestionSlice) -> Int { s.size }
+pub fn NetflowcongestionSlice::len(self : NetflowcongestionSlice) -> Int { self.size }
 
-pub fn net_flow_congestion_slice_get(s : NetflowcongestionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowcongestionSlice::get(self : NetflowcongestionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_congestion_slice_set(s : NetflowcongestionSlice, i : Int, v : Double) -> NetflowcongestionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowcongestionSlice::set(self : NetflowcongestionSlice, i : Int, v : Double) -> NetflowcongestionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_slice_sum(s : NetflowcongestionSlice) -> Double { @_common.sum(s.data) }
+pub fn NetflowcongestionSlice::sum(self : NetflowcongestionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_congestion_slice_mean(s : NetflowcongestionSlice) -> Double { @_common.mean(s.data) }
+pub fn NetflowcongestionSlice::mean(self : NetflowcongestionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_congestion_slice_scale(s : NetflowcongestionSlice, f : Double) -> NetflowcongestionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowcongestionSlice::scale(self : NetflowcongestionSlice, f : Double) -> NetflowcongestionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_slice_add(a : NetflowcongestionSlice, b : NetflowcongestionSlice) -> NetflowcongestionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowcongestionSlice::add(self : NetflowcongestionSlice, other : NetflowcongestionSlice) -> NetflowcongestionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_congestion_slice_copy(s : NetflowcongestionSlice) -> NetflowcongestionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowcongestionSlice::copy(self : NetflowcongestionSlice) -> NetflowcongestionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_slice_fill(s : NetflowcongestionSlice, v : Double) -> NetflowcongestionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowcongestionSlice::fill(self : NetflowcongestionSlice, v : Double) -> NetflowcongestionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_congestion_slice_min(s : NetflowcongestionSlice) -> Double { @_common.min(s.data) }
+pub fn NetflowcongestionSlice::min(self : NetflowcongestionSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_congestion_slice_max(s : NetflowcongestionSlice) -> Double { @_common.max(s.data) }
+pub fn NetflowcongestionSlice::max(self : NetflowcongestionSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_congestion_slice_to_string(s : NetflowcongestionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowcongestionSlice::to_string(self : NetflowcongestionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

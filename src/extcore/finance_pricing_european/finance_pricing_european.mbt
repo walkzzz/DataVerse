@@ -351,45 +351,45 @@ pub fn finance_pricing_european_frame_make(size : Int) -> Financepricingeuropean
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_frame_len(s : FinancepricingeuropeanFrame) -> Int { s.size }
+pub fn FinancepricingeuropeanFrame::len(self : FinancepricingeuropeanFrame) -> Int { self.size }
 
-pub fn finance_pricing_european_frame_get(s : FinancepricingeuropeanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanFrame::get(self : FinancepricingeuropeanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_frame_set(s : FinancepricingeuropeanFrame, i : Int, v : Double) -> FinancepricingeuropeanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanFrame::set(self : FinancepricingeuropeanFrame, i : Int, v : Double) -> FinancepricingeuropeanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_frame_sum(s : FinancepricingeuropeanFrame) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanFrame::sum(self : FinancepricingeuropeanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_frame_mean(s : FinancepricingeuropeanFrame) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanFrame::mean(self : FinancepricingeuropeanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_frame_scale(s : FinancepricingeuropeanFrame, f : Double) -> FinancepricingeuropeanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanFrame::scale(self : FinancepricingeuropeanFrame, f : Double) -> FinancepricingeuropeanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_frame_add(a : FinancepricingeuropeanFrame, b : FinancepricingeuropeanFrame) -> FinancepricingeuropeanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanFrame::add(self : FinancepricingeuropeanFrame, other : FinancepricingeuropeanFrame) -> FinancepricingeuropeanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_frame_copy(s : FinancepricingeuropeanFrame) -> FinancepricingeuropeanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanFrame::copy(self : FinancepricingeuropeanFrame) -> FinancepricingeuropeanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_frame_fill(s : FinancepricingeuropeanFrame, v : Double) -> FinancepricingeuropeanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanFrame::fill(self : FinancepricingeuropeanFrame, v : Double) -> FinancepricingeuropeanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_frame_min(s : FinancepricingeuropeanFrame) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanFrame::min(self : FinancepricingeuropeanFrame) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_frame_max(s : FinancepricingeuropeanFrame) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanFrame::max(self : FinancepricingeuropeanFrame) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_frame_to_string(s : FinancepricingeuropeanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanFrame::to_string(self : FinancepricingeuropeanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanTable {
@@ -402,45 +402,45 @@ pub fn finance_pricing_european_table_make(size : Int) -> Financepricingeuropean
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_table_len(s : FinancepricingeuropeanTable) -> Int { s.size }
+pub fn FinancepricingeuropeanTable::len(self : FinancepricingeuropeanTable) -> Int { self.size }
 
-pub fn finance_pricing_european_table_get(s : FinancepricingeuropeanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanTable::get(self : FinancepricingeuropeanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_table_set(s : FinancepricingeuropeanTable, i : Int, v : Double) -> FinancepricingeuropeanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanTable::set(self : FinancepricingeuropeanTable, i : Int, v : Double) -> FinancepricingeuropeanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_table_sum(s : FinancepricingeuropeanTable) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanTable::sum(self : FinancepricingeuropeanTable) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_table_mean(s : FinancepricingeuropeanTable) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanTable::mean(self : FinancepricingeuropeanTable) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_table_scale(s : FinancepricingeuropeanTable, f : Double) -> FinancepricingeuropeanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanTable::scale(self : FinancepricingeuropeanTable, f : Double) -> FinancepricingeuropeanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_table_add(a : FinancepricingeuropeanTable, b : FinancepricingeuropeanTable) -> FinancepricingeuropeanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanTable::add(self : FinancepricingeuropeanTable, other : FinancepricingeuropeanTable) -> FinancepricingeuropeanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_table_copy(s : FinancepricingeuropeanTable) -> FinancepricingeuropeanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanTable::copy(self : FinancepricingeuropeanTable) -> FinancepricingeuropeanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_table_fill(s : FinancepricingeuropeanTable, v : Double) -> FinancepricingeuropeanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanTable::fill(self : FinancepricingeuropeanTable, v : Double) -> FinancepricingeuropeanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_table_min(s : FinancepricingeuropeanTable) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanTable::min(self : FinancepricingeuropeanTable) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_table_max(s : FinancepricingeuropeanTable) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanTable::max(self : FinancepricingeuropeanTable) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_table_to_string(s : FinancepricingeuropeanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanTable::to_string(self : FinancepricingeuropeanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanGraphN {
@@ -453,45 +453,45 @@ pub fn finance_pricing_european_graphn_make(size : Int) -> Financepricingeuropea
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_graphn_len(s : FinancepricingeuropeanGraphN) -> Int { s.size }
+pub fn FinancepricingeuropeanGraphN::len(self : FinancepricingeuropeanGraphN) -> Int { self.size }
 
-pub fn finance_pricing_european_graphn_get(s : FinancepricingeuropeanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanGraphN::get(self : FinancepricingeuropeanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_graphn_set(s : FinancepricingeuropeanGraphN, i : Int, v : Double) -> FinancepricingeuropeanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanGraphN::set(self : FinancepricingeuropeanGraphN, i : Int, v : Double) -> FinancepricingeuropeanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_graphn_sum(s : FinancepricingeuropeanGraphN) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanGraphN::sum(self : FinancepricingeuropeanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_graphn_mean(s : FinancepricingeuropeanGraphN) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanGraphN::mean(self : FinancepricingeuropeanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_graphn_scale(s : FinancepricingeuropeanGraphN, f : Double) -> FinancepricingeuropeanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanGraphN::scale(self : FinancepricingeuropeanGraphN, f : Double) -> FinancepricingeuropeanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_graphn_add(a : FinancepricingeuropeanGraphN, b : FinancepricingeuropeanGraphN) -> FinancepricingeuropeanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanGraphN::add(self : FinancepricingeuropeanGraphN, other : FinancepricingeuropeanGraphN) -> FinancepricingeuropeanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_graphn_copy(s : FinancepricingeuropeanGraphN) -> FinancepricingeuropeanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanGraphN::copy(self : FinancepricingeuropeanGraphN) -> FinancepricingeuropeanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_graphn_fill(s : FinancepricingeuropeanGraphN, v : Double) -> FinancepricingeuropeanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanGraphN::fill(self : FinancepricingeuropeanGraphN, v : Double) -> FinancepricingeuropeanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_graphn_min(s : FinancepricingeuropeanGraphN) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanGraphN::min(self : FinancepricingeuropeanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_graphn_max(s : FinancepricingeuropeanGraphN) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanGraphN::max(self : FinancepricingeuropeanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_graphn_to_string(s : FinancepricingeuropeanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanGraphN::to_string(self : FinancepricingeuropeanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanNode {
@@ -504,45 +504,45 @@ pub fn finance_pricing_european_node_make(size : Int) -> FinancepricingeuropeanN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_node_len(s : FinancepricingeuropeanNode) -> Int { s.size }
+pub fn FinancepricingeuropeanNode::len(self : FinancepricingeuropeanNode) -> Int { self.size }
 
-pub fn finance_pricing_european_node_get(s : FinancepricingeuropeanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanNode::get(self : FinancepricingeuropeanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_node_set(s : FinancepricingeuropeanNode, i : Int, v : Double) -> FinancepricingeuropeanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanNode::set(self : FinancepricingeuropeanNode, i : Int, v : Double) -> FinancepricingeuropeanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_node_sum(s : FinancepricingeuropeanNode) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanNode::sum(self : FinancepricingeuropeanNode) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_node_mean(s : FinancepricingeuropeanNode) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanNode::mean(self : FinancepricingeuropeanNode) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_node_scale(s : FinancepricingeuropeanNode, f : Double) -> FinancepricingeuropeanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanNode::scale(self : FinancepricingeuropeanNode, f : Double) -> FinancepricingeuropeanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_node_add(a : FinancepricingeuropeanNode, b : FinancepricingeuropeanNode) -> FinancepricingeuropeanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanNode::add(self : FinancepricingeuropeanNode, other : FinancepricingeuropeanNode) -> FinancepricingeuropeanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_node_copy(s : FinancepricingeuropeanNode) -> FinancepricingeuropeanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanNode::copy(self : FinancepricingeuropeanNode) -> FinancepricingeuropeanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_node_fill(s : FinancepricingeuropeanNode, v : Double) -> FinancepricingeuropeanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanNode::fill(self : FinancepricingeuropeanNode, v : Double) -> FinancepricingeuropeanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_node_min(s : FinancepricingeuropeanNode) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanNode::min(self : FinancepricingeuropeanNode) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_node_max(s : FinancepricingeuropeanNode) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanNode::max(self : FinancepricingeuropeanNode) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_node_to_string(s : FinancepricingeuropeanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanNode::to_string(self : FinancepricingeuropeanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanEdge {
@@ -555,45 +555,45 @@ pub fn finance_pricing_european_edge_make(size : Int) -> FinancepricingeuropeanE
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_edge_len(s : FinancepricingeuropeanEdge) -> Int { s.size }
+pub fn FinancepricingeuropeanEdge::len(self : FinancepricingeuropeanEdge) -> Int { self.size }
 
-pub fn finance_pricing_european_edge_get(s : FinancepricingeuropeanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanEdge::get(self : FinancepricingeuropeanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_edge_set(s : FinancepricingeuropeanEdge, i : Int, v : Double) -> FinancepricingeuropeanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanEdge::set(self : FinancepricingeuropeanEdge, i : Int, v : Double) -> FinancepricingeuropeanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_edge_sum(s : FinancepricingeuropeanEdge) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanEdge::sum(self : FinancepricingeuropeanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_edge_mean(s : FinancepricingeuropeanEdge) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanEdge::mean(self : FinancepricingeuropeanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_edge_scale(s : FinancepricingeuropeanEdge, f : Double) -> FinancepricingeuropeanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanEdge::scale(self : FinancepricingeuropeanEdge, f : Double) -> FinancepricingeuropeanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_edge_add(a : FinancepricingeuropeanEdge, b : FinancepricingeuropeanEdge) -> FinancepricingeuropeanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanEdge::add(self : FinancepricingeuropeanEdge, other : FinancepricingeuropeanEdge) -> FinancepricingeuropeanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_edge_copy(s : FinancepricingeuropeanEdge) -> FinancepricingeuropeanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanEdge::copy(self : FinancepricingeuropeanEdge) -> FinancepricingeuropeanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_edge_fill(s : FinancepricingeuropeanEdge, v : Double) -> FinancepricingeuropeanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanEdge::fill(self : FinancepricingeuropeanEdge, v : Double) -> FinancepricingeuropeanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_edge_min(s : FinancepricingeuropeanEdge) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanEdge::min(self : FinancepricingeuropeanEdge) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_edge_max(s : FinancepricingeuropeanEdge) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanEdge::max(self : FinancepricingeuropeanEdge) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_edge_to_string(s : FinancepricingeuropeanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanEdge::to_string(self : FinancepricingeuropeanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanPath {
@@ -606,45 +606,45 @@ pub fn finance_pricing_european_path_make(size : Int) -> FinancepricingeuropeanP
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_path_len(s : FinancepricingeuropeanPath) -> Int { s.size }
+pub fn FinancepricingeuropeanPath::len(self : FinancepricingeuropeanPath) -> Int { self.size }
 
-pub fn finance_pricing_european_path_get(s : FinancepricingeuropeanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanPath::get(self : FinancepricingeuropeanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_path_set(s : FinancepricingeuropeanPath, i : Int, v : Double) -> FinancepricingeuropeanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanPath::set(self : FinancepricingeuropeanPath, i : Int, v : Double) -> FinancepricingeuropeanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_path_sum(s : FinancepricingeuropeanPath) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanPath::sum(self : FinancepricingeuropeanPath) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_path_mean(s : FinancepricingeuropeanPath) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanPath::mean(self : FinancepricingeuropeanPath) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_path_scale(s : FinancepricingeuropeanPath, f : Double) -> FinancepricingeuropeanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanPath::scale(self : FinancepricingeuropeanPath, f : Double) -> FinancepricingeuropeanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_path_add(a : FinancepricingeuropeanPath, b : FinancepricingeuropeanPath) -> FinancepricingeuropeanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanPath::add(self : FinancepricingeuropeanPath, other : FinancepricingeuropeanPath) -> FinancepricingeuropeanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_path_copy(s : FinancepricingeuropeanPath) -> FinancepricingeuropeanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanPath::copy(self : FinancepricingeuropeanPath) -> FinancepricingeuropeanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_path_fill(s : FinancepricingeuropeanPath, v : Double) -> FinancepricingeuropeanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanPath::fill(self : FinancepricingeuropeanPath, v : Double) -> FinancepricingeuropeanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_path_min(s : FinancepricingeuropeanPath) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanPath::min(self : FinancepricingeuropeanPath) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_path_max(s : FinancepricingeuropeanPath) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanPath::max(self : FinancepricingeuropeanPath) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_path_to_string(s : FinancepricingeuropeanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanPath::to_string(self : FinancepricingeuropeanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanCluster {
@@ -657,45 +657,45 @@ pub fn finance_pricing_european_cluster_make(size : Int) -> Financepricingeurope
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_cluster_len(s : FinancepricingeuropeanCluster) -> Int { s.size }
+pub fn FinancepricingeuropeanCluster::len(self : FinancepricingeuropeanCluster) -> Int { self.size }
 
-pub fn finance_pricing_european_cluster_get(s : FinancepricingeuropeanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanCluster::get(self : FinancepricingeuropeanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_cluster_set(s : FinancepricingeuropeanCluster, i : Int, v : Double) -> FinancepricingeuropeanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCluster::set(self : FinancepricingeuropeanCluster, i : Int, v : Double) -> FinancepricingeuropeanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cluster_sum(s : FinancepricingeuropeanCluster) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanCluster::sum(self : FinancepricingeuropeanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_cluster_mean(s : FinancepricingeuropeanCluster) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanCluster::mean(self : FinancepricingeuropeanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_cluster_scale(s : FinancepricingeuropeanCluster, f : Double) -> FinancepricingeuropeanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCluster::scale(self : FinancepricingeuropeanCluster, f : Double) -> FinancepricingeuropeanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cluster_add(a : FinancepricingeuropeanCluster, b : FinancepricingeuropeanCluster) -> FinancepricingeuropeanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanCluster::add(self : FinancepricingeuropeanCluster, other : FinancepricingeuropeanCluster) -> FinancepricingeuropeanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cluster_copy(s : FinancepricingeuropeanCluster) -> FinancepricingeuropeanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCluster::copy(self : FinancepricingeuropeanCluster) -> FinancepricingeuropeanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cluster_fill(s : FinancepricingeuropeanCluster, v : Double) -> FinancepricingeuropeanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCluster::fill(self : FinancepricingeuropeanCluster, v : Double) -> FinancepricingeuropeanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cluster_min(s : FinancepricingeuropeanCluster) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanCluster::min(self : FinancepricingeuropeanCluster) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_cluster_max(s : FinancepricingeuropeanCluster) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanCluster::max(self : FinancepricingeuropeanCluster) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_cluster_to_string(s : FinancepricingeuropeanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanCluster::to_string(self : FinancepricingeuropeanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanModel {
@@ -708,45 +708,45 @@ pub fn finance_pricing_european_model_make(size : Int) -> Financepricingeuropean
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_model_len(s : FinancepricingeuropeanModel) -> Int { s.size }
+pub fn FinancepricingeuropeanModel::len(self : FinancepricingeuropeanModel) -> Int { self.size }
 
-pub fn finance_pricing_european_model_get(s : FinancepricingeuropeanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanModel::get(self : FinancepricingeuropeanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_model_set(s : FinancepricingeuropeanModel, i : Int, v : Double) -> FinancepricingeuropeanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanModel::set(self : FinancepricingeuropeanModel, i : Int, v : Double) -> FinancepricingeuropeanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_model_sum(s : FinancepricingeuropeanModel) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanModel::sum(self : FinancepricingeuropeanModel) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_model_mean(s : FinancepricingeuropeanModel) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanModel::mean(self : FinancepricingeuropeanModel) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_model_scale(s : FinancepricingeuropeanModel, f : Double) -> FinancepricingeuropeanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanModel::scale(self : FinancepricingeuropeanModel, f : Double) -> FinancepricingeuropeanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_model_add(a : FinancepricingeuropeanModel, b : FinancepricingeuropeanModel) -> FinancepricingeuropeanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanModel::add(self : FinancepricingeuropeanModel, other : FinancepricingeuropeanModel) -> FinancepricingeuropeanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_model_copy(s : FinancepricingeuropeanModel) -> FinancepricingeuropeanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanModel::copy(self : FinancepricingeuropeanModel) -> FinancepricingeuropeanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_model_fill(s : FinancepricingeuropeanModel, v : Double) -> FinancepricingeuropeanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanModel::fill(self : FinancepricingeuropeanModel, v : Double) -> FinancepricingeuropeanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_model_min(s : FinancepricingeuropeanModel) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanModel::min(self : FinancepricingeuropeanModel) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_model_max(s : FinancepricingeuropeanModel) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanModel::max(self : FinancepricingeuropeanModel) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_model_to_string(s : FinancepricingeuropeanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanModel::to_string(self : FinancepricingeuropeanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanLayer {
@@ -759,45 +759,45 @@ pub fn finance_pricing_european_layer_make(size : Int) -> Financepricingeuropean
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_layer_len(s : FinancepricingeuropeanLayer) -> Int { s.size }
+pub fn FinancepricingeuropeanLayer::len(self : FinancepricingeuropeanLayer) -> Int { self.size }
 
-pub fn finance_pricing_european_layer_get(s : FinancepricingeuropeanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanLayer::get(self : FinancepricingeuropeanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_layer_set(s : FinancepricingeuropeanLayer, i : Int, v : Double) -> FinancepricingeuropeanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanLayer::set(self : FinancepricingeuropeanLayer, i : Int, v : Double) -> FinancepricingeuropeanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_layer_sum(s : FinancepricingeuropeanLayer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanLayer::sum(self : FinancepricingeuropeanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_layer_mean(s : FinancepricingeuropeanLayer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanLayer::mean(self : FinancepricingeuropeanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_layer_scale(s : FinancepricingeuropeanLayer, f : Double) -> FinancepricingeuropeanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanLayer::scale(self : FinancepricingeuropeanLayer, f : Double) -> FinancepricingeuropeanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_layer_add(a : FinancepricingeuropeanLayer, b : FinancepricingeuropeanLayer) -> FinancepricingeuropeanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanLayer::add(self : FinancepricingeuropeanLayer, other : FinancepricingeuropeanLayer) -> FinancepricingeuropeanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_layer_copy(s : FinancepricingeuropeanLayer) -> FinancepricingeuropeanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanLayer::copy(self : FinancepricingeuropeanLayer) -> FinancepricingeuropeanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_layer_fill(s : FinancepricingeuropeanLayer, v : Double) -> FinancepricingeuropeanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanLayer::fill(self : FinancepricingeuropeanLayer, v : Double) -> FinancepricingeuropeanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_layer_min(s : FinancepricingeuropeanLayer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanLayer::min(self : FinancepricingeuropeanLayer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_layer_max(s : FinancepricingeuropeanLayer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanLayer::max(self : FinancepricingeuropeanLayer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_layer_to_string(s : FinancepricingeuropeanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanLayer::to_string(self : FinancepricingeuropeanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanBuffer {
@@ -810,45 +810,45 @@ pub fn finance_pricing_european_buffer_make(size : Int) -> Financepricingeuropea
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_buffer_len(s : FinancepricingeuropeanBuffer) -> Int { s.size }
+pub fn FinancepricingeuropeanBuffer::len(self : FinancepricingeuropeanBuffer) -> Int { self.size }
 
-pub fn finance_pricing_european_buffer_get(s : FinancepricingeuropeanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanBuffer::get(self : FinancepricingeuropeanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_buffer_set(s : FinancepricingeuropeanBuffer, i : Int, v : Double) -> FinancepricingeuropeanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanBuffer::set(self : FinancepricingeuropeanBuffer, i : Int, v : Double) -> FinancepricingeuropeanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_buffer_sum(s : FinancepricingeuropeanBuffer) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanBuffer::sum(self : FinancepricingeuropeanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_buffer_mean(s : FinancepricingeuropeanBuffer) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanBuffer::mean(self : FinancepricingeuropeanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_buffer_scale(s : FinancepricingeuropeanBuffer, f : Double) -> FinancepricingeuropeanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanBuffer::scale(self : FinancepricingeuropeanBuffer, f : Double) -> FinancepricingeuropeanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_buffer_add(a : FinancepricingeuropeanBuffer, b : FinancepricingeuropeanBuffer) -> FinancepricingeuropeanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanBuffer::add(self : FinancepricingeuropeanBuffer, other : FinancepricingeuropeanBuffer) -> FinancepricingeuropeanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_buffer_copy(s : FinancepricingeuropeanBuffer) -> FinancepricingeuropeanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanBuffer::copy(self : FinancepricingeuropeanBuffer) -> FinancepricingeuropeanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_buffer_fill(s : FinancepricingeuropeanBuffer, v : Double) -> FinancepricingeuropeanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanBuffer::fill(self : FinancepricingeuropeanBuffer, v : Double) -> FinancepricingeuropeanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_buffer_min(s : FinancepricingeuropeanBuffer) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanBuffer::min(self : FinancepricingeuropeanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_buffer_max(s : FinancepricingeuropeanBuffer) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanBuffer::max(self : FinancepricingeuropeanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_buffer_to_string(s : FinancepricingeuropeanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanBuffer::to_string(self : FinancepricingeuropeanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanCursor {
@@ -861,45 +861,45 @@ pub fn finance_pricing_european_cursor_make(size : Int) -> Financepricingeuropea
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_cursor_len(s : FinancepricingeuropeanCursor) -> Int { s.size }
+pub fn FinancepricingeuropeanCursor::len(self : FinancepricingeuropeanCursor) -> Int { self.size }
 
-pub fn finance_pricing_european_cursor_get(s : FinancepricingeuropeanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanCursor::get(self : FinancepricingeuropeanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_cursor_set(s : FinancepricingeuropeanCursor, i : Int, v : Double) -> FinancepricingeuropeanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCursor::set(self : FinancepricingeuropeanCursor, i : Int, v : Double) -> FinancepricingeuropeanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cursor_sum(s : FinancepricingeuropeanCursor) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanCursor::sum(self : FinancepricingeuropeanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_cursor_mean(s : FinancepricingeuropeanCursor) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanCursor::mean(self : FinancepricingeuropeanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_cursor_scale(s : FinancepricingeuropeanCursor, f : Double) -> FinancepricingeuropeanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCursor::scale(self : FinancepricingeuropeanCursor, f : Double) -> FinancepricingeuropeanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cursor_add(a : FinancepricingeuropeanCursor, b : FinancepricingeuropeanCursor) -> FinancepricingeuropeanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanCursor::add(self : FinancepricingeuropeanCursor, other : FinancepricingeuropeanCursor) -> FinancepricingeuropeanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cursor_copy(s : FinancepricingeuropeanCursor) -> FinancepricingeuropeanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCursor::copy(self : FinancepricingeuropeanCursor) -> FinancepricingeuropeanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cursor_fill(s : FinancepricingeuropeanCursor, v : Double) -> FinancepricingeuropeanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanCursor::fill(self : FinancepricingeuropeanCursor, v : Double) -> FinancepricingeuropeanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_cursor_min(s : FinancepricingeuropeanCursor) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanCursor::min(self : FinancepricingeuropeanCursor) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_cursor_max(s : FinancepricingeuropeanCursor) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanCursor::max(self : FinancepricingeuropeanCursor) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_cursor_to_string(s : FinancepricingeuropeanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanCursor::to_string(self : FinancepricingeuropeanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanView {
@@ -912,45 +912,45 @@ pub fn finance_pricing_european_view_make(size : Int) -> FinancepricingeuropeanV
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_view_len(s : FinancepricingeuropeanView) -> Int { s.size }
+pub fn FinancepricingeuropeanView::len(self : FinancepricingeuropeanView) -> Int { self.size }
 
-pub fn finance_pricing_european_view_get(s : FinancepricingeuropeanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanView::get(self : FinancepricingeuropeanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_view_set(s : FinancepricingeuropeanView, i : Int, v : Double) -> FinancepricingeuropeanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanView::set(self : FinancepricingeuropeanView, i : Int, v : Double) -> FinancepricingeuropeanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_view_sum(s : FinancepricingeuropeanView) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanView::sum(self : FinancepricingeuropeanView) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_view_mean(s : FinancepricingeuropeanView) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanView::mean(self : FinancepricingeuropeanView) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_view_scale(s : FinancepricingeuropeanView, f : Double) -> FinancepricingeuropeanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanView::scale(self : FinancepricingeuropeanView, f : Double) -> FinancepricingeuropeanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_view_add(a : FinancepricingeuropeanView, b : FinancepricingeuropeanView) -> FinancepricingeuropeanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanView::add(self : FinancepricingeuropeanView, other : FinancepricingeuropeanView) -> FinancepricingeuropeanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_view_copy(s : FinancepricingeuropeanView) -> FinancepricingeuropeanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanView::copy(self : FinancepricingeuropeanView) -> FinancepricingeuropeanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_view_fill(s : FinancepricingeuropeanView, v : Double) -> FinancepricingeuropeanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanView::fill(self : FinancepricingeuropeanView, v : Double) -> FinancepricingeuropeanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_view_min(s : FinancepricingeuropeanView) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanView::min(self : FinancepricingeuropeanView) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_view_max(s : FinancepricingeuropeanView) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanView::max(self : FinancepricingeuropeanView) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_view_to_string(s : FinancepricingeuropeanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanView::to_string(self : FinancepricingeuropeanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanRange {
@@ -963,45 +963,45 @@ pub fn finance_pricing_european_range_make(size : Int) -> Financepricingeuropean
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_range_len(s : FinancepricingeuropeanRange) -> Int { s.size }
+pub fn FinancepricingeuropeanRange::len(self : FinancepricingeuropeanRange) -> Int { self.size }
 
-pub fn finance_pricing_european_range_get(s : FinancepricingeuropeanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanRange::get(self : FinancepricingeuropeanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_range_set(s : FinancepricingeuropeanRange, i : Int, v : Double) -> FinancepricingeuropeanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanRange::set(self : FinancepricingeuropeanRange, i : Int, v : Double) -> FinancepricingeuropeanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_range_sum(s : FinancepricingeuropeanRange) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanRange::sum(self : FinancepricingeuropeanRange) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_range_mean(s : FinancepricingeuropeanRange) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanRange::mean(self : FinancepricingeuropeanRange) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_range_scale(s : FinancepricingeuropeanRange, f : Double) -> FinancepricingeuropeanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanRange::scale(self : FinancepricingeuropeanRange, f : Double) -> FinancepricingeuropeanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_range_add(a : FinancepricingeuropeanRange, b : FinancepricingeuropeanRange) -> FinancepricingeuropeanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanRange::add(self : FinancepricingeuropeanRange, other : FinancepricingeuropeanRange) -> FinancepricingeuropeanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_range_copy(s : FinancepricingeuropeanRange) -> FinancepricingeuropeanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanRange::copy(self : FinancepricingeuropeanRange) -> FinancepricingeuropeanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_range_fill(s : FinancepricingeuropeanRange, v : Double) -> FinancepricingeuropeanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanRange::fill(self : FinancepricingeuropeanRange, v : Double) -> FinancepricingeuropeanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_range_min(s : FinancepricingeuropeanRange) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanRange::min(self : FinancepricingeuropeanRange) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_range_max(s : FinancepricingeuropeanRange) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanRange::max(self : FinancepricingeuropeanRange) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_range_to_string(s : FinancepricingeuropeanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanRange::to_string(self : FinancepricingeuropeanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanSlice {
@@ -1014,44 +1014,44 @@ pub fn finance_pricing_european_slice_make(size : Int) -> Financepricingeuropean
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn finance_pricing_european_slice_len(s : FinancepricingeuropeanSlice) -> Int { s.size }
+pub fn FinancepricingeuropeanSlice::len(self : FinancepricingeuropeanSlice) -> Int { self.size }
 
-pub fn finance_pricing_european_slice_get(s : FinancepricingeuropeanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn FinancepricingeuropeanSlice::get(self : FinancepricingeuropeanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn finance_pricing_european_slice_set(s : FinancepricingeuropeanSlice, i : Int, v : Double) -> FinancepricingeuropeanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanSlice::set(self : FinancepricingeuropeanSlice, i : Int, v : Double) -> FinancepricingeuropeanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_slice_sum(s : FinancepricingeuropeanSlice) -> Double { @_common.sum(s.data) }
+pub fn FinancepricingeuropeanSlice::sum(self : FinancepricingeuropeanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn finance_pricing_european_slice_mean(s : FinancepricingeuropeanSlice) -> Double { @_common.mean(s.data) }
+pub fn FinancepricingeuropeanSlice::mean(self : FinancepricingeuropeanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn finance_pricing_european_slice_scale(s : FinancepricingeuropeanSlice, f : Double) -> FinancepricingeuropeanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanSlice::scale(self : FinancepricingeuropeanSlice, f : Double) -> FinancepricingeuropeanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_slice_add(a : FinancepricingeuropeanSlice, b : FinancepricingeuropeanSlice) -> FinancepricingeuropeanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn FinancepricingeuropeanSlice::add(self : FinancepricingeuropeanSlice, other : FinancepricingeuropeanSlice) -> FinancepricingeuropeanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn finance_pricing_european_slice_copy(s : FinancepricingeuropeanSlice) -> FinancepricingeuropeanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanSlice::copy(self : FinancepricingeuropeanSlice) -> FinancepricingeuropeanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_slice_fill(s : FinancepricingeuropeanSlice, v : Double) -> FinancepricingeuropeanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn FinancepricingeuropeanSlice::fill(self : FinancepricingeuropeanSlice, v : Double) -> FinancepricingeuropeanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn finance_pricing_european_slice_min(s : FinancepricingeuropeanSlice) -> Double { @_common.min(s.data) }
+pub fn FinancepricingeuropeanSlice::min(self : FinancepricingeuropeanSlice) -> Double { @_common.min(self.data) }
 
-pub fn finance_pricing_european_slice_max(s : FinancepricingeuropeanSlice) -> Double { @_common.max(s.data) }
+pub fn FinancepricingeuropeanSlice::max(self : FinancepricingeuropeanSlice) -> Double { @_common.max(self.data) }
 
-pub fn finance_pricing_european_slice_to_string(s : FinancepricingeuropeanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn FinancepricingeuropeanSlice::to_string(self : FinancepricingeuropeanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

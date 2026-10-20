@@ -351,45 +351,45 @@ pub fn ml_classify_tree_frame_make(size : Int) -> MlclassifytreeFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_frame_len(s : MlclassifytreeFrame) -> Int { s.size }
+pub fn MlclassifytreeFrame::len(self : MlclassifytreeFrame) -> Int { self.size }
 
-pub fn ml_classify_tree_frame_get(s : MlclassifytreeFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeFrame::get(self : MlclassifytreeFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_frame_set(s : MlclassifytreeFrame, i : Int, v : Double) -> MlclassifytreeFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeFrame::set(self : MlclassifytreeFrame, i : Int, v : Double) -> MlclassifytreeFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_frame_sum(s : MlclassifytreeFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeFrame::sum(self : MlclassifytreeFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_frame_mean(s : MlclassifytreeFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeFrame::mean(self : MlclassifytreeFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_frame_scale(s : MlclassifytreeFrame, f : Double) -> MlclassifytreeFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeFrame::scale(self : MlclassifytreeFrame, f : Double) -> MlclassifytreeFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_frame_add(a : MlclassifytreeFrame, b : MlclassifytreeFrame) -> MlclassifytreeFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeFrame::add(self : MlclassifytreeFrame, other : MlclassifytreeFrame) -> MlclassifytreeFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_frame_copy(s : MlclassifytreeFrame) -> MlclassifytreeFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeFrame::copy(self : MlclassifytreeFrame) -> MlclassifytreeFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_frame_fill(s : MlclassifytreeFrame, v : Double) -> MlclassifytreeFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeFrame::fill(self : MlclassifytreeFrame, v : Double) -> MlclassifytreeFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_frame_min(s : MlclassifytreeFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeFrame::min(self : MlclassifytreeFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_frame_max(s : MlclassifytreeFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeFrame::max(self : MlclassifytreeFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_frame_to_string(s : MlclassifytreeFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeFrame::to_string(self : MlclassifytreeFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_tree_table_make(size : Int) -> MlclassifytreeTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_table_len(s : MlclassifytreeTable) -> Int { s.size }
+pub fn MlclassifytreeTable::len(self : MlclassifytreeTable) -> Int { self.size }
 
-pub fn ml_classify_tree_table_get(s : MlclassifytreeTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeTable::get(self : MlclassifytreeTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_table_set(s : MlclassifytreeTable, i : Int, v : Double) -> MlclassifytreeTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeTable::set(self : MlclassifytreeTable, i : Int, v : Double) -> MlclassifytreeTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_table_sum(s : MlclassifytreeTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeTable::sum(self : MlclassifytreeTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_table_mean(s : MlclassifytreeTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeTable::mean(self : MlclassifytreeTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_table_scale(s : MlclassifytreeTable, f : Double) -> MlclassifytreeTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeTable::scale(self : MlclassifytreeTable, f : Double) -> MlclassifytreeTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_table_add(a : MlclassifytreeTable, b : MlclassifytreeTable) -> MlclassifytreeTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeTable::add(self : MlclassifytreeTable, other : MlclassifytreeTable) -> MlclassifytreeTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_table_copy(s : MlclassifytreeTable) -> MlclassifytreeTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeTable::copy(self : MlclassifytreeTable) -> MlclassifytreeTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_table_fill(s : MlclassifytreeTable, v : Double) -> MlclassifytreeTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeTable::fill(self : MlclassifytreeTable, v : Double) -> MlclassifytreeTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_table_min(s : MlclassifytreeTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeTable::min(self : MlclassifytreeTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_table_max(s : MlclassifytreeTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeTable::max(self : MlclassifytreeTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_table_to_string(s : MlclassifytreeTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeTable::to_string(self : MlclassifytreeTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_tree_graphn_make(size : Int) -> MlclassifytreeGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_graphn_len(s : MlclassifytreeGraphN) -> Int { s.size }
+pub fn MlclassifytreeGraphN::len(self : MlclassifytreeGraphN) -> Int { self.size }
 
-pub fn ml_classify_tree_graphn_get(s : MlclassifytreeGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeGraphN::get(self : MlclassifytreeGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_graphn_set(s : MlclassifytreeGraphN, i : Int, v : Double) -> MlclassifytreeGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeGraphN::set(self : MlclassifytreeGraphN, i : Int, v : Double) -> MlclassifytreeGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_graphn_sum(s : MlclassifytreeGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeGraphN::sum(self : MlclassifytreeGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_graphn_mean(s : MlclassifytreeGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeGraphN::mean(self : MlclassifytreeGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_graphn_scale(s : MlclassifytreeGraphN, f : Double) -> MlclassifytreeGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeGraphN::scale(self : MlclassifytreeGraphN, f : Double) -> MlclassifytreeGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_graphn_add(a : MlclassifytreeGraphN, b : MlclassifytreeGraphN) -> MlclassifytreeGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeGraphN::add(self : MlclassifytreeGraphN, other : MlclassifytreeGraphN) -> MlclassifytreeGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_graphn_copy(s : MlclassifytreeGraphN) -> MlclassifytreeGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeGraphN::copy(self : MlclassifytreeGraphN) -> MlclassifytreeGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_graphn_fill(s : MlclassifytreeGraphN, v : Double) -> MlclassifytreeGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeGraphN::fill(self : MlclassifytreeGraphN, v : Double) -> MlclassifytreeGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_graphn_min(s : MlclassifytreeGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeGraphN::min(self : MlclassifytreeGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_graphn_max(s : MlclassifytreeGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeGraphN::max(self : MlclassifytreeGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_graphn_to_string(s : MlclassifytreeGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeGraphN::to_string(self : MlclassifytreeGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_tree_node_make(size : Int) -> MlclassifytreeNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_node_len(s : MlclassifytreeNode) -> Int { s.size }
+pub fn MlclassifytreeNode::len(self : MlclassifytreeNode) -> Int { self.size }
 
-pub fn ml_classify_tree_node_get(s : MlclassifytreeNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeNode::get(self : MlclassifytreeNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_node_set(s : MlclassifytreeNode, i : Int, v : Double) -> MlclassifytreeNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeNode::set(self : MlclassifytreeNode, i : Int, v : Double) -> MlclassifytreeNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_node_sum(s : MlclassifytreeNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeNode::sum(self : MlclassifytreeNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_node_mean(s : MlclassifytreeNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeNode::mean(self : MlclassifytreeNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_node_scale(s : MlclassifytreeNode, f : Double) -> MlclassifytreeNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeNode::scale(self : MlclassifytreeNode, f : Double) -> MlclassifytreeNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_node_add(a : MlclassifytreeNode, b : MlclassifytreeNode) -> MlclassifytreeNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeNode::add(self : MlclassifytreeNode, other : MlclassifytreeNode) -> MlclassifytreeNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_node_copy(s : MlclassifytreeNode) -> MlclassifytreeNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeNode::copy(self : MlclassifytreeNode) -> MlclassifytreeNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_node_fill(s : MlclassifytreeNode, v : Double) -> MlclassifytreeNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeNode::fill(self : MlclassifytreeNode, v : Double) -> MlclassifytreeNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_node_min(s : MlclassifytreeNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeNode::min(self : MlclassifytreeNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_node_max(s : MlclassifytreeNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeNode::max(self : MlclassifytreeNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_node_to_string(s : MlclassifytreeNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeNode::to_string(self : MlclassifytreeNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_tree_edge_make(size : Int) -> MlclassifytreeEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_edge_len(s : MlclassifytreeEdge) -> Int { s.size }
+pub fn MlclassifytreeEdge::len(self : MlclassifytreeEdge) -> Int { self.size }
 
-pub fn ml_classify_tree_edge_get(s : MlclassifytreeEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeEdge::get(self : MlclassifytreeEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_edge_set(s : MlclassifytreeEdge, i : Int, v : Double) -> MlclassifytreeEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeEdge::set(self : MlclassifytreeEdge, i : Int, v : Double) -> MlclassifytreeEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_edge_sum(s : MlclassifytreeEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeEdge::sum(self : MlclassifytreeEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_edge_mean(s : MlclassifytreeEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeEdge::mean(self : MlclassifytreeEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_edge_scale(s : MlclassifytreeEdge, f : Double) -> MlclassifytreeEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeEdge::scale(self : MlclassifytreeEdge, f : Double) -> MlclassifytreeEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_edge_add(a : MlclassifytreeEdge, b : MlclassifytreeEdge) -> MlclassifytreeEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeEdge::add(self : MlclassifytreeEdge, other : MlclassifytreeEdge) -> MlclassifytreeEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_edge_copy(s : MlclassifytreeEdge) -> MlclassifytreeEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeEdge::copy(self : MlclassifytreeEdge) -> MlclassifytreeEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_edge_fill(s : MlclassifytreeEdge, v : Double) -> MlclassifytreeEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeEdge::fill(self : MlclassifytreeEdge, v : Double) -> MlclassifytreeEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_edge_min(s : MlclassifytreeEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeEdge::min(self : MlclassifytreeEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_edge_max(s : MlclassifytreeEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeEdge::max(self : MlclassifytreeEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_edge_to_string(s : MlclassifytreeEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeEdge::to_string(self : MlclassifytreeEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreePath {
@@ -606,45 +606,45 @@ pub fn ml_classify_tree_path_make(size : Int) -> MlclassifytreePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_path_len(s : MlclassifytreePath) -> Int { s.size }
+pub fn MlclassifytreePath::len(self : MlclassifytreePath) -> Int { self.size }
 
-pub fn ml_classify_tree_path_get(s : MlclassifytreePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreePath::get(self : MlclassifytreePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_path_set(s : MlclassifytreePath, i : Int, v : Double) -> MlclassifytreePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreePath::set(self : MlclassifytreePath, i : Int, v : Double) -> MlclassifytreePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_path_sum(s : MlclassifytreePath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreePath::sum(self : MlclassifytreePath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_path_mean(s : MlclassifytreePath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreePath::mean(self : MlclassifytreePath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_path_scale(s : MlclassifytreePath, f : Double) -> MlclassifytreePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreePath::scale(self : MlclassifytreePath, f : Double) -> MlclassifytreePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_path_add(a : MlclassifytreePath, b : MlclassifytreePath) -> MlclassifytreePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreePath::add(self : MlclassifytreePath, other : MlclassifytreePath) -> MlclassifytreePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_path_copy(s : MlclassifytreePath) -> MlclassifytreePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreePath::copy(self : MlclassifytreePath) -> MlclassifytreePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_path_fill(s : MlclassifytreePath, v : Double) -> MlclassifytreePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreePath::fill(self : MlclassifytreePath, v : Double) -> MlclassifytreePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_path_min(s : MlclassifytreePath) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreePath::min(self : MlclassifytreePath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_path_max(s : MlclassifytreePath) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreePath::max(self : MlclassifytreePath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_path_to_string(s : MlclassifytreePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreePath::to_string(self : MlclassifytreePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_tree_cluster_make(size : Int) -> MlclassifytreeCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_cluster_len(s : MlclassifytreeCluster) -> Int { s.size }
+pub fn MlclassifytreeCluster::len(self : MlclassifytreeCluster) -> Int { self.size }
 
-pub fn ml_classify_tree_cluster_get(s : MlclassifytreeCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeCluster::get(self : MlclassifytreeCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_cluster_set(s : MlclassifytreeCluster, i : Int, v : Double) -> MlclassifytreeCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeCluster::set(self : MlclassifytreeCluster, i : Int, v : Double) -> MlclassifytreeCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cluster_sum(s : MlclassifytreeCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeCluster::sum(self : MlclassifytreeCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_cluster_mean(s : MlclassifytreeCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeCluster::mean(self : MlclassifytreeCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_cluster_scale(s : MlclassifytreeCluster, f : Double) -> MlclassifytreeCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeCluster::scale(self : MlclassifytreeCluster, f : Double) -> MlclassifytreeCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cluster_add(a : MlclassifytreeCluster, b : MlclassifytreeCluster) -> MlclassifytreeCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeCluster::add(self : MlclassifytreeCluster, other : MlclassifytreeCluster) -> MlclassifytreeCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cluster_copy(s : MlclassifytreeCluster) -> MlclassifytreeCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeCluster::copy(self : MlclassifytreeCluster) -> MlclassifytreeCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cluster_fill(s : MlclassifytreeCluster, v : Double) -> MlclassifytreeCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeCluster::fill(self : MlclassifytreeCluster, v : Double) -> MlclassifytreeCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cluster_min(s : MlclassifytreeCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeCluster::min(self : MlclassifytreeCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_cluster_max(s : MlclassifytreeCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeCluster::max(self : MlclassifytreeCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_cluster_to_string(s : MlclassifytreeCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeCluster::to_string(self : MlclassifytreeCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_tree_model_make(size : Int) -> MlclassifytreeModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_model_len(s : MlclassifytreeModel) -> Int { s.size }
+pub fn MlclassifytreeModel::len(self : MlclassifytreeModel) -> Int { self.size }
 
-pub fn ml_classify_tree_model_get(s : MlclassifytreeModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeModel::get(self : MlclassifytreeModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_model_set(s : MlclassifytreeModel, i : Int, v : Double) -> MlclassifytreeModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeModel::set(self : MlclassifytreeModel, i : Int, v : Double) -> MlclassifytreeModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_model_sum(s : MlclassifytreeModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeModel::sum(self : MlclassifytreeModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_model_mean(s : MlclassifytreeModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeModel::mean(self : MlclassifytreeModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_model_scale(s : MlclassifytreeModel, f : Double) -> MlclassifytreeModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeModel::scale(self : MlclassifytreeModel, f : Double) -> MlclassifytreeModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_model_add(a : MlclassifytreeModel, b : MlclassifytreeModel) -> MlclassifytreeModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeModel::add(self : MlclassifytreeModel, other : MlclassifytreeModel) -> MlclassifytreeModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_model_copy(s : MlclassifytreeModel) -> MlclassifytreeModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeModel::copy(self : MlclassifytreeModel) -> MlclassifytreeModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_model_fill(s : MlclassifytreeModel, v : Double) -> MlclassifytreeModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeModel::fill(self : MlclassifytreeModel, v : Double) -> MlclassifytreeModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_model_min(s : MlclassifytreeModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeModel::min(self : MlclassifytreeModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_model_max(s : MlclassifytreeModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeModel::max(self : MlclassifytreeModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_model_to_string(s : MlclassifytreeModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeModel::to_string(self : MlclassifytreeModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_tree_layer_make(size : Int) -> MlclassifytreeLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_layer_len(s : MlclassifytreeLayer) -> Int { s.size }
+pub fn MlclassifytreeLayer::len(self : MlclassifytreeLayer) -> Int { self.size }
 
-pub fn ml_classify_tree_layer_get(s : MlclassifytreeLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeLayer::get(self : MlclassifytreeLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_layer_set(s : MlclassifytreeLayer, i : Int, v : Double) -> MlclassifytreeLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeLayer::set(self : MlclassifytreeLayer, i : Int, v : Double) -> MlclassifytreeLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_layer_sum(s : MlclassifytreeLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeLayer::sum(self : MlclassifytreeLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_layer_mean(s : MlclassifytreeLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeLayer::mean(self : MlclassifytreeLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_layer_scale(s : MlclassifytreeLayer, f : Double) -> MlclassifytreeLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeLayer::scale(self : MlclassifytreeLayer, f : Double) -> MlclassifytreeLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_layer_add(a : MlclassifytreeLayer, b : MlclassifytreeLayer) -> MlclassifytreeLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeLayer::add(self : MlclassifytreeLayer, other : MlclassifytreeLayer) -> MlclassifytreeLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_layer_copy(s : MlclassifytreeLayer) -> MlclassifytreeLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeLayer::copy(self : MlclassifytreeLayer) -> MlclassifytreeLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_layer_fill(s : MlclassifytreeLayer, v : Double) -> MlclassifytreeLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeLayer::fill(self : MlclassifytreeLayer, v : Double) -> MlclassifytreeLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_layer_min(s : MlclassifytreeLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeLayer::min(self : MlclassifytreeLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_layer_max(s : MlclassifytreeLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeLayer::max(self : MlclassifytreeLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_layer_to_string(s : MlclassifytreeLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeLayer::to_string(self : MlclassifytreeLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_tree_buffer_make(size : Int) -> MlclassifytreeBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_buffer_len(s : MlclassifytreeBuffer) -> Int { s.size }
+pub fn MlclassifytreeBuffer::len(self : MlclassifytreeBuffer) -> Int { self.size }
 
-pub fn ml_classify_tree_buffer_get(s : MlclassifytreeBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeBuffer::get(self : MlclassifytreeBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_buffer_set(s : MlclassifytreeBuffer, i : Int, v : Double) -> MlclassifytreeBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeBuffer::set(self : MlclassifytreeBuffer, i : Int, v : Double) -> MlclassifytreeBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_buffer_sum(s : MlclassifytreeBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeBuffer::sum(self : MlclassifytreeBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_buffer_mean(s : MlclassifytreeBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeBuffer::mean(self : MlclassifytreeBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_buffer_scale(s : MlclassifytreeBuffer, f : Double) -> MlclassifytreeBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeBuffer::scale(self : MlclassifytreeBuffer, f : Double) -> MlclassifytreeBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_buffer_add(a : MlclassifytreeBuffer, b : MlclassifytreeBuffer) -> MlclassifytreeBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeBuffer::add(self : MlclassifytreeBuffer, other : MlclassifytreeBuffer) -> MlclassifytreeBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_buffer_copy(s : MlclassifytreeBuffer) -> MlclassifytreeBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeBuffer::copy(self : MlclassifytreeBuffer) -> MlclassifytreeBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_buffer_fill(s : MlclassifytreeBuffer, v : Double) -> MlclassifytreeBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeBuffer::fill(self : MlclassifytreeBuffer, v : Double) -> MlclassifytreeBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_buffer_min(s : MlclassifytreeBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeBuffer::min(self : MlclassifytreeBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_buffer_max(s : MlclassifytreeBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeBuffer::max(self : MlclassifytreeBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_buffer_to_string(s : MlclassifytreeBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeBuffer::to_string(self : MlclassifytreeBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_tree_cursor_make(size : Int) -> MlclassifytreeCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_cursor_len(s : MlclassifytreeCursor) -> Int { s.size }
+pub fn MlclassifytreeCursor::len(self : MlclassifytreeCursor) -> Int { self.size }
 
-pub fn ml_classify_tree_cursor_get(s : MlclassifytreeCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeCursor::get(self : MlclassifytreeCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_cursor_set(s : MlclassifytreeCursor, i : Int, v : Double) -> MlclassifytreeCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeCursor::set(self : MlclassifytreeCursor, i : Int, v : Double) -> MlclassifytreeCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cursor_sum(s : MlclassifytreeCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeCursor::sum(self : MlclassifytreeCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_cursor_mean(s : MlclassifytreeCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeCursor::mean(self : MlclassifytreeCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_cursor_scale(s : MlclassifytreeCursor, f : Double) -> MlclassifytreeCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeCursor::scale(self : MlclassifytreeCursor, f : Double) -> MlclassifytreeCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cursor_add(a : MlclassifytreeCursor, b : MlclassifytreeCursor) -> MlclassifytreeCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeCursor::add(self : MlclassifytreeCursor, other : MlclassifytreeCursor) -> MlclassifytreeCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cursor_copy(s : MlclassifytreeCursor) -> MlclassifytreeCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeCursor::copy(self : MlclassifytreeCursor) -> MlclassifytreeCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cursor_fill(s : MlclassifytreeCursor, v : Double) -> MlclassifytreeCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeCursor::fill(self : MlclassifytreeCursor, v : Double) -> MlclassifytreeCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_cursor_min(s : MlclassifytreeCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeCursor::min(self : MlclassifytreeCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_cursor_max(s : MlclassifytreeCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeCursor::max(self : MlclassifytreeCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_cursor_to_string(s : MlclassifytreeCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeCursor::to_string(self : MlclassifytreeCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeView {
@@ -912,45 +912,45 @@ pub fn ml_classify_tree_view_make(size : Int) -> MlclassifytreeView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_view_len(s : MlclassifytreeView) -> Int { s.size }
+pub fn MlclassifytreeView::len(self : MlclassifytreeView) -> Int { self.size }
 
-pub fn ml_classify_tree_view_get(s : MlclassifytreeView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeView::get(self : MlclassifytreeView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_view_set(s : MlclassifytreeView, i : Int, v : Double) -> MlclassifytreeView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeView::set(self : MlclassifytreeView, i : Int, v : Double) -> MlclassifytreeView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_view_sum(s : MlclassifytreeView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeView::sum(self : MlclassifytreeView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_view_mean(s : MlclassifytreeView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeView::mean(self : MlclassifytreeView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_view_scale(s : MlclassifytreeView, f : Double) -> MlclassifytreeView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeView::scale(self : MlclassifytreeView, f : Double) -> MlclassifytreeView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_view_add(a : MlclassifytreeView, b : MlclassifytreeView) -> MlclassifytreeView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeView::add(self : MlclassifytreeView, other : MlclassifytreeView) -> MlclassifytreeView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_view_copy(s : MlclassifytreeView) -> MlclassifytreeView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeView::copy(self : MlclassifytreeView) -> MlclassifytreeView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_view_fill(s : MlclassifytreeView, v : Double) -> MlclassifytreeView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeView::fill(self : MlclassifytreeView, v : Double) -> MlclassifytreeView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_view_min(s : MlclassifytreeView) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeView::min(self : MlclassifytreeView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_view_max(s : MlclassifytreeView) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeView::max(self : MlclassifytreeView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_view_to_string(s : MlclassifytreeView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeView::to_string(self : MlclassifytreeView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_tree_range_make(size : Int) -> MlclassifytreeRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_range_len(s : MlclassifytreeRange) -> Int { s.size }
+pub fn MlclassifytreeRange::len(self : MlclassifytreeRange) -> Int { self.size }
 
-pub fn ml_classify_tree_range_get(s : MlclassifytreeRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeRange::get(self : MlclassifytreeRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_range_set(s : MlclassifytreeRange, i : Int, v : Double) -> MlclassifytreeRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeRange::set(self : MlclassifytreeRange, i : Int, v : Double) -> MlclassifytreeRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_range_sum(s : MlclassifytreeRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeRange::sum(self : MlclassifytreeRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_range_mean(s : MlclassifytreeRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeRange::mean(self : MlclassifytreeRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_range_scale(s : MlclassifytreeRange, f : Double) -> MlclassifytreeRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeRange::scale(self : MlclassifytreeRange, f : Double) -> MlclassifytreeRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_range_add(a : MlclassifytreeRange, b : MlclassifytreeRange) -> MlclassifytreeRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeRange::add(self : MlclassifytreeRange, other : MlclassifytreeRange) -> MlclassifytreeRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_range_copy(s : MlclassifytreeRange) -> MlclassifytreeRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeRange::copy(self : MlclassifytreeRange) -> MlclassifytreeRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_range_fill(s : MlclassifytreeRange, v : Double) -> MlclassifytreeRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeRange::fill(self : MlclassifytreeRange, v : Double) -> MlclassifytreeRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_range_min(s : MlclassifytreeRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeRange::min(self : MlclassifytreeRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_range_max(s : MlclassifytreeRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeRange::max(self : MlclassifytreeRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_range_to_string(s : MlclassifytreeRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeRange::to_string(self : MlclassifytreeRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifytreeSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_tree_slice_make(size : Int) -> MlclassifytreeSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_tree_slice_len(s : MlclassifytreeSlice) -> Int { s.size }
+pub fn MlclassifytreeSlice::len(self : MlclassifytreeSlice) -> Int { self.size }
 
-pub fn ml_classify_tree_slice_get(s : MlclassifytreeSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifytreeSlice::get(self : MlclassifytreeSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_tree_slice_set(s : MlclassifytreeSlice, i : Int, v : Double) -> MlclassifytreeSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifytreeSlice::set(self : MlclassifytreeSlice, i : Int, v : Double) -> MlclassifytreeSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_slice_sum(s : MlclassifytreeSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifytreeSlice::sum(self : MlclassifytreeSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_tree_slice_mean(s : MlclassifytreeSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifytreeSlice::mean(self : MlclassifytreeSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_tree_slice_scale(s : MlclassifytreeSlice, f : Double) -> MlclassifytreeSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifytreeSlice::scale(self : MlclassifytreeSlice, f : Double) -> MlclassifytreeSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_slice_add(a : MlclassifytreeSlice, b : MlclassifytreeSlice) -> MlclassifytreeSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifytreeSlice::add(self : MlclassifytreeSlice, other : MlclassifytreeSlice) -> MlclassifytreeSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_tree_slice_copy(s : MlclassifytreeSlice) -> MlclassifytreeSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifytreeSlice::copy(self : MlclassifytreeSlice) -> MlclassifytreeSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_slice_fill(s : MlclassifytreeSlice, v : Double) -> MlclassifytreeSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifytreeSlice::fill(self : MlclassifytreeSlice, v : Double) -> MlclassifytreeSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_tree_slice_min(s : MlclassifytreeSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifytreeSlice::min(self : MlclassifytreeSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_tree_slice_max(s : MlclassifytreeSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifytreeSlice::max(self : MlclassifytreeSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_tree_slice_to_string(s : MlclassifytreeSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifytreeSlice::to_string(self : MlclassifytreeSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

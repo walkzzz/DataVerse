@@ -351,45 +351,45 @@ pub fn ml_classify_knn_frame_make(size : Int) -> MlclassifyknnFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_frame_len(s : MlclassifyknnFrame) -> Int { s.size }
+pub fn MlclassifyknnFrame::len(self : MlclassifyknnFrame) -> Int { self.size }
 
-pub fn ml_classify_knn_frame_get(s : MlclassifyknnFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnFrame::get(self : MlclassifyknnFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_frame_set(s : MlclassifyknnFrame, i : Int, v : Double) -> MlclassifyknnFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnFrame::set(self : MlclassifyknnFrame, i : Int, v : Double) -> MlclassifyknnFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_frame_sum(s : MlclassifyknnFrame) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnFrame::sum(self : MlclassifyknnFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_frame_mean(s : MlclassifyknnFrame) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnFrame::mean(self : MlclassifyknnFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_frame_scale(s : MlclassifyknnFrame, f : Double) -> MlclassifyknnFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnFrame::scale(self : MlclassifyknnFrame, f : Double) -> MlclassifyknnFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_frame_add(a : MlclassifyknnFrame, b : MlclassifyknnFrame) -> MlclassifyknnFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnFrame::add(self : MlclassifyknnFrame, other : MlclassifyknnFrame) -> MlclassifyknnFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_frame_copy(s : MlclassifyknnFrame) -> MlclassifyknnFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnFrame::copy(self : MlclassifyknnFrame) -> MlclassifyknnFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_frame_fill(s : MlclassifyknnFrame, v : Double) -> MlclassifyknnFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnFrame::fill(self : MlclassifyknnFrame, v : Double) -> MlclassifyknnFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_frame_min(s : MlclassifyknnFrame) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnFrame::min(self : MlclassifyknnFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_frame_max(s : MlclassifyknnFrame) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnFrame::max(self : MlclassifyknnFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_frame_to_string(s : MlclassifyknnFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnFrame::to_string(self : MlclassifyknnFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnTable {
@@ -402,45 +402,45 @@ pub fn ml_classify_knn_table_make(size : Int) -> MlclassifyknnTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_table_len(s : MlclassifyknnTable) -> Int { s.size }
+pub fn MlclassifyknnTable::len(self : MlclassifyknnTable) -> Int { self.size }
 
-pub fn ml_classify_knn_table_get(s : MlclassifyknnTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnTable::get(self : MlclassifyknnTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_table_set(s : MlclassifyknnTable, i : Int, v : Double) -> MlclassifyknnTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnTable::set(self : MlclassifyknnTable, i : Int, v : Double) -> MlclassifyknnTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_table_sum(s : MlclassifyknnTable) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnTable::sum(self : MlclassifyknnTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_table_mean(s : MlclassifyknnTable) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnTable::mean(self : MlclassifyknnTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_table_scale(s : MlclassifyknnTable, f : Double) -> MlclassifyknnTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnTable::scale(self : MlclassifyknnTable, f : Double) -> MlclassifyknnTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_table_add(a : MlclassifyknnTable, b : MlclassifyknnTable) -> MlclassifyknnTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnTable::add(self : MlclassifyknnTable, other : MlclassifyknnTable) -> MlclassifyknnTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_table_copy(s : MlclassifyknnTable) -> MlclassifyknnTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnTable::copy(self : MlclassifyknnTable) -> MlclassifyknnTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_table_fill(s : MlclassifyknnTable, v : Double) -> MlclassifyknnTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnTable::fill(self : MlclassifyknnTable, v : Double) -> MlclassifyknnTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_table_min(s : MlclassifyknnTable) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnTable::min(self : MlclassifyknnTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_table_max(s : MlclassifyknnTable) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnTable::max(self : MlclassifyknnTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_table_to_string(s : MlclassifyknnTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnTable::to_string(self : MlclassifyknnTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnGraphN {
@@ -453,45 +453,45 @@ pub fn ml_classify_knn_graphn_make(size : Int) -> MlclassifyknnGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_graphn_len(s : MlclassifyknnGraphN) -> Int { s.size }
+pub fn MlclassifyknnGraphN::len(self : MlclassifyknnGraphN) -> Int { self.size }
 
-pub fn ml_classify_knn_graphn_get(s : MlclassifyknnGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnGraphN::get(self : MlclassifyknnGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_graphn_set(s : MlclassifyknnGraphN, i : Int, v : Double) -> MlclassifyknnGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnGraphN::set(self : MlclassifyknnGraphN, i : Int, v : Double) -> MlclassifyknnGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_graphn_sum(s : MlclassifyknnGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnGraphN::sum(self : MlclassifyknnGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_graphn_mean(s : MlclassifyknnGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnGraphN::mean(self : MlclassifyknnGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_graphn_scale(s : MlclassifyknnGraphN, f : Double) -> MlclassifyknnGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnGraphN::scale(self : MlclassifyknnGraphN, f : Double) -> MlclassifyknnGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_graphn_add(a : MlclassifyknnGraphN, b : MlclassifyknnGraphN) -> MlclassifyknnGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnGraphN::add(self : MlclassifyknnGraphN, other : MlclassifyknnGraphN) -> MlclassifyknnGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_graphn_copy(s : MlclassifyknnGraphN) -> MlclassifyknnGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnGraphN::copy(self : MlclassifyknnGraphN) -> MlclassifyknnGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_graphn_fill(s : MlclassifyknnGraphN, v : Double) -> MlclassifyknnGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnGraphN::fill(self : MlclassifyknnGraphN, v : Double) -> MlclassifyknnGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_graphn_min(s : MlclassifyknnGraphN) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnGraphN::min(self : MlclassifyknnGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_graphn_max(s : MlclassifyknnGraphN) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnGraphN::max(self : MlclassifyknnGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_graphn_to_string(s : MlclassifyknnGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnGraphN::to_string(self : MlclassifyknnGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnNode {
@@ -504,45 +504,45 @@ pub fn ml_classify_knn_node_make(size : Int) -> MlclassifyknnNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_node_len(s : MlclassifyknnNode) -> Int { s.size }
+pub fn MlclassifyknnNode::len(self : MlclassifyknnNode) -> Int { self.size }
 
-pub fn ml_classify_knn_node_get(s : MlclassifyknnNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnNode::get(self : MlclassifyknnNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_node_set(s : MlclassifyknnNode, i : Int, v : Double) -> MlclassifyknnNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnNode::set(self : MlclassifyknnNode, i : Int, v : Double) -> MlclassifyknnNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_node_sum(s : MlclassifyknnNode) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnNode::sum(self : MlclassifyknnNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_node_mean(s : MlclassifyknnNode) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnNode::mean(self : MlclassifyknnNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_node_scale(s : MlclassifyknnNode, f : Double) -> MlclassifyknnNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnNode::scale(self : MlclassifyknnNode, f : Double) -> MlclassifyknnNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_node_add(a : MlclassifyknnNode, b : MlclassifyknnNode) -> MlclassifyknnNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnNode::add(self : MlclassifyknnNode, other : MlclassifyknnNode) -> MlclassifyknnNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_node_copy(s : MlclassifyknnNode) -> MlclassifyknnNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnNode::copy(self : MlclassifyknnNode) -> MlclassifyknnNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_node_fill(s : MlclassifyknnNode, v : Double) -> MlclassifyknnNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnNode::fill(self : MlclassifyknnNode, v : Double) -> MlclassifyknnNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_node_min(s : MlclassifyknnNode) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnNode::min(self : MlclassifyknnNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_node_max(s : MlclassifyknnNode) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnNode::max(self : MlclassifyknnNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_node_to_string(s : MlclassifyknnNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnNode::to_string(self : MlclassifyknnNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnEdge {
@@ -555,45 +555,45 @@ pub fn ml_classify_knn_edge_make(size : Int) -> MlclassifyknnEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_edge_len(s : MlclassifyknnEdge) -> Int { s.size }
+pub fn MlclassifyknnEdge::len(self : MlclassifyknnEdge) -> Int { self.size }
 
-pub fn ml_classify_knn_edge_get(s : MlclassifyknnEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnEdge::get(self : MlclassifyknnEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_edge_set(s : MlclassifyknnEdge, i : Int, v : Double) -> MlclassifyknnEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnEdge::set(self : MlclassifyknnEdge, i : Int, v : Double) -> MlclassifyknnEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_edge_sum(s : MlclassifyknnEdge) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnEdge::sum(self : MlclassifyknnEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_edge_mean(s : MlclassifyknnEdge) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnEdge::mean(self : MlclassifyknnEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_edge_scale(s : MlclassifyknnEdge, f : Double) -> MlclassifyknnEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnEdge::scale(self : MlclassifyknnEdge, f : Double) -> MlclassifyknnEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_edge_add(a : MlclassifyknnEdge, b : MlclassifyknnEdge) -> MlclassifyknnEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnEdge::add(self : MlclassifyknnEdge, other : MlclassifyknnEdge) -> MlclassifyknnEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_edge_copy(s : MlclassifyknnEdge) -> MlclassifyknnEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnEdge::copy(self : MlclassifyknnEdge) -> MlclassifyknnEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_edge_fill(s : MlclassifyknnEdge, v : Double) -> MlclassifyknnEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnEdge::fill(self : MlclassifyknnEdge, v : Double) -> MlclassifyknnEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_edge_min(s : MlclassifyknnEdge) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnEdge::min(self : MlclassifyknnEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_edge_max(s : MlclassifyknnEdge) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnEdge::max(self : MlclassifyknnEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_edge_to_string(s : MlclassifyknnEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnEdge::to_string(self : MlclassifyknnEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnPath {
@@ -606,45 +606,45 @@ pub fn ml_classify_knn_path_make(size : Int) -> MlclassifyknnPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_path_len(s : MlclassifyknnPath) -> Int { s.size }
+pub fn MlclassifyknnPath::len(self : MlclassifyknnPath) -> Int { self.size }
 
-pub fn ml_classify_knn_path_get(s : MlclassifyknnPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnPath::get(self : MlclassifyknnPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_path_set(s : MlclassifyknnPath, i : Int, v : Double) -> MlclassifyknnPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnPath::set(self : MlclassifyknnPath, i : Int, v : Double) -> MlclassifyknnPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_path_sum(s : MlclassifyknnPath) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnPath::sum(self : MlclassifyknnPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_path_mean(s : MlclassifyknnPath) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnPath::mean(self : MlclassifyknnPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_path_scale(s : MlclassifyknnPath, f : Double) -> MlclassifyknnPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnPath::scale(self : MlclassifyknnPath, f : Double) -> MlclassifyknnPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_path_add(a : MlclassifyknnPath, b : MlclassifyknnPath) -> MlclassifyknnPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnPath::add(self : MlclassifyknnPath, other : MlclassifyknnPath) -> MlclassifyknnPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_path_copy(s : MlclassifyknnPath) -> MlclassifyknnPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnPath::copy(self : MlclassifyknnPath) -> MlclassifyknnPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_path_fill(s : MlclassifyknnPath, v : Double) -> MlclassifyknnPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnPath::fill(self : MlclassifyknnPath, v : Double) -> MlclassifyknnPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_path_min(s : MlclassifyknnPath) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnPath::min(self : MlclassifyknnPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_path_max(s : MlclassifyknnPath) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnPath::max(self : MlclassifyknnPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_path_to_string(s : MlclassifyknnPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnPath::to_string(self : MlclassifyknnPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnCluster {
@@ -657,45 +657,45 @@ pub fn ml_classify_knn_cluster_make(size : Int) -> MlclassifyknnCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_cluster_len(s : MlclassifyknnCluster) -> Int { s.size }
+pub fn MlclassifyknnCluster::len(self : MlclassifyknnCluster) -> Int { self.size }
 
-pub fn ml_classify_knn_cluster_get(s : MlclassifyknnCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnCluster::get(self : MlclassifyknnCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_cluster_set(s : MlclassifyknnCluster, i : Int, v : Double) -> MlclassifyknnCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnCluster::set(self : MlclassifyknnCluster, i : Int, v : Double) -> MlclassifyknnCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cluster_sum(s : MlclassifyknnCluster) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnCluster::sum(self : MlclassifyknnCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_cluster_mean(s : MlclassifyknnCluster) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnCluster::mean(self : MlclassifyknnCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_cluster_scale(s : MlclassifyknnCluster, f : Double) -> MlclassifyknnCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnCluster::scale(self : MlclassifyknnCluster, f : Double) -> MlclassifyknnCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cluster_add(a : MlclassifyknnCluster, b : MlclassifyknnCluster) -> MlclassifyknnCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnCluster::add(self : MlclassifyknnCluster, other : MlclassifyknnCluster) -> MlclassifyknnCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cluster_copy(s : MlclassifyknnCluster) -> MlclassifyknnCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnCluster::copy(self : MlclassifyknnCluster) -> MlclassifyknnCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cluster_fill(s : MlclassifyknnCluster, v : Double) -> MlclassifyknnCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnCluster::fill(self : MlclassifyknnCluster, v : Double) -> MlclassifyknnCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cluster_min(s : MlclassifyknnCluster) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnCluster::min(self : MlclassifyknnCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_cluster_max(s : MlclassifyknnCluster) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnCluster::max(self : MlclassifyknnCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_cluster_to_string(s : MlclassifyknnCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnCluster::to_string(self : MlclassifyknnCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnModel {
@@ -708,45 +708,45 @@ pub fn ml_classify_knn_model_make(size : Int) -> MlclassifyknnModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_model_len(s : MlclassifyknnModel) -> Int { s.size }
+pub fn MlclassifyknnModel::len(self : MlclassifyknnModel) -> Int { self.size }
 
-pub fn ml_classify_knn_model_get(s : MlclassifyknnModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnModel::get(self : MlclassifyknnModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_model_set(s : MlclassifyknnModel, i : Int, v : Double) -> MlclassifyknnModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnModel::set(self : MlclassifyknnModel, i : Int, v : Double) -> MlclassifyknnModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_model_sum(s : MlclassifyknnModel) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnModel::sum(self : MlclassifyknnModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_model_mean(s : MlclassifyknnModel) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnModel::mean(self : MlclassifyknnModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_model_scale(s : MlclassifyknnModel, f : Double) -> MlclassifyknnModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnModel::scale(self : MlclassifyknnModel, f : Double) -> MlclassifyknnModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_model_add(a : MlclassifyknnModel, b : MlclassifyknnModel) -> MlclassifyknnModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnModel::add(self : MlclassifyknnModel, other : MlclassifyknnModel) -> MlclassifyknnModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_model_copy(s : MlclassifyknnModel) -> MlclassifyknnModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnModel::copy(self : MlclassifyknnModel) -> MlclassifyknnModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_model_fill(s : MlclassifyknnModel, v : Double) -> MlclassifyknnModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnModel::fill(self : MlclassifyknnModel, v : Double) -> MlclassifyknnModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_model_min(s : MlclassifyknnModel) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnModel::min(self : MlclassifyknnModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_model_max(s : MlclassifyknnModel) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnModel::max(self : MlclassifyknnModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_model_to_string(s : MlclassifyknnModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnModel::to_string(self : MlclassifyknnModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnLayer {
@@ -759,45 +759,45 @@ pub fn ml_classify_knn_layer_make(size : Int) -> MlclassifyknnLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_layer_len(s : MlclassifyknnLayer) -> Int { s.size }
+pub fn MlclassifyknnLayer::len(self : MlclassifyknnLayer) -> Int { self.size }
 
-pub fn ml_classify_knn_layer_get(s : MlclassifyknnLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnLayer::get(self : MlclassifyknnLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_layer_set(s : MlclassifyknnLayer, i : Int, v : Double) -> MlclassifyknnLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnLayer::set(self : MlclassifyknnLayer, i : Int, v : Double) -> MlclassifyknnLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_layer_sum(s : MlclassifyknnLayer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnLayer::sum(self : MlclassifyknnLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_layer_mean(s : MlclassifyknnLayer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnLayer::mean(self : MlclassifyknnLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_layer_scale(s : MlclassifyknnLayer, f : Double) -> MlclassifyknnLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnLayer::scale(self : MlclassifyknnLayer, f : Double) -> MlclassifyknnLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_layer_add(a : MlclassifyknnLayer, b : MlclassifyknnLayer) -> MlclassifyknnLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnLayer::add(self : MlclassifyknnLayer, other : MlclassifyknnLayer) -> MlclassifyknnLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_layer_copy(s : MlclassifyknnLayer) -> MlclassifyknnLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnLayer::copy(self : MlclassifyknnLayer) -> MlclassifyknnLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_layer_fill(s : MlclassifyknnLayer, v : Double) -> MlclassifyknnLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnLayer::fill(self : MlclassifyknnLayer, v : Double) -> MlclassifyknnLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_layer_min(s : MlclassifyknnLayer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnLayer::min(self : MlclassifyknnLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_layer_max(s : MlclassifyknnLayer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnLayer::max(self : MlclassifyknnLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_layer_to_string(s : MlclassifyknnLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnLayer::to_string(self : MlclassifyknnLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnBuffer {
@@ -810,45 +810,45 @@ pub fn ml_classify_knn_buffer_make(size : Int) -> MlclassifyknnBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_buffer_len(s : MlclassifyknnBuffer) -> Int { s.size }
+pub fn MlclassifyknnBuffer::len(self : MlclassifyknnBuffer) -> Int { self.size }
 
-pub fn ml_classify_knn_buffer_get(s : MlclassifyknnBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnBuffer::get(self : MlclassifyknnBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_buffer_set(s : MlclassifyknnBuffer, i : Int, v : Double) -> MlclassifyknnBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnBuffer::set(self : MlclassifyknnBuffer, i : Int, v : Double) -> MlclassifyknnBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_buffer_sum(s : MlclassifyknnBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnBuffer::sum(self : MlclassifyknnBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_buffer_mean(s : MlclassifyknnBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnBuffer::mean(self : MlclassifyknnBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_buffer_scale(s : MlclassifyknnBuffer, f : Double) -> MlclassifyknnBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnBuffer::scale(self : MlclassifyknnBuffer, f : Double) -> MlclassifyknnBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_buffer_add(a : MlclassifyknnBuffer, b : MlclassifyknnBuffer) -> MlclassifyknnBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnBuffer::add(self : MlclassifyknnBuffer, other : MlclassifyknnBuffer) -> MlclassifyknnBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_buffer_copy(s : MlclassifyknnBuffer) -> MlclassifyknnBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnBuffer::copy(self : MlclassifyknnBuffer) -> MlclassifyknnBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_buffer_fill(s : MlclassifyknnBuffer, v : Double) -> MlclassifyknnBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnBuffer::fill(self : MlclassifyknnBuffer, v : Double) -> MlclassifyknnBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_buffer_min(s : MlclassifyknnBuffer) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnBuffer::min(self : MlclassifyknnBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_buffer_max(s : MlclassifyknnBuffer) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnBuffer::max(self : MlclassifyknnBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_buffer_to_string(s : MlclassifyknnBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnBuffer::to_string(self : MlclassifyknnBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnCursor {
@@ -861,45 +861,45 @@ pub fn ml_classify_knn_cursor_make(size : Int) -> MlclassifyknnCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_cursor_len(s : MlclassifyknnCursor) -> Int { s.size }
+pub fn MlclassifyknnCursor::len(self : MlclassifyknnCursor) -> Int { self.size }
 
-pub fn ml_classify_knn_cursor_get(s : MlclassifyknnCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnCursor::get(self : MlclassifyknnCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_cursor_set(s : MlclassifyknnCursor, i : Int, v : Double) -> MlclassifyknnCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnCursor::set(self : MlclassifyknnCursor, i : Int, v : Double) -> MlclassifyknnCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cursor_sum(s : MlclassifyknnCursor) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnCursor::sum(self : MlclassifyknnCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_cursor_mean(s : MlclassifyknnCursor) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnCursor::mean(self : MlclassifyknnCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_cursor_scale(s : MlclassifyknnCursor, f : Double) -> MlclassifyknnCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnCursor::scale(self : MlclassifyknnCursor, f : Double) -> MlclassifyknnCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cursor_add(a : MlclassifyknnCursor, b : MlclassifyknnCursor) -> MlclassifyknnCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnCursor::add(self : MlclassifyknnCursor, other : MlclassifyknnCursor) -> MlclassifyknnCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cursor_copy(s : MlclassifyknnCursor) -> MlclassifyknnCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnCursor::copy(self : MlclassifyknnCursor) -> MlclassifyknnCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cursor_fill(s : MlclassifyknnCursor, v : Double) -> MlclassifyknnCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnCursor::fill(self : MlclassifyknnCursor, v : Double) -> MlclassifyknnCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_cursor_min(s : MlclassifyknnCursor) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnCursor::min(self : MlclassifyknnCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_cursor_max(s : MlclassifyknnCursor) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnCursor::max(self : MlclassifyknnCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_cursor_to_string(s : MlclassifyknnCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnCursor::to_string(self : MlclassifyknnCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnView {
@@ -912,45 +912,45 @@ pub fn ml_classify_knn_view_make(size : Int) -> MlclassifyknnView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_view_len(s : MlclassifyknnView) -> Int { s.size }
+pub fn MlclassifyknnView::len(self : MlclassifyknnView) -> Int { self.size }
 
-pub fn ml_classify_knn_view_get(s : MlclassifyknnView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnView::get(self : MlclassifyknnView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_view_set(s : MlclassifyknnView, i : Int, v : Double) -> MlclassifyknnView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnView::set(self : MlclassifyknnView, i : Int, v : Double) -> MlclassifyknnView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_view_sum(s : MlclassifyknnView) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnView::sum(self : MlclassifyknnView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_view_mean(s : MlclassifyknnView) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnView::mean(self : MlclassifyknnView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_view_scale(s : MlclassifyknnView, f : Double) -> MlclassifyknnView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnView::scale(self : MlclassifyknnView, f : Double) -> MlclassifyknnView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_view_add(a : MlclassifyknnView, b : MlclassifyknnView) -> MlclassifyknnView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnView::add(self : MlclassifyknnView, other : MlclassifyknnView) -> MlclassifyknnView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_view_copy(s : MlclassifyknnView) -> MlclassifyknnView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnView::copy(self : MlclassifyknnView) -> MlclassifyknnView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_view_fill(s : MlclassifyknnView, v : Double) -> MlclassifyknnView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnView::fill(self : MlclassifyknnView, v : Double) -> MlclassifyknnView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_view_min(s : MlclassifyknnView) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnView::min(self : MlclassifyknnView) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_view_max(s : MlclassifyknnView) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnView::max(self : MlclassifyknnView) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_view_to_string(s : MlclassifyknnView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnView::to_string(self : MlclassifyknnView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnRange {
@@ -963,45 +963,45 @@ pub fn ml_classify_knn_range_make(size : Int) -> MlclassifyknnRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_range_len(s : MlclassifyknnRange) -> Int { s.size }
+pub fn MlclassifyknnRange::len(self : MlclassifyknnRange) -> Int { self.size }
 
-pub fn ml_classify_knn_range_get(s : MlclassifyknnRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnRange::get(self : MlclassifyknnRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_range_set(s : MlclassifyknnRange, i : Int, v : Double) -> MlclassifyknnRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnRange::set(self : MlclassifyknnRange, i : Int, v : Double) -> MlclassifyknnRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_range_sum(s : MlclassifyknnRange) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnRange::sum(self : MlclassifyknnRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_range_mean(s : MlclassifyknnRange) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnRange::mean(self : MlclassifyknnRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_range_scale(s : MlclassifyknnRange, f : Double) -> MlclassifyknnRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnRange::scale(self : MlclassifyknnRange, f : Double) -> MlclassifyknnRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_range_add(a : MlclassifyknnRange, b : MlclassifyknnRange) -> MlclassifyknnRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnRange::add(self : MlclassifyknnRange, other : MlclassifyknnRange) -> MlclassifyknnRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_range_copy(s : MlclassifyknnRange) -> MlclassifyknnRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnRange::copy(self : MlclassifyknnRange) -> MlclassifyknnRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_range_fill(s : MlclassifyknnRange, v : Double) -> MlclassifyknnRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnRange::fill(self : MlclassifyknnRange, v : Double) -> MlclassifyknnRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_range_min(s : MlclassifyknnRange) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnRange::min(self : MlclassifyknnRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_range_max(s : MlclassifyknnRange) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnRange::max(self : MlclassifyknnRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_range_to_string(s : MlclassifyknnRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnRange::to_string(self : MlclassifyknnRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlclassifyknnSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_classify_knn_slice_make(size : Int) -> MlclassifyknnSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_classify_knn_slice_len(s : MlclassifyknnSlice) -> Int { s.size }
+pub fn MlclassifyknnSlice::len(self : MlclassifyknnSlice) -> Int { self.size }
 
-pub fn ml_classify_knn_slice_get(s : MlclassifyknnSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlclassifyknnSlice::get(self : MlclassifyknnSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_classify_knn_slice_set(s : MlclassifyknnSlice, i : Int, v : Double) -> MlclassifyknnSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlclassifyknnSlice::set(self : MlclassifyknnSlice, i : Int, v : Double) -> MlclassifyknnSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_slice_sum(s : MlclassifyknnSlice) -> Double { @_common.sum(s.data) }
+pub fn MlclassifyknnSlice::sum(self : MlclassifyknnSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_classify_knn_slice_mean(s : MlclassifyknnSlice) -> Double { @_common.mean(s.data) }
+pub fn MlclassifyknnSlice::mean(self : MlclassifyknnSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_classify_knn_slice_scale(s : MlclassifyknnSlice, f : Double) -> MlclassifyknnSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlclassifyknnSlice::scale(self : MlclassifyknnSlice, f : Double) -> MlclassifyknnSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_slice_add(a : MlclassifyknnSlice, b : MlclassifyknnSlice) -> MlclassifyknnSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlclassifyknnSlice::add(self : MlclassifyknnSlice, other : MlclassifyknnSlice) -> MlclassifyknnSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_classify_knn_slice_copy(s : MlclassifyknnSlice) -> MlclassifyknnSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlclassifyknnSlice::copy(self : MlclassifyknnSlice) -> MlclassifyknnSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_slice_fill(s : MlclassifyknnSlice, v : Double) -> MlclassifyknnSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlclassifyknnSlice::fill(self : MlclassifyknnSlice, v : Double) -> MlclassifyknnSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_classify_knn_slice_min(s : MlclassifyknnSlice) -> Double { @_common.min(s.data) }
+pub fn MlclassifyknnSlice::min(self : MlclassifyknnSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_classify_knn_slice_max(s : MlclassifyknnSlice) -> Double { @_common.max(s.data) }
+pub fn MlclassifyknnSlice::max(self : MlclassifyknnSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_classify_knn_slice_to_string(s : MlclassifyknnSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlclassifyknnSlice::to_string(self : MlclassifyknnSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

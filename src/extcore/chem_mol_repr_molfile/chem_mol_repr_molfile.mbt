@@ -351,45 +351,45 @@ pub fn chem_mol_repr_molfile_frame_make(size : Int) -> ChemmolreprmolfileFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_frame_len(s : ChemmolreprmolfileFrame) -> Int { s.size }
+pub fn ChemmolreprmolfileFrame::len(self : ChemmolreprmolfileFrame) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_frame_get(s : ChemmolreprmolfileFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileFrame::get(self : ChemmolreprmolfileFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_frame_set(s : ChemmolreprmolfileFrame, i : Int, v : Double) -> ChemmolreprmolfileFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileFrame::set(self : ChemmolreprmolfileFrame, i : Int, v : Double) -> ChemmolreprmolfileFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_frame_sum(s : ChemmolreprmolfileFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileFrame::sum(self : ChemmolreprmolfileFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_frame_mean(s : ChemmolreprmolfileFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileFrame::mean(self : ChemmolreprmolfileFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_frame_scale(s : ChemmolreprmolfileFrame, f : Double) -> ChemmolreprmolfileFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileFrame::scale(self : ChemmolreprmolfileFrame, f : Double) -> ChemmolreprmolfileFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_frame_add(a : ChemmolreprmolfileFrame, b : ChemmolreprmolfileFrame) -> ChemmolreprmolfileFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileFrame::add(self : ChemmolreprmolfileFrame, other : ChemmolreprmolfileFrame) -> ChemmolreprmolfileFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_frame_copy(s : ChemmolreprmolfileFrame) -> ChemmolreprmolfileFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileFrame::copy(self : ChemmolreprmolfileFrame) -> ChemmolreprmolfileFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_frame_fill(s : ChemmolreprmolfileFrame, v : Double) -> ChemmolreprmolfileFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileFrame::fill(self : ChemmolreprmolfileFrame, v : Double) -> ChemmolreprmolfileFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_frame_min(s : ChemmolreprmolfileFrame) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileFrame::min(self : ChemmolreprmolfileFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_frame_max(s : ChemmolreprmolfileFrame) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileFrame::max(self : ChemmolreprmolfileFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_frame_to_string(s : ChemmolreprmolfileFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileFrame::to_string(self : ChemmolreprmolfileFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileTable {
@@ -402,45 +402,45 @@ pub fn chem_mol_repr_molfile_table_make(size : Int) -> ChemmolreprmolfileTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_table_len(s : ChemmolreprmolfileTable) -> Int { s.size }
+pub fn ChemmolreprmolfileTable::len(self : ChemmolreprmolfileTable) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_table_get(s : ChemmolreprmolfileTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileTable::get(self : ChemmolreprmolfileTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_table_set(s : ChemmolreprmolfileTable, i : Int, v : Double) -> ChemmolreprmolfileTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileTable::set(self : ChemmolreprmolfileTable, i : Int, v : Double) -> ChemmolreprmolfileTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_table_sum(s : ChemmolreprmolfileTable) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileTable::sum(self : ChemmolreprmolfileTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_table_mean(s : ChemmolreprmolfileTable) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileTable::mean(self : ChemmolreprmolfileTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_table_scale(s : ChemmolreprmolfileTable, f : Double) -> ChemmolreprmolfileTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileTable::scale(self : ChemmolreprmolfileTable, f : Double) -> ChemmolreprmolfileTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_table_add(a : ChemmolreprmolfileTable, b : ChemmolreprmolfileTable) -> ChemmolreprmolfileTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileTable::add(self : ChemmolreprmolfileTable, other : ChemmolreprmolfileTable) -> ChemmolreprmolfileTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_table_copy(s : ChemmolreprmolfileTable) -> ChemmolreprmolfileTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileTable::copy(self : ChemmolreprmolfileTable) -> ChemmolreprmolfileTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_table_fill(s : ChemmolreprmolfileTable, v : Double) -> ChemmolreprmolfileTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileTable::fill(self : ChemmolreprmolfileTable, v : Double) -> ChemmolreprmolfileTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_table_min(s : ChemmolreprmolfileTable) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileTable::min(self : ChemmolreprmolfileTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_table_max(s : ChemmolreprmolfileTable) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileTable::max(self : ChemmolreprmolfileTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_table_to_string(s : ChemmolreprmolfileTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileTable::to_string(self : ChemmolreprmolfileTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileGraphN {
@@ -453,45 +453,45 @@ pub fn chem_mol_repr_molfile_graphn_make(size : Int) -> ChemmolreprmolfileGraphN
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_graphn_len(s : ChemmolreprmolfileGraphN) -> Int { s.size }
+pub fn ChemmolreprmolfileGraphN::len(self : ChemmolreprmolfileGraphN) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_graphn_get(s : ChemmolreprmolfileGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileGraphN::get(self : ChemmolreprmolfileGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_graphn_set(s : ChemmolreprmolfileGraphN, i : Int, v : Double) -> ChemmolreprmolfileGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileGraphN::set(self : ChemmolreprmolfileGraphN, i : Int, v : Double) -> ChemmolreprmolfileGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_graphn_sum(s : ChemmolreprmolfileGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileGraphN::sum(self : ChemmolreprmolfileGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_graphn_mean(s : ChemmolreprmolfileGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileGraphN::mean(self : ChemmolreprmolfileGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_graphn_scale(s : ChemmolreprmolfileGraphN, f : Double) -> ChemmolreprmolfileGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileGraphN::scale(self : ChemmolreprmolfileGraphN, f : Double) -> ChemmolreprmolfileGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_graphn_add(a : ChemmolreprmolfileGraphN, b : ChemmolreprmolfileGraphN) -> ChemmolreprmolfileGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileGraphN::add(self : ChemmolreprmolfileGraphN, other : ChemmolreprmolfileGraphN) -> ChemmolreprmolfileGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_graphn_copy(s : ChemmolreprmolfileGraphN) -> ChemmolreprmolfileGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileGraphN::copy(self : ChemmolreprmolfileGraphN) -> ChemmolreprmolfileGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_graphn_fill(s : ChemmolreprmolfileGraphN, v : Double) -> ChemmolreprmolfileGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileGraphN::fill(self : ChemmolreprmolfileGraphN, v : Double) -> ChemmolreprmolfileGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_graphn_min(s : ChemmolreprmolfileGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileGraphN::min(self : ChemmolreprmolfileGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_graphn_max(s : ChemmolreprmolfileGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileGraphN::max(self : ChemmolreprmolfileGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_graphn_to_string(s : ChemmolreprmolfileGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileGraphN::to_string(self : ChemmolreprmolfileGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileNode {
@@ -504,45 +504,45 @@ pub fn chem_mol_repr_molfile_node_make(size : Int) -> ChemmolreprmolfileNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_node_len(s : ChemmolreprmolfileNode) -> Int { s.size }
+pub fn ChemmolreprmolfileNode::len(self : ChemmolreprmolfileNode) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_node_get(s : ChemmolreprmolfileNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileNode::get(self : ChemmolreprmolfileNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_node_set(s : ChemmolreprmolfileNode, i : Int, v : Double) -> ChemmolreprmolfileNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileNode::set(self : ChemmolreprmolfileNode, i : Int, v : Double) -> ChemmolreprmolfileNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_node_sum(s : ChemmolreprmolfileNode) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileNode::sum(self : ChemmolreprmolfileNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_node_mean(s : ChemmolreprmolfileNode) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileNode::mean(self : ChemmolreprmolfileNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_node_scale(s : ChemmolreprmolfileNode, f : Double) -> ChemmolreprmolfileNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileNode::scale(self : ChemmolreprmolfileNode, f : Double) -> ChemmolreprmolfileNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_node_add(a : ChemmolreprmolfileNode, b : ChemmolreprmolfileNode) -> ChemmolreprmolfileNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileNode::add(self : ChemmolreprmolfileNode, other : ChemmolreprmolfileNode) -> ChemmolreprmolfileNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_node_copy(s : ChemmolreprmolfileNode) -> ChemmolreprmolfileNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileNode::copy(self : ChemmolreprmolfileNode) -> ChemmolreprmolfileNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_node_fill(s : ChemmolreprmolfileNode, v : Double) -> ChemmolreprmolfileNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileNode::fill(self : ChemmolreprmolfileNode, v : Double) -> ChemmolreprmolfileNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_node_min(s : ChemmolreprmolfileNode) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileNode::min(self : ChemmolreprmolfileNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_node_max(s : ChemmolreprmolfileNode) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileNode::max(self : ChemmolreprmolfileNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_node_to_string(s : ChemmolreprmolfileNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileNode::to_string(self : ChemmolreprmolfileNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileEdge {
@@ -555,45 +555,45 @@ pub fn chem_mol_repr_molfile_edge_make(size : Int) -> ChemmolreprmolfileEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_edge_len(s : ChemmolreprmolfileEdge) -> Int { s.size }
+pub fn ChemmolreprmolfileEdge::len(self : ChemmolreprmolfileEdge) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_edge_get(s : ChemmolreprmolfileEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileEdge::get(self : ChemmolreprmolfileEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_edge_set(s : ChemmolreprmolfileEdge, i : Int, v : Double) -> ChemmolreprmolfileEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileEdge::set(self : ChemmolreprmolfileEdge, i : Int, v : Double) -> ChemmolreprmolfileEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_edge_sum(s : ChemmolreprmolfileEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileEdge::sum(self : ChemmolreprmolfileEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_edge_mean(s : ChemmolreprmolfileEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileEdge::mean(self : ChemmolreprmolfileEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_edge_scale(s : ChemmolreprmolfileEdge, f : Double) -> ChemmolreprmolfileEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileEdge::scale(self : ChemmolreprmolfileEdge, f : Double) -> ChemmolreprmolfileEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_edge_add(a : ChemmolreprmolfileEdge, b : ChemmolreprmolfileEdge) -> ChemmolreprmolfileEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileEdge::add(self : ChemmolreprmolfileEdge, other : ChemmolreprmolfileEdge) -> ChemmolreprmolfileEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_edge_copy(s : ChemmolreprmolfileEdge) -> ChemmolreprmolfileEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileEdge::copy(self : ChemmolreprmolfileEdge) -> ChemmolreprmolfileEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_edge_fill(s : ChemmolreprmolfileEdge, v : Double) -> ChemmolreprmolfileEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileEdge::fill(self : ChemmolreprmolfileEdge, v : Double) -> ChemmolreprmolfileEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_edge_min(s : ChemmolreprmolfileEdge) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileEdge::min(self : ChemmolreprmolfileEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_edge_max(s : ChemmolreprmolfileEdge) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileEdge::max(self : ChemmolreprmolfileEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_edge_to_string(s : ChemmolreprmolfileEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileEdge::to_string(self : ChemmolreprmolfileEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfilePath {
@@ -606,45 +606,45 @@ pub fn chem_mol_repr_molfile_path_make(size : Int) -> ChemmolreprmolfilePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_path_len(s : ChemmolreprmolfilePath) -> Int { s.size }
+pub fn ChemmolreprmolfilePath::len(self : ChemmolreprmolfilePath) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_path_get(s : ChemmolreprmolfilePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfilePath::get(self : ChemmolreprmolfilePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_path_set(s : ChemmolreprmolfilePath, i : Int, v : Double) -> ChemmolreprmolfilePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfilePath::set(self : ChemmolreprmolfilePath, i : Int, v : Double) -> ChemmolreprmolfilePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_path_sum(s : ChemmolreprmolfilePath) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfilePath::sum(self : ChemmolreprmolfilePath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_path_mean(s : ChemmolreprmolfilePath) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfilePath::mean(self : ChemmolreprmolfilePath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_path_scale(s : ChemmolreprmolfilePath, f : Double) -> ChemmolreprmolfilePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfilePath::scale(self : ChemmolreprmolfilePath, f : Double) -> ChemmolreprmolfilePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_path_add(a : ChemmolreprmolfilePath, b : ChemmolreprmolfilePath) -> ChemmolreprmolfilePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfilePath::add(self : ChemmolreprmolfilePath, other : ChemmolreprmolfilePath) -> ChemmolreprmolfilePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_path_copy(s : ChemmolreprmolfilePath) -> ChemmolreprmolfilePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfilePath::copy(self : ChemmolreprmolfilePath) -> ChemmolreprmolfilePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_path_fill(s : ChemmolreprmolfilePath, v : Double) -> ChemmolreprmolfilePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfilePath::fill(self : ChemmolreprmolfilePath, v : Double) -> ChemmolreprmolfilePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_path_min(s : ChemmolreprmolfilePath) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfilePath::min(self : ChemmolreprmolfilePath) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_path_max(s : ChemmolreprmolfilePath) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfilePath::max(self : ChemmolreprmolfilePath) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_path_to_string(s : ChemmolreprmolfilePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfilePath::to_string(self : ChemmolreprmolfilePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileCluster {
@@ -657,45 +657,45 @@ pub fn chem_mol_repr_molfile_cluster_make(size : Int) -> ChemmolreprmolfileClust
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_cluster_len(s : ChemmolreprmolfileCluster) -> Int { s.size }
+pub fn ChemmolreprmolfileCluster::len(self : ChemmolreprmolfileCluster) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_cluster_get(s : ChemmolreprmolfileCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileCluster::get(self : ChemmolreprmolfileCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_cluster_set(s : ChemmolreprmolfileCluster, i : Int, v : Double) -> ChemmolreprmolfileCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCluster::set(self : ChemmolreprmolfileCluster, i : Int, v : Double) -> ChemmolreprmolfileCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cluster_sum(s : ChemmolreprmolfileCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileCluster::sum(self : ChemmolreprmolfileCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_cluster_mean(s : ChemmolreprmolfileCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileCluster::mean(self : ChemmolreprmolfileCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_cluster_scale(s : ChemmolreprmolfileCluster, f : Double) -> ChemmolreprmolfileCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCluster::scale(self : ChemmolreprmolfileCluster, f : Double) -> ChemmolreprmolfileCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cluster_add(a : ChemmolreprmolfileCluster, b : ChemmolreprmolfileCluster) -> ChemmolreprmolfileCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileCluster::add(self : ChemmolreprmolfileCluster, other : ChemmolreprmolfileCluster) -> ChemmolreprmolfileCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cluster_copy(s : ChemmolreprmolfileCluster) -> ChemmolreprmolfileCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCluster::copy(self : ChemmolreprmolfileCluster) -> ChemmolreprmolfileCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cluster_fill(s : ChemmolreprmolfileCluster, v : Double) -> ChemmolreprmolfileCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCluster::fill(self : ChemmolreprmolfileCluster, v : Double) -> ChemmolreprmolfileCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cluster_min(s : ChemmolreprmolfileCluster) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileCluster::min(self : ChemmolreprmolfileCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_cluster_max(s : ChemmolreprmolfileCluster) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileCluster::max(self : ChemmolreprmolfileCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_cluster_to_string(s : ChemmolreprmolfileCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileCluster::to_string(self : ChemmolreprmolfileCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileModel {
@@ -708,45 +708,45 @@ pub fn chem_mol_repr_molfile_model_make(size : Int) -> ChemmolreprmolfileModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_model_len(s : ChemmolreprmolfileModel) -> Int { s.size }
+pub fn ChemmolreprmolfileModel::len(self : ChemmolreprmolfileModel) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_model_get(s : ChemmolreprmolfileModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileModel::get(self : ChemmolreprmolfileModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_model_set(s : ChemmolreprmolfileModel, i : Int, v : Double) -> ChemmolreprmolfileModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileModel::set(self : ChemmolreprmolfileModel, i : Int, v : Double) -> ChemmolreprmolfileModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_model_sum(s : ChemmolreprmolfileModel) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileModel::sum(self : ChemmolreprmolfileModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_model_mean(s : ChemmolreprmolfileModel) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileModel::mean(self : ChemmolreprmolfileModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_model_scale(s : ChemmolreprmolfileModel, f : Double) -> ChemmolreprmolfileModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileModel::scale(self : ChemmolreprmolfileModel, f : Double) -> ChemmolreprmolfileModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_model_add(a : ChemmolreprmolfileModel, b : ChemmolreprmolfileModel) -> ChemmolreprmolfileModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileModel::add(self : ChemmolreprmolfileModel, other : ChemmolreprmolfileModel) -> ChemmolreprmolfileModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_model_copy(s : ChemmolreprmolfileModel) -> ChemmolreprmolfileModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileModel::copy(self : ChemmolreprmolfileModel) -> ChemmolreprmolfileModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_model_fill(s : ChemmolreprmolfileModel, v : Double) -> ChemmolreprmolfileModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileModel::fill(self : ChemmolreprmolfileModel, v : Double) -> ChemmolreprmolfileModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_model_min(s : ChemmolreprmolfileModel) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileModel::min(self : ChemmolreprmolfileModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_model_max(s : ChemmolreprmolfileModel) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileModel::max(self : ChemmolreprmolfileModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_model_to_string(s : ChemmolreprmolfileModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileModel::to_string(self : ChemmolreprmolfileModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileLayer {
@@ -759,45 +759,45 @@ pub fn chem_mol_repr_molfile_layer_make(size : Int) -> ChemmolreprmolfileLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_layer_len(s : ChemmolreprmolfileLayer) -> Int { s.size }
+pub fn ChemmolreprmolfileLayer::len(self : ChemmolreprmolfileLayer) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_layer_get(s : ChemmolreprmolfileLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileLayer::get(self : ChemmolreprmolfileLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_layer_set(s : ChemmolreprmolfileLayer, i : Int, v : Double) -> ChemmolreprmolfileLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileLayer::set(self : ChemmolreprmolfileLayer, i : Int, v : Double) -> ChemmolreprmolfileLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_layer_sum(s : ChemmolreprmolfileLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileLayer::sum(self : ChemmolreprmolfileLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_layer_mean(s : ChemmolreprmolfileLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileLayer::mean(self : ChemmolreprmolfileLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_layer_scale(s : ChemmolreprmolfileLayer, f : Double) -> ChemmolreprmolfileLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileLayer::scale(self : ChemmolreprmolfileLayer, f : Double) -> ChemmolreprmolfileLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_layer_add(a : ChemmolreprmolfileLayer, b : ChemmolreprmolfileLayer) -> ChemmolreprmolfileLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileLayer::add(self : ChemmolreprmolfileLayer, other : ChemmolreprmolfileLayer) -> ChemmolreprmolfileLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_layer_copy(s : ChemmolreprmolfileLayer) -> ChemmolreprmolfileLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileLayer::copy(self : ChemmolreprmolfileLayer) -> ChemmolreprmolfileLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_layer_fill(s : ChemmolreprmolfileLayer, v : Double) -> ChemmolreprmolfileLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileLayer::fill(self : ChemmolreprmolfileLayer, v : Double) -> ChemmolreprmolfileLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_layer_min(s : ChemmolreprmolfileLayer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileLayer::min(self : ChemmolreprmolfileLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_layer_max(s : ChemmolreprmolfileLayer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileLayer::max(self : ChemmolreprmolfileLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_layer_to_string(s : ChemmolreprmolfileLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileLayer::to_string(self : ChemmolreprmolfileLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileBuffer {
@@ -810,45 +810,45 @@ pub fn chem_mol_repr_molfile_buffer_make(size : Int) -> ChemmolreprmolfileBuffer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_buffer_len(s : ChemmolreprmolfileBuffer) -> Int { s.size }
+pub fn ChemmolreprmolfileBuffer::len(self : ChemmolreprmolfileBuffer) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_buffer_get(s : ChemmolreprmolfileBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileBuffer::get(self : ChemmolreprmolfileBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_buffer_set(s : ChemmolreprmolfileBuffer, i : Int, v : Double) -> ChemmolreprmolfileBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileBuffer::set(self : ChemmolreprmolfileBuffer, i : Int, v : Double) -> ChemmolreprmolfileBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_buffer_sum(s : ChemmolreprmolfileBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileBuffer::sum(self : ChemmolreprmolfileBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_buffer_mean(s : ChemmolreprmolfileBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileBuffer::mean(self : ChemmolreprmolfileBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_buffer_scale(s : ChemmolreprmolfileBuffer, f : Double) -> ChemmolreprmolfileBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileBuffer::scale(self : ChemmolreprmolfileBuffer, f : Double) -> ChemmolreprmolfileBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_buffer_add(a : ChemmolreprmolfileBuffer, b : ChemmolreprmolfileBuffer) -> ChemmolreprmolfileBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileBuffer::add(self : ChemmolreprmolfileBuffer, other : ChemmolreprmolfileBuffer) -> ChemmolreprmolfileBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_buffer_copy(s : ChemmolreprmolfileBuffer) -> ChemmolreprmolfileBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileBuffer::copy(self : ChemmolreprmolfileBuffer) -> ChemmolreprmolfileBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_buffer_fill(s : ChemmolreprmolfileBuffer, v : Double) -> ChemmolreprmolfileBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileBuffer::fill(self : ChemmolreprmolfileBuffer, v : Double) -> ChemmolreprmolfileBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_buffer_min(s : ChemmolreprmolfileBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileBuffer::min(self : ChemmolreprmolfileBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_buffer_max(s : ChemmolreprmolfileBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileBuffer::max(self : ChemmolreprmolfileBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_buffer_to_string(s : ChemmolreprmolfileBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileBuffer::to_string(self : ChemmolreprmolfileBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileCursor {
@@ -861,45 +861,45 @@ pub fn chem_mol_repr_molfile_cursor_make(size : Int) -> ChemmolreprmolfileCursor
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_cursor_len(s : ChemmolreprmolfileCursor) -> Int { s.size }
+pub fn ChemmolreprmolfileCursor::len(self : ChemmolreprmolfileCursor) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_cursor_get(s : ChemmolreprmolfileCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileCursor::get(self : ChemmolreprmolfileCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_cursor_set(s : ChemmolreprmolfileCursor, i : Int, v : Double) -> ChemmolreprmolfileCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCursor::set(self : ChemmolreprmolfileCursor, i : Int, v : Double) -> ChemmolreprmolfileCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cursor_sum(s : ChemmolreprmolfileCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileCursor::sum(self : ChemmolreprmolfileCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_cursor_mean(s : ChemmolreprmolfileCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileCursor::mean(self : ChemmolreprmolfileCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_cursor_scale(s : ChemmolreprmolfileCursor, f : Double) -> ChemmolreprmolfileCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCursor::scale(self : ChemmolreprmolfileCursor, f : Double) -> ChemmolreprmolfileCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cursor_add(a : ChemmolreprmolfileCursor, b : ChemmolreprmolfileCursor) -> ChemmolreprmolfileCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileCursor::add(self : ChemmolreprmolfileCursor, other : ChemmolreprmolfileCursor) -> ChemmolreprmolfileCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cursor_copy(s : ChemmolreprmolfileCursor) -> ChemmolreprmolfileCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCursor::copy(self : ChemmolreprmolfileCursor) -> ChemmolreprmolfileCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cursor_fill(s : ChemmolreprmolfileCursor, v : Double) -> ChemmolreprmolfileCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileCursor::fill(self : ChemmolreprmolfileCursor, v : Double) -> ChemmolreprmolfileCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_cursor_min(s : ChemmolreprmolfileCursor) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileCursor::min(self : ChemmolreprmolfileCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_cursor_max(s : ChemmolreprmolfileCursor) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileCursor::max(self : ChemmolreprmolfileCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_cursor_to_string(s : ChemmolreprmolfileCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileCursor::to_string(self : ChemmolreprmolfileCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileView {
@@ -912,45 +912,45 @@ pub fn chem_mol_repr_molfile_view_make(size : Int) -> ChemmolreprmolfileView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_view_len(s : ChemmolreprmolfileView) -> Int { s.size }
+pub fn ChemmolreprmolfileView::len(self : ChemmolreprmolfileView) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_view_get(s : ChemmolreprmolfileView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileView::get(self : ChemmolreprmolfileView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_view_set(s : ChemmolreprmolfileView, i : Int, v : Double) -> ChemmolreprmolfileView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileView::set(self : ChemmolreprmolfileView, i : Int, v : Double) -> ChemmolreprmolfileView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_view_sum(s : ChemmolreprmolfileView) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileView::sum(self : ChemmolreprmolfileView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_view_mean(s : ChemmolreprmolfileView) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileView::mean(self : ChemmolreprmolfileView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_view_scale(s : ChemmolreprmolfileView, f : Double) -> ChemmolreprmolfileView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileView::scale(self : ChemmolreprmolfileView, f : Double) -> ChemmolreprmolfileView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_view_add(a : ChemmolreprmolfileView, b : ChemmolreprmolfileView) -> ChemmolreprmolfileView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileView::add(self : ChemmolreprmolfileView, other : ChemmolreprmolfileView) -> ChemmolreprmolfileView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_view_copy(s : ChemmolreprmolfileView) -> ChemmolreprmolfileView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileView::copy(self : ChemmolreprmolfileView) -> ChemmolreprmolfileView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_view_fill(s : ChemmolreprmolfileView, v : Double) -> ChemmolreprmolfileView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileView::fill(self : ChemmolreprmolfileView, v : Double) -> ChemmolreprmolfileView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_view_min(s : ChemmolreprmolfileView) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileView::min(self : ChemmolreprmolfileView) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_view_max(s : ChemmolreprmolfileView) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileView::max(self : ChemmolreprmolfileView) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_view_to_string(s : ChemmolreprmolfileView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileView::to_string(self : ChemmolreprmolfileView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileRange {
@@ -963,45 +963,45 @@ pub fn chem_mol_repr_molfile_range_make(size : Int) -> ChemmolreprmolfileRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_range_len(s : ChemmolreprmolfileRange) -> Int { s.size }
+pub fn ChemmolreprmolfileRange::len(self : ChemmolreprmolfileRange) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_range_get(s : ChemmolreprmolfileRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileRange::get(self : ChemmolreprmolfileRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_range_set(s : ChemmolreprmolfileRange, i : Int, v : Double) -> ChemmolreprmolfileRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileRange::set(self : ChemmolreprmolfileRange, i : Int, v : Double) -> ChemmolreprmolfileRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_range_sum(s : ChemmolreprmolfileRange) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileRange::sum(self : ChemmolreprmolfileRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_range_mean(s : ChemmolreprmolfileRange) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileRange::mean(self : ChemmolreprmolfileRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_range_scale(s : ChemmolreprmolfileRange, f : Double) -> ChemmolreprmolfileRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileRange::scale(self : ChemmolreprmolfileRange, f : Double) -> ChemmolreprmolfileRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_range_add(a : ChemmolreprmolfileRange, b : ChemmolreprmolfileRange) -> ChemmolreprmolfileRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileRange::add(self : ChemmolreprmolfileRange, other : ChemmolreprmolfileRange) -> ChemmolreprmolfileRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_range_copy(s : ChemmolreprmolfileRange) -> ChemmolreprmolfileRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileRange::copy(self : ChemmolreprmolfileRange) -> ChemmolreprmolfileRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_range_fill(s : ChemmolreprmolfileRange, v : Double) -> ChemmolreprmolfileRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileRange::fill(self : ChemmolreprmolfileRange, v : Double) -> ChemmolreprmolfileRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_range_min(s : ChemmolreprmolfileRange) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileRange::min(self : ChemmolreprmolfileRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_range_max(s : ChemmolreprmolfileRange) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileRange::max(self : ChemmolreprmolfileRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_range_to_string(s : ChemmolreprmolfileRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileRange::to_string(self : ChemmolreprmolfileRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprmolfileSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_mol_repr_molfile_slice_make(size : Int) -> ChemmolreprmolfileSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_mol_repr_molfile_slice_len(s : ChemmolreprmolfileSlice) -> Int { s.size }
+pub fn ChemmolreprmolfileSlice::len(self : ChemmolreprmolfileSlice) -> Int { self.size }
 
-pub fn chem_mol_repr_molfile_slice_get(s : ChemmolreprmolfileSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemmolreprmolfileSlice::get(self : ChemmolreprmolfileSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_mol_repr_molfile_slice_set(s : ChemmolreprmolfileSlice, i : Int, v : Double) -> ChemmolreprmolfileSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileSlice::set(self : ChemmolreprmolfileSlice, i : Int, v : Double) -> ChemmolreprmolfileSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_slice_sum(s : ChemmolreprmolfileSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemmolreprmolfileSlice::sum(self : ChemmolreprmolfileSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_mol_repr_molfile_slice_mean(s : ChemmolreprmolfileSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemmolreprmolfileSlice::mean(self : ChemmolreprmolfileSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_mol_repr_molfile_slice_scale(s : ChemmolreprmolfileSlice, f : Double) -> ChemmolreprmolfileSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileSlice::scale(self : ChemmolreprmolfileSlice, f : Double) -> ChemmolreprmolfileSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_slice_add(a : ChemmolreprmolfileSlice, b : ChemmolreprmolfileSlice) -> ChemmolreprmolfileSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemmolreprmolfileSlice::add(self : ChemmolreprmolfileSlice, other : ChemmolreprmolfileSlice) -> ChemmolreprmolfileSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_slice_copy(s : ChemmolreprmolfileSlice) -> ChemmolreprmolfileSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileSlice::copy(self : ChemmolreprmolfileSlice) -> ChemmolreprmolfileSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_slice_fill(s : ChemmolreprmolfileSlice, v : Double) -> ChemmolreprmolfileSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemmolreprmolfileSlice::fill(self : ChemmolreprmolfileSlice, v : Double) -> ChemmolreprmolfileSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_mol_repr_molfile_slice_min(s : ChemmolreprmolfileSlice) -> Double { @_common.min(s.data) }
+pub fn ChemmolreprmolfileSlice::min(self : ChemmolreprmolfileSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_mol_repr_molfile_slice_max(s : ChemmolreprmolfileSlice) -> Double { @_common.max(s.data) }
+pub fn ChemmolreprmolfileSlice::max(self : ChemmolreprmolfileSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_mol_repr_molfile_slice_to_string(s : ChemmolreprmolfileSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemmolreprmolfileSlice::to_string(self : ChemmolreprmolfileSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

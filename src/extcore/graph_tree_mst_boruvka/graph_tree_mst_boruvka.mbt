@@ -351,45 +351,45 @@ pub fn graph_tree_mst_boruvka_frame_make(size : Int) -> GraphtreemstboruvkaFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_frame_len(s : GraphtreemstboruvkaFrame) -> Int { s.size }
+pub fn GraphtreemstboruvkaFrame::len(self : GraphtreemstboruvkaFrame) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_frame_get(s : GraphtreemstboruvkaFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaFrame::get(self : GraphtreemstboruvkaFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_frame_set(s : GraphtreemstboruvkaFrame, i : Int, v : Double) -> GraphtreemstboruvkaFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaFrame::set(self : GraphtreemstboruvkaFrame, i : Int, v : Double) -> GraphtreemstboruvkaFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_frame_sum(s : GraphtreemstboruvkaFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaFrame::sum(self : GraphtreemstboruvkaFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_frame_mean(s : GraphtreemstboruvkaFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaFrame::mean(self : GraphtreemstboruvkaFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_frame_scale(s : GraphtreemstboruvkaFrame, f : Double) -> GraphtreemstboruvkaFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaFrame::scale(self : GraphtreemstboruvkaFrame, f : Double) -> GraphtreemstboruvkaFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_frame_add(a : GraphtreemstboruvkaFrame, b : GraphtreemstboruvkaFrame) -> GraphtreemstboruvkaFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaFrame::add(self : GraphtreemstboruvkaFrame, other : GraphtreemstboruvkaFrame) -> GraphtreemstboruvkaFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_frame_copy(s : GraphtreemstboruvkaFrame) -> GraphtreemstboruvkaFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaFrame::copy(self : GraphtreemstboruvkaFrame) -> GraphtreemstboruvkaFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_frame_fill(s : GraphtreemstboruvkaFrame, v : Double) -> GraphtreemstboruvkaFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaFrame::fill(self : GraphtreemstboruvkaFrame, v : Double) -> GraphtreemstboruvkaFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_frame_min(s : GraphtreemstboruvkaFrame) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaFrame::min(self : GraphtreemstboruvkaFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_frame_max(s : GraphtreemstboruvkaFrame) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaFrame::max(self : GraphtreemstboruvkaFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_frame_to_string(s : GraphtreemstboruvkaFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaFrame::to_string(self : GraphtreemstboruvkaFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaTable {
@@ -402,45 +402,45 @@ pub fn graph_tree_mst_boruvka_table_make(size : Int) -> GraphtreemstboruvkaTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_table_len(s : GraphtreemstboruvkaTable) -> Int { s.size }
+pub fn GraphtreemstboruvkaTable::len(self : GraphtreemstboruvkaTable) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_table_get(s : GraphtreemstboruvkaTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaTable::get(self : GraphtreemstboruvkaTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_table_set(s : GraphtreemstboruvkaTable, i : Int, v : Double) -> GraphtreemstboruvkaTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaTable::set(self : GraphtreemstboruvkaTable, i : Int, v : Double) -> GraphtreemstboruvkaTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_table_sum(s : GraphtreemstboruvkaTable) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaTable::sum(self : GraphtreemstboruvkaTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_table_mean(s : GraphtreemstboruvkaTable) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaTable::mean(self : GraphtreemstboruvkaTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_table_scale(s : GraphtreemstboruvkaTable, f : Double) -> GraphtreemstboruvkaTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaTable::scale(self : GraphtreemstboruvkaTable, f : Double) -> GraphtreemstboruvkaTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_table_add(a : GraphtreemstboruvkaTable, b : GraphtreemstboruvkaTable) -> GraphtreemstboruvkaTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaTable::add(self : GraphtreemstboruvkaTable, other : GraphtreemstboruvkaTable) -> GraphtreemstboruvkaTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_table_copy(s : GraphtreemstboruvkaTable) -> GraphtreemstboruvkaTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaTable::copy(self : GraphtreemstboruvkaTable) -> GraphtreemstboruvkaTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_table_fill(s : GraphtreemstboruvkaTable, v : Double) -> GraphtreemstboruvkaTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaTable::fill(self : GraphtreemstboruvkaTable, v : Double) -> GraphtreemstboruvkaTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_table_min(s : GraphtreemstboruvkaTable) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaTable::min(self : GraphtreemstboruvkaTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_table_max(s : GraphtreemstboruvkaTable) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaTable::max(self : GraphtreemstboruvkaTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_table_to_string(s : GraphtreemstboruvkaTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaTable::to_string(self : GraphtreemstboruvkaTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaGraphN {
@@ -453,45 +453,45 @@ pub fn graph_tree_mst_boruvka_graphn_make(size : Int) -> GraphtreemstboruvkaGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_len(s : GraphtreemstboruvkaGraphN) -> Int { s.size }
+pub fn GraphtreemstboruvkaGraphN::len(self : GraphtreemstboruvkaGraphN) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_graphn_get(s : GraphtreemstboruvkaGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaGraphN::get(self : GraphtreemstboruvkaGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_set(s : GraphtreemstboruvkaGraphN, i : Int, v : Double) -> GraphtreemstboruvkaGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaGraphN::set(self : GraphtreemstboruvkaGraphN, i : Int, v : Double) -> GraphtreemstboruvkaGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_sum(s : GraphtreemstboruvkaGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaGraphN::sum(self : GraphtreemstboruvkaGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_graphn_mean(s : GraphtreemstboruvkaGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaGraphN::mean(self : GraphtreemstboruvkaGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_graphn_scale(s : GraphtreemstboruvkaGraphN, f : Double) -> GraphtreemstboruvkaGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaGraphN::scale(self : GraphtreemstboruvkaGraphN, f : Double) -> GraphtreemstboruvkaGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_add(a : GraphtreemstboruvkaGraphN, b : GraphtreemstboruvkaGraphN) -> GraphtreemstboruvkaGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaGraphN::add(self : GraphtreemstboruvkaGraphN, other : GraphtreemstboruvkaGraphN) -> GraphtreemstboruvkaGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_copy(s : GraphtreemstboruvkaGraphN) -> GraphtreemstboruvkaGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaGraphN::copy(self : GraphtreemstboruvkaGraphN) -> GraphtreemstboruvkaGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_fill(s : GraphtreemstboruvkaGraphN, v : Double) -> GraphtreemstboruvkaGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaGraphN::fill(self : GraphtreemstboruvkaGraphN, v : Double) -> GraphtreemstboruvkaGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_graphn_min(s : GraphtreemstboruvkaGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaGraphN::min(self : GraphtreemstboruvkaGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_graphn_max(s : GraphtreemstboruvkaGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaGraphN::max(self : GraphtreemstboruvkaGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_graphn_to_string(s : GraphtreemstboruvkaGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaGraphN::to_string(self : GraphtreemstboruvkaGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaNode {
@@ -504,45 +504,45 @@ pub fn graph_tree_mst_boruvka_node_make(size : Int) -> GraphtreemstboruvkaNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_node_len(s : GraphtreemstboruvkaNode) -> Int { s.size }
+pub fn GraphtreemstboruvkaNode::len(self : GraphtreemstboruvkaNode) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_node_get(s : GraphtreemstboruvkaNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaNode::get(self : GraphtreemstboruvkaNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_node_set(s : GraphtreemstboruvkaNode, i : Int, v : Double) -> GraphtreemstboruvkaNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaNode::set(self : GraphtreemstboruvkaNode, i : Int, v : Double) -> GraphtreemstboruvkaNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_node_sum(s : GraphtreemstboruvkaNode) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaNode::sum(self : GraphtreemstboruvkaNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_node_mean(s : GraphtreemstboruvkaNode) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaNode::mean(self : GraphtreemstboruvkaNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_node_scale(s : GraphtreemstboruvkaNode, f : Double) -> GraphtreemstboruvkaNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaNode::scale(self : GraphtreemstboruvkaNode, f : Double) -> GraphtreemstboruvkaNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_node_add(a : GraphtreemstboruvkaNode, b : GraphtreemstboruvkaNode) -> GraphtreemstboruvkaNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaNode::add(self : GraphtreemstboruvkaNode, other : GraphtreemstboruvkaNode) -> GraphtreemstboruvkaNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_node_copy(s : GraphtreemstboruvkaNode) -> GraphtreemstboruvkaNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaNode::copy(self : GraphtreemstboruvkaNode) -> GraphtreemstboruvkaNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_node_fill(s : GraphtreemstboruvkaNode, v : Double) -> GraphtreemstboruvkaNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaNode::fill(self : GraphtreemstboruvkaNode, v : Double) -> GraphtreemstboruvkaNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_node_min(s : GraphtreemstboruvkaNode) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaNode::min(self : GraphtreemstboruvkaNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_node_max(s : GraphtreemstboruvkaNode) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaNode::max(self : GraphtreemstboruvkaNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_node_to_string(s : GraphtreemstboruvkaNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaNode::to_string(self : GraphtreemstboruvkaNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaEdge {
@@ -555,45 +555,45 @@ pub fn graph_tree_mst_boruvka_edge_make(size : Int) -> GraphtreemstboruvkaEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_edge_len(s : GraphtreemstboruvkaEdge) -> Int { s.size }
+pub fn GraphtreemstboruvkaEdge::len(self : GraphtreemstboruvkaEdge) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_edge_get(s : GraphtreemstboruvkaEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaEdge::get(self : GraphtreemstboruvkaEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_edge_set(s : GraphtreemstboruvkaEdge, i : Int, v : Double) -> GraphtreemstboruvkaEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaEdge::set(self : GraphtreemstboruvkaEdge, i : Int, v : Double) -> GraphtreemstboruvkaEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_edge_sum(s : GraphtreemstboruvkaEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaEdge::sum(self : GraphtreemstboruvkaEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_edge_mean(s : GraphtreemstboruvkaEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaEdge::mean(self : GraphtreemstboruvkaEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_edge_scale(s : GraphtreemstboruvkaEdge, f : Double) -> GraphtreemstboruvkaEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaEdge::scale(self : GraphtreemstboruvkaEdge, f : Double) -> GraphtreemstboruvkaEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_edge_add(a : GraphtreemstboruvkaEdge, b : GraphtreemstboruvkaEdge) -> GraphtreemstboruvkaEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaEdge::add(self : GraphtreemstboruvkaEdge, other : GraphtreemstboruvkaEdge) -> GraphtreemstboruvkaEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_edge_copy(s : GraphtreemstboruvkaEdge) -> GraphtreemstboruvkaEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaEdge::copy(self : GraphtreemstboruvkaEdge) -> GraphtreemstboruvkaEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_edge_fill(s : GraphtreemstboruvkaEdge, v : Double) -> GraphtreemstboruvkaEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaEdge::fill(self : GraphtreemstboruvkaEdge, v : Double) -> GraphtreemstboruvkaEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_edge_min(s : GraphtreemstboruvkaEdge) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaEdge::min(self : GraphtreemstboruvkaEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_edge_max(s : GraphtreemstboruvkaEdge) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaEdge::max(self : GraphtreemstboruvkaEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_edge_to_string(s : GraphtreemstboruvkaEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaEdge::to_string(self : GraphtreemstboruvkaEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaPath {
@@ -606,45 +606,45 @@ pub fn graph_tree_mst_boruvka_path_make(size : Int) -> GraphtreemstboruvkaPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_path_len(s : GraphtreemstboruvkaPath) -> Int { s.size }
+pub fn GraphtreemstboruvkaPath::len(self : GraphtreemstboruvkaPath) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_path_get(s : GraphtreemstboruvkaPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaPath::get(self : GraphtreemstboruvkaPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_path_set(s : GraphtreemstboruvkaPath, i : Int, v : Double) -> GraphtreemstboruvkaPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaPath::set(self : GraphtreemstboruvkaPath, i : Int, v : Double) -> GraphtreemstboruvkaPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_path_sum(s : GraphtreemstboruvkaPath) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaPath::sum(self : GraphtreemstboruvkaPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_path_mean(s : GraphtreemstboruvkaPath) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaPath::mean(self : GraphtreemstboruvkaPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_path_scale(s : GraphtreemstboruvkaPath, f : Double) -> GraphtreemstboruvkaPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaPath::scale(self : GraphtreemstboruvkaPath, f : Double) -> GraphtreemstboruvkaPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_path_add(a : GraphtreemstboruvkaPath, b : GraphtreemstboruvkaPath) -> GraphtreemstboruvkaPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaPath::add(self : GraphtreemstboruvkaPath, other : GraphtreemstboruvkaPath) -> GraphtreemstboruvkaPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_path_copy(s : GraphtreemstboruvkaPath) -> GraphtreemstboruvkaPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaPath::copy(self : GraphtreemstboruvkaPath) -> GraphtreemstboruvkaPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_path_fill(s : GraphtreemstboruvkaPath, v : Double) -> GraphtreemstboruvkaPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaPath::fill(self : GraphtreemstboruvkaPath, v : Double) -> GraphtreemstboruvkaPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_path_min(s : GraphtreemstboruvkaPath) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaPath::min(self : GraphtreemstboruvkaPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_path_max(s : GraphtreemstboruvkaPath) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaPath::max(self : GraphtreemstboruvkaPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_path_to_string(s : GraphtreemstboruvkaPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaPath::to_string(self : GraphtreemstboruvkaPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaCluster {
@@ -657,45 +657,45 @@ pub fn graph_tree_mst_boruvka_cluster_make(size : Int) -> GraphtreemstboruvkaClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_len(s : GraphtreemstboruvkaCluster) -> Int { s.size }
+pub fn GraphtreemstboruvkaCluster::len(self : GraphtreemstboruvkaCluster) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_cluster_get(s : GraphtreemstboruvkaCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaCluster::get(self : GraphtreemstboruvkaCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_set(s : GraphtreemstboruvkaCluster, i : Int, v : Double) -> GraphtreemstboruvkaCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCluster::set(self : GraphtreemstboruvkaCluster, i : Int, v : Double) -> GraphtreemstboruvkaCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_sum(s : GraphtreemstboruvkaCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaCluster::sum(self : GraphtreemstboruvkaCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_cluster_mean(s : GraphtreemstboruvkaCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaCluster::mean(self : GraphtreemstboruvkaCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_cluster_scale(s : GraphtreemstboruvkaCluster, f : Double) -> GraphtreemstboruvkaCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCluster::scale(self : GraphtreemstboruvkaCluster, f : Double) -> GraphtreemstboruvkaCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_add(a : GraphtreemstboruvkaCluster, b : GraphtreemstboruvkaCluster) -> GraphtreemstboruvkaCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaCluster::add(self : GraphtreemstboruvkaCluster, other : GraphtreemstboruvkaCluster) -> GraphtreemstboruvkaCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_copy(s : GraphtreemstboruvkaCluster) -> GraphtreemstboruvkaCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCluster::copy(self : GraphtreemstboruvkaCluster) -> GraphtreemstboruvkaCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_fill(s : GraphtreemstboruvkaCluster, v : Double) -> GraphtreemstboruvkaCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCluster::fill(self : GraphtreemstboruvkaCluster, v : Double) -> GraphtreemstboruvkaCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cluster_min(s : GraphtreemstboruvkaCluster) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaCluster::min(self : GraphtreemstboruvkaCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_cluster_max(s : GraphtreemstboruvkaCluster) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaCluster::max(self : GraphtreemstboruvkaCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_cluster_to_string(s : GraphtreemstboruvkaCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaCluster::to_string(self : GraphtreemstboruvkaCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaModel {
@@ -708,45 +708,45 @@ pub fn graph_tree_mst_boruvka_model_make(size : Int) -> GraphtreemstboruvkaModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_model_len(s : GraphtreemstboruvkaModel) -> Int { s.size }
+pub fn GraphtreemstboruvkaModel::len(self : GraphtreemstboruvkaModel) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_model_get(s : GraphtreemstboruvkaModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaModel::get(self : GraphtreemstboruvkaModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_model_set(s : GraphtreemstboruvkaModel, i : Int, v : Double) -> GraphtreemstboruvkaModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaModel::set(self : GraphtreemstboruvkaModel, i : Int, v : Double) -> GraphtreemstboruvkaModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_model_sum(s : GraphtreemstboruvkaModel) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaModel::sum(self : GraphtreemstboruvkaModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_model_mean(s : GraphtreemstboruvkaModel) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaModel::mean(self : GraphtreemstboruvkaModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_model_scale(s : GraphtreemstboruvkaModel, f : Double) -> GraphtreemstboruvkaModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaModel::scale(self : GraphtreemstboruvkaModel, f : Double) -> GraphtreemstboruvkaModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_model_add(a : GraphtreemstboruvkaModel, b : GraphtreemstboruvkaModel) -> GraphtreemstboruvkaModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaModel::add(self : GraphtreemstboruvkaModel, other : GraphtreemstboruvkaModel) -> GraphtreemstboruvkaModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_model_copy(s : GraphtreemstboruvkaModel) -> GraphtreemstboruvkaModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaModel::copy(self : GraphtreemstboruvkaModel) -> GraphtreemstboruvkaModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_model_fill(s : GraphtreemstboruvkaModel, v : Double) -> GraphtreemstboruvkaModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaModel::fill(self : GraphtreemstboruvkaModel, v : Double) -> GraphtreemstboruvkaModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_model_min(s : GraphtreemstboruvkaModel) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaModel::min(self : GraphtreemstboruvkaModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_model_max(s : GraphtreemstboruvkaModel) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaModel::max(self : GraphtreemstboruvkaModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_model_to_string(s : GraphtreemstboruvkaModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaModel::to_string(self : GraphtreemstboruvkaModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaLayer {
@@ -759,45 +759,45 @@ pub fn graph_tree_mst_boruvka_layer_make(size : Int) -> GraphtreemstboruvkaLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_layer_len(s : GraphtreemstboruvkaLayer) -> Int { s.size }
+pub fn GraphtreemstboruvkaLayer::len(self : GraphtreemstboruvkaLayer) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_layer_get(s : GraphtreemstboruvkaLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaLayer::get(self : GraphtreemstboruvkaLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_layer_set(s : GraphtreemstboruvkaLayer, i : Int, v : Double) -> GraphtreemstboruvkaLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaLayer::set(self : GraphtreemstboruvkaLayer, i : Int, v : Double) -> GraphtreemstboruvkaLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_layer_sum(s : GraphtreemstboruvkaLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaLayer::sum(self : GraphtreemstboruvkaLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_layer_mean(s : GraphtreemstboruvkaLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaLayer::mean(self : GraphtreemstboruvkaLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_layer_scale(s : GraphtreemstboruvkaLayer, f : Double) -> GraphtreemstboruvkaLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaLayer::scale(self : GraphtreemstboruvkaLayer, f : Double) -> GraphtreemstboruvkaLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_layer_add(a : GraphtreemstboruvkaLayer, b : GraphtreemstboruvkaLayer) -> GraphtreemstboruvkaLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaLayer::add(self : GraphtreemstboruvkaLayer, other : GraphtreemstboruvkaLayer) -> GraphtreemstboruvkaLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_layer_copy(s : GraphtreemstboruvkaLayer) -> GraphtreemstboruvkaLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaLayer::copy(self : GraphtreemstboruvkaLayer) -> GraphtreemstboruvkaLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_layer_fill(s : GraphtreemstboruvkaLayer, v : Double) -> GraphtreemstboruvkaLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaLayer::fill(self : GraphtreemstboruvkaLayer, v : Double) -> GraphtreemstboruvkaLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_layer_min(s : GraphtreemstboruvkaLayer) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaLayer::min(self : GraphtreemstboruvkaLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_layer_max(s : GraphtreemstboruvkaLayer) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaLayer::max(self : GraphtreemstboruvkaLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_layer_to_string(s : GraphtreemstboruvkaLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaLayer::to_string(self : GraphtreemstboruvkaLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaBuffer {
@@ -810,45 +810,45 @@ pub fn graph_tree_mst_boruvka_buffer_make(size : Int) -> GraphtreemstboruvkaBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_len(s : GraphtreemstboruvkaBuffer) -> Int { s.size }
+pub fn GraphtreemstboruvkaBuffer::len(self : GraphtreemstboruvkaBuffer) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_buffer_get(s : GraphtreemstboruvkaBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaBuffer::get(self : GraphtreemstboruvkaBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_set(s : GraphtreemstboruvkaBuffer, i : Int, v : Double) -> GraphtreemstboruvkaBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaBuffer::set(self : GraphtreemstboruvkaBuffer, i : Int, v : Double) -> GraphtreemstboruvkaBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_sum(s : GraphtreemstboruvkaBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaBuffer::sum(self : GraphtreemstboruvkaBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_buffer_mean(s : GraphtreemstboruvkaBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaBuffer::mean(self : GraphtreemstboruvkaBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_buffer_scale(s : GraphtreemstboruvkaBuffer, f : Double) -> GraphtreemstboruvkaBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaBuffer::scale(self : GraphtreemstboruvkaBuffer, f : Double) -> GraphtreemstboruvkaBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_add(a : GraphtreemstboruvkaBuffer, b : GraphtreemstboruvkaBuffer) -> GraphtreemstboruvkaBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaBuffer::add(self : GraphtreemstboruvkaBuffer, other : GraphtreemstboruvkaBuffer) -> GraphtreemstboruvkaBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_copy(s : GraphtreemstboruvkaBuffer) -> GraphtreemstboruvkaBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaBuffer::copy(self : GraphtreemstboruvkaBuffer) -> GraphtreemstboruvkaBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_fill(s : GraphtreemstboruvkaBuffer, v : Double) -> GraphtreemstboruvkaBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaBuffer::fill(self : GraphtreemstboruvkaBuffer, v : Double) -> GraphtreemstboruvkaBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_buffer_min(s : GraphtreemstboruvkaBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaBuffer::min(self : GraphtreemstboruvkaBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_buffer_max(s : GraphtreemstboruvkaBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaBuffer::max(self : GraphtreemstboruvkaBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_buffer_to_string(s : GraphtreemstboruvkaBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaBuffer::to_string(self : GraphtreemstboruvkaBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaCursor {
@@ -861,45 +861,45 @@ pub fn graph_tree_mst_boruvka_cursor_make(size : Int) -> GraphtreemstboruvkaCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_len(s : GraphtreemstboruvkaCursor) -> Int { s.size }
+pub fn GraphtreemstboruvkaCursor::len(self : GraphtreemstboruvkaCursor) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_cursor_get(s : GraphtreemstboruvkaCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaCursor::get(self : GraphtreemstboruvkaCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_set(s : GraphtreemstboruvkaCursor, i : Int, v : Double) -> GraphtreemstboruvkaCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCursor::set(self : GraphtreemstboruvkaCursor, i : Int, v : Double) -> GraphtreemstboruvkaCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_sum(s : GraphtreemstboruvkaCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaCursor::sum(self : GraphtreemstboruvkaCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_cursor_mean(s : GraphtreemstboruvkaCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaCursor::mean(self : GraphtreemstboruvkaCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_cursor_scale(s : GraphtreemstboruvkaCursor, f : Double) -> GraphtreemstboruvkaCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCursor::scale(self : GraphtreemstboruvkaCursor, f : Double) -> GraphtreemstboruvkaCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_add(a : GraphtreemstboruvkaCursor, b : GraphtreemstboruvkaCursor) -> GraphtreemstboruvkaCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaCursor::add(self : GraphtreemstboruvkaCursor, other : GraphtreemstboruvkaCursor) -> GraphtreemstboruvkaCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_copy(s : GraphtreemstboruvkaCursor) -> GraphtreemstboruvkaCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCursor::copy(self : GraphtreemstboruvkaCursor) -> GraphtreemstboruvkaCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_fill(s : GraphtreemstboruvkaCursor, v : Double) -> GraphtreemstboruvkaCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaCursor::fill(self : GraphtreemstboruvkaCursor, v : Double) -> GraphtreemstboruvkaCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_cursor_min(s : GraphtreemstboruvkaCursor) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaCursor::min(self : GraphtreemstboruvkaCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_cursor_max(s : GraphtreemstboruvkaCursor) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaCursor::max(self : GraphtreemstboruvkaCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_cursor_to_string(s : GraphtreemstboruvkaCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaCursor::to_string(self : GraphtreemstboruvkaCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaView {
@@ -912,45 +912,45 @@ pub fn graph_tree_mst_boruvka_view_make(size : Int) -> GraphtreemstboruvkaView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_view_len(s : GraphtreemstboruvkaView) -> Int { s.size }
+pub fn GraphtreemstboruvkaView::len(self : GraphtreemstboruvkaView) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_view_get(s : GraphtreemstboruvkaView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaView::get(self : GraphtreemstboruvkaView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_view_set(s : GraphtreemstboruvkaView, i : Int, v : Double) -> GraphtreemstboruvkaView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaView::set(self : GraphtreemstboruvkaView, i : Int, v : Double) -> GraphtreemstboruvkaView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_view_sum(s : GraphtreemstboruvkaView) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaView::sum(self : GraphtreemstboruvkaView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_view_mean(s : GraphtreemstboruvkaView) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaView::mean(self : GraphtreemstboruvkaView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_view_scale(s : GraphtreemstboruvkaView, f : Double) -> GraphtreemstboruvkaView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaView::scale(self : GraphtreemstboruvkaView, f : Double) -> GraphtreemstboruvkaView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_view_add(a : GraphtreemstboruvkaView, b : GraphtreemstboruvkaView) -> GraphtreemstboruvkaView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaView::add(self : GraphtreemstboruvkaView, other : GraphtreemstboruvkaView) -> GraphtreemstboruvkaView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_view_copy(s : GraphtreemstboruvkaView) -> GraphtreemstboruvkaView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaView::copy(self : GraphtreemstboruvkaView) -> GraphtreemstboruvkaView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_view_fill(s : GraphtreemstboruvkaView, v : Double) -> GraphtreemstboruvkaView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaView::fill(self : GraphtreemstboruvkaView, v : Double) -> GraphtreemstboruvkaView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_view_min(s : GraphtreemstboruvkaView) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaView::min(self : GraphtreemstboruvkaView) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_view_max(s : GraphtreemstboruvkaView) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaView::max(self : GraphtreemstboruvkaView) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_view_to_string(s : GraphtreemstboruvkaView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaView::to_string(self : GraphtreemstboruvkaView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaRange {
@@ -963,45 +963,45 @@ pub fn graph_tree_mst_boruvka_range_make(size : Int) -> GraphtreemstboruvkaRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_range_len(s : GraphtreemstboruvkaRange) -> Int { s.size }
+pub fn GraphtreemstboruvkaRange::len(self : GraphtreemstboruvkaRange) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_range_get(s : GraphtreemstboruvkaRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaRange::get(self : GraphtreemstboruvkaRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_range_set(s : GraphtreemstboruvkaRange, i : Int, v : Double) -> GraphtreemstboruvkaRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaRange::set(self : GraphtreemstboruvkaRange, i : Int, v : Double) -> GraphtreemstboruvkaRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_range_sum(s : GraphtreemstboruvkaRange) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaRange::sum(self : GraphtreemstboruvkaRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_range_mean(s : GraphtreemstboruvkaRange) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaRange::mean(self : GraphtreemstboruvkaRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_range_scale(s : GraphtreemstboruvkaRange, f : Double) -> GraphtreemstboruvkaRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaRange::scale(self : GraphtreemstboruvkaRange, f : Double) -> GraphtreemstboruvkaRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_range_add(a : GraphtreemstboruvkaRange, b : GraphtreemstboruvkaRange) -> GraphtreemstboruvkaRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaRange::add(self : GraphtreemstboruvkaRange, other : GraphtreemstboruvkaRange) -> GraphtreemstboruvkaRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_range_copy(s : GraphtreemstboruvkaRange) -> GraphtreemstboruvkaRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaRange::copy(self : GraphtreemstboruvkaRange) -> GraphtreemstboruvkaRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_range_fill(s : GraphtreemstboruvkaRange, v : Double) -> GraphtreemstboruvkaRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaRange::fill(self : GraphtreemstboruvkaRange, v : Double) -> GraphtreemstboruvkaRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_range_min(s : GraphtreemstboruvkaRange) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaRange::min(self : GraphtreemstboruvkaRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_range_max(s : GraphtreemstboruvkaRange) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaRange::max(self : GraphtreemstboruvkaRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_range_to_string(s : GraphtreemstboruvkaRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaRange::to_string(self : GraphtreemstboruvkaRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_tree_mst_boruvka_slice_make(size : Int) -> GraphtreemstboruvkaSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_slice_len(s : GraphtreemstboruvkaSlice) -> Int { s.size }
+pub fn GraphtreemstboruvkaSlice::len(self : GraphtreemstboruvkaSlice) -> Int { self.size }
 
-pub fn graph_tree_mst_boruvka_slice_get(s : GraphtreemstboruvkaSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphtreemstboruvkaSlice::get(self : GraphtreemstboruvkaSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_tree_mst_boruvka_slice_set(s : GraphtreemstboruvkaSlice, i : Int, v : Double) -> GraphtreemstboruvkaSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaSlice::set(self : GraphtreemstboruvkaSlice, i : Int, v : Double) -> GraphtreemstboruvkaSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_slice_sum(s : GraphtreemstboruvkaSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphtreemstboruvkaSlice::sum(self : GraphtreemstboruvkaSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_tree_mst_boruvka_slice_mean(s : GraphtreemstboruvkaSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphtreemstboruvkaSlice::mean(self : GraphtreemstboruvkaSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_tree_mst_boruvka_slice_scale(s : GraphtreemstboruvkaSlice, f : Double) -> GraphtreemstboruvkaSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaSlice::scale(self : GraphtreemstboruvkaSlice, f : Double) -> GraphtreemstboruvkaSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_slice_add(a : GraphtreemstboruvkaSlice, b : GraphtreemstboruvkaSlice) -> GraphtreemstboruvkaSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphtreemstboruvkaSlice::add(self : GraphtreemstboruvkaSlice, other : GraphtreemstboruvkaSlice) -> GraphtreemstboruvkaSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_slice_copy(s : GraphtreemstboruvkaSlice) -> GraphtreemstboruvkaSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaSlice::copy(self : GraphtreemstboruvkaSlice) -> GraphtreemstboruvkaSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_slice_fill(s : GraphtreemstboruvkaSlice, v : Double) -> GraphtreemstboruvkaSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphtreemstboruvkaSlice::fill(self : GraphtreemstboruvkaSlice, v : Double) -> GraphtreemstboruvkaSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_tree_mst_boruvka_slice_min(s : GraphtreemstboruvkaSlice) -> Double { @_common.min(s.data) }
+pub fn GraphtreemstboruvkaSlice::min(self : GraphtreemstboruvkaSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_tree_mst_boruvka_slice_max(s : GraphtreemstboruvkaSlice) -> Double { @_common.max(s.data) }
+pub fn GraphtreemstboruvkaSlice::max(self : GraphtreemstboruvkaSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_tree_mst_boruvka_slice_to_string(s : GraphtreemstboruvkaSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphtreemstboruvkaSlice::to_string(self : GraphtreemstboruvkaSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

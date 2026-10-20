@@ -351,45 +351,45 @@ pub fn db_query_distributed_frame_make(size : Int) -> DbquerydistributedFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_frame_len(s : DbquerydistributedFrame) -> Int { s.size }
+pub fn DbquerydistributedFrame::len(self : DbquerydistributedFrame) -> Int { self.size }
 
-pub fn db_query_distributed_frame_get(s : DbquerydistributedFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedFrame::get(self : DbquerydistributedFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_frame_set(s : DbquerydistributedFrame, i : Int, v : Double) -> DbquerydistributedFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedFrame::set(self : DbquerydistributedFrame, i : Int, v : Double) -> DbquerydistributedFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_frame_sum(s : DbquerydistributedFrame) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedFrame::sum(self : DbquerydistributedFrame) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_frame_mean(s : DbquerydistributedFrame) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedFrame::mean(self : DbquerydistributedFrame) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_frame_scale(s : DbquerydistributedFrame, f : Double) -> DbquerydistributedFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedFrame::scale(self : DbquerydistributedFrame, f : Double) -> DbquerydistributedFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_frame_add(a : DbquerydistributedFrame, b : DbquerydistributedFrame) -> DbquerydistributedFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedFrame::add(self : DbquerydistributedFrame, other : DbquerydistributedFrame) -> DbquerydistributedFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_frame_copy(s : DbquerydistributedFrame) -> DbquerydistributedFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedFrame::copy(self : DbquerydistributedFrame) -> DbquerydistributedFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_frame_fill(s : DbquerydistributedFrame, v : Double) -> DbquerydistributedFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedFrame::fill(self : DbquerydistributedFrame, v : Double) -> DbquerydistributedFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_frame_min(s : DbquerydistributedFrame) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedFrame::min(self : DbquerydistributedFrame) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_frame_max(s : DbquerydistributedFrame) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedFrame::max(self : DbquerydistributedFrame) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_frame_to_string(s : DbquerydistributedFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedFrame::to_string(self : DbquerydistributedFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedTable {
@@ -402,45 +402,45 @@ pub fn db_query_distributed_table_make(size : Int) -> DbquerydistributedTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_table_len(s : DbquerydistributedTable) -> Int { s.size }
+pub fn DbquerydistributedTable::len(self : DbquerydistributedTable) -> Int { self.size }
 
-pub fn db_query_distributed_table_get(s : DbquerydistributedTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedTable::get(self : DbquerydistributedTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_table_set(s : DbquerydistributedTable, i : Int, v : Double) -> DbquerydistributedTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedTable::set(self : DbquerydistributedTable, i : Int, v : Double) -> DbquerydistributedTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_table_sum(s : DbquerydistributedTable) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedTable::sum(self : DbquerydistributedTable) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_table_mean(s : DbquerydistributedTable) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedTable::mean(self : DbquerydistributedTable) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_table_scale(s : DbquerydistributedTable, f : Double) -> DbquerydistributedTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedTable::scale(self : DbquerydistributedTable, f : Double) -> DbquerydistributedTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_table_add(a : DbquerydistributedTable, b : DbquerydistributedTable) -> DbquerydistributedTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedTable::add(self : DbquerydistributedTable, other : DbquerydistributedTable) -> DbquerydistributedTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_table_copy(s : DbquerydistributedTable) -> DbquerydistributedTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedTable::copy(self : DbquerydistributedTable) -> DbquerydistributedTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_table_fill(s : DbquerydistributedTable, v : Double) -> DbquerydistributedTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedTable::fill(self : DbquerydistributedTable, v : Double) -> DbquerydistributedTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_table_min(s : DbquerydistributedTable) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedTable::min(self : DbquerydistributedTable) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_table_max(s : DbquerydistributedTable) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedTable::max(self : DbquerydistributedTable) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_table_to_string(s : DbquerydistributedTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedTable::to_string(self : DbquerydistributedTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedGraphN {
@@ -453,45 +453,45 @@ pub fn db_query_distributed_graphn_make(size : Int) -> DbquerydistributedGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_graphn_len(s : DbquerydistributedGraphN) -> Int { s.size }
+pub fn DbquerydistributedGraphN::len(self : DbquerydistributedGraphN) -> Int { self.size }
 
-pub fn db_query_distributed_graphn_get(s : DbquerydistributedGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedGraphN::get(self : DbquerydistributedGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_graphn_set(s : DbquerydistributedGraphN, i : Int, v : Double) -> DbquerydistributedGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedGraphN::set(self : DbquerydistributedGraphN, i : Int, v : Double) -> DbquerydistributedGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_graphn_sum(s : DbquerydistributedGraphN) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedGraphN::sum(self : DbquerydistributedGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_graphn_mean(s : DbquerydistributedGraphN) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedGraphN::mean(self : DbquerydistributedGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_graphn_scale(s : DbquerydistributedGraphN, f : Double) -> DbquerydistributedGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedGraphN::scale(self : DbquerydistributedGraphN, f : Double) -> DbquerydistributedGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_graphn_add(a : DbquerydistributedGraphN, b : DbquerydistributedGraphN) -> DbquerydistributedGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedGraphN::add(self : DbquerydistributedGraphN, other : DbquerydistributedGraphN) -> DbquerydistributedGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_graphn_copy(s : DbquerydistributedGraphN) -> DbquerydistributedGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedGraphN::copy(self : DbquerydistributedGraphN) -> DbquerydistributedGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_graphn_fill(s : DbquerydistributedGraphN, v : Double) -> DbquerydistributedGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedGraphN::fill(self : DbquerydistributedGraphN, v : Double) -> DbquerydistributedGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_graphn_min(s : DbquerydistributedGraphN) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedGraphN::min(self : DbquerydistributedGraphN) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_graphn_max(s : DbquerydistributedGraphN) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedGraphN::max(self : DbquerydistributedGraphN) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_graphn_to_string(s : DbquerydistributedGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedGraphN::to_string(self : DbquerydistributedGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedNode {
@@ -504,45 +504,45 @@ pub fn db_query_distributed_node_make(size : Int) -> DbquerydistributedNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_node_len(s : DbquerydistributedNode) -> Int { s.size }
+pub fn DbquerydistributedNode::len(self : DbquerydistributedNode) -> Int { self.size }
 
-pub fn db_query_distributed_node_get(s : DbquerydistributedNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedNode::get(self : DbquerydistributedNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_node_set(s : DbquerydistributedNode, i : Int, v : Double) -> DbquerydistributedNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedNode::set(self : DbquerydistributedNode, i : Int, v : Double) -> DbquerydistributedNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_node_sum(s : DbquerydistributedNode) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedNode::sum(self : DbquerydistributedNode) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_node_mean(s : DbquerydistributedNode) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedNode::mean(self : DbquerydistributedNode) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_node_scale(s : DbquerydistributedNode, f : Double) -> DbquerydistributedNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedNode::scale(self : DbquerydistributedNode, f : Double) -> DbquerydistributedNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_node_add(a : DbquerydistributedNode, b : DbquerydistributedNode) -> DbquerydistributedNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedNode::add(self : DbquerydistributedNode, other : DbquerydistributedNode) -> DbquerydistributedNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_node_copy(s : DbquerydistributedNode) -> DbquerydistributedNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedNode::copy(self : DbquerydistributedNode) -> DbquerydistributedNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_node_fill(s : DbquerydistributedNode, v : Double) -> DbquerydistributedNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedNode::fill(self : DbquerydistributedNode, v : Double) -> DbquerydistributedNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_node_min(s : DbquerydistributedNode) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedNode::min(self : DbquerydistributedNode) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_node_max(s : DbquerydistributedNode) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedNode::max(self : DbquerydistributedNode) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_node_to_string(s : DbquerydistributedNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedNode::to_string(self : DbquerydistributedNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedEdge {
@@ -555,45 +555,45 @@ pub fn db_query_distributed_edge_make(size : Int) -> DbquerydistributedEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_edge_len(s : DbquerydistributedEdge) -> Int { s.size }
+pub fn DbquerydistributedEdge::len(self : DbquerydistributedEdge) -> Int { self.size }
 
-pub fn db_query_distributed_edge_get(s : DbquerydistributedEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedEdge::get(self : DbquerydistributedEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_edge_set(s : DbquerydistributedEdge, i : Int, v : Double) -> DbquerydistributedEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedEdge::set(self : DbquerydistributedEdge, i : Int, v : Double) -> DbquerydistributedEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_edge_sum(s : DbquerydistributedEdge) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedEdge::sum(self : DbquerydistributedEdge) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_edge_mean(s : DbquerydistributedEdge) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedEdge::mean(self : DbquerydistributedEdge) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_edge_scale(s : DbquerydistributedEdge, f : Double) -> DbquerydistributedEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedEdge::scale(self : DbquerydistributedEdge, f : Double) -> DbquerydistributedEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_edge_add(a : DbquerydistributedEdge, b : DbquerydistributedEdge) -> DbquerydistributedEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedEdge::add(self : DbquerydistributedEdge, other : DbquerydistributedEdge) -> DbquerydistributedEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_edge_copy(s : DbquerydistributedEdge) -> DbquerydistributedEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedEdge::copy(self : DbquerydistributedEdge) -> DbquerydistributedEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_edge_fill(s : DbquerydistributedEdge, v : Double) -> DbquerydistributedEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedEdge::fill(self : DbquerydistributedEdge, v : Double) -> DbquerydistributedEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_edge_min(s : DbquerydistributedEdge) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedEdge::min(self : DbquerydistributedEdge) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_edge_max(s : DbquerydistributedEdge) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedEdge::max(self : DbquerydistributedEdge) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_edge_to_string(s : DbquerydistributedEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedEdge::to_string(self : DbquerydistributedEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedPath {
@@ -606,45 +606,45 @@ pub fn db_query_distributed_path_make(size : Int) -> DbquerydistributedPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_path_len(s : DbquerydistributedPath) -> Int { s.size }
+pub fn DbquerydistributedPath::len(self : DbquerydistributedPath) -> Int { self.size }
 
-pub fn db_query_distributed_path_get(s : DbquerydistributedPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedPath::get(self : DbquerydistributedPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_path_set(s : DbquerydistributedPath, i : Int, v : Double) -> DbquerydistributedPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedPath::set(self : DbquerydistributedPath, i : Int, v : Double) -> DbquerydistributedPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_path_sum(s : DbquerydistributedPath) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedPath::sum(self : DbquerydistributedPath) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_path_mean(s : DbquerydistributedPath) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedPath::mean(self : DbquerydistributedPath) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_path_scale(s : DbquerydistributedPath, f : Double) -> DbquerydistributedPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedPath::scale(self : DbquerydistributedPath, f : Double) -> DbquerydistributedPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_path_add(a : DbquerydistributedPath, b : DbquerydistributedPath) -> DbquerydistributedPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedPath::add(self : DbquerydistributedPath, other : DbquerydistributedPath) -> DbquerydistributedPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_path_copy(s : DbquerydistributedPath) -> DbquerydistributedPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedPath::copy(self : DbquerydistributedPath) -> DbquerydistributedPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_path_fill(s : DbquerydistributedPath, v : Double) -> DbquerydistributedPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedPath::fill(self : DbquerydistributedPath, v : Double) -> DbquerydistributedPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_path_min(s : DbquerydistributedPath) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedPath::min(self : DbquerydistributedPath) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_path_max(s : DbquerydistributedPath) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedPath::max(self : DbquerydistributedPath) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_path_to_string(s : DbquerydistributedPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedPath::to_string(self : DbquerydistributedPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedCluster {
@@ -657,45 +657,45 @@ pub fn db_query_distributed_cluster_make(size : Int) -> DbquerydistributedCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_cluster_len(s : DbquerydistributedCluster) -> Int { s.size }
+pub fn DbquerydistributedCluster::len(self : DbquerydistributedCluster) -> Int { self.size }
 
-pub fn db_query_distributed_cluster_get(s : DbquerydistributedCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedCluster::get(self : DbquerydistributedCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_cluster_set(s : DbquerydistributedCluster, i : Int, v : Double) -> DbquerydistributedCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedCluster::set(self : DbquerydistributedCluster, i : Int, v : Double) -> DbquerydistributedCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cluster_sum(s : DbquerydistributedCluster) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedCluster::sum(self : DbquerydistributedCluster) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_cluster_mean(s : DbquerydistributedCluster) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedCluster::mean(self : DbquerydistributedCluster) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_cluster_scale(s : DbquerydistributedCluster, f : Double) -> DbquerydistributedCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedCluster::scale(self : DbquerydistributedCluster, f : Double) -> DbquerydistributedCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cluster_add(a : DbquerydistributedCluster, b : DbquerydistributedCluster) -> DbquerydistributedCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedCluster::add(self : DbquerydistributedCluster, other : DbquerydistributedCluster) -> DbquerydistributedCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_cluster_copy(s : DbquerydistributedCluster) -> DbquerydistributedCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedCluster::copy(self : DbquerydistributedCluster) -> DbquerydistributedCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cluster_fill(s : DbquerydistributedCluster, v : Double) -> DbquerydistributedCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedCluster::fill(self : DbquerydistributedCluster, v : Double) -> DbquerydistributedCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cluster_min(s : DbquerydistributedCluster) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedCluster::min(self : DbquerydistributedCluster) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_cluster_max(s : DbquerydistributedCluster) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedCluster::max(self : DbquerydistributedCluster) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_cluster_to_string(s : DbquerydistributedCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedCluster::to_string(self : DbquerydistributedCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedModel {
@@ -708,45 +708,45 @@ pub fn db_query_distributed_model_make(size : Int) -> DbquerydistributedModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_model_len(s : DbquerydistributedModel) -> Int { s.size }
+pub fn DbquerydistributedModel::len(self : DbquerydistributedModel) -> Int { self.size }
 
-pub fn db_query_distributed_model_get(s : DbquerydistributedModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedModel::get(self : DbquerydistributedModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_model_set(s : DbquerydistributedModel, i : Int, v : Double) -> DbquerydistributedModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedModel::set(self : DbquerydistributedModel, i : Int, v : Double) -> DbquerydistributedModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_model_sum(s : DbquerydistributedModel) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedModel::sum(self : DbquerydistributedModel) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_model_mean(s : DbquerydistributedModel) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedModel::mean(self : DbquerydistributedModel) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_model_scale(s : DbquerydistributedModel, f : Double) -> DbquerydistributedModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedModel::scale(self : DbquerydistributedModel, f : Double) -> DbquerydistributedModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_model_add(a : DbquerydistributedModel, b : DbquerydistributedModel) -> DbquerydistributedModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedModel::add(self : DbquerydistributedModel, other : DbquerydistributedModel) -> DbquerydistributedModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_model_copy(s : DbquerydistributedModel) -> DbquerydistributedModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedModel::copy(self : DbquerydistributedModel) -> DbquerydistributedModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_model_fill(s : DbquerydistributedModel, v : Double) -> DbquerydistributedModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedModel::fill(self : DbquerydistributedModel, v : Double) -> DbquerydistributedModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_model_min(s : DbquerydistributedModel) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedModel::min(self : DbquerydistributedModel) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_model_max(s : DbquerydistributedModel) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedModel::max(self : DbquerydistributedModel) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_model_to_string(s : DbquerydistributedModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedModel::to_string(self : DbquerydistributedModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedLayer {
@@ -759,45 +759,45 @@ pub fn db_query_distributed_layer_make(size : Int) -> DbquerydistributedLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_layer_len(s : DbquerydistributedLayer) -> Int { s.size }
+pub fn DbquerydistributedLayer::len(self : DbquerydistributedLayer) -> Int { self.size }
 
-pub fn db_query_distributed_layer_get(s : DbquerydistributedLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedLayer::get(self : DbquerydistributedLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_layer_set(s : DbquerydistributedLayer, i : Int, v : Double) -> DbquerydistributedLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedLayer::set(self : DbquerydistributedLayer, i : Int, v : Double) -> DbquerydistributedLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_layer_sum(s : DbquerydistributedLayer) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedLayer::sum(self : DbquerydistributedLayer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_layer_mean(s : DbquerydistributedLayer) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedLayer::mean(self : DbquerydistributedLayer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_layer_scale(s : DbquerydistributedLayer, f : Double) -> DbquerydistributedLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedLayer::scale(self : DbquerydistributedLayer, f : Double) -> DbquerydistributedLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_layer_add(a : DbquerydistributedLayer, b : DbquerydistributedLayer) -> DbquerydistributedLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedLayer::add(self : DbquerydistributedLayer, other : DbquerydistributedLayer) -> DbquerydistributedLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_layer_copy(s : DbquerydistributedLayer) -> DbquerydistributedLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedLayer::copy(self : DbquerydistributedLayer) -> DbquerydistributedLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_layer_fill(s : DbquerydistributedLayer, v : Double) -> DbquerydistributedLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedLayer::fill(self : DbquerydistributedLayer, v : Double) -> DbquerydistributedLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_layer_min(s : DbquerydistributedLayer) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedLayer::min(self : DbquerydistributedLayer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_layer_max(s : DbquerydistributedLayer) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedLayer::max(self : DbquerydistributedLayer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_layer_to_string(s : DbquerydistributedLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedLayer::to_string(self : DbquerydistributedLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedBuffer {
@@ -810,45 +810,45 @@ pub fn db_query_distributed_buffer_make(size : Int) -> DbquerydistributedBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_buffer_len(s : DbquerydistributedBuffer) -> Int { s.size }
+pub fn DbquerydistributedBuffer::len(self : DbquerydistributedBuffer) -> Int { self.size }
 
-pub fn db_query_distributed_buffer_get(s : DbquerydistributedBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedBuffer::get(self : DbquerydistributedBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_buffer_set(s : DbquerydistributedBuffer, i : Int, v : Double) -> DbquerydistributedBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedBuffer::set(self : DbquerydistributedBuffer, i : Int, v : Double) -> DbquerydistributedBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_buffer_sum(s : DbquerydistributedBuffer) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedBuffer::sum(self : DbquerydistributedBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_buffer_mean(s : DbquerydistributedBuffer) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedBuffer::mean(self : DbquerydistributedBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_buffer_scale(s : DbquerydistributedBuffer, f : Double) -> DbquerydistributedBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedBuffer::scale(self : DbquerydistributedBuffer, f : Double) -> DbquerydistributedBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_buffer_add(a : DbquerydistributedBuffer, b : DbquerydistributedBuffer) -> DbquerydistributedBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedBuffer::add(self : DbquerydistributedBuffer, other : DbquerydistributedBuffer) -> DbquerydistributedBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_buffer_copy(s : DbquerydistributedBuffer) -> DbquerydistributedBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedBuffer::copy(self : DbquerydistributedBuffer) -> DbquerydistributedBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_buffer_fill(s : DbquerydistributedBuffer, v : Double) -> DbquerydistributedBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedBuffer::fill(self : DbquerydistributedBuffer, v : Double) -> DbquerydistributedBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_buffer_min(s : DbquerydistributedBuffer) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedBuffer::min(self : DbquerydistributedBuffer) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_buffer_max(s : DbquerydistributedBuffer) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedBuffer::max(self : DbquerydistributedBuffer) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_buffer_to_string(s : DbquerydistributedBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedBuffer::to_string(self : DbquerydistributedBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedCursor {
@@ -861,45 +861,45 @@ pub fn db_query_distributed_cursor_make(size : Int) -> DbquerydistributedCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_cursor_len(s : DbquerydistributedCursor) -> Int { s.size }
+pub fn DbquerydistributedCursor::len(self : DbquerydistributedCursor) -> Int { self.size }
 
-pub fn db_query_distributed_cursor_get(s : DbquerydistributedCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedCursor::get(self : DbquerydistributedCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_cursor_set(s : DbquerydistributedCursor, i : Int, v : Double) -> DbquerydistributedCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedCursor::set(self : DbquerydistributedCursor, i : Int, v : Double) -> DbquerydistributedCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cursor_sum(s : DbquerydistributedCursor) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedCursor::sum(self : DbquerydistributedCursor) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_cursor_mean(s : DbquerydistributedCursor) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedCursor::mean(self : DbquerydistributedCursor) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_cursor_scale(s : DbquerydistributedCursor, f : Double) -> DbquerydistributedCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedCursor::scale(self : DbquerydistributedCursor, f : Double) -> DbquerydistributedCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cursor_add(a : DbquerydistributedCursor, b : DbquerydistributedCursor) -> DbquerydistributedCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedCursor::add(self : DbquerydistributedCursor, other : DbquerydistributedCursor) -> DbquerydistributedCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_cursor_copy(s : DbquerydistributedCursor) -> DbquerydistributedCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedCursor::copy(self : DbquerydistributedCursor) -> DbquerydistributedCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cursor_fill(s : DbquerydistributedCursor, v : Double) -> DbquerydistributedCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedCursor::fill(self : DbquerydistributedCursor, v : Double) -> DbquerydistributedCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_cursor_min(s : DbquerydistributedCursor) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedCursor::min(self : DbquerydistributedCursor) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_cursor_max(s : DbquerydistributedCursor) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedCursor::max(self : DbquerydistributedCursor) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_cursor_to_string(s : DbquerydistributedCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedCursor::to_string(self : DbquerydistributedCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedView {
@@ -912,45 +912,45 @@ pub fn db_query_distributed_view_make(size : Int) -> DbquerydistributedView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_view_len(s : DbquerydistributedView) -> Int { s.size }
+pub fn DbquerydistributedView::len(self : DbquerydistributedView) -> Int { self.size }
 
-pub fn db_query_distributed_view_get(s : DbquerydistributedView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedView::get(self : DbquerydistributedView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_view_set(s : DbquerydistributedView, i : Int, v : Double) -> DbquerydistributedView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedView::set(self : DbquerydistributedView, i : Int, v : Double) -> DbquerydistributedView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_view_sum(s : DbquerydistributedView) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedView::sum(self : DbquerydistributedView) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_view_mean(s : DbquerydistributedView) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedView::mean(self : DbquerydistributedView) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_view_scale(s : DbquerydistributedView, f : Double) -> DbquerydistributedView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedView::scale(self : DbquerydistributedView, f : Double) -> DbquerydistributedView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_view_add(a : DbquerydistributedView, b : DbquerydistributedView) -> DbquerydistributedView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedView::add(self : DbquerydistributedView, other : DbquerydistributedView) -> DbquerydistributedView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_view_copy(s : DbquerydistributedView) -> DbquerydistributedView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedView::copy(self : DbquerydistributedView) -> DbquerydistributedView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_view_fill(s : DbquerydistributedView, v : Double) -> DbquerydistributedView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedView::fill(self : DbquerydistributedView, v : Double) -> DbquerydistributedView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_view_min(s : DbquerydistributedView) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedView::min(self : DbquerydistributedView) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_view_max(s : DbquerydistributedView) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedView::max(self : DbquerydistributedView) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_view_to_string(s : DbquerydistributedView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedView::to_string(self : DbquerydistributedView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedRange {
@@ -963,45 +963,45 @@ pub fn db_query_distributed_range_make(size : Int) -> DbquerydistributedRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_range_len(s : DbquerydistributedRange) -> Int { s.size }
+pub fn DbquerydistributedRange::len(self : DbquerydistributedRange) -> Int { self.size }
 
-pub fn db_query_distributed_range_get(s : DbquerydistributedRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedRange::get(self : DbquerydistributedRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_range_set(s : DbquerydistributedRange, i : Int, v : Double) -> DbquerydistributedRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedRange::set(self : DbquerydistributedRange, i : Int, v : Double) -> DbquerydistributedRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_range_sum(s : DbquerydistributedRange) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedRange::sum(self : DbquerydistributedRange) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_range_mean(s : DbquerydistributedRange) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedRange::mean(self : DbquerydistributedRange) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_range_scale(s : DbquerydistributedRange, f : Double) -> DbquerydistributedRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedRange::scale(self : DbquerydistributedRange, f : Double) -> DbquerydistributedRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_range_add(a : DbquerydistributedRange, b : DbquerydistributedRange) -> DbquerydistributedRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedRange::add(self : DbquerydistributedRange, other : DbquerydistributedRange) -> DbquerydistributedRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_range_copy(s : DbquerydistributedRange) -> DbquerydistributedRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedRange::copy(self : DbquerydistributedRange) -> DbquerydistributedRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_range_fill(s : DbquerydistributedRange, v : Double) -> DbquerydistributedRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedRange::fill(self : DbquerydistributedRange, v : Double) -> DbquerydistributedRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_range_min(s : DbquerydistributedRange) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedRange::min(self : DbquerydistributedRange) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_range_max(s : DbquerydistributedRange) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedRange::max(self : DbquerydistributedRange) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_range_to_string(s : DbquerydistributedRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedRange::to_string(self : DbquerydistributedRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DbquerydistributedSlice {
@@ -1014,44 +1014,44 @@ pub fn db_query_distributed_slice_make(size : Int) -> DbquerydistributedSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn db_query_distributed_slice_len(s : DbquerydistributedSlice) -> Int { s.size }
+pub fn DbquerydistributedSlice::len(self : DbquerydistributedSlice) -> Int { self.size }
 
-pub fn db_query_distributed_slice_get(s : DbquerydistributedSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DbquerydistributedSlice::get(self : DbquerydistributedSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn db_query_distributed_slice_set(s : DbquerydistributedSlice, i : Int, v : Double) -> DbquerydistributedSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DbquerydistributedSlice::set(self : DbquerydistributedSlice, i : Int, v : Double) -> DbquerydistributedSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_slice_sum(s : DbquerydistributedSlice) -> Double { @_common.sum(s.data) }
+pub fn DbquerydistributedSlice::sum(self : DbquerydistributedSlice) -> Double { @_common.sum(self.data) }
 
-pub fn db_query_distributed_slice_mean(s : DbquerydistributedSlice) -> Double { @_common.mean(s.data) }
+pub fn DbquerydistributedSlice::mean(self : DbquerydistributedSlice) -> Double { @_common.mean(self.data) }
 
-pub fn db_query_distributed_slice_scale(s : DbquerydistributedSlice, f : Double) -> DbquerydistributedSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DbquerydistributedSlice::scale(self : DbquerydistributedSlice, f : Double) -> DbquerydistributedSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_slice_add(a : DbquerydistributedSlice, b : DbquerydistributedSlice) -> DbquerydistributedSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DbquerydistributedSlice::add(self : DbquerydistributedSlice, other : DbquerydistributedSlice) -> DbquerydistributedSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn db_query_distributed_slice_copy(s : DbquerydistributedSlice) -> DbquerydistributedSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DbquerydistributedSlice::copy(self : DbquerydistributedSlice) -> DbquerydistributedSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_slice_fill(s : DbquerydistributedSlice, v : Double) -> DbquerydistributedSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DbquerydistributedSlice::fill(self : DbquerydistributedSlice, v : Double) -> DbquerydistributedSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn db_query_distributed_slice_min(s : DbquerydistributedSlice) -> Double { @_common.min(s.data) }
+pub fn DbquerydistributedSlice::min(self : DbquerydistributedSlice) -> Double { @_common.min(self.data) }
 
-pub fn db_query_distributed_slice_max(s : DbquerydistributedSlice) -> Double { @_common.max(s.data) }
+pub fn DbquerydistributedSlice::max(self : DbquerydistributedSlice) -> Double { @_common.max(self.data) }
 
-pub fn db_query_distributed_slice_to_string(s : DbquerydistributedSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DbquerydistributedSlice::to_string(self : DbquerydistributedSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

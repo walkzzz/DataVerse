@@ -351,45 +351,45 @@ pub fn nlp_parse_span_frame_make(size : Int) -> NlpparsespanFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_frame_len(s : NlpparsespanFrame) -> Int { s.size }
+pub fn NlpparsespanFrame::len(self : NlpparsespanFrame) -> Int { self.size }
 
-pub fn nlp_parse_span_frame_get(s : NlpparsespanFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanFrame::get(self : NlpparsespanFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_frame_set(s : NlpparsespanFrame, i : Int, v : Double) -> NlpparsespanFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanFrame::set(self : NlpparsespanFrame, i : Int, v : Double) -> NlpparsespanFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_frame_sum(s : NlpparsespanFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanFrame::sum(self : NlpparsespanFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_frame_mean(s : NlpparsespanFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanFrame::mean(self : NlpparsespanFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_frame_scale(s : NlpparsespanFrame, f : Double) -> NlpparsespanFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanFrame::scale(self : NlpparsespanFrame, f : Double) -> NlpparsespanFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_frame_add(a : NlpparsespanFrame, b : NlpparsespanFrame) -> NlpparsespanFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanFrame::add(self : NlpparsespanFrame, other : NlpparsespanFrame) -> NlpparsespanFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_frame_copy(s : NlpparsespanFrame) -> NlpparsespanFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanFrame::copy(self : NlpparsespanFrame) -> NlpparsespanFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_frame_fill(s : NlpparsespanFrame, v : Double) -> NlpparsespanFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanFrame::fill(self : NlpparsespanFrame, v : Double) -> NlpparsespanFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_frame_min(s : NlpparsespanFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanFrame::min(self : NlpparsespanFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_frame_max(s : NlpparsespanFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanFrame::max(self : NlpparsespanFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_frame_to_string(s : NlpparsespanFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanFrame::to_string(self : NlpparsespanFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_span_table_make(size : Int) -> NlpparsespanTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_table_len(s : NlpparsespanTable) -> Int { s.size }
+pub fn NlpparsespanTable::len(self : NlpparsespanTable) -> Int { self.size }
 
-pub fn nlp_parse_span_table_get(s : NlpparsespanTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanTable::get(self : NlpparsespanTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_table_set(s : NlpparsespanTable, i : Int, v : Double) -> NlpparsespanTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanTable::set(self : NlpparsespanTable, i : Int, v : Double) -> NlpparsespanTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_table_sum(s : NlpparsespanTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanTable::sum(self : NlpparsespanTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_table_mean(s : NlpparsespanTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanTable::mean(self : NlpparsespanTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_table_scale(s : NlpparsespanTable, f : Double) -> NlpparsespanTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanTable::scale(self : NlpparsespanTable, f : Double) -> NlpparsespanTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_table_add(a : NlpparsespanTable, b : NlpparsespanTable) -> NlpparsespanTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanTable::add(self : NlpparsespanTable, other : NlpparsespanTable) -> NlpparsespanTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_table_copy(s : NlpparsespanTable) -> NlpparsespanTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanTable::copy(self : NlpparsespanTable) -> NlpparsespanTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_table_fill(s : NlpparsespanTable, v : Double) -> NlpparsespanTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanTable::fill(self : NlpparsespanTable, v : Double) -> NlpparsespanTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_table_min(s : NlpparsespanTable) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanTable::min(self : NlpparsespanTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_table_max(s : NlpparsespanTable) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanTable::max(self : NlpparsespanTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_table_to_string(s : NlpparsespanTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanTable::to_string(self : NlpparsespanTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_span_graphn_make(size : Int) -> NlpparsespanGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_graphn_len(s : NlpparsespanGraphN) -> Int { s.size }
+pub fn NlpparsespanGraphN::len(self : NlpparsespanGraphN) -> Int { self.size }
 
-pub fn nlp_parse_span_graphn_get(s : NlpparsespanGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanGraphN::get(self : NlpparsespanGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_graphn_set(s : NlpparsespanGraphN, i : Int, v : Double) -> NlpparsespanGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanGraphN::set(self : NlpparsespanGraphN, i : Int, v : Double) -> NlpparsespanGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_graphn_sum(s : NlpparsespanGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanGraphN::sum(self : NlpparsespanGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_graphn_mean(s : NlpparsespanGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanGraphN::mean(self : NlpparsespanGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_graphn_scale(s : NlpparsespanGraphN, f : Double) -> NlpparsespanGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanGraphN::scale(self : NlpparsespanGraphN, f : Double) -> NlpparsespanGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_graphn_add(a : NlpparsespanGraphN, b : NlpparsespanGraphN) -> NlpparsespanGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanGraphN::add(self : NlpparsespanGraphN, other : NlpparsespanGraphN) -> NlpparsespanGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_graphn_copy(s : NlpparsespanGraphN) -> NlpparsespanGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanGraphN::copy(self : NlpparsespanGraphN) -> NlpparsespanGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_graphn_fill(s : NlpparsespanGraphN, v : Double) -> NlpparsespanGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanGraphN::fill(self : NlpparsespanGraphN, v : Double) -> NlpparsespanGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_graphn_min(s : NlpparsespanGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanGraphN::min(self : NlpparsespanGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_graphn_max(s : NlpparsespanGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanGraphN::max(self : NlpparsespanGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_graphn_to_string(s : NlpparsespanGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanGraphN::to_string(self : NlpparsespanGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_span_node_make(size : Int) -> NlpparsespanNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_node_len(s : NlpparsespanNode) -> Int { s.size }
+pub fn NlpparsespanNode::len(self : NlpparsespanNode) -> Int { self.size }
 
-pub fn nlp_parse_span_node_get(s : NlpparsespanNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanNode::get(self : NlpparsespanNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_node_set(s : NlpparsespanNode, i : Int, v : Double) -> NlpparsespanNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanNode::set(self : NlpparsespanNode, i : Int, v : Double) -> NlpparsespanNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_node_sum(s : NlpparsespanNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanNode::sum(self : NlpparsespanNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_node_mean(s : NlpparsespanNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanNode::mean(self : NlpparsespanNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_node_scale(s : NlpparsespanNode, f : Double) -> NlpparsespanNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanNode::scale(self : NlpparsespanNode, f : Double) -> NlpparsespanNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_node_add(a : NlpparsespanNode, b : NlpparsespanNode) -> NlpparsespanNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanNode::add(self : NlpparsespanNode, other : NlpparsespanNode) -> NlpparsespanNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_node_copy(s : NlpparsespanNode) -> NlpparsespanNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanNode::copy(self : NlpparsespanNode) -> NlpparsespanNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_node_fill(s : NlpparsespanNode, v : Double) -> NlpparsespanNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanNode::fill(self : NlpparsespanNode, v : Double) -> NlpparsespanNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_node_min(s : NlpparsespanNode) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanNode::min(self : NlpparsespanNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_node_max(s : NlpparsespanNode) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanNode::max(self : NlpparsespanNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_node_to_string(s : NlpparsespanNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanNode::to_string(self : NlpparsespanNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_span_edge_make(size : Int) -> NlpparsespanEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_edge_len(s : NlpparsespanEdge) -> Int { s.size }
+pub fn NlpparsespanEdge::len(self : NlpparsespanEdge) -> Int { self.size }
 
-pub fn nlp_parse_span_edge_get(s : NlpparsespanEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanEdge::get(self : NlpparsespanEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_edge_set(s : NlpparsespanEdge, i : Int, v : Double) -> NlpparsespanEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanEdge::set(self : NlpparsespanEdge, i : Int, v : Double) -> NlpparsespanEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_edge_sum(s : NlpparsespanEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanEdge::sum(self : NlpparsespanEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_edge_mean(s : NlpparsespanEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanEdge::mean(self : NlpparsespanEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_edge_scale(s : NlpparsespanEdge, f : Double) -> NlpparsespanEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanEdge::scale(self : NlpparsespanEdge, f : Double) -> NlpparsespanEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_edge_add(a : NlpparsespanEdge, b : NlpparsespanEdge) -> NlpparsespanEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanEdge::add(self : NlpparsespanEdge, other : NlpparsespanEdge) -> NlpparsespanEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_edge_copy(s : NlpparsespanEdge) -> NlpparsespanEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanEdge::copy(self : NlpparsespanEdge) -> NlpparsespanEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_edge_fill(s : NlpparsespanEdge, v : Double) -> NlpparsespanEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanEdge::fill(self : NlpparsespanEdge, v : Double) -> NlpparsespanEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_edge_min(s : NlpparsespanEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanEdge::min(self : NlpparsespanEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_edge_max(s : NlpparsespanEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanEdge::max(self : NlpparsespanEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_edge_to_string(s : NlpparsespanEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanEdge::to_string(self : NlpparsespanEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_span_path_make(size : Int) -> NlpparsespanPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_path_len(s : NlpparsespanPath) -> Int { s.size }
+pub fn NlpparsespanPath::len(self : NlpparsespanPath) -> Int { self.size }
 
-pub fn nlp_parse_span_path_get(s : NlpparsespanPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanPath::get(self : NlpparsespanPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_path_set(s : NlpparsespanPath, i : Int, v : Double) -> NlpparsespanPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanPath::set(self : NlpparsespanPath, i : Int, v : Double) -> NlpparsespanPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_path_sum(s : NlpparsespanPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanPath::sum(self : NlpparsespanPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_path_mean(s : NlpparsespanPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanPath::mean(self : NlpparsespanPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_path_scale(s : NlpparsespanPath, f : Double) -> NlpparsespanPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanPath::scale(self : NlpparsespanPath, f : Double) -> NlpparsespanPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_path_add(a : NlpparsespanPath, b : NlpparsespanPath) -> NlpparsespanPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanPath::add(self : NlpparsespanPath, other : NlpparsespanPath) -> NlpparsespanPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_path_copy(s : NlpparsespanPath) -> NlpparsespanPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanPath::copy(self : NlpparsespanPath) -> NlpparsespanPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_path_fill(s : NlpparsespanPath, v : Double) -> NlpparsespanPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanPath::fill(self : NlpparsespanPath, v : Double) -> NlpparsespanPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_path_min(s : NlpparsespanPath) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanPath::min(self : NlpparsespanPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_path_max(s : NlpparsespanPath) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanPath::max(self : NlpparsespanPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_path_to_string(s : NlpparsespanPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanPath::to_string(self : NlpparsespanPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_span_cluster_make(size : Int) -> NlpparsespanCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_cluster_len(s : NlpparsespanCluster) -> Int { s.size }
+pub fn NlpparsespanCluster::len(self : NlpparsespanCluster) -> Int { self.size }
 
-pub fn nlp_parse_span_cluster_get(s : NlpparsespanCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanCluster::get(self : NlpparsespanCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_cluster_set(s : NlpparsespanCluster, i : Int, v : Double) -> NlpparsespanCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanCluster::set(self : NlpparsespanCluster, i : Int, v : Double) -> NlpparsespanCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cluster_sum(s : NlpparsespanCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanCluster::sum(self : NlpparsespanCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_cluster_mean(s : NlpparsespanCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanCluster::mean(self : NlpparsespanCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_cluster_scale(s : NlpparsespanCluster, f : Double) -> NlpparsespanCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanCluster::scale(self : NlpparsespanCluster, f : Double) -> NlpparsespanCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cluster_add(a : NlpparsespanCluster, b : NlpparsespanCluster) -> NlpparsespanCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanCluster::add(self : NlpparsespanCluster, other : NlpparsespanCluster) -> NlpparsespanCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cluster_copy(s : NlpparsespanCluster) -> NlpparsespanCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanCluster::copy(self : NlpparsespanCluster) -> NlpparsespanCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cluster_fill(s : NlpparsespanCluster, v : Double) -> NlpparsespanCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanCluster::fill(self : NlpparsespanCluster, v : Double) -> NlpparsespanCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cluster_min(s : NlpparsespanCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanCluster::min(self : NlpparsespanCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_cluster_max(s : NlpparsespanCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanCluster::max(self : NlpparsespanCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_cluster_to_string(s : NlpparsespanCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanCluster::to_string(self : NlpparsespanCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_span_model_make(size : Int) -> NlpparsespanModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_model_len(s : NlpparsespanModel) -> Int { s.size }
+pub fn NlpparsespanModel::len(self : NlpparsespanModel) -> Int { self.size }
 
-pub fn nlp_parse_span_model_get(s : NlpparsespanModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanModel::get(self : NlpparsespanModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_model_set(s : NlpparsespanModel, i : Int, v : Double) -> NlpparsespanModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanModel::set(self : NlpparsespanModel, i : Int, v : Double) -> NlpparsespanModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_model_sum(s : NlpparsespanModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanModel::sum(self : NlpparsespanModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_model_mean(s : NlpparsespanModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanModel::mean(self : NlpparsespanModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_model_scale(s : NlpparsespanModel, f : Double) -> NlpparsespanModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanModel::scale(self : NlpparsespanModel, f : Double) -> NlpparsespanModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_model_add(a : NlpparsespanModel, b : NlpparsespanModel) -> NlpparsespanModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanModel::add(self : NlpparsespanModel, other : NlpparsespanModel) -> NlpparsespanModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_model_copy(s : NlpparsespanModel) -> NlpparsespanModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanModel::copy(self : NlpparsespanModel) -> NlpparsespanModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_model_fill(s : NlpparsespanModel, v : Double) -> NlpparsespanModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanModel::fill(self : NlpparsespanModel, v : Double) -> NlpparsespanModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_model_min(s : NlpparsespanModel) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanModel::min(self : NlpparsespanModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_model_max(s : NlpparsespanModel) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanModel::max(self : NlpparsespanModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_model_to_string(s : NlpparsespanModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanModel::to_string(self : NlpparsespanModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_span_layer_make(size : Int) -> NlpparsespanLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_layer_len(s : NlpparsespanLayer) -> Int { s.size }
+pub fn NlpparsespanLayer::len(self : NlpparsespanLayer) -> Int { self.size }
 
-pub fn nlp_parse_span_layer_get(s : NlpparsespanLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanLayer::get(self : NlpparsespanLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_layer_set(s : NlpparsespanLayer, i : Int, v : Double) -> NlpparsespanLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanLayer::set(self : NlpparsespanLayer, i : Int, v : Double) -> NlpparsespanLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_layer_sum(s : NlpparsespanLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanLayer::sum(self : NlpparsespanLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_layer_mean(s : NlpparsespanLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanLayer::mean(self : NlpparsespanLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_layer_scale(s : NlpparsespanLayer, f : Double) -> NlpparsespanLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanLayer::scale(self : NlpparsespanLayer, f : Double) -> NlpparsespanLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_layer_add(a : NlpparsespanLayer, b : NlpparsespanLayer) -> NlpparsespanLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanLayer::add(self : NlpparsespanLayer, other : NlpparsespanLayer) -> NlpparsespanLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_layer_copy(s : NlpparsespanLayer) -> NlpparsespanLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanLayer::copy(self : NlpparsespanLayer) -> NlpparsespanLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_layer_fill(s : NlpparsespanLayer, v : Double) -> NlpparsespanLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanLayer::fill(self : NlpparsespanLayer, v : Double) -> NlpparsespanLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_layer_min(s : NlpparsespanLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanLayer::min(self : NlpparsespanLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_layer_max(s : NlpparsespanLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanLayer::max(self : NlpparsespanLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_layer_to_string(s : NlpparsespanLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanLayer::to_string(self : NlpparsespanLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_span_buffer_make(size : Int) -> NlpparsespanBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_buffer_len(s : NlpparsespanBuffer) -> Int { s.size }
+pub fn NlpparsespanBuffer::len(self : NlpparsespanBuffer) -> Int { self.size }
 
-pub fn nlp_parse_span_buffer_get(s : NlpparsespanBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanBuffer::get(self : NlpparsespanBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_buffer_set(s : NlpparsespanBuffer, i : Int, v : Double) -> NlpparsespanBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanBuffer::set(self : NlpparsespanBuffer, i : Int, v : Double) -> NlpparsespanBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_buffer_sum(s : NlpparsespanBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanBuffer::sum(self : NlpparsespanBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_buffer_mean(s : NlpparsespanBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanBuffer::mean(self : NlpparsespanBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_buffer_scale(s : NlpparsespanBuffer, f : Double) -> NlpparsespanBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanBuffer::scale(self : NlpparsespanBuffer, f : Double) -> NlpparsespanBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_buffer_add(a : NlpparsespanBuffer, b : NlpparsespanBuffer) -> NlpparsespanBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanBuffer::add(self : NlpparsespanBuffer, other : NlpparsespanBuffer) -> NlpparsespanBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_buffer_copy(s : NlpparsespanBuffer) -> NlpparsespanBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanBuffer::copy(self : NlpparsespanBuffer) -> NlpparsespanBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_buffer_fill(s : NlpparsespanBuffer, v : Double) -> NlpparsespanBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanBuffer::fill(self : NlpparsespanBuffer, v : Double) -> NlpparsespanBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_buffer_min(s : NlpparsespanBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanBuffer::min(self : NlpparsespanBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_buffer_max(s : NlpparsespanBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanBuffer::max(self : NlpparsespanBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_buffer_to_string(s : NlpparsespanBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanBuffer::to_string(self : NlpparsespanBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_span_cursor_make(size : Int) -> NlpparsespanCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_cursor_len(s : NlpparsespanCursor) -> Int { s.size }
+pub fn NlpparsespanCursor::len(self : NlpparsespanCursor) -> Int { self.size }
 
-pub fn nlp_parse_span_cursor_get(s : NlpparsespanCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanCursor::get(self : NlpparsespanCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_cursor_set(s : NlpparsespanCursor, i : Int, v : Double) -> NlpparsespanCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanCursor::set(self : NlpparsespanCursor, i : Int, v : Double) -> NlpparsespanCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cursor_sum(s : NlpparsespanCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanCursor::sum(self : NlpparsespanCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_cursor_mean(s : NlpparsespanCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanCursor::mean(self : NlpparsespanCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_cursor_scale(s : NlpparsespanCursor, f : Double) -> NlpparsespanCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanCursor::scale(self : NlpparsespanCursor, f : Double) -> NlpparsespanCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cursor_add(a : NlpparsespanCursor, b : NlpparsespanCursor) -> NlpparsespanCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanCursor::add(self : NlpparsespanCursor, other : NlpparsespanCursor) -> NlpparsespanCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cursor_copy(s : NlpparsespanCursor) -> NlpparsespanCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanCursor::copy(self : NlpparsespanCursor) -> NlpparsespanCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cursor_fill(s : NlpparsespanCursor, v : Double) -> NlpparsespanCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanCursor::fill(self : NlpparsespanCursor, v : Double) -> NlpparsespanCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_cursor_min(s : NlpparsespanCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanCursor::min(self : NlpparsespanCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_cursor_max(s : NlpparsespanCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanCursor::max(self : NlpparsespanCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_cursor_to_string(s : NlpparsespanCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanCursor::to_string(self : NlpparsespanCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_span_view_make(size : Int) -> NlpparsespanView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_view_len(s : NlpparsespanView) -> Int { s.size }
+pub fn NlpparsespanView::len(self : NlpparsespanView) -> Int { self.size }
 
-pub fn nlp_parse_span_view_get(s : NlpparsespanView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanView::get(self : NlpparsespanView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_view_set(s : NlpparsespanView, i : Int, v : Double) -> NlpparsespanView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanView::set(self : NlpparsespanView, i : Int, v : Double) -> NlpparsespanView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_view_sum(s : NlpparsespanView) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanView::sum(self : NlpparsespanView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_view_mean(s : NlpparsespanView) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanView::mean(self : NlpparsespanView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_view_scale(s : NlpparsespanView, f : Double) -> NlpparsespanView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanView::scale(self : NlpparsespanView, f : Double) -> NlpparsespanView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_view_add(a : NlpparsespanView, b : NlpparsespanView) -> NlpparsespanView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanView::add(self : NlpparsespanView, other : NlpparsespanView) -> NlpparsespanView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_view_copy(s : NlpparsespanView) -> NlpparsespanView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanView::copy(self : NlpparsespanView) -> NlpparsespanView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_view_fill(s : NlpparsespanView, v : Double) -> NlpparsespanView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanView::fill(self : NlpparsespanView, v : Double) -> NlpparsespanView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_view_min(s : NlpparsespanView) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanView::min(self : NlpparsespanView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_view_max(s : NlpparsespanView) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanView::max(self : NlpparsespanView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_view_to_string(s : NlpparsespanView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanView::to_string(self : NlpparsespanView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_span_range_make(size : Int) -> NlpparsespanRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_range_len(s : NlpparsespanRange) -> Int { s.size }
+pub fn NlpparsespanRange::len(self : NlpparsespanRange) -> Int { self.size }
 
-pub fn nlp_parse_span_range_get(s : NlpparsespanRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanRange::get(self : NlpparsespanRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_range_set(s : NlpparsespanRange, i : Int, v : Double) -> NlpparsespanRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanRange::set(self : NlpparsespanRange, i : Int, v : Double) -> NlpparsespanRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_range_sum(s : NlpparsespanRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanRange::sum(self : NlpparsespanRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_range_mean(s : NlpparsespanRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanRange::mean(self : NlpparsespanRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_range_scale(s : NlpparsespanRange, f : Double) -> NlpparsespanRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanRange::scale(self : NlpparsespanRange, f : Double) -> NlpparsespanRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_range_add(a : NlpparsespanRange, b : NlpparsespanRange) -> NlpparsespanRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanRange::add(self : NlpparsespanRange, other : NlpparsespanRange) -> NlpparsespanRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_range_copy(s : NlpparsespanRange) -> NlpparsespanRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanRange::copy(self : NlpparsespanRange) -> NlpparsespanRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_range_fill(s : NlpparsespanRange, v : Double) -> NlpparsespanRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanRange::fill(self : NlpparsespanRange, v : Double) -> NlpparsespanRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_range_min(s : NlpparsespanRange) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanRange::min(self : NlpparsespanRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_range_max(s : NlpparsespanRange) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanRange::max(self : NlpparsespanRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_range_to_string(s : NlpparsespanRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanRange::to_string(self : NlpparsespanRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsespanSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_span_slice_make(size : Int) -> NlpparsespanSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_span_slice_len(s : NlpparsespanSlice) -> Int { s.size }
+pub fn NlpparsespanSlice::len(self : NlpparsespanSlice) -> Int { self.size }
 
-pub fn nlp_parse_span_slice_get(s : NlpparsespanSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsespanSlice::get(self : NlpparsespanSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_span_slice_set(s : NlpparsespanSlice, i : Int, v : Double) -> NlpparsespanSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsespanSlice::set(self : NlpparsespanSlice, i : Int, v : Double) -> NlpparsespanSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_slice_sum(s : NlpparsespanSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparsespanSlice::sum(self : NlpparsespanSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_span_slice_mean(s : NlpparsespanSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparsespanSlice::mean(self : NlpparsespanSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_span_slice_scale(s : NlpparsespanSlice, f : Double) -> NlpparsespanSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsespanSlice::scale(self : NlpparsespanSlice, f : Double) -> NlpparsespanSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_slice_add(a : NlpparsespanSlice, b : NlpparsespanSlice) -> NlpparsespanSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsespanSlice::add(self : NlpparsespanSlice, other : NlpparsespanSlice) -> NlpparsespanSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_span_slice_copy(s : NlpparsespanSlice) -> NlpparsespanSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsespanSlice::copy(self : NlpparsespanSlice) -> NlpparsespanSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_slice_fill(s : NlpparsespanSlice, v : Double) -> NlpparsespanSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsespanSlice::fill(self : NlpparsespanSlice, v : Double) -> NlpparsespanSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_span_slice_min(s : NlpparsespanSlice) -> Double { @_common.min(s.data) }
+pub fn NlpparsespanSlice::min(self : NlpparsespanSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_span_slice_max(s : NlpparsespanSlice) -> Double { @_common.max(s.data) }
+pub fn NlpparsespanSlice::max(self : NlpparsespanSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_span_slice_to_string(s : NlpparsespanSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsespanSlice::to_string(self : NlpparsespanSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

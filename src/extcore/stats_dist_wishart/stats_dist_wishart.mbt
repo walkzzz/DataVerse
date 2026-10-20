@@ -351,45 +351,45 @@ pub fn stats_dist_wishart_frame_make(size : Int) -> StatsdistwishartFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_frame_len(s : StatsdistwishartFrame) -> Int { s.size }
+pub fn StatsdistwishartFrame::len(self : StatsdistwishartFrame) -> Int { self.size }
 
-pub fn stats_dist_wishart_frame_get(s : StatsdistwishartFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartFrame::get(self : StatsdistwishartFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_frame_set(s : StatsdistwishartFrame, i : Int, v : Double) -> StatsdistwishartFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartFrame::set(self : StatsdistwishartFrame, i : Int, v : Double) -> StatsdistwishartFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_frame_sum(s : StatsdistwishartFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartFrame::sum(self : StatsdistwishartFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_frame_mean(s : StatsdistwishartFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartFrame::mean(self : StatsdistwishartFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_frame_scale(s : StatsdistwishartFrame, f : Double) -> StatsdistwishartFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartFrame::scale(self : StatsdistwishartFrame, f : Double) -> StatsdistwishartFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_frame_add(a : StatsdistwishartFrame, b : StatsdistwishartFrame) -> StatsdistwishartFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartFrame::add(self : StatsdistwishartFrame, other : StatsdistwishartFrame) -> StatsdistwishartFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_frame_copy(s : StatsdistwishartFrame) -> StatsdistwishartFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartFrame::copy(self : StatsdistwishartFrame) -> StatsdistwishartFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_frame_fill(s : StatsdistwishartFrame, v : Double) -> StatsdistwishartFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartFrame::fill(self : StatsdistwishartFrame, v : Double) -> StatsdistwishartFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_frame_min(s : StatsdistwishartFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartFrame::min(self : StatsdistwishartFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_frame_max(s : StatsdistwishartFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartFrame::max(self : StatsdistwishartFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_frame_to_string(s : StatsdistwishartFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartFrame::to_string(self : StatsdistwishartFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartTable {
@@ -402,45 +402,45 @@ pub fn stats_dist_wishart_table_make(size : Int) -> StatsdistwishartTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_table_len(s : StatsdistwishartTable) -> Int { s.size }
+pub fn StatsdistwishartTable::len(self : StatsdistwishartTable) -> Int { self.size }
 
-pub fn stats_dist_wishart_table_get(s : StatsdistwishartTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartTable::get(self : StatsdistwishartTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_table_set(s : StatsdistwishartTable, i : Int, v : Double) -> StatsdistwishartTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartTable::set(self : StatsdistwishartTable, i : Int, v : Double) -> StatsdistwishartTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_table_sum(s : StatsdistwishartTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartTable::sum(self : StatsdistwishartTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_table_mean(s : StatsdistwishartTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartTable::mean(self : StatsdistwishartTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_table_scale(s : StatsdistwishartTable, f : Double) -> StatsdistwishartTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartTable::scale(self : StatsdistwishartTable, f : Double) -> StatsdistwishartTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_table_add(a : StatsdistwishartTable, b : StatsdistwishartTable) -> StatsdistwishartTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartTable::add(self : StatsdistwishartTable, other : StatsdistwishartTable) -> StatsdistwishartTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_table_copy(s : StatsdistwishartTable) -> StatsdistwishartTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartTable::copy(self : StatsdistwishartTable) -> StatsdistwishartTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_table_fill(s : StatsdistwishartTable, v : Double) -> StatsdistwishartTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartTable::fill(self : StatsdistwishartTable, v : Double) -> StatsdistwishartTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_table_min(s : StatsdistwishartTable) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartTable::min(self : StatsdistwishartTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_table_max(s : StatsdistwishartTable) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartTable::max(self : StatsdistwishartTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_table_to_string(s : StatsdistwishartTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartTable::to_string(self : StatsdistwishartTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartGraphN {
@@ -453,45 +453,45 @@ pub fn stats_dist_wishart_graphn_make(size : Int) -> StatsdistwishartGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_graphn_len(s : StatsdistwishartGraphN) -> Int { s.size }
+pub fn StatsdistwishartGraphN::len(self : StatsdistwishartGraphN) -> Int { self.size }
 
-pub fn stats_dist_wishart_graphn_get(s : StatsdistwishartGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartGraphN::get(self : StatsdistwishartGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_graphn_set(s : StatsdistwishartGraphN, i : Int, v : Double) -> StatsdistwishartGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartGraphN::set(self : StatsdistwishartGraphN, i : Int, v : Double) -> StatsdistwishartGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_graphn_sum(s : StatsdistwishartGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartGraphN::sum(self : StatsdistwishartGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_graphn_mean(s : StatsdistwishartGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartGraphN::mean(self : StatsdistwishartGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_graphn_scale(s : StatsdistwishartGraphN, f : Double) -> StatsdistwishartGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartGraphN::scale(self : StatsdistwishartGraphN, f : Double) -> StatsdistwishartGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_graphn_add(a : StatsdistwishartGraphN, b : StatsdistwishartGraphN) -> StatsdistwishartGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartGraphN::add(self : StatsdistwishartGraphN, other : StatsdistwishartGraphN) -> StatsdistwishartGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_graphn_copy(s : StatsdistwishartGraphN) -> StatsdistwishartGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartGraphN::copy(self : StatsdistwishartGraphN) -> StatsdistwishartGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_graphn_fill(s : StatsdistwishartGraphN, v : Double) -> StatsdistwishartGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartGraphN::fill(self : StatsdistwishartGraphN, v : Double) -> StatsdistwishartGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_graphn_min(s : StatsdistwishartGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartGraphN::min(self : StatsdistwishartGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_graphn_max(s : StatsdistwishartGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartGraphN::max(self : StatsdistwishartGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_graphn_to_string(s : StatsdistwishartGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartGraphN::to_string(self : StatsdistwishartGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartNode {
@@ -504,45 +504,45 @@ pub fn stats_dist_wishart_node_make(size : Int) -> StatsdistwishartNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_node_len(s : StatsdistwishartNode) -> Int { s.size }
+pub fn StatsdistwishartNode::len(self : StatsdistwishartNode) -> Int { self.size }
 
-pub fn stats_dist_wishart_node_get(s : StatsdistwishartNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartNode::get(self : StatsdistwishartNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_node_set(s : StatsdistwishartNode, i : Int, v : Double) -> StatsdistwishartNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartNode::set(self : StatsdistwishartNode, i : Int, v : Double) -> StatsdistwishartNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_node_sum(s : StatsdistwishartNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartNode::sum(self : StatsdistwishartNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_node_mean(s : StatsdistwishartNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartNode::mean(self : StatsdistwishartNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_node_scale(s : StatsdistwishartNode, f : Double) -> StatsdistwishartNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartNode::scale(self : StatsdistwishartNode, f : Double) -> StatsdistwishartNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_node_add(a : StatsdistwishartNode, b : StatsdistwishartNode) -> StatsdistwishartNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartNode::add(self : StatsdistwishartNode, other : StatsdistwishartNode) -> StatsdistwishartNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_node_copy(s : StatsdistwishartNode) -> StatsdistwishartNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartNode::copy(self : StatsdistwishartNode) -> StatsdistwishartNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_node_fill(s : StatsdistwishartNode, v : Double) -> StatsdistwishartNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartNode::fill(self : StatsdistwishartNode, v : Double) -> StatsdistwishartNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_node_min(s : StatsdistwishartNode) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartNode::min(self : StatsdistwishartNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_node_max(s : StatsdistwishartNode) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartNode::max(self : StatsdistwishartNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_node_to_string(s : StatsdistwishartNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartNode::to_string(self : StatsdistwishartNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartEdge {
@@ -555,45 +555,45 @@ pub fn stats_dist_wishart_edge_make(size : Int) -> StatsdistwishartEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_edge_len(s : StatsdistwishartEdge) -> Int { s.size }
+pub fn StatsdistwishartEdge::len(self : StatsdistwishartEdge) -> Int { self.size }
 
-pub fn stats_dist_wishart_edge_get(s : StatsdistwishartEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartEdge::get(self : StatsdistwishartEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_edge_set(s : StatsdistwishartEdge, i : Int, v : Double) -> StatsdistwishartEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartEdge::set(self : StatsdistwishartEdge, i : Int, v : Double) -> StatsdistwishartEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_edge_sum(s : StatsdistwishartEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartEdge::sum(self : StatsdistwishartEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_edge_mean(s : StatsdistwishartEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartEdge::mean(self : StatsdistwishartEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_edge_scale(s : StatsdistwishartEdge, f : Double) -> StatsdistwishartEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartEdge::scale(self : StatsdistwishartEdge, f : Double) -> StatsdistwishartEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_edge_add(a : StatsdistwishartEdge, b : StatsdistwishartEdge) -> StatsdistwishartEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartEdge::add(self : StatsdistwishartEdge, other : StatsdistwishartEdge) -> StatsdistwishartEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_edge_copy(s : StatsdistwishartEdge) -> StatsdistwishartEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartEdge::copy(self : StatsdistwishartEdge) -> StatsdistwishartEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_edge_fill(s : StatsdistwishartEdge, v : Double) -> StatsdistwishartEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartEdge::fill(self : StatsdistwishartEdge, v : Double) -> StatsdistwishartEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_edge_min(s : StatsdistwishartEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartEdge::min(self : StatsdistwishartEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_edge_max(s : StatsdistwishartEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartEdge::max(self : StatsdistwishartEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_edge_to_string(s : StatsdistwishartEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartEdge::to_string(self : StatsdistwishartEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartPath {
@@ -606,45 +606,45 @@ pub fn stats_dist_wishart_path_make(size : Int) -> StatsdistwishartPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_path_len(s : StatsdistwishartPath) -> Int { s.size }
+pub fn StatsdistwishartPath::len(self : StatsdistwishartPath) -> Int { self.size }
 
-pub fn stats_dist_wishart_path_get(s : StatsdistwishartPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartPath::get(self : StatsdistwishartPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_path_set(s : StatsdistwishartPath, i : Int, v : Double) -> StatsdistwishartPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartPath::set(self : StatsdistwishartPath, i : Int, v : Double) -> StatsdistwishartPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_path_sum(s : StatsdistwishartPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartPath::sum(self : StatsdistwishartPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_path_mean(s : StatsdistwishartPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartPath::mean(self : StatsdistwishartPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_path_scale(s : StatsdistwishartPath, f : Double) -> StatsdistwishartPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartPath::scale(self : StatsdistwishartPath, f : Double) -> StatsdistwishartPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_path_add(a : StatsdistwishartPath, b : StatsdistwishartPath) -> StatsdistwishartPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartPath::add(self : StatsdistwishartPath, other : StatsdistwishartPath) -> StatsdistwishartPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_path_copy(s : StatsdistwishartPath) -> StatsdistwishartPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartPath::copy(self : StatsdistwishartPath) -> StatsdistwishartPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_path_fill(s : StatsdistwishartPath, v : Double) -> StatsdistwishartPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartPath::fill(self : StatsdistwishartPath, v : Double) -> StatsdistwishartPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_path_min(s : StatsdistwishartPath) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartPath::min(self : StatsdistwishartPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_path_max(s : StatsdistwishartPath) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartPath::max(self : StatsdistwishartPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_path_to_string(s : StatsdistwishartPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartPath::to_string(self : StatsdistwishartPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartCluster {
@@ -657,45 +657,45 @@ pub fn stats_dist_wishart_cluster_make(size : Int) -> StatsdistwishartCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_cluster_len(s : StatsdistwishartCluster) -> Int { s.size }
+pub fn StatsdistwishartCluster::len(self : StatsdistwishartCluster) -> Int { self.size }
 
-pub fn stats_dist_wishart_cluster_get(s : StatsdistwishartCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartCluster::get(self : StatsdistwishartCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_cluster_set(s : StatsdistwishartCluster, i : Int, v : Double) -> StatsdistwishartCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartCluster::set(self : StatsdistwishartCluster, i : Int, v : Double) -> StatsdistwishartCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cluster_sum(s : StatsdistwishartCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartCluster::sum(self : StatsdistwishartCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_cluster_mean(s : StatsdistwishartCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartCluster::mean(self : StatsdistwishartCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_cluster_scale(s : StatsdistwishartCluster, f : Double) -> StatsdistwishartCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartCluster::scale(self : StatsdistwishartCluster, f : Double) -> StatsdistwishartCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cluster_add(a : StatsdistwishartCluster, b : StatsdistwishartCluster) -> StatsdistwishartCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartCluster::add(self : StatsdistwishartCluster, other : StatsdistwishartCluster) -> StatsdistwishartCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cluster_copy(s : StatsdistwishartCluster) -> StatsdistwishartCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartCluster::copy(self : StatsdistwishartCluster) -> StatsdistwishartCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cluster_fill(s : StatsdistwishartCluster, v : Double) -> StatsdistwishartCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartCluster::fill(self : StatsdistwishartCluster, v : Double) -> StatsdistwishartCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cluster_min(s : StatsdistwishartCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartCluster::min(self : StatsdistwishartCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_cluster_max(s : StatsdistwishartCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartCluster::max(self : StatsdistwishartCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_cluster_to_string(s : StatsdistwishartCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartCluster::to_string(self : StatsdistwishartCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartModel {
@@ -708,45 +708,45 @@ pub fn stats_dist_wishart_model_make(size : Int) -> StatsdistwishartModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_model_len(s : StatsdistwishartModel) -> Int { s.size }
+pub fn StatsdistwishartModel::len(self : StatsdistwishartModel) -> Int { self.size }
 
-pub fn stats_dist_wishart_model_get(s : StatsdistwishartModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartModel::get(self : StatsdistwishartModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_model_set(s : StatsdistwishartModel, i : Int, v : Double) -> StatsdistwishartModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartModel::set(self : StatsdistwishartModel, i : Int, v : Double) -> StatsdistwishartModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_model_sum(s : StatsdistwishartModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartModel::sum(self : StatsdistwishartModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_model_mean(s : StatsdistwishartModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartModel::mean(self : StatsdistwishartModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_model_scale(s : StatsdistwishartModel, f : Double) -> StatsdistwishartModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartModel::scale(self : StatsdistwishartModel, f : Double) -> StatsdistwishartModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_model_add(a : StatsdistwishartModel, b : StatsdistwishartModel) -> StatsdistwishartModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartModel::add(self : StatsdistwishartModel, other : StatsdistwishartModel) -> StatsdistwishartModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_model_copy(s : StatsdistwishartModel) -> StatsdistwishartModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartModel::copy(self : StatsdistwishartModel) -> StatsdistwishartModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_model_fill(s : StatsdistwishartModel, v : Double) -> StatsdistwishartModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartModel::fill(self : StatsdistwishartModel, v : Double) -> StatsdistwishartModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_model_min(s : StatsdistwishartModel) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartModel::min(self : StatsdistwishartModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_model_max(s : StatsdistwishartModel) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartModel::max(self : StatsdistwishartModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_model_to_string(s : StatsdistwishartModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartModel::to_string(self : StatsdistwishartModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartLayer {
@@ -759,45 +759,45 @@ pub fn stats_dist_wishart_layer_make(size : Int) -> StatsdistwishartLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_layer_len(s : StatsdistwishartLayer) -> Int { s.size }
+pub fn StatsdistwishartLayer::len(self : StatsdistwishartLayer) -> Int { self.size }
 
-pub fn stats_dist_wishart_layer_get(s : StatsdistwishartLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartLayer::get(self : StatsdistwishartLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_layer_set(s : StatsdistwishartLayer, i : Int, v : Double) -> StatsdistwishartLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartLayer::set(self : StatsdistwishartLayer, i : Int, v : Double) -> StatsdistwishartLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_layer_sum(s : StatsdistwishartLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartLayer::sum(self : StatsdistwishartLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_layer_mean(s : StatsdistwishartLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartLayer::mean(self : StatsdistwishartLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_layer_scale(s : StatsdistwishartLayer, f : Double) -> StatsdistwishartLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartLayer::scale(self : StatsdistwishartLayer, f : Double) -> StatsdistwishartLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_layer_add(a : StatsdistwishartLayer, b : StatsdistwishartLayer) -> StatsdistwishartLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartLayer::add(self : StatsdistwishartLayer, other : StatsdistwishartLayer) -> StatsdistwishartLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_layer_copy(s : StatsdistwishartLayer) -> StatsdistwishartLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartLayer::copy(self : StatsdistwishartLayer) -> StatsdistwishartLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_layer_fill(s : StatsdistwishartLayer, v : Double) -> StatsdistwishartLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartLayer::fill(self : StatsdistwishartLayer, v : Double) -> StatsdistwishartLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_layer_min(s : StatsdistwishartLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartLayer::min(self : StatsdistwishartLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_layer_max(s : StatsdistwishartLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartLayer::max(self : StatsdistwishartLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_layer_to_string(s : StatsdistwishartLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartLayer::to_string(self : StatsdistwishartLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartBuffer {
@@ -810,45 +810,45 @@ pub fn stats_dist_wishart_buffer_make(size : Int) -> StatsdistwishartBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_buffer_len(s : StatsdistwishartBuffer) -> Int { s.size }
+pub fn StatsdistwishartBuffer::len(self : StatsdistwishartBuffer) -> Int { self.size }
 
-pub fn stats_dist_wishart_buffer_get(s : StatsdistwishartBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartBuffer::get(self : StatsdistwishartBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_buffer_set(s : StatsdistwishartBuffer, i : Int, v : Double) -> StatsdistwishartBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartBuffer::set(self : StatsdistwishartBuffer, i : Int, v : Double) -> StatsdistwishartBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_buffer_sum(s : StatsdistwishartBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartBuffer::sum(self : StatsdistwishartBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_buffer_mean(s : StatsdistwishartBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartBuffer::mean(self : StatsdistwishartBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_buffer_scale(s : StatsdistwishartBuffer, f : Double) -> StatsdistwishartBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartBuffer::scale(self : StatsdistwishartBuffer, f : Double) -> StatsdistwishartBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_buffer_add(a : StatsdistwishartBuffer, b : StatsdistwishartBuffer) -> StatsdistwishartBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartBuffer::add(self : StatsdistwishartBuffer, other : StatsdistwishartBuffer) -> StatsdistwishartBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_buffer_copy(s : StatsdistwishartBuffer) -> StatsdistwishartBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartBuffer::copy(self : StatsdistwishartBuffer) -> StatsdistwishartBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_buffer_fill(s : StatsdistwishartBuffer, v : Double) -> StatsdistwishartBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartBuffer::fill(self : StatsdistwishartBuffer, v : Double) -> StatsdistwishartBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_buffer_min(s : StatsdistwishartBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartBuffer::min(self : StatsdistwishartBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_buffer_max(s : StatsdistwishartBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartBuffer::max(self : StatsdistwishartBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_buffer_to_string(s : StatsdistwishartBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartBuffer::to_string(self : StatsdistwishartBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartCursor {
@@ -861,45 +861,45 @@ pub fn stats_dist_wishart_cursor_make(size : Int) -> StatsdistwishartCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_cursor_len(s : StatsdistwishartCursor) -> Int { s.size }
+pub fn StatsdistwishartCursor::len(self : StatsdistwishartCursor) -> Int { self.size }
 
-pub fn stats_dist_wishart_cursor_get(s : StatsdistwishartCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartCursor::get(self : StatsdistwishartCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_cursor_set(s : StatsdistwishartCursor, i : Int, v : Double) -> StatsdistwishartCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartCursor::set(self : StatsdistwishartCursor, i : Int, v : Double) -> StatsdistwishartCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cursor_sum(s : StatsdistwishartCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartCursor::sum(self : StatsdistwishartCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_cursor_mean(s : StatsdistwishartCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartCursor::mean(self : StatsdistwishartCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_cursor_scale(s : StatsdistwishartCursor, f : Double) -> StatsdistwishartCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartCursor::scale(self : StatsdistwishartCursor, f : Double) -> StatsdistwishartCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cursor_add(a : StatsdistwishartCursor, b : StatsdistwishartCursor) -> StatsdistwishartCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartCursor::add(self : StatsdistwishartCursor, other : StatsdistwishartCursor) -> StatsdistwishartCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cursor_copy(s : StatsdistwishartCursor) -> StatsdistwishartCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartCursor::copy(self : StatsdistwishartCursor) -> StatsdistwishartCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cursor_fill(s : StatsdistwishartCursor, v : Double) -> StatsdistwishartCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartCursor::fill(self : StatsdistwishartCursor, v : Double) -> StatsdistwishartCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_cursor_min(s : StatsdistwishartCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartCursor::min(self : StatsdistwishartCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_cursor_max(s : StatsdistwishartCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartCursor::max(self : StatsdistwishartCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_cursor_to_string(s : StatsdistwishartCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartCursor::to_string(self : StatsdistwishartCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartView {
@@ -912,45 +912,45 @@ pub fn stats_dist_wishart_view_make(size : Int) -> StatsdistwishartView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_view_len(s : StatsdistwishartView) -> Int { s.size }
+pub fn StatsdistwishartView::len(self : StatsdistwishartView) -> Int { self.size }
 
-pub fn stats_dist_wishart_view_get(s : StatsdistwishartView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartView::get(self : StatsdistwishartView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_view_set(s : StatsdistwishartView, i : Int, v : Double) -> StatsdistwishartView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartView::set(self : StatsdistwishartView, i : Int, v : Double) -> StatsdistwishartView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_view_sum(s : StatsdistwishartView) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartView::sum(self : StatsdistwishartView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_view_mean(s : StatsdistwishartView) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartView::mean(self : StatsdistwishartView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_view_scale(s : StatsdistwishartView, f : Double) -> StatsdistwishartView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartView::scale(self : StatsdistwishartView, f : Double) -> StatsdistwishartView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_view_add(a : StatsdistwishartView, b : StatsdistwishartView) -> StatsdistwishartView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartView::add(self : StatsdistwishartView, other : StatsdistwishartView) -> StatsdistwishartView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_view_copy(s : StatsdistwishartView) -> StatsdistwishartView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartView::copy(self : StatsdistwishartView) -> StatsdistwishartView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_view_fill(s : StatsdistwishartView, v : Double) -> StatsdistwishartView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartView::fill(self : StatsdistwishartView, v : Double) -> StatsdistwishartView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_view_min(s : StatsdistwishartView) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartView::min(self : StatsdistwishartView) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_view_max(s : StatsdistwishartView) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartView::max(self : StatsdistwishartView) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_view_to_string(s : StatsdistwishartView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartView::to_string(self : StatsdistwishartView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartRange {
@@ -963,45 +963,45 @@ pub fn stats_dist_wishart_range_make(size : Int) -> StatsdistwishartRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_range_len(s : StatsdistwishartRange) -> Int { s.size }
+pub fn StatsdistwishartRange::len(self : StatsdistwishartRange) -> Int { self.size }
 
-pub fn stats_dist_wishart_range_get(s : StatsdistwishartRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartRange::get(self : StatsdistwishartRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_range_set(s : StatsdistwishartRange, i : Int, v : Double) -> StatsdistwishartRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartRange::set(self : StatsdistwishartRange, i : Int, v : Double) -> StatsdistwishartRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_range_sum(s : StatsdistwishartRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartRange::sum(self : StatsdistwishartRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_range_mean(s : StatsdistwishartRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartRange::mean(self : StatsdistwishartRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_range_scale(s : StatsdistwishartRange, f : Double) -> StatsdistwishartRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartRange::scale(self : StatsdistwishartRange, f : Double) -> StatsdistwishartRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_range_add(a : StatsdistwishartRange, b : StatsdistwishartRange) -> StatsdistwishartRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartRange::add(self : StatsdistwishartRange, other : StatsdistwishartRange) -> StatsdistwishartRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_range_copy(s : StatsdistwishartRange) -> StatsdistwishartRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartRange::copy(self : StatsdistwishartRange) -> StatsdistwishartRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_range_fill(s : StatsdistwishartRange, v : Double) -> StatsdistwishartRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartRange::fill(self : StatsdistwishartRange, v : Double) -> StatsdistwishartRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_range_min(s : StatsdistwishartRange) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartRange::min(self : StatsdistwishartRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_range_max(s : StatsdistwishartRange) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartRange::max(self : StatsdistwishartRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_range_to_string(s : StatsdistwishartRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartRange::to_string(self : StatsdistwishartRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdistwishartSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_dist_wishart_slice_make(size : Int) -> StatsdistwishartSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_dist_wishart_slice_len(s : StatsdistwishartSlice) -> Int { s.size }
+pub fn StatsdistwishartSlice::len(self : StatsdistwishartSlice) -> Int { self.size }
 
-pub fn stats_dist_wishart_slice_get(s : StatsdistwishartSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdistwishartSlice::get(self : StatsdistwishartSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_dist_wishart_slice_set(s : StatsdistwishartSlice, i : Int, v : Double) -> StatsdistwishartSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdistwishartSlice::set(self : StatsdistwishartSlice, i : Int, v : Double) -> StatsdistwishartSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_slice_sum(s : StatsdistwishartSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdistwishartSlice::sum(self : StatsdistwishartSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_dist_wishart_slice_mean(s : StatsdistwishartSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdistwishartSlice::mean(self : StatsdistwishartSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_dist_wishart_slice_scale(s : StatsdistwishartSlice, f : Double) -> StatsdistwishartSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdistwishartSlice::scale(self : StatsdistwishartSlice, f : Double) -> StatsdistwishartSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_slice_add(a : StatsdistwishartSlice, b : StatsdistwishartSlice) -> StatsdistwishartSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdistwishartSlice::add(self : StatsdistwishartSlice, other : StatsdistwishartSlice) -> StatsdistwishartSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_slice_copy(s : StatsdistwishartSlice) -> StatsdistwishartSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdistwishartSlice::copy(self : StatsdistwishartSlice) -> StatsdistwishartSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_slice_fill(s : StatsdistwishartSlice, v : Double) -> StatsdistwishartSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdistwishartSlice::fill(self : StatsdistwishartSlice, v : Double) -> StatsdistwishartSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_dist_wishart_slice_min(s : StatsdistwishartSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdistwishartSlice::min(self : StatsdistwishartSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_dist_wishart_slice_max(s : StatsdistwishartSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdistwishartSlice::max(self : StatsdistwishartSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_dist_wishart_slice_to_string(s : StatsdistwishartSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdistwishartSlice::to_string(self : StatsdistwishartSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

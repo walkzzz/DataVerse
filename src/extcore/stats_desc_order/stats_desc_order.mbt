@@ -351,45 +351,45 @@ pub fn stats_desc_order_frame_make(size : Int) -> StatsdescorderFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_frame_len(s : StatsdescorderFrame) -> Int { s.size }
+pub fn StatsdescorderFrame::len(self : StatsdescorderFrame) -> Int { self.size }
 
-pub fn stats_desc_order_frame_get(s : StatsdescorderFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderFrame::get(self : StatsdescorderFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_frame_set(s : StatsdescorderFrame, i : Int, v : Double) -> StatsdescorderFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderFrame::set(self : StatsdescorderFrame, i : Int, v : Double) -> StatsdescorderFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_frame_sum(s : StatsdescorderFrame) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderFrame::sum(self : StatsdescorderFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_frame_mean(s : StatsdescorderFrame) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderFrame::mean(self : StatsdescorderFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_frame_scale(s : StatsdescorderFrame, f : Double) -> StatsdescorderFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderFrame::scale(self : StatsdescorderFrame, f : Double) -> StatsdescorderFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_frame_add(a : StatsdescorderFrame, b : StatsdescorderFrame) -> StatsdescorderFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderFrame::add(self : StatsdescorderFrame, other : StatsdescorderFrame) -> StatsdescorderFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_frame_copy(s : StatsdescorderFrame) -> StatsdescorderFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderFrame::copy(self : StatsdescorderFrame) -> StatsdescorderFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_frame_fill(s : StatsdescorderFrame, v : Double) -> StatsdescorderFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderFrame::fill(self : StatsdescorderFrame, v : Double) -> StatsdescorderFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_frame_min(s : StatsdescorderFrame) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderFrame::min(self : StatsdescorderFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_frame_max(s : StatsdescorderFrame) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderFrame::max(self : StatsdescorderFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_frame_to_string(s : StatsdescorderFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderFrame::to_string(self : StatsdescorderFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderTable {
@@ -402,45 +402,45 @@ pub fn stats_desc_order_table_make(size : Int) -> StatsdescorderTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_table_len(s : StatsdescorderTable) -> Int { s.size }
+pub fn StatsdescorderTable::len(self : StatsdescorderTable) -> Int { self.size }
 
-pub fn stats_desc_order_table_get(s : StatsdescorderTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderTable::get(self : StatsdescorderTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_table_set(s : StatsdescorderTable, i : Int, v : Double) -> StatsdescorderTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderTable::set(self : StatsdescorderTable, i : Int, v : Double) -> StatsdescorderTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_table_sum(s : StatsdescorderTable) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderTable::sum(self : StatsdescorderTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_table_mean(s : StatsdescorderTable) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderTable::mean(self : StatsdescorderTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_table_scale(s : StatsdescorderTable, f : Double) -> StatsdescorderTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderTable::scale(self : StatsdescorderTable, f : Double) -> StatsdescorderTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_table_add(a : StatsdescorderTable, b : StatsdescorderTable) -> StatsdescorderTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderTable::add(self : StatsdescorderTable, other : StatsdescorderTable) -> StatsdescorderTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_table_copy(s : StatsdescorderTable) -> StatsdescorderTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderTable::copy(self : StatsdescorderTable) -> StatsdescorderTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_table_fill(s : StatsdescorderTable, v : Double) -> StatsdescorderTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderTable::fill(self : StatsdescorderTable, v : Double) -> StatsdescorderTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_table_min(s : StatsdescorderTable) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderTable::min(self : StatsdescorderTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_table_max(s : StatsdescorderTable) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderTable::max(self : StatsdescorderTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_table_to_string(s : StatsdescorderTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderTable::to_string(self : StatsdescorderTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderGraphN {
@@ -453,45 +453,45 @@ pub fn stats_desc_order_graphn_make(size : Int) -> StatsdescorderGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_graphn_len(s : StatsdescorderGraphN) -> Int { s.size }
+pub fn StatsdescorderGraphN::len(self : StatsdescorderGraphN) -> Int { self.size }
 
-pub fn stats_desc_order_graphn_get(s : StatsdescorderGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderGraphN::get(self : StatsdescorderGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_graphn_set(s : StatsdescorderGraphN, i : Int, v : Double) -> StatsdescorderGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderGraphN::set(self : StatsdescorderGraphN, i : Int, v : Double) -> StatsdescorderGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_graphn_sum(s : StatsdescorderGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderGraphN::sum(self : StatsdescorderGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_graphn_mean(s : StatsdescorderGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderGraphN::mean(self : StatsdescorderGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_graphn_scale(s : StatsdescorderGraphN, f : Double) -> StatsdescorderGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderGraphN::scale(self : StatsdescorderGraphN, f : Double) -> StatsdescorderGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_graphn_add(a : StatsdescorderGraphN, b : StatsdescorderGraphN) -> StatsdescorderGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderGraphN::add(self : StatsdescorderGraphN, other : StatsdescorderGraphN) -> StatsdescorderGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_graphn_copy(s : StatsdescorderGraphN) -> StatsdescorderGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderGraphN::copy(self : StatsdescorderGraphN) -> StatsdescorderGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_graphn_fill(s : StatsdescorderGraphN, v : Double) -> StatsdescorderGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderGraphN::fill(self : StatsdescorderGraphN, v : Double) -> StatsdescorderGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_graphn_min(s : StatsdescorderGraphN) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderGraphN::min(self : StatsdescorderGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_graphn_max(s : StatsdescorderGraphN) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderGraphN::max(self : StatsdescorderGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_graphn_to_string(s : StatsdescorderGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderGraphN::to_string(self : StatsdescorderGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderNode {
@@ -504,45 +504,45 @@ pub fn stats_desc_order_node_make(size : Int) -> StatsdescorderNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_node_len(s : StatsdescorderNode) -> Int { s.size }
+pub fn StatsdescorderNode::len(self : StatsdescorderNode) -> Int { self.size }
 
-pub fn stats_desc_order_node_get(s : StatsdescorderNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderNode::get(self : StatsdescorderNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_node_set(s : StatsdescorderNode, i : Int, v : Double) -> StatsdescorderNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderNode::set(self : StatsdescorderNode, i : Int, v : Double) -> StatsdescorderNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_node_sum(s : StatsdescorderNode) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderNode::sum(self : StatsdescorderNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_node_mean(s : StatsdescorderNode) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderNode::mean(self : StatsdescorderNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_node_scale(s : StatsdescorderNode, f : Double) -> StatsdescorderNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderNode::scale(self : StatsdescorderNode, f : Double) -> StatsdescorderNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_node_add(a : StatsdescorderNode, b : StatsdescorderNode) -> StatsdescorderNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderNode::add(self : StatsdescorderNode, other : StatsdescorderNode) -> StatsdescorderNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_node_copy(s : StatsdescorderNode) -> StatsdescorderNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderNode::copy(self : StatsdescorderNode) -> StatsdescorderNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_node_fill(s : StatsdescorderNode, v : Double) -> StatsdescorderNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderNode::fill(self : StatsdescorderNode, v : Double) -> StatsdescorderNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_node_min(s : StatsdescorderNode) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderNode::min(self : StatsdescorderNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_node_max(s : StatsdescorderNode) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderNode::max(self : StatsdescorderNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_node_to_string(s : StatsdescorderNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderNode::to_string(self : StatsdescorderNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderEdge {
@@ -555,45 +555,45 @@ pub fn stats_desc_order_edge_make(size : Int) -> StatsdescorderEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_edge_len(s : StatsdescorderEdge) -> Int { s.size }
+pub fn StatsdescorderEdge::len(self : StatsdescorderEdge) -> Int { self.size }
 
-pub fn stats_desc_order_edge_get(s : StatsdescorderEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderEdge::get(self : StatsdescorderEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_edge_set(s : StatsdescorderEdge, i : Int, v : Double) -> StatsdescorderEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderEdge::set(self : StatsdescorderEdge, i : Int, v : Double) -> StatsdescorderEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_edge_sum(s : StatsdescorderEdge) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderEdge::sum(self : StatsdescorderEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_edge_mean(s : StatsdescorderEdge) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderEdge::mean(self : StatsdescorderEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_edge_scale(s : StatsdescorderEdge, f : Double) -> StatsdescorderEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderEdge::scale(self : StatsdescorderEdge, f : Double) -> StatsdescorderEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_edge_add(a : StatsdescorderEdge, b : StatsdescorderEdge) -> StatsdescorderEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderEdge::add(self : StatsdescorderEdge, other : StatsdescorderEdge) -> StatsdescorderEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_edge_copy(s : StatsdescorderEdge) -> StatsdescorderEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderEdge::copy(self : StatsdescorderEdge) -> StatsdescorderEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_edge_fill(s : StatsdescorderEdge, v : Double) -> StatsdescorderEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderEdge::fill(self : StatsdescorderEdge, v : Double) -> StatsdescorderEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_edge_min(s : StatsdescorderEdge) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderEdge::min(self : StatsdescorderEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_edge_max(s : StatsdescorderEdge) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderEdge::max(self : StatsdescorderEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_edge_to_string(s : StatsdescorderEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderEdge::to_string(self : StatsdescorderEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderPath {
@@ -606,45 +606,45 @@ pub fn stats_desc_order_path_make(size : Int) -> StatsdescorderPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_path_len(s : StatsdescorderPath) -> Int { s.size }
+pub fn StatsdescorderPath::len(self : StatsdescorderPath) -> Int { self.size }
 
-pub fn stats_desc_order_path_get(s : StatsdescorderPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderPath::get(self : StatsdescorderPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_path_set(s : StatsdescorderPath, i : Int, v : Double) -> StatsdescorderPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderPath::set(self : StatsdescorderPath, i : Int, v : Double) -> StatsdescorderPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_path_sum(s : StatsdescorderPath) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderPath::sum(self : StatsdescorderPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_path_mean(s : StatsdescorderPath) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderPath::mean(self : StatsdescorderPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_path_scale(s : StatsdescorderPath, f : Double) -> StatsdescorderPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderPath::scale(self : StatsdescorderPath, f : Double) -> StatsdescorderPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_path_add(a : StatsdescorderPath, b : StatsdescorderPath) -> StatsdescorderPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderPath::add(self : StatsdescorderPath, other : StatsdescorderPath) -> StatsdescorderPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_path_copy(s : StatsdescorderPath) -> StatsdescorderPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderPath::copy(self : StatsdescorderPath) -> StatsdescorderPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_path_fill(s : StatsdescorderPath, v : Double) -> StatsdescorderPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderPath::fill(self : StatsdescorderPath, v : Double) -> StatsdescorderPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_path_min(s : StatsdescorderPath) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderPath::min(self : StatsdescorderPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_path_max(s : StatsdescorderPath) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderPath::max(self : StatsdescorderPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_path_to_string(s : StatsdescorderPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderPath::to_string(self : StatsdescorderPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderCluster {
@@ -657,45 +657,45 @@ pub fn stats_desc_order_cluster_make(size : Int) -> StatsdescorderCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_cluster_len(s : StatsdescorderCluster) -> Int { s.size }
+pub fn StatsdescorderCluster::len(self : StatsdescorderCluster) -> Int { self.size }
 
-pub fn stats_desc_order_cluster_get(s : StatsdescorderCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderCluster::get(self : StatsdescorderCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_cluster_set(s : StatsdescorderCluster, i : Int, v : Double) -> StatsdescorderCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderCluster::set(self : StatsdescorderCluster, i : Int, v : Double) -> StatsdescorderCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cluster_sum(s : StatsdescorderCluster) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderCluster::sum(self : StatsdescorderCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_cluster_mean(s : StatsdescorderCluster) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderCluster::mean(self : StatsdescorderCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_cluster_scale(s : StatsdescorderCluster, f : Double) -> StatsdescorderCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderCluster::scale(self : StatsdescorderCluster, f : Double) -> StatsdescorderCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cluster_add(a : StatsdescorderCluster, b : StatsdescorderCluster) -> StatsdescorderCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderCluster::add(self : StatsdescorderCluster, other : StatsdescorderCluster) -> StatsdescorderCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_cluster_copy(s : StatsdescorderCluster) -> StatsdescorderCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderCluster::copy(self : StatsdescorderCluster) -> StatsdescorderCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cluster_fill(s : StatsdescorderCluster, v : Double) -> StatsdescorderCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderCluster::fill(self : StatsdescorderCluster, v : Double) -> StatsdescorderCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cluster_min(s : StatsdescorderCluster) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderCluster::min(self : StatsdescorderCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_cluster_max(s : StatsdescorderCluster) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderCluster::max(self : StatsdescorderCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_cluster_to_string(s : StatsdescorderCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderCluster::to_string(self : StatsdescorderCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderModel {
@@ -708,45 +708,45 @@ pub fn stats_desc_order_model_make(size : Int) -> StatsdescorderModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_model_len(s : StatsdescorderModel) -> Int { s.size }
+pub fn StatsdescorderModel::len(self : StatsdescorderModel) -> Int { self.size }
 
-pub fn stats_desc_order_model_get(s : StatsdescorderModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderModel::get(self : StatsdescorderModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_model_set(s : StatsdescorderModel, i : Int, v : Double) -> StatsdescorderModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderModel::set(self : StatsdescorderModel, i : Int, v : Double) -> StatsdescorderModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_model_sum(s : StatsdescorderModel) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderModel::sum(self : StatsdescorderModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_model_mean(s : StatsdescorderModel) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderModel::mean(self : StatsdescorderModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_model_scale(s : StatsdescorderModel, f : Double) -> StatsdescorderModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderModel::scale(self : StatsdescorderModel, f : Double) -> StatsdescorderModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_model_add(a : StatsdescorderModel, b : StatsdescorderModel) -> StatsdescorderModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderModel::add(self : StatsdescorderModel, other : StatsdescorderModel) -> StatsdescorderModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_model_copy(s : StatsdescorderModel) -> StatsdescorderModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderModel::copy(self : StatsdescorderModel) -> StatsdescorderModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_model_fill(s : StatsdescorderModel, v : Double) -> StatsdescorderModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderModel::fill(self : StatsdescorderModel, v : Double) -> StatsdescorderModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_model_min(s : StatsdescorderModel) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderModel::min(self : StatsdescorderModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_model_max(s : StatsdescorderModel) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderModel::max(self : StatsdescorderModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_model_to_string(s : StatsdescorderModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderModel::to_string(self : StatsdescorderModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderLayer {
@@ -759,45 +759,45 @@ pub fn stats_desc_order_layer_make(size : Int) -> StatsdescorderLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_layer_len(s : StatsdescorderLayer) -> Int { s.size }
+pub fn StatsdescorderLayer::len(self : StatsdescorderLayer) -> Int { self.size }
 
-pub fn stats_desc_order_layer_get(s : StatsdescorderLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderLayer::get(self : StatsdescorderLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_layer_set(s : StatsdescorderLayer, i : Int, v : Double) -> StatsdescorderLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderLayer::set(self : StatsdescorderLayer, i : Int, v : Double) -> StatsdescorderLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_layer_sum(s : StatsdescorderLayer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderLayer::sum(self : StatsdescorderLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_layer_mean(s : StatsdescorderLayer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderLayer::mean(self : StatsdescorderLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_layer_scale(s : StatsdescorderLayer, f : Double) -> StatsdescorderLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderLayer::scale(self : StatsdescorderLayer, f : Double) -> StatsdescorderLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_layer_add(a : StatsdescorderLayer, b : StatsdescorderLayer) -> StatsdescorderLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderLayer::add(self : StatsdescorderLayer, other : StatsdescorderLayer) -> StatsdescorderLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_layer_copy(s : StatsdescorderLayer) -> StatsdescorderLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderLayer::copy(self : StatsdescorderLayer) -> StatsdescorderLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_layer_fill(s : StatsdescorderLayer, v : Double) -> StatsdescorderLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderLayer::fill(self : StatsdescorderLayer, v : Double) -> StatsdescorderLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_layer_min(s : StatsdescorderLayer) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderLayer::min(self : StatsdescorderLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_layer_max(s : StatsdescorderLayer) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderLayer::max(self : StatsdescorderLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_layer_to_string(s : StatsdescorderLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderLayer::to_string(self : StatsdescorderLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderBuffer {
@@ -810,45 +810,45 @@ pub fn stats_desc_order_buffer_make(size : Int) -> StatsdescorderBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_buffer_len(s : StatsdescorderBuffer) -> Int { s.size }
+pub fn StatsdescorderBuffer::len(self : StatsdescorderBuffer) -> Int { self.size }
 
-pub fn stats_desc_order_buffer_get(s : StatsdescorderBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderBuffer::get(self : StatsdescorderBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_buffer_set(s : StatsdescorderBuffer, i : Int, v : Double) -> StatsdescorderBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderBuffer::set(self : StatsdescorderBuffer, i : Int, v : Double) -> StatsdescorderBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_buffer_sum(s : StatsdescorderBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderBuffer::sum(self : StatsdescorderBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_buffer_mean(s : StatsdescorderBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderBuffer::mean(self : StatsdescorderBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_buffer_scale(s : StatsdescorderBuffer, f : Double) -> StatsdescorderBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderBuffer::scale(self : StatsdescorderBuffer, f : Double) -> StatsdescorderBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_buffer_add(a : StatsdescorderBuffer, b : StatsdescorderBuffer) -> StatsdescorderBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderBuffer::add(self : StatsdescorderBuffer, other : StatsdescorderBuffer) -> StatsdescorderBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_buffer_copy(s : StatsdescorderBuffer) -> StatsdescorderBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderBuffer::copy(self : StatsdescorderBuffer) -> StatsdescorderBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_buffer_fill(s : StatsdescorderBuffer, v : Double) -> StatsdescorderBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderBuffer::fill(self : StatsdescorderBuffer, v : Double) -> StatsdescorderBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_buffer_min(s : StatsdescorderBuffer) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderBuffer::min(self : StatsdescorderBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_buffer_max(s : StatsdescorderBuffer) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderBuffer::max(self : StatsdescorderBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_buffer_to_string(s : StatsdescorderBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderBuffer::to_string(self : StatsdescorderBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderCursor {
@@ -861,45 +861,45 @@ pub fn stats_desc_order_cursor_make(size : Int) -> StatsdescorderCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_cursor_len(s : StatsdescorderCursor) -> Int { s.size }
+pub fn StatsdescorderCursor::len(self : StatsdescorderCursor) -> Int { self.size }
 
-pub fn stats_desc_order_cursor_get(s : StatsdescorderCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderCursor::get(self : StatsdescorderCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_cursor_set(s : StatsdescorderCursor, i : Int, v : Double) -> StatsdescorderCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderCursor::set(self : StatsdescorderCursor, i : Int, v : Double) -> StatsdescorderCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cursor_sum(s : StatsdescorderCursor) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderCursor::sum(self : StatsdescorderCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_cursor_mean(s : StatsdescorderCursor) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderCursor::mean(self : StatsdescorderCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_cursor_scale(s : StatsdescorderCursor, f : Double) -> StatsdescorderCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderCursor::scale(self : StatsdescorderCursor, f : Double) -> StatsdescorderCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cursor_add(a : StatsdescorderCursor, b : StatsdescorderCursor) -> StatsdescorderCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderCursor::add(self : StatsdescorderCursor, other : StatsdescorderCursor) -> StatsdescorderCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_cursor_copy(s : StatsdescorderCursor) -> StatsdescorderCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderCursor::copy(self : StatsdescorderCursor) -> StatsdescorderCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cursor_fill(s : StatsdescorderCursor, v : Double) -> StatsdescorderCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderCursor::fill(self : StatsdescorderCursor, v : Double) -> StatsdescorderCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_cursor_min(s : StatsdescorderCursor) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderCursor::min(self : StatsdescorderCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_cursor_max(s : StatsdescorderCursor) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderCursor::max(self : StatsdescorderCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_cursor_to_string(s : StatsdescorderCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderCursor::to_string(self : StatsdescorderCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderView {
@@ -912,45 +912,45 @@ pub fn stats_desc_order_view_make(size : Int) -> StatsdescorderView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_view_len(s : StatsdescorderView) -> Int { s.size }
+pub fn StatsdescorderView::len(self : StatsdescorderView) -> Int { self.size }
 
-pub fn stats_desc_order_view_get(s : StatsdescorderView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderView::get(self : StatsdescorderView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_view_set(s : StatsdescorderView, i : Int, v : Double) -> StatsdescorderView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderView::set(self : StatsdescorderView, i : Int, v : Double) -> StatsdescorderView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_view_sum(s : StatsdescorderView) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderView::sum(self : StatsdescorderView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_view_mean(s : StatsdescorderView) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderView::mean(self : StatsdescorderView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_view_scale(s : StatsdescorderView, f : Double) -> StatsdescorderView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderView::scale(self : StatsdescorderView, f : Double) -> StatsdescorderView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_view_add(a : StatsdescorderView, b : StatsdescorderView) -> StatsdescorderView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderView::add(self : StatsdescorderView, other : StatsdescorderView) -> StatsdescorderView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_view_copy(s : StatsdescorderView) -> StatsdescorderView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderView::copy(self : StatsdescorderView) -> StatsdescorderView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_view_fill(s : StatsdescorderView, v : Double) -> StatsdescorderView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderView::fill(self : StatsdescorderView, v : Double) -> StatsdescorderView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_view_min(s : StatsdescorderView) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderView::min(self : StatsdescorderView) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_view_max(s : StatsdescorderView) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderView::max(self : StatsdescorderView) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_view_to_string(s : StatsdescorderView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderView::to_string(self : StatsdescorderView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderRange {
@@ -963,45 +963,45 @@ pub fn stats_desc_order_range_make(size : Int) -> StatsdescorderRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_range_len(s : StatsdescorderRange) -> Int { s.size }
+pub fn StatsdescorderRange::len(self : StatsdescorderRange) -> Int { self.size }
 
-pub fn stats_desc_order_range_get(s : StatsdescorderRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderRange::get(self : StatsdescorderRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_range_set(s : StatsdescorderRange, i : Int, v : Double) -> StatsdescorderRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderRange::set(self : StatsdescorderRange, i : Int, v : Double) -> StatsdescorderRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_range_sum(s : StatsdescorderRange) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderRange::sum(self : StatsdescorderRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_range_mean(s : StatsdescorderRange) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderRange::mean(self : StatsdescorderRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_range_scale(s : StatsdescorderRange, f : Double) -> StatsdescorderRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderRange::scale(self : StatsdescorderRange, f : Double) -> StatsdescorderRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_range_add(a : StatsdescorderRange, b : StatsdescorderRange) -> StatsdescorderRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderRange::add(self : StatsdescorderRange, other : StatsdescorderRange) -> StatsdescorderRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_range_copy(s : StatsdescorderRange) -> StatsdescorderRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderRange::copy(self : StatsdescorderRange) -> StatsdescorderRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_range_fill(s : StatsdescorderRange, v : Double) -> StatsdescorderRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderRange::fill(self : StatsdescorderRange, v : Double) -> StatsdescorderRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_range_min(s : StatsdescorderRange) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderRange::min(self : StatsdescorderRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_range_max(s : StatsdescorderRange) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderRange::max(self : StatsdescorderRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_range_to_string(s : StatsdescorderRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderRange::to_string(self : StatsdescorderRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatsdescorderSlice {
@@ -1014,44 +1014,44 @@ pub fn stats_desc_order_slice_make(size : Int) -> StatsdescorderSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_desc_order_slice_len(s : StatsdescorderSlice) -> Int { s.size }
+pub fn StatsdescorderSlice::len(self : StatsdescorderSlice) -> Int { self.size }
 
-pub fn stats_desc_order_slice_get(s : StatsdescorderSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatsdescorderSlice::get(self : StatsdescorderSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_desc_order_slice_set(s : StatsdescorderSlice, i : Int, v : Double) -> StatsdescorderSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatsdescorderSlice::set(self : StatsdescorderSlice, i : Int, v : Double) -> StatsdescorderSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_slice_sum(s : StatsdescorderSlice) -> Double { @_common.sum(s.data) }
+pub fn StatsdescorderSlice::sum(self : StatsdescorderSlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_desc_order_slice_mean(s : StatsdescorderSlice) -> Double { @_common.mean(s.data) }
+pub fn StatsdescorderSlice::mean(self : StatsdescorderSlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_desc_order_slice_scale(s : StatsdescorderSlice, f : Double) -> StatsdescorderSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatsdescorderSlice::scale(self : StatsdescorderSlice, f : Double) -> StatsdescorderSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_slice_add(a : StatsdescorderSlice, b : StatsdescorderSlice) -> StatsdescorderSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatsdescorderSlice::add(self : StatsdescorderSlice, other : StatsdescorderSlice) -> StatsdescorderSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_desc_order_slice_copy(s : StatsdescorderSlice) -> StatsdescorderSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatsdescorderSlice::copy(self : StatsdescorderSlice) -> StatsdescorderSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_slice_fill(s : StatsdescorderSlice, v : Double) -> StatsdescorderSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatsdescorderSlice::fill(self : StatsdescorderSlice, v : Double) -> StatsdescorderSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_desc_order_slice_min(s : StatsdescorderSlice) -> Double { @_common.min(s.data) }
+pub fn StatsdescorderSlice::min(self : StatsdescorderSlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_desc_order_slice_max(s : StatsdescorderSlice) -> Double { @_common.max(s.data) }
+pub fn StatsdescorderSlice::max(self : StatsdescorderSlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_desc_order_slice_to_string(s : StatsdescorderSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatsdescorderSlice::to_string(self : StatsdescorderSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

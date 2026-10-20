@@ -351,45 +351,45 @@ pub fn graph_flow_circulation_frame_make(size : Int) -> GraphflowcirculationFram
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_frame_len(s : GraphflowcirculationFrame) -> Int { s.size }
+pub fn GraphflowcirculationFrame::len(self : GraphflowcirculationFrame) -> Int { self.size }
 
-pub fn graph_flow_circulation_frame_get(s : GraphflowcirculationFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationFrame::get(self : GraphflowcirculationFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_frame_set(s : GraphflowcirculationFrame, i : Int, v : Double) -> GraphflowcirculationFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationFrame::set(self : GraphflowcirculationFrame, i : Int, v : Double) -> GraphflowcirculationFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_frame_sum(s : GraphflowcirculationFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationFrame::sum(self : GraphflowcirculationFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_frame_mean(s : GraphflowcirculationFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationFrame::mean(self : GraphflowcirculationFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_frame_scale(s : GraphflowcirculationFrame, f : Double) -> GraphflowcirculationFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationFrame::scale(self : GraphflowcirculationFrame, f : Double) -> GraphflowcirculationFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_frame_add(a : GraphflowcirculationFrame, b : GraphflowcirculationFrame) -> GraphflowcirculationFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationFrame::add(self : GraphflowcirculationFrame, other : GraphflowcirculationFrame) -> GraphflowcirculationFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_frame_copy(s : GraphflowcirculationFrame) -> GraphflowcirculationFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationFrame::copy(self : GraphflowcirculationFrame) -> GraphflowcirculationFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_frame_fill(s : GraphflowcirculationFrame, v : Double) -> GraphflowcirculationFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationFrame::fill(self : GraphflowcirculationFrame, v : Double) -> GraphflowcirculationFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_frame_min(s : GraphflowcirculationFrame) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationFrame::min(self : GraphflowcirculationFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_frame_max(s : GraphflowcirculationFrame) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationFrame::max(self : GraphflowcirculationFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_frame_to_string(s : GraphflowcirculationFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationFrame::to_string(self : GraphflowcirculationFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationTable {
@@ -402,45 +402,45 @@ pub fn graph_flow_circulation_table_make(size : Int) -> GraphflowcirculationTabl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_table_len(s : GraphflowcirculationTable) -> Int { s.size }
+pub fn GraphflowcirculationTable::len(self : GraphflowcirculationTable) -> Int { self.size }
 
-pub fn graph_flow_circulation_table_get(s : GraphflowcirculationTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationTable::get(self : GraphflowcirculationTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_table_set(s : GraphflowcirculationTable, i : Int, v : Double) -> GraphflowcirculationTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationTable::set(self : GraphflowcirculationTable, i : Int, v : Double) -> GraphflowcirculationTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_table_sum(s : GraphflowcirculationTable) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationTable::sum(self : GraphflowcirculationTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_table_mean(s : GraphflowcirculationTable) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationTable::mean(self : GraphflowcirculationTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_table_scale(s : GraphflowcirculationTable, f : Double) -> GraphflowcirculationTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationTable::scale(self : GraphflowcirculationTable, f : Double) -> GraphflowcirculationTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_table_add(a : GraphflowcirculationTable, b : GraphflowcirculationTable) -> GraphflowcirculationTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationTable::add(self : GraphflowcirculationTable, other : GraphflowcirculationTable) -> GraphflowcirculationTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_table_copy(s : GraphflowcirculationTable) -> GraphflowcirculationTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationTable::copy(self : GraphflowcirculationTable) -> GraphflowcirculationTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_table_fill(s : GraphflowcirculationTable, v : Double) -> GraphflowcirculationTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationTable::fill(self : GraphflowcirculationTable, v : Double) -> GraphflowcirculationTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_table_min(s : GraphflowcirculationTable) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationTable::min(self : GraphflowcirculationTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_table_max(s : GraphflowcirculationTable) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationTable::max(self : GraphflowcirculationTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_table_to_string(s : GraphflowcirculationTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationTable::to_string(self : GraphflowcirculationTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationGraphN {
@@ -453,45 +453,45 @@ pub fn graph_flow_circulation_graphn_make(size : Int) -> GraphflowcirculationGra
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_graphn_len(s : GraphflowcirculationGraphN) -> Int { s.size }
+pub fn GraphflowcirculationGraphN::len(self : GraphflowcirculationGraphN) -> Int { self.size }
 
-pub fn graph_flow_circulation_graphn_get(s : GraphflowcirculationGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationGraphN::get(self : GraphflowcirculationGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_graphn_set(s : GraphflowcirculationGraphN, i : Int, v : Double) -> GraphflowcirculationGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationGraphN::set(self : GraphflowcirculationGraphN, i : Int, v : Double) -> GraphflowcirculationGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_graphn_sum(s : GraphflowcirculationGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationGraphN::sum(self : GraphflowcirculationGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_graphn_mean(s : GraphflowcirculationGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationGraphN::mean(self : GraphflowcirculationGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_graphn_scale(s : GraphflowcirculationGraphN, f : Double) -> GraphflowcirculationGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationGraphN::scale(self : GraphflowcirculationGraphN, f : Double) -> GraphflowcirculationGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_graphn_add(a : GraphflowcirculationGraphN, b : GraphflowcirculationGraphN) -> GraphflowcirculationGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationGraphN::add(self : GraphflowcirculationGraphN, other : GraphflowcirculationGraphN) -> GraphflowcirculationGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_graphn_copy(s : GraphflowcirculationGraphN) -> GraphflowcirculationGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationGraphN::copy(self : GraphflowcirculationGraphN) -> GraphflowcirculationGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_graphn_fill(s : GraphflowcirculationGraphN, v : Double) -> GraphflowcirculationGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationGraphN::fill(self : GraphflowcirculationGraphN, v : Double) -> GraphflowcirculationGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_graphn_min(s : GraphflowcirculationGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationGraphN::min(self : GraphflowcirculationGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_graphn_max(s : GraphflowcirculationGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationGraphN::max(self : GraphflowcirculationGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_graphn_to_string(s : GraphflowcirculationGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationGraphN::to_string(self : GraphflowcirculationGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationNode {
@@ -504,45 +504,45 @@ pub fn graph_flow_circulation_node_make(size : Int) -> GraphflowcirculationNode 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_node_len(s : GraphflowcirculationNode) -> Int { s.size }
+pub fn GraphflowcirculationNode::len(self : GraphflowcirculationNode) -> Int { self.size }
 
-pub fn graph_flow_circulation_node_get(s : GraphflowcirculationNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationNode::get(self : GraphflowcirculationNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_node_set(s : GraphflowcirculationNode, i : Int, v : Double) -> GraphflowcirculationNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationNode::set(self : GraphflowcirculationNode, i : Int, v : Double) -> GraphflowcirculationNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_node_sum(s : GraphflowcirculationNode) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationNode::sum(self : GraphflowcirculationNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_node_mean(s : GraphflowcirculationNode) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationNode::mean(self : GraphflowcirculationNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_node_scale(s : GraphflowcirculationNode, f : Double) -> GraphflowcirculationNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationNode::scale(self : GraphflowcirculationNode, f : Double) -> GraphflowcirculationNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_node_add(a : GraphflowcirculationNode, b : GraphflowcirculationNode) -> GraphflowcirculationNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationNode::add(self : GraphflowcirculationNode, other : GraphflowcirculationNode) -> GraphflowcirculationNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_node_copy(s : GraphflowcirculationNode) -> GraphflowcirculationNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationNode::copy(self : GraphflowcirculationNode) -> GraphflowcirculationNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_node_fill(s : GraphflowcirculationNode, v : Double) -> GraphflowcirculationNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationNode::fill(self : GraphflowcirculationNode, v : Double) -> GraphflowcirculationNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_node_min(s : GraphflowcirculationNode) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationNode::min(self : GraphflowcirculationNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_node_max(s : GraphflowcirculationNode) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationNode::max(self : GraphflowcirculationNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_node_to_string(s : GraphflowcirculationNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationNode::to_string(self : GraphflowcirculationNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationEdge {
@@ -555,45 +555,45 @@ pub fn graph_flow_circulation_edge_make(size : Int) -> GraphflowcirculationEdge 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_edge_len(s : GraphflowcirculationEdge) -> Int { s.size }
+pub fn GraphflowcirculationEdge::len(self : GraphflowcirculationEdge) -> Int { self.size }
 
-pub fn graph_flow_circulation_edge_get(s : GraphflowcirculationEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationEdge::get(self : GraphflowcirculationEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_edge_set(s : GraphflowcirculationEdge, i : Int, v : Double) -> GraphflowcirculationEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationEdge::set(self : GraphflowcirculationEdge, i : Int, v : Double) -> GraphflowcirculationEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_edge_sum(s : GraphflowcirculationEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationEdge::sum(self : GraphflowcirculationEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_edge_mean(s : GraphflowcirculationEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationEdge::mean(self : GraphflowcirculationEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_edge_scale(s : GraphflowcirculationEdge, f : Double) -> GraphflowcirculationEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationEdge::scale(self : GraphflowcirculationEdge, f : Double) -> GraphflowcirculationEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_edge_add(a : GraphflowcirculationEdge, b : GraphflowcirculationEdge) -> GraphflowcirculationEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationEdge::add(self : GraphflowcirculationEdge, other : GraphflowcirculationEdge) -> GraphflowcirculationEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_edge_copy(s : GraphflowcirculationEdge) -> GraphflowcirculationEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationEdge::copy(self : GraphflowcirculationEdge) -> GraphflowcirculationEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_edge_fill(s : GraphflowcirculationEdge, v : Double) -> GraphflowcirculationEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationEdge::fill(self : GraphflowcirculationEdge, v : Double) -> GraphflowcirculationEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_edge_min(s : GraphflowcirculationEdge) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationEdge::min(self : GraphflowcirculationEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_edge_max(s : GraphflowcirculationEdge) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationEdge::max(self : GraphflowcirculationEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_edge_to_string(s : GraphflowcirculationEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationEdge::to_string(self : GraphflowcirculationEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationPath {
@@ -606,45 +606,45 @@ pub fn graph_flow_circulation_path_make(size : Int) -> GraphflowcirculationPath 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_path_len(s : GraphflowcirculationPath) -> Int { s.size }
+pub fn GraphflowcirculationPath::len(self : GraphflowcirculationPath) -> Int { self.size }
 
-pub fn graph_flow_circulation_path_get(s : GraphflowcirculationPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationPath::get(self : GraphflowcirculationPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_path_set(s : GraphflowcirculationPath, i : Int, v : Double) -> GraphflowcirculationPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationPath::set(self : GraphflowcirculationPath, i : Int, v : Double) -> GraphflowcirculationPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_path_sum(s : GraphflowcirculationPath) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationPath::sum(self : GraphflowcirculationPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_path_mean(s : GraphflowcirculationPath) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationPath::mean(self : GraphflowcirculationPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_path_scale(s : GraphflowcirculationPath, f : Double) -> GraphflowcirculationPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationPath::scale(self : GraphflowcirculationPath, f : Double) -> GraphflowcirculationPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_path_add(a : GraphflowcirculationPath, b : GraphflowcirculationPath) -> GraphflowcirculationPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationPath::add(self : GraphflowcirculationPath, other : GraphflowcirculationPath) -> GraphflowcirculationPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_path_copy(s : GraphflowcirculationPath) -> GraphflowcirculationPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationPath::copy(self : GraphflowcirculationPath) -> GraphflowcirculationPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_path_fill(s : GraphflowcirculationPath, v : Double) -> GraphflowcirculationPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationPath::fill(self : GraphflowcirculationPath, v : Double) -> GraphflowcirculationPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_path_min(s : GraphflowcirculationPath) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationPath::min(self : GraphflowcirculationPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_path_max(s : GraphflowcirculationPath) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationPath::max(self : GraphflowcirculationPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_path_to_string(s : GraphflowcirculationPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationPath::to_string(self : GraphflowcirculationPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationCluster {
@@ -657,45 +657,45 @@ pub fn graph_flow_circulation_cluster_make(size : Int) -> GraphflowcirculationCl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_cluster_len(s : GraphflowcirculationCluster) -> Int { s.size }
+pub fn GraphflowcirculationCluster::len(self : GraphflowcirculationCluster) -> Int { self.size }
 
-pub fn graph_flow_circulation_cluster_get(s : GraphflowcirculationCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationCluster::get(self : GraphflowcirculationCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_cluster_set(s : GraphflowcirculationCluster, i : Int, v : Double) -> GraphflowcirculationCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCluster::set(self : GraphflowcirculationCluster, i : Int, v : Double) -> GraphflowcirculationCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cluster_sum(s : GraphflowcirculationCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationCluster::sum(self : GraphflowcirculationCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_cluster_mean(s : GraphflowcirculationCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationCluster::mean(self : GraphflowcirculationCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_cluster_scale(s : GraphflowcirculationCluster, f : Double) -> GraphflowcirculationCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCluster::scale(self : GraphflowcirculationCluster, f : Double) -> GraphflowcirculationCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cluster_add(a : GraphflowcirculationCluster, b : GraphflowcirculationCluster) -> GraphflowcirculationCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationCluster::add(self : GraphflowcirculationCluster, other : GraphflowcirculationCluster) -> GraphflowcirculationCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cluster_copy(s : GraphflowcirculationCluster) -> GraphflowcirculationCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCluster::copy(self : GraphflowcirculationCluster) -> GraphflowcirculationCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cluster_fill(s : GraphflowcirculationCluster, v : Double) -> GraphflowcirculationCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCluster::fill(self : GraphflowcirculationCluster, v : Double) -> GraphflowcirculationCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cluster_min(s : GraphflowcirculationCluster) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationCluster::min(self : GraphflowcirculationCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_cluster_max(s : GraphflowcirculationCluster) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationCluster::max(self : GraphflowcirculationCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_cluster_to_string(s : GraphflowcirculationCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationCluster::to_string(self : GraphflowcirculationCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationModel {
@@ -708,45 +708,45 @@ pub fn graph_flow_circulation_model_make(size : Int) -> GraphflowcirculationMode
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_model_len(s : GraphflowcirculationModel) -> Int { s.size }
+pub fn GraphflowcirculationModel::len(self : GraphflowcirculationModel) -> Int { self.size }
 
-pub fn graph_flow_circulation_model_get(s : GraphflowcirculationModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationModel::get(self : GraphflowcirculationModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_model_set(s : GraphflowcirculationModel, i : Int, v : Double) -> GraphflowcirculationModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationModel::set(self : GraphflowcirculationModel, i : Int, v : Double) -> GraphflowcirculationModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_model_sum(s : GraphflowcirculationModel) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationModel::sum(self : GraphflowcirculationModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_model_mean(s : GraphflowcirculationModel) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationModel::mean(self : GraphflowcirculationModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_model_scale(s : GraphflowcirculationModel, f : Double) -> GraphflowcirculationModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationModel::scale(self : GraphflowcirculationModel, f : Double) -> GraphflowcirculationModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_model_add(a : GraphflowcirculationModel, b : GraphflowcirculationModel) -> GraphflowcirculationModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationModel::add(self : GraphflowcirculationModel, other : GraphflowcirculationModel) -> GraphflowcirculationModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_model_copy(s : GraphflowcirculationModel) -> GraphflowcirculationModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationModel::copy(self : GraphflowcirculationModel) -> GraphflowcirculationModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_model_fill(s : GraphflowcirculationModel, v : Double) -> GraphflowcirculationModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationModel::fill(self : GraphflowcirculationModel, v : Double) -> GraphflowcirculationModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_model_min(s : GraphflowcirculationModel) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationModel::min(self : GraphflowcirculationModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_model_max(s : GraphflowcirculationModel) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationModel::max(self : GraphflowcirculationModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_model_to_string(s : GraphflowcirculationModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationModel::to_string(self : GraphflowcirculationModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationLayer {
@@ -759,45 +759,45 @@ pub fn graph_flow_circulation_layer_make(size : Int) -> GraphflowcirculationLaye
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_layer_len(s : GraphflowcirculationLayer) -> Int { s.size }
+pub fn GraphflowcirculationLayer::len(self : GraphflowcirculationLayer) -> Int { self.size }
 
-pub fn graph_flow_circulation_layer_get(s : GraphflowcirculationLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationLayer::get(self : GraphflowcirculationLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_layer_set(s : GraphflowcirculationLayer, i : Int, v : Double) -> GraphflowcirculationLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationLayer::set(self : GraphflowcirculationLayer, i : Int, v : Double) -> GraphflowcirculationLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_layer_sum(s : GraphflowcirculationLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationLayer::sum(self : GraphflowcirculationLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_layer_mean(s : GraphflowcirculationLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationLayer::mean(self : GraphflowcirculationLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_layer_scale(s : GraphflowcirculationLayer, f : Double) -> GraphflowcirculationLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationLayer::scale(self : GraphflowcirculationLayer, f : Double) -> GraphflowcirculationLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_layer_add(a : GraphflowcirculationLayer, b : GraphflowcirculationLayer) -> GraphflowcirculationLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationLayer::add(self : GraphflowcirculationLayer, other : GraphflowcirculationLayer) -> GraphflowcirculationLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_layer_copy(s : GraphflowcirculationLayer) -> GraphflowcirculationLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationLayer::copy(self : GraphflowcirculationLayer) -> GraphflowcirculationLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_layer_fill(s : GraphflowcirculationLayer, v : Double) -> GraphflowcirculationLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationLayer::fill(self : GraphflowcirculationLayer, v : Double) -> GraphflowcirculationLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_layer_min(s : GraphflowcirculationLayer) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationLayer::min(self : GraphflowcirculationLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_layer_max(s : GraphflowcirculationLayer) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationLayer::max(self : GraphflowcirculationLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_layer_to_string(s : GraphflowcirculationLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationLayer::to_string(self : GraphflowcirculationLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationBuffer {
@@ -810,45 +810,45 @@ pub fn graph_flow_circulation_buffer_make(size : Int) -> GraphflowcirculationBuf
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_buffer_len(s : GraphflowcirculationBuffer) -> Int { s.size }
+pub fn GraphflowcirculationBuffer::len(self : GraphflowcirculationBuffer) -> Int { self.size }
 
-pub fn graph_flow_circulation_buffer_get(s : GraphflowcirculationBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationBuffer::get(self : GraphflowcirculationBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_buffer_set(s : GraphflowcirculationBuffer, i : Int, v : Double) -> GraphflowcirculationBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationBuffer::set(self : GraphflowcirculationBuffer, i : Int, v : Double) -> GraphflowcirculationBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_buffer_sum(s : GraphflowcirculationBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationBuffer::sum(self : GraphflowcirculationBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_buffer_mean(s : GraphflowcirculationBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationBuffer::mean(self : GraphflowcirculationBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_buffer_scale(s : GraphflowcirculationBuffer, f : Double) -> GraphflowcirculationBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationBuffer::scale(self : GraphflowcirculationBuffer, f : Double) -> GraphflowcirculationBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_buffer_add(a : GraphflowcirculationBuffer, b : GraphflowcirculationBuffer) -> GraphflowcirculationBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationBuffer::add(self : GraphflowcirculationBuffer, other : GraphflowcirculationBuffer) -> GraphflowcirculationBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_buffer_copy(s : GraphflowcirculationBuffer) -> GraphflowcirculationBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationBuffer::copy(self : GraphflowcirculationBuffer) -> GraphflowcirculationBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_buffer_fill(s : GraphflowcirculationBuffer, v : Double) -> GraphflowcirculationBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationBuffer::fill(self : GraphflowcirculationBuffer, v : Double) -> GraphflowcirculationBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_buffer_min(s : GraphflowcirculationBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationBuffer::min(self : GraphflowcirculationBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_buffer_max(s : GraphflowcirculationBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationBuffer::max(self : GraphflowcirculationBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_buffer_to_string(s : GraphflowcirculationBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationBuffer::to_string(self : GraphflowcirculationBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationCursor {
@@ -861,45 +861,45 @@ pub fn graph_flow_circulation_cursor_make(size : Int) -> GraphflowcirculationCur
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_cursor_len(s : GraphflowcirculationCursor) -> Int { s.size }
+pub fn GraphflowcirculationCursor::len(self : GraphflowcirculationCursor) -> Int { self.size }
 
-pub fn graph_flow_circulation_cursor_get(s : GraphflowcirculationCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationCursor::get(self : GraphflowcirculationCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_cursor_set(s : GraphflowcirculationCursor, i : Int, v : Double) -> GraphflowcirculationCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCursor::set(self : GraphflowcirculationCursor, i : Int, v : Double) -> GraphflowcirculationCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cursor_sum(s : GraphflowcirculationCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationCursor::sum(self : GraphflowcirculationCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_cursor_mean(s : GraphflowcirculationCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationCursor::mean(self : GraphflowcirculationCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_cursor_scale(s : GraphflowcirculationCursor, f : Double) -> GraphflowcirculationCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCursor::scale(self : GraphflowcirculationCursor, f : Double) -> GraphflowcirculationCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cursor_add(a : GraphflowcirculationCursor, b : GraphflowcirculationCursor) -> GraphflowcirculationCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationCursor::add(self : GraphflowcirculationCursor, other : GraphflowcirculationCursor) -> GraphflowcirculationCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cursor_copy(s : GraphflowcirculationCursor) -> GraphflowcirculationCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCursor::copy(self : GraphflowcirculationCursor) -> GraphflowcirculationCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cursor_fill(s : GraphflowcirculationCursor, v : Double) -> GraphflowcirculationCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationCursor::fill(self : GraphflowcirculationCursor, v : Double) -> GraphflowcirculationCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_cursor_min(s : GraphflowcirculationCursor) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationCursor::min(self : GraphflowcirculationCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_cursor_max(s : GraphflowcirculationCursor) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationCursor::max(self : GraphflowcirculationCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_cursor_to_string(s : GraphflowcirculationCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationCursor::to_string(self : GraphflowcirculationCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationView {
@@ -912,45 +912,45 @@ pub fn graph_flow_circulation_view_make(size : Int) -> GraphflowcirculationView 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_view_len(s : GraphflowcirculationView) -> Int { s.size }
+pub fn GraphflowcirculationView::len(self : GraphflowcirculationView) -> Int { self.size }
 
-pub fn graph_flow_circulation_view_get(s : GraphflowcirculationView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationView::get(self : GraphflowcirculationView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_view_set(s : GraphflowcirculationView, i : Int, v : Double) -> GraphflowcirculationView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationView::set(self : GraphflowcirculationView, i : Int, v : Double) -> GraphflowcirculationView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_view_sum(s : GraphflowcirculationView) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationView::sum(self : GraphflowcirculationView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_view_mean(s : GraphflowcirculationView) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationView::mean(self : GraphflowcirculationView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_view_scale(s : GraphflowcirculationView, f : Double) -> GraphflowcirculationView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationView::scale(self : GraphflowcirculationView, f : Double) -> GraphflowcirculationView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_view_add(a : GraphflowcirculationView, b : GraphflowcirculationView) -> GraphflowcirculationView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationView::add(self : GraphflowcirculationView, other : GraphflowcirculationView) -> GraphflowcirculationView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_view_copy(s : GraphflowcirculationView) -> GraphflowcirculationView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationView::copy(self : GraphflowcirculationView) -> GraphflowcirculationView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_view_fill(s : GraphflowcirculationView, v : Double) -> GraphflowcirculationView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationView::fill(self : GraphflowcirculationView, v : Double) -> GraphflowcirculationView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_view_min(s : GraphflowcirculationView) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationView::min(self : GraphflowcirculationView) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_view_max(s : GraphflowcirculationView) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationView::max(self : GraphflowcirculationView) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_view_to_string(s : GraphflowcirculationView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationView::to_string(self : GraphflowcirculationView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationRange {
@@ -963,45 +963,45 @@ pub fn graph_flow_circulation_range_make(size : Int) -> GraphflowcirculationRang
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_range_len(s : GraphflowcirculationRange) -> Int { s.size }
+pub fn GraphflowcirculationRange::len(self : GraphflowcirculationRange) -> Int { self.size }
 
-pub fn graph_flow_circulation_range_get(s : GraphflowcirculationRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationRange::get(self : GraphflowcirculationRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_range_set(s : GraphflowcirculationRange, i : Int, v : Double) -> GraphflowcirculationRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationRange::set(self : GraphflowcirculationRange, i : Int, v : Double) -> GraphflowcirculationRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_range_sum(s : GraphflowcirculationRange) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationRange::sum(self : GraphflowcirculationRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_range_mean(s : GraphflowcirculationRange) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationRange::mean(self : GraphflowcirculationRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_range_scale(s : GraphflowcirculationRange, f : Double) -> GraphflowcirculationRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationRange::scale(self : GraphflowcirculationRange, f : Double) -> GraphflowcirculationRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_range_add(a : GraphflowcirculationRange, b : GraphflowcirculationRange) -> GraphflowcirculationRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationRange::add(self : GraphflowcirculationRange, other : GraphflowcirculationRange) -> GraphflowcirculationRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_range_copy(s : GraphflowcirculationRange) -> GraphflowcirculationRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationRange::copy(self : GraphflowcirculationRange) -> GraphflowcirculationRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_range_fill(s : GraphflowcirculationRange, v : Double) -> GraphflowcirculationRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationRange::fill(self : GraphflowcirculationRange, v : Double) -> GraphflowcirculationRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_range_min(s : GraphflowcirculationRange) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationRange::min(self : GraphflowcirculationRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_range_max(s : GraphflowcirculationRange) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationRange::max(self : GraphflowcirculationRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_range_to_string(s : GraphflowcirculationRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationRange::to_string(self : GraphflowcirculationRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_flow_circulation_slice_make(size : Int) -> GraphflowcirculationSlic
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_flow_circulation_slice_len(s : GraphflowcirculationSlice) -> Int { s.size }
+pub fn GraphflowcirculationSlice::len(self : GraphflowcirculationSlice) -> Int { self.size }
 
-pub fn graph_flow_circulation_slice_get(s : GraphflowcirculationSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphflowcirculationSlice::get(self : GraphflowcirculationSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_flow_circulation_slice_set(s : GraphflowcirculationSlice, i : Int, v : Double) -> GraphflowcirculationSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphflowcirculationSlice::set(self : GraphflowcirculationSlice, i : Int, v : Double) -> GraphflowcirculationSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_slice_sum(s : GraphflowcirculationSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphflowcirculationSlice::sum(self : GraphflowcirculationSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_flow_circulation_slice_mean(s : GraphflowcirculationSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphflowcirculationSlice::mean(self : GraphflowcirculationSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_flow_circulation_slice_scale(s : GraphflowcirculationSlice, f : Double) -> GraphflowcirculationSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationSlice::scale(self : GraphflowcirculationSlice, f : Double) -> GraphflowcirculationSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_slice_add(a : GraphflowcirculationSlice, b : GraphflowcirculationSlice) -> GraphflowcirculationSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphflowcirculationSlice::add(self : GraphflowcirculationSlice, other : GraphflowcirculationSlice) -> GraphflowcirculationSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_slice_copy(s : GraphflowcirculationSlice) -> GraphflowcirculationSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationSlice::copy(self : GraphflowcirculationSlice) -> GraphflowcirculationSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_slice_fill(s : GraphflowcirculationSlice, v : Double) -> GraphflowcirculationSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphflowcirculationSlice::fill(self : GraphflowcirculationSlice, v : Double) -> GraphflowcirculationSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_flow_circulation_slice_min(s : GraphflowcirculationSlice) -> Double { @_common.min(s.data) }
+pub fn GraphflowcirculationSlice::min(self : GraphflowcirculationSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_flow_circulation_slice_max(s : GraphflowcirculationSlice) -> Double { @_common.max(s.data) }
+pub fn GraphflowcirculationSlice::max(self : GraphflowcirculationSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_flow_circulation_slice_to_string(s : GraphflowcirculationSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphflowcirculationSlice::to_string(self : GraphflowcirculationSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

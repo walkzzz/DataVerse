@@ -351,45 +351,45 @@ pub fn net_sec_waf_frame_make(size : Int) -> NetsecwafFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_frame_len(s : NetsecwafFrame) -> Int { s.size }
+pub fn NetsecwafFrame::len(self : NetsecwafFrame) -> Int { self.size }
 
-pub fn net_sec_waf_frame_get(s : NetsecwafFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafFrame::get(self : NetsecwafFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_frame_set(s : NetsecwafFrame, i : Int, v : Double) -> NetsecwafFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafFrame::set(self : NetsecwafFrame, i : Int, v : Double) -> NetsecwafFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_frame_sum(s : NetsecwafFrame) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafFrame::sum(self : NetsecwafFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_frame_mean(s : NetsecwafFrame) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafFrame::mean(self : NetsecwafFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_frame_scale(s : NetsecwafFrame, f : Double) -> NetsecwafFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafFrame::scale(self : NetsecwafFrame, f : Double) -> NetsecwafFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_frame_add(a : NetsecwafFrame, b : NetsecwafFrame) -> NetsecwafFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafFrame::add(self : NetsecwafFrame, other : NetsecwafFrame) -> NetsecwafFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_frame_copy(s : NetsecwafFrame) -> NetsecwafFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafFrame::copy(self : NetsecwafFrame) -> NetsecwafFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_frame_fill(s : NetsecwafFrame, v : Double) -> NetsecwafFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafFrame::fill(self : NetsecwafFrame, v : Double) -> NetsecwafFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_frame_min(s : NetsecwafFrame) -> Double { @_common.min(s.data) }
+pub fn NetsecwafFrame::min(self : NetsecwafFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_frame_max(s : NetsecwafFrame) -> Double { @_common.max(s.data) }
+pub fn NetsecwafFrame::max(self : NetsecwafFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_frame_to_string(s : NetsecwafFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafFrame::to_string(self : NetsecwafFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafTable {
@@ -402,45 +402,45 @@ pub fn net_sec_waf_table_make(size : Int) -> NetsecwafTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_table_len(s : NetsecwafTable) -> Int { s.size }
+pub fn NetsecwafTable::len(self : NetsecwafTable) -> Int { self.size }
 
-pub fn net_sec_waf_table_get(s : NetsecwafTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafTable::get(self : NetsecwafTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_table_set(s : NetsecwafTable, i : Int, v : Double) -> NetsecwafTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafTable::set(self : NetsecwafTable, i : Int, v : Double) -> NetsecwafTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_table_sum(s : NetsecwafTable) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafTable::sum(self : NetsecwafTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_table_mean(s : NetsecwafTable) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafTable::mean(self : NetsecwafTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_table_scale(s : NetsecwafTable, f : Double) -> NetsecwafTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafTable::scale(self : NetsecwafTable, f : Double) -> NetsecwafTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_table_add(a : NetsecwafTable, b : NetsecwafTable) -> NetsecwafTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafTable::add(self : NetsecwafTable, other : NetsecwafTable) -> NetsecwafTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_table_copy(s : NetsecwafTable) -> NetsecwafTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafTable::copy(self : NetsecwafTable) -> NetsecwafTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_table_fill(s : NetsecwafTable, v : Double) -> NetsecwafTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafTable::fill(self : NetsecwafTable, v : Double) -> NetsecwafTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_table_min(s : NetsecwafTable) -> Double { @_common.min(s.data) }
+pub fn NetsecwafTable::min(self : NetsecwafTable) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_table_max(s : NetsecwafTable) -> Double { @_common.max(s.data) }
+pub fn NetsecwafTable::max(self : NetsecwafTable) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_table_to_string(s : NetsecwafTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafTable::to_string(self : NetsecwafTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafGraphN {
@@ -453,45 +453,45 @@ pub fn net_sec_waf_graphn_make(size : Int) -> NetsecwafGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_graphn_len(s : NetsecwafGraphN) -> Int { s.size }
+pub fn NetsecwafGraphN::len(self : NetsecwafGraphN) -> Int { self.size }
 
-pub fn net_sec_waf_graphn_get(s : NetsecwafGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafGraphN::get(self : NetsecwafGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_graphn_set(s : NetsecwafGraphN, i : Int, v : Double) -> NetsecwafGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafGraphN::set(self : NetsecwafGraphN, i : Int, v : Double) -> NetsecwafGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_graphn_sum(s : NetsecwafGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafGraphN::sum(self : NetsecwafGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_graphn_mean(s : NetsecwafGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafGraphN::mean(self : NetsecwafGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_graphn_scale(s : NetsecwafGraphN, f : Double) -> NetsecwafGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafGraphN::scale(self : NetsecwafGraphN, f : Double) -> NetsecwafGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_graphn_add(a : NetsecwafGraphN, b : NetsecwafGraphN) -> NetsecwafGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafGraphN::add(self : NetsecwafGraphN, other : NetsecwafGraphN) -> NetsecwafGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_graphn_copy(s : NetsecwafGraphN) -> NetsecwafGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafGraphN::copy(self : NetsecwafGraphN) -> NetsecwafGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_graphn_fill(s : NetsecwafGraphN, v : Double) -> NetsecwafGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafGraphN::fill(self : NetsecwafGraphN, v : Double) -> NetsecwafGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_graphn_min(s : NetsecwafGraphN) -> Double { @_common.min(s.data) }
+pub fn NetsecwafGraphN::min(self : NetsecwafGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_graphn_max(s : NetsecwafGraphN) -> Double { @_common.max(s.data) }
+pub fn NetsecwafGraphN::max(self : NetsecwafGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_graphn_to_string(s : NetsecwafGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafGraphN::to_string(self : NetsecwafGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafNode {
@@ -504,45 +504,45 @@ pub fn net_sec_waf_node_make(size : Int) -> NetsecwafNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_node_len(s : NetsecwafNode) -> Int { s.size }
+pub fn NetsecwafNode::len(self : NetsecwafNode) -> Int { self.size }
 
-pub fn net_sec_waf_node_get(s : NetsecwafNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafNode::get(self : NetsecwafNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_node_set(s : NetsecwafNode, i : Int, v : Double) -> NetsecwafNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafNode::set(self : NetsecwafNode, i : Int, v : Double) -> NetsecwafNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_node_sum(s : NetsecwafNode) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafNode::sum(self : NetsecwafNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_node_mean(s : NetsecwafNode) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafNode::mean(self : NetsecwafNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_node_scale(s : NetsecwafNode, f : Double) -> NetsecwafNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafNode::scale(self : NetsecwafNode, f : Double) -> NetsecwafNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_node_add(a : NetsecwafNode, b : NetsecwafNode) -> NetsecwafNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafNode::add(self : NetsecwafNode, other : NetsecwafNode) -> NetsecwafNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_node_copy(s : NetsecwafNode) -> NetsecwafNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafNode::copy(self : NetsecwafNode) -> NetsecwafNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_node_fill(s : NetsecwafNode, v : Double) -> NetsecwafNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafNode::fill(self : NetsecwafNode, v : Double) -> NetsecwafNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_node_min(s : NetsecwafNode) -> Double { @_common.min(s.data) }
+pub fn NetsecwafNode::min(self : NetsecwafNode) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_node_max(s : NetsecwafNode) -> Double { @_common.max(s.data) }
+pub fn NetsecwafNode::max(self : NetsecwafNode) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_node_to_string(s : NetsecwafNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafNode::to_string(self : NetsecwafNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafEdge {
@@ -555,45 +555,45 @@ pub fn net_sec_waf_edge_make(size : Int) -> NetsecwafEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_edge_len(s : NetsecwafEdge) -> Int { s.size }
+pub fn NetsecwafEdge::len(self : NetsecwafEdge) -> Int { self.size }
 
-pub fn net_sec_waf_edge_get(s : NetsecwafEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafEdge::get(self : NetsecwafEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_edge_set(s : NetsecwafEdge, i : Int, v : Double) -> NetsecwafEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafEdge::set(self : NetsecwafEdge, i : Int, v : Double) -> NetsecwafEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_edge_sum(s : NetsecwafEdge) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafEdge::sum(self : NetsecwafEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_edge_mean(s : NetsecwafEdge) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafEdge::mean(self : NetsecwafEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_edge_scale(s : NetsecwafEdge, f : Double) -> NetsecwafEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafEdge::scale(self : NetsecwafEdge, f : Double) -> NetsecwafEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_edge_add(a : NetsecwafEdge, b : NetsecwafEdge) -> NetsecwafEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafEdge::add(self : NetsecwafEdge, other : NetsecwafEdge) -> NetsecwafEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_edge_copy(s : NetsecwafEdge) -> NetsecwafEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafEdge::copy(self : NetsecwafEdge) -> NetsecwafEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_edge_fill(s : NetsecwafEdge, v : Double) -> NetsecwafEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafEdge::fill(self : NetsecwafEdge, v : Double) -> NetsecwafEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_edge_min(s : NetsecwafEdge) -> Double { @_common.min(s.data) }
+pub fn NetsecwafEdge::min(self : NetsecwafEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_edge_max(s : NetsecwafEdge) -> Double { @_common.max(s.data) }
+pub fn NetsecwafEdge::max(self : NetsecwafEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_edge_to_string(s : NetsecwafEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafEdge::to_string(self : NetsecwafEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafPath {
@@ -606,45 +606,45 @@ pub fn net_sec_waf_path_make(size : Int) -> NetsecwafPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_path_len(s : NetsecwafPath) -> Int { s.size }
+pub fn NetsecwafPath::len(self : NetsecwafPath) -> Int { self.size }
 
-pub fn net_sec_waf_path_get(s : NetsecwafPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafPath::get(self : NetsecwafPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_path_set(s : NetsecwafPath, i : Int, v : Double) -> NetsecwafPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafPath::set(self : NetsecwafPath, i : Int, v : Double) -> NetsecwafPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_path_sum(s : NetsecwafPath) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafPath::sum(self : NetsecwafPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_path_mean(s : NetsecwafPath) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafPath::mean(self : NetsecwafPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_path_scale(s : NetsecwafPath, f : Double) -> NetsecwafPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafPath::scale(self : NetsecwafPath, f : Double) -> NetsecwafPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_path_add(a : NetsecwafPath, b : NetsecwafPath) -> NetsecwafPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafPath::add(self : NetsecwafPath, other : NetsecwafPath) -> NetsecwafPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_path_copy(s : NetsecwafPath) -> NetsecwafPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafPath::copy(self : NetsecwafPath) -> NetsecwafPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_path_fill(s : NetsecwafPath, v : Double) -> NetsecwafPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafPath::fill(self : NetsecwafPath, v : Double) -> NetsecwafPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_path_min(s : NetsecwafPath) -> Double { @_common.min(s.data) }
+pub fn NetsecwafPath::min(self : NetsecwafPath) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_path_max(s : NetsecwafPath) -> Double { @_common.max(s.data) }
+pub fn NetsecwafPath::max(self : NetsecwafPath) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_path_to_string(s : NetsecwafPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafPath::to_string(self : NetsecwafPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafCluster {
@@ -657,45 +657,45 @@ pub fn net_sec_waf_cluster_make(size : Int) -> NetsecwafCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_cluster_len(s : NetsecwafCluster) -> Int { s.size }
+pub fn NetsecwafCluster::len(self : NetsecwafCluster) -> Int { self.size }
 
-pub fn net_sec_waf_cluster_get(s : NetsecwafCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafCluster::get(self : NetsecwafCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_cluster_set(s : NetsecwafCluster, i : Int, v : Double) -> NetsecwafCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafCluster::set(self : NetsecwafCluster, i : Int, v : Double) -> NetsecwafCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cluster_sum(s : NetsecwafCluster) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafCluster::sum(self : NetsecwafCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_cluster_mean(s : NetsecwafCluster) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafCluster::mean(self : NetsecwafCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_cluster_scale(s : NetsecwafCluster, f : Double) -> NetsecwafCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafCluster::scale(self : NetsecwafCluster, f : Double) -> NetsecwafCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cluster_add(a : NetsecwafCluster, b : NetsecwafCluster) -> NetsecwafCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafCluster::add(self : NetsecwafCluster, other : NetsecwafCluster) -> NetsecwafCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_cluster_copy(s : NetsecwafCluster) -> NetsecwafCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafCluster::copy(self : NetsecwafCluster) -> NetsecwafCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cluster_fill(s : NetsecwafCluster, v : Double) -> NetsecwafCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafCluster::fill(self : NetsecwafCluster, v : Double) -> NetsecwafCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cluster_min(s : NetsecwafCluster) -> Double { @_common.min(s.data) }
+pub fn NetsecwafCluster::min(self : NetsecwafCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_cluster_max(s : NetsecwafCluster) -> Double { @_common.max(s.data) }
+pub fn NetsecwafCluster::max(self : NetsecwafCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_cluster_to_string(s : NetsecwafCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafCluster::to_string(self : NetsecwafCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafModel {
@@ -708,45 +708,45 @@ pub fn net_sec_waf_model_make(size : Int) -> NetsecwafModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_model_len(s : NetsecwafModel) -> Int { s.size }
+pub fn NetsecwafModel::len(self : NetsecwafModel) -> Int { self.size }
 
-pub fn net_sec_waf_model_get(s : NetsecwafModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafModel::get(self : NetsecwafModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_model_set(s : NetsecwafModel, i : Int, v : Double) -> NetsecwafModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafModel::set(self : NetsecwafModel, i : Int, v : Double) -> NetsecwafModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_model_sum(s : NetsecwafModel) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafModel::sum(self : NetsecwafModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_model_mean(s : NetsecwafModel) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafModel::mean(self : NetsecwafModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_model_scale(s : NetsecwafModel, f : Double) -> NetsecwafModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafModel::scale(self : NetsecwafModel, f : Double) -> NetsecwafModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_model_add(a : NetsecwafModel, b : NetsecwafModel) -> NetsecwafModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafModel::add(self : NetsecwafModel, other : NetsecwafModel) -> NetsecwafModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_model_copy(s : NetsecwafModel) -> NetsecwafModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafModel::copy(self : NetsecwafModel) -> NetsecwafModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_model_fill(s : NetsecwafModel, v : Double) -> NetsecwafModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafModel::fill(self : NetsecwafModel, v : Double) -> NetsecwafModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_model_min(s : NetsecwafModel) -> Double { @_common.min(s.data) }
+pub fn NetsecwafModel::min(self : NetsecwafModel) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_model_max(s : NetsecwafModel) -> Double { @_common.max(s.data) }
+pub fn NetsecwafModel::max(self : NetsecwafModel) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_model_to_string(s : NetsecwafModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafModel::to_string(self : NetsecwafModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafLayer {
@@ -759,45 +759,45 @@ pub fn net_sec_waf_layer_make(size : Int) -> NetsecwafLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_layer_len(s : NetsecwafLayer) -> Int { s.size }
+pub fn NetsecwafLayer::len(self : NetsecwafLayer) -> Int { self.size }
 
-pub fn net_sec_waf_layer_get(s : NetsecwafLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafLayer::get(self : NetsecwafLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_layer_set(s : NetsecwafLayer, i : Int, v : Double) -> NetsecwafLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafLayer::set(self : NetsecwafLayer, i : Int, v : Double) -> NetsecwafLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_layer_sum(s : NetsecwafLayer) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafLayer::sum(self : NetsecwafLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_layer_mean(s : NetsecwafLayer) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafLayer::mean(self : NetsecwafLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_layer_scale(s : NetsecwafLayer, f : Double) -> NetsecwafLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafLayer::scale(self : NetsecwafLayer, f : Double) -> NetsecwafLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_layer_add(a : NetsecwafLayer, b : NetsecwafLayer) -> NetsecwafLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafLayer::add(self : NetsecwafLayer, other : NetsecwafLayer) -> NetsecwafLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_layer_copy(s : NetsecwafLayer) -> NetsecwafLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafLayer::copy(self : NetsecwafLayer) -> NetsecwafLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_layer_fill(s : NetsecwafLayer, v : Double) -> NetsecwafLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafLayer::fill(self : NetsecwafLayer, v : Double) -> NetsecwafLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_layer_min(s : NetsecwafLayer) -> Double { @_common.min(s.data) }
+pub fn NetsecwafLayer::min(self : NetsecwafLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_layer_max(s : NetsecwafLayer) -> Double { @_common.max(s.data) }
+pub fn NetsecwafLayer::max(self : NetsecwafLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_layer_to_string(s : NetsecwafLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafLayer::to_string(self : NetsecwafLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafBuffer {
@@ -810,45 +810,45 @@ pub fn net_sec_waf_buffer_make(size : Int) -> NetsecwafBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_buffer_len(s : NetsecwafBuffer) -> Int { s.size }
+pub fn NetsecwafBuffer::len(self : NetsecwafBuffer) -> Int { self.size }
 
-pub fn net_sec_waf_buffer_get(s : NetsecwafBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafBuffer::get(self : NetsecwafBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_buffer_set(s : NetsecwafBuffer, i : Int, v : Double) -> NetsecwafBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafBuffer::set(self : NetsecwafBuffer, i : Int, v : Double) -> NetsecwafBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_buffer_sum(s : NetsecwafBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafBuffer::sum(self : NetsecwafBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_buffer_mean(s : NetsecwafBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafBuffer::mean(self : NetsecwafBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_buffer_scale(s : NetsecwafBuffer, f : Double) -> NetsecwafBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafBuffer::scale(self : NetsecwafBuffer, f : Double) -> NetsecwafBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_buffer_add(a : NetsecwafBuffer, b : NetsecwafBuffer) -> NetsecwafBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafBuffer::add(self : NetsecwafBuffer, other : NetsecwafBuffer) -> NetsecwafBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_buffer_copy(s : NetsecwafBuffer) -> NetsecwafBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafBuffer::copy(self : NetsecwafBuffer) -> NetsecwafBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_buffer_fill(s : NetsecwafBuffer, v : Double) -> NetsecwafBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafBuffer::fill(self : NetsecwafBuffer, v : Double) -> NetsecwafBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_buffer_min(s : NetsecwafBuffer) -> Double { @_common.min(s.data) }
+pub fn NetsecwafBuffer::min(self : NetsecwafBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_buffer_max(s : NetsecwafBuffer) -> Double { @_common.max(s.data) }
+pub fn NetsecwafBuffer::max(self : NetsecwafBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_buffer_to_string(s : NetsecwafBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafBuffer::to_string(self : NetsecwafBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafCursor {
@@ -861,45 +861,45 @@ pub fn net_sec_waf_cursor_make(size : Int) -> NetsecwafCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_cursor_len(s : NetsecwafCursor) -> Int { s.size }
+pub fn NetsecwafCursor::len(self : NetsecwafCursor) -> Int { self.size }
 
-pub fn net_sec_waf_cursor_get(s : NetsecwafCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafCursor::get(self : NetsecwafCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_cursor_set(s : NetsecwafCursor, i : Int, v : Double) -> NetsecwafCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafCursor::set(self : NetsecwafCursor, i : Int, v : Double) -> NetsecwafCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cursor_sum(s : NetsecwafCursor) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafCursor::sum(self : NetsecwafCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_cursor_mean(s : NetsecwafCursor) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafCursor::mean(self : NetsecwafCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_cursor_scale(s : NetsecwafCursor, f : Double) -> NetsecwafCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafCursor::scale(self : NetsecwafCursor, f : Double) -> NetsecwafCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cursor_add(a : NetsecwafCursor, b : NetsecwafCursor) -> NetsecwafCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafCursor::add(self : NetsecwafCursor, other : NetsecwafCursor) -> NetsecwafCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_cursor_copy(s : NetsecwafCursor) -> NetsecwafCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafCursor::copy(self : NetsecwafCursor) -> NetsecwafCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cursor_fill(s : NetsecwafCursor, v : Double) -> NetsecwafCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafCursor::fill(self : NetsecwafCursor, v : Double) -> NetsecwafCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_cursor_min(s : NetsecwafCursor) -> Double { @_common.min(s.data) }
+pub fn NetsecwafCursor::min(self : NetsecwafCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_cursor_max(s : NetsecwafCursor) -> Double { @_common.max(s.data) }
+pub fn NetsecwafCursor::max(self : NetsecwafCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_cursor_to_string(s : NetsecwafCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafCursor::to_string(self : NetsecwafCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafView {
@@ -912,45 +912,45 @@ pub fn net_sec_waf_view_make(size : Int) -> NetsecwafView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_view_len(s : NetsecwafView) -> Int { s.size }
+pub fn NetsecwafView::len(self : NetsecwafView) -> Int { self.size }
 
-pub fn net_sec_waf_view_get(s : NetsecwafView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafView::get(self : NetsecwafView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_view_set(s : NetsecwafView, i : Int, v : Double) -> NetsecwafView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafView::set(self : NetsecwafView, i : Int, v : Double) -> NetsecwafView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_view_sum(s : NetsecwafView) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafView::sum(self : NetsecwafView) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_view_mean(s : NetsecwafView) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafView::mean(self : NetsecwafView) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_view_scale(s : NetsecwafView, f : Double) -> NetsecwafView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafView::scale(self : NetsecwafView, f : Double) -> NetsecwafView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_view_add(a : NetsecwafView, b : NetsecwafView) -> NetsecwafView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafView::add(self : NetsecwafView, other : NetsecwafView) -> NetsecwafView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_view_copy(s : NetsecwafView) -> NetsecwafView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafView::copy(self : NetsecwafView) -> NetsecwafView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_view_fill(s : NetsecwafView, v : Double) -> NetsecwafView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafView::fill(self : NetsecwafView, v : Double) -> NetsecwafView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_view_min(s : NetsecwafView) -> Double { @_common.min(s.data) }
+pub fn NetsecwafView::min(self : NetsecwafView) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_view_max(s : NetsecwafView) -> Double { @_common.max(s.data) }
+pub fn NetsecwafView::max(self : NetsecwafView) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_view_to_string(s : NetsecwafView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafView::to_string(self : NetsecwafView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafRange {
@@ -963,45 +963,45 @@ pub fn net_sec_waf_range_make(size : Int) -> NetsecwafRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_range_len(s : NetsecwafRange) -> Int { s.size }
+pub fn NetsecwafRange::len(self : NetsecwafRange) -> Int { self.size }
 
-pub fn net_sec_waf_range_get(s : NetsecwafRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafRange::get(self : NetsecwafRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_range_set(s : NetsecwafRange, i : Int, v : Double) -> NetsecwafRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafRange::set(self : NetsecwafRange, i : Int, v : Double) -> NetsecwafRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_range_sum(s : NetsecwafRange) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafRange::sum(self : NetsecwafRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_range_mean(s : NetsecwafRange) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafRange::mean(self : NetsecwafRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_range_scale(s : NetsecwafRange, f : Double) -> NetsecwafRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafRange::scale(self : NetsecwafRange, f : Double) -> NetsecwafRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_range_add(a : NetsecwafRange, b : NetsecwafRange) -> NetsecwafRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafRange::add(self : NetsecwafRange, other : NetsecwafRange) -> NetsecwafRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_range_copy(s : NetsecwafRange) -> NetsecwafRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafRange::copy(self : NetsecwafRange) -> NetsecwafRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_range_fill(s : NetsecwafRange, v : Double) -> NetsecwafRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafRange::fill(self : NetsecwafRange, v : Double) -> NetsecwafRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_range_min(s : NetsecwafRange) -> Double { @_common.min(s.data) }
+pub fn NetsecwafRange::min(self : NetsecwafRange) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_range_max(s : NetsecwafRange) -> Double { @_common.max(s.data) }
+pub fn NetsecwafRange::max(self : NetsecwafRange) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_range_to_string(s : NetsecwafRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafRange::to_string(self : NetsecwafRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetsecwafSlice {
@@ -1014,44 +1014,44 @@ pub fn net_sec_waf_slice_make(size : Int) -> NetsecwafSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_sec_waf_slice_len(s : NetsecwafSlice) -> Int { s.size }
+pub fn NetsecwafSlice::len(self : NetsecwafSlice) -> Int { self.size }
 
-pub fn net_sec_waf_slice_get(s : NetsecwafSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetsecwafSlice::get(self : NetsecwafSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_sec_waf_slice_set(s : NetsecwafSlice, i : Int, v : Double) -> NetsecwafSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetsecwafSlice::set(self : NetsecwafSlice, i : Int, v : Double) -> NetsecwafSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_slice_sum(s : NetsecwafSlice) -> Double { @_common.sum(s.data) }
+pub fn NetsecwafSlice::sum(self : NetsecwafSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_sec_waf_slice_mean(s : NetsecwafSlice) -> Double { @_common.mean(s.data) }
+pub fn NetsecwafSlice::mean(self : NetsecwafSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_sec_waf_slice_scale(s : NetsecwafSlice, f : Double) -> NetsecwafSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetsecwafSlice::scale(self : NetsecwafSlice, f : Double) -> NetsecwafSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_slice_add(a : NetsecwafSlice, b : NetsecwafSlice) -> NetsecwafSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetsecwafSlice::add(self : NetsecwafSlice, other : NetsecwafSlice) -> NetsecwafSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_sec_waf_slice_copy(s : NetsecwafSlice) -> NetsecwafSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetsecwafSlice::copy(self : NetsecwafSlice) -> NetsecwafSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_slice_fill(s : NetsecwafSlice, v : Double) -> NetsecwafSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetsecwafSlice::fill(self : NetsecwafSlice, v : Double) -> NetsecwafSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_sec_waf_slice_min(s : NetsecwafSlice) -> Double { @_common.min(s.data) }
+pub fn NetsecwafSlice::min(self : NetsecwafSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_sec_waf_slice_max(s : NetsecwafSlice) -> Double { @_common.max(s.data) }
+pub fn NetsecwafSlice::max(self : NetsecwafSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_sec_waf_slice_to_string(s : NetsecwafSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetsecwafSlice::to_string(self : NetsecwafSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

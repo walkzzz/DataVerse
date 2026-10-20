@@ -351,45 +351,45 @@ pub fn timeseries_anomaly_isolation_frame_make(size : Int) -> Timeseriesanomalyi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_frame_len(s : TimeseriesanomalyisolationFrame) -> Int { s.size }
+pub fn TimeseriesanomalyisolationFrame::len(self : TimeseriesanomalyisolationFrame) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_frame_get(s : TimeseriesanomalyisolationFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationFrame::get(self : TimeseriesanomalyisolationFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_frame_set(s : TimeseriesanomalyisolationFrame, i : Int, v : Double) -> TimeseriesanomalyisolationFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationFrame::set(self : TimeseriesanomalyisolationFrame, i : Int, v : Double) -> TimeseriesanomalyisolationFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_frame_sum(s : TimeseriesanomalyisolationFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationFrame::sum(self : TimeseriesanomalyisolationFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_frame_mean(s : TimeseriesanomalyisolationFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationFrame::mean(self : TimeseriesanomalyisolationFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_frame_scale(s : TimeseriesanomalyisolationFrame, f : Double) -> TimeseriesanomalyisolationFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationFrame::scale(self : TimeseriesanomalyisolationFrame, f : Double) -> TimeseriesanomalyisolationFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_frame_add(a : TimeseriesanomalyisolationFrame, b : TimeseriesanomalyisolationFrame) -> TimeseriesanomalyisolationFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationFrame::add(self : TimeseriesanomalyisolationFrame, other : TimeseriesanomalyisolationFrame) -> TimeseriesanomalyisolationFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_frame_copy(s : TimeseriesanomalyisolationFrame) -> TimeseriesanomalyisolationFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationFrame::copy(self : TimeseriesanomalyisolationFrame) -> TimeseriesanomalyisolationFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_frame_fill(s : TimeseriesanomalyisolationFrame, v : Double) -> TimeseriesanomalyisolationFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationFrame::fill(self : TimeseriesanomalyisolationFrame, v : Double) -> TimeseriesanomalyisolationFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_frame_min(s : TimeseriesanomalyisolationFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationFrame::min(self : TimeseriesanomalyisolationFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_frame_max(s : TimeseriesanomalyisolationFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationFrame::max(self : TimeseriesanomalyisolationFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_frame_to_string(s : TimeseriesanomalyisolationFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationFrame::to_string(self : TimeseriesanomalyisolationFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationTable {
@@ -402,45 +402,45 @@ pub fn timeseries_anomaly_isolation_table_make(size : Int) -> Timeseriesanomalyi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_table_len(s : TimeseriesanomalyisolationTable) -> Int { s.size }
+pub fn TimeseriesanomalyisolationTable::len(self : TimeseriesanomalyisolationTable) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_table_get(s : TimeseriesanomalyisolationTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationTable::get(self : TimeseriesanomalyisolationTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_table_set(s : TimeseriesanomalyisolationTable, i : Int, v : Double) -> TimeseriesanomalyisolationTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationTable::set(self : TimeseriesanomalyisolationTable, i : Int, v : Double) -> TimeseriesanomalyisolationTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_table_sum(s : TimeseriesanomalyisolationTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationTable::sum(self : TimeseriesanomalyisolationTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_table_mean(s : TimeseriesanomalyisolationTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationTable::mean(self : TimeseriesanomalyisolationTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_table_scale(s : TimeseriesanomalyisolationTable, f : Double) -> TimeseriesanomalyisolationTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationTable::scale(self : TimeseriesanomalyisolationTable, f : Double) -> TimeseriesanomalyisolationTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_table_add(a : TimeseriesanomalyisolationTable, b : TimeseriesanomalyisolationTable) -> TimeseriesanomalyisolationTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationTable::add(self : TimeseriesanomalyisolationTable, other : TimeseriesanomalyisolationTable) -> TimeseriesanomalyisolationTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_table_copy(s : TimeseriesanomalyisolationTable) -> TimeseriesanomalyisolationTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationTable::copy(self : TimeseriesanomalyisolationTable) -> TimeseriesanomalyisolationTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_table_fill(s : TimeseriesanomalyisolationTable, v : Double) -> TimeseriesanomalyisolationTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationTable::fill(self : TimeseriesanomalyisolationTable, v : Double) -> TimeseriesanomalyisolationTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_table_min(s : TimeseriesanomalyisolationTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationTable::min(self : TimeseriesanomalyisolationTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_table_max(s : TimeseriesanomalyisolationTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationTable::max(self : TimeseriesanomalyisolationTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_table_to_string(s : TimeseriesanomalyisolationTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationTable::to_string(self : TimeseriesanomalyisolationTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_anomaly_isolation_graphn_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_len(s : TimeseriesanomalyisolationGraphN) -> Int { s.size }
+pub fn TimeseriesanomalyisolationGraphN::len(self : TimeseriesanomalyisolationGraphN) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_graphn_get(s : TimeseriesanomalyisolationGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationGraphN::get(self : TimeseriesanomalyisolationGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_set(s : TimeseriesanomalyisolationGraphN, i : Int, v : Double) -> TimeseriesanomalyisolationGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationGraphN::set(self : TimeseriesanomalyisolationGraphN, i : Int, v : Double) -> TimeseriesanomalyisolationGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_sum(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationGraphN::sum(self : TimeseriesanomalyisolationGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_graphn_mean(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationGraphN::mean(self : TimeseriesanomalyisolationGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_graphn_scale(s : TimeseriesanomalyisolationGraphN, f : Double) -> TimeseriesanomalyisolationGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationGraphN::scale(self : TimeseriesanomalyisolationGraphN, f : Double) -> TimeseriesanomalyisolationGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_add(a : TimeseriesanomalyisolationGraphN, b : TimeseriesanomalyisolationGraphN) -> TimeseriesanomalyisolationGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationGraphN::add(self : TimeseriesanomalyisolationGraphN, other : TimeseriesanomalyisolationGraphN) -> TimeseriesanomalyisolationGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_copy(s : TimeseriesanomalyisolationGraphN) -> TimeseriesanomalyisolationGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationGraphN::copy(self : TimeseriesanomalyisolationGraphN) -> TimeseriesanomalyisolationGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_fill(s : TimeseriesanomalyisolationGraphN, v : Double) -> TimeseriesanomalyisolationGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationGraphN::fill(self : TimeseriesanomalyisolationGraphN, v : Double) -> TimeseriesanomalyisolationGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_graphn_min(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationGraphN::min(self : TimeseriesanomalyisolationGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_graphn_max(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationGraphN::max(self : TimeseriesanomalyisolationGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_graphn_to_string(s : TimeseriesanomalyisolationGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationGraphN::to_string(self : TimeseriesanomalyisolationGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationNode {
@@ -504,45 +504,45 @@ pub fn timeseries_anomaly_isolation_node_make(size : Int) -> Timeseriesanomalyis
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_node_len(s : TimeseriesanomalyisolationNode) -> Int { s.size }
+pub fn TimeseriesanomalyisolationNode::len(self : TimeseriesanomalyisolationNode) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_node_get(s : TimeseriesanomalyisolationNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationNode::get(self : TimeseriesanomalyisolationNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_node_set(s : TimeseriesanomalyisolationNode, i : Int, v : Double) -> TimeseriesanomalyisolationNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationNode::set(self : TimeseriesanomalyisolationNode, i : Int, v : Double) -> TimeseriesanomalyisolationNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_node_sum(s : TimeseriesanomalyisolationNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationNode::sum(self : TimeseriesanomalyisolationNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_node_mean(s : TimeseriesanomalyisolationNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationNode::mean(self : TimeseriesanomalyisolationNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_node_scale(s : TimeseriesanomalyisolationNode, f : Double) -> TimeseriesanomalyisolationNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationNode::scale(self : TimeseriesanomalyisolationNode, f : Double) -> TimeseriesanomalyisolationNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_node_add(a : TimeseriesanomalyisolationNode, b : TimeseriesanomalyisolationNode) -> TimeseriesanomalyisolationNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationNode::add(self : TimeseriesanomalyisolationNode, other : TimeseriesanomalyisolationNode) -> TimeseriesanomalyisolationNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_node_copy(s : TimeseriesanomalyisolationNode) -> TimeseriesanomalyisolationNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationNode::copy(self : TimeseriesanomalyisolationNode) -> TimeseriesanomalyisolationNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_node_fill(s : TimeseriesanomalyisolationNode, v : Double) -> TimeseriesanomalyisolationNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationNode::fill(self : TimeseriesanomalyisolationNode, v : Double) -> TimeseriesanomalyisolationNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_node_min(s : TimeseriesanomalyisolationNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationNode::min(self : TimeseriesanomalyisolationNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_node_max(s : TimeseriesanomalyisolationNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationNode::max(self : TimeseriesanomalyisolationNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_node_to_string(s : TimeseriesanomalyisolationNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationNode::to_string(self : TimeseriesanomalyisolationNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_anomaly_isolation_edge_make(size : Int) -> Timeseriesanomalyis
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_edge_len(s : TimeseriesanomalyisolationEdge) -> Int { s.size }
+pub fn TimeseriesanomalyisolationEdge::len(self : TimeseriesanomalyisolationEdge) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_edge_get(s : TimeseriesanomalyisolationEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationEdge::get(self : TimeseriesanomalyisolationEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_edge_set(s : TimeseriesanomalyisolationEdge, i : Int, v : Double) -> TimeseriesanomalyisolationEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationEdge::set(self : TimeseriesanomalyisolationEdge, i : Int, v : Double) -> TimeseriesanomalyisolationEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_edge_sum(s : TimeseriesanomalyisolationEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationEdge::sum(self : TimeseriesanomalyisolationEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_edge_mean(s : TimeseriesanomalyisolationEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationEdge::mean(self : TimeseriesanomalyisolationEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_edge_scale(s : TimeseriesanomalyisolationEdge, f : Double) -> TimeseriesanomalyisolationEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationEdge::scale(self : TimeseriesanomalyisolationEdge, f : Double) -> TimeseriesanomalyisolationEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_edge_add(a : TimeseriesanomalyisolationEdge, b : TimeseriesanomalyisolationEdge) -> TimeseriesanomalyisolationEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationEdge::add(self : TimeseriesanomalyisolationEdge, other : TimeseriesanomalyisolationEdge) -> TimeseriesanomalyisolationEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_edge_copy(s : TimeseriesanomalyisolationEdge) -> TimeseriesanomalyisolationEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationEdge::copy(self : TimeseriesanomalyisolationEdge) -> TimeseriesanomalyisolationEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_edge_fill(s : TimeseriesanomalyisolationEdge, v : Double) -> TimeseriesanomalyisolationEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationEdge::fill(self : TimeseriesanomalyisolationEdge, v : Double) -> TimeseriesanomalyisolationEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_edge_min(s : TimeseriesanomalyisolationEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationEdge::min(self : TimeseriesanomalyisolationEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_edge_max(s : TimeseriesanomalyisolationEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationEdge::max(self : TimeseriesanomalyisolationEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_edge_to_string(s : TimeseriesanomalyisolationEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationEdge::to_string(self : TimeseriesanomalyisolationEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationPath {
@@ -606,45 +606,45 @@ pub fn timeseries_anomaly_isolation_path_make(size : Int) -> Timeseriesanomalyis
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_path_len(s : TimeseriesanomalyisolationPath) -> Int { s.size }
+pub fn TimeseriesanomalyisolationPath::len(self : TimeseriesanomalyisolationPath) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_path_get(s : TimeseriesanomalyisolationPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationPath::get(self : TimeseriesanomalyisolationPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_path_set(s : TimeseriesanomalyisolationPath, i : Int, v : Double) -> TimeseriesanomalyisolationPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationPath::set(self : TimeseriesanomalyisolationPath, i : Int, v : Double) -> TimeseriesanomalyisolationPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_path_sum(s : TimeseriesanomalyisolationPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationPath::sum(self : TimeseriesanomalyisolationPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_path_mean(s : TimeseriesanomalyisolationPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationPath::mean(self : TimeseriesanomalyisolationPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_path_scale(s : TimeseriesanomalyisolationPath, f : Double) -> TimeseriesanomalyisolationPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationPath::scale(self : TimeseriesanomalyisolationPath, f : Double) -> TimeseriesanomalyisolationPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_path_add(a : TimeseriesanomalyisolationPath, b : TimeseriesanomalyisolationPath) -> TimeseriesanomalyisolationPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationPath::add(self : TimeseriesanomalyisolationPath, other : TimeseriesanomalyisolationPath) -> TimeseriesanomalyisolationPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_path_copy(s : TimeseriesanomalyisolationPath) -> TimeseriesanomalyisolationPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationPath::copy(self : TimeseriesanomalyisolationPath) -> TimeseriesanomalyisolationPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_path_fill(s : TimeseriesanomalyisolationPath, v : Double) -> TimeseriesanomalyisolationPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationPath::fill(self : TimeseriesanomalyisolationPath, v : Double) -> TimeseriesanomalyisolationPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_path_min(s : TimeseriesanomalyisolationPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationPath::min(self : TimeseriesanomalyisolationPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_path_max(s : TimeseriesanomalyisolationPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationPath::max(self : TimeseriesanomalyisolationPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_path_to_string(s : TimeseriesanomalyisolationPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationPath::to_string(self : TimeseriesanomalyisolationPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_anomaly_isolation_cluster_make(size : Int) -> Timeseriesanomal
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_len(s : TimeseriesanomalyisolationCluster) -> Int { s.size }
+pub fn TimeseriesanomalyisolationCluster::len(self : TimeseriesanomalyisolationCluster) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_cluster_get(s : TimeseriesanomalyisolationCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationCluster::get(self : TimeseriesanomalyisolationCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_set(s : TimeseriesanomalyisolationCluster, i : Int, v : Double) -> TimeseriesanomalyisolationCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCluster::set(self : TimeseriesanomalyisolationCluster, i : Int, v : Double) -> TimeseriesanomalyisolationCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_sum(s : TimeseriesanomalyisolationCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationCluster::sum(self : TimeseriesanomalyisolationCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_cluster_mean(s : TimeseriesanomalyisolationCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationCluster::mean(self : TimeseriesanomalyisolationCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_cluster_scale(s : TimeseriesanomalyisolationCluster, f : Double) -> TimeseriesanomalyisolationCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCluster::scale(self : TimeseriesanomalyisolationCluster, f : Double) -> TimeseriesanomalyisolationCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_add(a : TimeseriesanomalyisolationCluster, b : TimeseriesanomalyisolationCluster) -> TimeseriesanomalyisolationCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationCluster::add(self : TimeseriesanomalyisolationCluster, other : TimeseriesanomalyisolationCluster) -> TimeseriesanomalyisolationCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_copy(s : TimeseriesanomalyisolationCluster) -> TimeseriesanomalyisolationCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCluster::copy(self : TimeseriesanomalyisolationCluster) -> TimeseriesanomalyisolationCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_fill(s : TimeseriesanomalyisolationCluster, v : Double) -> TimeseriesanomalyisolationCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCluster::fill(self : TimeseriesanomalyisolationCluster, v : Double) -> TimeseriesanomalyisolationCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cluster_min(s : TimeseriesanomalyisolationCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationCluster::min(self : TimeseriesanomalyisolationCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_cluster_max(s : TimeseriesanomalyisolationCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationCluster::max(self : TimeseriesanomalyisolationCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_cluster_to_string(s : TimeseriesanomalyisolationCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationCluster::to_string(self : TimeseriesanomalyisolationCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationModel {
@@ -708,45 +708,45 @@ pub fn timeseries_anomaly_isolation_model_make(size : Int) -> Timeseriesanomalyi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_model_len(s : TimeseriesanomalyisolationModel) -> Int { s.size }
+pub fn TimeseriesanomalyisolationModel::len(self : TimeseriesanomalyisolationModel) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_model_get(s : TimeseriesanomalyisolationModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationModel::get(self : TimeseriesanomalyisolationModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_model_set(s : TimeseriesanomalyisolationModel, i : Int, v : Double) -> TimeseriesanomalyisolationModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationModel::set(self : TimeseriesanomalyisolationModel, i : Int, v : Double) -> TimeseriesanomalyisolationModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_model_sum(s : TimeseriesanomalyisolationModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationModel::sum(self : TimeseriesanomalyisolationModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_model_mean(s : TimeseriesanomalyisolationModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationModel::mean(self : TimeseriesanomalyisolationModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_model_scale(s : TimeseriesanomalyisolationModel, f : Double) -> TimeseriesanomalyisolationModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationModel::scale(self : TimeseriesanomalyisolationModel, f : Double) -> TimeseriesanomalyisolationModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_model_add(a : TimeseriesanomalyisolationModel, b : TimeseriesanomalyisolationModel) -> TimeseriesanomalyisolationModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationModel::add(self : TimeseriesanomalyisolationModel, other : TimeseriesanomalyisolationModel) -> TimeseriesanomalyisolationModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_model_copy(s : TimeseriesanomalyisolationModel) -> TimeseriesanomalyisolationModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationModel::copy(self : TimeseriesanomalyisolationModel) -> TimeseriesanomalyisolationModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_model_fill(s : TimeseriesanomalyisolationModel, v : Double) -> TimeseriesanomalyisolationModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationModel::fill(self : TimeseriesanomalyisolationModel, v : Double) -> TimeseriesanomalyisolationModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_model_min(s : TimeseriesanomalyisolationModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationModel::min(self : TimeseriesanomalyisolationModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_model_max(s : TimeseriesanomalyisolationModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationModel::max(self : TimeseriesanomalyisolationModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_model_to_string(s : TimeseriesanomalyisolationModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationModel::to_string(self : TimeseriesanomalyisolationModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_anomaly_isolation_layer_make(size : Int) -> Timeseriesanomalyi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_layer_len(s : TimeseriesanomalyisolationLayer) -> Int { s.size }
+pub fn TimeseriesanomalyisolationLayer::len(self : TimeseriesanomalyisolationLayer) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_layer_get(s : TimeseriesanomalyisolationLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationLayer::get(self : TimeseriesanomalyisolationLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_layer_set(s : TimeseriesanomalyisolationLayer, i : Int, v : Double) -> TimeseriesanomalyisolationLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationLayer::set(self : TimeseriesanomalyisolationLayer, i : Int, v : Double) -> TimeseriesanomalyisolationLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_layer_sum(s : TimeseriesanomalyisolationLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationLayer::sum(self : TimeseriesanomalyisolationLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_layer_mean(s : TimeseriesanomalyisolationLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationLayer::mean(self : TimeseriesanomalyisolationLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_layer_scale(s : TimeseriesanomalyisolationLayer, f : Double) -> TimeseriesanomalyisolationLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationLayer::scale(self : TimeseriesanomalyisolationLayer, f : Double) -> TimeseriesanomalyisolationLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_layer_add(a : TimeseriesanomalyisolationLayer, b : TimeseriesanomalyisolationLayer) -> TimeseriesanomalyisolationLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationLayer::add(self : TimeseriesanomalyisolationLayer, other : TimeseriesanomalyisolationLayer) -> TimeseriesanomalyisolationLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_layer_copy(s : TimeseriesanomalyisolationLayer) -> TimeseriesanomalyisolationLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationLayer::copy(self : TimeseriesanomalyisolationLayer) -> TimeseriesanomalyisolationLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_layer_fill(s : TimeseriesanomalyisolationLayer, v : Double) -> TimeseriesanomalyisolationLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationLayer::fill(self : TimeseriesanomalyisolationLayer, v : Double) -> TimeseriesanomalyisolationLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_layer_min(s : TimeseriesanomalyisolationLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationLayer::min(self : TimeseriesanomalyisolationLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_layer_max(s : TimeseriesanomalyisolationLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationLayer::max(self : TimeseriesanomalyisolationLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_layer_to_string(s : TimeseriesanomalyisolationLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationLayer::to_string(self : TimeseriesanomalyisolationLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_anomaly_isolation_buffer_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_len(s : TimeseriesanomalyisolationBuffer) -> Int { s.size }
+pub fn TimeseriesanomalyisolationBuffer::len(self : TimeseriesanomalyisolationBuffer) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_buffer_get(s : TimeseriesanomalyisolationBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationBuffer::get(self : TimeseriesanomalyisolationBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_set(s : TimeseriesanomalyisolationBuffer, i : Int, v : Double) -> TimeseriesanomalyisolationBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationBuffer::set(self : TimeseriesanomalyisolationBuffer, i : Int, v : Double) -> TimeseriesanomalyisolationBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_sum(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationBuffer::sum(self : TimeseriesanomalyisolationBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_buffer_mean(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationBuffer::mean(self : TimeseriesanomalyisolationBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_buffer_scale(s : TimeseriesanomalyisolationBuffer, f : Double) -> TimeseriesanomalyisolationBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationBuffer::scale(self : TimeseriesanomalyisolationBuffer, f : Double) -> TimeseriesanomalyisolationBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_add(a : TimeseriesanomalyisolationBuffer, b : TimeseriesanomalyisolationBuffer) -> TimeseriesanomalyisolationBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationBuffer::add(self : TimeseriesanomalyisolationBuffer, other : TimeseriesanomalyisolationBuffer) -> TimeseriesanomalyisolationBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_copy(s : TimeseriesanomalyisolationBuffer) -> TimeseriesanomalyisolationBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationBuffer::copy(self : TimeseriesanomalyisolationBuffer) -> TimeseriesanomalyisolationBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_fill(s : TimeseriesanomalyisolationBuffer, v : Double) -> TimeseriesanomalyisolationBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationBuffer::fill(self : TimeseriesanomalyisolationBuffer, v : Double) -> TimeseriesanomalyisolationBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_buffer_min(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationBuffer::min(self : TimeseriesanomalyisolationBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_buffer_max(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationBuffer::max(self : TimeseriesanomalyisolationBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_buffer_to_string(s : TimeseriesanomalyisolationBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationBuffer::to_string(self : TimeseriesanomalyisolationBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_anomaly_isolation_cursor_make(size : Int) -> Timeseriesanomaly
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_len(s : TimeseriesanomalyisolationCursor) -> Int { s.size }
+pub fn TimeseriesanomalyisolationCursor::len(self : TimeseriesanomalyisolationCursor) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_cursor_get(s : TimeseriesanomalyisolationCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationCursor::get(self : TimeseriesanomalyisolationCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_set(s : TimeseriesanomalyisolationCursor, i : Int, v : Double) -> TimeseriesanomalyisolationCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCursor::set(self : TimeseriesanomalyisolationCursor, i : Int, v : Double) -> TimeseriesanomalyisolationCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_sum(s : TimeseriesanomalyisolationCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationCursor::sum(self : TimeseriesanomalyisolationCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_cursor_mean(s : TimeseriesanomalyisolationCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationCursor::mean(self : TimeseriesanomalyisolationCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_cursor_scale(s : TimeseriesanomalyisolationCursor, f : Double) -> TimeseriesanomalyisolationCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCursor::scale(self : TimeseriesanomalyisolationCursor, f : Double) -> TimeseriesanomalyisolationCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_add(a : TimeseriesanomalyisolationCursor, b : TimeseriesanomalyisolationCursor) -> TimeseriesanomalyisolationCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationCursor::add(self : TimeseriesanomalyisolationCursor, other : TimeseriesanomalyisolationCursor) -> TimeseriesanomalyisolationCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_copy(s : TimeseriesanomalyisolationCursor) -> TimeseriesanomalyisolationCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCursor::copy(self : TimeseriesanomalyisolationCursor) -> TimeseriesanomalyisolationCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_fill(s : TimeseriesanomalyisolationCursor, v : Double) -> TimeseriesanomalyisolationCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationCursor::fill(self : TimeseriesanomalyisolationCursor, v : Double) -> TimeseriesanomalyisolationCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_cursor_min(s : TimeseriesanomalyisolationCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationCursor::min(self : TimeseriesanomalyisolationCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_cursor_max(s : TimeseriesanomalyisolationCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationCursor::max(self : TimeseriesanomalyisolationCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_cursor_to_string(s : TimeseriesanomalyisolationCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationCursor::to_string(self : TimeseriesanomalyisolationCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationView {
@@ -912,45 +912,45 @@ pub fn timeseries_anomaly_isolation_view_make(size : Int) -> Timeseriesanomalyis
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_view_len(s : TimeseriesanomalyisolationView) -> Int { s.size }
+pub fn TimeseriesanomalyisolationView::len(self : TimeseriesanomalyisolationView) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_view_get(s : TimeseriesanomalyisolationView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationView::get(self : TimeseriesanomalyisolationView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_view_set(s : TimeseriesanomalyisolationView, i : Int, v : Double) -> TimeseriesanomalyisolationView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationView::set(self : TimeseriesanomalyisolationView, i : Int, v : Double) -> TimeseriesanomalyisolationView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_view_sum(s : TimeseriesanomalyisolationView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationView::sum(self : TimeseriesanomalyisolationView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_view_mean(s : TimeseriesanomalyisolationView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationView::mean(self : TimeseriesanomalyisolationView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_view_scale(s : TimeseriesanomalyisolationView, f : Double) -> TimeseriesanomalyisolationView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationView::scale(self : TimeseriesanomalyisolationView, f : Double) -> TimeseriesanomalyisolationView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_view_add(a : TimeseriesanomalyisolationView, b : TimeseriesanomalyisolationView) -> TimeseriesanomalyisolationView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationView::add(self : TimeseriesanomalyisolationView, other : TimeseriesanomalyisolationView) -> TimeseriesanomalyisolationView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_view_copy(s : TimeseriesanomalyisolationView) -> TimeseriesanomalyisolationView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationView::copy(self : TimeseriesanomalyisolationView) -> TimeseriesanomalyisolationView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_view_fill(s : TimeseriesanomalyisolationView, v : Double) -> TimeseriesanomalyisolationView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationView::fill(self : TimeseriesanomalyisolationView, v : Double) -> TimeseriesanomalyisolationView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_view_min(s : TimeseriesanomalyisolationView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationView::min(self : TimeseriesanomalyisolationView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_view_max(s : TimeseriesanomalyisolationView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationView::max(self : TimeseriesanomalyisolationView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_view_to_string(s : TimeseriesanomalyisolationView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationView::to_string(self : TimeseriesanomalyisolationView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationRange {
@@ -963,45 +963,45 @@ pub fn timeseries_anomaly_isolation_range_make(size : Int) -> Timeseriesanomalyi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_range_len(s : TimeseriesanomalyisolationRange) -> Int { s.size }
+pub fn TimeseriesanomalyisolationRange::len(self : TimeseriesanomalyisolationRange) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_range_get(s : TimeseriesanomalyisolationRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationRange::get(self : TimeseriesanomalyisolationRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_range_set(s : TimeseriesanomalyisolationRange, i : Int, v : Double) -> TimeseriesanomalyisolationRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationRange::set(self : TimeseriesanomalyisolationRange, i : Int, v : Double) -> TimeseriesanomalyisolationRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_range_sum(s : TimeseriesanomalyisolationRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationRange::sum(self : TimeseriesanomalyisolationRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_range_mean(s : TimeseriesanomalyisolationRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationRange::mean(self : TimeseriesanomalyisolationRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_range_scale(s : TimeseriesanomalyisolationRange, f : Double) -> TimeseriesanomalyisolationRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationRange::scale(self : TimeseriesanomalyisolationRange, f : Double) -> TimeseriesanomalyisolationRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_range_add(a : TimeseriesanomalyisolationRange, b : TimeseriesanomalyisolationRange) -> TimeseriesanomalyisolationRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationRange::add(self : TimeseriesanomalyisolationRange, other : TimeseriesanomalyisolationRange) -> TimeseriesanomalyisolationRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_range_copy(s : TimeseriesanomalyisolationRange) -> TimeseriesanomalyisolationRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationRange::copy(self : TimeseriesanomalyisolationRange) -> TimeseriesanomalyisolationRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_range_fill(s : TimeseriesanomalyisolationRange, v : Double) -> TimeseriesanomalyisolationRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationRange::fill(self : TimeseriesanomalyisolationRange, v : Double) -> TimeseriesanomalyisolationRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_range_min(s : TimeseriesanomalyisolationRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationRange::min(self : TimeseriesanomalyisolationRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_range_max(s : TimeseriesanomalyisolationRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationRange::max(self : TimeseriesanomalyisolationRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_range_to_string(s : TimeseriesanomalyisolationRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationRange::to_string(self : TimeseriesanomalyisolationRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyisolationSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_anomaly_isolation_slice_make(size : Int) -> Timeseriesanomalyi
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_anomaly_isolation_slice_len(s : TimeseriesanomalyisolationSlice) -> Int { s.size }
+pub fn TimeseriesanomalyisolationSlice::len(self : TimeseriesanomalyisolationSlice) -> Int { self.size }
 
-pub fn timeseries_anomaly_isolation_slice_get(s : TimeseriesanomalyisolationSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesanomalyisolationSlice::get(self : TimeseriesanomalyisolationSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_anomaly_isolation_slice_set(s : TimeseriesanomalyisolationSlice, i : Int, v : Double) -> TimeseriesanomalyisolationSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationSlice::set(self : TimeseriesanomalyisolationSlice, i : Int, v : Double) -> TimeseriesanomalyisolationSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_slice_sum(s : TimeseriesanomalyisolationSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesanomalyisolationSlice::sum(self : TimeseriesanomalyisolationSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_anomaly_isolation_slice_mean(s : TimeseriesanomalyisolationSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesanomalyisolationSlice::mean(self : TimeseriesanomalyisolationSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_anomaly_isolation_slice_scale(s : TimeseriesanomalyisolationSlice, f : Double) -> TimeseriesanomalyisolationSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationSlice::scale(self : TimeseriesanomalyisolationSlice, f : Double) -> TimeseriesanomalyisolationSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_slice_add(a : TimeseriesanomalyisolationSlice, b : TimeseriesanomalyisolationSlice) -> TimeseriesanomalyisolationSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesanomalyisolationSlice::add(self : TimeseriesanomalyisolationSlice, other : TimeseriesanomalyisolationSlice) -> TimeseriesanomalyisolationSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_slice_copy(s : TimeseriesanomalyisolationSlice) -> TimeseriesanomalyisolationSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationSlice::copy(self : TimeseriesanomalyisolationSlice) -> TimeseriesanomalyisolationSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_slice_fill(s : TimeseriesanomalyisolationSlice, v : Double) -> TimeseriesanomalyisolationSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesanomalyisolationSlice::fill(self : TimeseriesanomalyisolationSlice, v : Double) -> TimeseriesanomalyisolationSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_anomaly_isolation_slice_min(s : TimeseriesanomalyisolationSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesanomalyisolationSlice::min(self : TimeseriesanomalyisolationSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_anomaly_isolation_slice_max(s : TimeseriesanomalyisolationSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesanomalyisolationSlice::max(self : TimeseriesanomalyisolationSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_anomaly_isolation_slice_to_string(s : TimeseriesanomalyisolationSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesanomalyisolationSlice::to_string(self : TimeseriesanomalyisolationSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

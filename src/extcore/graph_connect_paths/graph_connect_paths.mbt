@@ -351,45 +351,45 @@ pub fn graph_connect_paths_frame_make(size : Int) -> GraphconnectpathsFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_frame_len(s : GraphconnectpathsFrame) -> Int { s.size }
+pub fn GraphconnectpathsFrame::len(self : GraphconnectpathsFrame) -> Int { self.size }
 
-pub fn graph_connect_paths_frame_get(s : GraphconnectpathsFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsFrame::get(self : GraphconnectpathsFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_frame_set(s : GraphconnectpathsFrame, i : Int, v : Double) -> GraphconnectpathsFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsFrame::set(self : GraphconnectpathsFrame, i : Int, v : Double) -> GraphconnectpathsFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_frame_sum(s : GraphconnectpathsFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsFrame::sum(self : GraphconnectpathsFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_frame_mean(s : GraphconnectpathsFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsFrame::mean(self : GraphconnectpathsFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_frame_scale(s : GraphconnectpathsFrame, f : Double) -> GraphconnectpathsFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsFrame::scale(self : GraphconnectpathsFrame, f : Double) -> GraphconnectpathsFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_frame_add(a : GraphconnectpathsFrame, b : GraphconnectpathsFrame) -> GraphconnectpathsFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsFrame::add(self : GraphconnectpathsFrame, other : GraphconnectpathsFrame) -> GraphconnectpathsFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_frame_copy(s : GraphconnectpathsFrame) -> GraphconnectpathsFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsFrame::copy(self : GraphconnectpathsFrame) -> GraphconnectpathsFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_frame_fill(s : GraphconnectpathsFrame, v : Double) -> GraphconnectpathsFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsFrame::fill(self : GraphconnectpathsFrame, v : Double) -> GraphconnectpathsFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_frame_min(s : GraphconnectpathsFrame) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsFrame::min(self : GraphconnectpathsFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_frame_max(s : GraphconnectpathsFrame) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsFrame::max(self : GraphconnectpathsFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_frame_to_string(s : GraphconnectpathsFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsFrame::to_string(self : GraphconnectpathsFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsTable {
@@ -402,45 +402,45 @@ pub fn graph_connect_paths_table_make(size : Int) -> GraphconnectpathsTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_table_len(s : GraphconnectpathsTable) -> Int { s.size }
+pub fn GraphconnectpathsTable::len(self : GraphconnectpathsTable) -> Int { self.size }
 
-pub fn graph_connect_paths_table_get(s : GraphconnectpathsTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsTable::get(self : GraphconnectpathsTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_table_set(s : GraphconnectpathsTable, i : Int, v : Double) -> GraphconnectpathsTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsTable::set(self : GraphconnectpathsTable, i : Int, v : Double) -> GraphconnectpathsTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_table_sum(s : GraphconnectpathsTable) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsTable::sum(self : GraphconnectpathsTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_table_mean(s : GraphconnectpathsTable) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsTable::mean(self : GraphconnectpathsTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_table_scale(s : GraphconnectpathsTable, f : Double) -> GraphconnectpathsTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsTable::scale(self : GraphconnectpathsTable, f : Double) -> GraphconnectpathsTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_table_add(a : GraphconnectpathsTable, b : GraphconnectpathsTable) -> GraphconnectpathsTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsTable::add(self : GraphconnectpathsTable, other : GraphconnectpathsTable) -> GraphconnectpathsTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_table_copy(s : GraphconnectpathsTable) -> GraphconnectpathsTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsTable::copy(self : GraphconnectpathsTable) -> GraphconnectpathsTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_table_fill(s : GraphconnectpathsTable, v : Double) -> GraphconnectpathsTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsTable::fill(self : GraphconnectpathsTable, v : Double) -> GraphconnectpathsTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_table_min(s : GraphconnectpathsTable) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsTable::min(self : GraphconnectpathsTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_table_max(s : GraphconnectpathsTable) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsTable::max(self : GraphconnectpathsTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_table_to_string(s : GraphconnectpathsTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsTable::to_string(self : GraphconnectpathsTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsGraphN {
@@ -453,45 +453,45 @@ pub fn graph_connect_paths_graphn_make(size : Int) -> GraphconnectpathsGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_graphn_len(s : GraphconnectpathsGraphN) -> Int { s.size }
+pub fn GraphconnectpathsGraphN::len(self : GraphconnectpathsGraphN) -> Int { self.size }
 
-pub fn graph_connect_paths_graphn_get(s : GraphconnectpathsGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsGraphN::get(self : GraphconnectpathsGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_graphn_set(s : GraphconnectpathsGraphN, i : Int, v : Double) -> GraphconnectpathsGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsGraphN::set(self : GraphconnectpathsGraphN, i : Int, v : Double) -> GraphconnectpathsGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_graphn_sum(s : GraphconnectpathsGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsGraphN::sum(self : GraphconnectpathsGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_graphn_mean(s : GraphconnectpathsGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsGraphN::mean(self : GraphconnectpathsGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_graphn_scale(s : GraphconnectpathsGraphN, f : Double) -> GraphconnectpathsGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsGraphN::scale(self : GraphconnectpathsGraphN, f : Double) -> GraphconnectpathsGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_graphn_add(a : GraphconnectpathsGraphN, b : GraphconnectpathsGraphN) -> GraphconnectpathsGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsGraphN::add(self : GraphconnectpathsGraphN, other : GraphconnectpathsGraphN) -> GraphconnectpathsGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_graphn_copy(s : GraphconnectpathsGraphN) -> GraphconnectpathsGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsGraphN::copy(self : GraphconnectpathsGraphN) -> GraphconnectpathsGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_graphn_fill(s : GraphconnectpathsGraphN, v : Double) -> GraphconnectpathsGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsGraphN::fill(self : GraphconnectpathsGraphN, v : Double) -> GraphconnectpathsGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_graphn_min(s : GraphconnectpathsGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsGraphN::min(self : GraphconnectpathsGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_graphn_max(s : GraphconnectpathsGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsGraphN::max(self : GraphconnectpathsGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_graphn_to_string(s : GraphconnectpathsGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsGraphN::to_string(self : GraphconnectpathsGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsNode {
@@ -504,45 +504,45 @@ pub fn graph_connect_paths_node_make(size : Int) -> GraphconnectpathsNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_node_len(s : GraphconnectpathsNode) -> Int { s.size }
+pub fn GraphconnectpathsNode::len(self : GraphconnectpathsNode) -> Int { self.size }
 
-pub fn graph_connect_paths_node_get(s : GraphconnectpathsNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsNode::get(self : GraphconnectpathsNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_node_set(s : GraphconnectpathsNode, i : Int, v : Double) -> GraphconnectpathsNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsNode::set(self : GraphconnectpathsNode, i : Int, v : Double) -> GraphconnectpathsNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_node_sum(s : GraphconnectpathsNode) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsNode::sum(self : GraphconnectpathsNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_node_mean(s : GraphconnectpathsNode) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsNode::mean(self : GraphconnectpathsNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_node_scale(s : GraphconnectpathsNode, f : Double) -> GraphconnectpathsNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsNode::scale(self : GraphconnectpathsNode, f : Double) -> GraphconnectpathsNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_node_add(a : GraphconnectpathsNode, b : GraphconnectpathsNode) -> GraphconnectpathsNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsNode::add(self : GraphconnectpathsNode, other : GraphconnectpathsNode) -> GraphconnectpathsNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_node_copy(s : GraphconnectpathsNode) -> GraphconnectpathsNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsNode::copy(self : GraphconnectpathsNode) -> GraphconnectpathsNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_node_fill(s : GraphconnectpathsNode, v : Double) -> GraphconnectpathsNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsNode::fill(self : GraphconnectpathsNode, v : Double) -> GraphconnectpathsNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_node_min(s : GraphconnectpathsNode) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsNode::min(self : GraphconnectpathsNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_node_max(s : GraphconnectpathsNode) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsNode::max(self : GraphconnectpathsNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_node_to_string(s : GraphconnectpathsNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsNode::to_string(self : GraphconnectpathsNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsEdge {
@@ -555,45 +555,45 @@ pub fn graph_connect_paths_edge_make(size : Int) -> GraphconnectpathsEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_edge_len(s : GraphconnectpathsEdge) -> Int { s.size }
+pub fn GraphconnectpathsEdge::len(self : GraphconnectpathsEdge) -> Int { self.size }
 
-pub fn graph_connect_paths_edge_get(s : GraphconnectpathsEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsEdge::get(self : GraphconnectpathsEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_edge_set(s : GraphconnectpathsEdge, i : Int, v : Double) -> GraphconnectpathsEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsEdge::set(self : GraphconnectpathsEdge, i : Int, v : Double) -> GraphconnectpathsEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_edge_sum(s : GraphconnectpathsEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsEdge::sum(self : GraphconnectpathsEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_edge_mean(s : GraphconnectpathsEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsEdge::mean(self : GraphconnectpathsEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_edge_scale(s : GraphconnectpathsEdge, f : Double) -> GraphconnectpathsEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsEdge::scale(self : GraphconnectpathsEdge, f : Double) -> GraphconnectpathsEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_edge_add(a : GraphconnectpathsEdge, b : GraphconnectpathsEdge) -> GraphconnectpathsEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsEdge::add(self : GraphconnectpathsEdge, other : GraphconnectpathsEdge) -> GraphconnectpathsEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_edge_copy(s : GraphconnectpathsEdge) -> GraphconnectpathsEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsEdge::copy(self : GraphconnectpathsEdge) -> GraphconnectpathsEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_edge_fill(s : GraphconnectpathsEdge, v : Double) -> GraphconnectpathsEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsEdge::fill(self : GraphconnectpathsEdge, v : Double) -> GraphconnectpathsEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_edge_min(s : GraphconnectpathsEdge) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsEdge::min(self : GraphconnectpathsEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_edge_max(s : GraphconnectpathsEdge) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsEdge::max(self : GraphconnectpathsEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_edge_to_string(s : GraphconnectpathsEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsEdge::to_string(self : GraphconnectpathsEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsPath {
@@ -606,45 +606,45 @@ pub fn graph_connect_paths_path_make(size : Int) -> GraphconnectpathsPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_path_len(s : GraphconnectpathsPath) -> Int { s.size }
+pub fn GraphconnectpathsPath::len(self : GraphconnectpathsPath) -> Int { self.size }
 
-pub fn graph_connect_paths_path_get(s : GraphconnectpathsPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsPath::get(self : GraphconnectpathsPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_path_set(s : GraphconnectpathsPath, i : Int, v : Double) -> GraphconnectpathsPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsPath::set(self : GraphconnectpathsPath, i : Int, v : Double) -> GraphconnectpathsPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_path_sum(s : GraphconnectpathsPath) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsPath::sum(self : GraphconnectpathsPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_path_mean(s : GraphconnectpathsPath) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsPath::mean(self : GraphconnectpathsPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_path_scale(s : GraphconnectpathsPath, f : Double) -> GraphconnectpathsPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsPath::scale(self : GraphconnectpathsPath, f : Double) -> GraphconnectpathsPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_path_add(a : GraphconnectpathsPath, b : GraphconnectpathsPath) -> GraphconnectpathsPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsPath::add(self : GraphconnectpathsPath, other : GraphconnectpathsPath) -> GraphconnectpathsPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_path_copy(s : GraphconnectpathsPath) -> GraphconnectpathsPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsPath::copy(self : GraphconnectpathsPath) -> GraphconnectpathsPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_path_fill(s : GraphconnectpathsPath, v : Double) -> GraphconnectpathsPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsPath::fill(self : GraphconnectpathsPath, v : Double) -> GraphconnectpathsPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_path_min(s : GraphconnectpathsPath) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsPath::min(self : GraphconnectpathsPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_path_max(s : GraphconnectpathsPath) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsPath::max(self : GraphconnectpathsPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_path_to_string(s : GraphconnectpathsPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsPath::to_string(self : GraphconnectpathsPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsCluster {
@@ -657,45 +657,45 @@ pub fn graph_connect_paths_cluster_make(size : Int) -> GraphconnectpathsCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_cluster_len(s : GraphconnectpathsCluster) -> Int { s.size }
+pub fn GraphconnectpathsCluster::len(self : GraphconnectpathsCluster) -> Int { self.size }
 
-pub fn graph_connect_paths_cluster_get(s : GraphconnectpathsCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsCluster::get(self : GraphconnectpathsCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_cluster_set(s : GraphconnectpathsCluster, i : Int, v : Double) -> GraphconnectpathsCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCluster::set(self : GraphconnectpathsCluster, i : Int, v : Double) -> GraphconnectpathsCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cluster_sum(s : GraphconnectpathsCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsCluster::sum(self : GraphconnectpathsCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_cluster_mean(s : GraphconnectpathsCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsCluster::mean(self : GraphconnectpathsCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_cluster_scale(s : GraphconnectpathsCluster, f : Double) -> GraphconnectpathsCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCluster::scale(self : GraphconnectpathsCluster, f : Double) -> GraphconnectpathsCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cluster_add(a : GraphconnectpathsCluster, b : GraphconnectpathsCluster) -> GraphconnectpathsCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsCluster::add(self : GraphconnectpathsCluster, other : GraphconnectpathsCluster) -> GraphconnectpathsCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cluster_copy(s : GraphconnectpathsCluster) -> GraphconnectpathsCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCluster::copy(self : GraphconnectpathsCluster) -> GraphconnectpathsCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cluster_fill(s : GraphconnectpathsCluster, v : Double) -> GraphconnectpathsCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCluster::fill(self : GraphconnectpathsCluster, v : Double) -> GraphconnectpathsCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cluster_min(s : GraphconnectpathsCluster) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsCluster::min(self : GraphconnectpathsCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_cluster_max(s : GraphconnectpathsCluster) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsCluster::max(self : GraphconnectpathsCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_cluster_to_string(s : GraphconnectpathsCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsCluster::to_string(self : GraphconnectpathsCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsModel {
@@ -708,45 +708,45 @@ pub fn graph_connect_paths_model_make(size : Int) -> GraphconnectpathsModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_model_len(s : GraphconnectpathsModel) -> Int { s.size }
+pub fn GraphconnectpathsModel::len(self : GraphconnectpathsModel) -> Int { self.size }
 
-pub fn graph_connect_paths_model_get(s : GraphconnectpathsModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsModel::get(self : GraphconnectpathsModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_model_set(s : GraphconnectpathsModel, i : Int, v : Double) -> GraphconnectpathsModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsModel::set(self : GraphconnectpathsModel, i : Int, v : Double) -> GraphconnectpathsModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_model_sum(s : GraphconnectpathsModel) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsModel::sum(self : GraphconnectpathsModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_model_mean(s : GraphconnectpathsModel) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsModel::mean(self : GraphconnectpathsModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_model_scale(s : GraphconnectpathsModel, f : Double) -> GraphconnectpathsModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsModel::scale(self : GraphconnectpathsModel, f : Double) -> GraphconnectpathsModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_model_add(a : GraphconnectpathsModel, b : GraphconnectpathsModel) -> GraphconnectpathsModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsModel::add(self : GraphconnectpathsModel, other : GraphconnectpathsModel) -> GraphconnectpathsModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_model_copy(s : GraphconnectpathsModel) -> GraphconnectpathsModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsModel::copy(self : GraphconnectpathsModel) -> GraphconnectpathsModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_model_fill(s : GraphconnectpathsModel, v : Double) -> GraphconnectpathsModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsModel::fill(self : GraphconnectpathsModel, v : Double) -> GraphconnectpathsModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_model_min(s : GraphconnectpathsModel) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsModel::min(self : GraphconnectpathsModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_model_max(s : GraphconnectpathsModel) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsModel::max(self : GraphconnectpathsModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_model_to_string(s : GraphconnectpathsModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsModel::to_string(self : GraphconnectpathsModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsLayer {
@@ -759,45 +759,45 @@ pub fn graph_connect_paths_layer_make(size : Int) -> GraphconnectpathsLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_layer_len(s : GraphconnectpathsLayer) -> Int { s.size }
+pub fn GraphconnectpathsLayer::len(self : GraphconnectpathsLayer) -> Int { self.size }
 
-pub fn graph_connect_paths_layer_get(s : GraphconnectpathsLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsLayer::get(self : GraphconnectpathsLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_layer_set(s : GraphconnectpathsLayer, i : Int, v : Double) -> GraphconnectpathsLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsLayer::set(self : GraphconnectpathsLayer, i : Int, v : Double) -> GraphconnectpathsLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_layer_sum(s : GraphconnectpathsLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsLayer::sum(self : GraphconnectpathsLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_layer_mean(s : GraphconnectpathsLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsLayer::mean(self : GraphconnectpathsLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_layer_scale(s : GraphconnectpathsLayer, f : Double) -> GraphconnectpathsLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsLayer::scale(self : GraphconnectpathsLayer, f : Double) -> GraphconnectpathsLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_layer_add(a : GraphconnectpathsLayer, b : GraphconnectpathsLayer) -> GraphconnectpathsLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsLayer::add(self : GraphconnectpathsLayer, other : GraphconnectpathsLayer) -> GraphconnectpathsLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_layer_copy(s : GraphconnectpathsLayer) -> GraphconnectpathsLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsLayer::copy(self : GraphconnectpathsLayer) -> GraphconnectpathsLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_layer_fill(s : GraphconnectpathsLayer, v : Double) -> GraphconnectpathsLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsLayer::fill(self : GraphconnectpathsLayer, v : Double) -> GraphconnectpathsLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_layer_min(s : GraphconnectpathsLayer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsLayer::min(self : GraphconnectpathsLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_layer_max(s : GraphconnectpathsLayer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsLayer::max(self : GraphconnectpathsLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_layer_to_string(s : GraphconnectpathsLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsLayer::to_string(self : GraphconnectpathsLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsBuffer {
@@ -810,45 +810,45 @@ pub fn graph_connect_paths_buffer_make(size : Int) -> GraphconnectpathsBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_buffer_len(s : GraphconnectpathsBuffer) -> Int { s.size }
+pub fn GraphconnectpathsBuffer::len(self : GraphconnectpathsBuffer) -> Int { self.size }
 
-pub fn graph_connect_paths_buffer_get(s : GraphconnectpathsBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsBuffer::get(self : GraphconnectpathsBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_buffer_set(s : GraphconnectpathsBuffer, i : Int, v : Double) -> GraphconnectpathsBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsBuffer::set(self : GraphconnectpathsBuffer, i : Int, v : Double) -> GraphconnectpathsBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_buffer_sum(s : GraphconnectpathsBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsBuffer::sum(self : GraphconnectpathsBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_buffer_mean(s : GraphconnectpathsBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsBuffer::mean(self : GraphconnectpathsBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_buffer_scale(s : GraphconnectpathsBuffer, f : Double) -> GraphconnectpathsBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsBuffer::scale(self : GraphconnectpathsBuffer, f : Double) -> GraphconnectpathsBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_buffer_add(a : GraphconnectpathsBuffer, b : GraphconnectpathsBuffer) -> GraphconnectpathsBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsBuffer::add(self : GraphconnectpathsBuffer, other : GraphconnectpathsBuffer) -> GraphconnectpathsBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_buffer_copy(s : GraphconnectpathsBuffer) -> GraphconnectpathsBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsBuffer::copy(self : GraphconnectpathsBuffer) -> GraphconnectpathsBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_buffer_fill(s : GraphconnectpathsBuffer, v : Double) -> GraphconnectpathsBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsBuffer::fill(self : GraphconnectpathsBuffer, v : Double) -> GraphconnectpathsBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_buffer_min(s : GraphconnectpathsBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsBuffer::min(self : GraphconnectpathsBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_buffer_max(s : GraphconnectpathsBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsBuffer::max(self : GraphconnectpathsBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_buffer_to_string(s : GraphconnectpathsBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsBuffer::to_string(self : GraphconnectpathsBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsCursor {
@@ -861,45 +861,45 @@ pub fn graph_connect_paths_cursor_make(size : Int) -> GraphconnectpathsCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_cursor_len(s : GraphconnectpathsCursor) -> Int { s.size }
+pub fn GraphconnectpathsCursor::len(self : GraphconnectpathsCursor) -> Int { self.size }
 
-pub fn graph_connect_paths_cursor_get(s : GraphconnectpathsCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsCursor::get(self : GraphconnectpathsCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_cursor_set(s : GraphconnectpathsCursor, i : Int, v : Double) -> GraphconnectpathsCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCursor::set(self : GraphconnectpathsCursor, i : Int, v : Double) -> GraphconnectpathsCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cursor_sum(s : GraphconnectpathsCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsCursor::sum(self : GraphconnectpathsCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_cursor_mean(s : GraphconnectpathsCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsCursor::mean(self : GraphconnectpathsCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_cursor_scale(s : GraphconnectpathsCursor, f : Double) -> GraphconnectpathsCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCursor::scale(self : GraphconnectpathsCursor, f : Double) -> GraphconnectpathsCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cursor_add(a : GraphconnectpathsCursor, b : GraphconnectpathsCursor) -> GraphconnectpathsCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsCursor::add(self : GraphconnectpathsCursor, other : GraphconnectpathsCursor) -> GraphconnectpathsCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cursor_copy(s : GraphconnectpathsCursor) -> GraphconnectpathsCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCursor::copy(self : GraphconnectpathsCursor) -> GraphconnectpathsCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cursor_fill(s : GraphconnectpathsCursor, v : Double) -> GraphconnectpathsCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsCursor::fill(self : GraphconnectpathsCursor, v : Double) -> GraphconnectpathsCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_cursor_min(s : GraphconnectpathsCursor) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsCursor::min(self : GraphconnectpathsCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_cursor_max(s : GraphconnectpathsCursor) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsCursor::max(self : GraphconnectpathsCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_cursor_to_string(s : GraphconnectpathsCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsCursor::to_string(self : GraphconnectpathsCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsView {
@@ -912,45 +912,45 @@ pub fn graph_connect_paths_view_make(size : Int) -> GraphconnectpathsView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_view_len(s : GraphconnectpathsView) -> Int { s.size }
+pub fn GraphconnectpathsView::len(self : GraphconnectpathsView) -> Int { self.size }
 
-pub fn graph_connect_paths_view_get(s : GraphconnectpathsView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsView::get(self : GraphconnectpathsView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_view_set(s : GraphconnectpathsView, i : Int, v : Double) -> GraphconnectpathsView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsView::set(self : GraphconnectpathsView, i : Int, v : Double) -> GraphconnectpathsView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_view_sum(s : GraphconnectpathsView) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsView::sum(self : GraphconnectpathsView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_view_mean(s : GraphconnectpathsView) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsView::mean(self : GraphconnectpathsView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_view_scale(s : GraphconnectpathsView, f : Double) -> GraphconnectpathsView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsView::scale(self : GraphconnectpathsView, f : Double) -> GraphconnectpathsView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_view_add(a : GraphconnectpathsView, b : GraphconnectpathsView) -> GraphconnectpathsView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsView::add(self : GraphconnectpathsView, other : GraphconnectpathsView) -> GraphconnectpathsView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_view_copy(s : GraphconnectpathsView) -> GraphconnectpathsView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsView::copy(self : GraphconnectpathsView) -> GraphconnectpathsView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_view_fill(s : GraphconnectpathsView, v : Double) -> GraphconnectpathsView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsView::fill(self : GraphconnectpathsView, v : Double) -> GraphconnectpathsView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_view_min(s : GraphconnectpathsView) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsView::min(self : GraphconnectpathsView) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_view_max(s : GraphconnectpathsView) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsView::max(self : GraphconnectpathsView) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_view_to_string(s : GraphconnectpathsView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsView::to_string(self : GraphconnectpathsView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsRange {
@@ -963,45 +963,45 @@ pub fn graph_connect_paths_range_make(size : Int) -> GraphconnectpathsRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_range_len(s : GraphconnectpathsRange) -> Int { s.size }
+pub fn GraphconnectpathsRange::len(self : GraphconnectpathsRange) -> Int { self.size }
 
-pub fn graph_connect_paths_range_get(s : GraphconnectpathsRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsRange::get(self : GraphconnectpathsRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_range_set(s : GraphconnectpathsRange, i : Int, v : Double) -> GraphconnectpathsRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsRange::set(self : GraphconnectpathsRange, i : Int, v : Double) -> GraphconnectpathsRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_range_sum(s : GraphconnectpathsRange) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsRange::sum(self : GraphconnectpathsRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_range_mean(s : GraphconnectpathsRange) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsRange::mean(self : GraphconnectpathsRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_range_scale(s : GraphconnectpathsRange, f : Double) -> GraphconnectpathsRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsRange::scale(self : GraphconnectpathsRange, f : Double) -> GraphconnectpathsRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_range_add(a : GraphconnectpathsRange, b : GraphconnectpathsRange) -> GraphconnectpathsRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsRange::add(self : GraphconnectpathsRange, other : GraphconnectpathsRange) -> GraphconnectpathsRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_range_copy(s : GraphconnectpathsRange) -> GraphconnectpathsRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsRange::copy(self : GraphconnectpathsRange) -> GraphconnectpathsRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_range_fill(s : GraphconnectpathsRange, v : Double) -> GraphconnectpathsRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsRange::fill(self : GraphconnectpathsRange, v : Double) -> GraphconnectpathsRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_range_min(s : GraphconnectpathsRange) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsRange::min(self : GraphconnectpathsRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_range_max(s : GraphconnectpathsRange) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsRange::max(self : GraphconnectpathsRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_range_to_string(s : GraphconnectpathsRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsRange::to_string(self : GraphconnectpathsRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphconnectpathsSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_connect_paths_slice_make(size : Int) -> GraphconnectpathsSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_connect_paths_slice_len(s : GraphconnectpathsSlice) -> Int { s.size }
+pub fn GraphconnectpathsSlice::len(self : GraphconnectpathsSlice) -> Int { self.size }
 
-pub fn graph_connect_paths_slice_get(s : GraphconnectpathsSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphconnectpathsSlice::get(self : GraphconnectpathsSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_connect_paths_slice_set(s : GraphconnectpathsSlice, i : Int, v : Double) -> GraphconnectpathsSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphconnectpathsSlice::set(self : GraphconnectpathsSlice, i : Int, v : Double) -> GraphconnectpathsSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_slice_sum(s : GraphconnectpathsSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphconnectpathsSlice::sum(self : GraphconnectpathsSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_connect_paths_slice_mean(s : GraphconnectpathsSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphconnectpathsSlice::mean(self : GraphconnectpathsSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_connect_paths_slice_scale(s : GraphconnectpathsSlice, f : Double) -> GraphconnectpathsSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsSlice::scale(self : GraphconnectpathsSlice, f : Double) -> GraphconnectpathsSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_slice_add(a : GraphconnectpathsSlice, b : GraphconnectpathsSlice) -> GraphconnectpathsSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphconnectpathsSlice::add(self : GraphconnectpathsSlice, other : GraphconnectpathsSlice) -> GraphconnectpathsSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_connect_paths_slice_copy(s : GraphconnectpathsSlice) -> GraphconnectpathsSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsSlice::copy(self : GraphconnectpathsSlice) -> GraphconnectpathsSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_slice_fill(s : GraphconnectpathsSlice, v : Double) -> GraphconnectpathsSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphconnectpathsSlice::fill(self : GraphconnectpathsSlice, v : Double) -> GraphconnectpathsSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_connect_paths_slice_min(s : GraphconnectpathsSlice) -> Double { @_common.min(s.data) }
+pub fn GraphconnectpathsSlice::min(self : GraphconnectpathsSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_connect_paths_slice_max(s : GraphconnectpathsSlice) -> Double { @_common.max(s.data) }
+pub fn GraphconnectpathsSlice::max(self : GraphconnectpathsSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_connect_paths_slice_to_string(s : GraphconnectpathsSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphconnectpathsSlice::to_string(self : GraphconnectpathsSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn stats_test_normality_frame_make(size : Int) -> StatstestnormalityFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_frame_len(s : StatstestnormalityFrame) -> Int { s.size }
+pub fn StatstestnormalityFrame::len(self : StatstestnormalityFrame) -> Int { self.size }
 
-pub fn stats_test_normality_frame_get(s : StatstestnormalityFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityFrame::get(self : StatstestnormalityFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_frame_set(s : StatstestnormalityFrame, i : Int, v : Double) -> StatstestnormalityFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityFrame::set(self : StatstestnormalityFrame, i : Int, v : Double) -> StatstestnormalityFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_frame_sum(s : StatstestnormalityFrame) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityFrame::sum(self : StatstestnormalityFrame) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_frame_mean(s : StatstestnormalityFrame) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityFrame::mean(self : StatstestnormalityFrame) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_frame_scale(s : StatstestnormalityFrame, f : Double) -> StatstestnormalityFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityFrame::scale(self : StatstestnormalityFrame, f : Double) -> StatstestnormalityFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_frame_add(a : StatstestnormalityFrame, b : StatstestnormalityFrame) -> StatstestnormalityFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityFrame::add(self : StatstestnormalityFrame, other : StatstestnormalityFrame) -> StatstestnormalityFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_frame_copy(s : StatstestnormalityFrame) -> StatstestnormalityFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityFrame::copy(self : StatstestnormalityFrame) -> StatstestnormalityFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_frame_fill(s : StatstestnormalityFrame, v : Double) -> StatstestnormalityFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityFrame::fill(self : StatstestnormalityFrame, v : Double) -> StatstestnormalityFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_frame_min(s : StatstestnormalityFrame) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityFrame::min(self : StatstestnormalityFrame) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_frame_max(s : StatstestnormalityFrame) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityFrame::max(self : StatstestnormalityFrame) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_frame_to_string(s : StatstestnormalityFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityFrame::to_string(self : StatstestnormalityFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityTable {
@@ -402,45 +402,45 @@ pub fn stats_test_normality_table_make(size : Int) -> StatstestnormalityTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_table_len(s : StatstestnormalityTable) -> Int { s.size }
+pub fn StatstestnormalityTable::len(self : StatstestnormalityTable) -> Int { self.size }
 
-pub fn stats_test_normality_table_get(s : StatstestnormalityTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityTable::get(self : StatstestnormalityTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_table_set(s : StatstestnormalityTable, i : Int, v : Double) -> StatstestnormalityTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityTable::set(self : StatstestnormalityTable, i : Int, v : Double) -> StatstestnormalityTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_table_sum(s : StatstestnormalityTable) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityTable::sum(self : StatstestnormalityTable) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_table_mean(s : StatstestnormalityTable) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityTable::mean(self : StatstestnormalityTable) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_table_scale(s : StatstestnormalityTable, f : Double) -> StatstestnormalityTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityTable::scale(self : StatstestnormalityTable, f : Double) -> StatstestnormalityTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_table_add(a : StatstestnormalityTable, b : StatstestnormalityTable) -> StatstestnormalityTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityTable::add(self : StatstestnormalityTable, other : StatstestnormalityTable) -> StatstestnormalityTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_table_copy(s : StatstestnormalityTable) -> StatstestnormalityTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityTable::copy(self : StatstestnormalityTable) -> StatstestnormalityTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_table_fill(s : StatstestnormalityTable, v : Double) -> StatstestnormalityTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityTable::fill(self : StatstestnormalityTable, v : Double) -> StatstestnormalityTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_table_min(s : StatstestnormalityTable) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityTable::min(self : StatstestnormalityTable) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_table_max(s : StatstestnormalityTable) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityTable::max(self : StatstestnormalityTable) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_table_to_string(s : StatstestnormalityTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityTable::to_string(self : StatstestnormalityTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityGraphN {
@@ -453,45 +453,45 @@ pub fn stats_test_normality_graphn_make(size : Int) -> StatstestnormalityGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_graphn_len(s : StatstestnormalityGraphN) -> Int { s.size }
+pub fn StatstestnormalityGraphN::len(self : StatstestnormalityGraphN) -> Int { self.size }
 
-pub fn stats_test_normality_graphn_get(s : StatstestnormalityGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityGraphN::get(self : StatstestnormalityGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_graphn_set(s : StatstestnormalityGraphN, i : Int, v : Double) -> StatstestnormalityGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityGraphN::set(self : StatstestnormalityGraphN, i : Int, v : Double) -> StatstestnormalityGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_graphn_sum(s : StatstestnormalityGraphN) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityGraphN::sum(self : StatstestnormalityGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_graphn_mean(s : StatstestnormalityGraphN) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityGraphN::mean(self : StatstestnormalityGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_graphn_scale(s : StatstestnormalityGraphN, f : Double) -> StatstestnormalityGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityGraphN::scale(self : StatstestnormalityGraphN, f : Double) -> StatstestnormalityGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_graphn_add(a : StatstestnormalityGraphN, b : StatstestnormalityGraphN) -> StatstestnormalityGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityGraphN::add(self : StatstestnormalityGraphN, other : StatstestnormalityGraphN) -> StatstestnormalityGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_graphn_copy(s : StatstestnormalityGraphN) -> StatstestnormalityGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityGraphN::copy(self : StatstestnormalityGraphN) -> StatstestnormalityGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_graphn_fill(s : StatstestnormalityGraphN, v : Double) -> StatstestnormalityGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityGraphN::fill(self : StatstestnormalityGraphN, v : Double) -> StatstestnormalityGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_graphn_min(s : StatstestnormalityGraphN) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityGraphN::min(self : StatstestnormalityGraphN) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_graphn_max(s : StatstestnormalityGraphN) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityGraphN::max(self : StatstestnormalityGraphN) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_graphn_to_string(s : StatstestnormalityGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityGraphN::to_string(self : StatstestnormalityGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityNode {
@@ -504,45 +504,45 @@ pub fn stats_test_normality_node_make(size : Int) -> StatstestnormalityNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_node_len(s : StatstestnormalityNode) -> Int { s.size }
+pub fn StatstestnormalityNode::len(self : StatstestnormalityNode) -> Int { self.size }
 
-pub fn stats_test_normality_node_get(s : StatstestnormalityNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityNode::get(self : StatstestnormalityNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_node_set(s : StatstestnormalityNode, i : Int, v : Double) -> StatstestnormalityNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityNode::set(self : StatstestnormalityNode, i : Int, v : Double) -> StatstestnormalityNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_node_sum(s : StatstestnormalityNode) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityNode::sum(self : StatstestnormalityNode) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_node_mean(s : StatstestnormalityNode) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityNode::mean(self : StatstestnormalityNode) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_node_scale(s : StatstestnormalityNode, f : Double) -> StatstestnormalityNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityNode::scale(self : StatstestnormalityNode, f : Double) -> StatstestnormalityNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_node_add(a : StatstestnormalityNode, b : StatstestnormalityNode) -> StatstestnormalityNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityNode::add(self : StatstestnormalityNode, other : StatstestnormalityNode) -> StatstestnormalityNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_node_copy(s : StatstestnormalityNode) -> StatstestnormalityNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityNode::copy(self : StatstestnormalityNode) -> StatstestnormalityNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_node_fill(s : StatstestnormalityNode, v : Double) -> StatstestnormalityNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityNode::fill(self : StatstestnormalityNode, v : Double) -> StatstestnormalityNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_node_min(s : StatstestnormalityNode) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityNode::min(self : StatstestnormalityNode) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_node_max(s : StatstestnormalityNode) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityNode::max(self : StatstestnormalityNode) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_node_to_string(s : StatstestnormalityNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityNode::to_string(self : StatstestnormalityNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityEdge {
@@ -555,45 +555,45 @@ pub fn stats_test_normality_edge_make(size : Int) -> StatstestnormalityEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_edge_len(s : StatstestnormalityEdge) -> Int { s.size }
+pub fn StatstestnormalityEdge::len(self : StatstestnormalityEdge) -> Int { self.size }
 
-pub fn stats_test_normality_edge_get(s : StatstestnormalityEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityEdge::get(self : StatstestnormalityEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_edge_set(s : StatstestnormalityEdge, i : Int, v : Double) -> StatstestnormalityEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityEdge::set(self : StatstestnormalityEdge, i : Int, v : Double) -> StatstestnormalityEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_edge_sum(s : StatstestnormalityEdge) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityEdge::sum(self : StatstestnormalityEdge) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_edge_mean(s : StatstestnormalityEdge) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityEdge::mean(self : StatstestnormalityEdge) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_edge_scale(s : StatstestnormalityEdge, f : Double) -> StatstestnormalityEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityEdge::scale(self : StatstestnormalityEdge, f : Double) -> StatstestnormalityEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_edge_add(a : StatstestnormalityEdge, b : StatstestnormalityEdge) -> StatstestnormalityEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityEdge::add(self : StatstestnormalityEdge, other : StatstestnormalityEdge) -> StatstestnormalityEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_edge_copy(s : StatstestnormalityEdge) -> StatstestnormalityEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityEdge::copy(self : StatstestnormalityEdge) -> StatstestnormalityEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_edge_fill(s : StatstestnormalityEdge, v : Double) -> StatstestnormalityEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityEdge::fill(self : StatstestnormalityEdge, v : Double) -> StatstestnormalityEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_edge_min(s : StatstestnormalityEdge) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityEdge::min(self : StatstestnormalityEdge) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_edge_max(s : StatstestnormalityEdge) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityEdge::max(self : StatstestnormalityEdge) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_edge_to_string(s : StatstestnormalityEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityEdge::to_string(self : StatstestnormalityEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityPath {
@@ -606,45 +606,45 @@ pub fn stats_test_normality_path_make(size : Int) -> StatstestnormalityPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_path_len(s : StatstestnormalityPath) -> Int { s.size }
+pub fn StatstestnormalityPath::len(self : StatstestnormalityPath) -> Int { self.size }
 
-pub fn stats_test_normality_path_get(s : StatstestnormalityPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityPath::get(self : StatstestnormalityPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_path_set(s : StatstestnormalityPath, i : Int, v : Double) -> StatstestnormalityPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityPath::set(self : StatstestnormalityPath, i : Int, v : Double) -> StatstestnormalityPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_path_sum(s : StatstestnormalityPath) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityPath::sum(self : StatstestnormalityPath) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_path_mean(s : StatstestnormalityPath) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityPath::mean(self : StatstestnormalityPath) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_path_scale(s : StatstestnormalityPath, f : Double) -> StatstestnormalityPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityPath::scale(self : StatstestnormalityPath, f : Double) -> StatstestnormalityPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_path_add(a : StatstestnormalityPath, b : StatstestnormalityPath) -> StatstestnormalityPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityPath::add(self : StatstestnormalityPath, other : StatstestnormalityPath) -> StatstestnormalityPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_path_copy(s : StatstestnormalityPath) -> StatstestnormalityPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityPath::copy(self : StatstestnormalityPath) -> StatstestnormalityPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_path_fill(s : StatstestnormalityPath, v : Double) -> StatstestnormalityPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityPath::fill(self : StatstestnormalityPath, v : Double) -> StatstestnormalityPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_path_min(s : StatstestnormalityPath) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityPath::min(self : StatstestnormalityPath) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_path_max(s : StatstestnormalityPath) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityPath::max(self : StatstestnormalityPath) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_path_to_string(s : StatstestnormalityPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityPath::to_string(self : StatstestnormalityPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityCluster {
@@ -657,45 +657,45 @@ pub fn stats_test_normality_cluster_make(size : Int) -> StatstestnormalityCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_cluster_len(s : StatstestnormalityCluster) -> Int { s.size }
+pub fn StatstestnormalityCluster::len(self : StatstestnormalityCluster) -> Int { self.size }
 
-pub fn stats_test_normality_cluster_get(s : StatstestnormalityCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityCluster::get(self : StatstestnormalityCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_cluster_set(s : StatstestnormalityCluster, i : Int, v : Double) -> StatstestnormalityCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityCluster::set(self : StatstestnormalityCluster, i : Int, v : Double) -> StatstestnormalityCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cluster_sum(s : StatstestnormalityCluster) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityCluster::sum(self : StatstestnormalityCluster) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_cluster_mean(s : StatstestnormalityCluster) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityCluster::mean(self : StatstestnormalityCluster) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_cluster_scale(s : StatstestnormalityCluster, f : Double) -> StatstestnormalityCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityCluster::scale(self : StatstestnormalityCluster, f : Double) -> StatstestnormalityCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cluster_add(a : StatstestnormalityCluster, b : StatstestnormalityCluster) -> StatstestnormalityCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityCluster::add(self : StatstestnormalityCluster, other : StatstestnormalityCluster) -> StatstestnormalityCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_cluster_copy(s : StatstestnormalityCluster) -> StatstestnormalityCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityCluster::copy(self : StatstestnormalityCluster) -> StatstestnormalityCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cluster_fill(s : StatstestnormalityCluster, v : Double) -> StatstestnormalityCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityCluster::fill(self : StatstestnormalityCluster, v : Double) -> StatstestnormalityCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cluster_min(s : StatstestnormalityCluster) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityCluster::min(self : StatstestnormalityCluster) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_cluster_max(s : StatstestnormalityCluster) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityCluster::max(self : StatstestnormalityCluster) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_cluster_to_string(s : StatstestnormalityCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityCluster::to_string(self : StatstestnormalityCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityModel {
@@ -708,45 +708,45 @@ pub fn stats_test_normality_model_make(size : Int) -> StatstestnormalityModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_model_len(s : StatstestnormalityModel) -> Int { s.size }
+pub fn StatstestnormalityModel::len(self : StatstestnormalityModel) -> Int { self.size }
 
-pub fn stats_test_normality_model_get(s : StatstestnormalityModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityModel::get(self : StatstestnormalityModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_model_set(s : StatstestnormalityModel, i : Int, v : Double) -> StatstestnormalityModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityModel::set(self : StatstestnormalityModel, i : Int, v : Double) -> StatstestnormalityModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_model_sum(s : StatstestnormalityModel) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityModel::sum(self : StatstestnormalityModel) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_model_mean(s : StatstestnormalityModel) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityModel::mean(self : StatstestnormalityModel) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_model_scale(s : StatstestnormalityModel, f : Double) -> StatstestnormalityModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityModel::scale(self : StatstestnormalityModel, f : Double) -> StatstestnormalityModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_model_add(a : StatstestnormalityModel, b : StatstestnormalityModel) -> StatstestnormalityModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityModel::add(self : StatstestnormalityModel, other : StatstestnormalityModel) -> StatstestnormalityModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_model_copy(s : StatstestnormalityModel) -> StatstestnormalityModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityModel::copy(self : StatstestnormalityModel) -> StatstestnormalityModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_model_fill(s : StatstestnormalityModel, v : Double) -> StatstestnormalityModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityModel::fill(self : StatstestnormalityModel, v : Double) -> StatstestnormalityModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_model_min(s : StatstestnormalityModel) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityModel::min(self : StatstestnormalityModel) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_model_max(s : StatstestnormalityModel) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityModel::max(self : StatstestnormalityModel) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_model_to_string(s : StatstestnormalityModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityModel::to_string(self : StatstestnormalityModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityLayer {
@@ -759,45 +759,45 @@ pub fn stats_test_normality_layer_make(size : Int) -> StatstestnormalityLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_layer_len(s : StatstestnormalityLayer) -> Int { s.size }
+pub fn StatstestnormalityLayer::len(self : StatstestnormalityLayer) -> Int { self.size }
 
-pub fn stats_test_normality_layer_get(s : StatstestnormalityLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityLayer::get(self : StatstestnormalityLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_layer_set(s : StatstestnormalityLayer, i : Int, v : Double) -> StatstestnormalityLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityLayer::set(self : StatstestnormalityLayer, i : Int, v : Double) -> StatstestnormalityLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_layer_sum(s : StatstestnormalityLayer) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityLayer::sum(self : StatstestnormalityLayer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_layer_mean(s : StatstestnormalityLayer) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityLayer::mean(self : StatstestnormalityLayer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_layer_scale(s : StatstestnormalityLayer, f : Double) -> StatstestnormalityLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityLayer::scale(self : StatstestnormalityLayer, f : Double) -> StatstestnormalityLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_layer_add(a : StatstestnormalityLayer, b : StatstestnormalityLayer) -> StatstestnormalityLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityLayer::add(self : StatstestnormalityLayer, other : StatstestnormalityLayer) -> StatstestnormalityLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_layer_copy(s : StatstestnormalityLayer) -> StatstestnormalityLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityLayer::copy(self : StatstestnormalityLayer) -> StatstestnormalityLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_layer_fill(s : StatstestnormalityLayer, v : Double) -> StatstestnormalityLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityLayer::fill(self : StatstestnormalityLayer, v : Double) -> StatstestnormalityLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_layer_min(s : StatstestnormalityLayer) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityLayer::min(self : StatstestnormalityLayer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_layer_max(s : StatstestnormalityLayer) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityLayer::max(self : StatstestnormalityLayer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_layer_to_string(s : StatstestnormalityLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityLayer::to_string(self : StatstestnormalityLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityBuffer {
@@ -810,45 +810,45 @@ pub fn stats_test_normality_buffer_make(size : Int) -> StatstestnormalityBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_buffer_len(s : StatstestnormalityBuffer) -> Int { s.size }
+pub fn StatstestnormalityBuffer::len(self : StatstestnormalityBuffer) -> Int { self.size }
 
-pub fn stats_test_normality_buffer_get(s : StatstestnormalityBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityBuffer::get(self : StatstestnormalityBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_buffer_set(s : StatstestnormalityBuffer, i : Int, v : Double) -> StatstestnormalityBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityBuffer::set(self : StatstestnormalityBuffer, i : Int, v : Double) -> StatstestnormalityBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_buffer_sum(s : StatstestnormalityBuffer) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityBuffer::sum(self : StatstestnormalityBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_buffer_mean(s : StatstestnormalityBuffer) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityBuffer::mean(self : StatstestnormalityBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_buffer_scale(s : StatstestnormalityBuffer, f : Double) -> StatstestnormalityBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityBuffer::scale(self : StatstestnormalityBuffer, f : Double) -> StatstestnormalityBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_buffer_add(a : StatstestnormalityBuffer, b : StatstestnormalityBuffer) -> StatstestnormalityBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityBuffer::add(self : StatstestnormalityBuffer, other : StatstestnormalityBuffer) -> StatstestnormalityBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_buffer_copy(s : StatstestnormalityBuffer) -> StatstestnormalityBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityBuffer::copy(self : StatstestnormalityBuffer) -> StatstestnormalityBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_buffer_fill(s : StatstestnormalityBuffer, v : Double) -> StatstestnormalityBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityBuffer::fill(self : StatstestnormalityBuffer, v : Double) -> StatstestnormalityBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_buffer_min(s : StatstestnormalityBuffer) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityBuffer::min(self : StatstestnormalityBuffer) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_buffer_max(s : StatstestnormalityBuffer) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityBuffer::max(self : StatstestnormalityBuffer) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_buffer_to_string(s : StatstestnormalityBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityBuffer::to_string(self : StatstestnormalityBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityCursor {
@@ -861,45 +861,45 @@ pub fn stats_test_normality_cursor_make(size : Int) -> StatstestnormalityCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_cursor_len(s : StatstestnormalityCursor) -> Int { s.size }
+pub fn StatstestnormalityCursor::len(self : StatstestnormalityCursor) -> Int { self.size }
 
-pub fn stats_test_normality_cursor_get(s : StatstestnormalityCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityCursor::get(self : StatstestnormalityCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_cursor_set(s : StatstestnormalityCursor, i : Int, v : Double) -> StatstestnormalityCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityCursor::set(self : StatstestnormalityCursor, i : Int, v : Double) -> StatstestnormalityCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cursor_sum(s : StatstestnormalityCursor) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityCursor::sum(self : StatstestnormalityCursor) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_cursor_mean(s : StatstestnormalityCursor) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityCursor::mean(self : StatstestnormalityCursor) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_cursor_scale(s : StatstestnormalityCursor, f : Double) -> StatstestnormalityCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityCursor::scale(self : StatstestnormalityCursor, f : Double) -> StatstestnormalityCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cursor_add(a : StatstestnormalityCursor, b : StatstestnormalityCursor) -> StatstestnormalityCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityCursor::add(self : StatstestnormalityCursor, other : StatstestnormalityCursor) -> StatstestnormalityCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_cursor_copy(s : StatstestnormalityCursor) -> StatstestnormalityCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityCursor::copy(self : StatstestnormalityCursor) -> StatstestnormalityCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cursor_fill(s : StatstestnormalityCursor, v : Double) -> StatstestnormalityCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityCursor::fill(self : StatstestnormalityCursor, v : Double) -> StatstestnormalityCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_cursor_min(s : StatstestnormalityCursor) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityCursor::min(self : StatstestnormalityCursor) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_cursor_max(s : StatstestnormalityCursor) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityCursor::max(self : StatstestnormalityCursor) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_cursor_to_string(s : StatstestnormalityCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityCursor::to_string(self : StatstestnormalityCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityView {
@@ -912,45 +912,45 @@ pub fn stats_test_normality_view_make(size : Int) -> StatstestnormalityView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_view_len(s : StatstestnormalityView) -> Int { s.size }
+pub fn StatstestnormalityView::len(self : StatstestnormalityView) -> Int { self.size }
 
-pub fn stats_test_normality_view_get(s : StatstestnormalityView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityView::get(self : StatstestnormalityView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_view_set(s : StatstestnormalityView, i : Int, v : Double) -> StatstestnormalityView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityView::set(self : StatstestnormalityView, i : Int, v : Double) -> StatstestnormalityView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_view_sum(s : StatstestnormalityView) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityView::sum(self : StatstestnormalityView) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_view_mean(s : StatstestnormalityView) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityView::mean(self : StatstestnormalityView) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_view_scale(s : StatstestnormalityView, f : Double) -> StatstestnormalityView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityView::scale(self : StatstestnormalityView, f : Double) -> StatstestnormalityView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_view_add(a : StatstestnormalityView, b : StatstestnormalityView) -> StatstestnormalityView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityView::add(self : StatstestnormalityView, other : StatstestnormalityView) -> StatstestnormalityView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_view_copy(s : StatstestnormalityView) -> StatstestnormalityView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityView::copy(self : StatstestnormalityView) -> StatstestnormalityView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_view_fill(s : StatstestnormalityView, v : Double) -> StatstestnormalityView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityView::fill(self : StatstestnormalityView, v : Double) -> StatstestnormalityView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_view_min(s : StatstestnormalityView) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityView::min(self : StatstestnormalityView) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_view_max(s : StatstestnormalityView) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityView::max(self : StatstestnormalityView) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_view_to_string(s : StatstestnormalityView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityView::to_string(self : StatstestnormalityView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalityRange {
@@ -963,45 +963,45 @@ pub fn stats_test_normality_range_make(size : Int) -> StatstestnormalityRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_range_len(s : StatstestnormalityRange) -> Int { s.size }
+pub fn StatstestnormalityRange::len(self : StatstestnormalityRange) -> Int { self.size }
 
-pub fn stats_test_normality_range_get(s : StatstestnormalityRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalityRange::get(self : StatstestnormalityRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_range_set(s : StatstestnormalityRange, i : Int, v : Double) -> StatstestnormalityRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalityRange::set(self : StatstestnormalityRange, i : Int, v : Double) -> StatstestnormalityRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_range_sum(s : StatstestnormalityRange) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalityRange::sum(self : StatstestnormalityRange) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_range_mean(s : StatstestnormalityRange) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalityRange::mean(self : StatstestnormalityRange) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_range_scale(s : StatstestnormalityRange, f : Double) -> StatstestnormalityRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalityRange::scale(self : StatstestnormalityRange, f : Double) -> StatstestnormalityRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_range_add(a : StatstestnormalityRange, b : StatstestnormalityRange) -> StatstestnormalityRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalityRange::add(self : StatstestnormalityRange, other : StatstestnormalityRange) -> StatstestnormalityRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_range_copy(s : StatstestnormalityRange) -> StatstestnormalityRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalityRange::copy(self : StatstestnormalityRange) -> StatstestnormalityRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_range_fill(s : StatstestnormalityRange, v : Double) -> StatstestnormalityRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalityRange::fill(self : StatstestnormalityRange, v : Double) -> StatstestnormalityRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_range_min(s : StatstestnormalityRange) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalityRange::min(self : StatstestnormalityRange) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_range_max(s : StatstestnormalityRange) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalityRange::max(self : StatstestnormalityRange) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_range_to_string(s : StatstestnormalityRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalityRange::to_string(self : StatstestnormalityRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct StatstestnormalitySlice {
@@ -1014,44 +1014,44 @@ pub fn stats_test_normality_slice_make(size : Int) -> StatstestnormalitySlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn stats_test_normality_slice_len(s : StatstestnormalitySlice) -> Int { s.size }
+pub fn StatstestnormalitySlice::len(self : StatstestnormalitySlice) -> Int { self.size }
 
-pub fn stats_test_normality_slice_get(s : StatstestnormalitySlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn StatstestnormalitySlice::get(self : StatstestnormalitySlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn stats_test_normality_slice_set(s : StatstestnormalitySlice, i : Int, v : Double) -> StatstestnormalitySlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn StatstestnormalitySlice::set(self : StatstestnormalitySlice, i : Int, v : Double) -> StatstestnormalitySlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_slice_sum(s : StatstestnormalitySlice) -> Double { @_common.sum(s.data) }
+pub fn StatstestnormalitySlice::sum(self : StatstestnormalitySlice) -> Double { @_common.sum(self.data) }
 
-pub fn stats_test_normality_slice_mean(s : StatstestnormalitySlice) -> Double { @_common.mean(s.data) }
+pub fn StatstestnormalitySlice::mean(self : StatstestnormalitySlice) -> Double { @_common.mean(self.data) }
 
-pub fn stats_test_normality_slice_scale(s : StatstestnormalitySlice, f : Double) -> StatstestnormalitySlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn StatstestnormalitySlice::scale(self : StatstestnormalitySlice, f : Double) -> StatstestnormalitySlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_slice_add(a : StatstestnormalitySlice, b : StatstestnormalitySlice) -> StatstestnormalitySlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn StatstestnormalitySlice::add(self : StatstestnormalitySlice, other : StatstestnormalitySlice) -> StatstestnormalitySlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn stats_test_normality_slice_copy(s : StatstestnormalitySlice) -> StatstestnormalitySlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn StatstestnormalitySlice::copy(self : StatstestnormalitySlice) -> StatstestnormalitySlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_slice_fill(s : StatstestnormalitySlice, v : Double) -> StatstestnormalitySlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn StatstestnormalitySlice::fill(self : StatstestnormalitySlice, v : Double) -> StatstestnormalitySlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn stats_test_normality_slice_min(s : StatstestnormalitySlice) -> Double { @_common.min(s.data) }
+pub fn StatstestnormalitySlice::min(self : StatstestnormalitySlice) -> Double { @_common.min(self.data) }
 
-pub fn stats_test_normality_slice_max(s : StatstestnormalitySlice) -> Double { @_common.max(s.data) }
+pub fn StatstestnormalitySlice::max(self : StatstestnormalitySlice) -> Double { @_common.max(self.data) }
 
-pub fn stats_test_normality_slice_to_string(s : StatstestnormalitySlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn StatstestnormalitySlice::to_string(self : StatstestnormalitySlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

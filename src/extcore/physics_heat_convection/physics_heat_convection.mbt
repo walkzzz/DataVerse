@@ -351,45 +351,45 @@ pub fn physics_heat_convection_frame_make(size : Int) -> PhysicsheatconvectionFr
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_frame_len(s : PhysicsheatconvectionFrame) -> Int { s.size }
+pub fn PhysicsheatconvectionFrame::len(self : PhysicsheatconvectionFrame) -> Int { self.size }
 
-pub fn physics_heat_convection_frame_get(s : PhysicsheatconvectionFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionFrame::get(self : PhysicsheatconvectionFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_frame_set(s : PhysicsheatconvectionFrame, i : Int, v : Double) -> PhysicsheatconvectionFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionFrame::set(self : PhysicsheatconvectionFrame, i : Int, v : Double) -> PhysicsheatconvectionFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_frame_sum(s : PhysicsheatconvectionFrame) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionFrame::sum(self : PhysicsheatconvectionFrame) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_frame_mean(s : PhysicsheatconvectionFrame) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionFrame::mean(self : PhysicsheatconvectionFrame) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_frame_scale(s : PhysicsheatconvectionFrame, f : Double) -> PhysicsheatconvectionFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionFrame::scale(self : PhysicsheatconvectionFrame, f : Double) -> PhysicsheatconvectionFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_frame_add(a : PhysicsheatconvectionFrame, b : PhysicsheatconvectionFrame) -> PhysicsheatconvectionFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionFrame::add(self : PhysicsheatconvectionFrame, other : PhysicsheatconvectionFrame) -> PhysicsheatconvectionFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_frame_copy(s : PhysicsheatconvectionFrame) -> PhysicsheatconvectionFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionFrame::copy(self : PhysicsheatconvectionFrame) -> PhysicsheatconvectionFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_frame_fill(s : PhysicsheatconvectionFrame, v : Double) -> PhysicsheatconvectionFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionFrame::fill(self : PhysicsheatconvectionFrame, v : Double) -> PhysicsheatconvectionFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_frame_min(s : PhysicsheatconvectionFrame) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionFrame::min(self : PhysicsheatconvectionFrame) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_frame_max(s : PhysicsheatconvectionFrame) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionFrame::max(self : PhysicsheatconvectionFrame) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_frame_to_string(s : PhysicsheatconvectionFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionFrame::to_string(self : PhysicsheatconvectionFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionTable {
@@ -402,45 +402,45 @@ pub fn physics_heat_convection_table_make(size : Int) -> PhysicsheatconvectionTa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_table_len(s : PhysicsheatconvectionTable) -> Int { s.size }
+pub fn PhysicsheatconvectionTable::len(self : PhysicsheatconvectionTable) -> Int { self.size }
 
-pub fn physics_heat_convection_table_get(s : PhysicsheatconvectionTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionTable::get(self : PhysicsheatconvectionTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_table_set(s : PhysicsheatconvectionTable, i : Int, v : Double) -> PhysicsheatconvectionTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionTable::set(self : PhysicsheatconvectionTable, i : Int, v : Double) -> PhysicsheatconvectionTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_table_sum(s : PhysicsheatconvectionTable) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionTable::sum(self : PhysicsheatconvectionTable) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_table_mean(s : PhysicsheatconvectionTable) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionTable::mean(self : PhysicsheatconvectionTable) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_table_scale(s : PhysicsheatconvectionTable, f : Double) -> PhysicsheatconvectionTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionTable::scale(self : PhysicsheatconvectionTable, f : Double) -> PhysicsheatconvectionTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_table_add(a : PhysicsheatconvectionTable, b : PhysicsheatconvectionTable) -> PhysicsheatconvectionTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionTable::add(self : PhysicsheatconvectionTable, other : PhysicsheatconvectionTable) -> PhysicsheatconvectionTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_table_copy(s : PhysicsheatconvectionTable) -> PhysicsheatconvectionTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionTable::copy(self : PhysicsheatconvectionTable) -> PhysicsheatconvectionTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_table_fill(s : PhysicsheatconvectionTable, v : Double) -> PhysicsheatconvectionTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionTable::fill(self : PhysicsheatconvectionTable, v : Double) -> PhysicsheatconvectionTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_table_min(s : PhysicsheatconvectionTable) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionTable::min(self : PhysicsheatconvectionTable) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_table_max(s : PhysicsheatconvectionTable) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionTable::max(self : PhysicsheatconvectionTable) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_table_to_string(s : PhysicsheatconvectionTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionTable::to_string(self : PhysicsheatconvectionTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionGraphN {
@@ -453,45 +453,45 @@ pub fn physics_heat_convection_graphn_make(size : Int) -> PhysicsheatconvectionG
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_graphn_len(s : PhysicsheatconvectionGraphN) -> Int { s.size }
+pub fn PhysicsheatconvectionGraphN::len(self : PhysicsheatconvectionGraphN) -> Int { self.size }
 
-pub fn physics_heat_convection_graphn_get(s : PhysicsheatconvectionGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionGraphN::get(self : PhysicsheatconvectionGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_graphn_set(s : PhysicsheatconvectionGraphN, i : Int, v : Double) -> PhysicsheatconvectionGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionGraphN::set(self : PhysicsheatconvectionGraphN, i : Int, v : Double) -> PhysicsheatconvectionGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_graphn_sum(s : PhysicsheatconvectionGraphN) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionGraphN::sum(self : PhysicsheatconvectionGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_graphn_mean(s : PhysicsheatconvectionGraphN) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionGraphN::mean(self : PhysicsheatconvectionGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_graphn_scale(s : PhysicsheatconvectionGraphN, f : Double) -> PhysicsheatconvectionGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionGraphN::scale(self : PhysicsheatconvectionGraphN, f : Double) -> PhysicsheatconvectionGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_graphn_add(a : PhysicsheatconvectionGraphN, b : PhysicsheatconvectionGraphN) -> PhysicsheatconvectionGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionGraphN::add(self : PhysicsheatconvectionGraphN, other : PhysicsheatconvectionGraphN) -> PhysicsheatconvectionGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_graphn_copy(s : PhysicsheatconvectionGraphN) -> PhysicsheatconvectionGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionGraphN::copy(self : PhysicsheatconvectionGraphN) -> PhysicsheatconvectionGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_graphn_fill(s : PhysicsheatconvectionGraphN, v : Double) -> PhysicsheatconvectionGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionGraphN::fill(self : PhysicsheatconvectionGraphN, v : Double) -> PhysicsheatconvectionGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_graphn_min(s : PhysicsheatconvectionGraphN) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionGraphN::min(self : PhysicsheatconvectionGraphN) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_graphn_max(s : PhysicsheatconvectionGraphN) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionGraphN::max(self : PhysicsheatconvectionGraphN) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_graphn_to_string(s : PhysicsheatconvectionGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionGraphN::to_string(self : PhysicsheatconvectionGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionNode {
@@ -504,45 +504,45 @@ pub fn physics_heat_convection_node_make(size : Int) -> PhysicsheatconvectionNod
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_node_len(s : PhysicsheatconvectionNode) -> Int { s.size }
+pub fn PhysicsheatconvectionNode::len(self : PhysicsheatconvectionNode) -> Int { self.size }
 
-pub fn physics_heat_convection_node_get(s : PhysicsheatconvectionNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionNode::get(self : PhysicsheatconvectionNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_node_set(s : PhysicsheatconvectionNode, i : Int, v : Double) -> PhysicsheatconvectionNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionNode::set(self : PhysicsheatconvectionNode, i : Int, v : Double) -> PhysicsheatconvectionNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_node_sum(s : PhysicsheatconvectionNode) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionNode::sum(self : PhysicsheatconvectionNode) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_node_mean(s : PhysicsheatconvectionNode) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionNode::mean(self : PhysicsheatconvectionNode) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_node_scale(s : PhysicsheatconvectionNode, f : Double) -> PhysicsheatconvectionNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionNode::scale(self : PhysicsheatconvectionNode, f : Double) -> PhysicsheatconvectionNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_node_add(a : PhysicsheatconvectionNode, b : PhysicsheatconvectionNode) -> PhysicsheatconvectionNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionNode::add(self : PhysicsheatconvectionNode, other : PhysicsheatconvectionNode) -> PhysicsheatconvectionNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_node_copy(s : PhysicsheatconvectionNode) -> PhysicsheatconvectionNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionNode::copy(self : PhysicsheatconvectionNode) -> PhysicsheatconvectionNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_node_fill(s : PhysicsheatconvectionNode, v : Double) -> PhysicsheatconvectionNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionNode::fill(self : PhysicsheatconvectionNode, v : Double) -> PhysicsheatconvectionNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_node_min(s : PhysicsheatconvectionNode) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionNode::min(self : PhysicsheatconvectionNode) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_node_max(s : PhysicsheatconvectionNode) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionNode::max(self : PhysicsheatconvectionNode) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_node_to_string(s : PhysicsheatconvectionNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionNode::to_string(self : PhysicsheatconvectionNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionEdge {
@@ -555,45 +555,45 @@ pub fn physics_heat_convection_edge_make(size : Int) -> PhysicsheatconvectionEdg
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_edge_len(s : PhysicsheatconvectionEdge) -> Int { s.size }
+pub fn PhysicsheatconvectionEdge::len(self : PhysicsheatconvectionEdge) -> Int { self.size }
 
-pub fn physics_heat_convection_edge_get(s : PhysicsheatconvectionEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionEdge::get(self : PhysicsheatconvectionEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_edge_set(s : PhysicsheatconvectionEdge, i : Int, v : Double) -> PhysicsheatconvectionEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionEdge::set(self : PhysicsheatconvectionEdge, i : Int, v : Double) -> PhysicsheatconvectionEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_edge_sum(s : PhysicsheatconvectionEdge) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionEdge::sum(self : PhysicsheatconvectionEdge) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_edge_mean(s : PhysicsheatconvectionEdge) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionEdge::mean(self : PhysicsheatconvectionEdge) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_edge_scale(s : PhysicsheatconvectionEdge, f : Double) -> PhysicsheatconvectionEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionEdge::scale(self : PhysicsheatconvectionEdge, f : Double) -> PhysicsheatconvectionEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_edge_add(a : PhysicsheatconvectionEdge, b : PhysicsheatconvectionEdge) -> PhysicsheatconvectionEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionEdge::add(self : PhysicsheatconvectionEdge, other : PhysicsheatconvectionEdge) -> PhysicsheatconvectionEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_edge_copy(s : PhysicsheatconvectionEdge) -> PhysicsheatconvectionEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionEdge::copy(self : PhysicsheatconvectionEdge) -> PhysicsheatconvectionEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_edge_fill(s : PhysicsheatconvectionEdge, v : Double) -> PhysicsheatconvectionEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionEdge::fill(self : PhysicsheatconvectionEdge, v : Double) -> PhysicsheatconvectionEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_edge_min(s : PhysicsheatconvectionEdge) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionEdge::min(self : PhysicsheatconvectionEdge) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_edge_max(s : PhysicsheatconvectionEdge) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionEdge::max(self : PhysicsheatconvectionEdge) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_edge_to_string(s : PhysicsheatconvectionEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionEdge::to_string(self : PhysicsheatconvectionEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionPath {
@@ -606,45 +606,45 @@ pub fn physics_heat_convection_path_make(size : Int) -> PhysicsheatconvectionPat
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_path_len(s : PhysicsheatconvectionPath) -> Int { s.size }
+pub fn PhysicsheatconvectionPath::len(self : PhysicsheatconvectionPath) -> Int { self.size }
 
-pub fn physics_heat_convection_path_get(s : PhysicsheatconvectionPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionPath::get(self : PhysicsheatconvectionPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_path_set(s : PhysicsheatconvectionPath, i : Int, v : Double) -> PhysicsheatconvectionPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionPath::set(self : PhysicsheatconvectionPath, i : Int, v : Double) -> PhysicsheatconvectionPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_path_sum(s : PhysicsheatconvectionPath) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionPath::sum(self : PhysicsheatconvectionPath) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_path_mean(s : PhysicsheatconvectionPath) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionPath::mean(self : PhysicsheatconvectionPath) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_path_scale(s : PhysicsheatconvectionPath, f : Double) -> PhysicsheatconvectionPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionPath::scale(self : PhysicsheatconvectionPath, f : Double) -> PhysicsheatconvectionPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_path_add(a : PhysicsheatconvectionPath, b : PhysicsheatconvectionPath) -> PhysicsheatconvectionPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionPath::add(self : PhysicsheatconvectionPath, other : PhysicsheatconvectionPath) -> PhysicsheatconvectionPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_path_copy(s : PhysicsheatconvectionPath) -> PhysicsheatconvectionPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionPath::copy(self : PhysicsheatconvectionPath) -> PhysicsheatconvectionPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_path_fill(s : PhysicsheatconvectionPath, v : Double) -> PhysicsheatconvectionPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionPath::fill(self : PhysicsheatconvectionPath, v : Double) -> PhysicsheatconvectionPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_path_min(s : PhysicsheatconvectionPath) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionPath::min(self : PhysicsheatconvectionPath) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_path_max(s : PhysicsheatconvectionPath) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionPath::max(self : PhysicsheatconvectionPath) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_path_to_string(s : PhysicsheatconvectionPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionPath::to_string(self : PhysicsheatconvectionPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionCluster {
@@ -657,45 +657,45 @@ pub fn physics_heat_convection_cluster_make(size : Int) -> Physicsheatconvection
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_cluster_len(s : PhysicsheatconvectionCluster) -> Int { s.size }
+pub fn PhysicsheatconvectionCluster::len(self : PhysicsheatconvectionCluster) -> Int { self.size }
 
-pub fn physics_heat_convection_cluster_get(s : PhysicsheatconvectionCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionCluster::get(self : PhysicsheatconvectionCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_cluster_set(s : PhysicsheatconvectionCluster, i : Int, v : Double) -> PhysicsheatconvectionCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCluster::set(self : PhysicsheatconvectionCluster, i : Int, v : Double) -> PhysicsheatconvectionCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cluster_sum(s : PhysicsheatconvectionCluster) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionCluster::sum(self : PhysicsheatconvectionCluster) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_cluster_mean(s : PhysicsheatconvectionCluster) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionCluster::mean(self : PhysicsheatconvectionCluster) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_cluster_scale(s : PhysicsheatconvectionCluster, f : Double) -> PhysicsheatconvectionCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCluster::scale(self : PhysicsheatconvectionCluster, f : Double) -> PhysicsheatconvectionCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cluster_add(a : PhysicsheatconvectionCluster, b : PhysicsheatconvectionCluster) -> PhysicsheatconvectionCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionCluster::add(self : PhysicsheatconvectionCluster, other : PhysicsheatconvectionCluster) -> PhysicsheatconvectionCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cluster_copy(s : PhysicsheatconvectionCluster) -> PhysicsheatconvectionCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCluster::copy(self : PhysicsheatconvectionCluster) -> PhysicsheatconvectionCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cluster_fill(s : PhysicsheatconvectionCluster, v : Double) -> PhysicsheatconvectionCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCluster::fill(self : PhysicsheatconvectionCluster, v : Double) -> PhysicsheatconvectionCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cluster_min(s : PhysicsheatconvectionCluster) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionCluster::min(self : PhysicsheatconvectionCluster) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_cluster_max(s : PhysicsheatconvectionCluster) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionCluster::max(self : PhysicsheatconvectionCluster) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_cluster_to_string(s : PhysicsheatconvectionCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionCluster::to_string(self : PhysicsheatconvectionCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionModel {
@@ -708,45 +708,45 @@ pub fn physics_heat_convection_model_make(size : Int) -> PhysicsheatconvectionMo
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_model_len(s : PhysicsheatconvectionModel) -> Int { s.size }
+pub fn PhysicsheatconvectionModel::len(self : PhysicsheatconvectionModel) -> Int { self.size }
 
-pub fn physics_heat_convection_model_get(s : PhysicsheatconvectionModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionModel::get(self : PhysicsheatconvectionModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_model_set(s : PhysicsheatconvectionModel, i : Int, v : Double) -> PhysicsheatconvectionModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionModel::set(self : PhysicsheatconvectionModel, i : Int, v : Double) -> PhysicsheatconvectionModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_model_sum(s : PhysicsheatconvectionModel) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionModel::sum(self : PhysicsheatconvectionModel) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_model_mean(s : PhysicsheatconvectionModel) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionModel::mean(self : PhysicsheatconvectionModel) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_model_scale(s : PhysicsheatconvectionModel, f : Double) -> PhysicsheatconvectionModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionModel::scale(self : PhysicsheatconvectionModel, f : Double) -> PhysicsheatconvectionModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_model_add(a : PhysicsheatconvectionModel, b : PhysicsheatconvectionModel) -> PhysicsheatconvectionModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionModel::add(self : PhysicsheatconvectionModel, other : PhysicsheatconvectionModel) -> PhysicsheatconvectionModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_model_copy(s : PhysicsheatconvectionModel) -> PhysicsheatconvectionModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionModel::copy(self : PhysicsheatconvectionModel) -> PhysicsheatconvectionModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_model_fill(s : PhysicsheatconvectionModel, v : Double) -> PhysicsheatconvectionModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionModel::fill(self : PhysicsheatconvectionModel, v : Double) -> PhysicsheatconvectionModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_model_min(s : PhysicsheatconvectionModel) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionModel::min(self : PhysicsheatconvectionModel) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_model_max(s : PhysicsheatconvectionModel) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionModel::max(self : PhysicsheatconvectionModel) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_model_to_string(s : PhysicsheatconvectionModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionModel::to_string(self : PhysicsheatconvectionModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionLayer {
@@ -759,45 +759,45 @@ pub fn physics_heat_convection_layer_make(size : Int) -> PhysicsheatconvectionLa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_layer_len(s : PhysicsheatconvectionLayer) -> Int { s.size }
+pub fn PhysicsheatconvectionLayer::len(self : PhysicsheatconvectionLayer) -> Int { self.size }
 
-pub fn physics_heat_convection_layer_get(s : PhysicsheatconvectionLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionLayer::get(self : PhysicsheatconvectionLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_layer_set(s : PhysicsheatconvectionLayer, i : Int, v : Double) -> PhysicsheatconvectionLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionLayer::set(self : PhysicsheatconvectionLayer, i : Int, v : Double) -> PhysicsheatconvectionLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_layer_sum(s : PhysicsheatconvectionLayer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionLayer::sum(self : PhysicsheatconvectionLayer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_layer_mean(s : PhysicsheatconvectionLayer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionLayer::mean(self : PhysicsheatconvectionLayer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_layer_scale(s : PhysicsheatconvectionLayer, f : Double) -> PhysicsheatconvectionLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionLayer::scale(self : PhysicsheatconvectionLayer, f : Double) -> PhysicsheatconvectionLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_layer_add(a : PhysicsheatconvectionLayer, b : PhysicsheatconvectionLayer) -> PhysicsheatconvectionLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionLayer::add(self : PhysicsheatconvectionLayer, other : PhysicsheatconvectionLayer) -> PhysicsheatconvectionLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_layer_copy(s : PhysicsheatconvectionLayer) -> PhysicsheatconvectionLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionLayer::copy(self : PhysicsheatconvectionLayer) -> PhysicsheatconvectionLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_layer_fill(s : PhysicsheatconvectionLayer, v : Double) -> PhysicsheatconvectionLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionLayer::fill(self : PhysicsheatconvectionLayer, v : Double) -> PhysicsheatconvectionLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_layer_min(s : PhysicsheatconvectionLayer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionLayer::min(self : PhysicsheatconvectionLayer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_layer_max(s : PhysicsheatconvectionLayer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionLayer::max(self : PhysicsheatconvectionLayer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_layer_to_string(s : PhysicsheatconvectionLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionLayer::to_string(self : PhysicsheatconvectionLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionBuffer {
@@ -810,45 +810,45 @@ pub fn physics_heat_convection_buffer_make(size : Int) -> PhysicsheatconvectionB
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_buffer_len(s : PhysicsheatconvectionBuffer) -> Int { s.size }
+pub fn PhysicsheatconvectionBuffer::len(self : PhysicsheatconvectionBuffer) -> Int { self.size }
 
-pub fn physics_heat_convection_buffer_get(s : PhysicsheatconvectionBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionBuffer::get(self : PhysicsheatconvectionBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_buffer_set(s : PhysicsheatconvectionBuffer, i : Int, v : Double) -> PhysicsheatconvectionBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionBuffer::set(self : PhysicsheatconvectionBuffer, i : Int, v : Double) -> PhysicsheatconvectionBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_buffer_sum(s : PhysicsheatconvectionBuffer) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionBuffer::sum(self : PhysicsheatconvectionBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_buffer_mean(s : PhysicsheatconvectionBuffer) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionBuffer::mean(self : PhysicsheatconvectionBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_buffer_scale(s : PhysicsheatconvectionBuffer, f : Double) -> PhysicsheatconvectionBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionBuffer::scale(self : PhysicsheatconvectionBuffer, f : Double) -> PhysicsheatconvectionBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_buffer_add(a : PhysicsheatconvectionBuffer, b : PhysicsheatconvectionBuffer) -> PhysicsheatconvectionBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionBuffer::add(self : PhysicsheatconvectionBuffer, other : PhysicsheatconvectionBuffer) -> PhysicsheatconvectionBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_buffer_copy(s : PhysicsheatconvectionBuffer) -> PhysicsheatconvectionBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionBuffer::copy(self : PhysicsheatconvectionBuffer) -> PhysicsheatconvectionBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_buffer_fill(s : PhysicsheatconvectionBuffer, v : Double) -> PhysicsheatconvectionBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionBuffer::fill(self : PhysicsheatconvectionBuffer, v : Double) -> PhysicsheatconvectionBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_buffer_min(s : PhysicsheatconvectionBuffer) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionBuffer::min(self : PhysicsheatconvectionBuffer) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_buffer_max(s : PhysicsheatconvectionBuffer) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionBuffer::max(self : PhysicsheatconvectionBuffer) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_buffer_to_string(s : PhysicsheatconvectionBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionBuffer::to_string(self : PhysicsheatconvectionBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionCursor {
@@ -861,45 +861,45 @@ pub fn physics_heat_convection_cursor_make(size : Int) -> PhysicsheatconvectionC
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_cursor_len(s : PhysicsheatconvectionCursor) -> Int { s.size }
+pub fn PhysicsheatconvectionCursor::len(self : PhysicsheatconvectionCursor) -> Int { self.size }
 
-pub fn physics_heat_convection_cursor_get(s : PhysicsheatconvectionCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionCursor::get(self : PhysicsheatconvectionCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_cursor_set(s : PhysicsheatconvectionCursor, i : Int, v : Double) -> PhysicsheatconvectionCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCursor::set(self : PhysicsheatconvectionCursor, i : Int, v : Double) -> PhysicsheatconvectionCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cursor_sum(s : PhysicsheatconvectionCursor) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionCursor::sum(self : PhysicsheatconvectionCursor) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_cursor_mean(s : PhysicsheatconvectionCursor) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionCursor::mean(self : PhysicsheatconvectionCursor) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_cursor_scale(s : PhysicsheatconvectionCursor, f : Double) -> PhysicsheatconvectionCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCursor::scale(self : PhysicsheatconvectionCursor, f : Double) -> PhysicsheatconvectionCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cursor_add(a : PhysicsheatconvectionCursor, b : PhysicsheatconvectionCursor) -> PhysicsheatconvectionCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionCursor::add(self : PhysicsheatconvectionCursor, other : PhysicsheatconvectionCursor) -> PhysicsheatconvectionCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cursor_copy(s : PhysicsheatconvectionCursor) -> PhysicsheatconvectionCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCursor::copy(self : PhysicsheatconvectionCursor) -> PhysicsheatconvectionCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cursor_fill(s : PhysicsheatconvectionCursor, v : Double) -> PhysicsheatconvectionCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionCursor::fill(self : PhysicsheatconvectionCursor, v : Double) -> PhysicsheatconvectionCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_cursor_min(s : PhysicsheatconvectionCursor) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionCursor::min(self : PhysicsheatconvectionCursor) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_cursor_max(s : PhysicsheatconvectionCursor) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionCursor::max(self : PhysicsheatconvectionCursor) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_cursor_to_string(s : PhysicsheatconvectionCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionCursor::to_string(self : PhysicsheatconvectionCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionView {
@@ -912,45 +912,45 @@ pub fn physics_heat_convection_view_make(size : Int) -> PhysicsheatconvectionVie
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_view_len(s : PhysicsheatconvectionView) -> Int { s.size }
+pub fn PhysicsheatconvectionView::len(self : PhysicsheatconvectionView) -> Int { self.size }
 
-pub fn physics_heat_convection_view_get(s : PhysicsheatconvectionView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionView::get(self : PhysicsheatconvectionView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_view_set(s : PhysicsheatconvectionView, i : Int, v : Double) -> PhysicsheatconvectionView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionView::set(self : PhysicsheatconvectionView, i : Int, v : Double) -> PhysicsheatconvectionView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_view_sum(s : PhysicsheatconvectionView) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionView::sum(self : PhysicsheatconvectionView) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_view_mean(s : PhysicsheatconvectionView) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionView::mean(self : PhysicsheatconvectionView) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_view_scale(s : PhysicsheatconvectionView, f : Double) -> PhysicsheatconvectionView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionView::scale(self : PhysicsheatconvectionView, f : Double) -> PhysicsheatconvectionView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_view_add(a : PhysicsheatconvectionView, b : PhysicsheatconvectionView) -> PhysicsheatconvectionView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionView::add(self : PhysicsheatconvectionView, other : PhysicsheatconvectionView) -> PhysicsheatconvectionView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_view_copy(s : PhysicsheatconvectionView) -> PhysicsheatconvectionView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionView::copy(self : PhysicsheatconvectionView) -> PhysicsheatconvectionView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_view_fill(s : PhysicsheatconvectionView, v : Double) -> PhysicsheatconvectionView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionView::fill(self : PhysicsheatconvectionView, v : Double) -> PhysicsheatconvectionView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_view_min(s : PhysicsheatconvectionView) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionView::min(self : PhysicsheatconvectionView) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_view_max(s : PhysicsheatconvectionView) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionView::max(self : PhysicsheatconvectionView) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_view_to_string(s : PhysicsheatconvectionView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionView::to_string(self : PhysicsheatconvectionView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionRange {
@@ -963,45 +963,45 @@ pub fn physics_heat_convection_range_make(size : Int) -> PhysicsheatconvectionRa
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_range_len(s : PhysicsheatconvectionRange) -> Int { s.size }
+pub fn PhysicsheatconvectionRange::len(self : PhysicsheatconvectionRange) -> Int { self.size }
 
-pub fn physics_heat_convection_range_get(s : PhysicsheatconvectionRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionRange::get(self : PhysicsheatconvectionRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_range_set(s : PhysicsheatconvectionRange, i : Int, v : Double) -> PhysicsheatconvectionRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionRange::set(self : PhysicsheatconvectionRange, i : Int, v : Double) -> PhysicsheatconvectionRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_range_sum(s : PhysicsheatconvectionRange) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionRange::sum(self : PhysicsheatconvectionRange) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_range_mean(s : PhysicsheatconvectionRange) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionRange::mean(self : PhysicsheatconvectionRange) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_range_scale(s : PhysicsheatconvectionRange, f : Double) -> PhysicsheatconvectionRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionRange::scale(self : PhysicsheatconvectionRange, f : Double) -> PhysicsheatconvectionRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_range_add(a : PhysicsheatconvectionRange, b : PhysicsheatconvectionRange) -> PhysicsheatconvectionRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionRange::add(self : PhysicsheatconvectionRange, other : PhysicsheatconvectionRange) -> PhysicsheatconvectionRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_range_copy(s : PhysicsheatconvectionRange) -> PhysicsheatconvectionRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionRange::copy(self : PhysicsheatconvectionRange) -> PhysicsheatconvectionRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_range_fill(s : PhysicsheatconvectionRange, v : Double) -> PhysicsheatconvectionRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionRange::fill(self : PhysicsheatconvectionRange, v : Double) -> PhysicsheatconvectionRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_range_min(s : PhysicsheatconvectionRange) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionRange::min(self : PhysicsheatconvectionRange) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_range_max(s : PhysicsheatconvectionRange) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionRange::max(self : PhysicsheatconvectionRange) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_range_to_string(s : PhysicsheatconvectionRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionRange::to_string(self : PhysicsheatconvectionRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatconvectionSlice {
@@ -1014,44 +1014,44 @@ pub fn physics_heat_convection_slice_make(size : Int) -> PhysicsheatconvectionSl
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn physics_heat_convection_slice_len(s : PhysicsheatconvectionSlice) -> Int { s.size }
+pub fn PhysicsheatconvectionSlice::len(self : PhysicsheatconvectionSlice) -> Int { self.size }
 
-pub fn physics_heat_convection_slice_get(s : PhysicsheatconvectionSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn PhysicsheatconvectionSlice::get(self : PhysicsheatconvectionSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn physics_heat_convection_slice_set(s : PhysicsheatconvectionSlice, i : Int, v : Double) -> PhysicsheatconvectionSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionSlice::set(self : PhysicsheatconvectionSlice, i : Int, v : Double) -> PhysicsheatconvectionSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_slice_sum(s : PhysicsheatconvectionSlice) -> Double { @_common.sum(s.data) }
+pub fn PhysicsheatconvectionSlice::sum(self : PhysicsheatconvectionSlice) -> Double { @_common.sum(self.data) }
 
-pub fn physics_heat_convection_slice_mean(s : PhysicsheatconvectionSlice) -> Double { @_common.mean(s.data) }
+pub fn PhysicsheatconvectionSlice::mean(self : PhysicsheatconvectionSlice) -> Double { @_common.mean(self.data) }
 
-pub fn physics_heat_convection_slice_scale(s : PhysicsheatconvectionSlice, f : Double) -> PhysicsheatconvectionSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionSlice::scale(self : PhysicsheatconvectionSlice, f : Double) -> PhysicsheatconvectionSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_slice_add(a : PhysicsheatconvectionSlice, b : PhysicsheatconvectionSlice) -> PhysicsheatconvectionSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn PhysicsheatconvectionSlice::add(self : PhysicsheatconvectionSlice, other : PhysicsheatconvectionSlice) -> PhysicsheatconvectionSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn physics_heat_convection_slice_copy(s : PhysicsheatconvectionSlice) -> PhysicsheatconvectionSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionSlice::copy(self : PhysicsheatconvectionSlice) -> PhysicsheatconvectionSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_slice_fill(s : PhysicsheatconvectionSlice, v : Double) -> PhysicsheatconvectionSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn PhysicsheatconvectionSlice::fill(self : PhysicsheatconvectionSlice, v : Double) -> PhysicsheatconvectionSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn physics_heat_convection_slice_min(s : PhysicsheatconvectionSlice) -> Double { @_common.min(s.data) }
+pub fn PhysicsheatconvectionSlice::min(self : PhysicsheatconvectionSlice) -> Double { @_common.min(self.data) }
 
-pub fn physics_heat_convection_slice_max(s : PhysicsheatconvectionSlice) -> Double { @_common.max(s.data) }
+pub fn PhysicsheatconvectionSlice::max(self : PhysicsheatconvectionSlice) -> Double { @_common.max(self.data) }
 
-pub fn physics_heat_convection_slice_to_string(s : PhysicsheatconvectionSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn PhysicsheatconvectionSlice::to_string(self : PhysicsheatconvectionSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

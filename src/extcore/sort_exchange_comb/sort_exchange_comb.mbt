@@ -351,45 +351,45 @@ pub fn sort_exchange_comb_frame_make(size : Int) -> SortexchangecombFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_frame_len(s : SortexchangecombFrame) -> Int { s.size }
+pub fn SortexchangecombFrame::len(self : SortexchangecombFrame) -> Int { self.size }
 
-pub fn sort_exchange_comb_frame_get(s : SortexchangecombFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombFrame::get(self : SortexchangecombFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_frame_set(s : SortexchangecombFrame, i : Int, v : Double) -> SortexchangecombFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombFrame::set(self : SortexchangecombFrame, i : Int, v : Double) -> SortexchangecombFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_frame_sum(s : SortexchangecombFrame) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombFrame::sum(self : SortexchangecombFrame) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_frame_mean(s : SortexchangecombFrame) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombFrame::mean(self : SortexchangecombFrame) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_frame_scale(s : SortexchangecombFrame, f : Double) -> SortexchangecombFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombFrame::scale(self : SortexchangecombFrame, f : Double) -> SortexchangecombFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_frame_add(a : SortexchangecombFrame, b : SortexchangecombFrame) -> SortexchangecombFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombFrame::add(self : SortexchangecombFrame, other : SortexchangecombFrame) -> SortexchangecombFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_frame_copy(s : SortexchangecombFrame) -> SortexchangecombFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombFrame::copy(self : SortexchangecombFrame) -> SortexchangecombFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_frame_fill(s : SortexchangecombFrame, v : Double) -> SortexchangecombFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombFrame::fill(self : SortexchangecombFrame, v : Double) -> SortexchangecombFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_frame_min(s : SortexchangecombFrame) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombFrame::min(self : SortexchangecombFrame) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_frame_max(s : SortexchangecombFrame) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombFrame::max(self : SortexchangecombFrame) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_frame_to_string(s : SortexchangecombFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombFrame::to_string(self : SortexchangecombFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombTable {
@@ -402,45 +402,45 @@ pub fn sort_exchange_comb_table_make(size : Int) -> SortexchangecombTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_table_len(s : SortexchangecombTable) -> Int { s.size }
+pub fn SortexchangecombTable::len(self : SortexchangecombTable) -> Int { self.size }
 
-pub fn sort_exchange_comb_table_get(s : SortexchangecombTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombTable::get(self : SortexchangecombTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_table_set(s : SortexchangecombTable, i : Int, v : Double) -> SortexchangecombTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombTable::set(self : SortexchangecombTable, i : Int, v : Double) -> SortexchangecombTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_table_sum(s : SortexchangecombTable) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombTable::sum(self : SortexchangecombTable) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_table_mean(s : SortexchangecombTable) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombTable::mean(self : SortexchangecombTable) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_table_scale(s : SortexchangecombTable, f : Double) -> SortexchangecombTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombTable::scale(self : SortexchangecombTable, f : Double) -> SortexchangecombTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_table_add(a : SortexchangecombTable, b : SortexchangecombTable) -> SortexchangecombTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombTable::add(self : SortexchangecombTable, other : SortexchangecombTable) -> SortexchangecombTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_table_copy(s : SortexchangecombTable) -> SortexchangecombTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombTable::copy(self : SortexchangecombTable) -> SortexchangecombTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_table_fill(s : SortexchangecombTable, v : Double) -> SortexchangecombTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombTable::fill(self : SortexchangecombTable, v : Double) -> SortexchangecombTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_table_min(s : SortexchangecombTable) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombTable::min(self : SortexchangecombTable) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_table_max(s : SortexchangecombTable) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombTable::max(self : SortexchangecombTable) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_table_to_string(s : SortexchangecombTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombTable::to_string(self : SortexchangecombTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombGraphN {
@@ -453,45 +453,45 @@ pub fn sort_exchange_comb_graphn_make(size : Int) -> SortexchangecombGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_graphn_len(s : SortexchangecombGraphN) -> Int { s.size }
+pub fn SortexchangecombGraphN::len(self : SortexchangecombGraphN) -> Int { self.size }
 
-pub fn sort_exchange_comb_graphn_get(s : SortexchangecombGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombGraphN::get(self : SortexchangecombGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_graphn_set(s : SortexchangecombGraphN, i : Int, v : Double) -> SortexchangecombGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombGraphN::set(self : SortexchangecombGraphN, i : Int, v : Double) -> SortexchangecombGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_graphn_sum(s : SortexchangecombGraphN) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombGraphN::sum(self : SortexchangecombGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_graphn_mean(s : SortexchangecombGraphN) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombGraphN::mean(self : SortexchangecombGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_graphn_scale(s : SortexchangecombGraphN, f : Double) -> SortexchangecombGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombGraphN::scale(self : SortexchangecombGraphN, f : Double) -> SortexchangecombGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_graphn_add(a : SortexchangecombGraphN, b : SortexchangecombGraphN) -> SortexchangecombGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombGraphN::add(self : SortexchangecombGraphN, other : SortexchangecombGraphN) -> SortexchangecombGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_graphn_copy(s : SortexchangecombGraphN) -> SortexchangecombGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombGraphN::copy(self : SortexchangecombGraphN) -> SortexchangecombGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_graphn_fill(s : SortexchangecombGraphN, v : Double) -> SortexchangecombGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombGraphN::fill(self : SortexchangecombGraphN, v : Double) -> SortexchangecombGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_graphn_min(s : SortexchangecombGraphN) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombGraphN::min(self : SortexchangecombGraphN) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_graphn_max(s : SortexchangecombGraphN) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombGraphN::max(self : SortexchangecombGraphN) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_graphn_to_string(s : SortexchangecombGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombGraphN::to_string(self : SortexchangecombGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombNode {
@@ -504,45 +504,45 @@ pub fn sort_exchange_comb_node_make(size : Int) -> SortexchangecombNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_node_len(s : SortexchangecombNode) -> Int { s.size }
+pub fn SortexchangecombNode::len(self : SortexchangecombNode) -> Int { self.size }
 
-pub fn sort_exchange_comb_node_get(s : SortexchangecombNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombNode::get(self : SortexchangecombNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_node_set(s : SortexchangecombNode, i : Int, v : Double) -> SortexchangecombNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombNode::set(self : SortexchangecombNode, i : Int, v : Double) -> SortexchangecombNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_node_sum(s : SortexchangecombNode) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombNode::sum(self : SortexchangecombNode) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_node_mean(s : SortexchangecombNode) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombNode::mean(self : SortexchangecombNode) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_node_scale(s : SortexchangecombNode, f : Double) -> SortexchangecombNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombNode::scale(self : SortexchangecombNode, f : Double) -> SortexchangecombNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_node_add(a : SortexchangecombNode, b : SortexchangecombNode) -> SortexchangecombNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombNode::add(self : SortexchangecombNode, other : SortexchangecombNode) -> SortexchangecombNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_node_copy(s : SortexchangecombNode) -> SortexchangecombNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombNode::copy(self : SortexchangecombNode) -> SortexchangecombNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_node_fill(s : SortexchangecombNode, v : Double) -> SortexchangecombNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombNode::fill(self : SortexchangecombNode, v : Double) -> SortexchangecombNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_node_min(s : SortexchangecombNode) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombNode::min(self : SortexchangecombNode) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_node_max(s : SortexchangecombNode) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombNode::max(self : SortexchangecombNode) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_node_to_string(s : SortexchangecombNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombNode::to_string(self : SortexchangecombNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombEdge {
@@ -555,45 +555,45 @@ pub fn sort_exchange_comb_edge_make(size : Int) -> SortexchangecombEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_edge_len(s : SortexchangecombEdge) -> Int { s.size }
+pub fn SortexchangecombEdge::len(self : SortexchangecombEdge) -> Int { self.size }
 
-pub fn sort_exchange_comb_edge_get(s : SortexchangecombEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombEdge::get(self : SortexchangecombEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_edge_set(s : SortexchangecombEdge, i : Int, v : Double) -> SortexchangecombEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombEdge::set(self : SortexchangecombEdge, i : Int, v : Double) -> SortexchangecombEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_edge_sum(s : SortexchangecombEdge) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombEdge::sum(self : SortexchangecombEdge) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_edge_mean(s : SortexchangecombEdge) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombEdge::mean(self : SortexchangecombEdge) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_edge_scale(s : SortexchangecombEdge, f : Double) -> SortexchangecombEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombEdge::scale(self : SortexchangecombEdge, f : Double) -> SortexchangecombEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_edge_add(a : SortexchangecombEdge, b : SortexchangecombEdge) -> SortexchangecombEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombEdge::add(self : SortexchangecombEdge, other : SortexchangecombEdge) -> SortexchangecombEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_edge_copy(s : SortexchangecombEdge) -> SortexchangecombEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombEdge::copy(self : SortexchangecombEdge) -> SortexchangecombEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_edge_fill(s : SortexchangecombEdge, v : Double) -> SortexchangecombEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombEdge::fill(self : SortexchangecombEdge, v : Double) -> SortexchangecombEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_edge_min(s : SortexchangecombEdge) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombEdge::min(self : SortexchangecombEdge) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_edge_max(s : SortexchangecombEdge) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombEdge::max(self : SortexchangecombEdge) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_edge_to_string(s : SortexchangecombEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombEdge::to_string(self : SortexchangecombEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombPath {
@@ -606,45 +606,45 @@ pub fn sort_exchange_comb_path_make(size : Int) -> SortexchangecombPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_path_len(s : SortexchangecombPath) -> Int { s.size }
+pub fn SortexchangecombPath::len(self : SortexchangecombPath) -> Int { self.size }
 
-pub fn sort_exchange_comb_path_get(s : SortexchangecombPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombPath::get(self : SortexchangecombPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_path_set(s : SortexchangecombPath, i : Int, v : Double) -> SortexchangecombPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombPath::set(self : SortexchangecombPath, i : Int, v : Double) -> SortexchangecombPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_path_sum(s : SortexchangecombPath) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombPath::sum(self : SortexchangecombPath) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_path_mean(s : SortexchangecombPath) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombPath::mean(self : SortexchangecombPath) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_path_scale(s : SortexchangecombPath, f : Double) -> SortexchangecombPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombPath::scale(self : SortexchangecombPath, f : Double) -> SortexchangecombPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_path_add(a : SortexchangecombPath, b : SortexchangecombPath) -> SortexchangecombPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombPath::add(self : SortexchangecombPath, other : SortexchangecombPath) -> SortexchangecombPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_path_copy(s : SortexchangecombPath) -> SortexchangecombPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombPath::copy(self : SortexchangecombPath) -> SortexchangecombPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_path_fill(s : SortexchangecombPath, v : Double) -> SortexchangecombPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombPath::fill(self : SortexchangecombPath, v : Double) -> SortexchangecombPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_path_min(s : SortexchangecombPath) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombPath::min(self : SortexchangecombPath) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_path_max(s : SortexchangecombPath) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombPath::max(self : SortexchangecombPath) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_path_to_string(s : SortexchangecombPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombPath::to_string(self : SortexchangecombPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombCluster {
@@ -657,45 +657,45 @@ pub fn sort_exchange_comb_cluster_make(size : Int) -> SortexchangecombCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_cluster_len(s : SortexchangecombCluster) -> Int { s.size }
+pub fn SortexchangecombCluster::len(self : SortexchangecombCluster) -> Int { self.size }
 
-pub fn sort_exchange_comb_cluster_get(s : SortexchangecombCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombCluster::get(self : SortexchangecombCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_cluster_set(s : SortexchangecombCluster, i : Int, v : Double) -> SortexchangecombCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombCluster::set(self : SortexchangecombCluster, i : Int, v : Double) -> SortexchangecombCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cluster_sum(s : SortexchangecombCluster) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombCluster::sum(self : SortexchangecombCluster) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_cluster_mean(s : SortexchangecombCluster) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombCluster::mean(self : SortexchangecombCluster) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_cluster_scale(s : SortexchangecombCluster, f : Double) -> SortexchangecombCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombCluster::scale(self : SortexchangecombCluster, f : Double) -> SortexchangecombCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cluster_add(a : SortexchangecombCluster, b : SortexchangecombCluster) -> SortexchangecombCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombCluster::add(self : SortexchangecombCluster, other : SortexchangecombCluster) -> SortexchangecombCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cluster_copy(s : SortexchangecombCluster) -> SortexchangecombCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombCluster::copy(self : SortexchangecombCluster) -> SortexchangecombCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cluster_fill(s : SortexchangecombCluster, v : Double) -> SortexchangecombCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombCluster::fill(self : SortexchangecombCluster, v : Double) -> SortexchangecombCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cluster_min(s : SortexchangecombCluster) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombCluster::min(self : SortexchangecombCluster) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_cluster_max(s : SortexchangecombCluster) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombCluster::max(self : SortexchangecombCluster) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_cluster_to_string(s : SortexchangecombCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombCluster::to_string(self : SortexchangecombCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombModel {
@@ -708,45 +708,45 @@ pub fn sort_exchange_comb_model_make(size : Int) -> SortexchangecombModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_model_len(s : SortexchangecombModel) -> Int { s.size }
+pub fn SortexchangecombModel::len(self : SortexchangecombModel) -> Int { self.size }
 
-pub fn sort_exchange_comb_model_get(s : SortexchangecombModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombModel::get(self : SortexchangecombModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_model_set(s : SortexchangecombModel, i : Int, v : Double) -> SortexchangecombModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombModel::set(self : SortexchangecombModel, i : Int, v : Double) -> SortexchangecombModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_model_sum(s : SortexchangecombModel) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombModel::sum(self : SortexchangecombModel) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_model_mean(s : SortexchangecombModel) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombModel::mean(self : SortexchangecombModel) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_model_scale(s : SortexchangecombModel, f : Double) -> SortexchangecombModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombModel::scale(self : SortexchangecombModel, f : Double) -> SortexchangecombModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_model_add(a : SortexchangecombModel, b : SortexchangecombModel) -> SortexchangecombModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombModel::add(self : SortexchangecombModel, other : SortexchangecombModel) -> SortexchangecombModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_model_copy(s : SortexchangecombModel) -> SortexchangecombModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombModel::copy(self : SortexchangecombModel) -> SortexchangecombModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_model_fill(s : SortexchangecombModel, v : Double) -> SortexchangecombModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombModel::fill(self : SortexchangecombModel, v : Double) -> SortexchangecombModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_model_min(s : SortexchangecombModel) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombModel::min(self : SortexchangecombModel) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_model_max(s : SortexchangecombModel) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombModel::max(self : SortexchangecombModel) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_model_to_string(s : SortexchangecombModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombModel::to_string(self : SortexchangecombModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombLayer {
@@ -759,45 +759,45 @@ pub fn sort_exchange_comb_layer_make(size : Int) -> SortexchangecombLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_layer_len(s : SortexchangecombLayer) -> Int { s.size }
+pub fn SortexchangecombLayer::len(self : SortexchangecombLayer) -> Int { self.size }
 
-pub fn sort_exchange_comb_layer_get(s : SortexchangecombLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombLayer::get(self : SortexchangecombLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_layer_set(s : SortexchangecombLayer, i : Int, v : Double) -> SortexchangecombLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombLayer::set(self : SortexchangecombLayer, i : Int, v : Double) -> SortexchangecombLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_layer_sum(s : SortexchangecombLayer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombLayer::sum(self : SortexchangecombLayer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_layer_mean(s : SortexchangecombLayer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombLayer::mean(self : SortexchangecombLayer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_layer_scale(s : SortexchangecombLayer, f : Double) -> SortexchangecombLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombLayer::scale(self : SortexchangecombLayer, f : Double) -> SortexchangecombLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_layer_add(a : SortexchangecombLayer, b : SortexchangecombLayer) -> SortexchangecombLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombLayer::add(self : SortexchangecombLayer, other : SortexchangecombLayer) -> SortexchangecombLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_layer_copy(s : SortexchangecombLayer) -> SortexchangecombLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombLayer::copy(self : SortexchangecombLayer) -> SortexchangecombLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_layer_fill(s : SortexchangecombLayer, v : Double) -> SortexchangecombLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombLayer::fill(self : SortexchangecombLayer, v : Double) -> SortexchangecombLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_layer_min(s : SortexchangecombLayer) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombLayer::min(self : SortexchangecombLayer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_layer_max(s : SortexchangecombLayer) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombLayer::max(self : SortexchangecombLayer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_layer_to_string(s : SortexchangecombLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombLayer::to_string(self : SortexchangecombLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombBuffer {
@@ -810,45 +810,45 @@ pub fn sort_exchange_comb_buffer_make(size : Int) -> SortexchangecombBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_buffer_len(s : SortexchangecombBuffer) -> Int { s.size }
+pub fn SortexchangecombBuffer::len(self : SortexchangecombBuffer) -> Int { self.size }
 
-pub fn sort_exchange_comb_buffer_get(s : SortexchangecombBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombBuffer::get(self : SortexchangecombBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_buffer_set(s : SortexchangecombBuffer, i : Int, v : Double) -> SortexchangecombBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombBuffer::set(self : SortexchangecombBuffer, i : Int, v : Double) -> SortexchangecombBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_buffer_sum(s : SortexchangecombBuffer) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombBuffer::sum(self : SortexchangecombBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_buffer_mean(s : SortexchangecombBuffer) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombBuffer::mean(self : SortexchangecombBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_buffer_scale(s : SortexchangecombBuffer, f : Double) -> SortexchangecombBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombBuffer::scale(self : SortexchangecombBuffer, f : Double) -> SortexchangecombBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_buffer_add(a : SortexchangecombBuffer, b : SortexchangecombBuffer) -> SortexchangecombBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombBuffer::add(self : SortexchangecombBuffer, other : SortexchangecombBuffer) -> SortexchangecombBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_buffer_copy(s : SortexchangecombBuffer) -> SortexchangecombBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombBuffer::copy(self : SortexchangecombBuffer) -> SortexchangecombBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_buffer_fill(s : SortexchangecombBuffer, v : Double) -> SortexchangecombBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombBuffer::fill(self : SortexchangecombBuffer, v : Double) -> SortexchangecombBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_buffer_min(s : SortexchangecombBuffer) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombBuffer::min(self : SortexchangecombBuffer) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_buffer_max(s : SortexchangecombBuffer) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombBuffer::max(self : SortexchangecombBuffer) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_buffer_to_string(s : SortexchangecombBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombBuffer::to_string(self : SortexchangecombBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombCursor {
@@ -861,45 +861,45 @@ pub fn sort_exchange_comb_cursor_make(size : Int) -> SortexchangecombCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_cursor_len(s : SortexchangecombCursor) -> Int { s.size }
+pub fn SortexchangecombCursor::len(self : SortexchangecombCursor) -> Int { self.size }
 
-pub fn sort_exchange_comb_cursor_get(s : SortexchangecombCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombCursor::get(self : SortexchangecombCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_cursor_set(s : SortexchangecombCursor, i : Int, v : Double) -> SortexchangecombCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombCursor::set(self : SortexchangecombCursor, i : Int, v : Double) -> SortexchangecombCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cursor_sum(s : SortexchangecombCursor) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombCursor::sum(self : SortexchangecombCursor) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_cursor_mean(s : SortexchangecombCursor) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombCursor::mean(self : SortexchangecombCursor) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_cursor_scale(s : SortexchangecombCursor, f : Double) -> SortexchangecombCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombCursor::scale(self : SortexchangecombCursor, f : Double) -> SortexchangecombCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cursor_add(a : SortexchangecombCursor, b : SortexchangecombCursor) -> SortexchangecombCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombCursor::add(self : SortexchangecombCursor, other : SortexchangecombCursor) -> SortexchangecombCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cursor_copy(s : SortexchangecombCursor) -> SortexchangecombCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombCursor::copy(self : SortexchangecombCursor) -> SortexchangecombCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cursor_fill(s : SortexchangecombCursor, v : Double) -> SortexchangecombCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombCursor::fill(self : SortexchangecombCursor, v : Double) -> SortexchangecombCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_cursor_min(s : SortexchangecombCursor) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombCursor::min(self : SortexchangecombCursor) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_cursor_max(s : SortexchangecombCursor) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombCursor::max(self : SortexchangecombCursor) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_cursor_to_string(s : SortexchangecombCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombCursor::to_string(self : SortexchangecombCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombView {
@@ -912,45 +912,45 @@ pub fn sort_exchange_comb_view_make(size : Int) -> SortexchangecombView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_view_len(s : SortexchangecombView) -> Int { s.size }
+pub fn SortexchangecombView::len(self : SortexchangecombView) -> Int { self.size }
 
-pub fn sort_exchange_comb_view_get(s : SortexchangecombView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombView::get(self : SortexchangecombView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_view_set(s : SortexchangecombView, i : Int, v : Double) -> SortexchangecombView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombView::set(self : SortexchangecombView, i : Int, v : Double) -> SortexchangecombView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_view_sum(s : SortexchangecombView) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombView::sum(self : SortexchangecombView) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_view_mean(s : SortexchangecombView) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombView::mean(self : SortexchangecombView) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_view_scale(s : SortexchangecombView, f : Double) -> SortexchangecombView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombView::scale(self : SortexchangecombView, f : Double) -> SortexchangecombView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_view_add(a : SortexchangecombView, b : SortexchangecombView) -> SortexchangecombView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombView::add(self : SortexchangecombView, other : SortexchangecombView) -> SortexchangecombView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_view_copy(s : SortexchangecombView) -> SortexchangecombView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombView::copy(self : SortexchangecombView) -> SortexchangecombView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_view_fill(s : SortexchangecombView, v : Double) -> SortexchangecombView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombView::fill(self : SortexchangecombView, v : Double) -> SortexchangecombView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_view_min(s : SortexchangecombView) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombView::min(self : SortexchangecombView) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_view_max(s : SortexchangecombView) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombView::max(self : SortexchangecombView) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_view_to_string(s : SortexchangecombView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombView::to_string(self : SortexchangecombView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombRange {
@@ -963,45 +963,45 @@ pub fn sort_exchange_comb_range_make(size : Int) -> SortexchangecombRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_range_len(s : SortexchangecombRange) -> Int { s.size }
+pub fn SortexchangecombRange::len(self : SortexchangecombRange) -> Int { self.size }
 
-pub fn sort_exchange_comb_range_get(s : SortexchangecombRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombRange::get(self : SortexchangecombRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_range_set(s : SortexchangecombRange, i : Int, v : Double) -> SortexchangecombRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombRange::set(self : SortexchangecombRange, i : Int, v : Double) -> SortexchangecombRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_range_sum(s : SortexchangecombRange) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombRange::sum(self : SortexchangecombRange) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_range_mean(s : SortexchangecombRange) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombRange::mean(self : SortexchangecombRange) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_range_scale(s : SortexchangecombRange, f : Double) -> SortexchangecombRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombRange::scale(self : SortexchangecombRange, f : Double) -> SortexchangecombRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_range_add(a : SortexchangecombRange, b : SortexchangecombRange) -> SortexchangecombRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombRange::add(self : SortexchangecombRange, other : SortexchangecombRange) -> SortexchangecombRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_range_copy(s : SortexchangecombRange) -> SortexchangecombRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombRange::copy(self : SortexchangecombRange) -> SortexchangecombRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_range_fill(s : SortexchangecombRange, v : Double) -> SortexchangecombRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombRange::fill(self : SortexchangecombRange, v : Double) -> SortexchangecombRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_range_min(s : SortexchangecombRange) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombRange::min(self : SortexchangecombRange) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_range_max(s : SortexchangecombRange) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombRange::max(self : SortexchangecombRange) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_range_to_string(s : SortexchangecombRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombRange::to_string(self : SortexchangecombRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombSlice {
@@ -1014,44 +1014,44 @@ pub fn sort_exchange_comb_slice_make(size : Int) -> SortexchangecombSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn sort_exchange_comb_slice_len(s : SortexchangecombSlice) -> Int { s.size }
+pub fn SortexchangecombSlice::len(self : SortexchangecombSlice) -> Int { self.size }
 
-pub fn sort_exchange_comb_slice_get(s : SortexchangecombSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn SortexchangecombSlice::get(self : SortexchangecombSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn sort_exchange_comb_slice_set(s : SortexchangecombSlice, i : Int, v : Double) -> SortexchangecombSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn SortexchangecombSlice::set(self : SortexchangecombSlice, i : Int, v : Double) -> SortexchangecombSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_slice_sum(s : SortexchangecombSlice) -> Double { @_common.sum(s.data) }
+pub fn SortexchangecombSlice::sum(self : SortexchangecombSlice) -> Double { @_common.sum(self.data) }
 
-pub fn sort_exchange_comb_slice_mean(s : SortexchangecombSlice) -> Double { @_common.mean(s.data) }
+pub fn SortexchangecombSlice::mean(self : SortexchangecombSlice) -> Double { @_common.mean(self.data) }
 
-pub fn sort_exchange_comb_slice_scale(s : SortexchangecombSlice, f : Double) -> SortexchangecombSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn SortexchangecombSlice::scale(self : SortexchangecombSlice, f : Double) -> SortexchangecombSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_slice_add(a : SortexchangecombSlice, b : SortexchangecombSlice) -> SortexchangecombSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn SortexchangecombSlice::add(self : SortexchangecombSlice, other : SortexchangecombSlice) -> SortexchangecombSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_slice_copy(s : SortexchangecombSlice) -> SortexchangecombSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn SortexchangecombSlice::copy(self : SortexchangecombSlice) -> SortexchangecombSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_slice_fill(s : SortexchangecombSlice, v : Double) -> SortexchangecombSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn SortexchangecombSlice::fill(self : SortexchangecombSlice, v : Double) -> SortexchangecombSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn sort_exchange_comb_slice_min(s : SortexchangecombSlice) -> Double { @_common.min(s.data) }
+pub fn SortexchangecombSlice::min(self : SortexchangecombSlice) -> Double { @_common.min(self.data) }
 
-pub fn sort_exchange_comb_slice_max(s : SortexchangecombSlice) -> Double { @_common.max(s.data) }
+pub fn SortexchangecombSlice::max(self : SortexchangecombSlice) -> Double { @_common.max(self.data) }
 
-pub fn sort_exchange_comb_slice_to_string(s : SortexchangecombSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn SortexchangecombSlice::to_string(self : SortexchangecombSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

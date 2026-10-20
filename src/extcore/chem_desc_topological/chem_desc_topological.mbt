@@ -351,45 +351,45 @@ pub fn chem_desc_topological_frame_make(size : Int) -> ChemdesctopologicalFrame 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_frame_len(s : ChemdesctopologicalFrame) -> Int { s.size }
+pub fn ChemdesctopologicalFrame::len(self : ChemdesctopologicalFrame) -> Int { self.size }
 
-pub fn chem_desc_topological_frame_get(s : ChemdesctopologicalFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalFrame::get(self : ChemdesctopologicalFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_frame_set(s : ChemdesctopologicalFrame, i : Int, v : Double) -> ChemdesctopologicalFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalFrame::set(self : ChemdesctopologicalFrame, i : Int, v : Double) -> ChemdesctopologicalFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_frame_sum(s : ChemdesctopologicalFrame) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalFrame::sum(self : ChemdesctopologicalFrame) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_frame_mean(s : ChemdesctopologicalFrame) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalFrame::mean(self : ChemdesctopologicalFrame) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_frame_scale(s : ChemdesctopologicalFrame, f : Double) -> ChemdesctopologicalFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalFrame::scale(self : ChemdesctopologicalFrame, f : Double) -> ChemdesctopologicalFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_frame_add(a : ChemdesctopologicalFrame, b : ChemdesctopologicalFrame) -> ChemdesctopologicalFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalFrame::add(self : ChemdesctopologicalFrame, other : ChemdesctopologicalFrame) -> ChemdesctopologicalFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_frame_copy(s : ChemdesctopologicalFrame) -> ChemdesctopologicalFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalFrame::copy(self : ChemdesctopologicalFrame) -> ChemdesctopologicalFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_frame_fill(s : ChemdesctopologicalFrame, v : Double) -> ChemdesctopologicalFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalFrame::fill(self : ChemdesctopologicalFrame, v : Double) -> ChemdesctopologicalFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_frame_min(s : ChemdesctopologicalFrame) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalFrame::min(self : ChemdesctopologicalFrame) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_frame_max(s : ChemdesctopologicalFrame) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalFrame::max(self : ChemdesctopologicalFrame) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_frame_to_string(s : ChemdesctopologicalFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalFrame::to_string(self : ChemdesctopologicalFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalTable {
@@ -402,45 +402,45 @@ pub fn chem_desc_topological_table_make(size : Int) -> ChemdesctopologicalTable 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_table_len(s : ChemdesctopologicalTable) -> Int { s.size }
+pub fn ChemdesctopologicalTable::len(self : ChemdesctopologicalTable) -> Int { self.size }
 
-pub fn chem_desc_topological_table_get(s : ChemdesctopologicalTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalTable::get(self : ChemdesctopologicalTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_table_set(s : ChemdesctopologicalTable, i : Int, v : Double) -> ChemdesctopologicalTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalTable::set(self : ChemdesctopologicalTable, i : Int, v : Double) -> ChemdesctopologicalTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_table_sum(s : ChemdesctopologicalTable) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalTable::sum(self : ChemdesctopologicalTable) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_table_mean(s : ChemdesctopologicalTable) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalTable::mean(self : ChemdesctopologicalTable) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_table_scale(s : ChemdesctopologicalTable, f : Double) -> ChemdesctopologicalTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalTable::scale(self : ChemdesctopologicalTable, f : Double) -> ChemdesctopologicalTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_table_add(a : ChemdesctopologicalTable, b : ChemdesctopologicalTable) -> ChemdesctopologicalTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalTable::add(self : ChemdesctopologicalTable, other : ChemdesctopologicalTable) -> ChemdesctopologicalTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_table_copy(s : ChemdesctopologicalTable) -> ChemdesctopologicalTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalTable::copy(self : ChemdesctopologicalTable) -> ChemdesctopologicalTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_table_fill(s : ChemdesctopologicalTable, v : Double) -> ChemdesctopologicalTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalTable::fill(self : ChemdesctopologicalTable, v : Double) -> ChemdesctopologicalTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_table_min(s : ChemdesctopologicalTable) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalTable::min(self : ChemdesctopologicalTable) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_table_max(s : ChemdesctopologicalTable) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalTable::max(self : ChemdesctopologicalTable) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_table_to_string(s : ChemdesctopologicalTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalTable::to_string(self : ChemdesctopologicalTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalGraphN {
@@ -453,45 +453,45 @@ pub fn chem_desc_topological_graphn_make(size : Int) -> ChemdesctopologicalGraph
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_graphn_len(s : ChemdesctopologicalGraphN) -> Int { s.size }
+pub fn ChemdesctopologicalGraphN::len(self : ChemdesctopologicalGraphN) -> Int { self.size }
 
-pub fn chem_desc_topological_graphn_get(s : ChemdesctopologicalGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalGraphN::get(self : ChemdesctopologicalGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_graphn_set(s : ChemdesctopologicalGraphN, i : Int, v : Double) -> ChemdesctopologicalGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalGraphN::set(self : ChemdesctopologicalGraphN, i : Int, v : Double) -> ChemdesctopologicalGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_graphn_sum(s : ChemdesctopologicalGraphN) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalGraphN::sum(self : ChemdesctopologicalGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_graphn_mean(s : ChemdesctopologicalGraphN) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalGraphN::mean(self : ChemdesctopologicalGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_graphn_scale(s : ChemdesctopologicalGraphN, f : Double) -> ChemdesctopologicalGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalGraphN::scale(self : ChemdesctopologicalGraphN, f : Double) -> ChemdesctopologicalGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_graphn_add(a : ChemdesctopologicalGraphN, b : ChemdesctopologicalGraphN) -> ChemdesctopologicalGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalGraphN::add(self : ChemdesctopologicalGraphN, other : ChemdesctopologicalGraphN) -> ChemdesctopologicalGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_graphn_copy(s : ChemdesctopologicalGraphN) -> ChemdesctopologicalGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalGraphN::copy(self : ChemdesctopologicalGraphN) -> ChemdesctopologicalGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_graphn_fill(s : ChemdesctopologicalGraphN, v : Double) -> ChemdesctopologicalGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalGraphN::fill(self : ChemdesctopologicalGraphN, v : Double) -> ChemdesctopologicalGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_graphn_min(s : ChemdesctopologicalGraphN) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalGraphN::min(self : ChemdesctopologicalGraphN) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_graphn_max(s : ChemdesctopologicalGraphN) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalGraphN::max(self : ChemdesctopologicalGraphN) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_graphn_to_string(s : ChemdesctopologicalGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalGraphN::to_string(self : ChemdesctopologicalGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalNode {
@@ -504,45 +504,45 @@ pub fn chem_desc_topological_node_make(size : Int) -> ChemdesctopologicalNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_node_len(s : ChemdesctopologicalNode) -> Int { s.size }
+pub fn ChemdesctopologicalNode::len(self : ChemdesctopologicalNode) -> Int { self.size }
 
-pub fn chem_desc_topological_node_get(s : ChemdesctopologicalNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalNode::get(self : ChemdesctopologicalNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_node_set(s : ChemdesctopologicalNode, i : Int, v : Double) -> ChemdesctopologicalNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalNode::set(self : ChemdesctopologicalNode, i : Int, v : Double) -> ChemdesctopologicalNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_node_sum(s : ChemdesctopologicalNode) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalNode::sum(self : ChemdesctopologicalNode) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_node_mean(s : ChemdesctopologicalNode) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalNode::mean(self : ChemdesctopologicalNode) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_node_scale(s : ChemdesctopologicalNode, f : Double) -> ChemdesctopologicalNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalNode::scale(self : ChemdesctopologicalNode, f : Double) -> ChemdesctopologicalNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_node_add(a : ChemdesctopologicalNode, b : ChemdesctopologicalNode) -> ChemdesctopologicalNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalNode::add(self : ChemdesctopologicalNode, other : ChemdesctopologicalNode) -> ChemdesctopologicalNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_node_copy(s : ChemdesctopologicalNode) -> ChemdesctopologicalNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalNode::copy(self : ChemdesctopologicalNode) -> ChemdesctopologicalNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_node_fill(s : ChemdesctopologicalNode, v : Double) -> ChemdesctopologicalNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalNode::fill(self : ChemdesctopologicalNode, v : Double) -> ChemdesctopologicalNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_node_min(s : ChemdesctopologicalNode) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalNode::min(self : ChemdesctopologicalNode) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_node_max(s : ChemdesctopologicalNode) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalNode::max(self : ChemdesctopologicalNode) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_node_to_string(s : ChemdesctopologicalNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalNode::to_string(self : ChemdesctopologicalNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalEdge {
@@ -555,45 +555,45 @@ pub fn chem_desc_topological_edge_make(size : Int) -> ChemdesctopologicalEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_edge_len(s : ChemdesctopologicalEdge) -> Int { s.size }
+pub fn ChemdesctopologicalEdge::len(self : ChemdesctopologicalEdge) -> Int { self.size }
 
-pub fn chem_desc_topological_edge_get(s : ChemdesctopologicalEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalEdge::get(self : ChemdesctopologicalEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_edge_set(s : ChemdesctopologicalEdge, i : Int, v : Double) -> ChemdesctopologicalEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalEdge::set(self : ChemdesctopologicalEdge, i : Int, v : Double) -> ChemdesctopologicalEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_edge_sum(s : ChemdesctopologicalEdge) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalEdge::sum(self : ChemdesctopologicalEdge) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_edge_mean(s : ChemdesctopologicalEdge) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalEdge::mean(self : ChemdesctopologicalEdge) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_edge_scale(s : ChemdesctopologicalEdge, f : Double) -> ChemdesctopologicalEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalEdge::scale(self : ChemdesctopologicalEdge, f : Double) -> ChemdesctopologicalEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_edge_add(a : ChemdesctopologicalEdge, b : ChemdesctopologicalEdge) -> ChemdesctopologicalEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalEdge::add(self : ChemdesctopologicalEdge, other : ChemdesctopologicalEdge) -> ChemdesctopologicalEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_edge_copy(s : ChemdesctopologicalEdge) -> ChemdesctopologicalEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalEdge::copy(self : ChemdesctopologicalEdge) -> ChemdesctopologicalEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_edge_fill(s : ChemdesctopologicalEdge, v : Double) -> ChemdesctopologicalEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalEdge::fill(self : ChemdesctopologicalEdge, v : Double) -> ChemdesctopologicalEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_edge_min(s : ChemdesctopologicalEdge) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalEdge::min(self : ChemdesctopologicalEdge) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_edge_max(s : ChemdesctopologicalEdge) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalEdge::max(self : ChemdesctopologicalEdge) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_edge_to_string(s : ChemdesctopologicalEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalEdge::to_string(self : ChemdesctopologicalEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalPath {
@@ -606,45 +606,45 @@ pub fn chem_desc_topological_path_make(size : Int) -> ChemdesctopologicalPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_path_len(s : ChemdesctopologicalPath) -> Int { s.size }
+pub fn ChemdesctopologicalPath::len(self : ChemdesctopologicalPath) -> Int { self.size }
 
-pub fn chem_desc_topological_path_get(s : ChemdesctopologicalPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalPath::get(self : ChemdesctopologicalPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_path_set(s : ChemdesctopologicalPath, i : Int, v : Double) -> ChemdesctopologicalPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalPath::set(self : ChemdesctopologicalPath, i : Int, v : Double) -> ChemdesctopologicalPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_path_sum(s : ChemdesctopologicalPath) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalPath::sum(self : ChemdesctopologicalPath) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_path_mean(s : ChemdesctopologicalPath) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalPath::mean(self : ChemdesctopologicalPath) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_path_scale(s : ChemdesctopologicalPath, f : Double) -> ChemdesctopologicalPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalPath::scale(self : ChemdesctopologicalPath, f : Double) -> ChemdesctopologicalPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_path_add(a : ChemdesctopologicalPath, b : ChemdesctopologicalPath) -> ChemdesctopologicalPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalPath::add(self : ChemdesctopologicalPath, other : ChemdesctopologicalPath) -> ChemdesctopologicalPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_path_copy(s : ChemdesctopologicalPath) -> ChemdesctopologicalPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalPath::copy(self : ChemdesctopologicalPath) -> ChemdesctopologicalPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_path_fill(s : ChemdesctopologicalPath, v : Double) -> ChemdesctopologicalPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalPath::fill(self : ChemdesctopologicalPath, v : Double) -> ChemdesctopologicalPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_path_min(s : ChemdesctopologicalPath) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalPath::min(self : ChemdesctopologicalPath) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_path_max(s : ChemdesctopologicalPath) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalPath::max(self : ChemdesctopologicalPath) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_path_to_string(s : ChemdesctopologicalPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalPath::to_string(self : ChemdesctopologicalPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalCluster {
@@ -657,45 +657,45 @@ pub fn chem_desc_topological_cluster_make(size : Int) -> ChemdesctopologicalClus
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_cluster_len(s : ChemdesctopologicalCluster) -> Int { s.size }
+pub fn ChemdesctopologicalCluster::len(self : ChemdesctopologicalCluster) -> Int { self.size }
 
-pub fn chem_desc_topological_cluster_get(s : ChemdesctopologicalCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalCluster::get(self : ChemdesctopologicalCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_cluster_set(s : ChemdesctopologicalCluster, i : Int, v : Double) -> ChemdesctopologicalCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCluster::set(self : ChemdesctopologicalCluster, i : Int, v : Double) -> ChemdesctopologicalCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cluster_sum(s : ChemdesctopologicalCluster) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalCluster::sum(self : ChemdesctopologicalCluster) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_cluster_mean(s : ChemdesctopologicalCluster) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalCluster::mean(self : ChemdesctopologicalCluster) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_cluster_scale(s : ChemdesctopologicalCluster, f : Double) -> ChemdesctopologicalCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCluster::scale(self : ChemdesctopologicalCluster, f : Double) -> ChemdesctopologicalCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cluster_add(a : ChemdesctopologicalCluster, b : ChemdesctopologicalCluster) -> ChemdesctopologicalCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalCluster::add(self : ChemdesctopologicalCluster, other : ChemdesctopologicalCluster) -> ChemdesctopologicalCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cluster_copy(s : ChemdesctopologicalCluster) -> ChemdesctopologicalCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCluster::copy(self : ChemdesctopologicalCluster) -> ChemdesctopologicalCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cluster_fill(s : ChemdesctopologicalCluster, v : Double) -> ChemdesctopologicalCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCluster::fill(self : ChemdesctopologicalCluster, v : Double) -> ChemdesctopologicalCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cluster_min(s : ChemdesctopologicalCluster) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalCluster::min(self : ChemdesctopologicalCluster) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_cluster_max(s : ChemdesctopologicalCluster) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalCluster::max(self : ChemdesctopologicalCluster) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_cluster_to_string(s : ChemdesctopologicalCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalCluster::to_string(self : ChemdesctopologicalCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalModel {
@@ -708,45 +708,45 @@ pub fn chem_desc_topological_model_make(size : Int) -> ChemdesctopologicalModel 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_model_len(s : ChemdesctopologicalModel) -> Int { s.size }
+pub fn ChemdesctopologicalModel::len(self : ChemdesctopologicalModel) -> Int { self.size }
 
-pub fn chem_desc_topological_model_get(s : ChemdesctopologicalModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalModel::get(self : ChemdesctopologicalModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_model_set(s : ChemdesctopologicalModel, i : Int, v : Double) -> ChemdesctopologicalModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalModel::set(self : ChemdesctopologicalModel, i : Int, v : Double) -> ChemdesctopologicalModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_model_sum(s : ChemdesctopologicalModel) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalModel::sum(self : ChemdesctopologicalModel) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_model_mean(s : ChemdesctopologicalModel) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalModel::mean(self : ChemdesctopologicalModel) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_model_scale(s : ChemdesctopologicalModel, f : Double) -> ChemdesctopologicalModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalModel::scale(self : ChemdesctopologicalModel, f : Double) -> ChemdesctopologicalModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_model_add(a : ChemdesctopologicalModel, b : ChemdesctopologicalModel) -> ChemdesctopologicalModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalModel::add(self : ChemdesctopologicalModel, other : ChemdesctopologicalModel) -> ChemdesctopologicalModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_model_copy(s : ChemdesctopologicalModel) -> ChemdesctopologicalModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalModel::copy(self : ChemdesctopologicalModel) -> ChemdesctopologicalModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_model_fill(s : ChemdesctopologicalModel, v : Double) -> ChemdesctopologicalModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalModel::fill(self : ChemdesctopologicalModel, v : Double) -> ChemdesctopologicalModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_model_min(s : ChemdesctopologicalModel) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalModel::min(self : ChemdesctopologicalModel) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_model_max(s : ChemdesctopologicalModel) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalModel::max(self : ChemdesctopologicalModel) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_model_to_string(s : ChemdesctopologicalModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalModel::to_string(self : ChemdesctopologicalModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalLayer {
@@ -759,45 +759,45 @@ pub fn chem_desc_topological_layer_make(size : Int) -> ChemdesctopologicalLayer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_layer_len(s : ChemdesctopologicalLayer) -> Int { s.size }
+pub fn ChemdesctopologicalLayer::len(self : ChemdesctopologicalLayer) -> Int { self.size }
 
-pub fn chem_desc_topological_layer_get(s : ChemdesctopologicalLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalLayer::get(self : ChemdesctopologicalLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_layer_set(s : ChemdesctopologicalLayer, i : Int, v : Double) -> ChemdesctopologicalLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalLayer::set(self : ChemdesctopologicalLayer, i : Int, v : Double) -> ChemdesctopologicalLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_layer_sum(s : ChemdesctopologicalLayer) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalLayer::sum(self : ChemdesctopologicalLayer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_layer_mean(s : ChemdesctopologicalLayer) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalLayer::mean(self : ChemdesctopologicalLayer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_layer_scale(s : ChemdesctopologicalLayer, f : Double) -> ChemdesctopologicalLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalLayer::scale(self : ChemdesctopologicalLayer, f : Double) -> ChemdesctopologicalLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_layer_add(a : ChemdesctopologicalLayer, b : ChemdesctopologicalLayer) -> ChemdesctopologicalLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalLayer::add(self : ChemdesctopologicalLayer, other : ChemdesctopologicalLayer) -> ChemdesctopologicalLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_layer_copy(s : ChemdesctopologicalLayer) -> ChemdesctopologicalLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalLayer::copy(self : ChemdesctopologicalLayer) -> ChemdesctopologicalLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_layer_fill(s : ChemdesctopologicalLayer, v : Double) -> ChemdesctopologicalLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalLayer::fill(self : ChemdesctopologicalLayer, v : Double) -> ChemdesctopologicalLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_layer_min(s : ChemdesctopologicalLayer) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalLayer::min(self : ChemdesctopologicalLayer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_layer_max(s : ChemdesctopologicalLayer) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalLayer::max(self : ChemdesctopologicalLayer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_layer_to_string(s : ChemdesctopologicalLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalLayer::to_string(self : ChemdesctopologicalLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalBuffer {
@@ -810,45 +810,45 @@ pub fn chem_desc_topological_buffer_make(size : Int) -> ChemdesctopologicalBuffe
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_buffer_len(s : ChemdesctopologicalBuffer) -> Int { s.size }
+pub fn ChemdesctopologicalBuffer::len(self : ChemdesctopologicalBuffer) -> Int { self.size }
 
-pub fn chem_desc_topological_buffer_get(s : ChemdesctopologicalBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalBuffer::get(self : ChemdesctopologicalBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_buffer_set(s : ChemdesctopologicalBuffer, i : Int, v : Double) -> ChemdesctopologicalBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalBuffer::set(self : ChemdesctopologicalBuffer, i : Int, v : Double) -> ChemdesctopologicalBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_buffer_sum(s : ChemdesctopologicalBuffer) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalBuffer::sum(self : ChemdesctopologicalBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_buffer_mean(s : ChemdesctopologicalBuffer) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalBuffer::mean(self : ChemdesctopologicalBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_buffer_scale(s : ChemdesctopologicalBuffer, f : Double) -> ChemdesctopologicalBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalBuffer::scale(self : ChemdesctopologicalBuffer, f : Double) -> ChemdesctopologicalBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_buffer_add(a : ChemdesctopologicalBuffer, b : ChemdesctopologicalBuffer) -> ChemdesctopologicalBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalBuffer::add(self : ChemdesctopologicalBuffer, other : ChemdesctopologicalBuffer) -> ChemdesctopologicalBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_buffer_copy(s : ChemdesctopologicalBuffer) -> ChemdesctopologicalBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalBuffer::copy(self : ChemdesctopologicalBuffer) -> ChemdesctopologicalBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_buffer_fill(s : ChemdesctopologicalBuffer, v : Double) -> ChemdesctopologicalBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalBuffer::fill(self : ChemdesctopologicalBuffer, v : Double) -> ChemdesctopologicalBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_buffer_min(s : ChemdesctopologicalBuffer) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalBuffer::min(self : ChemdesctopologicalBuffer) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_buffer_max(s : ChemdesctopologicalBuffer) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalBuffer::max(self : ChemdesctopologicalBuffer) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_buffer_to_string(s : ChemdesctopologicalBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalBuffer::to_string(self : ChemdesctopologicalBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalCursor {
@@ -861,45 +861,45 @@ pub fn chem_desc_topological_cursor_make(size : Int) -> ChemdesctopologicalCurso
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_cursor_len(s : ChemdesctopologicalCursor) -> Int { s.size }
+pub fn ChemdesctopologicalCursor::len(self : ChemdesctopologicalCursor) -> Int { self.size }
 
-pub fn chem_desc_topological_cursor_get(s : ChemdesctopologicalCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalCursor::get(self : ChemdesctopologicalCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_cursor_set(s : ChemdesctopologicalCursor, i : Int, v : Double) -> ChemdesctopologicalCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCursor::set(self : ChemdesctopologicalCursor, i : Int, v : Double) -> ChemdesctopologicalCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cursor_sum(s : ChemdesctopologicalCursor) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalCursor::sum(self : ChemdesctopologicalCursor) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_cursor_mean(s : ChemdesctopologicalCursor) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalCursor::mean(self : ChemdesctopologicalCursor) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_cursor_scale(s : ChemdesctopologicalCursor, f : Double) -> ChemdesctopologicalCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCursor::scale(self : ChemdesctopologicalCursor, f : Double) -> ChemdesctopologicalCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cursor_add(a : ChemdesctopologicalCursor, b : ChemdesctopologicalCursor) -> ChemdesctopologicalCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalCursor::add(self : ChemdesctopologicalCursor, other : ChemdesctopologicalCursor) -> ChemdesctopologicalCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cursor_copy(s : ChemdesctopologicalCursor) -> ChemdesctopologicalCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCursor::copy(self : ChemdesctopologicalCursor) -> ChemdesctopologicalCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cursor_fill(s : ChemdesctopologicalCursor, v : Double) -> ChemdesctopologicalCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalCursor::fill(self : ChemdesctopologicalCursor, v : Double) -> ChemdesctopologicalCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_cursor_min(s : ChemdesctopologicalCursor) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalCursor::min(self : ChemdesctopologicalCursor) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_cursor_max(s : ChemdesctopologicalCursor) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalCursor::max(self : ChemdesctopologicalCursor) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_cursor_to_string(s : ChemdesctopologicalCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalCursor::to_string(self : ChemdesctopologicalCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalView {
@@ -912,45 +912,45 @@ pub fn chem_desc_topological_view_make(size : Int) -> ChemdesctopologicalView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_view_len(s : ChemdesctopologicalView) -> Int { s.size }
+pub fn ChemdesctopologicalView::len(self : ChemdesctopologicalView) -> Int { self.size }
 
-pub fn chem_desc_topological_view_get(s : ChemdesctopologicalView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalView::get(self : ChemdesctopologicalView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_view_set(s : ChemdesctopologicalView, i : Int, v : Double) -> ChemdesctopologicalView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalView::set(self : ChemdesctopologicalView, i : Int, v : Double) -> ChemdesctopologicalView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_view_sum(s : ChemdesctopologicalView) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalView::sum(self : ChemdesctopologicalView) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_view_mean(s : ChemdesctopologicalView) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalView::mean(self : ChemdesctopologicalView) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_view_scale(s : ChemdesctopologicalView, f : Double) -> ChemdesctopologicalView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalView::scale(self : ChemdesctopologicalView, f : Double) -> ChemdesctopologicalView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_view_add(a : ChemdesctopologicalView, b : ChemdesctopologicalView) -> ChemdesctopologicalView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalView::add(self : ChemdesctopologicalView, other : ChemdesctopologicalView) -> ChemdesctopologicalView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_view_copy(s : ChemdesctopologicalView) -> ChemdesctopologicalView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalView::copy(self : ChemdesctopologicalView) -> ChemdesctopologicalView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_view_fill(s : ChemdesctopologicalView, v : Double) -> ChemdesctopologicalView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalView::fill(self : ChemdesctopologicalView, v : Double) -> ChemdesctopologicalView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_view_min(s : ChemdesctopologicalView) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalView::min(self : ChemdesctopologicalView) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_view_max(s : ChemdesctopologicalView) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalView::max(self : ChemdesctopologicalView) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_view_to_string(s : ChemdesctopologicalView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalView::to_string(self : ChemdesctopologicalView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalRange {
@@ -963,45 +963,45 @@ pub fn chem_desc_topological_range_make(size : Int) -> ChemdesctopologicalRange 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_range_len(s : ChemdesctopologicalRange) -> Int { s.size }
+pub fn ChemdesctopologicalRange::len(self : ChemdesctopologicalRange) -> Int { self.size }
 
-pub fn chem_desc_topological_range_get(s : ChemdesctopologicalRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalRange::get(self : ChemdesctopologicalRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_range_set(s : ChemdesctopologicalRange, i : Int, v : Double) -> ChemdesctopologicalRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalRange::set(self : ChemdesctopologicalRange, i : Int, v : Double) -> ChemdesctopologicalRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_range_sum(s : ChemdesctopologicalRange) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalRange::sum(self : ChemdesctopologicalRange) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_range_mean(s : ChemdesctopologicalRange) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalRange::mean(self : ChemdesctopologicalRange) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_range_scale(s : ChemdesctopologicalRange, f : Double) -> ChemdesctopologicalRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalRange::scale(self : ChemdesctopologicalRange, f : Double) -> ChemdesctopologicalRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_range_add(a : ChemdesctopologicalRange, b : ChemdesctopologicalRange) -> ChemdesctopologicalRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalRange::add(self : ChemdesctopologicalRange, other : ChemdesctopologicalRange) -> ChemdesctopologicalRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_range_copy(s : ChemdesctopologicalRange) -> ChemdesctopologicalRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalRange::copy(self : ChemdesctopologicalRange) -> ChemdesctopologicalRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_range_fill(s : ChemdesctopologicalRange, v : Double) -> ChemdesctopologicalRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalRange::fill(self : ChemdesctopologicalRange, v : Double) -> ChemdesctopologicalRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_range_min(s : ChemdesctopologicalRange) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalRange::min(self : ChemdesctopologicalRange) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_range_max(s : ChemdesctopologicalRange) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalRange::max(self : ChemdesctopologicalRange) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_range_to_string(s : ChemdesctopologicalRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalRange::to_string(self : ChemdesctopologicalRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct ChemdesctopologicalSlice {
@@ -1014,44 +1014,44 @@ pub fn chem_desc_topological_slice_make(size : Int) -> ChemdesctopologicalSlice 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn chem_desc_topological_slice_len(s : ChemdesctopologicalSlice) -> Int { s.size }
+pub fn ChemdesctopologicalSlice::len(self : ChemdesctopologicalSlice) -> Int { self.size }
 
-pub fn chem_desc_topological_slice_get(s : ChemdesctopologicalSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn ChemdesctopologicalSlice::get(self : ChemdesctopologicalSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn chem_desc_topological_slice_set(s : ChemdesctopologicalSlice, i : Int, v : Double) -> ChemdesctopologicalSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalSlice::set(self : ChemdesctopologicalSlice, i : Int, v : Double) -> ChemdesctopologicalSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_slice_sum(s : ChemdesctopologicalSlice) -> Double { @_common.sum(s.data) }
+pub fn ChemdesctopologicalSlice::sum(self : ChemdesctopologicalSlice) -> Double { @_common.sum(self.data) }
 
-pub fn chem_desc_topological_slice_mean(s : ChemdesctopologicalSlice) -> Double { @_common.mean(s.data) }
+pub fn ChemdesctopologicalSlice::mean(self : ChemdesctopologicalSlice) -> Double { @_common.mean(self.data) }
 
-pub fn chem_desc_topological_slice_scale(s : ChemdesctopologicalSlice, f : Double) -> ChemdesctopologicalSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalSlice::scale(self : ChemdesctopologicalSlice, f : Double) -> ChemdesctopologicalSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_slice_add(a : ChemdesctopologicalSlice, b : ChemdesctopologicalSlice) -> ChemdesctopologicalSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn ChemdesctopologicalSlice::add(self : ChemdesctopologicalSlice, other : ChemdesctopologicalSlice) -> ChemdesctopologicalSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn chem_desc_topological_slice_copy(s : ChemdesctopologicalSlice) -> ChemdesctopologicalSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalSlice::copy(self : ChemdesctopologicalSlice) -> ChemdesctopologicalSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_slice_fill(s : ChemdesctopologicalSlice, v : Double) -> ChemdesctopologicalSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn ChemdesctopologicalSlice::fill(self : ChemdesctopologicalSlice, v : Double) -> ChemdesctopologicalSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn chem_desc_topological_slice_min(s : ChemdesctopologicalSlice) -> Double { @_common.min(s.data) }
+pub fn ChemdesctopologicalSlice::min(self : ChemdesctopologicalSlice) -> Double { @_common.min(self.data) }
 
-pub fn chem_desc_topological_slice_max(s : ChemdesctopologicalSlice) -> Double { @_common.max(s.data) }
+pub fn ChemdesctopologicalSlice::max(self : ChemdesctopologicalSlice) -> Double { @_common.max(self.data) }
 
-pub fn chem_desc_topological_slice_to_string(s : ChemdesctopologicalSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn ChemdesctopologicalSlice::to_string(self : ChemdesctopologicalSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

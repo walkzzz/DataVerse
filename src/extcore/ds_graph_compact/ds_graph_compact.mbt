@@ -351,45 +351,45 @@ pub fn ds_graph_compact_frame_make(size : Int) -> DsgraphcompactFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_frame_len(s : DsgraphcompactFrame) -> Int { s.size }
+pub fn DsgraphcompactFrame::len(self : DsgraphcompactFrame) -> Int { self.size }
 
-pub fn ds_graph_compact_frame_get(s : DsgraphcompactFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactFrame::get(self : DsgraphcompactFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_frame_set(s : DsgraphcompactFrame, i : Int, v : Double) -> DsgraphcompactFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactFrame::set(self : DsgraphcompactFrame, i : Int, v : Double) -> DsgraphcompactFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_frame_sum(s : DsgraphcompactFrame) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactFrame::sum(self : DsgraphcompactFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_frame_mean(s : DsgraphcompactFrame) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactFrame::mean(self : DsgraphcompactFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_frame_scale(s : DsgraphcompactFrame, f : Double) -> DsgraphcompactFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactFrame::scale(self : DsgraphcompactFrame, f : Double) -> DsgraphcompactFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_frame_add(a : DsgraphcompactFrame, b : DsgraphcompactFrame) -> DsgraphcompactFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactFrame::add(self : DsgraphcompactFrame, other : DsgraphcompactFrame) -> DsgraphcompactFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_frame_copy(s : DsgraphcompactFrame) -> DsgraphcompactFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactFrame::copy(self : DsgraphcompactFrame) -> DsgraphcompactFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_frame_fill(s : DsgraphcompactFrame, v : Double) -> DsgraphcompactFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactFrame::fill(self : DsgraphcompactFrame, v : Double) -> DsgraphcompactFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_frame_min(s : DsgraphcompactFrame) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactFrame::min(self : DsgraphcompactFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_frame_max(s : DsgraphcompactFrame) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactFrame::max(self : DsgraphcompactFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_frame_to_string(s : DsgraphcompactFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactFrame::to_string(self : DsgraphcompactFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactTable {
@@ -402,45 +402,45 @@ pub fn ds_graph_compact_table_make(size : Int) -> DsgraphcompactTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_table_len(s : DsgraphcompactTable) -> Int { s.size }
+pub fn DsgraphcompactTable::len(self : DsgraphcompactTable) -> Int { self.size }
 
-pub fn ds_graph_compact_table_get(s : DsgraphcompactTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactTable::get(self : DsgraphcompactTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_table_set(s : DsgraphcompactTable, i : Int, v : Double) -> DsgraphcompactTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactTable::set(self : DsgraphcompactTable, i : Int, v : Double) -> DsgraphcompactTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_table_sum(s : DsgraphcompactTable) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactTable::sum(self : DsgraphcompactTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_table_mean(s : DsgraphcompactTable) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactTable::mean(self : DsgraphcompactTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_table_scale(s : DsgraphcompactTable, f : Double) -> DsgraphcompactTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactTable::scale(self : DsgraphcompactTable, f : Double) -> DsgraphcompactTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_table_add(a : DsgraphcompactTable, b : DsgraphcompactTable) -> DsgraphcompactTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactTable::add(self : DsgraphcompactTable, other : DsgraphcompactTable) -> DsgraphcompactTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_table_copy(s : DsgraphcompactTable) -> DsgraphcompactTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactTable::copy(self : DsgraphcompactTable) -> DsgraphcompactTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_table_fill(s : DsgraphcompactTable, v : Double) -> DsgraphcompactTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactTable::fill(self : DsgraphcompactTable, v : Double) -> DsgraphcompactTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_table_min(s : DsgraphcompactTable) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactTable::min(self : DsgraphcompactTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_table_max(s : DsgraphcompactTable) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactTable::max(self : DsgraphcompactTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_table_to_string(s : DsgraphcompactTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactTable::to_string(self : DsgraphcompactTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactGraphN {
@@ -453,45 +453,45 @@ pub fn ds_graph_compact_graphn_make(size : Int) -> DsgraphcompactGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_graphn_len(s : DsgraphcompactGraphN) -> Int { s.size }
+pub fn DsgraphcompactGraphN::len(self : DsgraphcompactGraphN) -> Int { self.size }
 
-pub fn ds_graph_compact_graphn_get(s : DsgraphcompactGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactGraphN::get(self : DsgraphcompactGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_graphn_set(s : DsgraphcompactGraphN, i : Int, v : Double) -> DsgraphcompactGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactGraphN::set(self : DsgraphcompactGraphN, i : Int, v : Double) -> DsgraphcompactGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_graphn_sum(s : DsgraphcompactGraphN) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactGraphN::sum(self : DsgraphcompactGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_graphn_mean(s : DsgraphcompactGraphN) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactGraphN::mean(self : DsgraphcompactGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_graphn_scale(s : DsgraphcompactGraphN, f : Double) -> DsgraphcompactGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactGraphN::scale(self : DsgraphcompactGraphN, f : Double) -> DsgraphcompactGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_graphn_add(a : DsgraphcompactGraphN, b : DsgraphcompactGraphN) -> DsgraphcompactGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactGraphN::add(self : DsgraphcompactGraphN, other : DsgraphcompactGraphN) -> DsgraphcompactGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_graphn_copy(s : DsgraphcompactGraphN) -> DsgraphcompactGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactGraphN::copy(self : DsgraphcompactGraphN) -> DsgraphcompactGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_graphn_fill(s : DsgraphcompactGraphN, v : Double) -> DsgraphcompactGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactGraphN::fill(self : DsgraphcompactGraphN, v : Double) -> DsgraphcompactGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_graphn_min(s : DsgraphcompactGraphN) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactGraphN::min(self : DsgraphcompactGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_graphn_max(s : DsgraphcompactGraphN) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactGraphN::max(self : DsgraphcompactGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_graphn_to_string(s : DsgraphcompactGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactGraphN::to_string(self : DsgraphcompactGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactNode {
@@ -504,45 +504,45 @@ pub fn ds_graph_compact_node_make(size : Int) -> DsgraphcompactNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_node_len(s : DsgraphcompactNode) -> Int { s.size }
+pub fn DsgraphcompactNode::len(self : DsgraphcompactNode) -> Int { self.size }
 
-pub fn ds_graph_compact_node_get(s : DsgraphcompactNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactNode::get(self : DsgraphcompactNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_node_set(s : DsgraphcompactNode, i : Int, v : Double) -> DsgraphcompactNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactNode::set(self : DsgraphcompactNode, i : Int, v : Double) -> DsgraphcompactNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_node_sum(s : DsgraphcompactNode) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactNode::sum(self : DsgraphcompactNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_node_mean(s : DsgraphcompactNode) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactNode::mean(self : DsgraphcompactNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_node_scale(s : DsgraphcompactNode, f : Double) -> DsgraphcompactNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactNode::scale(self : DsgraphcompactNode, f : Double) -> DsgraphcompactNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_node_add(a : DsgraphcompactNode, b : DsgraphcompactNode) -> DsgraphcompactNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactNode::add(self : DsgraphcompactNode, other : DsgraphcompactNode) -> DsgraphcompactNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_node_copy(s : DsgraphcompactNode) -> DsgraphcompactNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactNode::copy(self : DsgraphcompactNode) -> DsgraphcompactNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_node_fill(s : DsgraphcompactNode, v : Double) -> DsgraphcompactNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactNode::fill(self : DsgraphcompactNode, v : Double) -> DsgraphcompactNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_node_min(s : DsgraphcompactNode) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactNode::min(self : DsgraphcompactNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_node_max(s : DsgraphcompactNode) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactNode::max(self : DsgraphcompactNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_node_to_string(s : DsgraphcompactNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactNode::to_string(self : DsgraphcompactNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactEdge {
@@ -555,45 +555,45 @@ pub fn ds_graph_compact_edge_make(size : Int) -> DsgraphcompactEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_edge_len(s : DsgraphcompactEdge) -> Int { s.size }
+pub fn DsgraphcompactEdge::len(self : DsgraphcompactEdge) -> Int { self.size }
 
-pub fn ds_graph_compact_edge_get(s : DsgraphcompactEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactEdge::get(self : DsgraphcompactEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_edge_set(s : DsgraphcompactEdge, i : Int, v : Double) -> DsgraphcompactEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactEdge::set(self : DsgraphcompactEdge, i : Int, v : Double) -> DsgraphcompactEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_edge_sum(s : DsgraphcompactEdge) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactEdge::sum(self : DsgraphcompactEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_edge_mean(s : DsgraphcompactEdge) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactEdge::mean(self : DsgraphcompactEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_edge_scale(s : DsgraphcompactEdge, f : Double) -> DsgraphcompactEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactEdge::scale(self : DsgraphcompactEdge, f : Double) -> DsgraphcompactEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_edge_add(a : DsgraphcompactEdge, b : DsgraphcompactEdge) -> DsgraphcompactEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactEdge::add(self : DsgraphcompactEdge, other : DsgraphcompactEdge) -> DsgraphcompactEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_edge_copy(s : DsgraphcompactEdge) -> DsgraphcompactEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactEdge::copy(self : DsgraphcompactEdge) -> DsgraphcompactEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_edge_fill(s : DsgraphcompactEdge, v : Double) -> DsgraphcompactEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactEdge::fill(self : DsgraphcompactEdge, v : Double) -> DsgraphcompactEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_edge_min(s : DsgraphcompactEdge) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactEdge::min(self : DsgraphcompactEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_edge_max(s : DsgraphcompactEdge) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactEdge::max(self : DsgraphcompactEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_edge_to_string(s : DsgraphcompactEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactEdge::to_string(self : DsgraphcompactEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactPath {
@@ -606,45 +606,45 @@ pub fn ds_graph_compact_path_make(size : Int) -> DsgraphcompactPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_path_len(s : DsgraphcompactPath) -> Int { s.size }
+pub fn DsgraphcompactPath::len(self : DsgraphcompactPath) -> Int { self.size }
 
-pub fn ds_graph_compact_path_get(s : DsgraphcompactPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactPath::get(self : DsgraphcompactPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_path_set(s : DsgraphcompactPath, i : Int, v : Double) -> DsgraphcompactPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactPath::set(self : DsgraphcompactPath, i : Int, v : Double) -> DsgraphcompactPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_path_sum(s : DsgraphcompactPath) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactPath::sum(self : DsgraphcompactPath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_path_mean(s : DsgraphcompactPath) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactPath::mean(self : DsgraphcompactPath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_path_scale(s : DsgraphcompactPath, f : Double) -> DsgraphcompactPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactPath::scale(self : DsgraphcompactPath, f : Double) -> DsgraphcompactPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_path_add(a : DsgraphcompactPath, b : DsgraphcompactPath) -> DsgraphcompactPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactPath::add(self : DsgraphcompactPath, other : DsgraphcompactPath) -> DsgraphcompactPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_path_copy(s : DsgraphcompactPath) -> DsgraphcompactPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactPath::copy(self : DsgraphcompactPath) -> DsgraphcompactPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_path_fill(s : DsgraphcompactPath, v : Double) -> DsgraphcompactPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactPath::fill(self : DsgraphcompactPath, v : Double) -> DsgraphcompactPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_path_min(s : DsgraphcompactPath) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactPath::min(self : DsgraphcompactPath) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_path_max(s : DsgraphcompactPath) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactPath::max(self : DsgraphcompactPath) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_path_to_string(s : DsgraphcompactPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactPath::to_string(self : DsgraphcompactPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactCluster {
@@ -657,45 +657,45 @@ pub fn ds_graph_compact_cluster_make(size : Int) -> DsgraphcompactCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_cluster_len(s : DsgraphcompactCluster) -> Int { s.size }
+pub fn DsgraphcompactCluster::len(self : DsgraphcompactCluster) -> Int { self.size }
 
-pub fn ds_graph_compact_cluster_get(s : DsgraphcompactCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactCluster::get(self : DsgraphcompactCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_cluster_set(s : DsgraphcompactCluster, i : Int, v : Double) -> DsgraphcompactCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactCluster::set(self : DsgraphcompactCluster, i : Int, v : Double) -> DsgraphcompactCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cluster_sum(s : DsgraphcompactCluster) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactCluster::sum(self : DsgraphcompactCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_cluster_mean(s : DsgraphcompactCluster) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactCluster::mean(self : DsgraphcompactCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_cluster_scale(s : DsgraphcompactCluster, f : Double) -> DsgraphcompactCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactCluster::scale(self : DsgraphcompactCluster, f : Double) -> DsgraphcompactCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cluster_add(a : DsgraphcompactCluster, b : DsgraphcompactCluster) -> DsgraphcompactCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactCluster::add(self : DsgraphcompactCluster, other : DsgraphcompactCluster) -> DsgraphcompactCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cluster_copy(s : DsgraphcompactCluster) -> DsgraphcompactCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactCluster::copy(self : DsgraphcompactCluster) -> DsgraphcompactCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cluster_fill(s : DsgraphcompactCluster, v : Double) -> DsgraphcompactCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactCluster::fill(self : DsgraphcompactCluster, v : Double) -> DsgraphcompactCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cluster_min(s : DsgraphcompactCluster) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactCluster::min(self : DsgraphcompactCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_cluster_max(s : DsgraphcompactCluster) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactCluster::max(self : DsgraphcompactCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_cluster_to_string(s : DsgraphcompactCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactCluster::to_string(self : DsgraphcompactCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactModel {
@@ -708,45 +708,45 @@ pub fn ds_graph_compact_model_make(size : Int) -> DsgraphcompactModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_model_len(s : DsgraphcompactModel) -> Int { s.size }
+pub fn DsgraphcompactModel::len(self : DsgraphcompactModel) -> Int { self.size }
 
-pub fn ds_graph_compact_model_get(s : DsgraphcompactModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactModel::get(self : DsgraphcompactModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_model_set(s : DsgraphcompactModel, i : Int, v : Double) -> DsgraphcompactModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactModel::set(self : DsgraphcompactModel, i : Int, v : Double) -> DsgraphcompactModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_model_sum(s : DsgraphcompactModel) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactModel::sum(self : DsgraphcompactModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_model_mean(s : DsgraphcompactModel) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactModel::mean(self : DsgraphcompactModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_model_scale(s : DsgraphcompactModel, f : Double) -> DsgraphcompactModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactModel::scale(self : DsgraphcompactModel, f : Double) -> DsgraphcompactModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_model_add(a : DsgraphcompactModel, b : DsgraphcompactModel) -> DsgraphcompactModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactModel::add(self : DsgraphcompactModel, other : DsgraphcompactModel) -> DsgraphcompactModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_model_copy(s : DsgraphcompactModel) -> DsgraphcompactModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactModel::copy(self : DsgraphcompactModel) -> DsgraphcompactModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_model_fill(s : DsgraphcompactModel, v : Double) -> DsgraphcompactModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactModel::fill(self : DsgraphcompactModel, v : Double) -> DsgraphcompactModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_model_min(s : DsgraphcompactModel) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactModel::min(self : DsgraphcompactModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_model_max(s : DsgraphcompactModel) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactModel::max(self : DsgraphcompactModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_model_to_string(s : DsgraphcompactModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactModel::to_string(self : DsgraphcompactModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactLayer {
@@ -759,45 +759,45 @@ pub fn ds_graph_compact_layer_make(size : Int) -> DsgraphcompactLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_layer_len(s : DsgraphcompactLayer) -> Int { s.size }
+pub fn DsgraphcompactLayer::len(self : DsgraphcompactLayer) -> Int { self.size }
 
-pub fn ds_graph_compact_layer_get(s : DsgraphcompactLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactLayer::get(self : DsgraphcompactLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_layer_set(s : DsgraphcompactLayer, i : Int, v : Double) -> DsgraphcompactLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactLayer::set(self : DsgraphcompactLayer, i : Int, v : Double) -> DsgraphcompactLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_layer_sum(s : DsgraphcompactLayer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactLayer::sum(self : DsgraphcompactLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_layer_mean(s : DsgraphcompactLayer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactLayer::mean(self : DsgraphcompactLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_layer_scale(s : DsgraphcompactLayer, f : Double) -> DsgraphcompactLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactLayer::scale(self : DsgraphcompactLayer, f : Double) -> DsgraphcompactLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_layer_add(a : DsgraphcompactLayer, b : DsgraphcompactLayer) -> DsgraphcompactLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactLayer::add(self : DsgraphcompactLayer, other : DsgraphcompactLayer) -> DsgraphcompactLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_layer_copy(s : DsgraphcompactLayer) -> DsgraphcompactLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactLayer::copy(self : DsgraphcompactLayer) -> DsgraphcompactLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_layer_fill(s : DsgraphcompactLayer, v : Double) -> DsgraphcompactLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactLayer::fill(self : DsgraphcompactLayer, v : Double) -> DsgraphcompactLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_layer_min(s : DsgraphcompactLayer) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactLayer::min(self : DsgraphcompactLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_layer_max(s : DsgraphcompactLayer) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactLayer::max(self : DsgraphcompactLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_layer_to_string(s : DsgraphcompactLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactLayer::to_string(self : DsgraphcompactLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactBuffer {
@@ -810,45 +810,45 @@ pub fn ds_graph_compact_buffer_make(size : Int) -> DsgraphcompactBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_buffer_len(s : DsgraphcompactBuffer) -> Int { s.size }
+pub fn DsgraphcompactBuffer::len(self : DsgraphcompactBuffer) -> Int { self.size }
 
-pub fn ds_graph_compact_buffer_get(s : DsgraphcompactBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactBuffer::get(self : DsgraphcompactBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_buffer_set(s : DsgraphcompactBuffer, i : Int, v : Double) -> DsgraphcompactBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactBuffer::set(self : DsgraphcompactBuffer, i : Int, v : Double) -> DsgraphcompactBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_buffer_sum(s : DsgraphcompactBuffer) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactBuffer::sum(self : DsgraphcompactBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_buffer_mean(s : DsgraphcompactBuffer) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactBuffer::mean(self : DsgraphcompactBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_buffer_scale(s : DsgraphcompactBuffer, f : Double) -> DsgraphcompactBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactBuffer::scale(self : DsgraphcompactBuffer, f : Double) -> DsgraphcompactBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_buffer_add(a : DsgraphcompactBuffer, b : DsgraphcompactBuffer) -> DsgraphcompactBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactBuffer::add(self : DsgraphcompactBuffer, other : DsgraphcompactBuffer) -> DsgraphcompactBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_buffer_copy(s : DsgraphcompactBuffer) -> DsgraphcompactBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactBuffer::copy(self : DsgraphcompactBuffer) -> DsgraphcompactBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_buffer_fill(s : DsgraphcompactBuffer, v : Double) -> DsgraphcompactBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactBuffer::fill(self : DsgraphcompactBuffer, v : Double) -> DsgraphcompactBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_buffer_min(s : DsgraphcompactBuffer) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactBuffer::min(self : DsgraphcompactBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_buffer_max(s : DsgraphcompactBuffer) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactBuffer::max(self : DsgraphcompactBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_buffer_to_string(s : DsgraphcompactBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactBuffer::to_string(self : DsgraphcompactBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactCursor {
@@ -861,45 +861,45 @@ pub fn ds_graph_compact_cursor_make(size : Int) -> DsgraphcompactCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_cursor_len(s : DsgraphcompactCursor) -> Int { s.size }
+pub fn DsgraphcompactCursor::len(self : DsgraphcompactCursor) -> Int { self.size }
 
-pub fn ds_graph_compact_cursor_get(s : DsgraphcompactCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactCursor::get(self : DsgraphcompactCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_cursor_set(s : DsgraphcompactCursor, i : Int, v : Double) -> DsgraphcompactCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactCursor::set(self : DsgraphcompactCursor, i : Int, v : Double) -> DsgraphcompactCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cursor_sum(s : DsgraphcompactCursor) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactCursor::sum(self : DsgraphcompactCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_cursor_mean(s : DsgraphcompactCursor) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactCursor::mean(self : DsgraphcompactCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_cursor_scale(s : DsgraphcompactCursor, f : Double) -> DsgraphcompactCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactCursor::scale(self : DsgraphcompactCursor, f : Double) -> DsgraphcompactCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cursor_add(a : DsgraphcompactCursor, b : DsgraphcompactCursor) -> DsgraphcompactCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactCursor::add(self : DsgraphcompactCursor, other : DsgraphcompactCursor) -> DsgraphcompactCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cursor_copy(s : DsgraphcompactCursor) -> DsgraphcompactCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactCursor::copy(self : DsgraphcompactCursor) -> DsgraphcompactCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cursor_fill(s : DsgraphcompactCursor, v : Double) -> DsgraphcompactCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactCursor::fill(self : DsgraphcompactCursor, v : Double) -> DsgraphcompactCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_cursor_min(s : DsgraphcompactCursor) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactCursor::min(self : DsgraphcompactCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_cursor_max(s : DsgraphcompactCursor) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactCursor::max(self : DsgraphcompactCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_cursor_to_string(s : DsgraphcompactCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactCursor::to_string(self : DsgraphcompactCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactView {
@@ -912,45 +912,45 @@ pub fn ds_graph_compact_view_make(size : Int) -> DsgraphcompactView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_view_len(s : DsgraphcompactView) -> Int { s.size }
+pub fn DsgraphcompactView::len(self : DsgraphcompactView) -> Int { self.size }
 
-pub fn ds_graph_compact_view_get(s : DsgraphcompactView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactView::get(self : DsgraphcompactView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_view_set(s : DsgraphcompactView, i : Int, v : Double) -> DsgraphcompactView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactView::set(self : DsgraphcompactView, i : Int, v : Double) -> DsgraphcompactView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_view_sum(s : DsgraphcompactView) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactView::sum(self : DsgraphcompactView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_view_mean(s : DsgraphcompactView) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactView::mean(self : DsgraphcompactView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_view_scale(s : DsgraphcompactView, f : Double) -> DsgraphcompactView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactView::scale(self : DsgraphcompactView, f : Double) -> DsgraphcompactView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_view_add(a : DsgraphcompactView, b : DsgraphcompactView) -> DsgraphcompactView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactView::add(self : DsgraphcompactView, other : DsgraphcompactView) -> DsgraphcompactView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_view_copy(s : DsgraphcompactView) -> DsgraphcompactView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactView::copy(self : DsgraphcompactView) -> DsgraphcompactView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_view_fill(s : DsgraphcompactView, v : Double) -> DsgraphcompactView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactView::fill(self : DsgraphcompactView, v : Double) -> DsgraphcompactView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_view_min(s : DsgraphcompactView) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactView::min(self : DsgraphcompactView) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_view_max(s : DsgraphcompactView) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactView::max(self : DsgraphcompactView) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_view_to_string(s : DsgraphcompactView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactView::to_string(self : DsgraphcompactView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactRange {
@@ -963,45 +963,45 @@ pub fn ds_graph_compact_range_make(size : Int) -> DsgraphcompactRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_range_len(s : DsgraphcompactRange) -> Int { s.size }
+pub fn DsgraphcompactRange::len(self : DsgraphcompactRange) -> Int { self.size }
 
-pub fn ds_graph_compact_range_get(s : DsgraphcompactRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactRange::get(self : DsgraphcompactRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_range_set(s : DsgraphcompactRange, i : Int, v : Double) -> DsgraphcompactRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactRange::set(self : DsgraphcompactRange, i : Int, v : Double) -> DsgraphcompactRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_range_sum(s : DsgraphcompactRange) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactRange::sum(self : DsgraphcompactRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_range_mean(s : DsgraphcompactRange) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactRange::mean(self : DsgraphcompactRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_range_scale(s : DsgraphcompactRange, f : Double) -> DsgraphcompactRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactRange::scale(self : DsgraphcompactRange, f : Double) -> DsgraphcompactRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_range_add(a : DsgraphcompactRange, b : DsgraphcompactRange) -> DsgraphcompactRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactRange::add(self : DsgraphcompactRange, other : DsgraphcompactRange) -> DsgraphcompactRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_range_copy(s : DsgraphcompactRange) -> DsgraphcompactRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactRange::copy(self : DsgraphcompactRange) -> DsgraphcompactRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_range_fill(s : DsgraphcompactRange, v : Double) -> DsgraphcompactRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactRange::fill(self : DsgraphcompactRange, v : Double) -> DsgraphcompactRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_range_min(s : DsgraphcompactRange) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactRange::min(self : DsgraphcompactRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_range_max(s : DsgraphcompactRange) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactRange::max(self : DsgraphcompactRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_range_to_string(s : DsgraphcompactRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactRange::to_string(self : DsgraphcompactRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DsgraphcompactSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_graph_compact_slice_make(size : Int) -> DsgraphcompactSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_graph_compact_slice_len(s : DsgraphcompactSlice) -> Int { s.size }
+pub fn DsgraphcompactSlice::len(self : DsgraphcompactSlice) -> Int { self.size }
 
-pub fn ds_graph_compact_slice_get(s : DsgraphcompactSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DsgraphcompactSlice::get(self : DsgraphcompactSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_graph_compact_slice_set(s : DsgraphcompactSlice, i : Int, v : Double) -> DsgraphcompactSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DsgraphcompactSlice::set(self : DsgraphcompactSlice, i : Int, v : Double) -> DsgraphcompactSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_slice_sum(s : DsgraphcompactSlice) -> Double { @_common.sum(s.data) }
+pub fn DsgraphcompactSlice::sum(self : DsgraphcompactSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_graph_compact_slice_mean(s : DsgraphcompactSlice) -> Double { @_common.mean(s.data) }
+pub fn DsgraphcompactSlice::mean(self : DsgraphcompactSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_graph_compact_slice_scale(s : DsgraphcompactSlice, f : Double) -> DsgraphcompactSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DsgraphcompactSlice::scale(self : DsgraphcompactSlice, f : Double) -> DsgraphcompactSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_slice_add(a : DsgraphcompactSlice, b : DsgraphcompactSlice) -> DsgraphcompactSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DsgraphcompactSlice::add(self : DsgraphcompactSlice, other : DsgraphcompactSlice) -> DsgraphcompactSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_graph_compact_slice_copy(s : DsgraphcompactSlice) -> DsgraphcompactSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DsgraphcompactSlice::copy(self : DsgraphcompactSlice) -> DsgraphcompactSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_slice_fill(s : DsgraphcompactSlice, v : Double) -> DsgraphcompactSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DsgraphcompactSlice::fill(self : DsgraphcompactSlice, v : Double) -> DsgraphcompactSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_graph_compact_slice_min(s : DsgraphcompactSlice) -> Double { @_common.min(s.data) }
+pub fn DsgraphcompactSlice::min(self : DsgraphcompactSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_graph_compact_slice_max(s : DsgraphcompactSlice) -> Double { @_common.max(s.data) }
+pub fn DsgraphcompactSlice::max(self : DsgraphcompactSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_graph_compact_slice_to_string(s : DsgraphcompactSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DsgraphcompactSlice::to_string(self : DsgraphcompactSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

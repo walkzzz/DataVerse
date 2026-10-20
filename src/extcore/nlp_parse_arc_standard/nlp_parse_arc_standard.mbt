@@ -351,45 +351,45 @@ pub fn nlp_parse_arc_standard_frame_make(size : Int) -> NlpparsearcstandardFrame
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_frame_len(s : NlpparsearcstandardFrame) -> Int { s.size }
+pub fn NlpparsearcstandardFrame::len(self : NlpparsearcstandardFrame) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_frame_get(s : NlpparsearcstandardFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardFrame::get(self : NlpparsearcstandardFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_frame_set(s : NlpparsearcstandardFrame, i : Int, v : Double) -> NlpparsearcstandardFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardFrame::set(self : NlpparsearcstandardFrame, i : Int, v : Double) -> NlpparsearcstandardFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_frame_sum(s : NlpparsearcstandardFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardFrame::sum(self : NlpparsearcstandardFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_frame_mean(s : NlpparsearcstandardFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardFrame::mean(self : NlpparsearcstandardFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_frame_scale(s : NlpparsearcstandardFrame, f : Double) -> NlpparsearcstandardFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardFrame::scale(self : NlpparsearcstandardFrame, f : Double) -> NlpparsearcstandardFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_frame_add(a : NlpparsearcstandardFrame, b : NlpparsearcstandardFrame) -> NlpparsearcstandardFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardFrame::add(self : NlpparsearcstandardFrame, other : NlpparsearcstandardFrame) -> NlpparsearcstandardFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_frame_copy(s : NlpparsearcstandardFrame) -> NlpparsearcstandardFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardFrame::copy(self : NlpparsearcstandardFrame) -> NlpparsearcstandardFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_frame_fill(s : NlpparsearcstandardFrame, v : Double) -> NlpparsearcstandardFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardFrame::fill(self : NlpparsearcstandardFrame, v : Double) -> NlpparsearcstandardFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_frame_min(s : NlpparsearcstandardFrame) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardFrame::min(self : NlpparsearcstandardFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_frame_max(s : NlpparsearcstandardFrame) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardFrame::max(self : NlpparsearcstandardFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_frame_to_string(s : NlpparsearcstandardFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardFrame::to_string(self : NlpparsearcstandardFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardTable {
@@ -402,45 +402,45 @@ pub fn nlp_parse_arc_standard_table_make(size : Int) -> NlpparsearcstandardTable
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_table_len(s : NlpparsearcstandardTable) -> Int { s.size }
+pub fn NlpparsearcstandardTable::len(self : NlpparsearcstandardTable) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_table_get(s : NlpparsearcstandardTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardTable::get(self : NlpparsearcstandardTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_table_set(s : NlpparsearcstandardTable, i : Int, v : Double) -> NlpparsearcstandardTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardTable::set(self : NlpparsearcstandardTable, i : Int, v : Double) -> NlpparsearcstandardTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_table_sum(s : NlpparsearcstandardTable) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardTable::sum(self : NlpparsearcstandardTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_table_mean(s : NlpparsearcstandardTable) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardTable::mean(self : NlpparsearcstandardTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_table_scale(s : NlpparsearcstandardTable, f : Double) -> NlpparsearcstandardTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardTable::scale(self : NlpparsearcstandardTable, f : Double) -> NlpparsearcstandardTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_table_add(a : NlpparsearcstandardTable, b : NlpparsearcstandardTable) -> NlpparsearcstandardTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardTable::add(self : NlpparsearcstandardTable, other : NlpparsearcstandardTable) -> NlpparsearcstandardTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_table_copy(s : NlpparsearcstandardTable) -> NlpparsearcstandardTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardTable::copy(self : NlpparsearcstandardTable) -> NlpparsearcstandardTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_table_fill(s : NlpparsearcstandardTable, v : Double) -> NlpparsearcstandardTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardTable::fill(self : NlpparsearcstandardTable, v : Double) -> NlpparsearcstandardTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_table_min(s : NlpparsearcstandardTable) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardTable::min(self : NlpparsearcstandardTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_table_max(s : NlpparsearcstandardTable) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardTable::max(self : NlpparsearcstandardTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_table_to_string(s : NlpparsearcstandardTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardTable::to_string(self : NlpparsearcstandardTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_parse_arc_standard_graphn_make(size : Int) -> NlpparsearcstandardGrap
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_graphn_len(s : NlpparsearcstandardGraphN) -> Int { s.size }
+pub fn NlpparsearcstandardGraphN::len(self : NlpparsearcstandardGraphN) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_graphn_get(s : NlpparsearcstandardGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardGraphN::get(self : NlpparsearcstandardGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_graphn_set(s : NlpparsearcstandardGraphN, i : Int, v : Double) -> NlpparsearcstandardGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardGraphN::set(self : NlpparsearcstandardGraphN, i : Int, v : Double) -> NlpparsearcstandardGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_graphn_sum(s : NlpparsearcstandardGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardGraphN::sum(self : NlpparsearcstandardGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_graphn_mean(s : NlpparsearcstandardGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardGraphN::mean(self : NlpparsearcstandardGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_graphn_scale(s : NlpparsearcstandardGraphN, f : Double) -> NlpparsearcstandardGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardGraphN::scale(self : NlpparsearcstandardGraphN, f : Double) -> NlpparsearcstandardGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_graphn_add(a : NlpparsearcstandardGraphN, b : NlpparsearcstandardGraphN) -> NlpparsearcstandardGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardGraphN::add(self : NlpparsearcstandardGraphN, other : NlpparsearcstandardGraphN) -> NlpparsearcstandardGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_graphn_copy(s : NlpparsearcstandardGraphN) -> NlpparsearcstandardGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardGraphN::copy(self : NlpparsearcstandardGraphN) -> NlpparsearcstandardGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_graphn_fill(s : NlpparsearcstandardGraphN, v : Double) -> NlpparsearcstandardGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardGraphN::fill(self : NlpparsearcstandardGraphN, v : Double) -> NlpparsearcstandardGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_graphn_min(s : NlpparsearcstandardGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardGraphN::min(self : NlpparsearcstandardGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_graphn_max(s : NlpparsearcstandardGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardGraphN::max(self : NlpparsearcstandardGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_graphn_to_string(s : NlpparsearcstandardGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardGraphN::to_string(self : NlpparsearcstandardGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardNode {
@@ -504,45 +504,45 @@ pub fn nlp_parse_arc_standard_node_make(size : Int) -> NlpparsearcstandardNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_node_len(s : NlpparsearcstandardNode) -> Int { s.size }
+pub fn NlpparsearcstandardNode::len(self : NlpparsearcstandardNode) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_node_get(s : NlpparsearcstandardNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardNode::get(self : NlpparsearcstandardNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_node_set(s : NlpparsearcstandardNode, i : Int, v : Double) -> NlpparsearcstandardNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardNode::set(self : NlpparsearcstandardNode, i : Int, v : Double) -> NlpparsearcstandardNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_node_sum(s : NlpparsearcstandardNode) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardNode::sum(self : NlpparsearcstandardNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_node_mean(s : NlpparsearcstandardNode) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardNode::mean(self : NlpparsearcstandardNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_node_scale(s : NlpparsearcstandardNode, f : Double) -> NlpparsearcstandardNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardNode::scale(self : NlpparsearcstandardNode, f : Double) -> NlpparsearcstandardNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_node_add(a : NlpparsearcstandardNode, b : NlpparsearcstandardNode) -> NlpparsearcstandardNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardNode::add(self : NlpparsearcstandardNode, other : NlpparsearcstandardNode) -> NlpparsearcstandardNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_node_copy(s : NlpparsearcstandardNode) -> NlpparsearcstandardNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardNode::copy(self : NlpparsearcstandardNode) -> NlpparsearcstandardNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_node_fill(s : NlpparsearcstandardNode, v : Double) -> NlpparsearcstandardNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardNode::fill(self : NlpparsearcstandardNode, v : Double) -> NlpparsearcstandardNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_node_min(s : NlpparsearcstandardNode) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardNode::min(self : NlpparsearcstandardNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_node_max(s : NlpparsearcstandardNode) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardNode::max(self : NlpparsearcstandardNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_node_to_string(s : NlpparsearcstandardNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardNode::to_string(self : NlpparsearcstandardNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardEdge {
@@ -555,45 +555,45 @@ pub fn nlp_parse_arc_standard_edge_make(size : Int) -> NlpparsearcstandardEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_edge_len(s : NlpparsearcstandardEdge) -> Int { s.size }
+pub fn NlpparsearcstandardEdge::len(self : NlpparsearcstandardEdge) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_edge_get(s : NlpparsearcstandardEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardEdge::get(self : NlpparsearcstandardEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_edge_set(s : NlpparsearcstandardEdge, i : Int, v : Double) -> NlpparsearcstandardEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardEdge::set(self : NlpparsearcstandardEdge, i : Int, v : Double) -> NlpparsearcstandardEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_edge_sum(s : NlpparsearcstandardEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardEdge::sum(self : NlpparsearcstandardEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_edge_mean(s : NlpparsearcstandardEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardEdge::mean(self : NlpparsearcstandardEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_edge_scale(s : NlpparsearcstandardEdge, f : Double) -> NlpparsearcstandardEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardEdge::scale(self : NlpparsearcstandardEdge, f : Double) -> NlpparsearcstandardEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_edge_add(a : NlpparsearcstandardEdge, b : NlpparsearcstandardEdge) -> NlpparsearcstandardEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardEdge::add(self : NlpparsearcstandardEdge, other : NlpparsearcstandardEdge) -> NlpparsearcstandardEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_edge_copy(s : NlpparsearcstandardEdge) -> NlpparsearcstandardEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardEdge::copy(self : NlpparsearcstandardEdge) -> NlpparsearcstandardEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_edge_fill(s : NlpparsearcstandardEdge, v : Double) -> NlpparsearcstandardEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardEdge::fill(self : NlpparsearcstandardEdge, v : Double) -> NlpparsearcstandardEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_edge_min(s : NlpparsearcstandardEdge) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardEdge::min(self : NlpparsearcstandardEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_edge_max(s : NlpparsearcstandardEdge) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardEdge::max(self : NlpparsearcstandardEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_edge_to_string(s : NlpparsearcstandardEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardEdge::to_string(self : NlpparsearcstandardEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardPath {
@@ -606,45 +606,45 @@ pub fn nlp_parse_arc_standard_path_make(size : Int) -> NlpparsearcstandardPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_path_len(s : NlpparsearcstandardPath) -> Int { s.size }
+pub fn NlpparsearcstandardPath::len(self : NlpparsearcstandardPath) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_path_get(s : NlpparsearcstandardPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardPath::get(self : NlpparsearcstandardPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_path_set(s : NlpparsearcstandardPath, i : Int, v : Double) -> NlpparsearcstandardPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardPath::set(self : NlpparsearcstandardPath, i : Int, v : Double) -> NlpparsearcstandardPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_path_sum(s : NlpparsearcstandardPath) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardPath::sum(self : NlpparsearcstandardPath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_path_mean(s : NlpparsearcstandardPath) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardPath::mean(self : NlpparsearcstandardPath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_path_scale(s : NlpparsearcstandardPath, f : Double) -> NlpparsearcstandardPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardPath::scale(self : NlpparsearcstandardPath, f : Double) -> NlpparsearcstandardPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_path_add(a : NlpparsearcstandardPath, b : NlpparsearcstandardPath) -> NlpparsearcstandardPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardPath::add(self : NlpparsearcstandardPath, other : NlpparsearcstandardPath) -> NlpparsearcstandardPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_path_copy(s : NlpparsearcstandardPath) -> NlpparsearcstandardPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardPath::copy(self : NlpparsearcstandardPath) -> NlpparsearcstandardPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_path_fill(s : NlpparsearcstandardPath, v : Double) -> NlpparsearcstandardPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardPath::fill(self : NlpparsearcstandardPath, v : Double) -> NlpparsearcstandardPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_path_min(s : NlpparsearcstandardPath) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardPath::min(self : NlpparsearcstandardPath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_path_max(s : NlpparsearcstandardPath) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardPath::max(self : NlpparsearcstandardPath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_path_to_string(s : NlpparsearcstandardPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardPath::to_string(self : NlpparsearcstandardPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardCluster {
@@ -657,45 +657,45 @@ pub fn nlp_parse_arc_standard_cluster_make(size : Int) -> NlpparsearcstandardClu
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_cluster_len(s : NlpparsearcstandardCluster) -> Int { s.size }
+pub fn NlpparsearcstandardCluster::len(self : NlpparsearcstandardCluster) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_cluster_get(s : NlpparsearcstandardCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardCluster::get(self : NlpparsearcstandardCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_cluster_set(s : NlpparsearcstandardCluster, i : Int, v : Double) -> NlpparsearcstandardCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCluster::set(self : NlpparsearcstandardCluster, i : Int, v : Double) -> NlpparsearcstandardCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cluster_sum(s : NlpparsearcstandardCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardCluster::sum(self : NlpparsearcstandardCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_cluster_mean(s : NlpparsearcstandardCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardCluster::mean(self : NlpparsearcstandardCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_cluster_scale(s : NlpparsearcstandardCluster, f : Double) -> NlpparsearcstandardCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCluster::scale(self : NlpparsearcstandardCluster, f : Double) -> NlpparsearcstandardCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cluster_add(a : NlpparsearcstandardCluster, b : NlpparsearcstandardCluster) -> NlpparsearcstandardCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardCluster::add(self : NlpparsearcstandardCluster, other : NlpparsearcstandardCluster) -> NlpparsearcstandardCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cluster_copy(s : NlpparsearcstandardCluster) -> NlpparsearcstandardCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCluster::copy(self : NlpparsearcstandardCluster) -> NlpparsearcstandardCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cluster_fill(s : NlpparsearcstandardCluster, v : Double) -> NlpparsearcstandardCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCluster::fill(self : NlpparsearcstandardCluster, v : Double) -> NlpparsearcstandardCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cluster_min(s : NlpparsearcstandardCluster) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardCluster::min(self : NlpparsearcstandardCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_cluster_max(s : NlpparsearcstandardCluster) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardCluster::max(self : NlpparsearcstandardCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_cluster_to_string(s : NlpparsearcstandardCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardCluster::to_string(self : NlpparsearcstandardCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardModel {
@@ -708,45 +708,45 @@ pub fn nlp_parse_arc_standard_model_make(size : Int) -> NlpparsearcstandardModel
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_model_len(s : NlpparsearcstandardModel) -> Int { s.size }
+pub fn NlpparsearcstandardModel::len(self : NlpparsearcstandardModel) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_model_get(s : NlpparsearcstandardModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardModel::get(self : NlpparsearcstandardModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_model_set(s : NlpparsearcstandardModel, i : Int, v : Double) -> NlpparsearcstandardModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardModel::set(self : NlpparsearcstandardModel, i : Int, v : Double) -> NlpparsearcstandardModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_model_sum(s : NlpparsearcstandardModel) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardModel::sum(self : NlpparsearcstandardModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_model_mean(s : NlpparsearcstandardModel) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardModel::mean(self : NlpparsearcstandardModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_model_scale(s : NlpparsearcstandardModel, f : Double) -> NlpparsearcstandardModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardModel::scale(self : NlpparsearcstandardModel, f : Double) -> NlpparsearcstandardModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_model_add(a : NlpparsearcstandardModel, b : NlpparsearcstandardModel) -> NlpparsearcstandardModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardModel::add(self : NlpparsearcstandardModel, other : NlpparsearcstandardModel) -> NlpparsearcstandardModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_model_copy(s : NlpparsearcstandardModel) -> NlpparsearcstandardModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardModel::copy(self : NlpparsearcstandardModel) -> NlpparsearcstandardModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_model_fill(s : NlpparsearcstandardModel, v : Double) -> NlpparsearcstandardModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardModel::fill(self : NlpparsearcstandardModel, v : Double) -> NlpparsearcstandardModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_model_min(s : NlpparsearcstandardModel) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardModel::min(self : NlpparsearcstandardModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_model_max(s : NlpparsearcstandardModel) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardModel::max(self : NlpparsearcstandardModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_model_to_string(s : NlpparsearcstandardModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardModel::to_string(self : NlpparsearcstandardModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardLayer {
@@ -759,45 +759,45 @@ pub fn nlp_parse_arc_standard_layer_make(size : Int) -> NlpparsearcstandardLayer
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_layer_len(s : NlpparsearcstandardLayer) -> Int { s.size }
+pub fn NlpparsearcstandardLayer::len(self : NlpparsearcstandardLayer) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_layer_get(s : NlpparsearcstandardLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardLayer::get(self : NlpparsearcstandardLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_layer_set(s : NlpparsearcstandardLayer, i : Int, v : Double) -> NlpparsearcstandardLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardLayer::set(self : NlpparsearcstandardLayer, i : Int, v : Double) -> NlpparsearcstandardLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_layer_sum(s : NlpparsearcstandardLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardLayer::sum(self : NlpparsearcstandardLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_layer_mean(s : NlpparsearcstandardLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardLayer::mean(self : NlpparsearcstandardLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_layer_scale(s : NlpparsearcstandardLayer, f : Double) -> NlpparsearcstandardLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardLayer::scale(self : NlpparsearcstandardLayer, f : Double) -> NlpparsearcstandardLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_layer_add(a : NlpparsearcstandardLayer, b : NlpparsearcstandardLayer) -> NlpparsearcstandardLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardLayer::add(self : NlpparsearcstandardLayer, other : NlpparsearcstandardLayer) -> NlpparsearcstandardLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_layer_copy(s : NlpparsearcstandardLayer) -> NlpparsearcstandardLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardLayer::copy(self : NlpparsearcstandardLayer) -> NlpparsearcstandardLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_layer_fill(s : NlpparsearcstandardLayer, v : Double) -> NlpparsearcstandardLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardLayer::fill(self : NlpparsearcstandardLayer, v : Double) -> NlpparsearcstandardLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_layer_min(s : NlpparsearcstandardLayer) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardLayer::min(self : NlpparsearcstandardLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_layer_max(s : NlpparsearcstandardLayer) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardLayer::max(self : NlpparsearcstandardLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_layer_to_string(s : NlpparsearcstandardLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardLayer::to_string(self : NlpparsearcstandardLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_parse_arc_standard_buffer_make(size : Int) -> NlpparsearcstandardBuff
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_buffer_len(s : NlpparsearcstandardBuffer) -> Int { s.size }
+pub fn NlpparsearcstandardBuffer::len(self : NlpparsearcstandardBuffer) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_buffer_get(s : NlpparsearcstandardBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardBuffer::get(self : NlpparsearcstandardBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_buffer_set(s : NlpparsearcstandardBuffer, i : Int, v : Double) -> NlpparsearcstandardBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardBuffer::set(self : NlpparsearcstandardBuffer, i : Int, v : Double) -> NlpparsearcstandardBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_buffer_sum(s : NlpparsearcstandardBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardBuffer::sum(self : NlpparsearcstandardBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_buffer_mean(s : NlpparsearcstandardBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardBuffer::mean(self : NlpparsearcstandardBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_buffer_scale(s : NlpparsearcstandardBuffer, f : Double) -> NlpparsearcstandardBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardBuffer::scale(self : NlpparsearcstandardBuffer, f : Double) -> NlpparsearcstandardBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_buffer_add(a : NlpparsearcstandardBuffer, b : NlpparsearcstandardBuffer) -> NlpparsearcstandardBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardBuffer::add(self : NlpparsearcstandardBuffer, other : NlpparsearcstandardBuffer) -> NlpparsearcstandardBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_buffer_copy(s : NlpparsearcstandardBuffer) -> NlpparsearcstandardBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardBuffer::copy(self : NlpparsearcstandardBuffer) -> NlpparsearcstandardBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_buffer_fill(s : NlpparsearcstandardBuffer, v : Double) -> NlpparsearcstandardBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardBuffer::fill(self : NlpparsearcstandardBuffer, v : Double) -> NlpparsearcstandardBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_buffer_min(s : NlpparsearcstandardBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardBuffer::min(self : NlpparsearcstandardBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_buffer_max(s : NlpparsearcstandardBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardBuffer::max(self : NlpparsearcstandardBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_buffer_to_string(s : NlpparsearcstandardBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardBuffer::to_string(self : NlpparsearcstandardBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardCursor {
@@ -861,45 +861,45 @@ pub fn nlp_parse_arc_standard_cursor_make(size : Int) -> NlpparsearcstandardCurs
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_cursor_len(s : NlpparsearcstandardCursor) -> Int { s.size }
+pub fn NlpparsearcstandardCursor::len(self : NlpparsearcstandardCursor) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_cursor_get(s : NlpparsearcstandardCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardCursor::get(self : NlpparsearcstandardCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_cursor_set(s : NlpparsearcstandardCursor, i : Int, v : Double) -> NlpparsearcstandardCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCursor::set(self : NlpparsearcstandardCursor, i : Int, v : Double) -> NlpparsearcstandardCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cursor_sum(s : NlpparsearcstandardCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardCursor::sum(self : NlpparsearcstandardCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_cursor_mean(s : NlpparsearcstandardCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardCursor::mean(self : NlpparsearcstandardCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_cursor_scale(s : NlpparsearcstandardCursor, f : Double) -> NlpparsearcstandardCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCursor::scale(self : NlpparsearcstandardCursor, f : Double) -> NlpparsearcstandardCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cursor_add(a : NlpparsearcstandardCursor, b : NlpparsearcstandardCursor) -> NlpparsearcstandardCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardCursor::add(self : NlpparsearcstandardCursor, other : NlpparsearcstandardCursor) -> NlpparsearcstandardCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cursor_copy(s : NlpparsearcstandardCursor) -> NlpparsearcstandardCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCursor::copy(self : NlpparsearcstandardCursor) -> NlpparsearcstandardCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cursor_fill(s : NlpparsearcstandardCursor, v : Double) -> NlpparsearcstandardCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardCursor::fill(self : NlpparsearcstandardCursor, v : Double) -> NlpparsearcstandardCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_cursor_min(s : NlpparsearcstandardCursor) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardCursor::min(self : NlpparsearcstandardCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_cursor_max(s : NlpparsearcstandardCursor) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardCursor::max(self : NlpparsearcstandardCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_cursor_to_string(s : NlpparsearcstandardCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardCursor::to_string(self : NlpparsearcstandardCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardView {
@@ -912,45 +912,45 @@ pub fn nlp_parse_arc_standard_view_make(size : Int) -> NlpparsearcstandardView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_view_len(s : NlpparsearcstandardView) -> Int { s.size }
+pub fn NlpparsearcstandardView::len(self : NlpparsearcstandardView) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_view_get(s : NlpparsearcstandardView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardView::get(self : NlpparsearcstandardView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_view_set(s : NlpparsearcstandardView, i : Int, v : Double) -> NlpparsearcstandardView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardView::set(self : NlpparsearcstandardView, i : Int, v : Double) -> NlpparsearcstandardView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_view_sum(s : NlpparsearcstandardView) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardView::sum(self : NlpparsearcstandardView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_view_mean(s : NlpparsearcstandardView) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardView::mean(self : NlpparsearcstandardView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_view_scale(s : NlpparsearcstandardView, f : Double) -> NlpparsearcstandardView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardView::scale(self : NlpparsearcstandardView, f : Double) -> NlpparsearcstandardView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_view_add(a : NlpparsearcstandardView, b : NlpparsearcstandardView) -> NlpparsearcstandardView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardView::add(self : NlpparsearcstandardView, other : NlpparsearcstandardView) -> NlpparsearcstandardView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_view_copy(s : NlpparsearcstandardView) -> NlpparsearcstandardView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardView::copy(self : NlpparsearcstandardView) -> NlpparsearcstandardView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_view_fill(s : NlpparsearcstandardView, v : Double) -> NlpparsearcstandardView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardView::fill(self : NlpparsearcstandardView, v : Double) -> NlpparsearcstandardView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_view_min(s : NlpparsearcstandardView) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardView::min(self : NlpparsearcstandardView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_view_max(s : NlpparsearcstandardView) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardView::max(self : NlpparsearcstandardView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_view_to_string(s : NlpparsearcstandardView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardView::to_string(self : NlpparsearcstandardView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardRange {
@@ -963,45 +963,45 @@ pub fn nlp_parse_arc_standard_range_make(size : Int) -> NlpparsearcstandardRange
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_range_len(s : NlpparsearcstandardRange) -> Int { s.size }
+pub fn NlpparsearcstandardRange::len(self : NlpparsearcstandardRange) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_range_get(s : NlpparsearcstandardRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardRange::get(self : NlpparsearcstandardRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_range_set(s : NlpparsearcstandardRange, i : Int, v : Double) -> NlpparsearcstandardRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardRange::set(self : NlpparsearcstandardRange, i : Int, v : Double) -> NlpparsearcstandardRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_range_sum(s : NlpparsearcstandardRange) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardRange::sum(self : NlpparsearcstandardRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_range_mean(s : NlpparsearcstandardRange) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardRange::mean(self : NlpparsearcstandardRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_range_scale(s : NlpparsearcstandardRange, f : Double) -> NlpparsearcstandardRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardRange::scale(self : NlpparsearcstandardRange, f : Double) -> NlpparsearcstandardRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_range_add(a : NlpparsearcstandardRange, b : NlpparsearcstandardRange) -> NlpparsearcstandardRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardRange::add(self : NlpparsearcstandardRange, other : NlpparsearcstandardRange) -> NlpparsearcstandardRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_range_copy(s : NlpparsearcstandardRange) -> NlpparsearcstandardRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardRange::copy(self : NlpparsearcstandardRange) -> NlpparsearcstandardRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_range_fill(s : NlpparsearcstandardRange, v : Double) -> NlpparsearcstandardRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardRange::fill(self : NlpparsearcstandardRange, v : Double) -> NlpparsearcstandardRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_range_min(s : NlpparsearcstandardRange) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardRange::min(self : NlpparsearcstandardRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_range_max(s : NlpparsearcstandardRange) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardRange::max(self : NlpparsearcstandardRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_range_to_string(s : NlpparsearcstandardRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardRange::to_string(self : NlpparsearcstandardRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpparsearcstandardSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_parse_arc_standard_slice_make(size : Int) -> NlpparsearcstandardSlice
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_parse_arc_standard_slice_len(s : NlpparsearcstandardSlice) -> Int { s.size }
+pub fn NlpparsearcstandardSlice::len(self : NlpparsearcstandardSlice) -> Int { self.size }
 
-pub fn nlp_parse_arc_standard_slice_get(s : NlpparsearcstandardSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpparsearcstandardSlice::get(self : NlpparsearcstandardSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_parse_arc_standard_slice_set(s : NlpparsearcstandardSlice, i : Int, v : Double) -> NlpparsearcstandardSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardSlice::set(self : NlpparsearcstandardSlice, i : Int, v : Double) -> NlpparsearcstandardSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_slice_sum(s : NlpparsearcstandardSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpparsearcstandardSlice::sum(self : NlpparsearcstandardSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_parse_arc_standard_slice_mean(s : NlpparsearcstandardSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpparsearcstandardSlice::mean(self : NlpparsearcstandardSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_parse_arc_standard_slice_scale(s : NlpparsearcstandardSlice, f : Double) -> NlpparsearcstandardSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardSlice::scale(self : NlpparsearcstandardSlice, f : Double) -> NlpparsearcstandardSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_slice_add(a : NlpparsearcstandardSlice, b : NlpparsearcstandardSlice) -> NlpparsearcstandardSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpparsearcstandardSlice::add(self : NlpparsearcstandardSlice, other : NlpparsearcstandardSlice) -> NlpparsearcstandardSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_slice_copy(s : NlpparsearcstandardSlice) -> NlpparsearcstandardSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardSlice::copy(self : NlpparsearcstandardSlice) -> NlpparsearcstandardSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_slice_fill(s : NlpparsearcstandardSlice, v : Double) -> NlpparsearcstandardSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpparsearcstandardSlice::fill(self : NlpparsearcstandardSlice, v : Double) -> NlpparsearcstandardSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_parse_arc_standard_slice_min(s : NlpparsearcstandardSlice) -> Double { @_common.min(s.data) }
+pub fn NlpparsearcstandardSlice::min(self : NlpparsearcstandardSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_parse_arc_standard_slice_max(s : NlpparsearcstandardSlice) -> Double { @_common.max(s.data) }
+pub fn NlpparsearcstandardSlice::max(self : NlpparsearcstandardSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_parse_arc_standard_slice_to_string(s : NlpparsearcstandardSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpparsearcstandardSlice::to_string(self : NlpparsearcstandardSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn graph_search_johnson_frame_make(size : Int) -> GraphsearchjohnsonFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_frame_len(s : GraphsearchjohnsonFrame) -> Int { s.size }
+pub fn GraphsearchjohnsonFrame::len(self : GraphsearchjohnsonFrame) -> Int { self.size }
 
-pub fn graph_search_johnson_frame_get(s : GraphsearchjohnsonFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonFrame::get(self : GraphsearchjohnsonFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_frame_set(s : GraphsearchjohnsonFrame, i : Int, v : Double) -> GraphsearchjohnsonFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonFrame::set(self : GraphsearchjohnsonFrame, i : Int, v : Double) -> GraphsearchjohnsonFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_frame_sum(s : GraphsearchjohnsonFrame) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonFrame::sum(self : GraphsearchjohnsonFrame) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_frame_mean(s : GraphsearchjohnsonFrame) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonFrame::mean(self : GraphsearchjohnsonFrame) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_frame_scale(s : GraphsearchjohnsonFrame, f : Double) -> GraphsearchjohnsonFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonFrame::scale(self : GraphsearchjohnsonFrame, f : Double) -> GraphsearchjohnsonFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_frame_add(a : GraphsearchjohnsonFrame, b : GraphsearchjohnsonFrame) -> GraphsearchjohnsonFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonFrame::add(self : GraphsearchjohnsonFrame, other : GraphsearchjohnsonFrame) -> GraphsearchjohnsonFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_frame_copy(s : GraphsearchjohnsonFrame) -> GraphsearchjohnsonFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonFrame::copy(self : GraphsearchjohnsonFrame) -> GraphsearchjohnsonFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_frame_fill(s : GraphsearchjohnsonFrame, v : Double) -> GraphsearchjohnsonFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonFrame::fill(self : GraphsearchjohnsonFrame, v : Double) -> GraphsearchjohnsonFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_frame_min(s : GraphsearchjohnsonFrame) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonFrame::min(self : GraphsearchjohnsonFrame) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_frame_max(s : GraphsearchjohnsonFrame) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonFrame::max(self : GraphsearchjohnsonFrame) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_frame_to_string(s : GraphsearchjohnsonFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonFrame::to_string(self : GraphsearchjohnsonFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonTable {
@@ -402,45 +402,45 @@ pub fn graph_search_johnson_table_make(size : Int) -> GraphsearchjohnsonTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_table_len(s : GraphsearchjohnsonTable) -> Int { s.size }
+pub fn GraphsearchjohnsonTable::len(self : GraphsearchjohnsonTable) -> Int { self.size }
 
-pub fn graph_search_johnson_table_get(s : GraphsearchjohnsonTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonTable::get(self : GraphsearchjohnsonTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_table_set(s : GraphsearchjohnsonTable, i : Int, v : Double) -> GraphsearchjohnsonTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonTable::set(self : GraphsearchjohnsonTable, i : Int, v : Double) -> GraphsearchjohnsonTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_table_sum(s : GraphsearchjohnsonTable) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonTable::sum(self : GraphsearchjohnsonTable) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_table_mean(s : GraphsearchjohnsonTable) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonTable::mean(self : GraphsearchjohnsonTable) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_table_scale(s : GraphsearchjohnsonTable, f : Double) -> GraphsearchjohnsonTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonTable::scale(self : GraphsearchjohnsonTable, f : Double) -> GraphsearchjohnsonTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_table_add(a : GraphsearchjohnsonTable, b : GraphsearchjohnsonTable) -> GraphsearchjohnsonTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonTable::add(self : GraphsearchjohnsonTable, other : GraphsearchjohnsonTable) -> GraphsearchjohnsonTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_table_copy(s : GraphsearchjohnsonTable) -> GraphsearchjohnsonTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonTable::copy(self : GraphsearchjohnsonTable) -> GraphsearchjohnsonTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_table_fill(s : GraphsearchjohnsonTable, v : Double) -> GraphsearchjohnsonTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonTable::fill(self : GraphsearchjohnsonTable, v : Double) -> GraphsearchjohnsonTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_table_min(s : GraphsearchjohnsonTable) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonTable::min(self : GraphsearchjohnsonTable) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_table_max(s : GraphsearchjohnsonTable) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonTable::max(self : GraphsearchjohnsonTable) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_table_to_string(s : GraphsearchjohnsonTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonTable::to_string(self : GraphsearchjohnsonTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonGraphN {
@@ -453,45 +453,45 @@ pub fn graph_search_johnson_graphn_make(size : Int) -> GraphsearchjohnsonGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_graphn_len(s : GraphsearchjohnsonGraphN) -> Int { s.size }
+pub fn GraphsearchjohnsonGraphN::len(self : GraphsearchjohnsonGraphN) -> Int { self.size }
 
-pub fn graph_search_johnson_graphn_get(s : GraphsearchjohnsonGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonGraphN::get(self : GraphsearchjohnsonGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_graphn_set(s : GraphsearchjohnsonGraphN, i : Int, v : Double) -> GraphsearchjohnsonGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonGraphN::set(self : GraphsearchjohnsonGraphN, i : Int, v : Double) -> GraphsearchjohnsonGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_graphn_sum(s : GraphsearchjohnsonGraphN) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonGraphN::sum(self : GraphsearchjohnsonGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_graphn_mean(s : GraphsearchjohnsonGraphN) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonGraphN::mean(self : GraphsearchjohnsonGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_graphn_scale(s : GraphsearchjohnsonGraphN, f : Double) -> GraphsearchjohnsonGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonGraphN::scale(self : GraphsearchjohnsonGraphN, f : Double) -> GraphsearchjohnsonGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_graphn_add(a : GraphsearchjohnsonGraphN, b : GraphsearchjohnsonGraphN) -> GraphsearchjohnsonGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonGraphN::add(self : GraphsearchjohnsonGraphN, other : GraphsearchjohnsonGraphN) -> GraphsearchjohnsonGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_graphn_copy(s : GraphsearchjohnsonGraphN) -> GraphsearchjohnsonGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonGraphN::copy(self : GraphsearchjohnsonGraphN) -> GraphsearchjohnsonGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_graphn_fill(s : GraphsearchjohnsonGraphN, v : Double) -> GraphsearchjohnsonGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonGraphN::fill(self : GraphsearchjohnsonGraphN, v : Double) -> GraphsearchjohnsonGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_graphn_min(s : GraphsearchjohnsonGraphN) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonGraphN::min(self : GraphsearchjohnsonGraphN) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_graphn_max(s : GraphsearchjohnsonGraphN) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonGraphN::max(self : GraphsearchjohnsonGraphN) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_graphn_to_string(s : GraphsearchjohnsonGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonGraphN::to_string(self : GraphsearchjohnsonGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonNode {
@@ -504,45 +504,45 @@ pub fn graph_search_johnson_node_make(size : Int) -> GraphsearchjohnsonNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_node_len(s : GraphsearchjohnsonNode) -> Int { s.size }
+pub fn GraphsearchjohnsonNode::len(self : GraphsearchjohnsonNode) -> Int { self.size }
 
-pub fn graph_search_johnson_node_get(s : GraphsearchjohnsonNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonNode::get(self : GraphsearchjohnsonNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_node_set(s : GraphsearchjohnsonNode, i : Int, v : Double) -> GraphsearchjohnsonNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonNode::set(self : GraphsearchjohnsonNode, i : Int, v : Double) -> GraphsearchjohnsonNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_node_sum(s : GraphsearchjohnsonNode) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonNode::sum(self : GraphsearchjohnsonNode) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_node_mean(s : GraphsearchjohnsonNode) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonNode::mean(self : GraphsearchjohnsonNode) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_node_scale(s : GraphsearchjohnsonNode, f : Double) -> GraphsearchjohnsonNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonNode::scale(self : GraphsearchjohnsonNode, f : Double) -> GraphsearchjohnsonNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_node_add(a : GraphsearchjohnsonNode, b : GraphsearchjohnsonNode) -> GraphsearchjohnsonNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonNode::add(self : GraphsearchjohnsonNode, other : GraphsearchjohnsonNode) -> GraphsearchjohnsonNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_node_copy(s : GraphsearchjohnsonNode) -> GraphsearchjohnsonNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonNode::copy(self : GraphsearchjohnsonNode) -> GraphsearchjohnsonNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_node_fill(s : GraphsearchjohnsonNode, v : Double) -> GraphsearchjohnsonNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonNode::fill(self : GraphsearchjohnsonNode, v : Double) -> GraphsearchjohnsonNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_node_min(s : GraphsearchjohnsonNode) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonNode::min(self : GraphsearchjohnsonNode) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_node_max(s : GraphsearchjohnsonNode) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonNode::max(self : GraphsearchjohnsonNode) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_node_to_string(s : GraphsearchjohnsonNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonNode::to_string(self : GraphsearchjohnsonNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonEdge {
@@ -555,45 +555,45 @@ pub fn graph_search_johnson_edge_make(size : Int) -> GraphsearchjohnsonEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_edge_len(s : GraphsearchjohnsonEdge) -> Int { s.size }
+pub fn GraphsearchjohnsonEdge::len(self : GraphsearchjohnsonEdge) -> Int { self.size }
 
-pub fn graph_search_johnson_edge_get(s : GraphsearchjohnsonEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonEdge::get(self : GraphsearchjohnsonEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_edge_set(s : GraphsearchjohnsonEdge, i : Int, v : Double) -> GraphsearchjohnsonEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonEdge::set(self : GraphsearchjohnsonEdge, i : Int, v : Double) -> GraphsearchjohnsonEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_edge_sum(s : GraphsearchjohnsonEdge) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonEdge::sum(self : GraphsearchjohnsonEdge) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_edge_mean(s : GraphsearchjohnsonEdge) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonEdge::mean(self : GraphsearchjohnsonEdge) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_edge_scale(s : GraphsearchjohnsonEdge, f : Double) -> GraphsearchjohnsonEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonEdge::scale(self : GraphsearchjohnsonEdge, f : Double) -> GraphsearchjohnsonEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_edge_add(a : GraphsearchjohnsonEdge, b : GraphsearchjohnsonEdge) -> GraphsearchjohnsonEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonEdge::add(self : GraphsearchjohnsonEdge, other : GraphsearchjohnsonEdge) -> GraphsearchjohnsonEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_edge_copy(s : GraphsearchjohnsonEdge) -> GraphsearchjohnsonEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonEdge::copy(self : GraphsearchjohnsonEdge) -> GraphsearchjohnsonEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_edge_fill(s : GraphsearchjohnsonEdge, v : Double) -> GraphsearchjohnsonEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonEdge::fill(self : GraphsearchjohnsonEdge, v : Double) -> GraphsearchjohnsonEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_edge_min(s : GraphsearchjohnsonEdge) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonEdge::min(self : GraphsearchjohnsonEdge) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_edge_max(s : GraphsearchjohnsonEdge) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonEdge::max(self : GraphsearchjohnsonEdge) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_edge_to_string(s : GraphsearchjohnsonEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonEdge::to_string(self : GraphsearchjohnsonEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonPath {
@@ -606,45 +606,45 @@ pub fn graph_search_johnson_path_make(size : Int) -> GraphsearchjohnsonPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_path_len(s : GraphsearchjohnsonPath) -> Int { s.size }
+pub fn GraphsearchjohnsonPath::len(self : GraphsearchjohnsonPath) -> Int { self.size }
 
-pub fn graph_search_johnson_path_get(s : GraphsearchjohnsonPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonPath::get(self : GraphsearchjohnsonPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_path_set(s : GraphsearchjohnsonPath, i : Int, v : Double) -> GraphsearchjohnsonPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonPath::set(self : GraphsearchjohnsonPath, i : Int, v : Double) -> GraphsearchjohnsonPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_path_sum(s : GraphsearchjohnsonPath) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonPath::sum(self : GraphsearchjohnsonPath) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_path_mean(s : GraphsearchjohnsonPath) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonPath::mean(self : GraphsearchjohnsonPath) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_path_scale(s : GraphsearchjohnsonPath, f : Double) -> GraphsearchjohnsonPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonPath::scale(self : GraphsearchjohnsonPath, f : Double) -> GraphsearchjohnsonPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_path_add(a : GraphsearchjohnsonPath, b : GraphsearchjohnsonPath) -> GraphsearchjohnsonPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonPath::add(self : GraphsearchjohnsonPath, other : GraphsearchjohnsonPath) -> GraphsearchjohnsonPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_path_copy(s : GraphsearchjohnsonPath) -> GraphsearchjohnsonPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonPath::copy(self : GraphsearchjohnsonPath) -> GraphsearchjohnsonPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_path_fill(s : GraphsearchjohnsonPath, v : Double) -> GraphsearchjohnsonPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonPath::fill(self : GraphsearchjohnsonPath, v : Double) -> GraphsearchjohnsonPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_path_min(s : GraphsearchjohnsonPath) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonPath::min(self : GraphsearchjohnsonPath) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_path_max(s : GraphsearchjohnsonPath) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonPath::max(self : GraphsearchjohnsonPath) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_path_to_string(s : GraphsearchjohnsonPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonPath::to_string(self : GraphsearchjohnsonPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonCluster {
@@ -657,45 +657,45 @@ pub fn graph_search_johnson_cluster_make(size : Int) -> GraphsearchjohnsonCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_cluster_len(s : GraphsearchjohnsonCluster) -> Int { s.size }
+pub fn GraphsearchjohnsonCluster::len(self : GraphsearchjohnsonCluster) -> Int { self.size }
 
-pub fn graph_search_johnson_cluster_get(s : GraphsearchjohnsonCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonCluster::get(self : GraphsearchjohnsonCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_cluster_set(s : GraphsearchjohnsonCluster, i : Int, v : Double) -> GraphsearchjohnsonCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCluster::set(self : GraphsearchjohnsonCluster, i : Int, v : Double) -> GraphsearchjohnsonCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cluster_sum(s : GraphsearchjohnsonCluster) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonCluster::sum(self : GraphsearchjohnsonCluster) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_cluster_mean(s : GraphsearchjohnsonCluster) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonCluster::mean(self : GraphsearchjohnsonCluster) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_cluster_scale(s : GraphsearchjohnsonCluster, f : Double) -> GraphsearchjohnsonCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCluster::scale(self : GraphsearchjohnsonCluster, f : Double) -> GraphsearchjohnsonCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cluster_add(a : GraphsearchjohnsonCluster, b : GraphsearchjohnsonCluster) -> GraphsearchjohnsonCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonCluster::add(self : GraphsearchjohnsonCluster, other : GraphsearchjohnsonCluster) -> GraphsearchjohnsonCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cluster_copy(s : GraphsearchjohnsonCluster) -> GraphsearchjohnsonCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCluster::copy(self : GraphsearchjohnsonCluster) -> GraphsearchjohnsonCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cluster_fill(s : GraphsearchjohnsonCluster, v : Double) -> GraphsearchjohnsonCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCluster::fill(self : GraphsearchjohnsonCluster, v : Double) -> GraphsearchjohnsonCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cluster_min(s : GraphsearchjohnsonCluster) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonCluster::min(self : GraphsearchjohnsonCluster) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_cluster_max(s : GraphsearchjohnsonCluster) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonCluster::max(self : GraphsearchjohnsonCluster) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_cluster_to_string(s : GraphsearchjohnsonCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonCluster::to_string(self : GraphsearchjohnsonCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonModel {
@@ -708,45 +708,45 @@ pub fn graph_search_johnson_model_make(size : Int) -> GraphsearchjohnsonModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_model_len(s : GraphsearchjohnsonModel) -> Int { s.size }
+pub fn GraphsearchjohnsonModel::len(self : GraphsearchjohnsonModel) -> Int { self.size }
 
-pub fn graph_search_johnson_model_get(s : GraphsearchjohnsonModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonModel::get(self : GraphsearchjohnsonModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_model_set(s : GraphsearchjohnsonModel, i : Int, v : Double) -> GraphsearchjohnsonModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonModel::set(self : GraphsearchjohnsonModel, i : Int, v : Double) -> GraphsearchjohnsonModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_model_sum(s : GraphsearchjohnsonModel) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonModel::sum(self : GraphsearchjohnsonModel) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_model_mean(s : GraphsearchjohnsonModel) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonModel::mean(self : GraphsearchjohnsonModel) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_model_scale(s : GraphsearchjohnsonModel, f : Double) -> GraphsearchjohnsonModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonModel::scale(self : GraphsearchjohnsonModel, f : Double) -> GraphsearchjohnsonModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_model_add(a : GraphsearchjohnsonModel, b : GraphsearchjohnsonModel) -> GraphsearchjohnsonModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonModel::add(self : GraphsearchjohnsonModel, other : GraphsearchjohnsonModel) -> GraphsearchjohnsonModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_model_copy(s : GraphsearchjohnsonModel) -> GraphsearchjohnsonModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonModel::copy(self : GraphsearchjohnsonModel) -> GraphsearchjohnsonModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_model_fill(s : GraphsearchjohnsonModel, v : Double) -> GraphsearchjohnsonModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonModel::fill(self : GraphsearchjohnsonModel, v : Double) -> GraphsearchjohnsonModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_model_min(s : GraphsearchjohnsonModel) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonModel::min(self : GraphsearchjohnsonModel) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_model_max(s : GraphsearchjohnsonModel) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonModel::max(self : GraphsearchjohnsonModel) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_model_to_string(s : GraphsearchjohnsonModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonModel::to_string(self : GraphsearchjohnsonModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonLayer {
@@ -759,45 +759,45 @@ pub fn graph_search_johnson_layer_make(size : Int) -> GraphsearchjohnsonLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_layer_len(s : GraphsearchjohnsonLayer) -> Int { s.size }
+pub fn GraphsearchjohnsonLayer::len(self : GraphsearchjohnsonLayer) -> Int { self.size }
 
-pub fn graph_search_johnson_layer_get(s : GraphsearchjohnsonLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonLayer::get(self : GraphsearchjohnsonLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_layer_set(s : GraphsearchjohnsonLayer, i : Int, v : Double) -> GraphsearchjohnsonLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonLayer::set(self : GraphsearchjohnsonLayer, i : Int, v : Double) -> GraphsearchjohnsonLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_layer_sum(s : GraphsearchjohnsonLayer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonLayer::sum(self : GraphsearchjohnsonLayer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_layer_mean(s : GraphsearchjohnsonLayer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonLayer::mean(self : GraphsearchjohnsonLayer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_layer_scale(s : GraphsearchjohnsonLayer, f : Double) -> GraphsearchjohnsonLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonLayer::scale(self : GraphsearchjohnsonLayer, f : Double) -> GraphsearchjohnsonLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_layer_add(a : GraphsearchjohnsonLayer, b : GraphsearchjohnsonLayer) -> GraphsearchjohnsonLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonLayer::add(self : GraphsearchjohnsonLayer, other : GraphsearchjohnsonLayer) -> GraphsearchjohnsonLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_layer_copy(s : GraphsearchjohnsonLayer) -> GraphsearchjohnsonLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonLayer::copy(self : GraphsearchjohnsonLayer) -> GraphsearchjohnsonLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_layer_fill(s : GraphsearchjohnsonLayer, v : Double) -> GraphsearchjohnsonLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonLayer::fill(self : GraphsearchjohnsonLayer, v : Double) -> GraphsearchjohnsonLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_layer_min(s : GraphsearchjohnsonLayer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonLayer::min(self : GraphsearchjohnsonLayer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_layer_max(s : GraphsearchjohnsonLayer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonLayer::max(self : GraphsearchjohnsonLayer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_layer_to_string(s : GraphsearchjohnsonLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonLayer::to_string(self : GraphsearchjohnsonLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonBuffer {
@@ -810,45 +810,45 @@ pub fn graph_search_johnson_buffer_make(size : Int) -> GraphsearchjohnsonBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_buffer_len(s : GraphsearchjohnsonBuffer) -> Int { s.size }
+pub fn GraphsearchjohnsonBuffer::len(self : GraphsearchjohnsonBuffer) -> Int { self.size }
 
-pub fn graph_search_johnson_buffer_get(s : GraphsearchjohnsonBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonBuffer::get(self : GraphsearchjohnsonBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_buffer_set(s : GraphsearchjohnsonBuffer, i : Int, v : Double) -> GraphsearchjohnsonBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonBuffer::set(self : GraphsearchjohnsonBuffer, i : Int, v : Double) -> GraphsearchjohnsonBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_buffer_sum(s : GraphsearchjohnsonBuffer) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonBuffer::sum(self : GraphsearchjohnsonBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_buffer_mean(s : GraphsearchjohnsonBuffer) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonBuffer::mean(self : GraphsearchjohnsonBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_buffer_scale(s : GraphsearchjohnsonBuffer, f : Double) -> GraphsearchjohnsonBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonBuffer::scale(self : GraphsearchjohnsonBuffer, f : Double) -> GraphsearchjohnsonBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_buffer_add(a : GraphsearchjohnsonBuffer, b : GraphsearchjohnsonBuffer) -> GraphsearchjohnsonBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonBuffer::add(self : GraphsearchjohnsonBuffer, other : GraphsearchjohnsonBuffer) -> GraphsearchjohnsonBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_buffer_copy(s : GraphsearchjohnsonBuffer) -> GraphsearchjohnsonBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonBuffer::copy(self : GraphsearchjohnsonBuffer) -> GraphsearchjohnsonBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_buffer_fill(s : GraphsearchjohnsonBuffer, v : Double) -> GraphsearchjohnsonBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonBuffer::fill(self : GraphsearchjohnsonBuffer, v : Double) -> GraphsearchjohnsonBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_buffer_min(s : GraphsearchjohnsonBuffer) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonBuffer::min(self : GraphsearchjohnsonBuffer) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_buffer_max(s : GraphsearchjohnsonBuffer) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonBuffer::max(self : GraphsearchjohnsonBuffer) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_buffer_to_string(s : GraphsearchjohnsonBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonBuffer::to_string(self : GraphsearchjohnsonBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonCursor {
@@ -861,45 +861,45 @@ pub fn graph_search_johnson_cursor_make(size : Int) -> GraphsearchjohnsonCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_cursor_len(s : GraphsearchjohnsonCursor) -> Int { s.size }
+pub fn GraphsearchjohnsonCursor::len(self : GraphsearchjohnsonCursor) -> Int { self.size }
 
-pub fn graph_search_johnson_cursor_get(s : GraphsearchjohnsonCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonCursor::get(self : GraphsearchjohnsonCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_cursor_set(s : GraphsearchjohnsonCursor, i : Int, v : Double) -> GraphsearchjohnsonCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCursor::set(self : GraphsearchjohnsonCursor, i : Int, v : Double) -> GraphsearchjohnsonCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cursor_sum(s : GraphsearchjohnsonCursor) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonCursor::sum(self : GraphsearchjohnsonCursor) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_cursor_mean(s : GraphsearchjohnsonCursor) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonCursor::mean(self : GraphsearchjohnsonCursor) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_cursor_scale(s : GraphsearchjohnsonCursor, f : Double) -> GraphsearchjohnsonCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCursor::scale(self : GraphsearchjohnsonCursor, f : Double) -> GraphsearchjohnsonCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cursor_add(a : GraphsearchjohnsonCursor, b : GraphsearchjohnsonCursor) -> GraphsearchjohnsonCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonCursor::add(self : GraphsearchjohnsonCursor, other : GraphsearchjohnsonCursor) -> GraphsearchjohnsonCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cursor_copy(s : GraphsearchjohnsonCursor) -> GraphsearchjohnsonCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCursor::copy(self : GraphsearchjohnsonCursor) -> GraphsearchjohnsonCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cursor_fill(s : GraphsearchjohnsonCursor, v : Double) -> GraphsearchjohnsonCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonCursor::fill(self : GraphsearchjohnsonCursor, v : Double) -> GraphsearchjohnsonCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_cursor_min(s : GraphsearchjohnsonCursor) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonCursor::min(self : GraphsearchjohnsonCursor) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_cursor_max(s : GraphsearchjohnsonCursor) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonCursor::max(self : GraphsearchjohnsonCursor) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_cursor_to_string(s : GraphsearchjohnsonCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonCursor::to_string(self : GraphsearchjohnsonCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonView {
@@ -912,45 +912,45 @@ pub fn graph_search_johnson_view_make(size : Int) -> GraphsearchjohnsonView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_view_len(s : GraphsearchjohnsonView) -> Int { s.size }
+pub fn GraphsearchjohnsonView::len(self : GraphsearchjohnsonView) -> Int { self.size }
 
-pub fn graph_search_johnson_view_get(s : GraphsearchjohnsonView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonView::get(self : GraphsearchjohnsonView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_view_set(s : GraphsearchjohnsonView, i : Int, v : Double) -> GraphsearchjohnsonView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonView::set(self : GraphsearchjohnsonView, i : Int, v : Double) -> GraphsearchjohnsonView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_view_sum(s : GraphsearchjohnsonView) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonView::sum(self : GraphsearchjohnsonView) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_view_mean(s : GraphsearchjohnsonView) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonView::mean(self : GraphsearchjohnsonView) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_view_scale(s : GraphsearchjohnsonView, f : Double) -> GraphsearchjohnsonView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonView::scale(self : GraphsearchjohnsonView, f : Double) -> GraphsearchjohnsonView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_view_add(a : GraphsearchjohnsonView, b : GraphsearchjohnsonView) -> GraphsearchjohnsonView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonView::add(self : GraphsearchjohnsonView, other : GraphsearchjohnsonView) -> GraphsearchjohnsonView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_view_copy(s : GraphsearchjohnsonView) -> GraphsearchjohnsonView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonView::copy(self : GraphsearchjohnsonView) -> GraphsearchjohnsonView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_view_fill(s : GraphsearchjohnsonView, v : Double) -> GraphsearchjohnsonView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonView::fill(self : GraphsearchjohnsonView, v : Double) -> GraphsearchjohnsonView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_view_min(s : GraphsearchjohnsonView) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonView::min(self : GraphsearchjohnsonView) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_view_max(s : GraphsearchjohnsonView) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonView::max(self : GraphsearchjohnsonView) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_view_to_string(s : GraphsearchjohnsonView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonView::to_string(self : GraphsearchjohnsonView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonRange {
@@ -963,45 +963,45 @@ pub fn graph_search_johnson_range_make(size : Int) -> GraphsearchjohnsonRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_range_len(s : GraphsearchjohnsonRange) -> Int { s.size }
+pub fn GraphsearchjohnsonRange::len(self : GraphsearchjohnsonRange) -> Int { self.size }
 
-pub fn graph_search_johnson_range_get(s : GraphsearchjohnsonRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonRange::get(self : GraphsearchjohnsonRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_range_set(s : GraphsearchjohnsonRange, i : Int, v : Double) -> GraphsearchjohnsonRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonRange::set(self : GraphsearchjohnsonRange, i : Int, v : Double) -> GraphsearchjohnsonRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_range_sum(s : GraphsearchjohnsonRange) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonRange::sum(self : GraphsearchjohnsonRange) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_range_mean(s : GraphsearchjohnsonRange) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonRange::mean(self : GraphsearchjohnsonRange) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_range_scale(s : GraphsearchjohnsonRange, f : Double) -> GraphsearchjohnsonRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonRange::scale(self : GraphsearchjohnsonRange, f : Double) -> GraphsearchjohnsonRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_range_add(a : GraphsearchjohnsonRange, b : GraphsearchjohnsonRange) -> GraphsearchjohnsonRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonRange::add(self : GraphsearchjohnsonRange, other : GraphsearchjohnsonRange) -> GraphsearchjohnsonRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_range_copy(s : GraphsearchjohnsonRange) -> GraphsearchjohnsonRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonRange::copy(self : GraphsearchjohnsonRange) -> GraphsearchjohnsonRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_range_fill(s : GraphsearchjohnsonRange, v : Double) -> GraphsearchjohnsonRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonRange::fill(self : GraphsearchjohnsonRange, v : Double) -> GraphsearchjohnsonRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_range_min(s : GraphsearchjohnsonRange) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonRange::min(self : GraphsearchjohnsonRange) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_range_max(s : GraphsearchjohnsonRange) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonRange::max(self : GraphsearchjohnsonRange) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_range_to_string(s : GraphsearchjohnsonRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonRange::to_string(self : GraphsearchjohnsonRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GraphsearchjohnsonSlice {
@@ -1014,44 +1014,44 @@ pub fn graph_search_johnson_slice_make(size : Int) -> GraphsearchjohnsonSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn graph_search_johnson_slice_len(s : GraphsearchjohnsonSlice) -> Int { s.size }
+pub fn GraphsearchjohnsonSlice::len(self : GraphsearchjohnsonSlice) -> Int { self.size }
 
-pub fn graph_search_johnson_slice_get(s : GraphsearchjohnsonSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GraphsearchjohnsonSlice::get(self : GraphsearchjohnsonSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn graph_search_johnson_slice_set(s : GraphsearchjohnsonSlice, i : Int, v : Double) -> GraphsearchjohnsonSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonSlice::set(self : GraphsearchjohnsonSlice, i : Int, v : Double) -> GraphsearchjohnsonSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_slice_sum(s : GraphsearchjohnsonSlice) -> Double { @_common.sum(s.data) }
+pub fn GraphsearchjohnsonSlice::sum(self : GraphsearchjohnsonSlice) -> Double { @_common.sum(self.data) }
 
-pub fn graph_search_johnson_slice_mean(s : GraphsearchjohnsonSlice) -> Double { @_common.mean(s.data) }
+pub fn GraphsearchjohnsonSlice::mean(self : GraphsearchjohnsonSlice) -> Double { @_common.mean(self.data) }
 
-pub fn graph_search_johnson_slice_scale(s : GraphsearchjohnsonSlice, f : Double) -> GraphsearchjohnsonSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonSlice::scale(self : GraphsearchjohnsonSlice, f : Double) -> GraphsearchjohnsonSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_slice_add(a : GraphsearchjohnsonSlice, b : GraphsearchjohnsonSlice) -> GraphsearchjohnsonSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GraphsearchjohnsonSlice::add(self : GraphsearchjohnsonSlice, other : GraphsearchjohnsonSlice) -> GraphsearchjohnsonSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn graph_search_johnson_slice_copy(s : GraphsearchjohnsonSlice) -> GraphsearchjohnsonSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonSlice::copy(self : GraphsearchjohnsonSlice) -> GraphsearchjohnsonSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_slice_fill(s : GraphsearchjohnsonSlice, v : Double) -> GraphsearchjohnsonSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GraphsearchjohnsonSlice::fill(self : GraphsearchjohnsonSlice, v : Double) -> GraphsearchjohnsonSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn graph_search_johnson_slice_min(s : GraphsearchjohnsonSlice) -> Double { @_common.min(s.data) }
+pub fn GraphsearchjohnsonSlice::min(self : GraphsearchjohnsonSlice) -> Double { @_common.min(self.data) }
 
-pub fn graph_search_johnson_slice_max(s : GraphsearchjohnsonSlice) -> Double { @_common.max(s.data) }
+pub fn GraphsearchjohnsonSlice::max(self : GraphsearchjohnsonSlice) -> Double { @_common.max(self.data) }
 
-pub fn graph_search_johnson_slice_to_string(s : GraphsearchjohnsonSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GraphsearchjohnsonSlice::to_string(self : GraphsearchjohnsonSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

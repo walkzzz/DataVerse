@@ -351,45 +351,45 @@ pub fn crypto_sym_twofish_frame_make(size : Int) -> CryptosymtwofishFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_frame_len(s : CryptosymtwofishFrame) -> Int { s.size }
+pub fn CryptosymtwofishFrame::len(self : CryptosymtwofishFrame) -> Int { self.size }
 
-pub fn crypto_sym_twofish_frame_get(s : CryptosymtwofishFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishFrame::get(self : CryptosymtwofishFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_frame_set(s : CryptosymtwofishFrame, i : Int, v : Double) -> CryptosymtwofishFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishFrame::set(self : CryptosymtwofishFrame, i : Int, v : Double) -> CryptosymtwofishFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_frame_sum(s : CryptosymtwofishFrame) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishFrame::sum(self : CryptosymtwofishFrame) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_frame_mean(s : CryptosymtwofishFrame) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishFrame::mean(self : CryptosymtwofishFrame) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_frame_scale(s : CryptosymtwofishFrame, f : Double) -> CryptosymtwofishFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishFrame::scale(self : CryptosymtwofishFrame, f : Double) -> CryptosymtwofishFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_frame_add(a : CryptosymtwofishFrame, b : CryptosymtwofishFrame) -> CryptosymtwofishFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishFrame::add(self : CryptosymtwofishFrame, other : CryptosymtwofishFrame) -> CryptosymtwofishFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_frame_copy(s : CryptosymtwofishFrame) -> CryptosymtwofishFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishFrame::copy(self : CryptosymtwofishFrame) -> CryptosymtwofishFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_frame_fill(s : CryptosymtwofishFrame, v : Double) -> CryptosymtwofishFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishFrame::fill(self : CryptosymtwofishFrame, v : Double) -> CryptosymtwofishFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_frame_min(s : CryptosymtwofishFrame) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishFrame::min(self : CryptosymtwofishFrame) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_frame_max(s : CryptosymtwofishFrame) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishFrame::max(self : CryptosymtwofishFrame) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_frame_to_string(s : CryptosymtwofishFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishFrame::to_string(self : CryptosymtwofishFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishTable {
@@ -402,45 +402,45 @@ pub fn crypto_sym_twofish_table_make(size : Int) -> CryptosymtwofishTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_table_len(s : CryptosymtwofishTable) -> Int { s.size }
+pub fn CryptosymtwofishTable::len(self : CryptosymtwofishTable) -> Int { self.size }
 
-pub fn crypto_sym_twofish_table_get(s : CryptosymtwofishTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishTable::get(self : CryptosymtwofishTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_table_set(s : CryptosymtwofishTable, i : Int, v : Double) -> CryptosymtwofishTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishTable::set(self : CryptosymtwofishTable, i : Int, v : Double) -> CryptosymtwofishTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_table_sum(s : CryptosymtwofishTable) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishTable::sum(self : CryptosymtwofishTable) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_table_mean(s : CryptosymtwofishTable) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishTable::mean(self : CryptosymtwofishTable) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_table_scale(s : CryptosymtwofishTable, f : Double) -> CryptosymtwofishTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishTable::scale(self : CryptosymtwofishTable, f : Double) -> CryptosymtwofishTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_table_add(a : CryptosymtwofishTable, b : CryptosymtwofishTable) -> CryptosymtwofishTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishTable::add(self : CryptosymtwofishTable, other : CryptosymtwofishTable) -> CryptosymtwofishTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_table_copy(s : CryptosymtwofishTable) -> CryptosymtwofishTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishTable::copy(self : CryptosymtwofishTable) -> CryptosymtwofishTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_table_fill(s : CryptosymtwofishTable, v : Double) -> CryptosymtwofishTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishTable::fill(self : CryptosymtwofishTable, v : Double) -> CryptosymtwofishTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_table_min(s : CryptosymtwofishTable) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishTable::min(self : CryptosymtwofishTable) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_table_max(s : CryptosymtwofishTable) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishTable::max(self : CryptosymtwofishTable) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_table_to_string(s : CryptosymtwofishTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishTable::to_string(self : CryptosymtwofishTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishGraphN {
@@ -453,45 +453,45 @@ pub fn crypto_sym_twofish_graphn_make(size : Int) -> CryptosymtwofishGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_graphn_len(s : CryptosymtwofishGraphN) -> Int { s.size }
+pub fn CryptosymtwofishGraphN::len(self : CryptosymtwofishGraphN) -> Int { self.size }
 
-pub fn crypto_sym_twofish_graphn_get(s : CryptosymtwofishGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishGraphN::get(self : CryptosymtwofishGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_graphn_set(s : CryptosymtwofishGraphN, i : Int, v : Double) -> CryptosymtwofishGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishGraphN::set(self : CryptosymtwofishGraphN, i : Int, v : Double) -> CryptosymtwofishGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_graphn_sum(s : CryptosymtwofishGraphN) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishGraphN::sum(self : CryptosymtwofishGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_graphn_mean(s : CryptosymtwofishGraphN) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishGraphN::mean(self : CryptosymtwofishGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_graphn_scale(s : CryptosymtwofishGraphN, f : Double) -> CryptosymtwofishGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishGraphN::scale(self : CryptosymtwofishGraphN, f : Double) -> CryptosymtwofishGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_graphn_add(a : CryptosymtwofishGraphN, b : CryptosymtwofishGraphN) -> CryptosymtwofishGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishGraphN::add(self : CryptosymtwofishGraphN, other : CryptosymtwofishGraphN) -> CryptosymtwofishGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_graphn_copy(s : CryptosymtwofishGraphN) -> CryptosymtwofishGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishGraphN::copy(self : CryptosymtwofishGraphN) -> CryptosymtwofishGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_graphn_fill(s : CryptosymtwofishGraphN, v : Double) -> CryptosymtwofishGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishGraphN::fill(self : CryptosymtwofishGraphN, v : Double) -> CryptosymtwofishGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_graphn_min(s : CryptosymtwofishGraphN) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishGraphN::min(self : CryptosymtwofishGraphN) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_graphn_max(s : CryptosymtwofishGraphN) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishGraphN::max(self : CryptosymtwofishGraphN) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_graphn_to_string(s : CryptosymtwofishGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishGraphN::to_string(self : CryptosymtwofishGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishNode {
@@ -504,45 +504,45 @@ pub fn crypto_sym_twofish_node_make(size : Int) -> CryptosymtwofishNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_node_len(s : CryptosymtwofishNode) -> Int { s.size }
+pub fn CryptosymtwofishNode::len(self : CryptosymtwofishNode) -> Int { self.size }
 
-pub fn crypto_sym_twofish_node_get(s : CryptosymtwofishNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishNode::get(self : CryptosymtwofishNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_node_set(s : CryptosymtwofishNode, i : Int, v : Double) -> CryptosymtwofishNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishNode::set(self : CryptosymtwofishNode, i : Int, v : Double) -> CryptosymtwofishNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_node_sum(s : CryptosymtwofishNode) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishNode::sum(self : CryptosymtwofishNode) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_node_mean(s : CryptosymtwofishNode) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishNode::mean(self : CryptosymtwofishNode) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_node_scale(s : CryptosymtwofishNode, f : Double) -> CryptosymtwofishNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishNode::scale(self : CryptosymtwofishNode, f : Double) -> CryptosymtwofishNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_node_add(a : CryptosymtwofishNode, b : CryptosymtwofishNode) -> CryptosymtwofishNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishNode::add(self : CryptosymtwofishNode, other : CryptosymtwofishNode) -> CryptosymtwofishNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_node_copy(s : CryptosymtwofishNode) -> CryptosymtwofishNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishNode::copy(self : CryptosymtwofishNode) -> CryptosymtwofishNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_node_fill(s : CryptosymtwofishNode, v : Double) -> CryptosymtwofishNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishNode::fill(self : CryptosymtwofishNode, v : Double) -> CryptosymtwofishNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_node_min(s : CryptosymtwofishNode) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishNode::min(self : CryptosymtwofishNode) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_node_max(s : CryptosymtwofishNode) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishNode::max(self : CryptosymtwofishNode) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_node_to_string(s : CryptosymtwofishNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishNode::to_string(self : CryptosymtwofishNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishEdge {
@@ -555,45 +555,45 @@ pub fn crypto_sym_twofish_edge_make(size : Int) -> CryptosymtwofishEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_edge_len(s : CryptosymtwofishEdge) -> Int { s.size }
+pub fn CryptosymtwofishEdge::len(self : CryptosymtwofishEdge) -> Int { self.size }
 
-pub fn crypto_sym_twofish_edge_get(s : CryptosymtwofishEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishEdge::get(self : CryptosymtwofishEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_edge_set(s : CryptosymtwofishEdge, i : Int, v : Double) -> CryptosymtwofishEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishEdge::set(self : CryptosymtwofishEdge, i : Int, v : Double) -> CryptosymtwofishEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_edge_sum(s : CryptosymtwofishEdge) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishEdge::sum(self : CryptosymtwofishEdge) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_edge_mean(s : CryptosymtwofishEdge) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishEdge::mean(self : CryptosymtwofishEdge) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_edge_scale(s : CryptosymtwofishEdge, f : Double) -> CryptosymtwofishEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishEdge::scale(self : CryptosymtwofishEdge, f : Double) -> CryptosymtwofishEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_edge_add(a : CryptosymtwofishEdge, b : CryptosymtwofishEdge) -> CryptosymtwofishEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishEdge::add(self : CryptosymtwofishEdge, other : CryptosymtwofishEdge) -> CryptosymtwofishEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_edge_copy(s : CryptosymtwofishEdge) -> CryptosymtwofishEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishEdge::copy(self : CryptosymtwofishEdge) -> CryptosymtwofishEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_edge_fill(s : CryptosymtwofishEdge, v : Double) -> CryptosymtwofishEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishEdge::fill(self : CryptosymtwofishEdge, v : Double) -> CryptosymtwofishEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_edge_min(s : CryptosymtwofishEdge) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishEdge::min(self : CryptosymtwofishEdge) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_edge_max(s : CryptosymtwofishEdge) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishEdge::max(self : CryptosymtwofishEdge) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_edge_to_string(s : CryptosymtwofishEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishEdge::to_string(self : CryptosymtwofishEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishPath {
@@ -606,45 +606,45 @@ pub fn crypto_sym_twofish_path_make(size : Int) -> CryptosymtwofishPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_path_len(s : CryptosymtwofishPath) -> Int { s.size }
+pub fn CryptosymtwofishPath::len(self : CryptosymtwofishPath) -> Int { self.size }
 
-pub fn crypto_sym_twofish_path_get(s : CryptosymtwofishPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishPath::get(self : CryptosymtwofishPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_path_set(s : CryptosymtwofishPath, i : Int, v : Double) -> CryptosymtwofishPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishPath::set(self : CryptosymtwofishPath, i : Int, v : Double) -> CryptosymtwofishPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_path_sum(s : CryptosymtwofishPath) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishPath::sum(self : CryptosymtwofishPath) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_path_mean(s : CryptosymtwofishPath) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishPath::mean(self : CryptosymtwofishPath) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_path_scale(s : CryptosymtwofishPath, f : Double) -> CryptosymtwofishPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishPath::scale(self : CryptosymtwofishPath, f : Double) -> CryptosymtwofishPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_path_add(a : CryptosymtwofishPath, b : CryptosymtwofishPath) -> CryptosymtwofishPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishPath::add(self : CryptosymtwofishPath, other : CryptosymtwofishPath) -> CryptosymtwofishPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_path_copy(s : CryptosymtwofishPath) -> CryptosymtwofishPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishPath::copy(self : CryptosymtwofishPath) -> CryptosymtwofishPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_path_fill(s : CryptosymtwofishPath, v : Double) -> CryptosymtwofishPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishPath::fill(self : CryptosymtwofishPath, v : Double) -> CryptosymtwofishPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_path_min(s : CryptosymtwofishPath) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishPath::min(self : CryptosymtwofishPath) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_path_max(s : CryptosymtwofishPath) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishPath::max(self : CryptosymtwofishPath) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_path_to_string(s : CryptosymtwofishPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishPath::to_string(self : CryptosymtwofishPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishCluster {
@@ -657,45 +657,45 @@ pub fn crypto_sym_twofish_cluster_make(size : Int) -> CryptosymtwofishCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_cluster_len(s : CryptosymtwofishCluster) -> Int { s.size }
+pub fn CryptosymtwofishCluster::len(self : CryptosymtwofishCluster) -> Int { self.size }
 
-pub fn crypto_sym_twofish_cluster_get(s : CryptosymtwofishCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishCluster::get(self : CryptosymtwofishCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_cluster_set(s : CryptosymtwofishCluster, i : Int, v : Double) -> CryptosymtwofishCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCluster::set(self : CryptosymtwofishCluster, i : Int, v : Double) -> CryptosymtwofishCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cluster_sum(s : CryptosymtwofishCluster) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishCluster::sum(self : CryptosymtwofishCluster) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_cluster_mean(s : CryptosymtwofishCluster) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishCluster::mean(self : CryptosymtwofishCluster) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_cluster_scale(s : CryptosymtwofishCluster, f : Double) -> CryptosymtwofishCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCluster::scale(self : CryptosymtwofishCluster, f : Double) -> CryptosymtwofishCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cluster_add(a : CryptosymtwofishCluster, b : CryptosymtwofishCluster) -> CryptosymtwofishCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishCluster::add(self : CryptosymtwofishCluster, other : CryptosymtwofishCluster) -> CryptosymtwofishCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cluster_copy(s : CryptosymtwofishCluster) -> CryptosymtwofishCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCluster::copy(self : CryptosymtwofishCluster) -> CryptosymtwofishCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cluster_fill(s : CryptosymtwofishCluster, v : Double) -> CryptosymtwofishCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCluster::fill(self : CryptosymtwofishCluster, v : Double) -> CryptosymtwofishCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cluster_min(s : CryptosymtwofishCluster) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishCluster::min(self : CryptosymtwofishCluster) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_cluster_max(s : CryptosymtwofishCluster) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishCluster::max(self : CryptosymtwofishCluster) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_cluster_to_string(s : CryptosymtwofishCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishCluster::to_string(self : CryptosymtwofishCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishModel {
@@ -708,45 +708,45 @@ pub fn crypto_sym_twofish_model_make(size : Int) -> CryptosymtwofishModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_model_len(s : CryptosymtwofishModel) -> Int { s.size }
+pub fn CryptosymtwofishModel::len(self : CryptosymtwofishModel) -> Int { self.size }
 
-pub fn crypto_sym_twofish_model_get(s : CryptosymtwofishModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishModel::get(self : CryptosymtwofishModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_model_set(s : CryptosymtwofishModel, i : Int, v : Double) -> CryptosymtwofishModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishModel::set(self : CryptosymtwofishModel, i : Int, v : Double) -> CryptosymtwofishModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_model_sum(s : CryptosymtwofishModel) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishModel::sum(self : CryptosymtwofishModel) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_model_mean(s : CryptosymtwofishModel) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishModel::mean(self : CryptosymtwofishModel) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_model_scale(s : CryptosymtwofishModel, f : Double) -> CryptosymtwofishModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishModel::scale(self : CryptosymtwofishModel, f : Double) -> CryptosymtwofishModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_model_add(a : CryptosymtwofishModel, b : CryptosymtwofishModel) -> CryptosymtwofishModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishModel::add(self : CryptosymtwofishModel, other : CryptosymtwofishModel) -> CryptosymtwofishModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_model_copy(s : CryptosymtwofishModel) -> CryptosymtwofishModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishModel::copy(self : CryptosymtwofishModel) -> CryptosymtwofishModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_model_fill(s : CryptosymtwofishModel, v : Double) -> CryptosymtwofishModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishModel::fill(self : CryptosymtwofishModel, v : Double) -> CryptosymtwofishModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_model_min(s : CryptosymtwofishModel) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishModel::min(self : CryptosymtwofishModel) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_model_max(s : CryptosymtwofishModel) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishModel::max(self : CryptosymtwofishModel) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_model_to_string(s : CryptosymtwofishModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishModel::to_string(self : CryptosymtwofishModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishLayer {
@@ -759,45 +759,45 @@ pub fn crypto_sym_twofish_layer_make(size : Int) -> CryptosymtwofishLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_layer_len(s : CryptosymtwofishLayer) -> Int { s.size }
+pub fn CryptosymtwofishLayer::len(self : CryptosymtwofishLayer) -> Int { self.size }
 
-pub fn crypto_sym_twofish_layer_get(s : CryptosymtwofishLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishLayer::get(self : CryptosymtwofishLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_layer_set(s : CryptosymtwofishLayer, i : Int, v : Double) -> CryptosymtwofishLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishLayer::set(self : CryptosymtwofishLayer, i : Int, v : Double) -> CryptosymtwofishLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_layer_sum(s : CryptosymtwofishLayer) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishLayer::sum(self : CryptosymtwofishLayer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_layer_mean(s : CryptosymtwofishLayer) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishLayer::mean(self : CryptosymtwofishLayer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_layer_scale(s : CryptosymtwofishLayer, f : Double) -> CryptosymtwofishLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishLayer::scale(self : CryptosymtwofishLayer, f : Double) -> CryptosymtwofishLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_layer_add(a : CryptosymtwofishLayer, b : CryptosymtwofishLayer) -> CryptosymtwofishLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishLayer::add(self : CryptosymtwofishLayer, other : CryptosymtwofishLayer) -> CryptosymtwofishLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_layer_copy(s : CryptosymtwofishLayer) -> CryptosymtwofishLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishLayer::copy(self : CryptosymtwofishLayer) -> CryptosymtwofishLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_layer_fill(s : CryptosymtwofishLayer, v : Double) -> CryptosymtwofishLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishLayer::fill(self : CryptosymtwofishLayer, v : Double) -> CryptosymtwofishLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_layer_min(s : CryptosymtwofishLayer) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishLayer::min(self : CryptosymtwofishLayer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_layer_max(s : CryptosymtwofishLayer) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishLayer::max(self : CryptosymtwofishLayer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_layer_to_string(s : CryptosymtwofishLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishLayer::to_string(self : CryptosymtwofishLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishBuffer {
@@ -810,45 +810,45 @@ pub fn crypto_sym_twofish_buffer_make(size : Int) -> CryptosymtwofishBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_buffer_len(s : CryptosymtwofishBuffer) -> Int { s.size }
+pub fn CryptosymtwofishBuffer::len(self : CryptosymtwofishBuffer) -> Int { self.size }
 
-pub fn crypto_sym_twofish_buffer_get(s : CryptosymtwofishBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishBuffer::get(self : CryptosymtwofishBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_buffer_set(s : CryptosymtwofishBuffer, i : Int, v : Double) -> CryptosymtwofishBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishBuffer::set(self : CryptosymtwofishBuffer, i : Int, v : Double) -> CryptosymtwofishBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_buffer_sum(s : CryptosymtwofishBuffer) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishBuffer::sum(self : CryptosymtwofishBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_buffer_mean(s : CryptosymtwofishBuffer) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishBuffer::mean(self : CryptosymtwofishBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_buffer_scale(s : CryptosymtwofishBuffer, f : Double) -> CryptosymtwofishBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishBuffer::scale(self : CryptosymtwofishBuffer, f : Double) -> CryptosymtwofishBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_buffer_add(a : CryptosymtwofishBuffer, b : CryptosymtwofishBuffer) -> CryptosymtwofishBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishBuffer::add(self : CryptosymtwofishBuffer, other : CryptosymtwofishBuffer) -> CryptosymtwofishBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_buffer_copy(s : CryptosymtwofishBuffer) -> CryptosymtwofishBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishBuffer::copy(self : CryptosymtwofishBuffer) -> CryptosymtwofishBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_buffer_fill(s : CryptosymtwofishBuffer, v : Double) -> CryptosymtwofishBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishBuffer::fill(self : CryptosymtwofishBuffer, v : Double) -> CryptosymtwofishBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_buffer_min(s : CryptosymtwofishBuffer) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishBuffer::min(self : CryptosymtwofishBuffer) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_buffer_max(s : CryptosymtwofishBuffer) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishBuffer::max(self : CryptosymtwofishBuffer) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_buffer_to_string(s : CryptosymtwofishBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishBuffer::to_string(self : CryptosymtwofishBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishCursor {
@@ -861,45 +861,45 @@ pub fn crypto_sym_twofish_cursor_make(size : Int) -> CryptosymtwofishCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_cursor_len(s : CryptosymtwofishCursor) -> Int { s.size }
+pub fn CryptosymtwofishCursor::len(self : CryptosymtwofishCursor) -> Int { self.size }
 
-pub fn crypto_sym_twofish_cursor_get(s : CryptosymtwofishCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishCursor::get(self : CryptosymtwofishCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_cursor_set(s : CryptosymtwofishCursor, i : Int, v : Double) -> CryptosymtwofishCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCursor::set(self : CryptosymtwofishCursor, i : Int, v : Double) -> CryptosymtwofishCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cursor_sum(s : CryptosymtwofishCursor) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishCursor::sum(self : CryptosymtwofishCursor) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_cursor_mean(s : CryptosymtwofishCursor) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishCursor::mean(self : CryptosymtwofishCursor) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_cursor_scale(s : CryptosymtwofishCursor, f : Double) -> CryptosymtwofishCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCursor::scale(self : CryptosymtwofishCursor, f : Double) -> CryptosymtwofishCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cursor_add(a : CryptosymtwofishCursor, b : CryptosymtwofishCursor) -> CryptosymtwofishCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishCursor::add(self : CryptosymtwofishCursor, other : CryptosymtwofishCursor) -> CryptosymtwofishCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cursor_copy(s : CryptosymtwofishCursor) -> CryptosymtwofishCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCursor::copy(self : CryptosymtwofishCursor) -> CryptosymtwofishCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cursor_fill(s : CryptosymtwofishCursor, v : Double) -> CryptosymtwofishCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishCursor::fill(self : CryptosymtwofishCursor, v : Double) -> CryptosymtwofishCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_cursor_min(s : CryptosymtwofishCursor) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishCursor::min(self : CryptosymtwofishCursor) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_cursor_max(s : CryptosymtwofishCursor) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishCursor::max(self : CryptosymtwofishCursor) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_cursor_to_string(s : CryptosymtwofishCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishCursor::to_string(self : CryptosymtwofishCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishView {
@@ -912,45 +912,45 @@ pub fn crypto_sym_twofish_view_make(size : Int) -> CryptosymtwofishView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_view_len(s : CryptosymtwofishView) -> Int { s.size }
+pub fn CryptosymtwofishView::len(self : CryptosymtwofishView) -> Int { self.size }
 
-pub fn crypto_sym_twofish_view_get(s : CryptosymtwofishView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishView::get(self : CryptosymtwofishView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_view_set(s : CryptosymtwofishView, i : Int, v : Double) -> CryptosymtwofishView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishView::set(self : CryptosymtwofishView, i : Int, v : Double) -> CryptosymtwofishView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_view_sum(s : CryptosymtwofishView) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishView::sum(self : CryptosymtwofishView) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_view_mean(s : CryptosymtwofishView) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishView::mean(self : CryptosymtwofishView) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_view_scale(s : CryptosymtwofishView, f : Double) -> CryptosymtwofishView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishView::scale(self : CryptosymtwofishView, f : Double) -> CryptosymtwofishView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_view_add(a : CryptosymtwofishView, b : CryptosymtwofishView) -> CryptosymtwofishView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishView::add(self : CryptosymtwofishView, other : CryptosymtwofishView) -> CryptosymtwofishView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_view_copy(s : CryptosymtwofishView) -> CryptosymtwofishView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishView::copy(self : CryptosymtwofishView) -> CryptosymtwofishView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_view_fill(s : CryptosymtwofishView, v : Double) -> CryptosymtwofishView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishView::fill(self : CryptosymtwofishView, v : Double) -> CryptosymtwofishView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_view_min(s : CryptosymtwofishView) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishView::min(self : CryptosymtwofishView) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_view_max(s : CryptosymtwofishView) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishView::max(self : CryptosymtwofishView) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_view_to_string(s : CryptosymtwofishView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishView::to_string(self : CryptosymtwofishView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishRange {
@@ -963,45 +963,45 @@ pub fn crypto_sym_twofish_range_make(size : Int) -> CryptosymtwofishRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_range_len(s : CryptosymtwofishRange) -> Int { s.size }
+pub fn CryptosymtwofishRange::len(self : CryptosymtwofishRange) -> Int { self.size }
 
-pub fn crypto_sym_twofish_range_get(s : CryptosymtwofishRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishRange::get(self : CryptosymtwofishRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_range_set(s : CryptosymtwofishRange, i : Int, v : Double) -> CryptosymtwofishRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishRange::set(self : CryptosymtwofishRange, i : Int, v : Double) -> CryptosymtwofishRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_range_sum(s : CryptosymtwofishRange) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishRange::sum(self : CryptosymtwofishRange) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_range_mean(s : CryptosymtwofishRange) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishRange::mean(self : CryptosymtwofishRange) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_range_scale(s : CryptosymtwofishRange, f : Double) -> CryptosymtwofishRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishRange::scale(self : CryptosymtwofishRange, f : Double) -> CryptosymtwofishRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_range_add(a : CryptosymtwofishRange, b : CryptosymtwofishRange) -> CryptosymtwofishRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishRange::add(self : CryptosymtwofishRange, other : CryptosymtwofishRange) -> CryptosymtwofishRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_range_copy(s : CryptosymtwofishRange) -> CryptosymtwofishRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishRange::copy(self : CryptosymtwofishRange) -> CryptosymtwofishRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_range_fill(s : CryptosymtwofishRange, v : Double) -> CryptosymtwofishRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishRange::fill(self : CryptosymtwofishRange, v : Double) -> CryptosymtwofishRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_range_min(s : CryptosymtwofishRange) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishRange::min(self : CryptosymtwofishRange) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_range_max(s : CryptosymtwofishRange) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishRange::max(self : CryptosymtwofishRange) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_range_to_string(s : CryptosymtwofishRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishRange::to_string(self : CryptosymtwofishRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishSlice {
@@ -1014,44 +1014,44 @@ pub fn crypto_sym_twofish_slice_make(size : Int) -> CryptosymtwofishSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn crypto_sym_twofish_slice_len(s : CryptosymtwofishSlice) -> Int { s.size }
+pub fn CryptosymtwofishSlice::len(self : CryptosymtwofishSlice) -> Int { self.size }
 
-pub fn crypto_sym_twofish_slice_get(s : CryptosymtwofishSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn CryptosymtwofishSlice::get(self : CryptosymtwofishSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn crypto_sym_twofish_slice_set(s : CryptosymtwofishSlice, i : Int, v : Double) -> CryptosymtwofishSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn CryptosymtwofishSlice::set(self : CryptosymtwofishSlice, i : Int, v : Double) -> CryptosymtwofishSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_slice_sum(s : CryptosymtwofishSlice) -> Double { @_common.sum(s.data) }
+pub fn CryptosymtwofishSlice::sum(self : CryptosymtwofishSlice) -> Double { @_common.sum(self.data) }
 
-pub fn crypto_sym_twofish_slice_mean(s : CryptosymtwofishSlice) -> Double { @_common.mean(s.data) }
+pub fn CryptosymtwofishSlice::mean(self : CryptosymtwofishSlice) -> Double { @_common.mean(self.data) }
 
-pub fn crypto_sym_twofish_slice_scale(s : CryptosymtwofishSlice, f : Double) -> CryptosymtwofishSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishSlice::scale(self : CryptosymtwofishSlice, f : Double) -> CryptosymtwofishSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_slice_add(a : CryptosymtwofishSlice, b : CryptosymtwofishSlice) -> CryptosymtwofishSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn CryptosymtwofishSlice::add(self : CryptosymtwofishSlice, other : CryptosymtwofishSlice) -> CryptosymtwofishSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_slice_copy(s : CryptosymtwofishSlice) -> CryptosymtwofishSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishSlice::copy(self : CryptosymtwofishSlice) -> CryptosymtwofishSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_slice_fill(s : CryptosymtwofishSlice, v : Double) -> CryptosymtwofishSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn CryptosymtwofishSlice::fill(self : CryptosymtwofishSlice, v : Double) -> CryptosymtwofishSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn crypto_sym_twofish_slice_min(s : CryptosymtwofishSlice) -> Double { @_common.min(s.data) }
+pub fn CryptosymtwofishSlice::min(self : CryptosymtwofishSlice) -> Double { @_common.min(self.data) }
 
-pub fn crypto_sym_twofish_slice_max(s : CryptosymtwofishSlice) -> Double { @_common.max(s.data) }
+pub fn CryptosymtwofishSlice::max(self : CryptosymtwofishSlice) -> Double { @_common.max(self.data) }
 
-pub fn crypto_sym_twofish_slice_to_string(s : CryptosymtwofishSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn CryptosymtwofishSlice::to_string(self : CryptosymtwofishSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

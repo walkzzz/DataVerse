@@ -351,45 +351,45 @@ pub fn net_flow_policing_frame_make(size : Int) -> NetflowpolicingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_frame_len(s : NetflowpolicingFrame) -> Int { s.size }
+pub fn NetflowpolicingFrame::len(self : NetflowpolicingFrame) -> Int { self.size }
 
-pub fn net_flow_policing_frame_get(s : NetflowpolicingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingFrame::get(self : NetflowpolicingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_frame_set(s : NetflowpolicingFrame, i : Int, v : Double) -> NetflowpolicingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingFrame::set(self : NetflowpolicingFrame, i : Int, v : Double) -> NetflowpolicingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_frame_sum(s : NetflowpolicingFrame) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingFrame::sum(self : NetflowpolicingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_frame_mean(s : NetflowpolicingFrame) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingFrame::mean(self : NetflowpolicingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_frame_scale(s : NetflowpolicingFrame, f : Double) -> NetflowpolicingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingFrame::scale(self : NetflowpolicingFrame, f : Double) -> NetflowpolicingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_frame_add(a : NetflowpolicingFrame, b : NetflowpolicingFrame) -> NetflowpolicingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingFrame::add(self : NetflowpolicingFrame, other : NetflowpolicingFrame) -> NetflowpolicingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_frame_copy(s : NetflowpolicingFrame) -> NetflowpolicingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingFrame::copy(self : NetflowpolicingFrame) -> NetflowpolicingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_frame_fill(s : NetflowpolicingFrame, v : Double) -> NetflowpolicingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingFrame::fill(self : NetflowpolicingFrame, v : Double) -> NetflowpolicingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_frame_min(s : NetflowpolicingFrame) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingFrame::min(self : NetflowpolicingFrame) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_frame_max(s : NetflowpolicingFrame) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingFrame::max(self : NetflowpolicingFrame) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_frame_to_string(s : NetflowpolicingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingFrame::to_string(self : NetflowpolicingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingTable {
@@ -402,45 +402,45 @@ pub fn net_flow_policing_table_make(size : Int) -> NetflowpolicingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_table_len(s : NetflowpolicingTable) -> Int { s.size }
+pub fn NetflowpolicingTable::len(self : NetflowpolicingTable) -> Int { self.size }
 
-pub fn net_flow_policing_table_get(s : NetflowpolicingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingTable::get(self : NetflowpolicingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_table_set(s : NetflowpolicingTable, i : Int, v : Double) -> NetflowpolicingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingTable::set(self : NetflowpolicingTable, i : Int, v : Double) -> NetflowpolicingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_table_sum(s : NetflowpolicingTable) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingTable::sum(self : NetflowpolicingTable) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_table_mean(s : NetflowpolicingTable) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingTable::mean(self : NetflowpolicingTable) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_table_scale(s : NetflowpolicingTable, f : Double) -> NetflowpolicingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingTable::scale(self : NetflowpolicingTable, f : Double) -> NetflowpolicingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_table_add(a : NetflowpolicingTable, b : NetflowpolicingTable) -> NetflowpolicingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingTable::add(self : NetflowpolicingTable, other : NetflowpolicingTable) -> NetflowpolicingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_table_copy(s : NetflowpolicingTable) -> NetflowpolicingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingTable::copy(self : NetflowpolicingTable) -> NetflowpolicingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_table_fill(s : NetflowpolicingTable, v : Double) -> NetflowpolicingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingTable::fill(self : NetflowpolicingTable, v : Double) -> NetflowpolicingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_table_min(s : NetflowpolicingTable) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingTable::min(self : NetflowpolicingTable) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_table_max(s : NetflowpolicingTable) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingTable::max(self : NetflowpolicingTable) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_table_to_string(s : NetflowpolicingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingTable::to_string(self : NetflowpolicingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingGraphN {
@@ -453,45 +453,45 @@ pub fn net_flow_policing_graphn_make(size : Int) -> NetflowpolicingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_graphn_len(s : NetflowpolicingGraphN) -> Int { s.size }
+pub fn NetflowpolicingGraphN::len(self : NetflowpolicingGraphN) -> Int { self.size }
 
-pub fn net_flow_policing_graphn_get(s : NetflowpolicingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingGraphN::get(self : NetflowpolicingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_graphn_set(s : NetflowpolicingGraphN, i : Int, v : Double) -> NetflowpolicingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingGraphN::set(self : NetflowpolicingGraphN, i : Int, v : Double) -> NetflowpolicingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_graphn_sum(s : NetflowpolicingGraphN) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingGraphN::sum(self : NetflowpolicingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_graphn_mean(s : NetflowpolicingGraphN) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingGraphN::mean(self : NetflowpolicingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_graphn_scale(s : NetflowpolicingGraphN, f : Double) -> NetflowpolicingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingGraphN::scale(self : NetflowpolicingGraphN, f : Double) -> NetflowpolicingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_graphn_add(a : NetflowpolicingGraphN, b : NetflowpolicingGraphN) -> NetflowpolicingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingGraphN::add(self : NetflowpolicingGraphN, other : NetflowpolicingGraphN) -> NetflowpolicingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_graphn_copy(s : NetflowpolicingGraphN) -> NetflowpolicingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingGraphN::copy(self : NetflowpolicingGraphN) -> NetflowpolicingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_graphn_fill(s : NetflowpolicingGraphN, v : Double) -> NetflowpolicingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingGraphN::fill(self : NetflowpolicingGraphN, v : Double) -> NetflowpolicingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_graphn_min(s : NetflowpolicingGraphN) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingGraphN::min(self : NetflowpolicingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_graphn_max(s : NetflowpolicingGraphN) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingGraphN::max(self : NetflowpolicingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_graphn_to_string(s : NetflowpolicingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingGraphN::to_string(self : NetflowpolicingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingNode {
@@ -504,45 +504,45 @@ pub fn net_flow_policing_node_make(size : Int) -> NetflowpolicingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_node_len(s : NetflowpolicingNode) -> Int { s.size }
+pub fn NetflowpolicingNode::len(self : NetflowpolicingNode) -> Int { self.size }
 
-pub fn net_flow_policing_node_get(s : NetflowpolicingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingNode::get(self : NetflowpolicingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_node_set(s : NetflowpolicingNode, i : Int, v : Double) -> NetflowpolicingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingNode::set(self : NetflowpolicingNode, i : Int, v : Double) -> NetflowpolicingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_node_sum(s : NetflowpolicingNode) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingNode::sum(self : NetflowpolicingNode) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_node_mean(s : NetflowpolicingNode) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingNode::mean(self : NetflowpolicingNode) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_node_scale(s : NetflowpolicingNode, f : Double) -> NetflowpolicingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingNode::scale(self : NetflowpolicingNode, f : Double) -> NetflowpolicingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_node_add(a : NetflowpolicingNode, b : NetflowpolicingNode) -> NetflowpolicingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingNode::add(self : NetflowpolicingNode, other : NetflowpolicingNode) -> NetflowpolicingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_node_copy(s : NetflowpolicingNode) -> NetflowpolicingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingNode::copy(self : NetflowpolicingNode) -> NetflowpolicingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_node_fill(s : NetflowpolicingNode, v : Double) -> NetflowpolicingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingNode::fill(self : NetflowpolicingNode, v : Double) -> NetflowpolicingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_node_min(s : NetflowpolicingNode) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingNode::min(self : NetflowpolicingNode) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_node_max(s : NetflowpolicingNode) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingNode::max(self : NetflowpolicingNode) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_node_to_string(s : NetflowpolicingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingNode::to_string(self : NetflowpolicingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingEdge {
@@ -555,45 +555,45 @@ pub fn net_flow_policing_edge_make(size : Int) -> NetflowpolicingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_edge_len(s : NetflowpolicingEdge) -> Int { s.size }
+pub fn NetflowpolicingEdge::len(self : NetflowpolicingEdge) -> Int { self.size }
 
-pub fn net_flow_policing_edge_get(s : NetflowpolicingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingEdge::get(self : NetflowpolicingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_edge_set(s : NetflowpolicingEdge, i : Int, v : Double) -> NetflowpolicingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingEdge::set(self : NetflowpolicingEdge, i : Int, v : Double) -> NetflowpolicingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_edge_sum(s : NetflowpolicingEdge) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingEdge::sum(self : NetflowpolicingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_edge_mean(s : NetflowpolicingEdge) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingEdge::mean(self : NetflowpolicingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_edge_scale(s : NetflowpolicingEdge, f : Double) -> NetflowpolicingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingEdge::scale(self : NetflowpolicingEdge, f : Double) -> NetflowpolicingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_edge_add(a : NetflowpolicingEdge, b : NetflowpolicingEdge) -> NetflowpolicingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingEdge::add(self : NetflowpolicingEdge, other : NetflowpolicingEdge) -> NetflowpolicingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_edge_copy(s : NetflowpolicingEdge) -> NetflowpolicingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingEdge::copy(self : NetflowpolicingEdge) -> NetflowpolicingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_edge_fill(s : NetflowpolicingEdge, v : Double) -> NetflowpolicingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingEdge::fill(self : NetflowpolicingEdge, v : Double) -> NetflowpolicingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_edge_min(s : NetflowpolicingEdge) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingEdge::min(self : NetflowpolicingEdge) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_edge_max(s : NetflowpolicingEdge) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingEdge::max(self : NetflowpolicingEdge) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_edge_to_string(s : NetflowpolicingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingEdge::to_string(self : NetflowpolicingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingPath {
@@ -606,45 +606,45 @@ pub fn net_flow_policing_path_make(size : Int) -> NetflowpolicingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_path_len(s : NetflowpolicingPath) -> Int { s.size }
+pub fn NetflowpolicingPath::len(self : NetflowpolicingPath) -> Int { self.size }
 
-pub fn net_flow_policing_path_get(s : NetflowpolicingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingPath::get(self : NetflowpolicingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_path_set(s : NetflowpolicingPath, i : Int, v : Double) -> NetflowpolicingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingPath::set(self : NetflowpolicingPath, i : Int, v : Double) -> NetflowpolicingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_path_sum(s : NetflowpolicingPath) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingPath::sum(self : NetflowpolicingPath) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_path_mean(s : NetflowpolicingPath) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingPath::mean(self : NetflowpolicingPath) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_path_scale(s : NetflowpolicingPath, f : Double) -> NetflowpolicingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingPath::scale(self : NetflowpolicingPath, f : Double) -> NetflowpolicingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_path_add(a : NetflowpolicingPath, b : NetflowpolicingPath) -> NetflowpolicingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingPath::add(self : NetflowpolicingPath, other : NetflowpolicingPath) -> NetflowpolicingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_path_copy(s : NetflowpolicingPath) -> NetflowpolicingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingPath::copy(self : NetflowpolicingPath) -> NetflowpolicingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_path_fill(s : NetflowpolicingPath, v : Double) -> NetflowpolicingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingPath::fill(self : NetflowpolicingPath, v : Double) -> NetflowpolicingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_path_min(s : NetflowpolicingPath) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingPath::min(self : NetflowpolicingPath) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_path_max(s : NetflowpolicingPath) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingPath::max(self : NetflowpolicingPath) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_path_to_string(s : NetflowpolicingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingPath::to_string(self : NetflowpolicingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingCluster {
@@ -657,45 +657,45 @@ pub fn net_flow_policing_cluster_make(size : Int) -> NetflowpolicingCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_cluster_len(s : NetflowpolicingCluster) -> Int { s.size }
+pub fn NetflowpolicingCluster::len(self : NetflowpolicingCluster) -> Int { self.size }
 
-pub fn net_flow_policing_cluster_get(s : NetflowpolicingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingCluster::get(self : NetflowpolicingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_cluster_set(s : NetflowpolicingCluster, i : Int, v : Double) -> NetflowpolicingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingCluster::set(self : NetflowpolicingCluster, i : Int, v : Double) -> NetflowpolicingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cluster_sum(s : NetflowpolicingCluster) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingCluster::sum(self : NetflowpolicingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_cluster_mean(s : NetflowpolicingCluster) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingCluster::mean(self : NetflowpolicingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_cluster_scale(s : NetflowpolicingCluster, f : Double) -> NetflowpolicingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingCluster::scale(self : NetflowpolicingCluster, f : Double) -> NetflowpolicingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cluster_add(a : NetflowpolicingCluster, b : NetflowpolicingCluster) -> NetflowpolicingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingCluster::add(self : NetflowpolicingCluster, other : NetflowpolicingCluster) -> NetflowpolicingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_cluster_copy(s : NetflowpolicingCluster) -> NetflowpolicingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingCluster::copy(self : NetflowpolicingCluster) -> NetflowpolicingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cluster_fill(s : NetflowpolicingCluster, v : Double) -> NetflowpolicingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingCluster::fill(self : NetflowpolicingCluster, v : Double) -> NetflowpolicingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cluster_min(s : NetflowpolicingCluster) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingCluster::min(self : NetflowpolicingCluster) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_cluster_max(s : NetflowpolicingCluster) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingCluster::max(self : NetflowpolicingCluster) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_cluster_to_string(s : NetflowpolicingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingCluster::to_string(self : NetflowpolicingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingModel {
@@ -708,45 +708,45 @@ pub fn net_flow_policing_model_make(size : Int) -> NetflowpolicingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_model_len(s : NetflowpolicingModel) -> Int { s.size }
+pub fn NetflowpolicingModel::len(self : NetflowpolicingModel) -> Int { self.size }
 
-pub fn net_flow_policing_model_get(s : NetflowpolicingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingModel::get(self : NetflowpolicingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_model_set(s : NetflowpolicingModel, i : Int, v : Double) -> NetflowpolicingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingModel::set(self : NetflowpolicingModel, i : Int, v : Double) -> NetflowpolicingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_model_sum(s : NetflowpolicingModel) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingModel::sum(self : NetflowpolicingModel) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_model_mean(s : NetflowpolicingModel) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingModel::mean(self : NetflowpolicingModel) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_model_scale(s : NetflowpolicingModel, f : Double) -> NetflowpolicingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingModel::scale(self : NetflowpolicingModel, f : Double) -> NetflowpolicingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_model_add(a : NetflowpolicingModel, b : NetflowpolicingModel) -> NetflowpolicingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingModel::add(self : NetflowpolicingModel, other : NetflowpolicingModel) -> NetflowpolicingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_model_copy(s : NetflowpolicingModel) -> NetflowpolicingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingModel::copy(self : NetflowpolicingModel) -> NetflowpolicingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_model_fill(s : NetflowpolicingModel, v : Double) -> NetflowpolicingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingModel::fill(self : NetflowpolicingModel, v : Double) -> NetflowpolicingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_model_min(s : NetflowpolicingModel) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingModel::min(self : NetflowpolicingModel) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_model_max(s : NetflowpolicingModel) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingModel::max(self : NetflowpolicingModel) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_model_to_string(s : NetflowpolicingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingModel::to_string(self : NetflowpolicingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingLayer {
@@ -759,45 +759,45 @@ pub fn net_flow_policing_layer_make(size : Int) -> NetflowpolicingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_layer_len(s : NetflowpolicingLayer) -> Int { s.size }
+pub fn NetflowpolicingLayer::len(self : NetflowpolicingLayer) -> Int { self.size }
 
-pub fn net_flow_policing_layer_get(s : NetflowpolicingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingLayer::get(self : NetflowpolicingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_layer_set(s : NetflowpolicingLayer, i : Int, v : Double) -> NetflowpolicingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingLayer::set(self : NetflowpolicingLayer, i : Int, v : Double) -> NetflowpolicingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_layer_sum(s : NetflowpolicingLayer) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingLayer::sum(self : NetflowpolicingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_layer_mean(s : NetflowpolicingLayer) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingLayer::mean(self : NetflowpolicingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_layer_scale(s : NetflowpolicingLayer, f : Double) -> NetflowpolicingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingLayer::scale(self : NetflowpolicingLayer, f : Double) -> NetflowpolicingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_layer_add(a : NetflowpolicingLayer, b : NetflowpolicingLayer) -> NetflowpolicingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingLayer::add(self : NetflowpolicingLayer, other : NetflowpolicingLayer) -> NetflowpolicingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_layer_copy(s : NetflowpolicingLayer) -> NetflowpolicingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingLayer::copy(self : NetflowpolicingLayer) -> NetflowpolicingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_layer_fill(s : NetflowpolicingLayer, v : Double) -> NetflowpolicingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingLayer::fill(self : NetflowpolicingLayer, v : Double) -> NetflowpolicingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_layer_min(s : NetflowpolicingLayer) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingLayer::min(self : NetflowpolicingLayer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_layer_max(s : NetflowpolicingLayer) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingLayer::max(self : NetflowpolicingLayer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_layer_to_string(s : NetflowpolicingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingLayer::to_string(self : NetflowpolicingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingBuffer {
@@ -810,45 +810,45 @@ pub fn net_flow_policing_buffer_make(size : Int) -> NetflowpolicingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_buffer_len(s : NetflowpolicingBuffer) -> Int { s.size }
+pub fn NetflowpolicingBuffer::len(self : NetflowpolicingBuffer) -> Int { self.size }
 
-pub fn net_flow_policing_buffer_get(s : NetflowpolicingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingBuffer::get(self : NetflowpolicingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_buffer_set(s : NetflowpolicingBuffer, i : Int, v : Double) -> NetflowpolicingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingBuffer::set(self : NetflowpolicingBuffer, i : Int, v : Double) -> NetflowpolicingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_buffer_sum(s : NetflowpolicingBuffer) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingBuffer::sum(self : NetflowpolicingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_buffer_mean(s : NetflowpolicingBuffer) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingBuffer::mean(self : NetflowpolicingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_buffer_scale(s : NetflowpolicingBuffer, f : Double) -> NetflowpolicingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingBuffer::scale(self : NetflowpolicingBuffer, f : Double) -> NetflowpolicingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_buffer_add(a : NetflowpolicingBuffer, b : NetflowpolicingBuffer) -> NetflowpolicingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingBuffer::add(self : NetflowpolicingBuffer, other : NetflowpolicingBuffer) -> NetflowpolicingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_buffer_copy(s : NetflowpolicingBuffer) -> NetflowpolicingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingBuffer::copy(self : NetflowpolicingBuffer) -> NetflowpolicingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_buffer_fill(s : NetflowpolicingBuffer, v : Double) -> NetflowpolicingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingBuffer::fill(self : NetflowpolicingBuffer, v : Double) -> NetflowpolicingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_buffer_min(s : NetflowpolicingBuffer) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingBuffer::min(self : NetflowpolicingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_buffer_max(s : NetflowpolicingBuffer) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingBuffer::max(self : NetflowpolicingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_buffer_to_string(s : NetflowpolicingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingBuffer::to_string(self : NetflowpolicingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingCursor {
@@ -861,45 +861,45 @@ pub fn net_flow_policing_cursor_make(size : Int) -> NetflowpolicingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_cursor_len(s : NetflowpolicingCursor) -> Int { s.size }
+pub fn NetflowpolicingCursor::len(self : NetflowpolicingCursor) -> Int { self.size }
 
-pub fn net_flow_policing_cursor_get(s : NetflowpolicingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingCursor::get(self : NetflowpolicingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_cursor_set(s : NetflowpolicingCursor, i : Int, v : Double) -> NetflowpolicingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingCursor::set(self : NetflowpolicingCursor, i : Int, v : Double) -> NetflowpolicingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cursor_sum(s : NetflowpolicingCursor) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingCursor::sum(self : NetflowpolicingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_cursor_mean(s : NetflowpolicingCursor) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingCursor::mean(self : NetflowpolicingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_cursor_scale(s : NetflowpolicingCursor, f : Double) -> NetflowpolicingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingCursor::scale(self : NetflowpolicingCursor, f : Double) -> NetflowpolicingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cursor_add(a : NetflowpolicingCursor, b : NetflowpolicingCursor) -> NetflowpolicingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingCursor::add(self : NetflowpolicingCursor, other : NetflowpolicingCursor) -> NetflowpolicingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_cursor_copy(s : NetflowpolicingCursor) -> NetflowpolicingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingCursor::copy(self : NetflowpolicingCursor) -> NetflowpolicingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cursor_fill(s : NetflowpolicingCursor, v : Double) -> NetflowpolicingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingCursor::fill(self : NetflowpolicingCursor, v : Double) -> NetflowpolicingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_cursor_min(s : NetflowpolicingCursor) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingCursor::min(self : NetflowpolicingCursor) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_cursor_max(s : NetflowpolicingCursor) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingCursor::max(self : NetflowpolicingCursor) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_cursor_to_string(s : NetflowpolicingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingCursor::to_string(self : NetflowpolicingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingView {
@@ -912,45 +912,45 @@ pub fn net_flow_policing_view_make(size : Int) -> NetflowpolicingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_view_len(s : NetflowpolicingView) -> Int { s.size }
+pub fn NetflowpolicingView::len(self : NetflowpolicingView) -> Int { self.size }
 
-pub fn net_flow_policing_view_get(s : NetflowpolicingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingView::get(self : NetflowpolicingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_view_set(s : NetflowpolicingView, i : Int, v : Double) -> NetflowpolicingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingView::set(self : NetflowpolicingView, i : Int, v : Double) -> NetflowpolicingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_view_sum(s : NetflowpolicingView) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingView::sum(self : NetflowpolicingView) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_view_mean(s : NetflowpolicingView) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingView::mean(self : NetflowpolicingView) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_view_scale(s : NetflowpolicingView, f : Double) -> NetflowpolicingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingView::scale(self : NetflowpolicingView, f : Double) -> NetflowpolicingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_view_add(a : NetflowpolicingView, b : NetflowpolicingView) -> NetflowpolicingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingView::add(self : NetflowpolicingView, other : NetflowpolicingView) -> NetflowpolicingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_view_copy(s : NetflowpolicingView) -> NetflowpolicingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingView::copy(self : NetflowpolicingView) -> NetflowpolicingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_view_fill(s : NetflowpolicingView, v : Double) -> NetflowpolicingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingView::fill(self : NetflowpolicingView, v : Double) -> NetflowpolicingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_view_min(s : NetflowpolicingView) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingView::min(self : NetflowpolicingView) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_view_max(s : NetflowpolicingView) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingView::max(self : NetflowpolicingView) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_view_to_string(s : NetflowpolicingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingView::to_string(self : NetflowpolicingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingRange {
@@ -963,45 +963,45 @@ pub fn net_flow_policing_range_make(size : Int) -> NetflowpolicingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_range_len(s : NetflowpolicingRange) -> Int { s.size }
+pub fn NetflowpolicingRange::len(self : NetflowpolicingRange) -> Int { self.size }
 
-pub fn net_flow_policing_range_get(s : NetflowpolicingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingRange::get(self : NetflowpolicingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_range_set(s : NetflowpolicingRange, i : Int, v : Double) -> NetflowpolicingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingRange::set(self : NetflowpolicingRange, i : Int, v : Double) -> NetflowpolicingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_range_sum(s : NetflowpolicingRange) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingRange::sum(self : NetflowpolicingRange) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_range_mean(s : NetflowpolicingRange) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingRange::mean(self : NetflowpolicingRange) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_range_scale(s : NetflowpolicingRange, f : Double) -> NetflowpolicingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingRange::scale(self : NetflowpolicingRange, f : Double) -> NetflowpolicingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_range_add(a : NetflowpolicingRange, b : NetflowpolicingRange) -> NetflowpolicingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingRange::add(self : NetflowpolicingRange, other : NetflowpolicingRange) -> NetflowpolicingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_range_copy(s : NetflowpolicingRange) -> NetflowpolicingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingRange::copy(self : NetflowpolicingRange) -> NetflowpolicingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_range_fill(s : NetflowpolicingRange, v : Double) -> NetflowpolicingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingRange::fill(self : NetflowpolicingRange, v : Double) -> NetflowpolicingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_range_min(s : NetflowpolicingRange) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingRange::min(self : NetflowpolicingRange) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_range_max(s : NetflowpolicingRange) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingRange::max(self : NetflowpolicingRange) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_range_to_string(s : NetflowpolicingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingRange::to_string(self : NetflowpolicingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NetflowpolicingSlice {
@@ -1014,44 +1014,44 @@ pub fn net_flow_policing_slice_make(size : Int) -> NetflowpolicingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn net_flow_policing_slice_len(s : NetflowpolicingSlice) -> Int { s.size }
+pub fn NetflowpolicingSlice::len(self : NetflowpolicingSlice) -> Int { self.size }
 
-pub fn net_flow_policing_slice_get(s : NetflowpolicingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NetflowpolicingSlice::get(self : NetflowpolicingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn net_flow_policing_slice_set(s : NetflowpolicingSlice, i : Int, v : Double) -> NetflowpolicingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NetflowpolicingSlice::set(self : NetflowpolicingSlice, i : Int, v : Double) -> NetflowpolicingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_slice_sum(s : NetflowpolicingSlice) -> Double { @_common.sum(s.data) }
+pub fn NetflowpolicingSlice::sum(self : NetflowpolicingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn net_flow_policing_slice_mean(s : NetflowpolicingSlice) -> Double { @_common.mean(s.data) }
+pub fn NetflowpolicingSlice::mean(self : NetflowpolicingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn net_flow_policing_slice_scale(s : NetflowpolicingSlice, f : Double) -> NetflowpolicingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NetflowpolicingSlice::scale(self : NetflowpolicingSlice, f : Double) -> NetflowpolicingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_slice_add(a : NetflowpolicingSlice, b : NetflowpolicingSlice) -> NetflowpolicingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NetflowpolicingSlice::add(self : NetflowpolicingSlice, other : NetflowpolicingSlice) -> NetflowpolicingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn net_flow_policing_slice_copy(s : NetflowpolicingSlice) -> NetflowpolicingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NetflowpolicingSlice::copy(self : NetflowpolicingSlice) -> NetflowpolicingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_slice_fill(s : NetflowpolicingSlice, v : Double) -> NetflowpolicingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NetflowpolicingSlice::fill(self : NetflowpolicingSlice, v : Double) -> NetflowpolicingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn net_flow_policing_slice_min(s : NetflowpolicingSlice) -> Double { @_common.min(s.data) }
+pub fn NetflowpolicingSlice::min(self : NetflowpolicingSlice) -> Double { @_common.min(self.data) }
 
-pub fn net_flow_policing_slice_max(s : NetflowpolicingSlice) -> Double { @_common.max(s.data) }
+pub fn NetflowpolicingSlice::max(self : NetflowpolicingSlice) -> Double { @_common.max(self.data) }
 
-pub fn net_flow_policing_slice_to_string(s : NetflowpolicingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NetflowpolicingSlice::to_string(self : NetflowpolicingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn timeseries_prophet_frame_make(size : Int) -> TimeseriesprophetFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_frame_len(s : TimeseriesprophetFrame) -> Int { s.size }
+pub fn TimeseriesprophetFrame::len(self : TimeseriesprophetFrame) -> Int { self.size }
 
-pub fn timeseries_prophet_frame_get(s : TimeseriesprophetFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetFrame::get(self : TimeseriesprophetFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_frame_set(s : TimeseriesprophetFrame, i : Int, v : Double) -> TimeseriesprophetFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetFrame::set(self : TimeseriesprophetFrame, i : Int, v : Double) -> TimeseriesprophetFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_frame_sum(s : TimeseriesprophetFrame) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetFrame::sum(self : TimeseriesprophetFrame) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_frame_mean(s : TimeseriesprophetFrame) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetFrame::mean(self : TimeseriesprophetFrame) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_frame_scale(s : TimeseriesprophetFrame, f : Double) -> TimeseriesprophetFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetFrame::scale(self : TimeseriesprophetFrame, f : Double) -> TimeseriesprophetFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_frame_add(a : TimeseriesprophetFrame, b : TimeseriesprophetFrame) -> TimeseriesprophetFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetFrame::add(self : TimeseriesprophetFrame, other : TimeseriesprophetFrame) -> TimeseriesprophetFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_frame_copy(s : TimeseriesprophetFrame) -> TimeseriesprophetFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetFrame::copy(self : TimeseriesprophetFrame) -> TimeseriesprophetFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_frame_fill(s : TimeseriesprophetFrame, v : Double) -> TimeseriesprophetFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetFrame::fill(self : TimeseriesprophetFrame, v : Double) -> TimeseriesprophetFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_frame_min(s : TimeseriesprophetFrame) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetFrame::min(self : TimeseriesprophetFrame) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_frame_max(s : TimeseriesprophetFrame) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetFrame::max(self : TimeseriesprophetFrame) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_frame_to_string(s : TimeseriesprophetFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetFrame::to_string(self : TimeseriesprophetFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetTable {
@@ -402,45 +402,45 @@ pub fn timeseries_prophet_table_make(size : Int) -> TimeseriesprophetTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_table_len(s : TimeseriesprophetTable) -> Int { s.size }
+pub fn TimeseriesprophetTable::len(self : TimeseriesprophetTable) -> Int { self.size }
 
-pub fn timeseries_prophet_table_get(s : TimeseriesprophetTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetTable::get(self : TimeseriesprophetTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_table_set(s : TimeseriesprophetTable, i : Int, v : Double) -> TimeseriesprophetTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetTable::set(self : TimeseriesprophetTable, i : Int, v : Double) -> TimeseriesprophetTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_table_sum(s : TimeseriesprophetTable) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetTable::sum(self : TimeseriesprophetTable) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_table_mean(s : TimeseriesprophetTable) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetTable::mean(self : TimeseriesprophetTable) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_table_scale(s : TimeseriesprophetTable, f : Double) -> TimeseriesprophetTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetTable::scale(self : TimeseriesprophetTable, f : Double) -> TimeseriesprophetTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_table_add(a : TimeseriesprophetTable, b : TimeseriesprophetTable) -> TimeseriesprophetTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetTable::add(self : TimeseriesprophetTable, other : TimeseriesprophetTable) -> TimeseriesprophetTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_table_copy(s : TimeseriesprophetTable) -> TimeseriesprophetTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetTable::copy(self : TimeseriesprophetTable) -> TimeseriesprophetTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_table_fill(s : TimeseriesprophetTable, v : Double) -> TimeseriesprophetTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetTable::fill(self : TimeseriesprophetTable, v : Double) -> TimeseriesprophetTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_table_min(s : TimeseriesprophetTable) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetTable::min(self : TimeseriesprophetTable) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_table_max(s : TimeseriesprophetTable) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetTable::max(self : TimeseriesprophetTable) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_table_to_string(s : TimeseriesprophetTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetTable::to_string(self : TimeseriesprophetTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetGraphN {
@@ -453,45 +453,45 @@ pub fn timeseries_prophet_graphn_make(size : Int) -> TimeseriesprophetGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_graphn_len(s : TimeseriesprophetGraphN) -> Int { s.size }
+pub fn TimeseriesprophetGraphN::len(self : TimeseriesprophetGraphN) -> Int { self.size }
 
-pub fn timeseries_prophet_graphn_get(s : TimeseriesprophetGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetGraphN::get(self : TimeseriesprophetGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_graphn_set(s : TimeseriesprophetGraphN, i : Int, v : Double) -> TimeseriesprophetGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetGraphN::set(self : TimeseriesprophetGraphN, i : Int, v : Double) -> TimeseriesprophetGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_graphn_sum(s : TimeseriesprophetGraphN) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetGraphN::sum(self : TimeseriesprophetGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_graphn_mean(s : TimeseriesprophetGraphN) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetGraphN::mean(self : TimeseriesprophetGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_graphn_scale(s : TimeseriesprophetGraphN, f : Double) -> TimeseriesprophetGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetGraphN::scale(self : TimeseriesprophetGraphN, f : Double) -> TimeseriesprophetGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_graphn_add(a : TimeseriesprophetGraphN, b : TimeseriesprophetGraphN) -> TimeseriesprophetGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetGraphN::add(self : TimeseriesprophetGraphN, other : TimeseriesprophetGraphN) -> TimeseriesprophetGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_graphn_copy(s : TimeseriesprophetGraphN) -> TimeseriesprophetGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetGraphN::copy(self : TimeseriesprophetGraphN) -> TimeseriesprophetGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_graphn_fill(s : TimeseriesprophetGraphN, v : Double) -> TimeseriesprophetGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetGraphN::fill(self : TimeseriesprophetGraphN, v : Double) -> TimeseriesprophetGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_graphn_min(s : TimeseriesprophetGraphN) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetGraphN::min(self : TimeseriesprophetGraphN) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_graphn_max(s : TimeseriesprophetGraphN) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetGraphN::max(self : TimeseriesprophetGraphN) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_graphn_to_string(s : TimeseriesprophetGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetGraphN::to_string(self : TimeseriesprophetGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetNode {
@@ -504,45 +504,45 @@ pub fn timeseries_prophet_node_make(size : Int) -> TimeseriesprophetNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_node_len(s : TimeseriesprophetNode) -> Int { s.size }
+pub fn TimeseriesprophetNode::len(self : TimeseriesprophetNode) -> Int { self.size }
 
-pub fn timeseries_prophet_node_get(s : TimeseriesprophetNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetNode::get(self : TimeseriesprophetNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_node_set(s : TimeseriesprophetNode, i : Int, v : Double) -> TimeseriesprophetNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetNode::set(self : TimeseriesprophetNode, i : Int, v : Double) -> TimeseriesprophetNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_node_sum(s : TimeseriesprophetNode) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetNode::sum(self : TimeseriesprophetNode) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_node_mean(s : TimeseriesprophetNode) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetNode::mean(self : TimeseriesprophetNode) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_node_scale(s : TimeseriesprophetNode, f : Double) -> TimeseriesprophetNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetNode::scale(self : TimeseriesprophetNode, f : Double) -> TimeseriesprophetNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_node_add(a : TimeseriesprophetNode, b : TimeseriesprophetNode) -> TimeseriesprophetNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetNode::add(self : TimeseriesprophetNode, other : TimeseriesprophetNode) -> TimeseriesprophetNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_node_copy(s : TimeseriesprophetNode) -> TimeseriesprophetNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetNode::copy(self : TimeseriesprophetNode) -> TimeseriesprophetNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_node_fill(s : TimeseriesprophetNode, v : Double) -> TimeseriesprophetNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetNode::fill(self : TimeseriesprophetNode, v : Double) -> TimeseriesprophetNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_node_min(s : TimeseriesprophetNode) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetNode::min(self : TimeseriesprophetNode) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_node_max(s : TimeseriesprophetNode) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetNode::max(self : TimeseriesprophetNode) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_node_to_string(s : TimeseriesprophetNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetNode::to_string(self : TimeseriesprophetNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetEdge {
@@ -555,45 +555,45 @@ pub fn timeseries_prophet_edge_make(size : Int) -> TimeseriesprophetEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_edge_len(s : TimeseriesprophetEdge) -> Int { s.size }
+pub fn TimeseriesprophetEdge::len(self : TimeseriesprophetEdge) -> Int { self.size }
 
-pub fn timeseries_prophet_edge_get(s : TimeseriesprophetEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetEdge::get(self : TimeseriesprophetEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_edge_set(s : TimeseriesprophetEdge, i : Int, v : Double) -> TimeseriesprophetEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetEdge::set(self : TimeseriesprophetEdge, i : Int, v : Double) -> TimeseriesprophetEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_edge_sum(s : TimeseriesprophetEdge) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetEdge::sum(self : TimeseriesprophetEdge) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_edge_mean(s : TimeseriesprophetEdge) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetEdge::mean(self : TimeseriesprophetEdge) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_edge_scale(s : TimeseriesprophetEdge, f : Double) -> TimeseriesprophetEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetEdge::scale(self : TimeseriesprophetEdge, f : Double) -> TimeseriesprophetEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_edge_add(a : TimeseriesprophetEdge, b : TimeseriesprophetEdge) -> TimeseriesprophetEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetEdge::add(self : TimeseriesprophetEdge, other : TimeseriesprophetEdge) -> TimeseriesprophetEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_edge_copy(s : TimeseriesprophetEdge) -> TimeseriesprophetEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetEdge::copy(self : TimeseriesprophetEdge) -> TimeseriesprophetEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_edge_fill(s : TimeseriesprophetEdge, v : Double) -> TimeseriesprophetEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetEdge::fill(self : TimeseriesprophetEdge, v : Double) -> TimeseriesprophetEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_edge_min(s : TimeseriesprophetEdge) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetEdge::min(self : TimeseriesprophetEdge) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_edge_max(s : TimeseriesprophetEdge) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetEdge::max(self : TimeseriesprophetEdge) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_edge_to_string(s : TimeseriesprophetEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetEdge::to_string(self : TimeseriesprophetEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetPath {
@@ -606,45 +606,45 @@ pub fn timeseries_prophet_path_make(size : Int) -> TimeseriesprophetPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_path_len(s : TimeseriesprophetPath) -> Int { s.size }
+pub fn TimeseriesprophetPath::len(self : TimeseriesprophetPath) -> Int { self.size }
 
-pub fn timeseries_prophet_path_get(s : TimeseriesprophetPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetPath::get(self : TimeseriesprophetPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_path_set(s : TimeseriesprophetPath, i : Int, v : Double) -> TimeseriesprophetPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetPath::set(self : TimeseriesprophetPath, i : Int, v : Double) -> TimeseriesprophetPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_path_sum(s : TimeseriesprophetPath) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetPath::sum(self : TimeseriesprophetPath) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_path_mean(s : TimeseriesprophetPath) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetPath::mean(self : TimeseriesprophetPath) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_path_scale(s : TimeseriesprophetPath, f : Double) -> TimeseriesprophetPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetPath::scale(self : TimeseriesprophetPath, f : Double) -> TimeseriesprophetPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_path_add(a : TimeseriesprophetPath, b : TimeseriesprophetPath) -> TimeseriesprophetPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetPath::add(self : TimeseriesprophetPath, other : TimeseriesprophetPath) -> TimeseriesprophetPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_path_copy(s : TimeseriesprophetPath) -> TimeseriesprophetPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetPath::copy(self : TimeseriesprophetPath) -> TimeseriesprophetPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_path_fill(s : TimeseriesprophetPath, v : Double) -> TimeseriesprophetPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetPath::fill(self : TimeseriesprophetPath, v : Double) -> TimeseriesprophetPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_path_min(s : TimeseriesprophetPath) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetPath::min(self : TimeseriesprophetPath) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_path_max(s : TimeseriesprophetPath) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetPath::max(self : TimeseriesprophetPath) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_path_to_string(s : TimeseriesprophetPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetPath::to_string(self : TimeseriesprophetPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetCluster {
@@ -657,45 +657,45 @@ pub fn timeseries_prophet_cluster_make(size : Int) -> TimeseriesprophetCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_cluster_len(s : TimeseriesprophetCluster) -> Int { s.size }
+pub fn TimeseriesprophetCluster::len(self : TimeseriesprophetCluster) -> Int { self.size }
 
-pub fn timeseries_prophet_cluster_get(s : TimeseriesprophetCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetCluster::get(self : TimeseriesprophetCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_cluster_set(s : TimeseriesprophetCluster, i : Int, v : Double) -> TimeseriesprophetCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCluster::set(self : TimeseriesprophetCluster, i : Int, v : Double) -> TimeseriesprophetCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cluster_sum(s : TimeseriesprophetCluster) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetCluster::sum(self : TimeseriesprophetCluster) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_cluster_mean(s : TimeseriesprophetCluster) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetCluster::mean(self : TimeseriesprophetCluster) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_cluster_scale(s : TimeseriesprophetCluster, f : Double) -> TimeseriesprophetCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCluster::scale(self : TimeseriesprophetCluster, f : Double) -> TimeseriesprophetCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cluster_add(a : TimeseriesprophetCluster, b : TimeseriesprophetCluster) -> TimeseriesprophetCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetCluster::add(self : TimeseriesprophetCluster, other : TimeseriesprophetCluster) -> TimeseriesprophetCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cluster_copy(s : TimeseriesprophetCluster) -> TimeseriesprophetCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCluster::copy(self : TimeseriesprophetCluster) -> TimeseriesprophetCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cluster_fill(s : TimeseriesprophetCluster, v : Double) -> TimeseriesprophetCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCluster::fill(self : TimeseriesprophetCluster, v : Double) -> TimeseriesprophetCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cluster_min(s : TimeseriesprophetCluster) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetCluster::min(self : TimeseriesprophetCluster) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_cluster_max(s : TimeseriesprophetCluster) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetCluster::max(self : TimeseriesprophetCluster) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_cluster_to_string(s : TimeseriesprophetCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetCluster::to_string(self : TimeseriesprophetCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetModel {
@@ -708,45 +708,45 @@ pub fn timeseries_prophet_model_make(size : Int) -> TimeseriesprophetModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_model_len(s : TimeseriesprophetModel) -> Int { s.size }
+pub fn TimeseriesprophetModel::len(self : TimeseriesprophetModel) -> Int { self.size }
 
-pub fn timeseries_prophet_model_get(s : TimeseriesprophetModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetModel::get(self : TimeseriesprophetModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_model_set(s : TimeseriesprophetModel, i : Int, v : Double) -> TimeseriesprophetModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetModel::set(self : TimeseriesprophetModel, i : Int, v : Double) -> TimeseriesprophetModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_model_sum(s : TimeseriesprophetModel) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetModel::sum(self : TimeseriesprophetModel) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_model_mean(s : TimeseriesprophetModel) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetModel::mean(self : TimeseriesprophetModel) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_model_scale(s : TimeseriesprophetModel, f : Double) -> TimeseriesprophetModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetModel::scale(self : TimeseriesprophetModel, f : Double) -> TimeseriesprophetModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_model_add(a : TimeseriesprophetModel, b : TimeseriesprophetModel) -> TimeseriesprophetModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetModel::add(self : TimeseriesprophetModel, other : TimeseriesprophetModel) -> TimeseriesprophetModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_model_copy(s : TimeseriesprophetModel) -> TimeseriesprophetModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetModel::copy(self : TimeseriesprophetModel) -> TimeseriesprophetModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_model_fill(s : TimeseriesprophetModel, v : Double) -> TimeseriesprophetModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetModel::fill(self : TimeseriesprophetModel, v : Double) -> TimeseriesprophetModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_model_min(s : TimeseriesprophetModel) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetModel::min(self : TimeseriesprophetModel) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_model_max(s : TimeseriesprophetModel) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetModel::max(self : TimeseriesprophetModel) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_model_to_string(s : TimeseriesprophetModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetModel::to_string(self : TimeseriesprophetModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetLayer {
@@ -759,45 +759,45 @@ pub fn timeseries_prophet_layer_make(size : Int) -> TimeseriesprophetLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_layer_len(s : TimeseriesprophetLayer) -> Int { s.size }
+pub fn TimeseriesprophetLayer::len(self : TimeseriesprophetLayer) -> Int { self.size }
 
-pub fn timeseries_prophet_layer_get(s : TimeseriesprophetLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetLayer::get(self : TimeseriesprophetLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_layer_set(s : TimeseriesprophetLayer, i : Int, v : Double) -> TimeseriesprophetLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetLayer::set(self : TimeseriesprophetLayer, i : Int, v : Double) -> TimeseriesprophetLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_layer_sum(s : TimeseriesprophetLayer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetLayer::sum(self : TimeseriesprophetLayer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_layer_mean(s : TimeseriesprophetLayer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetLayer::mean(self : TimeseriesprophetLayer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_layer_scale(s : TimeseriesprophetLayer, f : Double) -> TimeseriesprophetLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetLayer::scale(self : TimeseriesprophetLayer, f : Double) -> TimeseriesprophetLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_layer_add(a : TimeseriesprophetLayer, b : TimeseriesprophetLayer) -> TimeseriesprophetLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetLayer::add(self : TimeseriesprophetLayer, other : TimeseriesprophetLayer) -> TimeseriesprophetLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_layer_copy(s : TimeseriesprophetLayer) -> TimeseriesprophetLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetLayer::copy(self : TimeseriesprophetLayer) -> TimeseriesprophetLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_layer_fill(s : TimeseriesprophetLayer, v : Double) -> TimeseriesprophetLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetLayer::fill(self : TimeseriesprophetLayer, v : Double) -> TimeseriesprophetLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_layer_min(s : TimeseriesprophetLayer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetLayer::min(self : TimeseriesprophetLayer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_layer_max(s : TimeseriesprophetLayer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetLayer::max(self : TimeseriesprophetLayer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_layer_to_string(s : TimeseriesprophetLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetLayer::to_string(self : TimeseriesprophetLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetBuffer {
@@ -810,45 +810,45 @@ pub fn timeseries_prophet_buffer_make(size : Int) -> TimeseriesprophetBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_buffer_len(s : TimeseriesprophetBuffer) -> Int { s.size }
+pub fn TimeseriesprophetBuffer::len(self : TimeseriesprophetBuffer) -> Int { self.size }
 
-pub fn timeseries_prophet_buffer_get(s : TimeseriesprophetBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetBuffer::get(self : TimeseriesprophetBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_buffer_set(s : TimeseriesprophetBuffer, i : Int, v : Double) -> TimeseriesprophetBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetBuffer::set(self : TimeseriesprophetBuffer, i : Int, v : Double) -> TimeseriesprophetBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_buffer_sum(s : TimeseriesprophetBuffer) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetBuffer::sum(self : TimeseriesprophetBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_buffer_mean(s : TimeseriesprophetBuffer) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetBuffer::mean(self : TimeseriesprophetBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_buffer_scale(s : TimeseriesprophetBuffer, f : Double) -> TimeseriesprophetBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetBuffer::scale(self : TimeseriesprophetBuffer, f : Double) -> TimeseriesprophetBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_buffer_add(a : TimeseriesprophetBuffer, b : TimeseriesprophetBuffer) -> TimeseriesprophetBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetBuffer::add(self : TimeseriesprophetBuffer, other : TimeseriesprophetBuffer) -> TimeseriesprophetBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_buffer_copy(s : TimeseriesprophetBuffer) -> TimeseriesprophetBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetBuffer::copy(self : TimeseriesprophetBuffer) -> TimeseriesprophetBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_buffer_fill(s : TimeseriesprophetBuffer, v : Double) -> TimeseriesprophetBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetBuffer::fill(self : TimeseriesprophetBuffer, v : Double) -> TimeseriesprophetBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_buffer_min(s : TimeseriesprophetBuffer) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetBuffer::min(self : TimeseriesprophetBuffer) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_buffer_max(s : TimeseriesprophetBuffer) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetBuffer::max(self : TimeseriesprophetBuffer) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_buffer_to_string(s : TimeseriesprophetBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetBuffer::to_string(self : TimeseriesprophetBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetCursor {
@@ -861,45 +861,45 @@ pub fn timeseries_prophet_cursor_make(size : Int) -> TimeseriesprophetCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_cursor_len(s : TimeseriesprophetCursor) -> Int { s.size }
+pub fn TimeseriesprophetCursor::len(self : TimeseriesprophetCursor) -> Int { self.size }
 
-pub fn timeseries_prophet_cursor_get(s : TimeseriesprophetCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetCursor::get(self : TimeseriesprophetCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_cursor_set(s : TimeseriesprophetCursor, i : Int, v : Double) -> TimeseriesprophetCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCursor::set(self : TimeseriesprophetCursor, i : Int, v : Double) -> TimeseriesprophetCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cursor_sum(s : TimeseriesprophetCursor) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetCursor::sum(self : TimeseriesprophetCursor) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_cursor_mean(s : TimeseriesprophetCursor) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetCursor::mean(self : TimeseriesprophetCursor) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_cursor_scale(s : TimeseriesprophetCursor, f : Double) -> TimeseriesprophetCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCursor::scale(self : TimeseriesprophetCursor, f : Double) -> TimeseriesprophetCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cursor_add(a : TimeseriesprophetCursor, b : TimeseriesprophetCursor) -> TimeseriesprophetCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetCursor::add(self : TimeseriesprophetCursor, other : TimeseriesprophetCursor) -> TimeseriesprophetCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cursor_copy(s : TimeseriesprophetCursor) -> TimeseriesprophetCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCursor::copy(self : TimeseriesprophetCursor) -> TimeseriesprophetCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cursor_fill(s : TimeseriesprophetCursor, v : Double) -> TimeseriesprophetCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetCursor::fill(self : TimeseriesprophetCursor, v : Double) -> TimeseriesprophetCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_cursor_min(s : TimeseriesprophetCursor) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetCursor::min(self : TimeseriesprophetCursor) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_cursor_max(s : TimeseriesprophetCursor) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetCursor::max(self : TimeseriesprophetCursor) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_cursor_to_string(s : TimeseriesprophetCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetCursor::to_string(self : TimeseriesprophetCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetView {
@@ -912,45 +912,45 @@ pub fn timeseries_prophet_view_make(size : Int) -> TimeseriesprophetView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_view_len(s : TimeseriesprophetView) -> Int { s.size }
+pub fn TimeseriesprophetView::len(self : TimeseriesprophetView) -> Int { self.size }
 
-pub fn timeseries_prophet_view_get(s : TimeseriesprophetView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetView::get(self : TimeseriesprophetView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_view_set(s : TimeseriesprophetView, i : Int, v : Double) -> TimeseriesprophetView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetView::set(self : TimeseriesprophetView, i : Int, v : Double) -> TimeseriesprophetView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_view_sum(s : TimeseriesprophetView) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetView::sum(self : TimeseriesprophetView) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_view_mean(s : TimeseriesprophetView) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetView::mean(self : TimeseriesprophetView) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_view_scale(s : TimeseriesprophetView, f : Double) -> TimeseriesprophetView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetView::scale(self : TimeseriesprophetView, f : Double) -> TimeseriesprophetView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_view_add(a : TimeseriesprophetView, b : TimeseriesprophetView) -> TimeseriesprophetView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetView::add(self : TimeseriesprophetView, other : TimeseriesprophetView) -> TimeseriesprophetView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_view_copy(s : TimeseriesprophetView) -> TimeseriesprophetView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetView::copy(self : TimeseriesprophetView) -> TimeseriesprophetView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_view_fill(s : TimeseriesprophetView, v : Double) -> TimeseriesprophetView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetView::fill(self : TimeseriesprophetView, v : Double) -> TimeseriesprophetView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_view_min(s : TimeseriesprophetView) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetView::min(self : TimeseriesprophetView) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_view_max(s : TimeseriesprophetView) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetView::max(self : TimeseriesprophetView) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_view_to_string(s : TimeseriesprophetView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetView::to_string(self : TimeseriesprophetView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetRange {
@@ -963,45 +963,45 @@ pub fn timeseries_prophet_range_make(size : Int) -> TimeseriesprophetRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_range_len(s : TimeseriesprophetRange) -> Int { s.size }
+pub fn TimeseriesprophetRange::len(self : TimeseriesprophetRange) -> Int { self.size }
 
-pub fn timeseries_prophet_range_get(s : TimeseriesprophetRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetRange::get(self : TimeseriesprophetRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_range_set(s : TimeseriesprophetRange, i : Int, v : Double) -> TimeseriesprophetRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetRange::set(self : TimeseriesprophetRange, i : Int, v : Double) -> TimeseriesprophetRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_range_sum(s : TimeseriesprophetRange) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetRange::sum(self : TimeseriesprophetRange) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_range_mean(s : TimeseriesprophetRange) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetRange::mean(self : TimeseriesprophetRange) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_range_scale(s : TimeseriesprophetRange, f : Double) -> TimeseriesprophetRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetRange::scale(self : TimeseriesprophetRange, f : Double) -> TimeseriesprophetRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_range_add(a : TimeseriesprophetRange, b : TimeseriesprophetRange) -> TimeseriesprophetRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetRange::add(self : TimeseriesprophetRange, other : TimeseriesprophetRange) -> TimeseriesprophetRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_range_copy(s : TimeseriesprophetRange) -> TimeseriesprophetRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetRange::copy(self : TimeseriesprophetRange) -> TimeseriesprophetRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_range_fill(s : TimeseriesprophetRange, v : Double) -> TimeseriesprophetRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetRange::fill(self : TimeseriesprophetRange, v : Double) -> TimeseriesprophetRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_range_min(s : TimeseriesprophetRange) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetRange::min(self : TimeseriesprophetRange) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_range_max(s : TimeseriesprophetRange) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetRange::max(self : TimeseriesprophetRange) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_range_to_string(s : TimeseriesprophetRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetRange::to_string(self : TimeseriesprophetRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct TimeseriesprophetSlice {
@@ -1014,44 +1014,44 @@ pub fn timeseries_prophet_slice_make(size : Int) -> TimeseriesprophetSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn timeseries_prophet_slice_len(s : TimeseriesprophetSlice) -> Int { s.size }
+pub fn TimeseriesprophetSlice::len(self : TimeseriesprophetSlice) -> Int { self.size }
 
-pub fn timeseries_prophet_slice_get(s : TimeseriesprophetSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn TimeseriesprophetSlice::get(self : TimeseriesprophetSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn timeseries_prophet_slice_set(s : TimeseriesprophetSlice, i : Int, v : Double) -> TimeseriesprophetSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn TimeseriesprophetSlice::set(self : TimeseriesprophetSlice, i : Int, v : Double) -> TimeseriesprophetSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_slice_sum(s : TimeseriesprophetSlice) -> Double { @_common.sum(s.data) }
+pub fn TimeseriesprophetSlice::sum(self : TimeseriesprophetSlice) -> Double { @_common.sum(self.data) }
 
-pub fn timeseries_prophet_slice_mean(s : TimeseriesprophetSlice) -> Double { @_common.mean(s.data) }
+pub fn TimeseriesprophetSlice::mean(self : TimeseriesprophetSlice) -> Double { @_common.mean(self.data) }
 
-pub fn timeseries_prophet_slice_scale(s : TimeseriesprophetSlice, f : Double) -> TimeseriesprophetSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetSlice::scale(self : TimeseriesprophetSlice, f : Double) -> TimeseriesprophetSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_slice_add(a : TimeseriesprophetSlice, b : TimeseriesprophetSlice) -> TimeseriesprophetSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn TimeseriesprophetSlice::add(self : TimeseriesprophetSlice, other : TimeseriesprophetSlice) -> TimeseriesprophetSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn timeseries_prophet_slice_copy(s : TimeseriesprophetSlice) -> TimeseriesprophetSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetSlice::copy(self : TimeseriesprophetSlice) -> TimeseriesprophetSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_slice_fill(s : TimeseriesprophetSlice, v : Double) -> TimeseriesprophetSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn TimeseriesprophetSlice::fill(self : TimeseriesprophetSlice, v : Double) -> TimeseriesprophetSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn timeseries_prophet_slice_min(s : TimeseriesprophetSlice) -> Double { @_common.min(s.data) }
+pub fn TimeseriesprophetSlice::min(self : TimeseriesprophetSlice) -> Double { @_common.min(self.data) }
 
-pub fn timeseries_prophet_slice_max(s : TimeseriesprophetSlice) -> Double { @_common.max(s.data) }
+pub fn TimeseriesprophetSlice::max(self : TimeseriesprophetSlice) -> Double { @_common.max(self.data) }
 
-pub fn timeseries_prophet_slice_to_string(s : TimeseriesprophetSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn TimeseriesprophetSlice::to_string(self : TimeseriesprophetSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

@@ -351,45 +351,45 @@ pub fn ds_hash_double_frame_make(size : Int) -> DshashdoubleFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_frame_len(s : DshashdoubleFrame) -> Int { s.size }
+pub fn DshashdoubleFrame::len(self : DshashdoubleFrame) -> Int { self.size }
 
-pub fn ds_hash_double_frame_get(s : DshashdoubleFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleFrame::get(self : DshashdoubleFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_frame_set(s : DshashdoubleFrame, i : Int, v : Double) -> DshashdoubleFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleFrame::set(self : DshashdoubleFrame, i : Int, v : Double) -> DshashdoubleFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_frame_sum(s : DshashdoubleFrame) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleFrame::sum(self : DshashdoubleFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_frame_mean(s : DshashdoubleFrame) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleFrame::mean(self : DshashdoubleFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_frame_scale(s : DshashdoubleFrame, f : Double) -> DshashdoubleFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleFrame::scale(self : DshashdoubleFrame, f : Double) -> DshashdoubleFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_frame_add(a : DshashdoubleFrame, b : DshashdoubleFrame) -> DshashdoubleFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleFrame::add(self : DshashdoubleFrame, other : DshashdoubleFrame) -> DshashdoubleFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_frame_copy(s : DshashdoubleFrame) -> DshashdoubleFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleFrame::copy(self : DshashdoubleFrame) -> DshashdoubleFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_frame_fill(s : DshashdoubleFrame, v : Double) -> DshashdoubleFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleFrame::fill(self : DshashdoubleFrame, v : Double) -> DshashdoubleFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_frame_min(s : DshashdoubleFrame) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleFrame::min(self : DshashdoubleFrame) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_frame_max(s : DshashdoubleFrame) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleFrame::max(self : DshashdoubleFrame) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_frame_to_string(s : DshashdoubleFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleFrame::to_string(self : DshashdoubleFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleTable {
@@ -402,45 +402,45 @@ pub fn ds_hash_double_table_make(size : Int) -> DshashdoubleTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_table_len(s : DshashdoubleTable) -> Int { s.size }
+pub fn DshashdoubleTable::len(self : DshashdoubleTable) -> Int { self.size }
 
-pub fn ds_hash_double_table_get(s : DshashdoubleTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleTable::get(self : DshashdoubleTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_table_set(s : DshashdoubleTable, i : Int, v : Double) -> DshashdoubleTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleTable::set(self : DshashdoubleTable, i : Int, v : Double) -> DshashdoubleTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_table_sum(s : DshashdoubleTable) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleTable::sum(self : DshashdoubleTable) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_table_mean(s : DshashdoubleTable) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleTable::mean(self : DshashdoubleTable) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_table_scale(s : DshashdoubleTable, f : Double) -> DshashdoubleTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleTable::scale(self : DshashdoubleTable, f : Double) -> DshashdoubleTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_table_add(a : DshashdoubleTable, b : DshashdoubleTable) -> DshashdoubleTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleTable::add(self : DshashdoubleTable, other : DshashdoubleTable) -> DshashdoubleTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_table_copy(s : DshashdoubleTable) -> DshashdoubleTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleTable::copy(self : DshashdoubleTable) -> DshashdoubleTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_table_fill(s : DshashdoubleTable, v : Double) -> DshashdoubleTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleTable::fill(self : DshashdoubleTable, v : Double) -> DshashdoubleTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_table_min(s : DshashdoubleTable) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleTable::min(self : DshashdoubleTable) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_table_max(s : DshashdoubleTable) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleTable::max(self : DshashdoubleTable) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_table_to_string(s : DshashdoubleTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleTable::to_string(self : DshashdoubleTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleGraphN {
@@ -453,45 +453,45 @@ pub fn ds_hash_double_graphn_make(size : Int) -> DshashdoubleGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_graphn_len(s : DshashdoubleGraphN) -> Int { s.size }
+pub fn DshashdoubleGraphN::len(self : DshashdoubleGraphN) -> Int { self.size }
 
-pub fn ds_hash_double_graphn_get(s : DshashdoubleGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleGraphN::get(self : DshashdoubleGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_graphn_set(s : DshashdoubleGraphN, i : Int, v : Double) -> DshashdoubleGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleGraphN::set(self : DshashdoubleGraphN, i : Int, v : Double) -> DshashdoubleGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_graphn_sum(s : DshashdoubleGraphN) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleGraphN::sum(self : DshashdoubleGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_graphn_mean(s : DshashdoubleGraphN) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleGraphN::mean(self : DshashdoubleGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_graphn_scale(s : DshashdoubleGraphN, f : Double) -> DshashdoubleGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleGraphN::scale(self : DshashdoubleGraphN, f : Double) -> DshashdoubleGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_graphn_add(a : DshashdoubleGraphN, b : DshashdoubleGraphN) -> DshashdoubleGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleGraphN::add(self : DshashdoubleGraphN, other : DshashdoubleGraphN) -> DshashdoubleGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_graphn_copy(s : DshashdoubleGraphN) -> DshashdoubleGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleGraphN::copy(self : DshashdoubleGraphN) -> DshashdoubleGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_graphn_fill(s : DshashdoubleGraphN, v : Double) -> DshashdoubleGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleGraphN::fill(self : DshashdoubleGraphN, v : Double) -> DshashdoubleGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_graphn_min(s : DshashdoubleGraphN) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleGraphN::min(self : DshashdoubleGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_graphn_max(s : DshashdoubleGraphN) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleGraphN::max(self : DshashdoubleGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_graphn_to_string(s : DshashdoubleGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleGraphN::to_string(self : DshashdoubleGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleNode {
@@ -504,45 +504,45 @@ pub fn ds_hash_double_node_make(size : Int) -> DshashdoubleNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_node_len(s : DshashdoubleNode) -> Int { s.size }
+pub fn DshashdoubleNode::len(self : DshashdoubleNode) -> Int { self.size }
 
-pub fn ds_hash_double_node_get(s : DshashdoubleNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleNode::get(self : DshashdoubleNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_node_set(s : DshashdoubleNode, i : Int, v : Double) -> DshashdoubleNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleNode::set(self : DshashdoubleNode, i : Int, v : Double) -> DshashdoubleNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_node_sum(s : DshashdoubleNode) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleNode::sum(self : DshashdoubleNode) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_node_mean(s : DshashdoubleNode) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleNode::mean(self : DshashdoubleNode) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_node_scale(s : DshashdoubleNode, f : Double) -> DshashdoubleNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleNode::scale(self : DshashdoubleNode, f : Double) -> DshashdoubleNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_node_add(a : DshashdoubleNode, b : DshashdoubleNode) -> DshashdoubleNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleNode::add(self : DshashdoubleNode, other : DshashdoubleNode) -> DshashdoubleNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_node_copy(s : DshashdoubleNode) -> DshashdoubleNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleNode::copy(self : DshashdoubleNode) -> DshashdoubleNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_node_fill(s : DshashdoubleNode, v : Double) -> DshashdoubleNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleNode::fill(self : DshashdoubleNode, v : Double) -> DshashdoubleNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_node_min(s : DshashdoubleNode) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleNode::min(self : DshashdoubleNode) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_node_max(s : DshashdoubleNode) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleNode::max(self : DshashdoubleNode) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_node_to_string(s : DshashdoubleNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleNode::to_string(self : DshashdoubleNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleEdge {
@@ -555,45 +555,45 @@ pub fn ds_hash_double_edge_make(size : Int) -> DshashdoubleEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_edge_len(s : DshashdoubleEdge) -> Int { s.size }
+pub fn DshashdoubleEdge::len(self : DshashdoubleEdge) -> Int { self.size }
 
-pub fn ds_hash_double_edge_get(s : DshashdoubleEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleEdge::get(self : DshashdoubleEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_edge_set(s : DshashdoubleEdge, i : Int, v : Double) -> DshashdoubleEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleEdge::set(self : DshashdoubleEdge, i : Int, v : Double) -> DshashdoubleEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_edge_sum(s : DshashdoubleEdge) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleEdge::sum(self : DshashdoubleEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_edge_mean(s : DshashdoubleEdge) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleEdge::mean(self : DshashdoubleEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_edge_scale(s : DshashdoubleEdge, f : Double) -> DshashdoubleEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleEdge::scale(self : DshashdoubleEdge, f : Double) -> DshashdoubleEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_edge_add(a : DshashdoubleEdge, b : DshashdoubleEdge) -> DshashdoubleEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleEdge::add(self : DshashdoubleEdge, other : DshashdoubleEdge) -> DshashdoubleEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_edge_copy(s : DshashdoubleEdge) -> DshashdoubleEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleEdge::copy(self : DshashdoubleEdge) -> DshashdoubleEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_edge_fill(s : DshashdoubleEdge, v : Double) -> DshashdoubleEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleEdge::fill(self : DshashdoubleEdge, v : Double) -> DshashdoubleEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_edge_min(s : DshashdoubleEdge) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleEdge::min(self : DshashdoubleEdge) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_edge_max(s : DshashdoubleEdge) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleEdge::max(self : DshashdoubleEdge) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_edge_to_string(s : DshashdoubleEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleEdge::to_string(self : DshashdoubleEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoublePath {
@@ -606,45 +606,45 @@ pub fn ds_hash_double_path_make(size : Int) -> DshashdoublePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_path_len(s : DshashdoublePath) -> Int { s.size }
+pub fn DshashdoublePath::len(self : DshashdoublePath) -> Int { self.size }
 
-pub fn ds_hash_double_path_get(s : DshashdoublePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoublePath::get(self : DshashdoublePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_path_set(s : DshashdoublePath, i : Int, v : Double) -> DshashdoublePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoublePath::set(self : DshashdoublePath, i : Int, v : Double) -> DshashdoublePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_path_sum(s : DshashdoublePath) -> Double { @_common.sum(s.data) }
+pub fn DshashdoublePath::sum(self : DshashdoublePath) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_path_mean(s : DshashdoublePath) -> Double { @_common.mean(s.data) }
+pub fn DshashdoublePath::mean(self : DshashdoublePath) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_path_scale(s : DshashdoublePath, f : Double) -> DshashdoublePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoublePath::scale(self : DshashdoublePath, f : Double) -> DshashdoublePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_path_add(a : DshashdoublePath, b : DshashdoublePath) -> DshashdoublePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoublePath::add(self : DshashdoublePath, other : DshashdoublePath) -> DshashdoublePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_path_copy(s : DshashdoublePath) -> DshashdoublePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoublePath::copy(self : DshashdoublePath) -> DshashdoublePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_path_fill(s : DshashdoublePath, v : Double) -> DshashdoublePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoublePath::fill(self : DshashdoublePath, v : Double) -> DshashdoublePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_path_min(s : DshashdoublePath) -> Double { @_common.min(s.data) }
+pub fn DshashdoublePath::min(self : DshashdoublePath) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_path_max(s : DshashdoublePath) -> Double { @_common.max(s.data) }
+pub fn DshashdoublePath::max(self : DshashdoublePath) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_path_to_string(s : DshashdoublePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoublePath::to_string(self : DshashdoublePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleCluster {
@@ -657,45 +657,45 @@ pub fn ds_hash_double_cluster_make(size : Int) -> DshashdoubleCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_cluster_len(s : DshashdoubleCluster) -> Int { s.size }
+pub fn DshashdoubleCluster::len(self : DshashdoubleCluster) -> Int { self.size }
 
-pub fn ds_hash_double_cluster_get(s : DshashdoubleCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleCluster::get(self : DshashdoubleCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_cluster_set(s : DshashdoubleCluster, i : Int, v : Double) -> DshashdoubleCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleCluster::set(self : DshashdoubleCluster, i : Int, v : Double) -> DshashdoubleCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cluster_sum(s : DshashdoubleCluster) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleCluster::sum(self : DshashdoubleCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_cluster_mean(s : DshashdoubleCluster) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleCluster::mean(self : DshashdoubleCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_cluster_scale(s : DshashdoubleCluster, f : Double) -> DshashdoubleCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleCluster::scale(self : DshashdoubleCluster, f : Double) -> DshashdoubleCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cluster_add(a : DshashdoubleCluster, b : DshashdoubleCluster) -> DshashdoubleCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleCluster::add(self : DshashdoubleCluster, other : DshashdoubleCluster) -> DshashdoubleCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_cluster_copy(s : DshashdoubleCluster) -> DshashdoubleCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleCluster::copy(self : DshashdoubleCluster) -> DshashdoubleCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cluster_fill(s : DshashdoubleCluster, v : Double) -> DshashdoubleCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleCluster::fill(self : DshashdoubleCluster, v : Double) -> DshashdoubleCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cluster_min(s : DshashdoubleCluster) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleCluster::min(self : DshashdoubleCluster) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_cluster_max(s : DshashdoubleCluster) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleCluster::max(self : DshashdoubleCluster) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_cluster_to_string(s : DshashdoubleCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleCluster::to_string(self : DshashdoubleCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleModel {
@@ -708,45 +708,45 @@ pub fn ds_hash_double_model_make(size : Int) -> DshashdoubleModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_model_len(s : DshashdoubleModel) -> Int { s.size }
+pub fn DshashdoubleModel::len(self : DshashdoubleModel) -> Int { self.size }
 
-pub fn ds_hash_double_model_get(s : DshashdoubleModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleModel::get(self : DshashdoubleModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_model_set(s : DshashdoubleModel, i : Int, v : Double) -> DshashdoubleModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleModel::set(self : DshashdoubleModel, i : Int, v : Double) -> DshashdoubleModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_model_sum(s : DshashdoubleModel) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleModel::sum(self : DshashdoubleModel) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_model_mean(s : DshashdoubleModel) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleModel::mean(self : DshashdoubleModel) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_model_scale(s : DshashdoubleModel, f : Double) -> DshashdoubleModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleModel::scale(self : DshashdoubleModel, f : Double) -> DshashdoubleModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_model_add(a : DshashdoubleModel, b : DshashdoubleModel) -> DshashdoubleModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleModel::add(self : DshashdoubleModel, other : DshashdoubleModel) -> DshashdoubleModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_model_copy(s : DshashdoubleModel) -> DshashdoubleModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleModel::copy(self : DshashdoubleModel) -> DshashdoubleModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_model_fill(s : DshashdoubleModel, v : Double) -> DshashdoubleModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleModel::fill(self : DshashdoubleModel, v : Double) -> DshashdoubleModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_model_min(s : DshashdoubleModel) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleModel::min(self : DshashdoubleModel) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_model_max(s : DshashdoubleModel) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleModel::max(self : DshashdoubleModel) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_model_to_string(s : DshashdoubleModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleModel::to_string(self : DshashdoubleModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleLayer {
@@ -759,45 +759,45 @@ pub fn ds_hash_double_layer_make(size : Int) -> DshashdoubleLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_layer_len(s : DshashdoubleLayer) -> Int { s.size }
+pub fn DshashdoubleLayer::len(self : DshashdoubleLayer) -> Int { self.size }
 
-pub fn ds_hash_double_layer_get(s : DshashdoubleLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleLayer::get(self : DshashdoubleLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_layer_set(s : DshashdoubleLayer, i : Int, v : Double) -> DshashdoubleLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleLayer::set(self : DshashdoubleLayer, i : Int, v : Double) -> DshashdoubleLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_layer_sum(s : DshashdoubleLayer) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleLayer::sum(self : DshashdoubleLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_layer_mean(s : DshashdoubleLayer) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleLayer::mean(self : DshashdoubleLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_layer_scale(s : DshashdoubleLayer, f : Double) -> DshashdoubleLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleLayer::scale(self : DshashdoubleLayer, f : Double) -> DshashdoubleLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_layer_add(a : DshashdoubleLayer, b : DshashdoubleLayer) -> DshashdoubleLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleLayer::add(self : DshashdoubleLayer, other : DshashdoubleLayer) -> DshashdoubleLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_layer_copy(s : DshashdoubleLayer) -> DshashdoubleLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleLayer::copy(self : DshashdoubleLayer) -> DshashdoubleLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_layer_fill(s : DshashdoubleLayer, v : Double) -> DshashdoubleLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleLayer::fill(self : DshashdoubleLayer, v : Double) -> DshashdoubleLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_layer_min(s : DshashdoubleLayer) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleLayer::min(self : DshashdoubleLayer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_layer_max(s : DshashdoubleLayer) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleLayer::max(self : DshashdoubleLayer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_layer_to_string(s : DshashdoubleLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleLayer::to_string(self : DshashdoubleLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleBuffer {
@@ -810,45 +810,45 @@ pub fn ds_hash_double_buffer_make(size : Int) -> DshashdoubleBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_buffer_len(s : DshashdoubleBuffer) -> Int { s.size }
+pub fn DshashdoubleBuffer::len(self : DshashdoubleBuffer) -> Int { self.size }
 
-pub fn ds_hash_double_buffer_get(s : DshashdoubleBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleBuffer::get(self : DshashdoubleBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_buffer_set(s : DshashdoubleBuffer, i : Int, v : Double) -> DshashdoubleBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleBuffer::set(self : DshashdoubleBuffer, i : Int, v : Double) -> DshashdoubleBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_buffer_sum(s : DshashdoubleBuffer) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleBuffer::sum(self : DshashdoubleBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_buffer_mean(s : DshashdoubleBuffer) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleBuffer::mean(self : DshashdoubleBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_buffer_scale(s : DshashdoubleBuffer, f : Double) -> DshashdoubleBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleBuffer::scale(self : DshashdoubleBuffer, f : Double) -> DshashdoubleBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_buffer_add(a : DshashdoubleBuffer, b : DshashdoubleBuffer) -> DshashdoubleBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleBuffer::add(self : DshashdoubleBuffer, other : DshashdoubleBuffer) -> DshashdoubleBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_buffer_copy(s : DshashdoubleBuffer) -> DshashdoubleBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleBuffer::copy(self : DshashdoubleBuffer) -> DshashdoubleBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_buffer_fill(s : DshashdoubleBuffer, v : Double) -> DshashdoubleBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleBuffer::fill(self : DshashdoubleBuffer, v : Double) -> DshashdoubleBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_buffer_min(s : DshashdoubleBuffer) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleBuffer::min(self : DshashdoubleBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_buffer_max(s : DshashdoubleBuffer) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleBuffer::max(self : DshashdoubleBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_buffer_to_string(s : DshashdoubleBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleBuffer::to_string(self : DshashdoubleBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleCursor {
@@ -861,45 +861,45 @@ pub fn ds_hash_double_cursor_make(size : Int) -> DshashdoubleCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_cursor_len(s : DshashdoubleCursor) -> Int { s.size }
+pub fn DshashdoubleCursor::len(self : DshashdoubleCursor) -> Int { self.size }
 
-pub fn ds_hash_double_cursor_get(s : DshashdoubleCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleCursor::get(self : DshashdoubleCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_cursor_set(s : DshashdoubleCursor, i : Int, v : Double) -> DshashdoubleCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleCursor::set(self : DshashdoubleCursor, i : Int, v : Double) -> DshashdoubleCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cursor_sum(s : DshashdoubleCursor) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleCursor::sum(self : DshashdoubleCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_cursor_mean(s : DshashdoubleCursor) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleCursor::mean(self : DshashdoubleCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_cursor_scale(s : DshashdoubleCursor, f : Double) -> DshashdoubleCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleCursor::scale(self : DshashdoubleCursor, f : Double) -> DshashdoubleCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cursor_add(a : DshashdoubleCursor, b : DshashdoubleCursor) -> DshashdoubleCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleCursor::add(self : DshashdoubleCursor, other : DshashdoubleCursor) -> DshashdoubleCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_cursor_copy(s : DshashdoubleCursor) -> DshashdoubleCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleCursor::copy(self : DshashdoubleCursor) -> DshashdoubleCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cursor_fill(s : DshashdoubleCursor, v : Double) -> DshashdoubleCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleCursor::fill(self : DshashdoubleCursor, v : Double) -> DshashdoubleCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_cursor_min(s : DshashdoubleCursor) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleCursor::min(self : DshashdoubleCursor) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_cursor_max(s : DshashdoubleCursor) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleCursor::max(self : DshashdoubleCursor) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_cursor_to_string(s : DshashdoubleCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleCursor::to_string(self : DshashdoubleCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleView {
@@ -912,45 +912,45 @@ pub fn ds_hash_double_view_make(size : Int) -> DshashdoubleView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_view_len(s : DshashdoubleView) -> Int { s.size }
+pub fn DshashdoubleView::len(self : DshashdoubleView) -> Int { self.size }
 
-pub fn ds_hash_double_view_get(s : DshashdoubleView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleView::get(self : DshashdoubleView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_view_set(s : DshashdoubleView, i : Int, v : Double) -> DshashdoubleView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleView::set(self : DshashdoubleView, i : Int, v : Double) -> DshashdoubleView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_view_sum(s : DshashdoubleView) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleView::sum(self : DshashdoubleView) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_view_mean(s : DshashdoubleView) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleView::mean(self : DshashdoubleView) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_view_scale(s : DshashdoubleView, f : Double) -> DshashdoubleView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleView::scale(self : DshashdoubleView, f : Double) -> DshashdoubleView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_view_add(a : DshashdoubleView, b : DshashdoubleView) -> DshashdoubleView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleView::add(self : DshashdoubleView, other : DshashdoubleView) -> DshashdoubleView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_view_copy(s : DshashdoubleView) -> DshashdoubleView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleView::copy(self : DshashdoubleView) -> DshashdoubleView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_view_fill(s : DshashdoubleView, v : Double) -> DshashdoubleView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleView::fill(self : DshashdoubleView, v : Double) -> DshashdoubleView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_view_min(s : DshashdoubleView) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleView::min(self : DshashdoubleView) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_view_max(s : DshashdoubleView) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleView::max(self : DshashdoubleView) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_view_to_string(s : DshashdoubleView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleView::to_string(self : DshashdoubleView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleRange {
@@ -963,45 +963,45 @@ pub fn ds_hash_double_range_make(size : Int) -> DshashdoubleRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_range_len(s : DshashdoubleRange) -> Int { s.size }
+pub fn DshashdoubleRange::len(self : DshashdoubleRange) -> Int { self.size }
 
-pub fn ds_hash_double_range_get(s : DshashdoubleRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleRange::get(self : DshashdoubleRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_range_set(s : DshashdoubleRange, i : Int, v : Double) -> DshashdoubleRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleRange::set(self : DshashdoubleRange, i : Int, v : Double) -> DshashdoubleRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_range_sum(s : DshashdoubleRange) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleRange::sum(self : DshashdoubleRange) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_range_mean(s : DshashdoubleRange) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleRange::mean(self : DshashdoubleRange) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_range_scale(s : DshashdoubleRange, f : Double) -> DshashdoubleRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleRange::scale(self : DshashdoubleRange, f : Double) -> DshashdoubleRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_range_add(a : DshashdoubleRange, b : DshashdoubleRange) -> DshashdoubleRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleRange::add(self : DshashdoubleRange, other : DshashdoubleRange) -> DshashdoubleRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_range_copy(s : DshashdoubleRange) -> DshashdoubleRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleRange::copy(self : DshashdoubleRange) -> DshashdoubleRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_range_fill(s : DshashdoubleRange, v : Double) -> DshashdoubleRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleRange::fill(self : DshashdoubleRange, v : Double) -> DshashdoubleRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_range_min(s : DshashdoubleRange) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleRange::min(self : DshashdoubleRange) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_range_max(s : DshashdoubleRange) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleRange::max(self : DshashdoubleRange) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_range_to_string(s : DshashdoubleRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleRange::to_string(self : DshashdoubleRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleSlice {
@@ -1014,44 +1014,44 @@ pub fn ds_hash_double_slice_make(size : Int) -> DshashdoubleSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ds_hash_double_slice_len(s : DshashdoubleSlice) -> Int { s.size }
+pub fn DshashdoubleSlice::len(self : DshashdoubleSlice) -> Int { self.size }
 
-pub fn ds_hash_double_slice_get(s : DshashdoubleSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn DshashdoubleSlice::get(self : DshashdoubleSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ds_hash_double_slice_set(s : DshashdoubleSlice, i : Int, v : Double) -> DshashdoubleSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn DshashdoubleSlice::set(self : DshashdoubleSlice, i : Int, v : Double) -> DshashdoubleSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_slice_sum(s : DshashdoubleSlice) -> Double { @_common.sum(s.data) }
+pub fn DshashdoubleSlice::sum(self : DshashdoubleSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ds_hash_double_slice_mean(s : DshashdoubleSlice) -> Double { @_common.mean(s.data) }
+pub fn DshashdoubleSlice::mean(self : DshashdoubleSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ds_hash_double_slice_scale(s : DshashdoubleSlice, f : Double) -> DshashdoubleSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn DshashdoubleSlice::scale(self : DshashdoubleSlice, f : Double) -> DshashdoubleSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_slice_add(a : DshashdoubleSlice, b : DshashdoubleSlice) -> DshashdoubleSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn DshashdoubleSlice::add(self : DshashdoubleSlice, other : DshashdoubleSlice) -> DshashdoubleSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ds_hash_double_slice_copy(s : DshashdoubleSlice) -> DshashdoubleSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn DshashdoubleSlice::copy(self : DshashdoubleSlice) -> DshashdoubleSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_slice_fill(s : DshashdoubleSlice, v : Double) -> DshashdoubleSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn DshashdoubleSlice::fill(self : DshashdoubleSlice, v : Double) -> DshashdoubleSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ds_hash_double_slice_min(s : DshashdoubleSlice) -> Double { @_common.min(s.data) }
+pub fn DshashdoubleSlice::min(self : DshashdoubleSlice) -> Double { @_common.min(self.data) }
 
-pub fn ds_hash_double_slice_max(s : DshashdoubleSlice) -> Double { @_common.max(s.data) }
+pub fn DshashdoubleSlice::max(self : DshashdoubleSlice) -> Double { @_common.max(self.data) }
 
-pub fn ds_hash_double_slice_to_string(s : DshashdoubleSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn DshashdoubleSlice::to_string(self : DshashdoubleSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

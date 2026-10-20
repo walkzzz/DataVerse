@@ -351,45 +351,45 @@ pub fn nlp_embed_glove_frame_make(size : Int) -> NlpembedgloveFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_frame_len(s : NlpembedgloveFrame) -> Int { s.size }
+pub fn NlpembedgloveFrame::len(self : NlpembedgloveFrame) -> Int { self.size }
 
-pub fn nlp_embed_glove_frame_get(s : NlpembedgloveFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveFrame::get(self : NlpembedgloveFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_frame_set(s : NlpembedgloveFrame, i : Int, v : Double) -> NlpembedgloveFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveFrame::set(self : NlpembedgloveFrame, i : Int, v : Double) -> NlpembedgloveFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_frame_sum(s : NlpembedgloveFrame) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveFrame::sum(self : NlpembedgloveFrame) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_frame_mean(s : NlpembedgloveFrame) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveFrame::mean(self : NlpembedgloveFrame) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_frame_scale(s : NlpembedgloveFrame, f : Double) -> NlpembedgloveFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveFrame::scale(self : NlpembedgloveFrame, f : Double) -> NlpembedgloveFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_frame_add(a : NlpembedgloveFrame, b : NlpembedgloveFrame) -> NlpembedgloveFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveFrame::add(self : NlpembedgloveFrame, other : NlpembedgloveFrame) -> NlpembedgloveFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_frame_copy(s : NlpembedgloveFrame) -> NlpembedgloveFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveFrame::copy(self : NlpembedgloveFrame) -> NlpembedgloveFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_frame_fill(s : NlpembedgloveFrame, v : Double) -> NlpembedgloveFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveFrame::fill(self : NlpembedgloveFrame, v : Double) -> NlpembedgloveFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_frame_min(s : NlpembedgloveFrame) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveFrame::min(self : NlpembedgloveFrame) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_frame_max(s : NlpembedgloveFrame) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveFrame::max(self : NlpembedgloveFrame) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_frame_to_string(s : NlpembedgloveFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveFrame::to_string(self : NlpembedgloveFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveTable {
@@ -402,45 +402,45 @@ pub fn nlp_embed_glove_table_make(size : Int) -> NlpembedgloveTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_table_len(s : NlpembedgloveTable) -> Int { s.size }
+pub fn NlpembedgloveTable::len(self : NlpembedgloveTable) -> Int { self.size }
 
-pub fn nlp_embed_glove_table_get(s : NlpembedgloveTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveTable::get(self : NlpembedgloveTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_table_set(s : NlpembedgloveTable, i : Int, v : Double) -> NlpembedgloveTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveTable::set(self : NlpembedgloveTable, i : Int, v : Double) -> NlpembedgloveTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_table_sum(s : NlpembedgloveTable) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveTable::sum(self : NlpembedgloveTable) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_table_mean(s : NlpembedgloveTable) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveTable::mean(self : NlpembedgloveTable) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_table_scale(s : NlpembedgloveTable, f : Double) -> NlpembedgloveTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveTable::scale(self : NlpembedgloveTable, f : Double) -> NlpembedgloveTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_table_add(a : NlpembedgloveTable, b : NlpembedgloveTable) -> NlpembedgloveTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveTable::add(self : NlpembedgloveTable, other : NlpembedgloveTable) -> NlpembedgloveTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_table_copy(s : NlpembedgloveTable) -> NlpembedgloveTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveTable::copy(self : NlpembedgloveTable) -> NlpembedgloveTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_table_fill(s : NlpembedgloveTable, v : Double) -> NlpembedgloveTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveTable::fill(self : NlpembedgloveTable, v : Double) -> NlpembedgloveTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_table_min(s : NlpembedgloveTable) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveTable::min(self : NlpembedgloveTable) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_table_max(s : NlpembedgloveTable) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveTable::max(self : NlpembedgloveTable) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_table_to_string(s : NlpembedgloveTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveTable::to_string(self : NlpembedgloveTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveGraphN {
@@ -453,45 +453,45 @@ pub fn nlp_embed_glove_graphn_make(size : Int) -> NlpembedgloveGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_graphn_len(s : NlpembedgloveGraphN) -> Int { s.size }
+pub fn NlpembedgloveGraphN::len(self : NlpembedgloveGraphN) -> Int { self.size }
 
-pub fn nlp_embed_glove_graphn_get(s : NlpembedgloveGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveGraphN::get(self : NlpembedgloveGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_graphn_set(s : NlpembedgloveGraphN, i : Int, v : Double) -> NlpembedgloveGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveGraphN::set(self : NlpembedgloveGraphN, i : Int, v : Double) -> NlpembedgloveGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_graphn_sum(s : NlpembedgloveGraphN) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveGraphN::sum(self : NlpembedgloveGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_graphn_mean(s : NlpembedgloveGraphN) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveGraphN::mean(self : NlpembedgloveGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_graphn_scale(s : NlpembedgloveGraphN, f : Double) -> NlpembedgloveGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveGraphN::scale(self : NlpembedgloveGraphN, f : Double) -> NlpembedgloveGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_graphn_add(a : NlpembedgloveGraphN, b : NlpembedgloveGraphN) -> NlpembedgloveGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveGraphN::add(self : NlpembedgloveGraphN, other : NlpembedgloveGraphN) -> NlpembedgloveGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_graphn_copy(s : NlpembedgloveGraphN) -> NlpembedgloveGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveGraphN::copy(self : NlpembedgloveGraphN) -> NlpembedgloveGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_graphn_fill(s : NlpembedgloveGraphN, v : Double) -> NlpembedgloveGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveGraphN::fill(self : NlpembedgloveGraphN, v : Double) -> NlpembedgloveGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_graphn_min(s : NlpembedgloveGraphN) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveGraphN::min(self : NlpembedgloveGraphN) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_graphn_max(s : NlpembedgloveGraphN) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveGraphN::max(self : NlpembedgloveGraphN) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_graphn_to_string(s : NlpembedgloveGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveGraphN::to_string(self : NlpembedgloveGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveNode {
@@ -504,45 +504,45 @@ pub fn nlp_embed_glove_node_make(size : Int) -> NlpembedgloveNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_node_len(s : NlpembedgloveNode) -> Int { s.size }
+pub fn NlpembedgloveNode::len(self : NlpembedgloveNode) -> Int { self.size }
 
-pub fn nlp_embed_glove_node_get(s : NlpembedgloveNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveNode::get(self : NlpembedgloveNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_node_set(s : NlpembedgloveNode, i : Int, v : Double) -> NlpembedgloveNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveNode::set(self : NlpembedgloveNode, i : Int, v : Double) -> NlpembedgloveNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_node_sum(s : NlpembedgloveNode) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveNode::sum(self : NlpembedgloveNode) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_node_mean(s : NlpembedgloveNode) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveNode::mean(self : NlpembedgloveNode) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_node_scale(s : NlpembedgloveNode, f : Double) -> NlpembedgloveNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveNode::scale(self : NlpembedgloveNode, f : Double) -> NlpembedgloveNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_node_add(a : NlpembedgloveNode, b : NlpembedgloveNode) -> NlpembedgloveNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveNode::add(self : NlpembedgloveNode, other : NlpembedgloveNode) -> NlpembedgloveNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_node_copy(s : NlpembedgloveNode) -> NlpembedgloveNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveNode::copy(self : NlpembedgloveNode) -> NlpembedgloveNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_node_fill(s : NlpembedgloveNode, v : Double) -> NlpembedgloveNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveNode::fill(self : NlpembedgloveNode, v : Double) -> NlpembedgloveNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_node_min(s : NlpembedgloveNode) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveNode::min(self : NlpembedgloveNode) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_node_max(s : NlpembedgloveNode) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveNode::max(self : NlpembedgloveNode) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_node_to_string(s : NlpembedgloveNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveNode::to_string(self : NlpembedgloveNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveEdge {
@@ -555,45 +555,45 @@ pub fn nlp_embed_glove_edge_make(size : Int) -> NlpembedgloveEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_edge_len(s : NlpembedgloveEdge) -> Int { s.size }
+pub fn NlpembedgloveEdge::len(self : NlpembedgloveEdge) -> Int { self.size }
 
-pub fn nlp_embed_glove_edge_get(s : NlpembedgloveEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveEdge::get(self : NlpembedgloveEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_edge_set(s : NlpembedgloveEdge, i : Int, v : Double) -> NlpembedgloveEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveEdge::set(self : NlpembedgloveEdge, i : Int, v : Double) -> NlpembedgloveEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_edge_sum(s : NlpembedgloveEdge) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveEdge::sum(self : NlpembedgloveEdge) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_edge_mean(s : NlpembedgloveEdge) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveEdge::mean(self : NlpembedgloveEdge) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_edge_scale(s : NlpembedgloveEdge, f : Double) -> NlpembedgloveEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveEdge::scale(self : NlpembedgloveEdge, f : Double) -> NlpembedgloveEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_edge_add(a : NlpembedgloveEdge, b : NlpembedgloveEdge) -> NlpembedgloveEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveEdge::add(self : NlpembedgloveEdge, other : NlpembedgloveEdge) -> NlpembedgloveEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_edge_copy(s : NlpembedgloveEdge) -> NlpembedgloveEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveEdge::copy(self : NlpembedgloveEdge) -> NlpembedgloveEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_edge_fill(s : NlpembedgloveEdge, v : Double) -> NlpembedgloveEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveEdge::fill(self : NlpembedgloveEdge, v : Double) -> NlpembedgloveEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_edge_min(s : NlpembedgloveEdge) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveEdge::min(self : NlpembedgloveEdge) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_edge_max(s : NlpembedgloveEdge) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveEdge::max(self : NlpembedgloveEdge) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_edge_to_string(s : NlpembedgloveEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveEdge::to_string(self : NlpembedgloveEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedglovePath {
@@ -606,45 +606,45 @@ pub fn nlp_embed_glove_path_make(size : Int) -> NlpembedglovePath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_path_len(s : NlpembedglovePath) -> Int { s.size }
+pub fn NlpembedglovePath::len(self : NlpembedglovePath) -> Int { self.size }
 
-pub fn nlp_embed_glove_path_get(s : NlpembedglovePath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedglovePath::get(self : NlpembedglovePath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_path_set(s : NlpembedglovePath, i : Int, v : Double) -> NlpembedglovePath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedglovePath::set(self : NlpembedglovePath, i : Int, v : Double) -> NlpembedglovePath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_path_sum(s : NlpembedglovePath) -> Double { @_common.sum(s.data) }
+pub fn NlpembedglovePath::sum(self : NlpembedglovePath) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_path_mean(s : NlpembedglovePath) -> Double { @_common.mean(s.data) }
+pub fn NlpembedglovePath::mean(self : NlpembedglovePath) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_path_scale(s : NlpembedglovePath, f : Double) -> NlpembedglovePath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedglovePath::scale(self : NlpembedglovePath, f : Double) -> NlpembedglovePath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_path_add(a : NlpembedglovePath, b : NlpembedglovePath) -> NlpembedglovePath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedglovePath::add(self : NlpembedglovePath, other : NlpembedglovePath) -> NlpembedglovePath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_path_copy(s : NlpembedglovePath) -> NlpembedglovePath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedglovePath::copy(self : NlpembedglovePath) -> NlpembedglovePath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_path_fill(s : NlpembedglovePath, v : Double) -> NlpembedglovePath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedglovePath::fill(self : NlpembedglovePath, v : Double) -> NlpembedglovePath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_path_min(s : NlpembedglovePath) -> Double { @_common.min(s.data) }
+pub fn NlpembedglovePath::min(self : NlpembedglovePath) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_path_max(s : NlpembedglovePath) -> Double { @_common.max(s.data) }
+pub fn NlpembedglovePath::max(self : NlpembedglovePath) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_path_to_string(s : NlpembedglovePath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedglovePath::to_string(self : NlpembedglovePath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveCluster {
@@ -657,45 +657,45 @@ pub fn nlp_embed_glove_cluster_make(size : Int) -> NlpembedgloveCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_cluster_len(s : NlpembedgloveCluster) -> Int { s.size }
+pub fn NlpembedgloveCluster::len(self : NlpembedgloveCluster) -> Int { self.size }
 
-pub fn nlp_embed_glove_cluster_get(s : NlpembedgloveCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveCluster::get(self : NlpembedgloveCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_cluster_set(s : NlpembedgloveCluster, i : Int, v : Double) -> NlpembedgloveCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveCluster::set(self : NlpembedgloveCluster, i : Int, v : Double) -> NlpembedgloveCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cluster_sum(s : NlpembedgloveCluster) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveCluster::sum(self : NlpembedgloveCluster) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_cluster_mean(s : NlpembedgloveCluster) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveCluster::mean(self : NlpembedgloveCluster) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_cluster_scale(s : NlpembedgloveCluster, f : Double) -> NlpembedgloveCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveCluster::scale(self : NlpembedgloveCluster, f : Double) -> NlpembedgloveCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cluster_add(a : NlpembedgloveCluster, b : NlpembedgloveCluster) -> NlpembedgloveCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveCluster::add(self : NlpembedgloveCluster, other : NlpembedgloveCluster) -> NlpembedgloveCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cluster_copy(s : NlpembedgloveCluster) -> NlpembedgloveCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveCluster::copy(self : NlpembedgloveCluster) -> NlpembedgloveCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cluster_fill(s : NlpembedgloveCluster, v : Double) -> NlpembedgloveCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveCluster::fill(self : NlpembedgloveCluster, v : Double) -> NlpembedgloveCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cluster_min(s : NlpembedgloveCluster) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveCluster::min(self : NlpembedgloveCluster) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_cluster_max(s : NlpembedgloveCluster) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveCluster::max(self : NlpembedgloveCluster) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_cluster_to_string(s : NlpembedgloveCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveCluster::to_string(self : NlpembedgloveCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveModel {
@@ -708,45 +708,45 @@ pub fn nlp_embed_glove_model_make(size : Int) -> NlpembedgloveModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_model_len(s : NlpembedgloveModel) -> Int { s.size }
+pub fn NlpembedgloveModel::len(self : NlpembedgloveModel) -> Int { self.size }
 
-pub fn nlp_embed_glove_model_get(s : NlpembedgloveModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveModel::get(self : NlpembedgloveModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_model_set(s : NlpembedgloveModel, i : Int, v : Double) -> NlpembedgloveModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveModel::set(self : NlpembedgloveModel, i : Int, v : Double) -> NlpembedgloveModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_model_sum(s : NlpembedgloveModel) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveModel::sum(self : NlpembedgloveModel) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_model_mean(s : NlpembedgloveModel) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveModel::mean(self : NlpembedgloveModel) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_model_scale(s : NlpembedgloveModel, f : Double) -> NlpembedgloveModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveModel::scale(self : NlpembedgloveModel, f : Double) -> NlpembedgloveModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_model_add(a : NlpembedgloveModel, b : NlpembedgloveModel) -> NlpembedgloveModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveModel::add(self : NlpembedgloveModel, other : NlpembedgloveModel) -> NlpembedgloveModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_model_copy(s : NlpembedgloveModel) -> NlpembedgloveModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveModel::copy(self : NlpembedgloveModel) -> NlpembedgloveModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_model_fill(s : NlpembedgloveModel, v : Double) -> NlpembedgloveModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveModel::fill(self : NlpembedgloveModel, v : Double) -> NlpembedgloveModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_model_min(s : NlpembedgloveModel) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveModel::min(self : NlpembedgloveModel) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_model_max(s : NlpembedgloveModel) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveModel::max(self : NlpembedgloveModel) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_model_to_string(s : NlpembedgloveModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveModel::to_string(self : NlpembedgloveModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveLayer {
@@ -759,45 +759,45 @@ pub fn nlp_embed_glove_layer_make(size : Int) -> NlpembedgloveLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_layer_len(s : NlpembedgloveLayer) -> Int { s.size }
+pub fn NlpembedgloveLayer::len(self : NlpembedgloveLayer) -> Int { self.size }
 
-pub fn nlp_embed_glove_layer_get(s : NlpembedgloveLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveLayer::get(self : NlpembedgloveLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_layer_set(s : NlpembedgloveLayer, i : Int, v : Double) -> NlpembedgloveLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveLayer::set(self : NlpembedgloveLayer, i : Int, v : Double) -> NlpembedgloveLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_layer_sum(s : NlpembedgloveLayer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveLayer::sum(self : NlpembedgloveLayer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_layer_mean(s : NlpembedgloveLayer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveLayer::mean(self : NlpembedgloveLayer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_layer_scale(s : NlpembedgloveLayer, f : Double) -> NlpembedgloveLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveLayer::scale(self : NlpembedgloveLayer, f : Double) -> NlpembedgloveLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_layer_add(a : NlpembedgloveLayer, b : NlpembedgloveLayer) -> NlpembedgloveLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveLayer::add(self : NlpembedgloveLayer, other : NlpembedgloveLayer) -> NlpembedgloveLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_layer_copy(s : NlpembedgloveLayer) -> NlpembedgloveLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveLayer::copy(self : NlpembedgloveLayer) -> NlpembedgloveLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_layer_fill(s : NlpembedgloveLayer, v : Double) -> NlpembedgloveLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveLayer::fill(self : NlpembedgloveLayer, v : Double) -> NlpembedgloveLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_layer_min(s : NlpembedgloveLayer) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveLayer::min(self : NlpembedgloveLayer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_layer_max(s : NlpembedgloveLayer) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveLayer::max(self : NlpembedgloveLayer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_layer_to_string(s : NlpembedgloveLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveLayer::to_string(self : NlpembedgloveLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveBuffer {
@@ -810,45 +810,45 @@ pub fn nlp_embed_glove_buffer_make(size : Int) -> NlpembedgloveBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_buffer_len(s : NlpembedgloveBuffer) -> Int { s.size }
+pub fn NlpembedgloveBuffer::len(self : NlpembedgloveBuffer) -> Int { self.size }
 
-pub fn nlp_embed_glove_buffer_get(s : NlpembedgloveBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveBuffer::get(self : NlpembedgloveBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_buffer_set(s : NlpembedgloveBuffer, i : Int, v : Double) -> NlpembedgloveBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveBuffer::set(self : NlpembedgloveBuffer, i : Int, v : Double) -> NlpembedgloveBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_buffer_sum(s : NlpembedgloveBuffer) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveBuffer::sum(self : NlpembedgloveBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_buffer_mean(s : NlpembedgloveBuffer) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveBuffer::mean(self : NlpembedgloveBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_buffer_scale(s : NlpembedgloveBuffer, f : Double) -> NlpembedgloveBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveBuffer::scale(self : NlpembedgloveBuffer, f : Double) -> NlpembedgloveBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_buffer_add(a : NlpembedgloveBuffer, b : NlpembedgloveBuffer) -> NlpembedgloveBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveBuffer::add(self : NlpembedgloveBuffer, other : NlpembedgloveBuffer) -> NlpembedgloveBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_buffer_copy(s : NlpembedgloveBuffer) -> NlpembedgloveBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveBuffer::copy(self : NlpembedgloveBuffer) -> NlpembedgloveBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_buffer_fill(s : NlpembedgloveBuffer, v : Double) -> NlpembedgloveBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveBuffer::fill(self : NlpembedgloveBuffer, v : Double) -> NlpembedgloveBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_buffer_min(s : NlpembedgloveBuffer) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveBuffer::min(self : NlpembedgloveBuffer) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_buffer_max(s : NlpembedgloveBuffer) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveBuffer::max(self : NlpembedgloveBuffer) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_buffer_to_string(s : NlpembedgloveBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveBuffer::to_string(self : NlpembedgloveBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveCursor {
@@ -861,45 +861,45 @@ pub fn nlp_embed_glove_cursor_make(size : Int) -> NlpembedgloveCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_cursor_len(s : NlpembedgloveCursor) -> Int { s.size }
+pub fn NlpembedgloveCursor::len(self : NlpembedgloveCursor) -> Int { self.size }
 
-pub fn nlp_embed_glove_cursor_get(s : NlpembedgloveCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveCursor::get(self : NlpembedgloveCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_cursor_set(s : NlpembedgloveCursor, i : Int, v : Double) -> NlpembedgloveCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveCursor::set(self : NlpembedgloveCursor, i : Int, v : Double) -> NlpembedgloveCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cursor_sum(s : NlpembedgloveCursor) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveCursor::sum(self : NlpembedgloveCursor) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_cursor_mean(s : NlpembedgloveCursor) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveCursor::mean(self : NlpembedgloveCursor) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_cursor_scale(s : NlpembedgloveCursor, f : Double) -> NlpembedgloveCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveCursor::scale(self : NlpembedgloveCursor, f : Double) -> NlpembedgloveCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cursor_add(a : NlpembedgloveCursor, b : NlpembedgloveCursor) -> NlpembedgloveCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveCursor::add(self : NlpembedgloveCursor, other : NlpembedgloveCursor) -> NlpembedgloveCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cursor_copy(s : NlpembedgloveCursor) -> NlpembedgloveCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveCursor::copy(self : NlpembedgloveCursor) -> NlpembedgloveCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cursor_fill(s : NlpembedgloveCursor, v : Double) -> NlpembedgloveCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveCursor::fill(self : NlpembedgloveCursor, v : Double) -> NlpembedgloveCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_cursor_min(s : NlpembedgloveCursor) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveCursor::min(self : NlpembedgloveCursor) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_cursor_max(s : NlpembedgloveCursor) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveCursor::max(self : NlpembedgloveCursor) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_cursor_to_string(s : NlpembedgloveCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveCursor::to_string(self : NlpembedgloveCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveView {
@@ -912,45 +912,45 @@ pub fn nlp_embed_glove_view_make(size : Int) -> NlpembedgloveView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_view_len(s : NlpembedgloveView) -> Int { s.size }
+pub fn NlpembedgloveView::len(self : NlpembedgloveView) -> Int { self.size }
 
-pub fn nlp_embed_glove_view_get(s : NlpembedgloveView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveView::get(self : NlpembedgloveView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_view_set(s : NlpembedgloveView, i : Int, v : Double) -> NlpembedgloveView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveView::set(self : NlpembedgloveView, i : Int, v : Double) -> NlpembedgloveView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_view_sum(s : NlpembedgloveView) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveView::sum(self : NlpembedgloveView) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_view_mean(s : NlpembedgloveView) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveView::mean(self : NlpembedgloveView) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_view_scale(s : NlpembedgloveView, f : Double) -> NlpembedgloveView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveView::scale(self : NlpembedgloveView, f : Double) -> NlpembedgloveView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_view_add(a : NlpembedgloveView, b : NlpembedgloveView) -> NlpembedgloveView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveView::add(self : NlpembedgloveView, other : NlpembedgloveView) -> NlpembedgloveView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_view_copy(s : NlpembedgloveView) -> NlpembedgloveView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveView::copy(self : NlpembedgloveView) -> NlpembedgloveView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_view_fill(s : NlpembedgloveView, v : Double) -> NlpembedgloveView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveView::fill(self : NlpembedgloveView, v : Double) -> NlpembedgloveView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_view_min(s : NlpembedgloveView) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveView::min(self : NlpembedgloveView) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_view_max(s : NlpembedgloveView) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveView::max(self : NlpembedgloveView) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_view_to_string(s : NlpembedgloveView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveView::to_string(self : NlpembedgloveView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveRange {
@@ -963,45 +963,45 @@ pub fn nlp_embed_glove_range_make(size : Int) -> NlpembedgloveRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_range_len(s : NlpembedgloveRange) -> Int { s.size }
+pub fn NlpembedgloveRange::len(self : NlpembedgloveRange) -> Int { self.size }
 
-pub fn nlp_embed_glove_range_get(s : NlpembedgloveRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveRange::get(self : NlpembedgloveRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_range_set(s : NlpembedgloveRange, i : Int, v : Double) -> NlpembedgloveRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveRange::set(self : NlpembedgloveRange, i : Int, v : Double) -> NlpembedgloveRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_range_sum(s : NlpembedgloveRange) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveRange::sum(self : NlpembedgloveRange) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_range_mean(s : NlpembedgloveRange) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveRange::mean(self : NlpembedgloveRange) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_range_scale(s : NlpembedgloveRange, f : Double) -> NlpembedgloveRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveRange::scale(self : NlpembedgloveRange, f : Double) -> NlpembedgloveRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_range_add(a : NlpembedgloveRange, b : NlpembedgloveRange) -> NlpembedgloveRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveRange::add(self : NlpembedgloveRange, other : NlpembedgloveRange) -> NlpembedgloveRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_range_copy(s : NlpembedgloveRange) -> NlpembedgloveRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveRange::copy(self : NlpembedgloveRange) -> NlpembedgloveRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_range_fill(s : NlpembedgloveRange, v : Double) -> NlpembedgloveRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveRange::fill(self : NlpembedgloveRange, v : Double) -> NlpembedgloveRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_range_min(s : NlpembedgloveRange) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveRange::min(self : NlpembedgloveRange) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_range_max(s : NlpembedgloveRange) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveRange::max(self : NlpembedgloveRange) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_range_to_string(s : NlpembedgloveRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveRange::to_string(self : NlpembedgloveRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct NlpembedgloveSlice {
@@ -1014,44 +1014,44 @@ pub fn nlp_embed_glove_slice_make(size : Int) -> NlpembedgloveSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn nlp_embed_glove_slice_len(s : NlpembedgloveSlice) -> Int { s.size }
+pub fn NlpembedgloveSlice::len(self : NlpembedgloveSlice) -> Int { self.size }
 
-pub fn nlp_embed_glove_slice_get(s : NlpembedgloveSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn NlpembedgloveSlice::get(self : NlpembedgloveSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn nlp_embed_glove_slice_set(s : NlpembedgloveSlice, i : Int, v : Double) -> NlpembedgloveSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn NlpembedgloveSlice::set(self : NlpembedgloveSlice, i : Int, v : Double) -> NlpembedgloveSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_slice_sum(s : NlpembedgloveSlice) -> Double { @_common.sum(s.data) }
+pub fn NlpembedgloveSlice::sum(self : NlpembedgloveSlice) -> Double { @_common.sum(self.data) }
 
-pub fn nlp_embed_glove_slice_mean(s : NlpembedgloveSlice) -> Double { @_common.mean(s.data) }
+pub fn NlpembedgloveSlice::mean(self : NlpembedgloveSlice) -> Double { @_common.mean(self.data) }
 
-pub fn nlp_embed_glove_slice_scale(s : NlpembedgloveSlice, f : Double) -> NlpembedgloveSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn NlpembedgloveSlice::scale(self : NlpembedgloveSlice, f : Double) -> NlpembedgloveSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_slice_add(a : NlpembedgloveSlice, b : NlpembedgloveSlice) -> NlpembedgloveSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn NlpembedgloveSlice::add(self : NlpembedgloveSlice, other : NlpembedgloveSlice) -> NlpembedgloveSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_slice_copy(s : NlpembedgloveSlice) -> NlpembedgloveSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn NlpembedgloveSlice::copy(self : NlpembedgloveSlice) -> NlpembedgloveSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_slice_fill(s : NlpembedgloveSlice, v : Double) -> NlpembedgloveSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn NlpembedgloveSlice::fill(self : NlpembedgloveSlice, v : Double) -> NlpembedgloveSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn nlp_embed_glove_slice_min(s : NlpembedgloveSlice) -> Double { @_common.min(s.data) }
+pub fn NlpembedgloveSlice::min(self : NlpembedgloveSlice) -> Double { @_common.min(self.data) }
 
-pub fn nlp_embed_glove_slice_max(s : NlpembedgloveSlice) -> Double { @_common.max(s.data) }
+pub fn NlpembedgloveSlice::max(self : NlpembedgloveSlice) -> Double { @_common.max(self.data) }
 
-pub fn nlp_embed_glove_slice_to_string(s : NlpembedgloveSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn NlpembedgloveSlice::to_string(self : NlpembedgloveSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

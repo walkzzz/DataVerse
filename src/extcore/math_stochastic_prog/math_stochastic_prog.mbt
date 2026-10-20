@@ -351,45 +351,45 @@ pub fn math_stochastic_prog_frame_make(size : Int) -> MathstochasticprogFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_frame_len(s : MathstochasticprogFrame) -> Int { s.size }
+pub fn MathstochasticprogFrame::len(self : MathstochasticprogFrame) -> Int { self.size }
 
-pub fn math_stochastic_prog_frame_get(s : MathstochasticprogFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogFrame::get(self : MathstochasticprogFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_frame_set(s : MathstochasticprogFrame, i : Int, v : Double) -> MathstochasticprogFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogFrame::set(self : MathstochasticprogFrame, i : Int, v : Double) -> MathstochasticprogFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_frame_sum(s : MathstochasticprogFrame) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogFrame::sum(self : MathstochasticprogFrame) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_frame_mean(s : MathstochasticprogFrame) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogFrame::mean(self : MathstochasticprogFrame) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_frame_scale(s : MathstochasticprogFrame, f : Double) -> MathstochasticprogFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogFrame::scale(self : MathstochasticprogFrame, f : Double) -> MathstochasticprogFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_frame_add(a : MathstochasticprogFrame, b : MathstochasticprogFrame) -> MathstochasticprogFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogFrame::add(self : MathstochasticprogFrame, other : MathstochasticprogFrame) -> MathstochasticprogFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_frame_copy(s : MathstochasticprogFrame) -> MathstochasticprogFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogFrame::copy(self : MathstochasticprogFrame) -> MathstochasticprogFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_frame_fill(s : MathstochasticprogFrame, v : Double) -> MathstochasticprogFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogFrame::fill(self : MathstochasticprogFrame, v : Double) -> MathstochasticprogFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_frame_min(s : MathstochasticprogFrame) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogFrame::min(self : MathstochasticprogFrame) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_frame_max(s : MathstochasticprogFrame) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogFrame::max(self : MathstochasticprogFrame) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_frame_to_string(s : MathstochasticprogFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogFrame::to_string(self : MathstochasticprogFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogTable {
@@ -402,45 +402,45 @@ pub fn math_stochastic_prog_table_make(size : Int) -> MathstochasticprogTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_table_len(s : MathstochasticprogTable) -> Int { s.size }
+pub fn MathstochasticprogTable::len(self : MathstochasticprogTable) -> Int { self.size }
 
-pub fn math_stochastic_prog_table_get(s : MathstochasticprogTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogTable::get(self : MathstochasticprogTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_table_set(s : MathstochasticprogTable, i : Int, v : Double) -> MathstochasticprogTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogTable::set(self : MathstochasticprogTable, i : Int, v : Double) -> MathstochasticprogTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_table_sum(s : MathstochasticprogTable) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogTable::sum(self : MathstochasticprogTable) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_table_mean(s : MathstochasticprogTable) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogTable::mean(self : MathstochasticprogTable) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_table_scale(s : MathstochasticprogTable, f : Double) -> MathstochasticprogTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogTable::scale(self : MathstochasticprogTable, f : Double) -> MathstochasticprogTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_table_add(a : MathstochasticprogTable, b : MathstochasticprogTable) -> MathstochasticprogTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogTable::add(self : MathstochasticprogTable, other : MathstochasticprogTable) -> MathstochasticprogTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_table_copy(s : MathstochasticprogTable) -> MathstochasticprogTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogTable::copy(self : MathstochasticprogTable) -> MathstochasticprogTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_table_fill(s : MathstochasticprogTable, v : Double) -> MathstochasticprogTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogTable::fill(self : MathstochasticprogTable, v : Double) -> MathstochasticprogTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_table_min(s : MathstochasticprogTable) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogTable::min(self : MathstochasticprogTable) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_table_max(s : MathstochasticprogTable) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogTable::max(self : MathstochasticprogTable) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_table_to_string(s : MathstochasticprogTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogTable::to_string(self : MathstochasticprogTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogGraphN {
@@ -453,45 +453,45 @@ pub fn math_stochastic_prog_graphn_make(size : Int) -> MathstochasticprogGraphN 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_graphn_len(s : MathstochasticprogGraphN) -> Int { s.size }
+pub fn MathstochasticprogGraphN::len(self : MathstochasticprogGraphN) -> Int { self.size }
 
-pub fn math_stochastic_prog_graphn_get(s : MathstochasticprogGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogGraphN::get(self : MathstochasticprogGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_graphn_set(s : MathstochasticprogGraphN, i : Int, v : Double) -> MathstochasticprogGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogGraphN::set(self : MathstochasticprogGraphN, i : Int, v : Double) -> MathstochasticprogGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_graphn_sum(s : MathstochasticprogGraphN) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogGraphN::sum(self : MathstochasticprogGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_graphn_mean(s : MathstochasticprogGraphN) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogGraphN::mean(self : MathstochasticprogGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_graphn_scale(s : MathstochasticprogGraphN, f : Double) -> MathstochasticprogGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogGraphN::scale(self : MathstochasticprogGraphN, f : Double) -> MathstochasticprogGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_graphn_add(a : MathstochasticprogGraphN, b : MathstochasticprogGraphN) -> MathstochasticprogGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogGraphN::add(self : MathstochasticprogGraphN, other : MathstochasticprogGraphN) -> MathstochasticprogGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_graphn_copy(s : MathstochasticprogGraphN) -> MathstochasticprogGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogGraphN::copy(self : MathstochasticprogGraphN) -> MathstochasticprogGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_graphn_fill(s : MathstochasticprogGraphN, v : Double) -> MathstochasticprogGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogGraphN::fill(self : MathstochasticprogGraphN, v : Double) -> MathstochasticprogGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_graphn_min(s : MathstochasticprogGraphN) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogGraphN::min(self : MathstochasticprogGraphN) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_graphn_max(s : MathstochasticprogGraphN) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogGraphN::max(self : MathstochasticprogGraphN) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_graphn_to_string(s : MathstochasticprogGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogGraphN::to_string(self : MathstochasticprogGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogNode {
@@ -504,45 +504,45 @@ pub fn math_stochastic_prog_node_make(size : Int) -> MathstochasticprogNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_node_len(s : MathstochasticprogNode) -> Int { s.size }
+pub fn MathstochasticprogNode::len(self : MathstochasticprogNode) -> Int { self.size }
 
-pub fn math_stochastic_prog_node_get(s : MathstochasticprogNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogNode::get(self : MathstochasticprogNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_node_set(s : MathstochasticprogNode, i : Int, v : Double) -> MathstochasticprogNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogNode::set(self : MathstochasticprogNode, i : Int, v : Double) -> MathstochasticprogNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_node_sum(s : MathstochasticprogNode) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogNode::sum(self : MathstochasticprogNode) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_node_mean(s : MathstochasticprogNode) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogNode::mean(self : MathstochasticprogNode) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_node_scale(s : MathstochasticprogNode, f : Double) -> MathstochasticprogNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogNode::scale(self : MathstochasticprogNode, f : Double) -> MathstochasticprogNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_node_add(a : MathstochasticprogNode, b : MathstochasticprogNode) -> MathstochasticprogNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogNode::add(self : MathstochasticprogNode, other : MathstochasticprogNode) -> MathstochasticprogNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_node_copy(s : MathstochasticprogNode) -> MathstochasticprogNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogNode::copy(self : MathstochasticprogNode) -> MathstochasticprogNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_node_fill(s : MathstochasticprogNode, v : Double) -> MathstochasticprogNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogNode::fill(self : MathstochasticprogNode, v : Double) -> MathstochasticprogNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_node_min(s : MathstochasticprogNode) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogNode::min(self : MathstochasticprogNode) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_node_max(s : MathstochasticprogNode) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogNode::max(self : MathstochasticprogNode) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_node_to_string(s : MathstochasticprogNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogNode::to_string(self : MathstochasticprogNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogEdge {
@@ -555,45 +555,45 @@ pub fn math_stochastic_prog_edge_make(size : Int) -> MathstochasticprogEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_edge_len(s : MathstochasticprogEdge) -> Int { s.size }
+pub fn MathstochasticprogEdge::len(self : MathstochasticprogEdge) -> Int { self.size }
 
-pub fn math_stochastic_prog_edge_get(s : MathstochasticprogEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogEdge::get(self : MathstochasticprogEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_edge_set(s : MathstochasticprogEdge, i : Int, v : Double) -> MathstochasticprogEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogEdge::set(self : MathstochasticprogEdge, i : Int, v : Double) -> MathstochasticprogEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_edge_sum(s : MathstochasticprogEdge) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogEdge::sum(self : MathstochasticprogEdge) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_edge_mean(s : MathstochasticprogEdge) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogEdge::mean(self : MathstochasticprogEdge) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_edge_scale(s : MathstochasticprogEdge, f : Double) -> MathstochasticprogEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogEdge::scale(self : MathstochasticprogEdge, f : Double) -> MathstochasticprogEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_edge_add(a : MathstochasticprogEdge, b : MathstochasticprogEdge) -> MathstochasticprogEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogEdge::add(self : MathstochasticprogEdge, other : MathstochasticprogEdge) -> MathstochasticprogEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_edge_copy(s : MathstochasticprogEdge) -> MathstochasticprogEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogEdge::copy(self : MathstochasticprogEdge) -> MathstochasticprogEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_edge_fill(s : MathstochasticprogEdge, v : Double) -> MathstochasticprogEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogEdge::fill(self : MathstochasticprogEdge, v : Double) -> MathstochasticprogEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_edge_min(s : MathstochasticprogEdge) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogEdge::min(self : MathstochasticprogEdge) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_edge_max(s : MathstochasticprogEdge) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogEdge::max(self : MathstochasticprogEdge) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_edge_to_string(s : MathstochasticprogEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogEdge::to_string(self : MathstochasticprogEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogPath {
@@ -606,45 +606,45 @@ pub fn math_stochastic_prog_path_make(size : Int) -> MathstochasticprogPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_path_len(s : MathstochasticprogPath) -> Int { s.size }
+pub fn MathstochasticprogPath::len(self : MathstochasticprogPath) -> Int { self.size }
 
-pub fn math_stochastic_prog_path_get(s : MathstochasticprogPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogPath::get(self : MathstochasticprogPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_path_set(s : MathstochasticprogPath, i : Int, v : Double) -> MathstochasticprogPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogPath::set(self : MathstochasticprogPath, i : Int, v : Double) -> MathstochasticprogPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_path_sum(s : MathstochasticprogPath) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogPath::sum(self : MathstochasticprogPath) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_path_mean(s : MathstochasticprogPath) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogPath::mean(self : MathstochasticprogPath) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_path_scale(s : MathstochasticprogPath, f : Double) -> MathstochasticprogPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogPath::scale(self : MathstochasticprogPath, f : Double) -> MathstochasticprogPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_path_add(a : MathstochasticprogPath, b : MathstochasticprogPath) -> MathstochasticprogPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogPath::add(self : MathstochasticprogPath, other : MathstochasticprogPath) -> MathstochasticprogPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_path_copy(s : MathstochasticprogPath) -> MathstochasticprogPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogPath::copy(self : MathstochasticprogPath) -> MathstochasticprogPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_path_fill(s : MathstochasticprogPath, v : Double) -> MathstochasticprogPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogPath::fill(self : MathstochasticprogPath, v : Double) -> MathstochasticprogPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_path_min(s : MathstochasticprogPath) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogPath::min(self : MathstochasticprogPath) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_path_max(s : MathstochasticprogPath) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogPath::max(self : MathstochasticprogPath) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_path_to_string(s : MathstochasticprogPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogPath::to_string(self : MathstochasticprogPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogCluster {
@@ -657,45 +657,45 @@ pub fn math_stochastic_prog_cluster_make(size : Int) -> MathstochasticprogCluste
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_cluster_len(s : MathstochasticprogCluster) -> Int { s.size }
+pub fn MathstochasticprogCluster::len(self : MathstochasticprogCluster) -> Int { self.size }
 
-pub fn math_stochastic_prog_cluster_get(s : MathstochasticprogCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogCluster::get(self : MathstochasticprogCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_cluster_set(s : MathstochasticprogCluster, i : Int, v : Double) -> MathstochasticprogCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogCluster::set(self : MathstochasticprogCluster, i : Int, v : Double) -> MathstochasticprogCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cluster_sum(s : MathstochasticprogCluster) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogCluster::sum(self : MathstochasticprogCluster) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_cluster_mean(s : MathstochasticprogCluster) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogCluster::mean(self : MathstochasticprogCluster) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_cluster_scale(s : MathstochasticprogCluster, f : Double) -> MathstochasticprogCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogCluster::scale(self : MathstochasticprogCluster, f : Double) -> MathstochasticprogCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cluster_add(a : MathstochasticprogCluster, b : MathstochasticprogCluster) -> MathstochasticprogCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogCluster::add(self : MathstochasticprogCluster, other : MathstochasticprogCluster) -> MathstochasticprogCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cluster_copy(s : MathstochasticprogCluster) -> MathstochasticprogCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogCluster::copy(self : MathstochasticprogCluster) -> MathstochasticprogCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cluster_fill(s : MathstochasticprogCluster, v : Double) -> MathstochasticprogCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogCluster::fill(self : MathstochasticprogCluster, v : Double) -> MathstochasticprogCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cluster_min(s : MathstochasticprogCluster) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogCluster::min(self : MathstochasticprogCluster) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_cluster_max(s : MathstochasticprogCluster) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogCluster::max(self : MathstochasticprogCluster) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_cluster_to_string(s : MathstochasticprogCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogCluster::to_string(self : MathstochasticprogCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogModel {
@@ -708,45 +708,45 @@ pub fn math_stochastic_prog_model_make(size : Int) -> MathstochasticprogModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_model_len(s : MathstochasticprogModel) -> Int { s.size }
+pub fn MathstochasticprogModel::len(self : MathstochasticprogModel) -> Int { self.size }
 
-pub fn math_stochastic_prog_model_get(s : MathstochasticprogModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogModel::get(self : MathstochasticprogModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_model_set(s : MathstochasticprogModel, i : Int, v : Double) -> MathstochasticprogModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogModel::set(self : MathstochasticprogModel, i : Int, v : Double) -> MathstochasticprogModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_model_sum(s : MathstochasticprogModel) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogModel::sum(self : MathstochasticprogModel) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_model_mean(s : MathstochasticprogModel) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogModel::mean(self : MathstochasticprogModel) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_model_scale(s : MathstochasticprogModel, f : Double) -> MathstochasticprogModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogModel::scale(self : MathstochasticprogModel, f : Double) -> MathstochasticprogModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_model_add(a : MathstochasticprogModel, b : MathstochasticprogModel) -> MathstochasticprogModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogModel::add(self : MathstochasticprogModel, other : MathstochasticprogModel) -> MathstochasticprogModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_model_copy(s : MathstochasticprogModel) -> MathstochasticprogModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogModel::copy(self : MathstochasticprogModel) -> MathstochasticprogModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_model_fill(s : MathstochasticprogModel, v : Double) -> MathstochasticprogModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogModel::fill(self : MathstochasticprogModel, v : Double) -> MathstochasticprogModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_model_min(s : MathstochasticprogModel) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogModel::min(self : MathstochasticprogModel) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_model_max(s : MathstochasticprogModel) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogModel::max(self : MathstochasticprogModel) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_model_to_string(s : MathstochasticprogModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogModel::to_string(self : MathstochasticprogModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogLayer {
@@ -759,45 +759,45 @@ pub fn math_stochastic_prog_layer_make(size : Int) -> MathstochasticprogLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_layer_len(s : MathstochasticprogLayer) -> Int { s.size }
+pub fn MathstochasticprogLayer::len(self : MathstochasticprogLayer) -> Int { self.size }
 
-pub fn math_stochastic_prog_layer_get(s : MathstochasticprogLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogLayer::get(self : MathstochasticprogLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_layer_set(s : MathstochasticprogLayer, i : Int, v : Double) -> MathstochasticprogLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogLayer::set(self : MathstochasticprogLayer, i : Int, v : Double) -> MathstochasticprogLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_layer_sum(s : MathstochasticprogLayer) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogLayer::sum(self : MathstochasticprogLayer) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_layer_mean(s : MathstochasticprogLayer) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogLayer::mean(self : MathstochasticprogLayer) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_layer_scale(s : MathstochasticprogLayer, f : Double) -> MathstochasticprogLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogLayer::scale(self : MathstochasticprogLayer, f : Double) -> MathstochasticprogLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_layer_add(a : MathstochasticprogLayer, b : MathstochasticprogLayer) -> MathstochasticprogLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogLayer::add(self : MathstochasticprogLayer, other : MathstochasticprogLayer) -> MathstochasticprogLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_layer_copy(s : MathstochasticprogLayer) -> MathstochasticprogLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogLayer::copy(self : MathstochasticprogLayer) -> MathstochasticprogLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_layer_fill(s : MathstochasticprogLayer, v : Double) -> MathstochasticprogLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogLayer::fill(self : MathstochasticprogLayer, v : Double) -> MathstochasticprogLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_layer_min(s : MathstochasticprogLayer) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogLayer::min(self : MathstochasticprogLayer) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_layer_max(s : MathstochasticprogLayer) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogLayer::max(self : MathstochasticprogLayer) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_layer_to_string(s : MathstochasticprogLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogLayer::to_string(self : MathstochasticprogLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogBuffer {
@@ -810,45 +810,45 @@ pub fn math_stochastic_prog_buffer_make(size : Int) -> MathstochasticprogBuffer 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_buffer_len(s : MathstochasticprogBuffer) -> Int { s.size }
+pub fn MathstochasticprogBuffer::len(self : MathstochasticprogBuffer) -> Int { self.size }
 
-pub fn math_stochastic_prog_buffer_get(s : MathstochasticprogBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogBuffer::get(self : MathstochasticprogBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_buffer_set(s : MathstochasticprogBuffer, i : Int, v : Double) -> MathstochasticprogBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogBuffer::set(self : MathstochasticprogBuffer, i : Int, v : Double) -> MathstochasticprogBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_buffer_sum(s : MathstochasticprogBuffer) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogBuffer::sum(self : MathstochasticprogBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_buffer_mean(s : MathstochasticprogBuffer) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogBuffer::mean(self : MathstochasticprogBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_buffer_scale(s : MathstochasticprogBuffer, f : Double) -> MathstochasticprogBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogBuffer::scale(self : MathstochasticprogBuffer, f : Double) -> MathstochasticprogBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_buffer_add(a : MathstochasticprogBuffer, b : MathstochasticprogBuffer) -> MathstochasticprogBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogBuffer::add(self : MathstochasticprogBuffer, other : MathstochasticprogBuffer) -> MathstochasticprogBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_buffer_copy(s : MathstochasticprogBuffer) -> MathstochasticprogBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogBuffer::copy(self : MathstochasticprogBuffer) -> MathstochasticprogBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_buffer_fill(s : MathstochasticprogBuffer, v : Double) -> MathstochasticprogBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogBuffer::fill(self : MathstochasticprogBuffer, v : Double) -> MathstochasticprogBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_buffer_min(s : MathstochasticprogBuffer) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogBuffer::min(self : MathstochasticprogBuffer) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_buffer_max(s : MathstochasticprogBuffer) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogBuffer::max(self : MathstochasticprogBuffer) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_buffer_to_string(s : MathstochasticprogBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogBuffer::to_string(self : MathstochasticprogBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogCursor {
@@ -861,45 +861,45 @@ pub fn math_stochastic_prog_cursor_make(size : Int) -> MathstochasticprogCursor 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_cursor_len(s : MathstochasticprogCursor) -> Int { s.size }
+pub fn MathstochasticprogCursor::len(self : MathstochasticprogCursor) -> Int { self.size }
 
-pub fn math_stochastic_prog_cursor_get(s : MathstochasticprogCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogCursor::get(self : MathstochasticprogCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_cursor_set(s : MathstochasticprogCursor, i : Int, v : Double) -> MathstochasticprogCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogCursor::set(self : MathstochasticprogCursor, i : Int, v : Double) -> MathstochasticprogCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cursor_sum(s : MathstochasticprogCursor) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogCursor::sum(self : MathstochasticprogCursor) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_cursor_mean(s : MathstochasticprogCursor) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogCursor::mean(self : MathstochasticprogCursor) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_cursor_scale(s : MathstochasticprogCursor, f : Double) -> MathstochasticprogCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogCursor::scale(self : MathstochasticprogCursor, f : Double) -> MathstochasticprogCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cursor_add(a : MathstochasticprogCursor, b : MathstochasticprogCursor) -> MathstochasticprogCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogCursor::add(self : MathstochasticprogCursor, other : MathstochasticprogCursor) -> MathstochasticprogCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cursor_copy(s : MathstochasticprogCursor) -> MathstochasticprogCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogCursor::copy(self : MathstochasticprogCursor) -> MathstochasticprogCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cursor_fill(s : MathstochasticprogCursor, v : Double) -> MathstochasticprogCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogCursor::fill(self : MathstochasticprogCursor, v : Double) -> MathstochasticprogCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_cursor_min(s : MathstochasticprogCursor) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogCursor::min(self : MathstochasticprogCursor) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_cursor_max(s : MathstochasticprogCursor) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogCursor::max(self : MathstochasticprogCursor) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_cursor_to_string(s : MathstochasticprogCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogCursor::to_string(self : MathstochasticprogCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogView {
@@ -912,45 +912,45 @@ pub fn math_stochastic_prog_view_make(size : Int) -> MathstochasticprogView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_view_len(s : MathstochasticprogView) -> Int { s.size }
+pub fn MathstochasticprogView::len(self : MathstochasticprogView) -> Int { self.size }
 
-pub fn math_stochastic_prog_view_get(s : MathstochasticprogView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogView::get(self : MathstochasticprogView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_view_set(s : MathstochasticprogView, i : Int, v : Double) -> MathstochasticprogView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogView::set(self : MathstochasticprogView, i : Int, v : Double) -> MathstochasticprogView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_view_sum(s : MathstochasticprogView) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogView::sum(self : MathstochasticprogView) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_view_mean(s : MathstochasticprogView) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogView::mean(self : MathstochasticprogView) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_view_scale(s : MathstochasticprogView, f : Double) -> MathstochasticprogView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogView::scale(self : MathstochasticprogView, f : Double) -> MathstochasticprogView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_view_add(a : MathstochasticprogView, b : MathstochasticprogView) -> MathstochasticprogView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogView::add(self : MathstochasticprogView, other : MathstochasticprogView) -> MathstochasticprogView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_view_copy(s : MathstochasticprogView) -> MathstochasticprogView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogView::copy(self : MathstochasticprogView) -> MathstochasticprogView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_view_fill(s : MathstochasticprogView, v : Double) -> MathstochasticprogView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogView::fill(self : MathstochasticprogView, v : Double) -> MathstochasticprogView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_view_min(s : MathstochasticprogView) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogView::min(self : MathstochasticprogView) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_view_max(s : MathstochasticprogView) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogView::max(self : MathstochasticprogView) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_view_to_string(s : MathstochasticprogView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogView::to_string(self : MathstochasticprogView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogRange {
@@ -963,45 +963,45 @@ pub fn math_stochastic_prog_range_make(size : Int) -> MathstochasticprogRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_range_len(s : MathstochasticprogRange) -> Int { s.size }
+pub fn MathstochasticprogRange::len(self : MathstochasticprogRange) -> Int { self.size }
 
-pub fn math_stochastic_prog_range_get(s : MathstochasticprogRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogRange::get(self : MathstochasticprogRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_range_set(s : MathstochasticprogRange, i : Int, v : Double) -> MathstochasticprogRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogRange::set(self : MathstochasticprogRange, i : Int, v : Double) -> MathstochasticprogRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_range_sum(s : MathstochasticprogRange) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogRange::sum(self : MathstochasticprogRange) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_range_mean(s : MathstochasticprogRange) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogRange::mean(self : MathstochasticprogRange) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_range_scale(s : MathstochasticprogRange, f : Double) -> MathstochasticprogRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogRange::scale(self : MathstochasticprogRange, f : Double) -> MathstochasticprogRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_range_add(a : MathstochasticprogRange, b : MathstochasticprogRange) -> MathstochasticprogRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogRange::add(self : MathstochasticprogRange, other : MathstochasticprogRange) -> MathstochasticprogRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_range_copy(s : MathstochasticprogRange) -> MathstochasticprogRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogRange::copy(self : MathstochasticprogRange) -> MathstochasticprogRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_range_fill(s : MathstochasticprogRange, v : Double) -> MathstochasticprogRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogRange::fill(self : MathstochasticprogRange, v : Double) -> MathstochasticprogRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_range_min(s : MathstochasticprogRange) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogRange::min(self : MathstochasticprogRange) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_range_max(s : MathstochasticprogRange) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogRange::max(self : MathstochasticprogRange) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_range_to_string(s : MathstochasticprogRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogRange::to_string(self : MathstochasticprogRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MathstochasticprogSlice {
@@ -1014,44 +1014,44 @@ pub fn math_stochastic_prog_slice_make(size : Int) -> MathstochasticprogSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn math_stochastic_prog_slice_len(s : MathstochasticprogSlice) -> Int { s.size }
+pub fn MathstochasticprogSlice::len(self : MathstochasticprogSlice) -> Int { self.size }
 
-pub fn math_stochastic_prog_slice_get(s : MathstochasticprogSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MathstochasticprogSlice::get(self : MathstochasticprogSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn math_stochastic_prog_slice_set(s : MathstochasticprogSlice, i : Int, v : Double) -> MathstochasticprogSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MathstochasticprogSlice::set(self : MathstochasticprogSlice, i : Int, v : Double) -> MathstochasticprogSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_slice_sum(s : MathstochasticprogSlice) -> Double { @_common.sum(s.data) }
+pub fn MathstochasticprogSlice::sum(self : MathstochasticprogSlice) -> Double { @_common.sum(self.data) }
 
-pub fn math_stochastic_prog_slice_mean(s : MathstochasticprogSlice) -> Double { @_common.mean(s.data) }
+pub fn MathstochasticprogSlice::mean(self : MathstochasticprogSlice) -> Double { @_common.mean(self.data) }
 
-pub fn math_stochastic_prog_slice_scale(s : MathstochasticprogSlice, f : Double) -> MathstochasticprogSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MathstochasticprogSlice::scale(self : MathstochasticprogSlice, f : Double) -> MathstochasticprogSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_slice_add(a : MathstochasticprogSlice, b : MathstochasticprogSlice) -> MathstochasticprogSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MathstochasticprogSlice::add(self : MathstochasticprogSlice, other : MathstochasticprogSlice) -> MathstochasticprogSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_slice_copy(s : MathstochasticprogSlice) -> MathstochasticprogSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MathstochasticprogSlice::copy(self : MathstochasticprogSlice) -> MathstochasticprogSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_slice_fill(s : MathstochasticprogSlice, v : Double) -> MathstochasticprogSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MathstochasticprogSlice::fill(self : MathstochasticprogSlice, v : Double) -> MathstochasticprogSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn math_stochastic_prog_slice_min(s : MathstochasticprogSlice) -> Double { @_common.min(s.data) }
+pub fn MathstochasticprogSlice::min(self : MathstochasticprogSlice) -> Double { @_common.min(self.data) }
 
-pub fn math_stochastic_prog_slice_max(s : MathstochasticprogSlice) -> Double { @_common.max(s.data) }
+pub fn MathstochasticprogSlice::max(self : MathstochasticprogSlice) -> Double { @_common.max(self.data) }
 
-pub fn math_stochastic_prog_slice_to_string(s : MathstochasticprogSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MathstochasticprogSlice::to_string(self : MathstochasticprogSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

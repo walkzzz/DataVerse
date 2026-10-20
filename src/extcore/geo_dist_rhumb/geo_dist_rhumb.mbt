@@ -351,45 +351,45 @@ pub fn geo_dist_rhumb_frame_make(size : Int) -> GeodistrhumbFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_frame_len(s : GeodistrhumbFrame) -> Int { s.size }
+pub fn GeodistrhumbFrame::len(self : GeodistrhumbFrame) -> Int { self.size }
 
-pub fn geo_dist_rhumb_frame_get(s : GeodistrhumbFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbFrame::get(self : GeodistrhumbFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_frame_set(s : GeodistrhumbFrame, i : Int, v : Double) -> GeodistrhumbFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbFrame::set(self : GeodistrhumbFrame, i : Int, v : Double) -> GeodistrhumbFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_frame_sum(s : GeodistrhumbFrame) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbFrame::sum(self : GeodistrhumbFrame) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_frame_mean(s : GeodistrhumbFrame) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbFrame::mean(self : GeodistrhumbFrame) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_frame_scale(s : GeodistrhumbFrame, f : Double) -> GeodistrhumbFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbFrame::scale(self : GeodistrhumbFrame, f : Double) -> GeodistrhumbFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_frame_add(a : GeodistrhumbFrame, b : GeodistrhumbFrame) -> GeodistrhumbFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbFrame::add(self : GeodistrhumbFrame, other : GeodistrhumbFrame) -> GeodistrhumbFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_frame_copy(s : GeodistrhumbFrame) -> GeodistrhumbFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbFrame::copy(self : GeodistrhumbFrame) -> GeodistrhumbFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_frame_fill(s : GeodistrhumbFrame, v : Double) -> GeodistrhumbFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbFrame::fill(self : GeodistrhumbFrame, v : Double) -> GeodistrhumbFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_frame_min(s : GeodistrhumbFrame) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbFrame::min(self : GeodistrhumbFrame) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_frame_max(s : GeodistrhumbFrame) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbFrame::max(self : GeodistrhumbFrame) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_frame_to_string(s : GeodistrhumbFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbFrame::to_string(self : GeodistrhumbFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbTable {
@@ -402,45 +402,45 @@ pub fn geo_dist_rhumb_table_make(size : Int) -> GeodistrhumbTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_table_len(s : GeodistrhumbTable) -> Int { s.size }
+pub fn GeodistrhumbTable::len(self : GeodistrhumbTable) -> Int { self.size }
 
-pub fn geo_dist_rhumb_table_get(s : GeodistrhumbTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbTable::get(self : GeodistrhumbTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_table_set(s : GeodistrhumbTable, i : Int, v : Double) -> GeodistrhumbTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbTable::set(self : GeodistrhumbTable, i : Int, v : Double) -> GeodistrhumbTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_table_sum(s : GeodistrhumbTable) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbTable::sum(self : GeodistrhumbTable) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_table_mean(s : GeodistrhumbTable) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbTable::mean(self : GeodistrhumbTable) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_table_scale(s : GeodistrhumbTable, f : Double) -> GeodistrhumbTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbTable::scale(self : GeodistrhumbTable, f : Double) -> GeodistrhumbTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_table_add(a : GeodistrhumbTable, b : GeodistrhumbTable) -> GeodistrhumbTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbTable::add(self : GeodistrhumbTable, other : GeodistrhumbTable) -> GeodistrhumbTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_table_copy(s : GeodistrhumbTable) -> GeodistrhumbTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbTable::copy(self : GeodistrhumbTable) -> GeodistrhumbTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_table_fill(s : GeodistrhumbTable, v : Double) -> GeodistrhumbTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbTable::fill(self : GeodistrhumbTable, v : Double) -> GeodistrhumbTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_table_min(s : GeodistrhumbTable) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbTable::min(self : GeodistrhumbTable) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_table_max(s : GeodistrhumbTable) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbTable::max(self : GeodistrhumbTable) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_table_to_string(s : GeodistrhumbTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbTable::to_string(self : GeodistrhumbTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbGraphN {
@@ -453,45 +453,45 @@ pub fn geo_dist_rhumb_graphn_make(size : Int) -> GeodistrhumbGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_graphn_len(s : GeodistrhumbGraphN) -> Int { s.size }
+pub fn GeodistrhumbGraphN::len(self : GeodistrhumbGraphN) -> Int { self.size }
 
-pub fn geo_dist_rhumb_graphn_get(s : GeodistrhumbGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbGraphN::get(self : GeodistrhumbGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_graphn_set(s : GeodistrhumbGraphN, i : Int, v : Double) -> GeodistrhumbGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbGraphN::set(self : GeodistrhumbGraphN, i : Int, v : Double) -> GeodistrhumbGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_graphn_sum(s : GeodistrhumbGraphN) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbGraphN::sum(self : GeodistrhumbGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_graphn_mean(s : GeodistrhumbGraphN) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbGraphN::mean(self : GeodistrhumbGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_graphn_scale(s : GeodistrhumbGraphN, f : Double) -> GeodistrhumbGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbGraphN::scale(self : GeodistrhumbGraphN, f : Double) -> GeodistrhumbGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_graphn_add(a : GeodistrhumbGraphN, b : GeodistrhumbGraphN) -> GeodistrhumbGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbGraphN::add(self : GeodistrhumbGraphN, other : GeodistrhumbGraphN) -> GeodistrhumbGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_graphn_copy(s : GeodistrhumbGraphN) -> GeodistrhumbGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbGraphN::copy(self : GeodistrhumbGraphN) -> GeodistrhumbGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_graphn_fill(s : GeodistrhumbGraphN, v : Double) -> GeodistrhumbGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbGraphN::fill(self : GeodistrhumbGraphN, v : Double) -> GeodistrhumbGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_graphn_min(s : GeodistrhumbGraphN) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbGraphN::min(self : GeodistrhumbGraphN) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_graphn_max(s : GeodistrhumbGraphN) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbGraphN::max(self : GeodistrhumbGraphN) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_graphn_to_string(s : GeodistrhumbGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbGraphN::to_string(self : GeodistrhumbGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbNode {
@@ -504,45 +504,45 @@ pub fn geo_dist_rhumb_node_make(size : Int) -> GeodistrhumbNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_node_len(s : GeodistrhumbNode) -> Int { s.size }
+pub fn GeodistrhumbNode::len(self : GeodistrhumbNode) -> Int { self.size }
 
-pub fn geo_dist_rhumb_node_get(s : GeodistrhumbNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbNode::get(self : GeodistrhumbNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_node_set(s : GeodistrhumbNode, i : Int, v : Double) -> GeodistrhumbNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbNode::set(self : GeodistrhumbNode, i : Int, v : Double) -> GeodistrhumbNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_node_sum(s : GeodistrhumbNode) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbNode::sum(self : GeodistrhumbNode) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_node_mean(s : GeodistrhumbNode) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbNode::mean(self : GeodistrhumbNode) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_node_scale(s : GeodistrhumbNode, f : Double) -> GeodistrhumbNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbNode::scale(self : GeodistrhumbNode, f : Double) -> GeodistrhumbNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_node_add(a : GeodistrhumbNode, b : GeodistrhumbNode) -> GeodistrhumbNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbNode::add(self : GeodistrhumbNode, other : GeodistrhumbNode) -> GeodistrhumbNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_node_copy(s : GeodistrhumbNode) -> GeodistrhumbNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbNode::copy(self : GeodistrhumbNode) -> GeodistrhumbNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_node_fill(s : GeodistrhumbNode, v : Double) -> GeodistrhumbNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbNode::fill(self : GeodistrhumbNode, v : Double) -> GeodistrhumbNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_node_min(s : GeodistrhumbNode) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbNode::min(self : GeodistrhumbNode) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_node_max(s : GeodistrhumbNode) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbNode::max(self : GeodistrhumbNode) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_node_to_string(s : GeodistrhumbNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbNode::to_string(self : GeodistrhumbNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbEdge {
@@ -555,45 +555,45 @@ pub fn geo_dist_rhumb_edge_make(size : Int) -> GeodistrhumbEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_edge_len(s : GeodistrhumbEdge) -> Int { s.size }
+pub fn GeodistrhumbEdge::len(self : GeodistrhumbEdge) -> Int { self.size }
 
-pub fn geo_dist_rhumb_edge_get(s : GeodistrhumbEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbEdge::get(self : GeodistrhumbEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_edge_set(s : GeodistrhumbEdge, i : Int, v : Double) -> GeodistrhumbEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbEdge::set(self : GeodistrhumbEdge, i : Int, v : Double) -> GeodistrhumbEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_edge_sum(s : GeodistrhumbEdge) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbEdge::sum(self : GeodistrhumbEdge) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_edge_mean(s : GeodistrhumbEdge) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbEdge::mean(self : GeodistrhumbEdge) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_edge_scale(s : GeodistrhumbEdge, f : Double) -> GeodistrhumbEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbEdge::scale(self : GeodistrhumbEdge, f : Double) -> GeodistrhumbEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_edge_add(a : GeodistrhumbEdge, b : GeodistrhumbEdge) -> GeodistrhumbEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbEdge::add(self : GeodistrhumbEdge, other : GeodistrhumbEdge) -> GeodistrhumbEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_edge_copy(s : GeodistrhumbEdge) -> GeodistrhumbEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbEdge::copy(self : GeodistrhumbEdge) -> GeodistrhumbEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_edge_fill(s : GeodistrhumbEdge, v : Double) -> GeodistrhumbEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbEdge::fill(self : GeodistrhumbEdge, v : Double) -> GeodistrhumbEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_edge_min(s : GeodistrhumbEdge) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbEdge::min(self : GeodistrhumbEdge) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_edge_max(s : GeodistrhumbEdge) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbEdge::max(self : GeodistrhumbEdge) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_edge_to_string(s : GeodistrhumbEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbEdge::to_string(self : GeodistrhumbEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbPath {
@@ -606,45 +606,45 @@ pub fn geo_dist_rhumb_path_make(size : Int) -> GeodistrhumbPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_path_len(s : GeodistrhumbPath) -> Int { s.size }
+pub fn GeodistrhumbPath::len(self : GeodistrhumbPath) -> Int { self.size }
 
-pub fn geo_dist_rhumb_path_get(s : GeodistrhumbPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbPath::get(self : GeodistrhumbPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_path_set(s : GeodistrhumbPath, i : Int, v : Double) -> GeodistrhumbPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbPath::set(self : GeodistrhumbPath, i : Int, v : Double) -> GeodistrhumbPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_path_sum(s : GeodistrhumbPath) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbPath::sum(self : GeodistrhumbPath) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_path_mean(s : GeodistrhumbPath) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbPath::mean(self : GeodistrhumbPath) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_path_scale(s : GeodistrhumbPath, f : Double) -> GeodistrhumbPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbPath::scale(self : GeodistrhumbPath, f : Double) -> GeodistrhumbPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_path_add(a : GeodistrhumbPath, b : GeodistrhumbPath) -> GeodistrhumbPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbPath::add(self : GeodistrhumbPath, other : GeodistrhumbPath) -> GeodistrhumbPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_path_copy(s : GeodistrhumbPath) -> GeodistrhumbPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbPath::copy(self : GeodistrhumbPath) -> GeodistrhumbPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_path_fill(s : GeodistrhumbPath, v : Double) -> GeodistrhumbPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbPath::fill(self : GeodistrhumbPath, v : Double) -> GeodistrhumbPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_path_min(s : GeodistrhumbPath) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbPath::min(self : GeodistrhumbPath) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_path_max(s : GeodistrhumbPath) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbPath::max(self : GeodistrhumbPath) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_path_to_string(s : GeodistrhumbPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbPath::to_string(self : GeodistrhumbPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbCluster {
@@ -657,45 +657,45 @@ pub fn geo_dist_rhumb_cluster_make(size : Int) -> GeodistrhumbCluster {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_cluster_len(s : GeodistrhumbCluster) -> Int { s.size }
+pub fn GeodistrhumbCluster::len(self : GeodistrhumbCluster) -> Int { self.size }
 
-pub fn geo_dist_rhumb_cluster_get(s : GeodistrhumbCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbCluster::get(self : GeodistrhumbCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_cluster_set(s : GeodistrhumbCluster, i : Int, v : Double) -> GeodistrhumbCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbCluster::set(self : GeodistrhumbCluster, i : Int, v : Double) -> GeodistrhumbCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cluster_sum(s : GeodistrhumbCluster) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbCluster::sum(self : GeodistrhumbCluster) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_cluster_mean(s : GeodistrhumbCluster) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbCluster::mean(self : GeodistrhumbCluster) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_cluster_scale(s : GeodistrhumbCluster, f : Double) -> GeodistrhumbCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbCluster::scale(self : GeodistrhumbCluster, f : Double) -> GeodistrhumbCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cluster_add(a : GeodistrhumbCluster, b : GeodistrhumbCluster) -> GeodistrhumbCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbCluster::add(self : GeodistrhumbCluster, other : GeodistrhumbCluster) -> GeodistrhumbCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cluster_copy(s : GeodistrhumbCluster) -> GeodistrhumbCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbCluster::copy(self : GeodistrhumbCluster) -> GeodistrhumbCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cluster_fill(s : GeodistrhumbCluster, v : Double) -> GeodistrhumbCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbCluster::fill(self : GeodistrhumbCluster, v : Double) -> GeodistrhumbCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cluster_min(s : GeodistrhumbCluster) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbCluster::min(self : GeodistrhumbCluster) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_cluster_max(s : GeodistrhumbCluster) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbCluster::max(self : GeodistrhumbCluster) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_cluster_to_string(s : GeodistrhumbCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbCluster::to_string(self : GeodistrhumbCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbModel {
@@ -708,45 +708,45 @@ pub fn geo_dist_rhumb_model_make(size : Int) -> GeodistrhumbModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_model_len(s : GeodistrhumbModel) -> Int { s.size }
+pub fn GeodistrhumbModel::len(self : GeodistrhumbModel) -> Int { self.size }
 
-pub fn geo_dist_rhumb_model_get(s : GeodistrhumbModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbModel::get(self : GeodistrhumbModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_model_set(s : GeodistrhumbModel, i : Int, v : Double) -> GeodistrhumbModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbModel::set(self : GeodistrhumbModel, i : Int, v : Double) -> GeodistrhumbModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_model_sum(s : GeodistrhumbModel) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbModel::sum(self : GeodistrhumbModel) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_model_mean(s : GeodistrhumbModel) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbModel::mean(self : GeodistrhumbModel) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_model_scale(s : GeodistrhumbModel, f : Double) -> GeodistrhumbModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbModel::scale(self : GeodistrhumbModel, f : Double) -> GeodistrhumbModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_model_add(a : GeodistrhumbModel, b : GeodistrhumbModel) -> GeodistrhumbModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbModel::add(self : GeodistrhumbModel, other : GeodistrhumbModel) -> GeodistrhumbModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_model_copy(s : GeodistrhumbModel) -> GeodistrhumbModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbModel::copy(self : GeodistrhumbModel) -> GeodistrhumbModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_model_fill(s : GeodistrhumbModel, v : Double) -> GeodistrhumbModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbModel::fill(self : GeodistrhumbModel, v : Double) -> GeodistrhumbModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_model_min(s : GeodistrhumbModel) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbModel::min(self : GeodistrhumbModel) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_model_max(s : GeodistrhumbModel) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbModel::max(self : GeodistrhumbModel) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_model_to_string(s : GeodistrhumbModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbModel::to_string(self : GeodistrhumbModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbLayer {
@@ -759,45 +759,45 @@ pub fn geo_dist_rhumb_layer_make(size : Int) -> GeodistrhumbLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_layer_len(s : GeodistrhumbLayer) -> Int { s.size }
+pub fn GeodistrhumbLayer::len(self : GeodistrhumbLayer) -> Int { self.size }
 
-pub fn geo_dist_rhumb_layer_get(s : GeodistrhumbLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbLayer::get(self : GeodistrhumbLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_layer_set(s : GeodistrhumbLayer, i : Int, v : Double) -> GeodistrhumbLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbLayer::set(self : GeodistrhumbLayer, i : Int, v : Double) -> GeodistrhumbLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_layer_sum(s : GeodistrhumbLayer) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbLayer::sum(self : GeodistrhumbLayer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_layer_mean(s : GeodistrhumbLayer) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbLayer::mean(self : GeodistrhumbLayer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_layer_scale(s : GeodistrhumbLayer, f : Double) -> GeodistrhumbLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbLayer::scale(self : GeodistrhumbLayer, f : Double) -> GeodistrhumbLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_layer_add(a : GeodistrhumbLayer, b : GeodistrhumbLayer) -> GeodistrhumbLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbLayer::add(self : GeodistrhumbLayer, other : GeodistrhumbLayer) -> GeodistrhumbLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_layer_copy(s : GeodistrhumbLayer) -> GeodistrhumbLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbLayer::copy(self : GeodistrhumbLayer) -> GeodistrhumbLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_layer_fill(s : GeodistrhumbLayer, v : Double) -> GeodistrhumbLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbLayer::fill(self : GeodistrhumbLayer, v : Double) -> GeodistrhumbLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_layer_min(s : GeodistrhumbLayer) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbLayer::min(self : GeodistrhumbLayer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_layer_max(s : GeodistrhumbLayer) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbLayer::max(self : GeodistrhumbLayer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_layer_to_string(s : GeodistrhumbLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbLayer::to_string(self : GeodistrhumbLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbBuffer {
@@ -810,45 +810,45 @@ pub fn geo_dist_rhumb_buffer_make(size : Int) -> GeodistrhumbBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_buffer_len(s : GeodistrhumbBuffer) -> Int { s.size }
+pub fn GeodistrhumbBuffer::len(self : GeodistrhumbBuffer) -> Int { self.size }
 
-pub fn geo_dist_rhumb_buffer_get(s : GeodistrhumbBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbBuffer::get(self : GeodistrhumbBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_buffer_set(s : GeodistrhumbBuffer, i : Int, v : Double) -> GeodistrhumbBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbBuffer::set(self : GeodistrhumbBuffer, i : Int, v : Double) -> GeodistrhumbBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_buffer_sum(s : GeodistrhumbBuffer) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbBuffer::sum(self : GeodistrhumbBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_buffer_mean(s : GeodistrhumbBuffer) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbBuffer::mean(self : GeodistrhumbBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_buffer_scale(s : GeodistrhumbBuffer, f : Double) -> GeodistrhumbBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbBuffer::scale(self : GeodistrhumbBuffer, f : Double) -> GeodistrhumbBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_buffer_add(a : GeodistrhumbBuffer, b : GeodistrhumbBuffer) -> GeodistrhumbBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbBuffer::add(self : GeodistrhumbBuffer, other : GeodistrhumbBuffer) -> GeodistrhumbBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_buffer_copy(s : GeodistrhumbBuffer) -> GeodistrhumbBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbBuffer::copy(self : GeodistrhumbBuffer) -> GeodistrhumbBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_buffer_fill(s : GeodistrhumbBuffer, v : Double) -> GeodistrhumbBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbBuffer::fill(self : GeodistrhumbBuffer, v : Double) -> GeodistrhumbBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_buffer_min(s : GeodistrhumbBuffer) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbBuffer::min(self : GeodistrhumbBuffer) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_buffer_max(s : GeodistrhumbBuffer) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbBuffer::max(self : GeodistrhumbBuffer) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_buffer_to_string(s : GeodistrhumbBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbBuffer::to_string(self : GeodistrhumbBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbCursor {
@@ -861,45 +861,45 @@ pub fn geo_dist_rhumb_cursor_make(size : Int) -> GeodistrhumbCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_cursor_len(s : GeodistrhumbCursor) -> Int { s.size }
+pub fn GeodistrhumbCursor::len(self : GeodistrhumbCursor) -> Int { self.size }
 
-pub fn geo_dist_rhumb_cursor_get(s : GeodistrhumbCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbCursor::get(self : GeodistrhumbCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_cursor_set(s : GeodistrhumbCursor, i : Int, v : Double) -> GeodistrhumbCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbCursor::set(self : GeodistrhumbCursor, i : Int, v : Double) -> GeodistrhumbCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cursor_sum(s : GeodistrhumbCursor) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbCursor::sum(self : GeodistrhumbCursor) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_cursor_mean(s : GeodistrhumbCursor) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbCursor::mean(self : GeodistrhumbCursor) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_cursor_scale(s : GeodistrhumbCursor, f : Double) -> GeodistrhumbCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbCursor::scale(self : GeodistrhumbCursor, f : Double) -> GeodistrhumbCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cursor_add(a : GeodistrhumbCursor, b : GeodistrhumbCursor) -> GeodistrhumbCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbCursor::add(self : GeodistrhumbCursor, other : GeodistrhumbCursor) -> GeodistrhumbCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cursor_copy(s : GeodistrhumbCursor) -> GeodistrhumbCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbCursor::copy(self : GeodistrhumbCursor) -> GeodistrhumbCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cursor_fill(s : GeodistrhumbCursor, v : Double) -> GeodistrhumbCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbCursor::fill(self : GeodistrhumbCursor, v : Double) -> GeodistrhumbCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_cursor_min(s : GeodistrhumbCursor) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbCursor::min(self : GeodistrhumbCursor) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_cursor_max(s : GeodistrhumbCursor) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbCursor::max(self : GeodistrhumbCursor) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_cursor_to_string(s : GeodistrhumbCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbCursor::to_string(self : GeodistrhumbCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbView {
@@ -912,45 +912,45 @@ pub fn geo_dist_rhumb_view_make(size : Int) -> GeodistrhumbView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_view_len(s : GeodistrhumbView) -> Int { s.size }
+pub fn GeodistrhumbView::len(self : GeodistrhumbView) -> Int { self.size }
 
-pub fn geo_dist_rhumb_view_get(s : GeodistrhumbView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbView::get(self : GeodistrhumbView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_view_set(s : GeodistrhumbView, i : Int, v : Double) -> GeodistrhumbView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbView::set(self : GeodistrhumbView, i : Int, v : Double) -> GeodistrhumbView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_view_sum(s : GeodistrhumbView) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbView::sum(self : GeodistrhumbView) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_view_mean(s : GeodistrhumbView) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbView::mean(self : GeodistrhumbView) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_view_scale(s : GeodistrhumbView, f : Double) -> GeodistrhumbView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbView::scale(self : GeodistrhumbView, f : Double) -> GeodistrhumbView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_view_add(a : GeodistrhumbView, b : GeodistrhumbView) -> GeodistrhumbView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbView::add(self : GeodistrhumbView, other : GeodistrhumbView) -> GeodistrhumbView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_view_copy(s : GeodistrhumbView) -> GeodistrhumbView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbView::copy(self : GeodistrhumbView) -> GeodistrhumbView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_view_fill(s : GeodistrhumbView, v : Double) -> GeodistrhumbView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbView::fill(self : GeodistrhumbView, v : Double) -> GeodistrhumbView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_view_min(s : GeodistrhumbView) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbView::min(self : GeodistrhumbView) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_view_max(s : GeodistrhumbView) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbView::max(self : GeodistrhumbView) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_view_to_string(s : GeodistrhumbView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbView::to_string(self : GeodistrhumbView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbRange {
@@ -963,45 +963,45 @@ pub fn geo_dist_rhumb_range_make(size : Int) -> GeodistrhumbRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_range_len(s : GeodistrhumbRange) -> Int { s.size }
+pub fn GeodistrhumbRange::len(self : GeodistrhumbRange) -> Int { self.size }
 
-pub fn geo_dist_rhumb_range_get(s : GeodistrhumbRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbRange::get(self : GeodistrhumbRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_range_set(s : GeodistrhumbRange, i : Int, v : Double) -> GeodistrhumbRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbRange::set(self : GeodistrhumbRange, i : Int, v : Double) -> GeodistrhumbRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_range_sum(s : GeodistrhumbRange) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbRange::sum(self : GeodistrhumbRange) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_range_mean(s : GeodistrhumbRange) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbRange::mean(self : GeodistrhumbRange) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_range_scale(s : GeodistrhumbRange, f : Double) -> GeodistrhumbRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbRange::scale(self : GeodistrhumbRange, f : Double) -> GeodistrhumbRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_range_add(a : GeodistrhumbRange, b : GeodistrhumbRange) -> GeodistrhumbRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbRange::add(self : GeodistrhumbRange, other : GeodistrhumbRange) -> GeodistrhumbRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_range_copy(s : GeodistrhumbRange) -> GeodistrhumbRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbRange::copy(self : GeodistrhumbRange) -> GeodistrhumbRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_range_fill(s : GeodistrhumbRange, v : Double) -> GeodistrhumbRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbRange::fill(self : GeodistrhumbRange, v : Double) -> GeodistrhumbRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_range_min(s : GeodistrhumbRange) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbRange::min(self : GeodistrhumbRange) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_range_max(s : GeodistrhumbRange) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbRange::max(self : GeodistrhumbRange) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_range_to_string(s : GeodistrhumbRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbRange::to_string(self : GeodistrhumbRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct GeodistrhumbSlice {
@@ -1014,44 +1014,44 @@ pub fn geo_dist_rhumb_slice_make(size : Int) -> GeodistrhumbSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn geo_dist_rhumb_slice_len(s : GeodistrhumbSlice) -> Int { s.size }
+pub fn GeodistrhumbSlice::len(self : GeodistrhumbSlice) -> Int { self.size }
 
-pub fn geo_dist_rhumb_slice_get(s : GeodistrhumbSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn GeodistrhumbSlice::get(self : GeodistrhumbSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn geo_dist_rhumb_slice_set(s : GeodistrhumbSlice, i : Int, v : Double) -> GeodistrhumbSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn GeodistrhumbSlice::set(self : GeodistrhumbSlice, i : Int, v : Double) -> GeodistrhumbSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_slice_sum(s : GeodistrhumbSlice) -> Double { @_common.sum(s.data) }
+pub fn GeodistrhumbSlice::sum(self : GeodistrhumbSlice) -> Double { @_common.sum(self.data) }
 
-pub fn geo_dist_rhumb_slice_mean(s : GeodistrhumbSlice) -> Double { @_common.mean(s.data) }
+pub fn GeodistrhumbSlice::mean(self : GeodistrhumbSlice) -> Double { @_common.mean(self.data) }
 
-pub fn geo_dist_rhumb_slice_scale(s : GeodistrhumbSlice, f : Double) -> GeodistrhumbSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn GeodistrhumbSlice::scale(self : GeodistrhumbSlice, f : Double) -> GeodistrhumbSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_slice_add(a : GeodistrhumbSlice, b : GeodistrhumbSlice) -> GeodistrhumbSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn GeodistrhumbSlice::add(self : GeodistrhumbSlice, other : GeodistrhumbSlice) -> GeodistrhumbSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_slice_copy(s : GeodistrhumbSlice) -> GeodistrhumbSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn GeodistrhumbSlice::copy(self : GeodistrhumbSlice) -> GeodistrhumbSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_slice_fill(s : GeodistrhumbSlice, v : Double) -> GeodistrhumbSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn GeodistrhumbSlice::fill(self : GeodistrhumbSlice, v : Double) -> GeodistrhumbSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn geo_dist_rhumb_slice_min(s : GeodistrhumbSlice) -> Double { @_common.min(s.data) }
+pub fn GeodistrhumbSlice::min(self : GeodistrhumbSlice) -> Double { @_common.min(self.data) }
 
-pub fn geo_dist_rhumb_slice_max(s : GeodistrhumbSlice) -> Double { @_common.max(s.data) }
+pub fn GeodistrhumbSlice::max(self : GeodistrhumbSlice) -> Double { @_common.max(self.data) }
 
-pub fn geo_dist_rhumb_slice_to_string(s : GeodistrhumbSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn GeodistrhumbSlice::to_string(self : GeodistrhumbSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 

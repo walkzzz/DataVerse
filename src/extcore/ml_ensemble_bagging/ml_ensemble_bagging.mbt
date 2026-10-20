@@ -351,45 +351,45 @@ pub fn ml_ensemble_bagging_frame_make(size : Int) -> MlensemblebaggingFrame {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_frame_len(s : MlensemblebaggingFrame) -> Int { s.size }
+pub fn MlensemblebaggingFrame::len(self : MlensemblebaggingFrame) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_frame_get(s : MlensemblebaggingFrame, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingFrame::get(self : MlensemblebaggingFrame, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_frame_set(s : MlensemblebaggingFrame, i : Int, v : Double) -> MlensemblebaggingFrame {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingFrame::set(self : MlensemblebaggingFrame, i : Int, v : Double) -> MlensemblebaggingFrame {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_frame_sum(s : MlensemblebaggingFrame) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingFrame::sum(self : MlensemblebaggingFrame) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_frame_mean(s : MlensemblebaggingFrame) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingFrame::mean(self : MlensemblebaggingFrame) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_frame_scale(s : MlensemblebaggingFrame, f : Double) -> MlensemblebaggingFrame {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingFrame::scale(self : MlensemblebaggingFrame, f : Double) -> MlensemblebaggingFrame {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_frame_add(a : MlensemblebaggingFrame, b : MlensemblebaggingFrame) -> MlensemblebaggingFrame {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingFrame::add(self : MlensemblebaggingFrame, other : MlensemblebaggingFrame) -> MlensemblebaggingFrame {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_frame_copy(s : MlensemblebaggingFrame) -> MlensemblebaggingFrame {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingFrame::copy(self : MlensemblebaggingFrame) -> MlensemblebaggingFrame {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_frame_fill(s : MlensemblebaggingFrame, v : Double) -> MlensemblebaggingFrame {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingFrame::fill(self : MlensemblebaggingFrame, v : Double) -> MlensemblebaggingFrame {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_frame_min(s : MlensemblebaggingFrame) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingFrame::min(self : MlensemblebaggingFrame) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_frame_max(s : MlensemblebaggingFrame) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingFrame::max(self : MlensemblebaggingFrame) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_frame_to_string(s : MlensemblebaggingFrame) -> String {
-  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingFrame::to_string(self : MlensemblebaggingFrame) -> String {
+  "Frame[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingTable {
@@ -402,45 +402,45 @@ pub fn ml_ensemble_bagging_table_make(size : Int) -> MlensemblebaggingTable {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_table_len(s : MlensemblebaggingTable) -> Int { s.size }
+pub fn MlensemblebaggingTable::len(self : MlensemblebaggingTable) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_table_get(s : MlensemblebaggingTable, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingTable::get(self : MlensemblebaggingTable, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_table_set(s : MlensemblebaggingTable, i : Int, v : Double) -> MlensemblebaggingTable {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingTable::set(self : MlensemblebaggingTable, i : Int, v : Double) -> MlensemblebaggingTable {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_table_sum(s : MlensemblebaggingTable) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingTable::sum(self : MlensemblebaggingTable) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_table_mean(s : MlensemblebaggingTable) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingTable::mean(self : MlensemblebaggingTable) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_table_scale(s : MlensemblebaggingTable, f : Double) -> MlensemblebaggingTable {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingTable::scale(self : MlensemblebaggingTable, f : Double) -> MlensemblebaggingTable {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_table_add(a : MlensemblebaggingTable, b : MlensemblebaggingTable) -> MlensemblebaggingTable {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingTable::add(self : MlensemblebaggingTable, other : MlensemblebaggingTable) -> MlensemblebaggingTable {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_table_copy(s : MlensemblebaggingTable) -> MlensemblebaggingTable {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingTable::copy(self : MlensemblebaggingTable) -> MlensemblebaggingTable {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_table_fill(s : MlensemblebaggingTable, v : Double) -> MlensemblebaggingTable {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingTable::fill(self : MlensemblebaggingTable, v : Double) -> MlensemblebaggingTable {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_table_min(s : MlensemblebaggingTable) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingTable::min(self : MlensemblebaggingTable) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_table_max(s : MlensemblebaggingTable) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingTable::max(self : MlensemblebaggingTable) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_table_to_string(s : MlensemblebaggingTable) -> String {
-  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingTable::to_string(self : MlensemblebaggingTable) -> String {
+  "Table[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingGraphN {
@@ -453,45 +453,45 @@ pub fn ml_ensemble_bagging_graphn_make(size : Int) -> MlensemblebaggingGraphN {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_graphn_len(s : MlensemblebaggingGraphN) -> Int { s.size }
+pub fn MlensemblebaggingGraphN::len(self : MlensemblebaggingGraphN) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_graphn_get(s : MlensemblebaggingGraphN, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingGraphN::get(self : MlensemblebaggingGraphN, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_graphn_set(s : MlensemblebaggingGraphN, i : Int, v : Double) -> MlensemblebaggingGraphN {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingGraphN::set(self : MlensemblebaggingGraphN, i : Int, v : Double) -> MlensemblebaggingGraphN {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_graphn_sum(s : MlensemblebaggingGraphN) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingGraphN::sum(self : MlensemblebaggingGraphN) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_graphn_mean(s : MlensemblebaggingGraphN) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingGraphN::mean(self : MlensemblebaggingGraphN) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_graphn_scale(s : MlensemblebaggingGraphN, f : Double) -> MlensemblebaggingGraphN {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingGraphN::scale(self : MlensemblebaggingGraphN, f : Double) -> MlensemblebaggingGraphN {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_graphn_add(a : MlensemblebaggingGraphN, b : MlensemblebaggingGraphN) -> MlensemblebaggingGraphN {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingGraphN::add(self : MlensemblebaggingGraphN, other : MlensemblebaggingGraphN) -> MlensemblebaggingGraphN {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_graphn_copy(s : MlensemblebaggingGraphN) -> MlensemblebaggingGraphN {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingGraphN::copy(self : MlensemblebaggingGraphN) -> MlensemblebaggingGraphN {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_graphn_fill(s : MlensemblebaggingGraphN, v : Double) -> MlensemblebaggingGraphN {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingGraphN::fill(self : MlensemblebaggingGraphN, v : Double) -> MlensemblebaggingGraphN {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_graphn_min(s : MlensemblebaggingGraphN) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingGraphN::min(self : MlensemblebaggingGraphN) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_graphn_max(s : MlensemblebaggingGraphN) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingGraphN::max(self : MlensemblebaggingGraphN) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_graphn_to_string(s : MlensemblebaggingGraphN) -> String {
-  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingGraphN::to_string(self : MlensemblebaggingGraphN) -> String {
+  "GraphN[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingNode {
@@ -504,45 +504,45 @@ pub fn ml_ensemble_bagging_node_make(size : Int) -> MlensemblebaggingNode {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_node_len(s : MlensemblebaggingNode) -> Int { s.size }
+pub fn MlensemblebaggingNode::len(self : MlensemblebaggingNode) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_node_get(s : MlensemblebaggingNode, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingNode::get(self : MlensemblebaggingNode, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_node_set(s : MlensemblebaggingNode, i : Int, v : Double) -> MlensemblebaggingNode {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingNode::set(self : MlensemblebaggingNode, i : Int, v : Double) -> MlensemblebaggingNode {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_node_sum(s : MlensemblebaggingNode) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingNode::sum(self : MlensemblebaggingNode) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_node_mean(s : MlensemblebaggingNode) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingNode::mean(self : MlensemblebaggingNode) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_node_scale(s : MlensemblebaggingNode, f : Double) -> MlensemblebaggingNode {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingNode::scale(self : MlensemblebaggingNode, f : Double) -> MlensemblebaggingNode {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_node_add(a : MlensemblebaggingNode, b : MlensemblebaggingNode) -> MlensemblebaggingNode {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingNode::add(self : MlensemblebaggingNode, other : MlensemblebaggingNode) -> MlensemblebaggingNode {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_node_copy(s : MlensemblebaggingNode) -> MlensemblebaggingNode {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingNode::copy(self : MlensemblebaggingNode) -> MlensemblebaggingNode {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_node_fill(s : MlensemblebaggingNode, v : Double) -> MlensemblebaggingNode {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingNode::fill(self : MlensemblebaggingNode, v : Double) -> MlensemblebaggingNode {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_node_min(s : MlensemblebaggingNode) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingNode::min(self : MlensemblebaggingNode) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_node_max(s : MlensemblebaggingNode) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingNode::max(self : MlensemblebaggingNode) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_node_to_string(s : MlensemblebaggingNode) -> String {
-  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingNode::to_string(self : MlensemblebaggingNode) -> String {
+  "Node[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingEdge {
@@ -555,45 +555,45 @@ pub fn ml_ensemble_bagging_edge_make(size : Int) -> MlensemblebaggingEdge {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_edge_len(s : MlensemblebaggingEdge) -> Int { s.size }
+pub fn MlensemblebaggingEdge::len(self : MlensemblebaggingEdge) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_edge_get(s : MlensemblebaggingEdge, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingEdge::get(self : MlensemblebaggingEdge, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_edge_set(s : MlensemblebaggingEdge, i : Int, v : Double) -> MlensemblebaggingEdge {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingEdge::set(self : MlensemblebaggingEdge, i : Int, v : Double) -> MlensemblebaggingEdge {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_edge_sum(s : MlensemblebaggingEdge) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingEdge::sum(self : MlensemblebaggingEdge) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_edge_mean(s : MlensemblebaggingEdge) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingEdge::mean(self : MlensemblebaggingEdge) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_edge_scale(s : MlensemblebaggingEdge, f : Double) -> MlensemblebaggingEdge {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingEdge::scale(self : MlensemblebaggingEdge, f : Double) -> MlensemblebaggingEdge {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_edge_add(a : MlensemblebaggingEdge, b : MlensemblebaggingEdge) -> MlensemblebaggingEdge {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingEdge::add(self : MlensemblebaggingEdge, other : MlensemblebaggingEdge) -> MlensemblebaggingEdge {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_edge_copy(s : MlensemblebaggingEdge) -> MlensemblebaggingEdge {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingEdge::copy(self : MlensemblebaggingEdge) -> MlensemblebaggingEdge {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_edge_fill(s : MlensemblebaggingEdge, v : Double) -> MlensemblebaggingEdge {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingEdge::fill(self : MlensemblebaggingEdge, v : Double) -> MlensemblebaggingEdge {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_edge_min(s : MlensemblebaggingEdge) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingEdge::min(self : MlensemblebaggingEdge) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_edge_max(s : MlensemblebaggingEdge) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingEdge::max(self : MlensemblebaggingEdge) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_edge_to_string(s : MlensemblebaggingEdge) -> String {
-  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingEdge::to_string(self : MlensemblebaggingEdge) -> String {
+  "Edge[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingPath {
@@ -606,45 +606,45 @@ pub fn ml_ensemble_bagging_path_make(size : Int) -> MlensemblebaggingPath {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_path_len(s : MlensemblebaggingPath) -> Int { s.size }
+pub fn MlensemblebaggingPath::len(self : MlensemblebaggingPath) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_path_get(s : MlensemblebaggingPath, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingPath::get(self : MlensemblebaggingPath, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_path_set(s : MlensemblebaggingPath, i : Int, v : Double) -> MlensemblebaggingPath {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingPath::set(self : MlensemblebaggingPath, i : Int, v : Double) -> MlensemblebaggingPath {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_path_sum(s : MlensemblebaggingPath) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingPath::sum(self : MlensemblebaggingPath) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_path_mean(s : MlensemblebaggingPath) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingPath::mean(self : MlensemblebaggingPath) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_path_scale(s : MlensemblebaggingPath, f : Double) -> MlensemblebaggingPath {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingPath::scale(self : MlensemblebaggingPath, f : Double) -> MlensemblebaggingPath {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_path_add(a : MlensemblebaggingPath, b : MlensemblebaggingPath) -> MlensemblebaggingPath {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingPath::add(self : MlensemblebaggingPath, other : MlensemblebaggingPath) -> MlensemblebaggingPath {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_path_copy(s : MlensemblebaggingPath) -> MlensemblebaggingPath {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingPath::copy(self : MlensemblebaggingPath) -> MlensemblebaggingPath {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_path_fill(s : MlensemblebaggingPath, v : Double) -> MlensemblebaggingPath {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingPath::fill(self : MlensemblebaggingPath, v : Double) -> MlensemblebaggingPath {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_path_min(s : MlensemblebaggingPath) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingPath::min(self : MlensemblebaggingPath) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_path_max(s : MlensemblebaggingPath) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingPath::max(self : MlensemblebaggingPath) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_path_to_string(s : MlensemblebaggingPath) -> String {
-  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingPath::to_string(self : MlensemblebaggingPath) -> String {
+  "Path[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingCluster {
@@ -657,45 +657,45 @@ pub fn ml_ensemble_bagging_cluster_make(size : Int) -> MlensemblebaggingCluster 
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_cluster_len(s : MlensemblebaggingCluster) -> Int { s.size }
+pub fn MlensemblebaggingCluster::len(self : MlensemblebaggingCluster) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_cluster_get(s : MlensemblebaggingCluster, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingCluster::get(self : MlensemblebaggingCluster, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_cluster_set(s : MlensemblebaggingCluster, i : Int, v : Double) -> MlensemblebaggingCluster {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCluster::set(self : MlensemblebaggingCluster, i : Int, v : Double) -> MlensemblebaggingCluster {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cluster_sum(s : MlensemblebaggingCluster) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingCluster::sum(self : MlensemblebaggingCluster) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_cluster_mean(s : MlensemblebaggingCluster) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingCluster::mean(self : MlensemblebaggingCluster) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_cluster_scale(s : MlensemblebaggingCluster, f : Double) -> MlensemblebaggingCluster {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCluster::scale(self : MlensemblebaggingCluster, f : Double) -> MlensemblebaggingCluster {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cluster_add(a : MlensemblebaggingCluster, b : MlensemblebaggingCluster) -> MlensemblebaggingCluster {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingCluster::add(self : MlensemblebaggingCluster, other : MlensemblebaggingCluster) -> MlensemblebaggingCluster {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cluster_copy(s : MlensemblebaggingCluster) -> MlensemblebaggingCluster {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCluster::copy(self : MlensemblebaggingCluster) -> MlensemblebaggingCluster {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cluster_fill(s : MlensemblebaggingCluster, v : Double) -> MlensemblebaggingCluster {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCluster::fill(self : MlensemblebaggingCluster, v : Double) -> MlensemblebaggingCluster {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cluster_min(s : MlensemblebaggingCluster) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingCluster::min(self : MlensemblebaggingCluster) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_cluster_max(s : MlensemblebaggingCluster) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingCluster::max(self : MlensemblebaggingCluster) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_cluster_to_string(s : MlensemblebaggingCluster) -> String {
-  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingCluster::to_string(self : MlensemblebaggingCluster) -> String {
+  "Cluster[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingModel {
@@ -708,45 +708,45 @@ pub fn ml_ensemble_bagging_model_make(size : Int) -> MlensemblebaggingModel {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_model_len(s : MlensemblebaggingModel) -> Int { s.size }
+pub fn MlensemblebaggingModel::len(self : MlensemblebaggingModel) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_model_get(s : MlensemblebaggingModel, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingModel::get(self : MlensemblebaggingModel, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_model_set(s : MlensemblebaggingModel, i : Int, v : Double) -> MlensemblebaggingModel {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingModel::set(self : MlensemblebaggingModel, i : Int, v : Double) -> MlensemblebaggingModel {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_model_sum(s : MlensemblebaggingModel) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingModel::sum(self : MlensemblebaggingModel) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_model_mean(s : MlensemblebaggingModel) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingModel::mean(self : MlensemblebaggingModel) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_model_scale(s : MlensemblebaggingModel, f : Double) -> MlensemblebaggingModel {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingModel::scale(self : MlensemblebaggingModel, f : Double) -> MlensemblebaggingModel {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_model_add(a : MlensemblebaggingModel, b : MlensemblebaggingModel) -> MlensemblebaggingModel {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingModel::add(self : MlensemblebaggingModel, other : MlensemblebaggingModel) -> MlensemblebaggingModel {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_model_copy(s : MlensemblebaggingModel) -> MlensemblebaggingModel {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingModel::copy(self : MlensemblebaggingModel) -> MlensemblebaggingModel {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_model_fill(s : MlensemblebaggingModel, v : Double) -> MlensemblebaggingModel {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingModel::fill(self : MlensemblebaggingModel, v : Double) -> MlensemblebaggingModel {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_model_min(s : MlensemblebaggingModel) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingModel::min(self : MlensemblebaggingModel) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_model_max(s : MlensemblebaggingModel) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingModel::max(self : MlensemblebaggingModel) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_model_to_string(s : MlensemblebaggingModel) -> String {
-  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingModel::to_string(self : MlensemblebaggingModel) -> String {
+  "Model[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingLayer {
@@ -759,45 +759,45 @@ pub fn ml_ensemble_bagging_layer_make(size : Int) -> MlensemblebaggingLayer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_layer_len(s : MlensemblebaggingLayer) -> Int { s.size }
+pub fn MlensemblebaggingLayer::len(self : MlensemblebaggingLayer) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_layer_get(s : MlensemblebaggingLayer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingLayer::get(self : MlensemblebaggingLayer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_layer_set(s : MlensemblebaggingLayer, i : Int, v : Double) -> MlensemblebaggingLayer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingLayer::set(self : MlensemblebaggingLayer, i : Int, v : Double) -> MlensemblebaggingLayer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_layer_sum(s : MlensemblebaggingLayer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingLayer::sum(self : MlensemblebaggingLayer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_layer_mean(s : MlensemblebaggingLayer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingLayer::mean(self : MlensemblebaggingLayer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_layer_scale(s : MlensemblebaggingLayer, f : Double) -> MlensemblebaggingLayer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingLayer::scale(self : MlensemblebaggingLayer, f : Double) -> MlensemblebaggingLayer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_layer_add(a : MlensemblebaggingLayer, b : MlensemblebaggingLayer) -> MlensemblebaggingLayer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingLayer::add(self : MlensemblebaggingLayer, other : MlensemblebaggingLayer) -> MlensemblebaggingLayer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_layer_copy(s : MlensemblebaggingLayer) -> MlensemblebaggingLayer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingLayer::copy(self : MlensemblebaggingLayer) -> MlensemblebaggingLayer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_layer_fill(s : MlensemblebaggingLayer, v : Double) -> MlensemblebaggingLayer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingLayer::fill(self : MlensemblebaggingLayer, v : Double) -> MlensemblebaggingLayer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_layer_min(s : MlensemblebaggingLayer) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingLayer::min(self : MlensemblebaggingLayer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_layer_max(s : MlensemblebaggingLayer) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingLayer::max(self : MlensemblebaggingLayer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_layer_to_string(s : MlensemblebaggingLayer) -> String {
-  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingLayer::to_string(self : MlensemblebaggingLayer) -> String {
+  "Layer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingBuffer {
@@ -810,45 +810,45 @@ pub fn ml_ensemble_bagging_buffer_make(size : Int) -> MlensemblebaggingBuffer {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_buffer_len(s : MlensemblebaggingBuffer) -> Int { s.size }
+pub fn MlensemblebaggingBuffer::len(self : MlensemblebaggingBuffer) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_buffer_get(s : MlensemblebaggingBuffer, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingBuffer::get(self : MlensemblebaggingBuffer, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_buffer_set(s : MlensemblebaggingBuffer, i : Int, v : Double) -> MlensemblebaggingBuffer {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingBuffer::set(self : MlensemblebaggingBuffer, i : Int, v : Double) -> MlensemblebaggingBuffer {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_buffer_sum(s : MlensemblebaggingBuffer) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingBuffer::sum(self : MlensemblebaggingBuffer) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_buffer_mean(s : MlensemblebaggingBuffer) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingBuffer::mean(self : MlensemblebaggingBuffer) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_buffer_scale(s : MlensemblebaggingBuffer, f : Double) -> MlensemblebaggingBuffer {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingBuffer::scale(self : MlensemblebaggingBuffer, f : Double) -> MlensemblebaggingBuffer {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_buffer_add(a : MlensemblebaggingBuffer, b : MlensemblebaggingBuffer) -> MlensemblebaggingBuffer {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingBuffer::add(self : MlensemblebaggingBuffer, other : MlensemblebaggingBuffer) -> MlensemblebaggingBuffer {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_buffer_copy(s : MlensemblebaggingBuffer) -> MlensemblebaggingBuffer {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingBuffer::copy(self : MlensemblebaggingBuffer) -> MlensemblebaggingBuffer {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_buffer_fill(s : MlensemblebaggingBuffer, v : Double) -> MlensemblebaggingBuffer {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingBuffer::fill(self : MlensemblebaggingBuffer, v : Double) -> MlensemblebaggingBuffer {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_buffer_min(s : MlensemblebaggingBuffer) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingBuffer::min(self : MlensemblebaggingBuffer) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_buffer_max(s : MlensemblebaggingBuffer) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingBuffer::max(self : MlensemblebaggingBuffer) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_buffer_to_string(s : MlensemblebaggingBuffer) -> String {
-  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingBuffer::to_string(self : MlensemblebaggingBuffer) -> String {
+  "Buffer[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingCursor {
@@ -861,45 +861,45 @@ pub fn ml_ensemble_bagging_cursor_make(size : Int) -> MlensemblebaggingCursor {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_cursor_len(s : MlensemblebaggingCursor) -> Int { s.size }
+pub fn MlensemblebaggingCursor::len(self : MlensemblebaggingCursor) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_cursor_get(s : MlensemblebaggingCursor, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingCursor::get(self : MlensemblebaggingCursor, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_cursor_set(s : MlensemblebaggingCursor, i : Int, v : Double) -> MlensemblebaggingCursor {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCursor::set(self : MlensemblebaggingCursor, i : Int, v : Double) -> MlensemblebaggingCursor {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cursor_sum(s : MlensemblebaggingCursor) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingCursor::sum(self : MlensemblebaggingCursor) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_cursor_mean(s : MlensemblebaggingCursor) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingCursor::mean(self : MlensemblebaggingCursor) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_cursor_scale(s : MlensemblebaggingCursor, f : Double) -> MlensemblebaggingCursor {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCursor::scale(self : MlensemblebaggingCursor, f : Double) -> MlensemblebaggingCursor {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cursor_add(a : MlensemblebaggingCursor, b : MlensemblebaggingCursor) -> MlensemblebaggingCursor {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingCursor::add(self : MlensemblebaggingCursor, other : MlensemblebaggingCursor) -> MlensemblebaggingCursor {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cursor_copy(s : MlensemblebaggingCursor) -> MlensemblebaggingCursor {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCursor::copy(self : MlensemblebaggingCursor) -> MlensemblebaggingCursor {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cursor_fill(s : MlensemblebaggingCursor, v : Double) -> MlensemblebaggingCursor {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingCursor::fill(self : MlensemblebaggingCursor, v : Double) -> MlensemblebaggingCursor {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_cursor_min(s : MlensemblebaggingCursor) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingCursor::min(self : MlensemblebaggingCursor) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_cursor_max(s : MlensemblebaggingCursor) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingCursor::max(self : MlensemblebaggingCursor) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_cursor_to_string(s : MlensemblebaggingCursor) -> String {
-  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingCursor::to_string(self : MlensemblebaggingCursor) -> String {
+  "Cursor[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingView {
@@ -912,45 +912,45 @@ pub fn ml_ensemble_bagging_view_make(size : Int) -> MlensemblebaggingView {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_view_len(s : MlensemblebaggingView) -> Int { s.size }
+pub fn MlensemblebaggingView::len(self : MlensemblebaggingView) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_view_get(s : MlensemblebaggingView, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingView::get(self : MlensemblebaggingView, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_view_set(s : MlensemblebaggingView, i : Int, v : Double) -> MlensemblebaggingView {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingView::set(self : MlensemblebaggingView, i : Int, v : Double) -> MlensemblebaggingView {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_view_sum(s : MlensemblebaggingView) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingView::sum(self : MlensemblebaggingView) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_view_mean(s : MlensemblebaggingView) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingView::mean(self : MlensemblebaggingView) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_view_scale(s : MlensemblebaggingView, f : Double) -> MlensemblebaggingView {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingView::scale(self : MlensemblebaggingView, f : Double) -> MlensemblebaggingView {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_view_add(a : MlensemblebaggingView, b : MlensemblebaggingView) -> MlensemblebaggingView {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingView::add(self : MlensemblebaggingView, other : MlensemblebaggingView) -> MlensemblebaggingView {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_view_copy(s : MlensemblebaggingView) -> MlensemblebaggingView {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingView::copy(self : MlensemblebaggingView) -> MlensemblebaggingView {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_view_fill(s : MlensemblebaggingView, v : Double) -> MlensemblebaggingView {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingView::fill(self : MlensemblebaggingView, v : Double) -> MlensemblebaggingView {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_view_min(s : MlensemblebaggingView) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingView::min(self : MlensemblebaggingView) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_view_max(s : MlensemblebaggingView) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingView::max(self : MlensemblebaggingView) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_view_to_string(s : MlensemblebaggingView) -> String {
-  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingView::to_string(self : MlensemblebaggingView) -> String {
+  "View[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingRange {
@@ -963,45 +963,45 @@ pub fn ml_ensemble_bagging_range_make(size : Int) -> MlensemblebaggingRange {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_range_len(s : MlensemblebaggingRange) -> Int { s.size }
+pub fn MlensemblebaggingRange::len(self : MlensemblebaggingRange) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_range_get(s : MlensemblebaggingRange, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingRange::get(self : MlensemblebaggingRange, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_range_set(s : MlensemblebaggingRange, i : Int, v : Double) -> MlensemblebaggingRange {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingRange::set(self : MlensemblebaggingRange, i : Int, v : Double) -> MlensemblebaggingRange {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_range_sum(s : MlensemblebaggingRange) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingRange::sum(self : MlensemblebaggingRange) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_range_mean(s : MlensemblebaggingRange) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingRange::mean(self : MlensemblebaggingRange) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_range_scale(s : MlensemblebaggingRange, f : Double) -> MlensemblebaggingRange {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingRange::scale(self : MlensemblebaggingRange, f : Double) -> MlensemblebaggingRange {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_range_add(a : MlensemblebaggingRange, b : MlensemblebaggingRange) -> MlensemblebaggingRange {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingRange::add(self : MlensemblebaggingRange, other : MlensemblebaggingRange) -> MlensemblebaggingRange {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_range_copy(s : MlensemblebaggingRange) -> MlensemblebaggingRange {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingRange::copy(self : MlensemblebaggingRange) -> MlensemblebaggingRange {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_range_fill(s : MlensemblebaggingRange, v : Double) -> MlensemblebaggingRange {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingRange::fill(self : MlensemblebaggingRange, v : Double) -> MlensemblebaggingRange {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_range_min(s : MlensemblebaggingRange) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingRange::min(self : MlensemblebaggingRange) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_range_max(s : MlensemblebaggingRange) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingRange::max(self : MlensemblebaggingRange) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_range_to_string(s : MlensemblebaggingRange) -> String {
-  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingRange::to_string(self : MlensemblebaggingRange) -> String {
+  "Range[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
 pub(all) struct MlensemblebaggingSlice {
@@ -1014,44 +1014,44 @@ pub fn ml_ensemble_bagging_slice_make(size : Int) -> MlensemblebaggingSlice {
   { data: Array::make(size, 0.0), size, tag: 0 }
 }
 
-pub fn ml_ensemble_bagging_slice_len(s : MlensemblebaggingSlice) -> Int { s.size }
+pub fn MlensemblebaggingSlice::len(self : MlensemblebaggingSlice) -> Int { self.size }
 
-pub fn ml_ensemble_bagging_slice_get(s : MlensemblebaggingSlice, i : Int) -> Double {
-  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+pub fn MlensemblebaggingSlice::get(self : MlensemblebaggingSlice, i : Int) -> Double {
+  if i < 0 || i >= self.size { 0.0 } else { self.data[i] }
 }
 
-pub fn ml_ensemble_bagging_slice_set(s : MlensemblebaggingSlice, i : Int, v : Double) -> MlensemblebaggingSlice {
-  let data = @_common.copy_arr(s.data)
-  if i >= 0 && i < s.size { data[i] = v }
-  { data, size: s.size, tag: s.tag }
+pub fn MlensemblebaggingSlice::set(self : MlensemblebaggingSlice, i : Int, v : Double) -> MlensemblebaggingSlice {
+  let data = @_common.copy_arr(self.data)
+  if i >= 0 && i < self.size { data[i] = v }
+  { data, size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_slice_sum(s : MlensemblebaggingSlice) -> Double { @_common.sum(s.data) }
+pub fn MlensemblebaggingSlice::sum(self : MlensemblebaggingSlice) -> Double { @_common.sum(self.data) }
 
-pub fn ml_ensemble_bagging_slice_mean(s : MlensemblebaggingSlice) -> Double { @_common.mean(s.data) }
+pub fn MlensemblebaggingSlice::mean(self : MlensemblebaggingSlice) -> Double { @_common.mean(self.data) }
 
-pub fn ml_ensemble_bagging_slice_scale(s : MlensemblebaggingSlice, f : Double) -> MlensemblebaggingSlice {
-  { data: @_common.scale_arr(s.data, f), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingSlice::scale(self : MlensemblebaggingSlice, f : Double) -> MlensemblebaggingSlice {
+  { data: @_common.scale_arr(self.data, f), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_slice_add(a : MlensemblebaggingSlice, b : MlensemblebaggingSlice) -> MlensemblebaggingSlice {
-  let n = if a.size < b.size { a.size } else { b.size }
-  { data: @_common.add_arr(a.data, b.data), size: n, tag: a.tag }
+pub fn MlensemblebaggingSlice::add(self : MlensemblebaggingSlice, other : MlensemblebaggingSlice) -> MlensemblebaggingSlice {
+  let n = if self.size < other.size { self.size } else { other.size }
+  { data: @_common.add_arr(self.data, other.data), size: n, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_slice_copy(s : MlensemblebaggingSlice) -> MlensemblebaggingSlice {
-  { data: @_common.copy_arr(s.data), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingSlice::copy(self : MlensemblebaggingSlice) -> MlensemblebaggingSlice {
+  { data: @_common.copy_arr(self.data), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_slice_fill(s : MlensemblebaggingSlice, v : Double) -> MlensemblebaggingSlice {
-  { data: @_common.fill_arr(s.size, v), size: s.size, tag: s.tag }
+pub fn MlensemblebaggingSlice::fill(self : MlensemblebaggingSlice, v : Double) -> MlensemblebaggingSlice {
+  { data: @_common.fill_arr(self.size, v), size: self.size, tag: self.tag }
 }
 
-pub fn ml_ensemble_bagging_slice_min(s : MlensemblebaggingSlice) -> Double { @_common.min(s.data) }
+pub fn MlensemblebaggingSlice::min(self : MlensemblebaggingSlice) -> Double { @_common.min(self.data) }
 
-pub fn ml_ensemble_bagging_slice_max(s : MlensemblebaggingSlice) -> Double { @_common.max(s.data) }
+pub fn MlensemblebaggingSlice::max(self : MlensemblebaggingSlice) -> Double { @_common.max(self.data) }
 
-pub fn ml_ensemble_bagging_slice_to_string(s : MlensemblebaggingSlice) -> String {
-  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+pub fn MlensemblebaggingSlice::to_string(self : MlensemblebaggingSlice) -> String {
+  "Slice[" + self.size.to_string() + ",tag=" + self.tag.to_string() + "]"
 }
 
